@@ -36,9 +36,14 @@ const WAIT_MS = { image: 10 * 60_000, clip: 30 * 60_000, music: 15 * 60_000 };
 // the site has them); until then they draw as a drama does.
 export const SLIDES_FORMAT = "slides";
 
-/** The server's choice of model for a kind, for a video of `format`: slides may have their own image choice. */
+/**
+ * The server's choice of model for a kind, for a video of `format`: slides have their own image
+ * choice while their switch is on. With the slides switch off the server draws a slides video
+ * under the drama's switch and with the drama's model (jobs.py `slides_on`), so the tool sizes
+ * and prices with that choice too, or the first picture comes back as `video_media_model_changed`.
+ */
 export function choiceFor(status, kind, format = null) {
-  if (kind === "image" && format === SLIDES_FORMAT && status.slides_image) return status.slides_image;
+  if (kind === "image" && format === SLIDES_FORMAT && status.slides_image && status.slides_enabled) return status.slides_image;
   return status[kind];
 }
 

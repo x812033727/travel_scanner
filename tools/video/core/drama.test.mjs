@@ -13,7 +13,12 @@ import {
   clipKey,
   clipShotScenes,
   clipsHash,
+  drawnShotScenes,
   isClipShot,
+  isKnowledgeLongform,
+  isSourced,
+  sourcedShotScenes,
+  timesSilentShots,
   keyframeKey,
   lookHash,
   mixHash,
@@ -32,7 +37,7 @@ import {
   visualTierProblems,
   voiceFor,
 } from "./drama.mjs";
-import { writeAudioFixture, dramaBrief, dramaFixture, fixture, fixtureLexicon, illustratedFixture, sandbox } from "./fixtures/load.mjs";
+import { writeAudioFixture, dramaBrief, dramaFixture, fixture, fixtureLexicon, illustratedFixture, sandbox, storyFixture } from "./fixtures/load.mjs";
 import { lintVideo } from "./lint.mjs";
 import { atomicWrite } from "./paths.mjs";
 import { validateVideo } from "./schema.mjs";
@@ -117,17 +122,51 @@ test("timed action refuses out-of-range seconds, dialogue, absent direction and 
     [(doc) => { doc.scenes[1].data.motion = "  "; }, /visible-action prompt and motion/],
     [(doc) => { doc.scenes[1].data.prompt = ""; }, /visible-action prompt and motion/],
     [(doc) => { doc.scenes[1].template = "title"; }, /directed shot/],
-    [(doc) => { delete doc.production_policy; delete doc.runtime_spec; }, /complete long-anime production policy/],
+    [(doc) => { delete doc.production_policy; delete doc.runtime_spec; }, /a drama with a cast and no length floor, or a complete long-anime production policy/],
   ]) {
     const doc = structuredClone(base);
     change(doc);
     assert.match(validateVideo(doc).map((error) => error.message).join("\n"), expected);
   }
+  // A drama with a cast may hold a beat in which nobody speaks (docs/videos/DRAMA.md); a
+  // narrated one has no silent shot, since its narration is its clock.
   const ordinary = dramaFixture();
   ordinary.scenes[1].action_seconds = 4;
   ordinary.scenes[1].lines = [];
-  assert.ok(validateVideo(ordinary).some((error) => error.path === "scenes[1].action_seconds" && /complete long-anime/.test(error.message)));
-  assert.ok(validateVideo(ordinary).some((error) => error.path === "scenes[1].lines"));
+  assert.deepEqual(validateVideo(ordinary), []);
+  const narrated = structuredClone(ordinary);
+  narrated.characters = [];
+  for (const scene of narrated.scenes) {
+    delete scene.data.characters;
+    for (const line of scene.lines) delete line.speaker;
+  }
+  assert.ok(validateVideo(narrated).some((error) => error.path === "scenes[1].action_seconds" && /a drama with a cast and no length floor, or a complete long-anime/.test(error.message)));
+  assert.ok(validateVideo(narrated).some((error) => error.path === "scenes[1].lines"));
+});
+
+test("a silent shot cannot pad a knowledge long-form's floor: a brand story with a lead refuses action_seconds, as the schema and the timeline both say", () => {
+  const story = storyFixture();
+  story.slug = "story-rolling-suitcase";
+  story.characters = [structuredClone(dramaFixture().characters[0])];
+  const lead = story.characters[0].id;
+  story.scenes.push({ id: "silent-beat", template: "shot", action_seconds: 8, data: { prompt: "The lead at the counter, the suitcase held out", camera: "Wide, locked", motion: "The lead slides the suitcase across the counter", visual: "still", characters: [lead] }, lines: [] });
+  const silent = story.scenes.length - 1;
+  const errors = validateVideo(story);
+  assert.ok(errors.some((error) => error.path === `scenes[${silent}].action_seconds` && /no length floor/.test(error.message)), errors.map((error) => `${error.path}: ${error.message}`).join("\n"));
+  assert.ok(errors.some((error) => error.path === `scenes[${silent}].lines`));
+  assert.throws(() => estimateTimeline(story), /action_seconds needs a silent shot of a long anime or of a drama with a cast and no length floor/);
+  assert.equal(timesSilentShots(story), false);
+  assert.equal(isKnowledgeLongform(story), true);
+  // The same shot under a slug outside the catalogues, with a category the floors do not know, is an ordinary cast drama.
+  const plain = structuredClone(story);
+  plain.slug = "rolling-suitcase";
+  delete plain.category;
+  assert.equal(timesSilentShots(plain), true);
+  assert.ok(!validateVideo(plain).some((error) => error.path.endsWith(".action_seconds")));
+  // An anime episode times nothing outside its production policy, and an explainer never does.
+  assert.equal(timesSilentShots({ ...plain, category: "anime" }), false);
+  assert.equal(timesSilentShots({ ...plain, look: { ...plain.look, preset: "flat-explainer" } }), false);
+  assert.equal(timesSilentShots(dramaFixture()), true);
 });
 
 test("only the declared last episode of a closed anime may declare closure", () => {
@@ -162,11 +201,14 @@ test("long anime rejects freeze and slow fitting while ordinary drama retains bo
   }
 });
 
-test("the drama example is valid and lints clean", () => {
+test("the drama example is valid and lints clean, apart from the craft rows a four-shot retelling cannot meet", () => {
   assert.deepEqual(validateVideo(dramaFixture()), []);
   const result = lintVideo(dramaFixture(), context());
   assert.deepEqual(result.errors, []);
-  assert.deepEqual(result.warnings, []);
+  // The example shows the file's shape, not an episode: narrated, four shots, long lines. The
+  // craft rows (drama-craft.md) say so, and nothing else does.
+  assert.deepEqual(result.warnings.filter((warning) => !/^craft /.test(warning.message)), []);
+  assert.ok(result.warnings.some((warning) => /^craft hook\.opening: /.test(warning.message)));
   assert.equal(result.summary.chapters.length, 3);
 });
 
@@ -552,24 +594,49 @@ test("a drama's status walks the media steps in order, each bound to its hashes"
 });
 
 test("illustrated slides are drawn as a printmaker's brief and lint keeps their pictures varied (docs/videos/ILLUSTRATED.md §畫面不像 AI)", async () => {
-  const { PRESETS, SLIDES_PRESET, cameraMove, pictureVarietyProblems, shotProblems, SAME_MOVE_RUN_MAX, MOTIF_MIN_SHOTS, MOTIF_SHARE_WARN } = await import("./drama.mjs");
+  const { PRESETS, SLIDES_PRESET, SLIDES_PRESETS, PRESET_NAMES, slidesPresetFor, cameraMove, pictureVarietyProblems, shotProblems, SAME_MOVE_RUN_MAX, MOTIF_MIN_SHOTS, MOTIF_SHARE_WARN } = await import("./drama.mjs");
   const { estimateTimeline } = await import("./timeline.mjs");
-  const preset = PRESETS[SLIDES_PRESET];
+  // The print looks (docs/videos/ILLUSTRATED.md §第二輪): four pairs of risograph inks and a
+  // linocut, each a printmaker's brief with the subject where a Short's 9:16 crop keeps it, no
+  // "full-bleed" (the model paints a margin for it) and a negative that refuses borders instead.
+  assert.deepEqual(SLIDES_PRESETS, ["riso-teal", "riso-navy", "riso-forest", "riso-plum", "linocut-teal"]);
+  assert.equal(SLIDES_PRESET, "riso-teal");
+  for (const name of SLIDES_PRESETS) {
+    const preset = PRESETS[name];
+    assert.ok(PRESET_NAMES.includes(name), name);
+    assert.match(preset.style, name.startsWith("riso") ? /^risograph print illustration on warm cream paper: .* ink and .* ink, overprinted where they meet, visible halftone dot grain/ : /^two-colour linocut relief print on cream paper/);
+    assert.match(preset.style, /small simple people with (?:carved )?dot eyes or seen from behind/);
+    assert.match(preset.style, /one clear focal point in the centre third of the frame/);
+    assert.match(preset.style, /the picture runs past all four edges of the frame/);
+    assert.doesNotMatch(preset.style, /full[- ]bleed|edge to edge|no (?:ink )?outlines/);
+    for (const word of ["glossy", "faceless mannequin", "mirror symmetry", "paper border", "white margin", "pillarbox", "blurred side bars", "text", "logo", "real person's likeness", "mascot", "extra fingers"]) assert.ok(preset.negative.includes(word), `${name}: ${word}`);
+    assert.ok(preset.style.length <= 600 && preset.negative.length <= 400, `${name}: ${preset.style.length}/${preset.negative.length}`);
+    assert.doesNotMatch(`${preset.style} ${preset.negative}`, /off-centre|centred layout/);
+  }
+  assert.equal(new Set(SLIDES_PRESETS.map((name) => PRESETS[name].style)).size, SLIDES_PRESETS.length, "every look is its own inks");
+  // The look of a video with none is one of the rotation, by its slug: stable for a video, spread across videos.
+  assert.equal(slidesPresetFor("fixture-illustrated"), slidesPresetFor("fixture-illustrated"));
+  assert.ok(SLIDES_PRESETS.includes(slidesPresetFor("anything")));
+  assert.ok(SLIDES_PRESETS.includes(slidesPresetFor(undefined)));
+  const spread = new Set(["ai-term-token", "ai-term-context-window", "gemini-4-argon-who-can-use-it", "threads-parental-supervision-apac-four-settings", "grok-4-7-bedrock-output-doubles", "fixture-illustrated"].map(slidesPresetFor));
+  assert.ok(spread.size >= 4, [...spread].join(", "));
+  // The 2026-10-03 morning look stays for a video that names it.
+  const preset = PRESETS["tech-story"];
   assert.match(preset.style, /^hand-drawn editorial illustration for a printed magazine feature/);
-  assert.match(preset.style, /paper grain and a little misregistration/);
-  assert.match(preset.style, /small simple people with dot eyes or seen from behind/);
-  for (const word of ["glossy", "faceless mannequin", "mirror symmetry", "text", "logo", "real person's likeness", "mascot", "extra fingers"]) assert.ok(preset.negative.includes(word), word);
-  assert.ok(preset.style.length <= 600 && preset.negative.length <= 400);
-  // The subject stays where a Short's 9:16 crop keeps it; nothing pushes it to one side.
   assert.match(preset.style, /one clear focal point in the centre third of the frame/);
   assert.doesNotMatch(`${preset.style} ${preset.negative}`, /off-centre|centred layout/);
-  // The camera words fold to their move, the camera direction first and then the motion prompt,
-  // as assemble reads them; a shot that names none drifts.
+  // The camera words fold to their move, read from the camera direction alone on whole words,
+  // as assemble reads them; a shot that names none drifts, and "locked" holds the picture still.
   assert.equal(cameraMove({ camera: "slow push in" }), "push in");
   assert.equal(cameraMove({ camera: "pan right along the shelf" }), "pan right");
   assert.equal(cameraMove({ camera: "handheld" }), "drift");
-  assert.equal(cameraMove({ camera: "handheld", motion: "slow push in" }), "push in");
+  assert.equal(cameraMove({ camera: "handheld", motion: "slow push in" }), "drift", "the motion prompt is what happens in the picture, never the camera");
   assert.equal(cameraMove({ camera: "pan left", motion: "zoom in" }), "pan left");
+  assert.equal(cameraMove({ motion: "she pushes the box back and rises" }), "drift");
+  assert.equal(cameraMove({ camera: "a surprised enterprise" }), "drift", "\"rise\" inside a word is no tilt");
+  assert.equal(cameraMove({ camera: "a slow rise" }), "tilt up");
+  assert.equal(cameraMove({ camera: "Locked medium close-up" }), "locked");
+  assert.equal(cameraMove({ camera: "static, slight handheld drift" }), "drift", "the drift the writer asked for wins over \"static\"");
   assert.equal(cameraMove({}), "drift");
   // The example keeps the rules; a drama is not held to them.
   const doc = illustratedFixture();
@@ -619,6 +686,52 @@ test("illustrated slides are drawn as a printmaker's brief and lint keeps their 
   assert.equal(pictureVarietyProblems(desks).errors.length, 0);
 });
 
+test("the picture-variety lint reads a size as a size, a prop in both numbers as one prop, a repeated move on the camera alone, and a video told in the dark", async () => {
+  const { pictureVarietyProblems, DARK_SHARE_WARN, MOTIF_MIN_SHOTS } = await import("./drama.mjs");
+  const moves = ["push in", "pull out", "pan left", "pan right", "tilt up", "tilt down", "drift", "push in", "pull out", "pan left"];
+  const video = (prompts, extra = {}) => {
+    const doc = illustratedFixture();
+    doc.scenes = doc.scenes.filter((scene) => scene.template !== "shot");
+    prompts.forEach((prompt, index) => doc.scenes.push({ id: `p${index}`, template: "shot", data: { prompt, camera: moves[index], visual: "still", ...extra }, lines: [{ id: `l${index}zz`, text: "一句。" }] }));
+    return doc;
+  };
+  const sized = (prompt) => !pictureVarietyProblems(video([prompt])).warnings.some((warning) => /name no shot size/.test(warning.message));
+  // The sizes in their usual spellings, at the start or followed by shot, view, angle or of.
+  for (const prompt of ["Low-angle shot of a lighthouse at noon", "Bird's eye view of a harbour market", "Top-down view of a tiled kitchen floor", "Over-the-shoulder shot of a cook", "High angle of a schoolyard", "A wide shot of a street at noon", "Medium, a harbour at dusk"]) assert.ok(sized(prompt), prompt);
+  // An incidental adjective is not a size.
+  for (const prompt of ["A medium bowl of rice on a table at noon", "Onions over medium heat in a pan", "A wide street at noon, a cyclist crossing"]) assert.ok(!sized(prompt), prompt);
+  // Dairy is not the palette; a cream wall is.
+  const restates = (prompt) => pictureVarietyProblems(video([`Close-up of ${prompt}`])).warnings.some((warning) => /restate the look/.test(warning.message));
+  for (const prompt of ["whipped cream on a cake", "cream poured into coffee", "an ice-cream cone melting", "sour cream on a plate"]) assert.ok(!restates(prompt), prompt);
+  for (const prompt of ["a cream wall with a crack", "a risograph poster on a door"]) assert.ok(restates(prompt), prompt);
+  // Plurals fold: ferries and a ferry, shelves and a shelf, boxes and a box are one thing each.
+  const motifs = (prompts) => pictureVarietyProblems(video(prompts)).warnings.filter((warning) => /a third is plenty/.test(warning.message)).map((warning) => warning.message);
+  assert.equal(MOTIF_MIN_SHOTS, 6);
+  const folded = motifs(["Wide shot of a ferry at noon", "Wide shot of ferries at noon", "Wide shot of a ferry in rain", "Wide shot of ferries in fog", "Close-up of a shelf of jars", "Close-up of shelves of jars", "Close-up of shelves", "Close-up of a box of nails", "Close-up of boxes of nails", "Close-up of boxes", "Medium shot of potatoes"]);
+  assert.deepEqual(folded, [
+    `"ferry" is in 4 of 11 pictures (a third is plenty): give each chapter its own place and props so the video travels`,
+  ], "ferry, four of eleven, is over a third; shelf and box, three of eleven, are not");
+  assert.deepEqual(motifs(["Wide shot of shoes on a mat", "Close-up of a shoe", "Wide shot of canoes", "Medium shot of a canoe", "Wide shot of a series of arches", "Wide shot of a species of moth"]), [], "shoes keep their o; series and species are not plurals");
+  // The motion prompt is what happens in the picture, never the camera: three handheld stills
+  // stay a run under "drift" on data.camera whatever their motion prompts say.
+  const motion = video(["Wide shot of a quay at noon", "Close-up of a rope", "Medium shot of a crane"], { camera: "handheld" });
+  motion.scenes.filter((scene) => scene.template === "shot").forEach((scene) => { scene.data.motion = "slow push in"; });
+  const fromMotion = pictureVarietyProblems(motion).errors;
+  assert.deepEqual(fromMotion.map((error) => error.path), ["scenes[6] (p2).data.camera"]);
+  assert.match(fromMotion[0].message, /3 stills in a row under "drift"/);
+  const fromCamera = video(["Wide shot of a quay at noon", "Close-up of a rope", "Medium shot of a crane"], { camera: "push in" });
+  assert.deepEqual(pictureVarietyProblems(fromCamera).errors.map((error) => error.path), ["scenes[6] (p2).data.camera"]);
+  assert.match(pictureVarietyProblems(fromCamera).errors[0].message, /tilt down, drift\)$/);
+  // More than half of the pictures at night or under a lamp is a warning once there are enough to count.
+  assert.equal(DARK_SHARE_WARN, 1 / 2);
+  const dark = ["Wide shot of a street at night", "Close-up of a lamp on a desk", "Medium shot of a bench at dusk", "Low angle of a tower by moonlight"];
+  const day = ["Wide shot of a beach at noon", "Close-up of a kettle in a kitchen"];
+  const told = pictureVarietyProblems(video([...dark, ...day])).warnings.filter((warning) => /at night or under a lamp/.test(warning.message));
+  assert.deepEqual(told.map((warning) => warning.message), ["4 of 6 pictures are at night or under a lamp; vary the time of day, the weather and where the light comes from (morning, noon, rain, an overcast afternoon, a crowded daylight place): p0, p1, p2, p3"]);
+  assert.deepEqual(pictureVarietyProblems(video([...dark.slice(0, 3), ...day, "Medium shot of a bakery at dawn"])).warnings.filter((warning) => /under a lamp/.test(warning.message)), [], "half is not more than half");
+  assert.deepEqual(pictureVarietyProblems(video(dark)).warnings.filter((warning) => /under a lamp/.test(warning.message)), [], "fewer than six pictures are not counted");
+});
+
 test("a still shot carries no end frame: it describes a clip's last frame and would be bought unseen", () => {
   const doc = dramaFixture();
   const shot = doc.scenes.find((scene) => scene.template === "shot");
@@ -628,4 +741,39 @@ test("a still shot carries no end frame: it describes a clip's last frame and wo
   assert.deepEqual(problems.map((problem) => problem.message), ["a still shot has no end_frame: it belongs to a clip"]);
   delete shot.data.end_frame;
   assert.deepEqual(validateVideo(doc).filter((problem) => problem.path.includes(shot.id)), []);
+});
+
+test("a shot cut from another shot's clip names an earlier clip shot and a start; it has no still, continuation, end frame or thumbnail of its own", () => {
+  const base = dramaFixture();
+  const bird = base.scenes.find((scene) => scene.id === "bird");
+  delete bird.data.start_frame;
+  bird.data.source = { shot: "sea-storm", from_s: 1.5 };
+  assert.deepEqual(validateVideo(base), []);
+  const messagesOf = (change) => {
+    const doc = structuredClone(base);
+    change(doc);
+    return validateVideo(doc).map((error) => `${error.path}: ${error.message}`).join("\n");
+  };
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.source = { shot: "wrap", from_s: 1 }; }), /must be \{ shot: "<an earlier shot id>", from_s: <seconds, 0 or more> \}/, "a card is not a shot");
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.source = { shot: "bird", from_s: 1 }; }), /an earlier shot id/, "not itself");
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.source.from_s = -1; }), /from_s: <seconds, 0 or more>/);
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.source.from_s = "1"; }), /from_s: <seconds, 0 or more>/);
+  assert.match(messagesOf((doc) => { doc.scenes[2].data.visual = "still"; }), /sea-storm must be a clip shot with a clip of its own \(not a still, not itself cut from another shot\)/);
+  assert.match(messagesOf((doc) => { doc.scenes[2].data.source = { shot: "opening", from_s: 0 }; }), /sea-storm must be a clip shot with a clip of its own/, "no chains");
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.visual = "still"; }), /a still has no clip to cut from/);
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.start_frame = { shot: "sea-storm", at: "last" }; }), /has no start_frame: that clip is already made/);
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.end_frame = { prompt: "the bird gone" }; }), /has no end_frame: that clip is already made/);
+  assert.match(messagesOf((doc) => { doc.thumbnail.data.shot = "bird"; }), /thumbnail\.data\.shot: .*a shot cut from another shot's clip has none/);
+  // Only a drama cuts from a clip: an illustration is its own picture.
+  const slides = illustratedFixture();
+  const pictures = slides.scenes.filter((scene) => scene.template === "shot");
+  pictures[1].data.source = { shot: pictures[0].id, from_s: 0 };
+  assert.match(validateVideo(slides).map((error) => error.message).join("\n"), /only a drama's shot is cut from another shot's clip/);
+  // A cut returns to a setup on purpose, so its prompt may repeat the setup's.
+  const twin = structuredClone(base);
+  twin.scenes[3].data.prompt = twin.scenes[2].data.prompt;
+  assert.ok(!shotProblems(twin, estimateTimeline(twin)).warnings.some((warning) => /nearly the same/.test(warning.message)));
+  assert.deepEqual(sourcedShotScenes(base).map((scene) => scene.id), ["bird"]);
+  assert.deepEqual(drawnShotScenes(base).map((scene) => scene.id), ["opening", "farewell", "sea-storm"]);
+  assert.equal(isSourced(base.scenes[2]), false);
 });

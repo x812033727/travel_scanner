@@ -37,7 +37,13 @@ const SHA256 = /^[0-9a-f]{64}$/;
 export const MAX_SHOT_CHARACTERS = 3;
 export const MAX_SHOT_SECONDS = 12;
 export const WARN_SHOT_SECONDS = 10;
-export const MIN_MEDIAN_SHOT_SECONDS = 3;
+// A drama with a cast is cut like the dramas that were measured (drama-craft.md: a median shot
+// of 1.5–2.25 s); under 2 s this pipeline pays a clip per cut, so that is where its warning
+// starts. A narrated drama (an explainer) and illustrated slides keep the older 3 s.
+export const MIN_MEDIAN_SHOT_SECONDS = 2;
+export const MIN_MEDIAN_SHOT_SECONDS_NARRATED = 3;
+// A clip from the models runs at most this long, so a cut from another shot's clip must end inside it.
+export const MAX_SOURCE_CLIP_SECONDS = 10;
 export const LONG_SHOT_SHARE_WARN = 0.3;
 export const PROMPT_SIMILARITY_WARN = 0.8;
 // Picture variety of illustrated slides (docs/videos/ILLUSTRATED.md §畫面不像 AI): three stills in
@@ -56,6 +62,24 @@ export const MEDIA_CACHE_VERSION = "media-v1";
  * Style presets: what "cinematic 3D like the reference" or "2D anime" means as a prompt. A look
  * names one and may override any field; `custom` supplies everything itself.
  */
+// What every print look refuses: a render's finish, a machine's composition, a paper margin
+// around the picture (or a vertical picture between blurred bars), words and real faces.
+const PRINT_NEGATIVE = "photorealistic, 3D render, glossy, airbrushed, smooth gradients, neon glow, bokeh, stock vector, isometric, faceless mannequin, mirror symmetry, paper border, white margin, frame, mat, pillarbox, letterbox, blurred side bars, text, letters, numbers, watermark, logo, brand marks, real person's likeness, mascot, recurring character, extra fingers, deformed hands, cluttered background";
+// The two-ink risograph looks: one dark ink, one warm ink, cream paper, in four pairs.
+const RISO_INKS = {
+  "riso-teal": "a deep teal-green ink and a fluorescent coral-orange ink",
+  "riso-navy": "an ink-navy ink and a mustard-yellow ink",
+  "riso-forest": "a dark forest-green ink and a bright tangerine ink",
+  "riso-plum": "a deep plum ink and a golden-ochre ink",
+};
+function risoPresets() {
+  return Object.fromEntries(Object.entries(RISO_INKS).map(([name, inks]) => [name, {
+    style: `risograph print illustration on warm cream paper: ${inks}, overprinted where they meet, visible halftone dot grain, the inks a little off register and not quite covering, shapes built from overlapping flat ink layers with line only where an ink edge makes it, small simple people with dot eyes or seen from behind, one clear focal point in the centre third of the frame with uneven foreground and background layers to either side, the picture runs past all four edges of the frame, matte, slightly rough like a real print, 16:9`,
+    negative: PRINT_NEGATIVE,
+    motion: "slow push in or gentle drift, no morphing, no cuts",
+  }]));
+}
+
 export const PRESETS = {
   "cinematic-3d": {
     style: "semi-realistic 3D CG render, cinematic lighting, volumetric light, shallow depth of field, 35mm film look, detailed fabric and skin, ancient Chinese fantasy production design",
@@ -92,18 +116,45 @@ export const PRESETS = {
     negative: "photorealistic, 3D render, CGI, glossy, airbrushed, smooth gradients, neon glow, lens flare, bokeh, stock vector, corporate flat icon style, isometric, faceless mannequin, floating objects, mirror symmetry, text, letters, numbers, watermark, logo, brand marks, real person's likeness, mascot, recurring cartoon character, extra fingers, deformed hands, cluttered background",
     motion: "slow push in or gentle drift, no morphing, no cuts",
   },
+  // The channel's print looks since 2026-10-03 (docs/videos/ILLUSTRATED.md §第二輪): the same
+  // two-ink risograph print in four pairs of inks, and a linocut, chosen per video by its slug
+  // (slidesPresetFor) so each video is its own print run while the channel stays one printer.
+  // Drawn and compared on 2026-10-03 against the tech-story look: a print's halftone grain,
+  // overprint and off-register inks are what a viewer reads as a hand, where an even ink
+  // outline around everything reads as a children's book drawn by a machine. The phrase
+  // "full-bleed, edge to edge" makes the model paint a paper margin around the picture, so the
+  // looks say the picture runs past the frame and the negative refuses borders instead.
+  ...risoPresets(),
+  "linocut-teal": {
+    style: "two-colour linocut relief print on cream paper: bold carved marks and gouged textures, a deep teal-black key block with an ochre and a brick-red spot colour printed a little off register, rough carved edges, chunky simplified shapes, ink unevenly rolled so some areas print lighter, small simple people with carved dot eyes or seen from behind, one clear focal point in the centre third of the frame with uneven foreground and background layers to either side, the picture runs past all four edges of the frame, matte paper, 16:9",
+    negative: PRINT_NEGATIVE,
+    motion: "slow push in or gentle drift, no morphing, no cuts",
+  },
   custom: { style: "", negative: "", motion: "" },
 };
 export const EXPLAINER_PRESET = "flat-explainer";
-/** The look a slides video's illustrations take unless its video.json names another. */
-export const SLIDES_PRESET = "tech-story";
+/** The print looks a slides video's illustrations rotate through (docs/videos/ILLUSTRATED.md §第二輪), in rotation order. */
+export const SLIDES_PRESETS = ["riso-teal", "riso-navy", "riso-forest", "riso-plum", "linocut-teal"];
+/** The look a slides video's illustrations take when nothing chooses one (the first of the rotation). */
+export const SLIDES_PRESET = SLIDES_PRESETS[0];
+/**
+ * The print look of a slides video with no look of its own: one of SLIDES_PRESETS by the slug,
+ * so two videos written the same week come off different print runs and the same video always
+ * gets the same one (the look is in lookHash; a rotation by date would redraw a video rerun
+ * later). The writer may still name one, and the owner may set one in video.json.
+ */
+export function slidesPresetFor(slug) {
+  let hash = 2166136261;
+  for (const char of String(slug ?? "")) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619) >>> 0;
+  return SLIDES_PRESETS[hash % SLIDES_PRESETS.length];
+}
 export const PRESET_NAMES = Object.keys(PRESETS);
 export const DEFAULT_LOOK_CANDIDATES = 3;
 export const DEFAULT_MUSIC = { gain_db: -20, duck_db: -10, fade_in_ms: 1500, fade_out_ms: 3000 };
 
 const LOOK_KEYS = new Set(["preset", "style", "negative", "motion", "candidates", "style_frames"]);
 const CHARACTER_KEYS = new Set(["id", "name", "appearance", "voice", "sheet_prompt", "shot_looks"]);
-const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "character_looks", "fit", "seed", "transition", "start_frame", "end_frame", "visual"]);
+const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "character_looks", "fit", "seed", "transition", "start_frame", "end_frame", "visual", "source"]);
 const MUSIC_KEYS = new Set(["prompt", "track", "sha256", "gain_db", "duck_db", "fade_in_ms", "fade_out_ms"]);
 const SUBTITLE_KEYS = new Set(["burn_in", "style", "speaker_prefix"]);
 // Sound effects (docs/videos/ILLUSTRATED.md): a licensed set under <work base>/_sfx/<set>/, placed
@@ -135,6 +186,26 @@ export const isExplainer = (doc) => isDrama(doc) && doc.look?.preset === EXPLAIN
 export const needsMinimumLength = (doc) => (!isDrama(doc) || isExplainer(doc)) && !isObject(doc?.compilation);
 /** Whether a drama has characters: without any there are no sheets, so no look stage or gate. */
 export const hasCast = (doc) => isDrama(doc) && Array.isArray(doc.characters) && doc.characters.length > 0;
+// The knowledge and nonfiction long-video catalogues (duration.mjs): a brand story, an AI term,
+// an explainer, each held to a 480-second floor that is measured on its narration.
+const LONG_FORMATS = new Set(["slides", "screencast", "drama"]);
+const KNOWLEDGE_CATEGORIES = new Set(["ai-terms", "explainer", "story"]);
+const CATALOGUE_SLUG = /^(?:sothatswhy-|ai-term-|story-)/;
+/** Ordinary drama episodes, binge compilations and Shorts retain their own duration rules. */
+export function isKnowledgeLongform(doc) {
+  return Boolean(doc && LONG_FORMATS.has(doc.format) && !doc.compilation && (
+    KNOWLEDGE_CATEGORIES.has(doc.category)
+    || doc.look?.preset === "flat-explainer"
+    || CATALOGUE_SLUG.test(doc.slug ?? "")
+  ));
+}
+/**
+ * Whether a shot without lines may be timed with `action_seconds` outside the long-anime policy:
+ * a drama with a cast that carries no length floor, so a silent shot can pad nothing. A knowledge
+ * long-form (a brand story with leads, an explainer) is measured on its narration, and an anime
+ * episode goes through its production policy (anime-policy.mjs) or not at all.
+ */
+export const timesSilentShots = (doc) => hasCast(doc) && !needsMinimumLength(doc) && !isKnowledgeLongform(doc) && doc?.category !== "anime";
 export const isShot = (scene) => scene?.template === SHOT_TEMPLATE;
 export const shotScenes = (doc) => (doc?.scenes ?? []).filter(isShot);
 /**
@@ -148,6 +219,13 @@ export const hasPictures = (doc) => isDrama(doc) || illustrated(doc);
 /** "clip" or "still": a shot is a clip unless it says otherwise. */
 export const shotVisual = (scene) => scene?.data?.visual ?? "clip";
 export const isClipShot = (scene) => isShot(scene) && shotVisual(scene) === "clip";
+// A shot cut from another shot's clip (`data.source: { shot, from_s }`, docs/videos/DRAMA.md):
+// the references return to a camera setup (speaker, listener, speaker) and cut inside one take,
+// so such a shot buys neither a keyframe nor a clip; assemble trims the named clip from from_s.
+export const isSourced = (scene) => isShot(scene) && isObject(scene?.data?.source);
+export const sourcedShotScenes = (doc) => shotScenes(doc).filter(isSourced);
+/** The shots that get a keyframe of their own: every shot but one cut from another shot's clip. */
+export const drawnShotScenes = (doc) => shotScenes(doc).filter((scene) => !isSourced(scene));
 /** The shots the clips stage generates a clip for. */
 export const clipShotScenes = (doc) => shotScenes(doc).filter(isClipShot);
 /** The shots assemble animates from their keyframe instead. */
@@ -316,6 +394,16 @@ function validateShotData(data, where, characterIds, earlierShots, errors) {
   }
   // A still is its keyframe with a camera move: an end frame would be bought and never shown.
   if (data.visual === "still" && data.end_frame !== undefined) errors.push({ path: `${where}.end_frame`, message: "a still shot has no end_frame: it belongs to a clip" });
+  if (data.source !== undefined) {
+    const origin = isObject(data.source) && typeof data.source.shot === "string" ? earlierShots.get(data.source.shot) : undefined;
+    if (!origin || !(typeof data.source.from_s === "number" && Number.isFinite(data.source.from_s) && data.source.from_s >= 0)) {
+      errors.push({ path: `${where}.source`, message: 'must be { shot: "<an earlier shot id>", from_s: <seconds, 0 or more> }: the shot is cut from that shot\'s clip, starting there' });
+    } else if (shotVisual({ data: origin }) !== "clip" || origin.source !== undefined) {
+      errors.push({ path: `${where}.source`, message: `${data.source.shot} must be a clip shot with a clip of its own (not a still, not itself cut from another shot)` });
+    }
+    if (data.visual === "still") errors.push({ path: `${where}.visual`, message: "a still has no clip to cut from: a shot cut from another shot's clip is a clip shot" });
+    for (const key of ["start_frame", "end_frame"]) if (data[key] !== undefined) errors.push({ path: `${where}.${key}`, message: `a shot cut from another shot's clip has no ${key}: that clip is already made` });
+  }
 }
 
 function validateMusic(music, errors) {
@@ -417,7 +505,8 @@ export function validateDrama(doc, errors, validateVoice) {
     const ids = Array.isArray(doc.characters) ? doc.characters.map((character) => character?.id).filter((id) => typeof id === "string") : [];
     if (ids.some((id, index) => index > 0 && id < ids[index - 1])) errors.push({ path: "characters", message: "an episode of a series lists its characters by id in order" });
   }
-  const earlierShots = new Set();
+  // Each earlier shot's data by id: a continued or a cut-from shot names one of them.
+  const earlierShots = new Map();
   const earlierTakes = new Map();
   let shots = 0;
   doc.scenes.forEach((scene, sceneIndex) => {
@@ -427,6 +516,7 @@ export function validateDrama(doc, errors, validateVoice) {
     if (shot) {
       shots += 1;
       validateShotData(scene.data, `${where}.data`, characterIds, earlierShots, errors);
+      if (!drama && isObject(scene.data) && scene.data.source !== undefined) errors.push({ path: `${where}.data.source`, message: "only a drama's shot is cut from another shot's clip; an illustration is its own picture" });
       if (isLongAnime(doc) && ["freeze", "slow"].includes(scene.data?.fit)) errors.push({ path: `${where}.data.fit`, message: "long-anime story duration cannot be supplied by frozen tails or slowed clips" });
       if (isObject(scene.data) && scene.data.character_looks !== undefined) {
         const selected = scene.data.character_looks;
@@ -482,11 +572,11 @@ export function validateDrama(doc, errors, validateVoice) {
         earlierTakes.set(line.id, line);
       });
     }
-    if (shot && typeof scene.id === "string") earlierShots.add(scene.id);
+    if (shot && typeof scene.id === "string") earlierShots.set(scene.id, isObject(scene.data) ? scene.data : {});
   });
   if (drama && shots === 0) errors.push({ path: "scenes", message: `a drama needs at least one "${SHOT_TEMPLATE}" scene` });
-  if (pictures && isObject(doc.thumbnail?.data) && doc.thumbnail.data.shot !== undefined && !earlierShots.has(doc.thumbnail.data.shot)) {
-    errors.push({ path: "thumbnail.data.shot", message: "must name a shot scene whose keyframe becomes the thumbnail background" });
+  if (pictures && isObject(doc.thumbnail?.data) && doc.thumbnail.data.shot !== undefined && (!earlierShots.has(doc.thumbnail.data.shot) || earlierShots.get(doc.thumbnail.data.shot).source !== undefined)) {
+    errors.push({ path: "thumbnail.data.shot", message: "must name a shot scene whose keyframe becomes the thumbnail background (a shot cut from another shot's clip has none)" });
   }
 }
 
@@ -591,39 +681,54 @@ export function promptSimilarity(a, b) {
 }
 
 // The camera words a still may carry, folded to the move they name. assemble/drama.mjs
-// (motionMove) reads them the same way: the camera direction first, then the motion prompt, and
-// a shot that names no move in either drifts.
-const CAMERA_MOVES = [
-  ["push in", /push|dolly in|zoom in|closer|move in/],
-  ["pull out", /pull|zoom out|widen|back away/],
-  ["pan left", /pan (?:to the )?left|left to right/],
-  ["pan right", /pan (?:to the )?right|right to left/],
-  ["tilt up", /tilt up|crane up|rise/],
-  ["tilt down", /tilt down|crane down|descend/],
+// (motionMove) reads them the same way: the camera direction alone, never the motion prompt
+// (a person who "pushes the box back" or "rises" is not a camera move), on whole words, and a
+// shot that names no move drifts. "locked" is the absence of a move: the picture holds still.
+export const CAMERA_MOVES = [
+  ["drift", /\bdrift(?:s|ing)?\b/],
+  ["locked", /\blocked\b|\bstatic\b|\bfixed\b|\btripod\b|\bno camera move\b|\bstill camera\b/],
+  ["push in", /\bpush(?:es|ing)?\b|\bdolly(?:ing)? in\b|\bzoom(?:s|ing)? in\b|\bcloser\b|\bmov(?:e|es|ing) in\b/],
+  ["pull out", /\bpull(?:s|ing)?\b|\bzoom(?:s|ing)? out\b|\bwiden(?:s|ing)?\b|\bback(?:s|ing)? away\b/],
+  ["pan left", /\bpan(?:s|ning)? (?:to the )?left\b|\bleft to right\b/],
+  ["pan right", /\bpan(?:s|ning)? (?:to the )?right\b|\bright to left\b/],
+  ["tilt up", /\btilt(?:s|ing)? up\b|\bcrane(?:s|ing)? up\b|\brises?\b|\brising\b/],
+  ["tilt down", /\btilt(?:s|ing)? down\b|\bcrane(?:s|ing)? down\b|\bdescend(?:s|ing)?\b/],
 ];
 export function cameraMove(data) {
-  for (const text of [data?.camera, data?.motion]) {
-    if (typeof text !== "string") continue;
-    const lower = text.toLowerCase();
-    const found = CAMERA_MOVES.find(([, pattern]) => pattern.test(lower));
-    if (found) return found[0];
-  }
-  return "drift";
+  if (typeof data?.camera !== "string") return "drift";
+  const lower = data.camera.toLowerCase();
+  return CAMERA_MOVES.find(([, pattern]) => pattern.test(lower))?.[0] ?? "drift";
 }
 // How close the camera is: a prompt that says none of these leaves the picture to the model's
 // habit, a medium shot of a thing in the middle. Every size the writer's guide and the warning
-// below name is accepted as written there, "medium" and "close up" included.
-const SHOT_SIZE = /\b(?:extreme close[- ]?up|close[- ]?up|close shot|macro|medium|mid shot|wide|establishing|bird'?s-?eye|overhead|from above|from directly above|top-?down|low angle|worm'?s-?eye|high angle|aerial|full shot|two-?shot|over the shoulder|from behind|in profile|silhouette)\b/i;
+// below name is accepted as written there, in its usual spellings (low-angle, bird's eye, top
+// down, over-the-shoulder), and as a size: at the start of the prompt, or followed by shot,
+// view, angle or of, so "a medium bowl", "over medium heat" and "a wide street" are not sizes.
+const SIZE_WORD = "extreme close[- ]?up|close[- ]?up|close shot|macro|medium|mid shot|wide|establishing|bird'?s[- ]?eye|overhead|from above|from directly above|top[- ]?down|low[- ]angle|worm'?s[- ]?eye|high[- ]angle|aerial|full shot|two[- ]?shot|over[- ]the[- ]shoulder|from behind|in profile|silhouette";
+const SHOT_SIZE = new RegExp(`(?:^\\W*(?:${SIZE_WORD})\\b|\\b(?:${SIZE_WORD})(?:[- ]+(?:shot|view|angle)\\b|\\s+of\\b))`, "i");
 // What the look already says: a prompt that repeats it pins every picture to one palette and
-// one finish, which is the sameness a viewer reads as a slideshow. Only the tech-story look's
-// own words, and "cream" as a colour, not as the thing in a cone.
-const LOOK_WORDS = /\b(?:flat (?:editorial )?illustration|editorial illustration|painterly|paper grain|teal|(?<!ice )cream(?! cone| cheese| puff| cake)|amber|16:9)\b/i;
+// one finish, which is the sameness a viewer reads as a slideshow. Only the slides looks' own
+// words (the techniques of SLIDES_PRESETS and the palette they share), and "cream" as a colour,
+// not as the dairy in a cone, a cake or a coffee.
+const LOOK_WORDS = /\b(?:flat (?:editorial )?illustration|editorial illustration|painterly|paper grain|risograph|riso print|linocut|woodcut|gouache|screen[- ]?print|halftone|misregist\w+|teal|(?<!ice[- ])(?<!whipped )(?<!sour )(?<!double )cream(?! cone| cheese| puff| cake| pie| tea| soda| poured| in (?:the|a|his|her) coffee)|amber|16:9)\b/i;
+// Where and when the light comes from: a video told entirely at night under one lamp is the
+// other sameness (the first scripts put a lamp in a quarter of their pictures and the night in
+// half); more than half of the pictures in the dark is a warning per video.
+const DARK_LIGHT = /\b(?:night|midnight|dusk|late evening|after dark|\d\s*a\.?m\b|lamp|lamplight|lantern|candle|torch|moonlight|neon|street[- ]?light|floodlight|single (?:hanging |bare |pendant )?(?:bulb|light))\b/i;
+export const DARK_SHARE_WARN = 1 / 2;
 // Words of a prompt that are not a place or an object (grammar, sizes, light, materials, the
 // look's own palette and finish, the camera): a motif is counted on the rest.
 const PROMPT_STOPWORDS = new Set(["with", "from", "into", "onto", "over", "under", "behind", "beside", "above", "below", "between", "through", "across", "along", "around", "down", "their", "there", "them", "they", "this", "that", "these", "those", "where", "while", "what", "when", "which", "small", "large", "tiny", "huge", "little", "dark", "light", "warm", "cold", "soft", "bright", "night", "view", "shot", "frame", "side", "left", "right", "centre", "center", "centred", "centered", "middle", "front", "back", "close", "wide", "seen", "single", "each", "some", "many", "only", "same", "other", "like", "still", "long", "tall", "short", "open", "flat", "plain", "simple", "clean", "whole", "half", "away", "near", "high", "deep", "wooden", "paper", "glass", "metal", "brass", "stone", "very", "more", "most", "just", "then", "than", "also", "both", "being", "person", "figure", "people", "anonymous", "hand", "hands", "angle", "level", "overhead", "profile", "edge", "corner", "lying", "standing", "sitting", "holding", "looking", "resting", "composition", "picture", "scene", "image", "illustration", "editorial", "painterly", "grain", "shape", "shapes", "line", "lines", "colour", "color", "ground", "background", "foreground", "teal", "cream", "amber", "green", "navy", "mustard", "ochre", "brick", "highlight", "highlights", "accent", "accents", "glow", "glowing", "lamplight", "spotlight", "medium", "extreme", "establishing", "aerial", "macro", "silhouette", "shoulder", "closeup"]);
-// A plural folds to its singular (benches → bench, lamps → lamp) so the two count as one thing.
+// A plural folds to its singular (benches → bench, lamps → lamp, ferries → ferry, shelves →
+// shelf, boxes → box, dishes → dish) so a prop written in both numbers counts once.
 const motifOf = (word) => {
-  if (word.length > 5 && /(?:ch|sh|x|ss)es$/.test(word)) return word.slice(0, -2);
+  if (word === "series" || word === "species") return word;
+  if (word.length > 4 && word.endsWith("ies")) return `${word.slice(0, -3)}y`;
+  if (word.length > 5 && word.endsWith("ves")) return `${word.slice(0, -3)}f`;
+  // potatoes and heroes, but shoes and canoes keep their o and lose only the s below.
+  if (word.length > 6 && word.endsWith("oes")) return word.slice(0, -2);
+  if (word.length > 5 && /(?:ch|sh|ss)es$/.test(word)) return word.slice(0, -2);
+  if (word.length > 4 && word.endsWith("xes")) return word.slice(0, -2);
   return word.length > 4 && word.endsWith("s") && !/(?:ss|us|is)$/.test(word) ? word.slice(0, -1) : word;
 };
 function promptMotifs(scene) {
@@ -650,6 +755,7 @@ export function pictureVarietyProblems(doc) {
   let last = null;
   const unsized = [];
   const restated = [];
+  const dark = [];
   const lookWords = new Set();
   for (const { scene, where } of shots) {
     const move = cameraMove(scene.data);
@@ -663,9 +769,11 @@ export function pictureVarietyProblems(doc) {
       restated.push(scene.id);
       lookWords.add(look[0].toLowerCase());
     }
+    if (DARK_LIGHT.test(prompt)) dark.push(scene.id);
   }
   if (unsized.length) warnings.push({ path: "scenes", message: `${unsized.length} of ${shots.length} pictures name no shot size (close-up, medium, wide, overhead, low angle, from behind…): say how close the camera is in ${fewIds(unsized)}` });
   if (restated.length) warnings.push({ path: "scenes", message: `${restated.length} of ${shots.length} pictures restate the look (${[...lookWords].slice(0, 3).map((word) => `"${word}"`).join(", ")}); the look adds the style and the palette, the prompt describes the picture: ${fewIds(restated)}` });
+  if (shots.length >= MOTIF_MIN_SHOTS && dark.length > shots.length * DARK_SHARE_WARN) warnings.push({ path: "scenes", message: `${dark.length} of ${shots.length} pictures are at night or under a lamp; vary the time of day, the weather and where the light comes from (morning, noon, rain, an overcast afternoon, a crowded daylight place): ${fewIds(dark)}` });
   if (shots.length >= MOTIF_MIN_SHOTS) {
     const counts = new Map();
     for (const { scene } of shots) for (const motif of promptMotifs(scene)) counts.set(motif, (counts.get(motif) ?? 0) + 1);
@@ -696,14 +804,22 @@ export function shotProblems(doc, timeline) {
     if (length > MAX_SHOT_SECONDS) errors.push({ path: where, message: `about ${length.toFixed(1)} s of narration; a shot is at most ${MAX_SHOT_SECONDS} s (the clip models stop at 10), split it` });
     else if (length > WARN_SHOT_SECONDS) warnings.push({ path: where, message: `about ${length.toFixed(1)} s; shots over ${WARN_SHOT_SECONDS} s are stretched or frozen to fit` });
     const previous = doc.scenes[index - 1];
-    if (previous && isShot(previous) && promptSimilarity(previous, scene) >= PROMPT_SIMILARITY_WARN) {
+    // A shot cut from another shot's clip repeats that setup's camera and prompt on purpose.
+    if (previous && isShot(previous) && !isSourced(scene) && promptSimilarity(previous, scene) >= PROMPT_SIMILARITY_WARN) {
       warnings.push({ path: where, message: `its prompt is nearly the same as ${previous.id}'s; two near-identical shots read as a stall` });
+    }
+    if (isSourced(scene) && scene.data.source.from_s + length > MAX_SOURCE_CLIP_SECONDS) {
+      errors.push({ path: `${where}.data.source`, message: `cut from ${scene.data.source.shot}'s clip at ${scene.data.source.from_s} s and about ${length.toFixed(1)} s long, it ends past ${MAX_SOURCE_CLIP_SECONDS} s, where every clip model stops; start earlier or shorten its lines` });
     }
   });
   if (seconds.length >= 3) {
     const sorted = [...seconds].sort((a, b) => a - b);
     const median = sorted[Math.floor(sorted.length / 2)];
-    if (median < MIN_MEDIAN_SHOT_SECONDS) warnings.push({ path: "scenes", message: `the median shot is ${median.toFixed(1)} s; cuts this fast read as a montage, merge some shots` });
+    if (hasCast(doc)) {
+      if (median < MIN_MEDIAN_SHOT_SECONDS) warnings.push({ path: "scenes", message: `the median shot is ${median.toFixed(1)} s; the measured dramas sit at 1.5–2.25 s, but under ${MIN_MEDIAN_SHOT_SECONDS} s this pipeline pays a clip per cut: merge some shots (.agents/skills/youtube-video/references/drama-craft.md §五)` });
+    } else if (median < MIN_MEDIAN_SHOT_SECONDS_NARRATED) {
+      warnings.push({ path: "scenes", message: `the median shot is ${median.toFixed(1)} s; cuts this fast read as a montage, merge some shots` });
+    }
     const long = seconds.filter((length) => length > WARN_SHOT_SECONDS).length / seconds.length;
     if (long > LONG_SHOT_SHARE_WARN) warnings.push({ path: "scenes", message: `${Math.round(long * 100)}% of the shots run over ${WARN_SHOT_SECONDS} s; the clip models cannot hold a shot that long` });
   }

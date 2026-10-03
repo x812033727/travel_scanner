@@ -8,7 +8,7 @@ import test from "node:test";
 import { readCache, readJobs } from "./cache.mjs";
 import { MediaError } from "./client.mjs";
 import { readLedger } from "./ledger.mjs";
-import { IMAGE_SIZES, imagePrice, imageSizeFor, imageStatus, Stage, statusProblem } from "./stages.mjs";
+import { choiceFor, IMAGE_SIZES, imagePrice, imageSizeFor, imageStatus, Stage, statusProblem } from "./stages.mjs";
 
 const PRO = "gemini-3-pro-image";
 const FLASH = "gemini-3.1-flash-image";
@@ -148,9 +148,31 @@ function fakeStage(effective, { actualModel = effective.image.model, actualProvi
   return { stage, workdir, calls, bodies, ready, generate };
 }
 
+test("a slides video draws with the slides choice only while the slides switch is on; off, it is the drama's model, size and price", () => {
+  const off = status();
+  off.image.usd_per_image_2k = 0.134;
+  off.slides_enabled = false;
+  off.slides_image = { provider: "gemini", model: FLASH, configured: true, usd_per_image_2k: 0.101 };
+  // The server draws a slides video under the drama's switch with the drama's model when the
+  // slides switch is off (jobs.py `slides_on`); expecting Flash here booked the first Pro
+  // picture as video_media_model_changed and stopped every illustrated video after one paid picture.
+  assert.equal(choiceFor(off, "image", "slides"), off.image);
+  assert.equal(imageSizeFor(off, "slides"), "2K", "the drama's Pro choice sells 2K, so the still is still asked at 2K");
+  assert.equal(imagePrice(off, "slides", "2K"), 0.134);
+  const on = { ...off, slides_enabled: true };
+  assert.equal(choiceFor(on, "image", "slides"), on.slides_image);
+  assert.equal(imagePrice(on, "slides", "2K"), 0.101);
+  const before = { ...off };
+  delete before.slides_enabled;
+  assert.equal(choiceFor(before, "image", "slides"), before.image, "a site from before the slides switch has no slides choice to draw with");
+  assert.equal(choiceFor(off, "image", "drama"), off.image);
+  assert.equal(choiceFor(on, "clip", "slides"), on.clip);
+});
+
 test("a 2K picture is asked for by size, keyed apart from the 1K one and priced at the choice's 2K price", async () => {
   assert.deepEqual(IMAGE_SIZES, { "1K": { width: 1920, height: 1080 }, "2K": { width: 2048, height: 1152 } });
   const effective = status();
+  effective.slides_enabled = true;
   effective.slides_image = { provider: "gemini", model: FLASH, configured: true, usd_per_image_2k: 0.101 };
   assert.equal(imageSizeFor(effective, "slides"), "2K");
   assert.equal(imageSizeFor(effective), null, "the drama's choice carries no 2K price, so a drama draws at 1K");

@@ -64,6 +64,34 @@ export function ledgerTotals(workdir) {
   return totalsOf(readLedger(workdir).entries);
 }
 
+/**
+ * Record a shot cut from another shot's clip (docs/videos/DRAMA.md): nothing was bought, and
+ * the entry says what the cut would have cost (`saved_seconds`, `saved_usd`). Keyed by the
+ * shot, so a rerun of the stage replaces it instead of counting the saving twice.
+ */
+export function bookReuse(workdir, entry, now = new Date()) {
+  const ledger = readLedger(workdir);
+  const recorded = { at: now.toISOString(), ...entry, kind: "clip", status: "cut", seconds: 0, cost_usd: 0 };
+  const index = ledger.entries.findIndex((previous) => previous.status === "cut" && previous.id === entry.id);
+  if (index < 0) ledger.entries.push(recorded);
+  else ledger.entries[index] = recorded;
+  ledger.totals = totalsOf(ledger.entries);
+  atomicWrite(ledgerFile(workdir), `${JSON.stringify(ledger, null, 2)}\n`);
+  return ledger.totals;
+}
+
+/** What the cuts from other shots' clips saved: { clip_seconds, usd, cuts }. */
+export function savedTotals(entries) {
+  const saved = { clip_seconds: 0, usd: 0, cuts: 0 };
+  for (const entry of entries) {
+    if (entry.status !== "cut") continue;
+    saved.cuts += 1;
+    saved.clip_seconds += Number(entry.saved_seconds || 0);
+    saved.usd = round(saved.usd + Number(entry.saved_usd || 0));
+  }
+  return saved;
+}
+
 /** Why a generation costing `usd` may not be submitted now under the per-video cap, or null. */
 export function capProblem(workdir, usd, cap) {
   if (!(cap > 0)) return null;
