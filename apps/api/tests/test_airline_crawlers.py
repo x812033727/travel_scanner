@@ -11,9 +11,11 @@ from pydantic import ValidationError
 
 from app.config import Settings
 from app.crawlers.airlines import (
+    ADAPTERS,
     AirlineFareCrawlerService,
     CrawlerError,
     CrawlerPolicyError,
+    FetchResult,
     RobotsAwareFetcher,
     parse_public_fares,
 )
@@ -144,7 +146,7 @@ async def test_crawler_status_documents_eva_fail_closed() -> None:
     assert sources["CI"]["state"] == "ready"
     assert sources["JX"]["state"] == "ready"
     assert sources["BR"]["state"] == "disabled"
-    assert "robots.txt" in sources["BR"]["detail"]
+    assert sources["BR"]["detail"] == "fare_source_paused?airline=BR&reason=source_disabled"
 
 
 @pytest.mark.asyncio
@@ -426,3 +428,68 @@ def test_verification_fails_when_required_source_is_missing() -> None:
     assert report.passed is False
     assert report.sources[0].airline_code == AirlineCode.STARLUX
     assert report.sources[0].outcome == VerificationOutcome.FAILED
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("outcome", ["disabled", "blocked", "failed", "empty", "success"])
+async def test_public_fare_read_messages_use_codes(outcome: str) -> None:
+    redis = FakeRedis(decode_responses=True)
+    service = AirlineFareCrawlerService(Settings(), redis)  # type: ignore[arg-type]
+    airline = AirlineCode.EVA_AIR if outcome == "disabled" else AirlineCode.CHINA_AIRLINES
+    error = (
+        CrawlerPolicyError("robots_disallowed", "原始中文政策原因")
+        if outcome == "blocked"
+        else CrawlerError("source_unavailable", "原始中文連線原因")
+        if outcome == "failed"
+        else None
+    )
+    rows = (
+        []
+        if outcome == "empty"
+        else [fare_row(departure="2026-11-10", returning="2026-11-15", price=13000)]
+    )
+    fetch = AsyncMock(
+        side_effect=error, return_value=FetchResult(next_data_html(rows), cache_hit=True)
+    )
+    service.fetcher.fetch = fetch  # type: ignore[method-assign]
+    try:
+        async with httpx.AsyncClient() as client:
+            quotes, source, warning = await service._search_site(
+                client,
+                ADAPTERS[airline],
+                AirlineFareSearch(destination="NRT"),
+                force_refresh=False,
+            )
+    finally:
+        await redis.aclose()
+    expected = {
+        "disabled": "fare_source_paused?airline=BR&reason=source_disabled",
+        "blocked": "fare_public_blocked?airline=CI&reason=robots_disallowed",
+        "failed": "fare_public_unavailable?airline=CI&reason=source_unavailable",
+        "empty": "fare_public_empty?airline=CI",
+        "success": "fare_public_loaded?airline=CI",
+    }[outcome]
+    assert source.detail == expected
+    assert warning == (None if outcome == "success" else expected)
+    assert len(quotes) == (1 if outcome == "success" else 0)
+    assert fetch.await_count == (0 if outcome == "disabled" else 1)
+
+
+@pytest.mark.asyncio
+async def test_empty_browser_capture_uses_localizable_warning() -> None:
+    redis = FakeRedis(decode_responses=True)
+    service = AirlineFareCrawlerService(Settings(), redis)  # type: ignore[arg-type]
+    service.fetcher.authorize = AsyncMock()  # type: ignore[method-assign]
+    capture = AirlineBrowserCapture(
+        airline_code=AirlineCode.CHINA_AIRLINES,
+        query=AirlineFareSearch(destination="NRT", airlines=[AirlineCode.CHINA_AIRLINES]),
+        source_url="https://flights.china-airlines.com/en-tw/flights-from-taipei-to-tokyo",
+        fare_rows=[],
+    )
+    try:
+        response = await service.parse_browser_capture(capture)
+    finally:
+        await redis.aclose()
+    assert response.warnings == ["fare_browser_empty?airline=CI"]
+    assert response.sources[0].detail == response.warnings[0]
+    assert response.quotes == []

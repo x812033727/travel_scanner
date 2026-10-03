@@ -40,15 +40,17 @@
 
 關鍵影格提示（`tools/video/media/keyframes.mjs` 的 `shotPrompt`）：`<prompt>. Style: <look.style>. Camera: <camera>. Characters: <name>: <appearance>; …`，切到 4000 字；`look.negative` 另送，Gemini 圖片 adapter 接在提示後面成 `\n\nAvoid: <negative>`，有參考圖再加一句 `Keep every character exactly as in the reference images.`（`apps/api/app/video_media/providers/gemini_images.py`）；MiniMax 接成 `. Avoid: …`（`apps/api/app/video_media/providers/minimax.py`）。圖片請求不帶 seed（兩個 adapter 都沒送；`keyframes` 的「換 seed」只改快取鍵）；參考圖最多 4 張（`apps/api/app/video_media/schemas.py` 的 `MAX_REFERENCES`，catalog 寫的 14 張是供應商的上限，工具用不到）。景別在提示裡出現兩次（prompt 開頭與 `Camera:` 子句），兩處要同一家族。
 
-## 三、Veo Lite 的 negativePrompt 陷阱（修好就刪這一節）
+## 三、Veo Lite 的 negativePrompt：歷史失敗與已完成的相容修正
 
-`apps/api/app/video_media/providers/gemini_video.py` 對每個模型都送 `parameters.negativePrompt`（有 negative 就送）；`veo-3.1-lite-generate-preview` 回 HTTP 400 `INVALID_ARGUMENT`，adapter 把 400 改成 `Gemini refused the request`，原因丟掉。`clips.mjs` 只要 `look.negative` 非空就送（第 321 行），每個 preset 都有 negative，所以 preset look 的 Lite 片段會在送出就失敗，兩次重拍（`MAX_CLIP_TAKES`）都失敗在同一個 400。票在 `tasks/open/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md`（P1，open）；`tools/animation-production.test.mjs` 斷言這段轉送還在，修好時測試會紅，到時刪這一節。
+第一節 S01 R01／R02 是修正前的真實結果：送出不支援的 `parameters.negativePrompt`，兩個 seed 都在 HTTP 400 停下，兩次各預留 US$0.64。原逐 take 表與試拍收據保留，不把後來修正寫成當時成功。
 
-今天的做法：`look.negative` 寫空字串，而且要在 `look` 跑之前（它在 `lookHash` 裡）；要避開的東西改寫成每鏡 prompt 裡的正面描述（`blank paper`、`one watch`），試拍 R03 就是把 avoidance 文字併進主提示才拿到 HTTP 200。空 negative 也影響關鍵影格（圖片 adapter 不再接 `Avoid:` 段），所以 `no text, no watermark` 這類要寫進 `look.style` 或每鏡 prompt。Omni 與 MiniMax 沒有這個問題（MiniMax 本來就併進提示）。
+此程式版本的 `apps/api/app/video_media/providers/gemini_video.py` 對 `veo-3.1-lite-generate-preview` 省略該參數，把完整 negative 文字接成 `\n\nAvoid: …` 放進主提示；其他 Gemini 影片模型保留原 `parameters.negativePrompt`。修正與離線 request-body 證據在 `tasks/done/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md`。MiniMax 仍以自己的 adapter 把 negative 接進提示。實際後端須核對部署版本；本機 preflight 通過不證明正式服務已更新。
+
+因此不必清空 `look.negative`，也不必為 Lite 更改已核准的 look：negative 仍進入 `lookHash`，更改會使設定圖、關鍵影格、片段與核准過期。保留既有預算、重拍上限與 owner 關卡；離線相容測試不代表新付費片段或視覺驗收已完成。
 
 ## 四、judge 怎麼讀、拒絕什麼
 
-通過條件（`apps/api/app/video_media/judge.py`）：加權總分 ≥ `judge_min_score`（後台設定，預設 7）且每一題 ≥ `MIN_CRITERION = 4.0`；temperature 0；每次記 US$0.01（`JUDGE_USD_PER_CALL`）。題目每題 ≤ 400 字（`schemas.py` 的 `JudgeCriterion`）：命名造型把整段 appearance 接進 identity 題，試拍的 zhitang 基底造型 422 字被驗證擋在 judge 之前（`tasks/open/2026-10-02-keep-named-look-clip-judge-questions.md`）。judge 的 context 是 `shot.prompt`／`camera`／`motion` 原文、角色 appearance 與 `look.style`。
+通過條件（`apps/api/app/video_media/judge.py`）：加權總分 ≥ `judge_min_score`（後台設定，預設 7）且每一題 ≥ `MIN_CRITERION = 4.0`；temperature 0；每次記 US$0.01（`JUDGE_USD_PER_CALL`）。題目每題 ≤ 400 字（`schemas.py` 的 `JudgeCriterion`）。歷史試拍的 zhitang 基底造型 422 字曾被驗證擋在 clip judge 之前；目前 clip 識別題已改成有界文字、參考圖標籤 ≤ 80 字，完整姓名與 appearance 保留在 context（`tasks/done/2026-10-02-keep-named-look-clip-judge-questions.md`）。keyframe 識別題仍直接帶 appearance，preflight 對本次要畫的鏡頭保留 400 字檢查。judge 的 context 另含 `shot.prompt`／`camera`／`motion` 原文與 `look.style`。
 
 | judge | 題（key、權重） | 什麼時候出現 | 鏡頭寫法的含意 |
 | --- | --- | --- | --- |
@@ -62,9 +64,9 @@ judge 不看的：軸線與視線、相鄰鏡頭的道具連戲、景別是不�
 | 路線 | 已知（來源、日期） | 未驗 |
 | --- | --- | --- |
 | MiniMax API（H3、H3 Max） | 官方影片生成文件（platform.minimax.io，2026-10-03 讀）：鏡頭指令用方括號接在描述後面，列出的字是 `[pan]`、`[zoom]`、`[static]`；首尾格用 `role: "first_frame"`／`"last_frame"`，0–2 張；prompt ≤ 7000 字。產線的 adapter 不加這些字，送的是 `clipPrompt` 原文加 `. Avoid:` | 方括號裡能不能寫方向（pan left）、tilt 有沒有對應的字、H3 對原文 `locked` 的反應 |
-| Hailuo 網頁 | 同一批模型（H3 4–15 秒 768p／2K；Hailuo 2.3 6／10 秒），image-to-video 頁有首格與參考上傳；價目與方案在 `animation-production` 的 references | 網頁是否照 API 文件解讀方括號指令；網頁的 prompt 上限；下載的 mp4 是 24 還是 30 fps |
+| Hailuo 網頁 | 同一批模型（H3 4–15 秒 768p／2K；Hailuo 2.3 6／10 秒），image-to-video 頁有首格與參考上傳；H3 2K 下載的 mp4 是 2560×1440、24 fps、帶 AAC 音軌（實測 2026-10-04，一支文生影片）；價目與方案在 `animation-production` 的 references | 網頁是否照 API 文件解讀方括號指令；網頁的 prompt 上限；768P 的輸出尺寸與 fps |
 | Veo 3.1 / Lite（產線） | 官方 Veo 文件（ai.google.dev，2026-10-03 讀）建議的字：`aerial view, eye-level, top-down shot, dolly shot, worms eye`、`wide shot, close-up, single-shot or two-shot`；頁面沒有列 `negativePrompt`；Lite 有首尾格、沒有延長 | 文件摘要說 Lite 有參考圖，但 adapter 對 Lite 的 referenceImages 回 422、catalog 寫 0 張：產線照程式走，哪邊對沒驗；`locked`、`pan left` 這些原文 Lite 怎麼理解沒驗 |
 | Kling 社群 MCP（github.com/199-mcp/mcp-kling） | README（2026-10-03 讀）：`generate_image_to_video` 的 camera movement 是 `Static, zoom, pan, or auto`，motion prompt 可自動或自訂；`generate_video` 的 camera control 是 `type: "simple"` 加 `{ zoom: 5 }` 這類設定，只有 V1 模型；用 access key 與 secret key 簽 JWT（走開發者 API 的資源包，不是會員 credits） | pan 的方向、zoom 的正負怎麼給；`negative_prompt` 的上限；哪些模型版本吃 camera control |
-| Kling 官方 API 與官方 MCP | 官方 API 文件頁是 SPA，2026-10-03 抓到的是空殼；官方 MCP（kling.ai/mcp）要登入才看得到指南 | `camera_control` 的型別與 `config`（horizontal／vertical／pan／tilt／roll／zoom）是記憶中的欄位名，這次沒有在頁面上核對；官方 MCP 扣哪個方案的 credits 要在站主帳號裡看 |
+| Kling 官方 API、官方 MCP 與 CLI | 官方 API 文件頁是 SPA，2026-10-03 抓到的是空殼。官方 MCP 與 CLI 的指南（kling.ai/app/mcp/guide）登入後讀得到（實測 2026-10-04）：CLI 的 `who_am_i` 列 `image_to_video` 的模型與參數，`kling-video-v3_0` 是 3–15 秒整數、`first_image`＋`tail_image`，`enable_audio` 與 `prefer_multi_shots` 預設 true（進產線都傳 false）；整份在 `.agents/skills/animation-production/references/providers-and-plans.md` §1.3 | `camera_control` 的型別與 `config`（horizontal／vertical／pan／tilt／roll／zoom）是記憶中的欄位名，沒有在頁面上核對；官方 CLI 有沒有鏡頭控制的參數沒有核對；授權進來的帳號 NORMAL、0 credits，一支都沒生成，扣的是不是會員 credits 未驗 |
 
-三條路線共同的事：關鍵影格仍由產線畫（景別、構圖、軸線在圖裡已經定了）；`camera` 這一行照產線的讀者寫，再把運鏡翻成那家的字；外面做好的 mp4 回到產線的做法與缺的 `clips import` 指令在 `tasks/open/2026-10-03-clips-import-bring-a-clip-made.md`。
+三條路線共同的事：關鍵影格仍由產線畫（景別、構圖、軸線在圖裡已經定了）；`camera` 這一行照產線的讀者寫，再把運鏡翻成那家的字；外面做好的 mp4 用 `clips import` 回到產線（`.agents/skills/animation-production/references/stage-preconditions.md` 最後一節）。

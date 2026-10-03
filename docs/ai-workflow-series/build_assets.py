@@ -323,6 +323,72 @@ def _failures_guardrails(accent: str) -> str:
     return b + outline(1120, 260, 280, 330, accent, 36) + sheet(1160, 300, 200, 250, other, rows=4) + lock(1250, 600)
 
 
+def _machine(x, y, w, h):
+    """The reader's own computer: the frame the local model and its lock sit in."""
+    return rect(x, y, w, h, "#FFFFFF", INK, 28)
+
+
+def _agent_two_routes(accent: str) -> str:
+    # One agent tool, two ways to a local model: up through its own cloud model, which hands
+    # the chore down as a tool call, or straight across with the local model as its engine.
+    other = OTHER
+    b = terminal(230, 330, 300, 250, accent)
+    b += line(535, 390, 650, 350, INK, 8) + cloud(640, 215, 380, 200, other) + model(830, 345, 40, other)
+    b += dashed(940, 420, 1090, 470, INK, 8)
+    b += arrow(540, 1030, 580, INK, 8)
+    return b + _machine(1040, 440, 340, 250) + model(1150, 565, 56, accent) + lock(1235, 545)
+
+
+def _three_families(accent: str) -> str:
+    # The same model name in three places: on the reader's machine behind a lock, and, past
+    # the dashed line the data has to cross, on two clouds that belong to someone else.
+    other = OTHER
+    b = _machine(230, 290, 340, 330) + model(345, 430, 58, accent) + lock(410, 470)
+    b += dashed(650, 230, 650, 680, INK, 8) + arrow(580, 740, 560, INK, 8) + sheet(600, 440, 90, 104, other, rows=1)
+    b += cloud(750, 300, 300, 210, other) + model(900, 440, 42, other)
+    return b + cloud(1090, 300, 300, 210, accent) + model(1240, 440, 42, accent)
+
+
+def _batch_script(accent: str) -> str:
+    # A pile of letters goes into the machine, the local model turns each into a small record,
+    # and the agent on the right reads only the records.
+    other = OTHER
+    b = sheet(230, 320, 150, 190, other, rows=3) + sheet(262, 356, 150, 190, other, rows=3)
+    b += arrow(430, 500, 455, INK, 8)
+    b += _machine(510, 290, 300, 330) + model(595, 390, 50, accent) + lock(655, 485)
+    b += arrow(822, 892, 455, INK, 8) + card(902, 365, 150, 180, accent, PALE, rows=3)
+    return b + arrow(1062, 1122, 455, INK, 8) + terminal(1132, 330, 248, 250, other)
+
+
+def _mcp_local_tool(accent: str) -> str:
+    # Two agent tools wired to one tool server; behind the server, the local model.
+    other = OTHER
+    b = terminal(230, 215, 280, 232, accent) + terminal(230, 468, 280, 232, other)
+    b += line(515, 335, 700, 440, accent, 10) + line(515, 585, 700, 470, other, 10)
+    b += gear(790, 455, 80, accent) + arrow(900, 1000, 455, INK, 8)
+    return b + _machine(1010, 300, 370, 310) + model(1130, 440, 58, other) + lock(1215, 480)
+
+
+def _local_engine(accent: str) -> str:
+    # The agent tool and its engine in one machine, a bar for the context it was given, and
+    # the wire to the cloud model left unplugged.
+    other = OTHER
+    b = _machine(230, 235, 640, 455) + terminal(270, 275, 290, 250, accent)
+    b += arrow(572, 660, 400, INK, 8) + model(760, 400, 62, accent)
+    b += meter(290, 600, 520, 36, 0.64, accent)
+    return b + dashed(885, 400, 1010, 400, INK, 8) + cloud(1020, 270, 360, 240, other) + model(1200, 430, 46, other)
+
+
+def _checklist(accent: str) -> str:
+    # A sheet of checks, the model it is about on one side and the lock on the other.
+    other = OTHER
+    b = sheet(520, 225, 560, 470, accent, rows=0)
+    for i in range(4):
+        y = 300 + i * 105
+        b += tick(600, y, 30, accent if i % 2 == 0 else other) + line(670, y, 1000 - (i % 2) * 90, y, "#C4CCCC", 12)
+    return b + model(350, 450, 72, other) + lock(1190, 430)
+
+
 def _hub(accent: str) -> str:
     # The whole series in one line: a request, split three ways across different models,
     # gathered back into one result and checked.
@@ -349,6 +415,12 @@ _DRAWINGS: dict[str, object] = {
     "ai-workflow-local-and-cloud-mix": _local_cloud,
     "ai-workflow-tracing-evals": _tracing_evals,
     "ai-workflow-failures-and-guardrails": _failures_guardrails,
+    "ai-workflow-agent-local-two-routes": _agent_two_routes,
+    "ai-workflow-agent-glm-qwen-deepseek": _three_families,
+    "ai-workflow-agent-local-batch-script": _batch_script,
+    "ai-workflow-agent-local-mcp-tool": _mcp_local_tool,
+    "ai-workflow-agent-local-engine": _local_engine,
+    "ai-workflow-agent-local-checklist": _checklist,
 }
 
 
@@ -414,7 +486,7 @@ def write_svg(path: Path, text: str) -> None:
     problems = errors(check_svg(text))
     if problems:
         raise SystemExit(f"{path.name}: " + "; ".join(str(p) for p in problems))
-    path.write_text(text, encoding="utf-8")
+    path.write_text(text, encoding="utf-8", newline="\n")
 
 
 def only_slugs() -> set[str]:
@@ -427,7 +499,7 @@ def build() -> list[dict]:
     renders.mkdir(exist_ok=True)
     ignore = WORKSPACE / ".gitignore"
     if not ignore.exists():
-        ignore.write_text("renders/\n__pycache__/\n", encoding="utf-8")
+        ignore.write_text("renders/\n__pycache__/\n", encoding="utf-8", newline="\n")
     order = {slug: i for i, slug in enumerate((HUB, *SLUGS))}
     research = sorted((json.loads(p.read_text(encoding="utf-8")) for p in records), key=lambda r: order.get(r["slug"], 99))
     only = only_slugs()
@@ -462,7 +534,7 @@ def build() -> list[dict]:
             print("rendered", slug, flush=True)
         manifest.append({"slug": slug, "title": item["title"], "url": f"https://mokaair.com/zh-TW/life/{slug}"})
     if not only:
-        (WORKSPACE / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        (WORKSPACE / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     return manifest
 
 

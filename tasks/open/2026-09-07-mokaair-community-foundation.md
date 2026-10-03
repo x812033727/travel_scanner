@@ -1,18 +1,22 @@
 ---
 id: 2026-09-07-mokaair-community-foundation
 title: Mokaair community foundation and account safety
-status: open
+status: review
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: codex-community-recovery-20261003
+claimed_at: 2026-10-03T12:37:39Z
 created_at: 2026-09-07T09:22:13Z
 completed_at:
-branch: codex/p1-task-audit
+branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
-  - apps/api/tests/test_community_foundation.py
+  - apps/api/tests/test_community_service_recovery.py
+  - apps/api/tests/support/community_service_runtime.py
+  - apps/api/tests/support/community_translation_upstream.py
   - docs/community.md
+  - docs/community-service-recovery-acceptance-2026-10-03.md
+  - .github/workflows/ci.yml
 ---
 
 # Mokaair community foundation and account safety
@@ -127,3 +131,113 @@ This is API contract evidence, not a worker restart/load or real SMTP/S3 result.
 PR #343 already merged the account-safety fixes; do not reimplement the stale
 follow-up paragraph above. See `docs/community-local-acceptance-2026-09-29.md`
 for the separately identified browser UI evidence and remaining real-service work.
+
+### 2026-10-03 isolated service recovery preparation
+
+Force-claimed only this foundation ticket after the fresh seven-path gate proved
+that the sole normal-claim refusal was PR #1172's already-merged `apps/api/tests`
+ancestor metadata. Its original task, owner and remaining media/production gates
+are preserved. The gate checked 495 refs, 976 committed task blobs, 28 registered
+worktrees and the complete open-PR paths (only our #1175). Exact scoped Git/tree
+comparison at main `a9c8e2b7e2b0a44cea5c9766e1699785c259c96f` found no new work.
+Two 2026-08-31 OneDrive CI copies and stale done article-image review copies were
+classified from landed history and left untouched. Private gate receipt:
+`community-foundation-recovery-20261003/seven-path-gate-final.json`, SHA-256
+`69c53e1b0e890c7e8e514f52d34ad00946098cf4dfe22f42bc5569f82430dd16`.
+
+Prepared six real-service scenarios in a new opt-in suite; the existing mocked
+foundation harness is unchanged. Scope is the three new test/support files, the
+community documentation and a single CI step. After the concurrent tools run
+finished, the exact 15-line CI step was inserted after stack readiness and before
+the browser journeys, with a 15-minute bound; the rest of the workflow is unchanged.
+
+Local preparation passed AST parsing, Ruff, Ruff format checks and scoped mypy
+for all three new Python files. Final guarded collection found the exact six
+node IDs, exit 0, without fixtures, test bodies, network requests or services.
+The actual interpreter was the current API venv's Python 3.13.15; environment
+variables were allowlisted, Settings environment-file loading was disabled and
+both real-service opt-ins were absent. Its private collection receipt is
+`community-foundation-recovery-20261003/collect-20261003T131353Z/receipt.json`,
+SHA-256 `92b578f9c2ecf0a303a6f603b68560d69a824c1ccca4b51542127545bb519170`.
+Scoped mypy passed after explicit Windows-visible attribute/type declarations
+and an explicit existing default status value; its receipt is
+`mypy-20261003T131047Z/receipt.json`, SHA-256
+`6c4e927fdc244c6f30d76a39b9ad17ad75f4e13cd3bfd2f5912b755653c26f1d`.
+Independent source-only review passed, including a byte-exact reversal check of
+those type-only changes; final increment receipt SHA-256 is
+`dfc34af30f528652019e8ff9575f04d9341cb2925438f9f4413ed5098705f6ba`.
+
+Exact-head real-service CI is still pending. See
+`docs/community-service-recovery-acceptance-2026-10-03.md` for observable contracts
+and a capacity proposal requiring owner review. No capacity threshold is accepted,
+no real-service pass is claimed, and this ticket must not be marked done yet.
+
+Before committing, the upstream fixture's 76 CRLF endings were normalized to LF
+so its physical bytes equal the Git-staged candidate. Independent reversal
+reconstructs the original `6c10edec...` hash exactly; the AST is unchanged and the
+other two files retain their original hashes. Final upstream SHA-256 is
+`26540f05ffca4496545147c1dda6e2bb1a184294c1dafb453090ce9511ace606`.
+The original preparation receipts remain intact; independent sidecar SHA-256 is
+`8e2e37b5c526bc218d4497cdddda3bf81cb3569aef7ba12b53ffd19ee17ba32d`.
+Read-only CI dependency/isolation review passed without service execution or
+limit changes; receipt SHA-256
+`6a6b7c1416c0931c13f5a782e7e07b1fa0f83ffb42f2219ad2e5a3be892f3c92`.
+
+First exact-head CI `641e2576a2212550db384cfe5b9d3a3dc98b0b8f` exposed one
+Linux-only mypy error: the inline conditional references Windows-only
+`subprocess.CREATE_NO_WINDOW`. The equivalent statement-level platform branch
+retains Windows hidden-process flags and Linux zero flags, with session/cleanup
+behavior unchanged. Independent mechanical reversal recovers the exact original
+runtime bytes; incremental review SHA-256
+`ccfe963fefda7da1fe8692ed781ffccee64fa1c9a063d1155bf7cdd7bdd75392`.
+Ruff/format and explicit `mypy --platform linux` pass all three fixture files;
+Linux-target mypy receipt SHA-256
+`81fecc7da9f58af0169be60de75660e07a125abb1012866bec13a06b24e9c17d`.
+New runtime SHA-256 is
+`625c01c131a9b54265fc7c8141f4236ddaafdda72f4d07f89bdcea7eb08d093e`;
+the first CI's old runtime hash and failures remain preserved. New-head complete
+CI and actual service acceptance remain required.
+
+The first full-stack job has now completed. At PR head `641e2576...`, actual
+checkout/GITHUB_SHA `61d41868ff88f88f3e86e76578939b0ec84c8382` ran all six
+recovery cases: 6 passed, zero failures/skips, 391.00 seconds. Its sanitized
+receipt confirms owned processes stopped, shared services were not stopped and
+capacity acceptance was false. It binds the old runtime `5969aa1a...`, so the new
+`625c01c1...` candidate still requires its own CI. The wider job failed because
+the separate community browser matrix had 12 passed / 18 failed; those failures
+are being repaired and this foundation ticket remains review.
+Private canonical receipt SHA-256
+`2f6b3b589cadaebf0dab9a1d388197f7b0a8ae4289fb77739ae062545daa8a81`.
+Immutable [first full-stack job](https://github.com/x812033727/travel_scanner/actions/runs/37126555983/job/111212893808).
+
+The corrected runtime has now executed in [second full-stack job](https://github.com/x812033727/travel_scanner/actions/runs/37128624919/job/111219014934).
+PR head `70174ca194dc386ead9c02a1e70cc1d0aed7645a`, actual checkout/GITHUB_SHA
+`a52226de3d79d89e817cecd10ed05f237ecd1916`: all six recovery cases passed,
+zero failures/skips, 392.33 seconds. This receipt binds runtime SHA-256
+`625c01c131a9b54265fc7c8141f4236ddaafdda72f4d07f89bdcea7eb08d093e`.
+Owned processes stopped; shared services were not stopped; capacity acceptance
+remains false. The separate browser matrix was 28 passed / 2 failed, both at
+the Japanese message-input locator after the keyboard and locale checks.
+This job therefore failed overall. The private canonical receipt
+`community-real-matrix-20261003/ci-70174ca/canonical-receipt.json` has SHA-256
+`90073327ab7d271fa4cba80f01f65bf89ca160abe70a18a4d8b48c5001535a60`.
+Keep this foundation ticket in review for the remaining owner/capacity gates.
+
+At final corrected source head `ba5c6ae01df9eeffd13fc74233f7d37db0553c59`,
+all 23 PR checks passed. [Full-stack job 111223852163](https://github.com/x812033727/travel_scanner/actions/runs/37130278372/job/111223852163)
+used actual checkout/GITHUB_SHA `07c25196ba1c0901aad6600a5789584090496642`.
+All six recovery cases passed with zero failures/skips in 387.60 seconds, and
+the corrected community matrix passed all 30 cases with zero failures/skips.
+The runtime remains exactly
+`625c01c131a9b54265fc7c8141f4236ddaafdda72f4d07f89bdcea7eb08d093e`.
+Owned fixture processes stopped; shared services were preserved; application
+and container cleanup succeeded. Capacity acceptance is still false, so the
+combined recovery/capacity checkbox remains unchecked and this ticket stays
+in review. Public policy/contact details and production activation remain
+owner gates. No production access or capacity threshold is approved here.
+Canonical private receipt SHA-256:
+`a33b0c59e320d8a65defe2ed7519ddaccf1627e68becc6041bf5352044e8eba7`.
+All-check snapshot SHA-256:
+`1a94a1b431240bd2e2a7e9623afe53cbbdad3295708d1e78e86f35f236f5f99d`.
+The earlier failed jobs remain historical evidence. A subsequent metadata-only
+commit is verified separately and does not change this owner boundary.

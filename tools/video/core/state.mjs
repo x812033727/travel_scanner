@@ -273,6 +273,15 @@ export function lookChosen(manifest, choice, look) {
 
 const needsReview = (manifest) => Object.values(manifest?.shots ?? {}).some((shot) => shot?.needs_review);
 
+/** "2 of 5 clips imported: hailuo-web 1, kling-mcp 1" when `clips import` brought some of them in, else undefined. */
+function importedClips(manifest) {
+  const clips = Object.values(manifest?.shots ?? {}).filter((shot) => shot?.file && !shot.still && !shot.source);
+  const routes = new Map();
+  for (const shot of clips) if (shot.imported_at) routes.set(shot.provider, (routes.get(shot.provider) ?? 0) + 1);
+  if (!routes.size) return undefined;
+  return `${[...routes.values()].reduce((total, count) => total + count, 0)} of ${clips.length} clips imported: ${[...routes].map(([provider, count]) => `${provider} ${count}`).join(", ")}`;
+}
+
 const readOptional = (file) => {
   try {
     return readJson(file, null);
@@ -472,6 +481,8 @@ export async function pipelineStatus({ slug, root, workdir }) {
     "clips generated": {
       done: Boolean(speech) && clips?.speech_hash === speech && clips.visual_hash === visual && clips.look_hash === lookNow && !needsReview(clips) && !productionClips.length,
       note: productionClips.length ? productionClips[0].message : clips && needsReview(clips) ? "some shots failed the clip checks (needs_review in clips/manifest.json)" : undefined,
+      // Clips made outside the pipeline are named apart from the ones it bought, done or not.
+      detail: clips?.speech_hash === speech && clips.visual_hash === visual && clips.look_hash === lookNow ? importedClips(clips) : undefined,
       todo: cli("clips", slug),
     },
     "music generated": { done: Boolean(mix) && music?.mix_hash === mix, todo: cli("music", slug) },

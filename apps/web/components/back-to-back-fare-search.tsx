@@ -309,7 +309,7 @@ function ComparisonCard({
       </div>
       <div className={`mt-4 rounded-2xl p-4 text-sm ${favorable ? "bg-emerald-50 text-emerald-900" : "bg-amber-50 text-amber-900"}`}>
         <p className="font-bold">{savingsCopy}{comparison.savings_percent != null ? fareLabText(copy["b2b.percent"], { percent: Math.abs(Number(comparison.savings_percent)) }) : ""}</p>
-        <p className="mt-1 leading-6">{comparison.detail}</p>
+        <p className="mt-1 leading-6">{fareLabWarnings([comparison.detail], copy, "ticketRole")[0]}</p>
       </div>
       {comparison.back_to_back && <StrategyTimeline copy={copy} strategy={comparison.back_to_back} />}
       {!comparison.back_to_back && comparison.conventional && (

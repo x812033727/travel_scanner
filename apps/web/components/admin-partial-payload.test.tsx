@@ -2,7 +2,7 @@ import { render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminDashboard } from "./admin-dashboard";
 import { AdminFoodAreasPanel } from "./admin-food-taxonomy-panel";
-import { adminNewsCopy } from "@/lib/admin-news-copy";
+import adminCopy from "../messages/zh-TW/admin.json";
 
 afterEach(() => vi.unstubAllGlobals());
 
@@ -22,7 +22,7 @@ describe("admin panels against a partial payload", () => {
 
     await waitFor(() => expect(vi.mocked(fetch)).toHaveBeenCalled());
     // Each domain remains usable and missing counts are unknown, not false zeros.
-    for (const [name, target] of [["景點", "hotspots"], ["美食", "foods"], ["飯店", "hotels"], [adminNewsCopy("zh-TW").nav, "news"], ["影片", "videos"]]) {
+    for (const [name, target] of [["景點", "hotspots"], ["美食", "foods"], ["飯店", "hotels"], [adminCopy.navigation.news, "news"], ["影片", "videos"]]) {
       const domain = await screen.findByRole("region", { name });
       expect(within(domain).getByRole("link", { name: "進入管理" }).getAttribute("href")).toBe(`/admin/${target}`);
       expect(within(domain).getAllByText("—").length).toBeGreaterThan(0);

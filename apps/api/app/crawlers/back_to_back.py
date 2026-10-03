@@ -44,13 +44,6 @@ from app.warnings import warning_code
 TWD_QUANTUM = Decimal("1")
 PERCENT_QUANTUM = Decimal("0.1")
 
-FARE_ROLE_LABELS = {
-    FareTicketRole.CONVENTIONAL_FIRST: "第一趟一般票",
-    FareTicketRole.CONVENTIONAL_SECOND: "第二趟一般票",
-    FareTicketRole.WRAPPER: "台灣始發包覆票",
-    FareTicketRole.REVERSE: "外站始發倒買票",
-}
-
 
 @dataclass(frozen=True)
 class AirlineCandidateResult:
@@ -155,7 +148,9 @@ class BackToBackFareService:
                     host=adapter.host,
                     state=SourceState.DISABLED,
                     policy="runtime_robots_check_fail_closed",
-                    detail=adapter.disabled_reason,
+                    detail=warning_code(
+                        "fare_source_paused", airline=adapter.code, reason="source_disabled"
+                    ),
                 ),
                 warnings=[warning_code("fare_source_paused", airline=adapter.code)],
             )
@@ -206,7 +201,9 @@ class BackToBackFareService:
                     host=adapter.host,
                     state=SourceState.FAILED,
                     policy="allowlisted_routes_only",
-                    detail=exc.detail,
+                    detail=warning_code(
+                        "fare_route_unsupported", airline=adapter.code, reason=exc.code
+                    ),
                 ),
                 warnings=[warning_code("fare_route_unsupported", airline=adapter.code)],
             )
@@ -290,20 +287,18 @@ class BackToBackFareService:
         quote_count = sum(len(quotes) for quotes in candidates.values())
         if successful_pages == len(page_specs):
             state = SourceState.SUCCESS
-            detail = (
-                "讀取台灣始發與外站始發公開近期票價成功"
-                if full_back_to_back
-                else "讀取兩次旅行的台灣始發公開近期票價成功"
+            detail = warning_code(
+                "fare_both_directions_loaded" if full_back_to_back else "fare_two_trips_loaded"
             )
         elif successful_pages:
             state = SourceState.BLOCKED if policy_failure else SourceState.FAILED
-            detail = "只取得部分方向的公開近期票價"
+            detail = warning_code("fare_directions_partial")
         else:
             state = SourceState.BLOCKED if policy_failure else SourceState.FAILED
-            detail = (
-                "台灣始發與外站始發公開票價皆無法取得"
+            detail = warning_code(
+                "fare_both_directions_unavailable"
                 if full_back_to_back
-                else "兩次旅行的台灣始發公開票價皆無法取得"
+                else "fare_two_trips_unavailable"
             )
         return AirlineCandidateResult(
             candidates=candidates,
@@ -721,9 +716,8 @@ class BackToBackFareService:
         back_to_back: FareStrategyTotal | None,
         *,
         unavailable_detail: str | None = None,
-        alternative_label: str = "倒買法",
+        strategy: BackToBackStrategy = BackToBackStrategy.NESTED_ROUND_TRIPS,
     ) -> BackToBackComparison:
-        label = "混搭航空公司" if mode == ComparisonMode.MIXED_AIRLINES else "同航空公司"
         if (
             conventional is None
             or back_to_back is None
@@ -735,7 +729,7 @@ class BackToBackFareService:
                 conventional=conventional,
                 back_to_back=back_to_back,
                 verdict=ComparisonVerdict.COMPARISON_UNAVAILABLE,
-                detail=unavailable_detail or f"{label}缺少完整票價或換算匯率，暫時無法比較。",
+                detail=unavailable_detail or warning_code("fare_comparison_unavailable", mode=mode),
             )
 
         savings = conventional.estimated_twd - back_to_back.estimated_twd
@@ -746,13 +740,13 @@ class BackToBackFareService:
             )
         if savings > 0:
             verdict = ComparisonVerdict.BACK_TO_BACK_CHEAPER
-            detail = f"{label}的{alternative_label}估算較省。"
+            detail = warning_code("fare_comparison_cheaper", mode=mode, strategy=strategy)
         elif savings < 0:
             verdict = ComparisonVerdict.CONVENTIONAL_CHEAPER
-            detail = f"{label}的一般買法估算較省。"
+            detail = warning_code("fare_comparison_regular_cheaper", mode=mode)
         else:
             verdict = ComparisonVerdict.SAME_PRICE
-            detail = f"{label}兩種買法的估算總價相同。"
+            detail = warning_code("fare_comparison_equal", mode=mode)
         return BackToBackComparison(
             mode=mode,
             conventional=conventional,
@@ -825,7 +819,6 @@ class BackToBackFareService:
         comparisons: list[BackToBackComparison] = []
         for mode in (ComparisonMode.MIXED_AIRLINES, ComparisonMode.SAME_AIRLINE):
             same_airline = mode == ComparisonMode.SAME_AIRLINE
-            label = "混搭航空公司" if mode == ComparisonMode.MIXED_AIRLINES else "同航空公司"
             conventional = self._best_conventional_with_manual(
                 query,
                 candidates,
@@ -833,8 +826,8 @@ class BackToBackFareService:
                 same_airline=same_airline,
             )
             if comparison_supported:
-                missing_roles = [
-                    FARE_ROLE_LABELS[role]
+                missing_roles: list[str] = [
+                    role.value
                     for role, manual_fare in (
                         (
                             FareTicketRole.CONVENTIONAL_FIRST,
@@ -858,11 +851,11 @@ class BackToBackFareService:
                         not candidates[FareTicketRole.REVERSE]
                         and query.middle_two_segment_fare is None
                     ):
-                        missing_roles.append("中段反向兩航段票價")
+                        missing_roles.append("middle_two_segment")
                     if query.head_one_way_fare is None:
-                        missing_roles.append("第一趟去程單程票價")
+                        missing_roles.append("head_one_way")
                     if query.tail_one_way_fare is None:
-                        missing_roles.append("第二趟回程單程票價")
+                        missing_roles.append("tail_one_way")
                     if (
                         same_airline
                         and any(
@@ -876,8 +869,7 @@ class BackToBackFareService:
                             )
                         )
                     ):
-                        missing_roles.append("手動輸入票價的航空公司")
-                    alternative_label = "外站兩段票"
+                        missing_roles.append("manual_airline")
                 else:
                     back_to_back = self._best_strategy(
                         FareTicketRole.WRAPPER,
@@ -888,30 +880,26 @@ class BackToBackFareService:
                         back_to_back=True,
                     )
                     missing_roles.extend(
-                        FARE_ROLE_LABELS[role]
+                        role.value
                         for role in (
                             FareTicketRole.WRAPPER,
                             FareTicketRole.REVERSE,
                         )
                         if not candidates[role]
                     )
-                    alternative_label = "包覆倒買"
                 if missing_roles:
-                    unavailable_detail = (
-                        f"{label}缺少{'、'.join(missing_roles)}的公開快取票價，"
-                        "因此無法組成完整比較；這不是 0% 節省。"
+                    unavailable_detail = warning_code(
+                        "fare_comparison_missing", mode=mode, roles=",".join(missing_roles)
                     )
                 else:
-                    unavailable_detail = (
-                        f"{label}雖有候選票價，但日期順序、航空公司或匯率無法組成相容的完整方案。"
-                    )
+                    unavailable_detail = warning_code("fare_comparison_incompatible", mode=mode)
                 comparisons.append(
                     self._comparison(
                         mode,
                         conventional,
                         back_to_back,
                         unavailable_detail=unavailable_detail,
-                        alternative_label=alternative_label,
+                        strategy=query.strategy,
                     )
                 )
             else:
@@ -920,11 +908,7 @@ class BackToBackFareService:
                         mode=mode,
                         conventional=conventional,
                         verdict=ComparisonVerdict.COMPARISON_UNAVAILABLE,
-                        detail=(
-                            f"{label}已計算兩張一般來回票；兩次目的地不同時，"
-                            "倒買法需要兩張開口票。現有公開票價頁沒有開口票價格，"
-                            "因此不估算倒買總價。"
-                        ),
+                        detail=warning_code("fare_comparison_open_jaw", mode=mode),
                     )
                 )
 

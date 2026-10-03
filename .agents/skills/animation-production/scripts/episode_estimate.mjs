@@ -19,7 +19,7 @@
 // --plan 把同一集的片段換算成方案的 credits、月額度占比、兩種美元（月費攤／頁面價），並和伺服器路線並列、印損益
 // 平衡秒數（月費 ÷ 伺服器每秒價）；--resolution 給伺服器模型的解析度，--plan hailuo:* 時也選 768p 或 2k 的檔位。
 // 結束碼：0；--strict 且裁定不過（超過 --cap、超過 --month-clip-seconds、超出 tier、production 下的長鏡頭、既有
-// data.source 超出來源實際買到的秒數、veo-3.1-lite* 配非空 look.negative）是 1；讀不到檔或參數錯是 2。
+// data.source 超出來源實際買到的秒數）是 1；讀不到檔或參數錯是 2。
 import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
@@ -31,6 +31,8 @@ import { estimateTimeline, FPS } from "../../../../tools/video/core/timeline.mjs
 export const CATALOG = "apps/api/app/video_media/catalog.py";
 export const CATALOG_READ_ON = "2026-09-26";
 export const PLANS_READ_ON = "2026-10-03";
+// 實測：站主的帳號上量到的（Hailuo 一支 H3 2K 5 秒的文生影片；Kling CLI 的 who_am_i 與 account）。
+export const PLANS_MEASURED_ON = "2026-10-04";
 // 工具規定：tools/video/media/keyframes.mjs MAX_KEYFRAME_TAKES、clips.mjs MAX_CLIP_TAKES / MIN_CLIP_SECONDS /
 // MAX_CLIP_SECONDS、look.mjs MAX_LOOK_ROUNDS（測試盯著一致）。
 export const MAX_KEYFRAME_TAKES = 3;
@@ -44,23 +46,18 @@ export const DEFAULT_MONTH_CLIP_SECONDS = 3000;
 export const DEFAULT_CLIP_MODEL = "gemini-omni-1.1-flash";
 export const DEFAULT_IMAGE_MODEL = "gemini-3-pro-image";
 export const DEFAULT_MUSIC_MODEL = "lyria-3.5";
-// 未驗證：第三方 2026 年整理的 Kling 3.0 Omni standard 5 s 約 35–45 credits、professional 約 70；
-// 真正的數字只在登入後的生成器裡看得到，報價前到站主帳號裡確認。
+// 未驗證：第三方 2026 年整理的 Kling 3.0 Omni standard 5 s 約 35–45 credits、professional 約 70。
+// 官方 CLI 的 who_am_i 不給 credits 價，2026-10-04 授權進來的帳號是 NORMAL、0 credits，一支都沒生成；
+// 報價前先在站主帳號裡生成一支、記前後差額。
 export const DEFAULT_KLING_CREDITS_PER_VIDEO = 40;
+// 估價的單位，不是 Kling 的限制：kling-video-v3_0 可以要 3–15 秒整數（實測 2026-10-04），
+// 但 5、10 秒以外扣幾 credits 沒有任何來源，所以仍以第三方的「一支 5 秒」計。
 export const KLING_VIDEO_SECONDS = 5;
-// 假設（沒量過）：方案佇列裡一支片段從送出到拿到要幾分鐘；只用來把「幾支片段」換算成「幾小時」。
+// 假設：方案佇列裡一支片段從送出到拿到要幾分鐘；只用來把「幾支片段」換算成「幾小時」。量過的只有一支：
+// Hailuo H3 2K 5 秒、沒有別的在排隊，約 4 分 40 秒（實測 2026-10-04）；有排隊、較長的片段與 Kling 都沒量。
 export const DEFAULT_MINUTES_PER_CLIP = 6;
 // 工具規定：production profile 一鏡最多 8 秒（tools/video/core/lint.mjs productionShotProblems）。
 export const PRODUCTION_SHOT_SECONDS = 8;
-// Veo Lite 的 negativePrompt 陷阱（完整說法只在 references/error-catalogue.md #23）：伺服器對每個模型都送
-// parameters.negativePrompt（apps/api/app/video_media/providers/gemini_video.py），Lite 回 HTTP 400；
-// 這是花錢前唯一讀得到 video.json 的腳本，所以在這裡就抓。票落地那天連這段一起刪。
-export const LITE_MODEL = /^veo-?3\.1-lite/;
-export const LITE_NEGATIVE_TICKET = "tasks/open/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md";
-export function liteNegativeProblem(model, look) {
-  if (!LITE_MODEL.test(model ?? "") || !look?.negative) return null;
-  return `片段模型 ${model} 配非空的 look.negative（${look.preset} preset 的預設就有）：伺服器對每個模型都送 negativePrompt（apps/api/app/video_media/providers/gemini_video.py），Lite 回 HTTP 400，每個 take、每個 seed 都一樣（${LITE_NEGATIVE_TICKET}）；票落地前先把 look.negative 寫成空字串，而且要在 look 之前（negative 算在 lookHash）`;
-}
 // 兩個 prompt 的字集 Jaccard：切鏡候選只比鏡位（camera 行加 prompt 第一子句），畫面像不像要人看；相似度低就標出來。
 const words = (text) => new Set(String(text ?? "").toLowerCase().split(/[^a-z0-9一-鿿]+/).filter((each) => each.length > 1));
 export function promptSimilarity(a, b) {
@@ -155,13 +152,17 @@ export const PRICES = {
 };
 
 const HAILUO_CREDITS_PER_SECOND = { "2k": 12, "768p": 7 };
-const HAILUO_NOTE = "credits/s 推算自訂閱頁的每月秒數（Pro 4,500 credits ≈ 375 s 的 2K、≈ 643 s 的 768P；Standard 1,000 ≈ 84 / 143 s），每級一樣；頁面標的每秒美元是以年繳月價算的";
-const KLING_NOTE = "每支影片的 credits 只有登入後的生成器才看得到；40 是第三方 2026 年的整理（standard 5 s 約 35–45），未驗證，用 --credits-per-video 蓋過";
+// 2K 的 12 是實測（站主的 Max 帳號，H3 2K 5 秒：「創建」旁顯示 60，餘額 27,150 → 27,090）；768P 的 7 沒有量。
+export const HAILUO_CREDITS_BASIS = { "2k": `實測 ${PLANS_MEASURED_ON}`, "768p": "推算" };
+const HAILUO_NOTE = `H3 2K 12 credits/s 是在 Max 帳號實測的（${PLANS_MEASURED_ON}：5 秒一支扣 60）；每級都一樣、以及 768P 的 7 credits/s，仍推算自訂閱頁的每月秒數（Pro 4,500 credits ≈ 375 s 的 2K、≈ 643 s 的 768P；Standard 1,000 ≈ 84 / 143 s）；頁面標的每秒美元是以年繳月價算的`;
+const HAILUO_OUTPUT_NOTE = `H3 2K 的輸出是 2560×1440、24 fps、帶 AAC 音軌（實測 ${PLANS_MEASURED_ON}）：不是原生 1920×1080，production profile 不收；音軌成片不用。下載走「全部下載 → 無水印下載」，結果卡 <video> 的 src 是有浮水印的版本，clips import 的 ffmpeg 檢查抓不到`;
+const KLING_NOTE = `每支影片的 credits 未驗證：40 是第三方 2026 年的整理（standard 5 s 約 35–45）；官方 CLI 的 who_am_i 不給 credits 價，${PLANS_MEASURED_ON} 授權進來的帳號是 NORMAL、0 credits，沒有生成過。用 --credits-per-video 蓋過`;
 
 /**
- * 訂閱方案（價目：hailuoai.video 訂閱頁與 kling.ai 會員頁，2026-10-03 在應用內瀏覽器讀；三條路線的
- * 比較、操作步驟與權利在 .agents/skills/animation-production/references/providers-and-plans.md）。
- * Hailuo 的 credits 以秒計，Kling 以「一支 5 秒影片」計。
+ * 訂閱方案（價目：hailuoai.video 訂閱頁與 kling.ai 會員頁，2026-10-03 在應用內瀏覽器讀；Hailuo H3 2K 的
+ * credits/s 是 2026-10-04 實測；三條路線的比較、操作步驟與權利在
+ * .agents/skills/animation-production/references/providers-and-plans.md）。
+ * Hailuo 的 credits 以秒計，Kling 以「一支 5 秒影片」計（估價單位，見 KLING_VIDEO_SECONDS）。
  */
 export const PLANS = {
   "hailuo:standard": { vendor: "hailuo", label: "Hailuo Standard", fee_usd: 14.99, fee_annual_monthly_usd: 8.40, credits: 1000, running: 1, queued: 8, credits_per_second: HAILUO_CREDITS_PER_SECOND, page_usd_per_second: { "2k": 0.101, "768p": 0.059 }, default_resolution: "2k", clip_seconds: [4, 15], images: "每張圖都扣 credits（單價未抄）", note: HAILUO_NOTE },
@@ -183,9 +184,9 @@ export function secondsBought(frames, model = DEFAULT_CLIP_MODEL, resolution = n
   return allowed.find((each) => each >= need) ?? allowed.at(-1);
 }
 
-/** Hailuo 網頁的 H3：整數秒，4 到 15（platform.minimax.io 與 hailuoai.video，2026-10-03 讀）。 */
+/** Hailuo 網頁的 H3：整數秒，4 到 15（platform.minimax.io 與 hailuoai.video，2026-10-03 讀；設定面板 2026-10-04 實測同樣是 4–15 秒整數）。 */
 export const hailuoSeconds = (frames) => Math.min(15, Math.max(4, Math.ceil(frames / FPS)));
-/** Kling：一支 5 秒影片為一單位，需要幾支。 */
+/** Kling：一支 5 秒影片為一單位，需要幾支（估價單位；kling-video-v3_0 本身收 3–15 秒整數）。 */
 export const klingVideos = (frames) => Math.max(1, Math.ceil(frames / FPS / KLING_VIDEO_SECONDS));
 
 // 同一個機位：camera 行加 prompt 第一個子句，和 tools/video/core/craft.mjs 的 setupKey 一樣。
@@ -365,6 +366,7 @@ export function estimateEpisode(doc, options = {}) {
       credits: plan.credits,
       resolution: res,
       credits_per_second: plan.credits_per_second[res],
+      credits_basis: HAILUO_CREDITS_BASIS[res],
       page_usd_per_second: plan.page_usd_per_second[res],
       shots: perShot,
       seconds_one: secondsOne,
@@ -395,10 +397,11 @@ export function estimateEpisode(doc, options = {}) {
       unverified: false,
       notes: [
         plan.note,
-        `網頁的 H3 一支 4–15 秒整數，所以這裡每鏡買 ceil(需要的秒數)（最少 4）而不是 API 路線的貼模型長度；--resolution 768p|2k 選檔位（2K 不是原生 1920×1080、768P 低於 1080p，哪個該選未驗）`,
+        `網頁的 H3 一支 4–15 秒整數，所以這裡每鏡買 ceil(需要的秒數)（最少 4）而不是 API 路線的貼模型長度；--resolution 768p|2k 選檔位（2K 輸出 2560×1440、768P 低於 1080p，哪個該選未驗）`,
+        HAILUO_OUTPUT_NOTE,
         `keyframes、人設表、音樂、judge 仍走伺服器 API（上面的 US$）；${plan.images}`,
-        `今天沒有 clips import 指令：方案做出的片段要手動放進 clips/ 並寫 manifest（references/stage-preconditions.md 最後一節）；assemble 只驗第 0 格 PSNR、停格與響度，黑格／凍格／切鏡要自己用 qc.mjs 的 args 跑，ledger 不會知道`,
-        `「幾小時」用每支 ${minutesPerClip} 分鐘（--minutes-per-clip）的假設算，沒量過；同時跑 ${plan.running}、排隊 ${plan.queued}`,
+        `方案做出的片段用 clips import 帶進產線（references/stage-preconditions.md 最後一節）：跟買來的 take 過同一組 ffmpeg 檢查，帳本記點數；美元要自己用 --usd 給，judge 要帶 --judge 才問`,
+        `「幾小時」用每支 ${minutesPerClip} 分鐘（--minutes-per-clip）的假設算；量過的只有一支：H3 2K 5 秒、沒有排隊約 4 分 40 秒（實測 ${PLANS_MEASURED_ON}）；同時跑 ${plan.running}、排隊 ${plan.queued}`,
         ...(plan.unlimited ? [plan.unlimited] : []),
       ],
     };
@@ -444,10 +447,11 @@ export function estimateEpisode(doc, options = {}) {
       unverified: true,
       notes: [
         plan.note,
-        `一鏡需要幾支 ${plan.video_seconds} 秒影片 = ceil(需要的秒數 ÷ ${plan.video_seconds})；10 秒影片的 credits 另查`,
-        "官方 MCP（kling.ai/mcp）用 Kling 帳號登入，扣哪個方案的 credits 要在帳號裡看；社群 MCP（github.com/199-mcp/mcp-kling）用開發者 API 金鑰，扣的是資源包，不是會員 credits",
+        `一鏡需要幾支 ${plan.video_seconds} 秒影片 = ceil(需要的秒數 ÷ ${plan.video_seconds})；這是估價單位：kling-video-v3_0 可以直接要 3–15 秒整數（實測 ${PLANS_MEASURED_ON}），${plan.video_seconds}、10 秒以外的 credits 沒有來源`,
+        `官方 CLI（npm @klingai/cli-global，站主 ${PLANS_MEASURED_ON} 選的）與官方 MCP（kling.ai/mcp）都用 Kling 帳號登入；kling account 回 membershipType 與 availableRemainCredits，讀起來是會員 credits，沒有用付費生成確認。社群 MCP（github.com/199-mcp/mcp-kling）用開發者 API 金鑰，扣的是資源包，不是會員 credits`,
+        `image_to_video 要傳 enable_audio false 與 prefer_multi_shots false（兩個預設都是 true；一鏡是一個連續鏡頭）；NORMAL 帳號列的模型都只有 720p，付費方案在 CLI 上有沒有 1080p 未驗`,
         "同時幾支沒寫明（「無限排隊」）：這裡的「幾小時」把片段當一支接一支算，未驗證",
-        "keyframes、人設表、音樂、judge 仍走伺服器 API（上面的 US$）；今天沒有 Kling adapter，也沒有 clips import 指令",
+        "keyframes、人設表、音樂、judge 仍走伺服器 API（上面的 US$）；今天沒有 Kling adapter，做出的片段用 clips import 帶進產線",
       ],
     };
   }
@@ -506,8 +510,6 @@ export function estimateEpisode(doc, options = {}) {
   }
 
   const problems = [];
-  const liteTrap = liteNegativeProblem(model, look);
-  if (liteTrap) problems.push(liteTrap);
   for (const shot of cutShots.filter((each) => !each.source_fits)) {
     const origin = byId.get(shot.source.shot);
     problems.push(origin?.visual === "clip"
@@ -534,7 +536,6 @@ export function estimateEpisode(doc, options = {}) {
       music: { model: DEFAULT_MUSIC_MODEL, usd_per_track: PRICES[DEFAULT_MUSIC_MODEL].usd_per_track, source: PRICES[DEFAULT_MUSIC_MODEL].source },
     },
     takes: { keyframes: keyframeTakes, clips: clipTakes, look_rounds: MAX_LOOK_ROUNDS },
-    lite_negative_trap: Boolean(liteTrap),
     shots,
     counts: { shots: shots.length, clips: clipShots.length, stills: stillShots.length, cuts: cutShots.length, characters, silent: shots.filter((shot) => shot.silent).length },
     stages,
@@ -569,7 +570,7 @@ export function renderEstimate(report, file) {
     const plan = report.plan;
     out.push("");
     if (plan.vendor === "hailuo") {
-      out.push(`方案 ${plan.id}（${plan.label}，月費 ${usd(plan.fee_usd)}、年繳折合 ${usd(plan.fee_annual_monthly_usd)}/月，${plan.credits} credits/月；hailuoai.video 訂閱頁 ${PLANS_READ_ON} 讀）：H3 ${plan.resolution} ${plan.credits_per_second} credits/s，頁面標 ${unit(plan.page_usd_per_second)}/s`);
+      out.push(`方案 ${plan.id}（${plan.label}，月費 ${usd(plan.fee_usd)}、年繳折合 ${usd(plan.fee_annual_monthly_usd)}/月，${plan.credits} credits/月；hailuoai.video 訂閱頁 ${PLANS_READ_ON} 讀）：H3 ${plan.resolution} ${plan.credits_per_second} credits/s（${plan.credits_basis}），頁面標 ${unit(plan.page_usd_per_second)}/s`);
       for (const shot of plan.shots) out.push(`  ${shot.id.padEnd(11)} ${String(shot.seconds).padStart(2)} s  ${String(shot.credits).padStart(4)} credits  ≈ ${usd(shot.usd_page)}（頁面價）/ ${usd(shot.usd_fee)}（月費攤）`);
       out.push(`  片段合計 ${plan.seconds_one} s：${plan.credits_one} credits（1 take）→ ${plan.credits_cap}（上限），佔月額 ${(plan.share_one * 100).toFixed(0)}% → ${(plan.share_cap * 100).toFixed(0)}%；≈ ${usd(plan.usd_page_one)} → ${usd(plan.usd_page_cap)}（頁面價）、${usd(plan.usd_fee_one)} → ${usd(plan.usd_fee_cap)}（月費攤）`);
       out.push(`  佇列：同時 ${plan.running} 支、排隊 ${plan.queued}；${plan.rounds_one} 輪 → ${plan.rounds_cap} 輪，約 ${plan.hours_one} → ${plan.hours_cap} 小時（每支 ${plan.minutes_per_clip} 分鐘的假設）`);

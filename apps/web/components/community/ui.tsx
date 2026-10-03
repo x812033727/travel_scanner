@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState, type ReactNode, type ButtonHTMLAttr
 import { useTranslations } from "next-intl";
 import { ApiError, api } from "@/lib/api";
 import { useHeaderSession } from "@/components/header-session";
-import { isTopModalLayer, registerModalLayer } from "@/lib/modal-sheet";
+import { isTopModalLayer, modalFocusTargets, registerModalLayer } from "@/lib/modal-sheet";
 
 export const fieldClass = "mt-1.5 w-full rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 py-2.5 text-[var(--ink)] outline-none focus:ring-2 focus:ring-[var(--teal)] disabled:opacity-50";
 export const panelClass = "rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 md:p-6";
@@ -59,7 +59,18 @@ export function Dialog({ title, children, onClose, returnFocusTo }: { title: str
       requestAnimationFrame(() => { if (wasTop && !dialog.isConnected && trigger?.isConnected) trigger.focus(); });
     };
   }, [returnFocusTo]);
-  return <dialog ref={ref} aria-labelledby={id} onCancel={(event) => {
+  return <dialog ref={ref} aria-labelledby={id} onKeyDown={(event) => {
+    if (event.key !== "Tab" || event.defaultPrevented || event.nativeEvent.isComposing || !isTopModalLayer(event.currentTarget)) return;
+    const items = modalFocusTargets(event.currentTarget);
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (!first || !last) return;
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault(); first.focus();
+    }
+  }} onCancel={(event) => {
     event.stopPropagation();
     event.preventDefault();
     if (event.target !== event.currentTarget || !isTopModalLayer(event.currentTarget)) return;

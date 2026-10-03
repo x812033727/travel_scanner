@@ -113,7 +113,7 @@ test("native auto-fit probes every directed clip and refuses a short action befo
   writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
   writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ ...doc.series, category: doc.category, production_policy: doc.production_policy, runtime_spec: doc.runtime_spec, target_minutes: 22, style_preset: "anime-2d", characters: doc.characters }));
   assert.deepEqual(lintProject(loadProject({ slug: doc.slug, root: box.root })).errors, []);
-  // These frame counts and probe binaries are synthetic. No real 22-minute media is produced.
+  // These frame counts and tool replies are synthetic. No real 22-minute media is produced.
   const samples = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, 5 * SAMPLE_RATE]));
   const last = [...eachLine(doc)].at(-1).line.id;
   samples[last] += (39_600 - buildTimeline(doc, samples).total_frames) * SAMPLES_PER_FRAME;
@@ -129,14 +129,33 @@ test("native auto-fit probes every directed clip and refuses a short action befo
     return [scene.id, { file, sha256: "a".repeat(64) }];
   }));
   writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({ speech_hash: timeline.speech_hash, visual_hash: visual, look_hash: lookHash(doc), shots }));
-  const bin = path.join(box.base, "bin");
   const marker = path.join(box.base, "encoding-started");
-  mkdirSync(bin);
-  writeFileSync(path.join(bin, "ffmpeg"), '#!/usr/bin/env node\nimport { writeFileSync } from "node:fs";\nimport path from "node:path";\nconst args=process.argv.slice(2);\nif(args.includes("-encoders")) process.stdout.write(" libx264 "); else if(args.includes("-version")) process.stdout.write("ffmpeg synthetic test\\n"); else { writeFileSync(path.join(path.dirname(process.argv[1]),"..","encoding-started"),"unexpected encode"); process.exit(9); }\n', { mode: 0o755 });
-  writeFileSync(path.join(bin, "ffprobe"), '#!/usr/bin/env node\nimport { readFileSync } from "node:fs";\nconst frames=JSON.parse(readFileSync(process.argv.at(-1),"utf8")).frames;\nprocess.stdout.write(JSON.stringify({streams:[{codec_type:"video",r_frame_rate:"30/1",nb_read_packets:String(frames)}]}));\n', { mode: 0o755 });
+  const probed = [];
+  let discoveries = 0;
   let stderr = "";
-  const ctx = { root: box.root, home: box.base, EXIT, env: { VIDEO_WORKDIR: box.work, FFMPEG_PATH: bin }, stdout: { write() {} }, stderr: { write(value) { stderr += value; } } };
-  assert.equal(await run("assemble", ["--slug", doc.slug], ctx), EXIT.lint, stderr);
+  const ctx = { root: box.root, home: box.base, EXIT, env: { VIDEO_WORKDIR: box.work }, stdout: { write() {} }, stderr: { write(value) { stderr += value; } } };
+  const tools = { ffmpeg: "fixture-encoder", ffprobe: "fixture-probe", version: "synthetic test" };
+  const dependencies = {
+    async locateFfmpeg(env) {
+      assert.equal(env, ctx.env);
+      discoveries += 1;
+      return tools;
+    },
+    async runTool(file, args) {
+      if (file !== tools.ffprobe) {
+        writeFileSync(marker, "unexpected encode");
+        assert.fail("encoding must wait until every directed clip passes preflight");
+      }
+      assert.ok(args.includes("-count_packets"));
+      const source = args.at(-1);
+      probed.push(path.relative(box.workdir, source).split(path.sep).join("/"));
+      const { frames } = JSON.parse(readFileSync(source, "utf8"));
+      return { stdout: JSON.stringify({ streams: [{ codec_type: "video", r_frame_rate: "30/1", nb_read_packets: String(frames) }] }), stderr: "" };
+    },
+  };
+  assert.equal(await run("assemble", ["--slug", doc.slug], ctx, dependencies), EXIT.lint, stderr);
+  assert.equal(discoveries, 1);
+  assert.deepEqual(probed, doc.scenes.filter((scene) => scene.template === "shot").map((scene) => `clips/${scene.id}.mp4`));
   assert.match(stderr, /bridge-action must cover its 240 frames at natural speed with no frozen tail/);
   assert.equal(existsSync(marker), false, "no clip, motion, subtitle or final encoding starts");
   assert.equal(existsSync(path.join(box.workdir, "segments")), false, "even earlier valid shots are not encoded before the last shot is checked");
