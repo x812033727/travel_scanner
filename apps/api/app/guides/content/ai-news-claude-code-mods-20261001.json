@@ -1,0 +1,256 @@
+{
+  "slug": "ai-news-claude-code-mods-20261001",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-10-01",
+  "featured": false,
+  "display_order": 192,
+  "related": [
+    "ai-news-claude-sonnet-55-20260928",
+    "ai-news-claude-opus-55-20260922"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code 推出 mods：用 TypeScript 改寫行為與介面，裝在 plugin 裡",
+      "description": "Anthropic 在 2026 年 10 月 1 日發表 Claude Code mods：裝在 plugin 裡、在 Claude Code 行程內執行的 TypeScript 或 JavaScript 函式，可改寫提示、管工具呼叫、畫新介面。CLI 與 desktop app 能用，文件寫要 v2.1.287 以上，Anthropic 說 mods 沒有沙盒（2026 年 10 月查證）。",
+      "hero": {
+        "src": "/guides/ai-news-claude-code-mods-20261001/hero.jpg",
+        "alt": "原創插圖：左邊一塊代表事件的方塊，經過中間一張代表 mod 的卡片（兩側各有一個接點），右邊的終端機視窗顯示對話文字與 mod 加上的一塊窗格；下方兩張虛線卡片代表依序載入的其他 mod；不含商標或介面截圖。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在 2026 年 10 月 1 日發表 mods（改寫 Claude Code 行為與介面的小型程式）：用 TypeScript 或 JavaScript 寫的函式，裝在 plugin 裡，在 Claude Code 行程內執行。Anthropic 說 CLI 與 desktop app 都能用，文件寫要 Claude Code v2.1.287 以上；寫工具的開發者與替團隊管設定的管理者最相關。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這一篇的資料在 2026 年 10 月 4 日查核，依據 Anthropic 的部落格與三頁文件。這個網站沒有安裝或執行任何 mod，下面的功能與限制都是 Anthropic 的說法，也不是訂閱或購買建議。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic 在 2026 年 10 月 1 日發表 mods：裝在 plugin 裡、在 Claude Code 自己的行程內執行的 TypeScript 或 JavaScript 函式；部落格說可在 CLI 與 desktop app 使用，文件寫要 Claude Code v2.1.287 以上。",
+            "mods 能改寫提示、擋下或改寫工具呼叫、核准或拒絕權限、畫窗格與按鈕、加指令；設定檔 Hook 沒有被淘汰，文件寫兩者並行。",
+            "mods 沒有沙盒、與使用者有同樣的權限，Anthropic 說只該安裝信得過來源的 mods；內建的 sec-default 只擋使用者的 mod 改管理者管的東西，以及核准被 deny 規則拒絕的呼叫，其他都不擋。",
+            "管理者有 allowManagedModsOnly、disableSideloadFlags、prependPlugins 與 appendPlugins、disableAllHooks 可用；個人可用 /plugin、--safe-mode 或 disableAllHooks 關閉，後兩者不會停掉內建 mods。",
+            "文件與內建 mods 表會隨版本更新，上面是截至 2026 年 10 月 4 日的內容。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "mods 是什麼：裝在 plugin 裡、在 Claude Code 行程內跑的函式"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 說，Claude Code 每做一件事就發出一個事件；mod 是掛在事件上的函式，可以在事件之前、之後或取代事件執行。文件寫一個小 mod 有三個檔案：.claude-plugin/plugin.json、hooks/hooks.json 與 hooks/register.js；hooks.json 的 modules 欄指向程式檔，有它才算 mod。"
+        },
+        {
+          "type": "paragraph",
+          "text": "載入時 Claude Code 呼叫 register 並傳入 on，用 on 註冊事件函式。每個函式拿到 $（mods API）、e（事件資料）與 next（交給其他 mods 與 Claude Code 原本的行為）。處理方式有三種：觀察、改寫，以及接手：自己處理事件，原本的行為不執行。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用詞先分開：文件寫 Claude Code 把兩種都叫 hooks。寫在設定檔裡的 shell 命令、HTTP 請求或提示，下面叫「設定檔 Hook」；在 Claude Code 內部執行的處理函式，叫「mod 的事件函式」。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "能做什麼：改提示、管工具呼叫、畫介面、加指令"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 列出的能力有：在提示送到模型前改寫它；擋下、改寫或重試工具呼叫；核准或拒絕權限請求；在 Claude 讀到之前遮掉工具輸出裡的機密；修改或取代部分介面，並加按鈕與輸入框。文件補充，可以畫窗格與提示框上方的橫條，並加不經 Claude 回合的 /command。"
+        },
+        {
+          "type": "paragraph",
+          "text": "多個 mods 依載入順序疊加：最先載入的最先看到事件、最後看到結果。內建的 /diff 現在是 mod，可在 /plugin 關掉或換掉。Anthropic 說設定檔 Hook 不能改寫事件、畫新介面或取代功能，mods 可以；文件則寫設定檔 Hook 照舊執行、與 mods 並行，沒有任何一項被淘汰。下表縮短自文件的比較表，只有 mod 能畫介面。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "種類",
+            "是什麼",
+            "能改什麼",
+            "寫什麼"
+          ],
+          "rows": [
+            [
+              "mod",
+              "plugin 裡的函式，由 Claude Code 在自己的行程內呼叫",
+              "工具呼叫、提示、指令、回合，以及介面畫什麼",
+              "JavaScript 或 TypeScript"
+            ],
+            [
+              "設定檔 Hook",
+              "Claude Code 在生命週期事件上執行的 shell 命令、HTTP 請求或提示",
+              "工具呼叫或提示放不放行、參數與結果、加給 Claude 的脈絡",
+              "一支腳本，加 settings.json 的一條設定"
+            ],
+            [
+              "skill",
+              "Claude 讀的 SKILL.md 指示檔",
+              "Claude 知道什麼、做什麼",
+              "Markdown"
+            ],
+            [
+              "MCP server",
+              "給 Claude 工具的外部行程或服務",
+              "Claude 有哪些工具",
+              "任何語言寫的伺服器"
+            ]
+          ],
+          "caption": "mod、設定檔 Hook、skill 與 MCP server 的比較，依 Claude Code 文件 mods 總覽頁的比較表縮短，查核日 2026 年 10 月 4 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用在哪：團隊的管控與範例 mod"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在部落格舉了三個團隊用法：在對話旁的窗格顯示 CI/CD 狀態；碰 production 設定前要求確認；由最先載入的 mod 記下其他 mod 的每次呼叫。這些是可以這樣做的例子，不是現成的產品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件的三個範例 mod 放在 claude-code-playground repo，照原樣分享、不提供支援：token-weather 在提示框上方畫 context window 的預報；blast-radius 攔下 rm -rf 或 force push 這類高風險命令，顯示它會改到什麼；replay-theater 加 /replay 命令，重播 Claude 上一輪的檔案修改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Code 也內建 mods，在 /plugin 的 Built-in 底下看：cc-plugin-diff 接手 /diff，cc-plugin-sec-default 見下一節。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-code-mods-20261001/diagram-1.svg",
+          "alt": "四格圖解：事件（工具呼叫、提示、畫面）、函式（觀察、改寫或接手）、介面（窗格、按鈕、指令）、管控（sec-default 先載入）",
+          "width": 1600,
+          "height": 900,
+          "caption": "Claude Code 的 mods 接收工具呼叫、提示與畫面等事件，以函式觀察、改寫或接手，能加窗格、按鈕與指令；在有受管設定的電腦或以 Team／Enterprise 方案登入時，內建的 sec-default 先載入。依 Anthropic 部落格與 Claude Code 文件整理，查核日 2026 年 10 月 4 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎麼開始用：版本、安裝、請 Claude 寫或自己寫"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件寫，mods 需要 Claude Code v2.1.287 或以上、預設開啟，用 claude --version 檢查；部落格這一頁沒有寫版本門檻。部落格說可從 Claude directory 或在 CLI 執行 /plugin 安裝含 mods 的 plugin，格式是 /plugin install 加 plugin 名稱、@ 與 marketplace 名稱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自己寫不需要 Node.js 或 build step；claude --plugin-dir 加目錄，只在一個 session 載入，檔案一改就熱重載。也可以請 Claude 寫：Anthropic 說 Claude 可以寫 TypeScript 並熱重載；文件寫 Claude 依內建的 plugin-authoring skill，把 mod 寫在 ~/.claude/dev-mods/ 的 session 資料夾，要你核准才載入，超過 cleanupPeriodDays 會被刪。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安裝別人的 mod 前，可以先對 plugin 目錄執行 claude plugin validate，不必執行 mod，就能列出它處理的事件與呼叫的方法。文件寫終端機與 Desktop app 的 Code 分頁（WSL session 除外，且有些元素只限終端機）會畫；VS Code 外掛的聊天面板、claude -p、Agent SDK 與雲端 session（對送進雲端的 plugin）的事件函式會跑但不畫。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "安全與企業管控：沒有沙盒，管理者可以怎麼管"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在部落格寫，mods 對電腦的存取權與 Claude Code 本身相同、沒有沙盒，只該安裝信得過來源的 mods。文件寫 mod 能讀環境變數與設定檔裡的 API key，能在你被問之前核准工具呼叫，能用你的方案或 API key 呼叫模型，但改不了權限提示本身；開了 sandboxing，隔離的也只是 Claude 執行的 Bash 命令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "內建的 sec-default 在電腦有 managed settings，或使用者以 Team 或 Enterprise 方案登入時載入；用 API key 或 Amazon Bedrock、Google Cloud、Microsoft Foundry 登入的人，只在有 managed settings 的電腦上才有。它只擋使用者的 mod 改管理者管的東西（例如受管設定檔 Hook、系統提示）與核准被 deny 規則拒絕的呼叫；其他都允許，deny 規則也管不到 mod 自己的 $.fs。"
+        },
+        {
+          "type": "paragraph",
+          "text": "管理者的開關包括：allowManagedModsOnly 讓使用者帶來的 mods 都不載入；disableSideloadFlags 拒絕 --plugin-dir 與 --plugin-url；prependPlugins 與 appendPlugins 決定組織 mod 的順序，設 prependPlugins 要把 sec-default@builtin 寫進去才保留內建 guard；managed settings 裡的 disableAllHooks 連組織自己的 mods 也停。"
+        },
+        {
+          "type": "paragraph",
+          "text": "個人要關掉，可在 /plugin 的 Installed 分頁停用，用 --safe-mode 關掉一個 session，或在 ~/.claude/settings.json 設 disableAllHooks；後兩者不會停掉內建 mods，disableAllHooks 還會停設定檔 Hook 與自訂 status line。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "要什麼版本才能用 mods？",
+              "answer": "文件寫 mods 需要 Claude Code v2.1.287 或以上，預設開啟，可以用 claude --version 檢查，太舊就更新。部落格沒有寫版本門檻。"
+            },
+            {
+              "question": "寫 mod 要不要裝 Node.js 或做 build step？",
+              "answer": "文件寫不需要。自己寫 mod 不需要 Node.js 或 build step。"
+            },
+            {
+              "question": "mods 會取代設定檔 Hook 嗎？",
+              "answer": "不會。Anthropic 說的是設定檔 Hook 不能做的事，mods 做得到；文件寫設定檔 Hook 照舊執行、和 mods 並行，沒有任何一項被淘汰。"
+            },
+            {
+              "question": "怎麼關掉 mods？",
+              "answer": "單一 mod 在 /plugin 的 Installed 分頁停用；一個 session 用 --safe-mode 啟動；所有 session 在 ~/.claude/settings.json 設 disableAllHooks 為 true，這會連設定檔 Hook 與自訂 status line 一起停。--safe-mode 與 disableAllHooks 都不會停掉內建 mods。"
+            },
+            {
+              "question": "個人方案也能用 mods 嗎？",
+              "answer": "部落格只寫 mods 在 Claude Code CLI 與 desktop app 都能用，沒有逐一寫各個方案能不能用，官方未說明。"
+            },
+            {
+              "question": "VS Code 外掛與雲端 session 能用 mods 嗎？",
+              "answer": "文件寫，mod 的事件函式在 VS Code 外掛的聊天面板會跑，雲端 session 則是對送進雲端的 plugin 會跑，但兩者都不畫窗格或橫條。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "沒有實測，mods 與你同權限",
+          "text": "本站沒有安裝或實測任何 mod，以上都是 Anthropic 公告與文件的說法。Anthropic 在部落格寫，mods 對你電腦的存取權與 Claude Code 本身相同、沒有沙盒，只該安裝信得過來源的 mods，就像在電腦上安裝任何程式一樣。文件是活頁面，上面是截至 2026 年 10 月 4 日的版本，內建 mods 表與各項設定會隨版本變動，實際以你安裝的版本與最新文件為準。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Claude Sonnet 5.5 推出：牌價與 Sonnet 5 相同，API、雲端平台與 Claude.ai 都能用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-sonnet-55-20260928"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 部落格：Customize Claude Code with mods",
+          "url": "https://claude.com/blog/claude-code-mods",
+          "checked_on": "2026-10-04"
+        },
+        {
+          "title": "Claude Code Docs：Mods overview",
+          "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+          "checked_on": "2026-10-04"
+        },
+        {
+          "title": "Claude Code Docs：Create a mod",
+          "url": "https://code.claude.com/docs/en/plugins/mods/create",
+          "checked_on": "2026-10-04"
+        },
+        {
+          "title": "Claude Code Docs：Manage mods for your organization",
+          "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+          "checked_on": "2026-10-04"
+        }
+      ]
+    }
+  }
+}
