@@ -496,6 +496,27 @@ test("every episode but a drama's runs at least eight minutes: slides and the ex
   }
 });
 
+test("the upper end of target_minutes is an aim, not a limit, where the eight-minute floor holds; a drama keeps both sides", () => {
+  const length = (result) => result.warnings.filter((each) => each.path === "scenes" && /minutes; the target is/.test(each.message));
+  const over = (doc) => ({ ...doc, target_minutes: [0.1, 0.2] });
+  const slides = lintVideo(over(fixture()), context());
+  assert.deepEqual(slides.errors, []);
+  assert.deepEqual(length(slides), [], "slides over the upper end lint with no length warning");
+  assert.deepEqual(length(lintVideo(over(explainerFixture()), context({ brief: explainerBrief() }))), []);
+  assert.match(messages(length(lintVideo({ ...fixture(), target_minutes: [5, 6] }, context()))), /the target is 5-6/, "under the lower end still warns");
+  assert.match(messages(length(lintVideo(over(dramaFixture()), context({ brief: dramaBrief() })))), /the target is 0\.1-0\.2/);
+  // Under the floor is still an error, whatever the target says.
+  const saved = process.env.VIDEO_MIN_EPISODE_MINUTES;
+  delete process.env.VIDEO_MIN_EPISODE_MINUTES;
+  try {
+    const short = lintVideo({ ...fixture(), target_minutes: [8, 12] }, context());
+    assert.ok(short.errors.some((each) => each.path === "scenes" && /at least 8: write more narration/.test(each.message)), messages(short.errors));
+  } finally {
+    if (saved === undefined) delete process.env.VIDEO_MIN_EPISODE_MINUTES;
+    else process.env.VIDEO_MIN_EPISODE_MINUTES = saved;
+  }
+});
+
 test("a drama with a cast is read against the craft spec: the missed rows are warnings, a narrated drama gets none", () => {
   const drama = lintVideo(dramaFixture(), context({ brief: dramaBrief() }));
   assert.deepEqual(drama.errors, []);
