@@ -96,7 +96,7 @@ old wording, look for an administrator copy override of
 ## Notes
 
 - **The claim was refused and not forced.** `npm run tasks -- claim` reported an overlap with
-  eight active tasks (several in `review` since 2026-09-27..30 hold `apps/web/messages`,
+  seven active tasks (several in `review` since 2026-09-27..30 hold `apps/web/messages`,
   `tools/video/core/lint.mjs`, `tools/video/automation/prompts.mjs`,
   `.agents/skills/youtube-video/references` and the duration receipt). The work was done on
   the owner's direct request on branch `claude/video-length-floor-only` by

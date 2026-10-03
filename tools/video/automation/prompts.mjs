@@ -202,7 +202,7 @@ them, **one word** stressed), tag: the topic in ≤ 6 characters, shot: <the mos
   When fixing ("lint_errors" or "fix"), leave "shorts" out.
 - Chapters: at least 3, the first scene has one, each at least 10 seconds; names a viewer would
   search for. Total length at 250 spoken characters a minute: never under 8 minutes, and aim at
-  the upper end of "target_minutes" (the voice reads faster than 250). The upper end is an aim,
+  the upper end of "target_minutes" (the voice has usually read faster than 250). The upper end is an aim,
   not a limit: going over it is fine. Never cut a sourced fact to fit it and never pad to reach it.
 - Every Latin-letter word in the narration must be in "lexicon" or in lexicon_additions: its spoken
   form ("RAG": "R A G") or null when a Mandarin voice reads it correctly as written.

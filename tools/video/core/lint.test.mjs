@@ -505,12 +505,16 @@ test("the upper end of target_minutes is an aim, not a limit, where the eight-mi
   assert.deepEqual(length(lintVideo(over(explainerFixture()), context({ brief: explainerBrief() }))), []);
   assert.match(messages(length(lintVideo({ ...fixture(), target_minutes: [5, 6] }, context()))), /the target is 5-6/, "under the lower end still warns");
   assert.match(messages(length(lintVideo(over(dramaFixture()), context({ brief: dramaBrief() })))), /the target is 0\.1-0\.2/);
+  // A brand story (preset "custom") is a drama without the explainer preset: both sides stay.
+  assert.match(messages(length(lintVideo(over(storyFixture()), context({ brief: storyBrief(), series: storySeries() })))), /the target is 0\.1-0\.2/);
   // Under the floor is still an error, whatever the target says.
   const saved = process.env.VIDEO_MIN_EPISODE_MINUTES;
   delete process.env.VIDEO_MIN_EPISODE_MINUTES;
   try {
     const short = lintVideo({ ...fixture(), target_minutes: [8, 12] }, context());
     assert.ok(short.errors.some((each) => each.path === "scenes" && /at least 8: write more narration/.test(each.message)), messages(short.errors));
+    const low = lintVideo({ ...fixture(), target_minutes: [7, 12] }, context());
+    assert.ok(low.errors.some((each) => each.path === "target_minutes" && /starts at 7 minutes/.test(each.message)), messages(low.errors));
   } finally {
     if (saved === undefined) delete process.env.VIDEO_MIN_EPISODE_MINUTES;
     else process.env.VIDEO_MIN_EPISODE_MINUTES = saved;
