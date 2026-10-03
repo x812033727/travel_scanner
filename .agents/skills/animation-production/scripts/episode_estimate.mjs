@@ -388,7 +388,7 @@ export function estimateEpisode(doc, options = {}) {
         plan.note,
         `網頁的 H3 一支 4–15 秒整數，所以這裡每鏡買 ceil(需要的秒數)（最少 4）而不是 API 路線的貼模型長度；--resolution 768p|2k 選檔位（2K 不是原生 1920×1080、768P 低於 1080p，哪個該選未驗）`,
         `keyframes、人設表、音樂、judge 仍走伺服器 API（上面的 US$）；${plan.images}`,
-        `今天沒有 clips import 指令：方案做出的片段要手動放進 clips/ 並寫 manifest（references/stage-preconditions.md 最後一節）；assemble 只驗第 0 格 PSNR、停格與響度，黑格／凍格／切鏡要自己用 qc.mjs 的 args 跑，ledger 不會知道`,
+        `方案做出的片段用 clips import 帶進產線（references/stage-preconditions.md 最後一節）：跟買來的 take 過同一組 ffmpeg 檢查，帳本記點數；美元要自己用 --usd 給，judge 要帶 --judge 才問`,
         `「幾小時」用每支 ${minutesPerClip} 分鐘（--minutes-per-clip）的假設算，沒量過；同時跑 ${plan.running}、排隊 ${plan.queued}`,
         ...(plan.unlimited ? [plan.unlimited] : []),
       ],
@@ -438,7 +438,7 @@ export function estimateEpisode(doc, options = {}) {
         `一鏡需要幾支 ${plan.video_seconds} 秒影片 = ceil(需要的秒數 ÷ ${plan.video_seconds})；10 秒影片的 credits 另查`,
         "官方 MCP（kling.ai/mcp）用 Kling 帳號登入，扣哪個方案的 credits 要在帳號裡看；社群 MCP（github.com/199-mcp/mcp-kling）用開發者 API 金鑰，扣的是資源包，不是會員 credits",
         "同時幾支沒寫明（「無限排隊」）：這裡的「幾小時」把片段當一支接一支算，未驗證",
-        "keyframes、人設表、音樂、judge 仍走伺服器 API（上面的 US$）；今天沒有 Kling adapter，也沒有 clips import 指令",
+        "keyframes、人設表、音樂、judge 仍走伺服器 API（上面的 US$）；今天沒有 Kling adapter，做出的片段用 clips import 帶進產線",
       ],
     };
   }

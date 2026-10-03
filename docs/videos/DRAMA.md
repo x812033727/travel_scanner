@@ -135,6 +135,21 @@ drama 的 `brief.md` 必要章節：「故事前提」「角色」「站主觀�
 
 共用：`media/client.mjs`（比照 `tts/client.mjs`：重試分類、`Retry-After`、預算耗盡不重試）、`media/cache.json`（同一請求不付兩次）、`media/jobs.json`（中斷後接著輪詢）、`media/ledger.json`（花費帳）；每次遠端呼叫之間看 `STOP` 檔。
 
+### 外面做的片段：`clips import`（2026-10-04 加，票 `2026-10-03-clips-import-bring-a-clip-made`）
+
+站主的 Hailuo 網頁方案與 Kling MCP 做出的片段不經過伺服器，用這個指令進到一個鏡頭：
+
+```bash
+node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --provider hailuo-web|kling-mcp|external [--plan <方案>] [--credits N] [--usd N] [--note "…"] [--judge] [--force]
+```
+
+- **前提與 `clips` 一樣**：timeline 與 keyframes manifest 是現在的劇本（否則 2）、這一鏡有通過 judge 的關鍵影格（否則 2）、storyboard 已核准（否則 3）。鏡頭必須是 clip 鏡：still 與從別鏡切的（`source`）都是 2。**有 production profile 的作品一律 3**：profile 指定了買片段的模型，`productionClipProblems` 會拿 manifest 對它；要收別條路線的片段得先由站主改 profile，那是另一張票。
+- **做什麼**：把檔案複製成 `clips/<shot>-import-<n>.mp4`（同一個檔再匯入一次沿用原編號），跑買來的 take 同一組 ffmpeg 檢查（`qc.mjs`：解析度、fps、黑格、旁白範圍內的凍格、模型自己切鏡、第 0 格對關鍵影格 PSNR ≥ 22 且比相鄰關鍵影格高 3 dB；沒有向伺服器要過秒數，所以不查「比要求的短」，比台詞短時只提醒，由 `assemble` 的 `fitPlan` 處理）。`--judge` 才把片段與角色設定圖上傳媒體庫、問 `clip` rubric，記一筆 US$0.01 的 judge；不帶就完全不碰網站。
+- **沒過**：跟失敗的 take 一樣 `needs_review: true` 帶原因，結束碼 1；`--force` 留下它（`needs_review: false`、`forced: true`，量到的問題仍在 `qc.problems`）。外部生成時用這一鏡的關鍵影格當首格，PSNR 才過得了。
+- **manifest**：`clips` 寫的形狀（`file`、`sha256`、`seconds`、`frames`、`needed_s`、`first_frame`、`qc`、`judge`、`takes`、`needs_review`）加 `provider`、`plan`、`credits`、`imported_at`（與 `note`、`forced`）；原本買的 take 留在 `takes` 裡。從這一鏡切出去的鏡頭（`source`）跟著改指新檔，新檔不夠長的那個 `needs_review`、結束碼 1。`clips_hash` 重算，`state.json` 記一次 `clips`。
+- **帳本**：一筆 `{ stage: "clips", kind: "clip", id, provider, plan, credits, seconds, cost_usd, file, sha256, status: "imported" }`（`bookImport`，同一鏡同一檔只記一筆）。`cost_usd` 是 `--usd` 給的數，沒給是 0：點數換美元由操作的人算，工具不代換。秒數算進 `totals.clip_seconds`，`--usd` 算進單支上限；`importedTotals` 把匯入的另外加總。
+- **之後**：`clips` 把匯入的鏡頭當已完成留用（`kept (imported from …)`），`--dry-run` 不替它估價，`status` 的 `clips generated` 後面寫「N of M clips imported: …」。`clips --force` 仍會把它重買。
+
 `tts`：`voiceFor(doc, line)` 決定每句聲音，場景內 `(speaker, emotion)` 改變就切一個請求。`render`：鏡頭場景不畫；字幕條用 `buildCues`（與 CC 同一套斷句計時）每個不同的字幕文字出一張 1920×260 透明 PNG，樣式 `drama`（Noto Sans TC 600 56px、4px 黑描邊、置中、離底 56px）。不用 libass：內建字型只有 woff2，fontconfig 會悄悄換系統字型，三個環境會不一樣。
 
 `assemble`：`layoutDrama` 每場景給 `stills`（卡片，走原路）或 `clip`；`clipSegmentArgs`＝scale/pad → `setpts` → `fps=30` → `tpad` → `trim` → `overlay` 字幕條，編碼參數與投影片段相同但 `-tune film`、獨立 `CLIP_ENCODER_VERSION`，所以 `-c copy` 串接照舊；`dissolve` 在段內用上一鏡最後一格做。音訊：旁白 `asplit` 一路當側鏈，音樂 `stream_loop`＋淡入淡出＋`volume`，`sidechaincompress`，`amix=duration=first`（長度精確等於旁白），再兩段式 loudnorm；沒有 `music` 走原路。檢查：片段格數、第 0 格 PSNR、凍格 >60、音樂床 ≤ −24 LUFS、既有探測與響度。煙霧測試用 `lavfi testsrc2` 與 `sine` 造替身，不碰任何服務。

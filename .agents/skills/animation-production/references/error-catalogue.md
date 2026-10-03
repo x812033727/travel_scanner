@@ -70,12 +70,12 @@
 
 | # | 錯誤 | 誰抓 | 漏掉的代價 | 預防 |
 | --- | --- | --- | --- | --- |
-| 40 | 外部片段的首格不是這一鏡的關鍵影格；或有黑格、凍格、模型自己切鏡而沒人看 | `assemble`：PSNR < 22 → `checks.json` 不過，**1**；黑格／凍格／切鏡 `assemble` **不查**（只有 `clips` 的 `clipVerdict` 查） | 整段匯入白做；點數不退；黑格進成片 | Hailuo／Kling 生成時用關鍵影格當首格；匯入前自己跑 `qc.mjs` 的 args（stage-preconditions.md 最後一節第 4 步） |
-| 41 | 外部片段放進有 production profile 的集 | `productionClipProblems`／`productionClipSizeProblem`（`lint.mjs:408-434`）→ `assemble` 2；`status` 不算完成 | 白做 | 只用在沒 profile 的集 |
-| 42 | Hailuo relax 隊列的片段回來時 timeline 已改（台詞改了、重跑 `tts`） | `assemble`／`clips` 的雜湊 → 2 | 手寫的 manifest 條目全部重寫 | 匯入前 `status`；台詞定了再排隊 |
-| 43 | 手寫 manifest 漏了 `frames` 或 `clips_hash` 沒重算 | `assemble` 的 fit 算錯；`status` 的「video assembled」永遠不完成 | 一輪 | stage-preconditions.md 的欄位表；`clipsHash` 重算 |
+| 40 | 外部片段的首格不是這一鏡的關鍵影格；或有黑格、凍格、模型自己切鏡 | `clips import`：`clipVerdict`（PSNR < 22、黑格、凍格、切鏡）→ `needs_review`，**1**；`--force` 留下的由 `assemble` 再比一次第 0 格 | 那一支白做；點數不退 | Hailuo／Kling 生成時用關鍵影格當首格；不要用 `--force` 蓋過量到的問題 |
+| 41 | 外部片段放進有 production profile 的集 | `clips import` → **3**；手放的由 `productionClipProblems`／`productionClipSizeProblem`（`lint.mjs:408-434`）→ `assemble` 2，`status` 不算完成 | 白做 | 只用在沒 profile 的集 |
+| 42 | Hailuo relax 隊列的片段回來時 timeline 已改（台詞改了、重跑 `tts`） | `clips import` 的雜湊檢查 → 2 | 關鍵影格重畫之後這一支多半要重做 | 送出前 `status`；台詞定了再排隊 |
+| 43 | 手寫 manifest 漏了 `frames` 或 `clips_hash` 沒重算（指令落地前的手放） | `assemble` 的 fit 算錯；`status` 的「video assembled」永遠不完成 | 一輪 | 不手寫：用 `clips import` 重新帶進來 |
 | 44 | 片段比句子短，`fit: "auto"` 慢到 0.85 倍還不夠、尾格超過 60 格 | `assemble`：`freezeProblem` → 1 | 一輪；profile 下不准 `freeze` | 拆句或要更長的素材；`estimate` 的「超過 8 秒」列 |
-| 45 | 外部片段後來跑 `clips --force` | 無 | 匯入的檔被覆蓋（key 不在快取） | 不要 `--force`；用 `--shot` 指定別的鏡 |
+| 45 | 匯入的片段後來跑 `clips --force` | 無（`clips --dry-run --force` 會把它列成要買的） | 那一鏡在伺服器重買（key 不在快取），匯入的條目被換掉 | 不要 `--force`；用 `--shot` 指定別的鏡 |
 
 ## 收工與回報
 

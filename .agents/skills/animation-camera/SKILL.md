@@ -164,7 +164,7 @@ metadata:
 | 風格句 | `look.motion` 自動接上 | 自己決定貼不貼 | 同 |
 | 否定 | `look.negative`：Lite 由 adapter 完整接成 `Avoid: …`，非 Lite 保留 `negativePrompt` | 併進正文 `Avoid: …`（API 的 adapter 也這樣做） | `negative_prompt` 欄位，上限未驗 |
 | 秒數 | `clipSeconds` | H3 4–15 秒整數，自己選 | 5 或 10 秒 |
-| 進產線 | 自動進 `clips/manifest.json` 與帳本 | 手動：mp4 放 `clips/<shot>-<n>.mp4` 並寫 manifest 項（步驟在 `.agents/skills/animation-production/references/providers-and-plans.md` 第三節）。`assemble` 對它只驗：第 0 格對這一鏡關鍵影格 PSNR ≥ 22（切鏡則對來源那一格）、fit 的停格 > 60 格（`MAX_FREEZE_FRAMES`，`fit: "freeze"` 除外）、整支格數與響度；黑格、`freezedetect`、模型切鏡、1280×720 與 23 fps 下限、時長短於要求只在 `clips` 階段跑（`tools/video/media/qc.mjs`），外部片段要自己用同一組 ffmpeg 參數跑；帳本不知道。`clips import` 指令的票 `tasks/open/2026-10-03-clips-import-bring-a-clip-made.md` | 同 |
+| 進產線 | 自動進 `clips/manifest.json` 與帳本 | `clips import --slug <SLUG> --shot <id> --file <mp4> --provider hailuo-web`（步驟在 `.agents/skills/animation-production/references/stage-preconditions.md` 最後一節）：前提同 `clips`，跑同一組 ffmpeg 檢查（`tools/video/media/qc.mjs`：黑格、`freezedetect`、模型切鏡、1280×720 與 23 fps 下限、第 0 格對這一鏡關鍵影格 PSNR ≥ 22），沒過 `needs_review`；judge 要帶 `--judge` 才問；帳本記點數。`assemble` 之後照常驗 fit 的停格 > 60 格（`MAX_FREEZE_FRAMES`，`fit: "freeze"` 除外）、整支格數與響度 | 同，`--provider kling-mcp` |
 
 同一鏡（示範場的 s06）三種寫法：
 
