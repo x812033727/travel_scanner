@@ -1,0 +1,388 @@
+{
+  "slug": "ai-workflow-agent-glm-qwen-deepseek",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 413,
+  "related": [
+    "ai-workflow-agent-local-two-routes",
+    "ai-workflow-agent-local-engine",
+    "ai-workflow-agent-local-checklist"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "GLM、Qwen、DeepSeek 接上 Claude Code 與 Codex：哪些在本機、哪些其實在雲端",
+      "description": "同一個模型名字有三種跑法：權重下載到自己電腦、Ollama 的 :cloud 標籤、供應商自己的端點，只有第一種的提示詞由自己的電腦處理。這篇照 2026 年 10 月 3 日重讀的官方頁，逐家寫 Qwen、GLM、DeepSeek 在 Ollama 有哪些標籤能下載、哪些只有 :cloud，並整理 Z.ai、DeepSeek、阿里雲百鍊接 Claude Code 與 Codex 的端點設定，每一處都標明資料會送到哪裡。",
+      "hero": {
+        "src": "/guides/ai-workflow-agent-glm-qwen-deepseek/hero.jpg",
+        "alt": "原創插圖：左邊方框裡有一個模型和一把鎖，一條虛線把它和右邊兩朵各有一個模型的雲隔開，一張紙順著箭頭越過虛線，代表同一個模型名字可能在自己的電腦，也可能在別人的雲端",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這篇回答一個問題：把 Claude Code 或 Codex 的模型換成 GLM、Qwen 或 DeepSeek，模型到底跑在哪裡？結論是同一個名字有三種跑法，權重下載到自己電腦、Ollama 的 :cloud 標籤、供應商自己的端點；只有第一種由你電腦上的程式處理提示詞，另外兩種都會把內容送到別人的伺服器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "步驟與指令都來自官方文件，本站沒有實測；標籤、大小與端點取自 2026 年 10 月 3 日重讀的官方頁。讀完你能分辨 Ollama 的標籤在本機還是雲端，並拿到讓 Claude Code 指到三家端點的環境變數、讓 Codex 指到兩家端點的 config.toml。前提是裝好 Claude Code 或 Codex；接供應商端點要有該家的 API 金鑰，一律放進環境變數；走本機則要裝好 Ollama。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "GLM、Qwen、DeepSeek 接上 Claude Code 或 Codex 時，同一個名字有三種跑法：權重下載到自己電腦、Ollama 的 :cloud 標籤、供應商自己的端點；只有第一種由自己電腦上的程式處理提示詞，另外兩種會把內容送到 Ollama 或供應商的伺服器。",
+            "2026 年 10 月 3 日查證，本篇讀的五個 Ollama 模型頁裡，下載得到的是 qwen3.5（七個尺寸標籤 1.0GB 到 81GB）、glm-4.7-flash（19GB 到 60GB）與 deepseek-r1（七個尺寸標籤 1.1GB 到 404GB）；glm-5.3-flash 與 deepseek-v4.1-flash 各只有一個 :cloud 標籤，大小欄寫「-」。",
+            "Z.ai、DeepSeek 與阿里雲百鍊（國際站文件）各有接 Claude Code 與 Codex 的官方頁，端點都在供應商自己的伺服器上；Anthropic 的文件寫，不支援透過任何閘道把 Claude Code 導到非 Claude 模型。",
+            "Z.ai 與 DeepSeek 的 Codex 範例把金鑰直接寫進 config.toml，阿里雲的範例用 env_key 從環境變數讀；Codex 的設定參考頁把直接寫金鑰的欄位標為不建議，本篇兩份 toml 都改用 env_key。Z.ai 與 DeepSeek 的 Claude Code 頁都寫了模型別名對照，用之前要先看清楚。"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "同一個名字，三種跑法：資料各走哪條路",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一種是權重下載到自己電腦：Ollama 模型頁標籤表的 Size / Usage 欄是檔案大小，例如 glm-4.7-flash:q4_K_M 寫 19GB，由你電腦上的 Ollama 執行。第二種是 Ollama 的 :cloud 標籤，例如 glm-5.3-flash:cloud，同一欄寫「-」，能力列多一個 cloud，跑在 Ollama 的雲端。第三種是供應商自己的端點，例如 Z.ai 的 api.z.ai、DeepSeek 的 api.deepseek.com，不經過 Ollama，直接把 Claude Code 或 Codex 的請求網址改成供應商的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的 glm-5.3-flash 模型頁寫，這個模型託管在美國與歐洲，和 Ollama 雲端上的其他模型一樣依 Ollama 的隱私政策處理，並寫了 zero data retention；本篇讀到的 deepseek-v4.1-flash 頁面沒有同一句。供應商端點的資料處理要讀各家的隱私政策，DeepSeek 的部分見《DeepSeek 資料去哪裡：隱私、審查與台灣使用者的取捨》。本篇說的資料只指模型請求送到哪裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 模型頁的 Applications 區印出 Claude Code 的啟動指令，本篇讀的五頁格式一樣，只差標籤，下面照抄。這一區列 Claude Code、OpenCode、Hermes Agent、OpenClaw，沒有 Codex，本篇也不寫 Codex 搭 Ollama。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "ollama-launch-tags.sh：同一行指令，標籤決定跑在哪裡（Ollama）",
+          "code": "# 來源：Ollama 模型頁的 Applications 區，每一頁都印了一行 Claude Code 的啟動指令。\n# 指令一模一樣，只有標籤不同，跑的地方就不同。這一區沒有列 Codex。\n\n# 權重下載到自己電腦：標籤沒有 cloud，標籤表的 Size / Usage 欄是檔案大小。\nollama launch claude --model qwen3.5\nollama launch claude --model glm-4.7-flash\nollama launch claude --model deepseek-r1\n\n# 跑在 Ollama 的雲端：標籤帶 cloud，Size / Usage 欄寫「-」，提示詞會送到 Ollama。\nollama launch claude --model glm-5.3-flash:cloud\nollama launch claude --model deepseek-v4.1-flash:cloud"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "同一行指令，標籤帶 cloud 就不是本機",
+          "text": "Ollama 模型頁印出的 Claude Code 指令長得一模一樣，只差標籤：qwen3.5、glm-4.7-flash、deepseek-r1 是下載到自己電腦的標籤，glm-5.3-flash:cloud 與 deepseek-v4.1-flash:cloud 帶 cloud，在 Ollama 的雲端執行。在自己的終端機打指令、連的是自己電腦的位址，都不代表模型在自己電腦上跑：這兩個雲端模型頁的 curl 範例，連的就是 http://localhost:11434，模型卻是帶 cloud 的標籤。所以要兩件事同時成立才是本機：連的是自己電腦的位址，而且標籤不帶 cloud、標籤表 Size / Usage 欄是檔案大小（本篇讀的模型頁上，雲端標籤這一格寫「-」）。網址不是自己電腦的，不管模型名字帶不帶 cloud，請求都送到別人的伺服器，供應商端點就是這種。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-agent-glm-qwen-deepseek/diagram-1.svg",
+          "alt": "四格圖解：權重在自己電腦、Ollama 的 :cloud 標籤、供應商自己的端點三種跑法，各標資料送到哪裡，最後一格是分辨方法。",
+          "width": 1600,
+          "height": 900,
+          "caption": "四格圖解：權重在自己電腦、Ollama 的 :cloud 標籤、供應商自己的端點，各標資料送到哪裡，最後一格是分辨方法（2026 年 10 月查證各家官方頁）。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "heading",
+          "text": "三家在 Ollama 的標籤：哪些能下載，哪些只有 :cloud",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Qwen：qwen3.5 模型頁 0.8b 到 122b 七個尺寸標籤從 1.0GB 到 81GB，能力列是 vision、tools、thinking，頁面上沒有帶 cloud 的標籤；Ollama 上的其他 Qwen 檔案庫本篇沒有讀，不下「Qwen 沒有雲端標籤」的結論。版本與授權怎麼分，見《本機跑 Qwen：中文表現與設定》與《通義千問 Qwen："
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "模型家族與 Qwen Studio》。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "GLM：本篇讀的 GLM 模型頁裡能下載的是 glm-4.7-flash，只有四個標籤，latest 與 q4_K_M 是 19GB，q8_0 是 32GB，bf16 是 60GB。較新的 glm-5.3-flash 在 Ollama 只有 glm-5.3-flash:cloud 一個標籤，大小欄寫「-」，上下文視窗 1M。要在 Ollama 上用 GLM-5.3-Flash，查證當天只有 Ollama 雲端這條路。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DeepSeek：本篇讀的 DeepSeek 模型頁裡能下載的是 deepseek-r1，頁面列的七個尺寸標籤從 1.5b 的 1.1GB 到 671b 的 404GB。頁面把 deepseek-r1:671b 標成 DeepSeek-R1，其餘六個列在蒸餾模型之下；蒸餾版是什麼、本機怎麼跑，見《在自己電腦跑 DeepSeek：Ollama 蒸餾版教學》。deepseek-v4.1-flash 和 glm-5.3-flash 一樣，只有 deepseek-v4.1-flash:cloud 一個標籤。DeepSeek 自己的 Claude Code 與 Codex 頁用的模型名是 deepseek-flash 與 deepseek-v4-pro，和 deepseek-r1 對不上。"
+        },
+        {
+          "type": "heading",
+          "text": "Claude Code 指到供應商端點：三組環境變數",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Anthropic 的 "
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " 閘道文件寫，Anthropic 不背書、不維護也不稽核第三方閘道產品，並且不支援透過任何閘道把 Claude Code 導到非 Claude 模型；同一頁把 ANTHROPIC_BASE_URL 稱為把 Claude Code 指向閘道的變數。下面三家的頁面用的也是 ANTHROPIC_BASE_URL，回答的是各家頁面設定的模型。供應商端點算不算這一頁說的閘道，兩邊頁面都沒有寫，本篇只轉述各自的寫法，不做條款解讀。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "三家頁面都設兩個環境變數：ANTHROPIC_BASE_URL 指到供應商的網址，ANTHROPIC_AUTH_TOKEN 放供應商的金鑰。要一起設：Anthropic 的文件寫，只設網址而不設憑證時，已儲存的 claude.ai 登入仍是有效的憑證，它的用量限制與計費照舊適用。Z.ai 與阿里雲的頁面把這些變數寫進 ~/.claude/settings.json 的 env 欄位，DeepSeek 的頁面用 export；下面三個函式都改寫成 export，金鑰讀自你放好的環境變數，變數名是本篇取的。三個端點都在供應商的伺服器上，不是本機。"
+        },
+        {
+          "type": "code",
+          "language": "bash",
+          "label": "use-endpoint.sh：把 Claude Code 指到供應商端點（bash）",
+          "code": "# use-endpoint.sh：三個函式，各把 Claude Code 指到一家供應商自己的端點。\n# 這三個端點都在供應商的伺服器上，不是本機：啟動 claude 之後，\n# 你送出的提示詞與程式碼內容會到供應商那裡。\n# 金鑰先放進自己的環境變數（ZAI_API_KEY 等，名稱是本篇取的），不寫進這支腳本。\n# 用法：source use-endpoint.sh && use_deepseek && claude\n\n# 換回原本的設定：清掉這幾個變數，或開一個新的終端機視窗。\nuse_default() {\n  unset ANTHROPIC_BASE_URL ANTHROPIC_AUTH_TOKEN ANTHROPIC_MODEL API_TIMEOUT_MS\n  unset ANTHROPIC_DEFAULT_OPUS_MODEL ANTHROPIC_DEFAULT_SONNET_MODEL ANTHROPIC_DEFAULT_HAIKU_MODEL\n  unset CLAUDE_CODE_SUBAGENT_MODEL CLAUDE_CODE_MAX_CONTEXT_TOKENS\n}\n\nuse_zai() {\n  # 來源：Z.ai 的 Claude Code 頁（GLM Coding Plan；頁面寫進 settings.json，這裡改成 export）\n  use_default\n  export ANTHROPIC_BASE_URL=\"https://api.z.ai/api/anthropic\"\n  export ANTHROPIC_AUTH_TOKEN=\"$ZAI_API_KEY\"\n  export API_TIMEOUT_MS=\"3000000\"\n}\n\nuse_deepseek() {\n  # 來源：DeepSeek 的 Claude Code 頁\n  use_default\n  export ANTHROPIC_BASE_URL=\"https://api.deepseek.com/anthropic\"\n  export ANTHROPIC_AUTH_TOKEN=\"$DEEPSEEK_API_KEY\"\n  export ANTHROPIC_MODEL=\"deepseek-flash[1m]\"\n  export ANTHROPIC_DEFAULT_OPUS_MODEL=\"deepseek-flash[1m]\"\n  export ANTHROPIC_DEFAULT_SONNET_MODEL=\"deepseek-flash[1m]\"\n  export ANTHROPIC_DEFAULT_HAIKU_MODEL=\"deepseek-flash\"\n  export CLAUDE_CODE_SUBAGENT_MODEL=\"deepseek-flash\"\n}\n\nuse_qwen_cloud() {\n  # 來源：阿里雲國際站 Model Studio 的 Claude Code 頁（Token Plan；頁面寫進 settings.json，這裡改成 export）\n  use_default\n  export ANTHROPIC_BASE_URL=\"https://token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic\"\n  export ANTHROPIC_AUTH_TOKEN=\"$MODELSTUDIO_API_KEY\"\n  export ANTHROPIC_MODEL=\"auto\"\n  export ANTHROPIC_DEFAULT_HAIKU_MODEL=\"qwen3.6-flash\"\n  export ANTHROPIC_DEFAULT_SONNET_MODEL=\"qwen3.8-flash\"\n  export ANTHROPIC_DEFAULT_OPUS_MODEL=\"qwen3.8-max\"\n  export CLAUDE_CODE_SUBAGENT_MODEL=\"auto\"\n  export CLAUDE_CODE_MAX_CONTEXT_TOKENS=\"983616\"\n}"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Z.ai：頁面副標寫的是在 Claude Code 使用 GLM Coding Plan 的方法。函式照頁面自動腳本那一組，只設網址、金鑰與 API_TIMEOUT_MS（3000000）。別名頁面有兩種寫法：前段列的預設對照是 opus、sonnet、haiku 三個都對到 GLM-5.3-Flash；手動設定的範例則把 haiku 設成 glm-5.3-flash[1m]、sonnet 與 opus 設成 glm-5.3[1m]，頁首另指向一頁切換到 GLM-5.3 的說明。函式不設別名，要用哪一組以官網為準。",
+            "DeepSeek：函式照抄頁面的 export，頁面另設的 CLAUDE_CODE_EFFORT_LEVEL 與 CLAUDE_CODE_AUTO_COMPACT_WINDOW 這裡略過。頁面寫，傳入的模型名以 claude-opus 開頭的對到 deepseek-v4-pro，並以 V4 Pro 的價格計費，價格以官網為準；以 claude-haiku 或 claude-sonnet 開頭的對到 deepseek-flash。範例則把三個別名都設成 deepseek-flash（opus 與 sonnet 加上 [1m]）。",
+            "阿里雲百鍊（國際站文件）：頁面列了 Pay-as-you-go、Coding Plan、Token Plan Personal Edition、Token Plan Team Edition 四種連法；設定那一節裡，Token Plan 的兩個版本共用一個網址，其餘各有各的網址。函式用 Token Plan 的網址；Coding Plan 是 https://coding-intl.dashscope.aliyuncs.com/apps/anthropic；Pay-as-you-go 要把網址裡的 WorkspaceId 換成你的 Workspace ID，頁面列了北京、新加坡、維吉尼亞三個區域，金鑰要和區域一致。同一頁的疑難排解表另列了三組不同的網址，例如 Pay-as-you-go 寫 https://dashscope.aliyuncs.com/apps/anthropic，和設定那一節不一樣；函式照設定那一節，以官網為準。範例另設 CLAUDE_CODE_MAX_CONTEXT_TOKENS 為 983616，頁面說 Claude Code 預設用 200K 的上下文視窗。設好之後，頁面建議在 Claude Code 裡執行 /status，確認 ANTHROPIC_BASE_URL 與 ANTHROPIC_AUTH_TOKEN 指到 Model Studio 的位址。Z.ai 與阿里雲的頁面都依各自的方案寫，方案內容與費用以官網為準。"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Codex 指到供應商端點：config.toml 的 model_providers",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 的設定檔是 ~/.codex/config.toml。三家頁面的 Responses 寫法用同一個模式：在 [model_providers.名稱] 區段寫 base_url 與 wire_api = \"responses\"，用 model_provider 指到它，再用 model_catalog_json 指向一份列出模型資料的 JSON 檔。Codex 的設定參考頁寫，wire_api 只支援 responses、省略時也是它。Z.ai 的 Codex 頁用警告框標出要用專門的 OpenAI Responses 協定端點，網址和它 Claude Code 頁的不同；DeepSeek 的頁面寫 DeepSeek API 原生支援 Responses API。"
+        },
+        {
+          "type": "paragraph",
+          "text": "金鑰有兩種寫法。Z.ai 與 DeepSeek 的範例用 experimental_bearer_token，DeepSeek 的欄位說明寫那是直接存在設定檔裡的金鑰，Z.ai 的頁面也提醒不要把金鑰寫死在程式碼裡；阿里雲則先設 OPENAI_API_KEY 環境變數，再在區段裡寫 env_key = \"OPENAI_API_KEY\"。Codex 的設定參考頁寫，env_key 是提供這家 API 金鑰的環境變數，experimental_bearer_token 則標明不建議、請改用 env_key。下面兩份 toml 都用 env_key，變數名是本篇取的，其餘欄位照各家頁面；這是本篇的改寫，不是兩家的原文。兩個端點都不是本機。"
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "label": "~/.codex/config.toml：Codex 接 Z.ai 的 GLM",
+          "code": "# ~/.codex/config.toml：Codex 接 Z.ai 的 GLM（照 Z.ai 的 Codex 頁，金鑰改成讀環境變數）\n# 這個端點在 Z.ai 的伺服器上，不是本機：Codex 送出的內容會到 Z.ai。\n# 先把 API 金鑰存進環境變數 ZAI_API_KEY，不要寫進這個檔案。\n# models.json 的內容照 Z.ai 頁面「Create the Model Catalog File」那一步建立，本篇不重貼。\n\nmodel_provider = \"ZAI\"\nmodel = \"glm-5.3\"\nmodel_reasoning_effort = \"max\"\nmodel_catalog_json = \"~/.codex/models.json\"\n\n[model_providers.ZAI]\nname = \"ZAI\"\nbase_url = \"https://api.z.ai/api/v1\"\nenv_key = \"ZAI_API_KEY\"\nwire_api = \"responses\""
+        },
+        {
+          "type": "code",
+          "language": "toml",
+          "label": "~/.codex/config.toml：Codex 接 DeepSeek",
+          "code": "# ~/.codex/config.toml：Codex 接 DeepSeek（照 DeepSeek 的 Codex 頁，金鑰改成讀環境變數）\n# 這個端點在 DeepSeek 的伺服器上，不是本機：Codex 送出的內容會到 DeepSeek。\n# 先把 API 金鑰存進環境變數 DEEPSEEK_API_KEY，不要寫進這個檔案。\n# models.json 的內容照 DeepSeek 頁面的 Option 2 建立，本篇不重貼。\n# 比 Z.ai 多的幾行是 DeepSeek 頁面的範例寫法；頁面說明 forced_login_method 是用 API 金鑰認證、\n# 略過 ChatGPT 帳號登入，web_search 是對 DeepSeek 模型關閉內建網頁搜尋。\n# 頁面另有 preferred_auth_method = \"apikey\"，Codex 的設定參考頁沒有這個鍵，這裡不放；\n# 頁面的 [desktop] 區段是 ChatGPT 桌面版用的，這裡也不放。\n\nmodel = \"deepseek-flash\"\nmodel_provider = \"deepseek\"\nforced_login_method = \"api\"\nmodel_reasoning_effort = \"high\"\nweb_search = \"disabled\"\nshow_raw_agent_reasoning = true\nmodel_catalog_json = \"~/.codex/models.json\"\n\n[model_providers.deepseek]\nname = \"deepseek\"\nbase_url = \"https://api.deepseek.com/\"\nenv_key = \"DEEPSEEK_API_KEY\"\nwire_api = \"responses\""
+        },
+        {
+          "type": "heading",
+          "text": "Codex 還要多做的事：models.json 與阿里雲的方案差異",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "兩份範例都指向 ~/.codex/models.json，兩家頁面都列出完整內容，內容卻不同：Z.ai 宣告 glm-5.3，DeepSeek 宣告 deepseek-flash 與 deepseek-v4-pro；DeepSeek 另有一鍵腳本，會先把原本的 config.toml 備份到 ~/.codex/backup-deepseek/ 再改寫。models.json 照兩家頁面原樣貼上，後貼的會蓋掉先貼的；兩家頁面都沒有寫怎麼同時保留。"
+        },
+        {
+          "type": "paragraph",
+          "text": "阿里雲的 Codex 頁依方案分開寫，網址見表格。Token Plan 的 Responses 寫法把 model 設成 auto，還要另建 ~/.codex/model-catalog.local.json 並用 model_catalog_json 指過去。Coding Plan 那一節寫它只支援 Chat/Completions API、不支援 Responses API，要裝舊版 Codex（舉 0.80.0）並設 wire_api = \"chat\"；同一頁的疑難排解則寫新版 Codex 已不再支援 wire_api = \"chat\"，遇到這個錯誤就改成 responses。Qwen 走阿里雲端點接 Codex，要先確認方案支援哪種 API，以百鍊頁面為準；本篇不放 Qwen 的 toml。"
+        },
+        {
+          "type": "heading",
+          "text": "授權與資料去向：照各頁的用詞讀",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "授權照各頁的用詞讀，不從別家推。本篇讀到的 Ollama 頁面裡，glm-5.3-flash 列了「MIT Licensed」；deepseek-r1 的授權段落寫權重以 MIT License 授權、DeepSeek-R1 系列支援商用，同一段也寫 Qwen 蒸餾版源自 Apache 2.0 授權的 Qwen 2.5 系列，Llama 8B 與 70B 蒸餾版分別源自 Llama 3.1 與 Llama 3.3 授權的模型。同一頁把 8b（也就是 latest）標成 DeepSeek-R1-0528-Qwen3-8B，授權段落沒有提到 Qwen3。其餘三頁沒有授權文字，本篇沒有讀 Hugging Face 的模型卡，表格寫「頁面沒有寫」，不寫成可以商用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "表格標「雲端」的會把內容送到 Ollama 或供應商；標「本機」的標籤，要由自己電腦上的 Ollama 執行才留在本機。跨廠商的欄位比較見《"
+            },
+            {
+              "type": "article",
+              "text": "中國系 AI",
+              "kind": "life",
+              "slug": "chinese-ai-models-comparison"
+            },
+            {
+              "type": "text",
+              "text": " 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax》，Ollama 的安裝與關閉雲端標籤見《Ollama 入門：Windows、Mac 安裝與第一個模型》。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "家族",
+            "本機標籤與大小（Ollama）",
+            "Ollama 的 :cloud 標籤",
+            "Claude Code 端點（供應商）",
+            "Codex 端點（供應商）",
+            "授權（照頁面用詞）"
+          ],
+          "rows": [
+            [
+              "Qwen",
+              "本機：qwen3.5 的 0.8b 1.0GB、2b 2.7GB、4b 3.4GB、9b 6.6GB（latest）、27b 17GB、35b 24GB、122b 81GB；256K",
+              "qwen3.5 頁沒有列；其他 Qwen 檔案庫本篇沒讀",
+              "雲端：阿里雲百鍊國際站，Token Plan 為 https://token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic，其他方案網址不同",
+              "雲端：Token Plan 為 https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1（responses）；Coding Plan 只支援 Chat/Completions",
+              "Ollama 的 qwen3.5 頁沒有寫；見站內兩篇 Qwen 文章"
+            ],
+            [
+              "GLM",
+              "本機：glm-4.7-flash 的 latest 與 q4_K_M 19GB、q8_0 32GB、bf16 60GB；198K",
+              "雲端：glm-5.3-flash:cloud，該頁只有這一個標籤；1M；其他 GLM 檔案庫本篇沒讀",
+              "雲端：Z.ai，https://api.z.ai/api/anthropic",
+              "雲端：Z.ai，https://api.z.ai/api/v1（responses）",
+              "glm-5.3-flash 的 Ollama 頁寫 MIT Licensed；glm-4.7-flash 頁沒有寫"
+            ],
+            [
+              "DeepSeek",
+              "本機：deepseek-r1 的七個尺寸標籤 1.5b 1.1GB、7b 4.7GB、8b 5.2GB（latest）、14b 9.0GB、32b 20GB、70b 43GB、671b 404GB；128K，671b 為 160K；頁面把 671b 標成 DeepSeek-R1，其餘六個列為蒸餾模型",
+              "雲端：deepseek-v4.1-flash:cloud，該頁只有這一個標籤；1M；其他 DeepSeek 檔案庫本篇沒讀",
+              "雲端：DeepSeek，https://api.deepseek.com/anthropic",
+              "雲端：DeepSeek，https://api.deepseek.com/（responses）",
+              "deepseek-r1 頁寫權重以 MIT License 授權，同段寫 Qwen、Llama 蒸餾版源自原本另有授權的模型；deepseek-v4.1-flash 頁沒有寫"
+            ]
+          ],
+          "caption": "三個家族在 Ollama 與供應商端點的對照，2026 年 10 月查證；標「本機」的才是權重下載到自己電腦，標「雲端」的資料會送到 Ollama 或供應商。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Ollama 上帶 :cloud 的標籤算本機嗎？",
+              "answer": "不算。本篇讀的 Ollama 模型頁，帶 cloud 的標籤（glm-5.3-flash:cloud、deepseek-v4.1-flash:cloud）大小欄寫「-」，能力列多一個 cloud，在 Ollama 的雲端執行；這兩頁的 curl 範例連的是本機的 11434 埠，模型照樣在雲端。下載到自己電腦的標籤，大小欄是檔案大小，例如 glm-4.7-flash:q4_K_M 的 19GB。"
+            },
+            {
+              "question": "為什麼 Ollama 上找不到 GLM-5.3-Flash 與 DeepSeek-V4.1-Flash 的本機標籤？",
+              "answer": "本篇查證當天，這兩個名字的模型頁各只有一個 :cloud 標籤，沒有可下載的標籤；頁面沒有寫原因，也沒有寫之後會不會增加。本篇讀的頁面裡能下載的是較舊的 glm-4.7-flash 與 deepseek-r1。"
+            },
+            {
+              "question": "Claude Code 接 DeepSeek 端點時，claude-opus 開頭的名稱會變成哪個模型？",
+              "answer": "DeepSeek 的頁面寫，名稱以 claude-opus 開頭的對到 deepseek-v4-pro，並以 V4 Pro 的價格計費；以 claude-haiku 或 claude-sonnet 開頭的對到 deepseek-flash。頁面範例把 opus 別名也設成 deepseek-flash，價格以官網為準。"
+            },
+            {
+              "question": "Qwen 走阿里雲端點接 Codex，每種方案都行嗎？",
+              "answer": "阿里雲的 Codex 頁依方案分開寫：Token Plan 與 Pay-as-you-go 有 Responses API 的寫法；Coding Plan 那一節寫只支援 Chat/Completions API、要裝舊版 Codex，同一頁的疑難排解又寫新版 Codex 已不再支援 wire_api 設成 chat。先確認自己方案支援哪種 API，以百鍊頁面為準。"
+            },
+            {
+              "question": "金鑰可以直接寫進 config.toml 嗎？",
+              "answer": "Z.ai 與 DeepSeek 的 Codex 範例是這樣寫的，用 experimental_bearer_token；Z.ai 的頁面也提醒不要把金鑰寫死在程式碼裡，Codex 的設定參考頁則把這個欄位標為不建議、請改用 env_key。本篇改成 env_key 讀環境變數，這也是阿里雲頁面用的欄位，改法不是兩家頁面的原文。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機跑 Qwen：中文表現與設定",
+              "kind": "life",
+              "slug": "qwen-local-deployment"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Z.ai 文件：Claude Code（GLM Coding Plan 的 ANTHROPIC_BASE_URL、金鑰變數、預設模型別名）",
+          "url": "https://docs.z.ai/devpack/tool/claude",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Z.ai 文件：Codex（OpenAI Responses 協定端點、config.toml 與 models.json）",
+          "url": "https://docs.z.ai/devpack/tool/codex",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "DeepSeek API 文件：Integrate with Claude Code（環境變數與 claude-opus 開頭的模型名對照）",
+          "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "DeepSeek API 文件：Integrate with Codex（config.toml、models.json、欄位說明）",
+          "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "阿里雲 Model Studio 文件（國際站）：Claude Code（四種計費方式的網址與設定）",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "阿里雲 Model Studio 文件（國際站）：Codex（Responses 與 Chat/Completions 兩種接法）",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Claude Code 文件：Other LLM gateways（不支援把 Claude Code 導到非 Claude 模型、只設網址的行為）",
+          "url": "https://code.claude.com/docs/en/llm-gateway",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama 模型庫：qwen3.5（標籤、大小、上下文視窗與啟動指令）",
+          "url": "https://ollama.com/library/qwen3.5",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama 模型庫：glm-4.7-flash（標籤、大小、上下文視窗與啟動指令）",
+          "url": "https://ollama.com/library/glm-4.7-flash",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama 模型庫：glm-5.3-flash（只有 cloud 標籤、託管地點與授權說明）",
+          "url": "https://ollama.com/library/glm-5.3-flash",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama 模型庫：deepseek-r1（標籤、大小、蒸餾版說明與授權段落）",
+          "url": "https://ollama.com/library/deepseek-r1",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama 模型庫：deepseek-v4.1-flash（只有 cloud 標籤）",
+          "url": "https://ollama.com/library/deepseek-v4.1-flash",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Codex 文件：Configuration Reference（model_provider、model_providers 的 env_key、experimental_bearer_token、wire_api 等設定鍵）",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}
