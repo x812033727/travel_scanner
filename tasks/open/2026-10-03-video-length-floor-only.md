@@ -60,7 +60,7 @@ validation and its default of 12 stay) and becomes what the writer aims at, not 
 - [x] The admin label of `target_minutes_max` no longer reads as a limit in the five locales,
       and one hint line under the two length fields says only the floor is enforced.
 - [x] The dated note on measured narration speed is in `automated.md` and `writer-video.md`.
-- [ ] The duration receipt (`docs/videos/long-form/review.md` and `review.json`) is rebound by
+- [x] The duration receipt (`docs/videos/long-form/review.md` and `review.json`) is rebound by
       an agent other than the author.
 
 ## Steps
@@ -69,8 +69,10 @@ validation and its default of 12 stay) and becomes what the writer aims at, not 
       `needsMinimumLength(doc)` is true. The lower half stays, because between 8 minutes and
       the lower end it is the only early signal.
 - [x] `tools/video/core/lint.test.mjs`: one test for both directions (slides and explainer over
-      the upper end: no length warning; slides under the lower end: warning; drama over: still
-      warns; slides under the floor: still an error).
+      the upper end: no length warning; slides under the lower end: warning; a drama and a brand
+      story over: still warn; slides under the floor, or a target that starts under it: still an
+      error). A long anime and a compilation over the upper end are not asserted: a long anime's
+      target must equal its story body, so the fixture cannot be put over it cheaply.
 - [x] `tools/video/automation/prompts.mjs`: slides planner and writer, the explainer's common
       block and its two planners.
 - [x] Skill: `SKILL.md` (route table, hard rule 10) copied byte-identically to `.claude/`,
@@ -78,7 +80,7 @@ validation and its default of 12 stay) and becomes what the writer aims at, not 
 - [x] Docs: `docs/videos/README.md`, `DESIGN.md`, `AUTOMATION.md`.
 - [x] Admin: `videoSettings.fields.target_minutes_max` and a new `videoSettings.lengthHelp` in
       the five `admin.json` files; the hint is rendered in `admin-video-settings-tutorial.tsx`.
-- [ ] Duration receipt increment by an independent agent (see Notes).
+- [x] Duration receipt increment by an independent agent (see Notes).
 
 ## How to verify
 
@@ -102,7 +104,12 @@ old wording, look for an administrator copy override of
   the owner's direct request on branch `claude/video-length-floor-only` by
   `claude-fable-5-1-length`; the coordinator has to look at open pull requests that touch the
   same lines before merging. The edits are one-line replacements, so a conflict is small.
-- **Duration receipt is stale until someone else reviews.** `lint.mjs`, `lint.test.mjs`,
+- **Duration receipt: rebound on 2026-10-04** by `claude-pr-review-video-length-floor-only`
+  (section "Branch video-length-floor-only increment: 14 files" in `review.md`). The same
+  session also wrote the small review-fix commit before it (one sentence in `automated.md`, one
+  phrase in `prompts.mjs`, the hint's first sentence in four locales, two assertions in
+  `lint.test.mjs`); the report says so. Any later change to a bound file needs another
+  increment, and a merge of main that touches the receipt needs a follow-up. `lint.mjs`, `lint.test.mjs`,
   `prompts.mjs`, both `SKILL.md` copies, `automated.md`, the five `admin.json`,
   `admin-video-settings-tutorial.tsx`, `docs/videos/README.md` and `DESIGN.md` are bound in
   `tools/video/long-form/review.mjs`. The author may not rebind them
