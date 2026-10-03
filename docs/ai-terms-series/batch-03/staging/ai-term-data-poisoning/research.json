@@ -1,0 +1,119 @@
+{
+  "slug": "ai-term-data-poisoning",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://csrc.nist.gov/pubs/ai/100/2/e2025/final",
+      "title": "NIST AI 100-2 E2025：Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations",
+      "access": "web open (curl -sSL, 200) CSRC page; PDF https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf read via pdftotext, 2026-10-03; e2026 URLs probed, 404",
+      "claims": [
+        "分類層級包含 ML 方法類型、攻擊生命週期階段、攻擊者目標、能力與知識（摘要、2.1）",
+        "投毒屬訓練階段攻擊；資料投毒與模型投毒的定義（2.1.1）",
+        "可用性投毒與完整性投毒，後門屬完整性（2.1.2、2.3）",
+        "BadNets（2017）是第一個後門投毒攻擊，觸發圖塊對應攻擊者指定的目標類別；後門需同時控制訓練資料與使用時輸入（2.3.3、2.1.2）",
+        "預訓練網址清單的網域可能被買下換內容；投毒也影響指令微調與 RLHF（3.2.1）",
+        "GenAI 訓練階段攻擊與部署階段（提示詞注入、間接提示詞注入）的區分（3.1.1）",
+        "知識庫投毒列在間接提示詞注入之下（3.4.2）",
+        "雜湊核對、資料過濾可嘗試剔除投毒樣本但在大型語料中偵測很困難、把模型當成不受信任元件（3.2.3）",
+        "無額外假設時後門與自然特徵無法區分（2.3.3）",
+        "投毒需控制訓練流程、真實世界不易執行，已知案例針對持續更新的系統（2.3.5）",
+        "間接提示詞注入經由模型讀到的資源進入，且可自我散播（3.4、3.4.2），對照表注入欄寫「只在讀到注入內容時」"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2302.10149",
+      "title": "Carlini et al.：Poisoning Web-Scale Training Datasets is Practical",
+      "access": "web open (curl -sSL, 200); abs page and PDF v2 via pdftotext, 2026-10-03 (re-read by verify-2: sections 1, 4.2, 4.4, 6.2, 6.3)",
+      "claims": [
+        "split-view 與 frontrunning 兩種攻擊的機制",
+        "以 2023 年網域價格，每年 60 美元以內可控制 LAION-400M 或 COYO-700M 的 0.01%（摘要、4.2、圖 1）",
+        "作者未實際投毒並通知維護者",
+        "檢查 CC3M 與 LAION-400M，找不到 split-view 被實際利用的證據（4.4）",
+        "雜湊完整性驗證確保下載者看到的與維護者當初收錄的相同，對應 split-view；時間為主的防禦對應 frontrunning（1、6.2、6.3）"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2510.07192",
+      "title": "Souly et al.：Poisoning Attacks on LLMs Require a Near-constant Number of Poison Samples",
+      "access": "web open (curl -sSL, 200); abs page and PDF v1 via pdftotext, 2026-10-03",
+      "claims": [
+        "從頭預訓練 6 億到 130 億參數模型",
+        "250 份投毒文件可在各種大小的模型植入後門，100 份不成功",
+        "250 份占 13B 模型訓練 token 的 0.00016%",
+        "後門為觸發後輸出亂碼的 DoS 類型，選它因可在預訓練期量測",
+        "成敗取決於絕對數量而非比例，微調實驗相同",
+        "未評估後門能否撐過實際安全後訓練",
+        "附錄 I：模擬對齊訓練大幅降低另一組較小實驗的後門成功率；附錄 A：預訓練攻擊撐不過後訓練",
+        "一般評測流程可能察覺不到後門",
+        "微調資料常來自外部約聘人員"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2402.07867",
+      "title": "Zou et al.：PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models（USENIX Security 2025）",
+      "access": "web open (curl -sSL, 200); abs page and PDF v2 via pdftotext, 2026-10-03",
+      "claims": [
+        "每個目標問題 5 段文字、知識庫數百萬段文字時攻擊成功率 90%（摘要）",
+        "改寫問題、困惑度偵測等防禦不足",
+        "提示詞注入用指令，PoisonedRAG 用捏造的知識"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2509.23041",
+      "title": "Liang et al.：Virus Infection Attack on LLMs: Your Poisoning Can Spread \"VIA\" Synthetic Data（NeurIPS 2025）",
+      "access": "web open (curl -sSL, 200); abs page, 2026-10-03",
+      "claims": [
+        "合成資料訓練流程對既有投毒與後門攻擊有相當抵抗力，主因分布差異",
+        "新方法使下游模型攻擊成功率接近被投毒的上游模型"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2401.05566",
+      "title": "Hubinger et al.：Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training",
+      "access": "web open (curl -sSL, 200); abs page and PDF v3 via pdftotext, 2026-10-03",
+      "claims": [
+        "2023／2024 年份觸發的程式碼後門示例",
+        "最大的模型經 SFT、RL、對抗訓練仍保有後門；較小的模型容易移除得多（第 1 節、圖 11）",
+        "對抗訓練可能讓模型更會辨認觸發條件"
+      ]
+    },
+    {
+      "url": "https://genai.owasp.org/llmrisk/llm042025-data-and-model-poisoning/",
+      "title": "OWASP Top 10 for LLM Applications 2025：LLM04 Data and Model Poisoning",
+      "access": "web open (curl -sSL, 200); HTML to text, 2026-10-03",
+      "claims": [
+        "定義涵蓋預訓練、微調與嵌入資料",
+        "後門在觸發前不改變行為、難以測試",
+        "資料來源與轉換追蹤（ML-BOM）、資料版本控制、異常偵測、紅隊、監看訓練損失",
+        "嵌入＝把文字轉成數值向量；以異常偵測過濾對抗性資料"
+      ]
+    },
+    {
+      "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "title": "OWASP Top 10 for LLM Applications 2025：LLM01 Prompt Injection",
+      "access": "web open (curl -sSL, 200); HTML to text; page title confirms LLM01:2025, 2026-10-03",
+      "claims": [
+        "Scenario #4：修改 RAG 文件庫中的文件，被檢索時改變輸出"
+      ]
+    },
+    {
+      "url": "https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/",
+      "title": "OWASP Top 10 for LLM Applications 2025：LLM08 Vector and Embedding Weaknesses",
+      "access": "web open (curl -sSL, 200); HTML to text, 2026-10-03",
+      "claims": [
+        "向量與嵌入的弱點出現在使用 RAG 的系統；Common Examples 第 4 項為 Data Poisoning Attacks",
+        "Scenario #1 Data Poisoning：履歷藏隱形指令進入 RAG 初篩系統"
+      ]
+    }
+  ],
+  "aliases": [
+    "Data Poisoning",
+    "資料中毒",
+    "資料下毒",
+    "訓練資料投毒"
+  ],
+  "existing_overlap": "新詞專文。站內 ai-term-prompt-injection 講使用當下的注入，這裡只用一節與一張表對照並說明 RAG 的灰色地帶；ai-term-red-teaming、ai-term-pretraining、ai-term-retrieval-augmented-generation 只連結、不重寫。integrate.py 把它和可解釋性、獎勵駭客放在同一組。",
+  "running_text_characters": 2672,
+  "notes": "譯名不統一（資料投毒／資料中毒／資料下毒），採 catalogue 指定的「資料投毒」並在第一段說明。評論摘要的後門是虛構示例，標「示例（虛構情境，未實測）」。論文數字都附各自設定；不寫模型名（微調實驗用的模型、PoisonedRAG 測的模型皆略去）。不描述任何攻擊的可操作步驟（VIA 的方法、PoisonedRAG 的最佳化細節、Carlini 的網域取得流程都不寫）。Carlini 的 60 美元是論文估算的攻擊成本，不是產品價格，保留並註明年份與設定。 2026-10-03 獨立查核（verify-1）修 4 處事實：NIST 分類面向、BadNets 目標類別、Souly 附錄 I 的模擬對齊結果、Hubinger 持續性只在最大模型最明顯；來源未更換。 2026-10-03 第二輪獨立查核（verify-2）修 6 處事實：OWASP 嵌入與 RAG 的銜接改用 LLM08 原文、Carlini 60 美元補「每年」、Carlini 第 4.4 節補檢查範圍（兩個資料集）、對照表注入欄改「只在讀到注入內容時」、雜湊句改成 Carlini 原文支持的說法、過濾刪掉無來源的「重複」；來源未更換。"
+}

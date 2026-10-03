@@ -1,0 +1,125 @@
+{
+  "slug": "ai-term-ai-alignment",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/1811.07871",
+      "title": "Leike et al. 2018, Scalable agent alignment via reward modeling: a research direction",
+      "access": "web open (curl -sSL abs + pdf, HTTP 200, 2026-10-03)",
+      "claims": [
+        "Frames the agent alignment problem as: how can we create agents that behave in accordance with the user's intentions (intent-alignment definition; authors at DeepMind)",
+        "Motivation: reward functions are hard to design in part because the user only has an implicit understanding of the task objective (abstract, section 1)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2112.00861",
+      "title": "Askell et al. 2021, A General Language Assistant as a Laboratory for Alignment",
+      "access": "web open (curl -sSL abs + pdf, HTTP 200, 2026-10-03)",
+      "claims": [
+        "Defines an aligned AI as helpful, honest and harmless (HHH); criteria are simple and memorable but subtle, ambiguous and may conflict",
+        "What counts as harmful varies by people and culture; deployers take responsibility for how alignment is defined",
+        "Advances in alignment do not depend on any specific choice of values and could be used to train systems that do bad things (misinformation, censorship, oppression)",
+        "Studies prompting as a baseline alignment intervention, which is why the article says alignment is mostly, not only, done in training"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2203.02155",
+      "title": "Ouyang et al. 2022, Training language models to follow instructions with human feedback (InstructGPT)",
+      "access": "web open (curl -sSL abs + pdf, HTTP 200, 2026-10-03)",
+      "claims": [
+        "States the definition of alignment has been vague and confusing with competing proposals; adopts Leike et al. intent plus a helpful/honest/harmless framework",
+        "Operationalises helpful via labeler preference ratings, honest via truthfulness (hallucination on closed-domain tasks such as summarization, TruthfulQA, 'only a small part'), harmless via proxy criteria and toxicity/bias datasets",
+        "Training labelers (those who produce the training data) agree with each other 72.6 +/- 1.5% of the time (section 3.4; the task is not specified, so the article does not name one); labelers mostly English speakers in the US or Southeast Asia",
+        "Aligns to training labelers, researchers (via the labeling instructions they write) and API customers; does not claim they are the right source of preferences; impossible to align to everyone at once",
+        "On its prompt distribution, human evaluators prefer 1.3B InstructGPT outputs over 175B GPT-3 (the article calls GPT-3 the base model without this fine-tuning); models are neither fully aligned nor fully safe"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2212.08073",
+      "title": "Bai et al. 2022, Constitutional AI: Harmlessness from AI Feedback",
+      "access": "web open (curl -sSL abs + pdf, HTTP 200, 2026-10-03)",
+      "claims": [
+        "Supervised stage: a helpful-only RLHF model answers red-team prompts, then critiques and revises its own response against one principle randomly drawn from the constitution at each step, repeatedly; a model is fine-tuned on the revisions (sections 1.2, 3.1)",
+        "RL stage: an independent feedback model compares two responses against a randomly sampled principle; these AI labels are mixed with human helpfulness labels to train a preference model, then RL (RLAIF) (sections 1.2, 4.1)",
+        "Human supervision for harmlessness comes only from a list of principles plus a small number of few-shot examples; helpfulness still uses human labels (section 1.2)",
+        "Authors call the principles chosen in a fairly ad hoc and iterative way for research, to be redeveloped by a larger set of stakeholders (footnote 2)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2001.09768",
+      "title": "Gabriel 2020, Artificial Intelligence, Values, and Alignment (Minds and Machines)",
+      "access": "web open (curl -sSL abs + pdf, HTTP 200, 2026-10-03)",
+      "claims": [
+        "Distinguishes alignment with instructions, intentions, revealed preferences, informed preferences, interests and values",
+        "Argues the central challenge is fair principles that receive reflective endorsement despite moral disagreement, not identifying true moral principles"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1606.03137",
+      "title": "Hadfield-Menell et al. 2016, Cooperative Inverse Reinforcement Learning",
+      "access": "web open (curl -sSL abs + pdf, HTTP 200, 2026-10-03); abstract and section 1 only, the algorithm sections are not used",
+      "claims": [
+        "Proposes a formal definition of the value alignment problem as a cooperative game where the robot does not initially know the human's reward function (authors at UC Berkeley)"
+      ]
+    },
+    {
+      "url": "https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/",
+      "title": "Krakovna et al. 2020, Specification gaming: the flip side of AI ingenuity (Google DeepMind blog, dated 2020-04-21)",
+      "access": "web open (curl -sSL, HTTP 200; the old /discover/blog/ URL redirects here)",
+      "claims": [
+        "Specification gaming satisfies the literal specification of an objective without achieving the intended outcome",
+        "Lego stacking example cited by the post (original study Popov et al. 2017): the goal was the red block on top of the blue one, the reward was the height of the red block's bottom face, and the agent flipped the block so that face pointed up instead of stacking it"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.13548",
+      "title": "Sharma et al. 2023, Towards Understanding Sycophancy in Language Models",
+      "access": "web open (curl -sSL abs + pdf, HTTP 200, 2026-10-03); abstract and section 4.1; full treatment belongs to ai-term-sycophancy",
+      "claims": [
+        "In the helpfulness portion of the public hh-rlhf preference data, a Bayesian logistic regression finds that, all else equal, responses matching a user's views are more likely to be preferred (section 4.1)",
+        "Sycophancy is likely driven in part by human preference judgments (abstract)"
+      ]
+    },
+    {
+      "url": "https://docs.nvidia.com/nemo/guardrails/about-nemo-guardrails-library/overview",
+      "title": "NVIDIA NeMo Guardrails Library Developer Guide, Overview",
+      "access": "web open (curl -sSL, HTTP 200, 2026-10-03)",
+      "claims": [
+        "Input, retrieval, dialog, execution and output rails run at different stages of an LLM interaction",
+        "Guardrails can be added before and after LLM calls without changing the application LLM"
+      ]
+    },
+    {
+      "url": "https://www.anthropic.com/legal/aup",
+      "title": "Anthropic Usage Policy (page states effective September 15, 2025)",
+      "access": "web open (curl -sSL, HTTP 200, 2026-10-03)",
+      "claims": [
+        "Applies to anyone who can submit inputs to the products; enforced with detection and monitoring",
+        "Violations can lead to throttling, suspension or termination; outputs may be blocked or modified when inputs violate the policy"
+      ]
+    },
+    {
+      "url": "https://model-spec.openai.com/2026-08-18.html",
+      "title": "OpenAI Model Spec (2026/08/18)",
+      "access": "web open (curl -sSL of the dated page, HTTP 200, 2026-10-03). https://model-spec.openai.com/version-manifest.json returns latest_version 2026-08-18, equal to the page's data-model-spec-version, and the GitHub CHANGELOG's top entry is v2026.08.18, so this is the current version. The 'newer version is available' banner in the raw HTML is hidden by default and only shown by the page script when the manifest differs. The site root is a meta-refresh shell and is not used as a source. Only the Overview statements were used; re-check the manifest before publishing.",
+      "claims": [
+        "Describes intended model behavior; OpenAI says it is training models to align to the Model Spec and that production models do not yet fully reflect it",
+        "The spec is one part of a broader strategy and is complemented by usage policies (how people should use the API and ChatGPT) and safety protocols (testing, monitoring, mitigation), which sit outside the spec"
+      ]
+    }
+  ],
+  "aliases": [
+    "AI 對齊",
+    "對齊",
+    "AI alignment",
+    "Alignment",
+    "價值對齊",
+    "value alignment",
+    "意圖對齊",
+    "agent alignment problem"
+  ],
+  "existing_overlap": "ai-term-rlhf already summarises InstructGPT's RLHF pipeline and its 'whose preferences' caveat; this article reuses InstructGPT only for how alignment was operationalised (helpful/honest/harmless proxies, who is aligned to) and links to rlhf for the training mechanics. Sycophancy (ai-term-sycophancy, batch 02) and ai-term-guardrails / ai-term-red-teaming are one-sentence mentions with links. Site news pages that mention misalignment (e.g. ai-news-openai-misalignment-reports-20260917) are not linked because they are not in the assignment's links list.",
+  "running_text_characters": 2768,
+  "notes": "Count follows pack_ingest._body_length (paragraphs, rich_paragraph text including link text, list items, table header and cells, callout title and text); about 2702 without link text. Synced after two fact-check rounds (verify-1.md, verify-2.md). All examples (customer-service 'resolved' button reward, fictional product page) are labelled as illustrative and unmeasured. No model names beyond the assigned InstructGPT paper, no prices, cutoffs or leaderboard scores. Title tuned from the draft because the draft phrase equated alignment with intent alone, which contradicts the article's point that definitions differ. dry-run ingest: ok, only the repo-wide warning no_summary (no published ai-term pack carries a summary block)."
+}

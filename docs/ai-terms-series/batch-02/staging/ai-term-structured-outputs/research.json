@@ -1,0 +1,92 @@
+{
+  "slug": "ai-term-structured-outputs",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://json-schema.org/specification",
+      "title": "JSON Schema：Specification（規範總覽頁）",
+      "access": "web open (curl -sSL, HTTP 200)",
+      "claims": [
+        "json-schema.org 標示現行版本為 2020-12"
+      ]
+    },
+    {
+      "url": "https://json-schema.org/draft/2020-12/json-schema-core",
+      "title": "JSON Schema 2020-12：Core",
+      "access": "web open (curl -sSL, HTTP 200)",
+      "claims": [
+        "JSON Schema 用來定義 JSON 資料的結構",
+        "2020-12 版以 Internet-Draft 形式發布（draft-bhutton-json-schema-01，Informational，標示 2022-12-18 到期），不是 RFC",
+        "additionalProperties 省略時等同空 schema（額外欄位通過）",
+        "不認得的關鍵字只當註解"
+      ]
+    },
+    {
+      "url": "https://json-schema.org/draft/2020-12/json-schema-validation",
+      "title": "JSON Schema 2020-12：Validation",
+      "access": "web open (curl -sSL, HTTP 200)",
+      "claims": [
+        "type 可為字串或陣列、enum 限定值",
+        "required 省略等同空陣列",
+        "format 預設只是註解，作為斷言是選用"
+      ]
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8259",
+      "title": "RFC 8259：JSON 資料交換格式",
+      "access": "web open (curl -sSL, HTTP 200, 轉址到 rfc-editor.org/info/rfc8259/)",
+      "claims": [
+        "JSON 文字的語法由 RFC 8259 定義"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs",
+      "title": "OpenAI：Structured model outputs",
+      "access": "web open (curl -sSL, HTTP 200; platform.openai.com/docs/guides/structured-outputs 轉址到此)",
+      "claims": [
+        "結構化輸出確保輸出遵守 JSON Schema",
+        "JSON 模式只保證可解析（少數邊緣情況除外）、不保證符合 schema",
+        "拒答與截斷會在回應中標出（refusal 欄位；Responses API 的 incomplete／max_output_tokens，Chat Completions 的 finish_reason length）",
+        "輸入與 schema 完全無關時仍會盡力符合 schema、可能編出內容，建議提示詞指示回傳空參數或固定句子",
+        "支援子集：全欄位 required（選填用含 null 的型別模擬）、物件 additionalProperties 必須 false、allOf/not/if 不支援、strict 下用不支援的 schema 會報錯",
+        "結構化輸出有 function calling 與 response format 兩種形式：strict 讓工具參數依 schema；function calling 接工具、response format 管回答使用者的格式"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+      "title": "Anthropic：Structured outputs",
+      "access": "web open (curl -sSL, HTTP 200)",
+      "claims": [
+        "以 schema 編譯成文法的約束式解碼",
+        "未使用時可能出現語法錯誤、缺欄位、型別不一致",
+        "物件的 additionalProperties 必須為 false",
+        "API 不支援遞迴 schema 與 minimum/maximum/minLength/maxLength",
+        "enum 與 const 值的大小寫不保證與 schema 一致",
+        "拒答（stop_reason refusal，仍回 200）與 max_tokens 截斷時輸出可能不符 schema",
+        "JSON outputs 管回答格式，strict tool use 讓工具參數依 schema 限制"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "title": "Google：Structured outputs（Gemini API）",
+      "access": "web open (curl -sSL, HTTP 200; 頁尾 Last updated 2026-09-23 UTC)",
+      "claims": [
+        "支援 JSON Schema 子集與列出的型別與關鍵字（含 minimum）",
+        "輸出語法正確但要驗證值、處理語意錯誤",
+        "過大或巢狀過深的 schema 可能被拒絕",
+        "該頁沒有說明拒答或截斷訊號",
+        "結構化輸出與函式呼叫的分工"
+      ]
+    }
+  ],
+  "aliases": [
+    "Structured Outputs",
+    "structured output",
+    "結構化輸出",
+    "JSON Schema 輸出"
+  ],
+  "existing_overlap": "沒有同題專文。ai-glossary-50-terms 只在工具呼叫的一句定義裡提到結構化參數；ai-workflow-structured-handoff（OpenAI/Anthropic/Google 欄位位置與 jsonschema 驗證的實作教學）與 gemini-api-files-structured-output（Gemini 讀 PDF 轉 JSON）是實作篇，本篇寫概念、三層保證與各家限制，並以 article 連結指向它們，不重複程式碼；工具呼叫與提示詞串接各有專文，只寫分工。",
+  "running_text_characters": 2552,
+  "notes": "running_text_characters 依 pack_ingest._body_length 實算（含 rich_paragraph 的連結文字，不含 heading、圖說、程式區塊與來源）；扣掉連結文字為 2454。二審（verify-2.md）為可讀性刪去各家細節（OpenAI 兩種 API 的截斷欄位名、數字上下限與微調模型但書、Anthropic 的 citations 不相容與合用說明、Google 的關鍵字清單），正文由 2809 降到 2543，結構不變。示例（王小美報名信、schema、預期輸出）全為原創虛構，未呼叫任何 API，正文與程式區塊標籤皆標示示例／未實測。「三層」是本文的教學分層，不是供應商用語。不列模型型號、價格、截止日。Google 該頁沒寫拒答與截斷訊號，正文如實寫「這一頁沒寫」。dry-run 通過，只有 no_summary 警告。"
+}

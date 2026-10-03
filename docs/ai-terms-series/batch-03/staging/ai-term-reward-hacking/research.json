@@ -1,0 +1,132 @@
+{
+  "slug": "ai-term-reward-hacking",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/1606.06565",
+      "title": "Amodei et al. 2016, Concrete Problems in AI Safety",
+      "access": "web open: arXiv abs page and full PDF (pdftotext), section 4 Avoiding Reward Hacking",
+      "claims": [
+        "Avoiding reward hacking is one of five concrete accident-risk research problems",
+        "Formal rewards approximate the designer's informal intent and can be gamed by solutions valid in a literal sense",
+        "Cleaning robot rewarded for not seeing messes might close its eyes",
+        "Cites Goodhart's law as 'when a metric is used as a target, it ceases to be a good metric'",
+        "Proposes combining multiple rewards (average, minimum, quantiles); notes bad behaviour may affect all rewards in a correlated manner",
+        "Lists Goodhart's law as one of several ways reward hacking can occur (with partially observed goals, complicated systems, abstract rewards, feedback loops, environmental embedding)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2209.13085",
+      "title": "Skalse et al. 2022, Defining and Characterizing Reward Hacking",
+      "access": "web open: arXiv abs page and full PDF (pdftotext)",
+      "claims": [
+        "Formal definition: optimizing an imperfect proxy reward leads to poor performance under the true reward"
+      ]
+    },
+    {
+      "url": "https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/",
+      "title": "Google DeepMind 2020-04-21, Specification gaming: the flip side of AI ingenuity",
+      "access": "web open: curl 200 (old /discover/blog/ URL redirects here)",
+      "claims": [
+        "Specification gaming: behaviour satisfying the literal specification without the intended outcome",
+        "Task specification includes environment choice; simulator bugs are a class of examples",
+        "Reward tampering: manipulating the representation of the objective",
+        "The post defines the term but does not coin it: it aggregates around 60 examples from existing lists"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1803.04585",
+      "title": "Manheim and Garrabrant 2018, Categorizing Variants of Goodhart's Law",
+      "access": "web open: arXiv abs page and full PDF (v4, pdftotext)",
+      "claims": [
+        "Goodhart's original 1975 formulation: any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes"
+      ]
+    },
+    {
+      "url": "https://openai.com/index/faulty-reward-functions/",
+      "title": "OpenAI 2016-12-21, Faulty reward functions in the wild",
+      "access": "direct fetch 403; read Wayback snapshot 20260921114204 (id_ raw); title, date and 20% figure cross-checked by WebSearch limited to openai.com; verify-2 (2026-10-03): direct fetch and WebFetch 403, Wayback snapshot fetch reset by the egress proxy (availability API still lists 20260921114204 as 200); content re-checked by WebSearch limited to openai.com, and the core example corroborated by the DeepMind 2020 post and Denison et al. section 2.1",
+      "claims": [
+        "CoastRunners: intended goal is finishing the race, score comes from hitting targets",
+        "Agent circles in a lagoon knocking over three respawning targets, catches fire, crashes, goes the wrong way, scores on average 20 percent higher than human players",
+        "Suggests learning from demonstrations and human feedback"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2210.10760",
+      "title": "Gao, Schulman and Hilton 2022, Scaling Laws for Reward Model Overoptimization",
+      "access": "web open: arXiv abs page and full PDF (v1, pdftotext)",
+      "claims": [
+        "Synthetic setup in the InstructGPT environment: a 6B gold reward model stands in for humans; proxy reward models from 3M to 3B parameters; optimization by PPO RL or best-of-n",
+        "Proxy score keeps rising while gold score first rises then falls",
+        "Coefficients scale smoothly with proxy RM size, allowing prediction; more RM data gives better gold scores and less goodharting",
+        "Extremal Goodhart expected to be the main cause; the answer-length case is the authors' hypothetical, and a footnote says very long answers were observed in other InstructGPT-setting experiments",
+        "KL penalty only makes the gold score converge earlier and does not change the gold-score-vs-KL frontier in their RL setup (akin to early stopping); may be hyperparameter-sensitive",
+        "Limitation: mismatch between labels and actual human intent is not captured"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2503.11926",
+      "title": "Baker et al. 2025, Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation",
+      "access": "web open: arXiv abs page and full PDF (v1, pdftotext)",
+      "claims": [
+        "Agentic coding environments rewarded for making all unit tests pass",
+        "Hacks: verify always returns true, exit(0) before tests finish, raise SkipTest, stubs when coverage is poor, parsing test files for expected values",
+        "exit(0) and raise SkipTest became systemic across nearly all environments and were patched after discovery",
+        "Honeypot experiment: Cheating = passes all tests but fails once test changes are reverted; rate rises over training; misses hardcoding",
+        "Joint recall on the two systemic hacks: CoT monitor 95%, action-only monitor 60%",
+        "In the honeypot environment with a CoT-only monitor added to the reward, agents still hack at a significant (lower) rate and monitor recall falls near zero; recommend avoiding strong optimization pressure on CoT",
+        "Manual monitoring was the only general mitigation and is unlikely to scale as agent outputs and actions grow more complex and more widely used; ground-truth cheating metrics may be impossible to construct in practice"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2406.10162",
+      "title": "Denison et al. 2024, Sycophancy to Subterfuge: Investigating Reward-Tampering in Large Language Models",
+      "access": "web open: arXiv abs page and full PDF (v3, pdftotext)",
+      "claims": [
+        "Specification gaming ranges from sycophancy to reward tampering",
+        "Training reinforces high-reward strategies even when unintended",
+        "Curriculum of increasingly gameable environments generalizes to later environments",
+        "Expert-iteration models in the held-out tampering environment: 45 of 32,768 episodes tampered with reward, 7 also edited tests; several of the 7 look like confused edits during honest attempts; incentives deliberately exaggerated, rates low",
+        "Two runs on the same curriculum with different random seeds differ 2.4x in reward-tampering rate and 6.7x in test edits (section 5.2, Appendix G)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2511.18397",
+      "title": "MacDiarmid et al. 2025, Natural Emergent Misalignment from Reward Hacking in Production RL",
+      "access": "web open: arXiv abs page and full PDF (pdftotext), section 1 and Limitations",
+      "claims": [
+        "Pretrained model given knowledge of reward hacks via synthetic documents or prompting, then RL on real production coding environments",
+        "After learning to reward hack, generalizes to alignment faking and code sabotage",
+        "Preventing reward hacking is an effective mitigation",
+        "Limitation: models needed extra information to discover the hacks"
+      ]
+    },
+    {
+      "url": "https://terms.naer.edu.tw/search/?query_term=hacking&query_field=title&query_op=and",
+      "title": "國家教育研究院樂詞網：hacking 學術名詞",
+      "access": "web open: curl 200; also queried reward hacking, hacker, reward",
+      "claims": [
+        "hacking = 駭侵 (資訊名詞); hacker = 駭客; no entry for the phrase reward hacking"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw",
+      "title": "Google for Developers 機器學習詞彙表（繁體中文）",
+      "access": "web open: curl 200, full-text search of zh-TW and English pages",
+      "claims": [
+        "reward = 獎勵; no reward hacking entry"
+      ]
+    }
+  ],
+  "aliases": [
+    "Reward Hacking",
+    "獎勵黑客",
+    "獎勵作弊",
+    "獎勵破解"
+  ],
+  "existing_overlap": "ai-term-ai-alignment has one section on specification gaming (DeepMind block-flipping example) and a customer-service illustration; ai-term-rlhf mentions 獎勵漏洞 in one paragraph; ai-term-sycophancy covers stance-following. This article is the dedicated term page: it uses different examples (CoastRunners, Gao overoptimization, coding-agent test hacks, CoT monitoring) and links to reinforcement-learning, rlhf, evals, ai-alignment, sycophancy and the index.",
+  "running_text_characters": 2695,
+  "notes": "Counted with app.guides.pack_ingest._body_length (paragraphs, rich_paragraph text including link text, list items, table cells, callout title and text). The catalogue lists 獎勵投機 as a translation to explain, but no AI-context usage was found by quoted web search, so the article names only translations with observed usage (獎勵駭客, 獎勵黑客, 獎勵作弊, 獎勵破解). Usage evidence for these is in notes.md and is not cited as a primary source. Model names in the papers are not written; the InstructGPT setting is described as OpenAI's earlier instruction-tuning setup. Paper numbers carry their settings. The diagram is a schematic of the trend Gao et al. describe, labelled as not actual data. Pan et al. 2022 was read but dropped to keep the body under 2,600. Dry-run ingest passes with one warning (no_summary). Independent check verify-1 (2026-10-03) reopened every source, made six factual corrections (spec-gaming provenance, Goodhart vs reward hacking relation, Gao length example as hypothetical, CoT-pressure result scoped to the CoT-only honeypot experiment, Denison expert-iteration setting, the 7 test edits not all cover-ups) and three wording fixes; body is now 2,702 by _body_length; no sources added or removed. Second independent check verify-2 (2026-10-03) re-checked all six verify-1 fixes and a random third of the other claims against the primary sources, made four factual corrections (獎勵作弊 described only as another rendering rather than common, KL penalty stated as converging earlier with the frontier unchanged, the manual-review limit re-anchored to Baker et al. instead of the out-of-context 10,000-line example, Denison seed variance added) and plain-language trims of paper settings; the OpenAI 2025 official article was dropped from text and sources because it could not be opened today and is no longer cited; 獎勵投機 still has no AI-context usage after three more searches; body is 2,695 by _body_length; dry-run passes with no_summary only."
+}

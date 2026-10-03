@@ -1,0 +1,184 @@
+{
+  "slug": "ai-term-local-inference",
+  "kind": "life",
+  "destination_id": null,
+  "topics": ["ai", "tutorial", "ai-terms"],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "本機推論（Local Inference）是什麼：在自己的裝置上跑模型",
+      "description": "本機推論是把模型權重下載到自己的電腦或手機，由這台裝置完成計算，提示詞不必送進雲端。內容說明哪些東西真的留在本機、哪些仍可能連網，記憶體需求如何由權重、量化與 KV 快取決定，作業系統內建的裝置端模型怎麼運作，並比較本機與雲端推論在隱私、成本、速度與維護上的取捨。",
+      "hero": {
+        "src": "/guides/ai-term-local-inference/hero.jpg",
+        "alt": "一台筆電、一支手機與一顆晶片被圓形邊界圈住，圈外的雲朵只有一條虛線連到邊界上的閘門",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {"type": "text", "text": "本機推論（local inference）是把模型權重放在自己的電腦或手機上，由這台裝置完成"},
+            {"type": "article", "text": "推論（inference）", "kind": "life", "slug": "ai-term-inference"},
+            {"type": "text", "text": "的計算，提示詞不必送到服務商的伺服器。本站用「本機推論」，Google 的 Android 開發者文件繁中版（頁面註明由 AI 翻譯）也寫「在本機執行」；作業系統內建的模型，同一份文件稱「裝置端」AI，指的是同一件事。安裝與選購硬體見"},
+            {"type": "article", "text": "為什麼要在自己電腦跑 AI", "kind": "life", "slug": "local-llm-why-and-when"},
+            {"type": "text", "text": "與"},
+            {"type": "article", "text": "跑本機模型要什麼電腦", "kind": "life", "slug": "local-llm-hardware-requirements"},
+            {"type": "text", "text": "，以下只談概念。"}
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "權重與計算在本機，不代表整個應用程式都不連網，以下逐項拆開，最後附一個示例。資料截至 2026 年 10 月。"
+        },
+        {"type": "heading", "level": 2, "text": "權重與計算在本機，其他不一定"},
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {"type": "text", "text": "留在裝置上的是權重檔，以及把提示詞變成回答的計算。llama.cpp 的專案說明把目標寫成在各種硬體上做推論，「本機與雲端」都包括；同一套軟體裝在筆電上是本機推論，裝在租來的伺服器上就是雲端。能下載的模型多半公開釋出權重，授權見"},
+            {"type": "article", "text": "開放權重（Open Weights）", "kind": "life", "slug": "ai-term-open-weights"},
+            {"type": "text", "text": "。"}
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "外圍的連線另當別論。Ollama 的常見問題寫明，本機執行時他們看不到你的提示詞；改用雲端託管的模型，內容就由他們的服務處理。Microsoft 的 Foundry Local 文件說提示詞與輸出在本機處理，但仍會連網下載模型與元件，回報問題時也可選擇分享紀錄檔。常見的四種連線："
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "下載與更新：模型、軟體與模型目錄。",
+            "診斷資料：依條款與設定，有些要使用者同意才送出。",
+            "雲端模型與工具：同一個介面可能混用本機與雲端模型，或呼叫網路搜尋。",
+            "紀錄同步與分享：存進會同步的資料夾或用了分享功能，就會離開裝置。"
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-local-inference/diagram-1.svg",
+          "alt": "結構圖：裝置框內有權重檔、計算與提示詞和回答，框外有四條可能連網的路徑：下載與更新、診斷資料、雲端模型與工具、紀錄同步",
+          "width": 1600,
+          "height": 900,
+          "caption": "框內是本機推論本身；框外四條線是應用程式可能另外連網的地方，各自要看設定與條款。"
+        },
+        {"type": "heading", "level": 2, "text": "記憶體要裝得下兩樣東西"},
+        {
+          "type": "paragraph",
+          "text": "第一道門檻是記憶體。Hugging Face 的效能指南給了估算法：以 16 位元的 bfloat16 或 float16 載入時，每十億個參數約需 2 GB 顯示記憶體。示例換算：80 億參數約需 16 GB，量化成 4 位元約剩四分之一，4 GB 左右。這只是下限，執行時還有其他開銷。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {"type": "article", "text": "量化（Quantization）", "kind": "life", "slug": "ai-term-quantization"},
+            {"type": "text", "text": "就是降低每個權重的位元數。llama.cpp 支援 1.5 到 8 位元的整數量化，用來加快推論、降低記憶體用量，代價是精度可能下降。"}
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {"type": "text", "text": "第二樣是"},
+            {"type": "article", "text": "KV 快取（KV Cache）", "kind": "life", "slug": "ai-term-kv-cache"},
+            {"type": "text", "text": "：逐個產生 token 時，把前面每個位置算好的 key 與 value 存起來，省去重算。依 Hugging Face 的指南，它要存的數值個數是 2 乘以序列長度、注意力頭數、每個頭的維度與層數，所以會隨上下文長度線性增加；同一份指南也指出，讓多個頭共用 key 與 value 的設計（MQA、GQA）能大幅縮小它。Ollama 的文件也提醒，2K 的上下文配 4 個並行請求，等於 8K 的上下文。"}
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "記憶體放在哪裡也有差。模型整份放進顯示卡的顯示記憶體通常最快；放不下時，llama.cpp 能讓 CPU 與 GPU 混合推論，Ollama 的 ps 指令會顯示各佔多少比例。另一種加速硬體是 NPU，專做神經網路運算的處理器。"
+        },
+        {"type": "heading", "level": 2, "text": "作業系統內建的裝置端模型"},
+        {
+          "type": "paragraph",
+          "text": "Apple 的 Foundation Models framework 讓 App 呼叫 Apple Intelligence 的裝置端模型。開發者文件寫明，可用與否取決於裝置與地區，開啟功能後模型要先下載，之後隨作業系統更新。同一個框架改一行程式，就能把請求送到私密雲端運算（Private Cloud Compute）的伺服器端模型，換得較長的上下文與較強的推理（reasoning），但需要網路。支援文件也說，系統會先分析請求能否在裝置上處理，較複雜的可能交給私密雲端運算。所以「裝置有內建模型」不等於「這個功能用內建模型」，要看個別功能的說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Android 的 Gemini Nano 在系統服務 AICore 裡執行。開發者文件寫明，AICore 沒有直接的網際網路存取，連模型下載都經由開放原始碼的 Private Compute Services 轉送；請求彼此隔離，處理完不保留輸入與輸出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Windows AI APIs 需要配備 NPU 的 Copilot+ PC，Microsoft 寫明資料在裝置上處理，輸入不會送到它的伺服器。Foundry Local 則不是系統內建，而是隨 App 安裝，模型第一次使用時下載並快取，之後可以離線推論。"
+        },
+        {"type": "heading", "level": 2, "text": "本機與雲端推論的取捨"},
+        {
+          "type": "paragraph",
+          "text": "雲端推論能用更大的模型與更長的上下文，但每次請求都經過網路，費用多半依用量或方案計算。本機推論省掉網路來回，Foundry Local 的文件也強調沒有每個 token 的費用，代價是硬體、速度與維護都落在你身上。"
+        },
+        {
+          "type": "table",
+          "header": ["面向", "本機推論", "雲端推論"],
+          "rows": [
+            ["隱私", "內容在本機計算；下載、診斷與雲端功能仍可能連網", "內容送到服務商處理，保存與使用看服務條款"],
+            ["成本結構", "一次性的硬體加上電費，沒有每個 token 的費用", "依用量或方案計費，不必自備硬體"],
+            ["速度", "沒有網路來回，產生速度看自己的硬體", "多了網路往返，伺服器硬體通常較強"],
+            ["維護", "自己挑模型、更新軟體；系統內建模型隨作業系統更新", "服務商負責模型與硬體，版本隨服務調整"]
+          ],
+          "caption": "依 Ollama、Microsoft、Android 與 Apple 的官方文件整理；資料截至 2026 年 10 月。"
+        },
+        {"type": "heading", "level": 2, "text": "資料有沒有離開裝置：看文件、設定與網路"},
+        {
+          "type": "paragraph",
+          "text": "先讀文件。清楚的說明會分開寫哪些在本機處理、什麼情況會連網、連網時送出什麼。找不到這種說明，就別假設全部在本機。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再看設定。Ollama 可在設定檔加上 disable_ollama_cloud 或設環境變數 OLLAMA_NO_CLOUD=1 關掉雲端功能，重新啟動後生效，之後不能用雲端模型與網路搜尋；服務預設只監聽 127.0.0.1 的 11434 埠，只接受同一台電腦連線。iPhone 可到「設定」→「隱私權與安全性」→「Apple Intelligence 報告」，選過去 15 分鐘或 7 天，匯出送往私密雲端運算的要求紀錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後實際測。斷網仍能用，表示這次計算不需要網路；網路監看工具可以看出哪些程式何時連線。斷網能用不代表恢復連線後不會送出更新檢查或診斷資料，兩種檢查要一起做。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "本機推論不等於絕對安全",
+          "text": "資料留在本機，風險就集中到這台裝置：電腦被入侵或與人共用，紀錄一樣會外洩；服務改成對外監聽，同一個網路的人也可能呼叫你的模型。本機也不會讓回答更正確。"
+        },
+        {"type": "heading", "level": 2, "text": "示例：用筆電上的小模型整理會議筆記"},
+        {
+          "type": "paragraph",
+          "text": "以下是示例，未實測。任務是把內部會議的逐字稿整理成決議與待辦，內容不想送到雲端。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "有網路時下載一個量化過的小模型，用權重大小加上預計的上下文估算記憶體。",
+            "關閉工具的雲端功能，確認服務只監聽本機位址。",
+            "斷網，貼入逐字稿，要求只根據內容列出決議、待辦與負責人，找不到負責人就寫「未指定」。",
+            "逐條對回逐字稿，刪掉原文沒有的項目。",
+            "恢復連線後，看工具紀錄與網路監看有沒有預期外的連線。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "預期得到一份短清單，每項都能在逐字稿找到出處。漏掉後半段，可能是超出上下文視窗，Apple 的開發者文件建議分段處理再合併；電腦突然變慢，可能是記憶體不夠、部分模型退到 CPU，可縮短上下文或換更小的版本；寫出原文沒有的待辦，是模型品質問題，雲端一樣會發生。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {"type": "text", "text": "其他與推論資源相關的名詞，見"},
+            {"type": "article", "text": "AI 名詞總索引", "kind": "life", "slug": "ai-terms-index"},
+            {"type": "text", "text": "。"}
+          ]
+        }
+      ],
+      "sources": [
+        {"title": "llama.cpp：專案說明（README，本機與雲端推論、整數量化、CPU＋GPU 混合推論）", "url": "https://github.com/ggml-org/llama.cpp", "checked_on": "2026-10-03"},
+        {"title": "Ollama：FAQ（本機執行與雲端模型、停用雲端功能、監聽位址、上下文與並行請求的記憶體）", "url": "https://docs.ollama.com/faq", "checked_on": "2026-10-03"},
+        {"title": "Hugging Face Transformers：Optimizing LLMs for Speed and Memory（權重記憶體估算、key-value cache 大小）", "url": "https://huggingface.co/docs/transformers/en/llm_tutorial_optimization", "checked_on": "2026-10-03"},
+        {"title": "Apple Developer：Foundation Models（框架總覽）", "url": "https://developer.apple.com/documentation/foundationmodels", "checked_on": "2026-10-03"},
+        {"title": "Apple Developer：Generating content and performing tasks with Foundation Models（可用性、模型下載、分段處理）", "url": "https://developer.apple.com/documentation/foundationmodels/generating-content-and-performing-tasks-with-foundation-models", "checked_on": "2026-10-03"},
+        {"title": "Apple Developer：SystemLanguageModel（裝置端模型隨作業系統更新）", "url": "https://developer.apple.com/documentation/foundationmodels/systemlanguagemodel", "checked_on": "2026-10-03"},
+        {"title": "Apple Developer：Adding server-side intelligence with Private Cloud Compute", "url": "https://developer.apple.com/documentation/foundationmodels/adding-server-side-intelligence-with-private-cloud-compute", "checked_on": "2026-10-03"},
+        {"title": "Apple 支援：iPhone 上的 Apple Intelligence 與隱私權（私密雲端運算、Apple Intelligence 報告）", "url": "https://support.apple.com/zh-tw/guide/iphone/iphe3f499e0e/ios", "checked_on": "2026-10-03"},
+        {"title": "Android Developers：Gemini Nano（AICore 架構與隱私說明）", "url": "https://developer.android.com/ai/gemini-nano", "checked_on": "2026-10-03"},
+        {"title": "Android Developers：Gemini Nano 繁體中文版（Google 以 AI 翻譯；「裝置端」「在本機執行」用語）", "url": "https://developer.android.com/ai/gemini-nano?hl=zh-tw", "checked_on": "2026-10-03"},
+        {"title": "Microsoft Learn：What is Foundry Local?（本機處理與仍會連網的情況）", "url": "https://learn.microsoft.com/en-us/azure/foundry-local/what-is-foundry-local", "checked_on": "2026-10-03"},
+        {"title": "Microsoft Learn：FAQs about using AI in Windows apps（Windows AI APIs 與 Foundry Local 的資料處理）", "url": "https://learn.microsoft.com/en-us/windows/ai/faq", "checked_on": "2026-10-03"}
+      ]
+    }
+  }
+}

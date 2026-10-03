@@ -1,0 +1,346 @@
+{
+  "slug": "ai-term-interpretability",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "可解釋性（Interpretability）是什麼：看懂模型為什麼這樣回答",
+      "description": "可解釋性是讓人理解模型輸出從何而來的研究與方法，連定義都有分歧。以下並列 Doshi-Velez 與 Kim、Lipton、Rudin 與 NIST 的說法，分三類說明天生可讀的模型、SHAP 等事後歸因與機制可解釋性，解釋本身為何可能不忠實，以及讀到「AI 能解釋它的決定」時該追問哪三件事。",
+      "hero": {
+        "src": "/guides/ai-term-interpretability/hero.jpg",
+        "alt": "放大鏡壓在深色方塊上，鏡片裡露出節點與連線，一條虛線連到旁邊的說明卡",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "可解釋性（interpretability）是讓人理解模型輸出從何而來的研究與方法，沒有公認定義，也還沒被解決。",
+            "方法分三類：天生可讀的模型、模型不動而另外估算各特徵貢獻的事後歸因，以及找出神經網路內部特徵與電路的機制可解釋性。",
+            "事後歸因呈現的是模型怎麼分分數，不是現實因果；機制可解釋性只找到一部分特徵，結論限於特定模型與方法。",
+            "解釋本身也可能不忠實，讀來合理卻沒反映模型實際的計算；答案對不代表解釋準，沒驗證過忠實度的解釋只能當待查線索。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "可解釋性（interpretability）是讓人理解模型輸出從何而來的研究與方法，沒有公認定義，也還沒被解決；常被忽略的是，解釋本身也可能不忠實：讀來合理，卻沒反映模型實際的計算。中文常把 explainability 也譯成「可解釋性」，這裡依 Google 機器學習詞彙表繁中版，只用它指 interpretability。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下並列幾種定義，分三類介紹方法，最後整理檢查「AI 能解釋它的決定」這類宣稱的三個問題。資料截至 2026 年 10 月；標「示例」的內容是教學編的，未實測。"
+        },
+        {
+          "type": "heading",
+          "text": "定義本身就有分歧",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Doshi-Velez 與 Kim（2017）把可解釋性定義為「以人能理解的方式解釋或呈現的能力」。他們認為需要解釋，是因為安全、公平這類目標無法完整寫成數學式；後果輕微或已充分驗證的系統未必需要。評估分三層：真人做真實任務、真人做簡化任務、不找人只看代理指標。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Lipton（2016）更保守：可解釋性沒有正式的技術意義，也不是單一概念，信任、因果、公平等動機有時互相衝突。他把相關性質分成透明（例如人能在腦中跑完模型）與事後解釋（文字、視覺化、舉例）兩群，並質疑線性模型一定比深度網路好懂：維度夠高一樣讀不完。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個英文詞是否同義也沒有共識。Doshi-Velez 與 Kim 用「解釋」定義可解釋性；Rudin（2019）則劃清界線：另做模型解釋黑盒叫 explainable，一開始就讓人看得懂才叫 interpretable。美國國家標準與技術研究院（NIST）2023 年的 AI 風險管理框架把運作機制歸給 explainability，interpretability 回答「為什麼」，和下文「機制可解釋性」用 interpretability 指內部運作的方向不同。先問是誰的定義。以下採較寬的用法：和 Lipton 一樣，把事後解釋也算進可解釋性。"
+        },
+        {
+          "type": "heading",
+          "text": "三類方法：天生可讀、事後歸因、看進內部",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一類是天生可讀的模型，例如變數少的線性模型、短規則清單或淺決策樹。解釋就是模型本身，Rudin 認為因此忠實，並主張在特徵有意義的結構化資料上，準確度不一定要犧牲。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二類是事後歸因：模型不動，另外估算各特徵對這次輸出的貢獻。LIME 在單筆預測附近用簡單模型局部近似；SHAP（Lundberg 與 Lee，2017）用賽局理論的 Shapley 值，從「不知道任何特徵時的平均預測」加到這次輸出，並證明同類方法中，滿足局部準確等三個性質的解只有一個。實際多靠近似計算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（數字為教學編造，未實測）：航班延誤模型對某班晚間航班輸出 0.62，SHAP 式拆解可能是：平均預測 0.20，目的地天候 +0.25、晚間時段 +0.12、前段航班延誤 +0.08、週末 −0.03，合計 0.62。加總對不上輸出，代表不滿足局部準確或近似誤差大；對得上，也只說明模型怎麼分分數，不是天候在現實中造成多少延誤。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第三類是機制可解釋性（mechanistic interpretability）：打開"
+            },
+            {
+              "type": "article",
+              "text": "神經網路",
+              "kind": "life",
+              "slug": "ai-term-neural-network"
+            },
+            {
+              "type": "text",
+              "text": "，找出內部代表概念的「特徵」與連接它們的「電路」。Olah 等人（2020）的主張自稱帶有推測性：特徵對應活化空間中的方向，經權重連成電路，即網路的計算子圖。難處是一個神經元常身兼數職：他們分析的影像模型裡，有個神經元同時回應貓臉、車頭與貓腿。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-interpretability/diagram-1.svg",
+          "alt": "三條路徑對照：天生可讀的模型以決策樹表示，事後歸因以航班延誤示例的 SHAP 加總表示，機制可解釋性以內部特徵與電路表示，三者最後都要接受忠實度檢查",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右是三類方法；中間的數字是教學示例，未實測；下方是三類都要再問的忠實度問題。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "類別",
+            "能回答的問題",
+            "要小心的地方"
+          ],
+          "rows": [
+            [
+              "天生可讀的模型",
+              "模型整體怎麼算出輸出",
+              "規則或變數一多就讀不完；「天生就忠實」的說法也有人質疑"
+            ],
+            [
+              "事後歸因（SHAP、LIME、顯著圖）",
+              "這筆輸出各特徵分到多少貢獻",
+              "是模型怎麼分分數，不是現實因果；可能失真或被刻意騙過"
+            ],
+            [
+              "機制可解釋性",
+              "模型內部用哪些特徵、怎麼連接",
+              "只找到一部分特徵；結論限於特定模型與方法"
+            ]
+          ],
+          "caption": "三類方法的比較，整理自文中引用的論文；資料截至 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "text": "代表研究：從大型語言模型拆出特徵",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以 Anthropic 2024 年的 Scaling Monosemanticity 為例：他們在自家一個中型商用語言模型的中間層殘差流（各層輸出逐層累加的向量）上訓練稀疏自動編碼器，把活化拆成少數「特徵」的加權總和；三個版本約有 100 萬、400 萬與 3,400 萬個特徵，重建至少解釋原活化 65% 的變異。"
+        },
+        {
+          "type": "paragraph",
+          "text": "他們找到跨語言、也對圖片起反應的抽象特徵。一個金門大橋特徵在前向計算中被強制設成最大活化值的 10 倍後，模型開始自稱是金門大橋，可見它會影響輸出，不只相關。"
+        },
+        {
+          "type": "paragraph",
+          "text": "限制也寫在論文裡：作者不認為已找到全部特徵，只看中間層都可能差好幾個數量級；模型能列出倫敦所有行政區，3,400 萬特徵的版本只找到約 60% 的對應特徵。找到和欺騙相關的特徵，也不代表模型會欺騙。這是一個模型、一層、一種方法的結果，不能讀成「已經看懂模型」。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這類研究常和"
+            },
+            {
+              "type": "article",
+              "text": "AI 對齊",
+              "kind": "life",
+              "slug": "ai-term-ai-alignment"
+            },
+            {
+              "type": "text",
+              "text": "與安全一起討論，作者希望可解釋性將來能當「安全的測試集」，但也強調觀察非常初步。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "解釋本身也可能不忠實",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Jacovi 與 Goldberg（2020）把兩個常被混用的標準分開：說得通（plausibility）是對人有多少說服力，忠實（faithfulness）是多準確反映模型實際的推理過程。兩者可以只滿足一個，忠實度也不能靠人覺得合理來評。NISTIR 8312 也把「解釋準確」和決策準確分開：答案對了，解釋仍可能沒說中原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "實驗也有反例。Adebayo 等人（2018）把影像分類模型換成同架構、隨機初始化的網路，有些顯著圖（標出重要像素的熱圖）方法的結果幾乎不受較高層參數影響，看起來依然合理。Slack 等人（2020）做出只看種族（德國信用資料改看性別）的分類器，外加一層辨認解釋工具擾動樣本的外殼；在他們的三個資料集上，LIME 都被騙過，SHAP 在多數資料點上也沒把這個敏感特徵排第一。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "處理文字的模型也一樣。"
+            },
+            {
+              "type": "article",
+              "text": "注意力機制",
+              "kind": "life",
+              "slug": "ai-term-attention-mechanism"
+            },
+            {
+              "type": "text",
+              "text": "的權重，Jain 與 Wallace（2019）在文字分類、問答等任務的模型上發現，常和梯度式重要度不相關，換一組很不同的權重，預測卻不變；"
+            },
+            {
+              "type": "article",
+              "text": "思維鏈",
+              "kind": "life",
+              "slug": "ai-term-chain-of-thought"
+            },
+            {
+              "type": "text",
+              "text": "的步驟，Turpin 等人（2023）加入偏向某答案的線索後，模型常替被帶偏的答案找理由，卻不提線索。兩者都只能當線索。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "說得通不等於忠實",
+          "text": "解釋越順，越要問它怎麼產生：模型本身、事後估算，還是另一段生成的文字？答案對不代表解釋準；沒驗證過忠實度的解釋，只能當待查線索。"
+        },
+        {
+          "type": "heading",
+          "text": "讀到「AI 能解釋它的決定」時，問三件事",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "解釋給誰：開發者除錯、使用者決定採不採用、受影響者提出異議，需要的不同；NIST 的「有意義」原則要求預期對象看得懂。",
+            "用什麼方法：模型本身、事後歸因、內部特徵分析，還是另一段生成的理由？方法決定它能回答什麼。",
+            "忠實度驗證過嗎：有沒有做隨機化檢查、改動輸入看輸出是否跟著變，並說明解釋何時會失準。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（虛構情境，未實測）：訂房網站在推薦旁寫「因為你常訂靠近車站的住宿」。對象是一般使用者；方法沒說明，可能是事後歸因，也可能只是文案範本；外部難驗證忠實度，但可看跡象：是否每個推薦都套同一句、住宿是否真的靠近車站。對不上就只當行銷文字。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "相鄰名詞可從"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "繼續找。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Doshi-Velez、Kim：Towards A Rigorous Science of Interpretable Machine Learning（arXiv:1702.08608）",
+          "url": "https://arxiv.org/abs/1702.08608",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Lipton：The Mythos of Model Interpretability（arXiv:1606.03490，ICML 2016 WHI 工作坊）",
+          "url": "https://arxiv.org/abs/1606.03490",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Rudin：Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead（arXiv:1811.10154，Nature Machine Intelligence 2019）",
+          "url": "https://arxiv.org/abs/1811.10154",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "NIST：Artificial Intelligence Risk Management Framework（AI RMF 1.0，NIST AI 100-1，第 3.5 節）",
+          "url": "https://doi.org/10.6028/NIST.AI.100-1",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "NIST：Four Principles of Explainable Artificial Intelligence（NISTIR 8312）",
+          "url": "https://doi.org/10.6028/NIST.IR.8312",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google for Developers：機器學習詞彙表繁體中文版（可解釋性）",
+          "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw#interpretability",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "黃詩淳：AI 可解釋性的法學意義及其實踐（臺大法學論叢 52 卷 S 期，2023；中文譯名用法）",
+          "url": "https://www.airitilibrary.com/Article/Detail/a0000446-N202312050009-00001",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ribeiro、Singh、Guestrin：\"Why Should I Trust You?\": Explaining the Predictions of Any Classifier（arXiv:1602.04938，LIME）",
+          "url": "https://arxiv.org/abs/1602.04938",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Lundberg、Lee：A Unified Approach to Interpreting Model Predictions（arXiv:1705.07874，SHAP，NIPS 2017）",
+          "url": "https://arxiv.org/abs/1705.07874",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Olah 等：Zoom In: An Introduction to Circuits（Distill，2020）",
+          "url": "https://distill.pub/2020/circuits/zoom-in/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Templeton 等（Anthropic）：Scaling Monosemanticity（Transformer Circuits Thread，2024）",
+          "url": "https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Jacovi、Goldberg：Towards Faithfully Interpretable NLP Systems: How should we define and evaluate faithfulness?（arXiv:2004.03685，ACL 2020）",
+          "url": "https://arxiv.org/abs/2004.03685",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Adebayo 等：Sanity Checks for Saliency Maps（arXiv:1810.03292，NeurIPS 2018）",
+          "url": "https://arxiv.org/abs/1810.03292",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Slack 等：Fooling LIME and SHAP: Adversarial Attacks on Post hoc Explanation Methods（arXiv:1911.02508，AIES 2020）",
+          "url": "https://arxiv.org/abs/1911.02508",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Jain、Wallace：Attention is not Explanation（arXiv:1902.10186，NAACL 2019）",
+          "url": "https://arxiv.org/abs/1902.10186",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Turpin 等：Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting（arXiv:2305.04388，NeurIPS 2023）",
+          "url": "https://arxiv.org/abs/2305.04388",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

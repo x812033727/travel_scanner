@@ -1,0 +1,377 @@
+{
+  "slug": "ai-term-kv-cache",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "KV 快取（KV Cache）是什麼：為什麼對話越長越吃記憶體",
+      "description": "KV 快取是語言模型逐個產生 token 時，把前面每個位置在各層算好的 key 與 value 存起來、下一步只補算新 token 的做法。內容用四步示例說明它省下哪些重算，記憶體為何隨上下文長度、層數與注意力頭數成長，PagedAttention、MQA／GQA 與量化各省在哪，以及它和提示詞快取的分工。",
+      "hero": {
+        "src": "/guides/ai-term-kv-cache/hero.jpg",
+        "alt": "對話框旁一排 token 方塊往右延伸，下方記憶體框裡的成對方塊堆成逐步升高的階梯",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "KV 快取是語言模型推論時的暫存：逐個產生 token 時，留住前面各位置在每層算好的 key 與 value，下一步只補算新 token。",
+            "它省下重算前文，但新 token 與全部 key 的比對省不掉；上下文越長、層數越多，占的記憶體就越多。",
+            "它不是記憶也不是學習，權重沒有改變；下一輪對話接得上，是因為對話紀錄又被放進輸入。",
+            "提示詞快取存的也是 key 與 value，但範圍跨請求、限一字不差的相同字首；KV 快取則在單次請求內。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "KV 快取（KV cache）是語言模型推論（inference）時的暫存：模型逐個產生 token，每一步都把前面各位置在每層算好的 key 與 value 留著，下一步只補算新 token 的那一份。它省下重複計算，代價是記憶體：上下文越長，要存的越多。cache 採國家教育研究院資訊名詞的譯法「快取」，Google 機器學習詞彙表繁中版內文也這樣用；KV 沿用論文的英文縮寫。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "讀入提示與逐個產生的差別見"
+            },
+            {
+              "type": "article",
+              "text": "推論（Inference）",
+              "kind": "life",
+              "slug": "ai-term-inference"
+            },
+            {
+              "type": "text",
+              "text": "，key 與 value 的來源見"
+            },
+            {
+              "type": "article",
+              "text": "注意力機制（Attention）",
+              "kind": "life",
+              "slug": "ai-term-attention-mechanism"
+            },
+            {
+              "type": "text",
+              "text": "。資料截至 2026 年 10 月。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "為什麼前面的 key 與 value 可以留著用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "注意力機制把每個 token 轉成 query、key、value：新 token 用 query 比對各位置的 key，再依結果把各位置的 value 加權混合。模型每產生一個 token，就接到輸入後面再算下一個。"
+        },
+        {
+          "type": "paragraph",
+          "text": "能留著用，是因為遮罩。Vaswani 等人 2017 年的設計中，解碼器的自注意力只讓每個位置看到自己和之前的位置，所以某個 token 在某層的 key 與 value 算好後，不會因後面多了新 token 而改變。Hugging Face 文件據此說明，過去的 key 與 value 可以每層各存一份重用，過去 token 的 query 則不必存。"
+        },
+        {
+          "type": "heading",
+          "text": "示例：第 1 步到第 4 步各算了什麼、存了什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是示例，分詞僅示意，未實測：提示有 3 個 token「台南／早餐／推薦」，模型接著寫出「可以吃牛肉湯」。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "第 1 步（讀入提示）：3 個 token 一起處理，每層算出並存下 3 組 key 與 value，產生「可以」。",
+            "第 2 步：只送入「可以」，每層只算它的 query、key、value；快取變 4 組，與 4 個 key 比對，產生「吃」。",
+            "第 3 步：送入「吃」，快取變 5 組，比對 5 個 key，產生「牛肉」。",
+            "第 4 步：送入「牛肉」，快取變 6 組，比對 6 個 key，產生「湯」。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "不用快取的話，第 4 步要把 6 個 token 在每層的 key 與 value 全部重算。Hugging Face 文件指出：不快取時，每步的注意力成本隨序列長度平方成長；有快取則是線性，記憶體也線性增加。沒省掉的是比對：快取從 3 組長到 6 組，新 token 要比對的 key 也跟著變多。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-kv-cache/diagram-1.svg",
+          "alt": "四步示例：第 1 步讀入 3 個 token 並存 3 組 key 與 value，之後每步只送入一個新 token，快取依序變成 4、5、6 組",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下看：第 1 步一次存下提示的 3 組 key 與 value，之後每步只新增一組，先前存好的直接重用；比對的範圍則一步比一步長。分詞為示意。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "記憶體為什麼越用越多",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugging Face 文件寫明，每層的 key 與 value 快取，形狀是「批次大小 × 注意力頭數 × 序列長度 × 每頭維度」，對應以下因素："
+        },
+        {
+          "type": "list",
+          "items": [
+            "上下文長度：與提示加已產生的 token 數成正比。",
+            "層數：每層各存一份，層數加倍即加倍。",
+            "存 key 與 value 的頭數與每頭維度：越多，每個 token 存得越多。",
+            "每個數值的位元組數：精度越高，占得越多。",
+            "同時處理的序列數：Pope 等人指出，權重整批共用，KV 快取則每條序列各一份。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "例外是滑動視窗注意力：Hugging Face 文件說明，這類層的快取長到視窗大小就不再增加。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "KV 快取不是記憶，也不是學習",
+          "text": "它是這次計算的中間數值，權重沒有改變，Hugging Face 文件也提醒快取只用於推論。下一輪對話接得上，是因為對話紀錄又被放進輸入。"
+        },
+        {
+          "type": "heading",
+          "text": "三種減量做法各省在哪",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "PagedAttention：把快取切成固定大小的區塊，用到才配置，省下照最大長度預留造成的浪費。",
+            "MQA／GQA：多個 query 頭共用 key 與 value，要存的頭數變少，省下每個 token 的快取與每步要讀的資料。",
+            "KV 量化：用較少位元存 key 與 value，省下每個數值占的空間。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "PagedAttention 出自 Kwon 等人 2023 年的 vLLM 論文。作者在實驗中重做三種預先保留連續空間的舊做法，量到只有 20.4% 至 38.2% 的 KV 快取記憶體真正用來存 token 的 key 與 value；論文總結，在相同延遲水準下，vLLM 的吞吐量是當時既有系統的 2 至 4 倍。它不縮小每個 token 的快取，而是讓同樣的記憶體放進更多請求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "MQA（multi-query attention，Shazeer 2019）讓所有頭共用一組 key 與 value，Pope 等人指出快取因此縮為頭數分之一；Shazeer 的實驗裡品質與原本相近，多數指標略差。GQA（grouped-query attention）把 query 頭分組、每組共用一組，介於每頭各一組與 MQA 之間。兩者改的是模型架構，不是推論時的開關；GQA 論文用約原預訓練 5% 的計算量改訓既有模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "量化則是推論引擎的選項，Hugging Face 與 vLLM 都支援。KIVI 論文（Liu 等人 2024）把大部分快取壓到 2 位元、最近一小段 token 維持完整精度，在所測模型上品質接近原本；Hugging Face 文件提醒，上下文短且記憶體夠用時，量化反而可能變慢。"
+        },
+        {
+          "type": "heading",
+          "text": "KV 快取和提示詞快取的分工",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "兩者存的都是 key 與 value，差別在範圍：KV 快取在單次請求內，讓逐個產生的每一步不必重算前文；提示詞快取跨請求，把相同字首（prefix）的 KV 快取留給下一個請求，省掉重讀那段。OpenAI、Anthropic 與 vLLM 的官方文件都寫明，提示詞快取存的是 KV 狀態。"
+        },
+        {
+          "type": "paragraph",
+          "text": "字首必須一字不差。vLLM 論文指出，一個 token 的 KV 快取取決於它前面所有的 token，前面改一個字，之後整段都對不上。vLLM 文件也提醒，字首快取只縮短讀入提示的時間，不縮短逐個產生的時間。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "面向",
+            "KV 快取",
+            "提示詞快取"
+          ],
+          "rows": [
+            [
+              "範圍",
+              "單次請求內的每一步",
+              "跨請求，限相同字首"
+            ],
+            [
+              "存的內容",
+              "每層每個 token 的 key 與 value",
+              "字首那段的 key 與 value"
+            ],
+            [
+              "省下的",
+              "重算前文的 key 與 value",
+              "重新讀入字首"
+            ],
+            [
+              "省不掉的",
+              "新 token 與全部 key 的比對",
+              "逐個產生輸出的時間"
+            ],
+            [
+              "保留多久",
+              "產生結束即可釋放",
+              "依服務規則淘汰，如逾時或空間不足"
+            ]
+          ],
+          "caption": "依 Hugging Face、vLLM、OpenAI 與 Anthropic 官方文件整理；資料截至 2026 年 10 月。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "命中條件、有效時間與計費方式見"
+            },
+            {
+              "type": "article",
+              "text": "提示詞快取（Prompt Caching）",
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "長上下文的成本，不只看 token 數",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同樣產生一段回答，前文越長，每步要讀的 KV 快取越大。Pope 等人以多頭注意力的超大模型為例指出，批次大、上下文長時，每產生一個 token 都要把 KV 快取從記憶體搬進運算單元一次，期間運算核心幾乎閒置；批次小、序列短時，搬資料的時間才以讀權重為主。"
+        },
+        {
+          "type": "paragraph",
+          "text": "其次是占位。vLLM 論文說明，一批能同時處理多少請求，受限於放得下多少 KV 快取；長上下文請求占得多，能並行的請求就少，而 Pope 等人指出批次變小會讓每個 token 的成本變高。他們也提到，以整段輸入計，注意力的推論成本隨長度平方成長（前面說的線性是指每一步）。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "至於命中提示詞快取的輸入，OpenAI 與 Anthropic 都另外計價。所以估長文件問答的速度與費用，要一起看輸入與輸出長度、並行請求數與快取命中；容量面見"
+            },
+            {
+              "type": "article",
+              "text": "上下文視窗（Context Window）",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "其他和推論資源有關的名詞，見"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Vaswani 等：Attention Is All You Need（arXiv:1706.03762，NeurIPS 2017）",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Pope 等：Efficiently Scaling Transformer Inference（arXiv:2211.05102）",
+          "url": "https://arxiv.org/abs/2211.05102",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Kwon 等：Efficient Memory Management for Large Language Model Serving with PagedAttention（vLLM，SOSP 2023）",
+          "url": "https://arxiv.org/abs/2309.06180",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Shazeer：Fast Transformer Decoding: One Write-Head is All You Need（MQA，arXiv:1911.02150）",
+          "url": "https://arxiv.org/abs/1911.02150",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ainslie 等：GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints（EMNLP 2023）",
+          "url": "https://arxiv.org/abs/2305.13245",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Liu 等：KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache（ICML 2024）",
+          "url": "https://arxiv.org/abs/2402.02750",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hugging Face Transformers 官方文件：How caching works",
+          "url": "https://huggingface.co/docs/transformers/en/cache_explanation",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hugging Face Transformers 官方文件：Cache strategies（含量化快取與滑動視窗）",
+          "url": "https://huggingface.co/docs/transformers/en/kv_cache",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "vLLM 官方文件：Automatic Prefix Caching",
+          "url": "https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "vLLM 官方文件：Prefix Caching 設計說明（區塊雜湊與 LRU 淘汰）",
+          "url": "https://docs.vllm.ai/en/latest/design/prefix_caching/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "vLLM 官方文件：Quantized KV Cache",
+          "url": "https://docs.vllm.ai/en/latest/features/quantization/quantized_kvcache/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI 官方文件：Prompt caching（What is the prompt cache?）",
+          "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Anthropic 官方文件：Prompt caching（Data retention 與計價段落）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google：機器學習詞彙表（繁體中文版，內文以「快取」譯 cache、inference 譯為推論）",
+          "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "國家教育研究院樂詞網：cache 精確檢索結果（資訊名詞譯為快取）",
+          "url": "https://terms.naer.edu.tw/search/?query_term=cache&query_field=title&query_op=&match_type=phrase",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

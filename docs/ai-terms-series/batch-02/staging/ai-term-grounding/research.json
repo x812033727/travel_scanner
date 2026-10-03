@@ -1,0 +1,138 @@
+{
+  "slug": "ai-term-grounding",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/google-search",
+      "title": "Google AI for Developers: Grounding with Google Search (Gemini API)",
+      "access": "web open via curl -sSL, HTTP 200, page footer last updated 2026-09-23 UTC",
+      "claims": [
+        "Grounding with Google Search connects Gemini to real-time web content and cites verifiable sources beyond the knowledge cutoff",
+        "Flow: the model decides whether a search can improve the answer, generates one or more queries if needed, processes results and synthesizes a response, returns an answer with inline citation annotations (the page never calls this step 'context'; the article's 放進上下文 step is labelled in the prose as the article's own summary)",
+        "A successfully grounded response carries url_citation annotations, each linking a text segment of the answer (start_index/end_index) to a source URL and title; it does not point to a passage inside the source; the response also has google_search_call and google_search_result steps",
+        "Listed benefits include reducing hallucinations by basing responses on real-world information (stated as a goal, not a guarantee)"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/google-search?hl=zh-tw",
+      "title": "Google AI for Developers: 以 Google 搜尋建立基準 (same document, zh-TW page)",
+      "access": "web open via curl -sSL, HTTP 200",
+      "claims": [
+        "Official zh-TW page title translates the feature as 以 Google 搜尋建立基準 and the body also uses 以 Google 搜尋強化事實基礎"
+      ]
+    },
+    {
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/overview",
+      "title": "Google Cloud: Grounding overview (formerly Vertex AI generative AI docs)",
+      "access": "web open via curl -sSL; original URL https://cloud.google.com/vertex-ai/generative-ai/docs/grounding/overview redirects here; HTTP 200, footer last updated 2026-10-01 UTC",
+      "claims": [
+        "Defines grounding as the ability to connect model output to verifiable sources of information",
+        "Benefits listed: reduces hallucinations, anchors responses to data sources, provides auditability through grounding support links",
+        "Grounding types listed: Google Search, Google Maps, Agent Search (RAG), RAG Engine, Elasticsearch, your own search API, Web Grounding for Enterprise, third-party web search; so RAG is one way to ground in this taxonomy"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/build-with-claude/citations",
+      "title": "Anthropic: Citations (Claude API documentation)",
+      "access": "web open via curl -sSL, HTTP 200",
+      "claims": [
+        "Ground Claude's responses in your source documents; citations return the exact passages with location (character range, page range or content block range)",
+        "Documents are chunked into sentences by default, defining the minimum granularity of citations",
+        "Because the API parses citations and extracts cited_text directly, citations are guaranteed to contain valid pointers to the provided documents; the page also describes citations as the exact passages that support each claim, but 'guaranteed' is used only for valid pointers, not for the passage being enough to support the whole sentence"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2305.14627",
+      "title": "Gao, Yen, Yu, Chen: Enabling Large Language Models to Generate Text with Citations (ALCE, EMNLP 2023)",
+      "access": "arXiv abstract page plus full PDF v2 via curl -sSL and pdftotext, HTTP 200",
+      "claims": [
+        "ALCE benchmark measures fluency, correctness and citation quality; citation recall = statement fully supported by its cited passages (judged by an NLI model), citation precision = detects irrelevant citations",
+        "Abstract: on the ELI5 dataset even the best models lack complete citation support 50% of the time (2023 models, automatic NLI judge)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2304.09848",
+      "title": "Liu, Zhang, Liang: Evaluating Verifiability in Generative Search Engines",
+      "access": "arXiv abstract page plus full PDF v2 via curl -sSL and pdftotext, HTTP 200",
+      "claims": [
+        "Human audit of four commercial generative search engines on 1,450 queries, responses scraped late February to late March 2023",
+        "On average 51.5% of generated sentences are fully supported by citations (citation recall) and 74.5% of citations support their associated sentence (citation precision = (Tfs + Tps)/N, where a partially supporting citation counts only when the statement is fully supported by the union of its citations and no single citation fully supports it)",
+        "Each citation is rated full, partial or no support"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2112.12870",
+      "title": "Rashkin et al.: Measuring Attribution in Natural Language Generation Models (AIS)",
+      "access": "arXiv abstract page plus full PDF v2 via curl -sSL and pdftotext, HTTP 200",
+      "claims": [
+        "AIS (Attributable to Identified Sources) evaluates whether output is supported by identified sources",
+        "It avoids absolute factuality judgments; evaluating factuality needs complementary methods such as source quality"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/cs/9906002",
+      "title": "Harnad: The Symbol Grounding Problem (Physica D 42: 335-346, 1990; arXiv version)",
+      "access": "arXiv abstract page plus full-text HTML https://arxiv.org/html/cs/9906002 via curl -sSL, HTTP 200 (no PDF on arXiv); Elsevier DOI only reached an interstitial shell",
+      "claims": [
+        "Poses how a formal symbol system's semantic interpretation can be intrinsic rather than parasitic on meanings in our heads",
+        "Chinese/Chinese dictionary analogy",
+        "Sketches a candidate solution: symbols grounded bottom-up in nonsymbolic (iconic and categorical) representations from sensory projections"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2402.02243",
+      "title": "Harnad: Language Writ Large: LLMs, ChatGPT, Grounding, Meaning and Understanding",
+      "access": "arXiv abstract page via curl -sSL, HTTP 200 (abstract only); v1 2024-02-03, v2 2025-02-17; journal ref Frontiers in Artificial Intelligence 7: 1490698, whose title drops 'Grounding'",
+      "claims": [
+        "Argues ChatGPT lacks direct sensorimotor grounding connecting words to referents"
+      ]
+    },
+    {
+      "url": "https://web.stanford.edu/~clark/1990s/Clark,%20H.H.%20_%20Brennan,%20S.E.%20_Grounding%20in%20communication_%201991.pdf",
+      "title": "Clark and Brennan: Grounding in Communication (in Resnick, Levine and Teasley, eds., Perspectives on Socially Shared Cognition, APA, 1991; chapter PDF on Clark's Stanford site)",
+      "access": "web open via curl -sSL, HTTP 200, application/pdf (12-page scan), read with pdftotext, quotes on PDF page 2 (book pages 128-129); publisher DOI https://doi.org/10.1037/10096-006 and psycnet return 403 to curl",
+      "claims": [
+        "In conversation the participants try to establish that what has been said has been understood: they try to ground what has been said, that is, make it part of their common ground",
+        "Grounding is the collective process by which the participants try to reach this mutual belief; both authors wrote from psychology departments"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2304.01481",
+      "title": "Mollo and Milliere: The Vector Grounding Problem",
+      "access": "arXiv abstract page via curl -sSL, HTTP 200 (abstract only)",
+      "claims": [
+        "Argues LLMs can achieve referential grounding even without multimodality or embodiment (opposing position to Harnad 2024)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1505.04870",
+      "title": "Plummer et al.: Flickr30k Entities",
+      "access": "arXiv abstract page via curl -sSL, HTTP 200 (abstract only)",
+      "claims": [
+        "Annotates caption entity mentions with bounding boxes and defines a benchmark for localizing textual entity mentions in an image (visual grounding)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2306.14824",
+      "title": "Peng et al.: Kosmos-2: Grounding Multimodal Large Language Models to the World",
+      "access": "arXiv abstract page via curl -sSL, HTTP 200 (abstract only)",
+      "claims": [
+        "A multimodal LLM that represents text spans together with bounding boxes, grounding text to the visual world"
+      ]
+    }
+  ],
+  "aliases": [
+    "Grounding",
+    "Grounding with Google Search",
+    "以 Google 搜尋建立基準",
+    "以 Google 搜尋強化事實基礎",
+    "符號接地問題",
+    "Symbol Grounding Problem",
+    "視覺接地",
+    "Visual Grounding"
+  ],
+  "existing_overlap": "Adjacent to ai-term-retrieval-augmented-generation (RAG as one way to ground), ai-hallucination-fact-check (claim-by-claim checking, which this article applies to citations), gemini-api-search-grounding-citations (programmatic parsing of Gemini citation fields, linked not repeated) and ai-term-knowledge-cutoff (sibling in batch 02, linked). ai-search-generated-answers and ai-search-llmo already use the word 接地 for Gemini grounding and Google-Extended; usage here is consistent with them.",
+  "running_text_characters": 2597,
+  "notes": "Counted with pack_ingest._body_length, which includes the 72 characters of article-link labels inside rich_paragraph blocks (2,521 without them); 2,542 as drafted, 2,723 after verification round 1, trimmed to 2,593 in round 2 for readability with no change of structure. The worked example (library summer lecture, sources A and B, three answers) is fictional teaching material and was not run against any product. No model names, prices or leaderboard figures in the prose; paper numbers are stated with their settings (ELI5 with 2023 models and an NLI judge; four commercial engines audited Feb-Mar 2023, with the partial-support condition of the 74.5% figure). The three-step flow and its middle step (放進上下文) are the article's own summary and the prose says so. The symbol grounding problem is presented with a candidate solution plus opposing positions, without a verdict; conversational grounding (Clark and Brennan 1991) gets one sentence. Dry run passes with only the no_summary warning that the sandbox exemplar also shows."
+}

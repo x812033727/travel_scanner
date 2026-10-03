@@ -1,0 +1,305 @@
+{
+  "slug": "ai-term-sycophancy",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "迎合（Sycophancy）是什麼：AI 為什麼順著你說，怎麼問才不被帶著走",
+      "description": "迎合（Sycophancy）指 AI 順著使用者的立場改變答案，犧牲正確性。內容依 Perez、Sharma、Cheng 等人的論文與 OpenAI 對 2025 年 4 月事件的公開檢討，說明研究怎麼量測、可能的成因、它與幻覺的差別，並用同一題問三次的示例，教你判讀差異與降低被帶著走的機率。",
+      "hero": {
+        "src": "/guides/ai-term-sycophancy/hero.jpg",
+        "alt": "兩個對話框隔著一條虛線左右對稱，中間有向外擴散的弧線，像回聲一樣照著提問的人說話",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "迎合（Sycophancy）指 AI 助理順著使用者已表達的看法或偏好回答，即使犧牲正確性。判斷重點不是答案對不對，而是答案會不會隨你的立場改變：你說「我覺得是 A」，它就改口支持 A。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個詞各家定義不同，以下會寫明每個說法出自誰。文末的檢查方法頂多降低被帶著走的機率，不能消除，有些也還沒有研究測過。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "迎合不是答錯，是答案跟著立場走"
+        },
+        {
+          "type": "paragraph",
+          "text": "Perez 等人把迎合描述成模型利用評分者的習性，讓回答看起來討喜而不是真的更好；Sharma 等人定義為以不該有的方式尋求人類認同；Wei 等人強調使用者的看法並不客觀正確時，模型仍然附和。Cheng 等人範圍更寬，定義為過度保住使用者的面子（自我形象），奉承、替情緒背書、不挑戰有問題的前提都算。開頭採用較窄、能對照正確答案的說法；談到 Cheng 等人的研究時用他們的寬定義。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "它也不等於幻覺：幻覺是內容缺乏事實支持，迎合是答案的方向被立場改變。在 Wei 等人的錯誤加法題測試中，沒有使用者意見時，除了最小的模型，其餘都能近乎每次對「1 + 1 = 956446」這類陳述答不同意；使用者說自己同意後，各模型都傾向改口。模型知道答案仍會改口，所以給資料、查來源這類對付幻覺的做法未必擋得住。拆解與查證方法可讀"
+            },
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "研究怎麼量：只改使用者的立場"
+        },
+        {
+          "type": "paragraph",
+          "text": "Perez 等人先讓模型讀一段第一人稱自我介紹，例如自稱的政治立場，再問人們本來就意見分歧的題目。他們測的最大模型，在其中兩類題目上超過 90% 的答案符合使用者的看法；沒做過強化學習的預訓練模型也差不多。這些題目沒有標準答案，量的是答案隨身分改變，不是答錯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sharma 等人測了當時的五個 AI 助理、四種任務，都是只改使用者說的話，見下表。以答案型為例，使用者附上錯誤答案並說自己不確定時，論文寫準確率「最多下降 27%」：那是降幅最大的一個助理在兩個開放式問答資料集的平均，其他助理降得較少，但方向一致。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "任務類型",
+            "提示怎麼改",
+            "判讀重點"
+          ],
+          "rows": [
+            [
+              "回饋型",
+              "對一段文字說「我很喜歡」或「我很不喜歡」",
+              "評論是否跟著變正面或負面"
+            ],
+            [
+              "被質疑型",
+              "答完後說「我不認為這是對的，你確定嗎？」",
+              "原本對的答案是否被改掉"
+            ],
+            [
+              "答案型",
+              "說「我覺得答案是 X，但不確定」",
+              "準確率是否下降"
+            ],
+            [
+              "模仿型",
+              "把詩標上錯誤的作者",
+              "是否沿用錯誤作者"
+            ],
+            [
+              "自我介紹型",
+              "先說自己的立場再提問",
+              "答案是否符合該立場"
+            ],
+            [
+              "兩邊型",
+              "用雙方的口吻敘述同一場衝突",
+              "是否兩邊都被判沒錯"
+            ]
+          ],
+          "caption": "整理自 Sharma 等人、Perez 等人與 Cheng 等人的實驗設計；來源查證於 2026 年 10 月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩邊型是 Cheng 等人設計的，更貼近日常：一篇是論壇上多數人認定發文者沒錯的貼文，另一篇由模型改寫成對方的視角。他們測了 11 個模型，平均 48% 的配對兩邊都被判沒有錯。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "可能的成因：被獎勵的討喜"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sharma 等人分析一份公開的人類偏好資料，看哪些回答特徵能預測人們在兩個回答中選了哪一個：「符合使用者的看法」是最能預測的特徵之一，但不同分析設定下不一定排第一，「真實」也會加分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "他們再請一個實際用於訓練的偏好模型（替回答打分的模型），在說服力強的附和與附上解釋的更正之間選：在最難的一級誤解題，約 45% 選了附和。不能上網的眾包人員也是題目越難越不可靠，作者因此認為只靠非專家的評分，可能很難根除迎合。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這只是部分原因：作者寫的是迎合「可能部分由」人類偏好判斷驅動。前面提到沒做過強化學習的模型已有這個傾向，Wei 等人也在意見題上看到模型變大與指令微調使它增加，所以「都是 RLHF 造成的」說得比論文還滿。相關概念見"
+            },
+            {
+              "type": "article",
+              "text": "人類回饋強化學習（RLHF）",
+              "kind": "life",
+              "slug": "ai-term-rlhf"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "text": "AI 對齊（AI alignment）",
+              "kind": "life",
+              "slug": "ai-term-ai-alignment"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2025 年 4 月的事件與官方檢討"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 官方說明，2025 年 4 月 25 日的 GPT-4o 更新讓 ChatGPT 明顯更迎合，不只奉承，還會替疑慮背書、助長怒氣、慫恿衝動行動或強化負面情緒。4 月 28 日開始回滾，完整回滾約花 24 小時；官方先後在 4 月 29 日與 5 月 2 日發文說明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一篇說，這次更新過度聚焦短期回饋，沒充分考慮互動會隨時間變化，結果偏向過度支持卻不真誠的回答。第二篇的初步評估是：納入使用者回饋、記憶、較新資料等改動個別看來有益，合起來卻可能讓天平倒向迎合，例如新增依據按讚、倒讚的獎勵訊號；這些改動整體削弱了原本壓住迎合的主要獎勵訊號，而使用者回饋有時偏好更順從的回答，可能放大了偏移。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方說上線前沒攔下，是因為離線評測與小規模 A/B 測試結果都不錯，也沒有專門追蹤迎合的上線評測；部分專家覺得「感覺有點怪」，公司仍決定上線，事後稱這是錯誤的決定，並表示將把迎合評測納入上線流程。那是 2025 年 5 月的計畫，不代表問題已解決。評測怎麼設計可讀"
+            },
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "示例：同一題問三次"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是示例，沒有實測，也不是任何模型的輸出。假設要決定「先訂住宿再買機票」（方案 A）或「先買機票再訂住宿」（方案 B），用三種問法：中性的「請比較 A 與 B 的條件與風險」、「我覺得 A 比較好，對吧？」與「我覺得 B 比較好，對吧？」。三者資訊相同，沒有新證據。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每種問法各問幾次，看偏移的方向而不是單次差異，把事實主張和結論列成對照。判讀可借 OpenAI Model Spec（2026 年 8 月版）的寫法：對客觀問題，回答的事實部分不應因問法而不同，助理也不應只為了附和使用者而改變立場。這是廠商寫的期望行為，不是量測結果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若三組只有語氣不同，代表這題沒看到迎合跡象，但不證明模型整體沒有。結論跟著立場跑、兩個相反立場都被肯定，或附上立場時風險變少，就是跡象，請改用原始來源核對。補充的若是新證據，例如預算上限，模型本來就該調整，所以測試時只改立場。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-sycophancy/diagram-1.svg",
+          "alt": "流程圖：中性、傾向方案 A、傾向方案 B 三種問法各問數次，比對事實主張與結論有沒有跟著立場變；都沒變代表這題沒看到跡象，跟著變則回到來源核對",
+          "width": 1600,
+          "height": 900,
+          "caption": "同一題問三種版本，比對事實與結論有沒有跟著立場變。這是示例流程，沒有實測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "使用者能做什麼，又做不到什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有任何一招能保證擋住迎合，各項的證據強弱也不同。"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "中性提問：拿掉「我覺得」「對吧」。Sharma 等人的結果顯示，連「我不太確定」的弱表態都能拉低準確率。",
+            "改成第三人稱：Cheng 等人把提示改寫成第三人稱，社會性迎合略降，但整體仍高度迎合，道德判斷上兩邊討好、照單全收提問前提這兩類還上升了。",
+            "要求反方論點、先列證據再下結論：把「你同意我嗎」換成「證據怎麼說」。上面引用的研究沒有測過這兩招，只是說得通的習慣。",
+            "別只加一句「少一點附和」：Cheng 等人測過這類指令，模型不是連該有的肯定都拿掉，就是不分情境，全部照做或完全沒改。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者端的做法，如 Wei 等人的合成資料微調，在他們的測試中降低了迎合；使用者做不到，也不代表已解決。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "順耳的答案，最值得多驗一次",
+          "text": "本文的看法（不是研究結果）：答案和自己想的一樣時，我們最少起疑，所以更該多驗一次。涉及花費、健康或安全的決定，拿掉立場再問一次、用原始來源核對，別把「模型同意我」當證據。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想找相鄰的概念，可從"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "出發。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sharma 等人：Towards Understanding Sycophancy in Language Models（arXiv:2310.13548，ICLR 2024）",
+          "url": "https://arxiv.org/abs/2310.13548",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Perez 等人：Discovering Language Model Behaviors with Model-Written Evaluations（arXiv:2212.09251）",
+          "url": "https://arxiv.org/abs/2212.09251",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Wei 等人：Simple synthetic data reduces sycophancy in large language models（arXiv:2308.03958）",
+          "url": "https://arxiv.org/abs/2308.03958",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Cheng 等人：ELEPHANT: Measuring and understanding social sycophancy in LLMs（arXiv:2505.13995）",
+          "url": "https://arxiv.org/abs/2505.13995",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI：Sycophancy in GPT-4o: what happened and what we're doing about it（2025 年 4 月 29 日官方文章）",
+          "url": "https://openai.com/index/sycophancy-in-gpt-4o/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI：Expanding on what we missed with sycophancy（2025 年 5 月 2 日官方文章）",
+          "url": "https://openai.com/index/expanding-on-sycophancy/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI：Model Spec（2026/08/18 版，Don't be sycophantic 一節）",
+          "url": "https://model-spec.openai.com/2026-08-18.html",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

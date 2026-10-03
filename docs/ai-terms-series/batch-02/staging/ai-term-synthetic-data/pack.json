@@ -1,0 +1,270 @@
+{
+  "slug": "ai-term-synthetic-data",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "合成資料（Synthetic Data）是什麼：兩種用途、品質控管與模型崩潰",
+      "description": "合成資料是由演算法或模型產生、模仿真實資料特徵的資料，常見用途有兩種：訓練模型，以及在隱私需求下替代真資料。內容依 Self-Instruct、模型崩潰研究（替換與累積資料的差別）與 NIST、ICO 的隱私文件，說明做法、抽查流程，以及它不能保證的事。",
+      "hero": {
+        "src": "/guides/ai-term-synthetic-data/hero.jpg",
+        "alt": "許多虛線小卡片落進漏斗，下方只剩幾張打勾的實線卡片，旁邊有一支放大鏡",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "合成資料（Synthetic Data）是由演算法、模型或模擬產生，用來模仿真實資料特徵的資料，不是直接從現實事件或真人身上收集。這個詞常指兩種用法：一是產生訓練資料來訓練模型，二是為保護隱私而產生、統計上像真資料的替代品。兩者的目的不同，要檢查的風險也不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以訓練用途為主，隱私用途另用一節說明。客服問答是假設示例，沒有實測；論文的數字也只代表該論文的設定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分清楚兩種合成資料"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "訓練用的合成資料，由模型或程式產生問答、指令或對話，再拿去訓練模型。用較強模型的輸出教較小的模型，常被歸入"
+            },
+            {
+              "type": "article",
+              "text": "知識蒸餾（Knowledge Distillation）",
+              "kind": "life",
+              "slug": "ai-term-knowledge-distillation"
+            },
+            {
+              "type": "text",
+              "text": "；把輸出整理成輸入與答案的配對再訓練，是"
+            },
+            {
+              "type": "article",
+              "text": "監督式微調（SFT）",
+              "kind": "life",
+              "slug": "ai-term-supervised-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "的一種資料來源；若大量生成的文字又混進網路語料，再被拿去做"
+            },
+            {
+              "type": "article",
+              "text": "預訓練（Pretraining）",
+              "kind": "life",
+              "slug": "ai-term-pretraining"
+            },
+            {
+              "type": "text",
+              "text": "，就會牽涉來源如何追蹤。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "隱私用的合成資料，則是擁有者以真實資料為基礎產生替代資料，供測試、分析或分享。NIST SP 800-188 把只替換原始資料中部分列、欄或儲存格（或加上雜訊）、其餘仍是原始記錄的，稱為部分合成；用原始資料建模、再由模型產生整份資料，與原始記錄沒有一對一對應的，稱為完全合成。兩種用法只有「資料是產生的」這一點相同；適合拿來訓練，不代表可以放心公開。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "訓練用",
+            "隱私用"
+          ],
+          "rows": [
+            [
+              "目的",
+              "補足訓練資料",
+              "不給真資料也能測試、分析"
+            ],
+            [
+              "主要風險",
+              "錯誤、單調、偏見",
+              "仍可能洩漏個人資訊"
+            ],
+            [
+              "先檢查",
+              "正確性與多樣性",
+              "能否推回真人"
+            ]
+          ],
+          "caption": "兩種用法的對照；整理自文末所列的論文與官方文件，查證於 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Self-Instruct：從 175 個種子任務長出訓練資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "Self-Instruct 於 2022 年提出，讓預訓練語言模型用自己的輸出產生指令微調資料。論文的流程如下。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "人工寫 175 個種子任務，每個有 1 條指令和 1 個實例，放進任務池。",
+            "每輪從池中抽 8 條指令當示範，其中 6 條人工寫、2 條是先前的模型產出，請模型寫出新指令。",
+            "判斷是否為分類任務；分類任務先產生標籤再產生輸入，避免輸入偏向單一標籤，其他任務則先產生輸入再產生輸出。",
+            "過濾：新指令與池中任何一條的 ROUGE-L 相似度（看文字重疊多少）要小於 0.7 才收進任務池，重複或明顯異常的實例也剔除；最後用這批資料微調原本那個模型。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "在論文的設定下，流程產生 52,445 條指令與 82,439 個實例。作者隨機抽 200 條指令、各取 1 個實例，由其中一位作者標記：指令是有效任務的占 92%，輸入合適的占 79%，輸出正確可接受的占 58%，所有欄位都有效的只有 54%。微調後的模型在 Super-NaturalInstructions 的零樣本評測上，ROUGE-L 分數比原模型高 33.1 分。論文的限制一節也寫到：增益可能偏向常見任務，作者也擔心這個迭代過程放大模型原有的偏見。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "示例：客服問答的生成與抽查"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是假設流程，沒有實際執行，數字都是舉例。一間小型民宿只有一份住宿規則文件，想用模型產生客服問答，來測試或微調客服助理。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出主題（訂房、取消、入住、交通、設備），要求模型只依文件出題與作答，並標明依據的段落。",
+            "產生 300 組問答，要求包含口語、錯字與資訊不全的問法。",
+            "先用程式去除重複的問題，再檢查答案裡的日期與金額是否出現在文件中。",
+            "人工抽查 30 組，記錄錯誤類型：答案與規則矛盾、規則沒寫卻照答、問法雷同。",
+            "另留一份由真實客人問題整理的測試集，不用來生成，也不混進訓練。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "預期得到一批附依據的問答。若抽查發現答案引用了文件沒有的規定，多半代表生成時出現幻覺，應修改指令後整批重做，而不是只改被抽到的幾筆；若問題幾乎都是同一種句型，代表多樣性不足；若模型在合成題目上得分很高、在真實客人的問題上卻很差，可能是合成資料和真實提問的分佈不同。抽查只能估計錯誤比例，不能證明沒有錯。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "模型崩潰：研究量到什麼，沒量到什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型崩潰（model collapse）指模型一代代用前一代的輸出訓練，表現逐代變差。Shumailov 等人 2024 年發表於《Nature》的研究發現，在訓練中不加區分地使用模型生成的內容，原始內容分佈的尾端（少見的內容）會先消失。他們的語言模型實驗微調一個 1.25 億參數的模型，每代用上一代產生的文字訓練，分兩種設定：不保留原始資料（訓練 5 輪）時，困惑度（perplexity，越高代表預測越差）上升；每代隨機保留 10% 原始資料（訓練 10 輪）時，只有輕微退化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gerstgrasser 等人 2024 年改問資料怎麼更新。第 1 代用真實資料訓練；到了第 2 代、第 3 代，「替換」只用上一代的輸出，「累積」則保留真實資料，再加上每一代的輸出。他們用約 900 萬到 1.25 億參數的幾種小型語言模型，資料是一份由另一個模型產生的短篇故事集：替換使測試誤差上升，累積則持平或更低。影像與分子的生成模型結果類似；簡化的線性模型也證明，累積時誤差不會無限上升。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-synthetic-data/diagram-1.svg",
+          "alt": "並排比較替換與累積：替換時每一代只用上一代模型的輸出訓練，累積時真實資料保留並加上各代輸出",
+          "width": 1600,
+          "height": 900,
+          "caption": "兩種資料更新方式的差別；結果只描述該論文的實驗與理論設定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這兩篇都不能讀成「網路上的 AI 內容會讓所有模型崩潰」，也不能讀成「只要累積就安全」。2025 年一篇理論研究同樣分析資料逐代累積，對象是最大概似估計這種統計方法：在標準假設下，真實資料占比趨近於零也能避免崩潰；少了額外假設，即使原始資料還在，也可能很快崩潰。這個詞也沒有統一定義：Gerstgrasser 等人整理出至少四種相關現象，2025 年一篇立場論文數出八種定義。引用崩潰結論時，要看是哪一種、在什麼設定下；開頭用的是較寬的「表現逐代變差」說法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另有研究把「用合成資料訓練出的模型，比產生這些資料的原模型還差」視為崩潰；在計算矩陣特徵值與新聞摘要兩個任務中，不篩選就會出現。先用驗證器（判斷資料好壞的程式或模型）篩過，即使驗證器不完美，有些也能避免崩潰。但在新聞摘要任務裡，讓產生資料的模型自己挑，結果勝過原模型；改用另一個摘要分數更高的模型來挑，效果卻和隨機挑選差不多。可見資料由誰篩、怎麼篩，本身就是變數。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "隱私用途：合成不等於去識別"
+        },
+        {
+          "type": "paragraph",
+          "text": "NIST SP 800-188（2023）指出，完全合成資料仍不是零揭露風險，因為它含有源自非公開個人資訊的內容；模型與由模型產生的資料都可能洩漏可再識別的個人資訊，深度學習模型背下多少訓練資料也難以量化。英國 ICO 的指引則說，合成資料算不算匿名，取決於能否從中推回原本的個人資訊；擬真度愈高，用途愈大，也愈可能洩漏，部分生成方法已被證明易受成員推論等攻擊。該頁註明，因英國 Data (Use and Access) Act 帶來的修改，這份指引正在審查、可能變動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩份文件都把差分隱私（differential privacy）列為控制洩漏量的方法，ICO 指出它可能降低資料的用處；ICO 也提醒，原始資料的偏誤會被帶進合成資料；NIST 則建議在資料本身標明是合成，例如姓名欄寫 SYNTHETIC PERSON。這裡引用的是美國與英國文件，不是台灣法規；在台灣處理個資，仍須另行確認適用的規定。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "合成不等於正確，也不等於安全",
+          "text": "訓練用途要檢查內容對不對、夠不夠多樣；隱私用途要檢查能不能推回真人。通過其中一項，不代表另一項也通過。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "其他相關的詞，請見"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wang 等：Self-Instruct: Aligning Language Models with Self-Generated Instructions（arXiv:2212.10560）",
+          "url": "https://arxiv.org/abs/2212.10560",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Shumailov 等：AI models collapse when trained on recursively generated data（Nature，2024）",
+          "url": "https://www.nature.com/articles/s41586-024-07566-y",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Gerstgrasser 等：Is Model Collapse Inevitable?（arXiv:2404.01413）",
+          "url": "https://arxiv.org/abs/2404.01413",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Barzilai、Shamir：When Models Don't Collapse: On the Consistency of Iterative MLE（arXiv:2505.19046）",
+          "url": "https://arxiv.org/abs/2505.19046",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Schaeffer 等：Position: Model Collapse Does Not Mean What You Think（arXiv:2503.03150）",
+          "url": "https://arxiv.org/abs/2503.03150",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Feng 等：Beyond Model Collapse: Scaling Up with Synthesized Data Requires Verification（arXiv:2406.07515）",
+          "url": "https://arxiv.org/abs/2406.07515",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Liu 等：Best Practices and Lessons Learned on Synthetic Data（arXiv:2404.07503，COLM 2024）",
+          "url": "https://arxiv.org/abs/2404.07503",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "NIST SP 800-188：De-Identifying Government Datasets（2023，第 4.4 節 Synthetic Data）",
+          "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-188.pdf",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "英國 ICO：Synthetic data（隱私強化技術指引）",
+          "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/privacy-enhancing-technologies/what-pets-are-there/synthetic-data/",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

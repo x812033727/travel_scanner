@@ -27,6 +27,15 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "AI 名詞速查說明 50 個名詞的一般概念與容易誤解之處，照會遇到的場景分成模型與訓練、使用與功能、推理與代理、生成與媒體、基礎設施與費用五組。",
+            "第一次可從頭掃一遍，之後遇到不懂的詞用瀏覽器搜尋（Ctrl+F 或 Cmd+F）跳到那一條。",
+            "另有十組常被當成同一件事的詞對，例如記憶負責保存和取回資訊，上下文視窗限制一次模型計算能用多少內容。",
+            "相同名稱在不同工具中可能有不同範圍，決定上傳資料、開啟記憶或支付費用前，仍要查看該服務當期的官方說明。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -176,6 +185,28 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "溫度（Temperature）是什麼：AI 回答變化程度的取樣參數",
+              "kind": "life",
+              "slug": "ai-term-temperature"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "知識截止日（Knowledge Cutoff）是什麼：模型知道到哪一天，又為什麼不準",
+              "kind": "life",
+              "slug": "ai-term-knowledge-cutoff"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "text": "使用與功能：聊天工具介面上會看到的字",
           "level": 2
@@ -268,6 +299,17 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "電腦操作（Computer Use）是什麼：讓 AI 看畫面、點滑鼠、打鍵盤",
+              "kind": "life",
+              "slug": "ai-term-computer-use"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "text": "生成與媒體：圖片、影片與聲音",
           "level": 2
@@ -348,6 +390,28 @@
               "text": "同一家為什麼有好幾個模型：旗艦、中階、輕量怎麼選",
               "kind": "life",
               "slug": "ai-model-tiers-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "速率限制（Rate Limit）是什麼：API 為什麼回你 429",
+              "kind": "life",
+              "slug": "ai-term-rate-limit"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機推論（Local Inference）是什麼：在自己的裝置上跑模型",
+              "kind": "life",
+              "slug": "ai-term-local-inference"
             }
           ]
         },

@@ -1,0 +1,317 @@
+{
+  "slug": "ai-term-grounding",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "接地（Grounding）是什麼：讓 AI 的回答有可以對回去的依據",
+      "description": "接地（Grounding）在生成式 AI 產品裡，指讓回答連到可查證的來源，例如搜尋結果或你提供的文件；同一個詞也用在符號接地問題與視覺接地。內容拆開三種用法，說明檢索、放入上下文與附上引用的流程，示範逐句核對一個報名日期，並解釋為什麼有引用仍可能只支持一半，也不保證沒有幻覺。",
+      "hero": {
+        "src": "/guides/ai-term-grounding/hero.jpg",
+        "alt": "一個對話框的三行文字，各有細線連到文件上的一行，其中一份文件被放大鏡檢視",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "接地，英文 Grounding，在生成式 AI 的產品文件裡，指讓模型的回答連到可以查證的來源：系統先取得搜尋結果或你提供的文件，回答再把其中的說法標上對應的來源。它給讀者一條回頭核對的路，但不保證回答因此正確。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個詞在認知科學、電腦視覺等領域另有很不一樣的意思，所以下面先分清三種用法，再看產品裡怎麼運作，以及有引用為什麼還要核對。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分清楚：同一個詞，三種用法"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的 Gemini API 文件把 Grounding with Google Search 當成功能：讓模型取得即時網路內容並引用來源，繁體中文頁面譯作「以 Google 搜尋建立基準」；Anthropic 的 Citations 文件則是讓回答對回你提供的文件。各家範圍不一定相同，讀到「有接地」，要回頭看它實際接了什麼。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "用法",
+            "接在一起的兩端",
+            "讀到時先問"
+          ],
+          "rows": [
+            [
+              "產品的接地（主講）",
+              "回答裡的說法，和可查證的來源",
+              "這句話在來源的哪一段？"
+            ],
+            [
+              "符號接地問題",
+              "符號，和感官經驗與外界事物",
+              "符號的意義從哪裡來？"
+            ],
+            [
+              "視覺接地",
+              "一段文字描述，和影像中的區域",
+              "這個詞指的是圖上哪一塊？"
+            ]
+          ],
+          "caption": "三種用法辨識表；來源查證於 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "產品裡的接地怎麼運作"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google Cloud 文件把接地定義為把模型輸出連到可驗證資訊來源的能力。實際流程可以拆成三步。取得資料：Gemini API 文件說，啟用搜尋工具後，模型先判斷搜尋能否改善答案，需要時自己產生查詢並執行；Anthropic 則用你交給 API 的文件，預設切成句子，作為可引用的單位。放進上下文：這是本文的概括，指取回的內容和你的問題一起交給模型，回答依據它寫成。回傳對應：Gemini 的引用註記把回答中的一段文字連到來源網址，Claude 則附上被引用的原文與它在文件中的位置。想用程式讀這些欄位，可參考"
+            },
+            {
+              "type": "article",
+              "text": "Gemini API 搜尋引用",
+              "kind": "life",
+              "slug": "gemini-api-search-grounding-citations"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "要不要搜尋由模型判斷；Gemini 文件描述的是回答「成功接地」時，文字會帶有引用註記。所以開了搜尋工具，不保證每次都有搜尋與引用；核對時看回應實際出現了什麼，不要只看設定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "有引用，不等於有支持"
+        },
+        {
+          "type": "paragraph",
+          "text": "引用告訴你這句話出自哪裡，不代表來源真的這樣寫。以 Anthropic 文件為例，它把引用描述成支持說法的原文段落，但用上「保證」一詞的只有一點：因為 API 會解析引用並直接取出原文，引用一定指向你提供的文件中有效的位置。那一段是否足以支持整句，文件沒有保證；句子仍可能多寫了原文沒有的條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩項研究量過這個落差，數字只屬於各自的設定。Gao 等人的 ALCE 基準用自然語言推論（NLI）模型自動判定陳述是否被所引段落完整支持；他們 2023 年用當時的模型測試 ELI5 長篇問答，摘要寫到最好的模型也有一半的情況缺少完整的引用支持。Liu 等人請人工評分員審查四個商用生成式搜尋引擎在 2023 年 2 月下旬到 3 月下旬的回應：平均只有 51.5% 的句子完整被引用支持，74.5% 的引用支持所附的句子（幾個引用合起來才完整支持一句時，各自只支持一部分的也算在內）。這些都是三年多前的系統，不代表今天的產品，但能告訴你該檢查什麼。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二個落差在來源本身。Rashkin 等人提出的歸因評估框架 AIS，只問陳述能否歸到已指明的來源，刻意不判斷事實真偽，並指出還需搭配來源品質等評估。轉貼可能逐字支持某句話，卻是舊版本；網頁自己也可能寫錯。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "連結能打開，只是核對的起點",
+          "text": "引用網址能開，只證明來源存在。採用前還要確認：那段原文真的說了這件事，來源是原始公布，日期適用。缺任何一項，就標成待查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "示例：核對一個報名日期"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是虛構示例，沒有實測任何產品。假設你問某市立圖書館的夏季講座何時開放報名，工具回三句話，各附一個來源。來源 A 是主辦單位公告，寫線上報名自 7 月 1 日上午起受理；來源 B 是活動網站的轉貼，寫 7 月 8 日開放，沒有更新日期。三句是：7 月 1 日開放線上報名（附 A）；7 月 1 日起可線上或到現場報名（附 A）；另有網站寫 7 月 8 日才開放（附 B）。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "拆句：每句只留一個可查的主張，記下附的來源。",
+            "開來源：在原文找到對應那一句，不能只看網址或標題。",
+            "比對：日期、主體、條件逐項對，標成完整、部分或不支持（分級借自 Liu 等人）。",
+            "看來源：它是原始公布還是轉貼，有沒有更新日期。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "預期結果：第一句與來源 A 一致，完整支持。第二句的線上部分有依據，現場報名 A 沒寫，是部分支持；這種最容易漏掉，因為連結對、前半句也對。第三句與來源 B 的原文相符，但 B 是沒有更新日期的轉貼，與公告衝突，不能直接當日期。處理：第一句採用，第二句刪掉現場報名或註明來源沒寫，第三句以主辦單位公告為準，仍不確定就問主辦單位。找不到對應的原文，就當成沒有依據，不要替模型補一個看似合理的出處。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-grounding/diagram-1.svg",
+          "alt": "三句示例回答各連到來源 A 或來源 B：第一句完整支持，第二句只有部分支持，第三句文字相符但來源是未標更新日期的轉貼，需要再查",
+          "width": 1600,
+          "height": 900,
+          "caption": "示例的逐句核對：先看這句話被來源支持到哪裡，再看來源是否可靠。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "與 RAG、幻覺、知識截止日的關係"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google Cloud 文件列出多種接地的接法，例如 Google 搜尋、你自己的搜尋 API、RAG Engine。所以在 Google 的分類裡，"
+            },
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "是接地的做法之一：接地關心說法能否回到來源，RAG 是先檢索再生成的流程。其他廠商未必同樣劃分。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "幻覺方面，Google 的兩份文件都把減少幻覺列為好處，措辭是降低，不是消除；前面的研究也顯示，有引用的回答仍有沒有支持的句子。接地讓錯誤比較容易發現與追查，但核對這一步省不掉。拆解可查主張的做法見"
+            },
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Gemini 文件也把回答近期事件、引用截止日以後的來源，列為搜尋接地的用途之一；知識截止日的意義可看"
+            },
+            {
+              "type": "article",
+              "text": "知識截止日（Knowledge Cutoff）",
+              "kind": "life",
+              "slug": "ai-term-knowledge-cutoff"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "其他用法：符號、影像與對話"
+        },
+        {
+          "type": "paragraph",
+          "text": "符號接地問題最常被引用的是 Harnad 1990 年的同名論文：形式符號系統的意義，如何屬於系統本身，而不是依附人們腦中的解讀？他用「只靠中文對中文字典學中文」作比喻，並勾勒一個候選解法：符號由下而上，接到由感官輸入形成的非符號表徵。用到大型語言模型上，看法分歧：Harnad 在 2024 年的論文認為 ChatGPT 缺少直接的感覺動作接地，Mollo 與 Millière 則論證語言模型可以達成指稱接地。這裡不下結論；這和產品的「附來源」是兩回事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "視覺接地是給一段文字，找出影像中對應的區域。Flickr30k Entities 資料集替圖片說明裡的詞組標上邊界框，用來評測文字所指的實體在圖上的位置；Kosmos-2 則讓多模態模型把文字片段和邊界框一起輸出。這和回答有沒有來源無關。"
+        },
+        {
+          "type": "paragraph",
+          "text": "此外，心理學家 Clark 與 Brennan 在 1991 年的〈Grounding in Communication〉裡用這個詞指對話中的協作：雙方設法確認剛說的話已被理解，納入彼此的共同基礎（common ground）。這是人與人的溝通，這裡不展開。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "其他相關概念可從"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "找起。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google AI for Developers：Grounding with Google Search（Gemini API 官方文件）",
+          "url": "https://ai.google.dev/gemini-api/docs/google-search",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google AI for Developers：以 Google 搜尋建立基準（同一份 Gemini API 文件的繁體中文頁面）",
+          "url": "https://ai.google.dev/gemini-api/docs/google-search?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Cloud：Grounding overview（Gemini Enterprise Agent Platform 文件；舊 Vertex AI 網址轉址至此）",
+          "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/overview",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Anthropic：Citations（Claude API 官方文件）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/citations",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Gao 等：Enabling Large Language Models to Generate Text with Citations（ALCE，EMNLP 2023）",
+          "url": "https://arxiv.org/abs/2305.14627",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Liu、Zhang、Liang：Evaluating Verifiability in Generative Search Engines",
+          "url": "https://arxiv.org/abs/2304.09848",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Rashkin 等：Measuring Attribution in Natural Language Generation Models（AIS）",
+          "url": "https://arxiv.org/abs/2112.12870",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Harnad：The Symbol Grounding Problem（Physica D 42, 1990；arXiv 版）",
+          "url": "https://arxiv.org/abs/cs/9906002",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Harnad：Language Writ Large: LLMs, ChatGPT, Grounding, Meaning and Understanding",
+          "url": "https://arxiv.org/abs/2402.02243",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Clark、Brennan：Grounding in Communication（收於 Perspectives on Socially Shared Cognition，APA，1991；Clark 在 Stanford 網站的 PDF）",
+          "url": "https://web.stanford.edu/~clark/1990s/Clark,%20H.H.%20_%20Brennan,%20S.E.%20_Grounding%20in%20communication_%201991.pdf",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Mollo、Millière：The Vector Grounding Problem",
+          "url": "https://arxiv.org/abs/2304.01481",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Plummer 等：Flickr30k Entities（影像區域與文字詞組的對應資料集）",
+          "url": "https://arxiv.org/abs/1505.04870",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Peng 等：Kosmos-2: Grounding Multimodal Large Language Models to the World",
+          "url": "https://arxiv.org/abs/2306.14824",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

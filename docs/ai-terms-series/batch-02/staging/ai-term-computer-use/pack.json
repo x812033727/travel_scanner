@@ -1,0 +1,318 @@
+{
+  "slug": "ai-term-computer-use",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "電腦操作（Computer Use）是什麼：讓 AI 看畫面、點滑鼠、打鍵盤",
+      "description": "電腦操作是讓代理靠截圖看畫面，再輸出滑鼠與鍵盤動作去操作圖形介面。內容比較 API 工具呼叫、瀏覽器自動化與電腦操作，說明截圖、判斷、動作的迴圈、為何較慢又容易出錯、OSWorld 怎麼評測，以及畫面上的文字可能是提示詞注入，並附一個未實測的表單示例。",
+      "hero": {
+        "src": "/guides/ai-term-computer-use/hero.jpg",
+        "alt": "一個螢幕畫面被取景框框住，游標正要點向畫面裡的按鈕，下方是一排鍵盤按鍵",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "電腦操作（Computer Use）是讓代理（Agent）像人一樣用電腦：看螢幕截圖，再輸出滑鼠與鍵盤動作去操作圖形介面。它不要求軟體先開放 API，代價是比較慢、容易點錯，而且畫面上的文字也可能是別人放進去的指令。站上已有談實際使用的產品篇："
+            },
+            {
+              "type": "article",
+              "text": "Claude 操作電腦是怎麼回事",
+              "kind": "life",
+              "slug": "claude-computer-use-explained"
+            },
+            {
+              "type": "text",
+              "text": "，這篇只講通用概念。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "這個詞沒有單一標準定義。Anthropic 的開發者文件把它說成螢幕截圖加滑鼠與鍵盤控制，另有只管網頁的瀏覽器工具；OpenAI 的指南則把瀏覽器與桌面介面一併算進 computer use，連用 Playwright 程式庫操作網頁的接法也收在內。以下取共同核心：以畫面為依據，用滑鼠鍵盤動作回應。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三種做法，差在模型看什麼"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "API 工具呼叫是模型產生函式名稱與參數，由程式照既定介面執行，拿回來的是資料而不是畫面，細節見"
+            },
+            {
+              "type": "article",
+              "text": "工具呼叫（Tool Calling）",
+              "kind": "life",
+              "slug": "ai-term-tool-calling"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "瀏覽器自動化以網頁結構為依據：程式用元素的角色、文字或 DOM 位置找到按鈕再操作。Playwright 文件建議優先用角色與名稱這類使用者看得到的屬性，因為綁死 DOM 結構的 CSS 或 XPath 選擇器，結構一改就容易失效。把這類能力做進瀏覽器的產品見"
+            },
+            {
+              "type": "article",
+              "text": "AI 瀏覽器指南",
+              "kind": "life",
+              "slug": "ai-browsers-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "電腦操作以整個畫面的截圖為主要輸入，動作是座標點擊與按鍵，所以連沒有 API、也沒有網頁結構可讀的桌面軟體都碰得到。截圖之外給不給結構資訊，各家設定不同：Anthropic 的瀏覽器工具文件說，它的電腦操作工具只靠截圖與座標；OSWorld 可另外提供列出介面元素的無障礙樹；OpenAI 的程式碼執行接法，則能在腳本裡檢查網頁 DOM，再搭配截圖確認。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "做法",
+            "模型看到什麼",
+            "動作與取捨"
+          ],
+          "rows": [
+            [
+              "API 工具呼叫",
+              "函式回傳的資料",
+              "函式名稱加參數；穩定好驗證，但只涵蓋已開放的功能"
+            ],
+            [
+              "瀏覽器自動化",
+              "網頁結構，有時加截圖",
+              "元素定位後操作；只限網頁，改版會影響定位"
+            ],
+            [
+              "電腦操作",
+              "以整個畫面的截圖為主，有些設定另給無障礙樹或 DOM",
+              "座標點擊與按鍵；什麼軟體都碰得到，但較慢、易點錯"
+            ]
+          ],
+          "caption": "三種做法的比較；依兩家官方文件、OSWorld 論文與 Playwright 文件整理，查證於 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "迴圈：截圖、判斷、動作、再截圖"
+        },
+        {
+          "type": "paragraph",
+          "text": "迴圈從交出任務開始：模型可以先要求截一張畫面，程式也可以把目前畫面和任務一起送上；兩種情況下，截圖都由程式擷取。模型看了畫面判斷下一步，回覆一個或幾個動作；程式在自己控制的環境裡執行，再截一張新畫面送回去。Anthropic 文件說明，模型本身不連到電腦，執行動作與回傳畫面的是你的應用程式。這樣重複，直到模型回覆完成、程式達到步數上限，或需要人處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型常一次送出一小串動作，Anthropic 文件提到可以在每串結尾附上一張截圖，需要人確認的檢查也得放在每個動作之前，不是整串做完之後。模型有時假設動作成功卻沒檢查，文件的做法是在提示詞要求每步之後截圖，並說明畫面顯示什麼、這步成不成功。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-computer-use/diagram-1.svg",
+          "alt": "一圈迴圈依序是截圖、判斷、動作、再截圖，右側標出畫面文字不可信、高風險動作先問人、整圈設上限三條護欄",
+          "width": 1600,
+          "height": 900,
+          "caption": "四個方框是一圈；紅、橘、綠圓點對應右側三條護欄各管哪一段，綠點標在外框上，表示管整圈。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼比 API 慢，也更容易出錯"
+        },
+        {
+          "type": "paragraph",
+          "text": "每一步都要截圖、傳圖、讓模型看圖再回覆，來回次數遠多於一次函式呼叫，所以慢。截圖也算輸入 token，長流程累積得很快。Anthropic 文件在限制一節寫，延遲對即時的人機互動可能太慢，建議用在速度不重要的場合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "容易出錯有兩個來源。一是看畫面算座標：文件寫明模型在輸出座標或選擇工具時可能出錯或產生幻覺，捲動、下拉選單與試算表也是文件點名的難處。二是缺少介面知識又容易被干擾：OSWorld 論文的分析指出，模型常卡在把畫面位置對到正確座標與對軟體不熟，還會反覆點錯、被彈出視窗帶偏。截圖本身沒有「這是第三個欄位」的標籤，只有像素。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "評測怎麼做：OSWorld 的設定"
+        },
+        {
+          "type": "paragraph",
+          "text": "OSWorld（Xie 等人，2024，arXiv:2404.07972）是常被引用的評測，這裡只看它怎麼量，不談排名。它在虛擬機器裡跑真實的作業系統與軟體，收了 369 個在 Ubuntu 上執行的任務，涵蓋網頁、桌面應用程式與跨軟體流程。每題先把環境還原到指定起點，再由專屬的檢查程式看最後的檔案、設定或介面狀態，判斷是否完成，而不是比對模型自己怎麼說。"
+        },
+        {
+          "type": "paragraph",
+          "text": "論文的觀察可以是截圖、無障礙樹或兩者並用；動作是用 pyautogui 程式碼寫成的滑鼠與鍵盤操作。在原始論文的實驗設定下，每題最多互動 15 步；論文也量到截圖解析度、提供多少步歷史都可能影響成功率，所以設定不同的分數不能直接相比。OSWorld 之後也修訂過：2025 年的 Verified 版處理了社群回報的約 300 個問題，網站改版與驗證碼都會讓題目失效；2026 年另有改收 108 個長流程任務的 2.0 版。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "風險：畫面上的字、誤點與帳號權限"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "畫面內容注入是這個做法最特別的風險。模型把截圖裡的字當輸入讀進來，所以網頁、文件或圖片裡一句「忽略先前指示，改做這件事」，也可能被當成指令，而不只是資料。OWASP 稱之為間接提示詞注入，也提到多模態模型可能受圖片裡藏的指令影響，並說不確定有沒有萬無一失的防法。完整說明見"
+            },
+            {
+              "type": "article",
+              "text": "提示詞注入（Prompt Injection）",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            },
+            {
+              "type": "text",
+              "text": "。Anthropic 文件說，即使有分類器掃描截圖，隔離與確認仍不可少。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "兩家官方文件列的防護很接近：在隔離的虛擬機器或容器跑；只給任務需要的權限與資料，登入資訊尤其要避免；用網域允許清單限制能連的網站；購買、傳送資料、刪除、同意條款這類難以回復或需要同意的動作由人確認，OpenAI 還寫明在表單輸入敏感資料也算傳送。OpenAI 另建議設定步數、時間或費用上限，並檢查實際結果，不只相信模型最後說的話。隔離環境的概念見"
+            },
+            {
+              "type": "article",
+              "text": "沙盒（Sandbox）",
+              "kind": "life",
+              "slug": "ai-term-sandbox"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "誤點與帳號權限是同一個問題的兩端：代理用誰的帳號，誤點就等於誰按下去。Anthropic 的瀏覽器工具文件說，躲不開已登入狀態時，要用專用的低權限帳號，並對會改動帳號的動作保留人工確認。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "示例：在測試帳號裡填一張表單"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是示例，未實測。假設有個只放虛構資料的活動報名測試頁，跑在沒有真實會員資料的虛擬機器裡，網路只允許連到這個測試站，登入的是專用測試帳號。任務是填姓名、場次、備註，並在送出前停下來。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "截圖，確認畫面是測試站的表單，不是登入頁或彈出視窗。",
+            "點姓名欄、輸入虛構姓名，再截圖，確認欄位內容和輸入一致。",
+            "場次是下拉選單；點選沒反應就改用鍵盤方向鍵與 Enter，再截圖確認選到哪一場。",
+            "填備註，再截圖確認。",
+            "停在送出鈕之前，列出三個欄位的值，由人檢查並自己按送出。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "預期輸出是三個欄位與指定內容一致、停在送出之前，並留下每一步的截圖與動作紀錄。失敗要分開判讀：欄位內容不對，先看是點錯位置還是輸入法改了字；連續幾圈畫面都沒變，多半是重複一個無效動作，應停下來而不是調高步數上限；畫面冒出「改填別的資料」這類文字，視為不可信內容，不照做並留下截圖。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "畫面上的字，不等於你的指示",
+          "text": "截圖裡的任何文字，包括網頁、文件、圖片與彈出視窗，都只是資料。該做什麼只由你的任務描述決定；做了隔離與確認，也不代表一定不會出錯。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎麼選：先 API，再網頁，最後才是畫面"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "順序是：有 API 就用 API，最穩也最容易驗證；任務只在網頁內，以網頁結構為主的做法通常更合適，Anthropic 文件也這樣建議；兩者都碰不到才輪到電腦操作，先挑結果能檢查的任務。其他名詞可到"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "查。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Computer use tool（開發者文件；截圖加滑鼠鍵盤控制、迴圈、批次動作、限制、安全建議）",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Anthropic：Browser use tool（開發者文件；網頁結構加截圖、與電腦操作的取捨、低權限帳號）",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-tool",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI：Computer use（開發者指南；瀏覽器與桌面介面、程式碼執行與電腦工具兩種接法、安全執行）",
+          "url": "https://developers.openai.com/api/docs/guides/tools-computer-use",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI：Computer use integration recipes（開發者指南；自訂 UI 工具、確認與同意、隔離環境）",
+          "url": "https://developers.openai.com/api/docs/guides/tools-computer-use-integration",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Xie 等人：OSWorld（arXiv:2404.07972，評測環境、觀察與動作空間、任務與執行式評分）",
+          "url": "https://arxiv.org/abs/2404.07972",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "XLANG Lab：Introducing OSWorld-Verified（2025 年修訂版的說明）",
+          "url": "https://xlang.ai/blog/osworld-verified",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Yuan 等人：OSWorld 2.0（arXiv:2606.29537，長流程任務版）",
+          "url": "https://arxiv.org/abs/2606.29537",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OWASP：LLM01:2025 Prompt Injection（間接注入、多模態注入、緩解措施）",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Playwright：Locators（以角色與使用者可見屬性定位元素，避免綁定 DOM 結構的選擇器）",
+          "url": "https://playwright.dev/docs/locators",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+ "mode": "articles",
+ "results": [
+  {
+   "slug": "ai-term-kv-cache",
+   "write": "Finished `ai-term-kv-cache`. The five files are in `/home/user/travel_scanner/docs/ai-terms-series/batch-03/staging/ai-term-kv-cache/` (`pack.json`, `diagram-1.svg`, `hero.svg`, `notes.md`, `research.json`), and `_tools/` has been deleted.\n\n- **Length:** body text is 2,598 characters by `_body_length`.\n- **Dry-run:** passes. The only warning is `no_summary`, which the brief says to ignore.\n- **Structure:** 6 H2s, exactly one table, one callout, and `topics` includes `ai-terms`.\n- **Links:** all five assigned links are `article` inlines, including `ai-terms-index`.\n- **Wording rules:** \"本文\" and \"這篇\" appear 0 times, and nothing in the body mentions the checking process.\n- **Diagram and hero:** every number on the diagram (1–6 and 2026) appears in the body. All font sizes are at least 15. I rendered both to PNG and looked at them: nothing overlaps, touches a line or runs out of its box.\n- **Sources:** 14 primary sources, all opened today with HTTP 200. I found no conflict between the sources and the brief.\n\nThings I suspect but did not change:\n1. Google's Traditional Chinese glossary has no \"cache\" entry. The intro says it uses \"快取\" based on how the word appears inside its \"離線推論\" (offline inference) entry.\n2. Pope et al. say each new token reloads the KV cache while the cores sit nearly idle, but only for very large multi-head-attention models at large batch and long context. The body states that setting; a checker may still want it spelled out more.\n3. \"MQA/GQA 並非推論時的開關\" (they can't be switched on at inference time) is my own conclusion from the GQA paper needing retraining. No source says it directly.\n4. vLLM's design doc says OpenAI and Anthropic widely use prefix caching. That is one company describing others, so I didn't use it and cited OpenAI's and Anthropic's own docs instead.\n5. One of the four aliases is \"KV 緩存\", the mainland China wording. Drop it if aliases should stay Taiwan-only. I also left out the mainland-term mention in the body because I had no source for it.",
+   "v1": {
+    "facts_changed": 4,
+    "dry_run_ok": true,
+    "body_length": 2662,
+    "suspicions": [
+     "Shazeer 2019 的「品質略低於基準」只在 dev 集成立，test 集 beam-4 時 MQA 的 BLEU 反而最高；正文照摘要的 minor quality degradation 寫，沒有改。",
+     "Pope 等人「小批次、短序列時以讀權重為主」講的是記憶體搬運時間，不是總時間；正文寫「主要耗時」略為放寬，沒有改。",
+     "正文同時引用 HF「有快取時每步注意力成本是線性」與 Pope「注意力推論成本隨輸入長度平方成長」，一個講每步、一個講整體，都對，但讀者可能覺得矛盾。",
+     "vLLM 論文的「2 至 4 倍」是摘要的總括數字，§6.2 對 FasterTransformer 的請求率差距最高到 22 倍；正文照摘要寫。",
+     "docs.vllm.ai 三頁今天直接打開都回 429（Cloudflare），內容是從官方 GitHub 原始檔與 Wayback 快照（2026-09-03、2026-10-01）確認的，沒有讀到即時頁。",
+     "Google 機器學習詞彙表沒有 cache 的獨立詞條，「快取」只出現在條目內文，譯名主要靠樂詞網支撐。",
+     "修改後 _body_length 為 2,662，超過第三批目標 2,200–2,600，但在上限 3,000 內。"
+    ]
+   },
+   "v2": {
+    "facts_changed": 3,
+    "dry_run_ok": true,
+    "body_length": 2596,
+    "suspicions": [
+     "docs.vllm.ai still returns 429 to curl, so its three pages were read today only through WebFetch, which uses its own User-Agent and passes the page through a summarising model, and checked against the main-branch source files on GitHub; the live page text was never fetched directly with the series User-Agent.",
+     "The added phrase 「以整段輸入計」 separates per-step cost from whole-input cost, but Pope §1 only says attention cost scales quadratically with input sequence length, and it cites other papers rather than reporting its own measurement.",
+     "The simplified vLLM paragraph no longer names the ShareGPT and Alpaca datasets; if editors require the full experimental setting next to the 20.4%–38.2% figure, adding it back costs about 20 characters.",
+     "Wayback was unreachable today (the proxy reset the connection), so the snapshots from 2026-09-03 and 2026-10-01 that verify-1 cited were not re-read."
+    ]
+   },
+   "summary": [
+    {
+     "slug": "ai-term-kv-cache",
+     "summary": [
+      "KV 快取是語言模型推論時的暫存：逐個產生 token 時，留住前面各位置在每層算好的 key 與 value，下一步只補算新 token。",
+      "它省下重算前文，但新 token 與全部 key 的比對省不掉；上下文越長、層數越多，占的記憶體就越多。",
+      "它不是記憶也不是學習，權重沒有改變；下一輪對話接得上，是因為對話紀錄又被放進輸入。",
+      "提示詞快取存的也是 key 與 value，但範圍跨請求、限一字不差的相同字首；KV 快取則在單次請求內。"
+     ],
+     "support": [
+      "KV 快取（KV cache）是語言模型推論（inference）時的暫存：模型逐個產生 token，每一步都把前面各位置在每層算好的 key 與 value 留著，下一步只補算新 token 的那一份。",
+      "KV 快取在單次請求內，讓逐個產生的每一步不必重算前文／沒省掉的是比對：快取從 3 組長到 6 組，新 token 要比對的 key 也跟著變多。／新 token 與全部 key 的比對／它省下重複計算，代價是記憶體：上下文越長，要存的越多。／層數：每層各存一份，層數加倍即加倍。",
+      "KV 快取不是記憶，也不是學習／它是這次計算的中間數值，權重沒有改變，Hugging Face 文件也提醒快取只用於推論。下一輪對話接得上，是因為對話紀錄又被放進輸入。",
+      "兩者存的都是 key 與 value，差別在範圍：KV 快取在單次請求內，讓逐個產生的每一步不必重算前文；提示詞快取跨請求，把相同字首（prefix）的 KV 快取留給下一個請求，省掉重讀那段。／跨請求，限相同字首／字首必須一字不差。"
+     ],
+     "rewritten": 1,
+     "notes": "第四句原寫「跨請求重用一字不差的相同字首」，把重用字首的 KV 快取說成重用字首本身，又在正文沒有的地方加了「只」；改成照表格「跨請求，限相同字首」加正文「字首必須一字不差」的說法，其餘三句都有原文逐句支持，保留不動（共 216 字，summaries.py check 結果為 0 problems）。"
+    }
+   ]
+  },
+  {
+   "slug": "ai-term-local-inference",
+   "write": "本機推論這篇已經寫完。字數用 `_body_length` 算是 2,594 字，含站內連結文字。brief 裡的 dry-run 只出現預期中的 `no_summary` 警告，結果是 `dry run: nothing written`。\n\n- **結構**：6 個 H2、1 個表、1 個 callout，topics 含 `ai-terms`。指派的 7 個 links 都用 article inline 連到了。\n- **用字**：全篇沒有「本文／這篇」，正文沒有查證過程。\n- **圖**：兩張 SVG 都渲染成 PNG 看過。hero 第一版手機壓到圓框、雲朵太淡，已經重畫。圖解上只有 2026 一個數字，正文有寫。\n- **收尾**：`_tools/` 已刪。\n\n來源和指示有衝突，我照來源寫：\n- **Apple Foundation Models**：catalogue 把它列成裝置端來源，但現在官方文件寫明，同一個介面改一行程式就能改送私密雲端運算（Private Cloud Compute）。這一點改成全文主要例子，說明「裝置有內建模型」不等於「這個功能在本機算」。\n- **Microsoft 兩頁說法不一**：兩份文件講 Foundry Local 會在什麼時候連網並不一致，一頁說下載加診斷資料，另一頁說下載加模型目錄更新。正文兩種都列出來，沒有說哪一份是完整清單。\n\n我懷疑但沒改的事：\n- `ai-term-kv-cache` 是這批另一篇，還沒上線。如果它沒有和這篇一起發布，這條連結會暫時失效。\n- 正文照 Apple 的說法寫「改一行程式」，沒提開發者還要另外申請資格才能用私密雲端運算。\n- 「80 億參數用 16 位元約 16 GB、4 位元約 4 GB」是照 Hugging Face 的估算法算出來的示例，已經標明。實際的量化檔通常會比這大一些。\n- github.com 經代理會回 403，llama.cpp 的 README 是改從 raw.githubusercontent.com 讀的，讀法記在 notes.md。\n\n檔案都在 /home/user/travel_scanner/docs/ai-terms-series/batch-03/staging/ai-term-local-inference/：\n- pack.json\n- diagram-1.svg\n- hero.svg\n- notes.md\n- research.json",
+   "v1": {
+    "facts_changed": 2,
+    "dry_run_ok": true,
+    "body_length": 2659,
+    "suspicions": [
+     "Body length is 2659, above the brief's 2,200–2,600 target but under the 3,000 cap; I did not trim other sentences because that would mean rewriting the article.",
+     "github.com returns 403 through this session's proxy, so the llama.cpp claims were checked against the identical README on raw.githubusercontent.com, not the cited GitHub page itself.",
+     "The article says one line of code routes a request to Private Cloud Compute, as Apple's docs do, but leaves out that PrivateCloudComputeLanguageModel needs iOS 27 or later and a developer eligibility entitlement.",
+     "The claim that a model fully loaded in VRAM is usually fastest has only indirect support (llama.cpp's \"partially accelerate\"; Ollama's PCI-bus remark is about one GPU versus several), so the hedged wording was kept.",
+     "The term 本機推論 has no human-curated Taiwanese source: NAER's term site loads results through JavaScript, and both the Google ML glossary and the Android zh-TW page are AI-translated; Apple's human-localized zh-TW page says 在裝置上執行.",
+     "Ollama's 'we don't see your prompts' and Android's 'AICore keeps no record of inputs or outputs' are the vendors' own statements and cannot be checked independently; the article attributes them to the vendors and does not present them as guarantees."
+    ]
+   },
+   "summary": [
+    {
+     "slug": "ai-term-local-inference",
+     "summary": [
+      "本機推論是把模型權重放在自己的電腦或手機上，由這台裝置完成推論的計算，提示詞不必送到服務商的伺服器。",
+      "權重與計算在本機，不代表整個應用程式都不連網，下載與更新、診斷資料、雲端模型與工具、紀錄同步與分享仍可能連線。",
+      "第一道門檻是記憶體，除了權重，還有隨上下文長度線性增加的 KV 快取；量化降低權重的位元數來省記憶體，但精度可能下降。",
+      "本機推論沒有每個 token 的費用，但硬體、速度與維護落在自己身上；它不等於絕對安全，也不會讓回答更正確。"
+     ],
+     "support": [
+      "rich_paragraph 0：「本機推論（local inference）是把模型權重放在自己的電腦或手機上，由這台裝置完成推論（inference）的計算，提示詞不必送到服務商的伺服器。」",
+      "paragraph 1：「權重與計算在本機，不代表整個應用程式都不連網，以下逐項拆開，最後附一個示例。」；paragraph 4：「常見的四種連線：」；list 5：「下載與更新：模型、軟體與模型目錄。」「診斷資料：依條款與設定，有些要使用者同意才送出。」「雲端模型與工具：同一個介面可能混用本機與雲端模型，或呼叫網路搜尋。」「紀錄同步與分享：存進會同步的資料夾或用了分享功能，就會離開裝置。」；table 18 隱私列：「內容在本機計算；下載、診斷與雲端功能仍可能連網」",
+      "paragraph 8：「第一道門檻是記憶體。Hugging Face 的效能指南給了估算法：以 16 位元的 bfloat16 或 float16 載入時，每十億個參數約需 2 GB 顯示記憶體。」；list 26：「有網路時下載一個量化過的小模型，用權重大小加上預計的上下文估算記憶體。」；rich_paragraph 10：「第二樣是KV 快取（KV Cache）：逐個產生 token 時，把前面每個位置算好的 key 與 value 存起來，省去重算。依 Hugging Face 的指南，它要存的數值個數是 2 乘以序列長度、注意力頭數、每個頭的維度與層數，所以會隨上下文長度線性增加」；rich_paragraph 9：「量化（Quantization）就是降低每個權重的位元數。llama.cpp 支援 1.5 到 8 位元的整數量化，用來加快推論、降低記憶體用量，代價是精度可能下降。」",
+      "paragraph 17：「本機推論省掉網路來回，Foundry Local 的文件也強調沒有每個 token 的費用，代價是硬體、速度與維護都落在你身上。」；table 18 成本結構列：「一次性的硬體加上電費，沒有每個 token 的費用」；callout 23 標題：「本機推論不等於絕對安全」；callout 23 內文：「本機也不會讓回答更正確。」"
+     ],
+     "rewritten": 2,
+     "notes": "第三句的「記憶體要裝得下」只出現在小標，改寫成正文明寫的權重加上隨上下文長度線性增加的 KV 快取；第四句調整措辭，全文總長從 220 字以上壓到 218 字。"
+    }
+   ]
+  }
+ ]
+}

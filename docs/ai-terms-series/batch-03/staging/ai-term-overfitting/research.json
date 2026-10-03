@@ -1,0 +1,164 @@
+{
+  "slug": "ai-term-overfitting",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://developers.google.com/machine-learning/crash-course/overfitting/overfitting",
+      "title": "Google Machine Learning Crash Course：Overfitting",
+      "access": "curl -sSL 200，HTML 轉文字",
+      "claims": [
+        "過度擬合、低度擬合、泛化的定義",
+        "訓練與驗證損失曲線先同步後分岔強烈暗示過度擬合",
+        "原因粗分為訓練資料不具代表性、模型太複雜"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets",
+      "title": "Google Machine Learning Crash Course：Dividing the original dataset",
+      "access": "curl -sSL 200，HTML 轉文字",
+      "claims": [
+        "切成訓練、驗證、測試三份",
+        "驗證集與測試集反覆使用會被用舊，要補新資料",
+        "測試集要刪掉與訓練集重複的例子"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/crash-course/overfitting/model-complexity",
+      "title": "Google Machine Learning Crash Course：Model complexity",
+      "access": "curl -sSL 200，HTML 轉文字",
+      "claims": [
+        "正則化＝訓練時同時懲罰複雜度",
+        "減少特徵、簡化模型"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/crash-course/overfitting/regularization",
+      "title": "Google Machine Learning Crash Course：L2 regularization",
+      "access": "curl -sSL 200，HTML 轉文字",
+      "claims": [
+        "L2 正則化把權重推向 0，正則化率控制強度",
+        "提早停止快但很少是最佳"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/glossary",
+      "title": "Google Machine Learning Glossary",
+      "access": "curl -sSL 200，HTML 轉文字",
+      "claims": [
+        "每筆資料只屬於一份切分",
+        "低度擬合常見原因（特徵、訓練輪數、正則化率、隱藏層）",
+        "dropout 讓神經元不能只依賴特定其他神經元"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/crash-course/overfitting/overfitting?hl=zh-tw",
+      "title": "Google 機器學習速成課程繁體中文版：過度配適",
+      "access": "curl -sSL 200，HTML 轉文字；另讀 glossary?hl=zh-tw",
+      "claims": [
+        "Google 繁中教材譯名「過度配適」",
+        "丟棄正則化、L2 正則化、提早中止訓練的繁中譯名"
+      ]
+    },
+    {
+      "url": "https://terms.naer.edu.tw/search/?&query_term=overfitting&query_field=title&query_op=and",
+      "title": "國家教育研究院樂詞網：overfitting 檢索結果",
+      "access": "curl 帶 cookie 讀檢索結果頁；detail 頁直接開會導回首頁；另查 underfitting、regularization",
+      "claims": [
+        "overfitting 譯名：過度擬合（多數領域）、過度配適（統計）、過擬合（電機工程）、過度適配；過度擬合{人工智慧}",
+        "underfitting 譯名：低度擬合"
+      ]
+    },
+    {
+      "url": "https://www.deeplearningbook.org/contents/ml.html",
+      "title": "Goodfellow、Bengio、Courville：Deep Learning 第 5 章",
+      "access": "作者官網 pdf2htmlEX 頁，解析文字層",
+      "claims": [
+        "低度擬合與過度擬合的定義、容量",
+        "測試集不得參與任何選擇；驗證集從訓練資料切出，約 80/20",
+        "同一測試集多年反覆使用會使評估偏樂觀、基準過時"
+      ]
+    },
+    {
+      "url": "https://www.deeplearningbook.org/contents/regularization.html",
+      "title": "Goodfellow、Bengio、Courville：Deep Learning 第 7 章",
+      "access": "作者官網 pdf2htmlEX 頁，解析文字層",
+      "claims": [
+        "L2 參數範數懲罰常稱權重衰減",
+        "更多資料是提升泛化的最佳辦法；資料擴增",
+        "提早停止取驗證誤差最低時的參數"
+      ]
+    },
+    {
+      "url": "https://jmlr.org/papers/v15/srivastava14a.html",
+      "title": "Srivastava 等人 2014：Dropout（JMLR 15）",
+      "access": "摘要頁 curl；全文 PDF pdftotext",
+      "claims": [
+        "dropout 訓練時隨機拿掉單元以防共同適應，測試時權重乘保留機率",
+        "目的是處理大型網路的過度擬合；多種監督式任務改善表現"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1207.0580",
+      "title": "Hinton 等人 2012：Improving neural networks by preventing co-adaptation of feature detectors",
+      "access": "摘要頁 curl -sSL 200（verify-1 新增）",
+      "claims": [
+        "dropout 最早見於 2012 年預印本；JMLR 2014 是後來的完整期刊版"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1611.03530",
+      "title": "Zhang 等人 2017：Understanding deep learning requires rethinking generalization（ICLR 2017）",
+      "access": "摘要頁 curl；全文 arxiv.org/pdf/1611.03530 v2，pdftotext",
+      "claims": [
+        "隨機標籤：CIFAR10 訓練誤差 0 或接近 0（表 1：99.34%–100%）、ImageNet top-1 訓練準確率 95.20%，測試皆等同亂猜；隨機像素實驗在 CIFAR10",
+        "表 1：CIFAR10 無擴增無權重衰減 真實標籤 100/85.75、隨機標籤 100/9.78",
+        "顯式正則化非必要、單靠也不足；傳統複雜度指標無法解釋；尚無正式指標"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1912.02292",
+      "title": "Nakkiran 等人 2019：Deep Double Descent",
+      "access": "摘要頁 curl；全文 PDF pdftotext",
+      "claims": [
+        "雙下降的設定（CIFAR-10、CIFAR-100、IWSLT'14 de-en）",
+        "高峰在插值門檻；標籤雜訊時最明顯；部分設定樣本變多反而更差"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.18018",
+      "title": "Sainz 等人 2023：NLP Evaluation in trouble",
+      "access": "摘要頁 curl",
+      "claims": [
+        "最嚴重的資料汙染定義與成績高估"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2405.00332",
+      "title": "Zhang 等人 2024：GSM1k",
+      "access": "摘要頁 curl（v4）；全文 PDF pdftotext",
+      "claims": [
+        "1,205 題人工新題、發表時不公開",
+        "準確率最多下降 8%；Spearman r² = 0.36；許多模型落差小、皆能解新題",
+        "過度擬合不完全來自汙染；少量汙染不一定造成過度擬合"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1902.10811",
+      "title": "Recht 等人 2019：Do ImageNet Classifiers Generalize to ImageNet?",
+      "access": "摘要頁 curl",
+      "claims": [
+        "新測試集準確率下降 3%–15%（CIFAR-10）與 11%–14%（ImageNet）",
+        "下降非 adaptivity 造成，而是對稍難圖片泛化不足"
+      ]
+    }
+  ],
+  "aliases": [
+    "Overfitting",
+    "過擬合",
+    "過度配適"
+  ],
+  "existing_overlap": "ai-term-machine-learning、ai-term-fine-tuning 各有一段提到過度擬合或資料洩漏，ai-term-benchmark 有測試汙染一節；這裡是完整專文，連過去不重寫。站上既有文章寫「過度擬合」，正文沿用。",
+  "running_text_characters": 2674,
+  "notes": "示例錯誤率數字為編寫的教學設定，未實際訓練；圖與 hero 為手繪向量圖。未寫任何模型名、價格或排行榜分數。catalogue 的 name_zh 是「過擬合」，正文依樂詞網採「過度擬合」，標題並列兩者。GSM1k 論文當時承諾最晚 2025 年 6 月公開資料，正文只寫「發表時不公開」。 verify-1（2026-10-03）：dropout 出處改為 2012 年預印本＋2014 年期刊版；Zhang 2017 改寫 ImageNet 隨機標籤只到 95.20% 訓練準確率、隨機像素限 CIFAR10；新增 arXiv:1207.0580。"
+}

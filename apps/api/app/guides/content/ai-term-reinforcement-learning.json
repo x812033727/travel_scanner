@@ -1,0 +1,333 @@
+{
+  "slug": "ai-term-reinforcement-learning",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "強化學習（Reinforcement Learning）是什麼：靠獎勵一步步試出做法",
+      "description": "強化學習讓代理在環境中採取動作，依環境回饋的獎勵數字調整策略，目標是長期累積的回報最大。內容用格子世界示例說明狀態、動作、獎勵、策略與回報，對照監督式與非監督式學習，解釋探索與利用的取捨，再談語言模型裡的偏好獎勵與可驗證獎勵，以及獎勵設計不良時為什麼會被鑽漏洞。",
+      "hero": {
+        "src": "/guides/ai-term-reinforcement-learning/hero.jpg",
+        "alt": "格子地面上一條橘色虛線從藍色圓點出發，避開打叉的紅色陷阱格，經過代表獎勵的圓幣，通往右上角的旗子",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "強化學習是機器學習的一種做法：代理在環境裡採取動作，依環境回給的獎勵數字調整做法，靠嘗試找出長期拿最多獎勵的動作。",
+            "和監督式學習不同，獎勵只說結果好壞，不說哪個動作才對，而且常延遲出現；代理要最大化的是往後所有獎勵加總的回報，不是下一步的獎勵。",
+            "代理還得在利用過去效果好的動作與探索沒選過的動作之間取捨，只做其中一種都會失敗。",
+            "代理只會最大化給它的數字；Sutton 與 Barto 建議獎勵給真正的目標而非子目標，否則代理可能拿高分卻沒達成目標。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "強化學習（Reinforcement Learning，RL）是"
+            },
+            {
+              "type": "article",
+              "text": "機器學習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "的一種做法：代理（agent）在環境裡採取動作，環境回給它一個獎勵數字，它再依這些數字調整做法。沒有人告訴它每一步該怎麼走，它得靠嘗試找出長期拿最多獎勵的動作。國家教育研究院樂詞網同時收錄「強化學習」「增強式學習」「加強學習」，Google 繁中機器學習詞彙表則「強化學習」「增強學習」混用；這裡採「強化學習」，與系列的 RLHF 專文一致。policy 寫「策略」而不用詞彙表的「政策」，以免和公共政策混淆。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "以下用格子世界示例講基本詞，再談學習方式的差別、探索與利用，以及語言模型裡的用法。資料截至 2026 年 10 月；標「示例」的內容是教學編的，未實測。"
+        },
+        {
+          "type": "heading",
+          "text": "五個基本詞：狀態、動作、獎勵、策略、回報",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Sutton 與 Barto 的教科書第二版，把強化學習定義為學習「在什麼情況下做什麼」，讓數值獎勵盡量大；和其他學習方式最重要的兩個區別，是靠試錯找做法，以及獎勵常延遲出現。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "狀態（state）：代理此刻掌握的環境資訊，例如棋盤局面或自己在地圖上的位置。",
+            "動作（action）：此刻能做的選擇，例如往上下左右走一格。",
+            "獎勵（reward）：每一步後環境回傳的數字，定義什麼算好、什麼算壞。",
+            "策略（policy）：從狀態對應到動作的規則，可以是對照表或神經網路，也可以帶機率。",
+            "回報（return）：往後所有獎勵的加總；許多方法用折扣率把越晚的獎勵打折。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "代理要最大化的是回報，不是下一步的獎勵。書中另一個核心概念是價值函數（value function）：從某狀態出發、照目前策略走下去，預期能拿多少回報。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2015 年 Mnih 等人在 Nature 發表的深度 Q 網路（DQN）是常見例子：在 49 款 Atari 2600 遊戲上，代理只看畫面像素和遊戲分數，獎勵來自遊戲分數，所有遊戲共用同一套演算法、網路架構與超參數。"
+        },
+        {
+          "type": "heading",
+          "text": "示例：在格子世界裡找出口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（教學用，未實測）：一張 4 欄、3 列的格子地圖，代理從左下角出發，出口在右上角，中間偏右有一格陷阱。動作只有上下左右。規則是每走一步扣 1；走進出口時另加 10，回合結束；踩進陷阱時另扣 10，回合也結束。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最短路線要 5 步：扣 5、加 10，回報是 5。繞路走了 9 步才到出口，回報只剩 1。往右兩步再往上，第 3 步就踩進陷阱，回報是 −13。代理起初不知道這些，只能一回合接一回合地試，從拿到的獎勵估計每一格往哪走划算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "難處在於加 10 只在最後一步出現。前面每步都扣 1，哪一步帶向出口、哪一步在繞路，要從整回合的結果往回推，這就是延遲獎勵。每步扣 1 也把「越快越好」寫進獎勵；教科書的迷宮例子同樣用每步 −1 鼓勵盡快脫困。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-reinforcement-learning/diagram-1.svg",
+          "alt": "4 欄 3 列的格子地圖，左下起點、右上出口、中間偏右一格陷阱，綠線是 5 步的最短路線，紅線在第 3 步踩進陷阱，右側列出獎勵規則與三種路線的回報",
+          "width": 1600,
+          "height": 900,
+          "caption": "示例：同一張地圖，不同走法拿到不同回報；數字是教學設定，未實測。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "和監督式、非監督式學習差在哪",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Sutton 與 Barto 把強化學習看成與監督式、非監督式學習並列的第三種範式：監督式學習的每筆資料都附正確答案，強化學習的獎勵只說結果好壞，不說哪個動作才對。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "學習方式",
+            "訓練時拿到什麼",
+            "要學會什麼"
+          ],
+          "rows": [
+            [
+              "監督式學習",
+              "每筆輸入都附正確答案（標籤）",
+              "對沒看過的輸入也答對"
+            ],
+            [
+              "非監督式學習",
+              "只有資料，沒有標籤",
+              "找出資料裡隱藏的結構，例如分群"
+            ],
+            [
+              "強化學習",
+              "行動之後的獎勵數字，不說哪個動作才對",
+              "一套讓長期累積獎勵最大的策略"
+            ]
+          ],
+          "caption": "依 Sutton 與 Barto 教科書第 1.1 節整理；資料截至 2026 年 10 月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "實際系統常把幾種學習接起來。Silver 等人 2016 年的圍棋研究，用策略網路選棋、價值網路評估局面，兩者結合人類高手棋譜的監督式學習與自我對弈的強化學習來訓練，下棋時再搭配樹搜尋。"
+        },
+        {
+          "type": "heading",
+          "text": "探索與利用：先拿分，還是先試新路",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "教科書指出，這個取捨是強化學習特有的挑戰。要拿高獎勵，代理該選過去試過、效果好的動作，這叫利用（exploitation）；要發現更好的動作，又得試沒選過的，這叫探索（exploration）。只做其中一種都會失敗，這個兩難研究了幾十年仍沒有通解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "放回格子世界：假設代理第一次碰巧花 9 步到出口，之後只走這條，每回合都只拿 1；偶爾往沒試過的方向走，才可能發現 5 步的路線，代價是短期回報變低，例如多踩幾次陷阱。一個簡單的折衷是 ε-greedy：多數時候選目前估計最好的動作，以小機率 ε 從所有動作中隨機挑。示例：ε 設 0.1，約每 10 次有 1 次隨機挑。"
+        },
+        {
+          "type": "heading",
+          "text": "用在語言模型：偏好獎勵與可驗證獎勵",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一種是"
+            },
+            {
+              "type": "article",
+              "text": "人類回饋強化學習（RLHF）",
+              "kind": "life",
+              "slug": "ai-term-rlhf"
+            },
+            {
+              "type": "text",
+              "text": "。Christiano 等人 2017 年讓人比較兩段代理行為短片，用比較結果訓練預測獎勵的模型，再拿它當獎勵做強化學習。這套做法先被用在語言模型的續寫與摘要，Ouyang 等人 2022 年沿用它訓練模型遵循指令：標註者替回答排序、訓練獎勵模型，再以強化學習調整模型。換成前面的詞彙，提示詞是狀態，整段回答是動作，獎勵模型打完分回合就結束；論文另在每個 token 加上偏離監督式微調模型的懲罰，減輕對獎勵模型的過度最佳化。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第二種是可自動驗證的獎勵，與"
+            },
+            {
+              "type": "article",
+              "text": "推理模型",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            },
+            {
+              "type": "text",
+              "text": "的訓練有關。DeepSeek-AI 團隊 2025 年的論文（同年刊於 Nature）在數學、程式等推理任務改用規則打分：數學題要求答案寫成指定格式再比對，程式題用編譯器跑預先準備的測試案例，另有格式獎勵要求把推理過程放進指定標籤。其中一組實驗跳過監督式微調、直接對預訓練模型做強化學習，論文報告回答平均變長，重新檢查、改試其他解法的段落也變多；這是對輸出文字的描述，不代表模型像人一樣思考。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Lambert 等人 2024 年的開放後訓練報告稱之為「可驗證獎勵強化學習」（RLVR）：沿用 RLHF 的訓練目標，但把獎勵模型換成驗證函數，答案正確給固定獎勵，否則給 0。它只適用於答案能自動檢查的任務，例如數學題或帶可檢查限制的指令。"
+        },
+        {
+          "type": "heading",
+          "text": "獎勵沒設計好，就會被鑽漏洞",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "代理只會最大化你給的數字。Sutton 與 Barto 以西洋棋為例：獎勵只該給真正贏棋，不要給吃子這類子目標，否則代理可能吃了子卻輸棋；獎勵是告訴代理要達成什麼，不是怎麼達成。Amodei 等人把這類問題稱為 reward hacking，例如清潔機器人若因「沒看到髒亂」得分，可能乾脆閉上眼睛。中文譯名與更多案例見"
+            },
+            {
+              "type": "article",
+              "text": "獎勵駭客",
+              "kind": "life",
+              "slug": "ai-term-reward-hacking"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "語言模型也一樣。DeepSeek-AI 的論文說明，推理任務不用神經網路獎勵模型，理由之一是觀察到它在大規模強化學習中容易被鑽漏洞，並承認寫作這類任務很難做出可靠獎勵。規則裡的準確度獎勵也只比對最後答案，不檢查推理過程本身，答案對不代表每步都對。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "先問：有沒有不完成任務也能拿高分的辦法",
+          "text": "把「拿高分卻沒達成目標」的做法逐一列出並排除。照 Sutton 與 Barto 的建議，獎勵先給最終目標，別隨手加上你以為必經的中間步驟；用模型打分時定期抽查高分輸出，別只看分數曲線往上。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Sutton 與 Barto 提醒，強化學習同時指一類問題、一族解法和一個研究領域，三者要分開看。其他相關名詞見"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sutton、Barto：Reinforcement Learning: An Introduction 第二版（作者官網全文，第 1–3 章）",
+          "url": "http://incompleteideas.net/book/the-book-2nd.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Mnih 等：Human-level control through deep reinforcement learning（Nature 518，2015）",
+          "url": "https://www.nature.com/articles/nature14236",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Silver 等：Mastering the game of Go with deep neural networks and tree search（Nature 529，2016）",
+          "url": "https://www.nature.com/articles/nature16961",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Christiano 等：Deep reinforcement learning from human preferences（arXiv:1706.03741）",
+          "url": "https://arxiv.org/abs/1706.03741",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ouyang 等：Training language models to follow instructions with human feedback（arXiv:2203.02155）",
+          "url": "https://arxiv.org/abs/2203.02155",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "DeepSeek-AI：DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning（arXiv:2501.12948）",
+          "url": "https://arxiv.org/abs/2501.12948",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "DeepSeek-AI：DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning（Nature 645，2025，開放取用）",
+          "url": "https://www.nature.com/articles/s41586-025-09422-z",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Lambert 等：Tulu 3: Pushing Frontiers in Open Language Model Post-Training（arXiv:2411.15124）",
+          "url": "https://arxiv.org/abs/2411.15124",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Amodei 等：Concrete Problems in AI Safety（arXiv:1606.06565）",
+          "url": "https://arxiv.org/abs/1606.06565",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 機器學習詞彙表（繁體中文版）：「增強學習 (RL)」與「政策」條目",
+          "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw#reinforcement-learning-rl",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "國家教育研究院樂詞網（查詢 reinforcement learning 的學術名詞譯名）",
+          "url": "https://terms.naer.edu.tw/",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

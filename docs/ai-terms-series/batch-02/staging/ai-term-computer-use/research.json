@@ -1,0 +1,108 @@
+{
+  "slug": "ai-term-computer-use",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool",
+      "title": "Anthropic：Computer use tool（開發者文件）",
+      "access": "curl -sSL 200, 2026-10-03; docs.claude.com old URL redirects here",
+      "claims": [
+        "電腦操作是截圖加滑鼠鍵盤控制，由應用程式在自己的環境執行",
+        "任務留在網頁內時瀏覽器工具較合適（本頁原文 the closer fit）；本頁沒有「只靠截圖與座標」這句",
+        "迴圈從交出任務開始；組 user turn 時可把指示文字放在截圖之前一起送上，模型也可以先回 screenshot 呼叫",
+        "迴圈：模型回 tool_use、應用程式執行並回傳 tool_result，直到不再要求工具；範例迴圈有最大迭代次數",
+        "一次回覆可含一串動作；人工確認要放在每個動作之前",
+        "模型可能假設動作成功卻不檢查；官方建議要求每步後截圖並說明",
+        "限制：延遲、座標與工具選擇可能出錯或幻覺、捲動、試算表、下拉選單",
+        "安全建議：專用 VM 或容器、最小權限、避免敏感資料、網域允許清單、人工確認；分類器掃描截圖但其他措施仍重要"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-tool",
+      "title": "Anthropic：Browser use tool（開發者文件）",
+      "access": "curl -sSL 200, 2026-10-03",
+      "claims": [
+        "瀏覽器工具同時用網頁結構（無障礙樹、元素）與截圖",
+        "電腦操作工具只靠截圖與座標（本頁原文 works through screenshots and coordinates alone，出自瀏覽器工具頁而非電腦操作頁）；任務留在網頁內並要在頁面上動作時選瀏覽器工具",
+        "頁面內容皆為不可信輸入；躲不開登入狀態時用專用低權限帳號並保留人工確認"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/tools-computer-use",
+      "title": "OpenAI：Computer use（開發者指南）",
+      "access": "curl -sSL 200, 2026-10-03; platform.openai.com old URL redirects here",
+      "claims": [
+        "computer use 涵蓋瀏覽器與桌面介面，接法含程式碼執行（PyAutoGUI 或 Playwright）與電腦工具",
+        "第一個 computer_call 可能只有 screenshot 動作；UI 狀態不明時先給模型一張目前截圖",
+        "Run safely：隔離瀏覽器或 VM、允許清單、螢幕內容視為不可信、難回復動作由人確認、設步數時間費用上限並檢查實際結果"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/tools-computer-use-integration",
+      "title": "OpenAI：Computer use integration recipes（開發者指南）",
+      "access": "curl -sSL 200, 2026-10-03",
+      "claims": [
+        "自訂 UI 工具可用定位器選元素而非座標，或回傳可見文字與截圖",
+        "程式碼執行工具可在腳本裡做 DOM 檢查（DOM inspection），再以截圖做視覺檢查",
+        "模型要求行動不等於使用者許可；在表單輸入敏感資料也算傳送；第三方內容與螢幕上的指令不當作許可"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2404.07972",
+      "title": "Xie 等人：OSWorld（arXiv:2404.07972）",
+      "access": "curl -sSL 200, 2026-10-03; abs page and HTML v2 (https://arxiv.org/html/2404.07972v2)",
+      "claims": [
+        "369 個在 Ubuntu 上執行的任務（另有 43 題 Windows 任務只做分析）、虛擬機器、初始狀態設定、執行式評分腳本",
+        "觀察空間以整個桌面截圖為主，另提供 XML 格式的無障礙樹（§2.3）；實驗用截圖、無障礙樹或兩者（另有 Set-of-Mark）；動作空間為 pyautogui 程式碼加 WAIT、FAIL、DONE",
+        "實驗設定最多 15 步；解析度與歷史長度影響結果",
+        "失敗型態：畫面定位、重複點擊、彈出視窗干擾"
+      ]
+    },
+    {
+      "url": "https://xlang.ai/blog/osworld-verified",
+      "title": "XLANG Lab：Introducing OSWorld-Verified",
+      "access": "curl -sSL 200, 2026-10-03",
+      "claims": [
+        "2025-07-28 的修訂版處理約 300 筆社群回報（部落格寫法不一：300+、approximately 300、nearly 300）",
+        "環境不穩定因素含驗證碼與網站改版"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2606.29537",
+      "title": "Yuan 等人：OSWorld 2.0（arXiv:2606.29537）",
+      "access": "curl -sSL 200, 2026-10-03; abs page only",
+      "claims": [
+        "108 個長流程任務的後續版本，2026-06-28 提交"
+      ]
+    },
+    {
+      "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "title": "OWASP：LLM01:2025 Prompt Injection",
+      "access": "curl -sSL 200, 2026-10-03",
+      "claims": [
+        "間接提示詞注入定義",
+        "多模態模型可能被圖片裡的指令影響",
+        "不確定有沒有萬無一失的防法；最小權限與高風險動作人工核准"
+      ]
+    },
+    {
+      "url": "https://playwright.dev/docs/locators",
+      "title": "Playwright：Locators",
+      "access": "curl -sSL 200, 2026-10-03",
+      "claims": [
+        "建議優先用角色等使用者可見屬性定位",
+        "CSS 與 XPath 選擇器綁 DOM 結構，結構改動時容易失效"
+      ]
+    }
+  ],
+  "aliases": [
+    "Computer Use",
+    "computer use agent",
+    "CUA",
+    "GUI agent"
+  ],
+  "existing_overlap": "claude-computer-use-explained 是 Claude 產品篇（方案、平台、設定步驟、權限模式）；本篇只講通用機制、評測與風險，第一段明寫並連過去，不重複產品細節。ai-glossary-50-terms 有一句話定義。",
+  "running_text_characters": 2738,
+  "notes": "字數依 pack_ingest._body_length（含 rich_paragraph 內站內連結文字）撰稿時為 2500，第一輪查核後 2541，第二輪查核後 2726（排除連結文字 2647）。示例為原創、標明未實測。不寫分數、模型名、價格、方案、地區。sources 的定義分歧：Anthropic 以電腦操作（截圖座標）與瀏覽器工具（結構加截圖）分工；OpenAI 把瀏覽器與桌面都稱 computer use，且接法含 Playwright；文章據此寫成無單一標準定義，與 brief 把電腦操作對立於 DOM 型瀏覽器自動化的二分略有出入，以來源為準。OSWorld 專案頁與 arXiv 對 2.0 版某模型的分數寫法不同（約 14% 與約 13%），文章未引用分數。 第二輪查核：「works through screenshots and coordinates alone」出自 Anthropic 瀏覽器工具頁，不在電腦操作頁；表格與正文改寫成截圖為主、有些設定另給無障礙樹（OSWorld）或 DOM（OpenAI 程式碼執行）；迴圈起點改寫成從交出任務開始，第一張截圖可由模型要求或由程式附上。"
+}
