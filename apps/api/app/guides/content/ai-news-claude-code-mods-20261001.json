@@ -255,6 +255,486 @@
           "checked_on": "2026-10-04"
         }
       ]
+    },
+    "en": {
+      "title": "Claude Code Introduces mods: Rewrite Its Behavior and Interface in TypeScript, Shipped Inside a plugin",
+      "description": "On October 1, 2026, Anthropic introduced Claude Code mods: TypeScript or JavaScript functions that ship inside a plugin and run in the Claude Code process, and can rewrite prompts, manage tool calls and draw new interface. Anthropic says they work in the CLI and the desktop app and are not sandboxed; the documentation says v2.1.287 or later is required (checked October 2026).",
+      "hero": {
+        "src": "/guides/ai-news-claude-code-mods-20261001/hero-en.jpg",
+        "alt": "Original illustration: an event block passes through a mod card with a plug on each side into a terminal showing transcript text and a pane the mod added; dashed cards are other mods in load order.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On October 1, 2026, Anthropic introduced mods (small programs that change how Claude Code behaves and looks): functions written in TypeScript or JavaScript that ship inside a plugin and run inside the Claude Code process. Anthropic says they work in both the CLI and the desktop app."
+        },
+        {
+          "type": "paragraph",
+          "text": "The information in this article was checked on October 4, 2026, against Anthropic's blog and three documentation pages. This site has not installed or run any mod; the features and limits below are Anthropic's account."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On October 1, 2026, Anthropic introduced mods: TypeScript or JavaScript functions that ship inside a plugin and run in Claude Code's own process; the blog says they work in the CLI and the desktop app, and the documentation says they require Claude Code v2.1.287 or later.",
+            "Anthropic says a mod can rewrite prompts, block or rewrite tool calls, approve or deny permissions, draw panes and buttons, and add commands; the documentation says settings hooks keep running and none of them is deprecated.",
+            "Mods are not sandboxed and have the user's permissions, and Anthropic says to install only trusted mods; sec-default (with managed settings or a Team or Enterprise sign-in) only stops a user's mod from changing what administrators manage or approving a tool call a deny rule refuses.",
+            "Administrators have allowManagedModsOnly, disableSideloadFlags, prependPlugins and appendPlugins, and disableAllHooks; individuals can turn mods off with /plugin, --safe-mode or disableAllHooks, and the last two do not stop built-in mods.",
+            "The documentation and the table of built-in mods may change between versions; the above reflects the content as of October 4, 2026."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What mods are: functions inside a plugin that run in the Claude Code process"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic says Claude Code emits an event each time it does something, and a mod is a function hooked onto an event that runs before it, after it or instead of it. The documentation says a small mod has three files: .claude-plugin/plugin.json, hooks/hooks.json and hooks/register.js; the modules key in hooks.json points to the code file, and having it is what makes the plugin a mod."
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation says Claude Code calls both kinds hooks: a shell command, HTTP request or prompt in a settings file, called a settings hook below, and a handler function that runs inside Claude Code, called a mod's event handler."
+        },
+        {
+          "type": "paragraph",
+          "text": "When a mod loads, Claude Code calls register(on), and the mod uses on to register event handlers; each handler receives $ (the mods API), e (the event data) and next (which passes the event on to the other mods and then to Claude Code's original behavior). The documentation lists three ways to handle an event: observe, rewrite, and answer (the mod handles the event itself, and the usual behavior does not run)."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What they can do: rewrite prompts, manage tool calls, draw interface, add commands"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic lists these abilities: rewrite a prompt before it reaches the model; block, rewrite or retry a tool call; approve or deny a permission request; redact secrets from tool output before Claude reads it; and edit or replace part of the interface and add buttons and inputs. The documentation adds that a mod can draw a pane or a band above the prompt and add a /command that runs without a Claude turn."
+        },
+        {
+          "type": "paragraph",
+          "text": "When several mods hook the same event, they run in the order they load; the first mod to load sees the event first and the result last. The built-in /diff is now a mod: it can be turned off in /plugin or replaced with your own version, and the documentation says /diff stays after it is disabled, with the built-in version answering it. Anthropic says settings hooks can't rewrite events, draw new interface or replace features, while mods can; the documentation says settings hooks keep running and none of them is deprecated. Of the four in the table below, only a mod can draw interface."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Type",
+            "What it is",
+            "What it can change",
+            "What you write"
+          ],
+          "rows": [
+            [
+              "mod",
+              "A function in a plugin, called by Claude Code in its own process",
+              "Tool calls, prompts, commands, turns, and what the interface draws",
+              "JavaScript or TypeScript"
+            ],
+            [
+              "settings hook",
+              "A shell command, HTTP request or prompt that Claude Code runs on a lifecycle event",
+              "Whether a tool call or prompt goes ahead, a tool call's arguments and result, and context added for Claude",
+              "A script plus an entry in settings.json"
+            ],
+            [
+              "skill",
+              "A SKILL.md file of instructions that Claude reads",
+              "What Claude knows and does",
+              "Markdown"
+            ],
+            [
+              "MCP server",
+              "An external process or service that gives Claude tools",
+              "Which tools Claude has",
+              "A server in any language"
+            ]
+          ],
+          "caption": "Comparison of a mod, a settings hook, a skill and an MCP server, shortened from the comparison table on the Claude Code documentation's mods overview page; checked October 4, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Where they fit: team controls and example mods"
+        },
+        {
+          "type": "paragraph",
+          "text": "The blog gives three examples of what teams can build with mods themselves: show CI/CD status in a pane beside the conversation; require confirmation before any command touches production config; and have the mod that loads first record every call that every other mod makes."
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation's three example mods are in the claude-code-playground repository, shared as they are without support: token-weather draws a forecast of the context window above the prompt; blast-radius holds a risky command such as rm -rf or a force push and shows what it would change; replay-theater adds a /replay command that steps through the file edits Claude made in the last turn."
+        },
+        {
+          "type": "paragraph",
+          "text": "Built-in mods are listed under Built-in on the Installed tab of /plugin, for example cc-plugin-diff, which takes over /diff, and cc-plugin-sec-default, covered in the last section; cc-plugin-you-should-know is disabled by default, and the documentation says it is listed only \"if available for your org\"."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-code-mods-20261001/diagram-1-en.svg",
+          "alt": "Four-panel diagram: events (tool calls, prompts, screen), functions (observe, rewrite or answer), interface (panes, buttons, commands), and controls (sec-default loads first)",
+          "width": 1600,
+          "height": 900,
+          "caption": "Claude Code mods receive events such as tool calls and prompts, handle them with functions that observe, rewrite or answer, and can add panes, buttons and commands; with managed settings or a Team or Enterprise plan, sec-default loads first. From Anthropic's blog and docs; checked Oct 4, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Getting started: version, installation, asking Claude to write one or writing your own"
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation says mods require Claude Code v2.1.287 or later and are on by default; check with claude --version. The blog says you can install a plugin that includes mods from the Claude directory or by running /plugin in the CLI; the documentation gives the format /plugin install name@marketplace."
+        },
+        {
+          "type": "paragraph",
+          "text": "Writing one yourself needs no Node.js or build step; claude --plugin-dir with a directory loads it for one session only and hot-reloads when a file changes. When you ask Claude to write one, the documentation says it follows the built-in plugin-authoring skill, writes the mod in the session's folder under ~/.claude/dev-mods/, and loads it only after you approve; Claude Code deletes that folder once it is older than cleanupPeriodDays."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before installing someone else's mod, you can get the plugin's files and run claude plugin validate, which lists the events it handles and the methods it calls without running the mod."
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation says a mod's interface is drawn in the terminal and in the Code tab of the Desktop app (the Code tab cannot draw elements that are terminal-only); a WSL session in the Desktop app cannot use plugins, so event handlers do not run; in the VS Code extension's chat panel, claude -p, the Agent SDK and cloud sessions (only for a plugin that reaches the cloud session), event handlers run but nothing is drawn; with Remote Control, event handlers run in the session on your computer and draw in the terminal on your computer."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Security and enterprise controls: no sandbox, and what administrators can do"
+        },
+        {
+          "type": "paragraph",
+          "text": "The documentation says mods are not sandboxed and run with your permissions: they can read environment variables and settings files (including an API key in either), approve a tool call before you are asked, and call a model on your plan or API key, but they cannot change the permission prompt itself; with sandboxing on, only the Bash commands Claude runs are isolated, and a process that a mod starts runs outside the sandbox."
+        },
+        {
+          "type": "paragraph",
+          "text": "The built-in sec-default loads when the machine has managed settings or when the user is signed in with a Team or Enterprise plan; for someone using an API key or Amazon Bedrock, Google Cloud or Microsoft Foundry, it loads only on a machine with managed settings. It only stops a user's mod from changing what administrators manage (for example what managed settings hooks receive and decide, and the system prompt) and from approving a tool call that a deny rule refuses, and allows everything else; deny rules also do not cover a mod's own $.fs and $.process calls."
+        },
+        {
+          "type": "paragraph",
+          "text": "Administrators' switches include: allowManagedModsOnly blocks mods that users bring; disableSideloadFlags rejects --plugin-dir, --plugin-url and mods Claude writes in a session; prependPlugins and appendPlugins set the order of the organization's mods, and setting prependPlugins requires listing sec-default@builtin to keep the built-in guard; disableAllHooks in managed settings stops even the organization's mods and managed settings hooks."
+        },
+        {
+          "type": "paragraph",
+          "text": "Individuals can disable a single mod on the Installed tab of /plugin, use --safe-mode to turn off installed mods for one session (other customizations stop too), or set disableAllHooks in ~/.claude/settings.json (settings hooks and a custom status line stop too, while what the organization manages keeps running); the last two do not stop built-in mods."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Which version do I need to use mods?",
+              "answer": "The documentation says mods require Claude Code v2.1.287 or later and are on by default; you can check with claude --version."
+            },
+            {
+              "question": "Do I need Node.js or a build step to write a mod?",
+              "answer": "The documentation says no. Writing a mod yourself needs no Node.js or build step."
+            },
+            {
+              "question": "Do mods replace settings hooks?",
+              "answer": "No. What Anthropic says is that mods can do things settings hooks cannot; the documentation says settings hooks keep running and none of them is deprecated."
+            },
+            {
+              "question": "How do I turn mods off?",
+              "answer": "Disable a single mod on the Installed tab of /plugin; start a session with --safe-mode, which also disables your other customizations; or set disableAllHooks to true in ~/.claude/settings.json, which also stops settings hooks and a custom status line, while what the organization manages keeps running. Neither --safe-mode nor disableAllHooks stops built-in mods."
+            },
+            {
+              "question": "Can mods be used on a personal plan?",
+              "answer": "The blog says only that mods work in both the Claude Code CLI and the desktop app. The blog and three documentation pages cited here, as of the checked date of October 4, 2026, do not say plan by plan whether mods are available."
+            },
+            {
+              "question": "Can mods be used in the VS Code extension and in cloud sessions?",
+              "answer": "The documentation says a mod's event handlers run in the VS Code extension's chat panel, and in cloud sessions for a plugin that reaches the cloud session, but neither draws panes or bands."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Not tested here; mods have your permissions",
+          "text": "This site has not installed or tested any mod; everything above is Anthropic's announcement and documentation. Anthropic's blog says mods run with the same access to your machine as Claude Code itself and are not sandboxed, and that you should only install mods from sources you trust, the same way you would install any code on your computer. The documentation is a live page and the above is the version as of October 4, 2026; the table of built-in mods and individual settings may change between versions, so rely on the version you installed and the latest documentation."
+        },
+        {
+          "type": "link",
+          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Claude Sonnet 5.5 Launches: Same List Price as Sonnet 5, Available in the API, on Cloud Platforms and in Claude.ai",
+          "url": "https://mokaair.com/en/life/ai-news-claude-sonnet-55-20260928"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude Blog: Customize Claude Code with mods",
+          "url": "https://claude.com/blog/claude-code-mods",
+          "checked_on": "2026-10-04"
+        },
+        {
+          "title": "Claude Code Docs: Mods overview",
+          "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+          "checked_on": "2026-10-04"
+        },
+        {
+          "title": "Claude Code Docs: Create a mod",
+          "url": "https://code.claude.com/docs/en/plugins/mods/create",
+          "checked_on": "2026-10-04"
+        },
+        {
+          "title": "Claude Code Docs: Manage mods for your organization",
+          "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+          "checked_on": "2026-10-04"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Claude Code 推出 mods：用 TypeScript 改写行为与界面，装在 plugin 里",
+      "description": "Anthropic 在 2026 年 10 月 1 日发布 Claude Code mods：装在 plugin 里、在 Claude Code 进程内运行的 TypeScript 或 JavaScript 函数，可改写提示、管理工具调用、绘制新界面。Anthropic 说 CLI 与桌面应用都能用、mods 没有沙箱，文档写需要 v2.1.287 以上（2026 年 10 月查证）。",
+      "hero": {
+        "src": "/guides/ai-news-claude-code-mods-20261001/hero-zh-cn.jpg",
+        "alt": "原创插图：左边一个代表事件的方块，经过中间一张代表 mod 的卡片（两侧各有一个接点），右边的终端窗口显示对话文字与 mod 加上的一块窗格；下方两张虚线卡片代表依次加载的其他 mod；不含商标或界面截图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在 2026 年 10 月 1 日发布 mods（改写 Claude Code 行为与界面的小型程序）：用 TypeScript 或 JavaScript 写的函数，装在 plugin 里，在 Claude Code 进程内运行。Anthropic 说 CLI 与桌面应用都能用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这一篇的数据在 2026 年 10 月 4 日查证，依据 Anthropic 的博客与三页文档。本站没有安装或运行任何 mod，下面的功能与限制都是 Anthropic 的说法。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic 在 2026 年 10 月 1 日发布 mods：装在 plugin 里、在 Claude Code 自己的进程内运行的 TypeScript 或 JavaScript 函数；博客说可在 CLI 与桌面应用使用，文档写需要 Claude Code v2.1.287 以上。",
+            "Anthropic 说 mods 能改写提示、拦下或改写工具调用、批准或拒绝权限、绘制窗格与按钮、添加命令；文档写设置文件 Hook 照常运行，没有被淘汰。",
+            "mods 没有沙箱、与用户拥有同样的权限，Anthropic 说只该安装来源可信的 mods；在有 managed settings 的电脑或以 Team、Enterprise 方案登录时加载的 sec-default，只拦下用户的 mod 改动管理员管理的内容，以及批准被 deny 规则拒绝的工具调用，其他都不拦。",
+            "管理员可用 allowManagedModsOnly、disableSideloadFlags、prependPlugins 与 appendPlugins、disableAllHooks；个人可用 /plugin、--safe-mode 或 disableAllHooks 关闭，后两者不会停掉内置 mods。",
+            "文档与内置 mods 表可能随版本变动，上面是截至 2026 年 10 月 4 日的内容。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "mods 是什么：装在 plugin 里、在 Claude Code 进程内运行的函数"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 说 Claude Code 每做一件事就发出事件，mod 是挂在事件上、在事件之前、之后或取代它运行的函数。文档写一个小 mod 有三个文件：.claude-plugin/plugin.json、hooks/hooks.json 与 hooks/register.js；hooks.json 的 modules 字段指向代码文件，有它才算 mod。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文档写 Claude Code 把两种都叫 hooks：设置文件里的 shell 命令、HTTP 请求或提示，下面叫“设置文件 Hook”；在 Claude Code 内部运行的处理函数，叫“mod 的事件函数”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "加载时 Claude Code 调用 register(on)，用 on 注册事件函数；每个函数拿到 $（mods API）、e（事件数据）与 next（交给其他 mods 与 Claude Code 原本的行为）。文档列出三种处理方式：观察、改写，以及接手（自己处理，原本的行为不运行）。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "能做什么：改提示、管工具调用、绘制界面、添加命令"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 列出的能力有：在提示送到模型前改写它；拦下、改写或重试工具调用；批准或拒绝权限请求；在 Claude 读到之前遮掉工具输出里的机密；修改或取代部分界面，并添加按钮和输入框。文档补充可绘制窗格与提示框上方的横条，添加不经过 Claude 回合的 /command。"
+        },
+        {
+          "type": "paragraph",
+          "text": "多个 mods 挂在同一个事件上时按加载顺序运行，最先加载的最先看到事件、最后看到结果。内置的 /diff 现在是 mod，可在 /plugin 关掉，或换成自己的版本；文档说停用后 /diff 还在，由内置版本回应。Anthropic 说设置文件 Hook 不能改写事件、绘制新界面或取代功能，mods 可以；文档则写设置文件 Hook 照常运行，没有任何一项被淘汰。下表四者中只有 mod 能绘制界面。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "种类",
+            "是什么",
+            "能改什么",
+            "写什么"
+          ],
+          "rows": [
+            [
+              "mod",
+              "plugin 里的函数，由 Claude Code 在自己的进程内调用",
+              "工具调用、提示、命令、回合，以及界面绘制什么",
+              "JavaScript 或 TypeScript"
+            ],
+            [
+              "设置文件 Hook",
+              "Claude Code 在生命周期事件上运行的 shell 命令、HTTP 请求或提示",
+              "工具调用或提示放不放行、参数与结果、加给 Claude 的上下文",
+              "一个脚本，加 settings.json 里的一条设置"
+            ],
+            [
+              "skill",
+              "Claude 读取的 SKILL.md 指示文件",
+              "Claude 知道什么、做什么",
+              "Markdown"
+            ],
+            [
+              "MCP server",
+              "给 Claude 提供工具的外部进程或服务",
+              "Claude 有哪些工具",
+              "任何语言写的服务器"
+            ]
+          ],
+          "caption": "mod、设置文件 Hook、skill 与 MCP server 的比较，依 Claude Code 文档 mods 总览页的比较表缩短，查证日 2026 年 10 月 4 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用在哪：团队的管控与示例 mod"
+        },
+        {
+          "type": "paragraph",
+          "text": "博客举了三个团队可以用 mods 自己做的例子：在对话旁的窗格显示 CI/CD 状态；命令碰到 production 配置前要求确认；由最先加载的 mod 记下其他每个 mod 的每次调用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文档的三个示例 mod 在 claude-code-playground 仓库，照原样分享、不提供支持：token-weather 在提示框上方绘制上下文窗口的预报；blast-radius 拦下 rm -rf 或 force push 这类高风险命令，显示会改动什么；replay-theater 添加 /replay 命令，逐步重放 Claude 上一轮的文件修改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "内置的 mods 列在 /plugin 的 Installed 标签页 Built-in 底下，例如接手 /diff 的 cc-plugin-diff 与最后一节的 cc-plugin-sec-default；cc-plugin-you-should-know 默认关闭，文档写“if available for your org”才会列出。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-code-mods-20261001/diagram-1-zh-cn.svg",
+          "alt": "四格图解：事件（工具调用、提示、画面）、函数（观察、改写或接手）、界面（窗格、按钮、命令）、管控（sec-default 先加载）",
+          "width": 1600,
+          "height": 900,
+          "caption": "Claude Code 的 mods 接收工具调用、提示与画面等事件，以函数观察、改写或接手，能添加窗格、按钮与命令；在有 managed settings 的电脑或以 Team／Enterprise 方案登录时，内置的 sec-default 先加载。依 Anthropic 博客与 Claude Code 文档整理，查证日 2026 年 10 月 4 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎么开始用：版本、安装、请 Claude 写或自己写"
+        },
+        {
+          "type": "paragraph",
+          "text": "文档写 mods 需要 Claude Code v2.1.287 或以上、默认开启，用 claude --version 检查。博客说可从 Claude directory 或在 CLI 运行 /plugin 安装含 mods 的 plugin；文档写格式是 /plugin install 名称@marketplace。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自己写不需要 Node.js 或 build step；用 claude --plugin-dir 加目录只在一个会话加载，文件一改就热重载。请 Claude 写时，文档说它依内置的 plugin-authoring skill 把 mod 写在 ~/.claude/dev-mods/ 的会话文件夹，要你批准才加载，超过 cleanupPeriodDays 会被删除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安装别人的 mod 前，可以先取得 plugin 的文件、运行 claude plugin validate，不必运行 mod 就能列出它处理的事件与调用的方法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文档写，mod 的界面绘制在终端与桌面应用的 Code tab（Code tab 画不出仅限终端的元素）；桌面应用的 WSL 会话不能用 plugins，事件函数不运行；VS Code 扩展的聊天面板、claude -p、Agent SDK 与云端会话（限送得进去的 plugin）只运行不绘制；用 Remote Control 时，事件函数在你电脑上的会话运行、绘制在你电脑的终端。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "安全与企业管控：没有沙箱，管理员可以怎么管"
+        },
+        {
+          "type": "paragraph",
+          "text": "文档写 mods 没有沙箱、以你的权限运行：能读取环境变量与设置文件（包括里面的 API key）、在你被询问之前批准工具调用、用你的方案或 API key 调用模型，但改不了权限提示本身；开了沙箱也只隔离 Claude 运行的 Bash 命令，mod 启动的程序在沙箱外。"
+        },
+        {
+          "type": "paragraph",
+          "text": "内置的 sec-default 在电脑有 managed settings，或以 Team、Enterprise 方案登录时加载；用 API key 或 Amazon Bedrock、Google Cloud、Microsoft Foundry 的人，只在有 managed settings 的电脑才有。它只拦下用户的 mod 改动管理员管理的内容（例如受管设置文件 Hook 收到与决定的事、系统提示）与批准 deny 规则拒绝的工具调用，其他都允许；deny 规则也管不到 mod 自己的 $.fs 与 $.process 调用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "管理员的开关包括：allowManagedModsOnly 拦下用户带来的 mods；disableSideloadFlags 拒绝 --plugin-dir、--plugin-url 与 Claude 在会话里写的 mods；prependPlugins 与 appendPlugins 决定组织 mod 的顺序，设置 prependPlugins 要列出 sec-default@builtin 才保留内置 guard；managed settings 的 disableAllHooks 连组织的 mods 与受管的设置文件 Hook 都停。"
+        },
+        {
+          "type": "paragraph",
+          "text": "个人可在 /plugin 的 Installed 标签页停用单个 mod，以 --safe-mode 停掉一个会话的已安装 mods（其他自定义也停），或在 ~/.claude/settings.json 设置 disableAllHooks（设置文件 Hook 与自定义 status line 也停，组织管理的照常）；后两者不停内置 mods。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "要什么版本才能用 mods？",
+              "answer": "文档写 mods 需要 Claude Code v2.1.287 或以上，默认开启，可以用 claude --version 检查。"
+            },
+            {
+              "question": "写 mod 要不要装 Node.js 或做 build step？",
+              "answer": "文档写不需要。自己写 mod 不需要 Node.js 或 build step。"
+            },
+            {
+              "question": "mods 会取代设置文件 Hook 吗？",
+              "answer": "不会。Anthropic 说的是设置文件 Hook 做不到的事，mods 做得到；文档写设置文件 Hook 照常运行，没有任何一项被淘汰。"
+            },
+            {
+              "question": "怎么关掉 mods？",
+              "answer": "单个 mod 在 /plugin 的 Installed 标签页停用；一个会话用 --safe-mode 启动，其他自定义也停；或在 ~/.claude/settings.json 把 disableAllHooks 设为 true，这会连设置文件 Hook 与自定义 status line 一起停，组织管理的照常。--safe-mode 与 disableAllHooks 都不会停掉内置 mods。"
+            },
+            {
+              "question": "个人方案也能用 mods 吗？",
+              "answer": "博客只写 mods 在 Claude Code CLI 与桌面应用都能用。这里引用的博客与三页文档，到查证日 2026 年 10 月 4 日都没有逐一写各个方案能不能用。"
+            },
+            {
+              "question": "VS Code 扩展与云端会话能用 mods 吗？",
+              "answer": "文档写，mod 的事件函数在 VS Code 扩展的聊天面板会运行，云端会话则是对送进云端的 plugin 会运行，但两者都不绘制窗格或横条。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "没有实测，mods 与你权限相同",
+          "text": "本站没有安装或实测任何 mod，以上都是 Anthropic 公告与文档的说法。Anthropic 在博客写，mods 对你电脑的访问权限与 Claude Code 本身相同、没有沙箱，只该安装来源可信的 mods，就像在电脑上安装任何程序一样。文档是持续更新的页面，上面是截至 2026 年 10 月 4 日的版本，内置 mods 表与各项设置可能随版本变动，实际以你安装的版本与最新文档为准。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Claude Sonnet 5.5 推出：标价与 Sonnet 5 相同，API、云平台与 Claude.ai 都能用",
+          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-sonnet-55-20260928"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude 博客：Customize Claude Code with mods",
+          "url": "https://claude.com/blog/claude-code-mods",
+          "checked_on": "2026-10-04"
+        },
+        {
+          "title": "Claude Code Docs：Mods overview",
+          "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+          "checked_on": "2026-10-04"
+        },
+        {
+          "title": "Claude Code Docs：Create a mod",
+          "url": "https://code.claude.com/docs/en/plugins/mods/create",
+          "checked_on": "2026-10-04"
+        },
+        {
+          "title": "Claude Code Docs：Manage mods for your organization",
+          "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+          "checked_on": "2026-10-04"
+        }
+      ]
     }
   }
 }

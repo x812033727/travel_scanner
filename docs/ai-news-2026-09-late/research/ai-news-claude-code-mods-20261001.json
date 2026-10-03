@@ -792,5 +792,57 @@
       ],
       "verdict": "ok"
     }
+  },
+  "translations": {
+    "en": {
+      "hero_label": "mods: behavior and UI",
+      "diagram": {
+        "title": "The four parts of mods",
+        "caption": "Claude Code mods receive events such as tool calls and prompts, handle them with functions that observe, rewrite or answer, and can add panes, buttons and commands; with managed settings or a Team or Enterprise plan, sec-default loads first. From Anthropic's blog and docs; checked Oct 4, 2026.",
+        "nodes": [
+          [
+            "Events",
+            "Tool calls, prompts, screen"
+          ],
+          [
+            "Functions",
+            "Observe, rewrite or answer"
+          ],
+          [
+            "Interface",
+            "Panes, buttons, commands"
+          ],
+          [
+            "Controls",
+            "sec-default loads first"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "mods：改行为也改界面",
+      "diagram": {
+        "title": "mods 的四个环节",
+        "caption": "Claude Code 的 mods 接收工具调用、提示与画面等事件，以函数观察、改写或接手，能添加窗格、按钮与命令；在有 managed settings 的电脑或以 Team／Enterprise 方案登录时，内置的 sec-default 先加载。依 Anthropic 博客与 Claude Code 文档整理，查证日 2026 年 10 月 4 日。",
+        "nodes": [
+          [
+            "事件",
+            "工具调用、提示、画面"
+          ],
+          [
+            "函数",
+            "观察、改写或接手"
+          ],
+          [
+            "界面",
+            "窗格、按钮、命令"
+          ],
+          [
+            "管控",
+            "先加载 sec-default"
+          ]
+        ]
+      }
+    }
   }
 }
