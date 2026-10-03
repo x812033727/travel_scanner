@@ -96,3 +96,30 @@ async def test_live_back_to_back_names_a_ticket_with_no_live_fare_by_code() -> N
     result = await LiveBackToBackService(EmptyMiddleProvider()).search(request())
 
     assert result.warnings == ["live_fare_missing?role=middle_two_segment"]
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("missing", [False, True])
+async def test_live_comparison_details_use_codes(missing: bool) -> None:
+    result = await LiveBackToBackService(RecordingFlightProvider(missing)).search(request())
+    for comparison in result.comparisons:
+        assert comparison.detail == (
+            "live_comparison_missing?roles=middle_two_segment"
+            if missing
+            else "live_comparison_complete"
+        )
+        assert (comparison.savings is None) == missing
+
+
+@pytest.mark.asyncio
+async def test_live_comparison_detail_distinguishes_incompatible_existing_fares() -> None:
+    class OtherCurrencyProvider(RecordingFlightProvider):
+        async def search_flights(self, query: SearchCreate) -> list[FlightOffer]:
+            offers = await super().search_flights(query)
+            return [offer.model_copy(update={"currency": "JPY"}) for offer in offers]
+
+    result = await LiveBackToBackService(OtherCurrencyProvider()).search(request())
+    assert result.warnings == []
+    for comparison in result.comparisons:
+        assert comparison.detail == "live_comparison_incomplete"
+        assert comparison.savings is None

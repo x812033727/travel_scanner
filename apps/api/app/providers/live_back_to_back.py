@@ -279,6 +279,7 @@ class LiveBackToBackService:
                 candidates[role] = result
                 if not result:
                     warnings.append(warning_code("live_fare_missing", role=role))
+        missing_roles = [role for role in self.roles if not candidates[role]]
         comparisons = []
         for mode in LiveComparisonMode:
             same = mode == LiveComparisonMode.SAME_AIRLINE
@@ -316,9 +317,11 @@ class LiveBackToBackService:
                     savings=savings,
                     verdict=verdict,
                     detail=(
-                        "所有必要票價均來自同一次使用者主動即時比較。"
+                        warning_code("live_comparison_complete")
                         if savings is not None
-                        else "缺少一張以上必要票價，不建立不完整方案。"
+                        else warning_code("live_comparison_missing", roles=",".join(missing_roles))
+                        if missing_roles
+                        else warning_code("live_comparison_incomplete")
                     ),
                 )
             )
