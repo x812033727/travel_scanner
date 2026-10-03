@@ -1,0 +1,295 @@
+{
+  "slug": "ai-term-world-model",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "世界模型（World Model）是什麼：讓 AI 預測「接下來會怎樣」",
+      "description": "世界模型指 AI 內部用來預測「這樣做之後會怎樣」的模型，但這個詞至少有三種用法：強化學習代理在想像中練習用的環境模型、LeCun 主張預測抽象表示的架構路線，以及能隨操作即時生成畫面的互動環境。內容用示例說明怎麼在想像中規劃，並列出大型語言模型有沒有世界模型的正反研究，附讀新聞時的檢查問題。",
+      "hero": {
+        "src": "/guides/ai-term-world-model/hero.jpg",
+        "alt": "小代理旁的大泡泡裡有山丘、太陽與一條路徑，路徑在前方分成三條：一條被叉號擋住、一條虛線、一條通到目標，象徵在想像中預測不同的未來",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "世界模型（World Model）泛指系統內部用來預測「這樣做之後會怎樣」的模型。這個詞沒有單一定義，常見用法至少三種：強化學習代理學到的環境模型、LeCun 主張預測抽象表示的架構路線，以及隨操作即時生成畫面的互動環境。看到這個詞，先問是哪一種、預測什麼、怎麼驗證。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "以下逐一說明，並整理大型語言模型有沒有世界模型的正反研究，資料截至 2026 年 10 月。第一種建立在"
+            },
+            {
+              "type": "article",
+              "text": "強化學習",
+              "kind": "life",
+              "slug": "ai-term-reinforcement-learning"
+            },
+            {
+              "type": "text",
+              "text": "之上，第三種和"
+            },
+            {
+              "type": "article",
+              "text": "文字生影片",
+              "kind": "life",
+              "slug": "ai-term-text-to-video"
+            },
+            {
+              "type": "text",
+              "text": "技術相鄰。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "一個詞，三種用法"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sutton 與 Barto 的強化學習教科書把環境模型定義為代理用來預測環境如何回應其動作的任何東西：給定狀態與動作，預測下一個狀態與獎勵；以模型為輸入、產生或改進行動策略的計算，書中稱為規劃（planning）。三種用法都以「預測下一步」為核心，差在預測什麼、拿來做什麼。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "用法",
+            "預測什麼",
+            "怎麼檢驗"
+          ],
+          "rows": [
+            [
+              "強化學習的環境模型（Dreamer 等）",
+              "動作之後的下一個狀態與獎勵",
+              "想像中學到的行為，在真實環境是否有效"
+            ],
+            [
+              "LeCun 的架構路線（JEPA）",
+              "未來狀態的抽象表示，不重建像素",
+              "能否拿來規劃、完成實際任務"
+            ],
+            [
+              "生成式互動環境（Genie 系列）",
+              "回應最新操作的下一格畫面",
+              "長時間互動是否一致、是否照操作回應"
+            ],
+            [
+              "相關爭論：語言模型內部",
+              "不另外訓練，問內部有沒有表示狀態",
+              "能否讀出、改動後輸出是否跟著變、換題是否失靈"
+            ]
+          ],
+          "caption": "三種用法與一個相關爭論的辨識方式，整理自各自的一手論文與官方文章；資料截至 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "強化學習裡的世界模型：在想像中練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ha 與 Schmidhuber 2018 年的〈World Models〉把代理拆成三塊：視覺部分把每格畫面壓縮成一小串數字，記憶部分依目前狀態與動作預測下一格的壓縮結果，控制器只是很小的線性模型。在 VizDoom 躲火球任務裡，控制器完全在世界模型生成的「夢境」裡訓練，再放回真實遊戲；在論文的設定下，連續 100 次測試平均撐過約 1,100 個時間步，高於任務要求的 750 步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "論文也記下弱點：控制器曾學會一種走位，讓夢裡的怪物在某些回合完全不發射火球，這個漏洞在真實遊戲裡不存在。世界模型只是近似，策略會專挑它預測錯的地方得分。Hafner 等人 2019 年的 Dreamer 改在學到的精簡狀態空間裡想像未來、從想像中學習行為；2023 年的 DreamerV3 論文報告，同一組設定在 150 多種任務上勝過專門方法，也是第一個不靠人類資料、從零在 Minecraft 收集到鑽石的演算法。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-world-model/diagram-1.svg",
+          "alt": "流程圖：代理從真實環境收集經驗、訓練世界模型，在想像中推演三個候選動作並選出一個，只執行第一步再回到真實環境比對預測",
+          "width": 1600,
+          "height": 900,
+          "caption": "在想像中規劃的循環。右下的警示是 Ha 與 Schmidhuber 記下的問題：策略會鑽模型預測錯的地方，所以結果要回真實環境驗證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（假想情境，未實測）：掃地機器人要回充電座，前方有門檻。世界模型替三個候選動作各推演幾步：直走會卡住，左繞與右繞都能抵達，右繞較短。規劃器選右繞但只走第一步，再拿感測結果比對預測，差距大就重新規劃。若右邊鋪著訓練時沒見過的長毛地毯，模型可能照樣預測「順利通過」，規劃器便一路選它；這時錯在預測而非規劃，要補收這種地面的經驗、重新訓練。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "LeCun 的路線：預測抽象表示，不預測每個像素"
+        },
+        {
+          "type": "paragraph",
+          "text": "LeCun 2022 年的立場論文提出一套代理架構，世界模型是最複雜的模組，負責補上感知沒看到的狀態，並預測執行某串動作後的可能未來。他主張預測在抽象表示空間裡進行，且要能表示多種可能，因為世界並不完全可預測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "他提出的 JEPA（Joint Embedding Predictive Architecture，聯合嵌入預測架構）不生成畫面，而是把現在與未來各自編碼成表示，再從前者預測後者。論文舉車子開到岔路口為例：表示只記位置、方向與速度，路邊樹木和人行道紋理可以忽略，往左或往右交給一個潛在變數。他認為樹葉擺動、水面漣漪這類細節無法長期準確預測，JEPA 可以選擇忽略，逐像素生成的模型卻得預測它們。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這是一位研究者的主張，論文開頭就說它不是傳統意義的技術論文。沿這條路的實驗之一是Meta 研究團隊 2025 年的 V-JEPA 2：先用網路影片訓練，再用不到 62 小時、未標註的機器人影片訓練出依動作預測的版本，讓兩個實驗室的機械手臂靠目標影像規劃，完成抓取與放置。這說明該設定下可行，不代表路線已經勝出。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "生成式互動環境：會回應操作的生成畫面"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第三種用法來自生成模型。Google DeepMind 2024 年的 Genie 論文用沒有動作標註的網路影片訓練，模型自己學出潛在動作，提示可以是文字、照片或手繪草圖，跨資料形式的處理可對照"
+            },
+            {
+              "type": "article",
+              "text": "多模態 AI",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            },
+            {
+              "type": "text",
+              "text": "。官方文章描述，2025 年 8 月發表的 Genie 3 能依文字提示即時生成可探索的環境，大致維持數分鐘一致，回到一分鐘前看過的地方仍記得細節。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "它和一般影片生成的差別，是每一格都要回應最新操作；官方文章指出，逐格生成的誤差會隨時間累積，比一次生成整段影片更難維持一致。官方也列出限制：代理能直接做的動作有限、多個代理互動難模擬、無法精準重現真實地點、連續互動只能撐幾分鐘。OpenAI 2024 年的影片生成報告以「世界模擬器」為題，也寫明模型模擬不準許多基本互動，例如玻璃碎裂。以上都是開發者的描述與挑選過的示範，不是獨立評測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "大型語言模型有沒有世界模型"
+        },
+        {
+          "type": "paragraph",
+          "text": "相關爭論是：只學預測下一個 token 的模型，內部會不會形成世界狀態的表示？Li 等人 2023 年的 Othello-GPT 研究用合法棋步序列訓練 GPT 變體，沒有告訴它規則或棋盤。研究者用探針（probe，讀取內部活化值的小型分類器）讀出棋盤狀態，非線性探針比線性探針準得多；改動內部表示裡的一格棋子，模型預測的合法棋步就跟著變，顯示這個表示會影響輸出。Gurnee 與 Tegmark 則在開放權重語言模型裡找到地點經緯度與事件年代的線性表示，稱之為世界模型的「基本成分」，並說仍需研究。"
+        },
+        {
+          "type": "paragraph",
+          "text": "反面證據中較具體的是 Vafa 等人在 NeurIPS 2024 的研究。他們用紐約計程車的逐段轉向路線訓練 transformer，模型給出的下一步幾乎都是合法轉向，也常找到最短路線；但從模型行為還原的曼哈頓地圖滿是方向不可能的街道，插入繞道後表現也下滑，棋類與邏輯謎題上也有同樣落差。合起來看，規則明確的小領域有內部狀態表示的證據，但會預測下一步不等於有一致的世界模型，一般大型語言模型有沒有，取決於怎麼定義、怎麼量。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀世界模型新聞時先問的事"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "說的是哪一種：三種用法的成功標準不同，先對上是哪一種。",
+            "預測什麼：狀態與獎勵、抽象表示，還是畫面？畫面逼真不代表物理關係正確。",
+            "怎麼驗證：想像中學到的行為在真實環境如何、長時間互動是否一致、有沒有第三方重現。",
+            "示範怎麼挑的：官方片段只說明做得到某些畫面，看不出失敗多常發生。"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "示範影片不是能力證明",
+          "text": "畫面合理只說明那一段沒出錯。世界模型好不好，要看預測拿去規劃或訓練後，在真實任務裡站不站得住。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "開發者常把世界模型說成通往"
+            },
+            {
+              "type": "article",
+              "text": "AGI",
+              "kind": "life",
+              "slug": "ai-term-agi"
+            },
+            {
+              "type": "text",
+              "text": "的一步，Genie 3 的官方文章就這樣寫；但 AGI 沒有共識定義，這是研究方向的主張，不是已驗證的結果。其他名詞可從"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "查起。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sutton、Barto：Reinforcement Learning: An Introduction 第二版（作者官網全文，第 8 章 Models and Planning）",
+          "url": "http://incompleteideas.net/book/the-book-2nd.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ha、Schmidhuber：World Models（arXiv:1803.10122）",
+          "url": "https://arxiv.org/abs/1803.10122",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hafner 等：Dream to Control: Learning Behaviors by Latent Imagination（arXiv:1912.01603）",
+          "url": "https://arxiv.org/abs/1912.01603",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hafner 等：Mastering Diverse Domains through World Models（DreamerV3，arXiv:2301.04104）",
+          "url": "https://arxiv.org/abs/2301.04104",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "LeCun：A Path Towards Autonomous Machine Intelligence（OpenReview，Version 0.9.2）",
+          "url": "https://openreview.net/forum?id=BZ5a1r-kVsf",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Assran 等：V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning（arXiv:2506.09985）",
+          "url": "https://arxiv.org/abs/2506.09985",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Bruce 等：Genie: Generative Interactive Environments（arXiv:2402.15391）",
+          "url": "https://arxiv.org/abs/2402.15391",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google DeepMind：Genie 3: A new frontier for world models（官方文章，2025 年 8 月）",
+          "url": "https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI：Video generation models as world simulators（官方技術報告，2024 年 2 月）",
+          "url": "https://openai.com/index/video-generation-models-as-world-simulators/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Li 等：Emergent World Representations: Exploring a Sequence Model Trained on a Synthetic Task（arXiv:2210.13382，ICLR 2023）",
+          "url": "https://arxiv.org/abs/2210.13382",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Gurnee、Tegmark：Language Models Represent Space and Time（arXiv:2310.02207）",
+          "url": "https://arxiv.org/abs/2310.02207",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Vafa 等：Evaluating the World Model Implicit in a Generative Model（arXiv:2406.03689，NeurIPS 2024）",
+          "url": "https://arxiv.org/abs/2406.03689",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

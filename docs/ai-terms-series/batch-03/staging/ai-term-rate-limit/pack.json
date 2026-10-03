@@ -1,0 +1,346 @@
+{
+  "slug": "ai-term-rate-limit",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "速率限制（Rate Limit）是什麼：API 為什麼回你 429",
+      "description": "速率限制是 API 在一段時間內允許的請求數或 token 數上限，超過時通常回 HTTP 429，也可能附 Retry-After 告訴你等多久。依 RFC 與 OpenAI、Anthropic、Google 官方文件，說明 RPM、TPM 怎麼算、哪些 429 不該重試、退避加抖動的示例流程，並分清配額、花費上限與上下文視窗，最後談代理迴圈與批次工作的節流。",
+      "hero": {
+        "src": "/guides/ai-term-rate-limit/hero.jpg",
+        "alt": "一排請求方塊在閘門前排隊，閘門上方的桶子持續補進籌碼，通過閘門的方塊彼此拉開相同間距",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "速率限制（rate limit）是服務在一段時間內允許你送出的請求數或 token 數上限，超過時 API 通常回 HTTP 429 Too Many Requests。它管的是速度。Google 繁中文件標題作「頻率限制」，內文與 Microsoft 繁中文件多作「速率限制」；這裡用後者，較貼近 rate「單位時間內的量」的本意。Gemini API 查額度、分類錯誤的操作步驟見"
+            },
+            {
+              "type": "article",
+              "text": "API 額度與錯誤：費用、重試與成本控制",
+              "kind": "life",
+              "slug": "gemini-api-cost-errors-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "以下整理 RFC 與各家官方文件寫的機制，不列任何方案的數字，實際額度以自己的主控台為準；資料截至 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "它算的是一段時間內的量"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "常見單位是每分鐘請求數（RPM）與每分鐘 "
+            },
+            {
+              "type": "article",
+              "text": "token",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": " 數（TPM），也有每日請求數（RPD）與每日 token 數（TPD）。OpenAI 說明哪一項先到就先觸發，很多短請求可能先用完請求數。各家算 token 的方式也不同：Anthropic 把輸入與輸出分開，分成每分鐘輸入 token（ITPM）與每分鐘輸出 token（OTPM）；Google 的 Gemini API 文件則把 TPM 標為輸入 token。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "限制也有層級。OpenAI 定在組織與專案，Google 定在專案而不是 API 金鑰，Anthropic 定在組織、可再替工作區設較低上限；同一個專案多開幾把金鑰，額度不會變多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "時間窗未必是整分鐘。Anthropic 用 token bucket 演算法：額度像桶裡的籌碼，持續補回到上限，不是整點一次歸零（此處 token 指額度籌碼）；它也提醒每分鐘上限可能拆成更短區間執行。所以這一分鐘還沒用完，下一秒仍可能被擋。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "429 與 Retry-After：規範怎麼寫"
+        },
+        {
+          "type": "paragraph",
+          "text": "429 出自 2012 年的 RFC 6585，定義是使用者在一段時間內送出太多請求。回應應該說明原因，並可以附上 Retry-After 告知要等多久。規範沒有定義怎麼辨識使用者、怎麼計數，所以各家計算方式不同，都合乎標準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Retry-After 的格式寫在 RFC 9110：可以是 HTTP 日期，也可以是秒數，例如 120 代表兩分鐘，也能搭配 503 Service Unavailable 使用。OpenAI 建議把它當成最少等待時間，再加一點隨機延遲。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "不是每個 429 都該重試"
+        },
+        {
+          "type": "paragraph",
+          "text": "429 底下不只一種原因。OpenAI 在預付額度用完、達到花費上限或使用上限時也回 429，並寫明重試不會恢復；Anthropic 每月花費上限用完時回 429 但不附 retry-after，要看錯誤內容的 error_code 才分得出來；Google 把每日配額用完單獨列一個代碼，建議等重設。另一種是加速太快：OpenAI 的 slow_down 與 Anthropic 的加速限制都因用量急升而觸發，OpenAI 註明即使沒到每分鐘上限也會發生；解法是逐步加量。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "先讀錯誤內容，再決定要不要等",
+          "text": "暫時超速可以等；花費上限、配額或預付額度用完，重試幾次都無效。OpenAI 還提醒，失敗的請求也算進每分鐘額度，一直重送只會更久。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-rate-limit/diagram-1.svg",
+          "alt": "收到 429 後先讀錯誤內容，暫時超速就照 Retry-After 或退避加抖動重試並設上限，花費上限或配額用完則不重試",
+          "width": 1600,
+          "height": 900,
+          "caption": "左邊是可以等的 429，右邊是要有人改設定的 429；兩邊都要避免多層重試疊加。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "退避加抖動：示例流程"
+        },
+        {
+          "type": "paragraph",
+          "text": "指數退避（exponential backoff）是每失敗一次就把等待時間加倍，直到上限。AWS 的 Marc Brooker 在 2015 年用模擬說明，只有退避，重試仍會擠在同一批時間點；加上隨機抖動（jitter）才會分散開來。在他的設定下（100 個客戶端同時更新同一筆資料），加抖動讓總呼叫數減少一半以上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（未實測），程式收到 429 之後："
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "讀錯誤內容；若是花費上限或配額用完，記錄後停止。",
+            "附有 Retry-After: 20 時，至少等 20 秒，再加 0 到 1 秒的隨機延遲。",
+            "沒有 Retry-After 時，以 1 秒為基準、8 秒為上限，第 1 到第 5 次重試的上界依序是 1、2、4、8、8 秒，每次在 0 到上界間隨機取值。",
+            "最多重試 5 次、總等待不超過 2 分鐘，用完就把工作放回佇列。",
+            "預期結果：多個工作不會同一秒一起重送。若 5 次都失敗，代表平均速度本身超標，該降低並行數量，而不是加大重試次數。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "重試只留一層。OpenAI 提醒官方 SDK 已會自動重試，自己再包一層時要關掉它或算進上限；AWS 舉例，五層呼叫各自試 3 次，最底層的負載會放大到 243 倍。RFC 9110 也提醒，非冪等的請求除非能確認原請求沒有生效，否則不應自動重試；會寄信或付款的工具呼叫要先做好防重複。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "速率限制、配額、花費上限與上下文視窗"
+        },
+        {
+          "type": "paragraph",
+          "text": "配額（quota）的用法各家不一：Google 指每日上限，在太平洋時間午夜重設；Microsoft 的 Azure OpenAI 指分給訂閱、再由各部署瓜分的每分鐘 token 總量；OpenAI 的帳務類錯誤，錯誤類型可能標成 insufficient_quota。"
+        },
+        {
+          "type": "paragraph",
+          "text": "花費上限算的是金額，Anthropic 文件就把限制分成花費上限與速率限制兩類。上下文視窗是單次請求能放的 token 數：在 Anthropic，輸入超過上下文視窗會回 400，等多久都沒用。聊天產品的使用量上限又是另一回事：Claude 說明中心把訂閱方案分成使用量上限與受上下文視窗限制的長度上限，並說明付費訂閱不含 API。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "名詞",
+            "限制的是什麼",
+            "撞到時怎麼處理"
+          ],
+          "rows": [
+            [
+              "速率限制",
+              "短時間內的請求數、token 數",
+              "照 Retry-After 或退避後重試"
+            ],
+            [
+              "配額",
+              "依各家定義，例如每日總量",
+              "等重設或申請提高"
+            ],
+            [
+              "花費上限",
+              "一段期間內能花的金額",
+              "不重試，調高上限或等下個週期"
+            ],
+            [
+              "上下文視窗",
+              "單次請求能放的 token 數",
+              "縮短輸入或分段，等待無效"
+            ],
+            [
+              "聊天方案上限",
+              "訂閱方案一段時間內的用量",
+              "等重設或換方案，與 API 分開"
+            ]
+          ],
+          "caption": "五種上限對照；依 RFC 與 OpenAI、Anthropic、Google、Microsoft 官方文件整理，資料截至 2026 年 10 月，各家用詞不完全一致。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "代理迴圈與批次工作的節流設計"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "代理迴圈（Agent Loop）",
+              "kind": "life",
+              "slug": "ai-term-agent-loop"
+            },
+            {
+              "type": "text",
+              "text": "每一輪都是一次模型呼叫。Anthropic 的 Messages API 是無狀態的，每次都送完整對話歷史，輪數越多、輸入越長，輸入 token 容易比請求數先用完。多個子代理共用同一個組織或專案的額度，工具一起回傳、下一輪一起送出，就是短時間爆量。批次工作也類似：AWS 觀察到定時工作常在每分鐘開頭或午夜過後幾秒一起啟動，建議排程也加抖動。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "所有工作者共用一個限速器，因為額度算在專案上，不是各算各的。",
+            "限制同時進行的請求數，其餘排進佇列。",
+            "讀回應標頭的剩餘量，接近上限就先放慢，不等 429。",
+            "不急的大量工作改用批次 API，三家都有獨立於即時呼叫的限制。",
+            "OpenAI 以 max_tokens 與估計 token 數的較大者計入，max_tokens 宜接近預期長度；Anthropic 的 max_tokens 不計入 OTPM。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "重複的系統指示與長文件，可以用"
+            },
+            {
+              "type": "article",
+              "text": "提示詞快取（Prompt Caching）",
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
+            },
+            {
+              "type": "text",
+              "text": "：Anthropic 大多數模型從快取讀取的 token 不計入 ITPM。撞到限制時，代理任務應記成「等待中」，而不是失敗後從頭重跑。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "更多相關詞彙見"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "IETF RFC 6585：Additional HTTP Status Codes（第 4 節 429 Too Many Requests）",
+          "url": "https://www.rfc-editor.org/rfc/rfc6585",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "IETF RFC 9110：HTTP Semantics（第 10.2.3 節 Retry-After、第 15.6.4 節 503、第 9.2.2 節冪等方法）",
+          "url": "https://www.rfc-editor.org/rfc/rfc9110",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "AWS Architecture Blog：Exponential Backoff And Jitter（Marc Brooker，2015）",
+          "url": "https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Amazon Builders' Library：Timeouts, retries, and backoff with jitter",
+          "url": "https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI API 官方指南：Rate limits",
+          "url": "https://developers.openai.com/api/docs/guides/rate-limits",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI API 官方指南：Error codes（429 的各種代碼）",
+          "url": "https://developers.openai.com/api/docs/guides/error-codes",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Anthropic 官方文件：Rate limits（含花費上限與回應標頭）",
+          "url": "https://platform.claude.com/docs/en/api/rate-limits",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Anthropic 官方文件：Errors（429、529 與 SDK 重試）",
+          "url": "https://platform.claude.com/docs/en/api/errors",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Anthropic 官方文件：Working with the Messages API（無狀態、每次送完整歷史）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/working-with-messages",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Anthropic 官方文件：Context windows（輸入超過上下文視窗回 400）",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Gemini API 官方文件：Rate limits",
+          "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Gemini API 官方文件：頻率限制（繁體中文版，譯名依據）",
+          "url": "https://ai.google.dev/gemini-api/docs/rate-limits?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Gemini API 官方文件：API errors（429 的三種代碼）",
+          "url": "https://ai.google.dev/gemini-api/docs/api-errors",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Microsoft Learn：管理 Microsoft Foundry 模型中的 Azure OpenAI 配額（繁體中文版）",
+          "url": "https://learn.microsoft.com/zh-tw/azure/foundry/openai/how-to/quota",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Claude 說明中心：How do usage and length limits work?",
+          "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Claude 說明中心：付費訂閱為何不包含 Claude API 與 Console",
+          "url": "https://support.claude.com/en/articles/9876003-i-have-a-paid-claude-subscription-pro-max-team-or-enterprise-plans-why-do-i-have-to-pay-separately-to-use-the-claude-api-and-console",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

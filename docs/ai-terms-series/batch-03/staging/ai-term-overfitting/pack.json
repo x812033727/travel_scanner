@@ -1,0 +1,368 @@
+{
+  "slug": "ai-term-overfitting",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "過度擬合（過擬合，Overfitting）是什麼：考古題全對、新題卻答錯",
+      "description": "過度擬合是模型連訓練資料裡的雜訊與特例都學進去：訓練時幾乎全對，遇到沒看過的資料就失準。用示例誤差曲線說明訓練集、驗證集、測試集的分工，對照低度擬合，整理更多資料、正則化、dropout、提早停止等對策，並解讀深度網路能背下隨機標籤的研究，以及基準測試題目外洩造成的「看起來會」。",
+      "hero": {
+        "src": "/guides/ai-term-overfitting/hero.jpg",
+        "alt": "散布的圓點旁有兩條線：一條劇烈彎折、穿過每個點，另一條平順地沿著點的走勢",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "過度擬合（overfitting）是"
+            },
+            {
+              "type": "article",
+              "text": "機器學習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "的常見失敗：模型把訓練資料貼得太緊，連雜訊和特例都學進去，訓練時幾乎全對，遇到新資料就答錯，像背熟考古題、換一份考卷就失常。譯名不統一：國家教育研究院樂詞網多數領域與標註人工智慧的條目寫「過度擬合」，也收「過擬合」「過度配適」；Google 繁中教材多寫「過度配適」。這裡採「過度擬合」，相反情況（underfitting）依樂詞網寫作「低度擬合」。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "以下依序說明資料怎麼切、曲線怎麼看、對策在做什麼，再談網路背下隨機標籤的研究，以及基準測試的題目外洩。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "訓練集、驗證集、測試集各管一件事"
+        },
+        {
+          "type": "paragraph",
+          "text": "要知道模型有沒有過度擬合，得用它沒看過的資料來量。Google 機器學習速成課程建議把資料切成三份：訓練集用來調整參數；驗證集在開發中反覆用來比較設定；測試集留到最後確認。每筆資料只能屬於其中一份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Goodfellow 等人的《Deep Learning》第 5 章更嚴格：測試集不能參與任何選擇，連超參數也不行，驗證集要從訓練資料再切出來，常見約八成訓練、兩成驗證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 教材也提醒，測試集若混進和訓練集重複的例子，分數會好得不合理，切分後要先刪掉。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "示例：兩條誤差曲線從哪裡分岔"
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（數字為編寫，未實際訓練）：用旅館評論訓練分類器，判斷旅客會不會再訂。每訓練一輪，記下訓練集與驗證集的錯誤率："
+        },
+        {
+          "type": "list",
+          "items": [
+            "第 1 輪：訓練誤差 30%，驗證誤差 31%。",
+            "第 8 輪：訓練誤差 8%，驗證誤差 12%，是驗證誤差最低點。",
+            "第 20 輪：訓練誤差降到 1%，驗證誤差卻回升到 20%。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "前 8 輪兩條線一起往下，模型學到較普遍的規律；之後訓練誤差續降、驗證誤差上升，表示它開始記住訓練評論裡的個別用字和特例。Google 教材把這種先同步、後分岔的損失曲線視為過度擬合的強烈訊號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Goodfellow 等人的定義是：訓練誤差降不下來是低度擬合，訓練與測試誤差差距太大是過度擬合。只看第 20 輪的 1% 會以為模型最好，兩條線一起看，第 8 輪附近才較可靠。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-overfitting/diagram-1.svg",
+          "alt": "示例誤差曲線：訓練誤差一路下降，驗證誤差在第 8 輪最低後回升，兩線差距在第 20 輪最大",
+          "width": 1600,
+          "height": 900,
+          "caption": "示例數字為編寫的教學設定；驗證誤差開始回升、兩條線分岔的地方，就是過度擬合出現的位置。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "低度擬合、剛好、過度擬合怎麼分"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 教材把過度擬合的原因粗分為兩類：訓練資料不能代表真實資料，或模型太複雜。Goodfellow 等人用「容量」形容模型能配合多少種函數，容量太高就可能記住對新資料沒用的細節。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "狀態",
+            "訓練與驗證誤差",
+            "可以先試"
+          ],
+          "rows": [
+            [
+              "低度擬合",
+              "兩者都高，差距小",
+              "換特徵、多訓練幾輪、降低正則化強度"
+            ],
+            [
+              "剛好",
+              "兩者都低，差距小",
+              "保留這個版本，最後用測試集量一次"
+            ],
+            [
+              "過度擬合",
+              "訓練低、驗證高，差距大",
+              "補資料、加強正則化、提早停止"
+            ],
+            [
+              "題目外洩",
+              "公開題分數高，新題明顯較低",
+              "改用未公開的新題重測"
+            ]
+          ],
+          "caption": "概念對照，依 Google 機器學習速成課程、《Deep Learning》第 5 章與 GSM1k 論文整理；資料截至 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "常見對策：每一招在做什麼"
+        },
+        {
+          "type": "list",
+          "items": [
+            "更多資料：Goodfellow 等人認為這是提升泛化的最佳辦法，前提是資料能代表真實情況。",
+            "資料擴增：把現有樣本做不改變答案的變化，當成新樣本，例如把影像平移幾個像素。",
+            "正則化：訓練時同時懲罰模型的複雜度。L2 正則化（又稱權重衰減）把權重往 0 推，強度太高會變成低度擬合。",
+            "dropout（Google 繁中詞彙表譯「丟棄正則化」）：訓練時每次隨機暫時拿掉一部分單元，讓單元無法只依賴特定的其他單元。",
+            "提早停止：驗證誤差不再改善就停，取最低那一輪的參數；Google 教材說它快，但很少是最佳做法。",
+            "簡化模型：減少特徵或縮小模型，降低容量。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "dropout 出自 Srivastava 等人 2014 年的論文，目的是減少大型"
+            },
+            {
+              "type": "article",
+              "text": "神經網路",
+              "kind": "life",
+              "slug": "ai-term-neural-network"
+            },
+            {
+              "type": "text",
+              "text": "的過度擬合。這些招數都不保證有效，選哪幾招、強度多少，仍要看驗證誤差。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "網路背得下隨機答案：Zhang 等人 2017 年的實驗"
+        },
+        {
+          "type": "paragraph",
+          "text": "Zhang 等人發表於 ICLR 2017 的論文，把 CIFAR10（10 類小圖片）與 ImageNet 的標籤換成隨機亂標，再用標準的影像分類網路照常訓練：訓練誤差仍降到 0，測試表現只剩亂猜的程度；圖片換成純雜訊也一樣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "論文表 1 的對照：在 CIFAR10 上，同一個網路關掉資料擴增與權重衰減，用真實標籤時訓練準確率 100%、測試準確率 85.75%；用隨機標籤時訓練仍是 100%，測試只有 9.78%，接近 10 類亂猜的 10%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作者的結論是：這些網路的有效容量足以記住整份訓練資料，傳統複雜度指標分不出泛化好壞；權重衰減、dropout 等顯式正則化可能改善泛化，但既非必要，單靠它也不足以控制訓練與測試的落差。"
+        },
+        {
+          "type": "paragraph",
+          "text": "它沒說的事也要分清楚：沒說大型網路在真實資料上一定過度擬合，同一個網路在新圖片上仍有 85.75%；沒說正則化沒用，也沒解開網路為何能泛化。實驗只涵蓋影像分類，不能直接套到大型語言模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以「模型越大越容易過度擬合」不能當通則。Nakkiran 等人 2019 年在 CIFAR-10、CIFAR-100 影像分類與 IWSLT'14 德英翻譯等設定下，觀察到測試誤差隨模型變大先降、再升、又降，即雙下降（double descent），高峰在模型剛好能把訓練誤差壓到接近 0 之處；訓練標籤含雜訊時最明顯，部分設定裡樣本變多反而更差。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "題目外洩：基準測試上的「看起來會」"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Sainz 等人 2023 年的立場論文指出，最嚴重的資料汙染是大型語言模型訓練時看過某個"
+            },
+            {
+              "type": "article",
+              "text": "基準測試",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "的測試題，之後又用同一個基準評測，成績因而被高估。測試集量得出真本事，前提是題目對模型是新的；題目外洩後，分數量到的可能只是記憶。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "沒外洩也可能被慢慢「調」進去：Goodfellow 等人寫到，同一個測試集被研究社群用了多年，評估會偏樂觀。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugh Zhang 等人 2024 年請人工照 GSM8K（小學數學應用題基準）的風格與難度，另寫 1,205 題、發表時不公開的 GSM1k。在他們的設定下，模型準確率最多下降約 8%；模型生成 GSM8K 原題的機率越高，落差大致越大（Spearman r² = 0.36），顯示部分模型可能背過原題。但許多模型幾乎沒有落差，所有模型整體上仍能解新題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "外洩和過度擬合也不是一對一：有的模型落差大卻不像背過原題，作者推測是用了和基準很像的資料，或用基準分數挑選版本；少量外洩也不一定造成過度擬合。Recht 等人 2019 年為 CIFAR-10 與 ImageNet 重做測試集，準確率分別降 3% 到 15% 與 11% 到 14%，但他們認為主因是模型對稍難一點的新圖片泛化不足，不是測試集被反覆使用。新題掉分是警訊，原因要另外查。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "自己訓練、微調或讀分數時怎麼用"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在既有模型上"
+            },
+            {
+              "type": "article",
+              "text": "微調",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "也是用自己的資料繼續訓練，同樣要先切出驗證集與測試集、刪掉重複的例子，驗證誤差回升就停下比較。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "讀別人公布的分數時，先問題目公開過沒有、有沒有在新題上重測。答案不能證明模型沒問題，只能幫你判斷分數要打幾折。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "測試集只能看，不能拿來調",
+          "text": "看了測試分數就回頭改設定，測試集就成了另一份驗證集，分數會偏樂觀。調整用驗證集，測試集留到最後量一次，用舊了就換新資料。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想查其他名詞，可以從"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "找起。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Machine Learning Crash Course：Overfitting（過度擬合、低度擬合、泛化曲線）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/overfitting",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course：Dividing the original dataset（訓練、驗證、測試集與重複樣本）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course：Model complexity（模型複雜度與正則化）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/model-complexity",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course：L2 regularization（正則化率與提早停止）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/regularization",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Glossary（overfitting、underfitting、early stopping、dropout regularization 條目）",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 機器學習速成課程繁體中文版：過度配適（官方譯名對照）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/overfitting?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "國家教育研究院樂詞網：overfitting 檢索結果（過度擬合、過擬合、過度配適）",
+          "url": "https://terms.naer.edu.tw/search/?&query_term=overfitting&query_field=title&query_op=and",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Goodfellow、Bengio、Courville：Deep Learning 第 5 章 Machine Learning Basics（作者官網全文）",
+          "url": "https://www.deeplearningbook.org/contents/ml.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Goodfellow、Bengio、Courville：Deep Learning 第 7 章 Regularization for Deep Learning（作者官網全文）",
+          "url": "https://www.deeplearningbook.org/contents/regularization.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Srivastava 等人 2014：Dropout: A Simple Way to Prevent Neural Networks from Overfitting（JMLR 15）",
+          "url": "https://jmlr.org/papers/v15/srivastava14a.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Zhang 等人 2017：Understanding deep learning requires rethinking generalization（ICLR 2017，arXiv:1611.03530）",
+          "url": "https://arxiv.org/abs/1611.03530",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Nakkiran 等人 2019：Deep Double Descent: Where Bigger Models and More Data Hurt（arXiv:1912.02292）",
+          "url": "https://arxiv.org/abs/1912.02292",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Sainz 等人 2023：NLP Evaluation in trouble: On the Need to Measure LLM Data Contamination for each Benchmark（arXiv:2310.18018）",
+          "url": "https://arxiv.org/abs/2310.18018",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Zhang 等人 2024：A Careful Examination of Large Language Model Performance on Grade School Arithmetic（GSM1k，arXiv:2405.00332）",
+          "url": "https://arxiv.org/abs/2405.00332",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Recht 等人 2019：Do ImageNet Classifiers Generalize to ImageNet?（arXiv:1902.10811）",
+          "url": "https://arxiv.org/abs/1902.10811",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

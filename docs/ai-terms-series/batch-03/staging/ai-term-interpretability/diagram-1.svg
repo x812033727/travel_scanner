@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">可解釋性的三條路 / Three routes to interpretability</title>
+<desc id="desc">三欄並列可解釋性的三類方法。左欄是天生可讀的模型，以一棵小決策樹表示：先問天候差不差，是則高風險，否則再看時段；模型本身就是解釋，但規則一多就讀不完。中欄是事後歸因，以航班延誤的教學示例表示 SHAP 式拆解：平均預測 0.20，天候加 0.25、晚間加 0.12、前段航班延誤加 0.08、週末減 0.03，加總等於輸出 0.62；它說明模型怎麼分配分數，不是現實的因果。右欄是機制可解釋性，以三層節點表示網路內部，標出一個特徵與連到它的電路；目前只找到一部分特徵，結論限於特定模型。三欄下方共同接到一條提醒：三類都要再問解釋是否忠實，包括解釋給誰、用什麼方法、忠實度驗證過沒有。數字是教學示例，未實測。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#B8442D"/></marker></defs>
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">可解釋性的三條路</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">Three routes to interpretability（中欄數字為教學示例，非實測）</text>
+
+<!-- column 1: inherently interpretable -->
+<rect x="60" y="120" width="460" height="520" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="290" y="172" font-size="26" font-weight="700" fill="#0D6B68" text-anchor="middle">天生可讀的模型</text>
+<text x="290" y="206" font-size="17" fill="#5C6B6B" text-anchor="middle">Inherently interpretable</text>
+<line x1="290" y1="300" x2="175" y2="360" stroke="#0D6B68" stroke-width="3"/>
+<line x1="290" y1="300" x2="405" y2="360" stroke="#0D6B68" stroke-width="3"/>
+<rect x="205" y="248" width="170" height="52" rx="12" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+<text x="290" y="281" font-size="20" fill="#102A2B" text-anchor="middle">天候差？</text>
+<rect x="90" y="360" width="170" height="52" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+<text x="175" y="393" font-size="18" fill="#102A2B" text-anchor="middle">是：高風險</text>
+<rect x="320" y="360" width="170" height="52" rx="12" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+<text x="405" y="393" font-size="18" fill="#102A2B" text-anchor="middle">否：看時段</text>
+<text x="290" y="490" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">模型本身就是解釋</text>
+<text x="290" y="530" font-size="18" fill="#5C6B6B" text-anchor="middle">例如短規則清單、淺決策樹</text>
+<text x="290" y="566" font-size="18" fill="#5C6B6B" text-anchor="middle">規則一多，人一樣讀不完</text>
+
+<!-- column 2: post-hoc attribution -->
+<rect x="570" y="120" width="460" height="520" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="800" y="172" font-size="26" font-weight="700" fill="#2F6F9F" text-anchor="middle">事後歸因</text>
+<text x="800" y="206" font-size="17" fill="#5C6B6B" text-anchor="middle">Post-hoc attribution（SHAP 式示例）</text>
+<line x1="804" y1="232" x2="804" y2="478" stroke="#5C6B6B" stroke-width="2"/>
+<text x="596" y="258" font-size="17" fill="#102A2B">平均預測 0.20</text>
+<rect x="804" y="238" width="56" height="26" fill="#C9D6DE"/>
+<text x="596" y="302" font-size="17" fill="#102A2B">天候 +0.25</text>
+<rect x="860" y="282" width="70" height="26" fill="#2F6F9F"/>
+<text x="596" y="346" font-size="17" fill="#102A2B">晚間 +0.12</text>
+<rect x="930" y="326" width="34" height="26" fill="#2F6F9F"/>
+<text x="596" y="390" font-size="17" fill="#102A2B">前段延誤 +0.08</text>
+<rect x="964" y="370" width="22" height="26" fill="#2F6F9F"/>
+<text x="596" y="434" font-size="17" fill="#102A2B">週末 −0.03</text>
+<rect x="978" y="414" width="8" height="26" fill="#D97A2B"/>
+<text x="596" y="474" font-size="17" font-weight="700" fill="#102A2B">輸出 0.62</text>
+<rect x="804" y="454" width="174" height="26" fill="#0D6B68"/>
+<text x="800" y="530" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">各項加總等於輸出</text>
+<text x="800" y="566" font-size="18" fill="#5C6B6B" text-anchor="middle">說明模型怎麼分分數，不是因果</text>
+
+<!-- column 3: mechanistic -->
+<rect x="1080" y="120" width="460" height="520" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="1310" y="172" font-size="26" font-weight="700" fill="#B8442D" text-anchor="middle">機制可解釋性</text>
+<text x="1310" y="206" font-size="17" fill="#5C6B6B" text-anchor="middle">Mechanistic interpretability</text>
+<g stroke="#C9C2B6" stroke-width="2">
+<line x1="1170" y1="262" x2="1310" y2="262"/><line x1="1170" y1="262" x2="1310" y2="402"/>
+<line x1="1170" y1="332" x2="1310" y2="262"/><line x1="1170" y1="332" x2="1310" y2="402"/>
+<line x1="1170" y1="402" x2="1310" y2="262"/>
+<line x1="1310" y1="262" x2="1450" y2="262"/><line x1="1310" y1="262" x2="1450" y2="332"/>
+<line x1="1310" y1="402" x2="1450" y2="332"/><line x1="1310" y1="402" x2="1450" y2="402"/>
+<line x1="1310" y1="332" x2="1450" y2="402"/>
+</g>
+<g stroke="#D97A2B" stroke-width="6">
+<line x1="1170" y1="262" x2="1310" y2="332"/>
+<line x1="1170" y1="402" x2="1310" y2="332"/>
+<line x1="1310" y1="332" x2="1450" y2="262"/>
+</g>
+<g fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3">
+<circle cx="1170" cy="262" r="18"/><circle cx="1170" cy="332" r="18"/><circle cx="1170" cy="402" r="18"/>
+<circle cx="1310" cy="262" r="18"/><circle cx="1310" cy="402" r="18"/>
+<circle cx="1450" cy="262" r="18"/><circle cx="1450" cy="332" r="18"/><circle cx="1450" cy="402" r="18"/>
+</g>
+<circle cx="1310" cy="332" r="22" fill="#D97A2B" stroke="#B8442D" stroke-width="3"/>
+<text x="1310" y="460" font-size="18" fill="#102A2B" text-anchor="middle">橘色節點：特徵　粗線：電路</text>
+<text x="1310" y="530" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">找出內部特徵與電路</text>
+<text x="1310" y="566" font-size="18" fill="#5C6B6B" text-anchor="middle">只找到一部分，限特定模型</text>
+
+<!-- shared faithfulness check -->
+<path d="M 290 640 L 290 676" fill="none" stroke="#B8442D" stroke-width="4" marker-end="url(#arrow)"/>
+<path d="M 800 640 L 800 676" fill="none" stroke="#B8442D" stroke-width="4" marker-end="url(#arrow)"/>
+<path d="M 1310 640 L 1310 676" fill="none" stroke="#B8442D" stroke-width="4" marker-end="url(#arrow)"/>
+<rect x="60" y="682" width="1480" height="136" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+<text x="800" y="730" font-size="26" font-weight="700" fill="#B8442D" text-anchor="middle">三類都要再問：這個解釋忠實嗎？</text>
+<text x="330" y="784" font-size="21" fill="#102A2B" text-anchor="middle">解釋給誰</text>
+<text x="800" y="784" font-size="21" fill="#102A2B" text-anchor="middle">用什麼方法</text>
+<text x="1270" y="784" font-size="21" fill="#102A2B" text-anchor="middle">忠實度驗證過嗎</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

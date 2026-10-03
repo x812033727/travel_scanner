@@ -1,0 +1,320 @@
+{
+  "slug": "ai-term-vision-language-model",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "視覺語言模型（VLM）是什麼：讓 AI 讀圖片、再用文字回答",
+      "description": "視覺語言模型（VLM）能同時接收圖片與文字，再用文字回答。內容拆解視覺編碼器、連接層與語言模型三段結構，說明 CLIP、Flamingo、LLaVA 三篇論文各補上哪一塊，並和多模態 AI、文字生圖分清楚；也整理它常犯的錯：數錯數量、搞混位置、說出圖裡沒有的東西，附上讀收據時逐行核對的步驟。",
+      "hero": {
+        "src": "/guides/ai-term-vision-language-model/hero.jpg",
+        "alt": "一張畫著山與太陽的照片被切成小方格，旁邊有放大鏡，彩色小方塊沿著虛線流向一個對話框",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "視覺語言模型（Vision-Language Model，VLM）在這裡指能同時接收圖片與文字、再輸出文字的模型：給它一張照片和一個問題，它用文字回答。名稱用法不一：Flamingo 論文自稱 Visual Language Model，LLaVA 論文稱大型多模態模型，POPE 論文寫成 LVLM，也有綜述把不產生文字的 CLIP 算進來。以下採 Hugging Face 文件「能接收圖片的語言模型」這種窄義；中文照英文字面寫成「視覺語言模型」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下面依序談三段結構、三篇里程碑論文、相近名詞與常見錯誤，最後用讀收據的示例示範怎麼核對。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三段結構：視覺編碼器、連接層、語言模型"
+        },
+        {
+          "type": "paragraph",
+          "text": "常見的視覺語言模型可拆成三段。視覺編碼器把圖片轉成一串向量，也就是影像特徵；常見做法來自 ViT 論文，把圖片切成固定大小的小方塊，像文字 token 一樣交給 Transformer。連接層把影像特徵換成語言模型讀得懂的形式；語言模型再把這些影像 token 和你的問題一起讀，產生回答。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "語言模型這一段多半也是 Transformer，注意力怎麼連起前後文，見"
+            },
+            {
+              "type": "article",
+              "text": "Transformer 架構",
+              "kind": "life",
+              "slug": "ai-term-transformer"
+            },
+            {
+              "type": "text",
+              "text": "；不同的只是上下文裡多了來自圖片的 token。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "關鍵在交接點：語言模型只讀得到編碼器交出的特徵，讀不到像素。編碼器沒保留的小字、朝向或前後位置，語言模型可能依常見說法補上一個聽起來合理的答案。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-vision-language-model/diagram-1.svg",
+          "alt": "圖片經視覺編碼器、連接層進入語言模型，和文字問題一起產生文字回答；下方標出 CLIP、Flamingo、LLaVA 各自處理哪一段",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左往右看資料怎麼流動，下方三格是三篇論文各自改進的位置。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "CLIP、Flamingo、LLaVA 各補上哪一塊"
+        },
+        {
+          "type": "paragraph",
+          "text": "CLIP（Radford 等人，2021）訓練的是第一段。它用網路上的 4 億組圖文配對同時訓練影像與文字編碼器，目標是在一批圖文中認出真正成對的組合，而不是逐字預測說明；學完後把類別名稱寫成文字，就能零樣本分類。CLIP 本身不產生文字，只算圖文相符的程度；它的影像編碼器後來成了許多視覺語言模型的第一段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Flamingo（Alayrac 等人，2022）處理第二段：凍結訓練好的視覺模型與語言模型，在中間加新元件。Perceiver Resampler 把長短不一的影像特徵壓成固定 64 個視覺 token；語言模型各層之間插入新的門控交叉注意力層，門控初始值為 0，訓練之初輸出和原本的語言模型相同。它也能讀圖文交錯的輸入，提示詞裡放幾組圖片與答案當示範，就能做新任務。"
+        },
+        {
+          "type": "paragraph",
+          "text": "LLaVA（Liu 等人，2023）的連接層只有一層線性投影，主要貢獻在資料：把 COCO 圖片的說明文字與物件定界框交給只能讀文字的大型語言模型，生成 15.8 萬筆圖文指令資料，做視覺指令調整。訓練分兩階段，先只訓練投影層，讓影像特徵對上詞嵌入，再連同語言模型一起微調，視覺編碼器始終凍結。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "和多模態 AI、文字生圖怎麼分"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模態 AI",
+              "kind": "life",
+              "slug": "ai-term-multimodal-ai"
+            },
+            {
+              "type": "text",
+              "text": "範圍較廣，處理一種以上資料形式的系統都算，包括語音與影片。Google 機器學習詞彙表舉的多模態模型例子，是輸入圖片與說明、輸出相符分數，和 CLIP 同一型；它是多模態模型，卻不是窄義的視覺語言模型。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生圖",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            },
+            {
+              "type": "text",
+              "text": "方向相反：輸入文字、輸出圖片。同一個產品可能兩種都有，但能根據照片回答，不表示能照描述畫圖；分不清時先看輸出。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "名詞",
+            "輸入 → 輸出",
+            "典型的一句話"
+          ],
+          "rows": [
+            [
+              "視覺語言模型（窄義）",
+              "圖片加文字 → 文字",
+              "「這張收據的總額是多少？」"
+            ],
+            [
+              "CLIP 這類圖文比對模型",
+              "圖片加文字 → 相符分數",
+              "「比較像貓還是狗？」"
+            ],
+            [
+              "多模態 AI",
+              "兩種以上形式，方向不限",
+              "語音對話、影片摘要都算"
+            ],
+            [
+              "文字生圖",
+              "文字 → 圖片",
+              "「畫一張夜市插圖」"
+            ]
+          ],
+          "caption": "依輸入與輸出的方向區分；資料截至 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "最常見的三種錯：數量、位置、看見不存在的東西"
+        },
+        {
+          "type": "paragraph",
+          "text": "數物體數量是 CLIP 論文自己列出的弱點。Tong 等人 2024 年找出 CLIP 編碼後幾乎一樣、純視覺模型卻判斷明顯不同的圖片對，出了 150 對、300 個簡單問題，涵蓋方向、數量、位置等九類。人類平均答對 95.7%，多數受測模型低於隨機猜測的 25%；讓 CLIP 吃力的類型，也多半讓以它為第一段的模型吃力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "空間關係也弱。Kamath 等人 2023 年拍下同一個杯子在桌子上、下、左、右的照片，讓模型從只差一個介系詞的說明裡挑出正確的。受測的 18 個圖文模型全部遠落後人類，不少只比隨機猜測高幾個百分點。在一個大型圖文資料集的說明裡，「left of」這類空間介系詞只占約 0.2%；而「左邊」以誰為準，本來就常說不清。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三種是物件幻覺：說出圖中沒有的東西。Li 等人 2023 年的 POPE 研究指出，舊的 CHAIR 指標會隨提示詞變動，兩句相近的指令量出的數值甚至翻倍；他們改問是非題「圖中有沒有某物」，不存在的物體分三種挑法：隨機、資料集最常見的、最常和圖中物體同時出現的。設定是從 MSCOCO 驗證集取 500 張標註超過 3 個物體的圖，每張問 6 題，有無各半。結果有三個模型答「有」的比例接近 99%，而常和圖中物體同時出現的東西最容易被說成有。"
+        },
+        {
+          "type": "paragraph",
+          "text": "論文作者也記錄過這類錯：Flamingo 有時給出只看文字合理、對照圖片卻錯的答案；冰箱只有優格和草莓，LLaVA 卻說有草莓口味優格。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "物件幻覺是"
+            },
+            {
+              "type": "article",
+              "text": "AI 幻覺",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            },
+            {
+              "type": "text",
+              "text": "的一種，好處是證據就在手上：答案裡的物體、數字與位置，都能回到圖片核對。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "核對時，少問「有沒有」",
+          "text": "在 POPE 的設定裡，有些模型幾乎一律答「有」。改請它逐項列出看到的東西與位置，看不清就寫看不清，再由你對圖。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "示例：讀一張收據時怎麼核對"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是示例，未實測任何產品，內容皆為虛構。假設你拍下一張小吃店收據，請它整理成記帳明細；收據有五個品項、一行外帶袋費用、總額，以及一行小字日期。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "先轉錄、不摘要：請它由上到下列出每一行的品名、數量和金額，看不清就寫「看不清」。",
+            "自己加總：用它列的金額算一次，和收據印的總額比；對不上，就是有行漏掉、多出或讀錯。",
+            "換問法查多出的項目：不問「有沒有外帶袋費用」，改問「哪些行不是餐點」，再對照片。",
+            "小字另拍：日期放大再拍一張單獨問，前後比對。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "預期結果是每行都對得上照片，加總等於總額。常見失敗有三種：兩行同名品項合成一行，是數量錯；「8」讀成「6」，是細節沒保留；多出收據上沒有的「飲料」，是物件幻覺。總額不符時先在照片上找出是哪一行，不要請它「再看一次」就接受新數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀地圖也一樣：問「車站在公園哪一邊」前，先講明以地圖上方為北，還是以拍照者面對的方向為準；先請它列出看得到的地名，對過再問路線，最後用地圖服務或現場標示核對。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "適合交給它的事，與不要只靠它的事"
+        },
+        {
+          "type": "paragraph",
+          "text": "適合交給它的是之後有人核對的初稿：描述照片、轉出清楚的印刷字、把表格整理成條列。不要只靠它的，是錯一次代價很高的判斷：金額、距離與方向、藥品標示或醫療影像；LLaVA 論文談風險時也點名了醫療。"
+        },
+        {
+          "type": "paragraph",
+          "text": "研究分數只屬於各自的設定。上面的數字出自 2021 到 2024 年的論文，不代表今天的產品仍有同樣的錯，也不代表已改善；資料截至 2026 年 10 月，最可靠的仍是用自己的圖片抽查。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "其他影像與語音相關的概念，可從"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "找起。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Radford 等：Learning Transferable Visual Models From Natural Language Supervision（CLIP，2021）",
+          "url": "https://arxiv.org/abs/2103.00020",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Alayrac 等：Flamingo: a Visual Language Model for Few-Shot Learning（NeurIPS 2022）",
+          "url": "https://arxiv.org/abs/2204.14198",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Liu 等：Visual Instruction Tuning（LLaVA，NeurIPS 2023）",
+          "url": "https://arxiv.org/abs/2304.08485",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Li 等：Evaluating Object Hallucination in Large Vision-Language Models（POPE，EMNLP 2023）",
+          "url": "https://arxiv.org/abs/2305.10355",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Dosovitskiy 等：An Image is Worth 16x16 Words（Vision Transformer，ICLR 2021）",
+          "url": "https://arxiv.org/abs/2010.11929",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Tong 等：Eyes Wide Shut? Exploring the Visual Shortcomings of Multimodal LLMs（MMVP，2024）",
+          "url": "https://arxiv.org/abs/2401.06209",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Kamath、Hessel、Chang：What's \"up\" with vision-language models?（空間關係，EMNLP 2023）",
+          "url": "https://arxiv.org/abs/2310.19785",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Rohrbach 等：Object Hallucination in Image Captioning（CHAIR 指標，EMNLP 2018）",
+          "url": "https://arxiv.org/abs/1809.02156",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Zhang 等：Vision-Language Models for Vision Tasks: A Survey（把 CLIP 類模型算進 VLM 的廣義用法）",
+          "url": "https://arxiv.org/abs/2304.00685",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hugging Face Transformers 文件：Image-text-to-text（VLM 的窄義用法）",
+          "url": "https://huggingface.co/docs/transformers/tasks/image_text_to_text",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google for Developers：機器學習詞彙表（繁體中文，多模態模型等譯名）",
+          "url": "https://developers.google.com/machine-learning/glossary?hl=zh-TW",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

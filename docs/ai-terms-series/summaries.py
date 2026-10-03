@@ -24,8 +24,8 @@ CONTENT = Path("apps/api/app/guides/content")
 STAGING = Path("docs/ai-terms-series/batch-03/staging")
 
 SELF_REFERENCE = re.compile(r"本文|這篇|本篇")
-NARRATION = re.compile(r"查證|查不到|截至查證")
-MAINLAND = re.compile(r"信息|默認|優化|視頻|質量|用戶|軟件|網絡|數據(?!庫)|激活|算法|程序(?!性)")
+NARRATION = re.compile(r"查證日|查證時|查證當天|查證過程|我們查不到")
+MAINLAND = re.compile(r"信息|默認|優化|視頻|質量|用戶|軟件|網絡|數據(?!庫)|激活|(?<!演)算法|程序(?!性)")
 
 
 def flatten(paths: list[str]) -> list[dict]:
@@ -40,13 +40,28 @@ def flatten(paths: list[str]) -> list[dict]:
 
 
 def article_text(slug: str) -> str:
+    """The page's words as a reader meets them: a rich paragraph's inlines joined, so a
+    sentence with a link in it reads as one sentence; sources left out."""
     path = CONTENT / f"{slug}.json"
     if not path.is_file():
         path = STAGING / slug / "pack.json"
     document = json.loads(path.read_text(encoding="utf-8"))["locales"]["zh-TW"]
-    return json.dumps(
-        {key: value for key, value in document.items() if key != "sources"}, ensure_ascii=False
-    )
+    parts = [document.get("title", ""), document.get("description", "")]
+    for block in document.get("blocks", []):
+        kind = block.get("type")
+        if kind == "rich_paragraph":
+            parts.append("".join(node.get("text", "") for node in block.get("inlines", [])))
+        elif kind == "table":
+            parts.extend(block.get("header", []))
+            parts.extend(cell for row in block.get("rows", []) for cell in row)
+            parts.append(block.get("caption", ""))
+        elif kind == "list":
+            parts.extend(block.get("items", []))
+        elif kind == "faq":
+            parts.extend(item.get(k, "") for item in block.get("items", []) for k in ("question", "answer"))
+        else:
+            parts.extend(str(block.get(k, "")) for k in ("text", "title", "caption", "alt", "description"))
+    return "\n".join(parts)
 
 
 def squash(text: str) -> str:
@@ -84,8 +99,10 @@ def check(rows: list[dict]) -> int:
                 print(f"{slug}: does not end with 。: 「{item}」")
                 problems += 1
         for quote in row.get("support", []):
-            # A quote may join two body sentences with 「／」 or 「…」; each part must occur.
-            for part in re.split(r"[／/…]+|\.\.\.", quote):
+            # A quote may join body sentences with 「／」, 「｜」 or 「…」, and may label a
+            # table cell or callout title it comes from; each quoted part must occur.
+            for part in re.split(r"[／/｜|…→]+|\.\.\.", quote):
+                part = re.sub(r"^(表格|callout|標題|小標)[^：:]*[：:]", "", part.strip())
                 part = squash(part)
                 if len(part) >= 8 and part not in body:
                     print(f"{slug}: support not found in the article: 「{part[:60]}」")
