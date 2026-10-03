@@ -2118,6 +2118,19 @@
     "pending": "This replacement is waiting for your final-cut review below. Its previous publishing and language approvals no longer authorize an upload."
   },
   "videoReviews": {
+    "duration": {
+      "target": "Story target {target} s · measured acceptance {min}–{max} s",
+      "opedBudget": "OP/ED maximum budget {budget} s; produced media is measured separately.",
+      "audio": "Measured story audio {seconds} s",
+      "title": "Measured episode duration",
+      "body": "Measured story {seconds} s · target {target} s · accepted {min}–{max} s",
+      "oped": "Measured OP/ED {seconds} s · maximum budget {budget} s",
+      "missing": "Current measured duration proof is unavailable. Target minutes do not establish the finished runtime.",
+      "current": "Verified against the current production specification",
+      "stale": "This report does not verify the current production specification. Recheck the current media before approving.",
+      "budget": "Broadcast slot {slot} s · slot reserve {reserve} s (no rendered padding)",
+      "total": "Measured final {seconds} s"
+    },
     "categories": {
       "ai-terms": "AI terms explained",
       "ai-news": "AI and tech news",
@@ -2338,7 +2351,16 @@
       "hook": "Hook",
       "conflict": "Conflict",
       "turn": "Turn",
-      "cliffhanger": "Cliffhanger"
+      "cliffhanger": "Cliffhanger",
+      "highTension": "High-tension event {number}",
+      "consequences": "Lasting consequences",
+      "closure": "Resolution"
+    },
+    "scriptAction": {
+      "title": "Directed action",
+      "description": "Visible action",
+      "motion": "Movement",
+      "duration": "Duration: {seconds} s"
     },
     "scriptProblems": "What the checker flagged",
     "scriptMinutes": "About {minutes} minutes",
@@ -2365,6 +2387,7 @@
     "qaAllPassed": "All {count} passed",
     "qaWarning": "Note:",
     "qaItems": {
+      "duration_policy": "Episode duration",
       "assemble": "Assembly",
       "render": "Rendering",
       "narration": "Narration",
@@ -2618,6 +2641,21 @@
     "dramaKeyLink": "Add keys in the AI settings"
   },
   "videoSeries": {
+    "longAnime": {
+      "startPlanning": "Start planning",
+      "planningHelp": "Start planning to request a setting and series outline. Approve those documents, then resume episode production.",
+      "profile": "Episode format",
+      "ordinary": "Standard drama (1–8 minutes)",
+      "option": "Long anime (22-minute story)",
+      "badge": "Long anime",
+      "help": "Created paused with ensemble leads and 2D anime art. Review and approve the setting and series outline before resuming production.",
+      "body": "Story target {minutes} min; measured acceptance {min}–{max} min",
+      "budgets": "OP/ED budget up to {oped} min · broadcast slot {slot} min · slot reserve {reserve} min",
+      "budgetHelp": "OP/ED is a maximum budget, not produced media. The broadcast reserve is never added as padding.",
+      "manual": "Documents and scripts require review; automatic approval and compilations are disabled.",
+      "reviewRequired": "Approve the setting and series outline before resuming production.",
+      "create": "Create paused anime series"
+    },
     "listTitle": "Series",
     "empty": "No series yet",
     "emptyDetail": "Start one below: the worker plans its setting book on its next round, and you approve it here.",

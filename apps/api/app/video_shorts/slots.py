@@ -273,6 +273,34 @@ async def release(session: AsyncSession, slug: str, now: datetime | None = None)
     return len(held)
 
 
+async def unplan(session: AsyncSession, topic_slug: str, now: datetime | None = None) -> int:
+    """Give the plan back the slots still ahead that it gave a topic now dropped and that no
+    Short holds: open again, with no topic, line or series, so the next weekly plan can fill
+    them and the week's line quotas no longer count them. A slot that is past, or that holds
+    a Short, stays as it is. The caller commits."""
+    moment = now or datetime.now(UTC)
+    with session.no_autoflush:
+        planned = list(
+            await session.scalars(
+                select(VideoShortsSlot)
+                .where(
+                    VideoShortsSlot.topic_slug == topic_slug,
+                    VideoShortsSlot.status == "planned",
+                    VideoShortsSlot.project_slug.is_(None),
+                    VideoShortsSlot.starts_at > moment,
+                )
+                .with_for_update()
+            )
+        )
+    for slot in planned:
+        slot.status = "open"
+        slot.topic_slug = None
+        slot.line = None
+        slot.series = None
+        slot.updated_at = moment
+    return len(planned)
+
+
 async def lock_due_slots(
     session: AsyncSession, now: datetime | None = None
 ) -> list[rules.SlotChange]:

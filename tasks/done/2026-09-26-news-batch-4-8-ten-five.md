@@ -93,7 +93,7 @@ Synology, Japan FSA, Taiwan's central bank, Korea FSC). Rules: `docs/news-2026-b
   `build_assets.py`, `update_index.py`, HANDOVER and the research folders but is parked until the
   weekly reset. Both batches only append their own `# 4.4` / `# 4.8` sections; whoever merges
   second rebases.
-- Work directory outside the repo: `C:\Users\x8120\mokaair-work\news-batch-4-8\` (STATE.md,
+- Work directory outside the repo: `<home>\mokaair-work\news-batch-4-8\` (STATE.md,
   ASSIGNMENTS.md, the shared agent prompts, raw fetches).
 - The WordPress slug is `tech-news-wordpress-712-20260922` (event = the 9/22 release; CISA's KEV
   listing is the follow-up), not the discovery agent's `...-kev-20260925`.

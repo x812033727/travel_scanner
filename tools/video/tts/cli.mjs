@@ -6,6 +6,7 @@ import readline from "node:readline";
 import { parseArgs } from "node:util";
 
 import { NARRATOR } from "../core/drama.mjs";
+import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
@@ -232,7 +233,7 @@ async function tts(args, ctx) {
   const { EXIT } = ctx;
   const values = parseArgs({
     args,
-    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, "dry-run": { type: "boolean" }, redo: { type: "string" }, force: { type: "boolean" } },
+    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, "dry-run": { type: "boolean" }, "refresh-evidence": { type: "boolean" }, redo: { type: "string" }, force: { type: "boolean" } },
     strict: true,
   }).values;
   if (!values.slug && !values.file) throw new UsageError("tts needs --slug (or --file for an example outside docs/videos)");
@@ -271,6 +272,7 @@ async function tts(args, ctx) {
     return lines ? lines.reduce((sum, line) => sum + billableForRequest(lineBody(request, line)), 0) : billableForRequest(request.body);
   };
   const pending = requests.filter((request) => !current(request));
+  if (values["refresh-evidence"] && (pending.length || values.redo || values.force)) throw new UsageError("audio evidence refresh needs every original take cached and current; it never synthesizes or retakes audio");
   const pendingEstimate = pending.reduce((sum, request) => sum + estimateFor(request), 0);
   // Each provider has its own month, so what is still to synthesize is counted per provider.
   const pendingByProvider = new Map();
@@ -315,8 +317,7 @@ async function tts(args, ctx) {
     return EXIT.ok;
   }
 
-  const credentials = requireCredentials(ctx);
-  const options = clientOptions(ctx, credentials);
+  const options = pending.length ? clientOptions(ctx, requireCredentials(ctx)) : null;
   if (pending.length) {
     const status = await speechStatus(options);
     const problems = voiceProblems(doc, status, pendingVoices);
@@ -381,7 +382,7 @@ async function tts(args, ctx) {
   // A clip trimmed to nothing still needs one sample to sit on the grid.
   for (const [id, clip] of clips) if (clip.length === 0) clips.set(id, new Int16Array(1));
   atomicWrite(path.join(workdir, ARTIFACTS.narration), encodeWav(buildNarration(timeline, clips)));
-  atomicWrite(path.join(workdir, ARTIFACTS.timeline), `${JSON.stringify(timeline, null, 2)}\n`);
+  atomicWrite(path.join(workdir, ARTIFACTS.timeline), `${JSON.stringify(bindAudioEvidence(timeline, workdir), null, 2)}\n`);
   recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name, voices: voices.map((entry) => entry.voice) }, ctx.now());
 
   ctx.stdout.write(`${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; narration ${formatClock(frameToSeconds(timeline.total_frames))}\n`);

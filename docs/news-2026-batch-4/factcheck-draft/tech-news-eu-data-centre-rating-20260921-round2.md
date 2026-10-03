@@ -7,7 +7,7 @@
 - 查核日：2026-09-23（台北）
 - 依據：`FACTCHECK-47.md`、`agents/tech/SECOND-ROUND.md`、`agents/tech/FACTCHECK.md`、`DELTA-4-7.md`、
   第一輪報告 `tech-news-eu-data-centre-rating-20260921-round1.md`、協調者本輪的四點裁定
-- 工具：`C:\Users\x8120\mokaair-work\news47\_tools\tech-news-eu-data-centre-rating-20260921-r2\`
+- 工具：`<home>\mokaair-work\news47\_tools\tech-news-eu-data-centre-rating-20260921-r2\`
   （`refetch.sh`、`totext.py`、`verify_quotes.py`、`checks.py`、`edits.py`、`add_second_round.py`、
   `check_r2.log`、`lint_r2.log`）；重抓的原件放 `_r2raw\tech-news-eu-data-centre-rating-20260921\`
 

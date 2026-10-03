@@ -21,7 +21,7 @@ from typing import Any, cast
 from uuid import UUID
 from zoneinfo import ZoneInfo
 
-from sqlalchemy import func, select
+from sqlalchemy import exists, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import AdminAuditLog, VideoProject, VideoReview
@@ -214,10 +214,22 @@ def _future_topic_slots(slots: Sequence[VideoShortsSlot], now: datetime) -> set[
 
 
 async def _started_this_month(session: AsyncSession, now: datetime) -> int:
+    """The topics started this month, against ``max_per_month``. A topic given up counts only
+    when its Short was made after all: its video reached the owner (it has a review, which
+    ``_drop_empty_video`` also reads as made) or YouTube. One given up before that made no
+    Short and leaves its place in the month to another."""
+    reviewed = exists().where(VideoReview.project_id == VideoProject.id)
     return int(
         await session.scalar(
-            select(func.count(VideoShortsTopic.id)).where(
-                VideoShortsTopic.started_at >= month_start(now)
+            select(func.count(VideoShortsTopic.id))
+            .outerjoin(VideoProject, VideoProject.slug == VideoShortsTopic.project_slug)
+            .where(
+                VideoShortsTopic.started_at >= month_start(now),
+                or_(
+                    VideoShortsTopic.status != "dropped",
+                    VideoProject.youtube_video_id.is_not(None),
+                    reviewed,
+                ),
             )
         )
         or 0
@@ -538,8 +550,11 @@ async def finish_topic(
     if payload.note is not None:
         topic.note = payload.note or None
     topic.updated_at = moment
-    if final == "dropped" and topic.project_slug:
-        await _drop_empty_video(session, topic.project_slug, topic.note, moment)
+    if final == "dropped":
+        if topic.project_slug:
+            # The reason is this drop's own; a note the topic carried from before is not one.
+            await _drop_empty_video(session, topic.project_slug, payload.note or None, moment)
+        await shorts_slots.unplan(session, topic.slug, moment)
     await session.commit()
     return await topic_view(session, topic)
 

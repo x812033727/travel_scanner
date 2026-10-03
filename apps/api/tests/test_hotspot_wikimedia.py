@@ -1,3 +1,4 @@
+from dataclasses import replace
 from datetime import date, timedelta
 
 import httpx
@@ -140,7 +141,7 @@ def test_hotspot_catalog_has_stable_unique_identifiers() -> None:
     assert len(HOTSPOT_SEEDS) == 593
     assert len({item.slug for item in HOTSPOT_SEEDS}) == len(HOTSPOT_SEEDS)
     qids = [item.wikidata_item_id for item in HOTSPOT_SEEDS if item.wikidata_item_id]
-    assert len(qids) == 580
+    assert len(qids) == 581
     assert len(set(qids)) == len(qids)
     assert {item.country_code for item in HOTSPOT_SEEDS} == {
         "JP",
@@ -165,8 +166,8 @@ def test_every_seed_derives_a_coordinate_source_a_reader_could_open() -> None:
     ``is_durable_coordinate_source`` wants a durable type *and* an https page, and a row
     that fails it is dropped by the AI planner, by /hotspots/recommendations and by "add
     to trip" — while still appearing in the rankings list, so it looks fine until someone
-    tries to use it. 大阪アメリカ村 was exactly that: its coordinate comes from Q4745722,
-    whose id the misplaced Okinawa 美國村 seed holds, so deriving the URL from the id
+    tries to use it. 大阪アメリカ村 was exactly that: its coordinate came from Q4745722,
+    whose id the misplaced Okinawa 美國村 seed held, so deriving the URL from the id
     alone left it with none. Asserted over the whole catalog because the next seed batch
     will not remember this.
     """
@@ -182,9 +183,11 @@ def test_every_seed_derives_a_coordinate_source_a_reader_could_open() -> None:
     ]
     assert undurable == []
 
+    # The Okinawa row has its own item now and 大阪アメリカ村 holds Q4745722 itself, so no
+    # seed takes the no-id path today; a copy without the id keeps that path pinned.
     amerikamura = next(seed for seed in HOTSPOT_SEEDS if seed.slug == "kix-amerikamura")
-    assert amerikamura.wikidata_item_id is None
-    assert coordinate_provenance(amerikamura) == (
-        "wikidata",
-        "https://www.wikidata.org/wiki/Q4745722",
-    )
+    for seed in (amerikamura, replace(amerikamura, wikidata_item_id=None)):
+        assert coordinate_provenance(seed) == (
+            "wikidata",
+            "https://www.wikidata.org/wiki/Q4745722",
+        )

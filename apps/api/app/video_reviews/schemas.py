@@ -5,8 +5,16 @@ from datetime import datetime
 from typing import Any, Literal, Self, get_args
 from uuid import UUID
 
-from pydantic import AwareDatetime, BaseModel, Field, field_validator, model_validator
+from pydantic import (
+    AwareDatetime,
+    BaseModel,
+    Field,
+    ValidationInfo,
+    field_validator,
+    model_validator,
+)
 
+from app.video_automation.anime_policy import LONG_ANIME_POLICY, AnimeRuntimeSpec
 from app.video_shorts.schemas import (
     SHORTS_SERIES_PATTERN,
     SLUG_PATTERN,
@@ -52,6 +60,7 @@ LOCALE_PARTS: tuple[LocalePart, ...] = get_args(LocalePart)
 # or, a dub track, uploaded by the owner (its languages review approved).
 LanguageState = Literal["working", "ready", "skipped", "uploaded"]
 MAX_PAYLOAD_BYTES = 256 * 1024
+MAX_ANIME_SCRIPT_BYTES = 1024 * 1024
 SHA256_PATTERN = r"^[0-9a-f]{64}$"
 # One gate can hold several pending reviews when each names a subject: a look review per
 # character. The subject is a character id, or "style" for the style frames.
@@ -139,9 +148,27 @@ class ReviewIn(BaseModel):
 
     @field_validator("payload")
     @classmethod
-    def _small(cls, value: dict[str, Any]) -> dict[str, Any]:
-        if len(json.dumps(value, ensure_ascii=False).encode()) > MAX_PAYLOAD_BYTES:
-            raise ValueError(f"payload is larger than {MAX_PAYLOAD_BYTES} bytes")
+    def _small(cls, value: dict[str, Any], info: ValidationInfo) -> dict[str, Any]:
+        limit = MAX_PAYLOAD_BYTES
+        context = value.get("runtime_context")
+        if (
+            info.data.get("gate") == "script"
+            and value.get("production_policy") == LONG_ANIME_POLICY
+            and isinstance(context, dict)
+            and context.get("kind") == "series"
+            and context.get("genre") == "custom"
+            and context.get("lead") == "ensemble"
+        ):
+            # The service also checks this declaration against the actual project/series.
+            # A bounded long screenplay may exceed the ordinary review envelope.
+            try:
+                AnimeRuntimeSpec.model_validate(value.get("runtime_spec"))
+            except ValueError:
+                pass
+            else:
+                limit = MAX_ANIME_SCRIPT_BYTES
+        if len(json.dumps(value, ensure_ascii=False).encode()) > limit:
+            raise ValueError(f"payload is larger than {limit} bytes")
         return value
 
 

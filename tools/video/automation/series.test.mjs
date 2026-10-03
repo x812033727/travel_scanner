@@ -4,8 +4,9 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
+import { runtimePolicyHash, validateAnimePolicy } from "../core/anime-policy.mjs";
 import { readApprovals } from "../core/approvals.mjs";
-import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, explainerFixture, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
 import { readJson } from "../core/paths.mjs";
 import { keepSheets, readStore, reuseSheets, sheetKey } from "../media/series-store.mjs";
@@ -31,6 +32,24 @@ process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
 const TOKEN = `mkv_${"s".repeat(43)}`;
 const SITE = "https://site.test";
 const sha = (file) => createHash("sha256").update(readFileSync(file)).digest("hex");
+
+test("the worker refuses changed WAVs before accepting an existing remote audio decision", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const timeline = writeAudioFixture(estimateTimeline(dramaFixture()), box.workdir);
+  let decisions = 0, pulls = 0;
+  const worker = {
+    ctx: {}, workdir: () => box.workdir,
+    decision: async () => { decisions += 1; return { status: "approved" }; },
+    pull: async () => { pulls += 1; },
+    block: async (_state, why) => why,
+  };
+  assert.match(await Automation.prototype.narration.call(worker, { slug: box.slug }), /narration approved/);
+  const file = path.join(box.workdir, "audio", `${timeline.lines[0].id}.wav`);
+  const bytes = readFileSync(file); bytes[48] ^= 1; writeFileSync(file, bytes);
+  assert.match(await Automation.prototype.narration.call(worker, { slug: box.slug }), /needs current audio evidence/);
+  assert.equal(decisions, 1, "the changed take never queries or accepts the previous decision");
+  assert.equal(pulls, 1);
+});
 
 const SERIES = {
   id: "5e1a2b3c-4d5e-4f60-8a7b-9c0d1e2f3a4b", slug: "wenjian", title: "問劍", premise: "兩個少年在正道與魔道之間", aspects: ["world", "bonds", "structure", "mood"],
@@ -510,7 +529,13 @@ test("an approved production plan reaches each episode's writer/checker/listener
   const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T01:00:00Z") });
   const automation = new Automation(ctx, automationClient(ctx), site.settings);
   const production = {
-    schema_version: 1, profile: { visual_tier: "clips", subtitles: { burn_in: false } },
+    schema_version: 1,
+    source_binding: { source_sha256: "a".repeat(64) },
+    narrator: { voice_name: "Erinome", performance: "冷靜敘述" },
+    profile: { visual_tier: "clips", subtitles: { burn_in: false }, phases: {
+      primary: { locale: "zh-TW" },
+      localization: { locales: ["ja", "ko", "en"], start_after: "approved-chinese-final", readiness: "planned-not-implemented-for-drama" },
+    } },
     visual_direction: "full animation", opening_30s: [{ id: "opening" }], prop_rules: ["keep the ring"],
     characters: [{ id: CAST[0].id, look_states: [{ id: "present", appearance: "blue coat" }] }],
     episodes: [1, 2].map((episode) => ({ episode, characters: [CAST[0].id], hero_shot: { action: `action ${episode}` } })),
@@ -527,6 +552,10 @@ test("an approved production plan reaches each episode's writer/checker/listener
     assert.equal(state.series.visual_tier, "clips");
     assert.equal(info.visual_tier, "clips");
     assert.equal(info.series.visual_tier, "clips");
+    const retention = readJson(path.join(box.work, slug, "localization-retention.json"));
+    assert.equal(retention.series_slug, "wenjian");
+    assert.equal(retention.plans[0].source_sha256, production.source_binding.source_sha256);
+    assert.deepEqual(retention.plans[0].planned_locales, ["ja", "ko", "en"]);
     const payload = automation.seriesPayload(state);
     assert.equal(payload.production.episode.episode, number);
     assert.equal(payload.production.opening_30s.length, number === 1 ? 1 : 0);
@@ -564,11 +593,18 @@ test("production settle preserves canonical local readings for every speaker whi
   character.looks = [{ id: "injured", from: 2, appearance: character.appearance, voice_style: "台灣國語，受傷後短句、停頓，低聲但不換音色" }];
   const cast = castFrom({ characters: [character, video.characters[1]] }, 2);
   const canonical = { 精衛: "ㄐㄧㄥ ㄨㄟˋ", 炎帝: "ㄧㄢˊ ㄉㄧˋ" };
-  const production = { profile: { phases: { primary: { locale: "zh-TW" } } }, narrator: { voice_name: "Erinome", performance: "冷靜敘述" }, pronunciation_hints: canonical };
+  const production = { source_binding: { source_sha256: "a".repeat(64) }, profile: { phases: {
+    primary: { locale: "zh-TW" },
+    localization: { locales: ["ja", "ko", "en"], start_after: "approved-chinese-final", readiness: "planned-not-implemented-for-drama" },
+  } }, narrator: { voice_name: "Erinome", performance: "冷靜敘述" }, pronunciation_hints: canonical };
   video.pronunciation_hints = { 精衛: "writer invented reading" };
+  video.localization_plan = { retain_source_media: false, planned_locales: [] };
   const settled = settle(video, { slug: "wenjian-e002", root: ".", settings: { voice: video.voice, drama: {} }, format: "drama", series: { slug: "wenjian", episode: 2, chapter: 1 }, cast, production });
   assert.deepEqual(settled.pronunciation_hints, canonical);
   assert.notEqual(settled.pronunciation_hints, canonical, "the saved map is independent of the context object");
+  assert.equal(settled.localization_plan.retain_source_media, true, "the writer cannot disable the approved later-language promise");
+  assert.equal(settled.localization_plan.source_sha256, production.source_binding.source_sha256);
+  assert.deepEqual(settled.localization_plan.planned_locales, ["ja", "ko", "en"]);
   assert.equal(settled.characters.find((entry) => entry.id === character.id).voice.style, character.looks[0].voice_style);
   const sample = { ...settled, scenes: [{ id: "readings", lines: [
     { id: "name1", text: "精衛在這裡。", speaker: "narrator" },
@@ -1390,4 +1426,180 @@ test("an explainer one-off goes from its question's bible to a narrator-only scr
   assert.deepEqual(JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")).map((short) => short.slug), [`${slug}-short-1`, `${slug}-short-2`]);
   assert.match(await automation.step(), /fact-check round 1/);
   assert.equal(site.calls.run.find((call) => call.stage === "verifier").variant, "explainer");
+});
+
+const ANIME_SERIES = { ...SERIES, slug: "borrowed-dawn", title: "借來的黎明", kind: "series", category: "anime", genre: "custom", lead: "ensemble", tone: "no-romance", style_preset: "anime-2d", target_minutes: 22, planned_episodes: 120, episodes_per_chapter: 12, chapters: 10, open_ended: false, hands_off: false, compilation: false, production_policy: "long-anime-v1", runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 } };
+const sourceSeason = (number) => JSON.parse(readFileSync(new URL(`../../../docs/videos/series-plans/borrowed-dawn/season-${String(number).padStart(2, "0")}.json`, import.meta.url), "utf8"));
+
+test("source-native anime chapters validate all 120 episodes without invented retention fields", () => {
+  let previous = [];
+  for (let number = 1; number <= 10; number++) {
+    const body = sourceSeason(number);
+    assert.equal(documentProblem("chapter", { body_md: "原作", body_json: body }, { series: ANIME_SERIES, chapter_number: number, context: { episodes: previous } }), null);
+    assert.ok(body.episodes.every((episode) => !episode.hook_type && !episode.satisfaction));
+    previous = body.episodes;
+  }
+  const final = sourceSeason(10);
+  final.episodes.at(-1).closed_ending = false;
+  assert.match(documentProblem("chapter", { body_md: "原作", body_json: final }, { series: ANIME_SERIES, chapter_number: 10 }), /end tense/);
+});
+
+test("quiet ending exception is explicit, closed, final and positively resolved", () => {
+  const last = sourceSeason(10);
+  const check = (series, body) => documentProblem("chapter", { body_md: "原作", body_json: body }, { series, chapter_number: 10 });
+  assert.match(check({ ...ANIME_SERIES, open_ended: true }, last), /end tense/);
+  assert.match(check({ ...ANIME_SERIES, production_policy: null, runtime_spec: null }, last), /end tense/);
+  const incorrect = structuredClone(last); incorrect.episodes.at(-1).cliffhanger.type = "danger";
+  assert.match(check(ANIME_SERIES, incorrect), /quiet final resolution/);
+  const earlier = sourceSeason(1); earlier.episodes[0].closed_ending = true;
+  assert.match(documentProblem("chapter", { body_md: "原作", body_json: earlier }, { series: ANIME_SERIES, chapter_number: 1 }), /only the planned closed finale/);
+  const good = { coverage: { hook: "有", conflict: "有", turn: "有", closure: "有", high_tension: ["有", "有"], consequences: "有" }, problems: [], continuity_problems: [], similar_works: [] };
+  const context = { ...ANIME_SERIES, episode: 120, closed_ending: true };
+  assert.equal(scriptVerdict(good, context).passed, true);
+  assert.equal(scriptVerdict({ ...good, coverage: { ...good.coverage, closure: "弱" } }, context).passed, false);
+  assert.equal(scriptVerdict(good, { ...context, episode: 119 }).passed, false);
+  assert.equal(scriptVerdict({ ...good, continuity_problems: ["角色提前知道答案"] }, context).passed, false);
+});
+
+test("anime rejects lost stakes/state and requires local payoffs across chapter boundaries", () => {
+  const body = sourceSeason(1);
+  body.episodes[0].high_tension[1].stakes = "";
+  assert.match(documentProblem("chapter", { body_md: "原作", body_json: body }, { series: ANIME_SERIES, chapter_number: 1 }), /stakes/);
+  const missing = sourceSeason(1); delete missing.episodes[0].state.evidence;
+  assert.match(documentProblem("chapter", { body_md: "原作", body_json: missing }, { series: ANIME_SERIES, chapter_number: 1 }), /complete source state/);
+  const next = sourceSeason(2); const previous = sourceSeason(1).episodes.slice(-3);
+  for (const episode of [...previous, next.episodes[0]]) { episode.payoffs = []; episode.general_payoffs = []; }
+  assert.match(documentProblem("chapter", { body_md: "原作", body_json: next }, { series: ANIME_SERIES, chapter_number: 2, context: { episodes: previous } }), /episodes 10 to 13.*local payoff/);
+});
+
+test("anime prompts remain independent of legacy short-drama genre instructions", () => {
+  for (const [stage, variant] of [["planner", "setting"], ["planner", "chapter"], ["writer", "anime-act"], ["verifier", "episode"], ["verifier", "series-doc"], ["listener", "anime-act"]]) {
+    const text = instructionsFor(stage, "drama", "", variant, "", ANIME_SERIES);
+    assert.match(text, /long-anime-v1/);
+    assert.doesNotMatch(text, /2–4 min|dual-male|MIN_SATISFACTION|FIRST_SATISFACTION|satisfaction_schedule/);
+  }
+  assert.match(instructionsFor("writer", "drama", "", "anime-act", "", ANIME_SERIES), /ONLY the supplied act/);
+  assert.match(instructionsFor("verifier", "drama", "", "episode", "", ANIME_SERIES), /without returning or rewriting video.json/);
+  const regular = instructionsFor("writer", "drama", "", "episode", "", { ...SERIES, category: "anime", style_preset: "anime-2d" });
+  assert.match(regular, /2 to 4/);
+});
+
+test("anime brief preserves complete source beats and settle overrides model authority", () => {
+  const row = sourceSeason(1).episodes[0];
+  const brief = episodeBrief(ANIME_SERIES, row, CAST, row);
+  for (const field of [row.high_tension[0].stakes, row.high_tension[1].consequence, row.state.evidence, row.general_payoffs[0]]) assert.ok(brief.includes(field));
+  assert.match(brief, /1320/);
+  const video = settle({ ...dramaFixture(), production_policy: "other", runtime_spec: {}, category: "other", target_minutes: [3, 3], look: { preset: "cinematic-3d" }, series: { planned_episodes: 999 } }, { slug: "borrowed-dawn-e001", settings: { voice: dramaFixture().voice, drama: {} }, root: ".", format: "drama", series: { ...ANIME_SERIES, episode: 1, chapter: 1, closed_ending: false }, cast: dramaFixture().characters });
+  assert.equal(video.production_policy, "long-anime-v1");
+  assert.equal(video.category, "anime");
+  assert.deepEqual(video.target_minutes, [22, 22]);
+  assert.equal(video.look.preset, "anime-2d");
+  assert.equal(video.series.planned_episodes, 120);
+  assert.equal(video.series.lead, "ensemble");
+  const legacy = settle({ ...dramaFixture(), production_policy: "long-anime-v1", runtime_spec: ANIME_SERIES.runtime_spec }, { slug: "old", settings: { voice: dramaFixture().voice, drama: {} }, root: ".", format: "drama" });
+  assert.equal(legacy.production_policy, undefined, "a model cannot grant a new production policy");
+});
+
+test("anime draft first report is categorized and script approval remains manual with global gate off", async () => {
+  const box = sandbox(); const site = fakeSite({ settings: { drama: { drama_enabled: true, series_script_gate: false } } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-02T00:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings); automation.refs = smallRefs;
+  const row = sourceSeason(1).episodes[0]; const slug = "borrowed-dawn-e001";
+  await automation.draftEpisode({ id: "anime-request", slug, target_minutes: 3 }, { series: ANIME_SERIES, setting: SETTING, episodes: [], recaps: [], mysteries: [] }, { ...row, chapter_number: 1, beats: row });
+  const state = automation.states().find((entry) => entry.slug === slug);
+  assert.equal(state.category, "anime"); assert.equal(state.target_minutes, 22);
+  assert.equal(site.calls.reports[0].category, "anime");
+  assert.deepEqual(site.calls.reports[0].runtime_spec, ANIME_SERIES.runtime_spec);
+  const seriesFile = readJson(path.join(box.root, "docs/videos", slug, "series.json"));
+  assert.deepEqual(seriesFile.beats, row);
+  assert.equal(seriesFile.series.production_policy, "long-anime-v1");
+  assert.equal(seriesFile.series.planned_episodes, 120);
+  const video = automation.settled(state, dramaFixture());
+  assert.deepEqual(validateAnimePolicy(seriesFile), []);
+  assert.equal(runtimePolicyHash(seriesFile), runtimePolicyHash(video), "snapshot and final script bind the same approved per-episode identity and finale");
+  const dir = path.join(box.root, "docs/videos", slug);
+  writeFileSync(path.join(dir, "video.json"), JSON.stringify(video));
+  mkdirSync(path.join(automation.workdir(slug), "review"), { recursive: true });
+  writeFileSync(path.join(automation.workdir(slug), "review", "script-check.json"), JSON.stringify(scriptCheckBinding(video)));
+  let pushed = false; ctx.runCommand = async () => { pushed = true; return { code: 0, out: "sent" }; };
+  assert.match(await automation.scriptGate(state), /sent to \/admin\/videos/);
+  assert.equal(pushed, true);
+  assert.equal(readApprovals(automation.workdir(slug)).approvals.some((entry) => entry.gate === "script"), false, "global auto-approval cannot approve an explicit long anime");
+});
+
+test("a stale worker job cannot start or draft a planning-only imported series", async () => {
+  let started = false;
+  const automation = { settings: { drama: { drama_enabled: true } }, api: { seriesNext: async () => ({ kind: "episode", series: { ...ANIME_SERIES, planning_only: true }, episode: { number: 1 } }), episodeStart: async () => { started = true; } }, room: () => true };
+  assert.equal(await seriesStep(automation), null);
+  assert.equal(started, false);
+});
+
+test("Automation long-anime writer and repairs use scoped acts with source authority and full native beats", async () => {
+  const box = sandbox(); const site = fakeSite({ answers: { "writer:anime-act": ({ payload }) => ({ act_id: payload.act.id, video: { ...dramaFixture(), scenes: payload.video?.scenes ?? [{ id: `${payload.act.scene_prefix}shot`, chapter: "原作", template: "shot", data: { prompt: "Steam rises as a worker turns a valve", camera: "medium", motion: "the worker turns the valve", characters: [] }, lines: [{ id: payload.line_ids[0], text: "先把管路關上。", speaker: "narrator" }] }] } }) } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-02T00:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings); automation.refs = smallRefs;
+  const row = sourceSeason(1).episodes[0]; const slug = "borrowed-dawn-e001";
+  await automation.draftEpisode({ id: "bounded-request", slug, target_minutes: 3 }, { series: ANIME_SERIES, setting: SETTING, episodes: [], recaps: [], mysteries: [] }, { ...row, chapter_number: 1, beats: row });
+  const state = automation.states().find((entry) => entry.slug === slug);
+  state.target_minutes = null;
+  const result = await automation.animeRewrite(state, { brief: "原作故事" });
+  assert.equal(result.video.scenes.length, 5);
+  assert.equal(state.target_minutes, 22, "lost target restores from authoritative runtime, never the three-minute fallback");
+  assert.equal(site.calls.run.length, 5);
+  for (const call of site.calls.run) {
+    assert.equal(call.max_output_tokens, 32000);
+    assert.equal(call.variant, "anime-act");
+    assert.deepEqual(call.payload.beats, row);
+    assert.deepEqual(call.payload.runtime_spec, ANIME_SERIES.runtime_spec);
+    assert.deepEqual(call.payload.target_minutes, [22, 22]);
+    assert.equal(call.payload.series.kind, "series");
+    assert.match(call.instructions, /ONLY the supplied act/);
+  }
+  const before = site.calls.run.length;
+  await automation.animeRewrite(state, { fix: { problems: ["只修台詞"] } }, result.video, "writer", "owner-fix");
+  assert.equal(site.calls.run.length - before, 5);
+  assert.ok(site.calls.run.slice(before).every((call) => call.payload.video.scenes.length === 1), "a repair never asks for a whole episode output");
+});
+
+test("a native silent-action edit rechecks and returns to owner script review before any paid stage", async () => {
+  const { approve, approvalState } = await import("../core/approvals.mjs");
+  const { writeScreenplay } = await import("../core/screenplay.mjs");
+  const { lintVideo } = await import("../core/lint.mjs");
+  const { fixtureLexicon } = await import("../core/fixtures/load.mjs");
+  const box = sandbox("borrowed-dawn-e001", "drama");
+  const series = { ...ANIME_SERIES, episode: 1, chapter: 1, closed_ending: false };
+  const doc = dramaFixture();
+  const shot = doc.scenes.find((scene) => scene.template === "shot");
+  doc.scenes = Array.from({ length: 250 }, (_, index) => ({ ...structuredClone(shot), id: `approved-shot-${index}`, ...(index % 85 === 0 ? { chapter: `故事第${index + 1}幕` } : {}), data: { ...shot.data, fit: "trim", prompt: `${shot.data.prompt}, composition ${index + 1}` }, lines: [{ ...shot.lines[0], id: index.toString(36).padStart(6, "0"), text: "沈澈扶起受傷的工人，塔拉關上漏氣的管線。", speaker: "narrator" }] }));
+  doc.scenes[0].lines = [];
+  doc.scenes[0].action_seconds = 6;
+  doc.scenes[0].data.motion = "the girl pulls the worker away from escaping steam";
+  doc.thumbnail.data.shot = doc.scenes[0].id;
+  const settings = { voice: doc.voice, drama: { series_script_gate: false } };
+  const video = settle(doc, { slug: box.slug, settings, root: box.root, format: "drama", series, cast: doc.characters });
+  const snapshot = { ...series, characters: video.characters, series, beats: {} };
+  assert.deepEqual(lintVideo(video, { brief: readFileSync(path.join(box.dir, "brief.md"), "utf8"), lexicon: fixtureLexicon(), series: snapshot }).errors, [], "the long fixture actually clears production lint");
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(video));
+  writeFileSync(path.join(box.dir, "series.json"), JSON.stringify(snapshot));
+  writeFileSync(path.join(box.dir, "verify-1.md"), "# Checked\n");
+  mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+  const check = path.join(box.workdir, "review", "script-check.json");
+  writeFileSync(check, JSON.stringify(scriptCheckBinding(video)));
+  writeScreenplay(box.dir, video);
+  await approve({ gate: "outline", docDir: box.dir, workdir: box.workdir });
+  await approve({ gate: "script", docDir: box.dir, workdir: box.workdir });
+  const changed = structuredClone(video);
+  changed.scenes[0].data.motion = "the girl pushes the worker toward escaping steam";
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(changed));
+  const stages = [];
+  const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, now: () => new Date("2026-10-02T00:00:00Z"), stdout: { write() {} }, runCommand: async (command) => { assert.equal(command[0], "review-push", "no paid media command is allowed"); stages.push("owner review"); return { code: 0, out: "sent" }; } };
+  const automation = new Automation(ctx, { reviews: async () => ({ reviews: [] }) }, settings);
+  automation.refs = smallRefs;
+  automation.verify = async (state) => { stages.push("verify"); state.verified = true; writeFileSync(check, JSON.stringify(scriptCheckBinding(changed))); return "reverified"; };
+  automation.media = async () => { throw new Error("paid media reached stale script approval"); };
+  const state = { slug: box.slug, format: "drama", status: "active", production_policy: series.production_policy, runtime_spec: series.runtime_spec, category: "anime", series, verified: true, listener_done: true, notes: [], prompt_fixes: {}, source_urls: [] };
+  assert.equal(await automation.advance(state), "reverified");
+  assert.equal((await approvalState({ gate: "script", docDir: box.dir, workdir: box.workdir })).status, "stale");
+  assert.match(await automation.advance(state), /sent to \/admin\/videos/);
+  assert.deepEqual(stages, ["verify", "owner review"], "fresh verifier evidence cannot replace the owner's action approval");
 });

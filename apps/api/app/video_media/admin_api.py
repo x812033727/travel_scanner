@@ -28,6 +28,7 @@ from app.video_automation.settings import (
     slides_values,
 )
 from app.video_media import meter
+from app.video_media.catalog import find_model
 from app.video_media.jobs import (
     MediaContext,
     MediaJobFailed,
@@ -136,12 +137,14 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
     media = ctx.media
 
     def choice(kind: str, provider: str, model: str) -> ChoiceView:
+        entry = find_model(provider, kind, model) if kind == "image" else None  # type: ignore[arg-type]
         return ChoiceView(
             provider=provider,
             model=model,
             configured=bool(key_for(ctx.runtime, provider)),
             resolution=row.clip_resolution if kind == "clip" else None,
             seconds=row.clip_seconds_default if kind == "clip" else None,
+            usd_per_image_2k=entry.usd_per_image_2k if entry else None,
         )
 
     slides = slides_values(row)

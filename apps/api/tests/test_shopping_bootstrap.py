@@ -28,11 +28,6 @@ ROWS = json.loads(
 BY_SLUG = {seed.slug: seed for seed in HOTSPOT_SEEDS}
 ASSIGNMENTS = {assignment.hotspot_slug: assignment for assignment in THEME_BOOTSTRAP}
 
-# 大阪アメリカ村's Q4745722 is already carried by the Okinawa 美國村 seed, whose
-# coordinates point at Osaka. A Wikidata id may appear once, so this row keeps the
-# coordinate and cites the item without claiming the id; fixing the Okinawa row frees it.
-QID_HELD_ELSEWHERE = {"kix-amerikamura"}
-
 
 def test_file_shape() -> None:
     assert len(ROWS) == 30
@@ -71,8 +66,8 @@ def test_every_coordinate_names_its_own_source() -> None:
         assert all(url.startswith("https://") for url in row["source_urls"]), row["slug"]
         if row["coordinate_source"] == "wikidata_p625":
             qid = row["wikidata_item_id"]
-            assert (qid is None) == (row["slug"] in QID_HELD_ELSEWHERE), row["slug"]
-            assert any("wikidata.org/wiki/Q" in url for url in row["source_urls"]), row["slug"]
+            assert qid, row["slug"]
+            assert f"https://www.wikidata.org/wiki/{qid}" in row["source_urls"], row["slug"]
         else:
             assert row["wikidata_item_id"] is None, row["slug"]
             assert any("openstreetmap.org/" in url for url in row["source_urls"]), row["slug"]

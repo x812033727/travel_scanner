@@ -37,7 +37,11 @@ from app.models import (
 from app.problems import AppError, app_error_handler
 from app.video_automation import admin_api as automation_api
 from app.video_automation import judge as judging
-from app.video_automation.models import VideoAutomationSettings, VideoDramaSeries
+from app.video_automation.models import (
+    VideoAutomationSettings,
+    VideoDramaEpisode,
+    VideoDramaSeries,
+)
 from app.video_media.models import VideoMediaJob
 from app.video_reviews import admin_service
 from app.video_reviews.schemas import DecisionIn, DropIn, ProjectIn, ReviewIn, ReviewOut
@@ -498,6 +502,7 @@ MODELS = (
     VideoMediaJob,
     VideoAutomationSettings,
     VideoDramaSeries,
+    VideoDramaEpisode,
     VideoShortsSettings,
     VideoShortsSlot,
     VideoShortsTopic,

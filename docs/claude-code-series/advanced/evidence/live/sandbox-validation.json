@@ -7,8 +7,8 @@
   "commands": [
     "cat public.txt",
     "printf 'MOKAAIR-ALLOWED-64\\n' > allowed.txt",
-    "cat /home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/private.txt",
-    "printf 'CHANGED\\n' > /home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/write.txt",
+    "cat <home>/.cache/mokaair-sandbox-kh52ene7/outside/private.txt",
+    "printf 'CHANGED\\n' > <home>/.cache/mokaair-sandbox-kh52ene7/outside/write.txt",
     "python3 network_probe.py"
   ],
   "settings": {
@@ -19,7 +19,7 @@
       "failIfUnavailable": true,
       "filesystem": {
         "denyRead": [
-          "/home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/private.txt"
+          "<home>/.cache/mokaair-sandbox-kh52ene7/outside/private.txt"
         ]
       },
       "network": {
