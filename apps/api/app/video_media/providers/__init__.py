@@ -11,6 +11,8 @@ from __future__ import annotations
 
 import base64
 import ipaddress
+import json
+import re
 from dataclasses import dataclass, field
 from typing import Any, Literal, Protocol
 from urllib.parse import urlsplit
@@ -126,6 +128,52 @@ def check_download(download: Download, allowed_hosts: frozenset[str] | None = No
     return download.url
 
 
+def _rejection_diagnostic(response: httpx.Response) -> str | None:
+    """Recognize bounded error envelopes; never retain provider-controlled free text.
+
+    Google-style messages/details may echo prompts, credentials, URLs or image bytes.
+    Only fixed status/parameter names and canonical categories leave this function;
+    unfamiliar or malformed responses keep the existing generic refusal.
+    """
+    try:
+        body = response.content
+        if len(body) > 8192:
+            return None
+        payload = json.loads(body)
+    except (httpx.ResponseNotRead, ValueError, UnicodeError, RecursionError):
+        return None
+    error = payload.get("error") if isinstance(payload, dict) else None
+    if not isinstance(error, dict) or error.get("code") != 400:
+        return None
+    status = error.get("status")
+    message = error.get("message")
+    if (
+        not isinstance(status, str)
+        or status not in {"INVALID_ARGUMENT", "FAILED_PRECONDITION", "OUT_OF_RANGE"}
+        or not isinstance(message, str)
+        or not 0 < len(message) <= 2048
+    ):
+        return None
+    for parameter in (
+        "negativePrompt", "generateAudio", "referenceImages", "resolution", "durationSeconds"
+    ):
+        if re.match(
+            rf"(?:the )?(?:(?:parameter|field) )?[`\"']?{parameter}[`\"']?"
+            r"(?: (?:parameter|field))? (?:is not supported|is unsupported)\b",
+            message,
+            re.IGNORECASE,
+        ):
+            return f"{status}; unsupported parameter: {parameter}"
+    if re.match(
+        r"(?:the )?(?:request|prompt) (?:was )?(?:blocked|rejected) "
+        r"(?:by|due to) (?:the )?safety\b",
+        message,
+        re.IGNORECASE,
+    ):
+        return f"{status}; safety rejection"
+    return status
+
+
 def raise_for_status(response: httpx.Response, vendor: str) -> None:
     """Map a vendor's HTTP status to who can fix it; 2xx passes."""
     status = response.status_code
@@ -139,7 +187,9 @@ def raise_for_status(response: httpx.Response, vendor: str) -> None:
     if status == 404:
         raise MediaUpstreamError(422, f"{vendor} does not know this model or operation", "invalid")
     if status == 400:
-        raise MediaUpstreamError(422, f"{vendor} refused the request", "blocked")
+        diagnostic = _rejection_diagnostic(response)
+        detail = f" ({diagnostic})" if diagnostic else ""
+        raise MediaUpstreamError(422, f"{vendor} refused the request{detail}", "blocked")
     if status >= 500:
         raise MediaUpstreamError(502, f"{vendor} answered HTTP {status}", "failed", retry)
     raise MediaUpstreamError(502, f"{vendor} answered HTTP {status}", "failed")
