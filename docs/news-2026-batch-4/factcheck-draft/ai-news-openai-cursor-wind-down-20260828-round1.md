@@ -5,7 +5,7 @@
 - 查核日：2026-09-23
 - 內容包：`apps/api/app/guides/content/ai-news-openai-cursor-wind-down-20260828.json`
 - 研究紀錄：`docs/ai-news-2026-09-late/research/ai-news-openai-cursor-wind-down-20260828.json`
-- 工具：`C:\Users\x8120\mokaair-work\news44\_tools\ai-news-openai-cursor-wind-down-20260828-r1\`
+- 工具：`<home>\mokaair-work\news44\_tools\ai-news-openai-cursor-wind-down-20260828-r1\`
   （`textutil.py`、`quotes.py`、`body.py`、`packcheck.py`、`links.py`、`edit.py`、`record.py`、`count.py`）
 - 結論：**72 條主張，確認 70、更正 2、查無 0**；`sourcing_verdict` **維持 `partial`**，需要第二輪。
 

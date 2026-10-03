@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 12
     services:
       postgres:
-        image: postgres:17-alpine
+        image: postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24
         env:
           POSTGRES_DB: travel_scanner
           POSTGRES_USER: travel
@@ -31,7 +31,7 @@ jobs:
           --health-cmd "pg_isready -U travel -d travel_scanner"
           --health-interval 5s --health-timeout 3s --health-retries 10
       redis:
-        image: redis:7.4-alpine
+        image: redis:7.4-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499
         ports: ["6379:6379"]
     env:
       APP_SECRET_KEY: airline-browser-validation-secret-32-characters

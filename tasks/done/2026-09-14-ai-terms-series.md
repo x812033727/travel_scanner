@@ -222,7 +222,7 @@ Article list: docs/ai-terms-series/ARTICLES.md. Historical notes below retain th
 original preparation-time state; VALIDATION.md records resolved deployment and
 taxonomy preflight differences. Search-engine indexing was not measured.
 
-Initial base a4ee0f50770334051c7e2618a2138617875a1b40, branch codex/ai-terms-series. origin/main advanced to 24af1490 while planning. Live 2026-09-14 public baseline: 40 life articles, 190 guide sitemap entries; five matching concept URLs will be revised. Authorized SSH profile hostinger2 reaches existing production; containers initially run a4ee0f5. No production content writes yet.
+Initial base a4ee0f50770334051c7e2618a2138617875a1b40, branch codex/ai-terms-series. origin/main advanced to 24af1490 while planning. Live 2026-09-14 public baseline: 40 life articles, 190 guide sitemap entries; five matching concept URLs will be revised. Authorized SSH profile `<saved-session>` reaches existing production; containers initially run a4ee0f5. No production content writes yet.
 
 PR #468 was already merged at 2026-09-14T02:20:35Z; its task still held the complete content/image folders. Verified GitHub state, closed that stale review task, then claimed exact paths without --force. On this host Node rmSync reported success but did not remove the tracked open task; apply_patch removed the verified duplicate open entry. No article files from that batch changed.
 

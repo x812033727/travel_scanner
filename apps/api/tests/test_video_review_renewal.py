@@ -23,6 +23,7 @@ from app.db import Base
 from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError
 from app.video_automation.judge import SHORTS_QA_ITEMS
+from app.video_automation.models import VideoDramaEpisode, VideoDramaSeries
 from app.video_reviews import admin_service as service
 from app.video_reviews.schemas import DecisionIn, ReviewIn, ReviewOut
 from app.video_reviews.storage import ReviewStore
@@ -40,6 +41,8 @@ MODELS = (
     VideoProject,
     VideoReview,
     AdminAuditLog,
+    VideoDramaSeries,
+    VideoDramaEpisode,
     VideoShortsSlot,
     VideoShortsTopic,
 )

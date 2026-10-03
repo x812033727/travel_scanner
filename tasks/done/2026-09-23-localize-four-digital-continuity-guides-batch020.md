@@ -70,7 +70,7 @@ article v1, zh-TW locale/published v6, equal draft/published source documents,
 no target locales and no expiry. Remote open PR inventory has zero candidate
 path conflicts. Offline worktree/task scan also found no active overlap.
 
-Outside archive: C:/Users/x8120/.codex/article-localization-release/.
+Outside archive: `<home>/.codex/article-localization-release/`.
 - batch020-candidate-inventory/candidates.json:
   929b1308f785ef018339bec5c22643dc679f3ace43caf558779e2851d152a54e
 - batch020-candidate-inventory/live-source-full-20260923T092314Z.json:
@@ -94,7 +94,7 @@ numbers and existing AI illustration identity are preserved. There are no numeri
 equivalence exceptions. The existing 15/15/16/15 block structures are retained.
 
 Evidence below is under
-`C:/Users/x8120/.codex/article-localization-release/batch020-digital-continuity/`:
+`<home>/.codex/article-localization-release/batch020-digital-continuity/`:
 
 - Pair A author map: `author-backup-scan/output-map.json`, SHA256
   `7f9272e92640ccd2271b608eb3de4a65020cd8d6b439b800d6947b984958d179`.

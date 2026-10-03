@@ -65,14 +65,14 @@ document hashes against the pinned production snapshot before publication.
   the old task file is untouched.
 - The original live document and reconciled source, with the existing PR #565
   descriptions plus a bounded Climate Card date correction, are pinned under
-  `C:\Users\x8120\.codex\article-localization-release\batch009-seoul`.
+  `<home>\.codex\article-localization-release\batch009-seoul`.
   Seoul City's official notice says prepaid 30-day top-ups ended Aug 31, final
   prepaid use Sep 29, postpaid use Sep 30, while short passes continue.
 - Current main `apps/web/lib/foods.ts` accepts `?city=seoul` as an alias and has
   tests, superseding an older open task that called the filter ignored. Preserve
   that query while localizing only its locale prefix. Internal article links
   must respect each target locale's actual publication state.
-- Historical rejected staging is `C:\Users\x8120\.codex\article-localization-release\batch009-seoul\work-v4`;
+- Historical rejected staging is `<home>\.codex\article-localization-release\batch009-seoul\work-v4`;
   `baseline-reconciled-v4.json` SHA-256 is
   `cf8aab4bed5840282497bbb22673a787beb0872278726dab7c51373d4515d049`.
   Earlier v1 transport-payload jobs, v2 first translations, and v3 intermediate
@@ -145,7 +145,7 @@ document hashes against the pinned production snapshot before publication.
   production write was made in this correction round.
 
 - The second independent review rejected v5 0/8. Its immutable receipt is
-  `C:\Users\x8120\.codex\article-localization-release\batch009-seoul\review-v5.json`,
+  `<home>\.codex\article-localization-release\batch009-seoul\review-v5.json`,
   SHA-256 `e564ee481dfd67531cff5f17ed836921da793a57f31dbf29d494cb9c871e37af`.
   Eight findings cover AREX Express versus all-stop last trains; N6002 airport
   direction, T1/T2 times, adult/child fare, T2 bay and ticket issuance; all
@@ -260,7 +260,7 @@ hreflang and locale-link QA. Sitemap pagination terminated after 1000 + 820 rows
 for the combined008/009 release, with all target URLs in XML. Fresh backup was
 verified by pg_restore --list; health passed and the owned hold was cleared.
 
-Immutable shared release receipt: `C:/Users/x8120/.codex/article-localization-release/batch008-009-release-receipt-20260922.md`,
+Immutable shared release receipt: `<home>/.codex/article-localization-release/batch008-009-release-receipt-20260922.md`,
 SHA256 `96c8e7418ac40452e0fb6b498c0df09505f6ed926682f97ef4b22199b3f3cc33`. The earlier pending/rejected notes above are
 historical evidence; the approved v10 and completed production release supersede
 the pending status without erasing those findings. This closes this task only.

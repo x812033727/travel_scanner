@@ -54,6 +54,7 @@ from app.ai.jev import (
 )
 from app.config import Settings
 from app.models import VideoProject
+from app.video_automation.anime_policy import ANIME_REQUIRED_VERDICTS, LONG_ANIME_POLICY
 from app.video_automation.models import VideoDramaEpisode, VideoDramaSeries
 from app.video_speech.checking import CheckUnavailable
 
@@ -805,7 +806,9 @@ def _empty_list(value: Any) -> bool:
     return isinstance(value, list) and len(value) == 0
 
 
-def series_doc_passed(judge: Any, kind: str) -> bool:
+def series_doc_passed(
+    judge: Any, kind: str, *, production_policy: str | None = None,
+) -> bool:
     """Whether a checker's verdict on a planned document clears the hands-off bar.
 
     Every verdict the kind requires must be there, none 無, at most one 弱, and the checker
@@ -813,7 +816,9 @@ def series_doc_passed(judge: Any, kind: str) -> bool:
     missing a key, or lists anything, waits for a rewrite or the owner: silence never passes.
     """
     verdicts = _verdicts(judge)
-    required = REQUIRED_VERDICTS.get(kind)
+    required = (
+        ANIME_REQUIRED_VERDICTS if production_policy == LONG_ANIME_POLICY else REQUIRED_VERDICTS
+    ).get(kind)
     if verdicts is None or required is None or not isinstance(judge, dict):
         return False
     if any(key not in verdicts for key in required):
@@ -853,7 +858,8 @@ def series_doc_note(judge: Any, passed: bool) -> str:
 
 
 def script_check_passed(
-    payload: dict[str, Any], *, retention_required: bool, min_satisfaction: int = MIN_SATISFACTION
+    payload: dict[str, Any], *, retention_required: bool, min_satisfaction: int = MIN_SATISFACTION,
+    production_policy: str | None = None, closed_finale: bool = False,
 ) -> bool:
     """Whether an episode's screenplay review stands on the checker's coverage (BINGE.md).
 
@@ -867,16 +873,27 @@ def script_check_passed(
     coverage = payload.get("coverage")
     if not isinstance(coverage, dict):
         return False
-    if any(coverage.get(beat) not in VERDICT_VALUES for beat in COVERAGE_BEATS):
+    long_anime = production_policy == LONG_ANIME_POLICY
+    beats = (
+        ("hook", "conflict", "turn", "closure" if closed_finale else "cliffhanger")
+        if long_anime else COVERAGE_BEATS
+    )
+    if any(coverage.get(beat) not in VERDICT_VALUES for beat in beats):
         return False
-    if any(coverage.get(beat) == "無" for beat in COVERAGE_BEATS):
+    if any(coverage.get(beat) == "無" for beat in beats):
         return False
-    if sum(1 for beat in COVERAGE_BEATS if coverage.get(beat) == "弱") > MAX_WEAK_VERDICTS:
+    if sum(1 for beat in beats if coverage.get(beat) == "弱") > MAX_WEAK_VERDICTS:
         return False
     if not _empty_list(payload.get("continuity_problems")):
         return False
     if not _empty_list(payload.get("similar_works")):
         return False
+    if long_anime:
+        return bool(
+            coverage.get("high_tension") == ["有", "有"]
+            and coverage.get("consequences") == "有"
+            and (not closed_finale or coverage.get("closure") == "有")
+        )
     if not retention_required:
         return True
     if coverage.get("satisfaction") not in ("有", "弱"):

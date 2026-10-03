@@ -34,6 +34,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import Settings
 from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError
+from app.video_automation.anime_policy import (
+    BODY_TOLERANCE_SECONDS,
+    LONG_ANIME_POLICY,
+    AnimeRuntimeSpec,
+    is_long_anime,
+)
 from app.video_automation.judge import (
     PACKAGE_AUTO_APPROVED_NOTE,
     QA_AUTO_APPROVED_NOTE,
@@ -119,6 +125,207 @@ CHOICE_PROMPTS = {"outline": "請從 {} 選一個大綱", "look": "請從 {} 選
 # A languages batch with nothing for the owner to upload is approved as it arrives.
 LANGUAGES_AUTO_APPROVED_NOTE = "這一批沒有要你上傳的配音，依規則自動核准"
 EPOCH = datetime.min.replace(tzinfo=UTC)
+ANIME_RUNTIME_KEYS = (
+    "body_target_seconds",
+    "op_ed_budget_seconds",
+    "broadcast_slot_seconds",
+    "slot_reserve_seconds",
+)
+ANIME_CONTEXT_KEYS = (
+    "slug",
+    "episode",
+    "chapter",
+    "planned_episodes",
+    "open_ended",
+    "closed_ending",
+    "kind",
+    "genre",
+    "lead",
+)
+
+
+def _same_anime_context(raw: Any, context: dict[str, Any]) -> bool:
+    return (
+        isinstance(raw, dict)
+        and raw.keys() == context.keys()
+        and all(
+            type(raw[key]) is type(value) and raw[key] == value for key, value in context.items()
+        )
+    )
+
+
+def _same_anime_runtime(raw: Any, runtime: dict[str, Any]) -> bool:
+    try:
+        return AnimeRuntimeSpec.model_validate(raw).model_dump() == runtime
+    except ValueError:
+        return False
+
+
+def anime_review_problem(
+    gate: str,
+    payload: dict[str, Any],
+    content_sha256: str,
+    series: VideoDramaSeries | None,
+    episode: VideoDramaEpisode | None,
+) -> str | None:
+    """A runtime declaration must agree with the server's episode, even for manual approval."""
+    if gate not in ("script", "audio", "final", "publish"):
+        return None
+    declared = (
+        payload.get("production_policy") is not None or payload.get("runtime_spec") is not None
+    )
+    if series is None or not is_long_anime(series):
+        return "動漫製作規格與影片所屬企劃不符" if declared else None
+    if episode is None or payload.get("production_policy") != LONG_ANIME_POLICY:
+        return "缺少影片所屬的長篇動漫製作規格或集數"
+    if not isinstance(episode.beats, dict) or type(episode.beats.get("closed_ending")) is not bool:
+        return "集數的終局設定無效，請重新審核章綱"
+    try:
+        runtime = AnimeRuntimeSpec.model_validate(series.runtime_spec).model_dump()
+    except ValueError:
+        return "企劃的動漫時長規格無效"
+    context: dict[str, Any] = {
+        "slug": series.slug,
+        "episode": episode.number,
+        "chapter": episode.chapter_number,
+        "planned_episodes": series.planned_episodes,
+        "open_ended": series.open_ended,
+        "closed_ending": episode.beats["closed_ending"],
+        "kind": series.kind,
+        "genre": series.genre,
+        "lead": series.lead,
+    }
+    # Canonical byte shape matches tools/video/core/anime-policy.mjs, including booleans.
+    canonical = [
+        LONG_ANIME_POLICY,
+        [[key, runtime[key]] for key in ANIME_RUNTIME_KEYS],
+        series.category,
+        series.style_preset,
+        [[key, context[key]] for key in ANIME_CONTEXT_KEYS],
+    ]
+    policy_hash = hashlib.sha256(
+        json.dumps(canonical, ensure_ascii=False, separators=(",", ":")).encode()
+    ).hexdigest()
+    if (
+        not _same_anime_runtime(payload.get("runtime_spec"), runtime)
+        or not _same_anime_context(payload.get("runtime_context"), context)
+        or payload.get("runtime_policy_hash") != policy_hash
+    ):
+        return "時長審核已過期或不屬於這一集，請重新提交"
+    if gate not in ("final", "publish"):
+        return None
+    proof = payload.get("runtime_proof")
+    if not isinstance(proof, dict):
+        return "成片缺少實際量測的動漫時長證明"
+    final_sha = content_sha256 if gate == "final" else payload.get("final_media_sha256")
+    if (
+        proof.get("basis") != "measured"
+        or proof.get("production_policy") != LONG_ANIME_POLICY
+        or not _same_anime_runtime(proof.get("runtime_spec"), runtime)
+        or not _same_anime_context(proof.get("runtime_context"), context)
+        or proof.get("policy_hash") != policy_hash
+        or not isinstance(final_sha, str)
+        or not re.fullmatch(r"[0-9a-f]{64}", final_sha)
+        or proof.get("final_sha256") != final_sha
+        or not isinstance(proof.get("speech_hash"), str)
+        or not re.fullmatch(r"[0-9a-f]{16}", proof["speech_hash"])
+        or type(proof.get("fps")) is not int
+        or proof["fps"] != 30
+    ):
+        return "成片的時長證明與目前規格或檔案不符"
+    for part in ("body", "op_ed", "presentation"):
+        frames, seconds = proof.get(f"{part}_frames"), proof.get(f"{part}_seconds")
+        if (
+            type(frames) is not int
+            or frames < 0
+            or frames > runtime["broadcast_slot_seconds"] * 30
+            or type(seconds) not in (int, float)
+            or seconds != frames / 30
+        ):
+            return "時長證明必須記錄實際影格與秒數"
+    body, op_ed, presentation = (
+        proof["body_frames"],
+        proof["op_ed_frames"],
+        proof["presentation_frames"],
+    )
+    if (
+        presentation != body + op_ed
+        or not (runtime["body_target_seconds"] - BODY_TOLERANCE_SECONDS) * 30
+        <= body
+        <= (runtime["body_target_seconds"] + BODY_TOLERANCE_SECONDS) * 30
+        or op_ed > runtime["op_ed_budget_seconds"] * 30
+        or presentation > (runtime["broadcast_slot_seconds"] - runtime["slot_reserve_seconds"]) * 30
+    ):
+        return "正文、OP／ED 或成片時長超出這一集的規格"
+    if gate == "final":
+        report = payload.get("qa") or payload.get("manual_review_qa")
+        if (
+            not isinstance(report, dict)
+            or report.get("final_sha256") != final_sha
+            or report.get("policy_hash") != policy_hash
+            or not _same_anime_runtime(report.get("runtime_spec"), runtime)
+            or not _same_anime_context(report.get("runtime_context"), context)
+        ):
+            return "成片品管報告缺少目前檔案與時長規格的綁定"
+    return None
+
+
+async def _check_anime_review(
+    session: AsyncSession,
+    project: VideoProject,
+    gate: str,
+    payload: dict[str, Any],
+    content_sha256: str,
+) -> bool:
+    # The worker may update the project's labels. The server-created episode is authority.
+    row = await session.scalar(
+        select(VideoDramaSeries)
+        .join(VideoDramaEpisode, VideoDramaEpisode.series_id == VideoDramaSeries.id)
+        .where(VideoDramaEpisode.slug == project.slug)
+    )
+    series = row if isinstance(row, VideoDramaSeries) else None
+    if series is None and project.series_slug is not None:
+        row = await session.scalar(
+            select(VideoDramaSeries).where(VideoDramaSeries.slug == project.series_slug)
+        )
+        series = row if isinstance(row, VideoDramaSeries) else None
+    episode = None
+    if (
+        series is not None
+        and is_long_anime(series)
+        and gate in ("script", "audio", "final", "publish")
+    ):
+        if project.series_slug != series.slug:
+            raise AppError(
+                409, "video_anime_runtime_invalid", "影片的系列標記與正式動漫集數不符"
+            )
+        episode = await session.scalar(
+            select(VideoDramaEpisode).where(
+                VideoDramaEpisode.series_id == series.id,
+                VideoDramaEpisode.number == project.episode_number,
+                VideoDramaEpisode.slug == project.slug,
+            )
+        )
+        if not isinstance(episode, VideoDramaEpisode):
+            episode = None
+    problem = anime_review_problem(gate, payload, content_sha256, series, episode)
+    if problem:
+        raise AppError(409, "video_anime_runtime_invalid", problem)
+    if series is not None and is_long_anime(series) and gate == "publish":
+        final = _current_final(await _reviews(session, project, refresh=True))
+        if (
+            final is None
+            or final.status != "approved"
+            or final.content_sha256 != payload.get("final_media_sha256")
+            or anime_review_problem("final", final.payload, final.content_sha256, series, episode)
+            or final.payload.get("runtime_proof") != payload.get("runtime_proof")
+        ):
+            raise AppError(
+                409,
+                "video_anime_final_review_stale",
+                "上傳包必須綁定目前已核准的動漫成片與時長證明，請重新提交",
+            )
+    return series is not None and is_long_anime(series)
 
 
 def review_store(settings: Settings) -> ReviewStore:
@@ -944,6 +1151,9 @@ async def renew_final(
     ):
         raise AppError(409, "video_final_renewal_stale", "影片或審核已變更，請重新讀取後再換版")
     candidate = payload.review
+    await _check_anime_review(
+        session, project, candidate.gate, candidate.payload, candidate.content_sha256
+    )
     if candidate.content_sha256 == final.content_sha256 or any(
         row.gate == "final" and row.content_sha256 == candidate.content_sha256 for row in reviews
     ):
@@ -965,35 +1175,57 @@ async def renew_final(
     details["manual_review"] = True
     details["manual_review_reason"] = payload.reason.strip()
     details[RENEWAL_KEY] = {
-        "previous_review_id": str(final.id), "previous_sha256": final.content_sha256,
-        "expected_version": payload.expected_version, "previous_stage": project.stage,
-        "retained_review_ids": [str(row.id) for row in reviews
-                                if row.gate in RENEWAL_GATES and row.status in LIVE],
+        "previous_review_id": str(final.id),
+        "previous_sha256": final.content_sha256,
+        "expected_version": payload.expected_version,
+        "previous_stage": project.stage,
+        "retained_review_ids": [
+            str(row.id) for row in reviews if row.gate in RENEWAL_GATES and row.status in LIVE
+        ],
     }
     replacement = VideoReview(
-        id=uuid4(), project_id=project.id, gate="final", subject=None,
-        content_sha256=candidate.content_sha256, revision=0, summary=candidate.summary,
-        payload=details, files=[item.model_dump() for item in candidate.files],
-        status="pending", created_at=now, updated_at=now,
+        id=uuid4(),
+        project_id=project.id,
+        gate="final",
+        subject=None,
+        content_sha256=candidate.content_sha256,
+        revision=0,
+        summary=candidate.summary,
+        payload=details,
+        files=[item.model_dump() for item in candidate.files],
+        status="pending",
+        created_at=now,
+        updated_at=now,
     )
     for older in reviews:
         if older.gate not in RENEWAL_GATES or older.status not in LIVE:
             continue
-        session.add(AdminAuditLog(
-            actor_user_id=user.id, action="video_review_superseded",
-            target=f"video_review:{older.id}", metadata_json={
-                "slug": slug, "gate": older.gate, "previous_status": older.status,
-                "replacement_review_id": str(replacement.id), "sha256": older.content_sha256,
-                "reason": payload.reason.strip(),
-            },
-        ))
+        session.add(
+            AdminAuditLog(
+                actor_user_id=user.id,
+                action="video_review_superseded",
+                target=f"video_review:{older.id}",
+                metadata_json={
+                    "slug": slug,
+                    "gate": older.gate,
+                    "previous_status": older.status,
+                    "replacement_review_id": str(replacement.id),
+                    "sha256": older.content_sha256,
+                    "reason": payload.reason.strip(),
+                },
+            )
+        )
         older.status = "superseded"
         older.updated_at = now
     session.add(replacement)
-    session.add(AdminAuditLog(
-        actor_user_id=user.id, action="video_final_renewed", target=f"video_project:{project.id}",
-        metadata_json={"slug": slug, "review_id": str(replacement.id), **details[RENEWAL_KEY]},
-    ))
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_final_renewed",
+            target=f"video_project:{project.id}",
+            metadata_json={"slug": slug, "review_id": str(replacement.id), **details[RENEWAL_KEY]},
+        )
+    )
     _hold_final_review(project)
     project.updated_at = now
     project.last_synced_at = now
@@ -1094,6 +1326,9 @@ async def submit_review(
     # All review writes take the project before a review lock, also used by the uploaders.
     project = await _project(session, slug, lock=True)
     _refuse_dropped(project)
+    manual_anime = await _check_anime_review(
+        session, project, payload.gate, payload.payload, payload.content_sha256
+    )
     missing = [item.sha256 for item in payload.files if store.path(slug, item.sha256) is None]
     if missing:
         raise AppError(
@@ -1106,7 +1341,8 @@ async def submit_review(
         return _review_out(renewed)
     current = _current_final(reviews)
     if (
-        current is not None and RENEWAL_KEY in (current.payload or {})
+        current is not None
+        and RENEWAL_KEY in (current.payload or {})
         and payload.gate in ("publish", "languages", "dubs")
     ):
         await asyncio.to_thread(_renewed_source, store, slug, payload, current)
@@ -1130,15 +1366,18 @@ async def submit_review(
                 (row for row in reviews if row.gate == "final" and row.status in LIVE), None
             )
             if (
-                final is None or final.status != "approved"
+                final is None
+                or final.status != "approved"
                 or payload.payload.get("final_review_id") != str(final.id)
             ):
                 raise AppError(
-                    409, "video_shorts_final_review_stale",
+                    409,
+                    "video_shorts_final_review_stale",
                     "上傳包必須綁定目前已核准的成片審核，請重新執行 push",
                 )
         matches = (
-            current is not None and current.content_sha256 == payload.content_sha256
+            current is not None
+            and current.content_sha256 == payload.content_sha256
             and (
                 _same_qa(current.payload, payload.payload)
                 if payload.gate == "final"
@@ -1152,8 +1391,11 @@ async def submit_review(
             # older page cannot approve evidence they have not seen.
             await _short_revision_allowed(session, project)
             revision = 1 + max(
-                (row.revision or 0 for row in reviews
-                 if row.gate == payload.gate and row.content_sha256 == payload.content_sha256),
+                (
+                    row.revision or 0
+                    for row in reviews
+                    if row.gate == payload.gate and row.content_sha256 == payload.content_sha256
+                ),
                 default=-1,
             )
     if same is not None and same.status != "pending":
@@ -1208,35 +1450,53 @@ async def submit_review(
     # formats existed reads as a tutorial.
     video_format = project.format or "slides"
     series_slug = project.series_slug
-    if payload.gate == "audio" and await auto_approves_audio(
-        session, payload.payload, video_format
+    if (
+        not manual_anime
+        and payload.gate == "audio"
+        and await auto_approves_audio(session, payload.payload, video_format)
     ):
         auto_note = AUTO_APPROVED_NOTE
     # A drama's storyboard may stand on the judge's scores when the owner turned that on, or
     # when the series is hands-off (docs/videos/BINGE.md); an illustrated slides video's reads
     # its own switch (docs/videos/ILLUSTRATED.md).
-    elif payload.gate == "storyboard" and await auto_approves_storyboard(
-        session, payload.payload, series_slug, video_format
+    elif (
+        not manual_anime
+        and payload.gate == "storyboard"
+        and await auto_approves_storyboard(session, payload.payload, series_slug, video_format)
     ):
         auto_note = AUTO_APPROVED_STORYBOARD_NOTE
     # A character's sheet is picked by the judge's score when the owner turned that on.
-    elif payload.gate == "look" and await auto_picks_look(session, payload.payload, series_slug):
+    elif (
+        not manual_anime
+        and payload.gate == "look"
+        and await auto_picks_look(session, payload.payload, series_slug)
+    ):
         auto_note = look_pick_note(payload.payload)
         review.choice = str(payload.payload.get("suggested"))
     # An episode's screenplay stands on the checker's coverage on a hands-off series.
-    elif payload.gate == "script" and await auto_approves_script(
-        session, series_slug, payload.payload
+    elif (
+        not manual_anime
+        and payload.gate == "script"
+        and await auto_approves_script(session, series_slug, payload.payload)
     ):
         auto_note = SCRIPT_AUTO_APPROVED_NOTE
     # The owner decided on 2026-09-27 (docs/videos/HANDS-OFF.md) that Jev chooses the outline
     # and that a final cut and its upload confirmation stand on the automatic checks.
-    elif payload.gate == "outline" and await auto_picks_outline(session, payload.payload):
+    elif (
+        not manual_anime
+        and payload.gate == "outline"
+        and await auto_picks_outline(session, payload.payload)
+    ):
         auto_note = pick_reason(payload.payload)
         review.choice = pick_choice(payload.payload)
     # A Short is held to its own twelve checks and reads its own switch
     # (docs/videos/SHORTS.md §自動品管); a long video's report never approves one, so the
     # rule below is not asked about a Short at all.
-    elif payload.gate in ("final", "publish") and project.shorts_line is not None:
+    elif (
+        not manual_anime
+        and payload.gate in ("final", "publish")
+        and project.shorts_line is not None
+    ):
         if await auto_approves_shorts(
             session, payload.gate, payload.payload, payload.content_sha256
         ):
@@ -1245,18 +1505,26 @@ async def submit_review(
                 if payload.gate == "final"
                 else SHORTS_PACKAGE_AUTO_APPROVED_NOTE
             )
-    elif payload.gate in ("final", "publish") and await auto_approves_final(
-        session,
-        payload.gate,
-        payload.payload,
-        payload.content_sha256,
-        video_format,
-        compilation=slug in await compilation_slugs(session),
+    elif (
+        not manual_anime
+        and payload.gate in ("final", "publish")
+        and await auto_approves_final(
+            session,
+            payload.gate,
+            payload.payload,
+            payload.content_sha256,
+            video_format,
+            compilation=slug in await compilation_slugs(session),
+        )
     ):
         auto_note = QA_AUTO_APPROVED_NOTE if payload.gate == "final" else PACKAGE_AUTO_APPROVED_NOTE
     # A batch of languages waits for the owner only for a dub track they must upload in Studio;
     # descriptions and captions the site sends itself (docs/videos/LANGUAGES.md).
-    elif payload.gate == "languages" and not languages_need_owner(payload.payload):
+    elif (
+        not manual_anime
+        and payload.gate == "languages"
+        and not languages_need_owner(payload.payload)
+    ):
         auto_note = LANGUAGES_AUTO_APPROVED_NOTE
     if auto_note is not None:
         review.status = "approved"
@@ -1310,6 +1578,10 @@ async def decide(
     problem = decision_problem(review, decision)
     if problem:
         raise AppError(409, "video_review_not_decidable", problem)
+    if decision.decision == "approve":
+        await _check_anime_review(
+            session, project, review.gate, review.payload, review.content_sha256
+        )
     now = datetime.now(UTC)
     review.status = "approved" if decision.decision == "approve" else "rejected"
     review.choice = decision.choice if review.gate in CHOICE_GATES else None

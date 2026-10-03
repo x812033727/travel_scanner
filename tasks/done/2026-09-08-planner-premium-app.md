@@ -73,7 +73,7 @@ Browser scenarios use isolated fixture trips, not production accounts or paid pr
 
 ## Notes
 
-Base: b675f5d34a353eddfb789a953968c3c6d45eac4a. Worktree: C:/Users/x8120/.codex/worktrees/mokaair-planner-premium.
+Base: b675f5d34a353eddfb789a953968c3c6d45eac4a. Worktree: `<home>/.codex/worktrees/mokaair-planner-premium`.
 
 Rebased onto 29c36b258789d3750d3620cceb3a8d1da7fc59df before final CI. Completed Klook task archive and community E2E scope handoff are owner-provided task-only commits; no foreign checkout was modified. Updated existing browser journeys to enter their new tools categories without dropping their underlying assertions. Nested legacy service sheets retain keyboard ownership until dismissed.
 
