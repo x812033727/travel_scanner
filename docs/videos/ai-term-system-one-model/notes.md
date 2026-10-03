@@ -12,18 +12,18 @@
 
 ## 站主要決定的事
 
-1. **跟 P1 試片票的分工：已決定，併入（站主 2026-10-03）。** 試片票 `2026-09-29-video-pilot-jev-decision-model` 已結案，不另做產品片。它的試片角色、驗收標準、`ILLUSTRATED.md` 數字表、跟參考片 `2mtn-Qp59y4` 的並排觀察（改成同題材不同角度）、10 支舊片的決定，都搬進製作票 `2026-10-03-ai-term-system-one-model-video`。價格、193.6×／444.6×、RLCD、創辦人、「爆紅」標題照系列規則不做。
+1. **跟 P1 試片票的分工：已決定，併入（站主 2026-10-03）。** 試片票 `2026-09-29-video-pilot-jev-decision-model` 已結案，不另做產品片。它的試片角色、驗收標準、`ILLUSTRATED.md` 數字表、跟參考片 `2mtn-Qp59y4` 的並排觀察（改成同題材不同角度）、10 支舊片的決定，與站主第 0 期的設定，都搬進製作票 `2026-10-03-ai-term-system-one-model-video`（現在是 P1，文章票也一起升成 P1）。每百萬 token 的價格、免費輸出、193.6×／444.6×、RLCD、創辦人、「爆紅」標題照系列規則不做。
 2. **校準那一集：已決定，放棄（站主 2026-10-03）。** `docs/videos/ai-term-calibration/` 與它的兩張票已刪除，紀錄留在 `tasks/done/2026-10-03-ai-terms-episode-calibration-plan.md`。
 3. **公開客戶關係**。TypeSafe 的客戶合約（https://typesafe.ai/legal/mca ，頁面註明 Last updated Sep 23, 2026，2026-10-03 開過）§16.4 原文："Nothing in this Agreement grants either Party the right to use the name, brand, or logo of the other Party, and neither Party may publicly announce that the Parties have entered into the Agreement, except with the other Party’s prior consent or as required by Laws; provided, however, that TypeSafe may use the name, brand, or logo of Customer … on TypeSafe’s website or in other promotional materials …"。§16.5 規定同意要書面。以下只是條文字面，不是法律意見：
    - 不需要同意：講 TypeSafe 公開的名詞與產品、引用時掛名；說這支影片不是業配、TypeSafe 沒有付錢也沒有參與。
-   - 字面上需要事先書面同意：說出或露出 Mokaair 是 TypeSafe 的付費客戶、站上的新聞和旁白檢查用它，包括第 4 章的實跑和第 5 章的生產紀錄。
-   - 拿不到同意時，第 4 章實跑和第 5 章要拿掉，示範要重新規劃（候選：本機跑開放權重的同類模型，或讓站上的生成式模型限定只回一個選項；都還沒驗證）。不建議改成匿名說「我們站上用的一個判斷模型」：這集講的就是 TypeSafe 的名詞，匿名會誤導觀眾。repo 的 `README.md` 已公開寫明站上使用 Jev，這點也要一起考慮。
+   - 字面上需要事先書面同意：說出或露出 Mokaair 是 TypeSafe 的付費客戶、站上的新聞和旁白檢查用它，包括第 3 章的實跑和第 4 章的生產紀錄。
+   - 拿不到同意時，第 3 章實跑和第 4 章要拿掉，示範要重新規劃（候選：本機跑開放權重的同類模型，或讓站上的生成式模型限定只回一個選項；都還沒驗證）。不建議改成匿名說「我們站上用的一個判斷模型」：這集講的就是 TypeSafe 的名詞，匿名會誤導觀眾。repo 的 `README.md` 已公開寫明站上使用 Jev，這點也要一起考慮。
    - 若帳號接受的是 2026-09-23 以前的版本，舊版可能仍有效到通知後約 60 天（§16.7），要確認 §16.4 與 §14.1 在帳號接受的版本裡寫法相同。
 4. **機密資訊條款**。同一份合約 §14.1 把 "Customer’s Fees and all pricing information"、"Documentation" 列為 TypeSafe 的機密資訊，而且寫明不受「已公開」例外的限制。片中不放帳單、額度、用量金額、主控台畫面；引用公開文件與這條字面上的緊張關係，由站主或顧問判斷。另外 typesafe.ai 的使用條款（§3(b)(ii)、§4）限制公開展示網站內容，所以 brief 已經規定不截文件頁面的畫面。
 5. **付費宣傳**。書面確認三件事：帳號從沒拿過 Promotional Credits（合約 §8.2(b)）、沒有綁在報導上的提早體驗或優惠、TypeSafe 沒有參與或影響內容。三項都成立，Studio「含付費宣傳」勾否、說明欄放一句揭露；任何一項不成立就要勾。產線沒有這個欄位，是 Studio 的手動步驟。
 6. **大綱與品管由誰判**。這支講的就是 Jev，又讓 Jev 挑大綱、判成片的「像不像業配」，是自己判自己。後台的「由 Jev 挑大綱」與成片自動核准都是全域開關，這支發起前要暫時關掉，或由站主手動核准兩個關卡。另外 TypeSafe 的 API 會收到這支的 brief、旁白全文和每一句旁白，所以揭露句不能說 TypeSafe「沒看過稿子」，只能說沒有參與、審閱或影響。
 7. **寫稿當天的金鑰**。後台卡片上的金鑰是加密存放的，腳本只讀環境變數，要由站主從 TypeSafe 主控台另外提供，共 4 次呼叫。
-8. **第 5 章說到哪裡**。照實說會公開三件事：新聞發布關卡讓它直接判斷中文、發布門檻是手動調的、旁白零標記就自動核准。要照實說，還是先改程式再播。
+8. **第 4 章說到哪裡**。照實說會公開三件事：新聞發布關卡讓它直接判斷中文、發布門檻是手動調的、旁白零標記就自動核准。要照實說，還是先改程式再播。
 9. **頻道立場的條號**。repo 寫立場還是空白，但 2026-10-02 Jev 已經用立場挑過一支的大綱（`docs/videos/sothatswhy-t27/production-record.md:11`），所以後台應該存了立場，條號未知。寫稿當天看後台：條號對得上就把站主觀點第一行改成 `套用立場：N、M`；系列提案第 8、9 條要不要存進去也一起決定。
 10. **先寫文章**。票 `2026-10-03-ai-term-system-one-model-article`；也要決定這篇要不要進 `docs/ai-terms-series/catalogue.json` 和總索引。
 11. **名詞庫那一列**：category 用 `foundation` 還是 `training`；tier 2 要不要插隊。

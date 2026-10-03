@@ -66,5 +66,12 @@ Read `docs/videos/ai-term-calibration/brief.md` against
 - **Superseded 2026-10-03.** The owner meant TypeSafe's launch post itself; the episode is now planned in `2026-10-03-ai-terms-episode-system-one-plan`. Verification that day refuted three sentences in this brief about the site's own use of Jev (the non-English downgrade, the thresholds that decide, and the shadow measurement having produced numbers); they are corrected in the brief.
 - **Abandoned by the owner, 2026-10-03.** `docs/videos/ai-term-calibration/` and its two tasks
   (`2026-10-03-ai-term-calibration-article`, `2026-10-03-ai-term-calibration-video`) were
-  deleted before they reached main. The demo is reproducible from the script that was in its
-  `demo-log.md` (git history of `claude/optimistic-hypatia-r2586e`).
+  deleted before they reached main, so the brief this file points to (How to verify, the
+  "corrected in the brief" note) no longer exists. A squash merge will not carry the deleted
+  files; while commit `47d443d4` is reachable (the branch or its pull request), they are at
+  `git show 47d443d4:docs/videos/ai-term-calibration/brief.md` and `.../demo-log.md`. The
+  demo needs nothing else: scikit-learn's bundled digits data, positive class "is an 8",
+  `train_test_split(test_size=0.5, random_state=0, stratify=y)`, GaussianNB against
+  `CalibratedClassifierCV(GaussianNB(), method="isotonic", cv=5)`; with scikit-learn 1.9.1 the
+  uncalibrated model said "99%+ sure" 868 times and was right 52.1% of them, the calibrated one
+  450 times and 99.6%.

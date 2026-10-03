@@ -2,7 +2,7 @@
 id: 2026-10-03-ai-term-system-one-model-article
 title: Write and publish the AI terms article on System One models (ai-term-system-one-model)
 status: open
-priority: P2
+priority: P1
 area: docs
 owner:
 claimed_at:
