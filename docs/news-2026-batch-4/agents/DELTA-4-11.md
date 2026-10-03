@@ -76,13 +76,15 @@ settings hooks 會不會被淘汰（文件：「Nothing about them is deprecated
 4. **`sec-default` 的載入條件照文件：** 機器有 managed settings，**或**使用者以 Team／Enterprise 方案登入。
    用 API key、Bedrock、Google Cloud、Microsoft Foundry 登入的人，只在有 managed settings 的機器才有。
    部落格那句「Team and Enterprise plans, and any machine with managed settings」是同一件事，不要寫成「企業版才有」。
-5. **它守的範圍也照文件：** 擋使用者的 mod 改管理者管的東西（managed hooks、系統提示、managed `CLAUDE.md`、managed MCP 的工具），
+5. **它守的範圍也照文件：** 擋使用者的 mod 改管理者管的東西（managed hooks 收到與決定的事、系統提示、managed `CLAUDE.md` 與其他受管指示、任何 mod 讀到的 settings、managed MCP 伺服器的工具與描述），
    以及擋使用者的 mod 核准 `deny` 規則拒絕的呼叫。**其他都不擋**：使用者的 mod 照樣能讀寫檔案、起程式、連網路、改寫提示。
+   `deny` 規則與 managed hooks 只管 Claude 的工具呼叫，管不到 mod 自己的 `$.fs`／`$.process` 呼叫（admin 頁明寫 `Read(.env)` 被拒時 mod 仍能用 `$.fs.read` 讀），不可寫成「deny 規則擋得住 mod」。
 6. **版本門檻 v2.1.287** 只在文件；`CLAUDE_CODE_ENABLE_FUNCTION_HOOKS` 是 early access 的變數，現在設成任何值都被忽略，**不寫成啟用方法**。
 7. **哪裡會畫介面，照 `overview` 的表：** 終端機（含編輯器內建終端、JetBrains 外掛）與 Desktop app 的 Code 分頁會畫；
-   Desktop 的 WSL session 連 hooks 都不跑；VS Code 外掛的聊天面板、`claude -p`、Agent SDK、Remote Control、雲端 session 是「hooks 跑、不畫」。
+   Desktop 的 WSL session 連 hooks 都不跑；VS Code 外掛的聊天面板、`claude -p`、Agent SDK、雲端 session 是「hooks 跑、不畫」；
+   Remote Control 是「hooks 在你電腦上的 session 跑、畫在你電腦的終端機」，不是「不畫」（研究代理 2026-10-04 依 overview 的表修正）。
    不可以寫「所有地方都能用」，也不可以把「不畫」寫成「不能用」。
-8. **內建 mods 的名稱**照 `/plugin` 顯示（`cc-plugin-diff` 等）；關掉 `cc-plugin-diff` 之後 `/diff` 命令還在，由內建版本回答。
+8. **內建 mods 的名稱**照 `/plugin` 顯示（overview 的表有六列：`cc-plugin-agents-md`、`cc-plugin-diff`、`cc-plugin-plugin-authoring`、`cc-plugin-sec-default`、`cc-plugin-telemetry`、`cc-plugin-you-should-know`；第 3 節的小節表少列了 `cc-plugin-plugin-authoring`，以六列為準）；關掉 `cc-plugin-diff` 之後 `/diff` 命令還在，由內建版本回答。
    `cc-plugin-you-should-know` 預設關閉、且文件說「if available for your org」，不可寫成人人都有。
 9. **`/plugin install token-chart@your-org`** 是文件範例裡的假名字，不是真的外掛；要舉例就寫明是文件的範例，或改用三個真的範例 mod。
 10. **三個範例 mod 的名字與功能照 `overview`**：`token-weather` 畫 context window 預報、`blast-radius` 攔下 `rm -rf` 或 force push 這類命令並顯示影響、
@@ -107,9 +109,16 @@ settings hooks 會不會被淘汰（文件：「Nothing about them is deprecated
 
 - 索引由協調者在同一個 PR 用 `update_index.py ai` 五語一起補，先 `--dry-run`；撰稿與翻譯代理不碰索引。
   索引標題「1 月至 9 月」在 10 月的文章進來後會過期：**本票不改標題**（改了會波及 30 個內容包的連結文字，見 `ai.md`），開一張後續票決定怎麼改。
-- **活頁面**：文件四頁都標「as of v2.1.287」，內建 mods 表、限制表、設定表每個版本都會變；GitHub 上的 `claude-code.d.ts` 第一行寫它的版本。
+- **活頁面**：`reference` 標「as of v2.1.287」，其他三頁寫「v2.1.287 or later」，內建 mods 表、限制表、設定表每個版本都會變；GitHub 上的 `claude-code.d.ts` 第一行寫它的版本。
   研究紀錄的 `live_data_warnings` 要列出來，正文寫「截至查核日的文件版本」，發布當天由協調者重讀四頁。
 - 查核報告：`factcheck-draft/ai-news-claude-code-mods-20261001-round1.md`、`-round2.md`。兩輪由不同的 opus 代理做，第二輪逐句回一手來源。
+
+## 6a. 研究後的裁決（協調者 2026-10-04）
+
+- 限制數字（hook 10 秒、`$.store` 4 MiB 等）**不寫**：它們只在 `reference` 頁，換進 `sources[]` 會擠掉 `admin` 或 `create`，而且對讀者不是重點。
+- 部落格提到的 GitHub 設計討論：連結在部落格頁上，但本環境打不開那個 issue，正文只寫「Anthropic 表示發表前把設計放上 GitHub 徵求意見」，**不放網址、不寫編號**。
+- 管理者開關只寫 `allowManagedModsOnly`、`disableSideloadFlags`、`prependPlugins`／`appendPlugins`、`disableAllHooks` 與 `--safe-mode`；`allowManagedHooksOnly`、`allowModsToOverrideDenyRules` 不寫（admin 頁有，但本篇不是管理手冊）。
+- 研究紀錄 `verified_facts` 有 94 條、逐字比對全過；撰稿只能用那 94 條撐事實。
 
 ## 7. 不在本票範圍、要另開票的事
 
