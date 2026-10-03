@@ -21,6 +21,7 @@
 | `factcheck/<slug>.md` | 查核報告；改動超過十處或動到骨幹的篇章在同一檔尾加「## 第二輪」。 |
 | `manifest.json`、`hero-sheet-*.jpg`、`diagram-1-sheet-*.jpg` | `build_assets.py` 全量建置的產物：13 篇的網址清單與 contact sheet（人眼看圖用）。 |
 | `renders/`（git 忽略） | 出圖中間檔。 |
+| [`agent-local/README.md`](agent-local/README.md) | E 組「代理工具搭本機模型」六篇的規格（2026-10-03，文章待寫）：與 BRIEF 不同的規則、每篇指派、當天讀到的官方事實。 |
 
 ## 流程（B 節，`<home>\.claude\plans\parsed-conjuring-dolphin.md`）
 
