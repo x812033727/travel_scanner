@@ -9,7 +9,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { isCompilation, validateCompilation } from "./compilation.mjs";
-import { DRAMA_FORMAT, SHOT_TEMPLATE, validateDrama } from "./drama.mjs";
+import { DRAMA_FORMAT, SHOT_TEMPLATE, timesSilentShots, validateDrama } from "./drama.mjs";
 import { SCREENCAST_TEMPLATE } from "../screencast/steps.mjs";
 import { hasAnimePolicy, isLongAnime, validateAnimePolicy } from "./anime-policy.mjs";
 import { localizationPlanProblems } from "../production/retention.mjs";
@@ -276,13 +276,18 @@ function validateScenes(scenes, errors, format, compilation = false, doc = null)
     }
     const action = scene.action_seconds !== undefined;
     const validAnime = isLongAnime(doc) && validateAnimePolicy(doc).length === 0;
+    // A silent shot is timed by hand: in a long anime under its production policy, and in a
+    // drama with a cast that carries no length floor (a beat in which nobody speaks,
+    // docs/videos/DRAMA.md). A narrated video and a knowledge long-form have none: their
+    // narration is their clock, and their floors are measured on that narration.
+    const timedAction = validAnime || timesSilentShots(doc);
     if (action) {
-      if (!validAnime) errors.push({ path: `${where}.action_seconds`, message: "requires a complete long-anime production policy" });
+      if (!timedAction) errors.push({ path: `${where}.action_seconds`, message: "requires a drama with a cast and no length floor, or a complete long-anime production policy" });
       if (!Number.isSafeInteger(scene.action_seconds) || scene.action_seconds < 1 || scene.action_seconds > 8) errors.push({ path: `${where}.action_seconds`, message: "must be an integer from 1 to 8 seconds of visible action" });
       if (scene.template !== SHOT_TEMPLATE || !isText(scene.data?.prompt) || !isText(scene.data?.motion)) errors.push({ path: `${where}.action_seconds`, message: "requires a directed shot with a visible-action prompt and motion" });
       if (!Array.isArray(scene.lines) || scene.lines.length !== 0) errors.push({ path: `${where}.lines`, message: "a timed action shot has an empty lines array; dialogue uses measured speech timing" });
     }
-    if (!Array.isArray(scene.lines) || (scene.lines.length === 0 && !(action && validAnime))) {
+    if (!Array.isArray(scene.lines) || (scene.lines.length === 0 && !(action && timedAction))) {
       errors.push({ path: `${where}.lines`, message: "must be a non-empty array: a scene lasts as long as its narration" });
       return;
     }

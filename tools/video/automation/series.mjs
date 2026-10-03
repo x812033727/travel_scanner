@@ -10,6 +10,7 @@
 import path from "node:path";
 
 import { hasAnimePolicy, isLongAnime, isClosedAnimeFinale, validateAnimePolicy } from "../core/anime-policy.mjs";
+import { craftGateProblems } from "../core/craft.mjs";
 import { EXPLAINER_PRESET, shotLooksProblem } from "../core/drama.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
@@ -280,9 +281,13 @@ export function retentionNumbers(video, retention) {
 /**
  * Whether a screenplay's check passes the site's script rule (docs/videos/BINGE.md), and why
  * not, so a hands-off episode is fixed before it is sent rather than sent to be refused.
+ * `craft` is the script's own craft report (core/craft.mjs craftChecks) when the episode has a
+ * cast: its opening and coverage rows (CRAFT_GATE_ROWS) send the script back like a checker's
+ * problem would, the way the owner's "看不下去" did.
  */
-export function scriptVerdict(check, series) {
+export function scriptVerdict(check, series, craft = null) {
   const problems = [];
+  problems.push(...craftGateProblems(craft));
   const coverage = isObject(check?.coverage) ? check.coverage : {};
   const required = isLongAnime(series) && isClosedAnimeFinale(series) ? ["hook", "conflict", "turn", "closure"] : COVERAGE_BEATS;
   for (const beat of required) {

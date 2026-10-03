@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-drama-craft-spec-check-and-probe
 title: Drama craft spec, craft check and shot probe for the youtube-video skill
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-fable-5-1-video-craft
 claimed_at: 2026-10-03T02:52:38Z
 created_at: 2026-10-03T02:51:57Z
-completed_at:
+completed_at: 2026-10-03T06:41:26Z
 branch: codex/wedding-visual-revision-20261003
 depends_on: []
 scope:

@@ -2,14 +2,14 @@
 // estimates are deliberately not accepted here: QA reads the current TTS timeline and the
 // frame count assemble checked on the finished cut. Channel bookends never count as content.
 import { FPS } from "./timeline.mjs";
-import { EXPLAINER_PRESET, shotVisual } from "./drama.mjs";
+import { EXPLAINER_PRESET, isKnowledgeLongform, shotVisual } from "./drama.mjs";
 import { ANIME_BODY_TOLERANCE_SECONDS, animeRuntimeContext, hasAnimePolicy, LONG_ANIME_POLICY, runtimePolicyHash, validateAnimePolicy } from "./anime-policy.mjs";
 
 export const KNOWLEDGE_MIN_SECONDS = 480;
 export const KNOWLEDGE_TARGET_SECONDS = 600;
-const LONG_FORMATS = new Set(["slides", "screencast", "drama"]);
-const KNOWLEDGE_CATEGORIES = new Set(["ai-terms", "explainer", "story"]);
-const CATALOGUE_SLUG = /^(?:sothatswhy-|ai-term-|story-)/;
+// Which documents these floors hold is decided in drama.mjs (isKnowledgeLongform), where the
+// schema and the timeline can read it too without a cycle; it is re-exported here for its readers.
+export { isKnowledgeLongform };
 
 /**
  * The request length used by every explainer writing path, including old auto.json files.
@@ -23,15 +23,6 @@ export function effectiveEpisodeMinutes(minutes, preset) {
     throw new RangeError("an explainer target must be an integer no longer than 20 minutes");
   }
   return minutes < KNOWLEDGE_MIN_SECONDS / 60 ? KNOWLEDGE_TARGET_SECONDS / 60 : minutes;
-}
-
-/** Ordinary drama episodes, binge compilations and Shorts retain their own duration rules. */
-export function isKnowledgeLongform(doc) {
-  return Boolean(doc && LONG_FORMATS.has(doc.format) && !doc.compilation && (
-    KNOWLEDGE_CATEGORIES.has(doc.category)
-    || doc.look?.preset === "flat-explainer"
-    || CATALOGUE_SLUG.test(doc.slug ?? "")
-  ));
 }
 
 const positiveFrames = (value) => Number.isSafeInteger(value) && value > 0;
