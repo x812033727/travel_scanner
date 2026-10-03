@@ -1,0 +1,210 @@
+{
+  "slug": "wedding-reckoning",
+  "episode": 1,
+  "chapter": 1,
+  "title": "喜宴未散，清算開始",
+  "visual_tier": "clips",
+  "compilation": false,
+  "characters": [
+    {
+      "id": "chengchuan",
+      "name": "顧承川",
+      "appearance": "East Asian man, 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes; controlled smile and immaculate cuffs.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "台灣國語，自然台灣口音；句首先叫暱稱，再把要求說成替妳著想。 台灣國語；親和表面下帶算計，不以低吼演反派。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。"
+      },
+      "shot_looks": [
+        {
+          "id": "chengchuan--base",
+          "appearance": "East Asian man, 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes; controlled smile and immaculate cuffs."
+        }
+      ]
+    },
+    {
+      "id": "zhitang",
+      "name": "沈知棠",
+      "appearance": "East Asian woman, 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, small silver rectangular watch; ivory tailored trouser suit.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "台灣國語，自然台灣口音；先問數字，決定後短句不解釋。 台灣國語；清晰沉著，受傷時降低音量，不變尖銳。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。"
+      },
+      "shot_looks": [
+        {
+          "id": "zhitang--base",
+          "appearance": "East Asian woman, 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, small silver rectangular watch; ivory tailored trouser suit."
+        },
+        {
+          "id": "zhitang-bride-veiled",
+          "appearance": "East Asian woman, 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, small silver rectangular watch; An ivory wedding gown and veil; veil remains on in every present-time shot of E1."
+        },
+        {
+          "id": "zhitang-bride-unveiled",
+          "appearance": "East Asian woman, 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, small silver rectangular watch; An ivory wedding gown without a veil."
+        },
+        {
+          "id": "zhitang-watch-off",
+          "appearance": "East Asian woman, 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory tailored trouser suit. No watch on either wrist; the unique silver rectangular watch has been removed to the table."
+        }
+      ]
+    }
+  ],
+  "production": {
+    "profile": {
+      "schema_version": 1,
+      "id": "ten-drama-animation-20261001",
+      "status": "design-and-tooling-not-render-accepted",
+      "visual_tier": "clips",
+      "phases": {
+        "primary": {
+          "locale": "zh-TW",
+          "accent": "Taiwan Mandarin",
+          "deliverables": [
+            "clean Chinese final.mp4",
+            "zh-TW CC SRT and VTT",
+            "voice timeline",
+            "music and effects sources",
+            "approved character voice map"
+          ]
+        },
+        "localization": {
+          "locales": [
+            "ja",
+            "ko",
+            "en"
+          ],
+          "start_after": "owner-confirmed-complete-chinese-film-and-cc",
+          "automatic_generation_now": false,
+          "deliverables": [
+            "same picture master",
+            "one independent cast audio mix per locale",
+            "locale SRT and VTT from that audio's measured timeline"
+          ],
+          "readiness": "planned-not-implemented-for-drama",
+          "approval_authority": "owner",
+          "required_deliverables": [
+            "complete zh-TW film",
+            "complete zh-TW switchable CC"
+          ],
+          "owner_confirmation_status": "pending",
+          "pilot_acceptance_is_sufficient": false
+        }
+      },
+      "video": {
+        "provider": "gemini",
+        "model": "veo-3.1-lite-generate-preview",
+        "resolution": "1080p",
+        "aspect": "16:9",
+        "generation_seconds": 8,
+        "generation_fps": 24,
+        "master_fps": 30,
+        "master_fps_note": "Existing assembly uses a 30 fps grid; 24 fps sources are converted without claiming extra motion detail.",
+        "reference_images": false,
+        "extension": false,
+        "first_frame": true,
+        "last_frame": true,
+        "native_audio_in_final": false,
+        "person_generation": "allow_adult",
+        "minor_visual_readiness": "first-frame-route-unverified-use-a-separately-approved-animation-route",
+        "usd_per_generated_second_1080p": 0.08,
+        "verified_at": "2026-10-01",
+        "source": "https://ai.google.dev/gemini-api/docs/veo",
+        "pricing_source": "https://ai.google.dev/gemini-api/docs/pricing"
+      },
+      "subtitles": {
+        "delivery": "closed-captions",
+        "burn_in": false,
+        "primary_locales": [
+          "zh-TW"
+        ],
+        "later_locales": [
+          "ja",
+          "ko",
+          "en"
+        ],
+        "formats": [
+          "srt",
+          "vtt"
+        ],
+        "timing": "measured-own-language-audio",
+        "spoilers": "do not display a reveal before it is spoken or seen"
+      },
+      "animation": {
+        "shot_rule": "one clear action and one camera intention per generated source",
+        "editing": "planned cuts may use 2 to 8 seconds of an eight-second source; measure against recorded dialogue",
+        "identity": "approved base facial identity; named shot costume and age states",
+        "continuity": [
+          "screen direction and eyelines",
+          "prop identity and ownership",
+          "hands and contact points",
+          "entry and exit geography",
+          "same light and exposure across adjacent shots"
+        ],
+        "performance": [
+          "anticipation before action",
+          "weight and follow-through",
+          "eye focus and reaction",
+          "breath and meaningful silence",
+          "no frozen talking portrait used as completed animation"
+        ],
+        "dialogue": "Use reaction shots, over-shoulder framing and object inserts where full lip sync is not verified. Visible mouth close-ups require separate synchronization acceptance; no claim of automatic lip-sync support.",
+        "text": "Plot-critical labels and numbers need separately checked graphics composited onto a motion shot; image-model text is not trusted as evidence. CC dialogue stays separate."
+      },
+      "audio": {
+        "voice_status": "selected-not-auditioned",
+        "speaker_id": "fixed across episodes and later languages",
+        "source_layers": [
+          "dry character dialogue",
+          "dry narrator",
+          "licensed or generated music",
+          "sound effects and room tone"
+        ],
+        "native_clip_audio": "discard",
+        "mix_target_lufs": -14,
+        "true_peak_target_db": -1,
+        "mix_note": "Use the existing measured two-pass mix and verify quiet speech on speakers and headphones. These are internal mastering targets, not a platform guarantee.",
+        "localization": [
+          "never reuse the full Chinese mix under foreign voices",
+          "keep sound effects and music free of Chinese speech",
+          "translate playable intent and relationships",
+          "shorten wording before excessive speech acceleration",
+          "retime CC from each accepted voice track",
+          "preserve line and speaker ids through revisions"
+        ]
+      },
+      "quality_sequence": [
+        "source and director plan review",
+        "Chinese cast auditions",
+        "timed dialogue and storyboard animatic",
+        "one representative pilot with dialogue, action and plot-critical prop",
+        "repair identity, animation, pronunciation and sound issues",
+        "freeze approved style and voice references",
+        "produce chapters with bounded retakes",
+        "Chinese full-cut and CC acceptance",
+        "localize approved master"
+      ],
+      "audience_goal": {
+        "views": 1000000,
+        "status": "objective-not-prediction",
+        "controllable_work": [
+          "title and thumbnail promise match the first thirty seconds",
+          "clear conflict before exposition",
+          "visible and emotional payoff",
+          "genre-specific action rather than repeating document exposition",
+          "chapter transitions preserve momentum"
+        ],
+        "measurement": "Compare title/thumbnail variants and audience retention against the channel's own baseline after sufficient impressions. Inspect dips and rewatch spikes in context; no invented universal CTR threshold.",
+        "sources": [
+          "https://support.google.com/youtube/answer/12340300",
+          "https://support.google.com/youtube/answer/9314415",
+          "https://support.google.com/youtube/answer/141805"
+        ]
+      }
+    },
+    "source_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+    "review_status": "pilot-voice-measurement-only-not-approved-video"
+  },
+  "pilot_scope": "This sidecar binds the inherited cast, look catalogue and clip constraints for a voice-only measurement document; it does not promote this excerpt to an approved full episode."
+}

@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-10-02T15:08:32.032Z",
+  "scope": "planning-package-only",
+  "result": "passed",
+  "checks": {
+    "source_object_sha256": true,
+    "episode_rows": 40,
+    "pilot_shots": 15,
+    "pilot_lines": 11,
+    "locale_variants": 44,
+    "planned_used_seconds": 60,
+    "planned_generated_seconds": 120,
+    "planned_veo_first_attempt_usd": 9.6,
+    "unique_ids": true,
+    "language_coverage": true,
+    "voice_windows_within_shots": true,
+    "markdown_file_links": true
+  },
+  "not_validated": [
+    "real TTS timing",
+    "native listening",
+    "rendered animation",
+    "lip sync",
+    "provider quota",
+    "YouTube multilingual-audio entitlement",
+    "market performance"
+  ]
+}

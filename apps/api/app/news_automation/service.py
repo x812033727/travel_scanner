@@ -12,8 +12,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.admin.service import load_runtime_settings
 from app.ai.catalog import MODEL_CATALOG, Capability
 from app.guides import admin_service
-from app.guides.models import GuideArticleLocale
-from app.guides.schemas import GuideDocument
+from app.guides.models import GuideArticle, GuideArticleLocale
+from app.guides.schemas import GuideDocument, Kind
 from app.hotspots.ai_search import research_model
 from app.i18n import Locale
 from app.models import AdminAuditLog, User
@@ -511,6 +511,11 @@ async def candidate_detail(session: AsyncSession, candidate_id: UUID) -> Candida
     waiting_on_duplicate = (
         row.status == "manual_review" and row.error_code == DUPLICATE_UNCERTAIN
     )
+    article = (
+        await session.get(GuideArticle, row.guide_article_id)
+        if row.guide_article_id is not None
+        else None
+    )
     return CandidateDetail(
         **candidate_summary(row).model_dump(),
         evidence=[
@@ -566,6 +571,8 @@ async def candidate_detail(session: AsyncSession, candidate_id: UUID) -> Candida
         human_reason=row.human_reason,
         human_major_error=row.human_major_error,
         similar_titles=await similar_titles(session, row) if waiting_on_duplicate else [],
+        article_slug=article.slug if article is not None else None,
+        article_kind=cast(Kind, article.kind) if article is not None else None,
     )
 
 
