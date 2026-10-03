@@ -1,14 +1,14 @@
 ---
 id: 2026-10-03-news-batch-4-11-claude-code
 title: News batch 4.11: Claude Code mods explainer, five languages
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1-news-4-11
+claimed_at: 2026-10-03T18:17:06Z
 created_at: 2026-10-03T18:04:10Z
 completed_at:
-branch:
+branch: claude/admiring-goodall-jpzg46
 depends_on: []
 scope:
   - docs/news-2026-batch-4/agents/DELTA-4-11.md
