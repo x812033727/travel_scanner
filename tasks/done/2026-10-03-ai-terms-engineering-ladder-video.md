@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-ai-terms-engineering-ladder-video
 title: AI 名詞影片：從提示詞工程到圖形工程，五個名詞一集
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-10-03T14:14:11Z
 created_at: 2026-10-03T14:10:32Z
-completed_at:
+completed_at: 2026-10-03T23:45:48Z
 branch: claude/compassionate-sagan-kmhqx8
 depends_on: []
 scope:
