@@ -36,6 +36,6 @@ Kosmos-2：多模態模型，把文字片段與邊界框以連結形式一起表
 RAG 與接地的關係：只採 Google Cloud 文件的分類（RAG Engine 是接地的一種接法），正文已寫明「其他廠商未必同樣劃分」；「接地關心說法能否回到來源，RAG 是先檢索再生成的流程」是本文的區分說明，不是引文。
 正文不使用的東西：模型名與版本、價格與計費、排行榜分數、「接地後就不會幻覺」這類保證、符號接地問題的定論。
 來源 11 筆加 1 筆同一文件的繁中頁，都是官方文件或論文頁，沒有新聞、部落格、內容農場。
-字數：以 pack_ingest 的 `_body_length` 算是 2,542（含 rich_paragraph 內的站內連結文字 72 字）；不含連結文字為 2,470。標題與連結文字依本批 brief「不含連結文字」的說法應排除，但程式實際會算進去，兩個數字都在 1,800–3,000 內。
+字數：以 pack_ingest 的 `_body_length` 算是 2,542（含 rich_paragraph 內的站內連結文字 72 字）；不含連結文字為 2,470。本批 brief 寫「不含連結文字」，但程式實際會把 rich_paragraph 裡的連結文字算進去；兩個數字都在 1,800–3,000 內。
 SVG 為原創向量插圖，非 AI 產圖；hero 沒有文字、沒有 logo。
 自驗：dry-run 通過，只剩 `no_summary` 警告（範本 ai-term-sandbox 同樣有）。brief 指定的渲染指令使用 chromium-1194/chrome-linux/chrome，視窗會被裁掉底部約 88 px（白帶），所以另用 chromium_headless_shell-1194 的 headless_shell 看完整 1600×900，兩張圖都沒有疊字或超框；正式 ingest 的預設會先選 headless_shell。
