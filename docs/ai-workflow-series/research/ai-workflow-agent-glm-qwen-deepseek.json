@@ -1,0 +1,1249 @@
+{
+  "slug": "ai-workflow-agent-glm-qwen-deepseek",
+  "title": "GLM、Qwen、DeepSeek 接上 Claude Code 與 Codex：哪些在本機、哪些其實在雲端",
+  "checked_on": "2026-10-03",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "Z.ai 文件：Claude Code（GLM Coding Plan 的 ANTHROPIC_BASE_URL、金鑰變數、預設模型別名）",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Z.ai 文件：Codex（OpenAI Responses 協定端點、config.toml 與 models.json）",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "DeepSeek API 文件：Integrate with Claude Code（環境變數與 claude-opus 開頭的模型名對照）",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "DeepSeek API 文件：Integrate with Codex（config.toml、models.json、欄位說明）",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "阿里雲 Model Studio 文件（國際站）：Claude Code（四種計費方式的網址與設定）",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "阿里雲 Model Studio 文件（國際站）：Codex（Responses 與 Chat/Completions 兩種接法）",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Claude Code 文件：Other LLM gateways（不支援把 Claude Code 導到非 Claude 模型、只設網址的行為）",
+      "url": "https://code.claude.com/docs/en/llm-gateway",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 模型庫：qwen3.5（標籤、大小、上下文視窗與啟動指令）",
+      "url": "https://ollama.com/library/qwen3.5",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 模型庫：glm-4.7-flash（標籤、大小、上下文視窗與啟動指令）",
+      "url": "https://ollama.com/library/glm-4.7-flash",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 模型庫：glm-5.3-flash（只有 cloud 標籤、託管地點與授權說明）",
+      "url": "https://ollama.com/library/glm-5.3-flash",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 模型庫：deepseek-r1（標籤、大小、蒸餾版說明與授權段落）",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 模型庫：deepseek-v4.1-flash（只有 cloud 標籤）",
+      "url": "https://ollama.com/library/deepseek-v4.1-flash",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Codex 文件：Configuration Reference（model_provider、model_providers 的 env_key、experimental_bearer_token、wire_api 等設定鍵）",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "checked_on": "2026-10-03"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "Z.ai 的 Claude Code 頁標題寫明這是 GLM Coding Plan 的設定方法；本篇只轉述，方案內容與費用不寫。",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Methods for Using the GLM Coding Plan in Claude Code"
+    },
+    {
+      "fact": "ANTHROPIC_BASE_URL 的值是 https://api.z.ai/api/anthropic（自動腳本與手動設定兩處相同）。",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_BASE_URL\": \"https://api.z.ai/api/anthropic\""
+    },
+    {
+      "fact": "金鑰放在 ANTHROPIC_AUTH_TOKEN；頁面範例的值是佔位字 your_zai_api_key，本篇改成讀環境變數 ZAI_API_KEY。",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_AUTH_TOKEN\": \"your_zai_api_key\""
+    },
+    {
+      "fact": "API_TIMEOUT_MS 設為 3000000。",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"API_TIMEOUT_MS\": \"3000000\""
+    },
+    {
+      "fact": "頁面前段寫預設把 opus 別名對到 GLM-5.3-Flash。",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`ANTHROPIC_DEFAULT_OPUS_MODEL: GLM-5.3-Flash`"
+    },
+    {
+      "fact": "預設把 sonnet 別名對到 GLM-5.3-Flash。",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`ANTHROPIC_DEFAULT_SONNET_MODEL: GLM-5.3-Flash`"
+    },
+    {
+      "fact": "預設把 haiku 別名對到 GLM-5.3-Flash。",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`ANTHROPIC_DEFAULT_HAIKU_MODEL: GLM-5.3-Flash`"
+    },
+    {
+      "fact": "同一頁手動設定的範例把 haiku 對到 glm-5.3-flash[1m]（與上面的預設寫法不一致）。",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"glm-5.3-flash[1m]\""
+    },
+    {
+      "fact": "同一頁手動設定的範例把 sonnet 對到 glm-5.3[1m]。",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_DEFAULT_SONNET_MODEL\": \"glm-5.3[1m]\""
+    },
+    {
+      "fact": "同一頁手動設定的範例把 opus 對到 glm-5.3[1m]。",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_DEFAULT_OPUS_MODEL\": \"glm-5.3[1m]\""
+    },
+    {
+      "fact": "Codex 需要專門的 OpenAI Responses 協定端點 https://api.z.ai/api/v1（頁面用警告框標出）。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Codex requires a dedicated OpenAI Responses protocol endpoint: `https://api.z.ai/api/v1`."
+    },
+    {
+      "fact": "頁面的 config.toml 範例：model_provider 為 ZAI。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model_provider = \"ZAI\""
+    },
+    {
+      "fact": "頁面的 config.toml 範例：model 為 glm-5.3。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model = \"glm-5.3\""
+    },
+    {
+      "fact": "頁面的 config.toml 範例：model_reasoning_effort 為 max。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model_reasoning_effort = \"max\""
+    },
+    {
+      "fact": "model_catalog_json 指向 ~/.codex/models.json。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model_catalog_json = \"~/.codex/models.json\""
+    },
+    {
+      "fact": "供應商區段名稱 [model_providers.ZAI]。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "[model_providers.ZAI]"
+    },
+    {
+      "fact": "區段的 name 是 ZAI。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "name = \"ZAI\""
+    },
+    {
+      "fact": "區段的 base_url 是 https://api.z.ai/api/v1。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "base_url = \"https://api.z.ai/api/v1\""
+    },
+    {
+      "fact": "區段的 wire_api 是 responses，頁面註明必須設成 responses。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`wire_api` must be set to `responses`."
+    },
+    {
+      "fact": "頁面範例用 experimental_bearer_token 放金鑰，值是佔位字；本篇改用 env_key。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "experimental_bearer_token = \"<Your API Key>\""
+    },
+    {
+      "fact": "頁面要你建立 ~/.codex/models.json，宣告 GLM 模型的資料。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Create `~/.codex/models.json` to declare GLM model metadata to Codex."
+    },
+    {
+      "fact": "頁面提醒不要把金鑰直接寫死在程式碼裡。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Keep your API Key safe. Do not share it with others or hard-code it directly in your code."
+    },
+    {
+      "fact": "ANTHROPIC_BASE_URL 設為 https://api.deepseek.com/anthropic。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic"
+    },
+    {
+      "fact": "ANTHROPIC_AUTH_TOKEN 放 DeepSeek 的金鑰；頁面範例的值是佔位字，本篇改成讀環境變數 DEEPSEEK_API_KEY。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "export ANTHROPIC_AUTH_TOKEN=<your DeepSeek API Key>"
+    },
+    {
+      "fact": "ANTHROPIC_MODEL 設為 deepseek-flash[1m]。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "export ANTHROPIC_MODEL=deepseek-flash[1m]"
+    },
+    {
+      "fact": "opus 別名設為 deepseek-flash[1m]。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "export ANTHROPIC_DEFAULT_OPUS_MODEL=deepseek-flash[1m]"
+    },
+    {
+      "fact": "sonnet 別名設為 deepseek-flash[1m]。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "export ANTHROPIC_DEFAULT_SONNET_MODEL=deepseek-flash[1m]"
+    },
+    {
+      "fact": "haiku 別名設為 deepseek-flash。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "export ANTHROPIC_DEFAULT_HAIKU_MODEL=deepseek-flash"
+    },
+    {
+      "fact": "CLAUDE_CODE_SUBAGENT_MODEL 設為 deepseek-flash。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "export CLAUDE_CODE_SUBAGENT_MODEL=deepseek-flash"
+    },
+    {
+      "fact": "頁面另設 CLAUDE_CODE_EFFORT_LEVEL（本篇略過）。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "export CLAUDE_CODE_EFFORT_LEVEL=max"
+    },
+    {
+      "fact": "頁面另設 CLAUDE_CODE_AUTO_COMPACT_WINDOW（本篇略過）。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "export CLAUDE_CODE_AUTO_COMPACT_WINDOW=786432"
+    },
+    {
+      "fact": "名稱以 claude-opus 開頭的模型對到 deepseek-v4-pro。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Models starting with claude-opus are mapped to deepseek-v4-pro"
+    },
+    {
+      "fact": "名稱以 claude-haiku 或 claude-sonnet 開頭的模型對到 deepseek-flash。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Models starting with claude-haiku or claude-sonnet are mapped to deepseek-flash"
+    },
+    {
+      "fact": "claude-opus 的對照指向 deepseek-v4-pro，以 V4 Pro 的價格計費（頁面沒有在這一句寫價格數字）。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "is billed at the V4 Pro price"
+    },
+    {
+      "fact": "Codex 透過 Responses API 和模型溝通，DeepSeek API 原生支援。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Codex is an AI coding assistant from OpenAI. It talks to models via the"
+    },
+    {
+      "fact": "同一句的後半：DeepSeek API 原生支援 Responses API。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "which the DeepSeek API natively supports."
+    },
+    {
+      "fact": "一鍵腳本的選項 1 讓 Codex 用 deepseek-flash 模型、選項 2 用 deepseek-v4-pro（DeepSeek 的 Codex 頁也是用這兩個模型名）。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "option 1 configures Codex to use the deepseek-flash model, which also accepts image input; option 2 configures it to use deepseek-v4-pro"
+    },
+    {
+      "fact": "config.toml 範例：model 為 deepseek-flash。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model = \"deepseek-flash\""
+    },
+    {
+      "fact": "config.toml 範例：model_provider 為 deepseek。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model_provider = \"deepseek\""
+    },
+    {
+      "fact": "config.toml 範例有 preferred_auth_method = \"apikey\"；Codex 的設定參考頁（sources 最後一條）沒有這個鍵，所以本篇的 toml 不放這一行，只在註解交代。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "preferred_auth_method = \"apikey\""
+    },
+    {
+      "fact": "config.toml 範例：forced_login_method 為 api。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "forced_login_method = \"api\""
+    },
+    {
+      "fact": "欄位說明：preferred_auth_method 與 forced_login_method 是用 API 金鑰認證、略過 ChatGPT 帳號登入。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Authenticate with an API Key, skipping the ChatGPT account login"
+    },
+    {
+      "fact": "config.toml 範例：model_reasoning_effort 為 high。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model_reasoning_effort = \"high\""
+    },
+    {
+      "fact": "config.toml 範例：web_search 為 disabled。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "web_search = \"disabled\""
+    },
+    {
+      "fact": "欄位說明：內建網頁搜尋對 DeepSeek 模型關閉。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Built-in web search, disabled for the DeepSeek models"
+    },
+    {
+      "fact": "config.toml 範例：show_raw_agent_reasoning 為 true。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "show_raw_agent_reasoning = true"
+    },
+    {
+      "fact": "model_catalog_json 指向 ~/.codex/models.json。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model_catalog_json = \"~/.codex/models.json\""
+    },
+    {
+      "fact": "供應商區段名稱 [model_providers.deepseek]。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "[model_providers.deepseek]"
+    },
+    {
+      "fact": "區段的 name 是 deepseek。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "name = \"deepseek\""
+    },
+    {
+      "fact": "區段的 base_url 是 https://api.deepseek.com/。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "base_url = \"https://api.deepseek.com/\""
+    },
+    {
+      "fact": "區段的 wire_api 是 responses。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "wire_api = \"responses\""
+    },
+    {
+      "fact": "頁面範例用 experimental_bearer_token 放金鑰，值是佔位字；本篇改用 env_key。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "experimental_bearer_token = \"<your DeepSeek API Key>\""
+    },
+    {
+      "fact": "欄位說明：experimental_bearer_token 是直接存在設定檔裡的金鑰。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Your API Key, stored directly in the configuration file"
+    },
+    {
+      "fact": "頁面提供一鍵設定腳本，並說明腳本會備份原本的設定。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We provide a setup script that completes the whole configuration automatically."
+    },
+    {
+      "fact": "腳本會把原本的 config.toml 備份到 ~/.codex/backup-deepseek/。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "is backed up to ~/.codex/backup-deepseek/"
+    },
+    {
+      "fact": "手動設定（Option 2）要先建立模型清單檔 ~/.codex/models.json，頁面列出完整內容。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "First, create the model catalog file"
+    },
+    {
+      "fact": "頁面列出四種連法：Pay-as-you-go、Coding Plan、Token Plan Personal Edition、Token Plan Team Edition。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Connect it to Alibaba Cloud Model Studio using Pay-as-you-go, Coding Plan, Token Plan Personal Edition, or Token Plan Team Edition."
+    },
+    {
+      "fact": "Token Plan 的 ANTHROPIC_BASE_URL 是 https://token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_BASE_URL\": \"https://token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic\""
+    },
+    {
+      "fact": "金鑰放 ANTHROPIC_AUTH_TOKEN；頁面範例的值是佔位字，本篇改成讀環境變數 MODELSTUDIO_API_KEY。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_AUTH_TOKEN\": \"YOUR_API_KEY\""
+    },
+    {
+      "fact": "Token Plan 範例：ANTHROPIC_MODEL 為 auto。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_MODEL\": \"auto\""
+    },
+    {
+      "fact": "Token Plan 範例：haiku 別名為 qwen3.6-flash。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"qwen3.6-flash\""
+    },
+    {
+      "fact": "Token Plan 範例：sonnet 別名為 qwen3.8-flash。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_DEFAULT_SONNET_MODEL\": \"qwen3.8-flash\""
+    },
+    {
+      "fact": "Token Plan 範例：opus 別名為 qwen3.8-max。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_DEFAULT_OPUS_MODEL\": \"qwen3.8-max\""
+    },
+    {
+      "fact": "Token Plan 範例：CLAUDE_CODE_SUBAGENT_MODEL 為 auto。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"CLAUDE_CODE_SUBAGENT_MODEL\": \"auto\""
+    },
+    {
+      "fact": "Token Plan 範例：CLAUDE_CODE_MAX_CONTEXT_TOKENS 為 983616。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"CLAUDE_CODE_MAX_CONTEXT_TOKENS\": \"983616\""
+    },
+    {
+      "fact": "Coding Plan 的 ANTHROPIC_BASE_URL 是 https://coding-intl.dashscope.aliyuncs.com/apps/anthropic。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_BASE_URL\": \"https://coding-intl.dashscope.aliyuncs.com/apps/anthropic\""
+    },
+    {
+      "fact": "Pay-as-you-go 的網址格式要把 WorkspaceId 換成自己的 Workspace ID（新加坡區域的寫法）。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "https://{WorkspaceId}.ap-southeast-1.maas.aliyuncs.com/apps/anthropic"
+    },
+    {
+      "fact": "Pay-as-you-go 列了北京區域。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "China North 2 (Beijing):"
+    },
+    {
+      "fact": "Pay-as-you-go 列了新加坡區域。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Singapore:"
+    },
+    {
+      "fact": "Pay-as-you-go 列了維吉尼亞區域。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "US (Virginia):"
+    },
+    {
+      "fact": "pay-as-you-go 的金鑰要和選的區域一致。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The API key must match the selected region"
+    },
+    {
+      "fact": "Token Plan 個人版要用該方案專屬的金鑰（頁面逐方案寫了 dedicated API Key）。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Replace YOUR_API_KEY with the Token Plan Personal Edition dedicated"
+    },
+    {
+      "fact": "Token Plan 個人版與團隊版的範例用同一個 ANTHROPIC_BASE_URL（這一行在頁面出現兩次）。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"ANTHROPIC_BASE_URL\": \"https://token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic\""
+    },
+    {
+      "fact": "頁面說 Claude Code 預設用 200K 的上下文視窗。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Code uses a 200K context window by default."
+    },
+    {
+      "fact": "設好後頁面建議在 Claude Code 裡執行 /status 確認網址與憑證指向 Model Studio。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "run /status in Claude Code and check that"
+    },
+    {
+      "fact": "頁面列出 Codex 連 Model Studio 的四種方式。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Codex is OpenAI's terminal AI coding assistant. Connect it to Alibaba Cloud Model Studio via Token Plan Personal Edition, Token Plan Team Edition, Coding Plan, or pay-as-you-go."
+    },
+    {
+      "fact": "頁面先要你設 OPENAI_API_KEY 環境變數。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Edit ~/.codex/config.toml and set the OPENAI_API_KEY environment variable for your billing plan:"
+    },
+    {
+      "fact": "Token Plan Team Edition 的 Responses 寫法：model_provider 為 Model_Studio_Token_Plan（Personal Edition 是 Model_Studio_Token_Plan_Personal，base_url 相同）。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model_provider = \"Model_Studio_Token_Plan\""
+    },
+    {
+      "fact": "Token Plan 的 base_url 是 https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "base_url = \"https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1\""
+    },
+    {
+      "fact": "區段用 env_key 讀 OPENAI_API_KEY。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "env_key = \"OPENAI_API_KEY\""
+    },
+    {
+      "fact": "Token Plan 的 wire_api 是 responses。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "wire_api = \"responses\""
+    },
+    {
+      "fact": "Token Plan 範例的 model 是 auto。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model = \"auto\""
+    },
+    {
+      "fact": "頁面要另建 ~/.codex/model-catalog.local.json 並用 model_catalog_json 指過去。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "model_catalog_json = \"~/.codex/model-catalog.local.json\""
+    },
+    {
+      "fact": "Coding Plan 只支援 Chat/Completions API，要裝舊版 Codex（舉 0.80.0）。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Coding Plan only supports the Chat/Completions API. Install an older version of Codex, such as 0.80.0:"
+    },
+    {
+      "fact": "Coding Plan 的 base_url 是 https://coding-intl.dashscope.aliyuncs.com/v1。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "base_url = \"https://coding-intl.dashscope.aliyuncs.com/v1\""
+    },
+    {
+      "fact": "疑難排解寫新版 Codex 已不再支援 wire_api 設成 chat。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Newer versions of Codex no longer support wire_api = \"chat\"."
+    },
+    {
+      "fact": "Pay-as-you-go 同時支援 Responses 與 Chat/Completions。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Pay-as-you-go supports both the Responses API and Chat/Completions API."
+    },
+    {
+      "fact": "疑難排解寫 Token Plan、Coding Plan 與 pay-as-you-go 的金鑰不能互換。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Token Plan, Coding Plan, and pay-as-you-go keys are not interchangeable"
+    },
+    {
+      "fact": "Anthropic 的文件：不背書、不維護、不稽核第三方閘道產品，也不支援透過任何閘道把 Claude Code 導到非 Claude 模型。",
+      "url": "https://code.claude.com/docs/en/llm-gateway",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Anthropic doesn't endorse, maintain, or audit third-party gateway products, and doesn't support routing Claude Code to non-Claude models through any gateway."
+    },
+    {
+      "fact": "只設網址而不設憑證變數時，不會取代訂閱。",
+      "url": "https://code.claude.com/docs/en/llm-gateway",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Setting only that variable, without a gateway credential, doesn't replace the subscription."
+    },
+    {
+      "fact": "此時已儲存的 claude.ai 登入仍是有效的憑證。",
+      "url": "https://code.claude.com/docs/en/llm-gateway",
+      "is_vendor_claim": true,
+      "verbatim_quote": "a saved claude.ai login remains the active credential"
+    },
+    {
+      "fact": "qwen3.5:0.8b 那一列：1.0GB、256K、文字與圖片。",
+      "url": "https://ollama.com/library/qwen3.5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "qwen3.5:0.8b 1.0GB · 256K context window · Text, Image"
+    },
+    {
+      "fact": "qwen3.5:2b 那一列：2.7GB、256K、文字與圖片。",
+      "url": "https://ollama.com/library/qwen3.5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "qwen3.5:2b 2.7GB · 256K context window · Text, Image"
+    },
+    {
+      "fact": "qwen3.5:4b 那一列：3.4GB、256K、文字與圖片。",
+      "url": "https://ollama.com/library/qwen3.5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "qwen3.5:4b 3.4GB · 256K context window · Text, Image"
+    },
+    {
+      "fact": "qwen3.5:27b 那一列：17GB、256K、文字與圖片。",
+      "url": "https://ollama.com/library/qwen3.5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "qwen3.5:27b 17GB · 256K context window · Text, Image"
+    },
+    {
+      "fact": "qwen3.5:35b 那一列：24GB、256K、文字與圖片。",
+      "url": "https://ollama.com/library/qwen3.5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "qwen3.5:35b 24GB · 256K context window · Text, Image"
+    },
+    {
+      "fact": "qwen3.5:122b 那一列：81GB、256K、文字與圖片。",
+      "url": "https://ollama.com/library/qwen3.5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "qwen3.5:122b 81GB · 256K context window · Text, Image"
+    },
+    {
+      "fact": "qwen3.5:9b（頁面標 latest）那一列：6.6GB、256K、文字與圖片。",
+      "url": "https://ollama.com/library/qwen3.5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "qwen3.5:9b latest 6.6GB · 256K context window · Text, Image"
+    },
+    {
+      "fact": "qwen3.5 頁的能力列是 vision、tools、thinking（沒有 cloud），尺寸標籤是 0.8b 到 122b。",
+      "url": "https://ollama.com/library/qwen3.5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Cancel vision tools thinking 0.8b 2b 4b 9b 27b 35b 122b"
+    },
+    {
+      "fact": "Applications 區只列 Claude Code、OpenCode、Hermes Agent、OpenClaw，沒有 Codex；Claude Code 的指令是 ollama launch claude --model qwen3.5。",
+      "url": "https://ollama.com/library/qwen3.5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Applications Claude Code ollama launch claude --model qwen3.5 OpenCode ollama launch opencode --model qwen3.5 Hermes Agent ollama launch hermes --model qwen3.5 OpenClaw ollama launch openclaw --model qwen3.5"
+    },
+    {
+      "fact": "glm-4.7-flash:latest 那一列：19GB、198K、文字。",
+      "url": "https://ollama.com/library/glm-4.7-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "glm-4.7-flash:latest 19GB · 198K context window · Text"
+    },
+    {
+      "fact": "glm-4.7-flash:q4_K_M 那一列：19GB、198K、文字。",
+      "url": "https://ollama.com/library/glm-4.7-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "glm-4.7-flash:q4_K_M 19GB · 198K context window · Text"
+    },
+    {
+      "fact": "glm-4.7-flash:q8_0 那一列：32GB。",
+      "url": "https://ollama.com/library/glm-4.7-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "glm-4.7-flash:q8_0 32GB · 198K context window · Text"
+    },
+    {
+      "fact": "glm-4.7-flash:bf16 那一列：60GB。",
+      "url": "https://ollama.com/library/glm-4.7-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "glm-4.7-flash:bf16 60GB · 198K context window · Text"
+    },
+    {
+      "fact": "glm-4.7-flash 頁共 4 個標籤。",
+      "url": "https://ollama.com/library/glm-4.7-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Name 4 models Size / Usage Context Input"
+    },
+    {
+      "fact": "glm-4.7-flash 的能力列是 tools、thinking（沒有 cloud）。",
+      "url": "https://ollama.com/library/glm-4.7-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Cancel tools thinking"
+    },
+    {
+      "fact": "Claude Code 的指令是 ollama launch claude --model glm-4.7-flash。",
+      "url": "https://ollama.com/library/glm-4.7-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ollama launch claude --model glm-4.7-flash"
+    },
+    {
+      "fact": "glm-5.3-flash 只有 glm-5.3-flash:cloud 一列，大小欄是「-」，1M，文字與圖片。",
+      "url": "https://ollama.com/library/glm-5.3-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "glm-5.3-flash:cloud - · 1M context window · Text, Image"
+    },
+    {
+      "fact": "glm-5.3-flash 頁只有 1 個標籤。",
+      "url": "https://ollama.com/library/glm-5.3-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Name 1 model Size / Usage Context Input"
+    },
+    {
+      "fact": "能力列有 vision、tools、thinking、cloud。",
+      "url": "https://ollama.com/library/glm-5.3-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Cancel vision tools thinking cloud"
+    },
+    {
+      "fact": "Claude Code 的指令是 ollama launch claude --model glm-5.3-flash:cloud。",
+      "url": "https://ollama.com/library/glm-5.3-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ollama launch claude --model glm-5.3-flash:cloud"
+    },
+    {
+      "fact": "頁面寫此模型託管在美國與歐洲，與 Ollama 雲端上的其他模型一樣依 Ollama 的隱私政策處理，並寫 zero data retention（Ollama 自己的說法）。",
+      "url": "https://ollama.com/library/glm-5.3-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This model is hosted in the United States and Europe. Like all other models on Ollama’s cloud, this model follows Ollama’s privacy policy with zero data retention."
+    },
+    {
+      "fact": "說明列了 MIT Licensed。",
+      "url": "https://ollama.com/library/glm-5.3-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "MIT Licensed"
+    },
+    {
+      "fact": "deepseek-r1:1.5b 那一列：1.1GB、128K、文字。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "deepseek-r1:1.5b 1.1GB · 128K context window · Text"
+    },
+    {
+      "fact": "deepseek-r1:7b 那一列：4.7GB、128K、文字。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "deepseek-r1:7b 4.7GB · 128K context window · Text"
+    },
+    {
+      "fact": "deepseek-r1:14b 那一列：9.0GB、128K、文字。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "deepseek-r1:14b 9.0GB · 128K context window · Text"
+    },
+    {
+      "fact": "deepseek-r1:32b 那一列：20GB、128K、文字。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "deepseek-r1:32b 20GB · 128K context window · Text"
+    },
+    {
+      "fact": "deepseek-r1:70b 那一列：43GB、128K、文字。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "deepseek-r1:70b 43GB · 128K context window · Text"
+    },
+    {
+      "fact": "deepseek-r1:671b 那一列：404GB、160K、文字。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "deepseek-r1:671b 404GB · 160K context window · Text"
+    },
+    {
+      "fact": "deepseek-r1:8b（頁面標 latest）那一列：5.2GB、128K、文字。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "deepseek-r1:8b latest 5.2GB · 128K context window · Text"
+    },
+    {
+      "fact": "deepseek-r1 的能力列是 tools、thinking（沒有 cloud），標籤是 1.5b 到 671b。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Cancel tools thinking 1.5b 7b 8b 14b 32b 70b 671b"
+    },
+    {
+      "fact": "Claude Code 的指令是 ollama launch claude --model deepseek-r1。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ollama launch claude --model deepseek-r1"
+    },
+    {
+      "fact": "頁面把 deepseek-r1:671b 標成 DeepSeek-R1。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "DeepSeek-R1 ollama run deepseek-r1:671b"
+    },
+    {
+      "fact": "頁面把 deepseek-r1:1.5b 標成 DeepSeek-R1-Distill-Qwen-1.5B（蒸餾模型）。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "DeepSeek-R1-Distill-Qwen-1.5B ollama run deepseek-r1:1.5b"
+    },
+    {
+      "fact": "頁面寫蒸餾模型是用 DeepSeek-R1 產生的推理資料微調其他模型而來。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Below are the models created via fine-tuning against several dense models widely used in the research community using reasoning data generated by DeepSeek-R1."
+    },
+    {
+      "fact": "授權段落：權重以 MIT License 授權，DeepSeek-R1 系列支援商用、允許修改與衍生作品。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The model weights are licensed under the MIT License. DeepSeek-R1 series support commercial use, allow for any modifications and derivative works, including, but not limited to, distillation for training other LLMs."
+    },
+    {
+      "fact": "授權段落：Qwen 蒸餾版源自 Apache 2.0 授權的 Qwen-2.5 系列。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Qwen distilled models are derived from Qwen-2.5 series, which are originally licensed under Apache 2.0 License"
+    },
+    {
+      "fact": "授權段落：Llama 70B 蒸餾版源自 Llama3.3-70B-Instruct，原授權為 llama3.3 license。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Llama 70B distilled model is derived from Llama3.3-70B-Instruct and is originally licensed under llama3.3 license."
+    },
+    {
+      "fact": "deepseek-v4.1-flash 只有 deepseek-v4.1-flash:cloud 一列，大小欄是「-」，1M，文字與圖片。",
+      "url": "https://ollama.com/library/deepseek-v4.1-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "deepseek-v4.1-flash:cloud - · 1M context window · Text, Image"
+    },
+    {
+      "fact": "deepseek-v4.1-flash 頁只有 1 個標籤。",
+      "url": "https://ollama.com/library/deepseek-v4.1-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Name 1 model Size / Usage Context Input"
+    },
+    {
+      "fact": "能力列有 vision、tools、thinking、cloud。",
+      "url": "https://ollama.com/library/deepseek-v4.1-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Cancel vision tools thinking cloud"
+    },
+    {
+      "fact": "Claude Code 的指令是 ollama launch claude --model deepseek-v4.1-flash:cloud。",
+      "url": "https://ollama.com/library/deepseek-v4.1-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ollama launch claude --model deepseek-v4.1-flash:cloud"
+    },
+    {
+      "fact": "（查核補）同一頁把 ANTHROPIC_BASE_URL 稱為把 Claude Code 指向閘道的變數；第 3 節只並列兩邊各自的寫法，不判斷供應商端點算不算閘道。",
+      "url": "https://code.claude.com/docs/en/llm-gateway",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ANTHROPIC_BASE_URL is the variable that points Claude Code at the gateway."
+    },
+    {
+      "fact": "（查核補）Z.ai 的 Claude Code 頁頁首另指向一頁切換到 GLM-5.3 的說明。",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To use the latest GLM-5.3 model, see How to Switch the Model in Use"
+    },
+    {
+      "fact": "（查核補）Z.ai 的自動腳本把變數寫進 ~/.claude/settings.json（只有 ANTHROPIC_AUTH_TOKEN、ANTHROPIC_BASE_URL、API_TIMEOUT_MS 三個）；本篇的函式照這一組，改成 export。",
+      "url": "https://docs.z.ai/devpack/tool/claude",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The script will automatically modify ~/.claude/settings.json to configure the following environment variables"
+    },
+    {
+      "fact": "（查核補）Z.ai 的 Codex 頁同樣是 GLM Coding Plan 的設定方法。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Methods for Using the GLM Coding Plan in Codex CLI"
+    },
+    {
+      "fact": "（查核補）Z.ai 的 Codex 頁也列出 models.json 的完整內容，要你整段貼進 ~/.codex/models.json（草稿原本寫成只有 DeepSeek 列出完整內容）。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Copy the following content entirely into ~/.codex/models.json"
+    },
+    {
+      "fact": "（查核補）Z.ai 的 models.json 宣告的模型是 glm-5.3。",
+      "url": "https://docs.z.ai/devpack/tool/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"slug\": \"glm-5.3\""
+    },
+    {
+      "fact": "（查核補）DeepSeek 的 models.json 含 deepseek-flash 與 deepseek-v4-pro 兩個模型。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "containing deepseek-flash and deepseek-v4-pro"
+    },
+    {
+      "fact": "（查核補）DeepSeek 頁的 [desktop] 區段（enabled-reasoning-efforts）是 ChatGPT 桌面版的設定，本篇 toml 不放。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Reasoning effort levels available in the ChatGPT desktop app"
+    },
+    {
+      "fact": "（查核補）阿里雲的 Claude Code 頁把設定寫進 ~/.claude/settings.json 的 env 欄位；本篇的函式改成 export。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Create ~/.claude/settings.json"
+    },
+    {
+      "fact": "（查核補）同一頁的疑難排解（401 invalid_api_key）另列三種連法與三組網址，和設定那一節的四種方案、網址不同。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Model Studio provides three access methods, and each access method uses a different base URL and a dedicated API key."
+    },
+    {
+      "fact": "（查核補）疑難排解表的 Pay-as-you-go 網址是 https://dashscope.aliyuncs.com/apps/anthropic（設定那一節是帶 WorkspaceId 的三個區域網址）。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "https://dashscope.aliyuncs.com/apps/anthropic"
+    },
+    {
+      "fact": "（查核補）Coding Plan 那一節另寫不支援 Responses API。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Coding Plan does not support the Responses API (Chat/Completions API only)"
+    },
+    {
+      "fact": "（查核補）Coding Plan 那一節的設定用 wire_api = \"chat\"。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "base_url = \"https://coding-intl.dashscope.aliyuncs.com/v1\" env_key = \"OPENAI_API_KEY\" wire_api = \"chat\""
+    },
+    {
+      "fact": "（查核補）疑難排解對「wire_api = \"chat\" is no longer supported」這個錯誤的解法是改成 responses。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Change wire_api to responses and verify that base_url is correct."
+    },
+    {
+      "fact": "（查核補）glm-5.3-flash 模型頁的 curl 範例連的是 http://localhost:11434，模型是 glm-5.3-flash:cloud：位址是本機，執行仍在 Ollama 的雲端。",
+      "url": "https://ollama.com/library/glm-5.3-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "curl http://localhost:11434/api/chat \\ -d '{ \"model\": \"glm-5.3-flash:cloud\""
+    },
+    {
+      "fact": "（查核補）deepseek-v4.1-flash 模型頁的 curl 範例同樣是 localhost 配 :cloud 標籤。",
+      "url": "https://ollama.com/library/deepseek-v4.1-flash",
+      "is_vendor_claim": true,
+      "verbatim_quote": "curl http://localhost:11434/api/chat \\ -d '{ \"model\": \"deepseek-v4.1-flash:cloud\""
+    },
+    {
+      "fact": "（查核補）頁面把 deepseek-r1:8b（latest）標成 DeepSeek-R1-0528-Qwen3-8B，列在 Distilled models 之下。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "DeepSeek-R1-0528-Qwen3-8B ollama run deepseek-r1:8b"
+    },
+    {
+      "fact": "（查核補）蒸餾模型那一節的標題是 Distilled models。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Distilled models DeepSeek team has demonstrated"
+    },
+    {
+      "fact": "（查核補）授權段落另有 Llama 8B 蒸餾版源自 Llama3.1-8B-Base、原授權為 llama3.1 license 一句；同一頁的 8b 標籤現在標的是 Qwen3-8B 底的版本，授權段落沒有提到 Qwen3。",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Llama 8B distilled model is derived from Llama3.1-8B-Base and is originally licensed under llama3.1 license."
+    },
+    {
+      "fact": "（查核補）Codex：model_providers 的內建 id openai、ollama、lmstudio 是保留字，不能覆寫；本篇的 ZAI、deepseek 不在其中。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Built-in provider IDs (openai, ollama, and lmstudio) are reserved and cannot be overridden."
+    },
+    {
+      "fact": "（查核補）Codex：model_provider 是 model_providers 裡的 provider id。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Provider id from model_providers (default: openai)."
+    },
+    {
+      "fact": "（查核補）Codex：model_providers.<id>.name 是自訂 provider 的顯示名稱。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Display name for a custom model provider."
+    },
+    {
+      "fact": "（查核補）Codex：model_providers.<id>.base_url 是 provider 的 API 基底網址。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "is_vendor_claim": false,
+      "verbatim_quote": "API base URL for the model provider."
+    },
+    {
+      "fact": "（查核補）Codex：model_providers.<id>.env_key 是提供這家 API 金鑰的環境變數（本篇兩份 toml 的改寫依據）。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Environment variable supplying the provider API key."
+    },
+    {
+      "fact": "（查核補）Codex：experimental_bearer_token 是直接寫在設定裡的 bearer token，文件標明不建議、請用 env_key。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Direct bearer token for the provider (discouraged; use env_key)."
+    },
+    {
+      "fact": "（查核補）Codex：wire_api 只支援 responses，省略時預設也是 responses（與阿里雲疑難排解「新版不再支援 chat」一致）。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Protocol used by the provider. responses is the only supported value, and it is the default when omitted."
+    },
+    {
+      "fact": "（查核補）Codex：model_catalog_json 是啟動時載入的 JSON 模型目錄路徑。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Optional path to a JSON model catalog loaded on startup."
+    },
+    {
+      "fact": "（查核補）Codex：model_reasoning_effort 的值依模型而定，文件舉例含 high 與 max（兩份 toml 用的值）。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Reasoning effort advertised by the selected model, such as low, medium, high, xhigh, max, or ultra."
+    },
+    {
+      "fact": "（查核補）Codex：forced_login_method 限定登入方式，值是 chatgpt 或 api。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Restrict Codex to a specific authentication method."
+    },
+    {
+      "fact": "（查核補）Codex：web_search 設成 disabled 會拿掉這個工具。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "is_vendor_claim": false,
+      "verbatim_quote": "or \"disabled\" to remove the tool."
+    },
+    {
+      "fact": "（查核補）Codex：show_raw_agent_reasoning 在模型輸出原始推理內容時顯示出來。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Surface raw reasoning content when the active model emits it."
+    }
+  ],
+  "unverified_or_excluded": [
+    "三張 Hugging Face 模型卡（zai-org/GLM-5.3-Flash、deepseek-ai/DeepSeek-V4.1-Flash、Qwen/Qwen3.8-27B）：規格檔把它們列為授權來源，但撰稿時這一篇的 sources 上限是 12 條，七條供應商頁面加五個 Ollama 模型頁已經用滿（查核時上限放寬到 14，第 13 條給了 Codex 設定參考頁），所以授權只寫 Ollama 頁面上有的文字（glm-5.3-flash 的 MIT Licensed、deepseek-r1 的授權段落），其餘寫「頁面沒有寫」，並指向站內兩篇 Qwen 文章；不寫「可商用」。",
+    "規格檔列的 Ollama /tags 頁：改讀同名模型的模型頁（/library/<名稱>），因為模型頁同時有標籤表、Applications 區的啟動指令，glm-5.3-flash 頁還有託管地點與 MIT Licensed 的說明，deepseek-r1 頁有授權段落，這些 /tags 頁都沒有。glm-5.3 與 deepseek-v4-pro 的 Ollama 頁今天沒有重讀，所以正文不寫它們的標籤。",
+    "規格檔問的「阿里雲有沒有接 Codex 的官方頁」：有，https://www.alibabacloud.com/help/en/model-studio/codex（頁尾更新日 Sep 28, 2026），依方案分成 Responses 與 Chat/Completions 兩種接法，已寫進正文；不另放 Qwen 的 toml，因為各方案的 API 與 Codex 版本條件不同，頁面又要求另建 model-catalog.local.json。",
+    "阿里雲 Claude Code 頁的 hasCompletedOnboarding 設定：頁面說用來略過官方登入驗證，本篇不教，也沒有查它的副作用。CC Switch（社群開源工具）與 Claude Code Desktop 的接法不是這一篇的範圍，不寫。",
+    "DeepSeek Codex 頁的一鍵安裝腳本（下載後直接執行的指令）：只轉述頁面說腳本會備份並改寫 config.toml，不貼指令；[desktop] 區段與 enabled-reasoning-efforts 是 ChatGPT 桌面版的設定，不屬於本篇。",
+    "Codex 官方文件的位置：規格檔寫的 developers.openai.com/codex/ 網址回 308 永久轉址到 learn.chatgpt.com/docs/。查核時依協調者要求把 Codex 設定參考頁（https://learn.chatgpt.com/docs/config-file/config-reference，sources 第 13 條）補進來，env_key、experimental_bearer_token、wire_api、model_provider 等鍵改以這一頁為出處；進階設定頁仍不在 sources。",
+    "（查核）DeepSeek Codex 頁的 preferred_auth_method = \"apikey\"：Codex 設定參考頁、進階設定頁、基本設定頁的 .md 與 HTML 都查不到這個鍵，所以從 toml 拿掉、只在註解交代；forced_login_method 在 Codex 參考頁有（chatgpt | api），保留。",
+    "（查核）阿里雲 Claude Code 頁的疑難排解表（401 invalid_api_key）列的是三種連法：Pay-as-you-go https://dashscope.aliyuncs.com/apps/anthropic、Coding Plan https://coding.dashscope.aliyuncs.com/apps/anthropic、Token Plan Team Edition https://token-plan.cn-beijing.maas.aliyuncs.com/apps/anthropic，與設定那一節的國際站網址不同；正文只舉第一個並寫明兩處不同，函式照設定那一節。",
+    "（查核）Ollama 模型頁只列部分標籤：qwen3.5 頁寫 65 models、deepseek-r1 頁寫 35 models。查核另讀了兩家的 /tags 頁（不在 sources）：qwen3.5 的 65 個標籤沒有一個帶 cloud；deepseek-r1 的量化標籤最大到 1.3TB（671b fp16），所以正文與 summary 的大小範圍限定為「七個尺寸標籤」。/tags 頁上雲端標籤的 Size / Usage 欄寫 Medium Usage 而不是「-」，正文因此改說「Size / Usage 欄是不是 GB 數字」，「-」只說是模型頁的寫法。",
+    "（查核）站內 qwen-local-deployment（2026-09-14 查證）舉 qwen3.5:cloud 當雲端標籤的例子；今天 qwen3.5 的標籤頁沒有任何 cloud 標籤。那是別篇的事，本篇不改，留給站主。",
+    "Ollama 對代理工具的上下文視窗建議值、OLLAMA_NO_CLOUD 與只綁本機位址的說明：屬於 Ollama 文件頁，不在這篇的 12 條 sources 裡，正文不寫，只指向《Ollama 入門》。",
+    "GLM-5.3-Flash 的參數量與基準測試分數、DeepSeek-V4.1-Flash 的架構說明：模型頁有寫，但是廠商自己的跑分與規格，與「在本機還是雲端」無關，不寫。Ollama 模型頁上的 Cost /1M tokens 區塊：價格，不寫。",
+    "Z.ai 頁面兩處模型別名寫法不一致（預設全部是 GLM-5.3-Flash，手動設定範例是 glm-5.3-flash[1m] 與 glm-5.3[1m]）：兩種都照實寫進正文，bash 範例不設別名，不替讀者判斷哪一個生效。",
+    "（第二輪）阿里雲 Token Plan 的 auto：Claude Code 頁沒有寫 auto 對到哪個模型；Codex 頁 Token Plan 的模型目錄除 Qwen 外還列了 glm-5.3、deepseek-v4-pro（Team 另有 kimi、MiniMax），所以正文不說三家端點回答的都是「各家自己的模型」。阿里雲 Codex 頁 FAQ 另把 Model Studio 稱為 gateway（the Model Studio gateway may reject it），但沒有說它是不是 Anthropic 文件說的閘道，第 3 節「兩邊頁面都沒有寫」仍成立。",
+    "（第二輪）qwen3.5 模型頁 2026-10-04 寫 66 models（第一輪讀到 65），/tags 頁 66 個標籤沒有一個帶 cloud；正文只寫七個尺寸標籤，不受影響。"
+  ],
+  "must_not_write": [
+    "任何速度、品質、「跑得動／跑不動」的結論與排名，以及任何執行輸出：本站沒有實測，大小與上下文視窗只抄頁面上的數字。",
+    "「Ollama 的 :cloud 標籤算本機」或「命令在自己終端機裡打，模型就在自己電腦跑」：標籤帶 cloud 的在 Ollama 的雲端執行，正文與 callout 都分開標示本機、Ollama 雲端、供應商端點三種。",
+    "「Qwen 沒有雲端標籤」這種全稱否定：只寫成本篇讀到的 qwen3.5 頁面沒有帶 cloud 的標籤，其他 Qwen 檔案庫沒讀。",
+    "「權重在 Hugging Face 公開，所以 Ollama 有本機標籤」或「一般電腦放得下」：Ollama 的 glm-5.3-flash、deepseek-v4.1-flash 頁面只有 :cloud 標籤，本篇也沒有讀 Hugging Face。",
+    "「DeepSeek 的 API 模型等於 Ollama 上的 deepseek-r1」：頁面上兩邊的模型名不同（deepseek-flash、deepseek-v4-pro 對 deepseek-r1），也沒有寫對照；deepseek-r1 除 671b 外是蒸餾模型。",
+    "把 deepseek-flash 與 Ollama 的 deepseek-v4.1-flash:cloud 寫成同一個部署：兩邊頁面沒有寫對照。",
+    "「違反條款」「合法」「合規」之類的法律解讀：Anthropic 的句子只轉述原文並歸因，不延伸到條款。也不教用第三方路由器把 Claude Code 的一部分請求導到別的模型。",
+    "價格、方案比較與購買建議：DeepSeek 頁寫 claude-opus 開頭的名稱以 V4 Pro 的價格計費，只轉述這件事並寫「價格以官網為準」；Z.ai 與阿里雲的方案內容與費用以官網為準。",
+    "可以商用：模型頁沒寫的授權不寫；deepseek-r1 頁寫的「support commercial use」只寫成該頁的說法，並附上蒸餾版源自別的授權。",
+    "字面金鑰與 YOUR_API_KEY 之類的佔位字進 code 區塊：三家頁面的範例都用佔位字或把金鑰寫進檔案，本篇一律改成讀環境變數（bash 用 $ZAI_API_KEY 等，Codex 用 env_key），並在正文說明這是改寫。",
+    "「Ollama 的模型頁列了 Codex 的啟動方式」：Applications 區只有 Claude Code、OpenCode、Hermes Agent、OpenClaw 四種，Codex 搭 Ollama 的做法不在這篇。",
+    "Z.ai 與 DeepSeek 兩家同時留在 ~/.codex/models.json 的合併做法：兩家頁面都要求存成同一路徑、內容不同，官方沒有寫合併，正文只寫「一次只能留一家」。",
+    "Claude Code 或 Codex 自己的其他連線（更新檢查、遙測等）會不會送到別處：沒有查，正文只說「資料」指模型請求。",
+    "只看一個條件判斷本機：只看位址（雲端模型頁的 curl 範例就是 localhost 配 :cloud 標籤）或只看名字（網址不是本機時，名字不帶 cloud 也送到別人的伺服器）都不夠，要位址是本機、而且標籤不帶 cloud、Size / Usage 欄是 GB 數字。",
+    "「Z.ai 頁面的兩組別名互相矛盾」這種判斷：頁面寫的是預設對照與手動範例兩種，只並列，不替供應商選，也不說哪一組錯。",
+    "把供應商的 Anthropic 格式端點直接稱為 Anthropic 文件說的「閘道」：兩邊頁面都沒有寫，第 3 節只並列各自的原文。",
+    "把 preferred_auth_method 放回 toml：Codex 的設定參考頁沒有這個鍵。",
+    "（第二輪）「三家端點回答的都是各家自己的模型」：阿里雲 Token Plan 範例用 auto，同方案的模型目錄含其他廠商的模型。",
+    "（第二輪）forced_login_method = \"api\" 配自訂 provider 的 env_key 能不能用：DeepSeek 頁與 Codex 參考頁都沒寫，本篇只說那是 DeepSeek 頁面的範例寫法。"
+  ],
+  "editorial_brief": "這篇只回答「同一個名字跑在哪裡」：Ollama 本機標籤、Ollama 的 :cloud 標籤、供應商自己的端點三種逐家對照，並附上供應商頁面寫的 Claude Code 與 Codex 設定，金鑰一律改成讀環境變數。本機接法的安裝與上下文設定留給本組其他篇，Qwen 與 DeepSeek 各自的本機教學、DeepSeek 的資料流向、中國系模型比較、Ollama 入門各一句帶過。不實測、不比速度與品質、不寫價格；授權只照 Ollama 頁面上有的文字。",
+  "code_samples": [
+    {
+      "label": "ollama-launch-tags.sh：同一行指令，標籤決定跑在哪裡（Ollama）",
+      "language": "bash",
+      "lines": 11,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://ollama.com/library/qwen3.5",
+        "https://ollama.com/library/glm-4.7-flash",
+        "https://ollama.com/library/glm-5.3-flash",
+        "https://ollama.com/library/deepseek-r1",
+        "https://ollama.com/library/deepseek-v4.1-flash"
+      ]
+    },
+    {
+      "label": "use-endpoint.sh：把 Claude Code 指到供應商端點（bash）",
+      "language": "bash",
+      "lines": 45,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://docs.z.ai/devpack/tool/claude",
+        "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+        "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+        "https://code.claude.com/docs/en/llm-gateway"
+      ]
+    },
+    {
+      "label": "~/.codex/config.toml：Codex 接 Z.ai 的 GLM",
+      "language": "toml",
+      "lines": 15,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://docs.z.ai/devpack/tool/codex",
+        "https://www.alibabacloud.com/help/en/model-studio/codex",
+        "https://learn.chatgpt.com/docs/config-file/config-reference"
+      ]
+    },
+    {
+      "label": "~/.codex/config.toml：Codex 接 DeepSeek",
+      "language": "toml",
+      "lines": 22,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+        "https://www.alibabacloud.com/help/en/model-studio/codex",
+        "https://learn.chatgpt.com/docs/config-file/config-reference"
+      ]
+    }
+  ],
+  "hero_label": "三種跑法，三個去處",
+  "diagram": {
+    "layout": "grid",
+    "title": "三種跑法，三個去處",
+    "caption": "四格圖解：權重在自己電腦、Ollama 的 :cloud 標籤、供應商自己的端點，各標資料送到哪裡，最後一格是分辨方法（2026 年 10 月查證各家官方頁）。",
+    "nodes": [
+      [
+        "本機權重",
+        "資料留在你的電腦"
+      ],
+      [
+        "雲端標籤",
+        "資料送到 Ollama"
+      ],
+      [
+        "供應商端點",
+        "資料送到供應商"
+      ],
+      [
+        "怎麼分辨",
+        "看位址、標籤與大小欄"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-10-03",
+    "method": "12 條 sources 以 curl -sL -A Mokaair-editorial 重抓（UTC 2026-10-03，台北 10-04），Z.ai 與 Claude Code 另抓 .md 版；依協調者要求補讀並加入 Codex 設定參考頁（learn.chatgpt.com/docs/config-file/config-reference，developers.openai.com 舊網址 308 轉到這裡）。為了反駁另讀了不進 sources 的頁面：Ollama 五個家族的 /tags 頁、Codex config-advanced 與 config-basic 的 .md、Claude Code env-vars 與 model-config 的 .md。title、description、導言、summary、每段正文、三個 list 項、callout、表格每格與 caption、FAQ 五題、圖解 caption 與格子、hero_label、四個 code 區塊的每個識別字逐條對回原文。verbatim_quote 一律綁回自己的 url，HTML 標籤刪成空字串、實體還原、空白正規化後做子字串比對（.md 版另試去掉反引號）。必連六篇讀了 title 與相關段落。沒有安裝任何軟體、沒有呼叫任何供應商 API、沒有改任何設定，請求不含任何個人資料。",
+    "verdict": "ok：改了 14 處（事實 9 處，歸因／改寫揭露／小修 5 處）；骨幹（三種跑法、三家逐家寫、金鑰一律讀環境變數）不變，程式範例只拿掉 DeepSeek toml 的一個鍵並改註解。",
+    "edits_to_the_pack": [
+      "判斷本機的方法（callout、第 1 節第 1 段、FAQ 1、code 1 註解、研究紀錄圖解第 4 格）：補上「連的是自己電腦的位址」這個條件與兩個雲端模型頁 curl 範例「localhost 配 :cloud 標籤」的反例；「大小欄寫「-」」改成「Size / Usage 欄是不是 GB 數字」，「-」只說是模型頁的寫法（/tags 頁寫 Medium Usage）。",
+      "「Ollama 上下載得到的是…」的範圍（summary 2、第 2 節 GLM 與 DeepSeek 段、FAQ 2）：限定為本篇讀的五個模型頁與七個尺寸標籤；qwen3.5 有 65 個標籤、deepseek-r1 有 35 個，deepseek-r1 的量化標籤最大到 1.3TB。",
+      "第 5 節第 1 段「Z.ai 的頁面要你自己建立，DeepSeek 的頁面列出完整內容」不對：Z.ai 頁也列出完整的 models.json（Copy the following content entirely into ~/.codex/models.json）。改成兩家都列完整內容、內容不同（glm-5.3 對 deepseek-flash 與 deepseek-v4-pro）。",
+      "DeepSeek 的 toml 拿掉 preferred_auth_method = \"apikey\"：Codex 的設定參考頁、進階頁、基本頁都沒有這個鍵；註解交代拿掉的原因，並註明頁面的 [desktop] 區段是 ChatGPT 桌面版用的、也不放。",
+      "env_key 改寫補上 Codex 官方依據（第 4 節第 2 段、summary 4、FAQ 5）：env_key 是 Environment variable supplying the provider API key，experimental_bearer_token 標 discouraged; use env_key；sources 加第 13 條。",
+      "wire_api（第 4 節第 1 段、第 5 節第 2 段、FAQ 4）：補 Codex 參考頁「responses 是唯一支援的值、省略時也是它」；Coding Plan 那一節另寫不支援 Responses API，疑難排解對錯誤的解法是改成 responses，兩邊照實並列；「Coding Plan 頁面」改成「那一節」。",
+      "阿里雲 Claude Code 頁的疑難排解表另列三組網址（例如 Pay-as-you-go https://dashscope.aliyuncs.com/apps/anthropic），和設定那一節不同：list 第 3 項補上並寫明函式照設定那一節；「Token Plan 兩版共用網址」限定在設定那一節。",
+      "第 3 節第 1 段的閘道類比改成只並列兩邊原文：Anthropic 頁把 ANTHROPIC_BASE_URL 稱為指向閘道的變數，三家頁面也用這個變數；供應商端點算不算閘道，兩邊都沒寫。",
+      "Z.ai 別名（list 第 1 項）：「兩處不一致，所以函式不設別名」改成並列預設對照與手動範例兩種寫法，函式照自動腳本那一組三個變數；補頁首指向切換 GLM-5.3 的說明。",
+      "改寫揭露（第 3 節第 2 段、code 2 註解）：Z.ai 與阿里雲把變數寫進 ~/.claude/settings.json 的 env 欄位，本篇改寫成 export；金鑰的變數名是本篇取的。",
+      "授權（第 6 節第 1 段、表格 DeepSeek 兩格）：補 Llama 8B 蒸餾版源自 llama3.1 授權一句；8b（latest）頁面標成 DeepSeek-R1-0528-Qwen3-8B，授權段落沒有提到 Qwen3；「除 671b 外是蒸餾模型」與「但蒸餾版源自別的授權」改成照頁面歸因的寫法。",
+      "導言「一組讓 Claude Code 指到供應商端點的環境變數」改成三家（程式有三個函式）。",
+      "第 6 節第 2 段「資料去向看表格裡的標示就夠了」改成：本機標籤要由自己電腦上的 Ollama 執行才留在本機。",
+      "小修：code 2 註解「不寫進任何檔案」改「不寫進這支腳本」、「再開一個新的終端機視窗」改「或」；DeepSeek 對照的主詞改成「傳入的模型名」；刪掉重講蒸餾定義的半句（必連的 deepseek-local-with-ollama 已講），其餘為騰字的轉場精簡。"
+    ],
+    "checked_and_correct": [
+      "三家的端點網址、模型名、環境變數與值逐字相符：api.z.ai/api/anthropic、api.z.ai/api/v1、api.deepseek.com/anthropic、api.deepseek.com/、token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic 與 /compatible-mode/v1、coding-intl.dashscope.aliyuncs.com/apps/anthropic 與 /v1、三個 WorkspaceId 區域網址；API_TIMEOUT_MS 3000000、CLAUDE_CODE_MAX_CONTEXT_TOKENS 983616。",
+      "DeepSeek 的對照（claude-opus 開頭→deepseek-v4-pro、以 V4 Pro 價計費；claude-haiku／claude-sonnet 開頭→deepseek-flash）與範例（三個別名都是 deepseek-flash）正文照實並列。",
+      "Claude Code 這邊的變數名（ANTHROPIC_AUTH_TOKEN、API_TIMEOUT_MS、CLAUDE_CODE_MAX_CONTEXT_TOKENS、CLAUDE_CODE_SUBAGENT_MODEL、ANTHROPIC_DEFAULT_*_MODEL、ANTHROPIC_MODEL）在 Claude Code 的 env-vars 頁都查得到。",
+      "Ollama 五頁的標籤、大小、上下文與能力列逐列相符；Applications 區五頁都只有 claude、opencode、hermes、openclaw 四個 launch 指令，沒有 Codex。",
+      "glm-5.3-flash 頁的託管地點與 zero data retention 句、MIT Licensed；deepseek-v4.1-flash 頁沒有同類句子、沒有授權字樣；qwen3.5、glm-4.7-flash 頁沒有授權字樣。",
+      "Anthropic 的「不支援透過任何閘道把 Claude Code 導到非 Claude 模型」出現並歸因，沒有寫成違反條款；只設網址時 claude.ai 登入仍是有效憑證一句正確。",
+      "不實測規則：沒有速度、品質、跑得動／跑不動；沒有執行輸出；「本站沒有實測」只在第二段導言；title 與 description 沒有「實測」。價格只有「以官網為準」，方案名只用來區分網址。",
+      "必連六篇沒有矛盾：deepseek-local-with-ollama 的六個蒸餾版、8b=Qwen3、llama3.1／llama3.3 授權與本篇一致；ollama-getting-started 的「大小欄是「-」」與本篇模型頁寫法一致；結尾第二個連結與文中書名號的 title 都逐字相同。",
+      "163 條 verbatim_quote 綁回自己的 url 全部找到（原 132 條加查核補的 31 條）；llm-gateway 兩條直引號版只在 .md 找得到（HTML 是彎引號），Z.ai Codex 三條帶反引號的只在 .md 或去反引號後找得到。"
+    ],
+    "left_for_the_owner": [
+      "站內 qwen-local-deployment 舉 qwen3.5:cloud 當雲端標籤的例子；今天 qwen3.5 的 65 個標籤沒有一個帶 cloud。那是另一篇的事，本輪沒有動。",
+      "lint text_length 軟性警告 7,606 字（撰稿時 6,890）：補上的是判斷方法、同頁不一致與改寫揭露，屬於不能刪的但書；壓不到 6,000。",
+      "Ollama 的雲端標籤在模型頁大小欄寫「-」，在 /tags 頁寫 Medium Usage；本篇改用欄名 Size / Usage 說明，同組其他篇若寫「大小欄是「-」」要注意是哪一頁。"
+    ],
+    "code_recompiled": [
+      {
+        "label": "ollama-launch-tags.sh：同一行指令，標籤決定跑在哪裡（Ollama）",
+        "result": "ok"
+      },
+      {
+        "label": "use-endpoint.sh：把 Claude Code 指到供應商端點（bash）",
+        "result": "ok"
+      },
+      {
+        "label": "~/.codex/config.toml：Codex 接 Z.ai 的 GLM",
+        "result": "ok"
+      },
+      {
+        "label": "~/.codex/config.toml：Codex 接 DeepSeek",
+        "result": "ok"
+      }
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (second round, did not write or run the first factcheck)",
+      "checked_on": "2026-10-04",
+      "method": "13 條 sources 以 curl -sL -A Mokaair-editorial 重抓（台北 2026-10-04 01:20，UTC 2026-10-03），全部 HTTP 200、body 是正文；Z.ai 兩頁、Claude Code gateway 頁、Codex 設定參考頁另抓 .md。為了反駁另讀（不當文章依據）Ollama 五個 /tags 頁與 Claude Code env-vars 的 .md。第一輪新寫或改寫的每一句逐句回原文核對；163 條 verbatim_quote 綁回自己的 url，HTML 標籤刪成空字串、實體還原、空白正規化後全部找到（155 條在 HTML，3 條 Z.ai Codex 與 2 條 llm-gateway 只在 .md，3 條 Z.ai Claude 只在去標籤後含 script 的全文，.md 也有）。四個 code 區塊重跑 bash -n 與 tomllib；兩份 toml 的 11 個鍵逐一在 Codex 設定參考頁的 config.toml 一節找到。",
+      "rechecked": [
+        "callout 的本機判斷法與反例：glm-5.3-flash、deepseek-v4.1-flash 兩個模型頁的 curl 範例逐字是 curl http://localhost:11434/api/chat 配 \"model\": \"glm-5.3-flash:cloud\"／\"deepseek-v4.1-flash:cloud\"；模型頁標籤表欄名是 Size / Usage，雲端標籤那一格寫「-」；/tags 頁欄名相同、那一格寫 Medium Usage。正文、FAQ 1、code 1 註解都限定在模型頁，對得上。",
+        "阿里雲 Claude Code 頁疑難排解（401 invalid_api_key）三組網址逐字：Pay-as-you-go https://dashscope.aliyuncs.com/apps/anthropic、Coding Plan https://coding.dashscope.aliyuncs.com/apps/anthropic、Token Plan Team Edition https://token-plan.cn-beijing.maas.aliyuncs.com/apps/anthropic；設定那一節是 coding-intl 與 ap-southeast-1 的網址與三個 {WorkspaceId} 區域網址。正文只舉第一個，寫法只陳述兩處各怎麼寫。",
+        "Coding Plan、wire_api、Codex 參考頁三處原句都在：Coding Plan only supports the Chat/Completions API. Install an older version of Codex, such as 0.80.0:（版本號 0.80.0 逐字）；Coding Plan does not support the Responses API (Chat/Completions API only)；Newer versions of Codex no longer support wire_api = \"chat\".／Change wire_api to responses and verify that base_url is correct.；Codex 參考頁 Protocol used by the provider. responses is the only supported value, and it is the default when omitted.",
+        "deepseek-r1 授權段落：MIT License、support commercial use、Qwen 蒸餾版源自 Qwen-2.5（Apache 2.0 License）、Llama 8B 源自 Llama3.1-8B-Base（llama3.1 license）、Llama 70B 源自 Llama3.3-70B-Instruct（llama3.3 license）三句 Please note 都在；同頁 Distilled models 把 deepseek-r1:8b 標成 DeepSeek-R1-0528-Qwen3-8B，標籤表 8b 標 latest；授權段落只提到 Qwen-2.5 與兩個 Llama，沒有 Qwen3。否定句限定在授權段落，成立。",
+        "Codex 設定參考頁 env_key（Environment variable supplying the provider API key.）與 experimental_bearer_token（Direct bearer token for the provider (discouraged; use env_key).）原句逐字；gateway 頁 ANTHROPIC_BASE_URL is the variable that points Claude Code at the gateway. 逐字。",
+        "code 2 的揭露註解：Z.ai 自動腳本與手動設定都寫進 ~/.claude/settings.json，阿里雲是 Create ~/.claude/settings.json，DeepSeek 用 export（Windows 用 $env:）；三家都沒有指定金鑰的環境變數名，ZAI_API_KEY、DEEPSEEK_API_KEY、MODELSTUDIO_API_KEY 是本篇取的，說法一致。",
+        "forced_login_method：DeepSeek Codex 頁範例逐字有 forced_login_method = \"api\"，Codex 設定參考頁 config.toml 一節有這個鍵（chatgpt | api，Restrict Codex to a specific authentication method.），兩者都成立，依協調者決定保留，註解改成明寫「DeepSeek 頁面的範例寫法」；它配 env_key 行不行文件沒寫，本篇也沒寫。preferred_auth_method 在參考頁 .md 與 HTML 都搜不到，維持拿掉。",
+        "Z.ai 頁首 To use the latest GLM-5.3 model, see How to Switch the Model in Use：正文只說頁首指向另一頁，沒有任何句子依賴那一頁的內容，不動。",
+        "models-seen.json 的 DeepSeek-R1-0528-Qwen3-8B：verbatim DeepSeek-R1-0528-Qwen3-8B ollama run deepseek-r1:8b 在 https://ollama.com/library/deepseek-r1 去標籤後找得到。",
+        "抽查第一輪 checked_and_correct：9 條全部重查（端點與值、DeepSeek 對照、Claude Code 變數在 env-vars 頁都存在、Ollama 五頁、託管與授權字樣、Anthropic 歸因、不實測規則、必連六篇 title 與無矛盾、163 條引文），都成立。",
+        "表格 18 格與 caption 全部重對：三個家族的本機標籤與大小、上下文、:cloud 標籤、Claude Code 與 Codex 端點、授權都與今天的頁面一致；qwen3.5 頁今天寫 66 models（第一輪 65），多的不是 cloud 標籤，七個尺寸標籤的數字沒變。"
+      ],
+      "edits": [
+        "第 3 節第 1 段「下面三家的頁面用的也是 ANTHROPIC_BASE_URL，回答的是各家自己的模型」→「回答的是各家頁面設定的模型」：阿里雲 Token Plan 範例把 ANTHROPIC_MODEL 與 CLAUDE_CODE_SUBAGENT_MODEL 設成 auto，Claude Code 頁沒有寫 auto 是哪個模型；阿里雲 Codex 頁 Token Plan 的模型目錄（第一筆都是 auto）除 Qwen 外，Personal 與 Team 都列了 glm-5.3、deepseek-v4-pro，Team 另列 kimi-k2.6、MiniMax-M2.5 等，「各家自己的模型」撐不住。",
+        "callout「標籤表 Size / Usage 欄是 GB 數字（本篇讀的雲端標籤在這一欄寫「-」）」→「Size / Usage 欄是檔案大小（本篇讀的模型頁上，雲端標籤這一格寫「-」）」：「-」只在模型頁成立，/tags 頁同一格寫 Medium Usage，限定到模型頁；「GB 數字」改成與第 1 節、FAQ 1 一致的「檔案大小」，不把小於 1GB 的本機標籤排除在規則外。",
+        "表格 GLM 與 DeepSeek 的「Ollama 的 :cloud 標籤」兩格「只有這一個標籤」→「該頁只有這一個標籤；…；其他 GLM／DeepSeek 檔案庫本篇沒讀」：這一欄是家族層級，本篇只讀了 glm-5.3-flash 與 deepseek-v4.1-flash 兩頁，照 Qwen 那一格的寫法限定範圍（同組其他篇沿用這張表）。",
+        "第 4 節第 2 段「金鑰的寫法三家不同」→「金鑰有兩種寫法」：Z.ai 與 DeepSeek 同樣用 experimental_bearer_token，只有阿里雲用 env_key。",
+        "summary 第 4 句「Z.ai 與 DeepSeek 的 Claude Code 頁各有一組模型別名對照」→「都寫了模型別名對照」：Z.ai 頁有預設對照與手動範例兩種寫法，正文也是並列兩種。",
+        "DeepSeek toml 註解「比 Z.ai 多的幾行照 DeepSeek 頁抄：forced_login_method 是…」→「比 Z.ai 多的幾行是 DeepSeek 頁面的範例寫法；頁面說明 forced_login_method 是…」：依協調者決定明寫出處（行數不變，22 行）。",
+        "第 5 節第 1 段刪「檔案很長，本篇不重貼。」（兩份 toml 的註解已寫「本篇不重貼」），並把下一句主詞補成「models.json 照兩家頁面原樣貼上」，避免讀成 config.toml。為騰字，沒有刪任何但書或「不是本機」的標示。"
+      ],
+      "verdict": "ok：改了 7 處（事實 3 處：閘道段「各家自己的模型」、callout 的欄位寫法、表格兩格的範圍；其餘為用詞、揭露與騰字）。第一輪改寫的句子除上述外逐句對得上原文，四個 code 區塊語法與識別字都成立，骨幹不變。段落字數 2,994；text_length 7,644 字仍超過 6,000 的軟性指引，增加的是不可刪的範圍限定。"
+    }
+  }
+}
