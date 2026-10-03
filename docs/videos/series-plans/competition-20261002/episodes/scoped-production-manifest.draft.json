@@ -1,0 +1,399 @@
+{
+  "artifact_type": "scoped-drama-manifest-draft",
+  "draft_version": 1,
+  "execution_enabled": false,
+  "status": "draft-not-valid-for-live-preview-or-execute",
+  "schema_authority": "ops/video/scoped_drama.py --schema",
+  "prepared_on": "2026-10-02",
+  "notice": "不可直接送入runner。candidate_manifest仍含null gate/frame資料；已知script UUID為真實pending而非approved。需按runbook分階段建立新的live manifest並取得真實核准。",
+  "current_animation_generated_seconds": 0,
+  "source_object_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+  "expected_manifest_sha256": null,
+  "blocking_requirements": [
+    "SSH主機位址/port、對目的地的TCP網路授權與正式管理員執行環境尚缺。",
+    "原作品最新setting/outline/chapter1需真實approved且series active；不得偽造UUID或直接設approved。",
+    "E1/E2 script已送正常後台，目前pending，decided_at=null。",
+    "角色圖、選中look review、首鏡keyframe及storyboard尚未生成/核准；first_frame未知。",
+    "任何稿/重錄/時序變更都要重算artifacts和manifest hash；不可沿用先前approved映射。",
+    "先pilot驗收，才另建episodes階段manifest；工具本身不判斷視覺品質或自動解鎖phase。"
+  ],
+  "script_review_receipts": [
+    {
+      "slug": "wedding-reckoning-competition-e01",
+      "id": "b909e8f3-0cfd-4488-b323-1d81dbaa0dce",
+      "gate": "script",
+      "status": "pending",
+      "decided_at": null,
+      "content_sha256": "82352b248e66810bd217092b6284ea13c0ec688dbb410e6f791107e13781c429",
+      "receipt_path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-script-review-receipt.json",
+      "admin_url": "https://mokaair.com/zh-TW/admin/videos?video=wedding-reckoning-competition-e01"
+    },
+    {
+      "slug": "wedding-reckoning-competition-e02",
+      "id": "e0c54172-1349-40fa-b29f-0da3422e84cb",
+      "gate": "script",
+      "status": "pending",
+      "decided_at": null,
+      "content_sha256": "3e1d8461cd7013ea646dd517e1f7bc35b960e191f9ac005df039c112e1468bdd",
+      "receipt_path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-script-review-receipt.json",
+      "admin_url": "https://mokaair.com/zh-TW/admin/videos?video=wedding-reckoning-competition-e02"
+    }
+  ],
+  "shot_inventory": [
+    {
+      "slug": "wedding-reckoning-competition-e01",
+      "editorial_duration_seconds": 144.86,
+      "shot_count": 40,
+      "scene_ids": [
+        "wr-e01-s01",
+        "wr-e01-s02",
+        "wr-e01-s03",
+        "wr-e01-s04",
+        "wr-e01-s05",
+        "wr-e01-s06",
+        "wr-e01-s07",
+        "wr-e01-s08",
+        "wr-e01-s09",
+        "wr-e01-s10",
+        "wr-e01-s11",
+        "wr-e01-s12",
+        "wr-e01-s13",
+        "wr-e01-s14",
+        "wr-e01-s15",
+        "wr-e01-s16",
+        "wr-e01-s17",
+        "wr-e01-s18",
+        "wr-e01-s19",
+        "wr-e01-s20",
+        "wr-e01-s21",
+        "wr-e01-s22",
+        "wr-e01-s23",
+        "wr-e01-s24",
+        "wr-e01-s25",
+        "wr-e01-s26",
+        "wr-e01-s27",
+        "wr-e01-s28",
+        "wr-e01-s29",
+        "wr-e01-s30",
+        "wr-e01-s31",
+        "wr-e01-s32",
+        "wr-e01-s33",
+        "wr-e01-s34",
+        "wr-e01-s36",
+        "wr-e01-s37",
+        "wr-e01-s38",
+        "wr-e01-s40",
+        "wr-e01-s41",
+        "wr-e01-s42"
+      ],
+      "merged_windows": [
+        {
+          "scene_id": "wr-e01-s34",
+          "source_ids": [
+            "WR-E01-S34",
+            "WR-E01-S35"
+          ]
+        },
+        {
+          "scene_id": "wr-e01-s38",
+          "source_ids": [
+            "WR-E01-S38",
+            "WR-E01-S39"
+          ]
+        }
+      ],
+      "animation_generated_seconds": 0
+    },
+    {
+      "slug": "wedding-reckoning-competition-e02",
+      "editorial_duration_seconds": 159.05,
+      "shot_count": 41,
+      "scene_ids": [
+        "wr-e02-s01",
+        "wr-e02-s02",
+        "wr-e02-s03",
+        "wr-e02-s04",
+        "wr-e02-s05",
+        "wr-e02-s06",
+        "wr-e02-s07",
+        "wr-e02-s08",
+        "wr-e02-s09",
+        "wr-e02-s10",
+        "wr-e02-s11",
+        "wr-e02-s12",
+        "wr-e02-s13",
+        "wr-e02-s14",
+        "wr-e02-s15",
+        "wr-e02-s16",
+        "wr-e02-s17",
+        "wr-e02-s18",
+        "wr-e02-s19",
+        "wr-e02-s20",
+        "wr-e02-s21",
+        "wr-e02-s22",
+        "wr-e02-s23",
+        "wr-e02-s24",
+        "wr-e02-s25",
+        "wr-e02-s26",
+        "wr-e02-s27",
+        "wr-e02-s28",
+        "wr-e02-s29",
+        "wr-e02-s30",
+        "wr-e02-s31",
+        "wr-e02-s32",
+        "wr-e02-s33",
+        "wr-e02-s34",
+        "wr-e02-s35",
+        "wr-e02-s36",
+        "wr-e02-s37",
+        "wr-e02-s38",
+        "wr-e02-s39",
+        "wr-e02-s40",
+        "wr-e02-s41"
+      ],
+      "merged_windows": [],
+      "animation_generated_seconds": 0
+    }
+  ],
+  "cost_basis": {
+    "episode_01_windows": 40,
+    "episode_02_windows": 41,
+    "total_windows": 81,
+    "source_seconds_per_clip": 8,
+    "first_pass_source_seconds": 648,
+    "veo_usd_per_source_second": "0.08",
+    "first_pass_veo_estimate_usd": "51.84",
+    "estimate_is_actual_bill": false,
+    "excluded_from_veo_estimate": [
+      "角色/造型圖",
+      "keyframes",
+      "judge",
+      "配音",
+      "配樂/音效",
+      "重拍"
+    ],
+    "pilot_scene_ids": [
+      "wr-e01-s01",
+      "wr-e01-s02",
+      "wr-e01-s03",
+      "wr-e01-s04",
+      "wr-e01-s05",
+      "wr-e01-s06",
+      "wr-e01-s07",
+      "wr-e01-s08",
+      "wr-e01-s09",
+      "wr-e01-s10",
+      "wr-e01-s11",
+      "wr-e01-s12",
+      "wr-e01-s13",
+      "wr-e01-s14",
+      "wr-e01-s15"
+    ],
+    "pilot_first_pass_source_seconds": 120,
+    "pilot_first_pass_veo_estimate_usd": "9.60",
+    "manual_reserve_note": "10美元為語音/HTTP judge等人工登記費用預留，涵蓋原5美元，非實際帳單或另加的人力報價。"
+  },
+  "candidate_manifest": {
+    "schema_version": 1,
+    "campaign": "wedding-reckoning-competition-20261002",
+    "locale": "zh-TW",
+    "source": {
+      "path": "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs",
+      "sha256": "ef8b5993221a3c065850eb326e7259ea7688457267188b31c2a725aedd2d29f3"
+    },
+    "series_documents": [
+      {
+        "id": null,
+        "kind": "setting",
+        "chapter_number": 0,
+        "body_sha256": null
+      },
+      {
+        "id": null,
+        "kind": "outline",
+        "chapter_number": 0,
+        "body_sha256": null
+      },
+      {
+        "id": null,
+        "kind": "chapter",
+        "chapter_number": 1,
+        "body_sha256": null
+      }
+    ],
+    "episodes": [
+      {
+        "slug": "wedding-reckoning-competition-e01",
+        "script": {
+          "path": "docs/videos/series-plans/competition-20261002/pilot/episode-01-screenplay.md",
+          "sha256": "82352b248e66810bd217092b6284ea13c0ec688dbb410e6f791107e13781c429"
+        },
+        "edit": {
+          "path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-measured-edit.json",
+          "sha256": "34438e1c64cc6535a1ad1cbee685027801483f33783093c5038941f1d9917bb6"
+        }
+      },
+      {
+        "slug": "wedding-reckoning-competition-e02",
+        "script": {
+          "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-screenplay.md",
+          "sha256": "3e1d8461cd7013ea646dd517e1f7bc35b960e191f9ac005df039c112e1468bdd"
+        },
+        "edit": {
+          "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-measured-edit.json",
+          "sha256": "eca4d156b1879fb566e48131a24492efd13b59b4a7a3f3d7d4985dbe69b407a5"
+        }
+      }
+    ],
+    "budget": {
+      "batch_cap_usd": 350,
+      "pilot_cap_usd": 100,
+      "manual_reserve_usd": "10"
+    },
+    "requests": [
+      {
+        "id": "pilot-e01-s01-clip",
+        "kind": "clip",
+        "phase": "pilot",
+        "payload": {
+          "slug": "wedding-reckoning-competition-e01",
+          "prompt": "Her fingers tighten once around the pen. Locked medium close-up; full face, suit and pen-holding hand remain visible.",
+          "shot_id": "wr-e01-s01",
+          "first_frame": null,
+          "last_frame": null,
+          "references": [],
+          "seconds": 8,
+          "resolution": "1080p",
+          "native_audio": true
+        },
+        "characters": [
+          "zhitang"
+        ],
+        "reviews": [
+          {
+            "id": "b909e8f3-0cfd-4488-b323-1d81dbaa0dce",
+            "gate": "script",
+            "subject": null,
+            "artifact": {
+              "path": "docs/videos/series-plans/competition-20261002/pilot/episode-01-screenplay.md",
+              "sha256": "82352b248e66810bd217092b6284ea13c0ec688dbb410e6f791107e13781c429"
+            }
+          },
+          {
+            "id": null,
+            "gate": "look",
+            "subject": "zhitang",
+            "artifact": {
+              "path": "reviews/e01/looks/zhitang.json",
+              "sha256": null
+            }
+          },
+          {
+            "id": null,
+            "gate": "storyboard",
+            "subject": null,
+            "artifact": {
+              "path": "reviews/e01/storyboards/pilot-s01.json",
+              "sha256": null
+            }
+          }
+        ],
+        "retake_of": null,
+        "retake_reason": null
+      }
+    ]
+  },
+  "stage_templates": {
+    "pilot_look_request": {
+      "id": "pilot-e01-look-zhitang",
+      "kind": "image",
+      "phase": "pilot",
+      "payload": {
+        "slug": "wedding-reckoning-competition-e01",
+        "purpose": "character_sheet",
+        "aspect": "16:9",
+        "shot_id": "look-zhitang",
+        "prompt": null,
+        "references": []
+      },
+      "characters": [
+        "zhitang"
+      ],
+      "reviews": [
+        {
+          "id": "b909e8f3-0cfd-4488-b323-1d81dbaa0dce",
+          "gate": "script",
+          "subject": null,
+          "artifact": {
+            "path": "docs/videos/series-plans/competition-20261002/pilot/episode-01-screenplay.md",
+            "sha256": "82352b248e66810bd217092b6284ea13c0ec688dbb410e6f791107e13781c429"
+          }
+        }
+      ]
+    },
+    "pilot_keyframe_request": {
+      "id": "pilot-e01-s01-keyframe",
+      "kind": "image",
+      "phase": "pilot",
+      "payload": {
+        "slug": "wedding-reckoning-competition-e01",
+        "purpose": "keyframe",
+        "aspect": "16:9",
+        "shot_id": "wr-e01-s01",
+        "prompt": null,
+        "references": [
+          {
+            "sha256": null,
+            "role": "character"
+          }
+        ]
+      },
+      "characters": [
+        "zhitang"
+      ],
+      "reviews": [
+        {
+          "id": "b909e8f3-0cfd-4488-b323-1d81dbaa0dce",
+          "gate": "script",
+          "subject": null,
+          "artifact": {
+            "path": "docs/videos/series-plans/competition-20261002/pilot/episode-01-screenplay.md",
+            "sha256": "82352b248e66810bd217092b6284ea13c0ec688dbb410e6f791107e13781c429"
+          }
+        },
+        {
+          "id": null,
+          "gate": "look",
+          "subject": "zhitang",
+          "artifact": {
+            "path": "reviews/e01/looks/zhitang.json",
+            "sha256": null
+          }
+        }
+      ]
+    },
+    "music_request": {
+      "id": "e01-music",
+      "kind": "music",
+      "phase": "episodes",
+      "payload": {
+        "slug": "wedding-reckoning-competition-e01",
+        "seconds": 120,
+        "prompt": null
+      },
+      "characters": [],
+      "reviews": [
+        {
+          "id": "b909e8f3-0cfd-4488-b323-1d81dbaa0dce",
+          "gate": "script",
+          "subject": null,
+          "artifact": {
+            "path": "docs/videos/series-plans/competition-20261002/pilot/episode-01-screenplay.md",
+            "sha256": "82352b248e66810bd217092b6284ea13c0ec688dbb410e6f791107e13781c429"
+          }
+        }
+      ]
+    },
+    "notes": "templates同樣不可執行。各stage僅納入已齊備實檔/真核准；不得把未知templates合併送入live manifest。"
+  }
+}
