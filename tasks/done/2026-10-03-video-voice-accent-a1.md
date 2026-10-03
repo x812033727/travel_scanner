@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-video-voice-accent-a1
 title: Video voice accent: retire 「台灣國語」 in Gemini styles for the owner's A1 wording
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-fable-accent-a1
 claimed_at: 2026-10-03T06:40:55Z
 created_at: 2026-10-03T06:39:10Z
-completed_at:
+completed_at: 2026-10-03T07:44:40Z
 branch:
 depends_on: []
 scope:
@@ -65,7 +65,7 @@ same text under five wordings put 「台灣國語」 last every take; the owner 
       `dubs/plan.mjs`; writer prompts in `prompts.mjs` ask for the channel wording.
 - [x] Docs: `docs/videos/README.md` (「口音」 row), `ILLUSTRATED.md`, `DUBS.md`, `DESIGN.md`, `DRAMA.md`,
       skill `script-writing.md` and `writer-drama.md`.
-- [ ] Long-form duration receipt rebound by an independent review agent (bound files changed:
+- [x] Long-form duration receipt rebound by an independent review agent (`claude-pr-review-1168`, commits 261e9d9f and merge 21d69d74) (bound files changed:
       `models.py`, `flow.mjs`, `prompts.mjs`, `automation.test.mjs`, `tts.test.mjs`, `README.md`, `DESIGN.md`).
 
 ## How to verify
