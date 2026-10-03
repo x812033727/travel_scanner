@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
 <title id="title">示例：兩條誤差曲線從哪裡分岔 / Overfitting: training vs. validation error</title>
-<desc id="desc">示例圖，數字為編寫的教學設定、未實際訓練。橫軸是訓練輪數，縱軸是錯誤率。綠色的訓練誤差從第 1 輪的 30% 一路降到第 20 輪的 1%；橘色的驗證誤差從 31% 降到第 8 輪的 12% 後回升，第 20 輪到 20%。第 8 輪以前兩條線一起降，代表模型還在學普遍規律；第 8 輪以後兩線分岔、差距越拉越大，就是過度擬合，提早停止會取第 8 輪的版本。右側說明：一起降是還在學規律，訓練降而驗證升是過度擬合，兩條都高是低度擬合。</desc>
+<desc id="desc">示例圖，數字為編寫的教學設定、未實際訓練。橫軸是訓練輪數，縱軸是錯誤率。深綠色的訓練誤差從第 1 輪的 30% 一路降到第 20 輪的 1%；橘色的驗證誤差從 31% 降到第 8 輪的 12% 後回升，第 20 輪到 20%。第 8 輪以前兩條線一起降，代表模型還在學普遍規律；第 8 輪以後兩線分岔、差距越拉越大，就是過度擬合，提早停止會取第 8 輪的版本。右側說明：一起降是還在學規律，訓練降而驗證升是過度擬合，兩條都高是低度擬合。</desc>
 <rect width="1600" height="900" fill="#F7F1E8"/>
 <defs>
 <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#102A2B"/></marker>

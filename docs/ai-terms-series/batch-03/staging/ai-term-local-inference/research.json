@@ -6,11 +6,11 @@
     {
       "url": "https://github.com/ggml-org/llama.cpp",
       "title": "llama.cpp：專案說明（README）",
-      "access": "github.com returned 403 through the proxy; read the same README via https://raw.githubusercontent.com/ggml-org/llama.cpp/master/README.md (HTTP 200)",
+      "access": "github.com returned 403 through the proxy; read the same README via https://raw.githubusercontent.com/ggml-org/llama.cpp/master/README.md (HTTP 200); re-read 2026-10-03 by the verifier: github.com still 403 (session proxy has GitHub disabled), raw README 200",
       "claims": [
         "目標是在各種硬體上做 LLM 推論，locally and in the cloud",
         "1.5 到 8 位元整數量化，用於加快推論、降低記憶體用量",
-        "CPU＋GPU 混合推論，處理大於顯示記憶體總量的模型"
+        "CPU＋GPU 混合推論，處理大於顯示記憶體總量的模型（只能部分加速，正文「整份放進顯示記憶體通常最快」以此為據）"
       ]
     },
     {
@@ -23,7 +23,7 @@
         "預設綁定 127.0.0.1 的 11434 埠，OLLAMA_HOST 改綁定位址",
         "macOS 與 Windows 自動下載更新",
         "2K 上下文配 4 個並行請求等於 8K 上下文並配置額外記憶體",
-        "模型能整份放進單一 GPU 時通常效能最好；ollama ps 顯示 CPU／GPU 比例"
+        "ollama ps 顯示 CPU／GPU 比例（「能整份放進單一 GPU 時通常效能最好」講的是單一 GPU 對多張 GPU，只當旁證）"
       ]
     },
     {
@@ -34,6 +34,7 @@
         "bfloat16／float16 載入時，X 十億參數約需 2X GB 顯示記憶體",
         "KV cache 數值個數＝2 × 序列長度 × 注意力頭數 × 每頭維度 × 層數",
         "使用 KV cache 時記憶體隨 token 數線性增加",
+        "同一份指南：MQA、GQA 讓多個頭共用 key／value，能大幅減少 KV cache 記憶體",
         "4 位元量化結果實務上常與較高精度不同"
       ]
     },
@@ -79,7 +80,8 @@
       "access": "web open (curl -sSL, HTTP 200); English page https://support.apple.com/guide/iphone/apple-intelligence-and-privacy-iphe3f499e0e/ios also 200 and consistent",
       "claims": [
         "Apple Intelligence 先分析請求能否在裝置上處理，較複雜的可使用私密雲端運算",
-        "設定 → 隱私權與安全性 → Apple Intelligence 報告，過去 15 分鐘或過去 7 天，輸出送往私密雲端運算的要求紀錄"
+        "設定 → 隱私權與安全性 → Apple Intelligence 報告，過去 15 分鐘或過去 7 天，輸出送往私密雲端運算的要求紀錄",
+        "人工在地化的繁中用語：Apple Intelligence 模型「在裝置上執行」"
       ]
     },
     {
@@ -96,9 +98,9 @@
     {
       "url": "https://developer.android.com/ai/gemini-nano?hl=zh-tw",
       "title": "Android Developers：Gemini Nano（繁體中文版）",
-      "access": "web open (curl -sSL, HTTP 200)",
+      "access": "web open (curl -sSL, HTTP 200); page banner says Google translated it with AI, so the article labels it as an AI-translated page",
       "claims": [
-        "繁中用語「裝置端 AI」「在本機執行提示」"
+        "繁中用語「裝置端 AI」「在本機執行提示」（機器翻譯頁）"
       ]
     },
     {
@@ -109,7 +111,7 @@
         "提示詞與模型輸出在本機處理",
         "仍會為下載模型與執行元件連網；回報問題時可選擇分享紀錄檔；診斷收集依條款",
         "沒有每個 token 的費用",
-        "隨應用程式一起提供；模型首次使用時下載並快取"
+        "隨應用程式一起提供（支援 Windows、macOS、Linux），不是作業系統內建；模型首次使用時下載並快取"
       ]
     },
     {
@@ -129,6 +131,6 @@
     "On-device inference"
   ],
   "existing_overlap": "local-llm-why-and-when（為什麼在自己電腦跑 AI、入門路線）與 local-llm-hardware-requirements（記憶體算法與硬體規格）是操作教學，第一段即連過去，不重寫它們的步驟、型號或檔案大小。ai-term-inference 已講雲端與本機的一般差異，這裡聚焦「什麼真的留在本機」與作業系統內建模型。ai-term-kv-cache（本批另一位作者）與 ai-term-quantization 只點名並連結。",
-  "running_text_characters": 2594,
-  "notes": "Counted with app.guides.pack_ingest._body_length on the final pack.json (includes rich_paragraph link labels). Dry-run ingest passes with only the expected no_summary warning. No GPU models, prices, benchmark scores or model context sizes are written; Apple's on-device and PCC token limits and daily quota were seen on the official pages but deliberately left out as product snapshots. Source vs brief: Apple's Foundation Models framework, which the catalogue lists as an on-device source, now also routes to Private Cloud Compute and other server models through the same API; the article uses this as the main example of why 'built-in model' does not mean 'local'. Microsoft's two pages describe Foundry Local's network use slightly differently (what-is page: model/component downloads plus optional diagnostics; Windows FAQ: initial download plus optional catalog refresh, 'only network traffic'); the article lists the union and does not claim either is exhaustive. The meeting-notes walk-through is an original illustrative example, labelled unmeasured. Diagram carries no numbers other than the drawing year 2026."
+  "running_text_characters": 2659,
+  "notes": "Counted with app.guides.pack_ingest._body_length on the final pack.json (includes rich_paragraph link labels): 2594 before verification, 2659 after the verifier added the MQA/GQA caveat, the AI-translation label and the 'not built into the OS' clause for Foundry Local. Dry-run ingest passes with only the expected no_summary warning. No GPU models, prices, benchmark scores or model context sizes are written; Apple's on-device and PCC token limits and daily quota were seen on the official pages but deliberately left out as product snapshots. Source vs brief: Apple's Foundation Models framework, which the catalogue lists as an on-device source, now also routes to Private Cloud Compute and other server models through the same API; the article uses this as the main example of why 'built-in model' does not mean 'local'. Microsoft's two pages describe Foundry Local's network use slightly differently (what-is page: model/component downloads plus optional diagnostics; Windows FAQ: initial download plus optional catalog refresh, 'only network traffic'); the article lists the union and does not claim either is exhaustive. The meeting-notes walk-through is an original illustrative example, labelled unmeasured. Diagram carries no numbers other than the drawing year 2026. Verifier pass 2026-10-03: all 12 sources re-opened; see verify-1.md."
 }

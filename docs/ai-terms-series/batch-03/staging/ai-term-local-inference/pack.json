@@ -22,7 +22,7 @@
           "inlines": [
             {"type": "text", "text": "本機推論（local inference）是把模型權重放在自己的電腦或手機上，由這台裝置完成"},
             {"type": "article", "text": "推論（inference）", "kind": "life", "slug": "ai-term-inference"},
-            {"type": "text", "text": "的計算，提示詞不必送到服務商的伺服器。本站用「本機推論」，Google 的 Android 繁中開發者文件也寫「在本機執行」；作業系統內建的模型，同一份文件稱「裝置端」AI，指的是同一件事。安裝與選購硬體見"},
+            {"type": "text", "text": "的計算，提示詞不必送到服務商的伺服器。本站用「本機推論」，Google 的 Android 開發者文件繁中版（頁面註明由 AI 翻譯）也寫「在本機執行」；作業系統內建的模型，同一份文件稱「裝置端」AI，指的是同一件事。安裝與選購硬體見"},
             {"type": "article", "text": "為什麼要在自己電腦跑 AI", "kind": "life", "slug": "local-llm-why-and-when"},
             {"type": "text", "text": "與"},
             {"type": "article", "text": "跑本機模型要什麼電腦", "kind": "life", "slug": "local-llm-hardware-requirements"},
@@ -81,7 +81,7 @@
           "inlines": [
             {"type": "text", "text": "第二樣是"},
             {"type": "article", "text": "KV 快取（KV Cache）", "kind": "life", "slug": "ai-term-kv-cache"},
-            {"type": "text", "text": "：逐個產生 token 時，把前面每個位置算好的 key 與 value 存起來，省去重算。依 Hugging Face 的指南，它要存的數值個數是 2 乘以序列長度、注意力頭數、每個頭的維度與層數，所以會隨上下文長度線性增加。Ollama 的文件也提醒，2K 的上下文配 4 個並行請求，等於 8K 的上下文。"}
+            {"type": "text", "text": "：逐個產生 token 時，把前面每個位置算好的 key 與 value 存起來，省去重算。依 Hugging Face 的指南，它要存的數值個數是 2 乘以序列長度、注意力頭數、每個頭的維度與層數，所以會隨上下文長度線性增加；同一份指南也指出，讓多個頭共用 key 與 value 的設計（MQA、GQA）能大幅縮小它。Ollama 的文件也提醒，2K 的上下文配 4 個並行請求，等於 8K 的上下文。"}
           ]
         },
         {
@@ -99,7 +99,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Windows AI APIs 需要配備 NPU 的 Copilot+ PC，Microsoft 寫明資料在裝置上處理，輸入不會送到它的伺服器。Foundry Local 隨 App 安裝，模型第一次使用時下載並快取，之後可以離線推論。"
+          "text": "Windows AI APIs 需要配備 NPU 的 Copilot+ PC，Microsoft 寫明資料在裝置上處理，輸入不會送到它的伺服器。Foundry Local 則不是系統內建，而是隨 App 安裝，模型第一次使用時下載並快取，之後可以離線推論。"
         },
         {"type": "heading", "level": 2, "text": "本機與雲端推論的取捨"},
         {
@@ -175,7 +175,7 @@
         {"title": "Apple Developer：Adding server-side intelligence with Private Cloud Compute", "url": "https://developer.apple.com/documentation/foundationmodels/adding-server-side-intelligence-with-private-cloud-compute", "checked_on": "2026-10-03"},
         {"title": "Apple 支援：iPhone 上的 Apple Intelligence 與隱私權（私密雲端運算、Apple Intelligence 報告）", "url": "https://support.apple.com/zh-tw/guide/iphone/iphe3f499e0e/ios", "checked_on": "2026-10-03"},
         {"title": "Android Developers：Gemini Nano（AICore 架構與隱私說明）", "url": "https://developer.android.com/ai/gemini-nano", "checked_on": "2026-10-03"},
-        {"title": "Android Developers：Gemini Nano 繁體中文版（「裝置端」「在本機執行」用語）", "url": "https://developer.android.com/ai/gemini-nano?hl=zh-tw", "checked_on": "2026-10-03"},
+        {"title": "Android Developers：Gemini Nano 繁體中文版（Google 以 AI 翻譯；「裝置端」「在本機執行」用語）", "url": "https://developer.android.com/ai/gemini-nano?hl=zh-tw", "checked_on": "2026-10-03"},
         {"title": "Microsoft Learn：What is Foundry Local?（本機處理與仍會連網的情況）", "url": "https://learn.microsoft.com/en-us/azure/foundry-local/what-is-foundry-local", "checked_on": "2026-10-03"},
         {"title": "Microsoft Learn：FAQs about using AI in Windows apps（Windows AI APIs 與 Foundry Local 的資料處理）", "url": "https://learn.microsoft.com/en-us/windows/ai/faq", "checked_on": "2026-10-03"}
       ]
