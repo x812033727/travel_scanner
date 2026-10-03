@@ -53,7 +53,7 @@ Gemini 聲音描述與模型能力以 [官方語音文件](https://ai.google.dev
 
 這批選 `gemini` / `veo-3.1-lite-generate-preview` / `1080p` / `16:9`；原片固定 8 秒、24 fps。支援首格圖及末格，無 `referenceImages`、無 extension。不要悄悄切到 Fast、其他模型或 720p；供應商能力與價格在 [官方Veo文件](https://ai.google.dev/gemini-api/docs/veo)、[官方價目](https://ai.google.dev/gemini-api/docs/pricing) 與 profile 的核實日期查看。既有剪輯時間網格是30 fps；24→30轉換不等於增加真實動作細節。
 
-此 profile 是 `clips`：正片每鏡都要有可見、合乎因果的動作，拒 `visual: still` 和 freeze padding。每鏡只一個主要動作與一個 camera 意圖；「伸手、拿起、交出、對手反應」拆鏡。8秒素材可剪2–8秒有效段，通常3–6秒；對白不合就調台詞/分鏡並重新量時，不硬拖慢、凍結或加無意義旁白補秒。鏡頭不能超過原片8秒。
+此 profile 是 `clips`：正片每鏡都要有可見、合乎因果的動作，拒 `visual: still` 和 freeze padding。每鏡只一個主要動作與一個 camera 意圖；「伸手、拿起、交出、對手反應」拆鏡。8秒素材可剪2–8秒有效段，通常2–5秒（節奏、開場與鏡位的目標見 `.agents/skills/youtube-video/references/drama-craft.md`，分鏡寫完用它的檢查腳本量）；對白不合就調台詞/分鏡並重新量時，不硬拖慢、凍結或加無意義旁白補秒。鏡頭不能超過原片8秒。
 
 `data.prompt` 寫單格構圖；`data.motion` 寫一個行為；`data.camera` 選一種運動。證物插鏡也讓手、紙邊、視線或環境有可信運動；別把縮放一張公文當成完成動畫。關鍵文字在動態物件上做經檢查的合成，避免每幀錯字漂移。
 

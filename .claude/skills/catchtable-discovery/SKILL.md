@@ -32,11 +32,11 @@ metadata:
 | 1 | 收集 | 內建瀏覽器開榜頁，照 `.agents/skills/catchtable-discovery/references/browser.md` 的累積片段用滾輪逐步捲、名次讀徽章，存 `rankings.json` | 名次連續無缺、`conflicts` 為空 |
 | 2 | 去重 | 主機匯出 worklist（下方指令）＋ repo 內 `apps/api/app/foods/data/platform_reviews/*.json` 的 CatchTable alias；疑似同店列給人判 | 每個 alias 標 `new` 或 `duplicate_of` |
 | 3 | 逐店查證 | 研究代理各一個分頁、各 10 家：店頁（身分、hreflang、訂位判定）→ `/info` 分頁（韓文地址、網站）→ 官方來源；每家寫完就存分片檔；另一個代理抽三分之一複核 | 每筆 `import` 有 https 官方來源與逐字引文；訂位判定有「區塊本體」證據 |
-| 4 | 轉檔 | `catchtable_build_batches.py --check` → `--merchants-out`；本機用 `load_trend_merchants` 再驗 | 零錯誤 |
-| 5 | PR 一 | 候選檔、`merchants.json`、報告初稿、票的 Notes；`merge-when-green` | CI 綠 |
-| 6 | 正式站 | 部署（skill `deploy`）→ 店家 dry-run 對報告 → `--apply` → 再匯出 worklist → `--platform-out` → 平台列以 stdin 餵入 dry-run → `--apply` | 平台 dry-run 全是 `would_create` 才套用（前一批出現過的店會是 `would_update`：從檔案拿掉，不覆寫前一批的列）；再跑一次分別是 `skipped_existing_slug`／`unchanged` |
+| 4 | 檢查 | 本機 `import-catchtable-candidates --file <BATCH>/candidates.json --check`（不開資料庫；候選檔欄位、店家與平台列的規則一次驗完） | 零錯誤 |
+| 5 | PR 一 | 候選檔、報告初稿、票的 Notes；`merge-when-green` | CI 綠 |
+| 6 | 正式站 | 部署（skill `deploy`）→ `import-catchtable-candidates` dry-run（店家與平台列一起）對報告 → `--apply` → 再跑一次 | dry-run 的店家與平台列都是 `would_create` 才套用（前一批建過、連結相同的店報 `unchanged`，不改寫前一批的列；`would_update` 是連結真的變了，先看）；再跑一次分別是 `skipped_existing_slug`／`unchanged` |
 | 7 | 公開 | 後台逐家：座標 → Naver 精準頁（站主貼）→ 一次儲存「已驗證＋核准＋啟用」→ 公開 API 驗證；細節在 `.agents/skills/catchtable-discovery/references/admin.md` | 公開 API 家數與按鈕數對得上報告 |
-| 8 | 收尾 | PR 二（平台列檔、報告數字、`done`）；報告寫三個比例（有官方來源、能訂位、與目錄重複）與未公開的原因 | 票在 done、數字在報告 |
+| 8 | 收尾 | PR 二（報告數字、`done`）；報告寫三個比例（有官方來源、能訂位、與目錄重複）與未公開的原因 | 票在 done、數字在報告 |
 
 ## 指令
 
@@ -45,22 +45,22 @@ metadata:
 <SSH> "cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T api python -m app.cli \
   export-food-merchant-worklist --status all --destination seoul --destination busan --include-researched" > worklist.json
 
-# 候選檔檢查與轉檔（任何機器，只用標準函式庫）
-<PY> ../../tools/catchtable_build_batches.py --candidates <BATCH>/candidates.json --check
+# 候選檔檢查（本機，不開資料庫；錯誤一次列完）
+<PY> -m app.cli import-catchtable-candidates --file <BATCH>/candidates.json --check
+
+# 正式站一次匯入：import 記錄建 pending／inactive／unverified 店家並寫 catchtable_global 平台列，duplicate 只寫平台列；
+# 一筆一交易，永不寫座標、Naver、地圖或審核狀態。檔案不必部署，從 stdin 餵入；先 dry-run，站主同意後加 --apply
+<SSH> "cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T api python -m app.cli import-catchtable-candidates --file /dev/stdin [--limit N] [--apply]" < <BATCH>/candidates.json
+
+# 輸出在哪：逐筆一行（alias、slug、merchant=…、platform=…/狀態、理由）在 stderr；stdout 是 JSON 報告
+# （merchants／platform_rows／statuses 計數、skipped 逐筆、rows 全部），dry-run 與 --apply 同形。
+# 稽核：店家 food_merchant_created、平台列 food_merchant.cli_platform_link_reviewed，source 都是 catchtable-ranking-sweep，
+# 帶 alias 與 ranking_evidence（只在後台）；從 stdin 餵時 file 記成 stdin。
+
+# 兩段式備援（重現舊批次、或店家與平台列要分開套用時）：轉檔腳本只呼叫同一個模型，要用 <PY>
 <PY> ../../tools/catchtable_build_batches.py --candidates <BATCH>/candidates.json --merchants-out <BATCH>/merchants.json
-<PY> -c "from pathlib import Path; from app.foods.trend_import import load_trend_merchants; print(len(load_trend_merchants(Path('<BATCH>/merchants.json'))))"
-
-# 正式站店家：部署前可先從 stdin 餵檔做唯讀 dry-run；部署後用主機上的檔案 dry-run，一致再 --apply
-<SSH> "cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T api python -m app.cli import-trend-merchants --file /dev/stdin" < <BATCH>/merchants.json
-<SSH> "cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T api python -m app.cli import-trend-merchants --file <BATCH>/merchants.json [--apply]"
-
-# 平台列：套用後的 worklist 補 merchant_id，檔案不必部署，從 stdin 餵入
 <PY> ../../tools/catchtable_build_batches.py --candidates <BATCH>/candidates.json --worklist worklist-after.json --platform-out <BATCH>/platform-reviews.json
-<PY> -c "from pathlib import Path; from app.foods.platform_review_import import load_review_file; print(len(load_review_file(Path('<BATCH>/platform-reviews.json')).records))"
-<SSH> "cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T api python -m app.cli apply-food-platform-reviews --file /dev/stdin [--apply]" < <BATCH>/platform-reviews.json
-
-# 輸出在哪：import-trend-merchants 的 dry-run 看 stdout 的 outcomes；apply-food-platform-reviews 的逐列結果在 stderr，
-# stdout 只有 actions／statuses／skipped 摘要。兩者都能從 stdin 餵檔（不必部署），稽核紀錄不會記檔名。
+# 再分別餵 import-trend-merchants 與 apply-food-platform-reviews（稽核來源會是 trend-merchant-sweep／cli）
 
 # 公開 API 驗證（X-Travel-Locale 只吃 en/ja/ko/zh-TW/zh-CN，ja-JP 會安靜回退成 zh-TW；limit 最多 50；
 # 這支沒有 country_code 參數，會被忽略，用 destination_id）
@@ -73,9 +73,9 @@ curl -s -H 'X-Travel-Locale: zh-TW' "https://mokaair.com/api/travel/foods/mercha
 - 店頁服務區塊是 lazy section，**面板隱藏或分頁在背景時永遠不掛載**，看到的「只有候位鈕」不算證據；正面證據可信、缺席不可信。做法在 references/browser.md。
 - `naver.me` 短網址後台會退 422，要先解成 `https://map.naver.com/p/entry/place/<id>`；同一個 Naver id 不能給兩家店（園區內的第二間餐飲要有自己的條目）。
 - 店頁網址：`catchtable.co.kr` 是韓國內需站，不收；`/ja/` 會 404 並轉到 `/zh-TW/ja/shop/…`，日文是 `/ja-JP/`。`canonical_url` 存無前綴的網址，語系版本放 `localized_urls`；拿 `/zh-TW/` 當 canonical 會讓其他語系的公開按鈕都顯示外語提示。
-- 來源網址只收 https（只有 http 的官網不算）；`notes` 1000 字、`quote` 300 字、分類至多 3 個，轉檔腳本會擋。
-- 匯入器的第二把去重鑰匙是 `(destination, local_name)`：分店名要寫進 `local_name`。
-- 轉檔腳本一個候選檔只吃一個 `destination`：一批跨兩個城市就寫 `candidates-<destination>.json` 各一份、轉檔與匯入各跑一次（佈局在 `apps/api/app/foods/data/catchtable/README.md`）。
+- 來源網址只收 https（只有 http 的官網不算）；`notes` 1000 字、`quote` 300 字、分類至多 3 個，`--check` 會擋。候選檔多出來的欄位（例如 `naver_map_url`）整檔拒收：Naver 精準頁要不要從候選檔進來是設計文件待決事項 2，站主決定前不做。
+- 匯入器的第二把去重鑰匙是 `(destination, local_name)`：分店名要寫進 `local_name`。同名不同 slug 報 `skipped_same_name`（改成 `duplicate`）；新店的 CatchTable 店頁已掛在別家店上報 `skipped_branch_conflict`，店家也不建。
+- 一個候選檔只有一個 `destination`：一批跨兩個城市就寫 `candidates-<destination>.json` 各一份、匯入各跑一次（佈局在 `apps/api/app/foods/data/catchtable/README.md`）。
 - 後台編輯器是 React 表單：文字欄用原生 value setter 加 `input`／`change` 事件、勾選框真點；關舊視窗與開新視窗之間等一秒。
 
 ## 這個 skill 的檔案

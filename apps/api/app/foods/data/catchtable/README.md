@@ -1,24 +1,26 @@
 # CatchTable 榜單批次：目錄佈局與候選檔欄位
 
-一批一個目錄 `<batch-id>/`，四個檔：
+一批一個目錄 `<batch-id>/`，兩個檔；2026-09-23 的三批另有兩段式的兩個匯入檔：
 
 | 檔 | 誰寫 | 用途 |
 | --- | --- | --- |
 | `rankings.json` | 本機瀏覽器片段 | 榜頁抄下來的 alias 清單，原樣保存，當證據 |
-| `candidates.json` | 研究者（人或代理） | 每家店的查證結果；**這是交接檔**，每寫完一家就存 |
-| `merchants.json` | `tools/catchtable_build_batches.py` | `import-trend-merchants --file` 的輸入 |
-| `platform-reviews.json` | `tools/catchtable_build_batches.py`（要先有 worklist） | `apply-food-platform-reviews --file` 的輸入 |
+| `candidates.json` | 研究者（人或代理） | 每家店的查證結果；**這是交接檔**，每寫完一家就存；`import-catchtable-candidates --file` 直接吃它 |
+| `merchants.json` | `tools/catchtable_build_batches.py`（兩段式備援） | `import-trend-merchants --file` 的輸入 |
+| `platform-reviews.json` | `tools/catchtable_build_batches.py`（兩段式備援，要先有 worklist） | `apply-food-platform-reviews --file` 的輸入 |
 
 一批跨兩個目的地時（第二批是首爾第 21–40 名加釜山第 1–20 名），`rankings.json` 仍是一份、兩頁都放進去，其餘三個檔以目的地分開：
 `candidates-<destination>.json`、`merchants-<destination>.json`、`platform-reviews-<destination>.json`，各自的 `batch_id` 是
 `<batch-id>-<destination>`；轉檔腳本一次只吃一個目的地，兩個目的地各跑一次。
 
-沒有任何程式會自動掃這個目錄；兩支匯入指令都要明確帶 `--file`，而且先 dry-run。設計、邊界與操作
-步驟在 `docs/catchtable-ranking-discovery.md`。名次只留在 `candidates.json` 的 `ranking_evidence`，
-不落地、不公開。
+沒有任何程式會自動掃這個目錄；匯入指令都要明確帶 `--file`，而且先 dry-run。設計、邊界與操作
+步驟在 `docs/catchtable-ranking-discovery.md`，指令在 skill `catchtable-discovery`。名次只留在
+`candidates.json` 的 `ranking_evidence`（匯入時另記進後台稽核當證據），不進店家資料、不公開。
 
-腳本只擋「會讓整個匯入檔被拒」的錯；真正的規則在 `app/foods/trend_import.py` 與
-`app/foods/platform_review_import.py`，兩邊都是一筆壞掉整檔拒收。
+候選檔的規則是 `app/foods/catchtable_import.py` 的 `CandidateBatch`（pydantic）；載入時連
+`app/foods/trend_import.py` 與 `app/foods/platform_review_import.py` 的規則一起驗，一筆壞掉整檔拒收、
+錯誤一次列完。本機 `python -m app.cli import-catchtable-candidates --file <檔> --check` 不開資料庫。
+下面沒列的欄位一律拒收（例如 `naver_map_url`：Naver 精準頁要不要從候選檔進來，設計文件待決事項 2 未定）。
 
 ## 檔頭
 
@@ -126,7 +128,10 @@
 | `source.kind` | `merchant_official`（店家自己的站）、`official_tourism`（觀光局／政府講這家分店的頁），或 2026-09-23 起的較弱層級 `merchant_platform`：這個 alias 自己的 CatchTable 店頁（或 `/info` 分頁），或等於 `catchtable.website` 的社群帳號（店家自己在 `/info` 登記的）；其他平台、聚合站、社群網址一律擋。公開頁把 `merchant_platform` 標成「平台／社群登記」，不是「官方資料」；引文一樣要逐字、含店名與地址（`/info` 分頁點「原文語言」後的地址） |
 | `source.quote` | 逐字、看得到、300 字內 |
 
-## 腳本怎麼轉
+## 怎麼轉成兩支匯入器的格式
+
+`import-catchtable-candidates` 在記憶體裡做同樣的轉換、逐筆交給兩支匯入器的規則；兩段式備援的腳本
+寫出來的就是下面兩個檔。
 
 `merchants.json`（`import-trend-merchants` 的清單格式）每筆：`destination`、`district_key`、`name_zh`、
 `name_en`、`local_name`、`address_local`、`category_slugs`、`source_url`、`source_title`、
