@@ -77,12 +77,13 @@ SOURCES_MAX = {
     "ai-workflow-agent-glm-qwen-deepseek": 14,
     "ai-workflow-agent-local-batch-script": 12,
     "ai-workflow-agent-local-mcp-tool": 11,
-    "ai-workflow-agent-local-engine": 11,
-    "ai-workflow-agent-local-checklist": 12,
+    "ai-workflow-agent-local-engine": 12,
+    "ai-workflow-agent-local-checklist": 13,
 }
 CODE_LANGUAGES = {"python", "bash", "json", "yaml", "toml"}
-#: Strings the model-id pattern catches that are not models: package and host names.
-NOT_MODELS = {"claude-code", "qwen-code"}
+#: Strings the model-id pattern catches that are not models: package and host names, and the
+#: family prefixes a vendor's mapping rule is written in ("models starting with claude-opus").
+NOT_MODELS = {"claude-code", "qwen-code", "claude-opus", "claude-sonnet", "claude-haiku"}
 HOST_SUFFIXES = (".com", ".ai", ".cn", ".io")
 CODE_MAX_LINES = 80
 SECRET = re.compile(r"sk-[A-Za-z0-9_-]{8,}|AKIA[0-9A-Z]{16}|api[_-]?key\s*[=:]\s*[\"'][^\"'$<{]{12,}", re.I)

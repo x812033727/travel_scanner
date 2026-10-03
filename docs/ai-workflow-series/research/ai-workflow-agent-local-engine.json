@@ -58,6 +58,11 @@
       "title": "Claude Code Docs：Environment variables",
       "url": "https://code.claude.com/docs/en/env-vars",
       "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Codex | LM Studio",
+      "url": "https://lmstudio.ai/docs/integrations/codex",
+      "checked_on": "2026-10-03"
     }
   ],
   "verified_facts": [
@@ -726,6 +731,18 @@
       "url": "https://docs.ollama.com/api/anthropic-compatibility",
       "is_vendor_claim": true,
       "verbatim_quote": "without a separate pull."
+    },
+    {
+      "fact": "LM Studio 的 Codex 頁寫，先確認 LM Studio 以伺服器模式運作（預設連接埠 1234）。",
+      "url": "https://lmstudio.ai/docs/integrations/codex",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Make sure LM Studio is running as a server (default port 1234)."
+    },
+    {
+      "fact": "LM Studio 的 Codex 頁寫，照平常的方式執行 Codex，加上 --oss 旗標讓它指向 LM Studio。",
+      "url": "https://lmstudio.ai/docs/integrations/codex",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Run Codex as you normally would, but with the --oss flag to point it to LM Studio."
     }
   ],
   "unverified_or_excluded": [
@@ -856,7 +873,8 @@
       "CLAUDE_CODE_ATTRIBUTION_HEADER：本篇來源 env-vars 頁有這個變數本身的說明；照協調者指示沒寫。要不要加一句「Claude Code 的環境變數頁寫它做什麼」（不替 LM Studio 說理由）",
       "LM Studio 的 Codex 頁不在 sources（上限 11 條）；「LM Studio 先開伺服器、Codex 加 --oss」的 Codex 那一半只由 Codex 設定頁撐住。要放寬到 12 條就可以把它加回來",
       "Ollama 相容頁自己兩處不一：Not supported 列 Server-sent errors，Streaming events 卻勾了 error；表格已照實寫出",
-      "Ollama Codex 頁有 ollama launch codex --config（To configure without launching），但沒有寫它會產生 model.json；本篇沒寫 --config"
+      "Ollama Codex 頁有 ollama launch codex --config（To configure without launching），但沒有寫它會產生 model.json；本篇沒寫 --config",
+      "協調者通讀（2026-10-04）：「LM Studio 先開本機伺服器…Codex 加 --oss」的 Codex 那一半原本沒有來源支撐，補上 LM Studio 的 Codex 頁（2026-10-03 讀到的版本）與兩條原句；正文沒有改。"
     ],
     "code_recompiled": [
       {
