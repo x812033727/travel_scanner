@@ -495,3 +495,86 @@ test("every episode but a drama's runs at least eight minutes: slides and the ex
     else process.env.VIDEO_MIN_EPISODE_MINUTES = saved;
   }
 });
+
+test("a drama with a cast is read against the craft spec: the missed rows are warnings, a narrated drama gets none", () => {
+  const drama = lintVideo(dramaFixture(), context({ brief: dramaBrief() }));
+  assert.deepEqual(drama.errors, []);
+  const craft = drama.warnings.filter((warning) => /^craft /.test(warning.message));
+  assert.ok(craft.some((warning) => warning.path === "scenes" && /^craft hook\.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event/.test(warning.message)), messages(drama.warnings));
+  assert.ok(craft.every((warning) => /drama-craft\.md\)$/.test(warning.message)), "every row points at the spec");
+  assert.ok(!craft.some((warning) => /craft pace\.short|craft size\.setups|craft motion\.locked/.test(warning.message)), "rows that only report numbers are not warnings");
+  const narrated = dramaFixture();
+  narrated.characters = [];
+  for (const scene of narrated.scenes) {
+    delete scene.data.characters;
+    for (const line of scene.lines) delete line.speaker;
+  }
+  const result = lintVideo(narrated, context({ brief: dramaBrief() }));
+  assert.deepEqual(result.errors, []);
+  assert.ok(!result.warnings.some((warning) => /^craft /.test(warning.message)), "a retelling with no cast follows its own references");
+});
+
+test("the median-shot warning starts under 2 s for a drama with a cast and points at the craft spec; a narrated drama keeps 3 s", () => {
+  const quick = (doc, text) => {
+    for (const scene of doc.scenes) {
+      delete scene.data.fit;
+      scene.lines = [{ ...scene.lines[0], text }];
+    }
+  };
+  const cast = dramaFixture();
+  quick(cast, "走。");
+  const fast = lintVideo(cast, context({ brief: dramaBrief() }));
+  assert.ok(fast.warnings.some((warning) => /the median shot is 1\.3 s; the measured dramas sit at 1\.5–2\.25 s, but under 2 s this pipeline pays a clip per cut: merge some shots \(.*drama-craft\.md §五\)/.test(warning.message)), messages(fast.warnings));
+  const steady = dramaFixture();
+  quick(steady, "媽，請喝茶，先別急。");
+  assert.ok(!lintVideo(steady, context({ brief: dramaBrief() })).warnings.some((warning) => /median shot/.test(warning.message)), "about 2.7 s a shot is what the spec asks for, not a montage");
+  const narrated = dramaFixture();
+  narrated.characters = [];
+  quick(narrated, "媽，請喝茶，先別急。");
+  for (const scene of narrated.scenes) {
+    delete scene.data.characters;
+    for (const line of scene.lines) delete line.speaker;
+  }
+  assert.ok(lintVideo(narrated, context({ brief: dramaBrief() })).warnings.some((warning) => /the median shot is 2\.7 s; cuts this fast read as a montage/.test(warning.message)), "a narrated drama keeps the older threshold");
+});
+
+test("a drama with a cast may time a silent shot with action_seconds; a narrated one may not", () => {
+  const doc = dramaFixture();
+  doc.scenes[1].action_seconds = 3;
+  doc.scenes[1].lines = [];
+  const result = lintVideo(doc, context({ brief: dramaBrief() }));
+  assert.deepEqual(result.errors, [], messages(result.errors));
+  const timeline = estimateTimeline(doc);
+  const silent = timeline.scenes.find((scene) => scene.id === doc.scenes[1].id);
+  assert.equal(silent.end_frame - silent.start_frame, 90);
+  assert.ok(!result.warnings.some((warning) => /craft lines\.empty/.test(warning.message)), "a timed shot is not an empty one");
+  const narrated = dramaFixture();
+  narrated.characters = [];
+  for (const scene of narrated.scenes) {
+    delete scene.data.characters;
+    for (const line of scene.lines) delete line.speaker;
+  }
+  narrated.scenes[1].action_seconds = 3;
+  narrated.scenes[1].lines = [];
+  assert.match(messages(lintVideo(narrated, context({ brief: dramaBrief() })).errors), /requires a drama with a cast or a complete long-anime production policy/);
+});
+
+test("a shot cut from another shot's clip must end inside that clip, and the production profile's eight seconds", () => {
+  const doc = dramaFixture();
+  const bird = doc.scenes.find((scene) => scene.id === "bird");
+  delete bird.data.start_frame;
+  bird.data.source = { shot: "sea-storm", from_s: 2 };
+  const result = lintVideo(doc, context({ brief: dramaBrief() }));
+  assert.ok(result.errors.some((error) => error.path === "scenes[3] (bird).data.source" && /cut from sea-storm's clip at 2 s and about [\d.]+ s long, it ends past 10 s/.test(error.message)), messages(result.errors));
+  bird.data.source.from_s = 0.3;
+  assert.deepEqual(lintVideo(doc, context({ brief: dramaBrief() })).errors, []);
+  const series = { production: { profile: { visual_tier: "clips" } } };
+  for (const scene of doc.scenes) {
+    delete scene.data.fit;
+    for (const line of scene.lines) line.text = "媽，請喝茶，先別急。";
+  }
+  bird.data.source.from_s = 6;
+  assert.ok(productionShotProblems(doc, series, estimateTimeline(doc)).some((problem) => problem.path === "scenes[3] (bird).data.source" && /must end inside them/.test(problem.message)));
+  bird.data.source.from_s = 1;
+  assert.deepEqual(productionShotProblems(doc, series, estimateTimeline(doc)), []);
+});

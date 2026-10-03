@@ -13,7 +13,10 @@ import {
   clipKey,
   clipShotScenes,
   clipsHash,
+  drawnShotScenes,
   isClipShot,
+  isSourced,
+  sourcedShotScenes,
   keyframeKey,
   lookHash,
   mixHash,
@@ -117,17 +120,26 @@ test("timed action refuses out-of-range seconds, dialogue, absent direction and 
     [(doc) => { doc.scenes[1].data.motion = "  "; }, /visible-action prompt and motion/],
     [(doc) => { doc.scenes[1].data.prompt = ""; }, /visible-action prompt and motion/],
     [(doc) => { doc.scenes[1].template = "title"; }, /directed shot/],
-    [(doc) => { delete doc.production_policy; delete doc.runtime_spec; }, /complete long-anime production policy/],
+    [(doc) => { delete doc.production_policy; delete doc.runtime_spec; }, /long-anime production policy/],
   ]) {
     const doc = structuredClone(base);
     change(doc);
     assert.match(validateVideo(doc).map((error) => error.message).join("\n"), expected);
   }
+  // A drama with a cast may hold a beat in which nobody speaks (docs/videos/DRAMA.md); a
+  // narrated one has no silent shot, since its narration is its clock.
   const ordinary = dramaFixture();
   ordinary.scenes[1].action_seconds = 4;
   ordinary.scenes[1].lines = [];
-  assert.ok(validateVideo(ordinary).some((error) => error.path === "scenes[1].action_seconds" && /complete long-anime/.test(error.message)));
-  assert.ok(validateVideo(ordinary).some((error) => error.path === "scenes[1].lines"));
+  assert.deepEqual(validateVideo(ordinary), []);
+  const narrated = structuredClone(ordinary);
+  narrated.characters = [];
+  for (const scene of narrated.scenes) {
+    delete scene.data.characters;
+    for (const line of scene.lines) delete line.speaker;
+  }
+  assert.ok(validateVideo(narrated).some((error) => error.path === "scenes[1].action_seconds" && /a drama with a cast or a complete long-anime/.test(error.message)));
+  assert.ok(validateVideo(narrated).some((error) => error.path === "scenes[1].lines"));
 });
 
 test("only the declared last episode of a closed anime may declare closure", () => {
@@ -162,11 +174,14 @@ test("long anime rejects freeze and slow fitting while ordinary drama retains bo
   }
 });
 
-test("the drama example is valid and lints clean", () => {
+test("the drama example is valid and lints clean, apart from the craft rows a four-shot retelling cannot meet", () => {
   assert.deepEqual(validateVideo(dramaFixture()), []);
   const result = lintVideo(dramaFixture(), context());
   assert.deepEqual(result.errors, []);
-  assert.deepEqual(result.warnings, []);
+  // The example shows the file's shape, not an episode: narrated, four shots, long lines. The
+  // craft rows (drama-craft.md) say so, and nothing else does.
+  assert.deepEqual(result.warnings.filter((warning) => !/^craft /.test(warning.message)), []);
+  assert.ok(result.warnings.some((warning) => /^craft hook\.opening: /.test(warning.message)));
   assert.equal(result.summary.chapters.length, 3);
 });
 
@@ -563,13 +578,18 @@ test("illustrated slides are drawn as a printmaker's brief and lint keeps their 
   // The subject stays where a Short's 9:16 crop keeps it; nothing pushes it to one side.
   assert.match(preset.style, /one clear focal point in the centre third of the frame/);
   assert.doesNotMatch(`${preset.style} ${preset.negative}`, /off-centre|centred layout/);
-  // The camera words fold to their move, the camera direction first and then the motion prompt,
-  // as assemble reads them; a shot that names none drifts.
+  // The camera words fold to their move, read from the camera direction alone on whole words,
+  // as assemble reads them; a shot that names none drifts, and "locked" holds the picture still.
   assert.equal(cameraMove({ camera: "slow push in" }), "push in");
   assert.equal(cameraMove({ camera: "pan right along the shelf" }), "pan right");
   assert.equal(cameraMove({ camera: "handheld" }), "drift");
-  assert.equal(cameraMove({ camera: "handheld", motion: "slow push in" }), "push in");
+  assert.equal(cameraMove({ camera: "handheld", motion: "slow push in" }), "drift", "the motion prompt is what happens in the picture, never the camera");
   assert.equal(cameraMove({ camera: "pan left", motion: "zoom in" }), "pan left");
+  assert.equal(cameraMove({ motion: "she pushes the box back and rises" }), "drift");
+  assert.equal(cameraMove({ camera: "a surprised enterprise" }), "drift", "\"rise\" inside a word is no tilt");
+  assert.equal(cameraMove({ camera: "a slow rise" }), "tilt up");
+  assert.equal(cameraMove({ camera: "Locked medium close-up" }), "locked");
+  assert.equal(cameraMove({ camera: "static, slight handheld drift" }), "drift", "the drift the writer asked for wins over \"static\"");
   assert.equal(cameraMove({}), "drift");
   // The example keeps the rules; a drama is not held to them.
   const doc = illustratedFixture();
@@ -628,4 +648,39 @@ test("a still shot carries no end frame: it describes a clip's last frame and wo
   assert.deepEqual(problems.map((problem) => problem.message), ["a still shot has no end_frame: it belongs to a clip"]);
   delete shot.data.end_frame;
   assert.deepEqual(validateVideo(doc).filter((problem) => problem.path.includes(shot.id)), []);
+});
+
+test("a shot cut from another shot's clip names an earlier clip shot and a start; it has no still, continuation, end frame or thumbnail of its own", () => {
+  const base = dramaFixture();
+  const bird = base.scenes.find((scene) => scene.id === "bird");
+  delete bird.data.start_frame;
+  bird.data.source = { shot: "sea-storm", from_s: 1.5 };
+  assert.deepEqual(validateVideo(base), []);
+  const messagesOf = (change) => {
+    const doc = structuredClone(base);
+    change(doc);
+    return validateVideo(doc).map((error) => `${error.path}: ${error.message}`).join("\n");
+  };
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.source = { shot: "wrap", from_s: 1 }; }), /must be \{ shot: "<an earlier shot id>", from_s: <seconds, 0 or more> \}/, "a card is not a shot");
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.source = { shot: "bird", from_s: 1 }; }), /an earlier shot id/, "not itself");
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.source.from_s = -1; }), /from_s: <seconds, 0 or more>/);
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.source.from_s = "1"; }), /from_s: <seconds, 0 or more>/);
+  assert.match(messagesOf((doc) => { doc.scenes[2].data.visual = "still"; }), /sea-storm must be a clip shot with a clip of its own \(not a still, not itself cut from another shot\)/);
+  assert.match(messagesOf((doc) => { doc.scenes[2].data.source = { shot: "opening", from_s: 0 }; }), /sea-storm must be a clip shot with a clip of its own/, "no chains");
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.visual = "still"; }), /a still has no clip to cut from/);
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.start_frame = { shot: "sea-storm", at: "last" }; }), /has no start_frame: that clip is already made/);
+  assert.match(messagesOf((doc) => { doc.scenes[3].data.end_frame = { prompt: "the bird gone" }; }), /has no end_frame: that clip is already made/);
+  assert.match(messagesOf((doc) => { doc.thumbnail.data.shot = "bird"; }), /thumbnail\.data\.shot: .*a shot cut from another shot's clip has none/);
+  // Only a drama cuts from a clip: an illustration is its own picture.
+  const slides = illustratedFixture();
+  const pictures = slides.scenes.filter((scene) => scene.template === "shot");
+  pictures[1].data.source = { shot: pictures[0].id, from_s: 0 };
+  assert.match(validateVideo(slides).map((error) => error.message).join("\n"), /only a drama's shot is cut from another shot's clip/);
+  // A cut returns to a setup on purpose, so its prompt may repeat the setup's.
+  const twin = structuredClone(base);
+  twin.scenes[3].data.prompt = twin.scenes[2].data.prompt;
+  assert.ok(!shotProblems(twin, estimateTimeline(twin)).warnings.some((warning) => /nearly the same/.test(warning.message)));
+  assert.deepEqual(sourcedShotScenes(base).map((scene) => scene.id), ["bird"]);
+  assert.deepEqual(drawnShotScenes(base).map((scene) => scene.id), ["opening", "farewell", "sea-storm"]);
+  assert.equal(isSourced(base.scenes[2]), false);
 });

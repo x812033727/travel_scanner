@@ -37,7 +37,13 @@ const SHA256 = /^[0-9a-f]{64}$/;
 export const MAX_SHOT_CHARACTERS = 3;
 export const MAX_SHOT_SECONDS = 12;
 export const WARN_SHOT_SECONDS = 10;
-export const MIN_MEDIAN_SHOT_SECONDS = 3;
+// A drama with a cast is cut like the dramas that were measured (drama-craft.md: a median shot
+// of 1.5–2.25 s); under 2 s this pipeline pays a clip per cut, so that is where its warning
+// starts. A narrated drama (an explainer) and illustrated slides keep the older 3 s.
+export const MIN_MEDIAN_SHOT_SECONDS = 2;
+export const MIN_MEDIAN_SHOT_SECONDS_NARRATED = 3;
+// A clip from the models runs at most this long, so a cut from another shot's clip must end inside it.
+export const MAX_SOURCE_CLIP_SECONDS = 10;
 export const LONG_SHOT_SHARE_WARN = 0.3;
 export const PROMPT_SIMILARITY_WARN = 0.8;
 // Picture variety of illustrated slides (docs/videos/ILLUSTRATED.md §畫面不像 AI): three stills in
@@ -103,7 +109,7 @@ export const DEFAULT_MUSIC = { gain_db: -20, duck_db: -10, fade_in_ms: 1500, fad
 
 const LOOK_KEYS = new Set(["preset", "style", "negative", "motion", "candidates", "style_frames"]);
 const CHARACTER_KEYS = new Set(["id", "name", "appearance", "voice", "sheet_prompt", "shot_looks"]);
-const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "character_looks", "fit", "seed", "transition", "start_frame", "end_frame", "visual"]);
+const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "character_looks", "fit", "seed", "transition", "start_frame", "end_frame", "visual", "source"]);
 const MUSIC_KEYS = new Set(["prompt", "track", "sha256", "gain_db", "duck_db", "fade_in_ms", "fade_out_ms"]);
 const SUBTITLE_KEYS = new Set(["burn_in", "style", "speaker_prefix"]);
 // Sound effects (docs/videos/ILLUSTRATED.md): a licensed set under <work base>/_sfx/<set>/, placed
@@ -148,6 +154,13 @@ export const hasPictures = (doc) => isDrama(doc) || illustrated(doc);
 /** "clip" or "still": a shot is a clip unless it says otherwise. */
 export const shotVisual = (scene) => scene?.data?.visual ?? "clip";
 export const isClipShot = (scene) => isShot(scene) && shotVisual(scene) === "clip";
+// A shot cut from another shot's clip (`data.source: { shot, from_s }`, docs/videos/DRAMA.md):
+// the references return to a camera setup (speaker, listener, speaker) and cut inside one take,
+// so such a shot buys neither a keyframe nor a clip; assemble trims the named clip from from_s.
+export const isSourced = (scene) => isShot(scene) && isObject(scene?.data?.source);
+export const sourcedShotScenes = (doc) => shotScenes(doc).filter(isSourced);
+/** The shots that get a keyframe of their own: every shot but one cut from another shot's clip. */
+export const drawnShotScenes = (doc) => shotScenes(doc).filter((scene) => !isSourced(scene));
 /** The shots the clips stage generates a clip for. */
 export const clipShotScenes = (doc) => shotScenes(doc).filter(isClipShot);
 /** The shots assemble animates from their keyframe instead. */
@@ -316,6 +329,16 @@ function validateShotData(data, where, characterIds, earlierShots, errors) {
   }
   // A still is its keyframe with a camera move: an end frame would be bought and never shown.
   if (data.visual === "still" && data.end_frame !== undefined) errors.push({ path: `${where}.end_frame`, message: "a still shot has no end_frame: it belongs to a clip" });
+  if (data.source !== undefined) {
+    const origin = isObject(data.source) && typeof data.source.shot === "string" ? earlierShots.get(data.source.shot) : undefined;
+    if (!origin || !(typeof data.source.from_s === "number" && Number.isFinite(data.source.from_s) && data.source.from_s >= 0)) {
+      errors.push({ path: `${where}.source`, message: 'must be { shot: "<an earlier shot id>", from_s: <seconds, 0 or more> }: the shot is cut from that shot\'s clip, starting there' });
+    } else if (shotVisual({ data: origin }) !== "clip" || origin.source !== undefined) {
+      errors.push({ path: `${where}.source`, message: `${data.source.shot} must be a clip shot with a clip of its own (not a still, not itself cut from another shot)` });
+    }
+    if (data.visual === "still") errors.push({ path: `${where}.visual`, message: "a still has no clip to cut from: a shot cut from another shot's clip is a clip shot" });
+    for (const key of ["start_frame", "end_frame"]) if (data[key] !== undefined) errors.push({ path: `${where}.${key}`, message: `a shot cut from another shot's clip has no ${key}: that clip is already made` });
+  }
 }
 
 function validateMusic(music, errors) {
@@ -417,7 +440,8 @@ export function validateDrama(doc, errors, validateVoice) {
     const ids = Array.isArray(doc.characters) ? doc.characters.map((character) => character?.id).filter((id) => typeof id === "string") : [];
     if (ids.some((id, index) => index > 0 && id < ids[index - 1])) errors.push({ path: "characters", message: "an episode of a series lists its characters by id in order" });
   }
-  const earlierShots = new Set();
+  // Each earlier shot's data by id: a continued or a cut-from shot names one of them.
+  const earlierShots = new Map();
   const earlierTakes = new Map();
   let shots = 0;
   doc.scenes.forEach((scene, sceneIndex) => {
@@ -427,6 +451,7 @@ export function validateDrama(doc, errors, validateVoice) {
     if (shot) {
       shots += 1;
       validateShotData(scene.data, `${where}.data`, characterIds, earlierShots, errors);
+      if (!drama && isObject(scene.data) && scene.data.source !== undefined) errors.push({ path: `${where}.data.source`, message: "only a drama's shot is cut from another shot's clip; an illustration is its own picture" });
       if (isLongAnime(doc) && ["freeze", "slow"].includes(scene.data?.fit)) errors.push({ path: `${where}.data.fit`, message: "long-anime story duration cannot be supplied by frozen tails or slowed clips" });
       if (isObject(scene.data) && scene.data.character_looks !== undefined) {
         const selected = scene.data.character_looks;
@@ -482,11 +507,11 @@ export function validateDrama(doc, errors, validateVoice) {
         earlierTakes.set(line.id, line);
       });
     }
-    if (shot && typeof scene.id === "string") earlierShots.add(scene.id);
+    if (shot && typeof scene.id === "string") earlierShots.set(scene.id, isObject(scene.data) ? scene.data : {});
   });
   if (drama && shots === 0) errors.push({ path: "scenes", message: `a drama needs at least one "${SHOT_TEMPLATE}" scene` });
-  if (pictures && isObject(doc.thumbnail?.data) && doc.thumbnail.data.shot !== undefined && !earlierShots.has(doc.thumbnail.data.shot)) {
-    errors.push({ path: "thumbnail.data.shot", message: "must name a shot scene whose keyframe becomes the thumbnail background" });
+  if (pictures && isObject(doc.thumbnail?.data) && doc.thumbnail.data.shot !== undefined && (!earlierShots.has(doc.thumbnail.data.shot) || earlierShots.get(doc.thumbnail.data.shot).source !== undefined)) {
+    errors.push({ path: "thumbnail.data.shot", message: "must name a shot scene whose keyframe becomes the thumbnail background (a shot cut from another shot's clip has none)" });
   }
 }
 
@@ -591,24 +616,23 @@ export function promptSimilarity(a, b) {
 }
 
 // The camera words a still may carry, folded to the move they name. assemble/drama.mjs
-// (motionMove) reads them the same way: the camera direction first, then the motion prompt, and
-// a shot that names no move in either drifts.
-const CAMERA_MOVES = [
-  ["push in", /push|dolly in|zoom in|closer|move in/],
-  ["pull out", /pull|zoom out|widen|back away/],
-  ["pan left", /pan (?:to the )?left|left to right/],
-  ["pan right", /pan (?:to the )?right|right to left/],
-  ["tilt up", /tilt up|crane up|rise/],
-  ["tilt down", /tilt down|crane down|descend/],
+// (motionMove) reads them the same way: the camera direction alone, never the motion prompt
+// (a person who "pushes the box back" or "rises" is not a camera move), on whole words, and a
+// shot that names no move drifts. "locked" is the absence of a move: the picture holds still.
+export const CAMERA_MOVES = [
+  ["drift", /\bdrift(?:s|ing)?\b/],
+  ["locked", /\blocked\b|\bstatic\b|\bfixed\b|\btripod\b|\bno camera move\b|\bstill camera\b/],
+  ["push in", /\bpush(?:es|ing)?\b|\bdolly(?:ing)? in\b|\bzoom(?:s|ing)? in\b|\bcloser\b|\bmov(?:e|es|ing) in\b/],
+  ["pull out", /\bpull(?:s|ing)?\b|\bzoom(?:s|ing)? out\b|\bwiden(?:s|ing)?\b|\bback(?:s|ing)? away\b/],
+  ["pan left", /\bpan(?:s|ning)? (?:to the )?left\b|\bleft to right\b/],
+  ["pan right", /\bpan(?:s|ning)? (?:to the )?right\b|\bright to left\b/],
+  ["tilt up", /\btilt(?:s|ing)? up\b|\bcrane(?:s|ing)? up\b|\brises?\b|\brising\b/],
+  ["tilt down", /\btilt(?:s|ing)? down\b|\bcrane(?:s|ing)? down\b|\bdescend(?:s|ing)?\b/],
 ];
 export function cameraMove(data) {
-  for (const text of [data?.camera, data?.motion]) {
-    if (typeof text !== "string") continue;
-    const lower = text.toLowerCase();
-    const found = CAMERA_MOVES.find(([, pattern]) => pattern.test(lower));
-    if (found) return found[0];
-  }
-  return "drift";
+  if (typeof data?.camera !== "string") return "drift";
+  const lower = data.camera.toLowerCase();
+  return CAMERA_MOVES.find(([, pattern]) => pattern.test(lower))?.[0] ?? "drift";
 }
 // How close the camera is: a prompt that says none of these leaves the picture to the model's
 // habit, a medium shot of a thing in the middle. Every size the writer's guide and the warning
@@ -696,14 +720,22 @@ export function shotProblems(doc, timeline) {
     if (length > MAX_SHOT_SECONDS) errors.push({ path: where, message: `about ${length.toFixed(1)} s of narration; a shot is at most ${MAX_SHOT_SECONDS} s (the clip models stop at 10), split it` });
     else if (length > WARN_SHOT_SECONDS) warnings.push({ path: where, message: `about ${length.toFixed(1)} s; shots over ${WARN_SHOT_SECONDS} s are stretched or frozen to fit` });
     const previous = doc.scenes[index - 1];
-    if (previous && isShot(previous) && promptSimilarity(previous, scene) >= PROMPT_SIMILARITY_WARN) {
+    // A shot cut from another shot's clip repeats that setup's camera and prompt on purpose.
+    if (previous && isShot(previous) && !isSourced(scene) && promptSimilarity(previous, scene) >= PROMPT_SIMILARITY_WARN) {
       warnings.push({ path: where, message: `its prompt is nearly the same as ${previous.id}'s; two near-identical shots read as a stall` });
+    }
+    if (isSourced(scene) && scene.data.source.from_s + length > MAX_SOURCE_CLIP_SECONDS) {
+      errors.push({ path: `${where}.data.source`, message: `cut from ${scene.data.source.shot}'s clip at ${scene.data.source.from_s} s and about ${length.toFixed(1)} s long, it ends past ${MAX_SOURCE_CLIP_SECONDS} s, where every clip model stops; start earlier or shorten its lines` });
     }
   });
   if (seconds.length >= 3) {
     const sorted = [...seconds].sort((a, b) => a - b);
     const median = sorted[Math.floor(sorted.length / 2)];
-    if (median < MIN_MEDIAN_SHOT_SECONDS) warnings.push({ path: "scenes", message: `the median shot is ${median.toFixed(1)} s; cuts this fast read as a montage, merge some shots` });
+    if (hasCast(doc)) {
+      if (median < MIN_MEDIAN_SHOT_SECONDS) warnings.push({ path: "scenes", message: `the median shot is ${median.toFixed(1)} s; the measured dramas sit at 1.5–2.25 s, but under ${MIN_MEDIAN_SHOT_SECONDS} s this pipeline pays a clip per cut: merge some shots (.agents/skills/youtube-video/references/drama-craft.md §五)` });
+    } else if (median < MIN_MEDIAN_SHOT_SECONDS_NARRATED) {
+      warnings.push({ path: "scenes", message: `the median shot is ${median.toFixed(1)} s; cuts this fast read as a montage, merge some shots` });
+    }
     const long = seconds.filter((length) => length > WARN_SHOT_SECONDS).length / seconds.length;
     if (long > LONG_SHOT_SHARE_WARN) warnings.push({ path: "scenes", message: `${Math.round(long * 100)}% of the shots run over ${WARN_SHOT_SECONDS} s; the clip models cannot hold a shot that long` });
   }

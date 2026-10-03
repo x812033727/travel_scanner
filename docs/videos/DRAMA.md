@@ -62,7 +62,7 @@
 | --- | --- |
 | `look` | `{ preset?: cinematic-3d\|anime-2d\|ink-wash\|flat-explainer\|custom, style (≤600), negative?, motion?, candidates?: 2–4（預設 3）, style_frames?: string[] }`：全影片共用的風格提示詞 |
 | `characters[]` | `{ id（小寫，不可是 narrator）, name, appearance（≤800，英文，給圖片模型）, voice（同 doc.voice 的物件）, sheet_prompt? }` |
-| 鏡頭場景 | `template: "shot"`，`data: { prompt (≤1000), camera?, motion?, negative?, characters?: [id]（≤3）, fit?: auto\|freeze\|slow\|trim, seed?, transition?: cut\|dissolve, start_frame?: { shot, at: "last" }, end_frame?: { prompt }, visual?: clip\|still }`；`visual` 預設 `clip`，`still` 不買片段，由 `assemble` 用關鍵影格加運鏡（下面「畫面等級與運鏡」）；句子不能有 `reveal`。`title`／`chapter`／`outro` 卡片仍可用 |
+| 鏡頭場景 | `template: "shot"`，`data: { prompt (≤1000), camera?, motion?, negative?, characters?: [id]（≤3）, fit?: auto\|freeze\|slow\|trim, seed?, transition?: cut\|dissolve, start_frame?: { shot, at: "last" }, end_frame?: { prompt }, visual?: clip\|still, source?: { shot, from_s } }`；`visual` 預設 `clip`，`still` 不買片段，由 `assemble` 用關鍵影格加運鏡（下面「畫面等級與運鏡」）；`source` 從更早一個 clip 鏡頭的素材第 `from_s` 秒切進來，不畫關鍵影格、不買素材（下面「同一份素材切幾次」）；有角色的漫劇可用 `action_seconds`（1–8）加空 `lines` 寫沒有人說話的鏡頭；句子不能有 `reveal`。`title`／`chapter`／`outro` 卡片仍可用 |
 | 句子 | 多 `speaker?: narrator\|<角色 id>`（預設 narrator）與 `emotion?`（≤80，Gemini 併進 style；Azure 忽略並警告） |
 | `music` | `{ prompt? , track?, sha256?, gain_db (-20), duck_db (-10), fade_in_ms (1500), fade_out_ms (3000) }`：有 `prompt` 由 `music` 階段經伺服器生成；有 `track` 用 `<VIDEO_WORKDIR>/_music/` 的檔案 |
 | `subtitles` | `{ burn_in（預設 false；新自動製作固定 false）, style: drama\|plain, speaker_prefix (false) }`；舊手動影片仍可讀取其明確的燒錄設定 |
@@ -87,8 +87,19 @@ drama 的 `brief.md` 必要章節：「故事前提」「角色」「站主觀�
 - 鏡頭的 `data.visual` ∈ `VISUAL_MODES = ["clip", "still"]`。lint 從 `docs/videos/<slug>/series.json` 的 `visual_tier` 讀等級（工人從作品寫進去；沒有就不檢查），超過上限是錯誤（`visualTierProblems`）。`clipsHash` 只算 clip 鏡頭。
 - `clips` 只為 clip 鏡頭生成；still 鏡頭在 `clips/manifest.json` 記 `{ still: true, file, sha256 }` 指向它通過 judge 的關鍵影格。
 - `assemble`：`layoutDrama` 對 still 鏡頭回 `kind: "motion"`；`motionSegmentArgs` 把關鍵影格 `-loop 1` 成該鏡的格數、放大 1.25 倍（`MOTION_SOURCE_SCALE`）、`zoompan`（`d=1`、以輸出格號 `on` 寫表達式、最後一格剛好到位）、`trim`，然後字幕條、溶接、色彩標記與編碼參數都與片段段相同，`-c copy` 串接不變；獨立 `MOTION_ENCODER_VERSION`。幅度小：push／pull 10%、pan／tilt 固定 1.08 倍、drift 4%。
-- 運鏡由 `motionMove(data)` 從 `camera`（其次 `motion`）的關鍵字決定：`push-in`（push、dolly in、zoom in、closer、move in）、`pull-out`（pull、zoom out、widen、back away）、`pan-right`（pan left、left to right：以畫面的移動方向命名，攝影機向左搖畫面往右跑）、`pan-left`（pan right、right to left）、`tilt-up`（tilt up、crane up、rise）、`tilt-down`（tilt down、crane down、descend）、其他 `drift`。
-- 檢查：`push-in` 與 `drift` 的第 0 格是整張關鍵影格，對它算 PSNR（≥ 22）；其他運鏡只驗格數；`checks.json.metrics.shots` 記 `kind: "motion"` 與 `move`。
+- 運鏡由 `motionMove(data)` 只從 `camera` 的關鍵字決定（整字比對；`motion` 是畫面裡發生的事，不讀，2026-10-03 起）：`push-in`（push、dolly in、zoom in、closer、move in）、`pull-out`（pull、zoom out、widen、back away）、`pan-right`（pan left、left to right：以畫面的移動方向命名，攝影機向左搖畫面往右跑）、`pan-left`（pan right、right to left）、`tilt-up`（tilt up、crane up、rise）、`tilt-down`（tilt down、crane down、descend）、`locked`（locked、static、fixed、tripod：整格不動）、其他 `drift`（寫 drift 也是）。
+- 檢查：`push-in`、`drift` 與 `locked` 的第 0 格是整張關鍵影格，對它算 PSNR（≥ 22）；其他運鏡只驗格數；`checks.json.metrics.shots` 記 `kind: "motion"` 與 `move`。
+
+### 同一份素材切幾次（2026-10-03 加，票 `2026-10-03-drama-craft-in-video-tools`）
+
+量過的漫劇一場戲只有三、四個鏡位，卻每兩秒換一次畫面（`.agents/skills/youtube-video/references/drama-craft.md`）；每個鏡頭各買一份素材，切得密就是一刀一份。回到同一鏡位的鏡頭寫 `data.source: { shot, from_s }`：
+
+- lint（`validateDrama`）：`shot` 是更早的一個 clip 鏡頭，本身不能再是 `source`、不能是 still；這個鏡頭不能有 `start_frame`／`end_frame`、不能是 still、不能當 `thumbnail.data.shot`；`from_s` 加估計鏡長超過 10 秒（片段模型的上限）是錯誤，production profile 下超過 8 秒也是。
+- `keyframes` 不畫它（`drawnShotScenes`），storyboard 關卡沒有它的圖；`clips` 不買（`sourcedShotScenes`），在來源素材通過品檢後於 manifest 記 `{ source: { shot, from_s, from_frame }, file, sha256, frames, seconds, needed_s }` 指向來源素材；來源沒過或太短就 `needs_review`。`--dry-run` 印出不用買的秒數；帳本（`media/ledger.json`）記一筆 `kind: "clip"`、`status: "cut"`、`cost_usd: 0`，帶 `saved_seconds`／`saved_usd`（`savedTotals`），重跑只換不重複記。`clips_hash` 用來源素材的雜湊，來源重做它就跟著重組。
+- `assemble`：`layoutDrama` 給它 `from_frame` 與 `source`，片段鏈前面加 `trim=start_frame=<from_frame>`；可用格數是來源素材扣掉起點；第 0 格不比關鍵影格，改比來源素材在 `from_frame` 那一格（`frameArgs` 抽出 PNG，PSNR ≥ 22；`checks.json.metrics.shots[].source_frame_psnr`）。
+- 還沒做：同一份素材放大成較近的景別（punch-in，最多 1.5 倍）。要拿一場試拍的 1080p 素材量過裁切後的畫質才決定，不先假設。
+
+**沒有人說話的鏡頭**：有角色的漫劇可寫 `action_seconds`（1–8 的整數）加空的 `lines`，長度就是它（原本只有長篇動畫的 production policy 允許）；旁白講述的影片沒有這種鏡頭，因為它的長度是在旁白上量的。
 
 ## 產線與關卡
 

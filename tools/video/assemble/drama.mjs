@@ -150,48 +150,54 @@ export function layoutDrama(doc, timeline, frames, clips, keyframes = null, { tr
     const clip = clips?.shots?.[scene.id];
     if (!clip?.file || clip.still) throw new PlanError(`shot ${scene.id} has no clip; run clips first`);
     if (clip.needs_review) throw new PlanError(`shot ${scene.id} failed the clip checks (needs_review in clips/manifest.json); fix the prompt and run clips again`);
+    // A shot cut from another shot's clip plays that clip from from_s; it has no keyframe of its
+    // own, so its first frame is checked against the source clip's frame there instead.
+    const cut = clip.source ? { source: { shot: clip.source.shot, from_s: clip.source.from_s }, from_frame: Math.round(clip.source.from_s * FPS) } : {};
     return {
       ...base,
       kind: "clip",
       clip: { file: clip.file, sha256: clip.sha256 ?? null },
       fit: source.data?.fit ?? "auto",
       transition,
-      keyframe: keyframes?.shots?.[scene.id]?.file ?? null,
+      keyframe: clip.source ? null : keyframes?.shots?.[scene.id]?.file ?? null,
+      ...cut,
     };
   });
 }
 
 // The camera words a writer uses, in the order they are tried; the first that matches wins, and
-// a shot that names none drifts. A move is named for what the viewer sees the picture do, which
+// a shot that names none drifts. Only the shot's `camera` line is read, on whole words: a
+// person who "pushes the box back" or "rises" in the motion prompt is not a camera move, and
+// "surprised" holds no "rise". A move is named for what the viewer sees the picture do, which
 // for a pan is the opposite of the camera's word: a camera panning left sends the picture to the
 // right, so "pan left" (and "left to right", the picture's own direction) is pan-right. Tilts
 // keep the camera's word, as the writers use it: "tilt up", "crane up" and "rise" are tilt-up.
+// "locked" (static, fixed, tripod) is the absence of a move: the keyframe holds still.
 const MOVES = [
-  ["push-in", /push|dolly in|zoom in|closer|move in/],
-  ["pull-out", /pull|zoom out|widen|back away/],
-  ["pan-right", /pan (?:to the )?left|left to right/],
-  ["pan-left", /pan (?:to the )?right|right to left/],
-  ["tilt-up", /tilt up|crane up|rise/],
-  ["tilt-down", /tilt down|crane down|descend/],
+  ["drift", /\bdrift(?:s|ing)?\b/],
+  ["locked", /\blocked\b|\bstatic\b|\bfixed\b|\btripod\b|\bno camera move\b|\bstill camera\b/],
+  ["push-in", /\bpush(?:es|ing)?\b|\bdolly(?:ing)? in\b|\bzoom(?:s|ing)? in\b|\bcloser\b|\bmov(?:e|es|ing) in\b/],
+  ["pull-out", /\bpull(?:s|ing)?\b|\bzoom(?:s|ing)? out\b|\bwiden(?:s|ing)?\b|\bback(?:s|ing)? away\b/],
+  ["pan-right", /\bpan(?:s|ning)? (?:to the )?left\b|\bleft to right\b/],
+  ["pan-left", /\bpan(?:s|ning)? (?:to the )?right\b|\bright to left\b/],
+  ["tilt-up", /\btilt(?:s|ing)? up\b|\bcrane(?:s|ing)? up\b|\brises?\b|\brising\b/],
+  ["tilt-down", /\btilt(?:s|ing)? down\b|\bcrane(?:s|ing)? down\b|\bdescend(?:s|ing)?\b/],
 ];
 // Moves whose first frame is the whole keyframe at zoom 1.0, so frame 0 can be checked against it.
-const IDENTITY_START = new Set(["push-in", "drift"]);
+const IDENTITY_START = new Set(["push-in", "drift", "locked"]);
 
 /** Which way a shot drifts: its id decides, so a run of drifting pictures does not all go one way. */
 export const driftDirection = (id) => DRIFT_DIRECTIONS[[...String(id ?? "")].reduce((sum, char) => sum + char.charCodeAt(0), 0) % DRIFT_DIRECTIONS.length];
 
 /**
- * Which camera move animates a still shot, read from the shot's camera direction first and its
- * motion prompt second: { name, startsAtIdentity }, a drift adding the direction its shot id
- * gives it.
+ * Which camera move animates a still shot, read from the shot's camera direction alone:
+ * { name, startsAtIdentity }, a drift adding the direction its shot id gives it. The motion
+ * prompt is what happens in the picture, never the camera.
  */
 export function motionMove(data, id = null) {
-  for (const text of [data?.camera, data?.motion]) {
-    if (typeof text !== "string") continue;
-    const lower = text.toLowerCase();
-    const found = MOVES.find(([, pattern]) => pattern.test(lower));
-    if (found) return { name: found[0], startsAtIdentity: IDENTITY_START.has(found[0]) };
-  }
+  const lower = typeof data?.camera === "string" ? data.camera.toLowerCase() : "";
+  const found = MOVES.find(([, pattern]) => pattern.test(lower));
+  if (found && found[0] !== "drift") return { name: found[0], startsAtIdentity: IDENTITY_START.has(found[0]) };
   return { name: "drift", startsAtIdentity: true, direction: driftDirection(id) };
 }
 
@@ -222,6 +228,9 @@ export function zoompanExpr(move, frames, { eased = false, travel = 1 } = {}) {
   const forward = (size) => `(${size}-${size}/zoom)*${run}`;
   const backward = (size) => `(${size}-${size}/zoom)*(1-${run})`;
   switch (name) {
+    case "locked":
+      // The whole keyframe on every frame: a held picture, cut like the locked shots around it.
+      return { z: "1", x: "0", y: "0" };
     case "push-in":
       return { z: `1+${zoom}*${p}`, x: centreX, y: centreY };
     case "pull-out":
@@ -281,7 +290,7 @@ export function clipFrames(probe) {
 }
 
 export function clipSegmentKey(scene, fit, subtitles = null, previous = null) {
-  return hash16([CLIP_ENCODER_VERSION, scene.frames, scene.clip.file, scene.clip.sha256, fit, subtitles, scene.transition, previous]);
+  return hash16([CLIP_ENCODER_VERSION, scene.frames, scene.clip.file, scene.clip.sha256, fit, subtitles, scene.transition, previous, ...(scene.from_frame ? [scene.from_frame] : [])]);
 }
 
 export function motionSegmentKey(scene, move, subtitles = null, previous = null) {
@@ -345,9 +354,11 @@ export function encodeArgs(inputs, graph, frames, outFile) {
  * the subtitle strips laid over the bottom. Same H.264 settings as a slide segment but tuned for
  * film, so the segments still join without re-encoding.
  */
-export function clipSegmentArgs({ clip, frames, fit, subtitlesList = null, dissolveFrom = null, outFile }) {
+export function clipSegmentArgs({ clip, frames, fit, fromFrame = 0, subtitlesList = null, dissolveFrom = null, outFile }) {
   const overlays = overlayInputs(subtitlesList, dissolveFrom);
   const chain = [
+    // A cut from another shot's clip starts at that frame; by number, as the checks pick frames.
+    ...(fromFrame > 0 ? [`trim=start_frame=${fromFrame}`, "setpts=PTS-STARTPTS"] : []),
     `scale=${WIDTH}:${HEIGHT}:force_original_aspect_ratio=decrease:flags=lanczos`,
     `pad=${WIDTH}:${HEIGHT}:(ow-iw)/2:(oh-ih)/2`,
     ...(fit.speed !== 1 ? [`setpts=PTS/${fit.speed}`] : []),
@@ -399,9 +410,14 @@ export function motionFramePsnrArgs(keyframe, move, frames) {
   ];
 }
 
+/** Frame `n` of a video as a PNG, picked by number rather than by seeking. */
+export function frameArgs(video, n, outFile) {
+  return ["-hide_banner", "-y", "-loglevel", "error", "-i", video, "-vf", `select=eq(n\\,${n})`, "-fps_mode", "passthrough", "-frames:v", "1", outFile];
+}
+
 /** The last frame of a segment as a PNG, for the dissolve into the next scene. */
 export function lastFrameArgs(segment, frames, outFile) {
-  return ["-hide_banner", "-y", "-loglevel", "error", "-i", segment, "-vf", `select=eq(n\\,${frames - 1})`, "-fps_mode", "passthrough", "-frames:v", "1", outFile];
+  return frameArgs(segment, frames - 1, outFile);
 }
 
 /** The compressor ratio that takes about duck_db off the music while the voice speaks. */
@@ -509,4 +525,10 @@ export function checkBed(level) {
 export function keyframeProblem(scene, psnr) {
   if (psnr >= KEYFRAME_MIN_PSNR) return null;
   return `shot ${scene.id} frame 0 does not look like its keyframe (PSNR ${psnr.toFixed(1)} dB, below ${KEYFRAME_MIN_PSNR})`;
+}
+
+/** Why a shot cut from another shot's clip does not open on that clip's frame at from_s, or null. */
+export function sourceFrameProblem(scene, psnr) {
+  if (psnr >= KEYFRAME_MIN_PSNR) return null;
+  return `shot ${scene.id} frame 0 does not match ${scene.source.shot}'s clip at ${scene.source.from_s} s (PSNR ${psnr.toFixed(1)} dB, below ${KEYFRAME_MIN_PSNR})`;
 }

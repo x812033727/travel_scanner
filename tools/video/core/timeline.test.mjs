@@ -211,7 +211,7 @@ test("silent action cannot extend an ordinary episode, spoken scene, slide or in
   for (const seconds of [0, 9, 1.5, "3"]) {
     const doc = directedAnime();
     doc.scenes[0].action_seconds = seconds;
-    assert.throws(() => buildTimeline(doc, { a: 96_000, b: 96_000 }), /silent long-anime shot lasting 1 to 8 seconds/);
+    assert.throws(() => buildTimeline(doc, { a: 96_000, b: 96_000 }), /silent shot of a long anime or of a drama with a cast, lasting 1 to 8 seconds/);
   }
   for (const mutate of [(doc) => { delete doc.production_policy; delete doc.runtime_spec; }, (doc) => { doc.scenes[0].lines = [{ id: "fake", text: "假的旁白" }]; }, (doc) => { doc.scenes[0].template = "big"; }]) {
     const doc = directedAnime();

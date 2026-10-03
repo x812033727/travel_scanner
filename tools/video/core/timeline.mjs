@@ -8,7 +8,7 @@
 import { createHash } from "node:crypto";
 import { hasAnimePolicy, isLongAnime, runtimePolicyHash } from "./anime-policy.mjs";
 
-import { pronunciationHintsFor, shotCast } from "./drama.mjs";
+import { hasCast, pronunciationHintsFor, shotCast } from "./drama.mjs";
 import { termsUsed } from "./lexicon.mjs";
 import { eachLine, spokenText } from "./schema.mjs";
 
@@ -58,7 +58,7 @@ export function buildTimeline(doc, samplesById, { basis = "measured" } = {}) {
   const policyHash = hasAnimePolicy(doc) ? runtimePolicyHash(doc) : null;
   for (const source of doc.scenes) {
     const action = source.action_seconds;
-    if (action !== undefined && (!isLongAnime(doc) || !Number.isSafeInteger(action) || action < 1 || action > 8 || source.template !== "shot" || !Array.isArray(source.lines) || source.lines.length)) throw new Error(`scene ${source.id}: action_seconds needs a silent long-anime shot lasting 1 to 8 seconds`);
+    if (action !== undefined && (!(isLongAnime(doc) || hasCast(doc)) || !Number.isSafeInteger(action) || action < 1 || action > 8 || source.template !== "shot" || !Array.isArray(source.lines) || source.lines.length)) throw new Error(`scene ${source.id}: action_seconds needs a silent shot of a long anime or of a drama with a cast, lasting 1 to 8 seconds`);
     if (!source.lines?.length && action === undefined) continue;
     const scene = { id: source.id, template: source.template, start_frame: frame, end_frame: frame, states: [{ reveal: 0, start_frame: frame }] };
     scenes.push(scene);
