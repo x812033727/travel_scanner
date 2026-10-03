@@ -299,16 +299,79 @@ exit 3221226505 for state.test.mjs and verified its 13 tests on bundled Node 24.
 The author must rerun the installed duration receipt check after this refresh;
 these observations do not waive any failing assertion.
 
+## Drama-craft skill routing increment: 2 files (2026-10-03)
+
+Reviewer: `claude-pr-review-drama-craft`. Author: `claude-fable-5-1-video-craft`.
+Verdict: **PASS — DURATION_ONLY** for the two SKILL.md files at
+`41bf812414958980a4098b0ed3a2356507eee269db8f827824e5437b18c611c6`.
+The reviewer did not write these changes.
+
+Baseline: Git HEAD `8dfc472ecb3f5e967e60326d3116435c795b4abe` holds both files at
+the previously bound `37b4d8539b058120886eb7de0cd57d65a1900cde175bd78cab4893e7afa9f0a3`.
+The reviewer read `git diff` of `.agents/skills/youtube-video/SKILL.md` and of
+`.claude/skills/youtube-video/SKILL.md`: the same three added lines in each (one
+paragraph, its blank line and one row of the reference table), nothing removed,
+and the two copies are byte-identical before and after.
+
+What the lines do: the paragraph sends the writer of a drama episode to
+`.agents/skills/youtube-video/references/drama-craft.md` before the script and
+storyboard are written and to `scripts/drama_craft_check.mjs` afterwards; the
+table row lists that reference, the check, the in-browser shot probe and
+`docs/videos/drama-craft/`. For context the reviewer also read the unbound
+reference, the check script and the drama writer and verifier prompt changes,
+looking for anything that sets or moves a video length. They set targets for the
+length of one shot and of one spoken line, the shots in the first ten seconds,
+shot sizes and the narrator's share; the check prints rows and is not called by
+lint, QA or any gate.
+
+What they do not change: the paragraph itself says it changes no video's length
+rule, and the reviewer found nothing in it or in the linked files that does. The
+long-form sentence (ten-minute production target, thirteen-minute brand stories,
+body and final cut each at least eight minutes with bookends not counted, the
+8–20 whole-minute explainer range with default 10, no padding by pauses,
+repetition or slow playback) and rule 10 (every non-drama episode at least eight
+minutes; drama, compilations and Shorts exempt) are byte-unchanged, as are the
+route table's 8–12 minute, 2–4 minute, 30–480 minute, 12–15 minute and 25–55
+second rows. A shot still lasts as long as its lines and an episode's estimated
+length must still sit inside its target, so shorter shots and lines mean more of
+them, not a shorter video. The craft reference tells a writer how to answer the
+median-shot warning of `tools/video/core/drama.mjs`; that is a cut-pace warning,
+not a length guard, and that bound file is byte-unchanged.
+
+The other 68 registry bindings remain unchanged: the reviewer recomputed all 70,
+and each of the 68 equals both its receipt entry and its HEAD bytes. Existing
+historical review increments are preserved.
+
+Ran with Node 24.13.0 on Windows. Before rebinding,
+`node tools/video/long-form/cli.mjs check` failed only on the two stale SKILL.md
+bindings (exit 1), and `node --test tools/video/long-form/review.test.mjs` had 1
+passed, 1 failed: the shipped binding regression, on those same two paths.
+`node --test tools/skills.test.mjs tools/drama-craft-check.test.mjs`: 16 passed,
+0 failed. `node --test tools/video/core/duration.test.mjs
+tools/video/qa/duration.test.mjs tools/video/long-form/plans.test.mjs
+tools/video/long-form/integration.test.mjs`: 17 passed, 0 failed. After this
+increment was installed the check passed for all 473 plans (exit 0) and
+review.test.mjs had 2 passed, 0 failed. The report hash was then refreshed to
+include these results, and both guards were rerun.
+
+Non-claims: this is not acceptance of the craft spec's content. Its targets, the
+reference measurements, the check's heuristics and the prompt changes are
+outside this receipt; the same reviewer's separate cold review reported findings
+on them to the author, none of them about a video length. It is not acceptance
+of any media, pilot, picture or sound, of a 90/100 score or a view count, or of
+CI. No model, provider or production call was made. Required duration fixes
+remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `37b4d8539b058120886eb7de0cd57d65a1900cde175bd78cab4893e7afa9f0a3` |
+| `.agents/skills/youtube-video/SKILL.md` | `41bf812414958980a4098b0ed3a2356507eee269db8f827824e5437b18c611c6` |
 | `.agents/skills/youtube-video/references/automated.md` | `05da9e6045979c5af53164bca6514af624e1858880c1f6370d4f667149322db5` |
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
-| `.claude/skills/youtube-video/SKILL.md` | `37b4d8539b058120886eb7de0cd57d65a1900cde175bd78cab4893e7afa9f0a3` |
+| `.claude/skills/youtube-video/SKILL.md` | `41bf812414958980a4098b0ed3a2356507eee269db8f827824e5437b18c611c6` |
 | `apps/api/app/video_automation/models.py` | `a527501908ded6558839f175a047e05b38b9eb9c8a9be9494d079382f99561b7` |
 | `apps/api/app/video_automation/schemas.py` | `084745ef3f022863777b7694a98c168df6415181c30bc84b4ce0a151af7e974c` |
 | `apps/api/app/video_automation/series.py` | `61a6d7b0460ff9b70e656b8025fd7409df2cd912b16acff1d160db98258c0965` |

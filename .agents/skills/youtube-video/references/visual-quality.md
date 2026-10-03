@@ -9,6 +9,8 @@
 - [`.agents/skills/youtube-video/references/animation-production.md`](animation-production.md)：來源、命名造型、代表動態小樣、固定配音、CC 與模型契約。
 - [`.agents/skills/youtube-video/references/drama.md`](drama.md)：正常 look／storyboard／clip／final 流程、收據與 retake 守門。
 
+- [`.agents/skills/youtube-video/references/drama-craft.md`](drama-craft.md)：劇本與分鏡一開始照什麼規格寫（開場、鏡位與剪點、鏡頭與台詞長度），以及量分鏡的檢查腳本。診斷時先跑那支腳本：開場鏡頭數、全景、只有眼神表情的鏡頭若沒過，先改分鏡再重拍；同一個分鏡重拍，多半只會得到一樣的結構。
+
 按需要往下讀：診斷與美術定調看前半；準備動態試作時讀「代表小樣」；審查有分歧時讀「證據與分歧」。不要為一般單鏡修正重開全部流程。
 
 ## 先把四種品質與接受狀態分開
@@ -47,6 +49,8 @@
 每例只提煉少量可測試的做法，寫出本案如何採用、不採用什麼及原因。借用的是視線引導、行為與剪接關係，不直接複製角色、鏡頭素材、台詞或別人的長提示。外部作品的模型、參考數量、片長或重試次數不會自動成為本案規格。
 
 研究紀錄範例：[2026-10-03 三部敘事作品抽樣與製作筆記](../../../../docs/videos/series-plans/competition-20261002/episodes/visual-reference-study-20261003.md)。這是有觀察範圍的案例，不是「90 分已驗證」或往後每案必看的固定片單。
+
+要的是數字而不只是印象時（多久換一個畫面、開場幾個鏡頭、台詞多長），用 `.agents/skills/youtube-video/scripts/yt_shot_probe.js` 在同一個瀏覽器裡量，做法與紀錄格式在 drama-craft.md 的「重新量參考片」；[2026-10-03 五支 AI 漫劇的量測](../../../../docs/videos/drama-craft/reference-study-20261003.md)是第一份。
 
 ## 2. 小量美術定調，先建立比較基準
 
