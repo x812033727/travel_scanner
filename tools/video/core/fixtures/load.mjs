@@ -1,6 +1,6 @@
 // Shared by the core tests: the minimal example video, and a throwaway repository layout
 // (docs/videos/<slug>/) plus a work directory outside it.
-import { cpSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -40,9 +40,34 @@ export const storyFixture = () => JSON.parse(readFileSync(STORY_FIXTURE_FILE, "u
 export const storyBrief = () => readFileSync(path.join(FIXTURES, "story", "brief.md"), "utf8");
 export const storySeries = () => JSON.parse(readFileSync(path.join(FIXTURES, "story", "series.json"), "utf8"));
 
+// Every throwaway directory made here is removed when the test process exits (node --test runs
+// each test file in a process of its own), so a run leaves nothing in the system's temporary
+// directory. VIDEO_KEEP_SANDBOX=1 keeps them for a look after a failure.
+const made = [];
+
+function removeMade() {
+  if (process.env.VIDEO_KEEP_SANDBOX === "1") return;
+  for (const dir of made) {
+    // A file still open on Windows must not throw from an exit handler or change the exit code.
+    try {
+      rmSync(dir, { recursive: true, force: true });
+    } catch {
+      // Left behind; the next one may still go.
+    }
+  }
+}
+
+/** A new empty directory under the system's temporary directory, removed when this process exits. */
+export function tempDir(prefix) {
+  const dir = mkdtempSync(path.join(tmpdir(), prefix));
+  if (made.length === 0) process.once("exit", removeMade);
+  made.push(dir);
+  return dir;
+}
+
 /** A fake repository holding a fixture (minimal, drama, explainer or story) as docs/videos/<slug>/, and a work base beside it. */
 export function sandbox(slug = "fixture-minimal", name = "minimal") {
-  const base = mkdtempSync(path.join(tmpdir(), "video-core-"));
+  const base = tempDir("video-core-");
   const root = path.join(base, "repo");
   const videos = path.join(root, "docs", "videos");
   mkdirSync(videos, { recursive: true });
