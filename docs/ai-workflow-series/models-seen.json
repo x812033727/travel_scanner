@@ -449,6 +449,14 @@
       "verbatim": "gpt-oss:120b a951a23b46a1 • 65GB • 128K context window • Text input",
       "checked_on": "2026-10-04",
       "notes": "Local weights, 65GB (the -cloud tag is the Ollama cloud one). Added by the factcheck of ai-workflow-agent-local-two-routes, whose prose quotes Ollama's Codex page: codex --oss -m gpt-oss:120b."
+    },
+    {
+      "id": "DeepSeek-R1-0528-Qwen3-8B",
+      "vendor": "Ollama library (DeepSeek distilled model)",
+      "url": "https://ollama.com/library/deepseek-r1",
+      "verbatim": "DeepSeek-R1-0528-Qwen3-8B ollama run deepseek-r1:8b",
+      "checked_on": "2026-10-03",
+      "notes": "The model the Ollama page names for the deepseek-r1:8b tag (which is also latest, 5.2GB, local weights), listed under Distilled models. Added by the factcheck of ai-workflow-agent-glm-qwen-deepseek, whose licence paragraph names it."
     }
   ]
 }

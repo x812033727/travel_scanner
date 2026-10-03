@@ -75,7 +75,7 @@ SOURCES_RANGE = (3, 8)
 #: families they name, and every flag in their code has to trace to a page in ``sources``.
 SOURCES_MAX = {
     "ai-workflow-agent-glm-qwen-deepseek": 14,
-    "ai-workflow-agent-local-batch-script": 11,
+    "ai-workflow-agent-local-batch-script": 12,
     "ai-workflow-agent-local-mcp-tool": 11,
     "ai-workflow-agent-local-engine": 11,
     "ai-workflow-agent-local-checklist": 12,
