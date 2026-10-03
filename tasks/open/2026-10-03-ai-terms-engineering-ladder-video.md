@@ -23,7 +23,8 @@ scope:
 ## Definition of done
 
 - [x] `docs/videos/ai-terms-prompt-to-graph-engineering/` 有 `brief.md`（8 節、3 個大綱選項、站主觀點提案、示範）、`video.json`（lint 0 錯誤，估計 11.8–12.3 分）、`claims.md`、`shorts.json`（兩支精華）、`demo-log.md`（示範的逐字證據）。
-- [ ] `verify-1.md`：另一位代理的查核第一輪；改超過 3 個事實就第二輪再換人。
+- [x] `verify-1.md`：多代理獨立查核第一輪（329 條判定、29 個修正投票通過並套用、撰稿者再修 17 處）；事實改動 21 個 > 3，所以要第二輪。
+- [ ] `verify-2.md`：另一組代理重查改過的 40 個欄位與第一輪 CONFIRMED 的三分之一。
 - [ ] 站主在 `/admin/videos` 挑大綱（頻道立場仍空白，Jev 不會自動挑）→ 後續照 `automated.md` 由工人或 session 接手 `tts` 以後的步驟。
 - [ ] 名詞庫登記：`docs/videos/ai-terms/terms.json` 與系列 README 補上這一集（那個資料夾在票 `2026-09-29-ai-terms-video-pilot` 的 scope 裡，這張票不碰）。
 
@@ -34,7 +35,8 @@ scope:
 - [x] 撰稿 `video.json`：91 景（63 shot、28 卡）、120 句、2,550 單位；每個英文名詞只在字卡，旁白全中文（不動共用的 `lexicon.json`）；`look: riso-forest`（工人輪替規則對這個 slug 的結果）。
 - [x] lint 到零錯誤（稿子本身 3 次，另 2 次故意放英文詞的測試、1 次改字覆核；見 `demo-log.md`）。
 - [x] `claims.md`（27 條）、`shorts.json`、`demo-log.md`。
-- [ ] 查核第一輪（另一位代理）→ 需要的話第二輪。
+- [x] 查核第一輪（多代理：七組查核＋反證＋兩面投票＋完整性）→ lint 第 10 次 0 錯誤。
+- [ ] 查核第二輪。
 - [ ] 提 PR、合併；之後 `review-push --gate outline`。
 
 ## How to verify
@@ -53,4 +55,5 @@ npm run check:tasks
 - `sources` 裡有三個 `raw.githubusercontent.com` 連結（repo 的常數與 HANDS-OFF.md）：`github.com` 對工具的 UA 回 403，`links` 品管會擋，所以用 raw；站主不喜歡可以拿掉，證據在 `demo-log.md`。
 - 示範不呼叫模型（本機沒金鑰），示範的是這條產線本身；旁白沒有「我測過」任何產品。
 - 任務板的 `claim` 第一次被拒：`docs/videos/lexicon.json` 在三張進行中的票的 scope 裡；照 `2026-09-28-video-1m-ai-agents` 的做法把 scope 縮成自己的資料夾，並讓旁白不含英文詞，所以不必動字典。
+- 2026-10-03 查核第一輪後：組合後的說明欄 4,946／5,000 位元組，只剩 54 位元組；之後改說明欄本文或來源標題要先量（`composeDescription`），超了 lint 會擋。四個字「觀察、執行、檢查、重試」查核判定不在任何一手來源（只在數位時代與站主需求），稿子改成 Osmani／站上文章的「找工作、檢查結果、記進度、再跑一圈」；站主若堅持原用語，要在字卡標成站主的歸納。Simmons 的頁面其實有日期 2026-07-04。原定由工作流最後一位代理套用修正並寫報告，那一步被模型安全機制擋下（提示太長），改由撰稿者依投票結果用腳本套用；下次把紀錄寫檔再讓代理讀，不要塞進提示。
 - 撰稿用的產生腳本在 session 的 scratchpad（`_tools/build_video.py`），不進 repo；`video.json` 是定稿，之後改稿直接改 JSON。

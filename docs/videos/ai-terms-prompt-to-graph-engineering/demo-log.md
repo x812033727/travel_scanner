@@ -77,11 +77,11 @@ WARN  scenes: about 11.9 minutes; the target is 9-11
 Estimate: 11.9 min, 120 lines, 2550 spoken units
 ```
 
-稿子本身的三次（第 2、4、5 次）：第 1 次缺 `look`、第 2 次 `tool_version` 還是佔位字串加一張 12.4 秒的 shot、第 3 次零錯誤；第 7 次是把 `lint-terminal` 最後一句縮短、`our-loop` 填入實際次數之後的覆核，仍為零錯誤。`our-loop` 卡因此寫「前兩次被擋下，第三次才歸零；共跑 7 次，含 2 次故意放錯的測試」。
+稿子本身的三次（第 2、4、5 次）：第 1 次缺 `look`、第 2 次 `tool_version` 還是佔位字串加一張 12.4 秒的 shot、第 3 次零錯誤；第 7 次是把 `lint-terminal` 最後一句縮短、`our-loop` 填入實際次數之後的覆核，仍為零錯誤。`our-loop` 卡因此寫「前兩次被擋下，第三次才歸零；共跑 7 次，含 3 次故意放錯的測試」（第 1、3、6 次是測試；查核第一輪抓到原本寫成 2 次）。
 
 ## 二、`lint-terminal` 卡抄的是第 6 次
 
-`command`：`node tools/video/cli.mjs lint --slug ai-terms-prompt-to-graph-engineering`（69 欄）。`output` 兩段：第一段是摘要行，第二段是錯誤行；錯誤行 127 欄，照終端機在第 80 欄斷行成兩行（版型一行最多 80 欄）。`ran_on` 2026-10-03；`tool_version`「50cfb03b (tools/video, git)」——工具沒有 `--version`，用 repo 的 git 短碼。
+`command`：`node tools/video/cli.mjs lint --slug ai-terms-prompt-to-graph-engineering`（73 欄）。`output` 兩段：第一段是摘要行，第二段是錯誤行；錯誤行 127 欄，照終端機在第 80 欄斷行成兩行（版型一行最多 80 欄）。`ran_on` 2026-10-03；`tool_version`「50cfb03b (tools/video, git)」——工具沒有 `--version`，用 repo 的 git 短碼。
 
 ```
 ai-terms-prompt-to-graph-engineering: 1 errors, 1 warnings
@@ -129,7 +129,7 @@ tools/video/automation/automation.test.mjs:2304: assert.equal(MAX_REWRITE_ROUNDS
 
 ## 五、核准綁雜湊（`wax-seal`）
 
-出處是 skill 主文與 `automated.md`：「核准綁定檔案雜湊：稿子或旁白改了，舊的核准自動失效，後面的指令會以結束碼 3 拒絕，要重新 review-push」；`docs/videos/HANDS-OFF.md`「核准綁定檔案雜湊，檔案改過就要重新送審」。這次沒有實際觸發結束碼 3（還沒有任何核准可以失效），旁白只說機制，不說「我們試過」。
+出處是 skill 主文與 `automated.md`：「核准綁定檔案雜湊：稿子或旁白改了，舊的核准自動失效，後面的指令會以結束碼 3 拒絕，要重新 review-push」；機制在 `tools/video/core/approvals.mjs`；`docs/videos/HANDS-OFF.md` 寫的是四個關卡由誰核准（查核第一輪更正：HANDS-OFF.md 沒有「核准綁定檔案雜湊」這句）。每個關卡綁各自的檔案（大綱綁 brief.md；分鏡核准不因卡片文字改動失效）。這次沒有實際觸發結束碼 3（還沒有任何核准可以失效），旁白只說機制，不說「我們試過」。
 
 ## 六、沒做的事
 
