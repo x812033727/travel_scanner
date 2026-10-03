@@ -235,6 +235,8 @@ describe("AdminNewsWorkspace", () => {
     ["needs_evidence", "news_evidence_insufficient", null, ["退件"]],
     ["manual_review", "news_evidence_changed", "00000000-0000-4000-8000-000000000002", ["用最新來源重新查核", "退件"]],
     ["manual_review", "news_verification_failed", "00000000-0000-4000-8000-000000000002", ["重新查核", "退件"]],
+    ["manual_review", "news_hard_checks_failed", "00000000-0000-4000-8000-000000000002", ["重新查核", "退件"]],
+    ["manual_review", "news_hard_checks_failed", null, ["重新執行", "退件"]],
     ["published", null, "00000000-0000-4000-8000-000000000002", ["回報發布後重大錯誤"]],
     ["rejected", null, null, []],
     ["manual_review", "news_zh_draft_ready", null, ["確認發布，翻譯其他語言", "重新執行", "退件"]],
@@ -249,14 +251,40 @@ describe("AdminNewsWorkspace", () => {
   });
 
   it.each([
-    ["manual_review", "news_locale_review_failed", ["重新翻譯並發布", "退件"]],
-    ["failed", "ValidationError", ["重新翻譯並發布", "重新執行", "退件"]],
-  ])("offers to translate again once publication is confirmed (%s / %s)", async (status, errorCode, expected) => {
-    serveRows({ ...summary, status, error_code: errorCode, guide_article_id: null, human_decision: "publish" });
+    ["manual_review", "news_locale_review_failed", null, ["重新翻譯並發布", "退件"]],
+    ["failed", "ValidationError", null, ["重新翻譯並發布", "重新執行", "退件"]],
+    ["manual_review", "news_hard_checks_failed", "00000000-0000-4000-8000-000000000002", ["重新翻譯並發布", "重新查核", "退件"]],
+    ["manual_review", "news_hard_checks_failed", null, ["重新翻譯並發布", "退件"]],
+  ])("offers to translate again once publication is confirmed (%s / %s / %s)", async (status, errorCode, articleId, expected) => {
+    serveRows({ ...summary, status, error_code: errorCode, guide_article_id: articleId, human_decision: "publish" });
     render(<AdminNewsWorkspace />);
     fireEvent.click(await screen.findByRole("button", { name: /Official AI API update/ }));
     await screen.findByText(/Official release/);
     expect(actionButtons().sort()).toEqual([...expected].sort());
+  });
+
+  it.each([null, "publish"])("re-verifies the saved article after hard checks failed (owner decision: %s)", async (humanDecision) => {
+    const articleId = "00000000-0000-4000-8000-000000000042";
+    const held = { ...summary, error_code: "news_hard_checks_failed", human_decision: humanDecision, guide_article_id: articleId };
+    serveRows(held);
+    details[held.id] = { ...detailOf(held), lint: { ja: ["faq_missing"], ko: [] } };
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /Official AI API update/ }));
+    await screen.findByText(/Official release/);
+    expect(screen.getByText("文章已儲存但尚未發布。未通過的語系與原因列在下方「硬性檢查」。請到文章編輯器修正，再按「重新查核」，或退件。")).toBeTruthy();
+    expect(screen.getByText("faq_missing").closest("article")?.querySelector("h3")?.textContent).toBe("ja");
+    expect(screen.getAllByRole("link", { name: /開啟文章編輯器/ }).map((link) => link.getAttribute("href")))
+      .toEqual(newsLocales.map((locale) => `/admin/guides?article=${articleId}&lang=${locale}`));
+    const verify = screen.getByRole("button", { name: "重新查核" }) as HTMLButtonElement;
+    expect(verify.disabled).toBe(true);
+    expect(posts()).toEqual([]);
+    fireEvent.change(screen.getByLabelText(/原因（必填/), { target: { value: "  已在文章編輯器補齊日文 FAQ  " } });
+    expect(verify.disabled).toBe(false);
+    fireEvent.click(verify);
+    await waitFor(() => expect(posts()).toEqual([`/api/travel/admin/news/candidates/${held.id}/verify`]));
+    const request = vi.mocked(fetch).mock.calls.find(([, init]) => init?.method === "POST");
+    expect(JSON.parse(String(request?.[1]?.body))).toEqual({ reason: "已在文章編輯器補齊日文 FAQ", major_error: false });
+    expect(await screen.findByText(adminNewsCopy("zh-TW").doneVerify)).toBeTruthy();
   });
 
   it("confirms a Chinese draft and says the translations have started", async () => {
