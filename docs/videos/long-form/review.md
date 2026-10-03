@@ -774,16 +774,42 @@ Non-claims. This review does not accept the decision to re-record rather than ke
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch video-length-floor-only increment: 14 files (2026-10-04)
+
+Reviewer: `claude-pr-review-video-length-floor-only`. Author: `claude-fable-5-1-length` (the session that wrote commit `f72c42d94`, "no upper bound on a video's length; only the eight-minute floor is enforced", branch claude/video-length-floor-only, task `2026-10-03-video-length-floor-only`). Scope: DURATION_ONLY for the fourteen changed bindings below. Disclosure on independence: the branch carries a second commit, `2ec4b11a6`, written by this reviewing session to apply findings other reviewers of the branch had reported. In bound files that commit changes one sentence of references/automated.md (wording supplied by the documentation reviewer), one phrase of the slides writer prompt in prompts.mjs ("has usually read faster"), the first sentence of `lengthHelp` in the zh-TW, zh-CN, ja and ko admin.json, and adds two assertions to lint.test.mjs. None of those lines states or changes a length rule, and they are listed per file below so a later reader can check them; everything else in the fourteen files is the author's and was not written by the reviewer.
+
+Baseline: the merge-base of the branch and main is `cf9e04ead2f51541db2641a35487001bff3d53ed` (#1182), which is also main's head at review time. All 108 registered files' bytes at that commit hash exactly to the preceding receipt (each compared with review.json by script), and the preceding report's SHA256 is `dd0ed5cd66b8acdf8a49e08578ba547fb68bed55d8aed04dcebd55ef6975adb9`; every paragraph before the binding table is preserved byte for byte. Of the branch's 18 changed files, 14 are bound; before rebinding, `node tools/video/long-form/cli.mjs check` failed on these fourteen paths and nothing else. The registry remains exactly 108 paths, with these fourteen hashes rebound and the other 94 unchanged. The reviewer read the full delta of all fourteen (58 lines added, 20 removed); no network beyond the fetch of the two branches.
+
+Findings. Unlike the preceding increments, this one changes a duration rule on purpose. The owner decided on 2026-10-04, in chat, that a video may run over 12 minutes and that the only length rule is "8 minutes or more", and chose the "tools and documents" level: the admin setting stays and becomes an aim. The change is exactly that and no more:
+
+- lint.mjs: one condition. `else if (minutes < low || minutes > high) warn(…)` became `else if (minutes < low || (minutes > high && !needsMinimumLength(doc))) warn(…)`, with a three-line comment. Where the eight-minute floor holds (slides, screencasts and the flat explainer; drama.mjs `needsMinimumLength`, unchanged), an estimate above the upper end of `target_minutes` is no longer a warning. The two errors directly above it (`low < floor` on target_minutes and `minutes < floor` on scenes) are byte-identical, as are `minEpisodeMinutes`, `DEFAULT_TARGET_MINUTES` and the long-anime `runtime_spec` warning directly below. A drama, a brand story (preset "custom"), a long anime (preset "anime-2d") and any document carrying a compilation are not `needsMinimumLength`, so they warn on both sides as before. What was removed was a warning, never an error: no worker flow reads it (flow.mjs and story.mjs feed back lint errors only), so no video that was blocked before passes now and none that passed is blocked.
+- lint.test.mjs: one new test of 25 lines, no existing assertion changed. It asserts that slides and the explainer over the upper end get no length warning, that slides under the lower end still warn, that a drama and a brand story over the upper end still warn, and, with `VIDEO_MIN_EPISODE_MINUTES` removed, that an estimate under 8 minutes and a target starting at 7 are still errors. The brand-story assertion and the starts-at-7 assertion are the two lines from `2ec4b11a6`.
+- prompts.mjs: wording in five places, no code. The slides planner and writer and the explainer's common block and two planners replace "the whole within target_minutes" with "at least 8 minutes, aimed at the target, over it is fine; never cut a sourced fact to fit and never pad". Every "never under 8 minutes" stays or is added. The drama planner's "within target_minutes" (line 475) is untouched.
+- SKILL.md and its .claude copy (byte-identical, same SHA256): the route table says 「8 分鐘以上（目標 8–12 分鐘，超過上緣沒關係）」 and hard rule 10 gains one sentence, 「沒有上限（站主 2026-10-04 定）」; the rule's first sentence (8 minutes or more for everything but a drama) is unchanged.
+- references/automated.md: one bullet. It keeps the 300-characters-a-minute measurement, adds the 2026-10-04 measurement of one video that went the other way (estimate 12.2 minutes, narration 13.07), says the cause was not separated, and states the length rule. The sentences on the 8-minute errors, the measured `assemble` floor, the 10- and 13-minute production targets, the 480-second checks and `VIDEO_MIN_EPISODE_MINUTES` are byte-identical.
+- docs/videos/DESIGN.md and README.md: one table cell each. Both keep "at least 8 minutes" and add that 8–12 is the default aim and the upper end is not a limit; README's 10-minute, 8–20, 13-minute, 480-second, 2–4-minute and 30–480-minute statements are byte-identical.
+- The five admin.json: the label of `videoSettings.fields.target_minutes_max` and one new key `videoSettings.lengthHelp` each; `target_minutes_min` and every other key unchanged. admin-video-settings-tutorial.tsx: one added line that renders the hint; the fields, their order and their validation are unchanged.
+
+Not changed, checked against the branch diff: `git diff --name-only` between the merge-base and the branch head lists nothing under apps/api or ops, and under tools/ only the three files above. So `target_minutes_max` keeps its 8..30 validation and default 12, `MIN_EPISODE_MINUTES`, `VIDEO_MIN_EPISODE_MINUTES`, duration.mjs (the 480-second measured body, 14,400 frames), the 600- and 780-second production targets, the explainer's 8–20 request range, the drama's ranges, `runtime_spec`, `action_seconds`, the measured `minMinutes` floor in qa/checks.mjs, docs/videos/long-form/plans.json and policy.json, source hashes and covered states are all byte-identical to the preceding receipt.
+
+Consequence the owner accepted and this review records: for slides, screencasts and the explainer nothing in the tools now signals a long script before synthesis; the aim's 8..30 validation and the prompt's "never pad" are the only guards, and cost grows with length.
+
+Ran (Node 24.13.0, offline, Windows): before rebinding, `node tools/video/long-form/cli.mjs check` printed FAIL on exactly the fourteen stale bindings above. `node --test tools/video/core/lint.test.mjs tools/video/core/duration.test.mjs tools/video/core/drama.test.mjs tools/video/core/explainer.test.mjs` ran 80 tests: 80 passed, zero failed, cancelled or skipped, exit 0. The CLI check and tools/video/long-form/review.test.mjs are rerun after rebinding; their results are in the hand-off so this report's hash stays stable.
+
+Non-claims. This review does not accept the product decision itself, the wording or translation quality of the labels and prompts, the claim refused for scope overlap (the ticket records it), CI, or how the planner and writer models behave under the new wording. No long anime or compilation fixture is asserted over its upper end in the new test; that they keep both sides rests on reading `needsMinimumLength`. The narration-speed figures in automated.md are the author's measurements and were not re-measured. PASS is DURATION_ONLY for the fourteen rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `c5549733c632dac550e4063d272e5decda07910e63fb58740e3fdabb89099958` |
-| `.agents/skills/youtube-video/references/automated.md` | `871cb7ecfc3da931599d77ab1ec5b15a7dcf0b2c25689419c53b1f26ba67f401` |
+| `.agents/skills/youtube-video/SKILL.md` | `e64e9588bdfe17c1c37ded755c3f65eabec01e90d2aa54ad35cfe3f20163e08f` |
+| `.agents/skills/youtube-video/references/automated.md` | `d386163dfe113eacf59adec433abb2a6fedcc17e1b194d3a60d4159951f9b26d` |
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
-| `.claude/skills/youtube-video/SKILL.md` | `c5549733c632dac550e4063d272e5decda07910e63fb58740e3fdabb89099958` |
+| `.claude/skills/youtube-video/SKILL.md` | `e64e9588bdfe17c1c37ded755c3f65eabec01e90d2aa54ad35cfe3f20163e08f` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `f27078a3792caed5fb7f0af14bd95d631824c562c37d3aafed375c06dbbc21ca` |
 | `apps/api/app/video_automation/models.py` | `4a9e59680a65274e532912de176ff211e9b98311b127aecf3cc4dbabaea1ef89` |
@@ -808,16 +834,16 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/web/components/admin-video-reviews.test.tsx` | `b2eda38830de745b0b000fc26fc7d3e6e17162a408fa5274f4609b15e4b7012c` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
-| `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
-| `apps/web/messages/en/admin.json` | `86eb8ecb84b1bac50c272a27a31f678e2b7d62c8d8f6961e9db8db65ba8306c7` |
-| `apps/web/messages/ja/admin.json` | `331741e82337d5c0e320ca2bba1ceec3f077d9a443e48e0224732fe88aa79e3f` |
-| `apps/web/messages/ko/admin.json` | `86641542453938233f9646ea9729cc98465e0e61efb9d98be0f77054e8b55969` |
-| `apps/web/messages/zh-CN/admin.json` | `e02a1806b9e415d607368a223b6e5d7f58ff2c44193299e17f522d6d67061746` |
-| `apps/web/messages/zh-TW/admin.json` | `3ee6f764eb187e7d88f0a496fcd90aca6cbcaaa66d56aa240b36622b9a14f61b` |
-| `docs/videos/DESIGN.md` | `728615de7e4c4461c3cfce098d5c18ea7309ea9fd392bef048fef9a3b176f2ac` |
+| `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
+| `apps/web/messages/en/admin.json` | `89c92ecf60568fa5f28cbbb6aa207aba8cee0d2ea224df5c0cb4f485512e038b` |
+| `apps/web/messages/ja/admin.json` | `20263c9058819d3903e229c3ba5d8ca1db8bb7ed84e15b2e52b4bd43a5d952e0` |
+| `apps/web/messages/ko/admin.json` | `971e66d21091ebd6a4ead4f7f758744085d6104437034bb25cffc6955999a9b6` |
+| `apps/web/messages/zh-CN/admin.json` | `cc553b23797506b841b71fd14dd6086be6d645fa220c58bba86fe19241ee3318` |
+| `apps/web/messages/zh-TW/admin.json` | `33f6106a811189997f746d28ea5355f747d2a498d92b8def3fc0a57d636ba25d` |
+| `docs/videos/DESIGN.md` | `239c6961b8538abd0003d4fa17a69847fcf9016089bbea96ceac9969236705ec` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
-| `docs/videos/README.md` | `662b1579ad3f1594b4e1a283aab068c32fe7a6724c7e7104cfb2a5f78aee9e11` |
+| `docs/videos/README.md` | `08a49222ddb89e98c97f6c160e82786a1dda711e5b7e9037ec500985e8abda29` |
 | `docs/videos/long-form/README.md` | `dd639c0c85595881d1bda64541d28f29e8d90f1067e541c08eb28dc9c4543c3b` |
 | `docs/videos/long-form/plans.json` | `22023c15fa10a24e4a0141e3fc5930ff6925a84ff5ab5cb5a466a5baa15b7108` |
 | `docs/videos/long-form/policy.json` | `6f08e7cd27b98710dc308bdb7ea44a6db4b1c8891d0731d5387d9b2245636bad` |
@@ -833,7 +859,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/automation.test.mjs` | `dbd7ca82428fbe3ab723514146e706f7d663feb42c819d379a2613b4b63e4e64` |
 | `tools/video/automation/discuss.mjs` | `691f6ec55bde0b1c34c54fd38f39681d50617035dab78b0d2c751266a61f43ee` |
 | `tools/video/automation/flow.mjs` | `69879582b38859a8ee95372db33b61fb1336ac63a5e395b68a783d0ae0e5ae1a` |
-| `tools/video/automation/prompts.mjs` | `d220ce8b3d6b46a8e9d577e865fe2a0ce56d63ff944eace65abb953620c22736` |
+| `tools/video/automation/prompts.mjs` | `fa440300b1363796581cc349381e3b75d7dab3661dfb4c41954d8c59f4a16504` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `ce8d18d30137ea172dc4ccf6ab7be5e3d1f4cb849f8e0b95626a7d6696de3f3c` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
@@ -848,8 +874,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/duration.mjs` | `e92c104bc62babf18f47c75b67416807484f1af794b94cd8790350990dba8edd` |
 | `tools/video/core/duration.test.mjs` | `388bda7c57e548c2f50165a713e038e147645d283409c1f09393e8eef68652ba` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `32f46678dde9b3d7616935fec440a8f152ea864fa4fdf37b3687a00c83cd9e11` |
-| `tools/video/core/lint.test.mjs` | `38c166ee40d35fa31f0e15621bc40aaa4ce99af862027168192f0dc1484688a5` |
+| `tools/video/core/lint.mjs` | `f0ddc86d2e489ac39c28ae809e497941bccd3bab00714a6f1687d53833f27ee6` |
+| `tools/video/core/lint.test.mjs` | `8fc0d8f9e887dcb237e523d613fbb2c6eac9fa15f24c34d513da7d426d322281` |
 | `tools/video/core/narration-locale.test.mjs` | `e42075ee53802451cb51ff3aa39252d358d3a9b8584f631c37f96d017c98eefc` |
 | `tools/video/core/schema.mjs` | `d810ca82a8ef459faea23efa0afcbf1029d08521cb50c09e157bb19598ac172f` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
