@@ -101,6 +101,16 @@ const KNOWN = {
   "docs/article-localization/releases/batch022/evidence.json": { "user-path": 42 },
   "docs/catalog-content-reviews/2026-09-09-followup.json": { "user-path": 237 },
   "docs/videos/so-thats-why/season2/reviews/completion/T37.md": { "user-path": 1 },
+  "docs/videos/sothatswhy-t27/author-note.md": { "user-path": 1 },
+  "docs/videos/sothatswhy-t27/branding-adoption.json": { "user-path": 9 },
+  "docs/videos/sothatswhy-t27/fact-source-audit.json": { "user-path": 6 },
+  "docs/videos/sothatswhy-t27/final-runtime-review.json": { "user-path": 42 },
+  "docs/videos/sothatswhy-t27/final-runtime-review.md": { "user-path": 2 },
+  "docs/videos/sothatswhy-t27/production-record.md": { "user-path": 1 },
+  "docs/videos/sothatswhy-t27/runtime-audit.json": { "user-path": 11 },
+  "docs/videos/sothatswhy-t27/runtime-audit.md": { "user-path": 7 },
+  "docs/videos/sothatswhy-t27/visual-review.json": { "user-path": 234 },
+  "docs/videos/sothatswhy-t27/visual-review.md": { "user-path": 2 },
   "tasks/2026-09-07-contextual-travel-services.md": { "user-path": 1 },
   "tasks/2026-09-07-hotel-platform-options-and-quote-readiness.md": { "user-path": 1 },
   "tasks/2026-09-16-news-batch-4-4-the-8.md": { "user-path": 1 },
@@ -129,6 +139,7 @@ const KNOWN = {
   "tasks/2026-09-28-video-1m-vibe-coding.md": { "user-path": 1 },
   "tasks/2026-09-29-resume-imported-long-video-languages.md": { "user-path": 2 },
   "tasks/2026-10-02-investigate-loading-query-timeouts-under-windows.md": { "user-path": 1 },
+  "tasks/2026-10-02-produce-one-t27-japan-trash-bin.md": { "user-path": 1 },
 };
 
 function key(path) {
