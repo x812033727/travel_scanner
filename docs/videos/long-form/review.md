@@ -526,6 +526,18 @@ Non-claims: the API, ruff, mypy, Node and CLI check runs for this merge belong t
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1169 drama-request clock increment: 1 file (2026-10-03)
+
+Reviewer: `claude-pr-review-1169`. Author: `claude-opus-5-5-ci-time-bomb` (the Claude session that wrote commit 55c46be2, "test(web): drama request tests no longer expire a week after their fixture dates", PR #1169, branch claude/nervous-edison-2762dc). Scope: DURATION_ONLY. The reviewer did not write this change and edited only this report, review.json and the PR's task file.
+
+Baseline: at the parent 873cfc73 (#1164), apps/web/components/admin-video-reviews.test.tsx hashes to `5d8bf674…3cb824`, the value bound before this increment, so `git diff 873cfc73 55c46be2` of that file is exactly the unreviewed change (+29/−0, three hunks, nothing removed). The commit's only other file is its unbound task file, so the other 107 bindings are untouched. The reviewer read the whole delta and the unchanged `SeriesList` filter it exercises in apps/web/components/admin-video-series.tsx.
+
+Findings. `afterEach` gains `vi.useRealTimers()`, so a pinned clock cannot leak into the next test. The test "queues a drama episode from the form, lists the requests and withdraws a queued one" gains a comment and, as its first statement, `vi.setSystemTime(new Date("2026-09-26T07:00:00Z"))`; no fake timers are installed, so only `Date` is mocked and `waitFor` and the refresh interval stay real. Its fixtures (`target_minutes` 3 and 2), the spinbutton's accessible name "長度（分鐘：漫劇 1–8，解說 8–20）", the "2" typed into it and the expected POST body `target_minutes: 2` are byte-unchanged. A new test pins the clock at 2026-10-10T00:00Z and lists five requests: queued and started ones filed on 2026-09-20 stay, a done one filed at 2026-10-03T00:01Z stays, and a done and a cancelled one filed at 2026-10-02T23:59Z are dropped; it asserts three list items and which premises appear. Its shared row fields carry `target_minutes: 3`, the existing fixture's value and the drama default inside 1–8, and nothing reads or asserts it. The week it tests is how long `SeriesList` keeps a finished or withdrawn request in the list (`Date.now() - 7 * 24 * 3600_000` against `created_at`), a list-retention window and not a video length; admin-video-series.tsx is not changed. No changed line moves or adds a duration literal, range or default, an accessible name with minutes, target_minutes validation, effectiveEpisodeMinutes, MIN_EPISODE_MINUTES, VIDEO_MIN_EPISODE_MINUTES, a frame count, the 480-second/14,400-frame body and final floors, the explainer's 10-minute default or 8–20 range, the drama's 1–8 range, the brand story's 13 or a QA path, and no existing assertion is removed, skipped or weakened.
+
+Ran (Node 24.13.0, Windows, at 55c46be2 after `npm ci`): `node tools/video/long-form/cli.mjs check` before rebinding printed `FAIL: stale duration review binding: apps/web/components/admin-video-reviews.test.tsx` and exited 1, failing on nothing else. `node --test tools/video/long-form/review.test.mjs` ran 2 tests: the tamper/self-review regression passed and the shipped binding regression failed on that same path. In apps/web, `npx vitest run components/admin-video-reviews.test.tsx` (Vitest 5.0.2) passed 60/60, exit 0, on 2026-10-03, the day the unpinned test went red. The CLI check, the review tests, `npm run test:tools` and `npm run check:tasks` are rerun after rebinding.
+
+Non-claims. This review does not accept the week-retention rule, the drama request queue or the test's other assertions themselves, and runs no browser, CI, API suite, provider, media, deployment or publication step. It does not freshly review the 107 unchanged bindings. PASS is DURATION_ONLY for the one rebound hash below. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -557,7 +569,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
 | `apps/web/components/admin-video-review-card.tsx` | `d5548c8bb8218cad84719434bfae1a2acebc1d972b6887cda3e9afaa5088c5e8` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `5d8bf674f9f34f97655666e8b61b556a51720f98638c55587e852d167d3cb824` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `b2eda38830de745b0b000fc26fc7d3e6e17162a408fa5274f4609b15e4b7012c` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |

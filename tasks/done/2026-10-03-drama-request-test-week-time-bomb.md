@@ -12,6 +12,8 @@ branch: claude/nervous-edison-2762dc
 depends_on: []
 scope:
   - apps/web/components/admin-video-reviews.test.tsx
+  - docs/videos/long-form/review.json
+  - docs/videos/long-form/review.md
 ---
 
 # Drama request test expires a week after its fixture dates and turns CI red
@@ -62,3 +64,5 @@ Mutation check: replacing `Date.parse(request.created_at) > recent` with `true` 
 - Claiming needed `--force`: the scope overlapped `2026-09-28-drama-preloaded-document-approval-order`
   (codex-ten-drama, status review). Its PR #978 merged on 2026-09-29 and its branch is gone; the task file
   was simply never closed.
+- The test file is bound by the long-form duration review (`docs/videos/long-form/review.json`), so an
+  independent reviewer, `claude-pr-review-1169`, reviewed the delta as DURATION_ONLY and rebound the receipt.
