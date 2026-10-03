@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-illustrated-slides-pictures-that-look-hand
 title: Illustrated slides pictures that look hand-made, varied and sharp
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-illustration-polish
 claimed_at: 2026-10-03T01:41:31Z
 created_at: 2026-10-03T01:38:33Z
-completed_at:
+completed_at: 2026-10-03T02:16:52Z
 branch: claude/video-series-illustration-polish-c26975
 depends_on: []
 scope:
@@ -71,8 +71,9 @@ not by the model.
       a 2K price (`usd_per_image_2k` on the status choices; `ImageJobIn.size`; Gemini `imageSize`),
       priced accordingly; a 1K-only model refuses 2K with 422.
 - [x] `docs/videos/ILLUSTRATED.md` records the decisions, the cost at 2K and what is left.
-- [ ] The duration-review receipt (`docs/videos/long-form/review.*`) is rebound by an independent
-      reviewer for the bound files this touches (prompts.mjs, drama.mjs, look-keyframes.test.mjs).
+- [x] The duration-review receipt (`docs/videos/long-form/review.*`) is rebound by an independent
+      reviewer for the bound files this touches (prompts.mjs, drama.mjs, look-keyframes.test.mjs):
+      `claude-pr-review-illustration-polish`, commit 68e1efd17.
 
 ## Steps
 
@@ -88,7 +89,7 @@ not by the model.
 - [x] apps/api video_media: `ImageJobIn.size`, `ChoiceView.usd_per_image_2k`,
       `MediaModel.usd_per_image_2k`, `meter.usd_for(..., size)`, Gemini `imageSize`.
 - [x] Tests on both sides; docs.
-- [ ] Independent duration review of the bound files; commit, PR.
+- [x] Independent duration review of the bound files; commit, PR #1166.
 
 ## How to verify
 
