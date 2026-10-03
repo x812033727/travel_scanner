@@ -1,3 +1,4 @@
+import { assembledAudioProblems } from "../core/audio-evidence.mjs";
 // `package`: everything the owner uploads, in <VIDEO_WORKDIR>/<slug>/upload/, once final.mp4 has
 // been approved exactly as it is. metadata.json carries the disclosure answer (the same the
 // quality check writes), and the package is checked as soon as it is written
@@ -125,7 +126,8 @@ export async function run(command, args, ctx) {
     && (compilation ? checks.compilation_hash === bodyTimeline?.compilation_hash : checks.speech_hash === bodyTimeline?.speech_hash)));
   const clips = isDrama(doc) && !compilation ? readJson(path.join(workdir, ARTIFACTS.clips), null) : null;
   const keyframes = illustrated(doc) ? readJson(path.join(workdir, ARTIFACTS.keyframes), null) : null;
-  const current = compilation ? compilationChecksCurrent(doc, checks, episodes) : checksCurrent(doc, lexicon, checks, clips, keyframes);
+  const audioProblems = compilation ? [] : assembledAudioProblems(bodyTimeline, checks, workdir);
+  const current = compilation ? compilationChecksCurrent(doc, checks, episodes) : !audioProblems.length && checksCurrent(doc, lexicon, checks, clips, keyframes);
   if (!brandingMatches) {
     ctx.stderr.write(`final.mp4 does not match the selected branding; run ${compilation ? "compile" : "assemble"} again before package\n`);
     return EXIT.usage;

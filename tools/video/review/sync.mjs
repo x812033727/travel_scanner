@@ -16,6 +16,7 @@ import { parseArgs } from "node:util";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { AutomationError, automationClient } from "../automation/client.mjs";
 import { GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
+import { assembledAudioProblems, audioEvidenceProblems, currentAudioCheck } from "../core/audio-evidence.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { hasCast, illustrated, isDrama, shotScenes } from "../core/drama.mjs";
@@ -430,7 +431,11 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
   if (gate === "audio") {
     const file = path.join(workdir, ARTIFACTS.timeline);
     const timeline = readJson(file, null);
-    const check = audioCheck(readJson(path.join(workdir, "review", "check.json"), null), readJson(path.join(workdir, "review", "check-flags.json"), null), timeline.lines.length);
+    const problems = audioEvidenceProblems(timeline, workdir);
+    if (problems.length) throw new UsageError(`audio cannot be submitted: ${problems.join("; ")}`);
+    const currentCheck = currentAudioCheck(readJson(path.join(workdir, "review", "check.json"), null), timeline);
+    const flagsNow = readJson(path.join(workdir, "review", "check-flags.json"), null);
+    const check = audioCheck(currentCheck, { ...flagsNow, flags: (flagsNow?.flags ?? []).filter((id) => currentCheck.lines[id]) }, timeline.lines.length);
     // The lines the listener reworded after the retakes (docs/videos/HANDS-OFF.md §旁白), as the
     // worker wrote them: [{ id, before, after, heard }]; the review card lists them.
     const rewrites = readJson(path.join(workdir, "review", "rewrites.json"), []);
@@ -449,6 +454,10 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     const sha = await sha256File(file);
     const bodyTimeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
     const checks = readJson(path.join(workdir, ARTIFACTS.checks), null) ?? {};
+    if (!isCompilation(doc)) {
+      const problems = assembledAudioProblems(bodyTimeline, checks, workdir);
+      if (problems.length) throw new UsageError(problems.join("; "));
+    }
     const compilation = isCompilation(doc);
     const applied = appliedBranding(checks);
     const rebuild = compilation ? "compile" : "assemble";
@@ -957,6 +966,10 @@ async function recordApproval(review, { dir, workdir, now }) {
   const file = GATES[review.gate]({ docDir: dir, workdir });
   if (!existsSync(file) || (await sha256File(file)) !== review.content_sha256) {
     return "approved a version that has since changed; run review-push again";
+  }
+  if (review.gate === "audio") {
+    const problems = audioEvidenceProblems(readJson(file), workdir);
+    if (problems.length) return `approval not recorded: ${problems.join("; ")}`;
   }
   if (readApprovals(workdir).approvals.some((entry) => entry.gate === review.gate && entry.sha256 === review.content_sha256)) {
     return "already recorded";

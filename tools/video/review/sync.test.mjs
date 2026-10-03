@@ -7,10 +7,11 @@ import test from "node:test";
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { approve, readApprovals } from "../core/approvals.mjs";
+import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { pinBranding, presentationTimeline, validateBranding } from "../core/branding.mjs";
 import { lookHash } from "../core/drama.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
-import { sandbox } from "../core/fixtures/load.mjs";
+import { sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
 import { runCaptions, writeLanguages } from "../core/stages.mjs";
 import { COMPILATION_STEPS, DRAMA_STEPS, dubArtifacts, loadProject, SLIDES_STEPS } from "../core/state.mjs";
@@ -245,9 +246,8 @@ test("the narration goes up as an encoded copy, in parts, before its review is s
   const brief = readFileSync(path.join(box.dir, "brief.md"));
   mkdirSync(box.workdir, { recursive: true });
   writeFileSync(path.join(box.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "outline", file: "brief.md", sha256: sha(brief), approved_at: "2026-09-25T00:00:00Z", note: "" }] }));
-  const timeline = { fps: 30, total_frames: 90, lines: [{ id: "a" }, { id: "b" }], scenes: [], chapters: [] };
-  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
-  writeFileSync(path.join(box.workdir, "narration.wav"), encodeWav(new Int16Array(SAMPLE_RATE * 3)));
+  const timeline = { fps: 30, total_frames: 90, lines: [{ id: "aaaa", audio_samples: SAMPLE_RATE }, { id: "bbbb", audio_samples: SAMPLE_RATE }], scenes: [], chapters: [] };
+  writeAudioFixture(timeline, box.workdir);
   // The lines the worker's listener reworded after the retakes (docs/videos/HANDS-OFF.md §旁白).
   const rewrites = [{ id: "b", before: "這就是它的答", after: "這就是它的回答", heard: "這就是它的打" }];
   mkdirSync(path.join(box.workdir, "review"), { recursive: true });
@@ -276,7 +276,8 @@ function cutVideo(box) {
   mkdirSync(box.workdir, { recursive: true });
   const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
   const lexicon = JSON.parse(readFileSync(path.join(box.videos, "lexicon.json"), "utf8"));
-  writeSyntheticNarration(doc, lexicon, box.workdir);
+  const timeline = writeSyntheticNarration(doc, lexicon, box.workdir);
+  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: false, narration_sha256: timeline.audio_evidence.narration_sha256, speech_hash: timeline.speech_hash, visual_hash: visualHash(doc), problems: ["fixture cut has no passing assembly checks"], metrics: { frames: timeline.total_frames } }));
   const final = Buffer.from("the finished cut");
   writeFileSync(path.join(box.workdir, "final.mp4"), final);
   return { doc, final };
@@ -290,7 +291,7 @@ function brandedCut(box) {
   const body = Buffer.from("the retained unbranded body");
   writeFileSync(path.join(box.workdir, "body.mp4"), body);
   const applied = { hash: selection.hash, id: selection.id, intro_frames: 150, outro_frames: 90, body_frames: timeline.total_frames, body_file: "body.mp4", body_sha256: sha(body) };
-  const checks = { ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(cut.doc), branding: applied, problems: [], metrics: { frames: timeline.total_frames + 240 } };
+  const checks = { ok: true, narration_sha256: timeline.audio_evidence.narration_sha256, speech_hash: timeline.speech_hash, visual_hash: visualHash(cut.doc), branding: applied, problems: [], metrics: { frames: timeline.total_frames + 240 } };
   writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(checks));
   return { ...cut, timeline, selection, applied, checks };
 }
@@ -307,6 +308,38 @@ function passingQualityCheck(box, final, calls = []) {
 }
 
 const encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
+
+test("remote approvals and old transcript checks cannot clear a new take of the same duration", async () => {
+  const box = sandbox();
+  cutVideo(box);
+  const timelineFile = path.join(box.workdir, "timeline.json");
+  const timeline = JSON.parse(readFileSync(timelineFile));
+  const server = site();
+  server.state.reviews.push({ gate: "audio", status: "approved", content_sha256: sha(readFileSync(timelineFile)), decided_at: "2026-10-02T00:00:00Z" });
+  const check = { lines: Object.fromEntries(timeline.lines.map((line) => [line.id, { clip: line.audio_sha256.slice(0, 16), match: true, match_kind: "exact" }])) };
+  mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "review", "check.json"), JSON.stringify(check));
+  for (const name of [`audio/${timeline.lines[0].id}.wav`, "narration.wav"]) {
+    const file = path.join(box.workdir, name);
+    const bytes = readFileSync(file); bytes[48] ^= 1; writeFileSync(file, bytes);
+  }
+  const pull = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], pull.ctx), EXIT.ok);
+  assert.match(pull.out.stdout, /approval not recorded/);
+  assert.equal(readApprovals(box.workdir).approvals.length, 0);
+  const failed = context(box, server.fetchImpl, { encode });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "audio"], failed.ctx), EXIT.usage);
+  assert.equal(server.state.calls.filter((call) => call.method === "POST").length, 0);
+  // An explicit local rebuild binds the new bytes, but does not copy the old listening verdict.
+  writeFileSync(timelineFile, JSON.stringify(bindAudioEvidence(timeline, box.workdir)));
+  const push = context(box, server.fetchImpl, { encode });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "audio"], push.ctx), EXIT.ok, push.out.stderr);
+  assert.equal(server.state.reviews[0].payload.check.checked, timeline.lines.length - 1);
+  assert.equal(server.state.reviews[0].status, "pending");
+  const final = context(box, server.fetchImpl, { encode, run: () => { throw new Error("stale cut reached quality check"); } });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], final.ctx), EXIT.usage);
+  assert.match(final.out.stderr, /not assembled from the current narration/);
+});
 
 test("a branded final submission reports the full duration and shifted chapters without shifting captions or dubs again", async () => {
   const box = sandbox();
@@ -796,7 +829,7 @@ test("illustrated slides push their storyboard too, and it is the gate after the
   writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: "l", pictures_hash: "p", shots }));
   // The outline and the narration approved, the storyboard is what review-push picks next.
   await approve({ gate: "outline", docDir: box.dir, workdir: box.workdir, note: "t" });
-  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify({ speech_hash: "s", lines: [], scenes: [], total_frames: 0 }));
+  writeSyntheticNarration(doc, loadProject({ slug: box.slug, root: box.root }).lexicon, box.workdir);
   await approve({ gate: "audio", docDir: box.dir, workdir: box.workdir, note: "t" });
   const server = site();
   const push = context(box, server.fetchImpl);

@@ -9,6 +9,7 @@ import { EXIT, main } from "../cli.mjs";
 import { fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { SAMPLES_PER_FRAME, SAMPLE_RATE, speechHash } from "../core/timeline.mjs";
 import { buildCues } from "../core/captions.mjs";
+import { approve, approvalState } from "../core/approvals.mjs";
 import { SpeechError, speechStatus, synthesize } from "./client.mjs";
 import { credentialsFile, readCredentials, writeCredentials } from "./credentials.mjs";
 import { MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts } from "./requests.mjs";
@@ -188,7 +189,7 @@ test("audio_ref requires an earlier original's speaker, spoken content and effec
   }
 });
 
-function fakeServer({ status = {}, failures = [] } = {}) {
+function fakeServer({ status = {}, failures = [], gain = () => 1 } = {}) {
   const calls = [];
   const fetchImpl = async (url, init) => {
     calls.push({ url, init });
@@ -199,7 +200,7 @@ function fakeServer({ status = {}, failures = [] } = {}) {
     }
     const body = JSON.parse(init.body);
     // Speech takes 60 ms a character, then the requested break.
-    const audio = concatSamples(body.segments.flatMap((segment) => [tone(segment.parts.reduce((sum, part) => sum + part.text.length, 0) * 60), quiet(segment.break_after_ms)]));
+    const audio = concatSamples(body.segments.flatMap((segment) => [tone(segment.parts.reduce((sum, part) => sum + part.text.length, 0) * 60).map((sample) => Math.round(sample * gain())), quiet(segment.break_after_ms)]));
     return new Response(encodeWav(audio), { status: 200, headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "10" } });
   };
   return { calls, fetchImpl };
@@ -341,6 +342,46 @@ test("explicit repeated takes buy only the original, preserve bytes and independ
   assert.notEqual(await main(["tts", "--slug", box.slug], legacy.ctx), EXIT.ok);
   assert.match(legacy.out.stderr, /explicitly retake/);
   assert.equal(posts().length, 6);
+});
+
+test("same-duration exact-take retakes invalidate listening approval; legacy evidence refresh is offline and cannot buy a missing take", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file));
+  const original = doc.scenes[1].lines[0];
+  doc.scenes[3].lines = [{ ...original, id: "copy1", audio_ref: original.id }];
+  writeFileSync(file, JSON.stringify(doc));
+  let gain = 1;
+  const server = fakeServer({ status: { gemini_configured: true, gemini_monthly_limit: 300000, gemini_used: 0 }, gain: () => gain });
+  const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
+  const ctx = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl }).ctx;
+  assert.equal(await main(["tts", "--slug", box.slug], ctx), EXIT.ok);
+  const places = { gate: "audio", docDir: box.dir, workdir: box.workdir };
+  await approve(places);
+  const timelineFile = path.join(box.workdir, "timeline.json");
+  const before = JSON.parse(readFileSync(timelineFile));
+  gain = 0.75;
+  const flags = path.join(box.work, "flags.json");
+  writeFileSync(flags, JSON.stringify({ flags: ["copy1"] }));
+  assert.equal(await main(["tts", "--slug", box.slug, "--redo", flags], ctx), EXIT.ok);
+  const after = JSON.parse(readFileSync(timelineFile));
+  assert.equal(after.total_frames, before.total_frames);
+  assert.equal(after.speech_hash, before.speech_hash);
+  assert.notEqual(after.audio_evidence.narration_sha256, before.audio_evidence.narration_sha256);
+  assert.equal(after.lines.find((line) => line.id === "copy1").audio_sha256, after.lines.find((line) => line.id === original.id).audio_sha256);
+  assert.equal((await approvalState(places)).status, "stale");
+  // A legacy review is bound to an unverified timeline: refresh keeps WAVs and requires a new review.
+  delete after.audio_evidence;
+  for (const line of after.lines) delete line.audio_sha256;
+  writeFileSync(timelineFile, JSON.stringify(after));
+  const offline = capture({ root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, fetch: () => { throw new Error("offline refresh contacted server"); } });
+  assert.equal(await main(["tts", "--slug", box.slug, "--refresh-evidence"], offline.ctx), EXIT.ok, offline.out.stderr);
+  assert.equal((await approvalState(places)).status, "stale");
+  const cacheFile = path.join(box.workdir, "audio", "cache.json");
+  const cache = JSON.parse(readFileSync(cacheFile)); delete cache.lines[original.id];
+  writeFileSync(cacheFile, JSON.stringify(cache));
+  assert.equal(await main(["tts", "--slug", box.slug, "--refresh-evidence"], offline.ctx), EXIT.usage);
+  assert.match(offline.out.stderr, /never synthesizes/);
 });
 
 test("tts writes frame-aligned narration and a timeline, then only redoes what changed", async () => {
