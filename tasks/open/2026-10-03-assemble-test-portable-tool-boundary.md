@@ -33,7 +33,7 @@ test reaches the natural-speed preflight assertion.
       action at natural speed, and starts no encoding or segment directory.
 - [x] Existing CLI callers retain the exact default tool resolver, execution,
       environment, and duration behavior; the full assemble test module passes.
-- [ ] An independent reviewer refreshes the two existing duration bindings.
+- [x] An independent reviewer refreshes the two existing duration bindings.
 
 ## Steps
 
@@ -87,3 +87,10 @@ suite; this ticket does not rerun it concurrently with other heavy checks.
   final task hygiene remain pending. Root coordinates these checks; the author
   does not claim cross-platform execution or whole-suite success from this
   Windows focused run.
+- Independent duration increment now passed: the two assembly bindings and the
+  separate anime-input fixture binding were refreshed, with the complete
+  108-file registry and all earlier review history retained. Actual CUA Node
+  24.21.0 passed all 473 plan checks and both receipt tests, exit 0, zero skips.
+  Private `anime-input-windows-junction-20261003/duration-increment/validation-receipt.json`
+  SHA256 `905c0547f41892ceb11b87331153103fc4fc74cca4f200394d00fd8fedb9e8f4`.
+  POSIX/complete-tools CI and final task validation remain pending.

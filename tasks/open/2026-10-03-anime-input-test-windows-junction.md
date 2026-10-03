@@ -30,7 +30,7 @@ system permissions or skipping the security assertions is unnecessary.
       non-Windows fixtures keep their original symbolic links.
 - [x] Linked source routes/entries and output through a repository alias are still
       rejected, and the canonical source pack remains unchanged.
-- [ ] An independent reviewer updates the affected duration binding without
+- [x] An independent reviewer updates the affected duration binding without
       removing any of the 108 entries or prior review history.
 
 ## Steps
@@ -76,3 +76,11 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
 - Independent duration binding and final Linux tools CI remain pending. The
   original complete Windows run's three link-creation failures are retained;
   focused green is not represented as a complete tools-suite pass.
+- The independent reviewer subsequently refreshed exactly three affected
+  bindings, including this file, while preserving all 108 entries, the previous
+  eight-binding increment and every historical paragraph. Actual CUA Node
+  24.21.0: all 473 plan checks and both receipt tests passed, zero skips, exit 0.
+  Private `anime-input-windows-junction-20261003/duration-increment/validation-receipt.json`,
+  SHA256 `905c0547f41892ceb11b87331153103fc4fc74cca4f200394d00fd8fedb9e8f4`.
+  This supersedes only the pending independent-binding note; complete Linux CI
+  and final task validation are still required before archive.
