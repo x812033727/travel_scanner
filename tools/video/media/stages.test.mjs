@@ -8,7 +8,7 @@ import test from "node:test";
 import { readCache, readJobs } from "./cache.mjs";
 import { MediaError } from "./client.mjs";
 import { readLedger } from "./ledger.mjs";
-import { imagePrice, imageStatus, Stage, statusProblem } from "./stages.mjs";
+import { IMAGE_SIZES, imagePrice, imageSizeFor, imageStatus, Stage, statusProblem } from "./stages.mjs";
 
 const PRO = "gemini-3-pro-image";
 const FLASH = "gemini-3.1-flash-image";
@@ -116,7 +116,7 @@ test("only explicit unknown credentials bypass the local key check, not false or
   assert.match(statusProblem({ ...status(), music_enabled: false }, "music"), /music generation is off/);
 });
 
-function fakeStage(effective, { actualModel = effective.image.model, actualProvider = effective.image.provider, actualPrice = imagePrice(effective) } = {}) {
+function fakeStage(effective, { actualModel = effective.image.model, actualProvider = effective.image.provider, actualPrice = imagePrice(effective), format = null } = {}) {
   const workdir = mkdtempSync(path.join(tmpdir(), "video-image-stage-"));
   const bytes = Buffer.from(`synthetic image from ${actualProvider}/${actualModel}`);
   const ready = {
@@ -125,24 +125,51 @@ function fakeStage(effective, { actualModel = effective.image.model, actualProvi
     usd_estimate: actualPrice, error: null, retry_after_seconds: 0,
   };
   const calls = [];
+  const bodies = [];
   const fetchImpl = async (url, init = {}) => {
     const parsed = new URL(url);
     assert.equal(parsed.origin, "https://mokaair.test");
     const route = `${init.method ?? "GET"} ${parsed.pathname.replace("/api/video/media/", "")}`;
     calls.push(route);
-    if (route === "POST images") return Response.json(ready);
+    if (route === "POST images") {
+      bodies.push(JSON.parse(init.body));
+      return Response.json(ready);
+    }
     if (route === "GET jobs/image-job-1") return Response.json(ready);
     if (route === `GET files/story-fixture/${SHA(bytes)}`) return new Response(bytes);
     assert.fail(`unexpected media request: ${route}`);
   };
   const stage = new Stage({
-    slug: "story-fixture", workdir, status: effective, stage: "keyframes",
+    slug: "story-fixture", workdir, status: effective, stage: "keyframes", format,
     options: { site: "https://mokaair.test", token: "synthetic-token", fetchImpl, sleep: async () => {} },
     now: () => new Date("2026-09-29T00:00:00Z"),
   });
-  const generate = () => stage.image({ id: "opening", purpose: "keyframe", prompt: "synthetic drawing", seed: 1, target: "keyframes/opening-1" });
-  return { stage, workdir, calls, ready, generate };
+  const generate = (extra = {}) => stage.image({ id: "opening", purpose: "keyframe", prompt: "synthetic drawing", seed: 1, target: "keyframes/opening-1", ...extra });
+  return { stage, workdir, calls, bodies, ready, generate };
 }
+
+test("a 2K picture is asked for by size, keyed apart from the 1K one and priced at the choice's 2K price", async () => {
+  assert.deepEqual(IMAGE_SIZES, { "1K": { width: 1920, height: 1080 }, "2K": { width: 2048, height: 1152 } });
+  const effective = status();
+  effective.slides_image = { provider: "gemini", model: FLASH, configured: true, usd_per_image_2k: 0.101 };
+  assert.equal(imageSizeFor(effective, "slides"), "2K");
+  assert.equal(imageSizeFor(effective), null, "the drama's choice carries no 2K price, so a drama draws at 1K");
+  assert.equal(imagePrice(effective, "slides", "2K"), 0.101);
+  assert.equal(imagePrice(effective, "slides"), 0.067);
+  assert.equal(imagePrice(effective, null, "2K"), 0, "no 2K price, no 2K estimate");
+  const fake = fakeStage(effective, { actualModel: FLASH, actualPrice: 0.101, format: "slides" });
+  const large = await fake.generate({ size: "2K" });
+  assert.equal(large.cost_usd, 0.101);
+  assert.equal(fake.bodies[0].size, "2K");
+  assert.equal(readLedger(fake.workdir).totals.usd, 0.101);
+  const again = await fake.generate({ size: "2K" });
+  assert.equal(again.reused, true, "the same 2K request is answered from the cache");
+  fake.ready.usd_estimate = 0.067;
+  const small = await fake.generate();
+  assert.equal(small.reused, false, "the 1K picture of the same prompt is another key");
+  assert.equal(fake.bodies[1].size, undefined);
+  assert.equal(fake.calls.filter((call) => call === "POST images").length, 2);
+});
 
 test("the Flash estimate permits a generation below the cap that the default Pro estimate would block", async () => {
   const limited = status();

@@ -10,7 +10,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
-import { burnIn, hasCast, hasPictures, illustrated, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
+import { burnIn, hasCast, hasPictures, illustrated, isExplainer, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { visualHash } from "../core/timeline.mjs";
@@ -19,7 +19,7 @@ import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
 import { ledgerTotals } from "./ledger.mjs";
 import { duplicates } from "./qc.mjs";
-import { capFor, choiceFor, drawContactSheet, imagePrice, imageSelectionVersion, imageStatus, JUDGE_USD_PER_CALL, pictureHashes, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
+import { capFor, choiceFor, drawContactSheet, imagePrice, imageSelectionVersion, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, pictureHashes, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
 
 export const MAX_KEYFRAME_TAKES = 3;
 // The server takes at most four reference pictures per image.
@@ -44,8 +44,10 @@ export function contactSheetPages(tiles, perPage = CONTACT_SHEET_TILES) {
 
 /**
  * What the judge scores a keyframe on: one identity question per character in the shot, then the
- * picture itself. With no cast the style is judged against the look's description alone, and a
- * video whose subtitles are CC only (illustrated slides) has no subtitle band to keep clear.
+ * picture itself. With no cast the style is judged against the look's description alone and the
+ * picture is also judged as craft (does it read as drawn by a hand, not rendered by a machine:
+ * docs/videos/ILLUSTRATED.md §畫面不像 AI), and a video whose subtitles are CC only (illustrated
+ * slides) has no subtitle band to keep clear.
  */
 export function keyframeRubric(characters, { subtitleBand = true } = {}) {
   return [
@@ -62,6 +64,7 @@ export function keyframeRubric(characters, { subtitleBand = true } = {}) {
       question: characters.length ? "Is the picture in the requested visual style, consistent with the reference sheets?" : "Is the picture in the requested visual style, as the style description in the context puts it: technique, palette, line, mood?",
       weight: 1,
     },
+    ...(characters.length ? [] : [{ key: "craft", question: "Does it read as drawn by a person for print: lines and colour with texture and small irregularities, an asymmetric composition with one focal point and depth, people with simple faces or turned away rather than featureless mannequins, and no glossy, glowing or computer-rendered finish?", weight: 1 }]),
     { key: "clean", question: "Is it free of faults: correct hands and fingers, no warped faces, no floating or duplicated parts, no smeared background?", weight: 2 },
     { key: "no_text", question: "Is it free of text, letters, watermarks and logos?", weight: 1 },
     ...(subtitleBand ? [{ key: "subtitle_band", question: "Is the main subject clear of the bottom 14% of the frame, where subtitles will be burned in?", weight: 1 }] : []),
@@ -144,6 +147,11 @@ export async function run(command, args, ctx) {
     sheets = chosenSheets(lookManifest, chosen);
   }
   const endFrames = shots.filter((scene) => scene.data.end_frame?.prompt).length;
+  // A still that fills the frame under a camera move (illustrated slides, the explainer) is drawn
+  // at 2K when the server prices the model at 2K; a drama's keyframes, which become a clip's
+  // first frame, stay at the 1K the clip models take.
+  const stillPictures = slides || isExplainer(doc);
+  const sizeFor = (status) => (stillPictures ? imageSizeFor(status, format) : null);
 
   if (values["dry-run"]) {
     ctx.stdout.write(`keyframes for ${shots.length} shots (${endFrames} end frames), up to ${takes} takes each\n`);
@@ -153,8 +161,9 @@ export async function run(command, args, ctx) {
       const status = imageStatus(await mediaStatus(clientOptions(ctx, credentials)), project.series);
       const problem = statusProblem(status, "image", format);
       const choice = choiceFor(status, "image", format);
-      const usd = (shots.length + endFrames) * (imagePrice(status, format) + JUDGE_USD_PER_CALL);
-      ctx.stdout.write(`server: ${problem ? `NOT ready: ${problem}` : `${choice.provider} ${choice.model} ${choice.configured === null ? "(provider key checked on submit)" : "ready"}`}; about US$${usd.toFixed(2)} for one take of everything, up to US$${(usd * takes).toFixed(2)} at ${takes} takes; this video so far US$${ledgerTotals(workdir).usd.toFixed(2)} of the US$${capFor(status, format)} cap\n`);
+      const size = sizeFor(status);
+      const usd = shots.length * (imagePrice(status, format, size) + JUDGE_USD_PER_CALL) + endFrames * (imagePrice(status, format) + JUDGE_USD_PER_CALL);
+      ctx.stdout.write(`server: ${problem ? `NOT ready: ${problem}` : `${choice.provider} ${choice.model} ${choice.configured === null ? "(provider key checked on submit)" : "ready"}`}; pictures at ${size ?? "1K"}; about US$${usd.toFixed(2)} for one take of everything, up to US$${(usd * takes).toFixed(2)} at ${takes} takes; this video so far US$${ledgerTotals(workdir).usd.toFixed(2)} of the US$${capFor(status, format)} cap\n`);
     } else {
       ctx.stdout.write("no video tool token yet; run `node tools/video/cli.mjs login` before generating\n");
     }
@@ -167,6 +176,7 @@ export async function run(command, args, ctx) {
   const problem = statusProblem(status, "image", format);
   if (problem) throw new MediaError(problem, { who: "owner" });
   const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "keyframes", imageVersion, format, now: ctx.now });
+  const size = sizeFor(status);
   mkdirSync(path.join(workdir, "keyframes"), { recursive: true });
   // The chosen sheets and the style frames go to the media store (the server may have pruned
   // them), once per run, and every keyframe is generated with them as references.
@@ -201,7 +211,7 @@ export async function run(command, args, ctx) {
       if (entry.takes.some((each) => each.seed === seed && each.judge)) continue;
       let picture;
       try {
-        picture = await stage.image({ id: scene.id, purpose: "keyframe", prompt, negative: look.negative, references, seed, shotId: scene.id, target: `keyframes/${scene.id}-${seed}` });
+        picture = await stage.image({ id: scene.id, purpose: "keyframe", prompt, negative: look.negative, references, seed, shotId: scene.id, size, target: `keyframes/${scene.id}-${seed}` });
       } catch (error) {
         if (error.code === "stopped") {
           stopped = true;

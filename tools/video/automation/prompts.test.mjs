@@ -23,6 +23,17 @@ test("the slides writer is told the shot template, the 5 to 8 second cadence, th
   assert.match(writer, /「你以為…其實…」/);
   assert.doesNotMatch(writer, /dark slides and a synthesized/, "the channel is no longer described as dark slides");
   assert.match(writer, /AI-drawn illustrations with camera moves/);
+  // The picture recipe (docs/videos/ILLUSTRATED.md §畫面不像 AI): shot size first, a place and a
+  // person, no style or colour words, a camera chosen for the picture, cuts by default, and a
+  // video that travels instead of forty desks under forty lamps.
+  assert.match(writer, /the shot size\s+\(extreme close-up, close-up, medium, wide, overhead, low angle, from behind\)/);
+  assert.match(writer, /never a faceless mannequin/);
+  assert.match(writer, /No style words, no colour\s+names, no "illustration": the look adds those/);
+  assert.match(writer, /never the move of the shot before, and lint refuses three in a row/);
+  assert.match(writer, /leave it out \(the tool cuts, and dissolves after a pause beat\)/);
+  assert.match(writer, /Pictures travel: each chapter happens in its own place/);
+  assert.match(writer, /no laptops, screens, robots, circuits, brains, clouds,\s+light bulbs, podiums, hourglasses/);
+  assert.doesNotMatch(writer, /a dissolve by default/);
 });
 
 test("the planner outlines story beats and the listener keeps the register; the fact-checker and the translators are untouched", () => {

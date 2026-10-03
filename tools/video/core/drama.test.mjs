@@ -432,6 +432,54 @@ test("a drama's status walks the media steps in order, each bound to its hashes"
   assert.equal((await status()).next.id, "captions written");
 });
 
+test("illustrated slides are drawn as a printmaker's brief and lint keeps their pictures varied (docs/videos/ILLUSTRATED.md §畫面不像 AI)", async () => {
+  const { PRESETS, SLIDES_PRESET, cameraMove, pictureVarietyProblems, shotProblems, SAME_MOVE_RUN_MAX, MOTIF_MIN_SHOTS, MOTIF_SHARE_WARN } = await import("./drama.mjs");
+  const { estimateTimeline } = await import("./timeline.mjs");
+  const preset = PRESETS[SLIDES_PRESET];
+  assert.match(preset.style, /^hand-drawn editorial illustration for a printed magazine feature/);
+  assert.match(preset.style, /paper grain and a little misregistration/);
+  assert.match(preset.style, /small simple people with dot eyes or seen from behind/);
+  for (const word of ["glossy", "faceless mannequin", "symmetrical centred layout", "text", "logo", "real person's likeness", "mascot", "extra fingers"]) assert.ok(preset.negative.includes(word), word);
+  assert.ok(preset.style.length <= 600 && preset.negative.length <= 400);
+  // The camera words fold to their move; a shot that names none drifts.
+  assert.equal(cameraMove({ camera: "slow push in" }), "push in");
+  assert.equal(cameraMove({ camera: "pan right along the shelf" }), "pan right");
+  assert.equal(cameraMove({ camera: "handheld" }), "drift");
+  assert.equal(cameraMove({}), "drift");
+  // The example keeps the rules; a drama is not held to them.
+  const doc = illustratedFixture();
+  assert.deepEqual(pictureVarietyProblems(doc), { errors: [], warnings: [] });
+  assert.deepEqual(pictureVarietyProblems(dramaFixture()), { errors: [], warnings: [] });
+  const shots = doc.scenes.filter((scene) => scene.template === "shot");
+  // Three stills in a row under one move is an error (the second is allowed).
+  assert.equal(SAME_MOVE_RUN_MAX, 2);
+  const run = illustratedFixture();
+  run.scenes.find((scene) => scene.id === "desk").data.camera = "push in";
+  assert.deepEqual(pictureVarietyProblems(run).errors, []);
+  run.scenes.find((scene) => scene.id === "clock").data.camera = "dolly in";
+  const errors = pictureVarietyProblems(run).errors;
+  assert.deepEqual(errors.map((error) => error.path), ["scenes[3] (clock).data.camera"]);
+  assert.match(errors[0].message, /3 stills in a row under "push in"; alternate the moves/);
+  assert.ok(shotProblems(run, estimateTimeline(run)).errors.some((error) => error.path === "scenes[3] (clock).data.camera"), "lint reads it through shotProblems");
+  // No shot size, or the look's own words, are warnings gathered per video, not per shot.
+  const flat = illustratedFixture();
+  flat.scenes.find((scene) => scene.id === "podium").data.prompt = "flat editorial illustration of a podium with three trophies, deep teal ground, warm cream shapes";
+  flat.scenes.find((scene) => scene.id === "race").data.prompt = "two runners on a track at night, amber floodlight";
+  const warnings = pictureVarietyProblems(flat).warnings;
+  assert.equal(warnings.length, 2, JSON.stringify(warnings));
+  assert.match(warnings[0].message, /^2 of 5 pictures name no shot size .*: say how close the camera is in podium, race$/);
+  assert.match(warnings[1].message, /^2 of 5 pictures restate the look \("flat editorial illustration", "amber"\); the look adds the style and the palette, the prompt describes the picture: podium, race$/);
+  // A place or an object in more than a third of the pictures, once there are enough to count.
+  assert.equal(MOTIF_MIN_SHOTS, 6);
+  assert.equal(MOTIF_SHARE_WARN, 1 / 3);
+  const desks = illustratedFixture();
+  const extra = shots.map((scene, index) => ({ ...scene, id: `more-${index}`, data: { ...scene.data, prompt: `Close-up of a wooden desk with a brass lamp ${index}`, camera: ["pull out", "tilt up", "drift", "pan left", "push in"][index] }, lines: [{ id: `m${index}zz`, text: "再一張。" }] }));
+  desks.scenes.push(...extra);
+  const motifs = pictureVarietyProblems(desks).warnings.filter((warning) => /pictures \(a third is plenty\)/.test(warning.message));
+  assert.deepEqual(motifs.map((warning) => warning.message), [`"lamp" is in 6 of 10 pictures (a third is plenty): give each chapter its own place and props so the video travels`, `"desk" is in 5 of 10 pictures (a third is plenty): give each chapter its own place and props so the video travels`]);
+  assert.equal(pictureVarietyProblems(desks).errors.length, 0);
+});
+
 test("a still shot carries no end frame: it describes a clip's last frame and would be bought unseen", () => {
   const doc = dramaFixture();
   const shot = doc.scenes.find((scene) => scene.template === "shot");

@@ -59,9 +59,10 @@ function mediaSite({ verdicts, status = STATUS, actualImageModel = () => status.
     if (init.method === "POST" && route === "images") {
       const request = JSON.parse(init.body);
       state.images.push(request);
-      // Like the server, choose from the series, independently of the global status response.
+      // Like the server, choose from the series, independently of the global status response,
+      // and price a 2K picture with the slides choice's 2K price.
       const model = actualImageModel();
-      const price = status.models.images.gemini.find((entry) => entry.value === model).usd_per_image;
+      const price = request.size === "2K" ? status.slides_image.usd_per_image_2k : status.models.images.gemini.find((entry) => entry.value === model).usd_per_image;
       const bytes = PNG(`${model}|${request.prompt}|${request.seed ?? ""}|${(request.references ?? []).map((reference) => reference.sha256).join(",")}`);
       state.files.set(SHA(bytes), bytes);
       return Response.json({ id: `img${state.images.length}`, status: "ready", file: { sha256: SHA(bytes), size: bytes.length, content_type: "image/png" }, usd_estimate: price, error: null, retry_after_seconds: 0 }, { status: 200 });
@@ -392,7 +393,7 @@ test("a narrator-only drama draws its keyframes without a look gate, from the st
   assert.deepEqual(site.state.uploads.map((upload) => upload.sha256), [SHA(anchor)], "only the style frame goes to the store");
   assert.equal(site.state.judges.length, 10);
   for (const judged of site.state.judges) {
-    assert.deepEqual(judged.rubric.map((item) => item.key), ["prompt", "style", "clean", "no_text", "subtitle_band"], "no identity question without a character");
+    assert.deepEqual(judged.rubric.map((item) => item.key), ["prompt", "style", "craft", "clean", "no_text", "subtitle_band"], "no identity question without a character; the picture is judged as craft instead");
     assert.deepEqual(judged.files.map((file) => file.label), ["keyframe"]);
   }
   const manifest = manifestOf(box, "keyframes");
@@ -525,7 +526,8 @@ for (const stage of modelStages) {
     const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }), actualImageModel: () => FLASH_MODEL });
     const dry = context(box, site.fetchImpl);
     assert.equal(await main([stage.command, "--slug", box.slug, ...stage.args, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr || dry.out.stdout);
-    assert.match(dry.out.stdout, /gemini gemini-3\.1-flash-image ready; about US\$0\.08/);
+    // keyframes also says what size the pictures come at; look (character sheets) stays at 1K.
+    assert.match(dry.out.stdout, /gemini gemini-3\.1-flash-image ready; (?:pictures at 1K; )?about US\$0\.08/);
     assert.equal(site.state.images.length, 0);
     assert.equal(site.state.judges.length, 0);
     assert.equal(STATUS.image.model, PRO_MODEL, "resolving one series never mutates the shared default");
@@ -666,14 +668,16 @@ test("illustrated slides draw their stills with no look gate, bound to the shots
   const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }), status });
   const dry = context(box, site.fetchImpl);
   assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
-  assert.match(dry.out.stdout, /gemini gemini-3\.1-flash-image ready; about US\$0\.39 for one take of everything, up to US\$1\.16 at 3 takes; this video so far US\$0\.00 of the US\$20 cap/);
+  assert.match(dry.out.stdout, /gemini gemini-3\.1-flash-image ready; pictures at 1K; about US\$0\.39 for one take of everything, up to US\$1\.16 at 3 takes; this video so far US\$0\.00 of the US\$20 cap/);
   const run = context(box, site.fetchImpl);
   assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
   const doc = illustratedFixture();
   const shots = doc.scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
   assert.deepEqual(site.state.images.map((request) => request.shot_id), shots);
-  assert.match(site.state.images[0].prompt, /Style: flat editorial illustration with a painterly touch/);
+  assert.match(site.state.images[0].prompt, /Style: hand-drawn editorial illustration for a printed magazine feature/);
+  assert.ok(site.state.images.every((request) => request.size === undefined), "a choice priced at 1K only is drawn at 1K");
   assert.ok(site.state.judges.every((request) => !request.rubric.some((item) => item.key === "subtitle_band" || item.key.startsWith("identity_"))), "CC only: no subtitle band; no cast: no identity question");
+  assert.ok(site.state.judges.every((request) => request.rubric.some((item) => item.key === "craft")), "no cast: the picture is judged as craft, drawn by a hand rather than rendered");
   const manifest = manifestOf(box, "keyframes");
   assert.equal(manifest.look_hash, lookHash(doc));
   assert.equal(manifest.pictures_hash, picturesHash(doc));

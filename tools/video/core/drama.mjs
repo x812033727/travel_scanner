@@ -39,6 +39,12 @@ export const WARN_SHOT_SECONDS = 10;
 export const MIN_MEDIAN_SHOT_SECONDS = 3;
 export const LONG_SHOT_SHARE_WARN = 0.3;
 export const PROMPT_SIMILARITY_WARN = 0.8;
+// Picture variety of illustrated slides (docs/videos/ILLUSTRATED.md §畫面不像 AI): three stills in
+// a row under one camera move is an error; a place or object in more than a third of the
+// pictures, a prompt with no shot size, or one that restates the look's style, each a warning.
+export const SAME_MOVE_RUN_MAX = 2;
+export const MOTIF_SHARE_WARN = 1 / 3;
+export const MOTIF_MIN_SHOTS = 6;
 export const EMOTION_MAX = 80;
 const STYLE_MAX = 400;
 const LIMITS = { style: 600, negative: 400, motion: 300, appearance: 800, prompt: 1000, camera: 120, sheet_prompt: 600 };
@@ -74,9 +80,12 @@ export const PRESETS = {
   },
   // The channel's own illustrated slides (docs/videos/ILLUSTRATED.md): pictures between the dark
   // data cards, so they share theme.css's ground and accents; no cast, no text in the picture.
+  // Written as a printmaker's brief, not a render's: uneven ink, misregistered flat colour and
+  // paper grain are what a viewer reads as a hand, and a smooth glossy finish, a centred subject
+  // on an empty ground and faceless mannequins are what they read as a machine (§畫面不像 AI).
   "tech-story": {
-    style: "flat editorial illustration with a painterly touch, bold clean outlines, deep teal-green night ground, warm cream shapes, teal and amber accents, soft paper grain, simple objects and anonymous figures, generous negative space, cinematic composition, 16:9",
-    negative: "photorealistic, 3D render, text, letters, numbers, watermark, logo, brand marks, real person's likeness, mascot, recurring cartoon character, extra fingers, deformed hands, cluttered background",
+    style: "hand-drawn editorial illustration for a printed magazine feature: confident ink outlines of slightly uneven weight, flat gouache and screen-print colour with visible paper grain and a little misregistration, textured hand-cut shadows, a limited palette of deep teal-green night ground, warm cream, amber and a touch of brick red, one clear focal point placed off-centre with foreground and background layers, small simple people with dot eyes or seen from behind, matte finish, 16:9",
+    negative: "photorealistic, 3D render, CGI, glossy, airbrushed, smooth gradients, neon glow, lens flare, bokeh, stock vector, corporate flat icon style, isometric, faceless mannequin, floating objects, symmetrical centred layout, text, letters, numbers, watermark, logo, brand marks, real person's likeness, mascot, recurring cartoon character, extra fingers, deformed hands, cluttered background",
     motion: "slow push in or gentle drift, no morphing, no cuts",
   },
   custom: { style: "", negative: "", motion: "" },
@@ -566,14 +575,88 @@ export function promptSimilarity(a, b) {
   return shared / (x.size + y.size - shared);
 }
 
+// The camera words a still may carry, folded to the move they name (assemble/drama.mjs reads
+// them the same way); a shot that names none drifts.
+const CAMERA_MOVES = [
+  ["push in", /push|dolly in|zoom in|closer|move in/],
+  ["pull out", /pull|zoom out|widen|back away/],
+  ["pan left", /pan (?:to the )?left|left to right/],
+  ["pan right", /pan (?:to the )?right|right to left/],
+  ["tilt up", /tilt up|crane up|rise/],
+  ["tilt down", /tilt down|crane down|descend/],
+];
+export function cameraMove(data) {
+  const text = String(data?.camera ?? "").toLowerCase();
+  return CAMERA_MOVES.find(([, pattern]) => pattern.test(text))?.[0] ?? "drift";
+}
+// How close the camera is: a prompt that says none of these leaves the picture to the model's
+// habit, a medium shot of a thing in the middle.
+const SHOT_SIZE = /\b(?:extreme close-?up|close-?up|close shot|macro|medium shot|mid shot|medium close|wide shot|wide view|wide|establishing|bird'?s-?eye|overhead|from above|from directly above|top-?down|low angle|worm'?s-?eye|high angle|aerial|full shot|two-?shot|over the shoulder|from behind|in profile|silhouette)\b/i;
+// What the look already says: a prompt that repeats it pins every picture to one palette and
+// one finish, which is the sameness a viewer reads as a slideshow.
+const LOOK_WORDS = /\b(?:flat (?:editorial )?illustration|editorial illustration|painterly|paper grain|teal|cream|amber|navy|mustard|ochre|16:9)\b/i;
+// Words of a prompt that are not a place or an object (grammar, sizes, light, materials, the
+// look's own palette and finish, the camera): a motif is counted on the rest.
+const PROMPT_STOPWORDS = new Set(["with", "from", "into", "onto", "over", "under", "behind", "beside", "above", "below", "between", "through", "across", "along", "around", "down", "their", "there", "them", "they", "this", "that", "these", "those", "where", "while", "what", "when", "which", "small", "large", "tiny", "huge", "little", "dark", "light", "warm", "cold", "soft", "bright", "night", "view", "shot", "frame", "side", "left", "right", "centre", "center", "centred", "centered", "middle", "front", "back", "close", "wide", "seen", "single", "each", "some", "many", "only", "same", "other", "like", "still", "long", "tall", "short", "open", "flat", "plain", "simple", "clean", "whole", "half", "away", "near", "high", "deep", "wooden", "paper", "glass", "metal", "brass", "stone", "very", "more", "most", "just", "then", "than", "also", "both", "being", "person", "figure", "people", "anonymous", "hand", "hands", "angle", "level", "overhead", "profile", "edge", "corner", "lying", "standing", "sitting", "holding", "looking", "resting", "composition", "picture", "scene", "image", "illustration", "editorial", "painterly", "grain", "shape", "shapes", "line", "lines", "colour", "color", "ground", "background", "foreground", "teal", "cream", "amber", "green", "navy", "mustard", "ochre", "brick", "highlight", "highlights", "accent", "accents", "glow", "glowing", "lamplight", "spotlight"]);
+const motifOf = (word) => (word.length > 4 && word.endsWith("s") && !/(?:ss|us|is)$/.test(word) ? word.slice(0, -1) : word);
+function promptMotifs(scene) {
+  const words = String(scene.data?.prompt ?? "").toLowerCase().match(/[a-z]{4,}/g) ?? [];
+  return new Set(words.filter((word) => !PROMPT_STOPWORDS.has(word)).map(motifOf));
+}
+const fewIds = (ids) => `${ids.slice(0, 4).join(", ")}${ids.length > 4 ? ` and ${ids.length - 4} more` : ""}`;
+
+/**
+ * What makes a run of illustrated slides read as one monotonous slideshow, caught on the
+ * prompts and camera words before a picture is paid for (docs/videos/ILLUSTRATED.md §畫面不像 AI).
+ * Returns { errors, warnings } like shotProblems; empty for anything but illustrated slides.
+ */
+export function pictureVarietyProblems(doc) {
+  const errors = [];
+  const warnings = [];
+  if (!illustrated(doc)) return { errors, warnings };
+  const shots = [];
+  doc.scenes.forEach((scene, index) => {
+    if (isShot(scene)) shots.push({ scene, where: `scenes[${index}] (${scene.id})` });
+  });
+  let run = 0;
+  let last = null;
+  const unsized = [];
+  const restated = [];
+  const lookWords = new Set();
+  for (const { scene, where } of shots) {
+    const move = cameraMove(scene.data);
+    run = move === last ? run + 1 : 1;
+    last = move;
+    if (run === SAME_MOVE_RUN_MAX + 1) errors.push({ path: `${where}.data.camera`, message: `${SAME_MOVE_RUN_MAX + 1} stills in a row under "${move}"; alternate the moves (push in, pull out, pan left, pan right, tilt up, tilt down, drift)` });
+    const prompt = String(scene.data?.prompt ?? "");
+    if (!SHOT_SIZE.test(prompt)) unsized.push(scene.id);
+    const look = prompt.match(LOOK_WORDS);
+    if (look) {
+      restated.push(scene.id);
+      lookWords.add(look[0].toLowerCase());
+    }
+  }
+  if (unsized.length) warnings.push({ path: "scenes", message: `${unsized.length} of ${shots.length} pictures name no shot size (close-up, medium, wide, overhead, low angle, from behind…): say how close the camera is in ${fewIds(unsized)}` });
+  if (restated.length) warnings.push({ path: "scenes", message: `${restated.length} of ${shots.length} pictures restate the look (${[...lookWords].slice(0, 3).map((word) => `"${word}"`).join(", ")}); the look adds the style and the palette, the prompt describes the picture: ${fewIds(restated)}` });
+  if (shots.length >= MOTIF_MIN_SHOTS) {
+    const counts = new Map();
+    for (const { scene } of shots) for (const motif of promptMotifs(scene)) counts.set(motif, (counts.get(motif) ?? 0) + 1);
+    const repeated = [...counts.entries()].filter(([, count]) => count > shots.length * MOTIF_SHARE_WARN).sort((a, b) => b[1] - a[1]).slice(0, 3);
+    for (const [motif, count] of repeated) warnings.push({ path: "scenes", message: `"${motif}" is in ${count} of ${shots.length} pictures (a third is plenty): give each chapter its own place and props so the video travels` });
+  }
+  return { errors, warnings };
+}
+
 /**
  * Shot-level lint on the estimated timeline: overlong shots are errors (the clip models stop at
  * ten seconds, and a shot frozen for longer looks broken), long or very short runs are warnings.
- * Returns { errors: [{ path, message }], warnings: [...] }.
+ * Illustrated slides add the picture variety rules above. Returns { errors: [{ path, message }],
+ * warnings: [...] }.
  */
 export function shotProblems(doc, timeline) {
-  const errors = [];
-  const warnings = [];
+  const variety = pictureVarietyProblems(doc);
+  const errors = [...variety.errors];
+  const warnings = [...variety.warnings];
   const seconds = [];
   doc.scenes.forEach((scene, index) => {
     if (!isShot(scene)) return;
