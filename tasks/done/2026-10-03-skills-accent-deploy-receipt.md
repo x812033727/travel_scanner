@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-skills-accent-deploy-receipt
 title: Skills: duration receipt procedure, dated-fixture triage, post-deploy verify script, voice wording audition
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-fable-accent-a1
 claimed_at: 2026-10-03T09:22:28Z
 created_at: 2026-10-03T09:22:26Z
-completed_at:
+completed_at: 2026-10-03T10:45:49Z
 branch: claude/skills-accent-deploy-receipt
 depends_on: []
 scope:
