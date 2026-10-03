@@ -13,7 +13,7 @@
 | 日本個人飯碗與筷子 | `7a434fce568614ff4a6a3274749bd8299fa432b139e95ba40e3dd0b19e7c4807` | `be8ab0b9e52755daeaa37ed1a08c0b89c651a9a4693c8f170250cbd19c64ef11` |
 | 韓國用餐者視角餐桌 | `bb10fc5e92821201ade72801b60dd11c167b434c052474e25652925426fcbe77` | `5b6ca24e86c637732acc71e18cf621b048f721e036056fcdb09ba1c17a41c9d6` |
 
-PNG 位於外部 artifact 目錄 `C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/`，檔名為 `japanese-held-rice.png` 與 `korean-eater-view.png`；SVG 位於本集 `vector-prototype/`。PNG 與 SVG 為不同位元組，各自綁定；沒有把檔案 hash 相符當成看過圖片。
+PNG 位於外部 artifact 目錄 `<home>/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/`，檔名為 `japanese-held-rice.png` 與 `korean-eater-view.png`；SVG 位於本集 `vector-prototype/`。PNG 與 SVG 為不同位元組，各自綁定；沒有把檔案 hash 相符當成看過圖片。
 
 日本原型：畫面左側的手掌托住飯碗，右侧的手用筷取飯，兩個動作可辨；標示「常見吃法示意」，未畫成所有盤子都要托起。韓國原型：座位與用餐者手部在畫面下方，飯在左、湯在右、湯匙在湯右、筷子再在匙右，與已讀的國家遺產廳傳統擺位正文相符；標示「傳統擺位示意／以用餐者視角看」。文字可讀，沒有把指南轉成法律、全民習慣或文化優劣判斷。
 
@@ -118,7 +118,7 @@ Apply 後已另外獨立核對 `video.json` 實際 SHA 確為 `90975caf8b5f719d6
 
 ## 正常 renderer 七張實際畫面抽樣
 
-已使用 `view_image` 實際查看下列七張正常 renderer 產出的 1920×1080 PNG，位於 `C:/Users/x8120/mokaair-work/videos/sothatswhy-t26/frames/`。這輪核對不是來源 SVG preview：奶油色 SVG 已放入正常深色品牌 frame，字卡亦為實際合成結果。再次計算來源 bytes，master 仍為 `90975caf8b5f719d6f7f49fd0da4c80a8058cd376df74fc8db6242dd8b044f25`，manifest 仍為 `c0043a639febae254d653de85ad3e8ee1d9a16620e11e157854ecf12898ca0ee`。
+已使用 `view_image` 實際查看下列七張正常 renderer 產出的 1920×1080 PNG，位於 `<home>/mokaair-work/videos/sothatswhy-t26/frames/`。這輪核對不是來源 SVG preview：奶油色 SVG 已放入正常深色品牌 frame，字卡亦為實際合成結果。再次計算來源 bytes，master 仍為 `90975caf8b5f719d6f7f49fd0da4c80a8058cd376df74fc8db6242dd8b044f25`，manifest 仍為 `c0043a639febae254d653de85ad3e8ee1d9a16620e11e157854ecf12898ca0ee`。
 
 | 場景與實際狀態 | renderer PNG | SHA256 |
 | --- | --- | --- |
@@ -136,7 +136,7 @@ Apply 後已另外獨立核對 `video.json` 實際 SHA 確為 `90975caf8b5f719d6
 
 ## 完整 180 renderer still 狀態覆核：兩項必修
 
-全 180 張實際 renderer PNG 已逐 byte 複製到 repo 外 `C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t26-renderer-review-pre-layoutfix/snapshots/`，每張均為 1920×1080，依正常 renderPlan 與實際 timeline 的 scene／state 對應，排成 32 張每頁至多六格的聯絡表。這是已完成 still 的快照，避免後續正常 force 重渲染途中混入新 bytes；沒有改素材、master 或程式。
+全 180 張實際 renderer PNG 已逐 byte 複製到 repo 外 `<home>/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t26-renderer-review-pre-layoutfix/snapshots/`，每張均為 1920×1080，依正常 renderPlan 與實際 timeline 的 scene／state 對應，排成 32 張每頁至多六格的聯絡表。這是已完成 still 的快照，避免後續正常 force 重渲染途中混入新 bytes；沒有改素材、master 或程式。
 
 `review_longform` 親自使用圖片工具看完第 1–3 章 16 頁／88 狀態，協審 `review_fixture_gate` 親自看完第 4–6 章 16 頁／92 狀態；另本人看過第 5 章第 1 頁及第 6 章第 4 頁以確認下列必修。兩人共另看 16 個 distinct 原尺寸狀態，包括先前七張 renderer 抽樣、本輪 c2-s08-detail／c3-s04-detail／c3-s10-detail、後三章四張擺位／動作重點及兩張問題圖。沒有把雜湊相符當成實際看圖。
 
@@ -164,7 +164,7 @@ Apply 後已另外獨立核對 `video.json` 實際 SHA 確為 `90975caf8b5f719d6
 
 正常 renderer 動畫時序的獨立 readonly 診斷：原 `load()` 在進場動畫中執行 layoutProblems；紙張從 translateY(28px) 回到原位，而 still 在 seek(end+1) 後截圖。實測 c2-s04 的動畫中 transform 13.1125px，content 為 791／778px，settled 371ms 後為 778／778px且原 layoutProblems 為空；c1-s02 與 c3-s01-detail 同樣 settled 高差零。只在記憶體故意將 paper 設 900px，settled 後原檢查仍拒絕真正 61px 溢位。建議保留原 1px 門檻，把檢查移到 pause／seek 到 settled 後，保留字型、圖片及 refused request 規則；正常 force 重拍以清掉原 cache 中間動畫的錯誤。此為原因與修正建議證據，尚未判實作修正或全批正常 renderer layout gate 已過。
 
-歷史候選與 backup 已移到 repo 外 `C:/Users/x8120/mokaair-work/videos/sothatswhy-t26/_source/native-conversion/`；本輪實際重算 `candidate-native.json` 仍為 `90975caf8b5f719d6f7f49fd0da4c80a8058cd376df74fc8db6242dd8b044f25`，`video.before-native-2aadb090435e.json` 仍為 `2aadb090435e25610fe7bf6c190bed208b786952c309579eec7d669e6897fd20`，歷史審查可由這些原 bytes 重核。
+歷史候選與 backup 已移到 repo 外 `<home>/mokaair-work/videos/sothatswhy-t26/_source/native-conversion/`；本輪實際重算 `candidate-native.json` 仍為 `90975caf8b5f719d6f7f49fd0da4c80a8058cd376df74fc8db6242dd8b044f25`，`video.before-native-2aadb090435e.json` 仍為 `2aadb090435e25610fe7bf6c190bed208b786952c309579eec7d669e6897fd20`，歷史審查可由這些原 bytes 重核。
 
 仍 `PENDING`：兩項圖文修正後實看、正常 renderer 完整 layout gate／manifest 重綁、完整 MP4、音訊、字幕、bookends 及全部成片 QA。沒有成片媒體整體 PASS，也沒有平台核准或發布判定。
 
@@ -199,7 +199,7 @@ Apply 後已另外獨立核對 `video.json` 實際 SHA 確為 `90975caf8b5f719d6
 
 目前 `frames/manifest.json` byte SHA `73c37da4e457a98f990a381a53ced902e7e4fe9884fbdb92172809fc432738d8`。已逐景／逐狀態與 current renderPlan 比對：180 states 的 scene、state 數、reveal、still 路徑及 inline asset 新 key 全部相符；`visual_hash=9e8853bd4d25fbd3`、`theme_hash=387c6c9767343f5d` 符合目前來源，fps=30、size=1920×1080，180 actual PNG 亦均為此尺寸。全部 planned cache state 的 problems 均空，manifest 登記的 2096 個 transition 檔案均存在；存在檢查沒有轉成逐格動畫視覺 PASS。協調者回報正常 force 180 drawn／0 reused／0 layout 及修圖後 2 drawn／178 reused 皆 exit0；本審稿者獨立核對的是上述 current manifest、cache、實際圖片及檔案 bytes。
 
-最終 still 收據與 180 PNG snapshots、32 頁 current 聯絡表及 raw renderer manifest snapshot 位於 repo 外 `C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t26-renderer-review-final-stills/`。`reviewed-receipt.json` byte SHA `13ef9fe9b1f716ba3afa43ae3df9f19a552a7ca394eaf06bb361deb3b0225468`，每個 state 的實际 PNG SHA、前版 SHA、是否 bytes 相同及審查依據均保存；集合 SHA `fc5d667d3af721a14b0b0cfd7cb5e885b37d911339ec9138a81251a22fdfc07a` 沿用前節的 state 順序 `{key,sha256}` UTF-8 JSON＋換行算法。
+最終 still 收據與 180 PNG snapshots、32 頁 current 聯絡表及 raw renderer manifest snapshot 位於 repo 外 `<home>/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t26-renderer-review-final-stills/`。`reviewed-receipt.json` byte SHA `13ef9fe9b1f716ba3afa43ae3df9f19a552a7ca394eaf06bb361deb3b0225468`，每個 state 的實际 PNG SHA、前版 SHA、是否 bytes 相同及審查依據均保存；集合 SHA `fc5d667d3af721a14b0b0cfd7cb5e885b37d911339ec9138a81251a22fdfc07a` 沿用前節的 state 順序 `{key,sha256}` UTF-8 JSON＋換行算法。
 
 最後綁定來源：master `90975caf8b5f719d6f7f49fd0da4c80a8058cd376df74fc8db6242dd8b044f25`、claims `ec889a4246d9190deff7693347d33e1a97735f7c97fd3356151b80529e7fd523`、brief `a3700f660d9ca4a8dd21db5c9587b28e90819606e8eb1b15ebe2836f107fea6d`、native SVG manifest `11cd8be93dace7a2775e2b586294c111cb9ece036db0153033c30d27cd36b3a5`。實際 timeline byte SHA 仍為 `e2baf37ca8c14e675cd250c8a5a4deb1cf05d17cb726ba38c89b4843f72c5e57`，与先前實測正文 890.033 秒／狀態最長 7.667 秒／圖解 87.963% 的受核 snapshot 相同；沒有拿 still 通過當成成片實測。
 
@@ -207,7 +207,7 @@ Apply 後已另外獨立核對 `video.json` 實際 SHA 確為 `90975caf8b5f719d6
 
 ## 正常成片的實際解碼視覺抽樣
 
-在協調者明確通知正常 assemble exit0 並提交 final、checks 與品牌 pin 後，才開啟 `C:/Users/x8120/mokaair-work/videos/sothatswhy-t26/final.mp4`。本輪獨立計算成片 SHA256 為 `8aa8ad5b2fb7f89ecddf3a020d048e158bdc70195386f100c27e52cee9cc67b3`，130,511,176 bytes；擷取前後及真正看圖後重新雜湊均相同。正常 `checks.json` SHA `d0323131fcd759d49f79c30f60545e69672c39d306442cdca2980cb37d0c2a1c`，`ok=true`、problems 空、26,941 frames、speech／visual 與受審 timeline／renderer manifest 相符；`branding.json` pin SHA `067cb1eda01ee22b85634fc81086c9891ffe1af1951e1b5bee8cbae5392e913c`，實際 I=150／B=26,701／O=90。來源 master、claims、brief、vector manifest、timeline 與 renderer manifest 的六個 SHA 仍逐一符合前節，沒有改稿或改素材。
+在協調者明確通知正常 assemble exit0 並提交 final、checks 與品牌 pin 後，才開啟 `<home>/mokaair-work/videos/sothatswhy-t26/final.mp4`。本輪獨立計算成片 SHA256 為 `8aa8ad5b2fb7f89ecddf3a020d048e158bdc70195386f100c27e52cee9cc67b3`，130,511,176 bytes；擷取前後及真正看圖後重新雜湊均相同。正常 `checks.json` SHA `d0323131fcd759d49f79c30f60545e69672c39d306442cdca2980cb37d0c2a1c`，`ok=true`、problems 空、26,941 frames、speech／visual 與受審 timeline／renderer manifest 相符；`branding.json` pin SHA `067cb1eda01ee22b85634fc81086c9891ffe1af1951e1b5bee8cbae5392e913c`，實際 I=150／B=26,701／O=90。來源 master、claims、brief、vector manifest、timeline 與 renderer manifest 的六個 SHA 仍逐一符合前節，沒有改稿或改素材。
 
 抽樣以正常 `presentationTimeline` 的片頭 offset 及 `layoutScenes` 的 transition clamp 推導，採 0-based 解碼影格 n；正文 settled 中段為 `I+S+T+floor((E-S-T)/2)`，`T=min(transition.length,E-S-1)`。使用 ffmpeg select 解碼 n，沒有用猜測分鐘或不精準的時間 seek。每張樣本保存解碼器 pts 整數與原 time_base 算出的真實秒數，未把 n／30 冒作真實 PTS。
 
@@ -233,7 +233,7 @@ Apply 後已另外獨立核對 `video.json` 實際 SHA 確為 `90975caf8b5f719d6
 
 最後 bullets 兩點及原 note 完整；正文最後圖與末格均為已審的餐具並列圖。片尾首格標誌、中段及最後格 CTA 完整，最後 n=26940 仍可見 Mokaair、按讚、分享與開啟小鈴鐺。上述指定樣本未見壞圖、錯誤修圖、裁切、重疊或新的必要視覺修正；這是接縫兩側樣本的觀察，沒有冒稱完整播放了接縫動作或聽過同步。
 
-原始 `decoded-receipt.json` SHA `a837bf0e65bb4616579e66b64431c7a31f04dff39b7ca25ff94a5e4636555a35`；真正看圖後的 `reviewed-receipt.json` SHA `d576b2666912b69123b3576f7eef41940980b652024dff06945eec1c6845ed93`。它們與 100 張 actual-final PNG、四頁聯絡表、抽樣推導、ffmpeg argv／解碼 log 位於 repo 外 `C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t26-final-mp4-samples/`；每個 PNG SHA、解碼 n、精確 PTS、是否親自看過及觀察均可重核。100 PNG 集合 SHA `c986f9e45ab2462c7eb970a9f0916d076da538d598e6a4249fea24a291a4c837`，算法為按解碼順序 `{frame,sha256}` 的 UTF-8 JSON 加換行。
+原始 `decoded-receipt.json` SHA `a837bf0e65bb4616579e66b64431c7a31f04dff39b7ca25ff94a5e4636555a35`；真正看圖後的 `reviewed-receipt.json` SHA `d576b2666912b69123b3576f7eef41940980b652024dff06945eec1c6845ed93`。它們與 100 張 actual-final PNG、四頁聯絡表、抽樣推導、ffmpeg argv／解碼 log 位於 repo 外 `<home>/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t26-final-mp4-samples/`；每個 PNG SHA、解碼 n、精確 PTS、是否親自看過及觀察均可重核。100 PNG 集合 SHA `c986f9e45ab2462c7eb970a9f0916d076da538d598e6a4249fea24a291a4c837`，算法為按解碼順序 `{frame,sha256}` 的 UTF-8 JSON 加換行。
 
 ### 實際時長及 PTS 界線
 

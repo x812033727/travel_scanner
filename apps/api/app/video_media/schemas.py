@@ -23,6 +23,9 @@ JobStatus = Literal["queued", "submitted", "ready", "failed", "expired"]
 ImagePurpose = Literal["character_sheet", "style_frame", "keyframe", "thumbnail"]
 ReferenceRole = Literal["character", "style", "previous_frame"]
 Aspect = Literal["16:9", "9:16", "1:1"]
+# The size a picture is asked at: the vendors' 1K default, or 2K for a still that fills the
+# frame under a camera move (docs/videos/ILLUSTRATED.md); priced with the model's 2K price.
+ImageSize = Literal["1K", "2K"]
 JudgeKind = Literal["look", "keyframe", "clip", "continuity"]
 SLUG_PATTERN = r"^[a-z0-9](?:[a-z0-9-]{0,78}[a-z0-9])?$"
 SHOT_PATTERN = r"^[a-z0-9]+(?:-[a-z0-9]+)*$"
@@ -58,6 +61,8 @@ class ImageJobIn(_JobIn):
     aspect: Aspect = "16:9"
     references: list[Reference] = Field(default_factory=list, max_length=MAX_REFERENCES)
     shot_id: str | None = Field(default=None, pattern=SHOT_PATTERN, max_length=60)
+    # 2K is refused for a model the catalog prices at 1K only.
+    size: ImageSize | None = None
 
 
 class ClipJobIn(_JobIn):
@@ -168,6 +173,9 @@ class ChoiceView(StrictModel):
     configured: bool
     resolution: str | None = None
     seconds: int | None = None
+    # Image choices: what one 2K picture costs, or None when the model draws at 1K only; the
+    # tool's media/stages.mjs asks for 2K stills when this is set.
+    usd_per_image_2k: float | None = None
 
 
 class MediaStatus(StrictModel):

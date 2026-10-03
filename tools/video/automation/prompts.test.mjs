@@ -12,7 +12,10 @@ test("the slides writer is told the shot template, the 5 to 8 second cadence, th
   assert.match(writer, /- shot \{prompt, camera, visual: "still", transition\?\}/);
   assert.match(writer, /at most 1000 characters/);
   assert.match(writer, /push in, pull out, pan left, pan\s+right, tilt up, tilt down, drift/);
-  assert.match(writer, /middle\s+60% of the frame/);
+  // A Short covers 9:16 from the 16:9 picture and keeps the middle 32% of its width.
+  assert.match(writer, /Keep the subject in the middle\s+third of the frame: a Short crops the picture to 9:16 and keeps only that strip/);
+  assert.doesNotMatch(writer, /middle\s+60%|off-centre/);
+  assert.match(writer, /nothing whose\s+face is print \(an open page, a sign, a clock face, a screen\)/);
   assert.match(writer, /5 to 8 seconds/);
   assert.match(writer, /shots under at least half of the runtime/);
   assert.match(writer, /"look": \{"preset": "tech-story"\}/);
@@ -23,6 +26,17 @@ test("the slides writer is told the shot template, the 5 to 8 second cadence, th
   assert.match(writer, /「你以為…其實…」/);
   assert.doesNotMatch(writer, /dark slides and a synthesized/, "the channel is no longer described as dark slides");
   assert.match(writer, /AI-drawn illustrations with camera moves/);
+  // The picture recipe (docs/videos/ILLUSTRATED.md §畫面不像 AI): shot size first, a place and a
+  // person, no style or colour words, a camera chosen for the picture, cuts by default, and a
+  // video that travels instead of forty desks under forty lamps.
+  assert.match(writer, /the shot size\s+\(extreme close-up, close-up, medium, wide, overhead, low angle, from behind\)/);
+  assert.match(writer, /never a faceless mannequin/);
+  assert.match(writer, /No style words, no colour\s+names, no "illustration": the look adds those/);
+  assert.match(writer, /never the move of the shot before, and lint refuses three in a row/);
+  assert.match(writer, /leave it out \(the tool cuts, and dissolves after a pause beat\)/);
+  assert.match(writer, /Pictures travel: each chapter happens in its own place/);
+  assert.match(writer, /no laptops, screens, robots, circuits, brains, clouds,\s+light bulbs, podiums, hourglasses/);
+  assert.doesNotMatch(writer, /a dissolve by default/);
 });
 
 test("the planner outlines story beats and the listener keeps the register; the fact-checker and the translators are untouched", () => {

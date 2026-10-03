@@ -22,6 +22,7 @@ from app.crawlers.airlines import AirlineFareCrawlerService
 from app.crawlers.schemas import AirlineFareSearch
 from app.crawlers.verification import build_verification_report
 from app.db import SessionFactory
+from app.foods.catchtable_import import CandidateFileError, import_catchtable_candidates
 from app.foods.coordinate_fill_cli import fill_food_merchant_coordinates
 from app.foods.enrichment_import import DEFAULT_ENRICHMENT_FILE as ENRICHMENT_FILE
 from app.foods.enrichment_import import (
@@ -863,6 +864,29 @@ def main() -> None:
     platform_reviews.add_argument(
         "--apply", action="store_true", help="Write the rows instead of only reporting them"
     )
+    catchtable = subparsers.add_parser(
+        "import-catchtable-candidates",
+        help=(
+            "Import a CatchTable candidate file in one pass: pending, inactive merchants for "
+            "import records and catchtable_global platform rows for import and duplicate "
+            "records, one transaction each; never coordinates, Naver pages, map or review "
+            "status; reports only unless --apply"
+        ),
+    )
+    catchtable.add_argument(
+        "--file", required=True, help="candidates.json (app/foods/data/catchtable/<batch>/)"
+    )
+    catchtable.add_argument(
+        "--limit", type=int, help="Stop after this many import and duplicate records"
+    )
+    catchtable.add_argument(
+        "--check",
+        action="store_true",
+        help="Validate the file and print its counts without opening the database",
+    )
+    catchtable.add_argument(
+        "--apply", action="store_true", help="Write the rows instead of only reporting them"
+    )
     enrich = subparsers.add_parser(
         "enrich-food-merchants",
         help=(
@@ -1329,6 +1353,18 @@ def main() -> None:
         report = asyncio.run(
             apply_food_platform_reviews(Path(args.file), apply=args.apply, limit=args.limit)
         )
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+    elif args.command == "import-catchtable-candidates":
+        try:
+            report = asyncio.run(
+                import_catchtable_candidates(
+                    Path(args.file), apply=args.apply, limit=args.limit, check_only=args.check
+                )
+            )
+        except CandidateFileError as exc:
+            for problem in str(exc).split(" | "):
+                print(f"ERROR {problem}", file=sys.stderr)
+            raise SystemExit(2) from None
         print(json.dumps(report, ensure_ascii=False, indent=2))
     elif args.command == "enrich-food-merchants":
         enrichment = asyncio.run(

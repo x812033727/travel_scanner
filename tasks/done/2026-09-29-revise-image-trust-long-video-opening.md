@@ -56,7 +56,7 @@ recovery fix and is not part of this content revision. The current branch uses
 the pre-existing origin/main baseline 4d406942.
 
 The shared source paths and original media remain read-only. Outputs go to
-`C:/Users/x8120/mokaair-work/long-revisions/image-trust-20260929`. Publication,
+`<home>/mokaair-work/long-revisions/image-trust-20260929`. Publication,
 production review replacement, listening acceptance and performance lift are
 not claimed by local technical checks.
 

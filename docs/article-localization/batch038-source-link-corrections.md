@@ -19,9 +19,9 @@ The guarded, four-lock, repeatable-read production snapshot was captured at
 2026-09-28T11:23:03Z. It confirmed all four articles active/published at
 article version 2, zh-TW published/draft version 4, no other locale rows, and
 exact agreement with the repository source after `GuideDocument` normalization.
-The read-only [snapshot receipt](C:/Users/x8120/.codex/article-localization-release/batch038-source-preflight-20260928/receipt-20260928T112259Z.json)
+The read-only snapshot receipt (`<home>/.codex/article-localization-release/batch038-source-preflight-20260928/receipt-20260928T112259Z.json`)
 has SHA-256 `04a6c4082468109545f1d8fe054c18333db6aad9f14273f8ed1435da9a7739b3`.
-The [exact JSON diff receipt](C:/Users/x8120/.codex/article-localization-release/batch038-source-preflight-20260928/diff-receipt.json)
+The exact JSON diff receipt (`<home>/.codex/article-localization-release/batch038-source-preflight-20260928/diff-receipt.json`)
 has SHA-256 `f67d02e27eae9ed636d980d7367b9e1e86fbcc10213e7b8653d2252e0c4a5175`.
 It asserts that the only changes are the five `article` inline nodes becoming
 `text` nodes, with their displayed words unchanged; root metadata, all other

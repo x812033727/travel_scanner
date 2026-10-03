@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "status": "offline-contract-checks-passed-not-media-acceptance",
+  "checks": [
+    "source object and opening-lines file hashes match",
+    "10 voiced scenes and 11 unchanged zh-TW lines with stable legal unique ids",
+    "11 Gemini requests with separate Erinome / Kore / Puck routing",
+    "15 contiguous planned shots cover 0–60 seconds; 120 source seconds in 8-second clips",
+    "S06/S07/S11/S12/S15 have no TTS line",
+    "appearance, voice and all named looks match existing productionSetting exactly",
+    "all selected look ids exist and visible S09 shoulder is declared",
+    "no foreign translations or generation; CC burn_in is false",
+    "localization requires owner confirmation of complete Chinese film plus CC; global profile unchanged"
+  ],
+  "lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "sources",
+        "message": "no sources: every fact in claims.md needs one, and they go in the description"
+      }
+    ]
+  },
+  "voice_only_estimate": {
+    "status": "estimate-not-measured",
+    "seconds": 34.333333333333336,
+    "lines": 11,
+    "scenes": 10,
+    "note": "not the 60-second 15-shot picture edit"
+  },
+  "hashes": {
+    "source_object_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+    "voice_only_video_sha256": "b198b4839f1777a0d0020a5c706ae27485492b4801371f359d73d8abcce003ef",
+    "edit_plan_sha256": "6ce6187eda4b6b73c35aba06197d03bf19680baad1880ff4724bbf7df99377ce",
+    "id_map_sha256": "3933526cb621630ebb4c6977eb20ac1ecbb15639c3a65dd86dc905b6f5ca274f",
+    "local_series_sha256": "36984fea1b22f7846c15e2ff9c67ae6cb36719a67860329f5853ff9c5c9b31ee"
+  },
+  "media_acceptance": {
+    "tts_generated_by_this_agent": false,
+    "animated_clips_generated_by_this_agent": false,
+    "latest_real_media_status": "root agent owns external WAV/job/receipt records",
+    "taiwan_accent_listening": "pending explicit listening record",
+    "picture_identity_and_props": "pending actual pictures",
+    "full_Chinese_film_and_CC_owner_confirmation": "pending"
+  }
+}

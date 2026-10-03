@@ -26,7 +26,7 @@ import { SITEMAP_ROUTES } from "../sitemaps/sitemap";
  *
  * Next has no file convention for this one, so it is a Route Handler in a dotted folder --
  * the pattern its own docs name ("app/rss.xml/route.ts creates a Route Handler for rss.xml").
- * `proxy.ts`'s matcher already excludes any path containing a dot, so next-intl never sees it
+ * `proxy.ts`'s matcher already excludes any path ending in `.txt`, so next-intl never sees it
  * and no locale is inferred: everything below names its locale explicitly.
  */
 

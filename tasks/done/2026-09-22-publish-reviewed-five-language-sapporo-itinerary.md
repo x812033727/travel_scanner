@@ -36,7 +36,7 @@ The public Sapporo three-day guide only has a zh-TW document. The reviewed candi
 
 ## How to verify
 
-Run `python -m app.guides.pack_cli lint --slug sapporo-3-day-itinerary` from `apps/api`, the focused guide content/link tests, `npm run check:tasks`, `git diff --check`, and GitHub CI. Compare pack and all four SVG file SHA-256 values to `C:\Users\x8120\.codex\article-localization-release\batch012-selection\sapporo-final-full-review\receipt.json`. Verify the only normalized zh-TW source delta from the published v4 snapshot is `/blocks/22/text` and the new four locales have 30 blocks and 13 sources each.
+Run `python -m app.guides.pack_cli lint --slug sapporo-3-day-itinerary` from `apps/api`, the focused guide content/link tests, `npm run check:tasks`, `git diff --check`, and GitHub CI. Compare pack and all four SVG file SHA-256 values to `<home>\.codex\article-localization-release\batch012-selection\sapporo-final-full-review\receipt.json`. Verify the only normalized zh-TW source delta from the published v4 snapshot is `/blocks/22/text` and the new four locales have 30 blocks and 13 sources each.
 
 ## Notes
 

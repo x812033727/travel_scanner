@@ -43,7 +43,7 @@ without weakening publication, cache, account or provider-request boundaries.
 ## How to verify
 
 From apps/api with its directory on PYTHONPATH, use the installed sibling
-`C:/Users/x8120/.codex/worktrees/mokaair-admin-domains/apps/api/.venv/Scripts/python.exe`:
+`<home>/.codex/worktrees/mokaair-admin-domains/apps/api/.venv/Scripts/python.exe`:
 
 - `-m ruff check app/discovery tests/test_discovery_flow.py`
 - `-m mypy app/discovery`

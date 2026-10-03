@@ -101,7 +101,7 @@ slug、另一家 slug 不同但 `local_name` 相同（`tainan-a-song-ge-bao`）�
 https 版本回 200 才改寫。不要無條件把 http 改成 https，會產生連不上的來源。
 
 **資料在哪**（會隨 session 消失，要救趁早）：
-`%TEMP%\claude\C--Users-x8120-mokaair--claude-worktrees-affiliate-marketing-config-97c4cb\e1250ed6-85e4-4712-8c07-fa3f611cc1f1\scratchpad\`
+`%TEMP%\claude\<project-slug>\e1250ed6-85e4-4712-8c07-fa3f611cc1f1\scratchpad\`
 底下的 `trend-merchants.json`（101 家含 slug）、`trend-merchants-dropped.json`（143 家
 被刷掉的與理由）、`trend-food-areas.json`（57 個商圈）、`import_trend_merchants.py`、
 `create_trend_food_areas.py`、`slugify_merchants.py`。正式機的 `/root/trend-merchants.json`

@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "status": "offline-validated-not-media-accepted",
+  "episode": 1,
+  "counts": {
+    "dialogue_lines": 33,
+    "voiced_scenes": 32,
+    "reference_shots": 42,
+    "silent_shots": 10,
+    "new_unrecorded_lines": 22,
+    "existing_cache_eligible_lines": 11,
+    "tts_requests_if_none_cached": 33
+  },
+  "validation": {
+    "schema_errors": [],
+    "lint_errors": [],
+    "lint_warnings": [
+      {
+        "path": "sources",
+        "message": "no sources: every fact in claims.md needs one, and they go in the description"
+      }
+    ],
+    "screenplay_text_and_speakers_match": true,
+    "source_bound_cast_voice_and_named_looks_match": true,
+    "first_11_request_bodies_and_line_cache_keys_match": true,
+    "first_15_audio_edit_windows_preserved": true,
+    "s16_start_s": 51,
+    "no_dummy_silent_scene_lines": true,
+    "s35_s39_cost_merge_candidates_recorded": true
+  },
+  "scope": {
+    "tts_requests_sent_by_this_agent": 0,
+    "clip_requests_sent_by_this_agent": 0,
+    "opening_human_listening": "pending",
+    "later_22_voice_measurements": "not-synthesized",
+    "complete_episode_animation": "not-generated",
+    "Chinese_CC": "must be timed to accepted full editorial mix",
+    "foreign_languages": "blocked until owner confirms complete Chinese film and CC"
+  },
+  "cache_reuse": [
+    {
+      "line_id": "WR-E01-L001",
+      "runtime_id": "afd1ed57",
+      "line_cache_key": "9d09889a612c4958",
+      "request_body_matches_pilot": true,
+      "pilot_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw/audio/afd1ed57.wav",
+      "expected_wav_sha256": "793d5da630cd48ae2c31af0d971421dfddc05b707b605a834d420c61856b373e",
+      "actual_wav_hash_checked": true,
+      "cache_reuse": "eligible if copied with verified original cache metadata; different document slug does not copy it automatically"
+    },
+    {
+      "line_id": "WR-E01-L002",
+      "runtime_id": "0c782990",
+      "line_cache_key": "7d4b1563eb8aa07a",
+      "request_body_matches_pilot": true,
+      "pilot_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw/audio/0c782990.wav",
+      "expected_wav_sha256": "10564cbafa86aebb8627a023fe5a21e2abc18e394759689fe60f172c7ebf55f2",
+      "actual_wav_hash_checked": true,
+      "cache_reuse": "eligible if copied with verified original cache metadata; different document slug does not copy it automatically"
+    },
+    {
+      "line_id": "WR-E01-L003",
+      "runtime_id": "0945b87f",
+      "line_cache_key": "4019b21df43229b1",
+      "request_body_matches_pilot": true,
+      "pilot_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw/audio/0945b87f.wav",
+      "expected_wav_sha256": "f8cf76dc040b3a312efca24edd24d308272bb571fccf16fe26e04e89e3963749",
+      "actual_wav_hash_checked": true,
+      "cache_reuse": "eligible if copied with verified original cache metadata; different document slug does not copy it automatically"
+    },
+    {
+      "line_id": "WR-E01-L004",
+      "runtime_id": "c1ee7ed5",
+      "line_cache_key": "51b42ec4c18c54d3",
+      "request_body_matches_pilot": true,
+      "pilot_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw/audio/c1ee7ed5.wav",
+      "expected_wav_sha256": "4934ea1d9a0253e066273dd53c717a73aa4ef8b2dfa5c637d3d0b059d05bb3ae",
+      "actual_wav_hash_checked": true,
+      "cache_reuse": "eligible if copied with verified original cache metadata; different document slug does not copy it automatically"
+    },
+    {
+      "line_id": "WR-E01-L005",
+      "runtime_id": "677ac0bc",
+      "line_cache_key": "6d51857132fad118",
+      "request_body_matches_pilot": true,
+      "pilot_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw/audio/677ac0bc.wav",
+      "expected_wav_sha256": "aa3b95eeb84873718b2847078d773a76c640bdfe96a94df7273f3c35d2bc68bc",
+      "actual_wav_hash_checked": true,
+      "cache_reuse": "eligible if copied with verified original cache metadata; different document slug does not copy it automatically"
+    },
+    {
+      "line_id": "WR-E01-L006",
+      "runtime_id": "a390c745",
+      "line_cache_key": "5d1078d5d220f7c8",
+      "request_body_matches_pilot": true,
+      "pilot_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw/audio/a390c745.wav",
+      "expected_wav_sha256": "5033bae054b3f7c9b0ceed1c73b0f19932afe3f221fcd46647a3d002a420720a",
+      "actual_wav_hash_checked": true,
+      "cache_reuse": "eligible if copied with verified original cache metadata; different document slug does not copy it automatically"
+    },
+    {
+      "line_id": "WR-E01-L007",
+      "runtime_id": "6a480238",
+      "line_cache_key": "57648699c646d0f5",
+      "request_body_matches_pilot": true,
+      "pilot_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw/audio/6a480238.wav",
+      "expected_wav_sha256": "0976d56b31f0439e2279f3624a10271d84de56af8e022646c1a326e8eb5c3f94",
+      "actual_wav_hash_checked": true,
+      "cache_reuse": "eligible if copied with verified original cache metadata; different document slug does not copy it automatically"
+    },
+    {
+      "line_id": "WR-E01-L008",
+      "runtime_id": "548a5cb2",
+      "line_cache_key": "540b95430c7f2f06",
+      "request_body_matches_pilot": true,
+      "pilot_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw/audio/548a5cb2.wav",
+      "expected_wav_sha256": "b769a1919bc311a9186e6ec0591b37e6abcd98b64114204d21e1ee3621933192",
+      "actual_wav_hash_checked": true,
+      "cache_reuse": "eligible if copied with verified original cache metadata; different document slug does not copy it automatically"
+    },
+    {
+      "line_id": "WR-E01-L009",
+      "runtime_id": "087d01cb",
+      "line_cache_key": "14363e897819c66d",
+      "request_body_matches_pilot": true,
+      "pilot_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw/audio/087d01cb.wav",
+      "expected_wav_sha256": "f179b807ce3c403ed029983063876a104a4c62fd2d187c3a71bd3f3683f2fb72",
+      "actual_wav_hash_checked": true,
+      "cache_reuse": "eligible if copied with verified original cache metadata; different document slug does not copy it automatically"
+    },
+    {
+      "line_id": "WR-E01-L010",
+      "runtime_id": "b9acfedc",
+      "line_cache_key": "414c1de28676f910",
+      "request_body_matches_pilot": true,
+      "pilot_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw/audio/b9acfedc.wav",
+      "expected_wav_sha256": "7e373d2a3e74e1717205982a8883491f19f0422b271a72e5419dd5930992a57f",
+      "actual_wav_hash_checked": true,
+      "cache_reuse": "eligible if copied with verified original cache metadata; different document slug does not copy it automatically"
+    },
+    {
+      "line_id": "WR-E01-L011",
+      "runtime_id": "e24854f2",
+      "line_cache_key": "e4d5868f2d87aff8",
+      "request_body_matches_pilot": true,
+      "pilot_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw/audio/e24854f2.wav",
+      "expected_wav_sha256": "a48bedabe1f959d26b2f3c7c5fd2fe3628989a18e6b3a58d46ea31c14dbdeff8",
+      "actual_wav_hash_checked": true,
+      "cache_reuse": "eligible if copied with verified original cache metadata; different document slug does not copy it automatically"
+    }
+  ],
+  "hashes": {
+    "voice_document_sha256": "949f6c51dc944e3ef972b859822fb5d5d87d9938effa4c9e93fc8e0eae4b408c",
+    "dialogue_sha256": "855b0f7a0a336c32fb5a6ac73de5d48867bf77efb89649ad0575ba2f345a7af5",
+    "edit_plan_sha256": "d0269e9e67196f88b33394b8a117e36ddbdd4927d638874b64b64c42a1c2afb3",
+    "series_sha256": "b7f880ac764ad07c4e0fe75b489a72a30cb61aec767e87cd056127973878972c"
+  },
+  "timing": {
+    "opening_audio_edit_s": 51,
+    "voice_only_estimate_s": 112.96666666666667,
+    "editorial_total_planned_s": 153.5,
+    "complete_episode_measured_s": null,
+    "note": "New 27-shot windows are unmeasured estimates; no freeze, slower speech or invented silence may be used to meet this number."
+  },
+  "snapshot_scope": {
+    "original_fields_are_historical": true,
+    "original_fields": [
+      "counts",
+      "validation",
+      "scope",
+      "cache_reuse",
+      "hashes",
+      "timing"
+    ],
+    "stage": "pre-synthesis offline validation",
+    "note": "new_unrecorded_lines=22 and later_22_voice_measurements=not-synthesized describe the original preparation snapshot. Current receipt-derived state is in current_section; historical values are retained."
+  },
+  "current_section": {
+    "as_of_check_run": "2026-10-02T16:01:26.817Z",
+    "status": "audio-preview-assembled-two-ASR-flags-human-review-pending",
+    "readable_current_wavs": 33,
+    "original_pilot_wavs_reused_unchanged": 11,
+    "new_initial_lines_synthesized": 22,
+    "bounded_retake_count": 1,
+    "bounded_retake_line": "WR-E01-L022",
+    "other_32_wavs_unchanged": true,
+    "tts_billable_characters_for_e01_excluding_reused_pilot": 279,
+    "current_dry_voice_duration_s": 94.55,
+    "current_editorial_audio_preview_duration_s": 144.86,
+    "current_editorial_shot_count": 40,
+    "original_shot_ids_preserved": 42,
+    "silent_shots_retained": 10,
+    "caption_cues": 33,
+    "caption_status": "aligned-to-dry-audio-preview-not-final-picture",
+    "latest_check": {
+      "stage": "check-audio",
+      "at": "2026-10-02T16:01:26.817Z",
+      "lines": 33,
+      "exact": 18,
+      "alike": 4,
+      "judged": 11,
+      "cleared": 4,
+      "flagged": 2,
+      "unchecked": 0,
+      "transcribed": 1,
+      "jev_calls": 2
+    },
+    "pending_flag_runtime_ids": [
+      "aa839f9a",
+      "8704bfd6"
+    ],
+    "human_listening": "pending-not-performed-by-reviewer",
+    "accent_acceptance": "pending",
+    "animation_seconds": 0,
+    "evidence_summary": "./audio-check-summary.json",
+    "measured_edit": "./episode-01-measured-edit.json",
+    "timing_report": "./episode-01-timing-report.json",
+    "current_artifact_hashes": {
+      "master.wav": "ea622b797df573509b791e180798e17595179fd95158fd6e0676d2c46a466515",
+      "measured-edit.json": "34438e1c64cc6535a1ad1cbee685027801483f33783093c5038941f1d9917bb6",
+      "timing-report.json": "0d6445470b374a185b77490ad7cc297051a62c295a12479f84ddaf904bb9bbe6"
+    }
+  }
+}

@@ -69,7 +69,7 @@ Each selected source document exactly matches its live published version;
 all five are active/published and each lacks exactly `en`, `ja`, `ko`, `zh-CN`.
 Production locale version is 8 for the train-disruption guide and 6 for the
 other four. Full baseline and authoring evidence live outside the repository
-at `C:\Users\x8120\.codex\article-localization-batch-004`. No pack or public
+at `<home>\.codex\article-localization-batch-004`. No pack or public
 asset is changed before independent review.
 
 All twenty jobs are `rendered` with schema/field/token checks and one 1600×900

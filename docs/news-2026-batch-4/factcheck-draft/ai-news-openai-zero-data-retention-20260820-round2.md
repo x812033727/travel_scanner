@@ -4,7 +4,7 @@
 - 第二輪查核者：另一位獨立代理（沒有撰稿、沒有參與第一輪），查核日 **2026-09-23**
 - 內容包：`apps/api/app/guides/content/ai-news-openai-zero-data-retention-20260820.json`
 - 研究紀錄：`docs/ai-news-2026-09-late/research/ai-news-openai-zero-data-retention-20260820.json`
-- 第一輪報告：`C:\Users\x8120\mokaair-work\news44\factcheck\ai-news-openai-zero-data-retention-20260820-round1.md`
+- 第一輪報告：`<home>\mokaair-work\news44\factcheck\ai-news-openai-zero-data-retention-20260820-round1.md`
 - 結論：**複核 51 條主張＋49 條 `verbatim_quote` 連續字串比對；再改 6 處（含 3 處協調者裁定、3 處第二輪自己抓到的事實問題）。verdict `ok`。**
 
 ## 1. 今天自己重抓的來源
@@ -160,7 +160,7 @@ pack_cli lint exit=1
 3. 本報告
 
 沒有 `git add`／`commit`，repo 裡沒有留下暫存檔（腳本與抓下來的原始檔都在
-`C:\Users\x8120\mokaair-work\news44\_tools\ai-news-openai-zero-data-retention-20260820-r2\`）。
+`<home>\mokaair-work\news44\_tools\ai-news-openai-zero-data-retention-20260820-r2\`）。
 
 ## 10. 結論
 
