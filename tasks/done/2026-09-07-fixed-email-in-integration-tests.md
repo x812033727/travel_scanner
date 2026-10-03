@@ -1,14 +1,14 @@
 ---
 id: 2026-09-07-fixed-email-in-integration-tests
 title: 整合測試用固定 email，同一個資料庫跑第二次就 UniqueViolation
-status: review
+status: done
 priority: P3
 area: api
-owner: claude-fable-5-1
-claimed_at: 2026-09-19T09:28:20Z
+owner: codex-fixed-email-acceptance-20261003
+claimed_at: 2026-10-03T11:43:03Z
 created_at: 2026-09-07T01:10:00Z
-completed_at:
-branch: claude/travel-scanner-pr-552-rpq36m
+completed_at: 2026-10-03T11:43:06Z
+branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
   - apps/api/tests/test_food_integration.py
@@ -36,7 +36,7 @@ DETAIL:  Key (email)=(food-owner-integration@example.test) already exists.
 
 ## Definition of done
 
-- [ ] 同一個資料庫連跑兩次 `RUN_INTEGRATION_TESTS=1 uv run pytest tests/test_food_integration.py`
+- [x] 同一個資料庫連跑兩次 `RUN_INTEGRATION_TESTS=1 uv run pytest tests/test_food_integration.py`
       都是綠的。
 
 ## Steps
@@ -96,3 +96,28 @@ uv run ruff check tests                                          # All checks pa
 
 Definition of done 的「同一個資料庫連跑兩次」要有 Postgres 才能打勾，所以狀態先放 `review`；
 下一個有 `RUN_INTEGRATION_TESTS=1` 環境的人照「How to verify」跑兩次，綠了就 `done`。
+
+### 2026-10-03 same-database acceptance completed
+
+- Fresh task-only archive gate PASS across main4f8c3817, the sole own PR1175,
+  33 remote heads, 430 local branches and 28 registered worktrees. No active
+  duplicate closure or dirty task copy. PR563 merged14ce467d owns the original
+  review branch; the two repaired fixture functions are still AST-identical.
+  Only this task was reclaimed for acceptance; no API source was changed.
+- Isolated, task-owned PostgreSQL18.3 / pg_trgm1.6 was privately extracted under
+  WSL without a system installation. No repository .env was loaded by the Windows
+  Python launcher; only the explicit loopback database was available to the test.
+- Full migrations passed to0122_video_anime_production. The entire food module
+  then passed twice:8passed/0skipped,53.61s/46.78s, both exit0. No database reset,
+  recreation or migration occurred between runs. Database name, OID16384,
+  cluster7692402131696837186, revision and postmaster start stayed identical.
+- Food test SHA256 before/after:
+  429bfa6fe34a8a84200a7787f1b5db416b0b715fa9a035a55d41bf024f2152ea.
+  Private PG stop passed; both Windows/Linux55437 listeners and its PID file
+  were absent afterward. This verifies localPG18.3, not CI's PG17 image.
+- Receipt SHA256:d5f237d39eb6553e7ccb74289052011dcdf0d090dec86b63c8ccab58c4853926.
+  Evidence:C:/Users/x8120/.codex/tmp/fixed-email-acceptance-20261003/fixed-email-20261003-319b084a/.
+  Independent gate/receipt review:
+  C:/Users/x8120/.codex/tmp/fixed-email-archive-gate-20261003/archive-gate-verdict.json.
+- Archived local acceptance in draft PR1175; no production connection, deployment
+  or publication was performed.
