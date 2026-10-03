@@ -44,6 +44,7 @@ scope:
   - apps/api/app/guides/content/ai-term-computer-use.json
   - apps/web/public/guides/ai-term-computer-use
   - docs/ai-terms-series/integrate.py
+  - docs/ai-terms-series/summaries.py
   - docs/ai-terms-series/aliases.json
   - apps/api/app/guides/content/ai-term-prompt-engineering.json
   - apps/api/app/guides/content/ai-term-context-engineering.json
