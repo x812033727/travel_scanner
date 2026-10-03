@@ -8,6 +8,7 @@
     "ai-terms"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -18,9 +19,23 @@
         "src": "/guides/ai-term-reinforcement-learning/hero.jpg",
         "alt": "格子地面上一條橘色虛線從藍色圓點出發，避開打叉的紅色陷阱格，經過代表獎勵的圓幣，通往右上角的旗子",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "強化學習是機器學習的一種做法：代理在環境裡採取動作，依環境回給的獎勵數字調整做法，靠嘗試找出長期拿最多獎勵的動作。",
+            "和監督式學習不同，獎勵只說結果好壞，不說哪個動作才對，而且常延遲出現；代理要最大化的是往後所有獎勵加總的回報，不是下一步的獎勵。",
+            "代理還得在利用過去效果好的動作與探索沒選過的動作之間取捨，只做其中一種都會失敗。",
+            "代理只會最大化給它的數字；Sutton 與 Barto 建議獎勵給真正的目標而非子目標，否則代理可能拿高分卻沒達成目標。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -46,8 +61,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "五個基本詞：狀態、動作、獎勵、策略、回報"
+          "text": "五個基本詞：狀態、動作、獎勵、策略、回報",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -74,8 +89,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "示例：在格子世界裡找出口"
+          "text": "示例：在格子世界裡找出口",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -95,12 +110,18 @@
           "alt": "4 欄 3 列的格子地圖，左下起點、右上出口、中間偏右一格陷阱，綠線是 5 步的最短路線，紅線在第 3 步踩進陷阱，右側列出獎勵規則與三種路線的回報",
           "width": 1600,
           "height": 900,
-          "caption": "示例：同一張地圖，不同走法拿到不同回報；數字是教學設定，未實測。"
+          "caption": "示例：同一張地圖，不同走法拿到不同回報；數字是教學設定，未實測。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "和監督式、非監督式學習差在哪"
+          "text": "和監督式、非監督式學習差在哪",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -138,8 +159,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "探索與利用：先拿分，還是先試新路"
+          "text": "探索與利用：先拿分，還是先試新路",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -151,8 +172,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "用在語言模型：偏好獎勵與可驗證獎勵"
+          "text": "用在語言模型：偏好獎勵與可驗證獎勵",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -198,8 +219,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "獎勵沒設計好，就會被鑽漏洞"
+          "text": "獎勵沒設計好，就會被鑽漏洞",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
