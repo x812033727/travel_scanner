@@ -79,6 +79,7 @@ INDEX_ROWS = [
     (("ai-term-local-inference", "ai-term-kv-cache", "ai-term-rate-limit"),
      ["想在自己電腦跑模型，或 API 一直回 429", "本機推論、KV 快取、速率限制"]),
 ]
+DATE_ANCHOR = "首輪資料整理截止日"
 INDEX_DATE_SENTENCES = [
     ("batch-02", "2026 年 10 月起補進第二批 14 個詞。"),
     ("batch-03", "同月再補第三批 10 個詞。"),
@@ -153,11 +154,17 @@ def integrate_index() -> None:
     pack = json.loads(path.read_text(encoding="utf-8"))
     blocks = pack["locales"]["zh-TW"]["blocks"]
 
+    # The paragraph that dates the series; found by its words, not its position, because a
+    # summary block now sits in front of it and anything else could be added later.
+    paragraphs = [b for b in blocks if b["type"] == "paragraph"]
+    dated = next(b for b in paragraphs if DATE_ANCHOR in b["text"])
     for batch, sentence in INDEX_DATE_SENTENCES:
-        if (SERIES / batch / "catalogue.json").is_file() and sentence not in blocks[1]["text"]:
-            if all(ingested(t["slug"]) for t in json.loads(
-                    (SERIES / batch / "catalogue.json").read_text(encoding="utf-8"))["terms"]):
-                blocks[1]["text"] += sentence
+        catalogue = SERIES / batch / "catalogue.json"
+        if not catalogue.is_file() or any(sentence in b["text"] for b in paragraphs):
+            continue
+        terms = json.loads(catalogue.read_text(encoding="utf-8"))["terms"]
+        if all(ingested(t["slug"]) for t in terms):
+            dated["text"] += sentence
     table = next(b for b in blocks if b["type"] == "table")
     for needs, row in INDEX_ROWS:
         if all(ingested(s) for s in needs) and row not in table["rows"]:

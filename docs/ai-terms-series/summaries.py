@@ -64,6 +64,17 @@ def article_text(slug: str) -> str:
     return "\n".join(parts)
 
 
+QUOTE_SPLIT = re.compile(r"[／/｜|…→「」＋+]+|\.\.\.|（callout）")
+#: Where a quote says it comes from, before the quoted words: 「表格列：」, 「callout 標題」,
+#: 「paragraph 4：」, 「另見：」 and the like. Stripped from the front of each part.
+LABEL = re.compile(
+    r"^[\s；;、，,。]*(?:\s*(?:（[^）]{1,12}）|表格列?|callout\s*\d*|標題|內文|小標|另見|列|欄|"
+    r"table\s*\d+[^：:]*|(?:rich_)?paragraph\s*\d+|list\s*\d+|h2)\s*[：:]?)+\s*"
+)
+#: Four characters is the shortest CJK phrase that still says something checkable.
+MIN_TESTED = 4
+
+
 def squash(text: str) -> str:
     return re.sub(r"[\s「」『』\"'“”‘’（）()，,。、；;：:！!？?…—-]", "", text)
 
@@ -98,13 +109,21 @@ def check(rows: list[dict]) -> int:
             if not item.endswith("。"):
                 print(f"{slug}: does not end with 。: 「{item}」")
                 problems += 1
-        for quote in row.get("support", []):
-            # A quote may join body sentences with 「／」, 「｜」 or 「…」, and may label a
-            # table cell or callout title it comes from; each quoted part must occur.
-            for part in re.split(r"[／/｜|…→「」]+|\.\.\.|（callout）|callout|表格列?|標題", quote):
-                part = re.sub(r"^(表格|callout|標題|小標)[^：:]*[：:]", "", part.strip())
-                part = squash(part)
-                if len(part) >= 8 and part not in body:
+        support = row.get("support") or []
+        if len(support) < len(items):
+            print(f"{slug}: {len(items)} sentences but {len(support)} support quotes")
+            problems += 1
+        for quote in support:
+            # A quote may join body sentences with 「／」, 「｜」 or 「…」, and may label where
+            # it comes from (a table cell, a callout, 「paragraph 4：」, 「另見：」); each quoted
+            # part must occur, and a quote must have at least one part long enough to test.
+            parts = [squash(LABEL.sub("", part.strip())) for part in QUOTE_SPLIT.split(quote)]
+            tested = [part for part in parts if len(part) >= MIN_TESTED]
+            if not tested:
+                print(f"{slug}: support quote too fragmented to test: 「{quote[:60]}」")
+                problems += 1
+            for part in tested:
+                if part not in body:
                     print(f"{slug}: support not found in the article: 「{part[:60]}」")
                     problems += 1
     print(f"{len(rows)} summaries, {problems} problems")
@@ -115,10 +134,15 @@ def batch(rows: list[dict]) -> dict:
     return {row["slug"]: {"zh-TW": {"summary": row["summary"]}} for row in rows}
 
 
+USAGE = "usage: summaries.py check|batch RESULT.json..."
+
 if __name__ == "__main__":
+    if len(sys.argv) < 3 or sys.argv[1] not in {"check", "batch"}:
+        sys.exit(USAGE)
     command, files = sys.argv[1], sys.argv[2:]
     rows = flatten(files)
+    if not rows:
+        sys.exit(f"no summaries found in {files}: pass workflow results, not a batch file")
     if command == "check":
         sys.exit(1 if check(rows) else 0)
-    if command == "batch":
-        print(json.dumps(batch(rows), ensure_ascii=False, indent=2))
+    print(json.dumps(batch(rows), ensure_ascii=False, indent=2))
