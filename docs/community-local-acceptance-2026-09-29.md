@@ -188,4 +188,60 @@ exist in the five catalogs. The private independent JSON receipt has SHA-256
 The complete web TypeScript check also passed (exit 0) on actual primary-runtime
 Node v24.19.0, with the spec hash identical before and after the check. Its private
 receipt SHA-256 is `4e8c93f0beb631c91e5d373ba36b86370f8e63094a3886650655ce05dfb405de`.
-The 30-case browser result remains pending.
+This prepared version's first browser result is recorded below; it did not pass.
+
+### First 30-case execution and administrator locale correction
+
+At exact head `641e2576a2212550db384cfe5b9d3a3dc98b0b8f`,
+[full-stack job 111212893808](https://github.com/x812033727/travel_scanner/actions/runs/37126555983/job/111212893808)
+ran all 30 cases with two workers: **12 passed, 18 failed, zero skipped**.
+All ten account-safety cases and both Traditional Chinese pet journeys passed.
+This failed matrix is distinct from that job's other successful service and
+administrator steps; later assertions in interrupted journeys remain unexecuted.
+
+Ten publication journeys failed at the report dialog's backward Tab boundary:
+the close button was focused, but Shift+Tab did not focus the enabled Submit
+button. The native dialog had no explicit boundary handler. The trace does not
+capture `document.activeElement`, so it does not prove a specific final focus
+destination. This is tracked as a shared-dialog product correction. The matrix
+keeps its original keyboard expectations; entering a report reason, changing
+the expected focus, skipping or extending the timeout would not resolve it.
+
+The other eight failures were the non-Traditional-Chinese pet administrator
+fixtures. Each trace shows the requested locale changing to
+`/zh-TW/admin/pet-friendly`: the shared administrator's saved locale legitimately
+overrode the initial route, while the test still searched for its requested
+language's review button. The exact pending candidate was present in the
+Traditional Chinese administration page.
+
+Only that isolated administrator browser context now records an explicit
+session locale choice before navigation, using the same
+`travel-locale-picked=1` session-storage marker as the public language picker.
+The script is restricted to the loopback site origin. It does not change
+authentication or PATCH the shared administrator's preference, which would race
+parallel cases. Before using translated controls, the test additionally asserts
+the exact administrator URL and document language. Removing these additions
+restores every byte of the previous spec, preserving all 37 original non-UI
+assertions, the keyboard checks, quota use and timeout settings.
+
+The private diagnosis is `community-real-matrix-20261003/ci-641e-diagnosis.json`,
+SHA-256 `f7cff9e87e7c38fe1c128212592d15daed375d21561e48e56dc0b62dbb275126`.
+It binds all 18 failure traces and the unchanged source at the failing head.
+One artifact download was shared with the existing job log; no production,
+provider or additional login was used for diagnosis. The corrected matrix still
+requires a fresh isolated-stack execution, including the shared-dialog fix;
+the used stack must not be reused to evade or exhaust its reset quota.
+
+For the corrected spec SHA-256
+`f5c0fd98be387ed7bb49018d9d022cd8977b5e39fb4932b2beddc014c1a3bc06`,
+scoped ESLint passed (exit 0) and Playwright discovery passed (exit 0, 30 cases)
+on captured bundled Node v24.21.0. The spec hash was identical before and after
+both commands; scoped `git diff --check` passed. Actual argv, runtime, times,
+logs and the byte-preservation proof are recorded privately in
+`community-real-matrix-20261003/locale-fix-checks.json`. The updated full web
+typecheck subsequently passed on 2026-10-03 at 14:02:37 UTC, exit 0, with all
+three UI/test/spec hashes unchanged. The owned TypeScript compiler used bundled
+primary Node v24.19.0; the npm command used the installed npm shim. Private
+receipt `task-continuation-20261003/ui-locale-typecheck-20261003T140129996Z.json`
+has SHA-256 `19246e133ad7e4cbbff58efb52ace2ecf3cabed31ceb026163660ce9ad8d8a5e`.
+These checks do not execute the browser; the corrected exact-head CI is pending.

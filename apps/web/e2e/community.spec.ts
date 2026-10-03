@@ -290,6 +290,12 @@ test(`${locale}: reviewed pet rules filter conservatively and require confirmati
   const adminContext = await browser.newContext({ baseURL, storageState: await communityAdmin.storageState(), viewport: info.project.use.viewport,
     isMobile: info.project.use.isMobile, deviceScaleFactor: info.project.use.deviceScaleFactor,
     hasTouch: info.project.use.hasTouch, userAgent: info.project.use.userAgent, locale, colorScheme });
+  // Match LanguageSwitcher's explicit session choice: HeaderSessionProvider must
+  // not replace this case's locale with the shared administrator's stored one.
+  // Keep that preference unchanged so parallel cases cannot overwrite each other.
+  await adminContext.addInitScript((origin) => {
+    if (window.location.origin === origin) window.sessionStorage.setItem("travel-locale-picked", "1");
+  }, siteOrigin);
   const admin = await adminContext.newPage();
   admin.setDefaultTimeout(20_000);
   admin.setDefaultNavigationTimeout(45_000);
@@ -311,6 +317,8 @@ test(`${locale}: reviewed pet rules filter conservatively and require confirmati
     expect((await page.request.get(`/api/travel/pet-friendly/places/${candidate.id}`)).status()).toBe(404);
 
     await admin.goto(`/${locale}/admin/pet-friendly`);
+    await expect(admin).toHaveURL(new URL(`/${locale}/admin/pet-friendly`, siteOrigin).href);
+    await expect(admin.locator("html")).toHaveAttribute("lang", locale);
     const candidateCard = admin.getByRole("article").filter({ has: admin.getByRole("heading", { name: `${name} · Taipei`, exact: true }) });
     await candidateCard.getByRole("button", { name: copy.reviewRules, exact: true }).click();
     const review = admin.getByRole("dialog", { name: copy.reviewRules });

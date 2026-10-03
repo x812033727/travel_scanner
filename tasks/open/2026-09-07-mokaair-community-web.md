@@ -72,13 +72,46 @@ Scoped ESLint passed (exit 0) and Playwright discovery found exactly 30 cases
 with the original 37 non-UI assertions retained and 77 copy keys checked in all
 five locales: private `community-real-matrix-20261003/independent-semantic-review.json`,
 SHA-256 `0f4829f87bfef6ac12bc08c00d7d626b963398307d8252faabcd243b08ed6ba7`.
-Spec SHA-256 is `a2bfcf534bebe1a9e18e19c2eaa13fe713792fea2d5488fdcc9631c656af00fb`.
+Prepared pre-CI spec SHA-256 was
+`a2bfcf534bebe1a9e18e19c2eaa13fe713792fea2d5488fdcc9631c656af00fb`.
 The complete web TypeScript check subsequently passed on actual primary-runtime
 Node v24.19.0 (exit 0), with this exact spec hash unchanged before and after.
 Receipt SHA-256 `4e8c93f0beb631c91e5d373ba36b86370f8e63094a3886650655ce05dfb405de`;
 private `task-continuation-20261003/community-final-typecheck.json`.
-Actual 30-case browser execution remains pending; no local companion stack,
-paid request, production write or publication is implied by preparation checks.
+This prepared version's first 30-case browser result is recorded immediately
+below; it did not pass. No local companion stack, paid request, production write
+or publication is implied by preparation checks.
+
+2026-10-03 first matrix CI: head `641e2576a2212550db384cfe5b9d3a3dc98b0b8f`,
+run `37126555983`, full-stack job `111212893808`: 12 passed, 18 failed, zero
+skipped. Ten failures expose the shared native report dialog's missing Tab
+boundary behavior; the original keyboard expectations remain unchanged and a
+separate product correction is required. Eight non-zh-TW pet-review failures
+show the shared administrator's stored locale redirecting to zh-TW, while the
+test searched for another language's label. This spec now records an explicit
+locale choice only in its isolated administrator browser session, using the
+public language picker's `travel-locale-picked=1` marker, restricted to the
+loopback site origin, and asserts exact URL plus HTML language before controls.
+No shared account preference, authentication, quota or timeout is changed.
+Removing the additions restores every previous spec byte, including all 37
+original non-UI assertions and the keyboard assertions. Private diagnosis:
+`community-real-matrix-20261003/ci-641e-diagnosis.json`, SHA-256
+`f7cff9e87e7c38fe1c128212592d15daed375d21561e48e56dc0b62dbb275126`.
+The real-service matrix step remains unchecked pending a corrected exact-head
+run against a fresh disposable stack; the first failure is not called a pass.
+The locale-corrected spec SHA-256 is
+`f5c0fd98be387ed7bb49018d9d022cd8977b5e39fb4932b2beddc014c1a3bc06`.
+Scoped ESLint and Playwright discovery (30 cases) both returned exit 0 on
+captured Node v24.21.0; the source hash stayed unchanged. Scoped
+`git diff --check` also passed. Private `community-real-matrix-20261003/locale-fix-checks.json`
+records actual argv, times and byte-preservation proof. The updated full web
+typecheck passed at 2026-10-03 14:02:37 UTC (exit 0), with all three UI/test/spec
+hashes unchanged; the owned compiler used primary Node v24.19.0 and npm used
+the installed shim. Private receipt SHA-256
+`19246e133ad7e4cbbff58efb52ace2ecf3cabed31ceb026163660ce9ad8d8a5e`.
+Independent keyboard/locale source review passed, receipt SHA-256
+`95b4bd9244e120eeffc5e7a7f9390ce4b700dde44ad5edd444de6ece09a92646`.
+Corrected exact-head browser execution remains required; no quota or deadline was raised.
 
 Checkpoint: rebased onto main 54009ba. CI 34130887751 passed Web components,
 TypeScript, lint, five-locale checks, the default production build and isolated

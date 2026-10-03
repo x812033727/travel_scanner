@@ -197,3 +197,15 @@ New runtime SHA-256 is
 `625c01c131a9b54265fc7c8141f4236ddaafdda72f4d07f89bdcea7eb08d093e`;
 the first CI's old runtime hash and failures remain preserved. New-head complete
 CI and actual service acceptance remain required.
+
+The first full-stack job has now completed. At PR head `641e2576...`, actual
+checkout/GITHUB_SHA `61d41868ff88f88f3e86e76578939b0ec84c8382` ran all six
+recovery cases: 6 passed, zero failures/skips, 391.00 seconds. Its sanitized
+receipt confirms owned processes stopped, shared services were not stopped and
+capacity acceptance was false. It binds the old runtime `5969aa1a...`, so the new
+`625c01c1...` candidate still requires its own CI. The wider job failed because
+the separate community browser matrix had 12 passed / 18 failed; those failures
+are being repaired and this foundation ticket remains review.
+Private canonical receipt SHA-256
+`2f6b3b589cadaebf0dab9a1d388197f7b0a8ae4289fb77739ae062545daa8a81`.
+Immutable [first full-stack job](https://github.com/x812033727/travel_scanner/actions/runs/37126555983/job/111212893808).
