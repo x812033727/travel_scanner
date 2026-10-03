@@ -115,6 +115,6 @@
     "Zero-shot CoT"
   ],
   "existing_overlap": "No existing article covers chain-of-thought prompting or faithfulness. ai-reasoning-models-explained touches thinking summaries (Google docs) and says summaries do not replace answer checking; ai-term-few-shot-prompting covers examples without steps; ai-term-test-time-compute covers sequential and parallel compute. This article links to all three and keeps its own angle: the two 2022 forms, what the papers measured in their own settings, official prompting advice for reasoning models, and the faithfulness research.",
-  "running_text_characters": 2499,
+  "running_text_characters": 2635,
   "notes": "Count follows pack_ingest._body_length (paragraphs, rich_paragraph text including article link text, list items, table cells, callout title and text; not headings, caption, sources); it is 2473 without link text. Dry-run ingest passes with one warning (no_summary), which none of the 76 published ai-term-* articles avoids either. Examples (activity seats, 3 x 24 - 50 and the checks) are illustrative, marked 未實測, and were not run on any model. No model names, prices, cutoffs or leaderboard scores in the prose; paper settings are described by scale or by vendor only. Diagram numbers (25, 39, 6, 2025, 2026) all appear in the prose or table caption. Render note: render_svg in this environment hides the bottom 88 px (headless window chrome); checked again with a 1000 px tall window."
 }

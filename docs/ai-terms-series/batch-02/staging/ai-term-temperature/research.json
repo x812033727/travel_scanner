@@ -112,8 +112,13 @@
       ]
     }
   ],
-  "aliases": ["temperature", "sampling temperature", "取樣溫度", "溫度參數"],
+  "aliases": [
+    "temperature",
+    "sampling temperature",
+    "取樣溫度",
+    "溫度參數"
+  ],
   "existing_overlap": "ai-glossary-50-terms 已有一句話定義（取樣參數、不是正確率旋鈕、0 不保證一致）；本篇展開機制、top-p 與 top-k、失敗型態、確定性限制與不開放調整的情況，並連到 ai-term-token、what-is-a-large-language-model、ai-hallucination-fact-check、ai-term-structured-outputs 與 ai-terms-index。",
-  "running_text_characters": 2734,
+  "running_text_characters": 2737,
   "notes": "字數為 pack_ingest 的 _body_length（含 rich_paragraph 內連結文字）；不含連結文字為 2681（第二輪查核後）。早餐機率、旅客留言與重跑 5 次都是原創示例，未實測任何模型。圖上數字皆出現在正文。正文不列型號、價格或排行榜；Holtzman 論文的設定以參數量（約 7.6 億）描述。與指派不一致處：只有 OpenAI 明寫不建議同時調 temperature 與 top_p；Google 稱溫度 0 是確定的而 Anthropic 稱不完全確定（層次不同，正文並列）；Anthropic、OpenAI、Google 的現行文件皆寫明部分新模型不開放或不建議調整。Thinking Machines 的 nondeterminism 技術文章讀過但未收錄（非論文或官方文件）。細節見 notes.md。"
 }

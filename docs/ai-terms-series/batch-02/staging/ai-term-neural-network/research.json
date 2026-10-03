@@ -95,8 +95,15 @@
       ]
     }
   ],
-  "aliases": ["Neural Network", "NN", "ANN", "人工神經網路", "類神經網路", "神經網絡"],
+  "aliases": [
+    "Neural Network",
+    "NN",
+    "ANN",
+    "人工神經網路",
+    "類神經網路",
+    "神經網絡"
+  ],
   "existing_overlap": "ai-term-deep-learning、ai-term-model-parameters、ai-term-machine-learning 已各自提到隱藏層、權重與訓練，但用的是照片分類、單一算式與備料預測的例子；本篇的新增是單元與激活函數、感知器到多層網路、雙開關手算與一步更新、參數數不等於神經元數。以站內連結分流，不重複它們的例子。",
-  "running_text_characters": 2500,
+  "running_text_characters": 2707,
   "notes": "running_text_characters 依 pack_ingest._body_length（含 3 個文內連結的連結文字 21 字；不含連結文字為 2,479）。示例（雙開關燈、一步權重更新、100 個隱藏神經元的參數數）全為手算的教學設定，已用 python3 逐項驗算，未訓練任何網路，也沒有任何模型名、價格、截止日期或模型參數量。來源分歧已並列：Google 術語表要求至少一個隱藏層而感知器中間層連線固定；術語表說神經元模仿腦中神經元，Rosenblatt 說類比但不糾纏於生物條件。Cybenko 只讀摘要，Rosenblatt 與 Rumelhart 等人、LeCun 等人的全文是讀作者／課程網站的副本或 Wayback 快照（見 access）。diagram-1.svg 與 hero.svg 為原創向量圖。"
 }

@@ -87,6 +87,6 @@
     "JSON Schema 輸出"
   ],
   "existing_overlap": "沒有同題專文。ai-glossary-50-terms 只在工具呼叫的一句定義裡提到結構化參數；ai-workflow-structured-handoff（OpenAI/Anthropic/Google 欄位位置與 jsonschema 驗證的實作教學）與 gemini-api-files-structured-output（Gemini 讀 PDF 轉 JSON）是實作篇，本篇寫概念、三層保證與各家限制，並以 article 連結指向它們，不重複程式碼；工具呼叫與提示詞串接各有專文，只寫分工。",
-  "running_text_characters": 2543,
+  "running_text_characters": 2552,
   "notes": "running_text_characters 依 pack_ingest._body_length 實算（含 rich_paragraph 的連結文字，不含 heading、圖說、程式區塊與來源）；扣掉連結文字為 2454。二審（verify-2.md）為可讀性刪去各家細節（OpenAI 兩種 API 的截斷欄位名、數字上下限與微調模型但書、Anthropic 的 citations 不相容與合用說明、Google 的關鍵字清單），正文由 2809 降到 2543，結構不變。示例（王小美報名信、schema、預期輸出）全為原創虛構，未呼叫任何 API，正文與程式區塊標籤皆標示示例／未實測。「三層」是本文的教學分層，不是供應商用語。不列模型型號、價格、截止日。Google 該頁沒寫拒答與截斷訊號，正文如實寫「這一頁沒寫」。dry-run 通過，只有 no_summary 警告。"
 }

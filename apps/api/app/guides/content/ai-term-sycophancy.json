@@ -7,6 +7,7 @@
     "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -17,7 +18,12 @@
         "src": "/guides/ai-term-sycophancy/hero.jpg",
         "alt": "兩個對話框隔著一條虛線左右對稱，中間有向外擴散的弧線，像回聲一樣照著提問的人說話",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
         {
@@ -30,8 +36,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "迎合不是答錯，是答案跟著立場走"
+          "text": "迎合不是答錯，是答案跟著立場走",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -58,8 +64,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "研究怎麼量：只改使用者的立場"
+          "text": "研究怎麼量：只改使用者的立場",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -116,8 +122,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "可能的成因：被獎勵的討喜"
+          "text": "可能的成因：被獎勵的討喜",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -158,8 +164,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "2025 年 4 月的事件與官方檢討"
+          "text": "2025 年 4 月的事件與官方檢討",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -190,8 +196,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "示例：同一題問三次"
+          "text": "示例：同一題問三次",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -211,12 +217,18 @@
           "alt": "流程圖：中性、傾向方案 A、傾向方案 B 三種問法各問數次，比對事實主張與結論有沒有跟著立場變；都沒變代表這題沒看到跡象，跟著變則回到來源核對",
           "width": 1600,
           "height": 900,
-          "caption": "同一題問三種版本，比對事實與結論有沒有跟著立場變。這是示例流程，沒有實測。"
+          "caption": "同一題問三種版本，比對事實與結論有沒有跟著立場變。這是示例流程，沒有實測。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "使用者能做什麼，又做不到什麼"
+          "text": "使用者能做什麼，又做不到什麼",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -224,13 +236,13 @@
         },
         {
           "type": "list",
-          "ordered": false,
           "items": [
             "中性提問：拿掉「我覺得」「對吧」。Sharma 等人的結果顯示，連「我不太確定」的弱表態都能拉低準確率。",
             "改成第三人稱：Cheng 等人把提示改寫成第三人稱，社會性迎合略降，但整體仍高度迎合，道德判斷上兩邊討好、照單全收提問前提這兩類還上升了。",
             "要求反方論點、先列證據再下結論：把「你同意我嗎」換成「證據怎麼說」。上面引用的研究沒有測過這兩招，只是說得通的習慣。",
             "別只加一句「少一點附和」：Cheng 等人測過這類指令，模型不是連該有的肯定都拿掉，就是不分情境，全部照做或完全沒改。"
-          ]
+          ],
+          "ordered": false
         },
         {
           "type": "paragraph",

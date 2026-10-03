@@ -103,6 +103,6 @@
     "GUI agent"
   ],
   "existing_overlap": "claude-computer-use-explained 是 Claude 產品篇（方案、平台、設定步驟、權限模式）；本篇只講通用機制、評測與風險，第一段明寫並連過去，不重複產品細節。ai-glossary-50-terms 有一句話定義。",
-  "running_text_characters": 2726,
+  "running_text_characters": 2738,
   "notes": "字數依 pack_ingest._body_length（含 rich_paragraph 內站內連結文字）撰稿時為 2500，第一輪查核後 2541，第二輪查核後 2726（排除連結文字 2647）。示例為原創、標明未實測。不寫分數、模型名、價格、方案、地區。sources 的定義分歧：Anthropic 以電腦操作（截圖座標）與瀏覽器工具（結構加截圖）分工；OpenAI 把瀏覽器與桌面都稱 computer use，且接法含 Playwright；文章據此寫成無單一標準定義，與 brief 把電腦操作對立於 DOM 型瀏覽器自動化的二分略有出入，以來源為準。OSWorld 專案頁與 arXiv 對 2.0 版某模型的分數寫法不同（約 14% 與約 13%），文章未引用分數。 第二輪查核：「works through screenshots and coordinates alone」出自 Anthropic 瀏覽器工具頁，不在電腦操作頁；表格與正文改寫成截圖為主、有些設定另給無障礙樹（OSWorld）或 DOM（OpenAI 程式碼執行）；迴圈起點改寫成從交出任務開始，第一張截圖可由模型要求或由程式附上。"
 }

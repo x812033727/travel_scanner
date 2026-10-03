@@ -135,6 +135,6 @@
     "effective cutoff"
   ],
   "existing_overlap": "ai-glossary-50-terms 只有一句話定義（供應商用來說明訓練知識時間範圍的標示、不保證之前所有事都知道）；本篇展開為專文。與 ai-hallucination-fact-check 的分工：本篇只區分截止日、過期資訊與幻覺，核對方法連過去；與 ai-term-retrieval-augmented-generation、ai-term-grounding 的分工：本篇只寫它們補截止日缺口時各自的失敗點。",
-  "running_text_characters": 2722,
+  "running_text_characters": 2718,
   "notes": "字數以 pack_ingest._body_length 計：2,722（含 rich_paragraph 連結文字 69 字；不含為 2,653）。第二輪查核（2026-10-03）後：供應商標示一節改寫成通則（名稱、定義、位置各家不同，有些模型頁不列，找官方文件），不再寫哪幾個 Gemini 頁有或沒有欄位；Anthropic 的定義句改為歸給 Transparency Hub 的「部分模型條目」，因為最新幾則條目沒有 Knowledge Cutoff Date 段落；Google 來源由已標示棄用的 Gemini 3 指南換成 What's new in Gemini 3.5 Flash；Daily Oracle 寫明是預測題；LLMLagBench 在正文與 callout 都標明是尚未經同儕審查的預印本，「部分截止點」改由 Cheng 等人（COLM 2024）的有效截止日說明；「不重新訓練」改成「不更動模型本身（例如重新訓練或微調）」，因為知識編輯（ROME，NeurIPS 2022）不重新訓練也能改權重。未寫任何模型名、截止日期、價格；示範案例為虛構、未實測。diagram-1.svg 唯一數字是頁尾版權年份。"
 }
