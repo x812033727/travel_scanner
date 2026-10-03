@@ -19,7 +19,7 @@ import { writeAnimeActs } from "./anime-write.mjs";
 import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { craftChecks } from "../core/craft.mjs";
-import { EXPLAINER_PRESET, hasCast, illustrated, SLIDES_PRESET } from "../core/drama.mjs";
+import { EXPLAINER_PRESET, hasCast, illustrated, slidesPresetFor } from "../core/drama.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
@@ -352,10 +352,11 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     // asks for burn-in. Explicit legacy video.json files remain readable by assemble.
     settled.subtitles = { ...(video.subtitles ?? {}), burn_in: false };
   } else if (illustrated(video)) {
-    // Illustrated slides (docs/videos/ILLUSTRATED.md): the channel's look unless the writer named
-    // one, and the owner's licensed music file and sound-effect set from the settings tab's
-    // slides object (migration 0114; a site from before it sends none) when the writer named none.
-    settled.look = { preset: SLIDES_PRESET, ...(video.look ?? {}) };
+    // Illustrated slides (docs/videos/ILLUSTRATED.md): one of the channel's print looks by the
+    // slug unless the writer named one, and the owner's licensed music file and sound-effect set
+    // from the settings tab's slides object (migration 0114; a site from before it sends none)
+    // when the writer named none.
+    settled.look = { preset: slidesPresetFor(slug), ...(video.look ?? {}) };
     const slides = settings.slides ?? {};
     if (!settled.music && slides.slides_music_track) settled.music = { track: slides.slides_music_track };
     if (!settled.sfx && slides.slides_sfx_set) settled.sfx = { set: slides.slides_sfx_set };

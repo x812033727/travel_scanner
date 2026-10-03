@@ -105,9 +105,17 @@ platform, a workshop, a classroom, a harbour, a rooftop) with its own props, and
 object is in more than a third of the shots (lint counts). Metaphors come from the viewer's
 everyday world, not from the tech world: no laptops, screens, robots, circuits, brains, clouds,
 light bulbs, podiums, hourglasses, speech bubbles or glowing anything.
-The video carries "look": {"preset": "tech-story"} when it has shots (the worker adds it when you
-forget), "format": "slides", and "subtitles": {"burn_in": false}: the cards and the CC carry the
-words, the pictures carry none.
+Pictures live in a day, not in one night: at most half of them at night or under a lamp (lint
+counts); give the chapters a morning, a noon, rain, an overcast afternoon, a crowded daylight
+place. In every chapter, at least one picture has two or three people doing something to each
+other (haggling, handing over, waiting in a queue, teaching, arguing), and at least one is a
+close-up of a thing in someone's hands; once in a while a picture has a small joke in it (a cat
+where it should not be, the one person facing the wrong way).
+The video carries "look" when it has shots: leave it out and the worker picks one of the
+channel's print looks for this video (riso-teal, riso-navy, riso-forest, riso-plum: the same
+two-ink risograph print in another pair of inks; linocut-teal: a two-colour linocut), so each
+video is its own print run; name one only when the topic calls for its mood. "format": "slides"
+and "subtitles": {"burn_in": false}: the cards and the CC carry the words, the pictures carry none.
 Chapter names say what the part is about, the first and the last included (never 開場 or 結論).
 Slides hold keywords, not sentences: titles about 16 characters, items about 20. **文字** marks the
 accent colour; \\n breaks a line.
@@ -175,7 +183,8 @@ Return {"video": <video.json object>, "claims": "claims.md", "lexicon_additions"
 
 video.json: follow "minimal" and "showcase" for every field. slug is "slug"; voice is "voice";
 source_guide is "source_guide" or omitted; youtube.video_id null; sources lists every page a fact
-rests on as {title, url, checked_on: "today"}; no assets; "look": {"preset": "tech-story"};
+rests on as {title, url, checked_on: "today"}; no assets; "look" left out unless one of the
+channel's print looks suits the topic (then {"preset": "riso-teal"} or another named below);
 "thumbnail": {template: "thumb", data: {headline: at most 2 lines of ≤ 10 characters (\n between
 them, **one word** stressed), tag: the topic in ≤ 6 characters, shot: <the most striking shot id>}}.
 - Line ids: take them from "line_ids" in order; never invent one.

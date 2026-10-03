@@ -594,15 +594,35 @@ test("a drama's status walks the media steps in order, each bound to its hashes"
 });
 
 test("illustrated slides are drawn as a printmaker's brief and lint keeps their pictures varied (docs/videos/ILLUSTRATED.md §畫面不像 AI)", async () => {
-  const { PRESETS, SLIDES_PRESET, cameraMove, pictureVarietyProblems, shotProblems, SAME_MOVE_RUN_MAX, MOTIF_MIN_SHOTS, MOTIF_SHARE_WARN } = await import("./drama.mjs");
+  const { PRESETS, SLIDES_PRESET, SLIDES_PRESETS, PRESET_NAMES, slidesPresetFor, cameraMove, pictureVarietyProblems, shotProblems, SAME_MOVE_RUN_MAX, MOTIF_MIN_SHOTS, MOTIF_SHARE_WARN } = await import("./drama.mjs");
   const { estimateTimeline } = await import("./timeline.mjs");
-  const preset = PRESETS[SLIDES_PRESET];
+  // The print looks (docs/videos/ILLUSTRATED.md §第二輪): four pairs of risograph inks and a
+  // linocut, each a printmaker's brief with the subject where a Short's 9:16 crop keeps it, no
+  // "full-bleed" (the model paints a margin for it) and a negative that refuses borders instead.
+  assert.deepEqual(SLIDES_PRESETS, ["riso-teal", "riso-navy", "riso-forest", "riso-plum", "linocut-teal"]);
+  assert.equal(SLIDES_PRESET, "riso-teal");
+  for (const name of SLIDES_PRESETS) {
+    const preset = PRESETS[name];
+    assert.ok(PRESET_NAMES.includes(name), name);
+    assert.match(preset.style, name.startsWith("riso") ? /^risograph print illustration on warm cream paper: .* ink and .* ink, overprinted where they meet, visible halftone dot grain/ : /^two-colour linocut relief print on cream paper/);
+    assert.match(preset.style, /small simple people with (?:carved )?dot eyes or seen from behind/);
+    assert.match(preset.style, /one clear focal point in the centre third of the frame/);
+    assert.match(preset.style, /the picture runs past all four edges of the frame/);
+    assert.doesNotMatch(preset.style, /full[- ]bleed|edge to edge|no (?:ink )?outlines/);
+    for (const word of ["glossy", "faceless mannequin", "mirror symmetry", "paper border", "white margin", "pillarbox", "blurred side bars", "text", "logo", "real person's likeness", "mascot", "extra fingers"]) assert.ok(preset.negative.includes(word), `${name}: ${word}`);
+    assert.ok(preset.style.length <= 600 && preset.negative.length <= 400, `${name}: ${preset.style.length}/${preset.negative.length}`);
+    assert.doesNotMatch(`${preset.style} ${preset.negative}`, /off-centre|centred layout/);
+  }
+  assert.equal(new Set(SLIDES_PRESETS.map((name) => PRESETS[name].style)).size, SLIDES_PRESETS.length, "every look is its own inks");
+  // The look of a video with none is one of the rotation, by its slug: stable for a video, spread across videos.
+  assert.equal(slidesPresetFor("fixture-illustrated"), slidesPresetFor("fixture-illustrated"));
+  assert.ok(SLIDES_PRESETS.includes(slidesPresetFor("anything")));
+  assert.ok(SLIDES_PRESETS.includes(slidesPresetFor(undefined)));
+  const spread = new Set(["ai-term-token", "ai-term-context-window", "gemini-4-argon-who-can-use-it", "threads-parental-supervision-apac-four-settings", "grok-4-7-bedrock-output-doubles", "fixture-illustrated"].map(slidesPresetFor));
+  assert.ok(spread.size >= 4, [...spread].join(", "));
+  // The 2026-10-03 morning look stays for a video that names it.
+  const preset = PRESETS["tech-story"];
   assert.match(preset.style, /^hand-drawn editorial illustration for a printed magazine feature/);
-  assert.match(preset.style, /paper grain and a little misregistration/);
-  assert.match(preset.style, /small simple people with dot eyes or seen from behind/);
-  for (const word of ["glossy", "faceless mannequin", "mirror symmetry", "text", "logo", "real person's likeness", "mascot", "extra fingers"]) assert.ok(preset.negative.includes(word), word);
-  assert.ok(preset.style.length <= 600 && preset.negative.length <= 400);
-  // The subject stays where a Short's 9:16 crop keeps it; nothing pushes it to one side.
   assert.match(preset.style, /one clear focal point in the centre third of the frame/);
   assert.doesNotMatch(`${preset.style} ${preset.negative}`, /off-centre|centred layout/);
   // The camera words fold to their move, read from the camera direction alone on whole words,
@@ -664,6 +684,52 @@ test("illustrated slides are drawn as a printmaker's brief and lint keeps their 
   const motifs = pictureVarietyProblems(desks).warnings.filter((warning) => /pictures \(a third is plenty\)/.test(warning.message));
   assert.deepEqual(motifs.map((warning) => warning.message), [`"lamp" is in 6 of 10 pictures (a third is plenty): give each chapter its own place and props so the video travels`, `"desk" is in 5 of 10 pictures (a third is plenty): give each chapter its own place and props so the video travels`]);
   assert.equal(pictureVarietyProblems(desks).errors.length, 0);
+});
+
+test("the picture-variety lint reads a size as a size, a prop in both numbers as one prop, a repeated move on the camera alone, and a video told in the dark", async () => {
+  const { pictureVarietyProblems, DARK_SHARE_WARN, MOTIF_MIN_SHOTS } = await import("./drama.mjs");
+  const moves = ["push in", "pull out", "pan left", "pan right", "tilt up", "tilt down", "drift", "push in", "pull out", "pan left"];
+  const video = (prompts, extra = {}) => {
+    const doc = illustratedFixture();
+    doc.scenes = doc.scenes.filter((scene) => scene.template !== "shot");
+    prompts.forEach((prompt, index) => doc.scenes.push({ id: `p${index}`, template: "shot", data: { prompt, camera: moves[index], visual: "still", ...extra }, lines: [{ id: `l${index}zz`, text: "一句。" }] }));
+    return doc;
+  };
+  const sized = (prompt) => !pictureVarietyProblems(video([prompt])).warnings.some((warning) => /name no shot size/.test(warning.message));
+  // The sizes in their usual spellings, at the start or followed by shot, view, angle or of.
+  for (const prompt of ["Low-angle shot of a lighthouse at noon", "Bird's eye view of a harbour market", "Top-down view of a tiled kitchen floor", "Over-the-shoulder shot of a cook", "High angle of a schoolyard", "A wide shot of a street at noon", "Medium, a harbour at dusk"]) assert.ok(sized(prompt), prompt);
+  // An incidental adjective is not a size.
+  for (const prompt of ["A medium bowl of rice on a table at noon", "Onions over medium heat in a pan", "A wide street at noon, a cyclist crossing"]) assert.ok(!sized(prompt), prompt);
+  // Dairy is not the palette; a cream wall is.
+  const restates = (prompt) => pictureVarietyProblems(video([`Close-up of ${prompt}`])).warnings.some((warning) => /restate the look/.test(warning.message));
+  for (const prompt of ["whipped cream on a cake", "cream poured into coffee", "an ice-cream cone melting", "sour cream on a plate"]) assert.ok(!restates(prompt), prompt);
+  for (const prompt of ["a cream wall with a crack", "a risograph poster on a door"]) assert.ok(restates(prompt), prompt);
+  // Plurals fold: ferries and a ferry, shelves and a shelf, boxes and a box are one thing each.
+  const motifs = (prompts) => pictureVarietyProblems(video(prompts)).warnings.filter((warning) => /a third is plenty/.test(warning.message)).map((warning) => warning.message);
+  assert.equal(MOTIF_MIN_SHOTS, 6);
+  const folded = motifs(["Wide shot of a ferry at noon", "Wide shot of ferries at noon", "Wide shot of a ferry in rain", "Wide shot of ferries in fog", "Close-up of a shelf of jars", "Close-up of shelves of jars", "Close-up of shelves", "Close-up of a box of nails", "Close-up of boxes of nails", "Close-up of boxes", "Medium shot of potatoes"]);
+  assert.deepEqual(folded, [
+    `"ferry" is in 4 of 11 pictures (a third is plenty): give each chapter its own place and props so the video travels`,
+  ], "ferry, four of eleven, is over a third; shelf and box, three of eleven, are not");
+  assert.deepEqual(motifs(["Wide shot of shoes on a mat", "Close-up of a shoe", "Wide shot of canoes", "Medium shot of a canoe", "Wide shot of a series of arches", "Wide shot of a species of moth"]), [], "shoes keep their o; series and species are not plurals");
+  // The motion prompt is what happens in the picture, never the camera: three handheld stills
+  // stay a run under "drift" on data.camera whatever their motion prompts say.
+  const motion = video(["Wide shot of a quay at noon", "Close-up of a rope", "Medium shot of a crane"], { camera: "handheld" });
+  motion.scenes.filter((scene) => scene.template === "shot").forEach((scene) => { scene.data.motion = "slow push in"; });
+  const fromMotion = pictureVarietyProblems(motion).errors;
+  assert.deepEqual(fromMotion.map((error) => error.path), ["scenes[6] (p2).data.camera"]);
+  assert.match(fromMotion[0].message, /3 stills in a row under "drift"/);
+  const fromCamera = video(["Wide shot of a quay at noon", "Close-up of a rope", "Medium shot of a crane"], { camera: "push in" });
+  assert.deepEqual(pictureVarietyProblems(fromCamera).errors.map((error) => error.path), ["scenes[6] (p2).data.camera"]);
+  assert.match(pictureVarietyProblems(fromCamera).errors[0].message, /tilt down, drift\)$/);
+  // More than half of the pictures at night or under a lamp is a warning once there are enough to count.
+  assert.equal(DARK_SHARE_WARN, 1 / 2);
+  const dark = ["Wide shot of a street at night", "Close-up of a lamp on a desk", "Medium shot of a bench at dusk", "Low angle of a tower by moonlight"];
+  const day = ["Wide shot of a beach at noon", "Close-up of a kettle in a kitchen"];
+  const told = pictureVarietyProblems(video([...dark, ...day])).warnings.filter((warning) => /at night or under a lamp/.test(warning.message));
+  assert.deepEqual(told.map((warning) => warning.message), ["4 of 6 pictures are at night or under a lamp; vary the time of day, the weather and where the light comes from (morning, noon, rain, an overcast afternoon, a crowded daylight place): p0, p1, p2, p3"]);
+  assert.deepEqual(pictureVarietyProblems(video([...dark.slice(0, 3), ...day, "Medium shot of a bakery at dawn"])).warnings.filter((warning) => /under a lamp/.test(warning.message)), [], "half is not more than half");
+  assert.deepEqual(pictureVarietyProblems(video(dark)).warnings.filter((warning) => /under a lamp/.test(warning.message)), [], "fewer than six pictures are not counted");
 });
 
 test("a still shot carries no end frame: it describes a clip's last frame and would be bought unseen", () => {
