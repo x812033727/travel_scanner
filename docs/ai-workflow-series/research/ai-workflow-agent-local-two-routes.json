@@ -1,0 +1,461 @@
+{
+  "slug": "ai-workflow-agent-local-two-routes",
+  "title": "Claude Code、Codex 搭本機模型：兩種接法怎麼選",
+  "checked_on": "2026-10-03",
+  "level": "入門",
+  "sources": [
+    {
+      "title": "Claude Code - Ollama",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Codex CLI - Ollama",
+      "url": "https://docs.ollama.com/integrations/codex",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Context length - Ollama",
+      "url": "https://docs.ollama.com/context-length",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Other LLM gateways - Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/llm-gateway",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Model configuration - Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/model-config",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Advanced Configuration - Codex",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Claude Code - LM Studio",
+      "url": "https://lmstudio.ai/docs/integrations/claude-code",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Tags - qwen3.5 - Ollama",
+      "url": "https://ollama.com/library/qwen3.5/tags",
+      "checked_on": "2026-10-03"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "Ollama 的 Claude Code 頁說，Ollama 透過它的 Anthropic 相容 API，把 Claude Code 接到本機與雲端模型。正文用它說明同一個接法底下有本機與雲端兩種模型。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ollama connects Claude Code to local and cloud models through its Anthropic-compatible API."
+    },
+    {
+      "fact": "Claude Code 經由 Ollama 啟動的入口指令（接法二；正文、表格與程式範例都用）。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ollama launch claude"
+    },
+    {
+      "fact": "同一頁的模型一節有兩張卡片：Cloud models 與 Local models。雲端那張寫的是不用下載就能用更大的模型（正文「cloud 標籤不是本機權重」的依據，FAQ 第三題同）。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Use larger models without downloading them."
+    },
+    {
+      "fact": "本機那張卡片寫的是挑一個模型並把上下文視窗設在 64k 以上（正文寫 Ollama 的 Claude Code 頁建議 64k 以上）。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Choose a model and set a 64k+ context window."
+    },
+    {
+      "fact": "同一頁的模型一節也寫要挑上下文足以容納你的專案的模型（正文「也說要挑上下文夠容納你專案的模型」）。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Choose a model with enough context for your repository."
+    },
+    {
+      "fact": "同一頁有一節標題是 Connect directly to Ollama Cloud（直接連 Ollama 的雲端）；正文把 cloud 標籤的模型寫成「在 Ollama 的雲端」就是依這個稱呼與 Cloud models 卡片的說明。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Connect directly to Ollama Cloud"
+    },
+    {
+      "fact": "同一節寫不需要安裝 Ollama，直接用 API 金鑰連雲端（正文「不裝 Ollama、直接用 API 金鑰連到 ollama.com」）。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "No Ollama installation required."
+    },
+    {
+      "fact": "直連 Ollama Cloud 的 API 金鑰放在環境變數 OLLAMA_API_KEY（正文「直接用 API 金鑰連到 ollama.com」的金鑰一詞）。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OLLAMA_API_KEY"
+    },
+    {
+      "fact": "直連 Ollama Cloud 的寫法，ANTHROPIC_BASE_URL 設成 ollama.com（正文說連到 ollama.com 的依據；位址不是本機）。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ANTHROPIC_BASE_URL=https://ollama.com"
+    },
+    {
+      "fact": "手動設定 Claude Code 連本機 Ollama 時，ANTHROPIC_BASE_URL 設成 http://localhost:11434（正文接法二第一段）。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": false,
+      "verbatim_quote": "export ANTHROPIC_BASE_URL=http://localhost:11434"
+    },
+    {
+      "fact": "同一段手動設定的另外兩個環境變數之一：ANTHROPIC_AUTH_TOKEN 設成 ollama（查核補：正文接法二第一段改寫成「一次設三個環境變數」）。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": false,
+      "verbatim_quote": "export ANTHROPIC_AUTH_TOKEN=ollama"
+    },
+    {
+      "fact": "同一段手動設定的第三個環境變數：ANTHROPIC_API_KEY 設成空字串（查核補，同上）。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": false,
+      "verbatim_quote": "export ANTHROPIC_API_KEY=\"\""
+    },
+    {
+      "fact": "同一頁的行內範例把位址指向本機 localhost:11434，模型卻是帶 :cloud 的標籤（查核補：正文「位址指向本機」與「標籤不帶 cloud」兩個條件要同時成立的依據；這個模型名只在研究紀錄，正文不寫）。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ANTHROPIC_BASE_URL=http://localhost:11434 ANTHROPIC_API_KEY=\"\" claude --model kimi-k2.7-code:cloud"
+    },
+    {
+      "fact": "直連 Ollama Cloud 那一節的模型名不帶 cloud 字樣，位址卻是 ollama.com（查核補：接法一第二段改成「腳本連的是本機位址、問的是沒有 cloud 字樣的本機標籤」的依據；名字沒有 cloud 不等於本機）。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": false,
+      "verbatim_quote": "claude --model glm-5.3-flash"
+    },
+    {
+      "fact": "Ollama 的 Codex 頁寫，Codex 要用至少 64k token 的上下文視窗（正文與表格寫 Codex 頁至少 64k）。",
+      "url": "https://docs.ollama.com/integrations/codex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Use a context window of at least 64k tokens for Codex."
+    },
+    {
+      "fact": "Codex 經由 Ollama 啟動的入口指令 ollama launch codex（程式範例與表格）。",
+      "url": "https://docs.ollama.com/integrations/codex",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ollama launch codex"
+    },
+    {
+      "fact": "Ollama 的 Codex 頁手動設定的入口 codex --oss（程式範例與表格）。",
+      "url": "https://docs.ollama.com/integrations/codex",
+      "is_vendor_claim": false,
+      "verbatim_quote": "codex --oss"
+    },
+    {
+      "fact": "同一頁用 -m 旗標指定模型，範例是 gpt-oss:120b（正文「用 -m 指定 gpt-oss:120b」）。",
+      "url": "https://docs.ollama.com/integrations/codex",
+      "is_vendor_claim": false,
+      "verbatim_quote": "codex --oss -m gpt-oss:120b"
+    },
+    {
+      "fact": "同一頁的段落「To use a cloud model:」底下，指令是 codex --oss -m gpt-oss:120b-cloud。本機與雲端標籤只差在名稱，正文與 FAQ 用它分開兩種跑法。兩個字串在頁面上相鄰，中間隔著程式碼區塊的框線，所以拆成兩條引文。",
+      "url": "https://docs.ollama.com/integrations/codex",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To use a cloud model:"
+    },
+    {
+      "fact": "同一頁雲端模型段落底下的指令本身（gpt-oss:120b-cloud 已記在 models-seen.json）。",
+      "url": "https://docs.ollama.com/integrations/codex",
+      "is_vendor_claim": false,
+      "verbatim_quote": "codex --oss -m gpt-oss:120b-cloud"
+    },
+    {
+      "fact": "Ollama 的上下文頁把上下文長度定義成模型在記憶體裡能存取的 token 數上限（正文與 FAQ 第一題）。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Context length is the maximum number of tokens that the model has access to in memory."
+    },
+    {
+      "fact": "同一頁寫預設的上下文長度依 VRAM 而定（正文「依顯示記憶體而定」）。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Ollama defaults to the following context lengths based on VRAM:"
+    },
+    {
+      "fact": "VRAM 小於 24 GiB 的預設是 4k（頁面寫法是「< 24 GiB VRAM: 4k context」，小於符號在 Markdown 原始檔裡有跳脫字元，引文取共同的字串）。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": false,
+      "verbatim_quote": "24 GiB VRAM: 4k context"
+    },
+    {
+      "fact": "VRAM 24 到 48 GiB 的預設是 32k。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": false,
+      "verbatim_quote": "24-48 GiB VRAM: 32k context"
+    },
+    {
+      "fact": "VRAM 48 GiB 以上的預設是 256k（頁面寫法是「>= 48 GiB VRAM: 256k context」，引文同樣取跳脫字元之後的共同字串）。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": false,
+      "verbatim_quote": "48 GiB VRAM: 256k context"
+    },
+    {
+      "fact": "同一頁寫網頁搜尋、代理與程式工具這類需要大上下文的工作，應該設在至少 64000 token（正文「建議設在至少 64000 token」）。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Tasks which require large context like web search, agents, and coding tools should be set to at least 64000 tokens."
+    },
+    {
+      "fact": "同一頁寫上下文設得越大，需要的記憶體越多（正文、表格、摘要）。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Setting a larger context length will increase the amount of memory required to run a model."
+    },
+    {
+      "fact": "同一頁寫 cloud 模型預設就用到最大上下文長度（正文「cloud 模型預設就用到最大」）。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Cloud models are set to their maximum context length by default."
+    },
+    {
+      "fact": "用環境變數 OLLAMA_CONTEXT_LENGTH 啟動 Ollama 伺服器來改上下文長度（程式範例與正文）。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OLLAMA_CONTEXT_LENGTH=64000 ollama serve"
+    },
+    {
+      "fact": "也可以在 Ollama app 的設定裡用滑桿改上下文長度（正文「在 Ollama app 設定裡拉滑桿」）。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Change the slider in the Ollama app under settings to your desired context length."
+    },
+    {
+      "fact": "同一頁寫為了效能，要用模型的最大上下文長度並避免把模型卸載到 CPU（正文逐項轉述，並與記憶體那句並列，不單挑一半）。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For best performance, use the maximum context length for a model, and avoid offloading the model to CPU."
+    },
+    {
+      "fact": "同一頁用 ollama ps 檢查實際配置的上下文長度與模型卸載的情形（程式範例、正文、FAQ、選路問題）。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ollama ps"
+    },
+    {
+      "fact": "ollama ps 的輸出表頭有 PROCESSOR 與 CONTEXT 欄（程式範例、正文、FAQ）。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": false,
+      "verbatim_quote": "NAME ID SIZE PROCESSOR CONTEXT UNTIL"
+    },
+    {
+      "fact": "Claude Code 文件的 LLM gateway 頁：Anthropic 不支援透過任何 gateway 把 Claude Code 接到非 Claude 模型。這是「文件寫不支援」，正文不寫成違反條款，也不做法律解讀。",
+      "url": "https://code.claude.com/docs/en/llm-gateway",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Anthropic doesn't endorse, maintain, or audit third-party gateway products, and doesn't support routing Claude Code to non-Claude models through any gateway."
+    },
+    {
+      "fact": "Claude Code 的模型設定頁在 Note 裡寫，ANTHROPIC_BASE_URL 改的是請求送去哪裡，不是由哪個模型回答（正文與 callout）。",
+      "url": "https://code.claude.com/docs/en/model-config",
+      "is_vendor_claim": true,
+      "verbatim_quote": "changes where requests are sent, not which model answers them."
+    },
+    {
+      "fact": "Codex 的進階設定頁有一節 OSS mode，標題括號寫 local providers（正文與摘要的「OSS mode」）。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OSS mode (local providers)"
+    },
+    {
+      "fact": "Codex 可以在加上 --oss 時接 Ollama 或 LM Studio 這類本機的 open source 供應商（正文接法二第四段、表格官方立場列）。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Codex can run against a local \"open source\" provider such as Ollama or LM Studio when you pass"
+    },
+    {
+      "fact": "單次執行用旗標 --local-provider 選本機供應商（正文與 FAQ 第五題）。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": false,
+      "verbatim_quote": "--local-provider"
+    },
+    {
+      "fact": "預設的本機供應商設在 oss_provider，值是 ollama 或 lmstudio（FAQ 第五題）。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": false,
+      "verbatim_quote": "oss_provider = \"ollama\" # or \"lmstudio\""
+    },
+    {
+      "fact": "兩個都沒設時，互動模式的 CLI 會問你選哪一個（正文接法二第四段與 FAQ 第五題）。這句在 OSS mode 一節裡，前提是加上 --oss；第二輪查核把 FAQ 第五題的問句與答句補上「用 --oss」「加上 --oss 時」。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If neither is set, the interactive CLI prompts you to choose;"
+    },
+    {
+      "fact": "同一句的後半：兩個都沒設時 codex exec 以錯誤結束（查核補：FAQ 第五題問「不指定供應商會怎樣」，只寫互動模式等於刪掉一半條件，正文與 FAQ 都補上）。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": false,
+      "verbatim_quote": "codex exec exits with an error."
+    },
+    {
+      "fact": "同一頁的自訂 provider 範例有一家模型公司自己的端點，位址是該公司的網址（查核補：正文「第三種是供應商自己的端點，位址是模型公司的網址」在 sources 裡的依據）。",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "is_vendor_claim": false,
+      "verbatim_quote": "base_url = \"https://api.mistral.ai/v1\""
+    },
+    {
+      "fact": "LM Studio 的 Claude Code 頁寫，Claude Code 可以透過 Anthropic 相容的 POST /v1/messages 端點連 LM Studio（正文「LM Studio 的 Claude Code 頁也寫了接法」）。",
+      "url": "https://lmstudio.ai/docs/integrations/claude-code",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude Code can talk to LM Studio via the Anthropic-compatible POST /v1/messages endpoint."
+    },
+    {
+      "fact": "LM Studio 的 Claude Code 頁寫，要用上下文長度超過約 25k 的模型與設定，理由是 Claude Code 這類工具會耗掉不少上下文（正文、表格、摘要的 25k）。",
+      "url": "https://lmstudio.ai/docs/integrations/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Use a model (and server/model settings) with more than ~25k context length. Tools like Claude Code can consume a lot of context."
+    },
+    {
+      "fact": "Ollama 模型庫 qwen3.5 的 4b 標籤：3.4GB，標籤頁列的上下文視窗 256K（模型 id qwen3.5:4b 已記在 models-seen.json）。",
+      "url": "https://ollama.com/library/qwen3.5/tags",
+      "is_vendor_claim": false,
+      "verbatim_quote": "qwen3.5:4b 2a654d98e6fb • 3.4GB • 256K context window • Text, Image input"
+    },
+    {
+      "fact": "qwen3.5 的 9b 標籤（latest 指向它）：6.6GB，256K。",
+      "url": "https://ollama.com/library/qwen3.5/tags",
+      "is_vendor_claim": false,
+      "verbatim_quote": "qwen3.5:9b latest 6488c96fa5fa • 6.6GB • 256K context window • Text, Image input"
+    },
+    {
+      "fact": "qwen3.5 的 27b 標籤：17GB，256K。",
+      "url": "https://ollama.com/library/qwen3.5/tags",
+      "is_vendor_claim": false,
+      "verbatim_quote": "qwen3.5:27b 7653528ba5cb • 17GB • 256K context window • Text, Image input"
+    }
+  ],
+  "unverified_or_excluded": [
+    "規格檔 F5 寫「同一個 Claude Code session 的請求都送到同一個 ANTHROPIC_BASE_URL」。今天重讀 Claude Code 的模型設定頁與子代理頁，文件只寫 ANTHROPIC_BASE_URL 改的是請求送去哪裡、不是由哪個模型回答；子代理的 model 欄位吃的是別名或完整模型 ID，沒有寫可以把子代理送到另一個位址。正文因此不斷言「做不到」，只寫「這篇讀的 Claude Code 文件沒有寫這種接法」，也不寫成做得到。",
+    "Codex 的 config-advanced 頁已搬家：developers.openai.com/codex/config-advanced 現在用 308 永久轉址到 learn.chatgpt.com/docs/config-file/config-advanced（2026-10-03 curl 讀到 HTTP 200，537,834 bytes 的 HTML，內文是伺服器端渲染的正文）。sources 與引文都用轉址後的網址。",
+    "Ollama 的 Claude Code 頁今天的 Capabilities 區列了 Subagents（Split work across tasks）。頁面沒有寫子代理與主對話用不同模型，也沒有寫可以把子代理導到別的位址，所以正文不引用這一項，也不拿它支持任何混合接法。",
+    "Ollama 的 FAQ（OLLAMA_NO_CLOUD、預設只綁 127.0.0.1、不看本機提示詞）屬於開工清單那一篇的範圍，這篇沒有讀到需要引用它的地方，正文說「資料不離開電腦」只用位址與標籤的邏輯，並連到站上已整理過 Ollama 說法的既有文章。",
+    "Claude Code 模型設定頁寫，遇到 Claude Code 不認得的模型名稱時，它假設的上下文視窗可能和模型實際的不同，可用 CLAUDE_CODE_MAX_CONTEXT_TOKENS 指定。那屬於整個換成本機模型那一篇的設定細節，這篇沒有寫。",
+    "LM Studio 的 Claude Code 頁另有 LM Link（用筆電跑 Claude Code、模型在另一台自己的主機）一個提示框；它是第四種放法，這篇只談三種跑法，沒有寫。",
+    "Codex 設定頁另寫沒設 oss_provider 時 codex exec 會直接報錯。撰稿時只在 FAQ 寫了互動模式會問；查核（2026-10-04）判定 FAQ 問的是「不指定供應商會怎樣」，只寫一半等於刪掉條件，已把 codex exec 那一半補進正文接法二第四段與 FAQ 第五題。非互動執行的細節仍留給批次腳本與整個換成本機模型兩篇。",
+    "完全沒有寫任何速度、品質、跑得動與跑不動的結論，也沒有判斷哪一種接法比較好，只寫官方頁的數字與寫法；硬體只引標籤頁列的檔案大小與官方的上下文預設值，換算記憶體留給既有的硬體需求文章。",
+    "沒有查證也沒有寫 Ollama 在 Windows on ARM 或 Snapdragon 筆電上的情形（規格檔已列為不寫）。",
+    "Codex 一側沒有找到 OpenAI 對本機模型品質或支援程度的任何聲明，正文只寫設定頁有 OSS mode 這件事，不寫成「OpenAI 支援」。",
+    "MCP 的名詞解釋（草稿寫「讓代理能呼叫外部程式的標準介面」）：八條 sources 都沒有定義 MCP 的句子（Codex 進階設定頁只有一節 MCP servers 指向另一頁、遙測表裡的 MCP tool invocation；模型設定頁只在 --safe-mode 那句點名 MCP servers）。第二輪查核（2026-10-04）刪掉括號解釋，正文只點名「MCP 工具」，名詞本身交給站上講 MCP 的文章。"
+  ],
+  "must_not_write": [
+    "不教安裝 Ollama、LM Studio、Claude Code、Codex，也不教下載第一個模型（留給既有的 ollama-getting-started 等文章）。",
+    "不寫 API 層用 base_url 切換本機與雲端的程式（留給 ai-workflow-local-and-cloud-mix），也不貼批次腳本或 MCP server 的程式（留給本組第 15、16 篇）。",
+    "不寫任何速度、品質、跑得動或跑不動的結論；不寫哪一種接法比較省或比較好；不寫沒有官方來源的數字。",
+    "不把「Anthropic 文件寫不支援」寫成違反條款，不做法律解讀。",
+    "不寫「主對話在雲端、子代理在本機」做得到；不教用第三方路由器把部分請求導到別的模型。",
+    "不把 64k 寫成 Claude Code 或 Codex 的硬限制（它是 Ollama 的建議；LM Studio 寫的是約 25k）；不把標籤頁的 256K 寫成 Ollama 實際開的長度；不把 4k、32k、256k 寫成不能改的限制。",
+    "不寫 GLM、Qwen、DeepSeek 三個家族各自的標籤、端點與授權（留給第 14 篇），也不寫價格與方案。",
+    "不教把 Ollama 開到區域網路或公網。",
+    "第二段導言以外不再重複「本站沒有實測」。"
+  ],
+  "editorial_brief": "這篇是 E 組的入口：先把本機權重、Ollama 的 cloud 標籤、供應商端點分開，再用接法一（代理連雲端、雜務交給腳本或 MCP 工具）與接法二（代理的模型整個換成本機模型）兩種接法，依資料能不能出門、上下文開得夠不夠長、工作類型三個問題選路。跟 ai-workflow-local-and-cloud-mix 的分工是：那篇用 Python 在 API 層切換，這篇講的是雲端那一側換成 Claude Code、Codex 這種代理工具。後面的批次腳本、MCP 工具、整個換成本機模型、核對清單四篇各自展開細節，這篇只給判斷。",
+  "code_samples": [
+    {
+      "label": "接法二的入口與上下文檢查（指令出自 Ollama 官方文件）",
+      "language": "bash",
+      "lines": 13,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://docs.ollama.com/context-length",
+        "https://docs.ollama.com/integrations/claude-code",
+        "https://docs.ollama.com/integrations/codex"
+      ]
+    }
+  ],
+  "hero_label": "兩種接法怎麼選",
+  "diagram": {
+    "layout": "flow",
+    "title": "接法一的資料流向",
+    "caption": "接法一：原始資料留在本機，雲端代理只讀結果檔（2026 年 10 月查證）",
+    "nodes": [
+      [
+        "原始資料",
+        "留在本機，不上傳"
+      ],
+      [
+        "本機模型",
+        "逐份產出結果檔"
+      ],
+      [
+        "雲端代理",
+        "只讀結果檔"
+      ],
+      [
+        "成品",
+        "報告或修改的程式"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-10-04",
+    "method": "2026-10-04（UTC 10-03）用 curl -sL -A Mokaair-editorial 重抓 sources 八條，HTML 與官方 .md 版（Ollama、Claude Code、Codex、LM Studio 都有）各一份；標籤刪成空字串、空白正規化、實體還原後比對 verbatim_quote，47 條（撰稿的 41 條加查核補的 6 條）全部找到（gateway 頁與 Codex 頁的兩條引文用 .md 版的直引號，HTML 版是彎引號，把彎引號換直之後兩版字串相同）。developers.openai.com/codex/config-advanced 今天回 308 Permanent Redirect 到 learn.chatgpt.com/docs/config-file/config-advanced，後者 HTTP 200、537,834 bytes、伺服器端渲染的正文，title 為 Advanced Configuration – Codex | OpenAI Developers，canonical 指向自己，是 OpenAI 官方頁。正文、summary、表格每格、callout、FAQ、圖解格子與 code 每個識別字拆成約 130 條主張逐條對來源；code 區塊抽出後 bash -n 通過。必連的四篇讀了 title 與相關段落，比對有沒有矛盾或整段重講。另把 gpt-oss:120b 到 Ollama 標籤頁查證後加進 models-seen.json。",
+    "verdict": "ok：骨幹（兩種接法、三種跑法、三個選路問題）都撐得住；改了 17 處，其中事實性 10 處（否定句超出讀過的頁面、FAQ 絕對句、漏掉的條件、表格出處說明不實、指令順序；codex exec 那一半在正文與 FAQ 各補一次，算一處），其餘 7 處是歸因、「本站判斷」的標示與 FAQ 對正文的子集關係。沒有速度、品質、跑得動與跑不動的結論；「本站沒有實測」只在第二段導言出現一次；標題與 description 沒有「實測」。",
+    "edits_to_the_pack": [
+      "三種跑法第二段：補「另有一節標題是直接連到 Ollama Cloud」，讓「cloud 標籤的模型在 Ollama 的雲端」有頁面上的稱呼可對。",
+      "接法一第二段：「腳本問的是沒有 cloud 字樣的本機標籤」→「腳本連的是本機位址、問的是沒有 cloud 字樣的本機標籤」。同一頁直連 Ollama Cloud 的範例模型名 glm-5.3-flash 不帶 cloud 字樣、位址是 ollama.com；行內範例則是 localhost 配 kimi-k2.7-code:cloud。只看名字不夠。",
+      "接法一第二段：補「同一頁把上下文長度定義為模型在記憶體裡能存取的 token 數上限」，FAQ 第一題用了這句但正文沒有（答案要是正文的子集）。",
+      "接法二第一段：只寫 ANTHROPIC_BASE_URL → 寫明 Ollama 手動設定一次設三個環境變數。gateway 頁寫只設 ANTHROPIC_BASE_URL 而沒有憑證變數時，存著的 claude.ai 登入仍是送出去的憑證；只點名一個變數容易讓人只設一個。",
+      "code：ollama ps 從啟動代理之前移到最後，註解改成「代理用到模型之後，再開一個視窗看」。上下文頁的 ollama ps 是檢查已配置的上下文與卸載，範例輸出是一個載入中的模型；放在啟動代理之前看不到要檢查的東西。指令本身不變，13 行。",
+      "接法二第二段（撰稿者請查的 a 句）：「沒有給出同類的限制」→「Claude Code 模型設定頁與 Codex 進階設定頁，沒有寫模型至少要有多長的上下文」，並把 64k 寫成「不是 Claude Code 或 Codex 規定的門檻」。模型設定頁有 /autocompact 接受 100K 到 1M 的 auto-compact 視窗、Codex 頁有 model_context_window 範例值 128000，這兩個是設定值，不是模型最低上下文；原句的「同類的限制」範圍太模糊。",
+      "接法二第四段：「模型設定頁也寫」→「模型設定頁另有一句提醒」（那句講機制，不是官方立場）；「Anthropic 那一頁寫的是不支援」→「Anthropic 的 gateway 頁對接到非 Claude 模型寫的是不支援」（該頁沒有點名 Ollama 或 LM Studio）。",
+      "接法二第四段：補 oss_provider 的值（設定檔範例是 ollama 或 lmstudio）與「兩個都沒設時，互動模式的 CLI 會請你選，codex exec 則會報錯結束」。FAQ 第五題原本用了正文沒有的事實，且只寫互動模式那一半。",
+      "表格前導句：「格子裡的數字與說法都出自上面提到的官方頁」不實（「適合的工作」「對應本系列哪一篇」是本站的歸納）→ 改成數字與官方說法出自官方頁，那兩列是本站依接法結構整理的判斷。",
+      "表格列名「適合的工作」→「適合的工作（本站判斷）」（撰稿者請查的 d）。",
+      "表格「官方立場」接法一：「這篇讀的 Claude Code 與 Codex 頁面對這種用法沒有另外限制」→「沒有談到這種用法」。那些頁面沒有討論腳本或 MCP 工具去問本機模型，「沒有另外限制」讀起來像頁面允許。",
+      "選路前導句：補「下面三題是本站依兩種接法的結構整理的判斷順序，不是官方文件的寫法」（撰稿者請查的 d）。",
+      "選路第一題：「接法一就夠」補前提「代理讀不到那批原始檔」，與接法一第二段一致。",
+      "callout 標題（撰稿者請查的 c）：「文件裡沒有『主對話在雲端、子代理在本機』」→「這篇讀的文件裡沒有…」。否定句只能限定在 sources 讀過的頁面，內文本來就有限定，標題沒有。",
+      "callout 內文：「gateway 頁則寫不支援把 Claude Code 接到非 Claude 模型」補回原文的「透過任何 gateway」。",
+      "FAQ 第二題：「不是。」→「不一定。」顯示記憶體 48 GiB 以上的預設就是 256k，答「不是」對這些讀者是錯的。",
+      "FAQ 第五題：「值可以是」→「設定檔範例的值是」，並補 codex exec 會報錯結束那一半。"
+    ],
+    "checked_and_correct": [
+      "撰稿者請查的 b：「Ollama 的 cloud 標籤，模型不在你的電腦上，而是在 Ollama 的雲端」。Claude Code 頁的 Cloud models 卡片寫 Use larger models without downloading them.，同頁一節標題 Connect directly to Ollama Cloud 要你挑 cloud model；上下文頁寫 Cloud models are set to their maximum context length by default.。不下載＋Ollama Cloud 的稱呼足以撐住這句；站內 ai-workflow-local-and-cloud-mix 也寫「在 Ollama 自己的雲端執行」，沒有矛盾。",
+      "撰稿者請查的 e：gateway 頁與 Codex 設定頁的引文用 .md 版直引號；HTML 版是 doesn’t 與 “open source” 的彎引號，換直之後與引文逐字相同。兩站都官方提供 .md 版（Codex 頁頂寫 Markdown versions of documentation pages are available by appending .md to the page URL.）。",
+      "撰稿者回報的 Codex 新網址：308 永久轉址屬實，新網址是 OpenAI 官方頁，正文讀得到，OSS mode 一節逐字在。",
+      "64k（Ollama Claude Code 頁 64k+、Codex 頁 at least 64k、上下文頁 at least 64000 tokens）、LM Studio more than ~25k、預設 4k／32k／256k 與 GiB 門檻、cloud 模型預設用最大上下文、滑桿與 OLLAMA_CONTEXT_LENGTH=64000 ollama serve、ollama ps 的 PROCESSOR 與 CONTEXT 欄、上下文越大記憶體越多：逐字對過。",
+      "qwen3.5 標籤頁：4b 3.4GB、9b 6.6GB（latest）、27b 17GB，所有標籤都列 256K；今天這頁沒有任何 cloud 標籤。",
+      "Ollama Codex 頁：codex --oss、codex --oss -m gpt-oss:120b、To use a cloud model: 底下 codex --oss -m gpt-oss:120b-cloud；ollama launch codex。Claude Code 頁：ollama launch claude、手動三變數、直連 ollama.com 那一節與 No Ollama installation required.。",
+      "gateway 頁原文 Anthropic doesn't endorse, maintain, or audit third-party gateway products, and doesn't support routing Claude Code to non-Claude models through any gateway.；草稿各處都寫成「文件寫不支援」，沒有寫成違反條款，FAQ 第四題明寫不做條款解讀。",
+      "model-config 頁 Note：ANTHROPIC_BASE_URL changes where requests are sent, not which model answers them.；這篇讀的模型設定頁與 gateway 頁都沒有把子代理送到另一個位址的寫法（子代理的 model 欄位、CLAUDE_CODE_SUBAGENT_MODEL 選的是模型），callout 的否定句限定後成立。",
+      "「第三種是供應商自己的端點，位址是模型公司的網址」：Codex 設定頁自訂 provider 範例有 base_url = \"https://api.mistral.ai/v1\"，補進 verified_facts。",
+      "必連四篇：ai-workflow-local-and-cloud-mix（網址＋標籤兩件事一起釘）、local-llm-why-and-when、local-llm-hardware-requirements（檔案大小當下限、4k／32k／256k、64000 建議、gpt-oss:120b 65GB 與今天標籤頁一致）、ai-workflow-split-tasks-across-models（資料能不能離開你的裝置＝依資料敏感度）。草稿沒有和它們矛盾，各一句帶過；第二個結尾連結的 text 與 ai-workflow-local-and-cloud-mix 的 title 逐字相同，local-llm-why-and-when 的書名號也逐字相同。",
+      "圖解四格與 caption 跟 README 指派一致；圖上沒有數字。checked_on 全篇一致是 2026-10-03，沒有改。"
+    ],
+    "left_for_the_owner": [],
+    "code_recompiled": [
+      {
+        "label": "接法二的入口與上下文檢查（指令出自 Ollama 官方文件）",
+        "result": "ok"
+      }
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent (did not draft or run round one)",
+      "checked_on": "2026-10-04",
+      "rechecked": [
+        "sources 八條今天重抓（HTML 與 .md 各一份，加 ollama.com/library/gpt-oss/tags），HTTP 全部 200，bytes 與第一輪相同（qwen3.5 標籤頁 244,810 → 244,976，標籤列與數字不變）；developers.openai.com/codex/config-advanced 仍是 308 到 learn.chatgpt.com。",
+        "第一輪新寫或改寫的 17 處逐句回原文重讀：callout 標題與內文、FAQ 第二題「不一定」、表格前導句、表格官方立場接法一、code 裡 ollama ps 的位置與註解、接法一第二段「本機位址＋沒有 cloud 字樣的本機標籤」、接法二第一段三個環境變數、接法二第二段、接法二第四段的歸因與 codex exec、三種跑法第二段直連 Ollama Cloud、接法一第二段上下文定義、表格列名、選路前導句、選路第一題的前提、callout 的 through any gateway、FAQ 第五題。",
+        "「本機位址＋沒有 cloud 字樣」的依據今天仍在 Ollama Claude Code 頁：Connect directly to Ollama Cloud 一節 ANTHROPIC_BASE_URL=https://ollama.com 配 claude --model glm-5.3-flash，Manual setup 最後的行內範例 ANTHROPIC_BASE_URL=http://localhost:11434 配 claude --model kimi-k2.7-code:cloud；Cloud models 卡片 Use larger models without downloading them.。正文寫成資料留在本機的必要條件（得兩件事同時成立、只有…才），沒有寫成充分條件，也沒有掛在官方名下，站得住。",
+        "FAQ 第二題：上下文頁 >= 48 GiB VRAM: 256k context，「不一定」成立；24-48 與 >= 48 在 48 GiB 重疊是原文的寫法，不改。",
+        "codex exec：Codex 進階設定頁 OSS mode 一節 If neither is set, the interactive CLI prompts you to choose; codex exec exits with an error.，正文「報錯結束」正確；但這句的前提是加上 --oss，FAQ 第五題沒有帶這個前提（見 edits）。",
+        "ollama ps：上下文頁小節標題 Check allocated context length and model offloading、Verify the split under PROCESSOR using ollama ps.，範例輸出是一個已載入、UNTIL 2 minutes from now 的模型；放在最後並註明代理用到模型之後再看，合理。",
+        "接法二第二段：模型設定頁只有 /autocompact 接受 100K 到 1M 的 auto-compact 視窗與 CLAUDE_CODE_MAX_CONTEXT_TOKENS，Codex 頁只有 model_context_window = 128000 範例；兩頁都沒有模型最低上下文，限定後的否定句成立。callout：模型設定頁只有 subagent 的 model 欄位、Agent 工具的 model 參數、CLAUDE_CODE_SUBAGENT_MODEL，沒有任何把子代理送到另一個位址的設定，gateway 頁也沒有。",
+        "隨機抽查第一輪 checked_and_correct 11 條中的 4 條（SystemRandom 抽到第 2、5、6、9 條）：HTML 版彎引號 doesn’t 與 “open source” 換直後與引文相同；qwen3.5 標籤頁 37 個標籤全部 256K、cloud 字樣 0 次、4b 3.4GB、9b 6.6GB 是 latest、27b 17GB；Ollama Codex 與 Claude Code 兩頁的指令、三個環境變數、No Ollama installation required. 逐字在；Codex 頁 [model_providers.mistral] 的 base_url = \"https://api.mistral.ai/v1\" 在。四條都正確。",
+        "47 條 verbatim_quote 綁回各自的 url 重新比對（標籤刪成空字串、空白正規化、實體還原、彎引號換直），全部找到。",
+        "code 區塊重抽，bash -n 通過，13 行；models-seen.json 的 gpt-oss:120b 條目 verbatim「gpt-oss:120b a951a23b46a1 • 65GB • 128K context window • Text input」在 https://ollama.com/library/gpt-oss/tags 今天的 HTML 裡逐字找到。",
+        "界線：「實測」只出現在第二段導言一次，標題與 description 沒有；「跑得動」只出現在「不判斷哪一台電腦跑得動」；沒有速度、品質結論與執行輸出；沒有把不支援寫成違反條款；否定句都限定在這篇讀的頁面；本站判斷的兩列與選路三題都標明是判斷。"
+      ],
+      "edits": [
+        "接法一第一段：刪掉 MCP 的括號解釋「（讓代理能呼叫外部程式的標準介面）」，只留「一個 MCP 工具」。八條 sources 沒有定義 MCP 的句子，站上另有講 MCP 的文章。",
+        "FAQ 第五題：問句「Codex 接本機模型，不指定供應商會怎樣？」→「Codex 用 --oss 接本機模型，不指定供應商會怎樣？」；答句開頭補「加上 --oss 時，」。原文的 If neither is set 在 OSS mode 一節、以 when you pass --oss 為前提；ollama launch codex 與 codex --profile ollama-launch 用的是 Ollama 頁的專用 profile（model_provider = \"ollama-launch\"），Codex 頁這一句沒有談到那種接法；少了前提，讀者會以為每一種接本機模型的方式在 codex exec 下都會報錯。"
+      ],
+      "verdict": "ok：第一輪新寫的句子都撐得住，改 2 處（1 處刪掉沒有出處的名詞解釋、1 處補回被刪掉的前提），沒有動到骨幹與程式範例。"
+    }
+  }
+}

@@ -70,8 +70,16 @@ BODY_RANGE = (1800, 3000)
 HUB_BODY_RANGE = (900, 3000)
 SOURCES_RANGE = (3, 8)
 #: The article on the three model families cites each vendor's Claude Code page, Codex page and
-#: model card next to Ollama's tag pages; eight sources do not hold them.
-SOURCES_MAX = {"ai-workflow-agent-glm-qwen-deepseek": 12}
+#: model card next to Ollama's tag pages; eight sources do not hold them. The three hands-on
+#: articles each need two agent tools' pages, the local runtime's pages and the tag pages of the
+#: families they name, and every flag in their code has to trace to a page in ``sources``.
+SOURCES_MAX = {
+    "ai-workflow-agent-glm-qwen-deepseek": 14,
+    "ai-workflow-agent-local-batch-script": 11,
+    "ai-workflow-agent-local-mcp-tool": 11,
+    "ai-workflow-agent-local-engine": 11,
+    "ai-workflow-agent-local-checklist": 12,
+}
 CODE_LANGUAGES = {"python", "bash", "json", "yaml", "toml"}
 #: Strings the model-id pattern catches that are not models: package and host names.
 NOT_MODELS = {"claude-code", "qwen-code"}

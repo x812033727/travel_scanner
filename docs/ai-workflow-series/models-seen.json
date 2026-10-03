@@ -433,6 +433,22 @@
       "verbatim": "claude --model openai/gpt-oss-20b",
       "checked_on": "2026-10-03",
       "notes": "The model identifier LM Studio's Claude Code page uses in its example; local weights served by LM Studio."
+    },
+    {
+      "id": "qwen3.5:27b",
+      "vendor": "Ollama library",
+      "url": "https://ollama.com/library/qwen3.5/tags",
+      "verbatim": "qwen3.5:27b 7653528ba5cb • 17GB • 256K context window • Text, Image input",
+      "checked_on": "2026-10-03",
+      "notes": "Local weights, 17GB; re-read on the tags page 2026-10-03 while writing ai-workflow-agent-local-two-routes."
+    },
+    {
+      "id": "gpt-oss:120b",
+      "vendor": "Ollama library (OpenAI open-weight)",
+      "url": "https://ollama.com/library/gpt-oss/tags",
+      "verbatim": "gpt-oss:120b a951a23b46a1 • 65GB • 128K context window • Text input",
+      "checked_on": "2026-10-04",
+      "notes": "Local weights, 65GB (the -cloud tag is the Ollama cloud one). Added by the factcheck of ai-workflow-agent-local-two-routes, whose prose quotes Ollama's Codex page: codex --oss -m gpt-oss:120b."
     }
   ]
 }
