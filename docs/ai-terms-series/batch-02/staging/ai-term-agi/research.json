@@ -1,0 +1,109 @@
+{
+  "slug": "ai-term-agi",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://openai.com/charter/",
+      "title": "OpenAI Charter",
+      "access": "Wayback snapshot 20260917204605 (direct 403); wording cross-checked by WebSearch",
+      "claims": [
+        "AGI 定義句：highly autonomous systems that outperform humans at most economically valuable work"
+      ]
+    },
+    {
+      "url": "https://openai.com/index/planning-for-agi-and-beyond/",
+      "title": "OpenAI: Planning for AGI and beyond",
+      "access": "Wayback snapshot 20261002040118 (direct 403)",
+      "claims": [
+        "AGI 寫成 AI systems that are generally smarter than humans",
+        "全文沒有給判定方法"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2311.02462",
+      "title": "Morris et al.: Levels of AGI (arXiv:2311.02462 v5)",
+      "access": "web open; PDF read via pdftotext",
+      "claims": [
+        "九種既有說法與評語",
+        "表現與通用程度兩軸、五級與百分位",
+        "自主性六級與其與 AGI 等級的關係",
+        "原則：能力非機制、潛力非部署",
+        "未提出基準，開放問題與不對稱",
+        "對章程定義的優缺點評語"
+      ]
+    },
+    {
+      "url": "https://proceedings.mlr.press/v235/morris24b.html",
+      "title": "Morris et al.: PMLR 235 (ICML 2024) page",
+      "access": "web open",
+      "claims": [
+        "發表於 ICML 2024"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/0712.3329",
+      "title": "Legg and Hutter: Universal Intelligence (arXiv:0712.3329)",
+      "access": "web open; PDF read via pdftotext",
+      "claims": [
+        "在廣泛環境中達成目標的能力",
+        "形式化量度不可計算，是定義不是實用測試"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1911.01547",
+      "title": "Chollet: On the Measure of Intelligence (arXiv:1911.01547)",
+      "access": "web open; PDF read via pdftotext",
+      "claims": [
+        "技能可被先備知識與資料買到",
+        "智慧＝技能習得效率",
+        "通用智慧是光譜",
+        "ARC 是進行中的作品",
+        "基準應不含事前已知任務並明列先備知識"
+      ]
+    },
+    {
+      "url": "https://arcprize.org/arc-agi",
+      "title": "ARC Prize: What is ARC-AGI?",
+      "access": "web open (direct curl 200)",
+      "claims": [
+        "ARC Prize 對 AGI 的定義：能追上人類學習效率",
+        "稱經濟價值工作定義是有用目標但不是智慧的正確量法"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2504.01849",
+      "title": "Shah et al.: An Approach to Technical AGI Safety and Security (arXiv:2504.01849)",
+      "access": "web open; PDF read via pdftotext",
+      "claims": [
+        "以 Exceptional AGI（99 百分位、廣泛非物理任務）為討論水準",
+        "把 superintelligence 新風險留給後續研究"
+      ]
+    },
+    {
+      "url": "https://blogs.microsoft.com/blog/2025/10/28/the-next-chapter-of-the-microsoft-openai-partnership/",
+      "title": "Microsoft: The next chapter of the Microsoft-OpenAI partnership",
+      "access": "web open (direct curl 200)",
+      "claims": [
+        "OpenAI 宣告 AGI 後將由獨立專家小組查驗；公告未寫標準"
+      ]
+    },
+    {
+      "url": "https://openai.com/index/next-chapter-of-microsoft-openai-partnership/",
+      "title": "OpenAI: The next chapter of the Microsoft-OpenAI partnership",
+      "access": "Wayback snapshot 20260927044013 (direct 403)",
+      "claims": [
+        "與 Microsoft 公告同一句"
+      ]
+    }
+  ],
+  "aliases": [
+    "AGI",
+    "Artificial General Intelligence",
+    "通用人工智慧",
+    "通用人工智能"
+  ],
+  "existing_overlap": "No existing published article defines AGI; ai-glossary-50-terms has no AGI entry. Neighbouring concepts are linked, not repeated: ai-term-artificial-intelligence, ai-term-benchmark, ai-term-ai-alignment, ai-hype-vs-reality-2026, ai-terms-index.",
+  "running_text_characters": 2495,
+  "notes": "Definitions are attributed to whoever wrote them; the article asserts no universal definition and makes no prediction of when AGI arrives. No model names, prices or leaderboard scores. The headline example (a 90 percent question-bank score) is a labelled hypothetical, not an observation. Only the single officially published sentence about expert-panel verification is used from the Microsoft/OpenAI agreement. Morris et al. was read in arXiv v5 (2025-09-24), where Level 4 is named Exceptional rather than Virtuoso. openai.com pages return 403 to curl and WebFetch and were read through Wayback snapshots; sources list the original URLs."
+}

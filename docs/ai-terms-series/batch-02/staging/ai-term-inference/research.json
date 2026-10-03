@@ -1,0 +1,111 @@
+{
+  "slug": "ai-term-inference",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://developers.google.com/machine-learning/glossary",
+      "title": "Google：Machine Learning Glossary（inference、training 條目）",
+      "access": "web open (curl -sSL, HTTP 200, HTML text read)",
+      "claims": [
+        "傳統機器學習中，推論是把訓練好的模型套用到未標記樣本做預測",
+        "大型語言模型中，推論是用訓練好的模型針對輸入提示產生回應",
+        "統計學裡的 inference 意義略有不同",
+        "訓練是決定模型參數（權重與偏差）的過程，讀入範例並逐步調整參數"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw",
+      "title": "Google：機器學習詞彙表（繁體中文版）",
+      "access": "web open (curl -sSL, HTTP 200, HTML text read)",
+      "claims": [
+        "繁體中文版把 inference 譯為「推論」",
+        "同一份詞彙表以「推理」描述模型的推導過程（黑盒模型、常識推理資料集）"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2309.06180",
+      "title": "Kwon 等：Efficient Memory Management for Large Language Model Serving with PagedAttention（vLLM，SOSP 2023）",
+      "access": "arXiv abstract page 200; PDF fetched with curl and read with pdftotext (section 2)",
+      "claims": [
+        "prompt phase：提示詞 token 全部已知，可平行處理並算出第一個新 token 的機率",
+        "generation phase：每步一個 token，無法平行，受記憶體限制，佔單一請求延遲的大部分",
+        "高吞吐服務需要批次處理足夠多請求；KV cache 很大且動態增減，浪費記憶體限制批次大小；PagedAttention 為其解法",
+        "論文的吞吐量倍數屬速度數字，未寫入文章"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2211.05102",
+      "title": "Pope 等：Efficiently Scaling Transformer Inference（2022）",
+      "access": "arXiv abstract page 200; PDF fetched with curl and read with pdftotext (sections 2, 2.1, 2.2)",
+      "claims": [
+        "prefill 與 decode 的稱呼；輸入可一次平行前向，decode 是逐步循環，兩段效能特性不同",
+        "延遲可分解為 prefill 時間與 decode 時間；成本以每個 token 的晶片時間或金額衡量",
+        "每次前向都要把權重與 KV cache 從 HBM 載入運算核心",
+        "在 TPU v4 上分析大型 Transformer：小批次延遲較低但每個 token 成本較高；離線處理加大批次最有效率",
+        "PaLM 實驗設定使用 int8 權重量化（未寫延遲或 MFU 數字）"
+      ]
+    },
+    {
+      "url": "https://docs.nvidia.com/nim/benchmarking/llm/latest/metrics.html",
+      "title": "NVIDIA：NIM LLMs Benchmarking，Metrics",
+      "access": "web open (curl -sSL, HTTP 200); page footer says last updated Jul 20, 2026",
+      "claims": [
+        "TTFT 定義；TTFT 通常包含排隊、prefill 與網路延遲",
+        "e2e 延遲＝TTFT＋產生時間",
+        "ITL 各工具對是否含首個 token 的定義不同；定義一致才能比較",
+        "同時請求增加時系統總吞吐量上升到飽和，每位使用者的速度下降"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-latency",
+      "title": "Anthropic：Reducing latency（官方文件）",
+      "access": "web open (curl -sSL, HTTP 200, HTML text read)",
+      "claims": [
+        "TTFT 是從送出提示到產生第一個 token 的時間，串流時特別相關",
+        "串流讓使用者先看到輸出，改善感受上的回應速度",
+        "降低延遲的手段：選模型、縮短提示與輸出、串流"
+      ]
+    },
+    {
+      "url": "https://platform.openai.com/docs/guides/latency-optimization",
+      "title": "OpenAI：Latency optimization（官方文件）",
+      "access": "web open; read via the .md variant of the same URL (HTTP 200); HTML variant also 200",
+      "claims": [
+        "產生 token 幾乎總是使用 LLM 時延遲最高的一步",
+        "輸入 token 減少通常不是主要因素，除非上下文非常大",
+        "把會變動的內容放在提示詞後段，對 KV cache 更友善",
+        "頁內的百分比啟發式未寫入文章"
+      ]
+    },
+    {
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "title": "llama.cpp：專案說明（本機推論的官方實作文件）",
+      "access": "github.com returned 403 through the proxy; read the same README via https://raw.githubusercontent.com/ggml-org/llama.cpp/master/README.md (HTTP 200)",
+      "claims": [
+        "目標是在各種硬體上、本機與雲端都能做 LLM 推論",
+        "提供整數量化以加速推論並降低記憶體用量"
+      ]
+    },
+    {
+      "url": "https://terms.naer.edu.tw/detail/8bc45e654bd178e8380ebefabc5e389b/",
+      "title": "國家教育研究院樂詞網：inference 條目與各學科詞表譯名",
+      "access": "web open (curl -sSL, HTTP 200); search results fetched with session cookie + csrf token and GET query_term=inference / reasoning / inference engine",
+      "claims": [
+        "inference 在統計學名詞等詞表譯為推論，在電子計算機名詞與資訊與通訊術語大辭典譯為推理，其他詞表兩者並列",
+        "inference engine 在電子計算機名詞為「推理引擎；推理機」",
+        "reasoning 在電子計算機名詞為「推理；推論；推導」"
+      ]
+    }
+  ],
+  "aliases": [
+    "inference",
+    "AI inference",
+    "LLM inference",
+    "模型推論",
+    "AI 推論"
+  ],
+  "existing_overlap": "No staged article defines inference itself. Adjacent articles are linked and differentiated: ai-term-test-time-compute (extra compute spent during inference), ai-reasoning-models-explained (reasoning vs inference wording), ai-term-quantization and ai-term-prompt-caching (named as cost levers, not explained). The one-line definition in ai-glossary-50-terms (live article) was not re-read.",
+  "running_text_characters": 2499,
+  "notes": "Counted with app.guides.pack_ingest._body_length on the final pack.json (paragraphs, rich_paragraph text including the five article-link labels = 86 characters, list items, table cells, callout title and text; headings, captions and sources excluded): 2499. Without link labels: 2413. Source conflicts with the brief, source wins: (1) brief and catalogue say inference = 推論 and reasoning = 推理 as if settled, but Taiwan's NAER terminology database (terms.naer.edu.tw) renders inference as 推理 in the computer-science glossary (電子計算機名詞) and as 推論 in statistics, with several glossaries listing both; the article therefore states the series convention as an editorial choice and not a dictionary rule. (2) batch brief says the character count excludes link text yet also says it follows _body_length, which includes rich_paragraph link labels; the figure above is the tool's. Illustrative scenario (two question types for a fictional guesthouse assistant) is original and labelled unmeasured; no vendor prices, speeds, model names or paper throughput multipliers appear. Diagram carries no numbers other than the drawing year 2026 (present in the table caption). Dry-run ingest passes; only the no_summary warning that the sandbox example also raises."
+}
