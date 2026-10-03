@@ -281,16 +281,34 @@ Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on 
 
 Non-claims. This review does not accept the lost-answer handling or the translation units themselves: not the client's retry rules, the web route's deadline, the units' prompts or translation quality, a real model call, and not CI. PASS is DURATION_ONLY for the two rebound hashes below. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Visual-quality skill routing increment: 2 files (2026-10-03)
+
+Reviewer: `/root/verify_local`. Author: `codex-skill-creator`. Verdict:
+**PASS — DURATION_ONLY** for the two SKILL.md files at
+`37b4d8539b058120886eb7de0cd57d65a1900cde175bd78cab4893e7afa9f0a3`.
+The independent reviewer inspected the exact three-line additions and the linked
+visual-quality workflow. They add art direction, acting and editorial review
+routing without changing the eight-minute body/final floor, ten-minute production
+target, 8–20 minute range, source rules, QA implementation or fixtures. The other
+68 registry bindings remain unchanged. Existing historical review increments are
+preserved. This is not acceptance of production media, a 90/100 visual score or CI.
+
+Initial local full tools checks exposed the expected two stale SKILL bindings and
+Windows Node 24.13.0 native test-file failures. The independent reviewer reproduced
+exit 3221226505 for state.test.mjs and verified its 13 tests on bundled Node 24.19.0.
+The author must rerun the installed duration receipt check after this refresh;
+these observations do not waive any failing assertion.
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `9f425b6361451c032e56a5ccc2e7e9eef58feacd5c479e16551cc1918f826939` |
+| `.agents/skills/youtube-video/SKILL.md` | `37b4d8539b058120886eb7de0cd57d65a1900cde175bd78cab4893e7afa9f0a3` |
 | `.agents/skills/youtube-video/references/automated.md` | `05da9e6045979c5af53164bca6514af624e1858880c1f6370d4f667149322db5` |
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
-| `.claude/skills/youtube-video/SKILL.md` | `9f425b6361451c032e56a5ccc2e7e9eef58feacd5c479e16551cc1918f826939` |
+| `.claude/skills/youtube-video/SKILL.md` | `37b4d8539b058120886eb7de0cd57d65a1900cde175bd78cab4893e7afa9f0a3` |
 | `apps/api/app/video_automation/models.py` | `a527501908ded6558839f175a047e05b38b9eb9c8a9be9494d079382f99561b7` |
 | `apps/api/app/video_automation/schemas.py` | `084745ef3f022863777b7694a98c168df6415181c30bc84b4ce0a151af7e974c` |
 | `apps/api/app/video_automation/series.py` | `61a6d7b0460ff9b70e656b8025fd7409df2cd912b16acff1d160db98258c0965` |

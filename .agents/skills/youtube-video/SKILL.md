@@ -33,6 +33,8 @@ metadata:
 
 此批十部動畫的製作規格以 `docs/videos/series-plans/production-20261001/profile.json` 與每部 `production-design.json` 為準：全部動態鏡頭、Veo 3.1 Lite 1080p 每段 8 秒、字幕只做 CC；先定案完成台灣口音中文版，再做 ja/ko/en 配音與各自 CC。漫劇多語角色配音仍是規劃中的後續工作，不能把教學影片已有的配音流程當成漫劇已支援。詳細試音、樣片與交付順序讀 `references/animation-production.md`。
 
+動畫的美術定調、首輪 pilot，以及「畫面粗糙／像簡報／看不下去／希望從60分提升到90分」的回饋，先讀 `.agents/skills/youtube-video/references/visual-quality.md`。先檢查畫面吸引力、表演、鏡頭敘事和剪輯聲音，再接既有技術與連貫檢查；生成成功或 judge 過線不能單獨證明好看。這不新增每鏡人工審批，也不擴大預算、模型或發布授權。
+
 ## 再讀對應的 reference
 
 | 你要做的 | 讀 |
@@ -47,6 +49,7 @@ metadata:
 | AI 漫劇的每一集：一次性設定、關卡（文件、劇本，加四個自動的）、主幹與指令、`video.json` 的角色與鏡頭、品檢與重做、成本、坑、站主怎麼從後台發起單集 | `.agents/skills/youtube-video/references/drama.md` |
 | AI 漫劇的代理提示（單集的故事聖經、劇本與分鏡、連貫性查核、修鏡頭；討論串的回覆） | `.agents/skills/youtube-video/references/prompts/series-bible.md`、`writer-drama.md`、`verifier-drama.md`、`discuss.md`（`planner-drama.md` 只給單集變成作品之前排進的舊請求） |
 | 動畫製作：source-bound 設計、逐鏡造型、試音、對時animatic、pilot、動態攝製、CC與後續配音 | `.agents/skills/youtube-video/references/animation-production.md` |
+| 動畫美術與導演品質：視覺定調、角色表演、鏡頭吸引力、聲畫小樣，以及粗糙畫面的修正 | `.agents/skills/youtube-video/references/visual-quality.md` |
 | 作品：名稱、主幹（每個核准點的討論）、討論串、劇本關卡、一致性（人物表、設定圖存檔、前情）、張力規格、指令、坑 | `.agents/skills/youtube-video/references/series.md` |
 | 作品的代理提示（設定集、總綱、篇章細綱、每集撰稿與查核、前情） | `.agents/skills/youtube-video/references/prompts/series-setting.md`、`series-outline.md`、`series-chapter.md`、`writer-series.md`、`verifier-series.md` |
 | 一鍵合集：一鍵表單與報價、免關卡的規則、節奏規格與爽點、畫面等級上限、`compile` 指令、下載、坑 | `.agents/skills/youtube-video/references/series.md` 的「合集作品（一鍵）」；still 鏡頭的 `visual` 與運鏡關鍵字在 `drama.md` |

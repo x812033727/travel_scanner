@@ -33,6 +33,8 @@
 
 `status --slug <SLUG>` 列的是漫劇的 19 步（`tools/video/core/state.mjs` 的 `DRAMA_STEPS`；`fact-checked` 之後是 `script approved`；沒有 `music` 的影片少一步）。工人（`node tools/video/cli.mjs auto`）照這個順序自己跑；代理手動做一支時也照它。
 
+首次選定美術方向、製作代表 pilot 或收到「粗糙／沒有吸引力」的回饋時，先用 `.agents/skills/youtube-video/references/visual-quality.md` 檢查美術、表演、鏡頭與聲畫節奏。角色圖只是身份參考；首格無變形、片段可解碼與 judge 過線仍不足以放量。既有流程可在授權內繼續修正；只把需要使用者決定的風格、品質取捨或預算問題交給使用者，不逐鏡新增確認。
+
 | # | 階段 | 誰 | 產出 | 關卡 |
 | --- | --- | --- | --- | --- |
 | 1 | 文件：單集由企劃模型（variant `bible`，提示 `.agents/skills/youtube-video/references/prompts/series-bible.md`）寫**故事聖經**（前提、角色、幕、一個大綱、素材、不做的事）→ `POST /video/automation/series/<slug>/docs`（`kind: "bible"`）；作品是設定集 → 總綱 → 篇章細綱（`series.md`）。核准後那一集變 `ready`，工人 `POST …/series/<slug>/episodes/<n>/start`，寫 `<VIDEO_DOCS>/series.json`（人物表、本集細綱、前情、設定全文）與 `brief.md` | 企劃模型、工人 | 站上的文件版本；`<VIDEO_DOCS>/series.json`、`brief.md`（章節「故事前提」「角色」「站主觀點」是 lint 要求的；工人另寫 `## 幕` 與 `## 大綱`，`## 大綱` 只有選項 A，`outline` 關卡讀它） | **站主核准故事聖經**（先在討論串問或要求改也可以；subject `bible`）；退回帶備註最多 `series_doc_rewrites` 輪，討論出的新版本不算；`outline` 關卡由工人本機核准，備註「依故事聖經」 |
