@@ -31,13 +31,14 @@ import { MAX_TEMPO } from "../dubs/plan.mjs";
 import { productionForEpisode } from "../production/design.mjs";
 import { buildSheet, SHEET_PARTS } from "../i18n/cli.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
-import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
+import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
 import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
+import { assembleSheet, clearUnits, readUnits, refusedUnits, sheetUnits, UNIT_CHARS, UNIT_LINES, unitGaps, unitKey, unitVideo, writeUnits } from "./sheet-units.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
@@ -441,6 +442,8 @@ export class Automation {
     // ends the run, and the worker tries again on its next round.
     this.halted = false;
     this.lastAnswer = null;
+    // How much of a translation worksheet one model call is asked for (sheet-units.mjs).
+    this.unitLimits = { lines: UNIT_LINES, chars: UNIT_CHARS };
   }
 
   get workBase() {
@@ -516,7 +519,14 @@ export class Automation {
     // A translation of a video narrated in another language than zh-TW carries that language as
     // "source_locale" (sourceLocale), and the instructions name the same source the payload shows.
     const source = typeof payload?.source_locale === "string" ? payload.source_locale : null;
-    const answer = await this.api.run(stage, slug, instructionsFor(stage, format, standing, variant, this.stance, series, source), payload, maxOutputTokens, format, variant);
+    let answer;
+    try {
+      answer = await this.api.run(stage, slug, instructionsFor(stage, format, standing, variant, this.stance, series, source), payload, maxOutputTokens, format, variant);
+    } catch (error) {
+      // Sent, and its answer lost: move() stops the video rather than pay for the stage again.
+      if (error instanceof AutomationError && error.code === RUN_UNCERTAIN) error.stage ??= stage;
+      throw error;
+    }
     this.log(`  ${stage}: ${answer.model}, ${answer.input_tokens + answer.output_tokens} tokens; month ${answer.usage.tokens}/${answer.usage.token_budget}`);
     this.lastAnswer = answer.text;
     try {
@@ -569,6 +579,20 @@ export class Automation {
   /** A stage worked: its count of failures in a row starts again. */
   cleared(state, what) {
     if (state.failures?.[what]) delete state.failures[what];
+  }
+
+  /**
+   * A stage was sent and its answer never came back (client.mjs RUN_UNCERTAIN): the model may
+   * have run, and been paid for, on the server, which keeps no answer to fetch again. Asking on
+   * its own could pay twice for the same work, so the video stops for a person and this run
+   * ends; the owner's retry on /admin/videos asks once more, and a translation resumes from the
+   * units it kept (sheet-units.mjs).
+   */
+  async unanswered(state, error) {
+    this.halted = true;
+    this.lastAnswer = null;
+    const what = `${error.stage ?? "a stage"}${error.unit ? ` (${error.unit})` : ""}`;
+    return this.block(state, `${what} may have run on the server without its answer reaching the worker (${error.why ?? error.message}); it is not asked again until the owner retries`);
   }
 
   /** One unit of work; returns a line saying what was done, or null when nothing could be. */
@@ -677,6 +701,7 @@ export class Automation {
       // video still on its way to YouTube or already there; nothing while a step of its own is due.
       done ??= await this.languages(state);
     } catch (error) {
+      if (error instanceof AutomationError && error.code === RUN_UNCERTAIN) return this.unanswered(state, error);
       if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
       return this.retryLater(state, error.stage, error.message);
     }
@@ -2051,8 +2076,11 @@ export class Automation {
   /**
    * One locale's translation of the parts the owner chose (docs/videos/LANGUAGES.md): the sheet
    * `i18n-sheet --parts` writes (with each line's dub budget when a dub is chosen), filled by the
-   * translator and read by the caption reviewer, then merged. Null when the sheet has nothing
-   * left to translate; else this run's line.
+   * translator and read by the caption reviewer, then merged. A sheet too long for one model call
+   * is asked in units, one unit a round (sheet-units.mjs); each answer is kept as it comes, so a
+   * round that stops resumes without asking an answered unit again, and only the caption
+   * reviewer's own worksheet completes a unit. Null when the sheet has nothing left to translate;
+   * else this run's line.
    */
   async translateLocale(state, locale, parts, video) {
     const { ctx } = this;
@@ -2062,16 +2090,63 @@ export class Automation {
     const sheetFile = path.join(workdir, "i18n", `${locale}.todo.json`);
     const sheet = readJson(sheetFile, null);
     if (!sheet) return this.block(state, `no ${locale} worksheet was written`);
-    if (sheetDone(sheet, state.thumbnails_asked?.[locale] ?? null)) return null;
-    // The sheet's identity and its thumbnail's source travel with it, whatever the model leaves out.
-    const translated = await this.stage("translator", state.slug, { locale, parts, worksheet: sheet, video, ...sourceLocale(video) }, 32_000, state.format);
-    if (!Array.isArray(translated.worksheet?.lines)) return this.retryLater(state, "translator", `the ${locale} translation returned no worksheet`);
-    const draft = keptWorksheet(translated.worksheet, sheet, locale);
-    writeFileSync(sheetFile, `${JSON.stringify(draft, null, 2)}\n`);
-    const reviewed = await this.stage("caption_reviewer", state.slug, { locale, parts, worksheet: draft, video, ...sourceLocale(video) }, 32_000, state.format);
-    if (Array.isArray(reviewed.worksheet?.lines)) writeFileSync(sheetFile, `${JSON.stringify(keptWorksheet(reviewed.worksheet, sheet, locale, draft), null, 2)}\n`);
+    if (sheetDone(sheet, state.thumbnails_asked?.[locale] ?? null)) {
+      clearUnits(workdir, locale);
+      return null;
+    }
+    const source = sourceLocale(video);
+    const units = sheetUnits(sheet, this.unitLimits);
+    const whole = units.length === 1 && units[0] === sheet;
+    const keys = units.map((unit) => unitKey(unit, source.source_locale ?? null));
+    const kept = readUnits(workdir, locale);
+    const keep = () => writeUnits(workdir, locale, kept, keys);
+    for (const [index, unit] of units.entries()) {
+      if (kept[keys[index]]?.reviewed) continue;
+      const label = whole ? locale : `${locale} part ${index + 1} of ${units.length}`;
+      const ask = async (stage, worksheet) => {
+        try {
+          return await this.stage(stage, state.slug, { locale, parts: whole ? parts : unit.parts, worksheet, video: unitVideo(video, unit, whole), ...source }, 32_000, state.format);
+        } catch (error) {
+          if (error instanceof AutomationError && error.code === RUN_UNCERTAIN) error.unit = label;
+          throw error;
+        }
+      };
+      // The sheet's identity and its thumbnail's source travel with it, whatever the model leaves out.
+      let draft = kept[keys[index]]?.translated ?? null;
+      if (!draft) {
+        const translated = await ask("translator", unit);
+        if (!Array.isArray(translated.worksheet?.lines)) return this.retryLater(state, "translator", `the ${label} translation returned no worksheet`);
+        draft = keptWorksheet(translated.worksheet, unit, locale);
+        const gaps = unitGaps(draft, unit);
+        if (gaps) return this.retryLater(state, "translator", `the ${label} translation ${gaps}`);
+        kept[keys[index]] = { translated: draft };
+        keep();
+      }
+      // A review without its own worksheet leaves the translation kept, unreviewed, for the next
+      // round's reviewer: it never goes in as if it had been read.
+      const reviewed = await ask("caption_reviewer", draft);
+      if (!Array.isArray(reviewed.worksheet?.lines)) return this.retryLater(state, "caption_reviewer", `the ${label} review returned no worksheet; the translation waits for its review`);
+      const checked = keptWorksheet(reviewed.worksheet, unit, locale, draft);
+      const gaps = unitGaps(checked, unit);
+      if (gaps) return this.retryLater(state, "caption_reviewer", `the ${label} review ${gaps}; the translation waits for its review`);
+      kept[keys[index]] = { translated: draft, reviewed: checked };
+      keep();
+      this.cleared(state, "caption_reviewer");
+      if (keys.some((key) => !kept[key]?.reviewed)) {
+        saveState(workdir, state);
+        return `${state.slug}: ${label} translated and reviewed; the next part follows`;
+      }
+    }
+    const finished = whole ? kept[keys[0]].reviewed : assembleSheet(sheet, keys.map((key) => kept[key].reviewed));
+    writeFileSync(sheetFile, `${JSON.stringify(finished, null, 2)}\n`);
     const merged = await run(ctx, ["i18n-merge", "--slug", state.slug, "--locale", locale]);
-    if (merged.code !== 0) return this.retryLater(state, "translator", `the ${locale} translation does not merge: ${lastLine(merged.out, 2)}`);
+    if (merged.code !== 0) {
+      // What the merge refused is asked again; the units it did not name stay kept.
+      for (const unit of refusedUnits(merged.out, units)) delete kept[keys[units.indexOf(unit)]];
+      keep();
+      return this.retryLater(state, "translator", `the ${locale} translation does not merge: ${lastLine(merged.out, 2)}`);
+    }
+    clearUnits(workdir, locale);
     this.cleared(state, "translator");
     // The thumbnail's words were asked for once: words i18n-merge left out (its note) keep the
     // video's own thumbnail for this locale instead of sending the translation round again.

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { locales, normalizeLocale, type Locale } from "@/i18n/routing";
+import { localeCookieAttributes, localeCookieName, locales, normalizeLocale, type Locale } from "@/i18n/routing";
 import { safeNextPath } from "@/lib/navigation";
 import { limitedRequestBody, RequestBodyError } from "@/lib/request-body";
 import { siteUrl } from "@/lib/seo";
@@ -176,12 +176,7 @@ export async function callback(request: NextRequest, providerValue: string) {
     path: "/",
     maxAge: Math.min(payload.expires_in || 3600, 60 * 60 * 24 * 30),
   });
-  response.cookies.set("travel_locale", locale, {
-    secure: secureCookie,
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 365,
-  });
+  response.cookies.set(localeCookieName, locale, localeCookieAttributes());
   if (payload.new_account) {
     response.cookies.set("travel_oauth_registered", "1", {
       secure: secureCookie,
