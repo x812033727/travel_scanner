@@ -1,0 +1,554 @@
+{
+  "schema_version": 1,
+  "episode": "sothatswhy-t27",
+  "reviewer_agent": "facts_t27",
+  "checked_on": "2026-10-02",
+  "status": "PASS_TEXT_FACTS_AND_LISTENER",
+  "review_scope": "Complete current narration, scene text/captions, claims, brief, thumbnail words and YouTube metadata; actual SVG geometry/audio/media/platform excluded",
+  "sources": [
+    {
+      "id": "S1",
+      "url": "https://www.mlit.go.jp/kankocho/news08_00039.html",
+      "publisher": "Japan Tourism Agency",
+      "http_status": 200,
+      "method": "Independent web body read and direct public GET using editorial User-Agent",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "snapshot_sha256": "ea1ca5fb9433586c07601850261d109d7e267a8bbdc196dfb7434a7c258af1de",
+      "snapshot_outside_repo": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-facts-official-release.html"
+    },
+    {
+      "id": "S2",
+      "url": "https://www.mlit.go.jp/kankocho/content/001998584.pdf",
+      "publisher": "Japan Tourism Agency",
+      "http_status": 200,
+      "method": "Independent text read plus local rendering and visual inspection of physical pages 2 and 5, printed pages 1 and 4",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "snapshot_sha256": "c55f14a13dad99f5e881eec69e44d6ed2af187fea6d44654824b4b70a4d41fe1",
+      "snapshot_bytes": 1209883,
+      "snapshot_outside_repo": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-facts-official-001998584.pdf",
+      "printed_pages_read": [
+        1,
+        4
+      ]
+    },
+    {
+      "id": "S3",
+      "url": "https://www.mlit.go.jp/kankocho/content/001998583.pdf",
+      "publisher": "Japan Tourism Agency",
+      "http_status": 200,
+      "method": "Independent web text read and direct editorial GET; dated press release confirms publication date separately from HTML last-updated label",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "snapshot_sha256": "74d33fd593495c2529cf61597570ee8fbfcc0a8ff6b06b6245f1c534469f221f",
+      "snapshot_bytes": 173144,
+      "snapshot_outside_repo": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-facts-official-001998583.pdf",
+      "printed_pages_read": [
+        1
+      ]
+    },
+    {
+      "id": "S4",
+      "url": "https://www.cab.mlit.go.jp/tcab/airport/list/haneda/",
+      "publisher": "MLIT Tokyo Regional Civil Aviation Bureau",
+      "http_status": 200,
+      "method": "Independent web body read and direct editorial GET confirming Tokyo International Airport is Haneda",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "snapshot_sha256": "619f36dcab77a4b1b5d49eac3d2f4157b9b9b2276e538cf50abec3d4ea94af10",
+      "snapshot_outside_repo": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-facts-official-haneda.html"
+    }
+  ],
+  "source_facts": [
+    {
+      "id": "F1",
+      "fact": "Release updated and published 2026-04-28",
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "verdict": "CONFIRMED"
+    },
+    {
+      "id": "F2",
+      "fact": "Fieldwork period 2025-11-18 to 2026-01-13",
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "verdict": "CONFIRMED"
+    },
+    {
+      "id": "F3",
+      "fact": "4,110 foreign visitors before departure from Japan at five named airports",
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "verdict": "CONFIRMED"
+    },
+    {
+      "id": "F4",
+      "fact": "Face-to-face questionnaire at Narita, Tokyo International (Haneda), Kansai, Fukuoka and New Chitose",
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "verdict": "CONFIRMED"
+    },
+    {
+      "id": "F5",
+      "fact": "Current trash-bin scarcity difficulty item 17.2%, ranked first among difficulty items",
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "verdict": "CONFIRMED"
+    },
+    {
+      "id": "F6",
+      "fact": "Current no-difficulty response 43.7%",
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "verdict": "CONFIRMED"
+    },
+    {
+      "id": "F7",
+      "fact": "The main travel-difficulty question permits multiple responses; current denominator n=4,110",
+      "sources": [
+        "S2"
+      ],
+      "printed_page": 4,
+      "verdict": "CONFIRMED"
+    },
+    {
+      "id": "F8",
+      "fact": "Separate internet post/review analysis has 2,000 items; it is not 2,000 additional face-to-face respondents",
+      "sources": [
+        "S2"
+      ],
+      "printed_page": 1,
+      "verdict": "CONFIRMED"
+    },
+    {
+      "id": "F9",
+      "fact": "Prior year trash-bin scarcity 21.9%, current 17.2%, difference 4.7 percentage points",
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "verdict": "CONFIRMED"
+    }
+  ],
+  "boundaries": [
+    "Rank one among difficulty items does not mean over half of respondents.",
+    "No-difficulty 43.7% is not the complement of trash-bin scarcity 17.2%.",
+    "Multi-response difficulty percentages do not partition a pie or sum to mutually exclusive people.",
+    "A visitor experience questionnaire does not establish a national street-bin inventory or a single historical cause.",
+    "No claim of nationally random or representative sampling is supported by these sources.",
+    "Physical airports and fieldwork dates must not be replaced by all residents, all visitors, all streets or all year."
+  ],
+  "script_binding": {
+    "video_sha256": "89d7d0fb16acfb196d5f19f6f9cc96a776b69b08234a492f1d3e8fd7078d494c",
+    "claims_sha256": "2b29857d6720932ac286992e0467f63700624249634a251541aa6a102afc0518",
+    "brief_sha256": "25afc729f4c2243d98eedac3e1e2134b411da10a3b178e225e1734bb5201e62b",
+    "raw_script_sha256": "4ff9e7a0005e915f58199825e2b04cf04f0289471b4395ad2f85507a27b0840c",
+    "semantic_source_sha256": "b5216546e839ec897a8e9ef67f1325b2f803026fe44620d0255ab64152ba57f0",
+    "semantics_definition": "JSON serialization of youtube, thumbnail, sources, ordered scenes with id/chapter/template/claims/non-svg data and ordered line id/text/say/say_for; assets/svg paths excluded",
+    "report_sha256": "783cdf2689cb1c7f32b05681f900b820f99a3b6ca54a072584f569e87e4e0131",
+    "line_count": 137,
+    "scene_count": 137,
+    "chapter_count": 6,
+    "spoken_han_units": 2201
+  },
+  "audio_listened": false,
+  "visual_assets_verified": false,
+  "final_media_verified": false,
+  "platform_verified": false,
+  "published": false,
+  "checked_at": "2026-10-02T13:06:04.038Z",
+  "claim_verdicts": [
+    {
+      "id": "c6",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c1-s01",
+        "c1-s03",
+        "c1-s04",
+        "c3-s20",
+        "c4-s01",
+        "c4-s02",
+        "c4-s03",
+        "c5-s21",
+        "c6-s03",
+        "c6-s05",
+        "c6-s06",
+        "c6-s22",
+        "c6-s23",
+        "c6-s24"
+      ]
+    },
+    {
+      "id": "m1",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c1-s01",
+        "c1-s02",
+        "c1-s04",
+        "c1-s08",
+        "c1-s09",
+        "c1-s14",
+        "c1-s15",
+        "c1-s16",
+        "c1-s17",
+        "c6-s02",
+        "c6-s06",
+        "c6-s21",
+        "c6-s24"
+      ]
+    },
+    {
+      "id": "e2",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c1-s05",
+        "c1-s06",
+        "c1-s07",
+        "c2-s12",
+        "c2-s13",
+        "c2-s14",
+        "c2-s15",
+        "c2-s20",
+        "c3-s06",
+        "c3-s07",
+        "c3-s08",
+        "c3-s09",
+        "c3-s11",
+        "c3-s13",
+        "c3-s14",
+        "c3-s15",
+        "c5-s01",
+        "c5-s02",
+        "c5-s03",
+        "c5-s04",
+        "c5-s05",
+        "c5-s06",
+        "c5-s07",
+        "c5-s08",
+        "c5-s09",
+        "c5-s11",
+        "c5-s12",
+        "c5-s13",
+        "c5-s14",
+        "c5-s16",
+        "c5-s18",
+        "c5-s22",
+        "c5-s23",
+        "c6-s01",
+        "c6-s02",
+        "c6-s07",
+        "c6-s14",
+        "c6-s17",
+        "c6-s19"
+      ]
+    },
+    {
+      "id": "e1",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c1-s10",
+        "c1-s11",
+        "c1-s12",
+        "c1-s13",
+        "c1-s14",
+        "c4-s11",
+        "c4-s12",
+        "c4-s13",
+        "c4-s14",
+        "c4-s15",
+        "c4-s16",
+        "c4-s17",
+        "c4-s18",
+        "c4-s19",
+        "c4-s20",
+        "c4-s21",
+        "c4-s22",
+        "c4-s23",
+        "c4-s25",
+        "c4-s28",
+        "c4-s29",
+        "c6-s11"
+      ]
+    },
+    {
+      "id": "c3",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c1-s18",
+        "c2-s02",
+        "c2-s03",
+        "c2-s04",
+        "c2-s05",
+        "c2-s07",
+        "c2-s09",
+        "c2-s11",
+        "c2-s16",
+        "c2-s17",
+        "c6-s04",
+        "c6-s06",
+        "c6-s16",
+        "c6-s23"
+      ]
+    },
+    {
+      "id": "m2",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c2-s01",
+        "c2-s06",
+        "c2-s18",
+        "c4-s06",
+        "c4-s07",
+        "c4-s08",
+        "c4-s10",
+        "c4-s17",
+        "c4-s21",
+        "c4-s23",
+        "c4-s24",
+        "c4-s25",
+        "c4-s26",
+        "c4-s27",
+        "c4-s29",
+        "c6-s10",
+        "c6-s12"
+      ]
+    },
+    {
+      "id": "c5",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c2-s07",
+        "c2-s08",
+        "c2-s09",
+        "c2-s13",
+        "c4-s06",
+        "c4-s07",
+        "c4-s08",
+        "c4-s09",
+        "c4-s10",
+        "c5-s02",
+        "c5-s06",
+        "c6-s10",
+        "c6-s13"
+      ]
+    },
+    {
+      "id": "m4",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c2-s09",
+        "c2-s14",
+        "c2-s15",
+        "c2-s17",
+        "c2-s19",
+        "c2-s21",
+        "c3-s05",
+        "c3-s12",
+        "c3-s17",
+        "c4-s30",
+        "c5-s05",
+        "c5-s07",
+        "c5-s10",
+        "c5-s13",
+        "c5-s14",
+        "c5-s15",
+        "c5-s16",
+        "c5-s17",
+        "c5-s18",
+        "c5-s19",
+        "c5-s20",
+        "c5-s22",
+        "c6-s17",
+        "c6-s18",
+        "c6-s20"
+      ]
+    },
+    {
+      "id": "c4",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c2-s10",
+        "c2-s11"
+      ]
+    },
+    {
+      "id": "c2",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c2-s22",
+        "c3-s01",
+        "c3-s02",
+        "c3-s03",
+        "c3-s04",
+        "c3-s05",
+        "c3-s06",
+        "c3-s07",
+        "c3-s12",
+        "c3-s16",
+        "c3-s18",
+        "c3-s19",
+        "c6-s13",
+        "c6-s15"
+      ]
+    },
+    {
+      "id": "c1",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c3-s01",
+        "c3-s10",
+        "c3-s11",
+        "c3-s12",
+        "c3-s16",
+        "c3-s18",
+        "c6-s13",
+        "c6-s15"
+      ]
+    },
+    {
+      "id": "c7",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c3-s20",
+        "c4-s01",
+        "c4-s04",
+        "c4-s05",
+        "c6-s08",
+        "c6-s09"
+      ]
+    },
+    {
+      "id": "c8",
+      "verdict": "CONFIRMED",
+      "scene_ids": [
+        "c4-s30",
+        "c5-s15",
+        "c5-s17",
+        "c5-s19",
+        "c6-s16",
+        "c6-s18"
+      ]
+    }
+  ],
+  "summary": {
+    "confirmed_claim_ids": 13,
+    "unresolved": 0,
+    "official_fact_data_changes": 0,
+    "clarity_corrections": 3,
+    "early_metadata_question_scope_fix": true,
+    "second_round_required": false,
+    "listener": {
+      "status": "PASS_TEXT_LISTENER",
+      "longest_line_characters": 22,
+      "lines_over_40": 0,
+      "latin_lines": 0,
+      "url_or_parentheses_lines": 0,
+      "manual_pause_overrides": 0,
+      "verification_process_talk": 0,
+      "estimated_hook": {
+        "first_line_end_seconds": 5.1,
+        "answer_line_end_seconds": 15.066666666666666,
+        "distinction_line_end_seconds": 20.4,
+        "actual_audio_timing_pending": true
+      }
+    },
+    "lint": {
+      "command": "node tools/video/cli.mjs lint --slug sothatswhy-t27",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 1,
+      "warning": "The entire opening chapter estimates about87seconds; first four sentences already deliver question,17.2%,and rank/majority distinction. Actual opening audio timing pending.",
+      "spoken_units": 2201
+    },
+    "media_duration_status": "PENDING_ACTUAL_WAV_AND_MP4",
+    "first_source_sha256": "0f55147f50b4fae28fd4619ab99ceb4ad15a0b91701ac226833792b69e46c66d",
+    "listener_rewrite_rounds": 1,
+    "listener_rewrite_line_count": 1,
+    "listener_rewrite_fact_data_changes": 0
+  },
+  "assets_only_rebinding": {
+    "checked_at": "2026-10-02T13:18:54.959Z",
+    "prior_binding": {
+      "video_sha256": "7e698bef3530d80801ca1d07ffc6c6a250b5a2244f6477ab6832a290c1c13543",
+      "claims_sha256": "2b29857d6720932ac286992e0467f63700624249634a251541aa6a102afc0518",
+      "brief_sha256": "25afc729f4c2243d98eedac3e1e2134b411da10a3b178e225e1734bb5201e62b",
+      "raw_script_sha256": "fba8c240ce1ee225411e286a4fcd79f16a5bb0d4fc6ea1da5d685abc2b7f5ec8",
+      "semantic_source_sha256": "4d5e4c594a71c55a4c9db54c4405eeeaebb9a23ca2c5188ae20e51ff46adcc9c",
+      "semantics_definition": "JSON serialization of youtube, thumbnail, sources, ordered scenes with id/chapter/template/claims/non-svg data and ordered line id/text/say/say_for; assets/svg paths excluded",
+      "report_sha256": "5a70fc135b1b1dc8b15474f483ebacf7f5e0d8bddfbea8a6c44180d1cff80aac",
+      "line_count": 137,
+      "scene_count": 137,
+      "chapter_count": 6,
+      "spoken_han_units": 2200
+    },
+    "current_video_sha256": "d5060ca87298ca4dd6906d338db5866ef62eab8614b06a99f9fe4a3e5a93e335",
+    "comparison_sha256": "378c628d6bce06509242af4a68b0eefd695bb2701f38a106ba61419f4928124d",
+    "comparison_outside_repo": "C:\\Users\\x8120\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-facts-assets-only-comparison.json",
+    "changed_top_level_keys": [
+      "assets"
+    ],
+    "semantic_scene_differences": [],
+    "raw_script_unchanged": true,
+    "semantic_source_unchanged": true,
+    "claims_unchanged": true,
+    "brief_unchanged": true,
+    "registered_asset_count": 130,
+    "registration_manifest_sha256": "4713d4455e5d2c14ca2f5d8e6a62247e888da903e3f661c4efb05e9f78349af1",
+    "actual_svg_geometry_reviewed": false,
+    "audio_gate_or_media_verdict_asserted": false
+  },
+  "listener_rewrite1_binding": {
+    "checked_at": "2026-10-02T14:24:22.978Z",
+    "verdict": "PASS_EQUIVALENT_LISTENER_REWRITE",
+    "prior_binding": {
+      "video_sha256": "d5060ca87298ca4dd6906d338db5866ef62eab8614b06a99f9fe4a3e5a93e335",
+      "claims_sha256": "2b29857d6720932ac286992e0467f63700624249634a251541aa6a102afc0518",
+      "brief_sha256": "25afc729f4c2243d98eedac3e1e2134b411da10a3b178e225e1734bb5201e62b",
+      "raw_script_sha256": "fba8c240ce1ee225411e286a4fcd79f16a5bb0d4fc6ea1da5d685abc2b7f5ec8",
+      "semantic_source_sha256": "4d5e4c594a71c55a4c9db54c4405eeeaebb9a23ca2c5188ae20e51ff46adcc9c",
+      "semantics_definition": "JSON serialization of youtube, thumbnail, sources, ordered scenes with id/chapter/template/claims/non-svg data and ordered line id/text/say/say_for; assets/svg paths excluded",
+      "report_sha256": "2d64b5c4c7828cb219da1c1ec808bdd5f4e2e2cb5e6b337e19855f9606c09fff",
+      "line_count": 137,
+      "scene_count": 137,
+      "chapter_count": 6,
+      "spoken_han_units": 2200
+    },
+    "current_video_sha256": "89d7d0fb16acfb196d5f19f6f9cc96a776b69b08234a492f1d3e8fd7078d494c",
+    "initial_video_sha256": "7e698bef3530d80801ca1d07ffc6c6a250b5a2244f6477ab6832a290c1c13543",
+    "initial_raw_script_sha256": "fba8c240ce1ee225411e286a4fcd79f16a5bb0d4fc6ea1da5d685abc2b7f5ec8",
+    "initial_semantic_source_sha256": "4d5e4c594a71c55a4c9db54c4405eeeaebb9a23ca2c5188ae20e51ff46adcc9c",
+    "current_raw_script_sha256": "4ff9e7a0005e915f58199825e2b04cf04f0289471b4395ad2f85507a27b0840c",
+    "current_semantic_source_sha256": "b5216546e839ec897a8e9ef67f1325b2f803026fe44620d0255ab64152ba57f0",
+    "changed_lines": [
+      {
+        "scene": "c1-s17",
+        "id": "63kr",
+        "before": "把兩個問題分開，第一名才不會越講越大。",
+        "after": "把兩個問題分開，就不會把第一名當成多數。"
+      }
+    ],
+    "other_unchanged_line_count": 136,
+    "official_fact_data_changes": 0,
+    "claim_ids_unchanged": true,
+    "metadata_unchanged": true,
+    "claims_unchanged": true,
+    "brief_unchanged": true,
+    "comparison_outside_repo": "C:\\Users\\x8120\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-facts-listener-rewrite1-comparison.json",
+    "comparison_sha256": "974c71487d5c0ef377fc5a77b760e0d9fdf847f722a628b411c784390319218c",
+    "root_rewrite_receipt_sha256": "5d50dff7039f9fae48fa9080f2e77842e99cb2a151eabfd5dcac2e209c776334",
+    "current_manifest_sha256": "260ed6f4a37ce2199e8ef563fc0de0b4d92bd3368b67b89d5d4809927b538bda",
+    "manifest_entry_text_caption_path_current_count": 130,
+    "current_svg_byte_binding_count": 130,
+    "whole_svg_geometry_reviewed": false,
+    "new_audio_or_body_pass_asserted": false
+  }
+}

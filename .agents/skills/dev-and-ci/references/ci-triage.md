@@ -32,6 +32,7 @@ PR 只跑 `pull_request` 事件、同一個 PR 的新 push 會取消舊 run（`c
 | `site-pages.spec.ts` 的 `Response has been disposed` | 測試在 `/auth/me` route handler 的 `route.fetch()` 與 `json()` 之間就結束 | 已修：先 `waitForResponse` 等 session 回應再斷言；新的短後台測試也要這樣寫 |
 | `FinalizeArtifact 403` | artifact 儲存量爆掉 | 已修：測試結果只在失敗或取消時上傳 |
 | vitest 在負載下偶發紅：關閉守衛落後一個 render、Escape 沒反應、焦點沒移過去（trip-editor、travel-card-actions、route-mode-panel 那一族），單獨跑永遠過 | passive effect 空檔（下一節） | 已修那四個；新的同型症狀照下一節處理 |
+| vitest 在本機 Windows 整套跑時紅：`findBy…` 找不到按鈕或文字，DOM 還停在「載入中」（account-panel 的複製流水號、itinerary-place-browser 第一個 case、search-experience 的 saved trip），單獨跑通過，CI 綠 | 機器被別的工作吃滿（多個代理、build、API 測試；CPU 100%、可用記憶體不到 1 GB）。每個檔案第一個要等 fetch→effect→render 鏈的 `findBy` 最慢（無負載約 0.4 秒），超過 RTL 預設 1 秒就紅；同檔後面的 case 已經熱身所以過。不是 passive effect 空檔 | 不要加 timeout、retry 或改斷言。CPU 被占滿時（例如開 10 個忙碌 node 程序）可以確定重現。驗證時，本機整套結果要在機器閒置時跑才算數，否則以 CI 為準；單檔紅了先看工作管理員 |
 | 手機專案的點擊一直 `intercepts pointer events`，桌面過 | 版面被撐寬，座標全部位移 | 見 browser-measurement.md |
 | 兩個各自會過的 PR 合在一起才壞 | 例：`server-only` 模組被 sitemap import | 見 checks.md |
 
