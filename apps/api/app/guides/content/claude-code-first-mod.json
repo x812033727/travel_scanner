@@ -1,0 +1,879 @@
+{
+  "slug": "claude-code-first-mod",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "featured": false,
+  "display_order": 197,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code｜建立第一個 mod：在 Claude Code 行程內數工具呼叫",
+      "description": "寫一個三檔案的 mod，用驗證器與測試確認它掛上的事件。文件把 mod 定義成多了入口檔的 plugin：入口檔叫 hooks module，Claude Code 在事件發生時呼叫裡面的函式，函式可以觀察、改寫或接手事件。",
+      "hero": {
+        "src": "/guides/claude-code-first-mod/hero.jpg",
+        "alt": "建立第一個 mod：在 Claude Code 行程內數工具呼叫：文件、螢幕與完成記號的幾何插圖",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "設定檔裡的 Hook 在 Claude Code 外部執行。想在行程內數工具呼叫、把次數顯示在 spinner 旁，文件的做法是 mod。本篇照官方教學建立 first-mod：三個檔案、四個事件函式，再用 "
+            },
+            {
+              "type": "code",
+              "text": "claude plugin validate"
+            },
+            {
+              "type": "text",
+              "text": " 看 Claude Code 讀到什麼、用 "
+            },
+            {
+              "type": "code",
+              "text": "claude plugin test"
+            },
+            {
+              "type": "text",
+              "text": " 寫不需要 session 的測試。交付是能載入的 first-mod、一個通過的測試，與驗證器的 hooks、calls 兩行紀錄。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先讀 "
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-plugins-guide",
+              "text": "Plugins 入門"
+            },
+            {
+              "type": "text",
+              "text": "、"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hooks-getting-started",
+              "text": "建立第一個 Hook"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-plugin-team-distribution",
+              "text": "Plugin 打包"
+            },
+            {
+              "type": "text",
+              "text": "。下載"
+            },
+            {
+              "type": "link",
+              "url": "https://mokaair.com/tutorials/claude-code/advanced/lesson-97.zip",
+              "text": "第 97 篇材料"
+            },
+            {
+              "type": "text",
+              "text": "，在 starter 的 "
+            },
+            {
+              "type": "code",
+              "text": "first-mod"
+            },
+            {
+              "type": "text",
+              "text": " 操作：它只有 plugin.json 與 hooks.json，其餘由你寫，reference 有四個檔可對照。需要 Claude Code v2.1.287 or later（用 "
+            },
+            {
+              "type": "code",
+              "text": "claude --version"
+            },
+            {
+              "type": "text",
+              "text": " 檢查）；互動試用需要你自己登入的 Claude Code，validate 與 test 不需要 session。閱讀約 20 分鐘，實作約 40 分鐘。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "驗證範圍",
+          "text": "本文依官方文件核對功能與步驟，來源日期列於文末。Claude 帳號登入、外部服務與裝置操作需在你的環境實際驗證；本文不將文件查證視為已替讀者完成操作。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "mod 是什麼，和設定檔 Hook 差在哪"
+        },
+        {
+          "type": "image",
+          "src": "/guides/claude-code-first-mod/diagram-1.svg",
+          "alt": "mod 是什麼，和設定檔 Hook 差在哪 → 寫三個檔案 → 載入並試用",
+          "width": 1600,
+          "height": 900,
+          "caption": "mod 是什麼，和設定檔 Hook 差在哪 → 寫三個檔案 → 載入並試用",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "paragraph",
+          "text": "文件把 mod 定義成多了入口檔的 plugin：入口檔叫 hooks module，Claude Code 在事件發生時呼叫裡面的函式，函式可以觀察、改寫或接手事件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用詞先講清楚：官方文件把 mod 的事件處理函式與設定檔的 settings hook 都叫 hook。本篇固定稱後者「設定檔 Hook」、前者「mod 的事件函式」。設定檔 Hook 在行程外運作、不能畫進介面；mod 在行程內，可畫 pane 或改寫 spinner。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "寫三個檔案"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "plugin.json 是一般的 manifest，mod 沒有額外必填欄位。hooks.json 的 "
+            },
+            {
+              "type": "code",
+              "text": "modules"
+            },
+            {
+              "type": "text",
+              "text": " 是只放一個相對路徑的陣列，文件說有了它才算 mod。register.js 是入口。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "編輯器：確認目錄結構",
+          "code": "first-mod/\n├── .claude-plugin/\n│   └── plugin.json\n├── hooks/\n│   ├── hooks.json\n│   └── register.js\n└── tests/\n    └── first-mod.test.ts\n"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "寫入 first-mod/.claude-plugin/plugin.json",
+          "code": "{\n  \"name\": \"first-mod\",\n  \"version\": \"0.1.0\",\n  \"description\": \"Counts Claude's tool calls, shows the count beside the spinner, and adds a /tally command\",\n  \"author\": { \"name\": \"Mokaair tutorial\" }\n}\n"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "label": "寫入 first-mod/hooks/hooks.json",
+          "code": "{\n  \"description\": \"The first-mod hooks module\",\n  \"modules\": [\"./register.js\"]\n}\n"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "寫入 first-mod/hooks/register.js",
+          "code": "// The count, shared by the hooks below\nlet calls = 0\n\n// Claude Code calls this once when the mod loads\nexport function register(on) {\n  // Runs when the session starts, before your first prompt\n  on('session.start', async ($, e, next) => {\n    // Add the /tally command\n    await $.command.register({\n      name: 'tally',\n      description: 'Show how many tool calls Claude has made',\n    })\n    // Let the session start as usual\n    return next(e)\n  })\n\n  // Runs each time Claude is about to use a tool\n  on('tool.call', async ($, e, next) => {\n    calls += 1\n    // Ask Claude Code to draw the interface again, so the new count shows\n    $.ui.invalidate('ui.render')\n    // Let the tool run as usual\n    return next(e)\n  })\n\n  // Runs when you type /tally, and only then, because of the matcher\n  on('command.run', { command: 'tally' }, async () => {\n    // The text to print in the transcript\n    return { text: 'Claude has made ' + calls + ' tool calls since this mod loaded' }\n  })\n\n  // Runs each time Claude Code draws the spinner\n  on('ui.render', { component: 'Spinner' }, async ($, e, next) => {\n    // Keep Claude Code's spinner, with the count added after its word\n    return next({ ...e, props: { ...e.props, suffix: ' · tool calls: ' + calls + '…' } })\n  })\n}\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "code",
+              "text": "session.start"
+            },
+            {
+              "type": "text",
+              "text": " 註冊 /tally，"
+            },
+            {
+              "type": "code",
+              "text": "tool.call"
+            },
+            {
+              "type": "text",
+              "text": " 計數並要求重畫，"
+            },
+            {
+              "type": "code",
+              "text": "command.run"
+            },
+            {
+              "type": "text",
+              "text": " 只在 /tally 時回覆，"
+            },
+            {
+              "type": "code",
+              "text": "ui.render"
+            },
+            {
+              "type": "text",
+              "text": " 把次數接在 spinner 字後。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "每個事件函式拿到三個引數："
+            },
+            {
+              "type": "code",
+              "text": "$"
+            },
+            {
+              "type": "text",
+              "text": " 是 mods API，能呼叫的方法都在上面；"
+            },
+            {
+              "type": "code",
+              "text": "e"
+            },
+            {
+              "type": "text",
+              "text": " 是凍結的事件資料，要改就傳複本；"
+            },
+            {
+              "type": "code",
+              "text": "next"
+            },
+            {
+              "type": "text",
+              "text": " 把事件交給後面的 mod 與 Claude Code 自己的行為。處理有三種：觀察（回傳 "
+            },
+            {
+              "type": "code",
+              "text": "next(e)"
+            },
+            {
+              "type": "text",
+              "text": "）、接手（如 "
+            },
+            {
+              "type": "code",
+              "text": "command.run"
+            },
+            {
+              "type": "text",
+              "text": "，不呼叫 "
+            },
+            {
+              "type": "code",
+              "text": "next"
+            },
+            {
+              "type": "text",
+              "text": "，第二個引數 "
+            },
+            {
+              "type": "code",
+              "text": "{ command: 'tally' }"
+            },
+            {
+              "type": "text",
+              "text": " 是 matcher）、改寫（如 "
+            },
+            {
+              "type": "code",
+              "text": "ui.render"
+            },
+            {
+              "type": "text",
+              "text": "，把複本交給 "
+            },
+            {
+              "type": "code",
+              "text": "next"
+            },
+            {
+              "type": "text",
+              "text": "）。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "載入並試用"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "用 "
+            },
+            {
+              "type": "code",
+              "text": "--plugin-dir"
+            },
+            {
+              "type": "text",
+              "text": " 載入，只限這一次 session，不會安裝。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：載入 first-mod",
+          "code": "claude --plugin-dir ./first-mod\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "Claude Code 對話框：要求幾次工具呼叫",
+          "code": "請列出這個資料夾的檔案，再讀 README。\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "文件說明的預期：spinner 字後有往上數的次數，如 "
+            },
+            {
+              "type": "code",
+              "text": "Thinking · tool calls: 2…"
+            },
+            {
+              "type": "text",
+              "text": "；/tally 預期回覆次數，文字前有 "
+            },
+            {
+              "type": "code",
+              "text": "first-mod:"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            },
+            {
+              "type": "code",
+              "text": "claude -p"
+            },
+            {
+              "type": "text",
+              "text": " 不畫介面，預期印出 0 次；"
+            },
+            {
+              "type": "code",
+              "text": "/plugin"
+            },
+            {
+              "type": "text",
+              "text": " 的 Installed 分頁預期列出 mod，分頁下方有 "
+            },
+            {
+              "type": "code",
+              "text": "1 mod active · first-mod"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：非互動檢查 /tally",
+          "code": "claude -p \"/tally\" --plugin-dir ./first-mod\n"
+        },
+        {
+          "type": "paragraph",
+          "text": "以上是文件的預期。本站只在容器用 Claude Code 2.1.289 跑過 validate 與 test，沒跑互動 session。請自己寫 observation.md：版本、spinner 原文、/tally 輸出、/plugin 那一行；不同就照實寫。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "改一行字，看熱重載"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "session 不關，把 "
+            },
+            {
+              "type": "code",
+              "text": "ui.render"
+            },
+            {
+              "type": "text",
+              "text": " 的 "
+            },
+            {
+              "type": "code",
+              "text": "' · tool calls: '"
+            },
+            {
+              "type": "text",
+              "text": " 改成 "
+            },
+            {
+              "type": "code",
+              "text": "' · tools used: '"
+            },
+            {
+              "type": "text",
+              "text": " 並存檔。文件說預期 transcript 出現 first-mod 已重載的一行，下一次 spinner 變成 "
+            },
+            {
+              "type": "code",
+              "text": "Thinking · tools used: 1…"
+            },
+            {
+              "type": "text",
+              "text": "；請記下原文。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "label": "修改 first-mod/hooks/register.js 的 ui.render 事件函式",
+          "code": "    return next({ ...e, props: { ...e.props, suffix: ' · tools used: ' + calls + '…' } })\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "每次重載都再執行 "
+            },
+            {
+              "type": "code",
+              "text": "register"
+            },
+            {
+              "type": "text",
+              "text": "，所以 "
+            },
+            {
+              "type": "code",
+              "text": "calls"
+            },
+            {
+              "type": "text",
+              "text": " 歸零；跨重載保留的做法，文件指向 "
+            },
+            {
+              "type": "code",
+              "text": "$.state"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "用驗證器看 Claude Code 讀到什麼"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "code",
+              "text": "claude plugin validate"
+            },
+            {
+              "type": "text",
+              "text": " 對 manifest 與 hooks module 做載入時同一套靜態分析，不執行程式也不開 session。已在本課材料上執行過（符號與文件範例不同）："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：驗證 first-mod",
+          "code": "claude plugin validate ./first-mod\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：驗證輸出（容器實際輸出，節錄）",
+          "code": "  > ./register.js hooks: session.start, tool.call, command.run{command=tally}, ui.render{component=Spinner}\n  > ./register.js calls: $.command.register, $.ui.invalidate\n\n√ Validation passed\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "code",
+              "text": "hooks:"
+            },
+            {
+              "type": "text",
+              "text": " 行是掛上的事件與篩選，"
+            },
+            {
+              "type": "code",
+              "text": "calls:"
+            },
+            {
+              "type": "text",
+              "text": " 行是呼叫的每個 mods API 方法。事件沒列在第一行，Claude Code 就不會呼叫它；拼成 "
+            },
+            {
+              "type": "code",
+              "text": "tool.calls"
+            },
+            {
+              "type": "text",
+              "text": " 會報 "
+            },
+            {
+              "type": "code",
+              "text": "\"tool.calls\" is not an event"
+            },
+            {
+              "type": "text",
+              "text": "。規則如下："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "mods API 呼叫要寫完整，如 `$.store.get('notes')`；`const ui = $.ui` 會報 `$.ui is used as a value`。",
+            "事件名要是字串字面值，用變數會報 `the event name passed to on() is not a string literal`。",
+            "只用相對路徑匯入目錄內的檔案，唯一的裸匯入是 `claude-code`；寫成 ES module，不用 `require`。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "載入時 Claude Code 會把依你版本產生的 "
+            },
+            {
+              "type": "code",
+              "text": ".d.ts"
+            },
+            {
+              "type": "text",
+              "text": " 型別檔寫進 "
+            },
+            {
+              "type": "code",
+              "text": ".claude-plugin/types/"
+            },
+            {
+              "type": "text",
+              "text": "，文件說與頁面不一致時以它們為準。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "寫一個不用 session 的測試"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "測試檔名以 "
+            },
+            {
+              "type": "code",
+              "text": ".test.ts"
+            },
+            {
+              "type": "text",
+              "text": " 結尾。這個測試觸發兩次工具呼叫，再執行 /tally。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "typescript",
+          "label": "寫入 first-mod/tests/first-mod.test.ts",
+          "code": "import { expect, test } from 'claude-code/testing'\n\ntest('/tally reports the tool calls the mod has seen', async ($, on) => {\n  // Answer each tool call in Claude Code's place, so no tool runs\n  on('tool.call', () => ({ result: 'ok' }))\n\n  // Fire two tool calls, which the mod's tool.call hook counts\n  await $.tool.call({ tool: 'Bash', command: 'ls' })\n  await $.tool.call({ tool: 'Read', file_path: 'README.md' })\n\n  // Run /tally and check the text its hook returns\n  const answer = await $.command.run({ command: 'tally', args: '' })\n  expect(answer.text).toBe('Claude has made 2 tool calls since this mod loaded')\n})\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "測試的 "
+            },
+            {
+              "type": "code",
+              "text": "$"
+            },
+            {
+              "type": "text",
+              "text": " 扮演 Claude Code。"
+            },
+            {
+              "type": "code",
+              "text": "$.tool.call(...)"
+            },
+            {
+              "type": "text",
+              "text": " 先經過 mod 的 "
+            },
+            {
+              "type": "code",
+              "text": "tool.call"
+            },
+            {
+              "type": "text",
+              "text": " 事件函式，再交給 stub："
+            },
+            {
+              "type": "code",
+              "text": "on('tool.call', () => ({ result: 'ok' }))"
+            },
+            {
+              "type": "text",
+              "text": " 代替 Claude Code 回答，所以沒有 "
+            },
+            {
+              "type": "code",
+              "text": "ls"
+            },
+            {
+              "type": "text",
+              "text": " 真的執行。stub 要在第一次呼叫 "
+            },
+            {
+              "type": "code",
+              "text": "$"
+            },
+            {
+              "type": "text",
+              "text": " 前登記。"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：在 first-mod 目錄跑測試",
+          "code": "claude plugin test\n"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "專案終端機：測試輸出（容器實際輸出）",
+          "code": "tests/first-mod.test.ts:\n(pass) /tally reports the tool calls the mod has seen [72.16ms]\n\n 1 pass\n 0 fail\nRan 1 test across 1 file. [0.32s]\n"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "測試失敗時命令以狀態 1 結束，可進 CI。測試沒有觸發 "
+            },
+            {
+              "type": "code",
+              "text": "session.start"
+            },
+            {
+              "type": "text",
+              "text": "，所以 /tally 並未註冊卻仍通過；指令是否在清單裡，要靠互動 session 的紀錄。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "安全與界線"
+        },
+        {
+          "type": "paragraph",
+          "text": "mod 以你的權限在行程內執行：可讀寫你帳號能碰的檔案、啟動程式、發網路請求、讀環境變數與設定檔裡的 API key、看到每個提示與工具呼叫，也能在你被詢問前核准工具呼叫。它不在沙盒裡；文件的結論是只從信得過的作者安裝。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "validate 的 calls 行是檢查點：文件說事件函式要碰到自己以外的東西，只能呼叫 mods API。first-mod 只呼叫 "
+            },
+            {
+              "type": "code",
+              "text": "$.command.register"
+            },
+            {
+              "type": "text",
+              "text": " 與 "
+            },
+            {
+              "type": "code",
+              "text": "$.ui.invalidate"
+            },
+            {
+              "type": "text",
+              "text": "，沒有檔案、行程或網路。安裝別人的 mod 前，可先對取得的目錄跑 validate，原始碼仍要讀。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "code",
+              "text": "--plugin-dir"
+            },
+            {
+              "type": "text",
+              "text": " 載入的目錄是 protected path，請 Claude 修改時，default 與 acceptEdits 模式會逐次詢問你。分享給別人時，在 README 寫明你測試用的版本。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "完成判準與小練習"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成判準：validate 的 hooks 行列出四個事件、calls 行列出兩個方法；plugin test 一個測試通過；熱重載後 spinner 文字改變有紀錄。前兩項本站在容器驗證過（2.1.289，2026-10-04），後兩項是文件預期，沒完成就標成待測。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "故障練習請保存實際輸出：把 "
+            },
+            {
+              "type": "code",
+              "text": "'tool.call'"
+            },
+            {
+              "type": "text",
+              "text": " 改成 "
+            },
+            {
+              "type": "code",
+              "text": "'tool.calls'"
+            },
+            {
+              "type": "text",
+              "text": "，預期 "
+            },
+            {
+              "type": "code",
+              "text": "\"tool.calls\" is not an event"
+            },
+            {
+              "type": "text",
+              "text": "；改回後，把 "
+            },
+            {
+              "type": "code",
+              "text": "$.ui.invalidate('ui.render')"
+            },
+            {
+              "type": "text",
+              "text": " 改成先寫 "
+            },
+            {
+              "type": "code",
+              "text": "const ui = $.ui"
+            },
+            {
+              "type": "text",
+              "text": " 再呼叫，預期 "
+            },
+            {
+              "type": "code",
+              "text": "$.ui is used as a value"
+            },
+            {
+              "type": "text",
+              "text": "。最後改回原樣，重跑 validate 與 test。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "小練習：替測試檔加第二個測試，不觸發工具呼叫就跑 /tally，預期 "
+            },
+            {
+              "type": "code",
+              "text": "Claude has made 0 tool calls since this mod loaded"
+            },
+            {
+              "type": "text",
+              "text": "。別台機器載不了時，讀"
+            },
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-hook-portability-recovery",
+              "text": "跨平台 Hook 排錯"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "kind": "life",
+              "slug": "claude-code-tutorials",
+              "text": "回 Claude Code 教學總目錄"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Mods overview",
+          "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+          "checked_on": "2026-10-04"
+        },
+        {
+          "title": "Create a mod",
+          "url": "https://code.claude.com/docs/en/plugins/mods/create",
+          "checked_on": "2026-10-04"
+        },
+        {
+          "title": "Test a mod",
+          "url": "https://code.claude.com/docs/en/plugins/mods/test",
+          "checked_on": "2026-10-04"
+        },
+        {
+          "title": "Mods reference",
+          "url": "https://code.claude.com/docs/en/plugins/mods/reference",
+          "checked_on": "2026-10-04"
+        }
+      ]
+    }
+  }
+}
