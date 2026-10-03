@@ -83,7 +83,7 @@ test("audition request style includes only matched pronunciation plus this sampl
   const b = plan.entries.find((entry) => entry.id === "yiwei-quiet");
   assert.notEqual(a.audition_style, b.audition_style);
   assert.equal(a.effective_style, b.effective_style);
-  assert.ok(plan.entries.filter((entry) => entry.character === "narrator").every((entry) => /台灣國語/.test(entry.effective_style)));
+  assert.ok(plan.entries.filter((entry) => entry.character === "narrator").every((entry) => /^標準國語，咬字清楚/.test(entry.effective_style)));
 });
 
 test("every proposed acting state gets a separate sample, while silent writing never becomes invented TTS", () => {

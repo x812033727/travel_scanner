@@ -1,5 +1,6 @@
 // Offline audition planning only. A plan is not speech, a listening receipt or approval.
 import { castFrom } from "../automation/series.mjs";
+import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { voiceFor } from "../core/drama.mjs";
 import { designHash, productionSetting } from "./design.mjs";
 
@@ -35,7 +36,7 @@ export function buildAuditionPlan(work, profile) {
   const episodeCast = new Map(episodes.map((episode) => [episode.number, new Map(castFrom(setting, episode.number)
     .filter((character) => episode.characters.includes(character.id)).map((character) => [character.id, character]))]));
   const narrator = setting.production_design.narrator;
-  const narratorCast = { id: "narrator", name: "旁白", voice: { provider: "gemini", name: narrator.voice_name, style: `台灣國語，自然台灣口音；${narrator.performance}` } };
+  const narratorCast = { id: "narrator", name: "旁白", voice: { provider: "gemini", name: narrator.voice_name, style: `${CHANNEL_ACCENT}；${narrator.performance}` } };
   const entries = [];
   const add = ({ id, kind, actor, numbers = [], transcript, refs, direction = "", context = {}, hint = "", ...rest }) => {
     if (!refs?.length) throw new Error(`${id}: missing audition source references`);
