@@ -39,7 +39,7 @@ metadata:
 | 1 | 預檢 | `host-preflight.sh`（唯讀）：暫停檔、被規則 1 標記的目錄、24 小時內動過的發布目錄、鎖、live HEAD 對 origin/main、磁碟 | 沒有暫停檔、沒有 FLAGGED、鎖是空的；否則進 preflight.md 的判斷 |
 | 2 | 決定 | 先看要不要部署：預檢加 `--dry-run`，別的 session 常部署，main 可能早就 live，那就不必問。要的話：站主要部署什麼（哪個 PR／SHA）、要不要 `--force`、要不要 `--ignore-hold` | 用有選項的提問，不接受一句「好」 |
 | 3 | 部署 | `host-deploy.sh`（背景），或站主自己跑一行 | `DEPLOY_EXIT=0`、腳本自己的 3/3 健康檢查過 |
-| 4 | 驗證 | `alembic current`、內部 `/health` 與 `/ready`、首頁 200 且 < 1 s、容器映像是 `:local`、抓一個 diff 加進的字串證明新程式在跑 | 全部成立才算部署完成 |
+| 4 | 驗證 | 一支唯讀腳本、一次 SSH 跑完：`scripts/host-verify.sh`（live SHA、部署 log、容器與映像、alembic、health、首頁、公開站），再加這次 diff 專屬的檢查（抓一個新程式才有的字串或行為），寫法見 `post-deploy.md` | 每行 `PASS`、`TOTAL fail=0` 才算部署完成 |
 | 5 | 收尾 | 把 SHA、耗時、有無 migration 寫進票或交接；內容匯入交給內容線；大功能上線後做 `post-deploy.md` 的三個問題 | 票或記憶有紀錄 |
 
 ## 指令
@@ -53,7 +53,10 @@ MSYS_NO_PATHCONV=1 <SSH> "/root/deploy-travel-scanner.sh --dry-run"
 # 3 部署（背景執行；旗標原樣傳給部署腳本）
 MSYS_NO_PATHCONV=1 <SSH> "bash -s --" < .agents/skills/deploy/scripts/host-deploy.sh
 MSYS_NO_PATHCONV=1 <SSH> "bash -s -- --force" < .agents/skills/deploy/scripts/host-deploy.sh
-# 4 驗證
+# 4 驗證：填入剛部署的 squash SHA，一支腳本一次 SSH 跑完（plink -m 不傳參數，所以用 sed 填）
+sed 's/^EXPECTED_SHA=""$/EXPECTED_SHA="<squash sha>"/' .agents/skills/deploy/scripts/host-verify.sh > "$TMP/verify.sh"
+MSYS_NO_PATHCONV=1 <SSH> -m "$TMP/verify.sh" | grep -E '^(PASS|FAIL|TOTAL|SHA |WARN)'
+# 只想看單項時的手動版
 MSYS_NO_PATHCONV=1 <SSH> "cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T api alembic current && curl -s -o /dev/null -w '%{http_code}\n' 127.0.0.1:8090/health && docker compose -f docker-compose.prod.yml ps --format '{{.Name}} {{.Image}} {{.Status}}'"
 curl -s -o /dev/null -w '%{http_code} %{time_total}s\n' https://mokaair.com/zh-TW
 ```
@@ -86,7 +89,7 @@ curl -s -o /dev/null -w '%{http_code} %{time_total}s\n' https://mokaair.com/zh-T
 
 - `references/preflight.md`：怎麼判斷暫停檔背後的發布是活的還是被遺棄的、清理的三種做法與各自要站主同意的地方。
 - `references/runbook.md`：腳本做了什麼、旗標、包裝腳本、讀 log、交給站主跑的一行指令長什麼樣、回滾。
-- `references/post-deploy.md`：驗證清單、大功能上線後的三個稽核問題、邊緣層的假陽性檢查。
+- `references/post-deploy.md`：驗證清單、`host-verify.sh` 怎麼用與怎麼加這次專屬的檢查、大功能上線後的三個稽核問題、邊緣層的假陽性檢查。
 - `references/pitfalls.md`：SSH、分類器、磁碟、腳本、nginx 的坑。
-- `scripts/host-preflight.sh`、`scripts/host-deploy.sh`：在主機上跑的 bash，不含任何憑證。
+- `scripts/host-preflight.sh`、`scripts/host-deploy.sh`、`scripts/host-verify.sh`：在主機上跑的 bash，不含任何憑證。`host-verify.sh` 送出前先填 `EXPECTED_SHA`（`plink -m` 不傳參數）；`ALEMBIC_HEAD`、`UP_COUNT` 是 2026-10-03 的值，有新 migration 或新服務時改。
 - `.claude/skills/deploy/SKILL.md` 是這一份的逐字複本，`npm run test:tools` 會比對。
