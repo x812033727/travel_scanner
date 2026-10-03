@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // 離線預檢：下一個付費階段（look → keyframes → clips → music → assemble）跑下去，會先被什麼擋住
 // （關卡沒核准或過期：exit 3；timeline 過期或 manifest 沒綁到現在的 hash：exit 2；lint 錯：exit 1），
-// 又會白花什麼（Veo Lite 遇到 look.negative 每個 take 都 HTTP 400、judge 題目超過 400 字被站上拒收、
+// 又會白花什麼（judge 題目超過 400 字被站上拒收、
 // 重跑把快取裡的 manifest 重寫而把核准作廢、production profile 的模型和存好的片段不合而整批重買）。
 // 只讀檔案：不碰伺服器、不要 token、不要 ffmpeg；伺服器實際選的模型得看 `media-status`，所以片段模型
 // 從 series.json 的 production.profile.video、存好的 clips/manifest.json 或 --model 來。
@@ -39,7 +39,6 @@ export const JUDGE_MONTHLY_BUDGET = 3000;
 export const JUDGE_CALLS_PER_HOUR = 360;
 // tools/video/assemble/drama.mjs KEYFRAME_MIN_PSNR：片段第 0 格對 keyframe 的 PSNR 下限。
 export const KEYFRAME_MIN_PSNR = 22;
-export const LITE_MODEL = /^veo-?3\.1-lite/;
 const describe = { approved: "已核准", stale: "核准後檔案又變了（stale）", missing: "還沒核准", absent: "檔案還不存在" };
 const usd = (value) => `US$${value.toFixed(2)}`;
 const ids = (scenes) => scenes.map((scene) => scene.id).join(", ");
@@ -150,7 +149,7 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
   const longQuestions = (build, scenes) => (build ? scenes.flatMap((scene) => build(shotCast(doc, scene)).filter((criterion) => criterion.question.length > MAX_RUBRIC_QUESTION).map((criterion) => ({ shot: scene.id, key: criterion.key, length: criterion.question.length }))) : []);
   const reportLongQuestions = (long, what) => {
     if (!long.length) return;
-    add("waste", EXIT.external, `${what} 的 judge 題目超過 ${MAX_RUBRIC_QUESTION} 字：${long.map((each) => `${each.shot}/${each.key} ${each.length} 字`).join("、")}（apps/api/app/video_media/schemas.py JudgeCriterion）`, "站上會以 422 拒收那次評審，而圖或片段已經買了、階段也會丟錯停下：把那個角色的 shot_looks appearance 縮到讓題目在 400 字內（識別題把 appearance 整段放進去），再跑");
+    add("waste", EXIT.external, `${what} 的 judge 題目超過 ${MAX_RUBRIC_QUESTION} 字：${long.map((each) => `${each.shot}/${each.key} ${each.length} 字`).join("、")}（apps/api/app/video_media/schemas.py JudgeCriterion）`, "站上會以 422 拒收那次評審，而圖或片段已經買了、階段也會丟錯停下：先檢查這個階段實際產生的題目並修到 400 字內，再跑；keyframe 識別題仍直接帶 appearance，clip 識別題已改用有界文字與完整 context，不能把兩者當成相同限制");
   };
   const stopNote = () => { if (stop) add("note", null, "工作目錄（或它上一層）有 STOP 檔", "階段做完手上那一個單位就會退出；要整段跑完先刪掉 STOP"); };
   const lintRefuse = () => { if (lint.errors.length) add("refuse", EXIT.lint, `video.json 有 ${lint.errors.length} 個 lint 錯誤：${lint.errors.slice(0, 3).map((error) => `${error.path}: ${error.message}`).join("；")}${lint.errors.length > 3 ? "…" : ""}`, "先 `node tools/video/cli.mjs lint --slug <slug>` 修到 0 錯"); };
@@ -208,8 +207,7 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
       if (undrawn.length) add("refuse", EXIT.usage, `這些鏡頭沒有過 judge 的 keyframe：${ids(undrawn)}`, "修 prompt、跑 keyframes，再核 storyboard");
     }
     if (gates.storyboard.status !== "approved") add("refuse", EXIT.owner, `storyboard 關卡${describe[gates.storyboard.status]}`, "review-push --gate storyboard，等站主（或自動核准設定）在 /admin/videos 決定，再 review-pull");
-    if (clipModel && LITE_MODEL.test(clipModel) && look.negative) add("waste", null, `片段模型是 ${clipModel}，而 look.negative 不是空的（${look.preset} preset 的預設就有）：伺服器把 negativePrompt 送給每個模型，Lite 回 HTTP 400，每個 take、每個 seed 都一樣（apps/api/app/video_media/providers/gemini_video.py；tasks/open/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md）`, "廠商拒收會退款，錢沒花、但這一跑整批 needs_review、時間全丟。那張票合併前先把 look.negative 改成空字串；注意 negative 算在 lookHash 裡（tools/video/core/drama.mjs lookHash → resolveLook），改了就是新 look：要在 look 之前改，不然人設表、keyframes、兩個關卡全部重來");
-    if (clipModel === null) add("note", null, "離線看不出伺服器會用哪個片段模型（series.json 沒有 production.profile.video，也沒有存過 clips/manifest.json）", "先 `clips --dry-run` 看 server 行；若是 veo-3.1-lite，look.negative 必須是空的");
+    if (clipModel === null) add("note", null, "離線看不出伺服器會用哪個片段模型（series.json 沒有 production.profile.video，也沒有存過 clips/manifest.json）", "先 `clips --dry-run` 看 server 行，核對實際模型、解析度與預算");
     if (bindings.clips.present && bindings.clips.bound && !modelCurrent) add("waste", null, `clips/manifest.json 是 ${clips.clip?.provider ?? "?"} ${clips.clip?.model ?? "?"} ${clips.clip?.resolution ?? "?"} 做的，production profile 要 ${profileVideo?.provider ?? ""} ${profileVideo?.model} ${profileVideo?.resolution}`, `模型不同時整本 manifest 重建，${clipShots.length} 支片段全部重買：要換模型就要認這筆錢；不換就把 profile 改回去`);
     if (bindings.clips.present && bindings.clips.bound && modelCurrent && bindings.timeline.bound) {
       const cached = productionClipProblems(doc, series, timeline, clips).filter((problem) => problem.path.startsWith("clips."));

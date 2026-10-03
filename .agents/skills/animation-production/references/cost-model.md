@@ -10,7 +10,7 @@
 | 圖 Gemini 3.1 Flash Image | US$0.067（1K）／0.101（2K）；品牌故事與投影片用 | 同上 | 價目 |
 | 圖 MiniMax image-01 | US$0.0035；一張參考圖，不保證同一張臉 | 同上 | 價目 |
 | 片段 Gemini Omni 1.1 Flash（預設） | US$0.15／秒；4–10 秒整數；720p／1080p；3 張參考圖；原生音訊 | catalog.py（2026-09-26 讀） | 價目、模型限制 |
-| 片段 Veo 3.1 Lite | US$0.08／秒；4／6／8 秒，1080p 只有 8（720p 貼需求選 4／6／8）；0 張參考圖；原生音訊必開；720p 官方價 0.05 但預算照 1080p 記。配非空 `look.negative` 會 HTTP 400（說法只在 `error-catalogue.md` #23） | catalog.py（2026-10-01 核對）；`apps/api/app/video_media/jobs.py:278-286`、`300-306` | 價目、模型限制 |
+| 片段 Veo 3.1 Lite | US$0.08／秒；4／6／8 秒，1080p 只有 8（720p 貼需求選 4／6／8）；0 張參考圖；原生音訊必開；720p 官方價 0.05 但預算照 1080p 記。adapter 省略 Lite 不支援的 `negativePrompt`，把完整 `look.negative` 接成主提示的 `Avoid: …`（歷史失敗與修正在 `error-catalogue.md` #23） | catalog.py（2026-10-01 核對）；`apps/api/app/video_media/jobs.py:278-286`、`300-306` | 價目、模型限制 |
 | 片段 Veo 3.1 | US$0.40／秒；4／6／8，1080p 只有 8；3 張參考圖；id 仍 `preview` | catalog.py | 價目、模型限制 |
 | 片段 Veo 3.1 Fast | US$0.12／秒；同上 | catalog.py | 價目 |
 | 片段 MiniMax H3 | US$0.13／秒（2K 的價；768P 官方 0.08，catalog 不分）；catalog 秒數 4–10、官方頁 4–15；9 張參考圖 | catalog.py；`platform.minimax.io` 價目頁（2026-10-03 讀） | 價目、模型限制 |
@@ -112,7 +112,7 @@ end_frame  = + image                （不 judge；dry-run 多算了一次 judge
 | 快取 key | 圖：provider、model、prompt、negative、尺寸、seed、參考圖；片段：加 seconds、resolution、首尾幀 | `drama.mjs:581-589` | `media/cache.json` |
 | 關卡 | 檔案的 SHA-256：script.md、characters/manifest.json、keyframes/manifest.json、timeline.json、final.mp4、upload/metadata.json | `tools/video/core/approvals.mjs:28-47` | `approvals.json` |
 
-改了什麼會重買什麼、哪個核准失效：只有一張表，在 `SKILL.md`「哪個改動會重買什麼」。這裡多兩條表裡放不下的：句子 id 改了等於換句（visualHash 與 speechHash 都變，storyboard 與 audio 都重審）；`look.negative: ""`（Lite 的權宜，`error-catalogue.md` #23）走第一列，全部重買。
+改了什麼會重買什麼、哪個核准失效：只有一張表，在 `SKILL.md`「哪個改動會重買什麼」。這裡多兩條表裡放不下的：句子 id 改了等於換句（visualHash 與 speechHash 都變，storyboard 與 audio 都重審）；更改或清空 `look.negative` 走第一列，全部重買；Lite adapter 已保留 avoidance，不必為 #23 的歷史相容性失敗更改已核准的值。
 
 重跑 `look` 或 `keyframes` 就算全部從快取拿回，manifest 的 `generated_at` 也會變（`keyframes.mjs:314`、`look.mjs:221`），關卡的 SHA-256 就不同 → `stale`。
 

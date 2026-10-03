@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { GET, PART_MAX_BYTES, POST, PUT, reviewRoute } from "./route";
+import { GET, POST, PUT } from "./route";
+import { PART_MAX_BYTES, reviewRoute } from "./forward";
 
 const TOKEN = `mkv_${"a".repeat(43)}`;
 const SHA = "b".repeat(64);

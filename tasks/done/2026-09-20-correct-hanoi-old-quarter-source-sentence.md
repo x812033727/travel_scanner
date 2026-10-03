@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-correct-hanoi-old-quarter-source-sentence
 title: Correct Hanoi Old Quarter source sentence
-status: review
+status: done
 priority: P2
 area: docs
-owner: codex-batch005-author
-claimed_at: 2026-09-20T13:08:25Z
+owner: codex-source-ticket-cleanup-20261003
+claimed_at: 2026-10-03T09:22:41Z
 created_at: 2026-09-20T13:07:41Z
-completed_at:
-branch: codex/hanoi-source-sentence
+completed_at: 2026-10-03T09:22:58Z
+branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
   - apps/api/app/guides/content/hanoi-old-quarter-walking-guide.json
@@ -91,3 +91,23 @@ warnings), and `git diff --check` passed.
 PR #599 is open for independent review. Its first commit is `cf0f65b5`;
 this follow-up records the task's review status. Do not mark the task done
 until the PR is merged, and do not publish the corrected source from this PR.
+
+### 2026-10-03 source-only task closure
+
+- PR #599 merged on 2026-09-20T14:14:44Z as
+  `e8ad6c1d3c9116bd4ee61e8172b76aea92629bf4`, an ancestor of checked main
+  `5af4ffebfcea96fd23b387288901e513ed63d4f7`. All source-only acceptance
+  conditions are complete; its review metadata was not closed after merge.
+- Main `/locales/zh-TW/blocks/11/text` retains the corrected final sentence:
+  「不應為了拍旅行照片闖入未開放區域，也不應跟著陌生人躲避現場管制。」
+  The complete pack blob is identical to the correction merge. Raw Git pack
+  SHA-256: `90994557776b210159dceb0a7e9e0d249585d9de6bf43b71e20d04bce2345906`.
+  This checks repository bytes, not a freshly captured live article hash.
+- Fresh read-only checks found no open PR on this scope, no remote original
+  branch and no registered worktree for it; the residual local branch has the
+  merged PR head. Normal claim succeeded without `--force`.
+- Only this task metadata is closed. No article pack, production data, approval,
+  import or publication was changed, and no host connection was made. Publication
+  and Batch006 translation rebind remain separate work; their task states are
+  unchanged. The historical source URL issue and original validation results
+  above are not resolved or refreshed by this archival action.

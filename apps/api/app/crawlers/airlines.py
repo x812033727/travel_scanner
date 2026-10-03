@@ -30,6 +30,7 @@ from app.crawlers.schemas import (
     PublicFareQuote,
     SourceState,
 )
+from app.warnings import warning_code
 
 CITY_SLUGS = {
     "TPE": "taipei",
@@ -581,9 +582,11 @@ class AirlineFareCrawlerService:
                     state=SourceState.READY if adapter.enabled else SourceState.DISABLED,
                     policy="runtime_robots_check_fail_closed",
                     detail=(
-                        "公開近期票價頁；每次快取失效後重新檢查 robots.txt"
+                        warning_code("fare_public_ready", airline=adapter.code)
                         if adapter.enabled
-                        else adapter.disabled_reason
+                        else warning_code(
+                            "fare_source_paused", airline=adapter.code, reason="source_disabled"
+                        )
                     ),
                 )
             )
@@ -697,11 +700,11 @@ class AirlineFareCrawlerService:
             await self.fetcher.authorize(client, capture.source_url)
 
         quotes = adapter.parse_browser_capture(fare_rows, capture.source_url, capture.query)
-        detail = "Chrome 擷取資料已由既有公開票價解析器標準化"
+        detail = warning_code("fare_browser_loaded", airline=adapter.code)
         warnings: list[str] = []
         if not quotes:
-            detail = "Chrome 擷取成功，但指定日期或艙等沒有公開快取票價"
-            warnings.append(f"{adapter.name}：{detail}")
+            detail = warning_code("fare_browser_empty", airline=adapter.code)
+            warnings.append(detail)
         source = AirlineCrawlerSource(
             airline_code=adapter.code,
             airline_name=adapter.name,
@@ -734,18 +737,20 @@ class AirlineFareCrawlerService:
                 host=adapter.host,
                 state=SourceState.DISABLED,
                 policy="runtime_robots_check_fail_closed",
-                detail=adapter.disabled_reason,
+                detail=warning_code(
+                    "fare_source_paused", airline=adapter.code, reason="source_disabled"
+                ),
             )
-            return [], source, f"{adapter.name}：{adapter.disabled_reason}"
+            return [], source, source.detail
         try:
             url = adapter.fare_url(query)
             fetched = await self.fetcher.fetch(client, url, force_refresh=force_refresh)
             quotes = adapter.parse(fetched.content, url, query)
-            detail = "讀取公開近期票價成功"
+            detail = warning_code("fare_public_loaded", airline=adapter.code)
             warning = None
             if not quotes:
-                detail = "來源正常，但指定日期或艙等沒有公開快取票價"
-                warning = f"{adapter.name}：{detail}"
+                detail = warning_code("fare_public_empty", airline=adapter.code)
+                warning = detail
             source = AirlineCrawlerSource(
                 airline_code=adapter.code,
                 airline_name=adapter.name,
@@ -764,9 +769,9 @@ class AirlineFareCrawlerService:
                 host=adapter.host,
                 state=SourceState.BLOCKED,
                 policy="fail_closed",
-                detail=exc.detail,
+                detail=warning_code("fare_public_blocked", airline=adapter.code, reason=exc.code),
             )
-            return [], source, f"{adapter.name}：{exc.detail}"
+            return [], source, source.detail
         except CrawlerError as exc:
             source = AirlineCrawlerSource(
                 airline_code=adapter.code,
@@ -774,9 +779,11 @@ class AirlineFareCrawlerService:
                 host=adapter.host,
                 state=SourceState.FAILED,
                 policy="robots_checked",
-                detail=exc.detail,
+                detail=warning_code(
+                    "fare_public_unavailable", airline=adapter.code, reason=exc.code
+                ),
             )
-            return [], source, f"{adapter.name}：{exc.detail}"
+            return [], source, source.detail
 
     async def search(
         self, query: AirlineFareSearch, *, force_refresh: bool = False

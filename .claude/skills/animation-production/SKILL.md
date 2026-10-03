@@ -11,6 +11,8 @@ metadata:
 
 每個數字後面標來源：**工具規定**（檔案與函式或常數；行號只在 `references/stage-preconditions.md`，那裡註明讀取日）、**價目**（檔案或網址，加查閱日）、**模型限制**、**量到的**（試拍紀錄）、**編輯判斷／換算**。沒標的就當沒驗。路徑相對於 repo 根目錄；工作區在 `<VIDEO_WORKDIR>/<SLUG>/`（repo 外）。
 
+此版本的 Lite adapter 與 clip judge 相容修正描述的是 repo 程式碼；實際後端須核對部署版本。本機估價／preflight 通過不代表正式服務已更新、付費請求成功或素材通過驗收。
+
 ## 什麼時候用、什麼時候不用
 
 - 用：手動跑一集或一段試拍；估一集、一個月的錢；選片段路線；把 Hailuo 網頁或 Kling 做的片段放進產線；階段以 2 或 3 停下而 `status` 看不出原因；試拍後寫 post-mortem；站主問「這樣要多少錢、為什麼重買」。
@@ -127,7 +129,7 @@ Veo 3.1 在 clips 等級一次就 US$202.6，過了單支上限 US$200（`max_us
 
 決定規則（編輯判斷）：
 
-1. **預設走伺服器 API**：關卡、快取、帳本、judge、單支上限只認得它；有 profile 的集只有它（上段）。沒有 profile 時伺服器買哪個模型以後台的 clip 設定為準：新裝的預設是 `gemini-omni-1.1-flash`（`catalog.py` 的 `DEFAULT_CLIP`；後台可能改過，`media-status` 才是真的），估價時 `--model` 對齊它——這決定 3 秒的鏡頭買 4 秒（US$0.60、利用率 75%）還是 8 秒（0.64、37.5%），也決定切鏡槓桿與 Lite 陷阱會不會發生。
+1. **預設走伺服器 API**：關卡、快取、帳本、judge、單支上限只認得它；有 profile 的集只有它（上段）。沒有 profile 時伺服器買哪個模型以後台的 clip 設定為準：新裝的預設是 `gemini-omni-1.1-flash`（`catalog.py` 的 `DEFAULT_CLIP`；後台可能改過，`media-status` 才是真的），估價時 `--model` 對齊它——這決定 3 秒的鏡頭買 4 秒（US$0.60、利用率 75%）還是 8 秒（0.64、37.5%），也決定切鏡槓桿的可用秒數。
 2. **Hailuo 網頁**划算的條件有三個，同時成立才走：站主已付的點數反正月底歸零（條款）；這一鏡不靠角色參考圖保一致（網頁能上傳參考，但沒有我們的 identity 題）；你接受每一支自己下載再 `clips import`、judge 要另外問。算式只有一條：方案贏過伺服器要這個月**真的用掉的秒數 ≥ 月費 ÷ 伺服器每秒價**——Pro 月繳 54.99 ÷ 0.15（Omni）≈ 367 秒、÷ 0.08（Lite）≈ 687 秒而 Pro 一個月只有 375 秒 2K，不可能；`episode_estimate.mjs --plan hailuo:pro --resolution 768p|2k` 把這一集的伺服器價、方案的兩種美元與損益平衡秒數印在一起。Max 的無限模式只給 Hailuo 2.0／2.3（哪些模型、兩個來源怎麼說：providers §1.2 的 Max 列），不是 H3。
 3. **Kling MCP**：要運鏡控制或動作戲時用；每支影片的點數只在登入後的生成頁看得到，MCP 扣哪個方案的點數、官方 connector 要不要 API 套餐，都先在站主帳號裡讀，再估價。
 4. 不論哪條，**首格一律是這一鏡通過 judge 的關鍵影格**，否則 `assemble` 的第 0 格 PSNR ≥ 22（`tools/video/assemble/drama.mjs` 的 `KEYFRAME_MIN_PSNR`）過不了。
@@ -144,7 +146,7 @@ Veo 3.1 在 clips 等級一次就 US$202.6，過了單支上限 US$200（`max_us
 | music 的 gain／duck／fade | mixHash | 只重混音 | final |
 | `music.prompt` | mixHash ＋ key | 一首 US$0.08 | final |
 | `subtitles` | subtitlesHash | burn-in 的字幕條與 assemble | final |
-| `look.negative: ""`（Lite 陷阱的權宜，錯誤目錄第 1 條） | lookHash | 全部（第一列）——所以要在 `look` 之前就覆寫，不是 `clips` 之前 | 全部 |
+| 更改 `look.negative`（包括清空） | lookHash | 全部（第一列）；Lite adapter 已保留 avoidance，不需為相容性清空已核准的值 | 全部 |
 
 ## 重做還是重設計
 
@@ -154,7 +156,7 @@ judge 的 `problems` 文字先分類，再決定花不花第二次的錢：
 | --- | --- | --- |
 | extra hand、second watch、another pen、pen lifted、switched hands、outfit changed、morphing back | 內容 | 改 prompt／motion／camera 或拆鏡（visual-quality.md：保留首格構圖與 camera，插鏡只寫袖口、錶、道具）；換 seed 沒用 |
 | not the same person、face differs from the sheet | 內容（參考圖） | 看送了幾張參考（≤ 4；Lite 一張都不送，只靠首格）；首格本身先像設定圖 |
-| text、letters、watermark | 內容偏隨機 | 關鍵影格：prompt 或 `look.style` 寫 no text；片段：`motion`（或 `look.motion`）寫，`data.prompt` 片段模型看不到；Lite 的 negative 進不去（錯誤目錄第 1 條） |
+| text、letters、watermark | 內容偏隨機 | 關鍵影格：prompt 或 `look.style` 寫 no text；片段：`motion`（或 `look.motion`）寫，`data.prompt` 片段模型看不到；Lite adapter 會把完整 `look.negative` 接成 `Avoid: …`，非 Lite 保留原參數；不用為此更改已核准的 look |
 | fingers、warped face、smeared background、flicker | 隨機 | 下一個 seed |
 | eyes opening／blink（試拍 S01 R04 的 6.72） | 判讀 | 逐幀看、記下差異；不改分、不重判 |
 | first frame does not show the keyframe（PSNR） | QC | 首格不是這一鏡的關鍵影格；外部片段最常見 |
@@ -170,13 +172,13 @@ judge 的 `problems` 文字先分類，再決定花不花第二次的錢：
 
 | # | 錯誤 | 階段 | 誰抓 | 漏掉的代價 | 預防 |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Veo Lite 配任何命名 preset（`custom` 以外都有 negative）→ 廠商 HTTP 400 → 伺服器只說「Gemini refused the request」（`gemini_video.py` 對每個模型都送 `negativePrompt`；完整說法與對策只在 error-catalogue #23） | clips | 沒人；`estimate --model veo-3.1-lite*`、preflight 抓 | 每次 0.64 的預留（會退）＋ 一輪時間；試拍兩個 seed 都中 | 一開始就 `look.negative: ""`，等 `tasks/open/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md` 落地 |
+| 1 | **歷史已修正**：試拍 Lite 因不支援的 `negativePrompt` 收到 HTTP 400；現行 adapter 省略該參數並完整保留限制到主提示（error-catalogue #23） | clips | 離線 provider request-body 回歸 | 當時每次 0.64 的預留（會退）＋ 一輪時間；試拍兩個 seed 都中 | `tasks/done/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md`；不清空已核准的 `look.negative`，不自動重買 |
 | 2 | keyframes 之後才改 look 或 appearance | 任一 | `status`、preflight | 整集重買 | 先定 look；改之前看上表 |
 | 3 | 一鏡小修就跑整個 `keyframes`／`clips` | keyframes、clips | preflight 的 kept／new | 上面那 120 次 judge ＋ 站主再審分鏡 | 攢齊再跑；`--shot` 救不了（階段順序那節） |
 | 4 | 設定圖通過 judge 但道具錯（試拍：知棠 A 的錶是圓的，來源是矩形銀錶） | look | 無；站主或獨立看圖 | 一張 0.144 ＋ 之後每張關鍵影格跟著錯 | 看圖再核准；`sheet_prompt` 把識別道具寫進去 |
 | 5 | 內容問題（多手、第二支錶、抬筆）重拍同一 prompt 再中（試拍 S01 四次、S03 兩次，0 支接受） | clips | judge `clean`、`identity`；試拍是人 | 每次 0.65；兩次就把 `MAX_CLIP_TAKES` 用完 | 上節的分類表：內容問題改 prompt／motion，不換 seed |
 | 6 | 把 job `ready` 當通過：試拍 16 jobs、14 ready、0 accepted | 收工 | `run_report.mjs` 五欄 | 誤報進度、放量 | 收工那節的五個數字 |
-| 7 | 命名造型的 `appearance` 太長 → judge 題目超過 400 字 → 伺服器 422，在圖買完之後 | keyframes、clips | preflight | 圖的錢花了、judge 沒做 | `appearance` 約 160 字以內（換算自 `clips.mjs` 的 `clipRubric` 模板） |
+| 7 | keyframe 命名造型的 identity 題超過 400 字 → 伺服器 422，在圖買完之後；clip 的對應問題已修正 | keyframes | preflight 對本次要畫的鏡頭查實際題長 | 圖的錢花了、judge 沒做 | 修正真正超長的 keyframe 題；clip 已用有界題目與完整 context，不為它截短外觀或重做核准 |
 | 8 | 兩鏡太像：lint 的 Jaccard 0.8 警告在前，dHash < 8 位元的警告在花錢之後；素材第 0 格比鄰鏡高不到 3 dB 就不過 | keyframes、clips | lint、`qc.mjs` | 兩鏡的圖與素材 | 回同一鏡位用 `data.source` |
 | 9 | 第一鏡沒單獨跑：主機地區被 Gemini 擋，60 鏡排隊 | clips | 無 | 0 元，一輪 | `clips --shot <第一鏡>` |
 | 10 | `end_frame.prompt` 寫了很多鏡 | keyframes | `estimate` | 每鏡多一張 0.134；dry-run 還多算 0.01 judge | 只給真的要末格的鏡 |
@@ -210,16 +212,16 @@ judge 的 `problems` 文字先分類，再決定花不花第二次的錢：
 ```bash
 # 估價：長度照 lint 的估法；每鏡買幾秒、圖、judge、一次與到上限的錢；每階段與整集的合計；
 # --plan 換算成方案點數、月額度占比、跟伺服器並列的美元與損益平衡秒數；找槓桿（可切鏡、可 still、超過 8 秒、可併鏡）；
-# 對 --cap、--month-clip-seconds、既有 data.source 的來源買秒、Lite 配非空 look.negative 下結論
+# 對 --cap、--month-clip-seconds、既有 data.source 的來源買秒下結論
 node .agents/skills/animation-production/scripts/episode_estimate.mjs <VIDEO_DOCS>/video.json [--tier clips|hybrid|stills] [--model <id>] [--resolution 1080p|720p|768p|2k] [--plan hailuo:pro|kling:pro] [--credits-per-video 40] [--keyframe-takes 3] [--clip-takes 2] [--cap 200] [--month-clip-seconds 3000] [--strict] [--json]
 #   --resolution 給伺服器模型的解析度；--plan hailuo:* 時它選 768p 或 2k 的檔位（不給就 2k；2K 不是原生 1920×1080，768P 低於 1080p，哪個該選未驗）
-# 開跑前預檢：下一個（或 --stage 指定的）階段會拒絕或白花什麼：關卡狀態與會回的結束碼、manifest 綁哪個雜湊、kept／new、needs_review、STOP、Lite 的 negative、judge 題目長度、profile 與伺服器、要花的 judge 次數、匯入與手放的外部片段；片段模型從 profile、存好的 manifest 或 --model 來（它不碰伺服器）
+# 開跑前預檢：下一個（或 --stage 指定的）階段會拒絕或白花什麼：關卡狀態與會回的結束碼、manifest 綁哪個雜湊、kept／new、needs_review、STOP、judge 題目長度、profile 與伺服器、要花的 judge 次數、匯入與手放的外部片段；片段模型從 profile、存好的 manifest 或 --model 來（它不碰伺服器）
 node .agents/skills/animation-production/scripts/drama_preflight.mjs --slug <SLUG> [--workdir <VIDEO_WORKDIR>] [--stage look|keyframes|clips|music|assemble] [--model <id>] [--json]
 # 收工報告：帳本按種類與階段、每鏡 take 與通過、利用率、切鏡省的、外部片段、judge 次數、五個狀態、stale 的核准、每階段時間；--markdown 印填好數字的 post-mortem
 node .agents/skills/animation-production/scripts/run_report.mjs --slug <SLUG> [--workdir <dir>] [--markdown] [--json]
 ```
 
-價目在 `episode_estimate.mjs` 的 `PRICES` 表（以模型 id 或方案 id 為 key：Omni、Lite、Veo 3.1、Veo 3.1 Fast、H3、Pro Image、Lyria；別的模型給 `--price-per-second`），旗標可覆寫；`tools/animation-production.test.mjs` 對照 `catalog.py` 驗 API 價，並驗 `gemini_video.py` 仍送 `negativePrompt`。那條測試紅的那天（上面那張票落地）要刪的 Lite 陷阱：這裡錯誤目錄第 1 條、「哪個改動會重買什麼」最後一列、「重做還是重設計」text 列的 Lite 半句、`references/error-catalogue.md` #7 與 #23、`references/cost-model.md` §一 Lite 列的註與 §五最後一列、`references/providers-and-plans.md` §1.1 的坑、`scripts/drama_preflight.mjs` 的 `LITE_MODEL` 檢查、`scripts/episode_estimate.mjs` 的 `liteNegativeProblem`、測試裡那條 assertion；animation-camera 的 `references/model-misreads.md` 第三節、其 SKILL.md「三個欄位各給誰讀」的 negative 句、「同一鏡在 Hailuo 與 Kling 怎麼寫」表的否定列、檢查清單第 10 條、「模型畫錯過的事」末句。`references/post-mortem.md` 範例裡的 Lite 句是試拍紀錄，留著。
+價目在 `episode_estimate.mjs` 的 `PRICES` 表（以模型 id 或方案 id 為 key：Omni、Lite、Veo 3.1、Veo 3.1 Fast、H3、Pro Image、Lyria；別的模型給 `--price-per-second`），旗標可覆寫。`tools/animation-production.test.mjs` 對照 `catalog.py` 驗 API 價，並以合成劇本驗證 Lite 非空 avoidance 的估價／預檢、原核准不變、clip 有界題目與 keyframe 真長題拒絕。模型專屬 payload 的 Lite 省略／完整限制保留與非 Lite 參數保留由 `apps/api/tests/test_video_media_providers.py` 驗證；不以原始碼文字匹配代替行為測試。`references/post-mortem.md` 與原逐 take 表維持當時的試拍紀錄，不是修正後再付費驗收。
 
 ## 還沒驗、不能宣稱的事
 

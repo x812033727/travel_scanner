@@ -6,9 +6,9 @@
  * What is pinned here is that their numbers are the tools' own: the PRICES table is compared
  * with apps/api/app/video_media/catalog.py model by model (a price changed there goes red here),
  * the take, round and exit constants with the stage modules, the seconds-bought rule with
- * clips.mjs clipSeconds, and the Lite negative-prompt trap with gemini_video.py still forwarding
- * negativePrompt (when that stops, the trap paragraph in the skill and the preflight check are
- * deleted, and this assertion with them). The scripts then run on the drama fixture and on a
+ * clips.mjs clipSeconds, and the current estimator/preflight behavior for preserved avoidance
+ * constraints and bounded clip identity questions. Provider payload behavior is covered by the
+ * API provider tests. The scripts then run on the drama fixture and on a
  * sandbox work directory prepared the way tools/video/media/clips.test.mjs prepares one.
  */
 import assert from "node:assert/strict";
@@ -21,7 +21,7 @@ import { fileURLToPath } from "node:url";
 
 import { writeSyntheticNarration } from "./video/assemble/synthetic.mjs";
 import { approve } from "./video/core/approvals.mjs";
-import { lookHash } from "./video/core/drama.mjs";
+import { lookHash, resolveLook } from "./video/core/drama.mjs";
 import { DRAMA_FIXTURE_FILE, dramaFixture, fixtureLexicon, sandbox } from "./video/core/fixtures/load.mjs";
 import { estimateTimeline, FPS, visualHash } from "./video/core/timeline.mjs";
 import {
@@ -149,11 +149,19 @@ test("PRICES carries the catalog's API prices, model by model, and the judge pri
   }
 });
 
-// When this fails the trap is gone: delete this test, liteNegativeProblem in episode_estimate.mjs, the
-// LITE_MODEL check in drama_preflight.mjs and every pointer the skill's SKILL.md lists in its 腳本 section.
-test("gemini_video.py still forwards negativePrompt to every model: the Lite trap stands (delete it in the skill, the estimate and the preflight when this fails)", () => {
-  const source = readFileSync(path.join(ROOT, "apps", "api", "app", "video_media", "providers", "gemini_video.py"), "utf8");
-  assert.match(source, /parameters\["negativePrompt"\] = request\.negative_prompt/);
+test("estimating Lite and non-Lite with avoidance constraints preserves the script and look hash", () => {
+  const doc = dramaFixture();
+  const before = structuredClone(doc);
+  const hash = lookHash(doc);
+  const negative = resolveLook(doc.look).negative;
+  assert.ok(negative.length > 0, "the preset has real avoidance constraints");
+  for (const model of ["veo-3.1-lite-generate-preview", "gemini-omni-1.1-flash"]) {
+    const estimate = estimateEpisode(doc, { model });
+    assert.equal(estimate.verdict.ok, true, JSON.stringify(estimate.verdict.problems));
+    assert.deepEqual(doc, before);
+    assert.equal(resolveLook(doc.look).negative, negative);
+    assert.equal(lookHash(doc), hash);
+  }
 });
 
 test("the take, round, clip-second and exit constants mirror the tools, and secondsBought is clips.mjs clipSeconds", async () => {
@@ -219,16 +227,8 @@ test("the drama fixture is priced from the constants: per stage, one take and th
   const lite = estimateEpisode(doc, { model: "veo-3.1-lite-generate-preview" });
   assert.deepEqual(lite.shots.map((shot) => shot.bought_s), [8, 8, 8, 8], "Lite at 1080p: eight seconds each");
   near(lite.stages.clips.usd_one, 32 * PRICES["veo-3.1-lite-generate-preview"].usd_per_second);
-  // The fixture's preset carries a negative: under Lite every take would HTTP 400, and the estimate says so before any money.
-  assert.equal(lite.lite_negative_trap, true);
-  assert.equal(lite.verdict.ok, false);
-  assert.match(lite.verdict.problems.join("\n"), /negativePrompt/);
-  const cleared = dramaFixture();
-  cleared.look.negative = "";
-  const liteCleared = estimateEpisode(cleared, { model: "veo-3.1-lite-generate-preview" });
-  assert.equal(liteCleared.lite_negative_trap, false);
-  assert.ok(!liteCleared.verdict.problems.some((problem) => /negativePrompt/.test(problem)));
-  assert.equal(report.lite_negative_trap, false, "Omni takes a negative prompt");
+  assert.equal(lite.verdict.ok, true, JSON.stringify(lite.verdict.problems));
+  assert.ok(resolveLook(doc.look).negative.length > 0, "Lite keeps the preset's avoidance constraints");
   const fast = estimateEpisode(doc, { model: "veo-3.1-fast-generate-001" });
   assert.deepEqual(fast.shots.map((shot) => shot.bought_s), [8, 8, 8, 8], "Fast at 1080p is a Veo 3.1 too");
   near(fast.stages.clips.usd_one, 32 * 0.12);
@@ -420,8 +420,8 @@ test("episode_estimate.mjs exits 0, 1 with --strict on a failed verdict, 2 on a 
   assert.equal(strict.status, 1);
   assert.match(strict.stdout, /裁定：不過/);
   const lite = run("episode_estimate.mjs", DRAMA_FIXTURE_FILE, "--strict", "--model", "veo-3.1-lite-generate-preview");
-  assert.equal(lite.status, 1, "Lite with the preset's negative is a failed verdict under --strict");
-  assert.match(lite.stdout, /negativePrompt/);
+  assert.equal(lite.status, 0, "Lite with the preset's negative is supported by the adapter");
+  assert.match(lite.stdout, /裁定：過/);
   assert.equal(run("episode_estimate.mjs", DRAMA_FIXTURE_FILE, "--cap", "1").status, 0, "without --strict a failed verdict is only printed");
   const json = run("episode_estimate.mjs", DRAMA_FIXTURE_FILE, "--json", "--plan", "kling:pro", "--credits-per-video", "70");
   assert.equal(json.status, 0, json.stderr);
@@ -488,15 +488,21 @@ test("preflight names the gate the next stage will refuse on, with the stage's e
   assert.equal(run("drama_preflight.mjs").status, 2);
 });
 
-test("preflight flags the Veo Lite negative-prompt trap, the production profile's timing rules, an over-long judge question and an external clip", async () => {
+test("preflight preserves Lite avoidance and approvals, flags real timing/keyframe limits and identifies external clips", async () => {
   const { box } = prepared();
   await approveBoth(box);
+  const scriptBefore = readFileSync(path.join(box.dir, "video.json"));
+  const approvalsBefore = readFileSync(path.join(box.workdir, "approvals.json"));
+  const hashBefore = lookHash(JSON.parse(scriptBefore));
+  assert.ok(resolveLook(JSON.parse(scriptBefore).look).negative.length > 0);
   const lite = await preflight({ slug: box.slug, root: box.root, workdir: box.work, model: "veo-3.1-lite-generate-preview" });
-  const trap = lite.findings.find((finding) => /HTTP 400/.test(finding.what));
-  assert.ok(trap, JSON.stringify(lite.findings));
-  assert.equal(trap.level, "waste");
-  assert.match(trap.fix, /lookHash/);
-  assert.equal(lite.exit_code, 1);
+  assert.ok(!lite.findings.some((finding) => /HTTP 400/.test(finding.what)));
+  assert.equal(lite.exit_code, 0, JSON.stringify(lite.findings));
+  assert.equal(lite.gates.look, "approved");
+  assert.equal(lite.gates.storyboard, "approved");
+  assert.equal(lite.hashes.look, hashBefore);
+  assert.deepEqual(readFileSync(path.join(box.dir, "video.json")), scriptBefore);
+  assert.deepEqual(readFileSync(path.join(box.workdir, "approvals.json")), approvalsBefore);
   assert.equal(lite.clip_model, "veo-3.1-lite-generate-preview");
   const omni = await preflight({ slug: box.slug, root: box.root, workdir: box.work, model: "gemini-omni-1.1-flash" });
   assert.ok(!omni.findings.some((finding) => /HTTP 400/.test(finding.what)));
@@ -511,20 +517,36 @@ test("preflight flags the Veo Lite negative-prompt trap, the production profile'
   assert.match(timing.what, /freeze/);
   assert.equal(profile.findings.find((finding) => /lint 錯誤/.test(finding.what))?.exit, EXIT.lint);
   assert.equal(profile.clip_model, "veo-3.1-lite-generate-preview", "the model comes from the profile");
-  assert.ok(profile.findings.some((finding) => /HTTP 400/.test(finding.what)), "and the Lite trap is read from it too");
+  assert.ok(!profile.findings.some((finding) => /HTTP 400/.test(finding.what)), "the profile does not revive the resolved Lite failure");
   const picked = await preflight({ slug: box.slug, root: box.root, workdir: box.work });
   assert.equal(picked.stage, "clips", "with lint errors the next paid stage is still read from the manifests, not from status");
 
-  // A named shot look whose appearance makes the identity question longer than the server takes.
+  // Clips use bounded questions with full appearance in context; keyframes still need a real length guard.
   const long = prepared((doc) => {
     doc.characters[0].shot_looks = [{ id: "present", appearance: `adult woman in a navy suit, ${"x".repeat(600)}` }];
     doc.scenes[1].data.character_looks = { jingwei: "present" };
   });
   await approveBoth(long.box);
-  const rubric = await preflight({ slug: long.box.slug, root: long.box.root, workdir: long.box.work });
+  const longApprovals = readFileSync(path.join(long.box.workdir, "approvals.json"));
+  const clips = await preflight({ slug: long.box.slug, root: long.box.root, workdir: long.box.work });
+  assert.equal(clips.exit_code, 0, JSON.stringify(clips.findings));
+  assert.ok(!clips.findings.some((finding) => new RegExp(`超過 ${MAX_RUBRIC_QUESTION} 字`).test(finding.what)));
+  assert.equal(clips.gates.look, "approved");
+  assert.equal(clips.gates.storyboard, "approved");
+  assert.equal(clips.hashes.look, lookHash(long.doc));
+  assert.deepEqual(readFileSync(path.join(long.box.workdir, "approvals.json")), longApprovals);
+  // Only a keyframe that will actually be bought is checked. Make farewell genuinely missing.
+  const manifestPath = path.join(long.box.workdir, "keyframes", "manifest.json");
+  const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+  delete manifest.shots.farewell;
+  writeFileSync(manifestPath, JSON.stringify(manifest));
+  const rubric = await preflight({ slug: long.box.slug, root: long.box.root, workdir: long.box.work, stage: "keyframes" });
+  assert.deepEqual(rubric.new.keyframes, ["farewell"]);
   const question = rubric.findings.find((finding) => new RegExp(`超過 ${MAX_RUBRIC_QUESTION} 字`).test(finding.what));
   assert.ok(question, JSON.stringify(rubric.findings));
   assert.equal(question.level, "waste");
+  assert.equal(question.exit, EXIT.external);
+  assert.equal(rubric.exit_code, 1);
   assert.match(question.what, /farewell\/identity_jingwei/);
 
   // An mp4 put into clips/ by hand, with a manifest entry and no ledger job: kept, and named as external.

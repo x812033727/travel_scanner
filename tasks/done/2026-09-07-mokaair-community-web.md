@@ -1,20 +1,18 @@
 ---
 id: 2026-09-07-mokaair-community-web
 title: Mokaair community responsive web and five-language experience
-status: open
+status: done
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: codex-community-real-matrix-20261003
+claimed_at: 2026-10-03T12:15:12Z
 created_at: 2026-09-07T10:14:21Z
-completed_at:
-branch: codex/p1-task-audit
+completed_at: 2026-10-03T14:58:05Z
+branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
   - apps/web/e2e/community.spec.ts
-  - apps/web/e2e/community-ui.spec.ts
   - docs/community-local-acceptance-2026-09-29.md
-  - .github/workflows/ci.yml
 ---
 
 # Mokaair community responsive web and five-language experience
@@ -39,7 +37,7 @@ experience within the existing five-locale Web/PWA, without exposing private tri
 
 - [x] Shared state, accessible UI and conservative server-side feature gates.
 - [x] Wire the base content, social, pet and administration flows to the real BFF.
-- [ ] Complete the expanded real-service permissions/responsive/keyboard/failure matrix.
+- [x] Complete the expanded real-service permissions/responsive/keyboard/failure matrix.
 
 ## How to verify
 
@@ -47,6 +45,98 @@ Run npm run test:web, check:i18n, typecheck:web, lint:web and build:web. Run the
 community Playwright suite on desktop and Pixel 7 against isolated services.
 
 ## Notes
+
+2026-10-03 continuation (`codex-community-real-matrix-20261003`): narrowed this
+task's editable scope to the real-service spec and its existing acceptance report.
+The synthetic translation spec and CI workflow are already implemented and are
+not edited. Normal claim succeeded after a fresh two-path gate at main
+`5f1cec5302511ac0c6f7eddffaf5f988a8c95a7d`: 495 refs, 28 registered worktrees,
+all open PR files and current/remote task claims have no active implementation
+collision. The old merchant claim explicitly released the spec on 2026-09-09;
+planner #371 is archived done. Both paths are outside the 108-file duration
+receipt. Private evidence: `community-real-matrix-20261003/final-gate.json`.
+
+The spec now prepares 30 cases (three real journeys × five locales × desktop and
+Pixel 7), including both themes at key checkpoints, keyboard modal boundaries,
+private collections and ordinary-member admin denial. It preserves the original
+private-note, pending-visibility, fork, pet conflict, idempotent message,
+unfollow/block and reset/deletion assertions. One real administrator session per
+worker reduces shared login-quota consumption; ordinary accounts stay distinct.
+The exact matrix and quota arithmetic are in
+`docs/community-local-acceptance-2026-09-29.md`. Translation is disabled only in
+the explicitly opted-in loopback fixture; no paid or production call is used.
+The real-service matrix step stays unchecked until a fresh exact-head browser
+run passes; source preparation, lint/discovery and typecheck are not that receipt.
+Scoped ESLint passed (exit 0) and Playwright discovery found exactly 30 cases
+(exit 0), using actual bundled Node v24.21.0. Independent source review passed
+with the original 37 non-UI assertions retained and 77 copy keys checked in all
+five locales: private `community-real-matrix-20261003/independent-semantic-review.json`,
+SHA-256 `0f4829f87bfef6ac12bc08c00d7d626b963398307d8252faabcd243b08ed6ba7`.
+Prepared pre-CI spec SHA-256 was
+`a2bfcf534bebe1a9e18e19c2eaa13fe713792fea2d5488fdcc9631c656af00fb`.
+The complete web TypeScript check subsequently passed on actual primary-runtime
+Node v24.19.0 (exit 0), with this exact spec hash unchanged before and after.
+Receipt SHA-256 `4e8c93f0beb631c91e5d373ba36b86370f8e63094a3886650655ce05dfb405de`;
+private `task-continuation-20261003/community-final-typecheck.json`.
+This prepared version's first 30-case browser result is recorded immediately
+below; it did not pass. No local companion stack, paid request, production write
+or publication is implied by preparation checks.
+
+2026-10-03 first matrix CI: head `641e2576a2212550db384cfe5b9d3a3dc98b0b8f`,
+run `37126555983`, full-stack job `111212893808`: 12 passed, 18 failed, zero
+skipped. Ten failures expose the shared native report dialog's missing Tab
+boundary behavior; the original keyboard expectations remain unchanged and a
+separate product correction is required. Eight non-zh-TW pet-review failures
+show the shared administrator's stored locale redirecting to zh-TW, while the
+test searched for another language's label. This spec now records an explicit
+locale choice only in its isolated administrator browser session, using the
+public language picker's `travel-locale-picked=1` marker, restricted to the
+loopback site origin, and asserts exact URL plus HTML language before controls.
+No shared account preference, authentication, quota or timeout is changed.
+Removing the additions restores every previous spec byte, including all 37
+original non-UI assertions and the keyboard assertions. Private diagnosis:
+`community-real-matrix-20261003/ci-641e-diagnosis.json`, SHA-256
+`f7cff9e87e7c38fe1c128212592d15daed375d21561e48e56dc0b62dbb275126`.
+The real-service matrix step remains unchecked pending a corrected exact-head
+run against a fresh disposable stack; the first failure is not called a pass.
+The locale-corrected spec SHA-256 is
+`f5c0fd98be387ed7bb49018d9d022cd8977b5e39fb4932b2beddc014c1a3bc06`.
+Scoped ESLint and Playwright discovery (30 cases) both returned exit 0 on
+captured Node v24.21.0; the source hash stayed unchanged. Scoped
+`git diff --check` also passed. Private `community-real-matrix-20261003/locale-fix-checks.json`
+records actual argv, times and byte-preservation proof. The updated full web
+typecheck passed at 2026-10-03 14:02:37 UTC (exit 0), with all three UI/test/spec
+hashes unchanged; the owned compiler used primary Node v24.19.0 and npm used
+the installed shim. Private receipt SHA-256
+`19246e133ad7e4cbbff58efb52ace2ecf3cabed31ceb026163660ce9ad8d8a5e`.
+Independent keyboard/locale source review passed, receipt SHA-256
+`95b4bd9244e120eeffc5e7a7f9390ce4b700dde44ad5edd444de6ece09a92646`.
+Corrected exact-head browser execution remains required; no quota or deadline was raised.
+
+2026-10-03 second matrix CI: head `70174ca194dc386ead9c02a1e70cc1d0aed7645a`,
+run `37128624919`, job `111219014934`, actual checkout
+`a52226de3d79d89e817cecd10ed05f237ecd1916`: 28 passed, two failed, zero skipped
+in the 30-case matrix. The ten original keyboard and eight administrator-locale
+failures did not recur. Both remaining failures are Japanese message-composer
+locators: `getByLabel` matches the identically named tab list, tab panel, log and
+textarea. Only the two composer references (fill and appearance check) now use
+the exact catalog label plus `textbox` role. Reversing these two substitutions
+restores every byte at `70174ca`; all 37 original non-UI assertions and existing
+keyboard, locale, authentication, quota and timeout checks remain unchanged.
+The same job's six recovery scenarios passed at new runtime `625c01c1`, with
+owned-process cleanup confirmed and capacity acceptance false. This does not
+supersede the browser failure. Canonical private receipt:
+`community-real-matrix-20261003/ci-70174ca/canonical-receipt.json`, SHA-256
+`90073327ab7d271fa4cba80f01f65bf89ca160abe70a18a4d8b48c5001535a60`.
+Both failed-head records remain preserved; status stays review and the matrix
+Step stays unchecked until all 30 cases pass on a fresh isolated stack.
+Corrected spec SHA-256:
+`21da9cdb3caad36061782af41669a3fc445dae952bbf04e432cf5ce8fe3ced5c`.
+Scoped ESLint and Playwright discovery (exactly 30 cases) both returned exit 0
+on captured bundled Node v24.21.0 with source bytes unchanged; private
+`community-real-matrix-20261003/ci-70174ca/ja-fix-checks.json` binds actual
+argv/logs and the exact two-substitution byte-preservation proof. Full TypeScript
+and fresh exact-head browser verification remain pending for this correction.
 
 Checkpoint: rebased onto main 54009ba. CI 34130887751 passed Web components,
 TypeScript, lint, five-locale checks, the default production build and isolated
@@ -166,3 +256,13 @@ main/story-worker merges or new commits need new-head checks; this result is not
 carried forward as their pass. The broader real-service permissions, locales,
 outages and capacity matrix remains open. No production access or deployment
 occurred. Release this task for the remaining work rather than closing it.
+
+2026-10-03 exact-head acceptance: PR head `ba5c6ae01df9eeffd13fc74233f7d37db0553c59`, actual
+checkout/GITHUB_SHA `07c25196ba1c0901aad6600a5789584090496642`. All 23 PR checks
+passed. [Full-stack job](https://github.com/x812033727/travel_scanner/actions/runs/37130278372/job/111223852163) ran 30 community browser
+cases and six real-service recovery cases: zero failures and zero skips.
+The final community spec SHA-256 is `21da9cdb3caad36061782af41669a3fc445dae952bbf04e432cf5ce8fe3ced5c`. The standalone
+foundation ticket remains review for owner/capacity acceptance; this receipt
+does not approve deployment, production access, paid media or publication.
+Private canonical receipt SHA-256 `a33b0c59e320d8a65defe2ed7519ddaccf1627e68becc6041bf5352044e8eba7`; complete CI snapshot
+SHA-256 `1a94a1b431240bd2e2a7e9623afe53cbbdad3295708d1e78e86f35f236f5f99d`. Earlier failed-head evidence remains preserved.
