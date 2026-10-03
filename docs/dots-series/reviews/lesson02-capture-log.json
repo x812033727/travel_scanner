@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "lesson": "02",
+  "operator": "/root",
+  "recorded_at": "2026-10-03T17:27:26Z",
+  "operation_local_date": "2026-10-04",
+  "operation_timezone": "Asia/Taipei",
+  "mode": "actual_authenticated_dots_ui",
+  "browser": "Codex In-app Browser",
+  "reconstruction_note": "Operator record from this session and saved raw captures, not a continuous screen recording. Per-action timestamps were not saved.",
+  "actions": [
+    {
+      "sequence": 1,
+      "action": "Followed dots introduction and creation controls",
+      "observed": "Creation flow reached optional Google and computer selection screens."
+    },
+    {
+      "sequence": 2,
+      "action": "Skipped optional Google connection and kept cloud computer",
+      "observed": "New demo dot entered conversation UI; no new Google or local-computer grant performed."
+    },
+    {
+      "sequence": 3,
+      "action": "Opened customization, entered 讀書會小幫手, selected Teal and saved",
+      "observed": "Header read back 讀書會小幫手. Later reopened customization and captured personalization-dialog-desktop.png; this is post-save readback, not capture of the save click."
+    },
+    {
+      "sequence": 4,
+      "action": "Sent canonical02 synthetic background with DOTS-COURSE-02-DEMO scope sentinel",
+      "observed": "Actual response saved in result-v1.txt. Account and connection status remained explicitly unknown; no backend status verified."
+    },
+    {
+      "sequence": 5,
+      "action": "Asked for maximum five items per list, keeping synthetic-only and no-schedule/no-outbound/no-new-account boundaries",
+      "observed": "Actual result-v2.txt and result-v2-desktop.png show updated lists and preserved boundaries."
+    },
+    {
+      "sequence": 6,
+      "action": "Rechecked saved screenshots and obtained independent review",
+      "observed": "8 actual-output checks passed; result-v1-desktop.png has unrelated private preceding context and must not be public. Four 319px captures fail the geometry gate."
+    },
+    {
+      "sequence": 7,
+      "action": "Returned to verified demo dot URL after generic 新對話 led to ordinary ChatGPT",
+      "observed": "Control interrupted before canonical03 input was sent. No canonical03 completion recorded."
+    },
+    {
+      "sequence": 8,
+      "action": "Retained demo tab for continuation and reset IAB temporary viewport",
+      "observed": "Tab inventory read back 讀書會小幫手. DOM control remains unavailable. Prior Chrome reset attempted but debugger detached; no successful Chrome reset confirmation."
+    }
+  ],
+  "files": [
+    {
+      "path": "lessons/02.md",
+      "sha256": "3f668428751836accd99c6a02ad65da0c9e0fb5456c174c552aa219ed6e54dfa",
+      "bytes": 7652
+    },
+    {
+      "path": "videos/02.md",
+      "sha256": "bb88928a892e3e3a5c6e61367713f2df66b2e3e002af859aa79bd7a01a0e1011",
+      "bytes": 12709
+    },
+    {
+      "path": "evidence/02/input.txt",
+      "sha256": "c6dea991967c050f91eff699bcc6233e4f2133dc9e1f09b5fc84388cad1c1fcb",
+      "bytes": 587
+    },
+    {
+      "path": "evidence/02/result-v1.txt",
+      "sha256": "d2e0b03330db073fa6c58893478a4e4e8ff4437d4e4c62f8c7166fc944f16099",
+      "bytes": 1252
+    },
+    {
+      "path": "evidence/02/result-v2.txt",
+      "sha256": "427265e7f787cac6d4352e49804ad96e6e1bfa36781f14a54c5efa750b85cdc7",
+      "bytes": 995
+    },
+    {
+      "path": "evidence/02/personalization-dialog-desktop.png",
+      "sha256": "93f916f69a51be89f9d835eca5fca1e191a81ede11f43c09fe76ebd7714da1b6",
+      "bytes": 31921
+    },
+    {
+      "path": "evidence/02/result-v1-desktop.png",
+      "sha256": "c10930f661cacbd45ca457a23825eb83c3e0b0faa42b93156ababc8f98e3ee9e",
+      "bytes": 141498
+    },
+    {
+      "path": "evidence/02/result-v2-desktop.png",
+      "sha256": "0a25bc1b7babbc1b3ccbc404020c62ee565b5ab628a0a74f134090fe22187312",
+      "bytes": 123723
+    },
+    {
+      "path": "evidence/02/actual-output-review.json",
+      "sha256": "a7035f2bed7e3e48df7b3608f13bf4a3c7b128b77439f74e723efcaed00ac413",
+      "bytes": 17079
+    },
+    {
+      "path": "evidence/02/public-capture-index.json",
+      "sha256": "a3b7a86d35b2c26a490fc5163870d120eb607443b9f4f1378af142a20d01d022",
+      "bytes": 11757
+    }
+  ],
+  "root_visual_review": {
+    "reviewed_files": [
+      "personalization-dialog-desktop.png",
+      "result-v1-desktop.png",
+      "result-v2-desktop.png"
+    ],
+    "scope": "Manual review of saved raw images, independent of fixture tests. Does not approve publication or final video readability.",
+    "privacy_clean": [
+      "personalization-dialog-desktop.png",
+      "result-v2-desktop.png"
+    ],
+    "blocked_raw": [
+      "result-v1-desktop.png"
+    ]
+  },
+  "lesson_complete": false,
+  "sample_video_complete": false,
+  "actual_audio_count": 0,
+  "actual_final_video_count": 0,
+  "owner_publication_approval": false,
+  "published": false
+}

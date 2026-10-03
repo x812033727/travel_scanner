@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/dots_lessons_foundation",
+  "checked_at": "2026-10-03T17:43:59+00:00",
+  "method": "Original combined Windows junction probe plus isolated source, staging, and fake-repo installation boundaries; instrumented builtins.open/io.open during actual package(..., install_downloads=True), with no repository code or real repository install writes.",
+  "previous_evidence": "reviews/implementation-path-probe.json",
+  "reviewed_code": [
+    {
+      "path": "tools/dots-series/files.py",
+      "sha256": "ca4a371f05f1938d6eff24b499b091f35744457c48a47853aa82dc0de4647c66"
+    },
+    {
+      "path": "tools/dots-series/package.py",
+      "sha256": "7de2f41151bc07ab9ff49ca14b95b86bc94f83c5f92078a8a11001be4866bf82"
+    },
+    {
+      "path": "tools/dots-series/build.py",
+      "sha256": "7c796ff910ec27c564ddf7f6fa56cdf3d293abb86da158e04d9aa9b486d882c9"
+    },
+    {
+      "path": "tools/dots-series/authoring_kit.py",
+      "sha256": "9d661e70490e627b1858d1c92544a74a7213679aa02a0b71c934d03f798657cd"
+    },
+    {
+      "path": "tools/dots-series/readiness.py",
+      "sha256": "43da762c7dc1a7568d14804e1760e90875c538dc41b0379ca44798bafbef9b0c"
+    }
+  ],
+  "all_pass": true,
+  "cases": [
+    {
+      "case": "combined_source_and_output",
+      "fixture_root": "C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-v_gp1nvk",
+      "link_types": [
+        "windows_junction",
+        "windows_junction"
+      ],
+      "blocked": true,
+      "error": "Path escapes allowed workspace: C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-v_gp1nvk\\workspace\\examples\\11",
+      "outside_source_content_reads": 0,
+      "outside_output_write_opens": 0,
+      "repo_install_write_opens": 0,
+      "outside_written_files": [],
+      "repo_installed_files": [],
+      "workspace_zip_files": [],
+      "observed_open_operations": [],
+      "pass": true
+    },
+    {
+      "case": "source_only",
+      "fixture_root": "C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-yywkmdtp",
+      "link_types": [
+        "windows_junction"
+      ],
+      "blocked": true,
+      "error": "Path escapes allowed workspace: C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-yywkmdtp\\workspace\\examples\\11",
+      "outside_source_content_reads": 0,
+      "outside_output_write_opens": 0,
+      "repo_install_write_opens": 0,
+      "outside_written_files": [],
+      "repo_installed_files": [],
+      "workspace_zip_files": [],
+      "observed_open_operations": [],
+      "pass": true
+    },
+    {
+      "case": "assets_output_only",
+      "fixture_root": "C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-jg6e_lhe",
+      "link_types": [
+        "windows_junction"
+      ],
+      "blocked": true,
+      "error": "Path escapes allowed workspace: C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-jg6e_lhe\\workspace\\assets",
+      "outside_source_content_reads": 0,
+      "outside_output_write_opens": 0,
+      "repo_install_write_opens": 0,
+      "outside_written_files": [],
+      "repo_installed_files": [],
+      "workspace_zip_files": [],
+      "observed_open_operations": [],
+      "pass": true
+    },
+    {
+      "case": "nested_output_only",
+      "fixture_root": "C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-kapxc17d",
+      "link_types": [
+        "windows_junction"
+      ],
+      "blocked": true,
+      "error": "Path escapes allowed workspace: C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-kapxc17d\\workspace\\assets\\dots-course\\downloads",
+      "outside_source_content_reads": 0,
+      "outside_output_write_opens": 0,
+      "repo_install_write_opens": 0,
+      "outside_written_files": [],
+      "repo_installed_files": [],
+      "workspace_zip_files": [],
+      "observed_open_operations": [],
+      "pass": true
+    },
+    {
+      "case": "handoff_output_only",
+      "fixture_root": "C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-2qu606qz",
+      "link_types": [
+        "windows_junction"
+      ],
+      "blocked": true,
+      "error": "Path escapes allowed workspace: C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-2qu606qz\\workspace\\build-authoring",
+      "outside_source_content_reads": 0,
+      "outside_output_write_opens": 0,
+      "repo_install_write_opens": 0,
+      "outside_written_files": [],
+      "repo_installed_files": [],
+      "workspace_zip_files": [],
+      "observed_open_operations": [],
+      "pass": true
+    },
+    {
+      "case": "repo_install_only",
+      "fixture_root": "C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-z40811av",
+      "link_types": [
+        "windows_junction"
+      ],
+      "blocked": true,
+      "error": "Path escapes allowed workspace: C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-z40811av\\fake-repo\\apps\\web\\public\\dots-course\\downloads",
+      "outside_source_content_reads": 0,
+      "outside_output_write_opens": 0,
+      "repo_install_write_opens": 0,
+      "outside_written_files": [],
+      "repo_installed_files": [],
+      "workspace_zip_files": [],
+      "observed_open_operations": [],
+      "pass": true
+    },
+    {
+      "case": "nested_repo_install",
+      "fixture_root": "C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-4ujf_jqi",
+      "link_types": [
+        "windows_junction"
+      ],
+      "blocked": true,
+      "error": "Path escapes allowed workspace: C:\\Users\\x8120\\mokaair-work\\dots-series\\_tools\\dots-path-recheck-4ujf_jqi\\fake-repo\\apps\\web\\public\\dots-course\\downloads",
+      "outside_source_content_reads": 0,
+      "outside_output_write_opens": 0,
+      "repo_install_write_opens": 0,
+      "outside_written_files": [],
+      "repo_installed_files": [],
+      "workspace_zip_files": [],
+      "observed_open_operations": [],
+      "pass": true
+    }
+  ],
+  "outside_workspace_read_packaged": false,
+  "outside_workspace_zip_write": false,
+  "repo_install_write": false,
+  "scope_limit": "This independently executes the package boundary fix; build/authoring_kit ordering is separately reviewed against current source. Concurrent filesystem mutation between preflight and write is not tested."
+}
