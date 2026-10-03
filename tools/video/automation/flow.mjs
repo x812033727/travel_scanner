@@ -18,7 +18,8 @@ import { hasAnimePolicy, isLongAnime, requireAnimePolicy } from "../core/anime-p
 import { writeAnimeActs } from "./anime-write.mjs";
 import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
-import { EXPLAINER_PRESET, illustrated, slidesPresetFor } from "../core/drama.mjs";
+import { craftChecks } from "../core/craft.mjs";
+import { EXPLAINER_PRESET, hasCast, illustrated, slidesPresetFor } from "../core/drama.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
@@ -29,7 +30,7 @@ import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
-import { speechHash } from "../core/timeline.mjs";
+import { estimateTimeline, speechHash } from "../core/timeline.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { MAX_TEMPO } from "../dubs/plan.mjs";
 import { productionForEpisode } from "../production/design.mjs";
@@ -1122,7 +1123,9 @@ export class Automation {
     const review = await this.decision(state, "script", file);
     if (!review) {
       if (state.series?.hands_off) {
-        const verdict = scriptVerdict(check, state.series);
+        // The craft rows are read on the script itself (drama-craft.md); a long anime keeps to its own policy.
+        const craft = hasCast(video) && !isLongAnime(state) ? craftChecks(video, { timeline: estimateTimeline(video) }) : null;
+        const verdict = scriptVerdict(check, state.series, craft);
         const rounds = state.prompt_fixes?.script ?? 0;
         if (!verdict.passed && rounds < MAX_PROMPT_FIX_ROUNDS) return this.fixScript(state, verdict.problems.join("；"), "the checker");
       }

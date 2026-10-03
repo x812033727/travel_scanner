@@ -360,7 +360,7 @@ Rules that never bend:
 - Verification never enters the narration; nobody's personal data anywhere.
 `.trim();
 
-const PRODUCTION_GUIDE = "## Source-bound animation production\n\nWhen the launch/payload has production, read its profile, episode, opening_30s (E1 only), visual_direction, characters, prop_rules, audio_plan and acceptance_checks before drawing shots. production.episode.hero_shot, its risk_controls and source references are concrete directing constraints; turn them into visible actions, never speak the production notes as dialogue or invent an extra story event. The approved story still governs who is present, what they know and when props change hands.\n\n- Finish the zh-TW Taiwan-accent cut first. Set subtitles.burn_in: false; all dialogue/narration captions are switchable CC. ja/ko/en cast audio and independently timed CC follow approval of the Chinese master; multi-character drama dubbing is planned, not an already implemented automatic stage. Keep line and speaker ids stable for that later work.\n- Keep the cast's base appearance and approved shot_looks: [{id, appearance}] unchanged. For each shot choose data.character_looks: {characterId: lookId} from that character's catalog; the visible character must be in data.characters. A change of clothes, injury or prop handoff within an episode changes the selected look at the exact shot, not the actor's id, face or voice. Do not invent look ids. The catalog's episode lists are candidates, not automatic whole-episode overrides.\n- This profile is clips-only: one clear action and one camera intention per shot. Veo Lite 1080p produces exactly eight seconds at 24fps; plan useful cuts inside that source, normally 3–6 seconds, never a shot over 8 seconds, a static portrait called animation, or freeze padding. Split a reach, handoff and reaction into separate shots. Use anticipation, contact, weight, eye focus and follow-through appropriate to the action.\n- veo-3.1-lite-generate-preview supports a first-frame keyframe, but no referenceImages or extension. Do not instruct unsupported multi-reference video generation. The existing tool may convert 24fps source to its 30fps edit grid; do not claim extra captured motion.\n- Important labels/numbers are verified graphics composited onto a moving prop insert; never trust generated lettering. This is diegetic evidence, not burned-in dialogue. CC closed must still leave the spoken/visual causal chain understandable.\n- Use independent cast TTS, narrator, room tone, effects and music; discard native clip speech. Mouth close-ups need separate synchronization acceptance: lip-sync is not implemented by declaring it in a prompt. Reaction, over-shoulder and object inserts can carry dialogue honestly. Names in the pronunciation plan remain proposed until native listening.\n- No title/thumbnail/trailer may reveal a scheduled answer. A million views is a goal, not a prediction or acceptance criterion. Render/audio/CC acceptance cannot be inferred from a source or storyboard check.\n\n";
+const PRODUCTION_GUIDE = "## Source-bound animation production\n\nWhen the launch/payload has production, read its profile, episode, opening_30s (E1 only), visual_direction, characters, prop_rules, audio_plan and acceptance_checks before drawing shots. production.episode.hero_shot, its risk_controls and source references are concrete directing constraints; turn them into visible actions, never speak the production notes as dialogue or invent an extra story event. The approved story still governs who is present, what they know and when props change hands.\n\n- Finish the zh-TW Taiwan-accent cut first. Set subtitles.burn_in: false; all dialogue/narration captions are switchable CC. ja/ko/en cast audio and independently timed CC follow approval of the Chinese master; multi-character drama dubbing is planned, not an already implemented automatic stage. Keep line and speaker ids stable for that later work.\n- Keep the cast's base appearance and approved shot_looks: [{id, appearance}] unchanged. For each shot choose data.character_looks: {characterId: lookId} from that character's catalog; the visible character must be in data.characters. A change of clothes, injury or prop handoff within an episode changes the selected look at the exact shot, not the actor's id, face or voice. Do not invent look ids. The catalog's episode lists are candidates, not automatic whole-episode overrides.\n- This profile is clips-only: one clear action and one camera intention per shot. Veo Lite 1080p produces exactly eight seconds at 24fps; plan useful cuts inside that source, normally 2–5 seconds (drama-craft.md has the pace and what a denser cut costs), never a shot over 8 seconds, a static portrait called animation, or freeze padding. Split a reach, handoff and reaction into separate shots. Use anticipation, contact, weight, eye focus and follow-through appropriate to the action.\n- veo-3.1-lite-generate-preview supports a first-frame keyframe, but no referenceImages or extension. Do not instruct unsupported multi-reference video generation. The existing tool may convert 24fps source to its 30fps edit grid; do not claim extra captured motion.\n- Important labels/numbers are verified graphics composited onto a moving prop insert; never trust generated lettering. This is diegetic evidence, not burned-in dialogue. CC closed must still leave the spoken/visual causal chain understandable.\n- Use independent cast TTS, narrator, room tone, effects and music; discard native clip speech. Mouth close-ups need separate synchronization acceptance: lip-sync is not implemented by declaring it in a prompt. Reaction, over-shoulder and object inserts can carry dialogue honestly. Names in the pronunciation plan remain proposed until native listening.\n- No title/thumbnail/trailer may reveal a scheduled answer. A million views is a goal, not a prediction or acceptance criterion. Render/audio/CC acceptance cannot be inferred from a source or storyboard check.\n\n";
 
 const SHOT_GUIDE = `
 ${PRODUCTION_GUIDE}
@@ -370,21 +370,66 @@ video.json for a drama (the payload's "drama_example" shows the shape; copy it, 
   style?, negative?, motion?, candidates?}; "characters": [{id (lowercase ascii, not narrator),
   name, appearance (English, ≤ 800 chars), voice: {provider: "gemini", name, style}}], voices from
   "drama_settings.voices" when it lists any.
-- A shot is a scene with "template": "shot" and data {prompt (English ≤ 1000 chars: ONE frame —
-  shot size, subjects by their bible names, setting, light, mood; no story, no dialogue, no text),
-  camera, motion (what moves, for the video model), characters (ids in frame, ≤ 3),
-  character_looks? {characterId: approvedLookId}, fit?
-  (auto|freeze|slow|trim), transition? (cut|dissolve), start_frame? {shot, at: "last"} only when
-  the action continues an EARLIER shot, end_frame? {prompt}, visual? ("clip": an image-to-video
-  clip, the default; "still": the keyframe animated with a slow camera move the tool renders
-  from "camera": push in, pull out, pan left, pan right, tilt up, tilt down or drift; a still
-  has no end_frame)}. Cards: a
-  "title" scene may open the episode and an "outro" scene close it; no other slide templates.
-- A shot carries 3 to 10 seconds of lines (lint refuses more than 12): long narration is more
-  shots, not a longer shot. Vary shot sizes: open wide, come closer. A median under 3 s warns.
-- Lines: one spoken sentence each, about 25 characters, at most 40; "speaker" is "narrator" or a
-  character id, one speaker per line; "emotion" (≤ 80 chars, zh-TW) on a character's line. The
-  narrator carries the story; characters speak only what a listener must hear them say.
+- A shot is a scene with "template": "shot" and data {prompt (English ≤ 1000 chars: ONE frame,
+  the first frame of the shot, the moment before the action in motion starts: shot size,
+  subjects by their bible names, setting, light, mood; no story, no dialogue, no text),
+  camera (starts with the shot size: Wide, Medium shot, Medium close-up, Close-up, Extreme
+  close-up, Over-the-shoulder, Two-shot, Insert, POV; then the camera move, or "locked"),
+  motion (who does what to someone or something: Lin offers the cup, Zhao turns her face away,
+  she tears it, sets it down, points; a look, a breath or a tightening hand is a reaction, not
+  an action), characters (ids in frame, ≤ 3), character_looks? {characterId: approvedLookId},
+  fit? (auto|freeze|slow|trim), transition? (cut|dissolve, a dissolve only where time passes),
+  start_frame? {shot, at: "last"} only when the action continues an EARLIER shot, end_frame?
+  {prompt}, visual? ("clip": an image-to-video clip, the default; "still": the keyframe
+  animated with a slow camera move the tool renders from "camera": push in, pull out, pan
+  left, pan right, tilt up, tilt down, locked or drift; a still has no end_frame), source?
+  {shot, from_s}: this shot is cut from an EARLIER clip shot's clip starting from_s seconds in
+  (a return to the same camera setup: speaker, listener, speaker again), so it buys no
+  keyframe and no clip; from_s plus the shot's own length stays inside that clip}. A shot in
+  which nobody speaks carries "action_seconds" (an integer, 1 to 8) and an empty "lines"
+  array (a brand story or an explainer, measured on its narration, has no such shot). Cards: a "title" scene may follow the opening beat and an "outro" scene close the
+  episode; the first scene is a shot, never a card; no other slide templates.
+- Cover each scene before you cut it: list its setups (one wide that shows who stands where,
+  one medium close-up for each person who speaks, the listener's reaction, an insert that
+  answers a story question, an over-the-shoulder where two people face off), then order the
+  cuts speaker, listener, speaker. When a cut returns to a setup, repeat its camera line and
+  the first clause of its prompt word for word and change only the expression and the action,
+  or cut it from the earlier shot's clip with "source". Come back to a wide or a group shot
+  when someone enters or leaves or a new beat starts, and at least once every ten shots;
+  never three shots in a row of the same size on the same people. Reaction shots (a look, a
+  breath, a tremor) are needed, but at most a third of the shots, at most two in a row, and never all of the first three;
+  a camera move does not turn a look into an action.
+- Pace: one short line, one picture, and lengths that differ. Aim for a median shot of 2.5 to 3.5 seconds,
+  nine in ten at most 6, none over 8 (lint refuses more than 12 and warns above 10). A shot's
+  estimated length is 0.24 s a character plus 0.3 s a line plus 0.7 s a shot, so four
+  characters are about 2 seconds and eight about 3. Give each scene some shots of two to four
+  characters and one hold where two lines sit on one shot before a reveal or a decision;
+  every shot the same length is a metronome. Lint warns when the median falls under 2 seconds:
+  merge. Long narration is more shots, not a longer shot.
+- The opening: the first scene is a shot, never a card. The first 10 seconds hold at least four shots
+  that each answer a new question (where are we, what is the lead doing, what does the lead's
+  face say, how does the other side react), the first 30 seconds at least ten; someone in the
+  scene speaks within those 10 seconds; the conflict is visible by then and worse by 30
+  seconds. The only narrated opening allowed is the lead's own first-person inner voice:
+  "speaker" is the lead's id with "emotion" 內心獨白, a new picture in which something happens
+  for every sentence, finished within 45 seconds.
+- Lines: one spoken sentence each; "speaker" is "narrator" or a character id, one speaker per
+  line; "emotion" (≤ 80 chars, zh-TW) on a character's line. In a story with a cast the people
+  in the scene carry it: a line is at most about 12 characters, over 20 for at most one line in ten,
+  never over 40, and a longer thought breaks where the picture changes; the narrator bridges a
+  jump in time, at most 35% of the spoken text. Every shot needs a line or action_seconds
+  (lint), so a reaction shot or an insert carries the line of whoever is speaking off screen:
+  that person is the "speaker", is not in "characters", and the prompt says the speaker is out
+  of frame. Whoever appears for the first time is called by name or role in a line (there is
+  no name card, and the captions can be switched off). A retelling in which no character
+  speaks stays narrated, in sentences just as short with a picture each.
+- The craft rows: lint prints every row of drama-craft.md the script misses as a warning
+  ("craft hook.opening: …", "craft size.wide: …"), and on a hands-off series the opening and
+  coverage rows (hook.*, motion.opening, size.face, size.wide, size.reestablish, size.stall)
+  send the script back as "fix.problems". Fix a named row in the scene around the named shots
+  the way the rule above says: add shots, change their order, move a line to another shot
+  (fresh ids from "line_ids"). Never reword a camera line only to move a number; change what
+  the shot shows.
 - Chapters: at least 3 ("chapter" on the first shot of each act), each ≥ 10 s, named as a viewer
   would search. Every Latin-letter word in the narration is in "lexicon" or lexicon_additions.
 - "music": {prompt (English: instruments, mood, tempo, "no vocals")} when "drama_settings.music_enabled";
@@ -450,12 +495,15 @@ When "fix" is present, the checks failed and you are FIXING shots or characters:
 (a character no candidate sheet passed: rewrite that character's appearance or sheet_prompt so a
 model can draw it: simpler hands, fewer props, clear colours), keyframes (a shot's keyframe failed:
 rewrite its prompt, camera or characters; a subject in the bottom subtitle band is raised; text is
-forbidden; a crowded frame gets fewer subjects) or clips (a shot's clip froze, cut, went black or
-lost the character: a simpler camera move, a shorter shot, a plainer motion). "fix.targets" names
-the ids and "fix.problems" what the judge or the checks said; "fix.owner_note" is the owner's own
-words when they sent a gate back. Change only the named targets (a shot too long may be split into
-two with fresh ids from "line_ids"); keep every other scene, line and id exactly as it is; return
-the whole corrected video.json. ${SHOT_GUIDE}`,
+forbidden; a crowded frame gets fewer subjects), clips (a shot's clip froze, cut, went black or
+lost the character: a simpler camera move, a shorter shot, a plainer motion) or script (the owner
+or the checker sent the screenplay back: "fix.problems" says why, and a problem that names a craft
+row, "craft hook.opening: …", is fixed in the scene around the named shots as the craft rules
+below say, where you may add shots, reorder them and move a line to another shot). "fix.targets"
+names the ids and "fix.problems" what the judge or the checks said; "fix.owner_note" is the
+owner's own words when they sent a gate back. Change only the named targets (a shot too long may
+be split into two with fresh ids from "line_ids"); keep every other scene, line and id exactly as
+it is; return the whole corrected video.json. ${SHOT_GUIDE}`,
 
   verifier: `${DRAMA_COMMON}
 
@@ -471,7 +519,16 @@ real people or brands in a prompt; a speaker who is not in the shot; an emotion 
 line; the story's cause and effect from the premise to the end; anything the source contradicts
 (for an adaptation, check the facts against "sources" like a tutorial's fact-checker). Fix
 spelling, ids, "characters" lists, a prompt's missing or contradictory detail and facts; keep every
-id; do not rewrite style, order or pacing; do not add or remove shots or lines.
+id; do not rewrite style, order or pacing; do not add or remove shots or lines. A reaction shot or
+an insert carrying the line of someone outside "characters", with the prompt saying so, is how a
+listener is shown, not a finding; a shot cut from an earlier shot's clip ("source") repeats that
+shot's camera and prompt on purpose.
+
+Craft pass (report only): describe the first four shots in one line each, what the viewer sees
+that is new. An opening that is narration over a person standing still, a first 10 seconds with
+fewer than four shots, a scene with no wide or group shot, three shots in a row of the same size
+on the same people, or three looks in a row (drama-craft.md) is a finding you report; the writer
+re-cuts, you do not.
 
 Return {"report": "verify-<round>.md", "video": <corrected video.json, or null when nothing
 changed>, "claims": "claims.md updated", "changed_facts": <number of continuity and fact fixes>}.
@@ -1134,7 +1191,8 @@ Rules:
   the scenes and lines the owner's request touches, keep every other scene, line and id
   exactly as it is (new lines take fresh ids from "line_ids"), keep the cast word for word,
   keep it within lint's rules (one sentence a line, at most 40 characters, a shot's lines
-  within 3 to 10 seconds), and list what changed in the reply, briefly.
+  within 2 to 8 seconds and mostly about 12 characters long), and list what changed in the reply,
+  briefly.
 - When you cannot give a usable answer (the request contradicts the approved bible or
   chapter outline, or the cast), say why in the reply and leave "revised" null.
 

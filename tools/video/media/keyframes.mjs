@@ -10,7 +10,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
-import { burnIn, hasCast, hasPictures, illustrated, isExplainer, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
+import { burnIn, drawnShotScenes, hasCast, hasPictures, illustrated, isExplainer, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { visualHash } from "../core/timeline.mjs";
@@ -214,8 +214,9 @@ export async function run(command, args, ctx) {
   const format = slides ? doc.format : null;
   const rubricOptions = { subtitleBand: burnIn(doc), craft: slides };
   const wanted = values.shot ? new Set(values.shot.split(",").map((each) => each.trim()).filter(Boolean)) : null;
-  const shots = shotScenes(doc).filter((scene) => !wanted || wanted.has(scene.id));
-  if (!shots.length) throw new UsageError(`--shot ${values.shot} names no shot of ${doc.slug}`);
+  // A shot cut from another shot's clip (data.source) shows that clip, so it has no keyframe to draw.
+  const shots = drawnShotScenes(doc).filter((scene) => !wanted || wanted.has(scene.id));
+  if (!shots.length) throw new UsageError(`--shot ${values.shot} names no shot of ${doc.slug} with a keyframe of its own`);
   const takes = values.takes ? Number(values.takes) : MAX_KEYFRAME_TAKES;
   if (!Number.isInteger(takes) || takes < 1 || takes > 6) throw new UsageError("--takes must be 1 to 6");
   const cast = (scene) => shotCast(doc, scene);

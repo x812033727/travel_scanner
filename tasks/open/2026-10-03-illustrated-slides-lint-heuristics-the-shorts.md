@@ -42,9 +42,9 @@ end. Left alone they make the lint a little noisier and less trustworthy than it
       "cream poured into coffee").
 - [x] `motifOf` folds -ies / -ves / -oes / -ses plurals and short -xes plurals ("boxes"), so a
       prop written in both numbers counts once.
-- [x] The three-in-a-row error names the field that actually carries the move (`data.motion`
-      when the camera word names none) and does not suggest "drift" as a fix when the run comes
-      from motion prompts.
+- [x] ~~The three-in-a-row error names the field that actually carries the move~~ superseded
+      by #1170: `cameraMove` reads the camera direction alone (the motion prompt is what happens
+      in the picture), so the run is always on `data.camera`.
 - [x] `tools/video/shorts/motion.mjs` (the comment on `backgroundChain`) and `docs/videos/SHORTS.md`
       say a Short keeps the middle 32% of a 16:9 keyframe, not 56%.
 - [x] The example's `race` shot keeps its subject in the middle third (two runners far apart

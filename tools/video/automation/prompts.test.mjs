@@ -211,3 +211,43 @@ test("the setting planner is told how to write a character's looks, and its refe
   assert.match(reference, /one look per episode/);
   assert.match(reference, /second character id/);
 });
+
+test("the worker's drama writer carries the craft rules the skill's writer prompt carries, word for word where the numbers are", () => {
+  const skill = readFileSync(new URL("../../../.agents/skills/youtube-video/references/prompts/writer-drama.md", import.meta.url), "utf8");
+  const writer = DRAMA_INSTRUCTIONS.writer;
+  // Each phrase is a rule with a number or a closed list in it; drama-craft.md is where they come
+  // from, and the two prompts must say the same thing or the host worker writes to older rules.
+  for (const phrase of [
+    "starts with the shot size",
+    "Cover each scene before you cut it",
+    "at least once every ten shots",
+    "never three shots in a row of the same size on the same people",
+    "at most a third of the shots, at most two in a row, and never all of the first three",
+    "a camera move does not turn a look into an action",
+    "median shot of 2.5 to 3.5 seconds",
+    "nine in ten at most 6, none over 8",
+    "every shot the same length is a metronome",
+    "the first scene is a shot, never a card",
+    "The first 10 seconds hold at least four shots",
+    "the first 30 seconds at least ten",
+    "finished within 45 seconds",
+    "at most about 12 characters",
+    "over 20 for at most one line in ten",
+    "at most 35% of the spoken text",
+    "a reaction shot or an insert carries the line of whoever is speaking off screen",
+    "only to move a number; change what",
+  ]) {
+    assert.ok(skill.includes(phrase), `the skill's writer-drama.md says "${phrase}"`);
+    assert.ok(writer.includes(phrase), `the worker's drama writer says "${phrase}"`);
+  }
+  for (const stale of ["3 to 10 seconds", "about 25 characters", "A median under 3 s warns", "narrator carries the story", "normally 3–6 seconds", "within 3 to 10"]) {
+    assert.equal(writer.includes(stale), false, `the worker no longer says "${stale}"`);
+    assert.equal(skill.includes(stale), false, `the skill no longer says "${stale}"`);
+  }
+  assert.match(instructionsFor("writer", "drama", "", "episode"), /Cover each scene before you cut it/, "a series episode's writer inherits the rules");
+  assert.match(instructionsFor("writer", "drama", "", "discuss"), /within 2 to 8 seconds/);
+  assert.match(DRAMA_INSTRUCTIONS.verifier, /Craft pass \(report only\)/);
+  assert.match(writer, /"fix\.kind" is look[\s\S]*or script \(the owner\s+or the checker sent the screenplay back/);
+  assert.match(writer, /source\?\s+\{shot, from_s\}/);
+  assert.match(writer, /"action_seconds" \(an integer, 1 to 8\)/);
+});
