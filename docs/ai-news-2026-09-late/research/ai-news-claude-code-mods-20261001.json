@@ -726,5 +726,47 @@
         "先載 sec-default"
       ]
     ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1, claude-opus-5-5)",
+    "checked_on": "2026-10-04",
+    "method": "2026-10-03 UTC 18:47（台北 2026-10-04 02:47）以 curl -sSL --compressed --max-time 60 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓 sources[] 四條（間隔 1.3 秒，請求不含任何人的姓名、email 或個資），另抓三個文件頁的 .md 版對照。四條都是 HTTP 200、0 次轉址、伺服器回 content-encoding: gzip；curl 的 size_download（線上壓縮 bytes）是 99,345／90,428／96,979／98,953，解壓後落地 532,059／526,328／656,741／646,270 bytes，與研究代理的落地檔 md5 逐位元組相同。撰稿者回報的約 9–10 萬 bytes 是壓縮後的傳輸量，不是不同版本的頁；正文完整。verbatim_quote 94 條以程式在四頁的 A／B／C／RAW 正規化文字做連續子字串比對，94/94 通過（全部在 A 版命中），url 全在 sources[]。github.com HTML 對本 session 回 403（出口代理的訊息，不是 GitHub），改用 git clone --depth 1 --filter=blob:none 列目錄：claude-code-playground（HEAD 569c5283，2026-10-01）有 claude-code/mods/token-weather、blast-radius、replay-theater；claude-code（HEAD 1c229fcd，2026-10-02）有 mods/agents-md、diff、sec-default、telemetry、types。正文、summary、FAQ、callout、表格每格與 caption、圖解 caption 與 diagram 四格、hero_label、title、description 拆成約 100 條主張逐條回原文比對；DELTA-4-11 第 4 節十六條與第 6a 節逐條掃過。紀錄在 /root/news411/agents/fc1/（fetch-log.tsv、check_quotes.py／.log、edit_pack.py、pack.diff、check0.log、check.log）。報告：docs/news-2026-batch-4/factcheck-draft/ai-news-claude-code-mods-20261001-round1.md。",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "第四節 Where mods run：原句「終端機與 Desktop app 的 Code 分頁（WSL session 除外…）會畫」讓人以為 WSL session 只是不畫；overview 表寫 WSL session「No, because plugins aren't available in WSL sessions」（不跑也不畫）。改寫成獨立一段，並補上漏掉的 Remote Control 一列（Yes, in the session on your machine／In the terminal on your machine）與 Code 分頁畫不出 terminal-only 元素的但書。",
+      "第三節內建 mods：原段只寫 cc-plugin-diff 與 sec-default。補上 Installed 分頁、cc-plugin-you-should-know 預設關閉且「if available for your org」才列出（DELTA 第 3 節必寫、第 4 節第 8 條），以「例如」列名，不寫清點數字。",
+      "第二節 /diff：「可在 /plugin 關掉或換掉」把 in /plugin 套到 replace 上，改為「可在 /plugin 關掉，或換成自己的版本」，並補 overview「/diff stays, and Claude Code's built-in version of the command answers it」。",
+      "第四節安裝格式：原句把「/plugin install 加 plugin 名稱、@ 與 marketplace 名稱」掛在「部落格說」底下；那是 overview 的句子，改歸因到文件。",
+      "第五節 deny 規則：「管不到 mod 自己的 $.fs」補成「$.fs 與 $.process 呼叫」（admin：Neither applies to a mod's own $.fs and $.process calls）；「核准被 deny 規則拒絕的呼叫」→「工具呼叫」（Both apply to Claude's tool calls）；「受管設定檔 Hook」→「受管設定檔 Hook 收到與決定的事」（what your managed hooks receive or decide）；API key／Bedrock 那句「登入」→「用…的人」（authenticates）。",
+      "第五節管理者開關：disableSideloadFlags 補「Claude 在 session 裡寫的 mods」（keeps mods Claude writes during a session from loading）；managed disableAllHooks 補「受管的設定檔 Hook 也停」（turns off every hook in settings files, so a PreToolUse hook in your managed settings no longer blocks anything）。",
+      "第五節個人關閉：個人 disableAllHooks 補「組織管理的照常」（What your organization manages keeps running）；--safe-mode 寫清楚是停一個 session 的已安裝 mods。",
+      "第五節沙盒：補「mod 啟動的程式在沙盒外」（a process that a mod starts runs outside it）；「讀環境變數與設定檔裡的 API key」→「讀環境變數與設定檔（包括裡面的 API key）」，原句可讀成只讀 API key。部落格那句同權限提醒留在 callout（已歸因），正文這段改用文件的 aren't sandboxed。",
+      "第三節團隊例子：刪「這些是可以這樣做的例子，不是現成的產品」（否定句超出來源；部落格只說 Teams can also use mods to build their own controls），改成「三個團隊可以用 mods 自己做的例子」；production 那例照原文改成「指令碰到 production 設定前」。",
+      "第一節：「處理方式有三種」→「文件列出三種處理方式」（部落格另有 wrap，不是封閉清單）；「多個 mods 依載入順序疊加」→「掛同一個事件時依載入順序執行」（原文 When several mods hook the same event）；「只有 mod 能畫介面」→「下表四者中只有 mod 能畫介面」（status line 也在介面上，範圍限於比較表）。",
+      "summary 第 2 點加「Anthropic 說」，「文件寫兩者並行」改成正文寫得到的「文件寫設定檔 Hook 照舊執行，沒有被淘汰」；第 3 點補 sec-default 的載入條件，「呼叫」→「工具呼叫」。FAQ 3 同步刪「和 mods 並行」。",
+      "callout「內建 mods 表與各項設定會隨版本變動」→「可能隨版本變動」（create：can change between releases）；description 把「CLI 與 desktop app 能用」歸因給 Anthropic。",
+      "為了把段落字數壓回 3,000 以內（加了上述事實後一度 3,511）刪了不帶事實的句子：第一段「寫工具的開發者與替團隊管設定的管理者最相關」與重複的版本門檻（第四節保留）、第二段「也不是訂閱或購買建議」、第四節部落格的「Claude 可以寫 TypeScript 並熱重載」（同段保留文件版本）、第一節「用詞先分開：」。沒有刪任何但書或限定詞。改後 2,999 字。"
+    ],
+    "checked_and_correct": [
+      "公告日 2026-10-01：部落格印 Date October 1, 2026，沒有時刻；正文不寫時刻、不換算。",
+      "title、hero_label、diagram 四格與 caption：mods 用 TypeScript 改行為與介面、裝在 plugin 裡；事件（工具呼叫、提示、畫面）、函式（觀察、改寫或接手）、介面（窗格、按鈕、指令）、管控（sec-default 先載入，caption 帶載入條件）都對得到部落格與 overview。",
+      "三個檔案路徑、modules 欄（having it is what makes the plugin a mod）、register(on)、$／e／next 三個參數、Observe／Rewrite／Answer。",
+      "兩種 hook 的用詞：第一節講清楚後全文固定用「設定檔 Hook」與「mod 的事件函式」；沒有任何一句寫 mods 取代或淘汰 settings hooks（admin：Nothing about them is deprecated）。",
+      "部落格列的能力（改寫提示；擋、改寫、重試工具呼叫；核准或拒絕權限；遮掉機密；修改或取代介面、加按鈕與輸入框）都歸因給 Anthropic；文件補的窗格、橫條、/command。",
+      "比較表 4 欄 × 4 列每一格逐格對 overview 比較表的 What it is／What it can change／What you write；Can it draw 一列移到正文（Yes No No No）。caption 的查核日一致。",
+      "三個範例 mod 的名稱與功能、claude-code-playground、shared as they are, without support；git clone 確認三個目錄存在。",
+      "v2.1.287 歸因到文件、部落格沒寫；預設開啟；claude --version；CLAUDE_CODE_ENABLE_FUNCTION_HOOKS 沒出現。",
+      "Claude directory 照部落格逐字；正文沒有 Anthropic's directory、Claude Marketplace、token-chart。",
+      "Node.js／build step、--plugin-dir 一個 session 與熱重載、plugin-authoring skill、~/.claude/dev-mods/、核准、cleanupPeriodDays、claude plugin validate。",
+      "sec-default 載入條件（managed settings 的機器或 Team／Enterprise 登入；API key、Bedrock、Google Cloud、Foundry 只在 managed settings 機器）、其他都允許、prependPlugins 要列 sec-default@builtin、managed disableAllHooks 連組織 mods 也停、--safe-mode 與 disableAllHooks 不停內建 mods。",
+      "沒有沙盒或隔離的說法；sandboxing 只隔離 Claude 執行的 Bash；改不了權限提示；$.model.complete 用使用者方案或 API key 是唯一的用量事實且歸因到文件。",
+      "界線：沒有價格、購買或訂閱建議、推薦語氣；沒有 beta／GA／地區的推定；「本文」0 次、「這一篇」1 次；只有一個 info callout；topics 不含 finance；checked_on 2026-10-04 四處一致；兩個結尾連結與 related 未動。"
+    ],
+    "left_for_the_owner": [
+      "段落字數已到 2,999／3,000。DELTA-4-11 第 3 節列的 claude plugin test、cc-plugin-agents-md／cc-plugin-telemetry／cc-plugin-plugin-authoring 的列名，以及 Anthropic 在 GitHub 徵求設計意見那句，這一輪因字數上限沒有寫（plugin-authoring 以 skill 名出現在第四節）。要寫就得放寬上限或另刪敘述；第二輪不要為了補它們刪但書。",
+      "四個文件頁是活頁面（內建 mods 表、Where mods run 表、admin 的開關），發布當天重讀，特別看 Remote Control 那一列與內建 mods 的列。",
+      "github.com HTML 與 API 對本環境的出口代理回 403（訊息是 GitHub access … not enabled for this session）；git clone 走得通，目錄已確認。若要放 repo 連結，協調者決定。",
+      "正文把 Google Cloud's Agent Platform 寫成 Google Cloud（DELTA 第 4 節第 4 條的寫法）；要不要寫全名由站主決定。"
+    ]
   }
 }
