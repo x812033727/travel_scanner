@@ -1,7 +1,7 @@
 ---
 id: 2026-10-03-news-batch-4-11-claude-code
 title: News batch 4.11: Claude Code mods explainer, five languages
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-fable-5-1-news-4-11
