@@ -1,6 +1,6 @@
 # 「代理工具搭本機模型」：系列 E 組規格（6 篇，zh-TW）
 
-> **現況（2026-10-03）**：只有規格，文章還沒寫。票：`tasks/open/2026-10-03-ai-workflow-series-agent-plus-local.md`。
+> **現況（2026-10-04）**：站主看過規格，回覆「六篇 OK，雲端端點也寫，開始撰稿」；撰稿進行中。票：`tasks/open/2026-10-03-ai-workflow-series-agent-plus-local.md`。
 > 來源：站主 2026-10-03 要求「做一個手把手教學：Claude 或 Codex 搭配本地端 AI 的混合 workflow，要注意什麼、怎樣做比較好」。
 > 這一組掛在既有的 `ai-workflow` 系列底下，沿用 [`../BRIEF.md`](../BRIEF.md)、[`../agents/FACTCHECK.md`](../agents/FACTCHECK.md)、
 > `check_article.py`、`build_assets.py` 與 `models-seen.json`。這份只寫**與 BRIEF 不同的地方**、每篇的指派，以及規格當天讀到的官方事實。
@@ -12,6 +12,7 @@
 | 形式 | 「五篇小系列 OK，但是要多 GLM、Qwen、DeepSeek」 | 原本的五篇照做，三個家族寫進每一篇實作，另外加一篇家族篇（第 2 篇），共六篇。這是協調者的理解，見「留給站主的事」 |
 | 實測 | 「不實測，只寫官方指令」 | 見「與 BRIEF 不同的規則」第 1 條 |
 | 這次做到哪 | 開票並把規格寫進分支 | 這份檔案與票；撰稿等站主看過規格再開始 |
+| 看過規格之後（2026-10-04） | 「六篇OK，雲端端點也寫，開始撰稿」 | 六篇定案；第 14 篇寫三家供應商的端點，並明講那不是本機 |
 
 ## 站上已經有的，和這一組的分工
 
@@ -55,7 +56,9 @@
    JSON（類別、急迫度、去識別化摘要），雲端代理只讀 JSON。示範資料全部虛構，程式不讀任何真實個資。
 5. **歸因寫法。** 「Anthropic 的文件寫不支援」不等於「違反條款」。條款類的句子只轉述官方頁原文的意思，不做法律解讀。
 6. **第 14 篇的 `sources` 放寬到 3–12 條。** 三家各有接 Claude Code、接 Codex、模型卡的頁面，加上 Ollama 的標籤頁，
-   八條放不下。撰稿前先改 `check_article.py` 的 `SOURCES_RANGE`，只對這一個 slug 放寬。
+   八條放不下。`check_article.py` 的 `SOURCES_MAX` 只對這一個 slug 放寬。
+   同一次也讓檢查器接受 `toml` 的 code 區塊（用 `tomllib` 解析）、把 `glm` 納入模型 id 的比對，
+   並且不再把環境變數名、套件名（`claude-code`）與主機名（`api.deepseek.com`）誤判成模型 id。
 7. **不做的事。**
    - 不教用第三方路由器把 Claude Code 的一部分請求導到別的模型（F5：官方不支援）。
    - 不寫價格與方案比較（站上有 `ai-api-pricing-comparison-2026`）；需要提到時寫「以官網為準」。
@@ -248,7 +251,7 @@
 
 ## 系列登記要跟著改的地方（文章寫完之後）
 
-1. [`../series.py`](../series.py)：`SLUGS` 接上六個 slug；`INTRO` 現在是 `SLUGS[:3]`，改成明列，加入第 13、18 篇。
+1. [`../series.py`](../series.py)：`SLUGS` 接上六個 slug；`INTRO` 明列，加入第 13、18 篇。（撰稿前已改，檢查器才認得新 slug。）
 2. [`../build_catalogue.py`](../build_catalogue.py)：`GROUPS` 加 E；`GROUP_OF` 現在用 `"ABCD"[i // 3]`，六篇進來會出界，改成明確對照；
    `PATHS` 加 `agent-local`；`LEVEL`、`PLATFORMS`、`PREREQUISITES`、`RELATED`、`ALIASES` 補六篇。
 3. `apps/api/tests/test_guide_series.py`：`test_the_ai_workflow_catalogue_is_complete_and_references_are_valid` 的篇數、組別、路線斷言與說明文字。
@@ -269,9 +272,7 @@
 
 ## 留給站主的事
 
-- **六篇還是五篇。**「要多 GLM、Qwen、DeepSeek」這裡理解成多一篇家族篇。如果意思是維持五篇，就把第 14 篇的表併進第 13 篇，
-  端點設定併進第 17 篇，`display_order` 往前補。
-- **第 14 篇會寫三家供應商自己的雲端端點。** 這不是本機：資料會送到供應商。文章會明講，並連到 `deepseek-privacy-and-data-flow`。
-  如果這一組只想留本機的內容，就把端點那一半拿掉，只留「哪些標籤其實是雲端」。
+- 已定案（2026-10-04）：六篇；第 14 篇寫三家供應商自己的雲端端點，文章明講那不是本機、資料會送到供應商，
+  並連到 `deepseek-privacy-and-data-flow`。
 - **之後要不要補實測。** 16 GB 記憶體、沒有獨立顯卡的筆電，放得下的是 `qwen3.5` 的 4b／9b 與 `deepseek-r1` 的 7b／8b 這一級；
   `glm-4.7-flash` 19GB 起放不下。要補的話另開票。

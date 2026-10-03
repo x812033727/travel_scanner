@@ -69,7 +69,13 @@ PARENT = {slug: parent for slug, parent, _ in LIFE_SEED_SUBTOPICS}
 BODY_RANGE = (1800, 3000)
 HUB_BODY_RANGE = (900, 3000)
 SOURCES_RANGE = (3, 8)
-CODE_LANGUAGES = {"python", "bash", "json", "yaml"}
+#: The article on the three model families cites each vendor's Claude Code page, Codex page and
+#: model card next to Ollama's tag pages; eight sources do not hold them.
+SOURCES_MAX = {"ai-workflow-agent-glm-qwen-deepseek": 12}
+CODE_LANGUAGES = {"python", "bash", "json", "yaml", "toml"}
+#: Strings the model-id pattern catches that are not models: package and host names.
+NOT_MODELS = {"claude-code", "qwen-code"}
+HOST_SUFFIXES = (".com", ".ai", ".cn", ".io")
 CODE_MAX_LINES = 80
 SECRET = re.compile(r"sk-[A-Za-z0-9_-]{8,}|AKIA[0-9A-Z]{16}|api[_-]?key\s*[=:]\s*[\"'][^\"'$<{]{12,}", re.I)
 PLACEHOLDER = re.compile(r"<YOUR[_ -]?[A-Z_ ]*KEY>|YOUR_API_KEY|your-api-key-here", re.I)
@@ -91,7 +97,14 @@ def models_seen() -> set[str]:
 
 def model_ids_in(text: str) -> set[str]:
     """Strings shaped like a model id: a vendor prefix, a version, optional suffixes."""
-    return set(re.findall(r"\b(?:gpt|claude|gemini|o[1-9]|qwen|deepseek|llama|mistral|grok)[-_a-z0-9.]{2,}\b", text, re.I))
+    found = set(re.findall(r"\b(?:gpt|claude|gemini|o[1-9]|qwen|deepseek|glm|llama|mistral|grok)[-_a-z0-9.]{2,}\b", text, re.I))
+    # An environment variable (CLAUDE_CODE_MAX_CONTEXT_TOKENS, DEEPSEEK_API_KEY), a package name
+    # and a host name (api.deepseek.com) all start like a model id and are none.
+    return {
+        m
+        for m in found
+        if not re.fullmatch(r"[A-Z0-9_]+", m) and m.lower() not in NOT_MODELS and not m.lower().endswith(HOST_SUFFIXES)
+    }
 
 
 def compile_sample(slug: str, index: int, block: CodeBlock) -> str | None:
@@ -117,6 +130,10 @@ def compile_sample(slug: str, index: int, block: CodeBlock) -> str | None:
             import yaml  # noqa: PLC0415
 
             yaml.safe_load(text)
+        elif block.language == "toml":
+            import tomllib  # noqa: PLC0415
+
+            tomllib.loads(text)
     except Exception as exc:  # noqa: BLE001
         return str(exc).strip().splitlines()[0] if str(exc).strip() else exc.__class__.__name__
     return None
@@ -243,7 +260,8 @@ def main() -> int:
 
     # --- sources -------------------------------------------------------------------------
     sources = raw["locales"][LOCALE]["sources"]
-    need(SOURCES_RANGE[0] <= len(sources) <= SOURCES_RANGE[1], f"{len(sources)} sources, not {SOURCES_RANGE[0]}-{SOURCES_RANGE[1]}")
+    most = SOURCES_MAX.get(slug, SOURCES_RANGE[1])
+    need(SOURCES_RANGE[0] <= len(sources) <= most, f"{len(sources)} sources, not {SOURCES_RANGE[0]}-{most}")
     for source in sources:
         need(source.get("checked_on") == checked, f"source checked_on {source.get('checked_on')} differs from research {checked}")
         need("?" not in source["url"] or "api." in source["url"], f"source URL carries a query string: {source['url']}")

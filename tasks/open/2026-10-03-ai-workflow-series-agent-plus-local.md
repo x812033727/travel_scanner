@@ -1,11 +1,11 @@
 ---
 id: 2026-10-03-ai-workflow-series-agent-plus-local
 title: AI workflow series, agent-plus-local-model group: six zh-TW articles on pairing Claude Code and Codex with local models (GLM, Qwen, DeepSeek)
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1-agent-local
+claimed_at: 2026-10-03T16:05:59Z
 created_at: 2026-10-03T15:54:29Z
 completed_at:
 branch: claude/hybrid-model-tutorial-plan-e323dd
