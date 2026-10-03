@@ -1,0 +1,2042 @@
+{
+  "schema_version": 1,
+  "slug": "ai-terms-prompt-to-graph-engineering",
+  "format": "slides",
+  "source_guide": "ai-term-harness-engineering",
+  "category": "ai-terms",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "台灣國語說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。"
+  },
+  "look": {
+    "preset": "riso-forest"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "提示詞、上下文、駕馭、迴圈、圖形工程是什麼？AI 出錯，先別急著改指令｜AI 名詞十分鐘",
+    "description": "提示詞工程、上下文工程、駕馭工程（Harness Engineering）、迴圈工程、圖形工程是什麼？這集把五個名詞排成一張樓層圖：每一層管什麼、失敗長什麼樣、AI 出錯時先修哪一層。\n給會把文件貼給 AI 整理、開始試 AI 代理、看到新名詞就焦慮的人；不用懂程式。\n\n一樓提示詞工程管單次對話的指令與輸出；二樓上下文工程管模型這一次看到什麼；三樓駕馭工程管工具、權限、攔截與監控，一條公式是「代理 ＝ 模型 ＋ 外面那一層」；四樓迴圈工程讓代理自己觀察、執行、檢查、重試，也知道何時停；五樓圖形工程把多個代理與迴圈排成一張有向圖，每過一條邊就存進度。各家對樓層順序沒有共識，這集照 2026 年 8 月一份學術綜述的點名順序排；每個定義都標明是誰的說法。\n示範是 2026-10-03 在我們自己的影片產線真的跑的：檢查工具把放了字典沒有的英文詞的稿子擋下來、一支插圖影片的花費上限 20 美元、大綱重寫上限 2 次、每道核准綁檔案雜湊；不是任何代理產品的畫面，也不評比任何產品。\n\n這集提到的另外三篇文章：\n提示詞工程：https://mokaair.com/zh-TW/life/ai-term-prompt-engineering?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering\n上下文工程：https://mokaair.com/zh-TW/life/ai-term-context-engineering?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering\nLoop Engineering：https://mokaair.com/zh-TW/life/ai-term-loop-engineering?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering\n下一個名詞「代理迴圈」：https://mokaair.com/zh-TW/life/ai-term-agent-loop?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering\n\nAI 名詞總索引：https://mokaair.com/zh-TW/life/ai-terms-index?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering",
+    "tags": [
+      "提示詞工程",
+      "上下文工程",
+      "Harness Engineering",
+      "駕馭工程",
+      "迴圈工程",
+      "Loop Engineering",
+      "圖形工程",
+      "Graph Engineering",
+      "Prompt Engineering",
+      "Context Engineering",
+      "AI 代理",
+      "AI 名詞",
+      "AI 名詞十分鐘",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "五層樓",
+      "tag": "AI 名詞十分鐘",
+      "sub": "AI 出錯，先別改指令",
+      "shot": "stairwell"
+    }
+  },
+  "sources": [
+    {
+      "title": "Anthropic：Effective context engineering for AI agents（2025-09-29）",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Anthropic：Effective harnesses for long-running agents（2025-11-26）",
+      "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "LangChain：The Anatomy of an Agent Harness（2026-03-10）",
+      "url": "https://www.langchain.com/blog/the-anatomy-of-an-agent-harness",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "LangChain：Improving Deep Agents with harness engineering（2026-02-17）",
+      "url": "https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Mitchell Hashimoto：My AI Adoption Journey（2026-02-05）",
+      "url": "https://mitchellh.com/writing/my-ai-adoption-journey",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Addy Osmani：Loop Engineering（2026-06-07）",
+      "url": "https://addyosmani.com/blog/loop-engineering/",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Andrej Karpathy：autoresearch README（2026 年 3 月）",
+      "url": "https://raw.githubusercontent.com/karpathy/autoresearch/master/README.md",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Josh C. Simmons：We Are Entering the Graph Engineering Phase",
+      "url": "https://www.drjoshcsimmons.com/writing/we-are-entering-the-graph-engineering-phase",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "arXiv 2608.21156：Graph Engineering in the Era of LLM Agents（2026-08-21）",
+      "url": "https://arxiv.org/abs/2608.21156",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "LangGraph 文件：Graph API",
+      "url": "https://docs.langchain.com/oss/python/langgraph/graph-api",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "LangGraph 文件：Persistence",
+      "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Google Cloud：提示工程：總覽和指南（2026-05-04 更新）",
+      "url": "https://cloud.google.com/discover/what-is-prompt-engineering?hl=zh-TW",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Claude Platform Docs：Prompt engineering overview",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Thoughtworks／Martin Fowler：Harness engineering for coding agent users（2026-04-02）",
+      "url": "https://martinfowler.com/articles/harness-engineering.html",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Mokaair 影片產線：HANDS-OFF.md（關卡、核准與自動品管）",
+      "url": "https://raw.githubusercontent.com/x812033727/travel_scanner/main/docs/videos/HANDS-OFF.md",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Mokaair 影片產線：flow.mjs（MAX_REPLANS）",
+      "url": "https://raw.githubusercontent.com/x812033727/travel_scanner/main/tools/video/automation/flow.mjs",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Mokaair 影片產線：schemas.py（slides_max_usd_per_video）",
+      "url": "https://raw.githubusercontent.com/x812033727/travel_scanner/main/apps/api/app/video_automation/schemas.py",
+      "checked_on": "2026-10-03"
+    }
+  ],
+  "assets": [
+    {
+      "path": "apps/web/public/guides/ai-term-context-engineering/diagram-1.svg",
+      "source": "Mokaair 自有圖解（文章 ai-term-context-engineering）",
+      "license": "© Mokaair"
+    },
+    {
+      "path": "apps/web/public/guides/ai-term-loop-engineering/diagram-1.svg",
+      "source": "Mokaair 自有圖解（文章 ai-term-loop-engineering）",
+      "license": "© Mokaair"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "template": "title",
+      "data": {
+        "tag": "AI 名詞十分鐘",
+        "title": "從**提示詞**到**圖形工程**",
+        "subtitle": "AI 出錯，先別急著改指令"
+      },
+      "chapter": "AI 出錯，你先改指令？",
+      "lines": [
+        {
+          "id": "baxj",
+          "text": "AI 做錯事的時候，你的第一個反應，是不是回去改指令？"
+        }
+      ]
+    },
+    {
+      "id": "drafts",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a community notice board outside an apartment lobby on a bright morning, a volunteer in a cardigan standing before it with a fistful of crumpled hand-written drafts, one more draft half pinned to the cork, a wastebasket at her feet already full of paper balls, sun from the open street behind her",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "9ug2",
+          "text": "十分鐘，五個名詞排成樓層圖，以後它出錯，你知道修哪一層。"
+        }
+      ]
+    },
+    {
+      "id": "ch2-card",
+      "template": "chapter",
+      "data": {
+        "title": "你以為是五個新詞，\n其實是**五層樓**",
+        "number": "02"
+      },
+      "chapter": "你以為是五個新詞，其實是五層樓",
+      "lines": [
+        {
+          "id": "vdb8",
+          "text": "你以為這五個名詞，是五波流行，新的來了，舊的就該丟。"
+        }
+      ]
+    },
+    {
+      "id": "stairwell",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old apartment stairwell on a sunny morning, five landings stacked above one another seen from the ground floor, a mover with a simple face carrying a cardboard box up the second flight, a child peeking from a half-open door on the landing above, a row of dented metal mailboxes by the entrance, sun pouring down from a tall window at the top",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "2hid",
+          "text": "其實它們是疊起來的樓房，每一層都還在，只是從主角變成零件。"
+        }
+      ]
+    },
+    {
+      "id": "formula",
+      "template": "big",
+      "data": {
+        "kicker": "一條公式",
+        "text": "**代理** ＝ 模型 ＋ **外面那一層**",
+        "sub": "Agent = Model + Harness（LangChain，2026 年 3 月）"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "q9jq",
+          "text": "有一條公式把這件事講得最短：代理，等於模型，加上它外面那一層。"
+        }
+      ]
+    },
+    {
+      "id": "mailbox-row",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a row of dented metal mailboxes in the apartment entrance, a postman's hand sliding one envelope into a slot while a folded parcel waits on top, morning sun slanting across the metal doors",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "vxxc",
+          "text": "模型負責聰明，外面那一層負責讓聰明變得有用。"
+        }
+      ]
+    },
+    {
+      "id": "ladder-table",
+      "template": "table",
+      "data": {
+        "title": "五層樓，各管一件事",
+        "columns": [
+          "樓層",
+          "名詞",
+          "管的是什麼"
+        ],
+        "rows": [
+          [
+            "1",
+            "提示詞工程 Prompt Engineering",
+            "這一次對話的指令與輸出"
+          ],
+          [
+            "2",
+            "上下文工程 Context Engineering",
+            "模型這一次看到什麼"
+          ],
+          [
+            "3",
+            "駕馭工程 Harness Engineering",
+            "工具、權限、攔截與監控"
+          ],
+          [
+            "4",
+            "迴圈工程 Loop Engineering",
+            "觀察、執行、檢查、重試"
+          ],
+          [
+            "5",
+            "圖形工程 Graph Engineering",
+            "把代理與迴圈排成一張圖"
+          ]
+        ]
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "smcw",
+          "text": "一樓，提示詞工程，管的是這一次對話的指令和輸出。"
+        },
+        {
+          "id": "6zcn",
+          "text": "二樓，上下文工程，管模型這一次到底看到什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "fwuv",
+          "text": "三樓，駕馭工程，管它能用什麼工具、誰攔它、誰在看。",
+          "reveal": 1
+        },
+        {
+          "id": "7piw",
+          "text": "四樓，迴圈工程，讓它自己觀察、執行、檢查、重試。",
+          "reveal": 1
+        },
+        {
+          "id": "3jvn",
+          "text": "五樓，圖形工程，把好幾個代理和迴圈排成一張圖。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "movers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stairwell landing in the same old apartment building, two movers passing a heavy cardboard box between floors over the banister, a neighbour in slippers holding the stair door open with her foot, soft light from the landing window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "vrmh",
+          "text": "樓層順序各家排得不一樣：有人把迴圈排在駕馭上面，有人不談駕馭。"
+        }
+      ]
+    },
+    {
+      "id": "landlord-keys",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a ring of worn brass keys in a landlord's hand on the ground floor, his thumb separating one key from the bunch, the stair rail blurred behind, light from the entrance door",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "cfm5",
+          "text": "這集照一份今年夏天的學術綜述排，它把五個名詞一口氣點了名。"
+        }
+      ]
+    },
+    {
+      "id": "one-key",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a single brass key sliding into the lock of an apartment door, the landlord's fingers on the bow of the key, the door's painted wood filling the frame, the stairwell bright behind",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "avbq",
+          "text": "名詞換了五次，有一件事沒變：出錯時，先找是哪一層的問題。"
+        }
+      ]
+    },
+    {
+      "id": "door-open",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind the landlord as the apartment door swings open onto an empty, sunlit room with one chair and a rolled carpet, his hand still on the handle, light flooding out past him into the stairwell",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "rf9c",
+          "text": "那一樓，提示詞工程，到底在管什麼？"
+        }
+      ]
+    },
+    {
+      "id": "ch3-card",
+      "template": "chapter",
+      "data": {
+        "title": "一樓：**提示詞工程**\n單次對話的指令",
+        "number": "03"
+      },
+      "chapter": "一樓 提示詞工程：單次對話的指令",
+      "lines": [
+        {
+          "id": "49rx",
+          "text": "一樓最老，剛開始的時候，大家手上只有一個輸入框、一段回應。"
+        }
+      ]
+    },
+    {
+      "id": "one-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a volunteer desk in a community centre on a weekday morning, a volunteer with a pencil behind one ear writing on a single index card, a tin of pencils and a rubber stamp beside her elbow, bright light from a side window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "4sfk",
+          "text": "怎麼把話說清楚，模型就答得多好，這門手藝叫提示詞工程。"
+        }
+      ]
+    },
+    {
+      "id": "index-card",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single index card held up between a volunteer's finger and thumb, one short pencilled line on it blurred past reading, the pencil tin out of focus behind, window light on the card's edge",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "bwdq",
+          "text": "一家雲端平台的指南，給了這樣的定義。"
+        }
+      ]
+    },
+    {
+      "id": "google-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "一句定義",
+        "quote": "設計和最佳化提示的技巧與原理，旨在引導 AI 模型生成想要的回覆",
+        "source": "Google Cloud・提示工程：總覽和指南（上次更新 2026-05-04）"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "9n4r",
+          "text": "設計和最佳化提示的技巧，引導模型生成想要的回覆。"
+        }
+      ]
+    },
+    {
+      "id": "notice-pin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands pinning a hand-written event notice to a cork board in the community centre hallway, a push pin between finger and thumb, the paper's edge still curling, morning light along the wall",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "m69g",
+          "text": "舉個例子，社區志工要把活動資料改成公告。"
+        }
+      ]
+    },
+    {
+      "id": "five-slips",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of five small paper slips fanned out on the volunteer desk, a potted seedling, a child's mitten and a coin purse set beside them as props, the volunteer's hands squaring the slips, light from the window at the top of the frame",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "sb4e",
+          "text": "資料只有五樣：親子植栽、週六上午、交誼廳、要報名、費用未定。"
+        }
+      ]
+    },
+    {
+      "id": "chat-prompt",
+      "template": "chat",
+      "data": {
+        "title": "把資料和要求分開",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "請整理成住戶公告。時間保留原文，不自行推算日期；費用標示待確認。"
+          },
+          {
+            "side": "left",
+            "name": "示意回覆",
+            "text": "親子植栽活動，週六上午，社區交誼廳；需事先報名；費用待確認。"
+          }
+        ]
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "imf3",
+          "text": "好的提示詞把原料和要求分開：這是資料，這是不能動的事實，這是格式。"
+        },
+        {
+          "id": "9ndr",
+          "text": "回覆保留週六上午，費用寫待確認，沒有自己補出別的東西。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "freebies",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the same volunteer desk, a second volunteer in a vest reading the finished notice and frowning, his finger on one line, a plate of biscuits nobody asked for sitting on the desk between them, side-window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "xyrn",
+          "text": "失敗長什麼樣？公告寫得很順，卻多了一行免費材料、現場贈品。"
+        }
+      ]
+    },
+    {
+      "id": "red-pen",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a red pencil striking through one line on a hand-written notice held flat by a volunteer's other hand, the pencil's wood grain sharp in the foreground, bright even light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "mwui",
+          "text": "文筆再好，補出沒有的事實，就是不及格。"
+        }
+      ]
+    },
+    {
+      "id": "pe-steps",
+      "template": "steps",
+      "data": {
+        "title": "提示詞工程的三個動作",
+        "steps": [
+          {
+            "title": "先寫清楚什麼算完成",
+            "detail": "不是「專業又吸引人」"
+          },
+          {
+            "title": "分開原料與要求",
+            "detail": "資料、限制、格式各一段"
+          },
+          {
+            "title": "給缺漏留出口",
+            "detail": "沒給的費用，寫待確認"
+          }
+        ]
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "wjf9",
+          "text": "三個動作。第一，先寫清楚什麼算完成，不是專業又吸引人。"
+        },
+        {
+          "id": "bxpa",
+          "text": "第二，把原料和要求分開：資料、限制、格式各一段。",
+          "reveal": 1
+        },
+        {
+          "id": "wbp7",
+          "text": "第三，給缺漏留出口：沒給的費用，就寫待確認。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "two-versions",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of the volunteer desk, two versions of the same notice lying side by side, a row of small sample cards lined up above them, a hand placing a wooden tick token on the left version, the window's light falling across the desk",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "qdfv",
+          "text": "每次改版，拿同一組案例重測：正常的、缺漏的、互相衝突的各一筆。"
+        }
+      ]
+    },
+    {
+      "id": "ruler-check",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a volunteer's hands laying a wooden ruler along a line of a hand-written notice, checking it against a small card held in the other hand, morning light on the paper",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "qiga",
+          "text": "一家模型公司的提示文件開頭先問：成功標準定了沒？測得出來嗎？"
+        }
+      ]
+    },
+    {
+      "id": "craft-vs-eng",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two volunteers at the community centre desk, one writing freehand with a flourish, the other holding a checklist card up against the finished notice, a pot of tea between them, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "26q3",
+          "text": "寫提示詞是手藝，測得出哪裡失敗，才叫工程。"
+        }
+      ]
+    },
+    {
+      "id": "no-date",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an event form in a volunteer's hands with the date field left blank, a pencil hovering over the empty box, the community centre window bright behind",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "99qz",
+          "text": "可是如果主辦單位根本沒給日期，再好的指令也變不出日期。"
+        }
+      ]
+    },
+    {
+      "id": "binder-shelf",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind a volunteer standing before a tall shelf of binders in the community centre's back office, one hand reaching for a binder that is not there, an empty slot in the row, light from a high window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "ah3z",
+          "text": "資料明明有，模型卻沒看到，那就不是一樓的問題了。"
+        }
+      ]
+    },
+    {
+      "id": "door-ajar",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the back office doorway seen from the hallway, the volunteer small inside with the empty-slotted shelf behind her, a cart of returned binders parked by the door, afternoon sun on the hallway floor",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "98yk",
+          "text": "那它這一次，到底看到了什麼？"
+        }
+      ]
+    },
+    {
+      "id": "ch4-card",
+      "template": "chapter",
+      "data": {
+        "title": "二樓：**上下文工程**\n這一次它看到什麼",
+        "number": "04"
+      },
+      "chapter": "二樓 上下文工程：這一次，它看到什麼",
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "4ztd",
+          "text": "二樓的問題是：再會問，模型沒看過你的規章，一樣答不出來。"
+        }
+      ]
+    },
+    {
+      "id": "counter-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a community management office counter late in the morning, a resident with a tote bag leaning on the counter asking a question, the manager behind it listening with a pen in hand, sun through a glass door",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "72v5",
+          "text": "住戶問：週六想借交誼廳辦讀書會，可以嗎？"
+        }
+      ]
+    },
+    {
+      "id": "binder-reach",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot from the counter looking up at the manager reaching for one binder on a high shelf among a dozen, her other hand steadying the shelf, glass-door light catching the binder spines",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "k2t6",
+          "text": "助理需要的是現行規章、那時段空不空、資格和人數。"
+        }
+      ]
+    },
+    {
+      "id": "ctx-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "一句定義",
+        "quote": "Context engineering refers to the set of strategies for curating and maintaining the optimal set of tokens (information) during LLM inference",
+        "translation": "上下文工程是一組策略：在模型推論的時候，挑選並維護那一組最合適的資訊。",
+        "source": "Anthropic・Effective context engineering for AI agents（2025-09-29）"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "5dhd",
+          "text": "一家模型公司去年秋天給了定義。"
+        },
+        {
+          "id": "3pxg",
+          "text": "在模型推論的時候，挑選並維護那一組最合適的資訊。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "funnel",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a kitchen funnel held over a glass jar in the manager's hands at the counter, a few folded notes sliding through the funnel while a thick stack of papers stays on the counter beside the jar, the glass door bright behind",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "hqqe",
+          "text": "重點不是一次塞多少，是這一次做決定需要什麼證據。"
+        }
+      ]
+    },
+    {
+      "id": "archive-wall",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the office's back room, shelves of binders floor to ceiling on three walls, the manager seen from behind pulling one binder halfway out, a wheeled trolley with two more binders in the aisle, a small high window letting in a shaft of sun",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "hi9h",
+          "text": "資料在雲端、上傳過、聊天裡出現過，都不等於進了這一次的呼叫。"
+        }
+      ]
+    },
+    {
+      "id": "sent-tray",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wire in-tray on the counter holding exactly three sheets, the manager's hand laying a fourth sheet on top while a fat folder stays closed beside it, cool light from the glass door",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "xvpe",
+          "text": "回答漏了條文，先看實際送進去了什麼，再談重寫指令。"
+        }
+      ]
+    },
+    {
+      "id": "two-rulebooks",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two residents at the counter each holding up a different ring binder, arguing, the manager between them raising one flat hand, a wall calendar turned to face the wall behind, midday sun from the door",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "it2d",
+          "text": "舊規章混著新規章，公告說停用、行事曆卻空著，這叫來源衝突。"
+        }
+      ]
+    },
+    {
+      "id": "piled-counter",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of the office counter buried under stacks of notices and old memos, the manager's hands lifting one stack to find a single slip underneath, flat light across the paper",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "wbtq",
+          "text": "視窗也不是越滿越好：塞得越多，模型找回關鍵條件的能力反而下降。"
+        }
+      ]
+    },
+    {
+      "id": "closed-notebook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small notebook closed with an elastic band on the counter, the manager's hand pressing a blank sticky note onto its cover, a cup of tea beside it, window light on the cover",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "tij9",
+          "text": "聊久了，把決定寫在對話外：確定的日期、待確認的事、放棄的方案。"
+        }
+      ]
+    },
+    {
+      "id": "torn-memo",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a short memo torn in half in someone's hands, the lower half fluttering toward a wastebasket, the counter edge behind, bright light from the side",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "it6c",
+          "text": "只留一段漂亮摘要，早先那句不能收費，可能就不見了。"
+        }
+      ]
+    },
+    {
+      "id": "ctx-diagram",
+      "template": "diagram",
+      "data": {
+        "svg": "apps/web/public/guides/ai-term-context-engineering/diagram-1.svg",
+        "caption": "現行規章、當次需求、時段查詢經過版本與權限篩選才進模型；舊規章與他人個資留在外面"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "i8vp",
+          "text": "畫成圖就是這樣：篩掉過期的、沒權限的，留下來源和缺漏狀態，再進模型。"
+        }
+      ]
+    },
+    {
+      "id": "key-tag",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the resident and the manager shaking hands over the counter, a wooden key tag on a loop of string being handed across, the glass door glowing white behind them",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "uakw",
+          "text": "資料對了、指令對了，模型卻動手去改東西，誰來攔它？"
+        }
+      ]
+    },
+    {
+      "id": "ch5-card",
+      "template": "chapter",
+      "data": {
+        "title": "三樓：**駕馭工程**\n模型外面的那一層",
+        "number": "05"
+      },
+      "chapter": "三樓 駕馭工程：模型外面的那一層",
+      "lines": [
+        {
+          "id": "mymk",
+          "text": "三樓的英文字原意是馬具：韁繩、馬鞍、嚼子一整套。"
+        }
+      ]
+    },
+    {
+      "id": "paddock",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a paddock on an overcast afternoon, a horse standing loose beside a wooden fence, a groom with a simple face walking toward it carrying a leather bridle over one shoulder, a farmhouse small in the distance, flat even light under the clouds",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "dpbn",
+          "text": "馬再有力氣，沒有馬具，就只是一匹野馬。"
+        }
+      ]
+    },
+    {
+      "id": "bridle-hands",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a groom's hands buckling a leather bridle strap, the horse's cheek and one calm eye filling the side of the frame, the buckle's dull metal catching the overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "azwt",
+          "text": "駕馭工程，就是設計模型外面那一層：能用什麼工具、誰攔錯、誰在看。"
+        }
+      ]
+    },
+    {
+      "id": "harness-bullets",
+      "template": "bullets",
+      "data": {
+        "title": "外面那一層，裝了什麼",
+        "items": [
+          "系統提示詞",
+          "工具、技能、連接器",
+          "檔案系統、沙盒、瀏覽器",
+          "調度：子代理、交接、換模型",
+          "鉤子：每一步前後固定會跑的檢查"
+        ],
+        "note": "LangChain・The Anatomy of an Agent Harness（2026-03-10）"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "swth",
+          "text": "一家代理框架公司今年三月列了清單：系統提示詞。"
+        },
+        {
+          "id": "axwc",
+          "text": "工具、技能，和接外部服務的連接器。",
+          "reveal": 1
+        },
+        {
+          "id": "cf4g",
+          "text": "檔案系統、沙盒、瀏覽器，它工作的地方。",
+          "reveal": 1
+        },
+        {
+          "id": "k8pr",
+          "text": "調度：開子代理、交接、換模型。",
+          "reveal": 1
+        },
+        {
+          "id": "4hkh",
+          "text": "鉤子：每一步前後固定會跑的檢查。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "gate-latch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a wooden paddock gate with a heavy iron latch, a groom's hand resting on the latch while the horse waits on the other side with its ears forward, the overcast sky low above the fence line",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "acbn",
+          "text": "同一家公司說得更狠：只要你不是模型，你就是馬具。"
+        }
+      ]
+    },
+    {
+      "id": "saddle-rack",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a saddle rack inside the tack room, a bridle, reins and a girth hanging on wooden pegs in a row, a groom's hand lifting the reins off their peg, grey light from a small window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "eimp",
+          "text": "所以提示詞和上下文都在這一層裡面：它們是零件，不是主角了。"
+        }
+      ]
+    },
+    {
+      "id": "hashimoto-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "這一層的精神",
+        "quote": "anytime you find an agent makes a mistake, you take the time to engineer a solution such that the agent never makes that mistake again",
+        "translation": "每次發現代理犯錯，就花時間工程化一個解法，讓它再也不會犯同一個錯。",
+        "source": "Mitchell Hashimoto・My AI Adoption Journey（2026-02-05）"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "zgp8",
+          "text": "一位資深工程師今年二月把這層講成一句話。"
+        },
+        {
+          "id": "q98y",
+          "text": "每次發現代理犯錯，就花時間做一個解法，讓它再也不會犯同一個錯。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "farrier",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a farrier kneeling at a horse's hoof in a stable yard, filing the shoe, while a second person holds the lead rope and looks on, light from the open barn door behind them",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "7zqw",
+          "text": "做法兩種：把規矩寫進它每次開工必讀的檔案。"
+        }
+      ]
+    },
+    {
+      "id": "hoof-pick",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a farrier's hand holding a steel hoof pick against the underside of a lifted hoof, grit falling away, the stable yard's gravel blurred below",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "jrwt",
+          "text": "或者，真的寫一個工具，替它檢查。"
+        }
+      ]
+    },
+    {
+      "id": "print-shop",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small print workshop in the afternoon, a worker lifting a freshly printed sheet off a hand-fed press, rows of sheets drying on a wooden rack behind, tall workshop windows throwing long rectangles of sun on the floor",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "38gs",
+          "text": "拿我們自己做這支影片的產線當例子，它就是一層馬具。"
+        }
+      ]
+    },
+    {
+      "id": "proof-sheet",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a printer's inky hands holding a proof sheet up against the window light, squinting past it, a loupe hanging from a cord around his neck",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "2ety",
+          "text": "稿子寫完，第一關不是人，是一支檢查工具。"
+        }
+      ]
+    },
+    {
+      "id": "lint-terminal",
+      "template": "terminal",
+      "data": {
+        "title": "第一關：檢查工具",
+        "command": "node tools/video/cli.mjs lint --slug ai-terms-prompt-to-graph-engineering",
+        "output": [
+          "ai-terms-prompt-to-graph-engineering: 1 errors, 1 warnings",
+          "ERROR scenes[40].lines[0] (mymk): \"Harness\" is not in docs/videos/lexicon.json: \nadd how to say it, or null once it sounds right"
+        ],
+        "ran_on": "2026-10-03",
+        "tool_version": "50cfb03b (tools/video, git)"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "eevc",
+          "text": "我們故意在旁白放了一個沒進發音字典的英文詞，按下檢查。"
+        },
+        {
+          "id": "jdu2",
+          "text": "它直接擋下來，第一行就說有錯誤。",
+          "reveal": 1
+        },
+        {
+          "id": "3xxm",
+          "text": "錯在哪：詞不在發音字典裡，先補唸法；後面要花錢的步驟都不會開始。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "gauge",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a brass go-no-go gauge in a printer's ink-stained hands rejecting a slightly warped metal plate, the plate not fitting the slot, the workshop window bright behind",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "k7tw",
+          "text": "這條規矩寫在工具裡，不是寫在提示詞裡的不要做錯事。"
+        }
+      ]
+    },
+    {
+      "id": "coin-tin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a printer's hands counting coins from a wooden tray into a dented tin on the shop counter, a lid resting beside it, afternoon sun across the counter",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "34my",
+          "text": "花費也寫在產線裡，不是寫在心裡。"
+        }
+      ]
+    },
+    {
+      "id": "ledger-stats",
+      "template": "stats",
+      "data": {
+        "title": "寫在產線裡的三個數字",
+        "stats": [
+          {
+            "value": "20 美元",
+            "label": "一支插圖影片的花費上限",
+            "note": "後台設定的預設值"
+          },
+          {
+            "value": "2 次",
+            "label": "大綱重寫上限",
+            "note": "再不過就交給人"
+          },
+          {
+            "value": "2 輪",
+            "label": "旁白一直被聽錯時的改寫上限",
+            "note": "之後交給人"
+          }
+        ],
+        "source": "Mokaair 影片產線的設定與程式常數，2026-10-03 查核"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "j3qq",
+          "text": "產線裡還寫了三個數字：一支插圖影片，最多花二十美元。"
+        },
+        {
+          "id": "e2bg",
+          "text": "大綱被退回，最多重寫兩次，再不過，就交給人。",
+          "reveal": 1
+        },
+        {
+          "id": "2wt8",
+          "text": "旁白一直被聽錯，最多改寫兩輪。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "wax-seal",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wax seal being pressed onto a folded document by a clerk's hands at the workshop counter, the brass seal handle lifting away, a stack of sealed folders beside, warm afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "wfw6",
+          "text": "每道核准都綁著檔案的指紋，改一個字，舊核准就失效。"
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "template": "cta",
+      "data": {
+        "kicker": "完整文章",
+        "title": "代理執行環境工程是什麼",
+        "sub": "說明欄第一行，用報名網站的例子講完成條件"
+      },
+      "lines": [
+        {
+          "id": "2fuu",
+          "text": "站上的文章叫它代理執行環境工程，就在說明欄第一行。"
+        }
+      ]
+    },
+    {
+      "id": "too-early",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stable yard, a young groom proudly patting a horse's neck while behind them a saddle lies on the ground with its girth unbuckled, an older groom pointing at it with a raised eyebrow, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "yi6q",
+          "text": "失敗長什麼樣？研究記錄過：代理常在驗證之前，就宣布完成。"
+        }
+      ]
+    },
+    {
+      "id": "reins",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot from behind a horse's head on a country lane, the reins running back to a rider's gloved hands, the lane curving away between hedges under a pale overcast sky",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "hzeq",
+          "text": "馬具裝好了，還是你牽一步、說一句；什麼時候它能自己跑？"
+        }
+      ]
+    },
+    {
+      "id": "ch6-card",
+      "template": "chapter",
+      "data": {
+        "title": "四樓：**迴圈工程**\n自己重試，也知道何時停",
+        "number": "06"
+      },
+      "chapter": "四樓 迴圈工程：自己重試，也知道何時停",
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "a2i3",
+          "text": "四樓有句口號：別再一句一句提示代理，去設計會提示它的迴圈。"
+        }
+      ]
+    },
+    {
+      "id": "track-laps",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an outdoor running track at sunrise, a lone runner mid-stride on the far bend, a coach standing at the inner rail with a clipboard held down at his side, long shadows across the lanes",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "wu7x",
+          "text": "觀察、執行、檢查、重試，一圈一圈自己跑，這就是迴圈工程。"
+        }
+      ]
+    },
+    {
+      "id": "autoresearch",
+      "template": "steps",
+      "data": {
+        "title": "一位研究者的自動實驗迴圈",
+        "steps": [
+          {
+            "title": "改一處程式",
+            "detail": "代理只准動那一個檔案"
+          },
+          {
+            "title": "訓練五分鐘",
+            "detail": "固定時間，不多不少"
+          },
+          {
+            "title": "比對指標",
+            "detail": "有沒有進步"
+          },
+          {
+            "title": "留或丟，再一圈",
+            "detail": "一小時約 12 圈"
+          }
+        ],
+        "note": "Karpathy・autoresearch 的 README（2026 年 3 月）"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "n5sw",
+          "text": "最有名的例子，是一位研究者今年三月的實驗：讓代理自己改訓練程式。"
+        },
+        {
+          "id": "xt88",
+          "text": "每一圈訓練固定五分鐘，不多不少。",
+          "reveal": 1
+        },
+        {
+          "id": "eg8r",
+          "text": "跑完比對一個指標，有沒有進步。",
+          "reveal": 1
+        },
+        {
+          "id": "4cwq",
+          "text": "有進步就留，沒有就丟，再一圈；一小時約十二圈。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "morning-shed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sleepy person in a dressing gown pushing open the door of a garden shed at dawn, inside a cat sitting on a tall stack of index cards, a thermos on the workbench, first sun through the doorway",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "g3x3",
+          "text": "睡一晚，大約一百圈；早上起來，桌上是一疊實驗紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "water-bottles",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a row of water bottles on a wooden bench beside the track, a coach's hand taking one bottle away, the empty gap in the row, low morning sun",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "iutm",
+          "text": "迴圈最怕的不是跑不動，是停不下來。"
+        }
+      ]
+    },
+    {
+      "id": "bottle-refill",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a runner at a drinking fountain beside the track filling the same bottle again, water overflowing down his wrist, the coach behind him checking the fountain's tap, morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "3hfs",
+          "text": "官網抓不到，重試一百次，錯的網址也不會變對。"
+        }
+      ]
+    },
+    {
+      "id": "coach-hand",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the coach at the rail raising one flat hand, the runner slowing on the near straight with hands on hips, two other runners stretching on the grass behind, morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "wver",
+          "text": "所以成功要有停止條件，失敗也要有。"
+        }
+      ]
+    },
+    {
+      "id": "whistle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a metal whistle on a cord between a coach's teeth, cheeks puffed, the track's lane lines blurred behind, bright morning sun",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "2eka",
+          "text": "清單驗完就停；找不到來源、超過預算、同一個錯一直出現，也停。"
+        }
+      ]
+    },
+    {
+      "id": "loop-diagram",
+      "template": "diagram",
+      "data": {
+        "svg": "apps/web/public/guides/ai-term-loop-engineering/diagram-1.svg",
+        "caption": "執行與驗證分開；通過、超出預算、需要人判斷，三個出口；底下是每一步都讀寫的進度紀錄"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "jqhz",
+          "text": "畫成圖：執行和驗證分開，驗證決定下一步，底下是進度紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "finish-line",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the track's finish line, one official holding the tape while a second official with a whistle crouches watching the runner's feet, morning light on the lane markings",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "vm5s",
+          "text": "寫答案的和打分數的要分開；讓代理自評，它只會越來越會說服你。"
+        }
+      ]
+    },
+    {
+      "id": "worn-shoe",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a runner's worn shoe scuffing the same patch of track, a shallow rut worn into the lane, loose rubber crumbs around it, hard sun from the side",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "mwru",
+          "text": "真實的失敗長這樣：同一個檔案改了十幾次，每次只動一點，叫死迴圈。"
+        }
+      ]
+    },
+    {
+      "id": "tally-fingers",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a coach's hand at the rail counting laps on his fingers, three fingers up, a stopwatch cord looped around his wrist, the track blurred behind, morning",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "9ui5",
+          "text": "有團隊就在工具層數它改了幾次，太多次就插話：要不要換個方法。"
+        }
+      ]
+    },
+    {
+      "id": "our-loop",
+      "template": "big",
+      "data": {
+        "kicker": "我們自己的迴圈",
+        "text": "前兩次被擋下，**第三次**才歸零",
+        "sub": "檢查工具共跑 7 次，含 2 次故意放錯的測試；2026-10-03"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "b4jb",
+          "text": "這支稿子也這樣跑：寫、檢查、改；前兩次被擋下，第三次才零錯誤。"
+        }
+      ]
+    },
+    {
+      "id": "cones",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the empty track after practice, two people collecting orange cones into a stack, the sun higher now and the light flat, a single runner far away on the back straight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "7i7n",
+          "text": "可是一個迴圈，一次只做一件事；十個代理一起跑，誰來排？"
+        }
+      ]
+    },
+    {
+      "id": "ch7-card",
+      "template": "chapter",
+      "data": {
+        "title": "五樓：**圖形工程**\n把迴圈排成一張圖",
+        "number": "07"
+      },
+      "chapter": "五樓 圖形工程：把迴圈排成一張圖",
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "cp27",
+          "text": "五樓是今年夏天才被叫出名字的：圖形工程。"
+        }
+      ]
+    },
+    {
+      "id": "rail-yard",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a railway yard in the afternoon, tracks branching into five sidings, a dispatcher in a hi-vis vest walking between the rails, a short freight train waiting on one siding, overcast light over the gravel",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "84cd",
+          "text": "一位工程師這樣定義：設計成一張明確的圖，不是一個隱含的迴圈。"
+        }
+      ]
+    },
+    {
+      "id": "graph-steps",
+      "template": "steps",
+      "data": {
+        "title": "圖形工程的三個承諾",
+        "steps": [
+          {
+            "title": "節點只做一件事",
+            "detail": "能單獨測，能整個換掉"
+          },
+          {
+            "title": "邊是決定",
+            "detail": "死規則優先；交給模型判斷的邊要盯緊"
+          },
+          {
+            "title": "狀態有格式，每過一條邊就存檔",
+            "detail": "不是視窗裡剛好剩下的東西"
+          }
+        ],
+        "note": "Josh C. Simmons・We Are Entering the Graph Engineering Phase（2026）"
+      },
+      "claims": [
+        "c21",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "rup7",
+          "text": "三個承諾。節點只做一件事，能單獨測，能整個換掉。"
+        },
+        {
+          "id": "nr3t",
+          "text": "邊是決定：測試過了就上線是死規則；客訴單歸誰，才交給模型判斷。",
+          "reveal": 1
+        },
+        {
+          "id": "955r",
+          "text": "狀態有格式，每過一條邊就存檔，不是視窗裡剛好剩下的。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "switch-lever",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a dispatcher's gloved hands pulling a tall iron switch lever beside the rails, the points shifting in the foreground gravel, grey afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "8yjq",
+          "text": "迴圈沒有死，它被降級了：每個節點裡面，模型照樣跑它的小圈。"
+        }
+      ]
+    },
+    {
+      "id": "signal-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a wooden signal box, a signalman moving a brass tag from one hook to the next along a row of hooks on the wall, the yard visible through the long window behind him, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "wwj6",
+          "text": "迴圈工程管一個視窗裡面的事，圖形工程管視窗和視窗之間的事。"
+        }
+      ]
+    },
+    {
+      "id": "siding-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a freight car parked on a quiet siding with a wooden chock under its wheel, a clerk with a satchel walking away along the rails, soft light on the rust",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "hxhh",
+          "text": "死在第四十步，不用從頭來，重跑那個節點就好。"
+        }
+      ]
+    },
+    {
+      "id": "three-days",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the same siding on a different, sunnier day, weeds between the sleepers, the freight car still waiting with a tarpaulin over its load, a station master crossing the tracks toward it with a folder under his arm",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "7z2v",
+          "text": "等人簽核三天，車就停在側線上，不用一直佔著一個視窗。"
+        }
+      ]
+    },
+    {
+      "id": "coal-hopper",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot of a coal hopper beside the tracks with a wooden measuring stick poking out of the coal, a worker reading the stick's height with his thumb, the yard's water tower behind, bright sky",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "h26x",
+          "text": "預算也寫在狀態裡，過邊的時候就檢查。"
+        }
+      ]
+    },
+    {
+      "id": "empty-tender",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shovel scraping the bare steel floor of an empty coal tender, a fireman's boots beside it, a few lumps of coal left in the corner, afternoon light from above",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "zxhc",
+          "text": "停不住花費的，不叫自主系統，叫一直在燒錢。"
+        }
+      ]
+    },
+    {
+      "id": "our-graph",
+      "template": "bullets",
+      "data": {
+        "title": "我們的產線，也是一張圖",
+        "items": [
+          "十四個步驟，一步一個關卡",
+          "進度從檔案算出來，不靠誰記得",
+          "站主也是一個節點：等他點頭時，影片停在那一格"
+        ]
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "ukss",
+          "text": "我們的產線也是一張圖：十四個步驟，一步一個關卡。"
+        },
+        {
+          "id": "5zwu",
+          "text": "做到哪一步，從檔案算出來，不靠誰記得。",
+          "reveal": 1
+        },
+        {
+          "id": "74eq",
+          "text": "站主也是節點：等他點頭時，影片停在那一格，不用重來。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "yard-office",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a dispatcher and a train driver leaning over a wooden table in the yard office, comparing coloured strings pinned across a cork map board without any writing on it, a dusty window letting in the late sun",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "njtq",
+          "text": "那回到開場：AI 出錯的時候，到底該修哪一層？"
+        }
+      ]
+    },
+    {
+      "id": "ch8-card",
+      "template": "chapter",
+      "data": {
+        "title": "出錯了，\n**修哪一層**",
+        "number": "08"
+      },
+      "chapter": "出錯了，修哪一層",
+      "lines": [
+        {
+          "id": "wqx4",
+          "text": "我的看法是：名詞換了五個，該修哪一層的判斷，一直沒變。"
+        }
+      ]
+    },
+    {
+      "id": "diagnosis-table",
+      "template": "table",
+      "data": {
+        "title": "症狀，先看哪一層",
+        "columns": [
+          "AI 出錯的樣子",
+          "先看哪一層"
+        ],
+        "rows": [
+          [
+            "格式跑掉、口氣不對",
+            "一樓 提示詞：指令"
+          ],
+          [
+            "答不出你那份資料",
+            "二樓 上下文：它這次看到什麼"
+          ],
+          [
+            "跑兩步就闖禍、嘴上說做完了",
+            "三樓 駕馭：誰攔它、誰驗證"
+          ],
+          [
+            "一直重試停不下來",
+            "四樓 迴圈：停止條件、預算"
+          ],
+          [
+            "做到一半當掉，全部重來",
+            "五樓 圖形：畫成圖、存進度"
+          ]
+        ]
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "kzu2",
+          "text": "格式跑掉、口氣不對，先看一樓的指令。"
+        },
+        {
+          "id": "zfid",
+          "text": "答不出你那份資料，看二樓，它這次到底看到什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "ks8p",
+          "text": "跑兩步就闖禍，或者謊報做完，看三樓，誰在攔它。",
+          "reveal": 1
+        },
+        {
+          "id": "ijvb",
+          "text": "一直重試停不下來，看四樓的停止條件。",
+          "reveal": 1
+        },
+        {
+          "id": "mnnr",
+          "text": "做到一半當掉，全部重來，該上五樓畫圖了。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "mechanic",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small garage in the afternoon, a mechanic pointing at one part under a raised car's bonnet while the owner, arms folded, looks on, light from the open roller door",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "zcpg",
+          "text": "三個決定跟著變：花不花錢，看預算寫進流程沒有。"
+        }
+      ]
+    },
+    {
+      "id": "oil-dipstick",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a mechanic's hands wiping an engine dipstick with a rag and reading its level, the owner's shoes just visible beyond the bumper, bright light from the roller door",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q2mk",
+          "text": "信不信答案，看驗證和產出分開沒有。"
+        }
+      ]
+    },
+    {
+      "id": "wrench-pick",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a mechanic's hands choosing one spanner from an open steel toolbox, the other spanners in a neat row, the roller door's glare behind",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "etie",
+          "text": "給不給權限，看界線在工具裡，還是只在提示詞裡。"
+        }
+      ]
+    },
+    {
+      "id": "compare",
+      "template": "compare",
+      "data": {
+        "title": "容易搞混的兩對",
+        "left": {
+          "heading": "代理迴圈 vs 迴圈工程",
+          "points": [
+            "代理迴圈：一次任務裡，選工具、看結果、再選",
+            "迴圈工程：任務從哪來、誰驗收、明天怎麼接"
+          ]
+        },
+        "right": {
+          "heading": "提示詞工程 vs 上下文工程",
+          "points": [
+            "提示詞：指令寫清楚了嗎",
+            "上下文：資料這一次送進去了嗎"
+          ]
+        },
+        "verdict": "搞混時問一句：這是在管一次對話，還是在管一個系統？"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "8j5u",
+          "text": "代理自己的小迴圈在任務裡；迴圈工程在任務外，管驗收和接續。"
+        },
+        {
+          "id": "rvcq",
+          "text": "提示詞問指令清不清楚；上下文問資料這次有沒有送進去。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "AI 出錯，\n先找哪一層",
+        "cta": "說明欄第一行：代理執行環境工程（文章）",
+        "lines": [
+          "提示詞、上下文、迴圈三篇文章也在說明欄",
+          "下一個名詞：代理迴圈（先讀文章）"
+        ]
+      },
+      "lines": [
+        {
+          "id": "fyqb",
+          "text": "所以，AI 出錯的時候，先別急著改指令；五層樓，一層一層找。"
+        }
+      ]
+    }
+  ]
+}
