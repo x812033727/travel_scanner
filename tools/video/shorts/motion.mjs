@@ -42,7 +42,7 @@ export function sceneSpans(timeline) {
 
 /**
  * The picture chain of a background: the image scaled to cover the upscaled frame (a 16:9
- * keyframe keeps its middle 56%, which is why the long video's prompts keep the subject in the
+ * keyframe keeps only its middle 32%, which is why the long video's prompts keep the subject in the
  * middle of the picture), cropped, then zoompan's window travelling as the move says, one output
  * frame per looped input frame.
  */

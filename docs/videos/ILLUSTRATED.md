@@ -21,7 +21,7 @@
 
 | 欄位 | 意思 | 規則 |
 | --- | --- | --- |
-| `look` | 插圖的畫風預設 | 有 `shot` 就必須有；預設 `tech-story`（配深色主題：深藍綠底、奶油白、琥珀與一點磚紅；2026-10-03 起寫成版畫師的工單：墨線粗細不勻、網印平塗帶紙紋與套印微偏、手剪的陰影、焦點在畫面中間三分之一而兩側有不對稱的前後景、小小的簡筆人物（點狀眼睛或背影）、霧面；negative 擋文字、logo、真人相貌、寫實、光澤、霓虹光暈、無臉人偶、鏡像對稱）；沒有 `shot` 的投影片不能帶 `look` |
+| `look` | 插圖的畫風預設 | 有 `shot` 就必須有；沒寫時工人依 slug 從五個版畫預設裡輪流挑（§第二輪：`riso-teal`／`riso-navy`／`riso-forest`／`riso-plum`／`linocut-teal`）；`tech-story`（配深色主題：深藍綠底、奶油白、琥珀與一點磚紅；2026-10-03 起寫成版畫師的工單：墨線粗細不勻、網印平塗帶紙紋與套印微偏、手剪的陰影、焦點在畫面中間三分之一而兩側有不對稱的前後景、小小的簡筆人物（點狀眼睛或背影）、霧面；negative 擋文字、logo、真人相貌、寫實、光澤、霓虹光暈、無臉人偶、鏡像對稱）；沒有 `shot` 的投影片不能帶 `look` |
 | `shot` 場景 | 一張插圖：`data.prompt`（英文 ≤1000 字，依序寫景別、地點與時間、正在發生的事、視線落點的物件與材質、光從哪來；不寫風格與顏色）、`data.camera`（push in／pull out／pan left／pan right／tilt up／tilt down／drift）、`data.visual: "still"`、`data.transition?`（cut／dissolve，通常不寫） | 只准 still；不得有 `characters`、`fit`、`start_frame`、`end_frame`；shot 的句子不能 `reveal`；連續三張同一種運鏡是 lint 錯誤（§畫面不像 AI） |
 | `music` | `{ track, sha256?, gain_db?, duck_db?, fade_in_ms?, fade_out_ms? }`，檔案在 `<work base>/_music/` | 任何格式都可以帶（`prompt` 走 Lyria 也還在，但站主決定用授權檔） |
 | `sfx` | `{ set, gain_db? }`，音效組在 `<work base>/_sfx/<set>/` | 預設 gain −12 dB |
@@ -131,8 +131,32 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 已上線：2026-10-03 04:31Z 隨 `90c52e19e` 部署。API 映像的目錄有 2K 價（Pro 0.134、Flash 0.101、MiniMax 沒有），影片工人的工具讀到 `image` 與 `slides_image` 兩個選擇的 `usd_per_image_2k`。當時正式站的「替投影片影片畫插圖」開關讀起來是關的（`slides_enabled: false`）：在它打開之前，投影片的圖走漫劇的開關與模型（Pro，2K 與 1K 同價），工具的預估卻用 Flash 的 2K 價，帳本記的是伺服器實收（票 `2026-10-03-illustrated-slides-lint-heuristics-the-shorts`）。
 
+## 第二輪：版畫輪替、畫風樣張、審圖與光線（2026-10-03）
+
+同一天站主再說「AI 感太嚴重，影片與投影片的插畫都要更好」。正式站從早上部署到這時沒畫過任何一張插圖投影片的圖（工人說自動草稿關著、每支都在等站主；七支插圖投影片在開關打開前就卡在「插畫沒開」，要站主按重試），所以這一輪先用本機工具經正式站真的畫了樣張再改：第 1 版畫風（`tech-story`，Flash 2K）六張、四種版畫候選各四張、再用其中一張當參考圖畫三張（`mokaair-work/videos/_audition/look-20261003/`，約 US$3）。看到的事：
+
+- `tech-story` 的「墨線加平塗」被模型畫成**童書式的乾淨數位漫畫**：每樣東西都描一圈均勻的線、同一款可愛的臉、一樣的構圖——這就是觀眾讀成 AI 的東西。真正會讀成「人印的」是**版畫的物理痕跡**：網點、套印、油墨沒蓋滿、刻刀的毛邊。四種候選裡 risograph（網點、兩色套印）與 linocut（刻版）最像印刷品；gouache 像 AI 概念畫；pen-and-watercolour 最像人畫，但模型把它畫成**攤開的筆記本**（有頁邊、連價格牌的字都寫上去）。
+- 寫「full-bleed, edge to edge」會讓模型**畫出紙邊**（印刷品有留白）；judge 的 `clean` 也抓到一張直式圖兩側補模糊條。所以畫風改寫成「畫面延伸出畫框四邊」、negative 擋 paper border／white margin／pillarbox／blurred side bars。寫「no ink outlines」模型照樣描線，只是 judge 扣 style 分，刪掉。
+- 把一張畫好的圖當 `role: "style"` 的參考圖，其餘三張的網點、油墨、人物畫法**完全一致**，而且沒抄場景——這就是同一位插畫家畫一整支的辦法。
+
+改了四層：
+
+| 層 | 改了什麼 | 在哪 |
+| --- | --- | --- |
+| 畫風輪替 | 五個版畫預設：`riso-teal`（深青綠＋螢光珊瑚橘）、`riso-navy`（墨藍＋芥末黃）、`riso-forest`（深森林綠＋橘）、`riso-plum`（深李紫＋金赭）四組雙色 risograph，與 `linocut-teal`（青黑主版＋赭＋磚紅）。沒寫 `look` 的投影片影片由**slug 決定**用哪一個（`slidesPresetFor`：同一支永遠同一個，因為 look 在 `look_hash` 裡；不同支輪流，所以每支是自己的一刷），撰稿只在題材需要時點名；`tech-story` 保留給點名的影片。預設負面詞 ≤400 字可以抄進 `video.json` | `core/drama.mjs` `SLIDES_PRESETS`、`slidesPresetFor`；`automation/flow.mjs` `settle()` |
+| 畫風樣張 | `keyframes` 對插圖投影片**先畫一張樣張**（`STYLE_PLATE_PROMPT`：小鎮街角、下午、兩個人、一隻貓、磚與玻璃與雨後的路；judge 同一套 rubric、最多 3 個 seed、沒過也取最高分），存 `keyframes/plate.json`（綁 `look_hash`，所以改一張 prompt 只重畫那一張、換 look 才重畫樣張與全部）、記進 `keyframes/manifest.json` 的 `plate`；之後每張 shot 都帶它當 `role: "style"` 的參考圖（放在參考圖最後），judge 也拿到它（標籤 `style plate`）並以「同一隻手、同一張紙」評 `style`。站主自己給 `look.style_frames` 時不畫樣張。多一張圖的錢（約 US$0.11–0.41）。伺服器端 Gemini adapter 對 `style` 參考圖改說「最後一張是畫風樣張：用它的技法、線、色、紋理與完成度畫，不取它的場景」，不再對所有參考圖說「保持角色一致」 | `media/keyframes.mjs` `stylePlate`、`readStylePlate`；`apps/api/app/video_media/providers/gemini_images.py` |
+| 審圖 | `craft` 改問「是不是人為印刷做的而不是生成的：媒材的痕跡與小瑕疵、沒有把每樣東西描一圈均勻的線、不是到處都一樣細的細節、不對稱構圖一個焦點、簡單的臉或背影、沒有光澤／噴槍／光暈／算圖的完成度」；`clean` 多問「一張圖填滿整個畫框，沒有邊條、邊框、留白或模糊側條」。rubric 每題 ≤400 字（伺服器上限） | `media/keyframes.mjs` `keyframeRubric` |
+| 撰稿與 lint | 撰稿：一支影片活在一整天裡，夜景與燈下的圖最多一半；每章至少一張兩三個人互相做事（討價還價、交東西、排隊、教、吵）、一張手裡拿著東西的特寫、偶爾一個小笑點（不該在那裡的貓、唯一一個面向錯邊的人）；`look` 不寫、交給工人。lint：夜景／燈下超過一半＝每支一條警告（≥6 張才算）；景別只在句首或接 shot／view／angle／of 時算景別（「a medium bowl」不算），接受 low-angle、bird's eye、top down、over-the-shoulder 的寫法；「cream」在冰淇淋、鮮奶油、咖啡裡不算色盤，risograph／linocut／gouache／halftone 算抄畫風；複數折成單數（ferries／shelves／boxes／potatoes；shoes 與 series 不動）；連三張同運鏡的錯誤指向真正帶運鏡的欄位（`camera` 或 `motion`） | `automation/prompts.mjs` `TEMPLATE_GUIDE`；`core/drama.mjs` `pictureVarietyProblems`、`SHOT_SIZE`、`LOOK_WORDS`、`DARK_LIGHT`、`motifOf` |
+
+第五層是**裁邊**（`media/trim.mjs`）：寫了負面詞模型還是常把紙邊畫出來（樣張五張有四張），運鏡時紙邊會跟著畫面跑。`keyframes` 對填滿畫框的靜圖（插圖投影片、原來如此事務所、樣張）在 judge 之後用 ffmpeg 讀一張 512×288 的灰階縮圖，從四邊往內走到不再平坦（標準差 >10 或色調差 >8），任一邊超過 0.6% 就取邊內最大的 16:9 框裁掉再放大回原尺寸，存成 `<id>-<seed>-trim.png`；manifest、樣張參考圖與後面的合成都用裁過的檔，judge 看的是原圖（`takes[].margins` 記每邊的百分比）。沒有 ffmpeg 或讀不了的圖就照原樣用。
+
+另外修了票 `2026-10-03-illustrated-slides-lint-heuristics-the-shorts` 的急件：`choiceFor` 只在 `slides_enabled` 時用投影片的模型，開關關著時跟伺服器一樣用漫劇的模型估尺寸與價錢（之前第一張圖就以 `video_media_model_changed` 失敗）。範例的 `race` 兩個跑者改在中間三分之一、`podium` 與 `race` 改成白天；`shorts/motion.mjs` 與 `SHORTS.md` 的 56% 改成 32%。
+
+要驗的事：第一支部署後的插圖投影片在 `keyframes/plate.json` 看樣張與分數、聯絡表上每張圖的網點與油墨是不是同一刷；judge 的 `craft` 分布（樣張時 craft 約 6.5–7，門檻 7，三個 seed 內多半會過一張）；七支卡在「插畫沒開」的影片站主按重試後是否畫出來、單支花費（多一張樣張）。
+
 ## 沒做、留給後面
 
+- 樣張沒放進聯絡表（`review/sync.mjs` 用張數切頁，多一格會錯位）；要看就開 `keyframes/plate-N.png`。
 - 多狀態卡片（bullets、steps、table 逐條出現）的整景連續運鏡。
 - 插圖上沒有章節進度條（chrome 只在卡片上）；要的話把 chrome 截成透明疊層蓋在運鏡段上。
 - Shorts 的逐句合成加固定 0.18 秒間隔：口吻改了節奏還是平，要改整景合成再切段（動到 phrase↔clip↔caption↔check 的對應）。

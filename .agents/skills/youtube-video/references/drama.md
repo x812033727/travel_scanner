@@ -85,10 +85,10 @@ node tools/video/assemble/smoke.mjs --fixture drama [--channel msedge]          
 - **解說片（`flat-explainer`）**：「原來如此事務所」那種一集回答一個「為什麼」的插畫解說（`docs/videos/so-thats-why/`）。後台發起漫劇時風格選「扁平插畫解說」：單集作品的故事聖經改用解說版（`planner:bible-explainer`，`characters` 為空、`outline` 有 question／answer／reasons／hook／sources，API 與工人都照這個形狀擋），brief 由聖經寫成解說版章節，撰稿與查核用 `writer:explainer`／`verifier:explainer`，撰稿順手寫 `shorts.json`（`tools/video/automation/prompts.mjs` 的 `EXPLAINER_INSTRUCTIONS`）。lint 要求 `characters: []`、每個鏡頭都是 `visual: "still"`，卡片多了 `big`、`stats`、`compare` 可放數字與對比；brief 的必填章節是「問題」「一句答案」「站主觀點」。範例 `tools/video/core/fixtures/explainer/`。
 - **沒有角色的漫劇沒有 look**：`characters` 是空陣列時，`status` 不列「look generated／look approved」，審核順序跳過 look 關卡，`keyframes` 不等設定圖，直接畫；`look` 指令會拒絕並叫你跑 `keyframes`。
 - `look`：`preset`（`cinematic-3d`／`anime-2d`／`ink-wash`／`flat-explainer`／`custom`）加可覆寫的 `style`、`negative`、`motion`（英文，給圖片與影片模型）、`candidates`（每角色幾張設定圖）、`style_frames`（`<VIDEO_DOCS>` 裡的參考圖）。
-- `characters[]`：`id`（小寫，不可是 `narrator`）、`name`（字幕與審核頁用）、`appearance`（英文 ≤ 800 字，設定圖與每個鏡頭都用它）、`voice`（同 `voice` 的物件；Gemini 聲音才有 `style`）、`sheet_prompt`（可選）。
+- `characters[]`：`id`（小寫，不可是 `narrator`）、`name`（字幕與審核頁用）、`appearance`（英文 ≤ 800 字，設定圖與每個鏡頭都用它）、`voice`（同 `voice` 的物件；Gemini 聲音才有 `style`，口音字樣照 `accent.mjs` 的 `CHANNEL_ACCENT`，要換寫法先照 `voice-audition.md` 試聽）、`sheet_prompt`（可選）。
 - `characters[].shot_looks: [{id, appearance}]`：核定的同角色命名造型目錄；`appearance`只換當前服裝、傷勢、持物等狀態，不換人物ID或聲線。`scene.data.character_looks: {characterId: lookId}`逐鏡選目錄中的造型；不造新ID。基底與命名造型都保留，同集前後換衣/摘冠/交出物件用不同鏡頭選擇，不可整集覆蓋。
-- 鏡頭場景 `template: "shot"`，`data`：`prompt`（英文 ≤ 1000 字，畫面本身）、`camera`、`motion`（給圖生影片）、`characters`（≤ 3 個 id，決定參考圖與 judge 的 identity 題）、`fit`（`auto`／`freeze`／`slow`／`trim`，片段比句子短或長時怎麼對齊）、`transition`（`cut`／`dissolve`）、`start_frame: { shot, at: "last" }`（接續更早的鏡頭；目前是把上一鏡最後一格當參考圖，片段仍從自己的關鍵影格開始）、`end_frame: { prompt }`（另出一張當片段的末格）、`visual`（`clip` 預設／`still`：見下一點）。卡片場景（`title`／`chapter`／`outro`）照投影片版型。
-- **`visual: "still"`**（僅其他既有路線；此批production profile拒絕still，前製animatic仍可用靜畫。長篇作品的畫面等級，設計在 `docs/videos/BINGE.md`）：這一鏡不買片段，`clips` 在 manifest 記 `{ still: true }` 指向它的關鍵影格，`assemble` 把關鍵影格做成一段慢運鏡（`zoompan`，編碼參數與片段段相同，仍 `-c copy` 串接）。運鏡由 `camera`（其次 `motion`）的關鍵字決定（`tools/video/assemble/drama.mjs` 的 `motionMove`），以**畫面看起來怎麼動**命名，所以 pan 跟攝影機用語相反：
+- 鏡頭場景 `template: "shot"`，`data`：`prompt`（英文 ≤ 1000 字，畫面本身）、`camera`、`motion`（給圖生影片）、`characters`（≤ 3 個 id，決定參考圖與 judge 的 identity 題）、`fit`（`auto`／`freeze`／`slow`／`trim`，片段比句子短或長時怎麼對齊）、`transition`（`cut`／`dissolve`）、`start_frame: { shot, at: "last" }`（接續更早的鏡頭；目前是把上一鏡最後一格當參考圖，片段仍從自己的關鍵影格開始）、`end_frame: { prompt }`（另出一張當片段的末格）、`visual`（`clip` 預設／`still`：見下一點）、`source: { shot, from_s }`（從更早一個 clip 鏡頭的素材第 `from_s` 秒切進來，回到同一鏡位時用：不畫關鍵影格、不買素材，不能同時有 `start_frame`／`end_frame`、不能是 still、不能當縮圖底圖；`from_s` 加鏡長要在素材長度內，lint 以 10 秒為上限、production profile 以 8 秒為上限，`clips` 遇到來源素材太短會 `needs_review`）。沒有人說話的鏡頭寫 `action_seconds`（1–8 的整數）與空的 `lines`，有角色且沒有時長下限的漫劇才接受（品牌故事、解說、動畫類不行）。卡片場景（`title`／`chapter`／`outro`）照投影片版型。
+- **`visual: "still"`**（僅其他既有路線；此批production profile拒絕still，前製animatic仍可用靜畫。長篇作品的畫面等級，設計在 `docs/videos/BINGE.md`）：這一鏡不買片段，`clips` 在 manifest 記 `{ still: true }` 指向它的關鍵影格，`assemble` 把關鍵影格做成一段慢運鏡（`zoompan`，編碼參數與片段段相同，仍 `-c copy` 串接）。運鏡只由 `camera` 的關鍵字決定（整字比對；`motion` 是畫面裡發生的事，不讀；`tools/video/assemble/drama.mjs` 的 `motionMove`），以**畫面看起來怎麼動**命名，所以 pan 跟攝影機用語相反：
 
   | 寫在 `camera` 的字 | 運鏡 | 效果 |
   | --- | --- | --- |
@@ -98,12 +98,13 @@ node tools/video/assemble/smoke.mjs --fixture drama [--channel msedge]          
   | pan right、pan to the right、right to left | `pan-left` | 1.08 倍，裁切窗從左滑到右 |
   | tilt up、crane up、rise | `tilt-up` | 1.08 倍，從下滑到上 |
   | tilt down、crane down、descend | `tilt-down` | 1.08 倍，從上滑到下 |
-  | 其他或沒寫 | `drift` | 放大 4% 並略往右，第 0 格是原圖 |
+  | locked、static、fixed、tripod | `locked` | 整格不動，第 0 格是原圖 |
+  | drift、其他或沒寫 | `drift` | 放大 4% 並略往右，第 0 格是原圖 |
 
-  `still` 鏡頭的 `camera` 一定要寫表裡的運鏡：`camera` 沒有命中時 `motionMove` 會去讀 `motion`，角色的動作（pushes、pulls、rises）會被當成運鏡。
+  `still` 鏡頭的 `camera` 要寫表裡的運鏡或 `locked`：`motionMove` 只讀 `camera`，`motion` 裡的 pushes、rises 不會被當成運鏡；沒寫就漂移。
 
   等級上限（`series.json` 的 `visual_tier`，lint 擋）：`hybrid` 最多四成鏡頭是 clip、`stills` 一成、`clips` 不限；沒有 `series.json` 就全視為 clip。still 鏡頭的關鍵影格要通過 judge（`needs_review` 的 `assemble` 會拒絕）。
-- 句子：`speaker`（`narrator` 或角色 id，預設旁白）、`emotion`（≤ 80 字，Gemini 聲音會併進 style；Azure 忽略並警告）。**句子仍是時鐘**：一個鏡頭的長度是它的句子加停頓，lint 對估計超過 12 秒的鏡頭報錯、10 秒警告，中位數低於 3 秒也警告——長旁白拆成更多鏡頭。有角色的漫劇照 drama-craft.md 的目標寫（中位數 2.5–3.5 秒、一句 12 字以內為主、長短要有差）；中位數落在 2–3 秒而觸發那條警告時保留鏡頭，在回報裡註明。每個場景至少一句台詞（lint 的錯誤），反應鏡與插鏡放畫外那個人正在說的那一句。
+- 句子：`speaker`（`narrator` 或角色 id，預設旁白）、`emotion`（≤ 80 字，Gemini 聲音會併進 style；Azure 忽略並警告）。**句子仍是時鐘**：一個鏡頭的長度是它的句子加停頓，lint 對估計超過 12 秒的鏡頭報錯、10 秒警告；中位數低於 2 秒（有角色）或 3 秒（旁白講述）也警告——長旁白拆成更多鏡頭。有角色的漫劇照 drama-craft.md 的目標寫（中位數 2.5–3.5 秒、一句 12 字以內為主、長短要有差），lint 把規格沒過的每一列印成 `craft …` 警告（實作在 `tools/video/core/craft.mjs`）。每個場景至少一句台詞或 `action_seconds`（lint 的錯誤），反應鏡與插鏡放畫外那個人正在說的那一句。
 - `music`：`prompt`（Lyria 生成）或 `track`＋`sha256`（自帶），`gain_db`（−20）、`duck_db`（−10）、`fade_in_ms`、`fade_out_ms`。
 - `subtitles`：`burn_in: false`（新自動產線為可開關CC；舊核准burn-in檔不在此自動重製）、`style`（`drama`：白字黑邊；`plain`：黑底框）、`speaker_prefix`（角色句前加「【名字】」）。
 - `thumbnail.data.shot`：縮圖以那個鏡頭的關鍵影格當底圖。

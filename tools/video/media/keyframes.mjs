@@ -10,7 +10,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
-import { burnIn, hasCast, hasPictures, illustrated, isExplainer, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
+import { burnIn, drawnShotScenes, hasCast, hasPictures, illustrated, isExplainer, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { visualHash } from "../core/timeline.mjs";
@@ -20,10 +20,21 @@ import { clientOptions, requireCredentials } from "./cli.mjs";
 import { ledgerTotals } from "./ledger.mjs";
 import { duplicates } from "./qc.mjs";
 import { capFor, choiceFor, drawContactSheet, imagePrice, imageSelectionVersion, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, pictureHashes, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
+import { trimMargins } from "./trim.mjs";
 
 export const MAX_KEYFRAME_TAKES = 3;
 // The server takes at most four reference pictures per image.
 export const MAX_REFERENCES = 4;
+// Illustrated slides draw one style plate per video first (docs/videos/ILLUSTRATED.md §第二輪):
+// a neutral scene in the look, judged like a shot, then sent with every shot as a style
+// reference so the pictures read as one illustrator's set rather than as sixty separate rolls of
+// the same dice. The plate is bound to the look alone (keyframes/plate.json carries look_hash),
+// so a prompt edit redraws that shot and nothing else; a new look draws a new plate, and with
+// it every picture. The scene is chosen to show the hand on what the videos ask for most: a
+// place, two people doing something, a few materials, daylight.
+export const STYLE_PLATE_PROMPT = "Medium shot of a quiet street corner in a small town in the late afternoon, a woman in a raincoat locking a bicycle to a lamp post beside a greengrocer's crates of oranges and leeks, an old man on the doorstep feeding a tabby cat, a delivery scooter passing behind, brick, glass, wet pavement and a plain canvas awning with no lettering, warm low sun from the left, the picture running past all four edges of the frame";
+export const STYLE_PLATE_ID = "style-plate";
+export const PLATE_FILE = path.join("keyframes", "plate.json");
 // Shots per contact sheet page, six rows of four: the ninety shots of a story on one sheet would
 // make an image over twenty rows tall, too long to look over and too heavy to send as one file.
 export const CONTACT_SHEET_TILES = 24;
@@ -50,9 +61,12 @@ export function contactSheetPages(tiles, perPage = CONTACT_SHEET_TILES) {
  * rendered by a machine: docs/videos/ILLUSTRATED.md §畫面不像 AI). It is the caller's word about
  * the video, never inferred from a shot having no characters: an empty establishing shot of a
  * 3D drama must not be judged as a print illustration, and the explainer's look allows the
- * faceless figures this question marks down.
+ * faceless figures this question marks down. `plate` says the judge was also sent the video's
+ * style plate (labelled "style plate"), and the style is then judged against it, as a drama's
+ * is against its sheets. `clean` also refuses a picture that does not fill the frame: a tall
+ * subject sometimes comes back as a vertical picture between blurred bars.
  */
-export function keyframeRubric(characters, { subtitleBand = true, craft = false } = {}) {
+export function keyframeRubric(characters, { subtitleBand = true, craft = false, plate = false } = {}) {
   return [
     ...characters.map((character) => ({
       key: `identity_${character.id.replace(/-/g, "_")}`,
@@ -64,11 +78,15 @@ export function keyframeRubric(characters, { subtitleBand = true, craft = false 
     { key: "prompt", question: "Does the picture show what the shot prompt describes: subjects, setting, action, framing?", weight: 2 },
     {
       key: "style",
-      question: characters.length ? "Is the picture in the requested visual style, consistent with the reference sheets?" : "Is the picture in the requested visual style, as the style description in the context puts it: technique, palette, line, mood?",
+      question: characters.length
+        ? "Is the picture in the requested visual style, consistent with the reference sheets?"
+        : plate
+          ? "Is the picture in the same technique, line, palette, texture and finish as the picture labelled \"style plate\", as if by the same hand on the same paper, and in the style the context describes?"
+          : "Is the picture in the requested visual style, as the style description in the context puts it: technique, palette, line, mood?",
       weight: 1,
     },
-    ...(!craft ? [] : [{ key: "craft", question: "Does it read as drawn by a person for print: lines and colour with texture and small irregularities, an asymmetric composition with one focal point and depth, people with simple faces or turned away rather than featureless mannequins, and no glossy, glowing or computer-rendered finish?", weight: 1 }]),
-    { key: "clean", question: "Is it free of faults: correct hands and fingers, no warped faces, no floating or duplicated parts, no smeared background?", weight: 2 },
+    ...(!craft ? [] : [{ key: "craft", question: "Does it read as made by a person for print, not generated: marks of the medium (grain, brush, ink or print texture) and small irregularities, no even outline traced around everything, no uniform fine detail everywhere, an asymmetric composition with one focal point and depth, people with simple faces or turned away, and no glossy, airbrushed, glowing or rendered finish?", weight: 1 }]),
+    { key: "clean", question: "Is it free of faults: correct hands and fingers, no warped faces, no floating or duplicated parts, no smeared background, and one picture filling the whole frame with no bars, borders, margins or blurred side panels?", weight: 2 },
     { key: "no_text", question: "Is it free of text, letters, watermarks and logos?", weight: 1 },
     ...(subtitleBand ? [{ key: "subtitle_band", question: "Is the main subject clear of the bottom 14% of the frame, where subtitles will be burned in?", weight: 1 }] : []),
   ];
@@ -91,6 +109,73 @@ export function chosenSheets(manifest, chosen) {
 
 const manifestFile = (workdir) => path.join(workdir, ARTIFACTS.keyframes);
 const writeManifest = (workdir, manifest) => atomicWrite(manifestFile(workdir), `${JSON.stringify(manifest, null, 2)}\n`);
+
+/** The style plate of a video whose look is `hash`, as keyframes/plate.json records it, or null. */
+export function readStylePlate(workdir, hash) {
+  const plate = readJson(path.join(workdir, PLATE_FILE), null);
+  return plate?.look_hash === hash && plate.file && existsSync(path.join(workdir, plate.file)) ? plate : null;
+}
+
+/**
+ * Draw the video's style plate, or keep the one its look already has: STYLE_PLATE_PROMPT in the
+ * look, up to `takes` seeds until the judge passes one, the best take kept either way (a plate
+ * that fails on a detail still shows the hand, and no shot can be drawn without one). Returns
+ * the plate record, or null when the STOP file ended the run.
+ */
+/**
+ * A still that fills the frame (illustrated slides, the explainer) with its paper margin cut
+ * off (trim.mjs): the trimmed copy's file and sha stand in for the picture's in the manifest,
+ * the judge having seen the picture as it came. Returns the picture, trimmed or not.
+ */
+async function trimmed(ctx, workdir, picture, id) {
+  const cut = await trimMargins(ctx, workdir, picture.file);
+  if (!cut) return picture;
+  const widest = Math.max(...Object.values(cut.margins));
+  ctx.stdout.write(`${id}: trimmed a ${widest}% paper margin\n`);
+  return { ...picture, file: cut.file, sha256: cut.sha256, margins: cut.margins };
+}
+
+async function stylePlate({ stage, workdir, look, hash, takes, size, rubricOptions, force, trim, ctx }) {
+  const kept = force ? null : readStylePlate(workdir, hash);
+  if (kept) {
+    ctx.stdout.write(`style plate: kept (judge ${kept.judge?.overall ?? "?"}/10)\n`);
+    return kept;
+  }
+  const prompt = `${STYLE_PLATE_PROMPT}. Style: ${look.style}`.slice(0, 4000);
+  const taken = [];
+  let generated = 0;
+  for (let take = 1; take <= takes; take++) {
+    let picture;
+    try {
+      picture = await stage.image({ id: STYLE_PLATE_ID, purpose: "style_frame", prompt, negative: look.negative, references: [], seed: take, shotId: STYLE_PLATE_ID, size, target: `keyframes/plate-${take}` });
+      if (!picture.reused) generated += 1;
+    } catch (error) {
+      if (error.code === "stopped") return null;
+      if (retakeable(error)) {
+        ctx.stdout.write(`style plate seed ${take}: ${error.message}; trying another seed\n`);
+        continue;
+      }
+      throw error;
+    }
+    let judge;
+    try {
+      judge = await stage.judge({ id: STYLE_PLATE_ID, kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric: keyframeRubric([], rubricOptions), context: { shot: { id: STYLE_PLATE_ID, prompt: STYLE_PLATE_PROMPT, camera: null }, characters: [], style: look.style } });
+    } catch (error) {
+      if (error.code === "stopped") return null;
+      throw error;
+    }
+    // The plate goes to every shot as its reference, so a margin on it would be copied: cut it off.
+    if (trim) picture = await trimmed(ctx, workdir, picture, STYLE_PLATE_ID);
+    taken.push({ seed: take, file: picture.file, sha256: picture.sha256, key: picture.key, judge, ...(picture.margins ? { margins: picture.margins } : {}) });
+    ctx.stdout.write(`style plate take ${take}: judge ${judge.overall}/10${judge.passed ? "" : ` NOT passed: ${judge.problems.join("; ") || "below the bar"}`}${picture.reused ? " (reused)" : ""}\n`);
+    if (judge.passed) break;
+  }
+  if (!taken.length) throw new MediaError("the style plate could not be drawn; every seed was refused", { code: "video_media_rejected" });
+  const best = taken.find((take) => take.judge.passed) ?? [...taken].sort((a, b) => b.judge.overall - a.judge.overall)[0];
+  const record = { look_hash: hash, file: best.file, sha256: best.sha256, key: best.key, seed: best.seed, judge: best.judge, takes: taken, drawn_at: ctx.now().toISOString() };
+  atomicWrite(path.join(workdir, PLATE_FILE), `${JSON.stringify(record, null, 2)}\n`);
+  return { ...record, generated };
+}
 
 export async function run(command, args, ctx) {
   const { EXIT } = ctx;
@@ -129,8 +214,9 @@ export async function run(command, args, ctx) {
   const format = slides ? doc.format : null;
   const rubricOptions = { subtitleBand: burnIn(doc), craft: slides };
   const wanted = values.shot ? new Set(values.shot.split(",").map((each) => each.trim()).filter(Boolean)) : null;
-  const shots = shotScenes(doc).filter((scene) => !wanted || wanted.has(scene.id));
-  if (!shots.length) throw new UsageError(`--shot ${values.shot} names no shot of ${doc.slug}`);
+  // A shot cut from another shot's clip (data.source) shows that clip, so it has no keyframe to draw.
+  const shots = drawnShotScenes(doc).filter((scene) => !wanted || wanted.has(scene.id));
+  if (!shots.length) throw new UsageError(`--shot ${values.shot} names no shot of ${doc.slug} with a keyframe of its own`);
   const takes = values.takes ? Number(values.takes) : MAX_KEYFRAME_TAKES;
   if (!Number.isInteger(takes) || takes < 1 || takes > 6) throw new UsageError("--takes must be 1 to 6");
   const cast = (scene) => shotCast(doc, scene);
@@ -155,17 +241,20 @@ export async function run(command, args, ctx) {
   // first frame, stay at the 1K the clip models take.
   const stillPictures = slides || isExplainer(doc);
   const sizeFor = (status) => (stillPictures ? imageSizeFor(status, format) : null);
+  // Illustrated slides draw from a style plate unless the owner gave the look its own frames.
+  const plated = slides && !look.style_frames.length;
 
   if (values["dry-run"]) {
-    ctx.stdout.write(`keyframes for ${shots.length} shots (${endFrames} end frames), up to ${takes} takes each\n`);
-    for (const scene of shots) ctx.stdout.write(`${scene.id}: ${shotPrompt(scene, look, cast(scene))}\n  references: ${(scene.data.characters ?? []).map((id) => `${id}=${sheets[id] ? optionOf(chosen[id]) : "?"}`).join(", ") || "none"}\n`);
+    ctx.stdout.write(`keyframes for ${shots.length} shots (${endFrames} end frames), up to ${takes} takes each${plated ? `, after one style plate${readStylePlate(workdir, hash) ? " (already drawn)" : ""}` : ""}\n`);
+    for (const scene of shots) ctx.stdout.write(`${scene.id}: ${shotPrompt(scene, look, cast(scene))}\n  references: ${[...(scene.data.characters ?? []).map((id) => `${id}=${sheets[id] ? optionOf(chosen[id]) : "?"}`), ...(plated ? ["style plate"] : [])].join(", ") || "none"}\n`);
     const credentials = readCredentials({ env: ctx.env, home: ctx.home });
     if (credentials.token) {
       const status = imageStatus(await mediaStatus(clientOptions(ctx, credentials)), project.series);
       const problem = statusProblem(status, "image", format);
       const choice = choiceFor(status, "image", format);
       const size = sizeFor(status);
-      const usd = shots.length * (imagePrice(status, format, size) + JUDGE_USD_PER_CALL) + endFrames * (imagePrice(status, format) + JUDGE_USD_PER_CALL);
+      const plates = plated && !readStylePlate(workdir, hash) ? 1 : 0;
+      const usd = (shots.length + plates) * (imagePrice(status, format, size) + JUDGE_USD_PER_CALL) + endFrames * (imagePrice(status, format) + JUDGE_USD_PER_CALL);
       ctx.stdout.write(`server: ${problem ? `NOT ready: ${problem}` : `${choice.provider} ${choice.model} ${choice.configured === null ? "(provider key checked on submit)" : "ready"}`}; pictures at ${size ?? "1K"}; about US$${usd.toFixed(2)} for one take of everything, up to US$${(usd * takes).toFixed(2)} at ${takes} takes; this video so far US$${ledgerTotals(workdir).usd.toFixed(2)} of the US$${capFor(status, format)} cap\n`);
     } else {
       ctx.stdout.write("no video tool token yet; run `node tools/video/cli.mjs login` before generating\n");
@@ -191,13 +280,28 @@ export async function run(command, args, ctx) {
     if (!existsSync(file)) throw new UsageError(`look.style_frames: ${frame} is not in ${project.dir}`);
     styleReferences.push({ sha256: await stage.upload(file), role: "style" });
   }
+  const started = Date.now();
+  let generated = 0;
+  let stopped = false;
+  // The style plate comes first and goes last in every shot's references (the server tells the
+  // model the last reference is the plate); it is put in the store again in case it was pruned.
+  let plate = null;
+  if (plated) {
+    plate = await stylePlate({ stage, workdir, look, hash, takes, size, rubricOptions, force: values.force, trim: stillPictures, ctx });
+    if (!plate) {
+      ctx.stdout.write("stopped by the STOP file before the style plate; rerun to continue\n");
+      return EXIT.ok;
+    }
+    generated += plate.generated ?? 0;
+    await stage.upload(path.join(workdir, plate.file));
+    styleReferences.push({ sha256: plate.sha256, role: "style" });
+  }
   const existing = readJson(manifestFile(workdir), null);
   const chosenImage = choiceFor(status, "image", format);
   const manifest = existing?.look_hash === hash && bound(existing) && sameImage(existing.image, chosenImage) && (!imageVersion || existing.image_selection_version === imageVersion) && !values.force ? existing : { look_hash: hash, ...binding, image_selection_version: 1, shots: {} };
   manifest.image = { provider: chosenImage.provider, model: chosenImage.model };
-  const started = Date.now();
-  let generated = 0;
-  let stopped = false;
+  if (plate) manifest.plate = { file: plate.file, sha256: plate.sha256, seed: plate.seed, judge: plate.judge };
+  else delete manifest.plate;
 
   for (const scene of shots) {
     const characters = cast(scene);
@@ -206,7 +310,7 @@ export async function run(command, args, ctx) {
       ctx.stdout.write(`${scene.id}: kept (judge ${current.judge?.overall ?? "?"}/10)\n`);
       continue;
     }
-    const references = [...characters.map((character) => ({ sha256: uploaded[character.id], role: "character" })).filter((reference) => reference.sha256), ...styleReferences].slice(0, MAX_REFERENCES);
+    const references = [...characters.map((character) => ({ sha256: uploaded[character.id], role: "character" })).filter((reference) => reference.sha256), ...styleReferences].slice(-MAX_REFERENCES);
     const prompt = shotPrompt(scene, look, characters);
     const entry = current?.takes && !values.force ? current : { takes: [] };
     for (let take = 1; take <= takes; take++) {
@@ -232,8 +336,8 @@ export async function run(command, args, ctx) {
         judge = await stage.judge({
           id: scene.id,
           kind: "keyframe",
-          files: [{ sha256: picture.sha256, label: "keyframe" }, ...characters.filter((character) => uploaded[character.id]).map((character) => ({ sha256: uploaded[character.id], label: `sheet ${character.name}` }))].slice(0, 6),
-          rubric: keyframeRubric(characters, rubricOptions),
+          files: [{ sha256: picture.sha256, label: "keyframe" }, ...characters.filter((character) => uploaded[character.id]).map((character) => ({ sha256: uploaded[character.id], label: `sheet ${character.name}` })), ...(plate ? [{ sha256: plate.sha256, label: "style plate" }] : [])].slice(0, 6),
+          rubric: keyframeRubric(characters, { ...rubricOptions, plate: Boolean(plate) }),
           context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: look.style },
         });
       } catch (error) {
@@ -241,7 +345,9 @@ export async function run(command, args, ctx) {
         stopped = true;
         break;
       }
-      entry.takes.push({ seed, file: picture.file, sha256: picture.sha256, key: picture.key, judge });
+      // A still under a camera move is used without its paper margin; the judge saw it whole.
+      if (stillPictures) picture = await trimmed(ctx, workdir, picture, scene.id);
+      entry.takes.push({ seed, file: picture.file, sha256: picture.sha256, key: picture.key, judge, ...(picture.margins ? { margins: picture.margins } : {}) });
       ctx.stdout.write(`${scene.id} take ${take}: judge ${judge.overall}/10${judge.passed ? "" : ` NOT passed: ${judge.problems.join("; ") || "below the bar"}`}${picture.reused ? " (reused)" : ""}\n`);
       if (judge.passed) break;
     }
@@ -257,7 +363,7 @@ export async function run(command, args, ctx) {
       writeManifest(workdir, manifest);
       continue;
     }
-    const record = { file: best.file, sha256: best.sha256, key: best.key, seed: best.seed, judge: best.judge, takes: entry.takes, needs_review: !best.judge?.passed };
+    const record = { file: best.file, sha256: best.sha256, key: best.key, seed: best.seed, judge: best.judge, takes: entry.takes, needs_review: !best.judge?.passed, ...(best.margins ? { margins: best.margins } : {}) };
     if (record.needs_review) record.problems = [...new Set(entry.takes.flatMap((each) => each.judge?.problems ?? []))];
     // An end frame guides the clip's last picture; it is not judged, only drawn.
     if (scene.data.end_frame?.prompt) {
