@@ -20,7 +20,7 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
 | `npm run check:tasks` | `node tools/tasks.mjs check` | 票的格式、狀態對資料夾 |
 | `uv run ruff check .` | ruff lint | CI **不跑** `ruff format --check`，repo 也不是 format-clean：只 format 你新建的檔 |
 | `uv run mypy app`、`uv run mypy tests` | strict mypy；tests 的放寬規則在 `apps/api/pyproject.toml` 的 override | 分兩行，失敗會指名是哪一邊 |
-| `uv run pytest` | 單元測試；整合測試沒有 `RUN_INTEGRATION_TESTS=1` 就 skip | CI 是 `pytest --cov=app` 且帶該變數 |
+| `uv run pytest` | 單元測試；整合測試沒有 `RUN_INTEGRATION_TESTS=1` 就 skip | CI 帶該變數、用 `--shard n/4` 分成四個 job 跑（`tests/sharding.py`）；本機重現某個分片就加同樣的 `--shard` |
 
 ## 讀 exit code 的正確寫法
 
