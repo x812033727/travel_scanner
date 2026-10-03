@@ -1,0 +1,381 @@
+{
+  "slug": "ai-workflow-agent-local-checklist",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 417,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code、Codex 搭本機模型的注意事項：開工前的檢查清單",
+      "description": "Claude Code 或 Codex 搭本機模型之前，先照一張表逐項核對：代理讀不讀得到原始檔、現在連的是誰、標籤是不是 :cloud、上下文實際開多長、逾時與輸出量、怎麼驗收。每一項寫怎麼檢查，並指出詳見同組哪一篇，另外收進供應商端點、條款與授權、繁體中文用字檢查；檢查方法取自 Anthropic、OpenAI、Ollama 與 DeepSeek 的官方文件。",
+      "hero": {
+        "src": "/guides/ai-workflow-agent-local-checklist/hero.jpg",
+        "alt": "原創插圖：桌上攤開一張逐項打勾的檢查表，旁邊一台筆電裡有標著本機的小方塊，筆電與遠處的雲朵之間隔著一道留了開口的柵欄。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude Code 或 Codex 搭本機模型，開工前要逐項核對什麼？答案是一張分成資料、憑證、上下文、逾時與輸出量、驗收、安全、條款與授權、繁體中文八組的清單，每一項只問一句怎麼檢查，檢查的大多是這一組（代理工具搭本機模型）前面五篇講過的坑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這篇適合在選好接法、準備動手之前讀。檢查方法都來自官方文件，本站沒有實測。不需要寫程式，會開終端機、改設定檔就夠；兩種接法怎麼選，見《Claude Code、Codex 搭本機模型：兩種接法怎麼選》。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "這張清單把同組前五篇的坑與幾項補充收成八組，每一項只問一句怎麼檢查，並指出詳見哪一篇。",
+            "最容易漏掉的兩件事：Claude Code 的 Read deny 規則，官方頁寫它不適用於不指名檔案的指令與自己開檔的腳本；位址與標籤要同時看，Ollama 的文件有位址是 ollama.com、標籤不帶 cloud 的範例，也有位址是 localhost、標籤帶 :cloud 的範例，兩種都不能當成本機。",
+            "上下文與逾時要自己核對：Ollama 的上下文頁寫預設依顯示記憶體是 4k、32k 或 256k，FAQ 另一節寫 4096，文件建議代理至少 64000 個 token，用 ollama ps 看實際值；Codex 的 tool_timeout_sec 以秒計、預設 60，Claude Code 的 timeout 欄位以毫秒計，兩邊不能抄同一個數字。",
+            "驗收的做法是本站的建議：先過 schema 驗證、再抽樣複核，驗收規則包含用字檢查；省不省只寫要量雲端 token、時間與錯誤率，條款只轉述原文、不做解讀。"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "這張清單怎麼用：先分清楚三種跑法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一個模型名字有三種跑法：權重下載到自己的電腦、Ollama 的 :cloud 標籤、供應商自己的端點，只有第一種的內容由你電腦上的程式處理，分辨方法見《GLM、Qwen、DeepSeek 接上 Claude Code 與 Codex：哪些在本機、哪些其實在雲端》。接法也有兩種：雜務交給腳本或 MCP 工具，或把代理的模型整個換成本機模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最先要查的是四個地方：原始資料有沒有被代理讀到、現在連的是誰、上下文實際開了多長、結果怎麼驗收，下圖各用一句話說明。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-agent-local-checklist/diagram-1.svg",
+          "alt": "四格圖解：資料、憑證、上下文、驗收，各用一句話說明開工前先查什麼",
+          "width": 1600,
+          "height": 900,
+          "caption": "四格圖解：開工前先查的四個地方，資料、憑證、上下文與驗收（2026 年 10 月查證，檢查方法取自官方文件）",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "heading",
+          "text": "資料與憑證：原始檔、現在連的是誰、標籤是不是 cloud",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "代理讀不讀得到原始檔，先看 Claude Code 的 Read deny 規則。權限頁寫它適用於內建的檔案工具、Claude Code 認得的 cat、head、tail、sed、tee 這類指令與重新導向的目標；不適用於不指名檔案的指令（例如 grep -r）與自己開檔的腳本。作業系統層級的做法是開沙盒，但同一頁寫沙盒只管 Bash、PowerShell、Monitor 指令與其子行程，適用的系統見批次腳本那一篇。所以別只看設定檔有那一行，要放一個內容虛構的測試檔請代理讀讀看。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 的對應做法是 permission profile，官方頁標示它是 beta，可以對路徑標 deny；同一頁寫，帶了 --sandbox 或設定檔裡有 sandbox_mode，Codex 就改用舊設定、不看 profile。頁面也寫，profile 管的是沙盒裡執行的指令，MCP 伺服器有自己的控制，所以走 MCP 工具時要由伺服器自己檢查收到的路徑，見《把本機模型包成 MCP 工具，Claude Code 與 Codex 共用一支伺服器》；腳本那條路見《讓 Claude Code、Codex 把大量雜務交給本機模型：一支 Python 腳本》。"
+        },
+        {
+          "type": "paragraph",
+          "text": "現在連的是誰，用 /status 看：閘道連線頁寫，Anthropic base URL 那一行要顯示你的位址，Auth token 或 API key 那一行寫著你設的變數名，才表示用的是你設的憑證、不是存著的登入；換成寫著 claude.ai 帳號的 Login method 行，就是你設的憑證沒有生效（原句的情境是組織沒有發放憑證）。shell 的 export 與設定檔的 env 設了同一個變數時，設定檔勝出，所以還要查殘留。Codex 的還原見《把 Claude Code、Codex 整個換成本機模型：Ollama 與 LM Studio 設定與還原》。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標籤與位址要同時看。Ollama 的 Claude Code 頁，直連 Ollama Cloud 的範例把 ANTHROPIC_BASE_URL 設成 ollama.com，標籤是 glm-5.3-flash，沒有 cloud 字樣，位址卻在雲端；手動設定一節最後的範例，位址是 localhost，標籤卻帶 :cloud。標籤的 Size / Usage 欄可以輔助：gemma4 的 /tags 頁，下載標籤寫 GB，gemma4:cloud 與 gemma4:31b-cloud 是用量等級（窄畫面寫 Low Usage，寬畫面是刻度）；三個家族那一篇讀的模型頁，那一格是橫線。兩種都不是檔案大小。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "只看標籤或只看位址，都會誤判",
+          "text": "Ollama 的 FAQ 寫，在本機執行時他們看不到你的提示詞與資料；使用雲端託管的模型時，他們會處理提示詞與回應來提供服務，但不儲存、不記錄這些內容，也不拿來訓練。直連 ollama.com 的範例屬於後者。位址是 localhost、標籤帶 :cloud 的組合，用的也是雲端模型：Ollama 的 Anthropic 相容頁寫，要透過本機伺服器使用雲端模型得先登入 Ollama，登入後可直接用 gemma4:cloud 這類雲端名稱，不必另外下載。確認時同時看 /status 的位址與傳給 --model 的標籤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要完全不碰 Ollama 的雲端功能，設 OLLAMA_NO_CLOUD=1 並重啟，日誌會出現 Ollama cloud disabled: true；FAQ 也寫，關掉之後會失去雲端模型與網頁搜尋。這只管你電腦上的 Ollama，直連 ollama.com（不需要安裝 Ollama）與供應商端點都不經過它。"
+        },
+        {
+          "type": "heading",
+          "text": "上下文、逾時與輸出量",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的上下文頁寫預設依顯示記憶體而定：小於 24 GiB 是 4k，24 到 48 GiB 是 32k，48 GiB 以上是 256k，並建議代理與寫程式工具至少設 64000 個 token；FAQ 的另一節卻寫預設是 4096 個 token，兩頁不一致，更要看實際值。上下文越大，記憶體需求越高；確認用 ollama ps 的 PROCESSOR 與 CONTEXT 兩欄。"
+        },
+        {
+          "type": "code",
+          "label": "核對上下文與連線（指令出自 Ollama 與 Claude Code 官方文件，需要已裝好 Ollama 與 Claude Code）",
+          "language": "bash",
+          "code": "# 1. 啟動 Ollama 伺服器時設定上下文（Ollama 的 context-length 頁）\nOLLAMA_CONTEXT_LENGTH=64000 ollama serve\n\n# 2. 另開一個終端機，模型被用到之後再看：\n#    PROCESSOR 看有沒有卸載到 CPU，CONTEXT 看實際配置的上下文長度\nollama ps\n\n# 3. 在 Claude Code 的對話裡輸入 /status，開在 Status 分頁，\n#    看 Anthropic base URL 與 Auth token（或 API key）兩行"
+        },
+        {
+          "type": "paragraph",
+          "text": "走 MCP 工具時，兩邊的逾時差很多。Claude Code 的每個伺服器逾時是 .mcp.json 的 timeout 欄位，單位毫秒，小於 1000 會被忽略、改用 MCP_TOOL_TIMEOUT，那個變數沒設時約 28 小時；stdio 伺服器沒有回應也沒有進度通知，預設 30 分鐘後中止（頁面寫 v2.1.203 之前 stdio 不受此限），主對話裡超過兩分鐘的呼叫會移到背景（需要 v2.1.212 以上）。Codex 的 tool_timeout_sec 單位是秒、預設 60。所以 180 在 Codex 是三分鐘，在 Claude Code 是 180 毫秒，會被忽略。"
+        },
+        {
+          "type": "paragraph",
+          "text": "輸出量也各管各的：Claude Code 超過 10,000 個 token 時顯示警告，預設上限 25,000 個 token，沒有圖片的結果超過就存成檔案；Codex 用單一工具的 output_token_limit，頁面沒有寫預設數字。本機模型回一批要多久，本篇讀的官方頁沒有數字，要自己量。"
+        },
+        {
+          "type": "heading",
+          "text": "驗收與安全：結果能不能用、資料有沒有外流",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "驗收分三步，這是本站的建議，不是官方寫法。第一步是 schema 驗證：Ollama 的結構化輸出頁用 format 欄位帶 JSON schema，Python 範例用 Pydantic 並要求驗證回應；頁面最上面寫 Ollama 的雲端目前不支援結構化輸出，所以直連 ollama.com 與 cloud 標籤都不能靠這一步。第二步是抽樣交給雲端模型或人複核，抽幾份由你定。第三步是不合格就重試、標記或升級，防護做法見《失敗案例與防護：迴圈、費用爆炸與代理間注入》。"
+        },
+        {
+          "type": "paragraph",
+          "text": "省不省要自己量。本篇沒有速度、品質或費用的數字，要量的是雲端 token 用量、完成一批的時間與結果的錯誤率，算式見《本機 vs 雲端 AI 成本試算：訂閱、API 與電費怎麼算》。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 要只綁本機位址。FAQ 寫預設綁 127.0.0.1 的 11434 連接埠，改綁定位址用 OLLAMA_HOST，所以查這個變數有沒有被設過。本組不教把 Ollama 開到區域網路或公網。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機模型的輸出要當成不可信輸入：結果檔是模型讀完外面寄來的內容後寫的文字，原文裡夾的指令可能被帶進摘要。Claude Code 的 MCP 頁提醒，抓外部內容的伺服器可能帶來提示詞注入風險；權限頁寫，沙盒的限制即使提示詞注入繞過了 Claude 的判斷仍然適用。所以重點是權限，不是在提示詞裡寫「這是資料」。原理見《提示詞注入是什麼：使用者該懂的攻擊》。"
+        },
+        {
+          "type": "heading",
+          "text": "供應商端點、條款與授權、繁體中文",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "位址指到供應商自己的網址，請求就是送到供應商，不是本機。DeepSeek 的 Claude Code 頁寫，設那組環境變數是讓 Claude Code 指向 DeepSeek 的 Anthropic API，並有一段模型名對照：傳入的模型名以 claude-opus 開頭的，對到 deepseek-v4-pro，以 V4 Pro 的價格計費。對照與計費以供應商頁面當天的寫法為準，本篇不寫價格。資料處理可借用《使用中國系 AI App 前的資安檢查清單》。"
+        },
+        {
+          "type": "paragraph",
+          "text": "條款與授權只寫要讀哪裡，不做解讀。Anthropic 的法務頁寫，OAuth 登入專供購買 Claude 訂閱方案的人使用，用來支援平常使用 Claude Code 與其他 Anthropic 原生應用程式；開發會用到 Claude 能力的產品或服務的人，頁面寫應該用 API 金鑰認證。自我檢查是：這個流程只有我自己用，還是會讓別人經過我的登入？後者請讀原文。Anthropic 文件對接到非 Claude 模型怎麼寫，見兩種接法那一篇。模型的授權則逐個看模型卡，照卡上的用詞讀，卡上沒寫可商用就不要當成可商用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "繁體中文只要求一件事：驗收規則要包含用字檢查，例如有沒有混入簡體字，或不是台灣慣用的詞，不過就走升級流程。本篇不下繁體中文品質的結論；台灣本土模型的官方介紹見《台灣的本土模型：TAIDE 與繁中表現》。"
+        },
+        {
+          "type": "heading",
+          "text": "收成一張表：開工前逐項打勾",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下表的「詳見哪一篇」用短稱指向前面提到的各篇。建議先查資料與憑證，這兩組出錯，內容可能已經離開電腦。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "分組",
+            "檢查項目",
+            "怎麼檢查",
+            "詳見哪一篇"
+          ],
+          "rows": [
+            [
+              "資料",
+              "Claude Code 讀得到原始檔嗎",
+              "為資料夾加 Read 的 deny 規則，再放一個虛構的測試檔請代理讀讀看；它不管不指名檔案的指令與自己開檔的腳本，沙盒則只管 Bash、PowerShell、Monitor 指令與其子行程。",
+              "批次腳本那一篇"
+            ],
+            [
+              "資料",
+              "Codex 讀得到原始檔嗎",
+              "permission profile（beta）對路徑標 deny；帶 --sandbox 或設定檔有 sandbox_mode 時 profile 不生效。它只管沙盒裡的指令，MCP 伺服器另有控制。原生 Windows 要 Linux 沙盒模型就用 WSL。",
+              "批次腳本、MCP 工具那兩篇"
+            ],
+            [
+              "資料",
+              "位址與標籤是不是本機",
+              "位址是 localhost 之類的本機位址，標籤也不帶 cloud；Size / Usage 欄，下載的寫 GB，cloud 的在 /tags 頁是用量等級、在模型頁是橫線，都不是檔案大小。",
+              "三個家族那一篇"
+            ],
+            [
+              "資料",
+              "要完全不碰 Ollama 雲端",
+              "設 OLLAMA_NO_CLOUD=1，或在 ~/.ollama/server.json 把 disable_ollama_cloud 設成 true，重啟後看日誌的 Ollama cloud disabled: true；只管本機的 Ollama，管不到直連 ollama.com 與供應商端點。",
+              "本篇"
+            ],
+            [
+              "憑證",
+              "現在連的是誰",
+              "Claude Code 輸入 /status：Anthropic base URL 是你的位址，Auth token 或 API key 那行寫著你設的變數名，沒有 Login method 寫 claude.ai 帳號。",
+              "整個換成本機那一篇"
+            ],
+            [
+              "憑證",
+              "有沒有殘留的設定",
+              "設定檔 env 勝過 shell 的 export；檢查 ~/.claude/settings.json（Windows 在使用者目錄的 .claude 底下），用完取消憑證變數後會回到存著的 claude.ai 登入。",
+              "整個換成本機那一篇"
+            ],
+            [
+              "上下文",
+              "上下文實際開多長",
+              "ollama ps 看 CONTEXT 與 PROCESSOR；上下文頁寫預設依顯示記憶體是 4k、32k、256k（FAQ 寫 4096），建議代理至少 64000 個 token，用 App 滑桿或 OLLAMA_CONTEXT_LENGTH=64000 ollama serve 調。",
+              "兩種接法那一篇"
+            ],
+            [
+              "逾時與輸出量",
+              "MCP 工具的逾時",
+              "Claude Code 的 timeout 欄位以毫秒計，Codex 的 tool_timeout_sec 以秒計、預設 60，startup_timeout_sec 預設 10，兩邊不能抄同一個數字。",
+              "MCP 工具那一篇"
+            ],
+            [
+              "逾時與輸出量",
+              "MCP 工具的輸出量",
+              "Claude Code 預設上限 25,000 個 token（MAX_MCP_OUTPUT_TOKENS），超過存成檔案（含圖片的結果除外）；Codex 看單一工具的 output_token_limit；工具只回分類結果與結果檔路徑。",
+              "MCP 工具那一篇"
+            ],
+            [
+              "驗收",
+              "輸出合不合格",
+              "format 帶 JSON schema，收到後再驗證一次；Ollama 頁寫雲端目前不支援結構化輸出。不合格就重試、標記，再抽樣複核、升級，這些都是本站的建議。",
+              "批次腳本、失敗案例與防護兩篇"
+            ],
+            [
+              "驗收",
+              "省不省",
+              "要量的是雲端 token、時間與錯誤率，不是只看有沒有跑完。",
+              "成本試算那一篇"
+            ],
+            [
+              "安全",
+              "Ollama 只綁本機",
+              "預設綁 127.0.0.1 的 11434 連接埠；查 OLLAMA_HOST 有沒有設過：Windows 看使用者與系統環境變數，macOS 以 App 執行時看 launchctl，Linux 以 systemd 服務執行時看服務設定。",
+              "本篇"
+            ],
+            [
+              "安全",
+              "輸出當不可信輸入",
+              "檢查讀結果檔的代理能不能動原始檔、能不能對外送出；權限頁寫沙盒的限制在提示詞注入繞過判斷時仍然適用。",
+              "提示詞注入那一篇"
+            ],
+            [
+              "安全",
+              "供應商端點",
+              "位址是供應商的網址，請求就送到供應商；DeepSeek 頁寫 claude-opus 開頭的名稱對到 deepseek-v4-pro，以 V4 Pro 的價格計費。",
+              "三個家族那一篇"
+            ],
+            [
+              "條款與授權",
+              "訂閱登入與模型授權",
+              "法務頁寫 OAuth 登入專供訂閱方案購買者使用，用於平常使用 Claude Code 與 Anthropic 原生應用程式；開發會用到 Claude 能力的產品或服務，應該用 API 金鑰；模型授權照模型卡的用詞讀。",
+              "本篇；官方立場見兩種接法，授權見三個家族"
+            ],
+            [
+              "繁體中文",
+              "用字檢查",
+              "驗收規則要包含用字檢查：有沒有混入簡體字、有沒有非台灣慣用的詞。",
+              "本篇；TAIDE 見台灣本土模型那一篇"
+            ]
+          ],
+          "caption": "開工前檢查清單（2026 年 10 月查證，本站整理）"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "設了 Read deny 規則，代理就讀不到原始檔了嗎？",
+              "answer": "不一定。Claude Code 權限頁寫，它不適用於不指名檔案的指令（例如 grep -r）與自己開檔的腳本；作業系統層級的限制要開沙盒，而沙盒只管 Bash、PowerShell、Monitor 指令與它們的子行程。Codex 的 permission profile 管的是沙盒裡執行的指令，MCP 伺服器有自己的控制。"
+            },
+            {
+              "question": "標籤不帶 cloud，就一定是本機嗎？",
+              "answer": "不一定。Ollama 的 Claude Code 頁有直連 ollama.com 的範例，標籤沒有 cloud 字樣，位址卻在雲端；也有位址是 localhost、標籤帶 :cloud 的範例。要同時看位址與標籤。"
+            },
+            {
+              "question": "上下文要設多少？",
+              "answer": "Ollama 的上下文頁寫預設依顯示記憶體是 4k、32k 或 256k，並建議代理與寫程式工具至少 64000 個 token；FAQ 的另一節卻寫預設是 4096 個 token。不用猜，用 ollama ps 看 CONTEXT 欄的實際值。"
+            },
+            {
+              "question": "我用訂閱登入 Claude Code，接本機模型有條款問題嗎？",
+              "answer": "本篇不做法律解讀，只轉述 Anthropic 法務頁：OAuth 登入專供購買訂閱方案的人使用，用來支援平常使用 Claude Code 與 Anthropic 原生應用程式；開發會用到 Claude 能力的產品或服務的人，應該用 API 金鑰認證。流程會讓別人經過你的登入時，先讀原文；Anthropic 文件對接到非 Claude 模型怎麼寫，見兩種接法那一篇。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+        },
+        {
+          "type": "link",
+          "text": "失敗案例與防護：迴圈、費用爆炸與代理間注入",
+          "url": "https://mokaair.com/zh-TW/life/ai-workflow-failures-and-guardrails"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude Code 文件：Configure permissions（Read deny 規則的範圍、沙盒與提示詞注入）",
+          "url": "https://code.claude.com/docs/en/permissions",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Claude Code 文件：Connect Claude Code to an LLM gateway（/status 的判讀、設定檔與 shell 的優先順序）",
+          "url": "https://code.claude.com/docs/en/llm-gateway-connect",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Claude Code 文件：Legal and compliance（OAuth 登入與 API 金鑰的用途）",
+          "url": "https://code.claude.com/docs/en/legal-and-compliance",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Claude Code 文件：Connect Claude Code to tools via MCP（逾時、閒置中止、移到背景、輸出上限）",
+          "url": "https://code.claude.com/docs/en/mcp",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Codex 文件：Model Context Protocol（startup_timeout_sec、tool_timeout_sec、output_token_limit）",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Codex 文件：Permissions（permission profile、deny、適用範圍與 Windows 沙盒）",
+          "url": "https://learn.chatgpt.com/docs/permissions",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama 文件：FAQ（只綁 127.0.0.1、雲端功能的關閉、OLLAMA_HOST、提示詞去向）",
+          "url": "https://docs.ollama.com/faq",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama 文件：Context length（預設上下文、64000、ollama ps）",
+          "url": "https://docs.ollama.com/context-length",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama 文件：Structured Outputs（format 帶 JSON schema、雲端不支援）",
+          "url": "https://docs.ollama.com/capabilities/structured-outputs",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama 文件：Claude Code（直連 Ollama Cloud、手動設定、/status）",
+          "url": "https://docs.ollama.com/integrations/claude-code",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama 模型庫：gemma4 的標籤頁（Size / Usage 欄的本機與雲端寫法）",
+          "url": "https://ollama.com/library/gemma4/tags",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "DeepSeek API 文件：Integrate with Claude Code（環境變數與模型名對照）",
+          "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama 文件：Anthropic compatibility（透過已登入的本機伺服器使用雲端模型）",
+          "url": "https://docs.ollama.com/api/anthropic-compatibility",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}
