@@ -140,12 +140,14 @@ def drama_values(row: VideoAutomationSettings) -> DramaSettings:
 
 def slides_values(row: VideoAutomationSettings) -> SlidesSettings:
     """The illustrated slides' settings (docs/videos/ILLUSTRATED.md); a row from before
-    migration 0114 reads the defaults for what it lacks."""
+    migration 0114 reads the defaults for what it lacks. A stored NULL image model follows
+    the drama's choice rather than the slides' default."""
     return SlidesSettings(
         **{
             field: value
             for field in SLIDES_FIELDS
             if (value := getattr(row, field, None)) is not None
+            or (field == "slides_image_model" and hasattr(row, field))
         }
     )
 
@@ -362,9 +364,10 @@ async def stage_prompts(session: AsyncSession) -> list[StagePromptView]:
 
 
 def _flat(values: dict[str, Any]) -> dict[str, Any]:
-    """The drama object spread onto the row's columns, for saving and for the audit diff."""
-    flat = {key: value for key, value in values.items() if key != "drama"}
+    """The drama and slides objects spread onto columns, for saving and the audit diff."""
+    flat = {key: value for key, value in values.items() if key not in {"drama", "slides"}}
     flat.update(values.get("drama") or {})
+    flat.update(values.get("slides") or {})
     return flat
 
 
