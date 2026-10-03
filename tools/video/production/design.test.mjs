@@ -90,7 +90,7 @@ test("review overlays preserve story chapters, historical artifacts and complete
     for (const character of setting.characters) {
       const direction = work.design.characters.find((entry) => entry.id === character.id);
       assert.equal(character.voice.name, direction.voice_name);
-      assert.match(character.voice.style, /^台灣國語/);
+      assert.match(character.voice.style, /^標準國語，咬字清楚/);
       assert.deepEqual(character.shot_looks, direction.look_states.map(({ id, appearance }) => ({ id, appearance })));
     }
     const later = productionForEpisode(setting, 40);

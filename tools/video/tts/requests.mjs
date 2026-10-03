@@ -3,6 +3,7 @@
 // marked by their spoken forms.
 import { createHash } from "node:crypto";
 
+import { channelAccent } from "../core/accent.mjs";
 import { NARRATOR, voiceFor } from "../core/drama.mjs";
 import { substitutions, termPattern } from "../core/lexicon.mjs";
 import { spokenText } from "../core/schema.mjs";
@@ -45,12 +46,14 @@ const LONG_PAUSE_FROM_MS = 600;
 /**
  * The voice part of a request body. Azure takes a voice name and a rate; Gemini takes a
  * prefixed voice, a written style and optionally a model, and no rate (its pace is in the style).
+ * The style goes out with the channel's accent wording (core/accent.mjs): a stored style that
+ * still says 「台灣國語」 is rewritten here, so the clip key changes and the clip is recorded again.
  */
 export function voiceFields(voice) {
   if (voice.provider === "gemini") {
     return {
       voice: `${GEMINI_VOICE_PREFIX}${voice.name}`,
-      ...(voice.style ? { style: voice.style } : {}),
+      ...(voice.style ? { style: channelAccent(voice.style) } : {}),
       ...(voice.model ? { model: voice.model } : {}),
     };
   }

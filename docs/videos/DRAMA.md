@@ -37,7 +37,7 @@
 | --- | --- | --- | --- |
 | 角色設定圖、關鍵影格 | Gemini 3 Pro Image（最多 14 張參考圖） | Gemini 3.1 Flash Image、MiniMax image-01 | 約 US$0.134／張 |
 | 圖生影片 | Gemini Omni 1.1 Flash（3–10 秒、首尾影格、角色參考圖） | Veo 3.1 只給主鏡頭；MiniMax H3 2K 當第二個 adapter；Kling 3.0 第二期 | Omni US$0.15／秒、Veo US$0.40／秒、H3 US$0.13／秒 |
-| 旁白 | 現有 Gemini 3.8 Flash TTS（Sulafat＋台灣腔 style） | — | 約 US$0.81／小時 |
+| 旁白 | 現有 Gemini 3.8 Flash TTS（Sulafat＋頻道口音 style） | — | 約 US$0.81／小時 |
 | 角色配音 | Gemini TTS：30 個內建聲音配 style；之後用聲音設計拿持久的 `voice_…` id | MiniMax speech-2.8（情緒參數、聲音複製，沒有台灣腔）；Azure zh-TW 三個聲音沒有語氣 | 同旁白 |
 | 品檢（judge） | Gemini 視覺模型看圖與片段打分 | — | 依 token |
 | 背景音樂 | Gemini API 的 Lyria 3.5 | ElevenLabs Music（要新金鑰）、YouTube 音效庫（人工） | US$0.08／首 |

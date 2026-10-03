@@ -1,6 +1,7 @@
 // A source-bound director's plan travels inside the approved setting book. No network,
 // media generation or approvals here: this module only checks and selects planning data.
 import { createHash } from "node:crypto";
+import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { audioDetailProblems, audioForEpisode, productionPronunciations } from "./audio-contract.mjs";
 
 export const designHash = (value) => createHash("sha256").update(typeof value === "string" ? value : JSON.stringify(value)).digest("hex");
@@ -72,7 +73,7 @@ export function designProblems(design, source, profile) {
     if (!PRODUCTION_VOICES.has(character.voice_name) || !text(character.performance)) errors.push(`${character.id}: missing supported selected voice or performance`);
     if (voiceNames.has(character.voice_name)) errors.push(`${character.id}: production actors need distinguishable voice selections`);
     voiceNames.add(character.voice_name);
-    if (`台灣國語，自然台灣口音；${character.performance ?? ""}`.length > 400) errors.push(`${character.id}: production voice style exceeds 400 characters; shorten explicitly`);
+    if (`${CHANNEL_ACCENT}；${character.performance ?? ""}`.length > 400) errors.push(`${character.id}: production voice style exceeds 400 characters; shorten explicitly`);
     if (character.pronunciation_status !== "proposed-native-listen-required") errors.push(`${character.id}: pronunciation must not pretend to have been auditioned`);
     for (const locale of ["zh-TW", "ja", "ko", "en"]) if (!text(character.pronunciations?.[locale])) errors.push(`${character.id}: missing ${locale} pronunciation proposal`);
     const looks = new Set();
@@ -127,7 +128,7 @@ export function productionSetting(setting, design, profile) {
   const selected = new Map(design.characters.map((entry) => [entry.id, entry]));
   const characters = setting.body_json.characters.map((character) => {
     const direction = selected.get(character.id);
-    const style = `台灣國語，自然台灣口音；${direction.performance}`;
+    const style = `${CHANNEL_ACCENT}；${direction.performance}`;
     if (style.length > 400) throw new Error(`${character.id}: production voice style exceeds 400 characters; shorten explicitly`);
     const catalog = (direction.look_states ?? []).map(({ id, appearance }) => ({ id, appearance }));
     return {

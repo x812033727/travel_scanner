@@ -143,7 +143,7 @@ test("a drama's requests change with the speaker, and a line's emotion rides in 
 
 test("production readings follow only spoken names, aliases and terms, and bind speech/request caches without changing CC", () => {
   const doc = {
-    format: "drama", voice: { provider: "gemini", name: "Kore", style: "平靜，台灣國語" },
+    format: "drama", voice: { provider: "gemini", name: "Kore", style: "平靜，咬字清楚" },
     pronunciation_hints: { 沈亦微: "微讀ㄨㄟˊ", 老鄧: "ㄌㄠˇ ㄉㄥˋ", 青釐盞: "釐讀ㄌㄧˊ", 釐: "不得取代完整術語", 秦硯山: "硯四聲", 安歲散: null },
     scenes: [{ id: "scene", lines: [{ id: "name1", text: "老鄧，把青釐盞交給沈亦微。" }, { id: "plain", text: "先把門關上。" }] }],
   };
@@ -543,9 +543,9 @@ test("tts on a drama gives each speaker their voice, and names the character who
     bodies.map((body) => body.voice),
     ["gemini:Sulafat", "gemini:Kore", "gemini:Charon", "gemini:Sulafat", "gemini:Sulafat", "gemini:Kore", "gemini:Sulafat"],
   );
-  assert.equal(bodies[1].style, "清亮、倔強的少女聲，台灣國語。開心、有點急");
-  assert.equal(bodies[2].style, "低沉、緩慢的長者聲，台灣國語。溫和但擔心");
-  assert.equal(bodies[3].style, "沉穩的說書人語氣，台灣國語，語速稍慢", "the narrator's style is untouched");
+  assert.equal(bodies[1].style, "清亮、倔強的少女聲，標準國語，咬字清楚，台北人平常說話的語調。開心、有點急", "the retired accent wording leaves with the request");
+  assert.equal(bodies[2].style, "低沉、緩慢的長者聲，標準國語，咬字清楚，台北人平常說話的語調。溫和但擔心");
+  assert.equal(bodies[3].style, "沉穩的說書人語氣，標準國語，咬字清楚，台北人平常說話的語調，語速稍慢", "the narrator's own words stay");
   assert.match(run.out.stdout, /^farewell#1 \[yandi \(炎帝\)\]: 1 lines$/m);
   const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
   assert.equal(timeline.lines.find((line) => line.id === "x9fe").speaker, "jingwei");

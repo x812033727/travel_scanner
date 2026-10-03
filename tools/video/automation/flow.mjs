@@ -13,6 +13,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
+import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { hasAnimePolicy, isLongAnime, requireAnimePolicy } from "../core/anime-policy.mjs";
 import { writeAnimeActs } from "./anime-write.mjs";
 import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs";
@@ -324,7 +325,7 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     if ((cast ?? video.characters ?? []).some((character) => character.voice?.provider === "gemini" && character.voice.name === narrator.voice_name)) {
       throw new AutomationError("the production narrator must have a voice distinct from every character; revise the approved narrator selection", { code: "video_production_voice_mismatch", who: "owner" });
     }
-    settled.voice = { provider: "gemini", name: narrator.voice_name, style: `台灣國語，自然台灣口音。${narrator.performance}`.slice(0, 400) };
+    settled.voice = { provider: "gemini", name: narrator.voice_name, style: `${CHANNEL_ACCENT}。${narrator.performance}`.slice(0, 400) };
     settled.pronunciation_hints = { ...(production.pronunciation_hints ?? {}) };
     const laterLanguages = localizationPlan(production);
     if (laterLanguages) settled.localization_plan = laterLanguages;
