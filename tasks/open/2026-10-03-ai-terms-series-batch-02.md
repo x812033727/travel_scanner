@@ -1,6 +1,6 @@
 ---
 id: 2026-10-03-ai-terms-series-batch-02
-title: AI 名詞系列第二批：14 個新詞專文並接上總索引
+title: AI 名詞系列第二批：14 個新詞專文並接上總索引，另補全系列摘要
 status: in-progress
 priority: P2
 area: docs
@@ -43,9 +43,92 @@ scope:
   - apps/web/public/guides/ai-term-agi
   - apps/api/app/guides/content/ai-term-computer-use.json
   - apps/web/public/guides/ai-term-computer-use
+  - docs/ai-terms-series/integrate.py
+  - docs/ai-terms-series/aliases.json
+  - apps/api/app/guides/content/ai-term-prompt-engineering.json
+  - apps/api/app/guides/content/ai-term-context-engineering.json
+  - apps/api/app/guides/content/ai-term-harness-engineering.json
+  - apps/api/app/guides/content/ai-term-loop-engineering.json
+  - apps/api/app/guides/content/ai-term-agentic-engineering.json
+  - apps/api/app/guides/content/ai-term-vibe-coding.json
+  - apps/api/app/guides/content/ai-term-spec-driven-development.json
+  - apps/api/app/guides/content/ai-term-llmops.json
+  - apps/api/app/guides/content/ai-term-agentops.json
+  - apps/api/app/guides/content/ai-term-prompt-chaining.json
+  - apps/api/app/guides/content/ai-term-artificial-intelligence.json
+  - apps/api/app/guides/content/ai-term-machine-learning.json
+  - apps/api/app/guides/content/ai-term-deep-learning.json
+  - apps/api/app/guides/content/ai-term-generative-ai.json
+  - apps/api/app/guides/content/what-is-a-large-language-model.json
+  - apps/api/app/guides/content/ai-term-foundation-model.json
+  - apps/api/app/guides/content/ai-term-transformer.json
+  - apps/api/app/guides/content/ai-term-mixture-of-experts.json
+  - apps/api/app/guides/content/ai-term-small-language-model.json
+  - apps/api/app/guides/content/ai-term-model-parameters.json
+  - apps/api/app/guides/content/ai-term-token.json
+  - apps/api/app/guides/content/ai-term-tokenization.json
+  - apps/api/app/guides/content/ai-context-window-explained.json
+  - apps/api/app/guides/content/ai-term-system-prompt.json
+  - apps/api/app/guides/content/ai-term-few-shot-prompting.json
+  - apps/api/app/guides/content/ai-term-zero-shot-prompting.json
+  - apps/api/app/guides/content/ai-term-in-context-learning.json
+  - apps/api/app/guides/content/ai-term-context-compaction.json
+  - apps/api/app/guides/content/ai-term-context-rot.json
+  - apps/api/app/guides/content/ai-term-agent-memory.json
+  - apps/api/app/guides/content/ai-agents-explained.json
+  - apps/api/app/guides/content/ai-term-agent-loop.json
+  - apps/api/app/guides/content/ai-term-multi-agent-system.json
+  - apps/api/app/guides/content/ai-term-subagent.json
+  - apps/api/app/guides/content/ai-term-agent-orchestration.json
+  - apps/api/app/guides/content/ai-term-react-reasoning-acting.json
+  - apps/api/app/guides/content/ai-term-tool-calling.json
+  - apps/api/app/guides/content/ai-term-model-context-protocol.json
+  - apps/api/app/guides/content/ai-term-agent2agent-protocol.json
+  - apps/api/app/guides/content/ai-term-agent-skills.json
+  - apps/api/app/guides/content/ai-term-retrieval-augmented-generation.json
+  - apps/api/app/guides/content/ai-term-agentic-rag.json
+  - apps/api/app/guides/content/ai-term-graph-rag.json
+  - apps/api/app/guides/content/ai-term-embedding.json
+  - apps/api/app/guides/content/ai-term-vector-database.json
+  - apps/api/app/guides/content/ai-term-semantic-search.json
+  - apps/api/app/guides/content/ai-term-hybrid-search.json
+  - apps/api/app/guides/content/ai-term-reranking.json
+  - apps/api/app/guides/content/ai-term-chunking.json
+  - apps/api/app/guides/content/ai-term-knowledge-graph.json
+  - apps/api/app/guides/content/ai-term-pretraining.json
+  - apps/api/app/guides/content/ai-term-fine-tuning.json
+  - apps/api/app/guides/content/ai-term-supervised-fine-tuning.json
+  - apps/api/app/guides/content/ai-term-rlhf.json
+  - apps/api/app/guides/content/ai-term-direct-preference-optimization.json
+  - apps/api/app/guides/content/ai-term-lora.json
+  - apps/api/app/guides/content/ai-term-knowledge-distillation.json
+  - apps/api/app/guides/content/ai-term-quantization.json
+  - apps/api/app/guides/content/ai-reasoning-models-explained.json
+  - apps/api/app/guides/content/ai-term-test-time-compute.json
+  - apps/api/app/guides/content/ai-term-prompt-caching.json
+  - apps/api/app/guides/content/ai-term-evals.json
+  - apps/api/app/guides/content/ai-term-benchmark.json
+  - apps/api/app/guides/content/ai-term-llm-as-a-judge.json
+  - apps/api/app/guides/content/ai-hallucination-fact-check.json
+  - apps/api/app/guides/content/ai-term-prompt-injection.json
+  - apps/api/app/guides/content/ai-term-jailbreak.json
+  - apps/api/app/guides/content/ai-term-guardrails.json
+  - apps/api/app/guides/content/ai-term-sandbox.json
+  - apps/api/app/guides/content/ai-term-human-in-the-loop.json
+  - apps/api/app/guides/content/ai-term-red-teaming.json
+  - apps/api/app/guides/content/ai-term-multimodal-ai.json
+  - apps/api/app/guides/content/ai-term-diffusion-model.json
+  - apps/api/app/guides/content/ai-term-text-to-image.json
+  - apps/api/app/guides/content/ai-term-text-to-video.json
+  - apps/api/app/guides/content/ai-term-automatic-speech-recognition.json
+  - apps/api/app/guides/content/ai-term-text-to-speech.json
+  - apps/api/app/guides/content/ai-term-deepfake.json
+  - apps/api/app/guides/content/ai-term-open-weights.json
+  - apps/api/app/guides/content/ai-term-open-source-ai.json
+  - apps/api/app/guides/content/ai-term-content-credentials.json
 ---
 
-# AI 名詞系列第二批：14 個新詞專文並接上總索引
+# AI 名詞系列第二批：14 個新詞專文並接上總索引（另含全系列摘要與總索引精簡）
 
 ## Why
 
@@ -57,6 +140,13 @@ scope:
 講的是某個產品怎麼用，不是名詞本身，這批連過去但不重寫它們。
 
 規格與撰稿指令在 [`docs/ai-terms-series/batch-02/`](../../docs/ai-terms-series/batch-02/brief.md)。
+
+## 2026-10-03 站主追加
+
+- 摘要直接補，不用站主先讀：第一批 81 篇、第二批 14 篇、`ai-terms-index`、`ai-glossary-50-terms` 都加 `summary` 區塊。
+  每則摘要由另一位代理逐句對照正文核實，再用 `pack_cli summarize --from` 套用（工具會擋掉正文沒有的數字）。
+- 總索引的連結文字改成名詞本身（「檢索增強生成（RAG）」），正文從 5,910 字降到約 4,850 字。
+- 第二批補上 `ai-terms` topic 與 `aliases.json` 的搜尋別名。
 
 ## Definition of done
 
