@@ -255,7 +255,9 @@ describe("AdminVideoReviews", () => {
       calls.push({ url, method, body: init?.body ? JSON.parse(String(init.body)) : undefined });
       if (url.endsWith("/drama-requests") && method === "POST") {
         const body = JSON.parse(String(init?.body));
-        requests = [{ ...requests[0], id: "new", premise: body.premise, style_preset: body.style_preset, target_minutes: body.target_minutes, note: null, created_at: "2026-09-26T06:00:00Z" }, ...requests];
+        // Filed "now": the list keeps a withdrawn request for a week after it was filed, so a fixed date
+        // here would drop it from the list once the calendar passed it (main went red on 2026-10-03).
+        requests = [{ ...requests[0], id: "new", premise: body.premise, style_preset: body.style_preset, target_minutes: body.target_minutes, note: null, created_at: new Date(Date.now() - 60_000).toISOString() }, ...requests];
         return Promise.resolve(Response.json(requests[0], { status: 201 }));
       }
       if (method === "DELETE") {
