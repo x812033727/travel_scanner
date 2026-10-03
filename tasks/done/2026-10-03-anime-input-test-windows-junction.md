@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-anime-input-test-windows-junction
 title: Anime input test Windows junction
-status: review
+status: done
 priority: P3
 area: tools
 owner: codex-anime-input-windows-20261003
 claimed_at: 2026-10-03T13:24:11Z
 created_at: 2026-10-03T13:09:36Z
-completed_at:
+completed_at: 2026-10-03T13:39:48Z
 branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
@@ -41,7 +41,7 @@ system permissions or skipping the security assertions is unnecessary.
 - [x] Verify current ownership and claim only this test-file scope.
 - [x] Use actual Windows junctions for link fixtures, with explicit real symbolic
       link metadata; keep all original refusal and offline/write assertions.
-- [ ] Run the complete focused module and independent duration/task validation.
+- [x] Run the complete focused module and independent duration/task validation.
 
 ## How to verify
 
@@ -84,3 +84,19 @@ Findings, decisions and dead ends, so the next agent does not repeat them.
   SHA256 `905c0547f41892ceb11b87331153103fc4fc74cca4f200394d00fd8fedb9e8f4`.
   This supersedes only the pending independent-binding note; complete Linux CI
   and final task validation are still required before archive.
+
+### 2026-10-03 verified tools acceptance and archive
+
+At exact PR head `641e2576a2212550db384cfe5b9d3a3dc98b0b8f`, the complete
+Linux `npm run test:tools` selected 1,454 cases: 1,453 passed, zero failed,
+one optional browser-render case skipped, exit 0 (49.423 seconds). No existing
+test or security policy was weakened. The same web-checks job passed lint,
+five-language i18n, typecheck and all 1,352 task records. The original Windows
+failure receipt is preserved; this separate Linux receipt supersedes only the
+earlier pending whole-tools/task/POSIX notes.
+
+Immutable [web-checks job](https://github.com/x812033727/travel_scanner/actions/runs/37126555983/job/111212893771).
+Scoped source bytes and independent duration bindings match the tested commit.
+This completes this local implementation ticket; other PR/API/service checks
+are evaluated separately and no media, publication, deployment or owner
+acceptance is inferred. The wider PR remains draft.

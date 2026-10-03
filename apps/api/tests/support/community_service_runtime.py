@@ -322,6 +322,11 @@ class CommunityRuntime:
         assert label not in self.processes
         log = (self.root / f"{label}-{time.monotonic_ns()}.log").open("wb")
         self.logs.append(log)
+        creation_flags: int
+        if sys.platform == "win32":
+            creation_flags = subprocess.CREATE_NO_WINDOW
+        else:
+            creation_flags = 0
         self.processes[label] = subprocess.Popen(
             [sys.executable, *arguments],
             cwd=self.cwd,
@@ -329,7 +334,7 @@ class CommunityRuntime:
             stdout=log,
             stderr=subprocess.STDOUT,
             start_new_session=sys.platform != "win32",
-            creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0,
+            creationflags=creation_flags,
         )
         identity = self.process_identity(self.processes[label].pid)
         self.births[label] = identity[2] if identity is not None else 0

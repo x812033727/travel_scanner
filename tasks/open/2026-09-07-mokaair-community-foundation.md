@@ -182,3 +182,18 @@ The original preparation receipts remain intact; independent sidecar SHA-256 is
 Read-only CI dependency/isolation review passed without service execution or
 limit changes; receipt SHA-256
 `6a6b7c1416c0931c13f5a782e7e07b1fa0f83ffb42f2219ad2e5a3be892f3c92`.
+
+First exact-head CI `641e2576a2212550db384cfe5b9d3a3dc98b0b8f` exposed one
+Linux-only mypy error: the inline conditional references Windows-only
+`subprocess.CREATE_NO_WINDOW`. The equivalent statement-level platform branch
+retains Windows hidden-process flags and Linux zero flags, with session/cleanup
+behavior unchanged. Independent mechanical reversal recovers the exact original
+runtime bytes; incremental review SHA-256
+`ccfe963fefda7da1fe8692ed781ffccee64fa1c9a063d1155bf7cdd7bdd75392`.
+Ruff/format and explicit `mypy --platform linux` pass all three fixture files;
+Linux-target mypy receipt SHA-256
+`81fecc7da9f58af0169be60de75660e07a125abb1012866bec13a06b24e9c17d`.
+New runtime SHA-256 is
+`625c01c131a9b54265fc7c8141f4236ddaafdda72f4d07f89bdcea7eb08d093e`;
+the first CI's old runtime hash and failures remain preserved. New-head complete
+CI and actual service acceptance remain required.

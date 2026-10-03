@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-keep-named-look-clip-judge-questions
 title: Keep named-look clip judge questions within schema limit
-status: review
+status: done
 priority: P2
 area: tools
 owner: codex-named-look-question-20261003
 claimed_at: 2026-10-03T11:39:02Z
 created_at: 2026-10-02T19:20:02Z
-completed_at:
+completed_at: 2026-10-03T13:39:36Z
 branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
@@ -41,7 +41,7 @@ judge runs, even though the character and named look are otherwise valid.
 - [x] Adjust the clip rubric/context construction inside the declared scope;
   retain the backend schema limit and normal review gates.
 - [x] Add boundary and semantic regression checks to `clips.test.mjs`.
-- [ ] Run the targeted tests, tools tests and task validation.
+- [x] Run the targeted tests, tools tests and task validation.
 
 ## How to verify
 
@@ -90,3 +90,19 @@ request-shape issue.
 
 - Runtime correction: the author's old `24.19.0` fields were assumptions, not captured output. Final coherence log records 20/20 in 78.922s with its historical runtime uncaptured. A separate reviewer captured CUA Node 24.21.0 and independently passed all 20 final cases in 6.32s. That executable differs from root's primary-runtime Node 24.19.0 used for the complete tools run; neither binary is claimed to have replaced the other. Original receipt bytes and the explicit correction sidecar are retained.
 - Independent DURATION_ONLY increment completed in commit `e21d1bcd5c8438c4fc5ab1c90d735c903dc5188a`: eight affected bindings updated, all 108 registry entries and earlier report history retained; 473 plan checks and both receipt tests passed. Evidence: `<home>/.codex/tmp/named-look-duration-review-20261003/final-independent-duration-review-receipt.json`, SHA256 `10b303ce870bf05b52a456e719891f4f8695d37e1ea489e1bab005a2b58fc7e3`. This supersedes only the earlier pending independent-binding notes; complete tools/task checks remain pending, and no media or publication acceptance is inferred.
+
+### 2026-10-03 verified tools acceptance and archive
+
+At exact PR head `641e2576a2212550db384cfe5b9d3a3dc98b0b8f`, the complete
+Linux `npm run test:tools` selected 1,454 cases: 1,453 passed, zero failed,
+one optional browser-render case skipped, exit 0 (49.423 seconds). No existing
+test or security policy was weakened. The same web-checks job passed lint,
+five-language i18n, typecheck and all 1,352 task records. The original Windows
+failure receipt is preserved; this separate Linux receipt supersedes only the
+earlier pending whole-tools/task/POSIX notes.
+
+Immutable [web-checks job](https://github.com/x812033727/travel_scanner/actions/runs/37126555983/job/111212893771).
+Scoped source bytes and independent duration bindings match the tested commit.
+This completes this local implementation ticket; other PR/API/service checks
+are evaluated separately and no media, publication, deployment or owner
+acceptance is inferred. The wider PR remains draft.

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-assemble-test-portable-tool-boundary
 title: Make assemble auto-fit test tool boundary portable
-status: review
+status: done
 priority: P2
 area: tools
 owner: codex-assemble-portable-20261003
 claimed_at: 2026-10-03T13:21:44Z
 created_at: 2026-10-03T13:20:47Z
-completed_at:
+completed_at: 2026-10-03T13:39:49Z
 branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
@@ -27,7 +27,7 @@ test reaches the natural-speed preflight assertion.
 
 ## Definition of done
 
-- [ ] The native auto-fit regression runs without a host ffmpeg installation or
+- [x] The native auto-fit regression runs without a host ffmpeg installation or
       platform-specific executable fixtures, on Windows and POSIX.
 - [x] It proves every directed clip is probed, rejects the short eight-second
       action at natural speed, and starts no encoding or segment directory.
@@ -42,8 +42,8 @@ test reaches the natural-speed preflight assertion.
 - [x] Replace Unix executable stand-ins with injected tool replies and keep the
       existing natural-speed/no-encoding assertions, adding complete probe order.
 - [x] Run the focused assemble module after the coordinated web typecheck.
-- [ ] Obtain independent source review and duration receipt increment.
-- [ ] Recheck task hygiene and record final validation before archival.
+- [x] Obtain independent source review and duration receipt increment.
+- [x] Recheck task hygiene and record final validation before archival.
 
 ## How to verify
 
@@ -94,3 +94,19 @@ suite; this ticket does not rerun it concurrently with other heavy checks.
   Private `anime-input-windows-junction-20261003/duration-increment/validation-receipt.json`
   SHA256 `905c0547f41892ceb11b87331153103fc4fc74cca4f200394d00fd8fedb9e8f4`.
   POSIX/complete-tools CI and final task validation remain pending.
+
+### 2026-10-03 verified tools acceptance and archive
+
+At exact PR head `641e2576a2212550db384cfe5b9d3a3dc98b0b8f`, the complete
+Linux `npm run test:tools` selected 1,454 cases: 1,453 passed, zero failed,
+one optional browser-render case skipped, exit 0 (49.423 seconds). No existing
+test or security policy was weakened. The same web-checks job passed lint,
+five-language i18n, typecheck and all 1,352 task records. The original Windows
+failure receipt is preserved; this separate Linux receipt supersedes only the
+earlier pending whole-tools/task/POSIX notes.
+
+Immutable [web-checks job](https://github.com/x812033727/travel_scanner/actions/runs/37126555983/job/111212893771).
+Scoped source bytes and independent duration bindings match the tested commit.
+This completes this local implementation ticket; other PR/API/service checks
+are evaluated separately and no media, publication, deployment or owner
+acceptance is inferred. The wider PR remains draft.
