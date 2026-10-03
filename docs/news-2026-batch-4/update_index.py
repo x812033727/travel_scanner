@@ -114,31 +114,47 @@ MAX_SOURCES = next(
 
 # The day this run expands the indexes: the one date the sentences below print, so the next
 # batch changes this constant and the same sentences instead of finding new ones to edit.
-EXPANDED_ON = "2026-09-30"
+EXPANDED_ON = "2026-10-04"
 EXPANDED = {
-    "zh-TW": "2026 年 9 月 30 日",
-    "en": "September 30, 2026",
-    "ja": "2026年9月30日",
-    "ko": "2026년 9월 30일",
-    "zh-CN": "2026 年 9 月 30 日",
+    "zh-TW": "2026 年 10 月 4 日",
+    "en": "October 4, 2026",
+    "ja": "2026年10月4日",
+    "ko": "2026년 10월 4일",
+    "zh-CN": "2026 年 10 月 4 日",
 }
 #: The newest event the AI series covers after this run, which the AI index's callout prints
-#: beside the expansion date: batch 4.9's GPT-6.1 Sol article, 2026-09-29 in Taipei.
-NEWEST_AI_EVENT = "2026-09-29"
+#: beside the expansion date: batch 4.11's Claude Code mods article, 2026-10-01.
+NEWEST_AI_EVENT = "2026-10-01"
 
 # vertical -> (slug, where to put the link). ``after`` is the existing slug to place the link
 # after (a leading "<" means before it), or an anchor of the ``INSERT`` kind -- per locale,
 # as a dict, when it names a heading whose text differs by locale. Applied in order: an entry
 # may name a slug inserted just before it.
 #
-# Batch 4.10 (2026-09-30): one article, Claude Sonnet 5.5 (09-28), five locales. By event
-# date it goes between Google Vids (09-24) and 4.9's GPT-6.1 Sol (09-29), i.e. right after
-# Google Vids in all five locales.
+# Batch 4.11 (2026-10-04): one article, Claude Code mods (10-01), five locales. It is the
+# first October event, so ``INSERT`` opens an October heading after the last September link
+# (4.9's GPT-6.1 Sol) and the link goes right under that heading in all five locales.
+_OCT_HEADING = {
+    "zh-TW": "2026 年 10 月新聞解析",
+    "en": "October 2026 News Analyses",
+    "ja": "2026年10月のニュース解説",
+    "ko": "2026년 10월 뉴스 분석",
+    "zh-CN": "2026 年 10 月新闻解析",
+}
 NEW: dict[str, list[tuple[str, object]]] = {
     "crypto": [],
     "tech": [],
-    "ai": [("ai-news-claude-sonnet-55-20260928", "ai-news-google-vids-omni-free-20260924")],
+    "ai": [
+        (
+            "ai-news-claude-code-mods-20261001",
+            {locale: "heading:" + _OCT_HEADING[locale] for locale in LOCALES},
+        )
+    ],
 }
+# What batch 4.10 (2026-09-30) added, kept for the record: Claude Sonnet 5.5 (09-28), placed
+# between Google Vids (09-24) and 4.9's GPT-6.1 Sol (09-29):
+#
+#     "ai": [("ai-news-claude-sonnet-55-20260928", "ai-news-google-vids-omni-free-20260924")],
 # What batch 4.9 (2026-09-30) added, kept for the record:
 #
 #     "ai": [("ai-news-gpt-61-sol-20260929", "ai-news-google-vids-omni-free-20260924")],
@@ -514,10 +530,58 @@ _EDITS_4_9: dict[str, dict[str, list[tuple[object, str, str]]]] = {
         ],
     },
 }
+# Batch 4.11 (2026-10-04) moves the AI index's three date sentences again, from 4.9's
+# 2026-09-30 and 2026-09-29: the same three blocks in all five locales.
 EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
     "crypto": {locale: [] for locale in LOCALES},
     "tech": {locale: [] for locale in LOCALES},
-    "ai": {locale: [] for locale in LOCALES},
+    "ai": {
+        "zh-TW": [
+            (0, "（最近一次 2026-09-30）", f"（最近一次 {EXPANDED_ON}）"),
+            (24, "（最近一次 2026-09-30）", f"（最近一次 {EXPANDED_ON}）"),
+            (
+                25,
+                "本輯收錄的事件到 2026-09-29 為止，最後增補於 2026-09-30。",
+                f"本輯收錄的事件到 {NEWEST_AI_EVENT} 為止，最後增補於 {EXPANDED_ON}。",
+            ),
+        ],
+        "en": [
+            (0, "(most recently on 2026-09-30)", f"(most recently on {EXPANDED_ON})"),
+            (24, "(most recently on 2026-09-30)", f"(most recently on {EXPANDED_ON})"),
+            (
+                25,
+                "covers events through 2026-09-29 and was last expanded on 2026-09-30.",
+                f"covers events through {NEWEST_AI_EVENT} and was last expanded on {EXPANDED_ON}.",
+            ),
+        ],
+        "ja": [
+            (0, "（最終追補は2026-09-30）", f"（最終追補は{EXPANDED_ON}）"),
+            (24, "（最終追補は2026-09-30）", f"（最終追補は{EXPANDED_ON}）"),
+            (
+                25,
+                "本特集の対象は2026-09-29までの出来事で、最終追補は2026-09-30です。",
+                f"本特集の対象は{NEWEST_AI_EVENT}までの出来事で、最終追補は{EXPANDED_ON}です。",
+            ),
+        ],
+        "ko": [
+            (0, "(마지막 보완 2026-09-30)", f"(마지막 보완 {EXPANDED_ON})"),
+            (24, "(마지막 보완 2026-09-30)", f"(마지막 보완 {EXPANDED_ON})"),
+            (
+                25,
+                "본 특집은 2026-09-29까지의 사건을 다루며, 마지막 보완은 2026-09-30입니다.",
+                f"본 특집은 {NEWEST_AI_EVENT}까지의 사건을 다루며, 마지막 보완은 {EXPANDED_ON}입니다.",
+            ),
+        ],
+        "zh-CN": [
+            (0, "（最近一次 2026-09-30）", f"（最近一次 {EXPANDED_ON}）"),
+            (24, "（最近一次 2026-09-30）", f"（最近一次 {EXPANDED_ON}）"),
+            (
+                25,
+                "本辑收录的事件到 2026-09-29 为止，最后增补于 2026-09-30。",
+                f"本辑收录的事件到 {NEWEST_AI_EVENT} 为止，最后增补于 {EXPANDED_ON}。",
+            ),
+        ],
+    },
 }
 
 # vertical -> locale -> (row label in column 0, column index, current cell, new cell). Nothing
@@ -810,11 +874,13 @@ _INSERT_4_8: dict[str, dict[str, list[tuple[str, dict]]]] = {
     },
     "ai": {locale: [] for locale in LOCALES},
 }
-# Batch 4.9 inserts nothing: the AI index names months, not articles (see the 4.8 note above).
+# Batches 4.9 and 4.10 inserted nothing: the AI index names months, not articles (see the 4.8
+# note above). Batch 4.11 opens October: the index had no month heading after September, and
+# the AI index's link groups are headed by month, so the first October article needs one.
 INSERT: dict[str, dict[str, list[tuple[str, dict]]]] = {
     "crypto": {locale: [] for locale in LOCALES},
     "tech": {locale: [] for locale in LOCALES},
-    "ai": {locale: [] for locale in LOCALES},
+    "ai": {locale: [("link:ai-news-gpt-61-sol-20260929", _h(_OCT_HEADING[locale]))] for locale in LOCALES},
 }
 
 #: A number of articles shown to the reader is wrong from the next batch onwards, so an index

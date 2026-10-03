@@ -46,23 +46,23 @@ two closing links. `check_article.py` already carries the slug at `display_order
 
 ## Definition of done
 
-- [ ] `ai-news-claude-code-mods-20261001` in five locales, researched from Anthropic's own pages
+- [x] `ai-news-claude-code-mods-20261001` in five locales, researched from Anthropic's own pages
       only, two fact-check rounds by different agents, translated and reviewed per language,
       with a hero and a 2x2 diagram.
-- [ ] AI index links to it in five locales; index title unchanged (see DELTA-4-11 §6).
-- [ ] PR merged; deploy and `guides-import --slug` publish done by someone with host access.
+- [x] AI index links to it in five locales under a new October heading; index title unchanged (see DELTA-4-11 §6).
+- [x] PR merged; deploy and `guides-import --slug` publish done by someone with host access.
 
 ## Steps
 
 - [x] DELTA-4-11.md and the `RELATED` entry (coordinator, 2026-10-03)
-- [ ] Research record (opus): `docs/ai-news-2026-09-late/research/ai-news-claude-code-mods-20261001.json`,
+- [x] Research record (opus): `docs/ai-news-2026-09-late/research/ai-news-claude-code-mods-20261001.json`,
       re-read every page on the day, confirm the GitHub directories exist before citing them
-- [ ] zh-TW draft (sonnet) following DELTA-4-11 §3 and §4
-- [ ] Fact check round 1 and round 2 (opus, different agents), reports in `factcheck-draft/`
-- [ ] Translate en/ja/ko/zh-CN (sonnet), per-language review
-- [ ] Assets, index (`update_index.py ai --dry-run` first), `check_article.py --full --assets`, lint, pytest
-- [ ] PR
-- [ ] File the follow-ups from DELTA-4-11 §7 (tutorial lesson "build your first mod", automation
+- [x] zh-TW draft (sonnet) following DELTA-4-11 §3 and §4
+- [x] Fact check round 1 and round 2 (opus, different agents), reports in `factcheck-draft/`
+- [x] Translate en/ja/ko/zh-CN (sonnet), per-language review
+- [x] Assets, index (`update_index.py ai --dry-run` first), `check_article.py --full --assets`, lint, pytest
+- [x] PR
+- [x] File the follow-ups from DELTA-4-11 §7 (tutorial lesson "build your first mod", automation
       source for `claude.com/blog`, AI index title month range)
 
 ## How to verify
@@ -72,6 +72,16 @@ prints `OK`; `uv run python -m app.guides.pack_cli lint --kind life` has no erro
 `verify_public.py --slug ai-news-claude-code-mods-20261001 --kind life --locale zh-TW`.
 
 ## Notes
+
+- Done 2026-10-04 (Taipei): research 94/94 quotes verified; round 1 about 100 claims, 19 edits; round 2 about 60 claims,
+  8 edits; review adopted en 0 (title changed on the reviewer's advice), ja 2, ko 2, zh-CN 1. `check_article.py --full --assets`
+  OK (zh-TW 3,000 characters), `pack_cli lint --kind life` no errors (en body 8,136 characters is the warning the spec allows),
+  content tests pass. Details in `docs/news-2026-batch-4/HANDOVER.md` §1k. Left: deploy, re-read the four live pages, then
+  `guides-import --slug ai-news-claude-code-mods-20261001 --slug ai-news-2026-january-september-index` dry run and publish on the host.
+- The container clock is UTC while `checked_on` is the Taipei date: run `check_article.py`, `build_assets.py` and
+  `update_index.py` with `TZ=Asia/Taipei` or the checker calls 2026-10-04 a future date.
+- Follow-ups filed: `2026-10-03-claude-code-lesson-first-mod`, `2026-10-03-news-automation-claude-blog-source`,
+  `2026-10-03-ai-news-index-month-range`.
 
 - 2026-10-03 (coordinator): read the blog post and the `overview`, `create`, `reference` and `admin`
   documentation pages with `curl -sSL` and the editorial User-Agent; all HTTP 200 with body. The

@@ -223,14 +223,26 @@
           "text": "本站沒有安裝或實測任何 mod，以上都是 Anthropic 公告與文件的說法。Anthropic 在部落格寫，mods 對你電腦的存取權與 Claude Code 本身相同、沒有沙盒，只該安裝信得過來源的 mods，就像在電腦上安裝任何程式一樣。文件是活頁面，上面是截至 2026 年 10 月 4 日的版本，內建 mods 表與各項設定可能隨版本變動，實際以你安裝的版本與最新文件為準。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5.5 推出：牌價與 Sonnet 5 相同，API、雲端平台與 Claude.ai 都能用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-sonnet-55-20260928"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5.5 推出：牌價與 Sonnet 5 相同，API、雲端平台與 Claude.ai 都能用",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-55-20260928"
+            }
+          ]
         }
       ],
       "sources": [
@@ -463,14 +475,26 @@
           "text": "This site has not installed or tested any mod; everything above is Anthropic's announcement and documentation. Anthropic's blog says mods run with the same access to your machine as Claude Code itself and are not sandboxed, and that you should only install mods from sources you trust, the same way you would install any code on your computer. The documentation is a live page and the above is the version as of October 4, 2026; the table of built-in mods and individual settings may change between versions, so rely on the version you installed and the latest documentation."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5.5 Launches: Same List Price as Sonnet 5, Available in the API, on Cloud Platforms and in Claude.ai",
-          "url": "https://mokaair.com/en/life/ai-news-claude-sonnet-55-20260928"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5.5 Launches: Same List Price as Sonnet 5, Available in the API, on Cloud Platforms and in Claude.ai",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-55-20260928"
+            }
+          ]
         }
       ],
       "sources": [
@@ -684,7 +708,7 @@
             },
             {
               "question": "modsはどうすればオフにできますか？",
-              "answer": "個別のmodは/pluginのInstalledタブで無効にします。1セッションだけなら--safe-modeで起動すると、他のカスタマイズも止まります。または~/.claude/settings.jsonでdisableAllHooksをtrueに設定します。この場合、設定ファイルのHookとカスタムstatus lineも一緒に止まり、組織が管理するものは通常どおり動きます。--safe-modeもdisableAllHooksも組み込みmodsは止めません。"
+              "answer": "個別のmodは/pluginのInstalledタブで無効にします。1セッションだけなら--safe-modeで起動します（他のカスタマイズも止まります）。または~/.claude/settings.jsonでdisableAllHooksをtrueに設定します。この場合、設定ファイルのHookとカスタムstatus lineも一緒に止まり、組織が管理するものは通常どおり動きます。--safe-modeもdisableAllHooksも組み込みmodsは止めません。"
             },
             {
               "question": "個人向けプランでもmodsは使えますか？",
@@ -703,14 +727,26 @@
           "text": "当サイトはmodをインストールしておらず、実地の検証も行っておらず、以上はすべてAnthropicの発表とドキュメントの説明です。Anthropicはブログで、modsはユーザーのマシンに対してClaude Code自身と同じアクセス権を持ち、サンドボックスはなく、コンピューターにコードをインストールするときと同様に、信頼できる提供元のmodsだけをインストールすべきだと書いています。ドキュメントは随時更新されるページで、上記は2026年10月4日時点のバージョンです。組み込みmodsの表や各設定はバージョンによって変わる可能性があるため、実際にはインストールしているバージョンと最新のドキュメントを基準にしてください。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5.5が登場：価格はSonnet 5と同じで、API、クラウドプラットフォーム、Claude.aiで利用可能",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-sonnet-55-20260928"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5.5が登場：価格はSonnet 5と同じで、API、クラウドプラットフォーム、Claude.aiで利用可能",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-55-20260928"
+            }
+          ]
         }
       ],
       "sources": [
@@ -943,14 +979,26 @@
           "text": "본 사이트는 mod를 설치하지도 직접 시험해 보지도 않았고, 위 내용은 모두 Anthropic 발표와 문서의 설명입니다. Anthropic은 블로그에서 mods가 사용자 컴퓨터에 대해 Claude Code 자체와 같은 접근 권한을 갖고 샌드박스가 없으므로, 컴퓨터에 어떤 프로그램을 설치할 때처럼 신뢰할 수 있는 출처의 mods만 설치해야 한다고 썼습니다. 문서는 계속 바뀌는 페이지이며, 위 내용은 2026년 10월 4일 기준 버전입니다. 내장 mods 표와 각 설정은 버전에 따라 바뀔 수 있으므로 실제로는 설치한 버전과 최신 문서를 기준으로 삼으시기 바랍니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5.5 출시: 정가는 Sonnet 5와 같고, API·클라우드 플랫폼·Claude.ai에서 사용 가능",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-sonnet-55-20260928"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5.5 출시: 정가는 Sonnet 5와 같고, API·클라우드 플랫폼·Claude.ai에서 사용 가능",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-55-20260928"
+            }
+          ]
         }
       ],
       "sources": [
@@ -1183,14 +1231,26 @@
           "text": "本站没有安装或实测任何 mod，以上都是 Anthropic 公告与文档的说法。Anthropic 在博客写，mods 对你电脑的访问权限与 Claude Code 本身相同、没有沙箱，只该安装来源可信的 mods，就像在电脑上安装任何程序一样。文档是持续更新的页面，上面是截至 2026 年 10 月 4 日的版本，内置 mods 表与各项设置可能随版本变动，实际以你安装的版本与最新文档为准。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5.5 推出：标价与 Sonnet 5 相同，API、云平台与 Claude.ai 都能用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-sonnet-55-20260928"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5.5 推出：标价与 Sonnet 5 相同，API、云平台与 Claude.ai 都能用",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-55-20260928"
+            }
+          ]
         }
       ],
       "sources": [
