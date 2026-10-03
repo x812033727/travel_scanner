@@ -393,7 +393,7 @@ test("a narrator-only drama draws its keyframes without a look gate, from the st
   assert.deepEqual(site.state.uploads.map((upload) => upload.sha256), [SHA(anchor)], "only the style frame goes to the store");
   assert.equal(site.state.judges.length, 10);
   for (const judged of site.state.judges) {
-    assert.deepEqual(judged.rubric.map((item) => item.key), ["prompt", "style", "craft", "clean", "no_text", "subtitle_band"], "no identity question without a character; the picture is judged as craft instead");
+    assert.deepEqual(judged.rubric.map((item) => item.key), ["prompt", "style", "clean", "no_text", "subtitle_band"], "no identity question without a character, and no craft question: that is for illustrated slides alone");
     assert.deepEqual(judged.files.map((file) => file.label), ["keyframe"]);
   }
   const manifest = manifestOf(box, "keyframes");
@@ -703,6 +703,12 @@ test("illustrated slides draw their stills with no look gate, bound to the shots
   assert.ok(!keyframeRubric([], { subtitleBand: false }).some((item) => item.key === "subtitle_band"));
   assert.match(keyframeRubric([]).find((item) => item.key === "style").question, /style description in the context/);
   assert.match(keyframeRubric([{ id: "a", name: "A" }]).find((item) => item.key === "style").question, /reference sheets/);
+  // Craft is the caller's word about the video, never inferred from a shot having no cast: an
+  // empty establishing shot of a 3D drama is not judged as a print illustration.
+  assert.ok(!keyframeRubric([]).some((item) => item.key === "craft"));
+  assert.ok(!keyframeRubric([{ id: "a", name: "A" }]).some((item) => item.key === "craft"));
+  assert.deepEqual(keyframeRubric([], { subtitleBand: false, craft: true }).map((item) => item.key), ["prompt", "style", "craft", "clean", "no_text"]);
+  assert.match(keyframeRubric([], { craft: true }).find((item) => item.key === "craft").question, /drawn by a person for print.*no glossy, glowing or computer-rendered finish/);
   // With the drama route on and no slides fields, slides draw as a drama does.
   assert.equal(statusProblem({ ...STATUS }, "image", "slides"), null);
   assert.match(statusProblem({ ...STATUS, enabled: false }, "image", "slides"), /pictures for slides videos are off/);

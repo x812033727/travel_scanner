@@ -12,7 +12,10 @@ test("the slides writer is told the shot template, the 5 to 8 second cadence, th
   assert.match(writer, /- shot \{prompt, camera, visual: "still", transition\?\}/);
   assert.match(writer, /at most 1000 characters/);
   assert.match(writer, /push in, pull out, pan left, pan\s+right, tilt up, tilt down, drift/);
-  assert.match(writer, /middle\s+60% of the frame/);
+  // A Short covers 9:16 from the 16:9 picture and keeps the middle 32% of its width.
+  assert.match(writer, /Keep the subject in the middle\s+third of the frame: a Short crops the picture to 9:16 and keeps only that strip/);
+  assert.doesNotMatch(writer, /middle\s+60%|off-centre/);
+  assert.match(writer, /nothing whose\s+face is print \(an open page, a sign, a clock face, a screen\)/);
   assert.match(writer, /5 to 8 seconds/);
   assert.match(writer, /shots under at least half of the runtime/);
   assert.match(writer, /"look": \{"preset": "tech-story"\}/);

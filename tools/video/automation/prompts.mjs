@@ -81,9 +81,11 @@ Reveal: a line with "reveal": 1 shows the next item; a scene's reveals must equa
   time of day, what is happening (a person doing one concrete thing, seen from behind, in profile
   or small in the frame, with a simple face, never a faceless mannequin), the one object the eye
   lands on and what it is made of, and where the light comes from. No style words, no colour
-  names, no "illustration": the look adds those. No text, letters or numbers, no logos, no real
-  people's faces or product likenesses (silhouettes and generic objects instead). Keep the subject
-  in the middle 60% of the frame, off-centre inside it: a Short crops it to 9:16. camera: one of
+  names, no "illustration": the look adds those. No text, letters or numbers, and nothing whose
+  face is print (an open page, a sign, a clock face, a screen), no logos, no real people's faces
+  or product likenesses (silhouettes and generic objects instead). Keep the subject in the middle
+  third of the frame: a Short crops the picture to 9:16 and keeps only that strip, so the
+  asymmetry comes from what stands in front of and behind the subject. camera: one of
   push in, pull out, pan left, pan right, tilt up, tilt down, drift, chosen for the picture (push
   in on the object, pull out to reveal the place, pan along a row, tilt up a tall thing, drift on
   a quiet moment); never the move of the shot before, and lint refuses three in a row. transition:

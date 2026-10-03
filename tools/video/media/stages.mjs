@@ -65,7 +65,11 @@ export function imageStatus(status, series) {
     // Status reports credentials only for its three selected vendors. A different vendor
     // can be unknown; let the server check it before submitting to the paid provider.
     const known = [status.image, status.clip, status.music].find((choice) => choice?.provider === provider && typeof choice.configured === "boolean");
-    return { ...status, image: { ...status.image, provider, model, configured: known?.configured ?? null } };
+    // The 2K price on the settings' choice belongs to the settings' model, and the catalog rows
+    // carry none: an overridden model is drawn and priced at 1K rather than asked for a 2K
+    // picture it may not sell (the server answers that with 422).
+    const own2k = status.image && Object.hasOwn(status.image, "usd_per_image_2k") ? { usd_per_image_2k: null } : {};
+    return { ...status, image: { ...status.image, provider, model, configured: known?.configured ?? null, ...own2k } };
   }
   throw new MediaError(`the series image model ${model} is unavailable or retired; change the series model or clear its override`, { code: "video_media_model_not_allowed", who: "owner" });
 }

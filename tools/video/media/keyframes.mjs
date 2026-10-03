@@ -44,12 +44,15 @@ export function contactSheetPages(tiles, perPage = CONTACT_SHEET_TILES) {
 
 /**
  * What the judge scores a keyframe on: one identity question per character in the shot, then the
- * picture itself. With no cast the style is judged against the look's description alone and the
- * picture is also judged as craft (does it read as drawn by a hand, not rendered by a machine:
- * docs/videos/ILLUSTRATED.md §畫面不像 AI), and a video whose subtitles are CC only (illustrated
- * slides) has no subtitle band to keep clear.
+ * picture itself. With no cast the style is judged against the look's description alone, and a
+ * video whose subtitles are CC only (illustrated slides) has no subtitle band to keep clear.
+ * `craft` adds the question illustrated slides are held to (does it read as drawn by a hand, not
+ * rendered by a machine: docs/videos/ILLUSTRATED.md §畫面不像 AI). It is the caller's word about
+ * the video, never inferred from a shot having no characters: an empty establishing shot of a
+ * 3D drama must not be judged as a print illustration, and the explainer's look allows the
+ * faceless figures this question marks down.
  */
-export function keyframeRubric(characters, { subtitleBand = true } = {}) {
+export function keyframeRubric(characters, { subtitleBand = true, craft = false } = {}) {
   return [
     ...characters.map((character) => ({
       key: `identity_${character.id.replace(/-/g, "_")}`,
@@ -64,7 +67,7 @@ export function keyframeRubric(characters, { subtitleBand = true } = {}) {
       question: characters.length ? "Is the picture in the requested visual style, consistent with the reference sheets?" : "Is the picture in the requested visual style, as the style description in the context puts it: technique, palette, line, mood?",
       weight: 1,
     },
-    ...(characters.length ? [] : [{ key: "craft", question: "Does it read as drawn by a person for print: lines and colour with texture and small irregularities, an asymmetric composition with one focal point and depth, people with simple faces or turned away rather than featureless mannequins, and no glossy, glowing or computer-rendered finish?", weight: 1 }]),
+    ...(!craft ? [] : [{ key: "craft", question: "Does it read as drawn by a person for print: lines and colour with texture and small irregularities, an asymmetric composition with one focal point and depth, people with simple faces or turned away rather than featureless mannequins, and no glossy, glowing or computer-rendered finish?", weight: 1 }]),
     { key: "clean", question: "Is it free of faults: correct hands and fingers, no warped faces, no floating or duplicated parts, no smeared background?", weight: 2 },
     { key: "no_text", question: "Is it free of text, letters, watermarks and logos?", weight: 1 },
     ...(subtitleBand ? [{ key: "subtitle_band", question: "Is the main subject clear of the bottom 14% of the frame, where subtitles will be burned in?", weight: 1 }] : []),
@@ -124,7 +127,7 @@ export async function run(command, args, ctx) {
   const binding = slides ? { pictures_hash: picturesHash(doc) } : { visual_hash: visualHash(doc) };
   const bound = (manifest) => manifest && Object.entries(binding).every(([key, value]) => manifest[key] === value);
   const format = slides ? doc.format : null;
-  const rubricOptions = { subtitleBand: burnIn(doc) };
+  const rubricOptions = { subtitleBand: burnIn(doc), craft: slides };
   const wanted = values.shot ? new Set(values.shot.split(",").map((each) => each.trim()).filter(Boolean)) : null;
   const shots = shotScenes(doc).filter((scene) => !wanted || wanted.has(scene.id));
   if (!shots.length) throw new UsageError(`--shot ${values.shot} names no shot of ${doc.slug}`);

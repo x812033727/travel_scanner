@@ -439,12 +439,18 @@ test("illustrated slides are drawn as a printmaker's brief and lint keeps their 
   assert.match(preset.style, /^hand-drawn editorial illustration for a printed magazine feature/);
   assert.match(preset.style, /paper grain and a little misregistration/);
   assert.match(preset.style, /small simple people with dot eyes or seen from behind/);
-  for (const word of ["glossy", "faceless mannequin", "symmetrical centred layout", "text", "logo", "real person's likeness", "mascot", "extra fingers"]) assert.ok(preset.negative.includes(word), word);
+  for (const word of ["glossy", "faceless mannequin", "mirror symmetry", "text", "logo", "real person's likeness", "mascot", "extra fingers"]) assert.ok(preset.negative.includes(word), word);
   assert.ok(preset.style.length <= 600 && preset.negative.length <= 400);
-  // The camera words fold to their move; a shot that names none drifts.
+  // The subject stays where a Short's 9:16 crop keeps it; nothing pushes it to one side.
+  assert.match(preset.style, /one clear focal point in the centre third of the frame/);
+  assert.doesNotMatch(`${preset.style} ${preset.negative}`, /off-centre|centred layout/);
+  // The camera words fold to their move, the camera direction first and then the motion prompt,
+  // as assemble reads them; a shot that names none drifts.
   assert.equal(cameraMove({ camera: "slow push in" }), "push in");
   assert.equal(cameraMove({ camera: "pan right along the shelf" }), "pan right");
   assert.equal(cameraMove({ camera: "handheld" }), "drift");
+  assert.equal(cameraMove({ camera: "handheld", motion: "slow push in" }), "push in");
+  assert.equal(cameraMove({ camera: "pan left", motion: "zoom in" }), "pan left");
   assert.equal(cameraMove({}), "drift");
   // The example keeps the rules; a drama is not held to them.
   const doc = illustratedFixture();
@@ -469,6 +475,20 @@ test("illustrated slides are drawn as a printmaker's brief and lint keeps their 
   assert.equal(warnings.length, 2, JSON.stringify(warnings));
   assert.match(warnings[0].message, /^2 of 5 pictures name no shot size .*: say how close the camera is in podium, race$/);
   assert.match(warnings[1].message, /^2 of 5 pictures restate the look \("flat editorial illustration", "amber"\); the look adds the style and the palette, the prompt describes the picture: podium, race$/);
+  // Prompts written as the guide asks raise nothing: the sizes it names are sizes here, a noun
+  // that happens to be a palette word is not the look, and neither a stopword's plural nor the
+  // shot-size word every prompt opens with is a motif.
+  const guided = illustratedFixture();
+  const written = [
+    "Medium: a baker kneading dough at a workshop bench before dawn, flour on the boards, figures passing the window",
+    "Close up of a kettle on a stove, steam against a tiled wall, figures reflected in the metal",
+    "Extreme close up of a key in a worn lock, a thumb on the bow",
+    "Medium, a harbour at dusk, a child holding an ice cream cone beside two figures on the quay",
+    "Medium view of a classroom after hours, chairs stacked on benches, one coat left on a hook",
+  ];
+  guided.scenes.filter((scene) => scene.template === "shot").forEach((scene, index) => { scene.data.prompt = written[index]; });
+  guided.scenes.push({ id: "sixth", template: "shot", data: { prompt: "Medium shot of a market stall, a vendor weighing fruit on brass scales, crates behind", camera: "pull out", visual: "still" }, lines: [{ id: "s6zz", text: "第六張。" }] });
+  assert.deepEqual(pictureVarietyProblems(guided), { errors: [], warnings: [] });
   // A place or an object in more than a third of the pictures, once there are enough to count.
   assert.equal(MOTIF_MIN_SHOTS, 6);
   assert.equal(MOTIF_SHARE_WARN, 1 / 3);

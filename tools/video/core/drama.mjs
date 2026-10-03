@@ -81,11 +81,14 @@ export const PRESETS = {
   // The channel's own illustrated slides (docs/videos/ILLUSTRATED.md): pictures between the dark
   // data cards, so they share theme.css's ground and accents; no cast, no text in the picture.
   // Written as a printmaker's brief, not a render's: uneven ink, misregistered flat colour and
-  // paper grain are what a viewer reads as a hand, and a smooth glossy finish, a centred subject
-  // on an empty ground and faceless mannequins are what they read as a machine (§畫面不像 AI).
+  // paper grain are what a viewer reads as a hand, and a smooth glossy finish, a lone subject on
+  // an empty ground and faceless mannequins are what they read as a machine (§畫面不像 AI). The
+  // subject stays in the centre third: a Short covers 9:16 from this 16:9 picture and keeps only
+  // the middle 32% of its width (shorts/motion.mjs), so the asymmetry comes from the layers
+  // around the subject, never from pushing it to one side.
   "tech-story": {
-    style: "hand-drawn editorial illustration for a printed magazine feature: confident ink outlines of slightly uneven weight, flat gouache and screen-print colour with visible paper grain and a little misregistration, textured hand-cut shadows, a limited palette of deep teal-green night ground, warm cream, amber and a touch of brick red, one clear focal point placed off-centre with foreground and background layers, small simple people with dot eyes or seen from behind, matte finish, 16:9",
-    negative: "photorealistic, 3D render, CGI, glossy, airbrushed, smooth gradients, neon glow, lens flare, bokeh, stock vector, corporate flat icon style, isometric, faceless mannequin, floating objects, symmetrical centred layout, text, letters, numbers, watermark, logo, brand marks, real person's likeness, mascot, recurring cartoon character, extra fingers, deformed hands, cluttered background",
+    style: "hand-drawn editorial illustration for a printed magazine feature: confident ink outlines of slightly uneven weight, flat gouache and screen-print colour with visible paper grain and a little misregistration, textured hand-cut shadows, a limited palette of deep teal-green night ground, warm cream, amber and a touch of brick red, one clear focal point in the centre third of the frame with uneven foreground and background layers to either side, small simple people with dot eyes or seen from behind, matte finish, 16:9",
+    negative: "photorealistic, 3D render, CGI, glossy, airbrushed, smooth gradients, neon glow, lens flare, bokeh, stock vector, corporate flat icon style, isometric, faceless mannequin, floating objects, mirror symmetry, text, letters, numbers, watermark, logo, brand marks, real person's likeness, mascot, recurring cartoon character, extra fingers, deformed hands, cluttered background",
     motion: "slow push in or gentle drift, no morphing, no cuts",
   },
   custom: { style: "", negative: "", motion: "" },
@@ -575,8 +578,9 @@ export function promptSimilarity(a, b) {
   return shared / (x.size + y.size - shared);
 }
 
-// The camera words a still may carry, folded to the move they name (assemble/drama.mjs reads
-// them the same way); a shot that names none drifts.
+// The camera words a still may carry, folded to the move they name. assemble/drama.mjs
+// (motionMove) reads them the same way: the camera direction first, then the motion prompt, and
+// a shot that names no move in either drifts.
 const CAMERA_MOVES = [
   ["push in", /push|dolly in|zoom in|closer|move in/],
   ["pull out", /pull|zoom out|widen|back away/],
@@ -586,22 +590,34 @@ const CAMERA_MOVES = [
   ["tilt down", /tilt down|crane down|descend/],
 ];
 export function cameraMove(data) {
-  const text = String(data?.camera ?? "").toLowerCase();
-  return CAMERA_MOVES.find(([, pattern]) => pattern.test(text))?.[0] ?? "drift";
+  for (const text of [data?.camera, data?.motion]) {
+    if (typeof text !== "string") continue;
+    const lower = text.toLowerCase();
+    const found = CAMERA_MOVES.find(([, pattern]) => pattern.test(lower));
+    if (found) return found[0];
+  }
+  return "drift";
 }
 // How close the camera is: a prompt that says none of these leaves the picture to the model's
-// habit, a medium shot of a thing in the middle.
-const SHOT_SIZE = /\b(?:extreme close-?up|close-?up|close shot|macro|medium shot|mid shot|medium close|wide shot|wide view|wide|establishing|bird'?s-?eye|overhead|from above|from directly above|top-?down|low angle|worm'?s-?eye|high angle|aerial|full shot|two-?shot|over the shoulder|from behind|in profile|silhouette)\b/i;
+// habit, a medium shot of a thing in the middle. Every size the writer's guide and the warning
+// below name is accepted as written there, "medium" and "close up" included.
+const SHOT_SIZE = /\b(?:extreme close[- ]?up|close[- ]?up|close shot|macro|medium|mid shot|wide|establishing|bird'?s-?eye|overhead|from above|from directly above|top-?down|low angle|worm'?s-?eye|high angle|aerial|full shot|two-?shot|over the shoulder|from behind|in profile|silhouette)\b/i;
 // What the look already says: a prompt that repeats it pins every picture to one palette and
-// one finish, which is the sameness a viewer reads as a slideshow.
-const LOOK_WORDS = /\b(?:flat (?:editorial )?illustration|editorial illustration|painterly|paper grain|teal|cream|amber|navy|mustard|ochre|16:9)\b/i;
+// one finish, which is the sameness a viewer reads as a slideshow. Only the tech-story look's
+// own words, and "cream" as a colour, not as the thing in a cone.
+const LOOK_WORDS = /\b(?:flat (?:editorial )?illustration|editorial illustration|painterly|paper grain|teal|(?<!ice )cream(?! cone| cheese| puff| cake)|amber|16:9)\b/i;
 // Words of a prompt that are not a place or an object (grammar, sizes, light, materials, the
 // look's own palette and finish, the camera): a motif is counted on the rest.
-const PROMPT_STOPWORDS = new Set(["with", "from", "into", "onto", "over", "under", "behind", "beside", "above", "below", "between", "through", "across", "along", "around", "down", "their", "there", "them", "they", "this", "that", "these", "those", "where", "while", "what", "when", "which", "small", "large", "tiny", "huge", "little", "dark", "light", "warm", "cold", "soft", "bright", "night", "view", "shot", "frame", "side", "left", "right", "centre", "center", "centred", "centered", "middle", "front", "back", "close", "wide", "seen", "single", "each", "some", "many", "only", "same", "other", "like", "still", "long", "tall", "short", "open", "flat", "plain", "simple", "clean", "whole", "half", "away", "near", "high", "deep", "wooden", "paper", "glass", "metal", "brass", "stone", "very", "more", "most", "just", "then", "than", "also", "both", "being", "person", "figure", "people", "anonymous", "hand", "hands", "angle", "level", "overhead", "profile", "edge", "corner", "lying", "standing", "sitting", "holding", "looking", "resting", "composition", "picture", "scene", "image", "illustration", "editorial", "painterly", "grain", "shape", "shapes", "line", "lines", "colour", "color", "ground", "background", "foreground", "teal", "cream", "amber", "green", "navy", "mustard", "ochre", "brick", "highlight", "highlights", "accent", "accents", "glow", "glowing", "lamplight", "spotlight"]);
-const motifOf = (word) => (word.length > 4 && word.endsWith("s") && !/(?:ss|us|is)$/.test(word) ? word.slice(0, -1) : word);
+const PROMPT_STOPWORDS = new Set(["with", "from", "into", "onto", "over", "under", "behind", "beside", "above", "below", "between", "through", "across", "along", "around", "down", "their", "there", "them", "they", "this", "that", "these", "those", "where", "while", "what", "when", "which", "small", "large", "tiny", "huge", "little", "dark", "light", "warm", "cold", "soft", "bright", "night", "view", "shot", "frame", "side", "left", "right", "centre", "center", "centred", "centered", "middle", "front", "back", "close", "wide", "seen", "single", "each", "some", "many", "only", "same", "other", "like", "still", "long", "tall", "short", "open", "flat", "plain", "simple", "clean", "whole", "half", "away", "near", "high", "deep", "wooden", "paper", "glass", "metal", "brass", "stone", "very", "more", "most", "just", "then", "than", "also", "both", "being", "person", "figure", "people", "anonymous", "hand", "hands", "angle", "level", "overhead", "profile", "edge", "corner", "lying", "standing", "sitting", "holding", "looking", "resting", "composition", "picture", "scene", "image", "illustration", "editorial", "painterly", "grain", "shape", "shapes", "line", "lines", "colour", "color", "ground", "background", "foreground", "teal", "cream", "amber", "green", "navy", "mustard", "ochre", "brick", "highlight", "highlights", "accent", "accents", "glow", "glowing", "lamplight", "spotlight", "medium", "extreme", "establishing", "aerial", "macro", "silhouette", "shoulder", "closeup"]);
+// A plural folds to its singular (benches → bench, lamps → lamp) so the two count as one thing.
+const motifOf = (word) => {
+  if (word.length > 5 && /(?:ch|sh|x|ss)es$/.test(word)) return word.slice(0, -2);
+  return word.length > 4 && word.endsWith("s") && !/(?:ss|us|is)$/.test(word) ? word.slice(0, -1) : word;
+};
 function promptMotifs(scene) {
   const words = String(scene.data?.prompt ?? "").toLowerCase().match(/[a-z]{4,}/g) ?? [];
-  return new Set(words.filter((word) => !PROMPT_STOPWORDS.has(word)).map(motifOf));
+  // A stopword is one in either form: "figures" is no more a prop than "figure" is.
+  return new Set(words.filter((word) => !PROMPT_STOPWORDS.has(word) && !PROMPT_STOPWORDS.has(motifOf(word))).map(motifOf));
 }
 const fewIds = (ids) => `${ids.slice(0, 4).join(", ")}${ids.length > 4 ? ` and ${ids.length - 4} more` : ""}`;
 

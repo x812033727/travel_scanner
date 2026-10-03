@@ -21,7 +21,7 @@
 
 | 欄位 | 意思 | 規則 |
 | --- | --- | --- |
-| `look` | 插圖的畫風預設 | 有 `shot` 就必須有；預設 `tech-story`（配深色主題：深藍綠底、奶油白、琥珀與一點磚紅；2026-10-03 起寫成版畫師的工單：墨線粗細不勻、網印平塗帶紙紋與套印微偏、手剪的陰影、焦點偏離中央、有前後景層次、小小的簡筆人物（點狀眼睛或背影）、霧面；negative 擋文字、logo、真人相貌、寫實、光澤、霓虹光暈、無臉人偶、對稱置中）；沒有 `shot` 的投影片不能帶 `look` |
+| `look` | 插圖的畫風預設 | 有 `shot` 就必須有；預設 `tech-story`（配深色主題：深藍綠底、奶油白、琥珀與一點磚紅；2026-10-03 起寫成版畫師的工單：墨線粗細不勻、網印平塗帶紙紋與套印微偏、手剪的陰影、焦點在畫面中間三分之一而兩側有不對稱的前後景、小小的簡筆人物（點狀眼睛或背影）、霧面；negative 擋文字、logo、真人相貌、寫實、光澤、霓虹光暈、無臉人偶、鏡像對稱）；沒有 `shot` 的投影片不能帶 `look` |
 | `shot` 場景 | 一張插圖：`data.prompt`（英文 ≤1000 字，依序寫景別、地點與時間、正在發生的事、視線落點的物件與材質、光從哪來；不寫風格與顏色）、`data.camera`（push in／pull out／pan left／pan right／tilt up／tilt down／drift）、`data.visual: "still"`、`data.transition?`（cut／dissolve，通常不寫） | 只准 still；不得有 `characters`、`fit`、`start_frame`、`end_frame`；shot 的句子不能 `reveal`；連續三張同一種運鏡是 lint 錯誤（§畫面不像 AI） |
 | `music` | `{ track, sha256?, gain_db?, duck_db?, fade_in_ms?, fade_out_ms? }`，檔案在 `<work base>/_music/` | 任何格式都可以帶（`prompt` 走 Lyria 也還在，但站主決定用授權檔） |
 | `sfx` | `{ set, gain_db? }`，音效組在 `<work base>/_sfx/<set>/` | 預設 gain −12 dB |
@@ -43,7 +43,7 @@
 
 | 步 | 指令 | 說明 |
 | --- | --- | --- |
-| 插圖 | `keyframes --slug` | 每個 shot 一張，伺服器的插圖模型有 2K 價時向 Gemini 要 2K（`imageSize`），否則 1K；judge 評分、最多 3 次換 seed；沒有角色所以沒有 look 關卡；rubric 在不燒錄字幕時沒有 `subtitle_band`，沒有角色時多一項 `craft`（像不像人手畫的印刷插畫）。dry-run 印尺寸、一輪與最多 N 次的成本 |
+| 插圖 | `keyframes --slug` | 每個 shot 一張，伺服器的插圖模型有 2K 價時向 Gemini 要 2K（`imageSize`），否則 1K；judge 評分、最多 3 次換 seed；沒有角色所以沒有 look 關卡；rubric 在不燒錄字幕時沒有 `subtitle_band`，插圖投影片多一項 `craft`（像不像人手畫的印刷插畫）。dry-run 印尺寸、一輪與最多 N 次的成本 |
 | 分鏡關卡 | `review-push --gate storyboard` | 順序 outline → audio → storyboard → final；站主決定一開始就自動核准（伺服器的 `slides_auto_approve_storyboard`，票 `2026-09-29-video-slides-media-api`） |
 | 配樂 | `music --slug` | `music.track` 只核對檔案與 sha，不呼叫伺服器 |
 | 合成 | `assemble --slug` | 走漫劇的混合版面：shot＝關鍵影格加運鏡（smoothstep 緩入緩出、位移量隨鏡頭長度放大到 6 秒為止、drift 依場景 id 決定左右）；**單狀態卡片**（title、chapter、big、quote、cta、outro）在 drift 與 push-in 之間輪流漂移，漂移的卡片左右輪流；多狀態卡片維持逐條出現；轉場規則＝撰稿的 `data.transition` 優先，否則第一景與章節卡硬切、前一景最後一句有 ≥600 ms 的停頓節拍才溶接、其餘硬切；配樂床側鏈壓低；音效軌 |
@@ -120,12 +120,12 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 | 層 | 改了什麼 | 在哪 |
 | --- | --- | --- |
-| 畫風 | `tech-story` 改成版畫師的工單：墨線粗細不勻、網印平塗帶紙紋與套印微偏、手剪陰影、焦點偏離中央、前後景層次、小小的簡筆人物（點狀眼睛或背影）、霧面；negative 多擋 glossy、airbrushed、smooth gradients、neon glow、lens flare、bokeh、stock vector、corporate flat icon、isometric、faceless mannequin、floating objects、symmetrical centred layout | `core/drama.mjs` `PRESETS["tech-story"]`（改了 `look_hash`：已有的 tech-story 影片會整支重畫，試片三支當時還沒畫） |
-| 撰稿 | shot 的 prompt 照攝影師給插畫家的工單順序寫：景別 → 地點與時間 → 正在發生的事（一個人做一件具體的事，背影、側面或小小的在畫面裡，有簡單的臉，不是無臉人偶）→ 視線落點的物件與材質 → 光從哪來；不寫風格、顏色、「illustration」（look 會加）；主體在中間 60% 裡但偏離中央；camera 依畫面挑、不跟上一張一樣；transition 不寫；每章一個自己的地點與道具、同一個地點或物件不超過三分之一的 shot；比喻來自觀眾的日常（廚房、夜市、月台、工坊、教室、港口、屋頂），不用科技意象（筆電、螢幕、機器人、電路、大腦、雲、燈泡、頒獎台、沙漏、對話泡泡、發光的東西） | `automation/prompts.mjs` `TEMPLATE_GUIDE`；範例 `core/fixtures/illustrated/video.json` |
+| 畫風 | `tech-story` 改成版畫師的工單：墨線粗細不勻、網印平塗帶紙紋與套印微偏、手剪陰影、焦點在畫面中間三分之一（Shorts 從 16:9 蓋滿 9:16 只留中間約 32% 寬，所以不對稱來自主體兩側的前後景，不是把主體推到一邊）、小小的簡筆人物（點狀眼睛或背影）、霧面；negative 多擋 glossy、airbrushed、smooth gradients、neon glow、lens flare、bokeh、stock vector、corporate flat icon、isometric、faceless mannequin、floating objects、mirror symmetry | `core/drama.mjs` `PRESETS["tech-story"]`（改了 `look_hash`：已有的 tech-story 影片會整支重畫，試片三支當時還沒畫） |
+| 撰稿 | shot 的 prompt 照攝影師給插畫家的工單順序寫：景別 → 地點與時間 → 正在發生的事（一個人做一件具體的事，背影、側面或小小的在畫面裡，有簡單的臉，不是無臉人偶）→ 視線落點的物件與材質 → 光從哪來；不寫風格、顏色、「illustration」（look 會加）；主體在畫面中間三分之一（Shorts 只留那一條）；不畫表面是字的東西（打開的書頁、招牌、鐘面、螢幕）；camera 依畫面挑、不跟上一張一樣；transition 不寫；每章一個自己的地點與道具、同一個地點或物件不超過三分之一的 shot；比喻來自觀眾的日常（廚房、夜市、月台、工坊、教室、港口、屋頂），不用科技意象（筆電、螢幕、機器人、電路、大腦、雲、燈泡、頒獎台、沙漏、對話泡泡、發光的東西） | `automation/prompts.mjs` `TEMPLATE_GUIDE`；範例 `core/fixtures/illustrated/video.json` |
 | lint | `pictureVarietyProblems`（只對插圖投影片）：連續三張同一種運鏡＝錯誤（撰稿修正迴圈會改）；沒寫景別、把 look 的字抄進 prompt、一個地點或物件出現在超過三分之一的 shot（≥6 張才算）＝每支各一條警告 | `core/drama.mjs`，經 `shotProblems` 進 lint |
-| judge | 沒有角色的關鍵影格多一項 `craft`（權重 1）：像不像人手為印刷畫的——有紋理與小瑕疵的線與色、不對稱的構圖與一個焦點、有層次、人物有簡單的臉或背對、沒有光澤／光暈／電腦算圖的表面 | `media/keyframes.mjs` `keyframeRubric` |
+| judge | 插圖投影片的關鍵影格多一項 `craft`（權重 1；由影片決定，不看鏡頭有沒有角色，所以 3D 漫劇的空鏡與畫風允許無臉人物的原來如此事務所都不評）：像不像人手為印刷畫的——有紋理與小瑕疵的線與色、不對稱的構圖與一個焦點、有層次、人物有簡單的臉或背對、沒有光澤／光暈／電腦算圖的表面 | `media/keyframes.mjs` `keyframeRubric` |
 | 運鏡與剪接 | 運鏡 smoothstep 緩入緩出、位移量隨鏡頭長度放大（6 秒以上滿額、短鏡頭至少一半，速度大致一致）、drift 依場景 id 決定往左或往右、漂移的卡片左右輪流；轉場改成剪接師的習慣：預設硬切，前一景最後一句有 ≥600 ms 的停頓節拍（說書口吻的節拍：冷開場後 900、「其實」前 600）才溶接，章節卡硬切，撰稿的 `transition` 優先。Shorts 仍用線性運鏡（`shorts/motion.mjs` 另一張票的範圍） | `assemble/drama.mjs`（`MOTION_ENCODER_VERSION` v3，舊的運鏡段會重編） |
-| 尺寸 | 插圖投影片與原來如此事務所的關鍵影格向 Gemini 要 2K（`ImageJobIn.size`，伺服器放進 `resolution`，Gemini adapter 送 `imageConfig.imageSize`）；只有目錄裡有 `usd_per_image_2k` 的模型才能要（Pro 同價、Flash US$0.101、MiniMax 沒有 → 422）；`GET /api/video/media/status` 的 `image`／`slides_image` 多回 `usd_per_image_2k`，工具據此決定尺寸與估價 | `media/stages.mjs` `imageSizeFor`、`apps/api/app/video_media/{schemas,jobs,catalog,meter}.py`、`providers/gemini_images.py` |
+| 尺寸 | 插圖投影片與原來如此事務所的關鍵影格向 Gemini 要 2K（`ImageJobIn.size`，伺服器放進 `resolution`，Gemini adapter 送 `imageConfig.imageSize`）；只有目錄裡有 `usd_per_image_2k` 的模型才能要（Pro 同價、Flash US$0.101、MiniMax 沒有 → 422）；`GET /api/video/media/status` 的 `image`／`slides_image` 多回 `usd_per_image_2k`，工具據此決定尺寸與估價；作品（`series.json` 的 `image_model`）另指定模型時一律畫 1K、照 1K 估價，因為那個 2K 價是設定裡那個模型的 | `media/stages.mjs` `imageSizeFor`、`apps/api/app/video_media/{schemas,jobs,catalog,meter}.py`、`providers/gemini_images.py` |
 
 要驗的事：試片的第一張 2K 圖（確認 `imageSize` 被 Gemini 接受、檔案約 2048×1152）、judge 的 `craft` 分數分布（太嚴就把權重留 1 但把門檻 `judge_min_score` 看一眼）、以及與第 1 版畫面的並排比較，寫回上面的數字表。
 
@@ -136,4 +136,4 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 - Shorts 的逐句合成加固定 0.18 秒間隔：口吻改了節奏還是平，要改整景合成再切段（動到 phrase↔clip↔caption↔check 的對應）。
 - Shorts 的運鏡還是線性、不隨長度縮放（`shorts/motion.mjs` 在 `2026-09-28-sothatswhy-shorts-from-episode` 的範圍裡）。
 - lint 的變化警告只給人看；工人的撰稿修正迴圈只吃錯誤，所以景別、抄色盤、同一地點太多這三條要靠撰稿規則本身。試片三支的舊稿（抄色盤、桌子太多）要重寫提示詞才會變；RAG 那支有一段連續三張 push in，部署後工人會用撰稿修正迴圈改掉。
-- 原來如此事務所（`flat-explainer`）的畫風與撰稿規則沒改，只拿到 `craft` 與 2K。
+- 原來如此事務所（`flat-explainer`）的畫風與撰稿規則沒改，只拿到 2K（它的畫風允許無臉人物，不套 `craft`）。

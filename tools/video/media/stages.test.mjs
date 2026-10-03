@@ -157,6 +157,18 @@ test("a 2K picture is asked for by size, keyed apart from the 1K one and priced 
   assert.equal(imagePrice(effective, "slides", "2K"), 0.101);
   assert.equal(imagePrice(effective, "slides"), 0.067);
   assert.equal(imagePrice(effective, null, "2K"), 0, "no 2K price, no 2K estimate");
+  // A series' own image model is drawn and priced at 1K: the 2K price on the settings' choice
+  // belongs to the settings' model, and asking a model that sells no 2K picture is a 422.
+  const global = status();
+  global.image.usd_per_image_2k = 0.134;
+  assert.equal(imageSizeFor(global), "2K");
+  for (const model of [MINI, FLASH]) {
+    const overridden = imageStatus(global, story(model));
+    assert.equal(overridden.image.model, model);
+    assert.equal(overridden.image.usd_per_image_2k, null);
+    assert.equal(imageSizeFor(overridden), null, `${model} as a series override draws at 1K`);
+  }
+  assert.equal(global.image.usd_per_image_2k, 0.134, "the shared status is not changed");
   const fake = fakeStage(effective, { actualModel: FLASH, actualPrice: 0.101, format: "slides" });
   const large = await fake.generate({ size: "2K" });
   assert.equal(large.cost_usd, 0.101);
