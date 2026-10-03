@@ -767,6 +767,30 @@
       "四個文件頁是活頁面（內建 mods 表、Where mods run 表、admin 的開關），發布當天重讀，特別看 Remote Control 那一列與內建 mods 的列。",
       "github.com HTML 與 API 對本環境的出口代理回 403（訊息是 GitHub access … not enabled for this session）；git clone 走得通，目錄已確認。若要放 repo 連結，協調者決定。",
       "正文把 Google Cloud's Agent Platform 寫成 Google Cloud（DELTA 第 4 節第 4 條的寫法）；要不要寫全名由站主決定。"
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2, claude-opus-5-5)",
+      "checked_on": "2026-10-04",
+      "method": "2026-10-03 UTC 19:02（台北 2026-10-04 03:02）以 curl -sSL --compressed --max-time 60 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓 sources[] 四條與三個文件頁的 .md 版（UA 只有網站與站方信箱，請求、標頭、查詢字串沒有任何人的姓名、email 或個資）：四條 HTTP 200、0 次轉址，解壓後 532,059／526,328／656,741／646,270 bytes，md5 與第一輪、研究代理逐位元組相同。verbatim_quote 94 條以程式在四頁的 A／B／C／RAW 正規化文字做連續子字串比對，94/94 通過，沒有含 ...／…／| 的拼接引文，url 全在 sources[]。git clone --depth 1 --filter=blob:none 確認 claude-code-playground（HEAD 569c528）的 claude-code/mods 有 token-weather、blast-radius、replay-theater。第一輪改動的 19 處與新寫的每一句逐句回原文；回掃第一輪為字數刪掉的五句；summary、FAQ、圖解四格、hero_label 對正文；界線與兩篇既有教學的 title／description 用詞比對。紀錄在 /root/news411/agents/fc2/（fetch-log.tsv、check_quotes.py／.log、edit_pack.py、pack.diff、check.log）。報告：docs/news-2026-batch-4/factcheck-draft/ai-news-claude-code-mods-20261001-round1.md 的「第二輪」一節。",
+      "claims_checked": "約 60（第一輪改動的 19 處所在段落與新寫的句子，逐子句計）",
+      "quotes_checked": 94,
+      "edits_to_the_pack": [
+        "第三節內建 mods：「見下一節的 cc-plugin-sec-default」指錯節，sec-default 在第五節（安全與企業管控），下一節是「怎麼開始用」；改為「最後一節的」。",
+        "第一節：定義兩種 hook 的段落原本排在已經用了「事件函式」的 register(on) 段之後；移到 register(on) 段之前，並把「把兩種都叫 hooks。」改成冒號接兩個定義，讓第一次出現「事件函式」之前就分清楚。",
+        "第四節 Where mods run：「終端機與 Desktop app 的 Code 分頁會畫」沒有主詞，改為「mod 的介面畫在終端機與 Desktop app 的 Code 分頁」（overview：only the terminal and the Desktop app show a mod's panes, bands, and replaced rows）。",
+        "第五節個人關閉：--safe-mode 補「其他自訂也停」（overview：which also disables your other customizations），與 disableAllHooks 的副作用並列；FAQ 4 同步。",
+        "summary 第 5 點：「會隨版本更新」→「可能隨版本變動」（create：can change between releases），與第一輪改過的 callout 一致。",
+        "FAQ 5：「官方未說明」限縮到「這裡引用的部落格與三頁文件，到查核日 2026 年 10 月 4 日都沒有逐一寫」。",
+        "FAQ 1 與 FAQ 4 收回正文沒有寫的字（「太舊就更新」「所有 session」），FAQ 4 補「組織管理的照常」。",
+        "為了上面兩處補字：刪第四節第一段重複的「部落格沒有寫版本門檻」（版本門檻仍歸因文件；FAQ 1 同步刪），「電腦上才有」→「電腦才有」，「不會停掉」→「不停」。段落 2,999 → 3,000。"
+      ],
+      "left_for_the_owner": [
+        "claude plugin test（create：with no session, sign-in, or network；verified_facts 第 72 條）沒有補：一個子句約 35 字，正文已 3,000 字，沒有可刪的重複敘述而不動到但書；DELTA-4-11 第 7 節的教學課涵蓋它。",
+        "Google Cloud 照 DELTA-4-11 第 4 節第 4 條簡寫；admin 原文是 Google Cloud's Agent Platform，寫全名要再多 17 字，字數不允許。",
+        "內建 mods 只以「例如」列三個名稱（overview 表六列），cc-plugin-agents-md、cc-plugin-telemetry、cc-plugin-plugin-authoring 沒列名；不影響正確性。",
+        "發布當天重讀四頁，特別看 overview 的 Where mods run 表（Remote Control 那列）與內建 mods 表。"
+      ],
+      "verdict": "ok"
+    }
   }
 }

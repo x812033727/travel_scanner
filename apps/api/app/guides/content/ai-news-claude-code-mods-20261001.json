@@ -46,7 +46,7 @@
             "Anthropic 說 mods 能改寫提示、擋下或改寫工具呼叫、核准或拒絕權限、畫窗格與按鈕、加指令；文件寫設定檔 Hook 照舊執行，沒有被淘汰。",
             "mods 沒有沙盒、與使用者有同樣的權限，Anthropic 說只該安裝信得過來源的 mods；在有 managed settings 的電腦或以 Team、Enterprise 方案登入時載入的 sec-default，只擋使用者的 mod 改管理者管的東西，以及核准被 deny 規則拒絕的工具呼叫，其他都不擋。",
             "管理者有 allowManagedModsOnly、disableSideloadFlags、prependPlugins 與 appendPlugins、disableAllHooks 可用；個人可用 /plugin、--safe-mode 或 disableAllHooks 關閉，後兩者不會停掉內建 mods。",
-            "文件與內建 mods 表會隨版本更新，上面是截至 2026 年 10 月 4 日的內容。"
+            "文件與內建 mods 表可能隨版本變動，上面是截至 2026 年 10 月 4 日的內容。"
           ]
         },
         {
@@ -60,11 +60,11 @@
         },
         {
           "type": "paragraph",
-          "text": "載入時 Claude Code 呼叫 register(on)，用 on 註冊事件函式；每個函式拿到 $（mods API）、e（事件資料）與 next（交給其他 mods 與 Claude Code 原本的行為）。文件列出三種處理方式：觀察、改寫，以及接手（自己處理，原本的行為不執行）。"
+          "text": "文件寫 Claude Code 把兩種都叫 hooks：設定檔裡的 shell 命令、HTTP 請求或提示，下面叫「設定檔 Hook」；在 Claude Code 內部執行的處理函式，叫「mod 的事件函式」。"
         },
         {
           "type": "paragraph",
-          "text": "文件寫 Claude Code 把兩種都叫 hooks。設定檔裡的 shell 命令、HTTP 請求或提示，下面叫「設定檔 Hook」；在 Claude Code 內部執行的處理函式，叫「mod 的事件函式」。"
+          "text": "載入時 Claude Code 呼叫 register(on)，用 on 註冊事件函式；每個函式拿到 $（mods API）、e（事件資料）與 next（交給其他 mods 與 Claude Code 原本的行為）。文件列出三種處理方式：觀察、改寫，以及接手（自己處理，原本的行為不執行）。"
         },
         {
           "type": "heading",
@@ -130,7 +130,7 @@
         },
         {
           "type": "paragraph",
-          "text": "內建的 mods 列在 /plugin 的 Installed 分頁 Built-in 底下，例如接手 /diff 的 cc-plugin-diff 與見下一節的 cc-plugin-sec-default；cc-plugin-you-should-know 預設關閉，文件寫「if available for your org」才會列出。"
+          "text": "內建的 mods 列在 /plugin 的 Installed 分頁 Built-in 底下，例如接手 /diff 的 cc-plugin-diff 與最後一節的 cc-plugin-sec-default；cc-plugin-you-should-know 預設關閉，文件寫「if available for your org」才會列出。"
         },
         {
           "type": "image",
@@ -152,7 +152,7 @@
         },
         {
           "type": "paragraph",
-          "text": "文件寫 mods 需要 Claude Code v2.1.287 或以上、預設開啟，用 claude --version 檢查；部落格沒有寫版本門檻。部落格說可從 Claude directory 或在 CLI 執行 /plugin 安裝含 mods 的 plugin；文件寫格式是 /plugin install 名稱@marketplace。"
+          "text": "文件寫 mods 需要 Claude Code v2.1.287 或以上、預設開啟，用 claude --version 檢查。部落格說可從 Claude directory 或在 CLI 執行 /plugin 安裝含 mods 的 plugin；文件寫格式是 /plugin install 名稱@marketplace。"
         },
         {
           "type": "paragraph",
@@ -164,7 +164,7 @@
         },
         {
           "type": "paragraph",
-          "text": "文件寫，終端機與 Desktop app 的 Code 分頁會畫（Code 分頁畫不出只限終端機的元素）；Desktop 的 WSL session 不能用 plugins，事件函式不跑；VS Code 外掛的聊天面板、claude -p、Agent SDK 與雲端 session（限送得進去的 plugin）只跑不畫；用 Remote Control 時，事件函式在你電腦上的 session 跑、畫在你電腦的終端機。"
+          "text": "文件寫，mod 的介面畫在終端機與 Desktop app 的 Code 分頁（Code 分頁畫不出只限終端機的元素）；Desktop 的 WSL session 不能用 plugins，事件函式不跑；VS Code 外掛的聊天面板、claude -p、Agent SDK 與雲端 session（限送得進去的 plugin）只跑不畫；用 Remote Control 時，事件函式在你電腦上的 session 跑、畫在你電腦的終端機。"
         },
         {
           "type": "heading",
@@ -177,7 +177,7 @@
         },
         {
           "type": "paragraph",
-          "text": "內建的 sec-default 在電腦有 managed settings，或以 Team、Enterprise 方案登入時載入；用 API key 或 Amazon Bedrock、Google Cloud、Microsoft Foundry 的人，只在有 managed settings 的電腦上才有。它只擋使用者的 mod 改管理者管的東西（例如受管設定檔 Hook 收到與決定的事、系統提示）與核准 deny 規則拒絕的工具呼叫，其他都允許；deny 規則也管不到 mod 自己的 $.fs 與 $.process 呼叫。"
+          "text": "內建的 sec-default 在電腦有 managed settings，或以 Team、Enterprise 方案登入時載入；用 API key 或 Amazon Bedrock、Google Cloud、Microsoft Foundry 的人，只在有 managed settings 的電腦才有。它只擋使用者的 mod 改管理者管的東西（例如受管設定檔 Hook 收到與決定的事、系統提示）與核准 deny 規則拒絕的工具呼叫，其他都允許；deny 規則也管不到 mod 自己的 $.fs 與 $.process 呼叫。"
         },
         {
           "type": "paragraph",
@@ -185,14 +185,14 @@
         },
         {
           "type": "paragraph",
-          "text": "個人可在 /plugin 的 Installed 分頁停用單一 mod，以 --safe-mode 停掉一個 session 的已安裝 mods，或在 ~/.claude/settings.json 設 disableAllHooks（設定檔 Hook 與自訂 status line 也停，組織管理的照常）；後兩者不會停掉內建 mods。"
+          "text": "個人可在 /plugin 的 Installed 分頁停用單一 mod，以 --safe-mode 停掉一個 session 的已安裝 mods（其他自訂也停），或在 ~/.claude/settings.json 設 disableAllHooks（設定檔 Hook 與自訂 status line 也停，組織管理的照常）；後兩者不停內建 mods。"
         },
         {
           "type": "faq",
           "items": [
             {
               "question": "要什麼版本才能用 mods？",
-              "answer": "文件寫 mods 需要 Claude Code v2.1.287 或以上，預設開啟，可以用 claude --version 檢查，太舊就更新。部落格沒有寫版本門檻。"
+              "answer": "文件寫 mods 需要 Claude Code v2.1.287 或以上，預設開啟，可以用 claude --version 檢查。"
             },
             {
               "question": "寫 mod 要不要裝 Node.js 或做 build step？",
@@ -204,11 +204,11 @@
             },
             {
               "question": "怎麼關掉 mods？",
-              "answer": "單一 mod 在 /plugin 的 Installed 分頁停用；一個 session 用 --safe-mode 啟動；所有 session 在 ~/.claude/settings.json 設 disableAllHooks 為 true，這會連設定檔 Hook 與自訂 status line 一起停。--safe-mode 與 disableAllHooks 都不會停掉內建 mods。"
+              "answer": "單一 mod 在 /plugin 的 Installed 分頁停用；一個 session 用 --safe-mode 啟動，其他自訂也停；或在 ~/.claude/settings.json 設 disableAllHooks 為 true，這會連設定檔 Hook 與自訂 status line 一起停，組織管理的照常。--safe-mode 與 disableAllHooks 都不會停掉內建 mods。"
             },
             {
               "question": "個人方案也能用 mods 嗎？",
-              "answer": "部落格只寫 mods 在 Claude Code CLI 與 desktop app 都能用，沒有逐一寫各個方案能不能用，官方未說明。"
+              "answer": "部落格只寫 mods 在 Claude Code CLI 與 desktop app 都能用。這裡引用的部落格與三頁文件，到查核日 2026 年 10 月 4 日都沒有逐一寫各個方案能不能用。"
             },
             {
               "question": "VS Code 外掛與雲端 session 能用 mods 嗎？",
