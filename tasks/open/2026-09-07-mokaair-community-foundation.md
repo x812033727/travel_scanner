@@ -222,3 +222,22 @@ This job therefore failed overall. The private canonical receipt
 `community-real-matrix-20261003/ci-70174ca/canonical-receipt.json` has SHA-256
 `90073327ab7d271fa4cba80f01f65bf89ca160abe70a18a4d8b48c5001535a60`.
 Keep this foundation ticket in review for the remaining owner/capacity gates.
+
+At final corrected source head `ba5c6ae01df9eeffd13fc74233f7d37db0553c59`,
+all 23 PR checks passed. [Full-stack job 111223852163](https://github.com/x812033727/travel_scanner/actions/runs/37130278372/job/111223852163)
+used actual checkout/GITHUB_SHA `07c25196ba1c0901aad6600a5789584090496642`.
+All six recovery cases passed with zero failures/skips in 387.60 seconds, and
+the corrected community matrix passed all 30 cases with zero failures/skips.
+The runtime remains exactly
+`625c01c131a9b54265fc7c8141f4236ddaafdda72f4d07f89bdcea7eb08d093e`.
+Owned fixture processes stopped; shared services were preserved; application
+and container cleanup succeeded. Capacity acceptance is still false, so the
+combined recovery/capacity checkbox remains unchecked and this ticket stays
+in review. Public policy/contact details and production activation remain
+owner gates. No production access or capacity threshold is approved here.
+Canonical private receipt SHA-256:
+`a33b0c59e320d8a65defe2ed7519ddaccf1627e68becc6041bf5352044e8eba7`.
+All-check snapshot SHA-256:
+`1a94a1b431240bd2e2a7e9623afe53cbbdad3295708d1e78e86f35f236f5f99d`.
+The earlier failed jobs remain historical evidence. A subsequent metadata-only
+commit is verified separately and does not change this owner boundary.

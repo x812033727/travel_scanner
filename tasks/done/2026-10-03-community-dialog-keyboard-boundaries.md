@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-community-dialog-keyboard-boundaries
 title: Keep community dialog keyboard focus within the active layer
-status: review
+status: done
 priority: P2
 area: web
 owner: codex-community-dialog-keyboard-20261003
 claimed_at: 2026-10-03T13:56:07Z
 created_at: 2026-10-03T13:55:56Z
-completed_at:
+completed_at: 2026-10-03T14:58:06Z
 branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
@@ -28,7 +28,7 @@ The community report dialog does not explicitly wrap Tab at its first and last u
 - [x] Only the topmost dialog handles a boundary event; already-consumed and composing events are preserved.
 - [x] The existing six regression cases remain unchanged and pass, including native cancel/close, backdrop behavior, nested dismissal, scrolling, and opener focus restoration.
 - [x] New assertions fail against the original implementation and pass after the minimal fix; scoped lint passes.
-- [ ] Evaluate the unchanged real-browser keyboard assertions on the new CI head.
+- [x] Evaluate the unchanged real-browser keyboard assertions on the new CI head.
 
 ## Steps
 
@@ -53,3 +53,13 @@ The full-stack community browser matrix is the separate real-browser check: the 
 - Independent source review passed for keyboard boundaries and the isolated admin-locale fixture. Receipt SHA-256 `95b4bd9244e120eeffc5e7a7f9390ce4b700dde44ad5edd444de6ece09a92646`; the four-path collision gate SHA-256 is `f5612ac20302de81b7e0c9414f4f9ae7c9744cf164e4e460033748fb3fd060d5`. This review does not replace real-browser execution.
 - The complete web TypeScript check passed on 2026-10-03, 14:01:29–14:02:37 UTC (exit 0). Its owned compiler process used bundled primary Node v24.19.0; npm was invoked through the installed npm shim. All three UI/test/spec hashes were unchanged. Private receipt: `task-continuation-20261003/ui-locale-typecheck-20261003T140129996Z.json`. Exact-head CI remains pending.
 - At PR head `70174ca194dc386ead9c02a1e70cc1d0aed7645a`, actual checkout `a52226de3d79d89e817cecd10ed05f237ecd1916`, the unchanged keyboard assertions now ran past both boundaries and focus restoration in all five locales and both browser projects. The broader matrix had 28 passes and two later Japanese message-locator failures at line 225; the full-stack job failed overall. The UI and unit-test hashes matched this ticket's frozen hashes in both the PR and actual checkout. Private canonical receipt SHA-256 `90073327ab7d271fa4cba80f01f65bf89ca160abe70a18a4d8b48c5001535a60`. Keep review until the coordinated corrected matrix and CI complete.
+
+2026-10-03 exact-head acceptance: PR head `ba5c6ae01df9eeffd13fc74233f7d37db0553c59`, actual
+checkout/GITHUB_SHA `07c25196ba1c0901aad6600a5789584090496642`. All 23 PR checks
+passed. [Full-stack job](https://github.com/x812033727/travel_scanner/actions/runs/37130278372/job/111223852163) ran 30 community browser
+cases and six real-service recovery cases: zero failures and zero skips.
+The final community spec SHA-256 is `21da9cdb3caad36061782af41669a3fc445dae952bbf04e432cf5ce8fe3ced5c`. The standalone
+foundation ticket remains review for owner/capacity acceptance; this receipt
+does not approve deployment, production access, paid media or publication.
+Private canonical receipt SHA-256 `a33b0c59e320d8a65defe2ed7519ddaccf1627e68becc6041bf5352044e8eba7`; complete CI snapshot
+SHA-256 `1a94a1b431240bd2e2a7e9623afe53cbbdad3295708d1e78e86f35f236f5f99d`. Earlier failed-head evidence remains preserved.

@@ -290,3 +290,41 @@ before and after both checks. Private
 argv, times, log hashes and exact two-substitution byte-preservation proof.
 These checks do not execute the browser or supersede the 28-pass/two-failure
 result; full TypeScript and fresh exact-head browser verification remain pending.
+
+### Final corrected source acceptance
+
+At PR head `ba5c6ae01df9eeffd13fc74233f7d37db0553c59`, all 23 checks completed
+successfully. [Full-stack job 111223852163](https://github.com/x812033727/travel_scanner/actions/runs/37130278372/job/111223852163)
+checked out `07c25196ba1c0901aad6600a5789584090496642` and executed all 30
+community journeys: **30 passed, zero failed, zero skipped**, in 5.5 minutes
+with two workers. This covers five locales, desktop and Pixel 7, the existing
+permissions and account-safety assertions, both themes, dialog keyboard
+boundaries, the isolated administrator locale and the Japanese composer.
+The final spec SHA-256 is
+`21da9cdb3caad36061782af41669a3fc445dae952bbf04e432cf5ce8fe3ced5c`.
+The Dialog and its unit-test bytes also match their independently reviewed
+`edd54a41...` and `d7fb81c9...` hashes in the PR head and actual checkout.
+
+The same job passed all six real-service recovery scenarios in 387.60 seconds,
+with zero failures or skips. Its receipt binds corrected runtime SHA-256
+`625c01c131a9b54265fc7c8141f4236ddaafdda72f4d07f89bdcea7eb08d093e`.
+Owned processes stopped, shared services were preserved, and the application
+and container cleanup steps succeeded. Capacity acceptance remains false.
+
+[Web checks](https://github.com/x812033727/travel_scanner/actions/runs/37130278372/job/111223852184)
+passed complete ESLint, five-language i18n, web TypeScript and task validation.
+The complete tools suite selected 1,494 cases: 1,493 passed, zero failed and one
+optional browser-render case skipped. Actual Node was v24.21.0. Private web
+completion receipt SHA-256:
+`3102632324586a2d98d3cf4760c68d6fb04d880df617f1d33d7d7ffad0183f59`.
+
+Canonical private full-stack receipt:
+`community-real-matrix-20261003/ci-ba5c6ae/canonical-receipt.json`, SHA-256
+`a33b0c59e320d8a65defe2ed7519ddaccf1627e68becc6041bf5352044e8eba7`.
+Complete 23-check snapshot SHA-256:
+`1a94a1b431240bd2e2a7e9623afe53cbbdad3295708d1e78e86f35f236f5f99d`.
+The earlier failed-head receipts remain preserved. These successful source
+checks complete the community web and dialog tickets; the foundation ticket
+stays in review for owner/capacity acceptance. They do not authorize production
+activation, deployment, publication, paid generation or uploading. A later
+metadata-only commit must record its own CI result separately.

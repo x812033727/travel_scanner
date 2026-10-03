@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-mokaair-community-web
 title: Mokaair community responsive web and five-language experience
-status: review
+status: done
 priority: P1
 area: web
 owner: codex-community-real-matrix-20261003
 claimed_at: 2026-10-03T12:15:12Z
 created_at: 2026-09-07T10:14:21Z
-completed_at:
+completed_at: 2026-10-03T14:58:05Z
 branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
@@ -37,7 +37,7 @@ experience within the existing five-locale Web/PWA, without exposing private tri
 
 - [x] Shared state, accessible UI and conservative server-side feature gates.
 - [x] Wire the base content, social, pet and administration flows to the real BFF.
-- [ ] Complete the expanded real-service permissions/responsive/keyboard/failure matrix.
+- [x] Complete the expanded real-service permissions/responsive/keyboard/failure matrix.
 
 ## How to verify
 
@@ -256,3 +256,13 @@ main/story-worker merges or new commits need new-head checks; this result is not
 carried forward as their pass. The broader real-service permissions, locales,
 outages and capacity matrix remains open. No production access or deployment
 occurred. Release this task for the remaining work rather than closing it.
+
+2026-10-03 exact-head acceptance: PR head `ba5c6ae01df9eeffd13fc74233f7d37db0553c59`, actual
+checkout/GITHUB_SHA `07c25196ba1c0901aad6600a5789584090496642`. All 23 PR checks
+passed. [Full-stack job](https://github.com/x812033727/travel_scanner/actions/runs/37130278372/job/111223852163) ran 30 community browser
+cases and six real-service recovery cases: zero failures and zero skips.
+The final community spec SHA-256 is `21da9cdb3caad36061782af41669a3fc445dae952bbf04e432cf5ce8fe3ced5c`. The standalone
+foundation ticket remains review for owner/capacity acceptance; this receipt
+does not approve deployment, production access, paid media or publication.
+Private canonical receipt SHA-256 `a33b0c59e320d8a65defe2ed7519ddaccf1627e68becc6041bf5352044e8eba7`; complete CI snapshot
+SHA-256 `1a94a1b431240bd2e2a7e9623afe53cbbdad3295708d1e78e86f35f236f5f99d`. Earlier failed-head evidence remains preserved.

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-refresh-animation-skill-provider-and-judge-contracts
 title: Refresh animation skill provider and judge contracts
-status: review
+status: done
 priority: P2
 area: tools
 owner: codex-animation-skill-integration-20261003
 claimed_at: 2026-10-03T14:22:16Z
 created_at: 2026-10-03T14:21:48Z
-completed_at:
+completed_at: 2026-10-03T14:58:07Z
 branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
@@ -46,7 +46,7 @@ and the skills path check. The advisory npm audit output was not their cause.
 - [x] Both skill entrypoints and their exact Claude mirrors describe this code version's adapter behavior, correct done-ticket paths, and the separate actual-backend deployment boundary.
 - [x] Historical per-take evidence, paid amounts and post-mortem bytes remain unchanged; cost, quality, budget, approval, retry and other guards are preserved.
 - [x] Focused production/camera and full skill mirror/path tests, both skill-creator validators, syntax and task checks pass locally.
-- [ ] Independent review of the final source hashes and current-head CI pass before root closes this integration ticket.
+- [x] Independent review of the final source hashes and current-head CI pass before root closes this integration ticket.
 
 ## Steps
 
@@ -54,7 +54,7 @@ and the skills path check. The advisory npm audit output was not their cause.
 - [x] Capture baseline source hashes and meaningful old-script RED with corrected synthetic fixtures.
 - [x] Remove obsolete Lite rejection logic, retain real keyframe guards, and update current guidance without rewriting historical trials.
 - [x] Run scoped offline GREEN, validate both skill folders and prove unchanged historical bytes/unrelated assertions.
-- [ ] Root integrates the independently reviewed candidate into the existing PR and records its exact CI result.
+- [x] Root integrates the independently reviewed candidate into the existing PR and records its exact CI result.
 
 ## How to verify
 
@@ -83,3 +83,13 @@ non-Lite parameter retention; this change does not replace them with source rege
 - Eight unrelated original test blocks remain byte-for-byte identical. All price assertions outside the obsolete Lite rejection, the later pricing/levers checks, and external-clip acceptance remain exact. The complete model-misreads section-one trial table, original production-run and post-mortem are byte-identical; both SKILL mirrors match exactly.
 - This is offline source integration, not a paid retry, deployed backend check or media acceptance. No services, provider requests, production settings, approvals, price constants, limits or quality thresholds were changed. Whole-PR CI remains root-owned and is not inferred from the focused local run.
 - Independent review passed for all eleven frozen source hashes, real keyframe rejection, retained guard bodies and historical evidence. Private `independent-review.json` SHA-256 `5f0f3679d2ccbdf00f11e6c76242535e9653bbb28cd502d1d440882a26e2b53a` also confirms both mirrors and all 108 untouched duration bindings. Exact-head whole CI is still required before closure.
+
+2026-10-03 exact-head acceptance: PR head `ba5c6ae01df9eeffd13fc74233f7d37db0553c59`, actual
+checkout/GITHUB_SHA `07c25196ba1c0901aad6600a5789584090496642`. All 23 PR checks
+passed. [Full-stack job](https://github.com/x812033727/travel_scanner/actions/runs/37130278372/job/111223852163) ran 30 community browser
+cases and six real-service recovery cases: zero failures and zero skips.
+The final community spec SHA-256 is `21da9cdb3caad36061782af41669a3fc445dae952bbf04e432cf5ce8fe3ced5c`. The standalone
+foundation ticket remains review for owner/capacity acceptance; this receipt
+does not approve deployment, production access, paid media or publication.
+Private canonical receipt SHA-256 `a33b0c59e320d8a65defe2ed7519ddaccf1627e68becc6041bf5352044e8eba7`; complete CI snapshot
+SHA-256 `1a94a1b431240bd2e2a7e9623afe53cbbdad3295708d1e78e86f35f236f5f99d`. Earlier failed-head evidence remains preserved.
