@@ -16,7 +16,7 @@ Retry-After 可搭配 503 使用，表示預計不可用多久｜https://www.rfc
 Marc Brooker，2015 年 3 月 4 日；只有指數退避時重試仍成群出現，加抖動後接近固定速率｜https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/｜2026-10-03｜curl HTML；公式是圖片，下載 figure-3/6/10/11 PNG 直接看
 模擬設定為樂觀並行控制（多個客戶端同時更新同一列資料）；100 個客戶端競爭時加抖動讓呼叫數減少一半以上｜https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/｜2026-10-03｜同上
 Full Jitter：sleep = random_between(0, min(cap, base * 2 ** attempt))｜https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/｜2026-10-03｜figure-6 PNG
-五層呼叫、每層各自 3 次嘗試，最底層負載放大 243 倍；建議只在一處重試｜https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter｜2026-10-03｜curl；原網址 aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/ 轉址到此
+五層呼叫、每層各自 3 次嘗試，最底層負載放大 243 倍；建議只在一處重試｜https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter｜2026-10-03｜curl；原網址 aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/ 301 轉址到此。查核時同一網址多半只回 3,849 bytes 的 JS 空殼（200），一次經轉址取得 125,965 bytes 的完整伺服器渲染頁，內文據此核對
 定時工作常在每分鐘開頭或午夜過後幾秒一起送出；建議替計時器與定期工作加抖動｜同上｜2026-10-03｜同上
 
 ## OpenAI
@@ -42,7 +42,8 @@ token bucket 演算法：持續補回到上限，不在固定間隔重設｜同�
 每分鐘上限可能在更短區間執行，短時間爆量會觸發｜同上｜2026-10-03｜同上（正文未寫文件中的示例數字）
 大多數模型 cache_read_input_tokens 不計入 ITPM｜同上｜2026-10-03｜同上
 max_tokens 不計入 OTPM｜同上｜2026-10-03｜同上
-每月花費上限用完回 429、type 為 rate_limit_error、不附 retry-after；以 error.details.error_code（enforced_spend_limit_reached）分辨｜同上｜2026-10-03｜同上
+方案等級（usage tier）的每月花費上限用完回 429、type 為 rate_limit_error、不附 retry-after；以 error.details.error_code（enforced_spend_limit_reached）分辨｜同上｜2026-10-03｜同上
+自己在 Console 設的較低花費上限（組織或工作區）用完回 400 invalid_request_error，不是 429｜同上；https://platform.claude.com/docs/en/api/errors｜2026-10-03｜curl（查核時補記）
 Message Batches API 有獨立的速率限制｜同上｜2026-10-03｜同上
 加速限制（acceleration limits）：用量急升可能回 429，要逐步加量｜https://platform.claude.com/docs/en/api/errors｜2026-10-03｜curl；rate-limits 頁亦有
 Messages API 無狀態，每次送完整對話歷史｜https://platform.claude.com/docs/en/build-with-claude/working-with-messages｜2026-10-03｜curl
@@ -51,10 +52,10 @@ Messages API 無狀態，每次送完整對話歷史｜https://platform.claude.c
 ## Google
 
 單位 RPM、TPM（標為 input）、RPD；限制套在專案而非 API 金鑰；RPD 配額在太平洋時間午夜重設｜https://ai.google.dev/gemini-api/docs/rate-limits｜2026-10-03｜curl
-另有以花費計算的速率限制，超過回 429 RESOURCE_EXHAUSTED｜同上｜2026-10-03｜同上（正文未寫時間窗與金額）
+另有以花費計算的速率限制，以短的滾動時間窗計算，超過回 429 RESOURCE_EXHAUSTED，官方建議稍等再試｜同上｜2026-10-03｜同上（正文寫了「短時間窗、稍等再試」，未寫時間窗長度與金額）
 Batch API 有獨立於非批次呼叫的限制｜同上｜2026-10-03｜同上
 繁中頁標題為「頻率限制」，內文混用「速率限制」（約 20 次）與「頻率限制」（約 11 次）｜https://ai.google.dev/gemini-api/docs/rate-limits?hl=zh-tw｜2026-10-03｜curl 後計次
-429 分三個代碼：rate_limit_exceeded、too_many_requests 建議指數退避重試；quota_exceeded（每日配額）建議等重設或申請提高｜https://ai.google.dev/gemini-api/docs/api-errors｜2026-10-03｜curl
+429 分三個代碼：rate_limit_exceeded、too_many_requests 建議指數退避重試；quota_exceeded（每日配額）建議等重設或申請提高｜https://ai.google.dev/gemini-api/docs/api-errors｜2026-10-03｜curl；此頁自述為 Interactions API 的錯誤代碼表，troubleshooting 頁稱它為完整錯誤代碼參考
 
 ## Microsoft
 
@@ -74,3 +75,13 @@ Azure OpenAI 的配額：依區域、模型、部署類型以 TPM 分配給訂�
 - 未寫繞過限制的方法；正文明說同專案多開金鑰額度不會變多。批次 API、提示詞快取、調整 max_tokens 都是官方文件自己建議的做法。
 - 曾考慮引用 IETF 草案 draft-ietf-httpapi-ratelimit-headers（2026-05-23 版仍為 Internet-Draft），為控制字數刪去。
 - 示例流程是說明用的設計，沒有實際呼叫任何 API。SVG 為手繪向量圖，2026 為製圖年份。
+
+## 獨立查核（verify-1，2026-10-03）
+
+查核者今天以同一 User-Agent 重新 `curl -sSL` 打開全部 16 筆來源（皆 200），另讀 RFC 純文字版、Gemini troubleshooting 頁與 Microsoft 英文版對照。修改明細見同目錄 `verify-1.md`，摘要：
+
+- token bucket 改寫成「不是每隔固定時間一次重設」（原文「整點一次歸零」與 Anthropic 文件 "rather than being reset at fixed intervals" 不符）。
+- Anthropic 花費上限限縮為方案等級的每月上限（429、無 retry-after），並補自設上限回 400。
+- Google 依花費計算的速率限制屬短時間窗、官方建議稍等再試；表格「花費上限」改為每月等計費週期內的金額，避免和它混淆。
+- 節流清單「額度算在專案上」改為「組織或專案」（Anthropic 的限制在組織與工作區）。
+- 來源沒有替換。國家教育研究院雙語詞彙網的搜尋頁以 curl 讀不到結果（需要 JavaScript），Google 機器學習詞彙表繁中版沒有 rate limit 條目；譯名依據仍是 Google 與 Microsoft 的繁中官方文件。

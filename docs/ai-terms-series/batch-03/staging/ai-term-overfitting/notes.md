@@ -41,10 +41,11 @@ minimize(loss + complexity)；L2 正則化＝權重平方和，把權重推向 0
 
 訓練時隨機拿掉單元（連同連線），避免單元過度共同適應；測試時用不拿掉的單一網路、權重乘上保留機率 p；目的是處理參數眾多的深度網路的過度擬合；在視覺、語音辨識、文件分類、計算生物學的監督式任務上改善表現｜https://jmlr.org/papers/v15/srivastava14a.html｜2026-10-03｜摘要頁 curl；全文 https://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf，pdftotext
 dropout 讓神經元不能只依賴特定其他神經元｜https://developers.google.com/machine-learning/glossary（co-adaptation、dropout regularization 條目）｜2026-10-03｜curl
+dropout 最早見於 Hinton 等人 2012 年 7 月的預印本（摘要：訓練時隨機省略一半特徵偵測器以大幅減少過度擬合，並稱之為 random dropout）；JMLR 2014 是後來的完整期刊版，正文改寫為「最早見於 2012 年預印本，2014 年期刊論文再完整說明」（verify-1）｜https://arxiv.org/abs/1207.0580｜2026-10-03｜摘要頁 curl 200
 
 ## Zhang 等人 2017（ICLR 2017）
 
-隨機標籤：多種標準架構在 CIFAR10、ImageNet 上訓練誤差達 0，測試誤差不比亂猜好；換成隨機像素（高斯雜訊）卷積網路仍可訓練誤差 0｜https://arxiv.org/abs/1611.03530｜2026-10-03｜摘要頁 curl；全文 https://arxiv.org/pdf/1611.03530（v2），pdftotext
+隨機標籤：CIFAR10 上 Inception、MLP 3x512 訓練準確率 100.0%，AlexNet 99.82%、MLP 1x512 99.34%（表 1），正文寫「降到 0 或接近 0」；ImageNet 上 Inception V3 未調超參數，隨機標籤 top-1 訓練準確率 95.20%（沒到 100%，表 2 末三列與第 2 節），測試 top-1 約 0.1%，等同亂猜；隨機像素與高斯雜訊的實驗在 CIFAR10（圖 1）。摘要與引言籠統寫「CIFAR10 和 ImageNet 上訓練誤差 0」，正文依論文自己的表改寫（verify-1）｜https://arxiv.org/abs/1611.03530｜2026-10-03｜摘要頁 curl；全文 https://arxiv.org/pdf/1611.03530（v2），pdftotext
 表 1：Inception（1,649,402 參數）CIFAR10，random crop 否、weight decay 否：train 100.0、test 85.75；fitting random labels：train 100.0、test 9.78｜同上｜2026-10-03｜同上
 結論：有效容量足以記住整份資料；VC 維度、Rademacher 複雜度、一致穩定性無法解釋；顯式正則化可能改善泛化但非必要、單靠也不足以控制泛化誤差（論文定義為訓練與測試誤差的差）；還沒找到能說明這些大模型「簡單」的正式指標｜同上｜2026-10-03｜同上
 

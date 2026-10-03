@@ -96,7 +96,7 @@
           "alt": "四步示例：第 1 步讀入 3 個 token 並存 3 組 key 與 value，之後每步只送入一個新 token，快取依序變成 4、5、6 組",
           "width": 1600,
           "height": 900,
-          "caption": "由上往下看：每一步只新增一組 key 與 value，先前存好的直接重用；比對的範圍則一步比一步長。分詞為示意。"
+          "caption": "由上往下看：第 1 步一次存下提示的 3 組 key 與 value，之後每步只新增一組，先前存好的直接重用；比對的範圍則一步比一步長。分詞為示意。"
         },
         {
           "type": "heading",
@@ -144,7 +144,7 @@
         },
         {
           "type": "paragraph",
-          "text": "PagedAttention 出自 Kwon 等人 2023 年的 vLLM 論文。在該論文的實驗中，既有系統只有 20.4% 至 38.2% 的 KV 快取記憶體真正存著 token 狀態；在相近延遲下，vLLM 的吞吐量為 FasterTransformer 與 Orca 的 2 至 4 倍。它不縮小每個 token 的快取，而是讓同樣的記憶體放進更多請求。"
+          "text": "PagedAttention 出自 Kwon 等人 2023 年的 vLLM 論文。該論文用 ShareGPT、Alpaca 資料集改編的請求做實驗：作者自行重做的三種 Orca 配置，只有 20.4% 至 38.2% 的 KV 快取記憶體真正存著 token 狀態；在相同延遲水準下，vLLM 的吞吐量為 FasterTransformer 與 Orca 的 2 至 4 倍。它不縮小每個 token 的快取，而是讓同樣的記憶體放進更多請求。"
         },
         {
           "type": "paragraph",
@@ -152,7 +152,7 @@
         },
         {
           "type": "paragraph",
-          "text": "量化則是推論引擎的選項，Hugging Face 與 vLLM 都支援。KIVI 論文（Liu 等人 2024）在所測模型上以 2 位元存快取，品質接近原本；Hugging Face 文件提醒，上下文短且記憶體夠用時，量化反而可能變慢。"
+          "text": "量化則是推論引擎的選項，Hugging Face 與 vLLM 都支援。KIVI 論文（Liu 等人 2024）把大部分快取壓到 2 位元、最近一小段 token 維持完整精度，在所測模型上品質接近原本；Hugging Face 文件提醒，上下文短且記憶體夠用時，量化反而可能變慢。"
         },
         {
           "type": "heading",
@@ -198,7 +198,7 @@
             [
               "保留多久",
               "產生結束即可釋放",
-              "依服務規則逾時淘汰"
+              "依服務規則淘汰，如逾時或空間不足"
             ]
           ],
           "caption": "依 Hugging Face、vLLM、OpenAI 與 Anthropic 官方文件整理；資料截至 2026 年 10 月。"
@@ -321,13 +321,18 @@
           "checked_on": "2026-10-03"
         },
         {
+          "title": "vLLM 官方文件：Prefix Caching 設計說明（區塊雜湊與 LRU 淘汰）",
+          "url": "https://docs.vllm.ai/en/latest/design/prefix_caching/",
+          "checked_on": "2026-10-03"
+        },
+        {
           "title": "vLLM 官方文件：Quantized KV Cache",
           "url": "https://docs.vllm.ai/en/latest/features/quantization/quantized_kvcache/",
           "checked_on": "2026-10-03"
         },
         {
           "title": "OpenAI 官方文件：Prompt caching（What is the prompt cache?）",
-          "url": "https://platform.openai.com/docs/guides/prompt-caching",
+          "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
           "checked_on": "2026-10-03"
         },
         {

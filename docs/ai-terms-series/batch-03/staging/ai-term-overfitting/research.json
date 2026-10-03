@@ -99,11 +99,19 @@
       ]
     },
     {
+      "url": "https://arxiv.org/abs/1207.0580",
+      "title": "Hinton 等人 2012：Improving neural networks by preventing co-adaptation of feature detectors",
+      "access": "摘要頁 curl -sSL 200（verify-1 新增）",
+      "claims": [
+        "dropout 最早見於 2012 年預印本；JMLR 2014 是後來的完整期刊版"
+      ]
+    },
+    {
       "url": "https://arxiv.org/abs/1611.03530",
       "title": "Zhang 等人 2017：Understanding deep learning requires rethinking generalization（ICLR 2017）",
       "access": "摘要頁 curl；全文 arxiv.org/pdf/1611.03530 v2，pdftotext",
       "claims": [
-        "隨機標籤與隨機像素仍可達訓練誤差 0、測試等同亂猜",
+        "隨機標籤：CIFAR10 訓練誤差 0 或接近 0（表 1：99.34%–100%）、ImageNet top-1 訓練準確率 95.20%，測試皆等同亂猜；隨機像素實驗在 CIFAR10",
         "表 1：CIFAR10 無擴增無權重衰減 真實標籤 100/85.75、隨機標籤 100/9.78",
         "顯式正則化非必要、單靠也不足；傳統複雜度指標無法解釋；尚無正式指標"
       ]
@@ -151,6 +159,6 @@
     "過度配適"
   ],
   "existing_overlap": "ai-term-machine-learning、ai-term-fine-tuning 各有一段提到過度擬合或資料洩漏，ai-term-benchmark 有測試汙染一節；這裡是完整專文，連過去不重寫。站上既有文章寫「過度擬合」，正文沿用。",
-  "running_text_characters": 2598,
-  "notes": "示例錯誤率數字為編寫的教學設定，未實際訓練；圖與 hero 為手繪向量圖。未寫任何模型名、價格或排行榜分數。catalogue 的 name_zh 是「過擬合」，正文依樂詞網採「過度擬合」，標題並列兩者。GSM1k 論文當時承諾最晚 2025 年 6 月公開資料，正文只寫「發表時不公開」。"
+  "running_text_characters": 2674,
+  "notes": "示例錯誤率數字為編寫的教學設定，未實際訓練；圖與 hero 為手繪向量圖。未寫任何模型名、價格或排行榜分數。catalogue 的 name_zh 是「過擬合」，正文依樂詞網採「過度擬合」，標題並列兩者。GSM1k 論文當時承諾最晚 2025 年 6 月公開資料，正文只寫「發表時不公開」。 verify-1（2026-10-03）：dropout 出處改為 2012 年預印本＋2014 年期刊版；Zhang 2017 改寫 ImageNet 隨機標籤只到 95.20% 訓練準確率、隨機像素限 CIFAR10；新增 arXiv:1207.0580。"
 }

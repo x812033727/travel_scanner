@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">示例：兩條誤差曲線從哪裡分岔 / Overfitting: training vs. validation error</title>
+<desc id="desc">示例圖，數字為編寫的教學設定、未實際訓練。橫軸是訓練輪數，縱軸是錯誤率。深綠色的訓練誤差從第 1 輪的 30% 一路降到第 20 輪的 1%；橘色的驗證誤差從 31% 降到第 8 輪的 12% 後回升，第 20 輪到 20%。第 8 輪以前兩條線一起降，代表模型還在學普遍規律；第 8 輪以後兩線分岔、差距越拉越大，就是過度擬合，提早停止會取第 8 輪的版本。右側說明：一起降是還在學規律，訓練降而驗證升是過度擬合，兩條都高是低度擬合。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#102A2B"/></marker>
+</defs>
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">示例：兩條誤差曲線從哪裡分岔</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">Overfitting: training error vs. validation error (illustrative numbers)</text>
+<rect x="120" y="120" width="1085" height="700" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"/>
+<rect x="220" y="170" width="331.6" height="560" fill="#E3F0EF"/>
+<rect x="551.6" y="170" width="568.4" height="560" fill="#D97A2B" fill-opacity="0.12"/>
+<text x="385.8" y="210" font-size="20" font-weight="700" fill="#0D6B68" text-anchor="middle">兩條線一起降</text>
+<text x="835.8" y="210" font-size="20" font-weight="700" fill="#B8442D" text-anchor="middle">分岔：驗證誤差回升</text>
+<text x="835.8" y="240" font-size="20" font-weight="700" fill="#B8442D" text-anchor="middle">這一段就是過度擬合</text>
+<path d="M 200 165 L 200 730 L 1150 730" fill="none" stroke="#102A2B" stroke-width="3"/>
+<text x="200" y="152" font-size="18" fill="#5C6B6B" text-anchor="middle">錯誤率</text>
+<path d="M 220.0 730 L 220.0 742 M 551.6 730 L 551.6 742 M 1120.0 730 L 1120.0 742" stroke="#102A2B" stroke-width="3"/>
+<text x="220.0" y="768" font-size="18" fill="#102A2B" text-anchor="middle">第 1 輪</text>
+<text x="551.6" y="768" font-size="18" fill="#102A2B" text-anchor="middle">第 8 輪</text>
+<text x="1120.0" y="768" font-size="18" fill="#102A2B" text-anchor="middle">第 20 輪</text>
+<text x="670" y="802" font-size="18" fill="#5C6B6B" text-anchor="middle">訓練輪數</text>
+<path d="M 551.6 280 L 551.6 730" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="10 8"/>
+<text x="551.6" y="268" font-size="18" fill="#102A2B" text-anchor="middle">提早停止點</text>
+<polyline points="220.0,235.0 267.4,334.0 314.7,416.5 362.1,482.5 409.5,523.8 456.8,556.8 504.2,581.5 551.6,598.0 646.3,631.0 741.1,655.8 835.8,677.2 930.5,692.0 1025.3,705.2 1120.0,713.5" fill="none" stroke="#0D6B68" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="220.0,218.5 267.4,309.2 314.7,383.5 362.1,441.2 409.5,482.5 456.8,507.2 504.2,523.8 551.6,532.0 598.9,528.7 646.3,518.8 741.1,490.8 835.8,461.1 930.5,433.0 1025.3,413.2 1120.0,400.0" fill="none" stroke="#D97A2B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="551.6" cy="598.0" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+<circle cx="551.6" cy="532.0" r="9" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+<circle cx="1120.0" cy="713.5" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
+<circle cx="1120.0" cy="400.0" r="9" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+<text x="569.6" y="498" font-size="18" font-weight="700" fill="#B8442D">驗證 12%</text>
+<text x="535.6" y="632" font-size="18" font-weight="700" fill="#0D6B68" text-anchor="end">訓練 8%</text>
+<text x="1104.0" y="376" font-size="18" font-weight="700" fill="#B8442D" text-anchor="end">驗證 20%</text>
+<text x="1104.0" y="684" font-size="18" font-weight="700" fill="#0D6B68" text-anchor="end">訓練 1%</text>
+<path d="M 1152 414.0 L 1152 699.5" stroke="#102A2B" stroke-width="3" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="1160" y="562" font-size="17" fill="#102A2B">差距</text>
+<rect x="1230" y="120" width="330" height="170" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<path d="M 1258 182 L 1318 182" stroke="#0D6B68" stroke-width="6" stroke-linecap="round"/>
+<text x="1336" y="189" font-size="20" fill="#102A2B">訓練誤差</text>
+<path d="M 1258 240 L 1318 240" stroke="#D97A2B" stroke-width="6" stroke-linecap="round"/>
+<text x="1336" y="247" font-size="20" fill="#102A2B">驗證誤差</text>
+<rect x="1230" y="315" width="330" height="270" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="1395" y="360" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">怎麼讀</text>
+<text x="1256" y="405" font-size="17" fill="#102A2B">一起降：還在學規律</text>
+<text x="1256" y="450" font-size="17" fill="#102A2B">訓練降、驗證升：過度擬合</text>
+<text x="1256" y="495" font-size="17" fill="#102A2B">兩條都高：低度擬合</text>
+<text x="1256" y="540" font-size="17" fill="#102A2B">停在驗證誤差最低點</text>
+<rect x="1230" y="610" width="330" height="110" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+<text x="1395" y="655" font-size="17" fill="#5C6B6B" text-anchor="middle">示例數字為編寫</text>
+<text x="1395" y="690" font-size="17" fill="#5C6B6B" text-anchor="middle">未實際訓練</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

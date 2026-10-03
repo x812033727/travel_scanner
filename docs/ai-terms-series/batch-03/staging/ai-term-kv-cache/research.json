@@ -34,8 +34,8 @@
         "讀入提示時算出所有 key、value，之後每步只算新 token 的",
         "單 token 快取量的估算因素：key 與 value、隱藏維度、層數、位元組數",
         "PagedAttention 以固定大小區塊、按需配置、非連續存放 KV 快取，靈感來自分頁",
-        "既有系統依最大長度預留連續空間；量測中只有 20.4%–38.2% 存放實際 token 狀態",
-        "相同延遲水準下吞吐量為 FasterTransformer、Orca 的 2–4 倍",
+        "既有系統依最大長度預留連續空間；量測中只有 20.4%–38.2% 存放實際 token 狀態（Fig. 2：作者自行重做的三種 Orca 配置，§6.2 的 ShareGPT／Alpaca 實驗）",
+        "相同延遲水準下吞吐量為 FasterTransformer、Orca（作者自行實作）的 2–4 倍",
         "批次大小受 KV 快取空間限制",
         "一個 token 的 KV 快取取決於前面所有 token",
         "請求結束後 KV 區塊可釋放"
@@ -62,10 +62,11 @@
     {
       "url": "https://arxiv.org/abs/2402.02750",
       "title": "Liu 等：KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache（ICML 2024）",
-      "access": "curl abs 頁（citation_abstract）",
+      "access": "curl abs 頁（citation_abstract）+ PDF 全文（pdftotext，查核者補讀）",
       "claims": [
         "量化減少 KV 快取的位元組數",
-        "2 位元 KV 快取量化在所測模型上品質幾乎不變"
+        "2 位元 KV 快取量化在所測模型上品質幾乎不變",
+        "最近一段 token 的 key 與 value 留在完整精度；論文說這段滑動視窗對 GSM8K 等難題很關鍵（第 3.3、4.2 節）"
       ]
     },
     {
@@ -91,28 +92,38 @@
     {
       "url": "https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/",
       "title": "vLLM：Automatic Prefix Caching",
-      "access": "curl 全文 HTML",
+      "access": "docs.vllm.ai 對 curl 回 429（Cloudflare）；讀官方 repo 文件原始檔（raw.githubusercontent.com）與 Wayback 快照",
       "claims": [
         "字首快取重用既有請求的 KV 快取",
         "只縮短 prefill，不縮短 decode"
       ]
     },
     {
+      "url": "https://docs.vllm.ai/en/latest/design/prefix_caching/",
+      "title": "vLLM：Prefix Caching 設計說明",
+      "access": "docs.vllm.ai 對 curl 回 429（Cloudflare）；讀官方 repo 文件原始檔 docs/design/prefix_caching.md 與 Wayback 20261001004106",
+      "claims": [
+        "字首快取以區塊雜湊辨識，只快取完整區塊",
+        "需要新區塊時以 LRU 淘汰已快取的區塊，不是依時間到期"
+      ]
+    },
+    {
       "url": "https://docs.vllm.ai/en/latest/features/quantization/quantized_kvcache/",
       "title": "vLLM：Quantized KV Cache",
-      "access": "curl 全文 HTML",
+      "access": "docs.vllm.ai 對 curl 回 429（Cloudflare）；讀官方 repo 文件原始檔（raw.githubusercontent.com）與 Wayback 快照",
       "claims": [
         "vLLM 支援 FP8 KV 快取量化以減少記憶體"
       ]
     },
     {
-      "url": "https://platform.openai.com/docs/guides/prompt-caching",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
       "title": "OpenAI：Prompt caching",
-      "access": "curl 全文 HTML",
+      "access": "curl 全文 HTML（原網址 platform.openai.com/docs/guides/prompt-caching 301 轉到此）",
       "claims": [
         "提示詞快取保存可重用字首的 key-value 狀態，存的是 KV 張量而非 token",
         "整段字首須相符",
-        "輸入依未快取、已快取、快取寫入分別計價"
+        "輸入依未快取、已快取、快取寫入分別計價",
+        "快取條目依存活時間設定到期（Cache lifetime 段）"
       ]
     },
     {
@@ -121,7 +132,8 @@
       "access": "curl 全文 HTML",
       "claims": [
         "KV 快取表示與雜湊只放在記憶體、不做靜態儲存",
-        "cache read tokens 另有計價"
+        "cache read tokens 另有計價",
+        "快取條目有最短存活時間（預設 5 分鐘，另有 1 小時），之後刪除"
       ]
     },
     {
@@ -148,6 +160,6 @@
     "KV 緩存"
   ],
   "existing_overlap": "ai-term-inference 已提到 prefill 時存下 KV 快取、ai-term-attention-mechanism 末段一句帶過 KV 快取、ai-term-prompt-caching 談跨請求的字首重用。本篇只講 KV 快取本身：存了什麼、為何能存、記憶體成長因素、三種減量做法，並以表格分清它與提示詞快取；prefill/decode 細節與提示詞快取的命中條件都連回既有篇章，不重寫。",
-  "running_text_characters": 2598,
-  "notes": "四步示例（台南／早餐／推薦 → 可以吃牛肉湯）、圖解與 hero 為原創教學設計，未實測。依指派不寫任何模型的 KV 快取大小或價格；論文中特定模型的快取量與 OpenAI 頁的型號費率都只讀未寫。字數以 app.guides.pack_ingest._body_length 實算。"
+  "running_text_characters": 2662,
+  "notes": "四步示例（台南／早餐／推薦 → 可以吃牛肉湯）、圖解與 hero 為原創教學設計，未實測。依指派不寫任何模型的 KV 快取大小或價格；論文中特定模型的快取量與 OpenAI 頁的型號費率都只讀未寫。字數以 app.guides.pack_ingest._body_length 實算。 查核者（verify-1）2026-10-03：補寫 vLLM 論文 20.4%–38.2% 與 2–4 倍的實驗設定、KIVI 保留完整精度的近期 token、表格提示詞快取的淘汰方式（逾時或空間不足）、圖說第 1 步一次存 3 組；OpenAI 來源換成轉址後網址，新增 vLLM Prefix Caching 設計文件。字數以 _body_length 實算 2,662。"
 }

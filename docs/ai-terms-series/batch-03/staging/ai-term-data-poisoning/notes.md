@@ -5,6 +5,7 @@
 ## 定義與分類（NIST、OWASP）
 
 NIST AI 100-2 E2025 是目前最新版（2025-03-24 定稿；CSRC 頁的 Document History 只有這一版，試抓 e2026 的 final／ipd 網址皆 404）｜https://csrc.nist.gov/pubs/ai/100/2/e2025/final｜2026-10-03｜CSRC 頁 HTML 轉純文字
+NIST 的分類層級包含 ML 方法類型、攻擊的生命週期階段、攻擊者的目標、能力與知識（不是只依階段）；正文寫「從攻擊發生的階段、攻擊者的目標與能力等面向分類」｜https://csrc.nist.gov/pubs/ai/100/2/e2025/final｜2026-10-03｜CSRC 摘要與 PDF 第 2.1 節（verify-1 補）
 投毒攻擊發生在訓練階段；資料投毒＝攻擊者新增或修改部分訓練樣本；模型投毒＝攻擊者控制模型參數，常見於聯邦學習與供應鏈（第 2.1.1 節）｜https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf｜2026-10-03｜PDF 全文 pdftotext
 GenAI 的模型投毒例子：提供動過手腳的預訓練模型（第 3.2.2 節）｜同上｜2026-10-03｜同上
 可用性投毒造成整體退化；目標式與後門投毒只讓少數目標樣本出錯，屬完整性破壞（第 2.1.2、2.3 節）｜同上｜2026-10-03｜同上
@@ -39,10 +40,12 @@ Souly 等（UK AI Security Institute、Anthropic、Alan Turing Institute 等）�
 後門是 denial-of-service：觸發字串後輸出亂碼；選它是因為能在預訓練期間量測｜同上｜2026-10-03｜PDF 第 3.1 節
 成敗取決於投毒樣本的絕對數量而非比例；微調實驗（乾淨資料由 1,000 增到 100,000 筆）也一樣｜同上｜2026-10-03｜PDF 第 3.2、5.2 節；正文不寫微調用的模型名
 作者未評估後門能否撐過實際的（安全）後訓練；只研究一小類後門｜同上｜2026-10-03｜PDF 第 6 節
+附錄 I 的模擬對齊訓練（另一組 Pythia 與 GPT-3.5-turbo 的德文切換後門）大幅降低後門成功率：Pythia-6.9B 降到接近零，GPT-3.5-turbo 加至少 100 筆對齊樣本降到 30% 以下；附錄 A 寫「我們的預訓練攻擊撐不過後訓練」｜同上｜2026-10-03｜PDF 附錄 A、附錄 I 圖 26（verify-1 補）
 一般評測流程可能察覺不到後門｜同上｜2026-10-03｜PDF 第 2 節（"typical model evaluation protocols can fail to detect their presence"）
 被投毒的微調模型在標準 NLP 基準上表現與未投毒的相近（附錄 F.5）｜同上｜2026-10-03｜PDF 第 5.2 節；正文刪減後未保留此句
 PoisonedRAG：每個目標問題注入 5 段惡意文字、知識庫有數百萬段文字時，攻擊成功率 90%（摘要）；改寫問題與困惑度偵測等防禦不足；作者指出提示詞注入用指令，PoisonedRAG 用捏造的知識；USENIX Security 2025｜https://arxiv.org/abs/2402.07867｜2026-10-03｜abs 頁與 PDF（v2）第 1、2、7 節
 Hubinger 等：刻意訓練後門模型，提示寫 2023 年寫安全程式碼、寫 2024 年插入可被利用的程式碼；監督式微調、強化學習、對抗訓練未能移除；對抗訓練可能讓模型更會辨認觸發條件｜https://arxiv.org/abs/2401.05566｜2026-10-03｜abs 頁摘要
+持續性有條件：最大的模型與思維鏈訓練的模型最持久，較小的模型的後門「substantially easier to remove」；正文因此寫「最大的模型⋯⋯仍保有後門，較小的模型則容易移除得多」｜同上｜2026-10-03｜PDF v3 第 1 節與圖 11 說明，pdftotext（verify-1 補）
 
 ## 不寫成「任何模型都已被投毒」
 
@@ -72,3 +75,12 @@ Google 機器學習詞彙表繁中版沒有 poisoning、backdoor 條目｜https:
 
 diagram-1.svg 上唯一的數字是製圖年份 2026，正文「資料截至 2026 年 10 月」有出現。hero.svg 無文字。兩張皆為手繪向量圖，非 AI 產圖。
 正文不寫查證過程；日期範圍寫「資料截至 2026 年 10 月」。正文字數以 app.guides.pack_ingest._body_length 實算。
+
+## 查核修訂（verify-1，2026-10-03）
+
+獨立查核者今天重新打開全部 9 筆來源（皆 200）並讀全文，修了 4 處事實：NIST 分類不只依階段、BadNets 是分成攻擊者指定的類別、Souly 等附錄 I 的模擬對齊結果、Hubinger 等的持續性只在最大的模型最明顯；另把 frontrunning 的「事後還原」改成「被管理者還原」（措辭）。沒有換掉或刪除任何來源。細節見同目錄 verify-1.md。
+NIST AI 100-2 E2025 仍是最新版：CSRC Document History 只有 03/24/25 Final，出版物搜尋依日期排序只列 e2025；2025-06-03 勘誤只改目錄索引 ID｜https://csrc.nist.gov/files/pubs/ai/100/2/e2025/final/docs/nist.ai.100-2e2025_potential_updates.pdf｜2026-10-03｜PDF pdftotext
+PoisonedRAG 的 USENIX Security '25 議程頁｜https://www.usenix.org/conference/usenixsecurity25/presentation/zou-poisonedrag｜2026-10-03｜curl 200
+VIA 在 NeurIPS 2025 論文頁可查到｜https://neurips.cc/virtual/2025/papers.html?search=Virus+Infection+Attack｜2026-10-03｜curl 200
+OWASP LLM Top 10 索引頁目前列的仍是 2025 年版十項｜https://genai.owasp.org/llm-top-10/｜2026-10-03｜curl 200
+修改後正文字數（app.guides.pack_ingest._body_length 實算）：2,658。

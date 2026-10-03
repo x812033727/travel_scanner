@@ -108,7 +108,7 @@
     },
     {
       "url": "https://arxiv.org/abs/2004.03685",
-      "title": "Jacovi, Goldberg: Towards Faithfully Interpretable NLP Systems (arXiv:2004.03685, ACL 2020)",
+      "title": "Jacovi, Goldberg: Towards Faithfully Interpretable NLP Systems: How should we define and evaluate faithfulness? (arXiv:2004.03685, ACL 2020)",
       "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext and read section by section)",
       "claims": [
         "Plausibility is how convincing an interpretation is to humans; faithfulness is how accurately it reflects the model's true reasoning process; one can hold without the other",
@@ -129,21 +129,22 @@
       "title": "Slack et al.: Fooling LIME and SHAP: Adversarial Attacks on Post hoc Explanation Methods (arXiv:1911.02508, AIES 2020)",
       "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext and read section by section)",
       "claims": [
-        "Scaffolding hides a classifier that uses only race by detecting perturbation samples; three datasets (COMPAS, Communities and Crime, German credit)",
-        "LIME fooled on all three datasets; SHAP fooled on most data points (84%, 100%, 85% with one uncorrelated feature; 67% and 71% with two)"
+        "Scaffolding hides a perfectly discriminatory classifier that uses only the sensitive feature (race for COMPAS and Communities and Crime, gender for German credit) by detecting perturbation samples",
+        "LIME fooled on all three datasets; SHAP shifts importance away from the sensitive feature on most data points (84% COMPAS, 100% CC, 85% German with one uncorrelated feature; 67% and 71% for COMPAS and CC with two)"
       ]
     },
     {
       "url": "https://arxiv.org/abs/1902.10186",
-      "title": "Jain, Wallace: Attention is not Explanation (arXiv:1902.10186)",
-      "access": "web open (curl -sSL abs page, HTTP 200; abstract; details already verified in the linked attention article)",
+      "title": "Jain, Wallace: Attention is not Explanation (arXiv:1902.10186, NAACL 2019)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext; abstract and sections 1-3 read)",
       "claims": [
-        "Attention weights are frequently uncorrelated with gradient-based importance; very different attention distributions can yield equivalent predictions"
+        "Attention weights are frequently uncorrelated with gradient-based importance; very different attention distributions can yield equivalent predictions",
+        "Setting: attentive BiLSTM encoders (also CNN and averaging encoders) on text classification, question answering and natural language inference; not language models"
       ]
     },
     {
       "url": "https://arxiv.org/abs/2305.04388",
-      "title": "Turpin et al.: Language Models Don't Always Say What They Think (arXiv:2305.04388)",
+      "title": "Turpin et al.: Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting (arXiv:2305.04388, NeurIPS 2023)",
       "access": "web open (curl -sSL abs page, HTTP 200; abstract; details already verified in the linked chain-of-thought article)",
       "claims": [
         "Biasing features in the input sway answers; chain-of-thought explanations rationalize biased answers without mentioning the bias"
@@ -157,6 +158,6 @@
     "機制可解釋性"
   ],
   "existing_overlap": "Links ai-term-attention-mechanism and ai-term-chain-of-thought for the attention-weights and CoT-faithfulness details instead of repeating them; ai-term-ai-alignment for the safety framing; ai-term-neural-network for features and neurons. No existing article on interpretability or explainable AI.",
-  "running_text_characters": 2598,
-  "notes": "Model names are omitted from the body (the Scaling Monosemanticity setting is described as Anthropic's medium-sized production model) and from the source title (short title used). The flight-delay SHAP decomposition and the booking-site recommendation are invented teaching examples labelled 示例 and 未實測. NAER term search did not return a usable result; translation follows the Google zh-TW ML glossary."
+  "running_text_characters": 2669,
+  "notes": "Model names are omitted from the body (the Scaling Monosemanticity setting is described as Anthropic's medium-sized production model) and from the source title (short title used). The flight-delay SHAP decomposition and the booking-site recommendation are invented teaching examples labelled 示例 and 未實測. NAER term search did not return a usable result; translation follows the Google zh-TW ML glossary. Independent check verify-1 (2026-10-03): corrected the Slack et al. sensitive feature (German credit uses gender, not race) and the Jain & Wallace setting (attentive text classifiers and QA/NLI models, not language models); added which definition is adopted (broad, post-hoc included, as in Lipton); completed four source titles. running_text_characters is app.guides.pack_ingest._body_length on the final pack."
 }

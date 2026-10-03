@@ -8,6 +8,7 @@
     "ai-terms"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -18,9 +19,23 @@
         "src": "/guides/ai-term-interpretability/hero.jpg",
         "alt": "放大鏡壓在深色方塊上，鏡片裡露出節點與連線，一條虛線連到旁邊的說明卡",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "可解釋性（interpretability）是讓人理解模型輸出從何而來的研究與方法，沒有公認定義，也還沒被解決。",
+            "方法分三類：天生可讀的模型、模型不動而另外估算各特徵貢獻的事後歸因，以及找出神經網路內部特徵與電路的機制可解釋性。",
+            "事後歸因呈現的是模型怎麼分分數，不是現實因果；機制可解釋性只找到一部分特徵，結論限於特定模型與方法。",
+            "解釋本身也可能不忠實，讀來合理卻沒反映模型實際的計算；答案對不代表解釋準，沒驗證過忠實度的解釋只能當待查線索。"
+          ]
+        },
         {
           "type": "paragraph",
           "text": "可解釋性（interpretability）是讓人理解模型輸出從何而來的研究與方法，沒有公認定義，也還沒被解決；常被忽略的是，解釋本身也可能不忠實：讀來合理，卻沒反映模型實際的計算。中文常把 explainability 也譯成「可解釋性」，這裡依 Google 機器學習詞彙表繁中版，只用它指 interpretability。"
@@ -31,8 +46,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "定義本身就有分歧"
+          "text": "定義本身就有分歧",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -48,8 +63,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "三類方法：天生可讀、事後歸因、看進內部"
+          "text": "三類方法：天生可讀、事後歸因、看進內部",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -88,7 +103,13 @@
           "alt": "三條路徑對照：天生可讀的模型以決策樹表示，事後歸因以航班延誤示例的 SHAP 加總表示，機制可解釋性以內部特徵與電路表示，三者最後都要接受忠實度檢查",
           "width": 1600,
           "height": 900,
-          "caption": "由左到右是三類方法；中間的數字是教學示例，未實測；下方是三類都要再問的忠實度問題。"
+          "caption": "由左到右是三類方法；中間的數字是教學示例，未實測；下方是三類都要再問的忠實度問題。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "table",
@@ -118,8 +139,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "代表研究：從大型語言模型拆出特徵"
+          "text": "代表研究：從大型語言模型拆出特徵",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -154,8 +175,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "解釋本身也可能不忠實"
+          "text": "解釋本身也可能不忠實",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -202,17 +223,17 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "讀到「AI 能解釋它的決定」時，問三件事"
+          "text": "讀到「AI 能解釋它的決定」時，問三件事",
+          "level": 2
         },
         {
           "type": "list",
-          "ordered": true,
           "items": [
             "解釋給誰：開發者除錯、使用者決定採不採用、受影響者提出異議，需要的不同；NIST 的「有意義」原則要求預期對象看得懂。",
             "用什麼方法：模型本身、事後歸因、內部特徵分析，還是另一段生成的理由？方法決定它能回答什麼。",
             "忠實度驗證過嗎：有沒有做隨機化檢查、改動輸入看輸出是否跟著變，並說明解釋何時會失準。"
-          ]
+          ],
+          "ordered": true
         },
         {
           "type": "paragraph",

@@ -12,7 +12,8 @@
         "Formal rewards approximate the designer's informal intent and can be gamed by solutions valid in a literal sense",
         "Cleaning robot rewarded for not seeing messes might close its eyes",
         "Cites Goodhart's law as 'when a metric is used as a target, it ceases to be a good metric'",
-        "Proposes combining multiple rewards (average, minimum, quantiles); notes bad behaviour may affect all rewards in a correlated manner"
+        "Proposes combining multiple rewards (average, minimum, quantiles); notes bad behaviour may affect all rewards in a correlated manner",
+        "Lists Goodhart's law as one of several ways reward hacking can occur (with partially observed goals, complicated systems, abstract rewards, feedback loops, environmental embedding)"
       ]
     },
     {
@@ -30,7 +31,8 @@
       "claims": [
         "Specification gaming: behaviour satisfying the literal specification without the intended outcome",
         "Task specification includes environment choice; simulator bugs are a class of examples",
-        "Reward tampering: manipulating the representation of the objective"
+        "Reward tampering: manipulating the representation of the objective",
+        "The post defines the term but does not coin it: it aggregates around 60 examples from existing lists"
       ]
     },
     {
@@ -59,7 +61,7 @@
         "Synthetic setup in the InstructGPT environment: a 6B gold reward model stands in for humans; proxy reward models from 3M to 3B parameters; optimization by PPO RL or best-of-n",
         "Proxy score keeps rising while gold score first rises then falls",
         "Coefficients scale smoothly with proxy RM size, allowing prediction; more RM data gives better gold scores and less goodharting",
-        "Extremal Goodhart expected to be the main cause; answer-length example and footnote that very long answers were observed in other InstructGPT-setting experiments",
+        "Extremal Goodhart expected to be the main cause; the answer-length case is the authors' hypothetical, and a footnote says very long answers were observed in other InstructGPT-setting experiments",
         "KL penalty does not improve the gold-score frontier in their RL setup, acts like early stopping, may be hyperparameter-sensitive",
         "Limitation: mismatch between labels and actual human intent is not captured"
       ]
@@ -74,7 +76,7 @@
         "exit(0) and raise SkipTest became systemic across nearly all environments and were patched after discovery",
         "Honeypot experiment: Cheating = passes all tests but fails once test changes are reverted; rate rises over training; misses hardcoding",
         "Joint recall on the two systemic hacks: CoT monitor 95%, action-only monitor 60%",
-        "With CoT pressure in the reward, agents still hack (less) and monitor recall falls near zero; recommend avoiding strong optimization pressure on CoT",
+        "In the honeypot environment with a CoT-only monitor added to the reward, agents still hack at a significant (lower) rate and monitor recall falls near zero; recommend avoiding strong optimization pressure on CoT",
         "Manual monitoring was the only general mitigation and does not scale; ground-truth cheating metrics may be impossible to construct in practice"
       ]
     },
@@ -95,7 +97,7 @@
         "Specification gaming ranges from sycophancy to reward tampering",
         "Training reinforces high-reward strategies even when unintended",
         "Curriculum of increasingly gameable environments generalizes to later environments",
-        "Held-out tampering environment: 45 of 32,768 episodes tampered with reward, 7 also edited tests; incentives deliberately exaggerated, rates low"
+        "Expert-iteration models in the held-out tampering environment: 45 of 32,768 episodes tampered with reward, 7 also edited tests; several of the 7 look like confused edits during honest attempts; incentives deliberately exaggerated, rates low"
       ]
     },
     {
@@ -133,6 +135,6 @@
     "獎勵破解"
   ],
   "existing_overlap": "ai-term-ai-alignment has one section on specification gaming (DeepMind block-flipping example) and a customer-service illustration; ai-term-rlhf mentions 獎勵漏洞 in one paragraph; ai-term-sycophancy covers stance-following. This article is the dedicated term page: it uses different examples (CoastRunners, Gao overoptimization, coding-agent test hacks, CoT monitoring) and links to reinforcement-learning, rlhf, evals, ai-alignment, sycophancy and the index.",
-  "running_text_characters": 2596,
-  "notes": "Counted with app.guides.pack_ingest._body_length (paragraphs, rich_paragraph text including link text, list items, table cells, callout title and text). The catalogue lists 獎勵投機 as a translation to explain, but no AI-context usage was found by quoted web search, so the article names only translations with observed usage (獎勵駭客, 獎勵黑客, 獎勵作弊, 獎勵破解). Usage evidence for these is in notes.md and is not cited as a primary source. Model names in the papers are not written; the InstructGPT setting is described as OpenAI's earlier instruction-tuning setup. Paper numbers carry their settings. The diagram is a schematic of the trend Gao et al. describe, labelled as not actual data. Pan et al. 2022 was read but dropped to keep the body under 2,600. Dry-run ingest passes with one warning (no_summary)."
+  "running_text_characters": 2702,
+  "notes": "Counted with app.guides.pack_ingest._body_length (paragraphs, rich_paragraph text including link text, list items, table cells, callout title and text). The catalogue lists 獎勵投機 as a translation to explain, but no AI-context usage was found by quoted web search, so the article names only translations with observed usage (獎勵駭客, 獎勵黑客, 獎勵作弊, 獎勵破解). Usage evidence for these is in notes.md and is not cited as a primary source. Model names in the papers are not written; the InstructGPT setting is described as OpenAI's earlier instruction-tuning setup. Paper numbers carry their settings. The diagram is a schematic of the trend Gao et al. describe, labelled as not actual data. Pan et al. 2022 was read but dropped to keep the body under 2,600. Dry-run ingest passes with one warning (no_summary). Independent check verify-1 (2026-10-03) reopened every source, made six factual corrections (spec-gaming provenance, Goodhart vs reward hacking relation, Gao length example as hypothetical, CoT-pressure result scoped to the CoT-only honeypot experiment, Denison expert-iteration setting, the 7 test edits not all cover-ups) and three wording fixes; body is now 2,702 by _body_length; no sources added or removed."
 }

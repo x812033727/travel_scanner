@@ -37,7 +37,7 @@
     {
       "url": "https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter",
       "title": "Amazon Builders' Library: Timeouts, retries, and backoff with jitter",
-      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); aws.amazon.com/builders-library/... redirects here",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); aws.amazon.com/builders-library/... redirects here; on 2026-10-03 verify the URL mostly returned a 3,849-byte JS shell (200), full server-rendered page (125,965 bytes) obtained once via the redirect and read",
       "claims": [
         "五層呼叫、每層 3 次嘗試，最底層負載放大 243 倍，建議只在一處重試",
         "定時工作常在每分鐘開頭或午夜過後幾秒一起送出，建議替定期工作加抖動"
@@ -80,8 +80,9 @@
         "每分鐘上限可能在更短區間執行",
         "大多數模型快取讀取 token 不計入 ITPM",
         "max_tokens 不計入 OTPM",
-        "每月花費上限用完回 429、不附 retry-after，以 error_code 分辨",
-        "Message Batches API 有獨立限制"
+        "方案等級的每月花費上限用完回 429、不附 retry-after，以 error_code 分辨",
+        "Message Batches API 有獨立限制",
+        "自設的較低花費上限（組織或工作區）用完回 400 invalid_request_error"
       ]
     },
     {
@@ -90,7 +91,8 @@
       "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text)",
       "claims": [
         "429 rate_limit_error 涵蓋速率限制與每月花費上限",
-        "加速限制：用量急升可能回 429，需逐步加量"
+        "加速限制：用量急升可能回 429，需逐步加量",
+        "400 也用於自設花費上限用完；429 涵蓋速率限制與方案等級的每月花費上限"
       ]
     },
     {
@@ -117,7 +119,8 @@
         "RPM、TPM（標為 input）、RPD",
         "套在專案而非 API 金鑰",
         "RPD 配額在太平洋時間午夜重設",
-        "Batch API 有獨立限制"
+        "Batch API 有獨立限制",
+        "依花費計算的速率限制以短的滾動時間窗計算，超過回 429 RESOURCE_EXHAUSTED，建議稍等再試"
       ]
     },
     {
@@ -131,7 +134,7 @@
     {
       "url": "https://ai.google.dev/gemini-api/docs/api-errors",
       "title": "Google Gemini API docs: API errors",
-      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text)",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); page describes itself as the Interactions API error-code reference",
       "claims": [
         "429 三個代碼：rate_limit_exceeded、too_many_requests 建議退避重試；quota_exceeded（每日配額）建議等重設或申請提高"
       ]
@@ -169,6 +172,6 @@
     "429 Too Many Requests"
   ],
   "existing_overlap": "gemini-api-cost-errors-guide 是 Gemini API 的操作教學（查用量頁、錯誤分類、有限重試）；這裡只寫跨服務的概念與機制，第一段即連過去，不重寫步驟。ai-term-prompt-caching、ai-term-agent-loop、ai-term-token 各以一句連結帶過。",
-  "running_text_characters": 2594,
-  "notes": "依指派不寫任何服務、方案或等級的限制數字，也不寫 SDK 預設重試次數；示例流程的數字標為示例（未實測）。未寫繞過限制的方法。IETF RateLimit 標頭草案（draft-ietf-httpapi-ratelimit-headers，2026-05 版仍為草案）讀過但為控制字數未收。SVG 為手繪向量圖。"
+  "running_text_characters": 2665,
+  "notes": "依指派不寫任何服務、方案或等級的限制數字，也不寫 SDK 預設重試次數；示例流程的數字標為示例（未實測）。未寫繞過限制的方法。IETF RateLimit 標頭草案（draft-ietf-httpapi-ratelimit-headers，2026-05 版仍為草案）讀過但為控制字數未收。SVG 為手繪向量圖。 獨立查核 verify-1（2026-10-03）：重開全部來源皆 200；修正 token bucket 描述、Anthropic 花費上限（方案等級回 429、自設回 400）、補 Google 依花費計算的速率限制可稍等再試、節流清單改「組織或專案」；來源未替換，明細見 verify-1.md。"
 }

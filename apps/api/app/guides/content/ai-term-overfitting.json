@@ -8,6 +8,7 @@
     "ai-terms"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -18,9 +19,23 @@
         "src": "/guides/ai-term-overfitting/hero.jpg",
         "alt": "資料點旁有兩條線：一條劇烈彎折、穿過每個點，另一條平順地沿著走勢；右端的新點落在平順線上，離彎折線很遠",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "過度擬合是機器學習的常見失敗：模型把訓練資料貼得太緊，連雜訊和特例都學進去，訓練時幾乎全對，遇到新資料就答錯。",
+            "判斷過度擬合要用模型沒看過的資料來量：訓練誤差續降、驗證誤差卻回升，Google 教材把這種分岔視為強烈訊號。",
+            "更多資料、正則化、dropout、提早停止等對策都不保證有效，要看驗證誤差調整；測試集留到最後量一次，看了測試分數就回頭改設定，分數會偏樂觀。",
+            "基準測試題目外洩後，分數量到的可能只是記憶；新題掉分是警訊，但原因要另外查。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -46,8 +61,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "訓練集、驗證集、測試集各管一件事"
+          "text": "訓練集、驗證集、測試集各管一件事",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -63,8 +78,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "示例：兩條誤差曲線從哪裡分岔"
+          "text": "示例：兩條誤差曲線從哪裡分岔",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -93,12 +108,18 @@
           "alt": "示例誤差曲線：訓練誤差一路下降，驗證誤差在第 8 輪最低後回升，兩線差距在第 20 輪最大",
           "width": 1600,
           "height": 900,
-          "caption": "示例數字為編寫的教學設定；驗證誤差開始回升、兩條線分岔的地方，就是過度擬合出現的位置。"
+          "caption": "示例數字為編寫的教學設定；驗證誤差開始回升、兩條線分岔的地方，就是過度擬合出現的位置。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "低度擬合、剛好、過度擬合怎麼分"
+          "text": "低度擬合、剛好、過度擬合怎麼分",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -137,8 +158,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "常見對策：每一招在做什麼"
+          "text": "常見對策：每一招在做什麼",
+          "level": 2
         },
         {
           "type": "list",
@@ -173,8 +194,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "網路背得下隨機答案：Zhang 等人 2017 年的實驗"
+          "text": "網路背得下隨機答案：Zhang 等人 2017 年的實驗",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -198,8 +219,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "題目外洩：基準測試上的「看起來會」"
+          "text": "題目外洩：基準測試上的「看起來會」",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -234,8 +255,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "自己訓練、微調或讀分數時怎麼用"
+          "text": "自己訓練、微調或讀分數時怎麼用",
+          "level": 2
         },
         {
           "type": "rich_paragraph",

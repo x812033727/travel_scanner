@@ -105,7 +105,7 @@
         },
         {
           "type": "paragraph",
-          "text": "論文也記下弱點：控制器曾學會一種走位，讓夢裡的怪物在某些回合完全不發射火球，這個漏洞在真實遊戲裡不存在。世界模型只是近似，策略會專挑它預測錯的地方得分。Hafner 等人 2019 年的 Dreamer 改在學到的精簡狀態空間裡想像未來、從想像中學習行為；2023 年的 DreamerV3 論文報告，同一組設定在 150 多種任務上勝過專門方法，也是第一個不靠人類資料、從零在 Minecraft 收集到鑽石的演算法。"
+          "text": "論文也記下弱點：控制器曾學會一種走位，讓夢裡的怪物在某些回合完全不發射火球，這個漏洞在真實遊戲裡不存在。世界模型只是近似，策略會專挑它預測錯的地方得分。Hafner 等人 2019 年的 Dreamer 同樣在學到的精簡狀態空間裡想像未來，並直接從想像出的軌跡學習行為；2023 年的 DreamerV3 論文報告，同一組設定在 150 多種任務上勝過專門方法，也是第一個不靠人類資料、也不靠由易到難的課程安排，從零在 Minecraft 收集到鑽石的演算法。"
         },
         {
           "type": "image",
@@ -130,11 +130,11 @@
         },
         {
           "type": "paragraph",
-          "text": "他提出的 JEPA（Joint Embedding Predictive Architecture，聯合嵌入預測架構）不生成畫面，而是把現在與未來各自編碼成表示，再從前者預測後者。論文舉車子開到岔路口為例：表示只記位置、方向與速度，路邊樹木和人行道紋理可以忽略，往左或往右交給一個潛在變數。他認為樹葉擺動、水面漣漪這類細節無法長期準確預測，JEPA 可以選擇忽略，逐像素生成的模型卻得預測它們。"
+          "text": "他提出的 JEPA（Joint Embedding Predictive Architecture，聯合嵌入預測架構）不生成畫面，而是把現在與未來各自編碼成表示，再從前者預測後者。論文舉車子開到岔路口為例：表示記下車子的位置、方向、速度等特徵，路邊樹木和人行道紋理可以忽略，往左或往右交給一個潛在變數。他認為樹葉擺動、水面漣漪這類細節無法長期準確預測，JEPA 可以選擇忽略，逐像素生成的模型卻得預測它們。"
         },
         {
           "type": "paragraph",
-          "text": "這是一位研究者的主張，論文開頭就說它不是傳統意義的技術論文。沿這條路的實驗之一是Meta 研究團隊 2025 年的 V-JEPA 2：先用網路影片訓練，再用不到 62 小時、未標註的機器人影片訓練出依動作預測的版本，讓兩個實驗室的機械手臂靠目標影像規劃，完成抓取與放置。這說明該設定下可行，不代表路線已經勝出。"
+          "text": "這是一位研究者的主張，論文開頭就說它不是傳統意義的技術論文。沿這條路的實驗之一是 Meta 研究團隊 2025 年的 V-JEPA 2：先用網路影片訓練，再用不到 62 小時、未標註的機器人影片訓練出依動作預測的版本，讓兩個實驗室的機械手臂靠目標影像規劃，完成抓取與放置。這說明該設定下可行，不代表路線已經勝出。"
         },
         {
           "type": "heading",
@@ -203,7 +203,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "開發者常把世界模型說成通往"
+              "text": "有開發者把世界模型說成通往"
             },
             {
               "type": "article",
@@ -230,7 +230,7 @@
       ],
       "sources": [
         {
-          "title": "Sutton、Barto：Reinforcement Learning: An Introduction 第二版（作者官網全文，第 8 章 Models and Planning）",
+          "title": "Sutton、Barto：Reinforcement Learning: An Introduction 第二版（作者官網全文，第 8.1 節 Models and Planning）",
           "url": "http://incompleteideas.net/book/the-book-2nd.html",
           "checked_on": "2026-10-03"
         },
@@ -266,7 +266,7 @@
         },
         {
           "title": "Google DeepMind：Genie 3: A new frontier for world models（官方文章，2025 年 8 月）",
-          "url": "https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/",
+          "url": "https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/",
           "checked_on": "2026-10-03"
         },
         {

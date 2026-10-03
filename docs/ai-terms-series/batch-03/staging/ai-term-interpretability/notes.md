@@ -2,6 +2,7 @@
 
 格式：主張｜來源網址｜查證日｜讀取方式。查證日一律是實際打開該頁的 2026-10-03。
 讀取方式：「abs」＝`curl -sSL` 讀 arXiv 摘要頁（HTTP 200，含投稿歷史與 Comments 欄）；「全文」＝`curl -sSL https://arxiv.org/pdf/<id>`（HTTP 200）後以 pdftotext 轉文字逐節核對；「網頁」＝`curl -sSL` 取 HTML（HTTP 200）去標籤後閱讀。User-Agent 一律 `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，沒有帶任何人的 email 或個資。沒有使用 Wayback。
+本檔已依查核（verify-1.md，2026-10-03）同步到最終文字：Slack 等的敏感特徵、Jain 與 Wallace 的模型設定兩處事實已更正，並補上採用哪個定義。
 
 ## 譯名
 
@@ -52,12 +53,14 @@ SAE 訓練在中間層（middle layer）的 residual stream；residual stream �
 plausibility 是對人的說服力，faithfulness 是準確反映模型真實推理過程；兩者可只滿足其一；忠實度評估不應依賴人的判斷｜https://arxiv.org/abs/2004.03685｜2026-10-03｜全文第 2、3 節（ACL 2020，abs Comments 欄）
 NISTIR 8312（2021 年 9 月）四原則：Explanation、Meaningful、Explanation Accuracy、Knowledge Limits；explanation accuracy 與 decision accuracy 是不同概念；Meaningful 要求解釋讓預期對象理解，開發者與使用者需求不同｜https://doi.org/10.6028/NIST.IR.8312｜2026-10-03｜全文（`curl -sSL https://nvlpubs.nist.gov/nistpubs/ir/2021/NIST.IR.8312.pdf`，HTTP 200，pdftotext；第 2 節）
 Adebayo 等：model parameter randomization test（訓練好的模型 vs 同架構隨機初始化網路）；Guided BackProp、Guided GradCAM 對較高層參數不敏感，Gradients 與 GradCAM 通過；只靠肉眼判斷會誤導｜https://arxiv.org/abs/1810.03292｜2026-10-03｜全文第 1 節 Contributions 與第 4 節（NeurIPS 2018；v3 修正 Guided Backprop 實驗、結論不變）
-Slack 等：只依種族判斷的分類器加上辨識擾動樣本（OOD）的外殼；三個資料集（COMPAS、Communities and Crime、German credit）；LIME 被騙過；SHAP 單一無關特徵攻擊下 COMPAS 84%、CC 100%、German 85% 的資料點把重要度從敏感特徵移開，兩個特徵時 67%、71%（文中寫「多數時候」）｜https://arxiv.org/abs/1911.02508｜2026-10-03｜全文第 1 節與實驗結果段（AIES 2020）
+Slack 等：只依敏感屬性判斷的分類器（COMPAS 與 Communities and Crime 看種族，German credit 看性別；論文 Experimental Setup「Biased Classifier f」段）加上辨識擾動樣本（OOD）的外殼；三個資料集（COMPAS、Communities and Crime、German credit）；LIME 在三個資料集都被騙過；SHAP 單一無關特徵攻擊下 COMPAS 84%、CC 100%、German 85% 的資料點把重要度從敏感特徵移開，兩個特徵時 67%、71%（文中寫「在多數資料點上也沒把這個敏感特徵排第一」）｜https://arxiv.org/abs/1911.02508｜2026-10-03｜全文第 1 節與實驗結果段（AIES 2020）
 注意力權重常與梯度式重要度不相關；可找到很不同的注意力分布但預測相同｜https://arxiv.org/abs/1902.10186｜2026-10-03｜abs 摘要（另見已上線的注意力機制專文）
+Jain 與 Wallace 的設定：帶注意力的 BiLSTM（另比較 CNN 與平均編碼器），任務是文字分類、問答與自然語言推論，不是語言模型；所以文中寫「處理文字的模型」與「文字分類、問答等任務的模型」｜https://arxiv.org/abs/1902.10186｜2026-10-03｜全文第 1、2、3 節（`curl -sSL https://arxiv.org/pdf/1902.10186`，HTTP 200，pdftotext；NAACL 2019 見 abs Comments 欄）
 思維鏈：加入偏向線索（如把選項重排讓答案總是 A），模型的步驟不提線索，卻替被帶偏的答案找理由｜https://arxiv.org/abs/2305.04388｜2026-10-03｜abs 摘要（另見已上線的思維鏈專文）
 
 ## 編輯判斷
 
+定義採用：第一節列完各家說法後寫「以下採較寬的用法：和 Lipton 一樣，把事後解釋也算進可解釋性」。Lipton 把 post-hoc interpretability 列為可解釋性的兩大類之一（全文第 3.2 節）；Rudin 的窄用法會把第二類方法排除在 interpretable 之外，所以要說明。
 讀者三問（給誰、什麼方法、忠實度驗證）是依 NIST Meaningful／Explanation Accuracy 原則與 Doshi-Velez 與 Kim 的評估分層整理出的讀法，不是任何來源的原句。
 訂房推薦理由的例子是虛構情境，標「示例（虛構情境，未實測）」。
 文中沒有型號、價格、排行榜分數。

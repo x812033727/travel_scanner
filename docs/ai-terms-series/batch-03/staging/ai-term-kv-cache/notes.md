@@ -2,6 +2,8 @@
 
 格式：主張｜來源網址｜查證日｜讀取方式。全部於 2026-10-03 以 `curl -sSL`（User-Agent `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`）取得，HTTP 200；arXiv 讀 abs 頁的 citation_abstract 與 PDF 全文（pdftotext）。
 
+查核者 2026-10-03 複查：docs.vllm.ai 三頁對 curl 回 429（Cloudflare 挑戰頁），改讀官方 repo 的文件原始檔（`raw.githubusercontent.com/vllm-project/vllm/main/docs/...`）與 Wayback 快照（APC 20260903211531、Quantized KV Cache 20261001145005、Prefix Caching 設計 20261001004106），內容一致；`sources` 仍寫原網址。OpenAI 原網址 301 轉到 `developers.openai.com/api/docs/guides/prompt-caching`，`sources` 已改成轉址後的網址。
+
 ## 定義與機制
 
 cache 在台灣資訊名詞譯為「快取（記憶體）」，電子計算機名詞為「高速緩衝記憶體；快取」｜https://terms.naer.edu.tw/search/?query_term=cache&query_field=title&query_op=&match_type=phrase｜2026-10-03｜精確檢索結果頁 HTML
@@ -23,8 +25,8 @@ Google 機器學習詞彙表繁中版把 cache 寫作「快取」（離線推論
 
 PagedAttention 把每個請求的 KV 快取切成固定大小的區塊，不必放在連續空間，用到才配置；靈感來自作業系統的虛擬記憶體與分頁｜https://arxiv.org/abs/2309.06180｜2026-10-03｜abs 摘要與 PDF 第 1、4 節
 既有系統依請求最大長度預先配置連續空間，造成預留、內部與外部碎片｜https://arxiv.org/abs/2309.06180｜2026-10-03｜PDF 3.1 節
-該論文的量測中，既有系統只有 20.4%–38.2% 的 KV 快取記憶體存放實際 token 狀態｜https://arxiv.org/abs/2309.06180｜2026-10-03｜PDF 第 1 節（Fig. 2 的 profiling）
-在相同延遲水準下，vLLM 吞吐量為 FasterTransformer 與 Orca 的 2–4 倍｜https://arxiv.org/abs/2309.06180｜2026-10-03｜abs 摘要
+該論文的量測中，既有系統只有 20.4%–38.2% 的 KV 快取記憶體存放實際 token 狀態；Fig. 2 的「既有系統」是作者自行重做的三種 Orca 配置（Max、Pow2、Oracle），量測取自 §6.2 實驗（ShareGPT、Alpaca 改編的請求），正文已寫出這個設定｜https://arxiv.org/abs/2309.06180｜2026-10-03｜PDF 第 1 節、Fig. 2 圖說、§6.1 Baseline 2、§6.2
+在相同延遲水準下，vLLM 吞吐量為 FasterTransformer 與 Orca 的 2–4 倍（Orca 為作者自行實作，原系統未公開）｜https://arxiv.org/abs/2309.06180｜2026-10-03｜abs 摘要、§6.1
 一批能同時處理的請求數受 GPU 記憶體中 KV 快取的空間限制，服務吞吐量受記憶體限制｜https://arxiv.org/abs/2309.06180｜2026-10-03｜PDF 第 3 節開頭
 MQA：不同頭共用一組 key 與 value，大幅縮小這兩個張量與逐步解碼的記憶體頻寬需求｜https://arxiv.org/abs/1911.02150｜2026-10-03｜abs 摘要與 PDF 第 3 節
 Shazeer 的 WMT14 英德翻譯實驗：MQA 依兩項指標略差於基準（dev），但比減少頭數或維度的替代方案好得多｜https://arxiv.org/abs/1911.02150｜2026-10-03｜PDF 4.2 節
@@ -32,15 +34,17 @@ MQA 讓 KV 快取張量縮小為原本的 n_heads 分之一｜https://arxiv.org/
 GQA 把 query 頭分成 G 組、每組共用一組 key 與 value 頭，介於 MHA 與 MQA 之間；GQA-1 等於 MQA，GQA-H 等於 MHA｜https://arxiv.org/abs/2305.13245｜2026-10-03｜PDF 2.2 節
 以約原預訓練 5% 的計算量（α = 0.05）把既有多頭模型改訓成 MQA／GQA（uptraining）｜https://arxiv.org/abs/2305.13245｜2026-10-03｜abs 摘要與 PDF 3.1 節
 KV 量化：減少 KV 快取的位元組數；KIVI 以 2 位元量化，在所測模型上品質幾乎不變（論文設定：key 依 channel、value 依 token 分組量化）｜https://arxiv.org/abs/2402.02750｜2026-10-03｜abs 摘要
+KIVI 把最近一段 token（residual 視窗，論文估 value 約 R 個、key 約 R/2 個）的 key 與 value 留在完整精度；論文說這段完整精度的滑動視窗對 GSM8K 等難題很關鍵（有它時 GSM8K 只掉約 2%，只做 2 位元假量化則明顯變差）。正文因此寫「大部分快取壓到 2 位元、最近一小段 token 維持完整精度」｜https://arxiv.org/abs/2402.02750｜2026-10-03｜PDF 第 3.3 節、第 4.2 節（查核者補）
 Transformers 提供 QuantizedCache；上下文短且 GPU 記憶體足夠時，量化快取可能拖慢延遲｜https://huggingface.co/docs/transformers/en/kv_cache｜2026-10-03｜全文 HTML（Quantized cache 段）
-vLLM 提供 FP8 KV 快取量化，以減少記憶體占用｜https://docs.vllm.ai/en/latest/features/quantization/quantized_kvcache/｜2026-10-03｜全文 HTML
+vLLM 提供 FP8 KV 快取量化，以減少記憶體占用｜https://docs.vllm.ai/en/latest/features/quantization/quantized_kvcache/｜2026-10-03｜GitHub 原始檔與 Wayback 20261001145005
 
 ## 和提示詞快取的關係
 
-模型處理輸入時算出 key-value 狀態；提示詞快取保存可重用字首的這份狀態；快取存的是 KV 張量，不是 token 本身；整段字首須完全相符才能重用｜https://platform.openai.com/docs/guides/prompt-caching｜2026-10-03｜全文 HTML（What is the prompt cache? 段）
+模型處理輸入時算出 key-value 狀態；提示詞快取保存可重用字首的這份狀態；快取存的是 KV 張量，不是 token 本身；整段字首須完全相符才能重用｜https://developers.openai.com/api/docs/guides/prompt-caching｜2026-10-03｜全文 HTML（What is the prompt cache? 段）
 Anthropic：KV（key-value）快取表示與雜湊只放在記憶體、不做靜態儲存；快取條目有最短存活時間；cache read tokens 另有計價｜https://platform.claude.com/docs/en/build-with-claude/prompt-caching｜2026-10-03｜全文 HTML（Data retention 與 pricing 段）
-OpenAI：輸入 token 依未快取、已快取、快取寫入三種費率計算｜https://platform.openai.com/docs/guides/prompt-caching｜2026-10-03｜全文 HTML（開頭計價說明）
-vLLM 自動字首快取重用既有請求的 KV 快取；只縮短讀入提示（prefill），不縮短產生新 token（decode）｜https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/｜2026-10-03｜全文 HTML（Introduction、Limits 段）
+OpenAI：輸入 token 依未快取、已快取、快取寫入三種費率計算｜https://developers.openai.com/api/docs/guides/prompt-caching｜2026-10-03｜全文 HTML（開頭計價說明）
+vLLM 自動字首快取重用既有請求的 KV 快取；只縮短讀入提示（prefill），不縮短產生新 token（decode）｜https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/｜2026-10-03｜GitHub 原始檔與 Wayback 20260903211531（Introduction、Limits 段）
+提示詞快取的淘汰不只看時間：vLLM 字首快取在需要新區塊時以 LRU 淘汰已快取的區塊；OpenAI 與 Anthropic 則依快取存活時間（TTL）到期。表格「保留多久」因此寫「依服務規則淘汰，如逾時或空間不足」｜https://docs.vllm.ai/en/latest/design/prefix_caching/｜2026-10-03｜GitHub 原始檔與 Wayback 20261001004106（Eviction (LRU) 段）；OpenAI Cache lifetime 段；Anthropic Data retention 段（查核者補）
 一個 token 的 KV 快取取決於它之前所有的 token，同一個 token 出現在不同位置時快取不同｜https://arxiv.org/abs/2309.06180｜2026-10-03｜PDF 2.2 節
 
 ## 長上下文的成本
@@ -53,9 +57,9 @@ vLLM 自動字首快取重用既有請求的 KV 快取；只縮短讀入提示�
 
 ## 編寫說明
 
-- 「台南／早餐／推薦」四步示例、圖解與 hero 都是原創教學設計，未對任何模型實測；分詞僅示意。圖上數字（第 1–4 步、3–6 組、製圖年 2026）都出現在正文。
+- 「台南／早餐／推薦」四步示例、圖解與 hero 都是原創教學設計，未對任何模型實測；分詞僅示意。第 1 步（讀入提示）一次存下 3 組，第 2 步起每步只新增一組；圖說與 SVG `<desc>` 已照這個寫（查核者修正）。圖上數字（第 1–4 步、3–6 組、製圖年 2026）都出現在正文。
 - 依指派，不寫任何模型的 KV 快取大小或價格。vLLM 論文的特定模型每 token 快取量、Pope 等人的特定模型快取總量都讀過但未寫入。
 - OpenAI 頁面同時列有特定型號的提示詞快取最短長度與費率倍數，屬產品快照，未寫入正文；只寫「命中的輸入另外計價」。
 - vLLM 設計文件稱字首快取「被許多公開端點廣泛使用（例如 OpenAI、Anthropic）」，這是第三方轉述，未採用；改引 OpenAI 與 Anthropic 自己的文件。
 - 字首（prefix）用字沿用系列既有的提示詞快取與推論兩篇。
-- 正文字數以 `app.guides.pack_ingest._body_length` 實算：2,598。
+- 正文字數以 `app.guides.pack_ingest._body_length` 實算：2,662（查核修正後）。

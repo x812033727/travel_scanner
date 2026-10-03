@@ -5,7 +5,7 @@
   "sources": [
     {
       "url": "http://incompleteideas.net/book/the-book-2nd.html",
-      "title": "Sutton, Barto: Reinforcement Learning: An Introduction, 2nd edition (MIT Press 2018; full text on the author's site)",
+      "title": "Sutton, Barto: Reinforcement Learning: An Introduction, 2nd edition (MIT Press 2018; full text on the author's site; chapters 1-3 cited)",
       "access": "web open (curl -sSL book page and http://incompleteideas.net/book/RLbook2020.pdf, HTTP 200; PDF converted with pdftotext and read section by section; the https host failed certificate verification in this environment, so the http URL is used)",
       "claims": [
         "Section 1.1: reinforcement learning is learning what to do, mapping situations to actions, to maximize a numerical reward signal; the learner is not told which actions to take; trial-and-error search and delayed reward are its two most important distinguishing features",
@@ -50,10 +50,11 @@
     {
       "url": "https://arxiv.org/abs/2203.02155",
       "title": "Ouyang et al.: Training language models to follow instructions with human feedback (arXiv:2203.02155)",
-      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext; abstract, sections 1, 3.1 and 3.5 read)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext; abstract, sections 1, 2, 3.1 and 3.5 read)",
       "claims": [
         "Submitted 4 March 2022; labeler demonstrations for supervised fine-tuning, rankings of outputs to train a reward model, then reinforcement learning from human feedback",
-        "Section 3.5: the RL environment is a bandit environment that presents a prompt, expects a response, gives the reward model's reward and ends the episode; a per-token KL penalty from the SFT model mitigates over-optimization of the reward model"
+        "Section 3.5: the RL environment is a bandit environment that presents a prompt, expects a response, gives the reward model's reward and ends the episode; a per-token KL penalty from the SFT model mitigates over-optimization of the reward model",
+        "Sections 2 and 3.1: RLHF was first developed for simulated robots and Atari (Christiano et al. 2017) and had already been applied to fine-tuning language models for stylistic continuation and summarization (Ziegler et al. 2019, Stiennon et al. 2020); this paper follows that methodology for instruction following, so the article no longer says Ouyang et al. brought RLHF to language models"
       ]
     },
     {
@@ -96,11 +97,11 @@
       ]
     },
     {
-      "url": "https://developers.google.com/machine-learning/glossary/rl?hl=zh-tw",
-      "title": "Google Machine Learning Glossary: Reinforcement Learning (Traditional Chinese)",
-      "access": "web open (curl -sSL, HTTP 200; HTML text extracted and searched)",
+      "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw#reinforcement-learning-rl",
+      "title": "Google Machine Learning Glossary (Traditional Chinese): entries 增強學習 (RL) and 政策 (policy)",
+      "access": "web open (curl -sSL, HTTP 200; the former category URL glossary/rl?hl=zh-tw now returns 301 to the full glossary glossary?hl=zh-tw, so the source points at the redirect target with the entry anchor; HTML text extracted and searched)",
       "claims": [
-        "The entry heading reads 增強學習 (RL) while the body and other entries use 強化學習; policy is rendered 政策, so the article states it uses 強化學習 and 策略 and why"
+        "The entry headings read 增強學習 (RL) and 人類回饋增強學習 (RLHF) while the body and other entries use 強化學習; policy is rendered 政策, so the article states it uses 強化學習 and 策略 and why"
       ]
     },
     {
@@ -118,6 +119,6 @@
     "增強學習"
   ],
   "existing_overlap": "ai-term-machine-learning (published) gives reinforcement learning one paragraph as one of several learning types; this article is the full treatment and links back to it. ai-term-rlhf (published) covers the RLHF pipeline in depth, so this article gives RLHF one paragraph framed in RL vocabulary (prompt as state, response as action, one-step episode, per-token KL penalty) and links to it. ai-reasoning-models-explained (published) mentions RL in DeepSeek-R1 research at overview level; this article adds the rule-based reward details and the RLVR name. ai-term-reward-hacking is a batch-03 sibling that may not be published yet; this article gives one section with the Sutton-Barto chess and Amodei cleaning-robot examples and links to it for the full treatment.",
-  "running_text_characters": 2557,
-  "notes": "Characters counted with app.guides.pack_ingest._body_length on the final pack.json (paragraphs, rich_paragraph text including the five link texts, list items, table cells, callout title and text; whitespace removed). The grid world (4 columns by 3 rows, -1 per step, +10 at the exit, -10 in the trap, returns 5, 1 and -13) and the epsilon = 0.1 conversion are illustrative and computed by hand, not measured. Model and program names (the DeepSeek models, the Go program, the Tulu models) and all benchmark scores, win rates and match results are kept out of the prose per the assignment; they appear only inside source titles. DQN is kept as the algorithm name the Nature paper itself uses. The Mnih and Silver Nature papers are subscription articles, so only their abstracts (and the Mnih editorial summary) were read and the prose claims nothing beyond them. Dry-run ingest passes with only the no_summary warning."
+  "running_text_characters": 2578,
+  "notes": "Characters counted with app.guides.pack_ingest._body_length on the final pack.json after the verify-1 corrections (2578; 2557 before) (paragraphs, rich_paragraph text including the five link texts, list items, table cells, callout title and text; whitespace removed). The grid world (4 columns by 3 rows, -1 per step, +10 at the exit, -10 in the trap, returns 5, 1 and -13) and the epsilon = 0.1 conversion are illustrative and computed by hand, not measured. Model and program names (the DeepSeek models, the Go program, the Tulu models) and all benchmark scores, win rates and match results are kept out of the prose per the assignment; they appear only inside source titles. DQN is kept as the algorithm name the Nature paper itself uses. The Mnih and Silver Nature papers are subscription articles, so only their abstracts (and the Mnih editorial summary) were read and the prose claims nothing beyond them. Dry-run ingest passes with only the no_summary warning."
 }
