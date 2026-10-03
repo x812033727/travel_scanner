@@ -98,8 +98,11 @@ other way, and the host worker never reads the skill's files:
       1080p clip to measure how the crop holds up, and no pilot clip exists locally; the spec and
       `docs/videos/DRAMA.md` say so, and nothing assumes it.
 - [x] A shot without lines has a stated length: `action_seconds` (1 to 8) with an empty `lines`
-      array is accepted in a drama with a cast, not only under the long-anime policy; a narrated
-      video still refuses it, since its length is measured on its narration.
+      array is accepted in a drama with a cast that carries no length floor
+      (`timesSilentShots`), not only under the long-anime policy; a narrated video, a knowledge
+      long-form (a brand story with leads, an explainer) and an anime episode still refuse it,
+      since their lengths are measured on their narration or their policy. The reviewer's first
+      pass caught the brand-story gap; the regression is in `drama.test.mjs`.
 - [x] `motionMove` reads the move from `camera` only, treats locked as no move (`locked`: the
       keyframe held still, PSNR-checked like a push-in), and anchors its patterns.
 - [x] `docs/videos/DRAMA.md` and the skill's `drama.md` describe the new fields; the craft
@@ -159,7 +162,9 @@ another shot's clip (nothing to buy, S clip seconds saved)" and prices only the 
     available, and compares the segment's frame 0 with the source clip's frame there
     (`frameArgs`, `sourceFrameProblem`, `metrics.shots[].source_frame_psnr`).
   - `action_seconds` on a cast drama: `schema.mjs` and `timeline.mjs` accept it where the
-    long-anime gate stood; `hasCast(doc)` decides.
+    long-anime gate stood; `timesSilentShots(doc)` decides (`hasCast`, no `needsMinimumLength`,
+    not `isKnowledgeLongform`, which moved to `drama.mjs` and is re-exported by `duration.mjs`,
+    and not category anime).
   - `motionMove` / `cameraMove`: `camera` only, whole words; `locked` (locked, static, fixed,
     tripod) holds the picture (`zoompanExpr` z=1), a written `drift` wins over `static`.
 - What the measurements do not cover is listed at the end of the craft spec: sound, retention

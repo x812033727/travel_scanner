@@ -141,6 +141,26 @@ export const isExplainer = (doc) => isDrama(doc) && doc.look?.preset === EXPLAIN
 export const needsMinimumLength = (doc) => (!isDrama(doc) || isExplainer(doc)) && !isObject(doc?.compilation);
 /** Whether a drama has characters: without any there are no sheets, so no look stage or gate. */
 export const hasCast = (doc) => isDrama(doc) && Array.isArray(doc.characters) && doc.characters.length > 0;
+// The knowledge and nonfiction long-video catalogues (duration.mjs): a brand story, an AI term,
+// an explainer, each held to a 480-second floor that is measured on its narration.
+const LONG_FORMATS = new Set(["slides", "screencast", "drama"]);
+const KNOWLEDGE_CATEGORIES = new Set(["ai-terms", "explainer", "story"]);
+const CATALOGUE_SLUG = /^(?:sothatswhy-|ai-term-|story-)/;
+/** Ordinary drama episodes, binge compilations and Shorts retain their own duration rules. */
+export function isKnowledgeLongform(doc) {
+  return Boolean(doc && LONG_FORMATS.has(doc.format) && !doc.compilation && (
+    KNOWLEDGE_CATEGORIES.has(doc.category)
+    || doc.look?.preset === "flat-explainer"
+    || CATALOGUE_SLUG.test(doc.slug ?? "")
+  ));
+}
+/**
+ * Whether a shot without lines may be timed with `action_seconds` outside the long-anime policy:
+ * a drama with a cast that carries no length floor, so a silent shot can pad nothing. A knowledge
+ * long-form (a brand story with leads, an explainer) is measured on its narration, and an anime
+ * episode goes through its production policy (anime-policy.mjs) or not at all.
+ */
+export const timesSilentShots = (doc) => hasCast(doc) && !needsMinimumLength(doc) && !isKnowledgeLongform(doc) && doc?.category !== "anime";
 export const isShot = (scene) => scene?.template === SHOT_TEMPLATE;
 export const shotScenes = (doc) => (doc?.scenes ?? []).filter(isShot);
 /**

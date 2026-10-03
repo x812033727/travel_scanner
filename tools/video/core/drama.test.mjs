@@ -15,8 +15,10 @@ import {
   clipsHash,
   drawnShotScenes,
   isClipShot,
+  isKnowledgeLongform,
   isSourced,
   sourcedShotScenes,
+  timesSilentShots,
   keyframeKey,
   lookHash,
   mixHash,
@@ -35,7 +37,7 @@ import {
   visualTierProblems,
   voiceFor,
 } from "./drama.mjs";
-import { writeAudioFixture, dramaBrief, dramaFixture, fixture, fixtureLexicon, illustratedFixture, sandbox } from "./fixtures/load.mjs";
+import { writeAudioFixture, dramaBrief, dramaFixture, fixture, fixtureLexicon, illustratedFixture, sandbox, storyFixture } from "./fixtures/load.mjs";
 import { lintVideo } from "./lint.mjs";
 import { atomicWrite } from "./paths.mjs";
 import { validateVideo } from "./schema.mjs";
@@ -120,7 +122,7 @@ test("timed action refuses out-of-range seconds, dialogue, absent direction and 
     [(doc) => { doc.scenes[1].data.motion = "  "; }, /visible-action prompt and motion/],
     [(doc) => { doc.scenes[1].data.prompt = ""; }, /visible-action prompt and motion/],
     [(doc) => { doc.scenes[1].template = "title"; }, /directed shot/],
-    [(doc) => { delete doc.production_policy; delete doc.runtime_spec; }, /long-anime production policy/],
+    [(doc) => { delete doc.production_policy; delete doc.runtime_spec; }, /a drama with a cast and no length floor, or a complete long-anime production policy/],
   ]) {
     const doc = structuredClone(base);
     change(doc);
@@ -138,8 +140,33 @@ test("timed action refuses out-of-range seconds, dialogue, absent direction and 
     delete scene.data.characters;
     for (const line of scene.lines) delete line.speaker;
   }
-  assert.ok(validateVideo(narrated).some((error) => error.path === "scenes[1].action_seconds" && /a drama with a cast or a complete long-anime/.test(error.message)));
+  assert.ok(validateVideo(narrated).some((error) => error.path === "scenes[1].action_seconds" && /a drama with a cast and no length floor, or a complete long-anime/.test(error.message)));
   assert.ok(validateVideo(narrated).some((error) => error.path === "scenes[1].lines"));
+});
+
+test("a silent shot cannot pad a knowledge long-form's floor: a brand story with a lead refuses action_seconds, as the schema and the timeline both say", () => {
+  const story = storyFixture();
+  story.slug = "story-rolling-suitcase";
+  story.characters = [structuredClone(dramaFixture().characters[0])];
+  const lead = story.characters[0].id;
+  story.scenes.push({ id: "silent-beat", template: "shot", action_seconds: 8, data: { prompt: "The lead at the counter, the suitcase held out", camera: "Wide, locked", motion: "The lead slides the suitcase across the counter", visual: "still", characters: [lead] }, lines: [] });
+  const silent = story.scenes.length - 1;
+  const errors = validateVideo(story);
+  assert.ok(errors.some((error) => error.path === `scenes[${silent}].action_seconds` && /no length floor/.test(error.message)), errors.map((error) => `${error.path}: ${error.message}`).join("\n"));
+  assert.ok(errors.some((error) => error.path === `scenes[${silent}].lines`));
+  assert.throws(() => estimateTimeline(story), /action_seconds needs a silent shot of a long anime or of a drama with a cast and no length floor/);
+  assert.equal(timesSilentShots(story), false);
+  assert.equal(isKnowledgeLongform(story), true);
+  // The same shot under a slug outside the catalogues, with a category the floors do not know, is an ordinary cast drama.
+  const plain = structuredClone(story);
+  plain.slug = "rolling-suitcase";
+  delete plain.category;
+  assert.equal(timesSilentShots(plain), true);
+  assert.ok(!validateVideo(plain).some((error) => error.path.endsWith(".action_seconds")));
+  // An anime episode times nothing outside its production policy, and an explainer never does.
+  assert.equal(timesSilentShots({ ...plain, category: "anime" }), false);
+  assert.equal(timesSilentShots({ ...plain, look: { ...plain.look, preset: "flat-explainer" } }), false);
+  assert.equal(timesSilentShots(dramaFixture()), true);
 });
 
 test("only the declared last episode of a closed anime may declare closure", () => {

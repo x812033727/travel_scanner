@@ -556,7 +556,7 @@ test("a drama with a cast may time a silent shot with action_seconds; a narrated
   }
   narrated.scenes[1].action_seconds = 3;
   narrated.scenes[1].lines = [];
-  assert.match(messages(lintVideo(narrated, context({ brief: dramaBrief() })).errors), /requires a drama with a cast or a complete long-anime production policy/);
+  assert.match(messages(lintVideo(narrated, context({ brief: dramaBrief() })).errors), /requires a drama with a cast and no length floor, or a complete long-anime production policy/);
 });
 
 test("a shot cut from another shot's clip must end inside that clip, and the production profile's eight seconds", () => {

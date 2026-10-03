@@ -377,7 +377,7 @@ video.json for a drama (the payload's "drama_example" shows the shape; copy it, 
   (a return to the same camera setup: speaker, listener, speaker again), so it buys no
   keyframe and no clip; from_s plus the shot's own length stays inside that clip}. A shot in
   which nobody speaks carries "action_seconds" (an integer, 1 to 8) and an empty "lines"
-  array. Cards: a "title" scene may follow the opening beat and an "outro" scene close the
+  array (a brand story or an explainer, measured on its narration, has no such shot). Cards: a "title" scene may follow the opening beat and an "outro" scene close the
   episode; the first scene is a shot, never a card; no other slide templates.
 - Cover each scene before you cut it: list its setups (one wide that shows who stands where,
   one medium close-up for each person who speaks, the listener's reaction, an insert that

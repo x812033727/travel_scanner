@@ -62,7 +62,7 @@
 | --- | --- |
 | `look` | `{ preset?: cinematic-3d\|anime-2d\|ink-wash\|flat-explainer\|custom, style (≤600), negative?, motion?, candidates?: 2–4（預設 3）, style_frames?: string[] }`：全影片共用的風格提示詞 |
 | `characters[]` | `{ id（小寫，不可是 narrator）, name, appearance（≤800，英文，給圖片模型）, voice（同 doc.voice 的物件）, sheet_prompt? }` |
-| 鏡頭場景 | `template: "shot"`，`data: { prompt (≤1000), camera?, motion?, negative?, characters?: [id]（≤3）, fit?: auto\|freeze\|slow\|trim, seed?, transition?: cut\|dissolve, start_frame?: { shot, at: "last" }, end_frame?: { prompt }, visual?: clip\|still, source?: { shot, from_s } }`；`visual` 預設 `clip`，`still` 不買片段，由 `assemble` 用關鍵影格加運鏡（下面「畫面等級與運鏡」）；`source` 從更早一個 clip 鏡頭的素材第 `from_s` 秒切進來，不畫關鍵影格、不買素材（下面「同一份素材切幾次」）；有角色的漫劇可用 `action_seconds`（1–8）加空 `lines` 寫沒有人說話的鏡頭；句子不能有 `reveal`。`title`／`chapter`／`outro` 卡片仍可用 |
+| 鏡頭場景 | `template: "shot"`，`data: { prompt (≤1000), camera?, motion?, negative?, characters?: [id]（≤3）, fit?: auto\|freeze\|slow\|trim, seed?, transition?: cut\|dissolve, start_frame?: { shot, at: "last" }, end_frame?: { prompt }, visual?: clip\|still, source?: { shot, from_s } }`；`visual` 預設 `clip`，`still` 不買片段，由 `assemble` 用關鍵影格加運鏡（下面「畫面等級與運鏡」）；`source` 從更早一個 clip 鏡頭的素材第 `from_s` 秒切進來，不畫關鍵影格、不買素材（下面「同一份素材切幾次」）；有角色、沒有時長下限的漫劇可用 `action_seconds`（1–8）加空 `lines` 寫沒有人說話的鏡頭；句子不能有 `reveal`。`title`／`chapter`／`outro` 卡片仍可用 |
 | 句子 | 多 `speaker?: narrator\|<角色 id>`（預設 narrator）與 `emotion?`（≤80，Gemini 併進 style；Azure 忽略並警告） |
 | `music` | `{ prompt? , track?, sha256?, gain_db (-20), duck_db (-10), fade_in_ms (1500), fade_out_ms (3000) }`：有 `prompt` 由 `music` 階段經伺服器生成；有 `track` 用 `<VIDEO_WORKDIR>/_music/` 的檔案 |
 | `subtitles` | `{ burn_in（預設 false；新自動製作固定 false）, style: drama\|plain, speaker_prefix (false) }`；舊手動影片仍可讀取其明確的燒錄設定 |
@@ -99,7 +99,7 @@ drama 的 `brief.md` 必要章節：「故事前提」「角色」「站主觀�
 - `assemble`：`layoutDrama` 給它 `from_frame` 與 `source`，片段鏈前面加 `trim=start_frame=<from_frame>`；可用格數是來源素材扣掉起點；第 0 格不比關鍵影格，改比來源素材在 `from_frame` 那一格（`frameArgs` 抽出 PNG，PSNR ≥ 22；`checks.json.metrics.shots[].source_frame_psnr`）。
 - 還沒做：同一份素材放大成較近的景別（punch-in，最多 1.5 倍）。要拿一場試拍的 1080p 素材量過裁切後的畫質才決定，不先假設。
 
-**沒有人說話的鏡頭**：有角色的漫劇可寫 `action_seconds`（1–8 的整數）加空的 `lines`，長度就是它（原本只有長篇動畫的 production policy 允許）；旁白講述的影片沒有這種鏡頭，因為它的長度是在旁白上量的。
+**沒有人說話的鏡頭**：有角色、沒有時長下限的漫劇可寫 `action_seconds`（1–8 的整數）加空的 `lines`，長度就是它（`timesSilentShots`；原本只有長篇動畫的 production policy 允許）。旁白講述的影片、有 480 秒下限的知識長片（品牌故事、AI 名詞、解說，就算列了角色）與動畫類都不行：它們的長度是在旁白上量的，靜默鏡會填掉下限。
 
 ## 產線與關卡
 
