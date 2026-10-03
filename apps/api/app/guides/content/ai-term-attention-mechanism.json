@@ -7,6 +7,7 @@
     "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -17,7 +18,12 @@
         "src": "/guides/ai-term-attention-mechanism/hero.jpg",
         "alt": "一排方塊代表詞，最右邊的方塊向左畫出粗細不同的弧線連到其他方塊，最粗的一條連到較遠的一個",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
         {
@@ -30,8 +36,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "從翻譯對齊走到只靠注意力"
+          "text": "從翻譯對齊走到只靠注意力",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -73,8 +79,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "Q、K、V：比對、加權、混合"
+          "text": "Q、K、V：比對、加權、混合",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -119,12 +125,18 @@
           "alt": "以「它」為 query，與小雅、行李箱、後車廂和其餘詞的 key 比對，經 softmax 得到示例權重，再加權混合 value",
           "width": 1600,
           "height": 900,
-          "caption": "由左到右看：先比對，再轉成權重，最後混合；權重為教學示例，不是實測。"
+          "caption": "由左到右看：先比對，再轉成權重，最後混合；權重為教學示例，不是實測。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "自注意力與交叉注意力"
+          "text": "自注意力與交叉注意力",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -132,8 +144,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "多頭注意力在做什麼"
+          "text": "多頭注意力在做什麼",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -145,8 +157,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "注意力權重不等於模型的理由"
+          "text": "注意力權重不等於模型的理由",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -168,8 +180,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "序列變長時的成本與上下文視窗"
+          "text": "序列變長時的成本與上下文視窗",
+          "level": 2
         },
         {
           "type": "paragraph",

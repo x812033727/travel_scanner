@@ -7,6 +7,7 @@
     "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -17,7 +18,12 @@
         "src": "/guides/ai-term-temperature/hero.jpg",
         "alt": "中間一個冷暖兩色的旋鈕，左邊是一高兩低的長條，右邊是三根高度相近的長條",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
         {
@@ -30,8 +36,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "模型每一步給的是機率分布"
+          "text": "模型每一步給的是機率分布",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -68,8 +74,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "溫度如何讓分布變尖或變平"
+          "text": "溫度如何讓分布變尖或變平",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -89,12 +95,18 @@
           "alt": "同一份三個候選的機率，在溫度 0.5、1、2 下被改成集中或平坦的長條，下方示範 top-p 0.85 截掉最後一名",
           "width": 1600,
           "height": 900,
-          "caption": "上排是同一份機率在三種溫度下的樣子，下排是 top-p 0.85 截尾的示意；數字皆為示例。"
+          "caption": "上排是同一份機率在三種溫度下的樣子，下排是 top-p 0.85 截尾的示意；數字皆為示例。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "top-p 與 top-k：先截掉尾巴再抽"
+          "text": "top-p 與 top-k：先截掉尾巴再抽",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -110,8 +122,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "低溫與高溫各適合什麼，也各怎麼失敗"
+          "text": "低溫與高溫各適合什麼，也各怎麼失敗",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -119,11 +131,11 @@
         },
         {
           "type": "list",
-          "ordered": false,
           "items": [
             "低溫的失敗型態是重複與呆板：Holtzman 等人在上述設定下發現，只用溫度取樣且低於 0.9 時，重複迴圈明顯增加；也可能穩定地答錯，因為最高機率的答案不一定正確。",
             "高溫的失敗型態是離題與前後不連貫：Holtzman 等人指出，不截尾、直接照完整機率抽（純取樣）會抽到太多不可靠的冷門候選；Renze 與 Guven 只讓其中一個模型把溫度調到 1.0 以上，超過 1.0 後正確率快速下降，約 1.6 時文字已不連貫。"
-          ]
+          ],
+          "ordered": false
         },
         {
           "type": "rich_paragraph",
@@ -183,8 +195,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "設成 0 也不保證每次一樣"
+          "text": "設成 0 也不保證每次一樣",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -215,8 +227,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "有些模型或介面不開放調整"
+          "text": "有些模型或介面不開放調整",
+          "level": 2
         },
         {
           "type": "paragraph",

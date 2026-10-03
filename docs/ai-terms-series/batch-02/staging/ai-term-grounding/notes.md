@@ -39,6 +39,6 @@ RAG 與接地的關係：只採 Google Cloud 文件的分類（RAG Engine 是接
 來源 12 筆加 1 筆同一文件的繁中頁，都是官方文件、論文頁或作者放出的論文章節，沒有新聞、部落格、內容農場。
 「三年多前的系統」：Liu 等人的回應取得於 2023 年 2–3 月，ALCE 的實驗模型都是 2023 年的；到 2026 年 10 月都是三年多。
 第六個 H2 從「另外兩種接地：符號與影像」改為「其他用法：符號、影像與對話」，因為查核第一輪加了 Clark 與 Brennan 的對話用法；導言也從「另外至少還有兩個」改為「在認知科學、電腦視覺等領域另有很不一樣的意思」。
-字數：查核第二輪精簡後，以 pack_ingest 的 `_body_length` 算是 2,592（含 rich_paragraph 內的站內連結文字 72 字）；不含連結文字為 2,520。撰稿時是 2,542，查核第一輪後是 2,723。本批 brief 寫「不含連結文字」，但程式實際會把 rich_paragraph 裡的連結文字算進去；兩個數字都在 1,800–3,000 內。
+字數：查核第二輪精簡後，以 pack_ingest 的 `_body_length` 算是 2,593（含 rich_paragraph 內的站內連結文字 72 字）；不含連結文字為 2,521。撰稿時是 2,542，查核第一輪後是 2,723。本批 brief 寫「不含連結文字」，但程式實際會把 rich_paragraph 裡的連結文字算進去；兩個數字都在 1,800–3,000 內。
 SVG 為原創向量插圖，非 AI 產圖；hero 沒有文字、沒有 logo。
 自驗：dry-run 通過，只剩 `no_summary` 警告（範本 ai-term-sandbox 同樣有）。brief 指定的渲染指令使用 chromium-1194/chrome-linux/chrome，視窗會被裁掉底部約 88 px（白帶），所以另用 chromium_headless_shell-1194 的 headless_shell 看完整 1600×900，兩張圖都沒有疊字或超框；正式 ingest 的預設會先選 headless_shell。

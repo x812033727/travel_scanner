@@ -39,7 +39,7 @@
             },
             {
               "type": "text",
-              "text": "底下的說法，可先看那篇。"
+              "text": "底下的概念，不熟的話可先看那篇。"
             }
           ]
         },
@@ -116,14 +116,14 @@
         },
         {
           "type": "paragraph",
-          "text": "表現分五級：Level 1 Emerging 約等於或略優於沒有技能的人，Level 2 Competent 至少是具備該技能成年人的第 50 百分位，Level 3 Expert 是第 90 百分位，Level 4 Exceptional 是第 99 百分位（ICML 論文集版稱 Virtuoso，2025 年的 arXiv 修訂版改名），Level 5 Superhuman 勝過 100% 的人。一個系統可橫跨好幾格，論文因此建議模型文件逐項寫出表現分布。"
+          "text": "表現分五級：Level 1 Emerging 約等於或略優於沒有技能的人，Level 2 Competent 至少是具備該技能成年人的第 50 百分位，Level 3 Expert 至少第 90 百分位，Level 4 Exceptional 至少第 99 百分位（ICML 論文集版稱 Virtuoso，2025 年的 arXiv 修訂版改名），Level 5 Superhuman 勝過 100% 的人。一個系統可橫跨好幾格，論文因此建議模型文件逐項寫出表現分布。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "自主性（autonomy）是另一條軸，論文指出 AGI 不必然等於自主。六級人機互動為：0 沒有 AI、1 工具、2 顧問、3 協作者、4 專家、5 代理（Agent）。能力越強越能「解鎖」高自主性，卻不決定該用哪一級，設計者可以刻意選低的。章程則把「高度自主」寫進定義。自主程度越高，系統是否照人的意圖行動越重要，可參考"
+              "text": "自主性（autonomy）是另一條軸，論文指出 AGI 不必然等於自主。六級人機互動為：0 沒有 AI、1 工具、2 顧問、3 協作者、4 專家、5 代理（Agent）。能力越強越能「解鎖」高自主性，卻不決定該用哪一級，設計者可以刻意選低的。論文的對照表推估，窄 AI 也可能解鎖自主性 1 到 4 級，5 級只列通用 AI。章程則把「高度自主」寫進定義。自主程度越高，系統是否照人的意圖行動越重要，可參考"
             },
             {
               "type": "article",
@@ -140,7 +140,7 @@
         {
           "type": "image",
           "src": "/guides/ai-term-agi/diagram-1.svg",
-          "alt": "Levels of AGI 分級圖：表現從 Level 1 到 Level 5，Level 2 到 4 對應 50、90、99 百分位，Level 5 勝過 100% 的人，窄與通用兩欄，通用欄最高一格為超級智慧，右側另列自主性 0 到 5 級",
+          "alt": "Levels of AGI 分級圖：表現從 Level 1 到 Level 5，Level 2 到 4 對應 50、90、99 百分位，Level 5 勝過 100% 的人，窄與通用兩欄，通用欄最高一格為超級智慧，右側另列自主性 0 到 5 級，窄與通用兩欄的能力提升都可能解鎖較高的自主性",
           "width": 1600,
           "height": 900,
           "caption": "左邊是 Morris 等人的表現與通用程度兩軸，右邊的自主性是另一條軸，由部署方式決定。"
@@ -180,7 +180,7 @@
         },
         {
           "type": "paragraph",
-          "text": "他們點出不對稱：證明某系統不屬於某一級，只要找到一項人類做得到、它做不好的任務；要說它屬於，卻得面對列不完的任務。Marcus 提出的五項任務（如看懂小說、在任意一間廚房做菜、寫出沒有錯誤的一萬行程式）就是例子：論文指出，沒通過其中幾項可能表示還不是，全部通過卻不一定足以說明是。"
+          "text": "他們點出不對稱：證明某系統不屬於某一級，只要找出一般人通常做得到、它卻做不好的任務；要說它屬於，卻得面對列不完的任務。Marcus 提出的五項任務（如看懂小說、在任意一間廚房做菜、寫出沒有錯誤的一萬行程式）就是例子：論文指出，沒通過其中幾項可能表示還不是，全部通過卻不一定足以說明是。"
         },
         {
           "type": "paragraph",
@@ -195,7 +195,7 @@
           "type": "list",
           "ordered": true,
           "items": [
-            "誰說的：OpenAI 與 Microsoft 在 2025 年 10 月的官方公告寫到，OpenAI 宣告 AGI 後由獨立專家小組查驗，但沒寫標準；雙方 2026 年 4 月再修約，官方公告列出的條款已不再提到 AGI。不論誰宣告，都要追問依據。",
+            "誰說的：開發者自己宣布，還是第三方查驗過？AGI 也曾被寫進公司之間的合作協議，雙方的官方公告卻沒寫出判定標準，所以不論誰宣告，都要追問依據。",
             "用哪個定義：經濟價值工作、分級表上的哪一格，還是學習效率？沒交代的只是口語用法。",
             "怎麼量：哪些任務、對照哪群人、第幾百分位、題目是否事前未知。",
             "量潛力還是部署：Morris 等人主張 AGI 看系統做得到什麼，不是已被用在多大範圍。",
@@ -280,23 +280,13 @@
           "checked_on": "2026-10-03"
         },
         {
-          "title": "Microsoft：The next chapter of the Microsoft–OpenAI partnership（官方部落格公告）",
+          "title": "Microsoft：The next chapter of the Microsoft–OpenAI partnership（官方部落格公告，2025 年 10 月）",
           "url": "https://blogs.microsoft.com/blog/2025/10/28/the-next-chapter-of-the-microsoft-openai-partnership/",
           "checked_on": "2026-10-03"
         },
         {
-          "title": "OpenAI：The next chapter of the Microsoft–OpenAI partnership（官方公告）",
+          "title": "OpenAI：The next chapter of the Microsoft–OpenAI partnership（官方公告，2025 年 10 月）",
           "url": "https://openai.com/index/next-chapter-of-microsoft-openai-partnership/",
-          "checked_on": "2026-10-03"
-        },
-        {
-          "title": "Microsoft：The next phase of the Microsoft-OpenAI partnership（官方部落格公告，2026 年 4 月）",
-          "url": "https://blogs.microsoft.com/blog/2026/04/27/the-next-phase-of-the-microsoft-openai-partnership/",
-          "checked_on": "2026-10-03"
-        },
-        {
-          "title": "OpenAI：The next phase of the Microsoft OpenAI partnership（官方公告，2026 年 4 月）",
-          "url": "https://openai.com/index/next-phase-of-microsoft-partnership/",
           "checked_on": "2026-10-03"
         }
       ]
