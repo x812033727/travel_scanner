@@ -8,10 +8,37 @@
 | migration | `docker compose -f docker-compose.prod.yml exec -T api alembic current` | 等於 repo 最新的 revision |
 | 內部健康 | `curl 127.0.0.1:8090/health`、`/ready`；web `curl -sI 127.0.0.1:8091/` | 200；公開的 `/api/travel/health` 是 404，不是故障 |
 | 公開站 | `curl -s -o /dev/null -w '%{http_code} %{time_total}s' https://mokaair.com/zh-TW` | 200、小於 1 秒；`/` 回 307 到 `/zh-TW` 是正常的語系導向 |
-| 容器 | `docker compose -f docker-compose.prod.yml ps` | 七個應用容器 Up，映像標籤 `:local`（分階段驅動部署的會是 `:<sha>`） |
+| 容器 | `docker compose -f docker-compose.prod.yml --profile hotspots --profile news --profile video ps -a` | 13 個 Up（postgres、redis 加十一個應用容器；`migrate` 是 `Exited (0)`），應用映像標籤 `:local`（分階段驅動部署的會是 `:<sha>`） |
 | 新程式真的在跑 | 抓一個這次 diff 加進的字串：`curl -s <頁面> \| grep -c '<字串>'` | 有；內容包的改動要等匯入才會出現 |
 
 抓公開頁面要慢慢來：邊緣層對頁面有 5 r/s 的限流，自己的驗證迴圈跑太快會拿到 429，那是自己的節奏，不是站台壞了。腳本一律循序、每次至少 1 秒。
+
+## 一支腳本一次驗完：`scripts/host-verify.sh`
+
+上表的每一項都在 `.agents/skills/deploy/scripts/host-verify.sh` 裡，一次 SSH 跑完、每項印 `PASS <id> <量到的值>` 或 `FAIL <id> …`，
+最後 `TOTAL pass=<n> fail=<n>`。2026-10-03 部署 5af4ffebf 時 15 項全過，約 40 秒。
+
+```bash
+TMP=$(mktemp -d)   # repo 外任何暫存目錄都行（Claude Code 用 session 的 scratchpad 也可以）
+sed 's/^EXPECTED_SHA=""$/EXPECTED_SHA="<squash sha>"/' .agents/skills/deploy/scripts/host-verify.sh > "$TMP/verify.sh"
+MSYS_NO_PATHCONV=1 <SSH> -m "$TMP/verify.sh" > "$TMP/verify.out" 2>&1
+grep -E '^(PASS|FAIL|TOTAL|SHA |WARN)' "$TMP/verify.out"
+```
+
+- `plink -m` 不傳位置參數，所以 `EXPECTED_SHA` 用 sed 填進檔案；用 `-m` 而不是 `bash -s` 餵 stdin，因為腳本裡有 `docker compose exec -T`，
+  它會把 stdin 剩下的腳本吃掉。
+- 腳本頂端的 `ALEMBIC_HEAD`、`UP_COUNT`（13＝postgres、redis 加十一個應用容器，三個 profile 全開）是 2026-10-03 的值；有新 migration 或新服務時先改，
+  不然那一項會 FAIL 並印出實際值。
+- 共用的檢查只證明「部署成功、沒壞」。**這次 diff 的新程式有沒有在跑，要自己加檢查**，放在腳本的 `EXTRA CHECKS` 區：每一項抓一個改動之後才存在的字串或行為，
+  而且舊映像跑起來一定是相反的結果。三個樣式都在腳本的註解裡：api 容器用 `python -c` 讀檔或 import 後印值（`/app/app/...`）；
+  video-worker 用 `grep -c` 或 `node --input-type=module -e` import 新函式呼叫一次（程式在 `/opt/mokaair`）；web 容器是 busybox，
+  讀 `/app/apps/web/package.json` 的 standalone 複本證明套件版本。非 ASCII 用 `chr()`／`String.fromCharCode` 寫成碼點，傳輸不會弄壞。
+- 大一點的部署，檢查先用 Workflow 設計再跑：兩個提案代理各從一個角度列檢查（「新程式真的在跑」、「部署成功且沒退步」），
+  兩個反駁代理各審一個角度（主機與分類器安全：唯讀、不碰 .env、不 grep 部署腳本名、公開站不超過兩次；證明力：字串是不是改動前就有、容器路徑對不對、
+  期待值對不對），一個整合代理把活下來的寫成一支腳本；本機先 `bash -n`、把寫死的期待值對照 worktree 核一次（compose 服務數、migration head、
+  字串在舊版有沒有）再送主機。10-03 這樣做出 16 個提案、活 15 個，一次全過。
+- 讀結果：`with_rollback_lines` 不是 0 時看 SHA 有沒有對上，部署腳本的「health 3/3 ok」在回滾之後也會印（2026-09-29）；
+  `knock_failed=1` 是工人剛起來 api 還沒好，預期中；公開站 502 而容器全 Up，是重建的 8 秒空窗，再跑一次。
 
 ## 大功能上線後的三個問題
 

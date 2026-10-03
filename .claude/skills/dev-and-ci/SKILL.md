@@ -19,6 +19,7 @@ metadata:
 4. **含非 ASCII、反斜線、引號、反引號的腳本或檔案編輯，用 Write 工具寫進 scratchpad 再執行。** Bash 的 heredoc 會改寫它們，`perl -pi`／`sed -i` 會把中文寫壞。新檔 commit 後看 `git show --stat`，出現 `Bin` 就是寫進了 NUL。
 5. **紅燈先分類再動手**：環境（重跑）、已知 flake（對照表）、自己的錯（修）。一個「單獨跑永遠過」的 web 測試在負載下紅，先想 passive effect 空檔，不要加 `waitFor` 或 timeout 掩蓋。
 6. **量到完美的數字先證明儀器量得到不完美的**：CLS 0、scrollWidth 等於 innerWidth，都可能是量法根本不可能給別的答案。
+7. **綁在長片時長收據裡的檔（`tools/video/long-form/review.mjs` 的 `REVIEW_FILES`），改了要獨立審查代理補增量，作者不能自己重綁。** 推之前 `node tools/video/long-form/cli.mjs check`；紅就照 `references/duration-receipt.md`（連別人漏補的綁定讓你的 PR 紅的情況）。
 
 ## 主幹
 
@@ -79,6 +80,7 @@ PR 只跑 `pull_request` 事件（`push` 只在 main），同一個 PR 的新 pu
 | CI 紅燈分診、已知 flake 對照、passive effect 空檔與它的重現 helper | `.agents/skills/dev-and-ci/references/ci-triage.md` |
 | Playwright 手機點擊落空、CLS 量測 | `.agents/skills/dev-and-ci/references/browser-measurement.md` |
 | 每週 Dependabot PR 怎麼判斷、被擋住的大版本 | `.agents/skills/dev-and-ci/references/dependabot.md` |
+| 長片時長收據：哪些檔綁住、改了怎麼請獨立代理補增量、併 main 之後的 follow-up、PR 紅在別人沒補的綁定 | `.agents/skills/dev-and-ci/references/duration-receipt.md` |
 | 合併、rebase、BEHIND／DIRTY | skill `task-board` |
 | i18n 鍵、寫 e2e spec | skill `web-i18n-e2e` |
 | migration、Redis／session helper 的寫法 | skill `backend-conventions` |
@@ -86,5 +88,5 @@ PR 只跑 `pull_request` 事件（`push` 只在 main），同一個 PR 的新 pu
 ## 這個 skill 的檔案
 
 - `scripts/run-checks.sh`：依組別跑檢查，每個檢查一個 log，印 exit code 與彙總，有任何失敗就非零結束。
-- `references/*.md`：上表五份。
+- `references/*.md`：上表六份。
 - `.claude/skills/dev-and-ci/SKILL.md` 是這一份的逐字複本，`npm run test:tools` 會比對；references 與 scripts 只放在 `.agents/` 這一份。

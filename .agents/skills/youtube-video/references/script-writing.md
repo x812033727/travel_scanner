@@ -38,7 +38,7 @@
 - 節拍是工具設的：存稿時 `register.mjs` 的 `setPauseBeats` 依文字放 `pause_after_ms`（冷開場第一句後 900、「其實」前那句 600、章末問題後 1200），其他地方的值一律清掉。模型不寫 `pause_after_ms`；要節拍落在哪，就把字寫在那裡（章末寫成問句、揭曉用「其實」開頭）。
 - 事實不動：口吻只改用字、順序與節奏，數字、名字、版本、誰說的都不變，每個主張仍要在 `## 來源` 裡。
 
-聲音要配得上稿子：Gemini 的 `voice.style` 用 `register.mjs` 的 `STORY_VOICE_STYLE`（「標準國語，咬字清楚，台北人平常說話的語調。說書人……絕不平、絕不像在念稿」；口音寫法的理由在 `docs/videos/README.md` §頻道規格），站主在 `/admin/videos` 的設定分頁貼上，`settle()` 會抄進每支新影片；它在 `speechHash` 裡，改了就全部重錄。已經寫好的影片用 `node tools/video/cli.mjs restyle --slug <slug>` 改口吻（`prompts/listener-register.md`）。
+聲音要配得上稿子：Gemini 的 `voice.style` 用 `register.mjs` 的 `STORY_VOICE_STYLE`（「標準國語，咬字清楚，台北人平常說話的語調。說書人……絕不平、絕不像在念稿」；口音寫法的理由在 `docs/videos/README.md` §頻道規格，要換口音或口吻的寫法先照 `voice-audition.md` 試聽、站主選了再改），站主在 `/admin/videos` 的設定分頁貼上，`settle()` 會抄進每支新影片；它在 `speechHash` 裡，改了就全部重錄。已經寫好的影片用 `node tools/video/cli.mjs restyle --slug <slug>` 改口吻（`prompts/listener-register.md`）。
 
 ## 意見與事實
 
