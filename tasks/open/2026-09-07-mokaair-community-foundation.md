@@ -209,3 +209,16 @@ are being repaired and this foundation ticket remains review.
 Private canonical receipt SHA-256
 `2f6b3b589cadaebf0dab9a1d388197f7b0a8ae4289fb77739ae062545daa8a81`.
 Immutable [first full-stack job](https://github.com/x812033727/travel_scanner/actions/runs/37126555983/job/111212893808).
+
+The corrected runtime has now executed in [second full-stack job](https://github.com/x812033727/travel_scanner/actions/runs/37128624919/job/111219014934).
+PR head `70174ca194dc386ead9c02a1e70cc1d0aed7645a`, actual checkout/GITHUB_SHA
+`a52226de3d79d89e817cecd10ed05f237ecd1916`: all six recovery cases passed,
+zero failures/skips, 392.33 seconds. This receipt binds runtime SHA-256
+`625c01c131a9b54265fc7c8141f4236ddaafdda72f4d07f89bdcea7eb08d093e`.
+Owned processes stopped; shared services were not stopped; capacity acceptance
+remains false. The separate browser matrix was 28 passed / 2 failed, both at
+the Japanese message-input locator after the keyboard and locale checks.
+This job therefore failed overall. The private canonical receipt
+`community-real-matrix-20261003/ci-70174ca/canonical-receipt.json` has SHA-256
+`90073327ab7d271fa4cba80f01f65bf89ca160abe70a18a4d8b48c5001535a60`.
+Keep this foundation ticket in review for the remaining owner/capacity gates.

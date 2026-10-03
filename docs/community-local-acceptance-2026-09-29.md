@@ -245,3 +245,48 @@ primary Node v24.19.0; the npm command used the installed npm shim. Private
 receipt `task-continuation-20261003/ui-locale-typecheck-20261003T140129996Z.json`
 has SHA-256 `19246e133ad7e4cbbff58efb52ace2ecf3cabed31ceb026163660ce9ad8d8a5e`.
 These checks do not execute the browser; the corrected exact-head CI is pending.
+
+### Second 30-case execution and Japanese composer locator
+
+At exact head `70174ca194dc386ead9c02a1e70cc1d0aed7645a`,
+[full-stack job 111219014934](https://github.com/x812033727/travel_scanner/actions/runs/37128624919/job/111219014934)
+checked out `a52226de3d79d89e817cecd10ed05f237ecd1916` and ran the community
+matrix: **28 passed, 2 failed, zero skipped**, in 6.6 minutes with two workers.
+The initial report-dialog keyboard failures and administrator-locale failures
+did not recur. The two failures are the Japanese publication/message journey
+on desktop and Pixel 7; this is still a failed matrix, not whole acceptance.
+
+The log lists four exact matches for `getByLabel("メッセージ")`: the tab list,
+tab panel, message log and composer textarea. Japanese uses the same text for
+the singular and plural message labels. Both composer references now use the
+`textbox` role with the exact catalog label, for filling and theme checks. Only
+these two locator expressions change; reversing them restores every byte of
+the `70174ca` spec. All 37 original non-UI assertions, keyboard checks, isolated
+administrator locale selection, authentication, quotas and timeouts remain.
+The completed job log fully identifies this mismatch; no additional browser
+artifact download or service execution was needed for diagnosis.
+
+In the same job, the six real-service recovery scenarios passed with zero
+failures or skips in 392.33 seconds. Its emitted receipt binds the new runtime
+SHA-256 `625c01c131a9b54265fc7c8141f4236ddaafdda72f4d07f89bdcea7eb08d093e`
+to the actual checkout and confirms owned fixture processes stopped while
+shared services were preserved; later application/container cleanup steps also
+succeeded. Operational capacity remains explicitly unaccepted. This separate
+recovery success does not turn the two browser failures into a pass.
+
+Canonical private evidence:
+`community-real-matrix-20261003/ci-70174ca/canonical-receipt.json`, SHA-256
+`90073327ab7d271fa4cba80f01f65bf89ca160abe70a18a4d8b48c5001535a60`.
+The actual checkout's Dialog, Dialog test and community spec bytes match the PR
+head exactly. The first 18-failure receipt and this two-failure receipt are both
+preserved. Another fresh isolated-stack run is required for the corrected spec.
+
+For corrected spec SHA-256
+`21da9cdb3caad36061782af41669a3fc445dae952bbf04e432cf5ce8fe3ced5c`,
+scoped ESLint and Playwright discovery both returned exit 0 on captured bundled
+Node v24.21.0; discovery found exactly 30 cases. The source hash was unchanged
+before and after both checks. Private
+`community-real-matrix-20261003/ci-70174ca/ja-fix-checks.json` records the actual
+argv, times, log hashes and exact two-substitution byte-preservation proof.
+These checks do not execute the browser or supersede the 28-pass/two-failure
+result; full TypeScript and fresh exact-head browser verification remain pending.

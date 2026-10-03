@@ -113,6 +113,31 @@ Independent keyboard/locale source review passed, receipt SHA-256
 `95b4bd9244e120eeffc5e7a7f9390ce4b700dde44ad5edd444de6ece09a92646`.
 Corrected exact-head browser execution remains required; no quota or deadline was raised.
 
+2026-10-03 second matrix CI: head `70174ca194dc386ead9c02a1e70cc1d0aed7645a`,
+run `37128624919`, job `111219014934`, actual checkout
+`a52226de3d79d89e817cecd10ed05f237ecd1916`: 28 passed, two failed, zero skipped
+in the 30-case matrix. The ten original keyboard and eight administrator-locale
+failures did not recur. Both remaining failures are Japanese message-composer
+locators: `getByLabel` matches the identically named tab list, tab panel, log and
+textarea. Only the two composer references (fill and appearance check) now use
+the exact catalog label plus `textbox` role. Reversing these two substitutions
+restores every byte at `70174ca`; all 37 original non-UI assertions and existing
+keyboard, locale, authentication, quota and timeout checks remain unchanged.
+The same job's six recovery scenarios passed at new runtime `625c01c1`, with
+owned-process cleanup confirmed and capacity acceptance false. This does not
+supersede the browser failure. Canonical private receipt:
+`community-real-matrix-20261003/ci-70174ca/canonical-receipt.json`, SHA-256
+`90073327ab7d271fa4cba80f01f65bf89ca160abe70a18a4d8b48c5001535a60`.
+Both failed-head records remain preserved; status stays review and the matrix
+Step stays unchecked until all 30 cases pass on a fresh isolated stack.
+Corrected spec SHA-256:
+`21da9cdb3caad36061782af41669a3fc445dae952bbf04e432cf5ce8fe3ced5c`.
+Scoped ESLint and Playwright discovery (exactly 30 cases) both returned exit 0
+on captured bundled Node v24.21.0 with source bytes unchanged; private
+`community-real-matrix-20261003/ci-70174ca/ja-fix-checks.json` binds actual
+argv/logs and the exact two-substitution byte-preservation proof. Full TypeScript
+and fresh exact-head browser verification remain pending for this correction.
+
 Checkpoint: rebased onto main 54009ba. CI 34130887751 passed Web components,
 TypeScript, lint, five-locale checks, the default production build and isolated
 desktop/Pixel 7 UI tests. Existing real-stack travel journeys also pass after

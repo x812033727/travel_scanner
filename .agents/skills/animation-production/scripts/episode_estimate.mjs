@@ -19,7 +19,7 @@
 // --plan 把同一集的片段換算成方案的 credits、月額度占比、兩種美元（月費攤／頁面價），並和伺服器路線並列、印損益
 // 平衡秒數（月費 ÷ 伺服器每秒價）；--resolution 給伺服器模型的解析度，--plan hailuo:* 時也選 768p 或 2k 的檔位。
 // 結束碼：0；--strict 且裁定不過（超過 --cap、超過 --month-clip-seconds、超出 tier、production 下的長鏡頭、既有
-// data.source 超出來源實際買到的秒數、veo-3.1-lite* 配非空 look.negative）是 1；讀不到檔或參數錯是 2。
+// data.source 超出來源實際買到的秒數）是 1；讀不到檔或參數錯是 2。
 import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
@@ -52,15 +52,6 @@ export const KLING_VIDEO_SECONDS = 5;
 export const DEFAULT_MINUTES_PER_CLIP = 6;
 // 工具規定：production profile 一鏡最多 8 秒（tools/video/core/lint.mjs productionShotProblems）。
 export const PRODUCTION_SHOT_SECONDS = 8;
-// Veo Lite 的 negativePrompt 陷阱（完整說法只在 references/error-catalogue.md #23）：伺服器對每個模型都送
-// parameters.negativePrompt（apps/api/app/video_media/providers/gemini_video.py），Lite 回 HTTP 400；
-// 這是花錢前唯一讀得到 video.json 的腳本，所以在這裡就抓。票落地那天連這段一起刪。
-export const LITE_MODEL = /^veo-?3\.1-lite/;
-export const LITE_NEGATIVE_TICKET = "tasks/open/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md";
-export function liteNegativeProblem(model, look) {
-  if (!LITE_MODEL.test(model ?? "") || !look?.negative) return null;
-  return `片段模型 ${model} 配非空的 look.negative（${look.preset} preset 的預設就有）：伺服器對每個模型都送 negativePrompt（apps/api/app/video_media/providers/gemini_video.py），Lite 回 HTTP 400，每個 take、每個 seed 都一樣（${LITE_NEGATIVE_TICKET}）；票落地前先把 look.negative 寫成空字串，而且要在 look 之前（negative 算在 lookHash）`;
-}
 // 兩個 prompt 的字集 Jaccard：切鏡候選只比鏡位（camera 行加 prompt 第一子句），畫面像不像要人看；相似度低就標出來。
 const words = (text) => new Set(String(text ?? "").toLowerCase().split(/[^a-z0-9一-鿿]+/).filter((each) => each.length > 1));
 export function promptSimilarity(a, b) {
@@ -506,8 +497,6 @@ export function estimateEpisode(doc, options = {}) {
   }
 
   const problems = [];
-  const liteTrap = liteNegativeProblem(model, look);
-  if (liteTrap) problems.push(liteTrap);
   for (const shot of cutShots.filter((each) => !each.source_fits)) {
     const origin = byId.get(shot.source.shot);
     problems.push(origin?.visual === "clip"
@@ -534,7 +523,6 @@ export function estimateEpisode(doc, options = {}) {
       music: { model: DEFAULT_MUSIC_MODEL, usd_per_track: PRICES[DEFAULT_MUSIC_MODEL].usd_per_track, source: PRICES[DEFAULT_MUSIC_MODEL].source },
     },
     takes: { keyframes: keyframeTakes, clips: clipTakes, look_rounds: MAX_LOOK_ROUNDS },
-    lite_negative_trap: Boolean(liteTrap),
     shots,
     counts: { shots: shots.length, clips: clipShots.length, stills: stillShots.length, cuts: cutShots.length, characters, silent: shots.filter((shot) => shot.silent).length },
     stages,

@@ -222,14 +222,14 @@ test(`${locale}: verified members publish reviewed private images, fork safely a
     await page.getByRole("button", { name: copy.follow, exact: true }).click();
     await expect(page.getByRole("button", { name: copy.message, exact: true })).toBeEnabled();
     await page.getByRole("button", { name: copy.message, exact: true }).click();
-    await page.getByLabel(copy.message, { exact: true }).fill(`Message ${suffix}`);
+    await page.getByRole("textbox", { name: copy.message, exact: true }).fill(`Message ${suffix}`);
     await page.getByRole("button", { name: copy.send, exact: true }).click();
     await expect(page.getByRole("log").getByText(`Message ${suffix}`, { exact: true })).toBeVisible();
     const conversationId = new URL(page.url()).searchParams.get("conversation")!;
     await reader.goto(`/${locale}/community/messages?conversation=${conversationId}`);
     await expect(reader.getByRole("log").getByText(`Message ${suffix}`, { exact: true })).toBeVisible();
     for (const appearance of ["light", "dark"] as const) {
-      await checkAppearance(reader, reader.getByLabel(copy.message, { exact: true }), appearance);
+      await checkAppearance(reader, reader.getByRole("textbox", { name: copy.message, exact: true }), appearance);
     }
     await reader.screenshot({ path: info.outputPath("community-conversation.png"), fullPage: true });
     expect(await reader.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);

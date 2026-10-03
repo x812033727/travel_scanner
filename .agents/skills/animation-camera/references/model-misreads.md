@@ -40,15 +40,17 @@
 
 關鍵影格提示（`tools/video/media/keyframes.mjs` 的 `shotPrompt`）：`<prompt>. Style: <look.style>. Camera: <camera>. Characters: <name>: <appearance>; …`，切到 4000 字；`look.negative` 另送，Gemini 圖片 adapter 接在提示後面成 `\n\nAvoid: <negative>`，有參考圖再加一句 `Keep every character exactly as in the reference images.`（`apps/api/app/video_media/providers/gemini_images.py`）；MiniMax 接成 `. Avoid: …`（`apps/api/app/video_media/providers/minimax.py`）。圖片請求不帶 seed（兩個 adapter 都沒送；`keyframes` 的「換 seed」只改快取鍵）；參考圖最多 4 張（`apps/api/app/video_media/schemas.py` 的 `MAX_REFERENCES`，catalog 寫的 14 張是供應商的上限，工具用不到）。景別在提示裡出現兩次（prompt 開頭與 `Camera:` 子句），兩處要同一家族。
 
-## 三、Veo Lite 的 negativePrompt 陷阱（修好就刪這一節）
+## 三、Veo Lite 的 negativePrompt：歷史失敗與已完成的相容修正
 
-`apps/api/app/video_media/providers/gemini_video.py` 對每個模型都送 `parameters.negativePrompt`（有 negative 就送）；`veo-3.1-lite-generate-preview` 回 HTTP 400 `INVALID_ARGUMENT`，adapter 把 400 改成 `Gemini refused the request`，原因丟掉。`clips.mjs` 只要 `look.negative` 非空就送（第 321 行），每個 preset 都有 negative，所以 preset look 的 Lite 片段會在送出就失敗，兩次重拍（`MAX_CLIP_TAKES`）都失敗在同一個 400。票在 `tasks/open/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md`（P1，open）；`tools/animation-production.test.mjs` 斷言這段轉送還在，修好時測試會紅，到時刪這一節。
+第一節 S01 R01／R02 是修正前的真實結果：送出不支援的 `parameters.negativePrompt`，兩個 seed 都在 HTTP 400 停下，兩次各預留 US$0.64。原逐 take 表與試拍收據保留，不把後來修正寫成當時成功。
 
-今天的做法：`look.negative` 寫空字串，而且要在 `look` 跑之前（它在 `lookHash` 裡）；要避開的東西改寫成每鏡 prompt 裡的正面描述（`blank paper`、`one watch`），試拍 R03 就是把 avoidance 文字併進主提示才拿到 HTTP 200。空 negative 也影響關鍵影格（圖片 adapter 不再接 `Avoid:` 段），所以 `no text, no watermark` 這類要寫進 `look.style` 或每鏡 prompt。Omni 與 MiniMax 沒有這個問題（MiniMax 本來就併進提示）。
+此程式版本的 `apps/api/app/video_media/providers/gemini_video.py` 對 `veo-3.1-lite-generate-preview` 省略該參數，把完整 negative 文字接成 `\n\nAvoid: …` 放進主提示；其他 Gemini 影片模型保留原 `parameters.negativePrompt`。修正與離線 request-body 證據在 `tasks/done/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md`。MiniMax 仍以自己的 adapter 把 negative 接進提示。實際後端須核對部署版本；本機 preflight 通過不證明正式服務已更新。
+
+因此不必清空 `look.negative`，也不必為 Lite 更改已核准的 look：negative 仍進入 `lookHash`，更改會使設定圖、關鍵影格、片段與核准過期。保留既有預算、重拍上限與 owner 關卡；離線相容測試不代表新付費片段或視覺驗收已完成。
 
 ## 四、judge 怎麼讀、拒絕什麼
 
-通過條件（`apps/api/app/video_media/judge.py`）：加權總分 ≥ `judge_min_score`（後台設定，預設 7）且每一題 ≥ `MIN_CRITERION = 4.0`；temperature 0；每次記 US$0.01（`JUDGE_USD_PER_CALL`）。題目每題 ≤ 400 字（`schemas.py` 的 `JudgeCriterion`）：命名造型把整段 appearance 接進 identity 題，試拍的 zhitang 基底造型 422 字被驗證擋在 judge 之前（`tasks/open/2026-10-02-keep-named-look-clip-judge-questions.md`）。judge 的 context 是 `shot.prompt`／`camera`／`motion` 原文、角色 appearance 與 `look.style`。
+通過條件（`apps/api/app/video_media/judge.py`）：加權總分 ≥ `judge_min_score`（後台設定，預設 7）且每一題 ≥ `MIN_CRITERION = 4.0`；temperature 0；每次記 US$0.01（`JUDGE_USD_PER_CALL`）。題目每題 ≤ 400 字（`schemas.py` 的 `JudgeCriterion`）。歷史試拍的 zhitang 基底造型 422 字曾被驗證擋在 clip judge 之前；目前 clip 識別題已改成有界文字、參考圖標籤 ≤ 80 字，完整姓名與 appearance 保留在 context（`tasks/done/2026-10-02-keep-named-look-clip-judge-questions.md`）。keyframe 識別題仍直接帶 appearance，preflight 對本次要畫的鏡頭保留 400 字檢查。judge 的 context 另含 `shot.prompt`／`camera`／`motion` 原文與 `look.style`。
 
 | judge | 題（key、權重） | 什麼時候出現 | 鏡頭寫法的含意 |
 | --- | --- | --- | --- |
