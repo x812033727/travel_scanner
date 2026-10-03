@@ -7,8 +7,8 @@
 | 東西 | 在哪裡 |
 | --- | --- |
 | 站台檔 | `/etc/nginx/sites-available/mokaair.com`（`sites-enabled/` 連過去）。**改這個檔**；不要另外放一個 `mokaair.conf`，nginx 不會讀它 |
-| 專案擁有的四個檔 | `conf.d/mokaair-rate-limit.conf`、`conf.d/05-mokaair-crawler-ranges.conf`、`snippets/mokaair-proxy-headers.conf`、`snippets/mokaair-upstream-keepalive.conf`，由 `ops/nginx/install.sh` 覆寫（冪等、不 reload、不碰站台檔） |
-| 站台檔獨有的東西 | `mocair.io`／`www` 的 301 與各自的憑證、`default_server`、內嵌的 `ssl_protocols`／`ssl_ciphers`、port 80 上 certbot 的 ACME webroot。`ops/nginx/mokaair.conf.example` 是合併來源，**不能整份蓋過去**（`/.well-known/` 會被導到 Next，續憑證就壞了） |
+| 專案擁有的五個檔 | `conf.d/mokaair-rate-limit.conf`、`conf.d/05-mokaair-crawler-ranges.conf`、`snippets/mokaair-proxy-headers.conf`、`snippets/mokaair-upstream-keepalive.conf`、`snippets/mokaair-tls-policy.conf`（2026-10-03 起），由 `ops/nginx/install.sh` 覆寫（冪等、不 reload、不碰站台檔） |
+| 站台檔獨有的東西 | `mocair.io`／`www` 的 301 與各自的憑證、`default_server`、http 層的三條 `ssl_session_*`、port 80 上 certbot 的 ACME webroot。TLS 的協定與套件自 2026-10-03 起來自 `include /etc/nginx/snippets/mokaair-tls-policy.conf;`（三個 ssl server 各一條；之前內嵌的三行與 snippet 逐字相同，所以換過去行為不變），四個 server 都有 `server_tokens off;`。`ops/nginx/mokaair.conf.example` 是合併來源，**不能整份蓋過去**（port 80 的 server 會把 ACME 也 301 走，續憑證就壞了） |
 | 前面有沒有 CDN | 沒有：`curl -sI https://mokaair.com` 回 `Server: nginx`、沒有 `cf-ray`／`via`／`x-served-by`，所以 `real_ip` 區塊保持註解。哪天有了 CDN，`$remote_addr` 會變成 CDN 的出口位址，所有限流都失去意義 |
 
 改站台檔前先備份整個 `/etc/nginx`（`cp -a /etc/nginx /root/nginx-backups/<時間>/`），回滾是 `cp -a <備份>/. /etc/nginx/` 再 `nginx -t && systemctl reload nginx`。上傳＋`install`＋`nginx -t` 一次呼叫，`systemctl reload nginx` 另一次呼叫（分類器會擋綁在一起的，見 skill `deploy`）。reload 要站主同意。
@@ -22,9 +22,10 @@
 | `mokaair_content_pages` | 每位址 5 r/s，`burst=20 nodelay` | `location /`（頁面）。已驗證的爬蟲在這區的 key 是空的，不計 |
 | `mokaair_crawlers` | 每位址 30 r/s，`burst=60` | 同一個 `location /`，只有 `$mokaair_verified_crawler` 為 1 的位址有 key |
 | `mokaair_api` | 10 r/s，`burst=20` | `location /api/` |
+| `mokaair_crawl_files` | 每位址 10 r/s，`burst=30 nodelay` | 五個爬取控制路徑與 `= /.well-known/apple-developer-domain-association.txt`（2026-10-03 起）。key 與頁面區相同，所以已驗證的爬蟲在這區是空的，改計 `mokaair_crawlers` |
 | `mokaair_conns` | 每位址 20 條連線（`limit_conn`，server 層） | 全部，**包括已驗證的爬蟲** |
 
-不限流：`/_next/static/`、`/brand/`、`/api/line/webhook`、`/.well-known/`，以及五個爬取控制路徑 `/robots.txt`、`/ads.txt`、`/sitemap.xml`、`/llms.txt`、`^~ /sitemaps/`。`limit_req` 與 `limit_conn` 都回 429。文章圖片 `/guides/<slug>/<file>.(webp|jpg|png|svg)` 在頁面區的 key 也是空的。
+不限流：`/_next/static/`、`/brand/`、`/api/line/webhook`。五個爬取控制路徑 `/robots.txt`、`/ads.txt`、`/sitemap.xml`、`/llms.txt`、`^~ /sitemaps/` 不進頁面預算，但計入 `mokaair_crawl_files`（sitemap 每次都是伺服器重新算，無上限的路徑任何位址都能拿來打）。`/.well-known/` 不再是整個前綴放行：只有 Apple 的網域驗證檔有自己的 exact location，其餘路徑落到 `location /` 走頁面預算；ACME 走 port 80 的 webroot，不經過 443。`limit_req` 與 `limit_conn` 都回 429。文章圖片 `/guides/<slug>/<file>.(webp|jpg|png|svg)` 在頁面區的 key 也是空的。
 
 爬蟲網段由 `tools/nginx-crawler-ranges.mjs` 從 googlebot.json、special-crawlers.json（Search Console 的即時測試從這裡來）與 bingbot.json 產生：`node tools/nginx-crawler-ranges.mjs > ops/nginx/05-crawler-ranges.conf`，commit 差異，再用 `install.sh` 裝上主機。沒有執行期抓取，網段會過期，所以隔一陣子重跑。**豁免永遠依位址，不依 User-Agent**。`/ads.txt` 不靠網段：它有自己的 `location`，因為一個 429 在 AdSense 眼裡就是「這個網站沒有 ads.txt」。
 
@@ -53,6 +54,9 @@
 | `ss -tn` 看不到那條連線 → 已經關了／誰也沒關 | `ss -tn` 預設不列 TIME-WAIT | 用 `ss -tan`（見下面 502 那段） |
 | `nginx -T` 裡有新設定 → 已生效 | `nginx -T` 讀的是磁碟上的檔，不是 worker 載入的 | reload 之後用行為證明（限流的 40 並行、keep-alive 的 TIME-WAIT） |
 | 改了 `sites-available/mokaair.conf`、`nginx -t` 過、reload 成功 | 那個檔沒被 enable，nginx 一個字都沒讀 | 改 `mokaair.com`，並用行為驗證 |
+| 併發打 sitemap 拿到 429 → 爬取檔的預算生效了 | `limit_conn mokaair_conns 20` 對同一位址的併發本來就回 429；2026-10-03 變更前 60 併發就有 21 個 429，全是 `limiting connections` | 讀 `mokaair-limit.log` 新增行的區名：要有 `limiting requests … by zone "mokaair_crawl_files"`。用真的子檔 `/sitemaps/sitemap/static.xml`，README 範例的 `/sitemaps/guides.xml` 在這個站是 404 |
+| `openssl s_client -connect mokaair.com:443 -tls1_2` → 測到了不帶 SNI 的 default server | OpenSSL 1.1.1 起沒給 `-servername` 也會用 `-connect` 的主機名填 SNI，這跟帶 SNI 是同一個握手 | 加 `-noservername` |
+| TLS 1.1 被拒、1.2 會通 → tls-policy 的 include 生效了 | `nginx.conf` 的 http 層本來就只開 1.2／1.3；snippet 獨有的是 `ssl_ciphers` | 用只帶 CBC 套件的用戶端：`openssl s_client … -tls1_2 -cipher 'ECDHE-RSA-AES256-SHA384:AES256-GCM-SHA384:AES128-SHA'` 要拿到 `alert handshake failure`（帶與不帶 SNI 各測一次） |
 
 `ops/nginx/README.md` 檢查 2 的範例寫 `cd /srv/travel-scanner/current`，這台主機是 `/root/travel_scanner`。
 
@@ -85,6 +89,22 @@ ss -tan '( dport = :8091 )'                    # 一定要 -a
 同一個本地 port 在 `TIME-WAIT` ＝ nginx 先關（修好了）；還在 `ESTAB` ＝ nginx 的閒置時間超過 8 秒（nginx 半邊沒生效）；整條不見 ＝ Next 先關，正是競態。docker-proxy 在 127.0.0.1:8090／8091 上聽，所以 Node 的關閉到 nginx 可能是 FIN 也可能是 RST。BFF → uvicorn 那一跳已經是安全方向（undici 約 4 秒先關、uvicorn 5 秒）。
 
 分辨部署與競態：`docker inspect -f '{{.State.StartedAt}}' travel_scanner-web-1` 對得上 `/root/deploy-logs/deploy_*.log` 的時間，那一分鐘的 `connect() failed (111) … Connection refused` 就是部署重建（每次約 8 秒 502），不是當機。只看 log 判斷競態有沒有修好要好幾週，因為它本來就少見；用上面的 TIME-WAIT 測法。
+
+## 2026-10-03 套用 #1145 的紀錄
+
+站主同意後在主機套用 `ops/nginx`（#1145：爬取檔預算、exact 的 `/.well-known/`、TLS include、`server_tokens off`）。順序：先部署 main（主機 work tree 才有新的 `ops/nginx`）→ 一次呼叫做備份（`/root/nginx-backups/20261003T043228Z/etc-nginx`）、`bash ops/nginx/install.sh`、站台檔合併、`nginx -t` → 另一次呼叫 `systemctl reload nginx`。站台檔用「逐字比對、每處必須剛好命中預期次數」的腳本改，改完再數一次（三條 TLS include、四條 `server_tokens off`、六個 location 進 `mokaair_crawl_files`、`include …proxy-headers` 與 `proxy_pass` 各 11），任何一步不成立就還原備份。
+
+| 檢查 | 變更前 | 變更後 |
+| --- | --- | --- |
+| `Server:` 橫幅（四個 server） | `nginx/1.28.3 (Ubuntu)` | `nginx` |
+| `/sitemaps/sitemap/static.xml` 60 併發 | 21 個 429，全是 `mokaair_conns` | 39 個 429：27 筆 `limiting requests … "mokaair_crawl_files"`、12 筆 `mokaair_conns` |
+| `/.well-known/unknown-probe` 40 併發 | 不計任何請求預算 | 19 個 429，全是 `mokaair_content_pages` |
+| TLS 1.1 | 伺服器回 alert 70 | 伺服器回 alert 70 |
+| 只帶 CBC 套件的用戶端（帶／不帶 SNI） | 沒測 | 都是 `alert handshake failure` |
+| port 80 的 ACME 探測 | 404（webroot 自己回） | 404 |
+| `www` 的 OAuth 路徑 301 | 到 apex 同一路徑 | 相同 |
+
+變更前主機內嵌的 TLS 值：`ssl_protocols TLSv1.2 TLSv1.3;`、`ssl_prefer_server_ciphers off;`、`ssl_ciphers` 是六個 ECDHE 的 GCM／CHACHA20 套件，與 `tls-policy.conf` 逐字相同，沒有要保留的差異。`install.sh` 的站台偵測在 `pipefail` 下有 SIGPIPE 競態（票 `2026-10-03-nginx-install-sh-loses-a-pipe`）：輸掉時會多種一個沒被 enable 的 `sites-available/mokaair.conf`，看到就刪掉，不影響五個專案檔的安裝。Apple 的網域驗證檔還沒 commit，那個 exact location 目前回 Next 的 404。之後幾天看 `grep -c 'mokaair_crawl_files' /var/log/nginx/mokaair-limit.log`，確認沒有已驗證的爬蟲位址被這區擋。
 
 ## 其他驗證
 

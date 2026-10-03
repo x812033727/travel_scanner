@@ -129,6 +129,8 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 要驗的事：試片的第一張 2K 圖（確認 `imageSize` 被 Gemini 接受、檔案約 2048×1152）、judge 的 `craft` 分數分布（太嚴就把權重留 1 但把門檻 `judge_min_score` 看一眼）、以及與第 1 版畫面的並排比較，寫回上面的數字表。
 
+已上線：2026-10-03 04:31Z 隨 `90c52e19e` 部署。API 映像的目錄有 2K 價（Pro 0.134、Flash 0.101、MiniMax 沒有），影片工人的工具讀到 `image` 與 `slides_image` 兩個選擇的 `usd_per_image_2k`。當時正式站的「替投影片影片畫插圖」開關讀起來是關的（`slides_enabled: false`）：在它打開之前，投影片的圖走漫劇的開關與模型（Pro，2K 與 1K 同價），工具的預估卻用 Flash 的 2K 價，帳本記的是伺服器實收（票 `2026-10-03-illustrated-slides-lint-heuristics-the-shorts`）。
+
 ## 沒做、留給後面
 
 - 多狀態卡片（bullets、steps、table 逐條出現）的整景連續運鏡。
