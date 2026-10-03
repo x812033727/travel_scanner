@@ -104,17 +104,17 @@ Veo 3.1 在 clips 等級一次就 US$202.6，過了單支上限 US$200（`max_us
 
 ## 三條路線：伺服器 API、Hailuo 網頁方案、Kling MCP
 
-站主 2026-10-03 定的：Hailuo 的方案由代理在網頁上操作，Kling 用 MCP。方案與價目在 `references/providers-and-plans.md`（2026-10-03 讀官方頁，表裡只列決定用的幾個數）。
+站主 2026-10-03 定的：Hailuo 的方案由代理在網頁上操作，Kling 用 MCP；2026-10-04 站主在 Kling 官方的兩條路（MCP 連接器、CLI）裡選了 CLI，這一節仍叫它 Kling MCP 路線。方案與價目在 `references/providers-and-plans.md`（2026-10-03 讀官方頁；表裡只列決定用的幾個數）。標「實測 2026-10-04」的是在站主帳號上量到的：Hailuo 一支 H3 2K 5 秒的文生影片、Kling CLI 的輸出（帳號 NORMAL、0 點，沒有生成）。
 
-**有 production profile 的集今天只能走伺服器 API。** 正在做的那部（`docs/videos/series-plans/competition-20261002/pilot/series.json` 的 `production.profile.video`，同 `docs/videos/series-plans/production-20261001/profile.json`）就釘了 gemini／`veo-3.1-lite-generate-preview`／1080p、`visual_tier: clips`：`clips` 擋伺服器選了別的模型（`clips.mjs` 的 `requiredVideo` 檢查，3）；`tools/video/core/lint.mjs` 的 `productionClipProblems` 擋 manifest 裡別的 provider／model／解析度，`productionClipSizeProblem` 擋非原生 1920×1080（H3 的 2K 與 768P 都不是），`status` 與 `assemble` 都呼叫它。站主要的 Hailuo 與 Kling 兩條路眼下只能用在試拍與沒 profile 的集；要讓正片用，得先改 profile（換掉核准的設計雜湊），或另開一張票讓 profile 能點名外部路線（站主決定）；在那之前 `clips import` 遇到 profile 以結束碼 3 拒絕。
+**有 production profile 的集今天只能走伺服器 API。** 正在做的那部（`docs/videos/series-plans/competition-20261002/pilot/series.json` 的 `production.profile.video`，同 `docs/videos/series-plans/production-20261001/profile.json`）就釘了 gemini／`veo-3.1-lite-generate-preview`／1080p、`visual_tier: clips`：`clips` 擋伺服器選了別的模型（`clips.mjs` 的 `requiredVideo` 檢查，3）；`tools/video/core/lint.mjs` 的 `productionClipProblems` 擋 manifest 裡別的 provider／model／解析度，`productionClipSizeProblem` 擋非原生 1920×1080（H3 的 2K 輸出是 2560×1440，實測 2026-10-04；768P 更小），`status` 與 `assemble` 都呼叫它。站主要的 Hailuo 與 Kling 兩條路眼下只能用在試拍與沒 profile 的集；要讓正片用，得先改 profile（換掉核准的設計雜湊），或另開一張票讓 profile 能點名外部路線（站主決定）；在那之前 `clips import` 遇到 profile 以結束碼 3 拒絕。
 
-| | 伺服器 API（`clips` 階段） | Hailuo 網頁方案（hailuoai.video） | Kling MCP（kling.ai/mcp 官方 connector；或社群 mcp-kling 用 API 金鑰） |
+| | 伺服器 API（`clips` 階段） | Hailuo 網頁方案（hailuoai.video） | Kling MCP 路線（官方 CLI `kling` 或 connector `kling.ai/mcp`，同一個助理只裝一種；或社群 mcp-kling 用 API 金鑰） |
 | --- | --- | --- | --- |
-| 誰跑 | 工人或代理，一條指令 | 代理在內建瀏覽器或 Playwright 裡用**站主的登入**操作 SPA（React，WebFetch 只拿到殼）；不用代理自己的帳號 | 代理透過 Claude Desktop／claude.ai 的 connector（官方，登入 Kling 帳號）或 `generate_image_to_video`（社群，API 金鑰對） |
-| 怎麼要一段 | 關鍵影格當首格 ＋ `clipPrompt`（motion ＋ camera ＋ look.motion）＋ look.negative ＋ 參考圖 ≤ 4（Lite 0） | `/create/image-to-video`：上傳關鍵影格當首格、參考圖欄「參考（0/12）」、選模型／解析度／秒數／比例、貼 prompt | 首格 ＋ motion prompt ＋ camera control `static`／`zoom`／`pan`／`auto`（社群 MCP 的參數） |
-| 每 8 秒 1080p 級畫面 | Lite US$0.64、Omni 1.20、H3 2K 1.04、Veo 3.1 3.20（catalog.py） | Pro 以上 H3 768P 8 秒 ≈ 56 點、2K ≈ 96 點（頁面秒數／月反推，換算）。折美金看怎麼付：年繳（頁面的 0.047／0.081 per s）≈ US$0.38／0.65；月繳 54.99 攤（一點 ≈ 0.0122）≈ US$0.68／1.17——月繳時 768P 已比伺服器 Lite 的 0.64 貴。Standard 2K 0.101/s | 3.0 Omni 標準 5 秒 ≈ 35–45 點、10 秒約兩倍（第三方 2026 數字，**未驗**；8 秒不是 Kling 的檔位）；Pro US$37／3,000 點 → 10 秒約 US$1；開發者 API 1080p ≈ US$0.112/s |
-| 隊列與併發 | 一次一鏡順序跑；伺服器每小時 60 次送出、360 次 judge；job 24 小時沒完成就 `expired` | Standard 8 排／1 跑；Pro 8／2；Master、Max 12／2（條款另寫「最多 5 個併發」） | 付費方案「無限排隊、快速通道」；API 套餐 20 併發 |
-| 浮水印與版權 | 無浮水印（Lyria 的曲子帶 SynthID） | 付費方案下載無浮水印、保留商用權；免費有浮水印 | 付費方案去浮水印、可商用 |
+| 誰跑 | 工人或代理，一條指令 | 代理在內建瀏覽器裡用**站主的登入**操作 SPA（React，WebFetch 只拿到殼）；不用代理自己的帳號。內建瀏覽器傳不了本機的關鍵影格（實測 2026-10-04），圖生影片要 Claude in Chrome 的檔案上傳或 Playwright（還沒試） | 代理下 `kling image_to_video`（官方 CLI，站主 2026-10-04 選的；`kling login` 由站主在瀏覽器同意 OAuth），或官方 connector（登入 Kling 帳號），或 `generate_image_to_video`（社群，API 金鑰對） |
+| 怎麼要一段 | 關鍵影格當首格 ＋ `clipPrompt`（motion ＋ camera ＋ look.motion）＋ look.negative ＋ 參考圖 ≤ 4（Lite 0） | `/create/image-to-video`：上傳關鍵影格當首格、參考圖欄「參考（0/12）」、選模型、貼 prompt；設定面板選比例（**預設 21:9，改 16:9**）、解析度 768p／2K、時長 4–15 秒整數（實測 2026-10-04） | 官方 CLI 的 `kling-video-v3_0`：`first_image`（末格 `tail_image`）＋ prompt、時長 3–15 秒整數；`enable_audio` 與 `prefer_multi_shots` 預設都是 true，**兩個都傳 false**（實測 2026-10-04 讀 `who_am_i`）。社群 MCP：首格 ＋ motion prompt ＋ camera control `static`／`zoom`／`pan`／`auto` |
+| 每 8 秒 1080p 級畫面 | Lite US$0.64、Omni 1.20、H3 2K 1.04、Veo 3.1 3.20（catalog.py） | H3 2K 8 秒 96 點（12 點／秒，實測 2026-10-04：5 秒扣 60；輸出 2560×1440）；768P 8 秒 ≈ 56 點（頁面秒數／月反推，推算，沒量）。折美金看怎麼付（768P／2K）：年繳（頁面的 0.047／0.081 per s）≈ US$0.38／0.65；月繳 54.99 攤（一點 ≈ 0.0122）≈ US$0.68／1.17——月繳時 768P 已比伺服器 Lite 的 0.64 貴。Standard 2K 0.101/s | 每支幾點**未驗**（授權進來的帳號 NORMAL、0 點，沒生成過）：第三方 2026 數字是 3.0 Omni 標準 5 秒 ≈ 35–45 點、10 秒約兩倍，照它算 Pro US$37／3,000 點 → 10 秒約 US$1。`kling-video-v3_0` 可以直接要 8 秒（實測 2026-10-04），8 秒幾點沒有來源；NORMAL 帳號列的模型都只有 720p，付費方案在 CLI 上有沒有 1080p 未驗。開發者 API 1080p ≈ US$0.112/s（第三方） |
+| 隊列與併發 | 一次一鏡順序跑；伺服器每小時 60 次送出、360 次 judge；job 24 小時沒完成就 `expired` | Standard 8 排／1 跑；Pro 8／2；Master、Max 12／2（條款另寫「最多 5 個併發」）。一支 H3 2K 5 秒、沒有排隊，送出到完成約 4 分 40 秒（實測 2026-10-04） | 付費方案「無限排隊、快速通道」；API 套餐 20 併發 |
+| 浮水印與版權 | 無浮水印（Lyria 的曲子帶 SynthID） | 付費方案保留商用權，但乾淨的檔要走「全部下載 → 無水印下載」：結果卡 `<video>` 的 src 是有浮水印的版本（實測 2026-10-04），`clips import` 的 ffmpeg 檢查抓不到，只有 `--judge` 的 `no_text` 題可能抓到。免費有浮水印。輸出帶 AAC 音軌，成片不用 | 付費方案去浮水印、可商用 |
 | 進產線 | 自動：manifest、QC、judge、帳本 | `clips import --provider hailuo-web`（stage-preconditions.md 最後一節，唯一的一份程序）：前提同 `clips`，跑買來的 take 同一組 ffmpeg 檢查（黑格、凍格、模型自己切鏡、第 0 格 PSNR），沒過 `needs_review`；judge 要帶 `--judge` 才問 | 同左，`--provider kling-mcp` |
 | 帳本知道 | 全部 | 匯入時記一筆 `status: "imported"`（點數、秒數；美元要 `--usd` 給），`status` 與 `clips --dry-run` 標出匯入幾支；快取與伺服器的每月預算不知道，`clips --force` 會把它重買 | 同左 |
 
@@ -124,14 +124,14 @@ Veo 3.1 在 clips 等級一次就 US$202.6，過了單支上限 US$200（`max_us
 | --- | --- | --- | --- | --- |
 | 伺服器 Lite 1080p | 480 | US$39.00 | 片段秒 16% | ≥ 1 小時（每小時 60 次送出） |
 | 伺服器 Omni 1080p | 240 | US$36.60 | 8% | ≥ 1 小時 |
-| Hailuo Pro，H3 768P 每鏡 4 秒 | 240 | ≈ 1,680 點（≈ 7 點/秒）≈ US$20.5 | 4,500 點的 37%；2K 是 64%；跟 Lite 一樣買 8 秒就 75%／128% | 2 個同時跑，每支時間沒量 |
+| Hailuo Pro，H3 768P 每鏡 4 秒 | 240 | ≈ 1,680 點（≈ 7 點/秒，推算）≈ US$20.5 | 4,500 點的 37%；2K（12 點/秒，實測 2026-10-04）是 64%；跟 Lite 一樣買 8 秒就 75%／128% | 2 個同時跑；量過一支：2K 5 秒、沒有排隊約 4 分 40 秒（實測 2026-10-04），768P 沒量 |
 | Kling Pro，3.0 Omni 標準 5 秒 | 300 | ≈ 2,100–2,700 點（未驗）≈ US$26–33 | 3,000 點的 70–90% | 無限排隊，時間沒量 |
 
 決定規則（編輯判斷）：
 
 1. **預設走伺服器 API**：關卡、快取、帳本、judge、單支上限只認得它；有 profile 的集只有它（上段）。沒有 profile 時伺服器買哪個模型以後台的 clip 設定為準：新裝的預設是 `gemini-omni-1.1-flash`（`catalog.py` 的 `DEFAULT_CLIP`；後台可能改過，`media-status` 才是真的），估價時 `--model` 對齊它——這決定 3 秒的鏡頭買 4 秒（US$0.60、利用率 75%）還是 8 秒（0.64、37.5%），也決定切鏡槓桿的可用秒數。
 2. **Hailuo 網頁**划算的條件有三個，同時成立才走：站主已付的點數反正月底歸零（條款）；這一鏡不靠角色參考圖保一致（網頁能上傳參考，但沒有我們的 identity 題）；你接受每一支自己下載再 `clips import`、judge 要另外問。算式只有一條：方案贏過伺服器要這個月**真的用掉的秒數 ≥ 月費 ÷ 伺服器每秒價**——Pro 月繳 54.99 ÷ 0.15（Omni）≈ 367 秒、÷ 0.08（Lite）≈ 687 秒而 Pro 一個月只有 375 秒 2K，不可能；`episode_estimate.mjs --plan hailuo:pro --resolution 768p|2k` 把這一集的伺服器價、方案的兩種美元與損益平衡秒數印在一起。Max 的無限模式只給 Hailuo 2.0／2.3（哪些模型、兩個來源怎麼說：providers §1.2 的 Max 列），不是 H3。
-3. **Kling MCP**：要運鏡控制或動作戲時用；每支影片的點數只在登入後的生成頁看得到，MCP 扣哪個方案的點數、官方 connector 要不要 API 套餐，都先在站主帳號裡讀，再估價。
+3. **Kling MCP 路線（站主選的是官方 CLI）**：要運鏡控制或動作戲時用。`kling account` 回 `membershipType` 與 `availableRemainCredits`，讀起來是會員點數、不是開發者資源包（沒有用付費生成確認）；`who_am_i` 不給點數價；2026-10-04 授權進來的帳號是 NORMAL、0 點。所以先 `kling account` 看到付費方案與點數，生成一支、記前後差額，再估價。指令、模型與參數在 providers §1.3。
 4. 不論哪條，**首格一律是這一鏡通過 judge 的關鍵影格**，否則 `assemble` 的第 0 格 PSNR ≥ 22（`tools/video/assemble/drama.mjs` 的 `KEYFRAME_MIN_PSNR`）過不了。
 
 ## 哪個改動會重買什麼
@@ -214,7 +214,7 @@ judge 的 `problems` 文字先分類，再決定花不花第二次的錢：
 # --plan 換算成方案點數、月額度占比、跟伺服器並列的美元與損益平衡秒數；找槓桿（可切鏡、可 still、超過 8 秒、可併鏡）；
 # 對 --cap、--month-clip-seconds、既有 data.source 的來源買秒下結論
 node .agents/skills/animation-production/scripts/episode_estimate.mjs <VIDEO_DOCS>/video.json [--tier clips|hybrid|stills] [--model <id>] [--resolution 1080p|720p|768p|2k] [--plan hailuo:pro|kling:pro] [--credits-per-video 40] [--keyframe-takes 3] [--clip-takes 2] [--cap 200] [--month-clip-seconds 3000] [--strict] [--json]
-#   --resolution 給伺服器模型的解析度；--plan hailuo:* 時它選 768p 或 2k 的檔位（不給就 2k；2K 不是原生 1920×1080，768P 低於 1080p，哪個該選未驗）
+#   --resolution 給伺服器模型的解析度；--plan hailuo:* 時它選 768p 或 2k 的檔位（不給就 2k；2K 輸出 2560×1440（實測 2026-10-04）、不是原生 1920×1080，768P 低於 1080p，哪個該選未驗）
 # 開跑前預檢：下一個（或 --stage 指定的）階段會拒絕或白花什麼：關卡狀態與會回的結束碼、manifest 綁哪個雜湊、kept／new、needs_review、STOP、judge 題目長度、profile 與伺服器、要花的 judge 次數、匯入與手放的外部片段；片段模型從 profile、存好的 manifest 或 --model 來（它不碰伺服器）
 node .agents/skills/animation-production/scripts/drama_preflight.mjs --slug <SLUG> [--workdir <VIDEO_WORKDIR>] [--stage look|keyframes|clips|music|assemble] [--model <id>] [--json]
 # 收工報告：帳本按種類與階段、每鏡 take 與通過、利用率、切鏡省的、外部片段、judge 次數、五個狀態、stale 的核准、每階段時間；--markdown 印填好數字的 post-mortem
@@ -225,8 +225,10 @@ node .agents/skills/animation-production/scripts/run_report.mjs --slug <SLUG> [-
 
 ## 還沒驗、不能宣稱的事
 
-- Kling 每支影片的點數、MCP 扣哪個方案、官方 connector 的操作頁（登入後才看得到）；第三方的 35–45 點是傳聞。
-- Hailuo 網頁一支的生成時間、relax 隊列等多久、條款的「5 個併發」與方案表的 8／2 哪個算數；2K 輸出的像素尺寸；768P 放大到 1080p 的畫質。
+- Kling：每支影片的點數（第三方的 35–45 點是傳聞）、付費方案在 CLI 上有沒有 1080p、CLI 扣的是不是會員點數。2026-10-04 授權進來的帳號是 NORMAL、0 點、只列 720p，一支都沒生成；讀到的只有官方說明頁、CLI 的指令與模型參數（providers §1.3）。
+- Hailuo：量過的只有一支（實測 2026-10-04：H3 2K 5 秒文生影片，扣 60 點、約 4 分 40 秒、2560×1440、24 fps、帶 AAC 音軌）。768P 每秒幾點與輸出尺寸、有排隊時與 relax 隊列等多久、條款的「5 個併發」與方案表的 8／2 哪個算數、2K 縮成 1080p 與 768P 放大到 1080p 的畫質，都沒量。
+- 圖生影片（產線的關鍵影格當首格）在 Hailuo 與 Kling 都還沒送過：內建瀏覽器傳不了本機檔案，Claude in Chrome 的檔案上傳與 Playwright 沒試；Kling 帳號沒有點數。
+- `clips import`（PR #1183）用真的 ffmpeg 在下載的那支 Hailuo 片段上跑過（實測 2026-10-04）；它的檢查看不出浮水印，用關鍵影格做的外部片段還沒匯入過。
 - 一集 60 鏡的估價是算式；試拍只買了 10 張圖與 6 份素材，廠商實際帳單對過前（`actual_billed_usd` 還是 null）預估不等於花費。
 - 利用率沒有工具記，`run_report.mjs` 算的是 manifest 的 `needed_s ÷ seconds`。
 - `max_clips_per_video`（預設 40）在 `media-status` 印得出來，2026-10-03 grep 沒找到伺服器或工具擋它的地方。
