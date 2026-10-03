@@ -28,6 +28,20 @@ const final = {
   files: [{ role: "preview", sha256: "c".repeat(64), size: 10, content_type: "video/mp4" }],
   status: "pending", choice: null, note: null, decided_at: null, created_at: "2026-09-25T05:00:00Z",
 };
+const animeRuntimeSpec = { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 };
+const measuredRuntimeProof = {
+  basis: "measured", production_policy: "long-anime-v1", policy_hash: "d".repeat(64), runtime_spec: animeRuntimeSpec, fps: 30,
+  body_frames: 39435, op_ed_frames: 540, presentation_frames: 39975, body_seconds: 1314.5, op_ed_seconds: 18, presentation_seconds: 1332.5,
+  speech_hash: "e".repeat(16), final_sha256: final.content_sha256,
+};
+const nativeActionScene = {
+  id: "crossing", chapter: "Act 1", template: "shot", prompt: "A narrow footbridge above a ravine", lines: [],
+  action: { description: "The bridge breaks beneath the ensemble as they pass the medicine bag forward.", motion: "Track the falling boards, then follow the bag into the youngest member's hands.", seconds: 6 },
+};
+const nativeScriptPayload = {
+  production_policy: "long-anime-v1", runtime_spec: animeRuntimeSpec, runtime_policy_hash: measuredRuntimeProof.policy_hash, check_status: "current", minutes: 22,
+  scenes: [nativeActionScene], coverage: { hook: "有", conflict: "有", turn: "有", high_tension: ["有", "弱"], consequences: "無", closure: "有" },
+};
 
 // One page of the catalog under the groups (admin-video-browser.tsx), with the counts the server
 // would put on the pills, worked out from the items the way the server does.
@@ -583,6 +597,65 @@ describe("AdminVideoReviews", () => {
     expect(within(card).getByRole("textbox", { name: "意見（退回時必填）" })).toBeTruthy();
   });
 
+  it("makes a native anime action scene with no dialogue inspectable and shows its current narrative coverage", async () => {
+    const script = { ...final, gate: "script", payload: nativeScriptPayload, files: [] };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, format: "drama", pending: 1, reviews: [script] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "劇本" });
+    const action = within(card).getByRole("region", { name: "場面動作" });
+    expect(within(action).getByText("可見動作")).toBeTruthy();
+    expect(within(action).getByText(nativeActionScene.action.description)).toBeTruthy();
+    expect(within(action).getByText("動作與鏡頭")).toBeTruthy();
+    expect(within(action).getByText(nativeActionScene.action.motion)).toBeTruthy();
+    expect(within(action).getByText("持續 6 秒")).toBeTruthy();
+    expect(action.closest("details")).toBeNull();
+    expect(card.textContent).not.toContain("旁白：");
+    for (const label of ["高張力事件 1有", "高張力事件 2弱", "持續後果無", "正向收束有"]) expect(card.textContent).toContain(label);
+    expect(card.textContent).not.toContain("懸念—");
+  });
+
+  it.each([
+    ["an ordinary script", { ...nativeScriptPayload, production_policy: undefined }],
+    ["a native marker without its runtime specification", { ...nativeScriptPayload, runtime_spec: undefined }],
+  ])("does not extend %s with native action or native coverage", async (_label, payload) => {
+    const script = { ...final, gate: "script", payload, files: [] };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, pending: 1, reviews: [script] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "劇本" });
+    expect(within(card).queryByRole("region", { name: "場面動作" })).toBeNull();
+    for (const label of ["高張力事件", "持續後果", "正向收束"]) expect(card.textContent).not.toContain(label);
+    expect(card.textContent).toContain("懸念—");
+  });
+
+  it.each([
+    ["an out-of-range action duration", { ...nativeActionScene, action: { ...nativeActionScene.action, seconds: 9 } }],
+    ["an action without a visible description", { ...nativeActionScene, action: { ...nativeActionScene.action, description: " " } }],
+    ["an action without movement", { ...nativeActionScene, action: { ...nativeActionScene.action, motion: null } }],
+    ["an action without the empty dialogue array", { ...nativeActionScene, lines: undefined }],
+  ])("does not present %s as a validated native action scene", async (_label, scene) => {
+    const script = { ...final, gate: "script", payload: { ...nativeScriptPayload, scenes: [scene] }, files: [] };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, pending: 1, reviews: [script] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "劇本" });
+    expect(within(card).queryByRole("region", { name: "場面動作" })).toBeNull();
+  });
+
+  it.each([
+    ["stale", { ...nativeScriptPayload, check_status: "stale" }],
+    ["malformed", { ...nativeScriptPayload, coverage: { hook: "有", conflict: "有", turn: "有", high_tension: ["有"], consequences: "unknown", closure: "unknown" } }],
+  ])("keeps %s native narrative verdicts out of the current coverage display", async (_label, payload) => {
+    const script = { ...final, gate: "script", payload, files: [] };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, pending: 1, reviews: [script] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "劇本" });
+    for (const label of ["高張力事件", "持續後果", "正向收束"]) expect(card.textContent).not.toContain(label);
+    expect(within(card).getByRole("region", { name: "場面動作" }).textContent).toContain(nativeActionScene.action.description);
+  });
+
   it("shows a one-off episode's story bible with its thread above the gates, and approves it on its series", async () => {
     const script = {
       id: "55555555-5555-4555-8555-555555555555", gate: "script", content_sha256: "9".repeat(64), summary: "劇本 1 場", payload: { minutes: 2, scenes: [] },
@@ -821,6 +894,142 @@ describe("AdminVideoReviews", () => {
     expect(table.textContent).toContain("門檻：符合立場與有示範至少 0.6，建議至多 0.3。");
     expect(chosen.textContent).toContain("依設定自動核准");
     expect(chosen.textContent).not.toContain("有項目沒過門檻");
+  });
+
+  it("shows current measured anime body and OP/ED separately from the target and broadcast budget", async () => {
+    const checked = { ...final, payload: {
+      ...final.payload, minutes: 22, production_policy: "long-anime-v1", runtime_spec: animeRuntimeSpec, runtime_policy_hash: measuredRuntimeProof.policy_hash, runtime_proof: measuredRuntimeProof,
+      qa: { ok: true, final_sha256: final.content_sha256, policy_hash: measuredRuntimeProof.policy_hash, items: [{ id: "duration_policy", ok: true, detail: "current measured frames" }] },
+    } };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, format: "drama", pending: 1, reviews: [checked] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "成片" });
+    const duration = within(card).getByRole("region", { name: "單集實測長度" });
+    expect(duration.textContent).toContain("正文實測 1314.5 秒 · 目標 1320 秒 · 驗收範圍 1260–1380 秒");
+    expect(duration.textContent).toContain("OP/ED 實測 18 秒 · 預算上限 180 秒");
+    expect(duration.textContent).toContain("成片實測 1332.5 秒");
+    expect(duration.textContent).toContain("播出時段 1800 秒 · 時段預留 300 秒");
+    expect(duration.textContent).toContain("已依據目前的製作規格驗證");
+    expect(duration.textContent).not.toContain("成片實測 1800 秒");
+    expect(duration.textContent).not.toContain("long-anime-v1");
+    expect(within(card).getByLabelText("自動品管").textContent).toContain("單集長度");
+    expect(within(card).getByRole("button", { name: "核准" })).toHaveProperty("disabled", false);
+  });
+
+  it.each([
+    ["zero OP/ED", { ...animeRuntimeSpec, op_ed_budget_seconds: 0, broadcast_slot_seconds: 1620 }],
+    ["zero slot reserve", { ...animeRuntimeSpec, slot_reserve_seconds: 0, broadcast_slot_seconds: 1500 }],
+    ["zero OP/ED and reserve", { ...animeRuntimeSpec, op_ed_budget_seconds: 0, slot_reserve_seconds: 0, broadcast_slot_seconds: 1320 }],
+  ])("shows current measured anime runtime and permits review with %s", async (_label, spec) => {
+    const proof = { ...measuredRuntimeProof, runtime_spec: spec, op_ed_frames: 0, op_ed_seconds: 0,
+      presentation_frames: measuredRuntimeProof.body_frames, presentation_seconds: measuredRuntimeProof.body_seconds };
+    const checked = { ...final, payload: { ...final.payload, production_policy: "long-anime-v1", runtime_spec: spec, runtime_policy_hash: proof.policy_hash, runtime_proof: proof,
+      qa: { final_sha256: final.content_sha256, policy_hash: proof.policy_hash, items: [] },
+    } };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, pending: 1, reviews: [checked] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "成片" });
+    const duration = within(card).getByRole("region", { name: "單集實測長度" });
+    expect(duration.textContent).toContain("正文實測 1314.5 秒");
+    expect(duration.textContent).toContain(`OP/ED 實測 0 秒 · 預算上限 ${spec.op_ed_budget_seconds} 秒`);
+    expect(duration.textContent).toContain(`播出時段 ${spec.broadcast_slot_seconds} 秒 · 時段預留 ${spec.slot_reserve_seconds} 秒`);
+    expect(duration.textContent).toContain("已依據目前的製作規格驗證");
+    expect(within(card).getByRole("button", { name: "核准" })).toHaveProperty("disabled", false);
+  });
+
+  it("lets the owner approve a current measured anime using manual-review QA without an automatic QA report", async () => {
+    const checked = { ...final, payload: { ...final.payload, production_policy: "long-anime-v1", runtime_spec: animeRuntimeSpec,
+      runtime_policy_hash: measuredRuntimeProof.policy_hash, runtime_proof: measuredRuntimeProof, manual_review: true,
+      manual_review_qa: { ok: true, final_sha256: final.content_sha256, policy_hash: measuredRuntimeProof.policy_hash, items: [{ id: "duration_policy", ok: true }] },
+    } };
+    expect(checked.payload).not.toHaveProperty("qa");
+    const posts: Array<{ url: string; body: unknown }> = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (init?.method === "POST") posts.push({ url: String(input), body: JSON.parse(String(init.body)) });
+      return Promise.resolve(Response.json({ ...summary, pending: 1, reviews: [checked] }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "成片" });
+    expect(within(card).getByRole("region", { name: "單集實測長度" }).textContent).toContain("已依據目前的製作規格驗證");
+    const approve = within(card).getByRole("button", { name: "核准" });
+    expect(approve).toHaveProperty("disabled", false);
+    expect(posts).toHaveLength(0);
+    fireEvent.click(approve);
+    await waitFor(() => expect(posts).toEqual([{ url: `/api/travel/admin/videos/ai-model-choice/reviews/${final.id}/decision`, body: { decision: "approve" } }]));
+  });
+
+  it.each([
+    ["an estimate without proof", undefined],
+    ["proof for earlier media", { ...measuredRuntimeProof, final_sha256: "f".repeat(64) }],
+    ["a missing policy hash", { ...measuredRuntimeProof, policy_hash: undefined }],
+    ["a different current policy hash", { ...measuredRuntimeProof, policy_hash: "f".repeat(64) }],
+    ["inconsistent measured frames", { ...measuredRuntimeProof, body_frames: 30000 }],
+    ["an invalid short speech cache hash", { ...measuredRuntimeProof, speech_hash: "e".repeat(15) }],
+    ["a different speech hash format", { ...measuredRuntimeProof, speech_hash: "e".repeat(64) }],
+    ["an estimated basis", { ...measuredRuntimeProof, basis: "estimated" }],
+    ["an earlier specification", { ...measuredRuntimeProof, runtime_spec: { ...animeRuntimeSpec, body_target_seconds: 1200 } }],
+  ])("does not present %s as current measured anime runtime", async (_label, proof) => {
+    const checked = { ...final, payload: { ...final.payload, minutes: 22, production_policy: "long-anime-v1", runtime_spec: animeRuntimeSpec, runtime_policy_hash: measuredRuntimeProof.policy_hash, runtime_proof: proof,
+      qa: { final_sha256: final.content_sha256, policy_hash: measuredRuntimeProof.policy_hash, items: [] },
+    } };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, pending: 1, reviews: [checked] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "成片" });
+    const duration = within(card).getByRole("region", { name: "單集實測長度" });
+    expect(duration.textContent).toContain("正文目標 1320 秒 · 實測驗收範圍 1260–1380 秒");
+    expect(duration.textContent).not.toContain("正文實測");
+    expect(duration.textContent).not.toContain("已依據目前的製作規格驗證");
+    expect(within(duration).getByRole("status").textContent).toContain(proof ? "尚未通過目前製作規格的驗證" : "目標分鐘數不能證明成片的實際長度");
+    expect(within(card).getByRole("button", { name: "核准" })).toHaveProperty("disabled", true);
+  });
+
+  it.each([
+    ["story below 21 minutes", { ...measuredRuntimeProof, body_frames: 37770, body_seconds: 1259, presentation_frames: 38310, presentation_seconds: 1277 }],
+    ["OP/ED over its budget", { ...measuredRuntimeProof, op_ed_frames: 5430, op_ed_seconds: 181, presentation_frames: 44865, presentation_seconds: 1495.5 }],
+    ["media consuming the broadcast reserve", { ...measuredRuntimeProof, body_frames: 41400, body_seconds: 1380, op_ed_frames: 5400, op_ed_seconds: 180, presentation_frames: 46800, presentation_seconds: 1560 }],
+  ])("keeps %s behind the anime duration approval gate", async (_label, proof) => {
+    const checked = { ...final, payload: { ...final.payload, production_policy: "long-anime-v1", runtime_spec: animeRuntimeSpec, runtime_policy_hash: proof.policy_hash, runtime_proof: proof,
+      qa: { final_sha256: final.content_sha256, policy_hash: proof.policy_hash, items: [] },
+    } };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, pending: 1, reviews: [checked] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "成片" });
+    expect(within(card).getByRole("region", { name: "單集實測長度" }).textContent).toContain("正文實測");
+    expect(within(card).getByRole("button", { name: "核准" })).toHaveProperty("disabled", true);
+  });
+
+  it("binds publish runtime proof to the final media hash separately from the upload package metadata", async () => {
+    const published = { ...final, gate: "publish", content_sha256: "a".repeat(64), payload: {
+      production_policy: "long-anime-v1", runtime_spec: animeRuntimeSpec, runtime_policy_hash: measuredRuntimeProof.policy_hash, runtime_proof: measuredRuntimeProof, final_media_sha256: final.content_sha256,
+      package: { ok: true, final_sha256: "a".repeat(64), items: [{ id: "files", ok: true }] },
+    } };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, pending: 1, reviews: [published] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "上架確認" });
+    expect(within(card).getByRole("region", { name: "單集實測長度" }).textContent).toContain("正文實測 1314.5 秒");
+  });
+
+  it("shows script targets and measured story audio without claiming a finished episode duration", async () => {
+    const script = { ...final, id: "script-runtime", gate: "script", payload: { minutes: 22, scenes: [], production_policy: "long-anime-v1", runtime_spec: animeRuntimeSpec } };
+    const audio = { ...final, id: "audio-runtime", gate: "audio", payload: { production_policy: "long-anime-v1", runtime_spec: animeRuntimeSpec, runtime_policy_hash: measuredRuntimeProof.policy_hash,
+      runtime_measurement: { basis: "measured", stage: "audio", policy_hash: measuredRuntimeProof.policy_hash, runtime_spec: animeRuntimeSpec, body_seconds: 1314.5, body_frames: 39435, fps: 30, speech_hash: measuredRuntimeProof.speech_hash },
+    } };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, pending: 2, reviews: [script, audio] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const scriptCard = await screen.findByRole("article", { name: "劇本" });
+    expect(within(scriptCard).getByRole("region", { name: "單集實測長度" }).textContent).toContain("正文目標 1320 秒");
+    const audioCard = screen.getByRole("article", { name: "旁白" });
+    const duration = within(audioCard).getByRole("region", { name: "單集實測長度" });
+    expect(duration.textContent).toContain("正文音訊實測 1314.5 秒");
+    expect(duration.textContent).not.toContain("成片實測");
+    expect(duration.textContent).not.toContain("已依據目前的製作規格驗證");
   });
 
   it("puts what needs the owner first, then what is ready to upload with its package, copy buttons and the uploaded form", async () => {

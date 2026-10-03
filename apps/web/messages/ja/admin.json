@@ -2118,6 +2118,19 @@
     "pending": "この新版は下の完成動画カードで確認待ちです。旧版の公開と言語の承認はアップロードに使えません。"
   },
   "videoReviews": {
+    "duration": {
+      "target": "本編の目標 {target} 秒・実測値の許容範囲 {min}～{max} 秒",
+      "opedBudget": "OP/EDの上限は {budget} 秒です。制作した映像・音声の時間は別途測定します。",
+      "audio": "本編音声の実測 {seconds} 秒",
+      "title": "エピソードの実測時間",
+      "body": "本編の実測 {seconds} 秒・目標 {target} 秒・許容範囲 {min}～{max} 秒",
+      "oped": "OP/EDの実測 {seconds} 秒・上限 {budget} 秒",
+      "missing": "現在の実測時間を確認できる証拠がありません。目標時間から完成作品の再生時間を判断することはできません。",
+      "current": "現在の制作仕様と照合済み",
+      "stale": "このレポートでは現在の制作仕様を検証できません。承認する前に現在のメディアを再確認してください。",
+      "budget": "放送枠 {slot} 秒・枠内の予備時間 {reserve} 秒（時間調整用の映像は追加しません）",
+      "total": "完成映像の実測 {seconds} 秒"
+    },
     "categories": {
       "ai-terms": "AI用語解説",
       "ai-news": "AI・テック時事",
@@ -2338,7 +2351,16 @@
       "hook": "フック",
       "conflict": "対立",
       "turn": "転換",
-      "cliffhanger": "引き"
+      "cliffhanger": "引き",
+      "highTension": "緊迫する出来事 {number}",
+      "consequences": "後に残る影響",
+      "closure": "決着"
+    },
+    "scriptAction": {
+      "title": "場面の動作",
+      "description": "目に見える動作",
+      "motion": "動きとカメラ",
+      "duration": "持続時間：{seconds} 秒"
     },
     "scriptProblems": "チェックが指摘した問題",
     "scriptMinutes": "約 {minutes} 分",
@@ -2365,6 +2387,7 @@
     "qaAllPassed": "{count} 件すべて合格",
     "qaWarning": "注意：",
     "qaItems": {
+      "duration_policy": "エピソードの長さ",
       "assemble": "合成",
       "render": "画面",
       "narration": "ナレーション",
@@ -2618,6 +2641,21 @@
     "dramaKeyLink": "AI 設定でキーを登録"
   },
   "videoSeries": {
+    "longAnime": {
+      "startPlanning": "企画を開始",
+      "planningHelp": "「企画を開始」を押すと、設定集とシリーズ全体の構成を作成するよう依頼します。それらの文書を承認してから、エピソードの制作を再開してください。",
+      "profile": "エピソード形式",
+      "ordinary": "標準ドラマ（1～8分）",
+      "option": "長編アニメ（本編22分）",
+      "badge": "長編アニメ",
+      "help": "複数の主役と2Dアニメの画風を使う作品として、一時停止状態で作成します。制作を再開する前に、設定集とシリーズ全体の構成を確認して承認してください。",
+      "body": "本編の目標 {minutes} 分・実測値の許容範囲 {min}～{max} 分",
+      "budgets": "OP/EDの上限 {oped} 分・放送枠 {slot} 分・枠内の予備時間 {reserve} 分",
+      "budgetHelp": "OP/EDの時間は上限であり、制作済みの映像ではありません。放送枠の予備時間を埋めるための映像は追加しません。",
+      "manual": "文書と脚本には確認が必要です。自動承認と総集編の制作は無効です。",
+      "reviewRequired": "制作を再開する前に、設定集とシリーズ全体の構成を承認してください。",
+      "create": "一時停止状態でアニメシリーズを作成"
+    },
     "listTitle": "作品",
     "empty": "まだ作品がありません",
     "emptyDetail": "下で作品を作ると、ワーカーが次の周回で設定集を企画し、ここで承認します。",

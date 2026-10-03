@@ -1,20 +1,24 @@
 import assert from "node:assert/strict";
-import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
 import { approvalState, approve } from "./approvals.mjs";
+import { runtimePolicyHash } from "./anime-policy.mjs";
+import { bindAudioEvidence } from "./audio-evidence.mjs";
 import { brandingHash, pinBranding } from "./branding.mjs";
 import { parseSrt } from "./captions.mjs";
-import { lookHash, subtitlesHash } from "./drama.mjs";
-import { dramaFixture, fixture, sandbox, storyFixture, writeAudioFixture } from "./fixtures/load.mjs";
+import { lookHash, mixHash, subtitlesHash } from "./drama.mjs";
+import { animeRuntimeProof } from "./duration.mjs";
+import { dramaFixture, fixture, fixtureLexicon, sandbox, storyFixture, writeAudioFixture } from "./fixtures/load.mjs";
 import { atomicWrite, isInside, resolveWorkdir, stopRequested, UsageError } from "./paths.mjs";
 import { eachLine, textHash } from "./schema.mjs";
 import { localeTexts, runCaptions, StageError } from "./stages.mjs";
 import { compilationHash } from "./compilation.mjs";
 import { approvedEpisodes, COMPILATION_STEPS, lintProject, loadProject, LOOK_STEPS, narratorOnly, pipelineStatus, recordStage, stepsFor, translationComplete } from "./state.mjs";
-import { estimateTimeline, speechHash, visualHash } from "./timeline.mjs";
+import { buildTimeline, estimateTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "./timeline.mjs";
 import { compilationSandbox, EPISODES, sha, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
+import { planRequests } from "../tts/requests.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -26,6 +30,178 @@ function writeTimeline(box) {
   writeAudioFixture(timeline, box.workdir);
   return timeline;
 }
+
+function writeAnimePolicy(box, doc) {
+  atomicWrite(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  atomicWrite(path.join(box.dir, "series.json"), JSON.stringify({
+    ...doc.series, category: doc.category, production_policy: doc.production_policy, runtime_spec: doc.runtime_spec,
+    target_minutes: doc.target_minutes[0], style_preset: doc.look.preset, characters: doc.characters,
+  }));
+}
+
+function measuredAnimeTimeline(doc) {
+  // Synthetic WAV sample counts exercise status evidence; no real speech or film is generated.
+  const samples = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, 5 * SAMPLE_RATE]));
+  const last = [...eachLine(doc)].at(-1).line.id;
+  samples[last] += (39_600 - buildTimeline(doc, samples).total_frames) * SAMPLES_PER_FRAME;
+  return { ...buildTimeline(doc, samples), speech_hash: speechHash(doc, fixtureLexicon()) };
+}
+
+function animeStateChecks(doc, timeline, final) {
+  const shots = doc.scenes.filter((scene) => scene.template === "shot").map((scene) => {
+    const timing = timeline.scenes.find((placed) => placed.id === scene.id);
+    const frames = timing.end_frame - timing.start_frame;
+    return { shot: scene.id, kind: "clip", fit: { available: frames, mode: "auto", speed: 1, source_frames: frames, stretched: frames, pad: 0, trim: 0 } };
+  });
+  return {
+    ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(doc),
+    runtime_policy_hash: runtimePolicyHash(doc), final_sha256: sha(final), narration_sha256: timeline.audio_evidence?.narration_sha256,
+    look_hash: lookHash(doc), subtitles_hash: subtitlesHash(doc), mix_hash: mixHash(doc), clips_hash: "fixture-clips",
+    metrics: { fps: 30, frames: timeline.total_frames, shots },
+  };
+}
+
+function writeAnimePackage(box, doc, timeline, checks, final) {
+  const proof = animeRuntimeProof({ doc, timeline, checks, timelineCurrent: true, finalSha256: sha(final) });
+  const metadata = { final_sha256: sha(final), production_policy: doc.production_policy, runtime_spec: doc.runtime_spec, runtime_proof: proof };
+  atomicWrite(path.join(box.workdir, "upload", "metadata.json"), JSON.stringify(metadata));
+  return metadata;
+}
+
+async function animeStateFixture(t) {
+  const box = sandbox("fixture-drama", "drama");
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const doc = dramaFixture();
+  Object.assign(doc, {
+    category: "anime", production_policy: "long-anime-v1", target_minutes: [22, 22],
+    runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 },
+    series: { slug: "fantasy", episode: 7, chapter: 1, kind: "series", genre: "custom", lead: "ensemble", planned_episodes: 120, open_ended: false, closed_ending: false },
+  });
+  doc.look.preset = "anime-2d";
+  delete doc.music;
+  for (const scene of doc.scenes) delete scene.data.fit;
+  writeAnimePolicy(box, doc);
+  assert.deepEqual(lintProject(loadProject({ slug: box.slug, root: box.root })).errors, []);
+  // Silent takes and narration of the measured lengths carry the timeline's audio evidence.
+  const timeline = writeAudioFixture(measuredAnimeTimeline(doc), box.workdir);
+  const final = Buffer.from("local anime status fixture, not real media");
+  const checks = animeStateChecks(doc, timeline, final);
+  atomicWrite(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+  atomicWrite(path.join(box.workdir, "checks.json"), JSON.stringify(checks));
+  atomicWrite(path.join(box.workdir, "final.mp4"), final);
+  atomicWrite(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visualHash(doc), speech_hash: timeline.speech_hash, subtitles_hash: subtitlesHash(doc) }));
+  atomicWrite(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({ speech_hash: timeline.speech_hash, visual_hash: visualHash(doc), look_hash: lookHash(doc), clips_hash: "fixture-clips", shots: {} }));
+  atomicWrite(path.join(box.dir, "script.md"), "# Local screenplay fixture\n");
+  const lineKeys = Object.fromEntries(planRequests(doc, fixtureLexicon()).flatMap((request) => request.lines).map((line) => [line.id, line.key]));
+  atomicWrite(path.join(box.workdir, "audio", "cache.json"), JSON.stringify({ lines: lineKeys }));
+  const metadata = writeAnimePackage(box, doc, timeline, checks, final);
+  const places = { docDir: box.dir, workdir: box.workdir };
+  for (const gate of ["script", "audio", "final", "publish"]) await approve({ gate, ...places });
+  return { ...box, doc, timeline, final, checks, metadata, places, lineKeys };
+}
+
+const stepOf = (state, id) => state.steps.find((step) => step.id === id);
+const DELIVERY_STEPS = ["video assembled", "final video approved", "upload package"];
+
+test("anime budget changes invalidate measured timing and delivery approvals while reusing unchanged voice clips", async (t) => {
+  const box = await animeStateFixture(t);
+  const status = () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
+  const initial = await status();
+  for (const id of ["script approved", "narration synthesized", "narration approved", ...DELIVERY_STEPS]) assert.equal(stepOf(initial, id).done, true, id);
+  const audioBytes = Object.fromEntries(Object.keys(box.lineKeys).map((id) => [id, readFileSync(path.join(box.workdir, "audio", `${id}.wav`))]));
+  const changed = { ...box.doc, runtime_spec: { ...box.doc.runtime_spec, op_ed_budget_seconds: 120, slot_reserve_seconds: 360 } };
+  writeAnimePolicy(box, changed);
+  assert.equal(speechHash(changed, fixtureLexicon()), box.timeline.speech_hash);
+  assert.equal(visualHash(changed), box.checks.visual_hash);
+  assert.notEqual(runtimePolicyHash(changed), box.checks.runtime_policy_hash);
+  assert.deepEqual(Object.fromEntries(planRequests(changed, fixtureLexicon()).flatMap((request) => request.lines).map((line) => [line.id, line.key])), box.lineKeys);
+  const stale = await status();
+  for (const id of ["script approved", "narration synthesized", "narration approved", ...DELIVERY_STEPS]) assert.equal(stepOf(stale, id).done, false, id);
+  assert.match(stepOf(stale, "narration synthesized").note, /current measured runtime policy/);
+  assert.equal(stepOf(stale, "frames rendered").done, true, "unchanged visual frames remain reusable");
+  for (const gate of ["script", "audio", "final", "publish"]) assert.equal((await approvalState({ gate, ...box.places })).status, "stale", gate);
+
+  // tts reuses the unchanged takes and binds them to the refreshed timeline.
+  const timeline = bindAudioEvidence(measuredAnimeTimeline(changed), box.workdir);
+  atomicWrite(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+  assert.equal(stepOf(await status(), "narration synthesized").done, true);
+  assert.equal(stepOf(await status(), "narration approved").done, false);
+  await approve({ gate: "audio", ...box.places });
+  assert.equal(stepOf(await status(), "narration approved").done, true);
+  assert.equal(stepOf(await status(), "video assembled").done, false, "a refreshed timeline alone cannot refresh the cut receipt");
+  const checks = animeStateChecks(changed, timeline, box.final);
+  atomicWrite(path.join(box.workdir, "checks.json"), JSON.stringify(checks));
+  assert.equal(stepOf(await status(), "video assembled").done, true);
+  assert.equal(stepOf(await status(), "final video approved").done, false, "unchanged final bytes still need approval for the new runtime policy");
+  await approve({ gate: "final", ...box.places });
+  assert.equal(stepOf(await status(), "final video approved").done, true);
+  assert.equal(stepOf(await status(), "upload package").done, false);
+  writeAnimePackage(box, changed, timeline, checks, box.final);
+  assert.equal(stepOf(await status(), "upload package").done, true);
+  await approve({ gate: "script", ...box.places });
+  await approve({ gate: "publish", ...box.places });
+  for (const gate of ["script", "audio", "final", "publish"]) assert.equal((await approvalState({ gate, ...box.places })).status, "approved", gate);
+  for (const [id, bytes] of Object.entries(audioBytes)) assert.deepEqual(readFileSync(path.join(box.workdir, "audio", `${id}.wav`)), bytes);
+  assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "audio", "cache.json"), "utf8")).lines, box.lineKeys);
+});
+
+test("anime episode context changes invalidate timing and final evidence even when text and media bytes stay the same", async (t) => {
+  const box = await animeStateFixture(t);
+  for (const [key, value] of [["slug", "other-fantasy"], ["episode", 8], ["chapter", 2], ["planned_episodes", 121], ["open_ended", true]]) {
+    const changed = { ...box.doc, series: { ...box.doc.series, [key]: value } };
+    writeAnimePolicy(box, changed);
+    assert.equal(speechHash(changed, fixtureLexicon()), box.timeline.speech_hash, key);
+    assert.notEqual(runtimePolicyHash(changed), box.checks.runtime_policy_hash, key);
+    const state = await pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
+    assert.deepEqual(state.lint.errors, [], key);
+    for (const id of ["narration synthesized", "narration approved", ...DELIVERY_STEPS]) assert.equal(stepOf(state, id).done, false, `${key}: ${id}`);
+    assert.equal(stepOf(state, "frames rendered").done, true, key);
+  }
+  writeAnimePolicy(box, box.doc);
+  const restored = await pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
+  for (const id of ["narration synthesized", "narration approved", ...DELIVERY_STEPS]) assert.equal(stepOf(restored, id).done, true, id);
+});
+
+test("anime status refuses estimated timing, replaced final bytes and incomplete current package proofs", async (t) => {
+  const box = await animeStateFixture(t);
+  const status = () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
+  for (const [name, timeline, checks] of [
+    ["estimate", { ...box.timeline, timing_basis: "estimated" }, box.checks],
+    ["missing policy", { ...box.timeline, runtime_policy_hash: undefined }, box.checks],
+    ["short body", { ...box.timeline, total_frames: 3_600 }, { ...box.checks, metrics: { ...box.checks.metrics, frames: 3_600 } }],
+    ["stale final receipt", box.timeline, { ...box.checks, final_sha256: "f".repeat(64) }],
+    ["missing shot receipts", box.timeline, { ...box.checks, metrics: { ...box.checks.metrics, shots: [] } }],
+    ["slowed clip", box.timeline, { ...box.checks, metrics: { ...box.checks.metrics, shots: box.checks.metrics.shots.map((shot, index) => index === 0 ? { ...shot, fit: { ...shot.fit, speed: 0.85 } } : shot) } }],
+    ["held clip tail", box.timeline, { ...box.checks, metrics: { ...box.checks.metrics, shots: box.checks.metrics.shots.map((shot, index) => index === 0 ? { ...shot, fit: { ...shot.fit, pad: 1 } } : shot) } }],
+  ]) {
+    atomicWrite(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    atomicWrite(path.join(box.workdir, "checks.json"), JSON.stringify(checks));
+    const state = await status();
+    for (const id of DELIVERY_STEPS) assert.equal(stepOf(state, id).done, false, `${name}: ${id}`);
+    if (name === "estimate" || name === "missing policy") assert.equal(stepOf(state, "narration synthesized").done, false, name);
+  }
+  atomicWrite(path.join(box.workdir, "timeline.json"), JSON.stringify(box.timeline));
+  atomicWrite(path.join(box.workdir, "checks.json"), JSON.stringify(box.checks));
+  atomicWrite(path.join(box.workdir, "final.mp4"), "replacement local anime fixture, not real media");
+  for (const id of DELIVERY_STEPS) assert.equal(stepOf(await status(), id).done, false, id);
+  atomicWrite(path.join(box.workdir, "final.mp4"), box.final);
+  for (const [name, proof] of [
+    ["missing proof", undefined],
+    ["estimated proof", { ...box.metadata.runtime_proof, basis: "estimated" }],
+    ["wrong body", { ...box.metadata.runtime_proof, body_frames: 39_601 }],
+    ["wrong presentation", { ...box.metadata.runtime_proof, presentation_frames: 39_601 }],
+    ["wrong episode", { ...box.metadata.runtime_proof, runtime_context: { ...box.metadata.runtime_proof.runtime_context, episode: 8 } }],
+    ["unknown field", { ...box.metadata.runtime_proof, unverified: true }],
+  ]) {
+    atomicWrite(path.join(box.workdir, "upload", "metadata.json"), JSON.stringify({ ...box.metadata, runtime_proof: proof }));
+    const state = await status();
+    assert.equal(stepOf(state, "video assembled").done, true, name);
+    assert.equal(stepOf(state, "final video approved").done, true, name);
+    assert.equal(stepOf(state, "upload package").done, false, name);
+  }
+  atomicWrite(path.join(box.workdir, "upload", "metadata.json"), JSON.stringify(box.metadata));
+  for (const id of DELIVERY_STEPS) assert.equal(stepOf(await status(), id).done, true, id);
+});
 
 test("the work directory is <base>/<slug> and never inside the repository", () => {
   const box = sandbox();

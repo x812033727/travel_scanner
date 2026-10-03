@@ -6,16 +6,18 @@ import test from "node:test";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
+import { runtimePolicyHash } from "../core/anime-policy.mjs";
 import { approve, readApprovals } from "../core/approvals.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { pinBranding, presentationTimeline, validateBranding } from "../core/branding.mjs";
-import { lookHash } from "../core/drama.mjs";
+import { lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
+import { animeRuntimeProof } from "../core/duration.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
-import { sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
+import { dramaFixture, fixtureLexicon, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
 import { runCaptions, writeLanguages } from "../core/stages.mjs";
 import { COMPILATION_STEPS, DRAMA_STEPS, dubArtifacts, loadProject, SLIDES_STEPS } from "../core/state.mjs";
-import { formatClock, SAMPLE_RATE, visualHash } from "../core/timeline.mjs";
+import { buildTimeline, formatClock, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
@@ -308,6 +310,253 @@ function passingQualityCheck(box, final, calls = []) {
 }
 
 const encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
+
+const ANIME_CONTEXT_KEYS = ["slug", "episode", "chapter", "planned_episodes", "open_ended", "closed_ending", "kind", "genre", "lead"];
+
+function animeReviewFixture(t) {
+  const box = sandbox("fixture-drama", "drama");
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const doc = dramaFixture();
+  Object.assign(doc, {
+    category: "anime", production_policy: "long-anime-v1", target_minutes: [22, 22],
+    runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 },
+    series: { slug: "fantasy", episode: 7, chapter: 1, kind: "series", genre: "custom", lead: "ensemble", planned_episodes: 120, open_ended: false, closed_ending: false },
+  });
+  doc.look.preset = "anime-2d";
+  delete doc.music;
+  for (const scene of doc.scenes) delete scene.data.fit;
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ ...doc.series, category: doc.category, production_policy: doc.production_policy, runtime_spec: doc.runtime_spec, target_minutes: 22, style_preset: "anime-2d", characters: doc.characters }));
+  const runtimeContext = Object.fromEntries(ANIME_CONTEXT_KEYS.map((key) => [key, doc.series[key]]));
+  // Synthetic WAV sample counts test proof bindings. The silent WAVs and final are placeholders;
+  // preview encoding and QA are mocked, so this fixture does not claim a produced 22-minute film.
+  const samples = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, 5 * SAMPLE_RATE]));
+  const last = [...eachLine(doc)].at(-1).line.id;
+  samples[last] += (39_600 - buildTimeline(doc, samples).total_frames) * SAMPLES_PER_FRAME;
+  const timeline = { ...buildTimeline(doc, samples), speech_hash: speechHash(doc, fixtureLexicon()) };
+  // Every take and the narration are real WAVs of the bound length, so the audio-evidence
+  // checks see the same takes the anime runtime receipts measure.
+  writeAudioFixture(timeline, box.workdir);
+  const final = Buffer.from("local anime final fixture, not real media");
+  const shots = doc.scenes.filter((scene) => scene.template === "shot").map((scene) => {
+    const timing = timeline.scenes.find((placed) => placed.id === scene.id);
+    const frames = timing.end_frame - timing.start_frame;
+    return { shot: scene.id, kind: "clip", fit: { available: frames, mode: "auto", speed: 1, source_frames: frames, stretched: frames, pad: 0, trim: 0 } };
+  });
+  const checks = {
+    ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(doc),
+    runtime_policy_hash: runtimePolicyHash(doc), final_sha256: sha(final), narration_sha256: timeline.audio_evidence.narration_sha256,
+    look_hash: lookHash(doc), subtitles_hash: subtitlesHash(doc), mix_hash: mixHash(doc), clips_hash: "fixture-clips",
+    metrics: { fps: 30, frames: timeline.total_frames, shots },
+  };
+  mkdirSync(path.join(box.workdir, "clips"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({ clips_hash: "fixture-clips" }));
+  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(checks));
+  writeFileSync(path.join(box.workdir, "final.mp4"), final);
+  writeLanguages(box.workdir, { locales: {}, decided_at: "2026-10-02T00:00:00Z" });
+  return { ...box, doc, timeline, checks, final, runtimeContext };
+}
+
+function passingAnimeQualityCheck(box, overrides = {}) {
+  return async (args) => {
+    assert.deepEqual(args, ["qa", "--slug", box.slug]);
+    mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+    writeFileSync(path.join(box.workdir, "review", "qa.json"), JSON.stringify({
+      ok: true, final_sha256: sha(box.final), policy_hash: runtimePolicyHash(box.doc),
+      runtime_spec: box.doc.runtime_spec, runtime_context: box.runtimeContext,
+      items: ITEM_IDS.map((id) => ({ id, ok: true, detail: "local fixture QA" })), ...overrides,
+    }));
+    return { code: EXIT.ok };
+  };
+}
+
+function assertAnimePayload(payload, box) {
+  assert.equal(payload.production_policy, "long-anime-v1");
+  assert.deepEqual(payload.runtime_spec, box.doc.runtime_spec);
+  assert.equal(payload.runtime_policy_hash, runtimePolicyHash(box.doc));
+  assert.deepEqual(payload.runtime_context, box.runtimeContext);
+  assert.deepEqual(Object.keys(payload.runtime_context), ANIME_CONTEXT_KEYS, "only the canonical approved episode context is sent");
+}
+
+test("long-anime script reviews carry approved targets and context without claiming measured runtime", async (t) => {
+  const box = animeReviewFixture(t);
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "script"], push.ctx), EXIT.ok, push.out.stderr);
+  const [review] = server.state.reviews;
+  assert.equal(review.gate, "script");
+  assertAnimePayload(review.payload, box);
+  assert.equal(review.content_sha256, sha(readFileSync(path.join(box.dir, "script.md"))));
+  assert.ok(review.payload.minutes < 22, "the short test script remains an estimate, distinct from its 22-minute production target");
+  assert.equal("runtime_measurement" in review.payload, false);
+  assert.equal("runtime_proof" in review.payload, false);
+  assert.equal("body_seconds" in review.payload, false);
+});
+
+test("long-anime audio reviews require measured current body timing and bind it to the approved context", async (t) => {
+  const box = animeReviewFixture(t);
+  const server = site();
+  const push = context(box, server.fetchImpl, { encode });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "audio"], push.ctx), EXIT.ok, push.out.stderr);
+  const [review] = server.state.reviews;
+  assertAnimePayload(review.payload, box);
+  assert.equal(review.content_sha256, sha(readFileSync(path.join(box.workdir, "timeline.json"))));
+  assert.equal(review.payload.duration_seconds, 1320);
+  assert.deepEqual(review.payload.runtime_measurement, {
+    basis: "measured", stage: "audio", policy_hash: runtimePolicyHash(box.doc), runtime_spec: box.doc.runtime_spec,
+    runtime_context: box.runtimeContext, body_seconds: 1320, body_frames: 39_600, fps: 30, speech_hash: box.timeline.speech_hash,
+  });
+  assert.equal("runtime_proof" in review.payload, false, "audio has no final-file proof yet");
+  for (const [name, changed, expected] of [
+    ["estimated", { ...box.timeline, timing_basis: "estimated" }, /measured/],
+    ["stale policy", { ...box.timeline, runtime_policy_hash: "old" }, /another runtime policy/],
+    ["stale speech", { ...box.timeline, speech_hash: "old" }, /current actual body timeline/],
+    ["short body", { ...box.timeline, total_frames: 3_600 }, /body is 3600 frames/],
+  ]) {
+    writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(changed));
+    const refused = site();
+    const attempt = context(box, refused.fetchImpl, { encode });
+    assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "audio"], attempt.ctx), EXIT.usage, name);
+    assert.match(attempt.out.stderr, expected, name);
+    assert.equal(refused.state.reviews.length, 0, name);
+  }
+});
+
+test("long-anime final reviews bind measured timing to the final bytes and the same QA policy and episode context", async (t) => {
+  const box = animeReviewFixture(t);
+  const server = site();
+  const push = context(box, server.fetchImpl, { encode, runCommand: passingAnimeQualityCheck(box) });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], push.ctx), EXIT.ok, push.out.stderr);
+  const [review] = server.state.reviews;
+  assertAnimePayload(review.payload, box);
+  const proof = review.payload.runtime_proof;
+  assert.equal(proof.basis, "measured");
+  assert.equal(proof.policy_hash, review.payload.qa.policy_hash);
+  assert.deepEqual(proof.runtime_context, box.runtimeContext);
+  assert.deepEqual(proof.runtime_spec, review.payload.qa.runtime_spec);
+  assert.deepEqual(proof.runtime_context, review.payload.qa.runtime_context);
+  assert.equal(proof.body_frames, 39_600);
+  assert.equal(proof.presentation_frames, 39_600);
+  assert.equal(proof.op_ed_frames, 0);
+  assert.equal(proof.final_sha256, sha(box.final));
+  assert.equal(proof.final_sha256, review.content_sha256);
+  assert.equal(proof.final_sha256, review.payload.qa.final_sha256);
+  for (const [name, qa, expected] of [
+    ["missing policy", { policy_hash: undefined }, /current runtime policy/],
+    ["stale policy", { policy_hash: "old" }, /current runtime policy/],
+    ["wrong final", { final_sha256: "f".repeat(64) }, /current runtime policy/],
+    ["missing context", { runtime_context: undefined }, /context/],
+    ["wrong episode", { runtime_context: { ...box.runtimeContext, episode: 8 } }, /context/],
+    ["wrong budgets", { runtime_spec: { ...box.doc.runtime_spec, op_ed_budget_seconds: 120, slot_reserve_seconds: 360 } }, /runtime/],
+  ]) {
+    const refused = site();
+    const attempt = context(box, refused.fetchImpl, { encode, runCommand: passingAnimeQualityCheck(box, qa) });
+    assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], attempt.ctx), EXIT.usage, name);
+    assert.match(attempt.out.stderr, expected, name);
+    assert.equal(refused.state.reviews.length, 0, name);
+  }
+  for (const [name, changed] of [
+    ["missing shot receipt", { ...box.checks, metrics: { ...box.checks.metrics, shots: [] } }],
+    ["slowed clip", { ...box.checks, metrics: { ...box.checks.metrics, shots: box.checks.metrics.shots.map((shot, index) => index === 0 ? { ...shot, fit: { ...shot.fit, speed: 0.85 } } : shot) } }],
+    ["held clip tail", { ...box.checks, metrics: { ...box.checks.metrics, shots: box.checks.metrics.shots.map((shot, index) => index === 0 ? { ...shot, fit: { ...shot.fit, pad: 1 } } : shot) } }],
+  ]) {
+    writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(changed));
+    const refused = site();
+    const attempt = context(box, refused.fetchImpl, { encode, runCommand: passingAnimeQualityCheck(box) });
+    assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], attempt.ctx), EXIT.usage, name);
+    assert.match(attempt.out.stderr, /shot|clip|fit|speed|pad/i, name);
+    assert.equal(refused.state.reviews.length, 0, name);
+  }
+  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(box.checks));
+  writeFileSync(path.join(box.workdir, "final.mp4"), "replacement local anime final fixture, not real media");
+  const refused = site();
+  const attempt = context(box, refused.fetchImpl, { encode, runCommand: passingAnimeQualityCheck(box) });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], attempt.ctx), EXIT.usage);
+  assert.match(attempt.out.stderr, /current final.mp4 SHA-256/);
+  assert.equal(refused.state.reviews.length, 0);
+});
+
+test("review-pull never relabels an old approved anime cut with a changed policy even when final bytes are identical", async (t) => {
+  const box = animeReviewFixture(t);
+  const server = site();
+  const initial = context(box, server.fetchImpl, { encode, runCommand: passingAnimeQualityCheck(box) });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], initial.ctx), EXIT.ok, initial.out.stderr);
+  const old = server.state.reviews[0];
+  old.status = "approved";
+  old.decided_at = "2026-10-02T06:00:00Z";
+  const oldHash = old.payload.runtime_policy_hash;
+  box.doc.runtime_spec.op_ed_budget_seconds = 120;
+  box.doc.runtime_spec.slot_reserve_seconds = 360;
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(box.doc));
+  writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ ...box.doc.series, category: box.doc.category, style_preset: box.doc.look.preset, production_policy: box.doc.production_policy, runtime_spec: box.doc.runtime_spec, target_minutes: 22, characters: box.doc.characters }));
+  const stale = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug, "--gate", "final"], stale.ctx), EXIT.ok, stale.out.stderr);
+  assert.match(stale.out.stdout, /approved a runtime policy or episode context that has since changed/);
+  assert.equal(readApprovals(box.workdir).approvals.some((entry) => entry.gate === "final"), false);
+  box.timeline.runtime_policy_hash = runtimePolicyHash(box.doc);
+  box.checks.runtime_policy_hash = runtimePolicyHash(box.doc);
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(box.timeline));
+  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(box.checks));
+  const fresh = context(box, server.fetchImpl, { encode, runCommand: passingAnimeQualityCheck(box) });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], fresh.ctx), EXIT.ok, fresh.out.stderr);
+  const current = server.state.reviews[0];
+  current.status = "approved";
+  current.decided_at = "2026-10-02T07:00:00Z";
+  assert.equal(current.content_sha256, old.content_sha256, "the actual cut bytes stayed unchanged");
+  assert.notEqual(current.payload.runtime_policy_hash, oldHash, "the owner reviewed the changed runtime contract");
+  const pull = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug, "--gate", "final"], pull.ctx), EXIT.ok, pull.out.stderr);
+  const approved = readApprovals(box.workdir).approvals.filter((entry) => entry.gate === "final");
+  assert.equal(approved.length, 1, "the old context cannot overwrite or duplicate the new approval");
+  assert.equal(approved[0].runtime_policy_hash, runtimePolicyHash(box.doc));
+});
+
+test("long-anime publish reviews distinguish metadata approval hashes from final-media proof and reject stale receipts", async (t) => {
+  const box = animeReviewFixture(t);
+  await approve({ gate: "final", docDir: box.dir, workdir: box.workdir });
+  const packaged = context(box, site().fetchImpl);
+  assert.equal(await main(["package", "--slug", box.slug], packaged.ctx), EXIT.ok, packaged.out.stderr + packaged.out.stdout);
+  const metadataFile = path.join(box.workdir, "upload", "metadata.json");
+  const originalBytes = readFileSync(metadataFile);
+  const metadata = JSON.parse(originalBytes.toString("utf8"));
+  const expectedProof = animeRuntimeProof({ doc: box.doc, timeline: box.timeline, checks: box.checks, timelineCurrent: true, finalSha256: sha(box.final) });
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], push.ctx), EXIT.ok, push.out.stderr);
+  const [review] = server.state.reviews;
+  assertAnimePayload(review.payload, box);
+  assert.equal(review.payload.package.ok, true);
+  assert.equal(review.content_sha256, sha(originalBytes));
+  assert.equal(review.payload.package.final_sha256, sha(originalBytes), "the publish gate approves metadata.json");
+  assert.equal(review.payload.final_media_sha256, sha(box.final));
+  assert.equal(review.payload.runtime_proof.final_sha256, sha(box.final));
+  assert.notEqual(review.payload.package.final_sha256, review.payload.final_media_sha256);
+  assert.deepEqual(review.payload.runtime_proof, expectedProof);
+  assert.equal(review.files.find((file) => file.role === "metadata").sha256, review.content_sha256);
+  assert.equal(review.files.find((file) => file.role === "final").sha256, review.payload.final_media_sha256);
+  for (const [name, proof] of [
+    ["missing proof", undefined],
+    ["stale policy", { ...metadata.runtime_proof, policy_hash: "old" }],
+    ["wrong final", { ...metadata.runtime_proof, final_sha256: "f".repeat(64) }],
+    ["estimated proof", { ...metadata.runtime_proof, basis: "estimated" }],
+    ["wrong body frames", { ...metadata.runtime_proof, body_frames: 39_601 }],
+    ["wrong episode context", { ...metadata.runtime_proof, runtime_context: { ...box.runtimeContext, episode: 8 } }],
+  ]) {
+    writeFileSync(metadataFile, JSON.stringify({ ...metadata, runtime_proof: proof }));
+    const refused = site();
+    const attempt = context(box, refused.fetchImpl);
+    assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], attempt.ctx), EXIT.usage, name);
+    assert.match(attempt.out.stderr, /current measured runtime proof/, name);
+    assert.equal(refused.state.reviews.length, 0, name);
+  }
+  writeFileSync(metadataFile, originalBytes);
+  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify({ ...box.checks, final_sha256: "f".repeat(64) }));
+  const refused = site();
+  const attempt = context(box, refused.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], attempt.ctx), EXIT.usage);
+  assert.match(attempt.out.stderr, /current final.mp4 SHA-256/);
+  assert.equal(refused.state.reviews.length, 0);
+});
 
 test("remote approvals and old transcript checks cannot clear a new take of the same duration", async () => {
   const box = sandbox();
