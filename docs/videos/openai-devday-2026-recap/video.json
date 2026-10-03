@@ -1,0 +1,2007 @@
+{
+  "schema_version": 1,
+  "slug": "openai-devday-2026-recap",
+  "format": "slides",
+  "category": "ai-news",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "riso-navy"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "DevDay 2026 的 25 項，你今天碰得到幾項？照方案分五張清單，這週就能做",
+    "description": "OpenAI DevDay 2026 一口氣發表了 25 項，可是你今天打開 ChatGPT，碰得到的有幾項？這支把 25 項照「所有人、Plus、Pro、團隊、開發者」分成五張清單，每一項只寫官方頁 2026 年 10 月 3 日當天的寫法：誰能用、在哪裡用、哪裡還沒有。\n\n給付 Plus、付 Pro、公司用 Business 或 Enterprise，以及接 API 的人：找到自己那一張清單就夠。影片裡的一個動作：下次看到「使用 ChatGPT 登入」，先讀畫面列的三樣（姓名、電子郵件、個人檔案照片），再決定要不要核准第二個「訂閱共用」；帳號裡有 dot 的人，把一件會動到別人的操作設成「要先核准」。\n\n會動到帳單的只有三個數字：五分之一（GPT-6.1 Sol 的 API 牌價是 Astra 的五分之一）、六倍（GPT-6 Astra Ultrafast 在 API 價目表每一欄是標準的 6 倍；ChatGPT 工作與 Codex 的方案額度算 8 份、買的點數算 6 倍）、五百美元（Pro 500 的月費，只有這一階含 Ultrafast）。同一頁寫得不一樣的地方（Codex 雲端的適用方案、GPT-6.1 Sol Ultrafast、API 的速度倍數、協作投影片的多人編輯），影片直說「以官網為準」。所有數字都是 OpenAI 自己頁面上的；速度倍數是 OpenAI 的說法；影片沒有實測任何一項。dots 向符合資格的市場逐步推出，台灣有沒有，以官網為準。\n\n影片裡提到的上一支、另一支：\n・dots 怎麼運作、怎麼失敗：〈聊天機器人時代結束了〉 always-on-agent-explained\n・Sol 對 Astra 的整月帳單公式：〈GPT-6 vs Opus 5.5 值不值得付〉 gpt6-vs-opus55-worth-paying\n・同一個模型的八格價目表怎麼讀：〈AI 價格戰〉 ai-price-war-gpt-6-sol-vs-opus-5-5\n\n錄製日期：2026 年 10 月 3 日。價格、方案與可用範圍之後會變，以官方頁為準。",
+    "tags": [
+      "DevDay 2026",
+      "OpenAI DevDay",
+      "GPT-6.1 Sol",
+      "ChatGPT Pro 500",
+      "Ultrafast",
+      "使用 ChatGPT 登入",
+      "dots",
+      "Codex 雲端",
+      "Codex CLI",
+      "ChatGPT 空間",
+      "Pro 200 額度",
+      "Agents API",
+      "Decisions API",
+      "Codex Security Cloud",
+      "GPT-5.5 退場",
+      "OpenAI 市集",
+      "AI 時事"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "DevDay 2026",
+      "headline": "25 項，你碰得到**幾項**？",
+      "sub": "照方案分五張清單",
+      "shot": "hall"
+    }
+  },
+  "sources": [
+    {
+      "title": "OpenAI：DevDay 2026 精彩回顧（2026-09-29）",
+      "url": "https://openai.com/zh-Hant/index/devday-2026-recap/",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "OpenAI：推出 GPT-6.1 Sol（2026-09-29）",
+      "url": "https://openai.com/zh-Hant/index/introducing-gpt-6-1-sol/",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "OpenAI：dots 正式登場（2026-09-29）",
+      "url": "https://openai.com/zh-Hant/index/introducing-dots/",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "OpenAI 說明中心：About ChatGPT Pro tiers（更新 2026-10-02）",
+      "url": "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "OpenAI 說明中心：Sign in with ChatGPT（更新 2026-10-02）",
+      "url": "https://help.openai.com/en/articles/20001410-sign-in-with-chatgpt",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "ChatGPT Learn：Speed（Fast、Ultrafast 的額度與點數倍數，GPT-5.5 退場日）",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/speed",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "ChatGPT Learn：Codex Cloud",
+      "url": "https://learn.chatgpt.com/docs/cloud",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "ChatGPT Learn：Codex Security Cloud setup",
+      "url": "https://learn.chatgpt.com/docs/security/setup",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "ChatGPT：ChatGPT 空間",
+      "url": "https://chatgpt.com/zh-Hant/features/space/",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "OpenAI API：Pricing（標準、Fast、Ultrafast 價目表）",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "OpenAI API：gpt-6.1-sol 模型頁",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "OpenAI API：Ultrafast mode 指南",
+      "url": "https://developers.openai.com/api/docs/guides/ultrafast-mode",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "OpenAI API：Zero Data Retention with Private Safety Processing",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "OpenAI：Agents API 隆重登場（2026-09-10）",
+      "url": "https://openai.com/zh-Hant/index/introducing-the-agents-api/",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "MCP：Triggers and Events Working Group（提議中的事件規格）",
+      "url": "https://modelcontextprotocol.io/community/working-groups/triggers-events",
+      "checked_on": "2026-10-03"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "hall",
+      "chapter": "25 項裡，你今天碰得到幾項？",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a railway station ticket hall at dawn, five ticket windows in a row along the far wall, short queues of commuters with bags and umbrellas lined up in front of each, one clerk leaning out of the middle window to wave the next person forward, the wide stone floor still wet from mopping, pale morning light coming in through tall arched windows on the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "24pe",
+          "text": "DevDay 一口氣發表了二十幾樣東西。"
+        },
+        {
+          "id": "25u3",
+          "text": "你今天打開 ChatGPT，碰得到幾樣？"
+        }
+      ]
+    },
+    {
+      "id": "title",
+      "template": "title",
+      "data": {
+        "tag": "AI 時事",
+        "title": "DevDay 2026 的 25 項，你今天**碰得到幾項**？",
+        "subtitle": "照方案分五張清單：所有人、Plus、Pro、團隊、開發者"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "279j",
+          "text": "答案不在新聞裡，在你付的是哪一種方案。"
+        }
+      ]
+    },
+    {
+      "id": "ticket-hand",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand sliding a blank cardboard monthly pass across the worn wooden sill of a ticket window, the clerk's fingers on the other side reaching to take it, a brass coin tray and a rubber stamp pad beside it, the pass a plain card with no printing at all, soft light from the hall falling across the sill",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "2bjg",
+          "text": "這集把回顧頁的 25 項分成五張清單：所有人、Plus、Pro、團隊、開發者。"
+        }
+      ]
+    },
+    {
+      "id": "chat-ask",
+      "template": "chat",
+      "data": {
+        "title": "先問一句",
+        "messages": [
+          {
+            "side": "right",
+            "name": "觀眾",
+            "text": "25 項，我今天能用幾項？"
+          },
+          {
+            "side": "left",
+            "name": "站主",
+            "text": "先看你付的是哪一種。"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "2kju",
+          "text": "有人問我，那我自己今天到底能用幾項？",
+          "reveal": 1
+        },
+        {
+          "id": "2mr4",
+          "text": "先看你付的是哪一種，再教你一個這週就能改的設定。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "queue-turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the queue at the first ticket window, a woman at the front turning round to the man behind her and pointing at the window, both holding blank passes, a child beside them on tiptoe trying to see the counter, morning light across the stone floor",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "2pyt",
+          "text": "每一張只寫官網當天的寫法。"
+        },
+        {
+          "id": "2xba",
+          "text": "先從每個人都有的那一張開始？"
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "chapter": "每個人都有的九項，和那顆登入按鈕",
+      "template": "chapter",
+      "data": {
+        "number": "02",
+        "title": "每個人都有的九項，和那顆登入按鈕",
+        "subtitle": "官網寫「適用於所有方案」的那一行"
+      },
+      "lines": [
+        {
+          "id": "3a9f",
+          "text": "你以為 DevDay 的東西，都要等開放、都要加錢。"
+        }
+      ]
+    },
+    {
+      "id": "pool-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a public sports centre reception desk in the morning, a swimmer in a towel and flip-flops holding up a plain membership card, the receptionist in a polo shirt glancing at it and already reaching for a locker key on a hook behind her, a stack of folded towels and a bowl of earplugs on the counter, bright daylight from the glass doors behind the swimmer",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "3qfi",
+          "text": "其實回顧頁的 25 項裡，有 9 項的適用於那一行，寫的是登入就有。"
+        }
+      ]
+    },
+    {
+      "id": "nine-stats",
+      "template": "stats",
+      "data": {
+        "title": "回顧頁「適用於」那一行怎麼寫",
+        "stats": [
+          {
+            "value": "6 項",
+            "label": "適用於所有方案",
+            "note": "Codex 雲端、Codex CLI、程式碼審查、外掛程式擴充功能、外掛程式建立與提交、MCP 事件"
+          },
+          {
+            "value": "3 項",
+            "label": "所有 Codex 使用者、所有其他方案、全球已登入使用者",
+            "note": "Codex Security Cloud、可分享的個人檔案、使用 ChatGPT 登入"
+          }
+        ],
+        "source": "OpenAI DevDay 2026 回顧頁，2026-09-29。免費方案含哪些，頁上沒寫，以官網為準"
+      },
+      "claims": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "3v68",
+          "text": "其中 6 項，官網寫的是適用於所有方案。"
+        },
+        {
+          "id": "4ffb",
+          "text": "另外 3 項，寫給所有 Codex 使用者、其他方案、已登入使用者。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "turnstile",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot of the entry turnstiles of a sports centre, a woman in a swim cap tapping a plain card on the reader and the steel arm swinging open for her, a row of empty turnstiles beside hers, rubber mats on the floor, daylight from a skylight above",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c4",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "4fu7",
+          "text": "免費方案含哪些，頁上沒寫；Codex 雲端那一段也寫 Plus 以上，都以官網為準。"
+        }
+      ]
+    },
+    {
+      "id": "codex-four",
+      "template": "bullets",
+      "data": {
+        "title": "九項裡，Codex 的四項",
+        "items": [
+          "**Codex 雲端**：任務在雲端跑；同一段也寫 Plus 以上，以官網為準",
+          "**Codex CLI**：語音聊天、/agents 檢視、worktree",
+          "**程式碼審查**：桌面應用程式，GitHub 提取要求與 GitLab 合併要求",
+          "**Codex Security Cloud**：所有 Codex 使用者"
+        ],
+        "note": "回顧頁「適用於」那一行的寫法，2026-09-29"
+      },
+      "claims": [
+        "c5",
+        "c6",
+        "c7",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "4m64",
+          "text": "寫程式的人拿到四項：Codex 雲端、Codex CLI、程式碼審查、Codex Security Cloud。",
+          "reveal": 4
+        }
+      ]
+    },
+    {
+      "id": "lane-wide",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an indoor swimming pool mid-morning, six lanes divided by floating rope lines, three swimmers at different points of their lengths, a lifeguard sitting on a tall chair at the side with a whistle, wet tiles reflecting the light from a long window high on the wall",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c6",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "4py7",
+          "text": "CLI 能用講的，程式碼審查接 GitHub 和 GitLab；剩下五項，每個人都會碰到。"
+        }
+      ]
+    },
+    {
+      "id": "five-more",
+      "template": "bullets",
+      "data": {
+        "title": "另外五項",
+        "items": [
+          "**外掛程式擴充功能**：側邊欄入口、互動面板、檔案檢視器",
+          "**外掛程式建立與提交**：權限仍由你逐一核准",
+          "**MCP 事件**：「正加入支援」，提議中的規格",
+          "**可分享的個人檔案**：所有其他方案已有",
+          "**使用 ChatGPT 登入**：全球已登入使用者，依組織設定"
+        ],
+        "note": "回顧頁「適用於」那一行的寫法，2026-09-29"
+      },
+      "claims": [
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "4tzn",
+          "text": "外掛程式的擴充功能，外掛程式的建立與提交，還有 MCP 事件，規格還在提議中。",
+          "reveal": 3
+        },
+        {
+          "id": "4z24",
+          "text": "可分享的個人檔案，和使用 ChatGPT 登入。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "card-closeup",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of a membership card held between a thumb and two fingers, the card a plain laminated rectangle with one flat silhouette block where a photo would be and one coloured stripe across the bottom, no printing, a damp towel over the wrist, soft daylight from the pool side",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "53vp",
+          "text": "這顆登入按鈕，是我最在意的一項，它交出去的只有三樣。"
+        }
+      ]
+    },
+    {
+      "id": "login-steps",
+      "template": "steps",
+      "data": {
+        "title": "使用 ChatGPT 登入，照說明頁的五步",
+        "steps": [
+          {
+            "title": "合作網站或外掛程式目錄",
+            "detail": "首批 Airtable、GitLab、HubSpot、Notion、Supabase、Vercel，以官網為準"
+          },
+          {
+            "title": "按「使用 ChatGPT 登入」",
+            "detail": "或「以 ChatGPT 繼續」"
+          },
+          {
+            "title": "讀畫面列的身分資訊",
+            "detail": "姓名、電子郵件、個人檔案照片"
+          },
+          {
+            "title": "想用再繼續",
+            "detail": "建立、連結或存取那個帳號"
+          },
+          {
+            "title": "其他權限另行核准",
+            "detail": "訂閱共用是獨立的一個請求"
+          }
+        ]
+      },
+      "claims": [
+        "c14",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "5iay",
+          "text": "第一步在合作網站找到它，第二步按下去，第三步讀畫面列的身分資訊。",
+          "reveal": 3
+        },
+        {
+          "id": "5mgv",
+          "text": "第四步想用再繼續，第五步其他權限另外核准，重點在這一步。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "key-board",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a changing-room key board on a tiled wall, rows of numbered hooks drawn as plain blank tags, an attendant lifting one locker key off its hook and holding it out to a swimmer who has not yet reached for it, wooden benches and a mop bucket below, light from a frosted window on the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "63ta",
+          "text": "訂閱共用，是另外一把鑰匙，不是跟著登入一起給的。"
+        }
+      ]
+    },
+    {
+      "id": "three-vs",
+      "template": "compare",
+      "data": {
+        "title": "對方拿到的，和永遠不給的",
+        "left": {
+          "heading": "對方拿到的",
+          "points": [
+            "姓名",
+            "電子郵件地址",
+            "個人檔案照片（如有）"
+          ]
+        },
+        "right": {
+          "heading": "永遠不給的",
+          "points": [
+            "聊天內容與記憶",
+            "檔案與 token",
+            "帳務與其他帳號資料"
+          ]
+        },
+        "verdict": "說明中心 2026-10-02 的寫法"
+      },
+      "claims": [
+        "c14",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "68xh",
+          "text": "對方拿到的，只有姓名、電子郵件、個人檔案照片。",
+          "reveal": 1
+        },
+        {
+          "id": "6bae",
+          "text": "聊天和記憶、檔案和 token、帳務，一律不給。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "lane-rope",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a lifeguard's hands pulling a floating lane rope taut and hooking it onto a steel post at the pool edge, a small painted notch on the post marking where it stops, water lapping at the tiles, the rope's plastic floats wet and shining, daylight from above",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "6fq4",
+          "text": "訂閱共用可以不答應；答應了，也能自己設上限，像把水道繩拉到記號就停。"
+        }
+      ]
+    },
+    {
+      "id": "office-bolt",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a manager's office door at the end of a sports centre corridor, a heavy sliding bolt drawn across it at eye level, a cleaner with a cart pausing beside the door and looking at the bolt, a fire extinguisher on the wall, daylight from a window at the corridor's end",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "6grq",
+          "text": "公司帳號看不到按鈕，先問管理員；那是全域管理員管的，不是壞掉。"
+        }
+      ]
+    },
+    {
+      "id": "walk-past",
+      "template": "shot",
+      "data": {
+        "prompt": "From behind, a swimmer with a towel over one shoulder walking away from the reception desk toward the pool doors, membership card still in hand, the key board on the wall behind the desk with every key still on its hook, the receptionist already looking at the next person, daylight ahead through the glass doors",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "6jcw",
+          "text": "不核准共用，登入一樣完成。"
+        },
+        {
+          "id": "6mey",
+          "text": "那付了 Plus 的人，多了哪幾樣？"
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "chapter": "Plus 的清單：九項之上再加 Sol",
+      "template": "chapter",
+      "data": {
+        "number": "03",
+        "title": "Plus 的清單：九項再加 Sol",
+        "subtitle": "順便看 Codex 的三項怎麼用"
+      },
+      "lines": [
+        {
+          "id": "6npj",
+          "text": "付 Plus 的人，拿到的是這次對最多人有用的一項。"
+        }
+      ]
+    },
+    {
+      "id": "bike-talk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a neighbourhood bicycle repair shop near noon, the mechanic in an apron crouched at a bike on a stand tightening a wheel, a customer leaning on the doorframe talking to him with a coffee cup in hand, the mechanic answering without looking up, tyres hanging from the ceiling, hard midday sun on the pavement outside the open shopfront",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "6q7d",
+          "text": "GPT-6.1 Sol，Plus 在 ChatGPT 工作和 Codex 裡就能選，對話裡還沒有。"
+        }
+      ]
+    },
+    {
+      "id": "sol-big",
+      "template": "big",
+      "data": {
+        "kicker": "Plus 多的那一項",
+        "text": "GPT-6.1 Sol：ChatGPT 工作與 Codex **有了**，對話還沒有",
+        "sub": "Plus、Pro、Business、Enterprise、Edu（Sol 頁 2026-09-29）。OpenAI 自己公布的評測說接近 Astra"
+      },
+      "claims": [
+        "c19",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "6tnm",
+          "text": "Sol 頁寫 Plus 到 Edu 都能用，OpenAI 自己公布的評測說它接近 Astra。"
+        }
+      ]
+    },
+    {
+      "id": "three-stands",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the back of the repair shop, three repair stands in a row each holding a bicycle at a different stage, one wheel off, one chain hanging, one finished, the mechanic walking between them with a wrench, spare parts in open drawers along the wall, light from a roll-up door open to the lane",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "6urf",
+          "text": "Codex 這邊也能同時架好幾台車：CLI 新的 agents 檢視，把工作分給多個智慧體。"
+        }
+      ]
+    },
+    {
+      "id": "shutter-wheel",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot of the repair shop's roll-up shutter pulled halfway down, seen from the lane, inside a bicycle still on its stand with the rear wheel spinning, nobody in sight, the mechanic's apron hung on a nail, afternoon light slanting under the shutter onto the floor",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "6zff",
+          "text": "Codex 雲端的意思是，你的電腦睡著了，任務還在跑，手機也能接著看。"
+        }
+      ]
+    },
+    {
+      "id": "cloud-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "Codex Cloud 頁原句",
+        "quote": "Each task has its own workspace and can keep working while your computer is asleep.",
+        "translation": "每個任務有自己的工作區，你的電腦睡著了也能繼續。",
+        "source": "learn.chatgpt.com/docs/cloud，2026-10-03"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "79px",
+          "text": "Codex Cloud 頁上的原句，是這樣寫的。"
+        },
+        {
+          "id": "7eac",
+          "text": "翻成中文，每個任務有自己的工作區，你的電腦睡著了也能繼續。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "spin-wheel",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the mechanic's greasy hands giving a front wheel a slow spin on the stand and holding one ear close to the hub, the spokes a blur, a rag tucked in his belt, a customer's shoes waiting just inside the frame, light from the open shopfront",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "7i9i",
+          "text": "程式碼審查先看摘要，再看差異，有問題再問 Codex；也可以開自動審查。"
+        }
+      ]
+    },
+    {
+      "id": "old-wrench",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a workbench drawer being pushed shut, a worn old wrench with chipped handle lying at the very back of the drawer, newer tools in the front rows, the mechanic's hand on the drawer pull, sawdust and a coffee ring on the bench top, daylight from a side window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "7ipw",
+          "text": "不過，有一把舊扳手要收起來了。"
+        }
+      ]
+    },
+    {
+      "id": "retire-stats",
+      "template": "stats",
+      "data": {
+        "title": "GPT-5.5 退場",
+        "stats": [
+          {
+            "value": "10 月 14 日",
+            "label": "退出 ChatGPT、ChatGPT 工作與 Codex",
+            "note": "2026 年，所有方案"
+          },
+          {
+            "value": "API",
+            "label": "不受影響",
+            "note": "頁上沒寫該換哪一個模型"
+          }
+        ],
+        "source": "learn.chatgpt.com 的 Speed 頁，2026-10-03"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "7vku",
+          "text": "GPT-5.5 在 10 月 14 日，從 ChatGPT、ChatGPT 工作和 Codex 退場。"
+        },
+        {
+          "id": "8v7m",
+          "text": "API 不受影響；Codex 裡改選一個還在的模型。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "test-ride",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the street outside the repair shop in the afternoon, a customer wobbling off on a freshly repaired bicycle with one foot still on the ground, the mechanic watching from the doorway wiping his hands, a tabby cat sitting upright on a stack of old tyres by the door as if supervising, warm sun on the shop awning",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "8vrs",
+          "text": "Plus 的清單，九項加一個 Sol。"
+        },
+        {
+          "id": "8yd9",
+          "text": "那 Pro 多付的那一份，換到什麼？"
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "chapter": "Pro 的清單：四項、dots 看市場、三個級別",
+      "template": "chapter",
+      "data": {
+        "number": "04",
+        "title": "Pro 的清單：四項、dots 看市場、三個級別",
+        "subtitle": "Pro 100、Pro 200、Pro 500，和 Pro 200 舊用戶的四步"
+      },
+      "lines": [
+        {
+          "id": "977k",
+          "text": "Pro 那一張清單最長，而且和你的帳單有關。"
+        }
+      ]
+    },
+    {
+      "id": "pottery-wide",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a shared pottery studio in the afternoon, a long wooden table with three people each shaping their own piece, one trimming a bowl, one pressing a slab, one painting glaze, in the far corner a potter's wheel turning with a lump of clay on it and nobody seated at it, shelves of drying pots along the wall, soft daylight from a wall of north-facing windows",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "99ep",
+          "text": "先看四項已經寫在 Pro 名下的，再加一項要看市場的，也就是 dots。"
+        }
+      ]
+    },
+    {
+      "id": "pro-five",
+      "template": "bullets",
+      "data": {
+        "title": "Pro 的清單",
+        "items": [
+          "**dots**：符合資格的市場逐步推出，第一個不另收費；台灣有沒有以官網為準",
+          "**ChatGPT 空間**：網頁與桌面可編輯，行動版只能看；分享頁面不分享私人對話與記憶",
+          "**動態頁面**：和 dot 或 ChatGPT 一起做、會自己更新的文件",
+          "**協作投影片**：可匯出 PowerPoint 或 Google 簡報；多人同時編輯，兩頁寫法不同，以官網為準",
+          "**會議外掛程式 Beta**：Pro 與 Business，macOS 桌面應用程式"
+        ],
+        "note": "回顧頁、dots 頁、空間頁，2026-10-03"
+      },
+      "claims": [
+        "c23",
+        "c24",
+        "c25",
+        "c26",
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "9rtc",
+          "text": "dots，向符合資格的市場逐步推出，台灣有沒有，以官網為準。",
+          "reveal": 1
+        },
+        {
+          "id": "a3tb",
+          "text": "ChatGPT 空間和動態頁面，網頁和桌面能編輯，行動版只能看。",
+          "reveal": 2
+        },
+        {
+          "id": "a4qu",
+          "text": "協作投影片能匯出 PowerPoint；會議外掛程式是測試版，Pro 和 Business。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "wheel-alone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a potter's wheel turning on its own in the corner of the studio, a cylinder of wet clay slowly rising on it with no hands touching it, a bucket of slip and a wire cutter on the floor beside the wheel, the empty stool pushed back, afternoon light raking across the wet clay from the window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "a8fd",
+          "text": "dots 怎麼運作、怎麼失敗，上一支講過了；這裡只講額度，和三條界線。"
+        }
+      ]
+    },
+    {
+      "id": "dot-big",
+      "template": "big",
+      "data": {
+        "kicker": "dots 頁 2026-09-29",
+        "text": "跟 dot 聊天**不算額度**\n叫它在 Codex 或 ChatGPT 工作裡跑任務才算",
+        "sub": "第一個 dot 不另收費；推出後第一個月上限較高"
+      },
+      "claims": [
+        "c28",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "aedk",
+          "text": "跟 dot 聊天不算額度，叫它在 Codex 或 ChatGPT 工作裡跑任務才算。"
+        }
+      ]
+    },
+    {
+      "id": "locked-cabinet",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a padlocked glaze cabinet in the studio, the teacher's hand holding the only key up to the lock while a student beside her holds a bowl and waits, jars of glaze visible through the wire mesh door, afternoon light from the side",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "aeyf",
+          "text": "三條界線：主動研究唯讀，自訂規則能設先核准，改密碼一律你自己來。"
+        }
+      ]
+    },
+    {
+      "id": "two-hands-bowl",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two pairs of hands working on the same unfired bowl on a turntable, one pair trimming the foot with a loop tool, the other pair brushing glaze onto the rim, their sleeves rolled up and dusted with clay, a jar of brushes between them, daylight from the studio window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "aiiz",
+          "text": "空間的頁面也一樣，你改一筆，同事接著改；分享頁面不會分享你的私人對話。"
+        }
+      ]
+    },
+    {
+      "id": "kiln-talk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a brick kiln in the studio, two potters talking with their hands about a cracked plate one of them holds, a third person sitting on an upturned crate nodding and writing in a small notebook on her knee, kiln shelves and cones stacked behind them, warm light from the kiln's open door mixing with daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "akzj",
+          "text": "會議外掛程式，就是旁邊記筆記的那個人，筆記存進空間，私人或分享都行。"
+        }
+      ]
+    },
+    {
+      "id": "pro-table",
+      "template": "table",
+      "data": {
+        "title": "Pro 現在有三階（說明中心 2026-10-02）",
+        "columns": [
+          "級別",
+          "月費",
+          "Ultrafast"
+        ],
+        "rows": [
+          [
+            "Pro 100",
+            "$100",
+            "不含"
+          ],
+          [
+            "Pro 200",
+            "$200",
+            "不含"
+          ],
+          [
+            "Pro 500",
+            "$500",
+            "含"
+          ]
+        ],
+        "highlight": 2,
+        "note": "Pro 只能月繳；點數適用 Codex、ChatGPT 工作、ChatGPT for Word／Excel／PowerPoint，不是每個功能都能用；推出時 Pro 100／200 買點數也開不了 Ultrafast"
+      },
+      "claims": [
+        "c31",
+        "c32",
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "am8b",
+          "text": "Pro 現在有三階，Pro 100 和 Pro 200 都不含 Ultrafast。",
+          "reveal": 2
+        },
+        {
+          "id": "apbg",
+          "text": "只有每月五百美元的 Pro 500 含；推出時，低階買點數也開不了。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "three-kilns",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the studio's back yard in the late afternoon, three kilns of different sizes standing in a row, small, medium and large, a potter in a clay-stained apron standing with arms folded looking at them, a wheelbarrow of firewood and stacked kiln bricks at the side, long shadows across the gravel",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "b3ja",
+          "text": "所以 Pro 500 買到的是速度和最高額度，不是更聰明的模型。"
+        }
+      ]
+    },
+    {
+      "id": "pro200-steps",
+      "template": "steps",
+      "data": {
+        "title": "Pro 200 舊用戶的四步",
+        "steps": [
+          {
+            "title": "9/22 到 9/29 上午 10 點之間訂過",
+            "detail": "太平洋時間；之後再訂回來也算"
+          },
+          {
+            "title": "舊額度留到 10/29",
+            "detail": "2026-10-29，訂閱維持中才有"
+          },
+          {
+            "title": "之後換新額度",
+            "detail": "月費不變，仍是 $200"
+          },
+          {
+            "title": "留舊額度不等於升級",
+            "detail": "不會多出 Ultrafast"
+          }
+        ],
+        "note": "說明中心 2026-10-02；受影響的人會收到 email"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "bdwn",
+          "text": "9 月 22 日到 29 日上午 10 點之間訂過的，舊額度留到 10 月 29 日。",
+          "reveal": 2
+        },
+        {
+          "id": "bekc",
+          "text": "之後換成新額度，月費不變；留著舊額度不等於升級，不會多出 Ultrafast。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "two-keys",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a potter's open palm holding two kiln-room keys side by side, one old and dull with a worn leather tag, one new and bright with a plain paper tag, clay dust in the creases of the hand, the kiln door blurred behind, late afternoon light from the yard",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "bk3e",
+          "text": "一把舊鑰匙、一把新鑰匙；先打開設定裡的我的方案，看自己是哪一階。"
+        }
+      ]
+    },
+    {
+      "id": "rate-stats",
+      "template": "stats",
+      "data": {
+        "title": "同一件事，吃掉多少方案額度",
+        "stats": [
+          {
+            "value": "8 份",
+            "label": "GPT-6 Astra Ultrafast",
+            "note": "標準 1 份、Fast 2.5 份"
+          },
+          {
+            "value": "80 件",
+            "label": "每天用 Ultrafast 跑 10 件，等於標準模式幾件的額度",
+            "note": "算得出來的只有這個"
+          }
+        ],
+        "source": "說明中心與 Speed 頁 2026-10-03：額度消耗率，不是速度保證；每階能跑幾件，官方沒有數字，以官網為準"
+      },
+      "claims": [
+        "c36",
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "bmwj",
+          "text": "同一件事，標準算 1 份額度，Fast 算 2.5 份，Astra Ultrafast 算 8 份。"
+        },
+        {
+          "id": "bra3",
+          "text": "每天跑 10 件就是標準 80 件的額度；每階能跑幾件，官方沒數字。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "glaze-shelf",
+      "template": "shot",
+      "data": {
+        "prompt": "From behind, a potter standing at a tall shelf of drying bowls counting them with one raised finger, the bowls in uneven rows, some thick, some thin, a chalk tally board on the shelf's side left blank, afternoon light from the window to the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "bswh",
+          "text": "有人問，我每天用 Codex 兩三個小時，該選哪一階？"
+        }
+      ]
+    },
+    {
+      "id": "kiln-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a potter swinging the heavy iron door of the largest kiln shut with both hands, the glow inside narrowing to a line, a smaller kiln beside it already closed, gloves and tongs hanging on the wall, late afternoon light from the yard behind her",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "bsx5",
+          "text": "我的回答是，先數你一天有幾件事，是坐著等它跑完的。"
+        }
+      ]
+    },
+    {
+      "id": "cat-step",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the studio's front step at the end of the afternoon, the door half open, a grey cat sitting squarely on the step blocking the way with its tail wrapped around its feet, a pair of clay-stained shoes left beside it, a bicycle leaning on the railing, low golden light along the lane",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bzus",
+          "text": "等的時間值不值這八倍，只有你的量算得出來。"
+        },
+        {
+          "id": "ckeq",
+          "text": "公司帳號呢？團隊多了哪幾樣？"
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "chapter": "團隊的清單：公司帳號多的五項",
+      "template": "chapter",
+      "data": {
+        "number": "05",
+        "title": "團隊的清單",
+        "subtitle": "Business、Enterprise 多的五項，和 Codex Security Cloud 的五步"
+      },
+      "lines": [
+        {
+          "id": "d4k8",
+          "text": "公司或團隊用 Business、Enterprise 的人，多了五項。"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-wide",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a restaurant kitchen during the early evening service, the head chef leaning through the pass window shouting an order to the dining room, three cooks at their stations behind him with pans on the flame, steam rising, stacks of plates under the heat of the pass, bright work lights over the stoves",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "d5ct",
+          "text": "在 Slack 或 Teams 裡提到 ChatGPT，它就接手，像主廚隔著出菜口喊一聲。"
+        }
+      ]
+    },
+    {
+      "id": "team-five",
+      "template": "bullets",
+      "data": {
+        "title": "團隊的清單",
+        "items": [
+          "**建立團隊並共用任務**：依排程，或情況有變化時動",
+          "**Slack 與 Microsoft Teams 的 @ChatGPT**：沒有授權的同事也能補背景",
+          "**可連結外掛程式的工作站**：各自的權限登入",
+          "**私密智慧**：零資料保留搭配私密安全處理，按專案開、先取得 ZDR 核准；私密推論是預覽版",
+          "**OpenAI 市集 Beta**：符合資格的企業客戶"
+        ],
+        "note": "回顧頁與 API 指南的寫法，2026-10-03；細節以官網為準"
+      },
+      "claims": [
+        "c39",
+        "c40",
+        "c41",
+        "c42",
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "dcuh",
+          "text": "建立團隊並共用任務，和 Slack、Teams 裡的 ChatGPT。",
+          "reveal": 2
+        },
+        {
+          "id": "dg29",
+          "text": "可連結外掛程式的工作站、私密智慧，和 OpenAI 市集的測試版。",
+          "reveal": 3
+        }
+      ]
+    },
+    {
+      "id": "own-knife",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cook's hands slicing spring onions with her own worn chef's knife on a scarred cutting board, a second cook's hands in the background using a different knife at the next station, each board with its own towel and salt dish, light from the work lamps above the line",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "dhff",
+          "text": "工作站的意思是，同一個應用程式，每個人帶自己的刀，用自己的權限登入。"
+        }
+      ]
+    },
+    {
+      "id": "bell-tray",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the kitchen pass, a cook slapping a brass service bell with one hand while sliding a tray of plates across the steel counter with the other, a waiter on the far side reaching for it, order tickets on the rail drawn as blank strips of paper, steam between them, bright pass lights overhead",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "dw68",
+          "text": "團隊任務像出菜鈴，時間到了，或情況變了，就往下一站送。"
+        }
+      ]
+    },
+    {
+      "id": "blank-board",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a whiteboard beside the kitchen pass covered in blank paper slips held by magnets, a waitress in a black apron pinning one more blank slip to a free corner while a cook glances over, aprons on hooks beside it, the kitchen's work light spilling across the board",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c40",
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "dyna",
+          "text": "沒有授權的同事也能補一張單子；私密智慧按專案開，細節以官網為準。"
+        }
+      ]
+    },
+    {
+      "id": "security-steps",
+      "template": "steps",
+      "data": {
+        "title": "Codex Security Cloud：所有 Codex 使用者都有",
+        "steps": [
+          {
+            "title": "安裝外掛程式",
+            "detail": "網頁版或桌面應用程式的外掛程式市集"
+          },
+          {
+            "title": "連 GitHub",
+            "detail": "授權要掃的存放庫"
+          },
+          {
+            "title": "一次性掃描",
+            "detail": "One-Time Scan，雲端環境自動建"
+          },
+          {
+            "title": "看發現，Fix with Codex",
+            "detail": "先看補丁，再出草稿提取要求"
+          },
+          {
+            "title": "持續掃描",
+            "detail": "公司多的是把整個存放庫排程掃"
+          }
+        ],
+        "note": "learn.chatgpt.com/docs/security/setup，2026-10-03"
+      },
+      "claims": [
+        "c8",
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "e4t5",
+          "text": "Codex Security Cloud 的五步：裝外掛程式，連 GitHub，跑一次性掃描。",
+          "reveal": 3
+        },
+        {
+          "id": "e5gx",
+          "text": "看發現，按一下出草稿提取要求；再開持續掃描，整個存放庫也能排程掃。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "shutter-light",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot of the restaurant's back door in the alley after service, the roller shutter pulled halfway down, inside the kitchen's work lights still on and a dishwasher still running with nobody beside it, crates of empty bottles stacked outside, the alley in the blue of early evening",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "ejnp",
+          "text": "人走了，掃描沒停，這就是雲端掃描的意思；公司帳號還要多看兩件事。"
+        }
+      ]
+    },
+    {
+      "id": "company-two",
+      "template": "bullets",
+      "data": {
+        "title": "公司要多看的兩件事",
+        "items": [
+          "資料駐留端點：2026-03-05 起發布、且符合資格的模型，**加價 10%**",
+          "Enterprise 的 Ultrafast **預設關**；要美國以外推論駐留的工作區不開放"
+        ],
+        "note": "API 價目表與 Speed 頁，2026-10-03"
+      },
+      "claims": [
+        "c45",
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "emau",
+          "text": "第一件，資料駐留端點，對今年 3 月 5 日起發布的模型加價一成。",
+          "reveal": 1
+        },
+        {
+          "id": "ewnp",
+          "text": "第二件，Enterprise 的 Ultrafast 預設關；要美國以外推論駐留的不開放。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "back-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a supplier in a cap carrying a crate of vegetables through the restaurant's back door, the chef holding the door open with one foot and signing a blank delivery slip on a clipboard, a van with its rear doors open in the alley behind them, evening light from the alley mouth",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c43",
+        "c47"
+      ],
+      "lines": [
+        {
+          "id": "exwz",
+          "text": "市集，用既有合約的承諾支出買夥伴的軟體；首批 32 家是 OpenAI 自己的數字。"
+        }
+      ]
+    },
+    {
+      "id": "pass-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the last plate of the evening being pushed through the pass window by a chef's hand, a waiter's hand taking it from the other side, the steel sill scratched and wiped clean, an empty ticket rail above, warm light from the heat lamps over the pass",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "ey9z",
+          "text": "市集現在是測試版，誰符合資格以官網為準。"
+        },
+        {
+          "id": "fctp",
+          "text": "接 API 的人，牌價到底變了多少？"
+        }
+      ]
+    },
+    {
+      "id": "ch6",
+      "chapter": "開發者的清單：三個數字，和 Ultrafast 的三種付法",
+      "template": "chapter",
+      "data": {
+        "number": "06",
+        "title": "開發者的清單：三個數字",
+        "subtitle": "五分之一、六倍、五百美元，和 Ultrafast 的三種付法"
+      },
+      "lines": [
+        {
+          "id": "fdmt",
+          "text": "開發者的清單，只要記三個數字。"
+        }
+      ]
+    },
+    {
+      "id": "night-market",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a night market food street, a stall in the middle of the frame with two big woks on the flame, the cook tossing one while a helper ladles from the other, a queue of customers along the stall's front, strings of paper lanterns over the lane, the glow of the stalls lighting the crowd",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c48",
+        "c49",
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "fezv",
+          "text": "五分之一、六倍、五百美元，這三個數字，就是會動到帳單的全部。"
+        }
+      ]
+    },
+    {
+      "id": "three-numbers",
+      "template": "big",
+      "data": {
+        "kicker": "會動到帳單的只有",
+        "text": "五分之一・**六倍**・五百美元",
+        "sub": "Sol 的牌價・Ultrafast 的牌價・Pro 500 的月費"
+      },
+      "claims": [
+        "c48",
+        "c49",
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "fgw6",
+          "text": "Sol 的牌價、Ultrafast 的牌價，和 Pro 500 的月費。"
+        }
+      ]
+    },
+    {
+      "id": "price-board",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a wooden price board hanging at the front of the night market stall, the board divided into three blank painted squares with no writing, the stall owner in a white singlet pointing at the middle square with a pair of chopsticks, a customer nodding, lantern light from above the board",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c49"
+      ],
+      "lines": [
+        {
+          "id": "fidp",
+          "text": "先看六倍。Ultrafast 在 API 價目表上，每一欄都是標準的六倍。"
+        }
+      ]
+    },
+    {
+      "id": "uf-stats",
+      "template": "stats",
+      "data": {
+        "title": "GPT-6 Astra 標準 → Ultrafast，每百萬 token",
+        "stats": [
+          {
+            "value": "$10 → $60",
+            "label": "輸入"
+          },
+          {
+            "value": "$1 → $6",
+            "label": "快取輸入"
+          },
+          {
+            "value": "$50 → $300",
+            "label": "輸出"
+          }
+        ],
+        "source": "developers.openai.com 價目表 2026-10-03；長脈絡 $120／$12／$450；Ultrafast 表當天只列 gpt-6-astra"
+      },
+      "claims": [
+        "c49",
+        "c50"
+      ],
+      "lines": [
+        {
+          "id": "fkad",
+          "text": "輸入，每百萬 token，從 10 美元變成 60 美元。"
+        },
+        {
+          "id": "fn6g",
+          "text": "快取輸入從 1 美元變 6，輸出從 50 美元變 300。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "scooter",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a delivery scooter threading between the queue at the stall and the lane's foot traffic at night, the rider leaning into the gap with a stacked delivery box on the back, the people in the queue turning to look, the stall's steam drifting across the lane, lantern light overhead",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "fzis",
+          "text": "它賣的是速度；OpenAI 說 Codex 裡最高八倍，API 的倍數兩頁不同，以官網為準。"
+        }
+      ]
+    },
+    {
+      "id": "speed-vs-money",
+      "template": "compare",
+      "data": {
+        "title": "它賣的，和它收的",
+        "left": {
+          "heading": "它賣的是速度（OpenAI 的說法）",
+          "points": [
+            "Codex 最高 8 倍、每秒 300 token",
+            "API：回顧頁寫 6 倍、指南寫 up to 8x，以官網為準",
+            "量的是生成速度，不是整件任務的完成時間"
+          ]
+        },
+        "right": {
+          "heading": "它收的是錢",
+          "points": [
+            "API 牌價每欄 6 倍",
+            "方案額度 8 份、買的點數 6 倍",
+            "Fast 是 2.5 份／2 倍"
+          ]
+        },
+        "verdict": "官方頁寫明倍數是計費率，不是速度保證"
+      },
+      "claims": [
+        "c49",
+        "c51",
+        "c36",
+        "c52"
+      ],
+      "lines": [
+        {
+          "id": "gqvg",
+          "text": "左邊是它賣的，速度，量的是生成速度，不是整件任務。",
+          "reveal": 1
+        },
+        {
+          "id": "grgg",
+          "text": "右邊是它收的，牌價六倍、方案額度八份、點數六倍。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "scale-hands",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a vendor's hands placing two heaps of dried mushrooms on a brass balance scale, one heap five times the other, the small heap barely tipping its pan, a paper bag ready beside the scale, the light of a bare stall lamp on the brass",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c53"
+      ],
+      "lines": [
+        {
+          "id": "guna",
+          "text": "再看五分之一。上一支算過整月帳單，Astra 約 348 美元，GPT-6 Sol 約 70。"
+        }
+      ]
+    },
+    {
+      "id": "sol-price",
+      "template": "big",
+      "data": {
+        "kicker": "GPT-6.1 Sol 的牌價，每百萬 token，2026-10-03",
+        "text": "輸入 $2、輸出 $10\nAstra 的**五分之一**",
+        "sub": "快取輸入 $0.10 是十分之一・脈絡 1,050,000、知識截止 2026-04-30・不做任務算術"
+      },
+      "claims": [
+        "c48",
+        "c54"
+      ],
+      "lines": [
+        {
+          "id": "gyue",
+          "text": "GPT-6.1 Sol 的牌價是 Astra 的五分之一，快取輸入是十分之一。"
+        }
+      ]
+    },
+    {
+      "id": "coins-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot of a stall owner's coin tray at night, her fingers sorting coins into small piles on a tin lid, a folded cloth and a chipped teacup beside the tray, the stall's lamp casting a warm pool of light on the counter",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c53",
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "gznr",
+          "text": "該不該換 Sol？上一支的公式改一個數字；不是我替你選，是你的帳單替你選。"
+        }
+      ]
+    },
+    {
+      "id": "hand-over",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the stall owner untying her apron and handing the ladle to a young helper behind the woks, then stepping out of the stall with an empty basket on her arm toward the market's supply lane, the helper already stirring, lanterns and the crowd behind",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c55"
+      ],
+      "lines": [
+        {
+          "id": "h2gh",
+          "text": "再來三項，API 的人直接用得到；Agents API 像把攤子交給幫手，底層由 OpenAI 代管。"
+        }
+      ]
+    },
+    {
+      "id": "api-three",
+      "template": "bullets",
+      "data": {
+        "title": "API 直接用得到的三項",
+        "items": [
+          "GPT-6 Astra 的 **service_tier: ultrafast**：所有 API 使用者，速率上限低",
+          "**Agents API**：不另收費，只付 token 與工具",
+          "**Agents API 的電腦操作**：API；Pro 500 與符合資格的 Enterprise 在 Codex 與 ChatGPT 工作也能用"
+        ],
+        "note": "Ultrafast 指南、Agents API 頁、回顧頁，2026-10-03"
+      },
+      "claims": [
+        "c56",
+        "c55",
+        "c57"
+      ],
+      "lines": [
+        {
+          "id": "h6xm",
+          "text": "Astra 的 Ultrafast 在 API 所有人能開；Agents API 只付 token 和工具。",
+          "reveal": 2
+        },
+        {
+          "id": "h9w3",
+          "text": "新加的電腦操作，API 能用，Pro 500 在 Codex 裡也能用。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "balloon-stall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a balloon-shooting game stall at the night market, a board of balloons pinned in a fixed grid with only a handful of spots, a teenager aiming a cork gun from the counter while the stall keeper leans on the side watching, prizes hanging in plain bags above, the stall's string lights overhead",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c58"
+      ],
+      "lines": [
+        {
+          "id": "hh5s",
+          "text": "Decisions API 像射氣球，答案只有幾個固定的位置，現在是限量預覽。"
+        }
+      ]
+    },
+    {
+      "id": "dev-three",
+      "template": "bullets",
+      "data": {
+        "title": "三項以官網為準",
+        "items": [
+          "**Decisions API**：Luna，有限的預設答案；限量預覽",
+          "**Amazon Bedrock Managed Agents**：給在 AWS 上開發的團隊",
+          "**MCP 事件**：提議中的規格；回顧頁寫適用於所有方案"
+        ],
+        "note": "回顧頁 2026-09-29；Decisions API 與 Bedrock 沒有正式文件連結"
+      },
+      "claims": [
+        "c58",
+        "c59",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "hhwj",
+          "text": "Decisions API 和 Bedrock 的細節，都以官網為準。",
+          "reveal": 2
+        },
+        {
+          "id": "i9h6",
+          "text": "MCP 事件，規格還在提議中，放這裡只因為它是給開發者接的。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "lights-off",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the night market lane at closing time, stall lamps going out one after another down the lane, the last stall still lit with its owner stacking stools, a few people walking away with bags, wet ground reflecting the remaining lights",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ier5",
+          "text": "開發者的清單就這些，四項看牌價。"
+        },
+        {
+          "id": "ik64",
+          "text": "這週，每一張清單的人該先做哪件事？"
+        }
+      ]
+    },
+    {
+      "id": "home-table",
+      "chapter": "這週做的一件事，和還不能碰的",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a kitchen table in a small flat late at night, one person pushing a cup of tea across the table to another who is just sitting down, a closed notebook and a pencil between them, the rest of the flat dark, light from a single pendant lamp over the table",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "imik",
+          "text": "最後，每一張清單的人，這週先做一件事。"
+        }
+      ]
+    },
+    {
+      "id": "week-steps",
+      "template": "steps",
+      "data": {
+        "title": "這週做的一件事",
+        "steps": [
+          {
+            "title": "所有人：登入按鈕先讀三樣",
+            "detail": "姓名、電子郵件、個人檔案照片；第二個請求要就設上限"
+          },
+          {
+            "title": "Plus：10/14 前在 Codex 改選一個還在的模型",
+            "detail": "哪一個合用，拿自己的任務算一次再定"
+          },
+          {
+            "title": "Pro：有 dot 的人設一件「要先核准」；Pro 200 看「我的方案」",
+            "detail": "dots 的自訂規則挑一件會動到別人的操作；再翻信箱找 OpenAI 的通知"
+          },
+          {
+            "title": "開發者：要速度，才套 ×6 或 8 份",
+            "detail": "Sol 對 Astra 的月帳單，用上一支的公式"
+          }
+        ]
+      },
+      "claims": [
+        "c14",
+        "c16",
+        "c22",
+        "c30",
+        "c35",
+        "c49",
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "imw5",
+          "text": "所有人，下次看到登入按鈕，先讀那三樣，再決定要不要勾第二個。",
+          "reveal": 1
+        },
+        {
+          "id": "iq7s",
+          "text": "Plus，10 月 14 日前，在 Codex 改選一個還在的模型，自己試一次。",
+          "reveal": 1
+        },
+        {
+          "id": "it7b",
+          "text": "Pro，有 dot 的設一件要先核准；Pro 200 看我的方案，再翻信箱找通知。",
+          "reveal": 1
+        },
+        {
+          "id": "ive6",
+          "text": "開發者，先問要不要速度；要，才把六倍或八份套到自己的用量上。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "door-chain",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand sliding the brass security chain across the inside of a flat's front door at night, the door open a crack onto the dim stairwell, a coat sleeve brushing the frame, the hallway lamp's glow on the chain",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "jr8w",
+          "text": "這些都是設定上的界線，不是寫在提示裡的不要。"
+        }
+      ]
+    },
+    {
+      "id": "pencil-pass",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand laying a pencil down on the closed notebook, a blank cardboard monthly pass tucked under the notebook's elastic band, a tea ring on the table beside it, the lamp's light pooling on the paper",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "j39w",
+          "text": "還有幾項，官網寫著即將推出，今天還碰不到，先不用等。"
+        }
+      ]
+    },
+    {
+      "id": "not-yet",
+      "template": "bullets",
+      "data": {
+        "title": "還不能碰的",
+        "items": [
+          "**GPT-6.1 Sol Ultrafast**：回顧頁寫即將推出、Sol 頁寫一併推出，以官網為準",
+          "**空間的行動版編輯、投影片多人協作**：空間頁寫即將推出",
+          "**會議外掛程式的 Enterprise**",
+          "**Decisions API 全面開放**",
+          "**dots 的簡訊**",
+          "**個人檔案的 Enterprise／Edu／Healthcare**"
+        ],
+        "note": "回顧頁、Sol 頁、空間頁、dots 頁寫「即將推出」的，2026-10-03"
+      },
+      "claims": [
+        "c60",
+        "c24",
+        "c27",
+        "c58",
+        "c61",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "j8df",
+          "text": "Sol 的 Ultrafast 以官網為準；空間的行動版編輯和投影片協作；會議外掛程式的 Enterprise 版。",
+          "reveal": 3
+        },
+        {
+          "id": "j8m9",
+          "text": "Decisions API 的全面開放，dots 的簡訊，個人檔案的 Enterprise、Edu、Healthcare 版。",
+          "reveal": 3
+        }
+      ]
+    },
+    {
+      "id": "window-street",
+      "template": "shot",
+      "data": {
+        "prompt": "From behind, a person standing at the flat's window with the teacup in hand looking across the street, one window still lit in the building opposite, laundry on a balcony, the street below empty, the room dark except for the lamp behind",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "j9ty",
+          "text": "加起來，25 項，每一項都有它的位置。"
+        }
+      ]
+    },
+    {
+      "id": "tally-stats",
+      "template": "stats",
+      "data": {
+        "title": "25 項，照清單加總",
+        "stats": [
+          {
+            "value": "9",
+            "label": "所有人：登入就有"
+          },
+          {
+            "value": "+1",
+            "label": "Plus：GPT-6.1 Sol"
+          },
+          {
+            "value": "+6",
+            "label": "Pro：4 項、dots 看市場、Pro 500 一階"
+          },
+          {
+            "value": "+9",
+            "label": "團隊 5 項、開發者 4 項看牌價"
+          }
+        ],
+        "source": "Codex Security Cloud 與 MCP 事件只算在所有人的九項裡"
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "ja8a",
+          "text": "官網說登入就有 9 項，Plus 再加 Sol 一項。",
+          "reveal": 1
+        },
+        {
+          "id": "jg96",
+          "text": "Pro 加 4 項、dots 看市場、Pro 500 算一項；團隊 5、開發者 4，一共 25。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "hall-light",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the flat's hallway at night, a hand on the kitchen light switch and the kitchen going dark, one small wall lamp left on at the end of the corridor, coats on hooks, shoes by the door, the glow of the lamp on the floorboards",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c48",
+        "c49",
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "jne3",
+          "text": "不是新聞說了幾項，是你付的那種方案裡，今天打開就有的那幾項。"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "25 項裡，你今天碰得到幾項？",
+        "lines": [
+          "登入就有 9 項",
+          "Plus 再加 Sol",
+          "Pro 再加 4 項、dots 看市場、Pro 500 一階",
+          "團隊 5 項・開發者 4 項看牌價"
+        ],
+        "cta": "留言告訴我你是哪一張清單的人，這週先碰哪一項"
+      },
+      "lines": [
+        {
+          "id": "jpxt",
+          "text": "要不要多付，三個數字算完再說；留言告訴我，你是哪一張清單的人。"
+        }
+      ]
+    }
+  ]
+}

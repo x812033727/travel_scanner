@@ -44,8 +44,15 @@ each announcement changes for a Taiwan viewer's plan, bill and settings rather t
 - [x] File and claim the task; branch `claude/video-devday-2026-recap` from origin/main.
 - [x] Capture the official pages openai.com refuses to crawlers (403 to curl and WebFetch) through a browser into
       `<VIDEO_WORKDIR>/openai-devday-2026-recap/_tools/sources/` for the planner, writer and verifiers.
-- [ ] Planner panel (ultracode workflow): independent briefs, judged, one synthesized `brief.md`; lint; `review-push --gate outline`.
-- [ ] Writer, verifier round 1 (and 2 if more than three fact changes), listener pass; lint zero errors.
+- [x] Planner panel (ultracode workflow, 16 agents): three candidate briefs (money-and-plan, who-can-use-it-today,
+      the-one-thread), three judges (all picked the who-can-use-it-today brief), one synthesized `brief.md` with three
+      options, four critics (Jev simulation, facts, coverage, format) in two rounds: 18 blocking findings fixed in round
+      1, all four passed in round 2; round-2 minor notes applied by `_tools/polish-brief.mjs`.
+- [x] Outline gate 2026-10-03 12:49Z through `_tools/outline-gate.mjs` (the worker's submitOutline calls, since
+      `review-push` needs a video.json): Jev picked A at 0.85 (stance 0.91, demo 0.94, advice 0.01), approved on arrival
+      (review `59570a68-7a03-43b5-99c2-25372710b391`); `review-pull` recorded it (brief.md sha256 `37676d25…`).
+- [ ] Writer, three report-only checkers, verifier round 1 (and 2 if more than three fact changes), listener pass,
+      picture and cadence critics, completeness critic; lint zero errors (ultracode workflow `wf_1d10f729-77d`).
 - [ ] `tts --dry-run`, `tts`, `check-audio`, `review-push --gate audio`, `review-pull`.
 - [ ] `keyframes`, `render`, `assemble`, `captions`, `qa`, `review-push --gate final`, `package`, `review-push --gate publish`.
 
