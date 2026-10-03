@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-10-02T15:04:17Z
 completed_at:
-branch: codex/drama-competition-wedding-20261002
+branch: codex/wedding-visual-revision-20261003
 depends_on:
   - 2026-10-02-drama-competition-wedding-final
 scope:
@@ -205,3 +205,29 @@ Current two-episode checkpoint, 2026-10-02 (supersedes opening-only next steps):
   reference-continuity plan, then each remaining shot and final audiovisual QA.
   Four listening flags and E2 S06 lip sync remain; foreign work still waits for
   owner acceptance of the entire Chinese film and CC. Keep this ticket open.
+
+2026-10-03 owner visual rejection and skill request:
+- The owner says the current visuals/production craft feel around 60/100 and do
+  not invite continued viewing, and asks for a 90/100 target. This replaces the
+  earlier pending retain-or-retake choice: the current look is not accepted.
+- Reopened work targets art direction, acting, cinematic information and sound/edit
+  quality. A static imagegen concept is only a direction preview, not proof that
+  the pinned production models or final films meet the goal. Existing paid media,
+  audio and historical approval evidence are retained; no new VPS generation was
+  triggered by this feedback update.
+- See `episodes/visual-revision-20261003.md` and
+  `handoff.json.latest_owner_visual_feedback` for the actual assessment and concept
+  hash. The independent reusable skill task is
+  `2026-10-03-codify-drama-visual-quality-and-pilot`; completing that skill does not
+  complete the films or accept the pilot. Continue through the ordinary bounded
+  production/review path once the revised visual direction is settled.
+- The requested in-app browser research is recorded in
+  `episodes/visual-reference-study-20261003.md`: two YouTube originals and one
+  Vimeo original, with explicit timestamp sampling limits and creator sources.
+  It led to reusable shot cards, visual hierarchy, acting/contact and reaction
+  guidance, locked-voice editing and verified failure-case records. It is not
+  complete-viewing/audio acceptance or evidence that these episodes reach 90/100.
+- Concrete S01/S03 revision cards are in `episodes/visual-revision-20261003.md`.
+  Next production work is a revised, source-bound audiovisual sample on the
+  pinned pipeline, then bounded expansion only after actual quality acceptance.
+  Reuse the frozen audio; preserve the unresolved listening/lip-sync flags.
