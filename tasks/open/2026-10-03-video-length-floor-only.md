@@ -1,14 +1,14 @@
 ---
 id: 2026-10-03-video-length-floor-only
 title: No upper bound on a video's length: only the eight-minute floor is enforced
-status: open
+status: review
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5-1-length
+claimed_at: 2026-10-03T18:08:20Z
 created_at: 2026-10-03T17:11:05Z
 completed_at:
-branch:
+branch: claude/video-length-floor-only
 depends_on: []
 scope:
   - tools/video/core/lint.mjs
@@ -97,10 +97,15 @@ old wording, look for an administrator copy override of
 
 ## Notes
 
-- **The claim was refused and not forced.** `npm run tasks -- claim` reported an overlap with
+- **The claim was refused for overlap and not forced; the ticket was put in `review` with
+  `status --owner` instead.** `npm run tasks -- claim` reported an overlap with
   seven active tasks (several in `review` since 2026-09-27..30 hold `apps/web/messages`,
   `tools/video/core/lint.mjs`, `tools/video/automation/prompts.mjs`,
-  `.agents/skills/youtube-video/references` and the duration receipt). The work was done on
+  `.agents/skills/youtube-video/references` and the duration receipt). `npm run tasks -- status
+  2026-10-03-video-length-floor-only review --owner claude-fable-5-1-length --branch
+  claude/video-length-floor-only` has no overlap check and needs no `--force`, so the front
+  matter now names the owner and the branch and `next` does not offer this finished work to
+  another agent. The work was done on
   the owner's direct request on branch `claude/video-length-floor-only` by
   `claude-fable-5-1-length`; the coordinator has to look at open pull requests that touch the
   same lines before merging. The edits are one-line replacements, so a conflict is small.
