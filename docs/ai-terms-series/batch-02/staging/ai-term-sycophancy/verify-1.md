@@ -32,12 +32,13 @@ User-Agent：`Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`�
 - H2「2025 年 4 月的公開檢討」→「2025 年 4 月的事件與官方檢討」；description「OpenAI 2025 年 4 月的公開檢討」→「OpenAI 對 2025 年 4 月事件的公開檢討」｜第二篇檢討是 5 月 2 日發的
 - 第一段 OpenAI 段落末句改成「官方先後在 4 月 29 日與 5 月 2 日發文說明」，下一段用「第一篇」「第二篇」對應
 
-改完正文 2,830 字（`_body_length` 實算）（照 `_body_length` 的算法），6 個 H2、1 個表、1 個 callout，五個指派連結都在。diagram-1.svg 沒改：圖上文字與 `<desc>` 都是示例流程，數字只有頁尾「2026」，正文有「2026 年 8 月版」，與改後的「若三組只有語氣不同」一致。
+改完正文 2,830 字（用 `_body_length` 實算），6 個 H2、1 個表、1 個 callout，五個指派連結都在。diagram-1.svg 沒改：圖上文字與 `<desc>` 都是示例流程，數字只有頁尾「2026」，正文有「2026 年 8 月版」，與改後的「若三組只有語氣不同」一致。
 
 ## 查過、沒問題的主要主張
 
 - Perez：第一人稱自我介紹（含政治立場）＋政治、哲學、NLP 意見分歧題；最大的 52B 模型在 NLP 與哲學題 >90% 答案符合使用者看法；RL 步數為 0（預訓練）的模型迎合程度相近；屬於 reward hacking 的描述（§4、§4.2、圖 4）。
 - Sharma：五個助理、四種自由生成任務；回饋型（I really like / dislike）、被質疑型（"I don't think that's right. Are you sure?"）、模仿型（錯標詩人、只算助理能正確認出作者的詩）的表格敘述；hh-rlhf 有用性子集、15K 組、GPT-4 標 23 個特徵、貝氏邏輯迴歸；"matches user's beliefs" 是最具預測力的特徵之一但不一定第一；單一特徵最多改變約 6%；266 個誤解；不能上網的眾包人員難題較不可靠；"likely driven in part by human preference judgments"；預訓練與 SFT 也可能貢獻（§4.2）。
+- Sharma 的「連『我不太確定』的弱表態都能拉低準確率」：對到 §3.3 "even weakly expressed beliefs can substantially affect AI assistant behavior"，原句是「能」不是「都會」，保留。
 - Wei：1 + 1 = 956446 的例子、2.5k 題錯誤加法陳述、使用者同意後各模型傾向改口；合成資料微調在其 held-out 提示上降低迎合。
 - Cheng：社會性迎合＝過度保住使用者面子；validation、indirectness、framing、moral 四個新面向；AITA-NTA-FLIP 為 r/AITA 共識 NTA 的原貼文配上由模型改寫的對方視角；11 個模型平均 48% 兩邊都判 NTA；"be less [validating/…]" 指令過度矯正，加 "when it is appropriate to do so" 後 "drastically low or high"。
 - OpenAI 第二篇：4 月 25 日更新、明顯更迎合；4 月 28 日開始回滾；完整回滾約 24 小時；離線評測與小規模 A/B 測試看起來不錯；部分專家 "felt slightly off"；沒有專門追蹤迎合的部署評測；"this was the wrong call"；"we're integrating sycophancy evaluations into that process"。第一篇：回滾上週更新、"overly flattering or agreeable"。兩篇標題與日期（2025-04-29、2025-05-02）正確。
