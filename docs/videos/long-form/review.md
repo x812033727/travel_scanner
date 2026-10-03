@@ -350,6 +350,18 @@ Ran (Node 24.13.0, offline, in the uncommitted merge worktree): before resolving
 
 Non-claims: DURATION_ONLY follow-up of the merge for the 14 rebound hashes. It does not review either side's delta again and rests on the sections above for them. It gives no functional or visual acceptance of the picture variety lint, the look preset, audio evidence or localization retention. It does not cover the 56 untouched bindings afresh, the unbound merged files (including the auto-merged tools/video/core/drama.test.mjs), CI, a browser, a real model, provider or media call, deployment or publication. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1166 review-fixes increment: 4 files (2026-10-03)
+
+Reviewer: `claude-pr-review-1166-fixes`. Author: `claude-fable-5-1-illustration-polish` (the Claude session that wrote commit fcf1724b, "craft is judged per video, a series override draws at 1K, and the subject stays in a Short's strip", PR #1166, branch claude/video-series-illustration-polish-c26975, HEAD f2855cbf). Scope: DURATION_ONLY. The reviewer did not write these changes and edited only this report and review.json.
+
+Baseline: at 01acf35a, the merge commit the section above bound, the bytes of .agents/skills/youtube-video/references/automated.md, tools/video/automation/prompts.mjs, tools/video/core/drama.mjs and tools/video/media/look-keyframes.test.mjs equal the hashes bound before this increment. `git log 01acf35a..HEAD` of those four files lists only fcf1724b; the merge of origin/main after it (#1148, f2855cbf) changes none of them and nothing under tools/video. So `git diff 01acf35a HEAD` of the four files is exactly the unreviewed change (automated.md +1/−1, prompts.mjs +5/−3, drama.mjs +31/−15, look-keyframes.test.mjs +7/−1). Of the 308 files that range changes, only these four are bound, so the other 66 bindings are untouched. The reviewer read the full delta of all four files; no network, no fetch, no implementation file edited.
+
+Findings. automated.md changes one bullet, the illustrated-slides one: the `data.prompt` recipe (shot size, place and time, one person doing one thing, the object and its material, where the light comes from; no style or colour words; nothing whose surface is print), a transition that is usually left out, a camera move that differs from the shot before (three alike in a row is a lint error), one place per chapter, the subject in the middle third because a Short keeps about 32% of the width (it said 56%), and pictures cut by default, dissolving only after a pause beat of at least 600 ms or when the writer asks. The pacing clause of that bullet (a picture every 5–8 seconds, a card state at most 8 seconds, pictures for at least half the time, the hook within 20 seconds) is byte-unchanged, and the 600 ms is the existing DISSOLVE_BEAT_MS of tools/video/assemble/drama.mjs, which this range does not change. Every line of the file that names minutes, the eight-minute floor sentence included, is byte-identical. prompts.mjs changes one hunk of the slides writer's TEMPLATE_GUIDE `shot` bullet: nothing whose face is print (a page, a sign, a clock face, a screen), and the subject in the middle third instead of the middle 60%; its 12 target_minutes lines are byte-identical. drama.mjs rewrites the `tech-story` preset's style and negative strings and the comment above them (focal point in the centre third, "mirror symmetry" for "symmetrical centred layout"; motion unchanged); `cameraMove` reads `data.camera` and then `data.motion` and still returns a move name that only `pictureVarietyProblems` uses, for the same-move run; SHOT_SIZE accepts "medium" and "close up"; LOOK_WORDS drops navy, mustard and ochre and no longer takes "ice cream" for the colour; eight stopwords are added, `motifOf` folds plurals in -ches, -shes, -xes and -sses, and `promptMotifs` drops a stopword in either form. All of that feeds picture-variety warnings and one lint error, counted in shots and not in seconds, minutes or frames; `needsMinimumLength`, `isDrama`, `illustrated`, FPS, MAX_SHOT_SECONDS, WARN_SHOT_SECONDS and the three variety constants are byte-identical. look-keyframes.test.mjs changes one rubric expectation (a narrator-only drama is no longer asked the `craft` question) and adds four `keyframeRubric` assertions (`craft` only when the caller passes `craft: true`); its `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` fixture opt-out is byte-unchanged and no test changed a duration expectation. No changed line of the four files reads or writes target_minutes, effectiveEpisodeMinutes, minEpisodeMinutes, MIN_EPISODE_MINUTES, VIDEO_MIN_EPISODE_MINUTES, needsMinimumLength, a frame count, the 14,400-frame body and final proof, the explainer's 10-minute default or 8–20 range, the drama's 1–8 range or the brand story's 13.
+
+Ran (Node 24.13.0, offline): `node tools/video/long-form/cli.mjs check` before rebinding failed only on the four stale bindings (exit 1). `node --test tools/video/long-form/plans.test.mjs tools/video/long-form/review.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs` ran 16 tests: 15 passed and 1 failed, the shipped binding regression, on those same four paths. Both commands are rerun after rebinding, together with `node --test tools/repo-hygiene.test.mjs`.
+
+Non-claims. This review does not accept the picture brief, the look preset, the camera-word, shot-size and look-word patterns, the motif folding or the rubric change themselves, nor picture quality, the 1K pricing path, a real model call or CI. It does not cover the other ten files of the commit, which are unbound, or the files the #1148 merge brought in, none of which is bound. PASS is DURATION_ONLY for the four rebound hashes below. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -357,7 +369,7 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | File | SHA256 |
 | --- | --- |
 | `.agents/skills/youtube-video/SKILL.md` | `9f425b6361451c032e56a5ccc2e7e9eef58feacd5c479e16551cc1918f826939` |
-| `.agents/skills/youtube-video/references/automated.md` | `05da9e6045979c5af53164bca6514af624e1858880c1f6370d4f667149322db5` |
+| `.agents/skills/youtube-video/references/automated.md` | `2e16adc438e074ec846ea7b60018a6fc5323676c30cdaa4db5348d9642edb968` |
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
 | `.claude/skills/youtube-video/SKILL.md` | `9f425b6361451c032e56a5ccc2e7e9eef58feacd5c479e16551cc1918f826939` |
 | `apps/api/app/video_automation/models.py` | `a527501908ded6558839f175a047e05b38b9eb9c8a9be9494d079382f99561b7` |
@@ -390,10 +402,10 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/automation.test.mjs` | `01e4992215d76cec6180b7b7fe54f6bac6f6e049f851cd4a08c05731dc06ec10` |
 | `tools/video/automation/flow.mjs` | `49c6067d72a2f2fd5aed556b05542fe001623d4fbeabac22d30c59faa473d8fd` |
-| `tools/video/automation/prompts.mjs` | `9f3174b70b4dbd02fc8522f5b4984b5de1cc1212d467cb72ff0fa910c6ba8931` |
+| `tools/video/automation/prompts.mjs` | `3cdaf3bf7632a44d8b41e95d9b14e647bbd29d3b23db41001a5f1c9d95647750` |
 | `tools/video/automation/series.test.mjs` | `3be69eb761380e614b7508a01873510b00ec4844ef4503b039b1a934163f4436` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
-| `tools/video/core/drama.mjs` | `fd7a2d70e8c72fb9f9b3de434419d5400b94d47949dbc739e38c72045fee7398` |
+| `tools/video/core/drama.mjs` | `07698172f96e2456a3f63f7c79b4e02c26fb25a983e49b6bbb4c557bf640541c` |
 | `tools/video/core/duration.mjs` | `406c61d2211781ae571f952cb6239ee7c808f7f603a4be3ed5d61622bfe65d9a` |
 | `tools/video/core/duration.test.mjs` | `49290be2b3f58801532e225ecff8f8b9730746425e6527b50b0c03beee6adc94` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
@@ -414,7 +426,7 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `tools/video/long-form/review.mjs` | `69fe791f0b3dd36a1d2070cd3ab1d371d70625d3a5228e90b42d5d48203525b8` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
 | `tools/video/media/clips.test.mjs` | `adba34387121485e6c30a0c15a57c0e9e2c6ef573f00c9a83e4a09ba391c3764` |
-| `tools/video/media/look-keyframes.test.mjs` | `aeeb23f101f9eeb9b297fe41e3d5b75d8e974618713d20d69f02fbdaedcb140a` |
+| `tools/video/media/look-keyframes.test.mjs` | `d4f5076aead1ca20c38e6cfaeabc82c7f00054ad98d79915cc5add8278649851` |
 | `tools/video/qa/checks.mjs` | `dc99682b29b674cfedc12ca67c8809e23c1d99d5635a1cd79970a8180d21cc83` |
 | `tools/video/qa/checks.test.mjs` | `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` |
 | `tools/video/qa/cli.mjs` | `ab335eec44017a44ee35407e3710a700c1c3f7caed0fb6092637d29af1a31713` |
