@@ -11,7 +11,7 @@ Configured on 2026-09-06 through the REST API
 
 | Setting | Value | Why |
 | --- | --- | --- |
-| Required status checks | `api`, `web`, `containers`, `full-stack-smoke` | The four jobs of `.github/workflows/ci.yml`. A pull request with any of them failing cannot be merged. |
+| Required status checks | `api`, `web`, `containers`, `full-stack-smoke` | Four jobs of `.github/workflows/ci.yml`. A pull request with any of them failing cannot be merged. `api` and `web` are gates: they run no tests themselves and pass only when their jobs passed (`api-checks` and every `api-tests (n/4)`; `web-checks`, every `web-unit (n/3)` and every `web-e2e (n/3)`), so adding or removing a shard needs no change here. |
 | Require branches to be up to date (`strict`) | on | A pull request opened against a base that later turned red is re-checked on the merged result, and a branch that is behind must rebase before it can merge. This is what would have shown #170 and #164 that their base was already red. |
 | Enforce for administrators | on | The one account that merges here is an administrator; without this the rule would apply to nobody. `gh pr merge --admin` is therefore not a way around a red check. |
 | Required reviews | none | One person works on this repository; a review requirement would only ever be self-approved. |

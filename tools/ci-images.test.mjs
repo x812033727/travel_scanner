@@ -136,13 +136,13 @@ test("browser results upload only when something failed", () => {
       .filter((step) => step.includes("actions/upload-artifact@") && /^\s*path:\s*apps\/web\/test-results\s*$/m.test(step))
       .map((step) => ({
         workflow: name,
-        artifact: /^\s*name:\s*(\S+)/m.exec(step)?.[1],
+        artifact: /^\s*name:\s*(.+?)\s*$/m.exec(step)?.[1],
         condition: /^\s*if:\s*(.+)$/m.exec(step)?.[1]?.trim() ?? "(none)",
       })),
   );
   const names = uploads.map(({ workflow, artifact }) => `${workflow}: ${artifact}`);
   const suiteUploads = [
-    "ci.yml: site-experience-browser-results",
+    "ci.yml: site-experience-browser-results-${{ matrix.shard }}",
     "ci.yml: community-browser-results",
     "travel-discovery.yml: discovery-browser-results",
     "planner-premium.yml: planner-premium-browser-results",

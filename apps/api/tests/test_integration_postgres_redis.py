@@ -27,6 +27,7 @@ from app.models import (
     AnalyticsEvent,
     FlightOfferRecord,
     FlightStatusLookup,
+    ProviderConfig,
     SearchJob,
     SearchRequest,
     TripPlaceCandidate,
@@ -2586,6 +2587,18 @@ async def test_flight_anchor_from_offer(monkeypatch: pytest.MonkeyPatch) -> None
     # on a value derived from `SETTINGS_ENCRYPTION_KEY` so the token-signing key can be
     # rotated without re-keying every visitor and session hash.
     session_hash = _digest(get_settings().analytics_hash_key, "analytics-session", browser_session)
+    # offer_attached is only recorded while first-party analytics is on. Turn it on here
+    # rather than rely on test_analytics_integration.py having run first against the same
+    # database: the CI shards (tests/sharding.py) do not run every file in one database.
+    async with SessionFactory() as session:
+        row = await session.scalar(
+            select(ProviderConfig).where(ProviderConfig.provider == "analytics")
+        )
+        if row is None:
+            session.add(ProviderConfig(provider="analytics", enabled=True, priority=100, config={}))
+        else:
+            row.enabled = True
+        await session.commit()
 
     async def attached_properties() -> list[dict[str, object]]:
         # A unique browser session also catches a foreign-offer request being counted,

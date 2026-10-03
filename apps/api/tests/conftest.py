@@ -27,7 +27,39 @@ from __future__ import annotations
 
 import os
 
+import pytest
+
+from tests import sharding
+
 os.environ.setdefault("AUTH_REGISTER_IP_LIMIT", "500")
 os.environ.setdefault("PUBLIC_READ_RATE_LIMIT_MODE", "off")
 os.environ.setdefault("AI_PLANNER_IP_BUDGET", "10000")
 os.environ.setdefault("AI_PLANNER_USER_BUDGET", "1000")
+
+
+# `--shard INDEX/TOTAL` runs one part of the suite, a whole file at a time; ci.yml runs
+# the parts as parallel jobs. sharding.py says how files are placed.
+def pytest_addoption(parser: pytest.Parser) -> None:
+    parser.addoption(
+        "--shard",
+        default=None,
+        metavar="INDEX/TOTAL",
+        help="run only shard INDEX (from 1) of TOTAL, split by test file",
+    )
+
+
+def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item]) -> None:
+    value = config.getoption("--shard")
+    if not value:
+        return
+    try:
+        index, total = sharding.parse_shard(value)
+    except ValueError as error:
+        raise pytest.UsageError(str(error)) from None
+    files = [item.nodeid.split("::", 1)[0] for item in items]
+    mine = set(sharding.assign(files, total, sharding.load_durations())[index - 1])
+    kept = [item for item, file in zip(items, files, strict=True) if file in mine]
+    deselected = [item for item, file in zip(items, files, strict=True) if file not in mine]
+    if deselected:
+        config.hook.pytest_deselected(items=deselected)
+    items[:] = kept
