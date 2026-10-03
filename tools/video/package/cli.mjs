@@ -8,6 +8,8 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
+import { hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
+import { animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof } from "../core/duration.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { compilationChecksCurrent, isCompilation } from "../core/compilation.mjs";
 import { COMPILATION_REVIEW_FILE, publicTexts, reviewCurrent } from "../core/compilation-review.mjs";
@@ -95,6 +97,10 @@ export function linkOrCopy(source, target) {
  */
 export function checksCurrent(doc, lexicon, checks, clips = null, keyframes = null) {
   if (!checks?.ok || checks.speech_hash !== speechHash(doc, lexicon) || checks.visual_hash !== visualHash(doc)) return false;
+  if (hasAnimePolicy(doc)) {
+    try { if (checks.runtime_policy_hash !== runtimePolicyHash(doc)) return false; }
+    catch { return false; }
+  }
   // Any format binds its cut to the sound effects it names; a drama's mix hash is always there.
   if (doc.sfx && checks.sfx_hash !== sfxHash(doc)) return false;
   if (isDrama(doc)) {
@@ -126,8 +132,7 @@ export async function run(command, args, ctx) {
     && (compilation ? checks.compilation_hash === bodyTimeline?.compilation_hash : checks.speech_hash === bodyTimeline?.speech_hash)));
   const clips = isDrama(doc) && !compilation ? readJson(path.join(workdir, ARTIFACTS.clips), null) : null;
   const keyframes = illustrated(doc) ? readJson(path.join(workdir, ARTIFACTS.keyframes), null) : null;
-  const audioProblems = compilation ? [] : assembledAudioProblems(bodyTimeline, checks, workdir);
-  const current = compilation ? compilationChecksCurrent(doc, checks, episodes) : !audioProblems.length && checksCurrent(doc, lexicon, checks, clips, keyframes);
+  const current = compilation ? compilationChecksCurrent(doc, checks, episodes) : checksCurrent(doc, lexicon, checks, clips, keyframes);
   if (!brandingMatches) {
     ctx.stderr.write(`final.mp4 does not match the selected branding; run ${compilation ? "compile" : "assemble"} again before package\n`);
     return EXIT.usage;
@@ -136,12 +141,32 @@ export async function run(command, args, ctx) {
     ctx.stderr.write(compilation ? "final.mp4 is missing, failed its checks, or was joined from other cuts or cards; run compile first\n" : "final.mp4 is missing, failed its checks, or is older than the script; run assemble first\n");
     return EXIT.usage;
   }
+  if (!compilation) {
+    // A long anime's measured body is judged first (as assemble does), then the cut must have
+    // been mixed from the narration takes bound to that timeline.
+    const bodyProblems = animeBodyDurationProblems({ doc, timeline: bodyTimeline, timelineCurrent: Boolean(bodyTimeline) && bodyTimeline.speech_hash === speech });
+    if (bodyProblems.length) {
+      ctx.stderr.write(`${bodyProblems.join("; ")}\n`);
+      return EXIT.lint;
+    }
+    if (assembledAudioProblems(bodyTimeline, checks, workdir).length) {
+      ctx.stderr.write("final.mp4 is missing, failed its checks, or is older than the script; run assemble first\n");
+      return EXIT.usage;
+    }
+  }
   const approval = await approvalState({ gate: "final", docDir: project.dir, workdir });
   if (approval.status !== "approved") {
     const why = approval.status === "stale" ? "changed after it was approved" : "has not been approved";
     ctx.stderr.write(`final.mp4 ${why}: the owner watches review/final.html, then node tools/video/cli.mjs approve --slug ${doc.slug} --gate final\n`);
     return EXIT.owner;
   }
+  const runtimeInput = { doc, timeline: bodyTimeline, presented: presentationTimeline(bodyTimeline, applied), timelineCurrent: Boolean(bodyTimeline) && bodyTimeline.speech_hash === speech, checks, finalSha256: approval.sha256 };
+  const durationProblems = animeDurationProblems(runtimeInput);
+  if (durationProblems.length) {
+    ctx.stderr.write(`${durationProblems.join("; ")}\n`);
+    return EXIT.lint;
+  }
+  const runtimeProof = animeRuntimeProof(runtimeInput);
 
   // The owner's language choice (docs/videos/LANGUAGES.md): which locales get a description, a
   // caption file and a dub track; without one, every translated locale, as before. The
@@ -230,6 +255,7 @@ export async function run(command, args, ctx) {
   const record = {
     ...metadata,
     final_sha256: approval.sha256,
+    ...(runtimeProof ? { production_policy: doc.production_policy, runtime_spec: { ...doc.runtime_spec }, runtime_context: runtimeProof.runtime_context, runtime_policy_hash: runtimeProof.policy_hash, runtime_proof: runtimeProof } : {}),
     ...(applied ? { branding_hash: applied.hash } : {}),
     thumbnail: thumbnail ? "thumbnail.jpg" : null,
     // Only with a thumbnail: a package written before localized thumbnails reads the same.

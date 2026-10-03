@@ -12,6 +12,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { AutomationError, automationClient } from "../automation/client.mjs";
+import { animeRuntimeContext, hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
 import { approvalState, sha256File } from "../core/approvals.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { compilationChecksCurrent, compilationHash, estimatedCompilationTimeline, isCompilation } from "../core/compilation.mjs";
@@ -211,7 +212,7 @@ export async function run(command, args, ctx) {
 
   const items = [];
   let who = null;
-  items.push(assembleItem({ checks, current: audioCurrent && checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, doc, timeline, presented, timelineCurrent, minMinutes: needsMinimumLength(doc) ? minEpisodeMinutes() : 0, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined }));
+  items.push(assembleItem({ checks, current: audioCurrent && checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, doc, timeline, presented, timelineCurrent, finalSha256, minMinutes: needsMinimumLength(doc) ? minEpisodeMinutes() : 0, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined }));
   items.push(renderItem({ manifest: frames, cache, visual, speech, subtitles: drama ? subtitlesHash(doc) : null, burnIn: drama && burnIn(doc), hasThumbnail: Boolean(doc.thumbnail) }));
   items.push(narrationItem({ approval, current: timelineCurrent }));
   if (!timelineCurrent) {
@@ -257,7 +258,7 @@ export async function run(command, args, ctx) {
   const decision = disclosureDecision(doc, { musicSource: music?.source ?? (doc.music?.track ? "track" : doc.music ? "generated" : null) });
   items.push(disclosureItem(decision, recordDisclosure(inWork(ARTIFACTS.upload), decision)));
 
-  const report = qaReport(items, finalSha256);
+  const report = { ...qaReport(items, finalSha256), ...(hasAnimePolicy(doc) ? { policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec }, runtime_context: animeRuntimeContext(doc) } : {}) };
   writeReport(ctx, doc, workdir, report, finalSha256);
   if (who === "owner") return EXIT.owner;
   if (who === "service") return EXIT.external;

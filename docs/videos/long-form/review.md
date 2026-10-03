@@ -268,6 +268,38 @@ Duration invariants remain unchanged: knowledge/catalog bodies and final cuts re
 Independently executed with Node 24.15.0: `node --test --test-concurrency=2 tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs tools/video/qa/checks.test.mjs tools/video/long-form/integration.test.mjs tools/video/long-form/plans.test.mjs tools/video/core/drama.test.mjs tools/video/tts/tts.test.mjs tools/video/automation/series.test.mjs`: **112 passed, 0 failed, 0 skipped**, exit 0. The regressions cover the exact 480-second boundary, one frame short, body versus bookends, current measured evidence, ordinary drama/compilation preservation, real mocked TTS repeated bytes and independent CC timing, family retakes, and refusal of corrupt or unverified cached sources. Before rebinding, the actual long-form CLI check failed only on the five expected stale bindings. After installing this genuine increment, the reviewer independently executed `node tools/video/long-form/cli.mjs check`: PASS for all 473 plans, exit 0; and `node --test tools/video/long-form/review.test.mjs`: 2 passed, 0 failed, 0 skipped, exit 0. The final report hash was then refreshed to include these completed results, and both guards were rerun.
 
 Non-claims: no real model/provider/API calls, audio listening, animation generation, production writes, manuscript approval, subtitle playback, browser, PostgreSQL or CI acceptance were performed by this reviewer. This receipt accepts only duration compatibility of the SHA-bound changes; it does not accept actor casting, pronunciations as heard, SFX, complete films, publication, or the separately authored sidecar designs. Required duration fixes remaining: none.
+## Native long-anime duration policy and production guards: 65 bound paths (2026-10-02)
+
+Verdict: **PASS — DURATION_ONLY**. Author: `codex-root`. Independent reviewer: `/root/review_planning_import`; the reviewer did not implement the policy or production changes. Reviewed implementation revision: `9257a45d6dafeb67ec09429eb26675a101eb9a30`, rebased onto `origin/main` `acb935fb4` (including PR #1129's series branding). The original 70-file receipt at that base has SHA256 `245bbde83724e61b460e27aac51d0b2511747577f4cadee71a5f8ab85aaf34f5`; its report SHA256 is `8590b442fcfb1f95913940c972a961d4b06154497eb6da462e4ec9ab44aa1689`. Every preceding report increment above is preserved verbatim, including the planning-import, merge, migration-order, Shorts and drama-voice review history.
+
+This increment independently reviews the duration-relevant API, migration, worker, Node writer/input/assembly/QA/package/review/state and admin UI delta, its regressions and the new long-anime contract document. The registry retains all 70 existing paths, rebinds 26 changed implementation/test/locale files plus the registry itself, and adds 38 critical paths: 36 newly covered changed code/test/document files plus the trusted source validator and its authoring contract. The other 43 historical bindings remain byte-identical to their previous receipt. The resulting 108-file table binds current bytes; it does not claim a new review of those 43 unchanged historical files. Only registry entries were added to `review.mjs`; its independent identity, exact coverage, report/table/file hash and stale-binding validation functions are unchanged. Before rebinding, the actual long-form CLI check failed solely on the 26 expected changed historical bindings.
+
+The exception requires the explicit `long-anime-v1` policy and strict runtime specification on the native series and episode. Category or drawing style alone cannot enable it. The four integer fields require a whole-minute 9–30-minute body, OP/ED budget 0–300 seconds, slot reserve 0–900 seconds, a positive slot at most 3600 seconds and exact body + OP/ED budget + reserve equality. Boolean and incomplete/unknown fields fail closed. Ordinary series retain 1–8/default 3 minutes, ordinary explainers retain 8–20/default 10, and the historical ordinary database duration boundary and existing lead choices remain intact. Additive migration 0122 preserves the planning-only protection from 0121 and the existing ordinary branch; only a valid native profile gains the wider body/ensemble constraint. The old planning row is never promoted by native create.
+
+Borrowed Dawn's source remains 22 minutes of story, 120 episodes, 12 documents and 240 distinct high-tension events. Its separate native draft requests a paused production series with a 1320-second body, 180-second OP/ED budget and 300-second unrendered reserve within an 1800-second slot. The original source files and historical support gaps are unchanged. All 16 source character voice assignments remain pending. The offline adapter checks strict JSON, canonical local paths, complete file hashes, frozen derived rendering and semantic/document twins; refreshed hashes cannot hide changed source semantics. Bundle code stays inert. The only executable semantic validator is the fixed repository import, now bound with the authoring contract it reads. The draft retains false import/production/media/approval/publication readiness flags and supplies no approvals, activation or media.
+
+A measured native body must be within ±60 seconds: 1260–1380 seconds for this source. Estimated timing never supplies actual duration evidence, OP/ED cannot rescue a short body and the reserve is never padded into media. Current 30 fps body/presentation frame arithmetic, actual final SHA256, the 16-hex speech hash and full runtime/context policy hash are required. OP/ED must fit its budget; presentation must fit slot minus reserve. Existing intro and outro limits remain 30 seconds each. The upstream series-specific explainer intro remains scoped to that series, while native silent action offsets shift with scenes and dialogue exactly once without changing the unwrapped body. Ordinary knowledge body/minimum/final checks and ordinary fit behavior remain unchanged.
+
+Native script, audio, final and publish approvals bind current policy/context as well as bytes; policy or action edits invalidate old timeline, script checks, remote review receipts and status. API native identity resolves the authoritative episode/series rather than a worker-mutable series label. Final/publish gates reject missing, estimated, stale or out-of-range proof before idempotency, renewal or manual approval; publication also requires the current approved final. Native script payload capacity is bounded at 1 MiB only after native context validation; ordinary capacity stays 256 KiB. Native automatic approval shortcuts, compilation and unrestricted profile changes remain blocked, and document approval plus explicit planning/resume actions govern a freshly paused series.
+
+Narrative guards retain exactly two distinct first/second-half events with stakes and continuing consequences, valid cast/thread references and five continuity fields. Rolling payoff windows use chronological neighboring chapters, including cached owner edits and episode starts. Only the declared final episode of a closed series with explicit closure can use an emotional ending with last tension 1–3; earlier episodes keep the existing retention ending rule. Source episode 120 retains its actual tension 2 and closed epilogue. The writer divides the long script into bounded acts (at most 300 target seconds per act, 32k output tokens, 180 scenes/180 kB per response), validates every act and binds resumable checkpoints to canonical source/plan/assignment hashes. Verification, listening and discussion use bounded input/output paths.
+
+The independent review identified and confirmed fixes for chronological prior-chapter tail selection; direct episode-edit/start semantic bypasses; authoritative project-to-series identity; silent action position missing from timing hashes; silent action description/motion missing from screenplay and approval evidence; and default auto-fit stretching or freezing short native clips. Directed silent shots require real visible action, motion and strict 1–8-second durations. Their position binds the speech/timeline hash, their content binds screenplay checks and approved script bytes, and narration receives the corresponding real silence. The shared native fit proof requires every shot's current timeline span and actual sufficient media, speed 1, zero padding and consistent source/stretch/trim frame arithmetic; motion stills require an explicit move. Assembly probes all native clips before any segment encoding, so a bad final clip cannot leave earlier encoded segments. QA, package, review and scheduler status use the same fail-closed evidence. Ordinary slow/pad fit remains preserved.
+
+The admin editor retains its ordinary 1–8-minute form and adds an explicit paused native profile. Original planning specifications/documents/episodes remain readable and protected. The review UI separates authored targets, measured body/audio, actual OP/ED and broadcast/reserve budgets; missing/stale/invalid finished-film proof disables approval. Native script cards visibly show silent action description, motion and duration outside collapsed prompts, plus current two-event/consequence/closure coverage. Ordinary, malformed or stale verdicts do not acquire a validated native presentation. The five locale changes retain these distinctions after the main rebase.
+
+Independently executed focused regressions (overlapping suites are not summed as unique tests):
+
+- `node --test --test-concurrency=2 tools/video/core/anime-policy.test.mjs tools/video/core/duration.test.mjs tools/video/core/timeline.test.mjs tools/video/production/anime-input.test.mjs tools/video/automation/anime-write.test.mjs tools/video/automation/series.test.mjs tools/video/qa/duration.test.mjs tools/video/review/sync.test.mjs`: **161 passed, 0 failed, 0 skipped**, exit 0, during the review before the final media fixes.
+- `node --test --test-concurrency=2 tools/video/core/duration.test.mjs tools/video/core/screenplay.test.mjs tools/video/core/approvals.test.mjs tools/video/core/state.test.mjs tools/video/assemble/assemble.test.mjs tools/video/package/package.test.mjs tools/video/qa/duration.test.mjs tools/video/review/sync.test.mjs`: **127 passed, 0 failed, 0 skipped**, exit 0, after the final media and screenplay fixes.
+- In `apps/api`, `RUN_INTEGRATION_TESTS=0 .venv/bin/python -m pytest tests/test_video_anime_production_policy.py tests/test_video_anime_review_policy.py -q -k 'not model_checks and not native_create_and_source_draft_round_trip'`: **114 passed, 9 deselected**, exit 0, after the final API guards. This run excludes eight ephemeral SQLite constraint cases and the real PostgreSQL round trip. An earlier focused run separately passed the isolated SQLite CHECK cases; the reviewer executed no shared/PostgreSQL DDL and no real PostgreSQL integration.
+- At the final rebased revision, `node --test --test-concurrency=2 tools/video/core/branding.test.mjs tools/video/core/duration.test.mjs tools/video/core/state.test.mjs tools/video/core/screenplay.test.mjs`: **42 passed, 0 failed, 0 skipped**, exit 0.
+- At the final rebased revision, in `apps/web`, `npx vitest run components/admin-video-series.test.tsx components/admin-video-reviews.test.tsx components/admin-video-explainer-duration.test.tsx`: **97 passed across 3 files, 0 failed**, exit 0. These are component tests, not browser acceptance.
+
+After installing these bindings, the reviewer independently executed `node tools/video/long-form/cli.mjs check`: **PASS for all 473 plans**, exit 0; `node --test tools/video/long-form/review.test.mjs`: **2 passed, 0 failed, 0 skipped**, exit 0; and `git diff --check`: clean. The checker still rejects self-review, missing registry coverage, a changed report and stale file bytes. The completed guard results are included in this report, and the report SHA and both guards are refreshed and rerun.
+
+Non-claims: this PASS accepts only duration policy compatibility and the source-bound software guards described above. It does not accept story quality, manuscripts, casting or audible performance, actual provider/model calls, completed animation or a measured 120-episode production, browser/media playback, deployment, formal import, paid generation, scheduling or publication. Root's separately executed real-PostgreSQL and broader suites are not claimed as independent execution here. Required duration fixes remaining: none.
+
 ## Audio-handoff duration increment: 11 files (2026-10-02)
 
 Reviewer: `/root/claude_five_audit`. Author: `codex-ten-drama-audio-handoff` and the runtime implementation authors. Verdict: **PASS — DURATION_ONLY**. The reviewer authored the City/Reload production-design corrections, but did not author or modify any runtime or test file covered by this duration increment, including the corrected QA duration fixture.
@@ -310,6 +342,31 @@ Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on 
 
 Non-claims. This review does not accept the lost-answer handling or the translation units themselves: not the client's retry rules, the web route's deadline, the units' prompts or translation quality, a real model call, and not CI. PASS is DURATION_ONLY for the two rebound hashes below. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1139 merge with #1140: 1 file (2026-10-03)
+
+Reviewer: `claude-pr-review-1139-merge`. Author: the merge of codex/anime-long-production (PR #1139) and claude-opus-5-5-lang-stages (#1140); reviewer wrote neither. Scope: DURATION_ONLY.
+
+Baseline: PR HEAD df88ed66, origin/main 1493bb90, merge base acb935fb. HEAD's tools/video/automation/flow.mjs hashes to 79418360…7eb7915, which is the hash HEAD's review.json binds. origin/main's flow.mjs hashes to 31225d07…c47834, which is the hash main's review.json binds. The merged working-tree flow.mjs (SHA256 57bc65c0…f81e37ab) has no conflict markers. It is the only bound file that both sides changed. Every other binding's merged bytes equal one side's reviewed hash.
+
+Findings. Each side's change against the merge base was read in full: PR +65/−17 and main +88/−13. So were the merged file's diffs against each side: against HEAD +88/−13, against origin/main +65/−17. The hunks are disjoint. The PR's hunks are the anime-policy imports; `settle`; `report`; `draftEpisode`; the script gate; verify/script-check binding; planner/scriptPayload/seriesPayload target_minutes; `animeRewrite`; saveAndLint; prompt fixes; write; verifier; listener; and audio rewrite. Main's hunks are the RUN_UNCERTAIN and sheet-units imports; the `unitLimits` constructor field; the `stage()` try/catch; `unanswered`; the `step()` catch; and `translateLocale`.
+
+These checks show the merged file is exactly the union of the two changes, with nothing dropped, rewritten or doubled:
+- Re-running `git merge-file` on base, PR and main gives bytes identical to the merged file (exit 0).
+- Applying main's base→main patch to HEAD's bytes reproduces the merged file exactly. Applying the PR's base→HEAD patch to main's bytes also reproduces it exactly.
+- The sorted added/removed lines of `git diff HEAD` equal those of base→main. The sorted lines of `git diff origin/main` equal those of base→HEAD.
+
+Interactions:
+- Signatures. Main changed `stage()` only by wrapping its `api.run` call. Its signature and return value are unchanged, and a RUN_UNCERTAIN error is tagged with its stage and rethrown. The PR's `animeRewrite` calls `stage()` with its existing signature (`writeAnimeActs` → `this.stage(stage, slug, payload, maxTokens, "drama", "anime-act", series)`), and the PR's verifier call only lowers maxOutputTokens for long anime.
+- Lost answers. A lost answer from one long-anime act propagates out of `writeAnimeActs`, which has no catch, to `move()`'s catch. There it reaches main's `unanswered`, which halts and blocks for the owner instead of paying again. Acts answered earlier stay in the PR's hash-bound checkpoints, so a retry resumes rather than re-asks. #1140's RUN_UNCERTAIN guard therefore also covers the anime path.
+- No overlap in the other direction. Main's `translateLocale` sheet-unit, reviewer-worksheet and refused-merge guards are untouched by the PR. The PR's anime guards are untouched by main: the anime-2d preset; policy-sourced `production_policy`/`runtime_spec`; body_target_seconds-derived target_minutes; the planning-only refusal; no auto script approval and no unbound-check spare; the findings-only verifier; `continuity_problems`; screenplay refresh; bounded acts.
+- Duration rules. Neither side touches effectiveEpisodeMinutes, minEpisodeMinutes, VIDEO_MIN_EPISODE_MINUTES or frame counts. Neither touches the 480-second / 14,400-frame body and final floors, the eight-minute non-drama floor, the explainer 8–20/default 10 rule, ordinary drama 1–8/default 3, or the measured narration/frame proof. The PR's long-anime target replaces `episodeMinutes` only under `hasAnimePolicy`, and ordinary videos keep `episodeMinutes`.
+
+No merged path drops or weakens a duration rule, an anime production/duration guard, or a #1140 guard.
+
+Commands: `node --test "tools/video/**/*.test.mjs"` ran 1223 tests: 1221 passed, 1 failed, 1 skipped, exit 1. The skip is the browser regression that needs VIDEO_RENDER_BROWSER_TESTS=1. The one failure is the shipped binding regression, "the shipped independent duration review binds the current plans and implementation". It reports only "duration review report is stale" and "stale duration review binding: tools/video/automation/flow.mjs". `node tools/video/long-form/cli.mjs check` exited 1 with `FAIL: duration review report is stale; stale duration review binding: tools/video/automation/flow.mjs`, which is the expected pre-rebinding state and nothing else. Both commands are to be rerun after rebinding.
+
+Non-claims: DURATION_ONLY review of the merged flow.mjs bytes only. It gives no functional acceptance of long-anime production, the lost-answer handling or the translation units. It covers no real model/provider call, media, browser, API/PostgreSQL, CI, deployment or publication, and is not a fresh review of any other binding. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## PR #1132 merge with #1140: 2 files (2026-10-03)
 
 Reviewer: `claude-pr-review-1132-merge`. Author: the merge of `codex-ten-drama-audio-handoff` (PR #1132, branch codex/ten-drama-audio-handoff-20261002) and `claude-opus-5-5-lang-stages` (#1140); the reviewer wrote neither side. Scope: DURATION_ONLY.
@@ -321,6 +378,40 @@ Findings. The reviewer read all of `git diff origin/main` (the PR's change appli
 Commands (Node, offline, in the uncommitted merge worktree): `node --test "tools/video/**/*.test.mjs"` ran 1161 tests: 1159 passed, 1 skipped, 1 failed, exit 1. The skipped test needs the browser and is skipped unless VIDEO_RENDER_BROWSER_TESTS is set. The one failure is the shipped binding regression "the shipped independent duration review binds the current plans and implementation". It reports exactly "duration review report is stale" and stale bindings for tools/video/automation/automation.test.mjs and tools/video/automation/flow.mjs. All three #1140 tests and the PR's affected end-to-end tests pass on the merged bytes. `node tools/video/long-form/cli.mjs check` exits 1 with only "duration review report is stale; stale duration review binding: tools/video/automation/automation.test.mjs; stale duration review binding: tools/video/automation/flow.mjs". Both are expected to pass once the two merged hashes and this report are rebound.
 
 Non-claims. This review does not accept the lost-answer handling, the translation units, audio-evidence semantics beyond what the earlier sections already accepted, localization retention, translation quality, any real model, provider or media call, listening, rendering, or CI. It reviewed only the two merged files. It did not re-review the other merged files or review.json/review.md conflict resolution beyond reading these sections. PASS is DURATION_ONLY for the two merged hashes named above.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## PR #1139 merge with #1132: 17 files (2026-10-03)
+
+Reviewer: `claude-pr-review-1139-merge-1132`. Author: the merge of `codex/anime-long-production` (PR #1139) and `codex-ten-drama-audio-handoff` (PR #1132), with conflicts resolved by another Claude agent. The reviewer wrote neither side and none of the conflict resolutions. The reviewer did not edit, stage or commit any repository file.
+
+Baseline: HEAD `24fbe0f6` (PR #1139), origin/main `cc019d26` (which includes PR #1132), merge base `1493bb90`. The merge is uncommitted in `/home/user/wt1139`. All 17 files below match HEAD's own `review.json` binding byte for byte at HEAD. On origin/main, 8 of them match main's binding: `automation/flow.mjs`, `automation/series.test.mjs`, `core/schema.mjs`, `core/state.test.mjs`, `qa/cli.mjs`, `qa/duration.test.mjs`, `review/sync.test.mjs` and `tts/tts.test.mjs`. Main's 70-file receipt does not bind the other 9 at all, so there is no main hash to compare them with: `assemble/assemble.test.mjs`, `assemble/cli.mjs`, `core/approvals.mjs`, `core/approvals.test.mjs` (the file does not exist on main), `core/drama.test.mjs`, `core/state.mjs`, `package/cli.mjs`, `package/package.test.mjs` (unchanged on main since the merge base) and `review/sync.mjs`. Main's own audio-handoff section says it read several of these (`approvals.mjs`, `state.mjs`, `assemble/cli.mjs`, `package/cli.mjs`, `review/sync.mjs`) without binding them. For each file this review read the PR's diff from the merge base, main's diff from the merge base, and the merged file's diff against both HEAD and origin/main. All 17 merged files are free of conflict markers, and `git diff --check HEAD` on them is clean. The merged SHA256 values are in the bindings table.
+
+Findings:
+
+- **Clean unions** (`assemble/cli.mjs`, `automation/flow.mjs`, `automation/series.test.mjs`, `core/drama.test.mjs`, `core/schema.mjs`, `tts/tts.test.mjs`): with line numbers ignored, the merged file's diff against HEAD is exactly main's diff from the merge base, and its diff against main is exactly the PR's diff. Nothing from either side is dropped or rewritten. In `assemble/cli.mjs`, the PR's anime body check (`animeBodyDurationProblems`, EXIT.lint) still runs before main's `audioEvidenceProblems` refusal (EXIT.usage), and both run before any frame, clip or ffmpeg work. `checks.json` records both `narration_sha256` (main) and `runtime_policy_hash`/`final_sha256` (PR). `flow.mjs` keeps main's refusal of changed takes, its `--refresh-evidence` rule (used only when the script is unchanged and the timeline has no evidence) and its audio-evidence block before the audio decision. It also keeps all of the PR's long-anime flow. `schema.mjs` adds only main's `localization_plan` key and validation, which has no duration effect.
+- **`core/approvals.mjs`**: main's audio-evidence checks are placed in front of the PR's runtime-policy binding in both functions. In `approve`, the audio gate is refused on bad evidence before the policy hash is computed and compared with `expected_runtime_policy_hash`, and the entry still carries `runtime_policy_hash`. In `approvalState`, an audio approval goes stale on bad evidence before the SHA and policy checks. The PR's rule that the policy hash must match on the script, audio, final and publish gates, and its stale-on-exception rule, are intact. The only other difference from HEAD is main's comment wording.
+- **`core/state.mjs`**: both sides are kept. Main's `audioProblems` and `assembledSound` (which requires `checks.narration_sha256` to equal the timeline's narration hash) feed `assembledMedia`, so they feed "video assembled", and that step still also requires the PR's `runtimeCurrent`. "narration synthesized" now requires `timingCurrent && !audioProblems.length`; its note shows the PR's measured-policy message first, then main's audio problem. "narration approved", "final video approved" and "upload package" keep the PR's `timingCurrent`, `bodyProblems`, `runtimeCurrent` and `runtime_proof` deep-equality conditions unchanged.
+- **`qa/cli.mjs`**: `timelineCurrent` requires both the speech hash and current audio evidence (main). The assemble item's `current` is `audioCurrent && checksCurrent(...) && ...` and still receives the PR's `finalSha256`. The PR's anime fields `policy_hash`, `runtime_spec` and `runtime_context` in the report are kept.
+- **`review/sync.mjs`**: the audio submission refuses a short, estimated or stale anime body first (PR), then missing or changed audio evidence (main). Only after both does it build the measured `runtime_measurement`. The check is filtered to verdicts for the current take (main's `currentAudioCheck`). The final submission runs main's `assembledAudioProblems` refusal before the PR's `animeRuntimeProof` and QA policy/context check. `recordApproval` checks the PR's runtime-policy and remote-hash binding, then main's audio-evidence refusal, and only then the "already recorded" short cut and `approve`. The PR's publish submission and its approvalState-based `nextGate` are unchanged.
+- **`package/cli.mjs` (the judgment call)**: on main, `current` included `!assembledAudioProblems(...)` for non-compilation documents, and a stale `current` gave EXIT.usage "run assemble first". The merge sets `current` to `checksCurrent` alone, which still includes the PR's runtime-policy check. It keeps the branding check first and the missing-final / `!current` refusal second. Then, for non-compilation documents only, it adds two checks before the final-approval check: first `animeBodyDurationProblems` (EXIT.lint), then `assembledAudioProblems` with main's exact message and EXIT.usage. After the approval it keeps the PR's `animeDurationProblems` (EXIT.lint) and `animeRuntimeProof`. For non-anime documents `animeBodyDurationProblems` returns `[]`, so their behaviour is the same as main's: same refusal, same message, same exit code, and still before the approval check. For anime documents, every input either side refused is still refused before anything is written. The only change is that an anime body that is also missing or short now reports the PR's EXIT.lint duration message rather than main's EXIT.usage. Compilations skip the audio check, as they do on main. No path packages with absent or stale audio evidence, or with a short, estimated or stale body. An independent synthetic probe outside the repository confirmed this for a non-anime cut. A current cut packaged with exit 0. Each of these faults was refused with EXIT.usage and main's exact "run assemble first" message: a flipped byte in `narration.wav`, a flipped byte in one take, a timeline with its `audio_evidence` removed, a `checks.json` with no `narration_sha256`, and a `checks.json` naming another narration.
+- **Test fixtures** (`assemble/assemble.test.mjs`, `core/approvals.test.mjs`, `core/state.test.mjs`, `package/package.test.mjs`, `qa/duration.test.mjs`, `review/sync.test.mjs`): no assertion line was removed or weakened on either side. The lines removed against HEAD are imports, plain timeline writes that became `writeAudioFixture`, and a few other evidence-only lines:
+  - `approvals.test.mjs`: the non-JSON timeline placeholder became a real timeline, which main's audio gate needs to parse.
+  - `state.test.mjs`: the text placeholder takes were dropped because they would overwrite the real silent WAVs.
+  - `sync.test.mjs`: the one-frame narration placeholder became a WAV of the full bound length.
+  - `checks` objects gained `narration_sha256` from the fixture's own evidence.
+  - In the anime-budget-change test, the refreshed timeline is bound with main's `bindAudioEvidence` to the unchanged takes, as `tts` does.
+
+  `writeAudioFixture` is main's unchanged helper. It writes silent WAVs with each line's own `audio_samples` and a narration of `total_frames × 1600` samples, then binds their hashes. It does not change `total_frames`, `timing_basis`, the speech hash or the runtime policy, so every duration assertion (two-minute and boundary bodies, ±60-second windows, 14,399-frame rejection, 14,400-frame acceptance, estimated/stale/short refusals) still checks the same numbers. Main's new tests ("direct assembly refuses missing or changed audio evidence…" and "remote approvals and old transcript checks cannot clear a new take…") are present verbatim.
+
+Commands and results (Node, offline, synthetic fixtures):
+
+- `node --test "tools/video/**/*.test.mjs"`: 1239 tests; 1237 passed, 1 failed, 1 skipped (the browser regression gated by `VIDEO_RENDER_BROWSER_TESTS`), 0 cancelled; exit 1. The only failure is the expected "the shipped independent duration review binds the current plans and implementation", which reports the stale report plus the 17 stale bindings.
+- `node tools/video/long-form/cli.mjs check`: exit 1, FAIL listing exactly "duration review report is stale" and the 17 stale bindings named above, nothing else.
+- The package probe described above: 1 accepted, 5 refused as expected.
+- `git diff --check HEAD` on the 17 files: clean. Leftover test temp directories were removed afterwards.
+
+Non-claims: this accepts only that the merge keeps the duration, measured-proof and anime-policy guards of PR #1139 and the audio-evidence guards of PR #1132. It does not re-review the 9 files main never bound, beyond the merged deltas read here. It makes no claim about other merged files, the API/UI suites, real narration listening, real media, provider calls, deployment or publication. It does not rerun the long-form check after rebinding; that belongs to whoever installs the new bindings.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
@@ -362,9 +453,35 @@ Ran (Node 24.13.0, offline): `node tools/video/long-form/cli.mjs check` before r
 
 Non-claims. This review does not accept the picture brief, the look preset, the camera-word, shot-size and look-word patterns, the motif folding or the rubric change themselves, nor picture quality, the 1K pricing path, a real model call or CI. It does not cover the other ten files of the commit, which are unbound, or the files the #1148 merge brought in, none of which is bound. PASS is DURATION_ONLY for the four rebound hashes below. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1166 merge with #1139 follow-up: 3 files (2026-10-03)
+
+Reviewer: `claude-pr-review-1166-merge-1139`. Authors: `claude-fable-5-1-illustration-polish` (PR #1166, branch claude/video-series-illustration-polish-c26975 at 4ebb3556) and, on the origin/main side, `codex-root` and `codex-ten-drama-audio-handoff` (PR #1139, on origin/main as 12ff2705). Another session started the merge of origin/main into the branch. Scope: DURATION_ONLY. The reviewer wrote neither side's changes and edited only this report and review.json.
+
+Compared: the merge base of HEAD 4ebb3556 and origin/main 12ff2705 is 8264c883 (#1148). The merged tools/video/long-form/review.mjs lists 108 paths in REVIEW_FILES. origin/main's receipt binds all 108 and HEAD's binds 70, so 38 paths are new to this branch. `git diff --name-only 8264c883 HEAD` lists 29 files, five of them bound. `git diff --name-only 8264c883 origin/main` lists 70 files, 63 of them bound. The changed bound files fall into three classes:
+
+- Only HEAD changed (2): .agents/skills/youtube-video/references/automated.md and tools/video/media/look-keyframes.test.mjs. Their working-tree hashes equal HEAD's review.json bindings.
+- Only origin/main changed (60, of which 35 are new to REVIEW_FILES): every working-tree hash equals origin/main's review.json binding.
+- Both changed, and git merged them without a conflict (3): tools/video/automation/prompts.mjs, tools/video/core/drama.mjs and tools/video/core/drama.test.mjs.
+
+The other 43 are unchanged on both sides. 41 of them carry the one hash both receipts bind. docs/videos/series-plans/borrowed-dawn/authoring-contract.json and validate.mjs are new to REVIEW_FILES and carry origin/main's binding. All 108 working-tree files equal their index entries. The rows below therefore differ from origin/main's receipt in five places: the two only-HEAD files and the three merged ones.
+
+Proof for the three merged files. The reviewer compared, as sorted lists, the added and removed lines of four diffs per file, ignoring hunk headers and context. `git diff origin/main -- <file>` (the merged tree against origin/main) has exactly the lines of `git diff 8264c883 HEAD -- <file>`, and `git diff HEAD -- <file>` has exactly the lines of `git diff 8264c883 origin/main -- <file>`: prompts.mjs +24/−10 from HEAD and +52/−2 from origin/main, drama.mjs +104/−5 and +15/−3, drama.test.mjs +68/−0 and +119/−0. `git merge-file -p` on the HEAD, merge-base and origin/main blobs reproduces the working-tree bytes of each file without a conflict. So each merged file is origin/main's reviewed version plus HEAD's delta and nothing else. For prompts.mjs (merged 370d745b…1df030b3) and drama.mjs (merged 482db7a9…81f6b8e3), the merge-base, HEAD and origin/main blobs each carry the hash their own commit's receipt binds, so both deltas run between reviewed bytes. drama.test.mjs (merged d61bdea3…51f3c56ee) is different. origin/main's blob carries the hash origin/main binds (465e9d1e…6e445ee5), but HEAD's receipt never bound the file, and the "PR #1166 merge with #1132 follow-up" section lists it as unbound and not covered. HEAD's 68 added lines in it had no duration review before this one, so this section reviews them rather than resting on an earlier section.
+
+Findings, prompts.mjs. HEAD's two hunks (merged lines 79–94 and 99–106) are prose inside TEMPLATE_GUIDE: the `shot` bullet, the cadence paragraph's alternation list and the "Pictures travel" paragraph. The sentence "A shot carries one or two sentences, 5 to 8 seconds" is reflowed with its wording intact, and "frame" in these lines is the picture's frame. origin/main adds the `isLongAnime` import (line 10), the `anime` branch of `instructionsFor` (lines 507–512) and, at the end of the file (lines 1430–1477), ANIME_COMMON, ANIME_SHOTS and `animeInstructions`. Those carry origin/main's duration wording: the runtime_spec body target, 3–10 second shots that never exceed 12, action_seconds 1–8 and the act's target_seconds. The nearest hunks of the two sides are 69 lines apart. `animeInstructions` always returns a string built from ANIME_COMMON and ANIME_SHOTS, so a long-anime stage never falls through to the instructions that interpolate TEMPLATE_GUIDE, and HEAD's text is not part of any long-anime prompt.
+
+Findings, drama.mjs. HEAD's six hunks (merged lines 43–48, 84–92 and 593–687) are the three picture-variety constants, the `tech-story` preset's strings and comment, `cameraMove`, the patterns and helpers, `pictureVarietyProblems` and the head of `shotProblems`. origin/main's seven (lines 12–430) are the `isLongAnime` import, ANIME_SERIES_KEYS, the `anime` parameter of `validateSeries` with its planned_episodes, open_ended and closed_ending checks, and in `validateDrama` the refusal of `fit` "freeze" or "slow" on a long-anime shot ("story duration cannot be supplied by frozen tails or slowed clips"). The nearest hunks are 23 lines apart, and none of HEAD's lines is inside `validateSeries` or `validateDrama`. `pictureVarietyProblems` returns nothing unless `illustrated(doc)`, which is false for format drama, the format the anime policy requires. So `shotProblems` gives a long anime the result it gives on origin/main. The policy also requires the anime-2d preset, so the rewritten `tech-story` strings do not reach it.
+
+Findings, drama.test.mjs. HEAD's one hunk (merged lines 554–621) is one test: the `tech-story` preset's strings, `cameraMove`, and `pictureVarietyProblems` alone and through `shotProblems`. It calls `estimateTimeline` only to hand a timeline to `shotProblems` and asserts no frame count, length or minute. "slow push in" is a camera phrase given to `cameraMove`, not origin/main's `fit: "slow"`, and the 600 and 400 it checks are character limits of the preset strings. origin/main's one hunk (lines 46–164) adds the long-anime fixture and its tests (target_minutes [22, 22], runtime_spec, action_seconds 1–8, the closed ending, the freeze and slow refusal), 390 lines away. It only adds lines, so `dramaFixture` and `illustratedFixture`, which HEAD's test uses, are as HEAD had them.
+
+Across the three files, a scan of HEAD's 211 added and removed lines finds no target_minutes, effectiveEpisodeMinutes, minEpisodeMinutes, MIN_EPISODE_MINUTES, VIDEO_MIN_EPISODE_MINUTES, needsMinimumLength, minute, 14,400, 480, runtime_spec, action_seconds, target_seconds, planned_episodes or `fit`. None of those lines sets the explainer's 10-minute default or 8–20 range, the drama's 1–8 range or the brand story's 13, and none names an identifier origin/main added (isLongAnime, animeInstructions, ANIME_COMMON, ANIME_SHOTS, ANIME_SERIES_KEYS, the new `validateSeries` parameter). No line of origin/main's delta in the three files names an identifier HEAD added or changed. Of the 60 files only origin/main changed, lint.mjs calls `shotProblems` and lint.test.mjs names "tech-story", both on lines origin/main's delta does not touch. The two only-HEAD files name nothing of the long-anime policy. So the two deltas do not interact on a duration rule, and the combination neither changes nor bypasses any duration rule recorded in this report.
+
+Ran (Node 24.13.0, offline, in the uncommitted merge worktree): before resolving, `node tools/video/long-form/cli.mjs check` exited 1 because the conflicted review.json does not parse. `node --test tools/video/core/drama.test.mjs tools/video/core/lint.test.mjs` passed 57/57, exit 0, on the merged tree. After rebinding, the CLI check, `node --test tools/video/long-form/plans.test.mjs tools/video/long-form/review.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs` and `node --test tools/repo-hygiene.test.mjs` are rerun.
+
+Non-claims: DURATION_ONLY follow-up of the merge. For the 62 files only one side changed, and for each side's own delta of prompts.mjs and drama.mjs, it rests on the sections above and adds only the check of their combination. The one delta it reviews for the first time is HEAD's 68 lines of drama.test.mjs. It gives no functional or visual acceptance of the picture variety lint, the look preset or the long-anime policy. It does not cover the 43 untouched bindings afresh, the unbound merged files, the API and web suites, CI, a browser, a real model, provider or media call, deployment or publication. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -372,49 +489,81 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `.agents/skills/youtube-video/references/automated.md` | `2e16adc438e074ec846ea7b60018a6fc5323676c30cdaa4db5348d9642edb968` |
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
 | `.claude/skills/youtube-video/SKILL.md` | `9f425b6361451c032e56a5ccc2e7e9eef58feacd5c479e16551cc1918f826939` |
-| `apps/api/app/video_automation/models.py` | `a527501908ded6558839f175a047e05b38b9eb9c8a9be9494d079382f99561b7` |
-| `apps/api/app/video_automation/schemas.py` | `084745ef3f022863777b7694a98c168df6415181c30bc84b4ce0a151af7e974c` |
-| `apps/api/app/video_automation/series.py` | `61a6d7b0460ff9b70e656b8025fd7409df2cd912b16acff1d160db98258c0965` |
+| `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
+| `apps/api/app/video_automation/judge.py` | `f27078a3792caed5fb7f0af14bd95d631824c562c37d3aafed375c06dbbc21ca` |
+| `apps/api/app/video_automation/models.py` | `93ee8ee2df1b8711a413e730e982ecd444680d321fc1121b7a90c9b92f1b820f` |
+| `apps/api/app/video_automation/schemas.py` | `18cab46cfbcb5cfe9ab6a2f48a7d9f3ec59eb4f76e5f5e78796315de5a4573b0` |
+| `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
+| `apps/api/app/video_automation/settings.py` | `381d17d963f365153a39161ace5d9e5de79faa8bf373d6b9ceb2c0861f0bb644` |
+| `apps/api/app/video_reviews/admin_service.py` | `62b65a8e8ec013dc9de2f8bba51a2feda9396b6a5237e9ee15b2f007c2159a08` |
+| `apps/api/app/video_reviews/schemas.py` | `7953a70a195c647638a78b35055ab7b0a9d365d87146b92e9fa568afb3bd759c` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
+| `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
 | `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
+| `apps/api/tests/test_migration_0121_video_series_planning.py` | `74d030582ee98a4a05be0b07efb78fcf3a21cae34fca41a7fedaa4eb3a2eb204` |
+| `apps/api/tests/test_migration_0122_video_anime_production_policy.py` | `c0bbfbbb3af79cf98e55569b60c11bc5131811d2915afc51d569605c4ae4a2d8` |
+| `apps/api/tests/test_video_anime_production_policy.py` | `b9fe3f9ff8ffd0b1d36089f2f684d60bb2e2c7712e4549940c472abb4c59efb1` |
+| `apps/api/tests/test_video_anime_review_policy.py` | `eacb78a7e6692e530730b49e3bb89698d1b2a3976ac8f1d836bbc435b16276d8` |
 | `apps/api/tests/test_video_automation_settings.py` | `b7f8a1853a7090d010a648ddb7c262c3c616256b4d6a8913410efab8d40a3707` |
 | `apps/api/tests/test_video_drama_requests.py` | `07ddbcaadf668a13565969ca44e2542dee4f6ad83791bcc8f67d785302734c59` |
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `2d4c0b9dc89062a105a61d04ef7c44d25129c4672f06e41bcdcbab2b1b0f10ab` |
-| `apps/web/components/admin-video-series.test.tsx` | `bf1197d8166cdbc32c5316636eb034633c4bd4f167ca639516f32b664f9b1ea0` |
-| `apps/web/components/admin-video-series.tsx` | `22ab2b261f098222d766741c694f74da8a85f46cec7f68188a0e3beddbbf1952` |
+| `apps/web/components/admin-video-review-card.tsx` | `d5548c8bb8218cad84719434bfae1a2acebc1d972b6887cda3e9afaa5088c5e8` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `5d8bf674f9f34f97655666e8b61b556a51720f98638c55587e852d167d3cb824` |
+| `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
+| `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
-| `apps/web/messages/en/admin.json` | `497fb3d75b0da897afaca7848a4580e0aceec0fd5cf20b4e90ae685854da279d` |
-| `apps/web/messages/ja/admin.json` | `934d9347fb9bf0a75ff07b769b9c1fc781bd5e205837a22e25c887757af4512e` |
-| `apps/web/messages/ko/admin.json` | `295b5f07945222f8eae5313a50c754aff79225adea68716750420a8f18f4142d` |
-| `apps/web/messages/zh-CN/admin.json` | `52cf4834571a1db47fceb35cca7052733aeadc2c38bf0da4c33052189ed93d24` |
-| `apps/web/messages/zh-TW/admin.json` | `edfe61a35b79431a3dc93555b27cbe35f9134254123bd2bba8c30c53090e909b` |
+| `apps/web/messages/en/admin.json` | `fec71826c900e68209f170ca580f4c05376e38543ca268f7c3bbdc2c056adf41` |
+| `apps/web/messages/ja/admin.json` | `ee8c921fc06f600dfd5d9744898690b48b41a7b78f26f35a872db69ac0cbe1bb` |
+| `apps/web/messages/ko/admin.json` | `f59e8b36344ba6a4763a0ac8288ec8f488f0af58163d9db74e5e7be95964ae8d` |
+| `apps/web/messages/zh-CN/admin.json` | `ebdf0316ea8b2bbef703b6a32f45af1042c3dc6b28bad0a69c8dc64586e6d779` |
+| `apps/web/messages/zh-TW/admin.json` | `aeef4895b703c7baadf4211d4604febe9ee343ee276ea0ba4593089c81601db9` |
 | `docs/videos/DESIGN.md` | `299449c6c19a40a0e17868615a7d8442771449e0db6e63186ca9c57a0d57ab41` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
+| `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
 | `docs/videos/README.md` | `928de9f2dcfbe7126654501e0dbc4339dea55f716f875e931ab2df0cae3e219d` |
 | `docs/videos/long-form/README.md` | `dd639c0c85595881d1bda64541d28f29e8d90f1067e541c08eb28dc9c4543c3b` |
 | `docs/videos/long-form/plans.json` | `22023c15fa10a24e4a0141e3fc5930ff6925a84ff5ab5cb5a466a5baa15b7108` |
 | `docs/videos/long-form/policy.json` | `6f08e7cd27b98710dc308bdb7ea44a6db4b1c8891d0731d5387d9b2245636bad` |
+| `docs/videos/series-plans/borrowed-dawn/authoring-contract.json` | `1c98acb9b2e75ec5cce793d5ebe5bb934791f52ac9c63f15babcb4fb577cc46c` |
+| `docs/videos/series-plans/borrowed-dawn/validate.mjs` | `cad0c421ea375c40f28093157b9749c1f7f95524d0f9a8d4ffa1978e61c1df04` |
 | `docs/videos/so-thats-why/README.md` | `00a0f0e5a56d7a492dec69263eab34668e0d334949878bd512b09edacaefd0de` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
+| `tools/video/assemble/assemble.test.mjs` | `4cac939fe1aa0186017a0c097f29aeceda1b4f585e2158afe2226c6a7057f3de` |
+| `tools/video/assemble/cli.mjs` | `f664b9e6703c933b2298f005af6efb93c0196eb69a8e08901f97db0b8f6bfc64` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
+| `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
+| `tools/video/automation/anime-write.test.mjs` | `67e53a0cf183c3175adac2ce28d8b2fef7792a408b6b49125345e129115e7d05` |
 | `tools/video/automation/automation.test.mjs` | `01e4992215d76cec6180b7b7fe54f6bac6f6e049f851cd4a08c05731dc06ec10` |
-| `tools/video/automation/flow.mjs` | `49c6067d72a2f2fd5aed556b05542fe001623d4fbeabac22d30c59faa473d8fd` |
-| `tools/video/automation/prompts.mjs` | `3cdaf3bf7632a44d8b41e95d9b14e647bbd29d3b23db41001a5f1c9d95647750` |
-| `tools/video/automation/series.test.mjs` | `3be69eb761380e614b7508a01873510b00ec4844ef4503b039b1a934163f4436` |
+| `tools/video/automation/discuss.mjs` | `691f6ec55bde0b1c34c54fd38f39681d50617035dab78b0d2c751266a61f43ee` |
+| `tools/video/automation/flow.mjs` | `aa27e8c5bf89d31d504b641d1996cc400d9660f5b5667a62d05ca4fa3a4d64d1` |
+| `tools/video/automation/prompts.mjs` | `370d745bc1937e8212c7970d1ebf2c32a609ffe5ec7250e46ef9392d1df030b3` |
+| `tools/video/automation/series.mjs` | `06fbcd8b8bb2e1eedc134d3f11eab4d1555d3c53039e4663f37a1e0d643e577d` |
+| `tools/video/automation/series.test.mjs` | `b8606bc1fa64716ef265c41f140f1b31b3eb86bc8c53f438cabb46354a7f27ca` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
-| `tools/video/core/drama.mjs` | `07698172f96e2456a3f63f7c79b4e02c26fb25a983e49b6bbb4c557bf640541c` |
-| `tools/video/core/duration.mjs` | `406c61d2211781ae571f952cb6239ee7c808f7f603a4be3ed5d61622bfe65d9a` |
-| `tools/video/core/duration.test.mjs` | `49290be2b3f58801532e225ecff8f8b9730746425e6527b50b0c03beee6adc94` |
+| `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
+| `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
+| `tools/video/core/approvals.mjs` | `d97e182fb942071e49cbd9fb64a35efcb327251048945c388fa8678c28065577` |
+| `tools/video/core/approvals.test.mjs` | `51c4a632685a36221dcaf6ac926d5256879c1540f709b708945770d9e5e6adaf` |
+| `tools/video/core/branding.mjs` | `aaad784dc23fe4bc1fc08c2871a5cd122ba483c500a07f128cb836dd8f05c8c7` |
+| `tools/video/core/branding.test.mjs` | `bebfeabcb0855bffc18f0334dd1a6206bb374552467edb036d999ca5398374cb` |
+| `tools/video/core/drama.mjs` | `482db7a95b8f23a25024761a4e347aa4ff66240405247323637bed2f81f6b8e3` |
+| `tools/video/core/drama.test.mjs` | `d61bdea38aba9d10e7e6ce52eec26b2649d40590ae68279097e397d51f3c56ee` |
+| `tools/video/core/duration.mjs` | `ea03a4c70e45c069b2b751038a91cbd4ae93790b6e5120d6eaebfedde285d138` |
+| `tools/video/core/duration.test.mjs` | `388bda7c57e548c2f50165a713e038e147645d283409c1f09393e8eef68652ba` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `34b2d059805ceceedd95f56881a13a30a7112e4dcc49864a58fbf7d57e309ed8` |
-| `tools/video/core/lint.test.mjs` | `0cc01210737ee6d3be68018602bd36789c223a6c746b29b5add73f5a3cf28225` |
+| `tools/video/core/lint.mjs` | `74bb8cf6952713f4a356cf1e58109cb7ed7a838e3825b4a913471578188b2af3` |
+| `tools/video/core/lint.test.mjs` | `41d812e5d8a089e92bcbc3f7c089a44ac14d9b73c33d9ac16bc94fc5baa4ca40` |
 | `tools/video/core/narration-locale.test.mjs` | `e42075ee53802451cb51ff3aa39252d358d3a9b8584f631c37f96d017c98eefc` |
-| `tools/video/core/schema.mjs` | `f535eb764454ba142dd8d871050c1161e76e8fbcce294f79a3952ef5f766cec3` |
+| `tools/video/core/schema.mjs` | `45cc51fd700af64f99f8a30eedc43240184fb82aa9e2cedef3ae0ce14b738882` |
+| `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
+| `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
 | `tools/video/core/stages.test.mjs` | `0a409f7a88234c1823146ea65092a95ceb12b69c34ccf1910894712f34859a2e` |
-| `tools/video/core/state.test.mjs` | `c6bf649c74215f9133f1f3fc40a22d61d12ec13e522c629001b53f0256796419` |
+| `tools/video/core/state.mjs` | `2b7ed5fc43229adda46c1bfe9c61dab679820d7d85cf16a8ccdf39d92f33fe82` |
+| `tools/video/core/state.test.mjs` | `fecb280b9f8f39cd00896652382587bfee203b82b73b2461ac4e0c3f1481e0b9` |
+| `tools/video/core/timeline.mjs` | `cce37cc821e8dfc5566abb32a86999a690f0ecb55f6608faf083e408c4e54c45` |
+| `tools/video/core/timeline.test.mjs` | `13c424a9ef87345168f9c3a407ff60543023792b887f2e215562a25741ab1a9a` |
 | `tools/video/dubs/captions-package.test.mjs` | `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` |
 | `tools/video/dubs/dubs.test.mjs` | `143f7bfa09d2a161c275186464ea2f27c55f37a1e9dc9d5e90dfab7ed69f373b` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
@@ -423,18 +572,24 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `tools/video/long-form/integration.test.mjs` | `aa69f38653fb7c6a7fd0c6daed93ccde1e031987e3169f6c8d9456f38c8b605c` |
 | `tools/video/long-form/plans.mjs` | `9680960509931642c679a9db9a3a1d6e419280558f9eb431358bfd1ee781e103` |
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
-| `tools/video/long-form/review.mjs` | `69fe791f0b3dd36a1d2070cd3ab1d371d70625d3a5228e90b42d5d48203525b8` |
+| `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
 | `tools/video/media/clips.test.mjs` | `adba34387121485e6c30a0c15a57c0e9e2c6ef573f00c9a83e4a09ba391c3764` |
 | `tools/video/media/look-keyframes.test.mjs` | `d4f5076aead1ca20c38e6cfaeabc82c7f00054ad98d79915cc5add8278649851` |
-| `tools/video/qa/checks.mjs` | `dc99682b29b674cfedc12ca67c8809e23c1d99d5635a1cd79970a8180d21cc83` |
+| `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
+| `tools/video/package/package.test.mjs` | `05814a6fc0191d1b91fb209b12bd90293787dae24eb71c9fc32ea115646bbd4f` |
+| `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
+| `tools/video/production/anime-input.test.mjs` | `a76dba6c2acaa1c9ddcfe55bb9ea784ba3d95e2a902b0ba3a304ca0625edc3b9` |
+| `tools/video/qa/checks.mjs` | `0c13be6eb906f9a322eab71dd18974a2cfa3f9d9b27cc5a9cba9f3570891567b` |
 | `tools/video/qa/checks.test.mjs` | `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` |
-| `tools/video/qa/cli.mjs` | `ab335eec44017a44ee35407e3710a700c1c3f7caed0fb6092637d29af1a31713` |
-| `tools/video/qa/duration.test.mjs` | `43ed1cc2a7dc76ebbeeed38657492af76b38ce113187c6dd938070a4afcf3884` |
+| `tools/video/qa/cli.mjs` | `12491358d52d12f90d90d4024746c98a11910b330b3a5120ca8e84f44d8fcefa` |
+| `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
 | `tools/video/qa/qa.test.mjs` | `4ea9fb9101646bc609543125e4132f4743fed2118a34f48df9a4c82716a124a1` |
-| `tools/video/review/sync.test.mjs` | `99d0fee64c251daf973cb52191e8fd4d830e9db85d6e1a32c14c22f788eca07e` |
+| `tools/video/review/sync.mjs` | `8c9e0de103d03fbf705b7c715cf2bcc0321e2d178c7592754d1f3988102c48be` |
+| `tools/video/review/sync.test.mjs` | `aaaaeab0cecee5dece4ca077ff423d14b69a33627d8d41d7285c2643ad3373e7` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
 | `tools/video/tts/check.test.mjs` | `ad385d7df22fd297588dfef8a72b0b3f6261d0fb4619e4c538a30ef8464b1477` |
-| `tools/video/tts/tts.test.mjs` | `3d8284ec804d93a110551b5ec47d4599e3c9c242e76c441578f3f754ceb030c2` |
+| `tools/video/tts/synthesis.mjs` | `0081296cca9114ec528d8581f29fa553e2b5657a347988bf5b789e5eed2b6680` |
+| `tools/video/tts/tts.test.mjs` | `8b6899f205dc8cfa3c65d84050cf8042b76694345d5f22f954e805b5819ff239` |

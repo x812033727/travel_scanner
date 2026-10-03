@@ -13,6 +13,8 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
+import { hasAnimePolicy, isLongAnime, requireAnimePolicy } from "../core/anime-policy.mjs";
+import { writeAnimeActs } from "./anime-write.mjs";
 import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { EXPLAINER_PRESET, illustrated, SLIDES_PRESET } from "../core/drama.mjs";
@@ -339,6 +341,7 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     settled.format = "drama";
     const preset = stylePreset ?? drama.style_preset ?? "cinematic-3d";
     settled.look = { preset, ...(video.look ?? {}) };
+    if (isLongAnime(series)) settled.look.preset = "anime-2d";
     if (preset === EXPLAINER_PRESET) {
       settled.look.preset = EXPLAINER_PRESET;
       settled.characters = [];
@@ -368,6 +371,20 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     settled.series = { slug: series.slug, episode: series.episode, chapter: series.chapter };
     const book = new Map((cast ?? []).map((character) => [character.id, character]));
     settled.characters = settled.look?.preset === EXPLAINER_PRESET ? [] : (video.characters ?? []).map((character) => book.get(character?.id) ?? character).sort((a, b) => (a?.id < b?.id ? -1 : a?.id > b?.id ? 1 : 0));
+  }
+  // Production authority comes from the approved request, never model-generated metadata.
+  if (hasAnimePolicy(series)) {
+    const runtime = requireAnimePolicy(series);
+    settled.production_policy = series.production_policy;
+    settled.runtime_spec = { ...runtime };
+    settled.category = "anime";
+    settled.target_minutes = [runtime.body_target_seconds / 60, runtime.body_target_seconds / 60];
+    settled.look = { ...settled.look, preset: "anime-2d" };
+    settled.series = { slug: series.slug, episode: series.episode, chapter: series.chapter, kind: "series", genre: "custom", lead: "ensemble", planned_episodes: series.planned_episodes, open_ended: series.open_ended, closed_ending: series.closed_ending };
+    delete settled.compilation;
+  } else {
+    delete settled.production_policy;
+    delete settled.runtime_spec;
   }
   return settled;
 }
@@ -421,6 +438,7 @@ async function report(ctx, api, state, stage) {
     youtube_video_id: videoId,
     ...(guide ? { source_guide: guide } : {}),
     ...(category ? { category } : {}),
+    ...(hasAnimePolicy(state) ? { production_policy: state.production_policy, runtime_spec: state.runtime_spec } : {}),
     ...(state.series ? { series_slug: state.series.slug, ...(Number.isInteger(state.series.episode) ? { episode_number: state.series.episode } : {}) } : {}),
     ...(state.retry_request_id ? { retry_acknowledged_id: state.retry_request_id } : {}),
   });
@@ -987,6 +1005,8 @@ export class Automation {
    */
   async draftEpisode(request, context, episode) {
     const series = context.series;
+    if (series.planning_only) throw new AutomationError("planning-only series cannot be drafted", { code: OUTPUT_INVALID });
+    const animeRuntime = hasAnimePolicy(series) ? requireAnimePolicy(series) : null;
     const slug = request.slug;
     // A one-off's story bible stands where the setting book does (docs/videos/DRAMA-FLOW.md,
     // section 2): the site hands it over as "setting", and its one outline is the episode's beats.
@@ -1006,7 +1026,8 @@ export class Automation {
       request_id: request.id,
       premise: request.premise,
       style_preset: series.style_preset ?? null,
-      target_minutes: episodeMinutes(request.target_minutes ?? series.target_minutes, series.style_preset),
+      target_minutes: animeRuntime ? animeRuntime.body_target_seconds / 60 : episodeMinutes(request.target_minutes ?? series.target_minutes, series.style_preset),
+      ...(animeRuntime ? { category: "anime", production_policy: series.production_policy, runtime_spec: { ...animeRuntime } } : {}),
       source_guide: request.source_guide ?? null,
       // The binge fields (docs/videos/BINGE.md) travel with a series' episode: the genre section
       // of every prompt, the visual tier lint holds the script to, whether the gates are
@@ -1015,6 +1036,7 @@ export class Automation {
         slug: series.slug,
         episode: episode.number,
         chapter: episode.chapter_number,
+        ...(animeRuntime ? { kind: "series", category: "anime", production_policy: series.production_policy, runtime_spec: { ...animeRuntime }, style_preset: "anime-2d", target_minutes: animeRuntime.body_target_seconds / 60, planned_episodes: series.planned_episodes, open_ended: series.open_ended, closed_ending: beats.closed_ending === true } : {}),
         ...(oneOff
           ? { kind: "one-off" }
           : {
@@ -1056,9 +1078,10 @@ export class Automation {
       mysteries: context.mysteries ?? [],
       setting_md: context.setting?.body_md ?? "",
       chapter_md: context.chapter?.body_md ?? "",
-      series: { title: series.title, premise: series.premise, tone: series.tone, aspects: series.aspects, note: series.note, style_preset: series.style_preset, open_ended: series.open_ended, genre: series.genre ?? "xianxia-bonds", lead: series.lead ?? "dual-male", visual_tier: visualTier, compilation: Boolean(series.compilation), hands_off: Boolean(series.hands_off), total_minutes: series.total_minutes ?? null },
+      series: { ...(animeRuntime ? { kind: "series", category: "anime", production_policy: series.production_policy, runtime_spec: { ...animeRuntime }, target_minutes: animeRuntime.body_target_seconds / 60, planned_episodes: series.planned_episodes, closed_ending: beats.closed_ending === true } : {}), title: series.title, premise: series.premise, tone: series.tone, aspects: series.aspects, note: series.note, style_preset: series.style_preset, open_ended: series.open_ended, genre: series.genre ?? "xianxia-bonds", lead: series.lead ?? "dual-male", visual_tier: visualTier, compilation: Boolean(series.compilation), hands_off: Boolean(series.hands_off), total_minutes: series.total_minutes ?? null },
       visual_tier: visualTier,
       compilation: Boolean(series.compilation),
+      ...(animeRuntime ? { ...state.series, category: "anime", production_policy: series.production_policy, runtime_spec: { ...animeRuntime } } : {}),
     }, null, 2)}\n`);
     writeFileSync(path.join(dir, "brief.md"), episodeBrief(series, episode, cast, beats));
     const workdir = this.workdir(slug);
@@ -1090,7 +1113,7 @@ export class Automation {
       return this.verify(state);
     }
     const file = writeScreenplay(dir, video);
-    if (this.settings.drama?.series_script_gate === false) {
+    if (!hasAnimePolicy(state) && this.settings.drama?.series_script_gate === false) {
       await approve({ gate: "script", docDir: dir, workdir: this.workdir(state.slug), now: this.ctx.now(), note: "「劇本先給我看」關著，依設定自動核准" });
       return `${state.slug}: screenplay approved by the settings (劇本先給我看 is off)`;
     }
@@ -1122,7 +1145,8 @@ export class Automation {
     if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${by} sent the screenplay back ${rounds + 1} times: ${note}`);
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind: "script", targets: [], problems: [note], owner_note: note }, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const fix = { kind: "script", targets: [], problems: [note], owner_note: note };
+    const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `script-fix-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     state.prompt_fixes = { ...(state.prompt_fixes ?? {}), script: rounds + 1 };
     state.notes.push(`script sent back by ${by}: ${note}`);
@@ -1185,6 +1209,10 @@ export class Automation {
     const { ctx } = this;
     const workdir = this.workdir(state.slug);
     const dir = docDir(state.slug, ctx.root);
+    // Native silent actions are part of the reviewed story. Refresh their readable artifact
+    // before computing gates so a changed action cannot reach another paid media stage.
+    const animeScript = path.join(dir, "video.json");
+    if (isLongAnime(state) && existsSync(animeScript)) writeScreenplay(dir, JSON.parse(readFileSync(animeScript, "utf8")));
     const status = await pipelineStatus({ slug: state.slug, root: ctx.root, workdir });
     const next = status.next?.id;
 
@@ -1233,7 +1261,7 @@ export class Automation {
       // it); an episode already past the gate when the worker learned to bind its reports has an
       // approved screenplay and perhaps paid media, and a checker's rewrite would undo both.
       const gateAhead = status.steps.some((step) => step.id === "script approved" && !step.done);
-      const spared = scriptCheckUnbound(check) && !gateAhead;
+      const spared = !hasAnimePolicy(state) && scriptCheckUnbound(check) && !gateAhead;
       if (!spared && !scriptCheckMatches(check, video)) state.verified = false;
     }
     // status only knows that verify-1.md exists; the rounds and the listener edit are ours.
@@ -1339,7 +1367,7 @@ export class Automation {
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
     const drama = state.format === "drama";
     const { topics } = drama ? { topics: [] } : await this.api.topics();
-    if (drama) state.target_minutes = episodeMinutes(state.target_minutes, state.style_preset);
+    if (drama) state.target_minutes = hasAnimePolicy(state) ? requireAnimePolicy(state.series).body_target_seconds / 60 : episodeMinutes(state.target_minutes, state.style_preset);
     const extra = drama ? { premise: state.premise, target_minutes: [state.target_minutes, state.target_minutes], source_guide: state.source_guide, ...this.dramaPayload(state) } : { topics };
     const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format, drama ? this.variantOf(state) : null);
     const problem = planProblem({ ...answer, slug: state.slug }, taken, drama && state.source_guide ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null);
@@ -1359,13 +1387,14 @@ export class Automation {
     const refs = this.reference();
     const lexicon = readJson(lexiconFile(this.ctx.root), { terms: {} });
     const drama = state.format === "drama";
-    if (drama) state.target_minutes = episodeMinutes(state.target_minutes, state.style_preset);
+    if (drama) state.target_minutes = hasAnimePolicy(state) ? requireAnimePolicy(state.series).body_target_seconds / 60 : episodeMinutes(state.target_minutes, state.style_preset);
     return {
       today: today(this.ctx),
       slug: state.slug,
       voice: settingsFor(this.settings, state.format).voice,
       source_guide: state.source_guide,
       target_minutes: drama ? [state.target_minutes, state.target_minutes] : slidesMinutes(this.settings),
+      ...(hasAnimePolicy(state) ? { category: "anime", production_policy: state.production_policy, runtime_spec: state.runtime_spec } : {}),
       lexicon: Object.keys(lexicon.terms),
       script_writing: refs.script_writing,
       channel: refs.channel,
@@ -1389,7 +1418,7 @@ export class Automation {
       ? (info.setting_md ?? "").replace(/<!-- BEGIN GENERATED PRODUCTION DIRECTION -->[\s\S]*?<!-- END GENERATED PRODUCTION DIRECTION -->/g, "")
       : info.setting_md ?? "";
     return {
-      series: { ...(info.series ?? {}), slug: state.series.slug, episode: state.series.episode, chapter: state.series.chapter, title_of_episode: info.title, logline: info.logline },
+      series: { ...(info.series ?? {}), ...(hasAnimePolicy(state) ? state.series : {}), slug: state.series.slug, episode: state.series.episode, chapter: state.series.chapter, title_of_episode: info.title, logline: info.logline },
       series_reference: this.reference().series,
       cast: info.characters ?? [],
       ...(info.production ? { production: info.production } : {}),
@@ -1411,6 +1440,18 @@ export class Automation {
     // The storytelling register's pause beats are the tool's (register.mjs setPauseBeats): set on
     // every save of a script whose prompts carry the register, before lint, whichever stage wrote it.
     return this.usesRegister(state) ? setPauseBeats(settledVideo) : settledVideo;
+  }
+
+  /** Rewrite/generate a long anime through durable bounded acts, including repairs and listening. */
+  async animeRewrite(state, extra, existingVideo = null, stage = "writer", operation = "write") {
+    const source = this.scriptPayload(state, extra);
+    delete source.video;
+    delete source.line_ids;
+    return writeAnimeActs({
+      workdir: this.workdir(state.slug), source, existingVideo, operation,
+      freshIds: (count, taken) => this.freshIds(state, { scenes: [{ lines: [...taken].map((id) => ({ id })) }] }, count),
+      stage: (payload, maxTokens) => this.stage(stage, state.slug, payload, maxTokens, "drama", "anime-act", state.series),
+    });
   }
 
   /** Whether a video's planner, writer and listener read REGISTER_RULES (prompts.mjs INSTRUCTIONS): a slides video without a variant. */
@@ -1442,10 +1483,13 @@ export class Automation {
       const added = mergeLexicon(this.ctx.root, current.lexicon_additions);
       if (added.length) state.lexicon_added = [...new Set([...(state.lexicon_added ?? []), ...added])];
       const errors = lintErrors(this.ctx, state.slug);
-      if (!errors.length) return null;
+      if (!errors.length) {
+        if (isLongAnime(state)) writeScreenplay(dir, JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8")));
+        return null;
+      }
       if (fix >= MAX_LINT_FIXES) return `lint still fails after ${MAX_LINT_FIXES} fixes: ${errors.slice(0, 3).join("; ")}`;
       const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-      current = await this.stage("writer", state.slug, this.scriptPayload(state, { video, lint_errors: errors, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+      current = isLongAnime(state) ? await this.animeRewrite(state, { lint_errors: errors }, video, "writer", `lint-${fix + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, lint_errors: errors, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     }
   }
 
@@ -1500,7 +1544,8 @@ export class Automation {
     if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`);
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote }, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format ?? "drama", this.variantOf(state), state.series ?? null);
+    const fix = { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote };
+    const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `prompt-${kind}-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format ?? "drama", this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     if (problem) return this.retryLater(state, "writer", `the ${kind} fix ${problem}`);
     this.cleared(state, "writer");
@@ -1575,7 +1620,7 @@ export class Automation {
   }
 
   async write(state) {
-    if (state.format === "drama") state.target_minutes = episodeMinutes(state.target_minutes, state.style_preset);
+    if (state.format === "drama") state.target_minutes = hasAnimePolicy(state) ? requireAnimePolicy(state.series).body_target_seconds / 60 : episodeMinutes(state.target_minutes, state.style_preset);
     const dir = docDir(state.slug, this.ctx.root);
     if (existsSync(path.join(dir, "video.json"))) {
       // A draft exists and only fails lint: fix it rather than write a new one.
@@ -1586,7 +1631,7 @@ export class Automation {
     const brief = readFileSync(path.join(dir, "brief.md"), "utf8");
     const option = outlineOptions(brief).find((each) => each.key === state.chosen) ?? null;
     const sources = await readSources(this.read, siteSources(state.source_guide, state.source_urls, this.ctx.root));
-    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const answer = isLongAnime(state) ? await this.animeRewrite(state, { brief, chosen_option: option, sources }) : await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
     const problem = await this.saveAndLint(state, answer);
     saveState(this.workdir(state.slug), state);
@@ -1626,7 +1671,8 @@ export class Automation {
     const round = state.verify_rounds + 1;
     const urls = siteSources(null, [...urlsIn(claims), ...(video.sources ?? []).map((source) => source.url), ...(state.source_urls ?? [])], this.ctx.root);
     const sources = await readSources(this.read, urls);
-    const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.series ? this.seriesPayload(state) : {}) }, isLongAnime(state) ? 8_000 : 32_000, state.format, this.variantOf(state), state.series ?? null);
+    if (isLongAnime(state) && answer.video) return this.retryLater(state, "verifier", "long-anime verification must return findings, not a whole-script rewrite");
     if (typeof answer.report !== "string") return this.retryLater(state, "verifier", `fact-check round ${round} returned no report`);
     writeFileSync(path.join(dir, `verify-${round}.md`), answer.report.endsWith("\n") ? answer.report : `${answer.report}\n`);
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
@@ -1647,7 +1693,7 @@ export class Automation {
       }
       const reviewDir = path.join(this.workdir(state.slug), "review");
       mkdirSync(reviewDir, { recursive: true });
-      atomicWrite(path.join(reviewDir, "script-check.json"), `${JSON.stringify({ ...scriptCheckBinding(saved), round, coverage: answer.coverage ?? null, problems: Array.isArray(answer.problems) ? answer.problems : [], similar_works: Array.isArray(answer.similar_works) ? answer.similar_works : [], retention: retentionNumbers(saved, answer.retention) }, null, 2)}\n`);
+      atomicWrite(path.join(reviewDir, "script-check.json"), `${JSON.stringify({ ...scriptCheckBinding(saved), round, coverage: answer.coverage ?? null, problems: Array.isArray(answer.problems) ? answer.problems : [], similar_works: Array.isArray(answer.similar_works) ? answer.similar_works : [], ...(isLongAnime(state) ? { continuity_problems: Array.isArray(answer.continuity_problems) ? answer.continuity_problems : ["checker omitted continuity_problems"] } : {}), retention: retentionNumbers(saved, answer.retention) }, null, 2)}\n`);
     }
     state.verified = changed <= 3 || round >= settingsFor(this.settings, state.format).verifyRounds;
     this.cleared(state, "verifier");
@@ -1661,7 +1707,8 @@ export class Automation {
     // A drama's listener reads the format alone, as before; a slides video's carries the variant
     // (the storytelling register of docs/videos/ILLUSTRATED.md rides on it).
     const variant = state.format === "drama" ? null : this.variantOf(state);
-    const answer = await this.stage("listener", state.slug, { video, script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(state.series ? this.seriesPayload(state) : {}), ...(note ? { owner_note: note } : {}) }, 32_000, state.format, variant);
+    const listenPayload = { script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(note ? { owner_note: note } : {}) };
+    const answer = isLongAnime(state) ? await this.animeRewrite(state, listenPayload, video, "listener", "listen") : await this.stage("listener", state.slug, { video, ...listenPayload, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, variant);
     const problem = await this.saveAndLint(state, answer);
     const saved = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     if (!scriptCheckMatches(scriptCheckBinding(video), saved)) state.verified = false;
@@ -1847,7 +1894,8 @@ export class Automation {
     const round = (state.rewrites ?? 0) + 1;
     const lexicon = readJson(lexiconFile(ctx.root), emptyLexicon());
     const payload = { lines: flagged, lexicon: Object.keys(lexicon.terms), round, ...(previousProblems.length ? { previous_problems: previousProblems } : {}) };
-    const answer = await this.stage("listener", state.slug, payload, 16_000, state.format, "rewrite");
+    const revised = isLongAnime(state) ? await this.animeRewrite(state, { ...payload, rewrite_lines: flagged }, video, "listener", `audio-rewrite-${round}`) : null;
+    const answer = revised ? { lines: [...eachLine(revised.video)].filter(({ line }) => flagged.some((entry) => entry.id === line.id)).map(({ line }) => ({ id: line.id, text: spokenText(line) })) } : await this.stage("listener", state.slug, payload, 16_000, state.format, "rewrite");
     if (!Array.isArray(answer?.lines)) return { stopped: await this.retryLater(state, "listener", `rewrite round ${round} answered without a lines array`) };
     this.cleared(state, "listener");
     const accepted = [];

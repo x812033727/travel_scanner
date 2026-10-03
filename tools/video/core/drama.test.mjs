@@ -43,6 +43,125 @@ import { estimateTimeline, speechHash, visualHash } from "./timeline.mjs";
 const paths = (errors) => errors.map((error) => error.path).sort();
 const context = (overrides = {}) => ({ lexicon: fixtureLexicon(), brief: dramaBrief(), others: [], translations: {}, ...overrides });
 
+function longAnimeEpisode() {
+  const doc = dramaFixture();
+  doc.slug = "borrowed-dawn-production-e001";
+  doc.category = "anime";
+  doc.look = { preset: "anime-2d" };
+  doc.target_minutes = [22, 22];
+  doc.production_policy = "long-anime-v1";
+  doc.runtime_spec = { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 };
+  doc.series = { slug: "borrowed-dawn-production", episode: 1, chapter: 1, kind: "series", genre: "custom", lead: "ensemble", planned_episodes: 120, open_ended: false, closed_ending: false };
+  for (const scene of doc.scenes) delete scene.data.fit;
+  return doc;
+}
+
+test("a native long-anime video keeps its policy at the root and its declared series identity", () => {
+  assert.deepEqual(validateVideo(longAnimeEpisode()), []);
+  for (const [change, expected] of [
+    [(doc) => { delete doc.series; }, /kind.*series|genre.*custom|lead.*ensemble/],
+    [(doc) => { doc.category = "drama"; }, /category must be anime/],
+    [(doc) => { doc.look.preset = "cinematic-3d"; }, /style preset must be anime-2d/],
+    [(doc) => { doc.series.kind = "story"; }, /kind must be series/],
+    [(doc) => { doc.series.genre = "urban-return"; }, /genre must be custom/],
+    [(doc) => { doc.series.lead = "male"; }, /lead must be ensemble/],
+    [(doc) => { doc.target_minutes = [21, 23]; }, /target_minutes must match/],
+    [(doc) => { doc.production_policy = "long-anime-v2"; }, /production_policy must be long-anime-v1/],
+    [(doc) => { delete doc.runtime_spec; }, /runtime_spec must be an object/],
+    [(doc) => { delete doc.production_policy; }, /production_policy must be long-anime-v1/],
+  ]) {
+    const doc = longAnimeEpisode();
+    change(doc);
+    assert.match(validateVideo(doc).map((error) => error.message).join("\n"), expected);
+  }
+});
+
+test("anime category alone does not enable a body longer than eight minutes", () => {
+  const doc = dramaFixture();
+  doc.category = "anime";
+  doc.look = { preset: "anime-2d" };
+  doc.target_minutes = [1, 8];
+  assert.deepEqual(validateVideo(doc), [], "existing short drama remains structurally valid with the anime category");
+  doc.target_minutes = [22, 22];
+  assert.ok(validateVideo(doc).some((error) => error.path === "production_policy" && /explicit long-anime/.test(error.message)));
+});
+
+test("silent long-anime action shots accept the one- and eight-second bounds without invented dialogue", () => {
+  for (const seconds of [1, 8]) {
+    const doc = longAnimeEpisode();
+    doc.scenes[1].action_seconds = seconds;
+    doc.scenes[1].lines = [];
+    doc.scenes[1].data.prompt = "medium shot of a worker lifting a heavy valve handle with both hands";
+    doc.scenes[1].data.motion = "the worker lifts the handle, takes its weight and lowers it into the bracket";
+    assert.deepEqual(validateVideo(doc), []);
+    const timeline = estimateTimeline(doc);
+    const shot = timeline.scenes.find((scene) => scene.id === doc.scenes[1].id);
+    assert.equal(shot.end_frame - shot.start_frame, seconds * 30);
+    assert.ok(!timeline.lines.some((line) => line.scene === doc.scenes[1].id));
+  }
+});
+
+test("timed action refuses out-of-range seconds, dialogue, absent direction and an ordinary drama", () => {
+  const base = longAnimeEpisode();
+  base.scenes[1].action_seconds = 4;
+  base.scenes[1].lines = [];
+  for (const seconds of [0, 9, -1, 1.5, "4", null]) {
+    const doc = structuredClone(base);
+    doc.scenes[1].action_seconds = seconds;
+    assert.ok(validateVideo(doc).some((error) => error.path === "scenes[1].action_seconds" && /integer from 1 to 8/.test(error.message)), String(seconds));
+  }
+  for (const [change, expected] of [
+    [(doc) => { doc.scenes[1].lines = [{ id: "act1", text: "還有一句對白。", speaker: "jingwei" }]; }, /empty lines array/],
+    [(doc) => { delete doc.scenes[1].lines; }, /empty lines array|non-empty array/],
+    [(doc) => { delete doc.scenes[1].data.motion; }, /visible-action prompt and motion/],
+    [(doc) => { doc.scenes[1].data.motion = "  "; }, /visible-action prompt and motion/],
+    [(doc) => { doc.scenes[1].data.prompt = ""; }, /visible-action prompt and motion/],
+    [(doc) => { doc.scenes[1].template = "title"; }, /directed shot/],
+    [(doc) => { delete doc.production_policy; delete doc.runtime_spec; }, /complete long-anime production policy/],
+  ]) {
+    const doc = structuredClone(base);
+    change(doc);
+    assert.match(validateVideo(doc).map((error) => error.message).join("\n"), expected);
+  }
+  const ordinary = dramaFixture();
+  ordinary.scenes[1].action_seconds = 4;
+  ordinary.scenes[1].lines = [];
+  assert.ok(validateVideo(ordinary).some((error) => error.path === "scenes[1].action_seconds" && /complete long-anime/.test(error.message)));
+  assert.ok(validateVideo(ordinary).some((error) => error.path === "scenes[1].lines"));
+});
+
+test("only the declared last episode of a closed anime may declare closure", () => {
+  const final = longAnimeEpisode();
+  final.series.episode = 120;
+  final.series.chapter = 10;
+  final.series.closed_ending = true;
+  assert.deepEqual(validateVideo(final), []);
+  for (const [change, expected] of [
+    [(doc) => { doc.series.episode = 119; }, /only the declared final episode/],
+    [(doc) => { doc.series.open_ended = true; }, /only the declared final episode/],
+    [(doc) => { doc.series.closed_ending = false; }, /must deliver its approved closed ending/],
+    [(doc) => { delete doc.series.closed_ending; }, /boolean declaration|must deliver/],
+    [(doc) => { doc.series.open_ended = "false"; }, /boolean declaration/],
+    [(doc) => { doc.series.planned_episodes = 119; }, /positive episode count/],
+    [(doc) => { doc.series.planned_episodes = 0; }, /positive episode count/],
+  ]) {
+    const doc = structuredClone(final);
+    change(doc);
+    assert.match(validateVideo(doc).map((error) => error.message).join("\n"), expected);
+  }
+});
+
+test("long anime rejects freeze and slow fitting while ordinary drama retains both", () => {
+  for (const fit of ["freeze", "slow"]) {
+    const anime = longAnimeEpisode();
+    anime.scenes[1].data.fit = fit;
+    assert.ok(validateVideo(anime).some((error) => error.path === "scenes[1].data.fit" && /frozen tails or slowed clips/.test(error.message)));
+    const ordinary = dramaFixture();
+    ordinary.scenes[1].data.fit = fit;
+    assert.deepEqual(validateVideo(ordinary), []);
+  }
+});
+
 test("the drama example is valid and lints clean", () => {
   assert.deepEqual(validateVideo(dramaFixture()), []);
   const result = lintVideo(dramaFixture(), context());

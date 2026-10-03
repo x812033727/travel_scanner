@@ -9,6 +9,7 @@
 // side's bindings undefined at load time.
 import { createHash } from "node:crypto";
 import { substitutions, termPattern } from "./lexicon.mjs";
+import { isLongAnime } from "./anime-policy.mjs";
 
 export const DRAMA_FORMAT = "drama";
 const FPS = 30;
@@ -111,6 +112,7 @@ const SFX_KEYS = new Set(["set", "gain_db"]);
 export const SFX_SET = /^[a-z0-9][a-z0-9._-]{0,63}$/;
 export const DEFAULT_SFX = { gain_db: -12 };
 const SERIES_KEYS = new Set(["slug", "episode", "chapter"]);
+const ANIME_SERIES_KEYS = new Set([...SERIES_KEYS, "kind", "genre", "lead", "planned_episodes", "open_ended", "closed_ending"]);
 
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
@@ -359,15 +361,24 @@ function validateSubtitles(subtitles, errors) {
  * schema.mjs's voice check, passed in to avoid an import cycle.
  */
 /** `series`: which series and episode this video is, so the cast and the sheets are shared. */
-function validateSeries(series, errors) {
+function validateSeries(series, errors, anime = false) {
   if (!isObject(series)) {
     errors.push({ path: "series", message: "must be an object { slug, episode, chapter }" });
     return;
   }
-  unknownKeys(series, SERIES_KEYS, "series", errors);
+  unknownKeys(series, anime ? ANIME_SERIES_KEYS : SERIES_KEYS, "series", errors);
   if (typeof series.slug !== "string" || !SERIES_SLUG.test(series.slug)) errors.push({ path: "series.slug", message: "must be the series' slug: lowercase letters, digits and hyphens" });
   for (const key of ["episode", "chapter"]) {
     if (!Number.isInteger(series[key]) || series[key] < 1) errors.push({ path: `series.${key}`, message: "must be a positive integer" });
+  }
+  if (anime) {
+    if (!Number.isSafeInteger(series.planned_episodes) || series.planned_episodes < 1 || series.episode > series.planned_episodes) errors.push({ path: "series.planned_episodes", message: "must declare a positive episode count that includes this episode" });
+    for (const key of ["open_ended", "closed_ending"]) {
+      if (typeof series[key] !== "boolean") errors.push({ path: `series.${key}`, message: "must be the approved series or episode's boolean declaration" });
+    }
+    const final = series.open_ended === false && series.episode === series.planned_episodes;
+    if (series.closed_ending === true && !final) errors.push({ path: "series.closed_ending", message: "only the declared final episode of a closed series can use a closed ending" });
+    if (final && series.closed_ending !== true) errors.push({ path: "series.closed_ending", message: "the declared final episode of a closed series must deliver its approved closed ending" });
   }
 }
 
@@ -400,7 +411,7 @@ export function validateDrama(doc, errors, validateVoice) {
   const cards = explainer ? EXPLAINER_CARD_TEMPLATES : CARD_TEMPLATES;
   if (explainer && characterIds.size) errors.push({ path: "characters", message: `an explainer (look preset "${EXPLAINER_PRESET}") has no characters: the narrator tells it` });
   if (drama && doc.series !== undefined) {
-    validateSeries(doc.series, errors);
+    validateSeries(doc.series, errors, isLongAnime(doc));
     // An episode lists its cast by id, so lookHash changes only when the cast itself changes
     // and the series' character sheets are reused (docs/videos/SERIES.md).
     const ids = Array.isArray(doc.characters) ? doc.characters.map((character) => character?.id).filter((id) => typeof id === "string") : [];
@@ -416,6 +427,7 @@ export function validateDrama(doc, errors, validateVoice) {
     if (shot) {
       shots += 1;
       validateShotData(scene.data, `${where}.data`, characterIds, earlierShots, errors);
+      if (isLongAnime(doc) && ["freeze", "slow"].includes(scene.data?.fit)) errors.push({ path: `${where}.data.fit`, message: "long-anime story duration cannot be supplied by frozen tails or slowed clips" });
       if (isObject(scene.data) && scene.data.character_looks !== undefined) {
         const selected = scene.data.character_looks;
         if (!drama || !isObject(selected)) errors.push({ path: `${where}.data.character_looks`, message: "must map a drama shot's character ids to their named shot_looks" });
