@@ -8,16 +8,12 @@
 
 - 這是廠商創的詞，有前例：系列裡的 Agent Skills 也是。規則是講清楚「這是誰的說法」。
 - 至少三家用同一個概念：Cloudflare、Liquid AI 叫「決策模型」，Together 叫「類似 Jev 的分類器」；Hugging Face 上也有開放權重的模型自稱 "System 1 decision model"。
-- 上一輪先做了「校準（Calibration）」的企劃，那是誤讀了要求。它仍是一個合理的名詞，要不要做由站主決定（見下面第 2 項），它的兩張票已設成 `blocked`。
+- 上一輪先做了「校準（Calibration）」的企劃，那是誤讀了要求；站主決定放棄，見下面第 2 項。
 
 ## 站主要決定的事
 
-1. **跟 P1 試片票 `2026-09-29-video-pilot-jev-decision-model` 怎麼分工**。那張票做的是同一篇發表文的獨立說書影片，題目「爆紅的 Jev 不聊天只做決定：快 200 倍、便宜 400 倍是真的嗎？」，要查核價格、193.6×／444.6×、RLCD、創辦人。這些正是本系列不講的東西。三個選擇：
-   - **併入（建議）**：這集取代那支產品片，試片票改寫或結案。同一家廠商的片只剩一支，最不像業配；代價是失去跟參考片 `2mtn-Qp59y4` 逐點同題的比較。
-   - 分題：這集只講名詞，試片改查「數字是真的嗎」。三支片圍著站上付費使用的同一家廠商，最像業配。
-   - 只做試片：不出這集，違反這次的要求。
-   這個 session 不能改那張票（只能寫自己認領的票），而且它的依賴已經完成，`npm run tasks -- next` 現在就可能把它發出去，所以要盡快決定。
-2. **校準那一集**：`docs/videos/ai-term-calibration/` 的企劃與兩張票（`2026-10-03-ai-term-calibration-article`、`2026-10-03-ai-term-calibration-video`）要保留成另一集，還是放棄。保留就把兩張票改回 `open`；這集不再口頭指向它。
+1. **跟 P1 試片票的分工：已決定，併入（站主 2026-10-03）。** 試片票 `2026-09-29-video-pilot-jev-decision-model` 已結案，不另做產品片。它的試片角色、驗收標準、`ILLUSTRATED.md` 數字表、跟參考片 `2mtn-Qp59y4` 的並排觀察（改成同題材不同角度）、10 支舊片的決定，都搬進製作票 `2026-10-03-ai-term-system-one-model-video`。價格、193.6×／444.6×、RLCD、創辦人、「爆紅」標題照系列規則不做。
+2. **校準那一集：已決定，放棄（站主 2026-10-03）。** `docs/videos/ai-term-calibration/` 與它的兩張票已刪除，紀錄留在 `tasks/done/2026-10-03-ai-terms-episode-calibration-plan.md`。
 3. **公開客戶關係**。TypeSafe 的客戶合約（https://typesafe.ai/legal/mca ，頁面註明 Last updated Sep 23, 2026，2026-10-03 開過）§16.4 原文："Nothing in this Agreement grants either Party the right to use the name, brand, or logo of the other Party, and neither Party may publicly announce that the Parties have entered into the Agreement, except with the other Party’s prior consent or as required by Laws; provided, however, that TypeSafe may use the name, brand, or logo of Customer … on TypeSafe’s website or in other promotional materials …"。§16.5 規定同意要書面。以下只是條文字面，不是法律意見：
    - 不需要同意：講 TypeSafe 公開的名詞與產品、引用時掛名；說這支影片不是業配、TypeSafe 沒有付錢也沒有參與。
    - 字面上需要事先書面同意：說出或露出 Mokaair 是 TypeSafe 的付費客戶、站上的新聞和旁白檢查用它，包括第 4 章的實跑和第 5 章的生產紀錄。
@@ -30,7 +26,7 @@
 8. **第 5 章說到哪裡**。照實說會公開三件事：新聞發布關卡讓它直接判斷中文、發布門檻是手動調的、旁白零標記就自動核准。要照實說，還是先改程式再播。
 9. **頻道立場的條號**。repo 寫立場還是空白，但 2026-10-02 Jev 已經用立場挑過一支的大綱（`docs/videos/sothatswhy-t27/production-record.md:11`），所以後台應該存了立場，條號未知。寫稿當天看後台：條號對得上就把站主觀點第一行改成 `套用立場：N、M`；系列提案第 8、9 條要不要存進去也一起決定。
 10. **先寫文章**。票 `2026-10-03-ai-term-system-one-model-article`；也要決定這篇要不要進 `docs/ai-terms-series/catalogue.json` 和總索引。
-11. **名詞庫那一列**：category 用 `foundation` 還是 `training`；tier 2 要不要插隊；跟校準那一列的先後。
+11. **名詞庫那一列**：category 用 `foundation` 還是 `training`；tier 2 要不要插隊。
 12. **標題**：建議「系統一模型（System One Model）是什麼？它只從你列的選項裡挑，也會挑錯｜AI 名詞十分鐘」。
 13. **上架檔期**：不跟任何 TypeSafe 相關的片相鄰。
 
@@ -78,4 +74,3 @@
 - `2026-10-03-jev-comments-drifted-from-vendor-docs`：`jev.py` 說選項上限是我們自訂、TypeSafe 沒有 models 端點，兩句都過時；分級函式把是非題機率和選擇題信心值比同一個門檻；`docs/news-automation.md` 兩處過時。
 - `2026-10-03-jev-noul-criteria-keys-yes-no`：是非題的說明欄位 TypeSafe 文件規定 `true`／`false`，站上三處送 `yes`／`no`，效果未知。
 - `2026-10-03-narration-homophone-misses-ni-variant`：旁白同音字規則漏掉「妳／你」。
-- 校準企劃 `docs/videos/ai-term-calibration/brief.md` 有三句對站上做法的描述是錯的，已在本次一起改正。

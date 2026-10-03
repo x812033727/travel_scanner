@@ -55,3 +55,8 @@ cd docs/videos/ai-term-system-one-model/demo && python3 demo_live_jev.py --date-
   news. This session cannot edit it; the owner decides (`notes.md` item 1).
 - The customer agreement's publicity clause (§16.4) bears on chapters 4 and 5; quoted in
   `notes.md` item 3.
+- **Owner decisions, 2026-10-03.** The P1 pilot `2026-09-29-video-pilot-jev-decision-model`
+  is merged into this episode (closed; its duties moved to
+  `2026-10-03-ai-term-system-one-model-video`, now P1). The calibration episode is abandoned:
+  its folder and two tasks were deleted, so the calibration items in the definition of done
+  above no longer apply.
