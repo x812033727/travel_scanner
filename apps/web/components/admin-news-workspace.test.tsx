@@ -414,7 +414,7 @@ describe("AdminNewsWorkspace", () => {
       const entries = flatten(adminNewsCopy(locale));
       expect(entries.map(([key]) => key).sort()).toEqual(keys);
       expect(entries.every(([, value]) => typeof value === "string" && value.trim())).toBe(true);
-      expect(adminNewsCopy(locale).nav).not.toBe("AI News");
+      expect(adminNewsCopy(locale).title).not.toBe("AI hourly news");
       expect(adminNewsCopy(locale).statuses.needs_redraft).not.toBe("Needs redraft");
     }
   });
