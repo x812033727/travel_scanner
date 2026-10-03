@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-03",
+  "method": {
+    "tool": ".agents/skills/youtube-video/scripts/yt_shot_probe.js",
+    "where": "in-app browser, YouTube watch pages, player paused and muted",
+    "step_seconds": 0.25,
+    "cut_rule": "mean absolute luma difference >= 26 with a histogram shift or a spike, or >= 16 with a histogram distance >= 0.22 and a spike; the bottom quarter of the frame is ignored",
+    "validated": "the first nine cuts (ten shots) of xVXEefk1vWs against a half-second contact sheet; the other four by a one-frame-a-shot contact sheet",
+    "replication": "an independent agent re-measured xVXEefk1vWs 0-120 s from the probe's written steps: all 46 cuts identical; checked against frames, the cut recorded at 94.5 s is really at 96.0 s (a light leak before it), and the cuts at 110.75-112 s are a person standing up inside one shot",
+    "by_eye": ["what each opening shows", "setups reused within a scene", "a wide or group shot every 6-8 shots", "a readable face in most shots", "the insert share of two videos"],
+    "not_checked": ["sound, music and voice acting (whether a line is narration is inferred from subtitles)", "audience retention", "movement and camera movement inside a shot", "how each picture was produced"]
+  },
+  "videos": [
+    {
+      "id": "xVXEefk1vWs",
+      "url": "https://www.youtube.com/watch?v=xVXEefk1vWs",
+      "series": "茶敬六声无人应",
+      "channel": "盛世短剧",
+      "published": "2026-09-12",
+      "duration_seconds": 4271,
+      "views_at_check": 571514,
+      "frame": "9:16",
+      "highest_quality": "720p",
+      "look": "photoreal",
+      "subtitles": "burned in, zh-Hans",
+      "caption_tracks": [],
+      "counted": { "lines_0_59s": { "lines": 33, "characters": [1, 11], "median": 4, "step_seconds": 0.5 }, "inserts_0_240s": { "shots": 89, "without_a_face": 4 }, "near_frozen_share_0_120s": 0.048 },
+      "ranges": [
+        {
+          "range": [0, 240],
+          "shots": 89, "mean": 2.7, "median": 2.25, "p10": 1.25, "p90": 4.75, "longest": 9, "over_6s": 4, "opening_10s": 5, "opening_30s": 14, "spread_p90_over_p10": 3.8,
+          "lengths_note": "the list covers 0-215.25 s; the tail was read only as summary numbers",
+          "lengths": [1, 2.5, 2, 2.25, 2.5, 1.5, 2, 2, 2.75, 4.75, 2, 2, 1.5, 3, 2, 2, 2.5, 4, 1.75, 3.75, 3.75, 3.5, 4.5, 7.75, 2.25, 5.75, 1.5, 2.75, 2.5, 3.25, 4, 5.25, 3, 1.5, 2, 1.75, 1.5, 1.5, 1.25, 2, 1.75, 0.75, 0.5, 3, 1.25, 3.25, 1.5, 7.25, 3, 2, 2, 2, 4.25, 3.75, 6, 2.75, 3, 2.5, 2.25, 1.5, 4.75, 3.5, 2.25, 2.5, 2.75, 3, 1.5, 1.5, 2.5, 3.25, 2.25, 1.25, 2.75, 2.25, 1.5, 1.75, 1.25, 1.25, 2.25, 6.5, 1.5]
+        },
+        {
+          "range": [1800, 1920],
+          "shots": 45, "mean": 2.67, "median": 2.5, "p10": 1.25, "p90": 4.25, "longest": 6, "over_6s": 0, "spread_p90_over_p10": 3.4,
+          "lengths": [3, 2.75, 6, 2.5, 3.5, 2, 5.75, 2.25, 3.5, 1.75, 3, 0.5, 4, 2, 3, 1.75, 0.75, 1.25, 1.25, 2, 5.75, 1.75, 1.75, 4.5, 2.75, 3.75, 3.25, 2.75, 3.5, 3.5, 2.75, 2, 1.5, 1.75, 2.75, 2, 4.25, 1.25, 1.5, 2.25, 3.25, 2, 1.25, 4, 1.75]
+        }
+      ]
+    },
+    {
+      "id": "QNPMAbMp3kY",
+      "url": "https://www.youtube.com/watch?v=QNPMAbMp3kY",
+      "series": "不靠谱爸妈很靠谱",
+      "channel": "盛世短剧",
+      "published": "2026-09-09",
+      "duration_seconds": 5139,
+      "views_at_check": 1253066,
+      "frame": "16:9",
+      "highest_quality": "720p",
+      "look": "stylised 3D",
+      "subtitles": "burned in, zh-Hans",
+      "caption_tracks": ["en-US:asr"],
+      "ranges": [
+        {
+          "range": [0, 240],
+          "shots": 95, "mean": 2.53, "median": 2, "p10": 0.75, "p90": 4.75, "longest": 10.25, "over_6s": 6, "opening_10s": 4, "opening_30s": 12, "spread_p90_over_p10": 6.33,
+          "lengths": [3, 3.25, 2.25, 6.5, 1, 1.75, 3, 2.25, 2, 3.25, 1.5, 2, 2.25, 1.5, 1.5, 0.75, 5, 2.25, 8, 2.25, 0.75, 0.5, 2.25, 1.25, 3.25, 4.75, 1.75, 3.25, 4.25, 2, 2, 1, 4.75, 1.25, 2, 1, 2, 7.75, 2.25, 2, 0.75, 2.75, 2.75, 2.25, 1.25, 6, 2, 0.75, 1.75, 3.5, 3.25, 2.75, 2.5, 1.75, 1.75, 1.75, 0.75, 2.75, 10.25, 1.75, 3, 2.25, 4.5, 3, 1.5, 0.75, 2.25, 1.5, 0.75, 0.75, 9, 3.25, 2, 8.25, 1, 2.25, 0.75, 1, 1, 1, 2.5, 0.75, 1.75, 3.25, 4, 2.75, 2, 1.5, 2, 1, 1.75, 3.75, 3.5, 1, 0.5]
+        }
+      ]
+    },
+    {
+      "id": "wdXB1HC1F9c",
+      "url": "https://www.youtube.com/watch?v=wdXB1HC1F9c",
+      "series": "(修仙爽文，海棠动漫社，查閱時觀看數最高的一支)",
+      "channel": "海棠动漫社",
+      "published": "2026-09-11",
+      "duration_seconds": 4290,
+      "views_at_check": 1599577,
+      "frame": "16:9",
+      "highest_quality": "1080p",
+      "look": "stylised 3D",
+      "subtitles": "burned in, zh-Hans",
+      "caption_tracks": ["zh-Hant", "zh-Hans", "ja", "id", "es", "ar", "en", "th", "ms", "ko"],
+      "localized_title": true,
+      "ranges": [
+        {
+          "range": [0, 240],
+          "shots": 152, "mean": 1.58, "median": 1.5, "p10": 0.75, "p90": 2.5, "longest": 3.75, "over_6s": 0, "opening_10s": 8, "opening_30s": 18, "spread_p90_over_p10": 3.33, "near_frozen_share": 0.014,
+          "lengths_note": "the probe's last, zero-length interval is left out",
+          "lengths": [2.25, 2, 0.5, 0.75, 0.5, 1.25, 1.25, 2.5, 3.75, 2.25, 3, 1, 2, 1.25, 1, 1.75, 0.75, 2.25, 1, 1.75, 1.5, 1.75, 1, 1.75, 1.25, 2.5, 2.5, 2, 2, 1.75, 0.75, 0.75, 0.5, 1.5, 2.25, 2.5, 1, 1.5, 1.5, 1.75, 1.75, 1.5, 3.25, 1.25, 2.5, 1.25, 1, 1, 1, 2.75, 2, 1.5, 1, 2.75, 1.75, 1.5, 2, 1.75, 2.5, 3.25, 1.25, 1, 1, 1.25, 1.25, 2.5, 0.5, 1.25, 2, 0.5, 1.75, 1.5, 1.25, 0.75, 1.5, 2.5, 0.75, 1, 1.25, 1.25, 1.5, 3.5, 1.75, 2.25, 2.25, 2.5, 2, 0.75, 0.75, 1.75, 0.75, 2.25, 3.5, 1, 2, 1, 2.5, 1.75, 1, 1.25, 3, 2, 1, 1, 1, 2.75, 1.75, 1.25, 2.5, 0.75, 1.5, 1.5, 0.5, 2, 2, 1, 0.75, 2, 1.25, 0.75, 1.25, 1.5, 2.25, 0.5, 0.75, 0.75, 1.5, 2, 2.75, 2.75, 1.25, 2.25, 0.5, 1.5, 1, 0.75, 1.5, 1.5, 0.75, 1.75, 2.5, 1, 1, 1.25, 1, 1.25, 2, 1.25, 1.75, 1.25, 0.75, 2]
+        }
+      ]
+    },
+    {
+      "id": "fC18EKAGdL8",
+      "url": "https://www.youtube.com/watch?v=fC18EKAGdL8",
+      "series": "(女頻古裝重生，墨影次元放映局)",
+      "channel": "墨影次元放映局",
+      "published": "2026-09-18",
+      "duration_seconds": 4047,
+      "views_at_check": 218827,
+      "frame": "9:16",
+      "highest_quality": "1080p",
+      "look": "photoreal",
+      "subtitles": "burned in, zh and en on every line",
+      "caption_tracks": [],
+      "ranges": [
+        {
+          "range": [0, 240],
+          "shots": 108, "mean": 2.22, "median": 1.75, "p10": 1, "p90": 3.75, "longest": 6.25, "over_6s": 1, "opening_10s": 6, "opening_30s": 18, "spread_p90_over_p10": 3.75,
+          "lengths": [2, 1, 3.75, 1.25, 1.25, 1.75, 1.25, 2.75, 1.5, 1.5, 1.25, 1, 0.75, 0.75, 5.5, 1.75, 0.5, 1.25, 3.25, 3.75, 1.5, 2.5, 2, 5.75, 1.75, 1.25, 3.25, 2, 1.5, 1.25, 2.25, 2.25, 2.75, 3.5, 3, 2, 1.5, 1, 1.25, 1.75, 1.75, 3.5, 3, 1.5, 3.75, 2, 2.75, 2.5, 3.5, 1.75, 1.75, 4.25, 4.5, 3.5, 3, 1.75, 1.75, 1, 1.25, 1.75, 1.75, 3, 1, 2.5, 0.75, 1, 1.75, 1.5, 3.5, 1.25, 0.75, 1.75, 0.5, 2.25, 1.25, 1.5, 1.25, 2.5, 2.25, 1.75, 3.5, 1.25, 3.25, 0.75, 4.25, 2.5, 5.25, 1, 3, 6.25, 0.75, 2.25, 1, 1.25, 2, 2.25, 1.5, 2.5, 1.25, 6, 4.75, 2.25, 3.75, 3, 1, 2, 3, 2.5]
+        }
+      ]
+    },
+    {
+      "id": "qbyEeolMKDk",
+      "url": "https://www.youtube.com/watch?v=qbyEeolMKDk",
+      "series": "山海经之万兽图鉴",
+      "channel": "破晓动漫社 Dawn Anime Club",
+      "published": "2026-07-09",
+      "duration_seconds": 5641,
+      "views_at_check": 538459,
+      "frame": "16:9",
+      "highest_quality": "720p",
+      "look": "realistic 3D",
+      "subtitles": "burned in, zh-Hans",
+      "caption_tracks": ["zh", "en"],
+      "ranges": [
+        {
+          "range": [0, 240],
+          "shots": 126, "mean": 1.9, "median": 2, "p10": 0.75, "p90": 3, "longest": 5, "over_6s": 0, "opening_10s": 7, "opening_30s": 18, "spread_p90_over_p10": 4.0,
+          "lengths_note": "the probe's last, zero-length interval is left out",
+          "lengths": [0.25, 2, 0.5, 2.25, 2, 1, 2.25, 3.25, 1.5, 1.5, 2.5, 0.75, 2.25, 2.5, 1.75, 1, 1.5, 1.75, 3.25, 2.5, 1.75, 2.75, 0.5, 0.5, 1, 2.25, 3.25, 0.75, 5, 2, 1.5, 1, 3, 1.5, 2, 1.5, 2.25, 2.25, 2.75, 2.75, 2.25, 3.25, 2, 1, 1, 2.75, 1.5, 1.75, 2.5, 1, 1, 1, 2, 3, 1.75, 4.5, 3, 2, 2.5, 3.5, 2, 1.5, 1.5, 0.75, 1.25, 1.25, 1.25, 2, 2.5, 2, 2.25, 0.5, 1.25, 2.75, 0.75, 0.5, 2, 2.5, 2.25, 2.5, 2.25, 3.75, 1.5, 1.5, 1.25, 1.5, 1.75, 2.25, 0.75, 1.5, 0.5, 2.75, 1.5, 1.5, 2, 2.75, 2.5, 2.25, 1.75, 2.75, 3.25, 0.5, 1.25, 2, 2.25, 1, 1.75, 3.25, 1.75, 3, 2, 1.25, 1.75, 2, 2, 3, 0.75, 2, 0.5, 2.5, 3, 3.25, 1.5, 1, 1.5, 0.75]
+        }
+      ]
+    }
+  ],
+  "own_pilot": {
+    "note": "the same checks on the wedding pilot's measured edits, run with drama_craft_check.mjs on 2026-10-03; no picture exists yet, the lengths are the audio edit's windows. Sizes and motions are read from the camera and motion text; against a shot-by-shot hand reading 80 of 81 sizes and 81 of 81 motions agree",
+    "episodes": [
+      { "file": "docs/videos/series-plans/competition-20261002/episodes/episode-01-measured-edit.json", "shots": 40, "seconds": 144.9, "median": 3.3, "p90": 5.1, "longest": 7.3, "spread_p90_over_p10": 2.4, "opening_10s": 3, "opening_30s": 9, "face_share": 0.51, "insert_share": 0.46, "wide_or_group_share": 0, "longest_run_without_wide_or_group": 40, "same_setup_run": 5, "look_only_share": 0.33, "look_only_run": 3, "opening_three_all_looks": true, "locked_camera_share": 1, "median_line_characters": 10, "narration_share": 0.08, "missed": ["hook.opening", "hook.opening30", "size.insert", "size.wide", "size.reestablish", "size.stall", "motion.run", "motion.opening"] },
+      { "file": "docs/videos/series-plans/competition-20261002/episodes/episode-02-measured-edit.json", "shots": 41, "seconds": 159, "median": 3.8, "p90": 5.2, "longest": 6.1, "spread_p90_over_p10": 1.9, "opening_10s": 3, "opening_30s": 8, "face_share": 0.75, "insert_share": 0.2, "wide_or_group_share": 0.03, "longest_run_without_wide_or_group": 24, "same_setup_run": 2, "look_only_share": 0.32, "look_only_run": 2, "opening_three_all_looks": false, "locked_camera_share": 1, "median_line_characters": 13, "narration_share": 0, "missed": ["pace.spread", "hook.opening", "hook.opening30", "lines.median", "size.wide", "size.reestablish"] }
+    ]
+  }
+}

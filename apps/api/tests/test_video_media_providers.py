@@ -68,6 +68,9 @@ def test_gemini_images_send_the_prompt_the_references_and_the_aspect() -> None:
     }
     assert body["generationConfig"]["imageConfig"] == {"aspectRatio": "16:9"}
     assert body["generationConfig"]["responseModalities"] == ["IMAGE"]
+    # A job's resolution is Gemini's imageSize; without one the model answers at its 1K default.
+    large = GeminiImages(GEMINI, "k").request_body(_image_request(resolution="2K"))
+    assert large["generationConfig"]["imageConfig"] == {"aspectRatio": "16:9", "imageSize": "2K"}
 
 
 @pytest.mark.asyncio

@@ -33,6 +33,10 @@
 
 `status --slug <SLUG>` 列的是漫劇的 19 步（`tools/video/core/state.mjs` 的 `DRAMA_STEPS`；`fact-checked` 之後是 `script approved`；沒有 `music` 的影片少一步）。工人（`node tools/video/cli.mjs auto`）照這個順序自己跑；代理手動做一支時也照它。
 
+有角色的漫劇，每一集撰稿前讀 `.agents/skills/youtube-video/references/drama-craft.md`（開場、鏡位與剪點、鏡頭與台詞長度的規格），`lint` 之後跑 `node .agents/skills/youtube-video/scripts/drama_craft_check.mjs <VIDEO_DOCS>/video.json`：沒過的項目改掉，或在回報裡逐項寫這一集為什麼不同；查核改完再跑一次。它量的是分鏡的結構，不擋任何指令、不改任何指令的結束碼；沒有角色的漫劇（解說、品牌故事）它會說明並跳過。
+
+首次選定美術方向、製作代表 pilot 或收到「粗糙／沒有吸引力」的回饋時，先用 `.agents/skills/youtube-video/references/visual-quality.md` 檢查美術、表演、鏡頭與聲畫節奏。角色圖只是身份參考；首格無變形、片段可解碼與 judge 過線仍不足以放量。既有流程可在授權內繼續修正；只把需要使用者決定的風格、品質取捨或預算問題交給使用者，不逐鏡新增確認。
+
 | # | 階段 | 誰 | 產出 | 關卡 |
 | --- | --- | --- | --- | --- |
 | 1 | 文件：單集由企劃模型（variant `bible`，提示 `.agents/skills/youtube-video/references/prompts/series-bible.md`）寫**故事聖經**（前提、角色、幕、一個大綱、素材、不做的事）→ `POST /video/automation/series/<slug>/docs`（`kind: "bible"`）；作品是設定集 → 總綱 → 篇章細綱（`series.md`）。核准後那一集變 `ready`，工人 `POST …/series/<slug>/episodes/<n>/start`，寫 `<VIDEO_DOCS>/series.json`（人物表、本集細綱、前情、設定全文）與 `brief.md` | 企劃模型、工人 | 站上的文件版本；`<VIDEO_DOCS>/series.json`、`brief.md`（章節「故事前提」「角色」「站主觀點」是 lint 要求的；工人另寫 `## 幕` 與 `## 大綱`，`## 大綱` 只有選項 A，`outline` 關卡讀它） | **站主核准故事聖經**（先在討論串問或要求改也可以；subject `bible`）；退回帶備註最多 `series_doc_rewrites` 輪，討論出的新版本不算；`outline` 關卡由工人本機核准，備註「依故事聖經」 |
@@ -96,8 +100,10 @@ node tools/video/assemble/smoke.mjs --fixture drama [--channel msedge]          
   | tilt down、crane down、descend | `tilt-down` | 1.08 倍，從上滑到下 |
   | 其他或沒寫 | `drift` | 放大 4% 並略往右，第 0 格是原圖 |
 
+  `still` 鏡頭的 `camera` 一定要寫表裡的運鏡：`camera` 沒有命中時 `motionMove` 會去讀 `motion`，角色的動作（pushes、pulls、rises）會被當成運鏡。
+
   等級上限（`series.json` 的 `visual_tier`，lint 擋）：`hybrid` 最多四成鏡頭是 clip、`stills` 一成、`clips` 不限；沒有 `series.json` 就全視為 clip。still 鏡頭的關鍵影格要通過 judge（`needs_review` 的 `assemble` 會拒絕）。
-- 句子：`speaker`（`narrator` 或角色 id，預設旁白）、`emotion`（≤ 80 字，Gemini 聲音會併進 style；Azure 忽略並警告）。**句子仍是時鐘**：一個鏡頭的長度是它的句子加停頓，lint 對估計超過 12 秒的鏡頭報錯、10 秒警告，中位數低於 3 秒也警告——長旁白拆成更多鏡頭。
+- 句子：`speaker`（`narrator` 或角色 id，預設旁白）、`emotion`（≤ 80 字，Gemini 聲音會併進 style；Azure 忽略並警告）。**句子仍是時鐘**：一個鏡頭的長度是它的句子加停頓，lint 對估計超過 12 秒的鏡頭報錯、10 秒警告，中位數低於 3 秒也警告——長旁白拆成更多鏡頭。有角色的漫劇照 drama-craft.md 的目標寫（中位數 2.5–3.5 秒、一句 12 字以內為主、長短要有差）；中位數落在 2–3 秒而觸發那條警告時保留鏡頭，在回報裡註明。每個場景至少一句台詞（lint 的錯誤），反應鏡與插鏡放畫外那個人正在說的那一句。
 - `music`：`prompt`（Lyria 生成）或 `track`＋`sha256`（自帶），`gain_db`（−20）、`duck_db`（−10）、`fade_in_ms`、`fade_out_ms`。
 - `subtitles`：`burn_in: false`（新自動產線為可開關CC；舊核准burn-in檔不在此自動重製）、`style`（`drama`：白字黑邊；`plain`：黑底框）、`speaker_prefix`（角色句前加「【名字】」）。
 - `thumbnail.data.shot`：縮圖以那個鏡頭的關鍵影格當底圖。
@@ -118,7 +124,7 @@ node tools/video/assemble/smoke.mjs --fixture drama [--channel msedge]          
 
 - 此批指定模型與當日核實價目來源在 `docs/videos/series-plans/production-20261001/profile.json`：`veo-3.1-lite-generate-preview`，1080p素材固定8秒/24fps，無referenceImages/extension，可用首格；不自動換供應商。以下舊路線估算不是此批報價。
 - 其他舊路線價目表在 `apps/api/app/video_media/catalog.py`：圖片 Gemini 3 Pro Image 約 US$0.134／張；片段 Gemini Omni 1.1 Flash US$0.15／秒（1080p）、Veo 3.1 US$0.40／秒、MiniMax H3 US$0.13／秒；音樂 Lyria US$0.08／首；judge 每次以 US$0.01 記。
-- 一集 3 分鐘、30 鏡 × 6 秒、重做係數 1.5：片段約 US$40（Omni），圖片約 US$12，配音與音樂不到 US$1。站主 2026-09-26 決定先不設上限，設定預設開很大（每月 3,000 片段秒、單支 US$200），第一支做完再依實際花費調低。
+- 一集 3 分鐘、30 鏡 × 6 秒、重做係數 1.5：片段約 US$40（Omni），圖片約 US$12，配音與音樂不到 US$1。照 drama-craft.md 的節奏，同樣 3 分鐘大約是 50–70 個鏡頭：圖片與 judge 隨鏡頭數增加，片段的錢要用「鏡頭數 × 模型最短片段秒數」重算，不能沿用這個例子；每個階段的 `--dry-run` 會印實際估價。站主 2026-09-26 決定先不設上限，設定預設開很大（每月 3,000 片段秒、單支 US$200），第一支做完再依實際花費調低。
 - 每個階段都有 `--dry-run` 印估價與伺服器本月剩餘；每次送出前用 `media/ledger.json` 對單支上限把關（超過結束碼 3）；每月預算由伺服器以 429 擋，請求不會送到供應商。
 
 ## 坑

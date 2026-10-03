@@ -44,13 +44,19 @@ export async function synthesizeLines(request, lines, synthesize) {
 /** Each line's clip followed by silence up to its end frame: the whole narration, frame-exact. */
 export function buildNarration(timeline, clips) {
   const parts = [];
+  let position = 0;
   for (const line of timeline.lines) {
     const clip = clips.get(line.id);
     if (!clip) throw new Error(`no clip for line ${line.id}`);
     if (clip.length !== line.audio_samples) throw new Error(`clip ${line.id} has ${clip.length} samples, the timeline expects ${line.audio_samples}`);
+    if (!Number.isSafeInteger(line.start_frame) || line.start_frame < position) throw new Error(`line ${line.id} overlaps the preceding audio`);
+    if (line.start_frame > position) parts.push(new Int16Array((line.start_frame - position) * SAMPLES_PER_FRAME));
     const span = (line.end_frame - line.start_frame) * SAMPLES_PER_FRAME;
     parts.push(clip, new Int16Array(span - clip.length));
+    position = line.end_frame;
   }
+  if (!Number.isSafeInteger(timeline.total_frames) || timeline.total_frames < position) throw new Error("the narration timeline ends before its audio");
+  if (timeline.total_frames > position) parts.push(new Int16Array((timeline.total_frames - position) * SAMPLES_PER_FRAME));
   return concatSamples(parts);
 }
 

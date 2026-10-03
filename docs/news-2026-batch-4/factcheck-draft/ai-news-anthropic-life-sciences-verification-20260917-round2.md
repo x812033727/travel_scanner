@@ -7,7 +7,7 @@
 - 垂直／順序：AI／`display_order` 173；事件日 2026-09-17；`kind` life
 - 第一輪報告：`ai-news-anthropic-life-sciences-verification-20260917-round1.md`（130 條主張、10 處修正）
 - 依據：`FACTCHECK-47.md`、`agents/ai/SECOND-ROUND.md`、`agents/ai/FACTCHECK.md`、`DELTA-4-7.md`、指派訊息的四條協調者裁定
-- 輔助腳本：`C:\Users\x8120\mokaair-work\news47\_tools\ai-news-anthropic-life-sciences-verification-20260917-r2\`
+- 輔助腳本：`<home>\mokaair-work\news47\_tools\ai-news-anthropic-life-sciences-verification-20260917-r2\`
   （`extract.py`、`verify_quotes.py`、`check37.py`、`paras.py`、`sample.py`、`mech.py`、`apply_edits.py`、`fix_p15.py`、`append_second_round.py`）
 
 ## 1. 來源重抓（2026-09-23 台北 01:21）

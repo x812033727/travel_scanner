@@ -65,7 +65,7 @@ Read-only finding recorded at 2026-09-23T13:37:33Z against main
 with Traditional Chinese locale/published version 4; no correction was applied.
 
 Evidence:
-`C:/Users/x8120/.codex/article-localization-release/batch023-candidate-inventory/source-correction-inventory-v1.json`
+`<home>/.codex/article-localization-release/batch023-candidate-inventory/source-correction-inventory-v1.json`
 SHA256 `e00c865a1cccc092159efde3ce8646b913a2d962f28de8fe93bea7b1ee4fdf95`.
 The inventory binds complete source rows, pack hashes and all three surrounding
 paragraphs. Its source snapshot SHA256 is

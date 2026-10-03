@@ -65,10 +65,10 @@ the exact pack, twelve localized assets and two task records before commit.
 ## Notes
 
 - Candidate receipt:
-  `C:/Users/x8120/.codex/article-localization-release/batch016-candidate-readonly.json`
+  `<home>/.codex/article-localization-release/batch016-candidate-readonly.json`
   (SHA-256 `9b4a4665e983b968bc49b05577207f001ccf79602882d5daf6c3546e9fa197f0`).
 - Exact source document:
-  `C:/Users/x8120/.codex/article-localization-release/batch016-llms/source-document.json`
+  `<home>/.codex/article-localization-release/batch016-llms/source-document.json`
   (raw SHA-256 `7cec7418109436a1af699a5cae7080a00e12d0c0218863dec71e9f86dc6aaaed`,
   normalized SHA-256 `fbf7c5867be88cd1b7058024b7ec79e807b206d749a1876da4cd543f392391a4`).
 - Repository pack Git blob `9f935d820f6e02d08c0272a2fed2ab86e19b8e07`, raw SHA-256
@@ -92,31 +92,31 @@ the exact pack, twelve localized assets and two task records before commit.
   JA `f527642ca9f1a1132fde5fff9b49030fa1f17ffd288581a6087c6dabad6ae6eb`;
   KO `ece7a32aeee3555c92bb87e5e2284b7fdf72205da391b0bd1a73b70b1b421a39`.
 - Localized asset and image-path author freeze:
-  `C:/Users/x8120/.codex/article-localization-release/batch016-llms/asset-freeze-and-image-path-supplement.json`
+  `<home>/.codex/article-localization-release/batch016-llms/asset-freeze-and-image-path-supplement.json`
   (SHA-256 `17b2a26f5493f3ebbb08ff623177a68cb00743ec8a98b2273eec9dcd7de77645`).
   It binds 24 reviewed renders.
 - The exact `/hero/src`-only document supplement passed independent review at
-  `C:/Users/x8120/.codex/article-localization-release/batch016-llms/independent-review/image-path-supplement-pass.json`
+  `<home>/.codex/article-localization-release/batch016-llms/independent-review/image-path-supplement-pass.json`
   (SHA-256 `fceb5d3e7394533aed112a5be35816410258f813fc01c37493a15d2bfcd96489`).
   Visible-label and visual review passed independently at
-  `C:/Users/x8120/.codex/article-localization-release/batch016-llms/independent-review/asset-visual-receipt-pass.json`
+  `<home>/.codex/article-localization-release/batch016-llms/independent-review/asset-visual-receipt-pass.json`
   (SHA-256 `42944726891231cf34fddc8381be67527570ee84860b9e6bffb21775bf4d0488`).
 - The integrated five-locale pack has SHA-256
   `c58130d91dad79d1aa8659208d33a12805bb53ece98d5b5d9959010c51fc8ebd`;
   its normalized `ArticlePack` SHA-256 is
   `29ae9d18a0737f24bc4499132bfc22799f116b5fb462ed4ccfb2d65b8c5450a4`.
   Integration audit:
-  `C:/Users/x8120/.codex/article-localization-release/batch016-llms/pack-integration-audit.json`
+  `<home>/.codex/article-localization-release/batch016-llms/pack-integration-audit.json`
   (SHA-256 `93c9f94bf4fba45725ef734a1557a5b9b701acf5fcdf0b74d019c08b91939892`).
 - Scoped `guides-pack lint` passed with no errors and rendered all five diagrams
   plus the source hero. It retained source-shape warnings for missing summary
   blocks in all locales and the full English translation exceeding the preferred
   life-article length; neither warning changes or truncates the reviewed source.
   Receipt:
-  `C:/Users/x8120/.codex/article-localization-release/batch016-llms/pack-lint.json`
+  `<home>/.codex/article-localization-release/batch016-llms/pack-lint.json`
   (SHA-256 `ea6062c88e03ecf8cec1ed949e13e198f317de76ba12534ecde99fe8b6de8cba`).
 - Final pre-commit model and byte verification passed at
-  `C:/Users/x8120/.codex/article-localization-release/batch016-llms/precommit-verification.json`
+  `<home>/.codex/article-localization-release/batch016-llms/precommit-verification.json`
   (SHA-256 `9126b3ead50789a6b5c6cf11080db0dc7d3ade01f62d620191c12153471460c7`).
 - The semantic link issue now also has an unclaimed, dependency-gated follow-up:
   `2026-09-22-correct-llms-txt-evaluation-token-link`, whose scope is only its
@@ -138,7 +138,7 @@ sitemaps confirmed the article remained private. Database metadata and all five
 draft hashes matched the frozen bundle. Final host health and journals passed;
 the deployment hold was cleared after combined acceptance.
 
-External evidence under `C:/Users/x8120/.codex/article-localization-release/`:
+External evidence under `<home>/.codex/article-localization-release/`:
 
 - `batch015-016-delivery-20260922.json`, SHA-256
   `0c2e025e12c2f448491c11c7a40cd31e38346c72542bcd4e3b571eccfd6ff0af`.

@@ -2,7 +2,7 @@
   {
     "type": "system",
     "subtype": "init",
-    "cwd": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on",
+    "cwd": "<home>\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on",
     "session_id": "f6d633f3-89eb-438c-9d79-0aaffcee5890",
     "tools": [
       "Edit",
@@ -102,7 +102,7 @@
     "product_feedback_disabled": false,
     "uuid": "986896a8-4590-4bc3-a02d-940b4744acf5",
     "memory_paths": {
-      "auto": "C:\\Users\\x8120\\.claude\\projects\\C--Users-x8120-AppData-Local-Temp-mokaair-capstone-live-wtb8r1on\\memory\\"
+      "auto": "<home>\\.claude\\projects\\<project-slug>\\memory\\"
     },
     "fast_mode_state": "off",
     "fast_mode_disabled_reason": "sdk_opt_in_required"
@@ -562,7 +562,7 @@
           "id": "toolu_012tbbYai7AvywxnKrga37fv",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\model.js"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\model.js"
           },
           "caller": {
             "type": "direct"
@@ -613,7 +613,7 @@
     "tool_use_result": {
       "type": "text",
       "file": {
-        "filePath": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\model.js",
+        "filePath": "<home>\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\model.js",
         "content": "export function addTodo(items, title, id) {\n  const cleaned = title.trim();\n  if (!cleaned || cleaned.length > 100) return items;\n  return [...items, { id, title: cleaned, completed: false }];\n}\nexport function toggleTodo(items, id) {\n  return items.map(item => item.id !== id ? { ...item, completed: !item.completed } : item);\n}\nexport function removeTodo(items, id) {\n  return items.filter(item => item.id !== id);\n}\n",
         "numLines": 12,
         "startLine": 1,
@@ -634,7 +634,7 @@
           "id": "toolu_01SNFFiSsrBxE81fCoVUuCpc",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\tests\\model.test.mjs"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\tests\\model.test.mjs"
           },
           "caller": {
             "type": "direct"
@@ -685,7 +685,7 @@
     "tool_use_result": {
       "type": "text",
       "file": {
-        "filePath": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\tests\\model.test.mjs",
+        "filePath": "<home>\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\tests\\model.test.mjs",
         "content": "import { test } from 'node:test';\nimport assert from 'node:assert/strict';\nimport { addTodo, toggleTodo, removeTodo } from '../model.js';\n\ntest('新增待辦會去除前後空白並保留既有資料', () => {\n  const original = [{ id: 'a', title: '買早餐', completed: true }];\n  const added = addTodo(original, '  讀書  ', 'b');\n  assert.deepEqual(added, [...original, { id: 'b', title: '讀書', completed: false }]);\n  assert.equal(original.length, 1);\n});\ntest('拒絕空白與過長內容', () => {\n  const original = [];\n  assert.equal(addTodo(original, '   ', 'a'), original);\n  assert.equal(addTodo(original, '字'.repeat(101), 'a'), original);\n});\ntest('依照識別碼切換指定項目，不改動其他項目', () => {\n  const original = [{ id: 'a', title: '相同標題', completed: false }, { id: 'b', title: '相同標題', completed: true }];\n  const updated = toggleTodo(original, 'a');\n  assert.equal(updated[0].completed, true);\n  assert.equal(updated[1].completed, true);\n  assert.equal(original[0].completed, false);\n});\ntest('刪除依識別碼進行，找不到項目時仍保留資料', () => {\n  const original = [{ id: 'a', title: '測試', completed: false }];\n  assert.deepEqual(removeTodo(original, 'missing'), original);\n  assert.deepEqual(removeTodo(original, 'a'), []);\n});\n",
         "numLines": 28,
         "startLine": 1,
@@ -2128,7 +2128,7 @@
           "name": "Edit",
           "input": {
             "replace_all": false,
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\model.js",
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\model.js",
             "old_string": "export function toggleTodo(items, id) {\n  return items.map(item => item.id !== id ? { ...item, completed: !item.completed } : item);\n}",
             "new_string": "export function toggleTodo(items, id) {\n  return items.map(item => item.id === id ? { ...item, completed: !item.completed } : item);\n}"
           },
@@ -2170,7 +2170,7 @@
         {
           "tool_use_id": "toolu_01SVfzaKdyv4muGd5h5BSFyH",
           "type": "tool_result",
-          "content": "The file C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\model.js has been updated successfully. (file state is current in your context — no need to Read it back)"
+          "content": "The file <home>\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\model.js has been updated successfully. (file state is current in your context — no need to Read it back)"
         }
       ]
     },
@@ -2179,7 +2179,7 @@
     "uuid": "f0c450d7-1a29-412d-885a-a90437fac77d",
     "timestamp": "2026-09-14T13:45:06.394Z",
     "tool_use_result": {
-      "filePath": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\model.js",
+      "filePath": "<home>\\AppData\\Local\\Temp\\mokaair-capstone-live-wtb8r1on\\model.js",
       "oldString": "export function toggleTodo(items, id) {\n  return items.map(item => item.id !== id ? { ...item, completed: !item.completed } : item);\n}",
       "newString": "export function toggleTodo(items, id) {\n  return items.map(item => item.id === id ? { ...item, completed: !item.completed } : item);\n}",
       "originalFile": "export function addTodo(items, title, id) {\n  const cleaned = title.trim();\n  if (!cleaned || cleaned.length > 100) return items;\n  return [...items, { id, title: cleaned, completed: false }];\n}\nexport function toggleTodo(items, id) {\n  return items.map(item => item.id !== id ? { ...item, completed: !item.completed } : item);\n}\nexport function removeTodo(items, id) {\n  return items.filter(item => item.id !== id);\n}\n",

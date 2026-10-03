@@ -32,7 +32,7 @@ import {
   visualTierProblems,
   voiceFor,
 } from "./drama.mjs";
-import { dramaBrief, dramaFixture, fixture, fixtureLexicon, illustratedFixture, sandbox } from "./fixtures/load.mjs";
+import { writeAudioFixture, dramaBrief, dramaFixture, fixture, fixtureLexicon, illustratedFixture, sandbox } from "./fixtures/load.mjs";
 import { lintVideo } from "./lint.mjs";
 import { atomicWrite } from "./paths.mjs";
 import { validateVideo } from "./schema.mjs";
@@ -42,6 +42,125 @@ import { estimateTimeline, speechHash, visualHash } from "./timeline.mjs";
 
 const paths = (errors) => errors.map((error) => error.path).sort();
 const context = (overrides = {}) => ({ lexicon: fixtureLexicon(), brief: dramaBrief(), others: [], translations: {}, ...overrides });
+
+function longAnimeEpisode() {
+  const doc = dramaFixture();
+  doc.slug = "borrowed-dawn-production-e001";
+  doc.category = "anime";
+  doc.look = { preset: "anime-2d" };
+  doc.target_minutes = [22, 22];
+  doc.production_policy = "long-anime-v1";
+  doc.runtime_spec = { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 };
+  doc.series = { slug: "borrowed-dawn-production", episode: 1, chapter: 1, kind: "series", genre: "custom", lead: "ensemble", planned_episodes: 120, open_ended: false, closed_ending: false };
+  for (const scene of doc.scenes) delete scene.data.fit;
+  return doc;
+}
+
+test("a native long-anime video keeps its policy at the root and its declared series identity", () => {
+  assert.deepEqual(validateVideo(longAnimeEpisode()), []);
+  for (const [change, expected] of [
+    [(doc) => { delete doc.series; }, /kind.*series|genre.*custom|lead.*ensemble/],
+    [(doc) => { doc.category = "drama"; }, /category must be anime/],
+    [(doc) => { doc.look.preset = "cinematic-3d"; }, /style preset must be anime-2d/],
+    [(doc) => { doc.series.kind = "story"; }, /kind must be series/],
+    [(doc) => { doc.series.genre = "urban-return"; }, /genre must be custom/],
+    [(doc) => { doc.series.lead = "male"; }, /lead must be ensemble/],
+    [(doc) => { doc.target_minutes = [21, 23]; }, /target_minutes must match/],
+    [(doc) => { doc.production_policy = "long-anime-v2"; }, /production_policy must be long-anime-v1/],
+    [(doc) => { delete doc.runtime_spec; }, /runtime_spec must be an object/],
+    [(doc) => { delete doc.production_policy; }, /production_policy must be long-anime-v1/],
+  ]) {
+    const doc = longAnimeEpisode();
+    change(doc);
+    assert.match(validateVideo(doc).map((error) => error.message).join("\n"), expected);
+  }
+});
+
+test("anime category alone does not enable a body longer than eight minutes", () => {
+  const doc = dramaFixture();
+  doc.category = "anime";
+  doc.look = { preset: "anime-2d" };
+  doc.target_minutes = [1, 8];
+  assert.deepEqual(validateVideo(doc), [], "existing short drama remains structurally valid with the anime category");
+  doc.target_minutes = [22, 22];
+  assert.ok(validateVideo(doc).some((error) => error.path === "production_policy" && /explicit long-anime/.test(error.message)));
+});
+
+test("silent long-anime action shots accept the one- and eight-second bounds without invented dialogue", () => {
+  for (const seconds of [1, 8]) {
+    const doc = longAnimeEpisode();
+    doc.scenes[1].action_seconds = seconds;
+    doc.scenes[1].lines = [];
+    doc.scenes[1].data.prompt = "medium shot of a worker lifting a heavy valve handle with both hands";
+    doc.scenes[1].data.motion = "the worker lifts the handle, takes its weight and lowers it into the bracket";
+    assert.deepEqual(validateVideo(doc), []);
+    const timeline = estimateTimeline(doc);
+    const shot = timeline.scenes.find((scene) => scene.id === doc.scenes[1].id);
+    assert.equal(shot.end_frame - shot.start_frame, seconds * 30);
+    assert.ok(!timeline.lines.some((line) => line.scene === doc.scenes[1].id));
+  }
+});
+
+test("timed action refuses out-of-range seconds, dialogue, absent direction and an ordinary drama", () => {
+  const base = longAnimeEpisode();
+  base.scenes[1].action_seconds = 4;
+  base.scenes[1].lines = [];
+  for (const seconds of [0, 9, -1, 1.5, "4", null]) {
+    const doc = structuredClone(base);
+    doc.scenes[1].action_seconds = seconds;
+    assert.ok(validateVideo(doc).some((error) => error.path === "scenes[1].action_seconds" && /integer from 1 to 8/.test(error.message)), String(seconds));
+  }
+  for (const [change, expected] of [
+    [(doc) => { doc.scenes[1].lines = [{ id: "act1", text: "還有一句對白。", speaker: "jingwei" }]; }, /empty lines array/],
+    [(doc) => { delete doc.scenes[1].lines; }, /empty lines array|non-empty array/],
+    [(doc) => { delete doc.scenes[1].data.motion; }, /visible-action prompt and motion/],
+    [(doc) => { doc.scenes[1].data.motion = "  "; }, /visible-action prompt and motion/],
+    [(doc) => { doc.scenes[1].data.prompt = ""; }, /visible-action prompt and motion/],
+    [(doc) => { doc.scenes[1].template = "title"; }, /directed shot/],
+    [(doc) => { delete doc.production_policy; delete doc.runtime_spec; }, /complete long-anime production policy/],
+  ]) {
+    const doc = structuredClone(base);
+    change(doc);
+    assert.match(validateVideo(doc).map((error) => error.message).join("\n"), expected);
+  }
+  const ordinary = dramaFixture();
+  ordinary.scenes[1].action_seconds = 4;
+  ordinary.scenes[1].lines = [];
+  assert.ok(validateVideo(ordinary).some((error) => error.path === "scenes[1].action_seconds" && /complete long-anime/.test(error.message)));
+  assert.ok(validateVideo(ordinary).some((error) => error.path === "scenes[1].lines"));
+});
+
+test("only the declared last episode of a closed anime may declare closure", () => {
+  const final = longAnimeEpisode();
+  final.series.episode = 120;
+  final.series.chapter = 10;
+  final.series.closed_ending = true;
+  assert.deepEqual(validateVideo(final), []);
+  for (const [change, expected] of [
+    [(doc) => { doc.series.episode = 119; }, /only the declared final episode/],
+    [(doc) => { doc.series.open_ended = true; }, /only the declared final episode/],
+    [(doc) => { doc.series.closed_ending = false; }, /must deliver its approved closed ending/],
+    [(doc) => { delete doc.series.closed_ending; }, /boolean declaration|must deliver/],
+    [(doc) => { doc.series.open_ended = "false"; }, /boolean declaration/],
+    [(doc) => { doc.series.planned_episodes = 119; }, /positive episode count/],
+    [(doc) => { doc.series.planned_episodes = 0; }, /positive episode count/],
+  ]) {
+    const doc = structuredClone(final);
+    change(doc);
+    assert.match(validateVideo(doc).map((error) => error.message).join("\n"), expected);
+  }
+});
+
+test("long anime rejects freeze and slow fitting while ordinary drama retains both", () => {
+  for (const fit of ["freeze", "slow"]) {
+    const anime = longAnimeEpisode();
+    anime.scenes[1].data.fit = fit;
+    assert.ok(validateVideo(anime).some((error) => error.path === "scenes[1].data.fit" && /frozen tails or slowed clips/.test(error.message)));
+    const ordinary = dramaFixture();
+    ordinary.scenes[1].data.fit = fit;
+    assert.deepEqual(validateVideo(ordinary), []);
+  }
+});
 
 test("the drama example is valid and lints clean", () => {
   assert.deepEqual(validateVideo(dramaFixture()), []);
@@ -408,7 +527,7 @@ test("a drama's status walks the media steps in order, each bound to its hashes"
 
   const speech = speechHash(project.doc, project.lexicon);
   const visual = visualHash(project.doc);
-  write("timeline.json", { ...estimateTimeline(project.doc), speech_hash: speech });
+  const audioTimeline = writeAudioFixture({ ...estimateTimeline(project.doc), speech_hash: speech }, box.workdir);
   await approve({ gate: "audio", ...places });
   assert.equal((await status()).next.id, "keyframes drawn");
   write("keyframes/manifest.json", { look_hash: look, visual_hash: visual, shots: { opening: { needs_review: true } } });
@@ -426,10 +545,78 @@ test("a drama's status walks the media steps in order, each bound to its hashes"
   write("music/manifest.json", { mix_hash: mixHash(project.doc) });
   assert.equal((await status()).next.id, "video assembled");
   writeFileSync(path.join(box.workdir, "final.mp4"), "");
-  write("checks.json", { ok: true, speech_hash: speech, visual_hash: visual, look_hash: look, clips_hash: "c0", subtitles_hash: subtitlesHash(project.doc), mix_hash: mixHash(project.doc) });
+  write("checks.json", { ok: true, narration_sha256: audioTimeline.audio_evidence.narration_sha256, speech_hash: speech, visual_hash: visual, look_hash: look, clips_hash: "c0", subtitles_hash: subtitlesHash(project.doc), mix_hash: mixHash(project.doc) });
   assert.equal((await status()).next.id, "video assembled", "the checks must name the clips that were joined");
-  write("checks.json", { ok: true, speech_hash: speech, visual_hash: visual, look_hash: look, clips_hash: "c1", subtitles_hash: subtitlesHash(project.doc), mix_hash: mixHash(project.doc) });
+  write("checks.json", { ok: true, narration_sha256: audioTimeline.audio_evidence.narration_sha256, speech_hash: speech, visual_hash: visual, look_hash: look, clips_hash: "c1", subtitles_hash: subtitlesHash(project.doc), mix_hash: mixHash(project.doc) });
   assert.equal((await status()).next.id, "captions written");
+});
+
+test("illustrated slides are drawn as a printmaker's brief and lint keeps their pictures varied (docs/videos/ILLUSTRATED.md §畫面不像 AI)", async () => {
+  const { PRESETS, SLIDES_PRESET, cameraMove, pictureVarietyProblems, shotProblems, SAME_MOVE_RUN_MAX, MOTIF_MIN_SHOTS, MOTIF_SHARE_WARN } = await import("./drama.mjs");
+  const { estimateTimeline } = await import("./timeline.mjs");
+  const preset = PRESETS[SLIDES_PRESET];
+  assert.match(preset.style, /^hand-drawn editorial illustration for a printed magazine feature/);
+  assert.match(preset.style, /paper grain and a little misregistration/);
+  assert.match(preset.style, /small simple people with dot eyes or seen from behind/);
+  for (const word of ["glossy", "faceless mannequin", "mirror symmetry", "text", "logo", "real person's likeness", "mascot", "extra fingers"]) assert.ok(preset.negative.includes(word), word);
+  assert.ok(preset.style.length <= 600 && preset.negative.length <= 400);
+  // The subject stays where a Short's 9:16 crop keeps it; nothing pushes it to one side.
+  assert.match(preset.style, /one clear focal point in the centre third of the frame/);
+  assert.doesNotMatch(`${preset.style} ${preset.negative}`, /off-centre|centred layout/);
+  // The camera words fold to their move, the camera direction first and then the motion prompt,
+  // as assemble reads them; a shot that names none drifts.
+  assert.equal(cameraMove({ camera: "slow push in" }), "push in");
+  assert.equal(cameraMove({ camera: "pan right along the shelf" }), "pan right");
+  assert.equal(cameraMove({ camera: "handheld" }), "drift");
+  assert.equal(cameraMove({ camera: "handheld", motion: "slow push in" }), "push in");
+  assert.equal(cameraMove({ camera: "pan left", motion: "zoom in" }), "pan left");
+  assert.equal(cameraMove({}), "drift");
+  // The example keeps the rules; a drama is not held to them.
+  const doc = illustratedFixture();
+  assert.deepEqual(pictureVarietyProblems(doc), { errors: [], warnings: [] });
+  assert.deepEqual(pictureVarietyProblems(dramaFixture()), { errors: [], warnings: [] });
+  const shots = doc.scenes.filter((scene) => scene.template === "shot");
+  // Three stills in a row under one move is an error (the second is allowed).
+  assert.equal(SAME_MOVE_RUN_MAX, 2);
+  const run = illustratedFixture();
+  run.scenes.find((scene) => scene.id === "desk").data.camera = "push in";
+  assert.deepEqual(pictureVarietyProblems(run).errors, []);
+  run.scenes.find((scene) => scene.id === "clock").data.camera = "dolly in";
+  const errors = pictureVarietyProblems(run).errors;
+  assert.deepEqual(errors.map((error) => error.path), ["scenes[3] (clock).data.camera"]);
+  assert.match(errors[0].message, /3 stills in a row under "push in"; alternate the moves/);
+  assert.ok(shotProblems(run, estimateTimeline(run)).errors.some((error) => error.path === "scenes[3] (clock).data.camera"), "lint reads it through shotProblems");
+  // No shot size, or the look's own words, are warnings gathered per video, not per shot.
+  const flat = illustratedFixture();
+  flat.scenes.find((scene) => scene.id === "podium").data.prompt = "flat editorial illustration of a podium with three trophies, deep teal ground, warm cream shapes";
+  flat.scenes.find((scene) => scene.id === "race").data.prompt = "two runners on a track at night, amber floodlight";
+  const warnings = pictureVarietyProblems(flat).warnings;
+  assert.equal(warnings.length, 2, JSON.stringify(warnings));
+  assert.match(warnings[0].message, /^2 of 5 pictures name no shot size .*: say how close the camera is in podium, race$/);
+  assert.match(warnings[1].message, /^2 of 5 pictures restate the look \("flat editorial illustration", "amber"\); the look adds the style and the palette, the prompt describes the picture: podium, race$/);
+  // Prompts written as the guide asks raise nothing: the sizes it names are sizes here, a noun
+  // that happens to be a palette word is not the look, and neither a stopword's plural nor the
+  // shot-size word every prompt opens with is a motif.
+  const guided = illustratedFixture();
+  const written = [
+    "Medium: a baker kneading dough at a workshop bench before dawn, flour on the boards, figures passing the window",
+    "Close up of a kettle on a stove, steam against a tiled wall, figures reflected in the metal",
+    "Extreme close up of a key in a worn lock, a thumb on the bow",
+    "Medium, a harbour at dusk, a child holding an ice cream cone beside two figures on the quay",
+    "Medium view of a classroom after hours, chairs stacked on benches, one coat left on a hook",
+  ];
+  guided.scenes.filter((scene) => scene.template === "shot").forEach((scene, index) => { scene.data.prompt = written[index]; });
+  guided.scenes.push({ id: "sixth", template: "shot", data: { prompt: "Medium shot of a market stall, a vendor weighing fruit on brass scales, crates behind", camera: "pull out", visual: "still" }, lines: [{ id: "s6zz", text: "第六張。" }] });
+  assert.deepEqual(pictureVarietyProblems(guided), { errors: [], warnings: [] });
+  // A place or an object in more than a third of the pictures, once there are enough to count.
+  assert.equal(MOTIF_MIN_SHOTS, 6);
+  assert.equal(MOTIF_SHARE_WARN, 1 / 3);
+  const desks = illustratedFixture();
+  const extra = shots.map((scene, index) => ({ ...scene, id: `more-${index}`, data: { ...scene.data, prompt: `Close-up of a wooden desk with a brass lamp ${index}`, camera: ["pull out", "tilt up", "drift", "pan left", "push in"][index] }, lines: [{ id: `m${index}zz`, text: "再一張。" }] }));
+  desks.scenes.push(...extra);
+  const motifs = pictureVarietyProblems(desks).warnings.filter((warning) => /pictures \(a third is plenty\)/.test(warning.message));
+  assert.deepEqual(motifs.map((warning) => warning.message), [`"lamp" is in 6 of 10 pictures (a third is plenty): give each chapter its own place and props so the video travels`, `"desk" is in 5 of 10 pictures (a third is plenty): give each chapter its own place and props so the video travels`]);
+  assert.equal(pictureVarietyProblems(desks).errors.length, 0);
 });
 
 test("a still shot carries no end frame: it describes a clip's last frame and would be bought unseen", () => {

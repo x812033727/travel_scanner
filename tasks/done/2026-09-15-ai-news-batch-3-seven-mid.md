@@ -61,7 +61,7 @@ from 2026-07-08 was never covered. The site owner picked these seven on 2026-09-
 
 ```bash
 cd apps/api
-PY=/c/Users/x8120/mokaair/apps/api/.venv/Scripts/python.exe   # or uv run python
+PY=<repo>/apps/api/.venv/Scripts/python.exe   # or uv run python
 for s in $($PY -c "import json;print(' '.join(e['slug'] for e in json.load(open('../../docs/ai-news-2026-09-mid/manifest.json',encoding='utf-8'))))"); do $PY ../../docs/ai-news-2026-09-mid/check_article.py $s --full --assets; done
 $PY -m app.guides.pack_cli lint --kind life
 uv run pytest tests/test_guides_content_pack.py tests/test_guides_content_links.py

@@ -52,12 +52,12 @@ description.
 ## How to verify
 
 Preparation evidence is outside the repository at
-`C:\Users\x8120\.codex\article-localization-release\batch015`.
+`<home>\.codex\article-localization-release\batch015`.
 
 ```text
 npm run check:tasks
-python -m json.tool C:\Users\x8120\.codex\article-localization-release\batch015\live-source.json
-python -m json.tool C:\Users\x8120\.codex\article-localization-release\batch015\baseline-metadata.json
+python -m json.tool <home>\.codex\article-localization-release\batch015\live-source.json
+python -m json.tool <home>\.codex\article-localization-release\batch015\baseline-metadata.json
 ```
 
 Later implementation must run the scoped content lint, numeric/link/description guards,
@@ -66,7 +66,7 @@ source-version conflict tests.
 
 ## Notes
 
-- Worktree: `C:\Users\x8120\.codex\worktrees\article-localization-batch015-thailand`.
+- Worktree: `<home>\.codex\worktrees\article-localization-batch015-thailand`.
   Base: `c54fd5ca4754203f7d43315fa153ffc42fb06980`.
 - Fresh production capture at `2026-09-22T12:42:01.818653+08:00`: article v2;
   only zh-TW locale v8/published v8; normalized source SHA-256
@@ -131,7 +131,7 @@ all twenty public-page screenshots. API sitemap pagination returned 1,852 unique
 article-language rows; all occurred in the XML sitemap. Final host revision,
 journals and health passed, and the deployment hold was cleared at 08:29:07 UTC.
 
-External evidence under `C:/Users/x8120/.codex/article-localization-release/`:
+External evidence under `<home>/.codex/article-localization-release/`:
 
 - `batch015-016-delivery-20260922.json`, SHA-256
   `0c2e025e12c2f448491c11c7a40cd31e38346c72542bcd4e3b571eccfd6ff0af`.

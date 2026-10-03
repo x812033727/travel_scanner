@@ -4,7 +4,7 @@
 - 查核日：2026-09-23（台北）
 - 內容包：`apps/api/app/guides/content/ai-news-meta-one-subscription-20260915.json`
 - 研究紀錄：`docs/ai-news-2026-09-late/research/ai-news-meta-one-subscription-20260915.json`
-- 第一輪報告：`C:\Users\x8120\mokaair-work\news47\factcheck\ai-news-meta-one-subscription-20260915-round1.md`
+- 第一輪報告：`<home>\mokaair-work\news47\factcheck\ai-news-meta-one-subscription-20260915-round1.md`
 - 覆核 62 條：CONFIRMED 50／CHANGED 12／NOT FOUND 0
 - 事實類更動 8 處、協調者裁定 4 處（幣別改寫波及全篇；「併品牌」框架的裁定在交件後追加，見第 8 節）
 
@@ -12,7 +12,7 @@
 
 UA 一律 `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，同一主機間隔 ≥2 秒；
 UA、標頭、查詢字串、表單都沒有帶入任何人的姓名或 email。原始檔留在
-`C:\Users\x8120\mokaair-work\news47\_r2raw\ai-news-meta-one-subscription-20260915\`。
+`<home>\mokaair-work\news47\_r2raw\ai-news-meta-one-subscription-20260915\`。
 
 | # | 網址 | HTTP | bytes | 轉址 | body 是否為正文 |
 | --- | --- | --- | --- | --- | --- |

@@ -5,6 +5,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { ROOT } from "../core/paths.mjs";
+import { LOCALIZATION_RETENTION_FILE, localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
 import { STATE_FILE as FLOW_STATE_FILE } from "./flow.mjs";
 import { STORY_CHAPTERS_DIR, STORY_PAGES_DIR } from "./story.mjs";
 import { DEFAULT_DAYS, PREVIEW, retentionFrom, roundLines, STATE_FILE, TARGETS, targetRefusal, tidiedNote, tidyBase, tidyRound } from "./tidy.mjs";
@@ -111,6 +112,76 @@ function assertUntouched(dir) {
   for (const name of Object.keys(MEDIA)) assert.ok(exists(dir, name), `${name} is still there`);
   assert.equal(autoJson(dir).tidied_at, undefined);
 }
+
+const localizationProduction = () => ({ source_binding: { source_sha256: "a".repeat(64) }, profile: { phases: { primary: { locale: "zh-TW" }, localization: { locales: ["ja", "ko", "en"], start_after: "approved-chinese-final", readiness: "planned-not-implemented-for-drama" } } } });
+
+test("Chinese-first source media survives a decided empty language choice, old age and a later drop", () => {
+  const where = place();
+  const slug = "planned-e001";
+  const dir = finishedVideo(where.work, slug, { published: daysAgo(90), state: { series: { slug: "planned", episode: 1 } } });
+  const doc = { localization_plan: localizationPlan(localizationProduction()) };
+  put(where.repo, `docs/videos/${slug}/video.json`, JSON.stringify(doc));
+  for (const site of [[listing(slug, { locales: {}, languages: {}, publish_approved_at: daysAgo(90) })], [], [listing(slug, { languages: { ja: { dub: { state: "skipped" } } } })]]) {
+    const result = round(where, { site });
+    assert.equal(result.cleared, null);
+    assert.match(result.held[0].why, /planned ja, ko, en cast localization/);
+    assertUntouched(dir);
+  }
+  put(dir, STATE_FILE, JSON.stringify({ ...autoJson(dir), status: "dropped", dropped: { at: daysAgo(90) } }));
+  assert.equal(round(where, { site: [] }).cleared, null, "dropping a video is not an archive/release approval");
+  assertUntouched(dir);
+});
+
+test("legacy series.json and damaged persistent markers both fail closed; dry-run writes nothing", () => {
+  const where = place();
+  const legacy = finishedVideo(where.work, "legacy-e001");
+  put(where.repo, "docs/videos/legacy-e001/series.json", JSON.stringify({ production: localizationProduction() }));
+  const broken = finishedVideo(where.work, "broken-e001");
+  put(broken, LOCALIZATION_RETENTION_FILE, "{invalid");
+  const result = round(where, { site: [listing("legacy-e001"), listing("broken-e001")], dryRun: true });
+  assert.equal(result.cleared, null);
+  assert.deepEqual(result.held.map((entry) => entry.slug).sort(), ["broken-e001", "legacy-e001"]);
+  assert.ok(!exists(legacy, LOCALIZATION_RETENTION_FILE), "a read-only dry-run does not backfill records");
+  assert.equal(readFileSync(path.join(broken, LOCALIZATION_RETENTION_FILE), "utf8"), "{invalid");
+  assertUntouched(legacy);
+  assertUntouched(broken);
+});
+
+test("the workdir promise survives loss of video.json and series.json, and keeps the compilation", () => {
+  const where = place();
+  const episode = finishedVideo(where.work, "planned-e001", { state: { series: { slug: "planned", episode: 1, compilation: true } } });
+  writeLocalizationRetention(episode, { slug: "planned-e001", seriesSlug: "planned", production: localizationProduction() });
+  const whole = finishedVideo(where.work, "planned-full", { state: { compilation: { series: "planned" } } });
+  const result = round(where, { site: [listing("planned-e001"), listing("planned-full")] });
+  assert.equal(result.cleared, null);
+  assert.equal(result.held.length, 2);
+  assert.match(result.held.find((entry) => entry.slug === "planned-full").why, /compilation includes planned-e001/);
+  assertUntouched(episode);
+  assertUntouched(whole);
+});
+
+test("a compilation retains sources even when its episode is no longer in the work-state index", () => {
+  const where = place();
+  const whole = finishedVideo(where.work, "planned-full", { state: { compilation: { series: "planned" } } });
+  put(where.repo, "docs/videos/planned-full/video.json", JSON.stringify({ compilation: { episodes: ["planned-e001"] } }));
+  put(where.repo, "docs/videos/planned-e001/series.json", JSON.stringify({ production: localizationProduction() }));
+  const result = round(where, { site: [listing("planned-full")] });
+  assert.equal(result.cleared, null);
+  assert.match(result.held[0].why, /planned-e001/);
+  assertUntouched(whole);
+});
+
+test("a production hold leaves unrelated completed slides eligible for normal cleanup", () => {
+  const where = place();
+  const planned = finishedVideo(where.work, "planned-e001");
+  put(where.repo, "docs/videos/planned-e001/video.json", JSON.stringify({ localization_plan: localizationPlan(localizationProduction()) }));
+  const slides = finishedVideo(where.work, "slides-video");
+  put(where.repo, "docs/videos/slides-video/video.json", JSON.stringify({ format: "slides" }));
+  const result = round(where, { site: [listing("planned-e001"), listing("slides-video")] });
+  assert.equal(result.cleared.slug, "slides-video");
+  assert.ok(!exists(slides, "audio/k7p2.wav"));
+  assertUntouched(planned);
+});
 
 test("the tidy reads the same auto.json the flow writes, and keeps the site's seven days", () => {
   assert.equal(STATE_FILE, FLOW_STATE_FILE);

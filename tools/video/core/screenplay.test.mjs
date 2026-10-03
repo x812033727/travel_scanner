@@ -107,3 +107,67 @@ test("a series episode's status waits for the script gate between the check and 
   writeScreenplay(box.dir, project.doc);
   assert.equal((await status()).next.id, "script approved", "new timing cannot reuse the previous script approval after rechecking");
 });
+
+const animeActionEpisode = () => {
+  const doc = episode();
+  doc.category = "anime";
+  doc.look.preset = "anime-2d";
+  doc.production_policy = "long-anime-v1";
+  doc.runtime_spec = { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 };
+  doc.target_minutes = [22, 22];
+  doc.series = { ...doc.series, kind: "series", genre: "custom", lead: "ensemble", planned_episodes: 120, open_ended: false, closed_ending: false };
+  for (const scene of doc.scenes) if (scene.template === "shot") scene.data.fit = "trim";
+  const shot = doc.scenes.find((scene) => scene.template === "shot");
+  shot.lines = [];
+  shot.action_seconds = 6;
+  shot.data.prompt = "A girl rescues a wounded worker beside a broken pipe";
+  shot.data.motion = "the girl pulls the worker away from escaping steam";
+  return doc;
+};
+
+test("native silent actions are visible narrative and invalidate script evidence without changing dialogue", async () => {
+  const { scriptCheckBinding, scriptCheckMatches } = await import("./script-check.mjs");
+  const original = animeActionEpisode();
+  assert.deepEqual(validateVideo(original), []);
+  const before = narrativeHash(original);
+  const check = scriptCheckBinding(original);
+  const text = screenplay(original);
+  const action = scriptScenes(original).find((scene) => scene.action);
+  assert.deepEqual(action.action, { description: "A girl rescues a wounded worker beside a broken pipe", motion: "the girl pulls the worker away from escaping steam", seconds: 6 });
+  assert.match(text, /無台詞動作（6 秒）/);
+  assert.ok(text.includes(action.action.description) && text.includes(action.action.motion));
+  for (const [field, value] of [["prompt", "A girl pushes a wounded worker into escaping steam"], ["motion", "the girl pushes the worker toward the broken pipe"], ["action_seconds", 7]]) {
+    const changed = structuredClone(original);
+    const shot = changed.scenes.find((scene) => scene.action_seconds);
+    if (field === "action_seconds") shot.action_seconds = value;
+    else shot.data[field] = value;
+    assert.deepEqual(changed.scenes.map((scene) => scene.lines), original.scenes.map((scene) => scene.lines), "dialogue did not change");
+    assert.notEqual(narrativeHash(changed), before, `${field} changes the approved action`);
+    assert.notEqual(screenplay(changed), text);
+    assert.equal(scriptCheckMatches(check, changed), false, `${field} invalidates the actual verifier binding`);
+  }
+  const spoken = structuredClone(original);
+  const spokenShot = spoken.scenes.find((scene) => scene.template === "shot" && scene.lines.length);
+  spokenShot.data.prompt += ", evening light";
+  spokenShot.data.motion = "a gentle camera pan";
+  assert.equal(narrativeHash(spoken), before, "ordinary spoken media direction remains independent of narrative approval");
+  assert.equal(screenplay(spoken), text);
+  assert.equal(scriptCheckMatches(check, spoken), true);
+});
+
+test("edited native action renews the owner script gate and script.md SHA without dialogue changes", async () => {
+  const { approve, approvalState, sha256File } = await import("./approvals.mjs");
+  const box = sandbox("fixture-drama", "drama");
+  const doc = animeActionEpisode();
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  mkdirSync(box.workdir, { recursive: true });
+  const file = writeScreenplay(box.dir, doc);
+  const before = await sha256File(file);
+  await approve({ gate: "script", docDir: box.dir, workdir: box.workdir });
+  assert.equal((await approvalState({ gate: "script", docDir: box.dir, workdir: box.workdir })).status, "approved");
+  doc.scenes.find((scene) => scene.action_seconds).data.motion = "the girl pushes the worker toward escaping steam";
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  writeScreenplay(box.dir, doc);
+  assert.notEqual(await sha256File(file), before, "rescue→harm changes the exact owner-reviewed artifact");
+  assert.equal((await approvalState({ gate: "script", docDir: box.dir, workdir: box.workdir })).status, "stale");
+});

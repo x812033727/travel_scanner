@@ -96,7 +96,7 @@ alternate startup was attempted, and the newly started fixture API was stopped.
 
 Two screenshots from the later passing production-build Playwright suite are
 preserved separately under
-`C:/Users/x8120/.codex/visualizations/2026/09/10/korea-dual-maps/`:
+`<home>/.codex/visualizations/2026/09/10/korea-dual-maps/`:
 `playwright-fixture-seoul-390.png` and `playwright-fixture-busan-1280.png`.
 These use labelled API/SDK fixtures and are not substitutes for the deleted
 installed-Chrome screenshots or evidence of live provider operation. They are

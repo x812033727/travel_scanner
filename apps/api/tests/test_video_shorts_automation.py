@@ -841,6 +841,149 @@ async def test_a_dropped_topic_drops_its_video_only_while_nothing_reached_the_ow
     assert audits[0].actor_user_id is None
 
 
+async def add_slot(site: Site, starts_at: datetime, **fields: Any) -> UUID:
+    async with site.session() as session:
+        slot = VideoShortsSlot(id=uuid4(), starts_at=starts_at, phase=1, **fields)
+        session.add(slot)
+        await session.commit()
+        return slot.id
+
+
+@pytest.mark.asyncio
+async def test_a_dropped_topic_gives_its_planned_slots_back_to_the_plan(site: Site) -> None:
+    async with site.session() as session:
+        await topics.import_campaign(session, site.owner, campaign(), NOW)
+    await configure(site)
+
+    async def planned(starts_at: datetime, slug: str, **fields: Any) -> UUID:
+        values: dict[str, Any] = {"status": "planned", "line": "lab", "series": "daily"}
+        values.update(fields)
+        return await add_slot(site, starts_at, topic_slug=slug, **values)
+
+    worker = "shorts-receipt-total"
+    ahead = await planned(NOW + timedelta(days=2), worker)
+    past = await planned(NOW - timedelta(hours=1), worker)
+    other = await planned(NOW + timedelta(days=3), "shorts-poster-blind")
+    owner = "shorts-prompt-check"
+    owned = await planned(NOW + timedelta(days=4), owner)
+    # The topic's own Short already holds this one: it stays the Short's.
+    held = await planned(
+        NOW + timedelta(days=5), owner, status="assigned", project_slug="shorts-prompt-check-old"
+    )
+    async with site.session() as session:
+        await jobs.start_topic(session, worker, NOW)
+    async with site.session() as session:
+        await jobs.finish_topic(session, worker, DoneIn(outcome="dropped", note="不成片"), NOW)
+        await topics.patch_topic(session, site.owner, owner, TopicPatch(dropped=True), NOW)
+    async with site.session() as session:
+        rows = {row.id: row for row in await session.scalars(select(VideoShortsSlot))}
+        audit = await session.scalar(
+            select(AdminAuditLog).where(AdminAuditLog.action == "video_shorts_topic_changed")
+        )
+    assert audit is not None and audit.metadata_json["freed_slots"] == 1
+    for freed in (ahead, owned):
+        slot = rows[freed]
+        assert (slot.status, slot.topic_slug, slot.line, slot.series, slot.project_slug) == (
+            "open",
+            None,
+            None,
+            None,
+            None,
+        )
+        assert slot.updated_at == NOW and plan.is_open(slots.slot_facts(slot))
+    assert (rows[past].status, rows[past].topic_slug) == ("planned", worker), "past is history"
+    assert (rows[other].status, rows[other].topic_slug) == ("planned", "shorts-poster-blind")
+    assert (rows[held].status, rows[held].topic_slug, rows[held].project_slug) == (
+        "assigned",
+        owner,
+        "shorts-prompt-check-old",
+    )
+    # A freed slot leaves its line's weekly quota, so the next plan may give it any line.
+    counts = plan.week_counts([slots.slot_facts(row) for row in rows.values()], TAIPEI)
+    assert sum(counts.values()) == 3
+
+
+@pytest.mark.asyncio
+async def test_a_topic_dropped_before_its_short_was_made_leaves_the_month_s_cap(
+    site: Site,
+) -> None:
+    async with site.session() as session:
+        await topics.import_campaign(session, site.owner, campaign(), NOW)
+    await configure(site, max_per_month=1)
+    gave_up = DoneIn(outcome="dropped", note="找不到第二段")
+
+    async def start(slug: str) -> None:
+        async with site.session() as session:
+            await jobs.start_topic(session, slug, NOW)
+
+    async def started() -> int:
+        async with site.session() as session:
+            return await jobs._started_this_month(session, NOW)
+
+    await start("shorts-receipt-total")
+    async with site.session() as session:
+        await jobs.finish_topic(session, "shorts-receipt-total", gave_up, NOW)
+    assert await started() == 0, "nothing was made: its video was dropped empty"
+    await start("shorts-poster-blind")
+    async with site.session() as session:
+        video = await session.scalar(
+            select(VideoProject).where(VideoProject.slug == "shorts-poster-blind")
+        )
+        assert video is not None
+        session.add(
+            VideoReview(
+                project_id=video.id,
+                gate="final",
+                content_sha256="f" * 64,
+                summary="final",
+                status="pending",
+            )
+        )
+        await session.commit()
+    async with site.session() as session:
+        await jobs.finish_topic(session, "shorts-poster-blind", gave_up, NOW)
+    assert await started() == 1, "a Short that reached the owner was made"
+    async with site.session() as session:
+        with pytest.raises(ShortsRefused) as full:
+            await jobs.start_topic(session, "shorts-prompt-check", NOW)
+    assert full.value.code == "video_shorts_month_full"
+    # The owner gives up a topic whose Short is already on YouTube: it was made too.
+    await configure(site, max_per_month=2)
+    await start("shorts-prompt-check")
+    async with site.session() as session:
+        video = await session.scalar(
+            select(VideoProject).where(VideoProject.slug == "shorts-prompt-check")
+        )
+        assert video is not None
+        video.youtube_video_id = "s" * 11
+        await session.commit()
+        await topics.patch_topic(
+            session, site.owner, "shorts-prompt-check", TopicPatch(dropped=True), NOW
+        )
+    assert await started() == 2
+
+
+@pytest.mark.asyncio
+async def test_a_drop_without_a_note_does_not_give_the_video_an_older_note(site: Site) -> None:
+    async with site.session() as session:
+        await topics.import_campaign(session, site.owner, campaign(), NOW)
+        await topics.patch_topic(
+            session, site.owner, "shorts-receipt-total", TopicPatch(note="先做這一支"), NOW
+        )
+    await configure(site)
+    async with site.session() as session:
+        await jobs.start_topic(session, "shorts-receipt-total", NOW)
+    async with site.session() as session:
+        done = await jobs.finish_topic(
+            session, "shorts-receipt-total", DoneIn(outcome="dropped"), NOW
+        )
+        video = await session.scalar(
+            select(VideoProject).where(VideoProject.slug == "shorts-receipt-total")
+        )
+    assert done.note == "先做這一支", "the topic keeps the owner's note"
+    assert video is not None and video.dropped_note == "Shorts 題目放棄，影片還沒有任何內容"
+
+
 @pytest.mark.asyncio
 async def test_a_start_respects_the_switch_the_pause_the_month_and_the_budget(
     site: Site,

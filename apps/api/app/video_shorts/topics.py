@@ -38,6 +38,7 @@ from app.video_shorts.schemas import (
     TopicsWrittenOut,
 )
 from app.video_shorts.settings import settings_row
+from app.video_shorts.slots import unplan
 
 # What the server cannot do for an experiment yet, and what it would take. The subscription
 # runner (app.video_automation.subscription) turns every tool off and takes text only, so a
@@ -588,8 +589,11 @@ async def patch_topic(
         row.release_order = payload.release_order
     if "note" in payload.model_fields_set:
         row.note = payload.note or None
+    freed = 0
     if payload.dropped is True:
         row.status = "dropped"
+        # Its slots still to come go back to the plan for another topic.
+        freed = await unplan(session, slug, moment)
     elif payload.dropped is False and row.status == "dropped":
         row.status = "idea"
     if row.status in EDITABLE:
@@ -605,6 +609,7 @@ async def patch_topic(
                 "changed": sorted(payload.model_fields_set),
                 "before": before,
                 "status": row.status,
+                "freed_slots": freed,
             },
         )
     )

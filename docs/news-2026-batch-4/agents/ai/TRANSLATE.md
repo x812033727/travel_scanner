@@ -2,8 +2,8 @@
 
 你負責把**一篇**已經過兩輪獨立查核的繁中文章翻成四個語言。繁中原稿是唯一依據：翻譯不再查新資料、不增刪事實。發現原稿疑似錯誤時**不要自己改**，寫進回報。
 
-- repo 根目錄（worktree）：`C:/Users/x8120/mokaair/.claude/worktrees/travel-guide-articles-planning-eab8c5`（以下稱 `<ROOT>`）
-- 暫存目錄：`C:/Users/x8120/AppData/Local/Temp/claude/C--Users-x8120-mokaair--claude-worktrees-travel-guide-articles-planning-eab8c5/6bc15b49-339e-47bf-9727-38b4d1d65292/scratchpad`（以下稱 `<SCRATCH>`）
+- repo 根目錄（worktree）：`<repo>/.claude/worktrees/travel-guide-articles-planning-eab8c5`（以下稱 `<ROOT>`）
+- 暫存目錄：`<home>/AppData/Local/Temp/claude/<project-slug>/6bc15b49-339e-47bf-9727-38b4d1d65292/scratchpad`（以下稱 `<SCRATCH>`）
 
 ## 0. 先讀
 
@@ -53,7 +53,7 @@
 **每完成一個語言就先合併那一個語言**，不要四個都寫完才合併（中途被切斷時，已完成的語言才留得下來）：
 
 ```bash
-cd "C:/Users/x8120/mokaair/.claude/worktrees/travel-guide-articles-planning-eab8c5/apps/api" && PYTHONUTF8=1 PYTHONIOENCODING=utf-8 ./.venv/Scripts/python.exe ../../docs/news-2026-batch-4/merge_locale.py <slug> <locale> "<你的檔案路徑>"
+cd "<repo>/.claude/worktrees/travel-guide-articles-planning-eab8c5/apps/api" && PYTHONUTF8=1 PYTHONIOENCODING=utf-8 ./.venv/Scripts/python.exe ../../docs/news-2026-batch-4/merge_locale.py <slug> <locale> "<你的檔案路徑>"
 ```
 
 印出 `REFUSED:` 就修你的檔案再合併。順序 en、ja、ko、zh-CN。
@@ -71,7 +71,7 @@ cd "C:/Users/x8120/mokaair/.claude/worktrees/travel-guide-articles-planning-eab8
 ## 4. 自檢
 
 ```bash
-cd "C:/Users/x8120/mokaair/.claude/worktrees/travel-guide-articles-planning-eab8c5/apps/api" && PYTHONUTF8=1 PYTHONIOENCODING=utf-8 ./.venv/Scripts/python.exe ../../docs/news-2026-batch-4/check_article.py <slug> --full
+cd "<repo>/.claude/worktrees/travel-guide-articles-planning-eab8c5/apps/api" && PYTHONUTF8=1 PYTHONIOENCODING=utf-8 ./.venv/Scripts/python.exe ../../docs/news-2026-batch-4/check_article.py <slug> --full
 ```
 
 不帶 `--assets`（圖像是下一階段）。允許留下的 FAIL 只有兩種：「link text must be the title of ai-news-2026-january-september-index」（索引改名還沒套用），以及「link text must be the title of <第二個連結的目標>」或該目標還沒有該語言——其他 FAIL 都要修到過。

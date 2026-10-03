@@ -18,7 +18,6 @@ from app.i18n import Locale
 # contains them. They are tracked here instead of widening a circle to swallow them;
 # fixing the coordinates is a separate data change that should shrink this set.
 AREA_MISPLACED_SEEDS = {
-    "wikidata-q4745722",  # OKA 美國村: Q4745722 is Osaka's Amerikamura, not Chatan
     "deep-icn-q13902883",  # ICN 世宗村: coordinates sit in Mapo, 4 km from Seochon
     "deep-pus-q135683915",  # PUS 흰여울문化마을: coordinates near Seomyeon, not Yeongdo
     "gye-q491088",  # GYE 雞林: coordinates sit 4 km north of the Gyerim forest
@@ -116,6 +115,29 @@ def test_seed_spot_checks() -> None:
     for slug, code in expected.items():
         seed = by_slug[slug]
         assert resolve_area_code(seed.city_code, seed.latitude, seed.longitude) == code, slug
+
+
+def test_okinawa_american_village_is_in_chatan_not_osaka() -> None:
+    """The OKA 美國村 seed used to carry Q4745722, Osaka's アメリカ村, and its coordinate.
+
+    It now names Mihama American Village in Chatan. The slug keeps the old id on purpose:
+    it is the public identity of the row already in production, and keeping it lets the
+    seeder correct that row in place instead of adding a second 美國村 beside it.
+    """
+
+    by_slug = {seed.slug: seed for seed in HOTSPOT_SEEDS}
+    okinawa = by_slug["wikidata-q4745722"]
+    assert okinawa.city_code == "OKA"
+    assert okinawa.wikidata_item_id is not None
+    assert okinawa.wikidata_item_id != "Q4745722"
+    # Okinawa Island, roughly; Osaka's アメリカ村 is at 34.67 N, 135.50 E.
+    assert 26.0 <= okinawa.latitude <= 26.9, okinawa.latitude
+    assert 127.6 <= okinawa.longitude <= 128.4, okinawa.longitude
+    assert resolve_area_code("OKA", okinawa.latitude, okinawa.longitude) == "chatan"
+    # The freed id belongs to the Osaka shop row, which still lands in an Osaka area.
+    osaka = by_slug["kix-amerikamura"]
+    assert osaka.wikidata_item_id == "Q4745722"
+    assert resolve_area("KIX", osaka.latitude, osaka.longitude) is not None
 
 
 def test_electronics_circles_preserve_neighbouring_areas() -> None:

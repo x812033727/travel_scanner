@@ -92,7 +92,7 @@ in the release branch. No import, PR or publication is authorized by this task a
 ## Notes
 
 - Main tree: `5648b84043a09e9db7f773d7a080260d39f9d453`.
-- Live source snapshot: `C:\Users\x8120\.codex\article-localization-release\batch007-tokyo-live-source.json`,
+- Live source snapshot: `<home>\.codex\article-localization-release\batch007-tokyo-live-source.json`,
   captured 2026-09-20T12:44:58Z; SHA-256
   `cadd602ab7da7865dc60295fe8af9cab0861741fec35734b13d3de575fd5ab69`.
 - All four articles were `published`, active, `article_version=2`, `zh-TW`
@@ -101,9 +101,9 @@ in the release branch. No import, PR or publication is authorized by this task a
   Use the live published document as translation source; preserve current attribution.
 - Source rechecked by another production read-only transaction before revision:
   all four article/source versions and published document hashes were unchanged.
-  Recheck capture: `C:\Users\x8120\.codex\article-localization-release\batch007-tokyo-live-source-refresh.json`.
+  Recheck capture: `<home>\.codex\article-localization-release\batch007-tokyo-live-source-refresh.json`.
 - Updated provisional 16-document handoff:
-  `C:\Users\x8120\.codex\article-localization-release\batch007-tokyo-provisional\review-handoff.json`,
+  `<home>\.codex\article-localization-release\batch007-tokyo-provisional\review-handoff.json`,
   SHA-256 `787c615ea9e6ccec5b61d1ea8518bd1ad25f676e4ddeeb6d5523b7037c1f2661`.
   It includes 60 translated summary items, 16 separately translated image descriptions,
   complete source/version bindings, corrected document/SVG hashes, and 1600×900 plus
@@ -126,7 +126,7 @@ in the release branch. No import, PR or publication is authorized by this task a
 - Source-only PR [#603](https://github.com/x812033727/travel_scanner/pull/603)
   is open for review; the full five-language task is still unfinished.
 - The independent review at
-  `C:\Users\x8120\.codex\article-localization-release\batch007-tokyo-provisional\independent-review-HOLD.md`
+  `<home>\.codex\article-localization-release\batch007-tokyo-provisional\independent-review-HOLD.md`
   identified seven zh-TW source issues; its SHA-256 is
   `912f4038b3d0bc98ac0aeb6257813d0d730fe79ceadc4b953bbbe26d26aae48f`.
 - A narrow source-correction PR changes only the existing Narita, Disney and transit
@@ -178,7 +178,7 @@ Fresh read-only source receipt at 2026-09-22T06:35:52Z confirms all seven prior
 source findings are fixed live; Narita/Disney/transit are published zh-TW v8 and
 stay is v6. Source-readiness receipt SHA256
 `be24da5c0685cb96c55921b983674bbf24d5062df95b522bffd9bcd905d4f433`
-under `C:/Users/x8120/.codex/article-localization-release/batch007-resumption-20260922`.
+under `<home>/.codex/article-localization-release/batch007-resumption-20260922`.
 Remaining: 100 source-driven translated leaf updates, 32 same-locale site-link
 rewrites, four transit price cards, and all 16 diagram visual repairs/reviews.
 Stay's sole unpublished repository /description edit must be preserved through
@@ -238,7 +238,7 @@ outside Git. The final review binds all five assets and twenty desktop/mobile
 pan renders, and independently reruns the numeric guard over all eighteen final
 diagrams without exceptions.
 
-Evidence under `C:/Users/x8120/.codex/article-localization-release/batch007-resumption-20260922/`:
+Evidence under `<home>/.codex/article-localization-release/batch007-resumption-20260922/`:
 
 - `revised-assets/transit-final-v4/root-independent-review-pass.json`, SHA-256
   `908332306b40007b3c0ac94a53df47a36979258d26d6884f8229cfe5f06f3d43`.
