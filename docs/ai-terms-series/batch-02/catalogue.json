@@ -1,0 +1,471 @@
+{
+  "batch": "ai-terms-series batch-02",
+  "created_on": "2026-10-03",
+  "locale": "zh-TW",
+  "common": {
+    "kind": "life",
+    "topics": [
+      "ai",
+      "tutorial"
+    ],
+    "destination_id": null,
+    "valid_until": null,
+    "featured": false,
+    "display_order": 100,
+    "index_slug": "ai-terms-index"
+  },
+  "terms": [
+    {
+      "slug": "ai-term-neural-network",
+      "name_zh": "神經網路",
+      "name_en": "Neural Network",
+      "index_group": "foundation",
+      "title_draft": "神經網路（Neural Network）是什麼：由層與權重組成、能從資料學習的函數",
+      "angle": "把神經網路講成「一層層加權計算加非線性轉換、權重靠資料調整」的可學習函數；說清楚生物神經元比喻只到哪裡為止；訓練（前向計算、損失、反向傳播、梯度下降）與使用（推論）兩個階段分開。",
+      "must_cover": [
+        "感知器到多層網路的演進只講到理解所需",
+        "為什麼需要非線性（激活函數）",
+        "反向傳播與梯度下降的白話示例（一個小型分類任務，標明示例）",
+        "參數數量不等於神經元數量，也不等於能力",
+        "與深度學習、Transformer 的關係"
+      ],
+      "must_not": [
+        "不寫「模仿人腦的運作方式」這種無條件說法",
+        "不寫任何模型的參數量"
+      ],
+      "suggested_primary_sources": [
+        "Rosenblatt 1958 Perceptron（Psychological Review）",
+        "Rumelhart, Hinton, Williams 1986 Nature 反向傳播",
+        "LeCun, Bengio, Hinton 2015 Nature〈Deep learning〉",
+        "Google Machine Learning Crash Course 的 Neural networks 單元"
+      ],
+      "links": [
+        "ai-term-deep-learning",
+        "ai-term-machine-learning",
+        "ai-term-model-parameters",
+        "ai-term-inference",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-attention-mechanism",
+      "name_zh": "注意力機制",
+      "name_en": "Attention Mechanism",
+      "index_group": "foundation",
+      "title_draft": "注意力機制（Attention）是什麼：模型怎麼決定要參考哪些 token",
+      "angle": "用 query、key、value 的比對與加權平均說明注意力；區分自注意力與交叉注意力；說明它為什麼讓長距離關係可以直接連起來，以及標準做法的計算量隨序列長度大約呈平方成長。",
+      "must_cover": [
+        "從 Bahdanau 等 2014 的翻譯對齊到 Vaswani 等 2017 只用注意力",
+        "Q、K、V 的白話示例（一句含代名詞的中文句子，標明示例）",
+        "多頭注意力在做什麼（不誇大成各頭有固定語意分工）",
+        "注意力權重不等於模型的理由（Jain & Wallace 2019 與後續 Wiegreffe & Pinter 2019 的反駁兩邊都寫）",
+        "與上下文視窗長度、運算成本的關係"
+      ],
+      "must_not": [
+        "不把注意力寫成人類的專注",
+        "不寫「注意力權重就是解釋」"
+      ],
+      "suggested_primary_sources": [
+        "Bahdanau, Cho, Bengio 2014 arXiv:1409.0473",
+        "Vaswani et al. 2017 arXiv:1706.03762",
+        "Jain & Wallace 2019 arXiv:1902.10186",
+        "Wiegreffe & Pinter 2019 arXiv:1908.04626"
+      ],
+      "links": [
+        "ai-term-transformer",
+        "ai-term-token",
+        "ai-context-window-explained",
+        "ai-term-neural-network",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-inference",
+      "name_zh": "推論",
+      "name_en": "Inference",
+      "index_group": "foundation",
+      "title_draft": "推論（Inference）是什麼：模型訓練完之後，每次回答都在做的計算",
+      "angle": "推論＝用已訓練好的模型處理新輸入產生輸出；和訓練分開（權重不變）；和「推理（reasoning）」在中文裡容易混淆，第一段就講清楚。說明延遲、吞吐量、每次請求的成本從哪來，以及雲端推論與本機推論的差別。",
+      "must_cover": [
+        "訓練與推論的差異表（是否更新權重、頻率、成本結構）",
+        "LLM 推論的兩段：讀入提示（prefill）與逐 token 產生（decode），白話說明為什麼輸出越長越久",
+        "延遲指標：首個 token 時間與完整回答時間",
+        "批次處理、量化、快取等降低推論成本的方法只點名並連結",
+        "中文用語：推論 vs 推理"
+      ],
+      "must_not": [
+        "不寫任何供應商價格或速度數字",
+        "不寫「推論時模型在學習」"
+      ],
+      "suggested_primary_sources": [
+        "Google Machine Learning Glossary 的 inference 條目",
+        "Kwon et al. 2023 vLLM / PagedAttention arXiv:2309.06180",
+        "OpenAI 或 Anthropic 官方文件中談延遲（latency）的頁面",
+        "Pope et al. 2022 Efficiently Scaling Transformer Inference arXiv:2211.05102"
+      ],
+      "links": [
+        "ai-term-test-time-compute",
+        "ai-reasoning-models-explained",
+        "ai-term-quantization",
+        "ai-term-prompt-caching",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-temperature",
+      "name_zh": "溫度",
+      "name_en": "Temperature",
+      "index_group": "context",
+      "title_draft": "溫度（Temperature）是什麼：調整 AI 回答變化程度的取樣參數",
+      "angle": "從「模型每一步給出下一個 token 的機率分布」講起，說明 temperature 怎麼把分布變尖或變平；順帶講 top-p（nucleus sampling）、top-k；明講 temperature 不是正確率旋鈕，設 0 也不保證每次一樣。",
+      "must_cover": [
+        "機率分布與取樣的白話示例（假想的三個候選字與機率，標明示例）",
+        "低溫與高溫各適合什麼任務，以及各自的失敗型態",
+        "top-p 的來源（Holtzman et al. 2019）與為什麼不建議同時大幅調兩個",
+        "官方文件對 temperature 0 不保證確定性的說明（今天在官方頁看到才寫）",
+        "部分模型或介面不開放調整：只寫官方文件寫明的情況，不列型號清單"
+      ],
+      "must_not": [
+        "不寫「溫度越低越準」",
+        "不寫型號與預設值，除非今天在官方頁看到"
+      ],
+      "suggested_primary_sources": [
+        "Holtzman et al. 2019 The Curious Case of Neural Text Degeneration arXiv:1904.09751",
+        "OpenAI API reference 的 temperature／top_p 參數說明",
+        "Anthropic Messages API 文件的 temperature 參數說明",
+        "Google Gemini API 的生成設定（generation config）文件"
+      ],
+      "links": [
+        "ai-term-token",
+        "what-is-a-large-language-model",
+        "ai-hallucination-fact-check",
+        "ai-term-structured-outputs",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-knowledge-cutoff",
+      "name_zh": "知識截止日",
+      "name_en": "Knowledge Cutoff",
+      "index_group": "context",
+      "title_draft": "知識截止日（Knowledge Cutoff）是什麼：模型知道到哪一天，又為什麼不準",
+      "angle": "知識截止日是供應商描述訓練資料時間範圍的標示；說明它和「訓練資料截止日」「可靠知識截止日」等不同說法；截止前的事也不一定知道或知道得對；模型常說不準自己的截止日；網頁搜尋或檢索能補新資訊但帶來新的查核問題。",
+      "must_cover": [
+        "各家文件怎麼標示（只寫今天在官方頁看到的名詞與定義，不列型號日期）",
+        "為什麼越接近截止日的事件資料越少、越不可靠",
+        "示例：問一個截止日後才發生的事，三種常見回答型態與怎麼判讀",
+        "補救：附上資料、檢索、搜尋工具；以及它們各自的失敗點",
+        "與幻覺、過期資訊的差別"
+      ],
+      "must_not": [
+        "不寫任何模型的截止日期",
+        "不寫「截止日前的事都知道」"
+      ],
+      "suggested_primary_sources": [
+        "Anthropic 模型總覽文件中對 training data cutoff 與 reliable knowledge cutoff 的說明",
+        "OpenAI 模型文件頁對 knowledge cutoff 的標示方式",
+        "Google Gemini 模型文件頁的 knowledge cutoff 欄位",
+        "Cheng et al. 2024 Dated Data: Tracing Knowledge Cutoffs in Large Language Models arXiv:2403.12958"
+      ],
+      "links": [
+        "ai-term-pretraining",
+        "ai-term-retrieval-augmented-generation",
+        "ai-hallucination-fact-check",
+        "ai-term-grounding",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-chain-of-thought",
+      "name_zh": "思維鏈",
+      "name_en": "Chain-of-Thought",
+      "index_group": "training",
+      "title_draft": "思維鏈（Chain-of-Thought）是什麼：讓模型寫出中間步驟，以及那些步驟能信多少",
+      "angle": "從 Wei 等 2022 的思維鏈提示與 Kojima 等 2022 的零樣本版本講起，再到推理模型把中間推理內建；重點放在「寫出來的步驟不一定忠實反映模型實際怎麼得出答案」這個研究結論，以及介面顯示的思考摘要不是完整過程。",
+      "must_cover": [
+        "思維鏈提示的形式（少樣本示範步驟 vs 一句請逐步思考），示例標明未實測",
+        "原論文自己的設定與觀察（模型規模、題型），不推廣",
+        "推理模型與思維鏈提示的關係：對推理模型額外要求逐步思考不一定有幫助（只寫官方文件寫到的）",
+        "忠實性：Turpin et al. 2023 與 Anthropic 2025 研究的結論",
+        "讀者怎麼用：把步驟當成可查的主張清單，而不是正確的證明"
+      ],
+      "must_not": [
+        "不寫「顯示步驟就代表答案正確」",
+        "不寫思考摘要等於完整內部過程"
+      ],
+      "suggested_primary_sources": [
+        "Wei et al. 2022 arXiv:2201.11903",
+        "Kojima et al. 2022 arXiv:2205.11916",
+        "Turpin et al. 2023 Language Models Don't Always Say What They Think arXiv:2305.04388",
+        "Anthropic 2025 研究 Reasoning models don't always say what they think（官方頁或 arXiv）",
+        "OpenAI 或 Anthropic 對推理模型提示建議的官方文件"
+      ],
+      "links": [
+        "ai-reasoning-models-explained",
+        "ai-term-test-time-compute",
+        "ai-term-few-shot-prompting",
+        "ai-term-prompt-engineering",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-structured-outputs",
+      "name_zh": "結構化輸出",
+      "name_en": "Structured Outputs",
+      "index_group": "context",
+      "title_draft": "結構化輸出（Structured Outputs）是什麼：讓 AI 照固定格式交資料",
+      "angle": "區分三件常被混用的事：在提示裡要求 JSON、JSON 模式（保證是合法 JSON）、依 JSON Schema 限制輸出（保證符合欄位結構）；再和工具呼叫比較。核心觀念：格式合法不等於內容正確，仍需驗證欄位值。",
+      "must_cover": [
+        "三種做法對照表（保證什麼、不保證什麼）",
+        "JSON Schema 是什麼（規範原文），只講用得到的部分",
+        "示例：從報名信擷取姓名、日期、人數的 schema 與預期輸出，以及拒答、欄位缺值時怎麼處理（標明示例）",
+        "各家官方文件提到的限制（支援的 schema 子集、拒答訊號），只寫今天看到的",
+        "與工具呼叫、提示詞串接的關係"
+      ],
+      "must_not": [
+        "不寫「用了 schema 就不會出錯」",
+        "不列各家支援的模型型號"
+      ],
+      "suggested_primary_sources": [
+        "JSON Schema 規範（json-schema.org）",
+        "OpenAI Structured Outputs 官方指南",
+        "Google Gemini API structured output 文件",
+        "Anthropic 官方文件中關於結構化輸出或 JSON 一致性的頁面"
+      ],
+      "links": [
+        "ai-term-tool-calling",
+        "ai-term-prompt-chaining",
+        "ai-workflow-structured-handoff",
+        "gemini-api-files-structured-output",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-grounding",
+      "name_zh": "接地",
+      "name_en": "Grounding",
+      "index_group": "retrieval",
+      "title_draft": "接地（Grounding）是什麼：讓 AI 的回答有可以對回去的依據",
+      "angle": "這個詞至少有三種用法，要分清楚：生成式 AI 產品裡的「把回答連到可查證來源」（Google 的 Grounding with Google Search 等）、語言學與認知科學的符號接地問題（Harnad 1990）、電腦視覺裡把詞對到圖上位置（visual grounding）。本文主講第一種，另兩種各一段說明。",
+      "must_cover": [
+        "三種用法辨識表",
+        "產品用法的機制：檢索、把結果放進上下文、回答附帶來源對應",
+        "有引用不等於有支持：引用可能只支持一半、或來源本身錯",
+        "示例：問一個公告日期，怎麼逐句核對回答與來源（標明示例）",
+        "與 RAG、幻覺的關係"
+      ],
+      "must_not": [
+        "不寫「接地後就不會幻覺」",
+        "不把符號接地問題寫成已解決或未解決的定論"
+      ],
+      "suggested_primary_sources": [
+        "Google Gemini API Grounding with Google Search 文件",
+        "Google Cloud Vertex AI grounding overview 文件",
+        "Harnad 1990 The Symbol Grounding Problem（Physica D）",
+        "Anthropic Citations 官方文件",
+        "Gao et al. 2023 Enabling Large Language Models to Generate Text with Citations arXiv:2305.14627"
+      ],
+      "links": [
+        "ai-term-retrieval-augmented-generation",
+        "ai-hallucination-fact-check",
+        "gemini-api-search-grounding-citations",
+        "ai-term-knowledge-cutoff",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-ai-alignment",
+      "name_zh": "AI 對齊",
+      "name_en": "AI Alignment",
+      "index_group": "evaluation",
+      "title_draft": "AI 對齊（Alignment）是什麼：讓系統做的事符合人的意圖",
+      "angle": "對齊沒有單一公認定義：寫出至少兩種說法（依使用者意圖行事的意圖對齊；有幫助、誠實、無害這類行為目標；更廣的價值對齊），並寫明各是誰的說法。說明實務上的對齊方法（指令微調、RLHF、憲法式 AI）只是手段，以及對齊、安全防護、內容政策三者的區別。",
+      "must_cover": [
+        "定義分歧表（誰的說法、強調什麼）",
+        "InstructGPT 論文怎麼把對齊操作化",
+        "Anthropic 的 HHH 與憲法式 AI",
+        "對齊失敗的型態：迎合、規格鑽漏洞（specification gaming）各一句並連結",
+        "讀者能做什麼：看清楚某個產品說的對齊是指哪一層"
+      ],
+      "must_not": [
+        "不寫「某模型已經完成對齊」",
+        "不預測 AGI 風險或時程"
+      ],
+      "suggested_primary_sources": [
+        "Ouyang et al. 2022 InstructGPT arXiv:2203.02155",
+        "Askell et al. 2021 A General Language Assistant as a Laboratory for Alignment arXiv:2112.00861",
+        "Bai et al. 2022 Constitutional AI arXiv:2212.08073",
+        "Google DeepMind 2020 Specification gaming 官方文章",
+        "Russell 或 Gabriel 2020 Artificial Intelligence, Values, and Alignment arXiv:2001.09768"
+      ],
+      "links": [
+        "ai-term-rlhf",
+        "ai-term-guardrails",
+        "ai-term-red-teaming",
+        "ai-term-sycophancy",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-synthetic-data",
+      "name_zh": "合成資料",
+      "name_en": "Synthetic Data",
+      "index_group": "training",
+      "title_draft": "合成資料（Synthetic Data）是什麼：用模型產生的資料來訓練模型",
+      "angle": "合成資料有兩條主要用法：訓練 AI 時由模型或程式產生的訓練資料（Self-Instruct、蒸餾）、以及為保護隱私而產生、統計上像真資料的替代資料。本文以第一種為主、第二種一節。重點是品質控管與「模型崩潰」研究講的是什麼、沒講什麼。",
+      "must_cover": [
+        "兩種用法辨識",
+        "Self-Instruct 的流程（原論文設定）",
+        "模型崩潰：Shumailov et al. 2024 Nature 的設定是遞迴只用生成資料；後續研究（如 Gerstgrasser et al. 2024）指出累積真資料時結論不同，兩邊都寫",
+        "隱私用途：合成不自動等於去識別（引 NIST 或官方隱私機構文件）",
+        "示例：用模型產生客服問答再人工抽查的流程（標明示例）"
+      ],
+      "must_not": [
+        "不寫「網路上的 AI 內容會讓所有模型崩潰」",
+        "不寫合成資料一定比真資料好或差"
+      ],
+      "suggested_primary_sources": [
+        "Wang et al. 2022 Self-Instruct arXiv:2212.10560",
+        "Shumailov et al. 2024 Nature〈AI models collapse when trained on recursively generated data〉",
+        "Gerstgrasser et al. 2024 Is Model Collapse Inevitable? arXiv:2404.01413",
+        "NIST 或英國 ICO 等官方機構關於合成資料與隱私的文件"
+      ],
+      "links": [
+        "ai-term-knowledge-distillation",
+        "ai-term-supervised-fine-tuning",
+        "ai-term-pretraining",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-scaling-laws",
+      "name_zh": "縮放定律",
+      "name_en": "Scaling Laws",
+      "index_group": "foundation",
+      "title_draft": "縮放定律（Scaling Laws）是什麼：模型變大、資料變多，表現會怎麼變",
+      "angle": "縮放定律是經驗觀察到的規律：在特定設定下，損失隨參數量、資料量、計算量以冪律下降。講 Kaplan 等 2020 與 Hoffmann 等 2022（Chinchilla）對「固定預算怎麼分配參數與資料」的不同結論，以及後來把縮放概念延伸到推論時計算。明講它不是物理定律、量的是損失不是任何任務的實用能力。",
+      "must_cover": [
+        "冪律的白話說法（不用公式也能懂）",
+        "Kaplan 與 Chinchilla 結論差異與原因（各自設定）",
+        "損失下降與下游任務表現之間的落差；湧現能力的爭議（Wei 2022 vs Schaeffer 2023 兩邊都寫）",
+        "推論時計算的縮放",
+        "讀者怎麼看新聞裡的「縮放撞牆」說法：分清楚是誰、量什麼"
+      ],
+      "must_not": [
+        "不預測未來會不會撞牆",
+        "不寫任何模型的參數或訓練量"
+      ],
+      "suggested_primary_sources": [
+        "Kaplan et al. 2020 arXiv:2001.08361",
+        "Hoffmann et al. 2022 arXiv:2203.15556",
+        "Wei et al. 2022 Emergent Abilities arXiv:2206.07682",
+        "Schaeffer et al. 2023 Are Emergent Abilities a Mirage? arXiv:2304.15004",
+        "Snell et al. 2024 Scaling LLM Test-Time Compute arXiv:2408.03314"
+      ],
+      "links": [
+        "ai-term-model-parameters",
+        "ai-term-pretraining",
+        "ai-term-test-time-compute",
+        "ai-term-benchmark",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-sycophancy",
+      "name_zh": "迎合",
+      "name_en": "Sycophancy",
+      "index_group": "evaluation",
+      "title_draft": "迎合（Sycophancy）是什麼：AI 為什麼會順著你說，以及怎麼問才不被帶著走",
+      "angle": "迎合指模型傾向附和使用者已表達的看法或偏好，而犧牲正確性；說明研究上怎麼量測、可能的成因（偏好訓練獎勵討喜回答）、真實產品發生過的案例（OpenAI 2025 年的公開檢討），以及使用者端的提問方法。",
+      "must_cover": [
+        "研究定義與量測方式（Sharma et al. 2023、Perez et al. 2022）",
+        "可能成因：人類偏好資料本身偏好附和；只寫論文支持的程度",
+        "OpenAI 2025 年 4 月的公開檢討：發生什麼、官方說的原因（只寫官方頁）",
+        "示例：同一題用「我覺得是 A，對吧」與中性問法各問，怎麼判讀差異（標明示例，未實測）",
+        "使用者對策：中性提問、要求反方論點、讓它先列證據；這些只能降低不能消除"
+      ],
+      "must_not": [
+        "不寫「某模型已修好迎合」",
+        "不把迎合與幻覺混成同一件事"
+      ],
+      "suggested_primary_sources": [
+        "Sharma et al. 2023 Towards Understanding Sycophancy in Language Models arXiv:2310.13548",
+        "Perez et al. 2022 Discovering Language Model Behaviors with Model-Written Evaluations arXiv:2212.09251",
+        "OpenAI 2025 Sycophancy in GPT-4o 官方文章",
+        "OpenAI 2025 Expanding on what we missed with sycophancy 官方文章"
+      ],
+      "links": [
+        "ai-term-rlhf",
+        "ai-hallucination-fact-check",
+        "ai-term-evals",
+        "ai-term-ai-alignment",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-agi",
+      "name_zh": "通用人工智慧",
+      "name_en": "Artificial General Intelligence",
+      "index_group": "foundation",
+      "title_draft": "通用人工智慧（AGI）是什麼：各家定義為什麼不一樣",
+      "angle": "AGI 沒有公認定義，這篇的價值是把主要定義並列並說明各自量的是什麼：OpenAI 章程的經濟價值工作說法、Google DeepMind 的 Levels of AGI 分級框架、學術界較早的通用性說法。說明為什麼「達到 AGI」的宣稱需要先問用的是哪個定義、怎麼量。",
+      "must_cover": [
+        "定義對照表（誰、怎麼定義、怎麼判定）",
+        "Levels of AGI 的兩個軸：能力表現與通用程度，以及它把自主性分開談",
+        "與窄 AI、超級智慧（ASI）的區別，只寫有來源的說法",
+        "為什麼基準測試分數不能直接宣告 AGI",
+        "讀新聞的檢查清單：誰說的、用哪個定義、有沒有可驗證的量測"
+      ],
+      "must_not": [
+        "不預測 AGI 何時到來",
+        "不引用未經官方證實的合約內容或傳聞"
+      ],
+      "suggested_primary_sources": [
+        "OpenAI Charter 官方頁",
+        "Morris et al. 2023 Levels of AGI arXiv:2311.02462",
+        "Legg & Hutter 2007 Universal Intelligence: A Definition of Machine Intelligence arXiv:0712.3329",
+        "Chollet 2019 On the Measure of Intelligence arXiv:1911.01547"
+      ],
+      "links": [
+        "ai-term-artificial-intelligence",
+        "ai-term-benchmark",
+        "ai-hype-vs-reality-2026",
+        "ai-term-ai-alignment",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-computer-use",
+      "name_zh": "電腦操作",
+      "name_en": "Computer Use",
+      "index_group": "agents",
+      "title_draft": "電腦操作（Computer Use）是什麼：讓 AI 看畫面、點滑鼠、打鍵盤",
+      "angle": "電腦操作是代理透過截圖觀察畫面、輸出滑鼠與鍵盤動作來操作圖形介面的方式。和 API 工具呼叫、以網頁結構（DOM）為主的瀏覽器自動化比較；說明感知－動作迴圈、為什麼比 API 慢又容易出錯、以及畫面上的文字可能是提示詞注入。站上已有 Claude 的產品篇，這篇講通用概念，第一段明寫並連過去。",
+      "must_cover": [
+        "三種操作方式比較表：API 工具呼叫、瀏覽器自動化、電腦操作",
+        "迴圈：截圖、判斷、動作、再截圖",
+        "評測怎麼做（OSWorld 的設定），不寫分數排名",
+        "風險：畫面內容注入、誤點、帳號權限；官方文件建議的隔離與確認（只寫今天看到的）",
+        "示例：在測試帳號裡填一張表單的步驟與檢查點（標明示例，未實測）"
+      ],
+      "must_not": [
+        "不寫產品方案、價格、可用地區",
+        "不寫各家分數"
+      ],
+      "suggested_primary_sources": [
+        "Anthropic computer use tool 官方文件",
+        "OpenAI computer use 官方指南",
+        "Xie et al. 2024 OSWorld arXiv:2404.07972",
+        "OWASP Top 10 for LLM Applications 的 prompt injection 條目"
+      ],
+      "links": [
+        "claude-computer-use-explained",
+        "ai-term-tool-calling",
+        "ai-term-sandbox",
+        "ai-term-prompt-injection",
+        "ai-browsers-guide",
+        "ai-terms-index"
+      ]
+    }
+  ]
+}
