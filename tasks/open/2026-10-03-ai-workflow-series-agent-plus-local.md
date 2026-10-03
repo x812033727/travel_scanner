@@ -27,6 +27,7 @@ scope:
   - apps/web/public/guides/ai-workflow-agent-local-checklist
   - apps/web/public/guides/ai-workflow-tutorials
   - apps/api/app/guides/series_data/ai-workflow.json
+  - apps/api/tests/test_guide_series.py
 ---
 
 # AI workflow series, agent-plus-local-model group: six zh-TW articles on pairing Claude Code and Codex with local models (GLM, Qwen, DeepSeek)
@@ -65,9 +66,9 @@ per article, and the official facts read on 2026-10-03.
 - [x] Check nobody else is on the topic (branches, open PRs, tasks) and read what the site already has.
 - [x] Read today's official pages for both wiring routes and for the GLM, Qwen and DeepSeek families.
 - [x] Write the group spec with assignments and the fact table.
-- [ ] Owner reads the spec and settles the three items under its last heading (six or five articles,
-      vendor endpoints in or out, testing later or not).
-- [ ] Relax `SOURCES_RANGE` for the family article, extend `series.py` (`SLUGS`, `INTRO`).
+- [x] Owner reads the spec: six articles, vendor endpoints in (2026-10-04). Testing later was not
+      asked for; the articles stay untested.
+- [x] Relax the sources bound for the family article, extend `series.py` (`SLUGS`, `INTRO`).
 - [ ] Writers x6 (the family article first), fact-checkers x6, second round where more than ten edits.
 - [ ] Coordinator: read-through, hub update, `_DRAWINGS`, `build_catalogue.py --related` (group E,
       explicit `GROUP_OF`, `agent-local` path), relink and autolink, the series test.
@@ -86,12 +87,13 @@ curl -s 'https://mokaair.com/api/travel/guides/series/ai-workflow?locale=zh-TW' 
 
 ## Notes
 
-- 2026-10-03 (claude-fable-5-1-agent-local): spec written, nothing else. Released so the writing can
-  be claimed once the owner has read it.
-- `apps/api/tests/test_guide_series.py` has to change (it asserts twelve entries, groups A-D and
-  three paths) but is not in this ticket's scope yet: `2026-10-03-illustrated-slides-round-2-a-family`,
-  in review, holds all of `apps/api/tests` and the claim was refused. Add the file to the scope when
-  that ticket is done.
+- 2026-10-03 (claude-fable-5-1-agent-local): spec written and released for the owner to read.
+- 2026-10-04: the owner answered "six articles, vendor endpoints in, start writing". Claimed again;
+  the checker, `series.py`, the catalogue tables, the six hero drawings and the model whitelist were
+  prepared before the writers started.
+- `apps/api/tests/test_guide_series.py` is in scope although `2026-10-03-illustrated-slides-round-2-a-family`
+  still lists all of `apps/api/tests`: that ticket sits in review after its PR #1172 merged and its branch
+  was deleted, so nothing else is changing the file. `check:tasks` reports the overlap as a warning.
 - The owner's "more GLM, Qwen, DeepSeek" was read as one extra article on the three families plus
   their tags in every hands-on article. The spec says how to fold it back to five if that was not meant.
 - What the pages said on 2026-10-03 that shapes the series: on Ollama the current GLM and DeepSeek
