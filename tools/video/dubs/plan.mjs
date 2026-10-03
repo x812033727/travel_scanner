@@ -9,6 +9,7 @@
 // is exactly as long as the video, to the sample.
 import { createHash } from "node:crypto";
 
+import { CHANNEL_ACCENT_EN } from "../core/accent.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, spokenText, textHash } from "../core/schema.mjs";
 import { FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, framesFor, msToSamples } from "../core/timeline.mjs";
@@ -50,9 +51,10 @@ export const BUDGET_MARGIN = 0.97;
 export const LINE_OVERHEAD_MS = 400;
 
 const STYLE_TAIL = "Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace.";
-// The zh-TW style names Taiwan Mandarin; a dub keeps the manner and changes the language.
+// The zh-TW style names the channel's Mandarin (core/accent.mjs); a dub keeps the manner and
+// changes the language.
 export const DUB_STYLES = {
-  "zh-TW": `Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. ${STYLE_TAIL}`,
+  "zh-TW": `Relaxed, conversational tech explainer talking to a friend, in ${CHANNEL_ACCENT_EN}. ${STYLE_TAIL}`,
   en: `Relaxed, conversational tech explainer talking to a friend, in clear, natural English. ${STYLE_TAIL}`,
   ja: `Relaxed, conversational tech explainer talking to a friend, in natural standard Japanese. ${STYLE_TAIL}`,
   ko: `Relaxed, conversational tech explainer talking to a friend, in natural standard Korean. ${STYLE_TAIL}`,
