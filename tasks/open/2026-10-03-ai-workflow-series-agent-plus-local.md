@@ -48,16 +48,17 @@ per article, and the official facts read on 2026-10-03.
 
 ## Definition of done
 
-- [ ] Six packs in zh-TW, each passing `docs/ai-workflow-series/check_article.py <slug> --assets`,
+- [x] Six packs in zh-TW, each passing `docs/ai-workflow-series/check_article.py <slug> --assets`,
       with every command, flag and setting traced to an official page read on the writing day.
-- [ ] Each article says once that the site did not run the steps; none reports a speed, a quality
+- [x] Each article says once that the site did not run the steps; none reports a speed, a quality
       verdict or sample output as if measured.
-- [ ] Every model tag or endpoint is labelled as weights on the reader's machine, an Ollama `:cloud`
+- [x] Every model tag or endpoint is labelled as weights on the reader's machine, an Ollama `:cloud`
       tag, or a vendor endpoint.
-- [ ] One independent fact-check per article, reports in `docs/ai-workflow-series/factcheck/`.
-- [ ] Series catalogue shows eighteen entries in groups A-E with the new `agent-local` path; the hub
+- [x] One independent fact-check per article, reports in `docs/ai-workflow-series/factcheck/`
+      (two rounds each, the second by a different agent; one round for the hub update).
+- [x] Series catalogue shows eighteen entries in groups A-E with the new `agent-local` path; the hub
       page text covers the new group without stating a count.
-- [ ] `pack_cli lint --kind life` 0 errors, the series and content-pack tests green, `npm run check:tasks` green.
+- [x] `pack_cli lint --kind life` 0 errors, the series and content-pack tests green, `npm run check:tasks` green.
 - [ ] Published only after the owner picks it from an options question; six URLs answer 200 and the
       hub lists them.
 
@@ -69,10 +70,13 @@ per article, and the official facts read on 2026-10-03.
 - [x] Owner reads the spec: six articles, vendor endpoints in (2026-10-04). Testing later was not
       asked for; the articles stay untested.
 - [x] Relax the sources bound for the family article, extend `series.py` (`SLUGS`, `INTRO`).
-- [ ] Writers x6 (the family article first), fact-checkers x6, second round where more than ten edits.
-- [ ] Coordinator: read-through, hub update, `_DRAWINGS`, `build_catalogue.py --related` (group E,
+- [x] Writers x6, fact-checkers x6, and a second round for all six: every first round changed more
+      than three facts, the threshold the content-pipeline skill sets.
+- [x] Coordinator: read-through, hub update, `_DRAWINGS`, `build_catalogue.py --related` (group E,
       explicit `GROUP_OF`, `agent-local` path), relink and autolink, the series test.
-- [ ] Lint, tests, PR; publish after the owner's explicit choice and verify the public pages.
+- [x] Lint, tests, PR #1181 updated.
+- [ ] Merge, deploy and publish after the owner's explicit choice: the six new slugs first, the hub
+      once their URLs answer 200; then verify the public pages and close this ticket.
 
 ## How to verify
 
@@ -91,6 +95,12 @@ curl -s 'https://mokaair.com/api/travel/guides/series/ai-workflow?locale=zh-TW' 
 - 2026-10-04: the owner answered "six articles, vendor endpoints in, start writing". Claimed again;
   the checker, `series.py`, the catalogue tables, the six hero drawings and the model whitelist were
   prepared before the writers started.
+- 2026-10-04, later: six articles written and checked twice, the hub updated and checked, catalogue,
+  links and images built. What the checks found, what the coordinator changed afterwards, the token
+  usage and the publish order are in the last section of `docs/ai-workflow-series/agent-local/README.md`.
+  Five of the six carry a `text_length` warning (6,046 to 7,681 characters against a 6,000 guideline);
+  the excess is qualifiers the checkers would not let go. Filed
+  `2026-10-03-qwen-local-deployment-names-qwen3-5` for a stale cloud tag in an older article.
 - `apps/api/tests/test_guide_series.py` is in scope although `2026-10-03-illustrated-slides-round-2-a-family`
   still lists all of `apps/api/tests`: that ticket sits in review after its PR #1172 merged and its branch
   was deleted, so nothing else is changing the file. `check:tasks` reports the overlap as a warning.
