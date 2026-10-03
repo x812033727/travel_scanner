@@ -2,11 +2,12 @@
 
     build_catalogue.py [--related] [--check]
 
-The catalogue ``app.guides.series`` serves for the hub page -- four groups, three reading
+The catalogue ``app.guides.series`` serves for the hub page -- five groups, four reading
 paths, one ``Lesson`` per article -- is generated rather than typed. Title, sources and the
 outcome sentence come from each pack; the number from ``series.SLUGS``; and what a pack does
 not carry -- group, level, platforms, aliases, prerequisites, related -- from the tables
-below, which are ``agents/ASSIGNMENTS.md``'s "系列內互相引用" section in code.
+below, which are ``agents/ASSIGNMENTS.md``'s "系列內互相引用" section in code (for group E,
+articles 13-18, the section of the same name in ``agent-local/README.md``).
 
 ``--related`` also writes the related column into each pack's ``related`` field, so the
 article page's further-reading grid and the catalogue agree. ``--check`` validates the
@@ -32,22 +33,29 @@ GROUPS = [
     {"id": "B", "title": "接線：統一 API、路由與交接"},
     {"id": "C", "title": "協作：互審、代理分工與 MCP"},
     {"id": "D", "title": "營運：本機混搭、追蹤與防護"},
+    {"id": "E", "title": "實作：代理工具搭本機模型"},
 ]
-GROUP_OF = {slug: "ABCD"[i // 3] for i, slug in enumerate(SLUGS)}
+#: The first twelve fall into A-D three at a time; articles 13-18 are group E.
+GROUP_OF = {slug: "ABCD"[i // 3] if i < 12 else "E" for i, slug in enumerate(SLUGS)}
 
-S = dict(zip(range(1, 13), SLUGS))
+S = dict(zip(range(1, len(SLUGS) + 1), SLUGS))
 PATHS = [
     {"id": "concepts", "title": "觀念路線", "slugs": [S[1], S[2], S[3], S[12]]},
     {"id": "builder", "title": "接線路線", "slugs": [S[1], S[4], S[5], S[6], S[9], S[10]]},
     {"id": "operator", "title": "營運路線", "slugs": [S[3], S[7], S[8], S[11], S[12]]},
+    {"id": "agent-local", "title": "代理搭本機路線", "slugs": [S[10], S[13], S[14], S[15], S[16], S[17], S[18]]},
 ]
-LEVEL = {**{S[i]: "beginner" for i in (1, 2, 3)}, **{S[i]: "intermediate" for i in range(4, 11)}, **{S[i]: "advanced" for i in (11, 12)}}
-PLATFORMS = {**{S[i]: ["web"] for i in (1, 2, 3)}, **{S[i]: ["cli"] for i in range(4, 13)}}
+LEVEL = {**{S[i]: "beginner" for i in (1, 2, 3, 13, 18)}, **{S[i]: "intermediate" for i in (*range(4, 11), 14, 15, 16, 17)},
+         **{S[i]: "advanced" for i in (11, 12)}}
+PLATFORMS = {**{S[i]: ["web"] for i in (1, 2, 3)}, **{S[i]: ["cli"] for i in range(4, 19)}}
 PREREQUISITES = {S[2]: [S[1]], S[3]: [S[1]], S[4]: [S[3]], S[5]: [S[3], S[4]], S[6]: [S[4]], S[7]: [S[6]],
-                 S[8]: [S[1]], S[9]: [S[8]], S[10]: [S[4]], S[11]: [S[7]], S[12]: [S[11]]}
+                 S[8]: [S[1]], S[9]: [S[8]], S[10]: [S[4]], S[11]: [S[7]], S[12]: [S[11]],
+                 S[14]: [S[13]], S[15]: [S[13]], S[16]: [S[15]], S[17]: [S[13], S[14]], S[18]: [S[13]]}
 RELATED = {S[1]: [S[2], S[3], S[12]], S[2]: [S[1], S[3], S[5]], S[3]: [S[2], S[5], S[11]], S[4]: [S[5], S[6], S[10]],
            S[5]: [S[3], S[4], S[6]], S[6]: [S[5], S[7], S[12]], S[7]: [S[6], S[11], S[12]], S[8]: [S[9], S[6], S[7]],
-           S[9]: [S[8], S[10], S[4]], S[10]: [S[9], S[4], S[12]], S[11]: [S[7], S[3], S[12]], S[12]: [S[11], S[6], S[10]]}
+           S[9]: [S[8], S[10], S[4]], S[10]: [S[9], S[4], S[12]], S[11]: [S[7], S[3], S[12]], S[12]: [S[11], S[6], S[10]],
+           S[13]: [S[14], S[15], S[17]], S[14]: [S[13], S[17], S[18]], S[15]: [S[16], S[13], S[10]],
+           S[16]: [S[15], S[9], S[18]], S[17]: [S[13], S[14], S[18]], S[18]: [S[13], S[17], S[12]]}
 ALIASES = {
     S[1]: ["工作流", "workflow", "代理", "agent", "提示詞串接"],
     S[2]: ["拆任務", "分工", "子代理", "資料敏感度"],
@@ -61,6 +69,12 @@ ALIASES = {
     S[10]: ["Ollama", "本機", "開放權重", "去識別化", "gemma4"],
     S[11]: ["追蹤", "tracing", "評測", "evals", "JSONL", "OpenTelemetry"],
     S[12]: ["防護", "guardrails", "提示詞注入", "預算", "迴圈"],
+    S[13]: ["混合工作流", "本機模型", "Claude Code", "Codex", "Ollama"],
+    S[14]: ["GLM", "Qwen", "DeepSeek", "Z.ai", "cloud 標籤", "供應商端點"],
+    S[15]: ["Ollama", "批次", "去識別化", "permissions.deny", "結構化輸出"],
+    S[16]: ["MCP", "本機模型", "tool_timeout_sec", "stdio", "工具契約"],
+    S[17]: ["ollama launch", "codex --oss", "LM Studio", "ANTHROPIC_BASE_URL", "上下文"],
+    S[18]: ["檢查清單", "注意事項", "隱私", "憑證", "逾時"],
 }
 
 
@@ -109,7 +123,7 @@ def write_related() -> None:
                 rebuilt["related"] = RELATED[slug]
             if key != "related":
                 rebuilt[key] = value
-        path.write_text(json.dumps(rebuilt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        path.write_text(json.dumps(rebuilt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
         print("related written:", slug)
 
 
@@ -125,7 +139,7 @@ def main() -> int:
         current = json.loads(CATALOGUE.read_text(encoding="utf-8")) if CATALOGUE.is_file() else None
         print("catalogue up to date" if current == data else "catalogue differs from the packs")
         return 0 if current == data else 1
-    CATALOGUE.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    CATALOGUE.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print("wrote", CATALOGUE.relative_to(ROOT), "with", len(data["entries"]), "entries")
     return 0
 

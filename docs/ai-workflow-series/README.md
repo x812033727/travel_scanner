@@ -1,4 +1,4 @@
-# 工作區：「多模型 AI 工作流」教學系列（12 篇＋hub，zh-TW）
+# 工作區：「多模型 AI 工作流」教學系列（十二篇＋hub，2026-10 加上 E 組六篇，zh-TW）
 
 > **現況（2026-09-19）**：12 篇＋目錄篇**已發布**（PR #553 `a69763b5`；站主選擇發布後部署、`guides-import --slug` 13 篇同一趟、正式站驗證完畢）。票 `tasks/done/2026-09-18-ai-workflow-tutorial-series-12-zh.md` 已結案；
 > 交接、「留給站主的事」與發布紀錄都在本頁最後一節。計畫來源：站主 2026-09-18 要求「新增幾篇 workflow 相關的教學與介紹，可以介紹比較高技術面的串不同的 model」，
@@ -11,16 +11,17 @@
 | [`BRIEF.md`](BRIEF.md) | 撰稿規格（內容包形狀、區塊骨架、程式範例規則、用語、研究紀錄格式、回報格式）。撰稿代理只讀這一份加指派。 |
 | [`agents/ASSIGNMENTS.md`](agents/ASSIGNMENTS.md) | 12 篇＋hub 的指派表：slug、display_order、程度、切角、必連且不可重寫的既有文章、來源種子、系列內 `related`。 |
 | [`agents/FACTCHECK.md`](agents/FACTCHECK.md) | 查核代理規格：重抓來源、逐句核對、**每個 code 區塊重編譯並對官方文件比對簽名／旗標／端點**、模型 id 對白名單；改 >10 處才第二輪。 |
-| [`series.py`](series.py) | 固定值：`SLUGS`（順序＝display_order 400–411）、`HUB`（399）、`TOPICS`、`EYEBROW`、`load()`。 |
+| [`series.py`](series.py) | 固定值：`SLUGS`（順序＝display_order 400–417，後六篇是 E 組）、`HUB`（399）、`TOPICS`、`EYEBROW`、`load()`。 |
 | [`check_article.py`](check_article.py) | `check_article.py <slug> [--assets]`：schema、topics、order、字數、簡體字、lint、summary／FAQ、sources 與研究紀錄一致、**code 區塊編譯（py_compile／bash -n／json／yaml）、秘密 regex、模型 id 白名單**、圖檔。 |
 | [`build_assets.py`](build_assets.py) | `build_assets.py [--svg-only] [--slug=…]`：hero（無日期）與 `diagram-1.svg`（`flow` 三到五步或 `grid` 2×2），`_DRAWINGS` 每篇一個，等文章寫好再填。 |
-| [`build_catalogue.py`](build_catalogue.py) | `build_catalogue.py [--related] [--check]`：由 12 個內容包產生 `apps/api/app/guides/series_data/ai-workflow.json`（A–D 四組、concepts／builder／operator 三條路線、每篇的 level／platforms／aliases／prerequisites／related）；`--related` 同時把 related 寫回內容包。 |
-| [`prune_autolinks.py`](prune_autolinks.py) | `prune_autolinks.py <content-dir> <slug>...`：`pack_cli autolink` 之後把 AI／參數／GenAI 三種誤導連結還原成文字（本系列的「參數」多指 API 參數，不是模型參數；GenAI 出現在 OpenTelemetry 慣例名稱裡）。 |
+| [`build_catalogue.py`](build_catalogue.py) | `build_catalogue.py [--related] [--check]`：由全部內容包產生 `apps/api/app/guides/series_data/ai-workflow.json`（A–E 五組、concepts／builder／operator／agent-local 四條路線、每篇的 level／platforms／aliases／prerequisites／related）；`--related` 同時把 related 寫回內容包。 |
+| [`prune_autolinks.py`](prune_autolinks.py) | `prune_autolinks.py <content-dir> <slug>...`：`pack_cli autolink` 之後把 AI／參數／GenAI／標記這幾種誤導連結還原成文字（本系列的「參數」多指 API 參數，不是模型參數；GenAI 出現在 OpenTelemetry 慣例名稱裡）。 |
 | [`models-seen.json`](models-seen.json) | 模型 id 白名單（id、官方頁 url、逐字、checked_on）；撰稿與查核只能新增、不能憑記憶寫 id。 |
 | `research/<slug>.json` | 各篇研究紀錄（撰稿產出，含 `code_samples`、`diagram`、`hero_label`；查核加 `factcheck`）。 |
 | `factcheck/<slug>.md` | 查核報告；改動超過十處或動到骨幹的篇章在同一檔尾加「## 第二輪」。 |
 | `manifest.json`、`hero-sheet-*.jpg`、`diagram-1-sheet-*.jpg` | `build_assets.py` 全量建置的產物：13 篇的網址清單與 contact sheet（人眼看圖用）。 |
 | `renders/`（git 忽略） | 出圖中間檔。 |
+| [`agent-local/README.md`](agent-local/README.md) | E 組「代理工具搭本機模型」六篇的規格與交接（2026-10-04 寫完並查核，尚未發布）：與 BRIEF 不同的規則、每篇指派、當天讀到的官方事實、實際跑法與查核抓到的事。 |
 
 ## 流程（B 節，`<home>\.claude\plans\parsed-conjuring-dolphin.md`）
 
