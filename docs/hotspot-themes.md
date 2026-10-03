@@ -186,9 +186,10 @@ what already landed.
 
 ## Follow-ups filed from this work
 
-- 大阪アメリカ村's `Q4745722` is held by the Okinawa 美國村 seed, whose coordinates point
-  at Osaka. `kix-amerikamura` therefore cites the item for its coordinate but leaves
-  `wikidata_item_id` null; fixing the Okinawa row frees the id.
+- 大阪アメリカ村's `Q4745722` was held by the Okinawa 美國村 seed, whose coordinates pointed
+  at Osaka, so `kix-amerikamura` first shipped with `wikidata_item_id` null. Fixed by task
+  `2026-09-06-oka-amerikamura-wrong-qid`: the Okinawa row (slug `wikidata-q4745722`, kept)
+  now names Q11609171 in Chatan and `kix-amerikamura` holds Q4745722.
 - 龍山電子商街 and 三創生活園區 sit a few hundred metres outside every circle in the area
   catalog, so they carry no area. Drawing circles for them moves neighbouring seeds
   between areas, which belongs to the area catalog rather than to a seed batch.

@@ -12,7 +12,7 @@ def test_deep_bootstrap_contract() -> None:
     assert TARGET_PUBLIC_HOTSPOTS == 649
     assert len({item.slug for item in HOTSPOT_SEEDS}) == 593
     qids = [item.wikidata_item_id for item in HOTSPOT_SEEDS if item.wikidata_item_id]
-    assert len(qids) == 580
+    assert len(qids) == 581
     assert len(set(qids)) == len(qids)
 
     by_city = defaultdict(list)
