@@ -112,7 +112,7 @@ lint（1）；沒有 `music` → `UsageError` 2；`music.track`：檔在 `<VIDEO
 
 Gemini 的影片功能在歐洲經濟區與英國部分不開放，Veo 在歐盟只允許 `allow_adult`；基本的圖生影片會不會依呼叫端 IP 擋，沒查到（`docs/videos/DRAMA.md` §供應商「地區」）。所以每支的第一鏡先 `clips --slug <SLUG> --shot <第一鏡>` 單獨跑；被擋先回報，profile 釘了模型的集不自己換供應商（`drama.md` 的坑）。
 
-## 外部片段怎麼進來（Hailuo 網頁、Kling MCP 做的）
+## 外部片段怎麼進來（Hailuo／Kling 網頁、選用的 CLI／MCP）
 
 用 `clips import`（`tools/video/media/clips.mjs` 的 `importClip`；設計在 `docs/videos/DRAMA.md`「外面做的片段」）。**這一節是唯一的一份程序**，`SKILL.md`、`providers-and-plans.md` §3、animation-camera 與 `drama_preflight.mjs` 都指到這裡。
 
@@ -120,7 +120,9 @@ Gemini 的影片功能在歐洲經濟區與英國部分不開放，Veo 在歐盟
 node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --provider hailuo-web|kling-mcp|external [--plan <plan id>] [--credits N] [--usd N] [--note "…"] [--judge] [--force]
 ```
 
-**外部生成之前**：`clips --slug <SLUG> --dry-run` 確認 timeline 與 keyframes 是現在的，抄下這一鏡的需求秒數與 clip prompt；**用這一鏡通過 judge 的關鍵影格當首格**（`keyframes/manifest.json` 的 `file`），否則匯入時第 0 格 PSNR 過不了。送出前後各記一次點數餘額，差額就是 `--credits`。
+**外部生成之前**：先確認 `series.production.profile` 不存在；目前 `importClip` 看到任何 profile 都以 3 拒絕，單改 provider／model 不會開放。既有正片的外部支援與契約更新是另一項工作，本次技能不改它。再用 `clips --slug <SLUG> --dry-run` 診斷 timeline／keyframes、抄本鏡需求秒數與 clip prompt；它的 server 模型／價不代表網頁。本次瀏覽器的能力核對、三個連續鏡頭 pilot 與完整 job／提示／首格 hash／點數收據照 `browser-production.md`。**用這一鏡通過 judge 的關鍵影格當首格**，否則匯入第 0 格 PSNR 過不了。送出結果未知先查任務歷史與餘額，不重買。
+
+**來源值**：Hailuo 網頁用 `hailuo-web`；Kling 網頁用 `external`，在 `--note` 記 `route=kling-web`、job id 與外部收據位置；CLI／MCP 用 `kling-mcp` 並記實際 route。現有 provider enum 沒有 `kling-web`，不新增旗標、不把網頁偽標為 MCP。`--credits` 用實際餘額差額，未知扣點先留外部收據，不填 0 宣稱免費。
 
 **指令依序查的前提**（任何一項不成立就停，檔案不複製、帳本不記）：
 
@@ -128,7 +130,7 @@ node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --p
 | --- | --- |
 | `--slug`、`--shot`、`--file` 都有且檔案存在；`--provider` 是三個值之一；`--credits`／`--usd` 是 ≥ 0 的數 | 2 |
 | lint 零錯誤 | 1 |
-| 這一集**沒有** production profile | **3**（profile 指定買片段的模型，`productionClipProblems` 拿 manifest 對它；要收別條路線得站主先改 profile，另一張票） |
+| 這一集**沒有** `series.production.profile` | **3**（`importClip` 對任何 profile 都拒絕；單改 profile provider／model 不解除，另需受核准的產線支援與契約更新） |
 | 這一鏡是 clip 鏡：不是 still、不是 `source` 切的 | 2 |
 | `timeline.json` 是現在的台詞；`keyframes/manifest.json` 是現在的劇本與 look；這一鏡的關鍵影格通過 judge | 2 |
 | storyboard 已核准 | 3 |
