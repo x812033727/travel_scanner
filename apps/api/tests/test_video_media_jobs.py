@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import base64
 import copy
 import hashlib
+import json
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -27,6 +29,7 @@ from app.video_media.settings import MediaSettings
 from app.video_media.storage import MediaStore
 
 PNG = b"\x89PNG\r\n\x1a\n" + b"\x00" * 30
+JPEG = b"\xff\xd8\xff\xe0" + b"\x00" * 30
 MP4 = b"\x00\x00\x00\x18ftypisom" + b"\x00" * 30
 
 
@@ -198,6 +201,61 @@ async def test_a_synchronous_image_is_stored_and_ready_after_one_call(
         and view.file.sha256 == job.file_sha256
     )
     assert ctx.session.added == [job] and ctx.session.commits >= 2  # type: ignore[attr-defined]
+
+
+@pytest.mark.asyncio
+async def test_a_minimax_picture_is_stored_from_the_answer_like_a_gemini_one(
+    tmp_path: Path,
+) -> None:
+    """image-01 through the real adapter. The bytes in the answer are stored as any inline
+    picture is: the type read from the bytes, the catalog's price, one image on the meter. An
+    answer that holds no picture gives the budget back; one that holds only a link the download
+    check refuses fails as it did before the adapter asked for bytes, and keeps the charge."""
+    answers: list[dict[str, Any]] = [
+        {"image_base64": [base64.b64encode(JPEG).decode()]},
+        {"image_base64": ["VENDOR-TEXT, not a picture"]},
+        {"image_urls": ["http://insecure.example/p.jpeg"]},
+    ]
+    asked: list[dict[str, Any]] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert str(request.url) == "https://api.minimaxi.com/v1/image_generation", (
+            "nothing is downloaded"
+        )
+        asked.append(json.loads(request.content))
+        return httpx.Response(
+            200, json={"data": answers[len(asked) - 1], "base_resp": {"status_code": 0}}
+        )
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as http:
+        ctx = _context(
+            tmp_path,
+            FakeProvider(),
+            row=_row(image_provider="minimax", image_model="image-01"),
+            http=http,
+        )
+        stored, created = await submit_job(ctx, "image", _image())
+        assert created and stored.status == "ready"
+        assert (stored.provider, stored.model) == ("minimax", "image-01")
+        assert stored.content_type == "image/jpeg" and stored.file_bytes == len(JPEG)
+        assert stored.file_sha256 == hashlib.sha256(JPEG).hexdigest()
+        assert ctx.store.path("v", stored.file_sha256) is not None
+        assert float(stored.usd_estimate) == 0.0035
+        assert await meter.used(ctx.redis, meter.IMAGES) == 1
+        assert asked[0]["response_format"] == "base64" and asked[0]["model"] == "image-01"
+
+        garbled, _created = await submit_job(ctx, "image", _image(prompt="another"))
+        assert garbled.status == "failed" and garbled.error_code == "video_media_upstream_failed"
+        assert garbled.error_detail == "MiniMax's image is not valid base64"
+        assert float(garbled.usd_estimate) == 0
+        assert await meter.used(ctx.redis, meter.IMAGES) == 1, "only the stored picture counts"
+
+        linked, _created = await submit_job(ctx, "image", _image(prompt="a third"))
+        assert linked.status == "failed" and linked.error_code == "video_media_upstream_invalid"
+        assert linked.error_detail == "the vendor's download URL is not an https address"
+        assert float(linked.usd_estimate) == 0.0035
+        assert await meter.used(ctx.redis, meter.IMAGES) == 2, "the vendor made it: no refund"
+    assert len(asked) == 3
 
 
 @pytest.mark.asyncio
