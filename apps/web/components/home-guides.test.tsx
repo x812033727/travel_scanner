@@ -23,6 +23,7 @@ describe("the home page's guide sections", () => {
     )} />);
     expect(screen.getByRole("heading", { level: 2, name: "旅行與生活的實用指南" })).toBeTruthy();
     expect(screen.getByText(/個人站長經營/)).toBeTruthy();
+    expect(screen.getByRole("link", { name: "搜尋機票與住宿" }).getAttribute("href")).toBe("/search/new");
 
     const travel = screen.getByTestId("home-guides-travel");
     expect(within(travel).getByRole("heading", { name: "旅遊攻略" })).toBeTruthy();

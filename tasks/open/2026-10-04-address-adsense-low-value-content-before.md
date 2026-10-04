@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-10-04T07:55:29Z
 completed_at:
-branch: codex/adsense-review-audit-20261004
+branch: codex/adsense-content-fixes-20261004
 depends_on: []
 scope:
   - docs/adsense-review-readiness.md
@@ -27,18 +27,18 @@ The limited evidence and priority order are in docs/adsense-review-readiness.md.
 ## Definition of done
 
 - [ ] Record a meaningful sample of each public content type/localized hub, including thin or repeated pages.
-- [ ] Track content corrections and original value with sources, limitations and dated review evidence.
+- [x] Track the scoped corrections and original value with sources, limitations and dated review evidence.
 - [ ] Confirm homepage identity/curation and an improved city-guide example in the live user flow.
 - [ ] Prepare truthful About/editorial/AI assistance/corrections text; obtain owner verification and publication approval before CMS writes.
-- [ ] Confirm FAQ repair and current ads.txt account status separately from content acceptance.
+- [x] Confirm FAQ repair locally and current ads.txt account status separately from content acceptance.
 - [ ] Ask the owner to submit/authorize rereview only after improvements are concrete and reviewed; record the result without promising approval.
 
 ## Steps
 
-- [ ] Claim this coordination scope; file/claim exact source paths separately before any code/content edits.
+- [x] Claim this coordination scope; file/claim exact source paths separately before any code/content edits.
 - [ ] Review the listed samples and extend the inventory according to site topics; preserve the owner's decision to retain lifestyle topics indexed.
-- [ ] Do not claim AI-assisted content is low value solely because of its origin or use a fixed article count/waiting period as a Google threshold.
-- [ ] Prepare reviewable corrections, validate them, and distinguish drafted, published, rereview submitted and Ready states.
+- [x] Do not claim AI-assisted content is low value solely because of its origin or use a fixed article count/waiting period as a Google threshold.
+- [x] Prepare reviewable corrections, validate them, and distinguish drafted, published, rereview submitted and Ready states.
 
 ## How to verify
 
@@ -54,3 +54,84 @@ Tokyo's name-only planning sections, an article FAQ reading defect (separate tas
 2026-10-04-keep-article-faq-headings-and-answers), and About text that still describes only
 travel. Google did not identify any of these URLs as the rejection cause. The existing
 ads.txt host/logging ticket remains intact; its account follow-up is not complete.
+
+2026-10-04 repair handoff: FAQ/home/Tokyo code and five-locale About drafts are
+prepared and independently reviewed. Focused unit regressions total 227 passed;
+local Chrome verifies desktop/mobile FAQ and layout using a synthetic API.
+Full web lint, typecheck, staged i18n and production `next build --webpack` passed,
+exit 0. The isolated FAQ Playwright case passed desktop and mobile (2 tests,
+13.8s, exit 0). Complete CI is tracked on the implementation PR's latest head.
+Public ads.txt is still correct; the account still says Not found with its 9/23
+timestamp and no Check updates control in the inspected site-detail view. Across
+13 retained crawl logs, all 55 matching ads.txt requests answered 200, including
+two 9/22 source addresses matching current Google-published crawler ranges.
+This task remains open for a broader editorial sample, owner fact/publication
+approval for About, deployment and live-page acceptance, and an eventual policy
+rereview decision. Do not repeat account setup or mark Google Ready from local checks.
+The audit-document PR #1205 merged while this work was being prepared; code fixes
+use the separate codex/adsense-content-fixes-20261004 branch.
+
+2026-10-04 08:55 UTC read-only production preflight: another session deployed
+main `41f2f363b` at 08:52 UTC, including #1202/#1203/#1205. Host checkout is clean,
+deploy lock free, hold absent, no flagged unactivated release. This supersedes
+the earlier live `0768b8a` snapshot; repair PR #1206 remains a draft and is not live.
+CI discovered five old mobile frontend-flow assertions requiring the discovery
+card in the initial viewport. The homepage intentionally leads with site context
+and articles; scoped task `2026-10-04-align-editorial-homepage-browser-contract`
+updated the tests to verify those plus initial search access and discovery visibility
+after scrolling rather than restoring feed-first order. Scoped lint/diff/task checks
+passed; the new cases require actual confirmation on the latest head's isolated CI.
+Manual local server launch for this additional spec was rejected by automatic
+approval review (`blocked by policy` only); no alternate launch was attempted.
+Existing build-backed local FAQ tests still passed. The new homepage spec is not
+claimed locally executed; all five locales and both projects will be checked in CI.
+The account was independently reopened before 09:01 UTC and still showed Not found,
+the 9/23 timestamp, and Needs attention/low-value content. Fresh screenshot saved;
+no account, payment, policy rereview or CMS action was performed.
+
+Second CI integration (8c1dcea): API/web/container checks passed, but the revised
+homepage browser spec incorrectly assumed the local mock's guide titles. The
+actual discovery workflow uses a real test API and seeds a hotspot, without guide
+articles. The follow-up verifies whatever article groups are actually available;
+the filled article/order case is separately covered by the homepage SSR tests.
+Whole-card border intersection ratios were slightly below 1 in four cases, without
+failure screenshots or geometry. Do not call this proven rounding or a product
+overflow defect. Reader text and actionable links/buttons must be fully visible
+after scrolling, within viewport bounds and above mobile navigation. The corrected
+new-head browser and required CI results remain necessary before release approval.
+
+The final follow-up was independently reviewed and passed scoped lint, diff and
+task checks. Its exact client summary, every card-body paragraph and accessible
+control retain full viewport and mobile-nav clearance assertions after one scroll;
+geometry is attached before assertions for CI diagnosis. No product-source or
+server-launch change was made in this integration follow-up. Latest-head CI is
+the remaining technical check; broader editorial and owner publication/release
+decisions remain open in this task.
+
+Bounded live follow-up sampled six additional canonical 200 pages at 09:38 UTC:
+zh-TW/en Kansai airport how-to, AI tools overview, finance glossary, Claude Code
+mods news and Seoul city. The semantic findings and exact URLs are recorded in
+docs/adsense-review-readiness.md; this is not all-type/all-locale acceptance or
+fresh verification of every external source. Outstanding concrete candidates:
+recheck the AI overview's 9/13 model/pricing/limits snapshot, add sourced Seoul
+area tradeoffs, and improve repeated unrelated lifestyle related-reading links
+(the same Vung Tau/Okinawa travel suggestions). Do not claim the valid mods FAQ
+is broken or that Google named any of these URLs. No CMS changes were made.
+The monetization plan's old #1202 not-deployed row now reflects the verified
+other-session 08:52 deployment, preserving separate clickout/ledger acceptance.
+Fresh public ads.txt around 09:38 UTC was an exact 59-byte match and HTTP 200;
+a freshly opened account list still displayed Not found/low-value/9-23.
+A technical ads.txt support draft is saved outside the repo and has not been sent.
+
+Third integration (ec64cc5) isolated discovery browser: 50 passed, 2 skipped,
+2 failed (mobile zh-TW/zh-CN). Exact title and summary passed; a card paragraph
+extended 5.390625px below the measured nav top. Missing persisted geometry means
+the exact paragraph/scroll-before-after remains unproven; source/language is a
+code-based inference, not captured coordinates. Playwright's CDP
+DOM.scrollIntoViewIfNeeded sees the layout viewport, not fixed-nav occlusion.
+Do not label this a proven product CSS defect or reduce clearance assertions.
+The contract follow-up uses one deliberate reader wheel scroll beneath the
+measured sticky header, then the same complete text/control/nav checks, with
+before/after geometry saved into the uploaded test-results directory. Final-head
+CI remains required; no additional product source edits or local server launch
+were authorized for this test correction.

@@ -8,6 +8,7 @@ import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
 import type { Locale } from "@/i18n/routing";
 import { destinationsCopy } from "@/lib/destinations-copy";
 import { getDestination, getDestinations, getGuideMerchants, getGuidePlaces } from "@/lib/destinations.server";
+import { getGuideList } from "@/lib/guides.server";
 import { breadcrumbs, touristDestination } from "@/lib/structured-data";
 import { featureEnabled } from "@/lib/site-features";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
@@ -47,9 +48,10 @@ export default async function DestinationGuidePage({ params }: { params: Promise
   const destination = all.find((row) => row.id === destinationId);
   if (!destination) notFound();
   const hotspotsEnabled = featureEnabled(visibility, "hotspots");
-  const [places, merchants] = await Promise.all([
+  const [places, merchants, guides] = await Promise.all([
     hotspotsEnabled ? getGuidePlaces(locale, destinationId) : Promise.resolve(null),
     getGuideMerchants(locale, destinationId),
+    getGuideList(locale, { section: "travel", destination: destinationId }, 3),
   ]);
 
   const copy = destinationsCopy(locale);
@@ -79,7 +81,7 @@ export default async function DestinationGuidePage({ params }: { params: Promise
           }),
         ]}
       />
-      <DestinationGuide locale={locale} destination={destination} places={places} hotspotsEnabled={hotspotsEnabled} merchants={merchants} related={related} />
+      <DestinationGuide locale={locale} destination={destination} places={places} hotspotsEnabled={hotspotsEnabled} merchants={merchants} related={related} guides={guides} />
     </>
   );
 }

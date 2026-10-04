@@ -1,4 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
+import type { ReactNode } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { GuideArticle, type GuideArticleLabels } from "./article";
 import { AD_CLEARANCE_BLOCKS, MIN_BLOCKS_BETWEEN, type AdsenseConfig } from "@/lib/adsense";
@@ -45,7 +46,7 @@ const document = {
 
 function draw(
   overrides: Record<string, unknown> = {},
-  extra: { readingTime?: string; adsense?: AdsenseConfig; labels?: Partial<GuideArticleLabels>; geminiSeries?: VisibleGeminiSeries | null } = {},
+  extra: { readingTime?: string; adsense?: AdsenseConfig; labels?: Partial<GuideArticleLabels>; geminiSeries?: VisibleGeminiSeries | null; related?: ReactNode } = {},
 ) {
   return render(
     <GuideArticle
@@ -53,6 +54,7 @@ function draw(
       readingTime={extra.readingTime}
       adsense={extra.adsense}
       geminiSeries={extra.geminiSeries}
+      related={extra.related}
       state={{
         slug: "tokyo-esim", kind: "howto", locale: "zh-TW", status: "published",
         destination_id: "tokyo", destination_label: "東京",
@@ -554,30 +556,163 @@ describe("GuideArticle translations", () => {
 });
 
 describe("GuideArticle summary and FAQ", () => {
-  it("draws the summary under the description and the FAQ before the sources, and neither in the body", () => {
+  const faq = { type: "faq" as const, items: [{ question: "要實體 SIM 嗎？", answer: "不用。" }, { question: "多少錢？", answer: "看方案。" }] };
+
+  it("draws the summary under the description and keeps FAQ answers before the related reading and sources", () => {
     const { container } = draw({
       document: {
         ...document,
         blocks: [
           { type: "summary", items: ["先買 eSIM。", "落地就能上網。"] },
           ...document.blocks,
-          { type: "faq", items: [{ question: "要實體 SIM 嗎？", answer: "不用。" }, { question: "多少錢？", answer: "看方案。" }] },
+          faq,
         ],
         sources: [{ title: "來源", url: "https://example.com/", checked_on: "2026-09-01" }],
       },
-    });
+    }, { related: <section aria-label="延伸閱讀">下一篇文章</section>, labels: { faq: "常見問題" } });
     const summary = container.querySelector("#article-summary")!;
     expect(summary).not.toBeNull();
     expect(summary.textContent).toContain("先買 eSIM。");
     const description = screen.getByText(document.description);
     expect(description.compareDocumentPosition(summary) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    const faq = container.querySelector("#article-faq")!;
+    const answers = container.querySelector("#article-faq")!;
     const sources = screen.getByRole("heading", { name: "來源" });
-    expect(faq.compareDocumentPosition(sources) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(faq.querySelectorAll("details")).toHaveLength(2);
+    const related = screen.getByRole("region", { name: "延伸閱讀" });
+    expect(answers.compareDocumentPosition(related) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(answers.compareDocumentPosition(sources) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(answers.querySelectorAll("details")).toHaveLength(2);
     // Once each: the body renders around them.
     expect(screen.getAllByText("先買 eSIM。")).toHaveLength(1);
     expect(screen.getAllByText("要實體 SIM 嗎？")).toHaveLength(1);
+  });
+
+  it.each(["常見問題", "Reader questions", "よくある質問", "자주 묻는 질문", "常见问题"])("keeps an authored %s heading and its contents link beside the answers", (title) => {
+    const { container } = draw({
+      document: { ...document, blocks: [
+        { type: "heading", level: 2, text: "First section" },
+        { type: "paragraph", text: "Start here." },
+        { type: "heading", level: 2, text: title },
+        faq,
+        { type: "callout", tone: "info", title: "After the answers", text: "Check the provider." },
+        { type: "heading", level: 2, text: "Next steps" },
+        { type: "paragraph", text: "Then continue." },
+      ] },
+    }, { labels: { faq: "Automatic FAQ heading" } });
+    const heading = screen.getByRole("heading", { name: title });
+    const answers = container.querySelector("#article-faq")!;
+    expect(heading.id).toBe("section-2");
+    expect(heading.nextElementSibling).toBe(answers);
+    expect(answers.querySelectorAll("details")).toHaveLength(2);
+    expect(screen.queryByRole("heading", { name: "Automatic FAQ heading" })).toBeNull();
+    const contents = screen.getByRole("navigation", { name: "目錄" });
+    const link = within(contents).getByRole("link", { name: `2. ${title}` });
+    expect(link.getAttribute("href")).toBe(`#${heading.id}`);
+    expect(answers.compareDocumentPosition(screen.getByText("Check the provider.")) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.getAllByRole("heading", { level: 2 }).map((node) => node.id)).toEqual(["section-1", "section-2", "section-3"]);
+  });
+
+  it("preserves a separate section and its introduction before an unheaded FAQ", () => {
+    const { container } = draw({ document: { ...document, blocks: [
+      { type: "heading", level: 2, text: "Booking details" },
+      { type: "paragraph", text: "Read these conditions first." },
+      faq,
+      { type: "paragraph", text: "Keep your confirmation." },
+    ] } }, { labels: { faq: "Frequently asked questions" } });
+    const heading = screen.getByRole("heading", { name: "Booking details" });
+    expect(heading.id).toBe("section-1");
+    expect(heading.nextElementSibling?.textContent).toBe("Read these conditions first.");
+    const answers = container.querySelector("#article-faq")!;
+    expect(within(answers as HTMLElement).getByRole("heading", { name: "Frequently asked questions" })).toBeTruthy();
+    expect(screen.getByText("Read these conditions first.").compareDocumentPosition(answers) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(answers.compareDocumentPosition(screen.getByText("Keep your confirmation.")) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it("keeps introductory prose under a localized FAQ heading without adding the heading again", () => {
+    const { container } = draw({ locale: "en", document: { ...document, blocks: [
+      { type: "heading", level: 2, text: "FREQUENTLY ASKED QUESTIONS" },
+      { type: "paragraph", text: "Here are the booking answers." },
+      faq,
+    ] } }, { labels: { faq: "Frequently asked questions" } });
+    expect(screen.getAllByRole("heading", { name: /frequently asked questions/i })).toHaveLength(1);
+    expect(screen.getByRole("heading", { name: "FREQUENTLY ASKED QUESTIONS" }).id).toBe("section-1");
+    const introduction = screen.getByText("Here are the booking answers.");
+    expect(introduction.nextElementSibling).toBe(container.querySelector("#article-faq"));
+  });
+
+  it("keeps multiple older FAQ blocks once each with distinct section ids in their original order", () => {
+    const secondFaq = { type: "faq" as const, items: [{ question: "Can I cancel?", answer: "Check your fare." }] };
+    const { container } = draw({ document: { ...document, blocks: [
+      faq,
+      { type: "paragraph", text: "The cancellation rules differ." },
+      { type: "heading", level: 2, text: "Cancellation questions" },
+      secondFaq,
+      { type: "paragraph", text: "Finish here." },
+    ] } }, { labels: { faq: "FAQ" }, related: <p>Read another article.</p> });
+    const first = container.querySelector("#article-faq")!;
+    const second = container.querySelector("#article-faq-2")!;
+    expect(first.querySelectorAll("details")).toHaveLength(2);
+    expect(second.querySelectorAll("details")).toHaveLength(1);
+    expect(screen.getAllByText("要實體 SIM 嗎？")).toHaveLength(1);
+    expect(screen.getAllByText("Can I cancel?")).toHaveLength(1);
+    const between = screen.getByText("The cancellation rules differ.");
+    expect(first.compareDocumentPosition(between) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(between.compareDocumentPosition(second) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(second.compareDocumentPosition(screen.getByText("Read another article.")) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.getByRole("heading", { name: "Cancellation questions" }).nextElementSibling).toBe(second);
+    expect(screen.getAllByRole("heading", { name: "FAQ" })).toHaveLength(1);
+  });
+
+  it("continues the existing subsection anchors across an inline FAQ", () => {
+    const { container } = draw({ document: { ...document, blocks: [
+      { type: "heading", level: 2, text: "Prices" },
+      { type: "heading", level: 3, text: "Before booking" },
+      { type: "paragraph", text: "Compare the total." },
+      faq,
+      { type: "heading", level: 3, text: "After booking" },
+      { type: "paragraph", text: "Save the receipt." },
+    ] } }, { labels: { faq: "FAQ" } });
+    expect(screen.getAllByRole("heading", { level: 3 }).map((node) => node.id)).toEqual(["section-1-1", "section-1-2"]);
+    const answers = container.querySelector("#article-faq")!;
+    expect(answers.compareDocumentPosition(screen.getByRole("heading", { name: "After booking" })) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it("keeps the FAQ identity and heading association after partner and advertising slices", () => {
+    const paragraphs = Array.from({ length: 20 }, (_, index) => ({ type: "paragraph" as const, text: `Detail ${index}` }));
+    const url = "https://www.hostinger.com/tw/vps-hosting?aff_id=12345";
+    const { container } = draw({
+      kind: "life",
+      destination_id: null,
+      destination_label: null,
+      partner_links: [{ key: "0123456789abcdef", partner: "hostinger", display_name: "Hostinger", url }],
+      document: { ...document, hero: { src: "/guides/tokyo-esim/hero.jpg", alt: "Hero", width: 1600, height: 900 }, blocks: [
+        { type: "heading", level: 2, text: "Introduction" },
+        { type: "paragraph", text: "Opening paragraph." },
+        { type: "partner_link", partner: "hostinger", url, label: "View hosting" },
+        ...paragraphs,
+        { type: "heading", level: 2, text: "Reader questions" },
+        faq,
+      ] },
+    }, { labels: { faq: "Automatic FAQ heading" }, adsense: {
+      enabled: true, publisher_id: "ca-pub-4140966684432854", slot_id: "1234567890", cmp_enabled: false,
+    } });
+    expect(screen.getAllByTestId("ad-slot").length).toBeGreaterThan(0);
+    const partner = screen.getByRole("link", { name: /View hosting/ });
+    const answers = container.querySelector("#article-faq")!;
+    expect(answers.querySelectorAll("details")).toHaveLength(2);
+    expect(screen.getByRole("heading", { name: "Reader questions" }).id).toBe("section-2");
+    expect(screen.getByRole("heading", { name: "Reader questions" }).nextElementSibling).toBe(answers);
+    expect(partner.compareDocumentPosition(answers) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.queryByRole("heading", { name: "Automatic FAQ heading" })).toBeNull();
+  });
+
+  it("does not remove a FAQ-like heading or any prose when the source has no FAQ block", () => {
+    const { container } = draw({ document: { ...document, blocks: [
+      { type: "heading", level: 2, text: "常見問題" },
+      { type: "paragraph", text: "These answers are ordinary prose." },
+    ] } }, { labels: { faq: "常見問題" } });
+    expect(screen.getByRole("heading", { name: "常見問題" }).id).toBe("section-1");
+    expect(screen.getByText("These answers are ordinary prose.")).toBeTruthy();
+    expect(container.querySelector("#article-faq")).toBeNull();
   });
 });
 
