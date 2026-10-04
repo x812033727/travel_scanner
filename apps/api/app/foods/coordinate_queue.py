@@ -157,7 +157,7 @@ def lacks_durable_coordinates_clause() -> Any:
     )
 
 
-def coordinate_queue_statement() -> Select[tuple[FoodMerchant]]:
+def coordinate_queue_statement() -> Select[FoodMerchant]:
     return (
         select(FoodMerchant)
         .where(

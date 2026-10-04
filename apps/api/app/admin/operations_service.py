@@ -382,7 +382,7 @@ def _audit_query(
     result: str | None,
     date_from: datetime | None,
     date_to: datetime | None,
-) -> Select[tuple[AdminAuditLog, str]]:
+) -> Select[AdminAuditLog, str]:
     statement = select(AdminAuditLog, User.email).outerjoin(
         User, User.id == AdminAuditLog.actor_user_id
     )

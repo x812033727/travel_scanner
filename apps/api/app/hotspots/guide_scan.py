@@ -107,7 +107,7 @@ def guides_statement(
     statuses: Sequence[str] | None = ("approved",),
     locales: Sequence[str] = (),
     ids: Iterable[UUID] | None = None,
-) -> Select[tuple[HotspotGuide, TravelHotspot]]:
+) -> Select[HotspotGuide, TravelHotspot]:
     statement = select(HotspotGuide, TravelHotspot).join(
         TravelHotspot, TravelHotspot.id == HotspotGuide.hotspot_id
     )
@@ -121,7 +121,7 @@ def guides_statement(
 
 
 async def _rows(
-    session: AsyncSession, statement: Select[tuple[HotspotGuide, TravelHotspot]]
+    session: AsyncSession, statement: Select[HotspotGuide, TravelHotspot]
 ) -> list[tuple[HotspotGuide, TravelHotspot]]:
     return [(guide, hotspot) for guide, hotspot in (await session.execute(statement)).all()]
 
