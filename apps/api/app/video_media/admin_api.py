@@ -179,6 +179,9 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
             "max_prompt_chars": MAX_PROMPT_CHARS,
             "part_bytes": PART_BYTES,
             "inline_judge_bytes": media.video_media_inline_judge_bytes,
+            # The judge takes fault checks (JudgeCriterion.cost); a tool asks that way only
+            # of a server that says so.
+            "judge_checks": 1,
             "max_file_bytes": media.video_media_max_file_bytes,
         },
     )

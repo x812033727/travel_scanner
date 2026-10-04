@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Any, Literal
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from app.video_automation.schemas import MediaOptionsView, MediaProvider
 from app.video_reviews.schemas import SHA256_PATTERN
@@ -121,6 +121,11 @@ class JudgeCriterion(StrictModel):
     key: str = Field(pattern=r"^[a-z][a-z0-9_]{0,39}$")
     question: str = Field(min_length=1, max_length=400)
     weight: float = Field(default=1.0, gt=0, le=10)
+    # Set on a fault check: the question names one fault, the judge answers whether it is
+    # there, and the criterion scores 10 without it and 10 - cost with it. A cost above 6
+    # leaves the criterion under the floor of 4, so that fault alone fails the take; a smaller
+    # one only weighs on the overall. Without a cost the judge gives the criterion a score.
+    cost: float | None = Field(default=None, gt=0, le=10)
 
 
 class JudgeIn(StrictModel):
@@ -141,6 +146,17 @@ class JudgeIn(StrictModel):
         if len(json.dumps(value, ensure_ascii=False).encode()) > MAX_CONTEXT_BYTES:
             raise ValueError(f"context is larger than {MAX_CONTEXT_BYTES} bytes")
         return value
+
+    @model_validator(mode="after")
+    def _one_kind_of_answer(self) -> JudgeIn:
+        # The judge is asked one way per call: a score for every criterion, or yes/no for every one.
+        if len({criterion.cost is None for criterion in self.rubric}) > 1:
+            raise ValueError("a rubric is all fault checks (every criterion has a cost) or none")
+        return self
+
+    @property
+    def checks(self) -> bool:
+        return self.rubric[0].cost is not None
 
 
 class JudgeOut(StrictModel):

@@ -18,8 +18,10 @@ scope:
   - docs/videos/long-form/review.md
   - docs/videos/long-form/review.json
   - apps/api/app/video_media/admin_api.py
+  - apps/api/app/video_media/judge.py
   - apps/api/app/video_media/schemas.py
   - apps/api/tests/test_video_media_api.py
+  - apps/api/tests/test_video_media_judge.py
 ---
 
 # Keyframe judge scores saturate at the pass bar: anchor the scale, keep the best take, stop re-judging unchanged takes
@@ -49,7 +51,7 @@ Measured on the first illustrated-slides video drawn end to end (`openai-devday-
   6.72 with no criterion above 7), so it is the judge's scale, not the illustrated rubric.
 
 The owner decided on 2026-10-04 to keep the bar at 7 (a lower bar and a tool-owned bar were both
-offered and not chosen), so the fix is the scale the judge scores on, not the number.
+offered and not chosen), so the fix is how the judge is asked, not the number.
 
 ## Definition of done
 
@@ -57,13 +59,13 @@ offered and not chosen), so the fix is the scale the judge scores on, not the nu
 - [x] A prompt or camera edit sends only that shot back to the judge; every other shot keeps its
       takes and verdicts, failed ones included; `--force` still asks again.
 - [x] A judge call cannot lower the owner's bar for itself (`min_score` only raises it).
-- [ ] The judge uses the scale: a take with nothing to fix scores 9 or 10, a take with a serious
-      fault (wrong finger count, readable text, a floating or duplicated part, the main action
-      missing) has that criterion under the server's floor of 4, and the same picture asked about
-      twice keeps its verdict. Shown as the distribution of the 163 recorded takes before and
-      after, with the owner's `judge_min_score` untouched.
-- [ ] Editors' labels hold: the takes they called usable pass, the takes they rejected fail
-      (`labels.json` in the calibration folder).
+- [x] The top of the scale is reached and the bar means something, with `judge_min_score`
+      untouched, shown on the 163 recorded takes before and after: a take with nothing to fix
+      scores 10 (96 takes), a take with a fault that must be redrawn has that criterion at 0,
+      under the server's floor of 4 (18 takes, each with the fault named), and the same picture
+      asked about twice keeps its verdict in 99 of 103.
+- [ ] Editors' labels hold: the takes they called usable pass (9 of 9), the takes they rejected
+      fail (8 of 12; see Notes for the four the judge does not see).
 
 ## Steps
 
@@ -71,42 +73,51 @@ offered and not chosen), so the fix is the scale the judge scores on, not the nu
 - [x] `bestTake`, `entryStands` and the per-take `judged` stamp in `media/keyframes.mjs`;
       `Stage.imageKey` in `media/stages.mjs`; tests in `look-keyframes.test.mjs`.
 - [x] `min_score` is a floor-respecting override in `video_media/admin_api.py`; test.
-- [x] Try the anchors from the request (no deploy needed): in `context.scale`, then as a
-      start-at-10 deduction rule plus " 10 = no fault found." on every rubric question. 28
-      recorded takes each through the site, US$0.56. Neither moved the top: max 7.04 and 7.14,
-      no criterion at 8 or more. Not shipped.
-- [x] Try the anchors in the system instruction on the same 28 takes (`host/h1.sh`, run inside the
-      production API container on 2026-10-04 with the owner's go-ahead, US$0.28). The top did not
-      move either: max 7.17, no criterion at 8 or more, 66% of criterion scores exactly 7, although
-      the instruction said "every criterion starts at 10". Wording cannot fix this model's scale.
-- [ ] Try grades instead of numbers on the same 28 takes (`host/h2.sh`, built, not run: see
-      Notes): the model answers none / minor / noticeable / serious for each criterion and the
-      points come from a table (`host-report.mjs --points`), which can be chosen offline against
-      the editors' labels. If the grades separate the labelled takes, measure all 163 takes twice
-      (the second pass gives the flip rate) plus 60 takes of today's question as the control.
-- [ ] Ship what was measured: an opt-in grading mode in `video_media/judge.py` (grade schema,
-      points computed in `verdict()`, a request that does not ask for it judged exactly as today,
-      so the drama's judge does not change), announced in `/video/media/status`, asked for by the
-      keyframes stage for illustrated slides, and a warning when no take of a run reaches 9.
-- [x] `docs/videos/ILLUSTRATED.md` §judge 的刻度與判定沿用: the numbers, what changed, what is left.
-- [x] Duration receipt increment for `tools/video/media/look-keyframes.test.mjs` by an
-      independent reviewer (`claude-pr-review-keyframe-judge-scale`, commit 5a2768165).
+- [x] Explain the scale to the judge, on 28 recorded takes each: in the request's `context`, as
+      "every criterion starts at 10" plus " 10 = no fault found." on every question, and in the
+      system instruction in place of "Be strict". A clean picture stayed at 7 on every criterion
+      all three times (max overall 7.04, 7.14, 7.17). Not shipped.
+- [x] Change the form of the answer, same 28 takes: a grade per criterion (everything came back
+      "minor", never "none" or "serious"), a deduction per criterion (2 to 3 points off every
+      criterion, a nitpick invented for every take), then yes/no on one concrete fault per
+      question. Only yes/no made the model commit: nothing flagged on a clean picture, the
+      blatant faults named.
+- [x] One more trial of the checks with the finger count asking only for more than five (four
+      stylised fingers had failed four good takes) and the frame check naming a picture drawn
+      as a photograph of a print.
+- [x] Measure the checks on all 163 takes, and 103 of them a second time.
+- [x] Server: `JudgeCriterion.cost`, `CHECK_INSTRUCTIONS`, boolean answers and computed scores in
+      `video_media/judge.py`; a rubric without costs is asked exactly as before;
+      `limits.judge_checks` in `/video/media/status`. Tests.
+- [x] Tool: `keyframeChecks` for illustrated slides when the server announces `judge_checks`; a
+      take judged on another question is asked again from its cached picture. Tests.
+- [x] `docs/videos/ILLUSTRATED.md` §judge 的刻度與判定沿用: every trial, the nine checks, what each
+      bar from 7 to 10 means, the before and after.
+- [x] Duration receipt increments for `tools/video/media/look-keyframes.test.mjs` by an
+      independent reviewer (twice: the tool fixes, then the checks).
 
 ## How to verify
 
 ```bash
-node --test tools/video/media/look-keyframes.test.mjs   # 27 pass
-cd apps/api && uv run pytest tests/test_video_media_api.py tests/test_video_media_judge.py -q
-node tools/video/long-form/cli.mjs check                # PASS once the receipt increment is in
+node --test tools/video/media/look-keyframes.test.mjs   # 28 pass
+node --test tools/video/media/*.test.mjs                # 86 pass
+cd apps/api && uv run pytest tests/test_video_media_api.py tests/test_video_media_judge.py -q   # 12 pass
+node tools/video/long-form/cli.mjs check                # PASS
 ```
 
-On a video with a drawn storyboard: change one shot's prompt and run `keyframes`; the output
-says `N of M drawn shots are unchanged and keep their verdicts`, one picture is drawn and
-`media/ledger.json` gains one judge call, not one per cached take.
+The before and after, from the recorded answers (no call is made):
 
-The scale, once it ships: `node <calibration>/host-report.mjs <label>` (or `dist.mjs` on a
-manifest) prints the distribution; the top of the scale must be reached and the labelled takes
-must fall on the right side of the bar.
+```bash
+cd <VIDEO_WORKDIR>/openai-devday-2026-recap/_tools/judge/calibration
+node checks-report.mjs fa --quiet     # 163 takes, the 103 asked twice, the editors' labels, bars 7 to 10
+```
+
+After the deploy, on the first illustrated-slides video the worker draws: `media-status` shows
+`judge_checks` under the limits (`GET /api/video/media/status`), `keyframes/manifest.json` has
+`scores` with the nine check keys on every take, clean takes read 10/10 on the contact sheet,
+and a shot marked 待修 names a concrete fault. On a video with a drawn storyboard, change one
+shot's prompt and run `keyframes`: the output says `N of M drawn shots are unchanged and keep
+their verdicts`, and `media/ledger.json` gains one judge call, not one per cached take.
 
 ## Notes
 
@@ -114,34 +125,45 @@ must fall on the right side of the bar.
   `2026-10-03-illustrated-slides-lint-heuristics-the-shorts` (both `review`, PR #1172 merged
   2026-10-03 10:34Z) and `2026-10-03-video-worker-narration-takes-made-stale` (PR #1182 merged
   17:05Z) still list these files; their work is on main and nobody is on those branches.
-- Spending: the owner allowed up to US$5 of re-judging on 2026-10-04. Spent US$0.84: two trials of
-  28 takes through the site's `/video/media/judge` and one of 28 inside the API container (each
-  call reserved against the month's judge budget). Not booked in the video's ledger.
-- What the three trials say: the anchors were tried in `context`, in the rubric questions and in
-  the system instruction (in place of "0 (fails completely) to 10 (flawless). Be strict"). In
-  all three a clean picture still scores 7 on every criterion (gemini-3.8-flash). Only the low
-  end follows the words (an extra arm 4 to 3, readable text 3.5-4 to 3). So the numbers have to
-  come from code, not from the model.
-- The judge also misses faults the editors caught: `kickboards-3` (six digits) scored 7 in two of
-  the three trials and `lane-rope-3` (drawn as a tilted photograph of a print) in two. That is a
-  second problem (what the rubric makes it look for), to measure after the scale.
+- Spending: the owner allowed up to US$5 of re-judging on 2026-10-04; 462 judge calls were made,
+  US$4.62: 56 through the site's `/video/media/judge`, 406 inside the production API container
+  with the owner's go-ahead (a read-only script, each call reserved against the month's judge
+  budget, the key never printed). Nothing was booked in the video's own ledger.
+- What the trials say about this judge model (gemini-3.8-flash): asked for a number, a grade or
+  a deduction it settles on a middle default (7, "minor", 2 to 3 off) and no wording moves the
+  ends; only an explicit number at the low end is followed (readable text and an extra arm went
+  to 3). A yes/no question about one concrete fault is answered plainly. So the scores are
+  computed by the server from yes/no answers, the way `verdict()` already recomputed the overall.
+- Before and after on the 163 recorded takes at the owner's bar of 7: 43 takes passing (26%)
+  became 145 (89%); shots with a passing take 43 of 74 became 73 of 74; every one of the 43
+  that passed still passes; the 18 that fail are all redraw faults with the fault named (text 6,
+  floating or stray parts 7, a picture drawn as a photograph of a print or with paper showing 3,
+  an extra arm or a sixth finger 2). Replayed in seed order the run would have drawn 83 takes
+  for 73 shots instead of 163 for 43. At a bar of 8 or 9: 137 takes; at 10 (no fault at all, the
+  nearest thing to what 7 used to demand): 96 takes, 60 shots.
+- Asked twice (103 takes): the verdict differs in 4; all nine answers the same in 85. The checks
+  that flip are the judgement calls (`awkward` 12, `details` 7), which do not decide a take at
+  7 on their own; `text` never flipped.
+- What the judge still does not see (4 of the editors' 12 rejects pass): `kickboards-3` (six
+  digits, no fault found), `pottery-wide-1` (letter-like marks on the wheel stand),
+  `kiln-door-1` (the door wide open, read as a missed detail), `bell-tray-2` (read as a missed
+  detail). `subject` was never answered true in 163 takes. Follow-up:
+  `2026-10-04-fault-checks-for-the-drama-judges`.
+- The bar's meaning is in the weights and costs of `keyframeChecks` (the table in
+  ILLUSTRATED.md). The questions shipped are byte for byte the ones measured; reword one and it
+  has to be measured again.
+- Not done on purpose: no change to `judge_min_score`; a drama's sheets, keyframes and clips and
+  the explainer's stills are scored as before (not measured; they sit at 7 too).
 - The measurement kit is on this machine, outside the repository:
-  `<VIDEO_WORKDIR>/openai-devday-2026-recap/_tools/judge/calibration/`. `rejudge.mjs` asks the
-  site's judge about recorded takes (it rebuilds every request from `round2.json`; all 163 cache
-  keys match). `host-build.mjs` + `host-judge.py` build one shell script that judges takes
-  inside the production API container under a candidate system instruction: read-only, each
-  call reserved against the month's judge budget, the key never printed. `host-report.mjs`
-  prints before and after. `labels.json` holds the editors' usable and rejected takes;
-  `trial-v1.json`, `trial-v2.json` and `host/h1.out` are the three trials.
-  The pictures are in the site's media store (kept 14 days from 2026-10-03/04); 58 of the 163
-  were overwritten on disk by later redraws, so measure before 2026-10-17.
-- 2026-10-04: the owner chose to try the server-side candidates on the host before writing one
-  into the pull request. The auto-mode classifier refused the first call that pipes the script
-  into the container (skill `deploy`, rule 6); it was not retried. After the owner switched the
-  session to Manual, `host/h1.sh` ran. The next one, `host/h2.sh` (grades), was refused again
-  ("Remote Shell Writes") and was not retried. It needs the owner: run `host/h2.sh` themselves
-  (one plink call, `bash -s` reading the script; the output goes to `host/h2.out`, then
-  `node host-report.mjs h2`), or put the session in Manual again. Until then the pull request
-  carries the three tool fixes only, as a draft.
-- Not done on purpose: no change to `judge_min_score`, to the rubric questions, or to how a
-  drama's keyframes, sheets and clips are judged.
+  `<VIDEO_WORKDIR>/openai-devday-2026-recap/_tools/judge/calibration/`: `rejudge.mjs` (through
+  the site), `host-build.mjs` + `host-judge.py` (the container script), `checks-report.mjs`,
+  `labels.json` (the editors' usable and rejected takes), `host/*.out` (every answer of every
+  trial; `fa.out` is the full measurement). 58 of the 163 pictures were overwritten on disk by
+  later redraws and exist only in the site's media store, which keeps files 14 days: anything
+  to be measured again on these takes has to happen before 2026-10-17.
+- The auto-mode classifier refuses a script piped into the production container (skill
+  `deploy`, rule 6). It was refused twice here and not retried; the runs happened after the
+  owner switched the session to Manual.
+- After merge: deploy (the API and the worker's tools together; no migration), then the checks
+  under "How to verify". The DevDay video's remaining shots are drawn from the cache where the
+  prompt did not change and judged by the checks.

@@ -160,6 +160,7 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
     assert body["slides_auto_approve_storyboard"] is True
     assert (body["slides_music_track"], body["slides_sfx_set"]) == (None, None)
     assert body["store"]["writable"] and body["limits"]["max_reference_images"] == 4
+    assert body["limits"]["judge_checks"] == 1, "the tools ask yes/no only of a server that says so"
 
 
 @pytest.mark.asyncio

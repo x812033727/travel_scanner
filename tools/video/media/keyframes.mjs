@@ -93,6 +93,37 @@ export function keyframeRubric(characters, { subtitleBand = true, craft = false,
   ];
 }
 
+/**
+ * What the judge is asked about an illustrated-slides picture when the server takes fault checks
+ * (`limits.judge_checks`): one concrete fault a question, answered yes or no, and the server
+ * computes the scores. Asked for a score from 0 to 10 the judge gives a picture it has no remark
+ * on a 7 and never goes higher, wherever the scale is explained to it, so the owner's bar of 7
+ * passed only the takes it said nothing about and the same picture flipped when asked twice
+ * (docs/videos/ILLUSTRATED.md §judge 的刻度與判定沿用). `cost` is what a fault takes off its
+ * criterion's 10. The first six cost all of it: the criterion falls under the server's floor of
+ * 4 and the picture is redrawn whatever the rest scores; their small weight only keeps the
+ * overall of such a take from reading as good. The last three are flaws a viewer may notice on
+ * a second look, and they carry the overall: at a bar of 7 a picture passes with one of them
+ * beside a missed detail and fails when it is both awkward and generated-looking; at 8 an
+ * awkward body fails, at 9 only a missed detail is let through, at 10 nothing is. `plate` says
+ * the judge is also shown the video's style plate. The questions are the ones measured on the
+ * 163 recorded takes; a reworded one has to be measured again.
+ */
+export function keyframeChecks({ plate = false } = {}) {
+  const redraw = { weight: 0.25, cost: 10 };
+  return [
+    { key: "text", question: "Can you read any letter, word or number anywhere in the picture, or see a logo or a watermark? Marks that only suggest writing without forming letters do not count.", ...redraw },
+    { key: "anatomy", question: "Count the digits of every hand drawn large, thumb included. Does any hand show more than five, or does any person or animal have an extra hand, arm or leg, or a face or body warped out of shape? A finger that is hidden or left out by the style does not count.", ...redraw },
+    { key: "detached", question: "Is any part floating, cut off from what should hold it or duplicated, or is there a stray figure or object that does not belong to the scene (a tiny person, a hand with no arm, eyes in the dark)?", ...redraw },
+    { key: "subject", question: "Is the main subject of the shot prompt, or the main thing it is doing, missing or clearly wrong? Secondary props, bystanders, which hand and the exact framing do not count here.", ...redraw },
+    { key: "frame", question: "Does the picture fail to fill the frame as one upright picture: bars or blurred panels at the sides, the scene tilted, blank paper or a table showing past its corners, or the scene drawn as a photograph of a print? A thin plain margin does not count.", ...redraw },
+    { key: "style", question: plate ? "Is the technique clearly unlike the picture labelled \"style plate\": another medium, another palette or another finish?" : "Is the technique clearly unlike the style the context describes: another medium, another palette or another finish?", ...redraw },
+    { key: "details", question: "Is a secondary thing the shot prompt asks for missing or different: a prop, a bystander, a gesture, the shot size?", weight: 2, cost: 3 },
+    { key: "awkward", question: "Is a hand, a face or a body awkward enough that a viewer would notice it on a second look, beyond the way the style simplifies everything?", weight: 3, cost: 6 },
+    { key: "generated", question: "Does it read as generated rather than printed by hand: an even outline traced around everything, the same fine detail everywhere, a glossy, airbrushed or glowing finish?", weight: 2, cost: 6 },
+  ];
+}
+
 export function shotPrompt(scene, look, characters) {
   const cast = shotAppearancePrompt(characters);
   return `${scene.data.prompt}. Style: ${look.style}${scene.data.camera ? `. Camera: ${scene.data.camera}` : ""}${cast ? `. Characters: ${cast}` : ""}`.slice(0, 4000);
@@ -159,7 +190,7 @@ async function trimmed(ctx, workdir, picture, id) {
   return { ...picture, file: cut.file, sha256: cut.sha256, margins: cut.margins };
 }
 
-async function stylePlate({ stage, workdir, look, hash, takes, size, rubricOptions, force, trim, ctx }) {
+async function stylePlate({ stage, workdir, look, hash, takes, size, rubric, force, trim, ctx }) {
   const kept = force ? null : readStylePlate(workdir, hash);
   if (kept) {
     ctx.stdout.write(`style plate: kept (judge ${kept.judge?.overall ?? "?"}/10)\n`);
@@ -183,7 +214,7 @@ async function stylePlate({ stage, workdir, look, hash, takes, size, rubricOptio
     }
     let judge;
     try {
-      judge = await stage.judge({ id: STYLE_PLATE_ID, kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric: keyframeRubric([], rubricOptions), context: { shot: { id: STYLE_PLATE_ID, prompt: STYLE_PLATE_PROMPT, camera: null }, characters: [], style: look.style } });
+      judge = await stage.judge({ id: STYLE_PLATE_ID, kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric, context: { shot: { id: STYLE_PLATE_ID, prompt: STYLE_PLATE_PROMPT, camera: null }, characters: [], style: look.style } });
     } catch (error) {
       if (error.code === "stopped") return null;
       throw error;
@@ -292,6 +323,9 @@ export async function run(command, args, ctx) {
   const problem = statusProblem(status, "image", format);
   if (problem) throw new MediaError(problem, { who: "owner" });
   const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "keyframes", imageVersion, format, now: ctx.now });
+  // Illustrated slides are judged by yes/no fault checks once the server takes them; a drama's
+  // pictures, and any picture on an older server, are scored on the rubric as before.
+  const checks = slides && Boolean(status.limits?.judge_checks);
   const size = sizeFor(status);
   mkdirSync(path.join(workdir, "keyframes"), { recursive: true });
   // The chosen sheets and the style frames go to the media store (the server may have pruned
@@ -311,7 +345,7 @@ export async function run(command, args, ctx) {
   // model the last reference is the plate); it is put in the store again in case it was pruned.
   let plate = null;
   if (plated) {
-    plate = await stylePlate({ stage, workdir, look, hash, takes, size, rubricOptions, force: values.force, trim: stillPictures, ctx });
+    plate = await stylePlate({ stage, workdir, look, hash, takes, size, rubric: checks ? keyframeChecks() : keyframeRubric([], rubricOptions), force: values.force, trim: stillPictures, ctx });
     if (!plate) {
       ctx.stdout.write("stopped by the STOP file before the style plate; rerun to continue\n");
       return EXIT.ok;
@@ -332,7 +366,7 @@ export async function run(command, args, ctx) {
   const referencesOf = (characters) => [...characters.map((character) => ({ sha256: uploaded[character.id], role: "character" })).filter((reference) => reference.sha256), ...styleReferences].slice(-MAX_REFERENCES);
   const endPrompt = (scene, characters) => shotPrompt({ ...scene, data: { ...scene.data, prompt: scene.data.end_frame.prompt } }, look, characters);
   const question = (scene, characters) => ({
-    rubric: keyframeRubric(characters, { ...rubricOptions, plate: Boolean(plate) }),
+    rubric: checks ? keyframeChecks({ plate: Boolean(plate) }) : keyframeRubric(characters, { ...rubricOptions, plate: Boolean(plate) }),
     context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: look.style },
   });
   // A verdict answers one question at the owner's bar of the day; a take judged on another has no verdict yet.
@@ -369,7 +403,10 @@ export async function run(command, args, ctx) {
     const entry = current?.takes && !values.force ? current : { takes: [] };
     for (let take = 1; take <= takes; take++) {
       const seed = take;
-      if (entry.takes.some((each) => each.seed === seed && each.judge)) continue;
+      // A take judged on this question is not asked about again. One judged on another question
+      // is, from its cached picture; a take from before verdicts were stamped is of another
+      // question only where the question is now the checks.
+      if (entry.takes.some((each) => each.seed === seed && each.judge && (each.judged === judged || (each.judged === undefined && !checks)))) continue;
       let picture;
       try {
         picture = await stage.image({ id: scene.id, purpose: "keyframe", prompt, negative: look.negative, references, seed, shotId: scene.id, size, target: `keyframes/${scene.id}-${seed}` });
@@ -400,7 +437,7 @@ export async function run(command, args, ctx) {
       }
       // A still under a camera move is used without its paper margin; the judge saw it whole.
       if (stillPictures) picture = await trimmed(ctx, workdir, picture, scene.id);
-      entry.takes.push({ seed, file: picture.file, sha256: picture.sha256, key: picture.key, judge, judged, ...(picture.margins ? { margins: picture.margins } : {}) });
+      entry.takes = [...entry.takes.filter((each) => each.seed !== seed), { seed, file: picture.file, sha256: picture.sha256, key: picture.key, judge, judged, ...(picture.margins ? { margins: picture.margins } : {}) }].sort((a, b) => a.seed - b.seed);
       ctx.stdout.write(`${scene.id} take ${take}: judge ${judge.overall}/10${judge.passed ? "" : ` NOT passed: ${judge.problems.join("; ") || "below the bar"}`}${picture.reused ? " (reused)" : ""}\n`);
       if (judge.passed) break;
     }

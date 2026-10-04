@@ -11,7 +11,7 @@ import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.m
 import { readLedger } from "./ledger.mjs";
 import { keepSheets } from "./series-store.mjs";
 import { readCache } from "./cache.mjs";
-import { bestTake, chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, entryStands, keyframeRubric, MAX_KEYFRAME_TAKES, shotPrompt, STYLE_PLATE_ID, STYLE_PLATE_PROMPT } from "./keyframes.mjs";
+import { bestTake, chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, entryStands, keyframeChecks, keyframeRubric, MAX_KEYFRAME_TAKES, shotPrompt, STYLE_PLATE_ID, STYLE_PLATE_PROMPT } from "./keyframes.mjs";
 import { DEFAULT_SHEET_PROMPT, MAX_LOOK_ROUNDS, optionKey, parseChoice, sheetPrompt, suggestedOf } from "./look.mjs";
 import { imagePrice, statusProblem } from "./stages.mjs";
 
@@ -899,4 +899,81 @@ test("a prompt edit sends that shot alone back to the judge: the others keep the
   assert.equal(await main(["keyframes", "--slug", box.slug, "--force"], forced.ctx), EXIT.lint, forced.out.stderr);
   assert.doesNotMatch(forced.out.stdout, /keep their verdicts/);
   assert.equal(site.state.judges.length, judged + 1 + 1 + 3 + 8, "the plate and every take of every shot");
+});
+
+test("illustrated slides are judged by yes/no fault checks once the server takes them, and a shot that failed on the old question is asked again", async () => {
+  const REDRAW = ["text", "anatomy", "detached", "subject", "frame", "style"];
+  const checks = keyframeChecks({ plate: true });
+  assert.deepEqual(checks.map((item) => item.key), [...REDRAW, "details", "awkward", "generated"]);
+  assert.deepEqual(checks.filter((item) => item.cost === 10).map((item) => item.key), REDRAW, "these faults leave the criterion at 0, under the server's floor of 4");
+  assert.ok(checks.every((item) => item.cost > 0 && item.cost <= 10 && item.question.length <= 400 && /^[a-z][a-z0-9_]{0,39}$/.test(item.key)));
+  assert.ok(checks.filter((item) => item.cost < 10).every((item) => 10 - item.cost >= 4), "a second-look flaw alone never fails a take");
+  assert.match(checks.find((item) => item.key === "style").question, /labelled "style plate"/);
+  assert.match(keyframeChecks().find((item) => item.key === "style").question, /the style the context describes/);
+  assert.match(checks.find((item) => item.key === "anatomy").question, /more than five.*hidden or left out by the style does not count/);
+  // What the server computes from the answers (apps/api/app/video_media/judge.py), so the bar keeps its meaning.
+  const total = checks.reduce((sum, item) => sum + item.weight, 0);
+  const overall = (...faults) => Math.round((checks.reduce((sum, item) => sum + (faults.includes(item.key) ? 10 - item.cost : 10) * item.weight, 0) / total) * 100) / 100;
+  assert.equal(overall(), 10, "nothing found is the top of the scale");
+  assert.deepEqual([overall("details"), overall("generated"), overall("awkward")], [9.29, 8.59, 7.88]);
+  assert.deepEqual([overall("awkward", "details"), overall("generated", "details")], [7.18, 7.88], "at a bar of 7 one flaw beside a missed detail passes");
+  assert.equal(overall("awkward", "generated"), 6.47, "awkward and generated-looking together do not");
+
+  // A server that does not take checks yet is asked for scores, as before.
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const status = { ...SLIDES_STATUS, limits: {} };
+  let verdicts = (kind, request) => (request.context.shot.id === "desk" ? { overall: 6.9, passed: false, problems: ["a remark"] } : { overall: 7, passed: true });
+  const site = mediaSite({ status, verdicts: (...args) => verdicts(...args) });
+  const scored = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], scored.ctx), EXIT.lint, scored.out.stderr);
+  assert.ok(site.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined) && request.rubric.some((item) => item.key === "craft")));
+  const drawn = site.state.images.length;
+  const judged = site.state.judges.length;
+  assert.equal(judged, 8, "the plate, four shots once and the desk three times");
+
+  // The server now takes checks. The shots that passed keep their verdicts; the desk failed on a
+  // question that is no longer the one asked, so its first take is asked about again from the
+  // cached picture, with stamped verdicts and with ones from before the stamps alike.
+  status.limits = { judge_checks: 1 };
+  verdicts = () => ({ overall: 9.29, passed: true, problems: ["the lamp is on the left"] });
+  const file = path.join(box.workdir, "keyframes", "manifest.json");
+  const before = readJson(file);
+  delete before.shots.desk.takes[1].judged;
+  writeFileSync(file, JSON.stringify(before));
+  const checked = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], checked.ctx), EXIT.ok, checked.out.stderr);
+  assert.equal(site.state.images.length, drawn, "nothing is drawn again");
+  assert.equal(site.state.judges.length, judged + 1, "one call: the desk's first take passes on the question as it is asked now");
+  assert.match(checked.out.stdout, /desk take 1: judge 9\.29\/10 \(reused\)\n/);
+  const asked = site.state.judges.at(-1);
+  assert.equal(asked.context.shot.id, "desk");
+  assert.deepEqual(asked.rubric, keyframeChecks({ plate: true }));
+  assert.deepEqual(asked.files.map((each) => each.label), ["keyframe", "style plate"]);
+  assert.equal(asked.min_score, undefined);
+  const manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.shots.desk.needs_review, false);
+  assert.equal(manifest.shots.desk.seed, 1);
+  assert.deepEqual(manifest.shots.desk.takes.map((take) => [take.seed, take.judge.overall]), [[1, 9.29], [2, 6.9], [3, 6.9]], "one entry a seed, in seed order");
+  assert.notEqual(manifest.shots.desk.takes[0].judged, before.shots.desk.takes[0].judged, "the stamp is of the question asked");
+  assert.equal(manifest.shots.podium.judge.overall, 7, "a shot that passed is kept as it was");
+
+  // From the start on such a server the plate is checked too, against the look's description.
+  const fresh = sandbox("fixture-illustrated", "illustrated");
+  const freshSite = mediaSite({ status, verdicts: () => ({ overall: 10, passed: true }) });
+  const run = context(fresh, freshSite.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", fresh.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.deepEqual(freshSite.state.judges[0].rubric, keyframeChecks());
+  assert.equal(freshSite.state.judges[0].context.shot.id, STYLE_PLATE_ID);
+  for (const request of freshSite.state.judges.slice(1)) assert.deepEqual(request.rubric, keyframeChecks({ plate: true }));
+
+  // A drama's pictures are scored on the rubric whatever the server can do: only illustrated slides were measured.
+  const story = sandbox("fixture-story", "story");
+  writeFileSync(path.join(story.dir, "style-anchor.png"), PNG("style anchor"));
+  rewrite(story, (doc) => {
+    doc.look.style_frames = ["style-anchor.png"];
+  });
+  const storySite = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: () => ({ overall: 8, passed: true }) });
+  const told = context(story, storySite.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", story.slug], told.ctx), EXIT.ok, told.out.stderr);
+  assert.ok(storySite.state.judges.length > 0 && storySite.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined)));
 });
