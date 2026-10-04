@@ -12,7 +12,8 @@ from uuid import uuid4
 import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
-from sqlalchemy import String, Table
+from sqlalchemy import String, Table, select
+from sqlalchemy.exc import IntegrityError
 
 from app.auth.service import current_user
 from app.config import Settings
@@ -36,6 +37,11 @@ from app.video_reviews.schemas import (
 )
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
 from app.video_speech import admin_api as speech_api
+from tests.test_video_review_renewal import SLUG as SITE_SLUG
+from tests.test_video_review_renewal import Site, _rows, _submit
+from tests.test_video_review_renewal import site as _site
+
+site = _site  # The renewal tests' real SQLite database, without collecting their tests here.
 
 
 def _store(root: Path, **limits: int) -> ReviewStore:
@@ -546,6 +552,152 @@ async def test_a_look_review_replaces_only_the_pending_one_of_its_character(
     auto = await admin_service.submit_review(session, store, "v", board, token)
     assert auto.status == "approved" and auto.note == AUTO_APPROVED_STORYBOARD_NOTE
     assert session.add.call_args.args[0].action == "video_review_auto_approved"
+
+
+async def _drama_on_site(site: Site) -> VideoProject:
+    async with site.factory() as session:
+        project = await session.scalar(select(VideoProject).where(VideoProject.slug == SITE_SLUG))
+        assert project is not None
+        project.format, project.shorts_line = "drama", None
+        await session.commit()
+        return project
+
+
+def _look(subject: str, name: str, sha: str = "c" * 64) -> ReviewIn:
+    return ReviewIn(
+        gate="look",
+        subject=subject,
+        content_sha256=sha,
+        summary=f"{name} 的設定圖 2 張，judge 建議 A",
+        payload={
+            "subject": subject,
+            "character": {"name": name},
+            "options": [{"key": "A", "index": 1}, {"key": "B", "index": 2}],
+            "suggested": "A",
+        },
+    )
+
+
+@pytest.mark.asyncio
+async def test_each_character_keeps_its_own_look_review_of_one_shared_manifest(
+    site: Site, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """review-push binds every character's look review to the one characters/manifest.json
+    (tools/video/review/sync.mjs lookSubmissions), so the reviews share a hash and differ by
+    subject; a second character must not be handed the first one's review."""
+    monkeypatch.setattr(admin_service, "auto_picks_look", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "spend_by_slug", AsyncMock(return_value={}))
+    await _drama_on_site(site)
+
+    bride = await _submit(site, _look("bride", "新娘"))
+    groom = await _submit(site, _look("groom", "新郎"))
+    assert groom.id != bride.id
+    assert (bride.subject, groom.subject) == ("bride", "groom")
+    assert (groom.status, groom.payload["subject"]) == ("pending", "groom")
+    rows = {row.id: row for row in await _rows(site)}
+    assert {(row.subject, row.payload["subject"], row.status) for row in rows.values()} == {
+        ("bride", "bride", "pending"),
+        ("groom", "groom", "pending"),
+    }
+
+    # The same character sent again while it waits refreshes its own record and no other.
+    resent = _look("bride", "新娘")
+    resent.summary = "新娘 的設定圖 2 張，judge 重看後建議 A"
+    again = await _submit(site, resent)
+    assert again.id == bride.id and again.summary == resent.summary
+    rows = {row.id: row for row in await _rows(site)}
+    assert len(rows) == 2 and rows[groom.id].summary == groom.summary
+
+    # Each owner decision lands on its own character.
+    async with site.factory() as session:
+        for review_id, choice in ((bride.id, "B"), (groom.id, "A")):
+            await admin_service.decide(
+                session,
+                SITE_SLUG,
+                review_id,
+                site.owner,
+                DecisionIn(decision="approve", choice=choice),
+            )
+
+    # A decided sheet sent again comes back as it is, each to its own character.
+    for subject, name, own, choice in (
+        ("groom", "新郎", groom.id, "A"),
+        ("bride", "新娘", bride.id, "B"),
+    ):
+        repeat = await _submit(site, _look(subject, name))
+        assert (repeat.id, repeat.subject, repeat.status, repeat.choice) == (
+            own,
+            subject,
+            "approved",
+            choice,
+        )
+    assert len(await _rows(site)) == 2
+
+    # The latest approved sheet per character, read the way review-pull reads the project
+    # (oldest first, the manifest's hash, keyed by subject: sync.mjs recordLook).
+    async with site.factory() as session:
+        view = await admin_service.project_view(session, SITE_SLUG)
+    picks = {
+        review.subject: review.choice
+        for review in reversed(view.reviews)
+        if review.gate == "look" and review.status == "approved"
+        and review.content_sha256 == "c" * 64
+    }
+    assert picks == {"bride": "B", "groom": "A"}
+
+    # A new manifest for the whole cast is a new review for each character; the decided ones
+    # stay as they were.
+    newer = "e" * 64
+    fresh = [
+        await _submit(site, _look(subject, name, newer))
+        for subject, name in (("bride", "新娘"), ("groom", "新郎"))
+    ]
+    assert len({review.id for review in fresh}) == 2
+    assert {(review.subject, review.status) for review in fresh} == {
+        ("bride", "pending"),
+        ("groom", "pending"),
+    }
+    rows = {row.id: row for row in await _rows(site)}
+    assert (rows[bride.id].status, rows[groom.id].status) == ("approved", "approved")
+
+
+@pytest.mark.asyncio
+async def test_the_database_keeps_one_review_per_gate_subject_hash_and_revision(
+    site: Site,
+) -> None:
+    """A gate without a subject keeps the identity it always had; a subject widens it."""
+    project = await _drama_on_site(site)
+
+    def row(gate: str, subject: str | None, revision: int = 0) -> VideoReview:
+        return VideoReview(
+            project_id=project.id,
+            gate=gate,
+            subject=subject,
+            content_sha256="d" * 64,
+            revision=revision,
+            summary=gate,
+            payload={},
+            files=[],
+            status="pending",
+        )
+
+    async with site.factory() as session:
+        session.add_all(
+            [
+                row("look", "bride"),
+                row("look", "groom"),
+                row("look", None),
+                row("final", None),
+                row("final", None, 1),
+            ]
+        )
+        await session.commit()
+    for duplicate in (row("look", "bride"), row("look", None), row("final", None)):
+        async with site.factory() as session:
+            session.add(duplicate)
+            with pytest.raises(IntegrityError):
+                await session.commit()
+    assert len(await _rows(site)) == 5
 
 
 @pytest.mark.asyncio
