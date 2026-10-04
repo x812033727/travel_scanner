@@ -1,0 +1,123 @@
+[
+  {
+    "schema_version": 2,
+    "slug": "ai-term-embedding-short-1",
+    "format": "shorts",
+    "locale": "zh-TW",
+    "line": "cut",
+    "series": "illustrated",
+    "source": {
+      "slug": "ai-term-embedding"
+    },
+    "titles": [
+      "搜尋第一名，為什麼門還關著？",
+      "嵌入分數很高，先回讀原文"
+    ],
+    "description": "精華來自嵌入向量完整解說。活動與向量都是作者原創、手填的玩具示意，不是模型embedding或模型評測；分數不能代替原文條件。",
+    "scenes": [
+      {
+        "shot": "closed-workshop",
+        "headline": "第一名，門卻關著",
+        "note": "人工座標示意，非模型實測",
+        "narration": [
+          "最高分的活動，今天休館。",
+          "這份活動與向量，都是人工示意。"
+        ]
+      },
+      {
+        "shot": "latch-reveal",
+        "headline": "高分沒有打開門",
+        "big": "1.0000",
+        "note": "玩具餘弦，非正確機率",
+        "narration": [
+          "拼貼室的分數是一，清單卻寫今天關閉。",
+          "高分不能把休館變成開放。"
+        ]
+      },
+      {
+        "shot": "reservation-seat",
+        "headline": "原文還有條件",
+        "narration": [
+          "陶藝室今天開放，卻需要預約。",
+          "木作室今天有沒有開，資料還沒寫。"
+        ]
+      },
+      {
+        "shot": "what-the-score-did",
+        "headline": "回讀原文，圈必要條件",
+        "narration": [
+          "我會先回讀原文，圈出要成立的條件。",
+          "沒寫的留待確認，不用最高分去猜。"
+        ]
+      },
+      {
+        "shot": "answer-locked-door",
+        "headline": "看完整解說",
+        "narration": [
+          "完整影片把表示、分數和條件分開看。"
+        ]
+      }
+    ]
+  },
+  {
+    "schema_version": 2,
+    "slug": "ai-term-embedding-short-2",
+    "format": "shorts",
+    "locale": "zh-TW",
+    "line": "cut",
+    "series": "illustrated",
+    "source": {
+      "slug": "ai-term-embedding"
+    },
+    "titles": [
+      "前兩筆沒匹配，清單就沒答案嗎？",
+      "向量候選與條件檢查，分開看"
+    ],
+    "description": "精華來自嵌入向量長片的真實離線玩具計算。六筆活動與向量手填；作者指定只查前兩筆，不是通用k建議，不是ANN、向量資料庫或模型效能評測。",
+    "scenes": [
+      {
+        "shot": "community-hall-review",
+        "headline": "前兩筆都不能去",
+        "note": "人工座標示意，非模型實測",
+        "narration": [
+          "這是手填向量的六筆活動，不是模型實測。",
+          "這次作者只查排序前兩筆。"
+        ]
+      },
+      {
+        "shot": "paper-table-lower-rank",
+        "headline": "前兩筆沒匹配",
+        "big": "[]",
+        "narration": [
+          "兩筆分別是休館和需預約，檢查後沒有符合項。",
+          "不表示整張清單沒有合用活動。"
+        ]
+      },
+      {
+        "shot": "one-paper-object",
+        "headline": "全清單，找到紙藝桌",
+        "big": "N003",
+        "note": "只符合虛構欄位",
+        "narration": [
+          "改查完整六筆，符合欄位的是紙藝桌。",
+          "木作室和維修公告仍保持未知。"
+        ]
+      },
+      {
+        "shot": "what-the-score-did",
+        "headline": "候選與條件分開看",
+        "narration": [
+          "這是本例的候選設定，沒有測資料庫。",
+          "不能當通用建議，也不是真實營業證明。"
+        ]
+      },
+      {
+        "shot": "answer-locked-door",
+        "headline": "看完整的離線實算",
+        "narration": [
+          "完整影片讓你看到排序和原文條件怎麼分開。"
+        ]
+      }
+    ]
+  }
+]
