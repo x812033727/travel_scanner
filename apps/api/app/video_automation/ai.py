@@ -10,19 +10,30 @@ sends the problems into the next call, as the agents did.
 
 from __future__ import annotations
 
+import asyncio
+import os
 import time
+from pathlib import Path
 from typing import Any, cast
 
 import httpx
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
-from sqlalchemy import select
+from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm.attributes import flag_modified
 
 from app.ai.subscription import FULL_PERCENT
 from app.config import Settings
 from app.hotspots.ai_search import AIProviderName, research_provider
+from app.models import VideoProject
 from app.video_automation.errors import StageFailed
-from app.video_automation.models import DEFAULT_STAGE_MODELS, VideoAiRun, VideoAutomationSettings
+from app.video_automation.models import (
+    DEFAULT_STAGE_MODELS,
+    VideoAiRun,
+    VideoAutomationSettings,
+    VideoStageJob,
+    utcnow,
+)
 from app.video_automation.schemas import StageRunIn, StageRunOut, UsageView
 from app.video_automation.settings import configured_providers
 from app.video_automation.subscription import run_on_subscription
@@ -37,10 +48,23 @@ from app.video_shorts.models import VideoShortsSettings
 
 __all__ = ["StageFailed", "run_stage", "stage_choice", "subject_choice"]
 
-# A stage writes a whole script or report without streaming, so the read timeout covers the
-# entire generation. nginx allows 300 s for /api/, and the worker calls the API directly.
+# Synchronous callers retain their provider timeout. Durable jobs wait independently of
+# the BFF's 295-second response deadline, within their RQ execution bound.
 STAGE_TIMEOUT_SECONDS = 300.0
+DURABLE_STAGE_TIMEOUT_SECONDS = 960.0
 BUSY_STATUSES = {408, 409, 429, 500, 502, 503, 504, 529}
+NO_MODEL_CALL_ERRORS = frozenset(
+    {
+        "video_ai_subscription_paused",
+        "video_ai_subscription_cli_outdated",
+        "video_ai_provider_not_configured",
+    }
+)
+
+
+def _job_is_stopped(stop_file: str, slug: str) -> bool:
+    stop = Path(stop_file)
+    return stop.exists() or (stop.parent / slug / "STOP").exists()
 
 
 class StageText(BaseModel):
@@ -115,6 +139,8 @@ async def _on_api_key(
     model: str,
     request: StageRunIn,
     client: httpx.AsyncClient | None,
+    *,
+    timeout_seconds: float = STAGE_TIMEOUT_SECONDS,
 ) -> tuple[str, str, dict[str, int]]:
     # Video stage choices named OpenAI API / Anthropic API must stay API-billed even when
     # the site-wide research connection for that vendor uses subscription accounts.
@@ -126,7 +152,7 @@ async def _on_api_key(
         cast(AIProviderName, provider_name),
         client,
         model=model,
-        timeout_seconds=STAGE_TIMEOUT_SECONDS,
+        timeout_seconds=timeout_seconds,
         max_output_tokens=request.max_output_tokens,
     )
     try:
@@ -140,18 +166,19 @@ async def _on_api_key(
     return result.text, provider.model, tokens
 
 
-async def run_stage(
+async def prepare_stage(
     session: AsyncSession,
     runtime: Settings,
     row: VideoAutomationSettings,
     request: StageRunIn,
-    token_id: Any,
-    client: httpx.AsyncClient | None = None,
     shorts: VideoShortsSettings | None = None,
-) -> StageRunOut:
+    choice: tuple[str, str] | None = None,
+) -> tuple[str, str, UsageView, bool]:
     if request.format == "shorts" and shorts is None:
         shorts = await _shorts_row(session)
-    if request.stage == "subject":
+    if choice is not None:
+        provider_name, model = choice
+    elif request.stage == "subject":
         provider_name, model = subject_choice(shorts, request.variant)
     else:
         provider_name, model = stage_choice(row, request.stage, request.format, shorts)
@@ -175,6 +202,76 @@ async def run_stage(
             if on_plan
             else f"{request.stage} 設定用 {provider_name}，但網站還沒有這家廠商的 API 金鑰",
         )
+    return provider_name, model, usage, new_draft
+
+
+async def run_stage(
+    session: AsyncSession,
+    runtime: Settings,
+    row: VideoAutomationSettings,
+    request: StageRunIn,
+    token_id: Any,
+    client: httpx.AsyncClient | None = None,
+    shorts: VideoShortsSettings | None = None,
+    *,
+    job: VideoStageJob | None = None,
+) -> StageRunOut:
+    provider_name, model, usage, new_draft = await prepare_stage(
+        session,
+        runtime,
+        row,
+        request,
+        shorts,
+        choice=(job.provider, job.model) if job is not None else None,
+    )
+    on_plan = provider_name in SUBSCRIPTION_PROVIDERS
+    if job is not None:
+        stop_file = os.getenv("VIDEO_STAGE_STOP_FILE")
+        stopped = False
+        if stop_file:
+            stopped = await asyncio.to_thread(_job_is_stopped, stop_file, request.slug)
+        if stopped:
+            raise StageFailed(
+                409, "video_ai_worker_stopped", "影片工人的 STOP 檔仍在，待執行工作不會送出模型請求"
+            )
+        if request.format == "shorts":
+            active_shorts = shorts or await _shorts_row(session)
+            enabled = active_shorts is not None and active_shorts.enabled
+        else:
+            enabled = row.enabled
+        if not enabled:
+            raise StageFailed(
+                409,
+                "video_ai_automation_disabled",
+                "影片自動製作已停用，待執行的工作不會送出模型請求",
+            )
+        if request.format == "drama" and not row.drama_enabled:
+            raise StageFailed(
+                409, "video_ai_drama_disabled", "AI 漫劇已停用，待執行的工作不會送出模型請求"
+            )
+        with session.no_autoflush:
+            dropped_at = await session.scalar(
+                select(VideoProject.dropped_at).where(VideoProject.slug == request.slug)
+            )
+        if dropped_at is not None:
+            raise StageFailed(409, "video_ai_project_dropped", "影片已由站主停止，不會送出模型請求")
+        # Commit the dispatch boundary before contacting the model. A process dying after
+        # this point cannot prove that no paid operation ran and must never retry it.
+        dispatched = await session.scalar(
+            update(VideoStageJob)
+            .where(
+                VideoStageJob.id == job.id,
+                VideoStageJob.status == "running",
+                VideoStageJob.dispatched_at.is_(None),
+            )
+            .values(dispatched_at=utcnow())
+            .returning(VideoStageJob.id)
+        )
+        await session.commit()
+        if dispatched is None:
+            raise StageFailed(
+                409, "video_ai_job_dispatch_closed", "工作在送出模型請求前已中斷，沒有執行模型"
+            )
     started = time.monotonic()
     tokens: dict[str, int] = {"input_tokens": 0, "output_tokens": 0}
     used_model = model
@@ -194,7 +291,14 @@ async def run_stage(
             tokens = {"input_tokens": run.input_tokens, "output_tokens": run.output_tokens}
         else:
             text, used_model, tokens = await _on_api_key(
-                runtime, provider_name, model, request, client
+                runtime,
+                provider_name,
+                model,
+                request,
+                client,
+                timeout_seconds=DURABLE_STAGE_TIMEOUT_SECONDS
+                if job is not None
+                else STAGE_TIMEOUT_SECONDS,
             )
     except StageFailed as error:
         # A paused subscription ran nothing; there is no call to record.
@@ -217,11 +321,19 @@ async def run_stage(
             token_id=token_id,
         )
     )
-    await session.commit()
     if failure is not None or text is None:
+        if job is not None:
+            problem = failure or _failure(ValueError("no result"))
+            job.status = "failed" if problem.code in NO_MODEL_CALL_ERRORS else "uncertain"
+            job.error_code = problem.code
+            job.error_detail = problem.detail
+            job.error_status = problem.status
+            job.retry_after = problem.retry_after
+            job.completed_at = utcnow()
+        await session.commit()
         raise failure or _failure(ValueError("no result"))
     spent = int(tokens.get("input_tokens", 0)) + int(tokens.get("output_tokens", 0))
-    return StageRunOut(
+    result = StageRunOut(
         text=text,
         provider=cast(Any, provider_name),
         model=used_model,
@@ -237,3 +349,17 @@ async def run_stage(
             }
         ),
     )
+    if job is not None:
+        job.result_json = result.model_dump(mode="json")
+        job.status = "succeeded"
+        job.completed_at = utcnow()
+        job.error_code = job.error_detail = job.error_status = job.retry_after = None
+        # A poll may have marked the same running call uncertain while it was away.
+        # These columns can still be None in this session's snapshot, so force their
+        # clearing when the exact late answer proves completion.
+        for field in ("error_code", "error_detail", "error_status", "retry_after"):
+            flag_modified(job, field)
+    # A successful call's usage record and exact answer share one transaction. There is
+    # no usage-only commit that could lose the reply before the durable receipt is saved.
+    await session.commit()
+    return result

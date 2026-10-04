@@ -10,7 +10,7 @@ import test from "node:test";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { readApprovals } from "../core/approvals.mjs";
-import { clipsHash, EXPLAINER_PRESET, hasCast, isExplainer, lookHash, mixHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
+import { clipsHash, drawnShotScenes, EXPLAINER_PRESET, hasCast, isExplainer, lookHash, mixHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { explainerFixture, sandbox, storyFixture, storySeries, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { BRIEF_SECTIONS_DRAMA, briefSectionsFor } from "../core/lint.mjs";
 import { isStory } from "../core/story.mjs";
@@ -309,8 +309,17 @@ function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, set
     }
     if (name === "check-audio") return { code: 0, out: "every line passed" };
     if (name === "keyframes") {
-      write(path.join("keyframes", "manifest.json"), { look_hash: lookHash(doc), visual_hash: visualHash(doc), shots: Object.fromEntries(shotScenes(doc).map((scene) => [scene.id, { file: `keyframes/${scene.id}-1.png`, sha256: "2".repeat(64), needs_review: false, judge: { overall: 8, problems: [] } }])) });
-      return { code: 0, out: `${shotScenes(doc).length} keyframes` };
+      const picture = (id) => {
+        const file = `keyframes/${id}-1.png`;
+        write(file, `synthetic selected picture: ${id}`);
+        return { file, sha256: sha(path.join(workdir, file)) };
+      };
+      const shots = Object.fromEntries(drawnShotScenes(doc).map((scene) => [scene.id, {
+        ...picture(scene.id), needs_review: false, judge: { overall: 8, passed: true, problems: [] },
+        ...(scene.data.end_frame?.prompt ? { end_frame: picture(`${scene.id}-end`) } : {}),
+      }]));
+      write(path.join("keyframes", "manifest.json"), { look_hash: lookHash(doc), visual_hash: visualHash(doc), shots });
+      return { code: 0, out: `${Object.keys(shots).length} keyframes` };
     }
     if (name === "render") {
       write(path.join("frames", "manifest.json"), { visual_hash: visualHash(doc), speech_hash: speechHash(doc, lexicon()), subtitles_hash: subtitlesHash(doc), theme_hash: "t", scenes: [], subtitles: { style: "drama", blank: "frames/sub-blank.png", cues: [] }, thumbnail: null });
@@ -318,8 +327,9 @@ function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, set
     }
     if (name === "clips") {
       // Stills only: the manifest names each keyframe, and nothing is bought (media/clips.mjs).
-      const shots = shotScenes(doc).map((scene) => ({ id: scene.id, sha256: "2".repeat(64) }));
-      write(path.join("clips", "manifest.json"), { speech_hash: speechHash(doc, lexicon()), visual_hash: visualHash(doc), look_hash: lookHash(doc), clips_hash: clipsHash(shots), shots: Object.fromEntries(shots.map((shot) => [shot.id, { still: true, file: `keyframes/${shot.id}-1.png`, sha256: shot.sha256 }])) });
+      const keyframes = readJson(path.join(workdir, "keyframes", "manifest.json"));
+      const shots = shotScenes(doc).map((scene) => ({ id: scene.id, ...keyframes.shots[scene.id] }));
+      write(path.join("clips", "manifest.json"), { speech_hash: speechHash(doc, lexicon()), visual_hash: visualHash(doc), look_hash: lookHash(doc), clips_hash: clipsHash(shots), shots: Object.fromEntries(shots.map((shot) => [shot.id, { still: true, file: shot.file, sha256: shot.sha256 }])) });
       return { code: 0, out: "0 clips bought; every shot is a still" };
     }
     if (name === "assemble") {

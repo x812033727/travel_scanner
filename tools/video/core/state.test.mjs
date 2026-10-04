@@ -15,7 +15,7 @@ import { atomicWrite, isInside, resolveWorkdir, stopRequested, UsageError } from
 import { eachLine, textHash } from "./schema.mjs";
 import { localeTexts, runCaptions, StageError } from "./stages.mjs";
 import { compilationHash } from "./compilation.mjs";
-import { approvedEpisodes, COMPILATION_STEPS, lintProject, loadProject, LOOK_STEPS, narratorOnly, pipelineStatus, recordStage, stepsFor, translationComplete } from "./state.mjs";
+import { approvedEpisodes, COMPILATION_STEPS, keyframeProblems, lintProject, loadProject, LOOK_STEPS, narratorOnly, pipelineStatus, recordStage, stepsFor, translationComplete } from "./state.mjs";
 import { buildTimeline, estimateTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "./timeline.mjs";
 import { compilationSandbox, EPISODES, sha, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
 import { planRequests } from "../tts/requests.mjs";
@@ -359,6 +359,11 @@ test("a drama with no characters walks no look steps, and its status never reads
   const project = loadProject({ slug: box.slug, root: box.root });
   const visual = visualHash(project.doc);
   const shots = Object.fromEntries(project.doc.scenes.filter((scene) => scene.template === "shot").map((scene) => [scene.id, { file: `keyframes/${scene.id}-1.png` }]));
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  for (const [id, shot] of Object.entries(shots)) {
+    writeFileSync(path.join(box.workdir, shot.file), id);
+    shot.sha256 = sha(id);
+  }
   atomicWrite(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: lookHash(project.doc), visual_hash: visual, shots }));
   assert.equal((await status()).next.id, "storyboard approved");
   await approve({ gate: "storyboard", ...places });
@@ -376,6 +381,66 @@ test("recordStage appends runs for the handover", () => {
     { stage: "tts", at: "2026-09-24T03:00:00.000Z", lines: 7 },
     { stage: "render", at: "2026-09-24T03:05:00.000Z" },
   ]);
+});
+
+test("matching picture hashes and a storyboard approval never clear partial or missing keyframes", async () => {
+  const { picturesHash } = await import("./drama.mjs");
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const { doc } = loadProject({ slug: box.slug, root: box.root });
+  const scenes = doc.scenes.filter((scene) => scene.template === "shot");
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  const shots = Object.fromEntries(scenes.map((scene) => {
+    const file = `keyframes/${scene.id}.png`;
+    writeFileSync(path.join(box.workdir, file), scene.id);
+    return [scene.id, { file, sha256: sha(scene.id), judge: { passed: true, overall: 8, problems: [] } }];
+  }));
+  const manifest = { look_hash: lookHash(doc), pictures_hash: picturesHash(doc), shots };
+  const write = () => atomicWrite(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify(manifest));
+  const status = () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
+  const step = (state, id) => state.steps.find((each) => each.id === id);
+  write();
+  assert.equal(step(await status(), "keyframes drawn").done, true);
+  const [first, second] = scenes;
+  const missing = shots[second.id];
+  delete shots[second.id];
+  write();
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir });
+  let state = await status();
+  assert.equal(step(state, "keyframes drawn").done, false);
+  assert.equal(step(state, "storyboard approved").done, false, "a partial manifest can have a matching approval hash");
+  assert.match(step(state, "keyframes drawn").note, new RegExp(second.id));
+  shots[second.id] = missing;
+  write();
+  rmSync(path.join(box.workdir, shots[first.id].file));
+  assert.equal(step(await status(), "keyframes drawn").done, false, "selected files must still exist");
+  writeFileSync(path.join(box.workdir, shots[first.id].file), "changed bytes");
+  assert.equal(step(await status(), "keyframes drawn").done, false, "the selected file must match its evidence");
+  writeFileSync(path.join(box.workdir, shots[first.id].file), first.id);
+  shots[first.id].incomplete = true;
+  write();
+  assert.equal(step(await status(), "keyframes drawn").done, false, "an interrupted entry remains incomplete even without needs_review");
+});
+
+test("keyframe coverage requires end-frame evidence, detects duplicate IDs and keeps clip-cut contracts", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  const file = "keyframes/start.png";
+  const endFile = "keyframes/end.png";
+  writeFileSync(path.join(box.workdir, file), "start");
+  writeFileSync(path.join(box.workdir, endFile), "end");
+  const scene = { id: "start", template: "shot", data: { end_frame: { prompt: "last picture" } } };
+  const doc = { scenes: [scene, { id: "cut", template: "shot", data: { source: { shot: "start", from_s: 1 } } }] };
+  const shot = { file, sha256: sha("start"), judge: { passed: true }, end_frame: { file: endFile, sha256: sha("end") } };
+  const manifest = { shots: { start: shot } };
+  const check = () => keyframeProblems({ doc, manifest, workdir: box.workdir });
+  assert.deepEqual(await check(), [], "a cut from an imported or generated clip buys no picture of its own");
+  rmSync(path.join(box.workdir, endFile));
+  assert.match((await check()).join("; "), /start end frame.*missing/);
+  writeFileSync(path.join(box.workdir, endFile), "changed end");
+  assert.match((await check()).join("; "), /start end frame.*changed/);
+  writeFileSync(path.join(box.workdir, endFile), "end");
+  doc.scenes.push(scene);
+  assert.match((await check()).join("; "), /duplicate expected keyframe ID: start/);
 });
 
 test("a compilation walks its own steps: planned metadata, cards, the join, the translations, then the shared gates", async () => {
@@ -461,6 +526,11 @@ test("illustrated slides walk the picture and music steps, bound to the shots ra
   assert.deepEqual(ids(await status()), ILLUSTRATED_STEPS);
   // Keyframes bound to the look and the shots: a card edit does not undo them, a camera edit does.
   const shots = Object.fromEntries(doc.scenes.filter((scene) => scene.template === "shot").map((scene) => [scene.id, { file: `keyframes/${scene.id}.png`, sha256: "a".repeat(64) }]));
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  for (const [id, shot] of Object.entries(shots)) {
+    writeFileSync(path.join(box.workdir, shot.file), id);
+    shot.sha256 = sha(id);
+  }
   write(ARTIFACTS.keyframes, { look_hash: lookHash(doc), pictures_hash: picturesHash(doc), shots });
   assert.equal(done(await status(), "keyframes drawn"), true);
   const edited = illustratedFixture();

@@ -435,6 +435,52 @@ class VideoAiRun(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
+class VideoStageJob(Base):
+    """A source-bound model operation whose exact reply survives the HTTP caller.
+
+    A request key belongs to one tool token. The request and chosen model are immutable;
+    only a queued row may dispatch. A lost dispatched operation is uncertain, never queued
+    again. Results and usage are committed together by the stage runner.
+    """
+
+    __tablename__ = "video_stage_jobs"
+    __table_args__ = (
+        UniqueConstraint("token_id", "request_key", name="uq_video_stage_job_request"),
+        CheckConstraint(
+            "status IN ('queued', 'running', 'succeeded', 'failed', 'uncertain')",
+            name="ck_video_stage_job_status",
+        ),
+        CheckConstraint(
+            "(status = 'succeeded') = (result_json IS NOT NULL)",
+            name="ck_video_stage_job_result",
+        ),
+        Index("ix_video_stage_jobs_status_created", "status", "created_at"),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    token_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("video_tool_tokens.id", ondelete="SET NULL"), nullable=True
+    )
+    request_key: Mapped[UUID] = mapped_column(nullable=False)
+    request_hash: Mapped[str] = mapped_column(String(64))
+    input_hash: Mapped[str] = mapped_column(String(64))
+    request_json: Mapped[dict[str, Any]] = mapped_column(JSON)
+    provider: Mapped[str] = mapped_column(String(16))
+    model: Mapped[str] = mapped_column(String(128))
+    status: Mapped[str] = mapped_column(String(16), default="queued")
+    result_json: Mapped[dict[str, Any] | None] = mapped_column(
+        JSON(none_as_null=True), nullable=True
+    )
+    error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    error_detail: Mapped[str | None] = mapped_column(Text, nullable=True)
+    error_status: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    retry_after: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    dispatched_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
 # What the owner asked for on /admin/videos: an episode of the drama route to make next, ahead
 # of the scheduled drafts (docs/videos/DRAMA.md). The worker claims the oldest queued one.
 REQUEST_STATUSES = ("queued", "started", "done", "cancelled")

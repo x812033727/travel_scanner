@@ -253,6 +253,30 @@ services:
     depends_on:
       - api
 
+  video-ai-worker:
+    # Long writers finish outside an HTTP request; the API stores their exact result.
+    # One consumer of the isolated queue keeps these calls away from guide/news workers.
+    image: travel-scanner-api:${RELEASE_SHA:-local}
+    profiles: ["video"]
+    restart: unless-stopped
+    env_file: ${RUNTIME_ENV_FILE:-.env}
+    environment:
+      APP_ENV: production
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
+      REDIS_URL: ${REDIS_URL:?set REDIS_URL}
+      VIDEO_STAGE_STOP_FILE: /var/lib/mokaair/video-work/STOP
+    command: ["python", "-m", "app.video_automation.run_jobs"]
+    volumes:
+      - /run/mokaair-ai-accounts:/run/mokaair-ai-accounts:ro
+      - video_work:/var/lib/mokaair/video-work:ro
+    group_add: ["${DEPLOY_AGENT_GID:-10002}"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
   video-worker:
     # The video pipeline running from the owner's settings on /admin/videos
     # (docs/videos/AUTOMATION.md). It holds only a video tool token, paired once from its log;

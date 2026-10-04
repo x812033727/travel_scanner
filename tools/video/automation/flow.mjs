@@ -12,6 +12,7 @@
 // the rewrites, a blocked video, and the upload itself, whose YouTube id comes back from the site.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
 
 import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { hasAnimePolicy, isLongAnime, requireAnimePolicy } from "../core/anime-policy.mjs";
@@ -37,7 +38,7 @@ import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
 import { buildSheet, SHEET_PARTS } from "../i18n/cli.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
-import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
+import { AutomationError, OUTPUT_INVALID, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
@@ -413,6 +414,8 @@ const lastLine = (out, lines = 1) => out.trim().split("\n").slice(-lines).join("
 const digitsOf = (text) => (String(text).match(/\d+(?:[.,]\d+)*/g) ?? []).join(" ");
 /** A unit's report line names its video once: a phrase gets the slug, a line that has it stays. */
 const lineFor = (slug, text) => (text.startsWith(`${slug}: `) ? text : `${slug}: ${text}`);
+const blockedLabel = (state) => `卡住，需要人處理：${state.blocked}`.slice(0, 120);
+const BLOCKED_REPORT_BACKOFF_MS = 5 * 60_000;
 
 /**
  * What the script records for the site: the YouTube id, or null (a report without it would clear
@@ -433,7 +436,7 @@ async function report(ctx, api, state, stage) {
   const guide = mainGuide(state);
   const { videoId, category } = recorded(state, ctx.root);
   // The page has no field for why a video stopped; the checklist is what the owner reads.
-  const blocked = state.status === "blocked" && state.blocked ? [{ key: "blocked", label: `卡住，需要人處理：${state.blocked}`.slice(0, 120), done: false }] : [];
+  const blocked = state.status === "blocked" && state.blocked ? [{ key: "blocked", label: blockedLabel(state), done: false }] : [];
   await api.report(state.slug, {
     title: state.title || state.slug,
     stage: stage.slice(0, 40),
@@ -536,6 +539,7 @@ export class Automation {
   }
 
   async stage(stage, slug, payload, maxOutputTokens, format = "slides", variant = null, series = null) {
+    this.runSlugs?.add(slug);
     // The channel's stance (the planner and the writer read it), a binge series' genre section
     // (docs/videos/BINGE.md) and the owner's standing instructions for the stage end the prompt:
     // the tutorial part's for a slides video, the drama part's for a drama
@@ -623,6 +627,21 @@ export class Automation {
 
   /** One unit of work; returns a line saying what was done, or null when nothing could be. */
   async step() {
+    this.runSlugs = new Set();
+    let outcome;
+    try {
+      outcome = await this.stepUnit();
+    } catch (error) {
+      if (!(error instanceof AutomationError && error.code === RUN_PENDING)) throw error;
+      return this.later(`${error.slug ?? "video"}: ${error.stage ?? "writer"} is still running; its saved receipt will be checked next round`);
+    }
+    // Completed answers remain recoverable until their artifacts/state were saved by a unit.
+    // A process crash or an exception before this point keeps the same durable receipt.
+    await this.api.settleRuns?.([...this.runSlugs]);
+    return outcome;
+  }
+
+  async stepUnit() {
     if (!this.settings.enabled) return null;
     // Every video on /admin/videos, the ones this worker did not make included, read afresh
     // each unit: the owner may drop one at any time.
@@ -674,7 +693,8 @@ export class Automation {
     for (const state of automatedVideos(this.workBase)) {
       const siteVideo = siteBySlug.get(state.slug);
       const request = siteVideo?.retry_request_id;
-      if (state.status !== "blocked" || !request || request === siteVideo.retry_acknowledged_id || request === state.retry_request_id) continue;
+      if (state.status !== "blocked" || !free(state) || !request || request === siteVideo.retry_acknowledged_id || request === state.retry_request_id) continue;
+      await this.api.retryRuns?.(state.slug, { requestId: request, reason: state.blocked ?? "" });
       state.retry_request_id = request;
       // A language batch can fail after the finished video reached YouTube. Resume
       // only its languages, rather than revisiting the production stages.
@@ -683,6 +703,8 @@ export class Automation {
       const failedStage = /^([a-z_]+) failed \d+ times in a row:/.exec(state.blocked ?? "")?.[1];
       if (failedStage && state.failures) delete state.failures[failedStage];
       delete state.blocked;
+      delete state.blocked_report_pending;
+      delete state.blocked_report_retry_at;
       saveState(this.workdir(state.slug), state);
       try {
         await report(this.ctx, this.api, state, "retrying");
@@ -691,6 +713,18 @@ export class Automation {
         return this.later(`${state.slug}: retry saved; could not report it yet (${error.message})`);
       }
       break;
+    }
+    // A failed PUT never resumes media: reconcile only the saved reason. Legacy blocked
+    // states have no pending flag, so compare the fresh site checklist as well.
+    for (const state of automatedVideos(this.workBase)) {
+      const siteVideo = siteBySlug.get(state.slug);
+      if (state.status !== "blocked" || !state.blocked || !free(state)) continue;
+      if (!siteVideo && !state.blocked_report_pending) continue;
+      const matches = siteVideo?.stage === "blocked" && siteVideo.checklist?.some((item) => item.key === "blocked" && item.label === blockedLabel(state) && item.done === false);
+      if (matches && !state.blocked_report_pending) continue;
+      if (Date.parse(state.blocked_report_retry_at) > this.ctx.now().getTime()) continue;
+      if (await this.reportBlocked(state)) return `${state.slug}: blocked reason reported`;
+      // Continue other videos after a failed report; a stopped video cannot starve them.
     }
     // The owner uploaded a finished video and pasted its address on /admin/videos: the id goes
     // into the script, and the video reads as complete (docs/videos/HANDS-OFF.md).
@@ -1205,9 +1239,27 @@ export class Automation {
     state.blocked_from_status = state.status;
     state.status = "blocked";
     state.blocked = why;
+    state.blocked_report_pending = true;
     saveState(this.workdir(state.slug), state);
-    await report(this.ctx, this.api, state, "blocked");
-    return `${state.slug}: blocked — ${why}`;
+    const reported = await this.reportBlocked(state);
+    return `${state.slug}: blocked — ${why}${reported ? "" : "; could not report it yet"}`;
+  }
+
+  async reportBlocked(state) {
+    state.blocked_report_pending = true;
+    saveState(this.workdir(state.slug), state);
+    try {
+      await report(this.ctx, this.api, state, "blocked");
+      delete state.blocked_report_pending;
+      delete state.blocked_report_retry_at;
+      saveState(this.workdir(state.slug), state);
+      return true;
+    } catch (error) {
+      state.blocked_report_retry_at = new Date(this.ctx.now().getTime() + BLOCKED_REPORT_BACKOFF_MS).toISOString();
+      saveState(this.workdir(state.slug), state);
+      this.log(`${state.slug}: could not report blocked reason (${error.message}); retrying the report later`);
+      return false;
+    }
   }
 
   /** Move one video on by one step; null when it waits on the owner or cannot move. */
@@ -1492,6 +1544,14 @@ export class Automation {
       writeVideo(dir, this.settled(state, current.video));
       const added = mergeLexicon(this.ctx.root, current.lexicon_additions);
       if (added.length) state.lexicon_added = [...new Set([...(state.lexicon_added ?? []), ...added])];
+      if (this.api.adoptRuns) {
+        // A rewrite may start another durable operation before this unit returns. Bind the
+        // completed answer to saved output now so a restart can poll that next operation.
+        saveState(this.workdir(state.slug), state);
+        const files = [path.join(dir, "video.json"), lexiconFile(this.ctx.root), path.join(this.workdir(state.slug), "auto.json")];
+        const artifacts = await Promise.all(files.filter(existsSync).map(async (file) => ({ path: file, sha256: await sha256File(file) })));
+        await this.api.adoptRuns(state.slug, { artifacts });
+      }
       const errors = lintErrors(this.ctx, state.slug);
       if (!errors.length) {
         if (isLongAnime(state)) writeScreenplay(dir, JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8")));
@@ -1621,9 +1681,13 @@ export class Automation {
     const taken = new Set(video ? [...eachLine(video)].map(({ line }) => line.id) : []);
     const ids = [];
     const alphabet = "abcdefghijkmnpqrstuvwxyz23456789";
+    // Reconstructing an unfinished durable writer after restart must send identical inputs.
+    const seed = JSON.stringify({ slug: state.slug, taken: [...taken].sort(), count });
+    let round = 0;
     while (ids.length < count) {
       let id = "";
-      for (let index = 0; index < 4; index++) id += alphabet[Math.floor(Math.random() * alphabet.length)];
+      const bytes = createHash("sha256").update(`${seed}:${round++}`).digest();
+      for (let index = 0; index < 4; index++) id += alphabet[bytes[index] % alphabet.length];
       if (LINE_ID.test(id) && !taken.has(id) && !ids.includes(id)) ids.push(id);
     }
     return ids;

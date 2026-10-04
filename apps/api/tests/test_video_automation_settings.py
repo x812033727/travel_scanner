@@ -210,8 +210,17 @@ def test_drama_settings_the_server_cannot_run_are_named() -> None:
             SettingsWrite(**_values(drama=bad))
 
 
+def _storyboard(*ids: str, score: float = 8) -> dict[str, Any]:
+    return {
+        "expected_shots": [{"id": shot_id, "end_frame_required": False} for shot_id in ids],
+        "shots": [{"id": shot_id, "complete": True, "file_sha256": "a" * 64,
+                   "judge": {"overall": score, "problems": []}} for shot_id in ids],
+        "judge": {"overall": score, "problems": []},
+    }
+
+
 def test_the_storyboard_check_needs_the_threshold_and_no_problems() -> None:
-    passed = {"shots": [{"id": "a"}, {"id": "b"}], "judge": {"overall": 8, "problems": []}}
+    passed = _storyboard("a", "b")
     assert service.storyboard_check_passed(passed, 7)
     assert service.storyboard_check_passed({**passed, "judge": {"overall": 7.5}}, 7)
     assert not service.storyboard_check_passed(passed, 9)
@@ -224,6 +233,34 @@ def test_the_storyboard_check_needs_the_threshold_and_no_problems() -> None:
     assert not service.storyboard_check_passed({**passed, "judge": {"overall": True}}, 0)
     assert not service.storyboard_check_passed({**passed, "shots": []}, 0)
     assert not service.storyboard_check_passed({}, 0)
+
+
+def test_storyboard_auto_approval_needs_every_expected_picture_and_end_frame() -> None:
+    picture = {"complete": True, "file_sha256": "a" * 64,
+               "judge": {"overall": 8, "problems": []}}
+    passed: dict[str, Any] = {
+        "expected_shots": [{"id": "a", "end_frame_required": False},
+                           {"id": "b", "end_frame_required": True}],
+        "shots": [{**picture, "id": "a"},
+                  {**picture, "id": "b", "end_frame_sha256": "b" * 64}],
+        "judge": {"overall": 8, "problems": []},
+    }
+    assert service.storyboard_check_passed(passed, 7)
+    for shots in (
+        passed["shots"][:1],
+        [passed["shots"][0], passed["shots"][0]],
+        [passed["shots"][0], {**passed["shots"][1], "complete": False}],
+        [passed["shots"][0], {**passed["shots"][1], "file_sha256": None}],
+        [passed["shots"][0], {**passed["shots"][1], "end_frame_sha256": None}],
+        [passed["shots"][0], {**passed["shots"][1], "incomplete": True}],
+        [passed["shots"][0], {**passed["shots"][1], "judge": {"overall": 5}}],
+    ):
+        assert not service.storyboard_check_passed({**passed, "shots": shots}, 7)
+    assert not service.storyboard_check_passed(
+        {**passed, "expected_shots": [passed["expected_shots"][0]] * 2}, 7
+    )
+    legacy = {"shots": [{"id": "a"}], "judge": {"overall": 8, "problems": []}}
+    assert not service.storyboard_check_passed(legacy, 7), "no invented legacy coverage"
 
 
 def test_the_look_rule_needs_the_suggested_sheet_to_clear_the_threshold_with_no_problems() -> None:
@@ -1099,7 +1136,7 @@ def test_the_slides_settings_default_on_flash_with_the_storyboard_approving_itse
 
 @pytest.mark.asyncio
 async def test_a_slides_storyboard_reads_its_own_switch_and_a_drama_s_keeps_the_old_rule() -> None:
-    board: dict[str, Any] = {"shots": [{"id": "a"}], "judge": {"overall": 8, "problems": []}}
+    board = _storyboard("a")
     row = SimpleNamespace(
         auto_approve_storyboard=False, judge_min_score=7, slides_auto_approve_storyboard=True
     )
@@ -1129,7 +1166,7 @@ async def test_a_hands_off_series_overrides_the_look_and_storyboard_switches() -
         "options": [{"key": "B", "judge": {"overall": 8, "problems": []}}],
         "suggested": "B",
     }
-    board: dict[str, Any] = {"shots": [{"id": "a"}], "judge": {"overall": 9, "problems": []}}
+    board = _storyboard("a", score=9)
     off = SimpleNamespace(auto_pick_look=False, auto_approve_storyboard=False, judge_min_score=7)
     hands_off = SimpleNamespace(hands_off=True, genre="rebirth-revenge")
     classic = SimpleNamespace(hands_off=False, genre="xianxia-bonds")

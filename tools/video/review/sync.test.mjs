@@ -1098,6 +1098,59 @@ async function pushStoryboard(box) {
   return { review: server.state.reviews[0], stored: server.state.files };
 }
 
+test("storyboard submission refuses an omitted shot or missing selected file before uploading pictures", async () => {
+  for (const failure of ["omitted", "missing-file", "incomplete", "missing-end"]) {
+    const box = sandbox("fixture-drama", "drama");
+    const { ids } = longStoryboard(box, 4);
+    const file = path.join(box.workdir, "keyframes", "manifest.json");
+    const manifest = JSON.parse(readFileSync(file, "utf8"));
+    if (failure === "omitted") delete manifest.shots[ids[1]];
+    if (failure === "missing-file") rmSync(path.join(box.workdir, manifest.shots[ids[1]].file));
+    if (failure === "incomplete") manifest.shots[ids[1]].incomplete = true;
+    if (failure === "missing-end") {
+      const source = path.join(box.dir, "video.json");
+      const doc = JSON.parse(readFileSync(source, "utf8"));
+      doc.scenes[1].data.end_frame = { prompt: "the bird turns away" };
+      writeFileSync(source, JSON.stringify(doc));
+    }
+    writeFileSync(file, JSON.stringify(manifest));
+    const server = site();
+    const push = context(box, server.fetchImpl);
+    assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "storyboard"], push.ctx), EXIT.owner, push.out.stderr);
+    assert.match(push.out.stderr, new RegExp(ids[1]));
+    assert.equal(server.state.reviews.length, 0);
+    assert.equal(server.state.files.size, 0, "no partial review or picture uploads");
+  }
+});
+
+test("storyboard payload attests required end-frame coverage and a legacy partial approval is refused on pull", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const { ids } = longStoryboard(box, 4);
+  const source = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(source, "utf8"));
+  doc.scenes[0].data.end_frame = { prompt: "the sun rises" };
+  writeFileSync(source, JSON.stringify(doc));
+  const file = path.join(box.workdir, "keyframes", "manifest.json");
+  const manifest = JSON.parse(readFileSync(file, "utf8"));
+  const endFile = `keyframes/${ids[0]}-end.png`;
+  writeFileSync(path.join(box.workdir, endFile), png("end"));
+  manifest.shots[ids[0]].end_frame = { file: endFile, sha256: sha(png("end")) };
+  writeFileSync(file, JSON.stringify(manifest));
+  const { review } = await pushStoryboard(box);
+  assert.deepEqual(review.payload.expected_shots, ids.map((id, index) => ({ id, end_frame_required: index === 0 })));
+  assert.equal(review.payload.shots[0].end_frame_sha256, sha(png("end")));
+  assert.ok(review.payload.shots.every((shot) => shot.complete && shot.file_sha256));
+
+  delete manifest.shots[ids[1]];
+  writeFileSync(file, JSON.stringify(manifest));
+  const server = site();
+  server.state.reviews.push({ ...review, content_sha256: sha(readFileSync(file)), status: "approved", decided_at: "2026-10-04T00:00:00Z" });
+  const pull = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], pull.ctx), EXIT.ok, pull.out.stderr);
+  assert.match(pull.out.stdout, /approval not recorded.*s2/);
+  assert.equal(readApprovals(box.workdir).approvals.length, 0);
+});
+
 const shotRole = (n) => `shot_${String(n).padStart(2, "0")}`;
 
 test("47 shots still fit a review: every keyframe, then the contact sheet, with the payload and summary as before", async () => {
@@ -1107,9 +1160,9 @@ test("47 shots still fit a review: every keyframe, then the contact sheet, with 
   assert.deepEqual(review.files.map((file) => file.role), [...ids.map((_, index) => shotRole(index + 1)), "contact_sheet"]);
   assert.equal(review.files.at(-1).content_type, "image/png");
   assert.equal(stored.size, MAX_REVIEW_FILES);
-  assert.deepEqual(Object.keys(review.payload), ["shots", "judge", "duplicates"], "no sheets and no omitted count");
+  assert.deepEqual(Object.keys(review.payload), ["expected_shots", "shots", "judge", "duplicates"], "coverage evidence with no sheets and no omitted count");
   assert.deepEqual(review.payload.shots.map((shot) => shot.file_role), ids.map((_, index) => shotRole(index + 1)));
-  assert.deepEqual(review.payload.shots[4], { id: "s5", chapter: null, prompt: "shot 5", seconds: null, file_role: "shot_05", needs_review: true, judge: { overall: 5, problems: ["no bird"] } });
+  assert.deepEqual(review.payload.shots[4], { id: "s5", chapter: null, prompt: "shot 5", seconds: null, file_role: "shot_05", needs_review: true, complete: true, file_sha256: sha(png("s5")), judge: { overall: 5, problems: ["no bird"] } });
   assert.deepEqual(review.payload.judge, { overall: 5, problems: ["no bird"] });
   assert.equal(review.summary, "分鏡 47 鏡，judge 最低 5/10，1 鏡待修");
 });
@@ -1142,7 +1195,7 @@ test("a brand story's 95 shots go up as four contact sheet pages and the three s
   ]);
   assert.deepEqual(review.payload.shots.map((shot) => shot.id), ids);
   assert.deepEqual(review.payload.shots.filter((shot) => shot.file_role).map((shot) => [shot.id, shot.file_role]), [["s7", "shot_07"], ["s50", "shot_50"], ["s95", "shot_95"]]);
-  assert.deepEqual(review.payload.shots[24], { id: "s25", chapter: "第 2 段", prompt: "shot 25", seconds: null, file_role: null, needs_review: false, judge: { overall: 8, problems: [] } });
+  assert.deepEqual(review.payload.shots[24], { id: "s25", chapter: "第 2 段", prompt: "shot 25", seconds: null, file_role: null, needs_review: false, complete: true, file_sha256: sha(png("s25")), judge: { overall: 8, problems: [] } });
   assert.deepEqual(review.payload.sheets.map((sheet) => [sheet.role, sheet.shots.length, sheet.shots[0]]), [["contact_sheet_01", 24, "s1"], ["contact_sheet_02", 24, "s25"], ["contact_sheet_03", 24, "s49"], ["contact_sheet_04", 23, "s73"]]);
   assert.equal(review.payload.omitted, 92);
   assert.deepEqual(review.payload.judge, { overall: 5, problems: ["no bird"] });
@@ -1180,7 +1233,7 @@ test("a storyboard that fits sends every keyframe with its pages: one page reads
   longStoryboard(one, 20, { pages: true });
   const { review: short } = await pushStoryboard(one);
   assert.equal(short.files.at(-1).role, "contact_sheet");
-  assert.deepEqual(Object.keys(short.payload), ["shots", "judge", "duplicates"]);
+  assert.deepEqual(Object.keys(short.payload), ["expected_shots", "shots", "judge", "duplicates"]);
   assert.equal(short.summary, "分鏡 20 鏡，judge 最低 8/10");
 
   const two = sandbox("fixture-drama", "drama");

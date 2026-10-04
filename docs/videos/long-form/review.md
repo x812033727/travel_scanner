@@ -967,6 +967,42 @@ Non-claims: DURATION_ONLY follow-up of the merge for the 1 row that differs from
 
 Verdict: PASS — DURATION_ONLY for the merge of #1193 into PR #1197, one row rebound to main's reviewed bytes; required duration fixes remaining: none.
 
+## Branch codex/video-pipeline-recovery-20261004 increment: 11 files (2026-10-04)
+
+Reviewer: `codex-independent-video-recovery-20261004`. Author: `codex-video-recovery-20261004`, coordinating the backend, client and keyframe source authors. The reviewer authored none of the implementation and writes only this report and review.json. Scope: DURATION_ONLY for the 11 changed bindings in committed source `a0e1d56d883edbbf23998eba840b01eada9943ed`.
+
+Baseline: all 108 registered files at merge-base `e9942d3cde47f03ab3ca45d542415c190989acf2` hash exactly to the preceding receipt. Every registered working-tree file also matches committed source `a0e1d56d883edbbf23998eba840b01eada9943ed`. The preceding report SHA256 is `75ae96139730d0d2afc3530109284d7a8ea55ded53639317ca7904361282686a`; all earlier report sections remain byte for byte intact. The registry remains 108 paths, with 11 hashes rebound and 97 unchanged.
+
+Findings: models.py and schemas.py add the durable stage-job record and submit/poll receipt schemas; their existing duration settings and runtime-policy fields are unchanged. settings.py requires complete expected-shot, selected-file and end-frame evidence before automatic storyboard approval. core/state.mjs and review/sync.mjs check the current document's complete keyframe set and file hashes, preserve the existing look/picture/approval bindings, and reject an incomplete legacy storyboard on pull; the source hashes and runtime proofs already guarding downstream delivery are unchanged.
+
+In automation/flow.mjs the added code retains a pending writer receipt until saved artifacts can adopt its answer, reconciles saved blocked reports with backoff, verifies an explicit owner retry before clearing its uncertain journal, and derives stable line IDs for restart. These changes affect operation identity, reporting and completeness, not video length. All existing target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds and measured-runtime conditions retain their prior code. The HTTP polling window, retry backoff and provider execution deadlines are work-operation waits, not video duration targets.
+
+The five changed test files add restart, delayed-answer, concurrent lexicon/date context, pending lint-rewrite, report failure/drop, full-picture coverage, end-frame resume and partial-approval regressions, and give existing media fixtures real files with matching hashes. They change no duration expectation or fixture minimum-length override. The 600/780-second targets, measured 480-second floor, eight-minute minimum, source-pack hashes and covered status retain their preceding rules and reviewed bytes.
+
+Independent functional findings were returned to the source authors before this increment: accepting the provider's actual resolved model while retaining the chosen model identity, honoring drama disablement before queued dispatch, and honoring per-video as well as global STOP files. The reviewer inspected the final author fixes and their added regression assertions; none alters a duration rule. This paragraph records the review handoff, not production acceptance.
+
+Ran (Node 24.19.0, offline on Windows): byte-level SHA256 checks against all 108 merge-base blobs and committed source, and full diffs for all 11 changed bound files. Before rebinding, `node tools/video/long-form/cli.mjs check` exited 1 naming exactly these 11 stale bindings. After rebinding, that check and `node --test tools/video/long-form/review.test.mjs` are run again, with their exact results in this increment's handoff. No whole tool, API or web suite was run by this reviewer for the receipt.
+
+Non-claims: DURATION_ONLY for these bound bytes. This increment does not re-review the 97 untouched bindings, certify generated media or measured production runtime, claim PostgreSQL integration or full-suite/CI completion, recover historical missing responses, authorize paid retries, change owner approvals or spending limits, deploy, upload or publish. Historical sections keep their original revision-specific claims.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none for these bound bytes.
+
+## PR #1203 complete-keyframe fixtures increment: 1 file (2026-10-04)
+
+Reviewer: `codex-independent-video-recovery-20261004`, the independent reviewer of the preceding recovery increment. Author: `codex-video-recovery-20261004`, coordinating the keyframe fixture author. Scope: DURATION_ONLY for `tools/video/core/drama.test.mjs` in source commit `06d555da2e92b5bcc315effc7af3040aa2cca8b4`. The reviewer authored none of this source patch and changes only the two receipts.
+
+Baseline: all 108 registered files at previously accepted commit `9679f35734858324dc8f1a1195f01244840efea7` match the preceding receipt's hashes, and every registered working-tree file matches committed source `06d555da2e92b5bcc315effc7af3040aa2cca8b4`. The preceding report SHA256 is `149923acaf4f4055641dadc04c96079bf50dbe3b695e610b6d06938b3d87421d`. Every historical section, including the original 11-binding recovery increment, remains byte for byte intact. One hash is rebound; 107 bindings and the 108-path registry are unchanged.
+
+Findings: the bound test adds createHash and replaces its synthetic partial keyframe manifest with a selected file and matching SHA256 for every drawn scene, plus required end frames. It initially retains opening.needs_review=true, checks the current actionable note, then clears that same flag before the original storyboard-to-render assertions. The test now supplies complete picture evidence required by the reviewed production guard; it does not loosen that guard, remove a pipeline assertion or fabricate a production approval. All surrounding narration/timeline, clips, music and assembled-check bindings remain unchanged. No duration target, measured floor, minimum override, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, source-pack hash or covered state changes. The 600/780-second targets, measured 480-second floor and eight-minute minimum retain their preceding rules.
+
+For context the reviewer also read the unbound automation/story.test.mjs fixture update, which saves selected picture bytes and reuses their hashes in the still-clip stub, and test_saved_items_integration.py, whose module-scoped Redis/database setup and teardown match the existing usage-settings and deployments integration fixtures. These files are outside REVIEW_FILES. The saved-items behavioral assertions and production source are unchanged; the review gives no PostgreSQL/Redis execution claim.
+
+Ran (Node 24.19.0, offline on Windows): all 108 baseline and source-byte hash comparisons, and the complete diff of the one rebound file and the two contextual test files. After rebinding, `node tools/video/long-form/cli.mjs check` and `node --test tools/video/long-form/review.test.mjs` are run, with exact results in the handoff. The authors separately report 45 passing tests across the two picture-fixture files; this reviewer did not rerun those suites.
+
+Non-claims: DURATION_ONLY for this bound test. This increment does not re-review the 107 unchanged bindings, claim full-suite or CI completion, certify production media/runtime or PostgreSQL/Redis integration, recover historical replies, authorize paid work, change spending limits or owner approvals, deploy, upload or publish. The original recovery review and historical sections retain their revision-specific claims.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none for this bound file.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -979,10 +1015,10 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `.claude/skills/youtube-video/SKILL.md` | `e64e9588bdfe17c1c37ded755c3f65eabec01e90d2aa54ad35cfe3f20163e08f` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `f27078a3792caed5fb7f0af14bd95d631824c562c37d3aafed375c06dbbc21ca` |
-| `apps/api/app/video_automation/models.py` | `4a9e59680a65274e532912de176ff211e9b98311b127aecf3cc4dbabaea1ef89` |
-| `apps/api/app/video_automation/schemas.py` | `18cab46cfbcb5cfe9ab6a2f48a7d9f3ec59eb4f76e5f5e78796315de5a4573b0` |
+| `apps/api/app/video_automation/models.py` | `f403f833cc842ebc4b54bb14d95698520d810af9609fac42ae0387b2e3c32f7f` |
+| `apps/api/app/video_automation/schemas.py` | `e5e710ccd21a7855ae9bc668e598b98356ebf31e8c9385b705c94956e2b0fde5` |
 | `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
-| `apps/api/app/video_automation/settings.py` | `982777bc8c54fa7db927fe12a06ec6ba4a598b5669d854ebebcf0330e8e46dba` |
+| `apps/api/app/video_automation/settings.py` | `c35f43db945777021e484d39c4906afb508093772116b24e17f1b9d82425e65e` |
 | `apps/api/app/video_reviews/admin_service.py` | `62b65a8e8ec013dc9de2f8bba51a2feda9396b6a5237e9ee15b2f007c2159a08` |
 | `apps/api/app/video_reviews/schemas.py` | `7953a70a195c647638a78b35055ab7b0a9d365d87146b92e9fa568afb3bd759c` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
@@ -992,7 +1028,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_migration_0122_video_anime_production_policy.py` | `c0bbfbbb3af79cf98e55569b60c11bc5131811d2915afc51d569605c4ae4a2d8` |
 | `apps/api/tests/test_video_anime_production_policy.py` | `b9fe3f9ff8ffd0b1d36089f2f684d60bb2e2c7712e4549940c472abb4c59efb1` |
 | `apps/api/tests/test_video_anime_review_policy.py` | `eacb78a7e6692e530730b49e3bb89698d1b2a3976ac8f1d836bbc435b16276d8` |
-| `apps/api/tests/test_video_automation_settings.py` | `9801c2266d61cc72e83e92bf21afff9b7eb11df87056a7dd1be13e3e56a90c60` |
+| `apps/api/tests/test_video_automation_settings.py` | `b65cf786839bf8ab2918610919b8bcfe089482f3635c13d8e1673912cbb5a5dc` |
 | `apps/api/tests/test_video_drama_requests.py` | `07ddbcaadf668a13565969ca44e2542dee4f6ad83791bcc8f67d785302734c59` |
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
@@ -1023,9 +1059,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `67e53a0cf183c3175adac2ce28d8b2fef7792a408b6b49125345e129115e7d05` |
-| `tools/video/automation/automation.test.mjs` | `dbd7ca82428fbe3ab723514146e706f7d663feb42c819d379a2613b4b63e4e64` |
+| `tools/video/automation/automation.test.mjs` | `e88775d919578a9b5c8fb199992bbd04181fe850b934a9a166d304f474d67fd3` |
 | `tools/video/automation/discuss.mjs` | `691f6ec55bde0b1c34c54fd38f39681d50617035dab78b0d2c751266a61f43ee` |
-| `tools/video/automation/flow.mjs` | `69879582b38859a8ee95372db33b61fb1336ac63a5e395b68a783d0ae0e5ae1a` |
+| `tools/video/automation/flow.mjs` | `b77931ef952d897b02e394b37ac6834296663bd5097bb4b20d66a42367bd081a` |
 | `tools/video/automation/prompts.mjs` | `fa440300b1363796581cc349381e3b75d7dab3661dfb4c41954d8c59f4a16504` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `ce8d18d30137ea172dc4ccf6ab7be5e3d1f4cb849f8e0b95626a7d6696de3f3c` |
@@ -1037,7 +1073,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/branding.mjs` | `aaad784dc23fe4bc1fc08c2871a5cd122ba483c500a07f128cb836dd8f05c8c7` |
 | `tools/video/core/branding.test.mjs` | `bebfeabcb0855bffc18f0334dd1a6206bb374552467edb036d999ca5398374cb` |
 | `tools/video/core/drama.mjs` | `239de3ef51aeafd36dd2142c80dc952807023788de3dd7129167640382571242` |
-| `tools/video/core/drama.test.mjs` | `8d21408e4a5a477b60e87275e79ce5ce7b5d6c396960b0884adcbb04bc562fc0` |
+| `tools/video/core/drama.test.mjs` | `fc340b513059963046c9c5854e52625cea8278579e6f1317db9dc9e430b4e3d7` |
 | `tools/video/core/duration.mjs` | `e92c104bc62babf18f47c75b67416807484f1af794b94cd8790350990dba8edd` |
 | `tools/video/core/duration.test.mjs` | `388bda7c57e548c2f50165a713e038e147645d283409c1f09393e8eef68652ba` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
@@ -1048,8 +1084,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
 | `tools/video/core/stages.test.mjs` | `0a409f7a88234c1823146ea65092a95ceb12b69c34ccf1910894712f34859a2e` |
-| `tools/video/core/state.mjs` | `44b97802ab19bea166fab09d59ff0de6a406b69237929f48f16ca4abe399ace6` |
-| `tools/video/core/state.test.mjs` | `fecb280b9f8f39cd00896652382587bfee203b82b73b2461ac4e0c3f1481e0b9` |
+| `tools/video/core/state.mjs` | `19cc300190b554593f7548af7c7c62729c01750f26a5553b616a5e0f65939b6b` |
+| `tools/video/core/state.test.mjs` | `b20ae43efb582ddaaa5f61cdcfc0676c47dcee14959a3446fabd468fa9e7fd77` |
 | `tools/video/core/timeline.mjs` | `c4893537d9aa5b803ce594726c75adf7e21d96056dea8f0d038c48507044bd81` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
 | `tools/video/dubs/captions-package.test.mjs` | `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` |
@@ -1063,7 +1099,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
 | `tools/video/media/clips.test.mjs` | `fe227514f7891a9cf63776186b66c876d1c0cbf35c5c3e38ba52776cc4627012` |
-| `tools/video/media/look-keyframes.test.mjs` | `5d9b6e9180f97fb6b786ae96038c9f8f5f0f838f14f5f847d19dffc1a5d41919` |
+| `tools/video/media/look-keyframes.test.mjs` | `82c075fecd9f6b7a88ebafb2d3ce77fff0e3acd9acb47cbd69ee3d4a020fb751` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `05814a6fc0191d1b91fb209b12bd90293787dae24eb71c9fc32ea115646bbd4f` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
@@ -1073,8 +1109,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/qa/cli.mjs` | `12491358d52d12f90d90d4024746c98a11910b330b3a5120ca8e84f44d8fcefa` |
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
 | `tools/video/qa/qa.test.mjs` | `4ea9fb9101646bc609543125e4132f4743fed2118a34f48df9a4c82716a124a1` |
-| `tools/video/review/sync.mjs` | `8c9e0de103d03fbf705b7c715cf2bcc0321e2d178c7592754d1f3988102c48be` |
-| `tools/video/review/sync.test.mjs` | `aaaaeab0cecee5dece4ca077ff423d14b69a33627d8d41d7285c2643ad3373e7` |
+| `tools/video/review/sync.mjs` | `b626220199df53d98d66928f0388d3e0eb68106605afb38cf2007c2c2d518d66` |
+| `tools/video/review/sync.test.mjs` | `4ed8d25d4c84117d1a40f80218c30495629166b12aa59ac4fa7917f23fa75854` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |

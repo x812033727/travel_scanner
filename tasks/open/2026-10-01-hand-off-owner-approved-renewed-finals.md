@@ -74,6 +74,26 @@ timeline. A successful HTTP response is not approval, canonical activation or up
 
 ## Notes
 
+- Read-only implementation audit on 2026-10-04: live final reviews for the 18
+  affected slides are approved renewal candidates, while publish approval is false
+  and chosen languages still await the canonical source-bound handoff. This is not
+  a request for another owner final approval or an upload authorization.
+- The old `<home>/mokaair-work/channel-intro-20260930` candidate evidence
+  directory referenced by the prior handoff is currently absent. Locate retained
+  canonical/server/archive sources before preparing those 17 candidates; do not
+  regenerate paid media merely because local evidence is missing.
+- DevDay retains canonical source files under
+  `<home>/mokaair-work/videos/openai-devday-2026-recap` and the candidate
+  under `branding-audit-20261004`: 153 audio segments, timeline/narration hashes,
+  source checks and preservation proof. Its old local pending receipt is a stale
+  snapshot; use the fresh approved backend identity. Preserve the original
+  publish thumbnail, not an arbitrary newer final-review thumbnail.
+- Implementation remains needed: a prepare/verify snapshot receipt, guarded
+  activation with worker STOP/idle and fresh upload/owner activity checks, and the
+  separate imported manual-package consumer. Existing source-hash guards remain
+  intact. The 2026-10-04 recovery branch fixes writer, image completeness and
+  status-report code; it does not activate these renewal candidates.
+
 - Filed unclaimed; the predecessor implements a concrete staged-candidate and manual
   pending-review entry point only. No live deployment, import, upload or publication.
 - Six v1 candidates have canonical retained body copies/hashes and original

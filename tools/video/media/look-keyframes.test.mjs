@@ -332,6 +332,36 @@ test("a shot that never passes is left for a prompt fix after the last take", as
   assert.equal(manifestOf(box, "keyframes").shots.farewell, undefined);
 });
 
+test("a cap interruption before the end frame retains the judged start picture and resumes only the missing end", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = dramaFixture();
+  doc.scenes[0].data.end_frame = { prompt: "the sun rises above the mountain" };
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  const status = { ...STATUS };
+  const site = mediaSite({ status, verdicts: () => ({ overall: 9, passed: true, problems: [] }) });
+  await main(["look", "--slug", box.slug], context(box, site.fetchImpl).ctx);
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  status.max_usd_per_video = readLedger(box.workdir).totals.usd + 0.15;
+  const capped = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "opening"], capped.ctx), EXIT.owner, capped.out.stderr);
+  assert.match(capped.out.stderr, /per-video cap/);
+  const partial = manifestOf(box, "keyframes").shots.opening;
+  assert.equal(partial.incomplete, true);
+  assert.equal(partial.judge.passed, true);
+  assert.equal(partial.end_frame, undefined);
+  const images = site.state.images.length;
+  const judges = site.state.judges.length;
+  status.max_usd_per_video = 200;
+  const resumed = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "opening"], resumed.ctx), EXIT.ok, resumed.out.stderr);
+  const completed = manifestOf(box, "keyframes").shots.opening;
+  assert.equal(completed.sha256, partial.sha256);
+  assert.ok(completed.end_frame.file);
+  assert.equal(completed.incomplete, undefined);
+  assert.equal(site.state.images.length, images + 1, "only the missing end frame is bought");
+  assert.equal(site.state.judges.length, judges, "the accepted start picture keeps its verdict");
+});
+
 test("an explainer has no look: look refuses it, and keyframes draw every still with no sheet and no identity question", async () => {
   const box = sandbox("fixture-explainer", "explainer");
   const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }) });
