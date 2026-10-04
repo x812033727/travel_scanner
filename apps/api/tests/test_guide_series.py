@@ -63,6 +63,7 @@ def test_the_registry_names_hubs_that_exist_and_series_the_api_can_serve():
         "ai-terms",
         "ai-search-terms",
         "ai-workflow",
+        "dots",
     ]
     shipped = {pack.slug: pack.kind for pack in load_packs()}
     catalogued = {item.slug for item in catalogues()}
