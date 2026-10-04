@@ -9,7 +9,7 @@ metadata:
 
 給**用手跑一集 AI 漫劇**的代理：自己下 `look`、`tts`、`keyframes`、`clips`、`music`、`assemble`，或在試拍後向站主報帳、寫檢討的人。主機工人（`node tools/video/cli.mjs auto`）不讀 skill，它該守的規矩都在 `tools/video`；這裡寫的是程式碼不替你擋、花了錢才知道的事：每個付費階段前要成立什麼、一鏡一集一個月各多少錢、哪個改動會重買什麼、哪些錯誤最貴、收工要交什麼。
 
-每個數字後面標來源：**工具規定**（檔案與函式或常數；行號只在 `references/stage-preconditions.md`，那裡註明讀取日）、**價目**（檔案或網址，加查閱日）、**模型限制**、**量到的**（試拍紀錄）、**編輯判斷／換算**。沒標的就當沒驗。路徑相對於 repo 根目錄；工作區在 `<VIDEO_WORKDIR>/<SLUG>/`（repo 外）。
+每個數字後面標來源：**工具規定**（檔案與函式或常數；行號只在 `.agents/skills/animation-production/references/stage-preconditions.md`，那裡註明讀取日）、**價目**（檔案或網址，加查閱日）、**模型限制**、**量到的**（試拍紀錄）、**編輯判斷／換算**。沒標的就當沒驗。路徑相對於 repo 根目錄；工作區在 `<VIDEO_WORKDIR>/<SLUG>/`（repo 外）。
 
 此版本的 Lite adapter 與 clip judge 相容修正描述的是 repo 程式碼；實際後端須核對部署版本。本機估價／preflight 通過不代表正式服務已更新、付費請求成功或素材通過驗收。
 
@@ -107,7 +107,7 @@ Veo 3.1 在 clips 等級一次就 US$202.6，過了單支上限 US$200（`max_us
 
 ## 三條路線：伺服器 API、Hailuo 網頁、Kling 網頁與選用的 CLI／MCP
 
-使用者本次指定 Hailuo 或 Kling，並提供內建瀏覽器操作，**這次先沿指定的網頁路線**；不因過去選過 Kling CLI 或工具預設 API 就換路。CLI／MCP 是另行選用的替代方案。實作前讀 `references/browser-production.md`：核對本次工具的 upload／download 能力、先用已核准首格做三個連續鏡頭的 pilot、保留收據並實速看片，再擴大。方案與價目在 `references/providers-and-plans.md`；其中「實測 2026-10-04」保留的是歷史 Hailuo 一支 H3 2K 文生影片與 Kling CLI 輸出，不代表本次 Codex 瀏覽器或新素材已驗證。
+使用者本次指定 Hailuo 或 Kling，並提供內建瀏覽器操作，**這次先沿指定的網頁路線**；不因過去選過 Kling CLI 或工具預設 API 就換路。CLI／MCP 是另行選用的替代方案。實作前讀 `.agents/skills/animation-production/references/browser-production.md`：核對本次工具的 upload／download 能力、先用已核准首格做三個連續鏡頭的 pilot、保留收據並實速看片，再擴大。方案與價目在 `.agents/skills/animation-production/references/providers-and-plans.md`；其中「實測 2026-10-04」保留的是歷史 Hailuo 一支 H3 2K 文生影片與 Kling CLI 輸出，不代表本次 Codex 瀏覽器或新素材已驗證。
 
 **目前 `clips import` 對任何存在的 `series.production.profile` 都以 3 拒絕**（`tools/video/media/clips.mjs` 的 `importClip`），單改 profile 的 provider／model 也不會開放匯入。既有 profile 另由 `productionClipProblems` 與 `productionClipSizeProblem` 驗 provider、model、解析度、原生 1920×1080 及全鏡動態；目前作品的 Lite 契約在 `docs/videos/series-plans/production-20261001/profile.json`。外部路線可用於沒有 profile 的 pilot 或作品；現有正片要採用，須另做受核准的外部路線產線支援與契約更新，不能刪 profile 或偽標素材來繞過。這次 skill 更新不改這些程式條件，付費生成前先確認目的地收得進去。
 
@@ -172,7 +172,7 @@ judge 的 `problems` 文字先分類，再決定花不花第二次的錢：
 
 ## 錯誤目錄：最貴的十二條
 
-完整 50 條、按階段分組，在 `references/error-catalogue.md`（第 9 條是 0 元但整集排隊，留著）。
+完整 50 條、按階段分組，在 `.agents/skills/animation-production/references/error-catalogue.md`（第 9 條是 0 元但整集排隊，留著）。
 
 | # | 錯誤 | 階段 | 誰抓 | 漏掉的代價 | 預防 |
 | --- | --- | --- | --- | --- | --- |
@@ -203,7 +203,7 @@ judge 的 `problems` 文字先分類，再決定花不花第二次的錢：
 | 站主 accepted | `approvals.json` 的關卡；final 要站主看 | 0；60／100 |
 
 - 列出每個關卡的 `approvalState`（approved／stale／missing／absent），stale 的要說是哪個改動害的。
-- post-mortem 照 `references/post-mortem.md`，`run_report.mjs --markdown` 先把數字填好。素材與收據留 repo 外；公開文件不放憑證與機器路徑。
+- post-mortem 照 `.agents/skills/animation-production/references/post-mortem.md`，`run_report.mjs --markdown` 先把數字填好。素材與收據留 repo 外；公開文件不放憑證與機器路徑。
 
 ## 交接
 
@@ -225,7 +225,7 @@ node .agents/skills/animation-production/scripts/drama_preflight.mjs --slug <SLU
 node .agents/skills/animation-production/scripts/run_report.mjs --slug <SLUG> [--workdir <dir>] [--markdown] [--json]
 ```
 
-價目在 `episode_estimate.mjs` 的 `PRICES` 表（以模型 id 或方案 id 為 key：Omni、Lite、Veo 3.1、Veo 3.1 Fast、H3、Pro Image、Lyria；別的模型給 `--price-per-second`），旗標可覆寫。`tools/animation-production.test.mjs` 對照 `catalog.py` 驗 API 價，並以合成劇本驗證 Lite 非空 avoidance 的估價／預檢、原核准不變、clip 有界題目與 keyframe 真長題拒絕。模型專屬 payload 的 Lite 省略／完整限制保留與非 Lite 參數保留由 `apps/api/tests/test_video_media_providers.py` 驗證；不以原始碼文字匹配代替行為測試。`references/post-mortem.md` 與原逐 take 表維持當時的試拍紀錄，不是修正後再付費驗收。
+價目在 `episode_estimate.mjs` 的 `PRICES` 表（以模型 id 或方案 id 為 key：Omni、Lite、Veo 3.1、Veo 3.1 Fast、H3、Pro Image、Lyria；別的模型給 `--price-per-second`），旗標可覆寫。`tools/animation-production.test.mjs` 對照 `catalog.py` 驗 API 價，並以合成劇本驗證 Lite 非空 avoidance 的估價／預檢、原核准不變、clip 有界題目與 keyframe 真長題拒絕。模型專屬 payload 的 Lite 省略／完整限制保留與非 Lite 參數保留由 `apps/api/tests/test_video_media_providers.py` 驗證；不以原始碼文字匹配代替行為測試。`.agents/skills/animation-production/references/post-mortem.md` 與原逐 take 表維持當時的試拍紀錄，不是修正後再付費驗收。
 
 ## 還沒驗、不能宣稱的事
 

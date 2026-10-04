@@ -1,10 +1,9 @@
 import assert from "node:assert/strict";
-import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
-import { fixture } from "../core/fixtures/load.mjs";
+import { fixture, tempDir } from "../core/fixtures/load.mjs";
 import { ARTIFACTS } from "../core/state.mjs";
 import { thumbnailSourceHash } from "../core/translations.mjs";
 import { THUMBNAIL_MAX_BYTES } from "../render/cli.mjs";
@@ -78,7 +77,7 @@ test("the thumbnail item checks the size, the bytes and the headline's height on
 
 test("the thumbnail item checks each language's own thumbnail too, and what is wrong with one only warns", () => {
   const doc = fixture();
-  const workdir = mkdtempSync(path.join(tmpdir(), "video-qa-thumbs-"));
+  const workdir = tempDir("video-qa-thumbs-");
   mkdirSync(path.join(workdir, "frames"));
   mkdirSync(path.join(workdir, "thumbnails"));
   writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720, 2000));

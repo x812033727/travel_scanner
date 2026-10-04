@@ -21,6 +21,8 @@ scope:
   - .claude/skills/animation-camera/SKILL.md
   - .agents/skills/animation-camera/references
   - tools/animation-production.test.mjs
+  - .agents/skills/animation-camera/scripts/shot_reading.mjs
+  - tools/animation-camera.test.mjs
   - docs/videos/drama-craft
 ---
 
@@ -104,5 +106,6 @@ npm run check:tasks
   flags) were fixed before the review commit.
 - Follow-ups filed: `2026-10-04-profile-works-external-clip-route`,
   `2026-10-04-paid-verification-hailuo-kling-web` (about 350 credits, for the owner),
-  `2026-10-04-stray-youtube-video-reference-copies`, `2026-10-04-minimax-h3-adapter-v2-shape`,
+  `2026-10-04-minimax-h3-adapter-v2-shape`,
   `2026-10-04-drama-montage-beats-flash-cuts`, `2026-10-04-yt-shot-probe-merges-back-to`.
+- Merged main on 2026-10-05: the off-screen false positive had been fixed there meanwhile (#1215, #1223, `offScreenRoles`), so this branch took main's version and kept only `shot_reading.mjs --route` (the web routes buy the master to cover every cut, so `source.bought` is server-only). #1222 removed the stray `.claude/skills/youtube-video/references` copies, so that follow-up was dropped.

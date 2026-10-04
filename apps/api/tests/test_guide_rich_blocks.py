@@ -32,6 +32,27 @@ def test_rich_paragraph_preserves_spaces_and_is_counted() -> None:
     assert list(_ordinary_urls(doc)) == [rich()["inlines"][1]["url"]]
 
 
+def test_a_paragraph_of_nothing_but_links_is_not_body_text() -> None:
+    """A "further reading" line is a link label, like a ``link`` block, so it does not count
+    toward the length guideline: ``ai-terms-index`` carried 106 of them and its body read as
+    5,444 characters for 3,506 of prose. A link inside a sentence is part of the sentence, and
+    so is anything but whitespace between two links."""
+    article = {"type": "article", "text": "什麼是 MCP", "kind": "life", "slug": "mcp-explained"}
+    link = {"type": "link", "text": "GEMINI.md", "url": "https://mokaair.com/zh-TW/life/x"}
+    space, comma = {"type": "text", "text": " "}, {"type": "text", "text": "、"}
+    links_only = {"type": "rich_paragraph", "inlines": [article, space, link]}
+    joined = {"type": "rich_paragraph", "inlines": [article, comma, link]}
+    doc = GuideDocument.model_validate(
+        {"title": "教學", "description": "設定", "blocks": [links_only, rich()]}
+    )
+    assert _body_length(doc) == len("ReadGEMINI.mdbeforeediting.")
+    # The reader still sees the line, so the rules that read every string still read it.
+    assert "什麼是 MCP GEMINI.md" in _document_text(doc)
+
+    doc = GuideDocument.model_validate({"title": "教學", "description": "設定", "blocks": [joined]})
+    assert _body_length(doc) == len("什麼是MCP、GEMINI.md")
+
+
 def test_document_text_carries_the_summary_and_the_faq() -> None:
     """The summary and the FAQ are sections a reader reads, so the two rules built on
     ``_document_text`` -- the diagram-number rule and the simplified-character scan the news

@@ -30,7 +30,7 @@ metadata:
 | 被 judge、`assemble` 或站主退回 | `.agents/skills/animation-camera/references/model-misreads.md`（逐 take 的證據、提示怎麼組、Lite 的歷史參數失敗與此版本相容處理、judge 的題、Hailuo 與 Kling 的字彙來源）與 `visual-quality.md`（診斷、小卡、冷看） |
 | 付費之前把整集排好：分鏡表、鏡位、每鏡路線與買幾秒、風險分級、動態分鏡、開拍鎖定 | `.agents/skills/animation-preproduction/SKILL.md`（鏡位設計是它的 P3） |
 | 要算錢、選路線、看每個付費階段的前提 | `.agents/skills/animation-production/SKILL.md`；這批動畫的 Lite 契約（8 秒、首尾格、無參考圖、CC）在 `animation-production.md` |
-| 使用者指定「布袋喵參考風格」或真一隻布袋喵頻道 | [references/budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md)：三支原片抽樣、可選美術與導演規格、原創八鏡與同鏡的 Hailuo／Kling 網頁提示；只在點名時套用，其他作品保留原風格 |
+| 使用者指定「布袋喵參考風格」或真一隻布袋喵頻道 | [.agents/skills/animation-camera/references/budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md)：三支原片抽樣、可選美術與導演規格、原創八鏡與同鏡的 Hailuo／Kling 網頁提示；只在點名時套用，其他作品保留原風格 |
 | 要透過內建瀏覽器製作 Hailuo／Kling 片段 | [.agents/skills/animation-production/references/browser-production.md](../../../.agents/skills/animation-production/references/browser-production.md)：依本次工具能力上傳、選設定、記帳與下載；先檢查 production profile 的匯入限制 |
 
 ## 三個欄位各給誰讀
@@ -104,7 +104,7 @@ metadata:
   `from_s` 看來源**實際買到**的秒數，不看 lint 的上限：s04 約 2.93 s、s08 約 2.2 s（lint 對 `scene-coverage.md` 示範場的估計），伺服器預設的 Omni（與 H3）照 `clipSeconds` 只買 4 s，1.5 ＋ 2.2 ＝ 3.7 放得下，代價是重播 s04 的 1.5–2.93 s；想從尾巴之後切（`from_s: 4`）只有 Lite 1080p 固定 8 s 時成立，Omni 下得把 s04 寫長（多買秒數）。細節在下一節的 `source` 條。
 - 不要把 `camera` 整行貼在 prompt 開頭再加一段每鏡共用的狀態段（試拍 E2 的寫法）：`promptSimilarity` 警告、`setupKey` 把不同鏡位黏成一個、`shot_reading` 的 `prompt.camera`、模型多看一遍沒有新資訊。
 - 畫外說話者寫 `Chen speaks off screen`，不列進 `characters`：列了他就占一張參考圖（上限 4）、多一題 `identity_chen`，而圖裡沒有他的臉，judge 答不了。`speaker` 仍是他（`shot_reading` 的 `cast.offscreen`、`cast.speaker`）。
-- 目光或動作指向畫外的人時，畫外片語要緊接那個人：`Shen off screen left at his eyeline`、`toward Wei off screen right`。`cast.offscreen` 只把畫外片語緊接（或只隔 speaks、stands 這類字）的那個名字算成畫外；動手的人隔著 toward／at 這類方向字，算在畫面裡。讀不出片語在說誰時它報一次、問你，修法不叫你刪入鏡的角色。
+- 目光或動作指向畫外的人，寫成分開的子句（`Close-up of Lu's face at screen right, Shen off screen left at his eyeline`），或讓介系詞直接帶畫外的名字：`toward Wei off screen right`、`eyes on Chen off screen right`、`Lu glances off screen right at Shen`。`cast.offscreen` 把 off screen 接在 toward／towards／at／to／on／onto／upon／into 帶的名字上（look、glance、stare、gaze、peer、point、aim、eyes 後面的 off screen 是方向，接在之後 at／toward 帶的名字上），只報那個人；同一子句的其他名字是入鏡的動作者，不報（`One cyan arc leaves Yan's sword toward Wei off screen right` 的 Yan）。讀不出接在誰身上——同一子句點了兩個以上的名字（`Yan raises the sword as Wei shouts off screen`）、說話的動詞接 to 某人（`Yan speaks to Wei off screen`）、off screen 接在東西或地方後面（`swings toward the gate off screen`）——仍報 `cast.offscreen`，訊息是「讀不出是誰」、修法以「先確認」開頭：這是問句，畫外的才從 `characters` 拿掉，入鏡的留著，改成上面兩種寫法就不再報。
 - 數量與狀態寫成看得到的東西：`one folded note`、`one watch on the right wrist`、`a continuous steel door with its seam sealed`、`blank paper, no writing`。否定句少用：試拍把「already closed」「no locking operation」畫成開著的門。紙上任何字 judge 的 `no_text` 都扣，要讀的字另外合成。
 - 場景的光寫在這一鏡（`lamp light from the right`），不寫進 `look.style`（試拍倉庫火光漏進婚禮）。
 - 手部插鏡只寫手、袖口、腕上的東西、道具，不寫臉與髮型。`characters` 列不列：`visual-quality.md` 第二節要留資料綁定（只精簡 prompt）；這裡建議留空，理由是列了角色就把整段 appearance 接進提示（`shotAppearancePrompt`），而 identity 題（`keyframeRubric` 權重 2、單題 ≥ 4.0 才過，`apps/api/app/video_media/judge.py` 的 `MIN_CRITERION`）在沒有臉的圖上答不了（試拍 S04 R01 畫成上半身廣鏡）。哪種更穩沒驗，兩種別在同一場裡混用。範本：`Insert of <東西> on <哪裡>, <哪隻手> with <腕上的東西> at frame <left／right>; <誰> speaks off screen`。
@@ -146,7 +146,7 @@ metadata:
 | 回到同一鏡位的第二、三次 | `source: { shot, from_s }` | 不畫圖、不買素材、不 judge（帳本記 `cut`） |
 | 無聲的動作拍 | 場景層 `action_seconds`＋空 `lines`（上一節） | 同 clip 或 still |
 
-每一種的價錢在 `.agents/skills/animation-production/SKILL.md` 的「錢怎麼算」；三條路線的點數換算在它的 `references/cost-model.md`。
+每一種的價錢在 `.agents/skills/animation-production/SKILL.md` 的「錢怎麼算」；三條路線的點數換算在它的 `.agents/skills/animation-production/references/cost-model.md`。
 
 - 靜圖的運鏡：要驗第 0 格就寫 `push in`、`drift` 或 `locked`（`IDENTITY_START`：第 0 格是整張關鍵影格，`assemble` 算 PSNR ≥ 22）；`locked` 只給刻意的 hold（`shot_reading` 報 `still.locked` 問一次：是就留著並在回報說明，不是就給 `push in` 或 `drift`）；`pull out`、pan、tilt 一開始就裁掉邊緣，不驗第 0 格。`checks.json` 的 `metrics.shots[]` 記 `kind: "motion"`、`move` 與 `keyframe_psnr`，看到 `drift` 多半是 `camera` 沒寫或用了表外的字（`still.drift`）。靜圖不能有 `end_frame`（lint 錯誤）。
 - `source` 的規矩（lint，`tools/video/core/drama.mjs` 的 `validateShotData`）：來源要是更早的 clip 鏡頭、自己有素材（不是 still、不是本身切來的）；不能同時有 `start_frame`／`end_frame`；不能當縮圖底圖；`from_s`＋鏡長在 lint 的上限內：沒有 production profile 10 秒（`MAX_SOURCE_CLIP_SECONDS`）、有 profile 8 秒（`tools/video/core/lint.mjs`）。但素材真正有幾秒是來源鏡頭**買到的**：Lite 1080p 永遠 8；Omni／H3 是 ceil(需要) 最少 4（`clipSeconds`），一個 3 秒的來源在伺服器預設的 Omni 下只有 4 秒可切，`clips.mjs` 在來源買下之後才把超出的切鏡標 `needs_review`。Omni／H3 下要嘛刻意把來源鏡頭寫長（多買秒數），要嘛接受重播來源的開頭；「說—聽—說回同一鏡位」切尾巴之後那段，只在 Lite 1080p 固定 8 秒時成立。`shot_reading` 分兩個陷阱：`source.length`（超過 lint 上限）、`source.bought`（在上限內但超過來源買到的秒數，以 Omni／H3 的 4–10 算）。`assemble` 拿第 0 格對來源素材第 `from_s` 秒那一格算 PSNR。
@@ -158,7 +158,7 @@ metadata:
 
 ## 同一鏡在 Hailuo 與 Kling 怎麼寫
 
-先沿**使用者本次指定的路線**：要求內建瀏覽器，就用 Hailuo／Kling 網頁；CLI／MCP 是另外選定的路線，不因歷史選擇自動取代網頁。產線的關鍵影格已定景別、構圖與軸線，兩家都用同一鏡核准首格；`camera` 仍照上面的工具讀法寫，網頁的動態正文由 `animation-preproduction` 的 `shot_plan.mjs --route hailuo|kling` 照各家官方格式組好（Hailuo H3 的固定第一行與三個欄位、運鏡寫成「種類＋幅度＋速度」；Hailuo 2.3 的方括號指令；Kling 3.0 的自然語言），運鏡字的對照表在它的 `references/route-decisions.md` 第六節。操作讀 [browser-production.md](../../../.agents/skills/animation-production/references/browser-production.md)，具體八鏡改寫讀 [budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md) 第四節。
+先沿**使用者本次指定的路線**：要求內建瀏覽器，就用 Hailuo／Kling 網頁；CLI／MCP 是另外選定的路線，不因歷史選擇自動取代網頁。產線的關鍵影格已定景別、構圖與軸線，兩家都用同一鏡核准首格；`camera` 仍照上面的工具讀法寫，網頁的動態正文由 `animation-preproduction` 的 `shot_plan.mjs --route hailuo|kling` 照各家官方格式組好（Hailuo H3 的固定第一行與三個欄位、運鏡寫成「種類＋幅度＋速度」；Hailuo 2.3 的方括號指令；Kling 3.0 的自然語言），運鏡字的對照表在 `.agents/skills/animation-preproduction/references/route-decisions.md` 第六節。操作讀 [browser-production.md](../../../.agents/skills/animation-production/references/browser-production.md)，具體八鏡改寫讀 [budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md) 第四節。
 
 | 東西 | Hailuo 網頁 | Kling 網頁 |
 | --- | --- | --- |

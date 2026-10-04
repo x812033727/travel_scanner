@@ -139,9 +139,14 @@ export function hintTerms(line, { locale = NARRATION_LOCALE, lexicon } = {}) {
   return [...new Set(words)].slice(0, MAX_HINT_TERMS);
 }
 
-/** How a text is read aloud, tone by tone: 它 and 他 read the same, 旗 and 期 do not. */
+/**
+ * How a text is read aloud, tone by tone: 它 and 他 read the same, 旗 and 期 do not. pinyin-pro
+ * reads 妳 as nǎi, but as a pronoun it is 你 written for a woman, and a transcript writes either;
+ * it is folded here rather than through pinyin-pro's customPinyin, which is global to every
+ * importer.
+ */
 export function reading(text) {
-  return pinyin(comparable(text), { toneType: "num", type: "array", nonZh: "consecutive", v: true }).join(" ");
+  return pinyin(comparable(text).replace(/妳/gu, "你"), { toneType: "num", type: "array", nonZh: "consecutive", v: true }).join(" ");
 }
 
 /**

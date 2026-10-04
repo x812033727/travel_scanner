@@ -47,11 +47,32 @@ docker compose -f docker-compose.prod.yml exec -T api sh -c 'python -m app.news_
 
 清單用 `?queue=` 與 `?page=` 記在網址上。批次退件在後台勾選多筆即可（每筆一個有稽核的退件）；用腳本在容器裡呼叫 `service.reject_candidate` 只在站主明確要求時做，而且要 Manual 模式（灌腳本進容器會被分類器擋）。
 
+## 五語稿已寫好、卻被硬性檢查擋在「需重寫」的候選
+
+2026-10-01 到 #1201（10-04）之間，每篇自動文章都因為一張已經不畫的流程圖被硬性檢查擋下；#1136 之前這種稿件只存在候選上（`needs_redraft`、`news_hard_checks_failed`、沒有文章、五語都在 `draft_bundle_json`）。「重新執行」和不帶旗標的 `backfill_cli` 都會整篇重寫，要用 `--resume-saved-bundles`：
+
+```bash
+cd /root/travel_scanner
+# 只看：可以接著跑的候選、每篇在現行規則下還有哪些語系會被擋（hard_checks），乾淨的排前面
+docker compose -f docker-compose.prod.yml exec -T api python -m app.news_automation.backfill_cli --since 2026-09-28 --resume-saved-bundles --limit 3
+# 站主同意後才帶 --apply
+docker compose -f docker-compose.prod.yml exec -T api sh -c 'python -m app.news_automation.backfill_cli --since 2026-09-28 --resume-saved-bundles --limit 3 --apply --actor-email "${ADMIN_EMAILS%%,*}" --reason "Resume after #1201"'
+```
+
+每篇記一筆 `news_candidate_resumed` 稽核，改成 `discovered`＋`news_resume_saved_bundle` 排進 news-worker。worker 不撰稿、不翻譯：先重做一次重複檢查（稿子放了幾天，期間可能已經有人發了同一件事），再跑硬性檢查、讀最終修改的紀錄、做 Jev 最後一關，最後發布。只花 Jev 呼叫（每篇約 6 次），不花撰稿模型。結果和一般第二階段相同：
+- 發布（自動條件都成立）
+- `news_hard_checks_failed`：文章已存，到文章編輯器修好後按重新查核
+- `news_final_edit_hold`／`news_jev_final_hold`：文章已存，人看過後按五語發布
+- `news_duplicate_uncertain`／`duplicate`
+- `news_evidence_changed`：發布前重抓證據時，來源頁已經變了
+
+標記在當機或 worker 被砍時會保留，重排後仍接著跑，不會重寫。
+
 ## 診斷順序
 
 1. **一篇都沒有**：`settings_cli` 看 `enabled`、`blockers`、`keys_configured`；`docker compose … ps` 看兩個 news 服務在不在；`/admin/news` 的來源看 `last_status`（`succeeded`／`partial`／`not_modified`／`failed`／`validation_failed`）與錯誤。
 2. **候選卡在 `drafting`／`verifying`／`locale_review`／`jev_review`**：幾乎都是部署重啟把 worker 砍掉。news-worker 啟動時會把這些全部標成 `failed`（`news_processing_stale`，記一筆 `stale-recovery` run）並立刻重排；排程器對超過 70 分鐘的也做同樣的事（job 逾時 60 分鐘）。每個候選最多自動重排兩次，之後等人按「重新執行」。兩個並行名額都被卡住時其他候選只會一直延後。同一天多次部署，每次都會中斷一篇。
-3. **很多「重複不確定」進人工審查**：Jev 的每日呼叫預算（`jev_daily_call_budget`，預設 200，在「AI 供應商與金鑰」卡）用完時，重複檢查一律回答不確定。
+3. **很多候選退回 `discovered`、原因是 `news_jev_quota_paused`**：Jev 的每日呼叫預算（`jev_daily_call_budget`，預設 200，正式站 2026-09-27 起是 5,000，在「AI 供應商與金鑰」卡）在重複檢查用完了。這不是「重複不確定」，不會進人工審查：過了 00:00 UTC（台北 08:00）自動重排，當天在後台調高預算、還有額度時也會立刻重排。細節在 `docs/news-automation.md` 的「When Jev's daily budget is spent」。真的進人工審查的 `news_duplicate_uncertain` 是 Jev 有回答、分數落在 0.25–0.85 之間。
 4. **撰稿全部失敗**：`keys_configured` 裡那家是 false（例如沒有 Anthropic 金鑰卻選了 Claude，又沒切到訂閱帳號）。
 5. **`news_evidence_changed`**：證據雜湊永遠不會更新，這種候選重跑也發不出去，只能退件。
 6. 要數各狀態筆數：唯讀 psql 在 auto 模式可能被當成 Production Reads 擋下；Manual 模式下簡單的 `select status, count(*) … group by status` 會過，或請站主開 `/admin/news` 看。
