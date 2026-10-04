@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-shot-reading-offscreen-target-false-positive
 title: Avoid offscreen target co-mention false positives in shot reading
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-shot-reading-offscreen
 claimed_at: 2026-10-04T14:54:10Z
 created_at: 2026-10-04T04:03:32Z
-completed_at:
+completed_at: 2026-10-04T15:14:31Z
 branch: claude/shot-reading-offscreen-target
 depends_on: []
 scope:
