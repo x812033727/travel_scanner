@@ -70,3 +70,21 @@ approval for About, deployment and live-page acceptance, and an eventual policy
 rereview decision. Do not repeat account setup or mark Google Ready from local checks.
 The audit-document PR #1205 merged while this work was being prepared; code fixes
 use the separate codex/adsense-content-fixes-20261004 branch.
+
+2026-10-04 08:55 UTC read-only production preflight: another session deployed
+main `41f2f363b` at 08:52 UTC, including #1202/#1203/#1205. Host checkout is clean,
+deploy lock free, hold absent, no flagged unactivated release. This supersedes
+the earlier live `0768b8a` snapshot; repair PR #1206 remains a draft and is not live.
+CI discovered five old mobile frontend-flow assertions requiring the discovery
+card in the initial viewport. The homepage intentionally leads with site context
+and articles; scoped task `2026-10-04-align-editorial-homepage-browser-contract`
+updated the tests to verify those plus initial search access and discovery visibility
+after scrolling rather than restoring feed-first order. Scoped lint/diff/task checks
+passed; the new cases require actual confirmation on the latest head's isolated CI.
+Manual local server launch for this additional spec was rejected by automatic
+approval review (`blocked by policy` only); no alternate launch was attempted.
+Existing build-backed local FAQ tests still passed. The new homepage spec is not
+claimed locally executed; all five locales and both projects will be checked in CI.
+The account was independently reopened before 09:01 UTC and still showed Not found,
+the 9/23 timestamp, and Needs attention/low-value content. Fresh screenshot saved;
+no account, payment, policy rereview or CMS action was performed.

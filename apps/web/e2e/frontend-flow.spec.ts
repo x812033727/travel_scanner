@@ -49,17 +49,49 @@ async function fixtures(page: Page, signedIn = false) {
 }
 
 for (const locale of ["zh-TW","zh-CN","en","ja","ko"]) {
-  test(`editorial ${locale}: first card, four destinations, dark/large/reduced motion`, async ({page,isMobile}, info) => {
+  test(`editorial ${locale}: site context, available articles, accessible discovery, dark/large/reduced motion`, async ({page,isMobile}, info) => {
     await fixtures(page); const c = getDiscoveryCopy(locale), f = getFrontendFlowCopy(locale), n = frontendCopy(locale);
     await page.goto(`/${locale}`);
     await expect(page.getByRole("heading", {name:f.editorial,exact:true})).toBeVisible();
+    const context = page.locator('section[aria-labelledby="home-guides-title"]');
+    const introduction = context.locator(":scope > p");
+    await expect(introduction).toBeVisible();
+    await expect(introduction).toContainText("Mokaair");
+    const search = context.getByRole("link", {name:f.searchTrips,exact:true});
+    await expect(search).toHaveAttribute("href", `/${locale}/search/new`);
+    await expect(search).toBeInViewport({ratio:1});
+    expect(await context.evaluate((node) => {
+      const feed = document.querySelector("main");
+      return Boolean(feed && (node.compareDocumentPosition(feed) & Node.DOCUMENT_POSITION_FOLLOWING));
+    })).toBe(true);
+    // The server fixture publishes how-to articles in en and lifestyle articles in zh-TW.
+    // Other languages honestly have no article group; do not manufacture a fallback.
+    for (const group of locale === "en" ? ["travel"] : locale === "zh-TW" ? ["tech", "money"] : []) {
+      const articles = context.getByTestId(`home-guides-${group}`);
+      const kind = group === "travel" ? "howto" : "life";
+      await expect(articles.getByRole("link", {name:`Synthetic ${kind} listing`,exact:true})).toBeVisible();
+      await expect(articles.getByText("Synthetic fixture summary", {exact:true})).toBeVisible();
+      expect(await articles.evaluate((node) => {
+        const feed = document.querySelector("main");
+        return Boolean(feed && (node.compareDocumentPosition(feed) & Node.DOCUMENT_POSITION_FOLLOWING));
+      })).toBe(true);
+    }
     const title = page.getByRole("link",{name:item.title,exact:true});
     await expect(title).toBeVisible();
     if (isMobile) {
-      const box = await title.boundingBox(); expect(box!.y + box!.height).toBeLessThan(page.viewportSize()!.height - 60);
       const nav = page.locator(".app-bottom-nav"); await expect(nav.getByRole("link")).toHaveCount(4);
       await expect(nav.getByRole("link",{name:n.trips,exact:true})).toBeVisible();
       for (const link of await nav.getByRole("link").all()) expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+      const searchBox = await search.boundingBox(), navBox = await nav.boundingBox();
+      expect(searchBox!.y + searchBox!.height).toBeLessThanOrEqual(navBox!.y);
+    }
+    const firstCard = page.getByRole("article").filter({has:title});
+    await firstCard.scrollIntoViewIfNeeded();
+    await expect(firstCard).toBeInViewport({ratio:1});
+    await expect(title).toBeInViewport({ratio:1});
+    if (isMobile) {
+      const cardBox = await firstCard.boundingBox(), navBox = await page.locator(".app-bottom-nav").boundingBox();
+      expect(cardBox!.y + cardBox!.height).toBeLessThanOrEqual(navBox!.y);
     }
     await expect(page.locator("#trip-search")).toHaveCount(0);
     await page.screenshot({path:info.outputPath(`after-home-${locale}.png`),fullPage:true});
