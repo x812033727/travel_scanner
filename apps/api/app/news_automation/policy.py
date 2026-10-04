@@ -10,7 +10,7 @@ from typing import Any, Protocol
 from urllib.parse import urlsplit
 
 from app.guides.pack_ingest import lint_document
-from app.guides.schemas import CalloutBlock, FaqBlock, GuideDocument, ImageBlock, SummaryBlock
+from app.guides.schemas import CalloutBlock, FaqBlock, GuideDocument, SummaryBlock
 from app.news_automation.schemas import GateView, Vertical
 from app.site_pages.schemas import LinkBlock
 
@@ -505,13 +505,8 @@ def hard_policy_problems(
         problems.append("news_summary: a summary block is required")
     if not any(isinstance(block, FaqBlock) for block in document.blocks):
         problems.append("news_faq: an FAQ block is required")
-    if not any(
-        isinstance(block, ImageBlock)
-        and block.src.startswith("/guides/news-assets/")
-        and block.src.endswith(".svg")
-        for block in document.blocks
-    ):
-        problems.append("news_diagram: an original SVG diagram is required")
+    # The owner retired the fixed editorial-process figure. ensure_assets now supplies
+    # hero/social artwork only; requiring that removed figure blocks every publication.
     topic = {"ai": "ai-news", "tech": "tech-news", "crypto": "crypto"}[vertical]
     topic_url = f"https://mokaair.com/{locale}/life/topics/{topic}"
     if not any(
