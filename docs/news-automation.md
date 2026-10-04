@@ -111,10 +111,9 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    makes the text clear for general readers, removes notes meant for editors, and may not
    add a fact; it passes a locale, returns a corrected one (kept, with the sources locked
    to the evidence, and recorded as that locale's review, and as the zh-TW verification
-   when it is zh-TW), or holds it as `news_final_edit_hold`. Then images (a hero, a social
-   card and a diagram per locale, rendered
-   locally, stored in S3 or `news_assets.content`), hard checks on all five locales
-   (summary, FAQ, SVG diagram, topic link, crypto disclaimer, forbidden
+   when it is zh-TW), or holds it as `news_final_edit_hold`. Then images (a hero and a
+   social card, rendered locally, stored in S3 or `news_assets.content`), hard checks on
+   all five locales (summary, FAQ, topic link, crypto disclaimer, forbidden
    purchase/trading/exploit wording, guide lint, at least one source website), and the
    article is saved. **Jev's last call** (`jev-final`) asks about all five saved locales;
    only `act` on every one publishes, through the same checks as the publish button
@@ -128,6 +127,8 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    an editor fixes it in the guide editor and presses 「重新查核」 instead of paying for a
    new draft; Jev's last call is not asked, and the publish button refuses it until the
    checks pass. Changed evidence waits for 「用最新來源重新查核」 (below).
+   The fixed editorial-process diagram was removed by owner decision on 2026-09-30;
+   a candidate processed again loses that old figure. Publication does not require it.
 7. **Automatic mode** skips step 5 when auto-publish is on for the category, Jev answered
    `act` for the zh-TW draft, and the evidence is two websites or a first-party page;
    anything else waits for a person. There is no shadow gate any more (owner decision,
