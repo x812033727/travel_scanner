@@ -21,7 +21,7 @@ actor = guides.actor
 
 def test_catalogue_is_complete_and_references_are_valid():
     catalogue = next(item for item in catalogues() if item.slug == "claude-code")
-    assert len(catalogue.entries) == 96
+    assert len(catalogue.entries) == 97
     assert len(catalogue.groups) == 16
     assert len(catalogue.paths) == 12
     assert catalogue.hub == "claude-code-tutorials"
@@ -103,7 +103,7 @@ async def test_the_series_index_lists_only_hubs_published_in_the_locale(database
                     },
                     "source": "api-series",
                     "topic": "claude-code",
-                    "entries": 96,
+                    "entries": 97,
                 }
             ]
         }
@@ -112,7 +112,7 @@ async def test_the_series_index_lists_only_hubs_published_in_the_locale(database
         await guides.publish(api, terms["id"], "zh-TW", terms["version"])
         rows = (await api.get("/guides/series", params={"locale": "zh-TW"})).json()["series"]
         assert [(row["slug"], row["entries"]) for row in rows] == [
-            ("claude-code", 96),
+            ("claude-code", 97),
             ("ai-terms", None),
         ]
 
@@ -146,7 +146,7 @@ def test_claude_and_gemini_catalogues_use_locale_specific_groups_paths_and_searc
     from app.guides.series import catalogue_for_article
 
     for slug, hub, count, groups, paths in (
-        ("claude-code", "claude-code-tutorials", 96, 16, 12),
+        ("claude-code", "claude-code-tutorials", 97, 16, 12),
         ("gemini", "gemini-guide", 50, 8, 5),
     ):
         editions = {item.locale: item for item in catalogues() if item.slug == slug}
