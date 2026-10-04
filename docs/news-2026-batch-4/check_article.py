@@ -209,6 +209,8 @@ RELATED: dict[str, str] = {
     "ai-news-gpt-61-sol-20260929": "ai-news-gpt-6-sol-luna-20260923",
     # 4.10（Claude Sonnet 5.5，一篇，五語）：AI 191。自動化沒看到 Anthropic 根目錄的發表頁。
     "ai-news-claude-sonnet-55-20260928": "ai-news-claude-sonnet-5-20260630",
+    # 4.11（Claude Code mods，一篇，五語）：AI 192。自動化不收 claude.com/blog。
+    "ai-news-claude-code-mods-20261001": "ai-news-claude-sonnet-55-20260928",
 }
 
 def items_bounds(block: type) -> tuple[int, int]:
