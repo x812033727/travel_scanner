@@ -1,14 +1,14 @@
 ---
 id: 2026-10-03-render-svg-full-chrome-crop
 title: render_svg crops about 88px when CHROMIUM_BIN points at full Chrome
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-pack-ingest-fixes
+claimed_at: 2026-10-04T14:47:32Z
 created_at: 2026-10-03T12:04:03Z
 completed_at:
-branch:
+branch: claude/pack-ingest-body-length-render-svg
 depends_on: []
 scope:
   - apps/api/app/guides/pack_ingest.py
