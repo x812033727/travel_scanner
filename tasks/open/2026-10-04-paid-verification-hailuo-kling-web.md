@@ -35,7 +35,7 @@ credits on the owner's Hailuo (Max) and Kling accounts.
 Estimated cost (credits; official per-second prices, 2026-10-04):
 
 - [ ] Kling VIDEO 3.0, 1080p, audio off, outputs 1, three shots of 4 s from approved keyframes: about 3 × 32 = 96 credits. Measure the real deduction, output size and fps, whether the web panel has a negative field, AI Prompter's default.
-- [ ] Hailuo H3 768P, one 4 s image-to-video shot: 28 credits. Measure credits per second (7 is official but not charged), the output size (1344×768 per the self-host guide), and whether 768P upscaled to 1080p is acceptable.
+- [ ] Hailuo H3 768P, one 4 s image-to-video shot: 28 credits. Measure credits per second (about 7 is inferred, not an official price), the output size (1344×768 per the self-host guide), and whether 768P upscaled to 1080p is acceptable.
 - [ ] Hailuo H3 2K, the same three shots as Kling: about 3 × 48 = 144 credits, for a side-by-side on the same keyframes.
 - [ ] Hailuo 2.3 1080p 6 s, one shot: 80 credits (or free in the Max relax queue once credits are used up; measure the wait).
 - [ ] A master shot cut three times (`data.source`) on one route: does each cut's frame match and read right.
