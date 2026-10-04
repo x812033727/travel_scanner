@@ -1,9 +1,16 @@
 # Google AdSense 可行性評估
 
-> **2026-09-24 現況**：
-> - 2026-09-23 送審，以「缺乏價值的內容」退件。退件後的處理與複審時機見 `tasks/done/2026-09-23-reposition-the-site-as-a-travel.md`。
+> **2026-10-04 已核對的帳戶現況**：
+> - AdSense 的 mokaair.com 仍是「需要處理／缺乏價值的內容」，尚未核准放送廣告；網站擁有權已驗證。
+> - 正式站 `/ads.txt` 現在回 200 與正確發布商資料；帳戶列表仍顯示「找不到」，上次更新是 9 月 23 日。兩個訊號要分別記錄。
+> - mokaair.com GDPR 訊息已發布；首頁的付款個人資料與廣告設定都顯示完成。本輪未變更帳戶設定或提交複查。
+> - 最新證據、內容樣本與複審清單見 [`adsense-review-readiness.md`](adsense-review-readiness.md)。
 > - AdSense 以外的方案評估在 [`monetization-alternatives.md`](monetization-alternatives.md)。
 > - 第八節的 `adsense-auto-ads-overlay-setup` 要等重新通過審核才有意義。
+
+下文保留 **2026-09-13 的評估基準與後續決策紀錄**，例如 ads.txt 404、生活文章零篇、CMP 未設定、
+廣告關閉及流量／收入估計，不能當作今天的故障或營運數據。當時建議的流量門檻與索引等待時間
+也不是 Google 官方的申請或通過條件；本次處理以最新帳戶狀態及官方說明為準。
 
 2026-09-13。問題是「文章分享加入 Google 廣告的可能性」。本文以 **AdSense**（在自己的頁面放 Google
 展示廣告賺錢）為主，另附一節 **付費 Google Ads 導流**。這是評估，不是實作；後續工作在
