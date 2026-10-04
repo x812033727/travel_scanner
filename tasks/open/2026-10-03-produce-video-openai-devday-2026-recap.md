@@ -61,10 +61,17 @@ each announcement changes for a Taiwan viewer's plan, bill and settings rather t
       seven sentences cut at their punctuation, 12 shots added; none over 8 s now), `check-audio` (150 lines, none
       flagged after three passes and nine reworded lines), `review-push --gate audio` approved, `review-pull` recorded.
 - [x] `render`: every card fits (the 「還不能碰的」 card went from six bullets to five); thumbnail drawn.
-- [ ] `keyframes`: 65 of 74 shots pass the judge; stopped at the US$25 cap per video (US$24.93 spent). The owner raises
-      `max_usd_per_video`, then `keyframes` draws the last nine (seven not drawn yet, two with new prompts).
-- [ ] `review-push --gate storyboard`, `assemble`, `captions`, `qa`, `review-push --gate final`, `package`,
-      `review-push --gate publish`.
+- [x] `keyframes`: all 74 shots pass the judge (US$29.48; the owner raised the cap to US$35 on 2026-10-04);
+      `review-push --gate storyboard` approved, `review-pull` recorded.
+- [x] `assemble` (13:22, -14 LUFS), `captions` (zh-TW, 161 cues), `qa` 10 of 11: only `links` fails (seven
+      openai.com / help.openai.com / chatgpt.com links answer 403 to the checker, as they do to curl). The policy item
+      first scored the demonstration 0.40 and 0.44 (needs 0.6): the table card `uf-worked` and three lines carry the
+      brief's 實算二 as a calculation the viewer can follow (0.67 to 0.69 since). Three cards whose text was cut off
+      inside their boxes in the finished cut were shortened (card text only).
+- [x] `review-push --gate final` on 2026-10-04: submitted, **waiting for the owner on /admin/videos** (it cannot be
+      approved automatically while `links` fails).
+- [ ] After the owner approves: `review-pull`, `package`, `review-push --gate publish`; the owner uploads privately per
+      `UPLOAD.md`. Re-open the official pages named under "Expiring facts" on upload day.
 
 ## How to verify
 
@@ -120,4 +127,11 @@ node tools/video/cli.mjs status --slug openai-devday-2026-recap
   `_tools/judge/carry-over.mjs <video.json as it was> --write` keeps the entries that passed and whose prompt and camera
   did not change (it marks nothing as passed that the judge did not pass). Prompts were rewritten three times: by rule
   from the judge's feedback (about half passed), then by agents who opened the drawn takes and described what the model
-  draws cleanly (22 of 24 passed). Spent US$24.93 of the US$25 cap; the last nine shots need about US$2.
+  draws cleanly (22 of 24 passed). The last two shots failed twelve takes each and became different pictures of the
+  kind that passed in their chapter. US$29.48 in all for 259 images and 332 judge calls.
+- No languages are chosen yet: `<VIDEO_WORKDIR>/openai-devday-2026-recap/languages.json` says `{"locales": {},
+  "decided_at": null}` so `qa` and `captions` look at zh-TW only; the owner's choice on the video page replaces it.
+- The `table` and `steps` templates do not draw `data.note`, and text that overflows a step box or a compare column is
+  cut off without a layout error from `render`: look at frames from `final.mp4` (the last state of each such card)
+  before the final gate. `verify-3.md` row 23 was relabelled CHANGED: the QA facts item reads the first column of a
+  NOT FOUND row as a claim id.
