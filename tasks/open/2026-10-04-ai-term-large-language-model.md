@@ -26,7 +26,7 @@ The owner requested ongoing AI-series production and verified G-drive backup bef
 - [x] The current narration and completed video each contain at least eight minutes of substantive content; audio, storyboard, final, captions and upload-package checks pass without fabricated approvals.
 - [x] Backend delivery is read back with the actual media hashes and selected languages complete.
 - [x] Completed long-film media is archived to a new G-drive batch, with cloud synchronization and actual full restore integrity verified.
-- [ ] Resolve shared and conservative retention holds before removing any eligible, unused local media with a journal; current eligible/deleted files are zero.
+- [ ] Resolve shared and conservative retention holds before removing any eligible, unused original media with a journal; original eligible/deleted files remain zero.
 
 ## Steps
 
@@ -38,6 +38,7 @@ The owner requested ongoing AI-series production and verified G-drive backup bef
 - [x] Preflight existing TTS/media budgets and continue production within those limits.
 - [x] Complete media QA and backend delivery, then selected languages.
 - [x] Archive and verify new completed media before eligible local cleanup.
+- [x] Remove only the independently verified successful restore-test media copies, retaining all original media and the 46 nonmedia evidence files; independently verify the final state and G archive again.
 - [ ] Revisit cleanup only after the two unfinished shared Shorts and conservative retention holds are genuinely resolved.
 
 ## How to verify
@@ -51,6 +52,12 @@ The owner requested ongoing AI-series production and verified G-drive backup bef
 Continue the standard `youtube-video` gates with the existing paired local tool. Compare backend attachment SHA-256 against the current upload package. Use the private archive runbook/helper in `<home>/mokaair-work/ai-series-continuation-20261004`; a DriveFS cloud ID, correct size and MD5, no pending operations, ZIP integrity, source hashes, protected/shared dependencies and active-process checks are prerequisites for deletion.
 
 ## Notes
+
+- Oct5 04:15 final duplicate-copy cleanup VERIFIED: the specifically reviewed resume2 completed at 20:09:05.5413147Z, adding 976 removals. Three runs total 1,204 media copies / 2,410,649,949 bytes, with 2,408 unique ordered before/after journal rows. Independent final receipt `0dd7bf8c5991d686203936d72675de06515bc928be67b31d235a89e09adfeb7b` confirms every listed copy is absent, all 46 keep files / 696,119 bytes match full SHA-256, all 1,250 original WORK files remain unchanged, and all 15 G files match full hashes plus twice-stable DriveFS cloudID/MD5/size/operations=0. Original media deleted0/eligible0, shared unfinished Shorts2/images7 and voice/retention holds remain. Preserve every historical claim, READY, failure and journal; never rerun the completed executors. The earlier partial notes below are history, superseded by this verified final state.
+
+- Oct5 03:57 known duplicate-copy cumulative state: specifically reviewed resume1 removed172 additional media / 1,169,482,028 bytes, then held again on active/unreadable actor detection. Cumulative228 / 1,197,382,092 bytes,456 fsynced journal rows in two preserved runs; remaining976media+46keep. Original WORK deleted0. No cause is proven by the subsequent20-second/100-snapshot CIM observer (missing rows0). Resume2 is DRAFT pending actual dual-history/fullSHA checks and independent native code review; it adds safe PID/hash diagnostics and native exact-PID requery while still holding any current copy actor or unreadable live actor. Preserve all claims/READY/history and never blindly rerun prior stages.
+
+- Oct5 03:48 actual duplicate-restore-copy cleanup stopped safely: original WORK deleted0, but 56 files / 27,900,064 bytes from the independently verified successful validation copy were removed before an active/unreadable-process HOLD. Its 112 fsynced before/after journal rows, original claim and READY remain intact. The remaining 1,148 media copies and 46 keep files require a new independent partial-state check and specifically reviewed resume; never rerun the old READY or remove its claim. G archives and original shared Shorts/voice/conservative holds remain unchanged. This partial copy cleanup is separate from original-media eligibility.
 
 - 2026-10-04: Human authorization is ongoing video production and backup-then-delete of completed local media. It does not authorize YouTube publication, enabling the deliberately disabled uploader, increasing budgets, owner approvals, merge or deployment.
 - Thread heartbeat `ai-g` is ACTIVE every 30 minutes on chat `01a1066c-b865-7c03-b19e-b5fb32607794`; notify only for a new completed video, verified archive/cleanup, real failure or necessary owner decision.
