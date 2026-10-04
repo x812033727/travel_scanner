@@ -27,7 +27,7 @@ AI 潤飾（Hailuo AI Polish／Kling AI Prompter）：開／關
 
 光寫在每一鏡的 `prompt`，不寫進 `look.style`（試拍：倉庫火光漏進婚禮）。
 
-場型決定這場照哪一套節奏：對話場照 `drama-craft.md`（中位數 2.5–3.5 秒、臉至少四成）；打鬥場照布袋喵的量測（1 秒的動作拍、全景與畫面沒有人的鏡頭多、臉少，`docs/videos/drama-craft/reference-study-20261004-budaimiao.md`）；大場面是一道漸強的全景梯（踏地 → 法陣 → 光柱 → 天空 → 巨物 → 對手仰望 → 爆炸，1–3 秒一鏡）；尾聲 2–4 秒一鏡、放慢。`drama_craft_check.mjs` 還不分場型，打鬥場沒過 `size.face`、`size.wide`、`pace.median` 時，在回報裡逐場說明。配色（每人一套，能量一人一色）與錨點（一件服飾或武器，排定在哪幾鏡用插鏡回來）綁在 look 與 appearance，過了 `look` 關卡就改不了。
+場型決定這場照哪一套節奏：對話場照 `drama-craft.md`（中位數 2.5–3.5 秒、臉至少四成）；打鬥場照布袋喵的量測（1 秒的動作拍、全景與畫面沒有人的鏡頭多、臉少，`docs/videos/drama-craft/reference-study-20261004-budaimiao.md`）；大場面是一道漸強的全景梯（踏地 → 法陣 → 光柱 → 天空 → 巨物 → 爆炸，1–3 秒一鏡）；尾聲 2–4 秒一鏡、放慢。`drama_craft_check.mjs` 還不分場型，打鬥場沒過 `size.face`、`size.wide`、`pace.median` 時，在回報裡逐場說明。配色（每人一套，能量一人一色）與錨點（一件服飾或武器，排定在哪幾鏡用插鏡回來）綁在 look 與 appearance，過了 `look` 關卡就改不了。
 
 ## P3 鏡位表
 

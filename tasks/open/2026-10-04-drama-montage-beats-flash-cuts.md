@@ -27,10 +27,10 @@ scope:
 
 The owner pointed at 真一隻布袋喵 as the reference. Its battle videos cut very fast: across seven
 measured videos the battle stretches cut every 0.2-0.5 s, and the two videos a second agent
-cross-checked have a median shot of about 0.75-1.0 s (斬天之招, m2qhz2n9618: 225-246 shots in
-266.5 s after the verdicts, median 0.88-1.0 s). Hits are joined by a white or coloured flash of a
-few frames. (An early reading that the channel re-cuts one clip at lightning flashes was refuted:
-the five places that looked like it are lightning inside one shot.) Our drama format cannot
+cross-checked have a median shot of about 0.75-1.0 s (斬天之招, m2qhz2n9618: 227-250 shots in
+266.5 s after the verdicts, median 0.87-1.0 s). Hits are joined by a white or coloured flash of a
+few frames. (An early reading that the channel re-cuts one clip at lightning flashes has no support: none of
+the five places that looked like it was judged a real cut; most are lightning inside one shot.) Our drama format cannot
 express that: a silent beat's `action_seconds` is a whole number from 1 to 8
 (`tools/video/core/schema.mjs`), a shot with a line is at least about 1.2 s by the lint estimate, and
 `transition` is only `cut` or `dissolve` (`tools/video/core/drama.mjs`), so there is no flash cut.

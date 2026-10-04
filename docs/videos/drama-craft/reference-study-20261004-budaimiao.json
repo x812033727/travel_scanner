@@ -875,14 +875,14 @@
     "opening_30s": 33
    },
    "reconciled": {
-    "shots": "225-246",
-    "mean_seconds": "1.08-1.18",
-    "median_seconds": "0.88-1.0",
+    "shots": "227-250",
+    "mean_seconds": "1.07-1.17",
+    "median_seconds": "0.87-1.0",
     "p10_seconds": 0.37,
     "p90_seconds": "2.0-2.37",
     "opening_10s": 8,
     "opening_30s": "27-29",
-    "basis": "recomputed: the measurer's cuts minus the verifier's 40 false and 6 shared false cuts, plus the 7 cuts both missed; the low end drops the 21 undecided cuts, the high end keeps them"
+    "basis": "recomputed: the measurer's cuts minus the verifier's 40 false and 6 shared false cuts, plus the cuts both missed and the verifier's two real cuts (116.25, about 191.75); the low end drops the 21 undecided cuts, the high end keeps them; two missed cuts at 94-95 s sit within 0.1 s of listed ones, which moves the count by two"
    },
    "structure": {
     "opening": "First 10 s (11 probe shot starts, two of them false cuts from lightning or flare, so about 9 real shots): 0-1.38 a storm-wrapped summit EWS (slow aerial push) under the fan-work disclaimer. 1.38-1.63 a purple energy column acts as a flash transition. 1.63-3.5 the purple-blue lord is revealed full figure as his energy disperses (pull-out). 3.5-5.5 his MCU, smiling, with a name/title line. 5.5-6.75 cracked ground erupts with lava. 6.75-8 golden boots step in, so the hero enters feet first. 8-10 the golden warrior's MS against lightning, with a name-like line at 9.5-11. First 30 s (33 probe shot starts): 10-13.5 a rock outcrop with fire and lightning (slow push). 13.5-14.4 a dark boot steps onto rock. 14.4-15.1 the stand-off wide. 15.1-26.75 the first clash as a montage of roughly 25 sub-second shots (counted on a 0.25 s audit sheet): lord's fist, fire sword, fire swirl, white flash at 17.5, fist against fire at 17.75, dust column 18-19.1, golden boot 19.1, sleeve-on-fist clash insert 19.6, sword swings 20.75-24, the lord's energy orb 25.25-26. Then a fire pillar falls from the sky (26-26.75), a fortress push-in broken by lightning runs 26.75-29.4 with subtitle lines, and floating rocks hold 29.4-31.",
@@ -1370,6 +1370,13 @@
     [258.75,259.75,"CU","face",1,"active","unknown","none","cut","sheet mid frame; class from probe","silver-crowned dark warrior's face"],
     [259.75,262.38,"EWS","environment",0,"slow","fog clears onto a slow push-in (259.9 vs 262.23)","none","dissolve","paired frames","misty mountains revealed through fog"],
     [262.38,266.5,"unknown","title card",0,"frozen","locked text card; fades out (262.53 vs 266.35)","other","cut","paired frames","black end card, two-line creator note (thanks, asks for likes/follows), fades out"]
+   ],
+   "superseded": [
+    {
+     "where": "ai_handling[4] and craft_notes[7]",
+     "claim": "one clip re-cut at lightning flashes so it plays as several beats",
+     "verdict": "not supported: the verifier judged none of the five places a real cut; most are lightning inside one shot, and 27.25, 28 and 171.63 stay undecided"
+    }
    ]
   },
   {
@@ -1396,7 +1403,7 @@
     "opening_30s": 17
    },
    "reconciled": {
-    "shots": "about 140",
+    "shots": "about 145",
     "basis": "contact sheet by eye: about 25 merged cuts, 4-5 false"
    },
    "structure": {
@@ -2509,7 +2516,7 @@
    },
    "reconciled": {
     "shots": 152,
-    "basis": "probe 93 shots; 12 false cuts removed and about 55 missed cuts added by eye"
+    "basis": "probe 93 shots; 12 false cuts removed; reaching 152 shots takes about 71 missed cuts (the measurer's note says about 55, which does not add up)"
    },
    "structure": {
     "opening": "First 10 s (17 shots): 0-5.0 is a trailer-style cold open. Nine shots of 0.25-1.25 s preview every later act: the wind-vortex hero, the headband ECU, Luohou, the dance pavilion at 2.0, a red-lit climax figure at 3.25 and a fire beam at 4.0. All of it runs under a three-line synopsis card plus a small disclaimer. At 5.0-5.75 the frame cuts to black and the first narration caption appears on black at 5.5. At 5.75 it fades in, pushing into Xiaori Biao's eye. Then: 6.75 a low-angle wide with his boots in the foreground and Luohou in the distance; 7.5 Luohou backlit by the moon as afterimages leap in; 8.25 a grin CU; 8.5 a leap wide; 9.25 a 0.25 s over-shoulder contact; 9.5 an impact flash. First 30 s (48 shots): the fight montage runs to 23.0 (34 shots from 5.0, median 0.5 s). Then the pace drops on purpose: 23.0 barren plain (1.5 s), 24.5 lightning, 25.25 Luohou profile CU, 26.0 storm clouds (2.75 s), 28.75 misty lake. These carry the switch to the second storyline, whose pavilion establishing shot starts at 30.0.",

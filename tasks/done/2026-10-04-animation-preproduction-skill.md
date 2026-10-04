@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-animation-preproduction-skill
 title: animation-preproduction skill: plan, risk-grade and lock an animated episode before paying Hailuo, Kling or the server
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-animation-preproduction
 claimed_at: 2026-10-04T14:40:06Z
 created_at: 2026-10-04T14:40:03Z
-completed_at:
+completed_at: 2026-10-04T19:07:00Z
 branch: claude/hailuoai-kling-animation-optimize-208bc1
 depends_on: []
 scope:
@@ -94,8 +94,8 @@ npm run check:tasks
   `docs/videos/drama-craft/reference-study-20261004-budaimiao.md` and its per-shot JSON. The probe
   is unreliable on effect-heavy videos (it merges back-to-back cuts; a contact-sheet count counts
   flashes), so the study quotes ranges only: battle-video median about 0.75-1.0 s. B's numbers
-  were recomputed from the verifier's listed false and missed cuts (225-246 shots, median
-  0.88-1.0 s); A's false cuts are not listed one by one, so A stays an estimate. "Re-cut one clip
+  were recomputed from the verifier's listed false and missed cuts (227-250 shots, median
+  0.87-1.0 s); A's false cuts are not listed one by one, so A stays an estimate. "Re-cut one clip
   at lightning flashes" was refuted (lightning inside one shot).
 - What the skill took from it: scene types in P2 (dialogue scenes follow `drama-craft.md`,
   battle scenes the measured grammar), move chains in P3, colour and anchor decisions before the
@@ -109,3 +109,4 @@ npm run check:tasks
   `2026-10-04-minimax-h3-adapter-v2-shape`,
   `2026-10-04-drama-montage-beats-flash-cuts`, `2026-10-04-yt-shot-probe-merges-back-to`.
 - Merged main on 2026-10-05: the off-screen false positive had been fixed there meanwhile (#1215, #1223, `offScreenRoles`), so this branch took main's version and kept only `shot_reading.mjs --route` (the web routes buy the master to cover every cut, so `source.bought` is server-only). #1222 removed the stray `.claude/skills/youtube-video/references` copies, so that follow-up was dropped.
+- A second agent re-checked the study against the per-shot JSON (2026-10-05). Its 16 findings were acted on: subtitles do run over faces (with closed, bloody or cropped mouths; only B keeps them off), two feet-first examples were the other way round, the face-shot median is 0.5-1.5 s, the close-up share is 10-23%, the claim of one clip re-cut at flashes is flagged as superseded in the JSON, and F, C and the title pattern were corrected.
