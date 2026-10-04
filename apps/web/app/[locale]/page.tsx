@@ -58,8 +58,8 @@ export default async function Home() {
   // Seed the gate, rather than bypassing it, so SSR and client recovery both work.
   const body = (
       <main className="mx-auto min-h-screen max-w-6xl px-5 pb-20 md:px-8">
-        {/* On a phone the first screen is the request form: a short hero, the
-            workbench, and the three trust lines as one scrolling row underneath.
+        {/* Keep the planning form compact on phones: a short hero, the
+            workbench, and the three trust lines underneath.
             On desktop the lines keep their place beside the form. */}
         <section className="grid gap-6 pb-6 pt-5 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-8 lg:py-14">
           <div className="lg:pr-4 xl:pr-8">
@@ -209,11 +209,12 @@ export default async function Home() {
   return (
     <>
       <SiteHeader />
-      {/* Outside the gate: when discovery is on, everything inside it is still a skeleton in
-          the response body. Here the graph reaches a crawler in both states. */}
+      {/* Outside the gate: the graph reaches a crawler with either discovery state. */}
       <StructuredData data={[organization(), webSite(locale, hotspotsEnabled)]} />
-      <DiscoveryHomeGate initialEnabled={seeded} initialFeed={feed}>{body}</DiscoveryHomeGate>
+      {/* Keep the site context and article entrances ahead of the discovery feed in both
+          the server response and the client's later switch resolution. */}
       <HomeGuides blocks={guides} />
+      <DiscoveryHomeGate initialEnabled={seeded} initialFeed={feed}>{body}</DiscoveryHomeGate>
     </>
   );
 }

@@ -1,8 +1,11 @@
 import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
+import { destinationDecisions } from "@/lib/destination-decisions";
 import { destinationsCopy } from "@/lib/destinations-copy";
 import type { DestinationSummary, GuideEntry } from "@/lib/destinations.server";
+import { guideHref } from "@/lib/guides";
+import type { GuideListResult } from "@/lib/guides.server";
 
 /**
  * A city guide, rendered entirely on the server.
@@ -60,6 +63,7 @@ export function DestinationGuide({
   hotspotsEnabled,
   merchants,
   related,
+  guides,
 }: {
   locale: Locale;
   destination: DestinationSummary;
@@ -67,8 +71,10 @@ export function DestinationGuide({
   hotspotsEnabled: boolean;
   merchants: GuideEntry[] | null;
   related: DestinationSummary[];
+  guides: GuideListResult;
 }) {
   const copy = destinationsCopy(locale);
+  const decisions = destinationDecisions(locale, destination.id);
   const link = "font-semibold text-[var(--teal)] underline";
   // The original-script name is worth showing when it is not already the heading: it is what a
   // sign, a ticket machine or a taxi driver will use.
@@ -84,7 +90,40 @@ export function DestinationGuide({
       {destination.reason ? <p className="mt-5 max-w-2xl text-lg leading-8">{destination.reason}</p> : null}
       <Facts destination={destination} copy={copy} />
 
-      {destination.areas.length ? (
+      {decisions ? (
+        <section className="mt-10" aria-labelledby="stay-decisions-title">
+          <h2 id="stay-decisions-title" className="text-2xl font-bold tracking-tight">{decisions.title}</h2>
+          <p className="mt-3 leading-7 text-[var(--muted)]">{decisions.intro}</p>
+          <p className="mt-2 text-xs text-[var(--muted)]">
+            {decisions.checkedLabel}: <time dateTime={decisions.checkedOn}>{decisions.checkedOn}</time>
+          </p>
+          <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+            {decisions.areas.map((area) => (
+              <li key={area.id} className="rounded-2xl border border-[var(--line)] p-5">
+                <h3 className="text-lg font-bold">{area.name}</h3>
+                <dl className="mt-3 space-y-3 text-sm leading-6">
+                  {[
+                    { label: decisions.suitableLabel, value: area.suitable },
+                    { label: decisions.tradeoffLabel, value: area.tradeoff },
+                    { label: decisions.checkLabel, value: area.check },
+                  ].map((item) => (
+                    <div key={item.label}>
+                      <dt className="font-semibold">{item.label}</dt>
+                      <dd className="mt-1 text-[var(--muted)]">{item.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="mt-4 text-xs font-semibold">{decisions.sourceLabel}</p>
+                <ul className="mt-2 space-y-1 text-xs leading-5">
+                  {area.sources.map((source) => (
+                    <li key={source.url}><a className={link} href={source.url}>{source.label}</a></li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : destination.areas.length ? (
         <section className="mt-10">
           <h2 className="text-2xl font-bold tracking-tight">{copy.areasTitle}</h2>
           <ul className="mt-4 flex flex-wrap gap-2">
@@ -112,12 +151,20 @@ export function DestinationGuide({
         action={<Link className={link} href={`/foods?destination_id=${encodeURIComponent(destination.id)}`}>{copy.browseFood}</Link>}
       />
 
-      {/* The section publishes per locale, so a city may have articles in one language and
-          none in another. These are links into a filtered list rather than a rendered count:
-          the list answers honestly when it is empty, and this component stays synchronous --
-          the page test renders it without awaiting anything. */}
       <section className="mt-10">
         <h2 className="text-2xl font-bold tracking-tight">{copy.guidesTitle}</h2>
+        {guides.available && guides.articles.length ? (
+          <ul className="mt-4 grid gap-4 sm:grid-cols-3">
+            {guides.articles.map((article) => (
+              <li key={`${article.kind}/${article.slug}`} className="rounded-2xl border border-[var(--line)] p-4">
+                <h3 className="font-semibold leading-6">
+                  <Link className={link} href={guideHref(article.kind, article.slug)}>{article.title}</Link>
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{article.description}</p>
+              </li>
+            ))}
+          </ul>
+        ) : <p className="mt-3 leading-7 text-[var(--muted)]">{guides.available ? copy.emptyGuides : copy.unavailableGuides}</p>}
         <ul className="mt-4 space-y-2">
           <li><Link className={link} href={`/guides/intel?destination=${encodeURIComponent(destination.id)}`}>{copy.guidesIntel}</Link></li>
           <li><Link className={link} href={`/guides/howto?destination=${encodeURIComponent(destination.id)}`}>{copy.guidesHowto}</Link></li>

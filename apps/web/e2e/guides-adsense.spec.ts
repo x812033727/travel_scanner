@@ -65,6 +65,30 @@ const linkedArticle = {
 // What a video description links to: tools/video/core/metadata.mjs `articleUrl`.
 const campaign = "?utm_source=youtube&utm_medium=video&utm_campaign=tokyo-linked";
 
+const faqPath = "/zh-TW/guides/howto/tokyo-faq";
+const faqArticle = {
+  ...article,
+  slug: "tokyo-faq",
+  document: {
+    ...article.document,
+    title: "東京常見問題閱讀順序測試",
+    blocks: [
+      { type: "heading", text: "選擇交通", level: 2 }, paragraph("先核對機場與入住區域。"),
+      { type: "heading", text: "出發前的問答", level: 2 },
+      { type: "faq", items: [
+        { question: "機場到住宿怎麼確認？", answer: "先查官方交通路線，再核對住宿附近的車站出口。" },
+        { question: "需要先確定車站出口嗎？", answer: "核對住宿地址與適合拖行李的出口。" },
+      ] },
+      { type: "heading", text: "抵達以後", level: 2 }, paragraph("留意末班車與行李。"),
+      { type: "faq", items: [
+        { question: "行李可以提前寄放嗎？", answer: "直接向住宿業者確認可寄放的時段與條件。" },
+        { question: "晚到需要通知住宿嗎？", answer: "確認可入住的時間與晚到聯絡方式。" },
+      ] },
+    ],
+  },
+  related: [{ kind: "howto", slug: "tokyo-long", title: longArticle.document.title }],
+};
+
 type Fixture = { origin: string; enabled: boolean; cmp: boolean; adRequests: string[] };
 
 /**
@@ -104,6 +128,7 @@ const test = base.extend<{ site: Fixture }>({
       } else if (url.pathname === "/api/v1/guides/howto/tokyo-esim") result = article;
       else if (url.pathname === "/api/v1/guides/howto/tokyo-long") result = longArticle;
       else if (url.pathname === "/api/v1/guides/howto/tokyo-linked") result = linkedArticle;
+      else if (url.pathname === "/api/v1/guides/howto/tokyo-faq") result = faqArticle;
       else if (url.pathname.startsWith("/api/v1/guides/topics")) result = { items: [] };
       else if (url.pathname.startsWith("/api/v1/guides")) result = { articles: [], total: 0 };
       else if (url.pathname === "/api/v1/runtime/site-visibility") result = Object.fromEntries(siteFeatureKeys.map((key) => [`${key}_enabled`, true]));
@@ -153,6 +178,30 @@ const test = base.extend<{ site: Fixture }>({
       await new Promise<void>((resolve) => upstream.close(() => resolve()));
     }
   },
+});
+
+test("FAQ contents links reach the authored questions before related reading", async ({ page, site }) => {
+  site.enabled = false;
+  await page.goto(`${canonical}${faqPath}`);
+  const authored = page.locator("h2#section-2");
+  await expect(authored).toHaveText("出發前的問答");
+  await expect(page.locator("h2", { hasText: "出發前的問答" })).toHaveCount(1);
+  const faqLink = page.locator('a[href="#section-2"]');
+  await faqLink.click();
+  await expect(page).toHaveURL(/#section-2$/);
+  expect(await authored.evaluate((node) => node.nextElementSibling?.id)).toBe("article-faq");
+  const firstFaq = page.locator("#article-faq");
+  await firstFaq.getByText("機場到住宿怎麼確認？", { exact: true }).click();
+  await expect(firstFaq.getByText("先查官方交通路線，再核對住宿附近的車站出口。", { exact: true })).toBeVisible();
+  const secondFaq = page.locator("#article-faq-2");
+  await secondFaq.getByText("行李可以提前寄放嗎？", { exact: true }).click();
+  await expect(secondFaq.getByText("直接向住宿業者確認可寄放的時段與條件。", { exact: true })).toBeVisible();
+  const related = page.getByRole("link", { name: longArticle.document.title, exact: true });
+  expect(await related.evaluate((node) => {
+    const faq = document.getElementById("article-faq-2");
+    return Boolean(faq && (faq.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING));
+  })).toBe(true);
+  expect(await page.locator("main").evaluate((node) => node.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
 test("a short article carries one labelled slot with its box already reserved", async ({ page, site }) => {

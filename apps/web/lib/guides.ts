@@ -502,9 +502,10 @@ export function isExpired(validUntil: string | null, today: Date = new Date()): 
  * A partner link never stays inside `blocks`: the shared renderer would draw its URL as an
  * ordinary, unqualified link.
  */
-/** The summary and the FAQ are drawn in fixed places -- the answer under the description, the
- *  questions before the sources -- so the body is rendered without them. The API allows one
- *  of each; a document from an older draft that somehow carries two keeps the first. */
+/** The summary is drawn under the description. FAQ answers stay in their authored body
+ *  position, beside any heading that introduces them; the first FAQ is also returned for
+ *  the page's existing structured data. Older documents with several FAQ blocks keep them
+ *  all in the body rather than moving or losing questions. */
 export function splitArticleExtras(blocks: readonly GuideBlock[]): {
   summary: SummaryBlock | null;
   faq: FaqBlock | null;
@@ -515,8 +516,10 @@ export function splitArticleExtras(blocks: readonly GuideBlock[]): {
   const rest: GuideBlock[] = [];
   for (const block of blocks) {
     if (block.type === "summary" && !summary) summary = block;
-    else if (block.type === "faq" && !faq) faq = block;
-    else rest.push(block);
+    else {
+      if (block.type === "faq" && !faq) faq = block;
+      rest.push(block);
+    }
   }
   return { summary, faq, blocks: rest };
 }
