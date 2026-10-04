@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-sqlalchemy-2-1-upgrade
 title: SQLAlchemy 2.1 升級（mypy 的 Select 型別）
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-sqlalchemy-21
 claimed_at: 2026-10-04T15:54:35Z
 created_at: 2026-09-28T23:06:39Z
-completed_at:
+completed_at: 2026-10-04T17:37:24Z
 branch: claude/sqlalchemy-2-1
 depends_on: []
 scope:
@@ -41,15 +41,15 @@ SQLAlchemy 是整個 API 的 ORM，站主 2026-09-29 決定不把型別修正塞
 
 ## Definition of done
 
-- [ ] `apps/api` 用 SQLAlchemy 2.1.x，`uv run mypy app`、`uv run mypy tests`、`uv run pytest` 全過，完整 CI 綠。
-- [ ] 讀過 2.1 的 changelog／migration notes 的 breaking 段，對 repo `git grep` 用到的 API，結論寫在 Notes。
-- [ ] Dependabot 之後會照常提 sqlalchemy 的 minor 升級（撤銷 ignore：`@dependabot unignore sqlalchemy` 或在新的群組 PR 上處理）。
+- [x] `apps/api` 用 SQLAlchemy 2.1.x，`uv run mypy app`、`uv run mypy tests`、`uv run pytest` 全過，完整 CI 綠。（本機結果見 Notes 的「檢查」；PostgreSQL 整合測試只在 CI 跑，這張票隨 PR 結案，PR 要四個必要檢查都綠才會合併。）
+- [x] 讀過 2.1 的 changelog／migration notes 的 breaking 段，對 repo `git grep` 用到的 API，結論寫在 Notes。
+- [ ] Dependabot 之後會照常提 sqlalchemy 的 minor 升級（撤銷 ignore：`@dependabot unignore sqlalchemy` 或在新的群組 PR 上處理）。（留給站主，見 Notes 最後一段。）
 
 ## Steps
 
-- [ ] `uv add 'sqlalchemy>=2.1,<2.2'`（或放寬 specifier）＋`uv lock`。
-- [ ] 修 16 個 mypy 錯誤：回傳型別改成 2.1 的寫法；變數重用改成各自的名字，不要加 `cast` 壓過去。
-- [ ] 讀 breaking changes，跑全部檢查；有執行期行為差異就補測試。
+- [x] `uv add 'sqlalchemy>=2.1,<2.2'`（或放寬 specifier）＋`uv lock`。（改成 `>=2.1,<3`，理由見 Notes。）
+- [x] 修 16 個 mypy 錯誤：回傳型別改成 2.1 的寫法；變數重用改成各自的名字，不要加 `cast` 壓過去。
+- [x] 讀 breaking changes，跑全部檢查；有執行期行為差異就補測試。（兩個有差異的路徑已有 PostgreSQL 測試，沒有另外補，見 Notes。）
 
 ## How to verify
 
@@ -103,6 +103,15 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
 - `ForeignKey.target_fullname`、`relationship(secondary=...)` 不再 eval、單表繼承的 `with_polymorphic`、`@validates` 被子類覆寫、屬性名叫 `metadata`／`registry`：都 0 筆。不受影響。
 - import 的 SQLAlchemy 模組路徑（`sqlalchemy.sql.elements` 的 `ColumnElement`／`Null`、`sqlalchemy.sql.selectable.Subquery`、`sqlalchemy.orm.attributes.flag_modified`、`sqlalchemy.engine.reflection.Inspector`）：2.1.3 都還在，mypy 通過。不受影響。
 - 已知回歸（2.1.0 到 2.1.3，修正在還沒釋出的 2.1.4）：直接迭代 `Result` 或用 `.scalars()` 會形成循環參照，Result 與已緩衝的列要等循環 GC 才釋放。我們大量用這兩種寫法；影響是記憶體回收延後，連線仍在 session 關閉時歸還。2.1.4 是 patch 版，#958 的 ignore 只擋 minor，Dependabot 會照常提。
+
+### 檢查（Windows 本機，沒有 PostgreSQL／Redis，整合測試 skip）
+
+- `uv run ruff check .`：通過。
+- `uv run mypy app`：461 個檔沒有問題（改之前是 Why 列的 16 個錯誤）。`uv run mypy tests`：365 個檔沒有問題。
+- 完整 `PYTHONUTF8=1 uv run pytest -q -p no:cacheprovider`（2.1.3，`.tuples()` 修正之前）：6123 passed、442 skipped、1 failed，34 分 07 秒。唯一的失敗是已知只在 Windows 紅的 `test_video_anime_planning.py::test_prepare_checks_actual_directory[symlink]`（WinError 1314，沒有建立 symlink 的權限），#1217 已在 main 修好，rebase 之後這個分支也包含它。
+- 警告摘要 16 筆：1 筆 `Result.tuples()` 的 SADeprecationWarning（已修，見上）；`~` 作用在 bool 的 DeprecationWarning 來自 ortools 第一次編譯（`ortools/sat/python/cp_model.py`）；`app/admin/service.py:581` 的 AsyncMock 沒被 await。後兩個把同一個環境換回 2.0.54（`uv pip install sqlalchemy==2.0.54`，跑完再 `uv sync --frozen` 換回）重跑同樣的測試檔也一樣有，與升級無關。另外 `test_news_automation.py` 在那次滿載的完整執行裡記了 6 筆 aiosqlite 背景執行緒「Event loop is closed」的 PytestUnhandledThreadExceptionWarning（測試本身通過）；單獨重跑 `tests/test_m*.py`＋`tests/test_n*.py`（372 passed）在 2.1.3 下沒有再出現，判斷是負載下的時序，沒有再追。
+- `.tuples()` 修正之後：`test_affiliate_brand_channels.py`、`test_news_automation.py`、`test_usage_settings.py` 與兩個改到的 migration 測試檔 151 passed、13 skipped，沒有 SQLAlchemy 警告；ruff、`mypy app`、`mypy tests` 重跑通過。
+- rebase 到 `origin/main`（f5f3bd2be；之後 main 再進的 #1219 沒有動 `apps/api`）之後：`uv lock --check` 通過；ruff、`mypy app`（461 檔）、`mypy tests`（365 檔）通過；這段期間 main 新進的測試檔與改到的模組的測試（`test_guide_rich_blocks`、`test_guides_pack_ingest`、`test_jev_client`、`test_video_anime_planning`、`test_video_automation_judge`、`test_guides`、`test_saved_flow`、`test_affiliate_brand_channels`、`test_admin_operations`、`test_discovery_display_topics`、`test_hotspot_guides`、`test_food_coordinate_fill`）432 passed、93 skipped，只剩 ortools 那筆警告。
 
 ### 沒勾的 DoD 第三項
 
