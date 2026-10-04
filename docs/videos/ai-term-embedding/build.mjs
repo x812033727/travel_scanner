@@ -335,7 +335,7 @@ const chapters = [
           "prompt": "Extreme close-up, the workshop threshold on a wet morning. A hand rests below a closed metal latch without opening it; the fastened latch is centered. Overcast light falls in from the corridor."
         },
         "text": [
-          "其實，這份示意清單的第一名，原文卻明確寫著今天休館。"
+          "其實，示意清單的第一名，原文卻寫今天休館。"
         ],
         "claims": [
           "c1",
@@ -848,7 +848,7 @@ const chapters = [
         "text": [
           "形成表示，先讓查詢和文件能夠在相容的表示空間裡比較。",
           "比較這些數值表示，算出相似分數，還沒有直接生成完整回答。",
-          "怎麼使用候選，仍要看後面的原文和判斷步驟。"
+          "候選怎麼用，還要讀原文再判斷。"
         ],
         "claims": [
           "c2",

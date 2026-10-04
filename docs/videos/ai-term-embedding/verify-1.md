@@ -780,3 +780,11 @@ No unresolved claim; second fact round not required by the >3 factual-changes ru
 Lint0errors/1opening-chapter warning. The warning uses the whole131s chapter; source hook/promise is within20s estimated. Actual TTS, every generated image, subtitles, rendering, player, final/languages/publication/hash delivery and G-cloud backup/eligible cleanup remain required. This source-only review cannot approve those later gates.
 
 The toy does not test any model, ANN/database, negation or synonym capability. UNKNOWN stays UNKNOWN; MATCH means fictional fields only. The coordinate-control experiment is metadata-only and does not re-encode text. Primary documentation does not independently prove a product performance claim; no such claim appears.
+
+## 2026-10-05 配音節奏局部文字增補
+
+首版 source `487f33c8dccd93057470a6b8d2ab3f6eac465a826d9de8e2f2d720d3669efeeb` 的完整主張／實算查核保留。正常首輪音訊完成後，獨立實測發現 2tuf、3ivq 的 state 為 8.4／8.7 秒，合法 pause 最小值仍不足以達八秒，因此只縮短這兩句。
+
+目前 source SHA-256 是 `840826450c3da49f898729526ab09838ecef03012a2c98f2399dd8c2b97553a6`。獨立逐值比較確認只有 `/scenes/8/lines/0/text`、`/scenes/38/lines/2/text` 變更；156 個 ID、其餘 154 句、全部 pause、voice、claims、data、reveal 一致。第一句保留「其實，示意清單的第一名，原文卻寫今天休館。」；第二句為「候選怎麼用，還要讀原文再判斷。」。「示意」、「原文休館」、「候選需再判斷」的範圍與限制均完整保留，沒有新增事實、數字或模型實測主張。rewriteProblems 均空，只有文字／語義通過，未宣稱新聲音或台北語調已試聽通過。
+
+獨立最終差異收據 `embedding-final-two-line-delta-20261005-1820Z.json` SHA-256 為 `f8b0d9dafd367822aefad7ddf975a5cf89ded23da795b82a2277f29fecb68649`，存於私人運行收據目錄。154 條原 take 仍 current，119 個 request key 不變；正常續跑只需 2 個 synthesis body、估 36 計費字元。新聲音尚待合成、逐檔證據、實際 cadence／插畫占比、轉寫及音訊 gate；不能沿用首版 timeline 的通過狀態代替。原全文查核、舊字句／WAV／時間軸／旁白／cache 及兩個中間文字版本的收據均保留。
