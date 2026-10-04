@@ -1,6 +1,6 @@
 # 大型語言模型：文字包交接
 
-作者交接日：2026-10-04。完整文字稿、大綱與實際旁白已依現行流程查核及核准。兩輪實看發現的不忠實圖片已改為有據字卡，另修逐句揭項與 Shorts 的完整圖片呈現。67 張分鏡及原始警告已正常送後台，當前 review 為 pending；本機可看片正在渲染，成片、語言、交付與備份各自待驗。
+作者交接日：2026-10-04。完整文字稿、大綱與實際旁白已依現行流程查核及核准。兩輪實看發現的不忠實圖片已改為有據字卡，另修逐句揭項與 Shorts 的完整圖片呈現。67 張分鏡及原始警告已正常送後台，當前雜湊已核准並正常讀回；本機畫面渲染完成、可看片正在合成，成片、語言、交付與備份各自待驗。
 
 - `brief.md`：三個可比較大綱；選項 A 已由 `review-push --gate outline` 送審，`review-pull` 讀回自動核准。站主立場 4、6、7 依當日設定抄入。
 - `build.mjs`、`line-ids.txt`：本次作者的旁白、場景與素材來源。執行 `node docs/videos/ai-term-large-language-model/build.mjs` 只重建本資料夾的 `video.json` 與估算 `draft-metrics.json`；不買素材、不跑合成、不送審。後續若修 `video.json`，也要同步作者來源，避免重建退回舊稿。句子 id 來自影片 CLI，插句時新增，不能重編既有 id。
@@ -27,6 +27,8 @@
 
 最新23:10交接：長片 `2a9bfa4e99d17d1805891f70c56e78416101bc94255c330e96ee62555e14408a`，67shots；Shorts `b70535ce3c920a88c451cbc589ed63f9a9e16168a9c15d9806828fb8915a06a0`，全部20句未改。三鏡小樣終止exit1，新六圖USD0.081，帽圖仍多瓶／花園仍兩籃，原件和判決保留；最後兩景已改真實已領資料表與三欄核對卡。實測插圖50.1577%／body835.1秒／voice708.1秒／138states／8秒最長，沒有加停頓或降低門檻。正常0synthrefresh的新audio timeline `3b57a6f54b78cd5267c6a6b2898bd87e5650121a7da8dbceb78d81f03b6f7e02` 自動核准並exact讀回，138實際PCM／check未變。正常67圖整理0新生成、全部原判不變，累計USD2.268。
 
-當前67分鏡manifest `b008c55cf9bf913d010870c66ae5cfe06db0d823a34cf09bf9f52066bfe50c31` 已交付三張完整contact sheets並正常讀回review **pending**，仍需要站主在後台審查51圖的60條原警告。列表的「storyboard approved」進度標籤不能代替 pending review。未刪問題或代批准。Short1首束傘／三籃與Short2雙傘改為有完整SHA證據的contained assets，真實兩個isolated ffmpeg首格與標準字幕都已實看；原圖人物／束帶警告保留，完整Short媒體及播放仍待。
+當前67分鏡manifest `b008c55cf9bf913d010870c66ae5cfe06db0d823a34cf09bf9f52066bfe50c31` 已交付三張完整contact sheets。最初15:03:01Z讀回為 **pending**；後台於15:03:33.257946Z作出 **approved** 決定，15:23:41Z的GET核對同一雜湊，正常`review-pull --gate storyboard`於15:25:55.071Z記錄本機核准。51圖的60條原警告仍完整保留，沒有刪問題或代批准；實際review決定才是依據。Short1首束傘／三籃與Short2雙傘改為有完整SHA證據的contained assets，真實兩個isolated ffmpeg首格與標準字幕都已實看；原圖人物／束帶警告保留，完整Short媒體及播放仍待。
 
 本機fullfilm render及一次性的後續assemble/captions/QA/package只製作可看片待審包，收據 `llm-review-draft-*-2030` 与 `llm-review-draft-continuation-2030.json` 在私人RUN目錄。它不送final/publish、不上傳發布或清媒體；使用者取消／episode STOP／source改動會停下。後續heartbeat先核目前process與terminal收據，不能重開同slug。PR1207維持draft/no-auto-merge；Embedding下一集source另在draftPR1211、20項CI通過，未購素材。尚無完成交付＋已選語言的合格G清理項，全部媒體與shared assets保留。
+
+23:30續跑：正常render於15:17:48.512655Z結束exit0，71個正式卡片狀態及完整frames manifest已落地；正常assemble仍在執行，沒有重開同slug。後台語言欄仍為`locales:{}`、`locales_decided_at:null`，已逐欄真實同步本機mirror，保留null：只先做必要繁中基底，沒有宣稱站主已選「只出繁中」，沒有新增翻譯／配音。成片QA及正常final核准必須先於package；package若因缺final核准exit3，是正常關卡等待。兩支Shorts正常`from-episode --check`通過，但20句與長片沒有逐字相同的錄音，不假冒既有音訊或Windows聲音。所有成片與語言交付條件完成前，仍保留原媒體。
