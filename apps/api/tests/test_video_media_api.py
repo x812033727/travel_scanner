@@ -160,6 +160,7 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
     assert body["slides_auto_approve_storyboard"] is True
     assert (body["slides_music_track"], body["slides_sfx_set"]) == (None, None)
     assert body["store"]["writable"] and body["limits"]["max_reference_images"] == 4
+    assert body["limits"]["judge_checks"] == 1, "the tools ask yes/no only of a server that says so"
 
 
 @pytest.mark.asyncio
@@ -291,8 +292,13 @@ async def test_a_judge_call_spends_one_unit_and_gives_it_back_when_the_judge_fai
     ) as client:
         ok = await client.post("/api/v1/video/media/judge", json=body)
         failed = await client.post("/api/v1/video/media/judge", json={**body, "min_score": 9})
+        lower = await client.post("/api/v1/video/media/judge", json={**body, "min_score": 3})
     assert ok.status_code == 200 and ok.json()["passed"] and calls[0] == 7, (
         "the settings row's threshold by default"
     )
     assert failed.status_code == 502 and failed.json()["code"] == "video_media_judge_failed"
-    assert await meter.used(media["redis"], meter.JUDGE_CALLS) == 1
+    assert calls[1] == 9, "a call may raise the bar for itself"
+    assert lower.status_code == 200 and calls[2] == 7, (
+        "a call cannot lower the owner's threshold: the settings row is the floor"
+    )
+    assert await meter.used(media["redis"], meter.JUDGE_CALLS) == 2

@@ -38,6 +38,20 @@ number of fingers, a warped face, a character whose face, hair, clothing or buil
 the reference sheet, text or watermarks in the picture, or a cut inside a clip are serious
 faults. Score every rubric criterion; "problems" are short, concrete faults a director would fix,
 and "notes" is one or two sentences."""
+# Fault checks (JudgeCriterion.cost): the judge is asked whether one named fault is there, not
+# how good the media are. Asked for a score, the model gives "nothing wrong" a 7 and never goes
+# higher, whatever the request or this instruction says about the scale; asked for a grade or a
+# deduction it settles in the middle the same way (docs/videos/ILLUSTRATED.md §judge 的刻度與判定
+# 沿用, measured 2026-10-04). A yes/no question about one concrete fault it answers plainly, and
+# the scores are then computed here. One line, as it was measured.
+CHECK_INSTRUCTIONS = (
+    "You are the quality judge of an AI anime-drama pipeline. Each rubric criterion names one "
+    "fault. Look at the media for that fault and answer true when it is there and false when it "
+    "is not. Judge as the viewer meets it: the viewer sees the result for a few seconds and never "
+    'reads the prompt. Answer every rubric criterion; "problems" names, shortly and concretely, '
+    "each fault you answered true for and where it is, the most serious first, and nothing else; "
+    '"notes" is one or two sentences.'
+)
 
 
 class JudgeError(Exception):
@@ -82,7 +96,13 @@ def _parts(store: MediaStore, media: MediaSettings, payload: JudgeIn) -> list[di
 def request_body(
     model: str, store: MediaStore, media: MediaSettings, payload: JudgeIn
 ) -> dict[str, Any]:
-    rubric = "\n".join(f"- {c.key} (weight {c.weight:g}): {c.question}" for c in payload.rubric)
+    # A check's weight and cost are this module's arithmetic; the judge only sees the question.
+    rubric = "\n".join(
+        f"- {c.key}: {c.question}"
+        if payload.checks
+        else f"- {c.key} (weight {c.weight:g}): {c.question}"
+        for c in payload.rubric
+    )
     context = json.dumps(payload.context, ensure_ascii=False) if payload.context else "{}"
     lead = (
         f"Kind of review: {payload.kind}.\nRubric:\n{rubric}\nContext: {context}\n"
@@ -90,14 +110,25 @@ def request_body(
     )
     parts = [{"text": lead}, *_parts(store, media, payload)]
     keys = [criterion.key for criterion in payload.rubric]
-    scores = {
+    answers = {
         "type": "object",
-        "properties": {key: {"type": "number"} for key in keys},
+        "properties": {key: {"type": "boolean" if payload.checks else "number"} for key in keys},
         "required": keys,
     }
-    schema = {**SCHEMA, "properties": {**SCHEMA["properties"], "scores": scores}}
+    answer = "faults" if payload.checks else "scores"
+    schema = {
+        "type": "object",
+        "properties": {
+            answer: answers,
+            "problems": SCHEMA["properties"]["problems"],
+            "notes": SCHEMA["properties"]["notes"],
+        },
+        "required": [answer, "problems", "notes"],
+    }
     return {
-        "system_instruction": {"parts": [{"text": INSTRUCTIONS}]},
+        "system_instruction": {
+            "parts": [{"text": CHECK_INSTRUCTIONS if payload.checks else INSTRUCTIONS}]
+        },
         "contents": [{"role": "user", "parts": parts}],
         "generationConfig": {
             "temperature": 0,
@@ -108,19 +139,27 @@ def request_body(
 
 
 def verdict(text: str, payload: JudgeIn, min_score: int, model: str) -> JudgeOut:
-    """The model's JSON as a verdict: scores clamped to 0-10, the overall recomputed from them."""
+    """The model's JSON as a verdict: scores clamped to 0-10, the overall recomputed from them.
+
+    For fault checks the answer is true or false per criterion and the score is computed: 10
+    without the fault, 10 less the criterion's cost with it.
+    """
     try:
         data = json.loads(text)
     except json.JSONDecodeError as error:
         raise JudgeError(
             502, "video_media_judge_failed", f"judge 回的不是 JSON：{error}"
         ) from error
-    raw = data.get("scores") if isinstance(data, dict) else None
+    raw = data.get("faults" if payload.checks else "scores") if isinstance(data, dict) else None
     if not isinstance(raw, dict):
         raise JudgeError(502, "video_media_judge_failed", "judge 沒有給分數")
     scores: dict[str, float] = {}
     for criterion in payload.rubric:
         value = raw.get(criterion.key)
+        if criterion.cost is not None:
+            # Anything but a plain false counts as the fault: no check passes unanswered.
+            scores[criterion.key] = 10.0 if value is False else round(10.0 - criterion.cost, 2)
+            continue
         number = (
             float(value) if isinstance(value, int | float) and not isinstance(value, bool) else 0.0
         )

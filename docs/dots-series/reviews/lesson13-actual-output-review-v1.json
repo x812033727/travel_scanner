@@ -1,0 +1,731 @@
+{
+  "reviewer": "dots_lessons_foundation",
+  "reviewed_at": "2026-10-04T00:31:17.923500+08:00",
+  "scope": "independent numeric and SVG geometry review of supplied downloaded dots v1 HTML against authoritative synthetic CSV",
+  "provenance": "root supplied report-v1.html as an actual dots download; this reviewer verifies the file contents and hashes, not the browser download chain",
+  "source": {
+    "path": "examples/13/sales-v1.csv",
+    "bytes": 366,
+    "sha256": "73482e0dcc2f911ae21f68243b5cc5a41b216dfd5fdb11047dea9ff6ca870106"
+  },
+  "artifact": {
+    "path": "evidence/13/report-v1.html",
+    "bytes": 13572,
+    "sha256": "f9506ab6e74138008b02fb8afcd722a8561311ff0bff832a38b757e308848998"
+  },
+  "numeric_pass": true,
+  "checks": [
+    {
+      "name": "exactly_four_tables",
+      "pass": true,
+      "details": {
+        "actual": 4
+      }
+    },
+    {
+      "name": "source_columns_and_missing_values",
+      "pass": true,
+      "details": {
+        "source_columns": [
+          "order_id",
+          "date",
+          "channel",
+          "product",
+          "units",
+          "unit_price",
+          "discount",
+          "refund"
+        ]
+      }
+    },
+    {
+      "name": "detail_headers",
+      "pass": true
+    },
+    {
+      "name": "detail_row_count",
+      "pass": true,
+      "details": {
+        "actual": 8,
+        "expected": 8
+      }
+    },
+    {
+      "name": "detail_O001",
+      "pass": true,
+      "details": {
+        "computed": {
+          "order_id": "O001",
+          "date": "2026-09-01",
+          "channel": "web",
+          "product": "mug",
+          "units": 2,
+          "unit_price": 300,
+          "discount": 0,
+          "refund": 0,
+          "gross": 600,
+          "net": 600
+        },
+        "observed": {
+          "order_id": "O001",
+          "date": "2026-09-01",
+          "channel": "web",
+          "product": "mug",
+          "units": 2,
+          "unit_price": 300,
+          "discount": 0,
+          "refund": 0,
+          "gross": 600,
+          "net": 600
+        }
+      }
+    },
+    {
+      "name": "detail_O002",
+      "pass": true,
+      "details": {
+        "computed": {
+          "order_id": "O002",
+          "date": "2026-09-02",
+          "channel": "store",
+          "product": "notebook",
+          "units": 3,
+          "unit_price": 120,
+          "discount": 60,
+          "refund": 0,
+          "gross": 360,
+          "net": 300
+        },
+        "observed": {
+          "order_id": "O002",
+          "date": "2026-09-02",
+          "channel": "store",
+          "product": "notebook",
+          "units": 3,
+          "unit_price": 120,
+          "discount": 60,
+          "refund": 0,
+          "gross": 360,
+          "net": 300
+        }
+      }
+    },
+    {
+      "name": "detail_O003",
+      "pass": true,
+      "details": {
+        "computed": {
+          "order_id": "O003",
+          "date": "2026-09-03",
+          "channel": "web",
+          "product": "tote",
+          "units": 1,
+          "unit_price": 450,
+          "discount": 0,
+          "refund": 0,
+          "gross": 450,
+          "net": 450
+        },
+        "observed": {
+          "order_id": "O003",
+          "date": "2026-09-03",
+          "channel": "web",
+          "product": "tote",
+          "units": 1,
+          "unit_price": 450,
+          "discount": 0,
+          "refund": 0,
+          "gross": 450,
+          "net": 450
+        }
+      }
+    },
+    {
+      "name": "detail_O004",
+      "pass": true,
+      "details": {
+        "computed": {
+          "order_id": "O004",
+          "date": "2026-09-04",
+          "channel": "store",
+          "product": "mug",
+          "units": 1,
+          "unit_price": 300,
+          "discount": 30,
+          "refund": 0,
+          "gross": 300,
+          "net": 270
+        },
+        "observed": {
+          "order_id": "O004",
+          "date": "2026-09-04",
+          "channel": "store",
+          "product": "mug",
+          "units": 1,
+          "unit_price": 300,
+          "discount": 30,
+          "refund": 0,
+          "gross": 300,
+          "net": 270
+        }
+      }
+    },
+    {
+      "name": "detail_O005",
+      "pass": true,
+      "details": {
+        "computed": {
+          "order_id": "O005",
+          "date": "2026-09-05",
+          "channel": "web",
+          "product": "notebook",
+          "units": 4,
+          "unit_price": 120,
+          "discount": 0,
+          "refund": 0,
+          "gross": 480,
+          "net": 480
+        },
+        "observed": {
+          "order_id": "O005",
+          "date": "2026-09-05",
+          "channel": "web",
+          "product": "notebook",
+          "units": 4,
+          "unit_price": 120,
+          "discount": 0,
+          "refund": 0,
+          "gross": 480,
+          "net": 480
+        }
+      }
+    },
+    {
+      "name": "detail_O006",
+      "pass": true,
+      "details": {
+        "computed": {
+          "order_id": "O006",
+          "date": "2026-09-06",
+          "channel": "store",
+          "product": "tote",
+          "units": 2,
+          "unit_price": 450,
+          "discount": 100,
+          "refund": 0,
+          "gross": 900,
+          "net": 800
+        },
+        "observed": {
+          "order_id": "O006",
+          "date": "2026-09-06",
+          "channel": "store",
+          "product": "tote",
+          "units": 2,
+          "unit_price": 450,
+          "discount": 100,
+          "refund": 0,
+          "gross": 900,
+          "net": 800
+        }
+      }
+    },
+    {
+      "name": "detail_O007",
+      "pass": true,
+      "details": {
+        "computed": {
+          "order_id": "O007",
+          "date": "2026-09-07",
+          "channel": "web",
+          "product": "mug",
+          "units": 1,
+          "unit_price": 300,
+          "discount": 0,
+          "refund": 300,
+          "gross": 300,
+          "net": 0
+        },
+        "observed": {
+          "order_id": "O007",
+          "date": "2026-09-07",
+          "channel": "web",
+          "product": "mug",
+          "units": 1,
+          "unit_price": 300,
+          "discount": 0,
+          "refund": 300,
+          "gross": 300,
+          "net": 0
+        }
+      }
+    },
+    {
+      "name": "detail_O008",
+      "pass": true,
+      "details": {
+        "computed": {
+          "order_id": "O008",
+          "date": "2026-09-08",
+          "channel": "store",
+          "product": "notebook",
+          "units": 2,
+          "unit_price": 120,
+          "discount": 0,
+          "refund": 0,
+          "gross": 240,
+          "net": 240
+        },
+        "observed": {
+          "order_id": "O008",
+          "date": "2026-09-08",
+          "channel": "store",
+          "product": "notebook",
+          "units": 2,
+          "unit_price": 120,
+          "discount": 0,
+          "refund": 0,
+          "gross": 240,
+          "net": 240
+        }
+      }
+    },
+    {
+      "name": "channel_table_headers",
+      "pass": true
+    },
+    {
+      "name": "channel_table_labels",
+      "pass": true
+    },
+    {
+      "name": "channel_group_store",
+      "pass": true,
+      "details": {
+        "computed": {
+          "orders": 4,
+          "units": 8,
+          "gross": 1800,
+          "discount": 190,
+          "refund": 0,
+          "net": 1610
+        },
+        "observed": {
+          "orders": 4,
+          "units": 8,
+          "gross": 1800,
+          "discount": 190,
+          "refund": 0,
+          "net": 1610
+        }
+      }
+    },
+    {
+      "name": "channel_group_web",
+      "pass": true,
+      "details": {
+        "computed": {
+          "orders": 4,
+          "units": 8,
+          "gross": 1830,
+          "discount": 0,
+          "refund": 300,
+          "net": 1530
+        },
+        "observed": {
+          "orders": 4,
+          "units": 8,
+          "gross": 1830,
+          "discount": 0,
+          "refund": 300,
+          "net": 1530
+        }
+      }
+    },
+    {
+      "name": "channel_group_合計",
+      "pass": true,
+      "details": {
+        "computed": {
+          "orders": 8,
+          "units": 16,
+          "gross": 3630,
+          "discount": 190,
+          "refund": 300,
+          "net": 3140
+        },
+        "observed": {
+          "orders": 8,
+          "units": 16,
+          "gross": 3630,
+          "discount": 190,
+          "refund": 300,
+          "net": 3140
+        }
+      }
+    },
+    {
+      "name": "product_table_headers",
+      "pass": true
+    },
+    {
+      "name": "product_table_labels",
+      "pass": true
+    },
+    {
+      "name": "product_group_tote",
+      "pass": true,
+      "details": {
+        "computed": {
+          "orders": 2,
+          "units": 3,
+          "gross": 1350,
+          "discount": 100,
+          "refund": 0,
+          "net": 1250
+        },
+        "observed": {
+          "orders": 2,
+          "units": 3,
+          "gross": 1350,
+          "discount": 100,
+          "refund": 0,
+          "net": 1250
+        }
+      }
+    },
+    {
+      "name": "product_group_notebook",
+      "pass": true,
+      "details": {
+        "computed": {
+          "orders": 3,
+          "units": 9,
+          "gross": 1080,
+          "discount": 60,
+          "refund": 0,
+          "net": 1020
+        },
+        "observed": {
+          "orders": 3,
+          "units": 9,
+          "gross": 1080,
+          "discount": 60,
+          "refund": 0,
+          "net": 1020
+        }
+      }
+    },
+    {
+      "name": "product_group_mug",
+      "pass": true,
+      "details": {
+        "computed": {
+          "orders": 3,
+          "units": 4,
+          "gross": 1200,
+          "discount": 30,
+          "refund": 300,
+          "net": 870
+        },
+        "observed": {
+          "orders": 3,
+          "units": 4,
+          "gross": 1200,
+          "discount": 30,
+          "refund": 300,
+          "net": 870
+        }
+      }
+    },
+    {
+      "name": "product_group_合計",
+      "pass": true,
+      "details": {
+        "computed": {
+          "orders": 8,
+          "units": 16,
+          "gross": 3630,
+          "discount": 190,
+          "refund": 300,
+          "net": 3140
+        },
+        "observed": {
+          "orders": 8,
+          "units": 16,
+          "gross": 3630,
+          "discount": 190,
+          "refund": 300,
+          "net": 3140
+        }
+      }
+    },
+    {
+      "name": "all_summary_kpis",
+      "pass": true,
+      "details": {
+        "computed": {
+          "銷售毛額": 3630,
+          "折扣": 190,
+          "退款": 300,
+          "銷售淨額": 3140
+        },
+        "observed": {
+          "銷售毛額": 3630,
+          "折扣": 190,
+          "退款": 300,
+          "銷售淨額": 3140
+        }
+      }
+    },
+    {
+      "name": "date_range",
+      "pass": true
+    },
+    {
+      "name": "source_count_and_types",
+      "pass": true
+    },
+    {
+      "name": "channel_percentages",
+      "pass": true
+    },
+    {
+      "name": "channel_difference",
+      "pass": true
+    },
+    {
+      "name": "formula_and_scope",
+      "pass": true
+    },
+    {
+      "name": "two_svg_charts",
+      "pass": true
+    },
+    {
+      "name": "channel_axis_values",
+      "pass": true,
+      "details": {
+        "labels": [
+          0,
+          300,
+          600,
+          900,
+          1200,
+          1500,
+          1800
+        ]
+      }
+    },
+    {
+      "name": "channel_axis_linear_positions",
+      "pass": true
+    },
+    {
+      "name": "channel_grid_positions",
+      "pass": true
+    },
+    {
+      "name": "channel_bar_count",
+      "pass": true
+    },
+    {
+      "name": "channel_bar_store",
+      "pass": true,
+      "details": {
+        "value": 1610,
+        "expected_width": 608.2222222222222,
+        "actual_width": 608.2222222222223
+      }
+    },
+    {
+      "name": "channel_labels_store",
+      "pass": true
+    },
+    {
+      "name": "channel_bar_web",
+      "pass": true,
+      "details": {
+        "value": 1530,
+        "expected_width": 578.0,
+        "actual_width": 578.0
+      }
+    },
+    {
+      "name": "channel_labels_web",
+      "pass": true
+    },
+    {
+      "name": "channel_chart_units",
+      "pass": true
+    },
+    {
+      "name": "product_axis_values",
+      "pass": true,
+      "details": {
+        "labels": [
+          0,
+          300,
+          600,
+          900,
+          1200,
+          1500,
+          1800
+        ]
+      }
+    },
+    {
+      "name": "product_axis_linear_positions",
+      "pass": true
+    },
+    {
+      "name": "product_grid_positions",
+      "pass": true
+    },
+    {
+      "name": "product_bar_count",
+      "pass": true
+    },
+    {
+      "name": "product_bar_tote",
+      "pass": true,
+      "details": {
+        "value": 1250,
+        "expected_width": 472.22222222222223,
+        "actual_width": 472.22222222222223
+      }
+    },
+    {
+      "name": "product_labels_tote",
+      "pass": true
+    },
+    {
+      "name": "product_bar_notebook",
+      "pass": true,
+      "details": {
+        "value": 1020,
+        "expected_width": 385.3333333333333,
+        "actual_width": 385.3333333333333
+      }
+    },
+    {
+      "name": "product_labels_notebook",
+      "pass": true
+    },
+    {
+      "name": "product_bar_mug",
+      "pass": true,
+      "details": {
+        "value": 870,
+        "expected_width": 328.6666666666667,
+        "actual_width": 328.6666666666667
+      }
+    },
+    {
+      "name": "product_labels_mug",
+      "pass": true
+    },
+    {
+      "name": "product_chart_units",
+      "pass": true
+    },
+    {
+      "name": "source_sha256",
+      "pass": true,
+      "details": {
+        "stated": "73482e0dcc2f911ae21f68243b5cc5a41b216dfd5fdb11047dea9ff6ca870106",
+        "independently_computed": "73482e0dcc2f911ae21f68243b5cc5a41b216dfd5fdb11047dea9ff6ca870106"
+      }
+    },
+    {
+      "name": "source_byte_length",
+      "pass": true,
+      "details": {
+        "bytes": 366
+      }
+    }
+  ],
+  "independent_totals": {
+    "orders": 8,
+    "units": 16,
+    "gross": 3630,
+    "discount": 190,
+    "refund": 300,
+    "net": 3140
+  },
+  "svg_geometry": [
+    {
+      "group": "channel",
+      "axis_min": 0,
+      "axis_max": 1800,
+      "axis_ticks": [
+        0,
+        300,
+        600,
+        900,
+        1200,
+        1500,
+        1800
+      ],
+      "bars": [
+        {
+          "category": "store",
+          "value": 1610,
+          "width": 608.2222222222223,
+          "expected_width": 608.2222222222222
+        },
+        {
+          "category": "web",
+          "value": 1530,
+          "width": 578.0,
+          "expected_width": 578.0
+        }
+      ]
+    },
+    {
+      "group": "product",
+      "axis_min": 0,
+      "axis_max": 1800,
+      "axis_ticks": [
+        0,
+        300,
+        600,
+        900,
+        1200,
+        1500,
+        1800
+      ],
+      "bars": [
+        {
+          "category": "tote",
+          "value": 1250,
+          "width": 472.22222222222223,
+          "expected_width": 472.22222222222223
+        },
+        {
+          "category": "notebook",
+          "value": 1020,
+          "width": 385.3333333333333,
+          "expected_width": 385.3333333333333
+        },
+        {
+          "category": "mug",
+          "value": 870,
+          "width": 328.6666666666667,
+          "expected_width": 328.6666666666667
+        }
+      ]
+    }
+  ],
+  "visual": {
+    "status": "not_reviewed",
+    "pass": null,
+    "details": "No browser rendering, screenshot, mobile readability, font, masking, audio or video review was performed."
+  },
+  "downloaded_calculated_csv_checked": false,
+  "v2_checked": false,
+  "case_complete": false,
+  "masking_approved": false,
+  "media_approved": false,
+  "published": false
+}

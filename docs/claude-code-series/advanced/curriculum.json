@@ -98,7 +98,8 @@
         69,
         70,
         71,
-        72
+        72,
+        97
       ]
     },
     {
@@ -2181,6 +2182,65 @@
         "claude-code-agent-sdk-stateful-runner",
         "claude-code-workflow-evaluation-cost"
       ]
+    },
+    {
+      "number": 97,
+      "slug": "claude-code-first-mod",
+      "title": "建立第一個 mod：在 Claude Code 行程內數工具呼叫",
+      "outcome": "寫一個三檔案的 mod，用驗證器與測試確認它掛上的事件",
+      "prerequisite_numbers": [
+        45,
+        41,
+        72
+      ],
+      "related_numbers": [
+        73,
+        71,
+        78
+      ],
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "mod",
+        "mods",
+        "hooks module",
+        "plugin validate",
+        "plugin test",
+        "事件函式"
+      ],
+      "deliverable": "一個能載入的 first-mod（plugin.json、hooks.json、register.js）、一個通過的 claude plugin test 測試檔，與驗證器列出的 hooks／calls 兩行紀錄",
+      "steps": [
+        "建立三個檔案並讀懂 register(on) 的三個引數",
+        "用 --plugin-dir 載入、觀察 spinner 與 /tally",
+        "改一行字觀察熱重載",
+        "用 claude plugin validate 與 claude plugin test 留下證據"
+      ],
+      "acceptance": "validate 的 hooks: 行列出四個事件、calls: 行列出兩個方法；plugin test 一個測試通過；熱重載後 spinner 文字改變有紀錄",
+      "failure_lab": "把事件名拼成 tool.calls，驗證器報「is not an event」；把 $.ui 指派給變數，驗證器報「is used as a value」",
+      "group": "L",
+      "status": "authored-local-preview",
+      "level": "advanced",
+      "reading_minutes": 20,
+      "practice_minutes": 40,
+      "lab": "skill-kit",
+      "source_ids": [
+        "mods-overview",
+        "mods-create",
+        "mods-test",
+        "mods-reference"
+      ],
+      "prerequisites": [
+        "claude-code-plugins-guide",
+        "claude-code-hooks-getting-started",
+        "claude-code-plugin-team-distribution"
+      ],
+      "related": [
+        "claude-code-hook-event-test-lab",
+        "claude-code-skill-regression-testing",
+        "claude-code-hook-portability-recovery"
+      ]
     }
   ],
   "sources": [
@@ -2318,6 +2378,42 @@
       "checked_at": "2026-09-14",
       "verification": "official_document_review",
       "live_execution": false
+    },
+    {
+      "id": "mods-overview",
+      "title": "Mods overview",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "use": "mod 的定義、能做什麼、與設定檔 Hook／Skill／MCP 的比較、內建 mods",
+      "checked_at": "2026-10-04",
+      "verification": "official_document_review",
+      "live_execution": true
+    },
+    {
+      "id": "mods-create",
+      "title": "Create a mod",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "use": "first-mod 三個檔案、--plugin-dir、熱重載、claude plugin validate、型別檔",
+      "checked_at": "2026-10-04",
+      "verification": "official_document_review",
+      "live_execution": true
+    },
+    {
+      "id": "mods-test",
+      "title": "Test a mod",
+      "url": "https://code.claude.com/docs/en/plugins/mods/test",
+      "use": "claude plugin test、stub、$ 與 on",
+      "checked_at": "2026-10-04",
+      "verification": "official_document_review",
+      "live_execution": true
+    },
+    {
+      "id": "mods-reference",
+      "title": "Mods reference",
+      "url": "https://code.claude.com/docs/en/plugins/mods/reference",
+      "use": "檔案表、on 的三個引數、事件與 mods API 方法、指令表",
+      "checked_at": "2026-10-04",
+      "verification": "official_document_review",
+      "live_execution": true
     }
   ]
 }

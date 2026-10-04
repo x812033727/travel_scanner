@@ -820,6 +820,49 @@ def test_html_listing_filters_by_query_string_and_every_format_by_title_keyword(
     assert [row.url for row in kept] == ["https://example.com/1"]
 
 
+def _claude_blog_card(slug: str, title: str, date: str) -> str:
+    # One card of claude.com/blog as Webflow renders it (2026-10-04): the visible date and
+    # title are plain divs, the date sits again in a hidden fs-list block, and the card
+    # carries three anchors to the post, two of them with only a screen-reader span and
+    # one with no text at all.
+    return (
+        '<div role="listitem" class="blog_cms_item w-dyn-item"><div class="card_blog_wrap">'
+        f'<div class="card_blog_content"><div class="u-text-style-caption">{date}</div>'
+        f'<div class="card_blog_title u-text-style-h6">{title}</div></div>'
+        f'<div class="u-display-none"><div fs-list-field="heading">{title}</div>'
+        f'<div fs-list-fieldtype="date" fs-list-field="date">{date}</div></div>'
+        f'<a data-cta="Blog page" href="/blog/{slug}" class="clickable_link w-inline-block">'
+        f'<span class="clickable_text u-sr-only">{title}</span></a>'
+        '<div class="w-condition-invisible"><a target="_blank" href="#" class="clickable_link">'
+        f'<span class="clickable_text u-sr-only">{title}</span></a></div>'
+        f'<a aria-hidden="true" fs-list-element="item-link" href="/blog/{slug}"></a>'
+        "</div></div>"
+    )
+
+
+def test_claude_blog_listing_yields_one_undated_entry_per_card() -> None:
+    # The hourly scanner missed "Customize Claude Code with mods" (2026-10-01) because the
+    # source had not been loaded on the host, not because the listing is unreadable: this
+    # pins what the shipped config reads from the page, so a markup change is caught here
+    # and not as a silent empty scan. The cards carry no <time>, so the entries are
+    # undated and the first scan records them as seen (scanner.BASELINE); a post the
+    # listing did not show before is read as new on the scans after that.
+    listing = (
+        '<html><body><nav><a href="/blog">Blog</a><a href="/ja/blog">日本語ブログ</a>'
+        '<a href="/pricing">Pricing overview and plans</a></nav>'
+        '<div role="list" class="w-dyn-items">'
+        + _claude_blog_card("claude-code-mods", "Customize Claude Code with mods", "Oct 1, 2026")
+        + _claude_blog_card("build-plugins-for-claude", "Build plugins for Claude", "Sep 25, 2026")
+        + "</div></body></html>"
+    ).encode()
+    news = parse_entries(listing, "html", "https://claude.com/blog", _source_config("Claude blog"))
+    assert [(row.title, row.url) for row in news] == [
+        ("Customize Claude Code with mods", "https://claude.com/blog/claude-code-mods"),
+        ("Build plugins for Claude", "https://claude.com/blog/build-plugins-for-claude"),
+    ]
+    assert all(row.published_at is None for row in news)
+
+
 def test_news_tls_context_still_verifies_but_drops_python_313_strict_mode() -> None:
     import ssl
 

@@ -1,0 +1,2877 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/dots_lessons_foundation",
+  "checked_at": "2026-10-03T18:44:22+00:00",
+  "local_review_date": "2026-10-04",
+  "status": "pass",
+  "branch": "codex/dots-complete-course",
+  "head_at_review": "0ad9a64d7e771c4874f6cba85873b12646747834",
+  "reviewed_files": [
+    {
+      "path": "tools/dots-series/build.py",
+      "sha256": "931eee29a7b554eeb671cb18c0f47b0db5f5af1357f73b958aa916aa8b3fd629"
+    },
+    {
+      "path": "tools/dots-series/authoring_kit.py",
+      "sha256": "561e459e57bde4b9bbfa4ada2724a0b0890cb4eea9670eef495fc26c574fb9d1"
+    },
+    {
+      "path": "tools/dots-series/files.py",
+      "sha256": "ca4a371f05f1938d6eff24b499b091f35744457c48a47853aa82dc0de4647c66"
+    },
+    {
+      "path": "tools/dots-series/package.py",
+      "sha256": "7de2f41151bc07ab9ff49ca14b95b86bc94f83c5f92078a8a11001be4866bf82"
+    },
+    {
+      "path": "tools/dots-series/readiness.py",
+      "sha256": "43da762c7dc1a7568d14804e1760e90875c538dc41b0379ca44798bafbef9b0c"
+    },
+    {
+      "path": "tools/dots-series/test_pipeline.py",
+      "sha256": "46e1fb9af68cc5f3d28822e1ed6eebce65629aa310ddc33aa5481a5e8a235104"
+    },
+    {
+      "path": "apps/api/app/guides/pack_ingest.py",
+      "sha256": "63dd3867fe23d0145c1888b0c47984b3a95b5f8667b37c1bb385295bce6216aa"
+    },
+    {
+      "path": "docs/dots-series/build-art.mjs",
+      "sha256": "ecfc0769a326b69210f1d02a399bc3035a88fd83f0f1d4ca18591cf01457351b"
+    },
+    {
+      "path": "docs/dots-series/art-review.json",
+      "sha256": "99507465a7daf82fc56020b4497cb8b9a86b9eaa38e0f0317a8e1e4a22cc5e86"
+    },
+    {
+      "path": "docs/dots-series/art-render.json",
+      "sha256": "a061672453e5785f8a18324db10eae553e8a1e561cb42b51443302a51e86f00e"
+    },
+    {
+      "path": "docs/dots-series/CAPTURE-LIST.md",
+      "sha256": "eca22566df5681c717f0804ce7b841dff8508ac5bdf57c158e391d7ccdaf6d84"
+    },
+    {
+      "path": "docs/dots-series/HANDOVER.md",
+      "sha256": "59d9dece9f4ccb939f25e36dd8143e4e08016b53b3d7187844bd20d09a9e8e55"
+    }
+  ],
+  "checks": [
+    {
+      "id": "new_regression_and_compiler_boundary_tests",
+      "pass": true,
+      "detail": {
+        "tests_run": 5,
+        "skips": 1,
+        "errors": 0,
+        "failures": 0
+      }
+    },
+    {
+      "id": "production_svg_checker_identity_reused",
+      "pass": true
+    },
+    {
+      "id": "automatic_diagram:svg_no_title",
+      "pass": true
+    },
+    {
+      "id": "automatic_diagram:svg_no_desc",
+      "pass": true
+    },
+    {
+      "id": "automatic_diagram:svg_forbidden_element",
+      "pass": true
+    },
+    {
+      "id": "automatic_diagram:svg_external_reference",
+      "pass": true
+    },
+    {
+      "id": "explicit_metadata:svg_no_title",
+      "pass": true
+    },
+    {
+      "id": "explicit_metadata:svg_no_desc",
+      "pass": true
+    },
+    {
+      "id": "explicit_metadata:svg_forbidden_element",
+      "pass": true
+    },
+    {
+      "id": "explicit_metadata:svg_external_reference",
+      "pass": true
+    },
+    {
+      "id": "all_33_frozen_raw_source_hashes",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/11/change-v2.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/11/expected-checks.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/11/input-v1.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/11/official-sources.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/11/README.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/12/calendar-v1.ics",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/12/expected-checks.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/12/message-change-v2.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/12/messages-v1.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/12/README.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/13/expected-baseline.json",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/13/expected-checks.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/13/README.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/13/sales-update-v2.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/13/sales-v1.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/13/verify_fixture.py",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/14/expected-checks.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/14/learner-v1.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/14/progress-change-v2.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/14/README.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/15/brief-v1.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/15/change-v2.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/15/expected-checks.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/15/README.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/16/deadline-change-v2.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/16/expected-checks.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/16/minutes-v1.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/16/README.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/examples/16/status-for-weekly-report.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/00.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/01.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/02.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/03.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/04.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/05.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/06.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/07.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/08.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/09.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/10.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/11.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/12.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/13.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/14.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/15.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/dots-series/lessons/16.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-01/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-01/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-01/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-01/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-01/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-01/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-02/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-02/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-02/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-02/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-02/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-02/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-03/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-03/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-03/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-03/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-03/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-03/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-04/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-04/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-04/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-04/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-04/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-04/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-05/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-05/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-05/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-05/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-05/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-05/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-06/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-06/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-06/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-06/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-06/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-06/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-07/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-07/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-07/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-07/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-07/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-07/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-08/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-08/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-08/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-08/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-08/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-08/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-09/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-09/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-09/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-09/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-09/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-09/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-10/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-10/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-10/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-10/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-10/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-10/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-11/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-11/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-11/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-11/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-11/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-11/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-12/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-12/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-12/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-12/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-12/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-12/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-13/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-13/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-13/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-13/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-13/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-13/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-14/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-14/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-14/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-14/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-14/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-14/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-15/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-15/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-15/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-15/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-15/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-15/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-16/brief.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-16/script-check.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-16/script.md",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-16/shots.csv",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-16/teleprompter.txt",
+      "pass": true
+    },
+    {
+      "id": "production_output:docs/videos/dots-lesson-16/upload-draft.md",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-guide.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-01.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-02.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-03.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-04.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-05.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-06.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-07.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-08.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-09.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-10.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-11.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-12.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-13.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-14.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-15.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/api/app/guides/content/dots-lesson-16.json",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/dots-course/downloads/lesson-11.zip",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/dots-course/downloads/lesson-12.zip",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/dots-course/downloads/lesson-13.zip",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/dots-course/downloads/lesson-14.zip",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/dots-course/downloads/lesson-15.zip",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/dots-course/downloads/lesson-16.zip",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-guide/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-01/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-01/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-02/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-02/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-03/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-03/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-04/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-04/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-05/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-05/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-06/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-06/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-07/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-07/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-08/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-08/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-09/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-09/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-10/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-10/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-11/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-11/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-12/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-12/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-13/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-13/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-14/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-14/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-15/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-15/hero.png",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-16/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "build_output:apps/web/public/guides/dots-lesson-16/hero.png",
+      "pass": true
+    },
+    {
+      "id": "17_regenerated_packs",
+      "pass": true
+    },
+    {
+      "id": "production_manifest_repo_copy",
+      "pass": true
+    },
+    {
+      "id": "16_portable_briefs_and_current_capture_list",
+      "pass": true
+    },
+    {
+      "id": "publication_and_media_state_stays_draft",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-guide/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-guide/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-guide/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-guide/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-guide/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-guide/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-01/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-01/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-01/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-01/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-01/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-01/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-02/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-02/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-02/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-02/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-02/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-02/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-03/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-03/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-03/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-03/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-03/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-03/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-04/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-04/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-04/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-04/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-04/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-04/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-05/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-05/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-05/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-05/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-05/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-05/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-06/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-06/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-06/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-06/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-06/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-06/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-07/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-07/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-07/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-07/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-07/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-07/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-08/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-08/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-08/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-08/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-08/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-08/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-09/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-09/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-09/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-09/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-09/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-09/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-10/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-10/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-10/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-10/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-10/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-10/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-11/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-11/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-11/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-11/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-11/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-11/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-12/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-12/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-12/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-12/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-12/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-12/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-13/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-13/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-13/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-13/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-13/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-13/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-14/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-14/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-14/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-14/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-14/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-14/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-15/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-15/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-15/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-15/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-15/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-15/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-16/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-16/diagram-1.svg",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-16/hero.png",
+      "pass": true
+    },
+    {
+      "id": "png_unchanged:apps/web/public/guides/dots-lesson-16/hero.png",
+      "pass": true
+    },
+    {
+      "id": "art_review_hash:apps/web/public/guides/dots-lesson-16/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "svg_metadata_only:apps/web/public/guides/dots-lesson-16/hero.svg",
+      "pass": true
+    },
+    {
+      "id": "34_svg_metadata_and_17_png_unchanged",
+      "pass": true
+    },
+    {
+      "id": "68_unique_metadata_ids",
+      "pass": true
+    },
+    {
+      "id": "art_agent_contact_sheet_provenance",
+      "pass": true
+    },
+    {
+      "id": "redaction_provenance:implementation-path-probe.json",
+      "pass": true
+    },
+    {
+      "id": "redaction_provenance:implementation-path-recheck.json",
+      "pass": true
+    },
+    {
+      "id": "redaction_provenance:implementation-path-recheck-lf.json",
+      "pass": true
+    },
+    {
+      "id": "git_clean_does_not_change_output_or_reviewed_bytes",
+      "pass": true,
+      "detail": {
+        "checked_file_count": 211,
+        "changed_paths": []
+      }
+    },
+    {
+      "id": "registry_owner_test_scope_not_modified",
+      "pass": true
+    }
+  ],
+  "findings": [],
+  "meaningful_probes": {
+    "regression_and_build_boundary": {
+      "tests_run": 5,
+      "skips": 1,
+      "log": "test_inaccessible_or_unsafe_svg_fails_before_output (test_pipeline.CompileTests.test_inaccessible_or_unsafe_svg_fails_before_output) ... ok\ntest_build_pilot_assets_and_repo_install_roots_are_checked_before_any_output (test_pipeline.CompilerBoundaryTests.test_build_pilot_assets_and_repo_install_roots_are_checked_before_any_output) ... ok\ntest_external_asset_root_cannot_be_read_or_silently_fall_back (test_pipeline.CompilerBoundaryTests.test_external_asset_root_cannot_be_read_or_silently_fall_back) ... ok\ntest_late_install_file_symlink_prevents_all_prior_pack_and_install_writes (test_pipeline.CompilerBoundaryTests.test_late_install_file_symlink_prevents_all_prior_pack_and_install_writes) ... skipped \"File symlink creation unavailable: [WinError 1314] 用戶端沒有這項特殊權限。: '<home>\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\dots-compile-boundary-yuhnaqtw\\\\\\\\outside\\\\\\\\escaped.json' -> '<home>\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\dots-compile-boundary-yuhnaqtw\\\\\\\\repo\\\\\\\\apps\\\\\\\\api\\\\\\\\app\\\\\\\\guides\\\\\\\\content\\\\\\\\dots-lesson-16.json'\"\ntest_linked_authoring_root_is_rejected_without_reading_outside_sources (test_pipeline.CompilerBoundaryTests.test_linked_authoring_root_is_rejected_without_reading_outside_sources) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 4.698s\n\nOK (skipped=1)\n"
+    },
+    "svg": [
+      {
+        "mode": "automatic_diagram",
+        "error_code": "svg_no_title",
+        "production_body_checker_called": true,
+        "blocked_with_expected_error": true,
+        "no_output_created": true,
+        "error": "diagram-1.svg: error: svg_no_title: the SVG has no <title>"
+      },
+      {
+        "mode": "automatic_diagram",
+        "error_code": "svg_no_desc",
+        "production_body_checker_called": true,
+        "blocked_with_expected_error": true,
+        "no_output_created": true,
+        "error": "diagram-1.svg: error: svg_no_desc: the SVG has no <desc>"
+      },
+      {
+        "mode": "automatic_diagram",
+        "error_code": "svg_forbidden_element",
+        "production_body_checker_called": true,
+        "blocked_with_expected_error": true,
+        "no_output_created": true,
+        "error": "diagram-1.svg: error: svg_forbidden_element: <script> is not allowed"
+      },
+      {
+        "mode": "automatic_diagram",
+        "error_code": "svg_external_reference",
+        "production_body_checker_called": true,
+        "blocked_with_expected_error": true,
+        "no_output_created": true,
+        "error": "diagram-1.svg: error: svg_external_reference: an http(s) URL; error: svg_external_reference: a url() that is not a #fragment"
+      },
+      {
+        "mode": "explicit_metadata",
+        "error_code": "svg_no_title",
+        "production_body_checker_called": true,
+        "blocked_with_expected_error": true,
+        "no_output_created": true,
+        "error": "diagram-1.svg: error: svg_no_title: the SVG has no <title>"
+      },
+      {
+        "mode": "explicit_metadata",
+        "error_code": "svg_no_desc",
+        "production_body_checker_called": true,
+        "blocked_with_expected_error": true,
+        "no_output_created": true,
+        "error": "diagram-1.svg: error: svg_no_desc: the SVG has no <desc>"
+      },
+      {
+        "mode": "explicit_metadata",
+        "error_code": "svg_forbidden_element",
+        "production_body_checker_called": true,
+        "blocked_with_expected_error": true,
+        "no_output_created": true,
+        "error": "diagram-1.svg: error: svg_forbidden_element: <script> is not allowed"
+      },
+      {
+        "mode": "explicit_metadata",
+        "error_code": "svg_external_reference",
+        "production_body_checker_called": true,
+        "blocked_with_expected_error": true,
+        "no_output_created": true,
+        "error": "diagram-1.svg: error: svg_external_reference: an http(s) URL; error: svg_external_reference: a url() that is not a #fragment"
+      }
+    ]
+  },
+  "frozen_sources": [
+    {
+      "path": "<external-workspace>/lessons/00.md",
+      "sha256": "d2538cc34174278f94facf56bd68ac6cea62edeeea69785a556a1ba1daf6679d",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/01.md",
+      "sha256": "e774e8ed984062e4ae180e17e549ffaf3e337a798d62cbaaae1da66a804e5d11",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/02.md",
+      "sha256": "3f668428751836accd99c6a02ad65da0c9e0fb5456c174c552aa219ed6e54dfa",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/03.md",
+      "sha256": "c157e3ff25242629ef71b21aecdcbbbe4c9df64e246fd704be91bba5af8c0a22",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/04.md",
+      "sha256": "96b5281f2596a270fc01e9f97079cc9247dceb8de32e97d2fabfd26818b3a5f7",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/05.md",
+      "sha256": "7d969dd13b64d9dada4e1b668f301e4f8d6f1de8d7fe72fe7bb04c8da6a2e7dc",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/06.md",
+      "sha256": "7670c81c6667dcb1e7b9809e515af35c69959b77556b03985a4a8e2f8aab6b59",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/07.md",
+      "sha256": "3e8ecec76838e4a0e8d360e64f2ff89107bb86743dfbfac860b1c6ea1786addd",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/08.md",
+      "sha256": "9dfab2f5e4a5713cb11222e908362c38ecfc2aa05811da4a4f714aa0c3c1eba3",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/09.md",
+      "sha256": "7a64624edb4c5558cce154f160876880ee9997bc3ce04d17b1f342a7fe76d86d",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/10.md",
+      "sha256": "6453479e2a5e1f82ea1c819b63dccc1815c10578d01d26bdfbe4ff62394fe228",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/11.md",
+      "sha256": "f497b8da513bbf8e18f6af2880400d4134a363d0c22ca33b63c04ab475da23bf",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/12.md",
+      "sha256": "228dd9f95ff2af84530957c2c802e3969e26c6467ade62201037b9e06bcfc81c",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/13.md",
+      "sha256": "6e331c03e118987dec6e9a996844cf840b38be7ec070273e22896c5954b5c1c2",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/14.md",
+      "sha256": "d9d123b19da7b55c10f7c043d98e5ffc9a8a315a61b629b9f7d6aa0812b10323",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/15.md",
+      "sha256": "48d531d382d0dc9cfa81e4707b5c9b55651b617afa1d6055d6b86d5ee8f6aa06",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/lessons/16.md",
+      "sha256": "061ed253827836f4c34feb24ed4ce047b37333a0960cebfc363e487ae69c4ad7",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/01.md",
+      "sha256": "12c5fcc3b751d4acbc1d09b8e818b176afc655f7a16513f36781405c3a479a48",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/02.md",
+      "sha256": "bb88928a892e3e3a5c6e61367713f2df66b2e3e002af859aa79bd7a01a0e1011",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/03.md",
+      "sha256": "4120b4a9165fc3fec8c3583e1aab18d01f66c208af93a31466dce940447dc4b9",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/04.md",
+      "sha256": "a258d6d4a389046a83adc6cdc9fe1af3a1cc9ef9a5056701378e50963955ae15",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/05.md",
+      "sha256": "1a52af8a3766dc02df99eeff1f8f7cd39130b3af8ce8675d7cedb5128b04106a",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/06.md",
+      "sha256": "b44996a687de71e83d9996ad231eb9cae991237ef5bde7f00459d07533b42a1d",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/07.md",
+      "sha256": "7c9c9d119b23a7906f0c7f3174b909759f8032b2a252fb7796d72baff653772c",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/08.md",
+      "sha256": "bb5f33f23bb906bc1eff8e0076ece6cd85e70d489ff9f77093ebb07bc5a5c419",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/09.md",
+      "sha256": "e9e13bc43f616b2d2b6b735599b39a9d0dfa81dde3a29a32beff7aeddd1448d8",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/10.md",
+      "sha256": "f81a7a3aa36682104744c16fdf712d2f133ab3fae6ddd5973153749bfa377c23",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/11.md",
+      "sha256": "3241f9c688715969d5e051a82096c7b0373a12d75727496c7697b04e50c55d42",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/12.md",
+      "sha256": "307bddc473b139ad7fb5de527b799b38054394fb5362b4511646fd46423f9d7f",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/13.md",
+      "sha256": "97a52ac9ef93d439fd4ee198776da89878090dc560ea45b3ac257dba8e6a0d7a",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/14.md",
+      "sha256": "2c4cf336c84c022fec97eced143905a21da68e222ab970a26f34aeaf466bd8b0",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/15.md",
+      "sha256": "42772f041ab22e1ba33dd75ca47613411cab3447c066f29e9fd563b1d96b2d02",
+      "matches_frozen": true
+    },
+    {
+      "path": "<external-workspace>/videos/16.md",
+      "sha256": "f13ed8b7c5485b26993b2c874c96ac5bd79afce5ee9bd0123382de62a0215d5f",
+      "matches_frozen": true
+    }
+  ],
+  "output_hashes": [
+    {
+      "path": "docs/dots-series/examples/11/change-v2.md",
+      "sha256": "45da7086d9dfa1dc193b61292c123ed91597b0f301042e44682d86d1574946b7"
+    },
+    {
+      "path": "docs/dots-series/examples/11/expected-checks.md",
+      "sha256": "0cfb98ae64a1d0714feff03841ecbd208400afea0d109caee323f719e0fec362"
+    },
+    {
+      "path": "docs/dots-series/examples/11/input-v1.md",
+      "sha256": "c3a2d3a9d7d9496538aaa5a5b67f20ce6a3b7c4acf5b39ba109315022eb50eee"
+    },
+    {
+      "path": "docs/dots-series/examples/11/official-sources.md",
+      "sha256": "9c810aa08cfee4d2e806ffa6244bec96ab2c8cc51bf50b85e48cc767fd08b228"
+    },
+    {
+      "path": "docs/dots-series/examples/11/README.md",
+      "sha256": "d594c05a87219a8e0d8d4b31b4965f0f4cdd2165031b62aaf450715c0c785e74"
+    },
+    {
+      "path": "docs/dots-series/examples/12/calendar-v1.ics",
+      "sha256": "aeff1c3079393ca601bf6708f8a50a8abf27e9c4cec4e25c8c3e3b311685d70d"
+    },
+    {
+      "path": "docs/dots-series/examples/12/expected-checks.md",
+      "sha256": "e0b6883cb144e7b0c5ef9799502fce682d8b0fa0e23c7a988092e6a7bd43d504"
+    },
+    {
+      "path": "docs/dots-series/examples/12/message-change-v2.txt",
+      "sha256": "5841af05d6a0874e0d0a4da05ffe48959ba49480e99991a3959e8134d320e95b"
+    },
+    {
+      "path": "docs/dots-series/examples/12/messages-v1.txt",
+      "sha256": "1341fd486594c91834d3f551eab3bf70b0442f07dfe3be2e8eda337be2559423"
+    },
+    {
+      "path": "docs/dots-series/examples/12/README.md",
+      "sha256": "34577190b9b77794b4f2fd9be77fbe679668c0d510b8fdd1f5de889d639cc13c"
+    },
+    {
+      "path": "docs/dots-series/examples/13/expected-baseline.json",
+      "sha256": "c89879188f7630c9a455ff8fa1bbe8cd2fdcf44d2786a9c2a421721d6fa08a16"
+    },
+    {
+      "path": "docs/dots-series/examples/13/expected-checks.md",
+      "sha256": "3859f4de80482231839ef655350ed9055ef5d1fe377db1ec9733162b3ba6ab29"
+    },
+    {
+      "path": "docs/dots-series/examples/13/README.md",
+      "sha256": "aa02060a11cee10c2159d09d81ec8e2ad84d1a5ca13d99da7abcaafaa079208a"
+    },
+    {
+      "path": "docs/dots-series/examples/13/sales-update-v2.csv",
+      "sha256": "94a93d66a1d9b20e04144035ee2309458c60d9800582d3a66f67d739cefdd65b"
+    },
+    {
+      "path": "docs/dots-series/examples/13/sales-v1.csv",
+      "sha256": "73482e0dcc2f911ae21f68243b5cc5a41b216dfd5fdb11047dea9ff6ca870106"
+    },
+    {
+      "path": "docs/dots-series/examples/13/verify_fixture.py",
+      "sha256": "c82bb3a1f32a6689bb5124bafa3b99cf3e13f448696bd9726594448abcd2a6b9"
+    },
+    {
+      "path": "docs/dots-series/examples/14/expected-checks.md",
+      "sha256": "16636b038f56a59870e2924e126eb3941d7e375df27a0cef7de2bb7968cbc632"
+    },
+    {
+      "path": "docs/dots-series/examples/14/learner-v1.md",
+      "sha256": "9b7b5f2b4e60108fbb9d17ead960cde5ca398652d1c0dff26b26e29eb3afbb38"
+    },
+    {
+      "path": "docs/dots-series/examples/14/progress-change-v2.md",
+      "sha256": "de5c0599dd459c485960352df0bfd710a34db174982a1d769b462fb51082283f"
+    },
+    {
+      "path": "docs/dots-series/examples/14/README.md",
+      "sha256": "c833b28cdcb184184ab95a9435440acb23500e09c19bcfa50ea6f8d029523324"
+    },
+    {
+      "path": "docs/dots-series/examples/15/brief-v1.md",
+      "sha256": "9cb5bd2dc2b5d860681c57c691677f3b6d939d04c7779fb436b7f2a83ae91206"
+    },
+    {
+      "path": "docs/dots-series/examples/15/change-v2.md",
+      "sha256": "8f4d69a1aa6584e3d8f3eaff1c58fb70ce9a376cbc1c755dad6f100bd46409d4"
+    },
+    {
+      "path": "docs/dots-series/examples/15/expected-checks.md",
+      "sha256": "6a7a072344d927180b7084225beb1ca69ff4adfe1cb55e6fe4773d1c73c71067"
+    },
+    {
+      "path": "docs/dots-series/examples/15/README.md",
+      "sha256": "ad0e0d63d71533d29ddb9154d66428945838698f4a9bf581c54d1e1beef03cac"
+    },
+    {
+      "path": "docs/dots-series/examples/16/deadline-change-v2.md",
+      "sha256": "19a0ca0b6e6116a6e257059a12a00ed445ef74b49ab8c097833d61587363d67c"
+    },
+    {
+      "path": "docs/dots-series/examples/16/expected-checks.md",
+      "sha256": "025527d533e7c605a9751b44860740bbea52e9fbafcb19d809a00e446672e9e1"
+    },
+    {
+      "path": "docs/dots-series/examples/16/minutes-v1.md",
+      "sha256": "8ec0c70719e0d8fa3d90daaa78ed8d325afec159e016ef4af1863a631ae8348c"
+    },
+    {
+      "path": "docs/dots-series/examples/16/README.md",
+      "sha256": "27d77ac7c20a8a7323f445689495ee2eb10341c4412507974adacb19cbd8fded"
+    },
+    {
+      "path": "docs/dots-series/examples/16/status-for-weekly-report.md",
+      "sha256": "4cbf08d854bfb7c293ceb5764b7c0db8813f8ab03551cf616a5f7d08c889df79"
+    },
+    {
+      "path": "docs/dots-series/lessons/00.md",
+      "sha256": "4df99e55d9baef2717cd02ee569cc4a8673137787ed208aae4de672d61e8ab3b"
+    },
+    {
+      "path": "docs/dots-series/lessons/01.md",
+      "sha256": "e774e8ed984062e4ae180e17e549ffaf3e337a798d62cbaaae1da66a804e5d11"
+    },
+    {
+      "path": "docs/dots-series/lessons/02.md",
+      "sha256": "3f668428751836accd99c6a02ad65da0c9e0fb5456c174c552aa219ed6e54dfa"
+    },
+    {
+      "path": "docs/dots-series/lessons/03.md",
+      "sha256": "c157e3ff25242629ef71b21aecdcbbbe4c9df64e246fd704be91bba5af8c0a22"
+    },
+    {
+      "path": "docs/dots-series/lessons/04.md",
+      "sha256": "96b5281f2596a270fc01e9f97079cc9247dceb8de32e97d2fabfd26818b3a5f7"
+    },
+    {
+      "path": "docs/dots-series/lessons/05.md",
+      "sha256": "7d969dd13b64d9dada4e1b668f301e4f8d6f1de8d7fe72fe7bb04c8da6a2e7dc"
+    },
+    {
+      "path": "docs/dots-series/lessons/06.md",
+      "sha256": "7670c81c6667dcb1e7b9809e515af35c69959b77556b03985a4a8e2f8aab6b59"
+    },
+    {
+      "path": "docs/dots-series/lessons/07.md",
+      "sha256": "3e8ecec76838e4a0e8d360e64f2ff89107bb86743dfbfac860b1c6ea1786addd"
+    },
+    {
+      "path": "docs/dots-series/lessons/08.md",
+      "sha256": "9dfab2f5e4a5713cb11222e908362c38ecfc2aa05811da4a4f714aa0c3c1eba3"
+    },
+    {
+      "path": "docs/dots-series/lessons/09.md",
+      "sha256": "7a64624edb4c5558cce154f160876880ee9997bc3ce04d17b1f342a7fe76d86d"
+    },
+    {
+      "path": "docs/dots-series/lessons/10.md",
+      "sha256": "6453479e2a5e1f82ea1c819b63dccc1815c10578d01d26bdfbe4ff62394fe228"
+    },
+    {
+      "path": "docs/dots-series/lessons/11.md",
+      "sha256": "f497b8da513bbf8e18f6af2880400d4134a363d0c22ca33b63c04ab475da23bf"
+    },
+    {
+      "path": "docs/dots-series/lessons/12.md",
+      "sha256": "228dd9f95ff2af84530957c2c802e3969e26c6467ade62201037b9e06bcfc81c"
+    },
+    {
+      "path": "docs/dots-series/lessons/13.md",
+      "sha256": "6e331c03e118987dec6e9a996844cf840b38be7ec070273e22896c5954b5c1c2"
+    },
+    {
+      "path": "docs/dots-series/lessons/14.md",
+      "sha256": "d9d123b19da7b55c10f7c043d98e5ffc9a8a315a61b629b9f7d6aa0812b10323"
+    },
+    {
+      "path": "docs/dots-series/lessons/15.md",
+      "sha256": "48d531d382d0dc9cfa81e4707b5c9b55651b617afa1d6055d6b86d5ee8f6aa06"
+    },
+    {
+      "path": "docs/dots-series/lessons/16.md",
+      "sha256": "061ed253827836f4c34feb24ed4ce047b37333a0960cebfc363e487ae69c4ad7"
+    },
+    {
+      "path": "docs/videos/dots-lesson-01/brief.md",
+      "sha256": "def3a15dbe39b96ee8d8d7d056b298bd9ed3c3d4455705443dd7f050d2c11c14"
+    },
+    {
+      "path": "docs/videos/dots-lesson-01/script-check.txt",
+      "sha256": "7973108c0f4a13629c0ceb1094732db7277d90e350d7ccec985cdd9e030cab95"
+    },
+    {
+      "path": "docs/videos/dots-lesson-01/script.md",
+      "sha256": "5b24b55734809b5cf4f23dd8be3b110fe86491b498641b091ae6fdd63a3fc99c"
+    },
+    {
+      "path": "docs/videos/dots-lesson-01/shots.csv",
+      "sha256": "54fea2535f46750a36efbcbffa82350f01fbc4b9298d65b5d3ee817c2d6923c6"
+    },
+    {
+      "path": "docs/videos/dots-lesson-01/teleprompter.txt",
+      "sha256": "776e296feaefa598b1c374685a9987487eb9c55d7739e7af852979fc5aae016d"
+    },
+    {
+      "path": "docs/videos/dots-lesson-01/upload-draft.md",
+      "sha256": "17945a036bd6ba5554181ec223cf954e44443a377df32e66faf0cda71451aaae"
+    },
+    {
+      "path": "docs/videos/dots-lesson-02/brief.md",
+      "sha256": "a7cd24c317d21d99e526f1e9d6040a4759be5f4335a0872dabcafaabf520e39e"
+    },
+    {
+      "path": "docs/videos/dots-lesson-02/script-check.txt",
+      "sha256": "dc9043d450576ba445ca60c40e15b29f48e186cc513b5ac2a158055da480893f"
+    },
+    {
+      "path": "docs/videos/dots-lesson-02/script.md",
+      "sha256": "a34685f1247cddf2e1f4271cea890ad9ae20ed84677fc1217341057ce656e635"
+    },
+    {
+      "path": "docs/videos/dots-lesson-02/shots.csv",
+      "sha256": "c9ea8140ba2447796a47c7bb9ecb9a105b20e8427a8a76203b5f3caeec5351c7"
+    },
+    {
+      "path": "docs/videos/dots-lesson-02/teleprompter.txt",
+      "sha256": "f534f0df09192b050f02b8ecb7e9c972a761817cc2b80fd88ad3a4f5f325f279"
+    },
+    {
+      "path": "docs/videos/dots-lesson-02/upload-draft.md",
+      "sha256": "5d18662bc5dba472876f9ca438ec2e436c14614d9cfb66cc533ca83b30d928f4"
+    },
+    {
+      "path": "docs/videos/dots-lesson-03/brief.md",
+      "sha256": "705fa423f77f737344a05429ff9375d806b85e30b18db3e44f8163383984a818"
+    },
+    {
+      "path": "docs/videos/dots-lesson-03/script-check.txt",
+      "sha256": "c66f2c02a827e36c476bd2b6588483eaa12446ed15d275ed67e2292e69c03b97"
+    },
+    {
+      "path": "docs/videos/dots-lesson-03/script.md",
+      "sha256": "b55f8f847c2f5c9a59bad48d9b262b507756615943b457462689cdf4e46f4715"
+    },
+    {
+      "path": "docs/videos/dots-lesson-03/shots.csv",
+      "sha256": "35af90ea8e62506518431f524c17b9c02d9e2232d3e04f05827019e380f3fa6a"
+    },
+    {
+      "path": "docs/videos/dots-lesson-03/teleprompter.txt",
+      "sha256": "32fd55533754c4515b466e060eca4e9b961038dcb708122d64ba5bdb72aa6f60"
+    },
+    {
+      "path": "docs/videos/dots-lesson-03/upload-draft.md",
+      "sha256": "af4dc603a80d187cefff8653f911ec865a4427584f5715e7b821098c2aed42ab"
+    },
+    {
+      "path": "docs/videos/dots-lesson-04/brief.md",
+      "sha256": "d99baba3d7baf83220e546a0dd964ec212c61921116d65f61f17e1797d5514fc"
+    },
+    {
+      "path": "docs/videos/dots-lesson-04/script-check.txt",
+      "sha256": "fc03e9244888c6e249a9ca1570a9300c17a437c4c5abcb79c6c3f797d664c2ea"
+    },
+    {
+      "path": "docs/videos/dots-lesson-04/script.md",
+      "sha256": "523d0b457957ab02e2f36d92a2521962adfb3d25926a3bfbf91ae998d062cfea"
+    },
+    {
+      "path": "docs/videos/dots-lesson-04/shots.csv",
+      "sha256": "9eae8890977ab23fea4c6cb7221f65a8179c67d4000ed2677e6594b0544a8a0d"
+    },
+    {
+      "path": "docs/videos/dots-lesson-04/teleprompter.txt",
+      "sha256": "8ea382aa7e728a34ef4d28dcf0772a2566831ca317b786588ae1a4b667450837"
+    },
+    {
+      "path": "docs/videos/dots-lesson-04/upload-draft.md",
+      "sha256": "699480fd43a536a7a778590cbc0104981642bb8cbc5a2c2a1efa7242dd0d3a61"
+    },
+    {
+      "path": "docs/videos/dots-lesson-05/brief.md",
+      "sha256": "78550d32a46cc85b9b7d190cd47e0115603f3de4b78a0103f744c484812e3f54"
+    },
+    {
+      "path": "docs/videos/dots-lesson-05/script-check.txt",
+      "sha256": "9bc929a2e3a8a61344fce6efa8c2c62b6629da083c74ebdbb1417ee2c7007d1a"
+    },
+    {
+      "path": "docs/videos/dots-lesson-05/script.md",
+      "sha256": "62ce843a7181bd92d5fe9e7734eda58fe437d7ac18dfd7aef9f53e8867168419"
+    },
+    {
+      "path": "docs/videos/dots-lesson-05/shots.csv",
+      "sha256": "65079ebcebb8a924d0e8f2c94813f4a80c2151030f73f74d6c7cc27514eff563"
+    },
+    {
+      "path": "docs/videos/dots-lesson-05/teleprompter.txt",
+      "sha256": "b1b0487a6c32a3e5b65d636fdfb82d4bc502cd74af05082fe18888bfd494fe3e"
+    },
+    {
+      "path": "docs/videos/dots-lesson-05/upload-draft.md",
+      "sha256": "e27c20760fbe05a5f2613ae26d42e8b6646f4174c8eff1a73cc2d6f6e8026a87"
+    },
+    {
+      "path": "docs/videos/dots-lesson-06/brief.md",
+      "sha256": "72a5416994d86f08b5859b87cd0576c73ca46b3c2bbf5eb42df38c7b84a1ecf4"
+    },
+    {
+      "path": "docs/videos/dots-lesson-06/script-check.txt",
+      "sha256": "c679f80e3d934318048443d85f8624ff861f8269a40c1af426d32f3de6b423be"
+    },
+    {
+      "path": "docs/videos/dots-lesson-06/script.md",
+      "sha256": "e6e7db062fb77adc5d5b05af1415fad595e22df3ed8ef91d8bc3dc4a4e1d0313"
+    },
+    {
+      "path": "docs/videos/dots-lesson-06/shots.csv",
+      "sha256": "9886e150564fbbc702472284fea3077ddee88dc36f4f46ffa2b1d42b25eb29c0"
+    },
+    {
+      "path": "docs/videos/dots-lesson-06/teleprompter.txt",
+      "sha256": "5abf14e58723541e0fc4ccf0b31978c4a0c31b1c41bf9b4e0a1a72688bfa7e5f"
+    },
+    {
+      "path": "docs/videos/dots-lesson-06/upload-draft.md",
+      "sha256": "05bf8ff87c751d510026376bfb52de83dc0f5d0baf904bf6ec11d1b76297665e"
+    },
+    {
+      "path": "docs/videos/dots-lesson-07/brief.md",
+      "sha256": "f26652146ffc7b37f0f998bf26b451badb7c3d808f7b8f82a952cf47f1a1dd47"
+    },
+    {
+      "path": "docs/videos/dots-lesson-07/script-check.txt",
+      "sha256": "b833b5a41303964792c5cd1c557b89505d8fc060ae977ba3f392a2dc9124f4bf"
+    },
+    {
+      "path": "docs/videos/dots-lesson-07/script.md",
+      "sha256": "bf4828a7219e3cc558ed13f235b09767aa4af9ef59acf4275c84e0013cd66090"
+    },
+    {
+      "path": "docs/videos/dots-lesson-07/shots.csv",
+      "sha256": "1c1957918f13aaac1fb881e0e42c77d02c8a32877b86f8fa6f5e8121243b52be"
+    },
+    {
+      "path": "docs/videos/dots-lesson-07/teleprompter.txt",
+      "sha256": "3fe2afdabed7dc97dc8b0ee6944e9157d5df48ea917ec94eea4aca6c254d010c"
+    },
+    {
+      "path": "docs/videos/dots-lesson-07/upload-draft.md",
+      "sha256": "a96884d8d2684067e8696e0228161ec9f650e06bbac6b65ac5f899252fd56269"
+    },
+    {
+      "path": "docs/videos/dots-lesson-08/brief.md",
+      "sha256": "9d881fe8734a783dc7ce85e9d2ea5d81a2280d88e3d8c906e6fafae0cb9f43b8"
+    },
+    {
+      "path": "docs/videos/dots-lesson-08/script-check.txt",
+      "sha256": "86222bfbecde1478786323ad50a537aa796e2d4280bddb172b6a5f06253a9b61"
+    },
+    {
+      "path": "docs/videos/dots-lesson-08/script.md",
+      "sha256": "c5e5e54f8346ef6a65ddfa15b6c87df746116b5a834c0beb7e38f12b58c3365d"
+    },
+    {
+      "path": "docs/videos/dots-lesson-08/shots.csv",
+      "sha256": "aba752c52d87b9fa2b213969782bb58cb90ef63a775523400520eb7d82b9aab2"
+    },
+    {
+      "path": "docs/videos/dots-lesson-08/teleprompter.txt",
+      "sha256": "d4722008b01cf496c6e7c1dc6d0b01043ecedc56f619879e5bc44b6224d1a32e"
+    },
+    {
+      "path": "docs/videos/dots-lesson-08/upload-draft.md",
+      "sha256": "1ff8261a3c4b222d18e42453bbd8395e0d000371d7d3210aad0917aadb8525a3"
+    },
+    {
+      "path": "docs/videos/dots-lesson-09/brief.md",
+      "sha256": "b776b88fb61a53ef87fb38bf9b38040471a0818670f90ba24de14f752bba3323"
+    },
+    {
+      "path": "docs/videos/dots-lesson-09/script-check.txt",
+      "sha256": "4c8a569ec6b9d16f53dedd9afa91afa5d6eddb73f2a97a0b01e0e820f3a63ef1"
+    },
+    {
+      "path": "docs/videos/dots-lesson-09/script.md",
+      "sha256": "561a980e3b6baf091c361eb4b400ecf0addddfc2269d0960d37052c8cd496b81"
+    },
+    {
+      "path": "docs/videos/dots-lesson-09/shots.csv",
+      "sha256": "d07b23999659b08f6e283ad5eac891a3bd4ac79e6240e3a91005be24111af5fe"
+    },
+    {
+      "path": "docs/videos/dots-lesson-09/teleprompter.txt",
+      "sha256": "d77478c6e7ab8659abdc1a50dacab8944b8382413a8842c2437e22c4bce41d44"
+    },
+    {
+      "path": "docs/videos/dots-lesson-09/upload-draft.md",
+      "sha256": "47ca4f1969357ebaf0ebfd6852fcb678ff348d2c0dc06d02291c78f015c2f98b"
+    },
+    {
+      "path": "docs/videos/dots-lesson-10/brief.md",
+      "sha256": "ae390d532ecfda7136871192599e439e273237b7ae6eb253ee03eadfe76727e6"
+    },
+    {
+      "path": "docs/videos/dots-lesson-10/script-check.txt",
+      "sha256": "428437d320830b493e9818fad474c8e9f0803734e9981e564ad83b8357db83e4"
+    },
+    {
+      "path": "docs/videos/dots-lesson-10/script.md",
+      "sha256": "83dd227e9460419368af3c9a429e23abd025acc925d8ccc29f80eb7b2c9fbbb3"
+    },
+    {
+      "path": "docs/videos/dots-lesson-10/shots.csv",
+      "sha256": "f67fef2964a47891fdbe747f3cab9cef0137fdfab654a7c4c1222d69f26e519a"
+    },
+    {
+      "path": "docs/videos/dots-lesson-10/teleprompter.txt",
+      "sha256": "438e382aa6358dd394b88ef6928cb0829032e0a617e61392811f120d7e1fc433"
+    },
+    {
+      "path": "docs/videos/dots-lesson-10/upload-draft.md",
+      "sha256": "b7c92f685c865743599e4518dd1aedc51fb1208b2efc00f0e4cab09c15d30e65"
+    },
+    {
+      "path": "docs/videos/dots-lesson-11/brief.md",
+      "sha256": "3d4d5882d8749d23985d2ff4a6cc5501e1b10c4a1a93c83c8f51362e1bf2d2d3"
+    },
+    {
+      "path": "docs/videos/dots-lesson-11/script-check.txt",
+      "sha256": "b2b72bb7371ccc2d0ba68a3e2e536d024c73c4746946057faba49ef54e8cfa7c"
+    },
+    {
+      "path": "docs/videos/dots-lesson-11/script.md",
+      "sha256": "1806da2652e9baadfbda404222b7d3ed4ba0788193fc722a2e9b5cf134b6f267"
+    },
+    {
+      "path": "docs/videos/dots-lesson-11/shots.csv",
+      "sha256": "b59a2d4ba8a2ddf2884c4e25c627e841c773f2f46f460cc6abe8134d4ab6bc8d"
+    },
+    {
+      "path": "docs/videos/dots-lesson-11/teleprompter.txt",
+      "sha256": "00dc6eb838182d6f7c1284ce311bbd5fd61869e1cb0ab259e20eddba0261c61d"
+    },
+    {
+      "path": "docs/videos/dots-lesson-11/upload-draft.md",
+      "sha256": "dd0e033a1eec9a203a8ee04f304e80d71f9249d382d6de4e5615a2b0996468a9"
+    },
+    {
+      "path": "docs/videos/dots-lesson-12/brief.md",
+      "sha256": "55cc9a9cda95ea6652ef50ba0fd427b0de904f613a34a6a419b6e93752edef18"
+    },
+    {
+      "path": "docs/videos/dots-lesson-12/script-check.txt",
+      "sha256": "432c36bd1fa240750fd1879c2303c98a3437ba474b58bad8703c11b603aa9696"
+    },
+    {
+      "path": "docs/videos/dots-lesson-12/script.md",
+      "sha256": "191964197000f8fa0cdb22208dc5695fa34c92b55d23fc508bdf4e39f3c5e544"
+    },
+    {
+      "path": "docs/videos/dots-lesson-12/shots.csv",
+      "sha256": "f49c8f04817eacb9fffef930c69641a444edda7aaef989752581533214072d55"
+    },
+    {
+      "path": "docs/videos/dots-lesson-12/teleprompter.txt",
+      "sha256": "6cb4b866051f44b6494438b3c5c1b07b5cf3aa14b1f23b47434abb37b55794e2"
+    },
+    {
+      "path": "docs/videos/dots-lesson-12/upload-draft.md",
+      "sha256": "2cdb47595976be9ca723b65160c665bde8866c3a87c267677c46c7eceb81d7f7"
+    },
+    {
+      "path": "docs/videos/dots-lesson-13/brief.md",
+      "sha256": "ad5c69495ad7566e97443b0976dac7a320c4f1e03b58cb208f393b4500674a00"
+    },
+    {
+      "path": "docs/videos/dots-lesson-13/script-check.txt",
+      "sha256": "541e456b7c9a30c9cf595ed458308c1059b1b5d54241845c15db620bd156122b"
+    },
+    {
+      "path": "docs/videos/dots-lesson-13/script.md",
+      "sha256": "47bcaf128e00727b4be70ea6c51c15182fc0300899d3d3a0d5f550e3b41ebf9e"
+    },
+    {
+      "path": "docs/videos/dots-lesson-13/shots.csv",
+      "sha256": "43db3488d784a29bc5a0e50feb602aa7579c6bea8a432333bd0bfe7f65dd3c5b"
+    },
+    {
+      "path": "docs/videos/dots-lesson-13/teleprompter.txt",
+      "sha256": "837dc28dc5bcff2c25ab66eee1fea0a28eca5b16f896786141383ff705584456"
+    },
+    {
+      "path": "docs/videos/dots-lesson-13/upload-draft.md",
+      "sha256": "c151be9457cf1398a5d18ee1872deb9e026ee63c4408fd3bb4ed8d1dce7e1feb"
+    },
+    {
+      "path": "docs/videos/dots-lesson-14/brief.md",
+      "sha256": "045cd245e405d345e99cc08ce61fdce075d933b3f0b8f6a47281ed29c129629d"
+    },
+    {
+      "path": "docs/videos/dots-lesson-14/script-check.txt",
+      "sha256": "0bdad07fa2667cf299b047c29793d5d0621b271fab52333e295d493f01376694"
+    },
+    {
+      "path": "docs/videos/dots-lesson-14/script.md",
+      "sha256": "7e0a0ca784a65776c1b379c9c8fa95ffa0a2892581b504210bcb2129054fe45f"
+    },
+    {
+      "path": "docs/videos/dots-lesson-14/shots.csv",
+      "sha256": "4a2c685dcc22cf9969ec1e22c51b557b340f1129469fb1510907eca8c165d759"
+    },
+    {
+      "path": "docs/videos/dots-lesson-14/teleprompter.txt",
+      "sha256": "fdc9a3250cccc76f31357f4749772e238824e7e8705e462ba46a5bde7d1bf333"
+    },
+    {
+      "path": "docs/videos/dots-lesson-14/upload-draft.md",
+      "sha256": "1a4b84c7998c2a5b209088debe3dc8dec8dfddba03d451788e6af20913c6c47b"
+    },
+    {
+      "path": "docs/videos/dots-lesson-15/brief.md",
+      "sha256": "759b2bdef5635a518610bf55eff702ab3f5c956db6b3f0a355bef745491535d3"
+    },
+    {
+      "path": "docs/videos/dots-lesson-15/script-check.txt",
+      "sha256": "d262b7c4aa67d6c53d007dcbb9742fa2a5ef844e4f0d555784f2f9ae3c77e9eb"
+    },
+    {
+      "path": "docs/videos/dots-lesson-15/script.md",
+      "sha256": "84a65560882d3b3e5d29dabc1b7a68a0a43cf67a74d4022f834cf0d33880b975"
+    },
+    {
+      "path": "docs/videos/dots-lesson-15/shots.csv",
+      "sha256": "07b1f3998f9214e2a922d27d1f1d05f6eec1087870efe40766eab338a1bd75e2"
+    },
+    {
+      "path": "docs/videos/dots-lesson-15/teleprompter.txt",
+      "sha256": "311cbe69665cedadb5117b421a2a74e7be73b0e46a3c5511433c861eee1685d2"
+    },
+    {
+      "path": "docs/videos/dots-lesson-15/upload-draft.md",
+      "sha256": "8df7d4a2dce78d5c62cda0920e8cb43f00984615ae8acc986d28e71cb81fd979"
+    },
+    {
+      "path": "docs/videos/dots-lesson-16/brief.md",
+      "sha256": "de9cf69c6148786d9636a113d1a540ba7aaa823d7ea5510e3d1d01a0561ad226"
+    },
+    {
+      "path": "docs/videos/dots-lesson-16/script-check.txt",
+      "sha256": "ba93ee03aae24dd6b733156725a5e6489040ab1bfbdaf2892e12d422ec68bf40"
+    },
+    {
+      "path": "docs/videos/dots-lesson-16/script.md",
+      "sha256": "e49b3eda5dca42b3bd69a42e24a7beb21b4ffe09cb4b9dc342ebdacfb1219f2c"
+    },
+    {
+      "path": "docs/videos/dots-lesson-16/shots.csv",
+      "sha256": "fffa7e1ac516c37e32052f2a4cbabd2e93bec1f5fb7117ab4900a5b371160afc"
+    },
+    {
+      "path": "docs/videos/dots-lesson-16/teleprompter.txt",
+      "sha256": "4e02fea571b40141f7de550989ee856b30d1aba6996186a014a4f40342e723cd"
+    },
+    {
+      "path": "docs/videos/dots-lesson-16/upload-draft.md",
+      "sha256": "1b9757e696e4e31e2fea6e5048b081cf36100c5fc36649d96505f484c7de30a9"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-guide.json",
+      "sha256": "dccc12d1efcde63186c5f21a1cab2cb52a200d1f2e532d5166459fdf2fc2c700"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-01.json",
+      "sha256": "2b57f60f4866a338d5530c663fcf70d5f1e75f53c461bb4c3f3faefa83834f53"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-02.json",
+      "sha256": "bb1d52ddfa5af7f4bc2c4b935f3234ea51743d1c3b1a4d0ed8812f3fc65191c8"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-03.json",
+      "sha256": "b21fed5696acfedda6fc3ceb3704be98d8669b576458dd9a1b52040fb2db0458"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-04.json",
+      "sha256": "7f572eccc451e8f456c0090c4b1546bee57ca5c8b92090b4c84cba503cdad670"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-05.json",
+      "sha256": "5141db05f3d1f888a5c749b264802f28a6134b7c3e8e28d009de33288e492b9c"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-06.json",
+      "sha256": "663ef14a89ac4611ac158e81b1793f1aa8d2173858339a331fa9cc353584c97d"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-07.json",
+      "sha256": "53964200394c893dd36da0d731fd9522e2f58934a974907b625db2ebd9b63469"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-08.json",
+      "sha256": "c3c7c781e507129feabb7665a87e267eb66904075c3f9fc3dc88dc1d09546fb1"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-09.json",
+      "sha256": "e8ebbbdd646cf004918b2bf4a45aa3f73a3ffc1f2303fc4fbfebcecc4893eb58"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-10.json",
+      "sha256": "3db5696c2d90b7f343461dc470c652ddeb2b4be932464020d0d21bef0a57e2dc"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-11.json",
+      "sha256": "2a9e3218e82f9aaaed6395c9ad2976f269d4aca7828b835907f1220279c9860c"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-12.json",
+      "sha256": "78c61e942d7fcfd84edcf636fd09fce6168953ad2be7e6fd0d9488c9439fddd4"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-13.json",
+      "sha256": "fb82a5ce23f4402a35fc7ee4ab96b0b3dfb2156bdb3e57171e8c7a142cf31858"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-14.json",
+      "sha256": "bfeb91bd32568ce81ca43230b37cda80f40c070b3649976b0e1e3301638efa9d"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-15.json",
+      "sha256": "15d8e83ef888a31c57e51b7f8ad1beaf8052053f676feee8de9876a6a65bbc14"
+    },
+    {
+      "path": "apps/api/app/guides/content/dots-lesson-16.json",
+      "sha256": "4a2be255e8314fe67824fb92d5d0d363a7aac85ada6de6ccd3049625b8ee0d33"
+    },
+    {
+      "path": "apps/web/public/dots-course/downloads/lesson-11.zip",
+      "sha256": "1dfe430eddcad05eb0ab04590f5257070f77e5bf03794106af4ce7faed4bfa60"
+    },
+    {
+      "path": "apps/web/public/dots-course/downloads/lesson-12.zip",
+      "sha256": "77b2747defc5c5178e69ab4eaecc8311e304597678b8a1ae77640ec42c19f8b8"
+    },
+    {
+      "path": "apps/web/public/dots-course/downloads/lesson-13.zip",
+      "sha256": "72c92c9ad61fd6ed8cd6292c1ec786923cc5b21ccb506a63b5bc191d95f3ce29"
+    },
+    {
+      "path": "apps/web/public/dots-course/downloads/lesson-14.zip",
+      "sha256": "771235eebb0db7cdb2dcb4cff1583c3d57be4e9891e202ab370db86482db0318"
+    },
+    {
+      "path": "apps/web/public/dots-course/downloads/lesson-15.zip",
+      "sha256": "7fa43d6a061a9468e9e758f71dbae812c63c813c7ec1c9438c2fe42eb1f5f64c"
+    },
+    {
+      "path": "apps/web/public/dots-course/downloads/lesson-16.zip",
+      "sha256": "17ba6643a6154d10a80c1de042d1cd7eb88f9dc62fbefa64e96e03df434d52b8"
+    },
+    {
+      "path": "apps/web/public/guides/dots-guide/hero.png",
+      "sha256": "1b292353065690408d617a13391e3a5527cb45b1c03acee6d37c87b53114f08f"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-01/diagram-1.svg",
+      "sha256": "e48b2fe1696232c8cdf2c437027e936f053454fdf85e32fd4c60a512022c12d7"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-01/hero.png",
+      "sha256": "bf2bbbd1155e4af1bf47fd8afd8e192a6b9cc811b06256ad44b142e4bd5edf32"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-02/diagram-1.svg",
+      "sha256": "1612e46e7bc69cefbdff9ee3b2adff77675961c3c01422d9397f00511c9dc821"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-02/hero.png",
+      "sha256": "0f8dc9e1e284ff0e669ed5b81e1b53ad7a2e9c63b78e91094257d6c0497f5696"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-03/diagram-1.svg",
+      "sha256": "399311398c6cd028df46b4c498960b3243ef7323fcedd5fd78d23a43556c86fd"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-03/hero.png",
+      "sha256": "c6e1cfb4bdc32809210178a4dd291a86422d0364c7d07b360ef66231aedaadfe"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-04/diagram-1.svg",
+      "sha256": "34011c1bf0487fd84c92d0e0fa3f98c6454abff46388fa2799e85996bb601f05"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-04/hero.png",
+      "sha256": "01fdc7f702dcd9bf0f3541157ad39279ca609c5cd0a8a4c91ad97eb49d698794"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-05/diagram-1.svg",
+      "sha256": "512312a302598e691cd5b38049c0ee3702c4b8c908d2b3d48d3d06c50337ced7"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-05/hero.png",
+      "sha256": "3f264b84575fd54217b87c0aa91b2066275f0c3b7cc4f825f4b4ba9a66bea13d"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-06/diagram-1.svg",
+      "sha256": "9e6e29114ec5e2c4afb17365d5ddda499b3cbe315df8e000ec07d62988413e4e"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-06/hero.png",
+      "sha256": "424a0575d914cfe1397d4068bece9d2e223c8e905057b8deba70af830f26a255"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-07/diagram-1.svg",
+      "sha256": "b1fe063cf378663c5018abc4ad7ac2e0fcfda61fba38df69e65aec124872eab6"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-07/hero.png",
+      "sha256": "3faa27865572e18419b1d1e3666d236a6b83187c175467d7a1ac947fe6413819"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-08/diagram-1.svg",
+      "sha256": "df5f9341651a18d43fba6bb0f9140e7aaf0c64b2499398326e39d6673568fac3"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-08/hero.png",
+      "sha256": "d8508141a36c5438fc8e668efe97431553f412bb9fc8beb9404cd9c3ec2b9d50"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-09/diagram-1.svg",
+      "sha256": "67a19560f3aef47800b50d5c51977361578623c06be0bef290a60c49b2efac33"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-09/hero.png",
+      "sha256": "d8a16172f2df45ee88db3f776b0639ec75d7e8173986ef733b649d418acd512f"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-10/diagram-1.svg",
+      "sha256": "2ccede6221d7b57c9d281d4ceb03f39eef70012ab917947a8656f8d743f86dca"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-10/hero.png",
+      "sha256": "108e76ed26d4b08fa03ddec7e01be949775005b9ae45678c72f56e8ea93f98ab"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-11/diagram-1.svg",
+      "sha256": "b5e7b9f9c17d1bfa2044f451b0147043252628293b5c82ff36067ebdab55da37"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-11/hero.png",
+      "sha256": "740b0d9a9f2298201b7ff425447f9073a55d40c68a20889c6d40b1ea2dce50bc"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-12/diagram-1.svg",
+      "sha256": "bf56d085d14b451e35258341236c83837eb5b7a55c6de78b5baa6e5e256f5c35"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-12/hero.png",
+      "sha256": "afa361f1f0610a24b808aa41386e0f2cba48027327e4d34019227e94488467a4"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-13/diagram-1.svg",
+      "sha256": "91e8a5d9b833762eb546048ed10436ec96dc4f0ec479c8a0d2af8bf4cd3e6c51"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-13/hero.png",
+      "sha256": "4e1eb9cbf569c6b876e0bda60c14440030b847e3ed16867b3b1318b1d2242a82"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-14/diagram-1.svg",
+      "sha256": "58b3e29b96233c733402ba521e3ab67d07d191017eb6b05008e2c72d0b2c171f"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-14/hero.png",
+      "sha256": "f8a62539cc3609e37d79715fa62cf64af9792a1fbe297c475fb0f7a1ff828431"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-15/diagram-1.svg",
+      "sha256": "3f4b1cd0b302729db0d9726a9009dfc36b4b775af338d63687b65e6988ab3d95"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-15/hero.png",
+      "sha256": "e49a118c4e9992f110b1a8f282e54b87f470cbfdfaf9d894309ef7e63e2b3ed3"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-16/diagram-1.svg",
+      "sha256": "0035a1df72cda385d6378c6fdb56596e330ea6dcfaa7d2c980c2005cb4f9a555"
+    },
+    {
+      "path": "apps/web/public/guides/dots-lesson-16/hero.png",
+      "sha256": "babf47b303759eb92927974bf099045f3d152587208d0e6d59defca48b746fa1"
+    }
+  ],
+  "portable_briefs": [
+    {
+      "path": "docs/videos/dots-lesson-01/brief.md",
+      "sha256": "def3a15dbe39b96ee8d8d7d056b298bd9ed3c3d4455705443dd7f050d2c11c14",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-02/brief.md",
+      "sha256": "a7cd24c317d21d99e526f1e9d6040a4759be5f4335a0872dabcafaabf520e39e",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-03/brief.md",
+      "sha256": "705fa423f77f737344a05429ff9375d806b85e30b18db3e44f8163383984a818",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-04/brief.md",
+      "sha256": "d99baba3d7baf83220e546a0dd964ec212c61921116d65f61f17e1797d5514fc",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-05/brief.md",
+      "sha256": "78550d32a46cc85b9b7d190cd47e0115603f3de4b78a0103f744c484812e3f54",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-06/brief.md",
+      "sha256": "72a5416994d86f08b5859b87cd0576c73ca46b3c2bbf5eb42df38c7b84a1ecf4",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-07/brief.md",
+      "sha256": "f26652146ffc7b37f0f998bf26b451badb7c3d808f7b8f82a952cf47f1a1dd47",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-08/brief.md",
+      "sha256": "9d881fe8734a783dc7ce85e9d2ea5d81a2280d88e3d8c906e6fafae0cb9f43b8",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-09/brief.md",
+      "sha256": "b776b88fb61a53ef87fb38bf9b38040471a0818670f90ba24de14f752bba3323",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-10/brief.md",
+      "sha256": "ae390d532ecfda7136871192599e439e273237b7ae6eb253ee03eadfe76727e6",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-11/brief.md",
+      "sha256": "3d4d5882d8749d23985d2ff4a6cc5501e1b10c4a1a93c83c8f51362e1bf2d2d3",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-12/brief.md",
+      "sha256": "55cc9a9cda95ea6652ef50ba0fd427b0de904f613a34a6a419b6e93752edef18",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-13/brief.md",
+      "sha256": "ad5c69495ad7566e97443b0976dac7a320c4f1e03b58cb208f393b4500674a00",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-14/brief.md",
+      "sha256": "045cd245e405d345e99cc08ce61fdce075d933b3f0b8f6a47281ed29c129629d",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-15/brief.md",
+      "sha256": "759b2bdef5635a518610bf55eff702ab3f5c956db6b3f0a355bef745491535d3",
+      "portable": true
+    },
+    {
+      "path": "docs/videos/dots-lesson-16/brief.md",
+      "sha256": "de9cf69c6148786d9636a113d1a540ba7aaa823d7ea5510e3d1d01a0561ad226",
+      "portable": true
+    }
+  ],
+  "manifest_hashes": {
+    "production": "2799cfa5cc472cefc7bbfda482bf66b52a2a833a98c08ed70dab9000cab866ec",
+    "build": "ad894f9d13fb0edcd513025d4f9d3dc00f6ec401ed5f6a44bf9555c9dbb76d0e"
+  },
+  "art": {
+    "svg": [
+      {
+        "path": "apps/web/public/guides/dots-guide/diagram-1.svg",
+        "sha256": "fb543c2f743d3dce85a54d3e8d020bdb231f50f17333e8d8dbdd872eb569b01d",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-guide/hero.svg",
+        "sha256": "20f2b575f7e65541a5a67e5605c05bded95d8e36cf14c0b1833fff54dbb79c69",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-01/diagram-1.svg",
+        "sha256": "e48b2fe1696232c8cdf2c437027e936f053454fdf85e32fd4c60a512022c12d7",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-01/hero.svg",
+        "sha256": "6d40d573ce0aebe1fcd86f05de92621f7fbdf297589be819fef08e21869ed464",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-02/diagram-1.svg",
+        "sha256": "1612e46e7bc69cefbdff9ee3b2adff77675961c3c01422d9397f00511c9dc821",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-02/hero.svg",
+        "sha256": "5f379d9161a77af617f7d472de3811664126b1976ca476188d81b3b2a7ef0d97",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-03/diagram-1.svg",
+        "sha256": "399311398c6cd028df46b4c498960b3243ef7323fcedd5fd78d23a43556c86fd",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-03/hero.svg",
+        "sha256": "f198ea762116552cbfbdd4617e868ded09185ce350a4a4e4df4af92d664d8377",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-04/diagram-1.svg",
+        "sha256": "34011c1bf0487fd84c92d0e0fa3f98c6454abff46388fa2799e85996bb601f05",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-04/hero.svg",
+        "sha256": "42cb03370a86be4566991cae2ae686211ea5de9381a46177935da41e3c958bb4",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-05/diagram-1.svg",
+        "sha256": "512312a302598e691cd5b38049c0ee3702c4b8c908d2b3d48d3d06c50337ced7",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-05/hero.svg",
+        "sha256": "d27a729ceaf7585dfb1febd5602d1ed19964c1dbc95c46b031fbba8d1d44135f",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-06/diagram-1.svg",
+        "sha256": "9e6e29114ec5e2c4afb17365d5ddda499b3cbe315df8e000ec07d62988413e4e",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-06/hero.svg",
+        "sha256": "d7ec97dd3a1b08443ad0ac090a6ef6c19e3619069be51d68c33efb8425ff0318",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-07/diagram-1.svg",
+        "sha256": "b1fe063cf378663c5018abc4ad7ac2e0fcfda61fba38df69e65aec124872eab6",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-07/hero.svg",
+        "sha256": "51419ff6e7f36ca212359b5b18e4202a9e14a2f5e3982d5b8e8ce25f4fc154cb",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-08/diagram-1.svg",
+        "sha256": "df5f9341651a18d43fba6bb0f9140e7aaf0c64b2499398326e39d6673568fac3",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-08/hero.svg",
+        "sha256": "2bc15a62df892beb66b6068d9344f8707f4a209f973628008850021b7a073a96",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-09/diagram-1.svg",
+        "sha256": "67a19560f3aef47800b50d5c51977361578623c06be0bef290a60c49b2efac33",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-09/hero.svg",
+        "sha256": "6148e04cd63aa648c896f3cb8c27005802373b5c0e7b361912526924ba7d83cf",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-10/diagram-1.svg",
+        "sha256": "2ccede6221d7b57c9d281d4ceb03f39eef70012ab917947a8656f8d743f86dca",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-10/hero.svg",
+        "sha256": "2b8a58de03e349291fbba82b14d544e86a16f48947b806ae72838658aad1e717",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-11/diagram-1.svg",
+        "sha256": "b5e7b9f9c17d1bfa2044f451b0147043252628293b5c82ff36067ebdab55da37",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-11/hero.svg",
+        "sha256": "2bc55d9bdb40aabf38e4d9cfb966639186f03b366e646d7a447ff0b8d64d67bd",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-12/diagram-1.svg",
+        "sha256": "bf56d085d14b451e35258341236c83837eb5b7a55c6de78b5baa6e5e256f5c35",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-12/hero.svg",
+        "sha256": "a5753cf919ad3e8c3e01034b67358e540016e18ec81d5b2cee276b76efbbd80f",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-13/diagram-1.svg",
+        "sha256": "91e8a5d9b833762eb546048ed10436ec96dc4f0ec479c8a0d2af8bf4cd3e6c51",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-13/hero.svg",
+        "sha256": "18e2a20c15df1a6597c7fa8fe95b29156b0a7a44701eac709875cd33f8e3ce52",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-14/diagram-1.svg",
+        "sha256": "58b3e29b96233c733402ba521e3ab67d07d191017eb6b05008e2c72d0b2c171f",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-14/hero.svg",
+        "sha256": "e6dd96a8ec4172ff6d54d8ce0df86959d9f5f0fdc43eb25748e83157cfca14f6",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-15/diagram-1.svg",
+        "sha256": "3f4b1cd0b302729db0d9726a9009dfc36b4b775af338d63687b65e6988ab3d95",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-15/hero.svg",
+        "sha256": "cf95580cf1c43e49d824cf81781d082954f4798f59bbeaa19baf482c2c464c71",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-16/diagram-1.svg",
+        "sha256": "0035a1df72cda385d6378c6fdb56596e330ea6dcfaa7d2c980c2005cb4f9a555",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-16/hero.svg",
+        "sha256": "4f6256d08f8564074ca2690801a4abe496d760d31b8cdf1383c3b730ed57fd85",
+        "production_svg_errors": [],
+        "metadata_only_render_tree_change": true,
+        "aria_title_desc_binding_valid": true
+      }
+    ],
+    "png": [
+      {
+        "path": "apps/web/public/guides/dots-guide/hero.png",
+        "sha256": "1b292353065690408d617a13391e3a5527cb45b1c03acee6d37c87b53114f08f",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-01/hero.png",
+        "sha256": "bf2bbbd1155e4af1bf47fd8afd8e192a6b9cc811b06256ad44b142e4bd5edf32",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-02/hero.png",
+        "sha256": "0f8dc9e1e284ff0e669ed5b81e1b53ad7a2e9c63b78e91094257d6c0497f5696",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-03/hero.png",
+        "sha256": "c6e1cfb4bdc32809210178a4dd291a86422d0364c7d07b360ef66231aedaadfe",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-04/hero.png",
+        "sha256": "01fdc7f702dcd9bf0f3541157ad39279ca609c5cd0a8a4c91ad97eb49d698794",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-05/hero.png",
+        "sha256": "3f264b84575fd54217b87c0aa91b2066275f0c3b7cc4f825f4b4ba9a66bea13d",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-06/hero.png",
+        "sha256": "424a0575d914cfe1397d4068bece9d2e223c8e905057b8deba70af830f26a255",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-07/hero.png",
+        "sha256": "3faa27865572e18419b1d1e3666d236a6b83187c175467d7a1ac947fe6413819",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-08/hero.png",
+        "sha256": "d8508141a36c5438fc8e668efe97431553f412bb9fc8beb9404cd9c3ec2b9d50",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-09/hero.png",
+        "sha256": "d8a16172f2df45ee88db3f776b0639ec75d7e8173986ef733b649d418acd512f",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-10/hero.png",
+        "sha256": "108e76ed26d4b08fa03ddec7e01be949775005b9ae45678c72f56e8ea93f98ab",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-11/hero.png",
+        "sha256": "740b0d9a9f2298201b7ff425447f9073a55d40c68a20889c6d40b1ea2dce50bc",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-12/hero.png",
+        "sha256": "afa361f1f0610a24b808aa41386e0f2cba48027327e4d34019227e94488467a4",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-13/hero.png",
+        "sha256": "4e1eb9cbf569c6b876e0bda60c14440030b847e3ed16867b3b1318b1d2242a82",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-14/hero.png",
+        "sha256": "f8a62539cc3609e37d79715fa62cf64af9792a1fbe297c475fb0f7a1ff828431",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-15/hero.png",
+        "sha256": "e49a118c4e9992f110b1a8f282e54b87f470cbfdfaf9d894309ef7e63e2b3ed3",
+        "head_bytes_unchanged": true
+      },
+      {
+        "path": "apps/web/public/guides/dots-lesson-16/hero.png",
+        "sha256": "babf47b303759eb92927974bf099045f3d152587208d0e6d59defca48b746fa1",
+        "head_bytes_unchanged": true
+      }
+    ],
+    "contact_sheet_bindings": [
+      {
+        "path": "<external-workspace>/evidence/art/contact-sheet.png",
+        "sha256": "9b1b72d8aa67c45c820daf93a3257d9ccb33bfda409dbaa5399f75b5cad955c3",
+        "matches_visual_review": true
+      },
+      {
+        "path": "<external-workspace>/evidence/art/diagram-contact-sheet.png",
+        "sha256": "a987337840bd4f843fed4f5a43105a5a1ad42dc8e1b0a29b0907abbaeacae94e",
+        "matches_visual_review": true
+      }
+    ],
+    "visual_review_by": "codex-dots-ci-art",
+    "independent_review_scope": "Metadata, unchanged rendered trees and rasters, production validator and actual visual-review hashes; this agent does not replace the named contact-sheet visual review."
+  },
+  "redaction_provenance": [
+    {
+      "path": "docs/dots-series/reviews/implementation-path-probe.json",
+      "public_sha256": "9f61047d911dc3569ec6cdd02efece2b20f320f83985ade35f3341958a61de73",
+      "raw_original": "<external-workspace>/reviews/implementation-path-probe.json",
+      "raw_original_sha256": "b2420ab162e1879f7a4cd6b0498c697f6aee7f31188b9c926566e20f9525450a",
+      "raw_hash_matches_provenance": true,
+      "historical_facts_preserved": true,
+      "redaction_declared": true,
+      "raw_absolute_owner_path_absent": true
+    },
+    {
+      "path": "docs/dots-series/reviews/implementation-path-recheck.json",
+      "public_sha256": "9e7252438d8025f5cf1759c43602da0e6454f7a6b98bd1807382d0249e144584",
+      "raw_original": "<external-workspace>/reviews/implementation-path-recheck.json",
+      "raw_original_sha256": "89ab904e3e10c235b17eee2463699d3b298d165cbe14585d94fde6f1030e9586",
+      "raw_hash_matches_provenance": true,
+      "historical_facts_preserved": true,
+      "redaction_declared": true,
+      "raw_absolute_owner_path_absent": true
+    },
+    {
+      "path": "docs/dots-series/reviews/implementation-path-recheck-lf.json",
+      "public_sha256": "4ea731b58f78f62a1100dba3df60a920f676be718b81e8436321940771c4c7e6",
+      "raw_original": "<external-workspace>/reviews/implementation-path-recheck-lf.json",
+      "raw_original_sha256": "2be8b4ef266bd20e69225bacf3186ff5851de25727032ff24e2f635d4ebc008e",
+      "raw_hash_matches_provenance": true,
+      "historical_facts_preserved": true,
+      "redaction_declared": true,
+      "raw_absolute_owner_path_absent": true
+    }
+  ],
+  "historical_receipts_preserved": true,
+  "registry_scope_exception": "Awaiting user; no edit to the occupied owner test scope.",
+  "limits": [
+    "Read-only current-code/data audit; only this new dated receipt is written in the repo.",
+    "No full CI rerun or claim that remote CI is green.",
+    "No live-account course completion, media acceptance, deployment or publication."
+  ],
+  "published": false,
+  "media_accepted": false,
+  "probe_correction": {
+    "initial_receipt": "<external-workspace>/reviews/ci-fix-review-initial-comparison.json",
+    "initial_receipt_sha256": "a4544c331a145bd32564f6d4c0aa1d0e9971d5b85cb28d4bf7ccfc089cd82f3e",
+    "initial_comparison": "34 false positives from reviewer drawing-tree comparison; the old root aria-label was incorrectly retained while new aria-labelledby and aria-describedby were ignored.",
+    "correction": "Exclude role and all aria-* attributes, title/desc nodes and whitespace-only element text from drawing comparison. Separately validate direct title/desc IDs and exact ARIA relationships; retain every visible geometry, style and nonblank text attribute/content.",
+    "result": "All 34 rendering trees unchanged and all direct ARIA title/description relationships valid. All 17 PNGs remain byte-identical to HEAD. No art/code/source edits made by reviewer.",
+    "previous_probe_facts_reused_only_after_current_sha_recheck": true
+  },
+  "initial_checked_at": "2026-10-03T18:41:04+00:00"
+}

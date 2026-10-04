@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/dots_lessons_foundation",
+  "checked_at": "2026-10-03T23:56:54+00:00",
+  "status": "pass",
+  "findings": [],
+  "branch": "codex/dots-complete-course",
+  "current_root_head": "a0ee7c2c4e9b4f560e2791d5657d74a420fbd4a1",
+  "baseline": {
+    "origin_main_at_rebase": "c03952f9b75a61e5054b053d477e2a85540e92b0",
+    "test_file_sha256": "d7de919804328d9927ce18eb7e1e915588080157e32f1441f7c5d85021823322",
+    "is_ancestor_of_root_head": true,
+    "root_head_test_file_identical_to_baseline": true
+  },
+  "changed_file": {
+    "path": "apps/api/tests/test_guide_series.py",
+    "sha256": "18ef36cdd1278ac532a53c55d7250b8d70317934efd230b4a8c4862b71ffb986",
+    "added_lines": 1,
+    "removed_lines": 0,
+    "diff": "diff --git a/apps/api/tests/test_guide_series.py b/apps/api/tests/test_guide_series.py\nindex fda40fd4f..39019d452 100644\n--- a/apps/api/tests/test_guide_series.py\n+++ b/apps/api/tests/test_guide_series.py\n@@ -63,6 +63,7 @@ def test_the_registry_names_hubs_that_exist_and_series_the_api_can_serve():\n         \"ai-terms\",\n         \"ai-search-terms\",\n         \"ai-workflow\",\n+        \"dots\",\n     ]\n     shipped = {pack.slug: pack.kind for pack in load_packs()}\n     catalogued = {item.slug for item in catalogues()}\n",
+    "UTF8_LF": true,
+    "exact_delta": "Only insert the dots expected registry slug after ai-workflow."
+  },
+  "assertion_integrity": {
+    "existing_assert_count": 5,
+    "current_assert_count": 5,
+    "all_other_file_bytes_identical_after_removing_the_added_line": true,
+    "exact_registry_order_assertion_retained": true,
+    "hub_kind_section_topic_vocabulary_and_catalogue_assertions_retained": true,
+    "upstream_ai_workflow_function_AST_identical": true,
+    "upstream_ai_workflow": {
+      "entries": 18,
+      "groups": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "paths": [
+        "concepts",
+        "builder",
+        "operator",
+        "agent-local"
+      ]
+    }
+  },
+  "independent_targeted_validation": {
+    "tests": [
+      "test_the_registry_names_hubs_that_exist_and_series_the_api_can_serve",
+      "test_the_ai_workflow_catalogue_is_complete_and_references_are_valid"
+    ],
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "exit_code": 0,
+    "duration_seconds": 10.3,
+    "command": "<repo>/apps/api/.venv/Scripts/python.exe -B -m pytest tests/test_guide_series.py::test_the_registry_names_hubs_that_exist_and_series_the_api_can_serve tests/test_guide_series.py::test_the_ai_workflow_catalogue_is_complete_and_references_are_valid -p no:cacheprovider -q",
+    "output": "2 passed in 10.30s",
+    "full_suite_run": false
+  },
+  "scope_observed": {
+    "own_task": "tasks/open/2026-10-03-dots-complete-course.md",
+    "own_task_sha256": "193eb60cc2046ae9fc2ab28cd7bc8fab2f280de5b498881dc33b445d4672a72d",
+    "only_changed_task_file": [
+      "tasks/open/2026-10-03-dots-complete-course.md"
+    ],
+    "other_tracked_changes": [
+      "docs/dots-series/ACCEPTANCE.md",
+      "docs/dots-series/HANDOVER.md",
+      "tasks/open/2026-10-03-dots-complete-course.md"
+    ],
+    "all_changes_within_named_task_or_status_handoff_scope": true,
+    "force_claim_reason_recorded_in_own_task": true,
+    "other_scope_task_unchanged": "tasks/open/2026-10-03-illustrated-slides-round-2-a-family.md",
+    "other_task_status": "review",
+    "other_task_scope_includes": "apps/api/tests",
+    "other_task_claimed_at": "2026-10-03T08:25:14Z",
+    "other_claim_age_hours_at_review": 15.53,
+    "other_scope_not_characterized_as_stale_or_expired": true
+  },
+  "root_reported_decision_and_collision_evidence": {
+    "source": "Root delegation and collision-agent report; this reviewer independently verified local diff and task files, not all other worktrees or PRs.",
+    "authorization_wording": "The user repeated CI紅 after the concrete one-line proposal. Root interpreted the renewed instruction as requiring the narrow necessary CI fix and documented the force-own-claim reason. No claim of an explicit yes or explicit scope-exception approval is made.",
+    "root_red_before": "1 failed / 1 passed; root performed this, not rerun by this reviewer.",
+    "collision_audit": "Root reports PR #1172 merged only test_video_media_providers; 29 worktrees checked, c5d9 old exact-file modification has no registry/AI Workflow tests and was untouched; four open PRs have no API-test changes."
+  },
+  "publication_boundary": {
+    "holds_path": "apps/api/app/guides/publish_holds.json",
+    "holds_sha256": "26f059de0bf5a250a0866727a75c77924de666929a02a37e6e3d9fe794cb126d",
+    "dots_holds_retained": [
+      "dots-guide",
+      "dots-lesson-01",
+      "dots-lesson-02",
+      "dots-lesson-03",
+      "dots-lesson-04",
+      "dots-lesson-05",
+      "dots-lesson-06",
+      "dots-lesson-07",
+      "dots-lesson-08",
+      "dots-lesson-09",
+      "dots-lesson-10",
+      "dots-lesson-11",
+      "dots-lesson-12",
+      "dots-lesson-13",
+      "dots-lesson-14",
+      "dots-lesson-15",
+      "dots-lesson-16"
+    ],
+    "count": 17,
+    "unchanged_from_root_head": true,
+    "released": false,
+    "root_reports_PR_is_draft": true,
+    "remote_new_CI": "pending root push and actual CI"
+  },
+  "historical_receipts": [
+    {
+      "path": "docs/dots-series/reviews/applications-author-final.json",
+      "sha256": "5b015cf79d3a5c97553d16c0da7eeae52d1ea81ccb724a5a94b1179f34f0996a",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/applications-review.md",
+      "sha256": "7fe90ec8fd8187f7afdad249141d806bd5d654ad1e04608949ba34478e816417",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/ci-fix-review.json",
+      "sha256": "16ffd5d752ba49d36f26647cb45cab2392092734129c466da2944938e5cb544b",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/fixture-review.json",
+      "sha256": "0f26aeded341ad7b3bc4250722ed1a3395b64fbc3f13b27b359f94739b8fd4f2",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/foundation-amendments.json",
+      "sha256": "a3b3dce46dea472f036f282ee755058ff6d7321167d917270891f6707f6e4dbe",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/foundation-amendments.md",
+      "sha256": "858cd9faf12b2b8d7262b0c6fa283b66e17d99cf65f7f0d12888c8c0da44a7d0",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/foundation-independent-amendment-verification.json",
+      "sha256": "68c4631b20786b86918ffc04468bab27ae20a94b6824ca0d85a7f9d80e5758f9",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/foundation-review.md",
+      "sha256": "7a2a4c3afda89699d28a64552bcee858dc8d3305a5ce2c3b28cf3ea330aa3f38",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/implementation-final-lf-audit.json",
+      "sha256": "d01bd5219e38e10a16e73c1b961545105783a68f95160f3d98f38171a803251b",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/implementation-path-probe.json",
+      "sha256": "9f61047d911dc3569ec6cdd02efece2b20f320f83985ade35f3341958a61de73",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/implementation-path-recheck-lf.json",
+      "sha256": "4ea731b58f78f62a1100dba3df60a920f676be718b81e8436321940771c4c7e6",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/implementation-path-recheck.json",
+      "sha256": "9e7252438d8025f5cf1759c43602da0e6454f7a6b98bd1807382d0249e144584",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/implementation-review.md",
+      "sha256": "9a27fd1294dbcc5cb950832d499fba5ce752b735ec2777e4fbbf48ce3aea6712",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/lesson02-actual-output-review.json",
+      "sha256": "4a23de3ac86d89b15fd073150bb0bf95ee750863b5a5bbd20c77e55f867d8e8f",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/lesson02-capture-log.json",
+      "sha256": "0e6d560b3fcc252e41e8d4ff2037bf5f8e6c97b704db793dd42a8e9eeeb2cca0",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/lesson02-public-capture-index.json",
+      "sha256": "f56572d1ffbaa488b3a3743f94b0053257ae5065b6089169496b22770fb45271",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/lesson13-actual-output-review-v1.json",
+      "sha256": "c963d2bfa039758bb07fa3bafd25b8249a54097f2559f66591eeb6960fcb29fc",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/lesson13-visual-review-v1.json",
+      "sha256": "87c25bcb05e7bda768542a2060c1a9b0ef8422cc373bef0d39dcfc7ef4c77628",
+      "unchanged_from_root_head": true
+    },
+    {
+      "path": "docs/dots-series/reviews/source-review-receipt.json",
+      "sha256": "85cd402a6b871add49a833a26493ec7fb413af7aaa752eb45dd6805bbb1330a4",
+      "unchanged_from_root_head": true
+    }
+  ],
+  "limits": [
+    "Only current precise registry correction and narrow existing-test validation.",
+    "No code edits, other owner-scope edits, new tests or full suites by this reviewer.",
+    "No remote CI green, complete course/media, deployment or publication claim."
+  ],
+  "published": false,
+  "media_accepted": false
+}

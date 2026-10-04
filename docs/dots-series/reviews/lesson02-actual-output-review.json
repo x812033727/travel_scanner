@@ -1,0 +1,338 @@
+{
+  "schema_version": 1,
+  "lesson": "02",
+  "reviewer": "/root/dots_lessons_foundation",
+  "checked_at": "2026-10-03T17:17:26+00:00",
+  "checked_timezone": "UTC",
+  "local_review_date": "2026-10-04",
+  "local_review_timezone": "Asia/Taipei",
+  "review_type": "independent_manual_actual_output_and_capture_review",
+  "provenance": "主代理提供為實際登入帳號上的 dots 操作輸入、結果文字與真實截圖；本代理獨立核對檔案內容及逐張視覺，不另登入重跑，也不將文字承諾當成工具或後端狀態證明。",
+  "owner_reported_capture_context": {
+    "personalization-dialog-desktop.png": "主代理補充：最初填名稱並選 Teal 後按儲存，DOM 顯示讀書會小幫手；此截圖是在桌面重新開啟自訂對話框後擷取的 post-save reopen。原始操作紀錄由主代理另存具名 capture log，本代理不據此猜測未見按鍵過程。",
+    "name_readback_proof": "result-v2-desktop.png 標題與 result-v2.txt 合成練習回述。"
+  },
+  "sources": [
+    {
+      "path": "lessons/02.md",
+      "sha256": "3f668428751836accd99c6a02ad65da0c9e0fb5456c174c552aa219ed6e54dfa",
+      "bytes": 7652
+    },
+    {
+      "path": "videos/02.md",
+      "sha256": "bb88928a892e3e3a5c6e61367713f2df66b2e3e002af859aa79bd7a01a0e1011",
+      "bytes": 12709
+    }
+  ],
+  "inputs_outputs": [
+    {
+      "path": "evidence/02/input.txt",
+      "sha256": "c6dea991967c050f91eff699bcc6233e4f2133dc9e1f09b5fc84388cad1c1fcb",
+      "bytes": 587
+    },
+    {
+      "path": "evidence/02/result-v1.txt",
+      "sha256": "d2e0b03330db073fa6c58893478a4e4e8ff4437d4e4c62f8c7166fc944f16099",
+      "bytes": 1252
+    },
+    {
+      "path": "evidence/02/result-v2.txt",
+      "sha256": "427265e7f787cac6d4352e49804ad96e6e1bfa36781f14a54c5efa750b85cdc7",
+      "bytes": 995
+    }
+  ],
+  "checks": [
+    {
+      "id": "canonical_prompt",
+      "pass": true,
+      "finding": "input.txt 保留第 02 課原提示的角色、繁中、結論先行、時區、完整日期、禁止排程/對外傳送/新連線及未知狀態說明，另加 DEMO 代號與排除既有專案的範圍限定。"
+    },
+    {
+      "id": "v1_scope",
+      "pass": true,
+      "finding": "初版回述只使用虛構讀書會資料，列出工作方式、待決定事項、已知與缺少背景，未捏造書名、日期、人數或帳號狀態。"
+    },
+    {
+      "id": "v1_format",
+      "pass": true,
+      "finding": "先給結論；工作方式 5 項、待決定 3 項、可用資料 2 項、缺少背景 3 項；明確說不知道帳號與連線狀態。"
+    },
+    {
+      "id": "v2_observed_input",
+      "pass": true,
+      "finding": "result-v2-desktop.png 可見同一 DEMO 的接續提示：每份清單最多五項，超出另列補充；重新整理剛才背景；仍只用合成資料且不排程、不對外傳送、不連新帳號。沒有獨立 input-v2.txt，第二輪提示證據綁定於此截圖。"
+    },
+    {
+      "id": "v2_preference_application",
+      "pass": true,
+      "finding": "第二版明確接受新偏好，待決定事項 3 項、已知背景 5 項、缺少背景 5 項，各清單不超過 5 項；帳號未知另列補充。"
+    },
+    {
+      "id": "v2_context_preservation",
+      "pass": true,
+      "finding": "第二版保留 DEMO 代號、合成角色、繁中、Asia/Taipei、完整日期要求與禁止動作，仍不宣稱已讀 Gmail、行事曆或其他工具。"
+    },
+    {
+      "id": "text_capture_consistency",
+      "pass": true,
+      "finding": "兩張結果圖中可見的回覆與對應文字檔一致；v2 回覆完整可見，v1 只核對可見上半段，v1 缺少背景與帳號未知部分主要由文字檔支援。"
+    },
+    {
+      "id": "name_observed_after_dialog",
+      "pass": true,
+      "finding": "個人化對話框與兩張結果圖的 dot 標題均顯示合成名稱「讀書會小幫手」，可支援名稱已套用；外觀顏色是否依對話框選擇儲存，不由本組畫面判定。"
+    }
+  ],
+  "content_expectation_pass": true,
+  "continuation_update_pass": true,
+  "version_diff": {
+    "v1": {
+      "work_method_items": 5,
+      "decision_items": 3,
+      "available_data_items": 2,
+      "missing_background_items": 3
+    },
+    "v2": {
+      "decision_items": 3,
+      "known_background_items": 5,
+      "missing_background_items": 5
+    },
+    "observed_changes": [
+      "改以「已知背景」分列原本集中描述的條件。",
+      "將場地/平台、預算/分工、準備期限拆成三項，缺少背景合計五項。",
+      "未知帳號與連線狀態移至「補充」。"
+    ],
+    "durable_cross_session_memory_verified": false
+  },
+  "capture_review": {
+    "reviewed_count": 7,
+    "privacy_clean_count": 6,
+    "needs_redaction_count": 1,
+    "below_geometry_gate_count": 4,
+    "captures": [
+      {
+        "path": "evidence/02/create-introduction-iab.png",
+        "sha256": "360f306347353e972ee1f09f14ec639243eedd08de4dc1f1272245c76eddc620",
+        "bytes": 25635,
+        "width": 319,
+        "height": 779,
+        "purpose": "建立你的 dot 初始介紹",
+        "reviewer": "/root/dots_lessons_foundation",
+        "checked_at": "2026-10-03T17:17:26+00:00",
+        "review_method": "真人式逐張視覺檢查原始本機檔案，未以 OCR 或自動規則代替個資判讀",
+        "action_status": "clean",
+        "private_content_seen": false,
+        "privacy_note": "未見帳號、聊天標題、私人通知或其他專案內容；只含產品介紹。",
+        "readability_note": "319 像素寬的窄幅截圖，縮放進橫式成片後內文會太小；製片須逐區放大，或另擷取桌面寬幅版本。",
+        "observed_coverage": [
+          "建立介紹",
+          "繼續按鈕"
+        ],
+        "privacy_clean_at_reviewed_sha": true,
+        "owner_publication_approval": false,
+        "capture_geometry_gate": {
+          "minimum_width": 320,
+          "minimum_height": 180,
+          "pass": false,
+          "note": "此為既有 readiness 圖片尺寸門檻，與 privacy-clean 分開；319px 原圖不能直接通過門檻，須補擷取可讀實際畫面。"
+        },
+        "final_video_readability_pass": null,
+        "lesson_complete_capture": false
+      },
+      {
+        "path": "evidence/02/google-optional-iab.png",
+        "sha256": "281e4da6d5ae875c865cec36bb572d23c845f06456a9c722d775ca1b9b2d6914",
+        "bytes": 28872,
+        "width": 319,
+        "height": 779,
+        "purpose": "可選的 Google 連線",
+        "reviewer": "/root/dots_lessons_foundation",
+        "checked_at": "2026-10-03T17:17:26+00:00",
+        "review_method": "真人式逐張視覺檢查原始本機檔案，未以 OCR 或自動規則代替個資判讀",
+        "action_status": "clean",
+        "private_content_seen": false,
+        "privacy_note": "只見產品連線說明與按鈕，未見 Google 帳號或授權資料。",
+        "readability_note": "319 像素寬；應放大「使用 Google 繼續」與底部略過選項。本圖未證明曾授權或連線成功。",
+        "observed_coverage": [
+          "Google 可選連線頁",
+          "底部不提供背景資訊的繼續選項"
+        ],
+        "privacy_clean_at_reviewed_sha": true,
+        "owner_publication_approval": false,
+        "capture_geometry_gate": {
+          "minimum_width": 320,
+          "minimum_height": 180,
+          "pass": false,
+          "note": "此為既有 readiness 圖片尺寸門檻，與 privacy-clean 分開；319px 原圖不能直接通過門檻，須補擷取可讀實際畫面。"
+        },
+        "final_video_readability_pass": null,
+        "lesson_complete_capture": false
+      },
+      {
+        "path": "evidence/02/computer-choice-iab.png",
+        "sha256": "5ea838f6d99a70a1a924a0df1a5363617d4ff777b5d437f54f4be2730755cf02",
+        "bytes": 30769,
+        "width": 319,
+        "height": 780,
+        "purpose": "雲端與本機電腦選擇",
+        "reviewer": "/root/dots_lessons_foundation",
+        "checked_at": "2026-10-03T17:17:26+00:00",
+        "review_method": "真人式逐張視覺檢查原始本機檔案，未以 OCR 或自動規則代替個資判讀",
+        "action_status": "clean",
+        "private_content_seen": false,
+        "privacy_note": "只見設定頁與產品內建電腦插圖，未見私人檔案或實際桌面內容。",
+        "readability_note": "319 像素寬；放大雲端勾選與本機「開啟應用程式」，本圖只證明當下顯示雲端選項勾選。",
+        "observed_coverage": [
+          "您的 dot 的電腦勾選",
+          "您的本機電腦選項",
+          "繼續按鈕"
+        ],
+        "privacy_clean_at_reviewed_sha": true,
+        "owner_publication_approval": false,
+        "capture_geometry_gate": {
+          "minimum_width": 320,
+          "minimum_height": 180,
+          "pass": false,
+          "note": "此為既有 readiness 圖片尺寸門檻，與 privacy-clean 分開；319px 原圖不能直接通過門檻，須補擷取可讀實際畫面。"
+        },
+        "final_video_readability_pass": null,
+        "lesson_complete_capture": false
+      },
+      {
+        "path": "evidence/02/first-conversation-iab.png",
+        "sha256": "61b5352dfe968a8604f941ff5f4c81bfb4c0650e88b3ddaa83558a0884f47f1f",
+        "bytes": 25476,
+        "width": 319,
+        "height": 779,
+        "purpose": "建立後第一段對話",
+        "reviewer": "/root/dots_lessons_foundation",
+        "checked_at": "2026-10-03T17:17:26+00:00",
+        "review_method": "真人式逐張視覺檢查原始本機檔案，未以 OCR 或自動規則代替個資判讀",
+        "action_status": "clean",
+        "private_content_seen": false,
+        "privacy_note": "只見 dot 的通用歡迎訊息與同頁輸入框，未見私人背景、帳號名稱或其他聊天。",
+        "readability_note": "319 像素寬；逐區放大歡迎訊息與「自訂你的 dot」入口，不能把這張圖當作後續偏好確認。",
+        "observed_coverage": [
+          "通用歡迎對話",
+          "自訂你的 dot 入口",
+          "訊息輸入框"
+        ],
+        "privacy_clean_at_reviewed_sha": true,
+        "owner_publication_approval": false,
+        "capture_geometry_gate": {
+          "minimum_width": 320,
+          "minimum_height": 180,
+          "pass": false,
+          "note": "此為既有 readiness 圖片尺寸門檻，與 privacy-clean 分開；319px 原圖不能直接通過門檻，須補擷取可讀實際畫面。"
+        },
+        "final_video_readability_pass": null,
+        "lesson_complete_capture": false
+      },
+      {
+        "path": "evidence/02/personalization-dialog-desktop.png",
+        "sha256": "93f916f69a51be89f9d835eca5fca1e191a81ede11f43c09fe76ebd7714da1b6",
+        "bytes": 31921,
+        "width": 800,
+        "height": 480,
+        "purpose": "示範名稱與外觀設定",
+        "reviewer": "/root/dots_lessons_foundation",
+        "checked_at": "2026-10-03T17:17:26+00:00",
+        "review_method": "真人式逐張視覺檢查原始本機檔案，未以 OCR 或自動規則代替個資判讀",
+        "action_status": "clean",
+        "private_content_seen": false,
+        "privacy_note": "只有合成示範名稱「讀書會小幫手」和外觀選項，未見私人帳號或背景。",
+        "readability_note": "800×480，名稱與儲存按鈕清楚；顏色列需放大。主代理補充此圖是先儲存名稱與 Teal，再重新開啟自訂對話框的讀回畫面。單憑本圖仍不宣告各外觀設定皆已核對；名稱另由 result-v2 標題讀回支援。",
+        "observed_coverage": [
+          "示範名稱欄位",
+          "顏色與角色選項",
+          "儲存按鈕"
+        ],
+        "privacy_clean_at_reviewed_sha": true,
+        "owner_publication_approval": false,
+        "capture_geometry_gate": {
+          "minimum_width": 320,
+          "minimum_height": 180,
+          "pass": true,
+          "note": "此為既有 readiness 圖片尺寸門檻，與 privacy-clean 分開；319px 原圖不能直接通過門檻，須補擷取可讀實際畫面。"
+        },
+        "final_video_readability_pass": null,
+        "lesson_complete_capture": false
+      },
+      {
+        "path": "evidence/02/result-v1-desktop.png",
+        "sha256": "c10930f661cacbd45ca457a23825eb83c3e0b0faa42b93156ababc8f98e3ee9e",
+        "bytes": 141498,
+        "width": 1202,
+        "height": 900,
+        "purpose": "初次工作方式回述",
+        "reviewer": "/root/dots_lessons_foundation",
+        "checked_at": "2026-10-03T17:17:26+00:00",
+        "review_method": "真人式逐張視覺檢查原始本機檔案，未以 OCR 或自動規則代替個資判讀",
+        "action_status": "needs_redaction",
+        "private_content_seen": true,
+        "privacy_note": "頂部約 y=0–195 含與本次合成練習無關的既有專案背景及連結，屬私人先前上下文；原圖不得公開。",
+        "readability_note": "1202×900 主文可讀，但初版結果下半部被輸入框與視窗邊界截斷；單純裁切無法補足結果。先裁掉全部先前上下文，再重拍或補拍初版結果末段，重新做雜湊與個資覆核。",
+        "observed_coverage": [
+          "合成初次提示詞",
+          "初版結果前半段"
+        ],
+        "privacy_clean_at_reviewed_sha": false,
+        "owner_publication_approval": false,
+        "capture_geometry_gate": {
+          "minimum_width": 320,
+          "minimum_height": 180,
+          "pass": true,
+          "note": "此為既有 readiness 圖片尺寸門檻，與 privacy-clean 分開；319px 原圖不能直接通過門檻，須補擷取可讀實際畫面。"
+        },
+        "final_video_readability_pass": null,
+        "lesson_complete_capture": false
+      },
+      {
+        "path": "evidence/02/result-v2-desktop.png",
+        "sha256": "0a25bc1b7babbc1b3ccbc404020c62ee565b5ab628a0a74f134090fe22187312",
+        "bytes": 123723,
+        "width": 1202,
+        "height": 900,
+        "purpose": "偏好變更後重新整理",
+        "reviewer": "/root/dots_lessons_foundation",
+        "checked_at": "2026-10-03T17:17:26+00:00",
+        "review_method": "真人式逐張視覺檢查原始本機檔案，未以 OCR 或自動規則代替個資判讀",
+        "action_status": "clean",
+        "private_content_seen": false,
+        "privacy_note": "頂部為同一合成案例初版尾段；全部可見文字均屬本次虛構練習，未見私人先前背景或帳號識別。",
+        "readability_note": "1202×900，偏好更新提示及完整第二版回覆均可讀。製片需依區域放大，避免一次呈現整頁；頂部初版尾段可為教學節奏另行裁切，但不是個資必需處理。",
+        "observed_coverage": [
+          "偏好變更提示詞",
+          "最多五項回述",
+          "三項待決定事項",
+          "五項已知與五項缺少背景",
+          "帳號未知補充"
+        ],
+        "privacy_clean_at_reviewed_sha": true,
+        "owner_publication_approval": false,
+        "capture_geometry_gate": {
+          "minimum_width": 320,
+          "minimum_height": 180,
+          "pass": true,
+          "note": "此為既有 readiness 圖片尺寸門檻，與 privacy-clean 分開；319px 原圖不能直接通過門檻，須補擷取可讀實際畫面。"
+        },
+        "final_video_readability_pass": null,
+        "lesson_complete_capture": false
+      }
+    ]
+  },
+  "limits": [
+    "回覆接受日期格式，但本次沒有具體活動日期，未驗證實際日期格式或時區轉換。",
+    "回覆說明不排程、不傳送、不連新帳號；沒有另看 Activity 或控制頁，不能據此證明後端完全沒有外部動作。",
+    "連線清單、profile Add、Computers 盤點、手機入口與完整資格查驗沒有本組證據。",
+    "主代理說明個人化圖為儲存後重新開啟的讀回；本代理未見原始點擊紀錄，名稱已由後續標題核對，顏色 preview 與選項 highlight 可能不同步，完整外觀變更仍不由此組證據判定。",
+    "四張 319px 寬的 IAB 原圖低於 readiness 的最小 320px 圖片尺寸門檻，須補擷取實際可讀畫面；製片仍需逐區放大。未做成片播放、手機影片閱讀與字幕同步檢查。",
+    "result-v1-desktop.png 含私人先前上下文，原始檔不得直接放入公開文章或影片；任何裁切/遮罩後的衍生檔須重新以實際 SHA 覆核。"
+  ],
+  "lesson_complete": false,
+  "sample_video_complete": false,
+  "full_course_capture_complete": false,
+  "media_accepted": false,
+  "owner_publication_approval": false,
+  "published": false
+}
