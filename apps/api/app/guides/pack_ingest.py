@@ -201,6 +201,15 @@ def _document_text(document: GuideDocument) -> str:
     return "\n".join(part for part in parts if part)
 
 
+def _links_only(block: RichParagraphBlock) -> bool:
+    """A paragraph that is nothing but links -- a "further reading" line -- is a link label,
+    not running text. A link inside a sentence is part of the sentence and still counts."""
+    return all(
+        isinstance(node, LinkInline | ArticleInline) or not node.text.strip()
+        for node in block.inlines
+    )
+
+
 def _body_parts(document: GuideDocument) -> list[str]:
     """The running text, block by block: paragraphs, lists, tables and callouts, not the title,
     captions or link labels. ``_body_length`` counts it and ``finance_claim_language`` reads it,
@@ -210,7 +219,8 @@ def _body_parts(document: GuideDocument) -> list[str]:
         if isinstance(block, ParagraphBlock):
             parts.append(block.text)
         elif isinstance(block, RichParagraphBlock):
-            parts.append("".join(node.text for node in block.inlines))
+            if not _links_only(block):
+                parts.append("".join(node.text for node in block.inlines))
         elif isinstance(block, ListBlock):
             parts.extend(block.items)
         elif isinstance(block, TableBlock):
@@ -878,19 +888,35 @@ def chromium_binary() -> str:
     raise PackIngestError("no Chromium found; set CHROMIUM_BIN")
 
 
+#: How much larger than the picture the browser window opens. Full Chrome counts its window
+#: frame in ``--window-size`` (22×98 px in Chrome 154 on Windows); the headless shell has none.
+RENDER_MARGIN = 200
+#: The colour of a one-pixel mark painted just past the picture's bottom-right corner.
+RENDER_MARK = (255, 0, 255)
+
+
 def render_svg(svg: Path, png: Path, *, chromium: str | None = None) -> None:
     """Screenshot the SVG at 1600×900 with headless Chromium. The SVG is inlined into a
     one-element HTML page so it is laid out at exactly that size whatever its own width and
-    height attributes say."""
+    height attributes say.
+
+    The window opens ``RENDER_MARGIN`` larger and the shot is cut back to the picture from its
+    top-left corner, because full Chrome lays the page out in the window less its frame:
+    Playwright's chromium-1194 on Linux left the bottom 88 px of a hero white. The mark past the
+    corner has to be in the shot, so a browser that still shows less than the picture fails
+    here instead of writing a cropped one."""
     width, height = HERO_SIZE
     page = (
         "<!doctype html><meta charset='utf-8'><style>html,body{margin:0;padding:0;"
         f"background:#fff}}svg{{display:block;width:{width}px;height:{height}px}}</style>"
         + svg.read_text(encoding="utf-8")
+        + f"<div style='position:absolute;left:{width}px;top:{height}px;width:1px;height:1px;"
+        f"background:rgb{RENDER_MARK}'></div>"
     )
     with tempfile.TemporaryDirectory() as folder:
         html_path = Path(folder) / "render.html"
         html_path.write_text(page, encoding="utf-8")
+        shot = Path(folder) / "shot.png"
         command = [
             chromium or chromium_binary(),
             "--headless",
@@ -898,13 +924,25 @@ def render_svg(svg: Path, png: Path, *, chromium: str | None = None) -> None:
             "--disable-gpu",
             "--hide-scrollbars",
             "--force-device-scale-factor=1",
-            f"--window-size={width},{height}",
-            f"--screenshot={png}",
+            f"--window-size={width + RENDER_MARGIN},{height + RENDER_MARGIN}",
+            f"--screenshot={shot}",
             html_path.as_uri(),
         ]
         result = subprocess.run(command, capture_output=True, text=True, timeout=120)
-    if result.returncode != 0 or not png.is_file():
-        raise PackIngestError(f"rendering {svg.name} failed: {result.stderr.strip()[-400:]}")
+        if result.returncode != 0 or not shot.is_file():
+            raise PackIngestError(f"rendering {svg.name} failed: {result.stderr.strip()[-400:]}")
+        with Image.open(shot) as opened:
+            picture = opened.convert("RGB")
+    inside = picture.width > width and picture.height > height
+    mark = picture.getpixel((width, height)) if inside else None
+    if not isinstance(mark, tuple) or any(
+        abs(a - b) > 16 for a, b in zip(mark, RENDER_MARK, strict=True)
+    ):
+        raise PackIngestError(
+            f"rendering {svg.name}: the browser showed less than {width}×{height} of the page; "
+            "set CHROMIUM_BIN to Playwright's chromium_headless_shell"
+        )
+    picture.crop((0, 0, width, height)).save(png, "PNG")
 
 
 # --- ingest -------------------------------------------------------------------------------

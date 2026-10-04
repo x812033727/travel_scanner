@@ -9,8 +9,11 @@ import { windowsOf } from '../../../tools/video/dubs/plan.mjs';
 
 const slug = 'ai-real-world-01-image-trust';
 function fixture() {
-  const bounds = [0, 10.113, 20.279, 31.193, 40.417, 50.803, 60.509];
-  const words = ['第一句原始旁白。', '第二句保留原文。', '第三句帶有限制。', '第四句只是示意。', '第五句需要查證。', '第六句結束說明。'];
+  // This is a long-video adapter: realistic narration and absolute windows must
+  // also satisfy the shared eight-minute lint floor while retaining fractional
+  // endpoints for frame quantization and the original 80ms clip tail.
+  const bounds = [0, 80.113, 160.279, 241.193, 320.417, 400.803, 480.509];
+  const words = ['第一句原始旁白。', '第二句保留原文。', '第三句帶有限制。', '第四句只是示意。', '第五句需要查證。', '第六句結束說明。'].map((text) => text.repeat(50));
   const units = words.map((text, index) => ({ scene: Math.floor(index / 2), text, start: bounds[index], end: bounds[index + 1] }));
   const scenes = ['辨認來源', '檢查時間', '比對紀錄'].map((heading, index) => ({ heading, cards: ['來源', '時間', '佐證'], narration: words.slice(index * 2, index * 2 + 2).join('') }));
   return { slug, episode: { id: '01-image-trust', theme: '來源查證', thumb_a: '先問來源', sources: [], scenes },
@@ -119,8 +122,8 @@ test('inserting a different sentence preserves existing content-derived IDs', ()
 test('does not treat the original 80ms tail as spoken clip samples', () => {
   const input = fixture();
   const result = buildAdapter(input);
-  assert.equal(result.timeline.lines[0].audio_samples, Math.round((10.113 - 0.08) * 48000));
-  input.audioSamples[0] = Math.round(11 * 48000);
+  assert.equal(result.timeline.lines[0].audio_samples, Math.round((input.timing.units[0].end - 0.08) * 48000));
+  input.audioSamples[0] = Math.round((input.timing.units[0].end + 1) * 48000);
   assert.throws(() => buildAdapter(input), /Invalid spoken sample count/);
 });
 

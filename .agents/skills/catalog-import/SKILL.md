@@ -40,10 +40,10 @@ metadata:
 
 | 線 | 順序 | 讀 |
 | --- | --- | --- |
-| 景點候選 | `generate-hotspot-candidates --city <CODE> --dry-run`（主機，取 `document`）→ 本機存檔 → `import-hotspot-candidates --file /dev/stdin` → `--apply` | `references/other-data.md` |
-| 假日 | 本機 `refresh-holidays --country jp --year …`（`tw` 要 `--file` 手動下載的 CSV）→ `--apply` → PR | `references/other-data.md`、`docs/public-holidays.md` |
-| backfill | `backfill-trip-item-names`、`backfill-merchant-english-names`、`fill-simplified-names`、`fill-hotspot-labels`，各自 dry-run 先 | `references/other-data.md` |
-| 文章維護 | 大量發布或 migration 後 `guides-search-reindex`、`guides-links-rebuild`、`guides-aliases-seed`，再 `guides-links-check`；景點攻略待審 `review-pending-guides`、誤配國家 `guides-foreign-place-scan` | `references/other-data.md` |
+| 景點候選 | `generate-hotspot-candidates --city <CODE> --dry-run`（主機，取 `document`）→ 本機存檔 → `import-hotspot-candidates --file /dev/stdin` → `--apply` | `.agents/skills/catalog-import/references/other-data.md` |
+| 假日 | 本機 `refresh-holidays --country jp --year …`（`tw` 要 `--file` 手動下載的 CSV）→ `--apply` → PR | `.agents/skills/catalog-import/references/other-data.md`、`docs/public-holidays.md` |
+| backfill | `backfill-trip-item-names`、`backfill-merchant-english-names`、`fill-simplified-names`、`fill-hotspot-labels`，各自 dry-run 先 | `.agents/skills/catalog-import/references/other-data.md` |
+| 文章維護 | 大量發布或 migration 後 `guides-search-reindex`、`guides-links-rebuild`、`guides-aliases-seed`，再 `guides-links-check`；景點攻略待審 `review-pending-guides`、誤配國家 `guides-foreign-place-scan` | `.agents/skills/catalog-import/references/other-data.md` |
 
 ## 指令
 

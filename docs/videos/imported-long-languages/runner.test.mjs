@@ -15,11 +15,12 @@ import { presentationTimeline, validateBranding } from "../../../tools/video/cor
 import { localeTexts } from "../../../tools/video/core/stages.mjs";
 import { buildCues, toSrt } from "../../../tools/video/core/captions.mjs";
 import { composeMetadata } from "../../../tools/video/package/metadata.mjs";
-import { prepareHandoff, readManualLanguageSource } from "../../../tools/video/review/renewal-handoff.mjs";
+import { prepareApprovedFinalHandoff, prepareHandoff, readManualLanguageSource } from "../../../tools/video/review/renewal-handoff.mjs";
 import { main as videoMain } from "../../../tools/video/cli.mjs";
 import { Automation } from "../../../tools/video/automation/flow.mjs";
 import { readUnits, unitKey } from "../../../tools/video/automation/sheet-units.mjs";
-import { SLUGS, DIRECT_STAGE_TIMEOUT_MS, HardStop, VideoStop, assertProject, checkedDubReceipt, createSiteClient, cumulativeSnapshot, directStageOrigin, missingPhaseParts, nativeStageRequest, prepareRenewedBatch, resolveManifest, run, submitSnapshot, translateLocaleResuming, validateResumeSheet, verifyLocal } from "./runner.mjs";
+import { capProblem, ledgerTotals } from "../../../tools/video/media/ledger.mjs";
+import { SLUGS, DIRECT_STAGE_TIMEOUT_MS, HardStop, VideoStop, assertProject, checkedDubReceipt, createSiteClient, cumulativeSnapshot, directStageOrigin, journaledStageClient, missingPhaseParts, nativeStageRequest, prepareApprovedFinalBatch, prepareRenewedBatch, resolveManifest, run, submitSnapshot, translateLocaleResuming, validateResumeSheet, verifyLocal } from "./runner.mjs";
 
 const json = (file, value) => { mkdirSync(path.dirname(file), { recursive: true }); writeFileSync(file, JSON.stringify(value)); };
 const hash = (value) => createHash("sha256").update(value).digest("hex");
@@ -50,7 +51,7 @@ async function fixture(t, count = 1) {
   return { base, manifest, manifestFile };
 }
 
-async function renewedFixture(t, { gemini = false, dub = false } = {}) {
+async function renewedFixture(t, { gemini = false, dub = false, brandingBytes } = {}) {
   const f = await fixture(t), entry = f.manifest.videos[0];
   if (gemini) {
     const doc = JSON.parse(readFileSync(entry.doc_file)); doc.voice = { provider: "gemini", name: "Sulafat", model: "gemini-3.8-flash-tts" }; doc.target_minutes = [8, 20];
@@ -67,8 +68,8 @@ async function renewedFixture(t, { gemini = false, dub = false } = {}) {
   timeline.lines = [...eachLine(project.doc)].map(({ line, scene }, index, all) => ({ id: line.id, scene: scene.id, start_frame: Math.floor(index * bodyFrames / all.length), end_frame: Math.floor((index + 1) * bodyFrames / all.length), audio_samples: 120 * 1600 }));
   json(path.join(entry.workdir, "timeline.json"), timeline);
   const old = path.join(f.base, "retained"), canonical = path.join(f.base, "canonical"), prepared = path.join(f.base, "handoff"); mkdirSync(old); mkdirSync(canonical);
-  for (const [name, value] of Object.entries({ "intro.mp4": "intro", "outro.mp4": "outro", "final.mp4": "renewed final", "thumbnail.jpg": "old thumbnail" })) writeFileSync(path.join(old, name), value);
-  const pin = validateBranding({ schema_version: 1, id: "new", intro: { file: "intro.mp4", sha256: hash("intro"), frames: 150 }, outro: { file: "outro.mp4", sha256: hash("outro"), frames: 90 } }, { base: old });
+  for (const [name, value] of Object.entries({ "intro.mp4": brandingBytes?.intro ?? "intro", "outro.mp4": brandingBytes?.outro ?? "outro", "final.mp4": "renewed final", "thumbnail.jpg": "old thumbnail" })) writeFileSync(path.join(old, name), value);
+  const pin = validateBranding({ schema_version: 1, id: "new", intro: { file: "intro.mp4", sha256: hash(readFileSync(path.join(old, "intro.mp4"))), frames: 150 }, outro: { file: "outro.mp4", sha256: hash(readFileSync(path.join(old, "outro.mp4"))), frames: 90 } }, { base: old });
   json(path.join(old, "branding.json"), pin);
   const presented = presentationTimeline(timeline, { hash: pin.hash, intro_frames: 150, outro_frames: 90, body_frames: bodyFrames });
   const captions = toSrt(buildCues(timeline, localeTexts(project.doc, {}).texts["zh-TW"], "zh-TW").cues);
@@ -88,9 +89,108 @@ async function renewedFixture(t, { gemini = false, dub = false } = {}) {
   entry.generated_files = [{ relative_path: path.relative(f.base, path.join(entry.workdir, "timeline.json")), sha256: hash(readFileSync(path.join(entry.workdir, "timeline.json"))), bytes: readFileSync(path.join(entry.workdir, "timeline.json")).length }];
   json(f.manifestFile, f.manifest);
   const runtimeRoot = path.join(f.base, "code");
-  for (const name of ["tools/video/review/renewal-handoff.mjs", ".agents/skills/youtube-video/SKILL.md", ...["runner.mjs", "prepare.mjs", "preflight.mjs"].map((v) => `docs/videos/imported-long-languages/${v}`)]) { mkdirSync(path.dirname(path.join(runtimeRoot, name)), { recursive: true }); writeFileSync(path.join(runtimeRoot, name), `reviewed code ${name}`); }
+  for (const name of ["tools/video/review/renewal-handoff.mjs", ".agents/skills/youtube-video/SKILL.md", ...["runner.mjs", "prepare.mjs", "preflight.mjs", "speech-journal.mjs"].map((v) => `docs/videos/imported-long-languages/${v}`)]) { mkdirSync(path.dirname(path.join(runtimeRoot, name)), { recursive: true }); writeFileSync(path.join(runtimeRoot, name), `reviewed code ${name}`); }
   return { ...f, entry, prepared, site, timeline, presented, contract, runtimeRoot };
 }
+
+async function currentApprovedFixture(t, { dub = false, brandingBytes } = {}) {
+  const f = await renewedFixture(t, { gemini: true, dub, brandingBytes }), project = structuredClone(loadProject({ slug: f.entry.slug, root: f.manifest.root }));
+  project.doc.scenes[0].lines[0].text += "這是新核准正文。";
+  const timeline = structuredClone(f.timeline); timeline.speech_hash = speechHash(project.doc, project.lexicon);
+  const final = f.site.reviews.find((v) => v.gate === "final"), current = path.join(f.base, "current-attachments"), evidence = {}; mkdirSync(current);
+  const presented = presentationTimeline(timeline, { hash: f.contract.source.branding_hash, intro_frames: 150, outro_frames: 90, body_frames: timeline.total_frames }), caption = toSrt(buildCues(presented, localeTexts(project.doc, {}).texts["zh-TW"], "zh-TW").cues);
+  for (const [role, value] of Object.entries({ evidence_script: project.doc, evidence_body_timeline: timeline, "captions_zh-TW": caption, narration: "real current AAC attachment", thumbnail: "current thumbnail" })) {
+    const file = path.join(current, role); if (typeof value === "object") json(file, value); else writeFileSync(file, value);
+    evidence[role] = { file, role, review_id: final.id, sha256: hash(readFileSync(file)), size: readFileSync(file).length, content_type: role === "narration" ? "audio/mp4" : role.startsWith("evidence") ? "application/json" : "text/plain" };
+  }
+  const meta = composeMetadata({ ...project, timeline: presented, locales: [] }).metadata; final.files = Object.values(evidence);
+  final.payload = { ...final.payload, manual_review: true, metadata: { "zh-TW": { title: meta.title, description: meta.description } }, chapters: meta.chapters.map(({ at, title }) => ({ time: at, title })), body_change: { new_script: evidence.evidence_script, new_body_timeline: evidence.evidence_body_timeline, speech_hash: timeline.speech_hash, new_body: { sha256: hash("missing new master") }, new_voice: { sha256: hash("different raw WAV") }, audio_owner_accepted: false, full_playback_owner_accepted: false } };
+  const actor = "55555555-5555-4555-8555-555555555555", decisionAuthority = { slug: f.entry.slug, status: "approved", review_id: final.id, content_sha256: final.content_sha256, decided_at: final.decided_at, decided_by_user_id: actor, approval_audits: [{ id: "66666666-6666-4666-8666-666666666666", action: "video_review_approved", actor_user_id: actor, target: `video_review:${final.id}`, metadata_json: { slug: f.entry.slug, gate: "final", sha256: final.content_sha256 } }] };
+  const prepared = path.join(f.base, "current-handoff");
+  await prepareApprovedFinalHandoff({ slug: f.entry.slug, canonical: path.join(f.base, "canonical"), out: prepared, remote: f.site, candidate: path.join(f.base, "retained/final.mp4"), branding: path.join(f.base, "retained/branding.json"), decisionAuthority, source: { evidence, adapter: { project, timeline, caption_mode: "approved-line-windows" }, disclosure: { synthetic: true, reason: "Current synthetic speech" } }, verifyMedia: async () => ({ scope: "approved-current-media-identity", preservation_claim: false, full_decode_ok: true, video_packets: timeline.total_frames, body_range_sha256: hash("actual current packets"), body_audio_pcm_sha256: hash("actual current decoded audio"), narration: { sha256: evidence.narration.sha256, full_decode_ok: true, raw_voice_claimed: false, listening_approval_claimed: false } }) });
+  const contract = await readManualLanguageSource({ workdir: prepared, remote: f.site }); f.site.reviews[0].content_sha256 = contract.metadata.sha256;
+  return { ...f, prepared, contract, currentProject: project };
+}
+
+test("actual new-source run survives language sync but holds an unknown translator across invocations", async (t) => {
+  const f = await currentApprovedFixture(t), group = `${f.base}-roundtrip-group`, out = path.join(group, "current"); mkdirSync(group); t.after(() => rmSync(group, { recursive: true, force: true }));
+  const prepared = await prepareApprovedFinalBatch({ manifestFile: f.manifestFile, handoffs: [{ slug: f.entry.slug, workdir: f.prepared }], out, readRemote: async () => structuredClone(f.site), runtimeRoot: f.runtimeRoot });
+  const manifest = resolveManifest(JSON.parse(readFileSync(prepared.manifest)), out), entry = manifest.videos[0];
+  assert.equal(entry.generated_files.some((v) => v.relative_path.endsWith("/languages.json")), false);
+  rmSync(path.join(out, "STOP")); rmSync(path.join(entry.workdir, "STOP"));
+  // A legacy ready display without a current-final-bound language review cannot
+  // make the fresh source look complete or reuse old translations implicitly.
+  f.site.languages.en.metadata.state = "ready"; f.site.languages.en.captions.state = "ready";
+  let posts = 0;
+  const api = { reviews: async () => structuredClone(f.site), settings: async () => ({}), run: async () => { posts++; throw new VideoStop("connection closed; POST result may have completed"); } };
+  const runMain = async (args, ctx) => {
+    if (args[0] === "review-pull") { await approve({ gate: "final", docDir: path.dirname(entry.doc_file), workdir: entry.workdir }); return 0; }
+    return videoMain(args, ctx);
+  };
+  const options = { manifest: prepared.manifest, slugs: [entry.slug], phase: "translations", maxUnits: 1, dryRun: false };
+  const ownerLock = path.join(path.dirname(out), ".approved-final-language-runner.lock");
+  writeFileSync(ownerLock, "another exact-lexicon producer owns this lock");
+  try { await assert.rejects(run(options, { api, runMain }), { code: "EEXIST" }); assert.equal(posts, 0); assert.equal(readFileSync(ownerLock, "utf8"), "another exact-lexicon producer owns this lock"); }
+  finally { rmSync(ownerLock); }
+  const first = await run(options, { api, runMain }); assert.equal(first.status, "paused"); assert.equal(posts, 1);
+  assert.ok(JSON.parse(readFileSync(path.join(entry.workdir, "languages.json"))).synced_at);
+  await verifyLocal(manifest, entry);
+  const second = await run(options, { api, runMain }); assert.equal(second.status, "paused"); assert.equal(posts, 1);
+  assert.equal(existsSync(ownerLock), false);
+  assert.match(second.videos[entry.slug].error, /unknown paid result/);
+  const journal = JSON.parse(readFileSync(path.join(entry.workdir, "language-stage-journal.json")));
+  assert.equal(Object.values(journal.entries)[0].status, "unknown"); assert.equal(journal.identity.final_sha256, entry.final_sha256);
+  f.site.locales.en.metadata = false;
+  await assert.rejects(run(options, { api, runMain }), /choice changed/); assert.equal(posts, 1);
+  f.site.locales.en.metadata = true;
+  const raw = JSON.parse(readFileSync(prepared.manifest));
+  for (const label of [undefined, "retained-source"]) {
+    raw.source_kind = label; json(prepared.manifest, raw);
+    await assert.rejects(run({ ...options, phase: "dubs" }, { api, runMain }), /source kind differs/); assert.equal(posts, 1);
+  }
+});
+
+test("sync stage journal reuses completed exact answers and never dispatches past crash or damaged receipts", async (t) => {
+  const f = await fixture(t), entry = f.manifest.videos[0], manifest = { request_namespace: "new-current-source" }, now = () => "2026-10-04T00:00:00Z";
+  let posts = 0; const answer = { text: '{"worksheet":{"lines":[]}}', model: "selected-alias-actual", usage: { tokens: 30, token_budget: 100 }, input_tokens: 20, output_tokens: 10 };
+  const api = { run: async () => { posts++; return structuredClone(answer); } }, args = ["translator", entry.slug, "exact instructions", { locale: "en", optional: undefined }, 32000, "slides"];
+  assert.deepEqual(await journaledStageClient(api, manifest, [entry], now).run(...args), answer);
+  assert.deepEqual(await journaledStageClient({ run: async () => { throw Error("second dispatch forbidden"); } }, manifest, [entry], now).run(...args), answer); assert.equal(posts, 1);
+  await assert.rejects(journaledStageClient(api, manifest, [entry], now).run(...[...args.slice(0, 2), "changed exact instructions", ...args.slice(3)]), /exact stage request changed/); assert.equal(posts, 1);
+  await assert.rejects(journaledStageClient(api, manifest, [entry], now).run(...[...args.slice(0, 3), { locale: "en", changed_body: "changed input" }, ...args.slice(4)]), /exact stage request changed/); assert.equal(posts, 1);
+  for (const options of [{ settings: { durable_stage_runs: true } }, { settings: { stage_models: { translator: { provider: "new", model: "new" } } } }, { choices: { [entry.slug]: { en: { captions: false } } } }]) await assert.rejects(journaledStageClient(api, manifest, [entry], now, options).run(...args), /source identity changed/);
+  const file = path.join(entry.workdir, "language-stage-journal.json"), stored = JSON.parse(readFileSync(file)), record = Object.values(stored.entries)[0];
+  assert.equal("optional" in record.request.payload, false);
+  record.status = "dispatching"; json(file, stored);
+  await assert.rejects(journaledStageClient(api, manifest, [entry], now).run("caption_reviewer", ...args.slice(1)), /unknown paid result/); assert.equal(posts, 1);
+  await assert.rejects(journaledStageClient(api, { request_namespace: "changed-source" }, [entry], now).run(...args), /source identity changed/); assert.equal(posts, 1);
+  record.status = "succeeded"; record.result.text += "tampered"; json(file, stored);
+  await assert.rejects(journaledStageClient(api, manifest, [entry], now).run(...args), /malformed/); assert.equal(posts, 1);
+});
+
+test("new approved-final batch archives all old paid answers and permits changed source only through its independent entry", async (t) => {
+  const f = await currentApprovedFixture(t), out = `${f.base}-current`; t.after(() => rmSync(out, { recursive: true, force: true }));
+  const oldTranslation = path.join(f.manifest.root, "docs/videos", f.entry.slug, "i18n/en.json"); json(oldTranslation, { paid: "old translated answer" });
+  json(path.join(f.entry.workdir, "automation/translation-units/en.json"), { uncertain: "unknown paid answer" }); json(path.join(f.base, "progress.json"), { spent: 10, ambiguous: "preserve this charge" });
+  json(path.join(f.entry.workdir, "media/ledger.json"), { entries: [{ stage: "keyframes", kind: "image", cost_usd: 19.95, key: "prior-paid" }, { kind: "judge", cost_usd: 0.22, status: "uncertain" }] });
+  const result = await prepareApprovedFinalBatch({ manifestFile: f.manifestFile, handoffs: [{ slug: f.entry.slug, workdir: f.prepared }], out, readRemote: async () => f.site, runtimeRoot: f.runtimeRoot });
+  const manifest = resolveManifest(JSON.parse(readFileSync(result.manifest)), out), entry = manifest.videos[0], project = await verifyLocal(manifest, entry);
+  assert.equal(result.source_kind, "approved-final-body-range"); assert.equal(result.paid_generation, false); assert.ok(existsSync(path.join(out, "STOP")));
+  assert.equal(project.doc.scenes[0].lines[0].text, f.currentProject.doc.scenes[0].lines[0].text);
+  assert.equal(existsSync(path.join(project.dir, "i18n/en.json")), false); assert.equal(existsSync(path.join(entry.workdir, "automation")), false); assert.equal(existsSync(path.join(entry.workdir, "approvals.json")), false);
+  assert.equal(JSON.parse(readFileSync(path.join(out, "retained-source/original-batch/progress.json"))).ambiguous, "preserve this charge");
+  assert.equal(JSON.parse(readFileSync(path.join(out, "progress.json"))).previous_translations_stale, true);
+  assert.equal(ledgerTotals(entry.workdir).usd, 20.17); assert.match(capProblem(entry.workdir, 1, 20), /past the per-video cap/);
+  assert.equal(JSON.parse(readFileSync(path.join(entry.workdir, "source-accounting.json"))).inherited_media_totals.usd, 20.17);
+  const rejected = `${f.base}-old-entry`; t.after(() => rmSync(rejected, { recursive: true, force: true }));
+  await assert.rejects(prepareRenewedBatch({ manifestFile: f.manifestFile, handoffs: [{ slug: f.entry.slug, workdir: f.prepared }], out: rejected, readRemote: async () => f.site, runtimeRoot: f.runtimeRoot }), /old batch.*retained source adapter/);
+  await approve({ gate: "final", docDir: project.dir, workdir: entry.workdir });
+  let calls = 0, text = ""; const sink = { write: (v) => { text += v; } }, ctx = { root: manifest.root, home: out, env: { VIDEO_WORKDIR: manifest.work_base }, stdout: sink, stderr: sink, fetch: async () => { calls++; assert.fail("new source native dry-run cannot use network"); } };
+  assert.equal(await videoMain(["captions", "--slug", entry.slug], ctx), 0, text); assert.match(readFileSync(path.join(entry.workdir, "captions/zh-TW.srt"), "utf8"), /00:00:05,000/);
+  json(path.join(project.dir, "i18n/en.json"), { title: "Current English", description: "Current reviewed English", tags: [], chapters: {}, lines: Object.fromEntries([...eachLine(project.doc)].map(({ line }) => [line.id, { text: `English ${line.id}`, source_hash: textHash(line.text) }])) });
+  text = ""; assert.equal(await videoMain(["dub", "--slug", entry.slug, "--locale", "en", "--dry-run"], ctx), 0, text); assert.equal(calls, 0);
+  writeFileSync(path.join(entry.workdir, "final.mp4"), "stale final"); text = ""; assert.notEqual(await videoMain(["captions", "--slug", entry.slug], ctx), 0); assert.match(text, /exact pulled owner final/); assert.equal(calls, 0);
+});
 
 test("renewed portable producer retains old paid evidence, pins actual source adapter and freezes new runtime while held", async (t) => {
   const f = await renewedFixture(t), out = `${f.base}-next-batch`; t.after(() => rmSync(out, { recursive: true, force: true }));
@@ -538,4 +638,253 @@ test("one failed video does not starve the next, while owner/quota failure stops
   class FatalAutomation { async translateLocale(state) { calls.push(["translate", state.slug]); throw new HardStop("quota exhausted"); } }
   await assert.rejects(run({ manifest: f.manifestFile, slugs: SLUGS.slice(0, 2), phase: "translations", dryRun: false }, { api, runMain, AutomationClass: FatalAutomation }), /quota exhausted/);
   assert.deepEqual(calls, [["translate", SLUGS[0]]]);
+});
+
+// These integration cases use the real runner, videoMain, dub CLI and speech
+// client. Only HTTP is stubbed; the source fixture and generated bookends are
+// isolated test data, and no listening or language approval is invented.
+async function nativeSpeechRunnerFixture(t) {
+  const brandDir = mkdtempSync(path.join(os.tmpdir(), "native-speech-brand-"));
+  t.after(() => rmSync(brandDir, { recursive: true, force: true }));
+  const { locateFfmpeg } = await import("../../../tools/video/assemble/ffmpeg.mjs");
+  const binaries = await locateFfmpeg();
+  const brandingBytes = {};
+  for (const [role, seconds] of [["intro", 5], ["outro", 3]]) {
+    const file = path.join(brandDir, `${role}.mp4`);
+    execFileSync(binaries.ffmpeg, ["-hide_banner", "-loglevel", "error", "-y", "-f", "lavfi", "-i", "color=black:s=1920x1080:r=30", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-t", String(seconds), "-c:v", "libx264", "-preset", "ultrafast", "-threads", "2", "-pix_fmt", "yuv420p", "-c:a", "aac", file]);
+    brandingBytes[role] = readFileSync(file);
+  }
+  const f = await currentApprovedFixture(t, { dub: true, brandingBytes });
+  const group = `${f.base}-native-speech-group`, out = path.join(group, "batch");
+  mkdirSync(group); t.after(() => rmSync(group, { recursive: true, force: true }));
+  const prepared = await prepareApprovedFinalBatch({ manifestFile: f.manifestFile, handoffs: [{ slug: f.entry.slug, workdir: f.prepared }], out, readRemote: async () => structuredClone(f.site), runtimeRoot: f.runtimeRoot });
+  const manifest = resolveManifest(JSON.parse(readFileSync(prepared.manifest)), out), entry = manifest.videos[0], project = loadProject({ slug: entry.slug, root: manifest.root });
+  rmSync(path.join(out, "STOP")); rmSync(path.join(entry.workdir, "STOP"));
+  const translation = path.join(project.dir, "i18n/en.json");
+  json(translation, { title: "Actual English title", description: "Reviewed English body", tags: [], chapters: {}, lines: Object.fromEntries([...eachLine(project.doc)].map(({ line }) => [line.id, { text: `English ${line.id}`, source_hash: textHash(line.text) }])) });
+  const progress = JSON.parse(readFileSync(path.join(out, "progress.json")));
+  progress.videos[entry.slug] = { final_sha256: entry.final_sha256, translations: { en: hash(readFileSync(translation)) }, checked_dubs: {}, skipped_dubs: {} };
+  json(path.join(out, "progress.json"), progress);
+  const api = { reviews: async () => structuredClone(f.site), settings: async () => ({}), run: async () => assert.fail("translator dispatch is outside the seeded dubs fixture") };
+  const env = { MOKAAIR_SITE: "https://mokaair.com", MOKAAIR_VIDEO_TOKEN: `mkv_${"x".repeat(40)}` };
+  const status = { configured: true, voices: [], gemini_configured: true, gemini_models: ["gemini-3.8-flash-tts"], gemini_voices: ["Sulafat"], max_request_characters: 1500, monthly_limit: 1_000_000, gemini_monthly_limit: 1_000_000 };
+  const options = { manifest: prepared.manifest, slugs: [entry.slug], phase: "dubs", maxUnits: 1, dryRun: false };
+  const events = () => readFileSync(path.join(out, "events.jsonl"), "utf8").trim().split("\n").map(JSON.parse);
+  return { ...f, out, manifest, entry, api, env, status, options, events };
+}
+
+test("actual runner and native dub keep an unknown speech POST held across invocations", async (t) => {
+  const f = await nativeSpeechRunnerFixture(t);
+  let posts = 0, statusGets = 0, reviewGets = 0;
+  const fetch = async (url, init = {}) => {
+    const route = new URL(url).pathname;
+    if (init.method === "POST") {
+      assert.equal(route, "/api/video/speech"); posts++;
+      throw new Error("response lost after accepted synthesis");
+    }
+    if (route.startsWith("/api/video/reviews/")) { reviewGets++; return Response.json(f.site); }
+    if (route === "/api/video/speech/status") { statusGets++; return Response.json(f.status); }
+    assert.fail(`unplanned offline request ${route}`);
+  };
+  const dependencies = { api: f.api, fetch, env: f.env, home: f.out, sleep: async () => {} };
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const result = await run(f.options, dependencies);
+    assert.equal(result.status, "paused"); assert.equal(posts, 1);
+    assert.match(result.videos[f.entry.slug].error, /saved result is held/);
+    assert.deepEqual(result.videos[f.entry.slug].checked_dubs, {});
+    assert.deepEqual(result.videos[f.entry.slug].skipped_dubs, {});
+  }
+  assert.equal(reviewGets, 2); assert.equal(statusGets, 4);
+  assert.deepEqual(f.events().filter((event) => event.type === "command" && event.command === "dub").map((event) => event.code), [4, 4]);
+  const journal = JSON.parse(readFileSync(path.join(f.entry.workdir, "speech-journal/journal.json")));
+  assert.equal(Object.keys(journal.entries).length, 1);
+  assert.equal(Object.values(journal.entries)[0].status, "unknown");
+  assert.equal(journal.identity.final_sha256, f.entry.final_sha256);
+  assert.equal(readFileSync(path.join(f.entry.workdir, "speech-journal/journal.json"), "utf8").includes(f.env.MOKAAIR_VIDEO_TOKEN), false);
+  await verifyLocal(f.manifest, f.entry);
+});
+
+test("actual runner and native dub replay saved raw WAV after consumer interruption without a second POST", async (t) => {
+  const f = await nativeSpeechRunnerFixture(t), audio = path.join(f.entry.workdir, "dubs/en/audio"), retained = `${audio}.retained`;
+  const { renameSync, statSync } = await import("node:fs");
+  const { encodeWav } = await import("../../../tools/video/tts/wav.mjs");
+  let posts = 0, statusGets = 0, reviewGets = 0, attempt = 1, faults = 0, rawWav;
+  const interruptConsumer = () => {
+    assert.ok(statSync(audio).isDirectory()); assert.deepEqual(readdirSync(audio), []);
+    renameSync(audio, retained); writeFileSync(audio, "fixture-only blocked audio destination"); faults++;
+  };
+  const fetch = async (url, init = {}) => {
+    const route = new URL(url).pathname;
+    if (init.method === "POST") {
+      assert.equal(route, "/api/video/speech"); posts++;
+      assert.equal(posts, 1, "consumer restart cannot buy the saved response again");
+      const body = JSON.parse(init.body), rate = 24_000, parts = [];
+      for (const segment of body.segments) {
+        const tone = new Int16Array(rate / 5);
+        for (let index = 0; index < tone.length; index++) tone[index] = Math.round(8000 * Math.sin(2 * Math.PI * 220 * index / rate));
+        parts.push(tone, new Int16Array(Math.round((segment.break_after_ms ?? 0) * rate / 1000)));
+      }
+      const samples = new Int16Array(parts.reduce((sum, part) => sum + part.length, 0));
+      let start = 0; for (const part of parts) { samples.set(part, start); start += part.length; }
+      rawWav = encodeWav(samples, rate);
+      interruptConsumer();
+      return new Response(rawWav, { headers: { "content-type": "audio/wav", "x-billable-characters": "137", "cache-control": "no-store" } });
+    }
+    if (route.startsWith("/api/video/reviews/")) { reviewGets++; return Response.json(f.site); }
+    if (route === "/api/video/speech/status") {
+      statusGets++;
+      // Each invocation probes status once before mkdir(audio), then again in
+      // the journal's fresh paid-boundary identity. Interrupt only the latter,
+      // so the second native call must consume the saved WAV before it fails.
+      if (attempt === 2 && statusGets === 4) interruptConsumer();
+      return Response.json(f.status);
+    }
+    assert.fail(`unplanned offline request ${route}`);
+  };
+  const dependencies = { api: f.api, fetch, env: f.env, home: f.out, sleep: async () => {} };
+  const first = await run(f.options, dependencies);
+  assert.equal(first.status, "paused"); assert.match(first.videos[f.entry.slug].error, /^EEXIST:/);
+  const journalFile = path.join(f.entry.workdir, "speech-journal/journal.json"), firstReceipt = readFileSync(journalFile), journal = JSON.parse(firstReceipt), record = Object.values(journal.entries)[0];
+  assert.equal(posts, 1); assert.equal(Object.keys(journal.entries).length, 1); assert.equal(record.status, "succeeded");
+  assert.equal(record.response.sha256, hash(rawWav));
+  assert.equal(record.response.headers["x-billable-characters"], "137");
+  assert.deepEqual(readFileSync(path.join(f.entry.workdir, "speech-journal", record.response.file)), rawWav);
+  // Repair only the generated test destination; retain the successful journal
+  // and source bytes. No approval, transcript or checked dub is fabricated.
+  assert.ok(statSync(audio).isFile()); rmSync(audio); renameSync(retained, audio); attempt = 2;
+  const second = await run(f.options, dependencies);
+  assert.equal(second.status, "paused"); assert.match(second.videos[f.entry.slug].error, /^EEXIST:/);
+  assert.equal(posts, 1); assert.equal(faults, 2); assert.equal(statusGets, 4); assert.equal(reviewGets, 2);
+  assert.equal(f.events().filter((event) => event.type === "unit-start" && event.kind === "dub").length, 2);
+  assert.equal(f.events().filter((event) => event.type === "error" && event.detail.startsWith("EEXIST:")).length, 2);
+  assert.deepEqual(readFileSync(journalFile), firstReceipt);
+  assert.deepEqual(second.videos[f.entry.slug].checked_dubs, {}); assert.deepEqual(second.videos[f.entry.slug].skipped_dubs, {});
+  await verifyLocal(f.manifest, f.entry);
+});
+
+test("actual runner refuses a video or batch STOP added during its fresh speech status probe", async (t) => {
+  for (const scope of ["video", "batch"]) await t.test(scope, async (t) => {
+    const f = await nativeSpeechRunnerFixture(t), stop = path.join(scope === "video" ? f.entry.workdir : f.out, "STOP");
+    let posts = 0, statusGets = 0;
+    const fetch = async (url, init = {}) => {
+      const route = new URL(url).pathname;
+      if (init.method === "POST") { posts++; assert.fail("STOP prevents a paid speech POST"); }
+      if (route.startsWith("/api/video/reviews/")) return Response.json(f.site);
+      if (route === "/api/video/speech/status") {
+        if (++statusGets === 2) writeFileSync(stop, "owner STOP during the fresh paid-boundary status probe");
+        return Response.json(f.status);
+      }
+      assert.fail(`unplanned offline request ${route}`);
+    };
+    const result = await run(f.options, { api: f.api, fetch, env: f.env, home: f.out, sleep: async () => {} });
+    assert.equal(result.status, "paused"); assert.equal(posts, 0); assert.equal(statusGets, 2); assert.ok(existsSync(stop));
+    assert.equal(existsSync(path.join(f.entry.workdir, "speech-journal")), false);
+    assert.deepEqual(result.videos[f.entry.slug].checked_dubs, {}); assert.deepEqual(result.videos[f.entry.slug].skipped_dubs, {});
+    await verifyLocal(f.manifest, f.entry);
+  });
+});
+
+test("actual runner stops the direct translator after the native worksheet without creating a paid intent", async (t) => {
+  const f = await nativeSpeechRunnerFixture(t);
+  rmSync(path.join(path.dirname(f.entry.doc_file), "i18n/en.json"));
+  const progress = JSON.parse(readFileSync(path.join(f.out, "progress.json")));
+  progress.videos[f.entry.slug].translations = {}; json(path.join(f.out, "progress.json"), progress);
+  let posts = 0, stopWritten = false;
+  const worksheet = path.join(f.entry.workdir, "i18n/en.todo.json"), stop = path.join(f.out, "STOP");
+  const api = { ...f.api, run: async () => { posts++; assert.fail("STOP prevents direct translator dispatch"); } };
+  const now = () => {
+    // The real i18n-sheet has finished. Its command event yields before the
+    // stage client runs, so this models an owner STOP at that paid boundary.
+    if (!stopWritten && existsSync(worksheet)) { writeFileSync(stop, "owner STOP after the actual native worksheet"); stopWritten = true; }
+    return new Date("2026-10-04T00:00:00Z");
+  };
+  const fetch = async (url, init = {}) => {
+    assert.notEqual(init.method, "POST"); assert.ok(new URL(url).pathname.startsWith("/api/video/reviews/"));
+    return Response.json(f.site);
+  };
+  const env = { ...f.env, MOKAAIR_SITE: "http://web:3000", VIDEO_LANGUAGE_API_ORIGIN: "http://api:8000" };
+  await assert.rejects(run({ ...f.options, phase: "translations" }, { api, fetch, env, now, home: f.out, sleep: async () => {} }), /STOP requested/);
+  assert.equal(posts, 0); assert.ok(stopWritten); assert.ok(existsSync(worksheet));
+  assert.ok(f.events().some((event) => event.type === "unit-start" && event.kind === "translate"));
+  assert.ok(f.events().some((event) => event.type === "command" && event.command === "i18n-sheet" && event.code === 0));
+  assert.equal(existsSync(path.join(f.entry.workdir, "language-stage-journal.json")), false);
+  assert.ok(existsSync(path.join(f.out, "STOP")));
+});
+
+test("direct native stage transport honors STOP before intent and preserves cached or unknown answers", async (t) => {
+  for (const savedStatus of ["none", "succeeded", "unknown"]) await t.test(savedStatus, async (t) => {
+    const f = await fixture(t), entry = f.manifest.videos[0], stop = path.join(f.base, "STOP");
+    const manifest = { ...f.manifest, source_kind: "approved-final-body-range", request_namespace: "11111111-1111-4111-8111-111111111111" };
+    entry.renewal_source = { sha256: hash("exact current source") };
+    let posts = 0, armStop = false;
+    const api = createSiteClient({ env: { MOKAAIR_SITE: "http://web:3000", MOKAAIR_VIDEO_TOKEN: `mkv_${"x".repeat(40)}`, VIDEO_LANGUAGE_API_ORIGIN: "http://api:8000" }, fetch: async () => assert.fail("direct stage must not use BFF fetch"), sleep: async () => {}, nativeStageRequest: async (url, init) => {
+      posts++; assert.equal(url, "http://api:8000/api/v1/video/automation/run"); assert.equal(init.method, "POST");
+      if (savedStatus === "unknown") throw new Error("direct response lost after accepted request");
+      return Response.json({ text: "Actual saved answer", model: "actual upstream alias", usage: { tokens: 30 } });
+    } });
+    const now = () => { if (armStop) writeFileSync(stop, "owner STOP before the stage intent"); return "2026-10-04T00:00:00Z"; };
+    const client = () => journaledStageClient(api, manifest, [entry], now, { readCurrent: async () => ({ settings: {}, choice: null }) }), args = ["translator", entry.slug, "Exact instructions", { locale: "en" }, 32000, "slides"];
+    const file = path.join(entry.workdir, "language-stage-journal.json");
+    if (savedStatus === "none") {
+      armStop = true; await assert.rejects(client().run(...args), /STOP requested/);
+      assert.equal(posts, 0); assert.equal(existsSync(file), false);
+    } else {
+      if (savedStatus === "unknown") await assert.rejects(client().run(...args), /lost/); else await client().run(...args);
+      const receipt = readFileSync(file); assert.equal(Object.values(JSON.parse(receipt).entries)[0].status, savedStatus);
+      writeFileSync(stop, "owner STOP before reusing any paid answer");
+      await assert.rejects(client().run(...args), /STOP requested/); assert.equal(posts, 1);
+      assert.deepEqual(readFileSync(file), receipt);
+    }
+    assert.ok(existsSync(stop));
+  });
+});
+
+test("actual translator success is retained while fresh owner, source or settings drift stops the next paid reviewer", async (t) => {
+  for (const drift of ["choice", "drop", "final", "source", "model", "provider", "instructions"]) await t.test(drift, async (t) => {
+    const f = await currentApprovedFixture(t), group = `${f.base}-fresh-stage-${drift}`, out = path.join(group, "batch");
+    mkdirSync(group); t.after(() => rmSync(group, { recursive: true, force: true }));
+    const prepared = await prepareApprovedFinalBatch({ manifestFile: f.manifestFile, handoffs: [{ slug: f.entry.slug, workdir: f.prepared }], out, readRemote: async () => structuredClone(f.site), runtimeRoot: f.runtimeRoot });
+    const workdir = path.join(out, "work", f.entry.slug), file = path.join(workdir, "language-stage-journal.json");
+    rmSync(path.join(out, "STOP")); rmSync(path.join(workdir, "STOP"));
+    const stages = []; let firstReceipt, firstResult;
+    const settings = { durable_stage_runs: true, stage_models: { translator: { provider: "claude_code", model: "selected-translator" }, caption_reviewer: { provider: "claude_code", model: "selected-caption-reviewer" } }, stage_instructions: { translator: "Preserve actual source", caption_reviewer: "Review actual draft" } };
+    const api = {
+      reviews: async () => {
+        if (stages.length === 1 && existsSync(file) && !firstReceipt) firstReceipt = readFileSync(file);
+        return structuredClone(f.site);
+      },
+      settings: async () => structuredClone(settings),
+      run: async (stage, _slug, _instructions, payload) => {
+        stages.push(stage); assert.equal(stage, "translator", "fresh drift prevents the second paid reviewer");
+        const worksheet = structuredClone(payload.worksheet);
+        for (const line of worksheet.lines ?? []) line.text = `English ${line.id}`;
+        for (const chapter of worksheet.chapters ?? []) chapter.text = "English chapter";
+        if (worksheet.title) worksheet.title.text = "English title";
+        if (worksheet.description) worksheet.description.text = "Reviewed English description";
+        if (worksheet.tags) worksheet.tags.text = ["AI"];
+        const final = f.site.reviews.find((review) => review.gate === "final" && review.status === "approved");
+        if (drift === "choice") { f.site.locales.en.metadata = false; f.site.locales.en.captions = false; }
+        if (drift === "drop") f.site.dropped_at = "2026-10-04T00:00:00Z";
+        if (drift === "final") final.status = "pending";
+        if (drift === "source") final.files.find((entry) => entry.role === "evidence_script").sha256 = "f".repeat(64);
+        if (drift === "model") settings.stage_models.caption_reviewer.model = "owner-selected-new-model";
+        if (drift === "provider") settings.stage_models.caption_reviewer.provider = "gemini";
+        if (drift === "instructions") settings.stage_instructions.caption_reviewer = "owner-selected-new-instructions";
+        // The selected model and actual upstream alias need not be the same.
+        firstResult = { text: JSON.stringify({ worksheet }), model: "upstream-actual-alias", input_tokens: 1, output_tokens: 1, usage: { tokens: 2, token_budget: 100 } };
+        return structuredClone(firstResult);
+      },
+    };
+    const fetch = async (url, init = {}) => {
+      assert.notEqual(init.method, "POST"); assert.ok(new URL(url).pathname.startsWith("/api/video/reviews/"));
+      return Response.json(f.site);
+    };
+    const result = await run({ manifest: prepared.manifest, slugs: [f.entry.slug], phase: "translations", maxUnits: 1, dryRun: false }, { api, fetch, env: { MOKAAIR_SITE: "http://web:3000", VIDEO_LANGUAGE_API_ORIGIN: "http://api:8000", MOKAAIR_VIDEO_TOKEN: `mkv_${"x".repeat(40)}` }, home: out, sleep: async () => {} });
+    assert.equal(result.status, "paused"); assert.deepEqual(stages, ["translator"]);
+    assert.ok(firstReceipt, "fresh owner probe occurs between the two paid stages");
+    assert.deepEqual(readFileSync(file), firstReceipt);
+    const journal = JSON.parse(firstReceipt), record = Object.values(journal.entries)[0];
+    assert.equal(Object.keys(journal.entries).length, 1); assert.equal(record.status, "succeeded"); assert.deepEqual(record.result, firstResult);
+    assert.deepEqual(result.videos[f.entry.slug].checked_dubs, {});
+  });
 });

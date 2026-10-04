@@ -9,9 +9,11 @@ spacing and letter case are ignored, so Jev's call budget goes to the cases that
 word that is really missing or misread.
 
 Jev documents that its accuracy is best in English and publishes nothing for Chinese, so the
-questions are written in English, the state carries the track's text and names its language, and
-the tool reports Jev's probabilities rather than acting on them; the owner still approves the
-narration.
+questions are written in English and the state carries the track's text and names its language.
+The local tool flags a line whose probability is below its threshold (0.5 by default,
+``tools/video/tts/check.mjs``). A narration review with every line checked and none flagged is
+approved as it arrives while the auto-approve setting is on, the owner's choice of 2026-09-25
+(``app.video_automation.settings.auto_approves_audio``); any other narration waits for the owner.
 
 A dubbed track (docs/videos/DUBS.md) is read in another language, and the transcriber is told
 which: a Japanese clip transcribed as Mandarin would differ from its script on every line.
@@ -27,7 +29,7 @@ from typing import Any
 import httpx
 from redis.asyncio import Redis
 
-from app.ai.jev import JevClient, NoulQuestion, consume_jev_call, jev_client
+from app.ai.jev import JevClient, NoulCriteria, NoulQuestion, consume_jev_call, jev_client
 from app.ai.structured_output import gemini_output_text
 from app.config import Settings
 from app.video_speech.azure import USER_AGENT, SpeechUpstreamError
@@ -121,10 +123,10 @@ class CheckUnavailable(Exception):
         self.detail = detail
 
 
-JUDGE_CRITERIA = {
-    "yes": "the recording says the intended words; any difference is only in how they are written",
-    "no": "a word is missing, added, replaced, or read as something else",
-}
+JUDGE_CRITERIA = NoulCriteria(
+    true="the recording says the intended words; any difference is only in how they are written",
+    false="a word is missing, added, replaced, or read as something else",
+)
 
 
 async def transcribe(
