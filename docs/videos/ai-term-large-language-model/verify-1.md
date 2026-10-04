@@ -12,7 +12,7 @@
 - claims.md：`b948e6aeb1b7a322bdd32796c36442f3c09e9b93d15bb520f5b0eb44f8f45831`
 - brief.md：`b23f074132fe526115f9908c49d430881f028272b0b064375d64376c3f7c8ca9`
 
-抽取清單先存於 repo 外的 `C:/Users/x8120/mokaair-work/ai-series-continuation-20261004/llm-review/claim-items.json` 與 `claim-items.md`，共 614 個字串。涵蓋 138 句長片旁白、108 個場景的全部 data、縮圖、標題、說明、tags 與 Shorts；本版沒有 say。相同事實的重複表述按下表的 c 編號合併查核；圖像提示、鏡頭、虛構情節與問題式包裝的非事實部分歸 OUT OF SCOPE。所有可查主張都列在下表，另列未在作者 c 表單獨出現的執行版本、日期、metadata 與畫面文字。
+抽取清單先存於 repo 外的 `<home>/mokaair-work/ai-series-continuation-20261004/llm-review/claim-items.json` 與 `claim-items.md`，共 614 個字串。涵蓋 138 句長片旁白、108 個場景的全部 data、縮圖、標題、說明、tags 與 Shorts；本版沒有 say。相同事實的重複表述按下表的 c 編號合併查核；圖像提示、鏡頭、虛構情節與問題式包裝的非事實部分歸 OUT OF SCOPE。所有可查主張都列在下表，另列未在作者 c 表單獨出現的執行版本、日期、metadata 與畫面文字。
 
 ## 來源重開
 
@@ -142,6 +142,6 @@ build.mjs 只增加此二 id 的 override，位置在 `setPauseBeats(doc)` 之�
 
 新的 dry body 實測 **836.1666667 秒**；原始 clips spoken 合計 **709.18 秒**。8 章全部至少 10 秒，冷開場第一章實測 **11 秒**，`checkChapters=[]`；無需修改冷開場章節。138 個狀態最長 8 秒，插圖占 dry body **56.2367949%**；`cadenceProblems` 沒有 `over`／`share` 硬性問題。平均 **6.1 秒**仍保留為 `kind=average` 建議，沒有宣稱達到 6 秒目標；現版 final QA 明確不把該平均建議當硬性失敗。新的 lint 為 **0 errors、0 warnings**。
 
-獨立 helper 與完整結果（含 138 個 SHA-256）在私有 `C:/Users/x8120/mokaair-work/ai-series-continuation-20261004/llm-review/narrow-reverify.mjs` 及 `narrow-reverify-results.json`。原測量與主代理 paced 測量也已閱讀並交叉核對。
+獨立 helper 與完整結果（含 138 個 SHA-256）在私有 `<home>/mokaair-work/ai-series-continuation-20261004/llm-review/narrow-reverify.mjs` 及 `narrow-reverify-results.json`。原測量與主代理 paced 測量也已閱讀並交叉核對。
 
 此附錄確認最新來源的事實查核延續性、實際 PCM／dry narration 計時、章節及節奏硬性問題解除，**不代表已通過 check-audio、聽感驗收或伺服器 audio 核准**；主代理的轉寫／Jev 檢查仍在執行，不能把尚未完成的逐句匹配稱全過。整軌及 timeline hash 改了，需以目前版本走 audio review-push／pull。已生成插圖、成片裁切／可讀性、品牌 presentation timeline、後續 QA、YouTube、G 槽備份與刪除仍需各自證據。
