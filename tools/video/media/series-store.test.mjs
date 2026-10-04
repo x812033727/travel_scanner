@@ -1,11 +1,10 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
-import { dramaFixture } from "../core/fixtures/load.mjs";
+import { dramaFixture, tempDir } from "../core/fixtures/load.mjs";
 import { keepSheets, readStore, reuseSheets, sheetKey, storeDir } from "./series-store.mjs";
 
 const PRO = { provider: "gemini", model: "gemini-3-pro-image" };
@@ -15,7 +14,7 @@ const SHA = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
 // Only byte copies and JSON are involved: no renderer, media server or model calls.
 function fixture() {
-  const workBase = mkdtempSync(path.join(tmpdir(), "video-series-image-store-"));
+  const workBase = tempDir("video-series-image-store-");
   const workdir = path.join(workBase, "episode-one");
   const doc = dramaFixture();
   doc.slug = "episode-one";

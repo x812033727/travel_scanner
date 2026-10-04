@@ -1,12 +1,11 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
-import { fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { fixtureLexicon, sandbox, tempDir } from "../core/fixtures/load.mjs";
 import { SAMPLES_PER_FRAME, SAMPLE_RATE, speechHash } from "../core/timeline.mjs";
 import { LONG_ANIME_POLICY, runtimePolicyHash } from "../core/anime-policy.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
@@ -228,7 +227,7 @@ test("the client retries throttling with Retry-After and sorts failures by who c
 });
 
 test("credentials live in the home directory, and environment variables override them", () => {
-  const home = mkdtempSync(path.join(tmpdir(), "video-home-"));
+  const home = tempDir("video-home-");
   assert.equal(readCredentials({ env: {}, home }).token, null);
   const file = writeCredentials({ site: "https://mokaair.com", token: TOKEN }, { home });
   assert.equal(file, credentialsFile(home));
