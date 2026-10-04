@@ -8,6 +8,7 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy import delete
 
 from app.db import SessionFactory, engine
+from app.infra import get_redis
 from app.main import app
 from app.models import FoodFavorite, HotspotFavorite, TravelFood, TravelHotspot
 
@@ -18,9 +19,13 @@ pytestmark = pytest.mark.skipif(
 
 
 @pytest_asyncio.fixture(scope="module", loop_scope="module", autouse=True)
-async def dispose_engine_after_module() -> AsyncIterator[None]:
-    yield
+async def isolate_async_clients_for_module() -> AsyncIterator[None]:
     await engine.dispose(close=False)
+    get_redis.cache_clear()
+    yield
+    await engine.dispose()
+    await get_redis().aclose()
+    get_redis.cache_clear()
 
 
 @pytest.mark.asyncio(loop_scope="module")

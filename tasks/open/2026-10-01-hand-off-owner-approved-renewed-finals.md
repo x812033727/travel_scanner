@@ -78,12 +78,12 @@ timeline. A successful HTTP response is not approval, canonical activation or up
   affected slides are approved renewal candidates, while publish approval is false
   and chosen languages still await the canonical source-bound handoff. This is not
   a request for another owner final approval or an upload authorization.
-- The old `C:/Users/x8120/mokaair-work/channel-intro-20260930` candidate evidence
+- The old `<home>/mokaair-work/channel-intro-20260930` candidate evidence
   directory referenced by the prior handoff is currently absent. Locate retained
   canonical/server/archive sources before preparing those 17 candidates; do not
   regenerate paid media merely because local evidence is missing.
 - DevDay retains canonical source files under
-  `C:/Users/x8120/mokaair-work/videos/openai-devday-2026-recap` and the candidate
+  `<home>/mokaair-work/videos/openai-devday-2026-recap` and the candidate
   under `branding-audit-20261004`: 153 audio segments, timeline/narration hashes,
   source checks and preservation proof. Its old local pending receipt is a stale
   snapshot; use the fresh approved backend identity. Preserve the original

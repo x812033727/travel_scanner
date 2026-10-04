@@ -21,6 +21,8 @@ scope:
   - apps/api/tests/test_video_automation_settings.py
   - apps/api/tests/test_video_reviews_integration.py
   - tools/video/automation/automation.test.mjs
+  - tools/video/automation/story.test.mjs
+  - tools/video/core/drama.test.mjs
 ---
 
 # Require every expected keyframe before storyboard approval
