@@ -1,6 +1,6 @@
 ---
 id: 2026-10-04-no-return-arrow-plan
-title: 無歸箭：取材經典布袋戲結構的長篇漫劇企劃包（期一 24 集與全系列路線圖）
+title: 偶的江湖：取材經典布袋戲結構的長篇漫劇企劃包（第一、二季 24 集與全系列路線圖）
 status: in-progress
 priority: P2
 area: docs
@@ -11,10 +11,10 @@ completed_at:
 branch: claude/vibrant-cray-mdpjzx
 depends_on: []
 scope:
-  - docs/videos/series-plans/no-return-arrow
+  - docs/videos/series-plans/ou-de-jianghu
 ---
 
-# 無歸箭：取材經典布袋戲結構的長篇漫劇企劃包（期一 24 集與全系列路線圖）
+# 偶的江湖：取材經典布袋戲結構的長篇漫劇企劃包（第一、二季 24 集與全系列路線圖）
 
 ## Why
 
@@ -22,7 +22,7 @@ scope:
 
 ## Definition of done
 
-- [ ] `docs/videos/series-plans/no-return-arrow/` 有 plan.json、authoring-contract.json、setting.json、season-01.json、season-02.json 與由 build.mjs 產生的 setting.md、outline.md、season-01.md、season-02.md、documents.json、continuity.md、continuity.csv、manifest.json。
+- [ ] `docs/videos/series-plans/ou-de-jianghu/` 有 plan.json、authoring-contract.json、setting.json、season-01.json、season-02.json 與由 build.mjs 產生的 setting.md、outline.md、season-01.md、season-02.md、documents.json、continuity.md、continuity.csv、manifest.json。
 - [ ] 每集有兩段高張力、懸念類型相鄰不同、每 4 集收一個伏筆、季末懸念翻轉理解；m08、m09、m10 保留給續期並在 finale 誠實宣告。
 - [ ] `saga/` 目錄有全系列路線圖（總名、每期的期名／季數／集數／對應原作／主題／全期高潮、精華路線、張力地圖、值得站主看的劇情改動、統一人名表）。
 - [ ] README 寫清楚單集長度與集數的理由、成本估算、製作差距（8 分鐘上限、long-anime-v1 條件、hybrid 等級、月配額）、原創聲明。
@@ -40,9 +40,9 @@ scope:
 ## How to verify
 
 ```bash
-node docs/videos/series-plans/no-return-arrow/build.mjs --check
-node docs/videos/series-plans/no-return-arrow/validate.mjs
-node --test docs/videos/series-plans/no-return-arrow/validate.test.mjs
+node docs/videos/series-plans/ou-de-jianghu/build.mjs --check
+node docs/videos/series-plans/ou-de-jianghu/validate.mjs
+node --test docs/videos/series-plans/ou-de-jianghu/validate.test.mjs
 npm run check:tasks && npm run test:tools
 ```
 
@@ -53,3 +53,4 @@ npm run check:tasks && npm run test:tools
 - 成本：22 分鐘約 440 鏡，Veo 3.1 Lite 一集一次過 clips 約 US$360、hybrid 約 US$190、stills 約 US$100；全片段一集約 3,500 片段秒，超過預設月配額 3,000 與單片上限 US$200。建議 hybrid 先做第 1 集試播。
 - 不在這張票裡：建後台作品、POST series-request、生成設定圖或片段、改 apps/。
 - 原作名稱不進任何 repo 檔案；README 的來源說明只講結構。
+- 作品名 2026-10-04 定為《偶的江湖》（站主選的），季數全系列連續、只用序號；企劃目錄從 no-return-arrow 搬到 ou-de-jianghu。燕迴的外號改「斷浪」。

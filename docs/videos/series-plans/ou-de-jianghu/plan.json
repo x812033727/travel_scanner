@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "artifact_kind": "anime-series-plan",
-  "slug": "no-return-arrow",
-  "title": "無歸箭",
-  "title_en": "The Arrow of No Return",
+  "slug": "ou-de-jianghu",
+  "title": "偶的江湖",
+  "title_en": "A Puppet's Jianghu",
   "logline": "幽皇死後一年，他的女兒帶著幽都的老弱跪在三宗盟門前求收容，懷裡藏著一支能毀人元神的詛咒之箭。白衣謀士沈歸鶴明知是局仍把她留下，怒目佛寂聞為此與他決裂；一個求死的書生、一個自罰的匠師、一個不知道母親是誰的海外少年，將決定這支箭最後射向誰。",
   "category": "anime",
   "style_preset": "anime-2d",
@@ -52,8 +52,16 @@
         "code": "episode-budget",
         "shots_per_episode": 440,
         "visual_tier_recommended": "hybrid",
-        "usd_per_episode_one_pass": { "clips": 360, "hybrid": 190, "stills": 100 },
-        "usd_per_episode_at_retake_cap": { "clips": 780, "hybrid": 440, "stills": 270 },
+        "usd_per_episode_one_pass": {
+          "clips": 360,
+          "hybrid": 190,
+          "stills": 100
+        },
+        "usd_per_episode_at_retake_cap": {
+          "clips": 780,
+          "hybrid": 440,
+          "stills": 270
+        },
         "note": "依 animation-production skill 的 3 分鐘 60 鏡估價（Veo 3.1 Lite）按 22 分鐘約 440 鏡等比放大。全片段一集約 3,500 片段秒，超過預設月配額 3,000 與單片上限 US$200；建議先以 hybrid 做第 1 集試播，再定等級。這些是估算，不是帳本。"
       },
       {
@@ -65,6 +73,6 @@
   "source_note": "取材經典布袋戲「魔女入盟—詛咒之箭—鑄劍—智星軍師—機龍」的三段式故事結構，人名、門派、地名、神兵、經書、招式與台詞全部原創；拖戲的支線不排進 24 集。全系列路線圖（後續各期）在 saga/ 目錄，只到期與季的層級。",
   "saga": {
     "roadmap": "saga/README.md",
-    "note": "期一《無歸箭》是全系列的第一期；後續各期只有期與季層級的路線圖，沒有集級細綱，也沒有驗證腳本。"
+    "note": "全系列叫《偶的江湖》，各季只按序號稱「《偶的江湖》第一季」「第二季」「第三季」……，沒有副標題；本包是第一、二季。劇中的兵器仍叫無歸箭。第三季以後只有季層級的路線圖，沒有集級細綱，也沒有驗證腳本。"
   }
 }

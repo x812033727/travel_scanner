@@ -1,8 +1,10 @@
-# 無歸箭｜長篇漫劇企劃包（期一，2 季 24 集）
+# 《偶的江湖》｜長篇漫劇企劃包（第一、二季，24 集）
 
 幽皇死後一年，他的女兒帶著幽都的老弱跪在三宗盟門前求收容，懷裡藏著一支能毀人元神的詛咒之箭。白衣謀士沈歸鶴明知是局仍把她留下，怒目佛寂聞為此與他決裂；一個求死的書生、一個自罰的匠師、一個不知道母親是誰的海外青年，將決定這支箭最後射向誰。
 
-本包分類為 **`anime`（動漫）**，畫風預設 **`anime-2d`**，題材 `custom`、群像 `ensemble`。共 **2 季、每季 12 集、期一 24 集**，**開放結局**（三條謎團保留給續期）。它的形狀照 [`borrowed-dawn`](../borrowed-dawn/README.md) 的企劃包，但集數、季數與結局政策不同。
+作品名是《偶的江湖》：「偶」是網路上可愛版的「我」，也是布袋戲的戲偶。全系列只按序號稱「《偶的江湖》第一季」「第二季」「第三季」……，沒有副標題；本包是第一、二季，第三季以後在全系列路線圖。劇中那支詛咒之箭仍叫「無歸箭」。
+
+本包分類為 **`anime`（動漫）**，畫風預設 **`anime-2d`**，題材 `custom`、群像 `ensemble`。共 **2 季、每季 12 集、24 集**，**開放結局**（三條謎團保留給續期）。它的形狀照 [`borrowed-dawn`](../borrowed-dawn/README.md) 的企劃包，但集數、季數與結局政策不同。
 
 ## 原創聲明
 
@@ -18,8 +20,8 @@
 
 | 季 | 集數 | 細綱 | 主題 |
 | --- | --- | --- | --- |
-| 1 | 1–12 | [無歸箭](season-01.md) | 用謊言保護人，和用真話害死人，哪個是善 |
-| 2 | 13–24 | [智星](season-02.md) | 兩個最聰明的人對弈，棋子是朋友 |
+| 1 | 1–12 | [《偶的江湖》第一季](season-01.md) | 用謊言保護人，和用真話害死人，哪個是善 |
+| 2 | 13–24 | [《偶的江湖》第二季](season-02.md) | 兩個最聰明的人對弈，棋子是朋友 |
 
 ## 來源與格式
 
@@ -64,10 +66,10 @@
 在 repository 根目錄執行；指令只讀寫這個企劃目錄，不呼叫模型、正式站、匯入 API 或媒體供應商：
 
 ```bash
-node docs/videos/series-plans/no-return-arrow/build.mjs
-node docs/videos/series-plans/no-return-arrow/validate.mjs
-node --test docs/videos/series-plans/no-return-arrow/validate.test.mjs
-node docs/videos/series-plans/no-return-arrow/build.mjs --check
+node docs/videos/series-plans/ou-de-jianghu/build.mjs
+node docs/videos/series-plans/ou-de-jianghu/validate.mjs
+node --test docs/videos/series-plans/ou-de-jianghu/validate.test.mjs
+node docs/videos/series-plans/ou-de-jianghu/build.mjs --check
 npm run check:tasks
 ```
 

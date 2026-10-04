@@ -18,7 +18,7 @@ const list = (values) => values.length ? values.join("、") : "—";
 function renderSetting() {
   const lines = [
     `# ${plan.title}｜設定集`, "", plan.logline, "",
-    `分類：\`${plan.category}\`；畫風：\`${plan.style_preset}\`；${plan.season_count}季×${plan.episodes_per_chapter}集，開放結局（第一期）。`, "",
+    `分類：\`${plan.category}\`；畫風：\`${plan.style_preset}\`；第一、二季，每季${plan.episodes_per_chapter}集，開放結局（第三季以後見全系列路線圖）。`, "",
     "本檔由 setting.json 與 plan.json 產生，修改來源後執行 build.mjs。這是企劃文件，不代表後台核准或媒體完成。", "",
     `## 世界：${setting.world.name}`, "", setting.world.premise, "",
     ...setting.world.geography.map((place) => `- **${place.name}：**${place.description}`), "",
@@ -36,14 +36,14 @@ function renderSetting() {
   }
   lines.push("## 長線謎團", "", "| ID | 問題 | 埋下 | 收束 | 答案 |", "| --- | --- | ---: | ---: | --- |");
   for (const thread of setting.mysteries) lines.push(`| ${thread.id} | ${cell(thread.question)} | ${thread.introduced_in} | ${thread.resolved_in ?? "保留"} | ${cell(thread.answer)} |`);
-  lines.push("", "中途 payoffs 可以是局部回收，並非整條謎團已解。最後收束集必須再次列出該謎團，對應真實劇情。", "", "## 敘事與畫面", "", ...setting.narrative_constraints.map((text) => `- ${text}`), "", setting.visual_style, "", "## 第一期結局", "", `不可逆的事：${setting.finale.permanent_costs.join("、")}。`, "", `保留給續期的謎團：${setting.finale.reserved_mysteries.join("、")}。`, "", `最後一句：**「${setting.finale.last_line}」**`, "");
+  lines.push("", "中途 payoffs 可以是局部回收，並非整條謎團已解。最後收束集必須再次列出該謎團，對應真實劇情。", "", "## 敘事與畫面", "", ...setting.narrative_constraints.map((text) => `- ${text}`), "", setting.visual_style, "", "## 第二季結局", "", `不可逆的事：${setting.finale.permanent_costs.join("、")}。`, "", `保留給續期的謎團：${setting.finale.reserved_mysteries.join("、")}。`, "", `最後一句：**「${setting.finale.last_line}」**`, "");
   return `${lines.join("\n").trimEnd()}\n`;
 }
 
 function renderSeason(season) {
   const first = season.episodes[0].number;
   const last = season.episodes.at(-1).number;
-  const lines = [`# 第${season.number}季〈${season.title}〉`, "", `全劇第${first}～${last}集；時間：${season.time_span}`, "", `**主題：**${season.theme}`, "", `**核心衝突：**${season.core_conflict}`, "", "正文目標22分鐘；以下是兩段高張力與連貫狀態的細綱，未代替逐場台詞、分鏡或實測媒體。", ""];
+  const lines = [`# 《${plan.title}》${season.title}`, "", `全劇第${first}～${last}集；時間：${season.time_span}`, "", `**主題：**${season.theme}`, "", `**核心衝突：**${season.core_conflict}`, "", "正文目標22分鐘；以下是兩段高張力與連貫狀態的細綱，未代替逐場台詞、分鏡或實測媒體。", ""];
   for (const episode of season.episodes) {
     lines.push(`## ${episode.number}｜${episode.title}`, "", episode.logline, "", `**開場：**${episode.hook}`, "", `**主要衝突：**${episode.conflict}`, "", `**中段轉折：**${episode.turn}`, "");
     for (const [index, beat] of episode.high_tension.entries()) lines.push(`**高張力${index + 1}（${beat.beat === "first_half" ? "前半" : "後半"}）：**${beat.event}`, "", `賭注：${beat.stakes}　後果：${beat.consequence}`, "");
@@ -56,13 +56,13 @@ function renderSeason(season) {
 }
 
 function renderOutline() {
-  const lines = [`# ${plan.title}｜兩季總綱`, "", plan.logline, "", `分類 anime，${plan.planned_episodes}集，第一期開放結局。播出時段約30分鐘，正文約22分鐘；原定規格不縮為現行短漫劇。`, "", "## 升級與真相曲線", "", "| 季 | 集數 | 時間 | 主題 | 核心衝突 |", "| --- | --- | --- | --- | --- |"];
+  const lines = [`# ${plan.title}｜兩季總綱`, "", plan.logline, "", `分類 anime，${plan.planned_episodes}集，第二季末開放結局。播出時段約30分鐘，正文約22分鐘；原定規格不縮為現行短漫劇。`, "", "## 升級與真相曲線", "", "| 季 | 集數 | 時間 | 主題 | 核心衝突 |", "| --- | --- | --- | --- | --- |"];
   for (const season of seasons) lines.push(`| ${season.number} | ${season.episodes[0].number}–${season.episodes.at(-1).number} | ${cell(season.time_span)} | ${cell(season.theme)} | ${cell(season.core_conflict)} |`);
   for (const season of seasons) {
-    lines.push("", `## 第${season.number}季〈${season.title}〉`, "", `收束：${season.season_resolution}`, "", `接續：${season.season_hook}`, "", "| 集 | 標題 | 推進 |", "| ---: | --- | --- |");
+    lines.push("", `## 《${plan.title}》${season.title}`, "", `收束：${season.season_resolution}`, "", `接續：${season.season_hook}`, "", "| 集 | 標題 | 推進 |", "| ---: | --- | --- |");
     for (const episode of season.episodes) lines.push(`| ${episode.number} | ${cell(episode.title)} | ${cell(episode.logline)} |`);
   }
-  lines.push("", "## 第一期終局", "", `${setting.finale.summary} 保留給續期：${setting.finale.reserved_mysteries.join("、")}。最後一句：${setting.finale.last_line}`, "");
+  lines.push("", "## 第二季終局", "", `${setting.finale.summary} 保留給續期：${setting.finale.reserved_mysteries.join("、")}。最後一句：${setting.finale.last_line}`, "");
   return `${lines.join("\n").trimEnd()}\n`;
 }
 
@@ -73,7 +73,7 @@ function continuity() {
   const rows = episodes.map((episode) => [episode.number, episode.title, ...["time", "knowledge", "character_state", "evidence", "carry_forward"].map((key) => episode.state[key]), episode.setups.join(";"), episode.payoffs.join(";"), (episode.general_payoffs ?? []).join(";")].map(quote).join(","));
   const lines = ["# 連貫性與伏筆帳", "", "各集狀態見 continuity.csv。保留已知與未知界線，角色不因觀眾已看過某場戲就自動知道答案。", "", "## 時間線", "", "| 季 | 經過月份 | 內容 |", "| --- | ---: | --- |"];
   for (const item of setting.chronology) lines.push(`| ${item.seasons.join("、")} | ${item.elapsed_months} | ${item.label} |`);
-  lines.push("", `第一期主線共約${setting.chronology.reduce((sum, item) => sum + item.elapsed_months, 0)}個月。`, "", "## 謎團埋回實際位置", "", "| ID | 埋下或推進集 | 局部或最終回收集 | 最終收束 |", "| --- | --- | --- | ---: |");
+  lines.push("", `第一、二季主線共約${setting.chronology.reduce((sum, item) => sum + item.elapsed_months, 0)}個月。`, "", "## 謎團埋回實際位置", "", "| ID | 埋下或推進集 | 局部或最終回收集 | 最終收束 |", "| --- | --- | --- | ---: |");
   for (const thread of setting.mysteries) lines.push(`| ${thread.id} | ${episodes.filter((episode) => episode.setups.includes(thread.id)).map((episode) => episode.number).join("、")} | ${episodes.filter((episode) => episode.payoffs.includes(thread.id)).map((episode) => episode.number).join("、")} | ${thread.resolved_in ?? "保留"} |`);
   lines.push("", "## 不可逆的事", "", ...setting.finale.permanent_costs.map((item) => `- ${item}`), "", "## 製作界線", "", "這份帳追蹤的是企劃狀態，未核准劇本、未生成前情摘要、未讀取正式站狀態。人物外觀與能力限制以設定集為準。", "");
   return { csv: `${headers.join(",")}\n${rows.join("\n")}\n`, md: `${lines.join("\n").trimEnd()}\n` };
@@ -127,6 +127,6 @@ for (const [name, value] of output) {
   } else writeFileSync(target, value, "utf8");
 }
 if (stale.length) {
-  process.stderr.write(`Generated files differ from source: ${stale.join(", ")}\nRun node docs/videos/series-plans/no-return-arrow/build.mjs\n`);
+  process.stderr.write(`Generated files differ from source: ${stale.join(", ")}\nRun node docs/videos/series-plans/ou-de-jianghu/build.mjs\n`);
   process.exitCode = 1;
 } else process.stdout.write(`${check ? "Checked" : "Built"} ${output.size} generated files; ${seasons.length} seasons, ${seasons.reduce((sum, season) => sum + season.episodes.length, 0)} episodes.\n`);
