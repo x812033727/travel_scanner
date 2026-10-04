@@ -119,14 +119,19 @@ class ValidatedPlan:
     manifest_sha256: str
 
 
+def _is_link(path: Path) -> bool:
+    """A symbolic link, or a Windows directory junction, which `is_symlink()` reports as False."""
+    return path.is_symlink() or path.is_junction()
+
+
 def prepare_bundle(pack: Path) -> dict[str, Any]:
     """Read a complete, flat checked-in pack; never execute its JS or access a DB."""
-    _require(pack.is_dir() and not pack.is_symlink(), "pack must be a real directory")
+    _require(pack.is_dir() and not _is_link(pack), "pack must be a real directory")
     children = list(pack.iterdir())
     _require({p.name for p in children} == FILE_NAMES, "pack has missing or unexpected files")
     files: dict[str, str] = {}
     for file in children:
-        _require(file.is_file() and not file.is_symlink(), "pack cannot contain symlinks")
+        _require(file.is_file() and not _is_link(file), "pack cannot contain symlinks")
         _require(file.stat().st_size <= MAX_FILE_BYTES, f"{file.name}: file too large")
         # Exact bytes matter: changing LF to CRLF requires a new receipt.
         files[file.name] = file.read_bytes().decode("utf-8")
