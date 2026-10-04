@@ -10,7 +10,14 @@ import httpx
 import pytest
 
 from app.config import Settings
-from app.video_media.judge import JudgeError, judge, request_body, verdict
+from app.video_media.judge import (
+    CHECK_INSTRUCTIONS,
+    INSTRUCTIONS,
+    JudgeError,
+    judge,
+    request_body,
+    verdict,
+)
 from app.video_media.schemas import JudgeIn
 from app.video_media.settings import MediaSettings
 from app.video_media.storage import MediaStore
@@ -109,6 +116,86 @@ def test_a_verdict_is_clamped_weighted_and_passes_only_above_the_bar() -> None:
         verdict("not json", payload, 7, "m")
     with pytest.raises(JudgeError):
         verdict(json.dumps({"problems": []}), payload, 7, "m")
+
+
+def _checks(sha: str) -> JudgeIn:
+    return _payload(
+        sha,
+        rubric=[
+            {"key": "text", "question": "Can you read any letter?", "weight": 0.25, "cost": 10},
+            {"key": "anatomy", "question": "More than five digits?", "weight": 0.25, "cost": 10},
+            {"key": "details", "question": "A secondary thing missing?", "weight": 2, "cost": 3},
+            {"key": "awkward", "question": "An awkward hand?", "weight": 3, "cost": 6},
+        ],
+    )
+
+
+def test_fault_checks_are_asked_yes_or_no_and_a_scored_rubric_is_asked_as_before(
+    tmp_path: Path,
+) -> None:
+    store, sha = _stored(tmp_path, PNG)
+    media = MediaSettings(video_media_dir=str(tmp_path))
+    scored = request_body("m", store, media, _payload(sha))
+    assert scored["system_instruction"]["parts"][0]["text"] == INSTRUCTIONS
+    assert list(scored["generationConfig"]["responseSchema"]["properties"]) == [
+        "scores",
+        "problems",
+        "notes",
+    ]
+    body = request_body("m", store, media, _checks(sha))
+    assert body["system_instruction"]["parts"][0]["text"] == CHECK_INSTRUCTIONS
+    assert "\n" not in CHECK_INSTRUCTIONS and "answer true when it is there" in CHECK_INSTRUCTIONS
+    lead = body["contents"][0]["parts"][0]["text"]
+    assert "- text: Can you read any letter?\n- anatomy: More than five digits?" in lead
+    assert "weight" not in lead and "cost" not in lead, "the arithmetic stays on the server"
+    schema = body["generationConfig"]["responseSchema"]
+    assert list(schema["properties"]) == ["faults", "problems", "notes"]
+    assert schema["required"] == ["faults", "problems", "notes"]
+    assert schema["properties"]["faults"] == {
+        "type": "object",
+        "properties": {
+            key: {"type": "boolean"} for key in ("text", "anatomy", "details", "awkward")
+        },
+        "required": ["text", "anatomy", "details", "awkward"],
+    }
+    with pytest.raises(ValueError, match="all fault checks"):
+        _payload(
+            sha,
+            rubric=[
+                {"key": "text", "question": "Any letter?", "cost": 10},
+                {"key": "style", "question": "In the style?"},
+            ],
+        )
+
+
+def test_a_checks_verdict_scores_ten_less_the_cost_of_each_fault_found() -> None:
+    payload = _checks("a" * 64)
+
+    def answered(**faults: Any) -> Any:
+        found = {"text": False, "anatomy": False, "details": False, "awkward": False, **faults}
+        return verdict(json.dumps({"faults": found, "problems": [], "notes": ""}), payload, 7, "m")
+
+    clean = answered()
+    assert clean.scores == {"text": 10.0, "anatomy": 10.0, "details": 10.0, "awkward": 10.0}
+    assert clean.overall == 10.0 and clean.passed, "nothing found is the top of the scale"
+    flawed = answered(details=True, awkward=True)
+    assert flawed.scores["details"] == 7.0 and flawed.scores["awkward"] == 4.0
+    assert flawed.overall == 5.64 and not flawed.passed, "two flaws weigh the overall under the bar"
+    assert answered(details=True).overall == 8.91 and answered(details=True).passed
+    assert answered(awkward=True).overall == 6.73, "this rubric is four of the tool's nine checks"
+    redo = answered(text=True)
+    assert redo.scores["text"] == 0.0 and redo.overall == 9.55 and not redo.passed, (
+        "a fault that costs the whole criterion fails the take whatever the overall"
+    )
+    silent = verdict(json.dumps({"faults": {"text": False}, "problems": []}), payload, 0, "m")
+    assert silent.scores == {"text": 10.0, "anatomy": 0.0, "details": 7.0, "awkward": 4.0}, (
+        "a check that was not answered false counts as the fault"
+    )
+    assert not silent.passed
+    odd = verdict(json.dumps({"faults": {"text": "no", "anatomy": 0}}), payload, 0, "m")
+    assert odd.scores["text"] == 0.0 and odd.scores["anatomy"] == 0.0, "only a plain false clears"
+    with pytest.raises(JudgeError):
+        verdict(json.dumps({"scores": {"text": 10}, "problems": []}), payload, 7, "m")
 
 
 @pytest.mark.asyncio
