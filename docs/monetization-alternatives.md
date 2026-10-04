@@ -1,5 +1,10 @@
 # AdSense 以外的收入方案
 
+> **2026-10-04 更新：** 本文其餘市場／流量／帳戶評估仍是 9 月 24 日歷史快照。
+> 今日唯讀公開設定回覆 AdSense `enabled=true`、`cmp_enabled=true`，東京攻略也回傳 Klook 合作入口；
+> 不代表 Google 帳戶核准、實際收益或所有目的地啟用已驗收。個別文章瀏覽的 slug 修正已在原始碼與 done 票。
+> 最新配置建議、量測限制與分階段優化見 [前台廣告與分潤配置](frontend-monetization-plan.md)。
+
 2026-09-24。AdSense 在 2026-09-23 以「缺乏價值的內容」退件後，站主要一份 AdSense 以外的規劃，
 四個方向都要評估：其他廣告聯播網、擴大分潤、直接贊助（自售版位）、自有產品與讀者支持。
 這是評估，不是實作；後續工作在 `tasks/open/` 的六張票，見第八節。
@@ -14,7 +19,7 @@
 
 建議順序：
 
-1. **先補量測**：目前量不出每篇文章的瀏覽量（第六節），任何方案都比較不了。一張 P1 票，改兩個檔案。
+1. **先核對量測**：個別文章瀏覽的 slug 修正已完成；取得部署修正後的基線，再與分潤點擊及夥伴收益對帳（第六節）。
 2. **旅遊分潤補齊，不用寫程式**：
    - 程式的品牌表裡已經有 Tiqets、Airalo、Kiwitaxi、KKday、Welcome Pickups 等品牌。
      它們在 Travelpayouts 專案 570089 裡都是 Available，現在就能產生連結。
@@ -37,9 +42,9 @@
    - Ezoic、Raptive、Monumetric、Setupad、Publisher Collective、Taboola、Outbrain、Media.net、ClickForce（4.6）。
    - 日本與韓國的在地聯播網與聯盟（4.7）。
 
-理由一句話：月瀏覽不到 3,000 時，展示廣告就算通過審核，每月也只有 NT$30–180。
-成交一筆主機方案或兩三筆訂房的分潤就超過這個數字，而且分潤連結不必在站上放第三方腳本，
-也不用動隱私政策、同意框或 CSP（第五節）。
+9 月 24 日曾以未實測流量與假設 RPM 粗估展示廣告收入；這不能視為今天的收入，也不能證明分潤一定更高。
+最新比較須取得同期間的實際廣告收益與核准佣金。既有明確合作入口可以沿用站內 clickout，
+不必為了顯示按鈕新增第三方腳本；新增方案仍需核對條款與適用的揭露要求。
 
 ## 二、現況
 
@@ -298,17 +303,17 @@ Bluehost、HostGator、Cloudways 在低流量時很可能累積不到提款門�
 
 ## 六、量測缺口
 
-1. **每篇文章的瀏覽量量不到。**
-   - `apps/api/app/analytics/service.py:80`（`_UUID_OR_TOKEN`）與 `apps/web/components/analytics-provider.tsx:45`（`sanitizedPath`）
-     會把 20 字元以上的路徑段改成 `:id`，用意是擋掉分享 token 與 UUID。
-   - 但 1,117 份文章裡約 998 份的 slug 也有那麼長，瀏覽量全部併成 `/life/:id` 或 `/guides/howto/:id`。
-   - 票：`2026-09-24-article-page-views-keep-the-article`（P1）。
+1. **個別文章的 slug 修正已完成。**
+   - `2026-09-24-article-page-views-keep-the-article` 已在 `tasks/done/`：公開文章保留路徑，分享 token 與 UUID 仍被折疊。
+   - 原先長 slug 被併成 `:id`，還會漏算同一分頁連讀另一篇文章；修正前資料不能還原，從部署修正後建立基線。
+   - 本次未取得正式站分析資料；文章與語系目前為獨立維度，不等同文章 × 語系交叉報表。
 2. **分潤點擊已能歸到文章**（PR #565 合併），但還沒用正式站的真實點擊驗收。
    票 `2026-09-12-attribute-affiliate-clicks-to-the-guide` 仍是 blocked。
-3. **沒有曝光紀錄。** 只有自售贊助需要，現在不必做。
+3. **沒有版位曝光紀錄。** 精確分潤 CTR 與保證曝光的自售贊助都需要相同口徑的曝光計數；目前只能觀察外連。
 4. **分潤收入不會回傳到站上**，只存在各夥伴的後台。
    - 建議站主每月初記一次：各夥伴的訂單數與佣金，對照後台 `/admin/analytics` 的分潤點擊報表（依 partner、placement、文章）。
-   - 有了第 1 項之後，就能算出每篇文章的「點擊率」與「每千次瀏覽的分潤」。
+   - 分潤 ledger 與 page views 的隱私／bot 排除口徑不同，直接相除只能稱「每次已量測瀏覽的點擊數」。
+   - 外部 SubID 不含文章 slug，尚不能可靠計算每篇文章的佣金或每千次瀏覽分潤；先按夥伴／目的地／模組／語系／位置對帳。
 
 ## 七、站主要決定的事與申請清單
 
@@ -343,9 +348,9 @@ Bluehost、HostGator、Cloudways 在低流量時很可能累積不到提款門�
 
 | 票 | 狀態 | 內容 |
 | --- | --- | --- |
-| `2026-09-24-article-page-views-keep-the-article` | open P1 | 公開文章的瀏覽量保留 slug，分享 token 等照舊折成 `:id` |
+| `2026-09-24-article-page-views-keep-the-article` | done（2026-10-04 原始碼核對） | 公開文章的瀏覽量保留 slug，分享 token 等照舊折成 `:id`；仍需核對實際部署後基線 |
 | `2026-09-24-hosting-affiliate-links-in-the-hosting` | blocked P2（等 D1、D2 與站主加入方案） | `CONTENT_PARTNERS` 登錄主機商方案，11 份架站教學放 `partner_link` |
-| `2026-09-24-travelpayouts-drive-loads-on-share-token` | open P2 | 順帶發現：Travelpayouts Drive 在 `/share/{token}` 也會載入，第三方腳本讀得到秘密網址 |
+| `2026-09-24-travelpayouts-drive-loads-on-share-token` | done（原始碼與 done 票） | 已隔離分享 token 的第三方腳本；繼續保留文件邊界 |
 | `2026-09-24-reader-support-link-at-the-end` | blocked P3（等 D3） | 文章文末的讀者支持連結 |
 | `2026-09-24-first-party-sponsor-placements-design` | blocked P3（等 D5） | 自售贊助的設計文件；觸發條件：有廣告主來問或月瀏覽約 3 萬 |
 | `2026-09-24-take-payment-for-the-usage-packs` | blocked P3（等 D4） | 使用次數方案接金流 |

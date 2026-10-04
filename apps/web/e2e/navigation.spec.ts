@@ -859,6 +859,7 @@ test("search criteria can be revised before running a new comparison", async ({ 
 test("flexible flight dates show local schedules and require confirmation before a new search", async ({ page }) => {
   const submitted: Array<Record<string, unknown>> = [];
   let affiliateClickMethod = "";
+  let affiliateClickLocale: string | null = null;
   const flight = {
     id: "flight-live-1", provider: "skyscanner", source_mode: "live", marketing_airline: "星宇航空", airline: "星宇航空", operating_airlines: ["星宇航空"], selling_agent: "測試售票平台", origin: "TPE", destination: "NRT", departure_time: "2026-11-10T08:00:00+08:00", arrival_time: "2026-11-10T12:00:00+09:00", return_departure_time: "2026-11-15T13:00:00+09:00", return_arrival_time: "2026-11-15T16:00:00+08:00", total_price: 15000, stops: 0, clickout_available: false, segments: [
       { origin: "TPE", destination: "NRT", departure_time: "2026-11-10T08:00:00+08:00", arrival_time: "2026-11-10T12:00:00+09:00", airline: "星宇航空", flight_number: "JX800", leg_index: 0 },
@@ -897,8 +898,10 @@ test("flexible flight dates show local schedules and require confirmation before
       }),
     });
   });
-  await page.context().route("**/api/travel/affiliates/trip_com/clickout?token=safe-token", (route) => {
+  await page.context().route((url) => url.pathname === "/api/travel/affiliates/trip_com/clickout"
+    && url.searchParams.get("token") === "safe-token", (route) => {
     affiliateClickMethod = route.request().method();
+    affiliateClickLocale = new URL(route.request().url()).searchParams.get("locale");
     return route.fulfill({ status: 200, contentType: "text/html", body: "<p>safe affiliate redirect</p>" });
   });
 
@@ -916,6 +919,7 @@ test("flexible flight dates show local schedules and require confirmation before
   ]);
   await expect(popup.getByText("safe affiliate redirect")).toBeVisible();
   expect(affiliateClickMethod).toBe("POST");
+  expect(affiliateClickLocale).toBe("zh-TW");
   await popup.close();
   await page.getByRole("button", { name: /晚 2 日/ }).click();
   expect(submitted).toHaveLength(1);
