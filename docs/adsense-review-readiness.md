@@ -1,0 +1,61 @@
+# Mokaair AdSense 審核與設定核對
+
+2026-10-04，約 07:45–07:55 UTC。帳戶為 `pub-4140966684432854`，網站為 `mokaair.com`。
+本次讀取已登入的 AdSense 畫面、公開網站及有限主機紀錄；未保存個人付款資料，未改正式設定或提交複查。
+
+## 已確認的狀態
+
+| 項目 | 實際證據 | 結論與界線 |
+| --- | --- | --- |
+| 網站審核 | Sites 顯示「需要處理／缺乏價值的內容」；詳情顯示「您的網站未通過審查，還不能放送廣告」 | 主要阻擋是內容審核。Google 未指出特定 URL，不能把某個樣本說成唯一退件原因 |
+| 擁有權 | 詳情的「驗證網站擁有權」有綠色勾選 | 已驗證；缺首頁 script／meta 不是本輪確認的擁有權問題。選取驗證方法只切換說明，不代表重新驗證成功 |
+| ads.txt 公開檔案 | `https://mokaair.com/ads.txt` 回 200、`text/plain; charset=utf-8`、59 bytes；內容如下 | 現在可取得且 publisher 正確；不證明 Google 本輪已重新抓取 |
+| ads.txt 帳戶狀態 | 列表仍是「找不到」，上次更新 2026-09-23 16:08 CST | 與目前公開檔案不同；需後續帳戶更新／抓取證據，不能直接宣稱已 Authorized |
+| 網域轉址 | HTTP apex 與 HTTPS www 都 301 到 HTTPS apex `/ads.txt`，最後 200 | 這兩條存取路徑正常 |
+| robots | 公開 `/robots.txt` 回 200，允許公開頁與 ads.txt；無相關 Google 爬蟲專屬拒絕 | 未發現此檔阻擋驗證；不是完整爬蟲網路可用性證明 |
+| 網站端 config | `enabled=true`、`publisher_id=ca-pub-4140966684432854`、`slot_id=5728135637`、`cmp_enabled=true` | 只證明本站有效設定，不代表 Google 核准或已有收益；本輪未另查廣告單元清單 |
+| Google CMP | Privacy & messaging → European regulations 中，`mokaair.com GDPR` 為「已發布」、發布開關開啟 | 帳戶發布狀態已確認；未驗證歐洲訪客的實際顯示或同意訊號 |
+| 帳戶啟用步驟 | 首頁的付款為「您的個人資料已完成」、廣告為「廣告設定已確認」、網站為「您必須修正部分內容」 | 通用頂部通知不能單獨用來判斷付款未完成；本次沒有進入或更動付款資料 |
+
+```text
+google.com, pub-4140966684432854, DIRECT, f08c47fec0942fa0
+```
+
+主機 live HEAD 為 `0768b8a0faedf4a275502f68730cb1d1aebd6928`。本次只讀 crawl log 的最後 4,000 行，
+匹配到一筆 ads.txt 200、沒有 Google 命名 UA 的匹配；這個有限窗口不能推論 Google 從未來過。
+前台分潤 PR #1202 已合併，尚未部署，且不能當作內容審核通過的證據。
+
+## 有限內容樣本
+
+以下是可改善的具體表現，不是全站品質驗收，也不是 Google 已指定的違規頁。
+前三頁以串行 HTTP GET、至少 1.3 秒間隔讀取伺服器 HTML；關於頁另外以真實瀏覽器查看。
+
+| 頁面 | 有價值的既有內容 | 可改善的項目 |
+| --- | --- | --- |
+| [繁中首頁](https://mokaair.com/zh-TW) | 有站長介紹與 12 篇旅遊／AI／理財文章摘要；部分摘要含票價、時間與查證月份 | 20 張探索卡在介紹和文章之前，部分卡反覆用「最近發布的內容」當推薦理由。優先展示網站定位及精選文章，讓卡片提供具體差異 |
+| [東京城市頁](https://mokaair.com/zh-TW/destinations/tokyo) | 有住宿區、景點、餐飲名稱及 8 個站內入口 | 此樣本的伺服器主內容約 548 字元，住宿區只列名稱。可補「適合誰／交通／取捨」比較及實際文章精選；不要把索引頁當成完整攻略 |
+| [Petrobras／Cardano 新聞](https://mokaair.com/zh-TW/life/crypto-news-cardano-petrobras-fuel-traceability-20260930) | 有正文、比較表、術語、研究階段限制及 5 個 FAQ | FAQ 被抽離後殘留 H2／目錄入口，真正答案在相關閱讀等推薦之後。應先修閱讀順序；內容主要依賴一則 CoinDesk 報導，補充查證後的官方證據或原創解讀 |
+| [關於頁](https://mokaair.com/zh-TW/about) | 個人營運者、台灣所在地、聯絡／資料更正管道已公開 | 內容仍以旅行探索與行程為主，生效日 9 月 13 日；尚未說明現在生活科技／理財文章的範圍與編輯責任。補上真實的 AI 輔助、查核與勘誤方式，不能虛構人工審查流程 |
+
+## 處理順序與複查條件
+
+1. 修 FAQ 目錄與正文的錯位，保留 FAQ schema 並確認文章閱讀不中斷。已登記
+   `2026-10-04-keep-article-faq-headings-and-answers`。
+2. 提前首頁的網站定位與精選實質文章，將探索卡的推薦理由寫具體；保留旅遊及生活科技／理財範圍。
+3. 以東京做一個城市頁樣本：住宿區比較、交通取捨、有來源的摘要及實際文章連結，逐項核查。
+4. 按內容類型抽樣覆核獨特價值、來源、時效、重複段落與薄頁；需要修改的內容逐篇記錄。
+   不能用固定文章篇數、字數或等待幾週替代品質驗收，也不只因 AI 輔助就判定不合格。
+5. 更新關於頁的真實編輯說明，完成五語系草稿、 owner 核對與正式發布後的逐頁驗證。
+6. 改善完成後，先核對 Sites 最新狀態與 ads.txt 更新入口，再由站主決定提交複查。
+   目前不能勾選「我確定已修正問題」。複查提交、擁有權、ads.txt 授權與審核通過是不同結果。
+
+未完成的內容與復審驗收由 `2026-10-04-address-adsense-low-value-content-before` 承接。
+先完成這些項目，再安排 Auto ads 格式試驗；本輪未開關廣告、CMP、爬蟲限制或批次發布。
+
+## 官方說明
+
+- [Google AdSense 內容與使用者體驗](https://support.google.com/adsense/answer/10015918)：要求有獨特價值、清楚組織與可使用的導覽；改善完成後才提出審查。
+- [網站連線與驗證](https://support.google.com/adsense/answer/7584263?hl=en)：script、ads.txt、meta 是不同驗證方法；驗證不等於審核通過。
+- [ads.txt 狀態與更新](https://support.google.com/adsense/answer/12171612?hl=en)：狀態來自上次抓取，正確檔案發布後可在可用的更新入口要求重檢；低廣告請求站可能需較久。
+- [ads.txt 抓取診斷](https://support.google.com/adsense/answer/7679060?hl=en)：核對根網域、HTTP 狀態、robots 與轉址。
+- [Google CMP 訊息發布狀態](https://support.google.com/adsense/answer/13651178?hl=en)：帳戶發布與使用者端顯示分開驗證。
