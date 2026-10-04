@@ -48,6 +48,7 @@ from app.ai.jev import (
     ChoiceQuestion,
     JevClient,
     JevQuestion,
+    NoulCriteria,
     NoulQuestion,
     consume_jev_call,
     jev_client,
@@ -225,7 +226,7 @@ STORY_DISPARAGE_INSTRUCTIONS = (
     "belittles them, or calls them dishonest, incompetent or worse in its own voice instead of "
     "reporting what a court, an official record or a named source said."
 )
-NOUL_CRITERIA = {"yes": "the statement holds", "no": "the statement does not hold"}
+NOUL_CRITERIA = NoulCriteria(true="the statement holds", false="the statement does not hold")
 # What each of the story's answers is called in the note the owner reads.
 STORY_POLICY_LABELS = {
     "stance": "符合立場",

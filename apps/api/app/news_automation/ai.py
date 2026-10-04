@@ -10,6 +10,7 @@ from redis.asyncio import Redis
 from app.ai.jev import (
     JevError,
     NoulAnswer,
+    NoulCriteria,
     NoulQuestion,
     consume_jev_call,
     estimate_tokens,
@@ -340,10 +341,10 @@ async def jev_assessments(
                                 "fully supported by its listed sources, safe for general readers, "
                                 "not investment or purchasing advice, and ready to publish."
                             ),
-                            criteria={
-                                "yes": "Every condition holds.",
-                                "no": "Any condition fails or is uncertain.",
-                            },
+                            criteria=NoulCriteria(
+                                true="Every condition holds.",
+                                false="Any condition fails or is uncertain.",
+                            ),
                         )
                     },
                 )
@@ -406,10 +407,10 @@ async def jev_duplicate_check(
                 "family, and a later change of price, availability or regions are new "
                 "developments, even when the names and most of the wording match."
             ),
-            criteria={
-                "yes": "It repeats an existing event.",
-                "no": "It is a materially new development.",
-            },
+            criteria=NoulCriteria(
+                true="It repeats an existing event.",
+                false="It is a materially new development.",
+            ),
         )
     }
     # A single question counts toward both Jev limits. Match its own size guard before
