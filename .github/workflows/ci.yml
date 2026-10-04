@@ -41,6 +41,8 @@ jobs:
       - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
         with: { python-version: "3.13" }
       - run: uv sync --frozen
+      - name: Test dots compiler and series publication boundaries
+        run: uv run python -m unittest discover -s ../../tools/dots-series -p test_pipeline.py -v
       # Same shape as the npm audit below: the advisory lookup needs PyPI at request time,
       # and a connection reset there failed the api job on a pull request whose code was
       # never run (2026-09-06). Now that api is a required check, that would block the
@@ -406,6 +408,21 @@ jobs:
           done
           cat /tmp/travel-agent.log /tmp/travel-api.log /tmp/travel-worker.log /tmp/travel-web.log
           exit 1
+      - name: Verify isolated community service recovery
+        if: ${{ !cancelled() && steps.stack-ready.outcome == 'success' }}
+        timeout-minutes: 15
+        working-directory: apps/api
+        env:
+          COMMUNITY_SERVICE_RECOVERY_E2E: "1"
+          RUN_INTEGRATION_TESTS: "1"
+        run: |
+          set +e
+          uv run pytest tests/test_community_service_recovery.py -q -rA --basetemp="$RUNNER_TEMP/community-recovery"
+          result=$?
+          # Only the sanitized receipt is printed: never mail links, auth cookies,
+          # provider request bodies, environment values or child service logs.
+          find "$RUNNER_TEMP/community-recovery" -name receipt.json -exec cat {} \;
+          exit "$result"
       - run: npx playwright install --with-deps chromium
       - name: Run unmocked desktop and Pixel 7 journeys
         id: travel-journeys

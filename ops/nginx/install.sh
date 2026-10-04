@@ -51,7 +51,9 @@ install -m 0644 "${SOURCE_ROOT}/tls-policy.conf" "${SNIPPETS}/mokaair-tls-policy
 SITE_MARKERS='upstream[[:space:]]+mokaair_web|proxy_pass[[:space:]]+https?://mokaair_web|mokaair-proxy-headers\.conf|limit_req[[:space:]]+zone=mokaair_|server_name[[:space:]][^;]*mokaair'
 
 looks_like_mokaair_site() {
-  grep -Ev '^[[:space:]]*#' -- "$1" 2>/dev/null | grep -Eq -- "${SITE_MARKERS}"
+  # Consume every line: grep -q can close the pipe early and make the first grep
+  # fail with SIGPIPE, so pipefail would mistake a large enabled site for absent.
+  grep -Ev '^[[:space:]]*#' -- "$1" 2>/dev/null | grep -E -- "${SITE_MARKERS}" >/dev/null
 }
 
 # Each entry is "<file to edit>|<how nginx reaches it>". sites-enabled/ holds symlinks on

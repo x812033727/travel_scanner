@@ -45,7 +45,7 @@ curl -sS -o <tmp>/tw2027.csv "<data.gov.tw 目錄裡的 resourceDownloadUrl>"
 
 - `guides-search-reindex`：搜尋索引只在發布時寫。migration 0077 後、或任何繞過後台寫入路徑的大量發布後，跑一次（先 `--dry-run`）；不跑搜尋是空的。
 - `guides-links-rebuild`：連結圖只在發布時寫。migration 0078 後、大量發布後跑；不跑「引用本文的文章」全空。
-- `guides-aliases-seed`：只加不改。容器裡沒有 `docs/`，不帶檔案只會種系列關鍵字；要 AI 名詞別名就先把 `docs/ai-terms-series/aliases.json` 與 `docs/ai-suffix-keywords.md` 送進容器 `/tmp`（`exec -T api sh -c 'cat > /tmp/aliases.json' < …`），再 `--terms-file /tmp/aliases.json --keywords-file /tmp/ai-suffix-keywords.md --dry-run`。
+- `guides-aliases-seed`：只加不改。容器裡沒有 `docs/`，不帶檔案只會種系列關鍵字；要 AI 名詞別名就先把 `docs/ai-terms-series/aliases.json` 與 `docs/ai-suffix-keywords.md` 送進容器 `/tmp`（`exec -T api sh -c 'cat > /tmp/aliases.json' < …`），再 `--terms-file /tmp/aliases.json --keywords-file /tmp/ai-suffix-keywords.md --dry-run`。每次都把三個來源一起種：名詞別名（`term`）、字尾關鍵字（`keyword`）、系列課程關鍵字（`series`，五個語系，量最大），沒有只種其中一個的旗標。**先看 dry-run 的 `inserted`**：和預期差很多（2026-10-03 預期幾十列，實際 4,714 列，因為系列關鍵字從沒在正式站種過）就把數字拿給站主看再正式跑；`unknown_slugs` 要是空的，所以排在文章匯入之後。跑完再 dry-run 應是 `inserted: 0`。
 - `guides-links-check [--locale zh-TW]`：列壞連結，有發現 exit 1；暫緩發布的批次會留下已知的發現，對照交接再判斷。
 
 ### 景點攻略（hotspot guides）

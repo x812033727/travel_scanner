@@ -426,6 +426,29 @@ Anthropic 9/28 發表 Claude Sonnet 5.5，自動化沒看到：Anthropic 來源�
 - **ja 審稿提醒**：淘汰頁寫 Sonnet 5「Not sooner than June 30, 2027」，但它不在 `sources[]`；正文「這幾頁沒有寫 Sonnet 5 何時停用」限縮在四頁，沒有錯，站主想寫停用日就把淘汰頁換進來源。
 - **zh-CN 審稿提醒**：「备援」在 opus-55、fable-5-access、gpt-6-sol-luna、nvidia-rubin 的 zh-CN 也有，要統一另開票。
 
+## 1k. Claude Code mods（批次 4.11，2026-10-04）：一篇 AI，五語
+
+Anthropic 10/1 在 `claude.com/blog` 發表 Claude Code mods；每小時自動化不收 `claude.com/blog`（後續票 `2026-10-03-news-automation-claude-blog-source`）。
+站主 10/3 要求規劃並寫一篇回答「是什麼、能做什麼、用在哪、怎麼開始用」。規則在 [`agents/DELTA-4-11.md`](agents/DELTA-4-11.md)，
+做法與 4.9、4.10 相同（opus 研究、sonnet 撰稿、兩輪不同的 opus 查核、sonnet 翻譯兩位、審稿 en／zh-CN sonnet、ja／ko opus），`display_order` 192。
+
+| slug | order | zh-TW 字數 | 第一輪 主張／改動 | 第二輪 主張／改動 | 審稿採用（en／ja／ko／zh-CN） |
+| --- | --- | --- | --- | --- | --- |
+| `ai-news-claude-code-mods-20261001` | 192 | 3,000 | 約 100／19 | 約 60／8 | 0／2／2／1 |
+
+- **來源四條**：部落格、文件 `overview`、`create`、`admin`。研究紀錄 94 條引文逐字比對全過；`reference` 頁的限制數字刻意不寫（要寫就得換掉一條來源）。
+  部落格連到的 GitHub 設計討論在本環境打不開（出口代理 403），正文只寫「Anthropic 表示」、不放網址；三個範例 mod 與四個內建 mod 的目錄用 git clone 確認存在。
+- **裁決**：「hook」兩種意思在第一節講清楚，全文固定用「設定檔 Hook」與「mod 的事件函式」；不寫沙盒；Remote Control 是「在你電腦上的 session 跑、畫在你電腦的終端機」（DELTA 原本寫錯，已改）；
+  deny 規則只管 Claude 的工具呼叫、管不到 mod 自己的 `$.fs`／`$.process`；內建 mods 六列；`CLAUDE_CODE_ENABLE_FUNCTION_HOOKS` 已被忽略、不寫成啟用方法。
+- **協調者對譯文的修訂**：en title 採審稿建議改成「Claude Code Adds mods: TypeScript Functions in Plugins Change Its Behavior and Interface」；en 的 hero alt 與圖說超過 200／300 字元上限，協調者縮短後才合併；
+  ja hero_label 翻譯代理寫了舊字體「變更」，依審稿改成「動作もインターフェースも変更」。
+- **索引**：第一篇 10 月文章，`update_index.py` 用 `INSERT` 在 GPT-6.1 Sol 之後開「2026 年 10 月新聞解析」標題（五語），連結放在標題下；三個日期句改成事件到 2026-10-01、增補於 2026-10-04。
+  索引標題與 description 的「1 月至 9 月」**沒改**（改標題會波及 30 個內容包的連結文字），另開票 `2026-10-03-ai-news-index-month-range`。
+- **工具注意**：容器系統時間是 UTC，`checked_on` 是台北日期 10-04，所以 `check_article.py`、`build_assets.py`、`update_index.py` 都要帶 `TZ=Asia/Taipei`，否則把查核日判成未來。
+  `build_assets.py ai` 的完整跑會重新渲染全部 141 張 AI 圖與所有 contact sheet（位元組不同、畫面相同）：只保留本篇的檔、`manifest.json` 與新增的 sheet，其餘 `git checkout` 還原。
+- **發布當天要重讀**：四頁文件都是活頁面（`reference` 標 as of v2.1.287），特別看 overview 的 Where mods run 表與內建 mods 表、admin 的 sec-default 載入條件。
+- **後續票**：教學系列「建立第一個 mod」（`2026-10-03-claude-code-lesson-first-mod`）、自動化加 `claude.com/blog` 來源、索引月份範圍。
+
 ## 2. 還沒做完的事
 
 ### 2.1 上線後仍可修訂的原稿用詞（都不是事實錯誤）

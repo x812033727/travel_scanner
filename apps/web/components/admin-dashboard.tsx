@@ -1,13 +1,12 @@
 "use client";
 
 import { Activity, ArrowRight, CircleAlert, Clock3, Database, Hotel, LoaderCircle, Newspaper, Server, Soup, UsersRound, Video } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import { useAdminOperations } from "@/components/admin-operations-provider";
 import { AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import { Link } from "@/i18n/navigation";
 import { adminDomainsCopy } from "@/lib/admin-domains-copy";
-import { adminNewsCopy } from "@/lib/admin-news-copy";
 import { visibleAdminNavigation } from "@/lib/admin-operations";
 import { adminOperationsCopy } from "@/lib/admin-operations-copy";
 import { api } from "@/lib/api";
@@ -16,6 +15,7 @@ type Dashboard = { counts: Record<string, number>; can_deploy: boolean };
 
 export function AdminDashboard() {
   const locale = useLocale();
+  const navigationCopy = useTranslations("admin.navigation");
   const copy = adminDomainsCopy(locale);
   const operationsCopy = adminOperationsCopy(locale);
   const operations = useAdminOperations();
@@ -52,7 +52,7 @@ export function AdminDashboard() {
     { key: "hotels", title: copy.hotels, icon: Hotel, total: "hotels_total", href: "/admin/hotels", queues: [
       { href: "/admin/hotels?tab=review&section=products&status=pending", count: "hotels_pending", label: copy.hotelsPending },
     ] },
-    { key: "news", title: adminNewsCopy(locale).nav, icon: Newspaper, href: "/admin/news", queues: [
+    { key: "news", title: navigationCopy("news"), icon: Newspaper, href: "/admin/news", queues: [
       { href: "/admin/news?queue=review", count: "news_review_pending", label: copy.newsPending },
     ] },
     { key: "videos", title: copy.videos, icon: Video, href: "/admin/videos", queues: [

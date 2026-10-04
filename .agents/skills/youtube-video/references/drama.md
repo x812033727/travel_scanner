@@ -35,6 +35,8 @@
 
 有角色的漫劇，每一集撰稿前讀 `.agents/skills/youtube-video/references/drama-craft.md`（開場、鏡位與剪點、鏡頭與台詞長度的規格），`lint` 之後跑 `node .agents/skills/youtube-video/scripts/drama_craft_check.mjs <VIDEO_DOCS>/video.json`：沒過的項目改掉，或在回報裡逐項寫這一集為什麼不同；查核改完再跑一次。它量的是分鏡的結構，不擋任何指令、不改任何指令的結束碼；沒有角色的漫劇（解說、品牌故事）它會說明並跳過。
 
+寫一場戲之前另讀 `.agents/skills/animation-camera/SKILL.md`（軸線與視線、鏡位、`camera`／`prompt`／`motion` 三個欄位各給哪個讀者與模型、同一鏡在 Hailuo 與 Kling 怎麼寫、分鏡讀取腳本）；手動跑任何付費階段之前讀 `.agents/skills/animation-production/SKILL.md`（每個階段的前提、一鏡一集的錢、三條路線（伺服器 API、Hailuo 網頁方案、Kling MCP）、重做規則、錯誤目錄、估價／預檢／結算腳本）。
+
 首次選定美術方向、製作代表 pilot 或收到「粗糙／沒有吸引力」的回饋時，先用 `.agents/skills/youtube-video/references/visual-quality.md` 檢查美術、表演、鏡頭與聲畫節奏。角色圖只是身份參考；首格無變形、片段可解碼與 judge 過線仍不足以放量。既有流程可在授權內繼續修正；只把需要使用者決定的風格、品質取捨或預算問題交給使用者，不逐鏡新增確認。
 
 | # | 階段 | 誰 | 產出 | 關卡 |
@@ -69,6 +71,7 @@ node tools/video/cli.mjs tts       --slug <SLUG> --dry-run                      
 node tools/video/cli.mjs keyframes --slug <SLUG> [--shot a,b] [--takes 3] [--force] [--dry-run] [--channel msedge]
 node tools/video/cli.mjs render    --slug <SLUG> [--channel msedge]             # 漫劇要先有 timeline（字幕條依旁白切）與關鍵影格（縮圖底圖）
 node tools/video/cli.mjs clips     --slug <SLUG> [--shot a,b] [--takes 2] [--force] [--dry-run]
+node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --provider hailuo-web|kling-mcp|external [--plan P] [--credits N] [--usd N] [--note "…"] [--judge] [--force]   # 外面做的片段進一個鏡頭
 node tools/video/cli.mjs music     --slug <SLUG> [--dry-run]
 node tools/video/cli.mjs assemble  --slug <SLUG>
 node tools/video/cli.mjs review    --slug <SLUG>                                # 也寫 review/look.html（本機看候選設定圖）
@@ -77,7 +80,9 @@ node tools/video/cli.mjs approve   --slug <SLUG> --gate outline|script|look|stor
 node tools/video/assemble/smoke.mjs --fixture drama [--channel msedge]          # 合成替身跑 render → assemble → review → package，不碰任何服務
 ```
 
-結束碼同投影片路線：1 品檢或 lint 沒過（`needs_review` 進 manifest，改提示詞再跑）；2 順序不對（例如 look 還沒核准就 `keyframes`、storyboard 還沒核准就 `clips`）；3 要站主（漫劇沒開、沒金鑰、單支上限、核准）；4 供應商或額度；5 ffmpeg 或瀏覽器沒裝。
+結束碼同投影片路線：1 品檢或 lint 沒過（`needs_review` 進 manifest，改提示詞再跑）；2 順序不對（timeline 或 manifest 還沒有、或是舊劇本的：例如沒跑 `tts` 就 `keyframes`）；3 要站主（漫劇沒開、沒金鑰、單支上限、關卡沒核准或已過期：look 沒核准就 `keyframes`、storyboard 沒核准就 `clips` 都是 3，`tools/video/cli.mjs` 的 `EXIT.owner`）；4 供應商或額度；5 ffmpeg 或瀏覽器沒裝。
+
+**外面做的片段**（站主的 Hailuo 網頁方案、Kling MCP）用 `clips import` 進一個鏡頭：前提同 `clips`（timeline 與 keyframes 是現在的、這一鏡的關鍵影格通過、storyboard 核准），檔案複製成 `clips/<shot>-import-<n>.mp4`，跑買來的 take 同一組 ffmpeg 檢查，`--judge` 才問 judge（不帶就不碰網站）。沒過是 `needs_review`（結束碼 1），`--force` 留下並記 `forced`；manifest 條目多 `provider`、`plan`、`credits`、`imported_at`，帳本記一筆 `status: "imported"`（`--usd` 沒給就是 US$0）。有 production profile 的作品結束碼 3；still 與 `source` 鏡頭結束碼 2。之後 `clips` 留用它、`--dry-run` 不替它估價、`status` 標出匯入幾支，`clips --force` 仍會重買。外部生成時用這一鏡的關鍵影格當首格，否則第 0 格 PSNR 過不了。選路線、算錢、在 Hailuo／Kling 那一頭怎麼操作在 `animation-production` skill；設計在 `docs/videos/DRAMA.md`「外面做的片段」。
 
 ## video.json 的重點
 
@@ -94,8 +99,8 @@ node tools/video/assemble/smoke.mjs --fixture drama [--channel msedge]          
   | --- | --- | --- |
   | push、dolly in、zoom in、closer、move in | `push-in` | 放大 10%，第 0 格是原圖 |
   | pull、zoom out、widen、back away | `pull-out` | 從 1.10 倍縮回原圖 |
-  | pan left、pan to the left、left to right | `pan-right` | 1.08 倍，裁切窗從右滑到左（畫面往左跑） |
-  | pan right、pan to the right、right to left | `pan-left` | 1.08 倍，裁切窗從左滑到右 |
+  | pan left、pan to the left、left to right | `pan-right` | 1.08 倍，裁切窗從右滑到左（畫面往右跑） |
+  | pan right、pan to the right、right to left | `pan-left` | 1.08 倍，裁切窗從左滑到右（畫面往左跑） |
   | tilt up、crane up、rise | `tilt-up` | 1.08 倍，從下滑到上 |
   | tilt down、crane down、descend | `tilt-down` | 1.08 倍，從上滑到下 |
   | locked、static、fixed、tripod | `locked` | 整格不動，第 0 格是原圖 |
@@ -134,7 +139,7 @@ node tools/video/assemble/smoke.mjs --fixture drama [--channel msedge]          
 - **順序**：劇本關卡在 `look` 之前——工人不會在劇本核准前跑 `look`，手動做也不要，設定圖是第一筆花錢的東西；`keyframes` 要 look 核准且每角色有選定的圖（沒選就用 judge 建議）；`clips` 要 storyboard 核准；`render` 要 timeline（字幕條依旁白切）與縮圖鏡頭的關鍵影格；`assemble` 要六個雜湊都對（`look_hash`、`clips_hash`、`subtitles_hash`、`mix_hash` 加原本兩個）。改了 `look` 或角色外觀，設定圖、關鍵影格、片段全部過期；改音樂增益只重混音。
 - **劇本關卡的雜湊只算敘事**：look／keyframes／clips 自動修提示詞不會讓核准失效；旁白退回或討論改了台詞才要再看。
 - **judge 說片段太大**（413）：工具會自動做 720p 代理檔上傳再判，不用手動。
-- **still 鏡頭的 PSNR**：只有 `push-in` 與 `drift` 的第 0 格是整張關鍵影格，`assemble` 對它們算 PSNR；pan、tilt、pull-out 一開始就裁掉邊緣，只驗格數。`checks.json.metrics.shots` 記 `kind: "motion"` 與 `move`，看到 `drift` 多半是 `camera` 沒寫或用了表裡沒有的字。
+- **still 鏡頭的 PSNR**：只有 `push-in`、`drift` 與 `locked` 的第 0 格是整張關鍵影格，`assemble` 對它們算 PSNR；pan、tilt、pull-out 一開始就裁掉邊緣，只驗格數。`checks.json.metrics.shots` 記 `kind: "motion"` 與 `move`，看到 `drift` 多半是 `camera` 沒寫或用了表裡沒有的字。
 - **接續鏡頭**：`start_frame: { shot, at: "last" }` 目前只把上一鏡最後一格當參考圖，片段仍從自己的關鍵影格開始，所以 assemble 的第 0 格檢查仍成立；要真的從上一格接下去，等供應商支援時要一起改 assemble 的比對來源。
 - **Windows 本機**：Playwright 用 `--channel msedge`；整套測試並行時 `media/cache.json` 偶爾遇到 rename 的 EPERM（Windows 檔案鎖），單跑會過，CI 是 Linux 不受影響。
 - **舊burn-in字幕條**（此批關閉，只出CC）：不用 libass（內建字型只有 woff2，fontconfig 會悄悄換系統字型），每個不同的字幕文字一張 1920×260 透明 PNG，行高 1.5（Noto Sans TC 字框約 1.45 em，較緊會被版面檢查擋）。

@@ -1,0 +1,644 @@
+{
+  "slug": "ai-workflow-agent-local-checklist",
+  "title": "Claude Code、Codex 搭本機模型的注意事項：開工前的檢查清單",
+  "checked_on": "2026-10-03",
+  "level": "入門",
+  "sources": [
+    {
+      "title": "Claude Code 文件：Configure permissions（Read deny 規則的範圍、沙盒與提示詞注入）",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Claude Code 文件：Connect Claude Code to an LLM gateway（/status 的判讀、設定檔與 shell 的優先順序）",
+      "url": "https://code.claude.com/docs/en/llm-gateway-connect",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Claude Code 文件：Legal and compliance（OAuth 登入與 API 金鑰的用途）",
+      "url": "https://code.claude.com/docs/en/legal-and-compliance",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Claude Code 文件：Connect Claude Code to tools via MCP（逾時、閒置中止、移到背景、輸出上限）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Codex 文件：Model Context Protocol（startup_timeout_sec、tool_timeout_sec、output_token_limit）",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Codex 文件：Permissions（permission profile、deny、適用範圍與 Windows 沙盒）",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 文件：FAQ（只綁 127.0.0.1、雲端功能的關閉、OLLAMA_HOST、提示詞去向）",
+      "url": "https://docs.ollama.com/faq",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 文件：Context length（預設上下文、64000、ollama ps）",
+      "url": "https://docs.ollama.com/context-length",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 文件：Structured Outputs（format 帶 JSON schema、雲端不支援）",
+      "url": "https://docs.ollama.com/capabilities/structured-outputs",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 文件：Claude Code（直連 Ollama Cloud、手動設定、/status）",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 模型庫：gemma4 的標籤頁（Size / Usage 欄的本機與雲端寫法）",
+      "url": "https://ollama.com/library/gemma4/tags",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "DeepSeek API 文件：Integrate with Claude Code（環境變數與模型名對照）",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 文件：Anthropic compatibility（透過已登入的本機伺服器使用雲端模型）",
+      "url": "https://docs.ollama.com/api/anthropic-compatibility",
+      "checked_on": "2026-10-03"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "加 Read 的 deny 規則可以擋 Claude 的檔案工具讀某個路徑，範例有 Read(./secrets/**)。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To block Claude’s file tools from reading a file or directory, add a Read deny rule for its path, such as Read(./.env) or Read(./secrets/**)"
+    },
+    {
+      "fact": "Read 與 Edit 的 deny 規則適用於內建檔案工具、Bash 裡認得的檔案指令（原文 such as，舉的是 cat、head、tail、sed、tee，正文寫成「這類指令」），以及重新導向的目標。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Read and Edit deny rules apply to Claude’s built-in file tools, to file commands Claude Code recognizes in Bash, such as cat, head, tail, sed, and tee, and to the targets of Bash redirections such as > file and < file."
+    },
+    {
+      "fact": "deny 規則不適用於不指名檔案的指令（例如 grep -r），也不適用於自己開檔的子行程（例如 Python 或 Node 腳本）。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "They don’t apply to a command that reads files without naming them, such as grep -r pattern . run from the directory that holds the file, or to arbitrary subprocesses that read or write files indirectly, like a Python or Node script that opens files itself."
+    },
+    {
+      "fact": "權限頁給的作業系統層級做法是開沙盒（原句寫 blocks all processes；同一頁另寫沙盒只套用在 Bash、PowerShell、Monitor 指令與其子行程，見下一條）。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For OS-level enforcement that blocks all processes from accessing a path, enable the sandbox."
+    },
+    {
+      "fact": "沙盒提供作業系統層級的檔案系統與網路限制，只套用在 Bash、PowerShell、Monitor 指令與它們的子行程。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Sandboxing provides OS-level enforcement that restricts shell commands’ filesystem and network access. It applies only to Bash, PowerShell, and Monitor commands and their child processes."
+    },
+    {
+      "fact": "沙盒的限制，即使提示詞注入繞過了 Claude 的判斷，仍然適用。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Use both for defense-in-depth, since sandbox restrictions still apply even if a prompt injection bypasses Claude’s decision-making."
+    },
+    {
+      "fact": "/status 的 Anthropic base URL 那一行只有設了位址才出現；沒有它，表示 Claude Code 沒指向那個位址。",
+      "url": "https://code.claude.com/docs/en/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Anthropic base URL: this line only appears when a gateway address is set. If it isn’t there, Claude Code isn’t pointed at the gateway;"
+    },
+    {
+      "fact": "/status 開在 Status 分頁；Anthropic base URL 那一行應顯示你設的位址。",
+      "url": "https://code.claude.com/docs/en/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Anthropic base URL line should show your gateway address, which confirms requests are routing there; if the line isn’t there, the variable didn’t reach the session."
+    },
+    {
+      "fact": "Auth token 或 API key 那一行寫著你設的變數名，表示閘道憑證生效，而不是存著的 claude.ai 登入。",
+      "url": "https://code.claude.com/docs/en/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "An `Auth token` or `API key` line naming the variable you set confirms the gateway credential is active rather than a saved claude.ai login."
+    },
+    {
+      "fact": "在「檢查組織是否已發放設定」那一步，頁面寫：若出現的是寫著 claude.ai 帳號的 Login method 行，表示憑證沒有發放到，要自己設。正文只寫成「你設的憑證沒有生效」並標明原句的情境，不寫成「憑證沒有設定到」。",
+      "url": "https://code.claude.com/docs/en/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A Login method line naming a claude.ai account instead means the credential wasn’t distributed; set it yourself."
+    },
+    {
+      "fact": "shell 的 export 與設定檔 env 區塊設了同一個變數時，設定檔的值勝出。",
+      "url": "https://code.claude.com/docs/en/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When both a shell export and a settings-file `env` block set the same variable, the settings-file value applies."
+    },
+    {
+      "fact": "憑證變數設著時存著的 claude.ai 登入不被使用；取消變數後 Claude Code 回到它。",
+      "url": "https://code.claude.com/docs/en/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Your claude.ai login stays saved and unused while the variable is set; unset the variable and Claude Code goes back to it."
+    },
+    {
+      "fact": "~/.claude/settings.json 適用於所有專案；Windows 的路徑在 USERPROFILE 的 .claude 底下。",
+      "url": "https://code.claude.com/docs/en/llm-gateway-connect",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`~/.claude/settings.json` applies to all your projects. On Windows the path is `%USERPROFILE%\\.claude\\settings.json`"
+    },
+    {
+      "fact": "OAuth 登入專供（intended exclusively for）購買 Claude 訂閱方案的人使用，用來支援平常使用 Claude Code 與其他 Anthropic 原生應用程式。正文寫「專供……使用」，不寫「只給」，保留 intended 的語氣。",
+      "url": "https://code.claude.com/docs/en/legal-and-compliance",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OAuth authentication is intended exclusively for purchasers of Claude Free, Pro, Max, Team, and Enterprise subscription plans and is designed to support ordinary use of Claude Code and other native Anthropic applications."
+    },
+    {
+      "fact": "開發會用到 Claude 能力的產品或服務的人（含用 Agent SDK 的），頁面寫應該透過 Claude Console 或支援的雲端供應商用 API 金鑰認證。",
+      "url": "https://code.claude.com/docs/en/legal-and-compliance",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Developers building products or services that interact with Claude’s capabilities, including those using the Agent SDK, should use API key authentication through Claude Console or a supported cloud provider."
+    },
+    {
+      "fact": "頁面提醒：連接前要確認信任每一個伺服器，抓外部內容的伺服器可能帶來提示詞注入風險。",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Verify you trust each server before connecting it. Servers that fetch external content can expose you to prompt injection risk."
+    },
+    {
+      "fact": "每個伺服器的工具逾時：在 .mcp.json 該伺服器項目加 timeout 欄位，單位毫秒，只蓋過該伺服器的 MCP_TOOL_TIMEOUT。",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Set a per-server tool execution timeout by adding a timeout field in milliseconds to that server’s .mcp.json entry, for example \"timeout\": 600000 for ten minutes. This overrides the MCP_TOOL_TIMEOUT environment variable for that server only"
+    },
+    {
+      "fact": "小於 1000 的 timeout 被忽略，退回 MCP_TOOL_TIMEOUT；沒設時預設約 28 小時。",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Values below 1000 are ignored and fall through to `MCP_TOOL_TIMEOUT`, or to its default of about 28 hours when that variable is unset."
+    },
+    {
+      "fact": "MCP 工具呼叫沒有回應也沒有進度通知時，在閒置時間窗後中止；stdio 伺服器預設 30 分鐘。",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A tool call to an MCP server that sends no response and no progress notification for the idle window aborts with an error instead of waiting for the wall-clock limit."
+    },
+    {
+      "fact": "stdio 伺服器的閒置時間窗預設 30 分鐘。",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "and to 30 minutes for stdio servers"
+    },
+    {
+      "fact": "stdio 伺服器在 v2.1.203 之前不受閒置中止限制（正文照這個方向寫成「v2.1.203 之前 stdio 不受此限」，不寫成頁面寫了「v2.1.203 起」）。",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Before v2.1.203, stdio servers were exempt from the idle timeout."
+    },
+    {
+      "fact": "自動移到背景需要 Claude Code v2.1.212 以上。",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Automatic backgrounding requires Claude Code v2.1.212 or later."
+    },
+    {
+      "fact": "主對話裡跑超過兩分鐘的 MCP 呼叫會移到背景工作。",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "An MCP tool call in the main conversation that is still running after two minutes moves to a background task instead of blocking the session."
+    },
+    {
+      "fact": "輸出超過 10,000 個 token 顯示警告，預設上限 25,000 個 token，用 MAX_MCP_OUTPUT_TOKENS 調整。",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Code displays a warning when MCP tool output exceeds 10,000 tokens and limits output to 25,000 tokens by default. To raise the limit, set the `MAX_MCP_OUTPUT_TOKENS` environment variable"
+    },
+    {
+      "fact": "沒有圖片的結果超過上限時，存成檔案，對話裡改放指到檔案路徑的訊息。",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "when a result with no image content exceeds the limit, Claude Code saves it to a file and replaces it in the conversation with a message that names the file path"
+    },
+    {
+      "fact": "startup_timeout_sec 單位是秒，預設 10。",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`startup_timeout_sec` (optional): Timeout (seconds) for the server to start. Default: `10`."
+    },
+    {
+      "fact": "tool_timeout_sec 單位是秒，預設 60。",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`tool_timeout_sec` (optional): Timeout (seconds) for the server to run a tool. Default: `60`."
+    },
+    {
+      "fact": "tools 底下單一工具的 output_token_limit 是該工具輸出的 token 預算，頁面沒有寫預設數字。",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "tools.<tool>.output_token_limit (optional): Positive token budget for one tool’s output, before the standard 20% serialization allowance."
+    },
+    {
+      "fact": "permission profile 標示為 beta，仍在開發、可能改變。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Beta. Permission profiles are under active development and may change."
+    },
+    {
+      "fact": "任何載入的設定檔有 sandbox_mode、指令帶了 --sandbox，或選的設定 profile 設了 sandbox_mode，Codex 就改用舊的沙盒設定，不用 default_permissions。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If sandbox_mode appears in any loaded config file, you pass --sandbox, or the selected config profile sets sandbox_mode, Codex uses those older sandbox settings instead of default_permissions."
+    },
+    {
+      "fact": "profile 管的是你機器上沙盒裡執行的指令；連接器、MCP 伺服器等有自己的控制。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Permission profiles govern sandboxed commands that run on your machine. Connectors, MCP servers, browser or computer-use surfaces, Codex cloud environment settings, and approved escalations use their own controls."
+    },
+    {
+      "fact": "原生 Windows 的 unelevated 沙盒無法強制每一種讀寫例外，不支援的政策會被拒絕；要 Linux 沙盒模型就用 WSL。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`unelevated` sandboxing is a fallback with weaker network isolation and cannot enforce every split read/write carveout, so unsupported policies are refused. Use WSL when you need the Linux sandbox model."
+    },
+    {
+      "fact": "Ollama 預設綁 127.0.0.1 的 11434 連接埠，用 OLLAMA_HOST 改綁定位址。",
+      "url": "https://docs.ollama.com/faq",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ollama binds 127.0.0.1 port 11434 by default. Change the bind address with the `OLLAMA_HOST` environment variable."
+    },
+    {
+      "fact": "Windows 上 Ollama 會繼承使用者與系統的環境變數。",
+      "url": "https://docs.ollama.com/faq",
+      "is_vendor_claim": true,
+      "verbatim_quote": "On Windows, Ollama inherits your user and system environment variables."
+    },
+    {
+      "fact": "macOS 以應用程式執行時，環境變數要用 launchctl 設。",
+      "url": "https://docs.ollama.com/faq",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If Ollama is run as a macOS application, environment variables should be set using `launchctl`:"
+    },
+    {
+      "fact": "Linux 以 systemd 服務執行時，環境變數要用 systemctl 設。",
+      "url": "https://docs.ollama.com/faq",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If Ollama is run as a systemd service, environment variables should be set using `systemctl`:"
+    },
+    {
+      "fact": "Ollama 表示本機執行時他們看不到提示詞與資料；使用雲端託管模型時，他們會處理提示詞與回應來提供服務，但不儲存、不記錄那些內容，也不拿來訓練（第二輪起 callout 照整句轉述並歸因給 FAQ，不只引前半）。",
+      "url": "https://docs.ollama.com/faq",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ollama runs locally. We don’t see your prompts or data when you run locally. When using cloud-hosted models, we process your prompts and responses to provide the service but do not store or log that content and never train on it."
+    },
+    {
+      "fact": "關掉 Ollama 的雲端功能，Ollama 就以只用本機的模式執行（這是 Ollama 伺服器的設定）。",
+      "url": "https://docs.ollama.com/faq",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ollama can run in local only mode by disabling Ollama’s cloud features."
+    },
+    {
+      "fact": "關閉 Ollama 雲端功能，會失去使用 Ollama 雲端模型與網頁搜尋的能力。",
+      "url": "https://docs.ollama.com/faq",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By turning off Ollama’s cloud features, you will lose the ability to use Ollama’s cloud models and web search."
+    },
+    {
+      "fact": "關閉雲端功能可在 ~/.ollama/server.json 設 disable_ollama_cloud。",
+      "url": "https://docs.ollama.com/faq",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Set `disable_ollama_cloud` in `~/.ollama/server.json`:"
+    },
+    {
+      "fact": "也可以設環境變數 OLLAMA_NO_CLOUD=1。",
+      "url": "https://docs.ollama.com/faq",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OLLAMA_NO_CLOUD=1"
+    },
+    {
+      "fact": "改完設定要重啟 Ollama，關閉後日誌會出現 Ollama cloud disabled: true。",
+      "url": "https://docs.ollama.com/faq",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Restart Ollama after changing configuration. Once disabled, Ollama’s logs will show Ollama cloud disabled: true."
+    },
+    {
+      "fact": "FAQ 的另一節寫預設上下文是 4096 個 token（與上下文頁的依 VRAM 預設不一致）。",
+      "url": "https://docs.ollama.com/faq",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By default, Ollama uses a context window size of 4096 tokens."
+    },
+    {
+      "fact": "預設上下文依 VRAM：小於 24 GiB 是 4k。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": true,
+      "verbatim_quote": "24 GiB VRAM: 4k context"
+    },
+    {
+      "fact": "預設上下文依 VRAM：24 到 48 GiB 是 32k。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": true,
+      "verbatim_quote": "24-48 GiB VRAM: 32k context"
+    },
+    {
+      "fact": "預設上下文依 VRAM：48 GiB 以上是 256k。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": true,
+      "verbatim_quote": "48 GiB VRAM: 256k context"
+    },
+    {
+      "fact": "網頁搜尋、代理與寫程式工具這類需要大上下文的工作，建議至少設 64000 個 token。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Tasks which require large context like web search, agents, and coding tools should be set to at least 64000 tokens."
+    },
+    {
+      "fact": "啟動伺服器時用 OLLAMA_CONTEXT_LENGTH=64000 ollama serve 設上下文長度。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OLLAMA_CONTEXT_LENGTH=64000 ollama serve"
+    },
+    {
+      "fact": "Ollama App 設定裡的滑桿可以改上下文長度。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Change the slider in the Ollama app under settings to your desired context length."
+    },
+    {
+      "fact": "有一節標題是檢查已配置的上下文長度與模型卸載。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Check allocated context length and model offloading"
+    },
+    {
+      "fact": "建議避免把模型卸載到 CPU，並用 ollama ps 在 PROCESSOR 欄看。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For best performance, use the maximum context length for a model, and avoid offloading the model to CPU. Verify the split under `PROCESSOR` using `ollama ps`."
+    },
+    {
+      "fact": "ollama ps 範例輸出的欄位有 NAME、ID、SIZE、PROCESSOR、CONTEXT、UNTIL。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": true,
+      "verbatim_quote": "NAME ID SIZE PROCESSOR CONTEXT UNTIL"
+    },
+    {
+      "fact": "上下文設得越大，需要的記憶體越多。",
+      "url": "https://docs.ollama.com/context-length",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Setting a larger context length will increase the amount of memory required to run a model."
+    },
+    {
+      "fact": "頁面最上面的註記：Ollama 的雲端目前不支援結構化輸出（頁面寫的是 Ollama's Cloud，沒有寫 cloud 標籤；正文把直連 ollama.com 與 cloud 標籤歸到 Ollama 的雲端，依據是本篇的三種跑法與三個家族那一篇）。",
+      "url": "https://docs.ollama.com/capabilities/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ollama’s Cloud currently does not support structured outputs."
+    },
+    {
+      "fact": "要帶 schema，就把 JSON schema 給 format 欄位。",
+      "url": "https://docs.ollama.com/capabilities/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Provide a JSON schema to the `format` field."
+    },
+    {
+      "fact": "Python 範例用 Pydantic 的 model_json_schema() 傳給 format，並要驗證回應。",
+      "url": "https://docs.ollama.com/capabilities/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Use Pydantic models and pass `model_json_schema()` to `format`, then validate the response:"
+    },
+    {
+      "fact": "Ollama 的 Claude Code 頁寫，Ollama 透過自己的 Anthropic 相容 API 把 Claude Code 接到本機與雲端模型。第二輪起 callout 改引 Anthropic 相容頁本身的原句（第 13 條 source），這一條留作兩頁之間的連結：Claude Code 接 Ollama 走的就是那一頁描述的 API。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ollama connects Claude Code to local and cloud models through its Anthropic-compatible API."
+    },
+    {
+      "fact": "直連 Ollama Cloud 一節：裝好 Claude Code、把 API 金鑰放進 OLLAMA_API_KEY，不需要安裝 Ollama。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Connect directly to Ollama Cloud Install Claude Code, then set your API key in OLLAMA_API_KEY. No Ollama installation required."
+    },
+    {
+      "fact": "直連 Ollama Cloud 的範例把 ANTHROPIC_BASE_URL 設成 https://ollama.com。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ANTHROPIC_BASE_URL=https://ollama.com"
+    },
+    {
+      "fact": "同一個範例的模型標籤是 glm-5.3-flash，沒有 cloud 字樣。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "claude --model glm-5.3-flash"
+    },
+    {
+      "fact": "手動設定一節的最後一個範例，位址是 localhost 的 11434，模型標籤帶 :cloud。",
+      "url": "https://docs.ollama.com/integrations/claude-code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ANTHROPIC_AUTH_TOKEN=ollama ANTHROPIC_BASE_URL=http://localhost:11434 ANTHROPIC_API_KEY=\"\" claude --model kimi-k2.7-code:cloud"
+    },
+    {
+      "fact": "標籤表的欄位標題是 Size / Usage、Context、Input。",
+      "url": "https://ollama.com/library/gemma4/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Size / Usage Context Input"
+    },
+    {
+      "fact": "下載的標籤，大小欄寫 GB 範圍（gemma4:latest 為 6.6GB - 9.5GB）。",
+      "url": "https://ollama.com/library/gemma4/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "gemma4:latest 009acb0d7fe1 • 6.6GB - 9.5GB • 128K context window • Text, Image input"
+    },
+    {
+      "fact": "雲端標籤，同一欄是用量等級（gemma4:cloud 為 Low Usage）。這段文字在頁面的窄畫面版型裡；寬畫面的表格在同一欄畫四格刻度（gemma4:cloud 亮一格），不印文字。同一模型的模型頁（library/gemma4，不在本篇 sources）雲端列寫「-」，正文把那一種寫法歸給三個家族那一篇。",
+      "url": "https://ollama.com/library/gemma4/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "gemma4:cloud b06ba4be71c0 • Low Usage • 256K context window • Text, Image input"
+    },
+    {
+      "fact": "同一頁也有以 -cloud 結尾的標籤：gemma4:31b-cloud 的同一欄同樣是用量等級（Low Usage），不是檔案大小。正文把它和 gemma4:cloud 並列，讓讀者知道 cloud 不一定接在冒號後面。",
+      "url": "https://ollama.com/library/gemma4/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "gemma4:31b-cloud c382fbfbc73b • Low Usage • 256K context window • Text, Image input"
+    },
+    {
+      "fact": "設那組環境變數，是讓 Claude Code 指向 DeepSeek 的 Anthropic API。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "simply configure the following environment variables to point to the DeepSeek Anthropic API."
+    },
+    {
+      "fact": "對照的對象是你傳入的 Claude 模型名（正文寫「傳入的模型名」的依據）。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When you use Claude Code or Claude Desktop APP, we map the Claude model names you pass in:"
+    },
+    {
+      "fact": "名稱以 claude-opus 開頭的模型名對到 deepseek-v4-pro（第二輪起段落照原文寫成「傳入的模型名以 claude-opus 開頭的」，不再寫「opus 那一級的名稱」）。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Models starting with claude-opus are mapped to deepseek-v4-pro"
+    },
+    {
+      "fact": "claude-opus 的對照指向 deepseek-v4-pro，以 V4 Pro 的價格計費。",
+      "url": "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The claude-opus mapping points to deepseek-v4-pro, which is billed at the V4 Pro price."
+    },
+    {
+      "fact": "Ollama 的 Anthropic 相容頁開頭寫，這一頁講的是把 Claude Code 這類 Anthropic 客戶端與工具接到 Ollama。",
+      "url": "https://docs.ollama.com/api/anthropic-compatibility",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Connect Anthropic clients and tools such as Claude Code to Ollama."
+    },
+    {
+      "fact": "本機伺服器那一節寫，範例連的是你的本機 Ollama 伺服器；要透過這個伺服器使用雲端模型，得先登入 Ollama。",
+      "url": "https://docs.ollama.com/api/anthropic-compatibility",
+      "is_vendor_claim": true,
+      "verbatim_quote": "These examples connect to your local Ollama server. Use ollama as the placeholder API key. To use cloud models through this server, sign in to Ollama."
+    },
+    {
+      "fact": "雲端模型那一節寫，經由已登入的 Ollama 伺服器，可以直接用 gemma4:cloud 這類雲端名稱，不必另外下載。callout 依這一句與上一句寫『位址是 localhost、標籤帶 :cloud 的組合，用的也是雲端模型』；頁面沒有寫資料去向，資料處理接 FAQ 對雲端託管模型的原句，不替這一頁寫『資料會送到哪裡』。",
+      "url": "https://docs.ollama.com/api/anthropic-compatibility",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Through a signed-in Ollama server, use a cloud name such as gemma4:cloud without a separate pull."
+    }
+  ],
+  "unverified_or_excluded": [
+    "Ollama FAQ 的『How can I specify the context window size?』一節寫預設是 4096 個 token，與 context-length 頁依顯示記憶體的預設（4k、32k、256k）不一致；本篇採 context-length 頁，並點出兩頁不一致、要用 ollama ps 看實際值。",
+    "Anthropic 的 LLM gateway 頁（不支援把 Claude Code 導向非 Claude 模型、只設網址不會取代訂閱）：同組前面幾篇已引，本篇的 sources 上限是 13 條（第二輪把第 13 條給了 Ollama 的 Anthropic 相容頁），為了放 Ollama 的標籤頁與 DeepSeek 頁而沒有重引；本篇只用閘道連線頁的 /status 判讀，官方立場那一句指回兩種接法那一篇。",
+    "Claude Code 的 Bash 工具預設逾時（env-vars 與 tools-reference 頁）：同樣因 sources 上限沒有列入，批次分批的做法指回批次腳本那一篇，不在本篇寫數字。",
+    "Codex 的確認與還原指令（ollama launch codex --restore、--oss、oss_provider）與 LM Studio 的頁面：本篇沒有重讀，指回整個換成本機模型那一篇。",
+    "Z.ai、阿里雲百鍊的模型名對照：同組第 14 篇讀過，兩家頁面各自前後不一致的說法本篇沒有重讀、不轉述；供應商端點只舉 DeepSeek 頁的 claude-opus 對照當例子，其餘寫『以各家頁面當天的寫法為準』。",
+    "標籤頁大小欄：gemma4 的 /tags 頁，雲端標籤那一格是用量等級（窄畫面印 Low Usage，寬畫面畫刻度、不印字），下載標籤寫 GB 範圍；同一個模型的模型頁（library/gemma4）內嵌的標籤表，雲端列的同一格寫『-』。兩頁寫法不同、結論相同（都不是檔案大小）。模型頁不在本篇 sources（上限 13 條，已滿），正文把『-』那種寫法歸給三個家族那一篇（它的 sources 有 glm-5.3-flash、deepseek-v4.1-flash 等模型頁，正文寫『同一欄寫「-」』），兩種寫法並列，不替官方選一個。第二輪註記：『-』那一側的原文在三個家族那一篇的 sources 上，不在本篇 sources 上，本篇只以『那一篇讀的模型頁』轉述。",
+    "Ollama 的 Anthropic 相容頁：第二輪依協調者要求補成第 13 條 source。本篇只用三句（開頭接 Claude Code 這類工具、本機伺服器一節的登入才能用雲端模型、雲端模型一節的 gemma4:cloud 不必另外下載）；同頁的直連雲端（Direct cloud access）、不支援與部分支援清單、ollama cp 改名、行為差異沒有寫，那些是整個換成本機那一篇的內容。頁面沒有寫資料去向，callout 的資料處理只接 FAQ 對雲端託管模型的原句。",
+    "Codex Permissions 頁另寫『Managed allowed_permission_profiles is the exception: it makes Codex use permission profiles.』（企業以 managed 設定強制使用 profile 時的例外）：本篇讀者是個人設定，正文的『帶 --sandbox 或設定檔有 sandbox_mode 就改用舊設定』沒有寫這個例外。",
+    "Anthropic 法務頁另寫 should use API key authentication 的管道是『through Claude Console or a supported cloud provider』，以及『Anthropic does not permit third-party developers to offer Claude.ai login into their own applications, or to route requests through Free, Pro, or Max plan credentials on behalf of their users.』：正文只轉述 OAuth 與 API 金鑰兩句，第二句的意思由『會讓別人經過我的登入？後者請讀原文』指回原文，不轉述成條款結論。",
+    "Ollama 的 Claude Code 頁另有『ollama launch claude --model gemma4:cloud --yes』的非互動範例：本篇舉例用的是手動設定一節最後一個 localhost＋:cloud 範例，這一個沒有寫。",
+    "OLLAMA_NO_CLOUD 與 disable_ollama_cloud：同組五篇（含整個換成本機那一篇）都沒有寫，表格那一列的『詳見』改成本篇。",
+    "Codex permission profile 與舊沙盒設定互斥（帶 --sandbox 或設定檔有 sandbox_mode 時不看 default_permissions）：查核時補進正文與表格，因為批次腳本那一篇的 codex exec 指令特意不帶 --sandbox，漏了這句的清單會讓 deny 規則悄悄失效。",
+    "Ollama 的 Codex 頁（經 Ollama 執行的 web search、ollama signin）：本篇沒有重讀；FAQ 一句已寫關閉雲端功能會失去網頁搜尋，用那一句。",
+    "Hugging Face 模型卡的授權文字：本篇不重讀，只寫『照卡上的用詞，卡上沒寫可商用就不要當成可商用』，逐家授權留給三個家族那一篇。",
+    "『省多少』『哪一種硬體跑得動』『哪個模型的繁體中文比較好』：官方頁沒有可引用的數字，本篇不寫結論，只寫要量什麼。",
+    "Anthropic 法務頁的條款如何適用於『訂閱登入加本機模型』的各種組合：只轉述頁面原文並歸因，不做法律解讀，也不寫成違反或沒有違反條款。",
+    "Claude Code MCP 頁的其他規則本篇沒收：非互動模式與子代理的呼叫不移到背景（CLAUDE_AUTO_BACKGROUND_TASKS）、CLAUDE_CODE_MCP_TOOL_IDLE_TIMEOUT、CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS、anthropic/maxResultSizeChars；逾時與輸出量只收第 5 項需要的幾條，其餘留給 MCP 工具那一篇。",
+    "Codex Permissions 頁的 glob 寫法（**/*.env）、extends、network 規則與 glob_scan_max_depth：本篇只收『可對路徑標 deny、與 --sandbox／sandbox_mode 互斥、管沙盒裡的指令、MCP 伺服器另有控制』四句與 WSL 一句，細節留給批次腳本那一篇。",
+    "Ollama 的 Claude Code 頁最後一個手動設定範例所用的模型標籤不在 models-seen.json，正文沒有寫出那個標籤，只寫『標籤帶 :cloud』；原句留在 verified_facts 的 verbatim_quote。"
+  ],
+  "must_not_write": [
+    "速度、品質、省多少的結論；哪一種硬體跑得動的結論；繁體中文品質的排名。",
+    "任何執行輸出，或『我跑過』的說法；全篇只在第二段導言說一次『本站沒有實測』。",
+    "『違反條款』『合規』『可以商用』這類法律或授權結論。",
+    "把 Ollama 開到區域網路或公網的做法；用第三方路由器把 Claude Code 的一部分請求導到別的模型的做法。",
+    "價格、方案比較、訂閱或購買建議。",
+    "models-seen.json 以外的模型 id 與標籤。『claude-opus』是 DeepSeek 頁對照規則裡的名稱字首（Models starting with claude-opus），不是模型 id；現況：檢查器已把 claude-opus、claude-sonnet、claude-haiku 三個字首排除在模型 id 比對之外，所以第二輪起段落照原文寫成『傳入的模型名以 claude-opus 開頭的』，不要再改寫成『opus 那一級』這種比原文寬的說法。",
+    "『要擋住所有行程就開沙盒』而不寫沙盒的範圍：權限頁同一頁寫沙盒只套用在 Bash、PowerShell、Monitor 指令與其子行程，MCP 伺服器這類不是由 shell 指令啟動的行程不在裡面。",
+    "叫讀者用真的原始檔測 deny 規則：規則若沒生效，那份檔案已經進了雲端代理的上下文；測試一律用內容虛構的檔案。",
+    "把 /status 的 Login method 判讀寫成『憑證沒有設定到』這類超出原句情境的說法；原句是組織沒有發放憑證，正文寫『你設的憑證沒有生效』並標明情境。",
+    "替 Ollama 的 Anthropic 相容頁寫『資料會送到哪裡』：那一頁只寫透過已登入的本機伺服器可以用 gemma4:cloud 這類雲端模型名稱；資料怎麼處理只能接 FAQ 對雲端託管模型的原句（處理提示詞與回應來提供服務，不儲存、不記錄、不拿來訓練），並歸因給 FAQ。",
+    "把驗收三步（schema 驗證、抽樣複核、升級）或重試與標記寫成官方做法；那是本站的建議。"
+  ],
+  "editorial_brief": "這是 E 組最後一篇，把前五篇的坑收成一張開工前逐項核對的表：八組、十六列，每列一句怎麼檢查，再指回同組哪一篇。本篇不重講設定步驟，只講『要查什麼、去哪裡看』，而且每個指令、設定鍵與數字都在 2026-10-03 重讀過的官方頁上。和前五篇的分工：兩種接法與三種跑法、三個家族、批次腳本、MCP 工具、整個換成本機各篇講怎麼做，本篇只講怎麼核對；省不省、繁體中文品質、條款解讀都不下結論，只寫要量什麼、要讀哪裡。",
+  "code_samples": [
+    {
+      "label": "核對上下文與連線（指令出自 Ollama 與 Claude Code 官方文件，需要已裝好 Ollama 與 Claude Code）",
+      "language": "bash",
+      "lines": 9,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://docs.ollama.com/context-length",
+        "https://code.claude.com/docs/en/llm-gateway-connect"
+      ]
+    }
+  ],
+  "hero_label": "開工前逐項核對",
+  "diagram": {
+    "layout": "grid",
+    "title": "開工前四個先查的地方",
+    "nodes": [
+      [
+        "資料",
+        "原始檔留本機，代理讀不到"
+      ],
+      [
+        "憑證",
+        "/status 看網址與憑證"
+      ],
+      [
+        "上下文",
+        "看 CONTEXT 實際值"
+      ],
+      [
+        "驗收",
+        "格式驗證加抽樣複核"
+      ]
+    ],
+    "caption": "四格圖解：開工前先查的四個地方，資料、憑證、上下文與驗收（2026 年 10 月查證，檢查方法取自官方文件）"
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-10-04",
+    "method": "sources[] 12 條今天以 curl -sL -A Mokaair-editorial 重抓（全部 HTTP 200、皆為正文），另抓 Claude Code 與 Ollama 頁的 .md 版、Codex 兩頁的 .md 版、gemma4 模型頁、Claude Code 的 llm-gateway 頁與 Ollama 的 Anthropic 相容頁只供反駁。HTML 標籤刪成空字串、空白正規化、實體還原後，67 條 verbatim_quote 逐條綁回自己的 url 比對。正文、summary、callout、表格 16 列 48 格、FAQ 6 題、code 區塊每個識別字、title、description、圖解節點與 caption 逐句對回原文；同組五篇內容包逐列確認『詳見哪一篇』真的講了那件事；五篇必連文章讀 title 與前三段確認沒有矛盾或重講。",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "沙盒範圍：『要擋住所有行程就開沙盒』補上權限頁同一頁的『沙盒只套用在 Bash、PowerShell、Monitor 指令與其子行程』，並指向批次腳本那一篇看開法與適用系統（段落、表格第 1 列、FAQ 第 1 題）。",
+      "測試 deny 規則：『請代理實際讀一個裡面的檔案』改成放一個內容虛構的測試檔再請代理讀（規則沒生效時，真檔案已進雲端）。",
+      "Codex permission profile：補上同頁『帶 --sandbox 或設定檔有 sandbox_mode 時改用舊設定、不看 default_permissions』（段落、表格第 2 列）。",
+      "/status 的 Login method：『意思是憑證沒有設定到』改成『你設的憑證沒有生效（原句的情境是組織沒有發放憑證）』，前半照 Confirm 一節原句。",
+      "callout 與 summary 第 2 句：『位址是 localhost 但標籤帶 :cloud，內容都可能由 Ollama 的雲端處理』原本用『所以』接在 FAQ 原句後；改成直連 ollama.com 屬於雲端託管、localhost＋:cloud 的組合頁面沒有逐字寫，依 Ollama Claude Code 頁『connects Claude Code to local and cloud models through its Anthropic-compatible API』本篇建議當成雲端。",
+      "結構化輸出：『cloud 標籤不支援結構化輸出』改成照頁面寫『Ollama 的雲端目前不支援』，再把直連 ollama.com 與 cloud 標籤歸到它；表格第 10 列補『目前』。",
+      "驗收三步、重試與標記、抽樣複核、升級：段落、表格第 10 列、summary 第 4 句都寫明是本站的建議，不是官方寫法。",
+      "版本標註：『（頁面寫 v2.1.203 起）』改成照原句方向『v2.1.203 之前 stdio 不受此限』；『（v2.1.212 起）』改成『需要 v2.1.212 以上』；『小於 1000 會被忽略』補上『改用 MCP_TOOL_TIMEOUT』。",
+      "預設上下文：summary 第 3 句、表格第 7 列、FAQ 第 3 題原本只寫上下文頁的三級，改成標明出處並與 FAQ 的 4096 並列。",
+      "Size / Usage 欄：『gemma4:cloud 寫 Low Usage』改成用量等級（窄畫面印 Low Usage、寬畫面是刻度），並與三個家族那一篇讀的模型頁寫『-』並列（段落、表格第 3 列）。",
+      "OLLAMA_NO_CLOUD 的範圍：『這只管 Ollama』補上直連 ollama.com（不需要安裝 Ollama）也不經過本機伺服器（段落、表格第 4 列）。",
+      "『詳見哪一篇』：第 4 列（同組沒有一篇寫 OLLAMA_NO_CLOUD）改本篇；第 15 列（兩種接法沒有寫 OAuth 與授權）改本篇＋官方立場見兩種接法＋授權見三個家族；第 16 列（TAIDE 那篇沒有用字檢查）改本篇；段落『Codex 的確認與還原』改『Codex 的還原』（整個換成本機那篇寫 Codex 文件沒有確認指令）。",
+      "法務頁：補回 exclusively（只給）、把『開發產品或服務的人』限縮成原文的『會用到 Claude 能力的產品或服務』、should 譯成『應該』（段落、表格第 15 列、FAQ 第 6 題）；段落與 FAQ 第 6 題加一句把 Anthropic 對非 Claude 模型的立場指回兩種接法那一篇。",
+      "表格第 12 列：launchctl 與 systemd 補上 FAQ 的前提（以 App 執行時、以 systemd 服務執行時）。",
+      "『差最多的地方』改『差很多的地方』；description『每一項只寫一個檢查動作』改『每一項寫怎麼檢查』。",
+      "為了把段落壓回 3,000 字以內，刪掉三處重複敘述（導言第二段『每一項的最後一欄指出詳見哪一篇』、上下文段開頭的『上下文要看實際值。』與段末『這一項只查數字…』），沒有刪任何但書或限定詞。"
+    ],
+    "checked_and_correct": [
+      "Read deny 規則的適用與不適用範圍（cat、head、tail、sed、tee、重新導向；grep -r、自己開檔的腳本）逐字吻合。",
+      "Codex permission profile 標 beta、deny、管沙盒裡的指令、MCP 伺服器另有控制、原生 Windows 用 WSL 取得 Linux 沙盒模型，皆在 learn.chatgpt.com/docs/permissions。",
+      "設定檔 env 勝過 shell export、取消憑證變數回到 claude.ai 登入、~/.claude/settings.json 與 Windows 路徑。",
+      "Ollama FAQ：127.0.0.1:11434、OLLAMA_HOST、OLLAMA_NO_CLOUD=1、disable_ollama_cloud、重啟後日誌 Ollama cloud disabled: true、關掉後失去雲端模型與網頁搜尋、本機執行看不到提示詞、雲端託管模型會處理提示詞。",
+      "context-length 頁：4k／32k／256k 三級、64000、OLLAMA_CONTEXT_LENGTH=64000 ollama serve、App 滑桿、ollama ps 的 PROCESSOR 與 CONTEXT、上下文越大記憶體越多。",
+      "Claude Code MCP 頁：timeout 欄位毫秒、小於 1000 忽略、約 28 小時、stdio 閒置 30 分鐘、兩分鐘移到背景、10,000 警告、25,000 上限、無圖片結果存成檔案、提示詞注入提醒。",
+      "Codex MCP 頁：startup_timeout_sec 預設 10、tool_timeout_sec 預設 60（秒）、output_token_limit 沒有寫預設數字。",
+      "DeepSeek Claude Code 頁：指向 DeepSeek Anthropic API、claude-opus 開頭對到 deepseek-v4-pro、以 V4 Pro 價格計費；正文沒有寫價格。",
+      "Ollama Claude Code 頁：直連 ollama.com 的 glm-5.3-flash 範例、手動設定最後一個 localhost＋:cloud 範例。",
+      "code 區塊 9 行，bash -n 通過；OLLAMA_CONTEXT_LENGTH、ollama serve、ollama ps、PROCESSOR、CONTEXT、/status、Status 分頁、Anthropic base URL、Auth token、API key 十個識別字都在官方頁。",
+      "不實測規則：『本站沒有實測』只在第二段導言一次，title 與 description 沒有『實測』，沒有速度、品質、省多少、硬體跑得動的結論，沒有執行輸出，繁中品質不下結論。",
+      "五篇必連文章的 title 逐字相同，正文沒有與它們矛盾或整段重講；checked_on 2026-10-03 在 12 條 source、研究紀錄、表格與圖解 caption 一致，未更動。"
+    ],
+    "left_for_the_owner": [
+      "全文 body 字數（含表格與 FAQ）從 5,911 增為約 6,600，超過生活類 6,000 的軟性指引；多出來的是本輪補的但書與並列。若要壓回去，FAQ 第 4 題（逾時單位）與第 5 題（省不省、繁中）與正文、表格完全重複，可考慮刪一題；本代理沒有刪 FAQ。",
+      "『位址是 localhost、標籤帶 :cloud』的資料去向：Ollama 的 Anthropic 相容頁有逐字原句可撐，但不在本篇 sources（上限 12）。要不要拿它換掉一條（例如 gemma4 的 /tags 頁）由協調者決定。",
+      "表格與段落裡用了『批次腳本那一篇』『三個家族那一篇』『兩種接法那一篇』這類短稱，autolink 不會把它們轉成連結；全名在正文其他段落各出現一次。"
+    ],
+    "code_recompiled": [
+      {
+        "label": "核對上下文與連線（指令出自 Ollama 與 Claude Code 官方文件，需要已裝好 Ollama 與 Claude Code）",
+        "result": "ok"
+      }
+    ],
+    "second_round": {
+      "checked_on": "2026-10-04",
+      "rechecked": "第二輪獨立查核（未參與撰稿與第一輪）。sources 12 條加新補的 Anthropic 相容頁今天以 curl -sL -A Mokaair-editorial 重抓（13 條 HTTP 200、皆為正文；Claude Code、Ollama 各頁另抓 .md 對照），HTML 標籤刪成空字串、空白正規化、實體還原後比對。第一輪新寫或改寫的約 55 條主張逐句回原文重核：段落『代理讀不讀得到原始檔』『Codex 的對應做法』『現在連的是誰』『標籤與位址』『要完全不碰』『上下文』『逾時』『驗收』『條款與授權』，callout，summary 第 1–4 句，表格第 1–4、7、9、10、12、14–16 列，FAQ 第 1–3、6 題（刪題前的編號）。同組前五篇定稿內容包逐列重對『詳見哪一篇』（表格 16 列加正文 12 處）。第一輪 checked_and_correct 12 項隨機抽 4 項（第 3、4、10、12 項）重查。code 區塊重跑 bash -n。72 條 verbatim_quote 全部在自己 url 的頁面搜得到。另讀 code.claude.com/docs/en/sandboxing 只為確認批次腳本那一篇的平台句，不當本篇依據。",
+      "edits": [
+        "補第 13 條 source：Ollama Anthropic compatibility 頁（內容包與研究紀錄都放在最後，checked_on 2026-10-03＝date -u 當天，與檢查器要求的全篇一致）；verified_facts 加三條原句（Connect Anthropic clients and tools such as Claude Code to Ollama.／To use cloud models through this server, sign in to Ollama.／Through a signed-in Ollama server, use a cloud name such as gemma4:cloud without a separate pull.）。",
+        "callout：『本篇讀的頁面沒有逐字寫資料去向……所以本篇建議一樣當成雲端看待』改成照相容頁寫『位址是 localhost、標籤帶 :cloud 的組合，用的也是雲端模型：要透過本機伺服器使用雲端模型得先登入 Ollama，登入後可直接用 gemma4:cloud 這類雲端名稱，不必另外下載』；FAQ 對雲端託管模型那一句補回後半『但不儲存、不記錄這些內容，也不拿來訓練』。沒有替相容頁寫資料去向。",
+        "供應商端點段落：『opus 那一級的名稱會對到 deepseek-v4-pro……確切寫法見表』改成照 DeepSeek 頁原文『傳入的模型名以 claude-opus 開頭的，對到 deepseek-v4-pro』，刪掉已多餘的『確切寫法見表』；研究紀錄 must_not_write 那一條改成說明檢查器現況。",
+        "法務頁 intended exclusively for：『OAuth 登入只給……』改『專供……使用』（段落、表格第 15 列、FAQ 第 4 題），保留 intended 的語氣。",
+        "沙盒段落：『開法與適用系統見批次腳本那一篇』改『適用的系統見批次腳本那一篇』（批次腳本那一篇寫了平台，開法它指向另一篇）；Read deny 的指令清單補回原文 such as（『cat、head、tail、sed、tee 這類指令』）。",
+        "Codex 段落：『走 MCP 工具時要另外限制那支伺服器能讀的路徑』改『要由伺服器自己檢查收到的路徑』，與 MCP 工具那一篇『它是輸入檢查，不是沙盒』一致。",
+        "表格第 9 列：『工具只回摘要與路徑』改『工具只回分類結果與結果檔路徑』，與 MCP 工具那一篇的契約同一說法。",
+        "標籤與位址段落：gemma4 的 /tags 頁上看得到 gemma4:31b-cloud（Low Usage），補成『gemma4:cloud 與 gemma4:31b-cloud 是用量等級』；verified_facts 加一條。",
+        "輸出量段落：『官方頁沒有數字』限定成『本篇讀的官方頁沒有數字』。",
+        "依協調者決定刪 FAQ 第 4 題（逾時單位）與第 5 題（省不省、繁中），FAQ 剩 4 題；另精簡三處轉場與重複敘述（summary 第 1 句不再重列八組名稱、圖前一段刪『其餘項目是這四件事的延伸』、表前一段與逾時段開頭的轉場），沒有刪但書或限定詞。全文 body 6,632 → 6,377，仍超過 6,000。"
+      ],
+      "verdict": "ok"
+    }
+  }
+}

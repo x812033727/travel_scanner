@@ -1,14 +1,15 @@
 """Undo autolink's links on a few aliases that mislead in this series: the bare word AI,
-參數 (which here means an API parameter, not a model weight) and GenAI inside the
-OpenTelemetry convention name. Article inlines with those texts become text again; a
-rich paragraph left with only text turns back into a plain paragraph.
+參數 (which here means an API parameter, not a model weight), GenAI inside the
+OpenTelemetry convention name, and 標記 (in group E a letter the script marks as failed,
+not a token). Article inlines with those texts become text again; a rich paragraph left
+with only text turns back into a plain paragraph.
 
     prune_autolinks.py <content-dir> <slug>...
 """
 import json, sys
 from pathlib import Path
 
-PRUNE = {"ai", "參數", "genai"}  # compared case-folded: autolink matches ASCII aliases case-insensitively
+PRUNE = {"ai", "參數", "genai", "標記"}  # compared case-folded: autolink matches ASCII aliases case-insensitively
 
 
 def prune_block(block):
@@ -43,7 +44,7 @@ def main():
                 blocks.append(block)
             doc["blocks"] = blocks
         if total:
-            path.write_text(json.dumps(pack, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            path.write_text(json.dumps(pack, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
         print(f"{slug}: pruned {total}")
 
 

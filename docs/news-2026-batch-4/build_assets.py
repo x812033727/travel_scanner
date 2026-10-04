@@ -1675,6 +1675,30 @@ def _korea_market_manipulation(accent: str) -> str:
     return b
 
 
+def _claude_code_mods(accent: str) -> str:
+    # An event enters from the left as a chip, passes through a mod -- a small card with a
+    # plug on each side, so the eye reads "sits in the middle and can rewrite" -- and the
+    # terminal on the right shows what came out: three lines of transcript plus a pane that
+    # the mod added beside them. Three stacked cards under the chip are the other mods in
+    # load order. No logo, no screenshot, no number.
+    other = second_colour(accent)
+    b = chip(170, 300, 220, 170)
+    b += arrow(430, 540, 385, accent, 12)
+    b += rect(560, 260, 300, 250, PALE, accent, 28)
+    b += "".join(line(610, 330 + 50 * i, 810 - 60 * (i % 2), 330 + 50 * i, accent, 10) for i in range(4))
+    b += line(560, 385, 520, 385, other, 12) + line(860, 385, 900, 385, other, 12)
+    b += circle(520, 385, 16, other, "none") + circle(900, 385, 16, other, "none")
+    b += f'<rect x="200" y="520" width="160" height="40" rx="12" fill="none" stroke="{other}" stroke-width="6" stroke-dasharray="14 10"/>'
+    b += f'<rect x="200" y="580" width="160" height="40" rx="12" fill="none" stroke="{other}" stroke-width="6" stroke-dasharray="14 10"/>'
+    b += arrow(930, 1040, 385, accent, 12)
+    b += rect(1060, 230, 400, 320, "#FFFFFF", INK, 24)
+    b += "".join(line(1100, 300 + 55 * i, 1230, 300 + 55 * i, INK, 8) for i in range(4))
+    b += rect(1270, 280, 150, 230, PALE, accent, 16)
+    b += line(1300, 330, 1390, 330, accent, 8) + line(1300, 380, 1370, 380, accent, 8)
+    b += rect(1300, 430, 90, 40, "#FFFFFF", accent, 10)
+    return b
+
+
 _DRAWINGS = {
     "crypto-news-taiwan-vasp-act-20260630": _taiwan_vasp_act,
     "crypto-news-mica-transition-ends-20260701": _mica_transition,
@@ -1778,6 +1802,8 @@ _DRAWINGS = {
     "ai-news-gpt-61-sol-20260929": _gpt_61_sol,
     # 4.10
     "ai-news-claude-sonnet-55-20260928": _claude_sonnet_55,
+    # 4.11
+    "ai-news-claude-code-mods-20261001": _claude_code_mods,
 }
 
 

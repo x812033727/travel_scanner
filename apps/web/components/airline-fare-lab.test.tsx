@@ -1,5 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import * as nextIntl from "next-intl";
+import { fareLabCopy, fareLabText } from "@/lib/fare-lab-copy";
 import { AirlineFareLab } from "./airline-fare-lab";
 
 const { routerPush, session } = vi.hoisted(() => ({
@@ -30,6 +32,7 @@ function ok(payload: unknown) {
 
 afterEach(() => {
   vi.unstubAllGlobals();
+  vi.restoreAllMocks();
   routerPush.mockReset();
   session.status = "authenticated";
 });
@@ -453,5 +456,53 @@ describe("airline fare lab", () => {
     await waitFor(() => expect(tabs()[0].getAttribute("aria-selected")).toBe("true"));
     fireEvent.keyDown(tabs()[0], { key: "ArrowLeft" });
     await waitFor(() => expect(tabs()[2].getAttribute("aria-selected")).toBe("true"));
+  });
+});
+
+describe("localized API fare details", () => {
+  const locales = ["en", "ja", "ko", "zh-CN", "zh-TW"];
+
+  it.each(locales)("renders public crawler warning codes as reader text in %s", async (locale) => {
+    vi.spyOn(nextIntl, "useLocale").mockReturnValue(locale);
+    const copy = fareLabCopy(locale);
+    const labels: Record<string, string> = copy;
+    const fetchMock = vi.fn().mockResolvedValueOnce(ok(status)).mockResolvedValueOnce(ok({
+      queried_at: "2026-10-03T10:00:00Z", sources: status.sources, quotes: [],
+      warnings: ["fare_public_empty?airline=CI", "fare_public_blocked?airline=BR&reason=blocked", "fare_public_unavailable?airline=JX&reason=source_unavailable"],
+    }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AirlineFareLab />);
+    await screen.findByText(copy["state.disabled"]);
+    fireEvent.click(screen.getByRole("button", { name: new RegExp("^" + copy["lab.search"].split("{charge}")[0]) }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(labels["warning.fare_public_empty"]).toEqual(expect.any(String));
+    expect(await screen.findByText(fareLabText(labels["warning.fare_public_empty"], { airline: copy["airline.CI"] }))).toBeTruthy();
+    expect(screen.getByText(fareLabText(labels["warning.fare_public_blocked"], { airline: copy["airline.BR"] }))).toBeTruthy();
+    expect(screen.getByText(fareLabText(labels["warning.fare_public_unavailable"], { airline: copy["airline.JX"] }))).toBeTruthy();
+    expect(screen.queryByText(/fare_public_|source_unavailable/)).toBeNull();
+  });
+
+  it.each(locales)("renders named missing cached tickets in %s", async (locale) => {
+    vi.spyOn(nextIntl, "useLocale").mockReturnValue(locale);
+    const copy = fareLabCopy(locale);
+    const labels: Record<string, string> = copy;
+    const detail = "fare_comparison_missing?mode=mixed_airlines&roles=conventional_first%2Chead_one_way";
+    const fetchMock = vi.fn().mockResolvedValueOnce(ok(status)).mockResolvedValueOnce(ok({
+      queried_at: "2026-10-03T10:00:00Z", pricing_capability: "full_back_to_back",
+      comparisons: [{ mode: "mixed_airlines", conventional: null, back_to_back: null, savings_twd: null, savings_percent: null, verdict: "comparison_unavailable", detail }],
+      candidates: [], fx_rates: [], warnings: [],
+    }));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AirlineFareLab />);
+    await screen.findByText(copy["state.disabled"]);
+    fireEvent.click(screen.getByRole("tab", { name: copy["lab.tab.back_to_back"] }));
+    fireEvent.click(screen.getByRole("button", { name: new RegExp("^" + copy["b2b.compare"].split("{charge}")[0]) }));
+    await screen.findByRole("heading", { name: copy["mode.mixed_airlines"] });
+    expect(screen.queryByText(detail)).toBeNull();
+    const roles = copy["ticketRole.conventional_first"] + copy["b2b.listSeparator"] + labels["ticketRole.head_one_way"];
+    expect(await screen.findByText(fareLabText(labels["warning.fare_comparison_missing"], { mode: copy["mode.mixed_airlines"], roles }))).toBeTruthy();
+    expect(screen.queryByText(detail)).toBeNull();
+    expect(fetchMock.mock.calls[1][0]).toBe("/api/travel/crawlers/airlines/back-to-back-fares");
+    expect(fetchMock.mock.calls[1][1].headers).toMatchObject({ "Idempotency-Key": expect.any(String) });
   });
 });
