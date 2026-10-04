@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-news-batch-4-9-gpt-6
 title: News batch 4.9: GPT-6.1 Sol, five languages (hourly automation did not publish it)
-status: review
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-news-4-9
 claimed_at: 2026-09-30T10:18:55Z
 created_at: 2026-09-30T10:18:52Z
-completed_at:
+completed_at: 2026-10-04T11:50:10Z
 branch: claude/gifted-rubin-umw5s4
 depends_on: []
 scope:
@@ -44,7 +44,7 @@ asked for a hand-written five-language article, the way batch 4.8 did it.
 - [x] `ai-news-gpt-61-sol-20260929` in five locales, researched from OpenAI's own pages only,
       two fact-check rounds, translated and reviewed per language, with a diagram.
 - [x] AI index links to it in five locales.
-- [ ] PR merged; deploy and `guides-import --slug` publish done by someone with host access.
+- [x] PR merged; deploy and `guides-import --slug` publish done by someone with host access.
 
 ## Steps
 
@@ -72,3 +72,4 @@ asked for a hand-written five-language article, the way batch 4.8 did it.
   Details in `docs/news-2026-batch-4/HANDOVER.md` §1i. Left: deploy, re-read the live pages, then
   `guides-import --slug ai-news-gpt-61-sol-20260929 --slug ai-news-2026-january-september-index`
   dry run and publish on the host.
+- Published 2026-10-04 11:47Z on the owner's instruction: `ai-news-gpt-61-sol-20260929` in five locales (pg_dump `/root/travel_scanner_preimport_20261004_114710.dump`), links rebuilt, the index links resolve, re-run dry run all unchanged. The facts were not re-checked against the vendor pages on publish day.
