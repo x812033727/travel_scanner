@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-python-anime-planning-symlink-windows
 title: Make Python anime planning symlink fixture portable on Windows
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-anime-symlink-fixture
 claimed_at: 2026-10-04T14:45:32Z
 created_at: 2026-10-04T07:14:15Z
-completed_at:
+completed_at: 2026-10-04T15:20:49Z
 branch: claude/anime-planning-symlink-windows
 depends_on: []
 scope:
