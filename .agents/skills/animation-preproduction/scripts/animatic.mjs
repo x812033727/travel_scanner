@@ -19,7 +19,7 @@ import { parseArgs } from "node:util";
 import { locateFfmpeg, runTool, ToolMissing } from "../../../../tools/video/assemble/ffmpeg.mjs";
 import { readJson } from "../../../../tools/video/core/paths.mjs";
 import { estimateTimeline, FPS } from "../../../../tools/video/core/timeline.mjs";
-import { loadInputs, planEpisode } from "./shot_plan.mjs";
+import { loadInputs, PLAN_FLAGS, PLAN_USAGE, planEpisode, planOptions } from "./shot_plan.mjs";
 
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
 // The data sits inside <script>: every less-than sign becomes a six-character JSON escape (backslash, u003c), so no
@@ -27,6 +27,11 @@ const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (character
 const LT_ESCAPE = `${String.fromCharCode(92)}u003c`;
 const forScript = (value) => JSON.stringify(value).replaceAll("<", LT_ESCAPE);
 const toUrl = (file) => file.split(path.sep).map(encodeURIComponent).join("/");
+const linkFrom = (outDir, absolute) => {
+  if (!outDir) return pathToFileURL(absolute).href;
+  const relative = path.relative(outDir, absolute);
+  return path.isAbsolute(relative) ? pathToFileURL(absolute).href : toUrl(relative);
+};
 
 /**
  * 每鏡在片子裡的位置與畫面：{ id, start, end, image, video, video_offset, move, kind, setup, camera, motion, lines, risk, buy_s, source }。
@@ -53,7 +58,7 @@ export function animaticShots(doc, plan, { timeline = null, manifest = null, cli
       if (!file || !workdir) return null;
       const absolute = path.join(workdir, file);
       if (!existsSync(absolute)) return null;
-      return { absolute, url: outDir ? toUrl(path.relative(outDir, absolute)) : pathToFileURL(absolute).href };
+      return { absolute, url: linkFrom(outDir, absolute) };
     };
     const image = shot.visual === "cut" ? imageOf(shot.source.shot) : imageOf(shot.id);
     const clipOf = (id) => {
@@ -61,7 +66,7 @@ export function animaticShots(doc, plan, { timeline = null, manifest = null, cli
       if (!entry?.file || entry.needs_review || entry.still || entry.source || !workdir) return null;
       const absolute = path.join(workdir, entry.file);
       if (!existsSync(absolute)) return null;
-      return outDir ? toUrl(path.relative(outDir, absolute)) : pathToFileURL(absolute).href;
+      return linkFrom(outDir, absolute);
     };
     const video = shot.visual === "cut" ? clipOf(shot.source.shot) : shot.visual === "clip" ? clipOf(shot.id) : null;
     const scene = sceneById.get(shot.id);
@@ -121,7 +126,7 @@ input[type=range]{flex:1;min-width:200px}.strip{display:flex;height:22px;border:
 main{overflow-wrap:anywhere}.scroll{overflow-x:auto;max-width:100%}table{min-width:720px;width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}td,th{border-bottom:1px solid var(--line);padding:5px;text-align:left;vertical-align:top}tr.on{background:#22323d}
 </style>
 <header><h1>動態分鏡：${escapeHtml(title)}</h1><small>${escapeHtml(basis)}。這是前製預覽：畫面是文字卡或已畫的關鍵影格，運鏡是在圖上模擬的，不是買來的動畫。先實速看一次，再逐鏡停。</small>
-<p class="muted">${stats.shots} 鏡、約 ${stats.seconds} 秒；鏡長中位數 ${stats.median} 秒、最長 ${stats.longest} 秒；前 10 秒開始 ${stats.opening_10s} 鏡、前 30 秒 ${stats.opening_30s} 鏡（drama-craft.md 的目標：中位數 2.5–3.5、最長 ≤ 8、前 10 秒 ≥ 4、前 30 秒 ≥ 10）</p></header>
+<p class="muted">${stats.shots} 鏡、約 ${stats.seconds} 秒；鏡長中位數 ${stats.median} 秒、最長 ${stats.longest} 秒；前 10 秒開始 ${stats.opening_10s} 鏡、前 30 秒 ${stats.opening_30s} 鏡（drama-craft.md 的目標：中位數 2–4 秒、建議 2.5–3.5，最長 ≤ 8，前 10 秒 ≥ 4，前 30 秒 ≥ 10；運鏡是在圖上模擬的，方向照攝影機：pan left 畫面往右跑）</p></header>
 <main><div class="stage" id="stage"></div>
 <div class="bar"><button id="play">播放</button><button id="prev">上一鏡</button><button id="next">下一鏡</button><input id="clock" type="range" min="0" step="0.05" aria-label="時間"><span id="time" class="muted"></span></div>
 <div class="strip" id="strip"></div>
@@ -136,7 +141,7 @@ const KIND={clip:"clip",still:"still",cut:"切"};
 $("clock").max=total;
 $("strip").innerHTML=shots.map((s,i)=>'<div class="k-'+s.kind+'" data-i="'+i+'" style="flex:'+Math.max(.05,s.end-s.start)+'">'+safe(s.id)+'</div>').join("");
 $("rows").innerHTML=shots.map((s,i)=>'<tr data-i="'+i+'"><td>'+safe(s.id)+'</td><td>'+s.start.toFixed(1)+'–'+s.end.toFixed(1)+'</td><td>'+safe(s.setup)+'</td><td>'+(s.kind==="cut"?"切自 "+safe(s.source.shot):KIND[s.kind]+(s.buy_s?" "+s.buy_s+" s":""))+'</td><td>'+safe(s.camera)+'</td><td>'+safe(s.motion)+'</td><td>'+s.lines.map(l=>safe(l.speaker)+"："+safe(l.text)).join("<br>")+'</td><td class="risk-'+(s.risk||"A")+'">'+(s.risk?s.risk+(s.risk_reasons.length?" "+safe(s.risk_reasons.join(", ")):""):"—")+'</td></tr>').join("");
-function moveTransform(move,p){switch(move){case"push in":return"scale("+(1+.1*p)+")";case"pull out":return"scale("+(1.1-.1*p)+")";case"pan left":return"scale(1.08) translateX("+(3-6*p)+"%)";case"pan right":return"scale(1.08) translateX("+(-3+6*p)+"%)";case"tilt up":return"scale(1.08) translateY("+(3-6*p)+"%)";case"tilt down":return"scale(1.08) translateY("+(-3+6*p)+"%)";case"drift":case null:return"scale(1.04) translate("+(-1+2*p)+"%,0)";default:return"none"}}
+function moveTransform(move,p){switch(move){case"push in":return"scale("+(1+.1*p)+")";case"pull out":return"scale("+(1.1-.1*p)+")";case"pan left":return"scale(1.08) translateX("+(-3+6*p)+"%)";case"pan right":return"scale(1.08) translateX("+(3-6*p)+"%)";case"tilt up":return"scale(1.08) translateY("+(-3+6*p)+"%)";case"tilt down":return"scale(1.08) translateY("+(3-6*p)+"%)";case"drift":case null:return"scale(1.04) translate("+(-1+2*p)+"%,0)";default:return"none"}}
 function lineAt(s,time){if(!s.lines.length)return"";const span=(s.end-s.start)/s.lines.length;const k=Math.min(s.lines.length-1,Math.floor((time-s.start)/span));return s.lines[k].speaker+"："+s.lines[k].text}
 function show(time){t=Math.max(0,Math.min(total,time));const i=Math.max(0,shots.findIndex(s=>t<s.end));const s=shots[i]??shots[shots.length-1];if(!s)return;
 if(i!==current){current=i;const body=s.video?'<video id="vid" src="'+safe(s.video)+'" muted playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000"></video>':s.image?'<img id="img" src="'+safe(s.image)+'" alt="">':'<div class="card"><h2>'+safe(s.id)+'｜'+safe(s.setup)+'</h2><p>'+safe(s.camera)+'</p><p>'+safe(s.motion)+'</p></div>';
@@ -184,14 +189,13 @@ export async function main(argv, stdout = process.stdout, stderr = process.stder
     ({ values } = parseArgs({
       args: argv,
       options: {
+        ...PLAN_FLAGS,
         slug: { type: "string" },
         file: { type: "string" },
         workdir: { type: "string" },
         root: { type: "string" },
         out: { type: "string" },
         mp4: { type: "string" },
-        route: { type: "string" },
-        plan: { type: "string" },
       },
       strict: true,
     }));
@@ -200,14 +204,14 @@ export async function main(argv, stdout = process.stdout, stderr = process.stder
     return 2;
   }
   if ((!values.slug && !values.file) || (values.file && !values.workdir && !values.out)) {
-    stderr.write("usage: animatic.mjs --slug <SLUG> | --file <video.json> [--workdir <dir>] [--out <animatic.html>] [--mp4 <animatic.mp4>] [--route server|hailuo|kling] [--plan ...]\n");
+    stderr.write(`usage: animatic.mjs --slug <SLUG> | --file <video.json> [--workdir <dir>] [--out <animatic.html>] [--mp4 <animatic.mp4>] ${PLAN_USAGE}\n`);
     return 2;
   }
   let inputs;
   let plan;
   try {
-    inputs = loadInputs({ file: values.file, slug: values.slug, workdir: values.workdir, root: values.root });
-    plan = planEpisode(inputs.doc, { route: values.route, plan: values.plan, timeline: inputs.timeline, manifest: inputs.manifest, series: inputs.series });
+    inputs = loadInputs({ file: values.file, slug: values.slug, workdir: values.workdir, root: values.root, timeline: values.timeline });
+    plan = planEpisode(inputs.doc, { ...planOptions(values), timeline: inputs.timeline, manifest: inputs.manifest, series: inputs.series });
   } catch (error) {
     stderr.write(`${values.slug ?? values.file}: ${error.message}\n`);
     return 2;
@@ -220,7 +224,7 @@ export async function main(argv, stdout = process.stdout, stderr = process.stder
   const narration = inputs.workdir && inputs.timeline && existsSync(path.join(inputs.workdir, "narration.wav")) ? path.join(inputs.workdir, "narration.wav") : null;
   const basis = inputs.timeline ? "時間照錄好的 timeline.json，聲音是 narration.wav" : `時間照 lint 的估法（還沒錄配音${inputs.timeline_stale ? "，或 timeline.json 是舊台詞錄的" : ""}），沒有聲音`;
   mkdirSync(outDir, { recursive: true });
-  writeFileSync(out, animaticHtml({ title: inputs.doc.title ?? inputs.doc.slug ?? path.basename(inputs.file), shots, stats, audio: narration ? toUrl(path.relative(outDir, narration)) : null, basis }));
+  writeFileSync(out, animaticHtml({ title: inputs.doc.title ?? inputs.doc.slug ?? path.basename(inputs.file), shots, stats, audio: narration ? linkFrom(outDir, narration) : null, basis }));
   const pictured = shots.filter((shot) => shot.image).length;
   const bought = shots.filter((shot) => shot.video).length;
   stdout.write(`動態分鏡 ${out}：${stats.shots} 鏡、約 ${stats.seconds} 秒，${bought} 鏡是買到的素材、${pictured - shots.filter((shot) => shot.video && shot.image).length} 鏡是關鍵影格、${stats.shots - pictured - shots.filter((shot) => shot.video && !shot.image).length} 鏡是文字卡；${basis}\n`);

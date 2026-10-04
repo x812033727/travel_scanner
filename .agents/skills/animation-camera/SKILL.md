@@ -164,7 +164,7 @@ metadata:
 | --- | --- | --- |
 | 首格與參考 | 用當前瀏覽器有文件的上傳工具交同一張首格，確認預覽；參考欄另核對 | 同；CLI 的 image 欄位名不當成網頁欄位 |
 | 運鏡與動作 | 一鏡一個主要可見動作、一個運鏡；H3 用官方的運鏡句子（種類＋幅度＋速度），方括號只給 2.3 | 一個連續鏡頭、一個運鏡寫在正文開頭；不把社群 MCP 的 camera control 當網頁選項 |
-| 風格與否定 | 保留本集 `look.motion` 的穩定要求；H3 沒有負面欄（官方），否定句會被畫成正向，所以正文只寫正面狀態，`look.negative` 不貼 | 負面欄真的有才貼 `look.negative`；字數上限按當前 UI 核對 |
+| 風格與否定 | 保留本集 `look.motion` 的穩定要求；H3 的 API 沒有負面欄（官方），網頁有沒有沒驗；正文只寫正面狀態，`look.negative` 只貼進真的有的負面欄 | 同：負面欄真的有才貼；字數上限按當前 UI 核對 |
 | 秒數、比例、模型 | 由本鏡需求與當前 UI 決定，16:9；歷史 H3 2K 實測不是原生 1080p | 同；CLI 列出的秒數／解析度不代替網頁實測 |
 | 聲音與分鏡 | 一個連續鏡頭；原生聲音按本案契約處理，既有配音／CC不改 | 同；多鏡／原生音訊開關只操作網頁實際提供的 |
 | 下載與匯入 | 用網站下載按鈕取得正確版本；先檢查浮水印，再依 stage-preconditions 匯入 | 同；網頁來源以 `--provider external` 並在 `--note` 記 Kling web，CLI／MCP 的歷史標籤不冒充網頁 |
@@ -182,7 +182,7 @@ craft 的列（景別有名、`camera` 與 `prompt` 同家族、全景占比與�
 | 1 | 畫外說話者不在 `characters`，prompt 寫 off screen | `shot_reading` `cast.offscreen`、`cast.speaker`；craft `size.listeners` info |
 | 2 | 每鏡 ≤ 3 人 | lint 錯誤 `must list at most 3 distinct character ids`；`shot_reading` `cast.count` |
 | 3 | still 的 `camera` 照上一節「靜圖的運鏡」那一段；`drift`＋`static` 不並寫 | `shot_reading` `still.drift`、`still.locked`、`move.disagree`；`checks.json` `metrics.shots[].move`、`keyframe_psnr` |
-| 4 | `source` 的 `from_s`＋鏡長在 lint 上限內，也在來源買到的秒數內；來源是有素材的 clip 鏡 | lint 錯誤；`shot_reading` `source.length`、`source.bought`、`source.shot` |
+| 4 | `source` 的 `from_s`＋鏡長在 lint 上限內，也在來源買到的秒數內（伺服器路線；網頁路線的母鏡頭由 `animation-preproduction` 的 `shot_plan.mjs` 買到蓋住切鏡，`shot_reading --route hailuo|kling` 不報 `source.bought`）；來源是有素材的 clip 鏡 | lint 錯誤；`shot_reading` `source.length`、`source.bought`、`source.shot` |
 | 5 | 鎖定作品的 `look.motion` 是空字串；`look.negative` 保留所需限制，兩者在 `look` 之前定好；不為 Lite 清空已核准的 negative | `shot_reading` `look.motion`；`animation-production` 的 `drama_preflight.mjs` |
 | 6 | `camera` ≤ 120、`prompt` ≤ 1000、`motion` ≤ 300；組合後的關鍵影格提示 ≤ 4000；人的動詞不在 `camera`；prompt 不抄 `camera` | lint；`shot_reading` `prompt.length`、`camera.person`、`prompt.camera` |
 | 7 | 軸線、畫面側、視線、進出方向、採用格連戲帳 | 只有人；寫在這場戲的回報裡 |
@@ -195,6 +195,7 @@ craft 的列沒過，改到過或在回報裡逐列寫這一集為什麼不同�
 
 ```bash
 node .agents/skills/animation-camera/scripts/shot_reading.mjs <VIDEO_DOCS>/video.json            # 每鏡一塊：visual、craft 景別與家族、三個讀者的運鏡與要不要驗 PSNR、look-only、台詞與說話者、characters、組合後的提示長度；陷阱與修法；最後一行計數
+node .agents/skills/animation-camera/scripts/shot_reading.mjs <VIDEO_DOCS>/video.json --route kling   # 網頁路線：source.bought 不報（母鏡頭的秒數由 shot_plan 定）
 node .agents/skills/animation-camera/scripts/shot_reading.mjs <VIDEO_DOCS>/video.json --shot a,b  # 只看這幾鏡（照文件順序）；旁邊有 series.json 的 production profile 時 source 以 8 秒算
 node .agents/skills/animation-camera/scripts/shot_reading.mjs --file one-shot.json                 # 一個 { camera, prompt, motion, characters?, visual?, source?, lines?, look? } 物件
 node .agents/skills/animation-camera/scripts/shot_reading.mjs <file> --json | --strict             # --json 的 summary 有 shots、traps、by_kind；--strict 有陷阱就結束碼 1；讀不到 2

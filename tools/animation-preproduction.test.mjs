@@ -52,7 +52,7 @@ const example = () => JSON.parse(readFileSync(EXAMPLE, "utf8"));
 const run = (script, ...args) => spawnSync(process.execPath, [path.join(SCRIPTS, script), ...args], { encoding: "utf8" });
 const box = () => mkdtempSync(path.join(tmpdir(), "preproduction-"));
 
-const ctxOf = (change = {}) => ({ characters: 1, face: false, speakerVisible: false, camera: "", moves: 0, buySeconds: 4, ...change });
+const ctxOf = (change = {}) => ({ characters: 1, names: ["ayu", "chen", "ye", "yue", "shen", "lu"], face: false, speakerVisible: false, camera: "", moves: 0, buySeconds: 4, clipTakes: 2, ...change });
 const ids = (risk) => risk.reasons.map((reason) => reason.id);
 
 test("the risk table in shot-risk.md is RISK_RULES, row by row", () => {
@@ -82,8 +82,31 @@ test("each risk fires on the case it was written for and not on its false friend
   assert.deepEqual(shotRisk({ prompt: "x", motion: "y" }, "cut", ctxOf()), { grade: "A", reasons: [], expected_takes: 0 }, "a cut buys nothing");
 });
 
+// The review of 2026-10-04 (forward use on an original fight scene) found the first rules misread fight wording.
+test("fight wording: thrusts and slashes at the other person are contact, a weapon in a hand is a weapon, anchors and effects are not props", () => {
+  const two = ctxOf({ characters: 2 });
+  assert.deepEqual(ids(shotRisk({ prompt: "Two-shot", motion: "Yue thrusts the spear toward Ye's chest and she twists her torso aside" }, "clip", two)), ["contact.two-person"]);
+  assert.deepEqual(ids(shotRisk({ prompt: "Two-shot", motion: "Ye's saber slashes down onto the spear shaft once" }, "clip", two)), ["contact.two-person"]);
+  assert.deepEqual(ids(shotRisk({ prompt: "Two-shot", motion: "The single cyan arc strikes the central bronze band of Lu's horizontal staff once" }, "clip", two)), ["contact.two-person"], "an energy strike on the other person's weapon still touches them");
+  assert.deepEqual(ids(shotRisk({ prompt: "Two-shot", motion: "Shen lowers her sword twenty centimetres; Lu holds his guard" }, "clip", two)), [], "two people in frame without touching");
+  assert.deepEqual(ids(shotRisk({ prompt: "Insert of the hilt", motion: "The right hand raises the single sword hilt twenty centimetres and stops" }, "clip", ctxOf({ characters: 0 }))), ["hands.weapon"]);
+  assert.deepEqual(ids(shotRisk({ prompt: "Medium shot of Ye, one jade hair cord, her right hand at her side", motion: "Ye lifts her chin toward screen right and stops" }, "clip", ctxOf())), [], "the anchors the style asks for (hair cords, cuffs) are not props in a hand");
+  assert.deepEqual(ids(shotRisk({ prompt: "Medium shot", motion: "She pours tea into the cup" }, "clip", ctxOf())), ["hands.small-prop", "physics.fluid"], "pouring tea needs no hand word");
+  for (const motion of ["The horse stands stable in the stable", "He leans on the drawer under pressure", "A panoramic chasm opens below", "Lightning strikes the far peak", "Fire and smoke roll across the plain"]) {
+    assert.deepEqual(ids(shotRisk({ prompt: "Wide", motion }, "clip", ctxOf())), [], motion);
+  }
+  assert.deepEqual(ids(shotRisk({ prompt: "Wide", motion: "Ayu enters through the door on screen left" }, "clip", ctxOf())), ["entrance"]);
+  assert.deepEqual(ids(shotRisk({ prompt: "Wide", motion: "The spear head enters from frame right" }, "clip", ctxOf())), [], "a spear head entering is not a person");
+  const capped = shotRisk({ prompt: "Insert", motion: "Her right hand lifts the pen off the paper" }, "clip", ctxOf({ clipTakes: 1 }));
+  assert.equal(capped.expected_takes, 1, "the expected takes never exceed the take limit");
+});
+
 test("the camera line becomes H3's camera sentence, Hailuo 2.3's bracket command and Kling's phrase, with the pan direction of the camera", () => {
-  assert.deepEqual(webMove("Two-shot, eye level, locked"), { group: "locked", slow: false, h3: "The camera is a static shot and stays completely still", hailuo: "[Static shot]", kling: "locked-off camera, no camera movement" });
+  assert.deepEqual(webMove("Two-shot, eye level, locked"), { group: "locked", slow: false, unsupported: null, h3: "The camera is a static shot and stays completely still", hailuo: "[Static shot]", kling: "locked-off camera, no camera movement" });
+  assert.equal(webMove("Wide shot, pan left").h3, "The camera pans left at a steady speed", "a move always carries a speed in the H3 sentence");
+  assert.deepEqual([webMove("Wide shot, slow pan").group, webMove("Wide shot, slow pan").unsupported], [null, "pan"], "a pan with no direction is not guessed as a drift");
+  assert.deepEqual([webMove("Wide shot, orbit").group, webMove("Wide shot, orbit").unsupported], [null, "orbit"]);
+  assert.equal(webMove("Wide shot, drift").group, "drift");
   assert.equal(webMove("Medium close-up, low angle, slow push in").h3, "The camera pushes in with small amplitude at slow speed", "type + amplitude + speed, as the official H3 guide writes it");
   assert.equal(webMove("Medium close-up, low angle, slow push in").hailuo, "[Push in]");
   assert.equal(webMove("Medium close-up, low angle, slow push in").slow, true);
@@ -102,6 +125,8 @@ test("the camera line becomes H3's camera sentence, Hailuo 2.3's bracket command
   assert.ok(!/Avoid:/.test(hailuo.text), "the negative stays out of the text");
   assert.equal(hailuo.negative, look.negative.replace(/[.\s]+$/, ""), "and is listed for a negative field");
   assert.ok(!/\.\./.test(hailuo.text), "fields that end in a full stop are not doubled");
+  const asks = webPrompt("kling", { ...s01, data: { ...s01.data, motion: "Shen asks why?" } }, look, shotCast(doc, s01));
+  assert.ok(asks.text.includes("Shen asks why? ") && !asks.text.includes("why?."), "a question mark is not followed by a full stop");
   assert.equal(hailuo.sha256.length, 64);
   const legacy = webPrompt("hailuo", s01, look, shotCast(doc, s01), { hailuoModel: "2.3" });
   assert.match(legacy.text, /^\[Static shot\] /, "Hailuo 2.3 reads the bracket commands");
@@ -239,11 +264,24 @@ test("the lock notices a one-word change of motion and a changed line, and names
   const clips = { shots: { s05: { file: "clips/s05-1.mp4" }, s01: { file: "clips/s01-import-1.mp4", imported_at: "2026-10-04T01:00:00Z" } } };
   const result = compareLock(lock, lockOf(edited, null, planEpisode(edited, { route: "hailuo" })), { keyframes, clips });
   assert.equal(result.changed, true);
-  assert.deepEqual(result.shots.map((shot) => [shot.id, shot.visual, shot.speech, shot.prompt]), [["s05", true, false, true], ["s07", false, true, false]]);
-  assert.deepEqual(result.impact.approvals, ["storyboard", "audio"]);
-  assert.ok(result.impact.rebuy.some((line) => /^s05：關鍵影格（已畫）、素材（已買）/.test(line)));
-  assert.equal(result.impact.judge_calls, doc.scenes.length + 2, "every drawn picture and every bought clip is judged again");
+  assert.deepEqual(result.shots.map((shot) => [shot.id, shot.visual, shot.keyframe, shot.speech, shot.prompt]), [["s05", true, false, false, true], ["s07", false, false, true, false]]);
+  assert.deepEqual(result.impact.approvals, ["script", "storyboard", "audio"], "a changed line changes script.md too");
+  assert.ok(result.impact.rebuy.some((line) => line === "s05：素材（已買）"), "motion is not in the keyframe request: no redraw since #1193");
+  assert.equal(result.impact.judge_keyframes, 0);
+  assert.equal(result.impact.judge_clips, 1, "the one server clip is judged again; the imported one is re-imported");
   assert.deepEqual(result.impact.imported_need_reimport, ["s01"]);
+  const onlyStoryboard = compareLock(lock, lockOf(edited, null, planEpisode(edited, { route: "hailuo" })), { keyframes, clips, approved: ["storyboard"] });
+  assert.deepEqual(onlyStoryboard.impact.approvals, ["storyboard"], "only approvals that exist are listed as stale");
+  const reprompted = example();
+  reprompted.scenes.find((scene) => scene.id === "s03").data.prompt += ", rain on her lashes";
+  const redraw = compareLock(lock, lockOf(reprompted, null, planEpisode(reprompted, { route: "hailuo" })), { keyframes, clips });
+  assert.ok(redraw.impact.rebuy.some((line) => /^s03：關鍵影格（已畫，重畫並 judge）/.test(line)));
+  assert.equal(redraw.impact.judge_keyframes, 1);
+  const voiced = example();
+  voiced.characters[0].voice = { ...voiced.characters[0].voice, name: "Puck" };
+  const voice = compareLock(lock, lockOf(voiced, null, planEpisode(voiced, { route: "hailuo" })));
+  assert.equal(voice.changed, true, "a character's voice moves the speech and script hashes even though no shot changed");
+  assert.ok(voice.impact.approvals.includes("audio"));
 
   const looked = example();
   looked.look.style += " softer";
@@ -251,7 +289,7 @@ test("the lock notices a one-word change of motion and a changed line, and names
   assert.equal(lookResult.look, true);
   assert.deepEqual(lookResult.impact.approvals, ["look", "storyboard"]);
   const moved = compareLock(lock, lockOf(doc, null, planEpisode(doc, { route: "kling" })));
-  assert.ok(moved.route.includes("route"));
+  assert.ok(moved.settings.includes("route"));
   assert.deepEqual(shotPrints(doc.scenes[0]), shotPrints(JSON.parse(JSON.stringify(doc.scenes[0]))));
 });
 
@@ -264,10 +302,17 @@ test("plan_lock from the command line: write, check, refuse to overwrite, force 
     copyFileSync(EXAMPLE, file);
     const lock = (...args) => run("plan_lock.mjs", "--file", file, "--workdir", work, ...args);
     assert.equal(lock("--check").status, 2, "no lock yet");
-    const written = lock("--write", "--route", "hailuo", "--note", "owner said yes");
+    const early = lock("--ready", "--route", "hailuo");
+    assert.equal(early.status, 1, "--ready runs before the lock, for the lock package");
+    assert.match(early.stdout, /還沒有鎖定檔/);
+    assert.equal(lock("--write", "--route", "hailuo", "--resolution", "1080p").status, 2, "H3 does not sell 1080p: refused, not silently 2K");
+    const written = lock("--write", "--route", "hailuo", "--hailuo-model", "h3", "--resolution", "768p", "--assist", "off", "--note", "owner said yes");
     assert.equal(written.status, 0, written.stderr);
     assert.ok(existsSync(path.join(work, "plan", "lock.json")));
-    assert.equal(lock("--check").status, 0);
+    const locked = JSON.parse(readFileSync(path.join(work, "plan", "lock.json"), "utf8"));
+    assert.deepEqual([locked.route, locked.hailuo_model, locked.resolution, locked.web_assist], ["hailuo", "h3", "768p", "off"]);
+    assert.equal(lock("--check").status, 0, "no flags: the lock's own settings");
+    assert.equal(lock("--check", "--route", "kling").status, 1, "another route is a change");
     assert.equal(lock("--write").status, 2, "an existing lock is not overwritten by accident");
     const doc = JSON.parse(readFileSync(file, "utf8"));
     doc.scenes.find((scene) => scene.id === "s03").data.motion = "Shen closes her eyes once";
@@ -276,7 +321,8 @@ test("plan_lock from the command line: write, check, refuse to overwrite, force 
     assert.equal(checked.status, 1);
     assert.match(checked.stdout, /變更單/);
     assert.match(checked.stdout, /s03/);
-    assert.equal(lock("--write", "--force", "--route", "hailuo").status, 0);
+    assert.equal(lock("--write", "--force").status, 0, "a re-lock keeps the locked settings");
+    assert.equal(JSON.parse(readFileSync(path.join(work, "plan", "lock.json"), "utf8")).resolution, "768p");
     assert.equal(readdirSync(path.join(work, "plan")).filter((name) => /^lock-.*\.json$/.test(name)).length, 1, "the old lock is kept beside the new one");
     const log = readFileSync(path.join(work, "plan", "changes.jsonl"), "utf8").trim().split("\n").map((line) => JSON.parse(line));
     assert.equal(log.length, 1, "the re-lock records the change order it settled");
@@ -286,6 +332,10 @@ test("plan_lock from the command line: write, check, refuse to overwrite, force 
     assert.match(ready.stdout, /first_frame\.s01/);
     assert.match(ready.stdout, /無水印下載/);
     assert.equal(run("plan_lock.mjs", "--file", file, "--check").status, 2, "--file needs --workdir");
+    writeFileSync(path.join(work, "plan", "lock.json"), JSON.stringify({ version: 1, route: "hailuo", created_at: "x", shots: {} }));
+    const broken = lock("--check");
+    assert.equal(broken.status, 2, "an old or broken lock is a read error, not a change");
+    assert.match(broken.stderr, /version/);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
@@ -312,6 +362,8 @@ test("the animatic keeps the timeline's length, uses keyframes when they exist a
     assert.equal(drawn[1].image, null);
     const html = animaticHtml({ title: "t", shots: [{ ...drawn[0], lines: [{ speaker: "x", text: "</script><img src=x onerror=alert(1)>" }] }], stats, basis: "b" });
     assert.equal(html.match(/<\/script>/g).length, 1, "only the page's own closing tag");
+    assert.ok(html.includes('case"pan left":return"scale(1.08) translateX("+(-3+6*p)'), "camera pan left: the picture runs right, as assemble moves it");
+    assert.ok(html.includes('case"tilt up":return"scale(1.08) translateY("+(-3+6*p)'), "camera tilt up: the picture runs down");
     const { list, args } = animaticFfmpegArgs([{ ...drawn[0], image_file: path.join(dir, "keyframes", "s01-1.png") }], { list: "x.ffconcat", out: "x.mp4" });
     assert.match(list, /^ffconcat version 1\.0\n/);
     assert.equal(args[args.indexOf("-t") + 1], drawn[0].end.toFixed(3));

@@ -22,7 +22,9 @@ import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 
 import { cameraMove as craftMove, normalize, shotSize } from "../../../../tools/video/core/craft.mjs";
-import { cameraMove as slidesMove, isSourced, lookHash, resolveLook, shotCast } from "../../../../tools/video/core/drama.mjs";
+import { CAMERA_MOVES, isSourced, lookHash, resolveLook, shotCast, shotProblems } from "../../../../tools/video/core/drama.mjs";
+import { productionShotProblems } from "../../../../tools/video/core/lint.mjs";
+import { validateVideo } from "../../../../tools/video/core/schema.mjs";
 import { readJson, resolveWorkdir, ROOT } from "../../../../tools/video/core/paths.mjs";
 import { estimateTimeline, FPS, speechHash, visualHash } from "../../../../tools/video/core/timeline.mjs";
 import { loadProject } from "../../../../tools/video/core/state.mjs";
@@ -34,34 +36,59 @@ export const ROUTES = ["server", "hailuo", "kling"];
 // 頭不能留把手；模型的動作常拖到最後一兩格才收，尾巴留半秒讓剪點落在收勢之後。伺服器路線買幾秒由
 // clipSeconds 決定，把手不適用。
 export const DEFAULT_HANDLE_S = 0.5;
-// 編輯判斷：各風險級預期要幾個 take 才有一支可用（C 等於 take 上限：照計畫買，大概會用完）。依據是
-// 2026-10-03 試拍：手與小道具的內容問題 S01 四個 take、S03 兩個都沒收斂（model-misreads.md 第一節）。
+// 編輯判斷：各風險級預期要幾個 take 才有一支可用；C 等於 take 上限（照計畫買，大概會用完）。依據是 2026-10-03
+// 試拍：S03 的兩個 take 都在手與筆上出錯、用完上限、0 支可用；S01 第一個真的生成的 take 也是同一類錯
+// （model-misreads.md 第一節）。期望值不會超過 take 上限（--clip-takes）。
 export const EXPECTED_TAKES = { A: 1.2, B: 1.5, C: 2 };
 const GRADE_ORDER = { A: 0, B: 1, C: 2 };
 // 網頁 H3／VIDEO 3.0 的秒數範圍（hailuoai.video 設定面板 2026-10-04 實測 4–15；Kling 官方 user guide 3–15）。
 export const HAILUO_CLIP_SECONDS = [4, 15];
 
+// 子句：動詞跟它的對象要在同一個子句裡（逗號、分號、句點、then、while、as 斷開）。
+const clauses = (text) => String(text ?? "").toLowerCase().split(/[,;:.]|\b(?:then|while|as)\b/).map((part) => part.trim()).filter(Boolean);
+const words = (list) => new RegExp(`\\b(?:${list})\\b`);
+// 拿小東西做事的動詞（寫完整的字形，不用開放字尾：stable、drawer、pressure 才不會被讀成動作）。
+const HANDLE_VERB = words("lifts?|lifting|picks? up|picking up|pours?|pouring|writes?|writing|signs?|signing|ties?|tying|unties?|untying|threads?|threading|inserts?|inserting|unfolds?|unfolding|folds?|folding|hands? over|handing over|passes|passing|gives?|giving|offers?|offering|takes?|taking|twists?|twisting|taps?|tapping|counts?|counting|flips?|flipping|unscrews?|tears?|tearing|stamps?|stamping|seals?|sealing|opens?|opening|pockets?|pocketing|lights?|lighting");
+const SMALL_PROP = words("pens?|brush(?:es)?|needles?|keys?|coins?|rings?|chopsticks?|teacups?|cups?|bowls?|spoons?|papers?|notes?|letters?|envelopes?|cards?|buttons?|lighters?|matches|phones?|teapots?|kettles?|bottles?|cigarettes?|scrolls?|tokens?|pages?|books?|tickets?|contracts?|documents?|tea|wine|ink|seal");
+// 武器在手上做的動作。
+const WEAPON_VERB = words("draws?|drawing|sheathes?|sheathing|unsheathes?|twirls?|twirling|spins?|spinning|tosses|tossing|throws?|throwing|catches|catching|lifts?|lifting|raises?|raising|flips?|flipping");
+const WEAPON = words("swords?|blades?|sabres?|sabers?|staffs?|staves|spears?|daggers?|knives|knife|fans?|bows?|arrows?|whips?|axes?|hilts?");
+// 兩個人之間的接觸：強動詞要有對象（人、別人的東西、武器或身體部位）；抱、推、拉、扛這類只算直接接人。
+const CONTACT_VERB = words("hugs?|hugging|embraces?|embracing|kiss(?:es)?|kissing|slaps?|slapping|punch(?:es)?|punching|hits?|hitting|strikes?|striking|grabs?|grabbing|seizes?|seizing|shoves?|shoving|stabs?|stabbing|thrusts?|thrusting|slash(?:es)?|slashing|cuts?|cutting|pierces?|piercing|kicks?|kicking|blocks?|blocking|parr(?:y|ies|ying)|clash(?:es)?|clashing|tackles?|tackling|strangles?|strangling|chokes?|choking|wrestles?|wrestling|collides?|colliding|deflects?|deflecting|meets?|meeting");
+const CONTACT_TARGET = words("him|her|them|each other|one another|swords?|blades?|sabres?|sabers?|staffs?|spears?|shields?|daggers?|fists?|arms?|wrists?|hands?|chests?|shoulders?|faces?|necks?|throats?|backs?|guards?|shafts?|weapons?");
+const DIRECT_CONTACT = /\b(?:holds?|holding|pushes|pushing|pulls?|pulling|carr(?:y|ies|ying)|lifts?|lifting|catch(?:es)?|catching|throws?|throwing|drags?|dragging)\s+(?:him|her|them|each other|one another)\b/;
+const PERSON_NOUN = "man|woman|men|women|guard|guards|soldier|soldiers|servant|maid|stranger|figure|girl|boy|child|old man|old woman|messenger|monk|elder|officer|warrior";
+const ENTERING = "enters?|entering|walks? in|walks? into (?:the )?(?:frame|room|shot)|steps? into (?:the )?(?:frame|room|shot)|comes? through the door|appears? (?:in|at) the door(?:way)?";
+const escapeRe = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 /**
- * AI 片段與關鍵影格的風險：每條 { id, grade, applies, test(text, ctx), why, redesign }。
- * applies "clip" 只看要買素材的鏡頭（motion＋prompt），"image" 連 still 的關鍵影格也看（prompt）。
- * references/shot-risk.md 的表與這裡逐列一致（id、級、適用）。
+ * AI 片段與關鍵影格的風險：每條 { id, grade, applies, test(data, ctx), why, redesign }。
+ * applies "clip" 只看要買素材的鏡頭，主要讀 `motion`（這一鏡發生什麼；`prompt` 寫的是首格裡有什麼，畫面上的
+ * 髮繩、錶、劍不等於有人在動它）；"image" 連 still 的關鍵影格也看，讀 `prompt`。
+ * references/shot-risk.md 的表與這裡逐列一致（id、級、適用），tools/animation-preproduction.test.mjs 盯著。
  */
-const has = (pattern) => (text) => pattern.test(text);
 export const RISK_RULES = [
   {
     id: "hands.small-prop",
     grade: "C",
     applies: "clip",
-    // 三樣都要有：手、小道具、拿它做事的動詞（「髮繩」「穩住目光」不算）。
-    test: (text) => /\b(?:hands?|fingers?|fist|palm|grip|wrist)\b/.test(text) && /\b(?:pens?|brush|needle|thread|keys?|coins?|rings?|chopsticks?|teacups?|cups?|bowls?|spoons?|papers?|notes?|letters?|envelopes?|cards?|buttons?|knots?|cords?|strings?|locks?|lighters?|matches|phones?|watch|watches|hilts?)\b/.test(text) && /\b(?:lift|pick|hold|grip|tighten|pour|writ|sign|tie|untie|insert|open|unfold|fold|hand(?:s|ed)? (?:it|the|over)|pass|giv|offer|tak|turn|twist|tap|press|draw|raise|lower)\w*/.test(text),
-    why: "手指拿小道具：多一隻手、道具換手、多一支筆或一只錶（2026-10-03 試拍 S01 四個 take、S03 兩個都中，重拍沒收斂）",
+    // 同一個子句裡：拿小東西做事的動詞，後面接那個東西。
+    test: (data) => clauses(data.motion).some((part) => { const verb = HANDLE_VERB.exec(part); return Boolean(verb) && SMALL_PROP.test(part.slice(verb.index)); }),
+    why: "手指拿小道具：多一隻手、道具換手、多一支筆或一只錶（2026-10-03 試拍：生成出來的 4 個 take 有 3 個在手與道具上出錯，S03 兩次上限用完、0 支可用）",
     redesign: "拆成兩鏡：手與道具的插鏡只做一個位移（抬起 20 厘米就停），反應放到下一鏡；或把接觸前一刻做成 still 加推近；寫清楚哪隻手、幾件道具、腕上有什麼",
   },
   {
     id: "contact.two-person",
     grade: "C",
     applies: "clip",
-    test: (text, ctx) => ctx.characters >= 2 && /\b(?:hug|embrac|kiss|slap|punch|hit|strik|grab|seiz|shov|push(?:es)? (?:him|her)|pull(?:s)? (?:him|her)|shake hands|handshake|holds? (?:his|her) hand|carr(?:y|ies)|wrestl|stab|catch(?:es)? (?:him|her)|leans? on|blocks?|parr(?:y|ies)|clash)\w*/.test(text),
+    // 畫面裡至少兩個人，同一個子句有接觸的動詞，後面接人、某人的東西、武器或身體部位；或直接抱、推、拉、扛人。
+    test: (data, ctx) => ctx.characters >= 2 && clauses(data.motion).some((part) => {
+      if (DIRECT_CONTACT.test(part)) return true;
+      const verb = CONTACT_VERB.exec(part);
+      if (!verb) return false;
+      const after = part.slice(verb.index + verb[0].length);
+      return CONTACT_TARGET.test(after) || (ctx.names ?? []).some((name) => new RegExp(`\\b${escapeRe(name)}(?:'s)?\\b`).test(after));
+    }),
     why: "兩個人在同一支素材裡接觸：肢體穿插、手臂融合、接觸點漂移，一支裡兩個身份都要守住",
     redesign: "切在接觸前後：A 出手（只有 A）→ 接觸點的插鏡或閃光 → B 受力的反應鏡；兩人同框只留接觸前的對峙或接觸後的結果",
   },
@@ -69,7 +96,7 @@ export const RISK_RULES = [
     id: "eat-drink",
     grade: "C",
     applies: "clip",
-    test: has(/\b(?:eat|eats|eating|drink|drinks|drinking|sips?|sipping|bites?|biting|chews?|chewing|swallows?)\b/),
+    test: (data) => words("eats?|eating|drinks?|drinking|sips?|sipping|bites? into|biting into|chews?|chewing|swallows?|swallowing").test(String(data.motion ?? "").toLowerCase()),
     why: "吃喝要嘴、手、器皿與液體同時對：模型常讓杯子穿過臉、液體不減、嘴不動",
     redesign: "拍放下杯子之後的反應，或杯子在嘴邊停住的 still；真的要喝就做插鏡只拍杯緣與手",
   },
@@ -77,7 +104,7 @@ export const RISK_RULES = [
     id: "transform",
     grade: "C",
     applies: "clip",
-    test: has(/\b(?:transforms?|transforming|morph\w*|turns? into|shape-?shift\w*|dissolves? into|grows? into)\b/),
+    test: (data) => words("transforms?|transforming|morphs?|morphing|turns? into|turning into|shape-?shifts?|shape-?shifting|dissolves? into|grows? into").test(String(data.motion ?? "").toLowerCase()),
     why: "變身與形變正是 judge 扣分的 morphing；首格以外的形體模型自己編，身份守不住",
     redesign: "用首尾格：首格是變之前、末格是變之後（end_frame），或在閃光／特效遮罩處切成兩鏡",
   },
@@ -85,7 +112,7 @@ export const RISK_RULES = [
     id: "text.readable",
     grade: "C",
     applies: "image",
-    test: has(/\b(?:signboard|sign reading|lettering|handwriting|written on|writing on|text on|labels? (?:on|reading)|calligraphy|newspaper|headline|plaque|banner reading|words on|title card|reads ["“'])/),
+    test: (data) => /\b(?:signboard|sign reading|lettering|handwriting|written on|writing on|text on|labels? (?:on|reading)|calligraphy|newspaper|headline|plaque|banner reading|words on|title card)\b|\breads ["“']/.test(String(data.prompt ?? "").toLowerCase()),
     why: "要讀得出的字：圖與片段模型都會寫錯或亂碼，judge 的 no_text 也會扣",
     redesign: "畫面上的紙寫成 blank 或背對鏡頭；要讀的字在剪接時另外合成（字卡、CC），不叫模型寫",
   },
@@ -93,48 +120,60 @@ export const RISK_RULES = [
     id: "speech.visible-mouth",
     grade: "B",
     applies: "clip",
-    test: (text, ctx) => ctx.face && ctx.speakerVisible,
-    why: "說話的人在臉的景別裡、嘴看得見：產線沒有對嘴（DRAMA.md），模型的嘴型跟配音對不上",
-    redesign: "台詞放在聽者的反應鏡、過肩（說話者背對）或插鏡上；說話者的臉鏡留給台詞前後那一拍，嘴閉著",
+    test: (data, ctx) => ctx.face && ctx.speakerVisible,
+    why: "說話的人在臉的景別裡、嘴看得見：產線沒有對嘴（docs/videos/DRAMA.md），模型的嘴型跟配音對不上",
+    redesign: "台詞放在聽者的反應鏡、從說話者背後拍的過肩或插鏡上；說話者的臉鏡留給台詞前後那一拍，嘴閉著",
   },
   {
     id: "reaction.micro",
     grade: "B",
     applies: "clip",
-    test: has(/\b(?:trembl\w*|twitch\w*|clench\w*|tighten\w*|quiver\w*|shiver\w*|flinch\w*)\b/),
+    test: (data) => words("trembles?|trembling|twitch(?:es)?|twitching|clench(?:es)?|clenching|tightens?|tightening|quivers?|quivering|shivers?|shivering|flinch(?:es)?|flinching").test(String(data.motion ?? "").toLowerCase()),
     why: "微小反應會被放大：試拍把「手指收緊」「筆微顫」做成抬筆、多一隻手（model-misreads.md 第一節）",
     redesign: "改成 still 加 push in，或寫幅度與結束狀態（the pen tip moves less than a finger's width and returns; one hand, one pen）",
+  },
+  {
+    id: "hands.weapon",
+    grade: "B",
+    applies: "clip",
+    test: (data) => clauses(data.motion).some((part) => { const verb = WEAPON_VERB.exec(part); return Boolean(verb) && WEAPON.test(part.slice(verb.index)); }),
+    why: "手上的武器在動（出鞘、抬起、轉、拋接）：握法、手指數與武器的長短最容易在中途變",
+    redesign: "寫明哪隻手、握在哪裡、幅度與停在哪；出鞘這類細節拍成插鏡只做一個位移，或用 still 加推近交代蓄勢",
   },
   {
     id: "action.fast",
     grade: "B",
     applies: "clip",
-    test: has(/\b(?:runs?|running|sprint\w*|leaps?|leaping|jumps?|jumping|spins?|spinning|whirl\w*|dodg\w*|fights?|fighting|chas\w*|tumbl\w*|kicks?|kicking|somersault\w*|dash\w*|lunge\w*)\b/),
+    test: (data) => words("runs?|running|sprints?|sprinting|leaps?|leaping|jumps?|jumping|spins? around|whirls?|whirling|dodges?|dodging|fights?|fighting|chases?|chasing|tumbles?|tumbling|kicks?|kicking|somersaults?|dash(?:es)?|dashing|lunges?|lunging|charges?|charging|vaults?|vaulting|rolls? (?:aside|away|over)").test(String(data.motion ?? "").toLowerCase()),
     why: "快速大動作：四肢糊、穿模、落地位置與下一鏡接不上",
-    redesign: "只拍起勢與落點，中間用特效或速度線的一拍帶過；一支一個方向",
+    redesign: "只拍起勢與落點，中間用特效、閃光或速度線一拍帶過；一支一個方向",
   },
   {
     id: "entrance",
     grade: "B",
     applies: "clip",
-    // 只算進來的人；離開畫面的人不需要模型編新的臉，一道光、煙或風「進入畫面」也不是人。
-    test: (text) => /\b(?:enters?|entering|walks? in|walks? into (?:the )?(?:frame|room|shot)|steps? into (?:the )?frame|comes? through the door|appears? (?:in|at) the door\w*)\b/.test(text.replace(/\b(?:arcs?|light|beams?|glow|wind|smoke|sparks?|shadows?|sunlight|rain|mist|fog|energy|flames?|dust|petals?|leaves)\s+(?:\w+\s+){0,2}?(?:enters?|entering)\b/g, "")),
+    // 只算人走進來：主詞是角色名字、代名詞或「人」的名詞；一道光、一支槍頭「進入畫面」不算，離開畫面也不算。
+    test: (data, ctx) => {
+      const subject = [...(ctx.names ?? []).map(escapeRe), "he", "she", "they", `(?:a|an|the|another|one) (?:\\w+ )?(?:${PERSON_NOUN})`].join("|");
+      return new RegExp(`\\b(?:${subject})\\s+(?:\\w+\\s+){0,2}?(?:${ENTERING})\\b`).test(String(data.motion ?? "").toLowerCase());
+    },
     why: "首格裡沒有的人進畫面：模型沒有參考，臉和衣服是它編的",
-    redesign: "進來的人先站進首格（門口的剪影或背影），或改成「門被推開」的空鏡接下一鏡的中近景",
+    redesign: "進來的人先站進首格（門口的剪影或背影），或拍「門被推開」再接他的中近景",
   },
   {
     id: "physics.fluid",
     grade: "B",
     applies: "clip",
-    test: has(/\b(?:splash\w*|pours?|pouring|smoke|flames?|fire|explo\w*|shatter\w*|mirror|reflection|ripples?|waterfall|rain(?:drops)?)\b/),
-    why: "流體、火、碎裂、鏡面：方向與量常不對，鏡中影像和本人對不上",
-    redesign: "效果當配角：主動作先成立，火與煙只在背景；鏡面拍成不見倒影的角度",
+    // 液體、玻璃、鏡面；火、煙、雷、能量這類特效不算（參考片拿它們遮動作，見 shot-risk.md）。
+    test: (data) => words("splash(?:es)?|splashing|pours?|pouring|spills?|spilling|shatters?|shattering|mirrors?|reflections?|ripples?|rippling|waterfall").test(String(data.motion ?? "").toLowerCase()),
+    why: "液體、碎玻璃、鏡面：量與方向常不對，杯裡的水不減、鏡中影像和本人對不上",
+    redesign: "結果當畫面：倒完的杯、碎了的鏡用 still；鏡面拍成看不到倒影的角度",
   },
   {
     id: "crowd",
     grade: "B",
     applies: "image",
-    test: has(/\b(?:crowd|audience|guests|army|soldiers|villagers|onlookers|spectators|many people|dozens of)\b/),
+    test: (data) => words("crowds?|audience|guests|army|armies|soldiers|villagers|onlookers|spectators|many people|dozens of people").test(String(data.prompt ?? "").toLowerCase()),
     why: "一群人：臉糊、人數與站位每張都不同，下一鏡接不上",
     redesign: "群眾留在虛焦背景或剪影；主角前景佔畫面",
   },
@@ -142,7 +181,7 @@ export const RISK_RULES = [
     id: "cast.three",
     grade: "B",
     applies: "image",
-    test: (text, ctx) => ctx.characters >= 3,
+    test: (data, ctx) => ctx.characters >= 3,
     why: "三個角色同框：每人一張參考圖、一題 identity，任何一張臉走樣整張重做",
     redesign: "拆成兩人鏡＋單人反應；三人同框只給重新交代空間的全景",
   },
@@ -150,7 +189,7 @@ export const RISK_RULES = [
     id: "camera.complex",
     grade: "B",
     applies: "clip",
-    test: (text, ctx) => /\b(?:orbit\w*|arc(?:s|ing)? around|crane|whip|handheld|tracking|follows?|following|truck\w*)\b/.test(ctx.camera) || ctx.moves > 1,
+    test: (data, ctx) => words("orbits?|orbiting|arcs? around|crane|cranes|craning|whip pan|whip|handheld|tracking|follows?|following|trucks?|trucking").test(ctx.camera) || ctx.moves > 1,
     why: "環繞、跟拍、搖臂或一鏡兩個運鏡：主體與背景的透視要一起算，最容易變形",
     redesign: "一鏡一個運鏡，用八組字裡的推、拉、搖、俯仰或鎖定；需要環繞就拆鏡",
   },
@@ -158,13 +197,11 @@ export const RISK_RULES = [
     id: "long.take",
     grade: "B",
     applies: "clip",
-    test: (text, ctx) => ctx.buySeconds > 8,
+    test: (data, ctx) => ctx.buySeconds > 8,
     why: "超過 8 秒的一支：越後面越漂（臉、衣服、道具位置），而成片通常只用 2–5 秒",
     redesign: "拆成兩鏡，或確定後段真的會被切去用（母鏡頭）再買長",
   },
 ];
-// 合在一起看的文字：camera 不算（人的動詞不寫進 camera）。
-const riskText = (data, kind) => (kind === "image" ? String(data.prompt ?? "") : `${data.motion ?? ""} ${data.prompt ?? ""}`).toLowerCase();
 
 /** 一鏡的風險：{ grade, reasons: [{ id, grade, why, redesign }], expected_takes }。visual 是 clip、still 或 cut。 */
 export function shotRisk(data, visual, ctx, expected = EXPECTED_TAKES) {
@@ -172,10 +209,11 @@ export function shotRisk(data, visual, ctx, expected = EXPECTED_TAKES) {
   const reasons = [];
   for (const rule of RISK_RULES) {
     if (rule.applies === "clip" && visual !== "clip") continue;
-    if (rule.test(riskText(data, rule.applies), ctx)) reasons.push({ id: rule.id, grade: rule.grade, why: rule.why, redesign: rule.redesign });
+    if (rule.test(data ?? {}, ctx)) reasons.push({ id: rule.id, grade: rule.grade, why: rule.why, redesign: rule.redesign });
   }
   const grade = reasons.reduce((worst, reason) => (GRADE_ORDER[reason.grade] > GRADE_ORDER[worst] ? reason.grade : worst), "A");
-  return { grade, reasons, expected_takes: visual === "clip" ? expected[grade] : 0 };
+  const takes = visual === "clip" ? Math.min(expected[grade], ctx.clipTakes ?? Infinity) : 0;
+  return { grade, reasons, expected_takes: takes };
 }
 
 /**
@@ -203,18 +241,26 @@ export const HAILUO_MODELS = {
 const H3_SENTENCE = { locked: "The camera is a static shot and stays completely still", "push in": "The camera pushes in", "pull out": "The camera pulls out", "pan left": "The camera pans left", "pan right": "The camera pans right", "tilt up": "The camera tilts up", "tilt down": "The camera tilts down", track: "The camera is a tracking shot that follows the subject", drift: "The camera trucks right with small amplitude at slow speed" };
 const HAILUO_BRACKET = { locked: "[Static shot]", "push in": "[Push in]", "pull out": "[Pull out]", "pan left": "[Pan left]", "pan right": "[Pan right]", "tilt up": "[Tilt up]", "tilt down": "[Tilt down]", track: "[Tracking shot]" };
 const KLING_PHRASE = { locked: "locked-off camera, no camera movement", "push in": "the camera pushes in", "pull out": "the camera pulls back", "pan left": "the camera pans left", "pan right": "the camera pans right", "tilt up": "the camera tilts up", "tilt down": "the camera tilts down", track: "the camera tracks alongside the subject", drift: "the camera drifts very slightly" };
-const MOVE_WORD = /\b(?:drift\w*|locked|static|fixed|tripod|no camera move|still camera|push\w*|dolly\w*|zoom\w*|closer|pull\w*|widen\w*|back(?:s|ing)? away|pan\w*|left to right|right to left|tilt\w*|crane\w*|rises?|rising|descend\w*|track\w*|follow\w*)\b/g;
+// 運鏡字但不在八組裡（沒方向的 pan／tilt、crane、單獨的 zoom、orbit、truck、handheld、whip…）：網頁正文不替你猜。
+const OFF_TABLE_MOVE = /\b(?:pans?|panning|tilts?|tilting|cranes?|craning|pedestal|zooms?|zooming|orbits?|orbiting|arcs? around|trucks?|trucking|handheld|steadicam|whip|dolly out)\b/;
 export function webMove(camera) {
   const text = String(camera ?? "").toLowerCase();
   const tracking = /\btrack(?:s|ing)?\b|\bfollow(?:s|ing)?\b/.test(text);
-  const named = text.match(MOVE_WORD) ?? [];
-  const group = tracking ? "track" : named.length ? slidesMove({ camera: text }) : null;
+  // 直接讀 drama.mjs 的八組正則，不用 cameraMove 的預設值（它把讀不出來的都當 drift）。
+  let group = tracking ? "track" : CAMERA_MOVES.find(([, pattern]) => pattern.test(text))?.[0] ?? null;
+  if (group === null) {
+    const craft = craftMove({ camera: text });
+    if (craft === "push") group = "push in";
+    else if (craft === "pull") group = "pull out";
+  }
+  const unsupported = group === null ? OFF_TABLE_MOVE.exec(text)?.[0] ?? null : null;
   const slow = /\b(?:slow|slowly|gentle|gently|subtle|subtly)\b/.test(text);
   const moving = group !== null && group !== "locked" && group !== "drift";
   return {
     group,
     slow,
-    h3: group === null ? null : `${H3_SENTENCE[group]}${moving && slow ? " with small amplitude at slow speed" : ""}`,
+    unsupported,
+    h3: group === null ? null : `${H3_SENTENCE[group]}${moving ? (slow ? " with small amplitude at slow speed" : " at a steady speed") : ""}`,
     hailuo: group === null ? null : HAILUO_BRACKET[group] ?? null,
     kling: group === null ? null : KLING_PHRASE[group] ?? null,
   };
@@ -222,14 +268,17 @@ export function webMove(camera) {
 
 // 官方 H3 圖生影片格式的第一行（同上的 H3 提示指南；首格當 Picture 1、在第 0 秒完整參照）。
 export const H3_FIRST_LINE = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.";
-// 守住首格與單鏡的一句（animation-camera/references/budaimiao-style.md 第四節的寫法，改成正面句）。
+// 守住首格與單鏡的一句（animation-camera/references/budaimiao-style.md 第四節的寫法）。「單鏡、不切、不加字」是給模型的
+// 生成指令，Kling 官方範例也這樣寫（a single unbroken shot with no cuts）；「正面寫」的規矩管的是畫面內容的狀態。
 export const WEB_KEEP = "Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.";
+// 收尾的標點：已經以句號、問號、驚嘆號、刪節號或引號結束的不再補句點。
 const clean = (text) => String(text ?? "").trim().replace(/[.。\s]+$/, "");
+const sentence = (text) => (text ? (/[.!?。！？…"”'’)]$/.test(text) ? text : `${text}.`) : "");
 
 /**
  * 要貼進網頁（或伺服器送出）的動態正文：{ route, model, text, negative, chars, sha256, notes }。
- * 網頁的 text 不帶 look.negative：H3 沒有負面欄（API 也沒有），否定句又常被畫成正向（試拍把 already closed 畫成
- * 開著的門）；negative 另外列，網頁真的有負面欄才貼。sha256 是 text 的，鎖定檔與收據都記它。
+ * 網頁的 text 不帶 look.negative：H3 的 API 沒有負面欄（官方），網頁有沒有沒驗；否定句又常被畫成正向（試拍把
+ * already closed 畫成開著的門）。negative 另外列，表單真的有負面欄才貼。sha256 是 text 的，鎖定檔與收據都記它。
  */
 export function webPrompt(route, scene, look, cast, { hailuoModel = "h3" } = {}) {
   const data = scene.data ?? {};
@@ -240,36 +289,39 @@ export function webPrompt(route, scene, look, cast, { hailuoModel = "h3" } = {})
     text = clipPrompt(scene, look, cast);
   } else {
     const move = webMove(data.camera);
-    const motion = clean(data.motion);
-    const lookMotion = clean(look.motion);
+    const motion = sentence(String(data.motion ?? "").trim());
+    const lookMotion = sentence(clean(look.motion));
     negative = clean(look.negative) || null;
-    if (move.group === null) notes.push("camera 行沒有運鏡字：正文不寫運鏡，模型自己決定（要鎖定就寫 locked）");
+    if (move.unsupported) notes.push(`camera 行的「${move.unsupported}」不在八組運鏡字裡：正文不寫運鏡；改成 push in、pull out、pan left／right、tilt up／down、locked 或 drift`);
+    else if (move.group === null) notes.push("camera 行沒有運鏡字：正文不寫運鏡，模型自己決定（要鎖定就寫 locked）");
     if (route === "hailuo" && hailuoModel === "h3") {
-      const body = [`[Shot 1] ${motion}${motion ? "." : ""}`.trim()];
+      const body = [`[Shot 1] ${motion}`.trim()];
       if (move.h3) body.push(`${move.h3}.`);
-      if (lookMotion) body.push(`${lookMotion}.`);
+      if (lookMotion) body.push(lookMotion);
       body.push(WEB_KEEP);
       text = `${H3_FIRST_LINE}\n\nintegrated_multimodal_description: ${body.join(" ")}\noverall_soundscape: N/A\nnon_diegetic_music: N/A`;
     } else if (route === "hailuo") {
-      const parts = [`${move.hailuo ? `${move.hailuo} ` : ""}${motion}${motion ? "." : ""}`.trim()];
+      const parts = [`${move.hailuo ? `${move.hailuo} ` : ""}${motion}`.trim()];
       if (move.group === "locked") parts.push("The camera stays completely still.");
       else if (move.group === "drift") parts.push("A very subtle, slow camera drift.");
       else if (move.slow && move.hailuo) parts.push("The camera moves slowly.");
-      if (lookMotion) parts.push(`${lookMotion}.`);
+      if (lookMotion) parts.push(lookMotion);
       parts.push(WEB_KEEP);
       text = parts.join(" ");
       if (move.group === "drift") notes.push("Hailuo 2.3 沒有 drift 的方括號指令：正文用自然語言");
     } else {
       const camera = move.kling ? `Single continuous shot, ${move.slow && move.group !== "locked" ? move.kling.replace("the camera ", "the camera slowly ") : move.kling}.` : "Single continuous shot.";
       const parts = [camera];
-      if (motion) parts.push(`${motion}.`);
-      if (lookMotion) parts.push(`${lookMotion}.`);
+      if (motion) parts.push(motion);
+      if (lookMotion) parts.push(lookMotion);
       parts.push(WEB_KEEP);
       text = parts.join(" ");
     }
-    const names = cast.flatMap((character) => [character.name, character.id]).filter((label) => typeof label === "string" && /^[A-Za-z][\w-]+$/.test(label));
-    const named = names.filter((label) => new RegExp(`(?<![\\w-])${label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\\w-])`, "i").test(motion));
-    if (named.length) notes.push(`正文用了角色名字（${[...new Set(named)].join("、")}）：影片模型不認得名字，看的是首格；同框兩人時改寫成畫面位置或外觀（the woman on screen left）更穩`);
+    if (cast.length >= 2) {
+      const names = cast.flatMap((character) => [character.name, character.id]).filter((label) => typeof label === "string" && /^[A-Za-z][\w-]+$/.test(label));
+      const named = names.filter((label) => new RegExp(`(?<![\\w-])${escapeRe(label)}(?![\\w-])`, "i").test(motion));
+      if (named.length) notes.push(`同框兩人、正文用了名字（${[...new Set(named)].join("、")}）：影片模型不認得名字，看的是首格；寫成畫面位置或外觀（the woman on screen left）比較不會認錯人`);
+    }
   }
   return { route, model: route === "hailuo" ? hailuoModel : null, text, negative, chars: text.length, sha256: createHash("sha256").update(text).digest("hex"), notes };
 }
@@ -310,6 +362,7 @@ export function planEpisode(doc, options = {}) {
   if (hailuoModel && !HAILUO_MODELS[hailuoModel]) throw new Error(`--hailuo-model must be one of ${Object.keys(HAILUO_MODELS).join(", ")}`);
   const hailuo = hailuoModel ? HAILUO_MODELS[hailuoModel] : null;
   const webTable = hailuo ? hailuo.per_second ?? hailuo.per_clip : plan?.credits_per_second ?? null;
+  if (route !== "server" && wanted && webTable && !Object.hasOwn(webTable, wanted)) throw new Error(`--resolution ${wanted} is not sold by ${hailuo?.label ?? "Kling VIDEO 3.0"}: one of ${Object.keys(webTable).join(", ")}`);
   const webResolution = webTable ? (wanted && Object.hasOwn(webTable, wanted) ? wanted : hailuo?.default_resolution ?? plan.default_resolution) : null;
   const handle = route === "server" ? 0 : Number.isFinite(options.handle) ? options.handle : DEFAULT_HANDLE_S;
   const clipTakes = options.clipTakes ?? MAX_CLIP_TAKES;
@@ -343,6 +396,7 @@ export function planEpisode(doc, options = {}) {
   const costOf = (seconds) => (rate !== null ? seconds * rate : hailuo.per_clip[webResolution][seconds] ?? 0);
   const usdPerCredit = plan ? plan.fee_usd / plan.credits : null;
   const setupCodes = new Map();
+  const castNames = (Array.isArray(doc.characters) ? doc.characters : []).flatMap((character) => [character?.id, character?.name]).filter((label) => typeof label === "string" && /^[A-Za-z][\w -]*$/.test(label)).map((label) => label.toLowerCase());
   const shots = rows.filter((row) => !row.card).map((row, index) => {
     const scene = sceneById.get(row.id);
     const data = row.data ?? {};
@@ -386,7 +440,7 @@ export function planEpisode(doc, options = {}) {
   for (const shot of shots) {
     if (!shot.source) continue;
     const origin = byId.get(shot.source.shot);
-    if (!origin) continue;
+    if (!origin || origin.visual !== "clip") continue;
     origin.cut_need_s = Math.max(origin.cut_need_s ?? 0, round2(shot.source.from_s + shot.need_s));
     (origin.cuts ??= []).push(shot.id);
   }
@@ -401,26 +455,36 @@ export function planEpisode(doc, options = {}) {
       } else if (hailuo?.per_clip) {
         // Hailuo 2.3 只賣固定長度：挑最短的一個蓋得住需要＋把手的。
         const lengths = Object.keys(hailuo.per_clip[webResolution]).map(Number).sort((a, b) => a - b);
-        shot.buy_s = lengths.find((each) => each >= need + handle - 1e-9) ?? lengths.at(-1);
-        if (need + handle > lengths.at(-1)) problems.push({ level: "waste", shot: shot.id, what: `需要 ${need.toFixed(1)} s（含把手 ${handle} s），${hailuo.label} ${webResolution} 一支只有 ${lengths.join("／")} s`, fix: "拆成兩鏡，或改用 H3（4–15 秒）" });
+        shot.buy_s = lengths.find((each) => each >= need + handle - 1e-9) ?? lengths.find((each) => each >= need - 1e-9) ?? lengths.at(-1);
+        if (need > lengths.at(-1) + 1e-9) problems.push({ level: "waste", shot: shot.id, what: `需要 ${need.toFixed(1)} s（含把手 ${handle} s），${hailuo.label} ${webResolution} 一支只有 ${lengths.join("／")} s`, fix: "拆成兩鏡，或改用 H3（4–15 秒）" });
         if (shot.end_frame_planned) problems.push({ level: "waste", shot: shot.id, what: `${hailuo.label} 沒有首尾格，計畫的 end_frame 用不上`, fix: "這一鏡改用 H3，或拿掉 end_frame" });
       } else {
         const [low, high] = route === "hailuo" ? hailuo.seconds : KLING_CLIP_SECONDS;
         shot.buy_s = Math.min(high, Math.max(low, Math.ceil(need + handle - 1e-9)));
-        if (need + handle > high) problems.push({ level: "waste", shot: shot.id, what: `需要 ${need.toFixed(1)} s（含把手 ${handle} s），網頁一支最多 ${high} s`, fix: "拆成兩鏡，或少切幾次這個母鏡頭" });
+        if (need > high + 1e-9) problems.push({ level: "waste", shot: shot.id, what: `需要 ${need.toFixed(1)} s，網頁一支最多 ${high} s`, fix: "拆成兩鏡，或少切幾次這個母鏡頭" });
+        else if (need + handle > high + 1e-9) notes.push(`${shot.id}：需要 ${need.toFixed(1)} s，買到上限 ${high} s，尾巴把手不到 ${handle} s`);
       }
       if (shot.cut_need_s && shot.cut_need_s > shot.buy_s + 1e-9) problems.push({ level: "waste", shot: shot.id, what: `切鏡 ${shot.cuts.join("、")} 要用到這支的 ${shot.cut_need_s.toFixed(1)} s，但這條路線只買 ${shot.buy_s} s`, fix: route === "server" ? "伺服器路線的秒數由 clipSeconds 決定：from_s 提早，或改網頁路線買長一點的母鏡頭" : "from_s 提早，或縮短切鏡的台詞" });
     } else {
       shot.buy_s = 0;
     }
     if (shot.visual === "cut" && !byId.get(shot.source.shot)) problems.push({ level: "waste", shot: shot.id, what: `source.shot ${shot.source.shot} 不在這份檔案裡`, fix: "指向一個更早的 clip 鏡頭" });
+    // 從說話者背後拍的過肩（「from behind <speaker>」「over <speaker>'s shoulder」）看不到他的嘴。
+    const behind = (id) => {
+      const character = shot.cast.find((each) => each.id === id);
+      const labels = [id, character?.name].filter((label) => typeof label === "string" && label.length).map((label) => label.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+      const text = `${shot.camera} ${shot.scene.data?.prompt ?? ""}`.toLowerCase();
+      return labels.some((label) => new RegExp(`\\bfrom behind ${label}\\b|\\bover ${label}'s (?:\\w+ )?shoulder\\b|\\bbehind ${label}'s (?:\\w+ )?(?:shoulder|back|head)\\b`).test(text));
+    };
     const ctx = {
       characters: shot.characters.length,
+      names: castNames,
       face: shot.face,
-      speakerVisible: shot.speakers.some((speaker) => speaker !== "narrator" && shot.characters.includes(speaker)) && shot.lines.length > 0,
+      speakerVisible: shot.speakers.some((speaker) => speaker !== "narrator" && shot.characters.includes(speaker) && !behind(speaker)) && shot.lines.length > 0,
       camera: String(shot.camera).toLowerCase(),
-      moves: (String(shot.camera).toLowerCase().match(/\b(?:push|pull|pan|tilt|zoom|dolly|crane|orbit|track)\w*/g) ?? []).length,
+      moves: new Set((String(shot.camera).toLowerCase().match(/\b(?:push|pull|pan|tilt|zoom|dolly|crane|orbit|track)(?:s|es|ed|ing)?\b/g) ?? []).map((word) => word.replace(/(?:es|s|ed|ing)$/, ""))).size,
       buySeconds: shot.buy_s,
+      clipTakes,
     };
     shot.risk = shotRisk(shot.scene.data ?? {}, shot.visual, ctx, expectedTakes);
     const unitCost = shot.visual === "clip" ? costOf(shot.buy_s) : 0;
@@ -439,6 +503,18 @@ export function planEpisode(doc, options = {}) {
         : { kind: "to-draw" };
     shot.end_frame = shot.end_frame_planned ? { planned: true, file: entry?.end_frame?.file ?? null, sha256: entry?.end_frame?.sha256 ?? null } : { planned: false };
     shot.prompt = shot.visual === "clip" ? webPrompt(route, shot.scene, look, shot.cast, { hailuoModel: hailuoModel ?? undefined }) : null;
+    if (shot.visual === "clip" && shot.move.web.unsupported) problems.push({ level: "review", shot: shot.id, what: `camera 行的「${shot.move.web.unsupported}」不在八組運鏡字裡，定稿正文沒寫運鏡`, fix: "改成 push in、pull out、pan left／right、tilt up／down、locked 或 drift（animation-camera 的「寫 camera」）" });
+  }
+
+  // lint 會擋的鏡頭問題：schema 的鏡頭欄位、鏡長與切素材上限、production profile 的規則。照 lint 的估法量（lint 本來就是）。
+  try {
+    for (const error of validateVideo(doc).filter((each) => /^scenes\[/.test(each.path ?? ""))) problems.push({ level: "refuse", shot: /\(([^)]+)\)/.exec(error.path)?.[1] ?? (doc.scenes[Number(/^scenes\[(\d+)\]/.exec(error.path)?.[1])]?.id ?? null), what: `lint：${error.path} ${error.message}`, fix: "lint 會擋：照訊息改劇本" });
+    const linted = estimateTimeline(doc);
+    for (const error of shotProblems(doc, linted).errors) problems.push({ level: "refuse", shot: /\(([^)]+)\)/.exec(error.path)?.[1] ?? null, what: `lint：${error.message}`, fix: "lint 會擋：照訊息改劇本" });
+    const profiled = options.series?.production?.profile ? options.series : production ? { production: { profile: {} } } : null;
+    for (const error of productionShotProblems(doc, profiled, timeline)) problems.push({ level: "refuse", shot: /\(([^)]+)\)/.exec(error.path)?.[1] ?? null, what: `production profile：${error.message}`, fix: "照訊息改劇本" });
+  } catch (error) {
+    notes.push(`lint 的鏡頭檢查沒跑完（${error.message}）：先跑 tools/video/cli.mjs lint`);
   }
   if (hailuo?.unlimited_on_max) notes.push(`${hailuo.label}：Max 方案的點數用完之後，它在 relax 佇列無限生成（訂閱頁 tooltip，2026-10-04 讀；H3 不在內，排多久沒量）；這裡的點數是用點數跑的價`);
   if (route !== "server" && production) problems.push({ level: "refuse", shot: null, what: "這集有 series.production.profile：clips import 一律以結束碼 3 拒收外部片段（tools/video/media/clips.mjs importClip），Hailuo／Kling 做的片段進不了這集", fix: "走伺服器路線，或等「有 profile 的作品走外部路線」那張票" });
@@ -451,27 +527,36 @@ export function planEpisode(doc, options = {}) {
   const clipShots = shots.filter((shot) => shot.visual === "clip");
   const score = (shot) => (shot.visual === "clip" ? 1 + GRADE_ORDER[shot.risk.grade] * 2 : 0);
   let pilot = [];
-  let best = -1;
-  for (let i = 0; i + 2 < shots.length; i++) {
-    const window = shots.slice(i, i + 3);
-    if (new Set(window.map((shot) => shot.chapter)).size > 1) continue;
-    const clips = window.filter((shot) => shot.visual === "clip").length;
-    if (clips < 2) continue;
-    // 代表性（youtube-video 的 animation-production.md：小樣要有聽得清的對話、一個有接觸或重量的動作）：
-    // 一段裡同時有台詞鏡與無聲動作拍的多加分。
-    const total = sum(window, score) + (window.some((shot) => shot.lines.length) ? 1 : 0) + (window.some((shot) => shot.action_seconds !== null) ? 1 : 0);
-    if (total > best) {
-      best = total;
-      pilot = window;
+  if (Array.isArray(options.pilot) && options.pilot.length) {
+    pilot = options.pilot.map((id) => byId.get(id));
+    const missing = options.pilot.filter((id, at) => !pilot[at]);
+    if (missing.length) throw new Error(`--pilot names shots that are not in the file: ${missing.join(", ")}`);
+  } else {
+    let best = null;
+    for (let i = 0; i + 2 < shots.length; i++) {
+      const window = shots.slice(i, i + 3);
+      if (new Set(window.map((shot) => shot.chapter)).size > 1) continue;
+      const clips = window.filter((shot) => shot.visual === "clip");
+      if (clips.length < 2) continue;
+      // 代表性（youtube-video 的 animation-production.md：小樣要有聽得清的對話、一個有接觸或重量的動作）：買素材的鏡頭裡
+      // 有台詞鏡、也有無聲動作拍的各加一分；同分時買得多的、C 多的先，再來是前面的。
+      const total = sum(window, score) + (clips.some((shot) => shot.lines.length) ? 1 : 0) + (clips.some((shot) => shot.action_seconds !== null) ? 1 : 0);
+      const key = [total, clips.length, clips.filter((shot) => shot.risk.grade === "C").length];
+      const better = !best || (() => {
+        for (let at = 0; at < key.length; at++) if (key[at] !== best.key[at]) return key[at] > best.key[at];
+        return false;
+      })();
+      if (better) best = { key, window };
     }
+    pilot = best?.window ?? clipShots.slice(0, 3);
   }
-  if (!pilot.length && clipShots.length) pilot = clipShots.slice(0, 3);
   const pilotIds = new Set(pilot.map((shot) => shot.id));
   for (const shot of pilot) if (shot.source && !pilotIds.has(shot.source.shot)) pilotIds.add(shot.source.shot);
+  for (const shot of clipShots) if (shot.risk.grade === "C" && !pilotIds.has(shot.id)) problems.push({ level: "review", shot: shot.id, what: `C 級（${shot.risk.reasons.filter((reason) => reason.grade === "C").map((reason) => reason.id).join(", ")}）不在小樣裡`, fix: "照 shot-risk.md 重設計；劇情非要不可就用 --pilot 把它放進小樣先驗" });
   const batches = [];
   if (pilotIds.size) {
     const members = shots.filter((shot) => pilotIds.has(shot.id));
-    batches.push({ name: "小樣", why: "同一場連續三鏡、風險最高的一段：先驗身份、動作、剪接與匯入，站主看過才放量", shots: members.map((shot) => shot.id), buys: members.filter((shot) => shot.visual === "clip").map((shot) => shot.id), cost_one: round2(sum(members, (shot) => shot.cost.one)) });
+    batches.push({ name: "小樣", why: options.pilot?.length ? "鎖定包指定的小樣鏡頭：先驗身份、動作、剪接與匯入，站主看過才放量" : "同一場連續三鏡、風險最高的一段：先驗身份、動作、剪接與匯入，站主看過才放量", shots: members.map((shot) => shot.id), buys: members.filter((shot) => shot.visual === "clip").map((shot) => shot.id), cost_one: round2(sum(members, (shot) => shot.cost.one)) });
   }
   const chapters = [...new Set(shots.map((shot) => shot.chapter))];
   chapters.forEach((name, number) => {
@@ -678,6 +763,41 @@ export function expectedTakesFlag(value) {
   return { A: parts[0], B: parts[1], C: parts[2] };
 }
 
+/** 三支腳本共用的規劃旗標：plan_lock 與 animatic 收同一組，鎖定的就是 shot_plan 算的那一份。 */
+export const PLAN_FLAGS = {
+  route: { type: "string" },
+  plan: { type: "string" },
+  model: { type: "string" },
+  resolution: { type: "string" },
+  timeline: { type: "string" },
+  handle: { type: "string" },
+  "clip-takes": { type: "string" },
+  "hailuo-model": { type: "string" },
+  "expected-takes": { type: "string" },
+  pilot: { type: "string" },
+  production: { type: "boolean" },
+};
+export const PLAN_USAGE = "[--route server|hailuo|kling] [--plan hailuo:pro|kling:pro|...] [--hailuo-model h3|2.3] [--model <server clip model>] [--resolution 1080p|720p|768p|2k] [--timeline <timeline.json>] [--handle 0.5] [--clip-takes 2] [--expected-takes 1.2,1.5,2] [--pilot s04,s05,s06] [--production]";
+
+/** parseArgs 的值 → planEpisode 的選項（只有使用者真的給了的）。 */
+export function planOptions(values) {
+  const options = {};
+  if (values.route !== undefined) options.route = values.route;
+  if (values.plan !== undefined) options.plan = values.plan;
+  if (values.model !== undefined) options.model = values.model;
+  if (values.resolution !== undefined) options.resolution = values.resolution;
+  if (values.handle !== undefined) options.handle = number(values.handle, "--handle");
+  if (values["clip-takes"] !== undefined) {
+    options.clipTakes = number(values["clip-takes"], "--clip-takes");
+    if (!Number.isInteger(options.clipTakes) || options.clipTakes < 1) throw new Error("--clip-takes must be a whole number >= 1");
+  }
+  if (values["hailuo-model"] !== undefined) options.hailuoModel = values["hailuo-model"];
+  if (values["expected-takes"] !== undefined) options.expectedTakes = expectedTakesFlag(values["expected-takes"]);
+  if (values.pilot !== undefined) options.pilot = String(values.pilot).split(",").map((id) => id.trim()).filter(Boolean);
+  if (values.production) options.production = true;
+  return options;
+}
+
 export function main(argv, stdout = process.stdout, stderr = process.stderr) {
   let values;
   let positionals;
@@ -685,19 +805,10 @@ export function main(argv, stdout = process.stdout, stderr = process.stderr) {
     ({ values, positionals } = parseArgs({
       args: argv,
       options: {
+        ...PLAN_FLAGS,
         slug: { type: "string" },
-        route: { type: "string" },
-        plan: { type: "string" },
-        model: { type: "string" },
-        resolution: { type: "string" },
-        timeline: { type: "string" },
         workdir: { type: "string" },
         root: { type: "string" },
-        handle: { type: "string" },
-        "clip-takes": { type: "string" },
-        "hailuo-model": { type: "string" },
-        "expected-takes": { type: "string" },
-        production: { type: "boolean" },
         markdown: { type: "boolean" },
         csv: { type: "boolean" },
         json: { type: "boolean" },
@@ -707,38 +818,28 @@ export function main(argv, stdout = process.stdout, stderr = process.stderr) {
       strict: true,
     }));
   } catch (error) {
-    stderr.write(`${error.message}\n`);
+    stderr.write(`${error.message}
+`);
     return 2;
   }
   if (!positionals[0] && !values.slug) {
-    stderr.write("usage: shot_plan.mjs <video.json> | --slug <SLUG> [--route server|hailuo|kling] [--plan hailuo:pro|kling:pro|...] [--model <id>] [--resolution 1080p|720p|768p|2k] [--timeline <timeline.json>] [--workdir <dir>] [--handle 0.5] [--clip-takes 2] [--hailuo-model h3|2.3] [--expected-takes 1.2,1.5,2] [--production] [--markdown|--csv|--json] [--strict]\n");
+    stderr.write(`usage: shot_plan.mjs <video.json> | --slug <SLUG> [--workdir <dir>] ${PLAN_USAGE} [--markdown|--csv|--json] [--strict]
+`);
     return 2;
   }
   let plan;
   let inputs;
   try {
     inputs = loadInputs({ file: positionals[0], slug: values.slug, workdir: values.workdir, root: values.root, timeline: values.timeline });
-    plan = planEpisode(inputs.doc, {
-      route: values.route,
-      plan: values.plan,
-      model: values.model,
-      resolution: values.resolution,
-      timeline: inputs.timeline,
-      manifest: inputs.manifest,
-      series: inputs.series,
-      handle: number(values.handle, "--handle"),
-      clipTakes: number(values["clip-takes"], "--clip-takes"),
-      hailuoModel: values["hailuo-model"],
-      expectedTakes: expectedTakesFlag(values["expected-takes"]),
-      production: values.production,
-      timelineStale: inputs.timeline_stale,
-    });
+    plan = planEpisode(inputs.doc, { ...planOptions(values), timeline: inputs.timeline, manifest: inputs.manifest, series: inputs.series, timelineStale: inputs.timeline_stale });
   } catch (error) {
-    stderr.write(`${positionals[0] ?? values.slug}: ${error.message}\n`);
+    stderr.write(`${positionals[0] ?? values.slug}: ${error.message}
+`);
     return 2;
   }
   const label = path.relative(process.cwd(), inputs.file) || inputs.file;
-  stdout.write(`${values.json ? JSON.stringify({ file: label, ...plan }, null, 2) : values.csv ? renderCsv(plan) : renderMarkdown(plan, label)}\n`);
+  stdout.write(`${values.json ? JSON.stringify({ file: label, ...plan }, null, 2) : values.csv ? renderCsv(plan) : renderMarkdown(plan, label)}
+`);
   return values.strict && plan.problems.length ? 1 : 0;
 }
 

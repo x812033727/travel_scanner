@@ -52,7 +52,7 @@
 
 ## 4. 同鏡的 Hailuo／Kling 網頁提示
 
-兩家都上傳**同一鏡核准的首格**，保持 16:9、一個連續鏡頭。下面是英文動態正文，不是圖片提示；美術與構圖先由首格成立。共用句尾：`Preserve the supplied first frame, character identities, costumes and weapon geometry. One continuous shot, no cuts, no added text.` 若 UI 有正式負面欄，用本集 `look.negative`；沒有時在正文末接 `Avoid: <look.negative>`，不要杜撰欄位。
+兩家都上傳**同一鏡核准的首格**，保持 16:9、一個連續鏡頭。下面是英文動態正文，不是圖片提示；美術與構圖先由首格成立。共用句尾：`Preserve the supplied first frame, character identities, costumes and weapon geometry. One continuous shot, no cuts, no added text.` 若 UI 有正式負面欄，貼本集 `look.negative`；沒有就不貼，也不寫進正文（否定句會被畫成正向）。要貼的完整正文由 `animation-preproduction` 的 `shot_plan.mjs` 照各家官方格式組好，這裡的表是它的動作與運鏡那一段。
 
 | 鏡 | Hailuo 動態正文 | Kling 動態正文 |
 | --- | --- | --- |
@@ -79,6 +79,6 @@ node .agents/skills/animation-camera/scripts/shot_reading.mjs .agents/skills/ani
 
 本例 2026-10-04 離線檢查：shot_reading `--strict` 讀八鏡零陷阱；craft 的適用 23 列全過，雙動作 info 七鏡逐一確認為主動作的停止／保持／收勢或名詞連接，沒有新增第二件事。完整 lint 留兩個整集錯誤（缺 `brief.md`、只有一章）及原創戲沒有事實來源的警告，鏡頭欄位零錯誤；不能把這個單場示例直接當成可開拍的完整集。
 
-獲得該次小樣生成授權後，先做 **s04 → s05 → s06** 三個連續代表鏡：同一首格設計體系、同一平台；手部細節、出招方向與對手接觸要接得上。正常速度看剪在一起的片段，再逐幀核對握側、臉、衣飾、首格、接點和單鏡無切換；若改近側角色綁定或動作，先更新分鏡與來源綁定，再重新驗這段。
+開拍鎖定包確認後（小樣是批次的第一批，站主看過才放量），先做 **s04 → s05 → s06** 三個連續代表鏡：同一首格設計體系、同一平台；手部細節、出招方向與對手接觸要接得上。正常速度看剪在一起的片段，再逐幀核對握側、臉、衣飾、首格、接點和單鏡無切換；若改近側角色綁定或動作，先更新分鏡與來源綁定，再重新驗這段。
 
 小樣結果分記美術、表演、運鏡、剪接、技術與站主接受；只有三鏡已通過相應檢查且站主接受這一版風格，才依本次預算與範圍擴製。技術成功、judge 通過、代理冷看、站主接受和成片交付各記其狀態；技能寫完不代表已生成或已達到參考片質感。

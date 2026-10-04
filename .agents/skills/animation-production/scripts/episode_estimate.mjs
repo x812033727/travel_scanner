@@ -171,7 +171,7 @@ export const PLANS = {
   "hailuo:standard": { vendor: "hailuo", label: "Hailuo Standard", fee_usd: 14.99, fee_annual_monthly_usd: 8.40, credits: 1000, running: 1, queued: 8, credits_per_second: HAILUO_CREDITS_PER_SECOND, page_usd_per_second: { "2k": 0.101, "768p": 0.059 }, default_resolution: "2k", clip_seconds: [4, 15], images: "每張圖都扣 credits（單價未抄）", note: HAILUO_NOTE },
   "hailuo:pro": { vendor: "hailuo", label: "Hailuo Pro", fee_usd: 54.99, fee_annual_monthly_usd: 30.40, credits: 4500, running: 2, queued: 8, credits_per_second: HAILUO_CREDITS_PER_SECOND, page_usd_per_second: { "2k": 0.081, "768p": 0.047 }, default_resolution: "2k", clip_seconds: [4, 15], images: "圖片無限（1K）", note: HAILUO_NOTE },
   "hailuo:master": { vendor: "hailuo", label: "Hailuo Master", fee_usd: 119.99, fee_annual_monthly_usd: 71.20, credits: 10500, running: 2, queued: 12, credits_per_second: HAILUO_CREDITS_PER_SECOND, page_usd_per_second: { "2k": 0.081, "768p": 0.047 }, default_resolution: "2k", clip_seconds: [4, 15], images: "圖片無限（2K）", note: HAILUO_NOTE },
-  "hailuo:max": { vendor: "hailuo", label: "Hailuo Max", fee_usd: 199.99, fee_annual_monthly_usd: 184.00, credits: 27000, running: 2, queued: 12, credits_per_second: HAILUO_CREDITS_PER_SECOND, page_usd_per_second: { "2k": 0.081, "768p": 0.047 }, default_resolution: "2k", clip_seconds: [4, 15], images: "圖片無限（4K）", unlimited: "credits 用完後 Hailuo 2.0/2.3（1080p 6 s、10 s）進 relax 佇列無限生成，H3 不在內", note: HAILUO_NOTE },
+  "hailuo:max": { vendor: "hailuo", label: "Hailuo Max", fee_usd: 199.99, fee_annual_monthly_usd: 184.00, credits: 27000, running: 2, queued: 12, credits_per_second: HAILUO_CREDITS_PER_SECOND, page_usd_per_second: { "2k": 0.081, "768p": 0.047 }, default_resolution: "2k", clip_seconds: [4, 15], images: "圖片無限（4K）", unlimited: "credits 用完後 Hailuo 1.0／2.0／2.3（2.3 是 1080p 6 s；768p 6 s、10 s）進 relax 佇列無限生成，H3 不在內（訂閱頁 tooltip，2026-10-04 讀）", note: HAILUO_NOTE },
   "kling:standard": { vendor: "kling", label: "Kling Standard", fee_usd: 10, first_month_usd: 6.99, credits: 660, running: null, queued: "unlimited", credits_per_second: KLING_CREDITS_PER_SECOND, default_resolution: "1080p", clip_seconds: KLING_CLIP_SECONDS, note: KLING_NOTE },
   "kling:pro": { vendor: "kling", label: "Kling Pro", fee_usd: 37, first_month_usd: 25.99, credits: 3000, running: null, queued: "unlimited", credits_per_second: KLING_CREDITS_PER_SECOND, default_resolution: "1080p", clip_seconds: KLING_CLIP_SECONDS, note: KLING_NOTE },
   "kling:premier": { vendor: "kling", label: "Kling Premier", fee_usd: 92, first_month_usd: 64.99, credits: 8000, running: null, queued: "unlimited", credits_per_second: KLING_CREDITS_PER_SECOND, default_resolution: "1080p", clip_seconds: KLING_CLIP_SECONDS, note: KLING_NOTE },
@@ -354,9 +354,10 @@ export function estimateEpisode(doc, options = {}) {
   let planView = null;
   if (plan && plan.vendor === "hailuo") {
     const res = wantedResolution && Object.hasOwn(plan.credits_per_second, wantedResolution) ? wantedResolution : plan.default_resolution;
+    const perSecondHailuo = options.creditsPerSecond ?? plan.credits_per_second[res];
     const perShot = clipShots.map((shot) => {
       const seconds = hailuoSeconds(shot.frames);
-      const credits = seconds * plan.credits_per_second[res];
+      const credits = seconds * perSecondHailuo;
       return { id: shot.id, seconds, credits, usd_page: round4(seconds * plan.page_usd_per_second[res]), usd_fee: round4((credits * plan.fee_usd) / plan.credits) };
     });
     const creditsOne = sum(perShot, "credits");
@@ -372,8 +373,8 @@ export function estimateEpisode(doc, options = {}) {
       fee_annual_monthly_usd: plan.fee_annual_monthly_usd,
       credits: plan.credits,
       resolution: res,
-      credits_per_second: plan.credits_per_second[res],
-      credits_basis: HAILUO_CREDITS_BASIS[res],
+      credits_per_second: perSecondHailuo,
+      credits_basis: options.creditsPerSecond === undefined ? HAILUO_CREDITS_BASIS[res] : "旗標",
       page_usd_per_second: plan.page_usd_per_second[res],
       shots: perShot,
       seconds_one: secondsOne,
@@ -398,7 +399,7 @@ export function estimateEpisode(doc, options = {}) {
       server_model: model,
       server_usd_per_second: pricePerSecond,
       server_clip_usd_one: stages.clips.usd_one,
-      plan_seconds_per_month: Math.floor(plan.credits / plan.credits_per_second[res]),
+      plan_seconds_per_month: Math.floor(plan.credits / perSecondHailuo),
       breakeven_seconds_monthly: Math.ceil(plan.fee_usd / pricePerSecond),
       breakeven_seconds_annual: Math.ceil(plan.fee_annual_monthly_usd / pricePerSecond),
       unverified: false,
@@ -457,7 +458,7 @@ export function estimateEpisode(doc, options = {}) {
       notes: [
         plan.note,
         `一鏡買 ceil(需要的秒數)，最少 ${KLING_CLIP_SECONDS[0]}、最多 ${KLING_CLIP_SECONDS[1]}（VIDEO 3.0／3.0 Omni 收整數秒）；--resolution 720p|1080p 選檔位（1080p 是原生 1920×1080，720p 要放大）`,
-        "生成頁的「輸出數」（付費方案一次最多 4 支）要設 1：credits 照支數乘；原生音訊關掉（產線丟音軌，開了一秒多 4 credits）；多鏡／智能分鏡關掉（一鏡是一個連續鏡頭，片段裡的切點 QC 會退）",
+        "生成頁的「輸出數」要設 1（UI 有這個設定，2.6 指南寫一次最多 4 支；多支是不是照支數扣官方沒寫，送出前看 Generate 旁的點數）；原生音訊關掉（產線丟音軌，開了 1080p 每秒多 4 credits，官方）；Multi-Shot 關掉（一鏡是一個連續鏡頭，片段裡的切點 QC 會退）",
         `官方 CLI（npm @klingai/cli-global，站主 ${PLANS_MEASURED_ON} 選的）與官方 MCP（kling.ai/mcp）都用 Kling 帳號登入；kling account 回 membershipType 與 availableRemainCredits，讀起來是會員 credits，沒有用付費生成確認。社群 MCP（github.com/199-mcp/mcp-kling）用開發者 API 金鑰，扣的是資源包，不是會員 credits`,
         "CLI 的 image_to_video 要傳 enable_audio false 與 prefer_multi_shots false（兩個預設都是 true；一鏡是一個連續鏡頭）；NORMAL 帳號列的模型都只有 720p，付費方案在 CLI 上有沒有 1080p 未驗",
         "同時幾支沒寫明（「無限排隊」）：這裡的「幾小時」把片段當一支接一支算，未驗證",
@@ -667,6 +668,7 @@ export function main(argv, stdout = process.stdout, stderr = process.stderr) {
       imagePrice: number(values["image-price"], "--image-price"),
       pricePerSecond: number(values["price-per-second"], "--price-per-second"),
       creditsPerSecond: number(values["credits-per-second"], "--credits-per-second"),
+      ...(values["credits-per-second"] !== undefined && !(Number(values["credits-per-second"]) > 0) ? (() => { throw new Error("--credits-per-second must be greater than 0"); })() : {}),
       minutesPerClip: number(values["minutes-per-clip"], "--minutes-per-clip"),
       keyframeTakes: number(values["keyframe-takes"], "--keyframe-takes"),
       clipTakes: number(values["clip-takes"], "--clip-takes"),
