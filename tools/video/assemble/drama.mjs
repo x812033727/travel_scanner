@@ -6,9 +6,9 @@
 // A clip segment is encoded with the slides' settings apart from the tune, so the segments still
 // join with `-c copy`; it has its own encoder version, so a change here never invalidates a
 // slides video's cached segments. A motion segment (a shot marked visual "still", docs/videos/
-// BINGE.md) is the keyframe under a slow zoompan move, encoded exactly like a clip segment, with
-// its own version again. Nothing here needs a GPU or minterpolate: the worker has 3 GB and no
-// GPU, and xfade would force the join to re-encode.
+// BINGE.md) is the keyframe under a slow zoompan move, encoded like a clip segment under a
+// bitrate cap, with its own version again. Nothing here needs a GPU or minterpolate: the worker
+// has 3 GB and no GPU, and xfade would force the join to re-encode.
 import { createHash } from "node:crypto";
 
 import { isShot, shotVisual } from "../core/drama.mjs";
@@ -17,8 +17,17 @@ import { HEIGHT, layoutScenes, LOUDNESS, PlanError, WIDTH } from "./plan.mjs";
 
 // Part of every clip segment's cache key: change a setting below and every clip is re-encoded.
 export const CLIP_ENCODER_VERSION = "x264-high-crf18-film-g60-bf2-bt709-clip-v1";
-// The same for a motion segment: the zoompan expressions below are part of what it versions.
-export const MOTION_ENCODER_VERSION = "x264-high-crf18-film-g60-bf2-bt709-motion-v3";
+// The same for a motion segment: the zoompan expressions and the rate cap below are part of
+// what it versions.
+export const MOTION_ENCODER_VERSION = "x264-high-crf18-film-max8m-g60-bf2-bt709-motion-v4";
+// A still under a camera move is resampled on every frame, and CRF 18 alone spends whatever
+// that takes: the halftone prints of an illustrated slides video averaged 15 Mbit/s and peaked
+// at 24, three times what YouTube asks of a 1080p30 upload (8 Mbit/s), and a 13-minute cut
+// weighed 895 MB (docs/videos/ILLUSTRATED.md §成片大小). A motion segment is held to that
+// bitrate, with two seconds of buffer so the frames where the picture steps still get their
+// bits; a picture that needs less is encoded as before. A clip segment is not capped.
+export const MOTION_MAX_RATE = "8M";
+export const MOTION_RATE_BUFFER = "16M";
 // A card of an illustrated slides video (docs/videos/ILLUSTRATED.md) may drift like a still: its
 // segment key carries this too, so a change to how cards move never touches a drama's keys.
 export const MOTION_CARD_VERSION = "card-motion-v1";
@@ -332,15 +341,18 @@ export function overlayGraph(picChain, { subtitlesInput, dissolveInput }) {
   return graph.join(";");
 }
 
-/** Same H.264 settings as a slide segment but tuned for film, so the segments still join without re-encoding. */
-export function encodeArgs(inputs, graph, frames, outFile) {
+/**
+ * Same H.264 settings as a slide segment but tuned for film, so the segments still join without
+ * re-encoding. `rate` is a motion segment's cap (`-maxrate`, `-bufsize`): CRF 18 up to it.
+ */
+export function encodeArgs(inputs, graph, frames, outFile, rate = []) {
   return [
     "-hide_banner", "-y", "-loglevel", "error",
     ...inputs,
     "-filter_complex", graph,
     "-map", "[out]",
     "-frames:v", String(frames),
-    "-c:v", "libx264", "-profile:v", "high", "-preset", "medium", "-crf", "18", "-tune", "film",
+    "-c:v", "libx264", "-profile:v", "high", "-preset", "medium", "-crf", "18", ...rate, "-tune", "film",
     "-bf", "2", "-g", String(FPS * 2), "-keyint_min", String(FPS),
     "-x264-params", "colorprim=bt709:transfer=bt709:colormatrix=bt709",
     "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709", "-color_range", "tv",
@@ -383,7 +395,8 @@ function motionChain(move, frames) {
  * Encode one still shot: its keyframe looped for the scene's length, upscaled and animated by
  * zoompan (d=1, so every looped input frame becomes one output frame and the -t on the input,
  * the trim and -frames:v all agree on exactly `frames`), then the same dissolve, strips and
- * colour chain and the same encoder flags as a clip segment, so the join still copies.
+ * colour chain and the same encoder flags as a clip segment, so the join still copies, with
+ * the bitrate capped at MOTION_MAX_RATE.
  */
 export function motionSegmentArgs({ keyframe, frames, move, subtitlesList = null, dissolveFrom = null, outFile }) {
   const overlays = overlayInputs(subtitlesList, dissolveFrom);
@@ -392,7 +405,7 @@ export function motionSegmentArgs({ keyframe, frames, move, subtitlesList = null
   // and setparams would label the result BT.709, off-colour against the neighbouring clips.
   const chain = [...motionChain(move, frames), `scale=${WIDTH}:${HEIGHT}:out_color_matrix=bt709:out_range=tv`, "format=yuv420p", `trim=end_frame=${frames}`, "setpts=PTS-STARTPTS"];
   const inputs = ["-loop", "1", "-framerate", String(FPS), "-t", seconds(frames), "-i", keyframe, ...overlays.inputs];
-  return encodeArgs(inputs, overlayGraph(chain, overlays), frames, outFile);
+  return encodeArgs(inputs, overlayGraph(chain, overlays), frames, outFile, ["-maxrate", MOTION_MAX_RATE, "-bufsize", MOTION_RATE_BUFFER]);
 }
 
 /**

@@ -27,7 +27,9 @@ import {
   mixFilter,
   MOTION_DRIFT_ZOOM,
   MOTION_ENCODER_VERSION,
+  MOTION_MAX_RATE,
   MOTION_PAN_ZOOM,
+  MOTION_RATE_BUFFER,
   MOTION_SOURCE_SCALE,
   MOTION_ZOOM,
   motionFramePsnrArgs,
@@ -62,7 +64,7 @@ function clipsManifestFor(doc) {
 test("the slides and clip encoder versions are untouched, so no published video's segments are redone", () => {
   assert.equal(ENCODER_VERSION, "x264-high-crf18-stillimage-g60-bf2-bt709-v2");
   assert.equal(CLIP_ENCODER_VERSION, "x264-high-crf18-film-g60-bf2-bt709-clip-v1");
-  assert.equal(MOTION_ENCODER_VERSION, "x264-high-crf18-film-g60-bf2-bt709-motion-v3");
+  assert.equal(MOTION_ENCODER_VERSION, "x264-high-crf18-film-max8m-g60-bf2-bt709-motion-v4");
   assert.equal(new Set([ENCODER_VERSION, CLIP_ENCODER_VERSION, MOTION_ENCODER_VERSION]).size, 3);
 });
 
@@ -237,7 +239,7 @@ test("zoompan expressions end the move on the last frame, and only push-in and d
   assert.equal(zoompanExpr("drift", 180, { eased: true, travel: 0.5 }).z, "1+0.02*((on/179)*(on/179)*(3-2*(on/179)))");
 });
 
-test("a motion segment animates the looped keyframe with zoompan and then encodes exactly like a clip segment", () => {
+test("a motion segment animates the looped keyframe with zoompan and then encodes like a clip segment, capped at YouTube's upload bitrate", () => {
   const move = motionMove({ camera: "slow push in" });
   const plain = motionSegmentArgs({ keyframe: "keyframes/a.png", frames: 180, move, outFile: "seg.mp4" });
   const inputs = plain.slice(0, plain.indexOf("-filter_complex"));
@@ -251,9 +253,14 @@ test("a motion segment animates the looped keyframe with zoompan and then encode
   for (const expected of ["zoompan=", "s=1920x1080", "fps=30", "trim=end_frame=180"]) assert.ok(graph.includes(expected), expected);
   assert.equal(plain[plain.indexOf("-frames:v") + 1], "180");
   assert.doesNotMatch(graph, /overlay|tpad|setpts=PTS\//);
-  // Everything from -c:v on is the clip segment's, so joinArgs still copies the streams.
+  // Everything from -c:v on is the clip segment's apart from the rate cap, so joinArgs still copies the streams.
   const clip = clipSegmentArgs({ clip: "clips/a.mp4", frames: 180, fit: fitPlan(180, 180), outFile: "seg.mp4" });
-  assert.deepEqual(plain.slice(plain.indexOf("-c:v")), clip.slice(clip.indexOf("-c:v")));
+  const cap = ["-maxrate", MOTION_MAX_RATE, "-bufsize", MOTION_RATE_BUFFER];
+  const uncapped = (args) => args.slice(args.indexOf("-c:v")).filter((_, index, flags) => index < flags.indexOf("-maxrate") || index >= flags.indexOf("-maxrate") + cap.length);
+  assert.deepEqual(plain.slice(plain.indexOf("-crf"), plain.indexOf("-tune")), ["-crf", "18", ...cap], "CRF 18 up to the cap");
+  assert.deepEqual(cap, ["-maxrate", "8M", "-bufsize", "16M"], "8 Mbit/s, two seconds of buffer");
+  assert.ok(!clip.includes("-maxrate") && !clip.includes("-bufsize"), "a clip segment is not capped, so no drama clip is re-encoded");
+  assert.deepEqual(uncapped(plain), clip.slice(clip.indexOf("-c:v")));
   assert.deepEqual(plain.slice(plain.indexOf("-map"), plain.indexOf("-c:v")), clip.slice(clip.indexOf("-map"), clip.indexOf("-c:v")));
 
   const full = motionSegmentArgs({ keyframe: "keyframes/a.png", frames: 180, move: { name: "pan-left" }, subtitlesList: "segments/a-subtitles.ffconcat", dissolveFrom: "build/last-prev.png", outFile: "seg.mp4" });
@@ -265,7 +272,7 @@ test("a motion segment animates the looped keyframe with zoompan and then encode
   assert.equal(tail(full), tail(clipFull), "the dissolve, strips and colour chain is the clip segment's");
   assert.match(chain, /zoompan=z='1\.08':x='\(iw-iw\/zoom\)\*\(\(on\/179\)\*\(on\/179\)\*\(3-2\*\(on\/179\)\)\)'/);
   assert.match(chain, /\[2:v\]scale=1920:1080,format=yuva420p,fade=t=out.*\[prev\];\[pic\]\[prev\]overlay=0:0:eof_action=pass\[dissolved\];\[1:v\]format=rgba\[strips\];\[dissolved\]\[strips\]overlay=0:main_h-overlay_h:eof_action=pass\[captioned\];\[captioned\]format=yuv420p/);
-  assert.deepEqual(full.slice(full.indexOf("-c:v")), clipFull.slice(clipFull.indexOf("-c:v")));
+  assert.deepEqual(uncapped(full), clipFull.slice(clipFull.indexOf("-c:v")));
 
   // The keyframe check runs the picture chain alone, so strips and dissolves never count against it.
   const psnr = motionFramePsnrArgs("keyframes/a.png", move, 180);
