@@ -298,13 +298,23 @@ describe("summary and FAQ blocks", () => {
   const summary = { type: "summary" as const, items: ["先買票。", "再上車。"] };
   const faq = { type: "faq" as const, items: [{ question: "要多久？", answer: "四十一分鐘。" }, { question: "多少錢？", answer: "兩千五。" }] };
 
-  it("are hoisted out of the body, first of each kind, leaving the rest in order", () => {
+  it("hoists the first summary while keeping every FAQ in its authored position", () => {
     const body = { type: "paragraph" as const, text: "Skyliner 最快。" };
-    const split = splitArticleExtras([summary, body, faq, { ...faq, items: faq.items.slice(0, 2) }]);
+    const secondFaq = { ...faq, items: [{ question: "Can I reserve?", answer: "Yes." }] };
+    const conclusion = { type: "paragraph" as const, text: "接著安排旅程。" };
+    const split = splitArticleExtras([summary, body, faq, conclusion, secondFaq]);
     expect(split.summary).toBe(summary);
     expect(split.faq).toBe(faq);
-    expect(split.blocks).toEqual([body, { ...faq, items: faq.items.slice(0, 2) }]);
+    expect(split.blocks).toEqual([body, faq, conclusion, secondFaq]);
     expect(splitArticleExtras([body])).toEqual({ summary: null, faq: null, blocks: [body] });
+  });
+
+  it("preserves authored headings and intervening prose without interpreting their language", () => {
+    const heading = { type: "heading" as const, level: 2 as const, text: "Reader questions" };
+    const introduction = { type: "paragraph" as const, text: "The booking rules follow." };
+    expect(splitArticleExtras([heading, faq]).blocks).toEqual([heading, faq]);
+    expect(splitArticleExtras([heading, introduction, faq]).blocks).toEqual([heading, introduction, faq]);
+    expect(splitArticleExtras([heading, introduction])).toEqual({ summary: null, faq: null, blocks: [heading, introduction] });
   });
 
   it("count towards the reading time", () => {

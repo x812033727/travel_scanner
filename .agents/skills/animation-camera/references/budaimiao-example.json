@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "slug": "budaimiao-style-example",
+  "format": "drama",
+  "target_minutes": [0.3, 1],
+  "voice": { "provider": "gemini", "name": "Sulafat", "style": "沉穩、清楚的台灣國語" },
+  "look": {
+    "preset": "custom",
+    "style": "Chinese fantasy anime illustration, adult heroic proportions, expressive eyes, precise linework, sculpted cel shading, detailed embroidered robes and metal ornaments, painterly environments with clear foreground and background depth, coherent fabric and weapon materials, readable silhouettes, 16:9",
+    "negative": "text, letters, watermark, logo, photorealistic skin, plastic skin, extra fingers, extra limbs, duplicate weapons, deformed hands, distorted face, blurry subject",
+    "motion": "One motivated visible action with a clear start and finish per continuous shot, stable faces, costume details and weapon geometry, consistent screen direction, no morphing, no cuts",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "shen",
+      "name": "沈星澄",
+      "appearance": "an adult woman with dark eyes and black hair in a high knot tied with one jade cord, an ivory robe with dark teal embroidery and narrow silver cuffs, a dark teal sash, one straight steel sword with a cyan inset in its hilt, sword held only in her right hand",
+      "voice": { "provider": "gemini", "name": "Kore", "style": "堅定、克制的成年女性聲，台灣國語" }
+    },
+    {
+      "id": "lu",
+      "name": "陸衡",
+      "appearance": "an adult man with dark eyes and long dark hair tied behind his head, an ochre robe with black trim and one bronze shoulder clasp, one dark wooden staff with a plain bronze band at its centre, his left hand always closer to the bronze band than his right hand on the staff",
+      "voice": { "provider": "gemini", "name": "Charon", "style": "低沉、帶威壓但吐字清楚的成年男性聲，台灣國語" }
+    }
+  ],
+  "music": { "prompt": "original instrumental Chinese fantasy tension cue, restrained percussion and low strings, no vocals", "gain_db": -20, "duck_db": -10 },
+  "subtitles": { "burn_in": false, "style": "drama" },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "斷橋前的一步｜原創八鏡分鏡示例",
+    "description": "動畫 skill 的原創單場戲示例：沈星澄守住橋頭，陸衡試探她的防線。只有離線分鏡，尚未製作成片或上架。",
+    "tags": ["原創", "分鏡示例"],
+    "video_id": null
+  },
+  "thumbnail": { "template": "thumb", "data": { "headline": "一步不讓", "tag": "原創示例", "shot": "s05" } },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "斷橋前的一步",
+      "template": "shot",
+      "data": {
+        "camera": "Two-shot, eye level, locked",
+        "prompt": "Two-shot from the south side of a ruined bridge terrace: Shen at screen left facing right, Lu at screen right facing left, three metres between their torso positions, Shen's sword low in her right hand, Lu's staff vertical with his left hand closer to its bronze band than his right, broken bridge behind Shen, cold sky above and warm rim light from screen right",
+        "motion": "Shen slides her right foot half a step forward into a wider stance and stops, her torso staying over the same flagstone on screen left with her sword low; Lu stays on screen right",
+        "characters": ["shen", "lu"]
+      },
+      "lines": [{ "id": "72a4", "speaker": "shen", "text": "橋後還有人。" }]
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "data": {
+        "camera": "Medium close-up, low angle, slow push in",
+        "prompt": "Medium close-up of Lu on screen right facing left, Shen off screen left at his eyeline, staff vertical before his torso with his left hand closer to its bronze band than his right, bronze shoulder clasp visible, cold sky behind him and warm light outlining his right shoulder",
+        "motion": "Lu rotates his single staff to a horizontal guard across his chest and stops, keeping each hand at its original point on the shaft",
+        "characters": ["lu"]
+      },
+      "lines": [{ "id": "j2gk", "speaker": "lu", "text": "那就到此為止。" }]
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "data": {
+        "camera": "Extreme close-up, eye level, locked",
+        "prompt": "Extreme close-up of Shen's open eyes on screen left, Lu off screen right at her eyeline, one jade hair cord at the upper left edge, cold fill light and a thin warm highlight along her right brow",
+        "motion": "Shen narrows her open eyes slightly once toward screen right, then steadies her gaze without closing them",
+        "characters": ["shen"]
+      },
+      "lines": [{ "id": "zip3", "speaker": "shen", "text": "先過我這一關。" }]
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "camera": "Insert of the sword hilt, locked",
+        "prompt": "Insert of one steel sword hilt low at frame left, a right hand in a narrow silver cuff gripping it, one dim cyan inset, blade horizontal toward frame right at waist height, worn stone terrace softly visible behind it, warm light from the right",
+        "motion": "The right hand raises the single sword hilt twenty centimetres to chest height and stops, keeping the blade horizontal toward screen right and the grip unchanged",
+        "characters": []
+      },
+      "lines": []
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "camera": "Medium close-up, eye level, pan right",
+        "prompt": "Medium close-up of Shen on screen left facing right, right forearm forward with her single sword held horizontally at chest height toward Lu off screen right, a short narrow cyan arc attached to the sword tip before release, her silver cuff and jade hair cord visible, warm rim light from the right and cold terrace shadows",
+        "motion": "One narrow cyan arc travels from Shen's sword tip toward screen right and leaves the frame, while her arm and single sword keep their position",
+        "characters": ["shen"]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "action_seconds": 4,
+      "data": {
+        "camera": "Over-the-shoulder from behind Shen on Lu, locked",
+        "prompt": "Over-the-shoulder from behind Shen's ivory right shoulder at frame left onto Lu on screen right facing left, Lu's single staff horizontal across his chest with its bronze band at centre and the same two-handed grip, one narrow cyan arc ten centimetres before the bronze band, three metres between their torso positions, warm rim light from the right",
+        "motion": "The single cyan arc strikes the central bronze band of Lu's horizontal staff once, producing a brief spray of amber sparks at that contact point; his grip stays fixed",
+        "characters": ["shen", "lu"]
+      },
+      "lines": []
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "data": {
+        "camera": "Close-up, eye level, slow push in",
+        "prompt": "Close-up of Lu's face at screen right facing left, Shen off screen left at his eyeline, intact bronze shoulder clasp visible, single staff horizontal along the bottom edge, fading amber sparks in front of his ochre robe, cold fill light and warm rim light from screen right",
+        "motion": "Lu recoils ten centimetres through his upper torso from the impact and settles, keeping his staff horizontal and his feet planted",
+        "characters": ["lu"]
+      },
+      "lines": [{ "id": "5tzs", "speaker": "lu", "text": "你護得住幾人？" }]
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "data": {
+        "camera": "Wide shot, low angle, slow pull out",
+        "prompt": "Wide shot from the south side of the same ruined bridge terrace: Shen on screen left facing right with her right foot still forward and her single sword horizontal at chest height, Lu on screen right facing left with his staff across his chest, three metres between their torso positions, broken bridge behind Shen, faint settled dust without another energy arc, cold sky and warm light from screen right",
+        "motion": "Shen lowers her single sword twenty centimetres toward her waist and stops without leaving screen left; Lu maintains his guard on screen right",
+        "characters": ["shen", "lu"]
+      },
+      "lines": [{ "id": "zh4c", "speaker": "shen", "text": "一個，也不讓。" }]
+    }
+  ]
+}

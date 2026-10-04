@@ -13,6 +13,7 @@ from app.guides.schemas import GuideDocument
 from app.i18n import Locale
 from app.news_automation import assets, jobs
 from app.news_automation.models import NewsAsset, NewsCandidate, NewsEvidence, NewsSource
+from app.news_automation.policy import hard_policy_problems
 from app.problems import AppError
 
 LOCALES: tuple[Locale, ...] = ("zh-TW", "zh-CN", "en", "ja", "ko")
@@ -73,6 +74,158 @@ def documents() -> dict[Locale, GuideDocument]:
         )
         for locale in LOCALES
     }
+
+
+@pytest.fixture
+def complete_news_documents() -> dict[Locale, GuideDocument]:
+    """Five complete news documents before the asset stage adds their cover images."""
+    copy: dict[Locale, tuple[str, str, tuple[str, str, str], str, str, str]] = {
+        "zh-TW": (
+            "Example 公布字幕搜尋更新",
+            "Example 表示，新功能讓使用者在字幕中搜尋文字。",
+            ("更新內容", "使用方式", "待確認事項"),
+            "這次更新了什麼？",
+            "消息來自哪裡？",
+            "查看同分類最新消息",
+        ),
+        "zh-CN": (
+            "Example 公布字幕搜索更新",
+            "Example 表示，新功能让用户在字幕中搜索文字。",
+            ("更新内容", "使用方式", "待确认事项"),
+            "这次更新了什么？",
+            "消息来自哪里？",
+            "查看同分类最新消息",
+        ),
+        "en": (
+            "Example announces caption search",
+            "Example says its new feature lets users search text in captions.",
+            ("What changed", "How it works", "What remains to be confirmed"),
+            "What does the update add?",
+            "Where did the announcement come from?",
+            "Browse the latest news in this topic",
+        ),
+        "ja": (
+            "Example が字幕検索の更新を発表",
+            "Example によると、新機能で字幕内の文字を検索できます。",
+            ("更新内容", "利用方法", "確認が必要な点"),
+            "今回何が追加されましたか？",
+            "発表の情報源はどこですか？",
+            "このトピックの最新ニュースを見る",
+        ),
+        "ko": (
+            "Example, 자막 검색 업데이트 발표",
+            "Example은 새 기능으로 자막의 텍스트를 검색할 수 있다고 밝혔습니다.",
+            ("업데이트 내용", "이용 방법", "추가 확인 사항"),
+            "이번 업데이트에서 무엇이 추가되었나요?",
+            "발표의 출처는 어디인가요?",
+            "이 주제의 최신 뉴스 보기",
+        ),
+    }
+    output: dict[Locale, GuideDocument] = {}
+    for locale, (title, lead, headings, first_question, second_question, link_text) in copy.items():
+        output[locale] = GuideDocument.model_validate(
+            {
+                "title": title,
+                "description": lead,
+                "blocks": [
+                    {"type": "summary", "items": [title, lead]},
+                    {"type": "heading", "level": 2, "text": headings[0]},
+                    {"type": "paragraph", "text": lead},
+                    {"type": "heading", "level": 2, "text": headings[1]},
+                    {"type": "table", "header": list(headings[:2]), "rows": [[title, lead]]},
+                    {"type": "heading", "level": 2, "text": headings[2]},
+                    {"type": "callout", "tone": "info", "text": lead},
+                    {
+                        "type": "faq",
+                        "items": [
+                            {"question": first_question, "answer": lead},
+                            {"question": second_question, "answer": title},
+                        ],
+                    },
+                    {
+                        "type": "link",
+                        "text": link_text,
+                        "url": f"https://mokaair.com/{locale}/life/topics/ai-news",
+                    },
+                ],
+                "sources": [
+                    {
+                        "title": "Example announcement",
+                        "url": "https://example.com/a",
+                        "checked_on": "2026-10-01",
+                    }
+                ],
+            }
+        )
+    return output
+
+
+@pytest.mark.asyncio
+async def test_real_news_assets_pass_publication_checks_without_the_retired_figure(
+    monkeypatch: pytest.MonkeyPatch,
+    complete_news_documents: dict[Locale, GuideDocument],
+) -> None:
+    """The cover-only asset output must agree with the actual publication policy."""
+    factory = await database()
+    monkeypatch.setattr(assets, "storage", no_object_storage)
+    async with factory() as session:
+        candidate = await seed_candidate(session)
+        rendered = await assets.ensure_assets(session, candidate, complete_news_documents)
+        await session.commit()
+        rows = list(await session.scalars(select(NewsAsset)))
+        assert {row.variant for row in rows} == {"hero", "social"}
+    for document in rendered.values():
+        assert document.hero is not None
+        assert not any(block.type == "image" for block in document.blocks)
+    assert {
+        locale: hard_policy_problems(document, "ai", locale, source_count=1)
+        for locale, document in rendered.items()
+    } == {locale: [] for locale in LOCALES}
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("fault", "expected_code"),
+    [
+        ("faq", "news_faq"),
+        ("topic", "news_topic_link"),
+        ("sources", "news_sources"),
+        ("punctuation", "news_punctuation"),
+    ],
+)
+async def test_cover_only_news_still_requires_the_other_publication_checks(
+    monkeypatch: pytest.MonkeyPatch,
+    complete_news_documents: dict[Locale, GuideDocument],
+    fault: str,
+    expected_code: str,
+) -> None:
+    factory = await database()
+    monkeypatch.setattr(assets, "storage", no_object_storage)
+    async with factory() as session:
+        candidate = await seed_candidate(session)
+        rendered = await assets.ensure_assets(session, candidate, complete_news_documents)
+    for locale, document in rendered.items():
+        if fault == "punctuation" and locale not in {"zh-TW", "zh-CN", "ja"}:
+            continue
+        encoded = document.model_dump(mode="json")
+        source_count = 1
+        if fault == "faq":
+            encoded["blocks"] = [block for block in encoded["blocks"] if block["type"] != "faq"]
+        elif fault == "topic":
+            encoded["blocks"] = [block for block in encoded["blocks"] if block["type"] != "link"]
+        elif fault == "sources":
+            encoded["sources"] = []
+            source_count = 0
+        else:
+            encoded["title"] = "新聞:標題"
+        damaged = GuideDocument.model_validate(encoded)
+        problems = hard_policy_problems(damaged, "ai", locale, source_count=source_count)
+        assert any(problem.startswith(f"{expected_code}:") for problem in problems), (
+            locale,
+            problems,
+        )
+        if fault == "sources":
+            assert any(problem.startswith("no_sources:") for problem in problems)
 
 
 @pytest.mark.asyncio

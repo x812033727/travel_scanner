@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
+import { tempDir } from "../core/fixtures/load.mjs";
 import { cached, forget, forgetJob, mediaKey, pendingJob, readCache, remember, rememberJob } from "./cache.mjs";
 import { MediaError, PART_BYTES, RETAKE_CODES, downloadFile, judge, mediaStatus, putFile, runJob, submitClip, submitImage, waitForJob } from "./client.mjs";
 import { STAGES, run, statusText } from "./cli.mjs";
@@ -101,7 +101,7 @@ test("a job is polled until it is terminal, honouring the server's retry_after a
 });
 
 test("a download is verified by its hash and never leaves a partial file behind", async () => {
-  const base = mkdtempSync(path.join(tmpdir(), "video-media-"));
+  const base = tempDir("video-media-");
   const clip = Buffer.from("ftyp fake clip bytes");
   const fake = site({
     [`GET files/v/${SHA(clip)}`]: () => new Response(clip, { headers: { "Content-Type": "video/mp4", "Content-Length": String(clip.length) } }),
@@ -119,7 +119,7 @@ test("a download is verified by its hash and never leaves a partial file behind"
 });
 
 test("a local file goes up in parts with its query until the server says it is complete", async () => {
-  const base = mkdtempSync(path.join(tmpdir(), "video-media-"));
+  const base = tempDir("video-media-");
   const file = path.join(base, "frame.png");
   const data = Buffer.alloc(PART_BYTES + 10, 7);
   writeFileSync(file, data);
@@ -141,7 +141,7 @@ test("cache keys ignore field order, and entries vanish with their files", () =>
   assert.equal(key, mediaKey("image", { references: [{ role: "character", sha256: "a" }], seed: 1, prompt: "p" }));
   assert.notEqual(key, mediaKey("image", { prompt: "p", seed: 2, references: [] }));
   assert.notEqual(key, mediaKey("clip", { prompt: "p", seed: 1, references: [{ sha256: "a", role: "character" }] }));
-  const workdir = mkdtempSync(path.join(tmpdir(), "video-media-"));
+  const workdir = tempDir("video-media-");
   mkdirSync(path.join(workdir, "keyframes"));
   writeFileSync(path.join(workdir, "keyframes", "a.png"), "x");
   remember(workdir, key, { file: "keyframes/a.png", sha256: SHA("x"), bytes: 1, job_id: "j", provider: "gemini", model: "m", cost_usd: 0.134 });
@@ -157,7 +157,7 @@ test("cache keys ignore field order, and entries vanish with their files", () =>
 });
 
 test("the ledger sums what a video paid for and refuses to pass the per-video cap", () => {
-  const workdir = mkdtempSync(path.join(tmpdir(), "video-media-"));
+  const workdir = tempDir("video-media-");
   assert.deepEqual(ledgerTotals(workdir), { usd: 0, images: 0, clip_seconds: 0, music: 0, judge_calls: 0 });
   appendLedger(workdir, { stage: "keyframes", kind: "image", id: "opening", provider: "gemini", model: "m", key: "k", cost_usd: 0.134, status: "ready" });
   appendLedger(workdir, { stage: "clips", kind: "clip", id: "opening", provider: "gemini", model: "m", key: "k2", seconds: 8, cost_usd: 1.2, status: "ready" });
@@ -242,7 +242,7 @@ test("media-status prints the server's choices and the video's spend; unbuilt st
 
   const out = { stdout: "", stderr: "" };
   const EXIT = { ok: 0, lint: 1, usage: 2, owner: 3, external: 4, missing: 5 };
-  const ctx = { EXIT, env: { MOKAAIR_SITE: SITE, MOKAAIR_VIDEO_TOKEN: TOKEN }, home: mkdtempSync(path.join(tmpdir(), "video-home-")), stdout: { write: (t) => (out.stdout += t) }, stderr: { write: (t) => (out.stderr += t) }, fetch: site({ "GET status": () => json(status) }).fetchImpl, sleep: noSleep, mediaHere: mkdtempSync(path.join(tmpdir(), "video-media-none-")) };
+  const ctx = { EXIT, env: { MOKAAIR_SITE: SITE, MOKAAIR_VIDEO_TOKEN: TOKEN }, home: tempDir("video-home-"), stdout: { write: (t) => (out.stdout += t) }, stderr: { write: (t) => (out.stderr += t) }, fetch: site({ "GET status": () => json(status) }).fetchImpl, sleep: noSleep, mediaHere: tempDir("video-media-none-") };
   assert.equal(await run("media-status", [], ctx), EXIT.ok);
   assert.match(out.stdout, /judge threshold 7\/10/);
   for (const command of Object.keys(STAGES)) {
@@ -250,6 +250,6 @@ test("media-status prints the server's choices and the video's spend; unbuilt st
   }
   assert.match(out.stderr, /2026-09-26-video-drama-look-keyframes/);
   assert.match(out.stderr, /2026-09-26-video-drama-clips-music/);
-  const noToken = { ...ctx, env: {}, home: mkdtempSync(path.join(tmpdir(), "video-home-")) };
+  const noToken = { ...ctx, env: {}, home: tempDir("video-home-") };
   assert.equal(await run("media-status", [], noToken), EXIT.owner);
 });

@@ -14,11 +14,11 @@ const catalogue = read('apps/api/app/guides/series_data/claude-code.json');
 const expected = new Set([...catalogue.entries.map(entry => entry.slug), catalogue.hub]);
 
 test('the tutorial catalogue keeps stable slugs, complete ordering and resolvable paths', () => {
-  assert.equal(catalogue.entries.length, 96);
-  assert.equal(expected.size, 97);
+  assert.equal(catalogue.entries.length, 97);
+  assert.equal(expected.size, 98);
   assert.equal(catalogue.groups.length, 16);
   assert.equal(catalogue.paths.length, 12);
-  assert.deepEqual(catalogue.entries.map(entry => entry.number), Array.from({ length: 96 }, (_, i) => i + 1));
+  assert.deepEqual(catalogue.entries.map(entry => entry.number), Array.from({ length: 97 }, (_, i) => i + 1));
   for (const entry of catalogue.entries) {
     assert.ok(catalogue.groups.some(group => group.id === entry.group));
     assert.ok(entry.related.length <= 3);
@@ -27,7 +27,7 @@ test('the tutorial catalogue keeps stable slugs, complete ordering and resolvabl
   for (const route of catalogue.paths) for (const slug of route.slugs) assert.ok(expected.has(slug));
 });
 
-test('all 97 native packs exist with source dates, code labels and valid references', () => {
+test('all 98 native packs exist with source dates, code labels and valid references', () => {
   const checks = read('docs/claude-code-series/source-checks.json');
   for (const slug of expected) {
     const pack = read(`apps/api/app/guides/content/${slug}.json`);
@@ -185,7 +185,7 @@ test('advanced TDD lesson reproduces the bug and the identical authored assertio
 }));
 
 test('all advanced archives contain the authored lesson and installed reference materials', () => {
-  for (let number = 61; number <= 96; number++) temporaryExercise(directory => {
+  for (let number = 61; number <= 97; number++) temporaryExercise(directory => {
     extractArchive(`advanced/lesson-${number}`, directory);
     const article = readFileSync(path.join(directory, 'article.md'), 'utf8');
     assert.doesNotMatch(article, /\r/u, 'downloaded articles use canonical LF on every platform');

@@ -179,6 +179,9 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
             "max_prompt_chars": MAX_PROMPT_CHARS,
             "part_bytes": PART_BYTES,
             "inline_judge_bytes": media.video_media_inline_judge_bytes,
+            # The judge takes fault checks (JudgeCriterion.cost); a tool asks that way only
+            # of a server that says so.
+            "judge_checks": 1,
             "max_file_bytes": media.video_media_max_file_bytes,
         },
     )
@@ -299,7 +302,8 @@ async def judge_media(payload: JudgeIn, tool: VideoTool, session: Session) -> Ju
             "video_media_budget_exhausted",
             f"本月的 judge 次數預算（{budget} 次）用完了；可到影片審核的設定分頁調高",
         )
-    min_score = payload.min_score if payload.min_score is not None else ctx.row.judge_min_score
+    # The owner's threshold is the floor: a call may ask for a higher bar, never a lower one.
+    min_score = max(payload.min_score or 0, ctx.row.judge_min_score)
     try:
         return await judge(ctx.runtime, ctx.media, ctx.store, payload, min_score)
     except JudgeError as error:

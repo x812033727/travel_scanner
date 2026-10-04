@@ -11,6 +11,24 @@ The six allowed slugs are `ai-real-world-01-image-trust`,
 `ai-real-world-06-digital-yesman`. Episode 01 uses the original approved cut; a
 separately authored opening revision must obtain its own review before adoption.
 
+After an owner-approved bookend renewal, the original batch deliberately fails its final
+SHA fence. Use `prepareRenewedBatch` exported by `runner.mjs` with the original portable
+manifest, fresh `readRemote`, `{slug,workdir}` handoff sources and a new separate output.
+Each source must contain a `renewal-language-source.json` and a real subtitle-verified
+script/body timing adapter produced by `tools/video/review/renewal-handoff.mjs`.
+Preparation preserves the original batch and its paid worksheets/uncertain receipts,
+archives the previous progress and replaced runtime, freezes the current runtime and
+pins the new final/source files. It leaves STOP in place. Inspect previous paid requests
+before explicitly continuing; preparation authorizes no translation or dub retry.
+
+The renewed base publish review must approve the exact source contract's metadata SHA
+before any language review is sent. A base-only package can retain unfinished selected
+languages as pending. The runner validates the real source contract before every native
+command and binds cumulative language manifests to that base publish, new final and
+branding. Captions and chapters use the new intro offset. A lost language POST answer
+is journaled and never automatically resubmitted. Source contracts do not stand in for
+original TTS/checks or claim that a planned target voice narrated the retained Chinese cut.
+
 ## Inputs and preparation
 
 Media stays outside Git. `preflight.mjs` reads the paired site's current reviews,
@@ -62,7 +80,11 @@ file in the isolated work base stops it between units. Inspect an abandoned
 
 `package-runtime.mjs --manifest NEW_BATCH_DIR/manifest.json` freezes the tested
 video tools and skill references inside the bundle's root. Its receipt records
-every copied runtime file hash. On the host, use a separate one-shot container from
+every copied runtime file hash. This command is for an initial batch whose runtime
+does not yet exist; it resolves a portable manifest through `relative_paths.root`.
+A renewed batch prepared with `prepareRenewedBatch` already includes the reviewed
+runtime and new receipt, with previous runtime bytes preserved separately, so do
+not run the initial runtime command over it. On the host, use a separate one-shot container from
 the existing video-worker image, the existing paired home volume, and a private
 batch subdirectory of the work volume. The container can resolve its dependencies
 through a `node_modules` symlink to `/opt/mokaair/node_modules`; no credentials are

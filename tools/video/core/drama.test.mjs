@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
@@ -572,9 +573,20 @@ test("a drama's status walks the media steps in order, each bound to its hashes"
   const audioTimeline = writeAudioFixture({ ...estimateTimeline(project.doc), speech_hash: speech }, box.workdir);
   await approve({ gate: "audio", ...places });
   assert.equal((await status()).next.id, "keyframes drawn");
-  write("keyframes/manifest.json", { look_hash: look, visual_hash: visual, shots: { opening: { needs_review: true } } });
-  assert.match((await status()).next.note, /needs_review/);
-  write("keyframes/manifest.json", { look_hash: look, visual_hash: visual, shots: { opening: {} } });
+  const picture = (id) => {
+    const file = `keyframes/${id}-1.png`;
+    const bytes = `synthetic selected picture: ${id}`;
+    atomicWrite(path.join(box.workdir, file), bytes);
+    return { file, sha256: createHash("sha256").update(bytes).digest("hex") };
+  };
+  const shots = Object.fromEntries(drawnShotScenes(project.doc).map((scene) => [scene.id, {
+    ...picture(scene.id), needs_review: scene.id === "opening", judge: { overall: 8, passed: true, problems: [] },
+    ...(scene.data.end_frame?.prompt ? { end_frame: picture(`${scene.id}-end`) } : {}),
+  }]));
+  write("keyframes/manifest.json", { look_hash: look, visual_hash: visual, shots });
+  assert.match((await status()).next.note, /opening keyframe needs review/);
+  shots.opening.needs_review = false;
+  write("keyframes/manifest.json", { look_hash: look, visual_hash: visual, shots });
   assert.equal((await status()).next.id, "storyboard approved");
   await approve({ gate: "storyboard", ...places });
   assert.equal((await status()).next.id, "frames rendered");

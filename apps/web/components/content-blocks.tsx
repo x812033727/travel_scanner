@@ -1,8 +1,10 @@
+import { Fragment, type ReactNode } from "react";
 import {
   contentBlockLink,
   contentImageSrc,
   licenseUrl,
   type CalloutTone,
+  type FaqBlock,
   type ImageCredit,
   type RichContentBlock,
 } from "@/lib/content-blocks";
@@ -24,7 +26,7 @@ export type ContentBlockLabels = {
   info: string;
   code?: CodeLabels;
   /** The headings over a summary card and a FAQ section drawn in the body (the admin
-   *  preview); the article page hoists both out and names them itself. */
+   *  preview); the article page places its summary and names its FAQ sections itself. */
   summary?: string;
   faq?: string;
 };
@@ -112,7 +114,7 @@ export function FaqSection({ items, heading, id }: { items: readonly { question:
  * pages want.
  */
 export function ContentBlocks({
-  blocks, labels, headingStart, articleLinks = [], locale = "en", termLabels,
+  blocks, labels, headingStart, articleLinks = [], locale = "en", termLabels, renderFaq,
 }: {
   blocks: readonly RichContentBlock[];
   labels?: ContentBlockLabels;
@@ -121,6 +123,9 @@ export function ContentBlocks({
   locale?: string;
   /** The words of the definition card under a term link; without them a term is a plain link. */
   termLabels?: TermLinkLabels;
+  /** The article keeps FAQ answers beside their authored heading and gives them stable ids.
+   *  Without this callback the shared/admin preview retains its own labelled FAQ section. */
+  renderFaq?: (block: FaqBlock, index: number) => ReactNode;
 }) {
   // Heading ids are decided in one pass before rendering: level-2 headings continue the
   // sequence the caller started, and level-3 headings count within their section
@@ -172,7 +177,9 @@ export function ContentBlocks({
     }
     if (block.type === "paragraph") return <p key={index} className="whitespace-pre-wrap leading-8">{block.text}</p>;
     if (block.type === "summary") return <SummaryCard key={index} items={block.items} heading={labels?.summary} />;
-    if (block.type === "faq") return <FaqSection key={index} items={block.items} heading={labels?.faq} />;
+    if (block.type === "faq") return renderFaq
+      ? <Fragment key={index}>{renderFaq(block, index)}</Fragment>
+      : <FaqSection key={index} items={block.items} heading={labels?.faq} />;
     if (block.type === "list") {
       const List = block.ordered ? "ol" : "ul";
       return <List key={index} className={`space-y-2 pl-6 leading-8 ${block.ordered ? "list-decimal" : "list-disc"}`}>{block.items.map((text, i) => <li key={i}>{text}</li>)}</List>;

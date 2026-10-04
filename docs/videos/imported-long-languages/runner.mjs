@@ -3,9 +3,9 @@
 // invokes auto.step, assemble, package, project PUT, publish, or a YouTube endpoint.
 import { createHash } from "node:crypto";
 import { request as httpRequest } from "node:http";
-import { appendFileSync, closeSync, existsSync, openSync, readFileSync, readSync, statSync } from "node:fs";
+import { appendFileSync, closeSync, copyFileSync, existsSync, mkdirSync, openSync, readFileSync, readSync, statSync } from "node:fs";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 import { Automation } from "../../../tools/video/automation/flow.mjs";
 import { main as videoMain, EXIT } from "../../../tools/video/cli.mjs";
@@ -14,6 +14,8 @@ import { atomicWrite, isInside, readJson, stopRequested } from "../../../tools/v
 import { dubsForUpload, writeLanguages } from "../../../tools/video/core/stages.mjs";
 import { loadProject } from "../../../tools/video/core/state.mjs";
 import { speechHash } from "../../../tools/video/core/timeline.mjs";
+import { presentationTimeline, readBranding } from "../../../tools/video/core/branding.mjs";
+import { bindManualLanguageSubmission, fileInventory, readManualLanguageSource } from "../../../tools/video/review/renewal-handoff.mjs";
 import { mergeSheet } from "../../../tools/video/i18n/cli.mjs";
 import { composeMetadata } from "../../../tools/video/package/metadata.mjs";
 import { readCredentials } from "../../../tools/video/tts/credentials.mjs";
@@ -260,7 +262,7 @@ export async function translateLocaleResuming(automation, ctx, entry, state, loc
       const fresh = args[2].worksheet;
       if (!Array.isArray(answer.worksheet?.lines)) throw new VideoStop(`${locale}: ${args[0]} returned no worksheet`);
       const checked = { locale, slug: fresh.slug, parts: fresh.parts, ...answer.worksheet };
-      validateResumeSheet(checked, fresh, project.doc, project.translations[locale]);
+      validateResumeSheet(checked, fresh, args[2].video ?? project.doc, project.translations[locale]);
       return { ...answer, worksheet: checked };
     };
     try { return await automation.translateLocale(state, locale, parts, project.doc); }
@@ -302,6 +304,85 @@ export function resolveManifest(raw, base) {
   })) };
 }
 
+/** Freeze a NEW portable language batch around exact owner-approved replacements. Original
+ * batch, progress, worksheets and uncertain API receipts stay intact. Output remains stopped;
+ * preparation neither generates a language nor authorizes retrying an interrupted paid POST. */
+export async function prepareRenewedBatch({ manifestFile, handoffs, out, readRemote, runtimeRoot = fileURLToPath(new URL("../../..", import.meta.url)) }) {
+  const base = path.dirname(path.resolve(manifestFile)), raw = readJson(manifestFile);
+  if (!raw.portable || typeof readRemote !== "function" || existsSync(out) || isInside(out, base) || isInside(base, out)) throw new VideoStop("Renewed language preparation requires a fresh separate portable batch and owner-state probe");
+  const manifest = resolveManifest(raw, base), prepared = structuredClone(raw);
+  const sources = new Map(handoffs.map((v) => [v.slug, v.workdir]));
+  if (!sources.size || sources.size !== handoffs.length) throw new VideoStop("No or duplicate renewed language handoffs");
+  for (const slug of sources.keys()) assertAllowedSlug(slug);
+  for (const slug of sources.keys()) if (!manifest.videos.some((v) => v.slug === slug)) throw new VideoStop(`${slug}: renewed handoff is outside the original batch`);
+  for (const entry of manifest.videos) await verifyLocal(manifest, entry);
+  const exclusions = ["runner.lock", `${raw.relative_paths.root.replaceAll("\\", "/").replace(/\/$/, "")}/node_modules`];
+  const before = await fileInventory(base, { exclude: exclusions });
+  mkdirSync(out, { recursive: false });
+  atomicWrite(path.join(out, "STOP"), "Preparing renewed language sources; retain STOP on every failure.\n");
+  for (const [name, proof] of Object.entries(before)) {
+    const target = path.join(out, name); mkdirSync(path.dirname(target), { recursive: true }); copyFileSync(path.join(base, name), target);
+    if (await sha256File(target) !== proof.sha256) throw new VideoStop("Original language batch changed while copying; output remains held");
+  }
+  atomicWrite(path.join(out, "STOP"), "Prepared renewed language sources; inspect previous paid request receipts before owner-authorized continuation.\n");
+  if (existsSync(path.join(out, "progress.json"))) {
+    mkdirSync(path.join(out, "retained-source"), { recursive: true }); copyFileSync(path.join(out, "progress.json"), path.join(out, "retained-source/previous-progress.json"));
+    save(path.join(out, "progress.json"), { videos: {}, renewal_source_preparation: true, previous_progress_preserved: "retained-source/previous-progress.json" });
+  }
+  // The previous batch's isolated runtime cannot consume this new contract. Freeze the
+  // current reviewed code in the NEW batch and retain every replaced code byte separately.
+  const codeNames = ["tools/video", ".agents/skills/youtube-video"], runtimeFiles = [];
+  for (const name of codeNames) {
+    for (const [relative, proof] of Object.entries(await fileInventory(path.join(runtimeRoot, name)))) runtimeFiles.push({ name: `${name}/${relative}`, source: path.join(runtimeRoot, name, relative), proof });
+  }
+  for (const name of ["runner.mjs", "prepare.mjs", "preflight.mjs"]) {
+    const source = path.join(runtimeRoot, "docs/videos/imported-long-languages", name);
+    runtimeFiles.push({ name: `docs/videos/imported-long-languages/${name}`, source, proof: { sha256: await sha256File(source), size: statSync(source).size } });
+  }
+  const shared = new Map((prepared.shared_generated_files ?? []).map((v) => [v.relative_path.replaceAll("\\", "/"), v]));
+  for (const { name, source, proof } of runtimeFiles) {
+    const target = path.resolve(out, raw.relative_paths.root, name);
+    if (!isInside(target, out)) throw new VideoStop("Runtime path escapes the new portable batch");
+    if (existsSync(target)) { const old = path.join(out, "retained-source/runtime", name); mkdirSync(path.dirname(old), { recursive: true }); copyFileSync(target, old); }
+    mkdirSync(path.dirname(target), { recursive: true }); copyFileSync(source, target);
+    if (await sha256File(target) !== proof.sha256 || await sha256File(source) !== proof.sha256) throw new VideoStop("Runtime changed during freeze; output remains stopped");
+    const relative_path = path.relative(out, target).split(path.sep).join("/");
+    shared.set(relative_path, { role: "renewed-language-runtime", relative_path, bytes: proof.size, sha256: proof.sha256 });
+  }
+  prepared.shared_generated_files = [...shared.values()];
+  if (existsSync(path.join(out, "runtime-receipt.json"))) { mkdirSync(path.join(out, "retained-source"), { recursive: true }); copyFileSync(path.join(out, "runtime-receipt.json"), path.join(out, "retained-source/previous-runtime-receipt.json")); }
+  save(path.join(out, "runtime-receipt.json"), { kind: "renewed-language-runtime", files: runtimeFiles.map(({ name, proof }) => ({ path: `${raw.relative_paths.root}/${name}`, sha256: proof.sha256 })) });
+  for (const entry of prepared.videos) {
+    if (!sources.has(entry.slug)) continue;
+    const sourceWorkdir = sources.get(entry.slug), remote = await readRemote(entry.slug), contract = await readManualLanguageSource({ workdir: sourceWorkdir, remote });
+    if (contract.source.original_final.content_sha256 !== entry.final_sha256 || !contract.adapter) throw new VideoStop(`${entry.slug}: renewal lacks the old batch's real retained source adapter`);
+    const oldProject = loadProject({ slug: entry.slug, root: manifest.root });
+    if (contract.adapter.doc_sha256 !== digest(JSON.stringify(oldProject.doc)) || contract.adapter.lexicon_sha256 !== digest(JSON.stringify(oldProject.lexicon))) throw new VideoStop(`${entry.slug}: renewal adapter does not match the retained language source script/lexicon`);
+    const workdir = path.resolve(out, entry.relative_paths.workdir);
+    if (!isInside(workdir, out)) throw new VideoStop("Renewed work path escapes the new portable batch");
+    const keep = path.join(workdir, "retained-source/adapter-original-final.mp4"); mkdirSync(path.dirname(keep), { recursive: true }); copyFileSync(path.join(workdir, "final.mp4"), keep);
+    const sourceFiles = await fileInventory(sourceWorkdir, { exclude: ["STOP"] });
+    for (const [name, proof] of Object.entries(sourceFiles)) {
+      const target = path.join(workdir, name); mkdirSync(path.dirname(target), { recursive: true }); copyFileSync(path.join(sourceWorkdir, name), target);
+      if (await sha256File(target) !== proof.sha256) throw new VideoStop("Renewal handoff changed while copying; output remains held");
+    }
+    copyFileSync(path.join(workdir, contract.adapter.timeline_file), path.join(workdir, "timeline.json"));
+    entry.final_sha256 = contract.source.final.content_sha256;
+    entry.renewal_source = { file: "renewal-language-source.json", sha256: await sha256File(path.join(workdir, "renewal-language-source.json")) };
+    const changed = new Map((entry.generated_files ?? []).map((v) => [v.relative_path.replaceAll("\\", "/"), v]));
+    for (const name of ["final.mp4", "timeline.json", ...Object.keys(sourceFiles).filter((v) => v !== "renewal-handoff.json" && !v.startsWith("review/") && !v.startsWith("language-package/"))]) {
+      const file = path.join(workdir, name), relative_path = path.relative(out, file).split(path.sep).join("/");
+      changed.set(relative_path, { role: "renewed-source", relative_path, bytes: statSync(file).size, sha256: await sha256File(file) });
+    }
+    entry.generated_files = [...changed.values()];
+  }
+  if (canonical(before) !== canonical(await fileInventory(base, { exclude: exclusions }))) throw new VideoStop("Original language batch changed during prepare; do not run the new batch");
+  save(path.join(out, "manifest.json"), prepared);
+  const current = resolveManifest(prepared, out);
+  for (const entry of current.videos) { await verifyLocal(current, entry); if (entry.renewal_source) await readManualLanguageSource({ workdir: entry.workdir, remote: await readRemote(entry.slug) }); }
+  return { manifest: path.join(out, "manifest.json"), status: "prepared-held", renewed: [...sources.keys()], paid_generation: false };
+}
+
 /** An exit code alone is insufficient: STOP also returns zero. Require a new completed
  * check run, matching flags/timeline, and transcripts for the exact clips being packaged. */
 export async function checkedDubReceipt(entry, locale, beforeRuns) {
@@ -338,6 +419,12 @@ export async function verifyLocal(manifest, entry) {
   const project = loadProject({ slug: entry.slug, root: manifest.root });
   const timeline = readJson(path.join(entry.workdir, "timeline.json"));
   if (project.doc.slug !== entry.slug || timeline.speech_hash !== speechHash(project.doc, project.lexicon)) throw new VideoStop(`${entry.slug}: adapter timeline is stale`);
+  if (entry.renewal_source) {
+    const file = path.resolve(entry.workdir, entry.renewal_source.file);
+    if (!isInside(file, entry.workdir) || await sha256File(file) !== entry.renewal_source.sha256) throw new VideoStop(`${entry.slug}: renewed language source contract changed`);
+    const contract = readJson(file);
+    if (contract.source?.final?.content_sha256 !== entry.final_sha256 || !contract.adapter || contract.adapter.timeline_sha256 !== await sha256File(path.join(entry.workdir, "timeline.json"))) throw new VideoStop(`${entry.slug}: renewed source lacks its real retained timing adapter`);
+  }
   return project;
 }
 
@@ -353,7 +440,7 @@ async function localAdditions(entry, project, progress, choices) {
     const translation = path.join(project.dir, "i18n", `${locale}.json`);
     const ready = existsSync(translation) && progress.translations?.[locale] === await sha256File(translation);
     if (ready && choice.metadata) {
-      const composed = composeMetadata({ doc: project.doc, timeline, translations: project.translations, pack: project.pack ?? null, locales: [locale] });
+      const composed = composeMetadata({ doc: project.doc, timeline: entry.renewal_source ? presentationTimeline(timeline, { hash: readBranding(entry.workdir).hash, intro_frames: readBranding(entry.workdir).intro.frames, outro_frames: readBranding(entry.workdir).outro.frames, body_frames: timeline.total_frames }) : timeline, translations: project.translations, pack: project.pack ?? null, locales: [locale] });
       result.problems.push(...composed.problems);
       if (!composed.problems.length && composed.metadata.localizations[locale]) {
         const localized = composed.metadata.localizations[locale];
@@ -386,6 +473,29 @@ export async function submitSnapshot(api, project, entry, additions, choices, no
   // review API has no conditional-write token; this is an operator-scoped run, not a queue.
   const snapshot = cumulativeSnapshot(fresh, additions);
   if (!Object.keys(snapshot.locales).length) return { status: "nothing-ready" };
+  if (approved.payload?._final_renewal) {
+    if (!entry.renewal_source) throw new VideoStop(`${entry.slug}: renewed final requires an explicit source-bound language handoff; old adapter cannot be relabelled`);
+    await readManualLanguageSource({ workdir: entry.workdir, remote: fresh });
+    for (const file of snapshot.files) if (file.path) await api.upload(entry.slug, file);
+    const body = await bindManualLanguageSubmission({ body: { gate: "languages", content_sha256: digest("source-bound manifest pending"), summary: `匯入長片新版語言批次：${Object.keys(snapshot.locales).join("、")}；配音上傳另由站主確認。`, payload: { locales: snapshot.locales }, files: snapshot.files.map(({ path: omitted, ...file }) => file) }, remote: fresh, workdir: entry.workdir, project, upload: async (_request, slug, file, role, type) => {
+      const entry = await fileEntry(file, role, type); await api.upload(slug, entry); const { path: omitted, ...ref } = entry; return ref;
+    } });
+    const current = await api.reviews(entry.slug); assertProject(current, entry, choices);
+    await readManualLanguageSource({ workdir: entry.workdir, remote: current });
+    if (canonical(current.reviews.filter((r) => ["publish", "languages"].includes(r.gate))) !== canonical(fresh.reviews.filter((r) => ["publish", "languages"].includes(r.gate)))) throw new VideoStop("Another publish/language review changed during staging; reread the source before submission");
+    const existing = current.reviews.find((r) => r.gate === "languages" && r.content_sha256 === body.content_sha256);
+    if (existing && ["approved", "pending"].includes(existing.status)) return { status: "already-submitted", review_id: existing.id, content_sha256: body.content_sha256 };
+    if (existing) throw new VideoStop("This exact renewed language batch was rejected/superseded; inspect it before resubmitting");
+    const receiptFile = path.join(entry.workdir, "language-package", "last-renewal-submission.json"), previous = readJson(receiptFile, null);
+    if (previous?.status === "submitting" && previous.request?.content_sha256 === body.content_sha256) throw new VideoStop("Renewed language submission lost its answer; preserve its receipt and inspect site state before retrying");
+    save(receiptFile, { status: "submitting", submitted_at: now(), request: body });
+    const review = await api.submit(entry.slug, body);
+    const confirmed = await api.reviews(entry.slug);
+    assertProject(confirmed, entry, choices);
+    if (!review?.id || review.gate !== "languages" || review.content_sha256 !== body.content_sha256 || !confirmed.reviews.some((v) => v.id === review.id && v.gate === "languages" && v.content_sha256 === body.content_sha256)) throw new VideoStop("Renewed language response was not confirmed; preserve the submission receipt without retrying");
+    save(receiptFile, { status: "confirmed", submitted_at: now(), request: body, response: review });
+    return { status: review.status, review_id: review.id, content_sha256: body.content_sha256 };
+  }
   const refs = snapshot.files.map(({ path: omitted, ...file }) => file);
   const provenance = { final_sha256: entry.final_sha256, final_review_id: approved.id, final_decided_at: approved.decided_at, producer: "imported-long-languages", original_narration: "Windows Microsoft Hanhan Desktop; unchanged", target_dub_voice: "per prepared adapter" };
   const manifest = { schema_version: 1, provenance, locales_decided_at: fresh.locales_decided_at, locales: snapshot.locales, files: refs };
@@ -448,6 +558,10 @@ export async function run(options, dependencies = {}) {
     await verifyLocal(manifest, entry);
     const remote = await api.reviews(entry.slug);
     assertProject(remote, entry);
+    if (remote.reviews.some((r) => r.gate === "final" && r.status === "approved" && r.payload?._final_renewal)) {
+      if (!entry.renewal_source) throw new VideoStop(`${entry.slug}: owner-approved replacement has no source-bound language handoff`);
+      await readManualLanguageSource({ workdir: entry.workdir, remote });
+    }
     projects.set(entry.slug, remote);
   }
   if (dry) return { status: "dry-run", phase, max_units: limit, videos: entries.map((entry) => ({ slug: entry.slug, final_sha256: entry.final_sha256, locales: projects.get(entry.slug).locales })) };
@@ -472,6 +586,11 @@ export async function run(options, dependencies = {}) {
       let out = "";
       const sink = { write: (text) => { out += text; } };
       const entry = entries.find((item) => item.slug === slug);
+      if (entry.renewal_source) {
+        await verifyLocal(manifest, entry);
+        const remote = await api.reviews(slug); assertProject(remote, entry);
+        await readManualLanguageSource({ workdir: entry.workdir, remote });
+      }
       const beforeRuns = readJson(path.join(entry.workdir, "state.json"), { runs: [] }).runs.length;
       const code = await runMain(args, { ...ctx, stdout: sink, stderr: sink });
       if (fatal) throw fatal;

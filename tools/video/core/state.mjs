@@ -4,7 +4,7 @@
 // contract below), so "is this step done?" is answered by comparing hashes: a timeline built for
 // an older script is not done, whatever state.json says. state.json only keeps the history of
 // runs, for the handover.
-import { existsSync, readdirSync } from "node:fs";
+import { existsSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
 
@@ -14,11 +14,11 @@ import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } 
 import { hasAnimePolicy, runtimePolicyHash } from "./anime-policy.mjs";
 import { animeBodyDurationProblems, animeRuntimeProof } from "./duration.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
-import { burnIn, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveMusic, resolveSfx, sfxHash, subtitlesHash } from "./drama.mjs";
+import { burnIn, drawnShotScenes, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveMusic, resolveSfx, sfxHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
 import { lintVideo, productionClipProblems } from "./lint.mjs";
 import { dubLocales, dubScript, speechCurrent, speechLexicon, translationHash } from "../dubs/plan.mjs";
-import { atomicWrite, contentPackFile, docDir, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
+import { atomicWrite, contentPackFile, docDir, isInside, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
 import { LOCALES, narrationLocale } from "./schema.mjs";
 import { speechHash, visualHash } from "./timeline.mjs";
 
@@ -273,6 +273,47 @@ export function lookChosen(manifest, choice, look) {
 
 const needsReview = (manifest) => Object.values(manifest?.shots ?? {}).some((shot) => shot?.needs_review);
 
+/**
+ * Coverage of the current document's own keyframes, including the bytes of each selected
+ * picture and required end frame. Cuts from another shot's clip have no keyframe of their own.
+ * Complete pictures awaiting a quality decision may be submitted for owner review; an
+ * interrupted entry or missing evidence may never be submitted as a complete storyboard.
+ */
+export async function keyframeProblems({ doc, manifest, workdir, allowNeedsReview = false }) {
+  const problems = [];
+  const ids = new Set();
+  const evidence = async (record, label) => {
+    if (typeof record?.file !== "string" || !record.file) {
+      problems.push(`${label} has no selected picture`);
+      return;
+    }
+    const file = path.resolve(workdir, record.file);
+    if (!isInside(file, workdir) || !existsSync(file) || !statSync(file).isFile()) {
+      problems.push(`${label} selected picture is missing: ${record.file}`);
+      return;
+    }
+    if (typeof record.sha256 !== "string" || !/^[0-9a-f]{64}$/.test(record.sha256)) {
+      problems.push(`${label} has no selected picture hash`);
+    } else if (await sha256File(file) !== record.sha256) {
+      problems.push(`${label} selected picture has changed: ${record.file}`);
+    }
+  };
+  for (const scene of drawnShotScenes(doc)) {
+    if (ids.has(scene.id)) problems.push(`duplicate expected keyframe ID: ${scene.id}`);
+    ids.add(scene.id);
+    const shot = manifest?.shots?.[scene.id];
+    if (!shot) {
+      problems.push(`keyframes/manifest.json has no picture for ${scene.id}`);
+      continue;
+    }
+    if (shot.incomplete) problems.push(`${scene.id} keyframe is incomplete`);
+    if (!allowNeedsReview && (shot.needs_review || shot.judge?.passed === false)) problems.push(`${scene.id} keyframe needs review`);
+    await evidence(shot, scene.id);
+    if (scene.data?.end_frame?.prompt) await evidence(shot.end_frame, `${scene.id} end frame`);
+  }
+  return problems;
+}
+
 /** "2 of 5 clips imported: hailuo-web 1, kling-mcp 1" when `clips import` brought some of them in, else undefined. */
 function importedClips(manifest) {
   const clips = Object.values(manifest?.shots ?? {}).filter((shot) => shot?.file && !shot.still && !shot.source);
@@ -422,7 +463,8 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const framesDone = Boolean(visual) && frames?.visual_hash === visual && (!drama || !burnIn(doc) || (frames.speech_hash === speech && frames.subtitles_hash === subtitles));
   // A drama's keyframes are bound to the whole picture; illustrated slides bind theirs to the shots
   // alone, so a card edit does not have every picture judged again.
-  const keyframesDone = Boolean(lookNow) && keyframes?.look_hash === lookNow && (drama ? keyframes.visual_hash === visual : keyframes.pictures_hash === picturesHash(doc)) && !needsReview(keyframes);
+  const keyframeIssues = pictures ? await keyframeProblems({ doc, manifest: keyframes, workdir }) : [];
+  const keyframesDone = Boolean(lookNow) && keyframes?.look_hash === lookNow && (drama ? keyframes.visual_hash === visual : keyframes.pictures_hash === picturesHash(doc)) && !keyframeIssues.length;
   const assembledDrama = !drama || (checks?.look_hash === lookNow && checks.clips_hash === clips?.clips_hash && checks.subtitles_hash === subtitles && checks.mix_hash === mix);
   const assembledIllustrated = !(pictures && !drama) || (checks?.look_hash === lookNow && checks.pictures_hash === keyframesHash(doc, keyframes));
   const assembledSound = compilation || (!audioProblems.length && checks?.narration_sha256 === timeline?.audio_evidence?.narration_sha256 && (!doc?.music || checks?.mix_hash === mix) && (!doc?.sfx || checks?.sfx_hash === sfxHash(doc)));
@@ -469,12 +511,12 @@ export async function pipelineStatus({ slug, root, workdir }) {
     },
     "keyframes drawn": {
       done: keyframesDone,
-      note: keyframes && needsReview(keyframes) ? "some shots need a prompt fix (needs_review in keyframes/manifest.json)" : undefined,
+      note: keyframeIssues.length ? keyframeIssues.join("; ") : undefined,
       todo: cli("keyframes", slug),
     },
     "storyboard approved": {
-      done: storyboard?.status === "approved",
-      note: storyboard ? describe(storyboard) : undefined,
+      done: keyframesDone && storyboard?.status === "approved",
+      note: keyframeIssues.length ? keyframeIssues.join("; ") : storyboard ? describe(storyboard) : undefined,
       todo: `${cli("review-push", slug, "--gate storyboard")}; the owner looks at the keyframes on /admin/videos; then ${cli("review-pull", slug)}`,
     },
     "frames rendered": { done: framesDone, todo: cli("render", slug) },

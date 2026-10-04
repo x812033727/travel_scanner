@@ -1,0 +1,8 @@
+[
+  {
+    "advisory": "GHSA-vfj7-8cjw-p6xm",
+    "package": "braces",
+    "reason": "No patched release exists (affected <= 3.0.3, the latest). Reached only through eslint-config-next -> @next/eslint-plugin-next -> fast-glob -> micromatch, a lint-time chain: npm audit --omit=dev is clean, and the patterns it expands are the repository's own. Ticket 2026-10-04-investigate-braces-advisory-in-the-next.",
+    "review_by": "2026-11-04"
+  }
+]

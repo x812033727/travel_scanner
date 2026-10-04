@@ -47,6 +47,27 @@ docker compose -f docker-compose.prod.yml exec -T api sh -c 'python -m app.news_
 
 清單用 `?queue=` 與 `?page=` 記在網址上。批次退件在後台勾選多筆即可（每筆一個有稽核的退件）；用腳本在容器裡呼叫 `service.reject_candidate` 只在站主明確要求時做，而且要 Manual 模式（灌腳本進容器會被分類器擋）。
 
+## 五語稿已寫好、卻被硬性檢查擋在「需重寫」的候選
+
+2026-10-01 到 #1201（10-04）之間，每篇自動文章都因為一張已經不畫的流程圖被硬性檢查擋下；#1136 之前這種稿件只存在候選上（`needs_redraft`、`news_hard_checks_failed`、沒有文章、五語都在 `draft_bundle_json`）。「重新執行」和不帶旗標的 `backfill_cli` 都會整篇重寫，要用 `--resume-saved-bundles`：
+
+```bash
+cd /root/travel_scanner
+# 只看：可以接著跑的候選、每篇在現行規則下還有哪些語系會被擋（hard_checks），乾淨的排前面
+docker compose -f docker-compose.prod.yml exec -T api python -m app.news_automation.backfill_cli --since 2026-09-28 --resume-saved-bundles --limit 3
+# 站主同意後才帶 --apply
+docker compose -f docker-compose.prod.yml exec -T api sh -c 'python -m app.news_automation.backfill_cli --since 2026-09-28 --resume-saved-bundles --limit 3 --apply --actor-email "${ADMIN_EMAILS%%,*}" --reason "Resume after #1201"'
+```
+
+每篇記一筆 `news_candidate_resumed` 稽核，改成 `discovered`＋`news_resume_saved_bundle` 排進 news-worker。worker 不撰稿、不翻譯：先重做一次重複檢查（稿子放了幾天，期間可能已經有人發了同一件事），再跑硬性檢查、讀最終修改的紀錄、做 Jev 最後一關，最後發布。只花 Jev 呼叫（每篇約 6 次），不花撰稿模型。結果和一般第二階段相同：
+- 發布（自動條件都成立）
+- `news_hard_checks_failed`：文章已存，到文章編輯器修好後按重新查核
+- `news_final_edit_hold`／`news_jev_final_hold`：文章已存，人看過後按五語發布
+- `news_duplicate_uncertain`／`duplicate`
+- `news_evidence_changed`：發布前重抓證據時，來源頁已經變了
+
+標記在當機或 worker 被砍時會保留，重排後仍接著跑，不會重寫。
+
 ## 診斷順序
 
 1. **一篇都沒有**：`settings_cli` 看 `enabled`、`blockers`、`keys_configured`；`docker compose … ps` 看兩個 news 服務在不在；`/admin/news` 的來源看 `last_status`（`succeeded`／`partial`／`not_modified`／`failed`／`validation_failed`）與錯誤。

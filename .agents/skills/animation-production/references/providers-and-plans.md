@@ -1,14 +1,16 @@
-# 供應商與方案：伺服器 API、Hailuo 網頁訂閱、Kling CLI／MCP
+# 供應商與方案：伺服器 API、Hailuo／Kling 網頁、選用的 CLI／MCP
 
 給用手寫、用手導、用手跑漫劇的代理：同一個鏡頭的素材今天有三條路可以買，這一篇把三條並排、算一鏡與一集各要多少錢、說外部素材現在怎麼進產線（以及產線會不知道什麼）、最後是權利與安全。它不重複別處已經寫好的事：產線的步驟、指令與結束碼在 `.agents/skills/youtube-video/references/drama.md`；第一版的供應商決定與設計在 `docs/videos/DRAMA.md`；Veo 3.1 Lite 的鏡頭契約與十部動畫的製作規格在 `.agents/skills/youtube-video/references/animation-production.md`；一個鏡頭的 `camera`／`motion`／`prompt` 怎麼寫、同一鏡怎麼改寫給 Hailuo 的表單與 Kling 的鏡頭控制，在 animation-camera skill。
 
 每個數字都標來源：**價目**是官方頁或目錄檔讀到的（附日期）；**工具規定**是 `tools/video` 或 `apps/api` 裡的常數（附檔名）；**模型限制**是供應商文件寫的；**實測**是在站主的帳號上送出、下載或讀到的（附日期；2026-10-04 是 Hailuo 的一支片段與 Kling CLI 的輸出）；**推算**是本文從前兩者算出來、沒有在生成器裡核對過的；**未驗證**是第三方整理或根本讀不到的。價目與積分會不預告就改：定一場戲的錢之前，先把本文 §5 的頁面再讀一遍，把日期更新。
 
+**本次 route 以使用者指定為準**：使用者提供內建瀏覽器並選 Hailuo／Kling 時，先讀 `browser-production.md`、依當次工具文件查 upload／download、做三鏡 pilot，再沿既有接受流程擴大。下面的價格與 Claude／Kling CLI 操作結果保留為歷史來源；它們不把本次 Kling 網頁換成 CLI，不代表今天的 UI、點數或 Codex 瀏覽器能力已驗。
+
 ## 1. 三條路線並排
 
-| | 伺服器 API（產線本來的路） | Hailuo 網頁訂閱（hailuoai.video） | Kling（官方 CLI 或 MCP；社群 MCP＋開發者 API） |
+| | 伺服器 API（產線本來的路） | Hailuo 網頁訂閱（hailuoai.video） | Kling 網頁；選用的官方 CLI／MCP、社群 MCP＋API |
 | --- | --- | --- | --- |
-| 誰在呼叫 | `node tools/video/cli.mjs clips` 經網站的媒體端點叫 Gemini／MiniMax；金鑰只在站上 | 代理在內建瀏覽器裡操作 SPA，用**站主的登入**；要上傳本機的關鍵影格（圖生影片）得改用 Claude in Chrome 或 Playwright（§1.2，還沒試） | 官方 CLI `kling`（站主 2026-10-04 選的）或官方 MCP 連接器，都登入**站主的 Kling 帳號**，同一個助理只裝一種（§1.3）；社群 MCP：開發者 API 的 access key／secret key |
+| 誰在呼叫 | `node tools/video/cli.mjs clips` 經網站的媒體端點叫 Gemini／MiniMax；金鑰只在站上 | 本次代理用使用者提供的內建瀏覽器與**站主的登入**；檔案能力依 browser-production 查本次文件 | 本次同樣先用 Kling 網頁與站主登入；CLI／MCP 另選才用，開發者 API 的資源包與會員積分分開 |
 | 計價 | 每秒：`usd_per_second × seconds`，解析度不改價（工具規定，`apps/api/app/video_media/meter.py` `usd_for`） | 月費換積分，積分月底歸零；用完可加購 | 會員月費換積分；開發者 API 另賣資源包，兩邊不互通 |
 | 片段模型 | `apps/api/app/video_media/catalog.py` 列的：Omni 1.1 Flash、Veo 3.1／Fast／Lite、MiniMax-H3 | H3、H3 Max、Hailuo 2.0／2.3／1.0、Sora 2、Veo 3.1 | CLI 列的 `kling-video-v3_0`、`v3_0_omni`、`v3_0_turbo`、`o1`、`v2_5`、`v2_6`，另有 `motion_control`（實測 2026-10-04，§1.3） |
 | 首尾格與參考圖 | 首格必帶；參考圖最多 4（`MAX_REFERENCES`，`apps/api/app/video_media/schemas.py`；目錄寫 H3 9 張、Pro Image 14 張是供應商上限，不是我們送得出的）；Lite 不收參考圖 | 首格與末格；參考上傳區「參考 (0/12)」 | `kling-video-v3_0`：`first_image`＋`tail_image`、elements；`v3_0_omni`／`o1`：`image_1`…`image_7`；`v3_0_turbo` 只有 `first_image`（實測 2026-10-04） |
@@ -17,7 +19,7 @@
 | 進產線 | 直接 | 下載後 `clips import`（§3） | 同左 |
 | 浮水印、商用 | 無浮水印；依各供應商條款 | 免費下載有浮水印；Standard 以上沒有，且保留 IP 含商用（條款，2026-10-03 讀）。付費帳號也要走「無水印下載」：結果卡 `<video>` 的 src 是有浮水印的版本（實測 2026-10-04，§1.2） | 付費方案去浮水印、「Generated content is for commercial use」（會員頁，2026-10-03 讀） |
 | 併發 | 伺服器每小時 240 次圖片送出、360 次 judge（`apps/api/app/video_media/admin_api.py`）；每月 3,000 片段秒、1,500 張圖、3,000 次 judge、60 首音樂（預設，`apps/api/app/video_automation/models.py`） | 方案表：8–12 個排隊、1–2 個執行；條款另寫付費「最多五個同時」 | 付費方案：排隊不限、fast-track |
-| 今天能用在 | 任何漫劇；有 production profile 的作品只能用 profile 指定的模型 | **沒有** production profile 的漫劇（§3：profile 會拒絕非指定的供應商） | 同左；repo 沒有 Kling adapter（`tasks/open/2026-09-26-video-drama-kling-provider-card.md`，P3） |
+| 今天能用在 | 任何漫劇；有 production profile 的作品只能用 profile 指定的模型 | **沒有** production profile 的漫劇；import 對任何 profile 都拒絕，不只是不符 provider（§3） | 同左；repo 沒有 Kling adapter（`tasks/open/2026-09-26-video-drama-kling-provider-card.md`，P3） |
 
 ### 1.1 伺服器 API
 
@@ -70,24 +72,21 @@
 - 時間：送出到完成約 4 分 40 秒，當時沒有別的在排隊。
 - 輸出：2560×1440、24 fps、124 格、5.167 秒、h264 約 6 Mbps，帶一條 AAC 音軌。所以 2K 不是 1920×1080，production profile 的原生 1080p 檢查不收（§3）；尺寸與 fps 都在 `tools/video/media/qc.mjs` 的下限（1280×720、23 fps）之上。音軌是模型生成的，成片不能用：`assemble` 的畫面段落只取影像、帶 `-an`（`tools/video/assemble/drama.mjs` 的 `encodeArgs`），在別處用這個檔要自己去掉。
 - 設定面板的選項：比例 自動／21:9／16:9／4:3／1:1／3:4／9:16，解析度 768p／2K，時長 4–15 秒整數。**比例預設是 21:9，要改。**
-- 浮水印：結果卡 `<video>` 的 src 是有浮水印的版本；乾淨的檔怎麼拿在下面第 6 步。
+- 浮水印：結果卡 `<video>` 的 src 是有浮水印的版本；當時乾淨的檔走「全部下載 → 無水印下載」，本次按官方 UI 與工具文件核對。
 
-**怎麼操作**（SPA 要在瀏覽器裡跑；登入都是站主做的，代理不輸入密碼、不經手 cookie 與權杖、不建帳號、不用自己的帳號）。哪個瀏覽器做得到什麼（實測 2026-10-04）：
+**歷史 Claude 瀏覽器能力**（實測 2026-10-04；不當作 Codex 本次操作指令）：
 
 - **文生影片**在 Claude 桌面版的內建瀏覽器裡做得完；站主的登入會留在 pane。
-- **圖生影片要上傳這一鏡的關鍵影格，內建瀏覽器做不到**：它沒有檔案上傳的工具，頁面對 loopback 伺服器的 fetch 也被擋（`net::ERR_BLOCKED_BY_CLIENT`），幾 MB 的圖沒有別的路進表單。要用 Claude in Chrome 的檔案上傳（站主在那個 Chrome 裡登入），或 Playwright 用 `launchPersistentContext` 指向站主自己登入過的 profile。**這一條還沒試過**（未驗證）。
+- **當時的 Claude 桌面版圖生影片沒有本機 upload 工具**；頁面讀 loopback 也被擋（`net::ERR_BLOCKED_BY_CLIENT`）。沒有送出圖生影片，換瀏覽器的 upload 方案亦未驗；不能推論現在的 Codex 同樣做不到。
+- 當時隱藏 pane 的選單／截圖失敗，窄視窗的設定鈕難操作，提示框是 Slate 編輯器。這些是當時 UI 的觀察，現行表單先讀新狀態，不沿用舊選擇器、頁面 action JS 或讀取 browser profile 的做法。
 
-1. 站主登入後開建立頁（圖生影片是 `/create/image-to-video`，2026-10-03 讀；實測的那一支是文生影片）。pane 要顯示著：隱藏時選單打不開、截圖會逾時。
-2. 圖生影片：把這一鏡通過 judge 的關鍵影格（`keyframes/manifest.json` 的 `file`，sha256 一起抄下來）上傳成首格；需要末格就上傳 `end_frame.file`。上傳不在內建瀏覽器裡做（上面第二點）。
-3. 選模型，再開設定面板選比例、解析度、時長（選項在「實測的一支」）：**比例預設 21:9，改成 16:9**；H3 的時長是整數 4–15，用 `clips --dry-run` 印的需求秒數，不要照 Lite 的固定 8。pane 的窄寬度下那顆寫著比例／解析度／時長的設定鈕被藏起來；把視窗模擬成 1280×800 之後它在 DOM 裡，但座標點擊點不中，要在頁面 JS 裡點——設定鈕是含「21:9」字樣的 `div.cursor-pointer`，面板裡的選項也用 JS 點（實測 2026-10-04）。
-4. 提示詞貼 `--dry-run` 印出的 clip prompt（`motion` ＋ `camera` ＋ `look.motion`，`tools/video/media/clips.mjs` `clipPrompt`）。提示框是 Slate 編輯器（`#video-create-textarea`）：先在頁面 JS 裡 focus，再用鍵盤輸入（實測 2026-10-04）。表單有沒有負面提示欄位沒有核對；沒有就照 MiniMax adapter 的做法，在最後接 `Avoid: …`。
-5. 「創建」旁邊顯示這次送出要扣的積分（實測：H3 2K 5 秒顯示 60）；送出前後各記一次餘額核對，扣了多少就是這一鏡的價。1–2 個執行、8–12 個排隊，一集 60 鏡要分批等。一支 H3 2K 5 秒、沒有別的在排隊時，送出到完成約 4 分 40 秒（實測 2026-10-04，只有這一支）；Max 用完積分後的無限生成不含 H3（哪些模型見上表 Max 列），進較慢的隊列，那個隊列多久沒有量過。
-6. 下載：**不要抓結果卡上 `<video>` 元素的 src**。那個檔（檔名含 `_video_raw_`）是有浮水印的版本，右下角有「MINIMAX | Hailuo AI」。乾淨的檔走「全部下載 → 無水印下載」：它呼叫 `POST /v2/api/multimodal/video/batch_download`，回應的 `downloadURLWithoutWatermark` 是 `cdn.hailuoai.video` 上的公開網址（實測 2026-10-04）。
-7. `clips import --provider hailuo-web --plan <方案> --credits <第 5 步的差額>`（程序只寫在 `stage-preconditions.md` 最後一節）：它跑 `qc.mjs` 的黑格／凍格／切鏡／PSNR、寫 manifest 條目、記帳本。**這些 ffmpeg 檢查看不出浮水印**：第 6 步下載錯版本，匯入照樣通過；只有 `--judge` 的 `no_text` 題（`tools/video/media/clips.mjs` 的 `clipRubric`）可能抓到，所以下載完自己看一眼右下角。站方的任務 id、送出與完成時間、提示詞的雜湊工具不記，要留就寫進 `--note`，或照試作的 `docs/videos/series-plans/competition-20261002/cost-ledger.csv` 那套欄位另外記。
+**本次操作**照 `browser-production.md`：使用者登入與提供分頁 → 查工具能力與匯入目的地 → 上傳核准首格 → 核對 16:9、模型、解析度、單鏡與秒數 → 記完整提示、首格 hash、job 與點數 → 一次送出 → 查同一 job → 官方無浮水印下載 → 三鏡實速小樣 → 匯入。無負面欄位時，把已核准的限制清楚接入正文並記輸入方式；不以未核對的舊 UI 細節作為操作依據。
 
-內建瀏覽器的已知限制（2026-09 實測）：pane 隱藏時頁面是 `visibilityState: hidden`，`IntersectionObserver` 與 `requestAnimationFrame` 都不會觸發，懶載入的區塊看起來像「沒有」；pane 最多 9 個分頁；多代理同時操作會觸發站方的機器人牆，過一小時就好——那是工具故障，不是頁面的結論。2026-10-04 在這個表單上再量到三件：pane 隱藏時選單打不開、截圖逾時；沒有檔案上傳工具；頁面 fetch loopback 伺服器被擋。把檔案轉成 base64 分段貼進頁面、再用 `DataTransfer` 塞給檔案欄位，對幾 MB 的關鍵影格行不通，不要試。
+浮水印歷史實測：卡片播放檔右下角有「MINIMAX | Hailuo AI」，官方「無水印下載」取得另一份乾淨檔。`clips import` 的 ffmpeg 檢查看不出浮水印，下載錯版本仍可能通過；`--judge` 的 `no_text` 題也只可能抓到，所以下載後實看。送出到完成約 4 分 40 秒與 60 點只是當時那一支的結果，不給本次隊列或價錢保證。
 
 ### 1.3 Kling
+
+**本次網頁路線**：使用者提供內建瀏覽器時，照 `browser-production.md` 查當次 upload、download、首格／參考圖、單鏡、音訊、模型與價錢。CLI 的 model id、參數名與 NORMAL 帳號結果不替代網頁欄位，網頁的控制語法仍待 pilot 驗。匯入用 `--provider external --note "route=kling-web …"`，如實留 job 與提示收據。
 
 **會員**（kling.ai 會員頁，2026-10-03 在內建瀏覽器讀，月繳視圖；WebFetch 同日只拿到殼）：
 
@@ -100,7 +99,7 @@
 
 年繳 34% off。每個付費方案：排隊不限、fast-track、1080p、圖片放大、去品牌浮水印、影片延長、商用；Pro 以上先用新功能；一次最多出 4 支（Basic 1）；高階有 4K。每段扣幾積分**未驗證**：第三方 2026 年的整理說 3.0 Omni 標準模式 5 秒約 35–45 積分、專業模式約 70；官方 CLI 的 `who_am_i` 列模型與參數、不給積分價，而 2026-10-04 授權進來的帳號是 NORMAL、0 積分，一支都沒生成（見下）。本文的 Kling 美元數全部建立在「標準 5 秒 40 積分、10 秒 80 積分」這個未驗證的假設上。第三方說的「Kling 只有 5 秒或 10 秒」對 3.0 不成立（`kling-video-v3_0` 是 3–15 秒整數，實測 2026-10-04），但 5、10 以外的秒數扣幾積分沒有任何來源。
 
-**官方的兩條路**（指南 `kling.ai/app/mcp/guide`，登入後讀得到；實測 2026-10-04）。指南說同一個助理只裝其中一種：
+**另選 CLI／MCP 的歷史資料**（指南 `kling.ai/app/mcp/guide`，登入後讀得到；實測 2026-10-04）。指南說同一個助理只裝其中一種；先前 CLI 的選擇不覆蓋本次網頁指定：
 
 - **MCP**：端點 `https://kling.ai/mcp`；在 Claude 是 Customize → Connectors → Add custom connector，用 Kling 帳號登入。
 - **CLI**（站主 2026-10-04 選的）：npm 套件 `@klingai/cli-global`（2026-10-04 是 0.2.1，maintainer `klingai-fe`），執行檔 `kling`。`kling login` 開系統預設瀏覽器做 OAuth（PKCE；scope 是 `generation.create`、`generation.read`、`account.credit.read`），權杖存在 `~/.kling/.credentials`。同意由站主在瀏覽器裡按；代理不讀、不貼那個檔。
@@ -119,7 +118,7 @@
 
 **進產線時 `enable_audio` 與 `prefer_multi_shots` 都要傳 false**：一鏡是一個連續鏡頭（模型自己切鏡是 `tools/video/media/qc.mjs` 會擋的那一類），片段的聲音成片不用。
 
-**還沒驗的**：授權進來的帳號顯示 `membershipType` NORMAL、0 積分，所以沒有生成任何東西。每支扣幾積分、付費方案在 CLI 上有沒有 1080p（會員頁寫付費方案有 1080p）、CLI 扣的是不是會員積分，都還是**未驗證**；先用 `kling account` 看到付費方案與積分，生成一支、記前後差額，再改本文。CLI 做的片段匯入時用 `--provider kling-mcp`（`clips import` 只有 `hailuo-web`、`kling-mcp`、`external` 三個值），是 CLI 做的就寫進 `--note`。
+**還沒驗的**：當時帳號顯示 `membershipType` NORMAL、0 積分，所以沒有生成任何東西。每支扣幾積分、付費方案在 CLI 上有沒有 1080p（會員頁寫付費方案有 1080p）、CLI 扣的是不是會員積分，都還是**未驗證**；另選 CLI 且有生成授權時，先讀帳號／模型資料並記一次生成前後差額，再改實測紀錄。CLI 做的片段匯入時用 `--provider kling-mcp`（`clips import` 只有 `hailuo-web`、`kling-mcp`、`external` 三個值），是 CLI 做的就寫進 `--note`；網頁用 external，兩者不混寫。
 
 **社群 MCP**（github.com/199-mcp/mcp-kling，2026-10-03 讀 README）：用開發者 API 的 access key 與 secret key 自動簽 JWT，扣的是**資源包**，不是會員積分；工具有 `generate_video`（5 或 10 秒、標準／專業、cfg_scale、鏡頭控制）、`generate_image_to_video`（圖生影片，鏡頭控制 `static`／`zoom`／`pan`／`auto` 加一段 motion prompt）、`extend_video`、`create_lipsync`、`generate_image`（KOLORS）、`get_account_balance`、`get_resource_packages`、`list_tasks`；結果下載到本機 `./downloads/` 底下分類資料夾。對應我們的運鏡字（詳見 animation-camera skill）：`locked`→`static`，`push-in`／`pull-out`→`zoom`（方向寫進 prompt），`pan-left`／`pan-right`→`pan`，`drift` 沒有對應，用 `static` 加 motion prompt。它的 `generate_video` 只給 5 或 10 秒，是這個社群工具的限制，不是 Kling 3.0 的。
 
@@ -184,9 +183,9 @@ platform.minimax.io 的 Video Packages（2026-10-03 讀）：Standard US$1,000�
 
 `node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --provider hailuo-web|kling-mcp|external [--plan <plan id>] [--credits N] [--usd N] [--note "…"] [--judge] [--force]`
 
-它查 `clips` 的前提（timeline 與 keyframes 是現在的、這一鏡的關鍵影格通過、storyboard 核准），把檔案複製成 `clips/<shot>-import-<n>.mp4`，跑買來的 take 同一組 ffmpeg 檢查（`tools/video/media/qc.mjs` 的 `clipVerdict`），寫 `clips`（`tools/video/media/clips.mjs`）自己寫的那種 manifest 條目加 `provider`、`plan`、`credits`、`imported_at`，在帳本記一筆 `status: "imported"`；`assemble`（`tools/video/assemble/cli.mjs`）與 `status`（`tools/video/core/state.mjs` `pipelineStatus`）照常讀那份 manifest。要記得的兩句沒變：外部素材的首格要用通過 judge 的那張關鍵影格，不然第 0 格 PSNR 會讓它 `needs_review`（`--force` 才留下）；judge 預設不問，`--judge` 才上傳媒體庫問 `clipRubric`（US$0.01）。實測（2026-10-04）多出兩句：**ffmpeg 檢查看不出浮水印**，Hailuo 下載錯版本（§1.2 第 6 步）匯入照樣通過，只有 `--judge` 的 `no_text` 題可能抓到；外面做的片段可能帶生成的音軌（Hailuo H3 帶 AAC；Kling 的 `enable_audio` 預設 true），成片不用它。用產線關鍵影格當首格的圖生影片還沒有匯入過。
+它查 `clips` 的前提（timeline 與 keyframes 是現在的、這一鏡的關鍵影格通過、storyboard 核准），把檔案複製成 `clips/<shot>-import-<n>.mp4`，跑買來的 take 同一組 ffmpeg 檢查（`tools/video/media/qc.mjs` 的 `clipVerdict`），寫 `clips`（`tools/video/media/clips.mjs`）自己寫的那種 manifest 條目加 `provider`、`plan`、`credits`、`imported_at`，在帳本記一筆 `status: "imported"`；`assemble`（`tools/video/assemble/cli.mjs`）與 `status`（`tools/video/core/state.mjs` `pipelineStatus`）照常讀那份 manifest。要記得的兩句沒變：外部素材的首格要用通過 judge 的那張關鍵影格，不然第 0 格 PSNR 會讓它 `needs_review`（`--force` 才留下）；judge 預設不問，`--judge` 才上傳媒體庫問 `clipRubric`（US$0.01）。實測（2026-10-04）多出兩句：**ffmpeg 檢查看不出浮水印**，Hailuo 下載錯版本（§1.2）匯入照樣通過，只有 `--judge` 的 `no_text` 題可能抓到；外面做的片段可能帶生成音軌，成片不用它。用產線關鍵影格當首格的圖生影片還沒有匯入過。
 
-**有 production profile 的作品進不去**：`clips import` 以結束碼 3 拒絕。`productionClipProblems`（`tools/video/core/lint.mjs`）要求 manifest 頂層 `clip.provider/model/resolution` 等於 profile 的（十部動畫是 gemini／veo-3.1-lite-generate-preview／1080p，`docs/videos/series-plans/production-20261001/profile.json`），每鏡要 `qc.ok === true` 且 `qc.metrics.duration` 蓋過整段台詞，`productionClipSizeProblem` 要求量到的 1920×1080（H3 的 2K 是 2560×1440，實測 2026-10-04，不是 1920×1080；要先縮成 1920×1080 再 probe；profile 收不收縮過的 2K，站主沒決定過）。`status` 與 `assemble` 都呼叫它。把 Hailuo 的素材標成 Veo Lite 是作假，不做；所以外部路線只用於沒有 profile 的漫劇，或等站主改 profile（那會換掉核准的設計雜湊）；讓 profile 能點名外部路線是第二張票，站主決定。
+**任何 production profile 都不能匯入**：`importClip` 對存在的 `series.production.profile` 無條件以 3 拒絕，單改 provider／model 也不會解除。`productionClipProblems`（`tools/video/core/lint.mjs`）另要求 manifest 頂層 `clip.provider/model/resolution` 等於 profile（十部動畫的契約在 `docs/videos/series-plans/production-20261001/profile.json`）、QC 通過與素材蓋滿台詞；`productionClipSizeProblem` 另驗原生 1920×1080。縮放 H3 的 2K、手改 manifest 或刪 profile 都不能作為受核准的外部路線支援。既有正片要採用外部路線，須另做產線匯入／驗證支援與契約更新並重新綁核准；這次只改技能，不開放它。付費之前查目的地，避免做出不能使用的素材。
 
 **匯入之後，產線知道與還不知道的事**：
 
@@ -204,7 +203,7 @@ platform.minimax.io 的 Video Packages（2026-10-03 讀）：Standard US$1,000�
 ## 4. 權利與安全
 
 - **帳號是站主的**。Hailuo 與 Kling 的登入、訂閱、加購都由站主做；代理不建帳號、不輸入密碼、不用自己的帳號、不把 cookie 或權杖寫進對話、檔案與指令參數（`youtube-video` skill 規矩 9）。MCP 連接器也是站主在自己的 Claude Desktop／claude.ai 加的；Kling CLI 的 `kling login` 由站主在瀏覽器裡同意 OAuth，權杖檔 `~/.kling/.credentials` 不讀、不貼、不進 repo。
-- **商用與浮水印**：Hailuo 免費方案的下載有浮水印，不能上架；Standard 以上無浮水印且條款寫明保留 IP 含商用，但付費帳號的結果卡 `<video>` src 仍是有浮水印的檔，要走「無水印下載」（實測 2026-10-04，§1.2 第 6 步）。Kling 每個付費方案去品牌浮水印、商用；免費層沒讀到條款，當作不能用。產線自己的 Lyria 音樂帶 SynthID 浮水印（目錄註解），是允許的。
+- **商用與浮水印**：Hailuo 免費方案的下載有浮水印，不能上架；Standard 以上無浮水印且條款寫明保留 IP 含商用，但歷史付費帳號的卡片播放檔仍有浮水印，要走官方無水印下載（§1.2）。Kling 付費方案的去浮水印與商用描述也是當時資料；本次核對實際方案、下載與條款。產線自己的 Lyria 音樂帶 SynthID 浮水印（目錄註解），是允許的。
 - **內容規則**：Hailuo 有內容審查，審查不過退積分；MiniMax API 的 1026／1027／2013 是內容被拒（`apps/api/app/video_media/providers/minimax.py`）；Kling 的內容政策沒有逐條讀，當作一樣有。被拒的題材先回報，不換字繞。
 - **提示詞不帶個資**：不寫真人姓名、照片、聲音、站主的資料、金鑰；不用真人臉與聲音；這跟產線的規矩一樣（`docs/videos/DRAMA.md` 的 YouTube 一節）。
 - **上架揭露**：3D 寫實 AI 畫面與 AI 配樂都勾「變造或合成內容」，不分哪一條路線買的。
@@ -223,7 +222,7 @@ platform.minimax.io 的 Video Packages（2026-10-03 讀）：Standard US$1,000�
 | Hailuo 方案、積分、模型、隊列 | hailuoai.video 的訂閱頁（內建瀏覽器） | 2026-10-03 |
 | Hailuo 條款 | hailuoai.video/doc/payment-policy.html | 2026-10-03 |
 | Hailuo H3 2K 每秒 12 積分、生成時間、輸出規格、設定面板的選項、浮水印與無水印下載 | 站主的 Max 帳號在 hailuoai.video 送的一支文生影片（H3、2K、5 秒、16:9）與下載的檔 | 實測 2026-10-04 |
-| 內建瀏覽器傳不了本機檔案、表單怎麼點 | Claude 桌面版的內建瀏覽器，同一次操作 | 實測 2026-10-04 |
+| 當時缺本機 upload、pane 與表單操作限制 | Claude 桌面版的內建瀏覽器，同一次操作；不當作本次 Codex 的能力結論 | 實測 2026-10-04 |
 | Kling 會員方案 | kling.ai 會員頁（內建瀏覽器） | 2026-10-03 |
 | Kling 官方 MCP 與 CLI：端點、套件、登入、指令、`image_to_video` 的模型與參數 | kling.ai/app/mcp/guide（登入後）、npm `@klingai/cli-global` 0.2.1、`kling who_am_i` 與 `kling account` 的輸出（NORMAL 帳號、0 積分） | 實測 2026-10-04 |
 | `clips import` | PR #1183（`tools/video/media/clips.mjs`）；真的 ffmpeg 跑在下載的 Hailuo 片段上 | 實測 2026-10-04 |

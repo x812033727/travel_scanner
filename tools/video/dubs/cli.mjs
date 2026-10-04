@@ -16,6 +16,7 @@ import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { musicInputs, sfxInputs } from "../assemble/sound.mjs";
 import { isDrama, mixHash, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
+import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LOCALES } from "../core/schema.mjs";
 import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "../core/state.mjs";
@@ -260,9 +261,10 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   const track = files.track(values.format);
   mkdirSync(path.dirname(track), { recursive: true });
   const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
-  const branding = appliedBranding(checks);
+  const manual = verifiedManualPresentation({ project, workdir, timeline });
+  const branding = manual ?? appliedBranding(checks);
   const selection = readBranding(workdir);
-  if (!brandingCurrent(checks, selection)) throw new UsageError("channel branding changed; run assemble before dub");
+  if (!manual && !brandingCurrent(checks, selection)) throw new UsageError("channel branding changed; run assemble before dub");
   const bodyTrack = branding ? path.join(files.dir, `body.${values.format}`) : track;
   const sound = await dubSound(project.doc, timeline, workdir, workBase);
   if (sound.track || sound.sfxFile) {
@@ -360,8 +362,9 @@ async function dub(args, ctx) {
   if (timeline.speech_hash !== speechHash(doc, project.lexicon)) throw new UsageError("timeline.json was built for an older script; run tts again");
   const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
   const selection = readBranding(workdir);
-  if (!brandingCurrent(checks, selection)) throw new UsageError("channel branding changed; run assemble before dub");
-  if (checks?.branding && (checks.speech_hash !== timeline.speech_hash || checks.branding.body_frames !== timeline.total_frames)) throw new UsageError("branded cut was made for another body timeline; run assemble before dub");
+  const manual = verifiedManualPresentation({ project, workdir, timeline });
+  if (!manual && !brandingCurrent(checks, selection)) throw new UsageError("channel branding changed; run assemble before dub");
+  if (!manual && checks?.branding && (checks.speech_hash !== timeline.speech_hash || checks.branding.body_frames !== timeline.total_frames)) throw new UsageError("branded cut was made for another body timeline; run assemble before dub");
   const dubs = values.locales.map((locale) => prepare(project, locale, values, workdir));
 
   if (values["dry-run"]) return dryRun(dubs, project, timeline, ctx, readCredentials({ env: ctx.env, home: ctx.home }));

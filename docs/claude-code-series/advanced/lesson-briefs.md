@@ -356,6 +356,35 @@
 
 [回第二階段總目錄](README.md)
 
+<a id="lesson-97"></a>
+
+### 97．建立第一個 mod：在 Claude Code 行程內數工具呼叫
+
+[完整原稿](../lessons/97.md)
+
+寫一個三檔案的 mod，用驗證器與測試確認它掛上的事件。
+
+- 預定網址：`/zh-TW/life/claude-code-first-mod`。
+- 建議入口：CLI 或 Desktop app 的 Code 分頁；預估閱讀 20 分鐘，實作 40 分鐘。這是編輯估算，試作後校正。
+- 先備：[45 Plugins 安裝與管理](../lessons/45.md)、[41 建立第一個 Hook](../lessons/41.md)、[72 把 Skills 與 Hooks 包成可版本管理的 Plugin](lesson-briefs.md#lesson-72)。
+- 本篇交付：一個能載入的 first-mod（plugin.json、hooks.json、register.js）、一個通過的 claude plugin test 測試檔，與驗證器列出的 hooks／calls 兩行紀錄。
+- 材料包：`skill-kit`；starter 只有 plugin.json 與 hooks.json，reference 有四個檔。
+
+1. 建立三個檔案並讀懂 register(on) 的三個引數。
+2. 用 --plugin-dir 載入、觀察 spinner 與 /tally。
+3. 改一行字觀察熱重載。
+4. 用 claude plugin validate 與 claude plugin test 留下證據。
+
+**故障練習：**把事件名拼成 tool.calls，驗證器報「is not an event」；把 $.ui 指派給變數，驗證器報「is used as a value」。
+
+**完成判準：**validate 的 hooks: 行列出四個事件、calls: 行列出兩個方法；plugin test 一個測試通過；熱重載後 spinner 文字改變有紀錄。
+
+**作者需查證：**[Mods overview](https://code.claude.com/docs/en/plugins/mods/overview)、[Create a mod](https://code.claude.com/docs/en/plugins/mods/create)、[Test a mod](https://code.claude.com/docs/en/plugins/mods/test)、[Mods reference](https://code.claude.com/docs/en/plugins/mods/reference)。本篇的 validate 與 plugin test 兩個命令已在 Linux 容器的 Claude Code 2.1.289 實際執行（2026-10-04）；`--plugin-dir` 的互動 session 與熱重載沒有實測。
+
+延伸閱讀：[73 讀懂 Hook 事件：輸入、輸出與退出碼](lesson-briefs.md#lesson-73)、[71 替 Skills 建立回歸案例與評分表](lesson-briefs.md#lesson-71)、[78 跨平台 Hooks：中文路徑、逾時與遞迴排錯](lesson-briefs.md#lesson-78)。
+
+[回第二階段總目錄](README.md)
+
 ## M．Hooks 事件、檢查與故障處理
 
 <a id="lesson-73"></a>

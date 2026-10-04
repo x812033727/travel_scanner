@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
-import { existsSync, linkSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { existsSync, linkSync, lstatSync, mkdirSync, readFileSync, realpathSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
+import { tempDir } from "../core/fixtures/load.mjs";
 import { ROOT } from "../core/paths.mjs";
 import { LOCALIZATION_RETENTION_FILE, localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
 import { STATE_FILE as FLOW_STATE_FILE } from "./flow.mjs";
@@ -79,9 +79,9 @@ function put(dir, name, content) {
   return file;
 }
 
-/** A throwaway work base beside a throwaway repository, under the system's temporary directory. */
+/** A throwaway work base beside a throwaway repository, under the system's temporary directory, removed when the process exits. */
 function place() {
-  const top = realpathSync(mkdtempSync(path.join(tmpdir(), "video-tidy-")));
+  const top = realpathSync(tempDir("video-tidy-"));
   const repo = path.join(top, "repo");
   const work = path.join(top, "work");
   mkdirSync(repo);
