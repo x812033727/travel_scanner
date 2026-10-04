@@ -22,6 +22,9 @@ scope:
   - apps/api/app/saved/router.py
   - apps/api/app/guides/service.py
   - apps/api/app/discovery/display_topics.py
+  - apps/api/app/travel_services/service.py
+  - apps/api/tests/test_migration_0119_video_category_anime.py
+  - apps/api/tests/test_migration_dead_branches.py
 ---
 
 # SQLAlchemy 2.1 升級（mypy 的 Select 型別）
@@ -79,7 +82,8 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
 - `ForeignKeyConstraint` 本地與遠端欄數不同改成 `ArgumentError`：用 AST 數過 migrations 與 `app/` 裡 115 個 FK 宣告（`ForeignKeyConstraint`、`create_foreign_key`）兩邊的欄數，全部一致。不受影響。
 - `before_cursor_execute`／`after_cursor_execute` 的錯誤處理：只有 `tests/test_discovery_display_topics.py` 一個只記錄 SQL 的 listener，不碰 DBAPI cursor。不受影響。
 - URL 的 database 部分改做 URL escape：資料庫名（`travel_scanner` 等）沒有特殊字元，`tests/fixtures/frontend_flow_seed.py` 的 `make_url` 只讀 host。不受影響。
-- Operator class（JSON 欄位用 `.contains()` 會發 deprecation 警告）：7 個 `.contains()` 都先 `cast(..., Text)` 再做字串 LIKE，`trips/hours.py` 那個是 Python 物件。完整 pytest 的警告摘要裡沒有 SQLAlchemy 的 deprecation 警告。不受影響。
+- Operator class（JSON 欄位用 `.contains()` 會發 deprecation 警告）：7 個 `.contains()` 都先 `cast(..., Text)` 再做字串 LIKE，`trips/hours.py` 那個是 Python 物件。完整 pytest 的警告摘要裡沒有這個警告。不受影響。
+- `Result.tuples()` 與 `Row._t`／`.t`／`._tuple()`／`.tuple()` 棄用（Row 本身在型別上就是 tuple 了）：**用到。** 完整 pytest 的警告摘要裡唯一的 `SADeprecationWarning` 來自 `app/travel_services/service.py` 的 `.tuples().all()`；另外兩個只在 PostgreSQL 跑的測試（`test_migration_0119_video_category_anime.py`、`test_migration_dead_branches.py` 兩處）也用了。四處都改成 `.all()`，回傳型別 `list[tuple[...]]` 不變（Row 在 2.1 的型別上是 `tuple` 的子型別）。這三個檔不在原本的 scope，已加進去；兩個測試檔被 `2026-10-03-illustrated-slides-round-2-a-family`（claude-fable-5-1-illustration-round2、`review`）的 `apps/api/tests` 涵蓋，那張的認領已 33 小時、工作已由 #1172 在 2026-10-03 合併。
 - Python float 字面值的 CAST 改成 DOUBLE：只影響產生的 SQL 字串，PostgreSQL 的 FLOAT 就是 double precision。不受影響。
 - PostgreSQL 的預設 driver 改成 psycopg 3：所有連線字串都寫明 `postgresql+asyncpg://`（`app/config.py` 的預設、`alembic.ini`、`.env.example`）；tests 裡的 `postgresql://` 只是遮蔽用的字串，沒有拿去建 engine。不受影響。
 - Enum／DOMAIN 等具名型別改綁 MetaData、建立與刪除的規則改變：models 與 migrations 都沒有 `Enum`／`ENUM`／`DOMAIN` 型別（用字串欄位加 CHECK）。不受影響。

@@ -153,7 +153,7 @@ def _exercise(connection: Connection) -> None:
 
             run(connection, "downgrade")
             filed = dict(
-                connection.execute(sa.text(f"SELECT slug, category FROM {PROJECTS}")).tuples().all()
+                connection.execute(sa.text(f"SELECT slug, category FROM {PROJECTS}")).all()
             )
             assert filed == {"kept": "drama", "toon": None}, "only the anime video is unfiled"
             assert _refused(connection, "after-down", "anime")
