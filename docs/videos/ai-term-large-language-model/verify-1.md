@@ -2,7 +2,7 @@
 
 獨立查核者：codex / llm_review，2026-10-04（Asia/Taipei）。不是撰稿者；本輪只寫本報告，修正由撰稿者套用。已逐句讀完整長片旁白、所有字卡及插圖提示、縮圖與 YouTube metadata、claims.md、brief.md、demo.py、demo-log.md，以及兩支 Shorts 的全部文字。沒有用 lint 代替語義審查，也沒有呼叫任何模型或付費 API。
 
-最新 production source 的 video.json SHA-256：`9f25b680fe634f7023f88e3f91fd50ceabd29d687592ef2ff1be35312d7a957c`；shorts.json：`92e301343264c30801ffe2871d5f473bed7e39774f7068098da8e4b3ea3e48f8`；timeline.json：`086c5b2c46fb0cc306896d22b708ea31cbf4741a7097601338ec523148306a83`。下方各附錄保留歷史覆核；最後「免費資料卡、六筆揭項與更新音訊綁定附錄」綁定當前來源。本報告原有事實結論沿用到未改動的文字；實際媒體關卡須綁最新證據。
+最新 production source 的 video.json SHA-256：`2a9bfa4e99d17d1805891f70c56e78416101bc94255c330e96ee62555e14408a`；shorts.json：`b70535ce3c920a88c451cbc589ed63f9a9e16168a9c15d9806828fb8915a06a0`；timeline.json：`3b57a6f54b78cd5267c6a6b2898bd87e5650121a7da8dbceb78d81f03b6f7e02`。下方附錄保留歷史覆核；最後「兩卡及 Shorts 完整圖片附錄」綁定當前來源。本報告原有事實結論沿用到未改動的文字；分鏡與實際成片關卡仍須綁最新證據，沒有因來源審稿而核准圖片。
 
 原完整文字終審綁定 SHA-256（其後僅兩個停頓、一處同義口播及兩鏡插圖提示調整，見附錄；事實、示例與 metadata 未改動）：
 
@@ -289,3 +289,27 @@ narration.wav仍 `1441cbb8403d7c8499e9040307d759cb71f8749dc1c85407ab46804d40155b
 正常audio submit／pull均exit0，既有paired GET-only收據 `llm-supported-cards-audio-readback-2030.json` 確認新timeline086c的audio review為approved（2026-10-04T13:44:24.612810Z）；本機正常pull在13:44:44.344Z追加同一exact SHA批准，保留舊11b歷史。後台stage為narration approved，ready_to_upload=false。這是系統依設定的音訊核准，不是站主對完整視覺或成片的接受，本覆核者沒有另呼叫後台。
 
 完整73鏡新storyboard仍未完成，其他真實原圖語義／字樣／肢體／風格／裁切失敗與原needs_review、failed takes、judge問題持續保留。兩卡修法是更換不忠實的呈現，不把其原圖片說成通過，也沒有藉刪問題或重評分清零。後續正常keyframes／storyboard／render／assemble／QA／final需依當前來源完成；不宣稱成片、發佈、G槽交付或刪除資格。本次只更新本報告及私人審計，沒有改其他來源、工具、媒體、manifest或旗標。
+
+## 九卡呈現及三提示獨立補充審稿（2026-10-04 22:30）
+
+codex / backup_audit 與 llm_remaining_visual 的私有完整審計由主代理原樣採納結論，沒有把局部審稿寫成成片核准。九卡審計 `llm-nine-freecards-independent-supplement-2030.json` SHA-256 `6c4720fe914aca1d5db795d511bc7a31dd50682cef6779aaafe67824264d1ad5`；三提示付費前審計 `llm-three-prompt-prepay-independent-2030.json` SHA-256 `1f3146417e68b847396de62e7c8e38dd5a32ae711ddee68504452e72dfc55267`。前者綁 9f25 → 1ad01d，後者綁 1ad01d → **`eafefe5847d332e4b1566a81a9a1e6c24463c037c75297364781df281187eb6c`**。
+
+九卡只改九景 template/data，其餘 99 景、138 完整 line objects／reveal／pause／voice/look、108 請求與 138 keys 全同；九卡 16 個实际 renderer states 逐句語義通過。前五卡的 12 個 PNG 與後四卡的四個 PNG 已獨立實看，字fit／layout／glyph 問題為空，原私有 proposal byte exact 套用；沒有以 HTML 語義冒充像素檢查。四新卡保留「不保證」與「若用工具」，沒有新增能力或必然編造的宣稱。demo-one-umbrella 逐字複用既有真離線 trace，另一位覆核者獨立執行兩行輸出 exact，model_called=false。
+
+三提示版本只改 demo-cap-out、kitchen-agree、garden-follow-up 的 prompt，與先審私人提案 exact matching。其餘 105 景／66 shot 完整 objects 與所有旁白、停頓、voice/look、requests、事實／來源都不變。新舊 builder 私有副本各兩次 source 與 metrics byte exact。schema／template／render／episodeShortsProblems=[]；全部合併 MiniMax prompt 實算低於 1,500，最大 1,381，三改景 1,353／1,301／1,336，未截斷。只允許正常針對三鏡小樣，不核准尚未生成的圖。
+
+正文 835.1 秒、實際口播 708.1 秒、138 states、單畫面最長八秒／平均六秒；插圖 51.66247555%，cadenceProblems=[]，沒有增停頓補時。正常零合成 refresh 精確只有八個 timeline.scene.template 改動；新 timeline **`4e1864fba7fabae05367977ca0d38b784757d26b533e3743dbe96e348b3c8925`**，其餘時點／音訊／chapters 完全相同。138 WAV 的完整 SHA／PCM／samples／timeline／cache／current check 均與既有獨立音訊證據相符，138 effective pass、flags0、14 second opinions 仍綁未換的 take。整軌仍 `1441cbb8403d7c8499e9040307d759cb71f8749dc1c85407ab46804d40155b2d`，speech `5e45b34feaa17c8c`，40,084,800 samples。
+
+正常 audio push／pull／GET 已讀回4e1864 exact核准（2026-10-04T14:23:50.220422Z；本機14:24:18.798Z），沒有代人核准。保存38原件與補存四份 cache/review 逐檔 SHA 有效，七個失敗圖及所有原判決保留。此窄審來源／已有效音訊 PASS 不代表完整分鏡、Shorts／成片 audiovisual QA、final／publish／languages／owner接受、G可還原備份或刪除资格；後續三圖真實像素另審。
+
+## 兩卡及 Shorts 完整圖片附錄（2026-10-04 23:10）
+
+最新長片來源 **`2a9bfa4e99d17d1805891f70c56e78416101bc94255c330e96ee62555e14408a`**。獨立 `backup_audit` 的 `llm-final67-source-audio-independent-2030.json` SHA `073263c995db3b3fc597e7d414129404e73fd70db572665774e0dfecb4052e83` 通過限定 source/audio/manifest 核对，未解問題零：eafefe 到 2a9 只有 demo-cap-out table 与 garden-follow-up steps 的 template/data；106 其餘景、138 完整句子／reveal／pause、108 requests／138 keys／voice/look／頂層及 claims 完全不變，新舊 private builder 各兩次 byte exact。水瓶 L002 與帽子 L005 均已領，另一位覆核者獨立離線重算；沒有新模型呼叫。兩個 normal-renderer PNG 已 root 與獨立覆核者實看，無溢出；私有 `llm-last-two-freecards-proposal-2030/preview-independent-2030.json` SHA `836b54412ab382ca8bdba2b90cc3470533ff7c2d84dcd3bf2ce51624801eb80b`。原兩張失敗圖、六個付費 takes 及全部原判保留。
+
+正文835.1秒、实音708.1秒、138 states、最長八秒／平均六秒、插圖50.1576657486%，cadence/schema/template/render/audioEvidence Problems=[]。正常 refresh 仍0synth／0billable／108reuse，timeline **`3b57a6f54b78cd5267c6a6b2898bd87e5650121a7da8dbceb78d81f03b6f7e02`** 對4e1864精確只兩個scene.template字段；138 WAV／PCM／cache／check／14同take第二意見均未變，flags0，narration1441cbb8403d7c8499e9040307d759cb71f8749dc1c85407ab46804d40155b2d。正常 audio 核准14:48:55.899493Z，pull14:50:04.677Z，root GET同SHA。
+
+正常 keyframes 完整67鏡整理 exit0、0新生成，67原圖完整 entry／judge byte-equivalent，picture hash e24bc7ae75d0db0b；manifest **`b008c55cf9bf913d010870c66ae5cfe06db0d823a34cf09bf9f52066bfe50c31`** 精確移出兩張已改卡的歷史 entries並重新產生三張24／24／19 contact sheets。ledger/cache/jobs字節不變，累計US$2.268、174 images／168 judges，沒有 pending jobs／STOP。67/67 actual selected fullSHA能對回先前真實 view_image 審稿；覆蓋表 `llm-67-selected-pixel-coverage-2030.json` SHA bc1db5038f14278aaf47b72c8fb16b875de1cc74f7960d6d1f5a76b9ea632297。這是實看覆蓋，**不是67圖的接受率**：51圖60條原警告與 garden-three-baskets 的參與人物／裁切 HOLD 全保留；沒有刪 judge.problems、重評分追分或代人核准。正常67全板於15:01:39.984653Z送審，exact b008 的 review 目前 **pending**、decided_at=null；後台列表 stage 字串不取代這項當前核准狀態。
+
+最新 Shorts **`b70535ce3c920a88c451cbc589ed63f9a9e16168a9c15d9806828fb8915a06a0`**：先從92e301移除兩個已改卡的 shot refs，全部20句／headlines／big／notes／metadata不變；再僅 Short1 scene0與scene3改 supported contained assets，新增兩筆 current selected fullSHA evidence，其餘八scene與Short2 exact。全束傘／完整彎柄／接物手及三籃完整rim在兩個真正 normal sceneHtml→backgroundChain／segmentArgs→ffmpeg 的isolated first-frame PNG 都可見，字幕標準區域沒有重疊，四caption DOM fit Problems=[]。root與獨立覆核實看；`llm-short1-two-contained-proposal-2030/preview-independent-2030.json` SHA68e66ffb354501e9ddbc44a6943e9099c2bd33fc46b7ccff548a0b7e0620f357，另有獨立schema/evidence覆核。原黃色環／束帶位置、单人物≠两邻居等原判未因contain消除；沒有incoming dissolve，完整Short播放／TTS／QA仍未完成。三筆共享全圖assets須留到其消費者完成。
+
+正常 local fullfilm render 已開始，後續assemble/captions/QA/package僅供可看的本機待審稿；不越過 pending storyboard 門檻送final/publish，不宣稱selected languages已決定或完成，不啟動上傳／发布，沒有G備份或刪除資格。原完整fact conclusions適用未改的文字；此附錄不核准完整影像／聲音播放、站主接受或上架。

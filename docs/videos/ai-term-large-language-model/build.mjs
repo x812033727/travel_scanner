@@ -173,7 +173,7 @@ const promptOverrides = {
   "pottery-limit": "Close-up in a pottery studio at midday, an open palm gently stops reaching fingertips above an empty clay mold, the exposed hollow and separated hands together in the central quarter, plain cloth under the mold, soft skylight on the cavity",
   "demo-six-objects": "Overhead close view of a bare wooden tabletop in an assembly hall in early afternoon, exactly six separate belongings in three centered rows of two: top two tightly closed umbrellas, middle one plain bottle and one folded scarf, bottom one fabric cap and one single glove, each whole object clearly separated within the central quarter, one pointing hand with attached forearm enters below, soft side-door daylight",
   "demo-one-umbrella": "Close-up in an assembly hall in early afternoon, a volunteer lifts a single tightly folded umbrella upright by its curved wooden handle, the complete handle and joined shaft fill the central quarter above a plain tabletop, an empty wall behind, even high-window daylight",
-  "demo-cap-out": "Close-up in an assembly hall in early afternoon, a volunteer lifts a small plain tray holding a bottle and fabric cap clear of a cloth-covered basket, a visible gap separates the tray from the basket below, both objects and supporting hand inside the central quarter, side-door daylight",
+  "demo-cap-out": "Close-up in an assembly hall, early afternoon. A small tray holds only two items side by side: one upright water bottle and one cloth baseball cap with a rounded fabric crown and broad curved visor. A volunteer carries the tray above a bare table with a visible gap below. Both items and the complete tray fit inside the central vertical quarter. Side-door daylight; all surfaces blank, no loose lids, jars or extra bottles.",
   "market-request": "Close-up at an outdoor produce table in midafternoon, one hand supports a wooden scoop bowl while another grips its long handle, the solid scoop separates the hands above a plain woven basket, the shared object fills the central quarter, foliage and plain cloth canopy behind, diffuse outdoor daylight",
   "market-empty-crate": "Overhead close view at an outdoor produce table in midafternoon, two hands tilt a single shallow wooden container toward the viewer, its smooth empty inner bottom clearly exposed in the central quarter, plain cloth below and leafy shade behind, diffuse outdoor daylight",
   "market-boundary": "Medium close view at an outdoor produce table in midafternoon, two workers jointly hold a plain basket while a third watches the shared handoff, their faces close above the basket and their hands inside the central quarter, foliage and plain cloth canopy behind, diffuse outdoor daylight",
@@ -185,10 +185,10 @@ const promptOverrides = {
   "pottery-apprentice": "Close-up in a pottery studio at midday. A teacher's hands gently guide an apprentice's smaller hands around the rim of one wet clay vessel on a wheel. Both pairs of hands and the whole rim form one compact central gesture. A high window lights the clay; plain wall and bare worktable behind.",
   "kitchen-counterexample": "Overhead close-up in an apartment kitchen in late afternoon. Two plain ceramic plates sit close together in the central strip: one holds a piece of fruit, the other is visibly empty. A cook's finger points to the empty plate. Bare counter around them, under-cabinet work light, all surfaces unmarked.",
   "kitchen-repeat": "Close-up in an apartment kitchen in late afternoon. One pair of hands pours a single short stream of beans from one tilted ceramic bowl into a second bowl directly below. The two complete bowls and single stream fit inside the central vertical quarter. Bare worktop, warm kitchen work light, plain surfaces.",
-  "kitchen-agree": "Medium close-up in an apartment kitchen in late afternoon. Two cooks hold identical empty transparent jars close together above a bare counter. Both complete jars and their supporting hands occupy the central vertical quarter. The plain shelf behind is empty; a kitchen work light illuminates the glass.",
+  "kitchen-agree": "Close-up in an apartment kitchen, late afternoon. Two identical empty glass jars stand side by side on a bare worktop, both complete rims and clear bottoms visible. Warm kitchen light passes through the empty interiors. Behind them is only a plain unmarked wall, with no shelf, kitchenware, hands, writing or labels. Both jars fit together in the central vertical quarter.",
   "garden-three-baskets": "Overhead close-up in a residential garden before sunset. Exactly three small shallow woven baskets form one compact vertical column on a bare wooden bench. All three complete rims fit inside the central vertical quarter. One neighbor's hand sets down the lowest basket while another steadies the top. Low sunlight from the left, plain foliage behind.",
   "garden-related-token": "Close-up in a residential garden before sunset. A pebble, a small cloth swatch and a flat pottery shard rest on a narrow woven mat, arranged one above another inside the central vertical quarter. One pair of hands frames the mat. Every small object is fully visible. Soft outdoor daylight and plain leaves behind.",
-  "garden-follow-up": "Overhead close-up in a residential garden before sunset. Exactly three shallow woven baskets form one compact vertical column: top contains a plain scarf, middle contains one fabric glove, bottom is visibly empty. All rims and contents fit inside the central vertical quarter. Two hands pause outside the rims. Even daylight under an open pergola.",
+  "garden-follow-up": "Overhead close-up in a residential garden before sunset. Three separate small shallow woven baskets form a vertical column on flat garden paving, with wide visible paving gaps between them. Upper basket holds only a folded scarf; middle holds only one cloth glove; lower is empty. All three complete oval rims fit in the central vertical quarter. No overlap, stacking, shelf or hands. Even outdoor daylight.",
   "garden-own-acceptance": "Close-up in a residential garden before sunset. A volunteer holds a plain fabric glove by its cuff above a visitor's waiting palm. The separate fingers of the cloth glove, cuff and two human hands are clearly visible together in the central vertical quarter. Soft garden daylight; plain foliage behind.",
   "garden-closing": "Close-up in a residential garden before sunset. A volunteer holds one fully closed compact fabric umbrella upright, tightly wrapped around its shaft with one plain strap. The entire folded bundle, curved handle and supporting hand fit together inside the central vertical quarter. A visitor is secondary by the distant gate. Last daylight, plain foliage behind.",
   "demo-tools-question": "Medium close-up in a municipal assembly hall in early afternoon. Two volunteers pass one small plain woven basket between their hands above a bare table. Faces sit near the top, the entire basket and joined gesture in the central vertical quarter. Blank wall behind, daylight from a side door, unmarked surfaces."
@@ -226,6 +226,158 @@ scenes.find(scene => scene.id === "six-records-table").data = {
     ["資料範圍", "代號與位置可回查", "沒有真實失主資料"]
   ]
 };
+
+// Correct actual narration/reveal mismatches and four unfaithful images.
+// Preserve all 138 lines, original shotIndex/cameras, pauses and audio keys.
+const reviewedCardOverrides = {
+  "three-jobs-card": {
+    "template": "bullets",
+    "data": {
+      "title": "一份回答，可以含三種工作",
+      "items": [
+        "生成文字／查找資料／工具計數，可同時出現在一份回答",
+        "有資料或工具結果，最後文字仍可能由模型生成",
+        "三欄核對依據與執行紀錄，不是互斥能力"
+      ]
+    }
+  },
+  "parameters-context": {
+    "template": "bullets",
+    "data": {
+      "title": "兩種來源，不要混在一起",
+      "items": [
+        "參數來自訓練調整；上下文是這輪可見材料",
+        "貼上資料，和重新訓練模型，是兩件不同的事"
+      ]
+    }
+  },
+  "pottery-brief": {
+    "template": "big",
+    "data": {
+      "kicker": "一般推論的當次材料",
+      "text": "貼上資料，**不等於重新訓練**",
+      "sub": "這份失物清單提供當次資訊"
+    }
+  },
+  "pottery-limit": {
+    "template": "big",
+    "data": {
+      "kicker": "格式與內容",
+      "text": "要求格式寫滿，**不保證內容有據**",
+      "sub": "缺資料保留未知，不補造內容"
+    }
+  },
+  "demo-one-umbrella": {
+    "template": "terminal",
+    "data": {
+      "title": "有據：查那筆紀錄",
+      "prompt": ">",
+      "command": "python demo.py evidence",
+      "output": [
+        "fictional_data=true; model_called=false",
+        "L001 | umbrella | north_counter | unclaimed"
+      ],
+      "ran_on": "2026-10-04",
+      "tool_version": "Python 3.14.6"
+    }
+  },
+  "product-model": {
+    "template": "bullets",
+    "data": {
+      "title": "一個模型與完整產品",
+      "items": [
+        "模型處理這輪輸入；產品負責資料、工具與呈現",
+        "同一個模型在不同產品裡，能做的事也可能不同"
+      ]
+    }
+  },
+  "invented-name": {
+    "template": "chat",
+    "data": {
+      "title": "錯誤示意，非模型輸出",
+      "messages": [
+        {
+          "side": "right",
+          "name": "編輯錯誤稿",
+          "text": "王先生已領走北側櫃台的雨傘"
+        },
+        {
+          "side": "left",
+          "name": "清單可說",
+          "text": "雨傘未領，位置在北側櫃台"
+        }
+      ]
+    }
+  },
+  "kitchen-repeat": {
+    "template": "big",
+    "data": {
+      "kicker": "第三個陷阱",
+      "text": "重複答案，**不等於獨立證據**",
+      "sub": "回到來源；若用工具，再查實際結果"
+    }
+  },
+  "three-column-card": {
+    "template": "steps",
+    "data": {
+      "title": "你的下一份回答，分三欄",
+      "steps": [
+        {
+          "title": "生成文字",
+          "detail": "話說得通，不代表查到"
+        },
+        {
+          "title": "資料查找",
+          "detail": "哪筆紀錄、哪段來源"
+        },
+        {
+          "title": "工具計數",
+          "detail": "條件、執行、回傳"
+        }
+      ]
+    }
+  }
+};
+for (const [id, replacement] of Object.entries(reviewedCardOverrides)) {
+  const scene = scenes.find(s => s.id === id);
+  scene.template = replacement.template;
+  scene.data = structuredClone(replacement.data);
+}
+
+// Last two semantic image failures use the preserved records and review card.
+// Keep all narration/claims/IDs/reveals and the original shotIndex sequence.
+const finalReviewedCardOverrides = {
+  "demo-cap-out": {
+    "template": "table",
+    "data": {
+      "title": "兩筆已領，排除計數",
+      "columns": [
+        "代號",
+        "物件",
+        "狀態"
+      ],
+      "rows": [
+        [
+          "L002",
+          "水瓶",
+          "已領"
+        ],
+        [
+          "L005",
+          "帽子",
+          "已領"
+        ]
+      ]
+    }
+  },
+  "garden-follow-up": { template: "steps", source: "three-column-card", title: "檢查下一份完整答案" }
+};
+for (const [id, replacement] of Object.entries(finalReviewedCardOverrides)) {
+  const scene = scenes.find(s => s.id === id);
+  scene.template = replacement.template;
+  scene.data = replacement.source ? structuredClone(scenes.find(s => s.id === replacement.source).data) : structuredClone(replacement.data);
+  if (replacement.title) scene.data.title = replacement.title;
+}
 
 const sources = [
   { title: "Google Machine Learning Crash Course: Introduction to Large Language Models", url: "https://developers.google.com/machine-learning/crash-course/llm", checked_on: "2026-10-04" },

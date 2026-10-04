@@ -16,12 +16,12 @@
     "description": "大型語言模型能生成通順文字，仍要核對每個主張的依據。用六筆虛構失物資料，分清文字生成、資料查找與工具計數；不是模型實測。三種工作可以同時存在，即使有來源或工具回傳，最後文字仍可能由模型生成。完整解說與三欄卡在長片。",
     "scenes": [
       {
-        "shot": "counter-handoff",
         "headline": "會接話，查到了嗎？",
         "narration": [
           "你以為話說得完整，",
           "就代表真的查到了嗎？"
-        ]
+        ],
+        "asset": "keyframes/counter-handoff-3.jpg"
       },
       {
         "shot": "counter-hands",
@@ -41,20 +41,29 @@
         ]
       },
       {
-        "shot": "garden-three-baskets",
         "headline": "三欄核對：依據與執行紀錄",
         "narration": [
           "三欄是核對每句的依據與執行紀錄，",
           "不是把模型能力分成互斥的三種。"
-        ]
+        ],
+        "asset": "keyframes/garden-three-baskets-1.jpg"
       },
       {
-        "shot": "garden-follow-up",
         "headline": "用三欄卡檢查下一份回答",
         "narration": [
           "內容有哪筆資料，數字有哪個結果？",
           "完整方法和示範在長片。"
         ]
+      }
+    ],
+    "evidence": [
+      {
+        "path": "keyframes/counter-handoff-3.jpg",
+        "sha256": "284037e5b0ab3ac9292b607514a7c3ac0085a904fe7a8b1e7d2c27d8b8dcc5a2"
+      },
+      {
+        "path": "keyframes/garden-three-baskets-1.jpg",
+        "sha256": "8d3a9e8d13d47cc3ab49ad25bf276c74b7557c873dc554fc920fd6079aaeea1c"
       }
     ]
   },
@@ -92,7 +101,6 @@
         ]
       },
       {
-        "shot": "demo-cap-out",
         "headline": "只數未領",
         "big": "4 件",
         "narration": [

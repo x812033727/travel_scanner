@@ -293,22 +293,13 @@
     },
     {
       "id": "three-jobs-card",
-      "template": "steps",
+      "template": "bullets",
       "data": {
         "title": "一份回答，可以含三種工作",
-        "steps": [
-          {
-            "title": "生成文字",
-            "detail": "把內容組成回答"
-          },
-          {
-            "title": "查找資料",
-            "detail": "回到可確認的紀錄"
-          },
-          {
-            "title": "工具計數",
-            "detail": "看條件與實際結果"
-          }
+        "items": [
+          "生成文字／查找資料／工具計數，可同時出現在一份回答",
+          "有資料或工具結果，最後文字仍可能由模型生成",
+          "三欄核對依據與執行紀錄，不是互斥能力"
         ]
       },
       "claims": [
@@ -787,23 +778,13 @@
     },
     {
       "id": "parameters-context",
-      "template": "compare",
+      "template": "bullets",
       "data": {
         "title": "兩種來源，不要混在一起",
-        "left": {
-          "heading": "訓練與參數",
-          "points": [
-            "訓練過程調整數值",
-            "形成可運用的模式"
-          ]
-        },
-        "right": {
-          "heading": "當次上下文",
-          "points": [
-            "這輪提供的材料",
-            "用來處理眼前任務"
-          ]
-        }
+        "items": [
+          "參數來自訓練調整；上下文是這輪可見材料",
+          "貼上資料，和重新訓練模型，是兩件不同的事"
+        ]
       },
       "claims": [
         "c17",
@@ -843,11 +824,11 @@
     },
     {
       "id": "pottery-brief",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Close-up in a pottery studio at midday, a visitor's hand places a broken ceramic handle onto a plain cloth on the worktable, the incoming hand and curved fragment fill the central quarter, a potter's resting fingers wait beside the cloth, daylight from a roof opening",
-        "camera": "pan left",
-        "visual": "still"
+        "kicker": "一般推論的當次材料",
+        "text": "貼上資料，**不等於重新訓練**",
+        "sub": "這份失物清單提供當次資訊"
       },
       "claims": [
         "c17"
@@ -916,11 +897,11 @@
     },
     {
       "id": "pottery-limit",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Close-up in a pottery studio at midday, an open palm gently stops reaching fingertips above an empty clay mold, the exposed hollow and separated hands together in the central quarter, plain cloth under the mold, soft skylight on the cavity",
-        "camera": "push in",
-        "visual": "still"
+        "kicker": "格式與內容",
+        "text": "要求格式寫滿，**不保證內容有據**",
+        "sub": "缺資料保留未知，不補造內容"
       },
       "claims": [
         "c22"
@@ -1174,11 +1155,17 @@
     },
     {
       "id": "demo-one-umbrella",
-      "template": "shot",
+      "template": "terminal",
       "data": {
-        "prompt": "Close-up in an assembly hall in early afternoon, a volunteer lifts a single tightly folded umbrella upright by its curved wooden handle, the complete handle and joined shaft fill the central quarter above a plain tabletop, an empty wall behind, even high-window daylight",
-        "camera": "drift",
-        "visual": "still"
+        "title": "有據：查那筆紀錄",
+        "prompt": ">",
+        "command": "python demo.py evidence",
+        "output": [
+          "fictional_data=true; model_called=false",
+          "L001 | umbrella | north_counter | unclaimed"
+        ],
+        "ran_on": "2026-10-04",
+        "tool_version": "Python 3.14.6"
       },
       "claims": [
         "c4"
@@ -1328,11 +1315,26 @@
     },
     {
       "id": "demo-cap-out",
-      "template": "shot",
+      "template": "table",
       "data": {
-        "prompt": "Close-up in an assembly hall in early afternoon, a volunteer lifts a small plain tray holding a bottle and fabric cap clear of a cloth-covered basket, a visible gap separates the tray from the basket below, both objects and supporting hand inside the central quarter, side-door daylight",
-        "camera": "tilt down",
-        "visual": "still"
+        "title": "兩筆已領，排除計數",
+        "columns": [
+          "代號",
+          "物件",
+          "狀態"
+        ],
+        "rows": [
+          [
+            "L002",
+            "水瓶",
+            "已領"
+          ],
+          [
+            "L005",
+            "帽子",
+            "已領"
+          ]
+        ]
       },
       "claims": [
         "c26"
@@ -1644,23 +1646,13 @@
     },
     {
       "id": "product-model",
-      "template": "compare",
+      "template": "bullets",
       "data": {
         "title": "一個模型與完整產品",
-        "left": {
-          "heading": "模型",
-          "points": [
-            "處理輸入",
-            "產生文字或工具要求"
-          ]
-        },
-        "right": {
-          "heading": "產品與程式",
-          "points": [
-            "準備資料、權限與工具",
-            "執行、保存與呈現"
-          ]
-        }
+        "items": [
+          "模型處理這輪輸入；產品負責資料、工具與呈現",
+          "同一個模型在不同產品裡，能做的事也可能不同"
+        ]
       },
       "claims": [
         "c33"
@@ -1891,14 +1883,14 @@
         "title": "錯誤示意，非模型輸出",
         "messages": [
           {
-            "side": "left",
-            "name": "清單可說",
-            "text": "雨傘未領，位置在北側櫃台"
-          },
-          {
             "side": "right",
             "name": "編輯錯誤稿",
             "text": "王先生已領走北側櫃台的雨傘"
+          },
+          {
+            "side": "left",
+            "name": "清單可說",
+            "text": "雨傘未領，位置在北側櫃台"
           }
         ]
       },
@@ -2002,11 +1994,11 @@
     },
     {
       "id": "kitchen-repeat",
-      "template": "shot",
+      "template": "big",
       "data": {
-        "prompt": "Close-up in an apartment kitchen in late afternoon. One pair of hands pours a single short stream of beans from one tilted ceramic bowl into a second bowl directly below. The two complete bowls and single stream fit inside the central vertical quarter. Bare worktop, warm kitchen work light, plain surfaces.",
-        "camera": "pull out",
-        "visual": "still"
+        "kicker": "第三個陷阱",
+        "text": "重複答案，**不等於獨立證據**",
+        "sub": "回到來源；若用工具，再查實際結果"
       },
       "claims": [
         "c34"
@@ -2022,7 +2014,7 @@
       "id": "kitchen-agree",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up in an apartment kitchen in late afternoon. Two cooks hold identical empty transparent jars close together above a bare counter. Both complete jars and their supporting hands occupy the central vertical quarter. The plain shelf behind is empty; a kitchen work light illuminates the glass.",
+        "prompt": "Close-up in an apartment kitchen, late afternoon. Two identical empty glass jars stand side by side on a bare worktop, both complete rims and clear bottoms visible. Warm kitchen light passes through the empty interiors. Behind them is only a plain unmarked wall, with no shelf, kitchenware, hands, writing or labels. Both jars fit together in the central vertical quarter.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -2205,26 +2197,22 @@
     },
     {
       "id": "three-column-card",
-      "template": "table",
+      "template": "steps",
       "data": {
         "title": "你的下一份回答，分三欄",
-        "columns": [
-          "工作",
-          "要找的證據"
-        ],
-        "rows": [
-          [
-            "生成文字",
-            "話說得通，不代表查到"
-          ],
-          [
-            "資料查找",
-            "哪筆紀錄、哪段來源"
-          ],
-          [
-            "工具計數",
-            "條件、執行、回傳"
-          ]
+        "steps": [
+          {
+            "title": "生成文字",
+            "detail": "話說得通，不代表查到"
+          },
+          {
+            "title": "資料查找",
+            "detail": "哪筆紀錄、哪段來源"
+          },
+          {
+            "title": "工具計數",
+            "detail": "條件、執行、回傳"
+          }
         ]
       },
       "claims": [
@@ -2465,11 +2453,23 @@
     },
     {
       "id": "garden-follow-up",
-      "template": "shot",
+      "template": "steps",
       "data": {
-        "prompt": "Overhead close-up in a residential garden before sunset. Exactly three shallow woven baskets form one compact vertical column: top contains a plain scarf, middle contains one fabric glove, bottom is visibly empty. All rims and contents fit inside the central vertical quarter. Two hands pause outside the rims. Even daylight under an open pergola.",
-        "camera": "tilt down",
-        "visual": "still"
+        "title": "檢查下一份完整答案",
+        "steps": [
+          {
+            "title": "生成文字",
+            "detail": "話說得通，不代表查到"
+          },
+          {
+            "title": "資料查找",
+            "detail": "哪筆紀錄、哪段來源"
+          },
+          {
+            "title": "工具計數",
+            "detail": "條件、執行、回傳"
+          }
+        ]
       },
       "claims": [
         "c23",
