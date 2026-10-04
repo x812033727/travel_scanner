@@ -31,7 +31,7 @@ metadata:
 
 知識科普三季、品牌故事與 AI 名詞的長片另以 `docs/videos/long-form/README.md` 的有效企劃為準：科普及 AI 名詞目標10分鐘，品牌保留13分鐘；當前旁白正文及成片各至少8分鐘，片頭片尾不能補足正文。扁平解說後台8–20整數分鐘、預設10；Shorts、普通漫劇及合集保留原格式。計畫秒數不代表媒體實測，不以停頓、重複或慢播補時。
 
-此批十部動畫的製作規格以 `docs/videos/series-plans/production-20261001/profile.json` 與每部 `production-design.json` 為準：全部動態鏡頭、Veo 3.1 Lite 1080p 每段 8 秒、字幕只做 CC；先定案完成台灣口音中文版，再做 ja/ko/en 配音與各自 CC。漫劇多語角色配音仍是規劃中的後續工作，不能把教學影片已有的配音流程當成漫劇已支援。詳細試音、樣片與交付順序讀 `references/animation-production.md`。
+此批十部動畫的製作規格以 `docs/videos/series-plans/production-20261001/profile.json` 與每部 `production-design.json` 為準：全部動態鏡頭、Veo 3.1 Lite 1080p 每段 8 秒、字幕只做 CC；先定案完成台灣口音中文版，再做 ja/ko/en 配音與各自 CC。漫劇多語角色配音仍是規劃中的後續工作，不能把教學影片已有的配音流程當成漫劇已支援。詳細試音、樣片與交付順序讀 `.agents/skills/youtube-video/references/animation-production.md`。
 
 有角色的漫劇，每一集的劇本與分鏡動筆前先讀 `.agents/skills/youtube-video/references/drama-craft.md`：開場前 10 秒、一場戲的鏡位與剪點、鏡頭與台詞的長度、包裝；目標分成對 YouTube 上 AI 漫劇量到的與編輯判斷兩種，文件裡分開標。寫完跑 `node .agents/skills/youtube-video/scripts/drama_craft_check.mjs`，沒過的項目改掉或在回報裡逐項回答。它只管分鏡的結構，不擋任何指令，不改任何一種影片的長度規定，也不代替實際小樣的觀看；沒有角色的漫劇（解說、品牌故事）不適用。
 
