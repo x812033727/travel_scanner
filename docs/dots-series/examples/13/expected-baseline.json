@@ -1,0 +1,32 @@
+{
+  "status": "authored_expected_baseline_not_dots_output",
+  "currency": "TWD",
+  "v1": {
+    "orders": 8,
+    "units": 16,
+    "gross": 3630,
+    "discount": 190,
+    "refund": 300,
+    "net": 3140,
+    "channel_net": {"web": 1530, "store": 1610},
+    "product_net": {"mug": 870, "notebook": 1020, "tote": 1250}
+  },
+  "v2": {
+    "orders": 12,
+    "units": 25,
+    "gross": 6240,
+    "discount": 280,
+    "refund": 420,
+    "net": 5540,
+    "channel_net": {"web": 2460, "store": 3080},
+    "product_net": {"mug": 1770, "notebook": 1260, "tote": 2510}
+  },
+  "update": {
+    "corrected_order": "O008",
+    "old_order_net": 240,
+    "new_order_net": 360,
+    "correction_net_difference": 120,
+    "new_orders_net": 2280,
+    "total_net_difference": 2400
+  }
+}
