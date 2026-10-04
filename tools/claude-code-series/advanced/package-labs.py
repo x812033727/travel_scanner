@@ -12,6 +12,7 @@ import zipfile
 
 ROOT=Path(__file__).resolve().parents[3]
 LAB=Path(__file__).parent/'lab'
+MODS=Path(__file__).parent/'mods'
 DEST=ROOT/'apps/web/public/tutorials/claude-code/advanced'
 PLAN=json.loads((ROOT/'docs/claude-code-series/advanced/curriculum.json').read_text(encoding='utf-8'))
 EXCLUDE={'node_modules','run-data','.git','__pycache__'}
@@ -84,6 +85,15 @@ def main():
                 reference[f'.claude/agents/{role}.md']=common[f'agents/{role}.md']
         if n==83:
             reference['fixtures.untrusted.mcp.json']=json.dumps({'mcpServers':{'untrusted':{'command':'node','args':['mcp/untrusted-server.mjs']}}},indent=2).encode()+b'\n'
+        if n==97:
+            # Lesson 97 ships the mod from the documentation's tutorial: the starter holds the
+            # manifest and hooks.json only, so the reader writes register.js and the test;
+            # the reference holds all four files, validated and tested in the container.
+            for path in sorted(MODS.rglob('*')):
+                if not path.is_file() or EXCLUDE.intersection(path.relative_to(MODS).parts):continue
+                name=path.relative_to(MODS).as_posix()
+                reference[name]=path.read_bytes()
+                if name.endswith(('plugin.json','hooks.json')):starter[name]=path.read_bytes()
         if n==96:
             with zipfile.ZipFile(ROOT/'apps/web/public/tutorials/claude-code/complete.zip') as completed:
                 for name in completed.namelist():
