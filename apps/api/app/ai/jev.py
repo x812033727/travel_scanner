@@ -48,10 +48,9 @@ SYSTEM_ONE_PATH = "/systemone"
 # longest single question may carry 32k.
 VENDOR_MAX_REQUEST_TOKENS = 64_000
 VENDOR_MAX_STATE_TOKENS = 32_000
-# The score range is the vendor's: "ordered rubric levels (2-10 levels)". The choice
-# cap is ours -- TypeSafe documents no maximum -- and exists because a question with
-# hundreds of options is a retrieval problem wearing a classifier's clothes, and
-# because accuracy is documented to fall as unrelated detail grows.
+# Both ranges are the vendor's (docs.typesafe.ai/api): a score takes two to ten ordered
+# levels, and a choice "a maximum of 255 options". Checking them here makes a question
+# over either limit our own error instead of a 422 from the far side.
 MAX_CHOICE_OPTIONS = 255
 MIN_SCORE_LEVELS = 2
 MAX_SCORE_LEVELS = 10
@@ -380,10 +379,16 @@ def route(
 ) -> Tier:
     """Turn one answer into act / confirm / hold.
 
-    Two things live here rather than in a comment. A noul answer has no ``confidence``
-    -- its own value is the probability -- so it needs thresholds chosen for noul and
-    not borrowed from a choice. And while ``cjk_autopilot`` is off, a confident answer
-    about non-English state is downgraded to ``confirm``. TypeSafe states that
+    The same two thresholds are compared with a noul's value and with a choice's or a
+    score's ``confidence``, although the two are on different scales. A noul answer has
+    no ``confidence``: its value is the probability of yes, and the vendor's
+    confidence-style number for it is |2p-1|, which is 0 at p = 0.5
+    (docs.typesafe.ai/confidence). Only noul answers are routed today, so the mismatch
+    costs nothing yet; routing a choice or a score as well needs thresholds of its own
+    for each scale first.
+
+    While ``cjk_autopilot`` is off, a confident answer about non-English state is
+    downgraded to ``confirm``. TypeSafe states that
     "English is the primary training language and where accuracy is currently best"
     and publishes no accuracy figures for any other language; this product is written
     in five. Until our own numbers say otherwise, that gap is a default-closed switch.
@@ -419,10 +424,11 @@ def route_answer(answer: JevAnswer, settings: Settings, *, locale: str = "en") -
 async def probe(settings: Settings, client: httpx.AsyncClient | None = None) -> str:
     """The cheapest call that proves the key, the host, the model id and the shape.
 
-    TypeSafe documents no models endpoint, so the list-models probe every other vendor
-    on the admin card uses has nothing to call here, and a 405 from a gateway would
-    arrive before the key was ever checked. One real noul question over a four-word
-    state is about forty input tokens; output is not billed at all.
+    The other vendors on the admin card are probed by listing their models. TypeSafe
+    documents ``GET /v1/models`` (docs.typesafe.ai/models), but it lists only the aliases
+    and the model field accepts versioned ids it does not list, so a listing cannot show
+    that the pinned ``jev_model`` answers; a real question can. One noul question over a
+    four-word state is about forty input tokens; output is not billed at all.
     """
     jev = jev_client(settings, client)
     try:
