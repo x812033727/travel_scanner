@@ -1,5 +1,7 @@
 # Claude Code 深入教學：第二階段交付
 
+> 2026-10-04 追加第 97 篇「建立第一個 mod」（批次見 `tasks/open/2026-10-03-claude-code-lesson-first-mod.md`）：全系列現在有 97 篇教學加 1 個總目錄，共 98 頁。下文的 36 篇與 97 頁是第二階段交付時的數字，保留為歷史紀錄。
+
 新增 **36 篇完整教學（61–96）、36 份獨立練習包、六組合集**，整合到同一個 Claude Code 教學目錄。全系列現在有 **96 篇教學加 1 個總目錄，共 97 頁**。內容與本機預覽已製作；部分裝置及外部環境實測仍有待辦，狀態見下表。
 
 [第一階段紀錄](../README.md) · [作者任務書](lesson-briefs.md) · [編輯清單](curriculum.json) · [來源與驗證界線](source-review.md) · [本次驗收紀錄](evidence/delivery-checks.json) · [逐篇驗證表](evidence/lesson-verification.json)
@@ -37,6 +39,7 @@ node --experimental-strip-types tools/claude-code-series/preview.mjs
 | [70．Skill 何時啟動：手動呼叫與自動選用](../lessons/70.md) | 用正反例評估描述與呼叫設定 | [ZIP](../../../apps/web/public/tutorials/claude-code/advanced/lesson-70.zip) |
 | [71．替 Skills 建立回歸案例與評分表](../lessons/71.md) | 讓 Skill 修改後有可比較的品質紀錄 | [ZIP](../../../apps/web/public/tutorials/claude-code/advanced/lesson-71.zip) |
 | [72．把 Skills 與 Hooks 包成可版本管理的 Plugin](../lessons/72.md) | 讓同伴安裝、升級與回退同一套工作流程 | [ZIP](../../../apps/web/public/tutorials/claude-code/advanced/lesson-72.zip) |
+| [97．建立第一個 mod：在 Claude Code 行程內數工具呼叫](../lessons/97.md) | 寫一個三檔案的 mod，用驗證器與測試確認它掛上的事件 | [ZIP](../../../apps/web/public/tutorials/claude-code/advanced/lesson-97.zip) |
 | [73．讀懂 Hook 事件：輸入、輸出與退出碼](../lessons/73.md) | 建立可重播事件的本機測試工具 | [ZIP](../../../apps/web/public/tutorials/claude-code/advanced/lesson-73.zip) |
 | [74．只處理變更檔案的格式化 Hook](../lessons/74.md) | 限制格式化範圍並避免事件重複執行 | [ZIP](../../../apps/web/public/tutorials/claude-code/advanced/lesson-74.zip) |
 | [75．建立可停止的品質檢查 Hook](../lessons/75.md) | 讓完成檢查能指出失敗並有清楚的退出機制 | [ZIP](../../../apps/web/public/tutorials/claude-code/advanced/lesson-75.zip) |
@@ -65,7 +68,7 @@ node --experimental-strip-types tools/claude-code-series/preview.mjs
 ## 推薦路線
 
 - **MD 與專案規則**：[61](../lessons/61.md) → [62](../lessons/62.md) → [63](../lessons/63.md) → [65](../lessons/65.md) → [66](../lessons/66.md)
-- **Skills 與自訂指令**：[67](../lessons/67.md) → [68](../lessons/68.md) → [69](../lessons/69.md) → [70](../lessons/70.md) → [71](../lessons/71.md) → [72](../lessons/72.md)
+- **Skills 與自訂指令**：[67](../lessons/67.md) → [68](../lessons/68.md) → [69](../lessons/69.md) → [70](../lessons/70.md) → [71](../lessons/71.md) → [72](../lessons/72.md) → [97](../lessons/97.md)
 - **Hooks 與檢查流程**：[73](../lessons/73.md) → [74](../lessons/74.md) → [75](../lessons/75.md) → [76](../lessons/76.md) → [77](../lessons/77.md) → [78](../lessons/78.md)
 - **自建 MCP 工具**：[79](../lessons/79.md) → [80](../lessons/80.md) → [81](../lessons/81.md) → [82](../lessons/82.md) → [83](../lessons/83.md) → [84](../lessons/84.md)
 - **完整開發與協作**：[85](../lessons/85.md) → [86](../lessons/86.md) → [87](../lessons/87.md) → [88](../lessons/88.md) → [89](../lessons/89.md) → [96](../lessons/96.md)
