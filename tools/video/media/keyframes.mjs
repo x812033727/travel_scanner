@@ -12,7 +12,7 @@ import { parseArgs } from "node:util";
 import { approvalState } from "../core/approvals.mjs";
 import { burnIn, drawnShotScenes, hasCast, hasPictures, illustrated, isExplainer, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
+import { ARTIFACTS, keyframeProblems, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { visualHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
@@ -392,7 +392,7 @@ export async function run(command, args, ctx) {
   for (const scene of shots) {
     const characters = cast(scene);
     const current = manifest.shots[scene.id];
-    if (current && !current.needs_review && !values.force && existsSync(path.join(workdir, current.file))) {
+    if (current && !values.force && !(await keyframeProblems({ doc: { scenes: [scene] }, manifest: { shots: { [scene.id]: current } }, workdir })).length) {
       ctx.stdout.write(`${scene.id}: kept (judge ${current.judge?.overall ?? "?"}/10)\n`);
       continue;
     }
@@ -400,13 +400,22 @@ export async function run(command, args, ctx) {
     const prompt = shotPrompt(scene, look, characters);
     const asked = question(scene, characters);
     const judged = stampOf(asked);
-    const entry = current?.takes && !values.force ? current : { takes: [] };
+    const entry = current?.takes && !values.force ? { ...current, takes: [] } : { takes: [] };
+    // A cached verdict cannot stand in for a picture whose file was removed or changed.
+    for (const take of !values.force ? current?.takes ?? [] : []) {
+      const start = { ...scene, data: { ...scene.data, end_frame: undefined } };
+      if (!(await keyframeProblems({ doc: { scenes: [start] }, manifest: { shots: { [scene.id]: take } }, workdir, allowNeedsReview: true })).length) entry.takes.push(take);
+    }
     for (let take = 1; take <= takes; take++) {
       const seed = take;
       // A take judged on this question is not asked about again. One judged on another question
       // is, from its cached picture; a take from before verdicts were stamped is of another
       // question only where the question is now the checks.
-      if (entry.takes.some((each) => each.seed === seed && each.judge && (each.judged === judged || (each.judged === undefined && !checks)))) continue;
+      const previous = entry.takes.find((each) => each.seed === seed && each.judge && (each.judged === judged || (each.judged === undefined && !checks)));
+      if (previous) {
+        if (previous.judge.passed) break;
+        continue;
+      }
       let picture;
       try {
         picture = await stage.image({ id: scene.id, purpose: "keyframe", prompt, negative: look.negative, references, seed, shotId: scene.id, size, target: `keyframes/${scene.id}-${seed}` });
@@ -457,6 +466,10 @@ export async function run(command, args, ctx) {
     if (record.needs_review) record.problems = [...new Set(entry.takes.flatMap((each) => each.judge?.problems ?? []))];
     // An end frame guides the clip's last picture; it is not judged, only drawn.
     if (scene.data.end_frame?.prompt) {
+      // Keep the selected start picture before the next paid call. A cap, upstream error or
+      // STOP here leaves reusable judged takes and a visibly unfinished end frame on disk.
+      manifest.shots[scene.id] = { ...record, incomplete: true };
+      writeManifest(workdir, manifest);
       try {
         const end = await stage.image({ id: `${scene.id}/end`, purpose: "keyframe", prompt: endPrompt(scene, characters), negative: look.negative, references, seed: 1, shotId: scene.id, target: `keyframes/${scene.id}-end` });
         if (!end.reused) generated += 1;
@@ -464,7 +477,7 @@ export async function run(command, args, ctx) {
       } catch (error) {
         if (error.code === "stopped") {
           stopped = true;
-          manifest.shots[scene.id] = { ...record, needs_review: true, incomplete: true };
+          manifest.shots[scene.id] = { ...record, incomplete: true };
           writeManifest(workdir, manifest);
           break;
         }

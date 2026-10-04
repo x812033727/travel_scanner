@@ -4,6 +4,9 @@
 // the web container, so these never leave the compose network.
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
+import { stopRequested } from "../core/paths.mjs";
+import { normalizeRun, RunReceiptError, runReceiptStore } from "./run-receipts.mjs";
+import path from "node:path";
 
 // A stage answered something that is not the JSON it was asked for; flow.mjs retries it later.
 export const OUTPUT_INVALID = "video_ai_output_invalid";
@@ -13,6 +16,9 @@ export const OUTPUT_INVALID = "video_ai_output_invalid";
 // finished after 302 s, past the web route's 295 s, and was recorded as ok. The run is not sent
 // again here; flow.mjs stops the video for a person instead of paying twice.
 export const RUN_UNCERTAIN = "video_ai_run_uncertain";
+// A durable run still has a recoverable server receipt. The worker ends this round and polls
+// that same operation next round instead of holding a gateway open for several minutes.
+export const RUN_PENDING = "video_ai_run_pending";
 
 export class AutomationError extends Error {
   constructor(message, { status = 0, code = "", who = "service" } = {}) {
@@ -69,11 +75,13 @@ function delayMs(response, attempt) {
  * stage run (`paid`) is sent again only when nothing ran or the API settled it: never after a
  * request that went out and lost its answer (RUN_UNCERTAIN).
  */
-export function automationClient(ctx, { attempts = 4 } = {}) {
+export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, durablePollIntervalMs = 1000 } = {}) {
   const { site, token } = readCredentials({ env: ctx.env, home: ctx.home });
   if (!token) throw new AutomationError("no video tool token yet: run `node tools/video/cli.mjs login`", { who: "owner" });
   const fetchImpl = ctx.fetch ?? globalThis.fetch;
   const sleep = ctx.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
+  const receipts = runReceiptStore(ctx, site);
+  let durable = false;
   const uncertain = (route, why, status = 0) =>
     Object.assign(new AutomationError(`${route} was sent and no answer came back (${why}); the model may have run, so it is not sent again`, { status, code: RUN_UNCERTAIN }), { why });
   async function request(method, route, json, { paid = false } = {}) {
@@ -117,8 +125,119 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
     }
     throw last;
   }
+  const tagged = (error, body) => Object.assign(error, { slug: body.slug, stage: body.stage });
+  async function durableRun(body, previous) {
+    const entry = previous ?? receipts.prepare(body);
+    const started = Date.now(), budget = Math.max(1, Math.min(durablePollMs, 25_000));
+    const interval = Math.max(1, Math.min(durablePollIntervalMs, budget));
+    let waited = 0, failures = 0;
+    function completed() {
+      const receipt = entry.record.receipt;
+      if (receipt?.status === "succeeded") { receipts.consume(entry); return receipt.result; }
+      if (receipt?.status === "uncertain") throw tagged(new AutomationError(receipt.error_detail || "the saved model run is uncertain; the owner must inspect it before retrying", { code: RUN_UNCERTAIN, status: receipt.error_status ?? 0, who: "owner" }), body);
+      if (receipt?.status === "failed") {
+        const error = tagged(new AutomationError(receipt.error_detail || "the saved model run failed", { code: receipt.error_code ?? "video_ai_upstream_failed", status: receipt.error_status ?? 502,
+          who: OWNER_CODES.has(receipt.error_code) ? "owner" : "service" }), body);
+        if (receipt.retry_after !== null && receipt.retry_after !== undefined) error.retry_after = receipt.retry_after;
+        receipts.removeFailed(entry);
+        throw error;
+      }
+      return null;
+    }
+    let lastProblem = "";
+    for (;;) {
+      const result = completed();
+      if (result) return result;
+      const remaining = budget - Math.max(waited, Date.now() - started);
+      if (remaining <= 0 || stopRequested(path.dirname(path.dirname(entry.file)))) break;
+      const known = entry.record.receipt;
+      const route = known ? `automation/run/jobs/${known.id}?input_hash=${known.input_hash}` : "automation/run/jobs";
+      try {
+        const response = await fetchImpl(`${site}/api/video/${route}`, {
+          method: known ? "GET" : "POST",
+          headers: { Authorization: `Bearer ${token}`, "User-Agent": USER_AGENT, "Accept-Language": "zh-TW",
+            ...(!known ? { "Content-Type": "application/json" } : {}) },
+          ...(!known ? { body: JSON.stringify({ ...entry.record.request, request_key: entry.record.request_key }) } : {}),
+          signal: AbortSignal.timeout(Math.max(1, Math.floor(remaining))),
+        });
+        if (!response.ok) {
+          const problem = await problemOf(response);
+          const error = new AutomationError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code,
+            who: response.status === 401 || OWNER_CODES.has(problem.code) || response.status === 409 ? "owner" : "service" });
+          if (error.who === "owner" || response.status < 429 || PAUSE_CODES.has(problem.code)) throw tagged(error, body);
+          lastProblem = error.message;
+          failures++;
+        } else {
+          let receipt;
+          try { receipt = await response.json(); }
+          catch { // A partial body has the same safe recovery as a lost connection: reuse the key.
+            lastProblem = "the receipt response ended before it could be read";
+            failures++;
+          }
+          if (receipt !== undefined) { receipts.receive(entry, receipt); failures = 0; }
+        }
+      } catch (error) {
+        if (error instanceof RunReceiptError || error instanceof AutomationError) throw error;
+        // GET or same-key POST can reconnect safely. The persisted key survives process exit.
+        lastProblem = error.message;
+        failures++;
+      }
+      const resultAfter = completed();
+      if (resultAfter) return resultAfter;
+      if (failures >= attempts || stopRequested(path.dirname(path.dirname(entry.file)))) break;
+      const wait = Math.min(interval, budget - Math.max(waited, Date.now() - started));
+      if (wait <= 0) break;
+      await sleep(wait);
+      waited += wait;
+    }
+    throw tagged(new AutomationError(`the saved stage run is still pending${lastProblem ? ` (${lastProblem})` : ""}; its receipt will be recovered next round`, { code: RUN_PENDING }), body);
+  }
+  async function run(stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) {
+    const body = { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) };
+    // Anime acts and brand-story chapters already have their own bounded checkpoints.
+    if (stage !== "writer" || ["anime-act", "story"].includes(variant)) return request("POST", "automation/run", body, { paid: true });
+    try {
+      const normalized = normalizeRun(body), previous = receipts.find(normalized);
+      if (durable || previous) return await durableRun(normalized, previous);
+      return await request("POST", "automation/run", body, { paid: true });
+    } catch (error) {
+      if (error instanceof RunReceiptError) throw tagged(Object.assign(new AutomationError(error.message, { code: RUN_UNCERTAIN, who: "owner" }), { why: error.message, receipt_code: error.code ?? "" }), body);
+      throw error;
+    }
+  }
+  async function retryRuns(slug, authorization = {}) {
+    try {
+      const confirmed = [];
+      for (const entry of receipts.retryCandidates(slug, authorization)) {
+        const saved = entry.record.receipt;
+        const response = await fetchImpl(`${site}/api/video/automation/run/jobs/${saved.id}?input_hash=${saved.input_hash}`, {
+          method: "GET", headers: { Authorization: `Bearer ${token}`, "User-Agent": USER_AGENT, "Accept-Language": "zh-TW" },
+          signal: AbortSignal.timeout(25_000),
+        });
+        if (!response.ok) {
+          const problem = await problemOf(response);
+          throw new Error(problem.detail || `HTTP ${response.status}`);
+        }
+        const fresh = receipts.receive(entry, await response.json());
+        confirmed.push({ entry, fresh });
+      }
+      // Verify every selected lookup before archiving any operation. A failed lookup leaves
+      // all keys in place, even when another operation's current state was already readable.
+      for (const { entry, fresh } of confirmed) {
+        // A late successful commit is recovered by the normal run path, before any budget
+        // check. Only a freshly confirmed uncertain result permits this explicit new attempt.
+        if (fresh.status === "uncertain" || fresh.status === "succeeded" && authorization.reason?.includes("inputs changed")) receipts.archive(entry, authorization);
+      }
+    } catch (error) {
+      throw Object.assign(new AutomationError(`could not verify the saved run before owner retry: ${error.message}; its receipt is retained`, { code: RUN_UNCERTAIN, who: "owner" }), { slug, why: error.message });
+    }
+  }
   return {
-    settings: () => request("GET", "automation/settings"),
+    settings: async () => {
+      const settings = await request("GET", "automation/settings");
+      durable = settings.durable_stage_runs === true;
+      return settings;
+    },
     topics: () => request("GET", "automation/topics"),
     /**
      * Every video on /admin/videos, dropped ones too: slug, title, source_guide, dropped_at. With
@@ -129,8 +248,13 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
      * One stage: the server answers with the model the owner chose; returns { text, usage, … }.
      * An answer lost on the way throws RUN_UNCERTAIN instead of paying for the stage again.
      */
-    run: (stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) =>
-      request("POST", "automation/run", { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) }, { paid: true }),
+    run,
+    /** After this returned output has been saved; later corrections may use new inputs. */
+    adoptRuns: (slug, proof) => receipts.adopt(slug, proof),
+    /** Only after this caller's completed unit has saved its artifacts and state. */
+    settleRuns: (slugs) => receipts.settle(slugs),
+    /** An explicit owner retry clears uncertain runs only; queued/running evidence stays. */
+    retryRuns,
     /** Report the video's title, stage and checklist to /admin/videos. */
     report: (slug, project) => request("PUT", `reviews/${slug}`, project),
     /** Submit one review; the same content twice returns the review that exists. */

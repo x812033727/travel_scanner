@@ -430,10 +430,11 @@ async def auto_approves_audio(
 
 
 def storyboard_check_passed(payload: dict[str, Any], min_score: int) -> bool:
-    """Whether a storyboard review's judge summary clears the owner's threshold with no problems.
+    """Whether every expected picture is complete and clears the owner's judge threshold.
 
-    The payload carries {"shots": [...], "judge": {"overall": 0-10, "problems": [...]}} from
-    the keyframes stage; a shot left for a prompt fix (needs_review) never auto-approves.
+    New submissions attest the selected files' hashes after checking local bytes and list
+    the document's expected shots separately. Older reviews without that coverage evidence
+    remain available for owner review, but cannot establish automatic approval.
     """
     judge = payload.get("judge")
     shots = payload.get("shots")
@@ -445,9 +446,47 @@ def storyboard_check_passed(payload: dict[str, Any], min_score: int) -> bool:
         return False
     if problems not in (None, []):
         return False
-    if any(isinstance(shot, dict) and shot.get("needs_review") for shot in shots):
+    expected = payload.get("expected_shots")
+    if not isinstance(expected, list) or not expected or len(expected) != len(shots):
         return False
-    return overall >= min_score
+    wanted: dict[str, bool] = {}
+    for entry in expected:
+        if not isinstance(entry, dict):
+            return False
+        shot_id = entry.get("id")
+        end_required = entry.get("end_frame_required")
+        if (not isinstance(shot_id, str) or not shot_id or shot_id in wanted
+                or not isinstance(end_required, bool)):
+            return False
+        wanted[shot_id] = end_required
+
+    def has_hash(value: Any) -> bool:
+        return isinstance(value, str) and len(value) == 64 and all(
+            letter in "0123456789abcdef" for letter in value
+        )
+
+    seen: set[str] = set()
+    for shot in shots:
+        if not isinstance(shot, dict):
+            return False
+        shot_id = shot.get("id")
+        if not isinstance(shot_id, str) or shot_id not in wanted or shot_id in seen:
+            return False
+        seen.add(shot_id)
+        if (shot.get("complete") is not True or shot.get("incomplete")
+                or shot.get("needs_review") or not has_hash(shot.get("file_sha256"))):
+            return False
+        if wanted[shot_id] and not has_hash(shot.get("end_frame_sha256")):
+            return False
+        verdict = shot.get("judge")
+        if not isinstance(verdict, dict):
+            return False
+        score = verdict.get("overall")
+        if (not isinstance(score, int | float) or isinstance(score, bool)
+                or not min_score <= score <= 10 or verdict.get("problems") not in (None, [])
+                or verdict.get("passed") is False):
+            return False
+    return min_score <= overall <= 10
 
 
 async def hands_off_series(
