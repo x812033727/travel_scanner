@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-other-tool-tests-still-leave-temporary
 title: Other tool tests still leave temporary directories in TEMP
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-tts-ni-tempdirs
 claimed_at: 2026-10-04T14:55:27Z
 created_at: 2026-10-03T12:32:25Z
-completed_at:
+completed_at: 2026-10-04T15:32:24Z
 branch: claude/tts-ni-variant-and-test-tempdirs
 depends_on:
   - 2026-10-03-video-tool-tests-leave-a-sandbox

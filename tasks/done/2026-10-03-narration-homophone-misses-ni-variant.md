@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-narration-homophone-misses-ni-variant
 title: Narration homophone rule misses the 妳/你 pair
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-tts-ni-tempdirs
 claimed_at: 2026-10-04T14:52:49Z
 created_at: 2026-10-03T17:48:47Z
-completed_at:
+completed_at: 2026-10-04T15:32:13Z
 branch: claude/tts-ni-variant-and-test-tempdirs
 depends_on: []
 scope:
