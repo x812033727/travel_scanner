@@ -171,7 +171,8 @@
         "claude-code-skill-resource-design",
         "claude-code-skill-invocation-control",
         "claude-code-skill-regression-testing",
-        "claude-code-plugin-team-distribution"
+        "claude-code-plugin-team-distribution",
+        "claude-code-first-mod"
       ]
     },
     {
@@ -3295,6 +3296,42 @@
         "https://code.claude.com/docs/en/github-actions",
         "https://code.claude.com/docs/en/scheduled-tasks",
         "https://code.claude.com/docs/en/agent-sdk/overview"
+      ]
+    },
+    {
+      "slug": "claude-code-first-mod",
+      "title": "建立第一個 mod：在 Claude Code 行程內數工具呼叫",
+      "outcome": "寫一個三檔案的 mod，用驗證器與測試確認它掛上的事件",
+      "number": 97,
+      "group": "L",
+      "level": "advanced",
+      "platforms": [
+        "cli",
+        "desktop"
+      ],
+      "aliases": [
+        "mod",
+        "mods",
+        "hooks module",
+        "plugin validate",
+        "plugin test",
+        "事件函式"
+      ],
+      "prerequisites": [
+        "claude-code-plugins-guide",
+        "claude-code-hooks-getting-started",
+        "claude-code-plugin-team-distribution"
+      ],
+      "related": [
+        "claude-code-hook-event-test-lab",
+        "claude-code-skill-regression-testing",
+        "claude-code-hook-portability-recovery"
+      ],
+      "sources": [
+        "https://code.claude.com/docs/en/plugins/mods/overview",
+        "https://code.claude.com/docs/en/plugins/mods/create",
+        "https://code.claude.com/docs/en/plugins/mods/test",
+        "https://code.claude.com/docs/en/plugins/mods/reference"
       ]
     }
   ]
