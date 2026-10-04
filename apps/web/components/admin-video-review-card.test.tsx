@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { ReviewCard, UploadPackage, type Review } from "./admin-video-review-card";
+import { chosenLanguagesComplete, publishState, PublishPill, ReviewCard, UploadPackage, type ProjectSummary, type Review } from "./admin-video-review-card";
 
 // Ticket 2026-09-28-admin-video-review-the-owner-s: three final-cut approvals did not register on
 // 2026-09-28 until the owner was sent the exact titles. These pin down what the card itself does
@@ -29,6 +29,41 @@ function stubDecision(answer: () => Response) {
 afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
+});
+
+describe("language results and upload package readiness", () => {
+  const base: ProjectSummary = {
+    slug: "imported-cut", title: "Imported cut", stage: "final approved", pending: 0,
+    checklist: [{ key: "final_video_approved", label: "Final approved", done: true }],
+    youtube_video_id: null, last_synced_at: "2026-10-04T10:00:00Z", ready_to_upload: false,
+    locales_decided_at: "2026-10-04T09:00:00Z", locales: { en: { metadata: true, captions: true, dub: true } },
+    languages: { en: { metadata: { state: "ready" }, captions: { state: "ready" }, dub: { state: "working" } } },
+  };
+
+  it("does not present unreported results as an active producer", () => {
+    expect(publishState(base)).toBe("making");
+    expect(chosenLanguagesComplete(base)).toBe(false);
+    render(<PublishPill project={base} />);
+    expect(screen.getByText("語言尚未完成")).toBeTruthy();
+    expect(screen.queryByText("語言製作中")).toBeNull();
+    expect(publishState({ ...base, languages: {} })).toBe("making");
+    expect(publishState({ ...base, languages: { en: { ...base.languages?.en, dub: { state: "unrecognized" } } } })).toBe("making");
+  });
+
+  it("identifies a missing package after all selected parts have results", () => {
+    const complete = { ...base, languages: { en: { metadata: { state: "ready" }, captions: { state: "ready" }, dub: { state: "skipped", reason: "quality check failed" } } } };
+    expect(chosenLanguagesComplete(complete)).toBe(true);
+    expect(publishState(complete)).toBe("packaging");
+    render(<PublishPill project={complete} />);
+    expect(screen.getByText("上架包尚未就緒")).toBeTruthy();
+    expect(publishState({ ...complete, languages: { en: { ...complete.languages.en, dub: { state: "uploaded" } } } })).toBe("packaging");
+    expect(publishState({ ...base, locales: {}, languages: {} })).toBe("packaging");
+    expect(publishState({ ...complete, ready_to_upload: true, publish_approved_at: "2026-10-04T10:00:00Z" })).toBe("ready");
+    expect(publishState({ ...complete, dropped_at: "2026-10-04T10:00:00Z" })).toBeNull();
+    expect(publishState({ ...complete, shorts_line: "cut" })).toBeNull();
+    expect(publishState({ ...complete, youtube_video_id: "abcdefghijk" })).toBe("published");
+    expect(publishState({ ...complete, youtube_video_id: "abcdefghijk", youtube_publish_at: "2999-01-01T00:00:00Z" })).toBe("scheduled");
+  });
 });
 
 describe("a final cut's review card", () => {
