@@ -2,7 +2,8 @@
 licence gate, the byte caps, and an ingest that writes everything or nothing.
 
 No network and no browser: the Commons client is an ``httpx.MockTransport`` and the renderer a
-function that paints a PNG with Pillow.
+function that paints a PNG with Pillow. The one exception renders through a real Chromium and
+is skipped where none is installed.
 """
 
 from __future__ import annotations
@@ -10,6 +11,7 @@ from __future__ import annotations
 import copy
 import io
 import json
+import subprocess
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from threading import Thread
@@ -457,6 +459,80 @@ def test_fit_bytes_gets_a_noisy_picture_under_the_cap(tmp_path: Path) -> None:
     calm = Image.effect_noise((1600, 900), 12).convert("RGB")
     width, height = fit_bytes(calm, target, 50_000, "JPEG", hard_cap=10_000_000)
     assert (width, height) == (1600, 900)
+
+
+#: A picture whose last row and last column are drawn: a band and a line of text on the very
+#: bottom, the way a hero's footer sits. None of it is white.
+EDGE_SVG = (
+    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'>"
+    "<rect width='1600' height='900' fill='#1d3557'/>"
+    "<rect y='870' width='1600' height='30' fill='#e63946'/>"
+    "<text x='800' y='899' font-size='28' text-anchor='middle' fill='#ffd166'>footer</text>"
+    "</svg>"
+)
+
+
+def _assert_whole_picture(png: Path) -> None:
+    with Image.open(png) as opened:
+        picture = opened.convert("RGB")
+    assert picture.size == (1600, 900)
+    white = (255, 255, 255)
+    assert all(picture.getpixel((x, 899)) != white for x in range(1600)), "bottom row is blank"
+    assert all(picture.getpixel((1599, y)) != white for y in range(900)), "right column is blank"
+
+
+def _browser() -> str | None:
+    try:
+        return pack_ingest.chromium_binary()
+    except PackIngestError:
+        return None
+
+
+@pytest.mark.skipif(_browser() is None, reason="no Chromium here; CHROMIUM_BIN is not set")
+def test_render_svg_keeps_the_last_row_in_a_real_browser(tmp_path: Path) -> None:
+    """``CHROMIUM_BIN`` pointed at full Chrome left the bottom 88 px of a hero white, because
+    full Chrome counts its window frame in ``--window-size``. Whichever browser renders, the PNG
+    is 1600×900 and its bottom row is the picture's."""
+    svg, png = tmp_path / "hero.svg", tmp_path / "hero.png"
+    svg.write_text(EDGE_SVG, encoding="utf-8")
+    pack_ingest.render_svg(svg, png)
+    _assert_whole_picture(png)
+
+
+@pytest.mark.parametrize(
+    ("frame", "fits"),
+    [((0, 0), True), ((22, 98), True), ((0, 88), True), ((0, 300), False)],
+    ids=["headless-shell", "chrome-windows", "chromium-linux", "frame-past-the-margin"],
+)
+def test_render_svg_cuts_the_picture_out_of_a_framed_window(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, frame: tuple[int, int], fits: bool
+) -> None:
+    """A browser that lays the page out in the window less its frame and paints white where the
+    frame was. Within the margin the picture is cut out whole; past it, nothing is written."""
+
+    def framed_browser(command: list[str], **_: Any) -> subprocess.CompletedProcess[str]:
+        def value(flag: str) -> str:
+            return next(arg for arg in command if arg.startswith(flag)).split("=", 1)[1]
+
+        width, height = (int(n) for n in value("--window-size=").split(","))
+        page = Image.new("RGB", (max(width, 1601), max(height, 901)), "white")
+        page.paste(Image.new("RGB", (1600, 900), "#1d3557"), (0, 0))
+        page.putpixel((1600, 900), pack_ingest.RENDER_MARK)
+        shot = Image.new("RGB", (width, height), "white")
+        shot.paste(page.crop((0, 0, width - frame[0], height - frame[1])), (0, 0))
+        shot.save(value("--screenshot="), "PNG")
+        return subprocess.CompletedProcess(command, 0, "", "")
+
+    monkeypatch.setattr(subprocess, "run", framed_browser)
+    svg, png = tmp_path / "hero.svg", tmp_path / "hero.png"
+    svg.write_text(EDGE_SVG, encoding="utf-8")
+    if fits:
+        pack_ingest.render_svg(svg, png, chromium="chrome")
+        _assert_whole_picture(png)
+    else:
+        with pytest.raises(PackIngestError, match="less than 1600×900"):
+            pack_ingest.render_svg(svg, png, chromium="chrome")
+        assert not png.exists()
 
 
 def _write_workspace(
