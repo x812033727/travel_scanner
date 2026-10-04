@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 import { getDiscoveryCopy } from "../lib/discovery-copy";
 import { getFrontendFlowCopy } from "../lib/frontend-flow-copy";
 import { frontendCopy } from "../lib/frontend-navigation";
@@ -48,6 +48,19 @@ async function fixtures(page: Page, signedIn = false) {
   return {writes,authenticate};
 }
 
+async function expectReaderContentInViewport(page: Page, content: Locator, maximumBottom: number) {
+  await expect(content).toBeVisible();
+  await expect(content).toBeInViewport({ratio:1});
+  const box = await content.boundingBox();
+  if (!box) throw new Error("Visible reader content must have a bounding box");
+  const viewport = page.viewportSize()!;
+  expect(box.x).toBeGreaterThanOrEqual(0);
+  expect(box.y).toBeGreaterThanOrEqual(0);
+  expect(box.x + box.width).toBeLessThanOrEqual(viewport.width);
+  expect(box.y + box.height).toBeLessThanOrEqual(viewport.height);
+  expect(box.y + box.height).toBeLessThanOrEqual(maximumBottom);
+}
+
 for (const locale of ["zh-TW","zh-CN","en","ja","ko"]) {
   test(`editorial ${locale}: site context, available articles, accessible discovery, dark/large/reduced motion`, async ({page,isMobile}, info) => {
     await fixtures(page); const c = getDiscoveryCopy(locale), f = getFrontendFlowCopy(locale), n = frontendCopy(locale);
@@ -59,18 +72,27 @@ for (const locale of ["zh-TW","zh-CN","en","ja","ko"]) {
     await expect(introduction).toContainText("Mokaair");
     const search = context.getByRole("link", {name:f.searchTrips,exact:true});
     await expect(search).toHaveAttribute("href", `/${locale}/search/new`);
+    await expect(search).toBeVisible();
     await expect(search).toBeInViewport({ratio:1});
+    expect((await search.boundingBox())!.height).toBeGreaterThanOrEqual(44);
     expect(await context.evaluate((node) => {
       const feed = document.querySelector("main");
       return Boolean(feed && (node.compareDocumentPosition(feed) & Node.DOCUMENT_POSITION_FOLLOWING));
     })).toBe(true);
-    // The server fixture publishes how-to articles in en and lifestyle articles in zh-TW.
-    // Other languages honestly have no article group; do not manufacture a fallback.
-    for (const group of locale === "en" ? ["travel"] : locale === "zh-TW" ? ["tech", "money"] : []) {
-      const articles = context.getByTestId(`home-guides-${group}`);
-      const kind = group === "travel" ? "howto" : "life";
-      await expect(articles.getByRole("link", {name:`Synthetic ${kind} listing`,exact:true})).toBeVisible();
-      await expect(articles.getByText("Synthetic fixture summary", {exact:true})).toBeVisible();
+    // CI seeds a real API hotspot, while local SSR fixtures can also publish guides.
+    // Verify every rendered article group without assuming either fixture's titles/locales.
+    for (const articles of await context.locator('[data-testid^="home-guides-"]').all()) {
+      const cards = articles.getByRole("listitem");
+      expect(await cards.count()).toBeGreaterThan(0);
+      for (const article of await cards.all()) {
+        const articleTitle = article.getByRole("heading").getByRole("link");
+        const description = article.locator("p").last();
+        await expect(articleTitle).toBeVisible();
+        await expect(articleTitle).toHaveText(/\S/);
+        await expect(articleTitle).toHaveAttribute("href", new RegExp(`^/${locale}/(?:guides/|life/)`));
+        await expect(description).toBeVisible();
+        await expect(description).toHaveText(/\S/);
+      }
       expect(await articles.evaluate((node) => {
         const feed = document.querySelector("main");
         return Boolean(feed && (node.compareDocumentPosition(feed) & Node.DOCUMENT_POSITION_FOLLOWING));
@@ -79,7 +101,7 @@ for (const locale of ["zh-TW","zh-CN","en","ja","ko"]) {
     const title = page.getByRole("link",{name:item.title,exact:true});
     await expect(title).toBeVisible();
     if (isMobile) {
-      const nav = page.locator(".app-bottom-nav"); await expect(nav.getByRole("link")).toHaveCount(4);
+      const nav = page.locator(".app-bottom-nav"); await expect(nav).toBeVisible(); await expect(nav.getByRole("link")).toHaveCount(4);
       await expect(nav.getByRole("link",{name:n.trips,exact:true})).toBeVisible();
       for (const link of await nav.getByRole("link").all()) expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44);
       const searchBox = await search.boundingBox(), navBox = await nav.boundingBox();
@@ -87,12 +109,40 @@ for (const locale of ["zh-TW","zh-CN","en","ja","ko"]) {
     }
     const firstCard = page.getByRole("article").filter({has:title});
     await firstCard.scrollIntoViewIfNeeded();
-    await expect(firstCard).toBeInViewport({ratio:1});
-    await expect(title).toBeInViewport({ratio:1});
-    if (isMobile) {
-      const cardBox = await firstCard.boundingBox(), navBox = await page.locator(".app-bottom-nav").boundingBox();
-      expect(cardBox!.y + cardBox!.height).toBeLessThanOrEqual(navBox!.y);
+    await expect(firstCard.getByRole("link", {name:f.saveItem,exact:true})).toBeVisible();
+    await expect(firstCard.getByRole("button", {name:n.plan,exact:true})).toBeEnabled();
+    // The fixture has metadata, a summary and source text; none may disappear.
+    // Direct card-body paragraphs exclude any subsequently opened dialog content.
+    const paragraphs = firstCard.locator(":scope > div > p");
+    expect(await paragraphs.count()).toBeGreaterThanOrEqual(3);
+    const controls = firstCard.getByRole("link").or(firstCard.getByRole("button"));
+    expect(await controls.count()).toBeGreaterThanOrEqual(3);
+    const navBox = isMobile ? await page.locator(".app-bottom-nav").boundingBox() : null;
+    if (isMobile && !navBox) throw new Error("Visible mobile navigation must have a bounding box");
+    const bottomLimit = navBox ? navBox.y : page.viewportSize()!.height;
+    await info.attach("first-card-reader-geometry", {
+      contentType:"application/json",
+      body:JSON.stringify({
+        viewport:page.viewportSize(), bottomNavigation:navBox, title:await title.boundingBox(),
+        paragraphs:await Promise.all((await paragraphs.all()).map(async (paragraph) => ({text:await paragraph.innerText(),box:await paragraph.boundingBox()}))),
+        controls:await Promise.all((await controls.all()).map(async (control) => ({text:await control.innerText(),box:await control.boundingBox()}))),
+      }),
+    });
+    await expectReaderContentInViewport(page, title, bottomLimit);
+    await expectReaderContentInViewport(page, firstCard.getByText(item.summary!, {exact:true}), bottomLimit);
+    for (const paragraph of await paragraphs.all()) await expectReaderContentInViewport(page, paragraph, bottomLimit);
+    for (const control of await controls.all()) {
+      await expectReaderContentInViewport(page, control, bottomLimit);
+      await expect(control).toBeEnabled();
+      // Inline title links may span lines; hit-test a real fragment, not its union's whitespace.
+      expect(await control.evaluate((node) => {
+        const rect = [...node.getClientRects()].find((value) => value.width > 0 && value.height > 0);
+        if (!rect) return false;
+        const hit = document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2);
+        return Boolean(hit && (node === hit || node.contains(hit)));
+      })).toBe(true);
     }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1)).toBe(false);
     await expect(page.locator("#trip-search")).toHaveCount(0);
     await page.screenshot({path:info.outputPath(`after-home-${locale}.png`),fullPage:true});
     await page.goto(`/${locale}/explore?destination=tokyo`);

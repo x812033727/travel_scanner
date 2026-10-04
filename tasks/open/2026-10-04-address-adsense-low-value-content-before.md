@@ -88,3 +88,22 @@ claimed locally executed; all five locales and both projects will be checked in 
 The account was independently reopened before 09:01 UTC and still showed Not found,
 the 9/23 timestamp, and Needs attention/low-value content. Fresh screenshot saved;
 no account, payment, policy rereview or CMS action was performed.
+
+Second CI integration (8c1dcea): API/web/container checks passed, but the revised
+homepage browser spec incorrectly assumed the local mock's guide titles. The
+actual discovery workflow uses a real test API and seeds a hotspot, without guide
+articles. The follow-up verifies whatever article groups are actually available;
+the filled article/order case is separately covered by the homepage SSR tests.
+Whole-card border intersection ratios were slightly below 1 in four cases, without
+failure screenshots or geometry. Do not call this proven rounding or a product
+overflow defect. Reader text and actionable links/buttons must be fully visible
+after scrolling, within viewport bounds and above mobile navigation. The corrected
+new-head browser and required CI results remain necessary before release approval.
+
+The final follow-up was independently reviewed and passed scoped lint, diff and
+task checks. Its exact client summary, every card-body paragraph and accessible
+control retain full viewport and mobile-nav clearance assertions after one scroll;
+geometry is attached before assertions for CI diagnosis. No product-source or
+server-launch change was made in this integration follow-up. Latest-head CI is
+the remaining technical check; broader editorial and owner publication/release
+decisions remain open in this task.
