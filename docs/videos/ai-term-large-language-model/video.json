@@ -1,0 +1,2478 @@
+{
+  "schema_version": 1,
+  "slug": "ai-term-large-language-model",
+  "format": "slides",
+  "category": "ai-terms",
+  "source_guide": "what-is-a-large-language-model",
+  "target_minutes": [
+    9,
+    11
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。"
+  },
+  "look": {
+    "preset": "tech-story"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "大型語言模型是什麼？會接話，為什麼不等於查到資料？｜AI 名詞十分鐘",
+    "description": "大型語言模型（LLM）如何生成文字？為什麼把話說得很完整，還不能當作已查到資料的證明？\n給會用聊天工具、卻常把模型、資料查找與工具執行混在一起的人；不需要懂程式。\n\n用六筆虛構失物紀錄，離線重跑有據、缺資料與工具計數三題。全部六件、未領四件、未領雨傘兩把；數字附條件與代號。故事、聊天泡泡和錯誤回答都是編輯自製示意，不是任何語言模型的實測輸出。Python 標準函式庫程式沒有網路或模型呼叫，只證明資料與計數，不評測模型能力。\n\n六筆示範資料：L001 雨傘／北側櫃台／未領；L002 水瓶／東側層架／已領；L003 雨傘／西側籃子／未領；L004 圍巾／南側掛鉤／未領；L005 帽子／東側層架／已領；L006 手套／西側籃子／未領。沒有失主姓名或電話欄位。\n真實離線輸出：查 L001 得到北側櫃台及未領；問 owner_phone 得到 UNKNOWN；未領代號 L001、L003、L004、L006，未領雨傘代號 L001、L003。\n\n三欄用來核對一份回答的依據與執行紀錄，並非互斥能力；即使拿到資料或工具結果，最後文字仍可能由模型生成。缺證據的部分先留未知。若用了工具，再核對條件與實際結果。\n\n完整文章與圖解：https://mokaair.com/zh-TW/life/what-is-a-large-language-model\nAI 名詞總索引：https://mokaair.com/zh-TW/life/ai-terms-index?utm_source=youtube&utm_medium=video&utm_campaign=ai-term-large-language-model",
+    "tags": [
+      "大型語言模型",
+      "LLM",
+      "AI 名詞",
+      "Large Language Model",
+      "模型與工具",
+      "上下文",
+      "生成文字",
+      "AI 名詞十分鐘",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "LLM",
+      "tag": "AI 名詞十分鐘",
+      "sub": "會接話，查到了嗎？",
+      "shot": "counter-handoff"
+    }
+  },
+  "sources": [
+    {
+      "title": "Google Machine Learning Crash Course: Introduction to Large Language Models",
+      "url": "https://developers.google.com/machine-learning/crash-course/llm",
+      "checked_on": "2026-10-04"
+    },
+    {
+      "title": "Google: What's a large language model? / Transformers and self-attention",
+      "url": "https://developers.google.com/machine-learning/crash-course/llm/transformers",
+      "checked_on": "2026-10-04"
+    },
+    {
+      "title": "Hugging Face Transformers: Causal language modeling",
+      "url": "https://huggingface.co/docs/transformers/tasks/language_modeling",
+      "checked_on": "2026-10-04"
+    },
+    {
+      "title": "Hugging Face Transformers: Text generation",
+      "url": "https://huggingface.co/docs/transformers/llm_tutorial",
+      "checked_on": "2026-10-04"
+    },
+    {
+      "title": "Google: Fine-tuning, distillation, and prompt engineering",
+      "url": "https://developers.google.com/machine-learning/crash-course/llm/tuning",
+      "checked_on": "2026-10-04"
+    },
+    {
+      "title": "Google AI for Developers: Function calling",
+      "url": "https://ai.google.dev/gemini-api/docs/function-calling",
+      "checked_on": "2026-10-04"
+    }
+  ],
+  "assets": [
+    {
+      "path": "apps/web/public/guides/what-is-a-large-language-model/diagram-1.svg",
+      "source": "Mokaair 自有文章圖解（what-is-a-large-language-model）",
+      "license": "© Mokaair"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "會接話，查到了嗎",
+      "template": "title",
+      "data": {
+        "title": "會接話，**查到了嗎？**",
+        "subtitle": "大型語言模型：一份回答，三種工作",
+        "tag": "AI 名詞十分鐘"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "bard",
+          "text": "你以為話說得完整，就代表真的查到了嗎？",
+          "pause_after_ms": 900
+        }
+      ]
+    },
+    {
+      "id": "fictional-label",
+      "template": "big",
+      "data": {
+        "kicker": "故事與資料",
+        "text": "虛構示意，**不是模型實測**",
+        "sub": "用一份失物清單，分清接話、查找與計數"
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "kwdm",
+          "text": "其實接話不等於查到了，那要怎麼找到證據？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "counter-arrival",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a neighborhood community center foyer on a rainy morning, a visitor shakes water off a coat while a volunteer gestures to an umbrella stand, a folded fabric umbrella with a curved wooden handle, soft daylight comes through the glass entrance; the action sits at midframe",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "2btx",
+          "text": "一把雨傘、一位失主，櫃台只需要交出可信的答案。"
+        }
+      ],
+      "chapter": "一份回答，三種工作"
+    },
+    {
+      "id": "counter-hands",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a neighborhood community center foyer on a rainy morning, a volunteer lifts a folded umbrella by its handle, the worn wooden handle and a fabric strap, rain-filtered illumination diffuses through the glass entrance; compose the scene around the central gesture",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "gimi",
+          "text": "這份清單寫了物件和位置，沒有寫失主叫什麼名字。"
+        }
+      ]
+    },
+    {
+      "id": "counter-handoff",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a neighborhood community center foyer on a rainy morning, a volunteer offers an umbrella and a visitor pauses with an open palm, the umbrella resting horizontally between their hands, soft overcast light fills the foyer from open doors; the subject occupies the middle third",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "m7vv",
+          "text": "你以為答案說得肯定，就代表每個細節都有根據。",
+          "pause_after_ms": 600
+        }
+      ]
+    },
+    {
+      "id": "counter-empty-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot in a neighborhood community center foyer on a rainy morning, a volunteer points at an empty wall hook beside a hanging scarf, a bare metal hook with a curved end, reflected grey sky lights the bench from behind; place the hands along the center strip",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "f7qb",
+          "text": "其實清單裡沒有失主姓名，也沒有他的聯絡電話。"
+        }
+      ]
+    },
+    {
+      "id": "first-three-jobs",
+      "template": "chat",
+      "data": {
+        "title": "同一份回答，差在哪裡？",
+        "messages": [
+          {
+            "side": "left",
+            "name": "查紀錄",
+            "text": "L001：雨傘、北側櫃台、未領"
+          },
+          {
+            "side": "right",
+            "name": "錯誤示意",
+            "text": "已找到王先生的雨傘與電話"
+          }
+        ]
+      },
+      "claims": [
+        "c4",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "62uc",
+          "text": "找到那一筆紀錄，可以說雨傘放在北側櫃台。",
+          "reveal": 1
+        },
+        {
+          "id": "2vvx",
+          "text": "加上王先生和電話，就是編輯刻意寫的錯誤示意。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "counter-match",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot in a neighborhood community center foyer on a rainy morning, two visitors compare the fabric straps of two folded umbrellas, two different umbrella straps crossing on a wooden bench, rain-filtered illumination diffuses through the glass entrance; the action sits at midframe",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "2iii",
+          "text": "查到位置跟確認所有權，是兩件需要不同證據的事。"
+        }
+      ]
+    },
+    {
+      "id": "counter-boxes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a neighborhood community center foyer on a rainy morning, a volunteer arranges a bottle and a cap into separate shallow bins, a ceramic bottle in a wooden bin, soft overcast light fills the foyer from open doors; compose the scene around the central gesture",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "sh23",
+          "text": "把已知內容整理成一句話，叫做把資料寫得好懂。"
+        }
+      ]
+    },
+    {
+      "id": "counter-pair",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a neighborhood community center foyer on a rainy morning, a volunteer holds two umbrella handles together while another person checks the stand, a pair of curved wooden handles, reflected grey sky lights the bench from behind; the subject occupies the middle third",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "jqag",
+          "text": "若問未領雨傘有幾把，就要先看哪些真的還沒領。"
+        }
+      ]
+    },
+    {
+      "id": "three-jobs-card",
+      "template": "steps",
+      "data": {
+        "title": "一份回答，可以含三種工作",
+        "steps": [
+          {
+            "title": "生成文字",
+            "detail": "把內容組成回答"
+          },
+          {
+            "title": "查找資料",
+            "detail": "回到可確認的紀錄"
+          },
+          {
+            "title": "工具計數",
+            "detail": "看條件與實際結果"
+          }
+        ]
+      },
+      "claims": [
+        "c7",
+        "c8",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "q7mz",
+          "text": "一份回答，可以同時含生成文字、查找資料和工具計數。",
+          "reveal": 1
+        },
+        {
+          "id": "xy5h",
+          "text": "拿到資料或工具結果後，最後的文字也可能由模型生成。",
+          "reveal": 1
+        },
+        {
+          "id": "eyiz",
+          "text": "三欄是核對依據和執行紀錄，不是把能力分成互斥的三種。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "counter-unclaimed",
+      "template": "shot",
+      "data": {
+        "prompt": "From behind in a neighborhood community center foyer on a rainy morning, a departing volunteer passes a basket to the next shift, a woven basket holding one glove, rain-filtered illumination diffuses through the glass entrance; place the hands along the center strip",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c7",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "n44i",
+          "text": "這三件事可以合作，但不能用一句肯定回答全數代替。"
+        }
+      ]
+    },
+    {
+      "id": "counter-dog",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a neighborhood community center foyer on a rainy morning, a visitor gently pulls a cap away from a small dog sitting beside a bench, a plain fabric cap held above the dog's nose, soft overcast light fills the foyer from open doors; the action sits at midframe",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c1",
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "jrff",
+          "text": "櫃台旁的小狗也想領帽子，清單卻不能證明是牠的。"
+        }
+      ]
+    },
+    {
+      "id": "counter-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a neighborhood community center foyer on a rainy morning, a visitor watches a volunteer open a small empty storage drawer, the empty wooden drawer, reflected grey sky lights the bench from behind; compose the scene around the central gesture",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "dymg",
+          "text": "那個很會接話的模型，到底怎麼生出眼前這段文字？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "generation-chapter",
+      "chapter": "模型怎麼接出一句話",
+      "template": "chapter",
+      "data": {
+        "title": "模型怎麼接出一句話",
+        "number": "3"
+      },
+      "claims": [
+        "c10",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "9n5m",
+          "text": "先把它想成學過很多語言模式的文字生成模型。"
+        }
+      ]
+    },
+    {
+      "id": "bakery-skill",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a bakery kitchen in late morning, a baker shows an apprentice how to fold a piece of dough, a lump of dough in the apprentice's cupped hands, warm work lamps shine down on the floured counter; the subject occupies the middle third",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "uidq",
+          "text": "大型語言模型，英文常縮寫成 LLM，這是模型的類別。"
+        }
+      ]
+    },
+    {
+      "id": "bakery-pieces",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot in a bakery kitchen in late morning, an apprentice separates a dough roll into uneven pieces, small dough pieces arranged along a wooden board, hanging kitchen lights illuminate the baker's fingers; place the hands along the center strip",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "3wka",
+          "text": "文字進來，通常先轉成模型用來處理的小單位。"
+        }
+      ]
+    },
+    {
+      "id": "bakery-uneven",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a bakery kitchen in late morning, an apprentice pinches a small piece from a larger piece of dough, two dough pieces of visibly different sizes, low under-shelf lamps pool across the dough board; the action sits at midframe",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "mjwt",
+          "text": "這些單位叫 token，並不是固定一個中文字一個單位。"
+        }
+      ]
+    },
+    {
+      "id": "token-card",
+      "template": "compare",
+      "data": {
+        "title": "單位不是固定字數",
+        "left": {
+          "heading": "文字",
+          "points": [
+            "字、詞與標點"
+          ]
+        },
+        "right": {
+          "heading": "token",
+          "points": [
+            "依切分方式決定"
+          ]
+        }
+      },
+      "claims": [
+        "c12",
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "gu98",
+          "text": "同一段文字的切分，不能套一個通用的字數換算。",
+          "reveal": 1
+        },
+        {
+          "id": "tx7f",
+          "text": "這裡只用麵團做比喻，沒有真的在替文字計數。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "bakery-next-piece",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a bakery kitchen in late morning, a baker places one dough piece at the end of a short row, the new dough piece touching the end of the row, warm work lamps shine down on the floured counter; compose the scene around the central gesture",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "r75c",
+          "text": "常見的生成式模型，會依目前材料產生下一個單位。"
+        }
+      ]
+    },
+    {
+      "id": "bakery-row",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot in a bakery kitchen in late morning, an apprentice extends a row of dough knots one knot at a time, the nearest unfinished dough knot, hanging kitchen lights illuminate the baker's fingers; the subject occupies the middle third",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "ba5g",
+          "text": "新產生的內容又成了材料，讓後面的文字接著出現。"
+        }
+      ]
+    },
+    {
+      "id": "bakery-selection",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a bakery kitchen in late morning, a baker chooses one of two differently folded rolls from a tray, a dough roll lifted between fingertips, low under-shelf lamps pool across the dough board; place the hands along the center strip",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "cvvb",
+          "text": "接哪個單位會受前文影響，也受生成時的選擇方式影響。"
+        }
+      ]
+    },
+    {
+      "id": "generation-not-all",
+      "template": "bullets",
+      "data": {
+        "title": "這段機制的範圍",
+        "items": [
+          "常見因果式文字生成",
+          "依已有上下文接續",
+          "其他架構不能一概而論"
+        ]
+      },
+      "claims": [
+        "c10",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "m2hw",
+          "text": "這裡講的是常見的因果式文字生成，不包辦所有架構。",
+          "reveal": 1
+        },
+        {
+          "id": "c9pm",
+          "text": "它產生這一個單位時，不能先偷看還沒生成的後文。",
+          "reveal": 1
+        },
+        {
+          "id": "kdby",
+          "text": "不要把這種機制，說成所有語言模型完全一模一樣。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "bakery-relations",
+      "template": "shot",
+      "data": {
+        "prompt": "From behind in a bakery kitchen in late morning, two apprentices pass a bowl across a workbench while a baker points to the receiver, a ceramic mixing bowl between two pairs of hands, warm work lamps shine down on the floured counter; the action sits at midframe",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "k54b",
+          "text": "前文的誰指向誰，也會影響這一輪怎麼處理文字。"
+        }
+      ]
+    },
+    {
+      "id": "bakery-carry",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a bakery kitchen in late morning, one apprentice takes a plain cup while the other reaches for a flour scoop, a ceramic cup in the first apprentice's hand, hanging kitchen lights illuminate the baker's fingers; compose the scene around the central gesture",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c1",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "5azz",
+          "text": "比方她拿走他的杯子，光看她字，還不知道是哪個人。"
+        }
+      ]
+    },
+    {
+      "id": "bakery-weigh",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot in a bakery kitchen in late morning, a baker balances different dough pieces on a simple beam scale, a wooden balance beam and uneven dough pieces, low under-shelf lamps pool across the dough board; the subject occupies the middle third",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "7yja",
+          "text": "常見的注意力機制，用數學運算衡量材料之間的關係。"
+        }
+      ]
+    },
+    {
+      "id": "attention-boundary",
+      "template": "big",
+      "data": {
+        "kicker": "注意力機制",
+        "text": "運算關係，處理上下文"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "gb26",
+          "text": "它可以幫忙處理上下文和材料之間的關係。"
+        }
+      ]
+    },
+    {
+      "id": "attention-check",
+      "template": "big",
+      "data": {
+        "kicker": "仍要檢查",
+        "text": "不能保證每次找對指涉"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "w4q8",
+          "text": "但是不能保證永遠找對每個指涉。"
+        }
+      ]
+    },
+    {
+      "id": "bakery-mistake",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a bakery kitchen in late morning, an apprentice notices a tiny roll sitting inside an oversized baking tin, the tiny dough roll at the center of the tin, warm work lamps shine down on the floured counter; place the hands along the center strip",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "jxrk",
+          "text": "比喻像配料分量，卻不是模型裡真的住了一位麵包師。"
+        }
+      ]
+    },
+    {
+      "id": "bakery-next-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a bakery kitchen in late morning, a baker holds a dough cutter still while an apprentice presents fresh dough, the metal cutter beside fresh dough, hanging kitchen lights illuminate the baker's fingers; the action sits at midframe",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "4g2w",
+          "text": "那麼它學到的本事，跟你剛貼上去的資料差在哪裡？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "training-chapter",
+      "chapter": "訓練與貼資料差在哪",
+      "template": "chapter",
+      "data": {
+        "title": "訓練與貼資料差在哪",
+        "number": "4"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "6wh6",
+          "text": "訓練塑造模型的能力，這一輪的材料提供當次資訊。"
+        }
+      ]
+    },
+    {
+      "id": "pottery-apprentice",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a pottery studio at midday, a potter guides an apprentice's hands around a clay vessel, a wet clay vessel between their hands, soft upper windows illuminate the wet clay; compose the scene around the central gesture",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "58sy",
+          "text": "陶藝師練出拉胚的手感，不等於記住每個客人的杯子。"
+        }
+      ]
+    },
+    {
+      "id": "pottery-adjust",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a pottery studio at midday, a potter slightly narrows the rim of a clay bowl with two fingertips, the clay rim between the fingertips, cool illumination drops through overhead skylights; the subject occupies the middle third",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "zsri",
+          "text": "模型訓練會調整很多數值，這些數值通常叫做參數。"
+        }
+      ]
+    },
+    {
+      "id": "pottery-many-pots",
+      "template": "shot",
+      "data": {
+        "prompt": "Low angle shot in a pottery studio at midday, an apprentice looks over many empty ceramic vessels on a shelf, a smooth empty ceramic vessel in the foreground, a high roof opening spreads light across the wheel; place the hands along the center strip",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c18",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "fbw8",
+          "text": "參數一起參與運算，不是一本能逐條翻查的失物簿。"
+        }
+      ]
+    },
+    {
+      "id": "parameters-context",
+      "template": "compare",
+      "data": {
+        "title": "兩種來源，不要混在一起",
+        "left": {
+          "heading": "訓練與參數",
+          "points": [
+            "訓練過程調整數值",
+            "形成可運用的模式"
+          ]
+        },
+        "right": {
+          "heading": "當次上下文",
+          "points": [
+            "這輪提供的材料",
+            "用來處理眼前任務"
+          ]
+        }
+      },
+      "claims": [
+        "c17",
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "caid",
+          "text": "參數來自訓練調整；當次上下文是這一輪能看到的材料。",
+          "reveal": 1
+        },
+        {
+          "id": "kibv",
+          "text": "把資料貼上去，和重新進行模型訓練，是兩件不同的事。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "pottery-new-clay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a pottery studio at midday, a visitor sets a fresh block of clay beside the potter's wheel, a fresh clay block on a wooden board, soft upper windows illuminate the wet clay; the action sits at midframe",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c1",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "8gwq",
+          "text": "你拿來一塊新黏土，改變的是這次要處理的東西。"
+        }
+      ]
+    },
+    {
+      "id": "pottery-brief",
+      "template": "shot",
+      "data": {
+        "prompt": "From behind in a pottery studio at midday, a visitor places a broken ceramic handle in front of a potter, the broken handle on a cloth mat, cool illumination drops through overhead skylights; compose the scene around the central gesture",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "d34y",
+          "text": "你貼失物清單，讓這次回答有資料可用，沒有重練整個模型。"
+        }
+      ]
+    },
+    {
+      "id": "pottery-bare-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot in a pottery studio at midday, a potter clears a worktable while an apprentice carries the clay block away, the newly empty patch of wooden table, a high roof opening spreads light across the wheel; the subject occupies the middle third",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "948s",
+          "text": "下一次對話看不看得到它，要看系統有沒有再次提供材料。"
+        }
+      ]
+    },
+    {
+      "id": "article-diagram",
+      "template": "diagram",
+      "data": {
+        "svg": "apps/web/public/guides/what-is-a-large-language-model/diagram-1.svg",
+        "caption": "模型、當次材料與外部工具，各有角色"
+      },
+      "claims": [
+        "c17",
+        "c9",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "g42q",
+          "text": "模型、當次材料和外部工具，請分成三個角色來看。"
+        }
+      ]
+    },
+    {
+      "id": "pottery-instruction",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a pottery studio at midday, an apprentice sorts finished clay bowls into neat rows as a potter gestures, rows of small clay bowls, soft upper windows illuminate the wet clay; place the hands along the center strip",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "kmr4",
+          "text": "你還能要求用表格回答，這是調整這輪的任務指令。"
+        }
+      ]
+    },
+    {
+      "id": "pottery-limit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a pottery studio at midday, an apprentice presses an empty mold while a potter holds back their hand, an empty clay mold with a visible cavity, cool illumination drops through overhead skylights; the action sits at midframe",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "c5rj",
+          "text": "要求每欄都寫滿，卻可能逼出資料根本沒有的內容。"
+        }
+      ]
+    },
+    {
+      "id": "unknown-rule",
+      "template": "chat",
+      "data": {
+        "title": "把不知道也留在格式裡",
+        "messages": [
+          {
+            "side": "left",
+            "name": "指令示意",
+            "text": "依清單回答；無法確認請寫未知"
+          },
+          {
+            "side": "right",
+            "name": "編輯示意",
+            "text": "位置：北側櫃台；失主：未知"
+          }
+        ]
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "q5ee",
+          "text": "可以先說，只依這份清單，無法確認的欄位請寫未知。",
+          "reveal": 1
+        },
+        {
+          "id": "ufjr",
+          "text": "這是你對回答的要求；仍然要核對它有沒有真的遵守。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "pottery-capability",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a pottery studio at midday, a potter tests whether a new vessel stands steadily while an apprentice observes, a ceramic vessel resting on a narrow support, a high roof opening spreads light across the wheel; compose the scene around the central gesture",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "q4ek",
+          "text": "逐步生成是機制，不是判定它有沒有推理能力的完整考試。"
+        }
+      ]
+    },
+    {
+      "id": "pottery-uncertainty",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a pottery studio at midday, two apprentices inspect a repaired handle from opposite sides, the joined ceramic handle between them, soft upper windows illuminate the wet clay; the subject occupies the middle third",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "uuy8",
+          "text": "會不會完成任務，得拿那個任務的結果和標準來比較。"
+        }
+      ]
+    },
+    {
+      "id": "pottery-demo-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a pottery studio at midday, a potter places a finished cup on a flat testing board, the cup's bottom touching the board, cool illumination drops through overhead skylights; place the hands along the center strip",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "cvde",
+          "text": "先不考模型，我們能不能把清單裡能確定的部分跑出來？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "demo-chapter",
+      "chapter": "六筆失物，離線跑三題",
+      "template": "chapter",
+      "data": {
+        "title": "六筆失物，離線跑三題",
+        "number": "5"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "kcsa",
+          "text": "只跑離線資料，三題分別是查位置、問缺欄位、數物件。"
+        }
+      ]
+    },
+    {
+      "id": "demo-six-objects",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a municipal assembly hall in early afternoon, two volunteers lay out two umbrellas, a bottle, a scarf, a cap and a glove, the six belongings arranged on a long wooden table, an open side door spreads reflected daylight over the table; the action sits at midframe",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "ck4v",
+          "text": "桌上有六件虛構失物，雨傘、水瓶、圍巾、帽子和手套。"
+        }
+      ]
+    },
+    {
+      "id": "six-records-table",
+      "template": "table",
+      "data": {
+        "title": "虛構資料的六筆紀錄",
+        "columns": [
+          "代號",
+          "物件",
+          "狀態"
+        ],
+        "rows": [
+          [
+            "L001",
+            "雨傘",
+            "未領"
+          ],
+          [
+            "L002",
+            "水瓶",
+            "已領"
+          ],
+          [
+            "L003",
+            "雨傘",
+            "未領"
+          ],
+          [
+            "L004",
+            "圍巾",
+            "未領"
+          ],
+          [
+            "L005",
+            "帽子",
+            "已領"
+          ],
+          [
+            "L006",
+            "手套",
+            "未領"
+          ]
+        ]
+      },
+      "claims": [
+        "c25",
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "22ge",
+          "text": "第一筆雨傘未領，第二筆水瓶已領，這兩個狀態不同。",
+          "reveal": 1
+        },
+        {
+          "id": "6irv",
+          "text": "第三筆也是雨傘，第四筆圍巾，都還在未領清單裡。",
+          "reveal": 1
+        },
+        {
+          "id": "pzys",
+          "text": "第五筆帽子已領，第六筆手套未領，現在有六筆紀錄。",
+          "reveal": 1
+        },
+        {
+          "id": "mvew",
+          "text": "不要先把六筆全部加起來，問的條件會決定該算誰。",
+          "reveal": 1
+        },
+        {
+          "id": "4ex8",
+          "text": "清單保留已領紀錄，是為了示範篩選條件有多重要。",
+          "reveal": 1
+        },
+        {
+          "id": "czzw",
+          "text": "物件代號和位置都可回查；這裡完全沒有真實失主資料。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "demo-one-umbrella",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a municipal assembly hall in early afternoon, a volunteer lifts one folded umbrella away from the other objects, the wooden umbrella handle in their fingers, high wall windows provide even illumination across the belongings; compose the scene around the central gesture",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "wbdt",
+          "text": "第一題，查第一筆雨傘的位置，程式先找到那個代號。"
+        }
+      ]
+    },
+    {
+      "id": "evidence-terminal",
+      "template": "terminal",
+      "data": {
+        "title": "有據：查那筆紀錄",
+        "prompt": ">",
+        "command": "python demo.py evidence",
+        "output": [
+          "fictional_data=true; model_called=false",
+          "L001 | umbrella | north_counter | unclaimed"
+        ],
+        "ran_on": "2026-10-04",
+        "tool_version": "Python 3.14.6"
+      },
+      "claims": [
+        "c3",
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "byqu",
+          "text": "第一行說明虛構資料，並且沒有呼叫語言模型。",
+          "reveal": 1
+        },
+        {
+          "id": "ebcw",
+          "text": "第二行找到第一筆雨傘，位置是北側櫃台，狀態未領。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "demo-counter-place",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a municipal assembly hall in early afternoon, a volunteer places the folded umbrella in a shallow counter tray, the fabric umbrella lying in the wooden tray, broad ceiling panels illuminate the sorting trays; the subject occupies the middle third",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "n4uz",
+          "text": "這個回答的根據，是資料裡真的存在的那筆位置紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "demo-phone-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot in a municipal assembly hall in early afternoon, a volunteer opens a small storage case and finds an empty compartment, the empty compartment in a wooden case, an open side door spreads reflected daylight over the table; place the hands along the center strip",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c4",
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "sa2k",
+          "text": "第二題，問失主電話，程式先檢查那個欄位是否存在。"
+        }
+      ]
+    },
+    {
+      "id": "missing-terminal",
+      "template": "terminal",
+      "data": {
+        "title": "缺資料：不補造電話",
+        "prompt": ">",
+        "command": "python demo.py missing",
+        "output": [
+          "record=L001; field=owner_phone",
+          "result=UNKNOWN; reason=field_not_in_dataset"
+        ],
+        "ran_on": "2026-10-04",
+        "tool_version": "Python 3.14.6"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "wbi3",
+          "text": "它檢查的是失主電話欄位，而不是到別處搜尋一組電話。",
+          "reveal": 1
+        },
+        {
+          "id": "bcam",
+          "text": "結果是未知，原因是這份資料根本沒有這個欄位。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "demo-empty-palm",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a municipal assembly hall in early afternoon, a volunteer turns an empty palm upward beside a folded scarf, the open palm and soft fabric edge, high wall windows provide even illumination across the belongings; the action sits at midframe",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c27",
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "x483",
+          "text": "查不到，不表示世界上沒電話，只表示這份資料不能回答。"
+        }
+      ]
+    },
+    {
+      "id": "demo-two-baskets",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a municipal assembly hall in early afternoon, two volunteers sort belongings into a large basket and a small basket, two wicker baskets of visibly different contents, broad ceiling panels illuminate the sorting trays; compose the scene around the central gesture",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c8",
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "c5a6",
+          "text": "第三題問未領幾件，程式先按狀態把紀錄分成兩堆。"
+        }
+      ]
+    },
+    {
+      "id": "demo-cap-out",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a municipal assembly hall in early afternoon, a volunteer moves a bottle and a cap aside while another points to the remaining belongings, the bottle and cap set on a separate stool, an open side door spreads reflected daylight over the table; the subject occupies the middle third",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "6wxm",
+          "text": "水瓶和帽子已領，不能再算成等著找失主的物件。"
+        }
+      ]
+    },
+    {
+      "id": "count-terminal",
+      "template": "terminal",
+      "data": {
+        "title": "工具計數：條件與代號",
+        "prompt": ">",
+        "command": "python demo.py count",
+        "output": [
+          "records=6; returned=2; unclaimed=4",
+          "unclaimed_ids=L001,L003,L004,L006",
+          "unclaimed_umbrellas=2; ids=L001,L003"
+        ],
+        "ran_on": "2026-10-04",
+        "tool_version": "Python 3.14.6"
+      },
+      "claims": [
+        "c8",
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "fkta",
+          "text": "六筆紀錄裡，兩筆已領，所以符合未領條件的是四筆。",
+          "reveal": 1
+        },
+        {
+          "id": "cwn4",
+          "text": "這四筆的代號列在第二行，你可以回清單逐筆核對。",
+          "reveal": 1
+        },
+        {
+          "id": "ks7c",
+          "text": "再從未領裡只挑雨傘，留下兩把，也留下對應代號。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "demo-two-umbrellas",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a municipal assembly hall in early afternoon, a volunteer holds the two umbrella handles above the remaining glove and scarf, two curved wooden handles side by side, high wall windows provide even illumination across the belongings; place the hands along the center strip",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c8",
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "qizd",
+          "text": "同一份清單，全部是六件，未領是四件，未領雨傘是兩把。"
+        }
+      ]
+    },
+    {
+      "id": "demo-trace",
+      "template": "shot",
+      "data": {
+        "prompt": "From behind in a municipal assembly hall in early afternoon, a volunteer retraces the objects from one basket to their separate original trays, one glove being returned to a wooden tray, broad ceiling panels illuminate the sorting trays; the action sits at midframe",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "ph6c",
+          "text": "數字後面留著條件和代號，就有機會發現算錯哪一步。"
+        }
+      ]
+    },
+    {
+      "id": "article-cta",
+      "template": "cta",
+      "data": {
+        "kicker": "完整示例",
+        "title": "圖解與六筆示範資料",
+        "sub": "說明欄附文章連結、資料與結果"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "ujfe",
+          "text": "圖解在說明欄文章；這次用的六筆資料另附示範紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "demo-not-benchmark",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a municipal assembly hall in early afternoon, a volunteer closes a storage crate while the other continues inspecting a single item, the wooden crate lid held halfway open, an open side door spreads reflected daylight over the table; compose the scene around the central gesture",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c3",
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "d6ut",
+          "text": "這個結果證明程式按條件計數，不證明任何模型從不犯錯。"
+        }
+      ]
+    },
+    {
+      "id": "demo-tools-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a municipal assembly hall in early afternoon, two volunteers pass a basket across a doorway to a third volunteer, the woven basket suspended between their hands, high wall windows provide even illumination across the belongings; the subject occupies the middle third",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "y9ff",
+          "text": "要讓聊天工具也完成這些步驟，中間還缺哪幾個角色？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "tools-chapter",
+      "chapter": "聊天產品與工具差在哪",
+      "template": "chapter",
+      "data": {
+        "title": "聊天產品與工具差在哪",
+        "number": "6"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "x95w",
+          "text": "模型可以提出工具要求；程式要把要求交給工具執行。"
+        }
+      ]
+    },
+    {
+      "id": "market-courier",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an outdoor street market in midafternoon, a shopper gestures to stacked crates while a stallholder reaches for one crate, a stack of wooden fruit crates, leaf-filtered sun falls through a canopy above the stall; place the hands along the center strip",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c1",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "hwde",
+          "text": "像你請攤主數貨，說出要求並不會讓每個箱子自己盤點。"
+        }
+      ]
+    },
+    {
+      "id": "market-request",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in an outdoor street market in midafternoon, a stallholder hands a small wooden scoop to an assistant, the scoop passing between their hands, dappled tree shade surrounds the crates; the action sits at midframe",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "jb7z",
+          "text": "工具要接到要求，處理資料，再把結果送回後續流程。"
+        }
+      ]
+    },
+    {
+      "id": "tool-three-steps",
+      "template": "steps",
+      "data": {
+        "title": "完成前，要找三個證據",
+        "steps": [
+          {
+            "title": "要求",
+            "detail": "查什麼、算什麼"
+          },
+          {
+            "title": "執行",
+            "detail": "工具真的處理了嗎"
+          },
+          {
+            "title": "回傳",
+            "detail": "結果、條件與錯誤"
+          }
+        ]
+      },
+      "claims": [
+        "c9",
+        "c29",
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "77dr",
+          "text": "先看要求，把全部紀錄和未領紀錄分清楚。",
+          "reveal": 1
+        },
+        {
+          "id": "2sqz",
+          "text": "再看是否執行，缺權限、找不到檔案，都可能停在途中。",
+          "reveal": 1
+        },
+        {
+          "id": "kcrb",
+          "text": "最後看工具回傳，不能只拿模型那句我算好了當證據。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "market-empty-crate",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot in an outdoor street market in midafternoon, an assistant tips an empty wooden crate toward a waiting shopper, the bare bottom of the wooden crate, late-afternoon brightness reflects off the paved aisle; compose the scene around the central gesture",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c23",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "736v",
+          "text": "若要求查空箱，工具回傳空的，模型就不該自行填滿。"
+        }
+      ]
+    },
+    {
+      "id": "market-scoop",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an outdoor street market in midafternoon, a stallholder separates a small scoop of beans from a larger sack, beans resting in a wooden scoop, leaf-filtered sun falls through a canopy above the stall; the subject occupies the middle third",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c32",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "h7e9",
+          "text": "它可以把回傳內容整理成話，但整理時仍可能漏掉條件。"
+        }
+      ]
+    },
+    {
+      "id": "market-boundary",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an outdoor street market in midafternoon, a shopper watches a stallholder, an assistant and a courier coordinate at one stall, a crate passed through the center of the group, dappled tree shade surrounds the crates; place the hands along the center strip",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "ucjp",
+          "text": "因此你看到的聊天產品，通常不只包含那一個文字模型。"
+        }
+      ]
+    },
+    {
+      "id": "product-model",
+      "template": "compare",
+      "data": {
+        "title": "一個模型與完整產品",
+        "left": {
+          "heading": "模型",
+          "points": [
+            "處理輸入",
+            "產生文字或工具要求"
+          ]
+        },
+        "right": {
+          "heading": "產品與程式",
+          "points": [
+            "準備資料、權限與工具",
+            "執行、保存與呈現"
+          ]
+        }
+      },
+      "claims": [
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "8ppe",
+          "text": "模型處理這輪輸入，產品還負責資料、工具和呈現方式。",
+          "reveal": 1
+        },
+        {
+          "id": "zpm2",
+          "text": "所以同一個模型在不同產品裡，能做的事也可能不同。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "market-key",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in an outdoor street market in midafternoon, a stallholder places a plain metal key in an assistant's palm, a small metal key in an open hand, late-afternoon brightness reflects off the paved aisle; the action sits at midframe",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c20",
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "hfed",
+          "text": "是否能讀你的檔案，先看產品是否把檔案內容交給它。"
+        }
+      ]
+    },
+    {
+      "id": "market-access",
+      "template": "shot",
+      "data": {
+        "prompt": "From behind in an outdoor street market in midafternoon, a courier stops at a closed storage gate while a stallholder opens a smaller hatch, a small wooden hatch in a storage gate, leaf-filtered sun falls through a canopy above the stall; compose the scene around the central gesture",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c9",
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "3qvj",
+          "text": "是否能查庫存，還要看工具有沒有接上，以及能查哪部分。"
+        }
+      ]
+    },
+    {
+      "id": "market-saved",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an outdoor street market in midafternoon, an assistant stores a sealed pouch on a shelf while another continues serving a shopper, the sealed fabric pouch on a wooden shelf, dappled tree shade surrounds the crates; the subject occupies the middle third",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c17",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "w4hk",
+          "text": "畫面說記住了，不等於模型的參數真的重做了一次訓練。"
+        }
+      ]
+    },
+    {
+      "id": "memory-rule",
+      "template": "big",
+      "data": {
+        "kicker": "產品記憶",
+        "text": "保存／再次提供，**與訓練分開**"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "g4ds",
+          "text": "產品可以保存材料，再提供給後續對話。"
+        }
+      ]
+    },
+    {
+      "id": "memory-product-rule",
+      "template": "big",
+      "data": {
+        "kicker": "實際做法",
+        "text": "回到你使用的產品說明"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "xhwk",
+          "text": "存什麼、何時再提供，要看產品的說明。"
+        }
+      ]
+    },
+    {
+      "id": "market-two-roles",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an outdoor street market in midafternoon, a stallholder speaks to a shopper while an assistant sorts two small crates behind them, two small crates beside the assistant's knees, late-afternoon brightness reflects off the paved aisle; place the hands along the center strip",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c1",
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "jh6k",
+          "text": "會說話的攤主加上會數貨的助手，各自仍需要被檢查。"
+        }
+      ]
+    },
+    {
+      "id": "market-receipt",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in an outdoor street market in midafternoon, a shopper compares beans in two cupped hands while a stallholder observes, two small portions of beans held side by side, leaf-filtered sun falls through a canopy above the stall; the action sits at midframe",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c29",
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "ch7h",
+          "text": "請求、回傳和最後那句話，三者對得上才算完成這次任務。"
+        }
+      ]
+    },
+    {
+      "id": "market-errors-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an outdoor street market in midafternoon, an assistant notices a single glove accidentally tucked into a produce crate, a fabric glove among wooden crate slats, dappled tree shade surrounds the crates; compose the scene around the central gesture",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c2",
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "zvsm",
+          "text": "有資料也有工具，為什麼最後的回答還是可能出錯？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "errors-chapter",
+      "chapter": "流暢回答的三個陷阱",
+      "template": "chapter",
+      "data": {
+        "title": "流暢回答的三個陷阱",
+        "number": "7"
+      },
+      "claims": [
+        "c22",
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "hfmb",
+          "text": "第一個陷阱是補不存在的欄位，第二個是換掉題目的條件。"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-empty-jar",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an apartment kitchen in late afternoon, a cook examines a row of jars while another reaches for a visibly empty jar, an empty glass jar on a kitchen table, a ceiling lamp illuminates the jars without glare; the subject occupies the middle third",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "sxn6",
+          "text": "你以為表格每格都有字，這份報告就比留空的更可靠。",
+          "pause_after_ms": 600
+        }
+      ]
+    },
+    {
+      "id": "kitchen-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in an apartment kitchen in late afternoon, a cook lowers a spoon into an empty jar and lifts it empty, the bare metal spoon above the glass jar, a warm kitchen work lamp lights the ceramic bowls; place the hands along the center strip",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c5",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "9fyu",
+          "text": "其實清單裡缺失主，填個王先生只會讓錯誤更完整。"
+        }
+      ]
+    },
+    {
+      "id": "invented-name",
+      "template": "chat",
+      "data": {
+        "title": "錯誤示意，非模型輸出",
+        "messages": [
+          {
+            "side": "left",
+            "name": "清單可說",
+            "text": "雨傘未領，位置在北側櫃台"
+          },
+          {
+            "side": "right",
+            "name": "編輯錯誤稿",
+            "text": "王先生已領走北側櫃台的雨傘"
+          }
+        ]
+      },
+      "claims": [
+        "c5",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "4d2z",
+          "text": "這句錯誤稿自己加上失主，還把未領改成已領。",
+          "reveal": 1
+        },
+        {
+          "id": "255x",
+          "text": "哪怕語句非常順，兩個新增內容都沒有清單能支持。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "kitchen-counterexample",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot in an apartment kitchen in late afternoon, a cook separates two empty plates from four plates holding fruit, four occupied plates beside two empty ones, an under-cabinet fixture directs light onto the work surface; the action sits at midframe",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c26",
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "apws",
+          "text": "第二個陷阱是問未領，回答卻把所有紀錄的數量端給你。"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an apartment kitchen in late afternoon, two cooks sort a bowl of beans into a large and a small portion, the two portions of beans in separate ceramic bowls, a ceiling lamp illuminates the jars without glare; compose the scene around the central gesture",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c8",
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "5qgt",
+          "text": "六、四、二都出現在同一份資料裡，但各自回答不同問題。"
+        }
+      ]
+    },
+    {
+      "id": "condition-stats",
+      "template": "stats",
+      "data": {
+        "title": "三個數字，三個條件",
+        "stats": [
+          {
+            "value": "6",
+            "label": "全部紀錄"
+          },
+          {
+            "value": "4",
+            "label": "未領物件"
+          },
+          {
+            "value": "2",
+            "label": "未領雨傘"
+          }
+        ],
+        "source": "虛構資料／demo.py count，2026-10-04"
+      },
+      "claims": [
+        "c8",
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "yyfc",
+          "text": "問全部紀錄，答案是六；它包含兩筆已領紀錄。",
+          "reveal": 1
+        },
+        {
+          "id": "xa8z",
+          "text": "問未領物件，答案是四；那兩筆已領要排除。",
+          "reveal": 1
+        },
+        {
+          "id": "zd74",
+          "text": "問未領雨傘，答案是兩；圍巾和手套也要排除。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "kitchen-repeat",
+      "template": "shot",
+      "data": {
+        "prompt": "From behind in an apartment kitchen in late afternoon, a cook pours the same beans from one bowl into another and back again, one stream of beans moving between two bowls, a warm kitchen work lamp lights the ceramic bowls; the subject occupies the middle third",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "9rgr",
+          "text": "第三個陷阱是重問同一句，把重複出現當成獨立證據。"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-agree",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in an apartment kitchen in late afternoon, two cooks each hold an identical empty jar and glance at the same empty shelf, two empty glass jars in their hands, an under-cabinet fixture directs light onto the work surface; place the hands along the center strip",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "mbv2",
+          "text": "兩份相同文字，可能只是一起重複了同一個沒有根據的說法。"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-evidence",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in an apartment kitchen in late afternoon, a cook checks a cracked ceramic bowl by feeling the visible crack, the crack across the ceramic bowl, a ceiling lamp illuminates the jars without glare; the action sits at midframe",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c23",
+        "c29",
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "643y",
+          "text": "真正要補的是來源、資料與執行證據，不只是多一份答案。"
+        }
+      ]
+    },
+    {
+      "id": "check-lines",
+      "template": "bullets",
+      "data": {
+        "title": "查的是哪一種缺口？",
+        "items": [
+          "欄位：來源有寫嗎",
+          "條件：是不是同一題",
+          "執行：結果真的回來嗎"
+        ]
+      },
+      "claims": [
+        "c23",
+        "c29",
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "ic9d",
+          "text": "先找來源有沒有寫，缺欄位就保留無法確認。",
+          "reveal": 1
+        },
+        {
+          "id": "qd94",
+          "text": "再找條件是不是同一題，把代號和狀態逐筆對上。",
+          "reveal": 1
+        },
+        {
+          "id": "ntgg",
+          "text": "最後找執行結果真的回來沒有，失敗訊息也要保留。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "kitchen-bias",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an apartment kitchen in late afternoon, a cook compares a matching jar lid with a visibly different jar opening, a metal lid held above an incompatible glass jar, a warm kitchen work lamp lights the ceramic bowls; compose the scene around the central gesture",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "8duc",
+          "text": "找得到一句來源，也還要看它是不是支持你實際說的內容。"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-task",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot in an apartment kitchen in late afternoon, two cooks compare a carefully divided serving with the ingredients still in a bowl, the divided serving on a plain ceramic plate, an under-cabinet fixture directs light onto the work surface; the subject occupies the middle third",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "e5ah",
+          "text": "評估模型能力也是同樣道理，要看任務和核對標準。"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-action-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in an apartment kitchen in late afternoon, a cook hands three plain small bowls to another person, three ceramic bowls stacked loosely in two hands, a ceiling lamp illuminates the jars without glare; place the hands along the center strip",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c23",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "25k7",
+          "text": "知道三種陷阱以後，你能立刻拿哪個方法檢查自己的回答？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "action-chapter",
+      "chapter": "用三欄卡檢查下一份回答",
+      "template": "chapter",
+      "data": {
+        "title": "用三欄卡檢查下一份回答",
+        "number": "8"
+      },
+      "claims": [
+        "c23",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "jmxp",
+          "text": "把一份回答分三欄，先找生成文字，再找資料和工具結果。"
+        }
+      ]
+    },
+    {
+      "id": "garden-three-baskets",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a residential garden in early evening before sunset, two neighbors place three shallow baskets on a garden bench, three woven baskets across the center of the bench, low sunlight enters from the left; the action sits at midframe",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c23",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "7cws",
+          "text": "不用先懂完整的模型架構，也能把這份回答拆成三種工作。"
+        }
+      ]
+    },
+    {
+      "id": "garden-language",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a residential garden in early evening before sunset, a neighbor folds a plain fabric scarf into the first basket, the soft fabric scarf pressed between fingers, low sunlight lights the hands; compose the scene around the central gesture",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c2",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "mf9z",
+          "text": "第一欄放生成文字，它把語句組好，不自動成為事實證明。"
+        }
+      ]
+    },
+    {
+      "id": "three-column-card",
+      "template": "table",
+      "data": {
+        "title": "你的下一份回答，分三欄",
+        "columns": [
+          "工作",
+          "要找的證據"
+        ],
+        "rows": [
+          [
+            "生成文字",
+            "話說得通，不代表查到"
+          ],
+          [
+            "資料查找",
+            "哪筆紀錄、哪段來源"
+          ],
+          [
+            "工具計數",
+            "條件、執行、回傳"
+          ]
+        ]
+      },
+      "claims": [
+        "c2",
+        "c7",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "megm",
+          "text": "第一欄先認出哪些是在組織文字，不拿流暢度當證據。",
+          "reveal": 1
+        },
+        {
+          "id": "zzw9",
+          "text": "第二欄找資料查找，要能說出哪筆紀錄或哪段來源。",
+          "reveal": 1
+        },
+        {
+          "id": "beye",
+          "text": "第三欄找工具計數，條件、執行和回傳要能互相對上。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "garden-record",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a residential garden in early evening before sunset, one neighbor matches a glove to an empty space in a small tray, a fabric glove fitting in the tray, sunlight falls across the bench; the subject occupies the middle third",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c4",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "pvtj",
+          "text": "第二欄放可以回查的紀錄，位置和狀態要跟來源一致。"
+        }
+      ]
+    },
+    {
+      "id": "garden-tool",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot in a residential garden in early evening before sunset, a neighbor separates a small group of pebbles from a larger group, the two groups of stone pebbles, even outdoor daylight; place the hands along the center strip",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c9",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "bj2g",
+          "text": "第三欄放真的跑過的結果，不只寫一句我已經幫你算好。"
+        }
+      ]
+    },
+    {
+      "id": "garden-boundary",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a residential garden in early evening before sunset, a neighbor leaves one basket empty while holding back a spare glove, the empty woven basket, warm daylight from the side; the action sits at midframe",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "2ctv",
+          "text": "哪一欄沒有證據，就先留未知，別用另一欄的內容補洞。"
+        }
+      ]
+    },
+    {
+      "id": "rewrite-request",
+      "template": "steps",
+      "data": {
+        "title": "可照做的三句要求",
+        "steps": [
+          {
+            "title": "只依這份資料",
+            "detail": "標出紀錄或來源"
+          },
+          {
+            "title": "缺資料請說明",
+            "detail": "不補失主與電話"
+          },
+          {
+            "title": "數字列出條件",
+            "detail": "附實際結果與代號"
+          }
+        ]
+      },
+      "claims": [
+        "c23",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "w9t3",
+          "text": "你可以要求，只依這份資料回答，請標出支持的紀錄。",
+          "reveal": 1
+        },
+        {
+          "id": "eysm",
+          "text": "無法確認的欄位寫未知，並說明還缺什麼資料。",
+          "reveal": 1
+        },
+        {
+          "id": "t7h8",
+          "text": "若有計數，請列條件、實際結果和能回查的代號。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "garden-check-it",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a residential garden in early evening before sunset, two neighbors compare the contents of their baskets and move a misplaced scarf, the scarf being moved across the gap between baskets, sunlight filters through leaves; compose the scene around the central gesture",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c23",
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "ya9q",
+          "text": "這三句不是保證正確的咒語，你還是要真的點開核對。"
+        }
+      ]
+    },
+    {
+      "id": "garden-next-context",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a residential garden in early evening before sunset, a neighbor brings an extra small tray to the bench while another makes room, the new wooden tray held at waist height, soft late daylight; the subject occupies the middle third",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c23",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "vayd",
+          "text": "需要更多資料時，就補那份資料，不先要求回答更有自信。"
+        }
+      ]
+    },
+    {
+      "id": "garden-related-token",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a residential garden in early evening before sunset, a neighbor holds a pebble, a fabric swatch and a pottery piece in separate hands, three distinct small objects above a woven mat, outdoor daylight illuminates the objects; place the hands along the center strip",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c12",
+        "c17",
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "yqvc",
+          "text": "token 是處理單位，上下文是材料，參數是訓練調整的數值。"
+        }
+      ]
+    },
+    {
+      "id": "nearby-terms",
+      "template": "compare",
+      "data": {
+        "title": "鄰近名詞：各管哪件事",
+        "left": {
+          "heading": "模型與上下文",
+          "points": [
+            "模型：依學到的模式運算",
+            "上下文：這輪可見材料"
+          ]
+        },
+        "right": {
+          "heading": "檢索與工具",
+          "points": [
+            "檢索：找到相關材料",
+            "工具：執行指定處理"
+          ]
+        }
+      },
+      "claims": [
+        "c17",
+        "c9",
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "daab",
+          "text": "模型和上下文分清楚，就比較知道該補資料還是改任務。",
+          "reveal": 1
+        },
+        {
+          "id": "pzcj",
+          "text": "檢索找材料，工具執行處理；它們的結果仍然需要核對。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "garden-own-acceptance",
+      "template": "shot",
+      "data": {
+        "prompt": "From behind in a residential garden in early evening before sunset, a neighbor returns the matching glove to a waiting visitor, the glove crossing between their hands, low sunlight comes from the garden gate; the action sits at midframe",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c24",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "zfi9",
+          "text": "你要的不是聽起來像高手，而是這次任務有可確認的成果。"
+        }
+      ]
+    },
+    {
+      "id": "garden-follow-up",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead shot in a residential garden in early evening before sunset, two neighbors separate belongings into three baskets without filling the empty basket, the three baskets with distinct contents, even light under an open pergola; compose the scene around the central gesture",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c23",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "5ku5",
+          "text": "下次看到完整答案，先找哪些內容有資料，哪些數字有工具結果。"
+        }
+      ]
+    },
+    {
+      "id": "garden-closing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a residential garden in early evening before sunset, a volunteer closes an umbrella while a visitor walks away carrying the matching item, the umbrella's closed wooden handle, last daylight enters through the courtyard gate; the subject occupies the middle third",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c9",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "w852",
+          "text": "若用了工具，再核對它實際傳回的結果，才把工作交出去。"
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "template": "outro",
+      "data": {
+        "title": "會接話，還要**有據可查**",
+        "cta": "用三欄卡檢查下一份回答的依據",
+        "lines": [
+          "有來源也會生成文字；用工具再查結果"
+        ]
+      },
+      "claims": [
+        "c2",
+        "c9",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "tgi3",
+          "text": "話完整不等於查到了；可信回答要有據可查。"
+        }
+      ]
+    }
+  ]
+}
