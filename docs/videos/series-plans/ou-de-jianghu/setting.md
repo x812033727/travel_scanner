@@ -220,7 +220,7 @@
 
 **結局：**第 24 集活著，接掌玄門；白蘅白死這筆帳他記在自己身上。
 
-**外觀基準：**Original 2D anime Taoist swordsman in ornate puppet-theatre style: thin ageless man, long grey-streaked hair in a high topknot under a small dark-green bamboo-pattern crown, sharp eyes, a short pointed beard. Moss-green and black layered Taoist robe with embroidered bamboo and star charts, a horsetail whisk tucked in the sash, a cloth-wrapped bundle on his back (the red maple iron, later the scripture). Walks with a traveller's dust on the hem.
+**外觀基準：**Original 2D anime Taoist swordsman in ornate puppet-theatre style: thin ageless man, long grey-streaked hair in a high topknot under a small dark-green bamboo-pattern crown, sharp eyes, a short pointed beard. Moss-green and black layered Taoist robe with embroidered bamboo and star charts, a horsetail whisk tucked in the sash, a cloth-wrapped bundle on his back (the fire-spine iron, later the scripture). Walks with a traveller's dust on the hem.
 
 ### 柳不活「求死書生」（liu-buhuo）
 
@@ -268,7 +268,7 @@
 
 **結局：**第 20 集攜冥棺遠去後未再現身，第 24 集時下落不明；壽數已折去一半。
 
-**外觀基準：**Original 2D anime mountain hermit in ornate puppet-theatre style: tall weathered man in his fifties, long steel-grey hair worn loose under a plain dark-blue cloth crown, deep-set eyes, a long thin scar across the bridge of the nose. Layered robe of deep ocean blue and storm grey with embroidered rolling-wave hems, a heavy fur-lined travel mantle, a plain long sword later replaced by the Benevolent Heart sword. After episode 11 his hair turns fully white and he walks with a staff.
+**外觀基準：**Original 2D anime mountain hermit in ornate puppet-theatre style: tall weathered man in his fifties, long steel-grey hair worn loose under a plain dark-blue cloth crown, deep-set eyes, a long thin scar across the bridge of the nose. Layered robe of deep ocean blue and storm grey with embroidered rolling-wave hems, a heavy fur-lined travel mantle, a plain long sword later replaced by the Clear-Conscience sword. After episode 11 his hair turns fully white and he walks with a staff.
 
 ### 岳嵐客（化名「赤羽」）（yuelan-ke）
 
