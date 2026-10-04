@@ -41,6 +41,8 @@ jobs:
       - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
         with: { python-version: "3.13" }
       - run: uv sync --frozen
+      - name: Test dots compiler and series publication boundaries
+        run: uv run python -m unittest discover -s ../../tools/dots-series -p test_pipeline.py -v
       # Same shape as the npm audit below: the advisory lookup needs PyPI at request time,
       # and a connection reset there failed the api job on a pull request whose code was
       # never run (2026-09-06). Now that api is a required check, that would block the

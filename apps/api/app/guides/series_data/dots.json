@@ -1,0 +1,485 @@
+{
+  "slug": "dots",
+  "locale": "zh-TW",
+  "hub": "dots-guide",
+  "groups": [
+    {
+      "id": "basics",
+      "title": "基礎與控制：第 01–10 課"
+    },
+    {
+      "id": "applications",
+      "title": "六個實際應用：第 11–16 課"
+    }
+  ],
+  "paths": [
+    {
+      "id": "first-task",
+      "title": "建立並交出第一份任務",
+      "slugs": [
+        "dots-lesson-01",
+        "dots-lesson-02",
+        "dots-lesson-03"
+      ]
+    },
+    {
+      "id": "complete",
+      "title": "完整學習路線",
+      "slugs": [
+        "dots-lesson-01",
+        "dots-lesson-02",
+        "dots-lesson-03",
+        "dots-lesson-04",
+        "dots-lesson-05",
+        "dots-lesson-06",
+        "dots-lesson-07",
+        "dots-lesson-08",
+        "dots-lesson-09",
+        "dots-lesson-10",
+        "dots-lesson-11",
+        "dots-lesson-12",
+        "dots-lesson-13",
+        "dots-lesson-14",
+        "dots-lesson-15",
+        "dots-lesson-16"
+      ]
+    },
+    {
+      "id": "applications",
+      "title": "應用實作路線",
+      "slugs": [
+        "dots-lesson-03",
+        "dots-lesson-11",
+        "dots-lesson-12",
+        "dots-lesson-13",
+        "dots-lesson-14",
+        "dots-lesson-15",
+        "dots-lesson-16"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "slug": "dots-lesson-01",
+      "title": "dots 完整介紹：理解 dots、ChatGPT、Work 與 Codex 的分工",
+      "outcome": "能判斷工作應交給哪個入口，並辨認條件式功能與尚未開放的功能。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots"
+      ],
+      "number": 1,
+      "group": "basics",
+      "level": "beginner",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "dots",
+        "ChatGPT",
+        "Work",
+        "Codex"
+      ],
+      "prerequisites": [],
+      "related": [
+        "dots-lesson-02"
+      ],
+      "operation_minutes": 15
+    },
+    {
+      "slug": "dots-lesson-02",
+      "title": "建立第一個 dot：資格、設定與個人化",
+      "outcome": "確認帳號可用性，完成建立與個人化，保留實際設定結果。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots"
+      ],
+      "number": 2,
+      "group": "basics",
+      "level": "beginner",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "設定",
+        "建立",
+        "資格"
+      ],
+      "prerequisites": [
+        "dots-lesson-01"
+      ],
+      "related": [
+        "dots-lesson-03"
+      ],
+      "operation_minutes": 15
+    },
+    {
+      "slug": "dots-lesson-03",
+      "title": "第一次交辦：目標、資料、限制與完成條件",
+      "outcome": "交出可核對的任務，利用追問補足資料並檢查第一份成果。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/tasks-and-memory"
+      ],
+      "number": 3,
+      "group": "basics",
+      "level": "beginner",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "提示詞",
+        "交辦",
+        "完成條件"
+      ],
+      "prerequisites": [
+        "dots-lesson-02"
+      ],
+      "related": [
+        "dots-lesson-04"
+      ],
+      "operation_minutes": 15
+    },
+    {
+      "slug": "dots-lesson-04",
+      "title": "記憶與持續工作：背景、偏好與已有任務",
+      "outcome": "補充背景、修正記憶與偏好，接續任務並確認更新的影響。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/tasks-and-memory"
+      ],
+      "number": 4,
+      "group": "basics",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "記憶",
+        "持續工作",
+        "偏好"
+      ],
+      "prerequisites": [
+        "dots-lesson-03"
+      ],
+      "related": [
+        "dots-lesson-05"
+      ],
+      "operation_minutes": 15
+    },
+    {
+      "slug": "dots-lesson-05",
+      "title": "串接工具：Google、Slack 與權限設定",
+      "outcome": "分清應用程式連接與聯絡管道，檢查帳號、存取範圍與撤銷方式。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/computers-and-apps"
+      ],
+      "number": 5,
+      "group": "basics",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "Google",
+        "Slack",
+        "串接",
+        "權限"
+      ],
+      "prerequisites": [
+        "dots-lesson-03"
+      ],
+      "related": [
+        "dots-lesson-06"
+      ],
+      "operation_minutes": 15
+    },
+    {
+      "slug": "dots-lesson-06",
+      "title": "雲端與本機電腦：查看、接管、交還與撤銷",
+      "outcome": "找出任務使用的電腦，完成接管與交還並確認登入狀態不會自動同步。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/computers-and-apps"
+      ],
+      "number": 6,
+      "group": "basics",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "雲端",
+        "電腦",
+        "接管",
+        "Take over"
+      ],
+      "prerequisites": [
+        "dots-lesson-03"
+      ],
+      "related": [
+        "dots-lesson-07"
+      ],
+      "operation_minutes": 15
+    },
+    {
+      "slug": "dots-lesson-07",
+      "title": "查看委派工作：Activity、Work、Codex 與成果",
+      "outcome": "在活動紀錄追蹤主工作與委派任務，開啟成果並確認執行環境。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/tasks-and-memory"
+      ],
+      "number": 7,
+      "group": "basics",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "Activity",
+        "委派",
+        "成果"
+      ],
+      "prerequisites": [
+        "dots-lesson-03"
+      ],
+      "related": [
+        "dots-lesson-08"
+      ],
+      "operation_minutes": 15
+    },
+    {
+      "slug": "dots-lesson-08",
+      "title": "排程與事件：時間、通知、期限與取消",
+      "outcome": "建立有期限和通知條件的排程，核對執行結果並修改或取消。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/tasks-and-memory"
+      ],
+      "number": 8,
+      "group": "basics",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "排程",
+        "Scheduled",
+        "事件",
+        "通知"
+      ],
+      "prerequisites": [
+        "dots-lesson-04"
+      ],
+      "related": [
+        "dots-lesson-09"
+      ],
+      "operation_minutes": 15
+    },
+    {
+      "slug": "dots-lesson-09",
+      "title": "跨裝置聯絡：ChatGPT、通話、手機與 Slack",
+      "outcome": "選擇可用的聯絡管道，確認跨管道上下文、通話與工作狀態。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/channels"
+      ],
+      "number": 9,
+      "group": "basics",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "通話",
+        "手機",
+        "聯絡",
+        "Slack"
+      ],
+      "prerequisites": [
+        "dots-lesson-05"
+      ],
+      "related": [
+        "dots-lesson-10"
+      ],
+      "operation_minutes": 15
+    },
+    {
+      "slug": "dots-lesson-10",
+      "title": "控制與除錯：規則、暫停、停止與取消",
+      "outcome": "辨認等待原因並處理；分別驗證主工作、委派任務與排程的停止效果。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/controls"
+      ],
+      "number": 10,
+      "group": "basics",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "停止",
+        "暫停",
+        "取消",
+        "除錯"
+      ],
+      "prerequisites": [
+        "dots-lesson-07"
+      ],
+      "related": [
+        "dots-lesson-11"
+      ],
+      "operation_minutes": 15
+    },
+    {
+      "slug": "dots-lesson-11",
+      "title": "旅遊應用：有來源、預算與限制的三日行程",
+      "outcome": "完成可查核的三日行程，再因預算與移動條件改變而更新。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/tasks-and-memory"
+      ],
+      "number": 11,
+      "group": "applications",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "旅遊",
+        "行程",
+        "預算"
+      ],
+      "prerequisites": [
+        "dots-lesson-03"
+      ],
+      "related": [
+        "dots-lesson-10"
+      ],
+      "operation_minutes": 30
+    },
+    {
+      "slug": "dots-lesson-12",
+      "title": "辦公應用：郵件、行事曆與會議準備文件",
+      "outcome": "根據專用測試郵件與行程製作會議準備文件，再更新新議程。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/computers-and-apps"
+      ],
+      "number": 12,
+      "group": "applications",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "辦公",
+        "郵件",
+        "會議",
+        "行事曆"
+      ],
+      "prerequisites": [
+        "dots-lesson-05"
+      ],
+      "related": [
+        "dots-lesson-10"
+      ],
+      "operation_minutes": 30
+    },
+    {
+      "slug": "dots-lesson-13",
+      "title": "報表應用：合成資料、圖表與第二批更新",
+      "outcome": "產出資料報表和圖表，獨立覆核數值並接續第二批資料。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/tasks-and-memory"
+      ],
+      "number": 13,
+      "group": "applications",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "報表",
+        "資料分析",
+        "圖表"
+      ],
+      "prerequisites": [
+        "dots-lesson-03"
+      ],
+      "related": [
+        "dots-lesson-10"
+      ],
+      "operation_minutes": 30
+    },
+    {
+      "slug": "dots-lesson-14",
+      "title": "學習應用：七日計畫、練習與追蹤排程",
+      "outcome": "建立七日學習計畫和練習，再依程度調整內容並驗證追蹤排程。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/tasks-and-memory"
+      ],
+      "number": 14,
+      "group": "applications",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "學習",
+        "練習題",
+        "追蹤"
+      ],
+      "prerequisites": [
+        "dots-lesson-08"
+      ],
+      "related": [
+        "dots-lesson-10"
+      ],
+      "operation_minutes": 30
+    },
+    {
+      "slug": "dots-lesson-15",
+      "title": "內容應用：四週企劃、研究與文章草稿",
+      "outcome": "建立可查證的四週內容企劃和文章草稿，再更新題目與期限。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/tasks-and-memory"
+      ],
+      "number": 15,
+      "group": "applications",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "內容企劃",
+        "文章",
+        "研究"
+      ],
+      "prerequisites": [
+        "dots-lesson-03"
+      ],
+      "related": [
+        "dots-lesson-10"
+      ],
+      "operation_minutes": 30
+    },
+    {
+      "slug": "dots-lesson-16",
+      "title": "專案應用：會議紀錄、期限變更與週報",
+      "outcome": "從會議紀錄整理可追蹤的待辦，再處理期限變更並產出週報。",
+      "sources": [
+        "https://learn.chatgpt.com/docs/dots/tasks-and-memory"
+      ],
+      "number": 16,
+      "group": "applications",
+      "level": "intermediate",
+      "platforms": [
+        "web"
+      ],
+      "aliases": [
+        "專案",
+        "待辦",
+        "週報",
+        "期限"
+      ],
+      "prerequisites": [
+        "dots-lesson-07"
+      ],
+      "related": [
+        "dots-lesson-10"
+      ],
+      "operation_minutes": 30
+    }
+  ]
+}
