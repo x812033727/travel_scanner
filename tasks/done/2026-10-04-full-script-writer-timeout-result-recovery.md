@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-full-script-writer-timeout-result-recovery
 title: Recover full-script writer results after gateway timeout
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-video-recovery-20261004
 claimed_at: 2026-10-04T06:01:48Z
 created_at: 2026-10-04T05:49:34Z
-completed_at:
+completed_at: 2026-10-04T07:16:34Z
 branch: codex/video-pipeline-recovery-20261004
 depends_on: []
 scope:
@@ -53,26 +53,26 @@ worker (HTTP 504: no answer within the deadline)`.
 
 ## Definition of done
 
-- [ ] A full-script writer that outlives the HTTP deadline can deliver its exact
+- [x] A full-script writer that outlives the HTTP deadline can deliver its exact
       completed answer through a durable receipt/result or another bounded,
       resumable contract, without repeating the model request.
-- [ ] Retry/reconnect checks the existing request identity and completed result
+- [x] Retry/reconnect checks the existing request identity and completed result
       before quota checks or a new model dispatch; authorization and input/source
       hashes prevent adoption of another video's or stale answer.
-- [ ] An API/host crash after dispatch remains explicitly uncertain if execution
+- [x] An API/host crash after dispatch remains explicitly uncertain if execution
       cannot be proven; no automatic paid retries or fabricated recovery.
-- [ ] The worker saves the recovered script, resumes fact checking and reports
+- [x] The worker saves the recovered script, resumes fact checking and reports
       the current stage; `status=ok` alone never counts as worker delivery.
 
 ## Steps
 
-- [ ] Freshly collision-check and claim the required API, migration, client and
+- [x] Freshly collision-check and claim the required API, migration, client and
       worker paths. Scope any selected migration and additional tests before edits.
-- [ ] Choose a result-preserving contract for whole-script writing and review
+- [x] Choose a result-preserving contract for whole-script writing and review
       atomic dispatch, completion, polling and crash behavior independently.
-- [ ] Add timeout, reconnect, concurrent submit, stale-input, authorization and
+- [x] Add timeout, reconnect, concurrent submit, stale-input, authorization and
       uncertain-crash tests that prove one model operation and exact result reuse.
-- [ ] Verify a source-bound completed script through the actual worker transport
+- [x] Verify a source-bound completed script through the actual worker transport
       after the ordinary relay deadline, then check persisted downstream progress.
 
 ## Implementation notes
@@ -125,3 +125,20 @@ Production recovery requires its own authorized operation and current hashes.
   repeated uncertain operations; coordinate rather than duplicate that scope.
 - Filed open/unclaimed from diagnosis. No production setting, service, model call,
   owner approval, upload or publication was changed or retried in this audit.
+
+## PR handoff (2026-10-04)
+
+Implementation and independent review are included in draft PR #1203. This task
+records completed source work and validation, not a production deployment or a
+recovered/published video. All four API shards passed 6695 tests with 22 skips;
+API Ruff/Mypy, Web checks and all three Web unit shards passed on source head
+dc2a4b194. The complete tools suite passed 1536 tests with 2 skips. Real PostgreSQL/Redis shard 4 passed 1352 tests
+with 9 skips, including the saved-items lifecycle regression. Final aggregate CI
+results are recorded in the PR. Existing media switches, caps, owner approvals
+and disabled uploader were not changed.
+
+Local API broad run: 6070 passed, 442 skipped; 28 Windows-only failures were
+rechecked with UTF-8 mode. The relevant collection then passed 173 tests with
+1 skip and only the unavailable Windows symlink privilege case remaining.
+That test-platform gap is tracked separately as
+2026-10-04-python-anime-planning-symlink-windows.

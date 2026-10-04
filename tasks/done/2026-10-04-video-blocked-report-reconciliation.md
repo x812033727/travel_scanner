@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-video-blocked-report-reconciliation
 title: Reconcile saved blocked video states to backend reports
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: codex-video-recovery-20261004
 claimed_at: 2026-10-04T06:02:01Z
 created_at: 2026-10-04T05:51:24Z
-completed_at:
+completed_at: 2026-10-04T07:16:37Z
 branch: codex/video-pipeline-recovery-20261004
 depends_on: []
 scope:
@@ -44,18 +44,18 @@ error. Do not assert a particular cause without older logs/evidence.
 
 ## Definition of done
 
-- [ ] A persisted blocked state whose backend stage/checklist is stale is reconciled on a
+- [x] A persisted blocked state whose backend stage/checklist is stale is reconciled on a
       later worker round using a report only, without replaying any paid model/media call.
-- [ ] The backend receives the actual blocked reason and current checklist, so the normal
+- [x] The backend receives the actual blocked reason and current checklist, so the normal
       retry action becomes available; repeated reconciliation is idempotent.
-- [ ] A reporting failure leaves durable evidence of the pending report and is retried with
+- [x] A reporting failure leaves durable evidence of the pending report and is retried with
       appropriate pacing. Failure for one blocked video does not indefinitely starve other
       videos or create a tight reporting loop.
-- [ ] Reconciliation respects owner drop/withdrawal, current one-shot retry identity and
+- [x] Reconciliation respects owner drop/withdrawal, current one-shot retry identity and
       acknowledgement. An owner-requested resume must not be overwritten by a stale block.
-- [ ] Existing uncertainty safeguards remain intact: a writer response lost at HTTP 504
+- [x] Existing uncertainty safeguards remain intact: a writer response lost at HTTP 504
       is not paid for again merely to refresh the UI, including after a worker restart.
-- [ ] Focused tests cover save-before-report failure, restart, stale backend stages, repeated
+- [x] Focused tests cover save-before-report failure, restart, stale backend stages, repeated
       report failure, successful reconciliation, owner drop and a new retry request.
 
 ## Steps
@@ -63,9 +63,9 @@ error. Do not assert a particular cause without older logs/evidence.
 - [x] Compare persisted states to current backend records without changing either.
 - [x] Trace block persistence/report ordering and blocked-state filtering.
 - [x] Search the shared queue for an existing exact reconciliation ticket.
-- [ ] Reproduce a missed report with the fake backend before modifying implementation.
-- [ ] Add durable report reconciliation preserving the existing retry/drop contract.
-- [ ] Validate reporting recovery without paid submissions or production changes.
+- [x] Reproduce a missed report with the fake backend before modifying implementation.
+- [x] Add durable report reconciliation preserving the existing retry/drop contract.
+- [x] Validate reporting recovery without paid submissions or production changes.
 
 ## How to verify
 
@@ -126,3 +126,20 @@ report alone does not mean the writer answer or video has been recovered.
 - Initial transport/process cause remains unconfirmed. The defect can be reproduced
   independently by failing a report after local persistence; that is not proof which
   failure happened to the two live videos.
+
+## PR handoff (2026-10-04)
+
+Implementation and independent review are included in draft PR #1203. This task
+records completed source work and validation, not a production deployment or a
+recovered/published video. All four API shards passed 6695 tests with 22 skips;
+API Ruff/Mypy, Web checks and all three Web unit shards passed on source head
+dc2a4b194. The complete tools suite passed 1536 tests with 2 skips. Real PostgreSQL/Redis shard 4 passed 1352 tests
+with 9 skips, including the saved-items lifecycle regression. Final aggregate CI
+results are recorded in the PR. Existing media switches, caps, owner approvals
+and disabled uploader were not changed.
+
+Local API broad run: 6070 passed, 442 skipped; 28 Windows-only failures were
+rechecked with UTF-8 mode. The relevant collection then passed 173 tests with
+1 skip and only the unavailable Windows symlink privilege case remaining.
+That test-platform gap is tracked separately as
+2026-10-04-python-anime-planning-symlink-windows.
