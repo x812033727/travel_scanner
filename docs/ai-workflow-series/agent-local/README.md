@@ -1,6 +1,6 @@
 # 「代理工具搭本機模型」：系列 E 組規格（6 篇，zh-TW）
 
-> **現況（2026-10-04）**：六篇寫完、各做兩輪獨立查核，目錄篇已更新並查核，圖檔與系列目錄已重建；**還沒合併、還沒發布**。
+> **現況（2026-10-04）**：六篇與更新過的目錄篇**已發布**（PR #1181，`c03952f9b`）。發布紀錄在本頁最後。
 > 交接在本頁最後一節。票：`tasks/open/2026-10-03-ai-workflow-series-agent-plus-local.md`。
 > 來源：站主 2026-10-03 要求「做一個手把手教學：Claude 或 Codex 搭配本地端 AI 的混合 workflow，要注意什麼、怎樣做比較好」。
 > 這一組掛在既有的 `ai-workflow` 系列底下，沿用 [`../BRIEF.md`](../BRIEF.md)、[`../agents/FACTCHECK.md`](../agents/FACTCHECK.md)、
@@ -328,3 +328,19 @@
 **發布（站主明確選擇後）**：照 skill `content-pipeline` 的 publish-runbook。先部署（`series_data/ai-workflow.json` 要進 API），
 再 `guides-import --slug` 六篇（都是 create），六個網址回 200 之後才匯入目錄篇（update），最後 `guides-links-rebuild`、`guides-links-check`、`verify_public.py`。
 驗證：`/api/travel/guides/series/ai-workflow?locale=zh-TW` 回十八筆；目錄頁列出新的一組。
+
+**發布紀錄（2026-10-03 UTC，台灣時間 10-04 上午）**：站主在選項題選了「合併、部署並發布」。
+
+- 合併：PR #1181 的 head `f73db32b0` 二十一項檢查全綠，23:44Z squash 成 `c03952f9b`；合併後的樹與 CI 驗過的 head 相同。
+- 部署：預檢乾淨（沒有暫停檔、鎖是空的、沒有被標記的分階段發布），`--dry-run` 列出三個新 commit、沒有 migration。
+  23:45:34–23:48:29Z 從 `cf9e04ead` 部署到 `c03952f9b`，約三分鐘，健康檢查 3/3，alembic 仍是 0122。
+  `host-verify.sh` 加上這次專屬的三項（API 映像裡六個新內容包、目錄十八筆 A–E、新主圖回 200）共 14 項全過。
+- 匯入計畫（唯讀）：六篇都是 zh-TW `create`，目錄篇是 `update` 而且已在公開 sitemap 裡。
+  不帶 `--slug` 的 dry-run 當時有 1,159 篇、283 個 slug 有待處理的變更，都是別人的積壓，沒有碰。
+- 發布（一支腳本，每一步先斷言再做）：重跑 dry-run 與看過的那份逐位元組相同 → `pg_dump`
+  （`/root/travel_scanner_preimport_20261003_235010.dump`，175 MB）→ 六篇 `--publish`：created 6／published 6／failed null →
+  主機上六個新網址都回 200 → 目錄篇 dry-run 是一筆 `update` → `--publish`：updated 1 → 目錄頁連到六篇新文章 →
+  `guides-links-rebuild` → `guides-links-check` 前後都是 88 筆、集合相同 → 七篇再 dry-run 全部 `unchanged`。
+- 公開站：`verify_public.py --sitemap` 七頁全過（200、h1 等於標題、canonical、沒有 noindex、主圖與圖解 200、在 sitemap 裡）；
+  `/api/travel/guides/series/ai-workflow?locale=zh-TW` 回十八筆、A–E 五組。
+- Auto 模式下，預檢、背景的部署、驗證、匯入的 dry-run 與發布都沒有被分類器擋。
