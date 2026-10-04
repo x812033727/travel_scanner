@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-anime-silent-action-guidance
 title: Align anime silent action guidance with long-anime-v1 policy
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-drama-docs-truth
 claimed_at: 2026-10-04T14:51:06Z
 created_at: 2026-10-04T04:06:45Z
-completed_at:
+completed_at: 2026-10-04T15:15:53Z
 branch: claude/drama-docs-say-what-code-does
 depends_on: []
 scope:

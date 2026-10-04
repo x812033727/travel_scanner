@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-drama-design-documents-say-what-the
 title: Drama design documents say what the code does: shot length norms, the still-move reader, pan direction, exit codes
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-drama-docs-truth
 claimed_at: 2026-10-04T14:50:15Z
 created_at: 2026-10-03T11:20:00Z
-completed_at:
+completed_at: 2026-10-04T15:15:30Z
 branch: claude/drama-docs-say-what-code-does
 depends_on: []
 scope:
