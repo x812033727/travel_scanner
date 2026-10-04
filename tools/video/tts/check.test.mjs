@@ -64,6 +64,12 @@ test("same-sound characters and added filler words pass without Jev; a different
   assert.equal(matchKind("先用小模型，答不好再換旗艦咒語", line("先用小模型，答不好再換旗艦救援。"), lexicon), null);
   assert.equal(matchKind("那我我自己實際上怎麼用", line("那我自己，實際上怎麼用？"), lexicon), null, "a repeated word is not a filler");
   assert.equal(reading("它"), reading("他"));
+  // Pairs competition-20261002's transcripts produced on 2026-10-02 (L002, WR-E01-L026), which
+  // went to Jev because pinyin-pro reads 妳 as nai3.
+  assert.equal(matchKind("字簽了 你也就沒用了", line("字簽了，妳也就沒用了。"), lexicon), "sound");
+  assert.equal(matchKind("棠棠，你連我也信不過？", line("棠棠，妳連我也信不過？"), lexicon), "sound");
+  assert.equal(matchKind("唐唐,你連我也信不過?", line("棠棠，妳連我也信不過？"), lexicon), "sound");
+  assert.equal(reading("妳"), reading("你"));
 });
 
 test("Taiwanese particles the voice adds pass as fillers; a closing 餒 or 耶 only when the script lacks it", () => {

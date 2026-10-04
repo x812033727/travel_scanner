@@ -1035,6 +1035,38 @@ Non-claims. This review does not accept the Jev change itself: not whether TypeS
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1219 claude-pr-review-1219-tts increment: 3 files (2026-10-04)
+
+Reviewer: `claude-pr-review-1219-tts`. Author: `claude-opus-5-5-tts-ni-tempdirs`. The reviewer authored none of the PR's changes and changes only this report and review.json. Scope: DURATION_ONLY for the three changed bindings in committed source `468443f91e42516e9ad4ce4835041adf45c21f2a` on branch `claude/tts-ni-variant-and-test-tempdirs`.
+
+Baseline: all 108 registered files at merge-base `a266a5bba8905d10a265eb14c143b2a7f297a121`, then the tip of main, hash exactly to the preceding receipt; for the three rebound files `git show <merge-base>:<path> | sha256sum` equals the hash review.json bound before this increment. All 108 working-tree files match the committed source bytes. The diff against that merge-base intersects REVIEW_FILES in exactly automation/anime-write.test.mjs, tts/check.test.mjs and tts/tts.test.mjs. The preceding report SHA256 is `a5eac1abe10acc262ca6a12befdbf69583f2f590c25da46eed24a41b308afbf3`. Every historical section remains byte for byte intact; three hashes are rebound, while the other 105 bindings and the 108-path registry are unchanged.
+
+Findings: anime-write.test.mjs and tts.test.mjs replace `mkdtempSync(path.join(tmpdir(), prefix))` with `tempDir(prefix)` from core/fixtures/load.mjs, which already existed at the merge-base unchanged: it makes the same kind of fresh directory under the system temporary directory and removes it when the process exits. The now unused `mkdtempSync` and `tmpdir` imports are dropped. In anime-write.test.mjs only the `directory()` helper changes; the SERIES fixture (target_minutes 22, long-anime-v1, runtime_spec body 1320 s, OP/ED 180 s, slot 1800 s, reserve 300 s) and every act-plan, merge and source-hash assertion are unchanged context. In tts.test.mjs only the credentials test's home directory changes.
+
+check.test.mjs adds four assertions to the existing same-sound test: three transcript/script pairs that differ by 妳/你 (one also by 唐/棠 and half-width punctuation) now classify as "sound", and reading("妳") equals reading("你"). They pin the unbound check.mjs change, where reading() folds 妳 to 你 before pinyin-pro so the pronoun no longer reads nai3; reading() feeds only matchKind's transcript-to-script comparison. No assertion was removed or loosened. Across the three full diffs there is no change to the 600/780-second targets, measured 480-second floor, eight-minute minimum, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, source-pack hashes, covered state or plans.json, and no assertion about length, runtime or duration changed meaning.
+
+For context the reviewer also read the unbound rest of the PR: check.mjs's reading() change, the same tempDir() swap in core/paths.test.mjs, media/series-store.test.mjs, media/stages.test.mjs and qa/thumbnail.test.mjs, `t.after` rmSync cleanup in tools/tasks.test.mjs and tools/ci-auto-update.test.mjs, and three task files. None is in REVIEW_FILES and none touches a duration rule.
+
+Ran (Node 24.13.0, offline on Windows): byte-level SHA256 comparisons against all 108 merge-base blobs and committed-source blobs, and complete diffs of the three rebound files. Before rebinding, `node tools/video/long-form/cli.mjs check` exited 1 naming exactly these three stale bindings. `node --test tools/video/tts/check.test.mjs tools/video/tts/tts.test.mjs tools/video/automation/anime-write.test.mjs` ran 51 tests: 50 pass, including the extended same-sound test, and 1 fails, the known Windows-only "a second transcript clears a line only Gemini misheard" in tts/check.test.mjs, which this PR does not touch. After rebinding, `cli.mjs check` and `node --test tools/video/long-form/review.test.mjs` are run again, with exact results in this increment's handoff. No whole tool, API or web suite was run by this reviewer for the receipt.
+
+Non-claims: DURATION_ONLY for these three bound bytes. This increment does not re-review the 105 untouched bindings, certify generated media or measured production runtime, judge whether 妳/你 folding is right for every narration, claim full-suite or CI completion, deploy, upload or publish. It does not include PR #1218's concurrent increment; whichever of the two merges second needs a separate merge follow-up. Historical sections retain their original revision-specific claims.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none for these bound bytes.
+
+## PR #1219 merge with #1218 follow-up (2026-10-04)
+
+Reviewer: `claude-pr-review-1219-merge-1218`. Author: `claude-opus-5-5-tts-ni-tempdirs`. The reviewer authored none of either PR's code and changes only this report and review.json. Scope: DURATION_ONLY for the merge of origin/main `cf16eb785586c347bc670f9722c9712b509b536e` (#1218, with #1214-#1217 before it) into the PR #1219 head `6de219731a3091a01d3c9a2e0c241b62d3b648a9`. No binding is newly reviewed here.
+
+Baseline: the merge base of the two is `a266a5bba8905d10a265eb14c143b2a7f297a121`, the baseline both the #1218 and the #1219 increments started from. Only the two receipts conflicted; every other path merged cleanly. The union was rebuilt from the three blobs (merge base, branch, main), not from the conflict markers. Above the table, each side's review.md is the merge base's text plus exactly one appended section, #1218's on main and #1219's on the branch. Both are kept byte for byte, #1218's first because it reached main first. The table's prose is identical on all three sides. Hashing all 108 registered files in the merged tree gives three groups. 104 equal the merge-base binding both sides kept. apps/api/app/video_automation/judge.py equals main's #1218 binding `83528aed23fda0a61f571affe1a74ad19fb4cf337ae97494517ff5f4172a53c8`. automation/anime-write.test.mjs, tts/check.test.mjs and tts/tts.test.mjs equal the #1219 bindings. No merged file is a third version that neither increment reviewed. The table rows and review.json carry exactly these values. The preceding report SHA256s were `f82fdf6d026caeeb4016857deab2c425a22dc54b21c0c5e7ad40da28b1fa1048` on main and `505b9f87509cafd9f303ca9b596f7f9a9d5efa84d6910b07d5f20d326e030906` on the branch.
+
+Findings: the two PRs rebind disjoint files, judge.py on one side and three tool tests on the other, so the merge produces no reviewed bytes beyond what each increment already judged. Main's other commits since the merge base (#1214 article anchors, #1215 shot_reading, #1216 drama design docs, #1217 the anime-planning test on Windows) change no registered file; every one of the 104 unchanged bindings hashes to its merge-base value in the merged tree. The 600/780-second targets, measured 480-second floor, eight-minute minimum, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, source-pack hashes, covered state and plans.json stand as the two increments recorded them.
+
+Ran (Node 24.13.0, offline on Windows apart from `git fetch origin`): the three-blob union and the hashing of all 108 merged-tree files against the merge-base, branch and main receipts, as a script. After `report_sha256` is set, `node tools/video/long-form/cli.mjs check` and `node --test tools/video/long-form/review.test.mjs` are run, with exact results in this follow-up's handoff. No tool, API or web suite was run for this follow-up.
+
+Non-claims: DURATION_ONLY for the merged tree's 108 bound bytes as the union of two earlier increments. This follow-up re-reviews no binding, does not review #1214-#1217 beyond confirming they leave the registered files unchanged, and makes no claim about CI, deployment, upload or publication. The #1218 and #1219 sections keep their own revision-specific claims.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none for the merged tree's bound bytes.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1090,7 +1122,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/cli.mjs` | `0a179fd43024fa0d61fe88932bca19033ef261e6dca18d84a8330ca754b43b38` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
-| `tools/video/automation/anime-write.test.mjs` | `67e53a0cf183c3175adac2ce28d8b2fef7792a408b6b49125345e129115e7d05` |
+| `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
 | `tools/video/automation/automation.test.mjs` | `e88775d919578a9b5c8fb199992bbd04181fe850b934a9a166d304f474d67fd3` |
 | `tools/video/automation/discuss.mjs` | `691f6ec55bde0b1c34c54fd38f39681d50617035dab78b0d2c751266a61f43ee` |
 | `tools/video/automation/flow.mjs` | `b77931ef952d897b02e394b37ac6834296663bd5097bb4b20d66a42367bd081a` |
@@ -1146,6 +1178,6 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
-| `tools/video/tts/check.test.mjs` | `ad385d7df22fd297588dfef8a72b0b3f6261d0fb4619e4c538a30ef8464b1477` |
+| `tools/video/tts/check.test.mjs` | `af0e6e46a539cfe630f8253aaae9c8df74df604c8ce859378460cdce6141abdd` |
 | `tools/video/tts/synthesis.mjs` | `0081296cca9114ec528d8581f29fa553e2b5657a347988bf5b789e5eed2b6680` |
-| `tools/video/tts/tts.test.mjs` | `14f28ea3af4f4626b8b7133955b9b2051da1027bd9214b793e3dd42f5903a3ec` |
+| `tools/video/tts/tts.test.mjs` | `ddc16c7840364c83a8c812fde309990606db61a51985c6fd6538f825eb865067` |
