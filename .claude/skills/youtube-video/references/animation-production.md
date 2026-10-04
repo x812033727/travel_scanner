@@ -51,11 +51,11 @@ Gemini 聲音描述與模型能力以 [官方語音文件](https://ai.google.dev
 
 ## Veo 3.1 Lite 的實際鏡頭契約
 
-這批選 `gemini` / `veo-3.1-lite-generate-preview` / `1080p` / `16:9`；原片固定 8 秒、24 fps。支援首格圖及末格，無 `referenceImages`、無 extension。不要悄悄切到 Fast、其他模型或 720p；供應商能力與價格在 [官方Veo文件](https://ai.google.dev/gemini-api/docs/veo)、[官方價目](https://ai.google.dev/gemini-api/docs/pricing) 與 profile 的核實日期查看。既有剪輯時間網格是30 fps；24→30轉換不等於增加真實動作細節。
+這批選 `gemini` / `veo-3.1-lite-generate-preview` / `1080p` / `16:9`；原片固定 8 秒、24 fps。支援首格圖及末格，無 `referenceImages`、無 extension。工具端照這個寫死：`tools/video/media/clips.mjs` 的 `clipSeconds` 對 `veo-3.1*` 配 1080p 一律要 8 秒，Veo 3.1 Lite 的請求不帶參考圖（同檔送出前把 `references` 清空；其他模型最多 `MAX_REFERENCES` 4 張）。不要悄悄切到 Fast、其他模型或 720p；供應商能力與價格在 [官方Veo文件](https://ai.google.dev/gemini-api/docs/veo)、[官方價目](https://ai.google.dev/gemini-api/docs/pricing) 與 profile 的核實日期查看。既有剪輯時間網格是30 fps；24→30轉換不等於增加真實動作細節。
 
-此 profile 是 `clips`：正片每鏡都要有可見、合乎因果的動作，拒 `visual: still` 和 freeze padding。每鏡只一個主要動作與一個 camera 意圖；「伸手、拿起、交出、對手反應」拆鏡。8秒素材可剪2–8秒有效段，通常2–5秒（節奏、開場與鏡位的目標見 `.agents/skills/youtube-video/references/drama-craft.md`，分鏡寫完用它的檢查腳本量）；對白不合就調台詞/分鏡並重新量時，不硬拖慢、凍結或加無意義旁白補秒。鏡頭不能超過原片8秒。
+此 profile 是 `clips`：正片每鏡都要有可見、合乎因果的動作，拒 `visual: still` 和 freeze padding。每鏡只一個主要動作與一個 camera 意圖；「伸手、拿起、交出、對手反應」拆鏡。8秒素材可剪2–8秒有效段，通常2–5秒（節奏、開場與鏡位的目標見 `.agents/skills/youtube-video/references/drama-craft.md`，分鏡寫完用它的檢查腳本量）；對白不合就調台詞/分鏡並重新量時，不硬拖慢、凍結或加無意義旁白補秒。鏡頭不能超過原片8秒。有 `series.production.profile` 時，lint 把這些當錯誤（`tools/video/core/lint.mjs` 的 `productionShotProblems`）：`visual` 不是 clip、`fit: "freeze"`、含停頓超過 8 秒的鏡頭與切到素材 8 秒之外的 `source`。
 
-`data.prompt` 寫單格構圖；`data.motion` 寫一個行為；`data.camera` 選一種運動。證物插鏡也讓手、紙邊、視線或環境有可信運動；別把縮放一張公文當成完成動畫。關鍵文字在動態物件上做經檢查的合成，避免每幀錯字漂移。
+`data.prompt` 寫單格構圖；`data.motion` 寫一個行為；`data.camera` 選一種運動。證物插鏡也讓手、紙邊、視線或環境有可信運動；別把縮放一張公文當成完成動畫。關鍵文字在動態物件上做經檢查的合成，避免每幀錯字漂移。三個欄位各被哪個程式與模型讀到（片段模型看不到 `prompt`：首格是通過的關鍵影格，提示是 `motion`、`camera`、`look.motion` 與命名造型，`clips.mjs` 的 `clipPrompt`）、運鏡字怎麼寫、同一鏡在 Hailuo／Kling 網頁怎麼改寫，在 `.agents/skills/animation-camera/SKILL.md`；一鏡、一集的錢與三條路線（伺服器 API、Hailuo 網頁、Kling）在 `.agents/skills/animation-production/SKILL.md`「錢怎麼算」「三條路線」。有 profile 的作品目前不能用 `clips import` 收外部片段（`clips.mjs` 的 `importClip` 以結束碼 3 拒絕；細節在 `animation-production` skill 的「三條路線」）。
 
 ## 聲音與後續四語
 
