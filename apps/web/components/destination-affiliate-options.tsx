@@ -85,10 +85,27 @@ export function DestinationAffiliateOptions({
     const controller = new AbortController();
     let requested = false;
     let observer: IntersectionObserver | undefined;
+    let pendingFrame: number | undefined;
+    const stopWaiting = () => {
+      observer?.disconnect();
+      window.removeEventListener("scroll", checkPassed);
+      if (pendingFrame !== undefined) {
+        window.cancelAnimationFrame(pendingFrame);
+        pendingFrame = undefined;
+      }
+    };
+    function checkPassed() {
+      if (requested || controller.signal.aborted || pendingFrame !== undefined) return;
+      pendingFrame = window.requestAnimationFrame(() => {
+        pendingFrame = undefined;
+        if (controller.signal.aborted) return;
+        if (sentinel.current && sentinel.current.getBoundingClientRect().bottom < 0) load();
+      });
+    }
     const load = () => {
       if (requested || controller.signal.aborted) return;
       requested = true;
-      observer?.disconnect();
+      stopWaiting();
       void Promise.all(
         (moduleKey.split(",") as AffiliateModule[]).map((module) =>
           api<DestinationResponse>(
@@ -109,13 +126,18 @@ export function DestinationAffiliateOptions({
       load();
     } else {
       observer = new IntersectionObserver((entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) load();
+        // Reload and history navigation can restore scroll below the marker. Load a
+        // passed placement too, rather than requiring the reader to scroll back up.
+        if (entries.some((entry) => entry.isIntersecting || entry.boundingClientRect.bottom < 0)) load();
       }, { rootMargin: AFFILIATE_PREFETCH_MARGIN });
+      // A jump from below the prefetch window to above it can keep intersection false,
+      // so the observer may never report that the marker has been passed.
+      window.addEventListener("scroll", checkPassed, { passive: true });
       observer.observe(sentinel.current);
     }
     return () => {
-      observer?.disconnect();
       controller.abort();
+      stopWaiting();
     };
   }, [destinationId, locale, moduleKey, placement, requestKey]);
 

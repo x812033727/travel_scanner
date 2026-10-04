@@ -138,7 +138,9 @@ describe("DestinationAffiliateOptions", () => {
     expect(observe).toHaveBeenCalledTimes(1);
     expect(screen.queryByRole("region")).toBeNull();
     expect(fetcher).not.toHaveBeenCalled();
-    await act(async () => { notify([{ isIntersecting: false }] as IntersectionObserverEntry[], observer); });
+    await act(async () => {
+      notify([{ isIntersecting: false, boundingClientRect: new DOMRect(0, 2400, 320, 1) }] as IntersectionObserverEntry[], observer);
+    });
     expect(fetcher).not.toHaveBeenCalled();
     await act(async () => {
       notify([{ isIntersecting: true }] as IntersectionObserverEntry[], observer);
@@ -147,6 +149,103 @@ describe("DestinationAffiliateOptions", () => {
     expect(fetcher).toHaveBeenCalledTimes(1);
     expect(disconnect).toHaveBeenCalled();
     expect(container.innerHTML).toBe("");
+  });
+
+  it("loads a placement above restored scroll without intersection, requests once and shows its card", async () => {
+    let notify: IntersectionObserverCallback = () => undefined;
+    const disconnect = vi.fn();
+    const observer = { observe: vi.fn(), disconnect } as unknown as IntersectionObserver;
+    vi.stubGlobal("IntersectionObserver", vi.fn(function (callback: IntersectionObserverCallback) {
+      notify = callback;
+      return observer;
+    }));
+    const fetcher = vi.fn().mockResolvedValue(ok({
+      destination_id: "tokyo", module: "connectivity", disclosure: "Disclosure",
+      options: [{ id: "offer-1", brand: "klook", display_name: "Klook", destination_id: "tokyo", module: "connectivity", cta: "Klook connectivity", clickout_url: "/api/travel/affiliates/destination-offers/offer-1/clickout" }],
+    }));
+    vi.stubGlobal("fetch", fetcher);
+    render(<DestinationAffiliateOptions destinationId="tokyo" modules={["connectivity"]} />);
+    expect(fetcher).not.toHaveBeenCalled();
+    expect(screen.queryByRole("region")).toBeNull();
+    const passedMarker = [{ isIntersecting: false, boundingClientRect: new DOMRect(0, -801, 320, 1) }] as IntersectionObserverEntry[];
+    await act(async () => {
+      notify(passedMarker, observer);
+      notify(passedMarker, observer);
+    });
+    expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(disconnect).toHaveBeenCalledTimes(1);
+    const section = await screen.findByRole("region", { name: "這個目的地的合作平台" });
+    expect(within(section).getByRole("button", { name: /Klook connectivity/ })).toBeTruthy();
+  });
+
+  it("loads once after scrolling past the prefetch window without another intersection notification", async () => {
+    let notify: IntersectionObserverCallback = () => undefined;
+    const observe = vi.fn();
+    const disconnect = vi.fn();
+    const observer = { observe, disconnect } as unknown as IntersectionObserver;
+    vi.stubGlobal("IntersectionObserver", vi.fn(function (callback: IntersectionObserverCallback) {
+      notify = callback;
+      return observer;
+    }));
+    const frames: FrameRequestCallback[] = [];
+    const requestFrame = vi.fn((callback: FrameRequestCallback) => { frames.push(callback); return frames.length; });
+    vi.stubGlobal("requestAnimationFrame", requestFrame);
+    vi.stubGlobal("cancelAnimationFrame", vi.fn());
+    const fetcher = vi.fn().mockResolvedValue(ok({
+      destination_id: "tokyo", module: "connectivity", disclosure: "Disclosure",
+      options: [{ id: "offer-1", brand: "klook", display_name: "Klook", destination_id: "tokyo", module: "connectivity", cta: "Klook connectivity", clickout_url: "/api/travel/affiliates/destination-offers/offer-1/clickout" }],
+    }));
+    vi.stubGlobal("fetch", fetcher);
+    render(<DestinationAffiliateOptions destinationId="tokyo" modules={["connectivity"]} />);
+    const bounds = vi.spyOn(observe.mock.calls[0][0] as Element, "getBoundingClientRect").mockReturnValue(new DOMRect(0, 2400, 320, 1));
+    await act(async () => {
+      notify([{ isIntersecting: false, boundingClientRect: bounds() }] as IntersectionObserverEntry[], observer);
+      window.dispatchEvent(new Event("scroll"));
+      frames[0]?.(0);
+    });
+    expect(fetcher).not.toHaveBeenCalled();
+    bounds.mockReturnValue(new DOMRect(0, -801, 320, 1));
+    // Intersection stays false across this jump, so there is no second observer callback.
+    await act(async () => {
+      window.dispatchEvent(new Event("scroll"));
+      window.dispatchEvent(new Event("scroll"));
+      frames[1]?.(16);
+    });
+    expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(requestFrame).toHaveBeenCalledTimes(2);
+    expect(disconnect).toHaveBeenCalledTimes(1);
+    const section = await screen.findByRole("region", { name: "這個目的地的合作平台" });
+    expect(within(section).getByRole("button", { name: /Klook connectivity/ })).toBeTruthy();
+    window.dispatchEvent(new Event("scroll"));
+    expect(requestFrame).toHaveBeenCalledTimes(2);
+    expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+
+  it("cancels a pending passed-marker check on unmount and prevents late requests", async () => {
+    const observe = vi.fn();
+    const disconnect = vi.fn();
+    vi.stubGlobal("IntersectionObserver", vi.fn(function () {
+      return { observe, disconnect };
+    }));
+    const frames: FrameRequestCallback[] = [];
+    const requestFrame = vi.fn((callback: FrameRequestCallback) => { frames.push(callback); return frames.length; });
+    const cancelFrame = vi.fn();
+    vi.stubGlobal("requestAnimationFrame", requestFrame);
+    vi.stubGlobal("cancelAnimationFrame", cancelFrame);
+    const fetcher = vi.fn();
+    vi.stubGlobal("fetch", fetcher);
+    const view = render(<DestinationAffiliateOptions destinationId="tokyo" modules={["hotel"]} />);
+    vi.spyOn(observe.mock.calls[0][0] as Element, "getBoundingClientRect").mockReturnValue(new DOMRect(0, -801, 320, 1));
+    window.dispatchEvent(new Event("scroll"));
+    expect(requestFrame).toHaveBeenCalledTimes(1);
+    expect(fetcher).not.toHaveBeenCalled();
+    view.unmount();
+    expect(disconnect).toHaveBeenCalledTimes(1);
+    expect(cancelFrame).toHaveBeenCalledWith(1);
+    await act(async () => { frames[0](0); });
+    window.dispatchEvent(new Event("scroll"));
+    expect(requestFrame).toHaveBeenCalledTimes(1);
+    expect(fetcher).not.toHaveBeenCalled();
   });
 
   it("disconnects a waiting placement on unmount without making a request", () => {
