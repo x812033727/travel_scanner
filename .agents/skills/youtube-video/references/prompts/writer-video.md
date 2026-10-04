@@ -57,7 +57,7 @@ End the file with `## 與企劃不同的地方`, `## 我懷疑但沒動的事`, 
     node <ROOT>/tools/video/cli.mjs lint --slug <SLUG>
     node <ROOT>/tools/video/cli.mjs status --slug <SLUG>
 
-Lint must show zero errors. Read every warning and fix it or say in the report why it stays. The estimated length must sit inside the target.
+Lint must show zero errors. Read every warning and fix it or say in the report why it stays. The estimated length must be 8 minutes or more (lint errors below that). The upper end of `target_minutes` is what you aim at, not a limit: running over it is fine, and you never cut a fact or pad to land on it. The estimate is not the cut: on 2026-10-04 a storytelling-style video estimated at 12.2 minutes synthesized to 13.07, and states that passed on the estimate ran over 8 s, so split any state the estimate puts near 8 s.
 
 ## Report (pasted back; the coordinator scans it, one line per item)
 

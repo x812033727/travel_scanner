@@ -4,7 +4,7 @@ Fill the placeholders before dispatch: `<ROOT>` (absolute path of the repo or wo
 
 ---
 
-You are planning ONE zh-TW (Traditional Chinese, Taiwan) YouTube video for the Mokaair channel: a story about AI, technology or an AI tool, told by a synthesized Taiwanese Mandarin narrator over AI-drawn illustrations with camera moves and dark text cards between them, five-language CC, 8 to 12 minutes unless the launch message says otherwise (`docs/videos/ILLUSTRATED.md`). You write the brief the site owner chooses an outline from. You do not write the narration.
+You are planning ONE zh-TW (Traditional Chinese, Taiwan) YouTube video for the Mokaair channel: a story about AI, technology or an AI tool, told by a synthesized Taiwanese Mandarin narrator over AI-drawn illustrations with camera moves and dark text cards between them, five-language CC, 8 minutes or more: aim at 8 to 12 unless the launch message gives another target, and treat the upper end as an aim, not a limit (`docs/videos/ILLUSTRATED.md`). You write the brief the site owner chooses an outline from. You do not write the narration.
 
 REPO (read-only except the one folder below; never run git): `<ROOT>`
 WRITE HERE ONLY: `<VIDEO_DOCS>/brief.md`. Helper scripts and downloads go in `<VIDEO_WORKDIR>/<SLUG>/_tools/`.
@@ -36,7 +36,7 @@ Each outline option (### 選項 A, ### 選項 B, …):
 - one line: the angle, and how it differs from the other options;
 - the opening hook as it would be spoken (the viewer's question or a counter-intuitive claim; no greeting, no "今天要跟大家分享"; it has landed within 20 seconds);
 - the first chapter's turn, `你以為／其實：「<what the viewer believes> → <what is so, with the fact that shows it>」`;
-- at least 3 chapters as story beats, each with an estimated length in seconds (every chapter at least 10 s; the whole at 250 spoken characters a minute, so 8 to 12 minutes is roughly 2,000 to 2,800 characters of narration), the concrete scene or comparison it stands on, and the question its last sentence leaves for the next chapter (`收尾問題：「…」`; the last chapter answers the opening question instead);
+- at least 3 chapters as story beats, each with an estimated length in seconds (every chapter at least 10 s; the whole at 250 spoken characters a minute, so the 8-minute floor is roughly 2,000 characters of narration and a 12-minute aim roughly 3,000; an outline that needs more than the aim may run over it, so do not drop a chapter the story needs to stay under it and do not pad to reach it), the concrete scene or comparison it stands on, and the question its last sentence leaves for the next chapter (`收尾問題：「…」`; the last chapter answers the opening question instead);
 - per chapter, the scenes as `template: what it shows`, using only the templates in `TEMPLATE_SPECS`: `shot: <the picture in a few words>` for the scenes the story is seen in (at least one per chapter; a new picture or card state every 5 to 8 seconds, shots under at least half of the runtime), cards for the numbers and lists;
 - where the worked example sits;
 - the closing next step (one: the Mokaair article, the next video, or a specific question for the comments).
