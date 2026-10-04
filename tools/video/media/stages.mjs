@@ -203,12 +203,17 @@ export class Stage {
     return { ...entry, key, reused: false };
   }
 
-  /** Generate one image: a character sheet, a keyframe, an end frame; `size` "2K" asks for a larger picture (IMAGE_SIZES). */
-  async image({ id, purpose, prompt, negative = "", aspect = "16:9", references = [], seed = null, shotId = null, size = null, target }) {
+  /** The cache key of one image request: what `image` would draw it under, without asking for it. */
+  imageKey({ prompt, negative = "", references = [], seed = null, size = null }) {
     const { provider, model } = choiceFor(this.status, "image", this.format);
     const dimensions = IMAGE_SIZES[size ?? "1K"] ?? IMAGE_SIZE;
     const baseKey = keyframeKey({ provider, model, prompt, negative, width: dimensions.width, height: dimensions.height, seed, references: references.map((reference) => reference.sha256) });
-    const key = this.imageVersion ? mediaKey("series-image", { version: this.imageVersion, key: baseKey }) : baseKey;
+    return this.imageVersion ? mediaKey("series-image", { version: this.imageVersion, key: baseKey }) : baseKey;
+  }
+
+  /** Generate one image: a character sheet, a keyframe, an end frame; `size` "2K" asks for a larger picture (IMAGE_SIZES). */
+  async image({ id, purpose, prompt, negative = "", aspect = "16:9", references = [], seed = null, shotId = null, size = null, target }) {
+    const key = this.imageKey({ prompt, negative, references, seed, size });
     const request = {
       slug: this.slug,
       purpose,

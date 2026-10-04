@@ -11,7 +11,7 @@ import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.m
 import { readLedger } from "./ledger.mjs";
 import { keepSheets } from "./series-store.mjs";
 import { readCache } from "./cache.mjs";
-import { chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, keyframeRubric, MAX_KEYFRAME_TAKES, shotPrompt, STYLE_PLATE_ID, STYLE_PLATE_PROMPT } from "./keyframes.mjs";
+import { bestTake, chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, entryStands, keyframeChecks, keyframeRubric, MAX_KEYFRAME_TAKES, shotPrompt, STYLE_PLATE_ID, STYLE_PLATE_PROMPT } from "./keyframes.mjs";
 import { DEFAULT_SHEET_PROMPT, MAX_LOOK_ROUNDS, optionKey, parseChoice, sheetPrompt, suggestedOf } from "./look.mjs";
 import { imagePrice, statusProblem } from "./stages.mjs";
 
@@ -803,4 +803,177 @@ test("a paper margin is cut off a still: the manifest, the plate's reference and
   assert.equal(await main(["keyframes", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
   assert.equal(trimmed.length, 2);
   assert.match(again.out.stdout, /podium: kept \(judge 8\/10\)\n/);
+});
+
+// The site as it serves illustrated slides: their own switch and model, the drama route off.
+const SLIDES_STATUS = { ...STATUS, enabled: false, slides_enabled: true, slides_image: { provider: "gemini", model: FLASH_MODEL, configured: true }, slides_max_usd_per_video: 20 };
+
+test("a shot keeps its best take, and an entry stands only while its requests and its question are the same", () => {
+  const take = (seed, overall, passed = false) => ({ seed, key: `k${seed}`, judge: { overall, passed }, judged: "q1" });
+  assert.equal(bestTake([take(1, 6.5), take(2, 6.9), take(3, 6.2)]).seed, 2, "none passed: the highest score, not the last seed");
+  assert.equal(bestTake([take(1, 6.9), take(2, 6.9)]).seed, 1, "a tie goes to the earlier seed");
+  assert.equal(bestTake([take(1, 7.4, true), take(2, 9.9), take(3, 7.1, true)]).seed, 3, "a take that passed beats a higher score that did not, the latest of them first");
+  assert.equal(bestTake([]), null);
+
+  const keys = { take: (seed) => `k${seed}`, end: null };
+  const failed = { needs_review: true, takes: [take(1, 6.5), take(2, 6.9)] };
+  const passed = { needs_review: false, takes: [take(1, 6.5), take(2, 8, true)] };
+  assert.ok(entryStands(failed, { keys, stamp: "q1" }), "a shot that has not passed keeps its verdicts too: the same pictures are not asked about twice");
+  assert.ok(entryStands(passed, { keys, stamp: "q1" }));
+  assert.ok(!entryStands(passed, { keys, stamp: "q2" }), "another rubric, another context or another bar is another question");
+  assert.ok(!entryStands(passed, { keys: { ...keys, take: (seed) => `other${seed}` }, stamp: "q1" }), "another prompt, camera, look or reference is another picture");
+  assert.ok(!entryStands(passed, { keys: { ...keys, end: "e1" }, stamp: "q1" }), "an end frame the shot now asks for is still to draw");
+  assert.ok(!entryStands({ ...passed, end_frame: { key: "e0" } }, { keys: { ...keys, end: "e1" }, stamp: "q1" }), "a changed end frame");
+  assert.ok(entryStands({ ...passed, end_frame: { key: "e1" } }, { keys: { ...keys, end: "e1" }, stamp: "q1" }));
+  assert.ok(!entryStands({ takes: [] }, { keys, stamp: "q1" }));
+  assert.ok(!entryStands(undefined, { keys, stamp: "q1" }));
+  // Takes from before verdicts carried a stamp: a pass stands, a failure is asked about again.
+  const unstamped = (entry) => ({ ...entry, takes: entry.takes.map(({ judged: _judged, ...rest }) => rest) });
+  assert.ok(entryStands(unstamped(passed), { keys, stamp: "q1" }));
+  assert.ok(!entryStands(unstamped(failed), { keys, stamp: "q1" }));
+});
+
+test("a prompt edit sends that shot alone back to the judge: the others keep their takes and verdicts, and a shot that never passed keeps its best take", async () => {
+  const { picturesHash } = await import("../core/drama.mjs");
+  const box = sandbox("fixture-illustrated", "illustrated");
+  // The desk never passes: 6.5, then 6.9, then 6.2, each time it is asked about.
+  const desk = [6.5, 6.9, 6.2];
+  const site = mediaSite({
+    status: SLIDES_STATUS,
+    verdicts: (kind, request) => {
+      if (request.context.shot.id !== "desk") return { overall: 9, passed: true };
+      const nth = site.state.judges.filter((each) => each.context.shot.id === "desk").length;
+      return { overall: desk[(nth - 1) % desk.length], passed: false, problems: [`desk fault ${nth}`] };
+    },
+  });
+  const first = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], first.ctx), EXIT.lint, first.out.stderr);
+  let manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.shots.desk.needs_review, true);
+  assert.equal(manifest.shots.desk.seed, 2, "the best-scoring take is the one kept, not the last");
+  assert.equal(manifest.shots.desk.file, "keyframes/desk-2.png");
+  assert.equal(manifest.shots.desk.judge.overall, 6.9);
+  assert.deepEqual(manifest.shots.desk.problems, ["desk fault 1", "desk fault 2", "desk fault 3"]);
+  const drawn = site.state.images.length;
+  const judged = site.state.judges.length;
+  assert.equal(judged, 8, "the plate, four shots once and the desk three times");
+  assert.ok(site.state.judges.every((request) => request.min_score === undefined), "the bar is the owner's setting; the tool never sends one of its own");
+  assert.ok(Object.values(manifest.shots).every((shot) => shot.takes.every((each) => /^[0-9a-f]{16}$/.test(each.judged))), "every verdict records the question it answered");
+
+  // One prompt changes: one picture and one judge call. Before, every cached take went back to
+  // the judge (US$0.01 each, and a passed picture could fail on the second asking).
+  const doc = rewrite(box, (each) => {
+    each.scenes.find((scene) => scene.id === "race").data.prompt += ", a groundskeeper raking the long-jump pit behind them";
+  });
+  const edited = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], edited.ctx), EXIT.lint, edited.out.stderr);
+  assert.match(edited.out.stdout, /4 of 5 drawn shots are unchanged and keep their verdicts\n/);
+  assert.match(edited.out.stdout, /podium: kept \(judge 9\/10\)\n/);
+  assert.equal(site.state.images.length, drawn + 1);
+  assert.equal(site.state.judges.length, judged + 1, "the four unchanged shots are not judged again, the one that failed included");
+  assert.equal(site.state.judges.at(-1).context.shot.id, "race");
+  assert.equal(readLedger(box.workdir).totals.judge_calls, judged + 1);
+  manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.pictures_hash, picturesHash(doc));
+  assert.equal(manifest.shots.desk.takes.length, 3);
+  assert.equal(manifest.shots.desk.seed, 2);
+  assert.equal(manifest.shots.desk.needs_review, true, "a failed shot is still waiting for its prompt fix");
+
+  // A manifest written before verdicts were stamped: a shot that passed keeps its verdict over a
+  // prompt edit, a shot that had not is asked about again (its pictures come from the cache).
+  const file = path.join(box.workdir, "keyframes", "manifest.json");
+  for (const shot of Object.values(manifest.shots)) for (const take of shot.takes) delete take.judged;
+  writeFileSync(file, JSON.stringify(manifest));
+  rewrite(box, (each) => {
+    each.scenes.find((scene) => scene.id === "door").data.prompt += ", a bicycle leaning under the stairs";
+  });
+  const legacy = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], legacy.ctx), EXIT.lint, legacy.out.stderr);
+  assert.match(legacy.out.stdout, /3 of 5 drawn shots are unchanged and keep their verdicts\n/);
+  assert.equal(site.state.images.length, drawn + 2, "only the door is drawn; the desk's three pictures are in the cache");
+  assert.equal(site.state.judges.length, judged + 1 + 1 + 3);
+  assert.ok(manifestOf(box, "keyframes").shots.desk.takes.every((take) => take.judged), "asked again, the desk's verdicts are stamped");
+
+  // --force is the owner asking for every verdict again.
+  const forced = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--force"], forced.ctx), EXIT.lint, forced.out.stderr);
+  assert.doesNotMatch(forced.out.stdout, /keep their verdicts/);
+  assert.equal(site.state.judges.length, judged + 1 + 1 + 3 + 8, "the plate and every take of every shot");
+});
+
+test("illustrated slides are judged by yes/no fault checks once the server takes them, and a shot that failed on the old question is asked again", async () => {
+  const REDRAW = ["text", "anatomy", "detached", "subject", "frame", "style"];
+  const checks = keyframeChecks({ plate: true });
+  assert.deepEqual(checks.map((item) => item.key), [...REDRAW, "details", "awkward", "generated"]);
+  assert.deepEqual(checks.filter((item) => item.cost === 10).map((item) => item.key), REDRAW, "these faults leave the criterion at 0, under the server's floor of 4");
+  assert.ok(checks.every((item) => item.cost > 0 && item.cost <= 10 && item.question.length <= 400 && /^[a-z][a-z0-9_]{0,39}$/.test(item.key)));
+  assert.ok(checks.filter((item) => item.cost < 10).every((item) => 10 - item.cost >= 4), "a second-look flaw alone never fails a take");
+  assert.match(checks.find((item) => item.key === "style").question, /labelled "style plate"/);
+  assert.match(keyframeChecks().find((item) => item.key === "style").question, /the style the context describes/);
+  assert.match(checks.find((item) => item.key === "anatomy").question, /more than five.*hidden or left out by the style does not count/);
+  // What the server computes from the answers (apps/api/app/video_media/judge.py), so the bar keeps its meaning.
+  const total = checks.reduce((sum, item) => sum + item.weight, 0);
+  const overall = (...faults) => Math.round((checks.reduce((sum, item) => sum + (faults.includes(item.key) ? 10 - item.cost : 10) * item.weight, 0) / total) * 100) / 100;
+  assert.equal(overall(), 10, "nothing found is the top of the scale");
+  assert.deepEqual([overall("details"), overall("generated"), overall("awkward")], [9.29, 8.59, 7.88]);
+  assert.deepEqual([overall("awkward", "details"), overall("generated", "details")], [7.18, 7.88], "at a bar of 7 one flaw beside a missed detail passes");
+  assert.equal(overall("awkward", "generated"), 6.47, "awkward and generated-looking together do not");
+
+  // A server that does not take checks yet is asked for scores, as before.
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const status = { ...SLIDES_STATUS, limits: {} };
+  let verdicts = (kind, request) => (request.context.shot.id === "desk" ? { overall: 6.9, passed: false, problems: ["a remark"] } : { overall: 7, passed: true });
+  const site = mediaSite({ status, verdicts: (...args) => verdicts(...args) });
+  const scored = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], scored.ctx), EXIT.lint, scored.out.stderr);
+  assert.ok(site.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined) && request.rubric.some((item) => item.key === "craft")));
+  const drawn = site.state.images.length;
+  const judged = site.state.judges.length;
+  assert.equal(judged, 8, "the plate, four shots once and the desk three times");
+
+  // The server now takes checks. The shots that passed keep their verdicts; the desk failed on a
+  // question that is no longer the one asked, so its first take is asked about again from the
+  // cached picture, with stamped verdicts and with ones from before the stamps alike.
+  status.limits = { judge_checks: 1 };
+  verdicts = () => ({ overall: 9.29, passed: true, problems: ["the lamp is on the left"] });
+  const file = path.join(box.workdir, "keyframes", "manifest.json");
+  const before = readJson(file);
+  delete before.shots.desk.takes[1].judged;
+  writeFileSync(file, JSON.stringify(before));
+  const checked = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], checked.ctx), EXIT.ok, checked.out.stderr);
+  assert.equal(site.state.images.length, drawn, "nothing is drawn again");
+  assert.equal(site.state.judges.length, judged + 1, "one call: the desk's first take passes on the question as it is asked now");
+  assert.match(checked.out.stdout, /desk take 1: judge 9\.29\/10 \(reused\)\n/);
+  const asked = site.state.judges.at(-1);
+  assert.equal(asked.context.shot.id, "desk");
+  assert.deepEqual(asked.rubric, keyframeChecks({ plate: true }));
+  assert.deepEqual(asked.files.map((each) => each.label), ["keyframe", "style plate"]);
+  assert.equal(asked.min_score, undefined);
+  const manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.shots.desk.needs_review, false);
+  assert.equal(manifest.shots.desk.seed, 1);
+  assert.deepEqual(manifest.shots.desk.takes.map((take) => [take.seed, take.judge.overall]), [[1, 9.29], [2, 6.9], [3, 6.9]], "one entry a seed, in seed order");
+  assert.notEqual(manifest.shots.desk.takes[0].judged, before.shots.desk.takes[0].judged, "the stamp is of the question asked");
+  assert.equal(manifest.shots.podium.judge.overall, 7, "a shot that passed is kept as it was");
+
+  // From the start on such a server the plate is checked too, against the look's description.
+  const fresh = sandbox("fixture-illustrated", "illustrated");
+  const freshSite = mediaSite({ status, verdicts: () => ({ overall: 10, passed: true }) });
+  const run = context(fresh, freshSite.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", fresh.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.deepEqual(freshSite.state.judges[0].rubric, keyframeChecks());
+  assert.equal(freshSite.state.judges[0].context.shot.id, STYLE_PLATE_ID);
+  for (const request of freshSite.state.judges.slice(1)) assert.deepEqual(request.rubric, keyframeChecks({ plate: true }));
+
+  // A drama's pictures are scored on the rubric whatever the server can do: only illustrated slides were measured.
+  const story = sandbox("fixture-story", "story");
+  writeFileSync(path.join(story.dir, "style-anchor.png"), PNG("style anchor"));
+  rewrite(story, (doc) => {
+    doc.look.style_frames = ["style-anchor.png"];
+  });
+  const storySite = mediaSite({ status: { ...STATUS, limits: { judge_checks: 1 } }, verdicts: () => ({ overall: 8, passed: true }) });
+  const told = context(story, storySite.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", story.slug], told.ctx), EXIT.ok, told.out.stderr);
+  assert.ok(storySite.state.judges.length > 0 && storySite.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined)));
 });
