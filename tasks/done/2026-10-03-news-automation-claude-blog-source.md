@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-news-automation-claude-blog-source
 title: News automation: add claude.com/blog as a source
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1-news-blog
 claimed_at: 2026-10-04T00:51:41Z
 created_at: 2026-10-03T19:27:30Z
-completed_at:
+completed_at: 2026-10-04T02:16:43Z
 branch: claude/news-claude-blog-source
 depends_on: []
 scope:
@@ -45,3 +45,6 @@ The hourly news automation reads Anthropic's `/news/` and the model pages, not `
   reading those divs would be a per-publisher date extractor, which `docs/news-automation.md` chose not to build.
   If the owner wants dated entries here, that is a parser change worth its own ticket.
 - Scope narrowed to the test file; the earlier ticket keeps the host step.
+- Closed 2026-10-04 after PR 1191 merged. The two host items above are not done here: this container has no host
+  access. They stay on `2026-09-30-cover-every-major-ai-agent-company` ("Loaded on the host with `sources_cli`"),
+  which is the single place to tick once someone runs the dry run and `--apply` on mokaair.com.
