@@ -1,7 +1,7 @@
 ---
 id: 2026-10-04-resume-held-news-drafts-from-their
 title: Resume held news drafts from their five stored locales, without drafting again
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5-5-news-resume
