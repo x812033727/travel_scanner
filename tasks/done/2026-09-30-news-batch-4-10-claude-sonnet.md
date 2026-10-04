@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-news-batch-4-10-claude-sonnet
 title: News batch 4.10: Claude Sonnet 5.5, five languages (the scanner never saw Anthropic's root-level launch pages)
-status: review
+status: done
 priority: P1
 area: docs
 owner: claude-opus-5-5-news-4-9
 claimed_at: 2026-09-30T11:29:56Z
 created_at: 2026-09-30T11:29:56Z
-completed_at:
+completed_at: 2026-10-04T11:50:06Z
 branch: claude/gifted-rubin-umw5s4
 depends_on: []
 scope:
@@ -37,7 +37,7 @@ hand-written five-language article, the way batch 4.9 did GPT-6.1 Sol.
 
 - [x] `ai-news-claude-sonnet-55-20260928` in five locales from Anthropic's own pages, two fact-check rounds, translated and
       reviewed per language, with a diagram; AI index links it in five locales.
-- [ ] PR merged; deploy and `guides-import --slug` publish done by someone with host access.
+- [x] PR merged; deploy and `guides-import --slug` publish done by someone with host access.
 
 ## Steps
 
@@ -54,3 +54,4 @@ hand-written five-language article, the way batch 4.9 did GPT-6.1 Sol.
   OK; lint no errors (en 9,370 and ja 6,083 characters are length warnings the spec allows). Left:
   deploy, re-read the live pages, then `guides-import --slug ai-news-claude-sonnet-55-20260928` with
   the index, dry run first.
+- Published 2026-10-04 11:47Z on the owner's instruction: `ai-news-claude-sonnet-55-20260928` in five locales (pg_dump `/root/travel_scanner_preimport_20261004_114710.dump`), links rebuilt, the index links resolve, re-run dry run all unchanged. The facts were not re-checked against the vendor pages on publish day.
