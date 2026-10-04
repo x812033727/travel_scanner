@@ -1,17 +1,18 @@
 ---
 id: 2026-10-04-clip-route-pilot-comparison
 title: 《偶的江湖》第 1 集用 Hailuo 網頁方案試播：寫 22 分鐘劇本、伺服器畫關鍵影格、Hailuo H3 做片段、匯入合成，量點數與畫質後定畫面等級
-status: open
+status: in-progress
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: claude
+claimed_at: 2026-10-04T14:52:34Z
 created_at: 2026-10-04T02:48:09Z
 completed_at:
-branch:
+branch: claude/vibrant-cray-mdpjzx
 depends_on: []
 scope:
   - docs/videos/pilots/ou-de-jianghu-e01-hailuo
+  - docs/videos/ou-de-jianghu-e001
 ---
 
 # 《偶的江湖》第 1 集用 Hailuo 網頁方案試播
