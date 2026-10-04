@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-body-length-link-only-paragraphs
 title: _body_length counts link-only paragraphs although its docstring excludes link labels
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-pack-ingest-fixes
 claimed_at: 2026-10-04T14:46:39Z
 created_at: 2026-10-03T12:04:03Z
-completed_at:
+completed_at: 2026-10-04T15:49:15Z
 branch: claude/pack-ingest-body-length-render-svg
 depends_on: []
 scope:
