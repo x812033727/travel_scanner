@@ -66,6 +66,6 @@ gh pr merge <n> --squash --match-head-commit "$SHA"
 
 ## 這個 skill 的檔案
 
-- `scripts/who-is-on-it.mjs`：唯讀。列出持有中的票（年齡、是否過期）、它們鎖住哪些票、`+` 分支與遠端分支、開著的 PR，以及 `--scope <path>` 時誰碰到那條路徑。
-- `scripts/merge-when-green.sh`：在有 PR 分支的 worktree 裡跑，rebase 到 origin/main、push、等檢查、以綠燈的 SHA squash 合併；衝突就停下來交給人。
+- `.agents/skills/task-board/scripts/who-is-on-it.mjs`：唯讀。列出持有中的票（年齡、是否過期）、它們鎖住哪些票、`+` 分支與遠端分支、開著的 PR，以及 `--scope <path>` 時誰碰到那條路徑。
+- `.agents/skills/task-board/scripts/merge-when-green.sh`：在有 PR 分支的 worktree 裡跑，rebase 到 origin/main、push、等檢查、以綠燈的 SHA squash 合併；衝突就停下來交給人。
 - `.claude/skills/task-board/SKILL.md` 是這一份的逐字複本，`npm run test:tools` 會比對。

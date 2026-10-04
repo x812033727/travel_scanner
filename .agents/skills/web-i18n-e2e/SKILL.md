@@ -15,11 +15,11 @@ metadata:
 
 1. **`en` 是基準**。每個語系的每個 namespace，攤平後的鍵集合與每個鍵的 `{參數}` 集合都要跟 `en` 一樣。參數名不翻譯；plural 分支用 `#` 開頭。
 2. **新的顯示文字一律進目錄**。在 `apps/web/{app,components,lib}` 的 `.ts/.tsx` 裡寫中文（連註解）會被 check:i18n 擋；本機只有 `git add` 之後才會檢查這一項。
-3. **加 namespace 有七處要改**，其中 `apps/web/i18n/request.ts` 與 `apps/web/vitest.setup.tsx` 漏了沒有任何檢查會抓（`references/i18n.md`）。
+3. **加 namespace 有七處要改**，其中 `apps/web/i18n/request.ts` 與 `apps/web/vitest.setup.tsx` 漏了沒有任何檢查會抓（`.agents/skills/web-i18n-e2e/references/i18n.md`）。
 4. **改鍵名或改參數會讓站主在後台的覆寫變孤兒**。PR 說明要寫出來。
 5. **e2e 伺服器端的資料來自假 API，瀏覽器端的來自 `page.route`**，兩邊不互通；伺服器端新增一支 API 呼叫就要在 `tools/e2e-runtime-api.mjs` 補回應。
 6. **新 spec 要加進 workflow 的清單**，CI 是逐一列出 spec 檔的。
-7. **flake 要找成因**：不放寬斷言、不加長逾時、不 skip、不加 retry（`references/flake-lessons.md`）。
+7. **flake 要找成因**：不放寬斷言、不加長逾時、不 skip、不加 retry（`.agents/skills/web-i18n-e2e/references/flake-lessons.md`）。
 
 ## 主幹 A：改介面文字
 
@@ -29,7 +29,7 @@ metadata:
 | 2 | 五個語系同位置加鍵：先 `en`，再 `zh-TW`，再 `ja`、`ko`、`zh-CN` | 參數名與集合一致 |
 | 3 | 元件用 `useTranslations`／`getTranslations` 取；元件測試斷言 zh-TW 的句子 | 元件裡沒有新的中文字面字串 |
 | 4 | `git add` 後跑 `npm run check:i18n` | 印出 `Validated 5 locales across 25 namespaces.` |
-| 5 | 紅了照 `references/check-i18n.md` 的表修；缺哪些鍵用 `i18n-diff.mjs` 列 | 全綠 |
+| 5 | 紅了照 `.agents/skills/web-i18n-e2e/references/check-i18n.md` 的表修；缺哪些鍵用 `i18n-diff.mjs` 列 | 全綠 |
 | 6 | `npm run lint:web && npm run typecheck:web && npm run test:web` | 全綠 |
 
 ## 主幹 B：寫或跑 e2e
@@ -85,6 +85,6 @@ E2E_API_PORT=18765 node tools/e2e-runtime-api.mjs
 
 ## 這個 skill 的檔案
 
-- `references/i18n.md`、`references/check-i18n.md`、`references/e2e-local.md`、`references/flake-lessons.md`：見上表。
-- `scripts/i18n-diff.mjs`：唯讀，列出每個語系相對 `en` 缺的鍵、多的鍵、參數不同的鍵；不需要 npm 套件。
+- `.agents/skills/web-i18n-e2e/references/i18n.md`、`.agents/skills/web-i18n-e2e/references/check-i18n.md`、`.agents/skills/web-i18n-e2e/references/e2e-local.md`、`.agents/skills/web-i18n-e2e/references/flake-lessons.md`：見上表。
+- `.agents/skills/web-i18n-e2e/scripts/i18n-diff.mjs`：唯讀，列出每個語系相對 `en` 缺的鍵、多的鍵、參數不同的鍵；不需要 npm 套件。
 - `.claude/skills/web-i18n-e2e/SKILL.md` 是這一份的逐字複本，`npm run test:tools` 會比對。
