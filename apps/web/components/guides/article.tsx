@@ -144,6 +144,21 @@ export function GuideArticle({
   // first is preceded by one.
   const firstAd = pieces.map((_, index) =>
     pieces.slice(0, index).reduce((count, segmentPieces) => count + segmentPieces.length - 1, 0));
+  // The level-3 headings already drawn in the section each piece opens inside. A unit or a
+  // partner slice can fall between two subsections, and a count restarted at every piece
+  // would give the second one the first one's anchor.
+  const subsectionStarts: number[][] = [];
+  let openSubsections = 0;
+  for (const segmentPieces of pieces) {
+    const starts: number[] = [];
+    for (const piece of segmentPieces) {
+      starts.push(openSubsections);
+      for (const block of piece.blocks) {
+        if (block.type === "heading") openSubsections = block.level === 3 ? openSubsections + 1 : 0;
+      }
+    }
+    subsectionStarts.push(starts);
+  }
 
   // Partner buttons only where they are contextual: a destination the article belongs to,
   // a module its topics point at, and a notice that still applies. An expired fare deal
@@ -259,6 +274,7 @@ export function GuideArticle({
                   {piece.blocks.length ? (
                     <ContentBlocks
                       blocks={piece.blocks} labels={labels.blocks} headingStart={piece.headingStart}
+                      subsectionStart={subsectionStarts[index][pieceIndex]}
                       articleLinks={state.article_links} locale={state.locale} termLabels={labels.term}
                       renderFaq={(block, blockIndex) => <FaqSection items={block.items} {...faqSections.get(offset + blockIndex)} />}
                     />
