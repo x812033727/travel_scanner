@@ -32,3 +32,5 @@
 本機fullfilm render及一次性的後續assemble/captions/QA/package只製作可看片待審包，收據 `llm-review-draft-*-2030` 与 `llm-review-draft-continuation-2030.json` 在私人RUN目錄。它不送final/publish、不上傳發布或清媒體；使用者取消／episode STOP／source改動會停下。後續heartbeat先核目前process與terminal收據，不能重開同slug。PR1207維持draft/no-auto-merge；Embedding下一集source另在draftPR1211、20項CI通過，未購素材。尚無完成交付＋已選語言的合格G清理項，全部媒體與shared assets保留。
 
 23:30續跑：正常render於15:17:48.512655Z結束exit0，71個正式卡片狀態及完整frames manifest已落地；正常assemble仍在執行，沒有重開同slug。後台語言欄仍為`locales:{}`、`locales_decided_at:null`，已逐欄真實同步本機mirror，保留null：只先做必要繁中基底，沒有宣稱站主已選「只出繁中」，沒有新增翻譯／配音。成片QA及正常final核准必須先於package；package若因缺final核准exit3，是正常關卡等待。兩支Shorts正常`from-episode --check`通過，但20句與長片沒有逐字相同的錄音，不假冒既有音訊或Windows聲音。所有成片與語言交付條件完成前，仍保留原媒體。
+
+23:45最新狀態：使用者已直接選擇本集「只出繁體中文」。瀏覽器工具初始化失敗後，透過既有主機的正常`admin_service.set_locales`與管理員驗證／`video_locales_set`稽核，只記錄本集空的附加語言選擇；後台決定時間`2026-10-04T15:36:31.277219Z`，15:37:05Z的GET與本機mirror一致。現在必要字幕與metadata只有zh-TW，沒有配音／翻譯或需送審的語言批次；不是代人核准其他關卡。獨立正常render實看完成41張卡的71狀態，108場／138句揭項相符，804正式图片檔完整，71版面／72字型檢查零錯，原51圖警告及三個Short共用圖不變。完整成片與字幕同步仍待正常合成和QA；沒有G封存或刪媒體。
