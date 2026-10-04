@@ -279,7 +279,7 @@ result without deployment, worker restart or paid retry.
 Read-only followthrough uses native `batch.log`, per-project logs and atomic
 `.exit` receipts, plus current source/manifest/ledger/amendment/paid receipts.
 The local probe
-`C:/Users/x8120/AppData/Local/Temp/mokaair-video-media-quality-monitor.sh`
+`<home>/AppData/Local/Temp/mokaair-video-media-quality-monitor.sh`
 (SHA `4e2cbaaa…`) reads only those files and pure coverage helpers; it performs
 no media/job/status GET, sync, retry or paid call. It reports real file hashes,
 protected passed entries, current verdicts, holds, in-flight/uncertain intent
