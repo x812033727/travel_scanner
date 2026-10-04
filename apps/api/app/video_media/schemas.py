@@ -131,7 +131,8 @@ class JudgeIn(StrictModel):
     rubric: list[JudgeCriterion] = Field(min_length=1, max_length=MAX_RUBRIC)
     # Free-form facts the judge needs: the characters' descriptions, the shot's prompt.
     context: dict[str, Any] = Field(default_factory=dict)
-    # Overrides the settings row's judge_min_score for this call.
+    # A higher bar for this call than the settings row's judge_min_score; a lower one is
+    # ignored, since the owner's setting is the floor (no tool sends this today).
     min_score: int | None = Field(default=None, ge=0, le=10)
 
     @field_validator("context")

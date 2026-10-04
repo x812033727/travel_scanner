@@ -54,7 +54,7 @@
 
 | 檔案 | 綁什麼 | 為什麼 |
 | --- | --- | --- |
-| `keyframes/manifest.json` | `look_hash` ＋ `pictures_hash`（每個 shot 的 id、prompt、camera） | 改卡片文字不重畫、不重判、分鏡核准不失效；改 camera 或 prompt 只重畫那一張（其他張由快取回，只多 judge US$0.01） |
+| `keyframes/manifest.json` | `look_hash` ＋ `pictures_hash`（每個 shot 的 id、prompt、camera） | 改卡片文字不重畫、不重判、分鏡核准不失效；改 camera 或 prompt 只重畫、重判那一張，其他張的請求沒變，連同判定原樣沿用（§judge 的刻度與判定沿用；2026-10-04 之前是全部重判，每張 US$0.01 而且過關的會被判掉） |
 | `checks.json` | `speech_hash`、`visual_hash`、`look_hash`、`pictures_hash`（`keyframesHash`：實際用的每張圖的 sha）、`mix_hash`（有配樂時）、`sfx_hash`（有音效時） | 圖重畫、配樂或音效換了，`status` 會說要重新合成，`package` 不會拿舊成片 |
 | `timeline.json` | `speech_hash`（含 `voice.style`） | 改口吻＝全部重錄＋旁白關卡重審 |
 
@@ -152,10 +152,49 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 另外修了票 `2026-10-03-illustrated-slides-lint-heuristics-the-shorts` 的急件：`choiceFor` 只在 `slides_enabled` 時用投影片的模型，開關關著時跟伺服器一樣用漫劇的模型估尺寸與價錢（之前第一張圖就以 `video_media_model_changed` 失敗）。範例的 `race` 兩個跑者改在中間三分之一、`podium` 與 `race` 改成白天；`shorts/motion.mjs` 與 `SHORTS.md` 的 56% 改成 32%。
 
-要驗的事：第一支部署後的插圖投影片在 `keyframes/plate.json` 看樣張與分數、聯絡表上每張圖的網點與油墨是不是同一刷；judge 的 `craft` 分布（樣張時 craft 約 6.5–7，門檻 7，三個 seed 內多半會過一張）；七支卡在「插畫沒開」的影片站主按重試後是否畫出來、單支花費（多一張樣張）。
+要驗的事：第一支部署後的插圖投影片在 `keyframes/plate.json` 看樣張與分數、聯絡表上每張圖的網點與油墨是不是同一刷；judge 的 `craft` 分布（樣張時 craft 約 6.5–7，門檻 7，三個 seed 內多半會過一張——實測不成立，見 §judge 的刻度與判定沿用）；七支卡在「插畫沒開」的影片站主按重試後是否畫出來、單支花費（多一張樣張）。
+
+## judge 的刻度與判定沿用（2026-10-04）
+
+第一支真的畫完的插圖投影片（`openai-devday-2026-recap`，74 張、`riso-navy`、Flash 2K）量到 judge 的分數**頂在門檻上**，上一節「三個 seed 內多半會過一張」不成立：
+
+| 163 次出圖（74 張 shot） | 值 |
+| --- | --- |
+| overall | 最高 7.04、平均 6.74、中位數 6.79、最低 5.54 |
+| 過關（`judge_min_score` 7） | 43 次（26%），全部落在 7.00–7.04；沒過的擠在 6.4–6.99 |
+| 815 個單項分數 | 471 個剛好是 7、109 個 6.8、41 個 7.2；最高 7.5，8 以上 0 個 |
+| 過關卻列了毛病 | 43 次裡 24 次；沒過卻沒列毛病 1 次 |
+| 沒過的 31 張留的是哪一張 | 23 張留的不是該張分數最高的那次（工具留最後一張） |
+| 花費 | 176 張圖 US$20.27 過 43／74 張（單支上限 25）|
+
+也就是 judge 把「挑不出毛病」打成 7、從不往上，門檻 7 等於「一句意見都不能有」，某一項掉 0.2 就不過。同一張圖再問一次會在 6.9 與 7.0 之間跳：改一張的提示詞讓 74 張已畫好的圖全部重判，5 張原本過的被判掉、3 張原本沒過的過了。兩位看圖的編輯在 18 張沒過的 shot 裡每一張都找到可用的版本。漫劇的設定圖與片段判定也一樣頂在 7（試拍的設定圖 7／7、片段 6.72），所以這是 judge 的刻度問題，不是插圖 rubric 的問題。
+
+這一輪修掉工具端的三件事（票 `2026-10-03-keyframe-judge-scale`）：
+
+| 事 | 之前 | 現在 | 在哪 |
+| --- | --- | --- | --- |
+| 沒過的 shot 留哪一張 | 最後一張 | 分數最高的那一張（同分取較早的 seed），聯絡表與改提示詞的人看到的是最好的版本；樣張原本就這樣 | `media/keyframes.mjs` `bestTake` |
+| 改了別張的提示詞或運鏡 | `pictures_hash` 一變就清空 manifest，每張已畫的圖都再問 judge 一次 | 只有綁定變了（look、生圖模型都沒變）時，逐張比對：每次出圖的快取鍵（提示詞、運鏡、畫風、參考圖、模型、尺寸、seed）與現在會送的相同、判定問的題目（rubric、context、站主門檻的雜湊，記在 `takes[].judged`）也相同，就整筆沿用，沒過的也沿用（同一張圖不問第二次）；沒有 `judged` 的舊判定只在該 shot 已過關時沿用；`--force` 照舊全部重問。漫劇的 `visual_hash` 走同一條規則，另外比對 end frame 的鍵 | `media/keyframes.mjs` `entryStands`、`media/stages.mjs` `imageKey` |
+| 單次呼叫的 `min_score` | 可以把這一次的門檻設得比站主的低（沒有工具這樣送） | 只能更高，較低的值被忽略：站主的設定是下限 | `apps/api/app/video_media/admin_api.py` |
+
+**刻度本身還沒修。** 先試了不必部署的做法：把「10＝這一項挑不出毛病、7–8＝可用、0–3＝必須重畫」的定義放進請求（一次放 `context`，一次改成「每項從 10 起算、只有點得出名字的毛病才扣分」並在每題後面加「10 = no fault found.」），各拿 28 張已記錄的圖經正式站重判（共 56 次，US$0.56）：
+
+| 28 張 | 當時的判定 | 刻度放 context | 扣分制＋每題加註 |
+| --- | --- | --- | --- |
+| overall 最高／平均 | 7.04／6.60 | 7.04／6.65 | 7.14／6.64 |
+| 單項 8 以上 | 0 | 0 | 0 |
+| 單項剛好 7 的比例 | — | 64% | 58% |
+| 過關 | 9 | 11 | 10 |
+| 與當時判定不同的張數 | — | 10 | 3 |
+| 嚴重瑕疵的最低單項（多一隻手／可讀文字） | 4／3.5–4 | 3.6／3 | 3／3–4 |
+
+上限完全沒動，只有低分端聽話。原因是伺服器的系統指示（`apps/api/app/video_media/judge.py` 的 `INSTRUCTIONS`：「0 (fails completely) to 10 (flawless). Be strict」）壓過請求裡的任何說明，所以請求端的刻度沒有進程式。兩輪也看到 judge 會漏掉編輯抓到的瑕疵（六根手指的 `kickboards-3`、被畫成一張斜放照片的 `lane-rope-3` 都拿過 7）。
+
+下一步在伺服器端，而且要先量再上：候選做法是讓請求帶一段刻度、由伺服器放進系統指示（沒帶就和現在逐字相同，漫劇不受影響）；系統層也拉不動的話，改成模型只列瑕疵與嚴重度、由程式扣分（延續 `verdict()`「分數由程式重算」的做法）。量測工具在本機的 `<VIDEO_WORKDIR>/openai-devday-2026-recap/_tools/judge/calibration/`（`rejudge.mjs` 經站上重判；`host-build.mjs`＋`host-judge.py` 產生一支在正式站 API 容器裡用候選系統指示重判的唯讀腳本；`labels.json` 是編輯判過可用與該退的圖；兩輪結果 `trial-v1.json`、`trial-v2.json`）。在那之前不要動 `judge_min_score`：照「會過的寫法」寫 shot（遠景或中景、人物小而完整、不寫哪隻手、不寫否定句），並且不要為了湊過關重跑同一張圖。
 
 ## 沒做、留給後面
 
+- judge 的刻度（上一節）：系統指示的刻度或程式扣分，量過再上；漫劇的設定圖、關鍵影格、片段也頂在 7，量過各自的出圖再一起改。judge 漏看的瑕疵（手指數、像字的記號）是另一個問題：rubric 要不要逐項要求「數手指」之類的檢查，等刻度修好再量。
 - 樣張沒放進聯絡表（`review/sync.mjs` 用張數切頁，多一格會錯位）；要看就開 `keyframes/plate-N.png`。
 - 多狀態卡片（bullets、steps、table 逐條出現）的整景連續運鏡。
 - 插圖上沒有章節進度條（chrome 只在卡片上）；要的話把 chrome 截成透明疊層蓋在運鏡段上。

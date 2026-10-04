@@ -18,6 +18,7 @@ import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
 import { ledgerTotals } from "./ledger.mjs";
+import { mediaKey } from "./cache.mjs";
 import { duplicates } from "./qc.mjs";
 import { capFor, choiceFor, drawContactSheet, imagePrice, imageSelectionVersion, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, pictureHashes, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
 import { trimMargins } from "./trim.mjs";
@@ -107,6 +108,29 @@ export function chosenSheets(manifest, chosen) {
   return sheets;
 }
 
+/**
+ * The take a shot keeps: the latest that passed, else the one the judge scored highest (the
+ * earlier seed on a tie), so a shot waiting for a prompt fix shows its best picture on the
+ * contact sheet and to whoever rewrites the prompt, not whichever seed happened to come last.
+ */
+export function bestTake(takes) {
+  return [...takes].reverse().find((each) => each.judge?.passed) ?? takes.reduce((best, each) => ((each.judge?.overall ?? -1) > (best?.judge?.overall ?? -1) ? each : best), null);
+}
+
+/**
+ * Whether a shot's entry from a manifest bound to other pictures still stands: every take was
+ * asked for exactly as it would be asked for now (`keys.take(seed)`, the image cache key: prompt,
+ * camera, style, cast, references, model, size), its end frame too, and judged on the question
+ * the judge would be asked now (`stamp`: rubric, context, the owner's bar). A verdict from before
+ * takes carried a stamp stands only on a shot that passed.
+ */
+export function entryStands(entry, { keys, stamp }) {
+  const takes = entry?.takes ?? [];
+  if (!takes.length || !takes.every((take) => take.judge && take.key === keys.take(take.seed))) return false;
+  if ((entry.end_frame?.key ?? null) !== keys.end) return false;
+  return takes.every((take) => take.judged === stamp || (take.judged === undefined && !entry.needs_review));
+}
+
 const manifestFile = (workdir) => path.join(workdir, ARTIFACTS.keyframes);
 const writeManifest = (workdir, manifest) => atomicWrite(manifestFile(workdir), `${JSON.stringify(manifest, null, 2)}\n`);
 
@@ -171,7 +195,7 @@ async function stylePlate({ stage, workdir, look, hash, takes, size, rubricOptio
     if (judge.passed) break;
   }
   if (!taken.length) throw new MediaError("the style plate could not be drawn; every seed was refused", { code: "video_media_rejected" });
-  const best = taken.find((take) => take.judge.passed) ?? [...taken].sort((a, b) => b.judge.overall - a.judge.overall)[0];
+  const best = bestTake(taken);
   const record = { look_hash: hash, file: best.file, sha256: best.sha256, key: best.key, seed: best.seed, judge: best.judge, takes: taken, drawn_at: ctx.now().toISOString() };
   atomicWrite(path.join(workdir, PLATE_FILE), `${JSON.stringify(record, null, 2)}\n`);
   return { ...record, generated };
@@ -298,10 +322,38 @@ export async function run(command, args, ctx) {
   }
   const existing = readJson(manifestFile(workdir), null);
   const chosenImage = choiceFor(status, "image", format);
-  const manifest = existing?.look_hash === hash && bound(existing) && sameImage(existing.image, chosenImage) && (!imageVersion || existing.image_selection_version === imageVersion) && !values.force ? existing : { look_hash: hash, ...binding, image_selection_version: 1, shots: {} };
+  const sameSetup = existing?.look_hash === hash && sameImage(existing.image, chosenImage) && (!imageVersion || existing.image_selection_version === imageVersion) && !values.force;
+  const manifest = sameSetup && bound(existing) ? existing : { look_hash: hash, ...binding, image_selection_version: 1, shots: {} };
   manifest.image = { provider: chosenImage.provider, model: chosenImage.model };
   if (plate) manifest.plate = { file: plate.file, sha256: plate.sha256, seed: plate.seed, judge: plate.judge };
   else delete manifest.plate;
+
+  // What a shot is drawn from and what the judge is asked about it, as they stand now.
+  const referencesOf = (characters) => [...characters.map((character) => ({ sha256: uploaded[character.id], role: "character" })).filter((reference) => reference.sha256), ...styleReferences].slice(-MAX_REFERENCES);
+  const endPrompt = (scene, characters) => shotPrompt({ ...scene, data: { ...scene.data, prompt: scene.data.end_frame.prompt } }, look, characters);
+  const question = (scene, characters) => ({
+    rubric: keyframeRubric(characters, { ...rubricOptions, plate: Boolean(plate) }),
+    context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: look.style },
+  });
+  // A verdict answers one question at the owner's bar of the day; a take judged on another has no verdict yet.
+  const stampOf = (asked) => mediaKey("keyframe-judge", { ...asked, bar: status.judge_min_score ?? null });
+  // Only the binding moved (another shot's prompt or camera; on a drama, a card): a shot whose own
+  // requests are what they were keeps its takes and their verdicts. Judging the same picture again
+  // costs a call a take and, worse, flips verdicts: on 2026-10-04 one prompt edit sent 74 cached
+  // pictures back to the judge and five that had passed failed with nothing changed.
+  if (sameSetup && !bound(existing)) {
+    for (const scene of drawnShotScenes(doc)) {
+      const characters = cast(scene);
+      const references = referencesOf(characters);
+      const prompt = shotPrompt(scene, look, characters);
+      const keys = {
+        take: (seed) => stage.imageKey({ prompt, negative: look.negative, references, seed, size }),
+        end: scene.data.end_frame?.prompt ? stage.imageKey({ prompt: endPrompt(scene, characters), negative: look.negative, references, seed: 1 }) : null,
+      };
+      if (entryStands(existing.shots?.[scene.id], { keys, stamp: stampOf(question(scene, characters)) })) manifest.shots[scene.id] = existing.shots[scene.id];
+    }
+    ctx.stdout.write(`${Object.keys(manifest.shots).length} of ${Object.keys(existing.shots ?? {}).length} drawn shots are unchanged and keep their verdicts\n`);
+  }
 
   for (const scene of shots) {
     const characters = cast(scene);
@@ -310,8 +362,10 @@ export async function run(command, args, ctx) {
       ctx.stdout.write(`${scene.id}: kept (judge ${current.judge?.overall ?? "?"}/10)\n`);
       continue;
     }
-    const references = [...characters.map((character) => ({ sha256: uploaded[character.id], role: "character" })).filter((reference) => reference.sha256), ...styleReferences].slice(-MAX_REFERENCES);
+    const references = referencesOf(characters);
     const prompt = shotPrompt(scene, look, characters);
+    const asked = question(scene, characters);
+    const judged = stampOf(asked);
     const entry = current?.takes && !values.force ? current : { takes: [] };
     for (let take = 1; take <= takes; take++) {
       const seed = take;
@@ -337,8 +391,7 @@ export async function run(command, args, ctx) {
           id: scene.id,
           kind: "keyframe",
           files: [{ sha256: picture.sha256, label: "keyframe" }, ...characters.filter((character) => uploaded[character.id]).map((character) => ({ sha256: uploaded[character.id], label: `sheet ${character.name}` })), ...(plate ? [{ sha256: plate.sha256, label: "style plate" }] : [])].slice(0, 6),
-          rubric: keyframeRubric(characters, { ...rubricOptions, plate: Boolean(plate) }),
-          context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: look.style },
+          ...asked,
         });
       } catch (error) {
         if (error.code !== "stopped") throw error;
@@ -347,7 +400,7 @@ export async function run(command, args, ctx) {
       }
       // A still under a camera move is used without its paper margin; the judge saw it whole.
       if (stillPictures) picture = await trimmed(ctx, workdir, picture, scene.id);
-      entry.takes.push({ seed, file: picture.file, sha256: picture.sha256, key: picture.key, judge, ...(picture.margins ? { margins: picture.margins } : {}) });
+      entry.takes.push({ seed, file: picture.file, sha256: picture.sha256, key: picture.key, judge, judged, ...(picture.margins ? { margins: picture.margins } : {}) });
       ctx.stdout.write(`${scene.id} take ${take}: judge ${judge.overall}/10${judge.passed ? "" : ` NOT passed: ${judge.problems.join("; ") || "below the bar"}`}${picture.reused ? " (reused)" : ""}\n`);
       if (judge.passed) break;
     }
@@ -357,7 +410,7 @@ export async function run(command, args, ctx) {
       writeManifest(workdir, manifest);
       break;
     }
-    const best = [...entry.takes].reverse().find((each) => each.judge?.passed) ?? entry.takes.at(-1) ?? null;
+    const best = bestTake(entry.takes);
     if (!best) {
       manifest.shots[scene.id] = { ...entry, needs_review: true, problems: ["no take could be generated"] };
       writeManifest(workdir, manifest);
@@ -368,7 +421,7 @@ export async function run(command, args, ctx) {
     // An end frame guides the clip's last picture; it is not judged, only drawn.
     if (scene.data.end_frame?.prompt) {
       try {
-        const end = await stage.image({ id: `${scene.id}/end`, purpose: "keyframe", prompt: shotPrompt({ ...scene, data: { ...scene.data, prompt: scene.data.end_frame.prompt } }, look, characters), negative: look.negative, references, seed: 1, shotId: scene.id, target: `keyframes/${scene.id}-end` });
+        const end = await stage.image({ id: `${scene.id}/end`, purpose: "keyframe", prompt: endPrompt(scene, characters), negative: look.negative, references, seed: 1, shotId: scene.id, target: `keyframes/${scene.id}-end` });
         if (!end.reused) generated += 1;
         record.end_frame = { file: end.file, sha256: end.sha256, key: end.key };
       } catch (error) {
