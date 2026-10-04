@@ -1,18 +1,17 @@
 ---
 id: 2026-10-04-news-ops-skill-says-a-spent
 title: news-ops skill says a spent Jev budget holds candidates as uncertain duplicates
-status: open
+status: done
 priority: P3
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5-incomplete-tickets
+claimed_at: 2026-10-04T17:43:06Z
 created_at: 2026-10-04T15:27:46Z
-completed_at:
-branch:
+completed_at: 2026-10-04T17:43:08Z
+branch: claude/news-ops-jev-paused
 depends_on: []
 scope:
   - .agents/skills/prod-host-ops/references/news-ops.md
-  - .claude/skills/prod-host-ops/references/news-ops.md
 ---
 
 # news-ops skill says a spent Jev budget holds candidates as uncertain duplicates
@@ -33,14 +32,14 @@ ticket's scope.
 
 ## Definition of done
 
-- [ ] Item 3 describes the paused state (`news_jev_quota_paused`, back in `discovered`, runs
+- [x] Item 3 describes the paused state (`news_jev_quota_paused`, back in `discovered`, runs
       again after 00:00 UTC or as soon as a raised budget has room) and points to
       `docs/news-automation.md` §When Jev's daily budget is spent instead of repeating it.
-- [ ] Both copies stay byte-identical.
+- [x] Both copies stay byte-identical (there is only one: see Notes).
 
 ## Steps
 
-- [ ] Edit `.agents/skills/prod-host-ops/references/news-ops.md` and copy it to
+- [x] Edit `.agents/skills/prod-host-ops/references/news-ops.md` and copy it to
       `.claude/skills/prod-host-ops/references/news-ops.md`.
 
 ## How to verify
@@ -52,3 +51,15 @@ node --test tools/skills.test.mjs
 ## Notes
 
 - Found while closing `2026-10-03-jev-comments-drifted-from-vendor-docs` on 2026-10-04.
+- 2026-10-04 (claude-opus-5-5-incomplete-tickets): item 3 now names `news_jev_quota_paused`, says the
+  candidate is back in `discovered` and is queued again after 00:00 UTC or at once when a raised
+  budget has room, points at `docs/news-automation.md` "When Jev's daily budget is spent", and
+  says what a real `news_duplicate_uncertain` is (Jev answered between 0.25 and 0.85,
+  `news_automation/ai.py`).
+- There is no `.claude/skills/prod-host-ops/references/news-ops.md`: only SKILL.md is mirrored
+  under `.claude/skills` (`tools/skills.test.mjs`; PR #1222 makes that a test), so that scope
+  line was dropped.
+- Claimed with `--force` over `2026-10-04-resume-held-news-drafts-from-their`
+  (claude-opus-5-5-news-resume, review): its file changes landed as #1212 and what is left
+  there is the deploy and the production pilot; this change is one line in item 3, outside the
+  resume section it added.
