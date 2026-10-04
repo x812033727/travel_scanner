@@ -75,18 +75,22 @@ offered and not chosen), so the fix is the scale the judge scores on, not the nu
       start-at-10 deduction rule plus " 10 = no fault found." on every rubric question. 28
       recorded takes each through the site, US$0.56. Neither moved the top: max 7.04 and 7.14,
       no criterion at 8 or more. Not shipped.
-- [ ] Try the anchors in the system instruction on the same 28 takes (`host/h1.sh`, built, not
-      run: see Notes). If the top moves, measure all 163 takes twice (the second pass gives the
-      flip rate) plus 60 takes of the question as it is asked today, as the control.
-- [ ] If the system instruction does not move it either: the model lists faults with a severity
-      and the server computes the scores (the way `verdict()` already recomputes the overall).
-- [ ] Ship whichever was measured: the server takes the scale from the request and puts it in the
-      system instruction (a request without one is judged exactly as today, so the drama's judge
-      does not change), the keyframes stage sends it for illustrated slides once the server says
-      it accepts one, and a warning when no take of a run reaches 9.
+- [x] Try the anchors in the system instruction on the same 28 takes (`host/h1.sh`, run inside the
+      production API container on 2026-10-04 with the owner's go-ahead, US$0.28). The top did not
+      move either: max 7.17, no criterion at 8 or more, 66% of criterion scores exactly 7, although
+      the instruction said "every criterion starts at 10". Wording cannot fix this model's scale.
+- [ ] Try grades instead of numbers on the same 28 takes (`host/h2.sh`, built, not run: see
+      Notes): the model answers none / minor / noticeable / serious for each criterion and the
+      points come from a table (`host-report.mjs --points`), which can be chosen offline against
+      the editors' labels. If the grades separate the labelled takes, measure all 163 takes twice
+      (the second pass gives the flip rate) plus 60 takes of today's question as the control.
+- [ ] Ship what was measured: an opt-in grading mode in `video_media/judge.py` (grade schema,
+      points computed in `verdict()`, a request that does not ask for it judged exactly as today,
+      so the drama's judge does not change), announced in `/video/media/status`, asked for by the
+      keyframes stage for illustrated slides, and a warning when no take of a run reaches 9.
 - [x] `docs/videos/ILLUSTRATED.md` §judge 的刻度與判定沿用: the numbers, what changed, what is left.
-- [ ] Duration receipt increment for `tools/video/media/look-keyframes.test.mjs` by an
-      independent reviewer.
+- [x] Duration receipt increment for `tools/video/media/look-keyframes.test.mjs` by an
+      independent reviewer (`claude-pr-review-keyframe-judge-scale`, commit 5a2768165).
 
 ## How to verify
 
@@ -110,27 +114,34 @@ must fall on the right side of the bar.
   `2026-10-03-illustrated-slides-lint-heuristics-the-shorts` (both `review`, PR #1172 merged
   2026-10-03 10:34Z) and `2026-10-03-video-worker-narration-takes-made-stale` (PR #1182 merged
   17:05Z) still list these files; their work is on main and nobody is on those branches.
-- Spending: the owner allowed up to US$5 of re-judging on 2026-10-04. Spent US$0.56 (two trials of
-  28 takes through the site's `/video/media/judge`). Not booked in the video's ledger.
-- Why the request cannot fix it: the server's system instruction ("0 (fails completely) to 10
-  (flawless). Be strict") outranks anything in the rubric or the context. The low end did follow
-  the anchors (an extra arm 4 to 3, readable text 3.5-4 to 3); the top did not move at all.
-- The judge also misses faults the editors caught: `kickboards-3` (six digits) and `lane-rope-3`
-  (drawn as a tilted photograph of a print) both scored 7 in the trials. That is a second
-  problem (what the rubric makes it look for), to measure after the scale.
+- Spending: the owner allowed up to US$5 of re-judging on 2026-10-04. Spent US$0.84: two trials of
+  28 takes through the site's `/video/media/judge` and one of 28 inside the API container (each
+  call reserved against the month's judge budget). Not booked in the video's ledger.
+- What the three trials say: the anchors were tried in `context`, in the rubric questions and in
+  the system instruction (in place of "0 (fails completely) to 10 (flawless). Be strict"). In
+  all three a clean picture still scores 7 on every criterion (gemini-3.8-flash). Only the low
+  end follows the words (an extra arm 4 to 3, readable text 3.5-4 to 3). So the numbers have to
+  come from code, not from the model.
+- The judge also misses faults the editors caught: `kickboards-3` (six digits) scored 7 in two of
+  the three trials and `lane-rope-3` (drawn as a tilted photograph of a print) in two. That is a
+  second problem (what the rubric makes it look for), to measure after the scale.
 - The measurement kit is on this machine, outside the repository:
   `<VIDEO_WORKDIR>/openai-devday-2026-recap/_tools/judge/calibration/`. `rejudge.mjs` asks the
   site's judge about recorded takes (it rebuilds every request from `round2.json`; all 163 cache
   keys match). `host-build.mjs` + `host-judge.py` build one shell script that judges takes
   inside the production API container under a candidate system instruction: read-only, each
   call reserved against the month's judge budget, the key never printed. `host-report.mjs`
-  prints before and after. `labels.json` holds the editors' usable and rejected takes.
+  prints before and after. `labels.json` holds the editors' usable and rejected takes;
+  `trial-v1.json`, `trial-v2.json` and `host/h1.out` are the three trials.
   The pictures are in the site's media store (kept 14 days from 2026-10-03/04); 58 of the 163
   were overwritten on disk by later redraws, so measure before 2026-10-17.
-- 2026-10-04: the owner chose to try the system instruction on the host before writing it into
-  the pull request. The auto-mode classifier refused the call that pipes the script into the
-  container (skill `deploy`, rule 6), and it was not retried. It needs the owner: run
-  `host/h1.sh` themselves, or switch the session to Manual. Until then the pull request carries
-  the three tool fixes only, as a draft.
+- 2026-10-04: the owner chose to try the server-side candidates on the host before writing one
+  into the pull request. The auto-mode classifier refused the first call that pipes the script
+  into the container (skill `deploy`, rule 6); it was not retried. After the owner switched the
+  session to Manual, `host/h1.sh` ran. The next one, `host/h2.sh` (grades), was refused again
+  ("Remote Shell Writes") and was not retried. It needs the owner: run `host/h2.sh` themselves
+  (one plink call, `bash -s` reading the script; the output goes to `host/h2.out`, then
+  `node host-report.mjs h2`), or put the session in Manual again. Until then the pull request
+  carries the three tool fixes only, as a draft.
 - Not done on purpose: no change to `judge_min_score`, to the rubric questions, or to how a
   drama's keyframes, sheets and clips are judged.
