@@ -66,6 +66,7 @@ export function AdminVideoSettingsTutorial({ view, prompts, canManage, onSaved }
     <Panel title={t("videoTitle")}>
       <VoiceFields voice={draft.voice} options={view.voice_options} disabled={disabled} onChange={setVoice} />
       <div className="grid gap-3 md:grid-cols-2">{numberFields.length.map(numberInput)}</div>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("lengthHelp")}</p>
       <LocaleDefaults locales={draft.caption_locales} disabled={disabled} onChange={(caption_locales) => edit({ caption_locales })} />
     </Panel>
 

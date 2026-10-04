@@ -1,0 +1,898 @@
+{
+  "slug": "ai-news-claude-code-mods-20261001",
+  "event_date": "2026-10-01",
+  "event_date_basis": "發布者只印日期、沒有時刻，照發布者日期，不換算台北時間（DELTA-4-11 第 1 節，沿用 DELTA-4-8 第 4 條 Opus 5.5 的判例）。研究代理 2026-10-03 UTC 18:20（台北 2026-10-04 02:20）重抓：(1) 公告頁 https://claude.com/blog/claude-code-mods 標題區可見文字印「Category Product announcements Product Claude Code Date October 1, 2026 Reading time 5 min」（正規化後連續字串「Product Claude Code Date October 1, 2026」，verified_facts 第 1 條）；(2) 同頁 JSON-LD 的 datePublished 與 dateModified 都是「Oct 01, 2026」，只有日期、沒有時刻；頁內以 article:published_time、publishedOn、_createdAt、_updatedAt、2026-10-01T 查都是 0 次。四條 sources[] 裡只有公告頁有日期，三個文件頁沒有印發布日或更新日。另外，公告頁連到的 claude.dev 教學（不在 sources[]）印「PUBLISHED Oct 01, 2026」，也沒有時刻。沒有在一手頁找到發布時刻，所以不回報台北時刻。正文寫「2026 年 10 月 1 日」，不寫時刻、不寫「台北時間」或「美國時間」。",
+  "title": "Claude Code 推出 mods：用 TypeScript 改寫行為與介面，裝在 plugin 裡",
+  "checked_on": "2026-10-04",
+  "sources": [
+    {
+      "title": "Claude 部落格：Customize Claude Code with mods",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "publisher": "Anthropic",
+      "checked_on": "2026-10-04"
+    },
+    {
+      "title": "Claude Code Docs：Mods overview",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "publisher": "Anthropic",
+      "checked_on": "2026-10-04"
+    },
+    {
+      "title": "Claude Code Docs：Create a mod",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "publisher": "Anthropic",
+      "checked_on": "2026-10-04"
+    },
+    {
+      "title": "Claude Code Docs：Manage mods for your organization",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "publisher": "Anthropic",
+      "checked_on": "2026-10-04"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-10-03 UTC 18:20:22–18:24:30（台北 2026-10-04 02:20–02:24，checked_on 依 TZ=Asia/Taipei date +%F 取得）研究代理以 curl -sSL --compressed --max-time 60 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 逐條抓取，每次請求後間隔 1.3 秒；請求、標頭、查詢字串都沒有任何人的姓名、email 或個人資料。抓檔腳本 /root/news411/agents/research/fetch.sh，落地檔在 /root/news411/agents/research/raw/，逐筆紀錄（UTC 時間、網址、HTTP 狀態、最終網址、轉址次數、落地 bytes）在同目錄 fetch-log.tsv；bytes 一律是落地檔大小（--compressed 解壓後）。WebSearch 0 次，沒有讀任何媒體、整合站或第三方 repo。\nsources[]（四條都讀 HTML 版，正文是伺服器端輸出的可見 HTML，不必改讀 .md）：\n(1) https://claude.com/blog/claude-code-mods → HTTP 200、0 次轉址、532,059 bytes。頁面 <title> 是「Customize Claude Code with mods in TypeScript | Claude by Anthropic」，頁上 h1 是「Customize Claude Code with mods」；sources[0].title 用 h1。正文從「Today we're introducing mods」到「or see the documentation」完整，含 Why we built mods、How mods work、Swap built-in features for your own、Mods for teams and enterprises、Getting started 五段。正文裡的連結（取自 href，不是猜的）：guide 與 getting started guide → https://claude.dev/blog/getting-started-with-claude-code-mods/；Hooks → https://code.claude.com/docs/en/hooks；「shared the design for mods on GitHub」→ https://github.com/anthropics/claude-code/issues/91870；「view the source code」→ http://github.com/anthropics/claude-code/tree/main/mods；Claude directory → https://claude.ai/directory；「submit it to the directory」→ https://claude.ai/directory/manage；documentation → https://code.claude.com/docs/en/plugins/mods/overview。頁尾 Related posts 有一則「Sep 23, 2026 Claude Marketplace: one place to discover plugins, agents, and services from our partners」，那是版面的相關文章區，不是本文內容。\n(2) https://code.claude.com/docs/en/plugins/mods/overview → 200、0 次轉址、526,328 bytes。可見文字有定義、What a mod can do、Install or update a mod、Try a sample mod、What a mod can reach、Turn mods on or off、How a mod works、What a hook can do with an event、Where mods run 表、比較表、Mods built into Claude Code 表、Read the source of built-in mods。\n(3) https://code.claude.com/docs/en/plugins/mods/create → 200、0 次轉址、656,741 bytes。Ask Claude for a mod 四步、Use the mod in other sessions、Sessions where a mod Claude writes can’t load、first-mod 教學七步、How the example mod works、Get type definitions、Check what Claude Code reads from your mod（claude plugin validate）、Test the mod（claude plugin test）、Share your mod。\n(4) https://code.claude.com/docs/en/plugins/mods/admin → 200、0 次轉址、646,270 bytes。Stop user-installed mods from loading、Know what happens by default（sec-default 的載入條件與範圍）、Know which controls still apply、Decide whether to leave mods on、Review what a mod can do（calls 表）、Choose how much to allow（政策表與各設定）、Allow only your organization’s mods、Set options on the built-in guard、Run your organization’s own mods、Enforce a policy with a mod of your own、Refuse mods when your check fails。\nsources[] 的取捨：DELTA-4-11 第 2 節建議部落格、overview、create、admin。第五節（安全與企業管控）要的 sec-default 載入條件與「守什麼、不守什麼」、「Nothing about them is deprecated」、$.model.complete 用使用者方案、disableSideloadFlags 擋哪些旗標、prependPlugins 會取代預設順序，都只在 admin 頁有完整說法；reference 的設定表只有一行一句、沒有 sec-default 的守備範圍，所以不以 reference 換 admin。代價是 reference 獨有的限制表（一個 hook 10 秒、$.store 4 MiB、$.ui.toast 4 秒）不在 sources[]，見 unverified_or_excluded 第 2 條；若協調者要寫限制數字，需要把 reference 換進 sources[]（只能換掉 create 或 admin，兩者都撐著必寫事實，不建議）。\n讀了但不在 sources[] 的頁（都是 Anthropic 自己的頁，200）：\n- https://code.claude.com/docs/en/plugins/mods/reference（565,214 bytes）：逐節讀過。開頭寫「for the Claude Code CLI and the Desktop app as of v2.1.287」，四頁裡只有這一頁有「as of v2.1.287」字樣；另三頁寫的是「v2.1.287 or later」或「on by default in Claude Code v2.1.287 and later」。也寫「The copy on GitHub can be older than the Claude Code version you have installed.」。限制表與設定表的值見 unverified_or_excluded。\n- https://code.claude.com/docs/en/plugins/mods/interface（1,066,717 bytes）、events（680,777）、api（539,718）、test（740,793）、troubleshoot（527,328）、gallery（830,658）：抓取並確認有正文，未逐節精讀，沒有任何事實引用它們。\n- https://code.claude.com/docs/llms.txt（52,888 bytes）：列出上述 mods 文件頁，對應的 .md 網址是 HTML 網址加 .md；本次沒有抓 .md 版，因為 HTML 已有完整正文。\n- https://claude.dev/blog/getting-started-with-claude-code-mods/（285,665 bytes）：公告頁正文連結（「read our guide to building your first mod」）。印「PUBLISHED Oct 01, 2026」與「Claude Code 2.1.287 or later」，以 Token Weather 為教學主體。它獨有的說法見 unverified_or_excluded 第 3 條。\n- GitHub：github.com 的 HTML（tree 與 issue 頁）與 api.github.com 對本容器都回 HTTP 403、378 bytes 的 JSON，內容是本 session 的出口代理說「GitHub access to this repository is not enabled for this session」——這是本次執行環境的設定，不是 GitHub 拒絕，也不是 repo 不存在；沒有改用要掛認證的管道（協調者要求不帶認證）。raw.githubusercontent.com 回 200，用它確認目錄存在：路徑是依 reference 的 Files 表（.claude-plugin/plugin.json 與 hooks/hooks.json 標 Required: Yes）組出來的必要檔，再抓 hooks.json 自己 modules 欄寫的模組檔；這些組出來的路徑只用來確認存在，不放進 sources[]、不放進任何 fact 的 url，正文也不寫。結果：anthropics/claude-code 的 mods/sec-default、mods/diff、mods/agents-md、mods/telemetry 四個目錄各自的 plugin.json（406／397／1,851／318 bytes，author 都是 Anthropic）、hooks.json（496／257／937／360 bytes）與 hooks/register.ts（3,643／25,416／9,532／13,853 bytes）都是 200；anthropics/claude-code-playground 的 claude-code/mods/token-weather、blast-radius、replay-theater 三個目錄的 plugin.json（255／336／219 bytes，author 是「Claude Code DevRel」）、hooks.json（49／173／50 bytes）與模組 .mjs（4,246／22,555／10,061 bytes）都是 200。mods/types/claude-code.d.ts（create 與 reference 頁的連結）以 raw 抓到 507,444 bytes，第一行「// Written by Claude Code 2.1.277.」。GitHub issue 91870（公告頁連結）沒有打開，見 unverified_or_excluded 第 1 條。\n- https://claude.ai/directory（公告頁連結）：HTTP 403、5,512 bytes，body 是 Cloudflare 的「Just a moment...」挑戰頁，沒有讀到目錄內容。\n沒有逾時、DNS 失敗或軟性 404；HTTP 200 的頁面都看過 body 確認是正文。\n逐字比對方法：/root/news411/agents/research/norm.py 先把每頁 HTML 刪 <!-- -->、刪 script／style／noscript／svg／template 區塊，html.unescape，U+00A0 換空格，所有空白收斂成一個空格，做三種版本（A：行內標籤 a、span、b、strong、em、i、u、code、sup、sub、small、mark、abbr、time、s、kbd、q、cite → 無，其他標籤 → 空格；B：所有標籤 → 空格；C：所有標籤 → 無），另加整份 HTML 解碼後的 RAW 版，存在 /root/news411/agents/research/norm/。/root/news411/agents/research/check_quotes.py 讀本檔，對每條 verified_facts 確認 url 在 sources[]，再把 verbatim_quote 只做同樣的空白收斂與 entity 解碼（不改彎引號、不改 ❯ ✔ · 等符號），在該 url 的四個版本裡找連續子字串；逐條結果在 /root/news411/agents/research/check_quotes.log。注意部落格的撇號混用：「we're」「can't」「you'd」「users' machines」是直的 '，「aren’t」「pipeline’s」是彎的 ’，「(“security default”)」是彎雙引號；文件頁一律是彎的 ’ 與 “ ”。引文照各自原樣。",
+  "verified_facts": [
+    {
+      "fact": "公告日期：Anthropic 在 Claude 部落格發表 mods 的公告，頁上印的日期是 2026 年 10 月 1 日，分類是 Product announcements（只有日期、沒有時刻）。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Product Claude Code Date October 1, 2026"
+    },
+    {
+      "fact": "部落格的定義：mods 是改變 Claude Code 運作方式的小型 TypeScript 函式，可以改寫提示、加新介面、取代內建功能或加全新功能（Anthropic 的說法）。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Today we're introducing mods, small TypeScript functions that change how Claude Code works. A mod can rewrite a prompt, add new UI, replace a built-in feature, or add entirely new functionality."
+    },
+    {
+      "fact": "mods 可以自己寫，也可以請 Claude Code 寫；mods 裝在 plugin 裡，安裝與分享方式和一般 plugin 相同；部落格說可在 Claude Code CLI 與 desktop app 使用。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You can write a mod yourself, or ask Claude Code to write one for you. Mods ship inside plugins, so you install and share them like any plugin. They work in the Claude Code CLI and desktop app."
+    },
+    {
+      "fact": "部落格的安全提醒：mods 對你電腦的存取權限與 Claude Code 本身相同、沒有沙盒，只該安裝信得過來源的 mods（一般 callout 照這句歸因）。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Mods run with the same access to your machine as Claude Code itself. They aren’t sandboxed, and you should only install mods from sources you trust, the same way you'd install any code on your computer."
+    },
+    {
+      "fact": "為什麼做 mods：Anthropic 說 hooks 給了使用者部分控制，但 hooks 不能改寫事件、畫新介面或取代功能，mods 可以。這是「hooks 做不到的 mods 做得到」，不是「mods 取代 hooks」。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Hooks helped give users some of this control, but hooks can't rewrite events, draw new UI, or replace features. Mods can."
+    },
+    {
+      "fact": "Anthropic 表示，發表前把 mods 的設計放上 GitHub 徵求開發者意見（Anthropic 自述的流程；連結的 issue 本次沒有打開，正文只寫「Anthropic 表示」，不寫網址與編號）。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We shared the design for mods on GitHub before launch to get feedback from developers."
+    },
+    {
+      "fact": "運作方式（部落格）：Claude Code 每做一件事就發出一個事件，例如呼叫工具、詢問權限、畫出畫面的一部分；mod 是掛在這些事件上的函式。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Each time Claude Code does something, it emits an event. Examples include calling a tool, asking for permission, and drawing part of the screen. A mod is a function that hooks into one of these events."
+    },
+    {
+      "fact": "mod 可以在事件之前、之後或取代事件執行，也可以包住事件、前後都跑程式。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A mod can run before the event, after it, or instead of it. It can also wrap the event, running code both before and after."
+    },
+    {
+      "fact": "部落格列的能力（一個函式就能做）：在提示送到模型前改寫它；擋下、改寫或重試工具呼叫；核准或拒絕權限請求；在 Claude 讀到之前把工具輸出裡的機密遮掉（Anthropic 的說法）。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": true,
+      "verbatim_quote": "With one function, a mod can: Rewrite a prompt before it reaches the model. Block, rewrite, or retry a tool call. Approve or deny a permission request. Redact secrets from tool output before Claude reads it."
+    },
+    {
+      "fact": "介面能力（部落格）：mod 可以修改或取代 Claude Code 畫出的部分介面，例如工具結果或 Claude 提出的問題；可以加按鈕與輸入框，其他 mods 可以回應你按下它們（Anthropic 的說法）。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It can edit or replace part of the interface Claude Code draws, like a tool result or a question from Claude. It can add buttons and inputs, and other mods can respond when you press them."
+    },
+    {
+      "fact": "多個 mods 掛同一個事件時，依載入順序執行；最先載入的最先看到事件、最後看到結果，所以可以疊加不同作者的 mods。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When several mods hook the same event, they run in the order they load. The first mod to load sees the event first and the result last. This lets you stack mods from different authors."
+    },
+    {
+      "fact": "「用 Claude Code 寫 Claude Code 的 mod」：Anthropic 說請 Claude 建立 mod，它可以寫 TypeScript、安裝並在 session 裡熱重載（Anthropic 說明的功能，本站沒有試過）。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": true,
+      "verbatim_quote": "You can also use Claude Code to mod Claude Code. Ask Claude to create a mod, and it can write the TypeScript, install it, and hot reload it in your session."
+    },
+    {
+      "fact": "內建的 /diff 現在是 mod：可以在 /plugin 關掉，或換成自己的版本。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For example, the built-in /diff feature is now a mod, so you can turn it off (in /plugin) or replace it with your own version."
+    },
+    {
+      "fact": "Anthropic 表示計畫陸續把更多內建功能改成 mods，讓使用者可以把 Claude Code 精簡成小核心、只加回想要的部分（關於未來的計畫，沒有時程）。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We plan to move more built-in features to mods over time, so you can pare Claude Code down to a small core and add back only what you want."
+    },
+    {
+      "fact": "團隊與企業（部落格）：mods 裝在 plugin 裡，既有的 plugin 管控照樣適用；管理者可以允許或封鎖 plugin marketplace；Team 與 Enterprise 方案由 owner 在管理主控台設定，Claude API 與第三方 API 方案則由管理者把 managed settings 推到使用者電腦。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Mods ship inside plugins, so your existing plugin controls apply. Admins can allow or block plugin marketplaces. On Team and Enterprise plans, an owner sets this in the admin console. On Claude API and third-party API plans, admins push managed settings to users' machines."
+    },
+    {
+      "fact": "部落格對 sec-default 的說法：在 Team 與 Enterprise 方案、以及任何有 managed settings 的電腦上，內建的 sec-default（security default）會最先載入，阻止使用者安裝的 mods 做高風險的事，例如推翻權限的 deny 規則。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": false,
+      "verbatim_quote": "On Team and Enterprise plans, and on any machine with managed settings, a built-in mod called sec-default (“security default”) loads first. It stops mods that users install from doing risky things, like overriding your permission deny rules."
+    },
+    {
+      "fact": "sec-default 的原始碼可以公開查看；管理者可以改讓自己的 mods 先載入，這樣做時要把 sec-default 加進清單才保有它的限制。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You can view the source code to see what it restricts. Admins can load their own mods first instead. If you do, add sec-default to your list to keep its restrictions."
+    },
+    {
+      "fact": "部落格的三個團隊例子：CI/CD 狀態（在對話旁的窗格顯示 pipeline 狀態並隨建置更新）、production 防護（指令碰到 production 設定前要求確認）、稽核紀錄（最先載入的 mod 記下其他每個 mod 的每次呼叫）。這是 Anthropic 舉的可做的例子，不是已有的產品。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": true,
+      "verbatim_quote": "CI/CD status: a mod can show your pipeline’s status in a pane beside the conversation, and update it as builds pass or fail. Production safeguards: a mod can require confirmation before any command touches production config. Audit logging: a mod that loads first can record every call that every other mod makes."
+    },
+    {
+      "fact": "部落格的入門：mods 今天起可在 Claude Code CLI 與 desktop app 使用；從「Claude directory」或在 CLI 執行 /plugin 安裝含 mods 的 plugin；要分享就包成 plugin 送交 directory。",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Mods are available today in the Claude Code CLI and desktop app. Install plugins that include mods from the Claude directory or by running /plugin in the CLI. To share a mod, package it in a plugin and submit it to the directory."
+    },
+    {
+      "fact": "文件的定義：mod 是改變 Claude Code 外觀與行為的 plugin，由 JavaScript 或 TypeScript 事件處理函式組成；事件發生時（工具呼叫、送出提示、畫出介面的一部分）Claude Code 呼叫它，它可以觀看、修改或接手事件。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A mod is a plugin that changes how Claude Code looks and behaves. It’s made of JavaScript or TypeScript event handlers: Claude Code calls one when an event happens, such as a tool call, a submitted prompt, or a part of the interface being drawn, and the handler can watch the event, change it, or take it over."
+    },
+    {
+      "fact": "兩種 hook：Claude Code 既有的 hooks 也跑在事件上，是寫在設定檔裡的 shell 命令、HTTP 請求或提示；mod 的處理函式則是在 Claude Code 內部執行的函式。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude Code’s existing hooks also run on events, as a shell command, HTTP request, or prompt you configure in a settings file. A mod’s handlers are functions that run inside Claude Code instead."
+    },
+    {
+      "fact": "用詞：Claude Code 把兩種都叫 hooks；文件裡「hook」指 mod 的處理函式，設定檔那種叫「settings hook」。第一節要一次講清楚，之後固定用兩個中文詞。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude Code calls both kinds hooks: on these pages, “hook” means a mod’s handler, and the settings-file kind is a “settings hook”."
+    },
+    {
+      "fact": "文件列的能力之一：畫可以操作的介面——對話紀錄旁的窗格或提示框上方的橫條，可有分頁、按鈕與文字欄。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Draw an interface you can use: a pane beside the transcript or a band above the prompt, with tabs, buttons, and text fields."
+    },
+    {
+      "fact": "文件列的能力：在指令上跑自己的程式——一個 /command 立刻執行你的函式、不經 Claude 回合、Claude 工作中也能用。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Run your own code on a command: a /command that runs your function at once, with no Claude turn, even while Claude is working."
+    },
+    {
+      "fact": "文件說 mods 可在 Claude Code CLI 與 Claude Desktop app 的 Code 分頁使用（其他地方見 Where mods run 表）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Mods work in the Claude Code CLI and in the Code tab of the Claude Desktop app."
+    },
+    {
+      "fact": "安裝：mod 以 plugin 的形式從 marketplace 安裝，格式是 plugin 名稱、@、marketplace 名稱；文件範例是 /plugin install token-chart@your-org——token-chart 與 your-org 是文件範例裡的假名字，不是真的外掛。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A mod installs as a plugin, from a marketplace. Give the plugin’s name, an @, and the marketplace’s name. These examples install a plugin named token-chart from a marketplace named your-org: In a Claude Code session, run /plugin install token-chart@your-org."
+    },
+    {
+      "fact": "範例 mods：Anthropic 在 claude-code-playground repo 的 claude-code/mods 目錄分享範例，每個都是完整 plugin、README 說明怎麼做的，repo 照原樣分享、不提供支援。研究代理以 raw.githubusercontent.com 確認三個目錄的 plugin.json、hooks.json 與模組檔都存在（見 sourcing_notes）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Anthropic shares sample mods in the claude-code/mods directory of the claude-code-playground repository. Each one is a complete plugin, and its README says how it was built. The repository shares them as they are, without support."
+    },
+    {
+      "fact": "三個範例 mod：token-weather 在提示框上方畫 context window 的預報；blast-radius 攔下高風險 shell 命令（例如 rm -rf 或 force push），顯示它會改到什麼，附繼續或取消按鈕；replay-theater 加一個 /replay 命令，逐步重播 Claude 上一輪的檔案修改。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "token-weather: draws a forecast of your context window above the prompt blast-radius: holds a risky shell command, such as rm -rf or a force push, and shows what it would change, with buttons to proceed or cancel replay-theater: adds a /replay command that steps through the file edits Claude made in the last turn"
+    },
+    {
+      "fact": "試用範例：clone repo 後用 --plugin-dir 載入該 mod 的目錄，只作用一個 session。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To try one, clone the repository and load the mod’s directory for one session with --plugin-dir."
+    },
+    {
+      "fact": "mod 能碰到什麼（一）：以你的身分在電腦上做事——在你的帳號能到的任何地方讀寫檔案、啟動程式、發網路請求；讀你的機密——環境變數與設定檔，包括放在其中的 API key。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Act on your machine as you: read and write files anywhere your user account can, start programs, and make network requests Read your secrets: environment variables and settings files, including an API key you keep in either"
+    },
+    {
+      "fact": "mod 能碰到什麼（二）：看到你送出的每個提示與 Claude 的每個工具呼叫；改寫提示或工具呼叫、像你打字一樣送出提示、傳訊息給你的另一個 session；在你被問之前核准工具呼叫；用你的方案或 API key 呼叫模型。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "See your session: every prompt you send and every tool call Claude makes Change your session: rewrite a prompt or a tool call, submit a prompt as if you had typed it, or send a message to another of your sessions Act without asking you: approve a tool call before you’re asked Spend your usage: call a model on your plan or API key"
+    },
+    {
+      "fact": "不是沙盒：開了 sandboxing，沙盒隔離的是 Claude 執行的 Bash 命令，mod 啟動的程式在沙盒外面。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Mods aren’t sandboxed. If you turn on sandboxing, the sandbox isolates the Bash commands Claude runs, and a process that a mod starts runs outside it."
+    },
+    {
+      "fact": "改不了權限提示：mod 可以重新設計 Claude Code 的大部分介面，但不包括權限提示，不能改變提示顯示的內容（但可以在提示出現前就核准或拒絕，見 admin 頁那條）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A mod can restyle much of Claude Code’s interface, but not the permission prompt. It can’t change what a prompt shows you."
+    },
+    {
+      "fact": "安裝前先看：不必執行 mod，就能列出它處理哪些事件、要 Claude Code 做什麼（例如讀檔或發網路請求）；做法是先取得 plugin 的檔案（例如 clone repo），再在 shell 對該目錄執行 claude plugin validate。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Before you install a mod, you can list which events it handles and what it asks Claude Code to do, such as read a file or make a network request, without running it. Get the plugin’s files first, for example by cloning its repository. Then, in your shell, run claude plugin validate on the plugin’s directory:"
+    },
+    {
+      "fact": "版本門檻（文件寫、部落格沒寫）：mods 需要 Claude Code v2.1.287 以上，預設開啟；在 shell 用 claude --version 檢查，太舊就更新。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Mods require Claude Code v2.1.287 or later, and they’re on by default. In your shell, run claude --version to check, and update Claude Code if yours is older."
+    },
+    {
+      "fact": "個人關掉 mods 的三種範圍：單一 mod 在 /plugin 的 Installed 分頁停用或解除安裝；一個 session 內全部用 --safe-mode 啟動（其他自訂也會停）；所有 session 在 ~/.claude/settings.json 設 \"disableAllHooks\": true。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "One mod: disable or uninstall its plugin from the Installed tab in /plugin Every installed mod, for one session: start Claude Code with --safe-mode, which also disables your other customizations Every mod you installed, in every session: set \"disableAllHooks\": true in ~/.claude/settings.json."
+    },
+    {
+      "fact": "個人設 disableAllHooks 的副作用：設定檔 Hook 與自訂 status line 也會停；組織管理的部分照常運作。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Your settings hooks and custom status line stop too. What your organization manages keeps running."
+    },
+    {
+      "fact": "CLAUDE_CODE_ENABLE_FUNCTION_HOOKS 是 early access 時期的變數，要移除；v2.1.287 以上忽略它，設成 0 也關不掉 mods。不寫成啟用方法。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If you set CLAUDE_CODE_ENABLE_FUNCTION_HOOKS during early access, remove it. Claude Code v2.1.287 and later ignores it, so setting it to 0 doesn’t keep mods off."
+    },
+    {
+      "fact": "一個小 mod 有三個檔案：.claude-plugin/plugin.json（plugin 的 manifest）、hooks/hooks.json（指向程式檔）、hooks/register.js（程式本身，叫 hooks module）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "plugin.json: the plugin’s manifest hooks.json: points to your code file register.js: your code, called the hooks module."
+    },
+    {
+      "fact": "一個事件函式對事件的三種處理：Observe（觀察，記下後讓它照常繼續）、Rewrite（改寫事件再讓它繼續）、Answer（自己處理事件，原本的行為不執行，例如拒絕一個命令）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Observe: note what’s happening and let it continue unchanged, as the tool.call hook in the example does Rewrite: change the event before it continues, as the ui.render hook does when it adds the count to the spinner Answer: handle the event itself, so the usual behavior doesn’t run, such as refusing a command"
+    },
+    {
+      "fact": "事件函式要做程式以外的事（畫面、加指令、呼叫模型、讀檔、起程式、連網路）只能透過 mods API，所以 Claude Code 能在安裝前列出一個 mod 會做什麼。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A hook has no other way to do those things, which is why Claude Code can list what a mod does before you install it."
+    },
+    {
+      "fact": "哪裡跑、哪裡畫（總則）：載入該 plugin 的每種 session 都會跑 mod 的事件函式；畫面比較窄，只有終端機與 Desktop app 會顯示 mod 的窗格、橫條與替換的列。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A mod’s hooks run in every kind of session that loads the plugin. Drawing is narrower: only the terminal and the Desktop app show a mod’s panes, bands, and replaced rows."
+    },
+    {
+      "fact": "Where mods run 表（一）：終端機裡的 claude（含編輯器內建終端與 JetBrains 外掛）跑、也畫；Desktop app 的 Code 分頁（WSL session 除外）跑、也畫，但表上標為 terminal-only 的元素除外；Desktop app 的 WSL session 不跑也不畫，因為 WSL session 不能用 plugins。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "claude in a terminal, including an editor’s integrated terminal and the JetBrains plugin Yes Yes The Code tab of the Desktop app, except in a WSL session Yes Yes, except elements the elements table marks terminal-only A WSL session in the Desktop app No, because plugins aren’t available in WSL sessions No"
+    },
+    {
+      "fact": "Where mods run 表（二）：VS Code 外掛的聊天面板、claude -p 與 Agent SDK 都是事件函式會跑、畫面不顯示；Remote Control（從 claude.ai 或手機 app）在你電腦上的 session 裡跑，畫面出現在你電腦上的終端機；雲端 session 對「有送進雲端 session 的 plugin」會跑、不畫。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The VS Code extension’s chat panel Yes No claude -p and the Agent SDK Yes No Remote Control from claude.ai or the mobile app Yes, in the session on your machine In the terminal on your machine A cloud session Yes, for a plugin that reaches the cloud session No"
+    },
+    {
+      "fact": "比較表「是什麼」一列：mod＝plugin 裡、Claude Code 在自己行程內呼叫的函式；settings hook＝Claude Code 在生命週期事件上執行的 shell 命令、HTTP 請求或提示；skill＝Claude 讀的 SKILL.md 指示檔；MCP server＝給 Claude 工具的外部行程或服務。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "What it is Functions in a plugin that Claude Code calls in its own process A shell command, HTTP request, or prompt that Claude Code runs on a lifecycle event A SKILL.md file of instructions Claude reads An external process or service that gives Claude tools"
+    },
+    {
+      "fact": "比較表「能改什麼」一列：mod＝工具呼叫、提示、指令、回合與介面畫什麼；settings hook＝工具呼叫或提示放不放行、工具呼叫的參數與結果、加給 Claude 的脈絡；skill＝Claude 知道什麼、做什麼；MCP server＝Claude 有哪些工具。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "What it can change Tool calls, prompts, commands, turns, and what the interface draws Whether a tool call or prompt goes ahead, a tool call’s arguments and result, and context added for Claude What Claude knows and does Which tools Claude has"
+    },
+    {
+      "fact": "比較表「能不能畫介面」與「寫什麼」兩列：只有 mod 能畫（Yes／No／No／No）；mod 寫 JavaScript 或 TypeScript，settings hook 寫一支腳本加 settings.json 的一條設定，skill 寫 Markdown，MCP server 是任何語言寫的伺服器。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Can it draw in the interface Yes No No No What you write JavaScript or TypeScript A script and a settings.json entry Markdown A server in any language"
+    },
+    {
+      "fact": "比較表「什麼時候選」一列：要窗格、提示框上方的橫條、自訂指令或改寫事件選 mod；用手邊的腳本擋、放或記錄事件選 settings hook；一直把同一段指示貼進對話選 skill；Claude 要連外部系統選 MCP server。一個 plugin 可以同時裝這四種。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Pick it when You want a pane, a band above the prompt, a custom command, or to rewrite an event You want to block, allow, or log an event with a script you already have You keep pasting the same instructions into chat Claude needs to reach an external system"
+    },
+    {
+      "fact": "內建 mods：你的 session 有哪些，在 /plugin 的 Installed 分頁 Built-in 底下看；內建 mod 不能更新或解除安裝，各自的關法見表的最後一欄。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To see the ones your session has, run /plugin at the Claude Code prompt and go to the Installed tab, which lists them under Built-in. You can’t update or uninstall a built-in mod, and the table’s last column says how to turn each one off."
+    },
+    {
+      "fact": "內建 mods 表：cc-plugin-agents-md 把 AGENTS.md 當專案指示載入，除了讀不了 AGENTS.md 的 session 都開著，可在 /plugin 停用或選擇載入哪些指示檔。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "cc-plugin-agents-md Loads AGENTS.md as project instructions Every session, apart from the ones that can’t read AGENTS.md Disable it in /plugin, or choose which instruction files load"
+    },
+    {
+      "fact": "內建 mods 表：cc-plugin-diff 接手 /diff 並畫它的窗格，在互動式終端機 session 開著；在 /plugin 停用後 /diff 還在，由 Claude Code 的內建版本回答。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "cc-plugin-diff Takes over /diff and draws its pane Interactive terminal sessions Disable it in /plugin. /diff stays, and Claude Code’s built-in version of the command answers it."
+    },
+    {
+      "fact": "內建 mods 表：cc-plugin-plugin-authoring 給 Claude 寫 mods 用的 plugin-authoring skill，只有 skill、沒有 mod 程式碼；除非 Anthropic 遠端關掉已安裝的 mods 否則都開著；可在 /plugin 停用。（DELTA-4-11 第 3 節與第 4 條第 8 項的內建清單沒有列這一個。）",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "cc-plugin-plugin-authoring Gives Claude the plugin-authoring skill for writing mods. It holds a skill and no mod code. Unless Anthropic has turned installed mods off remotely Disable it in /plugin"
+    },
+    {
+      "fact": "內建 mods 表：cc-plugin-sec-default 保護組織管理的東西不受使用者安裝的 mods 影響，在 guard 有載入的地方開著；使用者關不掉，順序由管理者在 managed settings 設定。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "cc-plugin-sec-default Guards what your organization manages from the mods a user installs Where the guard loads You can’t. An administrator sets the order in managed settings"
+    },
+    {
+      "fact": "內建 mods 表：cc-plugin-telemetry 送出 Claude Code 與內建 mods 記錄的分析資料，在 Claude Code 自身分析開著的地方開著；可在 /plugin 停用，或關掉分析（例如 DISABLE_TELEMETRY）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "cc-plugin-telemetry Sends the analytics records that Claude Code and its built-in mods log Wherever Claude Code’s own analytics are on Disable it in /plugin, or turn analytics off, for example with DISABLE_TELEMETRY"
+    },
+    {
+      "fact": "內建 mods 表：cc-plugin-you-should-know 在 Claude 做較長任務時跑一個旁路代理，發現你可能漏掉的事就在提示框上方顯示提醒；預設關閉，「if available for your org」才會列在 /plugin → Installed → Show disabled，用 /plugin enable cc-plugin-you-should-know@builtin 開啟。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "cc-plugin-you-should-know Runs a side agent that watches your back while Claude works on longer tasks. When it finds something worth knowing that you might miss, it shows you a note above the prompt. Disabled by default. Listed in /plugin -> Installed -> Show disabled if available for your org. Enable with /plugin enable cc-plugin-you-should-know@builtin."
+    },
+    {
+      "fact": "disableAllHooks、--bare、--safe-mode 這些停掉已安裝 mods 的設定與旗標，不會停掉內建 mods。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The settings and flags that stop installed mods, such as disableAllHooks, --bare, and --safe-mode, don’t stop built-in mods."
+    },
+    {
+      "fact": "部分內建 mods 的原始碼公開在 Claude Code repo 的 mods 目錄，每個都是附 hooks module 與測試的完整 plugin（文件列 diff、agents-md、sec-default、telemetry；研究代理以 raw.githubusercontent.com 確認四個目錄的必要檔存在）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/overview",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The source of some of these mods is public in the mods directory of the Claude Code repository. Each one is a complete plugin with its hooks module and tests:"
+    },
+    {
+      "fact": "自己寫不需要 Node.js、bundler 或 build step，Claude Code 直接載入 .js 與 .ts 檔。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You don’t need Node.js, a bundler, or a build step, because Claude Code loads .js and .ts files directly."
+    },
+    {
+      "fact": "請 Claude 寫 mod：Claude 依內建的 plugin-authoring skill 工作，它告訴 Claude mod 寫在哪、你的版本有哪些事件與方法、mod 怎麼載入；也可以自己在提示執行 /plugin-authoring 載入。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude works from a built-in skill named plugin-authoring, which tells it where to write the mod, which events and methods your version has, and how the mod gets loaded. Claude can load the skill when you ask for a mod, or you can load it yourself by running /plugin-authoring at the Claude Code prompt."
+    },
+    {
+      "fact": "Claude 寫的 mod 要你核准才執行（有些 session 根本載入不了，見下條）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The mod runs once you approve it, except in sessions where a mod Claude writes can’t load."
+    },
+    {
+      "fact": "Claude 把 mod 寫在 session 的 mods 資料夾，也就是 ~/.claude/dev-mods/ 加上 session ID；在 default 與 acceptEdits 權限模式下，每個檔案建立前都會問你，因為 ~/.claude 是受保護路徑。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude writes the mod in a directory of its own in the session’s mods folder, which is ~/.claude/dev-mods/ followed by the session’s ID. A mod’s full path looks like ~/.claude/dev-mods/3f2a9c1e-5b7d-4e8a-9c21-6d0f4b8a7e13/git-branch/. In the default and acceptEdits permission modes, Claude Code asks before Claude creates each of the mod’s files, because ~/.claude is a protected path."
+    },
+    {
+      "fact": "核准：Claude 存第一個檔案時，Claude Code 會問要不要為這個 session 開啟熱重載；熱重載會執行 Claude 在這個 session 寫的 mods，並套用之後的每次修改。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When Claude saves the first file, Claude Code asks whether to enable hot reloading for the session. Hot reloading runs the mods Claude writes in this session and picks up each later change."
+    },
+    {
+      "fact": "Claude 寫的 mod 只在產生它的 session 載入，該 session 的 mods 資料夾超過 cleanupPeriodDays 後會被 Claude Code 刪除；要保留就把目錄複製到自己的位置（例如 ~/mods/git-branch）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A mod Claude wrote loads only in the session that made it, and Claude Code deletes that session’s mods folder once it’s older than cleanupPeriodDays. To keep the mod, copy its directory out of the mods folder to a place of your own, such as ~/mods/git-branch."
+    },
+    {
+      "fact": "Claude 寫的 mod 載入不了的 session：沒有人能核准（claude -p 或 dontAsk 模式）、工作區未信任、mods 被停用（--safe-mode、--bare、disableAllHooks 或組織的 managed settings）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Nobody is there to approve: the session can’t show you a prompt, as in a claude -p run or dontAsk mode The workspace isn’t trusted: you haven’t accepted the trust prompt for the directory Mods are disabled: you started with --safe-mode or --bare, you set disableAllHooks, or your organization’s managed settings block it"
+    },
+    {
+      "fact": "hooks/hooks.json 的 modules 欄寫程式檔路徑，有這個欄位才讓一個 plugin 成為 mod。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The modules key in that file gives the path to your code, and having it is what makes the plugin a mod."
+    },
+    {
+      "fact": "register(on)：mod 載入時 Claude Code 呼叫檔案匯出的 register 函式並傳入名為 on 的函式；每呼叫一次 on 就為它指名的事件註冊一個事件處理函式（hook）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When the mod loads, Claude Code calls the register function the file exports and passes it a function named on. Each call to on registers an event handler, called a hook, for the event it names."
+    },
+    {
+      "fact": "--plugin-dir：用這個旗標啟動 Claude Code，可以不安裝、只在一個 session 載入一個 plugin 目錄（例如 claude --plugin-dir ./first-mod）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Start Claude Code with the --plugin-dir flag, which loads a plugin directory for one session without installing it: claude --plugin-dir ./first-mod"
+    },
+    {
+      "fact": "每個事件函式拿到三個參數：$（mods API，所有對外的方法，分成 $.ui、$.command 等命名空間）、e（事件的輸入，純資料）、next（把事件交給其他 mods、再交給 Claude Code 原本行為並傳回結果的函式）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The mods API, named $: every method a mod can call to reach outside itself, in namespaces such as $.ui and $.command The event, named e: the event’s input as plain data, such as a tool call’s name and arguments The next handler, named next: a function that passes the event on to the other mods and then to Claude Code’s own behavior, and returns the result"
+    },
+    {
+      "fact": "熱重載：Claude Code 監看以 --plugin-dir 載入的目錄，裡面的檔案一改就熱重載 hooks module。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude Code watches a directory loaded with --plugin-dir and hot-reloads the hooks module when a file in it changes."
+    },
+    {
+      "fact": "事件與方法會隨版本改變；Claude Code 為你的版本寫出的型別宣告檔與文件頁不一致時，以型別檔為準（文件自己這樣說）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The events and methods can change between releases, so trust these files over any page, this one included, when they disagree."
+    },
+    {
+      "fact": "claude plugin validate 的輸出：hooks: 一行列出處理的事件與括號裡的篩選條件，calls: 一行列出呼叫的每個 mods API 方法。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The hooks: line lists the events your module hooks, each with its filter in braces. The calls: line lists every mods API method it calls."
+    },
+    {
+      "fact": "claude plugin test：可以替 mod 寫自動化測試，在 shell 執行，不需要 session、登入或網路。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You can write automated tests for a mod and run them from your shell with claude plugin test, with no session, sign-in, or network."
+    },
+    {
+      "fact": "分享給所有人：公開 marketplace 的 repo，或把 plugin 送交「Anthropic’s directory」（文件用這個詞，部落格用「Claude directory」，各自照寫）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/create",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Anyone: make your marketplace’s repository public, or submit the plugin to Anthropic’s directory"
+    },
+    {
+      "fact": "管理頁的讀者是部署 managed settings 的人（檔案、MDM 或 claude.ai 管理主控台）；mods 在 Claude Code v2.1.287 以上預設開啟。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This page is for the person who deploys managed settings for Claude Code, whether as a file, through MDM, or from the claude.ai admin console. Mods are on by default in Claude Code v2.1.287 and later."
+    },
+    {
+      "fact": "allowManagedModsOnly 的位置：它是內建 guard（Claude Code 在每個使用者安裝的 mod 之前載入的政策 mod）上的選項，寫在 managed settings 的 pluginConfigs 底下、以 cc-plugin-sec-default@builtin 為鍵。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To keep every mod your users bring from loading, set the allowManagedModsOnly option on the built-in guard, a policy mod that Claude Code loads ahead of every mod a user installs. The option goes in managed settings under pluginConfigs, keyed by cc-plugin-sec-default@builtin:"
+    },
+    {
+      "fact": "allowManagedModsOnly 的效果：使用者帶來的 mods 都不載入，包括使用者安裝的 plugin 裡的 mod、--plugin-dir 載入的 mod、Claude 在 session 裡寫的 mod。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "No mod a user brings loads: that covers a mod in a plugin the user installed, a mod loaded with --plugin-dir, and a mod Claude wrote during a session"
+    },
+    {
+      "fact": "設了 allowManagedModsOnly，使用者其他的自訂照常：設定檔裡的 hooks、status line、/goal 不受影響。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Users’ other customizations keep working: their hooks in settings files, status lines, and /goal aren’t affected"
+    },
+    {
+      "fact": "sec-default 的載入條件：電腦有 managed settings，或使用者以 Team 或 Enterprise 方案登入 Claude Code，兩者之一成立就載入；用 API key 或透過 Amazon Bedrock、Google Cloud’s Agent Platform、Microsoft Foundry 驗證的使用者，只在有 managed settings 的電腦上才有。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The guard loads when either of these is true: The machine has managed settings The user is signed in to Claude Code with a Team or Enterprise plan A user who authenticates with an API key, or through Amazon Bedrock, Google Cloud’s Agent Platform, or Microsoft Foundry, gets the guard only on a machine that has managed settings."
+    },
+    {
+      "fact": "sec-default 守的範圍：使用者的 mod 不能改變受管 hooks 收到或決定的內容、系統提示、受管的 CLAUDE.md 與其他受管指示、任何 mod 讀到的設定值，以及受管 MCP server 的工具與描述。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The guard protects what you manage. A user’s mod can’t change what your managed hooks receive or decide, the system prompt, your managed CLAUDE.md and other managed instructions, what any mod reads as settings, or the tools and descriptions of your managed MCP servers."
+    },
+    {
+      "fact": "sec-default 不守的範圍：除此之外都允許，guard 不加其他限制；使用者的 mod 仍能讀寫檔案、起程式、連網路、改寫工具呼叫與提示、拒絕工具呼叫、核准原本會跳提示的呼叫、畫介面，全部以該使用者的權限。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Everything else is allowed. The guard adds no other restrictions. A user’s mod can still read and write files, start processes, make network requests, rewrite tool calls and prompts, deny a tool call, approve one that would otherwise prompt, and draw in the interface, all with that user’s permissions."
+    },
+    {
+      "fact": "deny 規則：guard 有載入的地方，使用者的 mod 不能核准 deny 規則拒絕的呼叫（不論規則寫在哪個設定檔）；受管設定裡 PreToolUse hook 的封鎖也是最終的；兩者都只適用於 Claude 的工具呼叫。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Where the guard loads, a user’s mod can’t approve a call that a deny rule refuses, whichever settings file holds the rule. A block from a PreToolUse hook in managed settings is final too. Both apply to Claude’s tool calls."
+    },
+    {
+      "fact": "deny 規則只管 Claude 的工具呼叫，不管 mod 自己的 $.fs 與 $.process：即使 Read(.env) 被拒，mod 仍能用 $.fs.read 讀那個檔，或啟動會讀它的程式。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Neither applies to a mod’s own $.fs and $.process calls: with Read(.env) denied, a mod can still read that file with $.fs.read or start a program that does."
+    },
+    {
+      "fact": "在 auto 模式下，mod 核准的呼叫不經 classifier 檢查就執行。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In auto mode, a call the mod approves runs without a classifier check."
+    },
+    {
+      "fact": "settings hooks 沒有被淘汰：設定檔與 plugin 的 hooks/hooks.json 裡的 command、HTTP、prompt、agent hooks 照舊執行，和 mods 並行。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Settings hooks keep working. Command, HTTP, prompt, and agent hooks in settings files and in plugins’ hooks/hooks.json run as before, alongside mods. Nothing about them is deprecated."
+    },
+    {
+      "fact": "網路政策涵蓋 mod 用 $.http.fetch 發的請求，但不涵蓋 mod 用 $.process.run 啟動的程式，那個程式以使用者自己的存取權連網。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Network policy covers $.http.fetch. If your organization turns off web fetching, or nonessential network traffic is turned off for the session, Claude Code refuses a network request that a mod makes with $.http.fetch. The policy doesn’t cover a program the mod starts with $.process.run. That program reaches the network with the user’s own access."
+    },
+    {
+      "fact": "這些管控都不是沙盒：被允許的 mod 以使用者身分、帶著使用者對檔案、程式與網路的存取權執行。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "None of these controls sandboxes a mod. A mod you allow runs as the user, with the user’s access to files, processes, and the network."
+    },
+    {
+      "fact": "唯一可寫的用量事實：calls: 行出現 $.model.complete，代表 mod 用使用者的方案或 API key 呼叫模型（照寫、歸因到文件；不寫價格）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "$.model.complete Uses the user’s plan or API key for model calls"
+    },
+    {
+      "fact": "disableAllHooks（管理者用）：最廣的設定；在 managed settings 裡會停掉每個已安裝 plugin 裡的 mods（包括組織自己的），並關掉設定檔裡所有 hook，連受管的 PreToolUse hook 也不再擋任何東西；自訂 status line 與 /goal 也停。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "disableAllHooks: the widest setting. In managed settings, it stops the mods in every installed plugin, yours included, and turns off every hook in settings files, so a PreToolUse hook in your managed settings no longer blocks anything. Custom status lines and /goal stop working too."
+    },
+    {
+      "fact": "disableSideloadFlags：啟動時拒絕 --plugin-dir 與 --plugin-url，並讓 Claude 在 session 裡寫的 mods 不能載入；也會拒絕 --agents 與 --mcp-config。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "disableSideloadFlags: rejects --plugin-dir and --plugin-url at startup, and keeps mods Claude writes during a session from loading. The setting also rejects --agents and --mcp-config."
+    },
+    {
+      "fact": "prependPlugins 與 appendPlugins：列在 prependPlugins 的組織 mod 比任何使用者的 mod 先看到每個事件、最後看到結果，可以改寫、拒絕事件或跳過使用者的 mods；列在 appendPlugins 的在所有使用者 mods 之後，只看到它們傳下來的事件。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "prependPlugins: your mod sees every event before any user’s mod and every result after. It can change the event, refuse it, or skip the users’ mods. appendPlugins: your mod runs after every user’s mod, so it sees only the events those mods pass on, in the form they pass them"
+    },
+    {
+      "fact": "在 managed settings 設了 prependPlugins，清單就取代預設順序，要把 sec-default@builtin 寫進去才保留內建 guard（與部落格「add sec-default to your list」同一件事）。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The list replaces the default: when you set prependPlugins in managed settings, name sec-default@builtin in it to keep the built-in guard."
+    },
+    {
+      "fact": "內建於 Claude Code 的 mods（例如 AGENTS.md 支援）不受上述管理設定影響，各自有開關。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Mods built into Claude Code, such as AGENTS.md support, aren’t affected by these settings. Each has its own switch."
+    },
+    {
+      "fact": "政策 mod：要允許部分使用者的 mods、拒絕其他，或記錄 mods 做了什麼時，才需要自己寫政策 mod；只想全擋就設 allowManagedModsOnly。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To keep every user’s mod out, you don’t need a mod of your own. Set allowManagedModsOnly. Write a policy mod when you want to allow some users’ mods and refuse others, or to record what mods do."
+    },
+    {
+      "fact": "組織的 mod 不保證一直在：執行已安裝 mods 的 worker thread 崩潰三次，Claude Code 會卸下所有非內建 mods（包括組織的），直到使用者執行 /reload-plugins 或開新 session。",
+      "url": "https://code.claude.com/docs/en/plugins/mods/admin",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If the worker thread that runs installed mods crashes three times, Claude Code unloads every mod that isn’t built in, including yours, until the user runs /reload-plugins or starts a new session."
+    }
+  ],
+  "not_said": [
+    "價格與方案：四條 sources[] 沒有寫 mods 要另外付費或任何價格，也沒有逐一寫 Free、Pro、Max 方案能不能用。以詞界查 Free、Pro、Max、price 在四頁都是 0 次（以 X 查核到 2026-10-04 未見）；部落格的「pricing」3 次都在導覽列。Team 與 Enterprise 只出現在 sec-default 的載入條件與管理方式。FAQ 若有「個人方案能不能用」，答「部落格只說 CLI 與 desktop app 都能用，方案官方未說明」，不可推論某方案不能用。",
+    "地區：以詞界查 Taiwan 在四頁 0 次（查核到 2026-10-04 未見）；四頁也沒有列任何地區限制。正文只能寫「公告沒有列出地區限制」，不可寫「台灣已開放」。",
+    "beta／preview：以詞界查 beta、preview、research preview 在四頁 0 次（查核到 2026-10-04 未見）；「early access」只出現在 overview 與 admin 各 1 次，都是在說 CLAUDE_CODE_ENABLE_FUNCTION_HOOKS 那個舊變數。部落格寫「available today」。正文不要寫「beta」「預覽」，也不要自己加「正式版（GA）」。",
+    "取代或淘汰：四頁沒有任何一句說 mods 取代 settings hooks，或 settings hooks 將被淘汰；admin 頁反而寫「Nothing about them is deprecated」。部落格只說 hooks 不能改寫事件、畫新介面、取代功能，mods 可以。",
+    "沙盒：四頁沒有任何一句說 mods 有沙盒或隔離；部落格、overview、admin 三頁都明寫 aren’t sandboxed（admin 另寫 None of these controls sandboxes a mod）。注意：不在 sources[] 的 claude.dev 教學寫「The module runs in a sandbox of its own, with no DOM and no Node」，那是指模組的執行環境沒有 DOM 與 Node，不是安全隔離，正文不引用（見 unverified_or_excluded 第 3 條）。",
+    "Claude Marketplace：四頁正文都沒有把 mods 與 9 月 23 日的 Claude Marketplace 連起來。以「Claude Marketplace」查，部落格頁 5 次全部在頁尾 Related posts 的那則 9/23 文章標題；三個文件頁 0 次（查核到 2026-10-04 未見）。",
+    "GitHub 設計討論：部落格正文文字只寫「We shared the design for mods on GitHub」，沒有寫 repo 名或編號（編號只在連結的 href 裡，見 unverified_or_excluded 第 1 條）。",
+    "作業系統：四頁沒有列支援的作業系統清單（以詞界查 Windows、Linux、macOS 在四頁 0 次，查核到 2026-10-04 未見；create 頁的建立目錄步驟有 Bash or Zsh 與 PowerShell 兩種寫法）。正文不寫「支援 Windows／macOS／Linux」。",
+    "生態數量：四頁沒有寫 directory 或任何 marketplace 裡目前有多少個含 mod 的 plugin，也沒有寫有多少開發者參與設計討論。不寫任何數量。",
+    "VS Code 與雲端：部落格沒有提 VS Code、claude -p、Agent SDK、Remote Control 或雲端 session（以 VS Code、Remote Control、cloud session 查部落格 0 次，查核到 2026-10-04 未見）；這些只在 overview 的 Where mods run 表，照那張表寫並歸因到文件。",
+    "時程：部落格說「plan to move more built-in features to mods over time」，四頁沒有寫哪些功能、什麼時候。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Anthropic 發表前放上 GitHub 徵求意見的設計討論，網址是 https://github.com/anthropics/claude-code/issues/91870。",
+      "seen_where": "公告頁 https://claude.com/blog/claude-code-mods 的正文連結 href（錨點文字「shared the design for mods on GitHub」），2026-10-04 讀到。",
+      "why_excluded": "網址來自 Anthropic 自己的頁面、不是猜的，但研究代理打開時 github.com 回 HTTP 403、378 bytes（本 session 的出口代理不放行 github.com HTML，不是 GitHub 拒絕），沒有看到 issue 的內容、標題、日期或回應數。依協調者規則（要打開看到內容才能寫網址），正文只寫「Anthropic 表示發表前在 GitHub 公開設計徵求意見」，不寫網址與編號。若協調者能從其他環境打開並確認是 mods 的設計討論，可再決定是否加連結（它不在 sources[]）。"
+    },
+    {
+      "claim": "限制數字：一個 hook 對一個事件的執行時間 10 秒（不含 next 與 mods API 呼叫的時間，$.clock.sleep 除外）；.catch handler 1 秒；所有 session.end hooks 合計 1.5 秒；$.store 總共 4 MiB 的 JSON；$.fs.read／$.fs.write 單檔 4 MiB；$.ui.toast 顯示 4 秒；$.model.complete maxTokens 預設 1024。",
+      "seen_where": "https://code.claude.com/docs/en/plugins/mods/reference 的 Limits 表（2026-10-04，200、565,214 bytes）。讀到的值（A 版連續字串）：「A hook’s own execution time for one event, not counting time inside next or a mods API call other than $.clock.sleep 10 seconds」、「$.store 4 MiB of JSON in total」、「$.ui.toast Shown for 4 seconds unless you pass { timeoutMs }」。",
+      "why_excluded": "reference 不在 sources[]（上限 4 條，取捨見 sourcing_notes），四條 sources[] 裡沒有任何一個限制數字（以「10 seconds」查四頁 0 次）。DELTA-4-11 第 4 條第 11 項說限制「要寫就」逐字對 reference，屬於可選。正文不寫限制數字；若協調者決定要寫，必須先把 reference 換進 sources[]，並標明「截至文件 v2.1.287」。"
+    },
+    {
+      "claim": "claude.dev 教學的說法：Token Weather 約 80 行；context 使用量分級（under 25% Clear、25–49% Cloudy、50–74% Showers、75–89% Storm、90% and up Compact soon）；「The module runs in a sandbox of its own, with no DOM and no Node, so everything outside it goes through $.」；hooks.json「A mod has exactly one」module。",
+      "seen_where": "https://claude.dev/blog/getting-started-with-claude-code-mods/（2026-10-04，200、285,665 bytes），公告頁的「read our guide to building your first mod」與「getting started guide」連結，頁上印 PUBLISHED Oct 01, 2026。",
+      "why_excluded": "不在 sources[]。最危險的是「sandbox of its own」：它講的是模組的 JS 執行環境沒有 DOM 與 Node，跟部落格與文件的「aren’t sandboxed」（mod 以使用者權限碰檔案、程式、網路）是兩件事，正文若引用很容易被讀成「mods 有沙盒」。Token Weather 的百分比分級是教學作者設計的範例值，不是產品規格。都不寫。"
+    },
+    {
+      "claim": "GitHub 上的型別檔 mods/types/claude-code.d.ts 第一行是「// Written by Claude Code 2.1.277.」，第四行是「// EARLY ACCESS: this surface may change between releases without notice.」。",
+      "seen_where": "https://raw.githubusercontent.com/anthropics/claude-code/main/mods/types/claude-code.d.ts（2026-10-04，200、507,444 bytes）；create 與 reference 頁連到它的 github.com blob 網址。",
+      "why_excluded": "不在 sources[]，而且 2.1.277 比文件寫的門檻 v2.1.287 舊；reference 頁自己說「The copy on GitHub can be older than the Claude Code version you have installed」。正文版本只寫文件的 v2.1.287 以上，不寫 2.1.277，也不因為那行 EARLY ACCESS 把 mods 寫成早期測試。"
+    },
+    {
+      "claim": "範例與內建 mods 的 plugin.json 細節：blast-radius 的描述是「Holds risky shell commands (rm -rf, git reset --hard, git clean, force push, migrations)…」；三個範例的 author 是「Claude Code DevRel」；四個內建的 author 是「Anthropic」；sec-default 的描述說它「adds no policy of its own; one managed option, allowManagedModsOnly, limits mods to the organization's」。",
+      "seen_where": "raw.githubusercontent.com 上 anthropics/claude-code-playground 與 anthropics/claude-code 各目錄的 .claude-plugin/plugin.json（2026-10-04，全部 200）。這些路徑是依 reference 的必要檔表組出、只用來確認目錄存在。",
+      "why_excluded": "不在 sources[]，而且是組出來的路徑。blast-radius 攔哪些命令，正文照 overview 寫「例如 rm -rf 或 force push」（such as，不是全清單），不寫 git reset --hard、git clean、migrations。"
+    },
+    {
+      "claim": "Claude directory 裡已經有哪些含 mods 的 plugin、送交審核的流程。",
+      "seen_where": "公告頁連結 https://claude.ai/directory（2026-10-04，HTTP 403、5,512 bytes，Cloudflare「Just a moment...」挑戰頁）與 https://claude.ai/directory/manage（沒有抓）。",
+      "why_excluded": "沒讀到正文。正文只照部落格寫「可以從 Claude directory 安裝、包成 plugin 送交 directory」，不寫目錄裡有什麼、有幾個、審核多久。"
+    },
+    {
+      "claim": "reference 設定表的其他項目：CLAUDE_CODE_PLUGIN_DIRS（給不能傳旗標的 app 載入 plugin 目錄）、CLAUDE_CODE_PLUGIN_DIR_WATCH（長時間非互動 session 存檔即重載）、pluginConfigs 的 first-mod@inline 寫法；以及 allowModsToOverrideDenyRules 的完整說明。",
+      "seen_where": "https://code.claude.com/docs/en/plugins/mods/reference 的 Settings and environment variables 表（2026-10-04）。allowModsToOverrideDenyRules 在 admin 頁也有（「unless you set allowModsToOverrideDenyRules」與 guard 選項表）。",
+      "why_excluded": "兩個環境變數只在 reference，不在 sources[]，而且超出新聞的範圍（屬教學）。allowModsToOverrideDenyRules 可以寫（admin 頁有），但建議只在第五節一句帶過「管理者也可以設定讓 mod 推翻 deny 規則」，不展開。"
+    },
+    {
+      "claim": "allowManagedHooksOnly 的細節（只讓組織的 mods 與內建 mods 載入，也擋使用者設定檔裡的 hooks）。",
+      "seen_where": "https://code.claude.com/docs/en/plugins/mods/admin 的 Choose how much to allow（2026-10-04）。",
+      "why_excluded": "在 sources[] 裡、可以寫，但 DELTA-4-11 第 3 節第 5 節列的四個開關不含它，而且它會擋使用者的設定檔 Hook，容易和 allowManagedModsOnly 混淆。建議不寫，或只寫「另有範圍更大的 allowManagedHooksOnly，詳見文件」。"
+    },
+    {
+      "claim": "9 月 23 日的 Claude Marketplace 與 9 月 25 日的「Build plugins for Claude」兩則公告的內容。",
+      "seen_where": "公告頁頁尾 Related posts 的標題（2026-10-04）。",
+      "why_excluded": "那兩頁沒有讀，而且是版面推薦，不是本文內容。正文不提 Claude Marketplace，不把它和 Claude directory 或 Anthropic’s directory 畫上等號。"
+    },
+    {
+      "claim": "協調者列為禁止來源的媒體與整合站（smartscope.blog、aitmpl.com、digitalapplied.com、neurycode.com、blog.4sapi.com、KilimcininKorOglu/claude-code-mods）上的說法，包括教讀者設 CLAUDE_CODE_ENABLE_FUNCTION_HOOKS=1。",
+      "seen_where": "沒有讀；只見於 DELTA-4-11 第 2 節的描述。",
+      "why_excluded": "依規格不讀、不引用。文件明寫 v2.1.287 以上忽略那個變數（verified_facts 有兩條）。"
+    }
+  ],
+  "must_not_write": [
+    "（DELTA 第 4 條第 1 項）不混用兩種 hook：第一節講清楚「Claude Code 把兩種都叫 hooks」之後，固定用「設定檔 Hook」（settings hook，設定檔裡的 PreToolUse／PostToolUse 等）與「mod 的事件函式」（mod 的 hook）兩個詞，全文不再單獨寫「Hook」。不寫「站上 Hook 教學教的就是 mods」。",
+    "（第 2 項）不寫「mods 取代 hooks」「hooks 將被淘汰」「改用 mods 取代設定檔 Hook」。只寫文件「Nothing about them is deprecated」（設定檔 Hook 照常運作、與 mods 並行）與部落格「hooks 做不到的，mods 做得到」。",
+    "（第 3 項）不寫「mods 在沙盒裡執行」「mods 有隔離」「開了 sandboxing 就安全」。寫：mods 沒有沙盒；開了 sandboxing 也只隔離 Claude 執行的 Bash 命令，mod 自己啟動的程式在沙盒外。也不引用 claude.dev 教學那句「runs in a sandbox of its own」。",
+    "（第 4 項）不寫「sec-default 是企業版才有」「只有 Enterprise 有」。寫：電腦有 managed settings，或以 Team／Enterprise 方案登入，兩者之一就載入；用 API key 或透過 Amazon Bedrock、Google Cloud、Microsoft Foundry 的人，只在有 managed settings 的電腦上才有。",
+    "（第 5 項）不寫「sec-default 會擋惡意 mod」「有了 sec-default 就安全」「sec-default 限制 mod 讀檔或連網」。它只擋使用者的 mod 改管理者管的東西（受管 hooks、系統提示、受管 CLAUDE.md 與其他受管指示、mod 讀到的設定、受管 MCP server 的工具與描述）與核准 deny 規則拒絕的呼叫；其他都不擋。也不寫「deny 規則能擋住 mod 讀 .env」：deny 規則不管 mod 自己的 $.fs 與 $.process。",
+    "（第 6 項）不寫「設定 CLAUDE_CODE_ENABLE_FUNCTION_HOOKS=1 啟用 mods」或任何把這個變數當開關的句子；v2.1.287 以上不論設什麼值都忽略。版本門檻 v2.1.287 歸因到文件，不寫「部落格說」。不寫 2.1.277。",
+    "（第 7 項）不寫「所有地方都能用 mods」「VS Code 外掛不能用 mods」「雲端 session 不能用」。照 overview 表：終端機（含編輯器內建終端、JetBrains 外掛）與 Desktop app 的 Code 分頁會跑也會畫（Desktop 有些元素只限終端機）；Desktop 的 WSL session 不跑也不畫；VS Code 外掛聊天面板、claude -p、Agent SDK 會跑、不畫；雲端 session 對有送進雲端的 plugin 會跑、不畫；Remote Control 在你電腦上的 session 跑、畫面出現在你電腦上的終端機（這一點與 DELTA-4-11 第 4 條第 7 項的寫法不同，以 overview 為準，待協調者確認）。",
+    "（第 8 項）內建 mods 名稱照 /plugin 顯示：cc-plugin-agents-md、cc-plugin-diff、cc-plugin-plugin-authoring、cc-plugin-sec-default、cc-plugin-telemetry、cc-plugin-you-should-know，文件表上共六列；不寫「五個內建 mods」或任何清點數字（文件說的是 your session has 的那些）。不寫「關掉 cc-plugin-diff 就沒有 /diff」（/diff 還在，由內建版本回答）。不寫「人人都有 cc-plugin-you-should-know」（預設關閉、if available for your org）。不寫「disableAllHooks 或 --safe-mode 會關掉所有 mods」：它們不停內建 mods。",
+    "（第 9 項）不把 /plugin install token-chart@your-org 寫成真的外掛或可以照打的指令；要舉例就寫明「文件範例裡的假名字」，或改用三個真的範例 mod。",
+    "（第 10 項）三個範例 mod 照 overview：token-weather 在提示框上方畫 context window 預報、blast-radius 攔下 rm -rf 或 force push 這類高風險命令並顯示影響、replay-theater 加 /replay 重播上一輪的檔案修改。不寫 blast-radius 也攔 git reset --hard、git clean、migrations（那只在 plugin.json，不在 sources[]）。要寫「repo 照原樣分享、不提供支援」。不寫它們是內建或官方支援的功能。",
+    "（第 11 項）不寫任何限制數字（10 秒、4 MiB、4 秒、1024 tokens 等）：reference 不在 sources[]。協調者若換進 reference，最多挑兩三個並標「截至文件 v2.1.287」。",
+    "（第 12 項）部落格寫「Claude directory」、文件寫「Anthropic’s directory」，各自照寫；不寫「Claude Marketplace」「Anthropic Marketplace」，也不把 mods 和 9 月 23 日的 Claude Marketplace 連起來。",
+    "（第 13 項）「用 Claude Code 寫 Claude Code 的 mod」寫成「Anthropic 說明」的功能；不寫「本站請 Claude 寫了一個 mod」「實測熱重載」等任何本站試用的句子。",
+    "（第 14 項）不寫價格、不寫「免費」「不另收費」「省多少用量」。唯一可寫的用量事實：mod 呼叫 $.model.complete 會用使用者的方案或 API key（歸因到文件）。",
+    "（第 15 項）正文用小寫 mods，第一次出現帶中文說明（例如「mods（改寫 Claude Code 行為與介面的小型程式）」）；不寫「Code with mods」或把它寫成官方名稱。部落格頁 <title> 是「Customize Claude Code with mods in TypeScript」，h1 是「Customize Claude Code with mods」，要引公告標題時用 h1。",
+    "（第 16 項）引文照 sources[] 原樣：部落格的撇號直彎混用（we're、can't、you'd 是直的；aren’t、pipeline’s 是彎的；“security default” 是彎雙引號），文件一律彎的 ’；文件裡的 ❯、✔、· 等符號照抄。",
+    "不寫 GitHub issue 的網址或編號（91870 沒有打開），只寫「Anthropic 表示發表前在 GitHub 公開設計徵求意見」；也不寫「有 N 位開發者參與」。",
+    "不寫「mod 能改權限提示」「mod 能偽造權限對話框」：文件說 mod 改不了權限提示本身。但也不寫「mod 動不了權限」：它可以在提示出現前就核准或拒絕工具呼叫，在 auto 模式下它核准的呼叫不經 classifier 檢查。",
+    "不寫「Claude 寫的 mod 會自動載入」：要使用者核准開啟熱重載；claude -p、dontAsk、未信任的工作區、--safe-mode／--bare／disableAllHooks、組織 managed settings 封鎖時都載入不了；而且該 session 的 mods 資料夾超過 cleanupPeriodDays 會被刪，要保留得自己複製出來。",
+    "不寫「mods 需要 Node.js」「要先編譯」：文件寫不需要 Node.js、bundler 或 build step。",
+    "不寫「用 allowManagedModsOnly 也會關掉使用者的設定檔 Hook」：它不影響設定檔 Hook、status line 與 /goal。反過來，管理者在 managed settings 設 disableAllHooks 會連組織自己的 mods 與受管 PreToolUse hook 一起停掉，不要寫成「只停使用者的 mods」。",
+    "不寫「設了 prependPlugins 也一定有 sec-default」：清單取代預設，要把 sec-default@builtin 寫進去。",
+    "不寫「組織的政策 mod 一定會執行」：worker thread 崩潰三次會卸下所有非內建 mods，使用者用 --safe-mode 也會跳過它們。",
+    "不寫 mods 支援哪些作業系統、哪些地區、哪些個人方案；不寫「台灣已可使用」。",
+    "不把部落格的三個團隊例子（CI/CD 狀態、production 防護、稽核紀錄）寫成現成可裝的 mod；它們是 Anthropic 舉的「可以這樣做」的例子。生活化情境標明是編輯設計的例子。"
+  ],
+  "live_data_warnings": [
+    "四個文件頁都是活頁面，以 v2.1.287 為準（reference 頁寫「as of v2.1.287」，overview、create、admin 寫「v2.1.287 or later／and later」）；內建 mods 表、Where mods run 表、比較表、admin 的政策表與 guard 選項表每個版本都可能改。正文寫「截至查核日的文件版本」，發布當天由協調者重讀四頁，特別看內建 mods 表的列（目前六列）與 Where mods run 表 Remote Control 那一列。",
+    "GitHub 型別檔 mods/types/claude-code.d.ts 第一行寫「Written by Claude Code 2.1.277」，比文件門檻舊；reference 頁說 GitHub 那份可能比你裝的版本舊。這行會隨 repo 更新改變，不要寫進正文。",
+    "claude-code-playground 的三個範例 repo 照原樣分享、不提供支援，可能被改名、移動或刪除；發布當天確認 overview 的範例清單還是 token-weather、blast-radius、replay-theater。",
+    "公告頁的 Related posts（頁尾）是版面推薦，會換；不要拿來推論 mods 與 Claude Marketplace 的關係。",
+    "部落格說「plan to move more built-in features to mods over time」：之後可能有更多內建功能改成 mods，內建 mods 表會變長。",
+    "cc-plugin-you-should-know「if available for your org」與 cc-plugin-plugin-authoring「Unless Anthropic has turned installed mods off remotely」都表示 Anthropic 可以遠端改變可用性；不要把可用性寫成固定的。",
+    "Claude directory（https://claude.ai/directory）本次 403 沒讀到；裡面有沒有含 mods 的 plugin 會變，正文不寫目錄內容。",
+    "GitHub issue（公告頁連結）的狀態、標題可能變，本次也沒打開。",
+    "研究代理抓取時 github.com HTML 與 api.github.com 被本 session 的出口代理擋（403），用 raw.githubusercontent.com 確認目錄；查核代理若在同類環境，照 sourcing_notes 的配方重現。"
+  ],
+  "overlaps_existing_article": "站上有三篇 zh-TW 教學與本篇相鄰（只讀了 title 與 description）：claude-code-plugins-guide〈Claude Code｜Plugins 安裝與管理〉寫安裝、啟用、更新、移除外掛與作用範圍；claude-code-hooks-getting-started〈Claude Code｜建立第一個 Hook〉寫用 PostToolUse 建第一個設定檔 Hook；claude-code-plugin-team-distribution〈Claude Code｜把 Skills 與 Hooks 包成可版本管理的 Plugin〉寫把 Skills 與 Hooks 包成 plugin 給同事安裝與升級。三篇寫的都是 settings hooks 與一般 plugin，沒有 mods。分工：本篇是新聞，只回答 mods 是什麼、能做什麼、用在哪、怎麼開始，不教 plugin 的安裝流程與作用範圍（一句帶過「mods 裝在 plugin 裡，安裝方式和一般 plugin 相同」並 autolink 到 claude-code-plugins-guide），不教寫設定檔 Hook（第一節區分兩種 hook 時 autolink 到 claude-code-hooks-getting-started，並明說那篇寫的是設定檔 Hook），不重寫 first-mod 教學的逐步程式（DELTA-4-11 第 7 節另開票做教學課）。這三篇只有 zh-TW，其他四語不掛連結。站上 ai-news-* 到 2026-10-03 沒有任何一篇寫 plugins、marketplace 或 mods（依 DELTA-4-11 第 1 節，研究代理未另行重數）。",
+  "corrections_applied": [],
+  "editorial_brief": "讀者是在台灣用 Claude Code 的開發者，其次是替團隊管 Claude Code 設定的管理者。第一段：Anthropic 在 2026 年 10 月 1 日於 Claude 部落格發表 mods（改寫 Claude Code 行為與介面的小型程式）：用 TypeScript 或 JavaScript 寫的函式，裝在 plugin 裡，在 Claude Code 自己的行程內執行，部落格說可在 CLI 與 desktop app 使用。第二段：查核日 2026 年 10 月 4 日；本站沒有安裝或執行任何 mod，以下全部來自 Anthropic 的公告與文件。\n\n一、mods 是什麼：用文件的定義（plugin 加上 JavaScript／TypeScript 事件處理函式）；三個檔案（.claude-plugin/plugin.json、hooks/hooks.json 的 modules、hooks/register.js），hooks.json 有 modules 才算 mod；register(on) 用 on 註冊事件函式；每個函式拿到 $（mods API）、e（事件資料）、next（交給下一個 mod 與 Claude Code 原本的行為）；三種處理：觀察、改寫、接手（Observe／Rewrite／Answer）；要碰外部（檔案、程式、網路、模型、畫面）只能經過 mods API，所以能在安裝前列出它做什麼。本節一定要講清楚「Claude Code 把兩種都叫 hook」：設定檔 Hook（settings hook，站上 Hook 教學那種）與 mod 的事件函式，之後固定用這兩個詞。\n\n二、能做什麼：部落格列的能力全部歸因成「Anthropic 表示」：改寫提示、擋／改／重試工具呼叫、核准或拒絕權限、遮掉工具輸出裡的機密、修改或取代介面元素（工具結果、Claude 的提問）、加按鈕與輸入框；文件補充畫窗格與提示框上方的橫條、加不經 Claude 回合的 /command；多個 mods 依載入順序疊加（最先載入的最先看到事件、最後看到結果）；/diff 已經是 mod，可在 /plugin 關掉或換掉；Anthropic 計畫把更多內建功能改成 mods（沒有時程）。為什麼做：部落格說 hooks 不能改寫事件、畫新介面、取代功能，mods 可以——同時寫文件「設定檔 Hook 沒有被淘汰」。本節結尾放表：四欄 mod／設定檔 Hook／skill／MCP server，列「是什麼／能改什麼／能不能畫介面／寫什麼」，照 overview 比較表逐格縮短（例：是什麼＝Claude Code 行程內的函式／事件時執行的 shell 命令、HTTP 請求或提示／Claude 讀的 SKILL.md 指示／給 Claude 工具的外部程式或服務；能畫介面＝能／不能／不能／不能；寫什麼＝JavaScript 或 TypeScript／腳本加 settings.json 設定／Markdown／任何語言的伺服器）。\n\n三、用在哪：部落格的三個團隊例子（CI/CD 狀態窗格、碰 production 設定前要確認、最先載入的稽核 mod），寫成 Anthropic 舉的例子；文件的三個範例 mod（token-weather、blast-radius、replay-theater，claude-code-playground repo 照原樣分享、不提供支援）；內建 mods 照 /plugin 名稱與 overview 表（六列，含 cc-plugin-plugin-authoring；cc-plugin-you-should-know 預設關閉、視組織而定），一句帶過「部分內建 mods 的原始碼在 Claude Code repo 的 mods 目錄公開」。生活化情境（例如個人在提示框上方顯示 git 分支，這是 create 頁的例子；或一個小團隊想在跑 rm -rf 前多一道確認）標明是編輯設計的例子，不寫成本站做過。本節結尾放圖解。\n\n四、怎麼開始用：Claude Code v2.1.287 以上（文件寫，部落格沒寫），預設開啟，用 claude --version 檢查；從 Claude directory 或 /plugin 安裝含 mods 的 plugin，格式 /plugin install <name>@<marketplace>（文件範例 token-chart@your-org 是假名字）；claude --plugin-dir <目錄> 只在一個 session 載入、存檔即熱重載；請 Claude 寫：內建 plugin-authoring skill，寫到 ~/.claude/dev-mods/<session ID>/，要你核准熱重載才載入，只在該 session 有效、超過 cleanupPeriodDays 會刪，要保留就複製出來；不需要 Node.js 或 build step；安裝別人的 mod 前先跑 claude plugin validate 看 hooks: 與 calls: 兩行；claude plugin test 可以不開 session、不登入、不連網跑測試。哪裡會畫、哪裡只跑不畫：照 overview 表寫成一小段或短清單（終端機與 Desktop Code 分頁會畫；VS Code 外掛聊天面板、claude -p、Agent SDK、雲端 session 只跑不畫；Desktop 的 WSL session 不跑；Remote Control 的畫面在你電腦上的終端機）。\n\n五、安全與企業管控：先寫風險——沒有沙盒、與你同權限、能讀環境變數與設定檔裡的 API key、看到並改寫每個提示與工具呼叫、能在你被問之前核准工具呼叫（auto 模式下不經 classifier）、能用你的方案或 API key 呼叫模型；改不了權限提示本身。sec-default：載入條件（有 managed settings 的電腦，或 Team／Enterprise 登入）、守的範圍（受管 hooks、系統提示、受管 CLAUDE.md 與指示、mod 讀到的設定、受管 MCP 工具，加上不讓 mod 核准 deny 規則拒絕的呼叫）、不守的範圍（其他都不擋；deny 規則也不管 mod 自己讀檔）。管理者的四個開關：allowManagedModsOnly（擋使用者的 mods，設定檔 Hook 照跑）、disableSideloadFlags（擋 --plugin-dir、--plugin-url 與 Claude 寫的 mods）、prependPlugins／appendPlugins（組織 mod 的順序；設 prependPlugins 要把 sec-default@builtin 寫進去）、disableAllHooks（最廣，連組織的 mods 與受管 hooks 都停）；管理者設定不影響內建 mods。個人關掉：/plugin 停用單一 mod、--safe-mode 一個 session、~/.claude/settings.json 的 disableAllHooks（設定檔 Hook 與 status line 也停）；這些都不停內建 mods。CLAUDE_CODE_ENABLE_FUNCTION_HOOKS 已被忽略，提醒讀者照舊教學設過的要移除。\n\nfaq 建議（答案只能用正文寫過的）：要什麼版本（v2.1.287 以上，文件）；要不要 Node.js 或 build step（不用）；設定檔 Hook 會不會被淘汰（文件：Nothing about them is deprecated）；怎麼整個關掉（--safe-mode 或 disableAllHooks，內建 mods 不受影響）；個人方案能不能用（部落格只說 CLI 與 desktop app 都能用，方案官方未說明）；VS Code 外掛與雲端 session 能不能用（事件函式會跑、畫面不顯示）。一般 callout 一個：本站沒有實測；mod 與你同權限、沒有沙盒，只裝信得過的來源（照部落格那句歸因）。不掛 finance、沒有免責 callout。\n\n刻意不談：價格與用量比較；限制數字（reference 不在 sources[]）；first-mod 的逐步程式（另開教學票）；Claude Marketplace；GitHub 設計討論的網址與編號；媒體與整合站的說法。",
+  "hero_label": "mods：改行為也改介面",
+  "diagram": {
+    "title": "mods 的四個環節",
+    "caption": "Claude Code 的 mods 接收工具呼叫、提示與畫面等事件，以函式觀察、改寫或接手，能加窗格、按鈕與指令；在有受管設定的電腦或以 Team／Enterprise 方案登入時，內建的 sec-default 先載入。依 Anthropic 部落格與 Claude Code 文件整理，查核日 2026 年 10 月 4 日。",
+    "nodes": [
+      [
+        "事件",
+        "工具呼叫、提示、畫面"
+      ],
+      [
+        "函式",
+        "觀察、改寫或接手"
+      ],
+      [
+        "介面",
+        "窗格、按鈕、指令"
+      ],
+      [
+        "管控",
+        "先載 sec-default"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1, claude-opus-5-5)",
+    "checked_on": "2026-10-04",
+    "method": "2026-10-03 UTC 18:47（台北 2026-10-04 02:47）以 curl -sSL --compressed --max-time 60 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓 sources[] 四條（間隔 1.3 秒，請求不含任何人的姓名、email 或個資），另抓三個文件頁的 .md 版對照。四條都是 HTTP 200、0 次轉址、伺服器回 content-encoding: gzip；curl 的 size_download（線上壓縮 bytes）是 99,345／90,428／96,979／98,953，解壓後落地 532,059／526,328／656,741／646,270 bytes，與研究代理的落地檔 md5 逐位元組相同。撰稿者回報的約 9–10 萬 bytes 是壓縮後的傳輸量，不是不同版本的頁；正文完整。verbatim_quote 94 條以程式在四頁的 A／B／C／RAW 正規化文字做連續子字串比對，94/94 通過（全部在 A 版命中），url 全在 sources[]。github.com HTML 對本 session 回 403（出口代理的訊息，不是 GitHub），改用 git clone --depth 1 --filter=blob:none 列目錄：claude-code-playground（HEAD 569c5283，2026-10-01）有 claude-code/mods/token-weather、blast-radius、replay-theater；claude-code（HEAD 1c229fcd，2026-10-02）有 mods/agents-md、diff、sec-default、telemetry、types。正文、summary、FAQ、callout、表格每格與 caption、圖解 caption 與 diagram 四格、hero_label、title、description 拆成約 100 條主張逐條回原文比對；DELTA-4-11 第 4 節十六條與第 6a 節逐條掃過。紀錄在 /root/news411/agents/fc1/（fetch-log.tsv、check_quotes.py／.log、edit_pack.py、pack.diff、check0.log、check.log）。報告：docs/news-2026-batch-4/factcheck-draft/ai-news-claude-code-mods-20261001-round1.md。",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "第四節 Where mods run：原句「終端機與 Desktop app 的 Code 分頁（WSL session 除外…）會畫」讓人以為 WSL session 只是不畫；overview 表寫 WSL session「No, because plugins aren't available in WSL sessions」（不跑也不畫）。改寫成獨立一段，並補上漏掉的 Remote Control 一列（Yes, in the session on your machine／In the terminal on your machine）與 Code 分頁畫不出 terminal-only 元素的但書。",
+      "第三節內建 mods：原段只寫 cc-plugin-diff 與 sec-default。補上 Installed 分頁、cc-plugin-you-should-know 預設關閉且「if available for your org」才列出（DELTA 第 3 節必寫、第 4 節第 8 條），以「例如」列名，不寫清點數字。",
+      "第二節 /diff：「可在 /plugin 關掉或換掉」把 in /plugin 套到 replace 上，改為「可在 /plugin 關掉，或換成自己的版本」，並補 overview「/diff stays, and Claude Code's built-in version of the command answers it」。",
+      "第四節安裝格式：原句把「/plugin install 加 plugin 名稱、@ 與 marketplace 名稱」掛在「部落格說」底下；那是 overview 的句子，改歸因到文件。",
+      "第五節 deny 規則：「管不到 mod 自己的 $.fs」補成「$.fs 與 $.process 呼叫」（admin：Neither applies to a mod's own $.fs and $.process calls）；「核准被 deny 規則拒絕的呼叫」→「工具呼叫」（Both apply to Claude's tool calls）；「受管設定檔 Hook」→「受管設定檔 Hook 收到與決定的事」（what your managed hooks receive or decide）；API key／Bedrock 那句「登入」→「用…的人」（authenticates）。",
+      "第五節管理者開關：disableSideloadFlags 補「Claude 在 session 裡寫的 mods」（keeps mods Claude writes during a session from loading）；managed disableAllHooks 補「受管的設定檔 Hook 也停」（turns off every hook in settings files, so a PreToolUse hook in your managed settings no longer blocks anything）。",
+      "第五節個人關閉：個人 disableAllHooks 補「組織管理的照常」（What your organization manages keeps running）；--safe-mode 寫清楚是停一個 session 的已安裝 mods。",
+      "第五節沙盒：補「mod 啟動的程式在沙盒外」（a process that a mod starts runs outside it）；「讀環境變數與設定檔裡的 API key」→「讀環境變數與設定檔（包括裡面的 API key）」，原句可讀成只讀 API key。部落格那句同權限提醒留在 callout（已歸因），正文這段改用文件的 aren't sandboxed。",
+      "第三節團隊例子：刪「這些是可以這樣做的例子，不是現成的產品」（否定句超出來源；部落格只說 Teams can also use mods to build their own controls），改成「三個團隊可以用 mods 自己做的例子」；production 那例照原文改成「指令碰到 production 設定前」。",
+      "第一節：「處理方式有三種」→「文件列出三種處理方式」（部落格另有 wrap，不是封閉清單）；「多個 mods 依載入順序疊加」→「掛同一個事件時依載入順序執行」（原文 When several mods hook the same event）；「只有 mod 能畫介面」→「下表四者中只有 mod 能畫介面」（status line 也在介面上，範圍限於比較表）。",
+      "summary 第 2 點加「Anthropic 說」，「文件寫兩者並行」改成正文寫得到的「文件寫設定檔 Hook 照舊執行，沒有被淘汰」；第 3 點補 sec-default 的載入條件，「呼叫」→「工具呼叫」。FAQ 3 同步刪「和 mods 並行」。",
+      "callout「內建 mods 表與各項設定會隨版本變動」→「可能隨版本變動」（create：can change between releases）；description 把「CLI 與 desktop app 能用」歸因給 Anthropic。",
+      "為了把段落字數壓回 3,000 以內（加了上述事實後一度 3,511）刪了不帶事實的句子：第一段「寫工具的開發者與替團隊管設定的管理者最相關」與重複的版本門檻（第四節保留）、第二段「也不是訂閱或購買建議」、第四節部落格的「Claude 可以寫 TypeScript 並熱重載」（同段保留文件版本）、第一節「用詞先分開：」。沒有刪任何但書或限定詞。改後 2,999 字。"
+    ],
+    "checked_and_correct": [
+      "公告日 2026-10-01：部落格印 Date October 1, 2026，沒有時刻；正文不寫時刻、不換算。",
+      "title、hero_label、diagram 四格與 caption：mods 用 TypeScript 改行為與介面、裝在 plugin 裡；事件（工具呼叫、提示、畫面）、函式（觀察、改寫或接手）、介面（窗格、按鈕、指令）、管控（sec-default 先載入，caption 帶載入條件）都對得到部落格與 overview。",
+      "三個檔案路徑、modules 欄（having it is what makes the plugin a mod）、register(on)、$／e／next 三個參數、Observe／Rewrite／Answer。",
+      "兩種 hook 的用詞：第一節講清楚後全文固定用「設定檔 Hook」與「mod 的事件函式」；沒有任何一句寫 mods 取代或淘汰 settings hooks（admin：Nothing about them is deprecated）。",
+      "部落格列的能力（改寫提示；擋、改寫、重試工具呼叫；核准或拒絕權限；遮掉機密；修改或取代介面、加按鈕與輸入框）都歸因給 Anthropic；文件補的窗格、橫條、/command。",
+      "比較表 4 欄 × 4 列每一格逐格對 overview 比較表的 What it is／What it can change／What you write；Can it draw 一列移到正文（Yes No No No）。caption 的查核日一致。",
+      "三個範例 mod 的名稱與功能、claude-code-playground、shared as they are, without support；git clone 確認三個目錄存在。",
+      "v2.1.287 歸因到文件、部落格沒寫；預設開啟；claude --version；CLAUDE_CODE_ENABLE_FUNCTION_HOOKS 沒出現。",
+      "Claude directory 照部落格逐字；正文沒有 Anthropic's directory、Claude Marketplace、token-chart。",
+      "Node.js／build step、--plugin-dir 一個 session 與熱重載、plugin-authoring skill、~/.claude/dev-mods/、核准、cleanupPeriodDays、claude plugin validate。",
+      "sec-default 載入條件（managed settings 的機器或 Team／Enterprise 登入；API key、Bedrock、Google Cloud、Foundry 只在 managed settings 機器）、其他都允許、prependPlugins 要列 sec-default@builtin、managed disableAllHooks 連組織 mods 也停、--safe-mode 與 disableAllHooks 不停內建 mods。",
+      "沒有沙盒或隔離的說法；sandboxing 只隔離 Claude 執行的 Bash；改不了權限提示；$.model.complete 用使用者方案或 API key 是唯一的用量事實且歸因到文件。",
+      "界線：沒有價格、購買或訂閱建議、推薦語氣；沒有 beta／GA／地區的推定；「本文」0 次、「這一篇」1 次；只有一個 info callout；topics 不含 finance；checked_on 2026-10-04 四處一致；兩個結尾連結與 related 未動。"
+    ],
+    "left_for_the_owner": [
+      "段落字數已到 2,999／3,000。DELTA-4-11 第 3 節列的 claude plugin test、cc-plugin-agents-md／cc-plugin-telemetry／cc-plugin-plugin-authoring 的列名，以及 Anthropic 在 GitHub 徵求設計意見那句，這一輪因字數上限沒有寫（plugin-authoring 以 skill 名出現在第四節）。要寫就得放寬上限或另刪敘述；第二輪不要為了補它們刪但書。",
+      "四個文件頁是活頁面（內建 mods 表、Where mods run 表、admin 的開關），發布當天重讀，特別看 Remote Control 那一列與內建 mods 的列。",
+      "github.com HTML 與 API 對本環境的出口代理回 403（訊息是 GitHub access … not enabled for this session）；git clone 走得通，目錄已確認。若要放 repo 連結，協調者決定。",
+      "正文把 Google Cloud's Agent Platform 寫成 Google Cloud（DELTA 第 4 節第 4 條的寫法）；要不要寫全名由站主決定。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2, claude-opus-5-5)",
+      "checked_on": "2026-10-04",
+      "method": "2026-10-03 UTC 19:02（台北 2026-10-04 03:02）以 curl -sSL --compressed --max-time 60 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓 sources[] 四條與三個文件頁的 .md 版（UA 只有網站與站方信箱，請求、標頭、查詢字串沒有任何人的姓名、email 或個資）：四條 HTTP 200、0 次轉址，解壓後 532,059／526,328／656,741／646,270 bytes，md5 與第一輪、研究代理逐位元組相同。verbatim_quote 94 條以程式在四頁的 A／B／C／RAW 正規化文字做連續子字串比對，94/94 通過，沒有含 ...／…／| 的拼接引文，url 全在 sources[]。git clone --depth 1 --filter=blob:none 確認 claude-code-playground（HEAD 569c528）的 claude-code/mods 有 token-weather、blast-radius、replay-theater。第一輪改動的 19 處與新寫的每一句逐句回原文；回掃第一輪為字數刪掉的五句；summary、FAQ、圖解四格、hero_label 對正文；界線與兩篇既有教學的 title／description 用詞比對。紀錄在 /root/news411/agents/fc2/（fetch-log.tsv、check_quotes.py／.log、edit_pack.py、pack.diff、check.log）。報告：docs/news-2026-batch-4/factcheck-draft/ai-news-claude-code-mods-20261001-round1.md 的「第二輪」一節。",
+      "claims_checked": "約 60（第一輪改動的 19 處所在段落與新寫的句子，逐子句計）",
+      "quotes_checked": 94,
+      "edits_to_the_pack": [
+        "第三節內建 mods：「見下一節的 cc-plugin-sec-default」指錯節，sec-default 在第五節（安全與企業管控），下一節是「怎麼開始用」；改為「最後一節的」。",
+        "第一節：定義兩種 hook 的段落原本排在已經用了「事件函式」的 register(on) 段之後；移到 register(on) 段之前，並把「把兩種都叫 hooks。」改成冒號接兩個定義，讓第一次出現「事件函式」之前就分清楚。",
+        "第四節 Where mods run：「終端機與 Desktop app 的 Code 分頁會畫」沒有主詞，改為「mod 的介面畫在終端機與 Desktop app 的 Code 分頁」（overview：only the terminal and the Desktop app show a mod's panes, bands, and replaced rows）。",
+        "第五節個人關閉：--safe-mode 補「其他自訂也停」（overview：which also disables your other customizations），與 disableAllHooks 的副作用並列；FAQ 4 同步。",
+        "summary 第 5 點：「會隨版本更新」→「可能隨版本變動」（create：can change between releases），與第一輪改過的 callout 一致。",
+        "FAQ 5：「官方未說明」限縮到「這裡引用的部落格與三頁文件，到查核日 2026 年 10 月 4 日都沒有逐一寫」。",
+        "FAQ 1 與 FAQ 4 收回正文沒有寫的字（「太舊就更新」「所有 session」），FAQ 4 補「組織管理的照常」。",
+        "為了上面兩處補字：刪第四節第一段重複的「部落格沒有寫版本門檻」（版本門檻仍歸因文件；FAQ 1 同步刪），「電腦上才有」→「電腦才有」，「不會停掉」→「不停」。段落 2,999 → 3,000。"
+      ],
+      "left_for_the_owner": [
+        "claude plugin test（create：with no session, sign-in, or network；verified_facts 第 72 條）沒有補：一個子句約 35 字，正文已 3,000 字，沒有可刪的重複敘述而不動到但書；DELTA-4-11 第 7 節的教學課涵蓋它。",
+        "Google Cloud 照 DELTA-4-11 第 4 節第 4 條簡寫；admin 原文是 Google Cloud's Agent Platform，寫全名要再多 17 字，字數不允許。",
+        "內建 mods 只以「例如」列三個名稱（overview 表六列），cc-plugin-agents-md、cc-plugin-telemetry、cc-plugin-plugin-authoring 沒列名；不影響正確性。",
+        "發布當天重讀四頁，特別看 overview 的 Where mods run 表（Remote Control 那列）與內建 mods 表。"
+      ],
+      "verdict": "ok"
+    }
+  },
+  "translations": {
+    "en": {
+      "hero_label": "mods: behavior and UI",
+      "diagram": {
+        "title": "The four parts of mods",
+        "caption": "Claude Code mods receive events such as tool calls and prompts, handle them with functions that observe, rewrite or answer, and can add panes, buttons and commands; with managed settings or a Team or Enterprise plan, sec-default loads first. From Anthropic's blog and docs; checked Oct 4, 2026.",
+        "nodes": [
+          [
+            "Events",
+            "Tool calls, prompts, screen"
+          ],
+          [
+            "Functions",
+            "Observe, rewrite or answer"
+          ],
+          [
+            "Interface",
+            "Panes, buttons, commands"
+          ],
+          [
+            "Controls",
+            "sec-default loads first"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "動作もインターフェースも変更",
+      "diagram": {
+        "title": "modsの四つの要素",
+        "caption": "Claude Codeのmodsは、ツール呼び出し、プロンプト、画面などのイベントを受け取り、関数で観察、書き換え、引き継ぎを行い、ペイン、ボタン、コマンドを追加できます。マネージド設定のあるマシンやTeam／Enterpriseプランでログインしたときは、組み込みのsec-defaultが先に読み込まれます。AnthropicのブログとClaude Codeドキュメントをもとに整理したもので、確認日は2026年10月4日です。",
+        "nodes": [
+          [
+            "イベント",
+            "ツール呼び出し、プロンプト、画面"
+          ],
+          [
+            "関数",
+            "観察、書き換え、引き継ぎ"
+          ],
+          [
+            "インターフェース",
+            "ペイン、ボタン、コマンド"
+          ],
+          [
+            "管理",
+            "sec-defaultを先に読込"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "mods: 동작과 인터페이스",
+      "diagram": {
+        "title": "mods의 네 가지 요소",
+        "caption": "Claude Code의 mods는 도구 호출, 프롬프트, 화면 같은 이벤트를 받아 함수로 관찰하거나 바꾸거나 직접 처리하며, 창, 버튼, 명령을 추가할 수 있습니다. 관리형 설정이 있는 컴퓨터나 Team, Enterprise 플랜으로 로그인할 때는 내장 sec-default가 먼저 로드됩니다. Anthropic 블로그와 Claude Code 문서를 바탕으로 정리했으며 확인일은 2026년 10월 4일입니다.",
+        "nodes": [
+          [
+            "이벤트",
+            "도구 호출, 프롬프트, 화면"
+          ],
+          [
+            "함수",
+            "관찰, 바꾸기, 직접 처리"
+          ],
+          [
+            "인터페이스",
+            "창, 버튼, 명령"
+          ],
+          [
+            "관리",
+            "sec-default 먼저 로드"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "mods：改行为也改界面",
+      "diagram": {
+        "title": "mods 的四个环节",
+        "caption": "Claude Code 的 mods 接收工具调用、提示与画面等事件，以函数观察、改写或接手，能添加窗格、按钮与命令；在有 managed settings 的电脑或以 Team／Enterprise 方案登录时，内置的 sec-default 先加载。依 Anthropic 博客与 Claude Code 文档整理，查证日 2026 年 10 月 4 日。",
+        "nodes": [
+          [
+            "事件",
+            "工具调用、提示、画面"
+          ],
+          [
+            "函数",
+            "观察、改写或接手"
+          ],
+          [
+            "界面",
+            "窗格、按钮、命令"
+          ],
+          [
+            "管控",
+            "先加载 sec-default"
+          ]
+        ]
+      }
+    }
+  }
+}
