@@ -29,7 +29,7 @@ metadata:
 | 寫一場戲：軸線、視線、進出、連戲帳；一場 12 鏡的戲寫兩次（可接受版附腳本輸出、craft 列與估價；試拍式每鏡標錯） | `.agents/skills/animation-camera/references/scene-coverage.md` |
 | 被 judge、`assemble` 或站主退回 | `.agents/skills/animation-camera/references/model-misreads.md`（逐 take 的證據、提示怎麼組、Lite 的歷史參數失敗與此版本相容處理、judge 的題、Hailuo 與 Kling 的字彙來源）與 `visual-quality.md`（診斷、小卡、冷看） |
 | 要算錢、選路線、看每個付費階段的前提 | `.agents/skills/animation-production/SKILL.md`；這批動畫的 Lite 契約（8 秒、首尾格、無參考圖、CC）在 `animation-production.md` |
-| 使用者指定「布袋喵參考風格」或真一隻布袋喵頻道 | [references/budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md)：三支原片抽樣、可選美術與導演規格、原創八鏡與同鏡的 Hailuo／Kling 網頁提示；只在點名時套用，其他作品保留原風格 |
+| 使用者指定「布袋喵參考風格」或真一隻布袋喵頻道 | [.agents/skills/animation-camera/references/budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md)：三支原片抽樣、可選美術與導演規格、原創八鏡與同鏡的 Hailuo／Kling 網頁提示；只在點名時套用，其他作品保留原風格 |
 | 要透過內建瀏覽器製作 Hailuo／Kling 片段 | [.agents/skills/animation-production/references/browser-production.md](../../../.agents/skills/animation-production/references/browser-production.md)：依本次工具能力上傳、選設定、記帳與下載；先檢查 production profile 的匯入限制 |
 
 ## 三個欄位各給誰讀
@@ -145,7 +145,7 @@ metadata:
 | 回到同一鏡位的第二、三次 | `source: { shot, from_s }` | 不畫圖、不買素材、不 judge（帳本記 `cut`） |
 | 無聲的動作拍 | 場景層 `action_seconds`＋空 `lines`（上一節） | 同 clip 或 still |
 
-每一種的價錢在 `.agents/skills/animation-production/SKILL.md` 的「錢怎麼算」；三條路線的點數換算在它的 `references/cost-model.md`。
+每一種的價錢在 `.agents/skills/animation-production/SKILL.md` 的「錢怎麼算」；三條路線的點數換算在它的 `.agents/skills/animation-production/references/cost-model.md`。
 
 - 靜圖的運鏡：要驗第 0 格就寫 `push in`、`drift` 或 `locked`（`IDENTITY_START`：第 0 格是整張關鍵影格，`assemble` 算 PSNR ≥ 22）；`locked` 只給刻意的 hold（`shot_reading` 報 `still.locked` 問一次：是就留著並在回報說明，不是就給 `push in` 或 `drift`）；`pull out`、pan、tilt 一開始就裁掉邊緣，不驗第 0 格。`checks.json` 的 `metrics.shots[]` 記 `kind: "motion"`、`move` 與 `keyframe_psnr`，看到 `drift` 多半是 `camera` 沒寫或用了表外的字（`still.drift`）。靜圖不能有 `end_frame`（lint 錯誤）。
 - `source` 的規矩（lint，`tools/video/core/drama.mjs` 的 `validateShotData`）：來源要是更早的 clip 鏡頭、自己有素材（不是 still、不是本身切來的）；不能同時有 `start_frame`／`end_frame`；不能當縮圖底圖；`from_s`＋鏡長在 lint 的上限內：沒有 production profile 10 秒（`MAX_SOURCE_CLIP_SECONDS`）、有 profile 8 秒（`tools/video/core/lint.mjs`）。但素材真正有幾秒是來源鏡頭**買到的**：Lite 1080p 永遠 8；Omni／H3 是 ceil(需要) 最少 4（`clipSeconds`），一個 3 秒的來源在伺服器預設的 Omni 下只有 4 秒可切，`clips.mjs` 在來源買下之後才把超出的切鏡標 `needs_review`。Omni／H3 下要嘛刻意把來源鏡頭寫長（多買秒數），要嘛接受重播來源的開頭；「說—聽—說回同一鏡位」切尾巴之後那段，只在 Lite 1080p 固定 8 秒時成立。`shot_reading` 分兩個陷阱：`source.length`（超過 lint 上限）、`source.bought`（在上限內但超過來源買到的秒數，以 Omni／H3 的 4–10 算）。`assemble` 拿第 0 格對來源素材第 `from_s` 秒那一格算 PSNR。

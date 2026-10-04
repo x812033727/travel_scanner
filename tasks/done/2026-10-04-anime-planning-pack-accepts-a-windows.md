@@ -1,14 +1,14 @@
 ---
 id: 2026-10-04-anime-planning-pack-accepts-a-windows
 title: Anime planning pack accepts a Windows directory junction as the pack itself
-status: open
+status: done
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-incomplete-tickets
+claimed_at: 2026-10-04T16:50:18Z
 created_at: 2026-10-04T15:17:34Z
-completed_at:
-branch:
+completed_at: 2026-10-04T16:58:42Z
+branch: claude/anime-pack-junction
 depends_on: []
 scope:
   - apps/api/app/video_automation/planning.py
@@ -45,22 +45,22 @@ not a production incident.
 
 ## Definition of done
 
-- [ ] `prepare_bundle` refuses a pack directory that is a Windows directory junction with the
+- [x] `prepare_bundle` refuses a pack directory that is a Windows directory junction with the
       same "pack must be a real directory" error it gives a symbolic link.
-- [ ] Entries that are junctions are refused by an explicit link check, not only as a side
+- [x] Entries that are junctions are refused by an explicit link check, not only as a side
       effect of `is_file()`.
-- [ ] A test proves the pack-junction refusal on Windows with a real junction
+- [x] A test proves the pack-junction refusal on Windows with a real junction
       (`_winapi.CreateJunction`), skipped elsewhere with a reason; the existing symlink
       coverage stays.
 
 ## Steps
 
-- [ ] Add `or pack.is_junction()` (Python 3.12+, the project requires 3.13) to the pack check,
+- [x] Add `or pack.is_junction()` (Python 3.12+, the project requires 3.13) to the pack check,
       and to the per-entry check; keep the messages.
-- [ ] Add a `test_prepare_checks_actual_directory`-style case that makes the pack itself a
+- [x] Add a `test_prepare_checks_actual_directory`-style case that makes the pack itself a
       junction; reuse the file's `windows_only` marker and the junction fixture in
       `link_readme`.
-- [ ] Run the focused planning tests on Windows and let Linux CI cover the symlink case.
+- [x] Run the focused planning tests on Windows and let Linux CI cover the symlink case.
 
 ## How to verify
 
@@ -81,3 +81,13 @@ The new pack-junction case must fail before the validator change and pass after 
 - `os.path.isjunction` / `Path.is_junction` exist since Python 3.12; on non-Windows they always
   return `False`, so the added check is a no-op on Linux.
 - Do not resolve the path before the check: `resolve()` follows the junction and hides it.
+- 2026-10-04 (claude-opus-5-5-incomplete-tickets): `_is_link()` (`is_symlink() or is_junction()`)
+  now guards both the pack and each entry, with the old messages. Claimed with `--force` over
+  `2026-09-27-video-drama-room-withdraw-a-one` (landed as #870) and
+  `2026-10-03-illustrated-slides-round-2-a-family` (landed as #1172), both stale.
+- New `test_prepare_refuses_a_pack_that_is_itself_a_junction` (Windows only): fails on
+  origin/main's validator ("1 failed, 1 passed" with `-k junction`), passes with the change.
+  `PYTHONUTF8=1 uv run pytest tests/test_video_anime_planning.py tests/test_video_anime_planning_cli.py -q -rs`:
+  87 passed, 1 skipped (the `[symlink]` privilege skip). `ruff` clean; `mypy` and
+  `mypy --platform linux` on the two changed files clean; the full `mypy app`/`mypy tests` run is
+  left to CI.
