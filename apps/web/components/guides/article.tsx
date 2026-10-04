@@ -88,11 +88,32 @@ export function GuideArticle({
   const published = document.published_at.slice(0, 10);
   const modified = document.modified_at ? document.modified_at.slice(0, 10) : null;
   const placement = guideAffiliatePlacement(state.kind);
-  // The answer goes under the description and the questions before the sources; the body
-  // is everything else.
+  // The summary goes under the description. FAQ answers stay in the author's body order;
+  // hoisting them used to leave an empty heading and a misleading contents link behind.
   const extras = splitArticleExtras(document.blocks);
   const segments = splitGuideBlocks(extras.blocks);
   const headings = guideHeadings(extras.blocks);
+  const faqSections = new Map<number, { id: string; heading?: string }>();
+  let faqCount = 0;
+  let sectionHeading = "";
+  const faqLabel = labels.faq?.normalize("NFKC").trim().toLocaleLowerCase(state.locale);
+  for (const [index, block] of extras.blocks.entries()) {
+    if (block.type === "heading" && block.level === 2) sectionHeading = block.text;
+    if (block.type !== "faq") continue;
+    faqCount += 1;
+    const preceding = extras.blocks[index - 1];
+    // An immediately preceding H2 is the author's heading, whatever its language or wording.
+    // A localized FAQ heading may also introduce a paragraph before the answers. Keep that
+    // prose and heading; a genuinely separate section still gets the localized FAQ label.
+    const authoredHeading = (preceding?.type === "heading" && preceding.level === 2)
+      || Boolean(faqLabel && sectionHeading.normalize("NFKC").trim().toLocaleLowerCase(state.locale) === faqLabel);
+    faqSections.set(index, {
+      id: faqCount === 1 ? "article-faq" : `article-faq-${faqCount}`,
+      heading: authoredHeading ? undefined : labels.faq,
+    });
+  }
+  const segmentOffsets = segments.map((_, index) => segments.slice(0, index).reduce(
+    (offset, segment) => offset + segment.blocks.length + Number(Boolean(segment.offer || segment.partner)), 0));
 
   // The editor's own buttons: each resolves its destination the way the end panel does
   // (its own city, else the article's; Kyoto folds into osaka-kyoto) and is dropped under
@@ -219,24 +240,32 @@ export function GuideArticle({
         const partnerIsland = partnerIslands.find((entry) => entry.segment === segment);
         return (
           <Fragment key={index}>
-            {pieces[index].map((piece, pieceIndex) => (
-              <Fragment key={pieceIndex}>
-                {pieceIndex > 0 ? (
-                  <ArticleAdSlot
-                    publisherId={adsense?.publisher_id ?? ""}
-                    slotId={adsense?.slot_id ?? ""}
-                    label={labels.adLabel}
-                    cmpEnabled={Boolean(adsense?.cmp_enabled)}
-                    // Only the page's first unit asks for an ad as soon as it mounts; the rest
-                    // wait until the reader scrolls near them.
-                    lazy={firstAd[index] + pieceIndex - 1 > 0}
-                  />
-                ) : null}
-                {piece.blocks.length ? (
-                  <ContentBlocks blocks={piece.blocks} labels={labels.blocks} headingStart={piece.headingStart} articleLinks={state.article_links} locale={state.locale} termLabels={labels.term} />
-                ) : null}
-              </Fragment>
-            ))}
+            {pieces[index].map((piece, pieceIndex) => {
+              const offset = segmentOffsets[index] + pieces[index].slice(0, pieceIndex)
+                .reduce((count, preceding) => count + preceding.blocks.length, 0);
+              return (
+                <Fragment key={pieceIndex}>
+                  {pieceIndex > 0 ? (
+                    <ArticleAdSlot
+                      publisherId={adsense?.publisher_id ?? ""}
+                      slotId={adsense?.slot_id ?? ""}
+                      label={labels.adLabel}
+                      cmpEnabled={Boolean(adsense?.cmp_enabled)}
+                      // Only the page's first unit asks for an ad as soon as it mounts; the rest
+                      // wait until the reader scrolls near them.
+                      lazy={firstAd[index] + pieceIndex - 1 > 0}
+                    />
+                  ) : null}
+                  {piece.blocks.length ? (
+                    <ContentBlocks
+                      blocks={piece.blocks} labels={labels.blocks} headingStart={piece.headingStart}
+                      articleLinks={state.article_links} locale={state.locale} termLabels={labels.term}
+                      renderFaq={(block, blockIndex) => <FaqSection items={block.items} {...faqSections.get(offset + blockIndex)} />}
+                    />
+                  ) : null}
+                </Fragment>
+              );
+            })}
             {partnerIsland ? (
               <PartnerLink
                 link={partnerIsland.link}
@@ -292,8 +321,6 @@ export function GuideArticle({
           ))}
         </ul>
       ) : null}
-
-      {extras.faq ? <FaqSection id="article-faq" items={extras.faq.items} heading={labels.faq} /> : null}
 
       {document.sources.length ? (
         <section className="border-t border-[var(--line)] pt-6">

@@ -1,6 +1,10 @@
 import { render, screen, within } from "@testing-library/react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { DestinationGuide } from "@/components/destination-guide";
+import { locales } from "@/i18n/routing";
+import { destinationDecisions } from "@/lib/destination-decisions";
+import { guideHref, type GuideSummary } from "@/lib/guides";
 
 vi.mock("@/components/destination-affiliate-options", () => ({
   DestinationAffiliateOptions: (props: { destinationId: string; placement?: string; modules?: string[] }) => (
@@ -19,6 +23,12 @@ const tokyo: DestinationSummary = {
 };
 const yokohama: DestinationSummary = { ...tokyo, id: "yokohama", city: "橫濱", localName: "横浜", extensionIds: [], role: "extension", parentDestinationId: "tokyo" };
 const copy = destinationsCopy("zh-TW");
+const emptyGuides = { articles: [], next_cursor: null, available: true };
+const article: GuideSummary = {
+  slug: "published-tokyo-guide", kind: "howto", destination_id: "tokyo", destination_label: "Tokyo",
+  topics: [], title: "Published Tokyo transport guide", description: "A published transport overview.",
+  published_at: "2026-10-03T00:00:00Z", valid_until: null, featured: false,
+};
 
 function draw(overrides: Partial<Parameters<typeof DestinationGuide>[0]> = {}) {
   return render(
@@ -29,6 +39,7 @@ function draw(overrides: Partial<Parameters<typeof DestinationGuide>[0]> = {}) {
       places={[{ id: "p1", name: "淺草寺", detail: "上野／淺草" }]}
       merchants={[{ id: "m1", name: "一蘭", detail: "新宿" }]}
       related={[yokohama]}
+      guides={emptyGuides}
       {...overrides}
     />,
   );
@@ -45,19 +56,20 @@ describe("DestinationGuide", () => {
   it("renders the places and merchants as text, not a filter to be hydrated", () => {
     draw();
     expect(screen.getByText("淺草寺")).toBeTruthy();
-    expect(screen.getByText("上野／淺草")).toBeTruthy();
+    const places = screen.getByText(copy.seeTitle).parentElement as HTMLElement;
+    expect(within(places).getByText("上野／淺草")).toBeTruthy();
     expect(screen.getByText("一蘭")).toBeTruthy();
   });
 
-  it("shows the catalog facts and the areas", () => {
+  it("shows the catalog facts and the Tokyo stay decisions", () => {
     const { container } = draw();
     expect(screen.getByText(`4–6 ${copy.daysUnit}`)).toBeTruthy();
     expect(screen.getByText("Asia/Tokyo")).toBeTruthy();
     expect(screen.getByText("JPY")).toBeTruthy();
-    // Scoped: 新宿 is both an area of Tokyo and the area label on the merchant below it.
-    const areas = within(container).getByText(copy.areasTitle).parentElement as HTMLElement;
-    expect(within(areas).getByText("新宿")).toBeTruthy();
-    expect(within(areas).getByText("澀谷")).toBeTruthy();
+    const decisions = destinationDecisions("zh-TW", "tokyo")!;
+    const areas = within(container).getByText(decisions.title).parentElement as HTMLElement;
+    expect(within(areas).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent))
+      .toEqual(decisions.areas.map((area) => area.name));
   });
 
   it("says so plainly when a section has nothing reviewed yet", () => {
@@ -96,7 +108,7 @@ describe("DestinationGuide", () => {
     draw();
     expect(screen.getByText("日本")).toBeTruthy();
     const { container } = render(
-      <DestinationGuide locale="en" destination={{ ...tokyo, city: "Tokyo", localName: "東京" }} hotspotsEnabled places={[]} merchants={[]} related={[]} />,
+      <DestinationGuide locale="en" destination={{ ...tokyo, city: "Tokyo", localName: "東京" }} hotspotsEnabled places={[]} merchants={[]} related={[]} guides={emptyGuides} />,
     );
     expect(container.textContent).toContain("東京");
   });
@@ -131,5 +143,68 @@ describe("DestinationGuide", () => {
     expect(screen.getByText(copy.unavailableFood)).toBeTruthy();
     expect(screen.queryByText(copy.emptyPlaces)).toBeNull();
     expect(screen.queryByText(copy.emptyFood)).toBeNull();
+  });
+
+  it.each(locales)("renders four complete, sourced decision cards in %s", (locale) => {
+    const decisions = destinationDecisions(locale, "tokyo")!;
+    const { container } = draw({ locale });
+    const section = screen.getByRole("region", { name: decisions.title });
+    const cards = within(section).getAllByRole("heading", { level: 3 });
+    expect(cards.map((heading) => heading.textContent)).toEqual(decisions.areas.map((area) => area.name));
+    for (const area of decisions.areas) {
+      const card = within(section).getByRole("heading", { name: area.name }).parentElement as HTMLElement;
+      expect(within(card).getByText(area.suitable)).toBeTruthy();
+      expect(within(card).getByText(area.tradeoff)).toBeTruthy();
+      expect(within(card).getByText(area.check)).toBeTruthy();
+      for (const source of area.sources) {
+        expect(within(card).getByRole("link", { name: source.label }).getAttribute("href")).toBe(source.url);
+      }
+    }
+    expect(container.querySelector("time")?.getAttribute("datetime")).toBe(decisions.checkedOn);
+  });
+
+  it("preserves the catalog area list for other destinations without Tokyo comparisons", () => {
+    draw({ destination: yokohama });
+    const areas = screen.getByText(copy.areasTitle).parentElement as HTMLElement;
+    expect(within(areas).getAllByRole("listitem").map((item) => item.textContent)).toEqual(yokohama.areas);
+    expect(destinationDecisions("zh-TW", "yokohama")).toBeNull();
+    expect(screen.queryByRole("region", { name: destinationDecisions("zh-TW", "tokyo")!.title })).toBeNull();
+    expect(screen.queryByRole("link", { name: /GO TOKYO/ })).toBeNull();
+  });
+
+  it("renders fetched published titles and descriptions with internal article links", () => {
+    draw({ guides: { ...emptyGuides, articles: [article] } });
+    expect(screen.getByRole("link", { name: article.title }).getAttribute("href"))
+      .toBe(guideHref(article.kind, article.slug));
+    expect(screen.getByText(article.description)).toBeTruthy();
+    expect(screen.queryByText(copy.emptyGuides)).toBeNull();
+    expect(screen.getByRole("link", { name: copy.guidesHowto }).getAttribute("href"))
+      .toBe("/guides/howto?destination=tokyo");
+  });
+
+  it.each(locales)("distinguishes empty and unavailable articles in %s without a fallback article", (locale) => {
+    const localized = destinationsCopy(locale);
+    const { rerender } = draw({ locale });
+    expect(screen.getByText(localized.emptyGuides)).toBeTruthy();
+    rerender(<DestinationGuide locale={locale} destination={tokyo} hotspotsEnabled places={[]} merchants={[]} related={[]}
+      guides={{ articles: [article], next_cursor: null, available: false }} />);
+    expect(screen.getByText(localized.unavailableGuides)).toBeTruthy();
+    expect(screen.queryByText(localized.emptyGuides)).toBeNull();
+    expect(screen.queryByRole("link", { name: article.title })).toBeNull();
+    expect(screen.getByRole("link", { name: localized.guidesIntel })).toBeTruthy();
+  });
+
+  it("includes decision evidence and article cards in server HTML before partner options", () => {
+    const decisions = destinationDecisions("en", "tokyo")!;
+    const html = renderToStaticMarkup(<DestinationGuide locale="en" destination={tokyo} hotspotsEnabled places={[]} merchants={[]}
+      related={[]} guides={{ ...emptyGuides, articles: [article] }} />);
+    const partnerAt = html.indexOf('data-testid="affiliate"');
+    expect(partnerAt).toBeGreaterThan(-1);
+    expect(html.indexOf(decisions.areas[0].suitable)).toBeGreaterThan(-1);
+    expect(html.indexOf(decisions.areas[0].suitable)).toBeLessThan(partnerAt);
+    expect(html.indexOf(decisions.areas[0].sources[0].url)).toBeLessThan(partnerAt);
+    expect(html.indexOf(article.title)).toBeGreaterThan(-1);
+    expect(html.indexOf(article.title)).toBeLessThan(partnerAt);
+    expect(html.indexOf(article.description)).toBeLessThan(partnerAt);
   });
 });

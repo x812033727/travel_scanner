@@ -1,9 +1,9 @@
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { ContentBlocks } from "@/components/content-blocks";
+import { ContentBlocks, FaqSection } from "@/components/content-blocks";
 import {
   contentBlockLink, contentImageSrc, isContentBlockList, isRichContentBlockList, licenseUrl,
-  type ContentBlock, type RichContentBlock,
+  type ContentBlock, type FaqBlock, type RichContentBlock,
 } from "@/lib/content-blocks";
 import { siteUrl } from "@/lib/seo";
 import { sitePageLink } from "@/lib/site-pages";
@@ -35,6 +35,23 @@ describe("tutorial content", () => {
     expect(faq.querySelectorAll("details")).toHaveLength(2);
     expect(within(faq).getByText("多久？").tagName).toBe("SUMMARY");
     expect(within(faq).getByText("四十一分鐘。")).toBeTruthy();
+  });
+
+  it("lets an article render an inline FAQ without resetting the surrounding subsection anchors", () => {
+    const faq = { type: "faq" as const, items: [{ question: "How long?", answer: "41 minutes." }, { question: "How much?", answer: "2,500 yen." }] };
+    const renderFaq = vi.fn((block: FaqBlock, index: number) => <FaqSection id={`questions-${index}`} items={block.items} heading="Reader questions" />);
+    render(<ContentBlocks headingStart={1} renderFaq={renderFaq} blocks={[
+      { type: "heading", level: 2, text: "Train details" },
+      { type: "heading", level: 3, text: "Before boarding" },
+      faq,
+      { type: "heading", level: 3, text: "After boarding" },
+    ]} />);
+    expect(renderFaq).toHaveBeenCalledTimes(1);
+    expect(renderFaq).toHaveBeenCalledWith(faq, 2);
+    const questions = screen.getByRole("region", { name: "Reader questions" });
+    expect(questions.id).toBe("questions-2");
+    expect(questions.querySelectorAll("details")).toHaveLength(2);
+    expect(screen.getAllByRole("heading", { level: 3 }).map((heading) => heading.id)).toEqual(["section-2-1", "section-2-2"]);
   });
 
   it("shows a definition card only for a target with a published description, and only when it has the words for it", () => {
