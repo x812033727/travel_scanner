@@ -1,13 +1,13 @@
 ---
 id: 2026-09-29-video-pilot-jev-decision-model
 title: Pilot the first illustrated storytelling video: Jev, the model that only decides
-status: open
+status: done
 priority: P1
 area: docs
 owner:
 claimed_at:
 created_at: 2026-09-29T09:14:25Z
-completed_at:
+completed_at: 2026-10-03T23:46:23Z
 branch:
 depends_on:
   - 2026-09-29-video-storytelling-prompts
@@ -50,3 +50,17 @@ scope:
 2. 工人主機的 `<VIDEO_WORKDIR>/_music/<檔名>`（mp3／m4a／wav／flac）與 `<VIDEO_WORKDIR>/_sfx/<組名>/{stamp,whoosh,pop}.*` 加 `manifest.json`（`{"source":…,"license":…,"sounds":{"stamp":{"file":"stamp.wav"},"whoosh":{…},"pop":{…}}}`），格式見 `docs/videos/ILLUSTRATED.md` §配樂與音效。
 3. 在「影片」分頁發起一支投影片影片（題目如上）；工人會自己走 keyframes → storyboard（自動核准）→ render → music（檢查你的檔）→ assemble → 品管 → 上架包；插圖成本估 US$5–8（60–75 張 × US$0.077，含 judge）。
 4. 舊的 10 支要改口吻：`node tools/video/cli.mjs restyle --slug <slug>`（先 `--dry-run` 看現況）；要加插圖則要撰稿重寫成有 `shot` 的稿（另開票；它們的資料夾仍在別的 in-progress 票的 scope 裡）。
+
+- **Merged into the AI terms episode, 2026-10-03 (owner's decision).** This pilot is not
+  produced as its own video. The owner chose to make the same launch post an episode of
+  「AI 名詞十分鐘」 instead: `docs/videos/ai-term-system-one-model/` (brief, demo, notes),
+  produced by `2026-10-03-ai-term-system-one-model-video`. What moved there: the role of
+  first illustrated storytelling pilot, the acceptance criteria above, the `ILLUSTRATED.md`
+  numbers table, the side-by-side observation against `2mtn-Qp59y4`, the owner's decision on
+  the 10 older videos, and the phase-0 setup notes. What was dropped on purpose, because the
+  series does not say it: the price per million tokens, free output, 193.6× / 444.6×, RLCD,
+  the founder, and the 「爆紅…快 200 倍、便宜 400 倍」 title. The comparison with
+  `2mtn-Qp59y4` becomes "same subject, different angle", not a point-by-point match.
+  `docs/videos/jev-decision-model-explained/` was never created. The two `ILLUSTRATED.md`
+  rows that name this ticket are updated by the episode's production task, because that file
+  is held by `2026-10-03-illustrated-slides-round-2-a-family` (review) today.
