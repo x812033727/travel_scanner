@@ -1,14 +1,14 @@
 import assert from "node:assert/strict";
-import { existsSync, mkdtempSync, readFileSync, renameSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { existsSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { tempDir } from "./fixtures/load.mjs";
 import { atomicWrite } from "./paths.mjs";
 
 const OLD = '{"version":"old"}';
 const NEXT = '{"version":"new","complete":true}';
 function target() {
-  const file = path.join(mkdtempSync(path.join(tmpdir(), "video-atomic-")), "state.json");
+  const file = path.join(tempDir("video-atomic-"), "state.json");
   writeFileSync(file, OLD);
   return file;
 }
