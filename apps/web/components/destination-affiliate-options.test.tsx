@@ -1,6 +1,7 @@
 import { act, cleanup, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { DestinationAffiliateOptions } from "./destination-affiliate-options";
+import * as intl from "next-intl";
+import { AFFILIATE_PREFETCH_MARGIN, DestinationAffiliateOptions } from "./destination-affiliate-options";
 
 const ok = (value: unknown) =>
   new Response(JSON.stringify(value), {
@@ -8,7 +9,7 @@ const ok = (value: unknown) =>
     headers: { "Content-Type": "application/json" },
   });
 
-afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
+afterEach(() => { cleanup(); vi.unstubAllGlobals(); vi.restoreAllMocks(); });
 
 describe("DestinationAffiliateOptions", () => {
   it("requests only the selected category, cancels old requests and ignores late results", async () => {
@@ -93,11 +94,11 @@ describe("DestinationAffiliateOptions", () => {
     }))));
     const view = render(<DestinationAffiliateOptions destinationId="tokyo" modules={["activities"]} contextual placement="guide" article="tokyo-esim" />);
     const button = await screen.findByRole("button", { name: /Klook/ });
-    expect(button.closest("form")?.getAttribute("action")).toBe("/api/travel/affiliates/destination-offers/offer-1/clickout?placement=guide&article=tokyo-esim");
+    expect(button.closest("form")?.getAttribute("action")).toBe("/api/travel/affiliates/destination-offers/offer-1/clickout?placement=guide&locale=zh-TW&article=tokyo-esim");
     // Without an article the URL is exactly what the API built, and the article is not part
     // of the request identity: the offers are not fetched again.
     view.rerender(<DestinationAffiliateOptions destinationId="tokyo" modules={["activities"]} contextual placement="guide" />);
-    expect(screen.getByRole("button", { name: /Klook/ }).closest("form")?.getAttribute("action")).toBe("/api/travel/affiliates/destination-offers/offer-1/clickout?placement=guide");
+    expect(screen.getByRole("button", { name: /Klook/ }).closest("form")?.getAttribute("action")).toBe("/api/travel/affiliates/destination-offers/offer-1/clickout?placement=guide&locale=zh-TW");
     expect(fetch).toHaveBeenCalledTimes(1);
   });
 
@@ -118,5 +119,66 @@ describe("DestinationAffiliateOptions", () => {
     );
     await waitFor(() => expect(fetch).toHaveBeenCalledTimes(5));
     expect(container.innerHTML).toBe("");
+  });
+
+  it("waits until the placement approaches the viewport, then requests once and removes an empty placement", async () => {
+    let notify: IntersectionObserverCallback = () => undefined;
+    const observe = vi.fn();
+    const disconnect = vi.fn();
+    const observer = { observe, disconnect } as unknown as IntersectionObserver;
+    const constructor = vi.fn(function (callback: IntersectionObserverCallback) {
+      notify = callback;
+      return observer;
+    });
+    vi.stubGlobal("IntersectionObserver", constructor);
+    const fetcher = vi.fn().mockResolvedValue(ok({ destination_id: "tokyo", module: "hotel", disclosure: "", options: [] }));
+    vi.stubGlobal("fetch", fetcher);
+    const { container } = render(<DestinationAffiliateOptions destinationId="tokyo" modules={["hotel"]} />);
+    expect(constructor).toHaveBeenCalledWith(expect.any(Function), { rootMargin: AFFILIATE_PREFETCH_MARGIN });
+    expect(observe).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole("region")).toBeNull();
+    expect(fetcher).not.toHaveBeenCalled();
+    await act(async () => { notify([{ isIntersecting: false }] as IntersectionObserverEntry[], observer); });
+    expect(fetcher).not.toHaveBeenCalled();
+    await act(async () => {
+      notify([{ isIntersecting: true }] as IntersectionObserverEntry[], observer);
+      notify([{ isIntersecting: true }] as IntersectionObserverEntry[], observer);
+    });
+    expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(disconnect).toHaveBeenCalled();
+    expect(container.innerHTML).toBe("");
+  });
+
+  it("disconnects a waiting placement on unmount without making a request", () => {
+    const disconnect = vi.fn();
+    vi.stubGlobal("IntersectionObserver", vi.fn(function () {
+      return { observe: vi.fn(), disconnect };
+    }));
+    const fetcher = vi.fn();
+    vi.stubGlobal("fetch", fetcher);
+    const view = render(<DestinationAffiliateOptions destinationId="tokyo" modules={["hotel"]} />);
+    view.unmount();
+    expect(disconnect).toHaveBeenCalledTimes(1);
+    expect(fetcher).not.toHaveBeenCalled();
+  });
+
+  it("refetches for the displayed locale and preserves attribution in that locale's POST action", async () => {
+    const locale = vi.spyOn(intl, "useLocale").mockReturnValue("zh-TW");
+    const pending: { headers: Headers; signal: AbortSignal; resolve: (value: Response) => void }[] = [];
+    vi.stubGlobal("fetch", vi.fn((_input: RequestInfo | URL, init: RequestInit) => new Promise<Response>((resolve) => {
+      pending.push({ headers: new Headers(init.headers), signal: init.signal as AbortSignal, resolve });
+    })));
+    const response = (cta: string) => ok({ destination_id: "tokyo", module: "hotel", disclosure: "Disclosure", options: [{ id: "offer-1", cta, clickout_url: "/api/travel/affiliates/destination-offers/offer-1/clickout?placement=guide&token=a%2Fb" }] });
+    const view = render(<DestinationAffiliateOptions destinationId="tokyo" modules={["hotel"]} placement="guide" article="tokyo-hotels" />);
+    await act(async () => { pending[0].resolve(response("Old hotel")); });
+    expect(await screen.findByRole("button", { name: /Old hotel/ })).toBeTruthy();
+    locale.mockReturnValue("ja");
+    view.rerender(<DestinationAffiliateOptions destinationId="tokyo" modules={["hotel"]} placement="guide" article="tokyo-hotels" />);
+    expect(screen.queryByRole("button", { name: /Old hotel/ })).toBeNull();
+    expect(pending[0].signal.aborted).toBe(true);
+    expect(pending[1].headers.get("X-Travel-Locale")).toBe("ja");
+    await act(async () => { pending[1].resolve(response("Japanese hotel")); });
+    expect(screen.getByRole("button", { name: /Japanese hotel/ }).closest("form")?.getAttribute("action"))
+      .toBe("/api/travel/affiliates/destination-offers/offer-1/clickout?placement=guide&token=a%2Fb&locale=ja&article=tokyo-hotels");
   });
 });
