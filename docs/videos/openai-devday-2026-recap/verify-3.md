@@ -49,8 +49,10 @@ Helper files are in `<VIDEO_WORKDIR>/openai-devday-2026-recap/_tools/verify/roun
 | 20 | Decisions API limited preview; Bedrock Managed Agents for teams on AWS; MCP events a proposed spec | balloon-stall, dev-three | R L63–L64, L72, L90–L91 | CONFIRMED |
 | 21 | 「還不能碰的」 six items | pencil-pass, not-yet | R L37, L64, L97, L117, L121; SPACE L10, L18, L23; DOTS L60 | CHANGED: slides co-editing lost its attribution |
 | 22 | The five lists are the recap page's own grouping | ticket-hand `2bjg` | R L25, L44, L75, L93, L123 | CHANGED: the page has five other groups |
-| 23 | always-on-agent-explained is 「上一支」 | wheel-alone `a8fd`, description | repo only | NOT FOUND: scoped to 「之前講過」 |
+| 23 | always-on-agent-explained is 「上一支」 | wheel-alone `a8fd`, description | repo only | CHANGED (was not found as written: the repo cannot show which video is the previous one): scoped to 「之前講過」 |
 | 24 | Short 1 and Short 2, every sentence | `shorts.json` | same lines as the long script | CONFIRMED; Short 1 now says the full model name once |
+
+> Coordinator's note, 2026-10-04: row 23's verdict was first written as `NOT FOUND: scoped to 「之前講過」`. The QA facts item reads the first column of a NOT FOUND row as a claim id and took row 23 for claim c23 (which the pro-five card cites and which was confirmed). The statement in row 23 is no longer in the script (line `a8fd` says 「之前講過」), so the row is labelled CHANGED; the finding and its fix are as the round-3 verifier wrote them.
 
 ## Changes
 
