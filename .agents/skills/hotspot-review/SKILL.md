@@ -36,12 +36,12 @@ metadata:
 
 ## 主幹
 
-1. **盤點**：後台 `?tab=review&section=manual` 看 pending；分國家（KR 另列）、分有沒有 QID、有沒有 Place ID；查本月 Google 用量（`references/place-ids.md`）。
+1. **盤點**：後台 `?tab=review&section=manual` 看 pending；分國家（KR 另列）、分有沒有 QID、有沒有 Place ID；查本月 Google 用量（`.agents/skills/hotspot-review/references/place-ids.md`）。
 2. **建證據包**：每列的 Wikidata 標籤、描述、P31、P131、P625，加維基**全文**；判斷不依賴現場抓取。
-3. **判斷**：keep／reject／unsure，拒絕碼只用 `not_a_place`、`no_visitor_draw`、`too_broad`、`gone`、`duplicate`，預設 unsure；拒絕走兩名覆核（`references/judging.md`）。
+3. **判斷**：keep／reject／unsure，拒絕碼只用 `not_a_place`、`no_visitor_draw`、`too_broad`、`gone`、`duplicate`，預設 unsure；拒絕走兩名覆核（`.agents/skills/hotspot-review/references/judging.md`）。
 4. **找 Place ID**：查詢字串逐級加細（在地名稱 → P131 → 更下一級町名 → 條目裡的現用名），兩個工具對答案，自動套用只收名稱分數 ≥ 0.75 且漂移 ≤ 0.3 km，其餘逐筆看。
-5. **修座標**（只在上游錯、且有第二個獨立來源時）：`references/coordinates.md`。
-6. **寫入**：一次呼叫核准；要改分類或補 QID 先單筆 `update`（必附 `reason`）再核准；409 照 `references/api.md` 分兩種處理。
+5. **修座標**（只在上游錯、且有第二個獨立來源時）：`.agents/skills/hotspot-review/references/coordinates.md`。
+6. **寫入**：一次呼叫核准；要改分類或補 QID 先單筆 `update`（必附 `reason`）再核准；409 照 `.agents/skills/hotspot-review/references/api.md` 分兩種處理。
 7. **驗證**：排名是快照，`hotspot-collector` 每 21,600 秒重建，核准後最多等六小時才出現在 `/api/travel/hotspots/rankings?destination_id=<city>`；延伸城市一定用 `destination_id`（用 `city_code` 會 422 `destination_id_required`）。
 8. **收尾**：把數字、留下的列與原因寫進票或 `docs/`；還開著的列寫清楚各自在等什麼。
 
