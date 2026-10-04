@@ -77,6 +77,29 @@ def test_an_outline_judgement_asks_one_pick_two_nouls_per_option_and_advice() ->
         )
 
 
+def test_every_noul_the_judge_asks_sends_the_criteria_keys_typesafe_documents() -> None:
+    """A noul's criteria are ``true`` / ``false`` (docs.typesafe.ai/primitives/noul); until
+    2026-10-04 the judge sent ``yes`` / ``no``."""
+    asked = [
+        outline_questions(OPTIONS),
+        judging.policy_questions(),
+        judging.cut_policy_questions(),
+        judging.story_policy_questions(),
+    ]
+    nouls = [
+        question.model_dump(exclude_none=True)
+        for questions in asked
+        for question in questions.values()
+        if question.type == "noul"
+    ]
+    assert len(nouls) == 5 + 4 + 3 + 5
+    for noul in nouls:
+        assert noul["criteria"] == {
+            "true": "the statement holds",
+            "false": "the statement does not hold",
+        }
+
+
 def test_the_answers_become_a_pick_with_the_reason_the_owner_reads() -> None:
     pick = read_outline_answers(_answers(), OPTIONS)
     assert pick.choice == "B" and pick.passed

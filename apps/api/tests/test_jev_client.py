@@ -10,6 +10,7 @@ from pathlib import Path
 
 import httpx
 import pytest
+from pydantic import ValidationError
 
 from app.ai.jev import (
     ChoiceQuestion,
@@ -19,6 +20,7 @@ from app.ai.jev import (
     JevRequestInvalid,
     JevRequestTooLarge,
     NoulAnswer,
+    NoulCriteria,
     NoulQuestion,
     ScoreQuestion,
     estimate_tokens,
@@ -219,6 +221,31 @@ async def test_a_noul_may_still_clarify_what_yes_and_no_cover() -> None:
         },
     )
     assert '"needs an answer today"' in seen[0].read().decode()
+
+
+@pytest.mark.parametrize(
+    "criteria",
+    [
+        {"yes": "needs an answer today", "no": "can wait a week"},
+        {"true": "needs an answer today"},
+        {"true": "needs an answer today", "false": "can wait a week", "unsure": "either"},
+    ],
+)
+def test_a_noul_s_criteria_take_only_the_true_and_false_keys_typesafe_documents(
+    criteria: dict[str, str],
+) -> None:
+    """docs.typesafe.ai/primitives/noul names ``true`` and ``false``; until 2026-10-04 the site
+    sent ``yes`` / ``no``, and nothing on this side noticed."""
+    with pytest.raises(ValidationError):
+        NoulQuestion(instructions="The message conveys urgency", criteria=criteria)
+    question = NoulQuestion(
+        instructions="The message conveys urgency",
+        criteria=NoulCriteria(true="needs an answer today", false="can wait a week"),
+    )
+    assert question.model_dump(exclude_none=True)["criteria"] == {
+        "true": "needs an answer today",
+        "false": "can wait a week",
+    }
 
 
 def test_cjk_is_estimated_at_least_as_heavily_as_latin() -> None:

@@ -156,12 +156,13 @@ reply, and the dropped bounds are written into the field descriptions.
    services by hand once is not enough: the next deploy would rebuild everything else and
    leave them on the old image.
 2. **Keys.** The writer and checker vendors and Jev all need their keys in the admin card
-   「AI 供應商與金鑰」 (or the environment). Each candidate spends up to two Jev calls
-   (the duplicate check and the zh-TW draft) from `JEV_DAILY_CALL_BUDGET` (default 200).
-   When the budget runs out, the duplicate check answers "uncertain" and the candidate
-   waits in manual review rather than failing. Claude needs no key when the owner sets
-   「Claude 連線方式」 on that card to 訂閱帳號: every stage then runs on the Claude
-   subscription accounts signed in at `/admin/ai-accounts`, through the host agent that
+   「AI 供應商與金鑰」 (or the environment). Each candidate spends up to seven Jev calls
+   (the duplicate check, the zh-TW draft and the five locales of Jev's last call) from
+   `JEV_DAILY_CALL_BUDGET` (default 200). When the budget is spent at the duplicate check,
+   the candidate goes back to `discovered` as `news_jev_quota_paused` and runs again when
+   the budget has room (see "When Jev's daily budget is spent"). Claude needs no key when
+   the owner sets 「Claude 連線方式」 on that card to 訂閱帳號: every stage then runs on the
+   Claude subscription accounts signed in at `/admin/ai-accounts`, through the host agent that
    the news-worker reaches over its socket (`app/ai/subscription.py`). A stage waits up to
    two minutes for a busy account. There is no usage cap (the owner's choice of
    2026-09-26): the accounts take turns A, B, C and back to A, and one is left only when its
@@ -285,8 +286,9 @@ With 「Claude 連線方式」 set to 訂閱帳號, the AI vendors card's 「訂
 
 ## When Jev's daily budget is spent
 
-Jev is limited to `jev_daily_call_budget` calls per UTC day (200 in production). When the
-budget is spent at the duplicate check, the candidate goes back to `discovered` as
+Jev is limited to `jev_daily_call_budget` calls per UTC day (default 200; the owner raised
+production's to 5,000 in the admin on 2026-09-27). When the budget is spent at the duplicate
+check, the candidate goes back to `discovered` as
 `news_jev_quota_paused` instead of waiting in the review queue as an uncertain duplicate;
 nothing is uncertain about the story. The orphan sweep skips it until 00:00 UTC (08:00 in
 Taipei) and then queues it again, 20 a minute, so each day runs as many as that day's budget
