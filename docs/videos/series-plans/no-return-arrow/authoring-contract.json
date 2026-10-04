@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "title": "無歸箭",
+  "slug": "no-return-arrow",
+  "category": "anime",
+  "style_preset": "anime-2d",
+  "planned_episodes": 24,
+  "episodes_per_season": 12,
+  "story_minutes": 22,
+  "broadcast_minutes": 30,
+  "character_ids": [
+    "shen-guihe",
+    "ji-wen",
+    "yin-wusheng",
+    "bao-sanqian",
+    "ji-wushuang",
+    "luo-qingyan",
+    "zhuxu",
+    "liu-buhuo",
+    "nie-gutie",
+    "canglan-ke",
+    "yuelan-ke",
+    "leng-yuheng",
+    "bai-shuangsheng",
+    "wei-tianshu",
+    "feng-chisui",
+    "qisha-mingjun",
+    "chu-wuchang",
+    "yan-hui",
+    "sha-nu",
+    "wuming-jianke"
+  ],
+  "thread_ids": [
+    "m01", "m02", "m03", "m04", "m05", "m06", "m07", "m08", "m09", "m10", "m11", "m12"
+  ],
+  "threads": {
+    "m01": "無歸箭鑄成當日被誰奪走：1埋（黑風），8部分（冥君不是主謀），16揭褚無常",
+    "m02": "霜夫人體內的三宗精元差誰：3埋（只差一道），5第二支箭，9第三道目標是沈歸鶴，12收（箭盡）",
+    "m03": "洛青衍是誰的兒子：1埋（頸後胎記），6揭，11對質，23收（母親為子死）",
+    "m04": "鯨背嶼收魂陣是誰的局：2埋，8收（七煞冥君嫁禍）",
+    "m05": "沈歸鶴的舊傷與赤楓鐵：2埋，10箭入病榻，12冷玉衡笑，21收（竹虛掉包的假鐵）",
+    "m06": "寂聞封功後怎麼回來：5埋，7赤羽換藥，11收（寒潭重生，滄瀾客折壽）",
+    "m07": "九淵機龍要什麼：12埋，17龍心，21收（機龍自爆）",
+    "m08": "誰把衛天樞送進幽都：12埋，20衛冷翻臉，23酆赤髓逐，24岳嵐客稱主上——保留",
+    "m09": "冥棺裡是誰、與寂聞生死相剋：20埋，24「冥棺呢」——保留",
+    "m10": "褚無常為何假死、陰字訣來歷：16埋，22陰字訣攔箭——保留",
+    "m11": "包三錢的死是真是假：13埋，18收（破廟後面）",
+    "m12": "柳不活為什麼求死、欠聶孤鐵什麼：3埋，9收（爐前飲鴆）"
+  },
+  "episode_fields": [
+    "number", "title", "logline", "hook", "conflict", "turn", "cliffhanger", "tension",
+    "setups", "payoffs", "general_payoffs", "characters", "locations", "theme",
+    "high_tension", "consequence", "state", "closed_ending"
+  ],
+  "high_tension_shape": {
+    "beat": "first_half or second_half",
+    "event": "具體事件",
+    "stakes": "誰即將失去什麼",
+    "consequence": "當集或延續後果"
+  },
+  "state_fields": ["time", "knowledge", "character_state", "evidence", "carry_forward"],
+  "cliffhanger_types": ["danger", "reveal", "choice", "reversal", "emotion"],
+  "ending_policy": "1–24集的cliffhanger.type相鄰不同，五段tension均為1–5、不能一路平、末段>=4。第一期開放結局：E24 closed_ending=false，以 reveal 接續期；m08、m09、m10 保留給續期，不得提前收束。",
+  "rules": [
+    "無歸箭射出即毀元神，修行者無法轉世重生；一旦出手不能收；持箭者體內要植入三宗三股精元才能發射，每取一股就要殺一位三宗高手；共三支，第 5、10、12 集各射一支，第 22 集的第四支是洛青衍在第 12 集暗藏的那一支。",
+    "分魂：沈歸鶴能把元神分成紗女與無名劍客，箭找不到完整元神；代價是本體昏病，任一化身被毀就永久少一塊記憶與功力。無名劍客第 10 集滅，第 12 集合魂後沈歸鶴仍缺一塊記憶，之後不再分魂。",
+    "封功與寒潭：寂聞第 5 集自封畢生功力保元神；第 11 集在寒潭以滄瀾客的血引解封重生，滄瀾客因此折壽，第二季不再能全力出手。",
+    "鑄劍：仁心劍要古劍、三宗血裔的頭顱、匠師以身入爐。柳不活第 9 集飲鴆獻顱，聶孤鐵第 10 集投爐；兩人不復活、不換名字。",
+    "機龍：九淵機龍要赤楓鐵為骨、《龍藏經》為魂、活人心為引；少一樣就會爆。白霜生第 17 集入爐為龍心而死；第 21 集因竹虛第 12 集掉包的假鐵而自爆。",
+    "姬無霜第 23 集為救洛青衍以身受箭，元神無歸，不復活。若全系列路線圖為了後期劇情需要她，只能改成第一期前的往事或他人冒名，不得在本包改寫這一條。",
+    "第 24 集：寂聞退隱、沈歸鶴封山、洛青衍受三宗之子名分、衛天樞投赤淵宮並對岳嵐客稱主上、冥棺下落不明、褚無常假死未揭。",
+    "人名、門派、地名、神兵、經書、招式一律原創，不得出現任何既有布袋戲作品的名稱；外觀提示詞用英文、不提任何既有作品或角色。"
+  ]
+}

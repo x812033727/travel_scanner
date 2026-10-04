@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "anime-series-plan",
+  "slug": "no-return-arrow",
+  "title": "無歸箭",
+  "title_en": "The Arrow of No Return",
+  "logline": "幽皇死後一年，他的女兒帶著幽都的老弱跪在三宗盟門前求收容，懷裡藏著一支能毀人元神的詛咒之箭。白衣謀士沈歸鶴明知是局仍把她留下，怒目佛寂聞為此與他決裂；一個求死的書生、一個自罰的匠師、一個不知道母親是誰的海外少年，將決定這支箭最後射向誰。",
+  "category": "anime",
+  "style_preset": "anime-2d",
+  "kind": "series",
+  "genre": "custom",
+  "lead": "ensemble",
+  "tone": "武俠群像、謀略對弈、偶戲式華麗古裝；謊言保護人與真話害死人的對立；每集兩段高張力、季末翻轉理解",
+  "planned_episodes": 24,
+  "season_count": 2,
+  "episodes_per_chapter": 12,
+  "open_ended": true,
+  "runtime": {
+    "broadcast_slot_minutes": 30,
+    "story_minutes": 22,
+    "op_ed_budget_minutes": 3,
+    "broadcast_slot_reserve_minutes": 5,
+    "note": "站主要求 20–30 分鐘一集；採 22 分鐘正文、30 分鐘時段，與 long-anime-v1 的企劃匯入路線所驗的數字相同。播出時段與正文分開，不以停頓或重複旁白補正文。此處是企劃預算，不是已量測媒體。"
+  },
+  "video_defaults": {
+    "category": "anime",
+    "format": "drama",
+    "look": {
+      "preset": "anime-2d"
+    },
+    "locale": "zh-TW",
+    "voice_note": "國語配音；每個角色固定一個聲音，說書人另一個；沒有台語路線。"
+  },
+  "production_support": {
+    "ready_for_import": false,
+    "admin_series_created": false,
+    "media_generated": false,
+    "published": false,
+    "gaps": [
+      {
+        "code": "episode-duration",
+        "required_story_minutes": 22,
+        "current_drama_max_minutes": 8,
+        "note": "SeriesIn 普通漫劇只接受 1–8 分鐘；22 分鐘要走 long-anime-v1（anime 分類、anime-2d、custom、ensemble、runtime_spec），不得改用 story 或 flat-explainer 繞過，也不得縮成 3 分鐘短漫劇。"
+      },
+      {
+        "code": "ensemble-retention",
+        "current_genre": "custom",
+        "note": "custom 題材的工人節奏規格要求每集 hook_type、lead_arc 與至少兩個爽點；本劇以兩段高張力與季末翻轉代替，未假填爽點欄位。"
+      },
+      {
+        "code": "episode-budget",
+        "shots_per_episode": 440,
+        "visual_tier_recommended": "hybrid",
+        "usd_per_episode_one_pass": { "clips": 360, "hybrid": 190, "stills": 100 },
+        "usd_per_episode_at_retake_cap": { "clips": 780, "hybrid": 440, "stills": 270 },
+        "note": "依 animation-production skill 的 3 分鐘 60 鏡估價（Veo 3.1 Lite）按 22 分鐘約 440 鏡等比放大。全片段一集約 3,500 片段秒，超過預設月配額 3,000 與單片上限 US$200；建議先以 hybrid 做第 1 集試播，再定等級。這些是估算，不是帳本。"
+      },
+      {
+        "code": "long-anime-policy",
+        "note": "long-anime-v1 的 planning 匯入路線（apps/api/app/video_automation/planning.py）綁定 22 分鐘正文與封閉結局的借來的黎明契約；本包是開放結局的第一期，匯入前要確認政策是否接受 open_ended=true，否則只能當唯讀企劃。"
+      }
+    ]
+  },
+  "source_note": "取材經典布袋戲「魔女入盟—詛咒之箭—鑄劍—智星軍師—機龍」的三段式故事結構，人名、門派、地名、神兵、經書、招式與台詞全部原創；拖戲的支線不排進 24 集。全系列路線圖（後續各期）在 saga/ 目錄，只到期與季的層級。",
+  "saga": {
+    "roadmap": "saga/README.md",
+    "note": "期一《無歸箭》是全系列的第一期；後續各期只有期與季層級的路線圖，沒有集級細綱，也沒有驗證腳本。"
+  }
+}
