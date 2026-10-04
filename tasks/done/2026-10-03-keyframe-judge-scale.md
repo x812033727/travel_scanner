@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-keyframe-judge-scale
 title: Keyframe judge scores saturate at the pass bar: anchor the scale, keep the best take, stop re-judging unchanged takes
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-judge-scale
 claimed_at: 2026-10-03T23:55:55Z
 created_at: 2026-10-03T23:55:43Z
-completed_at:
+completed_at: 2026-10-04T01:53:15Z
 branch: claude/keyframe-judge-scale
 depends_on: []
 scope:
