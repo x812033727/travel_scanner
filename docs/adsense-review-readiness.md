@@ -58,6 +58,24 @@ AdSense 完成剖析或將帳戶更新為「已獲授權」。DNS 查詢有 A �
 | [Petrobras／Cardano 新聞](https://mokaair.com/zh-TW/life/crypto-news-cardano-petrobras-fuel-traceability-20260930) | 有正文、比較表、術語、研究階段限制及 5 個 FAQ | FAQ 被抽離後殘留 H2／目錄入口，真正答案在相關閱讀等推薦之後。應先修閱讀順序；內容主要依賴一則 CoinDesk 報導，補充查證後的官方證據或原創解讀 |
 | [關於頁](https://mokaair.com/zh-TW/about) | 個人營運者、台灣所在地、聯絡／資料更正管道已公開 | 內容仍以旅行探索與行程為主，生效日 9 月 13 日；尚未說明現在生活科技／理財文章的範圍與編輯責任。補上真實的 AI 輔助、查核與勘誤方式，不能虛構人工審查流程 |
 
+### 後續六頁樣本（09:38 UTC，有限公開 HTML 覆核）
+
+以下頁面以至少 1.4 秒間隔串行讀取，皆回 200，canonical 與請求網址相同。
+這是內容語意樣本，沒有重新查證每個外部來源、即時價格或所有多語入口，不能當作全站驗收。
+
+| 頁面 | 已有的讀者價值與內容界線 | 仍待處理／覆核 |
+| --- | --- | --- |
+| [關西機場交通繁中](https://mokaair.com/zh-TW/guides/howto/kansai-airport-to-osaka-kyoto) | 五種交通模式、住宿基點、班次與票券取捨；文內標示 9/13、9/22 來源核對 | 相關閱讀應優先同地或同類決策文章；票價與班次仍須按旅行日期確認 |
+| [關西機場交通英文](https://mokaair.com/en/guides/howto/kansai-airport-to-osaka-kyoto) | 同語讀者可閱讀完整模式比較與限制；不是只有翻譯標題的空頁 | 本輪只查英文這一篇，不能推論五語所有攻略已完整覆核 |
+| [2026 AI 工具整理](https://mokaair.com/zh-TW/life/ai-tools-2026-overview) | 工具、模型、代理的區分、比較矩陣與隱私判斷 | 模型、價格及限制是 9/13 快照，後續內容更新應重新核對官方現況；不是本輪已完成更新 |
+| [50 個理財術語](https://mokaair.com/zh-TW/life/finance-glossary-50-terms) | 六類術語、易混淆概念、主管機關／條文來源與資訊用途界線；來源核對日 9/14 | 未逐条重新做法律或金融事實查核；本輪不能宣稱全部仍為最新 |
+| [Claude Code mods 新聞](https://mokaair.com/zh-TW/life/ai-news-claude-code-mods-20261001) | 列四個 Anthropic 來源與 10/4 核對日，明示沒有安裝實測，版本與未知方案範圍清楚 | 此篇 FAQ 問答配對正常；不能把已找到的 FAQ 閱讀缺陷擴大成所有文章都有錯 |
+| [首爾城市頁](https://mokaair.com/zh-TW/destinations/seoul) | 有明洞、弘大、東大門、江南及規劃入口 | 區域仍以名稱為主，缺交通取捨與官方來源；東京改善不能代表此頁也完成 |
+
+三個生活／科技／理財樣本末段重複推薦同一批頭頓、沖繩旅遊文章，主題相關性
+需要另行改善。這些是具體候選，不是 Google 指定退件原因；後續在協調任務中
+保留 AI 快照核對、首爾區域比較及相關閱讀改善，沒有在正式 CMS 改稿或發布。
+
 ## 處理順序與複查條件
 
 1. 修 FAQ 目錄與正文的錯位，保留 FAQ schema 並確認文章閱讀不中斷。已登記

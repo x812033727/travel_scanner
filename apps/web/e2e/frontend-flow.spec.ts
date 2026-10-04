@@ -1,4 +1,5 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
+import { writeFile } from "node:fs/promises";
 import { getDiscoveryCopy } from "../lib/discovery-copy";
 import { getFrontendFlowCopy } from "../lib/frontend-flow-copy";
 import { frontendCopy } from "../lib/frontend-navigation";
@@ -48,7 +49,7 @@ async function fixtures(page: Page, signedIn = false) {
   return {writes,authenticate};
 }
 
-async function expectReaderContentInViewport(page: Page, content: Locator, maximumBottom: number) {
+async function expectReaderContentInViewport(page: Page, content: Locator, minimumTop: number, maximumBottom: number) {
   await expect(content).toBeVisible();
   await expect(content).toBeInViewport({ratio:1});
   const box = await content.boundingBox();
@@ -56,6 +57,7 @@ async function expectReaderContentInViewport(page: Page, content: Locator, maxim
   const viewport = page.viewportSize()!;
   expect(box.x).toBeGreaterThanOrEqual(0);
   expect(box.y).toBeGreaterThanOrEqual(0);
+  expect(box.y).toBeGreaterThanOrEqual(minimumTop);
   expect(box.x + box.width).toBeLessThanOrEqual(viewport.width);
   expect(box.y + box.height).toBeLessThanOrEqual(viewport.height);
   expect(box.y + box.height).toBeLessThanOrEqual(maximumBottom);
@@ -108,31 +110,61 @@ for (const locale of ["zh-TW","zh-CN","en","ja","ko"]) {
       expect(searchBox!.y + searchBox!.height).toBeLessThanOrEqual(navBox!.y);
     }
     const firstCard = page.getByRole("article").filter({has:title});
-    await firstCard.scrollIntoViewIfNeeded();
     await expect(firstCard.getByRole("link", {name:f.saveItem,exact:true})).toBeVisible();
     await expect(firstCard.getByRole("button", {name:n.plan,exact:true})).toBeEnabled();
+    const header = page.locator(".site-header");
+    await expect(header).toBeVisible();
     // The fixture has metadata, a summary and source text; none may disappear.
     // Direct card-body paragraphs exclude any subsequently opened dialog content.
     const paragraphs = firstCard.locator(":scope > div > p");
     expect(await paragraphs.count()).toBeGreaterThanOrEqual(3);
     const controls = firstCard.getByRole("link").or(firstCard.getByRole("button"));
     expect(await controls.count()).toBeGreaterThanOrEqual(3);
-    const navBox = isMobile ? await page.locator(".app-bottom-nav").boundingBox() : null;
-    if (isMobile && !navBox) throw new Error("Visible mobile navigation must have a bounding box");
-    const bottomLimit = navBox ? navBox.y : page.viewportSize()!.height;
-    await info.attach("first-card-reader-geometry", {
-      contentType:"application/json",
-      body:JSON.stringify({
-        viewport:page.viewportSize(), bottomNavigation:navBox, title:await title.boundingBox(),
-        paragraphs:await Promise.all((await paragraphs.all()).map(async (paragraph) => ({text:await paragraph.innerText(),box:await paragraph.boundingBox()}))),
-        controls:await Promise.all((await controls.all()).map(async (control) => ({text:await control.innerText(),box:await control.boundingBox()}))),
-      }),
+    const captureGeometry = async () => ({
+      viewport:page.viewportSize()!,
+      document:await page.evaluate(() => ({scrollY,scrollHeight:document.documentElement.scrollHeight,maxScrollY:document.documentElement.scrollHeight - innerHeight})),
+      card:await firstCard.boundingBox(), header:await header.boundingBox(),
+      bottomNavigation:isMobile ? await page.locator(".app-bottom-nav").boundingBox() : null,
+      title:await title.boundingBox(),
+      paragraphs:await Promise.all((await paragraphs.all()).map(async (paragraph) => ({text:await paragraph.innerText(),box:await paragraph.boundingBox()}))),
+      controls:await Promise.all((await controls.all()).map(async (control) => ({text:await control.innerText(),box:await control.boundingBox()}))),
     });
-    await expectReaderContentInViewport(page, title, bottomLimit);
-    await expectReaderContentInViewport(page, firstCard.getByText(item.summary!, {exact:true}), bottomLimit);
-    for (const paragraph of await paragraphs.all()) await expectReaderContentInViewport(page, paragraph, bottomLimit);
+    const beforeScroll = await captureGeometry();
+    if (!beforeScroll.card || !beforeScroll.header) throw new Error("Reader card and sticky header must have bounding boxes");
+    const desiredCardTop = beforeScroll.header.y + beforeScroll.header.height + 16;
+    const targetScrollY = Math.min(beforeScroll.document.maxScrollY, Math.max(0,
+      beforeScroll.document.scrollY + Math.round(beforeScroll.card.y - desiredCardTop)));
+    let afterScroll = beforeScroll;
+    try {
+      // A reader deliberately moves the whole card below the header. Conditional
+      // viewport-only scrolling can leave its lower text behind the fixed nav.
+      await page.mouse.move(beforeScroll.viewport.width / 2, beforeScroll.viewport.height / 2);
+      await page.mouse.wheel(0, targetScrollY - beforeScroll.document.scrollY);
+      let previousPosition = "";
+      await expect.poll(async () => {
+        const currentScrollY = await page.evaluate(() => scrollY);
+        const card = await firstCard.boundingBox();
+        const position = JSON.stringify({scrollY:currentScrollY,card});
+        const settled = currentScrollY === targetScrollY && Boolean(card) && position === previousPosition;
+        previousPosition = position;
+        return settled;
+      }, {message:"The single reader scroll must reach its bounded target and settle"}).toBe(true);
+    } finally {
+      afterScroll = await captureGeometry();
+      const geometryPath = info.outputPath("first-card-reader-geometry.json");
+      await writeFile(geometryPath, JSON.stringify({targetScrollY,beforeScroll,afterScroll}, null, 2));
+      await info.attach("first-card-reader-geometry", {contentType:"application/json",path:geometryPath});
+    }
+    const navBox = afterScroll.bottomNavigation, headerBox = afterScroll.header;
+    if (!headerBox || (isMobile && !navBox)) throw new Error("Visible reader navigation must have bounding boxes");
+    const topLimit = Math.max(0, headerBox.y + headerBox.height);
+    const bottomLimit = navBox ? navBox.y : page.viewportSize()!.height;
+    expect(afterScroll.card!.y).toBeGreaterThanOrEqual(topLimit);
+    await expectReaderContentInViewport(page, title, topLimit, bottomLimit);
+    await expectReaderContentInViewport(page, firstCard.getByText(item.summary!, {exact:true}), topLimit, bottomLimit);
+    for (const paragraph of await paragraphs.all()) await expectReaderContentInViewport(page, paragraph, topLimit, bottomLimit);
     for (const control of await controls.all()) {
-      await expectReaderContentInViewport(page, control, bottomLimit);
+      await expectReaderContentInViewport(page, control, topLimit, bottomLimit);
       await expect(control).toBeEnabled();
       // Inline title links may span lines; hit-test a real fragment, not its union's whitespace.
       expect(await control.evaluate((node) => {

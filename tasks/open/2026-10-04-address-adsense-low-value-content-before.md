@@ -107,3 +107,31 @@ geometry is attached before assertions for CI diagnosis. No product-source or
 server-launch change was made in this integration follow-up. Latest-head CI is
 the remaining technical check; broader editorial and owner publication/release
 decisions remain open in this task.
+
+Bounded live follow-up sampled six additional canonical 200 pages at 09:38 UTC:
+zh-TW/en Kansai airport how-to, AI tools overview, finance glossary, Claude Code
+mods news and Seoul city. The semantic findings and exact URLs are recorded in
+docs/adsense-review-readiness.md; this is not all-type/all-locale acceptance or
+fresh verification of every external source. Outstanding concrete candidates:
+recheck the AI overview's 9/13 model/pricing/limits snapshot, add sourced Seoul
+area tradeoffs, and improve repeated unrelated lifestyle related-reading links
+(the same Vung Tau/Okinawa travel suggestions). Do not claim the valid mods FAQ
+is broken or that Google named any of these URLs. No CMS changes were made.
+The monetization plan's old #1202 not-deployed row now reflects the verified
+other-session 08:52 deployment, preserving separate clickout/ledger acceptance.
+Fresh public ads.txt around 09:38 UTC was an exact 59-byte match and HTTP 200;
+a freshly opened account list still displayed Not found/low-value/9-23.
+A technical ads.txt support draft is saved outside the repo and has not been sent.
+
+Third integration (ec64cc5) isolated discovery browser: 50 passed, 2 skipped,
+2 failed (mobile zh-TW/zh-CN). Exact title and summary passed; a card paragraph
+extended 5.390625px below the measured nav top. Missing persisted geometry means
+the exact paragraph/scroll-before-after remains unproven; source/language is a
+code-based inference, not captured coordinates. Playwright's CDP
+DOM.scrollIntoViewIfNeeded sees the layout viewport, not fixed-nav occlusion.
+Do not label this a proven product CSS defect or reduce clearance assertions.
+The contract follow-up uses one deliberate reader wheel scroll beneath the
+measured sticky header, then the same complete text/control/nav checks, with
+before/after geometry saved into the uploaded test-results directory. Final-head
+CI remains required; no additional product source edits or local server launch
+were authorized for this test correction.
