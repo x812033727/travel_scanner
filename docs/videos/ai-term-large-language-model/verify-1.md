@@ -2,7 +2,7 @@
 
 獨立查核者：codex / llm_review，2026-10-04（Asia/Taipei）。不是撰稿者；本輪只寫本報告，修正由撰稿者套用。已逐句讀完整長片旁白、所有字卡及插圖提示、縮圖與 YouTube metadata、claims.md、brief.md、demo.py、demo-log.md，以及兩支 Shorts 的全部文字。沒有用 lint 代替語義審查，也沒有呼叫任何模型或付費 API。
 
-最新 production source 的 video.json SHA-256：`87fae04fd747036b6016a1bf7508f694223b89081a7ea697fae7556441b3f605`。下方「實測節奏附錄」覆核兩個停頓調整；「聽稿改寫附錄」再覆核 9fyu 的單句同義改寫；兩鏡視覺提示附錄保留長版歷史，最後「兩鏡提示縮版附錄」綁定當前 arrival／handoff 提示。本報告原有事實結論沿用到此版本；實際聲音與媒體關卡須綁各自最新證據。
+最新 production source 的 video.json SHA-256：`d9e0929ca0ee0b26f5bf357a2f637564031c7eb91e6b4e7687744a02d4a55990`。下方各附錄保留停頓、同義口播及兩鏡提示的歷史覆核；最後「handoff近拍提示附錄」綁定當前來源。本報告原有事實結論沿用到此版本；實際聲音與媒體關卡須綁各自最新證據。
 
 原完整文字終審綁定 SHA-256（其後僅兩個停頓、一處同義口播及兩鏡插圖提示調整，見附錄；事實、示例與 metadata 未改動）：
 
@@ -221,3 +221,17 @@ build.mjs記憶體蒐集器的video.json和draft-metrics.json輸出仍與當前w
 當前pictures_hash為`e04741e22fea96fc`、visual_hash為`ac3092e9d3b164a0`。它們正常隨縮版兩prompt更新，不能沿用長版或BC的storyboard整份manifest hash當新分鏡批准；不變鏡可走正常request／verdict重用。前次實圖限制完全維持：plate不是播放鏡、既有judge問題未刪、未聲稱75張實圖全過；新兩圖、無偽字、正確閉傘姿態與中央9:16裁切須看實際replacement後才能驗收。
 
 最新完整私有證據：`<home>/mokaair-work/ai-series-continuation-20261004/llm-two-shot-short-source-audit.json`；helper為`llm-review/two-shot-short-source-audit.mjs`。長版歷史的`llm-two-shot-source-audit.json`保留原雜湊，未冒稱它屬縮版。來源查核延續不等於新圖已畫好、分鏡批准、成片、發布或G槽交付。
+
+## handoff近拍提示附錄：只改一鏡、音訊維持
+
+2026-10-04T12:18:00Z，獨立唯讀窄覆核；最新source SHA-256：**`d9e0929ca0ee0b26f5bf357a2f637564031c7eb91e6b4e7687744a02d4a55990`**。只修改本報告及保存私有證據，不改其他來源、TTS、媒體、manifest或批准，不呼叫API。
+
+將handoff.prompt替回`llm-before-handoff-closeup.json`後，完整JSON及序列化SHA精確回到前版`87fae04fd747036b6016a1bf7508f694223b89081a7ea697fae7556441b3f605`；**本次僅counter-handoff.data.prompt改變**。再將arrival／handoff替回BC基準，JSON及SHA仍精確回到`bc87f8b12c07a0039d60dec9f185dccefe5b3f38e65959298bcb5cc249badc5d`。因此其他73鏡、138句旁白／IDs／順序／pause／reveal、claims、voice、look、章節、字卡與metadata均不變；36項及補充10項事實結果沿用。新的近拍正面描寫兩對手、緊捆狹長綠布、束帶、水平傘軸與彎木柄，移除「No open canopy」等可能強化展開傘的詞；只收窄插圖構圖，不新增人物或數據主張。
+
+handoff提示453個ASCII字元；加完整Style519與原Camera後為999，再加`. Avoid: `及全Negative373後為**1381，嚴格少於1500**。原始完整合併字串與shotPrompt逐字相同，未觸發slice。arrival仍423字元、供應商合併1350；其request key仍`dd16eb1d10450f0a`，目前cached圖SHA為`e72884a08850794ef127b5af1808545f58484d801d13d05c3902e6c353df9f60`，實際檔案雜湊有效、needs_review=false。同model／references／bar下可正常重用，不因本次handoff改稿重買arrival。
+
+108個TTS requests及138個line keys全等；speech_hash仍`5e45b34feaa17c8c`、look_hash仍`ed4c2594703d65d6`。measured timeline core完全相同，timeline／narration／cache／check／flags全檔SHA與前述最新音訊證據相同；138clips與整軌SHA／samples有效，currentAudioCheck=138、staleTakes=[]、audioEvidenceProblems=[]、checkChapters=[]，lint **0 errors／0 warnings**。記憶體建置蒐集器也逐byte再現當前video及metrics，不寫來源。
+
+當前pictures_hash=`3df99b0742dfc545`、visual_hash=`d215b19233361e90`。主代理已另外保留前次三張handoff pilot原件及manifest/cache/ledger；本報告未刪問題或改評分，沒有將該次失敗pilot說成通過。本次近拍replacement仍須實看收合姿態、無字表面、中央9:16裁切及thumb／Short引用；未宣稱75張全圖合格。新storyboard須綁真實新manifest，音訊hash維持原證據。
+
+最新私有審計：`<home>/mokaair-work/ai-series-continuation-20261004/llm-handoff-closeup-source-audit.json`；helper為`llm-review/handoff-closeup-source-audit.mjs`。前版附錄與審計保留歷史。本次來源覆核不代表圖片／分鏡／成片批准、發布或G槽交付。

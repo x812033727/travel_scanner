@@ -165,7 +165,7 @@ card("wrap", "outro", { title: "會接話，還要**有據可查**", cta: "用�
 // these two compositions before buying their replacement pictures.
 const promptOverrides = {
   "counter-arrival": "Wide shot, community-center foyer, rainy morning. A wet-coated visitor and volunteer stand together by a rack holding one folded umbrella. The volunteer points to it. Both figures, hands and the entire rack fit in the central vertical third. Rain on glass, grey overcast light, soft shadows. All walls, glass and props are blank; no signs, posters, letters, digits, symbols, pseudo-writing, signatures, logos or watermarks.",
-  "counter-handoff": "Medium shot, community-center foyer, rainy morning. A volunteer offers one tightly folded, strapped umbrella horizontally at waist height to a visitor's open palm. Both faces, hands and the whole closed umbrella fit in the central vertical third; both people stand close. No open canopy or upright shaft. Rain on glass, grey overcast light, soft shadows. All surfaces blank; no signs, letters, symbols, pseudo-writing, signatures or logos.",
+  "counter-handoff": "Close-up at a community-center counter, rainy morning. Two people's hands meet over a compact folded rain umbrella lying horizontally: narrow green fabric wound tightly around a shaft, secured by one plain strap, curved wooden handle at its right end. A volunteer offers the bundle to a visitor's palm below. Both pairs of hands, the entire bundle and handle fit together in the central vertical third. Grey window light, blank walls and unmarked props.",
 };
 for (const scene of scenes) {
   if (promptOverrides[scene.id]) scene.data.prompt = promptOverrides[scene.id];
