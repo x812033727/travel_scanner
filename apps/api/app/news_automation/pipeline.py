@@ -66,6 +66,12 @@ ACTIVE_STATUSES = ("drafting", "verifying", "locale_review", "jev_review")
 REVERIFY_MARKER = "news_reverify_requested"
 # Both run the saved article through the checks again instead of drafting anew.
 REVERIFY_MARKERS = frozenset({REVERIFY_MARKER, EVIDENCE_REFRESH_MARKER})
+# Set by ``backfill_cli --resume-saved-bundles``: the five locales stored on the candidate
+# go through the checks that follow the final editor, without a new draft or translation.
+RESUME_MARKER = "news_resume_saved_bundle"
+# Kept until the run reaches an outcome, so a rerun after a crash or a stalled worker
+# continues from the stored text instead of drafting over it.
+KEPT_MARKERS = REVERIFY_MARKERS | {RESUME_MARKER}
 # What a candidate says while it waits for a Claude subscription account to free up.
 SUBSCRIPTION_PAUSED = "news_subscription_paused"
 # What a candidate says while Jev's daily call budget, counted per UTC day
@@ -214,7 +220,7 @@ async def _claim_capacity(
         return "deferred", None
     candidate.status = "drafting"
     candidate.processing_started_at = datetime.now(UTC)
-    if candidate.error_code not in REVERIFY_MARKERS:
+    if candidate.error_code not in KEPT_MARKERS:
         candidate.error_code = None
     candidate.error_detail = None
     candidate.prompt_version = settings.prompt_version
@@ -224,7 +230,7 @@ async def _claim_capacity(
 
 
 def _clear_reverify_marker(candidate: NewsCandidate) -> None:
-    if candidate.error_code in REVERIFY_MARKERS:
+    if candidate.error_code in KEPT_MARKERS:
         candidate.error_code = None
 
 
@@ -445,8 +451,10 @@ async def process_candidate(
 
         reverify_requested = candidate.error_code in REVERIFY_MARKERS
         refreshed = candidate.error_code == EVIDENCE_REFRESH_MARKER
+        resume_requested = candidate.error_code == RESUME_MARKER
         if (
             not reverify_requested
+            and not resume_requested
             and candidate.human_decision == "publish"
             and "zh-TW" in candidate.draft_bundle_json
         ):
@@ -486,7 +494,7 @@ async def process_candidate(
                 # it waits for tomorrow's budget, not for an editor. On 2026-09-26 a backfill
                 # held 207 of 243 candidates as uncertain duplicates for this reason alone.
                 candidate.status = "discovered"
-                if candidate.error_code not in REVERIFY_MARKERS:
+                if candidate.error_code not in KEPT_MARKERS:
                     candidate.error_code = JEV_QUOTA_PAUSED
                 candidate.error_detail = (
                     "Jev's daily call budget is spent; the candidate runs again after 00:00 UTC."
@@ -525,6 +533,11 @@ async def process_candidate(
             )
             return "manual_review"
         await session.commit()
+
+        if resume_requested:
+            return await _resume_saved_bundle(
+                session, redis, environment, settings, candidate, usable, runs
+            )
 
         reverify_documents: dict[Locale, GuideDocument] | None = None
         if reverify_requested:
@@ -743,11 +756,11 @@ async def process_candidate(
             if paused:
                 candidate.status = "discovered"
                 # A re-verify keeps its marker, so the next run checks the saved article.
-                if candidate.error_code not in REVERIFY_MARKERS:
+                if candidate.error_code not in KEPT_MARKERS:
                     candidate.error_code = SUBSCRIPTION_PAUSED
             else:
                 candidate.status = "failed"
-                if candidate.error_code not in REVERIFY_MARKERS:
+                if candidate.error_code not in KEPT_MARKERS:
                     candidate.error_code = type(error).__name__[:64]
             candidate.error_detail = f"{type(error).__name__}: {error}"[:4000]
         if runs.active is not None:
@@ -1006,6 +1019,45 @@ async def _second_stage(
             )
         )
 
+    return await _finish_bundle(
+        session,
+        redis,
+        environment,
+        settings,
+        candidate,
+        usable,
+        runs,
+        documents,
+        slug=slug,
+        event_date=event_date,
+        final_holds=final_holds,
+        last_call=localized is None or last_call,
+        automatic=automatic,
+    )
+
+
+async def _finish_bundle(
+    session: AsyncSession,
+    redis: Redis,
+    environment: Settings,
+    settings: NewsAutomationSettings,
+    candidate: NewsCandidate,
+    usable: list[NewsEvidence],
+    runs: _Runs,
+    documents: dict[Locale, GuideDocument],
+    *,
+    slug: str,
+    event_date: date,
+    final_holds: list[str],
+    last_call: bool,
+    automatic: bool,
+) -> str:
+    """Draw the artwork, check and save the five-locale article, then publish or hold it.
+
+    ``last_call`` asks Jev about every locale before a confirmed or automatic article goes
+    out; ``final_holds`` are the locales the final editor did not approve.
+    """
+
     documents = await ensure_assets(session, candidate, documents)
     problems: dict[str, list[str]] = {
         locale: hard_policy_problems(
@@ -1044,7 +1096,7 @@ async def _second_stage(
             f"The final editor held {', '.join(final_holds)}; see its issues below.",
         )
         return "manual_review"
-    if (localized is None or last_call) and (confirmed or automatic):
+    if last_call and (confirmed or automatic):
         held = await _jev_final(session, redis, environment, settings, candidate, runs, documents)
         if held:
             await _manual(
@@ -1095,6 +1147,86 @@ async def _second_stage(
         session, candidate, actor, checked, versions, reason=reason, metadata=metadata
     )
     return "published"
+
+
+async def _resume_saved_bundle(
+    session: AsyncSession,
+    redis: Redis,
+    environment: Settings,
+    settings: NewsAutomationSettings,
+    candidate: NewsCandidate,
+    usable: list[NewsEvidence],
+    runs: _Runs,
+) -> str:
+    """Finish a five-locale article that a check stopped after the final editor.
+
+    From 2026-10-01 until #1201 (2026-10-04) every automatic article failed the hard checks
+    for a process figure the pipeline no longer drew, and until #1136 such an article was
+    kept only on the candidate. Its translations, locale reviews and final edits are on
+    record, so it continues where it stopped: the hard checks, the final editor's recorded
+    verdicts, Jev's last call and publication, which checks the recorded verification and
+    reviews against the saved text again. Nothing is drafted or translated again.
+    """
+
+    documents = {
+        cast(Locale, locale): GuideDocument.model_validate(encoded)
+        for locale, encoded in candidate.draft_bundle_json.items()
+    }
+    if set(documents) != set(LOCALES):
+        raise AppError(422, "news_locale_bundle_incomplete", "五個語言版本必須完整")
+    if candidate.event_date is None:
+        raise AppError(409, "news_draft_unavailable", "候選草稿資料不完整")
+    slug = await _drafted_slug(session, candidate)
+    candidate.status = "locale_review"
+    await session.commit()
+    return await _finish_bundle(
+        session,
+        redis,
+        environment,
+        settings,
+        candidate,
+        usable,
+        runs,
+        documents,
+        slug=slug,
+        event_date=candidate.event_date,
+        final_holds=await _recorded_final_holds(session, candidate, documents),
+        last_call=True,
+        automatic=await _auto_publishable(session, candidate, usable),
+    )
+
+
+async def _recorded_final_holds(
+    session: AsyncSession, candidate: NewsCandidate, documents: dict[Locale, GuideDocument]
+) -> list[str]:
+    """Locales whose latest final edit did not approve exactly the stored text.
+
+    A locale with no final edit on record, or whose record describes other text, counts as
+    held: the article is saved and waits for a person instead of going out on its own.
+    """
+
+    latest: dict[str, NewsAssessment] = {}
+    for row in await session.scalars(
+        select(NewsAssessment)
+        .where(
+            NewsAssessment.candidate_id == candidate.id,
+            NewsAssessment.assessment_type == "locale_review",
+            NewsAssessment.evidence_hash == candidate.evidence_hash,
+        )
+        .order_by(NewsAssessment.created_at.desc())
+    ):
+        if row.locale is not None and (row.details_json or {}).get("stage") == "final_edit":
+            latest.setdefault(row.locale, row)
+    held: list[str] = []
+    for locale in ("zh-TW", *TARGET_LOCALES):
+        record = latest.get(locale)
+        if (
+            record is None
+            or record.verdict != "pass"
+            or record.details_json.get("document_sha256") != document_fingerprint(documents[locale])
+        ):
+            held.append(locale)
+    return held
 
 
 async def _final_edit(
@@ -1340,7 +1472,7 @@ async def recover_stalled_candidates(
         row.status = "failed"
         # A stalled re-verification keeps its marker, so the rerun re-verifies the edited
         # drafts instead of writing new ones over them.
-        if row.error_code not in REVERIFY_MARKERS:
+        if row.error_code not in KEPT_MARKERS:
             row.error_code = "news_processing_stale"
         row.error_detail = f"The worker stopped while this candidate was in {stalled_in}."
         if recoveries < MAX_AUTOMATIC_RECOVERIES:

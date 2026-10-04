@@ -218,3 +218,51 @@ hash 與 new final SHA。輸出維持 STOP；準備不付費、不自行重試�
 manifest 必須綁定 exact base publish metadata SHA、新 final、branding、speech 與實際
 檔案；字幕與章節使用新片頭偏移，舊字幕 hash、舊 final 或不同 base metadata 會拒絕。
 language POST 同樣先留 submitting receipt；未知結果禁止自動重送。
+
+### 已核准正文也改變的人工成片
+
+`prepareApprovedFinalHandoff`／`prepare-current-final --config JSON` 是獨立入口，
+不放寬 normal、retained-body-file、original-cut-range 的保存比對。它要求目前
+human-approved manual final、實際決定者與同 actor 的 `video_review_approved`
+audit（target、slug、gate、SHA 必須相同），以及該 final 附件的真正稿件、body
+timeline、zh-TW SRT、AAC narration 和縮圖。稿件與時間軸亦須匹配 body_change
+new_script/new_body_timeline。正式 prepare 必須重新讀取 live decision/audit；本機
+快照只證明當次離線準備，不能取代 activation 時的 fresh owner/idle/upload probe。
+
+新 contract/receipt discriminator 為 `approved-final-body-range`。驗證整片解碼、
+30-fps frame/packet/time 範圍、影音規格與响度、目前 pin 的片頭片尾，並留下正文
+packet 與 decoded PCM 指紋。旁白附件的 AAC、宣告的 raw WAV、目前 mix 各自保存
+身份；實測音差僅報告，`preservation_claim:false`，不宣稱舊正文未變或站主已聽審。
+body_change 內歷史 SHA 與 false script/audio/playback claims 原樣保留。
+metadata/chapters/SRT 全用當前 final 的實際核准版本，不加舊片頭偏移。
+
+季節影片的已核准 SRT 可明確使用 `adapter.caption_mode:"approved-line-windows"`。
+每句來源有 bounded integer frame window，逐字消耗每個 cue；只忽略 NFC/空白，
+且只允許 cue 結尾省略 `，。、；：` 五種標點。每句與每 cue 完整且唯一，順序不重疊，
+只允許 1ms 四捨五入；句中標點、問號、引號、文字及數字不可省略。reader/native
+每次重算 mapping；原 exact build 與既有一對一路徑不變。
+
+六季 owner 原稿新增句使用 `ext8-01-01` 等7個 legacy ID。只有這六片對應的
+`ext8-0[1-6]-0[1-7]` 不合法 native IDs 可用明示的 bijective alias adapter：
+`r` 加 SHA256(`slug\0rawScriptSHA\0rawID`) 前7個 hex。既有合法 ID 原樣，碰到
+既有 ID／其他 alias 就拒絕，不隨機重選。原 script/timeline/SRT/AAC 與 raw speech
+hash 原封不動保留；native 只改 line.id 與必要的 speech_hash，另外 pin native
+doc/timeline/alias表。consumer 每次從 raw evidence 重算並逐欄 deep compare，
+文字、時間窗、章節、鏡頭、lexicon、voice 都不可隨 alias 改動；兩套 caption window
+mapping 都驗。這不放寬 core schema，也不能把舊付費聲音 cache 套到新 ID。
+
+EP06 原 empty lexicon 的唯一 literal `Anthropic` 可作明示 native-only `null`
+spelling annotation；獨立保存 raw lexicon snapshot 原欄位與檔案/content hashes。
+reader 從 raw snapshot 重建 raw + `Anthropic:null`，限制 raw speech hash
+`6e3e1eabe7be8cc4` 與 native alias speech hash `45ca1b6ec2ca41d4` 均不變。
+沒有新讀音或文字替换；`pronunciation_approval_claimed:false`、
+`listening_approval_claimed:false`，不作人類聽審證據。其他字典不合併，六片依
+exact native profile 分01+05、02+03+04、06三批，共用 parent owner lock串行。
+
+六支 imported long 若正文已變，使用獨立 `prepareApprovedFinalBatch`；舊
+`prepareRenewedBatch` 仍要求原稿/lexicon 相同並拒絕新 discriminator。新 batch
+只有目前 source、獨立 request namespace 與全新 frozen runtime；舊279句英譯、
+worksheet、cache、dubs、progress、未知 paid receipts 和 accounting 全留
+`retained-source/original-batch`，不進 active resume 路徑，不退款或重試未知請求。
+舊 brief 僅作明示的 editorial context；不作新稿核准證據。輸出仍 STOP，無模型呼叫、
+source listening 或 YouTube 上傳。待 exact base publish 核准後，才可送真正新語言部件。

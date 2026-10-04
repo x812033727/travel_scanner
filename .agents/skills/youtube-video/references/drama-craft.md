@@ -67,6 +67,7 @@ E1 第一個鏡頭是 5 秒的旁白配鎖定中近景，動作是手指握緊�
   | `Medium shot`、`POV` | 三列都不算 |
 
 - `prompt` 寫的是這個鏡頭的**第一格**，也就是 `motion` 的動作開始之前那一刻（手舉在桌面上方，不是紙已經放平）。剪進去的只有素材的前幾秒，`motion` 要寫這幾秒裡看得完的事。
+- 這一節只管鏡位與剪點。一場戲的軸線、視線、進出同側與採用格連戲帳在 `.agents/skills/animation-camera/SKILL.md`「一場戲先定空間」與 `.agents/skills/animation-camera/references/scene-coverage.md` 第一節；上面那張景別表只是 craft 讀的那一份（`tools/video/core/craft.mjs` 的 `shotSize`），三個程式讀者（craft、插畫投影片的 `cameraMove`、assemble 的 `motionMove`）各從 `camera` 讀出哪些字、哪些字會分家，逐字表在 `.agents/skills/animation-camera/references/camera-keywords.md`。
 
 ## 三、鏡頭裡要有事發生
 
@@ -82,15 +83,15 @@ E1 第一個鏡頭是 5 秒的旁白配鎖定中近景，動作是手指握緊�
 - 場上的人先開口。旁白留給時間跳接，占比不超過 35%。
 - 一句以 12 字以內為主，超過 20 字的不超過一成；長句在換畫面的地方斷成兩句、兩個鏡頭。
 - **長短要有差**：以一句一個鏡頭為主，但每場戲要有兩到四個字的短鏡，也要有一個把兩句掛在同一鏡上的停留（揭露或決定之前那一拍）。每個鏡頭都一樣長是節拍器；`pace.spread` 量這件事。
-- **反應鏡與插鏡放的是畫外那個人正在說的那一句**：`speaker` 是說話的人，`data.characters` 只列畫面裡的人，`prompt` 寫明說話的人不在畫面裡。完全沒有聲音的動作鏡寫 `action_seconds`（1–8 的整數）加空的 `lines`，有角色、沒有時長下限的漫劇 `lint` 接受，長度就是它；旁白講述的影片、品牌故事那類有 480 秒下限的知識長片與動畫類沒有這種鏡頭（它們的長度在旁白上量）。檢查腳本的 `lines.empty` 只數既沒有台詞也沒有 `action_seconds` 的鏡頭。
+- **反應鏡與插鏡放的是畫外那個人正在說的那一句**：`speaker` 是說話的人，`data.characters` 只列畫面裡的人，`prompt` 寫明說話的人不在畫面裡。完全沒有聲音的動作鏡寫 `action_seconds`（1–8 的整數）加空的 `lines`，長度就是它；`lint` 只在兩種影片接受：有角色、沒有時長下限、不是知識長片、`category` 不是 anime 的漫劇（`tools/video/core/drama.mjs` 的 `timesSilentShots`），與 production policy 有效的 `long-anime-v1` 長篇動畫（`tools/video/core/anime-policy.mjs` 的 `validateAnimePolicy`）。旁白講述的影片、品牌故事那類有 480 秒下限的知識長片（它們的長度在旁白上量）與沒有有效長篇政策的 anime 類沒有這種鏡頭；完整條件在 `drama.md` 的「video.json 的重點」。檢查腳本的 `lines.empty` 只數既沒有台詞也沒有 `action_seconds` 的鏡頭。
 - 我們不放名字卡、字幕是可開關的 CC，所以**第一次出場的人要被叫出名字或身份**（「媽，請喝茶」），關掉 CC 也知道誰是誰。
 
 ## 五、節奏與成本
 
-- 目標是中位數 2.5–3.5 秒、九成不超過 6 秒、最長 8 秒，開場 30 秒至少 10 個鏡頭。參考片更快（中位數約 2 秒），我們先到這裡；中位數低於 2 秒就合併。
+- 目標是中位數 2.5–3.5 秒、九成不超過 6 秒、最長 8 秒，開場 30 秒至少 10 個鏡頭。參考片更快（中位數約 2 秒），我們先到這裡；中位數低於 2 秒就合併。檢查腳本的門檻是 `tools/video/core/craft.mjs` 的 `TARGETS`：`pace.median` 在 2–4 秒之間都算過（`medianShotSeconds`；2.5–3.5 是建議），`p90ShotSeconds` 6、`longestShotSeconds` 8、`opening30Shots` 10。
 - `lint` 對有角色的漫劇在中位數低於 2 秒才警告（`tools/video/core/drama.mjs` 的 `MIN_MEDIAN_SHOT_SECONDS`；旁白講述的影片仍是 3 秒），並把這份規格沒過的每一列印成警告（`craft hook.opening: …`；同一套實作在 `tools/video/core/craft.mjs`，檢查腳本與工人都讀它）。免關卡作品的工人在開場與鏡位那幾列（`CRAFT_GATE_ROWS`：`hook.*`、`motion.opening`、`size.face`、`size.wide`、`size.reestablish`、`size.stall`）沒過時直接退回撰稿，其餘列由撰稿修或在回報裡回答。
-- 切得密要花錢，而且照鏡頭數算，不照成片秒數算：每個鏡頭是一張關鍵影格、一次 judge，`clips` 等級再加一份模型最短長度的素材（此批固定 8 秒，價目在 `docs/videos/series-plans/production-20261001/profile.json`）。`hybrid`、`stills` 等級的靜圖鏡頭不買素材，但圖與 judge 照算。先把密度給開場 30 秒與每個爽點；任何等級，整集估價超出已核定的額度時，列出鏡頭數與金額問站主，不自己加。
-- **同一份素材切兩三次**（說—聽—說回到同一鏡位）：第二次回到鏡位的鏡頭寫 `data.source: { shot, from_s }`，它不畫關鍵影格、不買素材，`assemble` 從那個鏡頭的素材第 `from_s` 秒切進來；`from_s` 加鏡長要在素材長度內（此批素材固定 8 秒，lint 以 10 秒為上限），`clips --dry-run` 印出省下的秒數，帳本記一筆 `status: "cut"`。同一份素材放大成較近的景別（punch-in）還沒做：要拿一場試拍的素材量過 1.5 倍裁切後的畫質再決定，做好之前不要在分鏡裡假設它。
+- 切得密要花錢，而且照鏡頭數算，不照成片秒數算：每個鏡頭是一張關鍵影格、一次 judge，`clips` 等級再加一份素材與一次 judge。素材買幾秒由 `tools/video/media/clips.mjs` 的 `clipSeconds` 決定，不是鏡長：`veo-3.1*` 配 1080p 固定 8 秒（此批，價目在 `docs/videos/series-plans/production-20261001/profile.json`）；其他模型是鏡長進位成整秒、夾在 `MIN_CLIP_SECONDS` 4 與 `MAX_CLIP_SECONDS` 10 之間，再往上貼齊模型可給的秒數，所以 4 秒以下的鏡頭都買 4 秒。`hybrid`、`stills` 等級的靜圖鏡頭不買素材，但圖與 judge 照算。一鏡、一集、一個月各多少錢，三條路線（伺服器 API、Hailuo 網頁、Kling）的價目與額度，在 `.agents/skills/animation-production/SKILL.md`「錢怎麼算」「三條路線」，每個常數的出處在 `.agents/skills/animation-production/references/cost-model.md`。先把密度給開場 30 秒與每個爽點；任何等級，整集估價超出已核定的額度時，列出鏡頭數與金額問站主，不自己加。
+- **同一份素材切兩三次**（說—聽—說回到同一鏡位）：第二次回到鏡位的鏡頭寫 `data.source: { shot, from_s }`，它不畫關鍵影格、不買素材，`assemble` 從那個鏡頭的素材第 `from_s` 秒切進來；`from_s` 加鏡長要在 lint 的上限內（`tools/video/core/drama.mjs` 的 `MAX_SOURCE_CLIP_SECONDS` 10 秒；有 production profile 的作品 8 秒，`tools/video/core/lint.mjs` 的 `productionShotProblems`），也要在來源鏡頭實際買到的秒數內（此批固定 8 秒；其他模型可能只有 4 秒，`clips` 在來源買下後把超出的切鏡標 `needs_review`），`clips --dry-run` 印出省下的秒數，帳本記一筆 `status: "cut"`。同一份素材放大成較近的景別（punch-in）還沒做：要拿一場試拍的素材量過 1.5 倍裁切後的畫質再決定，做好之前不要在分鏡裡假設它。
 
 ## 六、包裝
 

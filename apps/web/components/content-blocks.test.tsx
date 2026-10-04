@@ -404,6 +404,16 @@ describe("rendering the rich blocks", () => {
     expect(screen.getByRole("heading", { level: 3 }).id).toBe("");
   });
 
+  it("continues the level-3 count a previous slice left open, until the next level-2 restarts it", () => {
+    render(<ContentBlocks headingStart={1} subsectionStart={2} blocks={[
+      { type: "heading", level: 3, text: "一之三" },
+      { type: "heading", level: 2, text: "二" },
+      { type: "heading", level: 3, text: "二之一" },
+    ]} />);
+    expect(screen.getAllByRole("heading", { level: 3 }).map((h) => h.id)).toEqual(["section-1-3", "section-2-1"]);
+    expect(screen.getByRole("heading", { level: 2 }).id).toBe("section-2");
+  });
+
   it("gives headings no id at all when no start is given, which is what the legal pages want", () => {
     render(<ContentBlocks blocks={blocks} />);
     for (const heading of screen.getAllByRole("heading", { level: 2 })) expect(heading.id).toBe("");

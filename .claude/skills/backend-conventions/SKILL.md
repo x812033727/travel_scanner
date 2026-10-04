@@ -13,14 +13,14 @@ metadata:
 
 ## 不變的規矩
 
-1. **migration 的 SQL 在 CI 的「乾淨資料庫」上多半沒跑過。** `0001_initial` 用 `Base.metadata.create_all` 從**目前的** models 建表，所以 `if "x" not in columns:` 之類的回填分支在 CI 一律跳過，第一次執行就是正式站。每一個會動資料的分支都要有自己的整合測試（`references/migration-tests.md`）。
+1. **migration 的 SQL 在 CI 的「乾淨資料庫」上多半沒跑過。** `0001_initial` 用 `Base.metadata.create_all` 從**目前的** models 建表，所以 `if "x" not in columns:` 之類的回填分支在 CI 一律跳過，第一次執行就是正式站。每一個會動資料的分支都要有自己的整合測試（`.agents/skills/backend-conventions/references/migration-tests.md`）。
 2. **`data` 這類 `JSON` 欄位在 Postgres 是 `json`，不是 `jsonb`。** `?`、`?|`、`?&`、`@>`、`<@`、`||`、`-`、`jsonb_set(...)` 在 `json` 上解析就失敗，空表也一樣；曾讓 migrate 容器 exit 1、整個部署自動回滾。用 `data ->> 'key' IS NOT NULL`、`->`、`->>` 與明確的 `::jsonb` 轉型。
 3. **`revision` 字串才是 id，檔名不是。** 有七支舊檔兩者不同（例如 `0041_ai_itinerary_refine_cost.py` 的 id 是 `0041_ai_itinerary_refine`）。`down_revision` 一律照上一支檔案裡的 `revision` 抄；id 最長 32 字元（`alembic_version.version_num` 是 `VARCHAR(32)`）。
 4. **編號會撞。** 別的 session 隨時合進 main；rebase 後 `alembic heads` 出現兩個，就把**自己的**那支改號：檔名、docstring 的 `Revision ID:`／`Revises:`、`revision`、`down_revision` 一起改，引用它的測試常數（`MIGRATION = "..."`）也要改。`tests/test_schema.py` 不寫死 head，不用動。
 5. **新的 migration 用 `op.get_context().as_sql` 判斷離線模式**（0083 起的慣例），不要呼叫 `context.is_offline_mode()`。舊檔裡已經用 `context.is_offline_mode()` 的，**不要順手改掉 `from alembic import context`**：它的測試靠 `monkeypatch.setattr(module.context, "is_offline_mode", ...)`。
 6. **定義 dataclass 的 migration 不能 `from __future__ import annotations`**：測試用 `spec_from_file_location` 載入、沒登記進 `sys.modules`，dataclasses 解析字串註解時會炸。
-7. **在呼叫端 `AsyncSession` 上寫東西的 helper**（分析事件、每日計數、標記）：不 `begin_nested()`、所有查詢與 insert 包在 `session.no_autoflush` 裡，insert 用 ORM entity 形式；測試斷言 `session.new`，不是發出的 SQL（`references/session-helpers.md`）。
-8. **後台頁要在四處登記**，只加前端 fallback 在正式站會是 forbidden（`references/admin-pages.md`）。每個後台 API 都自己用 `require_capability(...)` 檢查；破壞性操作再加 `require_admin_step_up(...)`。
+7. **在呼叫端 `AsyncSession` 上寫東西的 helper**（分析事件、每日計數、標記）：不 `begin_nested()`、所有查詢與 insert 包在 `session.no_autoflush` 裡，insert 用 ORM entity 形式；測試斷言 `session.new`，不是發出的 SQL（`.agents/skills/backend-conventions/references/session-helpers.md`）。
+8. **後台頁要在四處登記**，只加前端 fallback 在正式站會是 forbidden（`.agents/skills/backend-conventions/references/admin-pages.md`）。每個後台 API 都自己用 `require_capability(...)` 檢查；破壞性操作再加 `require_admin_step_up(...)`。
 9. **應用程式回滾不會降資料庫。** migration 要能讓上一版程式繼續跑（只加欄位、先不刪），否則回滾後 `/ready` 因 head 不符回 503。
 
 ## 主幹：寫一支 migration

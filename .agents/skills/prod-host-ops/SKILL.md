@@ -13,7 +13,7 @@ metadata:
 
 ## 不變的規矩
 
-1. **一個檢查要能失敗才算數。** 這台主機上有一串檢查「通過但什麼都沒證明」（清單在 `references/nginx-edge.md`）；寫下結論前先問：如果壞了，這個指令的輸出會不一樣嗎？
+1. **一個檢查要能失敗才算數。** 這台主機上有一串檢查「通過但什麼都沒證明」（清單在 `.agents/skills/prod-host-ops/references/nginx-edge.md`）；寫下結論前先問：如果壞了，這個指令的輸出會不一樣嗎？
 2. **設定的真相在資料庫，不在容器環境。** AI 金鑰、模型、Base URL、功能開關都在後台 `provider_configs` 列，`load_runtime_settings(session)` 才是有效值；在容器裡 `printenv` 會看到「沒有金鑰」而其實有。
 3. **改正式站設定先問站主**，用有選項的提問；nginx reload、改 `.env`、正式站的寫入都是。後台裡的「發布」「確認發布」這類不可逆按鈕，先把要按的東西寫清楚，讓站主決定由誰按。
 4. **不印出秘密。** 金鑰只報「有／沒有」；`--actor-email` 從容器的 `ADMIN_EMAILS` 取，經 shell 變數傳、不印出來。
@@ -24,14 +24,14 @@ metadata:
 
 | # | 情況 | 做什麼 | 讀 |
 | --- | --- | --- | --- |
-| 1 | 429、爬蟲被擋、「Google 抓不到 ads.txt」 | 先確認 log 有記到（access_log 覆蓋問題），按來源位址而非 UA 分組，對照公布的網段 | `references/nginx-edge.md` |
-| 2 | POST 零星 502 | 分清部署重建（容器 StartedAt 對得上部署 log）與 keep-alive 競態；用 `ss -tan` 看誰先關 | `references/nginx-edge.md` 的「502」 |
-| 3 | AI 行程規劃／介紹搜尋失敗或變慢 | 讀 api log 的 `ai planner provider … failed`，看有效設定，再按卡片的「測試連線」 | `references/ai-settings.md` |
-| 4 | 新聞沒產出、候選卡住 | `settings_cli` 看開關與金鑰、看 `news-worker` 在不在、看清單在哪個狀態 | `references/news-ops.md` |
-| 5 | 改後台設定 | 後台表單（或主機 CLI），改完逐張驗證 | `references/ai-settings.md`、`references/admin-browser.md` |
-| 6 | 法律頁改版 | 後台逐語系編輯 → 雜湊核對 → 逐語系發布 → 20 個網址回歸 | `references/admin-browser.md` |
-| 7 | 合作按鈕、分潤 clickout | 真實瀏覽器點擊，看請求的 `Origin` 與 303 | `references/admin-browser.md` |
-| 8 | 主機上的 Claude／Codex／agy 帳號 | 用哪個帳號、額度怎麼讀、登入壞了怎麼補 | `references/ai-accounts.md` |
+| 1 | 429、爬蟲被擋、「Google 抓不到 ads.txt」 | 先確認 log 有記到（access_log 覆蓋問題），按來源位址而非 UA 分組，對照公布的網段 | `.agents/skills/prod-host-ops/references/nginx-edge.md` |
+| 2 | POST 零星 502 | 分清部署重建（容器 StartedAt 對得上部署 log）與 keep-alive 競態；用 `ss -tan` 看誰先關 | `.agents/skills/prod-host-ops/references/nginx-edge.md` 的「502」 |
+| 3 | AI 行程規劃／介紹搜尋失敗或變慢 | 讀 api log 的 `ai planner provider … failed`，看有效設定，再按卡片的「測試連線」 | `.agents/skills/prod-host-ops/references/ai-settings.md` |
+| 4 | 新聞沒產出、候選卡住 | `settings_cli` 看開關與金鑰、看 `news-worker` 在不在、看清單在哪個狀態 | `.agents/skills/prod-host-ops/references/news-ops.md` |
+| 5 | 改後台設定 | 後台表單（或主機 CLI），改完逐張驗證 | `.agents/skills/prod-host-ops/references/ai-settings.md`、`.agents/skills/prod-host-ops/references/admin-browser.md` |
+| 6 | 法律頁改版 | 後台逐語系編輯 → 雜湊核對 → 逐語系發布 → 20 個網址回歸 | `.agents/skills/prod-host-ops/references/admin-browser.md` |
+| 7 | 合作按鈕、分潤 clickout | 真實瀏覽器點擊，看請求的 `Origin` 與 303 | `.agents/skills/prod-host-ops/references/admin-browser.md` |
+| 8 | 主機上的 Claude／Codex／agy 帳號 | 用哪個帳號、額度怎麼讀、登入壞了怎麼補 | `.agents/skills/prod-host-ops/references/ai-accounts.md` |
 
 ## 常用指令
 
@@ -56,11 +56,11 @@ curl -s -o /dev/null -w '%{http_code} %{time_total}s\n' https://mokaair.com/zh-T
 
 | 檔案 | 內容 |
 | --- | --- |
-| `references/nginx-edge.md` | 主機上的 nginx 長相、限流區與豁免、四個 log、假通過的清單與正確的驗法、爬蟲網段的更新、keep-alive 502 的兩半與 `ss -tan`、CDN 檢查 |
-| `references/ai-settings.md` | AI 服務的卡片與欄位、優先順序、Claude 訂閱連線、逐張驗證、在主機上診斷行程規劃、MiniMax 的坑 |
-| `references/news-ops.md` | 新聞自動化的服務、`sources_cli`／`settings_cli`、清單與狀態、worker 被部署中斷之後、診斷順序 |
-| `references/admin-browser.md` | 用瀏覽器驅動後台 React 表單、原生 dialog 與勾選框、法律頁的雜湊核對與發布、用真實點擊驗 clickout |
-| `references/ai-accounts.md` | `/admin/ai-accounts` 與主機代理：帳號槽、SSH 上怎麼選帳號、額度來源、登入失敗的補救、檢查指令 |
+| `.agents/skills/prod-host-ops/references/nginx-edge.md` | 主機上的 nginx 長相、限流區與豁免、四個 log、假通過的清單與正確的驗法、爬蟲網段的更新、keep-alive 502 的兩半與 `ss -tan`、CDN 檢查 |
+| `.agents/skills/prod-host-ops/references/ai-settings.md` | AI 服務的卡片與欄位、優先順序、Claude 訂閱連線、逐張驗證、在主機上診斷行程規劃、MiniMax 的坑 |
+| `.agents/skills/prod-host-ops/references/news-ops.md` | 新聞自動化的服務、`sources_cli`／`settings_cli`、清單與狀態、worker 被部署中斷之後、診斷順序 |
+| `.agents/skills/prod-host-ops/references/admin-browser.md` | 用瀏覽器驅動後台 React 表單、原生 dialog 與勾選框、法律頁的雜湊核對與發布、用真實點擊驗 clickout |
+| `.agents/skills/prod-host-ops/references/ai-accounts.md` | `/admin/ai-accounts` 與主機代理：帳號槽、SSH 上怎麼選帳號、額度來源、登入失敗的補救、檢查指令 |
 
 ## 規則全文在哪（不重抄）
 
