@@ -1,6 +1,6 @@
 ---
 name: animation-camera
-description: 寫 AI 漫劇分鏡時怎麼把一場戲放進攝影機：軸線與視線、鏡位、`camera`／`prompt`／`motion` 三個欄位各給哪個程式讀者（手藝檢查、插畫變化規則、assemble 的靜圖運鏡）與哪個模型（關鍵影格、片段、judge）讀，八個運鏡字與 pan 的方向，靜圖、片段、切素材的選法與每一鏡買什麼，以及同一鏡在 Hailuo 網頁與 Kling MCP 怎麼改寫。寫任何有角色的漫劇鏡頭、改被 judge 或站主退回的鏡頭、看到 assemble 說第 0 格不像關鍵影格、或要在花錢前知道一場戲會被讀成什麼之前，先讀這個 skill，寫完跑它的 shot_reading 腳本。Write, read and translate AI drama camera lines so that the tools' keyword readers, the image and video models and the judge all see the same shot.
+description: 寫 AI 漫劇分鏡時怎麼把一場戲放進攝影機：軸線與視線、鏡位、camera／prompt／motion 的程式與模型讀法、運鏡字與 pan 方向、靜圖／片段／切素材的選法，以及同鏡的 Hailuo／Kling 網頁改寫。使用者指定「布袋喵參考風格」或真一隻布袋喵頻道時，讀可選的畫風、表演與鏡頭手冊。寫有角色的漫劇鏡頭、改被 judge 或站主退回的鏡頭、首格不像關鍵影格、或花錢前要確認鏡頭讀法時，先讀此 skill，寫完跑 shot_reading。Write, read and translate AI drama camera lines and an optional Budaimiao reference style for Hailuo or Kling browser production.
 metadata:
   short-description: 動畫視角：一場戲怎麼寫進 camera、prompt、motion
 ---
@@ -13,7 +13,7 @@ metadata:
 
 ## 什麼時候用、什麼時候不用
 
-- 用：寫或改任何有角色的漫劇分鏡（每一個 `template` 是 `shot` 的場景）；鏡頭被 judge、`assemble` 或站主退回要改；把同一鏡拿到 Hailuo 網頁或 Kling MCP 做；在花錢前要知道一場戲會被程式讀成什麼、要花多少。
+- 用：寫或改任何有角色的漫劇分鏡（每一個 `template` 是 `shot` 的場景）；鏡頭被 judge、`assemble` 或站主退回要改；把同一鏡拿到 Hailuo／Kling 網頁或另外選定的 CLI／MCP 做；使用者指定「布袋喵參考風格」；花錢前要知道一場戲會被程式讀成什麼、要花多少。
 - 不用：沒有角色的解說與品牌故事、插畫投影片（它們的畫面規則在 `story.md` 與 `visuals.md`，景別字表不同）；改 `look`、角色外觀、聲音（`drama.md`）；判斷畫面好不好看（`visual-quality.md`）；手藝規格沒過要改結構（`drama-craft.md`）。
 
 ## 先讀
@@ -29,6 +29,8 @@ metadata:
 | 寫一場戲：軸線、視線、進出、連戲帳；一場 12 鏡的戲寫兩次（可接受版附腳本輸出、craft 列與估價；試拍式每鏡標錯） | `.agents/skills/animation-camera/references/scene-coverage.md` |
 | 被 judge、`assemble` 或站主退回 | `.agents/skills/animation-camera/references/model-misreads.md`（逐 take 的證據、提示怎麼組、Lite 的歷史參數失敗與此版本相容處理、judge 的題、Hailuo 與 Kling 的字彙來源）與 `visual-quality.md`（診斷、小卡、冷看） |
 | 要算錢、選路線、看每個付費階段的前提 | `.agents/skills/animation-production/SKILL.md`；這批動畫的 Lite 契約（8 秒、首尾格、無參考圖、CC）在 `animation-production.md` |
+| 使用者指定「布袋喵參考風格」或真一隻布袋喵頻道 | [references/budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md)：三支原片抽樣、可選美術與導演規格、原創八鏡與同鏡的 Hailuo／Kling 網頁提示；只在點名時套用，其他作品保留原風格 |
+| 要透過內建瀏覽器製作 Hailuo／Kling 片段 | [.agents/skills/animation-production/references/browser-production.md](../../../.agents/skills/animation-production/references/browser-production.md)：依本次工具能力上傳、選設定、記帳與下載；先檢查 production profile 的匯入限制 |
 
 ## 三個欄位各給誰讀
 
@@ -101,6 +103,7 @@ metadata:
   `from_s` 看來源**實際買到**的秒數，不看 lint 的上限：s04 約 2.93 s、s08 約 2.2 s（lint 對 `scene-coverage.md` 示範場的估計），伺服器預設的 Omni（與 H3）照 `clipSeconds` 只買 4 s，1.5 ＋ 2.2 ＝ 3.7 放得下，代價是重播 s04 的 1.5–2.93 s；想從尾巴之後切（`from_s: 4`）只有 Lite 1080p 固定 8 s 時成立，Omni 下得把 s04 寫長（多買秒數）。細節在下一節的 `source` 條。
 - 不要把 `camera` 整行貼在 prompt 開頭再加一段每鏡共用的狀態段（試拍 E2 的寫法）：`promptSimilarity` 警告、`setupKey` 把不同鏡位黏成一個、`shot_reading` 的 `prompt.camera`、模型多看一遍沒有新資訊。
 - 畫外說話者寫 `Chen speaks off screen`，不列進 `characters`：列了他就占一張參考圖（上限 4）、多一題 `identity_chen`，而圖裡沒有他的臉，judge 答不了。`speaker` 仍是他（`shot_reading` 的 `cast.offscreen`、`cast.speaker`）。
+- 目光指向畫外的人時，把可見角色與畫外目標分成清楚的子句，例如 `Close-up of Lu's face at screen right, Shen off screen left at his eyeline`。目前 `cast.offscreen` 以子句內名字共現判斷，兩人同句可能誤標可見角色；先讀清誰在畫面裡，不能照提示刪掉應入鏡的角色。待修票：`2026-10-04-shot-reading-offscreen-target-false-positive`。
 - 數量與狀態寫成看得到的東西：`one folded note`、`one watch on the right wrist`、`a continuous steel door with its seam sealed`、`blank paper, no writing`。否定句少用：試拍把「already closed」「no locking operation」畫成開著的門。紙上任何字 judge 的 `no_text` 都扣，要讀的字另外合成。
 - 場景的光寫在這一鏡（`lamp light from the right`），不寫進 `look.style`（試拍倉庫火光漏進婚禮）。
 - 手部插鏡只寫手、袖口、腕上的東西、道具，不寫臉與髮型。`characters` 列不列：`visual-quality.md` 第二節要留資料綁定（只精簡 prompt）；這裡建議留空，理由是列了角色就把整段 appearance 接進提示（`shotAppearancePrompt`），而 identity 題（`keyframeRubric` 權重 2、單題 ≥ 4.0 才過，`apps/api/app/video_media/judge.py` 的 `MIN_CRITERION`）在沒有臉的圖上答不了（試拍 S04 R01 畫成上半身廣鏡）。哪種更穩沒驗，兩種別在同一場裡混用。範本：`Insert of <東西> on <哪裡>, <哪隻手> with <腕上的東西> at frame <left／right>; <誰> speaks off screen`。
@@ -131,7 +134,7 @@ metadata:
             "motion": "Ayu pulls the drawstring of the coin bag open.", "characters": ["ayu", "chen"] } }
 ```
 
-  只有「有角色、沒有時長下限、不是知識長片、`category` 不是 anime」的漫劇接受它（`tools/video/core/drama.mjs` 的 `timesSilentShots`；品牌故事、解說、動畫類不行）。`motion` 寫完整的起手、接觸、收勢一件事，秒數照動作需要寫，不照台詞；長度估算就是這個數。
+  普通漫劇須「有角色、沒有時長下限、不是知識長片、`category` 不是 anime」（`tools/video/core/drama.mjs` 的 `timesSilentShots`）；長篇動畫另由有效的 `long-anime-v1` production policy 接受動作拍（`tools/video/core/schema.mjs` 的 `validAnime`）。品牌故事與解說不適用。`motion` 寫完整的起手、接觸、收勢一件事，秒數照動作需要寫，不照台詞；長度估算就是這個數。
 
 ## 靜圖、片段、切素材、接續、fit
 
@@ -154,33 +157,20 @@ metadata:
 
 ## 同一鏡在 Hailuo 與 Kling 怎麼寫
 
-關鍵影格仍由產線畫（景別、構圖、軸線在圖裡已定），`camera` 這一行照上面的讀者寫；到了那兩家，再把運鏡翻成它們的字，它們都不讀產線的讀者。來源與未驗的事在 `model-misreads.md` 第五節；方案價目、佇列與怎麼把 mp4 帶回產線在 `animation-production`。
+先沿**使用者本次指定的路線**：要求內建瀏覽器，就用 Hailuo／Kling 網頁；CLI／MCP 是另外選定的路線，不因歷史選擇自動取代網頁。產線的關鍵影格已定景別、構圖與軸線，兩家都用同一鏡核准首格；`camera` 仍照上面的工具讀法寫，網頁的動態正文用動作＋一種運鏡＋身份／道具穩定。操作讀 [browser-production.md](../../../.agents/skills/animation-production/references/browser-production.md)，具體八鏡改寫讀 [budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md) 第四節。
 
-| 東西 | 產線（API） | Hailuo 網頁（image-to-video） | Kling（官方 CLI 的 `kling image_to_video`，站主 2026-10-04 選的；社群 mcp-kling 的 `generate_image_to_video`） |
-| --- | --- | --- | --- |
-| 第一格 | 通過 judge 的 `keyframes/<shot>-<seed>.png` | 上傳同一張當 first frame。Claude 桌面版的內建瀏覽器傳不了本機檔案（實測 2026-10-04），要 Claude in Chrome 的檔案上傳或 Playwright（還沒試） | 同一張：`kling-video-v3_0` 的 `first_image`（末格 `tail_image`）；`v3_0_omni`／`o1` 是 `image_1`…`image_7`（實測 2026-10-04 讀 `who_am_i`；圖怎麼交給 CLI 還沒試） |
-| 運鏡 | `camera` 原文接在 `motion` 後 | MiniMax API 文件（2026-10-03）的方括號指令：`locked` → `[static]`，`push in` → `[zoom]`，pan → `[pan]`（方向寫字裡，畫面往哪跑未驗）；tilt 沒有對應的字，寫原文 | 官方 CLI：有沒有鏡頭控制的參數沒有核對，運鏡先寫進 prompt 原文（未驗）。社群 MCP 的 camera control：`locked` → `static`，`push in` → `zoom`，pan → `pan`，拿不定 → `auto`；方向與正負怎麼給未驗 |
-| 動作 | `motion` 原文 | 提示正文貼同一句 `motion` | motion prompt 貼同一句 |
-| 風格句 | `look.motion` 自動接上 | 自己決定貼不貼 | 同 |
-| 否定 | `look.negative`：Lite 由 adapter 完整接成 `Avoid: …`，非 Lite 保留 `negativePrompt` | 併進正文 `Avoid: …`（API 的 adapter 也這樣做） | `negative_prompt` 欄位，上限未驗 |
-| 秒數 | `clipSeconds` | H3 4–15 秒整數，自己選（設定面板，實測 2026-10-04） | 官方 CLI（實測 2026-10-04）：`kling-video-v3_0` 3–15 秒整數，`o1` 3–10 秒，`v2_5`／`v2_6` 5 或 10 秒。只有社群 MCP 的 `generate_video` 限 5 或 10 秒 |
-| 比例與輸出 | 照模型與 profile（`animation-production`） | 比例**預設 21:9，要改成 16:9**（選項：自動／21:9／16:9／4:3／1:1／3:4／9:16）；H3 2K 的輸出是 2560×1440、24 fps，不是 1920×1080（實測 2026-10-04） | NORMAL 帳號列的模型都只有 720p，付費方案有沒有 1080p 未驗；`v3_0_omni`／`o1` 的 `aspect_ratio` 是 16:9／9:16／1:1（實測 2026-10-04） |
-| 聲音與分鏡 | `native_audio` 永遠 false；模型自己切鏡由 `qc.mjs` 擋 | 輸出帶 AAC 音軌（實測 2026-10-04），成片不用 | `enable_audio` 與 `prefer_multi_shots` 預設都是 true，**兩個都傳 false**：一鏡是一個連續鏡頭（實測 2026-10-04 讀 `who_am_i`） |
-| 下載 | — | 走「全部下載 → 無水印下載」：結果卡 `<video>` 的 src 是有浮水印的版本，`clips import` 的 ffmpeg 檢查抓不到（實測 2026-10-04；步驟在 `.agents/skills/animation-production/references/providers-and-plans.md` §1.2） | 還沒生成過（帳號 0 點），未驗 |
-| 進產線 | 自動進 `clips/manifest.json` 與帳本 | `clips import --slug <SLUG> --shot <id> --file <mp4> --provider hailuo-web`（步驟在 `.agents/skills/animation-production/references/stage-preconditions.md` 最後一節）：前提同 `clips`，跑同一組 ffmpeg 檢查（`tools/video/media/qc.mjs`：黑格、`freezedetect`、模型切鏡、1280×720 與 23 fps 下限、第 0 格對這一鏡關鍵影格 PSNR ≥ 22），沒過 `needs_review`；judge 要帶 `--judge` 才問；帳本記點數。`assemble` 之後照常驗 fit 的停格 > 60 格（`MAX_FREEZE_FRAMES`，`fit: "freeze"` 除外）、整支格數與響度 | 同，`--provider kling-mcp` |
+| 東西 | Hailuo 網頁 | Kling 網頁 |
+| --- | --- | --- |
+| 首格與參考 | 用當前瀏覽器有文件的上傳工具交同一張首格，確認預覽；參考欄另核對 | 同；CLI 的 image 欄位名不當成網頁欄位 |
+| 運鏡與動作 | 一鏡一個主要可見動作，運鏡先用英文語意；API 方括號指令對網頁仍未驗 | 同；不把社群 MCP 的 camera control 當網頁選項 |
+| 風格與否定 | 保留本集 `look.motion` 的穩定要求；負面欄有就用，沒有就接 `Avoid: …` | 同；負面欄、字數上限按當前 UI 核對 |
+| 秒數、比例、模型 | 由本鏡需求與當前 UI 決定，16:9；歷史 H3 2K 實測不是原生 1080p | 同；CLI 列出的秒數／解析度不代替網頁實測 |
+| 聲音與分鏡 | 一個連續鏡頭；原生聲音按本案契約處理，既有配音／CC不改 | 同；多鏡／原生音訊開關只操作網頁實際提供的 |
+| 下載與匯入 | 用網站下載按鈕取得正確版本；先檢查浮水印，再依 stage-preconditions 匯入 | 同；網頁來源以 `--provider external` 並在 `--note` 記 Kling web，CLI／MCP 的歷史標籤不冒充網頁 |
 
-同一鏡（示範場的 s06）三種寫法：
+**能力的邊界**：2026-10-04 Claude 桌面內建瀏覽器曾無本機上傳工具，是那次環境的證據；不能推成 Codex 或所有內建瀏覽器都不能上傳。依當前工具文件與 UI 確認；做不到時交站主完成缺的一步，不抽 cookie、不換 profile、不注入 base64／DataTransfer。
 
-```
-產線    motion: Chen pushes the coin bag back across the counter toward Ayu
-        camera: Over-the-shoulder from behind Ayu on Chen, locked
-        clipPrompt → "Chen pushes the coin bag back across the counter toward Ayu. Over-the-shoulder from behind Ayu on Chen, locked"（look.motion 空）
-Hailuo  首格 keyframes/s06-1.png；提示 "Chen pushes the coin bag back across the counter toward Ayu [static]"；H3 768P、16:9（預設 21:9 要改）、6 s（最短 4 s；台詞 5.4 s，整數秒往上取）
-Kling   官方 CLI：kling-video-v3_0，first_image 同一張；prompt 同一句加 camera 原文；6 s（3–15 秒整數）；enable_audio false、prefer_multi_shots false
-        社群 MCP：首格同一張；motion prompt 同一句；camera control static；只有 5 或 10 s，5 s 不夠 5.4 s 的台詞，只能 10 s 或拆鏡
-```
-
-網頁、CLI 與 MCP 都用站主的帳號，不用代理自己的帳號；兩家的片段都沒經過產線的 judge，等於多一道人看。有 production profile 的集進不了外部片段（`animation-production` 的路線規則）。
+CLI／MCP 的模型、字彙來源與已驗／未驗值仍在 `model-misreads.md` 第五節及 `.agents/skills/animation-production/references/providers-and-plans.md`；不是本次網頁路線的預設。外部片段沒有自動通過產線 judge；現行 `clips import` 無條件拒絕含 `series.production.profile` 的作品，改 provider 值也不會解除，付費前先查。
 
 ## 每寫完一場戲的檢查清單
 
@@ -223,4 +213,4 @@ node .agents/skills/animation-camera/scripts/shot_reading.mjs <file> --json | --
 - 參考片的運鏡：量到的只有鏡長與景別（`drama-craft.md` 最後一節），「鎖定不是預設」「同一運鏡 ≤ 連 3」是編輯判斷。
 - 手部插鏡列不列角色哪種更穩、過肩近側的 identity 題過不過、`eyes open throughout, one natural blink is fine` 會不會改變 judge 分數：各一次證據或零次。
 - Hailuo 網頁是否照 API 文件解讀方括號指令、Kling MCP 的 pan 方向與 zoom 正負、Kling 官方 API 的 `camera_control` 欄位：沒有在頁面上核對（`model-misreads.md` 第五節）。2026-10-04 的實測沒有補上這幾項：Hailuo 那一支是文生影片，量的是點數、時間與輸出規格；Kling 官方 CLI 讀了指令、模型與參數，帳號 0 點、一支都沒生成。
-- 這份 skill 讓一個沒看過產線的代理寫出可接受的一場戲（任務的驗收第五條）：一次前向測試（2026-10-03，12 鏡的兩人餐桌戲）三稿到可接受，但寫的人開了 `timeline.mjs`、`clips.mjs` 與 craft 的正則才過；這一版補的 `action_seconds` 的位置、`holds` 那組字、來源買到的秒數就是從那次來的，之後還沒再測。
+- 這份 skill 讓一個沒看過產線的代理寫出可接受的一場戲（任務的驗收第五條）：一次前向測試（2026-10-03，12 鏡的兩人餐桌戲）三稿到可接受，但寫的人開了 `timeline.mjs`、`clips.mjs` 與 craft 的正則才過；`action_seconds` 的位置、`holds` 那組字、來源買到的秒數就是從那次來的。這個 12 鏡用例尚未重跑；2026-10-04 另做布袋喵風格的原創三鏡前向測試，讀法零陷阱並能寫出兩家網頁提示與 profile 匯入限制，但只完成離線分鏡，未驗模型、媒體或完整集。
