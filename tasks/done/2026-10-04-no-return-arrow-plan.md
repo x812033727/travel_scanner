@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-no-return-arrow-plan
 title: 偶的江湖：取材經典布袋戲結構的長篇漫劇企劃包（第一、二季 24 集與全系列路線圖）
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude
 claimed_at: 2026-10-04T02:20:53Z
 created_at: 2026-10-04T02:20:53Z
-completed_at:
+completed_at: 2026-10-04T14:49:40Z
 branch: claude/vibrant-cray-mdpjzx
 depends_on: []
 scope:
