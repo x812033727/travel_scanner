@@ -987,6 +987,22 @@ Non-claims: DURATION_ONLY for these bound bytes. This increment does not re-revi
 
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none for these bound bytes.
 
+## PR #1203 complete-keyframe fixtures increment: 1 file (2026-10-04)
+
+Reviewer: `codex-independent-video-recovery-20261004`, the independent reviewer of the preceding recovery increment. Author: `codex-video-recovery-20261004`, coordinating the keyframe fixture author. Scope: DURATION_ONLY for `tools/video/core/drama.test.mjs` in source commit `06d555da2e92b5bcc315effc7af3040aa2cca8b4`. The reviewer authored none of this source patch and changes only the two receipts.
+
+Baseline: all 108 registered files at previously accepted commit `9679f35734858324dc8f1a1195f01244840efea7` match the preceding receipt's hashes, and every registered working-tree file matches committed source `06d555da2e92b5bcc315effc7af3040aa2cca8b4`. The preceding report SHA256 is `149923acaf4f4055641dadc04c96079bf50dbe3b695e610b6d06938b3d87421d`. Every historical section, including the original 11-binding recovery increment, remains byte for byte intact. One hash is rebound; 107 bindings and the 108-path registry are unchanged.
+
+Findings: the bound test adds createHash and replaces its synthetic partial keyframe manifest with a selected file and matching SHA256 for every drawn scene, plus required end frames. It initially retains opening.needs_review=true, checks the current actionable note, then clears that same flag before the original storyboard-to-render assertions. The test now supplies complete picture evidence required by the reviewed production guard; it does not loosen that guard, remove a pipeline assertion or fabricate a production approval. All surrounding narration/timeline, clips, music and assembled-check bindings remain unchanged. No duration target, measured floor, minimum override, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, source-pack hash or covered state changes. The 600/780-second targets, measured 480-second floor and eight-minute minimum retain their preceding rules.
+
+For context the reviewer also read the unbound automation/story.test.mjs fixture update, which saves selected picture bytes and reuses their hashes in the still-clip stub, and test_saved_items_integration.py, whose module-scoped Redis/database setup and teardown match the existing usage-settings and deployments integration fixtures. These files are outside REVIEW_FILES. The saved-items behavioral assertions and production source are unchanged; the review gives no PostgreSQL/Redis execution claim.
+
+Ran (Node 24.19.0, offline on Windows): all 108 baseline and source-byte hash comparisons, and the complete diff of the one rebound file and the two contextual test files. After rebinding, `node tools/video/long-form/cli.mjs check` and `node --test tools/video/long-form/review.test.mjs` are run, with exact results in the handoff. The authors separately report 45 passing tests across the two picture-fixture files; this reviewer did not rerun those suites.
+
+Non-claims: DURATION_ONLY for this bound test. This increment does not re-review the 107 unchanged bindings, claim full-suite or CI completion, certify production media/runtime or PostgreSQL/Redis integration, recover historical replies, authorize paid work, change spending limits or owner approvals, deploy, upload or publish. The original recovery review and historical sections retain their revision-specific claims.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none for this bound file.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1057,7 +1073,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/branding.mjs` | `aaad784dc23fe4bc1fc08c2871a5cd122ba483c500a07f128cb836dd8f05c8c7` |
 | `tools/video/core/branding.test.mjs` | `bebfeabcb0855bffc18f0334dd1a6206bb374552467edb036d999ca5398374cb` |
 | `tools/video/core/drama.mjs` | `239de3ef51aeafd36dd2142c80dc952807023788de3dd7129167640382571242` |
-| `tools/video/core/drama.test.mjs` | `8d21408e4a5a477b60e87275e79ce5ce7b5d6c396960b0884adcbb04bc562fc0` |
+| `tools/video/core/drama.test.mjs` | `fc340b513059963046c9c5854e52625cea8278579e6f1317db9dc9e430b4e3d7` |
 | `tools/video/core/duration.mjs` | `e92c104bc62babf18f47c75b67416807484f1af794b94cd8790350990dba8edd` |
 | `tools/video/core/duration.test.mjs` | `388bda7c57e548c2f50165a713e038e147645d283409c1f09393e8eef68652ba` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
