@@ -1,0 +1,228 @@
+{
+  "slug": "dots-lesson-06",
+  "kind": "life",
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-chat"
+  ],
+  "featured": false,
+  "display_order": 606,
+  "aliases": {},
+  "related": [
+    "dots-lesson-07"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "第 06 課｜雲端與本機電腦：檢視、接管、交還與撤銷",
+      "description": "這堂課讓你辨認 dot 的雲端環境與你的本機電腦，實際規劃一次檢視、接管與交還流程。你也會練習本機存取的啟用和撤銷，知道離線狀態、網站登入與電腦權限各自代表什麼。",
+      "hero": {
+        "src": "/guides/dots-lesson-06/hero.png",
+        "alt": "第 06 課｜雲端與本機電腦：檢視、接管、交還與撤銷：Mokaair 原創課程封面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "這堂課讓你辨認 dot 的雲端環境與你的本機電腦，實際規劃一次檢視、接管與交還流程。你也會練習本機存取的啟用和撤銷，知道離線狀態、網站登入與電腦權限各自代表什麼。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/dots-lesson-06/diagram-1.svg",
+          "alt": "第 06 課｜雲端與本機電腦：檢視、接管、交還與撤銷：原創教學流程圖",
+          "width": 1600,
+          "height": 900,
+          "caption": "Mokaair 原創教學流程圖",
+          "description": "查看環境，接管再交還。三個重點由左至右為「雲端電腦」、「本機連接」、「工作環境」。本圖為概念圖解，不代表產品介面或實測結果；編號只標示圖中的三個重點。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "summary",
+          "items": [
+            "雲端電腦有自己的檔案與登入，個人瀏覽器登入不會同步。",
+            "檢視後用 Take over 接管，完成操作用 Return control 交還。",
+            "本機存取需獨立允許；Offline 不等於 Revoke access。"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "先修條件與適用條件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先完成建立 dot。準備可開啟 ChatGPT 的桌面電腦、一個只含虛構資料的本機資料夾，以及可公開的官方網頁連結。這次優先用不需登入的頁面；如果網站要求登入，帳號持有人自行完成。公司帳號的本機存取還可能受管理員控制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "dot 的雲端電腦本來就存在，擁有自己的檔案、軟體與瀏覽器工作階段。本機需要另外允許存取，目前一次只能連線一部個人電腦；雲端仍保持連線。本機步驟需要電腦上線、ChatGPT App 開啟，連線 Codex 或啟用 Work Sync 都不會單獨給 dot 本機權限。"
+        },
+        {
+          "type": "heading",
+          "text": "跟著做：先檢視雲端，再測本機",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "提供一個公開頁面的小工作。 請 dot 開啟本課官方來源之一，列出雲端與本機的差別，先不連線其他帳號。你要觀察它使用的環境，不要求它提交表單或修改網站。",
+            "開啟雲端電腦。 進入 dot 的 profile，在 Computers 找雲端電腦；如果對話提供瀏覽器交接，可選 Open computer。開啟畫面只代表檢視，不代表滑鼠與鍵盤控制已移交。",
+            "確認控制狀態再接管。 選 Take over 取得控制，用一個簡單、不具外部後果的操作練習，例如在已開啟的官方頁面捲到標題。此時先不要同時要求 dot 操作相同頁面，避免互相干擾。",
+            "交還並說明剛才的改動。 選 Return control，回對話說你已捲到哪一段，請它從目前頁面接續整理。檢查後續成果的來源；看見頁面不等於內容分析已正確。",
+            "需要登入時走私人流程。 dot 可送出私人登入表單，讓你輸入帳號與所需驗證；也可自行接管網站登入。憑證送往遠端瀏覽器，不需放進聊天。Save to Passwords 在有提供時是可選儲存；下次用儲存登入仍要你確認。有效網站工作階段與儲存密碼是不同狀態。",
+            "準備本機示範資料。 在專用資料夾放一份「本機讀書會摘要」，只寫虛構日期與待辦，記下確切路徑。開啟這部電腦上的 ChatGPT App，在 dot 的 profile 進 Computers，找到 Your computer，選 Allow access；閱讀確認後再次選 Allow access。",
+            "只交辦指定資料夾的讀取。 提供確切路徑與檔名，請它核對摘要，不要求遍歷整臺電腦。它可能建立本機 Work 或 Codex 工作，開啟工作檢查執行位置。不同工具與瀏覽器的支援仍需依當下環境確認。",
+            "完成後撤銷存取。 回 Computers 選 Revoke access。若看到 Offline，僅代表目前電腦不可用，並沒有撤銷連線。撤銷後記錄狀態並檢查相關工作；電腦權限控制和已委派工作的停止，需要分別確認。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "在 dots 對話輸入",
+          "code": "請用你的雲端瀏覽器開啟這個公開官方頁面：\nhttps://learn.chatgpt.com/docs/dots/computers-and-apps\n列出雲端電腦與本機電腦的使用差別，附來源。\n我會檢視畫面、接管捲動一次，再交還控制。\n這次不要登入網站、提交表單或連線新的帳號。\n若你無法開啟頁面，說明原因，不要用猜測內容替代。\n"
+        },
+        {
+          "type": "heading",
+          "text": "教學期待結果：環境與控制可核對",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "雲端練習期待能開啟正確官方頁，辨認目前控制狀態，接管後完成捲動，再交還讓 dot 接續。頁面顯示與工具分析是不同證據：都要儲存，不能只用電腦畫面推定任務完成。本機練習期待讀到指定摘要，並能定位實際工作所在電腦。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這些是驗收項目，真實控制與撤銷畫面尚待擷取。網站的登入畫面、密碼欄位、儲存登入資訊不得公開。若使用私人登入，停止錄影，完成後再錄不含帳號資料的工作畫面。"
+        },
+        {
+          "type": "heading",
+          "text": "接續練習：變更檔案，再撤銷權限",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先由你修改本機摘要，把待辦截止日改成另一個明確日期。保持電腦上線，回原工作請它重新讀取指定檔案，只列日期差異。驗收時將實際檔案與新版結果並排。接著撤銷 dot 本機存取，詢問是否能繼續讀取；預期它不得把舊結果說成新讀取。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "在 dots 對話接續更新",
+          "code": "我已人工更新本機示範摘要：[貼上確切檔案路徑]。\n請重新讀取這一份，列出截止日的舊值、新值與使用來源。\n其他檔案不在範圍內。若電腦不可用或權限已撤銷，請直接說明。\n不要拿上次的結果當成這次已讀取的證據。\n"
+        },
+        {
+          "type": "heading",
+          "text": "常見失敗與恢復",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "雲端未登入網站，回私人登入請求，不能指望本機登入狀態同步。網站阻擋雲端瀏覽器，可在允許的情況下請 dot 改用已連線本機；這可能建立獨立本機工作，不移轉雲端登入，也不保證所有本機瀏覽器都受支援。若網站要求額外驗證，由你完成；不要用教學指令碼繞過防護。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本機顯示 Offline，先確認電腦網路、App 開啟與登入工作區；需要撤銷則使用 Revoke access。改選電腦不會把已有工作搬過去，舊工作仍依原環境繼續。找不到成果時開原工作檢查，先核對執行位置再補資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交還控制後，先請 dot 回述接下來要完成的內容，再確認它使用目前頁面與原本工作。若畫面與指示不一致，補上你做過的操作；對外表單提交仍不在這次練習範圍內。"
+        },
+        {
+          "type": "heading",
+          "text": "完成檢查",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "[ ] 我知道開啟電腦與取得控制是兩件事。",
+            "[ ] 雲端接管與交還都完成，成果有正確來源。",
+            "[ ] 我確認本機需要獨立授權與線上條件。",
+            "[ ] 指定檔案更新有重新讀取與版本對照。",
+            "[ ] 我分清 Offline、Revoke access 與停止工作。",
+            "[ ] 所有公開畫面都未含登入憑證或私人路徑。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "heading",
+          "text": "電腦狀態與下一步",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "畫面或狀態",
+            "代表什麼",
+            "下一步"
+          ],
+          "rows": [
+            [
+              "Open computer",
+              "檢視雲端畫面",
+              "需要操作時選 Take over"
+            ],
+            [
+              "Take over",
+              "你取得控制",
+              "完成後選 Return control"
+            ],
+            [
+              "Offline",
+              "本機目前不可用",
+              "查網路與 App，不當成撤銷"
+            ],
+            [
+              "Revoke access",
+              "移除本機存取",
+              "另外確認相關工作狀態"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "操作提醒",
+          "text": "操作提醒：真正登入時停止畫面擷取；雲端和本機各有登入狀態，不能把已登入的私人瀏覽器當成雲端憑證。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "回 dots 教學總目錄",
+              "kind": "life",
+              "slug": "dots-guide"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Computers and apps：雲端、登入與本機",
+          "url": "https://learn.chatgpt.com/docs/dots/computers-and-apps",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Tasks and memory：原始工作環境",
+          "url": "https://learn.chatgpt.com/docs/dots/tasks-and-memory",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Controls：委派與停止",
+          "url": "https://learn.chatgpt.com/docs/dots/controls",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}
