@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-jev-noul-criteria-keys-yes-no
 title: Jev noul criteria are sent as yes/no; TypeSafe documents true/false
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-jev-contract
 claimed_at: 2026-10-04T14:50:09Z
 created_at: 2026-10-03T17:48:46Z
-completed_at:
+completed_at: 2026-10-04T15:31:28Z
 branch: claude/jev-criteria-true-false
 depends_on: []
 scope:

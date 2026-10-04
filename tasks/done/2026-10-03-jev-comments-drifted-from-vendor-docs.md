@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-jev-comments-drifted-from-vendor-docs
 title: Jev comments and docs drifted from the code and TypeSafe's docs
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-jev-contract
 claimed_at: 2026-10-04T14:48:52Z
 created_at: 2026-10-03T17:48:46Z
-completed_at:
+completed_at: 2026-10-04T15:31:04Z
 branch: claude/jev-criteria-true-false
 depends_on: []
 scope:
