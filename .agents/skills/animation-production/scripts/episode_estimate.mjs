@@ -6,7 +6,7 @@
 //   node .agents/skills/animation-production/scripts/episode_estimate.mjs <video.json>
 //     [--tier clips|hybrid|stills] [--model <clip model id>] [--resolution <r>]
 //     [--plan hailuo:standard|pro|master|max | kling:standard|pro|premier|ultra]
-//     [--image-price N] [--price-per-second N] [--credits-per-video N] [--minutes-per-clip N]
+//     [--image-price N] [--price-per-second N] [--credits-per-second N] [--minutes-per-clip N]
 //     [--keyframe-takes N] [--clip-takes N] [--cap N] [--month-clip-seconds N]
 //     [--production] [--strict] [--json]
 //
@@ -17,7 +17,8 @@
 // 或方案 id，每一筆寫明來源與讀取日期；旗標可以蓋過。離線、不碰伺服器：伺服器實際選的模型、每影片上限、
 // 每月額度要看 `node tools/video/cli.mjs media-status`。
 // --plan 把同一集的片段換算成方案的 credits、月額度占比、兩種美元（月費攤／頁面價），並和伺服器路線並列、印損益
-// 平衡秒數（月費 ÷ 伺服器每秒價）；--resolution 給伺服器模型的解析度，--plan hailuo:* 時也選 768p 或 2k 的檔位。
+// 平衡秒數（月費 ÷ 伺服器每秒價）；--resolution 給伺服器模型的解析度，--plan hailuo:* 時也選 768p 或 2k 的檔位，
+// --plan kling:* 時選 720p 或 1080p。
 // 結束碼：0；--strict 且裁定不過（超過 --cap、超過 --month-clip-seconds、超出 tier、production 下的長鏡頭、既有
 // data.source 超出來源實際買到的秒數）是 1；讀不到檔或參數錯是 2。
 import { readFileSync } from "node:fs";
@@ -46,13 +47,15 @@ export const DEFAULT_MONTH_CLIP_SECONDS = 3000;
 export const DEFAULT_CLIP_MODEL = "gemini-omni-1.1-flash";
 export const DEFAULT_IMAGE_MODEL = "gemini-3-pro-image";
 export const DEFAULT_MUSIC_MODEL = "lyria-3.5";
-// 未驗證：第三方 2026 年整理的 Kling 3.0 Omni standard 5 s 約 35–45 credits、professional 約 70。
-// 官方 CLI 的 who_am_i 不給 credits 價，2026-10-04 授權進來的帳號是 NORMAL、0 credits，一支都沒生成；
-// 報價前先在站主帳號裡生成一支、記前後差額。
-export const DEFAULT_KLING_CREDITS_PER_VIDEO = 40;
-// 估價的單位，不是 Kling 的限制：kling-video-v3_0 可以要 3–15 秒整數（實測 2026-10-04），
-// 但 5、10 秒以外扣幾 credits 沒有任何來源，所以仍以第三方的「一支 5 秒」計。
-export const KLING_VIDEO_SECONDS = 5;
+// 官方價目（未實扣）：kling.ai/quickstart/klingai-video-3-model-user-guide 與 …-video-3-omni-model-user-guide，
+// 2026-10-04 讀。VIDEO 3.0 與 3.0 Omni 不開原生音訊時 1080p 8 credits/s、720p 6；開音訊 12／9（產線丟音軌，
+// 不開）；Omni 帶參考影片 16／12。站上公開指南 apps/api/app/guides/content/kling-runway-video-tools.json 引的是同一組。
+// 還沒在站主帳號實際扣過一支（2026-10-04 授權進來的 CLI 帳號是 NORMAL、0 credits）。
+export const KLING_PRICES_READ_ON = "2026-10-04";
+export const KLING_CREDITS_PER_SECOND = { "1080p": 8, "720p": 6 };
+export const KLING_AUDIO_CREDITS_PER_SECOND = { "1080p": 12, "720p": 9 };
+// 3.0／3.0 Omni 一支 3–15 秒整數（官方 user guide；CLI 的 kling-video-v3_0 也是，實測 2026-10-04）。
+export const KLING_CLIP_SECONDS = [3, 15];
 // 假設：方案佇列裡一支片段從送出到拿到要幾分鐘；只用來把「幾支片段」換算成「幾小時」。量過的只有一支：
 // Hailuo H3 2K 5 秒、沒有別的在排隊，約 4 分 40 秒（實測 2026-10-04）；有排隊、較長的片段與 Kling 都沒量。
 export const DEFAULT_MINUTES_PER_CLIP = 6;
@@ -156,23 +159,23 @@ const HAILUO_CREDITS_PER_SECOND = { "2k": 12, "768p": 7 };
 export const HAILUO_CREDITS_BASIS = { "2k": `實測 ${PLANS_MEASURED_ON}`, "768p": "推算" };
 const HAILUO_NOTE = `H3 2K 12 credits/s 是在 Max 帳號實測的（${PLANS_MEASURED_ON}：5 秒一支扣 60）；每級都一樣、以及 768P 的 7 credits/s，仍推算自訂閱頁的每月秒數（Pro 4,500 credits ≈ 375 s 的 2K、≈ 643 s 的 768P；Standard 1,000 ≈ 84 / 143 s）；頁面標的每秒美元是以年繳月價算的`;
 const HAILUO_OUTPUT_NOTE = `H3 2K 的輸出是 2560×1440、24 fps、帶 AAC 音軌（實測 ${PLANS_MEASURED_ON}）：不是原生 1920×1080，production profile 不收；音軌成片不用。下載走「全部下載 → 無水印下載」，結果卡 <video> 的 src 是有浮水印的版本，clips import 的 ffmpeg 檢查抓不到`;
-const KLING_NOTE = `每支影片的 credits 未驗證：40 是第三方 2026 年的整理（standard 5 s 約 35–45）；官方 CLI 的 who_am_i 不給 credits 價，${PLANS_MEASURED_ON} 授權進來的帳號是 NORMAL、0 credits，沒有生成過。用 --credits-per-video 蓋過`;
+const KLING_NOTE = `每秒 credits 是官方 user guide 的價目（${KLING_PRICES_READ_ON} 讀；VIDEO 3.0／3.0 Omni、不開原生音訊：1080p ${KLING_CREDITS_PER_SECOND["1080p"]}、720p ${KLING_CREDITS_PER_SECOND["720p"]}；開音訊 ${KLING_AUDIO_CREDITS_PER_SECOND["1080p"]}／${KLING_AUDIO_CREDITS_PER_SECOND["720p"]}），還沒在站主帳號實扣過一支；第一支記前後餘額差。用 --credits-per-second 蓋過`;
 
 /**
  * 訂閱方案（價目：hailuoai.video 訂閱頁與 kling.ai 會員頁，2026-10-03 在應用內瀏覽器讀；Hailuo H3 2K 的
  * credits/s 是 2026-10-04 實測；三條路線的比較、操作步驟與權利在
  * .agents/skills/animation-production/references/providers-and-plans.md）。
- * Hailuo 的 credits 以秒計，Kling 以「一支 5 秒影片」計（估價單位，見 KLING_VIDEO_SECONDS）。
+ * Hailuo 與 Kling 的 credits 都以秒計（Kling 的每秒價見 KLING_CREDITS_PER_SECOND）。
  */
 export const PLANS = {
   "hailuo:standard": { vendor: "hailuo", label: "Hailuo Standard", fee_usd: 14.99, fee_annual_monthly_usd: 8.40, credits: 1000, running: 1, queued: 8, credits_per_second: HAILUO_CREDITS_PER_SECOND, page_usd_per_second: { "2k": 0.101, "768p": 0.059 }, default_resolution: "2k", clip_seconds: [4, 15], images: "每張圖都扣 credits（單價未抄）", note: HAILUO_NOTE },
   "hailuo:pro": { vendor: "hailuo", label: "Hailuo Pro", fee_usd: 54.99, fee_annual_monthly_usd: 30.40, credits: 4500, running: 2, queued: 8, credits_per_second: HAILUO_CREDITS_PER_SECOND, page_usd_per_second: { "2k": 0.081, "768p": 0.047 }, default_resolution: "2k", clip_seconds: [4, 15], images: "圖片無限（1K）", note: HAILUO_NOTE },
   "hailuo:master": { vendor: "hailuo", label: "Hailuo Master", fee_usd: 119.99, fee_annual_monthly_usd: 71.20, credits: 10500, running: 2, queued: 12, credits_per_second: HAILUO_CREDITS_PER_SECOND, page_usd_per_second: { "2k": 0.081, "768p": 0.047 }, default_resolution: "2k", clip_seconds: [4, 15], images: "圖片無限（2K）", note: HAILUO_NOTE },
   "hailuo:max": { vendor: "hailuo", label: "Hailuo Max", fee_usd: 199.99, fee_annual_monthly_usd: 184.00, credits: 27000, running: 2, queued: 12, credits_per_second: HAILUO_CREDITS_PER_SECOND, page_usd_per_second: { "2k": 0.081, "768p": 0.047 }, default_resolution: "2k", clip_seconds: [4, 15], images: "圖片無限（4K）", unlimited: "credits 用完後 Hailuo 2.0/2.3（1080p 6 s、10 s）進 relax 佇列無限生成，H3 不在內", note: HAILUO_NOTE },
-  "kling:standard": { vendor: "kling", label: "Kling Standard", fee_usd: 10, first_month_usd: 6.99, credits: 660, running: null, queued: "unlimited", video_seconds: KLING_VIDEO_SECONDS, credits_per_video: DEFAULT_KLING_CREDITS_PER_VIDEO, note: KLING_NOTE },
-  "kling:pro": { vendor: "kling", label: "Kling Pro", fee_usd: 37, first_month_usd: 25.99, credits: 3000, running: null, queued: "unlimited", video_seconds: KLING_VIDEO_SECONDS, credits_per_video: DEFAULT_KLING_CREDITS_PER_VIDEO, note: KLING_NOTE },
-  "kling:premier": { vendor: "kling", label: "Kling Premier", fee_usd: 92, first_month_usd: 64.99, credits: 8000, running: null, queued: "unlimited", video_seconds: KLING_VIDEO_SECONDS, credits_per_video: DEFAULT_KLING_CREDITS_PER_VIDEO, note: KLING_NOTE },
-  "kling:ultra": { vendor: "kling", label: "Kling Ultra", fee_usd: 180, first_month_usd: 127.99, credits: 26000, running: null, queued: "unlimited", video_seconds: KLING_VIDEO_SECONDS, credits_per_video: DEFAULT_KLING_CREDITS_PER_VIDEO, note: KLING_NOTE },
+  "kling:standard": { vendor: "kling", label: "Kling Standard", fee_usd: 10, first_month_usd: 6.99, credits: 660, running: null, queued: "unlimited", credits_per_second: KLING_CREDITS_PER_SECOND, default_resolution: "1080p", clip_seconds: KLING_CLIP_SECONDS, note: KLING_NOTE },
+  "kling:pro": { vendor: "kling", label: "Kling Pro", fee_usd: 37, first_month_usd: 25.99, credits: 3000, running: null, queued: "unlimited", credits_per_second: KLING_CREDITS_PER_SECOND, default_resolution: "1080p", clip_seconds: KLING_CLIP_SECONDS, note: KLING_NOTE },
+  "kling:premier": { vendor: "kling", label: "Kling Premier", fee_usd: 92, first_month_usd: 64.99, credits: 8000, running: null, queued: "unlimited", credits_per_second: KLING_CREDITS_PER_SECOND, default_resolution: "1080p", clip_seconds: KLING_CLIP_SECONDS, note: KLING_NOTE },
+  "kling:ultra": { vendor: "kling", label: "Kling Ultra", fee_usd: 180, first_month_usd: 127.99, credits: 26000, running: null, queued: "unlimited", credits_per_second: KLING_CREDITS_PER_SECOND, default_resolution: "1080p", clip_seconds: KLING_CLIP_SECONDS, note: KLING_NOTE },
 };
 
 /** 片段模型會買的秒數，照 tools/video/media/clips.mjs clipSeconds：Veo 3.1 在 1080p 固定 8 秒，否則需求夾在 4–10 秒再往上貼到模型賣的長度。 */
@@ -186,8 +189,8 @@ export function secondsBought(frames, model = DEFAULT_CLIP_MODEL, resolution = n
 
 /** Hailuo 網頁的 H3：整數秒，4 到 15（platform.minimax.io 與 hailuoai.video，2026-10-03 讀；設定面板 2026-10-04 實測同樣是 4–15 秒整數）。 */
 export const hailuoSeconds = (frames) => Math.min(15, Math.max(4, Math.ceil(frames / FPS)));
-/** Kling：一支 5 秒影片為一單位，需要幾支（估價單位；kling-video-v3_0 本身收 3–15 秒整數）。 */
-export const klingVideos = (frames) => Math.max(1, Math.ceil(frames / FPS / KLING_VIDEO_SECONDS));
+/** Kling 網頁的 VIDEO 3.0／3.0 Omni：整數秒，3 到 15（官方 user guide，2026-10-04 讀）。 */
+export const klingSeconds = (frames) => Math.min(KLING_CLIP_SECONDS[1], Math.max(KLING_CLIP_SECONDS[0], Math.ceil(frames / FPS)));
 
 // 同一個機位：camera 行加 prompt 第一個子句，和 tools/video/core/craft.mjs 的 setupKey 一樣。
 const setupKey = (data) => `${String(data?.camera ?? "").trim().toLowerCase()}|${String(data?.prompt ?? "").split(/[,.;]/)[0].trim().toLowerCase()}`;
@@ -227,11 +230,15 @@ export function estimateEpisode(doc, options = {}) {
   const monthClipSeconds = options.monthClipSeconds ?? DEFAULT_MONTH_CLIP_SECONDS;
   const minutesPerClip = options.minutesPerClip ?? DEFAULT_MINUTES_PER_CLIP;
 
-  let timeline = null;
-  try {
-    timeline = estimateTimeline(doc);
-  } catch {
-    timeline = null;
+  // A recorded timeline.json (options.timeline, from tts) is the real length of every shot; without
+  // one the lint estimate stands in for it.
+  let timeline = options.timeline ?? null;
+  if (!timeline) {
+    try {
+      timeline = estimateTimeline(doc);
+    } catch {
+      timeline = null;
+    }
   }
   const { shots: rows, cast } = normalize(doc, { timeline });
   const framesOf = new Map((timeline?.scenes ?? []).map((scene) => [scene.id, scene.end_frame - scene.start_frame]));
@@ -406,11 +413,12 @@ export function estimateEpisode(doc, options = {}) {
       ],
     };
   } else if (plan && plan.vendor === "kling") {
-    const creditsPerVideo = options.creditsPerVideo ?? plan.credits_per_video;
+    const res = wantedResolution && Object.hasOwn(plan.credits_per_second, wantedResolution) ? wantedResolution : plan.default_resolution;
+    const perSecond = options.creditsPerSecond ?? plan.credits_per_second[res];
     const perShot = clipShots.map((shot) => {
-      const videos = klingVideos(shot.frames);
-      const credits = videos * creditsPerVideo;
-      return { id: shot.id, videos, seconds: videos * plan.video_seconds, credits, usd_fee: round4((credits * plan.fee_usd) / plan.credits) };
+      const seconds = klingSeconds(shot.frames);
+      const credits = seconds * perSecond;
+      return { id: shot.id, seconds, credits, usd_fee: round4((credits * plan.fee_usd) / plan.credits) };
     });
     const creditsOne = sum(perShot, "credits");
     const feeOne = (creditsOne * plan.fee_usd) / plan.credits;
@@ -421,10 +429,11 @@ export function estimateEpisode(doc, options = {}) {
       fee_usd: plan.fee_usd,
       first_month_usd: plan.first_month_usd,
       credits: plan.credits,
-      credits_per_video: creditsPerVideo,
-      video_seconds: plan.video_seconds,
+      resolution: res,
+      credits_per_second: perSecond,
+      credits_basis: options.creditsPerSecond === undefined ? `官方價目 ${KLING_PRICES_READ_ON}（未實扣）` : "旗標",
       shots: perShot,
-      videos_one: sum(perShot, "videos"),
+      seconds_one: sum(perShot, "seconds"),
       credits_one: creditsOne,
       credits_cap: creditsOne * clipTakes,
       usd_fee_one: round4(feeOne),
@@ -441,15 +450,16 @@ export function estimateEpisode(doc, options = {}) {
       server_model: model,
       server_usd_per_second: pricePerSecond,
       server_clip_usd_one: stages.clips.usd_one,
-      plan_seconds_per_month: Math.floor(plan.credits / creditsPerVideo) * plan.video_seconds,
+      plan_seconds_per_month: Math.floor(plan.credits / perSecond),
       breakeven_seconds_monthly: Math.ceil(plan.fee_usd / pricePerSecond),
       breakeven_seconds_first_month: Math.ceil(plan.first_month_usd / pricePerSecond),
-      unverified: true,
+      unverified: false,
       notes: [
         plan.note,
-        `一鏡需要幾支 ${plan.video_seconds} 秒影片 = ceil(需要的秒數 ÷ ${plan.video_seconds})；這是估價單位：kling-video-v3_0 可以直接要 3–15 秒整數（實測 ${PLANS_MEASURED_ON}），${plan.video_seconds}、10 秒以外的 credits 沒有來源`,
+        `一鏡買 ceil(需要的秒數)，最少 ${KLING_CLIP_SECONDS[0]}、最多 ${KLING_CLIP_SECONDS[1]}（VIDEO 3.0／3.0 Omni 收整數秒）；--resolution 720p|1080p 選檔位（1080p 是原生 1920×1080，720p 要放大）`,
+        "生成頁的「輸出數」（付費方案一次最多 4 支）要設 1：credits 照支數乘；原生音訊關掉（產線丟音軌，開了一秒多 4 credits）；多鏡／智能分鏡關掉（一鏡是一個連續鏡頭，片段裡的切點 QC 會退）",
         `官方 CLI（npm @klingai/cli-global，站主 ${PLANS_MEASURED_ON} 選的）與官方 MCP（kling.ai/mcp）都用 Kling 帳號登入；kling account 回 membershipType 與 availableRemainCredits，讀起來是會員 credits，沒有用付費生成確認。社群 MCP（github.com/199-mcp/mcp-kling）用開發者 API 金鑰，扣的是資源包，不是會員 credits`,
-        `image_to_video 要傳 enable_audio false 與 prefer_multi_shots false（兩個預設都是 true；一鏡是一個連續鏡頭）；NORMAL 帳號列的模型都只有 720p，付費方案在 CLI 上有沒有 1080p 未驗`,
+        "CLI 的 image_to_video 要傳 enable_audio false 與 prefer_multi_shots false（兩個預設都是 true；一鏡是一個連續鏡頭）；NORMAL 帳號列的模型都只有 720p，付費方案在 CLI 上有沒有 1080p 未驗",
         "同時幾支沒寫明（「無限排隊」）：這裡的「幾小時」把片段當一支接一支算，未驗證",
         "keyframes、人設表、音樂、judge 仍走伺服器 API（上面的 US$）；今天沒有 Kling adapter，做出的片段用 clips import 帶進產線",
       ],
@@ -525,7 +535,7 @@ export function estimateEpisode(doc, options = {}) {
   }
 
   return {
-    basis: timeline ? "lint 的估法（tools/video/core/timeline.mjs estimateTimeline）：一個字 0.24 s、一句停 0.3 s、一鏡間隔 0.7 s" : "estimateTimeline 讀不了這份檔，改用 craft.normalize 的估法（同樣的常數）",
+    basis: options.timeline ? "錄好的 timeline.json（tts 量的）" : timeline ? "lint 的估法（tools/video/core/timeline.mjs estimateTimeline）：一個字 0.24 s、一句停 0.3 s、一鏡間隔 0.7 s" : "estimateTimeline 讀不了這份檔，改用 craft.normalize 的估法（同樣的常數）",
     model,
     resolution,
     production,
@@ -576,11 +586,11 @@ export function renderEstimate(report, file) {
       out.push(`  佇列：同時 ${plan.running} 支、排隊 ${plan.queued}；${plan.rounds_one} 輪 → ${plan.rounds_cap} 輪，約 ${plan.hours_one} → ${plan.hours_cap} 小時（每支 ${plan.minutes_per_clip} 分鐘的假設）`);
       out.push(`  對照伺服器 ${plan.server_model}：片段 ${usd(plan.server_clip_usd_one)}（1 take，不含 judge）vs 方案 ${usd(plan.usd_fee_one)}（月費攤）／${usd(plan.usd_page_one)}（頁面價＝年繳）；損益平衡：月繳要這個月真的用掉 ≥ ${plan.breakeven_seconds_monthly} s、年繳 ≥ ${plan.breakeven_seconds_annual} s（月費 ÷ 伺服器 ${unit(plan.server_usd_per_second)}/s；沒用完的 credits 月底歸零），而方案一個月只有 ${plan.plan_seconds_per_month} s 的 ${plan.resolution}${plan.breakeven_seconds_annual > plan.plan_seconds_per_month ? "：靠 credits 贏不了這個模型" : ""}`);
     } else {
-      out.push(`方案 ${plan.id}（${plan.label}，月費 ${usd(plan.fee_usd)}、首月 ${usd(plan.first_month_usd)}，${plan.credits} credits/月；kling.ai 會員頁 ${PLANS_READ_ON} 讀）：每支 ${plan.video_seconds} s 影片 ${plan.credits_per_video} credits【未驗證】`);
-      for (const shot of plan.shots) out.push(`  ${shot.id.padEnd(11)} ${shot.videos} 支  ${String(shot.credits).padStart(4)} credits  ≈ ${usd(shot.usd_fee)}（月費攤）`);
-      out.push(`  片段合計 ${plan.videos_one} 支：${plan.credits_one} credits（1 take）→ ${plan.credits_cap}（上限），佔月額 ${(plan.share_one * 100).toFixed(0)}% → ${(plan.share_cap * 100).toFixed(0)}%；≈ ${usd(plan.usd_fee_one)} → ${usd(plan.usd_fee_cap)}`);
+      out.push(`方案 ${plan.id}（${plan.label}，月費 ${usd(plan.fee_usd)}、首月 ${usd(plan.first_month_usd)}，${plan.credits} credits/月；kling.ai 會員頁 ${PLANS_READ_ON} 讀）：VIDEO 3.0 ${plan.resolution} 不開音訊 ${plan.credits_per_second} credits/s（${plan.credits_basis}）`);
+      for (const shot of plan.shots) out.push(`  ${shot.id.padEnd(11)} ${String(shot.seconds).padStart(2)} s  ${String(shot.credits).padStart(4)} credits  ≈ ${usd(shot.usd_fee)}（月費攤）`);
+      out.push(`  片段合計 ${plan.seconds_one} s：${plan.credits_one} credits（1 take）→ ${plan.credits_cap}（上限），佔月額 ${(plan.share_one * 100).toFixed(0)}% → ${(plan.share_cap * 100).toFixed(0)}%；≈ ${usd(plan.usd_fee_one)} → ${usd(plan.usd_fee_cap)}`);
       out.push(`  佇列：同時幾支未知（無限排隊）；一支接一支約 ${plan.hours_one} → ${plan.hours_cap} 小時（每支 ${plan.minutes_per_clip} 分鐘的假設）`);
-      out.push(`  對照伺服器 ${plan.server_model}：片段 ${usd(plan.server_clip_usd_one)}（1 take，不含 judge）vs 方案 ${usd(plan.usd_fee_one)}（月費攤，credits 未驗）；損益平衡：月繳要這個月真的用掉 ≥ ${plan.breakeven_seconds_monthly} s、首月價 ≥ ${plan.breakeven_seconds_first_month} s（月費 ÷ 伺服器 ${unit(plan.server_usd_per_second)}/s），方案一個月約 ${plan.plan_seconds_per_month} s（${plan.credits} ÷ ${plan.credits_per_video} 支 × ${plan.video_seconds} s）`);
+      out.push(`  對照伺服器 ${plan.server_model}：片段 ${usd(plan.server_clip_usd_one)}（1 take，不含 judge）vs 方案 ${usd(plan.usd_fee_one)}（月費攤）；損益平衡：月繳要這個月真的用掉 ≥ ${plan.breakeven_seconds_monthly} s、首月價 ≥ ${plan.breakeven_seconds_first_month} s（月費 ÷ 伺服器 ${unit(plan.server_usd_per_second)}/s），方案一個月約 ${plan.plan_seconds_per_month} s 的 ${plan.resolution}（${plan.credits} ÷ ${plan.credits_per_second}）`);
     }
     for (const note of plan.notes) out.push(`  註：${note}`);
   }
@@ -624,7 +634,7 @@ export function main(argv, stdout = process.stdout, stderr = process.stderr) {
         plan: { type: "string" },
         "image-price": { type: "string" },
         "price-per-second": { type: "string" },
-        "credits-per-video": { type: "string" },
+        "credits-per-second": { type: "string" },
         "minutes-per-clip": { type: "string" },
         "keyframe-takes": { type: "string" },
         "clip-takes": { type: "string" },
@@ -643,7 +653,7 @@ export function main(argv, stdout = process.stdout, stderr = process.stderr) {
   }
   const file = positionals[0];
   if (!file) {
-    stderr.write("usage: episode_estimate.mjs <video.json> [--tier clips|hybrid|stills] [--model <clip model id>] [--resolution 1080p|720p|768p|2k (the server model's; with --plan hailuo:* also the H3 tier)] [--plan hailuo:pro|kling:pro|...] [--image-price N] [--price-per-second N] [--credits-per-video N] [--keyframe-takes N] [--clip-takes N] [--cap N] [--month-clip-seconds N] [--production] [--strict] [--json]\n");
+    stderr.write("usage: episode_estimate.mjs <video.json> [--tier clips|hybrid|stills] [--model <clip model id>] [--resolution 1080p|720p|768p|2k (the server model's; with --plan hailuo:* also the H3 tier, with --plan kling:* 720p or 1080p)] [--plan hailuo:pro|kling:pro|...] [--image-price N] [--price-per-second N] [--credits-per-second N] [--keyframe-takes N] [--clip-takes N] [--cap N] [--month-clip-seconds N] [--production] [--strict] [--json]\n");
     return 2;
   }
   let report;
@@ -656,7 +666,7 @@ export function main(argv, stdout = process.stdout, stderr = process.stderr) {
       plan: values.plan,
       imagePrice: number(values["image-price"], "--image-price"),
       pricePerSecond: number(values["price-per-second"], "--price-per-second"),
-      creditsPerVideo: number(values["credits-per-video"], "--credits-per-video"),
+      creditsPerSecond: number(values["credits-per-second"], "--credits-per-second"),
       minutesPerClip: number(values["minutes-per-clip"], "--minutes-per-clip"),
       keyframeTakes: number(values["keyframe-takes"], "--keyframe-takes"),
       clipTakes: number(values["clip-takes"], "--clip-takes"),

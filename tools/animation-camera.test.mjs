@@ -32,6 +32,7 @@ import {
   boughtSeconds,
   keyframePrompt,
   lookMotionMove,
+  offScreenSubjects,
   personClause,
   readDocument,
   renderReading,
@@ -270,6 +271,34 @@ test("source.bought trips when a cut ends past what its source buys under the se
   const production = readDocument(cut(3), { series: { production: { profile: { id: "test" } } } });
   assert.ok(!production.shots[1].traps.some((each) => each.id === "source.bought"), "under the profile the source buys 8 s and the cut fits");
   assert.ok(!trapsOf(clean({ source: { shot: "s1", from_s: 3 } })).includes("source.bought"), "--file mode has no source to measure");
+});
+
+// 2026-10-04-shot-reading-offscreen-target-false-positive: a visible actor aiming at a named
+// off-screen target must stay bound; a named off-screen subject is still reported; a clause that
+// does not say who is off screen is reported as a question, never as "remove the actor".
+const duel = (prompt, motion, listed) => readDocument({
+  format: "drama",
+  characters: [{ id: "yan", name: "Yan", appearance: "a swordswoman" }, { id: "wei", name: "Wei", appearance: "a staff fighter" }],
+  scenes: [{ id: "s05", template: "shot", data: { camera: "Medium close-up, eye level, pan right", prompt, motion, characters: listed }, lines: [], action_seconds: 2 }],
+}, { single: true }).shots[0].traps.filter((trap) => trap.id === "cast.offscreen");
+
+test("cast.offscreen names only the character the off-screen phrase is about", () => {
+  const coMention = duel("Medium close-up of Yan on screen left, her sword at chest height", "One cyan arc leaves Yan's sword toward Wei off screen right", ["yan"]);
+  assert.deepEqual(coMention, [], "Yan is the visible actor; Wei, the target, is the one off screen");
+  assert.deepEqual(offScreenSubjects("One cyan arc leaves Yan's sword toward Wei off screen right", [{ id: "yan", name: "Yan" }, { id: "wei", name: "Wei" }]), { ids: ["wei"], ambiguous: false });
+
+  const explicit = duel("Close-up of Yan's face on screen left, Wei speaks off screen", "Yan narrows her eyes", ["yan", "wei"]);
+  assert.equal(explicit.length, 1);
+  assert.match(explicit[0].message, /wei 在畫外/);
+  assert.match(explicit[0].fix, /從 characters 拿掉 wei/);
+  assert.deepEqual(offScreenSubjects("Wei's voice from off screen", [{ id: "wei", name: "Wei" }]), { ids: ["wei"], ambiguous: false });
+
+  const ambiguous = duel("Medium close-up of Yan on screen left", "Yan raises the sword unseen", ["yan"]);
+  assert.equal(ambiguous.length, 1, "an unclear clause is still reviewable");
+  assert.match(ambiguous[0].message, /讀不出它說的是不是 yan/);
+  assert.match(ambiguous[0].fix, /yan 留在 characters/, "the fix never tells the author to delete a visible actor outright");
+
+  assert.deepEqual(offScreenSubjects("a voice from off screen", [{ id: "yan", name: "Yan" }]), { ids: null, ambiguous: false }, "no name: the caller falls back to the speakers");
 });
 
 test("every trap id has a case above, so a deleted trap is noticed", () => {

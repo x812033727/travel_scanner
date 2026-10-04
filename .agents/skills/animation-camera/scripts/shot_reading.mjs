@@ -69,6 +69,42 @@ const NAME_VERB = new RegExp(`(?<!^)(?<![.;:,]\\s)\\b([A-Z][a-z]+)\\s+(${VERB})\
 const lower = (text) => String(text ?? "").toLowerCase();
 const escapeRe = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+// 「誰在畫外」只看畫外片語在說誰：名字後面到片語之間只有這些字（「Wei off screen」「Zhao speaks
+// off screen」「Zhao's voice from off screen」）才算那個人在畫外。中間有 toward／at／to 這類方向字
+// （「Yan's sword toward Wei off screen right」）時，畫外的是方向字後面的東西，前面動手的人在畫面裡。
+const OFF_SCREEN_BRIDGE = /^(?:['’]s\s+voice\s+)?(?:(?:is|are|stays?|stands?|waits?|remains?|sits?|speaks?|says?|talks?|calls?|shouts?|whispers?|answers?|replies?|listens?|watches?|laughs?|cries?|out|on|now|still|just|comes?|heard)\s+)*(?:from\s+)?$/i;
+const OFF_SCREEN_TARGET = /\b(?:toward|towards|at|to|into|past|beyond|across|for)\b/i;
+const OFF_SCREEN_AFTER = /^(?:(?:left|right|of)\s+)*$/i;
+
+/**
+ * 一個含畫外片語的子句裡，片語說的是哪個角色。
+ * 回 { ids, ambiguous }：ids 是片語的主詞（名字緊接片語，或只隔說話、站著這類字）；片語前面最近的名字
+ * 隔著方向字（toward、at…）時它是動手的人、不在畫外，回空；隔著別的字說不準時回那個名字並標 ambiguous，
+ * 讓人看一眼，不叫人把可能入鏡的角色刪掉。沒點任何名字時 ids 是 null（交給呼叫端照說話者判斷）。
+ */
+export function offScreenSubjects(part, cast) {
+  const phrase = OFF_SCREEN.exec(part);
+  if (!phrase) return { ids: [], ambiguous: false };
+  const mentions = [];
+  for (const character of cast) {
+    for (const label of [character.id, character.name]) {
+      if (typeof label !== "string" || !label.length) continue;
+      for (const match of part.matchAll(new RegExp(`(?<![\\w-])${escapeRe(label)}(?![\\w-])`, "gi"))) mentions.push({ id: character.id, start: match.index, end: match.index + match[0].length });
+    }
+  }
+  if (!mentions.length) return { ids: null, ambiguous: false };
+  const before = mentions.filter((mention) => mention.end <= phrase.index).sort((a, b) => b.end - a.end)[0];
+  if (before) {
+    const gap = part.slice(before.end, phrase.index);
+    if (OFF_SCREEN_BRIDGE.test(gap.trim() ? `${gap.trim()} ` : "")) return { ids: [before.id], ambiguous: false };
+    if (OFF_SCREEN_TARGET.test(gap)) return { ids: [], ambiguous: false };
+    return { ids: [before.id], ambiguous: true };
+  }
+  const after = mentions.filter((mention) => mention.start >= phrase.index + phrase[0].length).sort((a, b) => a.start - b.start)[0];
+  if (after && OFF_SCREEN_AFTER.test(part.slice(phrase.index + phrase[0].length, after.start).trim() ? `${part.slice(phrase.index + phrase[0].length, after.start).trim()} ` : "")) return { ids: [after.id], ambiguous: false };
+  return { ids: after ? [after.id] : [], ambiguous: Boolean(after) };
+}
+
 // 編輯判斷：look.motion 裡影片模型會讀成運鏡指令的字。三個讀法只讀 camera 行、看不到 look.motion；
 // 是 clipPrompt（tools/video/media/clips.mjs）把它接在 camera 後面，所以鎖定的鏡頭要看的是影片模型
 // 讀到的自然語言：preset 用的「camera move」「drifting camera」「push in」，與單獨出現的
@@ -216,14 +252,20 @@ export function shotTraps(reading, scene, ctx) {
   const speaking = reading.speakers.filter((speaker) => speaker !== "narrator");
   // 畫外的句子以逗號切：「Lin lifts the cup, Zhao speaks off screen」只有後半說的是畫外的人。
   const clauses = `${prompt}. ${motion}`.split(/[.;,。；，]/).map((part) => part.trim()).filter((part) => OFF_SCREEN.test(part));
-  const offScreen = new Set();
+  const offScreen = new Map();
   for (const part of clauses) {
-    const mentioned = [...ctx.castById.values()].filter((character) => [character.id, character.name].some((label) => typeof label === "string" && label.length > 0 && new RegExp(`(?<![\\w-])${escapeRe(label)}(?![\\w-])`, "i").test(part))).map((character) => character.id);
-    // 句子點了名就只看點到的人；沒點名（"a voice from off screen"）才假設是在這鏡說話、又被列進畫面的人。
-    for (const id of mentioned.length ? mentioned.filter((id) => listed.includes(id)) : speaking.filter((id) => listed.includes(id))) offScreen.add(id);
+    // 句子點了名就只看畫外片語說的那個人（offScreenSubjects）；沒點名（"a voice from off screen"）才假設是在這鏡說話、又被列進畫面的人。
+    const { ids, ambiguous } = offScreenSubjects(part, [...ctx.castById.values()]);
+    for (const id of (ids ?? speaking).filter((id) => listed.includes(id))) {
+      if (!offScreen.has(id) || offScreen.get(id).ambiguous) offScreen.set(id, { part, ambiguous: ids !== null && ambiguous });
+    }
   }
-  for (const id of offScreen) {
-    add("cast.offscreen", `prompt 或 motion 說有人在畫外（「${clauses[0]}」），但 data.characters 列了 ${id}：關鍵影格會把 ${id} 畫進畫面，judge 也會找這張臉`, `從 characters 拿掉 ${id}；台詞的 speaker 留著`);
+  for (const [id, { part, ambiguous }] of offScreen) {
+    if (ambiguous) {
+      add("cast.offscreen", `「${part}」有畫外片語，但讀不出它說的是不是 ${id}（名字與片語之間隔了別的字），而 data.characters 列了 ${id}`, `${id} 在畫面裡就把畫外的人或東西寫成自己的子句（「Wei off screen right」），${id} 留在 characters；真的在畫外才從 characters 拿掉`);
+    } else {
+      add("cast.offscreen", `prompt 或 motion 說 ${id} 在畫外（「${part}」），但 data.characters 列了 ${id}：關鍵影格會把 ${id} 畫進畫面，judge 也會找這張臉`, `從 characters 拿掉 ${id}；台詞的 speaker 留著`);
+    }
   }
   if (!clauses.length) {
     for (const id of speaking.filter((speaker) => !listed.includes(speaker))) {

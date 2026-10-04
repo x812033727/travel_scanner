@@ -1,14 +1,14 @@
 ---
 id: 2026-10-04-shot-reading-offscreen-target-false-positive
 title: Avoid offscreen target co-mention false positives in shot reading
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-animation-preproduction
+claimed_at: 2026-10-04T14:40:09Z
 created_at: 2026-10-04T04:03:32Z
 completed_at:
-branch:
+branch: claude/hailuoai-kling-animation-optimize-208bc1
 depends_on: []
 scope:
   - .agents/skills/animation-camera/scripts/shot_reading.mjs
