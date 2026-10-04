@@ -430,7 +430,7 @@ describe("AdminVideoReviews", () => {
     // Where the saved parts stand, next to their boxes; the unsaved dub has no state yet.
     const cells = [...panel.querySelectorAll("tbody tr")][0].textContent;
     expect(cells).toContain("已完成");
-    expect(cells).toContain("製作中");
+    expect(cells).toContain("尚未完成");
     const save = within(panel).getByRole("button", { name: "儲存" });
     expect(save).toHaveProperty("disabled", true);
     fireEvent.click(box("韓文 配音"));
@@ -517,7 +517,7 @@ describe("AdminVideoReviews", () => {
     expect(rows).toHaveLength(5);
     const rowOf = (title: string) => rows.find((row) => row.includes(title)) ?? "";
     expect(rowOf("等語言的影片")).toContain("等你決定語言");
-    expect(rowOf("做語言的影片")).toContain("語言製作中");
+    expect(rowOf("做語言的影片")).toContain("語言尚未完成");
     expect(rowOf("可上架的影片")).toContain("可以上架");
     expect(rowOf("排定的影片")).toContain("已排定");
     expect(rowOf("公開的影片")).toContain("已上架");
@@ -525,14 +525,14 @@ describe("AdminVideoReviews", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /做語言的影片/ }));
     await screen.findByRole("heading", { name: "做語言的影片" });
-    expect(screen.getByText("語言製作中")).toBeTruthy();
+    expect(screen.getByText("語言尚未完成")).toBeTruthy();
     expect(screen.getByText("語言做好後才能送到 YouTube，那時上傳包裡才有這些語言。")).toBeTruthy();
     // The site sends the video from the upload package, languages included, so nothing goes to YouTube before they are made.
     expect(screen.queryByRole("form", { name: "已上傳到 YouTube" })).toBeNull();
     const panel = screen.getByRole("region", { name: "這支影片的語言" });
     const row = [...panel.querySelectorAll("tbody tr")][0].textContent ?? "";
     expect(row.match(/已完成/g)).toHaveLength(2);
-    expect(row).toContain("製作中");
+    expect(row).toContain("尚未完成");
   });
 
   it("keeps dramas out of the needs-you group but lists them in the catalog, and shows a one-off drama as a one-episode series on the drama tab", async () => {

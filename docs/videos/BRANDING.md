@@ -145,11 +145,76 @@ pending 才顯示成功。版本衝突或不明網路結果須回讀現況，不
 網站操作較適合一般站主。新 final 待審後仍須於審片卡確認畫面、CC 提醒及片頭正文接點，
 人工核准與後續上傳是另外的決策。
 
-**本階段沒有自動切換正式 worker 的工作目錄。** 新 final 核准後，舊工作區仍會被
-producer 的 final SHA、branding、原語及外語字幕偏移／章節驗證擋住。只有具備完整
-可信 timeline/checks 的新套件才可送出帶新 final id 與 source manifest 的
-publish／languages／dubs；canonical gate proof 的 SHA 也必須等於送審附件。
-純外部 imported／legacy 成片不得假造 timeline；合集先保持停止接續。
-正常工作區採用、外部人工上架包交接與合集來源驗證另列
-[換版核准後交接任務](../../tasks/open/2026-10-01-hand-off-owner-approved-renewed-finals.md)。
-建立待審入口不代表這些影片已完成交接、上傳或發布。
+新 final 核准後，舊工作區仍會被 producer 的 final SHA、branding、字幕偏移及章節
+驗證擋住。`tools/video/review/renewal-handoff.mjs` 提供獨立交接，不由一般 worker
+自動採用。prepare 只在 canonical 的全新同層目錄寫入停止中的快照；舊目錄不變。
+
+```bash
+node tools/video/review/renewal-handoff.mjs prepare --config /outside/handoff-config.json
+node tools/video/review/renewal-handoff.mjs verify \
+  --receipt /outside/prepared/renewal-handoff.json --remote /outside/fresh-project.json
+```
+
+config 指定 `slug`、`canonical`、`out`、`candidate`（MP4）、`branding`（JSON）、
+fresh `remote`（完整 project/reviews）與 `source`。正常工作區另傳 `project`（目前
+doc/lexicon）及 `source.workdir`、`source.original`、`source.body`。prepare 核對
+原 final／保留正文／候選 SHA，原稿及畫面 checks、每個 WAV 與 narration 的實際
+hash。接著比較候選的每個正文 video packet、時間偏移，完整 AV decode，並量測
+新片正文與原 mix 的音訊差值。原 timeline、旁白與 caches 保持原 bytes；只在新的
+checks 加入通過驗證的 branding、成片格數與量測紀錄，原 checks/決策另保留。
+正常 verify/activation 的函式呼叫還必須提供 fresh `project`，拒絕準備後改稿或字典。
+
+`renewal-handoff.json` 記錄舊／新 review identity、owner decided_at、body proof、
+來源與快照每個檔案 hash、目前選語及 archive 路徑。activation 是 host 操作，由
+`activateHandoff({receipt, readRemote, readProject, workerIdle})` 執行：caller 先停止
+並 drain worker／媒體工作，保留全域 STOP；`workerIdle` 每次回傳真正的
+`{stopped:true,idle:true,active_jobs:0,upload_inactive:true}`，不能以 STOP 存在當成 idle；
+`upload_inactive` 要查實際 upload session/job，不能由 tool project 省略該欄推定。工具在驗 hash
+後再次讀目前 owner 決策、選語與上傳／排程活動；改變即拒絕。原目錄 rename 至
+archive，再 promote 快照並回讀。每個 rename 前有 durable journal；失敗回復原
+目錄，不刪任一套媒體。程序中斷或 rollback 失敗保留 journal，需人工核對兩個路徑，
+不可盲目再跑。成功也保留 STOP，待 `review-pull --gate final` 確認精確核准 hash、
+package 與語言來源回讀完成後，才由執行者另行解除。此函式不核准或上傳影片。
+
+純 imported／legacy 使用 `mode:"manual-import"`，沒有 timeline/TTS/scene 的來源
+不建立假檔。`source.package.metadata`、`thumbnail`、`captions[locale]` 指定
+`{review_id,sha256,file}`，必須來自本 renewal 保留的原核准附件。沒有舊 publish 的
+影片可用 `metadata:{kind:"final-payload",review_id}` 保留原 final 決策的文字；
+另填明確 `disclosure:{synthetic,reason}`，其上傳包仍須經新的 publish 審核。
+工具保留原縮圖、逐 cue 轉移所有字幕、第二章之後及各語描述的時間碼；原語字幕
+必須精確等於新 final 核准附件。缺目前選語的翻譯、字幕或新版 dub 會列具體 hold，
+不將舊語言標 ready，也不自填 skip 或縮減站主選語。
+
+若舊 candidate body container 已遺失，可用真正原核准 MP4 的 body range：
+`source.body_from_original:true`、`body_frames`、`old_intro_frames`、`old_intro_ms`。
+prepare 仍比較實際 packet／音訊與新版時間偏移；receipt 明示原 container 缺失，
+另記原 MP4 SHA 與正文 range，不把原整片冒稱為缺失的正文 hash。完整原片保留在
+`retained-source/body-original-cut.mp4`，不假建 `build/body.mp4`。合集需要每集來源
+與合併字幕驗證，現階段保持具體 hold。
+
+prepare 同時寫 `renewal-language-source.json`，綁定當前 approved final、原 cut range、
+新 branding、原 metadata 與真正 zh-TW SRT。若有真實腳本與逐句 body timing，可傳
+`source.adapter:{project,timeline}`；工具先把每句文字與時間對到實際核准字幕，再保存
+adapter hash，明示不宣稱它是原旁白 TTS 的歷史。沒有 adapter 仍保留來源契約，
+後續補入已驗證來源，不能靠改 contract 或新造 timeline 清掉 hold。
+
+manual package 沒有任何 hold 後，可用 `stageManualPublish({workdir,client,uploadInactive})` 走既有
+附件 transport；fresh owner identity、選語、每個實際上傳 bytes、metadata/report
+hash 全部重驗；`uploadInactive` 在附件傳送前與 publish POST 前兩次查實際 session/job。
+publish POST 前保存提交紀錄，失去回應不自動重送；回讀 project
+確認同一 review id/hash 才記 confirmed。不改 uploader 開關、不代替 owner 決策，
+不等於 YouTube 上傳／公開。執行正式站交接和附件寫入仍須符合當次授權範圍。
+若現在缺的是選語翻譯／新版 dub，可明確傳 `baseOnly:true`，只送實際存在的 base
+package，payload 保留缺件列表；站主選語不變，網站不會把缺件當成已完成。base publish
+另經核准後，已有 adapter 的進度可產生真正語言部件，再由 source-bound consumer 送審。
+這避免 base package 與語言來源互相等待，不表示可以略過配音或上傳審核。
+
+六支 imported long 的接續由既有 `docs/videos/imported-long-languages/runner.mjs`
+消費契約。`prepareRenewedBatch({manifestFile,handoffs:[{slug,workdir}],out,readRemote})`
+在全新、分離的 batch 建立新版：保留原 batch、舊 final、progress、worksheet、未知
+付費 POST 紀錄；凍結目前工具/runtime，將真實 adapter 安装到新 batch，更新完整檔案
+hash 與 new final SHA。輸出維持 STOP；準備不付費、不自行重試中斷的模型請求。
+每次 native command 前都核對目前 owner final、選語、contract 與原稿 hash。語言 review
+manifest 必須綁定 exact base publish metadata SHA、新 final、branding、speech 與實際
+檔案；字幕與章節使用新片頭偏移，舊字幕 hash、舊 final 或不同 base metadata 會拒絕。
+language POST 同樣先留 submitting receipt；未知結果禁止自動重送。

@@ -4,11 +4,11 @@ title: Resume selected languages for six imported long videos
 status: in-progress
 priority: P1
 area: tools
-owner: codex-imported-languages
-claimed_at: 2026-09-29T11:14:08Z
+owner: codex-video-stall-followthrough
+claimed_at: 2026-10-04T10:51:05Z
 created_at: 2026-09-29T11:13:51Z
 completed_at:
-branch: codex/imported-long-languages
+branch: codex/video-stall-followthrough-20261004
 depends_on: []
 scope:
   - docs/videos/imported-long-languages
@@ -52,6 +52,20 @@ review's locale payload and attached file hashes by reading the persisted projec
 The job must not call the general auto loop, assemble, tidy or youtube-sync.
 
 ## Notes
+
+- 2026-10-04 fresh continuation: all six isolated producers are stopped, latest
+  progress remains 2026-09-29T12:16:31.822Z; 279 English cues are preserved.
+  All six latest human-approved finals were renewed, so the old final/source
+  manifest correctly refuses restart. Previous checks below describe the old
+  approval, not current approval equality or a running producer.
+- New `prepareRenewedBatch` consumes verified handoff sources, preserves old
+  paid outputs and freezes the reviewed portable runtime with STOP. Native
+  captions/dub consumers use real retained subtitle timing; an unchecked cached
+  dub does not replace narration timing. Independently tested portable captions
+  and dub dry-run make zero network calls and reject changed final bytes.
+- Author's 95 focused tests and independent 39-test source/runner run passed.
+  Real six-source verification, renewed base package submission, deployment and
+  restarted production are still pending. Do not retry an old uncertain POST.
 
 - Preflight at 2026-09-29T11:17:06Z: six final hashes match approved reviews, no
   existing language review, Gemini configured and channel voice Sulafat.

@@ -1,14 +1,14 @@
 ---
 id: 2026-10-01-hand-off-owner-approved-renewed-finals
 title: Hand off owner-approved renewed finals to canonical and imported upload packages
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: codex-video-stall-followthrough
+claimed_at: 2026-10-04T10:14:09Z
 created_at: 2026-10-01T09:53:00Z
 completed_at:
-branch:
+branch: codex/video-stall-followthrough-20261004
 depends_on:
   - 2026-10-01-long-video-renewal-tools-and-ui
 scope:
@@ -20,6 +20,8 @@ scope:
   - tools/video/review/sync.test.mjs
   - tools/video/package/cli.mjs
   - tools/video/package/package.test.mjs
+  - tools/video/core/stages.mjs
+  - tools/video/dubs/cli.mjs
   - docs/videos/BRANDING.md
 ---
 
@@ -106,3 +108,45 @@ timeline. A successful HTTP response is not approval, canonical activation or up
 - The existing guard intentionally rejects renewed compilation producer output and any
   normal worker still holding old final/branding/caption bytes. Keep that protection
   until this source-bound transfer exists. Never delete an old approval or use force.
+
+## Recovery continuation, 2026-10-04
+
+- Prepare/verify/guarded activation and explicit manual imported package/source
+  contracts are implemented. Owner identity, content, caption timing, adapter,
+  assets and frozen runtime are rechecked; rollback retains both snapshots and
+  successful activation retains STOP. Native captions and dub dry-run consume
+  the actual source contract instead of requiring fabricated normal TTS/checks.
+- 95 focused author tests and an independent 39-test source/runner run passed.
+  Independent frozen-runtime CLI evidence: captions offset 5 seconds, real dub
+  windows, zero fetches, no fabricated checks/narration, changed final refused.
+- Actual DevDay verification passed for all 24,061 retained body video packets,
+  complete decode and audio difference about -72.82 dB. Remaining 17 candidates
+  still require their own real media/source verification. This is not canonical
+  activation, backend package approval, resumed language production or upload.
+
+- Scope extended to the two native caption/dub consumers after fresh collision
+  inspection: no active claim owns core/stages; the wedding pilot dubs ticket is
+  unclaimed. The imported runner's tests own the real consumer regression.
+  Manual renewed media must use verified presentation evidence, never fabricated
+  normal-render checks or a paid re-assembly of the approved cut.
+
+- Human requested fixing the live stalled queues and ongoing status tracking. This
+  includes resuming source-bound production; it does not authorize fabrication of
+  owner reviews or enabling uploads/publication.
+- Claim collision was a stale `codex-ten-drama` listener ticket from 2026-09-28.
+  Fresh GitHub inspection confirmed its PR #978 merged on 2026-09-29 and its branch
+  is not checked out in any active worktree. Only this task was force-claimed; the
+  other owner's task was not modified. Keep implementation inside this scope.
+- Live 41f2f36 snapshot 2026-10-04T10:21:21Z: 18 renewed finals owner-approved,
+  every review-store final has matching bytes/hash, none has a YouTube ID, schedule
+  or upload session. Canonical snapshot/package source transfer is still required.
+- Three remaining legacy writer requests were confirmed completed subscription
+  calls with unavailable old answers and no active durable job for those slugs.
+  The official audited one-shot retry service queued requests at 10:23:55Z; already
+  resuming Claude mods was skipped. Completion remains to be verified.
+- Heartbeat automation `automation-2` tracks this conversation every 15 minutes,
+  silent on unchanged state and active until actionable technical recovery is done.
+- The owner explicitly allowed individually exceeding already exceeded media caps.
+  This applies to six existing videos, including Grok/SEC whose stale blocker showed
+  only missing assembly images. Global/per-new-video caps and uploader settings
+  remain unchanged. Exact paid caches are recovered before any bounded new purchase.

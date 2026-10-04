@@ -2,15 +2,24 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { createServer } from "node:http";
+import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { approve, sha256File } from "../../../tools/video/core/approvals.mjs";
-import { loadProject, recordStage } from "../../../tools/video/core/state.mjs";
+import { lintProject, loadProject, recordStage } from "../../../tools/video/core/state.mjs";
 import { speechHash } from "../../../tools/video/core/timeline.mjs";
+import { eachLine, textHash } from "../../../tools/video/core/schema.mjs";
+import { presentationTimeline, validateBranding } from "../../../tools/video/core/branding.mjs";
+import { localeTexts } from "../../../tools/video/core/stages.mjs";
+import { buildCues, toSrt } from "../../../tools/video/core/captions.mjs";
+import { composeMetadata } from "../../../tools/video/package/metadata.mjs";
+import { prepareHandoff, readManualLanguageSource } from "../../../tools/video/review/renewal-handoff.mjs";
 import { main as videoMain } from "../../../tools/video/cli.mjs";
 import { Automation } from "../../../tools/video/automation/flow.mjs";
-import { SLUGS, DIRECT_STAGE_TIMEOUT_MS, HardStop, VideoStop, assertProject, checkedDubReceipt, createSiteClient, cumulativeSnapshot, directStageOrigin, missingPhaseParts, nativeStageRequest, resolveManifest, run, submitSnapshot, translateLocaleResuming, validateResumeSheet, verifyLocal } from "./runner.mjs";
+import { readUnits, unitKey } from "../../../tools/video/automation/sheet-units.mjs";
+import { SLUGS, DIRECT_STAGE_TIMEOUT_MS, HardStop, VideoStop, assertProject, checkedDubReceipt, createSiteClient, cumulativeSnapshot, directStageOrigin, missingPhaseParts, nativeStageRequest, prepareRenewedBatch, resolveManifest, run, submitSnapshot, translateLocaleResuming, validateResumeSheet, verifyLocal } from "./runner.mjs";
 
 const json = (file, value) => { mkdirSync(path.dirname(file), { recursive: true }); writeFileSync(file, JSON.stringify(value)); };
 const hash = (value) => createHash("sha256").update(value).digest("hex");
@@ -40,6 +49,115 @@ async function fixture(t, count = 1) {
   json(manifestFile, manifest);
   return { base, manifest, manifestFile };
 }
+
+async function renewedFixture(t, { gemini = false, dub = false } = {}) {
+  const f = await fixture(t), entry = f.manifest.videos[0];
+  if (gemini) {
+    const doc = JSON.parse(readFileSync(entry.doc_file)); doc.voice = { provider: "gemini", name: "Sulafat", model: "gemini-3.8-flash-tts" }; doc.target_minutes = [8, 20];
+    let id = 0;
+    for (const scene of doc.scenes) scene.lines = Array.from({ length: 20 }, (_, repeat) => scene.lines.map((line) => { const copy = { ...line, id: `n${(id++).toString(36).padStart(3, "0")}` }; delete copy.say; delete copy.say_for; if (repeat) delete copy.reveal; return copy; })).flat();
+    json(entry.doc_file, doc); writeFileSync(path.join(path.dirname(entry.doc_file), "brief.md"), "## 站主觀點\n請比較模型的工作需求。\n## 觀眾看完能做到的事\n觀眾能用三個問題選擇模型。\n");
+    json(path.join(f.manifest.root, "docs/videos/lexicon.json"), { schema_version: 1, terms: { AI: null } });
+  }
+  const project = loadProject({ slug: entry.slug, root: f.manifest.root });
+  const timeline = JSON.parse(readFileSync(path.join(entry.workdir, "timeline.json")));
+  timeline.speech_hash = speechHash(project.doc, project.lexicon);
+  const bodyFrames = gemini ? 18000 : 900; timeline.total_frames = bodyFrames;
+  if (gemini) timeline.chapters = timeline.chapters.map((v) => ({ ...v, start_frame: v.start_frame * 20 }));
+  timeline.lines = [...eachLine(project.doc)].map(({ line, scene }, index, all) => ({ id: line.id, scene: scene.id, start_frame: Math.floor(index * bodyFrames / all.length), end_frame: Math.floor((index + 1) * bodyFrames / all.length), audio_samples: 120 * 1600 }));
+  json(path.join(entry.workdir, "timeline.json"), timeline);
+  const old = path.join(f.base, "retained"), canonical = path.join(f.base, "canonical"), prepared = path.join(f.base, "handoff"); mkdirSync(old); mkdirSync(canonical);
+  for (const [name, value] of Object.entries({ "intro.mp4": "intro", "outro.mp4": "outro", "final.mp4": "renewed final", "thumbnail.jpg": "old thumbnail" })) writeFileSync(path.join(old, name), value);
+  const pin = validateBranding({ schema_version: 1, id: "new", intro: { file: "intro.mp4", sha256: hash("intro"), frames: 150 }, outro: { file: "outro.mp4", sha256: hash("outro"), frames: 90 } }, { base: old });
+  json(path.join(old, "branding.json"), pin);
+  const presented = presentationTimeline(timeline, { hash: pin.hash, intro_frames: 150, outro_frames: 90, body_frames: bodyFrames });
+  const captions = toSrt(buildCues(timeline, localeTexts(project.doc, {}).texts["zh-TW"], "zh-TW").cues);
+  writeFileSync(path.join(old, "zh-TW.srt"), captions);
+  const meta = composeMetadata({ ...project, timeline, locales: [] }).metadata;
+  meta.chapters = meta.chapters.map(({ at, title }) => ({ time: at, title })); meta.contains_synthetic_media = true; meta.disclosure_reason = "Original synthetic narration";
+  json(path.join(old, "metadata.json"), meta);
+  const attachment = (file, role) => ({ file, role, review_id: "33333333-3333-4333-8333-333333333333", sha256: hash(readFileSync(file)), size: readFileSync(file).length, content_type: "text/plain" });
+  const metadata = attachment(path.join(old, "metadata.json"), "metadata"), caption = attachment(path.join(old, "zh-TW.srt"), "captions_zh-TW"), thumbnail = attachment(path.join(old, "thumbnail.jpg"), "thumbnail");
+  const final = { id: "22222222-2222-4222-8222-222222222222", gate: "final", status: "approved", created_at: "2026-10-04T01:00:00Z", decided_at: "2026-10-04T02:00:00Z", content_sha256: hash("renewed final"), files: [{ role: "captions_zh-TW", sha256: hash(toSrt(buildCues(presented, localeTexts(project.doc, {}).texts["zh-TW"], "zh-TW").cues)) }], payload: { branding_hash: pin.hash, _final_renewal: { previous_review_id: "11111111-1111-4111-8111-111111111111", previous_sha256: entry.final_sha256, retained_review_ids: [metadata.review_id] }, renewal_candidate: { source: { final_review_id: "11111111-1111-4111-8111-111111111111", final_sha256: entry.final_sha256, body_sha256: entry.final_sha256 }, candidate: { final_sha256: hash("renewed final"), branding_hash: pin.hash } } } };
+  const site = { ...remote(entry), locales: { en: { metadata: true, captions: true, dub } }, reviews: [final, { id: final.payload._final_renewal.previous_review_id, gate: "final", status: "superseded", content_sha256: entry.final_sha256 }, { id: metadata.review_id, gate: "publish", status: "superseded", files: [metadata, caption, thumbnail] }] };
+  await prepareHandoff({ slug: entry.slug, canonical, out: prepared, source: { original: path.join(entry.workdir, "final.mp4"), body: path.join(entry.workdir, "final.mp4"), body_frames: bodyFrames, package: { metadata, thumbnail, captions: { "zh-TW": caption } }, adapter: { project, timeline } }, candidate: path.join(old, "final.mp4"), branding: path.join(old, "branding.json"), remote: site, mode: "manual-import", verifyMedia: async () => ({ full_decode_ok: true, video_packets: bodyFrames, seconds: bodyFrames / 30 + 8, loudness: { integrated: -14, truePeak: -0.8 } }) });
+  const contract = await readManualLanguageSource({ workdir: prepared, remote: site });
+  site.reviews.unshift({ id: "44444444-4444-4444-8444-444444444444", gate: "publish", status: "approved", created_at: "2026-10-04T03:00:00Z", content_sha256: contract.metadata.sha256, payload: { final_review_id: final.id } });
+  f.manifest.portable = true; f.manifest.relative_paths = { root: "root", work_base: "work" };
+  entry.relative_paths = { doc_file: path.relative(f.base, entry.doc_file), workdir: path.relative(f.base, entry.workdir) };
+  entry.generated_files = [{ relative_path: path.relative(f.base, path.join(entry.workdir, "timeline.json")), sha256: hash(readFileSync(path.join(entry.workdir, "timeline.json"))), bytes: readFileSync(path.join(entry.workdir, "timeline.json")).length }];
+  json(f.manifestFile, f.manifest);
+  const runtimeRoot = path.join(f.base, "code");
+  for (const name of ["tools/video/review/renewal-handoff.mjs", ".agents/skills/youtube-video/SKILL.md", ...["runner.mjs", "prepare.mjs", "preflight.mjs"].map((v) => `docs/videos/imported-long-languages/${v}`)]) { mkdirSync(path.dirname(path.join(runtimeRoot, name)), { recursive: true }); writeFileSync(path.join(runtimeRoot, name), `reviewed code ${name}`); }
+  return { ...f, entry, prepared, site, timeline, presented, contract, runtimeRoot };
+}
+
+test("renewed portable producer retains old paid evidence, pins actual source adapter and freezes new runtime while held", async (t) => {
+  const f = await renewedFixture(t), out = `${f.base}-next-batch`; t.after(() => rmSync(out, { recursive: true, force: true }));
+  const oldCode = path.join(f.manifest.root, "tools/video/review/renewal-handoff.mjs"); mkdirSync(path.dirname(oldCode), { recursive: true }); writeFileSync(oldCode, "previous runtime"); json(path.join(f.base, "runtime-receipt.json"), { old: true });
+  json(path.join(f.base, "progress.json"), { videos: { [f.entry.slug]: { uncertain: "paid translator answer unknown" } } });
+  const old = readFileSync(f.manifestFile);
+  const result = await prepareRenewedBatch({ manifestFile: f.manifestFile, handoffs: [{ slug: f.entry.slug, workdir: f.prepared }], out, readRemote: async () => f.site, runtimeRoot: f.runtimeRoot });
+  assert.equal(result.status, "prepared-held"); assert.equal(result.paid_generation, false); assert.ok(existsSync(path.join(out, "STOP")));
+  assert.deepEqual(readFileSync(f.manifestFile), old);
+  assert.equal(JSON.parse(readFileSync(path.join(out, "retained-source/previous-progress.json"))).videos[f.entry.slug].uncertain, "paid translator answer unknown");
+  assert.equal(readFileSync(path.join(out, "retained-source/runtime/tools/video/review/renewal-handoff.mjs"), "utf8"), "previous runtime"); assert.equal(JSON.parse(readFileSync(path.join(out, "retained-source/previous-runtime-receipt.json"))).old, true);
+  assert.equal(readFileSync(path.join(out, "root/tools/video/review/renewal-handoff.mjs"), "utf8"), "reviewed code tools/video/review/renewal-handoff.mjs");
+  const manifest = resolveManifest(JSON.parse(readFileSync(result.manifest)), out), entry = manifest.videos[0]; await verifyLocal(manifest, entry);
+  assert.equal(entry.final_sha256, f.site.reviews.find((v) => v.gate === "final").content_sha256);
+  assert.equal(readFileSync(path.join(entry.workdir, "retained-source/adapter-original-final.mp4"), "utf8"), `approved video ${entry.slug}`);
+  await readManualLanguageSource({ workdir: entry.workdir, remote: f.site });
+  writeFileSync(path.join(entry.workdir, "language-adapter/project.json"), "tampered script");
+  await assert.rejects(verifyLocal(manifest, entry), /source changed/);
+});
+
+test("renewed source refuses jointly relabelled contract/doc and a different approved metadata version", async (t) => {
+  const f = await renewedFixture(t), file = path.join(f.prepared, "renewal-language-source.json"), bytes = readFileSync(file);
+  const changed = JSON.parse(bytes); changed.adapter.doc_sha256 = hash("changed source"); json(file, changed);
+  await assert.rejects(readManualLanguageSource({ workdir: f.prepared, remote: f.site }), /prepared handoff receipt/);
+  writeFileSync(file, bytes);
+  const entry = { ...f.entry, workdir: f.prepared, final_sha256: hash("renewed final"), renewal_source: { file: "renewal-language-source.json", sha256: hash(bytes) } };
+  f.site.reviews[0].content_sha256 = hash("other base metadata");
+  let posts = 0; const api = { reviews: async () => structuredClone(f.site), submit: async () => { posts++; }, upload: async () => {} };
+  await assert.rejects(submitSnapshot(api, loadProject({ slug: entry.slug, root: f.manifest.root }), entry, { locales: { en: { captions: "ready" } }, files: [ref("captions_en", "old caption")] }, f.site.locales, () => "2026-10-04T04:00:00Z"), /exact renewed base publish metadata/);
+  assert.equal(posts, 0);
+});
+
+test("renewed cumulative language manifest uses exact approved source, shifted captions/chapters and never retries a lost POST", async (t) => {
+  const f = await renewedFixture(t, { dub: true }), entry = { ...f.entry, workdir: f.prepared, final_sha256: hash("renewed final"), renewal_source: { file: "renewal-language-source.json", sha256: hash(readFileSync(path.join(f.prepared, "renewal-language-source.json"))) } };
+  writeFileSync(path.join(entry.workdir, "timeline.json"), readFileSync(path.join(entry.workdir, "language-adapter/timeline.json")));
+  json(path.join(entry.workdir, "dubs/en/timeline.json"), { speech_hash: f.timeline.speech_hash, lines: [{ id: "not-checked", start_frame: 900, end_frame: 950 }] });
+  const translation = { title: "Actual English title", description: "Actual reviewed description.", tags: ["AI"], chapters: { hook: "Opening", questions: "Questions", wrap: "End" }, lines: Object.fromEntries([...eachLine(loadProject({ slug: entry.slug, root: f.manifest.root }).doc)].map(({ line }) => [line.id, { text: `English ${line.id}`, source_hash: textHash(line.text) }])) };
+  json(path.join(path.dirname(entry.doc_file), "i18n/en.json"), translation);
+  const project = loadProject({ slug: entry.slug, root: f.manifest.root }), composed = composeMetadata({ ...project, timeline: f.presented, locales: ["en"] }).metadata.localizations.en;
+  const description = path.join(entry.workdir, "en.txt"), caption = path.join(entry.workdir, "en.srt"); writeFileSync(description, `${composed.title}\n\n${composed.description}\n`); writeFileSync(caption, toSrt(buildCues(f.presented, localeTexts(project.doc, project.translations).texts.en, "en").cues));
+  const additions = { locales: { en: { metadata: "ready", captions: "ready" } }, files: [{ ...ref("description_en", readFileSync(description)), path: description }, { ...ref("captions_en", readFileSync(caption)), path: caption }] };
+  let posts = 0; const bodies = [], api = { reviews: async () => structuredClone(f.site), upload: async () => {}, submit: async (_slug, body) => { posts++; bodies.push(body); throw new VideoStop("lost POST answer"); } };
+  await assert.rejects(submitSnapshot(api, project, entry, additions, f.site.locales, () => "2026-10-04T04:00:00Z"), /lost POST answer/);
+  const body = bodies[0], manifest = JSON.parse(readFileSync(path.join(entry.workdir, "language-package/renewed-languages-manifest.json")));
+  assert.deepEqual(manifest.source.final, f.contract.source.final); assert.equal(manifest.source.publish.content_sha256, f.contract.metadata.sha256); assert.equal(manifest.source.script, null); assert.equal(body.content_sha256, hash(readFileSync(path.join(entry.workdir, "language-package/renewed-languages-manifest.json"))));
+  assert.match(composed.description, /00:15 Questions/); assert.match(readFileSync(caption, "utf8"), /00:00:05,000/);
+  await assert.rejects(submitSnapshot(api, project, entry, additions, f.site.locales, () => "2026-10-04T04:00:00Z"), /lost its answer/); assert.equal(posts, 1);
+  writeFileSync(caption, toSrt(buildCues(f.timeline, localeTexts(project.doc, project.translations).texts.en, "en").cues)); additions.files[1] = { ...ref("captions_en", readFileSync(caption)), path: caption };
+  await assert.rejects(submitSnapshot(api, project, entry, additions, f.site.locales, () => "2026-10-04T04:00:00Z"), /renewed presentation/); assert.equal(posts, 1);
+});
+
+test("native renewed-import captions and dub dry-run use real source presentation with no assemble/TTS checks or network", async (t) => {
+  const f = await renewedFixture(t, { gemini: true }), out = `${f.base}-native`; t.after(() => rmSync(out, { recursive: true, force: true }));
+  const prepared = await prepareRenewedBatch({ manifestFile: f.manifestFile, handoffs: [{ slug: f.entry.slug, workdir: f.prepared }], out, readRemote: async () => f.site, runtimeRoot: f.runtimeRoot });
+  const manifest = resolveManifest(JSON.parse(readFileSync(prepared.manifest)), out), entry = manifest.videos[0], project = loadProject({ slug: entry.slug, root: manifest.root });
+  assert.deepEqual(lintProject(project).errors, []);
+  json(path.join(path.dirname(entry.doc_file), "i18n/en.json"), { title: "English title", description: "Reviewed English body", tags: [], chapters: {}, lines: Object.fromEntries([...eachLine(project.doc)].map(({ line }) => [line.id, { text: `Actual ${line.id}`, source_hash: textHash(line.text) }])) });
+  await approve({ gate: "final", docDir: path.dirname(entry.doc_file), workdir: entry.workdir });
+  let text = "", calls = 0; const sink = { write: (value) => { text += value; } }, ctx = { root: manifest.root, home: out, env: { VIDEO_WORKDIR: manifest.work_base }, stdout: sink, stderr: sink, fetch: async () => { calls++; assert.fail("offline native proof cannot call paid or remote services"); } };
+  assert.equal(await videoMain(["captions", "--slug", entry.slug], ctx), 0, text);
+  assert.match(readFileSync(path.join(entry.workdir, "captions/en.srt"), "utf8"), /00:00:05,000/);
+  const captions = JSON.parse(readFileSync(path.join(entry.workdir, "captions/manifest.json"))); assert.equal(captions.branding_hash, f.contract.source.branding_hash);
+  assert.equal(existsSync(path.join(entry.workdir, "checks.json")), false); assert.equal(existsSync(path.join(entry.workdir, "narration.wav")), false);
+  text = ""; assert.equal(await videoMain(["dub", "--slug", entry.slug, "--locale", "en", "--dry-run"], ctx), 0, text); assert.match(text, /to synthesize/); assert.equal(calls, 0);
+  writeFileSync(path.join(entry.workdir, "final.mp4"), "unapproved replacement"); text = "";
+  assert.notEqual(await videoMain(["captions", "--slug", entry.slug], ctx), 0); assert.match(text, /exact pulled owner final/); assert.equal(calls, 0);
+});
 
 test("latest final, owner choice, Shorts and allowlist gates fail closed", () => {
   const entry = { slug: SLUGS[0], final_sha256: hash("final") };
@@ -140,6 +258,16 @@ test("portable artifacts relocate and timeline edits fail full-hash validation",
   timeline.total_frames++;
   json(timelineFile, timeline);
   await assert.rejects(verifyLocal(manifest, manifest.videos[0]), /source changed/);
+});
+
+test("initial runtime freezing resolves a portable relative root and refuses to overwrite an existing runtime", async (t) => {
+  const f = await fixture(t), raw = { ...f.manifest, portable: true, root: "Z:/previous-host/root", relative_paths: { root: "root", work_base: "work" } };
+  json(f.manifestFile, raw);
+  const args = [fileURLToPath(new URL("./package-runtime.mjs", import.meta.url)), "--manifest", f.manifestFile];
+  const result = JSON.parse(execFileSync(process.execPath, args, { encoding: "utf8" }));
+  assert.equal(result.root, f.manifest.root); assert.ok(result.runtime_files > 0);
+  const receipt = JSON.parse(readFileSync(path.join(f.base, "runtime-receipt.json"))); const entry = receipt.files.find((v) => v.path.endsWith("renewal-handoff.mjs")); assert.ok(entry); assert.equal(entry.sha256, hash(readFileSync(path.join(f.base, entry.path))));
+  assert.throws(() => execFileSync(process.execPath, args, { encoding: "utf8", stdio: "pipe" }), /Runtime already exists/);
 });
 
 test("checked receipt refuses STOP, incomplete checks, or replaced clips", async (t) => {
@@ -361,7 +489,9 @@ test("fresh translations cannot bypass an absent independent review, and the nex
   assert.equal(automation.stage, missingReview, "temporary strict wrapper is always restored");
   assert.equal(f.calls.includes("i18n-merge"), false);
   assert.equal(existsSync(path.join(f.project.dir, "i18n/en.json")), false);
-  assert.deepEqual(JSON.parse(readFileSync(f.file, "utf8")), f.translated, "successful translation remains available after a failed review");
+  const kept = readUnits(f.entry.workdir, "en");
+  assert.deepEqual(kept[unitKey(f.fresh, null)].translated, f.translated, "successful paid translation remains source-bound in the unit cache after a failed review");
+  assert.equal(kept[unitKey({ ...f.fresh, slug: "changed-source" }, null)], undefined);
   stages.length = 0;
   automation.stage = async (stage) => { stages.push(stage); return { worksheet: structuredClone(f.translated) }; };
   await translateLocaleResuming(automation, ctx, f.entry, f.state, "en", f.parts, f.project);

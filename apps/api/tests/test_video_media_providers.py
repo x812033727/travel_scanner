@@ -255,10 +255,48 @@ def test_minimax_bodies_and_status_codes() -> None:
     assert clip["resolution"] == "2K" and clip["duration"] == 8
     assert clip["subject_reference"][0]["image"][0].startswith("data:image/png")
     check_base_resp({"base_resp": {"status_code": 0}})
-    for code, kind in ((1002, "busy"), (1008, "key"), (1026, "blocked"), (9999, "failed")):
+    for code, kind in (
+        (1002, "busy"),
+        (1008, "key"),
+        (1026, "blocked"),
+        (2013, "invalid"),
+        (9999, "failed"),
+    ):
         with pytest.raises(MediaUpstreamError) as error:
             check_base_resp({"base_resp": {"status_code": code, "status_msg": "x"}})
         assert error.value.kind == kind, code
+
+
+@pytest.mark.parametrize(
+    ("prompt", "negative"),
+    [("x" * 1500, ""), ("x" * 1501, ""), ("x" * 1400, "n" * 91)],
+)
+@pytest.mark.asyncio
+async def test_minimax_refuses_overlong_effective_image_prompt_before_network(
+    prompt: str, negative: str
+) -> None:
+    handler, seen = _minimax_answers({})
+    async with _client(handler) as client:
+        with pytest.raises(MediaUpstreamError) as error:
+            await MiniMaxImages(MINIMAX, "secret").submit(
+                _image_request(model="image-01", prompt=prompt, negative_prompt=negative), client
+            )
+    assert (error.value.status, error.value.kind) == (422, "invalid")
+    assert "including avoidance text" in error.value.message
+    assert seen == [], "a deterministic parameter error must not reach the paid endpoint"
+
+
+@pytest.mark.parametrize(
+    ("prompt", "negative"), [("x" * 1499, ""), ("圖" * 1400, "n" * 90), ("😀" * 1499, "")]
+)
+def test_minimax_preserves_valid_effective_prompt_and_its_unicode_characters(
+    prompt: str, negative: str
+) -> None:
+    request = _image_request(model="image-01", prompt=prompt, negative_prompt=negative)
+    body = MiniMaxImages(MINIMAX, "secret").request_body(request)
+    expected = prompt + (f". Avoid: {negative}" if negative else "")
+    assert len(expected) == 1499 and body["prompt"] == expected
+    assert request.prompt == prompt and request.negative_prompt == negative
 
 
 def _minimax_answers(*data: Any) -> tuple[Any, list[httpx.Request]]:
@@ -454,10 +492,14 @@ def test_lite_keeps_avoidance_constraints_in_its_supported_prompt(native_audio: 
         "resolution": "1080p",
         "seed": 7,
     }
-    assert instance["image"] == instance["lastFrame"] == {
-        "mimeType": FRAME.content_type,
-        "bytesBase64Encoded": base64.b64encode(FRAME.data).decode(),
-    }
+    assert (
+        instance["image"]
+        == instance["lastFrame"]
+        == {
+            "mimeType": FRAME.content_type,
+            "bytesBase64Encoded": base64.b64encode(FRAME.data).decode(),
+        }
+    )
     assert "referenceImages" not in instance
     assert request.prompt == "slow push in"
     assert request.negative_prompt == "extra hands, duplicate watches"
@@ -585,12 +627,8 @@ def test_http_rejection_never_retains_request_secrets_or_raw_details(
         b'{"error":{"code":400,"status":"INVALID_ARGUMENT"}}',
         b'{"error":{"code":400,"status":"INVALID_ARGUMENT","message":[]}}',
         b'{"error":{"code":400,"status":"private-status","message":"private prompt"}}',
-        b'{"error":{"code":400,"status":"INVALID_ARGUMENT","message":"'
-        + b"x" * 2049
-        + b'"}}',
-        b'{"error":{"code":400,"status":"INVALID_ARGUMENT","message":"'
-        + b"x" * 8193
-        + b'"}}',
+        b'{"error":{"code":400,"status":"INVALID_ARGUMENT","message":"' + b"x" * 2049 + b'"}}',
+        b'{"error":{"code":400,"status":"INVALID_ARGUMENT","message":"' + b"x" * 8193 + b'"}}',
         b"[" * 2000 + b"]" * 2000,
     ],
 )
