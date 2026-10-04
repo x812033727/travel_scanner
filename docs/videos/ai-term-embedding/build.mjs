@@ -2294,6 +2294,18 @@ base.scenes=chapters.flatMap(ch=>ch.scenes.map((s,index)=>{
  return {id:s.id,...(index===0?{chapter:ch.title}:{}),template:s.template,data,claims:s.claims,lines:s.text.map(v=>line(v,numbered))};
 }));
 setPauseBeats(base);
+// Measured reading holds: preserve every take and reach five seconds on the 30 fps grid.
+const measuredReadingPauses = {
+ "qc5t":747,"79px":867,"tgby":727,"ubbv":807,"5s9q":437,"d2d4":467,"q8wa":427,
+ "yedx":337,"hhbv":557,"yd8e":1047,"yqqw":1367,"3ivq":1277,"hx6q":357,"fbiv":537,
+ "re8q":347,"4zwu":337,"7k9u":507,"zu6r":407,"yhye":337,"4u7i":507,"59mm":1027,
+ "g8ig":367,"r763":327,"gy2w":687,"pcxz":407,"4hdb":507,"9sju":567,"bc5q":407
+};
+for (const [id,pause] of Object.entries(measuredReadingPauses)) {
+ const matching=base.scenes.flatMap(scene=>scene.lines).filter(line=>line.id===id);
+ if(matching.length!==1)throw new Error("Measured pause line must occur exactly once: "+id);
+ matching[0].pause_after_ms=pause;
+}
 const timeline=estimateTimeline(base);
 const allLines=base.scenes.flatMap(s=>s.lines);
 if(new Set(allLines.map(l=>l.id)).size!==allLines.length)throw new Error("Duplicate line ids");
