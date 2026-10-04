@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-claude-code-lesson-first-mod
 title: Claude Code tutorial lesson: build your first mod
-status: review
+status: done
 priority: P3
 area: docs
 owner: claude-fable-5-1-first-mod
 claimed_at: 2026-10-03T23:46:52Z
 created_at: 2026-10-03T19:27:30Z
-completed_at:
+completed_at: 2026-10-04T02:16:42Z
 branch: claude/first-mod-lesson
 depends_on: []
 scope:
