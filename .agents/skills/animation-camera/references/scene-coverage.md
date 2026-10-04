@@ -19,7 +19,7 @@
 
 ## 二、示範場（可接受版）：魚攤還債，12 鏡
 
-空間：攤位的櫃檯從左到右橫過畫面，攝影機留在顧客這一側；阿玉（`ayu`）在畫面左、面朝右，老陳（`chen`）在櫃檯後、畫面右、面朝左；道具是一張摺好的借據、一只錢袋、一座黃銅秤。借據整場都是摺著的（連戲帳第一條）。`look.preset: "anime-2d"`，`look.negative: ""`（Lite 路線），`look.motion: ""`（鎖定機位為主：`shot_reading` 對任何非空的 `look.motion` 配鎖定鏡頭都報 `look.motion`），`subtitles.burn_in: false`。
+空間：攤位的櫃檯從左到右橫過畫面，攝影機留在顧客這一側；阿玉（`ayu`）在畫面左、面朝右，老陳（`chen`）在櫃檯後、畫面右、面朝左；道具是一張摺好的借據、一只錢袋、一座黃銅秤。借據整場都是摺著的（連戲帳第一條）。`look.preset: "anime-2d"`，`look.negative` 保留 preset 的值（Lite adapter 會把它接成 `Avoid: …`，不必為 Lite 清空；`error-catalogue.md` #23），`look.motion: ""`（鎖定機位為主：`shot_reading` 對任何非空的 `look.motion` 配鎖定鏡頭都報 `look.motion`），`subtitles.burn_in: false`。
 
 | 鏡 | `camera` | `prompt`（要點） | `motion` | 台詞／`characters` | 註 |
 | --- | --- | --- | --- | --- | --- |
@@ -118,7 +118,7 @@
 | 同上，s08 不切素材、自己買一支 | 12 × 0.144 = 1.73 | 11 × 0.65 = 7.15 | 8.88（切素材省 0.79） | 19.49 |
 | Gemini Omni 1.1 Flash（4–10 秒，US$0.15/s；10 支要 43 秒） | 1.58 | 43 × 0.15 + 0.10 = 6.55 | 8.13 | — |
 | MiniMax H3 2K API（US$0.13/s；43 秒） | 1.58 | 43 × 0.13 + 0.10 = 5.69 | 7.27 | — |
-| Hailuo 網頁 Pro 的 credits（H3 768P US$0.047/s、2K US$0.081/s，2026-10-03 讀；片段不經 judge） | 1.58（圖仍由產線畫） | 43 × 0.047 ≈ 2.02（768P）／≈ 3.48（2K） | ≈ 3.6／5.1 | 方案月額 4,500 credits，`animation-production` 算占比 |
+| Hailuo 網頁 Pro 的 credits（H3 768P 7 點／秒、2K 12 點／秒；**年繳**頁面價 US$0.047／0.081 per s，月繳攤是 0.086／0.147；片段不經 judge） | 1.58（圖仍由產線畫） | 年繳 43 × 0.047 ≈ 2.02（768P）／≈ 3.48（2K）；月繳 ≈ 3.70／6.32 | 年繳 ≈ 3.6／5.1；月繳 ≈ 5.3／7.9 | 方案月額 4,500 credits，`animation-production` 算占比；網頁可照鏡長買，`animation-preproduction` 的 `shot_plan.mjs` 逐鏡算 |
 
 Lite 買 80 秒、用到 26.4 秒：利用率 33%（這場戲的估算；成片剪多少秒還要看旁白實測）。這就是切素材與靜圖的價值：s08 與 s11 兩鏡 0.144 加 0 對 1.44。
 
