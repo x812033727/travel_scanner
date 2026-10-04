@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // A bounded, explicitly scoped continuation for the six imported long cuts. This never
 // invokes auto.step, assemble, package, project PUT, publish, or a YouTube endpoint.
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { request as httpRequest } from "node:http";
-import { appendFileSync, closeSync, copyFileSync, existsSync, mkdirSync, openSync, readFileSync, readSync, statSync } from "node:fs";
+import { appendFileSync, closeSync, copyFileSync, existsSync, fsyncSync, mkdirSync, openSync, readFileSync, readSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
@@ -18,8 +18,11 @@ import { presentationTimeline, readBranding } from "../../../tools/video/core/br
 import { bindManualLanguageSubmission, fileInventory, readManualLanguageSource } from "../../../tools/video/review/renewal-handoff.mjs";
 import { mergeSheet } from "../../../tools/video/i18n/cli.mjs";
 import { composeMetadata } from "../../../tools/video/package/metadata.mjs";
+import { ledgerTotals } from "../../../tools/video/media/ledger.mjs";
 import { readCredentials } from "../../../tools/video/tts/credentials.mjs";
 import { USER_AGENT } from "../../../tools/video/tts/client.mjs";
+import { speechStatus } from "../../../tools/video/tts/client.mjs";
+import { createSpeechJournalFetch, speechConfiguration } from "./speech-journal.mjs";
 
 export const SLUGS = ["01-image-trust", "02-confident-errors", "03-machine-internet", "04-tasks-and-jobs", "05-uneven-abilities", "06-digital-yesman"].map((id) => `ai-real-world-${id}`);
 const LOCALES = ["en", "ja", "ko", "zh-CN"];
@@ -39,6 +42,11 @@ export function canonical(value) {
 }
 const clean = (message) => String(message).replace(/mkv_[A-Za-z0-9_-]+/g, "[redacted]").replace(/Bearer\s+\S+/gi, "Bearer [redacted]");
 const save = (file, value) => atomicWrite(file, `${JSON.stringify(value, null, 2)}\n`);
+function savePaidStage(file, value) {
+  save(file, value);
+  const fd = openSync(file, "r+"); try { fsyncSync(fd); } finally { closeSync(fd); }
+  if (process.platform !== "win32") { const dir = openSync(path.dirname(file), "r"); try { fsyncSync(dir); } finally { closeSync(dir); } }
+}
 const fileEntry = async (file, role, content_type) => ({ path: file, role, content_type, size: statSync(file).size, sha256: await sha256File(file) });
 const partStatus = (value) => typeof value === "string" ? value : value?.status;
 const ordered = (reviews = []) => [...reviews].sort((a, b) => String(a.created_at).localeCompare(String(b.created_at)));
@@ -48,6 +56,21 @@ export function missingPhaseParts(project, phase) {
     .filter((part) => choice[part] && (phase === "all" || (phase === "dubs" ? part === "dub" : part !== "dub")))
     .filter((part) => !["ready", "skipped", "uploaded"].includes(project.languages?.[locale]?.[part]?.state))
     .map((part) => `${locale}/${part}`));
+}
+
+function currentLanguageProject(project, entry) {
+  if (!entry.renewal_source || readJson(path.join(entry.workdir, entry.renewal_source.file)).source?.kind !== "approved-final-body-range") return project;
+  const final = assertProject(project, entry), reviews = project.reviews.filter((review) => review.gate === "languages" && ["pending", "approved"].includes(review.status) && review.payload?.final_review_id === final.id), languages = structuredClone(project.languages ?? {});
+  for (const [locale, parts] of Object.entries(languages)) for (const part of PARTS) {
+    if (!["ready", "skipped", "uploaded"].includes(parts?.[part]?.state)) continue;
+    const role = `${part === "metadata" ? "description" : part}_${locale}`;
+    const bound = reviews.some((review) => {
+      const status = partStatus(review.payload?.locales?.[locale]?.[part]);
+      return status === "skipped" && part === "dub" || status === "ready" && review.files?.some((file) => file.role === role && /^[a-f0-9]{64}$/.test(file.sha256));
+    });
+    if (!bound) parts[part] = { ...parts[part], state: "working" };
+  }
+  return { ...project, languages };
 }
 
 export function assertAllowedSlug(slug) {
@@ -335,7 +358,7 @@ export async function prepareRenewedBatch({ manifestFile, handoffs, out, readRem
   for (const name of codeNames) {
     for (const [relative, proof] of Object.entries(await fileInventory(path.join(runtimeRoot, name)))) runtimeFiles.push({ name: `${name}/${relative}`, source: path.join(runtimeRoot, name, relative), proof });
   }
-  for (const name of ["runner.mjs", "prepare.mjs", "preflight.mjs"]) {
+  for (const name of ["runner.mjs", "prepare.mjs", "preflight.mjs", "speech-journal.mjs"]) {
     const source = path.join(runtimeRoot, "docs/videos/imported-long-languages", name);
     runtimeFiles.push({ name: `docs/videos/imported-long-languages/${name}`, source, proof: { sha256: await sha256File(source), size: statSync(source).size } });
   }
@@ -355,7 +378,7 @@ export async function prepareRenewedBatch({ manifestFile, handoffs, out, readRem
   for (const entry of prepared.videos) {
     if (!sources.has(entry.slug)) continue;
     const sourceWorkdir = sources.get(entry.slug), remote = await readRemote(entry.slug), contract = await readManualLanguageSource({ workdir: sourceWorkdir, remote });
-    if (contract.source.original_final.content_sha256 !== entry.final_sha256 || !contract.adapter) throw new VideoStop(`${entry.slug}: renewal lacks the old batch's real retained source adapter`);
+    if (contract.source.kind === "approved-final-body-range" || contract.source.original_final.content_sha256 !== entry.final_sha256 || !contract.adapter) throw new VideoStop(`${entry.slug}: renewal lacks the old batch's real retained source adapter`);
     const oldProject = loadProject({ slug: entry.slug, root: manifest.root });
     if (contract.adapter.doc_sha256 !== digest(JSON.stringify(oldProject.doc)) || contract.adapter.lexicon_sha256 !== digest(JSON.stringify(oldProject.lexicon))) throw new VideoStop(`${entry.slug}: renewal adapter does not match the retained language source script/lexicon`);
     const workdir = path.resolve(out, entry.relative_paths.workdir);
@@ -385,6 +408,78 @@ export async function prepareRenewedBatch({ manifestFile, handoffs, out, readRem
 
 /** An exit code alone is insufficient: STOP also returns zero. Require a new completed
  * check run, matching flags/timeline, and transcripts for the exact clips being packaged. */
+export async function prepareApprovedFinalBatch({ manifestFile, handoffs, out, readRemote, runtimeRoot = fileURLToPath(new URL("../../..", import.meta.url)) }) {
+  const base = path.dirname(path.resolve(manifestFile)), raw = readJson(manifestFile);
+  if (!raw.portable || typeof readRemote !== "function" || existsSync(out) || isInside(out, base) || isInside(base, out)) throw new VideoStop("Current approved source preparation requires a new separate portable batch");
+  const old = resolveManifest(raw, base), sources = new Map(handoffs.map((v) => [v.slug, v.workdir]));
+  if (!sources.size || sources.size !== handoffs.length) throw new VideoStop("Missing or duplicate current approved sources");
+  for (const slug of sources.keys()) { assertAllowedSlug(slug); if (!old.videos.some((v) => v.slug === slug)) throw new VideoStop(`${slug}: current source is outside the retained batch`); }
+  for (const entry of old.videos) await verifyLocal(old, entry);
+  const exclusions = ["runner.lock", `${raw.relative_paths.root.replaceAll("\\", "/").replace(/\/$/, "")}/node_modules`], before = await fileInventory(base, { exclude: exclusions });
+  // Credentials/site home are never archival source material. Refuse rather than
+  // silently copy a secret, even when an operator supplied a broader old directory.
+  if (Object.keys(before).some((v) => /(?:^|\/)(?:\.env(?:\..*)?|tokens?\.json|credentials\.json|site-home)(?:\/|$)/i.test(v))) throw new VideoStop("The retained batch includes credentials/site home; isolate artifacts first");
+  mkdirSync(out); atomicWrite(path.join(out, "STOP"), "New approved-final source batch; no paid continuation until owner review.\n");
+  const retained = "retained-source/original-batch";
+  for (const [name, proof] of Object.entries(before)) {
+    const target = path.join(out, retained, name); mkdirSync(path.dirname(target), { recursive: true }); copyFileSync(path.join(base, name), target);
+    if (await sha256File(target) !== proof.sha256 || await sha256File(path.join(base, name)) !== proof.sha256) throw new VideoStop("Retained old source changed while archiving; new batch stays held");
+  }
+  const prepared = { ...structuredClone(raw), portable: true, root: "root", work_base: "work", relative_paths: { root: "root", work_base: "work" }, source_kind: "approved-final-body-range", request_namespace: randomUUID(), retained_source: { manifest: `${retained}/manifest.json`, inventory: before, paid_requests: "retained unchanged; uncertain old requests are never resumed by this new source", budget_policy: "Prior spend and unknown-call accounting remain charged; remote budgets/settings are unchanged." }, shared_generated_files: [], videos: [] };
+  const shared = [], runtimeFiles = [];
+  for (const name of ["tools/video", ".agents/skills/youtube-video"]) for (const [relative, proof] of Object.entries(await fileInventory(path.join(runtimeRoot, name)))) runtimeFiles.push({ name: `${name}/${relative}`, source: path.join(runtimeRoot, name, relative), proof });
+  for (const name of ["runner.mjs", "prepare.mjs", "preflight.mjs", "speech-journal.mjs"]) {
+    const source = path.join(runtimeRoot, "docs/videos/imported-long-languages", name); runtimeFiles.push({ name: `docs/videos/imported-long-languages/${name}`, source, proof: { sha256: await sha256File(source), size: statSync(source).size } });
+  }
+  for (const { name, source, proof } of runtimeFiles) {
+    const target = path.join(out, "root", name); mkdirSync(path.dirname(target), { recursive: true }); copyFileSync(source, target);
+    if (await sha256File(target) !== proof.sha256 || await sha256File(source) !== proof.sha256) throw new VideoStop("Current runtime changed during freeze; new source stays held");
+    shared.push({ role: "current-source-runtime", relative_path: `root/${name}`, bytes: proof.size, sha256: proof.sha256 });
+  }
+  const lexicons = [];
+  for (const [slug, sourceWorkdir] of sources) {
+    const remote = await readRemote(slug), contract = await readManualLanguageSource({ workdir: sourceWorkdir, remote });
+    if (contract.source.kind !== "approved-final-body-range" || !contract.adapter) throw new VideoStop(`${slug}: new-source batch requires a current approved final-range adapter`);
+    const project = readJson(path.join(sourceWorkdir, contract.adapter.project_file)); lexicons.push(canonical(project.lexicon));
+    if (lexicons.some((v) => v !== lexicons[0])) throw new VideoStop("Current source lexicons differ; do not merge or silently replace source spelling");
+    const workdir = path.join(out, "work", slug), docFile = path.join(out, "root/docs/videos", slug, "video.json");
+    const incoming = await fileInventory(sourceWorkdir, { exclude: ["STOP"] });
+    if (Object.keys(incoming).some((v) => /^(?:dubs|captions|i18n|review|language-package|automation)\//.test(v))) throw new VideoStop("Current handoff contains prior active paid/language outputs; prepare a clean source snapshot");
+    for (const [name, proof] of Object.entries(incoming)) {
+      const target = path.join(workdir, name); mkdirSync(path.dirname(target), { recursive: true }); copyFileSync(path.join(sourceWorkdir, name), target);
+      if (await sha256File(target) !== proof.sha256 || await sha256File(path.join(sourceWorkdir, name)) !== proof.sha256) throw new VideoStop("Current source changed during batch copy");
+    }
+    save(docFile, project.doc); save(path.join(out, "root/docs/videos/lexicon.json"), project.lexicon);
+    // Editorial brief is retained context only, never old script/translation authority.
+    const brief = path.join(old.root, "docs/videos", slug, "brief.md"), briefFile = path.join(path.dirname(docFile), "brief.md");
+    if (!existsSync(brief)) throw new VideoStop(`${slug}: retained editorial brief is missing`);
+    copyFileSync(brief, briefFile);
+    copyFileSync(path.join(workdir, contract.adapter.timeline_file), path.join(workdir, "timeline.json"));
+    const oldEntry = old.videos.find((v) => v.slug === slug), ledger = path.join(oldEntry.workdir, "media/ledger.json");
+    // Copy the authoritative per-project ledger, without its old dispatch/cache state.
+    // Native ledgerTotals must continue to charge prior entries in the NEW workdir.
+    if (existsSync(ledger)) { const target = path.join(workdir, "media/ledger.json"); mkdirSync(path.dirname(target), { recursive: true }); copyFileSync(ledger, target); }
+    const oldTotals = ledgerTotals(oldEntry.workdir);
+    if (canonical(oldTotals) !== canonical(ledgerTotals(workdir))) throw new VideoStop("Current source would reset its inherited media budget");
+    save(path.join(workdir, "source-accounting.json"), { schema_version: 1, source_kind: contract.source.kind, inherited_media_ledger: existsSync(ledger) ? { file: "media/ledger.json", sha256: await sha256File(ledger), totals: oldTotals } : null, inherited_media_totals: oldTotals, monthly_subscription_authority: "Existing backend account/slugs and monthly token/speech budgets; this prepare creates no budget or refund.", retained_paid_progress: `${retained}/progress.json`, retained_paid_source: `${retained}/${path.relative(base, oldEntry.workdir).split(path.sep).join("/")}`, uncertain_request_policy: "Old worksheets/results/request receipts remain retained; unknown paid outcomes are not retried, cleared or credited by this new source." });
+    atomicWrite(path.join(workdir, "STOP"), "Current source prepared; no generation authorized by preparation.\n");
+    // review-pull/writeLanguages refresh synced_at. Owner choices remain pinned by
+    // the contract and fresh remote reads; that mutable local mirror is not source evidence.
+    const generated = Object.entries(await fileInventory(workdir, { exclude: ["STOP", "languages.json"] })).map(([name, proof]) => ({ role: "current-approved-source", relative_path: `work/${slug}/${name}`, bytes: proof.size, sha256: proof.sha256 }));
+    generated.push({ role: "current-approved-script", relative_path: `root/docs/videos/${slug}/video.json`, bytes: statSync(docFile).size, sha256: await sha256File(docFile) });
+    generated.push({ role: "retained-editorial-context", relative_path: `root/docs/videos/${slug}/brief.md`, bytes: statSync(briefFile).size, sha256: await sha256File(briefFile) });
+    prepared.videos.push({ slug, doc_file: `root/docs/videos/${slug}/video.json`, workdir: `work/${slug}`, relative_paths: { doc_file: `root/docs/videos/${slug}/video.json`, workdir: `work/${slug}` }, final_sha256: contract.source.final.content_sha256, source: { final: contract.source.final.content_sha256 }, source_files: Object.values(contract.evidence).map((v) => ({ role: v.role, sha256: v.sha256, bytes: v.size, path: `work/${slug}/${v.file}` })), generated_files: generated, renewal_source: { file: "renewal-language-source.json", sha256: await sha256File(path.join(workdir, "renewal-language-source.json")) }, previous_source_retained: `${retained}/work/${slug}`, choice: contract.choice });
+  }
+  const lexicon = path.join(out, "root/docs/videos/lexicon.json"); shared.push({ role: "current-approved-lexicon", relative_path: "root/docs/videos/lexicon.json", bytes: statSync(lexicon).size, sha256: await sha256File(lexicon) }); prepared.shared_generated_files = shared;
+  save(path.join(out, "runtime-receipt.json"), { kind: "approved-final-language-runtime", request_namespace: prepared.request_namespace, files: runtimeFiles.map(({ name, proof }) => ({ path: `root/${name}`, sha256: proof.sha256 })) });
+  save(path.join(out, "progress.json"), { videos: {}, request_namespace: prepared.request_namespace, retained_paid_accounting: `${retained}/progress.json`, previous_translations_stale: true });
+  if (canonical(before) !== canonical(await fileInventory(base, { exclude: exclusions }))) throw new VideoStop("Retained original batch changed during preparation");
+  save(path.join(out, "manifest.json"), prepared);
+  const current = resolveManifest(prepared, out);
+  for (const entry of current.videos) { await verifyLocal(current, entry); await readManualLanguageSource({ workdir: entry.workdir, remote: await readRemote(entry.slug) }); }
+  return { manifest: path.join(out, "manifest.json"), status: "prepared-held", source_kind: prepared.source_kind, renewed: [...sources.keys()], paid_generation: false };
+}
+
 export async function checkedDubReceipt(entry, locale, beforeRuns) {
   const runs = readJson(path.join(entry.workdir, "state.json"), { runs: [] }).runs;
   const check = runs.slice(beforeRuns).filter((item) => item.stage === "check-audio" && item.locale === locale).at(-1);
@@ -423,6 +518,7 @@ export async function verifyLocal(manifest, entry) {
     const file = path.resolve(entry.workdir, entry.renewal_source.file);
     if (!isInside(file, entry.workdir) || await sha256File(file) !== entry.renewal_source.sha256) throw new VideoStop(`${entry.slug}: renewed language source contract changed`);
     const contract = readJson(file);
+    if ((manifest.source_kind === "approved-final-body-range") !== (contract.source?.kind === "approved-final-body-range")) throw new VideoStop(`${entry.slug}: batch source kind differs from its pinned source contract`);
     if (contract.source?.final?.content_sha256 !== entry.final_sha256 || !contract.adapter || contract.adapter.timeline_sha256 !== await sha256File(path.join(entry.workdir, "timeline.json"))) throw new VideoStop(`${entry.slug}: renewed source lacks its real retained timing adapter`);
   }
   return project;
@@ -471,7 +567,9 @@ export async function submitSnapshot(api, project, entry, additions, choices, no
   const approved = assertProject(fresh, entry, choices);
   // Approval/choice drift is checked again immediately before the mutating request. The
   // review API has no conditional-write token; this is an operator-scoped run, not a queue.
-  const snapshot = cumulativeSnapshot(fresh, additions);
+  const contract = entry.renewal_source ? await readManualLanguageSource({ workdir: entry.workdir, remote: fresh }) : null;
+  const currentSource = contract?.source.kind === "approved-final-body-range";
+  const snapshot = cumulativeSnapshot(currentSource ? { ...fresh, reviews: fresh.reviews.filter((r) => r.gate !== "languages" || r.payload?.final_review_id === approved.id) } : fresh, additions);
   if (!Object.keys(snapshot.locales).length) return { status: "nothing-ready" };
   if (approved.payload?._final_renewal) {
     if (!entry.renewal_source) throw new VideoStop(`${entry.slug}: renewed final requires an explicit source-bound language handoff; old adapter cannot be relabelled`);
@@ -514,6 +612,49 @@ export async function submitSnapshot(api, project, entry, additions, choices, no
   return { status: review.status, review_id: review.id, content_sha256 };
 }
 
+/** Sync subscription calls have no remote idempotency key. Persist before dispatch,
+ * retain exact successful answers, and hold every unresolved attempt across restarts. */
+export function journaledStageClient(api, manifest, entries, now, { settings = {}, choices = {}, readCurrent } = {}) {
+  return { ...api, run: async (...args) => {
+    const [stage, slug] = args, entry = entries.find((item) => item.slug === slug);
+    if (!entry || !["translator", "caption_reviewer"].includes(stage)) throw new VideoStop("Stage is outside the isolated language scope");
+    const checkStageStop = () => {
+      if (manifest.source_kind !== "approved-final-body-range") return;
+      if (!path.isAbsolute(manifest.work_base ?? "")) throw new VideoStop("Approved-final stage has no isolated batch STOP boundary");
+      if (stopRequested(path.dirname(manifest.work_base)) || stopRequested(entry.workdir)) throw new HardStop("STOP requested before the approved-final language stage");
+    };
+    checkStageStop();
+    const configuration = (value) => ({ durable_stage_runs: value.durable_stage_runs ?? null, stage_models: Object.fromEntries(["translator", "caption_reviewer"].map((name) => [name, value.stage_models?.[name] ?? null])), instructions: Object.fromEntries(["translator", "caption_reviewer"].map((name) => [name, value.stage_instructions?.[name] ?? null])) });
+    const identity = { slug, final_sha256: entry.final_sha256, source_sha256: entry.renewal_source?.sha256 ?? null, namespace: manifest.request_namespace ?? null, choice: choices[slug] ?? entry.choice ?? null, configuration: configuration(settings) };
+    if (manifest.source_kind === "approved-final-body-range") {
+      if (typeof readCurrent !== "function") throw new VideoStop("Approved-final stage needs a fresh source, choice and settings reader");
+      checkStageStop(); const current = await readCurrent(entry, stage); checkStageStop();
+      if (!current || !current.settings || typeof current.settings !== "object" || Array.isArray(current.settings) || canonical(current.choice) !== canonical(identity.choice) || canonical(configuration(current.settings)) !== canonical(identity.configuration)) throw new VideoStop(`${slug}: current owner choice or stage configuration changed; preserve existing paid answers`);
+    }
+    // JSON roundtrip matches the actual wire body, including omitted optional properties.
+    const request = JSON.parse(JSON.stringify({ stage, slug, instructions: args[2], payload: args[3], max_output_tokens: args[4], format: args[5], variant: args[6] ?? null }));
+    const key = digest(canonical({ identity, request })), file = path.join(entry.workdir, "language-stage-journal.json");
+    const logicalKey = (value) => value.variant ? null : digest(canonical(JSON.parse(JSON.stringify({ stage: value.stage, slug, locale: value.payload?.locale ?? null, parts: value.payload?.parts ?? null, worksheet: value.payload?.worksheet ? sheetSource(value.payload.worksheet) : null }))));
+    const journal = readJson(file, { schema_version: 1, identity, entries: {} });
+    if (journal.schema_version !== 1 || canonical(journal.identity) !== canonical(identity) || !journal.entries || typeof journal.entries !== "object" || Array.isArray(journal.entries)) throw new VideoStop(`${slug}: language stage journal source identity changed; preserve and inspect it`);
+    for (const [id, record] of Object.entries(journal.entries)) {
+      if (!record || id !== digest(canonical({ identity, request: record.request })) || !["dispatching", "unknown", "succeeded"].includes(record.status) || (record.status === "succeeded" && (!record.result || digest(canonical(record.result)) !== record.result_sha256))) throw new VideoStop(`${slug}: language stage journal is malformed; no new request was sent`);
+    }
+    const unresolved = Object.values(journal.entries).find((record) => record.status !== "succeeded");
+    if (unresolved) throw new VideoStop(`${slug}: ${unresolved.request.stage} has an unknown paid result; preserve its stage journal and inspect the existing result before any retry`);
+    if (journal.entries[key]) return structuredClone(journal.entries[key].result);
+    if (logicalKey(request) && Object.values(journal.entries).some((record) => logicalKey(record.request) === logicalKey(request))) throw new VideoStop(`${slug}: exact stage request changed for a recorded language unit; preserve its answer and inspect before retrying`);
+    const startedAt = now(); checkStageStop();
+    const record = journal.entries[key] = { status: "dispatching", request, started_at: startedAt };
+    savePaidStage(file, journal); // A crash from this point onward cannot authorize a second POST.
+    let result;
+    try { checkStageStop(); result = JSON.parse(JSON.stringify(await api.run(...args))); }
+    catch (error) { record.status = "unknown"; record.error = clean(error.message); record.updated_at = now(); savePaidStage(file, journal); throw error; }
+    record.status = "succeeded"; record.result = result; record.result_sha256 = digest(canonical(result)); record.updated_at = now(); savePaidStage(file, journal);
+    return structuredClone(result);
+  } };
+}
+
 export async function run(options, dependencies = {}) {
   const base = path.dirname(path.resolve(options.manifest));
   const manifest = resolveManifest(readJson(path.resolve(options.manifest)), base);
@@ -529,10 +670,15 @@ export async function run(options, dependencies = {}) {
   if (entries.some((entry) => !entry)) throw new VideoStop("A requested video is absent from the prepared manifest");
   const dry = options.dryRun !== false;
   const now = () => (dependencies.now?.() ?? new Date()).toISOString();
+  const checkBatchStop = () => {
+    if (manifest.source_kind === "approved-final-body-range" && stopRequested(base)) throw new HardStop("STOP requested in the approved-final batch");
+  };
+  const freshProbe = async (read) => { checkBatchStop(); const value = await read(); checkBatchStop(); return value; };
   let fatal = null;
   const rawFetch = dependencies.fetch ?? globalThis.fetch;
   const guardedFetch = async (...args) => {
     if (fatal) throw fatal;
+    if (!dry && args[1]?.method === "POST") checkBatchStop();
     const response = await rawFetch(...args);
     if (!response.ok) {
       const error = await response.clone().json().catch(() => ({}));
@@ -568,12 +714,22 @@ export async function run(options, dependencies = {}) {
   // One exclusive runner per isolated batch. An interrupted process leaves a lock requiring
   // explicit inspection/removal, rather than allowing duplicate paid jobs to overlap.
   const lock = path.join(base, "runner.lock");
-  const lockFd = openSync(lock, "wx");
-  closeSync(lockFd);
   const { unlinkSync } = await import("node:fs");
+  // Exact-lexicon sibling batches share one owner lock so only one producer can
+  // consume the account's subscription budget at a time. A crash keeps this lock too.
+  const ownerLock = manifest.source_kind === "approved-final-body-range" ? path.join(path.dirname(base), ".approved-final-language-runner.lock") : null;
+  if (ownerLock) closeSync(openSync(ownerLock, "wx"));
+  try { closeSync(openSync(lock, "wx")); }
+  catch (error) { if (ownerLock) unlinkSync(ownerLock); throw error; }
   try {
     const settings = await api.settings();
-    const noReport = { ...api, report: async (slug) => { assertAllowedSlug(slug); return projects.get(slug); } };
+    const noReport = { ...journaledStageClient(api, manifest, entries, now, { settings, choices: Object.fromEntries([...projects].map(([slug, project]) => [slug, project.locales])), readCurrent: async (entry) => {
+      await freshProbe(() => verifyLocal(manifest, entry));
+      const current = await freshProbe(() => api.reviews(entry.slug)); assertProject(current, entry, projects.get(entry.slug).locales);
+      await freshProbe(() => readManualLanguageSource({ workdir: entry.workdir, remote: current }));
+      const currentSettings = await freshProbe(() => api.settings());
+      return { settings: currentSettings, choice: current.locales };
+    } }), report: async (slug) => { assertAllowedSlug(slug); return projects.get(slug); } };
     const Auto = dependencies.AutomationClass ?? Automation;
     const automation = new Auto(ctx, noReport, settings);
     const runMain = dependencies.runMain ?? videoMain;
@@ -583,6 +739,7 @@ export async function run(options, dependencies = {}) {
       assertAllowedSlug(slug);
       if (!requested.includes(slug) || !COMMANDS.has(args[0]) || args.includes("--file") || args.includes("--workdir") || (args[0] === "review-pull" && args[args.indexOf("--gate") + 1] !== "final")) throw new VideoStop("Command is outside the language-only scope");
       if (fatal) throw fatal;
+      checkBatchStop();
       let out = "";
       const sink = { write: (text) => { out += text; } };
       const entry = entries.find((item) => item.slug === slug);
@@ -591,8 +748,22 @@ export async function run(options, dependencies = {}) {
         const remote = await api.reviews(slug); assertProject(remote, entry);
         await readManualLanguageSource({ workdir: entry.workdir, remote });
       }
+      checkBatchStop();
       const beforeRuns = readJson(path.join(entry.workdir, "state.json"), { runs: [] }).runs.length;
-      const code = await runMain(args, { ...ctx, stdout: sink, stderr: sink });
+      let commandFetch = ctx.fetch;
+      if (manifest.source_kind === "approved-final-body-range") {
+        const credentials = readCredentials({ env: ctx.env, home: ctx.home });
+        commandFetch = createSpeechJournalFetch({ fetchImpl: ctx.fetch, site: credentials.site, workdir: entry.workdir, now, readIdentity: async () => {
+          await freshProbe(() => verifyLocal(manifest, entry));
+          const current = await freshProbe(() => api.reviews(slug)); assertProject(current, entry, projects.get(slug).locales);
+          const contract = await freshProbe(() => readManualLanguageSource({ workdir: entry.workdir, remote: current }));
+          const currentSettings = await freshProbe(() => api.settings());
+          const status = await freshProbe(() => speechStatus({ site: credentials.site, token: credentials.token, fetchImpl: ctx.fetch, sleep: ctx.sleep }));
+          checkBatchStop();
+          return { source_kind: contract.source.kind, slug, final_sha256: entry.final_sha256, source_sha256: entry.renewal_source.sha256, raw_source: { script_sha256: contract.evidence.evidence_script.sha256, timeline_sha256: contract.evidence.evidence_body_timeline.sha256, lexicon_sha256: contract.adapter.raw_lexicon?.sha256 ?? contract.adapter.lexicon_sha256 }, request_namespace: manifest.request_namespace, choice: contract.choice, configuration: speechConfiguration(currentSettings, status) };
+        } });
+      }
+      const code = await runMain(args, { ...ctx, fetch: commandFetch, stdout: sink, stderr: sink });
       if (fatal) throw fatal;
       out = clean(out);
       if (code === EXIT.owner || /quota|budget.exhaust|subscription.paused|token.invalid/i.test(out)) throw new HardStop(out || "The language tool needs owner credentials or budget");
@@ -622,7 +793,7 @@ export async function run(options, dependencies = {}) {
         if (stopRequested(entry.workdir)) throw new HardStop("STOP requested in the isolated batch");
         const record = progress.videos[entry.slug];
         try {
-          let remote = await api.reviews(entry.slug);
+          let remote = currentLanguageProject(await api.reviews(entry.slug), entry);
           const choices = projects.get(entry.slug).locales ?? {};
           assertProject(remote, entry, choices);
           let project = await verifyLocal(manifest, entry);
@@ -682,7 +853,7 @@ export async function run(options, dependencies = {}) {
           record.problems = additions.problems;
           delete record.active_unit;
           if (!action) {
-            const current = await api.reviews(entry.slug);
+            const current = currentLanguageProject(await api.reviews(entry.slug), entry);
             assertProject(current, entry, choices);
             const missing = missingPhaseParts(current, phase);
             if (missing.length) throw new VideoStop(`Phase still missing ${missing.join(", ")}${additions.problems.length ? `: ${additions.problems.join("; ")}` : ""}`);
@@ -708,7 +879,7 @@ export async function run(options, dependencies = {}) {
     progress.status = error instanceof HardStop ? "hard-stop" : "failed";
     event({ type: "run-stopped", detail: clean(error.message) });
     throw error;
-  } finally { unlinkSync(lock); }
+  } finally { try { unlinkSync(lock); } finally { if (ownerLock) unlinkSync(ownerLock); } }
 }
 
 export async function main(args = process.argv.slice(2)) {
