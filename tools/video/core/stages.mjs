@@ -6,6 +6,7 @@ import path from "node:path";
 
 import { defaultDubLocales, dubScript, translationHash } from "../dubs/plan.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "./branding.mjs";
+import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { buildCues, checkCues, toSrt, toVtt } from "./captions.mjs";
 import { atomicWrite, readJson } from "./paths.mjs";
 import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, textHash } from "./schema.mjs";
@@ -116,10 +117,11 @@ export function currentDub(project, workdir, locale, speech) {
   const words = translationHash(dubScript(project.doc, project.translations[locale], locale).doc);
   const file = files.track(dub.format);
   const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
-  const applied = appliedBranding(checks);
+  const manual = verifiedManualPresentation({ project, workdir, timeline: readJson(path.join(workdir, ARTIFACTS.timeline), null) });
+  const applied = manual ?? appliedBranding(checks);
   const bodyTimeline = applied ? readJson(path.join(workdir, ARTIFACTS.timeline), null) : null;
-  if (!brandingCurrent(checks, readBranding(workdir)) || (dub.branding_hash ?? null) !== (applied?.hash ?? null)
-      || (applied && (checks.speech_hash !== speech || bodyTimeline?.speech_hash !== speech || applied.body_frames !== bodyTimeline?.total_frames))
+  if ((!manual && !brandingCurrent(checks, readBranding(workdir))) || (dub.branding_hash ?? null) !== (applied?.hash ?? null)
+      || (applied && ((!manual && checks.speech_hash !== speech) || bodyTimeline?.speech_hash !== speech || applied.body_frames !== bodyTimeline?.total_frames))
       || (applied && (dub.body_total_frames !== applied.body_frames || dub.content_end_frame !== applied.intro_frames + applied.body_frames
         || dub.total_frames !== applied.intro_frames + applied.body_frames + applied.outro_frames))
       || dub.speech_hash !== speech || dub.translation_hash !== words || !existsSync(file)
@@ -185,9 +187,10 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
   if (!timeline) throw new StageError("no timeline.json yet; run tts first", "order");
   if (timeline.speech_hash !== speech) throw new StageError("timeline.json was built for an older script; run tts again", "order");
   const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
-  if (!brandingCurrent(checks, readBranding(workdir))) throw new StageError("final.mp4 does not match the selected branding; run assemble again before captions", "order");
-  const applied = appliedBranding(checks);
-  if (applied && (checks.speech_hash !== speech || applied.body_frames !== timeline.total_frames)) throw new StageError("the branded final.mp4 was built for another body timeline; run assemble again before captions", "order");
+  const manual = verifiedManualPresentation({ project, workdir, timeline });
+  if (!manual && !brandingCurrent(checks, readBranding(workdir))) throw new StageError("final.mp4 does not match the selected branding; run assemble again before captions", "order");
+  const applied = manual ?? appliedBranding(checks);
+  if (applied && ((!manual && checks.speech_hash !== speech) || applied.body_frames !== timeline.total_frames)) throw new StageError("the branded final.mp4 was built for another body timeline; run assemble again before captions", "order");
   const presented = presentationTimeline(timeline, applied);
 
   const languages = readLanguages(workdir);

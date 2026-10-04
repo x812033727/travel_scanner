@@ -36,7 +36,9 @@ from app.video_media.storage import sniff_type
 # MiniMax's own status codes, as documented on 2026-09-26.
 BUSY = {1002, 1039}
 KEY = {1004, 1008, 2049}
-BLOCKED = {1026, 1027, 2013}
+BLOCKED = {1026, 1027}
+INVALID = {2013}
+IMAGE_PROMPT_LIMIT = 1500
 
 
 def decode_image(encoded: object) -> bytes:
@@ -69,6 +71,8 @@ def check_base_resp(payload: dict[str, Any]) -> None:
         raise MediaUpstreamError(429, f"MiniMax is busy ({message})", "busy")
     if code in KEY:
         raise MediaUpstreamError(502, f"MiniMax rejected the key or balance ({message})", "key")
+    if code in INVALID:
+        raise MediaUpstreamError(422, f"MiniMax rejected the parameters ({message})", "invalid")
     if code in BLOCKED:
         raise MediaUpstreamError(422, f"MiniMax refused the content ({message})", "blocked")
     raise MediaUpstreamError(502, f"MiniMax answered {code}: {message}", "failed")
@@ -84,11 +88,23 @@ class MiniMaxImages:
         return {"Authorization": f"Bearer {self.key}"}
 
     def request_body(self, request: MediaRequest) -> dict[str, Any]:
+        prompt = (
+            request.prompt
+            if not request.negative_prompt
+            else f"{request.prompt}. Avoid: {request.negative_prompt}"
+        )
+        # Validate the actual vendor body, including the appended avoidance text.
+        # The live endpoint rejects a length >= 1500; do not truncate source constraints.
+        if len(prompt) >= IMAGE_PROMPT_LIMIT:
+            raise MediaUpstreamError(
+                422,
+                "MiniMax image prompt, including avoidance text, "
+                "must be shorter than 1500 characters",
+                "invalid",
+            )
         body: dict[str, Any] = {
             "model": request.model,
-            "prompt": request.prompt
-            if not request.negative_prompt
-            else f"{request.prompt}. Avoid: {request.negative_prompt}",
+            "prompt": prompt,
             "aspect_ratio": request.aspect,
             "response_format": "base64",
             "n": 1,

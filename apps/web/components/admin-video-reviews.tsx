@@ -173,6 +173,7 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
     <p className="font-bold">{t("languagesTitle")}</p>
     {!finalApproved(project) ? <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesLater")}</p> : <>
       <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesHelp")}</p>
+      <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languageProgressHelp")}</p>
       {project.youtube_video_id && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesAfterPublish")}</p>}
       <table className="mt-3 w-full text-sm">
         <thead><tr><th scope="col" className="sr-only">{t("languageColumn")}</th>{LOCALE_PARTS.map((part) => <th key={part} scope="col" className="py-1 text-left font-semibold">{t(`parts.${part}`)}</th>)}</tr></thead>
@@ -317,6 +318,7 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
       <header className="grid gap-2">
         <div className="flex flex-wrap items-center gap-3"><h2 className="text-2xl font-bold">{project.title}</h2><PublishPill project={project} /></div>
         {state === "making" && <p className="text-sm text-[var(--muted)]">{t("scheduleWaits")}</p>}
+        {state === "packaging" && <p className="text-sm text-[var(--muted)]">{t("packageWaits")}</p>}
         {project.series_slug && !project.compilation && <p className="text-sm text-[var(--muted)]">{t("episodeOf", { series: project.series_slug, number: project.episode_number ?? 0 })}</p>}
         {project.series_slug && project.compilation && <p className="text-sm text-[var(--muted)]">{t("compilationOf", { series: project.series_slug })}</p>}
         <ShortFacts project={project} onOpen={onOpen} />

@@ -156,11 +156,20 @@ export const finalApproved = (project: ProjectSummary & { reviews?: Review[] }) 
   || Boolean(project.publish_approved_at || project.locales_decided_at || project.youtube_video_id)
   || (project.reviews ?? []).some((review) => review.gate === "final" && review.status === "approved");
 
-export type PublishState = "deciding" | "making" | "ready" | "scheduled" | "published";
+export type PublishState = "deciding" | "making" | "packaging" | "ready" | "scheduled" | "published";
+
+/** Reports describe completed outputs, not whether a producer is currently running. */
+export function chosenLanguagesComplete(project: ProjectSummary): boolean {
+  if (!project.locales || !project.languages) return false;
+  const complete = new Set(["ready", "skipped", "uploaded"]);
+  return Object.entries(project.locales).every(([locale, choice]) => choice !== undefined && LOCALE_PARTS
+    .filter((part) => choice[part])
+    .every((part) => complete.has(project.languages?.[locale]?.[part]?.state ?? "working")));
+}
 /**
- * Where the video is on its way to YouTube (docs/videos/LANGUAGES.md, the publish flow's five
+ * Where the video is on its way to YouTube (docs/videos/LANGUAGES.md),
  * states), or null before the final cut is approved and once the video is dropped: the owner has
- * still to choose its languages, the languages are in the making (so the upload can wait to be
+ * still to choose its languages, language results are incomplete (so the upload can wait to be
  * scheduled), it may be uploaded, it is scheduled, or it is public. An older API knows only
  * "ready" and the two YouTube states. A Short has none of the five: it chooses no languages of
  * its own, and where it stands is its shorts_state, which the server works out
@@ -172,11 +181,12 @@ export function publishState(project: ProjectSummary, now = Date.now()): Publish
   if (!knowsLanguages(project)) return readyToUpload(project) ? "ready" : null;
   if (!finalApproved(project)) return null;
   if (!project.locales_decided_at) return "deciding";
-  return project.ready_to_upload ? "ready" : "making";
+  if (project.ready_to_upload) return "ready";
+  return chosenLanguagesComplete(project) ? "packaging" : "making";
 }
 
-// The pill for each of the publish flow's five states (docs/videos/LANGUAGES.md).
-const PUBLISH_TONES: Record<PublishState, string> = { deciding: "warning", making: "running", ready: "active", scheduled: "queued", published: "ok" };
+// The pill separates incomplete language results from an unavailable upload package.
+const PUBLISH_TONES: Record<PublishState, string> = { deciding: "warning", making: "pending", packaging: "pending", ready: "active", scheduled: "queued", published: "ok" };
 
 /** Where the video is on its way to YouTube, as a pill; nothing before the final cut is approved. */
 export function PublishPill({ project }: { project: ProjectSummary }) {

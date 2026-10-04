@@ -1003,6 +1003,22 @@ Non-claims: DURATION_ONLY for this bound test. This increment does not re-review
 
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none for this bound file.
 
+## Branch video-stall-followthrough increment: 7 files (2026-10-04)
+
+Reviewer: `codex-video-recovery-review`. Author: `codex-video-stall-followthrough`. The reviewer authored none of the implementation and changes only this report and review.json. Scope: DURATION_ONLY for the seven changed bindings in committed source `03827a51a50cebea3c29362120a7a5d55e759d03`.
+
+Baseline: all 108 registered files at merge-base `06b89c8356f7aaa017cee2e343bcdcc74bf0dce7` hash exactly to the preceding receipt. All 108 working-tree files match the committed source bytes. The diff against that merge-base intersects REVIEW_FILES in exactly admin-video-review-card.tsx, admin-video-reviews.test.tsx and the five en/ja/ko/zh-CN/zh-TW admin.json files. The preceding report SHA256 is `8e36b9f0e73eb38025ba7a292507879ec98963cda5e5a598e9631fa2c9531e54`. Every historical section remains byte for byte intact; seven hashes are rebound, while the other 101 bindings and the 108-path registry are unchanged.
+
+Findings: admin-video-review-card.tsx distinguishes incomplete selected-language results from complete results awaiting a usable upload package. chosenLanguagesComplete reads the saved ready/skipped/uploaded states of selected parts; it does not infer an active producer or authorize an upload. The existing dropped-project, Short, final-approval, language-choice, scheduled and published guards retain their code, and ready_to_upload remains the server readiness signal. The new packaging state and neutral pending tones change progress presentation, not runtime or approval evidence.
+
+The bound review test changes four wording assertions from making to incomplete and retains their owner-choice and upload-form assertions. The five admin catalogs add consistent received-result and package-readiness explanations and neutral incomplete/packaging labels. Their duration, production-policy and minimum-length messages are unchanged. Across all seven full diffs there is no change to the 600/780-second targets, measured 480-second floor, eight-minute minimum, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, source-pack hashes or covered state. The registered duration implementations, policies, plans and regressions retain their preceding reviewed bytes.
+
+Ran (Node 24.19.0, offline on Windows): byte-level SHA256 comparisons against all 108 merge-base blobs and committed-source blobs, and complete diffs of the seven rebound files. After rebinding, `node tools/video/long-form/cli.mjs check` and `node --test tools/video/long-form/review.test.mjs` are run, with exact results in this increment's handoff. No whole tool, API or web suite was rerun by this reviewer for the receipt.
+
+Non-claims: DURATION_ONLY for these seven bound bytes. This increment does not re-review the 101 untouched bindings, certify generated media or measured production runtime, claim PostgreSQL integration, full-suite or CI completion, infer a running language producer, recover unknown paid responses, authorize paid retries, change owner approvals or spending limits, deploy, upload or publish. Historical sections retain their original revision-specific claims.
+
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none for these bound bytes.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1033,16 +1049,16 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
-| `apps/web/components/admin-video-review-card.tsx` | `d5548c8bb8218cad84719434bfae1a2acebc1d972b6887cda3e9afaa5088c5e8` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `b2eda38830de745b0b000fc26fc7d3e6e17162a408fa5274f4609b15e4b7012c` |
+| `apps/web/components/admin-video-review-card.tsx` | `f1614e57cbcca6696f3884b19f4f3f1dc18ce1c910fdafc698e9a606a13c549a` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `39b0aab92150a8969ef9ae9a2a8d4fca9fbef37da25f042a2767c912a9d392ae` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `89c92ecf60568fa5f28cbbb6aa207aba8cee0d2ea224df5c0cb4f485512e038b` |
-| `apps/web/messages/ja/admin.json` | `20263c9058819d3903e229c3ba5d8ca1db8bb7ed84e15b2e52b4bd43a5d952e0` |
-| `apps/web/messages/ko/admin.json` | `971e66d21091ebd6a4ead4f7f758744085d6104437034bb25cffc6955999a9b6` |
-| `apps/web/messages/zh-CN/admin.json` | `cc553b23797506b841b71fd14dd6086be6d645fa220c58bba86fe19241ee3318` |
-| `apps/web/messages/zh-TW/admin.json` | `33f6106a811189997f746d28ea5355f747d2a498d92b8def3fc0a57d636ba25d` |
+| `apps/web/messages/en/admin.json` | `c49a4e2560e77e42a4d6432901d400069161e1e22e797b330befb14af98bd399` |
+| `apps/web/messages/ja/admin.json` | `eb19e2b244a37f2de709474cb7b2cd5c208f257354f4a4425e57802ee3a950e0` |
+| `apps/web/messages/ko/admin.json` | `01ccc46a0c22e07cab836faec06b8b79cc7d39bdc456d50f0b00be1e194cd2ed` |
+| `apps/web/messages/zh-CN/admin.json` | `2689e7bb9100437fd3fd1c9500fd6e30bfe591b1c22fbd87cdd3ea947d74966c` |
+| `apps/web/messages/zh-TW/admin.json` | `e9a49b5bbb560eeeaba342d21210284ae872f986384b2c903baef690c934a2b3` |
 | `docs/videos/DESIGN.md` | `239c6961b8538abd0003d4fa17a69847fcf9016089bbea96ceac9969236705ec` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
