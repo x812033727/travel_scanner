@@ -129,7 +129,7 @@ place = "an apartment kitchen in late afternoon";
 lighting = ["a warm kitchen work lamp lights the ceramic bowls", "an under-cabinet fixture directs light onto the work surface", "a ceiling lamp illuminates the jars without glare"];
 card("errors-chapter", "chapter", { title: "流暢回答的三個陷阱", number: "6" }, "第一個陷阱是補不存在的欄位，第二個是換掉題目的條件。", ["c22", "c32"], "流暢回答的三個陷阱");
 shot("kitchen-empty-jar", "你以為表格每格都有字，這份報告就比留空的更可靠。", p("Wide shot", "a cook examines a row of jars while another reaches for a visibly empty jar", "an empty glass jar on a kitchen table"), ["c22"]);
-shot("kitchen-gap", "其實清單裡缺失主，填個王先生只會讓錯誤更完整。", p("Close-up", "a cook lowers a spoon into an empty jar and lifts it empty", "the bare metal spoon above the glass jar"), ["c5", "c22"]);
+shot("kitchen-gap", "其實清單沒寫物品主人，填王先生只會讓錯誤更完整。", p("Close-up", "a cook lowers a spoon into an empty jar and lifts it empty", "the bare metal spoon above the glass jar"), ["c5", "c22"]);
 card("invented-name", "chat", { title: "錯誤示意，非模型輸出", messages: [{ side: "left", name: "清單可說", text: "雨傘未領，位置在北側櫃台" }, { side: "right", name: "編輯錯誤稿", text: "王先生已領走北側櫃台的雨傘" }] }, ["這句錯誤稿自己加上失主，還把未領改成已領。", "哪怕語句非常順，兩個新增內容都沒有清單能支持。"], ["c5", "c22"]);
 shot("kitchen-counterexample", "第二個陷阱是問未領，回答卻把所有紀錄的數量端給你。", p("Overhead shot", "a cook separates two empty plates from four plates holding fruit", "four occupied plates beside two empty ones"), ["c26", "c32"]);
 shot("kitchen-count", "六、四、二都出現在同一份資料裡，但各自回答不同問題。", p("Medium shot", "two cooks sort a bowl of beans into a large and a small portion", "the two portions of beans in separate ceramic bowls"), ["c8", "c26"]);
@@ -160,6 +160,16 @@ shot("garden-own-acceptance", "你要的不是聽起來像高手，而是這次�
 shot("garden-follow-up", "下次看到完整答案，先找哪些內容有資料，哪些數字有工具結果。", p("Overhead shot", "two neighbors separate belongings into three baskets without filling the empty basket", "the three baskets with distinct contents", "even light under an open pergola"), ["c23", "c29"]);
 shot("garden-closing", "若用了工具，再核對它實際傳回的結果，才把工作交出去。", p("Medium shot", "a volunteer closes an umbrella while a visitor walks away carrying the matching item", "the umbrella's closed wooden handle", "last daylight enters through the courtyard gate"), ["c9", "c29"]);
 card("wrap", "outro", { title: "會接話，還要**有據可查**", cta: "用三欄卡檢查下一份回答的依據", lines: ["有來源也會生成文字；用工具再查結果"] }, "話完整不等於查到了；可信回答要有據可查。", ["c2", "c9", "c29"]);
+
+// Actual-image review: preserve the recorded narration and look; correct only
+// these two compositions before buying their replacement pictures.
+const promptOverrides = {
+  "counter-arrival": "Wide shot, community-center foyer, rainy morning. A wet-coated visitor and volunteer stand together by a rack holding one folded umbrella. The volunteer points to it. Both figures, hands and the entire rack fit in the central vertical third. Rain on glass, grey overcast light, soft shadows. All walls, glass and props are blank; no signs, posters, letters, digits, symbols, pseudo-writing, signatures, logos or watermarks.",
+  "counter-handoff": "Medium shot, community-center foyer, rainy morning. A volunteer offers one tightly folded, strapped umbrella horizontally at waist height to a visitor's open palm. Both faces, hands and the whole closed umbrella fit in the central vertical third; both people stand close. No open canopy or upright shaft. Rain on glass, grey overcast light, soft shadows. All surfaces blank; no signs, letters, symbols, pseudo-writing, signatures or logos.",
+};
+for (const scene of scenes) {
+  if (promptOverrides[scene.id]) scene.data.prompt = promptOverrides[scene.id];
+}
 
 const sources = [
   { title: "Google Machine Learning Crash Course: Introduction to Large Language Models", url: "https://developers.google.com/machine-learning/crash-course/llm", checked_on: "2026-10-04" },

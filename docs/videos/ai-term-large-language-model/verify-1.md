@@ -2,9 +2,9 @@
 
 獨立查核者：codex / llm_review，2026-10-04（Asia/Taipei）。不是撰稿者；本輪只寫本報告，修正由撰稿者套用。已逐句讀完整長片旁白、所有字卡及插圖提示、縮圖與 YouTube metadata、claims.md、brief.md、demo.py、demo-log.md，以及兩支 Shorts 的全部文字。沒有用 lint 代替語義審查，也沒有呼叫任何模型或付費 API。
 
-最新 production source 的 video.json SHA-256：`fd454c82e4376a46cacb0ce36f9af4e2bcd8fca75a23fcae520d58afd97bfb82`。下方「實測節奏附錄」已獨立覆核兩個停頓調整及零重錄證據；本報告原有內容與事實結論沿用到此版本。
+最新 production source 的 video.json SHA-256：`87fae04fd747036b6016a1bf7508f694223b89081a7ea697fae7556441b3f605`。下方「實測節奏附錄」覆核兩個停頓調整；「聽稿改寫附錄」再覆核 9fyu 的單句同義改寫；兩鏡視覺提示附錄保留長版歷史，最後「兩鏡提示縮版附錄」綁定當前 arrival／handoff 提示。本報告原有事實結論沿用到此版本；實際聲音與媒體關卡須綁各自最新證據。
 
-原完整文字終審綁定 SHA-256（文字、事實、示例與 metadata 均未改動）：
+原完整文字終審綁定 SHA-256（其後僅兩個停頓、一處同義口播及兩鏡插圖提示調整，見附錄；事實、示例與 metadata 未改動）：
 
 - video.json：`f18c6c619c2e9928c34593f921a63f33e679ce92a0005b70f217c97b3a511a83`
 - shorts.json：`e71ab40ca34c01537d6818de33c0259af904ebaa422538d4ad3188e550bc84b5`
@@ -145,3 +145,79 @@ build.mjs 只增加此二 id 的 override，位置在 `setPauseBeats(doc)` 之�
 獨立 helper 與完整結果（含 138 個 SHA-256）在私有 `<home>/mokaair-work/ai-series-continuation-20261004/llm-review/narrow-reverify.mjs` 及 `narrow-reverify-results.json`。原測量與主代理 paced 測量也已閱讀並交叉核對。
 
 此附錄確認最新來源的事實查核延續性、實際 PCM／dry narration 計時、章節及節奏硬性問題解除，**不代表已通過 check-audio、聽感驗收或伺服器 audio 核准**；主代理的轉寫／Jev 檢查仍在執行，不能把尚未完成的逐句匹配稱全過。整軌及 timeline hash 改了，需以目前版本走 audio review-push／pull。已生成插圖、成片裁切／可讀性、品牌 presentation timeline、後續 QA、YouTube、G 槽備份與刪除仍需各自證據。
+
+## 聽稿改寫附錄：9fyu 同義措辭
+
+2026-10-04T11:38:30Z，獨立 narrow reverify。最新 production source 的 video.json SHA-256 更新至 **`bc87f8b12c07a0039d60dec9f185dccefe5b3f38e65959298bcb5cc249badc5d`**；本輪只修改本查核報告，不呼叫付費 API、不修改其他來源或音訊、不代寫音訊核准。
+
+與基準 commit `08a2c84f4`（source `fd454c82e4376a46cacb0ce36f9af4e2bcd8fca75a23fcae520d58afd97bfb82`）逐項比對，video.json **只有 kitchen-gap / 9fyu.text 改動**：
+
+- before：「其實清單裡缺失主，填個王先生只會讓錯誤更完整。」
+- after：「其實清單沒寫物品主人，填王先生只會讓錯誤更完整。」
+
+把此一句替回原文字後，完整 JSON 與基準深度相等，重新序列化的全檔 SHA-256 精確回到 `fd454c82e4376a46cacb0ce36f9af4e2bcd8fca75a23fcae520d58afd97bfb82`。因此其他旁白、所有data字卡／鏡頭／prompts、六筆示例、數字／條件、voice、pause、reveal、章節、縮圖、metadata與assets均沒有內容變更。claims.md、demo.py、demo-log.md、shorts.json、brief.md 與基準逐位元組相同；line-ids.txt 只有 Git LF／working CRLF 的既有格式差別，正規化後內容相同、Git diff 空；video內 **138個id與順序完全相同**。
+
+已重新語義讀取六筆 `RECORDS`，以 Python AST literal 直接核對所有六列只有 `id/item/location/status` 四種欄位，無物品主人姓名或 owner_phone。新句「清單沒寫物品主人」準確限定於這份虛構清單，沒有推出物品在現實中不存在主人；「王先生」在改寫前後均一次，仍是編輯刻意補入、未受資料支持的虛構姓名。相鄰 `invented-name` 字卡及兩句口播仍明說新增失主與未領改已領都是錯誤；c5／c22 事實、非模型實測揭露及原 verdict **CONFIRMED** 維持。沒有新增機制、數值、人物事實、工具結果或可用產品能力。
+
+已實跑 repo 的 `rewriteProblems(before, after, {lexicon})`，結果 **[]**；數字與拉丁字詞前後均無，字典詞沒有增減，「王先生」另外人工及程式確認保持同一出現次數。新句22 spoken units，原21；整片計畫估算變為2930 units。這是聽稿用語變化，不是第四個事實主張修正，不改原36項及補充10項的查核結論，也不因此觸發第二輪事實查核。
+
+build.mjs 只有同一行文字替換；保持兩個實測 pause override 在 `setPauseBeats(doc)` 後。獨立以記憶體輸出蒐集器執行建置邏輯，產生的 video.json 與 draft-metrics.json 和目前working檔案 **逐位元組完全相同**，沒有真實寫入來源。衍生metrics只改units、估秒、後段章節frame及source hash。新的 lint **0 errors / 0 warnings**。
+
+`planRequests` 獨立比較確認，只改 `kitchen-gap` 的一個request及 **9fyu 的take key**；其餘137個take key均相同。覆核瞬間 `staleTakes=['9fyu']`；speech_hash 由 `bc923f1be75ed10b` 變 `5e45b34feaa17c8c`，因此主代理可依正常ledger只重錄此句、重用其餘137句。新的語音實際結果、clipSHA、整軌／timelineSHA、逐句轉寫與章節／節奏仍需重錄後重新量測；不能把舊「零重錄」附錄或舊PCM秒數直接當此最新音訊已審。原節奏附錄的零重錄證據指當時兩個pause調整，後續有限重錄屬另一階段。
+
+獨立helper與完整結果在私有 `<home>/mokaair-work/ai-series-continuation-20261004/llm-review/listener-rewrite-reverify.mjs`、`listener-rewrite-reverify-results.json`。主代理的 `review/rewrites.json` 正規ledger、實際新take與遠端audio批准須各自留存。本附錄允許事實查核延續至最新source；不宣稱138/138聲音已過、實聽驗收、成片、上架、G槽交付或可刪原件。
+
+## 兩鏡視覺提示附錄：長版歷史，保留音訊、局部重畫
+
+2026-10-04T12:03:20Z，獨立 narrow reverify；本轮只修改本報告並保存私有證據，不 rebuild 實際來源、不修改 manifest、音訊、cache、checks 或批准，不呼叫付費 API。當時 video.json SHA-256 為 **`bb0aca6bfe791dc02a3e268076abedce385ae6b3a8cc42fe4ab839e498734043`**；此長版後因供應商合併提示長度限制而縮寫，見最後附錄。
+
+與主代理保留的 `llm-before-visual-fix.json`（SHA `bc87f8b12c07a0039d60dec9f185dccefe5b3f38e65959298bcb5cc249badc5d`）比較，完整 JSON **僅 counter-arrival.data.prompt、counter-handoff.data.prompt 改變**。把二者替回原 prompt 後，JSON 深度相等且重新序列化全檔 SHA 精確回到基準。75 鏡中其餘 **73 個完整送圖提示**相同；全部 138 句 text/id/順序/pause/reveal、各場景 claims、voice、look、章節、字卡、thumbnail 與 YouTube metadata 均相同。claims.md、demo.py、shorts.json、brief.md 全檔 SHA 仍精確等於本報告原終審綁定。36 項主張及補充10項結果不變，未新增事實修改。
+
+build.mjs 用 `promptOverrides` 僅覆寫這兩個 id；其餘 helper 與鏡頭產出不變。以記憶體 writeFileSync 蒐集器執行建置邏輯，產生的 video.json 和 draft-metrics.json 與實際 working files 逐位元組相同，沒有寫入來源。actual lint **0 errors / 0 warnings**。
+
+### 原聲音與計時保持綁定
+
+獨立比較兩個版本的 **108 個 planRequests（含所有 request body/key 及138 line keys）完全相同**；speech_hash 維持 `5e45b34feaa17c8c`，look_hash 維持 `ed4c2594703d65d6`，`staleTakes=[]`。以目前 WAV 的 audio_samples 計算兩版本 measured timeline core，結果完全相同；全部章節仍 `checkChapters=[]`。
+
+讀取當前音訊並比對兩鏡修正之前的 `llm-final-audio-audit.json`，下列檔案完整 SHA-256 均未變：
+
+- timeline.json：`11b705bbc348d15b1cff8f955bcbf9657aa455fc6c558e0e7cc730e778c9d17d`。
+- narration.wav：`1441cbb8403d7c8499e9040307d759cb71f8749dc1c85407ab46804d40155b2d`。
+- audio/cache.json：`e5aa88122db54aa2b7a000d531929b5a57a79427255958f9d77defbee39f523d`。
+- review/check.json：`584654c967595978334779080a460c10414fad19c4ee7d3479ff0a392a5000af`。
+- review/check-flags.json：`9be341f7ca0da0268f1bec1d91ee64efe8529760de6319e4ff17a7a6ab49a0e3`。
+
+`audioEvidenceProblems=[]` 已對實際138個clip及整軌的 SHA／sample長度執行驗證；`currentAudioCheck` 仍有138個與當前clip雜湊相符的check。本輪沒有重新聆聽或代寫批准，但此次視覺修正沒有使既有音訊／計時證據失效，無需 TTS 重錄或音訊 refresh。
+
+### 兩鏡修法與實圖限制
+
+已独立看原 `plate-1/2/3.jpg`、`counter-arrival-1.jpg`、`counter-handoff-1.jpg`。三張plate有字／偽字，plate-1另有仿簽名；三個原紀錄均 text=0、passed=false，未清除問題或改分。stylePlate仍保留最高分take1作參照；**plate不是播放場景**，不能將plate字痕直接說成成片有字。此批 manifest 使用 MiniMax image-01；現有 adapter 只轉傳role=character，沒有style reference或seed字段，因此也不能斷言plate內容直接污染生成。它仍被送給judge作風格比較。
+
+真正有播放素材問題的是 arrival 入口偽字、晴日強影與志工／傘架靠右，以及 handoff 把原要求橫放於手間的傘画成頭上完全展開直立傘。兩個新prompt分别要求雨滴／灰天／柔影、空白未標示表面、兩人與動作道具整組在中央三分之一，以及已收合、束帶固定、腰高水平的傘。場景、人物關係、口播含義和虛構揭露仍相同。全域look、其他73鏡、旁白與事實資料均未改。
+
+目前 fault-check 的text問題排除只像字而未形成字母的痕跡，subject問題又排除次要道具／旁人／精確構圖，details缺失可在overall9.29時通過；所以judge pass不取代實圖判斷。**本輪沒有宣稱全75張實圖合格**。兩張replacement的實際像素、無偽字／簽名、閉傘姿態及中央9:16裁切仍需重畫後看；handoff被thumbnail與第一支Short引用，更需要驗裁切後仍看得見兩人手勢和整把閉傘。
+
+pictures_hash正常由 `0ed8c4863968a47f` 變 `a925690ffb4b7568`，visual_hash由 `56a9c16630c0c525` 變 `259647d3b2c4574a`。同look／model／reference／bar下其餘未改shot的image keys與judge stamps可由正常entryStands保留，**不能保留舊storyboard整份manifest hash當作新圖已批准**。新分鏡批准須綁實際重畫後manifest；成片、直式片、品牌presentation、QA、YouTube、G槽備份與刪原件仍是獨立關卡。
+
+私有 `<home>/mokaair-work/ai-series-continuation-20261004/llm-two-shot-source-audit.json` 保存完整結果；helper為 `llm-review/two-shot-source-audit.mjs`。風格路徑與schema限制的完整分析另在 `llm-review/llm-visual-style-audit.md`。本附錄支持最新來源事實結論及不重錄的音訊綁定延續，不代表分鏡或成片完成。
+
+## 兩鏡提示縮版附錄：供應商長度與最新綁定
+
+2026-10-04T12:07:49Z，獨立唯讀窄覆核。當前 video.json SHA-256：**`87fae04fd747036b6016a1bf7508f694223b89081a7ea697fae7556441b3f605`**。本輪只改本報告，沒有 rebuild 來源、TTS、媒體修改、付費或API呼叫。
+
+前次長版只核單一scene prompt的schema長度，漏算MiniMax最終合併Style、Camera與Avoid；長版合併為1644／1640字元，超過實際供應商要求的1500。現將兩鏡縮為423／439個ASCII字元，保留雨天／灰天柔光、空白表面／無signs與字形、兩人手與道具整組在中央三分之一，以及handoff收合、束帶固定、腰高水平傘。前次長版的事實／音訊不變結論仍是有效歷史證據，但不是可成功送出的圖片請求。
+
+| shot | scene prompt ASCII字元 | Style | Negative | 加Style／Camera後 | 再加 `. Avoid: ` 與Negative的實際供應商prompt |
+| --- | --- | --- | --- | --- | --- |
+| counter-arrival | 423 | 519 | 373 | 968 | **1350** |
+| counter-handoff | 439 | 519 | 373 | 985 | **1367** |
+
+獨立將完整原始 `scene.data.prompt + '. Style: ' + look.style + '. Camera: ' + scene.data.camera` 與實際 `shotPrompt` 結果逐字比對，均完全相等；未觸發4000字元slice。再依MiniMaxImages.request_body的實際組合式加入`. Avoid: `及全373字元Negative，得到上表1350／1367，均嚴格少於1500，沒有暗截斷，也沒有刪style、camera或negative來假装符合。來源兩prompt與私有縮版提案逐字相同；lint仍 **0 errors / 0 warnings**。
+
+將当前兩prompt逆替回 `llm-before-visual-fix.json` 的BC基準，完整JSON深度相等、序列化SHA精確回到 `bc87f8b12c07a0039d60dec9f185dccefe5b3f38e65959298bcb5cc249badc5d`。因此**只有counter-arrival.data.prompt、counter-handoff.data.prompt**變動；其餘73個完整送圖提示、138句旁白及id／順序／pause／reveal、claims、voice、look、metadata、章節、字卡、thumb與所有其他資料均不變。claims／demo／Shorts／brief的原終審SHA再核仍相同。36項及補充10項事實結論沿用，沒有額外事實變動。
+
+build.mjs記憶體蒐集器的video.json和draft-metrics.json輸出仍與當前working檔案逐byte相同，未寫來源。108個配音planRequests及138個line keys前後全等；speech_hash仍`5e45b34feaa17c8c`、look_hash仍`ed4c2594703d65d6`，`staleTakes=[]`。依當前audio_samples重建兩版本measured timeline core仍全等。timeline、narration、cache、check與flags完整SHA均與前一附錄列出的音訊證據一致；138clips及整軌SHA／sample綁定再驗`audioEvidenceProblems=[]`，currentAudioCheck仍138，章節check=[]。無需重錄或audio refresh，沒有改任何音訊review hash來取得通過。
+
+當前pictures_hash為`e04741e22fea96fc`、visual_hash為`ac3092e9d3b164a0`。它們正常隨縮版兩prompt更新，不能沿用長版或BC的storyboard整份manifest hash當新分鏡批准；不變鏡可走正常request／verdict重用。前次實圖限制完全維持：plate不是播放鏡、既有judge問題未刪、未聲稱75張實圖全過；新兩圖、無偽字、正確閉傘姿態與中央9:16裁切須看實際replacement後才能驗收。
+
+最新完整私有證據：`<home>/mokaair-work/ai-series-continuation-20261004/llm-two-shot-short-source-audit.json`；helper為`llm-review/two-shot-short-source-audit.mjs`。長版歷史的`llm-two-shot-source-audit.json`保留原雜湊，未冒稱它屬縮版。來源查核延續不等於新圖已畫好、分鏡批准、成片、發布或G槽交付。
