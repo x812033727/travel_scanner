@@ -6,6 +6,7 @@ import copy
 import hashlib
 import json
 import shutil
+import sys
 from collections.abc import AsyncIterator, Callable
 from pathlib import Path
 from typing import Any
@@ -138,19 +139,52 @@ def test_portable_wire_refuses_missing_paths_and_invalid_limits(
         validate_bundle(bundle)
 
 
-@pytest.mark.parametrize("mutation", ["symlink", "missing", "unexpected"])
+# Windows lets an account create a symbolic link only with SeCreateSymbolicLinkPrivilege
+# (elevation or Developer Mode), but lets any account create a directory junction.
+ERROR_PRIVILEGE_NOT_HELD = 1314
+LINKS = ("symlink", "junction")
+windows_only = pytest.mark.skipif(
+    sys.platform != "win32", reason="directory junctions exist only on Windows"
+)
+
+
+def link_readme(pack: Path, kind: str) -> None:
+    """Swap README.md for a real link out of the pack, so the refusal reads actual metadata."""
+    entry = pack / "README.md"
+    entry.unlink()
+    if kind == "symlink":
+        try:
+            entry.symlink_to(PACK / "README.md")
+        except OSError as exc:
+            if getattr(exc, "winerror", None) != ERROR_PRIVILEGE_NOT_HELD:
+                raise
+            pytest.skip(
+                "this Windows account cannot create symbolic links (WinError 1314, no "
+                "SeCreateSymbolicLinkPrivilege); the junction case refuses a real link here"
+            )
+    elif sys.platform == "win32":
+        import _winapi
+
+        outside = pack.parent / "outside"
+        outside.mkdir()
+        _winapi.CreateJunction(str(outside), str(entry))
+        assert entry.is_junction()
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    ["symlink", pytest.param("junction", marks=windows_only), "missing", "unexpected"],
+)
 def test_prepare_checks_actual_directory(tmp_path: Path, mutation: str) -> None:
     pack = tmp_path / PACK.name
     shutil.copytree(PACK, pack)
-    if mutation == "symlink":
-        target = pack / "README.md"
-        target.unlink()
-        target.symlink_to(PACK / "README.md")
+    if mutation in LINKS:
+        link_readme(pack, mutation)
     elif mutation == "missing":
         (pack / "season-10.md").unlink()
     else:
         (pack / "extra.json").write_text("{}")
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="symlinks" if mutation in LINKS else "unexpected"):
         prepare_bundle(pack)
 
 
