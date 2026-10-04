@@ -34,7 +34,7 @@ from datetime import UTC, datetime
 from typing import Any, Literal
 
 import httpx
-from pydantic import BaseModel, Field, ValidationError
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from redis.asyncio import Redis
 from redis.exceptions import RedisError
 
@@ -88,12 +88,27 @@ class ScoreQuestion(BaseModel):
     criteria: list[str]
 
 
+class NoulCriteria(BaseModel):
+    """What a yes and a no mean, under the only two keys TypeSafe documents.
+
+    TypeSafe documents a noul's ``criteria`` as an object with ``true`` and ``false``
+    descriptions (docs.typesafe.ai/primitives/noul). Until 2026-10-04 this code sent
+    ``yes`` / ``no`` instead; those calls succeeded, and whether the far side read the two
+    descriptions is not documented. Any other key is refused here, before a call is spent.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    true: str
+    false: str
+
+
 class NoulQuestion(BaseModel):
     type: Literal["noul"] = "noul"
     instructions: str
     # Optional on a noul, unlike choice and score where it is required: it clarifies
     # what yes and no are meant to cover when the statement alone is ambiguous.
-    criteria: dict[str, str] | None = None
+    criteria: NoulCriteria | None = None
 
 
 JevQuestion = ChoiceQuestion | ScoreQuestion | NoulQuestion
