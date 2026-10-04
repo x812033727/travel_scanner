@@ -1,14 +1,14 @@
 ---
 id: 2026-10-03-narration-homophone-misses-ni-variant
 title: Narration homophone rule misses the 妳/你 pair
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-tts-ni-tempdirs
+claimed_at: 2026-10-04T14:52:49Z
 created_at: 2026-10-03T17:48:47Z
 completed_at:
-branch:
+branch: claude/tts-ni-variant-and-test-tempdirs
 depends_on: []
 scope:
   - tools/video/tts/check.mjs
@@ -31,12 +31,12 @@ returns `null`, while 她 heard as 他 returns `"sound"`.
 
 ## Definition of done
 
-- [ ] 妳 heard as 你 is matched as the same sound, like 她／他.
-- [ ] A test beside the existing 它／他 case in `tools/video/tts/check.test.mjs` pins it.
+- [x] 妳 heard as 你 is matched as the same sound, like 她／他.
+- [x] A test beside the existing 它／他 case in `tools/video/tts/check.test.mjs` pins it.
 
 ## Steps
 
-- [ ] Smallest fix: fold the variant before reading, e.g. `pinyin(comparable(text).replace(/妳/gu, "你"), {...})`.
+- [x] Smallest fix: fold the variant before reading, e.g. `pinyin(comparable(text).replace(/妳/gu, "你"), {...})`.
       Avoid pinyin-pro's global `customPinyin`, which would change every other importer.
 
 ## How to verify
@@ -48,3 +48,17 @@ node --test tools/video/tts/check.test.mjs
 ## Notes
 
 - `docs/videos/ai-term-system-one-model/demo/demo_pinyin.cjs` reproduces the readings.
+- 2026-10-04 (claude-opus-5-5-tts-ni-tempdirs): `reading()` in `tools/video/tts/check.mjs` now
+  replaces 妳 with 你 after `comparable()` and before pinyin-pro, as suggested; `customPinyin` is
+  untouched, so other importers of pinyin-pro read as before. Only `reading()` changed, so the
+  fold applies to the same-sound rule alone: "exact" and "filler" still compare the characters.
+- The test sits beside 它／他 in "same-sound characters and added filler words pass without Jev"
+  and uses the three transcripts competition-20261002 produced: L002 (`字簽了 你也就沒用了`) and
+  WR-E01-L026 from both recognizers (`棠棠，你連我也信不過？`, and Whisper's `唐唐,你連我也信不過?`,
+  whose 唐 for 棠 is already the same sound). With the fold removed the test fails with
+  `actual: null, expected: 'sound'`; with it, it passes.
+- `node --test tools/video/tts/check.test.mjs`: 19 of 20 pass; the one failure is the known
+  Windows-only "a second transcript clears a line only Gemini misheard" test.
+- `tools/video/tts/check.test.mjs` is bound by SHA-256 in `docs/videos/long-form/review.json`
+  (`check.mjs` is not); the PR is a draft until an independent reviewer adds the
+  duration-receipt increment.
