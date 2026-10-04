@@ -322,7 +322,8 @@ export function shotTraps(reading, scene, ctx) {
     const estimated = reading.silent ? "（沒有台詞也沒有 action_seconds，以 craft 的 SILENT_SHOT_SECONDS 估）" : "";
     if (Number.isFinite(source.from_s) && end > limit) {
       add("source.length", `從 ${source.shot} 的素材 ${source.from_s} s 起切，本鏡約 ${reading.seconds} s${estimated}，結尾在 ${end.toFixed(1)} s，超過 ${limit} s（${ctx.production ? "production profile 的素材固定 8 s：lint productionShotProblems" : "MAX_SOURCE_CLIP_SECONDS：tools/video/core/drama.mjs"}）`, "from_s 提早，或縮短這個鏡頭的台詞");
-    } else if (Number.isFinite(source.from_s) && origin && !isSourced(origin) && origin.data?.visual !== "still" && ctx.secondsById.has(source.shot)) {
+    } else if ((ctx.route ?? "server") === "server" && Number.isFinite(source.from_s) && origin && !isSourced(origin) && origin.data?.visual !== "still" && ctx.secondsById.has(source.shot)) {
+      // 網頁路線（--route hailuo|kling）的母鏡頭照 animation-preproduction 的 shot_plan.mjs 買到蓋住每一個切鏡，不在這裡算。
       // lint 的上限是素材「最多」幾秒；來源真正買到的是 clipSeconds 給的（沒有 profile 時 4–10），
       // clips.mjs 在來源買下之後才對它標 needs_review，這裡先算。
       const originSeconds = ctx.secondsById.get(source.shot);
@@ -339,7 +340,7 @@ export function shotTraps(reading, scene, ctx) {
  * 整份 video.json 的讀法：{ file, production, look, shots: [reading + traps], summary }。
  * `series` 是旁邊的 series.json（有 production.profile 就套 8 秒規則），`only` 是要看的鏡頭 id。
  */
-export function readDocument(doc, { file = "video.json", series = null, only = null, single = false } = {}) {
+export function readDocument(doc, { file = "video.json", series = null, only = null, single = false, route = "server" } = {}) {
   let timeline = null;
   try {
     timeline = estimateTimeline(doc);
@@ -352,7 +353,7 @@ export function readDocument(doc, { file = "video.json", series = null, only = n
   const names = [...castById.values()].flatMap((character) => [character.id, character.name]).filter((name) => typeof name === "string");
   const shotsById = new Map(doc.scenes.filter((scene) => scene?.template === "shot").map((scene) => [scene.id, scene]));
   const secondsById = new Map(rows.filter((row) => !row.card && Number.isFinite(row.seconds)).map((row) => [row.id, row.seconds]));
-  const ctx = { look, castById, names, shotsById, secondsById, single, production: Boolean(series?.production?.profile) };
+  const ctx = { look, castById, names, shotsById, secondsById, single, route, production: Boolean(series?.production?.profile) };
   const shots = [];
   rows.forEach((row, index) => {
     const scene = doc.scenes[index];
@@ -412,13 +413,16 @@ export function renderReading(report) {
 }
 
 function parseArgs(argv) {
-  const args = { json: false, strict: false, file: null, input: null, only: null };
+  const args = { json: false, strict: false, file: null, input: null, only: null, route: "server" };
   for (let index = 0; index < argv.length; index++) {
     const arg = argv[index];
     if (arg === "--json") args.json = true;
     else if (arg === "--strict") args.strict = true;
     else if (arg === "--file") args.file = argv[++index] ?? null;
-    else if (arg === "--shot") args.only = String(argv[++index] ?? "").split(",").map((id) => id.trim()).filter(Boolean);
+    else if (arg === "--route") {
+      args.route = argv[++index] ?? "";
+      if (!["server", "hailuo", "kling"].includes(args.route)) throw new Error("--route must be server, hailuo or kling");
+    } else if (arg === "--shot") args.only = String(argv[++index] ?? "").split(",").map((id) => id.trim()).filter(Boolean);
     else if (arg.startsWith("--")) throw new Error(`unknown flag ${arg}`);
     else if (args.input === null) args.input = arg;
     else throw new Error(`unexpected argument ${arg}`);
@@ -426,7 +430,7 @@ function parseArgs(argv) {
   return args;
 }
 
-const USAGE = "usage: shot_reading.mjs <video.json> [--shot a,b] [--json] [--strict] | --file <one-shot.json> [--json] [--strict]";
+const USAGE = "usage: shot_reading.mjs <video.json> [--shot a,b] [--route server|hailuo|kling] [--json] [--strict] | --file <one-shot.json> [--json] [--strict]";
 
 function main(argv) {
   let args;
@@ -451,7 +455,7 @@ function main(argv) {
       const doc = JSON.parse(readFileSync(args.input, "utf8"));
       const seriesFile = path.join(path.dirname(path.resolve(args.input)), "series.json");
       const series = existsSync(seriesFile) ? JSON.parse(readFileSync(seriesFile, "utf8")) : null;
-      report = readDocument(doc, { file: args.input, series, only: args.only });
+      report = readDocument(doc, { file: args.input, series, only: args.only, route: args.route });
       if (args.only) {
         const found = new Set(report.shots.map((shot) => shot.id));
         const missing = args.only.filter((id) => !found.has(id));

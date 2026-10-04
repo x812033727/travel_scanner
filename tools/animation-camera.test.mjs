@@ -357,6 +357,12 @@ test("source.bought trips when a cut ends past what its source buys under the se
   const production = readDocument(cut(3), { series: { production: { profile: { id: "test" } } } });
   assert.ok(!production.shots[1].traps.some((each) => each.id === "source.bought"), "under the profile the source buys 8 s and the cut fits");
   assert.ok(!trapsOf(clean({ source: { shot: "s1", from_s: 3 } })).includes("source.bought"), "--file mode has no source to measure");
+  // On a web route the master is bought to cover every cut (animation-preproduction's shot_plan.mjs),
+  // so the server's 4 s does not apply.
+  for (const route of ["hailuo", "kling"]) {
+    assert.ok(!readDocument(cut(3), { route }).shots[1].traps.some((each) => each.id === "source.bought"), `--route ${route} does not price the source at the server's 4 s`);
+  }
+  assert.ok(readDocument(cut(3), { route: "server" }).shots[1].traps.some((each) => each.id === "source.bought"), "--route server is the default reading");
 });
 
 test("every trap id has a case above, so a deleted trap is noticed", () => {

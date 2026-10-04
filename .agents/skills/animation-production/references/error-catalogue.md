@@ -86,3 +86,20 @@
 | 48 | 改分、降 `judge_min_score`、重判到過 | visual-quality.md 的規矩 | 品質紀錄作廢 | 不過就記不過 |
 | 49 | PowerShell 5.1 把非 ASCII 的 `--shot` 或路徑弄壞 | 無 | 跑錯鏡或找不到檔 | argv 只用 ASCII；鏡頭 id 本來就是 |
 | 50 | 公開文件放了機器路徑或憑證 | `tools/skills.test.mjs`、`repo-hygiene` | 撤文 | 素材與收據留 repo 外 |
+
+## 規劃與網頁路線（2026-10-04 補）
+
+`plan_lock.mjs`、`shot_plan.mjs`、`animatic.mjs` 是 `.agents/skills/animation-preproduction/scripts/` 的三支；規劃的做法在那個 skill。
+
+| # | 錯誤 | 誰抓 | 漏掉的代價 | 預防 |
+| --- | --- | --- | --- | --- |
+| 51 | 關鍵影格畫完（或 storyboard 核准後）才改某一鏡 `motion` 的一個字；圖片模型不讀 `motion`，但 `visualHash` 綁整個 `scene.data` | `plan_lock.mjs --check`；`status` 的 stale | 關鍵影格不重畫（#1193 起只有畫面請求或 judge 題目變了的鏡頭才重畫；改 `prompt`／`camera` 的那一鏡會重畫重 judge），但 keyframes manifest 改寫 → storyboard 重審；伺服器買的素材每支再 judge（60 支 US$0.60）；已匯入的外部片段全部重匯 | 動作與運鏡在 `keyframes` 之前定稿；鎖定後的改動攢齊走變更單 |
+| 52 | 小樣或批次中途為一鏡改 `video.json` 或網頁正文 | 改 `video.json`：`plan_lock.mjs --check`；只改網頁正文：人工對收據的正文 SHA-256 與 `plan/lock.json` 的 `shots[id].prompt.sha256`（`--check` 不讀收據） | 同 51，加上收據重現不了 | 記下問題，這一批做完一起改、重鎖 |
+| 53 | Kling 的「輸出數」沒設 1、或開了原生音訊 | 無（Generate 旁的點數） | 多份輸出照支數扣（推算）；音訊 1080p 每秒多 4 點（官方） | 送出前清單（`animation-preproduction/references/route-decisions.md` 第七節） |
+| 54 | Kling Multi-Shot 開著，或 H3 正文寫了 `[Shot 2]`，模型在一支裡切鏡 | `clips import` 的切點檢查 → `needs_review`，1 | 那一支白做 | Multi-Shot 關；H3 只寫 `[Shot 1]`（`shot_plan.mjs` 的正文） |
+| 55 | 網頁正文把 `look.negative` 的否定句照抄進去 | 無 | 否定的東西被畫出來（**試拍**：already closed 畫成開著的門） | 負面欄真的有才貼；正文寫看得到的正面狀態 |
+| 56 | 網頁買的秒數剛好等於需要的秒數 | `assemble` 的 fit／freeze | 收勢被切掉、或要放慢補長度 | 尾巴留 0.5 秒（`shot_plan.mjs --handle`）；圖生影片沒有頭的把手 |
+| 57 | 沒做動態分鏡，節奏與資訊順序在素材買完才看出來 | 無 | 重剪不夠就重買 | `animatic.mjs` 文字卡版在 P3 之後就看；關鍵影格版在 storyboard 關卡前看 |
+| 58 | C 級鏡頭（手指拿小道具、兩人接觸、吃喝、變身、要讀的字）照原樣排進批次 | `shot_plan.mjs` 的風險級；`--strict` 報不在小樣裡的 C | **試拍**：生成出來的 4 個 take 有 3 個在手與道具上出錯，S03 兩次上限用完；到 take 上限就停 | 前期重設計（`shot-risk.md` 的招式），非做不可就放進小樣 |
+| 59 | Hailuo 的 AI Polish、Kling 的 AI Prompter 開著卻沒記 | 無 | 實際送出的不是鎖定的字，下一次重現不了 | 鎖定包寫明開或關；收據記 |
+| 60 | 用有 production profile 的集規劃網頁路線 | `shot_plan.mjs`（refuse）；`clips import` → 3 | 做出來進不了產線 | P0 條件卡先查 profile |
