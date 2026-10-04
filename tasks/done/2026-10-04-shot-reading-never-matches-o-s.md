@@ -1,14 +1,14 @@
 ---
 id: 2026-10-04-shot-reading-never-matches-o-s
 title: shot_reading never matches o.s. or v.o. because clauses are split on periods
-status: open
+status: done
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-incomplete-tickets
+claimed_at: 2026-10-04T16:46:04Z
 created_at: 2026-10-04T15:09:53Z
-completed_at:
-branch:
+completed_at: 2026-10-04T16:48:33Z
+branch: claude/shot-reading-os-vo
 depends_on: []
 scope:
   - .agents/skills/animation-camera/scripts/shot_reading.mjs
@@ -30,14 +30,14 @@ supported in the code and are not.
 
 ## Definition of done
 
-- [ ] `o.s.` and `v.o.` (any case, with or without parentheses) are read as off-screen words, or are removed from `OFF_SCREEN` with the skill saying to write `off screen`.
-- [ ] A regression case in `tools/animation-camera.test.mjs` pins whichever choice is made.
+- [x] `o.s.` and `v.o.` (any case, with or without parentheses) are read as off-screen words, or are removed from `OFF_SCREEN` with the skill saying to write `off screen`.
+- [x] A regression case in `tools/animation-camera.test.mjs` pins whichever choice is made.
 
 ## Steps
 
-- [ ] Decide between protecting the abbreviations from the clause split (for example, split on a period only when it is followed by whitespace or the end, and not inside `o.s.`/`v.o.`) and dropping them.
-- [ ] Check that a name like `Mr. Chen` is not newly glued to the previous clause by the change.
-- [ ] Add the regression case and run `node --test tools/animation-camera.test.mjs tools/skills.test.mjs`.
+- [x] Decide between protecting the abbreviations from the clause split (for example, split on a period only when it is followed by whitespace or the end, and not inside `o.s.`/`v.o.`) and dropping them.
+- [x] Check that a name like `Mr. Chen` is not newly glued to the previous clause by the change.
+- [x] Add the regression case and run `node --test tools/animation-camera.test.mjs tools/skills.test.mjs`.
 
 ## How to verify
 
@@ -53,3 +53,11 @@ dropped, the skill should say so).
   separate behaviour change from who in a clause is off screen.
 - No repository `video.json` uses `o.s.` or `v.o.` today (a `git grep` over `docs/videos` found
   only `off screen` wordings), so this is latent, not a live false negative.
+- 2026-10-04 (claude-opus-5-5-incomplete-tickets): kept the abbreviations. `shotTraps` spells
+  `o.s.` / `v.o.` (any case) out as `off screen` / `voice over` before the clause split, so
+  `Zhao (o.s.)` reaches `offScreenRoles` as `Zhao (off screen)`; the trap message quotes that
+  spelled-out clause. Only those two abbreviations change: every other period splits exactly as
+  before, so `Mr. Chen` is still cut after `Mr` (unchanged behaviour, pinned by a `Mr. Lin` case).
+  `OFF_SCREEN` keeps both alternatives for direct `offScreenRoles` callers, whose text is not split.
+- `node --test tools/animation-camera.test.mjs`: 33/33 with the change; the new test fails on
+  origin/main's `shot_reading.mjs` (32/33). `tools/skills.test.mjs` 6/6.

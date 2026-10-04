@@ -55,6 +55,7 @@ const FAMILY_LABEL = { face: "臉", wide: "全景或多人", insert: "插鏡", m
 
 // prompt 或 motion 說某人不在畫面裡的寫法（drama-craft.md 第四節：反應鏡與插鏡放畫外那個人的那一句）。
 const OFF_SCREEN = /\boff[- ]?screen\b|\bout of (?:the )?frame\b|\bo\.s\.|\bv\.o\.|\bvoice[- ]?over\b|\bunseen\b|\bnot (?:in|visible in|seen in) (?:the )?(?:frame|shot|picture)\b|\boutside (?:the )?frame\b|\bfrom off\b|畫外|不在畫面/i;
+const SCREENPLAY_OFF_SCREEN = /\bo\.s\.|\bv\.o\./gi;
 // 畫外的字接在誰身上（scene-coverage.md 的寫法：`toward Ayu off screen left`、`eyes on Chen off screen right`）。
 // 緊接在畫外的字前面、離它最近的介系詞與它帶的一到三個字：帶的是名字，畫外的就是那個名字（目標）。
 const AIM_BEFORE = /^(.*)\b(toward|towards|at|to|on|onto|upon|into)\s+((?:\S+\s+){0,2}\S+)\s*$/is;
@@ -269,7 +270,9 @@ export function shotTraps(reading, scene, ctx) {
   const listed = Array.isArray(data.characters) ? data.characters : [];
   const speaking = reading.speakers.filter((speaker) => speaker !== "narrator");
   // 畫外的句子以逗號切：「Lin lifts the cup, Zhao speaks off screen」只有後半說的是畫外的人。
-  const clauses = `${prompt}. ${motion}`.split(/[.;,。；，]/).map((part) => part.trim()).filter((part) => OFF_SCREEN.test(part));
+  // 劇本縮寫自己帶句點，切之前先寫成字，否則「Zhao (o.s.)」會被切成「Zhao (o」「s」「)」，畫外就讀不到。
+  const spelled = `${prompt}. ${motion}`.replace(SCREENPLAY_OFF_SCREEN, (abbreviation) => (/^o/i.test(abbreviation) ? "off screen" : "voice over"));
+  const clauses = spelled.split(/[.;,。；，]/).map((part) => part.trim()).filter((part) => OFF_SCREEN.test(part));
   const cast = [...ctx.castById.values()];
   const offScreen = new Map(), unsure = new Map();
   for (const part of clauses) {
