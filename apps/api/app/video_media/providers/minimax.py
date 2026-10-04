@@ -1,13 +1,19 @@
 """MiniMax image-01 and the Hailuo video models.
 
-Images are synchronous (the answer holds a download URL); video is a task to poll, whose
-result is a file id exchanged for a download URL. Downloads are on MiniMax's CDN and need no
-key, so ``fetch`` sends none. ``base_resp.status_code`` carries the vendor's own verdicts
-(quota, balance, sensitive content) inside an HTTP 200, so every answer is checked for it.
+Images are synchronous and come back in the answer itself: the adapter asks for
+``response_format: base64`` and ``submit`` returns the bytes, as the Gemini image adapter
+does. Asked for a link instead, image-01 handed back one that ``check_download`` refuses, so
+until 2026-10-04 no picture was ever stored. An answer that carries only links (a vendor that
+ignored the parameter) still goes down the download path, through the same check. Video is a
+task to poll, whose result is a file id exchanged for a download URL. Downloads are on
+MiniMax's CDN and need no key, so ``fetch`` sends none. ``base_resp.status_code`` carries the
+vendor's own verdicts (quota, balance, sensitive content) inside an HTTP 200, so every answer
+is checked for it.
 """
 
 from __future__ import annotations
 
+import base64
 from dataclasses import dataclass
 from typing import Any
 from urllib.parse import quote
@@ -25,11 +31,30 @@ from app.video_media.providers import (
     get_json,
     post_json,
 )
+from app.video_media.storage import sniff_type
 
 # MiniMax's own status codes, as documented on 2026-09-26.
 BUSY = {1002, 1039}
 KEY = {1004, 1008, 2049}
 BLOCKED = {1026, 1027, 2013}
+
+
+def decode_image(encoded: object) -> bytes:
+    """One entry of ``data.image_base64`` as the picture's bytes.
+
+    The messages are fixed: what the vendor sent in place of a picture never reaches a job's
+    error. Line breaks are legal in base64 and carry nothing, so they are dropped; any other
+    character outside the alphabet, or a broken padding, is refused rather than skipped.
+    """
+    if not isinstance(encoded, str):
+        raise MediaUpstreamError(502, "MiniMax's image is not a base64 string", "failed")
+    try:
+        data = base64.b64decode("".join(encoded.split()), validate=True)
+    except ValueError as error:  # binascii.Error is one
+        raise MediaUpstreamError(502, "MiniMax's image is not valid base64", "failed") from error
+    if not data:
+        raise MediaUpstreamError(502, "MiniMax returned an empty image", "failed")
+    return data
 
 
 def check_base_resp(payload: dict[str, Any]) -> None:
@@ -65,7 +90,7 @@ class MiniMaxImages:
             if not request.negative_prompt
             else f"{request.prompt}. Avoid: {request.negative_prompt}",
             "aspect_ratio": request.aspect,
-            "response_format": "url",
+            "response_format": "base64",
             "n": 1,
             "prompt_optimizer": False,
         }
@@ -80,10 +105,22 @@ class MiniMaxImages:
             client, url, self.request_body(request), self._headers(), "MiniMax"
         )
         check_base_resp(payload)
-        urls = (payload.get("data") or {}).get("image_urls") or []
-        if not urls or not isinstance(urls[0], str):
-            raise MediaUpstreamError(502, "MiniMax returned no image URL", "failed")
-        return Submitted(download=Download(url=urls[0], content_type_hint="image/jpeg"))
+        data = payload.get("data")
+        if not isinstance(data, dict):
+            data = {}
+        encoded = data.get("image_base64")
+        if isinstance(encoded, list) and encoded:
+            picture = decode_image(encoded[0])
+            # MiniMax documents no format (its guide saves ``.jpeg``), so the type is read from
+            # the bytes, with the store's own reader; the store reads it again and refuses a
+            # file that is none of its types.
+            return Submitted(inline=picture, content_type=sniff_type(picture[:16]))
+        urls = data.get("image_urls")
+        if isinstance(urls, list) and urls and isinstance(urls[0], str):
+            # The vendor ignored ``response_format``: the link is fetched as before, and
+            # ``fetch`` still refuses one that is not https on a public host.
+            return Submitted(download=Download(url=urls[0], content_type_hint="image/jpeg"))
+        raise MediaUpstreamError(502, "MiniMax returned no image", "failed")
 
     async def poll(self, vendor_ref: str, client: httpx.AsyncClient) -> Polled:
         raise MediaUpstreamError(502, "MiniMax images are synchronous; nothing to poll", "invalid")

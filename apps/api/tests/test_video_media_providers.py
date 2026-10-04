@@ -247,6 +247,7 @@ def test_minimax_bodies_and_status_codes() -> None:
     image = MiniMaxImages(MINIMAX, "k").request_body(_image_request(model="image-01"))
     assert image["subject_reference"][0]["image_file"].startswith("data:image/png;base64,")
     assert image["aspect_ratio"] == "16:9" and image["n"] == 1
+    assert image["response_format"] == "base64", "the picture comes back in the answer"
     clip = MiniMaxVideo(MINIMAX, "k").request_body(
         _clip_request(model="MiniMax-H3", resolution="2k")
     )
@@ -258,6 +259,110 @@ def test_minimax_bodies_and_status_codes() -> None:
         with pytest.raises(MediaUpstreamError) as error:
             check_base_resp({"base_resp": {"status_code": code, "status_msg": "x"}})
         assert error.value.kind == kind, code
+
+
+def _minimax_answers(*data: Any) -> tuple[Any, list[httpx.Request]]:
+    """A handler answering image requests with these ``data`` objects in turn, and what it saw."""
+    seen: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(request)
+        return httpx.Response(
+            200,
+            json={
+                "id": "trace-1",
+                "data": data[len(seen) - 1],
+                "metadata": {"success_count": "1", "failed_count": "0"},
+                "base_resp": {"status_code": 0, "status_msg": "success"},
+            },
+        )
+
+    return handler, seen
+
+
+@pytest.mark.asyncio
+async def test_minimax_images_come_back_as_bytes_in_the_answer() -> None:
+    jpeg = b"\xff\xd8\xff\xe0" + b"picture" * 20
+    png = b"\x89PNG\r\n\x1a\n" + b"picture" * 20
+    wrapped = base64.encodebytes(jpeg).decode()
+    assert "\n" in wrapped.strip(), "a line-wrapped answer"
+    handler, seen = _minimax_answers(
+        {"image_base64": [base64.b64encode(jpeg).decode()]},
+        {"image_base64": [base64.b64encode(png).decode()], "image_urls": []},
+        {"image_base64": [wrapped]},
+    )
+    provider = MiniMaxImages(MINIMAX, "secret")
+    async with _client(handler) as client:
+        first = await provider.submit(_image_request(model="image-01"), client)
+        second = await provider.submit(_image_request(model="image-01"), client)
+        third = await provider.submit(_image_request(model="image-01"), client)
+    assert (first.inline, first.content_type) == (jpeg, "image/jpeg")
+    assert first.download is None and first.vendor_ref is None, "nothing to fetch or to poll"
+    assert (second.inline, second.content_type) == (png, "image/png"), "the type is in the bytes"
+    assert third.inline == jpeg
+    assert seen[0].url.path == "/v1/image_generation"
+    assert seen[0].headers["authorization"] == "Bearer secret"
+    assert json.loads(seen[0].content)["response_format"] == "base64"
+
+
+@pytest.mark.asyncio
+async def test_a_minimax_answer_with_only_a_link_still_goes_through_the_download_check() -> None:
+    handler, _seen = _minimax_answers(
+        {"image_urls": ["https://cdn.minimax.example/p-1.jpeg"]},
+        {"image_base64": [], "image_urls": ["http://cdn.minimax.example/p-2.jpeg"]},
+    )
+    provider = MiniMaxImages(MINIMAX, "secret")
+    async with _client(handler) as client:
+        linked = await provider.submit(_image_request(model="image-01"), client)
+        refused = await provider.submit(_image_request(model="image-01"), client)
+    assert linked.inline is None and linked.download == Download(
+        url="https://cdn.minimax.example/p-1.jpeg", content_type_hint="image/jpeg"
+    )
+    assert provider.fetch(linked.download) == ("https://cdn.minimax.example/p-1.jpeg", {})
+    assert refused.inline is None and refused.download is not None
+    with pytest.raises(MediaUpstreamError) as error:
+        provider.fetch(refused.download)
+    assert error.value.kind == "invalid"
+    assert error.value.message == "the vendor's download URL is not an https address"
+
+
+NO_IMAGE = "MiniMax returned no image"
+NOT_A_STRING = "MiniMax's image is not a base64 string"
+NOT_BASE64 = "MiniMax's image is not valid base64"
+EMPTY_IMAGE = "MiniMax returned an empty image"
+
+
+@pytest.mark.parametrize(
+    ("data", "message"),
+    [
+        pytest.param({"image_base64": []}, NO_IMAGE, id="empty-list"),
+        pytest.param({"image_base64": [], "image_urls": []}, NO_IMAGE, id="empty-lists"),
+        pytest.param({"image_base64": None, "image_urls": [7]}, NO_IMAGE, id="link-not-a-string"),
+        pytest.param({}, NO_IMAGE, id="no-fields"),
+        pytest.param(None, NO_IMAGE, id="no-data"),
+        pytest.param(["VENDOR-TEXT"], NO_IMAGE, id="data-is-a-list"),
+        pytest.param({"image_base64": "VENDOR-TEXT"}, NO_IMAGE, id="not-a-list"),
+        pytest.param({"image_base64": [None]}, NOT_A_STRING, id="null-item"),
+        pytest.param({"image_base64": [{"b64": "VENDOR-TEXT"}]}, NOT_A_STRING, id="object-item"),
+        pytest.param(
+            {"image_base64": ["VENDOR-TEXT: https://signed.example/p?token=abc"]},
+            NOT_BASE64,
+            id="not-base64",
+        ),
+        pytest.param({"image_base64": ["/9j/4AAQ="]}, NOT_BASE64, id="broken-padding"),
+        pytest.param({"image_base64": ["  \n"]}, EMPTY_IMAGE, id="blank-item"),
+    ],
+)
+@pytest.mark.asyncio
+async def test_a_minimax_answer_without_a_usable_picture_is_a_vendor_failure(
+    data: Any, message: str
+) -> None:
+    handler, _seen = _minimax_answers(data)
+    async with _client(handler) as client:
+        with pytest.raises(MediaUpstreamError) as error:
+            await MiniMaxImages(MINIMAX, "k").submit(_image_request(model="image-01"), client)
+    assert (error.value.status, error.value.kind) == (502, "failed")
+    assert error.value.message == message, "a fixed message: nothing the vendor sent is repeated"
 
 
 @pytest.mark.asyncio
