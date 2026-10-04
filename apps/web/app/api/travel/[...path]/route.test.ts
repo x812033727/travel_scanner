@@ -68,6 +68,35 @@ describe("saved service clickout BFF", () => {
     expect(fetcher).not.toHaveBeenCalled();
   });
 
+  it("keeps a generic affiliate's signed token and uses the clicked tab's locale rather than another tab's cookie", async () => {
+    requestContext.cookies.set("travel_locale", "en");
+    const fetcher = vi.fn(async () => new Response(null, { status: 303, headers: { Location: "https://tp.st/fixture" } }));
+    vi.stubGlobal("fetch", fetcher);
+    const path = ["affiliates", "travelpayouts", "clickout"];
+    const request = new NextRequest(`https://mokaair.test/api/travel/${path.join("/")}?token=opaque%2Ftoken&locale=ja`, { method: "POST", headers: { Origin: "https://mokaair.test" } });
+    const response = await POST(request, { params: Promise.resolve({ path }) });
+    expect(response.status).toBe(303);
+    expect(response.headers.get("location")).toBe("https://tp.st/fixture");
+    expect(response.headers.get("referrer-policy")).toBe("no-referrer");
+    const [target, options] = (fetcher.mock.calls as unknown as [string, RequestInit][])[0];
+    expect(new URL(target).searchParams.get("token")).toBe("opaque/token");
+    expect(new URL(target).searchParams.has("locale")).toBe(false);
+    expect(new Headers(options.headers).get("X-Travel-Locale")).toBe("ja");
+  });
+
+  it("strips an invalid generic affiliate form locale and falls back to the valid site cookie", async () => {
+    requestContext.cookies.set("travel_locale", "ko");
+    const fetcher = vi.fn(async () => new Response(null, { status: 303, headers: { Location: "https://www.booking.com/hotel/jp/fixture.html" } }));
+    vi.stubGlobal("fetch", fetcher);
+    const path = ["affiliates", "booking", "clickout"];
+    const request = new NextRequest(`https://mokaair.test/api/travel/${path.join("/")}?token=signed&locale=invalid`, { method: "POST", headers: { Origin: "https://mokaair.test" } });
+    expect((await POST(request, { params: Promise.resolve({ path }) })).status).toBe(303);
+    const [target, options] = (fetcher.mock.calls as unknown as [string, RequestInit][])[0];
+    expect(new URL(target).searchParams.get("token")).toBe("signed");
+    expect(new URL(target).searchParams.has("locale")).toBe(false);
+    expect(new Headers(options.headers).get("X-Travel-Locale")).toBe("ko");
+  });
+
   it("refuses an upstream redirect a browser would read as another host", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response(null, { status: 302, headers: { Location: "/\\evil.example/x" } })));
     const response = await GET(new NextRequest("https://mokaair.test/api/travel/places/photo"), { params: Promise.resolve({ path: ["places", "photo"] }) });

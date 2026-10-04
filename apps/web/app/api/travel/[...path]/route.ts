@@ -101,7 +101,8 @@ async function proxy(request: NextRequest, context: Context) {
   const query = new URLSearchParams(request.nextUrl.search);
   const isHotelClickout = /^travel-services\/[a-f0-9-]+\/hotel-links\/[a-z_]+\/clickout$/.test(endpoint);
   const isOptionClickout = /^travel-services\/[a-f0-9-]+\/booking-options\/[a-f0-9-]+\/clickout$/.test(endpoint);
-  const isServiceClickout = isHotelClickout || isOptionClickout || /^affiliates\/(?:offers|destination-offers)\/[a-f0-9-]+\/clickout$/.test(endpoint);
+  const isPartnerClickout = /^affiliates\/[a-z_]+\/clickout$/.test(endpoint);
+  const isServiceClickout = isHotelClickout || isOptionClickout || isPartnerClickout || /^affiliates\/(?:offers|destination-offers)\/[a-f0-9-]+\/clickout$/.test(endpoint);
   const formLocale = isServiceClickout ? query.get("locale") : null;
   if (isServiceClickout) query.delete("locale");
   // First-party error recovery context must never reach the API/affiliate URL.
