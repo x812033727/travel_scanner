@@ -39,7 +39,7 @@ owner's machine on 2026-10-03 `%TEMP%` held, from these tests:
 | `video-image-stage-` | 412 | `tools/video/media/stages.test.mjs:120` |
 | `video-series-image-store-` | 387 | `tools/video/media/series-store.test.mjs:18` |
 | `video-atomic-` | 352 | `tools/video/core/paths.test.mjs:11` |
-| `video-home-` | 63 (some from media.test.mjs, fixed) | `tools/video/tts/tts.test.mjs:230` |
+| `video-home-` | 63 (some from media.test.mjs, fixed) | `tools/video/tts/tts.test.mjs:231` |
 | `video-thumbs-` | 47 | `tools/video/package/package.test.mjs:332` |
 | `video-qa-thumbs-` | 46 | `tools/video/qa/thumbnail.test.mjs:81` |
 | `auto-update-` | 41 | `tools/ci-auto-update.test.mjs:159` |
@@ -75,3 +75,11 @@ npm run test:tools
 - Not from `test:tools`, so not in scope here: `character-look-offline-fixture-*`,
   `source1-normal-synthetic-*`, `sothatswhy-completion-negative-*`,
   `receipt-v4-signature-tests-*` (none of these names appear under `tools/`).
+- Measured on 2026-10-04 with the sandbox fix in place: `node --test "tools/video/**/*.test.mjs"`
+  with `TEMP`/`TMP` pointed at an empty directory leaves 31 directories, 422 KB in all:
+  `video-series-image-store-` 9, `video-atomic-` 8, `video-image-stage-` 7, `anime-acts-test-` 4,
+  and one each of `video-home-`, `video-qa-thumbs-` and `video-thumbs-`. The other
+  `mkdtempSync` callers under `tools/video` (`branding-*`, `shorts-*`, `renewal-*`, `story-plan-`,
+  `dub-words-`, `screencast-`, `video-import-`, `anime-input-`, `admin-catalog-*`,
+  `video-localization-retention-`, `video-branding-`) left nothing in that run. `tasks-` and
+  `auto-update-` come from `tools/*.test.mjs` and were not in it.
