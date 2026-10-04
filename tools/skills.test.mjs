@@ -39,6 +39,8 @@ const MACHINE_PATH = /C:\\Users|\/c\/Users|\/Users\/|\/home\/|AppData|mokaair-wo
 // then anything path-like. Placeholders such as `<ROOT>/docs/x.md` are unwrapped first.
 const PLACEHOLDER_PREFIX = /<[A-Z_]+>\//g;
 const REPO_PATH = /(?<![\w./-])((?:\.agents|\.claude|docs|apps|ops|tools|tasks)\/[\w./-]+)/g;
+// A path that starts inside a skill's own directory instead of at the repository root.
+const SKILL_RELATIVE_PATH = /(?<![\w./-])((?:references|scripts|assets)\/[\w./-]+)/g;
 const TRAILING_PUNCTUATION = /[.,;:)」』`]+$/u;
 const TEXT_FILES = /\.(md|py|yaml|yml|json|mjs|txt)$/;
 
@@ -91,6 +93,31 @@ test("every shared skill has a byte-identical copy for Claude Code, and nothing 
     skills,
     "every skill under .claude/skills must be the copy of one under .agents/skills",
   );
+  // A second copy of a reference drifts from the first with nothing to notice it (the
+  // youtube-video drama.md did): references and scripts exist once, under .agents.
+  const extra = existsSync(CLAUDE)
+    ? walk(CLAUDE)
+        .map((file) => relative(CLAUDE, file).split(/[\\/]/).join("/"))
+        .filter((path) => !/^[^/]+\/SKILL\.md$/.test(path))
+    : [];
+  assert.deepEqual(
+    extra,
+    [],
+    "only SKILL.md is copied under .claude/skills; delete these and point the body at .agents/skills/<name>/...",
+  );
+});
+
+test("a skill body names its own files by repository-root path", () => {
+  // Claude Code resolves a path relative to .claude/skills/<name>/, where only SKILL.md exists,
+  // so `references/x.md` there is a file that is not there.
+  const relativePaths = [];
+  for (const name of skills) {
+    const { body } = frontmatter(readFileSync(join(CANONICAL, name, "SKILL.md"), "utf8"));
+    for (const match of body.matchAll(SKILL_RELATIVE_PATH)) {
+      relativePaths.push(`${name}: ${match[1]} -> .agents/skills/${name}/${match[1]}`);
+    }
+  }
+  assert.deepEqual(relativePaths, [], "skill-relative paths; write them from the repository root");
 });
 
 test("frontmatter stays inside what both harnesses accept", () => {

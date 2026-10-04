@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -8,8 +8,9 @@ import { parseTask, removeArchivedCopy, renderBoard, runCommand, selectReady, se
 
 const AT = (iso) => new Date(iso);
 
-function workspace() {
+function workspace(t) {
   const root = mkdtempSync(path.join(tmpdir(), "tasks-"));
+  t.after(() => rmSync(root, { recursive: true, force: true }));
   mkdirSync(path.join(root, "tasks", "open"), { recursive: true });
   mkdirSync(path.join(root, "tasks", "done"), { recursive: true });
   return root;
@@ -66,11 +67,11 @@ test("rejects front matter a later reader could not trust", () => {
   assert.throws(() => parseTask(header("  - stray")), /does not belong to a list field/);
 });
 
-test("builds short ids and refuses titles with nothing to slug", () => {
+test("builds short ids and refuses titles with nothing to slug", (t) => {
   assert.equal(slugify("Cache the hotel search results for repeat queries"), "cache-the-hotel-search-results-for");
   assert.equal(slugify("Fix /ready when Redis is down!"), "fix-ready-when-redis-is-down");
   assert.equal(slugify("旅館快取"), "");
-  const root = workspace();
+  const root = workspace(t);
   const failed = run(root, ["new", "--title", "旅館快取", "--area", "api", "--scope", "apps/api"]);
   assert.equal(failed.code, 1);
   assert.match(failed.lines[0], /--slug/);
@@ -78,16 +79,16 @@ test("builds short ids and refuses titles with nothing to slug", () => {
   assert.match(file(root, "open", "2026-09-05-hotel-cache.md"), /title: 旅館快取/);
 });
 
-test("two tasks filed the same day never collide on an id", () => {
-  const root = workspace();
+test("two tasks filed the same day never collide on an id", (t) => {
+  const root = workspace(t);
   const args = ["new", "--title", "Same title", "--area", "web", "--scope", "apps/web/app"];
   run(root, args);
   const second = run(root, [...args.slice(0, -1), "apps/web/lib"]);
   assert.match(second.lines[0], /2026-09-05-same-title-2\.md/);
 });
 
-test("hands out work that does not touch files another agent is changing", () => {
-  const root = workspace();
+test("hands out work that does not touch files another agent is changing", (t) => {
+  const root = workspace(t);
   run(root, ["new", "--title", "Hotel cache", "--area", "api", "--scope", "apps/api/app/services", "--priority", "P1"]);
   run(root, ["new", "--title", "Hotel rates", "--area", "api", "--scope", "apps/api/app/services/hotels.py"]);
   run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
@@ -104,8 +105,8 @@ test("hands out work that does not touch files another agent is changing", () =>
   assert.match(run(root, ["check"]).lines[0], /warning: 2026-09-05-hotel-cache and 2026-09-05-hotel-rates are both active/);
 });
 
-test("a claim nobody comes back to is reclaimable after a day", () => {
-  const root = workspace();
+test("a claim nobody comes back to is reclaimable after a day", (t) => {
+  const root = workspace(t);
   run(root, ["new", "--title", "Hotel cache", "--area", "api", "--scope", "apps/api"]);
   run(root, ["claim", "2026-09-05-hotel-cache", "--owner", "claude-a", "--branch", "claude/hotel-cache"]);
 
@@ -121,8 +122,8 @@ test("a claim nobody comes back to is reclaimable after a day", () => {
   assert.equal(taken.branch, "", "the previous agent's branch must not follow the task");
 });
 
-test("a task waits for the tasks it depends on", () => {
-  const root = workspace();
+test("a task waits for the tasks it depends on", (t) => {
+  const root = workspace(t);
   run(root, ["new", "--title", "Schema", "--area", "api", "--scope", "apps/api/migrations", "--priority", "P1"]);
   run(root, ["new", "--title", "Endpoint", "--area", "api", "--scope", "apps/api/app/routers", "--priority", "P0", "--depends-on", "2026-09-05-schema"]);
 
@@ -136,8 +137,8 @@ test("a task waits for the tasks it depends on", () => {
   assert.equal(run(root, ["claim", "2026-09-05-endpoint", "--owner", "claude-b"]).code, 0);
 });
 
-test("finishing a task archives it and keeps the board honest", () => {
-  const root = workspace();
+test("finishing a task archives it and keeps the board honest", (t) => {
+  const root = workspace(t);
   run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
   run(root, ["claim", "2026-09-05-alert-list", "--owner", "claude-a"]);
   const finished = run(root, ["done", "2026-09-05-alert-list"], "2026-09-05T18:00:00Z");
@@ -151,8 +152,8 @@ test("finishing a task archives it and keeps the board honest", () => {
   assert.match(board, /- 2026-09-05 \[Alert list\]\(done\/2026-09-05-alert-list\.md\)/);
 });
 
-test("a committed board that no longer matches the task files fails the check", () => {
-  const root = workspace();
+test("a committed board that no longer matches the task files fails the check", (t) => {
+  const root = workspace(t);
   run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
   writeFileSync(path.join(root, "tasks", "BOARD.md"), "# Task board\n\nsomeone typed this\n");
   const stale = runTracked(root, ["check"]);
@@ -165,8 +166,8 @@ test("a committed board that no longer matches the task files fails the check", 
 // The board is generated on demand and kept out of version control, so that two branches
 // each filing a task no longer collide in it. A local copy may therefore lag behind what
 // the task files now say, and must not fail anyone's pre-push checks when it does.
-test("a stale board that is not committed is not the check's business", () => {
-  const root = workspace();
+test("a stale board that is not committed is not the check's business", (t) => {
+  const root = workspace(t);
   run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
   writeFileSync(path.join(root, "tasks", "BOARD.md"), "# Task board\n\nleft over from an older pull\n");
   const result = run(root, ["check"]);
@@ -250,8 +251,8 @@ test("check refuses two files claiming the same id and a dependency cycle", () =
   assert.match(validate([first, duplicate]).errors.join("\n"), /task id '2026-09-05-a' is already used by/);
 });
 
-test("the board is a pure function of the task files", () => {
-  const root = workspace();
+test("the board is a pure function of the task files", (t) => {
+  const root = workspace(t);
   run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
   run(root, ["claim", "2026-09-05-alert-list", "--owner", "claude-a"]);
   const tasks = [parseTask(file(root, "open", "2026-09-05-alert-list.md"))];
@@ -261,14 +262,14 @@ test("the board is a pure function of the task files", () => {
   assert.deepEqual(selectReady(withPaths), [], "an owned task is not offered to anyone else");
 });
 
-test("a pipe in a title cannot break the board table", () => {
-  const root = workspace();
+test("a pipe in a title cannot break the board table", (t) => {
+  const root = workspace(t);
   run(root, ["new", "--title", "Split a|b routing", "--area", "web", "--scope", "apps/web/app"]);
   assert.match(file(root, "", "BOARD.md"), /\[Split a\\\|b routing\]/);
 });
 
-test("release puts a task back and status moves it without losing the owner", () => {
-  const root = workspace();
+test("release puts a task back and status moves it without losing the owner", (t) => {
+  const root = workspace(t);
   run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
   run(root, ["claim", "2026-09-05-alert-list", "--owner", "claude-a"]);
   run(root, ["status", "2026-09-05-alert-list", "review", "--branch", "claude/alert-list"]);
@@ -287,8 +288,8 @@ test("release puts a task back and status moves it without losing the owner", ()
   assert.match(run(root, ["claim", "missing-task", "--owner", "claude-a"]).lines[0], /no task 'missing-task'/);
 });
 
-test("an empty backlog says so instead of blaming another agent", () => {
-  const root = workspace();
+test("an empty backlog says so instead of blaming another agent", (t) => {
+  const root = workspace(t);
   assert.match(run(root, ["next"]).lines[0], /The backlog has no open task\./);
   run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
   assert.match(run(root, ["next", "--area", "api"]).lines[0], /no open task in api/);
@@ -322,8 +323,8 @@ test("done refuses to report success while the open copy is still there", () => 
   assert.equal(removeArchivedCopy("/repo/tasks/open/z.md", { remove: () => {}, exists: () => (looks += 1) < 2, sleep: () => {} }), null);
 });
 
-test("done deletes the file it read and leaves exactly one copy behind", () => {
-  const root = workspace();
+test("done deletes the file it read and leaves exactly one copy behind", (t) => {
+  const root = workspace(t);
   run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
   run(root, ["claim", "2026-09-05-alert-list", "--owner", "claude-a"]);
   const finished = run(root, ["done", "2026-09-05-alert-list"], "2026-09-05T18:00:00Z");
@@ -333,8 +334,8 @@ test("done deletes the file it read and leaves exactly one copy behind", () => {
   assert.equal(run(root, ["check"]).code, 0);
 });
 
-test("check names the leftover open copy of a finished task", () => {
-  const root = workspace();
+test("check names the leftover open copy of a finished task", (t) => {
+  const root = workspace(t);
   run(root, ["new", "--title", "Alert list", "--area", "web", "--scope", "apps/web/components/alerts"]);
   const open = file(root, "open", "2026-09-05-alert-list.md");
   run(root, ["done", "2026-09-05-alert-list"], "2026-09-05T18:00:00Z");
