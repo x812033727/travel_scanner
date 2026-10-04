@@ -68,10 +68,13 @@ each announcement changes for a Taiwan viewer's plan, bill and settings rather t
       first scored the demonstration 0.40 and 0.44 (needs 0.6): the table card `uf-worked` and three lines carry the
       brief's 實算二 as a calculation the viewer can follow (0.67 to 0.69 since). Three cards whose text was cut off
       inside their boxes in the finished cut were shortened (card text only).
-- [x] `review-push --gate final` on 2026-10-04: submitted, **waiting for the owner on /admin/videos** (it cannot be
-      approved automatically while `links` fails).
-- [ ] After the owner approves: `review-pull`, `package`, `review-push --gate publish`; the owner uploads privately per
-      `UPLOAD.md`. Re-open the official pages named under "Expiring facts" on upload day.
+- [x] `review-push --gate final` on 2026-10-04: the owner approved it on /admin/videos (it cannot be approved
+      automatically while `links` fails); `review-pull` recorded.
+- [x] `package` (4 of 4) and `review-push --gate publish`: approved on arrival, the 「可以上架」 card is on the site.
+      The first push was refused with 413: the final is 895 MB and the review store took 400 MB a file; the owner chose
+      to raise the host's `VIDEO_REVIEW_MAX_FILE_BYTES` to 1.5 GB (done on 2026-10-04, api container recreated).
+- [ ] The owner uploads privately per `UPLOAD.md` and pastes the YouTube address on the card; the video id is then
+      written to `video.json`. Re-open the official pages named under "Expiring facts" on upload day.
 
 ## How to verify
 
