@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-keep-character-look-review-identities-distinct
 title: Keep character look review identities distinct by subject
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-look-review-subject
 claimed_at: 2026-10-04T15:54:43Z
 created_at: 2026-10-02T16:05:07Z
-completed_at:
+completed_at: 2026-10-04T16:49:02Z
 branch: claude/look-review-identity-by-subject
 depends_on: []
 scope:
@@ -92,6 +92,14 @@ This follow-up is unclaimed and no shared backend code is changed here.
   missing reviews and lets a pending, overwritten one take its own payload back; a
   decided one that showed another character's sheets is filed as
   `2026-10-04-audit-look-reviews-another-character-overwrote`.
+- Checks (Windows, 2026-10-04): `ruff check .` clean; `mypy app` no issues in 461
+  files; `mypy tests` no issues in 366; `test_migration_0124_video_review_subject.py`,
+  `test_schema.py`, `test_migration_sql_dialect.py`, `test_video_reviews.py`: 53 passed,
+  1 skipped (the PostgreSQL migration test); the other files calling `submit_review`
+  (`test_video_anime_review_policy`, `test_video_automation_settings`,
+  `test_video_review_renewal`, `test_video_long_review_renewal`, `test_video_shorts`,
+  `test_scoped_drama`, and the PostgreSQL-only `test_video_reviews_integration`,
+  `test_video_shorts_integration`): 250 passed, 13 skipped.
 - Unticked step: regression coverage and validation are done; the independent review
   is the long-form duration receipt increment (`admin_service.py` is bound in
   `docs/videos/long-form/review.json`), which the coordinator's reviewer adds to this
