@@ -223,19 +223,20 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 - **lint**（`core/lint.mjs`）從 `docs/videos/<slug>/series.json` 的 `visual_tier` 讀等級（`draftEpisode` 從作品寫進去；沒有就不檢查）：超過上限是錯誤（`visualTierProblems`），`clips` 等級裡出現 still 只警告。合集模式（`series.json` 的 `compilation` 為真）第一個場景是 `title` 卡也是錯誤：冷開場。
 - **`clips`**（`media/clips.mjs`）只為 clip 鏡頭生成；still 鏡頭在 manifest 記 `{ still: true, file, sha256 }` 指向它的關鍵影格（要通過 judge，`needs_review` 的不收），什麼都不買；`--dry-run` 分開印兩堆。全部是 still 也寫 manifest。
 - **`assemble`**（`assemble/drama.mjs`）：`layoutDrama` 對 still 鏡頭回 `kind: "motion"`、關鍵影格與 `move: motionMove(data)`。`motionSegmentArgs`：`-loop 1 -framerate 30 -t <秒> -i keyframe` → `scale` 放大 1.25 倍（`MOTION_SOURCE_SCALE`，裁切窗永遠不小於輸出）→ `zoompan=z=…:x=…:y=…:d=1:s=1920x1080:fps=30`（表達式用 `on`／(frames−1)，最後一格剛好到位）→ `scale=1920:1080:out_color_matrix=bt709:out_range=tv,format=yuv420p`（關鍵影格是 RGB 的 PNG，沒有色彩描述；這一步指明用 BT.709 矩陣轉 YUV，跟投影片路線一樣，否則 swscale 預設用 BT.601 轉、再被標成 BT.709，still 會比旁邊的片段偏色）→ `trim=end_frame` → 字幕條、溶接、`COLOUR` 與片段段完全相同，x264 參數相同（2026-10-04 起運鏡段多一個 `-maxrate 8M -bufsize 16M` 的位元率上限，見 `ILLUSTRATED.md` §成片大小），所以 `-c copy` 串接不變；獨立 `MOTION_ENCODER_VERSION`（寫這一節時是 `"x264-high-crf18-film-g60-bf2-bt709-motion-v2"`，現值看 `assemble/drama.mjs`）；`motionSegmentKey` 含關鍵影格雜湊、運鏡、字幕、溶接。幅度刻意小：push／pull 10%（`MOTION_ZOOM`）、pan／tilt 固定 1.08 倍（`MOTION_PAN_ZOOM`）、drift 4%（`MOTION_DRIFT_ZOOM`）——still 要像有生命的持鏡，不像運鏡。
-- **運鏡關鍵字**（`motionMove`：先看 `camera` 再看 `motion`，第一個命中的算，都沒有就 `drift`）。運鏡以**畫面看起來怎麼動**命名，所以 pan 跟攝影機用語相反、tilt 保留攝影機用語：
+- **運鏡關鍵字**（`motionMove`：只讀 `camera`，整字比對，照 `MOVES` 的順序第一個命中的算，都沒有就 `drift`；`motion` 是畫面裡發生的事，不讀，2026-10-03 起）。運鏡以**畫面看起來怎麼動**命名，所以 pan 跟攝影機用語相反、tilt 保留攝影機用語：
 
 | 運鏡 | 命中的字（小寫） | 第 0 格是原圖 |
 | --- | --- | --- |
 | `push-in` | push、dolly in、zoom in、closer、move in | 是 |
 | `pull-out` | pull、zoom out、widen、back away | 否 |
-| `pan-right`（畫面往左跑，攝影機向左搖） | pan left、pan to the left、left to right | 否 |
-| `pan-left`（攝影機向右搖） | pan right、pan to the right、right to left | 否 |
+| `pan-right`（攝影機向左搖，畫面往右跑） | pan left、pan to the left、left to right | 否 |
+| `pan-left`（攝影機向右搖，畫面往左跑） | pan right、pan to the right、right to left | 否 |
 | `tilt-up` | tilt up、crane up、rise | 否 |
 | `tilt-down` | tilt down、crane down、descend | 否 |
-| `drift`（預設） | 其他 | 是 |
+| `locked`（整格不動） | locked、static、fixed、tripod、no camera move、still camera | 是 |
+| `drift`（預設；放大 4%，依鏡頭 id 略往左或右，`driftDirection`） | drift、其他或沒寫（`drift` 排在 `MOVES` 第一個，跟 static 寫在一起時 drift 贏） | 是 |
 
-- **檢查**（`assemble/cli.mjs`）：`push-in` 與 `drift` 第 0 格是整張關鍵影格（zoom 1.0），用 `motionFramePsnrArgs` 直接對畫面鏈算 PSNR（≥ 22 成立）；其他運鏡跳過 PSNR、只驗格數；motion 鏡頭不會凍格；`checks.json.metrics.shots` 記 `kind: "motion"` 與 `move`。
+- **檢查**（`assemble/cli.mjs`）：`push-in`、`drift` 與 `locked` 第 0 格是整張關鍵影格（zoom 1.0，`assemble/drama.mjs` 的 `IDENTITY_START`），用 `motionFramePsnrArgs` 直接對畫面鏈算 PSNR（≥ 22 成立，`KEYFRAME_MIN_PSNR`）；其他運鏡跳過 PSNR、只驗格數；motion 鏡頭不會凍格；`checks.json.metrics.shots` 記 `kind: "motion"`、`move` 與 `keyframe_psnr`。
 - **成本**：一鏡 6 秒的片段約 US$0.90（Omni）＋關鍵影格 US$0.134；still 只有關鍵影格。混合一集 30 鏡約 12 個 clip，片段費從約 US$40 降到約 US$16。
 
 ## 合集（`tools/video/core/compilation.mjs`、`tools/video/compile/`、`automation/compilation.mjs`）
@@ -353,6 +354,7 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 - 合集有片尾 4 秒 outro 卡（可關），`category_id` 24；預覽是 `-crf 26 -maxrate 2M -bufsize 4M`。
 - 合集工作從作品 `finished` 出發，`finish_episode` 照舊把作品設成 `finished`。
 - 提示詞鏡射檔叫 `verifier-series-doc.md` 與 `planner-compilation.md`。
+- 2026-10-03 起（#1170）still 的運鏡只讀 `camera`（原本也讀 `motion`，人推箱子、站起來會被當成推近與上搖），並多了 `locked`：整格不動、第 0 格驗 PSNR。「畫面等級」的運鏡表與檢查 2026-10-04 照程式更正，pan-right 的說明原本把畫面方向寫反。
 
 ## 票（`tasks/`，scope 互不重疊）
 
