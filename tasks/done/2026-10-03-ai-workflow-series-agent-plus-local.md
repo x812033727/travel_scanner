@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-ai-workflow-series-agent-plus-local
 title: AI workflow series, agent-plus-local-model group: six zh-TW articles on pairing Claude Code and Codex with local models (GLM, Qwen, DeepSeek)
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1-agent-local
 claimed_at: 2026-10-03T16:05:59Z
 created_at: 2026-10-03T15:54:29Z
-completed_at:
+completed_at: 2026-10-03T23:54:13Z
 branch: claude/hybrid-model-tutorial-plan-e323dd
 depends_on: []
 scope:
@@ -59,7 +59,7 @@ per article, and the official facts read on 2026-10-03.
 - [x] Series catalogue shows eighteen entries in groups A-E with the new `agent-local` path; the hub
       page text covers the new group without stating a count.
 - [x] `pack_cli lint --kind life` 0 errors, the series and content-pack tests green, `npm run check:tasks` green.
-- [ ] Published only after the owner picks it from an options question; six URLs answer 200 and the
+- [x] Published only after the owner picks it from an options question; six URLs answer 200 and the
       hub lists them.
 
 ## Steps
@@ -75,7 +75,7 @@ per article, and the official facts read on 2026-10-03.
 - [x] Coordinator: read-through, hub update, `_DRAWINGS`, `build_catalogue.py --related` (group E,
       explicit `GROUP_OF`, `agent-local` path), relink and autolink, the series test.
 - [x] Lint, tests, PR #1181 updated.
-- [ ] Merge, deploy and publish after the owner's explicit choice: the six new slugs first, the hub
+- [x] Merge, deploy and publish after the owner's explicit choice: the six new slugs first, the hub
       once their URLs answer 200; then verify the public pages and close this ticket.
 
 ## How to verify
@@ -95,6 +95,11 @@ curl -s 'https://mokaair.com/api/travel/guides/series/ai-workflow?locale=zh-TW' 
 - 2026-10-04: the owner answered "six articles, vendor endpoints in, start writing". Claimed again;
   the checker, `series.py`, the catalogue tables, the six hero drawings and the model whitelist were
   prepared before the writers started.
+- 2026-10-03 23:44-23:53Z: the owner chose "merge, deploy and publish". PR #1181 squashed to c03952f9b,
+  deployed in about three minutes (health 3/3, no migration, 14 of 14 checks), six articles created and
+  published, the hub updated once their pages answered 200, link findings 88 before and after, a replay
+  dry run all unchanged, `verify_public.py --sitemap` 7 of 7 and the series API at eighteen entries.
+  The record is the last section of `docs/ai-workflow-series/agent-local/README.md`.
 - 2026-10-04, later: six articles written and checked twice, the hub updated and checked, catalogue,
   links and images built. What the checks found, what the coordinator changed afterwards, the token
   usage and the publish order are in the last section of `docs/ai-workflow-series/agent-local/README.md`.
