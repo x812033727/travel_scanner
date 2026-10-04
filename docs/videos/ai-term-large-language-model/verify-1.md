@@ -2,7 +2,9 @@
 
 獨立查核者：codex / llm_review，2026-10-04（Asia/Taipei）。不是撰稿者；本輪只寫本報告，修正由撰稿者套用。已逐句讀完整長片旁白、所有字卡及插圖提示、縮圖與 YouTube metadata、claims.md、brief.md、demo.py、demo-log.md，以及兩支 Shorts 的全部文字。沒有用 lint 代替語義審查，也沒有呼叫任何模型或付費 API。
 
-最終綁定 SHA-256：
+最新 production source 的 video.json SHA-256：`fd454c82e4376a46cacb0ce36f9af4e2bcd8fca75a23fcae520d58afd97bfb82`。下方「實測節奏附錄」已獨立覆核兩個停頓調整及零重錄證據；本報告原有內容與事實結論沿用到此版本。
+
+原完整文字終審綁定 SHA-256（文字、事實、示例與 metadata 均未改動）：
 
 - video.json：`f18c6c619c2e9928c34593f921a63f33e679ce92a0005b70f217c97b3a511a83`
 - shorts.json：`e71ab40ca34c01537d6818de33c0259af904ebaa422538d4ad3188e550bc84b5`
@@ -112,3 +114,34 @@ CHANGED 表示本輪提出、作者已套用且本查核者重讀的範圍修正
 沒有價格、方案、模型排名、參數量、產品限額或效能等近期易過期事實。Python 版本／執行日期只指這次示範，不指觀眾的環境。每個來源 checked_on 已讀為 2026-10-04。
 
 本報告支持此綁定版本的稿件事實與聽眾文字審稿；不證明大綱／媒體關卡已核准、真實旁白聽感、正文或成片至少 8 分鐘、直式素材、語言完成、公開可下載程式、YouTube 上架、G 槽交付或可刪原件。這些需沿既有關卡取得各自證據。
+
+## 實測節奏附錄：兩個 pause 調整與零重錄
+
+2026-10-04T11:09:28Z，獨立 narrow reverify；只更新本報告，不修改其他來源、不呼叫付費 API、不代寫任何音訊批准。此附錄將本報告的 video.json 綁定更新至 **`fd454c82e4376a46cacb0ce36f9af4e2bcd8fca75a23fcae520d58afd97bfb82`**。原 36 項作者主張、10 項補充查核、完整旁白與 Shorts 聽眾文字審稿結論均沿用；本輪沒有新增事實變動。
+
+已讀 Git parent／working diff，video.json **只有兩個欄位新增**：`count-terminal` 的 `ks7c.pause_after_ms=80`、`demo-two-umbrellas` 的 `qizd.pause_after_ms=30`；二者原先未寫，使用預設 300ms。刪回這兩個欄位後，JSON 與 Git parent 完全相同，重新序列化的全檔 SHA-256 精確等於原完整查核 hash `f18c6c619c2e9928c34593f921a63f33e679ce92a0005b70f217c97b3a511a83`。沒有改字、數字、條件、揭示順序、鏡頭、聲音、句子代號、章節或 metadata。
+
+build.mjs 只增加此二 id 的 override，位置在 `setPauseBeats(doc)` 之後。獨立以記憶體替代 writeFileSync 的輸出蒐集器執行建置邏輯，生成的 video.json 及 draft-metrics.json 內容與目前 working files **逐位元組完全相同**，沒有執行真實寫檔；因此再次建置會保留本次修正。draft-metrics 變動只有衍生估秒、後段章節 frame 與 video hash，仍是估算，沒有冒稱實測值。
+
+### 實際音訊與快取證據
+
+已獨立讀取目前 138 個原始 clip WAV；每個檔案的 SHA-256 均與 timeline 的 audio_sha256、合成 cache.sha256 相同，PCM sample 數均與 timeline.audio_samples 一致。使用現有 138 個 clip 的 SHA-256 和實際 sample 數，配上原始 source／speech hash／原測量的 narration SHA 重建**整份原 timeline**，JSON 全檔 SHA-256 精確回到原私有測量檔的 `b9116d49680f4ab264f256ad8b5b05c7c30a86d8572d97367562b7f3730c4f52`。再用目前 WAV 及原停頓組合整軌，SHA-256 精確回到 `e4322bf95c347c6ef012424fa649c7084a3f2da470680b0fcbcf685166c4f614`。這兩個比對支持全部 138 clips 與修正前相同，沒有用「沒有報錯」取代逐檔證據。
+
+全部 108 個 `planRequests` 結果（包括 body、request key、138 個 line key）修正前後完全相同，`staleTakes=[]`。pause 會改 `speech_hash`（`502a51ec8e9a47b0` → `bc923f1be75ed10b`）與整軌時間，但不改任何發送給語音合成的文字／聲音或 take key。
+
+已讀主代理實跑 `llm-tts-refresh.log` 與 state.json：本次 refresh **0 requests synthesized、0 billable characters、108 reused**。目前新 timeline 全檔 SHA-256：`4c6935846a8155b300da0328b480ebe2c018d7fee3694abf40ae73edd64605b0`；目前 dry narration WAV SHA-256：`739f98ea2b78bcf0d2456e13deebb1fddc6e5a380f35311078937fe67ef9f70b`。新整軌只改外加停頓，已用現有 WAV 獨立組合並得到同一 SHA；`audioEvidenceProblems=[]`。
+
+### 新實測章節與節奏
+
+| scene / line | 實際 spoken samples / 秒 | 修改後外加 pause + 固定 scene gap | 實際完整畫面 |
+| --- | --- | --- | --- |
+| count-terminal / ks7c | 346560 / 7.22 秒 | 80ms + 700ms | 240 frames，**8.0 秒** |
+| demo-two-umbrellas / qizd | 348960 / 7.27 秒 | 30ms + 700ms | 240 frames，**8.0 秒** |
+
+保留 700ms 正常轉場 gap；沒有剪除旁白音節、加停頓、加速、放慢或重新合成。兩處不是依一位小數 rounding 過門檻，實際 240 frames / 30fps 均恰 8 秒。
+
+新的 dry body 實測 **836.1666667 秒**；原始 clips spoken 合計 **709.18 秒**。8 章全部至少 10 秒，冷開場第一章實測 **11 秒**，`checkChapters=[]`；無需修改冷開場章節。138 個狀態最長 8 秒，插圖占 dry body **56.2367949%**；`cadenceProblems` 沒有 `over`／`share` 硬性問題。平均 **6.1 秒**仍保留為 `kind=average` 建議，沒有宣稱達到 6 秒目標；現版 final QA 明確不把該平均建議當硬性失敗。新的 lint 為 **0 errors、0 warnings**。
+
+獨立 helper 與完整結果（含 138 個 SHA-256）在私有 `C:/Users/x8120/mokaair-work/ai-series-continuation-20261004/llm-review/narrow-reverify.mjs` 及 `narrow-reverify-results.json`。原測量與主代理 paced 測量也已閱讀並交叉核對。
+
+此附錄確認最新來源的事實查核延續性、實際 PCM／dry narration 計時、章節及節奏硬性問題解除，**不代表已通過 check-audio、聽感驗收或伺服器 audio 核准**；主代理的轉寫／Jev 檢查仍在執行，不能把尚未完成的逐句匹配稱全過。整軌及 timeline hash 改了，需以目前版本走 audio review-push／pull。已生成插圖、成片裁切／可讀性、品牌 presentation timeline、後續 QA、YouTube、G 槽備份與刪除仍需各自證據。

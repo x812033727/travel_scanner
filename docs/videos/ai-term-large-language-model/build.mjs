@@ -194,6 +194,15 @@ for (const scene of doc.scenes) {
   if (scene.template === "chapter") scene.data.number = String(chapterNumber);
 }
 setPauseBeats(doc);
+// Measured 2026-10-04: keep the existing 700 ms scene gap and every recorded word,
+// while these two exact takes fit within eight seconds per picture. Apply after
+// register defaults so regenerating this source preserves the measured correction.
+for (const scene of doc.scenes) {
+  for (const line of scene.lines) {
+    if (line.id === "ks7c") line.pause_after_ms = 80;
+    if (line.id === "qizd") line.pause_after_ms = 30;
+  }
+}
 writeFileSync(path.join(dir, "video.json"), `${JSON.stringify(doc, null, 2)}\n`, "utf8");
 const timeline = estimateTimeline(doc);
 const units = scenes.flatMap((s) => s.lines).reduce((n, l) => n + spokenUnits(l.text), 0);
