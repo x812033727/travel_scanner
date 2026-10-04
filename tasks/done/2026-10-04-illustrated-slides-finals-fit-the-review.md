@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-illustrated-slides-finals-fit-the-review
 title: Illustrated-slides finals fit the review store
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-final-size
 claimed_at: 2026-10-04T02:10:30Z
 created_at: 2026-10-04T01:21:39Z
-completed_at:
+completed_at: 2026-10-04T02:39:46Z
 branch: claude/illustrated-final-size
 depends_on: []
 scope:
@@ -99,7 +99,10 @@ that fits what the pipeline makes (3).
 - [x] Default `video_review_max_file_bytes` 1.5 GB; `.env.example` says so.
 - [x] Documents; `DRAMA.md` and `BINGE.md` no longer say a motion segment encodes exactly like
       a clip.
-- [x] Independent DURATION_ONLY increment for `automated.md`.
+- [x] Independent DURATION_ONLY increment for `automated.md` (reviewer
+      `claude-pr-review-illustrated-final-size`, section "Branch illustrated-final-size increment" in
+      `docs/videos/long-form/review.md`). A later edit to `automated.md`, or a merge of main that
+      touches the receipt, needs another one.
 
 ## How to verify
 
@@ -130,12 +133,12 @@ publish gate, and removing it or keeping it changes nothing; there is nothing to
 host for this ticket, and nothing was done on it. Two cases that do need the owner:
 
 - Before the first binge compilation: 2,500,000,000 a file and
-  `VIDEO_REVIEW_MAX_TOTAL_BYTES=30000000000` (`docs/videos/BINGE.md`; never set on the host, which
-  has no compilation yet).
+  `VIDEO_REVIEW_MAX_TOTAL_BYTES=30000000000` (`docs/videos/BINGE.md`; the host ran on the 400 MB
+  default until today, so that step has not been done).
 - The total, still the default 20 GB: an illustrated final now stays in the store at about
   0.63 GB with its preview (0.99 GB before the cap) from the publish gate until seven days after
   it is marked published. Thirty fit; two a day published promptly is fourteen alive, about
-  9 GB, beside the 6.5 GB already there. A final that waits in 「可以上架」 unpublished stays until
+  9 GB, beside what is already there (6.5 GB before the DevDay final went up). A final that waits in 「可以上架」 unpublished stays until
   it is published, and that is what would fill the store (507 `video_review_store_full`).
 
 ### What was measured
