@@ -1,15 +1,14 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
-import { dramaFixture } from "../core/fixtures/load.mjs";
+import { dramaFixture, tempDir } from "../core/fixtures/load.mjs";
 import { animeActPlan, animeActProblem, animeSourceHash, mergeAnimeActs, writeAnimeActs } from "./anime-write.mjs";
 
 const SERIES = { slug: "borrowed-dawn", kind: "series", genre: "custom", lead: "ensemble", category: "anime", style_preset: "anime-2d", target_minutes: 22, planned_episodes: 120, open_ended: false, hands_off: false, compilation: false, production_policy: "long-anime-v1", runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 } };
 const source = () => ({ series: structuredClone(SERIES), beats: { hook: "原作鉤子", consequence: "不可抹掉的代價", state: { knowledge: "不知道答案" } } });
-const directory = () => mkdtempSync(path.join(tmpdir(), "anime-acts-test-"));
+const directory = () => tempDir("anime-acts-test-");
 function ids() { let count = 0; return (size, taken = new Set()) => { const result = []; while (result.length < size) { const id = (++count).toString(36).padStart(6, "0"); if (!taken.has(id)) result.push(id); } return result; }; }
 function answer(payload) {
   const scene = { id: `${payload.act.scene_prefix}shot`, chapter: "故事", template: "shot", data: { prompt: "A girl pulls a bronze lever beside a broken pipe", camera: "medium", motion: "the girl pulls the lever", characters: [] }, lines: [{ id: payload.line_ids[0], text: "村爐還在漏氣。", speaker: "narrator" }] };
