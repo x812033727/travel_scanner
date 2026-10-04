@@ -716,6 +716,64 @@ describe("GuideArticle summary and FAQ", () => {
   });
 });
 
+describe("GuideArticle subsection anchors across slices", () => {
+  // A slice boundary inside a section used to restart the level-3 count, so the subsection
+  // after an ad unit or a partner link took the anchor of the one before it.
+  const ads: AdsenseConfig = {
+    enabled: true, publisher_id: "ca-pub-4140966684432854", slot_id: "1234567890", cmp_enabled: false,
+  };
+  const hero = { src: "/guides/tokyo-esim/hero.jpg", alt: "Hero", width: 1600, height: 900 };
+  const faq = { type: "faq" as const, items: [{ question: "要實體 SIM 嗎？", answer: "不用。" }, { question: "多少錢？", answer: "看方案。" }] };
+  const details = Array.from({ length: 20 }, (_, index) => ({ type: "paragraph" as const, text: `Detail ${index}` }));
+  const follows = (first: Node, second: Node) => Boolean(first.compareDocumentPosition(second) & Node.DOCUMENT_POSITION_FOLLOWING);
+
+  it("numbers the subsection after an advertising unit on from the one before it", () => {
+    const { container } = draw({ document: { ...document, hero, blocks: [
+      { type: "heading", level: 2, text: "Prices" },
+      { type: "heading", level: 3, text: "Before booking" },
+      { type: "paragraph", text: "Compare the total." },
+      faq,
+      { type: "heading", level: 3, text: "After booking" },
+      ...details,
+      { type: "heading", level: 2, text: "Refunds" },
+      { type: "heading", level: 3, text: "Claims" },
+      { type: "paragraph", text: "Keep the receipt." },
+    ] } }, { labels: { faq: "FAQ" }, adsense: ads });
+    const before = screen.getByRole("heading", { name: "Before booking" });
+    const after = screen.getByRole("heading", { name: "After booking" });
+    // The first unit really sits between the two subsections, so two slices draw them.
+    const [slot] = screen.getAllByTestId("ad-slot");
+    expect(follows(before, slot) && follows(slot, after)).toBe(true);
+    expect(screen.getAllByRole("heading", { level: 3 }).map((node) => node.id)).toEqual(["section-1-1", "section-1-2", "section-2-1"]);
+    expect(container.querySelectorAll("#section-1-1")).toHaveLength(1);
+    expect(screen.getAllByRole("heading", { level: 2, name: /Prices|Refunds/ }).map((node) => node.id)).toEqual(["section-1", "section-2"]);
+  });
+
+  it.each([["off", undefined], ["on", ads]])("numbers the subsection after an authored partner link on, with advertising %s", (_, adsense) => {
+    const url = "https://www.hostinger.com/tw/vps-hosting?aff_id=12345";
+    const { container } = draw({
+      kind: "life",
+      destination_id: null,
+      destination_label: null,
+      partner_links: [{ key: "0123456789abcdef", partner: "hostinger", display_name: "Hostinger", url }],
+      document: { ...document, hero, blocks: [
+        { type: "heading", level: 2, text: "Prices" },
+        { type: "heading", level: 3, text: "Before booking" },
+        { type: "paragraph", text: "Compare the total." },
+        faq,
+        { type: "partner_link", partner: "hostinger", url, label: "View hosting" },
+        { type: "heading", level: 3, text: "After booking" },
+        ...details,
+      ] },
+    }, { labels: { faq: "FAQ" }, adsense });
+    const partner = screen.getByRole("link", { name: /View hosting/ });
+    expect(follows(screen.getByRole("heading", { name: "Before booking" }), partner)).toBe(true);
+    expect(follows(partner, screen.getByRole("heading", { name: "After booking" }))).toBe(true);
+    expect(screen.getAllByRole("heading", { level: 3 }).map((node) => node.id)).toEqual(["section-1-1", "section-1-2"]);
+    expect(container.querySelectorAll("#section-1-1")).toHaveLength(1);
+  });
+});
+
 describe("GuideArticle reader support", () => {
   it("draws no support line while the owner has not set a tip page", () => {
     draw({}, { labels: { support: { text: "如果這篇文章對你有幫助，歡迎小額支持本站繼續更新。", action: "支持 Mokaair", newTab: "另開新分頁" } } });

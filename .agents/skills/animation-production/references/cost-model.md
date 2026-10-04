@@ -88,7 +88,7 @@ end_frame  = + image                （不 judge；dry-run 多算了一次 judge
 
 素材而已，不含圖與 judge（那兩樣只有伺服器路線有）。方案的月費、年繳、點數、隊列、頁面的每秒美元、條款、Kling 的會員表與開發者 API、MiniMax 的套餐**只寫在 `providers-and-plans.md` §1.2–1.4**（2026-10-03 讀官方頁，附網址）；這裡只留 60 鏡的換算。
 
-**Hailuo**：頁面的 US$/s（Pro 以上 2K 0.081、768P 0.047；Standard 0.101／0.059）是用年繳價算的；**2K 12 點/秒**（實測 2026-10-04：Max 帳號，H3 2K 5 秒扣 60 點；其他方案相同是由「秒數／月」反推）、**768P ≈ 7 點/秒**（同一個反推，換算；沒量）。用月費攤：Pro 一點 ≈ US$0.0122 → 2K ≈ 0.147/s、768P ≈ 0.086/s；Max 一點 ≈ 0.0074 → 2K ≈ 0.089/s。`SKILL.md` 三條路線表的美元全用月費攤；Max 的無限模式含哪些模型見 providers §1.2 的 Max 列。
+**Hailuo**：頁面的 US$/s（Pro 以上 2K 0.081、768P 0.047；Standard 0.101／0.059）是用年繳價算的；**2K 12 點/秒**（實測 2026-10-04：Max 帳號，H3 2K 5 秒扣 60 點；其他方案相同是由「秒數／月」反推）、**768P ≈ 7 點/秒**（同一個反推，推算；帳號上沒實扣）。用月費攤：Pro 一點 ≈ US$0.0122 → 2K ≈ 0.147/s、768P ≈ 0.086/s；Max 一點 ≈ 0.0074 → 2K ≈ 0.089/s。`SKILL.md` 三條路線表的美元全用月費攤；Max 的無限模式含哪些模型見 providers §1.2 的 Max 列。
 
 | 60 鏡的素材 | 點數 | 佔 Pro 4,500 | 月費攤的 US$ | 年繳（頁面價）的 US$ |
 | --- | --- | --- | --- | --- |
@@ -97,7 +97,7 @@ end_frame  = + image                （不 judge；dry-run 多算了一次 judge
 | H3 768P 每鏡 8 秒（跟 Lite 一樣） | ≈ 3,360 | 75% | ≈ 41.1 | ≈ 22.6 |
 | H3 2K 每鏡 8 秒 | ≈ 5,760 | 128%：一集超過一個月 | — | — |
 
-**Kling**（每支點數未驗，照 40 點／標準 5 秒算）：60 鏡 × 一支 5 秒 ＝ 2,400 點 ＝ Pro 3,000 的 80%、Standard 660 的 3.6 倍，月費攤 ≈ US$29.6；> 5 秒的鏡照第三方的檔位算一支 10 秒（約兩倍）。`kling-video-v3_0` 其實收 3–15 秒整數（實測 2026-10-04），但 5、10 以外扣幾點沒有來源。開發者 API 1080p ≈ US$0.112/s 無音訊 → 60 鏡 × 5 秒 ≈ US$33.6（未驗）。
+**Kling**（官方每秒價 2026-10-04，未實扣：VIDEO 3.0 不開音訊 1080p 8 點/秒、720p 6）：60 鏡照鏡長買、每鏡約 4 秒（3–15 秒整數）＝ 240 秒 × 8 ＝ 1,920 點 ＝ Pro 3,000 的 64%，月費攤 ≈ US$23.7；每鏡 8 秒（跟 Lite 一樣）是 3,840 點、超過 Pro 一個月。開發者 API 1080p 無音訊 US$0.112/s（官方）→ 240 秒 ≈ US$26.9。
 
 **MiniMax API 直接打**（不經伺服器）：60 鏡 × 4 秒在 768P US$19.20、2K 31.20（官方 0.08／0.13 per s）；伺服器的 `minimax` adapter 就是這條（`apps/api/app/video_media/providers/minimax.py`），只是 catalog 一律照 2K 的 0.13 記；預付套餐「H3 not supported」。
 
@@ -122,7 +122,7 @@ end_frame  = + image                （不 judge；dry-run 多算了一次 judge
 2. **解析度不改單價，但改秒數**：`meter.py` 的 `usd_for` 只看模型的 `usd_per_second`；Lite 720p 官方 0.05 記 0.08、H3 768P 官方 0.08 記 0.13。可是 `clipSeconds` 的「固定 8 秒」只在 `veo-3.1*` 配 `1080p`：沒有 profile 的集把 Lite 設 720p，3 秒的鏡頭買 4 秒 ＝ 0.32，帳本是 1080p 的一半（有 profile 的集 `productionClipSizeProblem` 要原生 1920×1080，不能）。H3 降 768P 秒數不變，帳本也不變。
 3. **下載失敗照收費但不在月總額**：`jobs.py:558-607` 下載失敗 `refund=False`（廠商已經生成），而 `month_usd` 只加 `submitted` 與 `ready` 的 job（`meter.py`），失敗的不算。廠商帳單會比站上的月總額多這幾筆。
 4. **judge 的 0.01 是定值**，真實是 token；每月 3,000 次的額度是次數，不是錢。
-5. **Kling 每支點數未驗**；`episode_estimate.mjs --plan kling:*` 用 `--credits-per-video`（預設 40）算，印出時標未驗。
+5. **Kling 點數是官方價目、未實扣**；`episode_estimate.mjs --plan kling:*` 照每秒算（1080p 8、720p 6，`--credits-per-second` 可蓋），印出時標「官方價目（未實扣）」。開原生音訊會多扣（1080p 每秒多 4，官方）；輸出數設成 1 以外是不是照支數扣官方沒寫，送出前看 Generate 旁的數字。
 6. **H3 的秒數**：catalog 4–10、官方 4–15；`clipSeconds` 照 catalog 貼齊，超過 10 秒的鏡頭 lint 本來就擋。
 7. **試拍的預留不是花費**：US$15.18 含 manual reserve 10；兩筆失敗的 Lite 片段 `usd_estimate` 0 但預留保留；`actual_billed_usd` null。報帳時三個數分開寫：預留、估價、實際帳單。
 8. **外部片段**：`clips import` 在帳本記一筆 `status: "imported"`（點數與秒數；美元只有 `--usd` 給了才有），`status` 標出匯入幾支；`run_report.mjs` 把它們與買的分開列，指令落地前手放的（manifest 有、帳本沒有）也列成 external。

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
@@ -155,8 +155,10 @@ test("a manual auto-merge switch-off is read from the timeline", () => {
   assert.deepEqual([...manuallyDisabled(graph)], [1]);
 });
 
-test("without the token a pass does nothing, says why, and exits 0", async () => {
-  const summary = join(mkdtempSync(join(tmpdir(), "auto-update-")), "summary.md");
+test("without the token a pass does nothing, says why, and exits 0", async (t) => {
+  const dir = mkdtempSync(join(tmpdir(), "auto-update-"));
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  const summary = join(dir, "summary.md");
   let called = false;
   const code = await main([], { env: { GITHUB_STEP_SUMMARY: summary }, gh: () => { called = true; return "[]"; } });
   assert.equal(code, 0);

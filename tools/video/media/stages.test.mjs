@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdtempSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { existsSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
+import { tempDir } from "../core/fixtures/load.mjs";
 import { readCache, readJobs } from "./cache.mjs";
 import { MediaError } from "./client.mjs";
 import { readLedger } from "./ledger.mjs";
@@ -117,7 +117,7 @@ test("only explicit unknown credentials bypass the local key check, not false or
 });
 
 function fakeStage(effective, { actualModel = effective.image.model, actualProvider = effective.image.provider, actualPrice = imagePrice(effective), format = null } = {}) {
-  const workdir = mkdtempSync(path.join(tmpdir(), "video-image-stage-"));
+  const workdir = tempDir("video-image-stage-");
   const bytes = Buffer.from(`synthetic image from ${actualProvider}/${actualModel}`);
   const ready = {
     id: "image-job-1", slug: "story-fixture", kind: "image", status: "ready", provider: actualProvider, model: actualModel,

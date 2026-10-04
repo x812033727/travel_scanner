@@ -61,8 +61,10 @@ Claude Code share (Claude reads the byte-identical copy under `.claude/skills/`,
 queues, Place IDs, coordinates), `prod-host-ops` (nginx, admin settings, host CLIs),
 `backend-conventions` (migrations, session helpers, admin pages), `dev-and-ci` (local
 checks, CI failures, Dependabot), `web-i18n-e2e` (messages and Playwright),
-`youtube-video`, `animation-camera` (how a drama scene is covered and how camera, prompt
-and motion are written so the tools and the models read them alike) and
+`youtube-video`, `animation-preproduction` (planning, risk-grading, pricing and locking an
+animated episode before any clip is paid for: shot list, animatic, three-shot pilot, lock
+package and change orders), `animation-camera` (how a drama scene is covered and how camera,
+prompt and motion are written so the tools and the models read them alike) and
 `animation-production` (a drama production's stage preconditions, cost per route, preflight,
 error catalogue and post-mortem). Read the matching skill before re-deriving a workflow
 from the docs.
