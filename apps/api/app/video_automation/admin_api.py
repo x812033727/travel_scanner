@@ -28,6 +28,7 @@ from app.models import User, VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation import messages as drama_messages
 from app.video_automation import requests as drama_requests
+from app.video_automation import run_jobs
 from app.video_automation import series as drama_series
 from app.video_automation import settings as service
 from app.video_automation.ai import StageFailed, run_stage
@@ -82,6 +83,8 @@ from app.video_automation.schemas import (
     SettingsSave,
     SettingsView,
     SettingsWrite,
+    StageJobIn,
+    StageJobOut,
     StageModelsWrite,
     StagePromptsOut,
     StageRunIn,
@@ -123,6 +126,7 @@ SettingsManager = Annotated[User, Depends(require_capability("settings.manage"))
 
 class ToolSettingsView(SettingsWrite):
     updated_at: datetime | None
+    durable_stage_runs: bool = True
 
 
 @admin_router.get("/settings", response_model=SettingsView)
@@ -272,6 +276,41 @@ async def run_video_stage(request: StageRunIn, tool: VideoTool, session: Session
     runtime = await load_runtime_settings(session)
     try:
         return await run_stage(session, runtime, row, request, tool.id)
+    except StageFailed as error:
+        raise AppError(
+            error.status,
+            error.code,
+            error.detail,
+            headers={"Retry-After": error.retry_after} if error.retry_after else None,
+        ) from error
+
+
+@tool_router.post("/run/jobs", response_model=StageJobOut)
+async def submit_video_stage_job(
+    request: StageJobIn, tool: VideoTool, session: Session
+) -> StageJobOut:
+    """Return the same source-bound receipt on a disconnected or repeated submit."""
+    try:
+        return await run_jobs.submit_job(session, request, tool.id)
+    except StageFailed as error:
+        raise AppError(
+            error.status,
+            error.code,
+            error.detail,
+            headers={"Retry-After": error.retry_after} if error.retry_after else None,
+        ) from error
+
+
+@tool_router.get("/run/jobs/{job_id}", response_model=StageJobOut)
+async def poll_video_stage_job(
+    job_id: UUID,
+    tool: VideoTool,
+    session: Session,
+    input_hash: Annotated[str, Query(pattern=r"^[a-f0-9]{64}$")],
+) -> StageJobOut:
+    """The original credential and receipt's input hash are required to adopt its result."""
+    try:
+        return await run_jobs.poll_job(session, job_id, tool.id, input_hash)
     except StageFailed as error:
         raise AppError(
             error.status,

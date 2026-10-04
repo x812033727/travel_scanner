@@ -511,6 +511,29 @@ class StageRunOut(StrictModel):
     usage: UsageView
 
 
+class StageJobIn(StageRunIn):
+    # Persist before the first POST, so a disconnected submit uses the same operation.
+    request_key: UUID
+
+    def run_request(self) -> StageRunIn:
+        return StageRunIn.model_validate(self.model_dump(exclude={"request_key"}))
+
+
+class StageJobOut(StrictModel):
+    id: UUID
+    request_key: UUID
+    request_hash: str
+    input_hash: str
+    provider: ProviderName
+    model: str
+    status: Literal["queued", "running", "succeeded", "failed", "uncertain"]
+    result: StageRunOut | None = None
+    error_code: str | None = None
+    error_detail: str | None = None
+    error_status: int | None = None
+    retry_after: str | None = None
+
+
 class StagePromptView(StrictModel):
     """The instructions a stage was last sent for a format, as the worker composed them."""
 

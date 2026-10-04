@@ -21,10 +21,10 @@ import { assembledAudioProblems, audioEvidenceProblems, currentAudioCheck } from
 import { animeBodyDurationProblems, animeRuntimeProof } from "../core/duration.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { isCompilation } from "../core/compilation.mjs";
-import { hasCast, illustrated, isDrama, shotScenes } from "../core/drama.mjs";
+import { drawnShotScenes, hasCast, illustrated, isDrama } from "../core/drama.mjs";
 import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
-import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
+import { ARTIFACTS, keyframeProblems, loadProject, pipelineStatus } from "../core/state.mjs";
 import { narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
@@ -785,10 +785,12 @@ async function storyboardSubmission({ request, project, workdir }) {
   const file = path.join(workdir, ARTIFACTS.keyframes);
   const manifest = readJson(file, null);
   if (!manifest?.shots) throw new ReviewError("keyframes/manifest.json is missing; run keyframes first", { who: "owner" });
+  const problemsWithPictures = await keyframeProblems({ doc, manifest, workdir, allowNeedsReview: true });
+  if (problemsWithPictures.length) throw new ReviewError(`${problemsWithPictures.join("; ")}; run keyframes first`, { who: "owner" });
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   const seconds = new Map((timeline?.scenes ?? []).map((scene) => [scene.id, Math.round(((scene.end_frame - scene.start_frame) / (timeline.fps || 30)) * 10) / 10]));
   // A shot's role is its place in the video (shot_07) whichever keyframes go up.
-  const drawn = [...shotScenes(doc).entries()].filter(([, scene]) => manifest.shots[scene.id]?.file);
+  const drawn = [...drawnShotScenes(doc).entries()];
   const sheets = storyboardSheets(manifest, drawn.map(([, scene]) => scene.id), workdir)
     .map((sheet, index, all) => ({ ...sheet, role: all.length === 1 ? "contact_sheet" : `contact_sheet_${String(index + 1).padStart(2, "0")}` }));
   const whole = drawn.length + sheets.length <= MAX_REVIEW_FILES;
@@ -809,7 +811,10 @@ async function storyboardSubmission({ request, project, workdir }) {
       prompt: scene.data?.prompt ?? "",
       seconds: seconds.get(scene.id) ?? null,
       file_role: sent ? role : null,
-      needs_review: Boolean(shot.needs_review),
+      needs_review: Boolean(shot.needs_review || shot.judge?.passed === false),
+      complete: true,
+      file_sha256: shot.sha256,
+      ...(scene.data?.end_frame?.prompt ? { end_frame_sha256: shot.end_frame.sha256 } : {}),
       judge: { overall: shot.judge?.overall ?? null, problems: shot.judge?.problems ?? [] },
     });
   }
@@ -830,6 +835,7 @@ async function storyboardSubmission({ request, project, workdir }) {
     content_sha256: await sha256File(file),
     summary: `分鏡 ${shots.length} 鏡${board}${lowest === null ? "" : `，judge 最低 ${lowest}/10`}${waiting.length ? `，${waiting.length} 鏡待修` : ""}${unshown ? `，其中 ${unshown} 鏡沒附單張圖` : ""}`,
     payload: {
+      expected_shots: drawn.map(([, scene]) => ({ id: scene.id, end_frame_required: Boolean(scene.data?.end_frame?.prompt) })),
       shots,
       judge: { overall: lowest, problems },
       duplicates: manifest.duplicates ?? [],
@@ -1006,6 +1012,11 @@ async function recordApproval(review, { dir, workdir, now }) {
   if (review.gate === "audio") {
     const problems = audioEvidenceProblems(readJson(file), workdir);
     if (problems.length) return `approval not recorded: ${problems.join("; ")}`;
+  }
+  if (review.gate === "storyboard") {
+    const doc = readJson(path.join(dir, "video.json"), null);
+    const problems = await keyframeProblems({ doc, manifest: readJson(file), workdir, allowNeedsReview: true });
+    if (!doc || problems.length) return `approval not recorded: ${problems.join("; ") || "video.json is missing"}`;
   }
   if (readApprovals(workdir).approvals.some((entry) => entry.gate === review.gate && entry.sha256 === review.content_sha256 && (!ANIME_APPROVAL_GATES.has(review.gate) || (entry.runtime_policy_hash ?? null) === hash))) {
     return "already recorded";

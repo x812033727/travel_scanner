@@ -25,7 +25,8 @@
 video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
   每 5 分鐘：GET /video/automation/next ──> 這一輪該做什麼（新草稿？哪支影片的下一步？）
              漫劇（DRAMA-FLOW.md）：GET /video/automation/series/messages/next（討論）──> GET /video/automation/series/next（文件、下一集）
-  文字階段 ──> POST /video/automation/run（伺服器照該階段的設定）
+  整份撰稿 ──> POST /video/automation/run/jobs → video-ai-worker → GET 同一工作結果
+  其他文字階段 ──> POST /video/automation/run（伺服器照該階段的設定）
                  ├─ 訂閱：API ──HMAC──> 主機的 AI 帳號代理（ai_accounts_agent.runs）──> claude -p --tools ""
                  └─ API 金鑰：API 直接呼叫廠商（金鑰不出 API 容器）
   查核     ──> 工人自己抓 claims.md 列的網址（Mokaair-editorial UA），把頁面文字交給查核模型
@@ -66,6 +67,9 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 模型交不出能用的答案時：
 - 原文會存到 `<工作區>/<slug>/answers/`，這一輪就結束，不會馬上重試。
 - 同一個階段連續兩輪都失敗，這支影片就標成卡住，審核頁清單的第一項會寫出原因。
+- 整份撰稿先在工作區保存 UUID 與完整請求，再交給 `video-ai-worker` 的獨立佇列。每輪最多等 25 秒；仍在執行就結束這輪，下次用同一收據查結果。重啟或 HTTP 失聯不會另開一次模型工作，成功答案與用量先在資料庫一起保存。`anime-act`／`story` 的分段 checkpoint 流程仍走原本同步端點。
+- 日期跨日或另一支影片新增共用詞彙時，既有撰稿工作仍使用原請求；劇本、來源頁、站主指示或其他輸入改變則停止採用並保留收據。站主按重試前先查原結果；晚到的成功答案能直接取回，確定要重跑的舊收據會連重試編號封存。舊同步呼叫若沒有保存答案，不能用 `video_ai_runs.status=ok` 還原。
+- 後臺回報失敗不會讓卡住原因消失：`auto.json` 保存待回報標記，主 lane 每五分鐘重試回報，也修復舊版本留在後臺的錯誤階段；不重啟生成。站主撤回和明確重試優先處理。
 - 外部服務暫時失敗，例如旁白檢查或送審，同樣會結束這一輪，但不算進卡住的次數。
 
 2026-09-25 曾經有一輪在兩分鐘內重問撰稿模型 6 次，花了約 10.6 萬 token，所以加上這條規則。

@@ -312,7 +312,7 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
         calls.reports.push({ slug, ...body });
         const known = listed.get(slug) ?? { slug, dropped_at: null, dropped_note: null, source_guide: null, youtube_video_id: null };
         // As the server does (admin_service.upsert_project): a report without the id clears it.
-        listed.set(slug, { ...known, title: body.title, stage: body.stage, retry_acknowledged_id: body.retry_acknowledged_id ?? known.retry_acknowledged_id, source_guide: body.source_guide ?? known.source_guide, youtube_video_id: body.youtube_video_id ?? null });
+        listed.set(slug, { ...known, title: body.title, stage: body.stage, checklist: body.checklist, retry_acknowledged_id: body.retry_acknowledged_id ?? known.retry_acknowledged_id, source_guide: body.source_guide ?? known.source_guide, youtube_video_id: body.youtube_video_id ?? null });
         return json({ slug, reviews: reviewsOf(slug) });
       }
       if (sub && init.method === "POST") {
@@ -530,6 +530,117 @@ test("a writer that answers without a script is asked once a run, and the video 
 /** The web route's answer once its deadline passed while the API kept running the stage (apps/web/app/api/video/automation/run). */
 const lostAnswer = () => Response.json({ code: "video_ai_run_uncertain", detail: "no answer within the deadline" }, { status: 504 });
 
+test("a writer completed beyond the relay deadline is recovered after restart and saved before verification without a second model run", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug), settings: { durable_stage_runs: true } });
+  const jobs = new Map();
+  let ready = false;
+  let submissions = 0;
+  const fetch = async (url, init = {}) => {
+    const pathname = new URL(url).pathname;
+    if (pathname === "/api/video/automation/run/jobs") {
+      submissions++;
+      const body = JSON.parse(init.body);
+      if (!jobs.has(body.request_key)) {
+        const result = await (await site.fetchImpl(`${SITE}/api/video/automation/run`, init)).json();
+        jobs.set(body.request_key, { id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: result.provider, model: result.model, status: "running", result: null, completed: result });
+      }
+      const { completed, ...receipt } = jobs.get(body.request_key);
+      return Response.json(receipt);
+    }
+    if (pathname.startsWith("/api/video/automation/run/jobs/")) {
+      const job = [...jobs.values()].find((row) => pathname.endsWith(row.id));
+      assert.equal(new URL(url).searchParams.get("input_hash"), job.input_hash);
+      const { completed, ...receipt } = job;
+      return Response.json(ready ? { ...receipt, status: "succeeded", result: completed } : receipt);
+    }
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx } = context(box, fetch, clock);
+  const worker = async () => {
+    const api = automationClient(ctx, { durablePollMs: 5_000 });
+    await api.settings();
+    const result = new Automation(ctx, api, site.settings);
+    result.refs = smallRefs;
+    return result;
+  };
+  await (await worker()).step();
+  Object.assign(site.reviewsOf(slug)[0], { status: "approved", choice: "B" });
+  await (await worker()).step();
+  const waiting = await worker();
+  assert.match(await waiting.step(), /writer is still running/);
+  assert.equal(waiting.halted, true);
+  assert.equal(automatedVideos(box.work)[0].status, "active", "pending is recoverable, not an owner block");
+  const file = path.join(box.root, "docs", "videos", slug, "video.json");
+  assert.equal(existsSync(file), false);
+  clock.now += 86_400_000 + 650_000; // Beyond the old deadline and across a calendar day.
+  const lexicon = readJson(path.join(box.root, "docs", "videos", "lexicon.json"), { schema_version: 1, terms: {} });
+  lexicon.terms.OtherLaneTerm = "另一條影片工作線新增的詞";
+  atomicWrite(path.join(box.root, "docs", "videos", "lexicon.json"), JSON.stringify(lexicon));
+  ready = true;
+  site.settings.durable_stage_runs = false; // Existing receipt recovery precedes capability/budget decisions.
+  const recovered = await worker();
+  assert.match(await recovered.step(), /script drafted and passes lint/);
+  assert.equal(submissions, 1, "restart polls the saved receipt, never buys another writer");
+  assert.equal(site.calls.run.filter((call) => call.stage === "writer").length, 1);
+  assert.equal(recovered.lastAnswer, [...jobs.values()][0].completed.text, "the exact stored answer reached the worker");
+  const script = JSON.parse(readFileSync(file, "utf8"));
+  assert.deepEqual([...eachLine(script)].map(({ line }) => ({ id: line.id, text: line.text })), [...eachLine(answersFor(slug).writer().video)].map(({ line }) => ({ id: line.id, text: line.text })));
+  assert.match(await (await worker()).step(), /fact-check round 1/);
+  assert.equal(site.calls.run.filter((call) => call.stage === "writer").length, 1);
+});
+
+test("a saved initial script and a pending lint rewrite survive restart and leave no receipt blocking a later rewrite", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const normal = answersFor(slug);
+  const invalid = structuredClone(normal.writer());
+  invalid.video.scenes[0].lines[0].id = "BAD";
+  const site = fakeSite({ settings: { durable_stage_runs: true }, answers: { ...normal, writer: (body) => body.payload.lint_errors ? normal.writer() : invalid } });
+  const jobs = new Map();
+  let ready = false;
+  const fetch = async (url, init = {}) => {
+    const pathname = new URL(url).pathname;
+    if (pathname === "/api/video/automation/run/jobs") {
+      const body = JSON.parse(init.body);
+      if (!jobs.has(body.request_key)) {
+        const result = await (await site.fetchImpl(`${SITE}/api/video/automation/run`, init)).json();
+        jobs.set(body.request_key, { id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: result.provider, model: result.model, status: "succeeded", result, waiting: Boolean(body.payload.lint_errors) });
+      }
+      const { waiting, ...receipt } = jobs.get(body.request_key);
+      return Response.json(waiting && !ready ? { ...receipt, status: "running", result: null } : receipt);
+    }
+    if (pathname.startsWith("/api/video/automation/run/jobs/")) {
+      const { waiting, ...receipt } = [...jobs.values()].find((job) => pathname.endsWith(job.id));
+      return Response.json(waiting && !ready ? { ...receipt, status: "running", result: null } : receipt);
+    }
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx } = context(box, fetch, clock);
+  const worker = async () => {
+    const api = automationClient(ctx, { durablePollMs: 5_000 });
+    await api.settings();
+    const automation = new Automation(ctx, api, site.settings);
+    automation.refs = smallRefs;
+    return automation;
+  };
+  await (await worker()).step();
+  Object.assign(site.reviewsOf(slug)[0], { status: "approved", choice: "B" });
+  await (await worker()).step();
+  assert.match(await (await worker()).step(), /writer is still running/);
+  assert.equal(site.calls.run.filter((call) => call.stage === "writer").length, 2);
+  ready = true;
+  const resumed = await worker();
+  assert.match(await resumed.step(), /script fixed and passes lint/);
+  const journal = path.join(box.work, slug, "run-receipts");
+  assert.equal(readdirSync(journal).filter((file) => file.endsWith(".json")).length, 0, "all adopted initial/fix answers settle after restart");
+  await resumed.stage("writer", slug, { lint_errors: ["a later independent fix"], video: normal.writer().video }, 32_000);
+  assert.equal(site.calls.run.filter((call) => call.stage === "writer").length, 3, "later rewrite is not blocked by an already adopted answer");
+});
+
 test("a writer whose answer is lost after it was sent is not asked again on its own: the video stops for the owner, and the owner's retry asks once more", async () => {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
@@ -560,6 +671,65 @@ test("a writer whose answer is lost after it was sent is not asked again on its 
   Object.assign(site.listed.get(slug), { retry_request_id: "2b06f60f-1026-477a-9d40-28683b00a22e", retry_acknowledged_id: null });
   assert.match(await automation.step(), /script drafted and passes lint/);
   assert.equal(writers(), 2, "the owner's retry asks once more");
+});
+
+test("a lost blocked report is recovered after restart without another model request, and failed reports back off", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug) });
+  let failReport = true;
+  let reports = 0;
+  const fetch = async (url, init = {}) => {
+    const pathname = new URL(url).pathname;
+    if (pathname === `/api/video/reviews/${slug}` && init.method === "PUT" && JSON.parse(init.body).stage === "blocked") {
+      reports++;
+      if (failReport) return Response.json({ detail: "offline" }, { status: 503 });
+    }
+    const response = await site.fetchImpl(url, init);
+    return pathname === "/api/video/automation/run" && JSON.parse(init.body).stage === "writer" ? lostAnswer() : response;
+  };
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx } = context(box, fetch, clock);
+  const worker = () => {
+    const result = new Automation(ctx, automationClient(ctx), site.settings);
+    result.refs = smallRefs;
+    return result;
+  };
+  await worker().step();
+  Object.assign(site.reviewsOf(slug)[0], { status: "approved", choice: "B" });
+  assert.match(await worker().step(), /owner chose outline B/);
+  assert.match(await worker().step(), /blocked.*could not report/);
+  assert.equal(automatedVideos(box.work)[0].blocked_report_pending, true);
+  assert.notEqual(site.listed.get(slug).stage, "blocked");
+  const firstReports = reports;
+  assert.equal(await worker().step(), null);
+  assert.equal(reports, firstReports, "no tight retry loop while the report is unavailable");
+  clock.now += 5 * 60_000;
+  failReport = false;
+  assert.match(await worker().step(), /blocked reason reported/);
+  assert.equal(site.listed.get(slug).stage, "blocked");
+  assert.match(site.listed.get(slug).checklist[0].label, /writer may have run/);
+  assert.equal(automatedVideos(box.work)[0].blocked_report_pending, undefined);
+  assert.equal(site.calls.run.filter((call) => call.stage === "writer").length, 1);
+  assert.equal(await worker().step(), null);
+});
+
+test("legacy blocked states reconcile without resuming media, and owner drops take priority", async () => {
+  const box = sandbox();
+  const site = fakeSite({ videos: [{ slug: "legacy-stall", stage: "retrying" }, { slug: "owner-drop", stage: "making", dropped_at: "2026-09-25T08:00:00Z", dropped_note: "stop" }] });
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  for (const slug of ["legacy-stall", "owner-drop"]) {
+    const workdir = path.join(box.work, slug);
+    mkdirSync(workdir, { recursive: true });
+    atomicWrite(path.join(workdir, "auto.json"), JSON.stringify({ slug, title: slug, format: "slides", status: "blocked", blocked: "owner budget exceeded", blocked_from_status: "active" }));
+  }
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  assert.match(await automation.step(), /owner-drop: the owner dropped it/);
+  assert.match(await automation.step(), /legacy-stall: blocked reason reported/);
+  assert.equal(site.calls.run.length, 0);
+  assert.equal(site.listed.get("legacy-stall").stage, "blocked");
+  assert.equal(automatedVideos(box.work).find((state) => state.slug === "owner-drop").status, "dropped");
 });
 
 test("an outline sent back is re-planned with the owner's note, and a spent budget stops auto for the owner", async () => {
@@ -954,7 +1124,12 @@ test("an owner's drama request is planned first, its failed sheets go back to th
       return failing ? { code: 1, out: "ERROR yandi: no candidate passed the judge: wrong crown\nrewrite the appearance" } : { code: 0, out: "2 characters" };
     }
     if (name === "keyframes") {
-      write("keyframes/manifest.json", { look_hash: lookHash(video), visual_hash: visualHash(video), shots: Object.fromEntries(shotScenes(video).map((scene) => [scene.id, { file: `keyframes/${scene.id}-1.png`, sha256: "2".repeat(64), needs_review: false, judge: { overall: 8, problems: [] } }])) });
+      const shots = Object.fromEntries(shotScenes(video).map((scene) => {
+        const file = `keyframes/${scene.id}-1.png`;
+        write(file, { picture: scene.id });
+        return [scene.id, { file, sha256: sha(path.join(workdir, file)), needs_review: false, judge: { overall: 8, problems: [] } }];
+      }));
+      write("keyframes/manifest.json", { look_hash: lookHash(video), visual_hash: visualHash(video), shots });
       return { code: 0, out: "4 keyframes" };
     }
     if (name === "render") {
@@ -2420,7 +2595,12 @@ test("illustrated slides walk the picture, storyboard and music steps between th
       return { code: 0, out: "every line passed" };
     }
     if (name === "keyframes") {
-      write("keyframes/manifest.json", { look_hash: lookOf(current), pictures_hash: picturesHash(current), shots: Object.fromEntries(shotScenes(current).map((scene) => [scene.id, { file: `keyframes/${scene.id}-1.png`, sha256: "2".repeat(64), needs_review: false, judge: { overall: 8, problems: [] } }])) });
+      const shots = Object.fromEntries(shotScenes(current).map((scene) => {
+        const file = `keyframes/${scene.id}-1.png`;
+        write(file, { picture: scene.id });
+        return [scene.id, { file, sha256: sha(path.join(workdir, file)), needs_review: false, judge: { overall: 8, problems: [] } }];
+      }));
+      write("keyframes/manifest.json", { look_hash: lookOf(current), pictures_hash: picturesHash(current), shots });
       return { code: 0, out: "5 keyframes" };
     }
     if (name === "render") {

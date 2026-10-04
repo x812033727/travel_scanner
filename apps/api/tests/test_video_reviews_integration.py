@@ -477,11 +477,43 @@ async def test_a_drama_keeps_one_look_review_per_character_and_can_auto_approve_
         row.auto_approve_storyboard = True
         row.judge_min_score = 8
         await session.commit()
+        legacy = await service.submit_review(
+            session,
+            store,
+            slug,
+            ReviewIn(gate="storyboard", content_sha256="5" * 64, summary="legacy", payload=board),
+            token,
+        )
+        assert legacy.status == "pending", "legacy reviews have no expected-file coverage proof"
+        picture = {"complete": True, "file_sha256": "a" * 64,
+                   "judge": {"overall": 9, "problems": []}}
+        complete: dict[str, Any] = {
+            "expected_shots": [{"id": "opening", "end_frame_required": False},
+                               {"id": "departure", "end_frame_required": True}],
+            "shots": [{**picture, "id": "opening"},
+                      {**picture, "id": "departure", "end_frame_sha256": "b" * 64}],
+            "judge": {"overall": 9, "problems": []},
+        }
+        invalid_sets = (
+            complete["shots"][:1],
+            [complete["shots"][0], complete["shots"][0]],
+            [complete["shots"][0], {**complete["shots"][1], "end_frame_sha256": None}],
+        )
+        for fingerprint, shots in zip(("6", "7", "8"), invalid_sets, strict=True):
+            partial = await service.submit_review(
+                session,
+                store,
+                slug,
+                ReviewIn(gate="storyboard", content_sha256=fingerprint * 64,
+                         summary="incomplete", payload={**complete, "shots": shots}),
+                token,
+            )
+            assert partial.status == "pending", "a passing summary cannot approve an incomplete set"
         approved = await service.submit_review(
             session,
             store,
             slug,
-            ReviewIn(gate="storyboard", content_sha256="5" * 64, summary="board", payload=board),
+            ReviewIn(gate="storyboard", content_sha256="9" * 64, summary="board", payload=complete),
             token,
         )
         assert approved.status == "approved"
