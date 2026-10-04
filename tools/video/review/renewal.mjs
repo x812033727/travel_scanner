@@ -167,6 +167,10 @@ async function inspectArgs(inspect, file, env) { const result = await inspect(fi
 export async function bindRenewalSubmission({ body, remote, project, workdir, request, upload }) {
   const final = renewedFinal(remote);
   if (!final || !["publish", "languages", "dubs"].includes(body.gate)) return body;
+  if (readJson(path.join(workdir, "renewal-handoff.json"), null)?.mode === "manual-import") {
+    const { bindManualSubmission, bindManualLanguageSubmission } = await import("./renewal-handoff.mjs");
+    return body.gate === "publish" ? bindManualSubmission({ body, remote, workdir }) : bindManualLanguageSubmission({ body, remote, workdir, project, request, upload });
+  }
   requireThat(final.status === "approved", "the renewed final still needs the owner's review");
   requireThat(!isCompilation(project.doc), "renewed compilation packages need an episode-source handoff; keep this project held for the owner");
   const metadataFile = path.join(workdir, "upload", "metadata.json");

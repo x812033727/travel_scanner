@@ -11,7 +11,8 @@ const { values } = parseArgs({ options: { manifest: { type: 'string' } }, strict
 if (!values.manifest) throw new Error('--manifest is required');
 const base = path.dirname(path.resolve(values.manifest));
 const manifest = JSON.parse(readFileSync(values.manifest, 'utf8'));
-const root = path.resolve(base, manifest.root);
+const root = path.resolve(base, manifest.portable ? manifest.relative_paths?.root ?? "" : manifest.root);
+if (manifest.portable && !manifest.relative_paths?.root) throw new Error('Portable manifest needs relative_paths.root');
 if (!root.startsWith(base + path.sep) || root === repo) throw new Error('Expected an isolated prepared root inside the batch');
 const code = path.join(root, 'docs/videos/imported-long-languages');
 const destinations = [path.join(root, 'tools/video'), path.join(root, '.agents/skills/youtube-video'), code];
