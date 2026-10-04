@@ -321,7 +321,10 @@ export function lintVideo(doc, context = {}) {
   const floor = needsMinimumLength(doc) ? minEpisodeMinutes() : 0;
   if (low < floor) error("target_minutes", `starts at ${low} minutes; every episode but a drama's runs at least ${floor}`);
   if (minutes < floor) error("scenes", `about ${minutes.toFixed(1)} minutes; every episode but a drama's runs at least ${floor}: write more narration`);
-  else if (minutes < low || minutes > high) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
+  // Where the floor holds it is the only length rule (owner, 2026-10-04): the upper end of
+  // target_minutes is what the writer aims at, not a limit, so running over it is not warned. A
+  // drama, a brand story and a long anime keep their own lengths on both sides.
+  else if (minutes < low || (minutes > high && !needsMinimumLength(doc))) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
   if (isLongAnime(doc)) {
     const target = doc.runtime_spec.body_target_seconds;
     const seconds = frameToSeconds(timeline.total_frames);
