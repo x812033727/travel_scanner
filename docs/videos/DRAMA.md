@@ -86,7 +86,7 @@ drama 的 `brief.md` 必要章節：「故事前提」「角色」「站主觀�
 
 - 鏡頭的 `data.visual` ∈ `VISUAL_MODES = ["clip", "still"]`。lint 從 `docs/videos/<slug>/series.json` 的 `visual_tier` 讀等級（工人從作品寫進去；沒有就不檢查），超過上限是錯誤（`visualTierProblems`）。`clipsHash` 只算 clip 鏡頭。
 - `clips` 只為 clip 鏡頭生成；still 鏡頭在 `clips/manifest.json` 記 `{ still: true, file, sha256 }` 指向它通過 judge 的關鍵影格。
-- `assemble`：`layoutDrama` 對 still 鏡頭回 `kind: "motion"`；`motionSegmentArgs` 把關鍵影格 `-loop 1` 成該鏡的格數、放大 1.25 倍（`MOTION_SOURCE_SCALE`）、`zoompan`（`d=1`、以輸出格號 `on` 寫表達式、最後一格剛好到位）、`trim`，然後字幕條、溶接、色彩標記與編碼參數都與片段段相同，`-c copy` 串接不變；獨立 `MOTION_ENCODER_VERSION`。幅度小：push／pull 10%、pan／tilt 固定 1.08 倍、drift 4%。
+- `assemble`：`layoutDrama` 對 still 鏡頭回 `kind: "motion"`；`motionSegmentArgs` 把關鍵影格 `-loop 1` 成該鏡的格數、放大 1.25 倍（`MOTION_SOURCE_SCALE`）、`zoompan`（`d=1`、以輸出格號 `on` 寫表達式、最後一格剛好到位）、`trim`，然後字幕條、溶接、色彩標記與編碼參數都與片段段相同，只多一個位元率上限（`-maxrate 8M -bufsize 16M`：CRF 18，但不超過 YouTube 對 1080p30 上傳建議的 8 Mbit/s；2026-10-04 起，量測在 `ILLUSTRATED.md` §成片大小），`-c copy` 串接不變；獨立 `MOTION_ENCODER_VERSION`。幅度小：push／pull 10%、pan／tilt 固定 1.08 倍、drift 4%。
 - 運鏡由 `motionMove(data)` 只從 `camera` 的關鍵字決定（整字比對；`motion` 是畫面裡發生的事，不讀，2026-10-03 起）：`push-in`（push、dolly in、zoom in、closer、move in）、`pull-out`（pull、zoom out、widen、back away）、`pan-right`（pan left、left to right：以畫面的移動方向命名，攝影機向左搖畫面往右跑）、`pan-left`（pan right、right to left）、`tilt-up`（tilt up、crane up、rise）、`tilt-down`（tilt down、crane down、descend）、`locked`（locked、static、fixed、tripod：整格不動）、其他 `drift`（寫 drift 也是）。
 - 檢查：`push-in`、`drift` 與 `locked` 的第 0 格是整張關鍵影格，對它算 PSNR（≥ 22）；其他運鏡只驗格數；`checks.json.metrics.shots` 記 `kind: "motion"` 與 `move`。
 

@@ -569,7 +569,11 @@ class Settings(BaseSettings):
     # Production has no object storage, so they live in a volume on the host
     # (docker-compose.prod.yml) and are served to admins only.
     video_review_dir: str = "/var/lib/mokaair/video-reviews"
-    video_review_max_file_bytes: int = Field(default=400_000_000, ge=1_000_000, le=4_000_000_000)
+    # The publish gate also sends the 1080p final.mp4 (docs/videos/HANDS-OFF.md). The 400 MB
+    # this used to be was sized for plain slides (about 10 MB a minute) and refused a 13-minute
+    # illustrated cut; one with its motion segments capped is at most about 70 MB a minute
+    # (docs/videos/ILLUSTRATED.md §成片大小), so 1.5 GB takes twenty minutes of the worst case.
+    video_review_max_file_bytes: int = Field(default=1_500_000_000, ge=1_000_000, le=4_000_000_000)
     video_review_max_total_bytes: int = Field(
         default=20_000_000_000, ge=10_000_000, le=500_000_000_000
     )
