@@ -166,10 +166,66 @@ card("wrap", "outro", { title: "會接話，還要**有據可查**", cta: "用�
 const promptOverrides = {
   "counter-arrival": "Wide shot, community-center foyer, rainy morning. A wet-coated visitor and volunteer stand together by a rack holding one folded umbrella. The volunteer points to it. Both figures, hands and the entire rack fit in the central vertical third. Rain on glass, grey overcast light, soft shadows. All walls, glass and props are blank; no signs, posters, letters, digits, symbols, pseudo-writing, signatures, logos or watermarks.",
   "counter-handoff": "Close-up at a community-center counter, rainy morning. Two people's hands meet over a compact folded rain umbrella lying horizontally: narrow green fabric wound tightly around a shaft, secured by one plain strap, curved wooden handle at its right end. A volunteer offers the bundle to a visitor's palm below. Both pairs of hands, the entire bundle and handle fit together in the central vertical third. Grey window light, blank walls and unmarked props.",
+  "bakery-carry": "Close-up in a bakery at late morning, a woman in a plain apron lifts a single ceramic cup from a man's resting hand, his fingers below its base and hers around its handle, the shared cup and distinct hands inside the central quarter, warm work light on the plain counter",
+  "pottery-new-clay": "Close-up in a pottery studio at midday, a visitor lowers a wooden board bearing a fresh moist clay block onto the worktable beside a potter's wheel, the solid block and supporting hands fill the central quarter, a high roof opening lights the wet surface",
+  "pottery-brief": "Close-up in a pottery studio at midday, a visitor's hand places a broken ceramic handle onto a plain cloth on the worktable, the incoming hand and curved fragment fill the central quarter, a potter's resting fingers wait beside the cloth, daylight from a roof opening",
+  "pottery-bare-table": "Overhead close view in a pottery studio at midday, an apprentice lifts a wooden board carrying a clay block away from the worktable, the lifted board above a clearly exposed bare patch of wood in the central quarter, soft skylight across the open work surface",
+  "pottery-limit": "Close-up in a pottery studio at midday, an open palm gently stops reaching fingertips above an empty clay mold, the exposed hollow and separated hands together in the central quarter, plain cloth under the mold, soft skylight on the cavity",
+  "demo-six-objects": "Overhead close view of a bare wooden tabletop in an assembly hall in early afternoon, exactly six separate belongings in three centered rows of two: top two tightly closed umbrellas, middle one plain bottle and one folded scarf, bottom one fabric cap and one single glove, each whole object clearly separated within the central quarter, one pointing hand with attached forearm enters below, soft side-door daylight",
+  "demo-one-umbrella": "Close-up in an assembly hall in early afternoon, a volunteer lifts a single tightly folded umbrella upright by its curved wooden handle, the complete handle and joined shaft fill the central quarter above a plain tabletop, an empty wall behind, even high-window daylight",
+  "demo-cap-out": "Close-up in an assembly hall in early afternoon, a volunteer lifts a small plain tray holding a bottle and fabric cap clear of a cloth-covered basket, a visible gap separates the tray from the basket below, both objects and supporting hand inside the central quarter, side-door daylight",
+  "market-request": "Close-up at an outdoor produce table in midafternoon, one hand supports a wooden scoop bowl while another grips its long handle, the solid scoop separates the hands above a plain woven basket, the shared object fills the central quarter, foliage and plain cloth canopy behind, diffuse outdoor daylight",
+  "market-empty-crate": "Overhead close view at an outdoor produce table in midafternoon, two hands tilt a single shallow wooden container toward the viewer, its smooth empty inner bottom clearly exposed in the central quarter, plain cloth below and leafy shade behind, diffuse outdoor daylight",
+  "market-boundary": "Medium close view at an outdoor produce table in midafternoon, two workers jointly hold a plain basket while a third watches the shared handoff, their faces close above the basket and their hands inside the central quarter, foliage and plain cloth canopy behind, diffuse outdoor daylight",
+  "market-key": "Close-up at an outdoor produce table in midafternoon, one hand places a small plain metal key into an open palm, the key and both hands fill the central quarter above plain cloth, leafy shade behind, soft reflected outdoor daylight",
+  "market-access": "Close-up at an outdoor produce table in midafternoon, a vendor's hand extends a plain wooden scoop through a small open hatch in a closed plain timber gate, a waiting hand receives its handle below, hatch and hands inside the central quarter, foliage above, soft outdoor daylight",
+  "market-saved": "Close-up at an outdoor produce table in midafternoon, one hand places a plain tied cloth pouch onto a small bare wooden shelf, the sealed pouch touches the shelf inside the central quarter, plain fabric and foliage behind, diffuse outdoor daylight",
+  "market-two-roles": "Medium close view at an outdoor produce table in midafternoon, a vendor points to a plain basket while an assistant moves beans into a small bowl within it, their faces above the same central gesture, hands and basket inside the central quarter, foliage behind, diffuse outdoor daylight",
+  "market-errors-question": "Close-up at an outdoor produce table in midafternoon, an assistant points to a clearly visible fabric glove lying among round fruit in a plain woven basket, glove and fingertip fill the central quarter, foliage and plain cloth canopy behind, diffuse outdoor daylight",
+  "pottery-apprentice": "Close-up in a pottery studio at midday. A teacher's hands gently guide an apprentice's smaller hands around the rim of one wet clay vessel on a wheel. Both pairs of hands and the whole rim form one compact central gesture. A high window lights the clay; plain wall and bare worktable behind.",
+  "kitchen-counterexample": "Overhead close-up in an apartment kitchen in late afternoon. Two plain ceramic plates sit close together in the central strip: one holds a piece of fruit, the other is visibly empty. A cook's finger points to the empty plate. Bare counter around them, under-cabinet work light, all surfaces unmarked.",
+  "kitchen-repeat": "Close-up in an apartment kitchen in late afternoon. One pair of hands pours a single short stream of beans from one tilted ceramic bowl into a second bowl directly below. The two complete bowls and single stream fit inside the central vertical quarter. Bare worktop, warm kitchen work light, plain surfaces.",
+  "kitchen-agree": "Medium close-up in an apartment kitchen in late afternoon. Two cooks hold identical empty transparent jars close together above a bare counter. Both complete jars and their supporting hands occupy the central vertical quarter. The plain shelf behind is empty; a kitchen work light illuminates the glass.",
+  "garden-three-baskets": "Overhead close-up in a residential garden before sunset. Exactly three small shallow woven baskets form one compact vertical column on a bare wooden bench. All three complete rims fit inside the central vertical quarter. One neighbor's hand sets down the lowest basket while another steadies the top. Low sunlight from the left, plain foliage behind.",
+  "garden-related-token": "Close-up in a residential garden before sunset. A pebble, a small cloth swatch and a flat pottery shard rest on a narrow woven mat, arranged one above another inside the central vertical quarter. One pair of hands frames the mat. Every small object is fully visible. Soft outdoor daylight and plain leaves behind.",
+  "garden-follow-up": "Overhead close-up in a residential garden before sunset. Exactly three shallow woven baskets form one compact vertical column: top contains a plain scarf, middle contains one fabric glove, bottom is visibly empty. All rims and contents fit inside the central vertical quarter. Two hands pause outside the rims. Even daylight under an open pergola.",
+  "garden-own-acceptance": "Close-up in a residential garden before sunset. A volunteer holds a plain fabric glove by its cuff above a visitor's waiting palm. The separate fingers of the cloth glove, cuff and two human hands are clearly visible together in the central vertical quarter. Soft garden daylight; plain foliage behind.",
+  "garden-closing": "Close-up in a residential garden before sunset. A volunteer holds one fully closed compact fabric umbrella upright, tightly wrapped around its shaft with one plain strap. The entire folded bundle, curved handle and supporting hand fit together inside the central vertical quarter. A visitor is secondary by the distant gate. Last daylight, plain foliage behind.",
+  "demo-tools-question": "Medium close-up in a municipal assembly hall in early afternoon. Two volunteers pass one small plain woven basket between their hands above a bare table. Faces sit near the top, the entire basket and joined gesture in the central vertical quarter. Blank wall behind, daylight from a side door, unmarked surfaces."
 };
 for (const scene of scenes) {
   if (promptOverrides[scene.id]) scene.data.prompt = promptOverrides[scene.id];
 }
+
+// Concrete pixel failures: show the preserved records and tool stages with
+// supported cards instead of depicting the wrong objects or a false handoff.
+// Keep the original shotIndex sequence so every later camera remains unchanged.
+const presentationOverrides = {
+  "demo-six-objects": { template: "table", source: "six-records-table" },
+  "market-request": { template: "steps", source: "tool-three-steps" }
+};
+for (const [id, replacement] of Object.entries(presentationOverrides)) {
+  const scene = scenes.find(s => s.id === id);
+  const originalCard = scenes.find(s => s.id === replacement.source);
+  scene.template = replacement.template;
+  scene.data = structuredClone(originalCard.data);
+}
+
+// The preserved narration reads two records in each of the first three
+// lines. Reveal one matched pair per line, then its three existing limits.
+// Keep all words, IDs, pauses, and six real reveal states unchanged.
+scenes.find(scene => scene.id === "six-records-table").data = {
+  title: "六筆紀錄，逐對核對",
+  columns: ["紀錄／條件", "物件／解讀", "狀態／限制"],
+  rows: [
+    ["L001／L002", "雨傘／水瓶", "未領／已領"],
+    ["L003／L004", "雨傘／圍巾", "未領／未領"],
+    ["L005／L006", "帽子／手套", "已領／未領"],
+    ["計數條件", "按問題篩選", "不先全部相加"],
+    ["已領紀錄", "清單仍保留", "用來示範篩選"],
+    ["資料範圍", "代號與位置可回查", "沒有真實失主資料"]
+  ]
+};
 
 const sources = [
   { title: "Google Machine Learning Crash Course: Introduction to Large Language Models", url: "https://developers.google.com/machine-learning/crash-course/llm", checked_on: "2026-10-04" },
@@ -216,6 +272,6 @@ for (const scene of doc.scenes) {
 writeFileSync(path.join(dir, "video.json"), `${JSON.stringify(doc, null, 2)}\n`, "utf8");
 const timeline = estimateTimeline(doc);
 const units = scenes.flatMap((s) => s.lines).reduce((n, l) => n + spokenUnits(l.text), 0);
-const summary = { status: "draft; independent review and media generation pending", estimated_units: units, estimated_seconds: timeline.total_frames / timeline.fps, scenes: scenes.length, shots: shotIndex, lines: at, chapters: timeline.chapters, video_sha256: createHash("sha256").update(readFileSync(path.join(dir, "video.json"))).digest("hex") };
+const summary = { status: "draft; independent review and media generation pending", estimated_units: units, estimated_seconds: timeline.total_frames / timeline.fps, scenes: scenes.length, shots: doc.scenes.filter(scene => scene.template === "shot").length, lines: at, chapters: timeline.chapters, video_sha256: createHash("sha256").update(readFileSync(path.join(dir, "video.json"))).digest("hex") };
 writeFileSync(path.join(dir, "draft-metrics.json"), `${JSON.stringify(summary, null, 2)}\n`);
-console.log(JSON.stringify({ units, minutes: summary.estimated_seconds / 60, scenes: scenes.length, shots: shotIndex, lines: at, chapters: timeline.chapters.map((c) => ({ title: c.title, start: formatClock(c.start_frame / timeline.fps) })) }));
+console.log(JSON.stringify({ units, minutes: summary.estimated_seconds / 60, scenes: scenes.length, shots: doc.scenes.filter(scene => scene.template === "shot").length, lines: at, chapters: timeline.chapters.map((c) => ({ title: c.title, start: formatClock(c.start_frame / timeline.fps) })) }));

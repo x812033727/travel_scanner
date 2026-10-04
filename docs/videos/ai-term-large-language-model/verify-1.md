@@ -2,7 +2,7 @@
 
 獨立查核者：codex / llm_review，2026-10-04（Asia/Taipei）。不是撰稿者；本輪只寫本報告，修正由撰稿者套用。已逐句讀完整長片旁白、所有字卡及插圖提示、縮圖與 YouTube metadata、claims.md、brief.md、demo.py、demo-log.md，以及兩支 Shorts 的全部文字。沒有用 lint 代替語義審查，也沒有呼叫任何模型或付費 API。
 
-最新 production source 的 video.json SHA-256：`d9e0929ca0ee0b26f5bf357a2f637564031c7eb91e6b4e7687744a02d4a55990`。下方各附錄保留停頓、同義口播及兩鏡提示的歷史覆核；最後「handoff近拍提示附錄」綁定當前來源。本報告原有事實結論沿用到此版本；實際聲音與媒體關卡須綁各自最新證據。
+最新 production source 的 video.json SHA-256：`9f25b680fe634f7023f88e3f91fd50ceabd29d687592ef2ff1be35312d7a957c`；shorts.json：`92e301343264c30801ffe2871d5f473bed7e39774f7068098da8e4b3ea3e48f8`；timeline.json：`086c5b2c46fb0cc306896d22b708ea31cbf4741a7097601338ec523148306a83`。下方各附錄保留歷史覆核；最後「免費資料卡、六筆揭項與更新音訊綁定附錄」綁定當前來源。本報告原有事實結論沿用到未改動的文字；實際媒體關卡須綁最新證據。
 
 原完整文字終審綁定 SHA-256（其後僅兩個停頓、一處同義口播及兩鏡插圖提示調整，見附錄；事實、示例與 metadata 未改動）：
 
@@ -235,3 +235,57 @@ handoff提示453個ASCII字元；加完整Style519與原Camera後為999，再加
 當前pictures_hash=`3df99b0742dfc545`、visual_hash=`d215b19233361e90`。主代理已另外保留前次三張handoff pilot原件及manifest/cache/ledger；本報告未刪問題或改評分，沒有將該次失敗pilot說成通過。本次近拍replacement仍須實看收合姿態、無字表面、中央9:16裁切及thumb／Short引用；未宣稱75張全圖合格。新storyboard須綁真實新manifest，音訊hash維持原證據。
 
 最新私有審計：`<home>/mokaair-work/ai-series-continuation-20261004/llm-handoff-closeup-source-audit.json`；helper為`llm-review/handoff-closeup-source-audit.mjs`。前版附錄與審計保留歷史。本次來源覆核不代表圖片／分鏡／成片批准、發布或G槽交付。
+
+## 26鏡材料修法附錄
+
+2026-10-04T13:23:11Z，來源差異與音訊完整性覆核者：codex / ai_inventory。本附錄是對凍結來源、保存原件與既有音訊的獨立比對；原完整文字的事實審查仍由上述 llm_review 報告承擔。主代理確認無未解決的來源／音訊差異後，明確授權重新綁定本報告。本輪沒有製作音訊、生成圖片、重評 judge、修改 manifest 或媒體，也沒有將圖片判為核准。
+
+本次 video.json 由 `d9e0929ca0ee0b26f5bf357a2f637564031c7eb91e6b4e7687744a02d4a55990` 變為 **`1eeba48414e32f1778d33f6bdbf0758c23ec00403d651a9f56773554f6a0ae88`**。完整 JSON 葉節點差異只有 26 個 `shot.data.prompt`；其餘 49 個 shot 的 prompt 逐字相同，既有 counter-arrival／counter-handoff 兩鏡修法保留。26 鏡為 bakery-carry、pottery-apprentice、pottery-new-clay、pottery-brief、pottery-bare-table、pottery-limit、demo-six-objects、demo-one-umbrella、demo-cap-out、demo-tools-question、market-request、market-empty-crate、market-boundary、market-key、market-access、market-saved、market-two-roles、market-errors-question、kitchen-counterexample、kitchen-repeat、kitchen-agree、garden-three-baskets、garden-related-token、garden-own-acceptance、garden-follow-up、garden-closing。
+
+移除各 shot 的 data.prompt 後，其餘完整 JSON 的 canonical SHA-256 前後都是 `c24627b94c3f4d87f5302b01b766856ddc8d8a74c61f86cabc87d1dac96d5bd8`。全部 138 個完整旁白 line object（ID、文字、播放順序、停頓及其他欄位）相同，canonical SHA-256 為 `256a93c0ac4518d2e9c55770e0fc7fcc268cf9ed1d38b58200096e65f5736c52`；voice、look、非 prompt 字卡／章節／metadata／camera 與其他欄位不變。brief.md、claims.md、shorts.json 在本次長片來源核對時均與保存版 SHA 相同；原有事實結論與離線示例適用於未改動的文字。authoring ID pool 共 160 個，只消耗 138 個，22 個為未使用保留 ID；冷開場原本便讓 fictional-label 在 counter-arrival 前播放，並非本次改順序，不宣稱未被保存的 22 個 reserve ID 具有前後原件證據。
+
+主代理的 `visual-resume-2030-before-fixes-2026-10-04T13-13-17-635Z` 保存收據含 67 個檔案，本次逐一核實路徑、大小及 SHA，**67／67 有效**，包含舊 source/build、原圖與相關原始評分／證據。舊 build 在攔截檔案寫入的記憶體環境執行，精確重現 D9 來源；目前 build 用相同方法執行兩次，video.json 與 draft-metrics.json 都逐位元重現目前檔案。實際 register／timeline 計算函式照常使用，只攔截輸出，沒有重寫來源。build.mjs SHA-256 為 `83f1fa5d68a87f2f414650ca7a2f87a8b375231c1fffc307fc21a2ed085c33a7`，draft-metrics.json 為 `9051865cabca5e69195010556daa921139f2751407ae3063ffa1edc60bbd608e`。
+
+138 個 WAV 均重新計算完整檔 SHA，逐一核對 timeline／cache／既有獨立音訊審計，PCM 格式及樣本數也一致；138 個 cache request keys 有效，沒有 stale request take。speech_hash 在新舊 source 與 timeline 都是 `5e45b34feaa17c8c`。目前音訊檢查 138／138 effective pass，check-flags 為空；14 項先前 Whisper 第二意見的 raw 檔 SHA、舊檢查 clip SHA 與 heard 文字來源可對回，沒有重新呼叫 ASR。時間軸、整軌、cache／check／flags 與保存版及原音訊審計一致，audioEvidence 無問題：
+
+- timeline.json SHA-256：`11b705bbc348d15b1cff8f955bcbf9657aa455fc6c558e0e7cc730e778c9d17d`，正文 835.1 秒，實際旁白 708.1 秒。
+- narration.wav SHA-256：`1441cbb8403d7c8499e9040307d759cb71f8749dc1c85407ab46804d40155b2d`，mono 48 kHz／16 bit，40,084,800 samples。
+- audio/cache.json SHA-256：`e5aa88122db54aa2b7a000d531929b5a57a79427255958f9d77defbee39f523d`。
+- review/check.json SHA-256：`584654c967595978334779080a460c10414fad19c4ee7d3479ff0a392a5000af`。
+- check-flags.json SHA-256：`9be341f7ca0da0268f1bec1d91ee64efe8529760de6319e4ff17a7a6ab49a0e3`。
+
+本機 approvals 原件及 SHA 也與保存版一致，audio-approved 仍綁上述 exact timeline；本次沒有重新 GET 後台，也不把本機快照說成新後台核准。原 llm-final-audio-audit 與 rewrite ledger 的歷史 full source SHA 原封保留；本次 prompt 變更對音訊的有效性，另由上述 138 句／voice／pause、speech hash、實際 WAV／PCM 與時間軸證明。
+
+**視覺仍待修／待審。** 上一輪完整 keyframes 保留 75 個 selected，原工具 8 個 needs_review 仍是 pottery-apprentice、pottery-brief、pottery-bare-table、pottery-limit、market-boundary、market-access、market-saved、garden-related-token；所有原 judge 問題及失敗 take 保留。實看還發現 demo-six-objects 多餘物件、demo-one-umbrella 假字與物件錯置、demo-cap-out 假字且排除動作未呈現、kitchen-counterexample 盤數不符、kitchen-repeat 混流、kitchen-agree 三個非空罐、garden-three-baskets 額外第四籃、garden-follow-up 未留空籃、garden-related-token 寫實且三物件映射不符、garden-closing 可能讀成兩把傘，以及 demo-tools-question 背景印字狀痕跡。這些像素證據不會因 prompt 改寫或分數重評而自行消失；新材料必須實際生成後再看。demo-two-umbrellas 長片原圖可辨認兩把，但中央 9:16 裁切會失去關鍵邊緣，Shorts 全圖呈現仍待來源變更與實際 render／QA。
+
+本次技術核對結果為 **PASS，來源／音訊未解決問題 0 項**；這不代表視覺、分鏡、成片或站主批准，不代表發佈或 G 槽備份／刪除。三鏡新圖 pilot 尚未納入本附錄。完整逐檔與逐鏡差異證據在私有 `llm-material-fix-source-audit-2030.json`／`.md`，舊像素審計及原件保留。
+
+## Short 2 雙傘全圖卡呈現附錄
+
+2026-10-04T13:32:08Z，codex / ai_inventory 獨立窄覆核。此附錄綁定 shorts.json SHA-256 **`2313ae08e1d403158b23c89740f2687c38cec6bdf17be2d76c9578e1cb6707cb`**；長片 source 仍為 `1eeba48414e32f1778d33f6bdbf0758c23ec00403d651a9f56773554f6a0ae88`。相對原 `e71ab40ca34c01537d6818de33c0259af904ebaa422538d4ad3188e550bc84b5`，僅 Short 2 第四場景的 demo-two-umbrellas shot／camera 改為現有 asset 加完整 SHA evidence，其他所有場景、旁白、headline／big／note 與 metadata 完全相同，兩支 validate 均無錯誤。
+
+現有 selected 圖 `keyframes/demo-two-umbrellas-2.jpg` 的 bytes、manifest 與 evidence SHA-256 三方同為 `6a665211331580c3d56d851718b9a8263cc933deb7f365a07e42a65d64c60a0a`，needs_review=false。沒有 camera 的 asset 使用正常 branded card／object-fit:contain，episodeShort 不再補上移動裁切。實際查看私人 preview PNG（SHA-256 `61bd68e103b7e2b9e49c1330244897684b1eddd5efa65595744ac4b716c5d859`），兩個完整彎柄及兩隻握持的手都能辨識，字卡／字幕未遮住圖片。雨傘下段仍受原圖下緣限制；這份單 cue 靜態證據只確認全圖卡解開中心裁切的關鍵限制。
+
+正常 Short 全流程 TTS、render／QA、播放及來源批准仍待執行，本附錄不宣稱 Short 成片或站主核准。未新增付費媒體、改 manifest、重評原 judge 或刪除失敗歷史。私人 `llm-short-contained-audit-2030.json`／`.md` 保存精確差異與 SHA 證據；後續兩景免費字卡 blueprint 尚未套用，不在這份窄審範圍。
+
+## 免費資料卡、六筆揭項與更新音訊綁定附錄
+
+2026-10-04T13:47:40Z，codex / ai_inventory。主代理明確授權在完整來源／PCM、六狀態實圖與正常 audio gate 收據核對後重新綁定本報告。本次窄審 **PASS，來源／音訊／本次卡片呈現未解決問題 0 項**。原完整事實審查仍沿用 llm_review；本附錄不把局部卡片靜態核對寫成整支視覺或成片核准。
+
+目前長片來源 **`9f25b680fe634f7023f88e3f91fd50ceabd29d687592ef2ff1be35312d7a957c`**。從 26 prompt 版 1eeb 到目前，完整 JSON 精確等於三個場景的呈現修正：demo-six-objects 改成 table、market-request 改成 steps，整份 data 複用原有六筆清單／要求—執行—回傳；six-records-table 只改 data，前三個揭項單元各呈現原句的一對紀錄，後三個呈現原句的條件／已領保留／虛構限制。其餘 105 個場景完全不變。從前兩卡版 0a279 到目前，只有原表格 data 改，另外 107 場景精確相同。原 138 個完整 line objects（含 ID、text、pause、reveal 及播放順序）、voice、look、全部仍存在的 73 個 shot data／camera 都相同；前置 demo-six-objects 的獨立六列清單未被一起改成成對表格。全部旁白 canonical SHA 仍 `256a93c0ac4518d2e9c55770e0fc7fcc268cf9ed1d38b58200096e65f5736c52`。
+
+目前 Shorts SHA-256 **`92e301343264c30801ffe2871d5f473bed7e39774f7068098da8e4b3ea3e48f8`**。相對雙傘全圖版 2313，僅 Short 2 首景 remove shot／camera，成為受支援的 branded card；全部旁白、headline／note／數字、其他場景與 metadata 不變。第四景雙傘 explicit asset／evidence 仍綁圖 SHA `6a665211331580c3d56d851718b9a8263cc933deb7f365a07e42a65d64c60a0a`，沒有重買。純來源 validate／episodeShortsProblems、卡片 template 檢查均無錯；正常 Shorts 媒體解析、完整 TTS／播放／QA 與最終批准仍待完成。
+
+舊／新 builder 在攔截寫入的記憶體環境逐位元再現各凍結來源，新 builder 兩次都重現9f25與metrics。current build.mjs SHA為 `b4f118d9c2de6930595bb8cc5206b6eeae057bff9cd4fa7c10947915ce917368`；metrics SHA `ba63a147002f8c0d169d53a0fb3715868e77d7f5910a756c80829532376844f0`。沒有藉更動 shotIndex 讓後續camera輪序漂移。前兩卡22原件與本次表格前5原件的收據均逐一有效，原始媒體／ledger／judge問題在保存快照完整保留。
+
+實際 normal-renderer 的 V1 六張PNG確實曾回報內容超框53px、title即使60%仍放不下；未掩蓋或當作通過。V1私有恢復包透過精確可逆資料patch重建，完整video SHA回到 `3f31671855bd6d35ce1ad2deba2dd269c64b6b1c9149d62ea16c7c4d19690e89`，build與metrics也對回原V1審計；10／10恢復檔及failed PNG bytes／SHA有效，恢復builder同樣byte exact。V2只縮title並把前三對的9個換行分隔改成單行「／」，其他資料、句子與六個reveal不變。
+
+V2六個1920×1080 normal-renderer PNG已全部實際 view_image，逐檔核SHA及前後穩定；renderer六個problems都為空。state0同步呈現L001雨傘未領／L002水瓶已領，state1新增L003雨傘／L004圍巾皆未領，state2新增L005帽子已領／L006手套未領；state3／4／5分別新增按問題篩選、已領紀錄保留、代號與位置可回查及沒有真實失主資料。配對順序清楚，當下口播所講紀錄可見，最後六行未超框／重疊。此證據只確認本張卡六個靜態狀態，不代表完整影片播放或站主驗收；完整PNG SHA保存在私人 `llm-record-reveal-source-audit-2030-v2.json`。
+
+108個正常TTS requests、138個每句keys與前版完全相同；138個WAV全檔SHA、PCM格式／samples逐一對回timeline、cache與原獨立音訊審計。speech hash仍 `5e45b34feaa17c8c`，138／138 effective check，flags=[]、staleTakes=[]、audioEvidenceProblems=[]；沒有新ASR或重錄。root正常執行 `tts --refresh-evidence`，exit0、**0 requests synthesized／0 billable characters／108 reused**。新timeline **`086c5b2c46fb0cc306896d22b708ea31cbf4741a7097601338ec523148306a83`** 對舊11b完整JSON只差 scenes[46].template shot→table與scenes[64].template shot→steps，其他時點／line／音訊證據完全相同。
+
+narration.wav仍 `1441cbb8403d7c8499e9040307d759cb71f8749dc1c85407ab46804d40155b2d`，40,084,800 samples；cache／check／flags全檔SHA皆與前音訊附錄一致。正文835.1秒，73shots／108scenes／138states，最長8.0秒、平均6.0秒；插圖按實測frames算54.600247%，cadenceProblems=[]，仍高於50%。
+
+正常audio submit／pull均exit0，既有paired GET-only收據 `llm-supported-cards-audio-readback-2030.json` 確認新timeline086c的audio review為approved（2026-10-04T13:44:24.612810Z）；本機正常pull在13:44:44.344Z追加同一exact SHA批准，保留舊11b歷史。後台stage為narration approved，ready_to_upload=false。這是系統依設定的音訊核准，不是站主對完整視覺或成片的接受，本覆核者沒有另呼叫後台。
+
+完整73鏡新storyboard仍未完成，其他真實原圖語義／字樣／肢體／風格／裁切失敗與原needs_review、failed takes、judge問題持續保留。兩卡修法是更換不忠實的呈現，不把其原圖片說成通過，也沒有藉刪問題或重評分清零。後續正常keyframes／storyboard／render／assemble／QA／final需依當前來源完成；不宣稱成片、發佈、G槽交付或刪除資格。本次只更新本報告及私人審計，沒有改其他來源、工具、媒體、manifest或旗標。

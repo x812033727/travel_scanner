@@ -608,7 +608,7 @@
       "id": "bakery-carry",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a bakery kitchen in late morning, one apprentice takes a plain cup while the other reaches for a flour scoop, a ceramic cup in the first apprentice's hand, hanging kitchen lights illuminate the baker's fingers; compose the scene around the central gesture",
+        "prompt": "Close-up in a bakery at late morning, a woman in a plain apron lifts a single ceramic cup from a man's resting hand, his fingers below its base and hers around its handle, the shared cup and distinct hands inside the central quarter, warm work light on the plain counter",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -734,7 +734,7 @@
       "id": "pottery-apprentice",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a pottery studio at midday, a potter guides an apprentice's hands around a clay vessel, a wet clay vessel between their hands, soft upper windows illuminate the wet clay; compose the scene around the central gesture",
+        "prompt": "Close-up in a pottery studio at midday. A teacher's hands gently guide an apprentice's smaller hands around the rim of one wet clay vessel on a wheel. Both pairs of hands and the whole rim form one compact central gesture. A high window lights the clay; plain wall and bare worktable behind.",
         "camera": "push in",
         "visual": "still"
       },
@@ -826,7 +826,7 @@
       "id": "pottery-new-clay",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a pottery studio at midday, a visitor sets a fresh block of clay beside the potter's wheel, a fresh clay block on a wooden board, soft upper windows illuminate the wet clay; the action sits at midframe",
+        "prompt": "Close-up in a pottery studio at midday, a visitor lowers a wooden board bearing a fresh moist clay block onto the worktable beside a potter's wheel, the solid block and supporting hands fill the central quarter, a high roof opening lights the wet surface",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -845,7 +845,7 @@
       "id": "pottery-brief",
       "template": "shot",
       "data": {
-        "prompt": "From behind in a pottery studio at midday, a visitor places a broken ceramic handle in front of a potter, the broken handle on a cloth mat, cool illumination drops through overhead skylights; compose the scene around the central gesture",
+        "prompt": "Close-up in a pottery studio at midday, a visitor's hand places a broken ceramic handle onto a plain cloth on the worktable, the incoming hand and curved fragment fill the central quarter, a potter's resting fingers wait beside the cloth, daylight from a roof opening",
         "camera": "pan left",
         "visual": "still"
       },
@@ -863,7 +863,7 @@
       "id": "pottery-bare-table",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot in a pottery studio at midday, a potter clears a worktable while an apprentice carries the clay block away, the newly empty patch of wooden table, a high roof opening spreads light across the wheel; the subject occupies the middle third",
+        "prompt": "Overhead close view in a pottery studio at midday, an apprentice lifts a wooden board carrying a clay block away from the worktable, the lifted board above a clearly exposed bare patch of wood in the central quarter, soft skylight across the open work surface",
         "camera": "drift",
         "visual": "still"
       },
@@ -918,7 +918,7 @@
       "id": "pottery-limit",
       "template": "shot",
       "data": {
-        "prompt": "Close-up in a pottery studio at midday, an apprentice presses an empty mold while a potter holds back their hand, an empty clay mold with a visible cavity, cool illumination drops through overhead skylights; the action sits at midframe",
+        "prompt": "Close-up in a pottery studio at midday, an open palm gently stops reaching fingertips above an empty clay mold, the exposed hollow and separated hands together in the central quarter, plain cloth under the mold, soft skylight on the cavity",
         "camera": "push in",
         "visual": "still"
       },
@@ -1041,24 +1041,6 @@
     },
     {
       "id": "demo-six-objects",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot in a municipal assembly hall in early afternoon, two volunteers lay out two umbrellas, a bottle, a scarf, a cap and a glove, the six belongings arranged on a long wooden table, an open side door spreads reflected daylight over the table; the action sits at midframe",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "claims": [
-        "c25"
-      ],
-      "lines": [
-        {
-          "id": "ck4v",
-          "text": "桌上有六件虛構失物，雨傘、水瓶、圍巾、帽子和手套。"
-        }
-      ]
-    },
-    {
-      "id": "six-records-table",
       "template": "table",
       "data": {
         "title": "虛構資料的六筆紀錄",
@@ -1097,6 +1079,59 @@
             "L006",
             "手套",
             "未領"
+          ]
+        ]
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "ck4v",
+          "text": "桌上有六件虛構失物，雨傘、水瓶、圍巾、帽子和手套。"
+        }
+      ]
+    },
+    {
+      "id": "six-records-table",
+      "template": "table",
+      "data": {
+        "title": "六筆紀錄，逐對核對",
+        "columns": [
+          "紀錄／條件",
+          "物件／解讀",
+          "狀態／限制"
+        ],
+        "rows": [
+          [
+            "L001／L002",
+            "雨傘／水瓶",
+            "未領／已領"
+          ],
+          [
+            "L003／L004",
+            "雨傘／圍巾",
+            "未領／未領"
+          ],
+          [
+            "L005／L006",
+            "帽子／手套",
+            "已領／未領"
+          ],
+          [
+            "計數條件",
+            "按問題篩選",
+            "不先全部相加"
+          ],
+          [
+            "已領紀錄",
+            "清單仍保留",
+            "用來示範篩選"
+          ],
+          [
+            "資料範圍",
+            "代號與位置可回查",
+            "沒有真實失主資料"
           ]
         ]
       },
@@ -1141,7 +1176,7 @@
       "id": "demo-one-umbrella",
       "template": "shot",
       "data": {
-        "prompt": "Close-up in a municipal assembly hall in early afternoon, a volunteer lifts one folded umbrella away from the other objects, the wooden umbrella handle in their fingers, high wall windows provide even illumination across the belongings; compose the scene around the central gesture",
+        "prompt": "Close-up in an assembly hall in early afternoon, a volunteer lifts a single tightly folded umbrella upright by its curved wooden handle, the complete handle and joined shaft fill the central quarter above a plain tabletop, an empty wall behind, even high-window daylight",
         "camera": "drift",
         "visual": "still"
       },
@@ -1295,7 +1330,7 @@
       "id": "demo-cap-out",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a municipal assembly hall in early afternoon, a volunteer moves a bottle and a cap aside while another points to the remaining belongings, the bottle and cap set on a separate stool, an open side door spreads reflected daylight over the table; the subject occupies the middle third",
+        "prompt": "Close-up in an assembly hall in early afternoon, a volunteer lifts a small plain tray holding a bottle and fabric cap clear of a cloth-covered basket, a visible gap separates the tray from the basket below, both objects and supporting hand inside the central quarter, side-door daylight",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1426,7 +1461,7 @@
       "id": "demo-tools-question",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a municipal assembly hall in early afternoon, two volunteers pass a basket across a doorway to a third volunteer, the woven basket suspended between their hands, high wall windows provide even illumination across the belongings; the subject occupies the middle third",
+        "prompt": "Medium close-up in a municipal assembly hall in early afternoon. Two volunteers pass one small plain woven basket between their hands above a bare table. Faces sit near the top, the entire basket and joined gesture in the central vertical quarter. Blank wall behind, daylight from a side door, unmarked surfaces.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1480,11 +1515,23 @@
     },
     {
       "id": "market-request",
-      "template": "shot",
+      "template": "steps",
       "data": {
-        "prompt": "Close-up in an outdoor street market in midafternoon, a stallholder hands a small wooden scoop to an assistant, the scoop passing between their hands, dappled tree shade surrounds the crates; the action sits at midframe",
-        "camera": "pull out",
-        "visual": "still"
+        "title": "完成前，要找三個證據",
+        "steps": [
+          {
+            "title": "要求",
+            "detail": "查什麼、算什麼"
+          },
+          {
+            "title": "執行",
+            "detail": "工具真的處理了嗎"
+          },
+          {
+            "title": "回傳",
+            "detail": "結果、條件與錯誤"
+          }
+        ]
       },
       "claims": [
         "c9"
@@ -1543,7 +1590,7 @@
       "id": "market-empty-crate",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot in an outdoor street market in midafternoon, an assistant tips an empty wooden crate toward a waiting shopper, the bare bottom of the wooden crate, late-afternoon brightness reflects off the paved aisle; compose the scene around the central gesture",
+        "prompt": "Overhead close view at an outdoor produce table in midafternoon, two hands tilt a single shallow wooden container toward the viewer, its smooth empty inner bottom clearly exposed in the central quarter, plain cloth below and leafy shade behind, diffuse outdoor daylight",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1581,7 +1628,7 @@
       "id": "market-boundary",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an outdoor street market in midafternoon, a shopper watches a stallholder, an assistant and a courier coordinate at one stall, a crate passed through the center of the group, dappled tree shade surrounds the crates; place the hands along the center strip",
+        "prompt": "Medium close view at an outdoor produce table in midafternoon, two workers jointly hold a plain basket while a third watches the shared handoff, their faces close above the basket and their hands inside the central quarter, foliage and plain cloth canopy behind, diffuse outdoor daylight",
         "camera": "drift",
         "visual": "still"
       },
@@ -1635,7 +1682,7 @@
       "id": "market-key",
       "template": "shot",
       "data": {
-        "prompt": "Close-up in an outdoor street market in midafternoon, a stallholder places a plain metal key in an assistant's palm, a small metal key in an open hand, late-afternoon brightness reflects off the paved aisle; the action sits at midframe",
+        "prompt": "Close-up at an outdoor produce table in midafternoon, one hand places a small plain metal key into an open palm, the key and both hands fill the central quarter above plain cloth, leafy shade behind, soft reflected outdoor daylight",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1654,7 +1701,7 @@
       "id": "market-access",
       "template": "shot",
       "data": {
-        "prompt": "From behind in an outdoor street market in midafternoon, a courier stops at a closed storage gate while a stallholder opens a smaller hatch, a small wooden hatch in a storage gate, leaf-filtered sun falls through a canopy above the stall; compose the scene around the central gesture",
+        "prompt": "Close-up at an outdoor produce table in midafternoon, a vendor's hand extends a plain wooden scoop through a small open hatch in a closed plain timber gate, a waiting hand receives its handle below, hatch and hands inside the central quarter, foliage above, soft outdoor daylight",
         "camera": "push in",
         "visual": "still"
       },
@@ -1673,7 +1720,7 @@
       "id": "market-saved",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in an outdoor street market in midafternoon, an assistant stores a sealed pouch on a shelf while another continues serving a shopper, the sealed fabric pouch on a wooden shelf, dappled tree shade surrounds the crates; the subject occupies the middle third",
+        "prompt": "Close-up at an outdoor produce table in midafternoon, one hand places a plain tied cloth pouch onto a small bare wooden shelf, the sealed pouch touches the shelf inside the central quarter, plain fabric and foliage behind, diffuse outdoor daylight",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1726,7 +1773,7 @@
       "id": "market-two-roles",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an outdoor street market in midafternoon, a stallholder speaks to a shopper while an assistant sorts two small crates behind them, two small crates beside the assistant's knees, late-afternoon brightness reflects off the paved aisle; place the hands along the center strip",
+        "prompt": "Medium close view at an outdoor produce table in midafternoon, a vendor points to a plain basket while an assistant moves beans into a small bowl within it, their faces above the same central gesture, hands and basket inside the central quarter, foliage behind, diffuse outdoor daylight",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1764,7 +1811,7 @@
       "id": "market-errors-question",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in an outdoor street market in midafternoon, an assistant notices a single glove accidentally tucked into a produce crate, a fabric glove among wooden crate slats, dappled tree shade surrounds the crates; compose the scene around the central gesture",
+        "prompt": "Close-up at an outdoor produce table in midafternoon, an assistant points to a clearly visible fabric glove lying among round fruit in a plain woven basket, glove and fingertip fill the central quarter, foliage and plain cloth canopy behind, diffuse outdoor daylight",
         "camera": "pan left",
         "visual": "still"
       },
@@ -1876,7 +1923,7 @@
       "id": "kitchen-counterexample",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot in an apartment kitchen in late afternoon, a cook separates two empty plates from four plates holding fruit, four occupied plates beside two empty ones, an under-cabinet fixture directs light onto the work surface; the action sits at midframe",
+        "prompt": "Overhead close-up in an apartment kitchen in late afternoon. Two plain ceramic plates sit close together in the central strip: one holds a piece of fruit, the other is visibly empty. A cook's finger points to the empty plate. Bare counter around them, under-cabinet work light, all surfaces unmarked.",
         "camera": "push in",
         "visual": "still"
       },
@@ -1957,7 +2004,7 @@
       "id": "kitchen-repeat",
       "template": "shot",
       "data": {
-        "prompt": "From behind in an apartment kitchen in late afternoon, a cook pours the same beans from one bowl into another and back again, one stream of beans moving between two bowls, a warm kitchen work lamp lights the ceramic bowls; the subject occupies the middle third",
+        "prompt": "Close-up in an apartment kitchen in late afternoon. One pair of hands pours a single short stream of beans from one tilted ceramic bowl into a second bowl directly below. The two complete bowls and single stream fit inside the central vertical quarter. Bare worktop, warm kitchen work light, plain surfaces.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1975,7 +2022,7 @@
       "id": "kitchen-agree",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in an apartment kitchen in late afternoon, two cooks each hold an identical empty jar and glance at the same empty shelf, two empty glass jars in their hands, an under-cabinet fixture directs light onto the work surface; place the hands along the center strip",
+        "prompt": "Medium close-up in an apartment kitchen in late afternoon. Two cooks hold identical empty transparent jars close together above a bare counter. Both complete jars and their supporting hands occupy the central vertical quarter. The plain shelf behind is empty; a kitchen work light illuminates the glass.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -2122,7 +2169,7 @@
       "id": "garden-three-baskets",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot in a residential garden in early evening before sunset, two neighbors place three shallow baskets on a garden bench, three woven baskets across the center of the bench, low sunlight enters from the left; the action sits at midframe",
+        "prompt": "Overhead close-up in a residential garden before sunset. Exactly three small shallow woven baskets form one compact vertical column on a bare wooden bench. All three complete rims fit inside the central vertical quarter. One neighbor's hand sets down the lowest basket while another steadies the top. Low sunlight from the left, plain foliage behind.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -2343,7 +2390,7 @@
       "id": "garden-related-token",
       "template": "shot",
       "data": {
-        "prompt": "Close-up in a residential garden in early evening before sunset, a neighbor holds a pebble, a fabric swatch and a pottery piece in separate hands, three distinct small objects above a woven mat, outdoor daylight illuminates the objects; place the hands along the center strip",
+        "prompt": "Close-up in a residential garden before sunset. A pebble, a small cloth swatch and a flat pottery shard rest on a narrow woven mat, arranged one above another inside the central vertical quarter. One pair of hands frames the mat. Every small object is fully visible. Soft outdoor daylight and plain leaves behind.",
         "camera": "pan right",
         "visual": "still"
       },
@@ -2401,7 +2448,7 @@
       "id": "garden-own-acceptance",
       "template": "shot",
       "data": {
-        "prompt": "From behind in a residential garden in early evening before sunset, a neighbor returns the matching glove to a waiting visitor, the glove crossing between their hands, low sunlight comes from the garden gate; the action sits at midframe",
+        "prompt": "Close-up in a residential garden before sunset. A volunteer holds a plain fabric glove by its cuff above a visitor's waiting palm. The separate fingers of the cloth glove, cuff and two human hands are clearly visible together in the central vertical quarter. Soft garden daylight; plain foliage behind.",
         "camera": "pull out",
         "visual": "still"
       },
@@ -2420,7 +2467,7 @@
       "id": "garden-follow-up",
       "template": "shot",
       "data": {
-        "prompt": "Overhead shot in a residential garden in early evening before sunset, two neighbors separate belongings into three baskets without filling the empty basket, the three baskets with distinct contents, even light under an open pergola; compose the scene around the central gesture",
+        "prompt": "Overhead close-up in a residential garden before sunset. Exactly three shallow woven baskets form one compact vertical column: top contains a plain scarf, middle contains one fabric glove, bottom is visibly empty. All rims and contents fit inside the central vertical quarter. Two hands pause outside the rims. Even daylight under an open pergola.",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -2439,7 +2486,7 @@
       "id": "garden-closing",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot in a residential garden in early evening before sunset, a volunteer closes an umbrella while a visitor walks away carrying the matching item, the umbrella's closed wooden handle, last daylight enters through the courtyard gate; the subject occupies the middle third",
+        "prompt": "Close-up in a residential garden before sunset. A volunteer holds one fully closed compact fabric umbrella upright, tightly wrapped around its shaft with one plain strap. The entire folded bundle, curved handle and supporting hand fit together inside the central vertical quarter. A visitor is secondary by the distant gate. Last daylight, plain foliage behind.",
         "camera": "pan left",
         "visual": "still"
       },
