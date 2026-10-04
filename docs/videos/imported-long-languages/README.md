@@ -99,6 +99,17 @@ web relay's 295-second deadline and uses a bounded 1,020-second native HTTP
 request. Other origins are rejected; other routes use their existing transport.
 POST requests are not automatically retried because a timeout can lose the answer
 after the model has already completed.
+The runner also writes `language-stage-journal.json` before each subscription-stage
+dispatch. It binds the exact request to the final/source and batch namespace,
+persists successful answers before returning them to automation, and reuses those
+answers after restart. A dispatch left running or without a confirmed result holds
+the project across later invocations. Preserve that journal and inspect the existing
+result; removing a lock or restarting the runner does not authorize another paid call.
+Paid stage receipts flush the file and POSIX parent directory before dispatch or
+return. In the approved-final source mode, each translator/reviewer entry checks
+STOP and freshly verifies the current source, owner choices and selected stage
+configuration, including between two stages in the same invocation. Owner drift
+holds the next stage while retaining the already paid answer unchanged.
 
 An interrupted translated worksheet is preserved and checked against a fresh
 source worksheet before reuse. It must still pass a fresh independent caption
@@ -122,3 +133,39 @@ audio acceptance.
 `status.mjs --manifest NEW_BATCH_DIR/manifest.json --out RECEIPT.json` reads the
 current review IDs, part states and attached hashes using the existing pairing.
 Keep receipts outside Git; they are operational snapshots rather than approval.
+
+For a changed, current human-approved final, use the independent
+`prepareApprovedFinalBatch({manifestFile,handoffs,out,readRemote})` entry in
+`runner.mjs`. It requires verified `approved-final-body-range` handoffs for the
+existing six-video allowlist. Its current doc, lexicon, body timeline, approved
+SRT/AAC evidence and exact final come from those handoffs. Every old file is
+archived under `retained-source/original-batch`; old translations, worksheets,
+uncertain paid calls and progress never appear in active resume paths. A fresh
+namespace and reviewed runtime are frozen and the batch remains stopped.
+The namespace binds local receipts; synchronous stages do not treat it as a remote
+idempotency key. The mutable `languages.json` sync timestamp is excluded from source
+inventory; the immutable contract and fresh site reads still pin owner choices.
+Keep exact-lexicon child batches beneath the same parent directory. The new-source
+runner holds `.approved-final-language-runner.lock` in that parent in addition to
+its per-batch lock, so sibling producers run serially. Inspect both locks after a
+crash; clearing them does not clear an unknown stage receipt.
+Existing costs/unknown-call accounting remain charged and backend budgets stay
+unchanged. The original `prepareRenewedBatch` source equality rule still applies
+to unchanged retained-body renewals and rejects this new source mode.
+
+Before allowing paid continuation, run the actual frozen native captions and
+`dub --dry-run` against the current source, pull only the real final decision,
+and prove changed final bytes fail. A disposable fit fixture can test dry-run
+mechanics; it is not a ready translation and must stay outside the operational
+batch. No script/audio/listening approval is inferred from a final decision.
+The current-source runner wraps every native command's speech fetch with a local
+intent/result journal for synthesis, transcription and audio judging. It saves the
+exact wire request before dispatch and the complete raw response before the native
+client reads it. A lost response, interrupted intent or corrupt receipt holds the
+slug across routes and payloads; native retry loops receive a local 409 and cannot
+send another paid POST. Completed WAV/JSON responses replay across restarts with
+their original billable header. Source, namespace, owner choice and fresh public
+speech configuration must still match. Retained-body batches keep their original
+transport. Applying any phase still requires fresh source/account/budget checks;
+these local receipts do not authorize production activation or publication.
+Offline `dub --dry-run` only validates the new source's timing and fit mechanics.

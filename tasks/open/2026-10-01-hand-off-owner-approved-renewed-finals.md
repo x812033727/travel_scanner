@@ -8,7 +8,7 @@ owner: codex-video-stall-followthrough
 claimed_at: 2026-10-04T10:14:09Z
 created_at: 2026-10-01T09:53:00Z
 completed_at:
-branch: codex/video-stall-followthrough-20261004
+branch: codex/video-approved-final-languages-20261004
 depends_on:
   - 2026-10-01-long-video-renewal-tools-and-ui
 scope:
@@ -56,16 +56,16 @@ or scene timeline. This ticket is not authorization to deploy or operate live me
 
 ## Steps
 
-- [ ] Freshly collision-check and claim the exact files before implementation.
-- [ ] Define a receipt with old and new final identities, body/pin/check/timeline hashes,
+- [x] Freshly collision-check and claim the exact files before implementation.
+- [x] Define a receipt with old and new final identities, body/pin/check/timeline hashes,
       owner approval identity, archived original paths and activation result/readback.
-- [ ] Build the normal-workdir transfer from the six v1 candidate proofs without
+- [x] Build the normal-workdir transfer from the six v1 candidate proofs without
       overwriting the existing workdir during preparation or rewriting checks to pass.
-- [ ] Define the separate imported manual-package contract; fail closed when the
+- [x] Define the separate imported manual-package contract; fail closed when the
       available source evidence cannot prove chapter/subtitle offsets and retained body.
 - [ ] Add stale approval, concurrent worker, interrupted activation and old-language
       regressions; exercise actual emitted bytes through the API package consumer.
-- [ ] Document owner initiation, stage/approve/adopt/package separation and recovery.
+- [x] Document owner initiation, stage/approve/adopt/package separation and recovery.
 
 ## How to verify
 
@@ -80,17 +80,18 @@ timeline. A successful HTTP response is not approval, canonical activation or up
   affected slides are approved renewal candidates, while publish approval is false
   and chosen languages still await the canonical source-bound handoff. This is not
   a request for another owner final approval or an upload authorization.
-- The old `<home>/mokaair-work/channel-intro-20260930` candidate evidence
-  directory referenced by the prior handoff is currently absent. Locate retained
-  canonical/server/archive sources before preparing those 17 candidates; do not
-  regenerate paid media merely because local evidence is missing.
+- The initial read-only audit found the old
+  `<home>/mokaair-work/channel-intro-20260930` candidate evidence directory absent.
+  Subsequent exact-hash recovery and real media verification prepared all 18 local
+  snapshots as documented below; the absent directory is historical evidence,
+  not a current count of unverified candidates. No paid media was regenerated.
 - DevDay retains canonical source files under
   `<home>/mokaair-work/videos/openai-devday-2026-recap` and the candidate
   under `branding-audit-20261004`: 153 audio segments, timeline/narration hashes,
   source checks and preservation proof. Its old local pending receipt is a stale
   snapshot; use the fresh approved backend identity. Preserve the original
   publish thumbnail, not an arbitrary newer final-review thumbnail.
-- Implementation remains needed: a prepare/verify snapshot receipt, guarded
+- The initial implementation audit called for a prepare/verify snapshot receipt, guarded
   activation with worker STOP/idle and fresh upload/owner activity checks, and the
   separate imported manual-package consumer. Existing source-hash guards remain
   intact. The 2026-10-04 recovery branch fixes writer, image completeness and
@@ -120,9 +121,12 @@ timeline. A successful HTTP response is not approval, canonical activation or up
   Independent frozen-runtime CLI evidence: captions offset 5 seconds, real dub
   windows, zero fetches, no fabricated checks/narration, changed final refused.
 - Actual DevDay verification passed for all 24,061 retained body video packets,
-  complete decode and audio difference about -72.82 dB. Remaining 17 candidates
-  still require their own real media/source verification. This is not canonical
-  activation, backend package approval, resumed language production or upload.
+  complete decode and audio difference about -72.82 dB. Subsequent actual checks
+  prepared all 18 base snapshots: ten strict retained-body/cut sources and eight
+  separately approved current-body sources. Nine real language adapters exist;
+  the other nine lack actual script/body timing evidence for language production.
+  These offline proofs are not canonical activation, backend package approval,
+  resumed language production or upload.
 
 - Scope extended to the two native caption/dub consumers after fresh collision
   inspection: no active claim owns core/stages; the wedding pilot dubs ticket is
@@ -150,3 +154,20 @@ timeline. A successful HTTP response is not approval, canonical activation or up
   This applies to six existing videos, including Grok/SEC whose stale blocker showed
   only missing assembly images. Global/per-new-video caps and uploader settings
   remain unchanged. Exact paid caches are recovered before any bounded new purchase.
+- Actual preparation now covers all 18 base snapshots; the eight changed-current
+  sources have real whole-media/body-range/bookend/AAC proofs and the independent
+  current-source contract. Raw historical body/voice differences and false listening
+  claims remain visible. Nine actual language adapters exist; nine retained-body
+  packages still lack source script/timing adapters for new language production.
+  All snapshots remain stopped and local; fresh production canonical/owner/idle/
+  upload probes and guarded activation are not yet performed. The six-language
+  producer follows its separate claimed task and preserves all 358 historical
+  artifacts, 279 English translations and unknown-paid/budget accounting.
+
+- Final local validation: full tools passed independently with the final handoff
+  source/test hashes; the imported-language suite passed 115 tests with zero
+  skips. Windows rollback retries are bounded and require the original directory
+  identity and a truly absent target on every attempt; a permanent obstruction
+  retains STOP and both snapshots for recovery. Production canonical activation,
+  backend package acceptance and resumed language production remain separate
+  unfinished steps, not consequences of these passing local tests.

@@ -1,14 +1,14 @@
 ---
 id: 2026-10-04-minimax-image-prompt-preflight
 title: Validate MiniMax image prompt length before dispatch and distinguish invalid parameters
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-video-stall-followthrough
 claimed_at: 2026-10-04T11:01:44Z
 created_at: 2026-10-04T10:55:59Z
-completed_at:
-branch: codex/video-stall-followthrough-20261004
+completed_at: 2026-10-04T11:49:25Z
+branch: codex/video-approved-final-languages-20261004
 depends_on: []
 scope:
   - apps/api/app/video_media/providers/minimax.py

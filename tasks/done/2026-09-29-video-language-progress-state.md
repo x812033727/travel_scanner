@@ -1,14 +1,14 @@
 ---
 id: 2026-09-29-video-language-progress-state
 title: Distinguish video language progress from missing publish approval
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: codex-video-stall-followthrough
 claimed_at: 2026-10-04T10:56:37Z
 created_at: 2026-09-29T03:53:38Z
-completed_at:
-branch: codex/video-stall-followthrough-20261004
+completed_at: 2026-10-04T11:49:01Z
+branch: codex/video-approved-final-languages-20261004
 depends_on: []
 scope:
   - apps/web/components/admin-video-review-card.tsx
@@ -74,7 +74,8 @@ does not present missing producer evidence as active rendering.
   selected ready/skipped/uploaded parts enter packaging until the actual package
   and approval make `ready_to_upload` true. No selected part is forged or skipped.
 - Focused UI: 138 tests passed across 10 files; web lint, TypeScript and five-locale
-  checks passed. Full web and portable tooling checks remain in progress.
+  checks passed. Full web: 351 files / 3,950 tests passed on bundled Node 24.19;
+  independent duration receipt verifies all 473 plans. CI/deployment remain pending.
 - Exact duration-receipt scope added for independent increment only. Fresh remote
   main and PR inspection found no open competing PR touching those receipts;
   the last landed updates include #1203, #1197, #1193 and #1186. Other task owners
