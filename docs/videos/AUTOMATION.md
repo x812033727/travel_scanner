@@ -50,7 +50,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 | 各階段模型 | `stage_models`：企劃、撰稿、查核、聽眾審稿、字幕翻譯、字幕審稿各選「Claude Code（訂閱帳號）」或某家 API 的模型；預設全用訂閱帳號，企劃、撰稿、翻譯用 Claude Sonnet 5，查核、聽眾審稿、字幕審稿用 Claude Opus 5.5 | `drama_stage_models`：可勾「跟教學一樣」（存 `null`）；伺服器的 `stage_choice` 依 `/video/automation/run` 帶的 `format` 選 | 都在「AI 設定 › 各功能模型」選 |
 | 各階段常設指示 | `stage_instructions`：六個階段各一段（每格最多 4000 字），工人接在該階段提示詞之後；清空就是不加 | `drama_stage_instructions`：同樣六格，只給漫劇（單集與作品的每一集）；遷移時從教學的複製一份 | 「目前的提示詞」依格式與 variant 分開顯示（`video_stage_prompts`） |
 | 聲音 | `voice`：頻道聲音（Gemini Sulafat，沿用 `docs/videos/README.md`） | `drama_voice`：旁白，`null` 就跟教學一樣；角色聲音池 `character_voice_pool` | — |
-| 長度 | 目標長度 8–12 分鐘 | 每個請求與作品各自帶 `target_minutes` | — |
+| 長度 | 目標長度 8–12 分鐘（`target_minutes_min`／`target_minutes_max`）：下限 8 是硬規定，上緣是撰稿瞄準的長度、不是上限，超過沒關係 | 每個請求與作品各自帶 `target_minutes` | — |
 | 語言預設 | `caption_locales`（en、ja、ko、zh-CN）：語言面板「照預設勾選」的預先勾選 | `drama_caption_locales`（預設空） | 工人不再讀這兩欄：每支影片做哪些語言由站主在成片核准後決定（[`LANGUAGES.md`](LANGUAGES.md)，下面「語言」） |
 | 流程上限 | 每支最多查核幾輪（3）、旁白最多重錄幾輪（2） | `drama_max_verify_rounds`（3）、`drama_max_retake_rounds`（2）、每鏡最多重做幾次、一支最多幾段片段、文件退回後最多重寫幾輪 `series_doc_rewrites`（2；討論出的新版本不算） | — |
 | 預算 | 每月最多幾支草稿（8） | 每月片段秒、圖片、judge 次數、音樂首數、單支美元上限、作品每月幾集 `series_episodes_per_month`、同時最多幾集在做 `series_max_in_flight`（1–2） | 每月模型 token 上限（百萬，只算 API 金鑰的呼叫，20）；旁白每月字數與 Jev 每日次數沿用既有欄位 |
