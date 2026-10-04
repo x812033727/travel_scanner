@@ -110,15 +110,17 @@ export function FaqSection({ items, heading, id }: { items: readonly { question:
  *
  * `headingStart` numbers the level-2 headings (`section-1`, `section-2`, ...) so an article's
  * table of contents can point at them; a caller that renders the body in slices passes each
- * slice the count that precedes it. Left out, headings carry no ids, which is what the legal
- * pages want.
+ * slice the count that precedes it, and `subsectionStart` the level-3 headings earlier slices
+ * already drew in the section still open. Left out, headings carry no ids, which is what the
+ * legal pages want.
  */
 export function ContentBlocks({
-  blocks, labels, headingStart, articleLinks = [], locale = "en", termLabels, renderFaq,
+  blocks, labels, headingStart, subsectionStart = 0, articleLinks = [], locale = "en", termLabels, renderFaq,
 }: {
   blocks: readonly RichContentBlock[];
   labels?: ContentBlockLabels;
   headingStart?: number;
+  subsectionStart?: number;
   articleLinks?: readonly ArticleReference[];
   locale?: string;
   /** The words of the definition card under a term link; without them a term is a plain link. */
@@ -129,11 +131,12 @@ export function ContentBlocks({
 }) {
   // Heading ids are decided in one pass before rendering: level-2 headings continue the
   // sequence the caller started, and level-3 headings count within their section
-  // (`section-3-2`) so a citation can point at a sub-answer.
+  // (`section-3-2`) so a citation can point at a sub-answer, continuing any count an earlier
+  // slice of the same section started.
   const headingIds = new Map<number, string>();
   if (headingStart !== undefined) {
     let section = headingStart;
-    let subsection = 0;
+    let subsection = subsectionStart;
     blocks.forEach((block, index) => {
       if (block.type !== "heading") return;
       if (block.level === 3) {
