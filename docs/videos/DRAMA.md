@@ -1,6 +1,6 @@
 # AI 漫劇路線（drama）：設計
 
-2026-09-26 起草，2026-10-01 更新字幕與動畫交付規格。這是既有全自動影片產線（[`DESIGN.md`](DESIGN.md)、[`AUTOMATION.md`](AUTOMATION.md)）的第二種格式：畫面是 AI 生成的鏡頭片段，一支影片有旁白、多個角色和背景音樂；新製作的對白與旁白字幕全為可開關 CC，`burn_in: false`。操作步驟在 skill `youtube-video` 的 `references/drama.md`。
+2026-09-26 起草，2026-10-01 更新字幕與動畫交付規格；2026-10-04 把鏡頭長度、片段買幾秒、參考圖上限與沒有人說話的鏡頭改成程式現在的行為（票 `2026-10-03-drama-design-documents-say-what-the`、`2026-10-04-anime-silent-action-guidance`）。這是既有全自動影片產線（[`DESIGN.md`](DESIGN.md)、[`AUTOMATION.md`](AUTOMATION.md)）的第二種格式：畫面是 AI 生成的鏡頭片段，一支影片有旁白、多個角色和背景音樂；新製作的對白與旁白字幕全為可開關 CC，`burn_in: false`。操作步驟在 skill `youtube-video` 的 `references/drama.md`。
 
 **這次十部作品**依[動畫製作規格](series-plans/production-20261001/README.md)：先完成 zh-TW 台灣口音版，核准鎖定後才製作 ja／ko／en 配音及各語 CC。採 Veo Lite 的八秒 1080p 動態素材，正片不以靜圖縮放或尾格停格補時；同集造型由核定 `shot_looks`／`character_looks` 選擇。先試音、實測分鏡和代表小樣，再放量。多角色外語配音及自動對嘴尚未因這輪而實作，歷史文件／核准不能代替新製作驗收。
 
@@ -35,7 +35,7 @@
 
 | 用途 | 第一版 | 備援／第二期 | 單價（1080p） |
 | --- | --- | --- | --- |
-| 角色設定圖、關鍵影格 | Gemini 3 Pro Image（最多 14 張參考圖） | Gemini 3.1 Flash Image、MiniMax image-01 | 約 US$0.134／張 |
+| 角色設定圖、關鍵影格 | Gemini 3 Pro Image（每次請求最多 4 張參考圖：伺服器 `apps/api/app/video_media/schemas.py` 的 `MAX_REFERENCES`，`tools/video/media/keyframes.mjs` 送最後 4 張；模型頁寫的上限 14 用不到） | Gemini 3.1 Flash Image、MiniMax image-01 | 約 US$0.134／張 |
 | 圖生影片 | Gemini Omni 1.1 Flash（3–10 秒、首尾影格、角色參考圖） | Veo 3.1 只給主鏡頭；MiniMax H3 2K 當第二個 adapter；Kling 3.0 第二期 | Omni US$0.15／秒、Veo US$0.40／秒、H3 US$0.13／秒 |
 | 旁白 | 現有 Gemini 3.8 Flash TTS（Sulafat＋頻道口音 style） | — | 約 US$0.81／小時 |
 | 角色配音 | Gemini TTS：30 個內建聲音配 style；之後用聲音設計拿持久的 `voice_…` id | MiniMax speech-2.8（情緒參數、聲音複製，沒有台灣腔）；Azure zh-TW 三個聲音沒有語氣 | 同旁白 |
@@ -43,13 +43,13 @@
 | 背景音樂 | Gemini API 的 Lyria 3.5 | ElevenLabs Music（要新金鑰）、YouTube 音效庫（人工） | US$0.08／首 |
 | 對嘴 | 第一版不做：旁白主導，對白用中景與反應鏡頭 | H3 音訊參考或 Kling lip-sync，只用在特寫 | — |
 
-一集 3 分鐘、30 鏡 × 6 秒、重做係數 1.5：Omni 約 US$40，Veo 全用約 US$108，H3 約 US$35；圖片約 US$12，配音與音樂不到 US$1。OpenAI Sora API 已於 2026-09-24 下架；MiniMax 的音樂 API 對新用戶停售。
+一集 3 分鐘照 `.agents/skills/youtube-video/references/drama-craft.md` 的節奏（鏡頭長度中位數 2.5–3.5 秒）約 60 鏡。片段買的秒數不是鏡長，而是 `tools/video/media/clips.mjs` 的 `clipSeconds`：`veo-3.1*` 配 1080p 固定 8 秒；其他模型把鏡長進位成整秒、夾在 `MIN_CLIP_SECONDS` 4 與 `MAX_CLIP_SECONDS` 10 之間，再往上貼齊 `catalog.py` 該模型的 `durations`。60 鏡、每鏡 3 秒台詞、每鏡一次 take、每份素材一次 judge（US$0.01）：Veo 3.1 Lite 約 US$39（買 480 秒）、Omni 約 US$37（240 秒）、H3 約 US$32、Veo 3.1 全用約 US$193；關鍵影格含 judge 約 US$9；配音與音樂不到 US$1。重做到上限、每月額度與三條路線（伺服器 API、Hailuo 網頁、Kling）的比較在 `.agents/skills/animation-production/SKILL.md`「錢怎麼算」與 `.agents/skills/animation-production/references/cost-model.md`（2026-10-04 改；起草時的估算是 30 鏡、每鏡 6 秒、重做係數 1.5）。OpenAI Sora API 已於 2026-09-24 下架；MiniMax 的音樂 API 對新用戶停售。
 
 **地區**：Gemini Omni 的影片編輯／延長在歐洲經濟區與英國不開放，Veo 在歐盟只允許 `allow_adult` 的人物生成；基本圖生影片是否依呼叫端 IP 擋，沒查到明確答案。試作的第一個片段先在正式主機單獨跑一鏡；被擋就把 `clip_provider` 改成 minimax，或評估把工人搬到新加坡機房。
 
 ## 品質目標與業界慣例
 
-- 流程：劇本 → 角色與場景設定圖 → 分鏡表 → 每鏡一張關鍵影格 → 圖生影片 → 配音 → 字幕 → 配樂 → 剪輯。每鏡 3–8 秒、每分鐘 5–8 張關鍵影格、八成硬切；每個角色鎖定基準圖；一部戲只用同一個影片模型。
+- 流程：劇本 → 角色與場景設定圖 → 分鏡表 → 每鏡一張關鍵影格 → 圖生影片 → 配音 → 字幕 → 配樂 → 剪輯。鏡頭長度照 2026-10-03 量過參考片後定的規格（`.agents/skills/youtube-video/references/drama-craft.md`）：中位數 2.5–3.5 秒，九成不超過 6 秒，最長 8 秒，溶接不超過一成；檢查腳本的門檻是 `tools/video/core/craft.mjs` 的 `TARGETS`（`medianShotSeconds` 2–4、`p90ShotSeconds` 6、`longestShotSeconds` 8、`dissolveShare` 0.1）。每個要畫的鏡頭一張關鍵影格，從別鏡素材切來的（`source`）不畫（`tools/video/core/drama.mjs` 的 `drawnShotScenes`）。lint 對估計超過 12 秒的鏡頭報錯、超過 10 秒警告，有角色的漫劇中位數低於 2 秒也警告（同檔的 `MAX_SHOT_SECONDS`、`WARN_SHOT_SECONDS`、`MIN_MEDIAN_SHOT_SECONDS`）。每個角色鎖定基準圖；一部戲只用同一個影片模型。（2026-10-04 改；起草時這裡寫的是 2026-09-26 查到的業界慣例，比量到的參考片慢。）
 - 觀眾最在意的缺陷（自動品檢要抓的）：臉在鏡頭之間變形、六指、手臂扭曲、人物飄浮、群像比例錯、背景色偏、表情僵硬、名詞不一致、節奏拖沓。
 - 字幕：Noto Sans TC 白字深色描邊、離底邊約 14%、每行最多 16 字兩行；多人對白可加「【角色名】」。
 - YouTube：3D 寫實畫面與 AI 音樂都勾「合成內容揭露」（官方明說不影響觸及與營利）；每集有獨立的劇情與構圖；站主關卡與製作紀錄（提示詞、參考圖）是作者證據；不轉載別人的漫劇；不用真人聲音或臉；音樂用有授權的來源。
@@ -62,13 +62,13 @@
 | --- | --- |
 | `look` | `{ preset?: cinematic-3d\|anime-2d\|ink-wash\|flat-explainer\|custom, style (≤600), negative?, motion?, candidates?: 2–4（預設 3）, style_frames?: string[] }`：全影片共用的風格提示詞 |
 | `characters[]` | `{ id（小寫，不可是 narrator）, name, appearance（≤800，英文，給圖片模型）, voice（同 doc.voice 的物件）, sheet_prompt? }` |
-| 鏡頭場景 | `template: "shot"`，`data: { prompt (≤1000), camera?, motion?, negative?, characters?: [id]（≤3）, fit?: auto\|freeze\|slow\|trim, seed?, transition?: cut\|dissolve, start_frame?: { shot, at: "last" }, end_frame?: { prompt }, visual?: clip\|still, source?: { shot, from_s } }`；`visual` 預設 `clip`，`still` 不買片段，由 `assemble` 用關鍵影格加運鏡（下面「畫面等級與運鏡」）；`source` 從更早一個 clip 鏡頭的素材第 `from_s` 秒切進來，不畫關鍵影格、不買素材（下面「同一份素材切幾次」）；有角色、沒有時長下限的漫劇可用 `action_seconds`（1–8）加空 `lines` 寫沒有人說話的鏡頭；句子不能有 `reveal`。`title`／`chapter`／`outro` 卡片仍可用 |
+| 鏡頭場景 | `template: "shot"`，`data: { prompt (≤1000), camera?, motion?, negative?, characters?: [id]（≤3）, fit?: auto\|freeze\|slow\|trim, seed?, transition?: cut\|dissolve, start_frame?: { shot, at: "last" }, end_frame?: { prompt }, visual?: clip\|still, source?: { shot, from_s } }`；`visual` 預設 `clip`，`still` 不買片段，由 `assemble` 用關鍵影格加運鏡（下面「畫面等級與運鏡」）；`source` 從更早一個 clip 鏡頭的素材第 `from_s` 秒切進來，不畫關鍵影格、不買素材（下面「同一份素材切幾次」）；有角色、沒有時長下限、`category` 不是 anime 的漫劇，與政策有效的 `long-anime-v1` 長篇動畫，可用場景層的 `action_seconds`（1–8）加空 `lines` 寫沒有人說話的鏡頭（下面「沒有人說話的鏡頭」）；句子不能有 `reveal`。`title`／`chapter`／`outro` 卡片仍可用 |
 | 句子 | 多 `speaker?: narrator\|<角色 id>`（預設 narrator）與 `emotion?`（≤80，Gemini 併進 style；Azure 忽略並警告） |
 | `music` | `{ prompt? , track?, sha256?, gain_db (-20), duck_db (-10), fade_in_ms (1500), fade_out_ms (3000) }`：有 `prompt` 由 `music` 階段經伺服器生成；有 `track` 用 `<VIDEO_WORKDIR>/_music/` 的檔案 |
 | `subtitles` | `{ burn_in（預設 false；新自動製作固定 false）, style: drama\|plain, speaker_prefix (false) }`；舊手動影片仍可讀取其明確的燒錄設定 |
 | `thumbnail.data.shot?` | 用該鏡頭的關鍵影格當縮圖底圖 |
 
-**句子仍是時鐘。** 鏡頭長度＝句子音檔＋停頓＋場景間隔，`buildTimeline` 不變。`clips` 在 `tts` 之後跑，所以知道每鏡精確格數，向供應商要 `duration_s = clamp(ceil(frames/30), 4, 10)`，再對齊伺服器回報的可用秒數。片段長短對不上由 assemble 的 `fitPlan` 決定：`auto` 太長從第 0 格截（第 0 格就是關鍵影格，檢查才成立），太短先慢放到 ≥0.85× 再 `tpad` 凍格；凍格超過 60 格算問題。lint 對估計超過 12 秒的鏡頭報錯、超過 10 秒警告：長旁白拆成更多鏡頭。要延續動作用 `start_frame: { shot, at: "last" }`。
+**句子仍是時鐘。** 鏡頭長度＝句子音檔＋停頓＋場景間隔，`buildTimeline` 不變。`clips` 在 `tts` 之後跑，所以知道每鏡精確格數，買幾秒由 `tools/video/media/clips.mjs` 的 `clipSeconds` 決定：`veo-3.1*` 模型配 1080p 一律 8 秒（Veo 3.1 的 1080p 只有 8 秒，Lite 也是）；其他模型是格數 ÷ 30 進位成整秒、夾在 `MIN_CLIP_SECONDS` 4 與 `MAX_CLIP_SECONDS` 10 之間，再取伺服器回報的該模型可用秒數（`catalog.py` 的 `durations`）裡第一個不短於它的，都短就取最長的。片段長短對不上由 assemble 的 `fitPlan` 決定：`auto` 太長從第 0 格截（第 0 格就是關鍵影格，檢查才成立），太短先慢放到 ≥0.85× 再 `tpad` 凍格；凍格超過 60 格算問題。lint 對估計超過 12 秒的鏡頭報錯、超過 10 秒警告：長旁白拆成更多鏡頭。要延續動作用 `start_frame: { shot, at: "last" }`。
 
 **id 與雜湊。** 鏡頭 id 就是場景 id、角色 id 穩定、句子 id 不變，快取都以 id＋內容雜湊為鍵。`speechHash` 納入每句的說話者、情緒與角色聲音；`visualHash` 已含 `scene.data`；新增 `lookHash`（look＋角色外觀）、`keyframeKey`、`clipKey`、`subtitlesHash`、`mixHash`（改音樂增益不會讓片段失效）。`checks.json` 記六個雜湊，`pipelineStatus` 全對才算成片完成。
 
@@ -99,7 +99,7 @@ drama 的 `brief.md` 必要章節：「故事前提」「角色」「站主觀�
 - `assemble`：`layoutDrama` 給它 `from_frame` 與 `source`，片段鏈前面加 `trim=start_frame=<from_frame>`；可用格數是來源素材扣掉起點；第 0 格不比關鍵影格，改比來源素材在 `from_frame` 那一格（`frameArgs` 抽出 PNG，PSNR ≥ 22；`checks.json.metrics.shots[].source_frame_psnr`）。
 - 還沒做：同一份素材放大成較近的景別（punch-in，最多 1.5 倍）。要拿一場試拍的 1080p 素材量過裁切後的畫質才決定，不先假設。
 
-**沒有人說話的鏡頭**：有角色、沒有時長下限的漫劇可寫 `action_seconds`（1–8 的整數）加空的 `lines`，長度就是它（`timesSilentShots`；原本只有長篇動畫的 production policy 允許）。旁白講述的影片、有 480 秒下限的知識長片（品牌故事、AI 名詞、解說，就算列了角色）與動畫類都不行：它們的長度是在旁白上量的，靜默鏡會填掉下限。
+**沒有人說話的鏡頭**：場景層寫 `action_seconds`（1–8 的整數）加空的 `lines`，鏡頭的 `prompt` 與 `motion` 寫看得到的動作，長度就是它。`tools/video/core/schema.mjs` 的 `validateScenes` 在兩種影片接受（`validAnime || timesSilentShots(doc)`；`tools/video/core/timeline.mjs` 排時間軸時同一條件）：有角色、沒有時長下限、不是知識長片、`category` 不是 anime 的漫劇（`drama.mjs` 的 `timesSilentShots`，2026-10-03 加）；與 `production_policy: "long-anime-v1"` 且 `tools/video/core/anime-policy.mjs` 的 `validateAnimePolicy` 沒有問題的長篇動畫（原本只有它，規則在 [`LONG-ANIME-PRODUCTION.md`](LONG-ANIME-PRODUCTION.md)）。旁白講述的影片、有 480 秒下限的知識長片（品牌故事、AI 名詞、解說，就算列了角色）都不行：它們的長度是在旁白上量的，靜默鏡會填掉下限。`category: "anime"` 而沒有有效長篇政策的集也不行：動畫類的靜默鏡只經由那份政策（2026-10-04 更正：這裡原本把動畫類整個列為不行）。
 
 ## 產線與關卡
 
@@ -187,8 +187,8 @@ node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --p
 
 | 項目 | 數字 | 來源 |
 | --- | --- | --- |
-| 一集 3 分鐘的片段（30 鏡 × 6 秒 × 1.5） | Omni 約 US$40、H3 約 US$35、Veo 約 US$108 | 官方單價，2026-09-26 |
-| 圖片（約 90 張候選） | 約 US$12 | 同上 |
+| 一集 3 分鐘的片段（60 鏡、每鏡 3 秒台詞、一次 take，秒數照 `clipSeconds`；2026-10-04 改，原本是 30 鏡 × 6 秒 × 1.5） | Veo 3.1 Lite 約 US$39、Omni 約 US$37、H3 約 US$32、Veo 3.1 約 US$193（各含每份素材一次 judge） | `catalog.py` 單價（2026-09-26 查，Lite 2026-10-01）；算式在 `.agents/skills/animation-production/SKILL.md`「錢怎麼算」 |
+| 圖片（60 張關鍵影格與 9 張設定圖，各一次，含 judge） | 約 US$10 | 同上 |
 | 配音、音樂、judge | 不到 US$2 | 同上 |
 | 磁碟：媒體庫每支 | 約 1 GB；14 天保留、3–4 支在做約 4–6 GB | 估計，試作後更新 |
 | 磁碟：工人 `video_work` 每支 | 1.5–2 GB；發布後刪片段 | 估計 |
