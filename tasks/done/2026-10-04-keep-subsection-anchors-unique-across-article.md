@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-keep-subsection-anchors-unique-across-article
 title: Keep subsection anchors unique across article slices
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5-subsection-anchors
 claimed_at: 2026-10-04T14:45:17Z
 created_at: 2026-10-04T08:25:39Z
-completed_at:
+completed_at: 2026-10-04T15:12:32Z
 branch: claude/subsection-anchors-unique
 depends_on: []
 scope:
