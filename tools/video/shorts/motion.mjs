@@ -7,10 +7,11 @@
 // and the dissolve length are the long video's (assemble/drama.mjs), so the two look alike.
 import { DISSOLVE_FRAMES, MOTION_SOURCE_SCALE, motionMove, zoompanExpr } from '../assemble/drama.mjs';
 import { PROFILE } from './core.mjs';
+import { CAPTION_BOX } from './karaoke.mjs';
 
 export { DISSOLVE_FRAMES };
-// Folded into the build id: a change here re-encodes every Short.
-export const MOTION_VERSION = 'shorts-motion-v1';
+// Folded into the build id: a change here re-encodes every Short. v2: the caption layer input.
+export const MOTION_VERSION = 'shorts-motion-v2';
 // The words a scene's `camera` may say, the long video's shot vocabulary (docs/videos/ILLUSTRATED.md).
 export const CAMERA_WORDS = Object.freeze(['push in', 'pull out', 'pan left', 'pan right', 'tilt up', 'tilt down', 'drift']);
 const { width: WIDTH, height: HEIGHT, fps: FPS } = PROFILE;
@@ -79,13 +80,16 @@ export function cardsList(cards) {
 /**
  * The ffmpeg arguments of one scene's segment: the background (input 0) under its move, the
  * cards (input 1, an ffconcat list of transparent PNGs) over it, the previous scene's last frame
- * (input 2) fading away over the first frames when `dissolveFrom` is given, then the colour tags
- * and the Short's encoder (h264 high, 30 fps, closed GOPs of two seconds, BT.709), the same for
- * every segment so the join copies.
+ * (input 2) fading away over the first frames when `dissolveFrom` is given, the caption layer
+ * (the last input, an ffconcat list of the lit caption bars, karaoke.mjs) over the cards at the
+ * bar's place when `captionsList` is given, then the colour tags and the Short's encoder (h264
+ * high, 30 fps, closed GOPs of two seconds, BT.709), the same for every segment so the join
+ * copies. Without a caption layer the arguments are what they were.
  */
-export function segmentArgs({ background, move, frames, cardsList: list, dissolveFrom = null, outFile }) {
+export function segmentArgs({ background, move, frames, cardsList: list, dissolveFrom = null, captionsList = null, outFile }) {
   const inputs = ['-loop', '1', '-framerate', String(FPS), '-t', seconds(frames), '-i', background, '-f', 'concat', '-safe', '0', '-i', list];
   if (dissolveFrom) inputs.push('-loop', '1', '-framerate', String(FPS), '-t', seconds(DISSOLVE_FRAMES + 2), '-i', dissolveFrom);
+  if (captionsList) inputs.push('-f', 'concat', '-safe', '0', '-i', captionsList);
   const graph = [`[0:v]${backgroundChain(move, frames).join(',')}[pic]`];
   let last = 'pic';
   if (dissolveFrom) {
@@ -95,7 +99,13 @@ export function segmentArgs({ background, move, frames, cardsList: list, dissolv
   }
   graph.push('[1:v]format=rgba[cards]');
   graph.push(`[${last}][cards]overlay=0:0:eof_action=pass[carded]`);
-  graph.push(`[carded]${COLOUR}[out]`);
+  last = 'carded';
+  if (captionsList) {
+    graph.push(`[${dissolveFrom ? 3 : 2}:v]format=rgba[captions]`);
+    graph.push(`[${last}][captions]overlay=${CAPTION_BOX.x}:${CAPTION_BOX.y}:eof_action=pass[captioned]`);
+    last = 'captioned';
+  }
+  graph.push(`[${last}]${COLOUR}[out]`);
   return [
     '-y', '-v', 'error', ...inputs,
     '-filter_complex', graph.join(';'), '-map', '[out]', '-frames:v', String(frames),
