@@ -152,3 +152,20 @@ and scope are available. No production connection or write is part of it.
   `article-localization` skill at the compiler: `2026-10-05-point-the-article-localization-skill-at`.
   Actual release stays with each wave's ticket (T1:
   `2026-09-28-localize-marketing-mix-and-brand-tone`). No production connection or write.
+
+### 2026-10-05 review fix (claude-opus-5-5-route-b-bundle-compiler)
+
+- The PR's first `release-safety` run (article-localization.yml run 37293671858, head
+  `41b722f8`) was red on one test: `test_linked_candidate_file_is_refused` got "Bundle path
+  escapes its root" instead of "linked candidate path" (1 failed, 199 passed, 2 skipped;
+  every PostgreSQL case, both two-session lock cases included, passed). `read_inside` called
+  `publish_bundle.safe_path` first, which resolves the link and refuses a link that points
+  out of the candidate with its own message before the per-component `is_symlink` walk ran.
+  The input was refused either way, but the test had only ever skipped on Windows.
+- Fix: `read_inside` walks the components for links before `safe_path` resolves anything,
+  so any linked candidate path is refused as a link. The order is safe because both
+  callers have already pinned the path (`packs/<slug>.json` equality, the `ASSET` regex).
+  The test now covers a link pointing out of the candidate and one pointing inside it.
+- Local (Windows, PYTHONUTF8=1): the compiler suite 54 passed, 12 skipped (the two
+  symlink variants now skip here); with `test_publish_bundle.py` 123 passed, 80 skipped;
+  `ruff check tools/article-localization docs/article-localization` passes.

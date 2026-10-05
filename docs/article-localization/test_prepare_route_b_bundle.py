@@ -719,14 +719,16 @@ def test_output_must_be_a_new_directory_outside_sources(tmp_path, place):
         assert not output.exists()
 
 
-def test_linked_candidate_file_is_refused(tmp_path):
+@pytest.mark.parametrize("points", ["outside", "inside"])
+def test_linked_candidate_file_is_refused(tmp_path, points):
+    # A link is refused as a link before anything resolves it, wherever it points.
     inputs = build(tmp_path)
     target = inputs.root / f"public/guides/{SLUG}/hero.svg"
-    outside = tmp_path / "outside.svg"
-    outside.write_bytes(target.read_bytes())
+    real = tmp_path / "outside.svg" if points == "outside" else inputs.root / "unlisted.svg"
+    real.write_bytes(target.read_bytes())
     target.unlink()
     try:
-        os.symlink(outside, target)
+        os.symlink(real, target)
     except OSError:
         pytest.skip("this platform cannot create a symbolic link without privileges")
     with pytest.raises(driver.Refused, match="linked candidate path"):

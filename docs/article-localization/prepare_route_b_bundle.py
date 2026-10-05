@@ -184,12 +184,17 @@ def read_pinned(path, expected, label):
 
 
 def read_inside(root, relative, label):
-    """Read one candidate file without following a link or leaving the candidate."""
-    path = publish_bundle.safe_path(root, relative)
+    """Read one candidate file without following a link or leaving the candidate.
+
+    Every component is checked for a link before ``safe_path`` resolves the path, so a
+    link is refused as a link wherever it points (inside the candidate or out of it).
+    Both callers have already pinned ``relative`` to a fixed relative shape.
+    """
     current = root
     for part in PurePosixPath(relative).parts:
         current = current / part
         require(not current.is_symlink(), f"{label}: linked candidate path")
+    path = publish_bundle.safe_path(root, relative)
     require(path.is_file(), f"{label}: candidate file is absent")
     return path.read_bytes()
 
