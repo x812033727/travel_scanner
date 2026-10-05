@@ -81,3 +81,9 @@ and on the host, the usage in references/post-deploy.md: every check PASS with t
   90 s in Git Bash here (`spawnSync bash ETIMEDOUT`, also alone); neither file differs from origin/main.
 - A stale api image would carry an old head and pass `alembic-head`; `containers-rebuilt-this-deploy`
   is the check that catches a stale image, so the two are read together.
+- First real use after the merge: 363489fe9 (#1245) was deployed 2026-10-05 03:32:47–03:33:54Z.
+  `host-verify.sh` with only EXPECTED_SHA filled in gave 12/12. That count includes one check added
+  for that deploy only (no open paid video jobs): `up=14/14`, head 0124 read from the image, and
+  `auto_exit4_drama_off=1`. The docs-only deploy recreated every app container, which led to task
+  `2026-10-05-deploy-skill-says-unchanged-services-keep`.
+- Second use: 519c8e54c (#1248 and #1246) gave 13/13 on 2026-10-05 at 04:30Z (see that task).
