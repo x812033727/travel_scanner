@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-reuse-confirmed-speech-results-across-restart
 title: Reuse confirmed speech results and hold unknown ones across a restart
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-speech-journal
 claimed_at: 2026-10-05T12:26:34Z
 created_at: 2026-10-05T00:38:35Z
-completed_at:
+completed_at: 2026-10-05T13:18:02Z
 branch: claude/speech-journal
 depends_on: []
 scope:
@@ -119,6 +119,12 @@ tools/video/shorts/*.test.mjs tools/video/dubs/*.test.mjs`, then `npm run test:t
   2026-10-01-hand-off-owner-approved-renewed-finals (codex-video-stall-followthrough, claimed
   2026-10-04T10:14Z, 26 h old, stale). Its branch `codex/video-approved-final-languages-20261004`
   is on no remote and in no worktree, and no commit since #1208 touches `dubs/cli.mjs`.
+
+- Verified on Windows (2026-10-05): `node --test tools/video/tts/speech-journal.test.mjs` 18/18;
+  tts + shorts + dubs suites 263/264 and `npm run test:tools` 1707/1712 (3 skipped), the reds
+  being the known Windows-only `check.test.mjs` transcript test and `nginx-install.test.mjs`
+  timing out under load (`spawnSync bash ETIMEDOUT`; 6/6 when run alone);
+  `node tools/video/long-form/cli.mjs check` PASS with no stale file; `npm run check:tasks` exit 0.
 
 ### Limits, and what is left
 
