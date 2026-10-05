@@ -5,7 +5,7 @@ import test from "node:test";
 
 import { EXIT, main as runCli } from "../cli.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
-import { AutomationError, automationClient, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
+import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { RUN_RECEIPTS_DIR } from "./run-receipts.mjs";
 
 const SITE = "https://site.test";
@@ -575,4 +575,78 @@ test("the durable polling window caps at 25 seconds and leaves the paid operatio
   assert.equal(calls.filter((method) => method === "POST").length, 1);
   assert.ok(sleeps.length > 0 && sleeps.every((ms) => ms > 0) && sleeps.reduce((total, ms) => total + ms, 0) <= 25_000);
   assert.equal(durableFiles(box).length, 1);
+});
+
+test("a settled policy refusal survives repeated rounds and client restarts without another job POST", async () => {
+  for (const direct of [false, true]) {
+    const box = sandbox(), posts = [];
+    const make = () => durableClient(box, async (_url, init) => {
+      assert.equal(init.method, "POST");
+      const body = JSON.parse(init.body);
+      posts.push(body);
+      if (direct) return Response.json({ code: POLICY_HOLD, detail: "drama disabled" }, { status: 409 });
+      return Response.json({ ...job(body, "failed"), error_code: POLICY_HOLD, error_detail: "drama disabled", error_status: 409, dispatched_at: null });
+    });
+    const first = make();
+    await first.settings();
+    await assert.rejects(runWriter(first), (error) => error.code === POLICY_HOLD && error.who === "owner");
+    const file = durableFiles(box)[0], before = readFileSync(file, "utf8");
+    await assert.rejects(runWriter(first), (error) => error.code === POLICY_HOLD);
+    const restarted = make();
+    await restarted.settings();
+    await assert.rejects(runWriter(restarted), (error) => error.code === POLICY_HOLD);
+    assert.equal(posts.length, 1, "the original policy refusal is a project hold, not a new request every round");
+    assert.equal(readFileSync(file, "utf8"), before, "the original key, source and exact refusal survive");
+  }
+});
+
+test("policy retry requires a fresh enabled route, a new owner request, and no STOP; it archives the original refusal", async () => {
+  const box = sandbox(), calls = [], requestId = "11112233-4455-6677-8899-aabbccddeeff";
+  let enabled = false, current;
+  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+    const route = new URL(url).pathname;
+    calls.push({ route, method: init.method });
+    if (route.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: enabled }, model: "changed-provider-does-not-resume" });
+    if (init.method === "POST") current = { ...job(JSON.parse(init.body), "failed"), error_code: POLICY_HOLD, error_detail: "drama disabled", error_status: 409, dispatched_at: null };
+    return Response.json(current);
+  } });
+  await client.settings();
+  const run = () => client.run("writer", DURABLE_SLUG, "Original drama", { video: { format: "drama" } }, 16_000, "drama");
+  await assert.rejects(run(), (error) => error.code === POLICY_HOLD);
+  const file = durableFiles(box)[0], original = JSON.parse(readFileSync(file, "utf8"));
+  await client.retryRuns(DURABLE_SLUG, { reason: "old retry without request identity" });
+  assert.ok(existsSync(file));
+  await assert.rejects(client.retryRuns(DURABLE_SLUG, { requestId, format: "drama" }), (error) => error.code === POLICY_HOLD);
+  assert.deepEqual(JSON.parse(readFileSync(file, "utf8")), original);
+  enabled = true;
+  const stop = path.join(box.work, DURABLE_SLUG, "STOP");
+  writeFileSync(stop, "hold");
+  await assert.rejects(client.retryRuns(DURABLE_SLUG, { requestId, format: "drama" }), (error) => error.code === RUN_UNCERTAIN && /STOP/.test(error.message));
+  assert.ok(existsSync(file));
+  const { unlinkSync } = await import("node:fs");
+  unlinkSync(stop);
+  await client.retryRuns(DURABLE_SLUG, { requestId, format: "drama", reason: "owner retry after enabling the route" });
+  assert.equal(existsSync(file), false);
+  const archiveDir = path.join(path.dirname(file), "archive");
+  const archived = JSON.parse(readFileSync(path.join(archiveDir, readdirSync(archiveDir)[0]), "utf8"));
+  assert.deepEqual(archived.receipt, original.receipt);
+  assert.equal(archived.request_key, original.request_key);
+  assert.equal(archived.owner_retry.request_id, requestId);
+  assert.equal(calls.filter((call) => call.method === "POST").length, 1, "authorizing resume never runs a model by itself");
+});
+
+test("a verified undispatched slides repair may resume its corrected format while drama stays disabled", async () => {
+  const box = sandbox();
+  let refusal;
+  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+    if (new URL(url).pathname.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: false } });
+    if (init.method === "POST") refusal = { ...job(JSON.parse(init.body), "failed"), error_code: POLICY_HOLD, error_detail: "misrouted slides repair", error_status: 409, dispatched_at: null };
+    return Response.json(refusal);
+  } });
+  await client.settings();
+  await assert.rejects(client.run("writer", DURABLE_SLUG, "Repair keyframes", { video: { format: "slides" }, fix: { kind: "keyframes" } }, 16_000, "drama"), (error) => error.code === POLICY_HOLD);
+  await client.retryRuns(DURABLE_SLUG, { requestId: "11112233-4455-6677-8899-aabbccddeeff", format: "slides", reason: "owner resumes the corrected slides route" });
+  assert.deepEqual(durableFiles(box), []);
+  const dir = path.join(box.work, DURABLE_SLUG, RUN_RECEIPTS_DIR, "archive");
+  assert.equal(readdirSync(dir).length, 1, "preserve the refused drama request instead of editing its identity");
 });

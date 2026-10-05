@@ -95,6 +95,25 @@ afterEach(() => {
 });
 
 describe("AdminVideoReviews", () => {
+  it("shows an external final's missing main-worker handoff in the catalog and detail without queuing work", async () => {
+    const imported = {
+      ...summary, pending: 0, ready_to_upload: false, worker_state: "not_adopted",
+      locales_decided_at: "2026-10-05T00:00:00Z",
+      locales: { en: { metadata: true, captions: true, dub: false } },
+      languages: { en: { metadata: { state: "ready" }, captions: { state: "working" } } },
+    };
+    const fetchMock = withBrowse(() => Promise.resolve(Response.json({ ...imported, reviews: [{ ...final, status: "approved" }] })), [imported]);
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const table = await screen.findByRole("table", { name: "全部影片" });
+    expect(within(table).getByText("主工人未接手")).toBeTruthy();
+    expect(within(table).getByText("語言尚未完成")).toBeTruthy();
+    fireEvent.click(within(table).getByRole("button", { name: "AI 模型怎麼挑" }));
+    await screen.findByRole("heading", { name: "AI 模型怎麼挑" });
+    expect(screen.getAllByText(/請從原製作流程及已核准素材接續/).some((element) => !element.classList.contains("sr-only"))).toBe(true);
+    expect(fetchMock.mock.calls.every(([, init]) => !init?.method || init.method === "GET")).toBe(true);
+  });
+
   it("lists videos, opens one, and approves an outline only once an option is chosen", async () => {
     const posts = stubFetch();
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);

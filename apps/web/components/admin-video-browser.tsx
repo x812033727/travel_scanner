@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { FilterPills } from "@/components/admin-filter-pills";
 import { AdminDataTable, AdminEmptyState, AdminErrorState, AdminFilterBar, AdminStatusPill } from "@/components/admin-ui";
 import {
-  control, isBlocked, type ProjectSummary, PublishPill, publishState, REFRESH_MS, useWhen, VIDEO_CATEGORIES, type VideoCategory, type VideoPage, youtubeSyncStuck,
+  control, isBlocked, type ProjectSummary, ProductionPill, PublishPill, publishState, REFRESH_MS, useWhen, VIDEO_CATEGORIES, type VideoCategory, type VideoPage, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
 import { syncRunning } from "@/components/admin-video-youtube";
 import { Button } from "@/components/community/ui";
@@ -49,7 +49,8 @@ function VideoRow({ project, onOpen }: { project: ProjectSummary; onOpen: (slug:
     <td data-label={t("table.category")} className="px-4 py-3"><CategoryPill category={project.category} /></td>
     <td data-label={t("table.state")} className="px-4 py-3">
       <span className="flex flex-wrap items-center gap-1">
-        {dropped ? <AdminStatusPill status="inactive">{t("dropped")}</AdminStatusPill> : <PublishPill project={project} />}
+        {dropped ? <AdminStatusPill status="inactive">{t("dropped")}</AdminStatusPill> : <PublishPill project={project} production={false} />}
+        <ProductionPill project={project} compact />
         {!dropped && isBlocked(project) && <AdminStatusPill status="failed">{t("stuck")}</AdminStatusPill>}
         {syncRunning(project.youtube_sync) && <AdminStatusPill status="running">{ty("sendingPill")}</AdminStatusPill>}
         {youtubeSyncStuck(project.youtube_sync) && <AdminStatusPill status="failed">{ty("stuckPill")}</AdminStatusPill>}

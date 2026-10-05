@@ -11,6 +11,7 @@ from app.ai.catalog import ModelStatus, valid_model_id
 from app.guides.schemas import GuideDocument, Kind
 from app.i18n import Locale
 from app.news_automation.provider_schema import ProviderReply
+from app.news_automation.typography import normalize_generated_document
 
 Vertical = Literal["ai", "tech", "crypto"]
 SourceVertical = Literal["ai", "tech", "crypto", "mixed"]
@@ -326,7 +327,19 @@ class Claim(StrictModel):
     source_urls: list[str] = Field(min_length=1, max_length=4)
 
 
-class EditorialDraft(ProviderReply):
+class NewsProviderReply(ProviderReply):
+    """Generated prose is normalized before the pipeline reviews or fingerprints it."""
+
+    @model_validator(mode="after")
+    def normalize_generated_prose(self) -> Self:
+        for field in self.document_fields:
+            document = getattr(self, field)
+            if isinstance(document, GuideDocument):
+                setattr(self, field, normalize_generated_document(document))
+        return self
+
+
+class EditorialDraft(NewsProviderReply):
     document_fields = ("document",)
 
     eligible: bool
@@ -339,7 +352,7 @@ class EditorialDraft(ProviderReply):
     document: GuideDocument
 
 
-class VerificationResult(ProviderReply):
+class VerificationResult(NewsProviderReply):
     document_fields = ("corrected_document",)
 
     verdict: Literal["pass", "revise", "manual"]
@@ -353,7 +366,7 @@ class VerificationResult(ProviderReply):
         return self
 
 
-class LocalizedDocument(ProviderReply):
+class LocalizedDocument(NewsProviderReply):
     document_fields = ("document",)
 
     # One locale per call: four documents in one reply outran the request timeout, and
@@ -361,7 +374,7 @@ class LocalizedDocument(ProviderReply):
     document: GuideDocument
 
 
-class LocaleReviewResult(ProviderReply):
+class LocaleReviewResult(NewsProviderReply):
     document_fields = ("corrected_document",)
 
     verdict: Literal["pass", "revise", "manual"]

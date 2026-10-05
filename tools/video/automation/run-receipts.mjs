@@ -7,6 +7,9 @@ import path from "node:path";
 import { resolveWorkdir } from "../core/paths.mjs";
 
 export const RUN_RECEIPTS_DIR = "run-receipts";
+export const POLICY_HOLD_CODE = "video_ai_drama_disabled";
+export const policyHeld = (record) => record.receipt?.status === "failed" && record.receipt.error_code === POLICY_HOLD_CODE
+  || record.policy_rejection?.error_code === POLICY_HOLD_CODE;
 const HASH = /^[a-f0-9]{64}$/;
 const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 const STATUSES = new Set(["queued", "running", "succeeded", "failed", "uncertain"]);
@@ -98,6 +101,9 @@ export function runReceiptStore(ctx, site) {
       validateRunReceipt(record.receipt, { ...record, receipt: null });
       requireThat(record.receipt_hash === sourceHash(record.receipt), "stage journal has changed receipt bytes");
     }
+    if (record.policy_rejection) requireThat(record.receipt === null && record.policy_rejection.error_code === POLICY_HOLD_CODE
+      && record.policy_rejection.error_status === 409 && typeof record.policy_rejection.error_detail === "string",
+    "invalid saved policy rejection");
     requireThat(record.adopted === undefined || typeof record.adopted === "boolean" && (!record.adopted || record.receipt?.status === "succeeded"), "only a successful stage receipt can be adopted");
     if (record.adopted) requireThat(Array.isArray(record.adoption?.artifacts) && record.adoption.artifacts.length > 0
       && record.adoption.artifacts.every((item) => typeof item?.path === "string" && path.isAbsolute(item.path) && HASH.test(item.sha256 ?? "")), "adopted stage receipt has no saved artifact proofs");
@@ -142,6 +148,15 @@ export function runReceiptStore(ctx, site) {
       return next.receipt;
     },
     consume(entry) { consumed.set(entry.file, entry.record.request_key); },
+    hold(entry, rejection) {
+      const current = read(entry.file);
+      requireThat(current.request_key === entry.record.request_key && current.receipt === null
+        && rejection.error_code === POLICY_HOLD_CODE && rejection.error_status === 409,
+      "only an undispatched policy refusal may be saved without a job receipt");
+      const next = { ...current, policy_rejection: structuredClone(rejection) };
+      save(entry.file, next);
+      entry.record = next;
+    },
     adopt(slug, proof) {
       let verified = null;
       for (const [file, key] of consumed) {
@@ -163,6 +178,7 @@ export function runReceiptStore(ctx, site) {
     removeFailed(entry) {
       const current = read(entry.file);
       requireThat(current.request_key === entry.record.request_key && current.receipt?.status === "failed", "only a definitively failed stage may be cleared");
+      requireThat(!policyHeld(current), "a policy refusal must be retained until a validated owner retry");
       unlinkSync(entry.file);
     },
     settle(slugs = null) {
@@ -183,14 +199,22 @@ export function runReceiptStore(ctx, site) {
         }
       }
     },
-    archive(entry, { requestId = null, reason = "" } = {}) {
+    archive(entry, { requestId = null, reason = "", policyValidated = false } = {}) {
       const current = read(entry.file);
       requireThat(current.request_key === entry.record.request_key, "stage journal changed before owner retry");
       const successfulSourceChange = current.receipt?.status === "succeeded" && !current.adopted
         && UUID.test(requestId ?? "") && typeof reason === "string" && reason.includes("inputs changed");
-      requireThat(current.receipt?.status === "uncertain" || successfulSourceChange, "only a confirmed uncertain run or owner-authorized changed input can be archived");
+      const policyRetry = policyHeld(current) && UUID.test(requestId ?? "") && policyValidated === true
+        && (!current.receipt || current.receipt.dispatched_at === null);
+      requireThat(current.receipt?.status === "uncertain" || successfulSourceChange || policyRetry, "only a confirmed uncertain run, authorized changed input or validated policy retry can be archived");
       const archiveDir = path.join(path.dirname(entry.file), "archive");
       mkdirSync(archiveDir, { recursive: true });
+      if (policyRetry) for (const name of readdirSync(archiveDir).filter((name) => name.endsWith(".json"))) {
+        let previous;
+        try { previous = JSON.parse(readFileSync(path.join(archiveDir, name), "utf8")); }
+        catch { throw new RunReceiptError("an owner retry archive is unreadable; preserve it before resuming"); }
+        requireThat(previous.owner_retry?.request_id !== requestId, "this owner retry was already used; a new request is required");
+      }
       const target = path.join(archiveDir, `${current.source_hash}-${current.request_key}.json`);
       requireThat(!existsSync(target), "the owner retry archive already exists; preserve both journals and inspect it");
       save(entry.file, { ...current, owner_retry: { request_id: requestId, reason, archived_at: (ctx.now?.() ?? new Date()).toISOString() } });
@@ -211,7 +235,7 @@ export function runReceiptStore(ctx, site) {
       return readdirSync(dir).filter((name) => name.endsWith(".json")).map((name) => {
         const file = path.join(dir, name);
         return { file, record: read(file) };
-      }).filter((entry) => entry.record.receipt?.status === "uncertain" || UUID.test(requestId ?? "")
+      }).filter((entry) => entry.record.receipt?.status === "uncertain" || UUID.test(requestId ?? "") && policyHeld(entry.record) || UUID.test(requestId ?? "")
         && typeof reason === "string" && reason.includes("inputs changed")
         && ["queued", "running", "succeeded"].includes(entry.record.receipt?.status) && !entry.record.adopted);
     },

@@ -23,7 +23,7 @@ import { ITEM_IDS } from "../qa/checks.mjs";
 import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
 import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
-import { automationClient } from "./client.mjs";
+import { AutomationError, automationClient, POLICY_HOLD } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
 import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
@@ -362,6 +362,208 @@ function context(box, fetchImpl, clock) {
 }
 
 const smallRefs = { script_writing: "short sentences", formats: "tutorial", channel: "Mokaair", showcase: { scenes: [] }, minimal: fixture() };
+
+test("keyframe and rejected-storyboard repairs keep the saved slides or drama format, including legacy states", async (t) => {
+  for (const { name, format, saved, fixtureName } of [
+    { name: "legacy slides", saved: "slides", fixtureName: "illustrated" },
+    { name: "explicit slides", format: "slides", saved: "slides", fixtureName: "illustrated" },
+    { name: "legacy drama", saved: "drama", fixtureName: "drama" },
+    { name: "explicit drama", format: "drama", saved: "drama", fixtureName: "drama" },
+  ]) for (const route of ["failed keyframes", "rejected storyboard"]) await t.test(`${name}: ${route}`, async () => {
+    const slug = "repair-fixture";
+    const box = sandbox(slug, fixtureName);
+    const docFile = path.join(box.dir, "video.json");
+    const original = { ...readJson(docFile), slug, format: saved };
+    atomicWrite(docFile, JSON.stringify(original));
+    const state = { slug, status: "active", created_at: "2026-10-05T10:00:00Z", notes: [], chosen: "A", ...(format ? { format } : {}) };
+    atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+    const site = fakeSite({ settings: { drama: { ...DRAMA_SETTINGS, drama_enabled: saved === "drama" }, slides: { slides_media_enabled: true } }, answers: { writer: (body) => ({ video: body.payload.video, lexicon_additions: {} }) } });
+    const clock = { now: Date.parse("2026-10-05T10:00:00Z") };
+    const { ctx } = context(box, site.fetchImpl, clock);
+    atomicWrite(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ shots: { repair: { needs_review: true, problems: ["wrong object"] } } }));
+    ctx.runCommand = async () => ({ code: EXIT.lint, out: "fix the prompts of repair" });
+    if (route === "rejected storyboard") site.reviewsOf(slug).push({ gate: "storyboard", status: "rejected", content_sha256: sha(path.join(box.workdir, "keyframes", "manifest.json")), payload: { shots: [{ id: "repair", needs_review: true, judge: { problems: ["wrong object"] } }] }, note: "wrong object" });
+    const worker = new Automation(ctx, automationClient(ctx), site.settings);
+    worker.refs = smallRefs;
+    const result = route === "failed keyframes" ? await worker.media(state, "keyframes") : await worker.storyboardGate(state);
+    assert.match(result, /keyframes prompts fixed \(round 1\)/);
+    assert.equal(site.calls.run.length, 1, "one repair request; no image, clip or speech provider is called");
+    const [call] = site.calls.run;
+    assert.equal(call.format, saved);
+    assert.equal(call.payload.video.format, saved);
+    assert.equal(call.payload.fix.kind, "keyframes");
+    assert.equal(automatedVideos(box.work)[0].format, saved, "the effective route is saved for future repairs and reports");
+    assert.equal(readJson(docFile).format, saved);
+    assert.equal(site.settings.drama.drama_enabled, saved === "drama", "a slides repair never activates drama");
+  });
+});
+
+test("a prompt repair refuses conflicting saved formats before asking the model", async () => {
+  const slug = "conflicting-repair";
+  const box = sandbox(slug, "illustrated");
+  atomicWrite(path.join(box.dir, "video.json"), JSON.stringify({ ...readJson(path.join(box.dir, "video.json")), slug, format: "slides" }));
+  const state = { slug, format: "drama", status: "active", notes: [], created_at: "2026-10-05T10:00:00Z" };
+  atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+  const site = fakeSite();
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-05T10:00:00Z") });
+  const worker = new Automation(ctx, automationClient(ctx), site.settings);
+  assert.match(await worker.fixPrompts(state, "keyframes", { targets: [] }), /blocked.*prompt repair format conflicts/);
+  assert.equal(site.calls.run.length, 0);
+  assert.equal(automatedVideos(box.work)[0].status, "blocked");
+});
+
+test("a policy hold survives failed reporting and restart, while another project advances and a disabled retry stays blocked", async () => {
+  const slug = "held-writer";
+  const next = "next-writer";
+  const box = sandbox(slug);
+  const state = { slug, status: "active", notes: [], created_at: "2026-10-05T09:00:00Z" };
+  atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+  atomicWrite(path.join(box.work, next, "auto.json"), JSON.stringify({ slug: next, status: "active", notes: [], created_at: "2026-10-05T10:00:00Z" }));
+  const site = fakeSite({ videos: [{ slug }, { slug: next }], settings: { max_waiting_drafts: 0 } });
+  let reportFails = true, retries = 0, writerCalls = 0;
+  const fetch = async (url, init) => {
+    if (reportFails && new URL(url).pathname === `/api/video/reviews/${slug}` && init.method === "PUT") return Response.json({ detail: "report offline" }, { status: 503 });
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-10-05T10:00:00Z") };
+  const { ctx } = context(box, fetch, clock);
+  const heldError = () => Object.assign(new AutomationError("AI drama is disabled", { code: POLICY_HOLD, who: "owner", status: 409 }), { stage: "writer", policy_hold: { format: "drama", stage: "writer", receipt_id: "retained-receipt" } });
+  const worker = () => {
+    const api = automationClient(ctx);
+    api.retryRuns = async (_slug, authorization) => { retries++; assert.equal(authorization.format, "slides"); throw heldError(); };
+    const automation = new Automation(ctx, api, site.settings);
+    automation.advance = async (item) => { if (item.slug === slug) { writerCalls++; throw heldError(); } return `${item.slug}: advanced`; };
+    return automation;
+  };
+  const first = worker();
+  assert.match(await first.step(), /blocked.*held by policy.*could not report/);
+  assert.equal(first.halted, false, "only this project is parked");
+  const held = automatedVideos(box.work).find((item) => item.slug === slug);
+  assert.equal(held.blocked_from_status, "active");
+  assert.equal(held.policy_hold.receipt_id, "retained-receipt");
+  assert.ok(held.policy_hold.source_files["video.json"]);
+  assert.match(await worker().step(), /next-writer: advanced/);
+  assert.equal(writerCalls, 1, "restart never invokes the held writer");
+  reportFails = false;
+  clock.now += 5 * 60_000;
+  assert.match(await worker().step(), /blocked reason reported/);
+  const request = "c20e963e-f3eb-4d54-ad67-bf2a8552593d";
+  Object.assign(site.listed.get(slug), { retry_request_id: request, retry_acknowledged_id: null });
+  const retry = worker();
+  assert.match(await retry.step(), /blocked.*held by policy/);
+  assert.equal(retry.halted, false);
+  assert.equal(retries, 1);
+  assert.equal(site.listed.get(slug).retry_acknowledged_id, request);
+  assert.equal(automatedVideos(box.work).find((item) => item.slug === slug).blocked_from_status, "active", "a rejected retry keeps the original resume state");
+  assert.match(await worker().step(), /next-writer: advanced/);
+  assert.equal(retries, 1, "the same explicit retry is acknowledged once");
+  assert.equal(writerCalls, 1);
+});
+
+test("policy retries respect project STOP, source drift and owner drops without invoking the retry transport", async (t) => {
+  for (const guard of ["STOP", "source", "drop", "format"]) await t.test(guard, async () => {
+    const slug = "guarded-policy-retry";
+    const box = sandbox(slug);
+    const site = fakeSite({ videos: [{ slug }], settings: { max_waiting_drafts: 0 } });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-05T10:00:00Z") });
+    const api = automationClient(ctx);
+    let retryCalls = 0;
+    api.retryRuns = async () => { retryCalls++; };
+    const worker = new Automation(ctx, api, site.settings);
+    const state = { slug, status: "blocked", blocked_from_status: "active", blocked: "held by policy", notes: [], created_at: "2026-10-05T09:00:00Z", policy_hold: { code: POLICY_HOLD } };
+    state.policy_hold.source_files = worker.policySource(state);
+    atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+    Object.assign(site.listed.get(slug), { stage: "blocked", checklist: [{ key: "blocked", label: "卡住，需要人處理：held by policy", done: false }], retry_request_id: "5a4ae684-ce4d-4080-b9b7-cda372ab8322", retry_acknowledged_id: null });
+    if (guard === "STOP") atomicWrite(path.join(box.workdir, "STOP"), "owner hold");
+    if (guard === "source") atomicWrite(path.join(box.dir, "video.json"), JSON.stringify({ ...readJson(path.join(box.dir, "video.json")), changed: true }));
+    if (guard === "format") {
+      state.format = "drama";
+      atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+      atomicWrite(path.join(box.dir, "video.json"), JSON.stringify({ ...readJson(path.join(box.dir, "video.json")), format: "slides" }));
+    }
+    if (guard === "drop") site.listed.get(slug).dropped_at = "2026-10-05T10:00:00Z";
+    await worker.step();
+    assert.equal(retryCalls, 0);
+    assert.equal(automatedVideos(box.work)[0].status, guard === "drop" ? "dropped" : "blocked");
+  });
+});
+
+test("an authorized policy retry sends the current source format once and clears the hold only after transport validation", async () => {
+  const slug = "authorized-policy-retry";
+  const box = sandbox(slug);
+  atomicWrite(path.join(box.dir, "video.json"), JSON.stringify({ ...readJson(path.join(box.dir, "video.json")), format: "slides" }));
+  const site = fakeSite({ videos: [{ slug }], settings: { max_waiting_drafts: 0, drama: { drama_enabled: false } } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-05T10:00:00Z") });
+  const api = automationClient(ctx);
+  const request = "133d9d56-a4c3-4e96-9931-7d2522131fd7";
+  let retryCalls = 0;
+  api.retryRuns = async (target, authorization) => {
+    retryCalls++;
+    assert.equal(target, slug);
+    assert.equal(authorization.requestId, request);
+    assert.equal(authorization.format, "slides", "the corrected source format is explicit even though the saved refusal was drama");
+    assert.equal(automatedVideos(box.work)[0].status, "blocked", "no local resume precedes receipt and fresh policy validation");
+  };
+  const worker = new Automation(ctx, api, site.settings);
+  const state = { slug, status: "blocked", blocked_from_status: "active", blocked: "held by policy", notes: [], created_at: "2026-10-05T09:00:00Z", policy_hold: { code: POLICY_HOLD, format: "drama" } };
+  state.policy_hold.source_files = worker.policySource(state);
+  atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+  Object.assign(site.listed.get(slug), { retry_request_id: request, retry_acknowledged_id: null });
+  worker.advance = async () => `${slug}: advanced`;
+  assert.match(await worker.step(), /advanced/);
+  assert.equal(retryCalls, 1);
+  assert.equal(site.listed.get(slug).retry_acknowledged_id, request);
+  assert.equal(automatedVideos(box.work)[0].status, "active");
+  assert.equal(automatedVideos(box.work)[0].policy_hold, undefined);
+  assert.equal(automatedVideos(box.work)[0].blocked, undefined);
+  await worker.step();
+  assert.equal(retryCalls, 1);
+  assert.equal(site.settings.drama.drama_enabled, false);
+});
+
+test("the native worker retains a disabled writer receipt, reports its hold and never dispatches or buys a second job across restart", async () => {
+  const slug = "native-policy-hold";
+  const box = sandbox(slug, "drama");
+  atomicWrite(path.join(box.dir, "video.json"), JSON.stringify({ ...readJson(path.join(box.dir, "video.json")), slug }));
+  atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify({ slug, format: "drama", status: "active", notes: [], created_at: "2026-10-05T09:00:00Z" }));
+  const site = fakeSite({ settings: { max_waiting_drafts: 0, durable_stage_runs: true, drama: { ...DRAMA_SETTINGS, drama_enabled: false } } });
+  let posts = 0;
+  const fetch = async (url, init) => {
+    if (new URL(url).pathname === "/api/video/automation/run/jobs" && init.method === "POST") {
+      posts++;
+      const body = JSON.parse(init.body);
+      return Response.json({ id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: "anthropic", model: "claude-sonnet-5", status: "failed", result: null, error_code: POLICY_HOLD, error_status: 409, error_detail: "AI drama is disabled", dispatched_at: null, retry_after: null });
+    }
+    return site.fetchImpl(url, init);
+  };
+  const { ctx } = context(box, fetch, { now: Date.parse("2026-10-05T10:00:00Z") });
+  const worker = async () => {
+    const api = automationClient(ctx);
+    const settings = await api.settings();
+    const automation = new Automation(ctx, api, settings);
+    automation.refs = smallRefs;
+    automation.advance = (state) => automation.fixPrompts(state, "keyframes", { targets: [] });
+    return automation;
+  };
+  const first = await worker();
+  assert.match(await first.step(), /blocked.*held by policy/);
+  assert.equal(first.halted, false);
+  assert.equal(posts, 1);
+  const dir = path.join(box.workdir, "run-receipts");
+  const files = readdirSync(dir).filter((name) => name.endsWith(".json"));
+  assert.equal(files.length, 1);
+  const receiptFile = path.join(dir, files[0]);
+  const receiptHash = sha(receiptFile);
+  assert.equal(readJson(receiptFile).receipt.dispatched_at, null);
+  assert.equal(site.listed.get(slug).stage, "blocked");
+  assert.equal(await (await worker()).step(), null);
+  assert.equal(posts, 1);
+  Object.assign(site.listed.get(slug), { retry_request_id: "2d9ba1d8-3c6a-4de9-aac2-458945503e87", retry_acknowledged_id: null });
+  assert.match(await (await worker()).step(), /blocked.*held by policy/);
+  assert.equal(posts, 1, "fresh disabled policy refuses even an explicit retry");
+  assert.equal(sha(receiptFile), receiptHash, "the original settled refusal is retained byte for byte");
+  assert.equal(site.calls.run.length, 0, "no synchronous model run or provider dispatch occurred");
+});
 
 function answersFor(slug, { applies = null, script = fixture() } = {}) {
   const video = { ...script, slug };
@@ -2047,6 +2249,73 @@ function rejectLanguageSubmission(video, status) {
   };
   return control;
 }
+
+test("publish submission failures are never reported as sent, and permanent refusals let a later project advance", async (t) => {
+  for (const status of [413, 422, 401, 429, 503]) await t.test(`HTTP ${status}`, async () => {
+    const video = await finishedVideo();
+    const state = video.state();
+    state.status = "active";
+    atomicWrite(path.join(video.workdir, "auto.json"), JSON.stringify(state));
+    const list = video.site.reviewsOf(video.slug);
+    for (let i = list.length - 1; i >= 0; i--) if (list[i].gate === "publish") list.splice(i, 1);
+    const mediaHash = sha(path.join(video.workdir, "final.mp4"));
+    const modelCalls = video.site.calls.run.length;
+    const fetch = video.ctx.fetch;
+    let attempts = 0;
+    video.ctx.fetch = async (url, init) => {
+      if (new URL(url).pathname === `/api/video/reviews/${video.slug}/reviews` && init.method === "POST" && JSON.parse(init.body).gate === "publish") {
+        attempts++;
+        return Response.json({ code: "submission_refused", detail: `publish refused ${status}` }, { status });
+      }
+      return fetch(url, init);
+    };
+    const worker = new Automation(video.ctx, automationClient(video.ctx), video.site.settings);
+    worker.refs = smallRefs;
+    const result = await worker.step();
+    assert.doesNotMatch(result, /publish confirmation sent/);
+    assert.equal(attempts, status === 429 || status >= 500 ? 4 : 1);
+    if ([413, 422].includes(status)) {
+      assert.match(result, /blocked.*publish submission rejected/);
+      assert.equal(worker.halted, false);
+      assert.equal(video.state().status, "blocked");
+      const next = "later-publish-project";
+      atomicWrite(path.join(video.box.videos, next, "brief.md"), brief(["A", "B"], { applies: "1、2" }));
+      atomicWrite(path.join(video.box.work, next, "auto.json"), JSON.stringify({ slug: next, status: "active", created_at: "2026-10-05T10:00:00Z", notes: [], replans: 0 }));
+      assert.match(await worker.step(), /later-publish-project: Jev picked outline B/);
+      assert.equal(attempts, 1, "a rejected publish is not posted again in this round");
+    } else {
+      assert.match(result, /could not send the publish for review/);
+      assert.equal(worker.halted, true);
+      assert.equal(video.state().status, "active");
+    }
+    assert.equal(video.reviews("publish").length, 0);
+    assert.equal(video.site.calls.run.length, modelCalls, "no source, narration or translation is regenerated");
+    assert.equal(sha(path.join(video.workdir, "final.mp4")), mediaHash);
+  });
+});
+
+test("permanent final, look and storyboard submission refusals block only the affected video", async (t) => {
+  for (const gate of ["final", "look", "storyboard"]) await t.test(gate, async () => {
+    const box = sandbox();
+    const state = { slug: box.slug, status: "active", notes: [], created_at: "2026-10-05T10:00:00Z" };
+    atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+    const site = fakeSite();
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-05T10:00:00Z") });
+    let pushes = 0;
+    ctx.runCommand = async (command) => { assert.equal(command[0], "review-push"); pushes++; return { code: EXIT.lint, out: "submission payload rejected" }; };
+    const worker = new Automation(ctx, automationClient(ctx), site.settings);
+    atomicWrite(path.join(box.workdir, "characters", "manifest.json"), JSON.stringify({ characters: {} }));
+    atomicWrite(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ shots: {} }));
+    atomicWrite(path.join(box.workdir, "final.mp4"), "saved final");
+    const result = gate === "look" ? await worker.lookGate(state) : gate === "storyboard" ? await worker.storyboardGate(state) : await worker.gate(state, gate, path.join(box.workdir, "final.mp4"));
+    assert.match(result, new RegExp(`blocked.*${gate} submission rejected`));
+    assert.equal(worker.halted, false);
+    assert.equal(pushes, 1);
+    assert.equal(automatedVideos(box.work)[0].status, "blocked");
+    assert.match(site.calls.reports.at(-1).checklist[0].label, /submission rejected/);
+    assert.equal(site.calls.run.length, 0);
+  });
+});
 
 test("a rejected language payload blocks only its video, persists across rounds, and lets a later video advance", async () => {
   const video = await finishedVideo();
