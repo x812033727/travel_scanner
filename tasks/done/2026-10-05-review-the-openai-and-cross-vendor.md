@@ -151,6 +151,14 @@ prices as current.
     tokens; OpenAI cache write 1.25x and read 0.1x (0.05x on GPT-6.1 Sol), "up to 95%"; worked
     example renamed to Sonnet 5.5 (same prices, so the 5.92 / 1.20 USD figures are unchanged).
     Copilot, Cursor and Gemini CLI rows keep 9/14 and the caption says which date covers what.
+    Review round (2026-10-06): the subscription table still gave ChatGPT Go/Plus and Pro the unit
+    "每五小時區間訊息則數", but learn.chatgpt.com/docs/pricing (HTML and `.md`, re-read 10-06) gives
+    five-hour estimates only for Plus and Standard Business and says "Pro plans currently have no
+    five-hour limit"; it lists no estimate for Go (lightweight Codex, GPT-6 Luna in the desktop app,
+    subject to rollout). Go and Plus are now separate rows (Go: "官網未列估計則數"), Pro reads
+    "方案內含用量，目前沒有五小時上限" at 100/200/500 USD, the paragraph above the table adds that Pro has no
+    five-hour limit, that source is `checked_on` 2026-10-06 and the caption dates the ChatGPT rows
+    10-06.
   - ai-free-vs-paid-plans-2026: GPT-5.6 Sol is no longer called "旗艦" (it is the paid Chat model);
     Plus's Codex offers GPT-6.1 Sol and GPT-6 Luna, Free and Go get GPT-6 Luna in the desktop app;
     Claude's context window is "up to 1M, depends on the model" (claude.com/pricing) instead of
@@ -172,7 +180,12 @@ prices as current.
     in Chat, on Pro 100/200, Business and Enterprise; the page names Pro 100/200), Claude Opus 5.5 / Sonnet 5.5, Codex Pro tiers with
     Astra Ultrafast on Pro 500 (GPT-5.3-Codex-Spark retired on 2026-09-14, so it is no longer
     offered as a Pro perk). The chatgpt.com/plans/free/ source no longer states the unlimited-text
-    rule, so it was replaced by the help article that does.
+    rule, so it was replaced by the help article that does. Review round (2026-10-06): the ChatGPT
+    paragraph's closing "付費以美元計" was dropped, since the intro now says ChatGPT's plans were
+    re-checked on 10-05 and that day's Multi-currency billing page lists TWD for Taiwan; the Claude
+    paragraph's "付費同樣以美元計" went with it (its "同樣" pointed back at the dropped clause, and
+    claude-plans-free-pro-max-2026 quotes Claude's help center as pricing supported regions in local
+    currency). Deletions only, so no source was added to the 20-source pack.
   - The help article 20001354 now lives at `.../20001354-gpt-56-and-gpt-6-pro-in-chatgpt`; edited
     packs cite that URL (the old slugs still redirect).
 - Check-date wording: each edited page says next to its original date which facts were re-read on
@@ -195,6 +208,11 @@ prices as current.
   the limit); the edits added no 本文/這篇 (counts before and after are equal) and every diagram's
   numbers are in the text. The three redrawn diagrams (tiers, free-vs-paid, beginner) were rendered with Edge and checked by eye.
 - Also found, not fixed here (not model or price claims, and each needs a source swap in a pack at
-  the 20-source limit): ai-tools-2026-overview still says ChatGPT bills in USD and only Google has
-  NT$ pricing, and chatgpt-beginner-guide still describes ads as a US test. Filed as
+  the 20-source limit): ai-tools-2026-overview still says only Google has NT$ pricing (the
+  comparison-table intro and the diagram footnote "其餘以美元計"; the two paragraph clauses were dropped
+  in the review round above), and chatgpt-beginner-guide still describes ads as a US test. Filed as
   `2026-10-05-chatgpt-taiwan-currency-and-ads-lines`.
+- Review-round checks (2026-10-06): `pack_cli lint --kind life --slug ai-coding-cost-tokens-explained
+  --slug ai-tools-2026-overview` passed (only the pre-existing `no_summary` warning);
+  `intake_check.py --from-content` for each slug reports the same pre-existing FAILs as before (no
+  summary block, the 6-column table on ai-tools, 本文/這篇 counts), and the edits add no 本文/這篇.

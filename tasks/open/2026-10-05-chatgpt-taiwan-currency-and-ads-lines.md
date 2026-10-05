@@ -24,11 +24,13 @@ Found while doing `2026-10-05-review-the-openai-and-cross-vendor` (model and pri
 because neither line is about the model line-up and each fix needs a source swap or an
 out-of-scope diagram:
 
-- `ai-tools-2026-overview` (checked 9/13) says ChatGPT's paid plans are billed in US dollars
-  ("付費以美元計"), that "台灣有台幣定價的只有 Google", and its diagram footnote says "Google 有台幣定價，
-  其餘以美元計". OpenAI's Multi-currency billing help article lists "TWD (NT$) | Taiwan" (read
-  2026-10-05), and `chatgpt-plans-plus-pro-2026` / `ai-free-vs-paid-plans-2026` already quote the
-  Taiwan pricing page in NT$ (9/30). The pack is at the 20-source limit.
+- `ai-tools-2026-overview` (checked 9/13) says, above its comparison table, that "台灣有台幣定價的只有
+  Google", and its diagram footnote says "Google 有台幣定價，其餘以美元計". OpenAI's Multi-currency
+  billing help article lists "TWD (NT$) | Taiwan" (read 2026-10-05), and `chatgpt-plans-plus-pro-2026`
+  / `ai-free-vs-paid-plans-2026` already quote the Taiwan pricing page in NT$ (9/30); for Claude,
+  `claude-plans-free-pro-max-2026` quotes the help center as pricing supported regions in local
+  currency. The ChatGPT and Claude paragraphs' own "付費以美元計" / "付費同樣以美元計" clauses were
+  already deleted in the review round of PR #1291 (2026-10-06). The pack is at the 20-source limit.
 - `chatgpt-beginner-guide` (checked 9/13) says ads may appear on Free "in some countries" and that
   "OpenAI 已宣布先在美國測試"; the table says Go ads are only a future test. Ads started rolling out in
   Taiwan for Free and Go on 2026-09-23 (`ai-news-chatgpt-ads-taiwan-20260923`), and the Ads in
@@ -51,7 +53,7 @@ out-of-scope diagram:
 
 ## How to verify
 
-`grep -nE "付費以美元計|台幣定價的只有|先在美國測試" apps/api/app/guides/content/{ai-tools-2026-overview,chatgpt-beginner-guide}.json`
+`grep -nE "以美元計|台幣定價的只有|先在美國測試" apps/api/app/guides/content/{ai-tools-2026-overview,chatgpt-beginner-guide}.json`
 returns nothing, and `PYTHONUTF8=1 uv run python -m app.guides.pack_cli lint --kind life --slug ai-tools-2026-overview --slug chatgpt-beginner-guide`
 passes from `apps/api`.
 
