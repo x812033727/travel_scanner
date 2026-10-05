@@ -1,18 +1,19 @@
 ---
 id: 2026-10-04-cancelled-requests-leave-asyncpg-connections-mid
 title: Cancelled requests leave asyncpg connections mid-operation and the next requests on them fail with 500
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-asyncpg-cancel
+claimed_at: 2026-10-05T01:23:07Z
 created_at: 2026-10-04T19:21:18Z
 completed_at:
-branch:
+branch: claude/asyncpg-cancel
 depends_on: []
 scope:
   - apps/api/app/middleware.py
   - apps/api/app/db.py
+  - apps/api/tests/test_db_session_cancellation.py
 ---
 
 # Cancelled requests leave asyncpg connections mid-operation and the next requests on them fail with 500
@@ -43,10 +44,10 @@ could turn into a burst of 500s for other readers.
 
 ## Definition of done
 
-- [ ] A request cancelled while its session holds a connection cannot hand that connection, still
+- [x] A request cancelled while its session holds a connection cannot hand that connection, still
       mid-operation, to the next request (the connection is invalidated or the cancellation is
       shielded until the session closes).
-- [ ] A regression test reproduces the cascade (cancel a request mid-query, then issue requests
+- [x] A regression test reproduces the cascade (cancel a request mid-query, then issue requests
       that reuse the pool) and passes after the fix, or the ticket says why a test cannot.
 - [ ] Notes record whether production's api log shows the same signature (read-only check).
 
@@ -54,7 +55,7 @@ could turn into a burst of 500s for other readers.
 
 - [ ] Reproduce locally against Postgres (CI's service container or a disposable one): a slow
       query, a client that disconnects, then N quick requests.
-- [ ] Compare the options: replace `BaseHTTPMiddleware` with a pure ASGI middleware (it does not
+- [x] Compare the options: replace `BaseHTTPMiddleware` with a pure ASGI middleware (it does not
       cancel the endpoint task on disconnect), and/or invalidate the session's connection on
       `CancelledError` in the session dependency. Pick the smallest that makes the test pass.
 - [ ] Grep production's api log for `another operation is in progress` (with the owner's consent).
@@ -68,3 +69,51 @@ The regression test above, then several green `full-stack-smoke` runs.
 - Filed by claude-opus-5-5-incomplete-tickets on 2026-10-04 while merging PR #1224, whose own
   change (look reviews keyed by subject, migration 0124) ran cleanly on Postgres in the same job.
 - Not yet seen on other runs as far as this session checked; it is not in the CI flake notes.
+
+### 2026-10-05 fix (claude-opus-5-5-asyncpg-cancel, branch claude/asyncpg-cancel)
+
+- **What cancels the request.** Not `BaseHTTPMiddleware`: in Starlette 1.6 it does not cancel the
+  endpoint when the client goes away. uvicorn reports ASGI `spec_version` 2.3, and below 2.4
+  `StreamingResponse` runs the body in a task group next to a disconnect listener and cancels the
+  body when the client disconnects. The cancel comes "by <Task … call_next.<locals>.coro>" only
+  because `BaseHTTPMiddleware` runs the endpoint in that task. The one stream that holds a database
+  session is `/api/v1/community/events` (`app/community/messaging.py` opens a `SessionFactory()`
+  session per catch-up; the search event stream reads Redis only), and Playwright closes it on
+  every navigation. All 10 `Exception terminating connection` entries in the job log are SQLAlchemy
+  garbage-collecting connections that were never checked back in ("non-checked-in connection"),
+  with the termination itself cancelled again.
+- **Why cleanup failed.** anyio cancellation is level-triggered: every await in a cancelled task
+  raises again, so a session closed inside that task stops at its first await. Measured with the
+  new SQLite test: invalidating without a shield leaves the pool slot checked out
+  (`checkedout()` stays 1, so a one-connection pool would hang the next request).
+- **Options compared.** A pure ASGI `RequestContextMiddleware` would not help: the stream is still
+  cancelled by `StreamingResponse` itself. So the middleware is unchanged, and the pinning tests
+  the triage asked for before changing it were not needed. The fix is in `app/db.py`:
+  `SessionFactory` makes `CancellationSafeSession`s, whose `__aexit__` calls `invalidate()` inside
+  `anyio.CancelScope(shield=True)` when the exit is an `asyncio.CancelledError`, and closes as
+  before otherwise. That covers `get_session` (FastAPI throws the endpoint's exception into the
+  dependency) and every `async with SessionFactory()`, the event stream's included. A cancelled
+  session costs one reconnect. `SessionFactory` is annotated `async_sessionmaker[AsyncSession]`
+  because the type is invariant: without it `mypy app` reported 9 errors in
+  `app/video_youtube/sync.py`.
+- **SQLAlchemy version.** The failing run used SQLAlchemy 2.0.54; main moved to 2.1.3 (#1226) the
+  same day. 2.1 already runs `AsyncSession.__aexit__`'s `close()` to completion in its own task and
+  returns the slot in `_ConnectionRecord._checkin_failed` even when a second cancellation interrupts
+  it, but it still rolls a cancelled session's connection back and reuses it. Measured with the new
+  tests: with SQLAlchemy's default exit the three cancellation tests fail (`close` instead of
+  `invalidate`) and the SQLite test sees no invalidation; without the shield two tests fail
+  (`invalidate` stops after its first await) and the SQLite test leaves the slot checked out.
+- **Tests** (`apps/api/tests/test_db_session_cancellation.py`): the factory's class; a session
+  cancelled inside an anyio scope invalidates to the end; errors and normal exits still close; the
+  request dependency invalidates when the request is cancelled; a client closing a
+  `StreamingResponse` served behind `RequestContextMiddleware` invalidates the stream's session;
+  SQLAlchemy's real invalidation on a one-connection SQLite pool gives the slot back with the
+  connection discarded; and a PostgreSQL test (`RUN_INTEGRATION_TESTS=1`) that cancels `pg_sleep`
+  mid-statement three times, then reuses a one-connection pool and checks the cancelled backend
+  never comes back, plus 40 cancellations from 0 to 20 ms into a short request.
+- **Not done here, split into `2026-10-05-asyncpg-cancel-cascade-production-check`:** the
+  production log grep (needs the host and the owner's consent; DoD 3 and Step 3), and the Postgres
+  reproduction (Step 1). This machine has no PostgreSQL (no Docker, nothing in the WSL Ubuntu), so
+  the Postgres test runs only in CI's api-tests shards; nobody has watched it pass yet, nor seen
+  whether it fails on 2.1.3 without the fix. Watching full-stack-smoke after the merge went there
+  too.
