@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
@@ -6,11 +7,16 @@ import test from "node:test";
 import { EXIT } from "../cli.mjs";
 import { runtimePolicyHash } from "../core/anime-policy.mjs";
 import { lookHash } from "../core/drama.mjs";
-import { writeAudioFixture, dramaFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { writeAudioFixture, dramaFixture, fixture, fixtureLexicon, illustratedFixture, sandbox } from "../core/fixtures/load.mjs";
+import { UsageError } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
 import { buildTimeline, estimateTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { run } from "./cli.mjs";
+import { sfxSetProblems } from "./sfx.mjs";
+
+// The illustrated fixture runs a minute, under the eight-minute floor lint keeps for real episodes.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
 import {
   checkLoudness,
   checkProbe,
@@ -235,6 +241,110 @@ test("direct assembly refuses missing or changed audio evidence before any ffmpe
     assert.match(stderr, /current audio evidence before assembly/);
     assert.equal(ffmpegReached, 0);
   }
+});
+
+const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+
+test("assemble sfx-measure measures every sound of a set with ebur128 and ffprobe and writes a version 2 manifest", async (t) => {
+  const box = sandbox("fixture-illustrated", "illustrated");
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const dir = path.join(box.work, "_sfx", "studio-a");
+  mkdirSync(dir, { recursive: true });
+  for (const name of ["stamp", "whoosh", "pop", "bell"]) writeFileSync(path.join(dir, `${name}.wav`), `${name} bytes`);
+  // A version 1 manifest the owner wrote: one stale hash, provenance the step must keep, one extra sound with its own target.
+  writeFileSync(path.join(dir, "manifest.json"), JSON.stringify({ set: "studio-a", sounds: {
+    stamp: { file: "stamp.wav", sha256: "0".repeat(64), source: "YouTube 音效庫", licence: "https://example.com/licence" },
+    whoosh: { file: "whoosh.wav" }, pop: { file: "pop.wav" }, bell: { file: "bell.wav", target_lufs: -20 },
+  } }));
+  const LEVELS = { stamp: ["-20.4", "-18.1", "-6.3"], whoosh: ["-24.0", "-22.5", "-9.0"], pop: ["-22.0", "-20.0", "-8.0"], bell: ["-19.0", "-17.0", "-4.0"] };
+  const ebur128 = (file) => {
+    const [integrated, momentary, peak] = LEVELS[path.basename(file, ".wav")];
+    return [
+      `[Parsed_ebur128_2 @ 0x1] t: 0.0999792  TARGET:-23 LUFS    M:-120.7 S:-120.7     I: -70.0 LUFS       LRA:   0.0 LU  FTPK: ${peak} ${peak} dBFS  TPK: ${peak} ${peak} dBFS`,
+      `[Parsed_ebur128_2 @ 0x1] t: 0.399979   TARGET:-23 LUFS    M: ${momentary} S:-120.7     I: ${integrated} LUFS       LRA:   0.0 LU  FTPK:  -inf  -inf dBFS  TPK: ${peak} ${peak} dBFS`,
+      "[Parsed_ebur128_2 @ 0x1] Summary:", "", "  Integrated loudness:", `    I:         ${integrated} LUFS`, "    Threshold: -39.5 LUFS", "", "  True peak:", `    Peak:      ${peak} dBFS`, "",
+    ].join("\n");
+  };
+  const calls = [];
+  const tools = { ffmpeg: "fixture-ffmpeg", ffprobe: "fixture-probe", version: "synthetic test" };
+  const dependencies = {
+    async locateFfmpeg() { return tools; },
+    async runTool(file, args) {
+      const source = file === tools.ffprobe ? args.at(-1) : args[args.indexOf("-i") + 1];
+      calls.push([path.basename(file), path.basename(source)]);
+      if (file === tools.ffprobe) return { stdout: JSON.stringify({ streams: [{ codec_type: "audio", duration: "0.250000" }] }), stderr: "" };
+      assert.deepEqual(args.slice(-5), ["-af", "aformat=sample_rates=48000:channel_layouts=stereo,apad=pad_dur=1,ebur128=peak=true", "-f", "null", "-"]);
+      return { stdout: "", stderr: ebur128(source) };
+    },
+  };
+  let stdout = "";
+  let stderr = "";
+  const ctx = { root: box.root, home: box.base, EXIT, env: { VIDEO_WORKDIR: box.work }, stdout: { write(value) { stdout += value; } }, stderr: { write(value) { stderr += value; } } };
+  assert.equal(await run("assemble", ["sfx-measure", "--set", "studio-a"], ctx, dependencies), EXIT.ok, stderr);
+  const manifest = JSON.parse(readFileSync(path.join(dir, "manifest.json"), "utf8"));
+  assert.equal(manifest.manifest_version, 2);
+  assert.equal(manifest.set, "studio-a");
+  assert.deepEqual(manifest.sounds.stamp, { file: "stamp.wav", sha256: sha256("stamp bytes"), source: "YouTube 音效庫", licence: "https://example.com/licence", lufs_i: -20.4, lufs_m: -18.1, peak_dbtp: -6.3, seconds: 0.25 }, "the owner's provenance stays; the stale hash becomes the file's");
+  assert.deepEqual(manifest.sounds.bell, { file: "bell.wav", target_lufs: -20, sha256: sha256("bell bytes"), lufs_i: -19, lufs_m: -17, peak_dbtp: -4, seconds: 0.25 });
+  assert.deepEqual(sfxSetProblems(manifest), [], "the written manifest is a usable version 2 set");
+  assert.deepEqual(calls, ["stamp", "whoosh", "pop", "bell"].flatMap((name) => [["fixture-probe", `${name}.wav`], ["fixture-ffmpeg", `${name}.wav`]]));
+  assert.match(stdout, /^stamp: stamp\.wav -20\.4 LUFS \(loudest window -18\.1\), true peak -6\.3 dBTP, 0\.25 s; target -14 LUFS$/m);
+  assert.match(stdout, /^bell: bell\.wav .*; target -20 LUFS$/m);
+  assert.match(stdout, /version 2, 4 sounds measured/);
+  assert.ok(stdout.includes(`manifest sha256 ${sha256(readFileSync(path.join(dir, "manifest.json")))}: write it as sfx.sha256 in video.json`));
+  // The set the script names, through --slug; the usage errors; a set with no manifest.
+  calls.length = 0;
+  assert.equal(await run("assemble", ["sfx-measure", "--slug", box.slug], ctx, dependencies), EXIT.ok, stderr);
+  assert.equal(calls.length, 8);
+  await assert.rejects(run("assemble", ["sfx-measure"], ctx, dependencies), UsageError);
+  await assert.rejects(run("assemble", ["bogus", "--slug", box.slug], ctx, dependencies), /assemble has no step "bogus"/);
+  await assert.rejects(run("assemble", ["--slug", box.slug, "--set", "studio-a"], ctx, dependencies), /--set belongs to assemble sfx-measure/);
+  stderr = "";
+  assert.equal(await run("assemble", ["sfx-measure", "--set", "nowhere"], ctx, dependencies), EXIT.usage);
+  assert.match(stderr, /set nowhere has no manifest\.json/);
+});
+
+test("assembly refuses a cue naming a sound the set lacks, and a set whose manifest no longer matches sfx.sha256, before any ffmpeg work", async (t) => {
+  const box = sandbox("fixture-illustrated", "illustrated");
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const doc = illustratedFixture();
+  doc.sfx = { set: "studio-a", cues: [{ scene: "door", sound: "bell" }] };
+  const write = () => writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  write();
+  const lexicon = fixtureLexicon();
+  writeAudioFixture({ ...estimateTimeline(doc), speech_hash: speechHash(doc, lexicon) }, box.workdir);
+  mkdirSync(path.join(box.workdir, "frames"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visualHash(doc) }));
+  mkdirSync(path.join(box.work, "_music"), { recursive: true });
+  writeFileSync(path.join(box.work, "_music", "bed.mp3"), "music bytes");
+  const dir = path.join(box.work, "_sfx", "studio-a");
+  mkdirSync(dir, { recursive: true });
+  const sounds = Object.fromEntries(["stamp", "whoosh", "pop"].map((name) => [name, { file: `${name}.wav`, lufs_i: -20, lufs_m: -18, peak_dbtp: -6, seconds: 0.3 }]));
+  for (const name of Object.keys(sounds)) writeFileSync(path.join(dir, `${name}.wav`), `${name} bytes`);
+  writeFileSync(path.join(dir, "manifest.json"), JSON.stringify({ manifest_version: 2, set: "studio-a", sounds }));
+  let ffmpegReached = 0;
+  let stderr = "";
+  const ctx = {
+    root: box.root, home: box.base, EXIT,
+    env: { VIDEO_WORKDIR: box.work, get FFMPEG_PATH() { ffmpegReached += 1; throw new Error("ffmpeg sentinel"); } },
+    stdout: { write() {} }, stderr: { write(value) { stderr += value; } },
+  };
+  assert.deepEqual(lintProject(loadProject({ slug: box.slug, root: box.root })).errors, [], "a cue on a scene of the script, naming a sound by a lawful name, lints clean");
+  assert.equal(await run("assemble", ["--slug", box.slug], ctx), EXIT.usage);
+  assert.match(stderr, /sfx\.cues\[0\] names sound "bell", which set studio-a does not hold \(it has stamp, whoosh, pop\)/);
+  // A script bound to the set's manifest refuses a set that changed since.
+  doc.sfx = { set: "studio-a", sha256: "0".repeat(64) };
+  write();
+  stderr = "";
+  assert.equal(await run("assemble", ["--slug", box.slug], ctx), EXIT.usage);
+  assert.match(stderr, /manifest\.json of set studio-a does not match sfx\.sha256/);
+  // With the manifest's own hash the set is accepted and the run reaches the next gate, the pictures.
+  doc.sfx.sha256 = sha256(readFileSync(path.join(dir, "manifest.json")));
+  write();
+  stderr = "";
+  assert.equal(await run("assemble", ["--slug", box.slug], ctx), EXIT.usage);
+  assert.match(stderr, /keyframes\/manifest\.json is missing/);
+  assert.equal(ffmpegReached, 0, "none of this reaches ffmpeg");
 });
 
 test("each scene lays out transition frames one by one, then its still, adding up to the scene's frames", () => {
