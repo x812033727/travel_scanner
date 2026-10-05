@@ -265,8 +265,10 @@ export async function checkAudio(args, ctx, options) {
   const unchecked = new Map();
   for (const { scene, line } of lines) {
     if (stopRequested(workdir)) {
-      ctx.stdout.write("STOP found; transcripts so far are saved\n");
-      return EXIT.ok;
+      // Each transcript is in the cache as soon as it is made, so a rerun starts where this one
+      // stopped. This run asked Jev nothing and wrote no flags file: the check has not passed.
+      ctx.stdout.write("STOP found; transcripts so far are saved, rerun to continue\n");
+      return EXIT.incomplete;
     }
     const file = path.join(audioDir, `${line.id}.wav`);
     if (!existsSync(file)) throw new UsageError(`no clip for line ${line.id}: run ${remake}`);

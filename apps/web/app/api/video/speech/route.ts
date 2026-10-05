@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
-import { forwardToSpeech } from "./forward";
+import { SPEECH_LOST, forwardToSpeech } from "./forward";
 
 export async function POST(request: NextRequest) {
-  return forwardToSpeech(request, "speech", "POST");
+  return forwardToSpeech(request, "speech", "POST", undefined, undefined, SPEECH_LOST);
 }

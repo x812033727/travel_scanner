@@ -59,7 +59,7 @@ and import dry-run are later release gates.
   `2610fc945b0e6cb47ff4939c26a324737e5ed2b186b3b57ad458984f71d5ab31`.
   Recheck before import; this PR does not publish content.
 - Source correction review receipt SHA-256
-  `773608f2f5a3f0d83151a3223db8eb657a76dadcebf55f38bcc3f059544265af`.
+  `a632a7efb76be79f26c3d5017ee8875688d7105cb16fe9ab8b21a3c4ef25bb64`.
   Corrected `zh-TW` SVG SHA-256
   `baf9e3a32cc75e52a243392320b516fdd5872ed1da4c8653c24e9d53386340a7`.
 - Frozen five-language pack SHA-256
@@ -67,8 +67,13 @@ and import dry-run are later release gates.
   candidate packet SHA-256
   `fc51f6213f8fe9d1650d3412aa8669289c380d5911e6cec1248fad505b7b8163`;
   independent content review receipt SHA-256
-  `51cf40b0f345948706ca91e7f2ae597f7c6cc8d43176782885d2babad241d7f7`
+  `2efeabc806932bd8877e7a7c04f8dbc2fbffaf406d1f47b3471fcc53d7b7d211`
   (`approved_exact_frozen_jeju_v3_candidate`, zero blockers).
+- 2026-10-05: the two receipt digests above now describe the repository copies
+  `docs/article-localization/releases/2026-09-22/batch011-jeju/source-correction-review.json`
+  and `independent-content-review.json`, whose local Windows profile paths became
+  `<home>` because the repository is public (task 2026-10-02-rebind-receipts-after-scrubbing-host-details).
+  The reviewed originals and their first digests are in commit 65ef4328b (#648).
 - Scoped pack lint passed with only existing `no_summary` guidance and English
   length guidance; full translation was retained. Pipeline: 32 passed;
   artifact-integrity: 14 passed; API pack tests: 38 passed, 5 skipped,

@@ -195,6 +195,19 @@ function fakeFfmpeg() {
   };
 }
 
+/**
+ * The narration the dubs are read against, made by tts. At this server's 60 ms a character the
+ * fixtures' chapters run under the 10 s YouTube needs, which tts reports with exit 1 once every
+ * file is written. A dub reads the timeline, not the chapters, and these tests size their
+ * translations to the windows this pace makes, so the pace stays.
+ */
+async function narrate(box, server, ffmpeg, slug = box.slug) {
+  const { ctx, out } = capture(box, server, ffmpeg);
+  const code = await main(["tts", "--slug", slug], ctx);
+  const chaptersOnly = code === EXIT.lint && /requests synthesized/.test(out.stdout) && /^chapters: /m.test(out.stdout);
+  assert.ok(code === EXIT.ok || chaptersOnly, out.stdout + out.stderr);
+}
+
 function capture(box, server, ffmpeg) {
   const out = { stdout: "", stderr: "" };
   const ctx = {
@@ -219,7 +232,7 @@ test("adding branding reuses dubbed speech, wraps the upload audio and offsets o
   writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(doc, (line) => `EN ${line.id}`)));
   const server = fakeServer();
   const ffmpeg = fakeFfmpeg();
-  assert.equal(await main(["tts", "--slug", box.slug], capture(box, server, ffmpeg).ctx), EXIT.ok);
+  await narrate(box, server, ffmpeg);
   assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en"], capture(box, server, ffmpeg).ctx), EXIT.ok);
   const files = dubArtifacts(box.workdir, "en");
   const before = JSON.parse(readFileSync(files.timeline, "utf8"));
@@ -290,7 +303,7 @@ test("dub writes a track per locale, speeds up a tight window, and reports a win
   const server = fakeServer();
   const ffmpeg = fakeFfmpeg();
 
-  assert.equal(await main(["tts", "--slug", box.slug], capture(box, server, ffmpeg).ctx), EXIT.ok);
+  await narrate(box, server, ffmpeg);
   const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
 
   const dry = capture(box, server, ffmpeg);
@@ -374,7 +387,7 @@ test("--line-by-line sends one request a line, so a scene is never paid for twic
   writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(doc, (line) => `EN ${line.id}`)));
   const server = fakeServer();
   const ffmpeg = fakeFfmpeg();
-  assert.equal(await main(["tts", "--slug", box.slug], capture(box, server, ffmpeg).ctx), EXIT.ok);
+  await narrate(box, server, ffmpeg);
 
   const before = server.calls.length;
   const run = capture(box, server, ffmpeg);
@@ -403,7 +416,7 @@ test("dub refuses what it cannot do: an Azure voice, a missing timeline, a bad l
   assert.equal(await main(["dub", "--slug", box.slug, "--locale", "fr"], capture(box, server, ffmpeg).ctx), EXIT.usage);
   assert.equal(await main(["dub", "--slug", box.slug, "--format", "ogg"], capture(box, server, ffmpeg).ctx), EXIT.usage);
 
-  assert.equal(await main(["tts", "--slug", box.slug], capture(box, server, ffmpeg).ctx), EXIT.ok);
+  await narrate(box, server, ffmpeg);
   const missing = capture(box, server, ffmpeg);
   assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en"], missing.ctx), EXIT.lint, "no translation yet");
   assert.match(missing.out.stdout, /en: no track; 7 lines have no current translation/);
@@ -434,7 +447,7 @@ test("a dub of an illustrated video carries the music bed and the cut's effects 
   writeFileSync(path.join(sfxDir, "manifest.json"), JSON.stringify({ source: "test", license: "test", sounds }));
   const server = fakeServer();
   const ffmpeg = fakeFfmpeg();
-  assert.equal(await main(["tts", "--slug", slug], capture(box, server, ffmpeg).ctx), EXIT.ok);
+  await narrate(box, server, ffmpeg, slug);
   const timeline = readJson(path.join(box.workdir, "timeline.json"));
 
   // Before the cut is assembled: the bed is mixed, the effects wait for assemble.

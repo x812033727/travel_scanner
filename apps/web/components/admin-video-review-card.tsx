@@ -4,6 +4,7 @@ import { CheckCircle2, Copy, Download, XCircle } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { type FormEvent, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { AdminStatusPill } from "@/components/admin-ui";
+import { VideoProductionState, type VideoWorkerState } from "@/components/admin-video-production-state";
 import { ShortsEvidence, ShortsPlayer } from "@/components/admin-video-shorts-player";
 import { Button } from "@/components/community/ui";
 import { api } from "@/lib/api";
@@ -73,6 +74,8 @@ export type ProjectSummary = {
   locales_decided_at?: string | null;
   languages?: Partial<Record<string, Partial<Record<string, LanguagePart>>>>;
   ready_to_upload?: boolean;
+  // Canonical worker registration, separate from output readiness and YouTube state.
+  worker_state?: VideoWorkerState | null;
   dub_locales?: string[];
   series_slug?: string | null; episode_number?: number | null;
   // A binge series' compilation (docs/videos/BINGE.md): series_slug set, no episode number, and
@@ -188,11 +191,22 @@ export function publishState(project: ProjectSummary, now = Date.now()): Publish
 // The pill separates incomplete language results from an unavailable upload package.
 const PUBLISH_TONES: Record<PublishState, string> = { deciding: "warning", making: "pending", packaging: "pending", ready: "active", scheduled: "queued", published: "ok" };
 
-/** Where the video is on its way to YouTube, as a pill; nothing before the final cut is approved. */
-export function PublishPill({ project }: { project: ProjectSummary }) {
+/** Production evidence stays separate from completed outputs, including after a YouTube upload. */
+export function ProductionPill({ project, compact = false }: { project: ProjectSummary; compact?: boolean }) {
+  const unfinishedLanguages = Boolean(project.locales_decided_at) && !chosenLanguagesComplete(project);
+  if (project.dropped_at || project.shorts_line || project.format === "shorts"
+    || (project.youtube_video_id ? !unfinishedLanguages : readyToUpload(project))) return null;
+  return <VideoProductionState state={project.worker_state} compact={compact} />;
+}
+
+/** The upload/output state and, while work remains, the separately observed producer state. */
+export function PublishPill({ project, production = true }: { project: ProjectSummary; production?: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const state = publishState(project);
-  return state ? <AdminStatusPill status={PUBLISH_TONES[state]}>{t(`publishStates.${state}`)}</AdminStatusPill> : null;
+  return <>
+    {state && <AdminStatusPill status={PUBLISH_TONES[state]}>{t(`publishStates.${state}`)}</AdminStatusPill>}
+    {production && <ProductionPill project={project} />}
+  </>;
 }
 
 /** Whether the store has let go of this video's mp4 (the same rule as the server's prune). */

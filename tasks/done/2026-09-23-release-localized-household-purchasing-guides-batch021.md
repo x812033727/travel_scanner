@@ -106,9 +106,13 @@ endpoints and no hold or pending release; SHA256
 Per-article completion states, public URLs, document/version hashes and evidence
 references are in `docs/article-localization/releases/batch021/evidence.json`
 (Git LF bytes SHA256
-`7f098690f1b9cf63a7c8f11721bd369fc9f1d8d3551499f252bfcbadb7c33ff2`).
+`4541f203c1df2823bb182defa6469592ccf83e787cfe7f4d84d6a2cc16c9c719`).
 The original Windows writer output has identical JSON and CRLF byte SHA256
-`8e6d38820883a5acccb96b69505f3cc99165307e882134461bce56343173254e`.
+`7879bd1b54059ec22986fbeb52ce0d0421326ac8fccb1a6e4d8ec1c0bf32330a`.
+On 2026-10-05 the local Windows profile paths in evidence.json became `<home>` because
+the repository is public, and both digests above were updated to the redacted bytes
+(task 2026-10-02-rebind-receipts-after-scrubbing-host-details); the original record
+and digests are in commit ffa424762 (#693).
 Desktop/mobile acceptance means browser viewports, not physical devices; mobile
 diagram captures show a center pan. The existing desktop search placeholder/icon
 overlap remains a separate nonblocking task. This batch makes no whole-site draft

@@ -80,7 +80,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 1. **選題**：從站上最近 14 天已發布的 AI／科技新聞與文章，加上 Brave 搜尋結果，排除已經做過的題目與避開的題材。由企劃模型挑出題目、寫 `brief.md`（含 2–3 個大綱與「站主觀點」；有頻道立場時第一行寫「套用立場：N、M」）→ 先問 Jev 挑哪一個（[`HANDS-OFF.md`](HANDS-OFF.md)）→ 送審「選大綱」。Jev 過關的伺服器直接核准；沒過就把原因交回企劃模型重寫，兩次仍不過、或立場空白，才**停下來等站主**。
 2. **大綱選定**之後：撰稿 → lint（錯誤會把 lint 訊息餵回撰稿模型，最多改 3 次）→ 查核（改超過 3 個事實就再查一輪，每輪都是新的對話、看不到上一輪的結論，等於換人查；最多照設定的輪數）→ 聽眾審稿 → lint。
-3. **旁白**：tts → check-audio → 被標的句子重錄，最多照設定的輪數。全數通過且設定開著，就自動核准旁白；否則送審等站主。
+3. **旁白**：tts → check-audio → 被標的句子重錄，最多照設定的輪數。全數通過且設定開著，就自動核准旁白；否則送審等站主。tts、重錄或 check-audio 被 `STOP` 檔停下（結束碼 6）時，這一輪結束、下一輪從快取接著做，不卡住、不回報做完、不送審；tts 的章節不合 YouTube 規則（結束碼 1）就卡住，理由是哪一章。
 4. **成片**：render → assemble → captions（只有繁體中文）→ `qa`（11 項自動品管，字幕與標題說明兩項只看 zh-TW 加已選的語言）→ 送審「看成片」，報告一起送。全過的伺服器直接核准；有項目沒過才**停下來等站主**。翻譯不再擋成片：其他語言在成片核准後由站主決定（下面「語言」）。
 5. **成片核准**之後：package（寫完就跑上傳包檢查，揭露答案寫進 `metadata.json`）→ 送審「確認上架」，附完整上傳包。4 項全過的伺服器直接核准。站主隨時可以在 Studio 上傳成私人、在後台貼上網址；影片要語言都做好才算「可以上架」、排程才會送出（[`LANGUAGES.md`](LANGUAGES.md) §上架流程）。工人下一輪把影片 id 寫進工作區的 `video.json`，影片就算完成。
 
@@ -151,7 +151,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 每支影片先只做繁體中文。成片核准後站主在 `/admin/videos` 的影片頁決定加哪些語言（en、ja、ko、zh-CN）、每種加什麼（標題與說明、CC、配音），或按「只出繁體中文」；`caption_locales` 只是面板的預先勾選。工人每一輪從影片清單（`ProjectSummary.locales`、`locales_decided_at`、`languages`）看每支成片已核准的影片：沒決定就什麼都不做；決定了，就把選擇抄成工作區的 `languages.json`（`captions`、`package`、`qa`、`review-push` 都從這個檔讀，本機手動跑也一樣），再對站上還標成「製作中」的部件做一件事：
 
 1. **翻譯**（一輪一個語言）：`i18n-sheet --locale <l> --parts <勾了的 metadata,captions>`（勾配音時每句帶 `max_chars`）→ 翻譯模型 → 字幕審稿模型 → `i18n-merge`。工作表沒有勾的部件就沒有那一段，merge 也不動它。
-2. **配音**（一輪一個語言，`docs/videos/DUBS.md`）：`dub --locale <l>`；結束碼 1（有視窗加速到 1.15 倍仍塞不下）→ 翻譯模型的縮短模式（`translator:shorten`，只給 `fit.json` 的句子與預算；不縮短或改了數字的答案丟掉）→ captions-only 的工作表 → `i18n-merge` → 再 `dub`，最多 `MAX_DUB_SHORTEN_ROUNDS`（2）輪；做出音軌後 `check-audio --locale <l>` → 被標的句子 `dub --redo`，最多 `MAX_DUB_RETAKE_ROUNDS`（2）輪；重錄後句子變長、塞不回視窗時，回到縮短模式，不直接放棄。重錄完仍被標的句子多半是同音字（轉寫每次都聽成同一個詞，2026-09-29 當天 8 條配音都因此整條放棄），交給翻譯模型的改寫模式（`translator:reword`，帶轉寫聽到的字與預算；沒改、超過預算或改了數字的答案丟掉）→ 同樣走工作表與 `i18n-merge` → 再 `dub`（只重錄改過的句子）與 `check-audio`，最多 `MAX_DUB_REWORD_ROUNDS`（2）輪。仍不行、或 `dub` 說要站主（Azure 聲音、沒金鑰）就寫 `dubs/<l>/skipped.json` 記下原因，**不擋影片**；服務暫時掛掉（結束碼 4）這一輪結束、下一輪再試。
+2. **配音**（一輪一個語言，`docs/videos/DUBS.md`）：`dub --locale <l>`；結束碼 1（有視窗加速到 1.15 倍仍塞不下）→ 翻譯模型的縮短模式（`translator:shorten`，只給 `fit.json` 的句子與預算；不縮短或改了數字的答案丟掉）→ captions-only 的工作表 → `i18n-merge` → 再 `dub`，最多 `MAX_DUB_SHORTEN_ROUNDS`（2）輪；做出音軌後 `check-audio --locale <l>` → 被標的句子 `dub --redo`，最多 `MAX_DUB_RETAKE_ROUNDS`（2）輪；重錄後句子變長、塞不回視窗時，回到縮短模式，不直接放棄。重錄完仍被標的句子多半是同音字（轉寫每次都聽成同一個詞，2026-09-29 當天 8 條配音都因此整條放棄），交給翻譯模型的改寫模式（`translator:reword`，帶轉寫聽到的字與預算；沒改、超過預算或改了數字的答案丟掉）→ 同樣走工作表與 `i18n-merge` → 再 `dub`（只重錄改過的句子）與 `check-audio`，最多 `MAX_DUB_REWORD_ROUNDS`（2）輪。仍不行、或 `dub` 說要站主（Azure 聲音、沒金鑰）就寫 `dubs/<l>/skipped.json` 記下原因，**不擋影片**；服務暫時掛掉（結束碼 4）這一輪結束、下一輪再試；`check-audio --locale` 被 `STOP` 檔停下（結束碼 6）也是這一輪結束，下一輪把那條音軌重新聽完再送。
 3. **全部做好**：`captions`（只寫 zh-TW 與勾了 CC 的語系；有配音的跟配音時間軸；沒勾的語系的字幕檔刪掉）→ `package`（`upload/` 只放 zh-TW 與勾了的：`description.<l>.txt`、`captions/<l>.srt`、`dubs/<l>.m4a`；`metadata.json` 多 `language_choice`）→ `review-push --gate languages`：payload 每語每部件 `ready` 或 `{status: "skipped", reason}`，檔案 `description_<l>`、`captions_<l>`、`dub_<l>`（語系小寫、連字號改底線）。沒有配音的批次伺服器直接核准；有配音的等站主在 Studio 上傳後按「已在 Studio 上傳配音」。
 
 之後多勾的部件，站上會再標成「製作中」，工人再做一批、再送一筆（舊的 superseded）；影片已經在 YouTube 上也一樣。站主沒勾或只出繁體中文的影片，`captions` 與 `package` 只有 zh-TW，其他檔案一個位元組都不變。
