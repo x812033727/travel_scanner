@@ -74,17 +74,43 @@ export function validateRunReceipt(receipt, record) {
   return structuredClone(receipt);
 }
 
-function save(file, value) {
-  const temporary = `${file}.${randomUUID()}.tmp`;
-  const fd = openSync(temporary, "wx", 0o600);
-  try { writeFileSync(fd, `${JSON.stringify(value, null, 2)}\n`); fsyncSync(fd); }
-  finally { closeSync(fd); }
-  renameSync(temporary, file);
+// Windows can briefly refuse to replace or move a journal that another process holds open (the
+// cause seen once in a local run is unknown). Retry only that rename, on Windows only, with the
+// schedule of core/paths.mjs atomicWrite: at most 630 ms of waiting before the original error.
+const RENAME_RETRY_MS = [10, 20, 40, 80, 160, 320];
+const TRANSIENT_RENAME_CODES = new Set(["EPERM", "EACCES", "EBUSY"]);
+const renameWaitCell = new Int32Array(new SharedArrayBuffer(4));
+const RENAME_IO = { platform: process.platform, rename: renameSync, wait: (ms) => Atomics.wait(renameWaitCell, 0, 0, ms) };
+
+function renameJournal(from, to, io) {
+  for (let attempt = 0; ; attempt++) {
+    try { return io.rename(from, to); }
+    catch (error) {
+      if (io.platform !== "win32" || !TRANSIENT_RENAME_CODES.has(error?.code) || attempt >= RENAME_RETRY_MS.length) throw error;
+      io.wait(RENAME_RETRY_MS[attempt]);
+    }
+  }
 }
 
-/** One source hash per slug; malformed or changed journal bytes fail closed. */
+function save(file, value, io) {
+  const temporary = `${file}.${randomUUID()}.tmp`;
+  const fd = openSync(temporary, "wx", 0o600);
+  try {
+    try { writeFileSync(fd, `${JSON.stringify(value, null, 2)}\n`); fsyncSync(fd); }
+    finally { closeSync(fd); }
+    renameJournal(temporary, file, io);
+  } catch (error) {
+    // The journal was never replaced. Remove only this save's own temporary bytes.
+    try { unlinkSync(temporary); } catch { /* the original error is the one to report */ }
+    throw error;
+  }
+}
+
+/** One source hash per slug; malformed or changed journal bytes fail closed. Tests may pass
+ * `ctx.receiptIo` ({ platform, rename, wait }) to simulate a refused rename. */
 export function runReceiptStore(ctx, site) {
   const consumed = new Map();
+  const io = { ...RENAME_IO, ...ctx.receiptIo };
   function directory(slug) {
     requireThat(/^[a-z0-9][a-z0-9-]{0,79}$/.test(slug ?? ""), "invalid stage slug for its durable journal");
     return path.join(resolveWorkdir({ env: ctx.env, root: ctx.root, home: ctx.home, slug }), RUN_RECEIPTS_DIR);
@@ -143,7 +169,7 @@ export function runReceiptStore(ctx, site) {
       requireThat(current.request_key === entry.record.request_key, "stage journal changed during its request");
       const verified = validateRunReceipt(receipt, current);
       const next = { ...current, receipt: verified, receipt_hash: sourceHash(verified) };
-      save(entry.file, next);
+      save(entry.file, next, io);
       entry.record = next;
       return next.receipt;
     },
@@ -154,7 +180,7 @@ export function runReceiptStore(ctx, site) {
         && rejection.error_code === POLICY_HOLD_CODE && rejection.error_status === 409,
       "only an undispatched policy refusal may be saved without a job receipt");
       const next = { ...current, policy_rejection: structuredClone(rejection) };
-      save(entry.file, next);
+      save(entry.file, next, io);
       entry.record = next;
     },
     adopt(slug, proof) {
@@ -172,7 +198,7 @@ export function runReceiptStore(ctx, site) {
           }
           verified = structuredClone(proof.artifacts);
         }
-        save(file, { ...current, adopted: true, adoption: { artifacts: verified, recorded_at: (ctx.now?.() ?? new Date()).toISOString() } });
+        save(file, { ...current, adopted: true, adoption: { artifacts: verified, recorded_at: (ctx.now?.() ?? new Date()).toISOString() } }, io);
       }
     },
     removeFailed(entry) {
@@ -217,8 +243,8 @@ export function runReceiptStore(ctx, site) {
       }
       const target = path.join(archiveDir, `${current.source_hash}-${current.request_key}.json`);
       requireThat(!existsSync(target), "the owner retry archive already exists; preserve both journals and inspect it");
-      save(entry.file, { ...current, owner_retry: { request_id: requestId, reason, archived_at: (ctx.now?.() ?? new Date()).toISOString() } });
-      renameSync(entry.file, target);
+      save(entry.file, { ...current, owner_retry: { request_id: requestId, reason, archived_at: (ctx.now?.() ?? new Date()).toISOString() } }, io);
+      renameJournal(entry.file, target, io);
       consumed.delete(entry.file);
     },
     retry(slug) {
