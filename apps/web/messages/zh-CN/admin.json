@@ -36,6 +36,7 @@
       "content": "景点内容",
       "travelData": "航班与住宿数据",
       "affiliate": "分润导流",
+      "video": "视频素材",
       "other": "其他"
     }
   },
@@ -1541,6 +1542,14 @@
     "azure_speech_key": {
       "label": "Speech 密钥",
       "help": "Azure 门户 → Speech 资源 → 密钥和终结点的“密钥 1”。只存在服务器，不会发给视频工具。"
+    },
+    "pexels_api_key": {
+      "label": "Pexels API Key",
+      "help": "供视频产线搜索、抓取幻灯片用的真实照片。加密存在服务器，只会发给 api.pexels.com；Pexels 希望在说明栏标注“Photo by … on Pexels”。"
+    },
+    "pixabay_api_key": {
+      "label": "Pixabay API Key",
+      "help": "用途相同，对应 Pixabay。加密存在服务器，只会发给 pixabay.com；Pixabay 希望在说明栏标注“Image by … from Pixabay”。"
     }
   },
   "settingsPanel": {

@@ -102,6 +102,8 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 | 7 說書式提示詞、`restyle` | `2026-09-29-video-storytelling-prompts` | 已落地 |
 | 8 Shorts | `2026-09-29-video-shorts-motion-music` | 已落地：`tools/video/shorts/motion.mjs`（一景一段、透明字卡疊在運鏡的圖或漂移的底色上、景間溶接）、schema 2 的 `camera`／`music`／`sfx`、`from-episode` 接插圖投影片（主題 `cut:illustrated`）、頻道聲音的 style 改說書式；細節在 `SHORTS.md` §工具端 |
 | 9 試片〈Jev〉 | `2026-09-29-video-pilot-jev-decision-model` | 開著 |
+| 10 圖庫照片來源（伺服器端） | `2026-10-05-stock-photo-source-endpoint` | 已落地：§圖庫照片 |
+| 11 照片上投影片、說明欄的圖片來源 | `2026-10-05-stock-photo-slides-and-attribution` | 開著 |
 
 ## 試片的數字表（試片後填）
 
@@ -290,8 +292,48 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 **順帶看到、沒在這裡修**：運鏡其實是走一步停幾格（關鍵影格是 JPEG 時 `zoompan` 的裁切窗只落在偶數像素上；pan 有一半的相鄰格完全相同），票 `2026-10-04-still-shot-camera-moves-travel-in`。修它會讓每一格都不同、位元率再變，上限會把大小擋住。
 
+## 圖庫照片（stock photos）：Pexels 與 Pixabay（2026-10-05）
+
+產線一直沒有任何真實照片：旅遊攻略的投影片只有深色卡片、版畫插圖或 AI 圖，而 Pexels 與 Pixabay 都有首爾、釜山、濟州的實景照片，授權允許商業使用。票 `2026-10-05-stock-photo-source-endpoint` 做的是伺服器端：兩家的金鑰只存在伺服器（和旁白、生圖一樣，本機工具拿不到），搜尋與抓檔都走 `/api/v1/video/media/stock/*`（`apps/api/app/video_media/stock.py`），原圖進媒體庫並附上版權標示。把照片放上投影片、把來源寫進說明欄是下一張票 `2026-10-05-stock-photo-slides-and-attribution`。
+
+### 設定
+
+| 項目 | 在哪 |
+| --- | --- |
+| 設定卡 | `/admin/settings` 的「影片素材」分頁、「圖庫照片（Pexels、Pixabay）」卡（`stock_photos`）：兩個金鑰（`pexels_api_key`、`pixabay_api_key`，加密存在伺服器，設定任一家就能用）、兩個 Base URL（釘在 `api.pexels.com` 與 `pixabay.com`：改成別的網域會被拒絕、存進資料庫的也會被忽略），和「連線測試」：對每一家真的搜一次「Seoul skyline」（免費），回每家的總張數；任一家失敗整個測試算失敗；沒測過的卡顯示「尚未驗證」 |
+| 環境變數 | `PEXELS_API_KEY`、`PIXABAY_API_KEY`；`PEXELS_API_BASE_URL`、`PIXABAY_API_BASE_URL` 不用設，正式站啟動時會檢查它們沒離開官方網域 |
+| 申請 | Pexels：pexels.com/api（免費；預設每小時 200 次、每月 20,000 次）。Pixabay：pixabay.com/api/docs（免費；預設每分鐘 100 次；原圖 `imageURL` 與 1920 px 的 `fullHDURL` 只給「full API access」的帳號，沒有的拿 1280 px 的 `largeImageURL`） |
+
+### 端點（都要影片工具權杖）
+
+| 端點 | 送什麼 | 回什麼 |
+| --- | --- | --- |
+| `POST /stock/search` | `{query（≤100 字）, provider?（pexels／pixabay；不寫＝每一家有金鑰的）, orientation?（landscape／portrait／square；Pixabay 沒有 square 篩選，照回）, per_page（1–40，預設 15）, page}` | `{query, candidates[], total{廠商: 張數}, problems[]}`；候選是 `{provider, id, width, height, thumbnail, preview, alt, credit}`，`credit` 是 `{provider, author, author_url, url（照片頁）, license, license_url, text}`；一家失敗、另一家有答，失敗的只列在 `problems`；全部失敗才回錯 |
+| `POST /stock/fetch` | `{slug, provider, id}` | `{sha256, size, content_type, width, height, credit}`。伺服器再向廠商要一次這張照片（不信工具給的 URL）、取最大的檔（Pexels `src.original`；Pixabay `imageURL` → `fullHDURL` → `largeImageURL`）、只從廠商自己的主機下載（`images.pexels.com`；`pixabay.com`、`cdn.pixabay.com`），串流進媒體庫（和生成檔同一套：邊收邊算雜湊、從位元組判型別、只收 png／jpeg／webp、上限同 `VIDEO_MEDIA_MAX_FILE_BYTES`）；`width`／`height` 從存下的檔頭讀，不信廠商的數字 |
+| `GET /status` | | 多回 `stock: {pexels: bool, pixabay: bool}` 與 `limits.stock_per_page`（40）：工具只在伺服器這樣說時才提供圖庫照片 |
+
+錯誤碼：`video_media_stock_unavailable`（503，沒金鑰）、`video_media_stock_not_found`（404，廠商沒有這張）、`video_media_stock_failed`（502：廠商拒絕金鑰、回應壞掉、檔案不在廠商主機、圖讀不出尺寸）、`video_media_upstream_busy`（429，帶 `Retry-After`），以及媒體庫自己的 `video_media_file_too_large`／`video_media_store_full`／`video_media_unsupported_type`。訊息裡只有廠商名與狀態碼，永遠沒有 URL：Pixabay 的金鑰在查詢字串裡。
+
+不是生成工作：不建 `video_media_jobs` 列（kind 的 CHECK 仍是 image／clip／music）、不記任何月預算（兩家免費），只有每個權杖每小時 150 次的 `video_media_stock` 限制（search 與 fetch 共用；Pexels 免費金鑰一小時 200 次）。檔案和其他媒體檔一樣是快取：14 天後 `prune` 會清，工具要把自己的那份放在工作目錄（下一張票的 `<workdir>/stock/<sha256>.<ext>`）。
+
+### 授權與標示（兩家都要照做）
+
+| | Pexels | Pixabay |
+| --- | --- | --- |
+| 授權 | [Pexels License](https://www.pexels.com/license/)：免費、可商用、可修改、不必標示 | [Pixabay Content License](https://pixabay.com/service/license-summary/)：免費、可商用、可修改、不必標示 |
+| 不可以 | 原樣轉售或在別的圖庫重新發布；暗示人物或品牌背書；把可辨識的人放進負面或冒犯的情境 | 原樣轉售或當成獨立檔案重新發布；暗示背書；把可辨識的人放進負面或冒犯的情境 |
+| API 規則 | 可能的話標示攝影師並連回照片頁（「Photo by … on Pexels」）；用到 API 的地方要有顯眼的 Pexels 連結（「Photos provided by Pexels」）；不可整批下載、不可複製 Pexels 本身的功能；快取結果 | 顯示搜尋結果的地方要標示 Pixabay；不可熱連結，必須下載到自己這邊（fetch 做的正是這件事）；API 回應最多快取 24 小時（`webformatURL` 這類網址一天後失效）；不可整批下載；金鑰不可公開 |
+| 我們怎麼做 | `credit.text` 就是廠商要的那一句，說明欄逐張列出（下一張票的「圖片來源」區塊）；影片本身不燒錄文字（站主的規則） | 同左；CLI 印候選時帶「Images from Pixabay」 |
+
+兩家都不「要求」標示，但都希望有，而且 API 使用規則要求來源可見；說明欄 5,000 位元組的上限要留給 `assets[]` 多少，在下一張票算。這一段只讀了兩家的公開 API 文件與授權頁，沒有參考任何第三方程式。
+
+### 沒實測的事
+
+這個容器沒有金鑰：欄位名照兩家的文件寫（Pexels `photos[].src.original`、`photographer_url`、`alt`；Pixabay `hits[].largeImageURL`、`imageWidth`、`user_id`），第一次真的呼叫要看 `search` 的候選數、`fetch` 存下的檔案尺寸與 `credit` 是否對得上照片頁；Pixabay 沒有 full API access 時 `imageWidth`／`imageHeight` 有沒有回來（沒有就以 `webformatWidth`／`webformatHeight` 代替，候選的尺寸會是 640 px 那一檔）。
+
 ## 沒做、留給後面
 
+- 圖庫照片只有伺服器端（§圖庫照片）：`media/cli.mjs` 的 `stock search`／`stock fetch`、`screenshot` 範本吃 `stock/<sha256>.<ext>`、說明欄的「圖片來源」區塊，都在 `2026-10-05-stock-photo-slides-and-attribution`。
 - 是非題只用在插圖投影片（上一節）。漫劇的設定圖、關鍵影格、片段與原來如此事務所的靜圖仍是打分數、也頂在 7：各自量過已記錄的出圖、定好各自的題目再換。judge 漏看的瑕疵（六指、像字的記號）要靠更細的題目或更強的判定模型，也要先量；`subject` 在 163 張裡一次都沒答有，窯門大開那種「主動作不對」被歸到 `details`，這一題的寫法值得再試。
 - 樣張沒放進聯絡表（`review/sync.mjs` 用張數切頁，多一格會錯位）；要看就開 `keyframes/plate-N.png`。
 - 多狀態卡片（bullets、steps、table 逐條出現）的整景連續運鏡。

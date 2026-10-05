@@ -23,6 +23,29 @@ def test_every_provider_is_classified_as_testable_or_local() -> None:
     assert CONNECTION_TESTED_PROVIDERS | LOCAL_ONLY_PROVIDERS == set(PROVIDER_DEFINITIONS)
 
 
+def test_a_stock_photo_key_is_unverified_until_a_vendor_answered() -> None:
+    """Pexels and Pixabay are real upstreams (app.video_media.stock): a key alone is not green,
+    and one vendor's key is enough for the card to count as configured."""
+    assert "stock_photos" in CONNECTION_TESTED_PROVIDERS
+    configured, status, message = card_state(
+        "stock_photos",
+        _settings(pixabay_api_key="a-real-looking-key"),
+        enabled=True,
+        last_test_status=None,
+        last_test_message=None,
+    )
+    assert (configured, status) == (True, "unverified")
+    assert "Pixabay" in message and "Pexels" not in message and "尚未執行連線測試" in message
+    configured, status, _ = card_state(
+        "stock_photos",
+        _settings(pexels_api_key=None, pixabay_api_key=None),
+        enabled=True,
+        last_test_status=None,
+        last_test_message=None,
+    )
+    assert (configured, status) == (False, "not_configured")
+
+
 def test_a_key_nobody_has_tested_is_not_ready() -> None:
     settings = _settings(google_maps_api_key="a-real-looking-key")
     configured, status, message = card_state(

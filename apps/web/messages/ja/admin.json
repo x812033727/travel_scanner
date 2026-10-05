@@ -36,6 +36,7 @@
       "content": "スポットコンテンツ",
       "travelData": "航空・宿泊データ",
       "affiliate": "アフィリエイト",
+      "video": "動画素材",
       "other": "その他"
     }
   },
@@ -1541,6 +1542,14 @@
     "azure_speech_key": {
       "label": "Speech キー",
       "help": "Azure ポータル → Speech リソース → キーとエンドポイントの「キー 1」。サーバーにだけ保存され、動画ツールには送られません。"
+    },
+    "pexels_api_key": {
+      "label": "Pexels API Key",
+      "help": "動画パイプラインのスライド用に実写真を検索・取得します。サーバーで暗号化され、api.pexels.com にしか送られません。Pexels は説明欄でのクレジット表記（「Photo by … on Pexels」）を求めています。"
+    },
+    "pixabay_api_key": {
+      "label": "Pixabay API Key",
+      "help": "用途は同じで、Pixabay 向けです。サーバーで暗号化され、pixabay.com にしか送られません。Pixabay は説明欄でのクレジット表記（「Image by … from Pixabay」）を求めています。"
     }
   },
   "settingsPanel": {

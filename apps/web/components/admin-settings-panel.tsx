@@ -95,9 +95,11 @@ type Draft = { base: ProviderView; enabled: boolean; config: Record<string, stri
 // treating a currency/profile update as a login. Logout releases the old key.
 const routeDrafts = new WeakMap<object, Map<AdminSettingsScope, Record<string, Draft>>>();
 type FieldMeta = { label?: string; type?: "text" | "number" | "url" | "boolean"; options?: FieldOption[]; help?: string; localized?: boolean; allowCustom?: boolean; emptyOption?: "inheritPlanner" | "inheritGuideSearch" };
-export type ProviderCategory = "auth" | "ai" | "maps" | "content" | "travelData" | "affiliate" | "other";
+export type ProviderCategory = "auth" | "ai" | "maps" | "content" | "travelData" | "affiliate" | "video" | "other";
 
-const providerCategories: ProviderCategory[] = ["auth", "ai", "maps", "content", "travelData", "affiliate", "other"];
+// "video" holds the video pipeline's non-AI sources (stock photos); its AI pieces (speech,
+// models) stay under "ai" on the AI settings page.
+const providerCategories: ProviderCategory[] = ["auth", "ai", "maps", "content", "travelData", "affiliate", "video", "other"];
 export const providerCategoryOf: Record<string, ProviderCategory> = {
   google_login: "auth",
   line_login: "auth",
@@ -109,6 +111,7 @@ export const providerCategoryOf: Record<string, ProviderCategory> = {
   ai_guide_search: "ai",
   hotspot_intros: "ai",
   azure_speech: "ai",
+  stock_photos: "video",
   google_maps: "maps",
   naver_maps: "maps",
   navitime: "maps",
@@ -266,6 +269,8 @@ const fieldMeta: Record<string, FieldMeta> = {
   azure_speech_monthly_character_limit: { localized: true, type: "number" },
   azure_speech_timeout_seconds: { localized: true, type: "number" },
   video_speech_gemini_monthly_character_limit: { localized: true, type: "number" },
+  pexels_api_base_url: { label: "Pexels API Base URL", type: "url" },
+  pixabay_api_base_url: { label: "Pixabay API Base URL", type: "url" },
   ekispert_api_base_url: { localized: true, type: "url" },
   ekispert_search_type: { localized: true, options: [{ value: "plain" }, { value: "departure" }] },
   ekispert_monthly_request_limit: { localized: true, type: "number" },
@@ -322,6 +327,8 @@ const secretLabels: Record<string, { label?: string; help?: string; localized?: 
   minimax_api_key: { localized: true },
   jev_api_key: { localized: true },
   azure_speech_key: { localized: true },
+  pexels_api_key: { localized: true },
+  pixabay_api_key: { localized: true },
   google_maps_api_key: { localized: true },
   next_public_google_maps_browser_key: { localized: true },
   naver_maps_client_id: { localized: true },
