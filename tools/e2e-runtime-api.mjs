@@ -389,6 +389,8 @@ function serveShortsFixture(request, response, url) {
     if (hash) { shortsFile(request, response, shortsFiles.get(hash)); return true; }
     body = shortsDetail(project);
   }
+  // The tutorials tab reads the owner's article-video queue on load; an empty queue renders nothing.
+  else if (path === "/api/v1/admin/video-automation/slides-requests") body = { requests: [] };
   else if (path === "/api/v1/admin/video-automation/settings") body = {
     voice_options: { gemini: ["Sulafat", "Kore"], gemini_models: ["gemini-3.8-flash-tts"], azure: [] }, locales: [], locale_parts: {},
   };
