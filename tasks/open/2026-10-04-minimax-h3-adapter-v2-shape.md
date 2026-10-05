@@ -1,14 +1,14 @@
 ---
 id: 2026-10-04-minimax-h3-adapter-v2-shape
 title: MiniMax H3 adapter sends the v1 request shape with a first frame and a subject reference, which the official v2 API forbids
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-minimax-h3-v2
+claimed_at: 2026-10-05T01:18:44Z
 created_at: 2026-10-04T15:44:58Z
 completed_at:
-branch:
+branch: claude/minimax-h3-v2
 depends_on: []
 scope:
   - apps/api/app/video_media/providers/minimax.py

@@ -438,6 +438,70 @@ async def test_minimax_video_polls_to_a_download_url_without_sending_the_key() -
     assert provider.fetch(done.download) == ("https://cdn.minimax.example/f-1.mp4", {})
 
 
+LAST = ReferenceImage(role="last_frame", content_type="image/png", data=b"\x89PNGlast")
+PREVIOUS = ReferenceImage(role="previous_frame", content_type="image/png", data=b"\x89PNGprev")
+
+
+@pytest.mark.parametrize("model", ["MiniMax-Hailuo-2.3", "MiniMax-Hailuo-02", "I2V-01-Director"])
+@pytest.mark.parametrize("full", [True, False], ids=["frames-and-sheets", "first-frame-only"])
+@pytest.mark.asyncio
+async def test_every_model_but_h3_keeps_the_v1_path_body_and_poll_byte_for_byte(
+    model: str, full: bool
+) -> None:
+    """The v1 request as it stood before H3 moved to v2: same URL, same bytes, same polls."""
+    calls: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        calls.append(request)
+        if request.url.path == "/v1/video_generation":
+            return httpx.Response(200, json={"task_id": "t 1", "base_resp": {"status_code": 0}})
+        if request.url.path == "/v1/query/video_generation":
+            return httpx.Response(
+                200, json={"status": "Success", "file_id": "f 1", "base_resp": {"status_code": 0}}
+            )
+        return httpx.Response(
+            200,
+            json={
+                "file": {"download_url": "https://cdn.minimax.example/f-1.mp4"},
+                "base_resp": {"status_code": 0},
+            },
+        )
+
+    extra: dict[str, Any] = (
+        {"negative_prompt": "blur", "last_frame": LAST, "references": (SHEET, PREVIOUS, SHEET)}
+        if full
+        else {"negative_prompt": None, "resolution": None, "references": ()}
+    )
+    request = _clip_request(model=model, seconds=6, **extra)
+    provider = MiniMaxVideo(MINIMAX, "secret")
+    async with _client(handler) as client:
+        submitted = await provider.submit(request, client)
+        done = await provider.poll(submitted.vendor_ref or "", client)
+    expected: dict[str, Any] = {
+        "model": model,
+        "prompt": "slow push in. Avoid: blur" if full else "slow push in",
+        "first_frame_image": f"data:image/jpeg;base64,{base64.b64encode(FRAME.data).decode()}",
+        "duration": 6,
+        "prompt_optimizer": False,
+    }
+    if full:
+        sheet = f"data:image/png;base64,{base64.b64encode(SHEET.data).decode()}"
+        expected["resolution"] = "1080P"
+        expected["last_frame_image"] = f"data:image/png;base64,{base64.b64encode(LAST.data).decode()}"
+        expected["subject_reference"] = [{"type": "character", "image": [sheet, sheet]}]
+    sent = calls[0]
+    assert (sent.method, str(sent.url)) == ("POST", "https://api.minimaxi.com/v1/video_generation")
+    # The same encoder httpx used, so key order and every byte are compared.
+    assert sent.content == httpx.Request("POST", sent.url, json=expected).content
+    assert sent.headers["authorization"] == "Bearer secret"
+    assert submitted.vendor_ref == "t 1", "a v1 task id is kept as the vendor sent it"
+    assert [str(call.url) for call in calls[1:]] == [
+        "https://api.minimaxi.com/v1/query/video_generation?task_id=t%201",
+        "https://api.minimaxi.com/v1/files/retrieve?file_id=f%201",
+    ]
+    assert done.state == "done" and done.download is not None
+
+
 def test_downloads_must_be_https_on_a_real_host() -> None:
     assert public_https_host("https://cdn.example.com/a.mp4") == "cdn.example.com"
     for url in (
