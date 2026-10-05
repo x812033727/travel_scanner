@@ -1145,6 +1145,120 @@ Non-claims. This review does not accept the paid-retry change itself: not the cl
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1268 claude-pr-review-1268-slides-request-queue increment: 10 files (2026-10-05)
+
+Reviewer: `claude-pr-review-1268-slides-request-queue`. Author: `claude-opus-5-5-slides-request-queue` (the coordinating session that wrote the branch's commits; branch claude/determined-clarke-1laipc, PR #1268; the commits' git author is `Claude <noreply@anthropic.com>` with that session's trailer). The one commit that changes registered files is `03a7b96c0`, "Let the owner queue a slides video of a chosen site article". The branch's other commits change none: `48e9dfa83`, "Group the site navigation, add the /ai hub and a public video library", `9679fab39` and `1e1bb6ca5`, the AI income and investing article batch, `710794053`, a task-board update, and the two merges of origin/main, `7eba01092` and `5ce0f769e`, the head, which merges #1256 into `03a7b96c0`. Scope: DURATION_ONLY for the ten changed bindings below. The reviewer wrote none of the branch's commits, judged the diff on its own reading, and edited only this report and review.json. Other open PRs may carry their own increments of this receipt on their own branches. Whichever merges second needs a merge follow-up.
+
+Baseline: the head is `5ce0f769e117cab921376192604ecda2fc77322e`, and its merge base with origin/main is `7318edc7fe24ed1a0cd2495f6e5356d06e16c05b` (#1256), which was also origin/main at review time. The branch never touched the receipts. review.json and review.md are byte-identical at the merge base and the head, and before this increment the report (430,338 bytes) hashed to the receipt's `d1cdd10d8f69651539af209366c17ee6d8a1a5af6910b61a87c114304653bf39`. By script, REVIEW_FILES is the same 108 paths at both commits. All 108 files' bytes at the merge base hash to that receipt and to the table, 98 are byte-identical at the head, and the ten that are not are listed below with their merge-base size and hash. Those hashes are the values review.json and the table bound before this increment, so each file's diff against the merge base is exactly the unreviewed change. `03a7b96c0`'s own diff and `git diff 7318edc7f HEAD` carry the same changed lines on these ten paths, so every one of them comes from that commit and the merge added none. apps/api/app/video_automation/models.py: +38/−0, 45,490 bytes, `f403f833cc842ebc4b54bb14d95698520d810af9609fac42ae0387b2e3c32f7f`, 47,679 at the head. apps/api/app/video_automation/schemas.py: +49/−0, 47,975 bytes, `e5e710ccd21a7855ae9bc668e598b98356ebf31e8c9385b705c94956e2b0fde5`, 49,624 at the head. apps/web/messages/en/admin.json: +20/−1, 195,090 bytes, `c49a4e2560e77e42a4d6432901d400069161e1e22e797b330befb14af98bd399`, 196,044 at the head. apps/web/messages/ja/admin.json: +20/−1, 231,429 bytes, `eb19e2b244a37f2de709474cb7b2cd5c208f257354f4a4425e57802ee3a950e0`, 232,499 at the head. apps/web/messages/ko/admin.json: +20/−1, 217,179 bytes, `01ccc46a0c22e07cab836faec06b8b79cc7d39bdc456d50f0b00be1e194cd2ed`, 218,199 at the head. apps/web/messages/zh-CN/admin.json: +20/−1, 186,669 bytes, `2689e7bb9100437fd3fd1c9500fd6e30bfe591b1c22fbd87cdd3ea947d74966c`, 187,575 at the head. apps/web/messages/zh-TW/admin.json: +20/−1, 186,350 bytes, `e9a49b5bbb560eeeaba342d21210284ae872f986384b2c903baef690c934a2b3`, 187,256 at the head. tools/video/automation/automation.test.mjs: +229/−8, 211,298 bytes, `41c8e55bec8b876512513f9edee5a8ecc45fddf7583e8211b528208af347b277`, 228,222 at the head. tools/video/automation/flow.mjs: +118/−9, 153,955 bytes, `160b9cf4483f60b55f8d5b7b086b2ad4b6714e7b58790a41602cd326de834902`, 160,168 at the head. tools/video/automation/prompts.mjs: +10/−2, 117,341 bytes, `fa440300b1363796581cc349381e3b75d7dab3661dfb4c41954d8c59f4a16504`, 118,067 at the head. The working tree equals the head's blobs for all 108 files. None of the ten holds a CR byte or a BOM, and the five message files parse as JSON. After the merge the migration graph has one head: 0126_video_slides_requests.py revises the branch's 0125_ai_income_topic, which revises main's head `0124_video_review_subject`, and no other file revises either. Before rebinding, `node tools/video/long-form/cli.mjs check` failed on these ten paths and nothing else. Every paragraph before the binding table is preserved byte for byte. The registry remains exactly 108 paths, with these ten hashes rebound and the other 98 unchanged.
+
+Findings, flow.mjs. The commit adds an owner's queue of slides videos, each of one named site article. The question for this receipt is whether a requested video gets the same length rules as a scheduled draft, and it does. The ten hunks do the following.
+
+1. A `WITHDRAWN_CLAIMS` set names the site's two refusals that mean a claim was withdrawn: `video_slides_request_not_queued` and `video_slides_request_slug_taken`.
+2. `planProblem` gains a seventh parameter, `requiredGuide`, which defaults to null, plus one refusal after the source-URL check: a plan whose `source_guide` is not the requested article is unusable. Every earlier caller passes null, so nothing changes for them. planProblem reads no length on either path.
+3. `step()` now asks `slidesNext` after the drama requests and before `this.due()`. It does so only while `this.room()` (the waiting cap) holds, and hands any request to `draftSlides`. The comment above it is rewrapped.
+4. `markDrafted()` takes the existing `last_draft_at` write out of `draft()` byte for byte, and `draft()` calls it at the same point.
+5. `requestedGuide` and `draftSlides` are new. `draftSlides` reads the article, and if the page cannot be read it ends the round before any paid call. It then calls the planner through `this.planPayload({ topics: [], requested_guide, sources, previous_problem? }, earlier)`. planPayload sets `target_minutes: slidesMinutes(this.settings)` before it spreads `extra`, and that value is `[max(minEpisodeMinutes(), target_minutes_min), …]`, the eight-minute floor. None of the spread keys is `target_minutes`, and `requested_guide` holds only slug, title, url and note. So the requested plan is sent exactly the target that `draft()` sends.
+   - The answer goes through planProblem with format "slides", the channel stance, preset null, an empty used-guides set and the required guide.
+   - Then come `markDrafted()`, the claim, and a state of the same shape as `draft()`'s: no `format`, so it is a slides video, and no `style_preset`, `target_minutes` or `series`. The state adds `slides_request` and puts the owner's note in `notes`.
+   - The writer reads that state through the unchanged `scriptPayload`, which sends `slidesMinutes` for every state that is not a drama. The resulting script is held to the unchanged lint and QA floors by `needsMinimumLength(doc)`, which reads the script document, not the request.
+   - A plan that fails twice blocks the video before any brief is written.
+6. In `replan`, a state with `slides_request` fetches no topics. It sends `requested_guide` next to the empty `topics`, passes the empty used-guides set and the required guide to planProblem, and keeps `source_guide` pinned to the request. The drama branch of `extra` moves onto its own line with the same text, `target_minutes: [state.target_minutes, state.target_minutes]` included. The drama `state.target_minutes` line above it is unchanged context. For a drama, the new `chosen` is truthy exactly when `drama && state.source_guide` was. A planPayload call for anything but a drama still gets `slidesMinutes`.
+7. After the confirmed upload, a state with `slides_request.id` calls `slidesDone` in an `else if` after the drama request's branch, and a failure is only logged.
+
+With the nine removed and 118 added lines set aside, the other 2,579 lines of the merge base's file are byte-identical and in the same order at the head (compared line by line by script). The floor comment, `slidesMinutes`, `episodeMinutes`, `planPayload`, `scriptPayload`, `settle` and every lint and QA call are outside the hunks.
+
+Findings, prompts.mjs. One hunk, in the planner's instructions. The `owner_note` sentence is rewrapped with the same words. A paragraph for `requested_guide` is inserted before it, and it says:
+
+- Plan that article and nothing else. `topics` is empty and `sources` holds the article.
+- Return its slug as `source_guide` and its url first in `source_urls`.
+- `scope` and `used_guides` do not apply. `earlier_videos` still applies to the angle.
+- `avoid` still governs how the article is told, with a finance article told as information and never as advice to buy, sell or hold.
+- `requested_guide.note` is the owner's note.
+
+The paragraph exempts only the topic scope and the used-guides rule, and it says nothing about length. `scope` is `settings.topic_scope`, a list of topics. The planner's length rule later in the same prompt ("estimated seconds (each ≥ 10 s; 250 spoken characters a minute; the whole at least 8 minutes and aimed at the upper end of "target_minutes" …)") is unchanged context, and so are the writer's and the checker's prompts. The other 1,547 lines are byte-identical and in the same order.
+
+Findings, automation.test.mjs. The fake site gains:
+
+- a `slidesRequests` option, with `calls.slides` and `calls.topics` counters;
+- slides `next`, `start` and `done` routes that follow the server's rules: only a queued request is claimed, only a started one is finished, and a repeated identical claim is answered as the first was;
+- a returned `slidesRequests`.
+
+`finishedVideo` gains a `slidesRequest` option. The planProblem test gains three assertions for `requiredGuide`. Five tests are new:
+
+- a request is planned from its article before any draft, claimed under the video's slug and pinned through a re-plan;
+- an unreadable article waits with nothing paid or claimed, a request withdrawn while being planned keeps nothing, an unexpected refusal throws, and a planner that fails twice blocks the claimed video;
+- a lost claim answer is sent again and the video is kept;
+- requests come after the drama requests and wait under the cap but not for the draft interval;
+- a requested video reports done after the confirmed upload.
+
+The eight removed lines are the fake's doc line, signature, `calls` object, topics route and return statement, and `finishedVideo`'s doc line, signature and `fakeSite` call. Each is replaced by a version that adds the slides options. No existing test or assertion is removed or loosened, and the other 2,934 lines are byte-identical and in the same order. The one length value in the added lines is a drama explainer request's `target_minutes: 8` with `style_preset: "flat-explainer"`, in the round-order test. That is the shape drama requests already have, `effectiveEpisodeMinutes(8, "flat-explainer")` is 8, and the test asserts only the order of the two queues. The new tests do not assert the requested planner's `target_minutes`. The reviewer checked it separately (Ran).
+
+Findings, models.py and schemas.py. models.py adds `VideoSlidesRequest` on the new table `video_slides_requests`. Its columns are:
+
+- `source_guide`, `title` and `note`;
+- `status`, checked to queued, started, done or cancelled;
+- a unique `slug`;
+- creator and token foreign keys;
+- timestamps.
+
+It has no length, runtime or target column, and the other 856 lines are byte-identical and in the same order. schemas.py adds `SlidesRequestStatus`, `SlidesRequestIn`, `SlidesRequestOut`, `SlidesRequestsOut` and `NextSlidesRequestOut`. `SlidesRequestIn` is a StrictModel (`extra="forbid"`) with `source_guide` matched to GUIDE_SLUG_PATTERN and an optional trimmed note of at most 2,000 characters. The owner's form therefore carries no length field and cannot add one, and the request the worker reads has none. The other 1,164 lines are byte-identical and in the same order.
+
+Findings, the five admin.json files. Under `videoReviews`, the `compilationOf` line gains a trailing comma with the same text. A `slidesRequests` object adds, in each locale:
+
+- the form's title, help, labels, placeholders, submit and error text;
+- the queue heading and the link that opens the article;
+- five status names.
+
+The help text says a request still waits under the waiting-drafts limit and counts toward the month's drafts. No string names a length. In each file the other 3,897 lines are byte-identical and in the same order.
+
+The scan: a case-insensitive scan of the 568 changed lines (added and removed) of the ten files looked for minute, MIN_EPISODE, needsMinimumLength, 480, 14,400 (and 14400), 600, 780, runtime, target_, action_seconds, duration, seconds, covered, source_hash, plans.json, 分鐘, 秒, 時長 and 長度. It matches three lines:
+
+- the removed drama `extra` line in `replan` and its re-added half at flow.mjs:1548, which carries the same `target_minutes: [state.target_minutes, state.target_minutes]` text, now on its own line of a ternary;
+- the explainer request fixture's `target_minutes: 8` at automation.test.mjs:944, explained above.
+
+Unbound context, read and not certified:
+
+- apps/api/app/video_automation/slides_requests.py (new). It lists, creates, cancels, starts and finishes requests. It takes only published zh-TW life articles, refuses duplicates and articles a live slides video retells, and answers a repeated claim as the first. It reads and writes no length.
+- admin_api.py (+85/−1): the admin and worker routes. Their only number is the hourly rate-limit window.
+- apps/api/app/video_automation/topics.py: `site_topics`' published-article query is factored out for the new `site_article` and `published_life_slugs`, and `site_topics` keeps its two-week window.
+- Migration 0126 and its test, tests/test_video_slides_requests.py, and test_video_automation_ai.py's new `site_article` test.
+- tools/video/automation/client.mjs: `slidesNext`, `slidesStart` and `slidesDone`, where a 404 from an older site reads as none. Also client.test.mjs, and prompts.test.mjs with two patterns on the new paragraph.
+- docs/videos/AUTOMATION.md: the new section and step 5 of the round.
+- The web relay routes under apps/web/app/api/video/automation/slides-requests/, the admin queue component and its test, admin-video-reviews.tsx and tools/e2e-runtime-api.mjs.
+
+The branch's other commits are the navigation and /ai hub, the public /videos library, the ai-income sub-topic with migration 0125 and twelve articles, and task files. The public library's "影片長度" filter splits long videos from Shorts by `shorts_line` on published projects, and it sets and compares no duration. The same scan over the changed lines of the 76 changed unbound files, leaving out article content, images and research records, matched only:
+
+- the rate limit's `window_seconds=3600`;
+- the admin queue's seven-day `RECENT_MS`;
+- the public page's "影片長度" label and its test;
+- a task file's article character counts;
+- a task scope line naming tools/e2e-runtime-api.mjs.
+
+None of these files is in REVIEW_FILES. The bound migrations 0118 and 0122 and their tests, settings.py, judge.py, tools/video/core, tools/video/qa and docs/videos/long-form are unchanged. So the change alters, weakens or bypasses none of the rules recorded in this report: the 600- and 780-second targets, the 480-second / 14,400-frame measured floors, the eight-minute floor on every video but a drama, target_minutes, MIN_EPISODE and VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json, the source hashes and the covered status stand as the sections above left them. A requested slides video is held to the same floor as a scheduled one.
+
+Ran (Node 22.22.0, Linux, in the session's checkout at the head `5ce0f769e`, offline apart from `git fetch origin main`, with VIDEO_MIN_EPISODE_MINUTES unset in the shell). These ran as scripts outside the repository: the hashing of all 108 files at the merge base, at the head and in the working tree; the per-commit attribution; the line-by-line comparison; the migration-graph check; and both scans. Two scratch harnesses, also outside the repository, built an `Automation` with a stubbed stage, page reader and earlier-video list, captured the planner payloads and wrote nothing into the repository. They found:
+
+- With target_minutes_min/max 3/5 (minEpisodeMinutes() 8), `draft()` and `draftSlides()` both sent `target_minutes` [8, 8].
+- With 10/13, both sent [10, 13].
+- `requested_guide` held only slug, title, url and note, even with a note asking for three minutes.
+- A requested re-plan sent [8, 8] and fetched no topics.
+- `scriptPayload` for the requested state sent [8, 8], with the note in owner_notes.
+
+`node --test tools/video/automation/automation.test.mjs tools/video/automation/prompts.test.mjs tools/video/automation/client.test.mjs` ran 116 tests and all 116 passed, the five new slides-request tests among them. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: …` for the ten paths and nothing else, and exited 1. `node --test tools/video/long-form/review.test.mjs` ran 2 tests: 1 passed, and 1 failed, the shipped binding regression on the same paths. The CLI check, review.test.mjs and `npm run test:tools` are run again after rebinding. Their results are in the hand-off so that this report's hash stays stable.
+
+Non-claims. This review does not accept the slides request queue itself, including:
+
+- the server's rules for requests (the published-article check, the duplicate and used-article refusals, the advisory lock, the idempotent claim);
+- migration 0126 on a real database;
+- the admin page and the web relay routes;
+- counting toward max_drafts_per_month;
+- how the finance wording steers the planner;
+- the started-without-a-video gap that AUTOMATION.md accepts.
+
+Those files were read only as context and are unbound. The API suite (pytest, ruff, mypy), Vitest, the i18n check, e2e and CI were not run. The branch's navigation, article and public-library commits were checked only by the scan above. The 98 bindings the branch did not change are not covered afresh. PASS is DURATION_ONLY for the ten rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1157,8 +1271,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `.claude/skills/youtube-video/SKILL.md` | `40d5a29805a4bae05d1abe59c54c91f6b6da0e2ee66d12cec3ee4957e51fca61` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `83528aed23fda0a61f571affe1a74ad19fb4cf337ae97494517ff5f4172a53c8` |
-| `apps/api/app/video_automation/models.py` | `f403f833cc842ebc4b54bb14d95698520d810af9609fac42ae0387b2e3c32f7f` |
-| `apps/api/app/video_automation/schemas.py` | `e5e710ccd21a7855ae9bc668e598b98356ebf31e8c9385b705c94956e2b0fde5` |
+| `apps/api/app/video_automation/models.py` | `54cedbf59e1cbfb373a2091c849804cdba3c054118f6272a168799831d6939e0` |
+| `apps/api/app/video_automation/schemas.py` | `9ecefc79d05074fb7049d9a9f0c4319f04de3e7380a22dc2c18e9df4577c7df3` |
 | `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
 | `apps/api/app/video_automation/settings.py` | `c35f43db945777021e484d39c4906afb508093772116b24e17f1b9d82425e65e` |
 | `apps/api/app/video_reviews/admin_service.py` | `b9b27520427fbc78dd0b032be33935eb601f6a68ae04d7dbdb1e288484f0f51c` |
@@ -1180,11 +1294,11 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `c49a4e2560e77e42a4d6432901d400069161e1e22e797b330befb14af98bd399` |
-| `apps/web/messages/ja/admin.json` | `eb19e2b244a37f2de709474cb7b2cd5c208f257354f4a4425e57802ee3a950e0` |
-| `apps/web/messages/ko/admin.json` | `01ccc46a0c22e07cab836faec06b8b79cc7d39bdc456d50f0b00be1e194cd2ed` |
-| `apps/web/messages/zh-CN/admin.json` | `2689e7bb9100437fd3fd1c9500fd6e30bfe591b1c22fbd87cdd3ea947d74966c` |
-| `apps/web/messages/zh-TW/admin.json` | `e9a49b5bbb560eeeaba342d21210284ae872f986384b2c903baef690c934a2b3` |
+| `apps/web/messages/en/admin.json` | `bc95cbdd03a26d94a7e5eec4a2ba7026e14ba432f795d4398a0b14ffab2f7024` |
+| `apps/web/messages/ja/admin.json` | `a9899b57db6d56ee60b7269fa8f3f7317b0eea0ad92521f23a3231c3d3f392cb` |
+| `apps/web/messages/ko/admin.json` | `f62f78c2ea83f061ff05a7754ce683a96e9b1feffe95ba01f32fd41f138d5161` |
+| `apps/web/messages/zh-CN/admin.json` | `4bc9e8fdd504a2f4720662a895dd11b7c82fe254858ed28e1e9bfaadf49177df` |
+| `apps/web/messages/zh-TW/admin.json` | `be0ad5e2606af8e4b89248193096fc7c7a2d7da95072abe8065476e8dd98cb5a` |
 | `docs/videos/DESIGN.md` | `239c6961b8538abd0003d4fa17a69847fcf9016089bbea96ceac9969236705ec` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
@@ -1201,10 +1315,10 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `41c8e55bec8b876512513f9edee5a8ecc45fddf7583e8211b528208af347b277` |
+| `tools/video/automation/automation.test.mjs` | `04918adb8ec41210f4fc59247c36c1fb2c855071b333d17db3e678a3a0f0c9ac` |
 | `tools/video/automation/discuss.mjs` | `691f6ec55bde0b1c34c54fd38f39681d50617035dab78b0d2c751266a61f43ee` |
-| `tools/video/automation/flow.mjs` | `160b9cf4483f60b55f8d5b7b086b2ad4b6714e7b58790a41602cd326de834902` |
-| `tools/video/automation/prompts.mjs` | `fa440300b1363796581cc349381e3b75d7dab3661dfb4c41954d8c59f4a16504` |
+| `tools/video/automation/flow.mjs` | `006713e70eb678619bd557b9a1971f07f9af90351e4a790d590e88c770b53e45` |
+| `tools/video/automation/prompts.mjs` | `e574d13fe9cfac1ad62f35d7336ed237658cd78769f088cec7b7ed441dfdb524` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `ce8d18d30137ea172dc4ccf6ab7be5e3d1f4cb849f8e0b95626a7d6696de3f3c` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
