@@ -157,7 +157,7 @@ test("a stage run sent and left without its answer is not sent again: the route'
       assert.equal(error.code, RUN_UNCERTAIN, what);
       assert.equal(error.who, "service", what);
       assert.equal(error.status, status, what);
-      assert.match(error.message, /no answer came back.*not sent again/, what);
+      assert.match(error.message, /no answer came back.*the model may have run, so it is not sent again/, what);
       return true;
     });
     assert.equal(calls, 1, `${what}: sent once`);
@@ -199,6 +199,119 @@ test("the other requests keep their retries after a dropped connection", async (
   });
   assert.deepEqual(await client.settings(), { enabled: true });
   assert.equal(calls, 2);
+  // A read and a review submit spend nothing: a gateway's 500 and a dropped submit are asked again.
+  let reads = 0;
+  const reader = automationClient({ ...credentials(sandbox()), fetch: async () => (++reads === 1 ? Response.json({ detail: "Internal Server Error" }, { status: 500 }) : Response.json({ reviews: [] })), sleep: async () => {} });
+  assert.deepEqual(await reader.reviews("long-video"), { reviews: [] });
+  assert.equal(reads, 2);
+  let submits = 0;
+  const submitter = automationClient({ ...credentials(sandbox()), fetch: async () => {
+    if (++submits === 1) throw failed("UND_ERR_SOCKET");
+    return Response.json({ id: "r1" }, { status: 201 });
+  }, sleep: async () => {} });
+  assert.deepEqual(await submitter.submit("long-video", { gate: "outline" }), { id: "r1" });
+  assert.equal(submits, 2);
+});
+
+// A Jev judgement takes one call off the daily Jev budget before Jev is asked
+// (apps/api/app/video_automation/judge.py `_ask`): like a stage run, it is not asked again once it
+// was sent and its answer lost, and a verdict that did come back is returned exactly as it came.
+const JUDGES = [
+  ["judgePolicy", "/api/video/automation/judge/policy", { slug: "long-video", script: "旁白", viewpoint: "" },
+    { stance: 0.31, demo: 0.82, advice: 0.04, sponsored: 0.02, passed: false, note: "Jev：立場 0.31；沒過（立場低於 0.6）", questions: "tutorial", observation: null, disparage: null }],
+  ["judgeOutline", "/api/video/automation/judge/outline", { slug: "long-video", brief: "企劃", options: [{ key: "A", title: "a", summary: "s", hook: "h" }, { key: "B", title: "b", summary: "s", hook: "h" }] },
+    { choice: "B", probabilities: { A: 0.45, B: 0.55 }, options: { A: { stance: 0.5, demo: 0.4 }, B: { stance: 0.55, demo: 0.6 } }, advice: 0.1, passed: false, note: "Jev 挑了 B（0.55）；沒過關" }],
+];
+
+test("a Jev judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, the judge route's 502", async () => {
+  const lost = [
+    ["a connection reset after sending", () => {
+      throw failed("ECONNRESET");
+    }, 0],
+    ["a connection dropped mid-way", () => {
+      throw failed("UND_ERR_SOCKET");
+    }, 0],
+    ["Node's deadline for the headers", () => {
+      throw failed("UND_ERR_HEADERS_TIMEOUT");
+    }, 0],
+    ["a verdict that breaks off", () => new Response('{"stance": 0.3, "passed": fal', { status: 200, headers: { "Content-Type": "application/json" } }), 200],
+    ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
+    ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
+    // The judge routes answer this for an API they never reached and for one that took the request and went quiet.
+    ["the judge route's 502", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 502 }), 502],
+  ];
+  for (const [method, route, body] of JUDGES) {
+    for (const [what, answer, status] of lost) {
+      const calls = [];
+      const sleeps = [];
+      const client = automationClient({
+        ...credentials(sandbox()),
+        fetch: async (url, init) => {
+          calls.push({ path: new URL(url).pathname, method: init.method, body: JSON.parse(init.body) });
+          return answer();
+        },
+        sleep: async (ms) => sleeps.push(ms),
+      });
+      await assert.rejects(client[method](body), (error) => {
+        assert.ok(error instanceof AutomationError, `${method}, ${what}`);
+        assert.equal(error.code, RUN_UNCERTAIN, `${method}, ${what}`);
+        assert.equal(error.who, "service", `${method}, ${what}: the caller leaves it for a later round`);
+        assert.equal(error.status, status, `${method}, ${what}`);
+        assert.match(error.message, /no answer came back.*Jev may have run, so it is not sent again/, `${method}, ${what}`);
+        return true;
+      });
+      assert.deepEqual(calls, [{ path: route, method: "POST", body }], `${method}, ${what}: sent once`);
+      assert.deepEqual(sleeps, [], `${method}, ${what}: no wait for a second try`);
+    }
+  }
+});
+
+test("a Jev judgement that never reached a server, or that the API settled, is asked again and its failed verdict comes back unchanged", async () => {
+  const settled = [
+    ["a refused connection", () => {
+      throw failed("ECONNREFUSED");
+    }],
+    ["an unknown host", () => {
+      throw failed("ENOTFOUND");
+    }],
+    ["the API's answer after Jev failed", () => Response.json({ code: "video_judge_upstream_failed", detail: "Jev 暫時無法判斷" }, { status: 502 })],
+    ["the judge's hourly limit", () => Response.json({ code: "rate_limit_exceeded", detail: "slow down" }, { status: 429 })],
+    ["the spent Jev budget", () => Response.json({ code: "jev_budget_exhausted", detail: "今天的 Jev 呼叫次數已用完" }, { status: 429 })],
+  ];
+  for (const [method, route, body, verdict] of JUDGES) {
+    for (const [what, answer] of settled) {
+      const calls = [];
+      const client = automationClient({
+        ...credentials(sandbox()),
+        fetch: async (url, init) => {
+          calls.push({ path: new URL(url).pathname, body: JSON.parse(init.body) });
+          return calls.length === 1 ? answer() : Response.json(verdict);
+        },
+        sleep: async () => {},
+      });
+      assert.deepEqual(await client[method](body), verdict, `${method}, ${what}: the verdict as Jev gave it`);
+      assert.deepEqual(calls, [{ path: route, body }, { path: route, body }], `${method}, ${what}: the same request asked again`);
+    }
+  }
+});
+
+test("a judge's refusal is thrown after one request, with the status its callers read", async () => {
+  const refusals = [
+    [409, "video_judge_not_enabled", "頻道立場還是空白"],
+    [404, "", "Not Found"],
+    [422, "video_judge_invalid", "Jev 拒絕這個問題"],
+  ];
+  for (const [method, , body] of JUDGES) {
+    for (const [status, code, detail] of refusals) {
+      let calls = 0;
+      const client = automationClient({ ...credentials(sandbox()), fetch: async () => {
+        calls++;
+        return Response.json({ code, detail }, { status });
+      }, sleep: async () => {} });
+      await assert.rejects(client[method](body), (error) => error instanceof AutomationError && error.status === status && error.code === code && error.message === detail);
+      assert.equal(calls, 1, `${method}, ${status}`);
+    }
+  }
 });
 
 test("the owner's slides requests go through the worker relay, and a site from before them reads as none at once", async () => {

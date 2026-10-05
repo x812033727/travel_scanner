@@ -14,7 +14,9 @@ export const OUTPUT_INVALID = "video_ai_output_invalid";
 // web route's 504 under this same code, a gateway's 5xx). The model may still have run, and been
 // paid for, on the server, which keeps no answer to fetch again: on 2026-09-29 a translation
 // finished after 302 s, past the web route's 295 s, and was recorded as ok. The run is not sent
-// again here; flow.mjs stops the video for a person instead of paying twice.
+// again here; flow.mjs stops the video for a person instead of paying twice. A Jev judgement whose
+// answer was lost throws it too, and its callers (review/sync.mjs, qa/cli.mjs) leave it for a
+// later round instead of asking Jev again at once.
 export const RUN_UNCERTAIN = "video_ai_run_uncertain";
 // A durable run still has a recoverable server receipt. The worker ends this round and polls
 // that same operation next round instead of holding a gateway open for several minutes.
@@ -50,6 +52,14 @@ const PAUSE_CODES = new Set(["video_ai_subscription_paused"]);
 // failed, no answer was lost), or the web route's 502 for an API it never reached. Any other 5xx
 // after a stage run was sent leaves its outcome unknown (RUN_UNCERTAIN).
 const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "video_ai_upstream_failed", OUTPUT_INVALID, "upstream_unavailable"]);
+// A Jev judgement (judge/policy, judge/outline) takes one call off the daily Jev budget before it
+// asks Jev (apps/api/app/video_automation/judge.py `_ask`), so it is paid like a stage run. Its only
+// settling 5xx is the API's own 502 once its Jev call failed: the API answered, and no verdict was
+// lost on the way back. The judge routes name no lost answer of their own
+// (apps/web/app/api/video/speech/forward.ts `lost`), so their 502 upstream_unavailable may follow a
+// request the API received and answered too late: uncertain here, unlike a stage run's.
+const SETTLED_JUDGE_CODES = new Set(["video_judge_upstream_failed"]);
+const JUDGE = Object.freeze({ paid: true, settled: SETTLED_JUDGE_CODES, what: "Jev" });
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
 
@@ -72,8 +82,8 @@ function delayMs(response, attempt) {
 
 /**
  * A client bound to the stored site and token; `attempts` covers busy vendors and restarts. A
- * stage run (`paid`) is sent again only when nothing ran or the API settled it: never after a
- * request that went out and lost its answer (RUN_UNCERTAIN).
+ * stage run or a Jev judgement (`paid`) is sent again only when nothing ran or the API settled it
+ * (`settled`): never after a request that went out and lost its answer (RUN_UNCERTAIN).
  */
 export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, durablePollIntervalMs = 1000 } = {}) {
   const { site, token } = readCredentials({ env: ctx.env, home: ctx.home });
@@ -82,9 +92,9 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   const sleep = ctx.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
   const receipts = runReceiptStore(ctx, site);
   let durable = false;
-  const uncertain = (route, why, status = 0) =>
-    Object.assign(new AutomationError(`${route} was sent and no answer came back (${why}); the model may have run, so it is not sent again`, { status, code: RUN_UNCERTAIN }), { why });
-  async function request(method, route, json, { paid = false } = {}) {
+  const uncertain = (route, why, status = 0, what = "the model") =>
+    Object.assign(new AutomationError(`${route} was sent and no answer came back (${why}); ${what} may have run, so it is not sent again`, { status, code: RUN_UNCERTAIN }), { why });
+  async function request(method, route, json, { paid = false, settled = SETTLED_RUN_CODES, what = "the model" } = {}) {
     let last;
     for (let attempt = 0; attempt < attempts; attempt++) {
       let response;
@@ -100,7 +110,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
           body: json ? JSON.stringify(json) : undefined,
         });
       } catch (error) {
-        if (paid && !neverSent(error)) throw uncertain(route, error.cause?.message ?? error.message);
+        if (paid && !neverSent(error)) throw uncertain(route, error.cause?.message ?? error.message, 0, what);
         last = new AutomationError(`cannot reach ${site}: ${error.message}`, { code: "network" });
         await sleep(delayMs(null, attempt));
         continue;
@@ -110,15 +120,15 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
         try {
           return await response.json();
         } catch (error) {
-          // The stage ran and its answer broke off on the way: it is not paid for again either.
-          throw uncertain(route, `the answer could not be read: ${error.message}`, response.status);
+          // The stage or judgement ran and its answer broke off on the way: it is not paid for again either.
+          throw uncertain(route, `the answer could not be read: ${error.message}`, response.status, what);
         }
       }
       const problem = await problemOf(response);
       const message = problem.detail || `HTTP ${response.status}`;
       if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code, who: "owner" });
       if (PAUSE_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code });
-      if (paid && response.status >= 500 && !SETTLED_RUN_CODES.has(problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status);
+      if (paid && response.status >= 500 && !settled.has(problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status, what);
       last = new AutomationError(message, { status: response.status, code: problem.code });
       if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
       await sleep(delayMs(response, attempt));
@@ -262,16 +272,18 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     /**
      * Jev's policy reading of a finished script for the QA's `policy` item (docs/videos/HANDS-OFF.md
      * §自動品管; tools/video/qa/policy.mjs shapes the body). Until the judge ticket ships the
-     * endpoint, the site answers 404 and the caller reports it as not available.
+     * endpoint, the site answers 404 and the caller reports it as not available. One Jev call:
+     * an answer lost on the way throws RUN_UNCERTAIN instead of spending another (JUDGE).
      */
-    judgePolicy: (body) => request("POST", "automation/judge/policy", body),
+    judgePolicy: (body) => request("POST", "automation/judge/policy", body, JUDGE),
     /**
      * Jev's choice among a brief's outlines (docs/videos/HANDS-OFF.md §Jev 挑大綱): body
      * { slug, brief, options: [{ key, title, summary, hook }] }, 2 to 3 options, no other field.
      * Answers { choice, probabilities, options: { key: { stance, demo } }, advice, passed, note };
-     * 409 video_judge_not_enabled while the stance is blank or the switch is off.
+     * 409 video_judge_not_enabled while the stance is blank or the switch is off. One Jev call,
+     * never asked again here once it was sent and its answer lost (RUN_UNCERTAIN, JUDGE).
      */
-    judgeOutline: (body) => request("POST", "automation/judge/outline", body),
+    judgeOutline: (body) => request("POST", "automation/judge/outline", body, JUDGE),
     /** The video's reviews as the owner left them, newest first. */
     reviews: async (slug) => {
       try {
