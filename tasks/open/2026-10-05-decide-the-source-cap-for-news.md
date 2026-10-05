@@ -38,7 +38,8 @@ Split from `2026-09-19-multi-language-maintenance-update-for-two`。那張票要
    當天上午在連江縣白馬王公園舉行「臺馬第四海纜完工啟用典禮」、行政院長卓榮泰出席；採雙層鎧裝海纜、以埋設深度 2.5 公尺為目標；
    導入結合 AI 辨識與 AIS 的海纜自動預警；臺澎四號、澎金四號預計今年底前完工。這是這篇文章最該引用的一手來源，
    但四個位置已滿（中華電信公告、最新海纜狀況、6 月新聞稿、20670），換掉任一條都會刪掉現有正文的依據。
-   PR 已把文章裡會被 20658 推翻的否定句都限縮成「中華電信的公告沒有寫」，所以現在不是錯的，只是少了這則。
+   PR 已把文章裡會被 20658 推翻的否定句都限縮成「中華電信的公告沒有寫」，FAQ 第五題也從「什麼時候正式啟用」改成只問
+   「中華電信有公布臺馬第四海纜的商轉日嗎？」（PR #1267 審查後），所以現在不是錯的，只是少了這則。
 
 規則衝突要在規則層解（原票 Notes），所以先要站主決定，再動文章。
 
@@ -53,7 +54,7 @@ Split from `2026-09-19-multi-language-maintenance-update-for-two`。那張票要
 - [ ] 問站主 (a)／(b)／(c)。
 - [ ] (a) 的話：`BRIEF.md` 寫明「維護更新」的例外與上限，`check_article.py` 的來源上限依同一規則放寬（只放寬更新，不放寬新稿），並在 `tools`／腳本自己的測試或 HANDOVER 留紀錄。
 - [ ] Apple：來源 https://www.apple.com/tw/newsroom/2026/09/the-latest-iphone-apple-watch-and-airpods-lineups-arrive-in-stores-worldwide/ ，新小標「9 月 18 日：全球直營店開賣」，只寫開賣日與公告點名的機型；需要騰字數（zh-TW 2,987），而且文章已有五個小節，加一節要先併掉一節（`check_article.py` 要剛好 5 個 level-2；馬祖那篇的做法見其研究紀錄 `update_20261005`）。
-- [ ] 馬祖：20658 進 `sources`，第四節「還有哪些沒寫」與 FAQ「什麼時候正式啟用」改寫成引用 9/18 完工啟用典禮；研究紀錄 `unverified_or_excluded` 裡 20658 那條移到 `verified_facts`。
+- [ ] 馬祖：20658 進 `sources`，第四節「還有哪些沒寫」、callout 與 FAQ 第五題（現在問「中華電信有公布臺馬第四海纜的商轉日嗎？」，可改回讀者真正想問的「什麼時候正式啟用」）改寫成引用 9/18 完工啟用典禮；研究紀錄 `unverified_or_excluded` 裡 20658 那條移到 `verified_facts`。
 - [ ] 四語翻譯（`docs/news-2026-batch-4/agents/tech/TRANSLATE.md` 的用語表）與逐語審稿。
 
 ## How to verify
