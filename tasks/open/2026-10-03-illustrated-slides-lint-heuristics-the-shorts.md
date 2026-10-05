@@ -1,11 +1,11 @@
 ---
 id: 2026-10-03-illustrated-slides-lint-heuristics-the-shorts
 title: Illustrated slides lint heuristics, the Shorts crop figure and an end-to-end 2K test
-status: review
+status: open
 priority: P1
 area: tools
-owner: claude-fable-5-1-illustration-round2
-claimed_at: 2026-10-03T08:24:13Z
+owner:
+claimed_at:
 created_at: 2026-10-03T04:27:39Z
 completed_at:
 branch: claude/video-production-tutorial-optimization-f5d1bc
@@ -84,3 +84,4 @@ node tools/video/long-form/cli.mjs check
   did not cause it. With image-01 as the drama model the server answers 422 instead.
 - `tools/video/shorts/` was in the scope of `2026-09-28-sothatswhy-shorts-from-episode` (a stale
   claim) when PR #1166 was written, which is why the comment there was left.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1-illustration-round2 (since 2026-10-03T08:24:13Z) was stale and is released so it stops locking its scope. Landed: #1172. Still open: Rebind the long-form duration receipt (docs/videos/long-form/review.*) for the bound files, done by an indepen.

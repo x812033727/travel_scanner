@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-developer-ai-bug-fix-pr-review
 title: Developer AI bug fix PR review video
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-video-review
-claimed_at: 2026-09-27T16:32:36Z
+owner:
+claimed_at:
 created_at: 2026-09-27T15:26:33Z
 completed_at:
 branch: codex/ai-developer-videos
@@ -41,3 +41,4 @@ scope:
 2026-09-28：獨立 verify-1.md 與兩支工具的原始修補、測試輸出已交叉核對；五語字幕經獨立交叉審稿，28 張字卡與縮圖已目視檢查。TTS、成片、品管、審核及上架包仍待完成。
 2026-09-28：Gemini Sulafat 旁白完成，`check-audio` 133/133 句、零標記；改寫的七句已同步五語字幕並經獨立覆核，`lint` 零錯誤零警告，最終成片重組中。站主大綱核准、正式站審核、11 項品管與待上架包尚待完成。
 2026-09-28：新版 1080p `final.mp4` 完成，18,255 影格、約 10:08、-14 LUFS；`checks.json` 全過且無問題。五語字幕已按最終時間軸重產。待站主大綱核准及正式站各審核關卡。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-video-review (since 2026-09-27T16:32:36Z) was stale and is released so it stops locking its scope. Landed: #868. Still open: Independent check passed; synthesized narration, five-language subtitles, thumbnail, final cut and upload pack; Run the rest of the media pipeline and QC after the independent check.

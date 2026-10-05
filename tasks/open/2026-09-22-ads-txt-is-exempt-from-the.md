@@ -1,11 +1,11 @@
 ---
 id: 2026-09-22-ads-txt-is-exempt-from-the
 title: ads.txt is exempt from the page budget and crawl-control fetches are logged
-status: in-progress
+status: open
 priority: P2
 area: ops
-owner: claude-opus-5
-claimed_at: 2026-09-22T06:17:43Z
+owner:
+claimed_at:
 created_at: 2026-09-22T06:17:24Z
 completed_at:
 branch: claude/ads-txt-status-missing-9c05a3
@@ -100,3 +100,4 @@ In CI, `nginx -t -c ops/nginx/ci-validate.conf` covers the map and both directiv
   alternation in `access.log` on 2026-09-19 is someone switching between them, not drift.
 - `combined` is nginx's stock format and carries the User-Agent, which `mokaair_limited`
   also does; `mokaair-limit.log` (the error-log side) does not.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5 (since 2026-09-22T06:17:43Z) was stale and is released so it stops locking its scope. Landed: #656. Still open: Re-check AdSense ads.txt status a day later against what mokaair-crawl.log says Google got.

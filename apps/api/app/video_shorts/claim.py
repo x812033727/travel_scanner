@@ -354,8 +354,15 @@ async def claim(
     for item in results:
         if item.result not in ("matched", "duplicate") or item.youtube_video_id is None:
             continue
+        # The Studio sync or a review may have given the Short its video while YouTube was
+        # asked. This session loaded the project before that, and a re-read keeps the values
+        # a loaded object has (SQLAlchemy 2.1.0-2.1.3 keep it loaded, sqlalchemy#13639), so
+        # the locked row's values replace them.
         project = await session.scalar(
-            select(VideoProject).where(VideoProject.slug == item.slug).with_for_update()
+            select(VideoProject)
+            .where(VideoProject.slug == item.slug)
+            .with_for_update()
+            .execution_options(populate_existing=True)
         )
         if project is None or project.youtube_video_id is not None:
             continue

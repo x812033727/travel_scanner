@@ -229,10 +229,14 @@ async def maintain_links() -> dict[str, int]:
             except (httpx.HTTPError, TimeoutError):
                 # Rotate transient failures too, so the first 40 do not starve others.
                 valid = None
+            # ``pairs`` still holds the offer as it was read before the link check, and a
+            # re-read keeps a loaded object's values: populate them from the locked row so
+            # a review made meanwhile changes ``version``.
             offer = await session.scalar(
                 select(TravelServiceOffer)
                 .where(TravelServiceOffer.id == identifier)
                 .with_for_update()
+                .execution_options(populate_existing=True)
             )
             if offer is None or offer.version != version:
                 continue

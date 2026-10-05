@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-ten-drama-backend-production-sync
 title: Sync ten drama production plans into backend review revisions
-status: review
+status: done
 priority: P1
 area: ops
 owner: codex-ten-drama-sync
 claimed_at: 2026-10-02T08:10:17Z
 created_at: 2026-10-02T08:09:51Z
-completed_at:
+completed_at: 2026-10-05T00:24:45Z
 branch: codex/ten-drama-backend-sync-20261002
 depends_on: []
 scope:
@@ -79,3 +79,4 @@ See `docs/videos/series-plans/production-20261002-sync/README.md` and
 rendering remains unverified; the database and admin serializer were checked.
 The operational update is complete; this task remains review until the updater
 and receipt PR is merged.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-ten-drama-sync (since 2026-10-02T08:10:17Z) was stale; the work landed in #1122 and every box was already ticked, so the ticket is closed.

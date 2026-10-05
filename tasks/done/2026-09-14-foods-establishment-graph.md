@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-foods-establishment-graph
 title: AIO: /foods states its merchants and their verification as FoodEstablishment
-status: review
+status: done
 priority: P2
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T09:27:28Z
 created_at: 2026-09-14T13:48:24Z
-completed_at:
+completed_at: 2026-10-05T00:23:40Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -126,3 +126,4 @@ validator.schema.org needs the API up; the e2e runtime fixture serves no public 
 `e2e/seo.spec.ts` sees a null seed on `/foods` and only the `BreadcrumbList`, as before.
 `docs/seo.md`'s graph table has no FoodEstablishment row yet -- outside this scope, one line to add
 when this merges.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T09:27:28Z) was stale; the work landed in #563 #565 and every box was already ticked, so the ticket is closed.

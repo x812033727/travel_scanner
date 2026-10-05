@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-daily-route-force-refresh
 title: Preserve force refresh in daily route background jobs
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T08:40:00Z
 created_at: 2026-09-10T06:02:14Z
-completed_at:
+completed_at: 2026-10-05T00:23:24Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -63,3 +63,4 @@ by that task; no production operation was performed.
 - After deploy: a compute-day call with `refresh: true` on a day whose legs are already
   saved should show fresh `computed_at`/provider fields on those legs; one without it
   should not. The Postgres integration tests for the endpoint run in CI.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T08:40:00Z) was stale; the work landed in #561 and every box was already ticked, so the ticket is closed.

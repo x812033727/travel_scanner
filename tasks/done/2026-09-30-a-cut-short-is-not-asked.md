@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-a-cut-short-is-not-asked
 title: A cut Short is not asked for a demonstration
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-09-30T01:02:57Z
 created_at: 2026-09-30T01:02:00Z
-completed_at:
+completed_at: 2026-10-05T00:24:38Z
 branch:
 depends_on: []
 scope:
@@ -43,3 +43,4 @@ deploy, `node tools/video/shorts/cli.mjs qa --dir <cut build>` shows 「Jev（�
 - After the deploy the twelve need `qa` + `push` again from
   `mokaair-work/shorts-fixes-20260929/cuts/<slug>/safe-*` (the builds whose `final_sha256`
   matches the pending review), not from `mokaair-work/shorts/`.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5 (since 2026-09-30T01:02:57Z) was stale; the work landed in #998 and every box was already ticked, so the ticket is closed.

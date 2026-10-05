@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-ollama-getting-started-tool-choice-recheck
 title: ollama-getting-started says tool_choice is unsupported but the Ollama OpenAI-compatibility page now lists it
-status: review
+status: done
 priority: P3
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T11:15:05Z
 created_at: 2026-09-19T01:09:18Z
-completed_at:
+completed_at: 2026-10-05T00:23:54Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -78,3 +78,4 @@ python -m app.cli guides-import --actor-email <admin> --slug ollama-getting-star
   re-verified against the page on that date. Everything else in the file is byte-for-byte as before.
 - The article does not say `tool_choice` is unsupported on `/v1/responses`; the page lists no
   field table for that endpoint, so there was nothing further to reconcile.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T11:15:05Z) was stale; the work landed in #563 #565 and every box was already ticked, so the ticket is closed.

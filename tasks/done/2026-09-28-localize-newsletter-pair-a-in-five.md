@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-localize-newsletter-pair-a-in-five
 title: Localize newsletter pair A in five languages
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-batch035-newsletter-pair-a
 claimed_at: 2026-09-28T07:45:40Z
 created_at: 2026-09-28T07:45:28Z
-completed_at:
+completed_at: 2026-10-05T00:24:32Z
 branch: codex/article-localization-035-newsletter-pair-a
 depends_on: []
 scope:
@@ -48,3 +48,4 @@ Run `uv run python -m app.guides.pack_cli lint --slug mailchimp-wordpress-newsle
 Current source pack paths and root metadata were rechecked against `origin/main` `55e75518e147adcf54dcdda7055be1e79fef4262`; no drift. See `docs/article-localization/batch035-newsletter-pair-a-evidence.md` for validation and publication state.
 
 Draft PR: https://github.com/x812033727/travel_scanner/pull/899. Await independent content review and CI before merge; deploy/import/publish/browser verification are separate steps.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-batch035-newsletter-pair-a (since 2026-09-28T07:45:40Z) was stale; the work landed in #899 and every box was already ticked, so the ticket is closed.

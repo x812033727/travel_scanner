@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-sothatswhy-mascot-setting
 title: "So That's Why: series look and the 3-second opener (no mascot)"
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: claude-opus
-claimed_at: 2026-09-28T06:50:53Z
+owner:
+claimed_at:
 created_at: 2026-09-28T06:00:00Z
 completed_at:
 branch: claude/knowledge-series-planning-v84n79
@@ -39,3 +39,4 @@ scope:
 
 - 2026-09-28：第一版寫了吉祥物「所長」的三個造型方向（水豚、郵差鴿、燈泡機器人）。站主回覆「不用所長」，所以刪掉 `mascot.md`、改寫成 `look.md`，片頭改成無人的門、信與印章。id 保留不改，因為 `2026-09-28-sothatswhy-pilot-3` 依賴它。
 - `look` 的 `style`／`negative`／`candidates` 已對過 `tools/video/core/drama.mjs` 的 LOOK_KEYS；`push-in`、`drift` 是 `tools/video/assemble/drama.mjs` 的運鏡關鍵字。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus (since 2026-09-28T06:50:53Z) was stale and is released so it stops locking its scope. Landed: #904 #950 #962. Still open: Generate three opener keyframes after the host enables drama settings and image key; Owner confirms keyframes; record filenames and SHA-256 in look.md.
