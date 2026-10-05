@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-h3-reference-to-video-v2
 title: MiniMax H3 reference-to-video in the v2 adapter: character sheets reach the clip
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-fable-5-1-h3
 claimed_at: 2026-10-05T17:51:09Z
 created_at: 2026-10-05T16:08:27Z
-completed_at:
+completed_at: 2026-10-05T18:11:14Z
 branch: claude/h3-reference-to-video
 depends_on:
   - 2026-10-05-minimax-h3-v2-live-check
