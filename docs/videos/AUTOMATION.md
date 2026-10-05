@@ -100,6 +100,56 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 - 企劃的主要文章（`source_guide`，沒有的話取它引用的第一篇站內文章）如果跟前面任何一支相同，這份企劃就不採用。
 - 分支上的影片用 `review-push --report-only` 登記到審核頁，這個指令不會送出任何審核項目。
 
+## 站主指定文章的教學影片（2026-10-05 加）
+
+排程草稿由企劃模型自己挑題。站主想把某一篇站上文章做成影片時，在 `/admin/videos` 的「影片」分頁最上面的「用站上文章做一支教學影片」貼上文章 slug（可以加給企劃的備註），按「排進製作」。下面的「指定文章的影片」列出排隊中、製作中與最近 7 天的請求；排隊中的可以取消，有影片的可以直接打開。
+
+**能排哪些文章**：只有已發布的繁中生活文章（`kind = life`、啟用中、zh-TW 的 `published_version` 等於索引的 `revision_version`，跟選題的 `site_topics` 同一個條件）。伺服器會拒絕：
+
+- 不存在、隱藏或沒發布的文章：422 `video_slides_request_article_not_found`。
+- 同一篇已經在排隊，或有一支製作中、沒被放棄的影片：409 `video_slides_request_duplicate`。
+- 已經有一支沒被放棄的教學影片在講這篇（`VideoProject.source_guide`）：409 `video_slides_request_article_used`，訊息寫出是哪一支。要重做就先放棄那支，沒有強制排的開關。
+- 自動產線（`enabled`）關著：409 `video_automation_disabled`。關著時工人什麼都不做，請求永遠不會被拿走。
+
+**端點**：資料表 `video_slides_requests`（migration 0126），存的狀態是 `queued`／`started`／`done`／`cancelled`。
+
+| 誰 | 端點 | 權限 |
+| --- | --- | --- |
+| 後台 | `GET /api/v1/admin/video-automation/slides-requests`：最新的 100 筆 | `content.read` |
+| 後台 | `POST /api/v1/admin/video-automation/slides-requests` `{source_guide, note?}` | `content.manage` |
+| 後台 | `DELETE /api/v1/admin/video-automation/slides-requests/{id}`：只能取消排隊中的 | `content.manage` |
+| 工人 | `GET /api/v1/video/automation/slides-requests/next`：最舊、文章仍在站上的排隊請求 | 影片工具 token |
+| 工人 | `POST /api/v1/video/automation/slides-requests/{id}/start` `{slug}`：用影片代號認領 | 影片工具 token |
+| 工人 | `POST /api/v1/video/automation/slides-requests/{id}/done`：上架確認之後 | 影片工具 token |
+
+工人經網站的 `/api/video/automation/slides-requests/...` 轉送（`apps/web/app/api/video/automation/slides-requests/`），跟漫劇請求同一種寫法。
+
+**一輪裡的順序**：舊的單集請求之後、排程草稿之前（下面「2026-09-27 起」的第 5 步）。不看 `draft_interval_hours`，但要有「等站主的草稿」（`max_waiting_drafts`）的名額。網站還沒有這些端點時（回 404），工人當成沒有請求，照舊做排程草稿；舊的工人不問，請求就一直排隊，不會出錯。
+
+**算進草稿數**：
+- 企劃呼叫不帶 variant，伺服器照樣算進 `max_drafts_per_month`，伺服器不用改。這是站主每月新教學影片的唯一上限，排隊不能繞過它。
+- 呼叫用固定的 slug `slides-<請求 id 前 8 碼>`，當機或重試只算一次。
+- 規劃完會寫 `auto-state.json` 的 `last_draft_at`，所以指定的影片取代排程草稿，不會疊在上面。
+- 退回大綱的重寫用影片自己的 slug，第一次重寫會再算一次（排程草稿本來就這樣），一支影片最多算 2 次。設上限時要把這個算進去。
+
+**釘住文章**（`flow.mjs` 的 `draftSlides()`）：
+- 工人先讀文章頁（`siteArticleUrl`，沒有內容包就當生活文章）。讀不到就結束這一輪，不付費也不認領，下一輪再試。
+- 企劃收到 `topics: []`、`requested_guide: {slug, title, url, note}`，`sources` 是文章本身。提示詞要它只規劃這一篇，`source_guide` 回這個 slug，`source_urls` 第一個放文章網址。`scope` 與 `used_guides` 不適用：站主選的文章，以前的影片用過也可以做。`earlier_videos` 仍用來避免角度重複。
+- 工人再檢查一次（`planProblem` 的 `requiredGuide`）：`source_guide` 不是這篇就不採用，把原因當 `previous_problem` 再問一次，最多兩次。
+- 規劃完 `POST …/start` 認領，`auto.json` 記下 `slides_request: {id, source_guide, title, note}`。站主的備註寫進 `notes`（`owner request: …`），撰稿模型從 `owner_notes` 讀到。
+- 退回大綱重寫時同樣不抓題目、帶 `requested_guide`、檢查 `source_guide`，`auto.json` 的 `source_guide` 固定是請求的那一篇。
+
+**失敗時**：
+- 兩次都寫不出可用的企劃：仍然認領（slug 是 `slides-<id8>`），影片卡住，審核頁寫原因與留下的答案。沒有 `brief.md` 的影片不能重試（`brief.md is gone`），跟漫劇請求一樣：站主放棄它再重新排。放棄的影片不再算製作中，同一篇可以再排。
+- 規劃時站主取消了（認領回 409 `video_slides_request_not_queued`），或企劃的 slug 已經是另一個請求的影片（409 `video_slides_request_slug_taken`）：這一輪結束，什麼都不留。只有這兩個代碼算撤回，其他錯誤照常拋出，這一輪失敗。
+- 認領送到了、回答在路上掉了（斷線或 5xx）：`client.mjs` 會再送一次同一個認領。伺服器對同一個 token 用同一個 slug 再認領一次，照第一次的結果回 200，不回 409，所以已付費的企劃與影片照樣留下（`start_request`）。
+- `next` 會跳過文章已經下架的請求，一篇下架的文章不會卡住後面的請求；它一直留在排隊中，站主可以取消。
+- 認領之後、存 `auto.json` 之前當機，或認領送到了、重送幾次都沒拿到回答：請求變成沒有影片的 `started`，同一篇不能再排；後台只能取消排隊中的請求，影片清單也沒有這支可以放棄，要手動改資料庫。`draftDrama` 有一樣的空窗，接受。
+
+**完成與放棄**：上架確認（`publish` 核准）之後工人 `POST …/done`；失敗只記 log。列表看到請求的影片有 YouTube id，也會顯示「完成」（`done`），舊的工人做的影片也一樣。影片被放棄時，請求顯示「已放棄」（`dropped`，同樣由影片列推導，不存），文章可以再排。
+
+**理財文章**：企劃提示詞的 `avoid` 照樣管怎麼講。理財或投資的文章講成資訊與查證方法，不建議買、賣或持有，不點名文章沒提到的公司、基金或產品，在「不做的事」寫明，結尾帶文章自己的免責說明。站主可以在備註再寫一次，例如「只講制度、資料怎麼查與風險，不推薦任何個股、ETF 或產品，不預測價格；結尾照文章說『資訊整理，不是投資建議』」。Jev 挑大綱的 `advice`（≤ 0.3）與成片品管的 `policy` 讓這類影片比較常停下來等站主，這是預期的。
+
 ## 漫劇（2026-09-26 加，設計在 `DRAMA.md`）
 
 工人也會做 AI 漫劇。它不挑題：**站主在 `/admin/videos` 發起**（「新的漫劇」：故事前提或改編的文章、風格、長度；「新的作品」：前提、面向、集數）。漫劇設定（`?tab=settings&section=drama`）的 `drama_enabled` 要開著，否則表單被拒、工人也不問。語言與上架的順序在 [`LANGUAGES.md`](LANGUAGES.md)。
@@ -112,7 +162,8 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 2. **討論**（`discussStep()`，在任何作品工作之前，一輪最多回一則）：`GET /video/automation/series/messages/next` 拿最舊的未回覆站主訊息，連同整條串、文件最新版（劇本串給那一集，劇本由工人從自己的檔案讀）與作品脈絡；文件交給企劃模型（variant `discuss`）、劇本交給撰稿模型（variant `discuss`），答案 `{ reply, revised }`，`POST /video/automation/series/messages/{id}/answer {reply_md, revised?}`。文件的新版本由站上存成等站主的 `review` 版本（被取代的那版備註「討論後出了新版本」，不算 `series_doc_rewrites`，也不算每月草稿）；劇本的新版本由工人寫回 `video.json`（每句 id 保留、過 lint），之後的輪次重跑查核與聽眾審稿、重寫 `script.md`、再送一次劇本關卡。模型給不出可用答案就代它回一則說明，串停著等站主，不重試。沒有輪數上限；要停就關 `drama_enabled` 或放 `STOP` 檔。
 3. **作品**（`seriesStep()`）：`GET /video/automation/series/next`——`bible`（單集）或 `setting`／`outline`／`chapter`（作品）由企劃模型寫文件 `POST …/series/{slug}/docs` 等站主；`episode` 就 `POST …/episodes/{n}/start` 開下一集（單集是 `one-off-<…>-e001`），寫 `series.json` 與 `brief.md`（`## 大綱` 只有選項 A，本機核准，備註「依故事聖經」或 `planned by chapter <n>'s approved outline`），不送「選大綱」。
 4. 舊的單集請求（`GET /video/automation/drama-requests/next` 只回單集變成作品之前排進、沒有 `series_id` 的請求），照下面的舊路。
-5. 排程的教學草稿。
+5. 站主指定文章（`GET /video/automation/slides-requests/next`），見上面「站主指定文章的教學影片」。這一步不看 `drama_enabled`。
+6. 排程的教學草稿。
 
 每一集的步驟是 `DRAMA_STEPS` 的 19 步（`status` 會印）：撰稿 → 連貫性查核 → 聽眾審稿 → **劇本關卡**（`script.md` 只含敘事；`review-push --gate script`，站主在影片頁讀、討論、核准；「劇本先給我看」`series_script_gate` 關著就本機核准；退回走撰稿 FIX 模式最多 `MAX_PROMPT_FIX_ROUNDS` 輪）→ **look**（judge 打分，`auto_pick_look` 開著就核准 judge 建議的那張，沒過才找站主）→ tts → check-audio → 旁白關卡（Jev 全過自動核准）→ **keyframes** → storyboard 關卡（`auto_approve_storyboard`）→ render → **clips**（最貴，送出前對單支上限把關）→ music → assemble → 繁中字幕 → 成片關卡（自動品管）→ package → 上架確認（`POST …/episodes/{n}/done`）→ 語言。劇本關卡在任何圖片或片段花錢之前。
 
@@ -130,7 +181,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 ## 長篇作品（2026-09-27 加，設計在 `SERIES.md`）
 
-工人每輪先回一則討論（上面「討論」，`GET /video/automation/series/messages/next`），再問 `GET /video/automation/series/next`（單集的故事聖經與第 1 集也從這裡來），再問舊的單集請求，再看排程草稿。作品層的工作是 `setting`／`outline`／`chapter`／`episode`，單集只有 `bible` 與 `episode`：`setting`／`outline`／`chapter` 是企劃模型（variant `setting`、`outline`、`chapter`）寫一份文件送到站上等站主；`episode` 是在站上開始下一集（影片 slug 為 `<作品>-e001` 這種），工人寫 `docs/videos/<slug>/series.json`（人物表、本集細綱、前情、謎團、設定集全文）與 `brief.md`（只有選項 A，本機直接核准），之後照上面每一集的 19 步走（劇本關卡每支漫劇都有），作品的集只多兩件事：撰稿與查核用作品變體（`writer:episode`、`verifier:episode`，查核另輸出 `coverage` 與 `problems` 到 `review/script-check.json`）；`look` 先查作品存檔 `<VIDEO_WORKDIR>/_series/<作品>/characters/`，有核准過的設定圖就沿用並直接核准 look，只畫新角色（`review-pull` 核准 look 時把選中的圖存進去）。合成完成後查核模型（variant `recap`）寫 150 字前情 `POST …/recap`；上架確認後 `POST …/done`，站上依 `series_max_in_flight`、`series_auto_continue` 與前一集是否完成決定下一集何時開始。文件被退回帶 `previous` 與 `owner_note` 重寫，站上限制 `series_doc_rewrites` 輪；討論出的新版本另計，沒有上限。
+工人每輪先回一則討論（上面「討論」，`GET /video/automation/series/messages/next`），再問 `GET /video/automation/series/next`（單集的故事聖經與第 1 集也從這裡來），再問舊的單集請求，再問站主指定的文章，再看排程草稿。作品層的工作是 `setting`／`outline`／`chapter`／`episode`，單集只有 `bible` 與 `episode`：`setting`／`outline`／`chapter` 是企劃模型（variant `setting`、`outline`、`chapter`）寫一份文件送到站上等站主；`episode` 是在站上開始下一集（影片 slug 為 `<作品>-e001` 這種），工人寫 `docs/videos/<slug>/series.json`（人物表、本集細綱、前情、謎團、設定集全文）與 `brief.md`（只有選項 A，本機直接核准），之後照上面每一集的 19 步走（劇本關卡每支漫劇都有），作品的集只多兩件事：撰稿與查核用作品變體（`writer:episode`、`verifier:episode`，查核另輸出 `coverage` 與 `problems` 到 `review/script-check.json`）；`look` 先查作品存檔 `<VIDEO_WORKDIR>/_series/<作品>/characters/`，有核准過的設定圖就沿用並直接核准 look，只畫新角色（`review-pull` 核准 look 時把選中的圖存進去）。合成完成後查核模型（variant `recap`）寫 150 字前情 `POST …/recap`；上架確認後 `POST …/done`，站上依 `series_max_in_flight`、`series_auto_continue` 與前一集是否完成決定下一集何時開始。文件被退回帶 `previous` 與 `owner_note` 重寫，站上限制 `series_doc_rewrites` 輪；討論出的新版本另計，沒有上限。
 
 ## 品牌故事（2026-09-28 加，設計在 `STORY.md`）
 

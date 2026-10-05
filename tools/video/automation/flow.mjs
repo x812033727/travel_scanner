@@ -96,6 +96,9 @@ const DRAMA_SECTIONS = ["## 故事前提", "## 角色", "## 站主觀點", "## �
 // An explainer's brief (docs/videos/so-thats-why/) answers a question and has no cast.
 const EXPLAINER_SECTIONS = ["## 問題", "## 一句答案", "## 站主觀點", "## 大綱"];
 const YOUTUBE_ID = /^[A-Za-z0-9_-]{11}$/;
+// The site's refusals of a slides claim that mean the request is no longer the worker's to make:
+// the owner cancelled it while it was planned, or another request holds the slug (draftSlides).
+const WITHDRAWN_CLAIMS = new Set(["video_slides_request_not_queued", "video_slides_request_slug_taken"]);
 // Which manifest a drama stage's failures are read from, and what its entries are called.
 const FIX_SOURCES = {
   look: { manifest: ARTIFACTS.characters, entries: "characters", what: "character" },
@@ -220,9 +223,11 @@ export function siteSources(sourceGuide, urls = [], root = ROOT) {
  * articles; a drama's brief has the story bible's sections instead of a tutorial's, and an
  * explainer's (`preset` "flat-explainer") the question's. With a
  * channel stance, 站主觀點 must open by naming the stance points it applies (core/lint.mjs
- * stanceProblems); the local `lint` has no stance and does not check this.
+ * stanceProblems); the local `lint` has no stance and does not check this. `requiredGuide` is
+ * the site article the owner asked a slides video of (draftSlides): the brief must retell that
+ * one, whatever earlier video used it.
  */
-export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null) {
+export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null, requiredGuide = null) {
   if (!plan || typeof plan !== "object") return "the answer is not an object";
   if (!SLUG.test(plan.slug ?? "")) return `slug "${plan.slug}" is not lowercase kebab-case of at most 60 characters`;
   if (taken.has(plan.slug)) return `slug "${plan.slug}" is already used by an earlier video`;
@@ -234,6 +239,7 @@ export function planProblem(plan, taken, usedGuides = new Set(), format = "slide
   if (stanceIssues.length) return `站主觀點 does not apply the channel stance: ${stanceIssues.join("; ")}`;
   if (outlineOptions(plan.brief).length < 2) return "brief needs 2 or 3 options written as 「### 選項 A：…」 with 一行說明 and 開場鉤子 lines";
   if (!Array.isArray(plan.source_urls) || !plan.source_urls.every((url) => /^https:\/\//.test(url))) return "source_urls must be https URLs";
+  if (requiredGuide && plan.source_guide !== requiredGuide) return `source_guide must be "${requiredGuide}", the site article the owner asked for (requested_guide)`;
   const guide = mainGuide(plan);
   if (guide && usedGuides.has(guide)) return `the site article "${guide}" is what an earlier video retells (see used_guides); pick another topic`;
   return null;
@@ -677,14 +683,20 @@ export class Automation {
     const discussed = await discussStep(this);
     if (discussed) return discussed;
     // A series in the making comes next (docs/videos/SERIES.md), then the owner's one-off
-    // requests from before one-offs became series, then a scheduled draft, all within the same
-    // waiting cap.
+    // requests from before one-offs became series, then the owner's slides requests, then a
+    // scheduled draft, all within the same waiting cap.
     const series = await seriesStep(this);
     if (series) return series;
     // The owner's drama requests come before any scheduled draft, within the same waiting cap.
     if (this.settings.drama?.drama_enabled && this.room()) {
       const request = await this.api.dramaNext();
       if (request) return this.draftDrama(request);
+    }
+    // Then the owner's slides requests (a site article named on /admin/videos): they skip the
+    // draft interval, not the waiting cap. A hand-built api without the call has none.
+    if (this.room()) {
+      const request = await this.api.slidesNext?.();
+      if (request) return this.draftSlides(request);
     }
     if (this.due()) return this.draft();
     return null;
@@ -837,6 +849,15 @@ export class Automation {
   }
 
   /**
+   * A slides video was planned, a scheduled draft or an owner's request: the next scheduled
+   * draft waits a whole interval from now, so requested videos take the place of scheduled ones
+   * instead of piling on top of them.
+   */
+  markDrafted() {
+    atomicWrite(path.join(this.workBase, GLOBAL_FILE), `${JSON.stringify({ last_draft_at: this.ctx.now().toISOString() }, null, 2)}\n`);
+  }
+
+  /**
    * Every video made or started: the ones in docs/videos, the worker's own drafts, and every video
    * on /admin/videos (the owner's branches and dropped ones too), with the article each retells.
    * A folder in docs/videos is a video only when it holds a video.json or a brief.md; the others
@@ -913,7 +934,7 @@ export class Automation {
       if (!problem) plan = answer;
     }
     // Written whatever came of it: a failed draft waits for the next interval like a good one.
-    atomicWrite(path.join(this.workBase, GLOBAL_FILE), `${JSON.stringify({ last_draft_at: this.ctx.now().toISOString() }, null, 2)}\n`);
+    this.markDrafted();
     if (!plan) {
       const kept = this.keepAnswer(this.workBase, "planner");
       return this.later(`draft: the planner's brief was not usable (${problem}${kept ? `; the answer is in ${kept}` : ""}); trying again after the next interval`);
@@ -938,6 +959,82 @@ export class Automation {
     };
     saveState(this.workdir(plan.slug), state);
     return `draft: ${plan.slug} planned from ${topics.length} topics; ${await this.submitOutline(state)}`;
+  }
+
+  /** The planner's "requested_guide": the site article the owner asked a slides video of, and their note. */
+  requestedGuide(request) {
+    return { slug: request.source_guide, title: request.title ?? null, url: siteArticleUrl(request.source_guide, this.ctx.root), note: request.note ?? null };
+  }
+
+  /**
+   * A slides video of a site article the owner named on /admin/videos: plan it from that article
+   * alone, claim the request under the video's slug, and send the outline as a draft's. The
+   * planner call has no variant, so the server counts it toward the month's drafts, once under
+   * its stable slug. An article that cannot be read now ends the round before anything is paid
+   * for or claimed; a planner that fails twice leaves a blocked video behind, so the owner sees
+   * why on the page instead of a request that never starts.
+   */
+  async draftSlides(request) {
+    const requested = this.requestedGuide(request);
+    const sources = await readSources(this.read, [requested.url]);
+    if (!sources[0]?.ok) return this.later(`slides: the owner's article ${request.source_guide} could not be read (${sources[0]?.error ?? "no page"}); the next round tries again`);
+    const runSlug = `slides-${String(request.id).slice(0, 8)}`;
+    const earlier = this.earlierVideos();
+    const taken = new Set(earlier.map((video) => video.slug));
+    let plan = null;
+    let problem = null;
+    for (let attempt = 0; attempt < 2 && !plan; attempt++) {
+      let answer;
+      try {
+        answer = await this.stage("planner", runSlug, this.planPayload({ topics: [], requested_guide: requested, sources, ...(problem ? { previous_problem: problem } : {}) }, earlier));
+      } catch (error) {
+        if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
+        problem = error.message;
+        continue;
+      }
+      // The owner chose the article: an earlier video that used it does not refuse it.
+      problem = planProblem(answer, taken, new Set(), "slides", this.stance, null, request.source_guide);
+      if (!problem) plan = answer;
+    }
+    this.markDrafted();
+    const slug = plan?.slug ?? runSlug;
+    try {
+      await this.api.slidesStart(request.id, slug);
+    } catch (error) {
+      // Cancelled on the page while it was being planned, or its slug taken since: nothing is kept.
+      // Only these two codes say so. The client sends the claim again after a lost answer, and
+      // the site answers that repeat as it did the first (slides_requests.start_request), so any
+      // other refusal is an error to look into, not the owner withdrawing the request.
+      if (error instanceof AutomationError && WITHDRAWN_CLAIMS.has(error.code)) return this.later(`slides: the owner's request for ${request.source_guide} could not be claimed (${error.message}); nothing was kept`);
+      throw error;
+    }
+    const state = {
+      slug,
+      title: String(plan?.title || request.title || titleOf(plan?.brief ?? "") || slug).slice(0, 200),
+      status: "active",
+      created_at: this.ctx.now().toISOString(),
+      source_guide: request.source_guide,
+      source_urls: (plan?.source_urls ?? []).slice(0, 12),
+      slides_request: { id: request.id, source_guide: request.source_guide, title: request.title ?? null, note: request.note ?? null },
+      replans: 0,
+      verify_rounds: 0,
+      verified: false,
+      listener_done: false,
+      retakes: 0,
+      rewrites: 0,
+      // The writer reads these as owner_notes.
+      notes: request.note ? [`owner request: ${request.note}`] : [],
+    };
+    if (!plan) {
+      const kept = this.keepAnswer(this.workdir(slug), "planner");
+      saveState(this.workdir(slug), state);
+      return this.block(state, `the planner could not write a usable brief for the owner's article ${request.source_guide} (${problem}${kept ? `; the answer is in ${kept}` : ""})`);
+    }
+    const dir = docDir(slug, this.ctx.root);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
+    saveState(this.workdir(slug), state);
+    return `slides: ${slug} planned from the owner's article ${request.source_guide}; ${await this.submitOutline(state)}`;
   }
 
   /**
@@ -1411,6 +1508,13 @@ export class Automation {
             // The request reads as done once the video is on YouTube anyway.
             this.log(`  could not mark the drama request done: ${error.message}`);
           }
+        } else if (state.slides_request?.id) {
+          try {
+            await this.api.slidesDone(state.slides_request.id);
+          } catch (error) {
+            // The same: the site derives done from the YouTube id it is given later.
+            this.log(`  could not mark the slides request done: ${error.message}`);
+          }
         }
         return `${state.slug}: the upload is confirmed${review.note ? ` (${review.note})` : ""}; the owner uploads it in YouTube Studio and pastes the address on /admin/videos`;
       }
@@ -1436,11 +1540,16 @@ export class Automation {
     const taken = new Set(earlier.map((video) => video.slug));
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
     const drama = state.format === "drama";
-    const { topics } = drama ? { topics: [] } : await this.api.topics();
+    // An owner's slides request keeps its article through every re-plan (draftSlides): no topics.
+    const requested = state.slides_request ?? null;
+    const { topics } = drama || requested ? { topics: [] } : await this.api.topics();
     if (drama) state.target_minutes = hasAnimePolicy(state) ? requireAnimePolicy(state.series).body_target_seconds / 60 : episodeMinutes(state.target_minutes, state.style_preset);
-    const extra = drama ? { premise: state.premise, target_minutes: [state.target_minutes, state.target_minutes], source_guide: state.source_guide, ...this.dramaPayload(state) } : { topics };
+    const extra = drama
+      ? { premise: state.premise, target_minutes: [state.target_minutes, state.target_minutes], source_guide: state.source_guide, ...this.dramaPayload(state) }
+      : { topics, ...(requested ? { requested_guide: this.requestedGuide(requested) } : {}) };
     const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format, drama ? this.variantOf(state) : null);
-    const problem = planProblem({ ...answer, slug: state.slug }, taken, drama && state.source_guide ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null);
+    const chosen = (drama && state.source_guide) || requested;
+    const problem = planProblem({ ...answer, slug: state.slug }, taken, chosen ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null, requested?.source_guide ?? null);
     state.replans += 1;
     state.notes.push(`outline sent back by ${by}: ${note}`);
     saveState(this.workdir(state.slug), state);
@@ -1448,7 +1557,7 @@ export class Automation {
     this.cleared(state, "planner");
     writeFileSync(path.join(dir, "brief.md"), answer.brief.endsWith("\n") ? answer.brief : `${answer.brief}\n`);
     state.source_urls = (answer.source_urls ?? state.source_urls).slice(0, 12);
-    state.source_guide = answer.source_guide ?? state.source_guide;
+    state.source_guide = requested?.source_guide ?? answer.source_guide ?? state.source_guide;
     saveState(this.workdir(state.slug), state);
     return `brief rewritten after ${by === "Jev" ? "Jev's" : "the owner's"} note (round ${state.replans}); ${await this.submitOutline(state)}`;
   }

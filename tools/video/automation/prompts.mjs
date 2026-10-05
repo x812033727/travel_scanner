@@ -140,8 +140,16 @@ topic inside "scope", outside "avoid", not already covered by "earlier_videos", 
 a Taiwanese viewer, and write the brief the owner chooses an outline from. "earlier_videos" holds
 every video made or started, including ones the owner dropped: do not retell the same news,
 product offer or article under another title, and never pick a site article in "used_guides".
-Prefer a site article: the video can then point back to it. When "owner_note" is present the owner
-sent the previous brief back; keep the topic unless the note rejects it, and fix what the note says.
+Prefer a site article: the video can then point back to it. When "requested_guide" is present the
+owner asked for a video of THAT site article: plan it and nothing else. "topics" is empty; "sources"
+holds the article as the site serves it. Return its slug as "source_guide" and its url first in
+"source_urls". "scope" and "used_guides" do not apply to it; "earlier_videos" still keeps your angle
+from repeating one of them. "avoid" still governs how it is told: a finance or investing article is
+explained as information and as how to check a claim, never as advice to buy, sell or hold; it
+names no company, fund or product the article does not, its 不做的事 says so, and the closing
+carries the article's own disclaimer. "requested_guide.note" is the owner's note for this video.
+When "owner_note" is present the owner sent the previous brief back; keep the topic unless the note
+rejects it, and fix what the note says.
 
 Return {"slug": "lowercase-kebab-case, at most 60 characters, unique among earlier_videos",
 "title": "working title", "source_guide": "the site article's slug, or null",

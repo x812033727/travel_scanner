@@ -96,6 +96,8 @@ test("auto exits for the owner after one real stage request when Claude Code nee
       if (route === "/api/video/automation/videos") return Response.json([]);
       // A site from before Shorts (docs/videos/SHORTS.md): the Shorts round has nothing to do.
       if (route.startsWith("/api/video/automation/shorts/")) return Response.json({ code: "not_found", detail: route }, { status: 404 });
+      // No slides video of an article the owner asked for: the scheduled draft comes next.
+      if (route === "/api/video/automation/slides-requests/next") return Response.json({ request: null });
       if (route === "/api/video/automation/topics") return Response.json({ topics: [], notes: "" });
       if (route === "/api/video/automation/run") {
         stages.push(JSON.parse(init.body));
@@ -114,6 +116,7 @@ test("auto exits for the owner after one real stage request when Claude Code nee
     "GET /api/video/automation/settings",
     "GET /api/video/automation/shorts/settings",
     "GET /api/video/automation/videos",
+    "GET /api/video/automation/slides-requests/next",
     "GET /api/video/automation/topics",
     "POST /api/video/automation/run",
   ]);
@@ -196,6 +199,39 @@ test("the other requests keep their retries after a dropped connection", async (
   });
   assert.deepEqual(await client.settings(), { enabled: true });
   assert.equal(calls, 2);
+});
+
+test("the owner's slides requests go through the worker relay, and a site from before them reads as none at once", async () => {
+  const box = sandbox();
+  const id = "6f1d2c3b-4a59-4e6f-8a7b-9c0d1e2f3a4b";
+  const queued = { id, source_guide: "ai-freelance-getting-started", title: "AI 接案入門", url: "https://mokaair.com/zh-TW/life/ai-freelance-getting-started", note: null, status: "queued", slug: null };
+  const calls = [];
+  const sleeps = [];
+  let older = false;
+  const client = automationClient({
+    ...credentials(box),
+    fetch: async (url, init) => {
+      const route = new URL(url).pathname;
+      calls.push({ route, method: init.method, body: init.body ? JSON.parse(init.body) : null });
+      if (older) return Response.json({ code: "not_found", detail: route }, { status: 404 });
+      if (route.endsWith("/next")) return Response.json({ request: queued });
+      if (route.endsWith("/start")) return Response.json({ ...queued, status: "started", slug: "ai-freelance-pricing" });
+      return Response.json({ ...queued, status: "done", slug: "ai-freelance-pricing" });
+    },
+    sleep: async (ms) => sleeps.push(ms),
+  });
+  assert.deepEqual(await client.slidesNext(), queued);
+  assert.equal((await client.slidesStart(id, "ai-freelance-pricing")).status, "started");
+  assert.equal((await client.slidesDone(id)).status, "done");
+  assert.deepEqual(calls, [
+    { route: "/api/video/automation/slides-requests/next", method: "GET", body: null },
+    { route: `/api/video/automation/slides-requests/${id}/start`, method: "POST", body: { slug: "ai-freelance-pricing" } },
+    { route: `/api/video/automation/slides-requests/${id}/done`, method: "POST", body: null },
+  ]);
+  older = true;
+  assert.equal(await client.slidesNext(), null, "a site without the queue has nothing queued");
+  assert.equal(calls.length, 4, "a 404 is not asked again");
+  assert.deepEqual(sleeps, []);
 });
 
 const DURABLE_SLUG = "saved-writer";

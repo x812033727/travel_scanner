@@ -288,6 +288,22 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     dramaStart: (id, slug) => request("POST", `automation/drama-requests/${id}/start`, { slug }),
     /** Report a request's video finished and confirmed for upload. */
     dramaDone: (id) => request("POST", `automation/drama-requests/${id}/done`),
+    // The owner's slides requests (docs/videos/AUTOMATION.md §站主指定文章的教學影片): a published
+    // zh-TW life article filed on /admin/videos, made after the drama requests and before any
+    // scheduled draft. A site from before them answers 404 at once (never retried): null, no wait.
+    /** The oldest queued request whose article the site still serves, or null. */
+    slidesNext: async () => {
+      try {
+        return (await request("GET", "automation/slides-requests/next")).request ?? null;
+      } catch (error) {
+        if (error.status === 404) return null;
+        throw error;
+      }
+    },
+    /** Claim a request for the video about to be made under `slug`. */
+    slidesStart: (id, slug) => request("POST", `automation/slides-requests/${id}/start`, { slug }),
+    /** Report a request's video confirmed for upload. */
+    slidesDone: (id) => request("POST", `automation/slides-requests/${id}/done`),
     // A long series (docs/videos/SERIES.md): the site says what is next, the worker reports back.
     /** The next document to plan or episode to start, or null while every series waits. */
     seriesNext: async () => (await request("GET", "automation/series/next")).job ?? null,

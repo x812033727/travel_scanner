@@ -52,6 +52,10 @@ test("the planner outlines story beats and the listener keeps the register; the 
   assert.match(planner, /你以為／其實：「<what the viewer believes>/);
   assert.match(planner, /收尾問題：「…」/);
   assert.match(planner, /"shot: <the picture in a few words>"/);
+  // The owner's slides request (flow.mjs draftSlides): that article only, and finance told as information, never advice.
+  assert.match(planner, /"requested_guide"[\s\S]*Return its slug as "source_guide" and its url first in\s+"source_urls"/);
+  assert.match(planner, /"requested_guide"[\s\S]*never as advice to buy, sell or hold/);
+  assert.match(planner, /the closing\s+carries the article's own disclaimer/);
   assert.ok(planner.includes(REGISTER_RULES));
   const listener = instructionsFor("listener", "slides");
   assert.match(listener, /keep the storytelling register below/);
