@@ -8,7 +8,7 @@ import { tempDir } from "../core/fixtures/load.mjs";
 import { cached, forget, forgetJob, mediaKey, pendingJob, readCache, remember, rememberJob } from "./cache.mjs";
 import { MediaError, PART_BYTES, RETAKE_CODES, downloadFile, judge, mediaStatus, putFile, runJob, submitClip, submitImage, waitForJob } from "./client.mjs";
 import { STAGES, exitFor, run, statusText } from "./cli.mjs";
-import { appendLedger, capProblem, ledgerTotals, readLedger } from "./ledger.mjs";
+import { appendLedger, bookImport, bookJob, capProblem, importedTotals, ledgerTotals, readLedger, release, reserve, reservedEntries, savedTotals } from "./ledger.mjs";
 import {
   THRESHOLDS,
   blackdetectArgs,
@@ -192,17 +192,80 @@ test("cache keys ignore field order, and entries vanish with their files", () =>
 
 test("the ledger sums what a video paid for and refuses to pass the per-video cap", () => {
   const workdir = tempDir("video-media-");
-  assert.deepEqual(ledgerTotals(workdir), { usd: 0, images: 0, clip_seconds: 0, music: 0, judge_calls: 0 });
+  assert.deepEqual(ledgerTotals(workdir), { usd: 0, images: 0, clip_seconds: 0, music: 0, judge_calls: 0, reserved: 0, reservations: 0 });
   appendLedger(workdir, { stage: "keyframes", kind: "image", id: "opening", provider: "gemini", model: "m", key: "k", cost_usd: 0.134, status: "ready" });
   appendLedger(workdir, { stage: "clips", kind: "clip", id: "opening", provider: "gemini", model: "m", key: "k2", seconds: 8, cost_usd: 1.2, status: "ready" });
   appendLedger(workdir, { stage: "clips", kind: "judge", id: "opening", provider: "gemini", model: "m", key: "k2", cost_usd: 0.01, status: "judged" });
   appendLedger(workdir, { stage: "music", kind: "music", id: "bgm", provider: "gemini", model: "lyria", key: "k3", cost_usd: 0.08, status: "ready" });
   const totals = ledgerTotals(workdir);
-  assert.deepEqual(totals, { usd: 1.424, images: 1, clip_seconds: 8, music: 1, judge_calls: 1 });
+  assert.deepEqual(totals, { usd: 1.424, images: 1, clip_seconds: 8, music: 1, judge_calls: 1, reserved: 0, reservations: 0 });
   assert.equal(readLedger(workdir).entries.length, 4);
   assert.equal(capProblem(workdir, 1.2, 200), null);
   assert.match(capProblem(workdir, 1.2, 2), /US\$1\.42 .* US\$1\.20.* cap of US\$2/);
+  assert.match(capProblem(workdir, 1.2, 2), /the next generation costs/);
+  assert.match(capProblem(workdir, 0.01, 1.43, "judge call"), /the next judge call costs about US\$0\.01/);
   assert.equal(capProblem(workdir, 1.2, 0), null, "no cap means no refusal");
+});
+
+test("money is held before it is spent: a reservation counts toward the cap until the job's charge replaces it or it is released", () => {
+  const workdir = tempDir("video-media-");
+  const at = new Date("2026-10-05T10:00:00Z");
+  appendLedger(workdir, { stage: "keyframes", kind: "image", id: "opening", provider: "gemini", model: "m", key: "k1", job_id: "img-1", cost_usd: 0.134, status: "ready" }, at);
+  // The hold is a row of its own, at list price, keyed by the request.
+  const held = reserve(workdir, { stage: "clips", kind: "clip", id: "opening", provider: "gemini", model: "m", key: "k2", seconds: 8, cost_usd: 1.2 }, at);
+  assert.deepEqual(held, { usd: 1.334, images: 1, clip_seconds: 8, music: 0, judge_calls: 0, reserved: 1.2, reservations: 1 });
+  assert.deepEqual(reservedEntries(readLedger(workdir).entries), [{ at: at.toISOString(), stage: "clips", kind: "clip", id: "opening", provider: "gemini", model: "m", key: "k2", seconds: 8, cost_usd: 1.2, status: "reserved" }]);
+  assert.throws(() => reserve(workdir, { stage: "clips", kind: "clip", id: "opening", cost_usd: 1 }), /needs the request key/);
+  // The cap sees the held money, and says so.
+  assert.equal(capProblem(workdir, 0.6, 2), null);
+  assert.match(capProblem(workdir, 0.7, 2), /spent US\$1\.33 \(US\$1\.20 of it reserved for 1 request not yet reconciled\) and the next generation costs about US\$0\.70, past the per-video cap of US\$2/);
+  // Reserving the same key again holds the money once (a submission repeated after a lost answer).
+  reserve(workdir, { stage: "clips", kind: "clip", id: "opening", provider: "gemini", model: "m", key: "k2", seconds: 8, cost_usd: 1.2 }, at);
+  assert.deepEqual([readLedger(workdir).entries.length, ledgerTotals(workdir).reserved], [2, 1.2]);
+  // The server's charge replaces the hold: fewer dollars than the list price, no second row.
+  const booked = bookJob(workdir, { stage: "clips", kind: "clip", id: "opening", provider: "gemini", model: "m", key: "k2", job_id: "clip-1", seconds: 8, cost_usd: 0.9, status: "ready" }, at);
+  assert.deepEqual(booked, { usd: 1.034, images: 1, clip_seconds: 8, music: 0, judge_calls: 0, reserved: 0, reservations: 0 });
+  assert.deepEqual(readLedger(workdir).entries.map((entry) => [entry.key, entry.status, entry.cost_usd]), [["k1", "ready", 0.134], ["k2", "ready", 0.9]]);
+  // A failed job reconciles the hold at what it cost (zero), not at the estimate; a later success under the same id updates that row.
+  reserve(workdir, { stage: "clips", kind: "clip", id: "farewell", provider: "gemini", model: "m", key: "k3", seconds: 6, cost_usd: 0.9 }, at);
+  bookJob(workdir, { stage: "clips", kind: "clip", id: "farewell", provider: "gemini", model: "m", key: "k3", job_id: "clip-2", seconds: 6, cost_usd: 0, status: "failed", error: "video_media_upstream_failed" }, at);
+  assert.deepEqual(readLedger(workdir).entries.at(-1), { at: at.toISOString(), stage: "clips", kind: "clip", id: "farewell", provider: "gemini", model: "m", key: "k3", job_id: "clip-2", seconds: 6, cost_usd: 0, status: "failed", error: "video_media_upstream_failed" });
+  reserve(workdir, { stage: "clips", kind: "clip", id: "farewell", provider: "gemini", model: "m", key: "k3", seconds: 6, cost_usd: 0.9 }, at);
+  bookJob(workdir, { stage: "clips", kind: "clip", id: "farewell", provider: "gemini", model: "m", key: "k3", job_id: "clip-2", seconds: 6, cost_usd: 0.9, status: "ready" }, at);
+  assert.deepEqual(readLedger(workdir).entries.map((entry) => [entry.key, entry.status, entry.cost_usd]), [["k1", "ready", 0.134], ["k2", "ready", 0.9], ["k3", "ready", 0.9]], "the resubmission's hold goes with the job's own row");
+  // Nothing submitted: the hold is released, and releasing a key that holds nothing changes nothing.
+  reserve(workdir, { stage: "music", kind: "music", id: "bgm", provider: "gemini", model: "lyria", key: "k4", cost_usd: 0.08 }, at);
+  assert.equal(ledgerTotals(workdir).reservations, 1);
+  assert.deepEqual(release(workdir, "k4"), { usd: 1.934, images: 1, clip_seconds: 14, music: 0, judge_calls: 0, reserved: 0, reservations: 0 });
+  assert.deepEqual(release(workdir, "k4"), ledgerTotals(workdir));
+  assert.equal(readLedger(workdir).entries.length, 3);
+  // An import's hold is replaced by its booking, which does not carry the key; importing the same file again replaces the row and drops a new hold.
+  reserve(workdir, { stage: "clips", kind: "clip", id: "bird", provider: "hailuo-web", plan: "pro", credits: 60, key: "import:bird:abc", seconds: 0, cost_usd: 0.5 }, at);
+  bookImport(workdir, { stage: "clips", id: "bird", provider: "hailuo-web", plan: "pro", credits: 60, seconds: 5, cost_usd: 0.5, file: "clips/bird-import-1.mp4", sha256: "abc", key: "import:bird:abc" }, at);
+  assert.deepEqual(readLedger(workdir).entries.at(-1), { at: at.toISOString(), stage: "clips", id: "bird", provider: "hailuo-web", plan: "pro", credits: 60, seconds: 5, cost_usd: 0.5, file: "clips/bird-import-1.mp4", sha256: "abc", kind: "clip", status: "imported" });
+  reserve(workdir, { stage: "clips", kind: "clip", id: "bird", provider: "hailuo-web", plan: "pro", credits: 60, key: "import:bird:abc", seconds: 0, cost_usd: 0.6 }, at);
+  bookImport(workdir, { stage: "clips", id: "bird", provider: "hailuo-web", plan: "pro", credits: 60, seconds: 5, cost_usd: 0.6, file: "clips/bird-import-1.mp4", sha256: "abc", key: "import:bird:abc" }, at);
+  assert.deepEqual([readLedger(workdir).entries.length, importedTotals(readLedger(workdir).entries).usd, ledgerTotals(workdir).reservations], [4, 0.6, 0]);
+});
+
+test("a ledger written before reservations existed reads as before", () => {
+  const workdir = tempDir("video-media-");
+  mkdirSync(path.join(workdir, "media"), { recursive: true });
+  const entries = [
+    { at: "2026-09-29T00:00:00.000Z", stage: "keyframes", kind: "image", id: "opening", provider: "gemini", model: "m", key: "k", job_id: "img-1", seconds: 0, cost_usd: 0.134, status: "ready" },
+    { at: "2026-09-29T00:00:00.000Z", stage: "keyframes", kind: "judge", id: "opening", provider: "gemini", model: "j", key: null, cost_usd: 0.01, status: "judged" },
+    { at: "2026-09-29T00:00:00.000Z", stage: "clips", kind: "clip", id: "bird", provider: "gemini", model: "m", source: { shot: "opening", from_s: 1 }, saved_seconds: 4, saved_usd: 0.6, status: "cut", seconds: 0, cost_usd: 0 },
+  ];
+  writeFileSync(path.join(workdir, "media", "ledger.json"), JSON.stringify({ entries, totals: { usd: 0.144, images: 1, clip_seconds: 0, music: 0, judge_calls: 1 } }));
+  assert.deepEqual(ledgerTotals(workdir), { usd: 0.144, images: 1, clip_seconds: 0, music: 0, judge_calls: 1, reserved: 0, reservations: 0 });
+  assert.deepEqual(reservedEntries(readLedger(workdir).entries), []);
+  assert.equal(capProblem(workdir, 0.134, 0.3), null);
+  assert.match(capProblem(workdir, 0.2, 0.3), /spent US\$0\.14 and the next generation/, "no reservation, no mention of one");
+  // A job booked against it without a hold behaves as it always did, and the totals are rewritten in the new shape.
+  bookJob(workdir, { stage: "keyframes", kind: "image", id: "farewell", provider: "gemini", model: "m", key: "k2", job_id: "img-2", seconds: 0, cost_usd: 0.134, status: "ready" });
+  assert.equal(readLedger(workdir).entries.length, 4);
+  assert.deepEqual(readLedger(workdir).totals, { usd: 0.278, images: 2, clip_seconds: 0, music: 0, judge_calls: 1, reserved: 0, reservations: 0 });
+  assert.deepEqual(savedTotals(readLedger(workdir).entries), { clip_seconds: 4, usd: 0.6, cuts: 1 });
 });
 
 test("ffmpeg logs are parsed into intervals, cuts, shapes and PSNR", () => {

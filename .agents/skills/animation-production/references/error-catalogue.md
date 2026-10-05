@@ -103,3 +103,28 @@
 | 58 | C 級鏡頭（手指拿小道具、兩人接觸、吃喝、變身、要讀的字）照原樣排進批次 | `shot_plan.mjs` 的風險級；`--strict` 報不在小樣裡的 C | **試拍**：生成出來的 4 個 take 有 3 個在手與道具上出錯，S03 兩次上限用完；到 take 上限就停 | 前期重設計（`shot-risk.md` 的招式），非做不可就放進小樣 |
 | 59 | Hailuo 的 AI Polish、Kling 的 AI Prompter 開著卻沒記 | 無 | 實際送出的不是鎖定的字，下一次重現不了 | 鎖定包寫明開或關；收據記 |
 | 60 | 用有 production profile 的集規劃網頁路線 | `shot_plan.mjs`（refuse）；`clips import` → 3 | 做出來進不了產線 | P0 條件卡先查 profile |
+
+## 提示詞的字、長度、審核與風格（2026-10-05 補）
+
+來源標名：官方頁面寫站名與讀取日；`A-cat-with-carrots/OnlyShot`（MIT，即夢／Seedance 的 CLI 產線，17 個失敗模式）、`ayase0307/h3-video-prompting`（MIT）、`smixs/visual-skills`（CC BY 4.0）是社群文件，`MiniMax-AI/MiniMax-H3` 是官方 skill；數字各自標「官方」或「社群」。各模型的長度表在 `.agents/skills/animation-camera/references/camera-keywords.md` 第五節。
+
+| # | 錯誤 | 誰抓 | 漏掉的代價 | 預防 |
+| --- | --- | --- | --- | --- |
+| 61 | 正文或 CLI 參數混進 CJK 引號與全形標點（「」『』（）、全形逗號、`@` 與半全形混用）。OnlyShot 的即夢 CLI 實測（社群）：bash `eval` 遇到這些字 quoting 解析壞，server 建了任務卻靜默丟棄——立刻「下載失敗」、`list_task` 永遠 querying、不扣點、網頁看不到；同一套的參考圖 regex 漏了全形 `）`，少傳兩張參考圖才發現。H3 官方格式只允許畫面裡的字用英文雙引號逐字、台詞在 `<d>` 內保留原標點；Kling 3.0 官方範例裡的「」只出現在原生對白 | 無：產線的 `video.json` 是 JSON，lint 不查標點；網頁路線沒有程式讀正文；`shot_plan.mjs` 的 sha256 只證明貼的是同一份 | 網頁一支點數；CLI 假死 30 分鐘一輪 | 正文全 ASCII 標點（產線的 prompt 本來就是英文）；要出現的中文字另外合成（#20）；走 CLI 時參數用 args list 不走 shell 字串；送出前用 `grep -P '[^\x00-\x7F]'` 看正文 |
+| 62 | 審核拒絕。MiniMax API：`base_resp.status_code` 1026 `input new_sensitive`、1027 `output new_sensitive`（platform.minimax.io/docs/api-reference/errorcode，2026-10-05 讀）；社群實測（atlascloud 2026-08-16）：命名 IP（`Darth Vader from Star Wars`）7 秒內回 1026；血與尖叫不報錯但畫面裡被靜默拿掉（「partial refusal without reporting one」）；親吻、遊戲裡的步槍過。Kling API：1301「Trigger the platform's content security policy」（官方錯誤碼頁是 SPA，2026-10-05 抓到空殼，數字來自 API 使用者整理）；網頁只顯示「Generation failed, try a different prompt」。即夢 5.0（OnlyShot，2026-05 實測）：`generation failed: final generation failed` | 產線：`apps/api/app/video_media/providers/minimax.py` 把 1026／1027 當 `blocked` 回 422，job 記成 `video_media_rejected`（`apps/api/app/video_media/jobs.py`），take 算失敗；Gemini 回 `Gemini refused the request`；網頁路線無 | 一次 take；網頁的點數退不退未驗（MiniMax 的 1026 在生成前就擋下） | 替換表（下）；不寫 IP 名與真人名、寫外觀；臉部特寫不疊紅暈類的詞；血與傷放負面欄或不寫；被拒就改字不換 seed（#39） |
+| 63 | 正文超過上限或被截斷。官方上限：MiniMax v2（H3）每個 `text` ≤ 7,000 字元、Hailuo 2.3 i2v ≤ 2,000；Kling API `prompt`／`negative_prompt` 各 ≤ 2,500（已停更的官方文件 2024-09-19 紀錄；現行頁面 SPA）；Veo 3.1 三個模型 Text input 1,024 tokens；MiniMax 圖片的 adapter 常數 `IMAGE_PROMPT_LIMIT = 1500`。社群：即夢 ≤ 1,500 字元，超過回 `ret=1046 InvalidNode`（OnlyShot 實測，非官方常數）。產線：`prompt` 1000、`camera` 120、`motion` 300（`LIMITS`），組好的提示切 4,000（`MAX_PROMPT_CHARS`，先掉的是角色外觀）。網頁輸入框的上限（Hailuo、Kling）未驗 | lint 擋 `LIMITS`；`shot_reading` 報 `prompt.length`；API 回 2013／400；網頁輸入框截斷不提示 | 砍尾先掉 `Characters:` 的外觀 → identity 題失分；網頁被截的正文跟鎖定包 sha256 對不上，重現不了 | `shot_plan.mjs` 的 `chars` 欄對上表；H3 正文照社群甜蜜點 300–700 英文字、有首格時更短；Kling 圖生影片 20–40 字只寫動作 |
+| 64 | 風格指紋漂移：設定圖通過後，後面的關鍵影格或片段的畫法、線條、色板漸漸離開設定圖；或反向，`look.style` 的場景句污染個別鏡頭（**試拍** S03 R01：倉庫火光漏進婚宴桌）。OnlyShot：角色 A 的 ref 漫畫風、角色 B 寫實 → 影片段畫風跳（它的 #9），修法是把「視覺指紋」段逐字 append 到每個 prompt；但 ref 階段的 `neutral/flat` 指紋 append 到分鏡圖會把 dramatic 光中和掉（它的 #16，加 `--no-fingerprint`）。smixs：同樣的東西用同樣的字，每支 prompt 重複 identity／style block | judge 的 `style` 題（權重 1）只對 `look.style`，不對設定圖；`keyframes` 的 dHash 只比相鄰兩鏡；沒有工具把關鍵影格跟設定圖比（`JudgeKind` 的 `continuity` 沒人呼叫）；人看聯絡表 | 一張 0.134 ＋ judge；晚發現就整場重畫；改 look 等於整套重買（#7） | `look.style` 只放整部片不變的畫法、線條、色板、鏡頭質感，場景光寫每鏡 `prompt`；風格句逐字進每張關鍵影格（`shotPrompt` 的 `Style:` 自動接）與每支網頁正文（`shot_plan.mjs` 接 `look.motion`）；小樣先出三張並排對設定圖；偏了改個別鏡的 `prompt`，不改 look |
+| 65 | Omni 自己切鏡：官方提示指南（ai.google.dev/gemini-api/docs/omni，2026-09-23 更新，2026-10-05 讀）說 Omni Flash **預設**會做成幾個鏡頭，要單鏡得寫 `In a single unbroken scene`／`In a single continuous shot`／`No scene cuts`；產線 `look.motion` 的預設句只有否定的 `no cuts`（`tools/video/core/drama.mjs` 的 `PRESETS`） | `qc.mjs` 的切鏡檢查（#33）在花錢之後 | 一次素材 | Omni 的 `look.motion` 寫正向句 `In a single continuous shot`（在 `look` 之前定，它在 `lookHash` 裡）；Kling 關 Multi-Shot、H3 只寫 `[Shot 1]`（#54） |
+
+替換表（#62）：全部是社群文件記的實例，哪一家擋的標在來源；同義替換是起點，不保證過。
+
+| 寫了 | 改成 | 誰擋過（來源） |
+| --- | --- | --- |
+| 命名 IP、真人名（`Darth Vader from Star Wars`） | 寫外觀與服裝，不寫名字 | MiniMax H3 1026（atlascloud 實測，社群） |
+| `blood runs down her collarbone`、尖叫 | 放負面欄 `no blood, no gore, no wounds`，或畫面外處理 | MiniMax H3 靜默省略、不報錯（同上） |
+| 角色的 `sinister`、`leans menacingly`、`with dark intent`、`possessive gaze`、`cold smirk` | `moody`、`leans forward`、`quiet`／`focused`、`subtle smirk` | 即夢 5.0 `generation failed`（OnlyShot，社群） |
+| 顏色與光的 `dark cyan`、`dark teal`、`dark shadows engulf`、`harsh shadow`、`sinister spotlight` | `deep cyan`、`deep teal`、`shadows along edges`、`soft shadow`、`moody spotlight` | 同上（偶發） |
+| 臉部特寫加 `blush on cheeks`、`pink blush`、`internal glow`、`pulsing softly` | `rose tint`、`pink glow`、刪、`glowing steadily`；`extreme close-up` 改 `medium close-up` | 同上：特寫＋面部紅暈類描述必擋 |
+| `strolls past camera`（像街拍）、具體食物名 | `walks across stage center`、泛稱 | 同上（作者推測是肖像類審核） |
+| 中文字幕段的「反派」「磕」「不死心」 | 刪、「圍觀」、「還在惦記」 | 同上 |
+| 人臉、頭盔、墨鏡、像名人的參考圖 | 自有或合成的角色參考 | Seedance 2.0 的人臉過濾（smixs，社群；2.5 不適用） |

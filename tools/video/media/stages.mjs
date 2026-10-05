@@ -13,7 +13,7 @@ import { stopRequested } from "../core/paths.mjs";
 import { contactSheetHtml, SHEET_WIDTH } from "../render/contact.mjs";
 import { cached, forgetJob, mediaKey, pendingJob, remember, rememberJob } from "./cache.mjs";
 import { MediaError, RETAKE_CODES, TERMINAL, downloadFile, judge as askJudge, putFile, submitClip, submitImage, submitMusic, waitForJob } from "./client.mjs";
-import { appendLedger, bookJob, capProblem } from "./ledger.mjs";
+import { appendLedger, bookJob, capProblem, release, reserve } from "./ledger.mjs";
 import { dHash, dhashArgs } from "./qc.mjs";
 
 const exec = promisify(execFile);
@@ -149,9 +149,12 @@ export class Stage {
     return stopRequested(this.workdir);
   }
 
-  /** Refuse a generation that would pass the owner's per-video cap. */
-  spend(usd) {
-    const problem = capProblem(this.workdir, usd, capFor(this.status, this.format));
+  /**
+   * Refuse spending `usd` on `what` (a generation, a judge call, an import) when it would pass
+   * the owner's per-video cap, counting what the ledger has charged and still holds reserved.
+   */
+  spend(usd, what = "generation") {
+    const problem = capProblem(this.workdir, usd, capFor(this.status, this.format), what);
     if (problem) throw new MediaError(problem, { code: "video_media_cap", who: "owner" });
   }
 
@@ -160,6 +163,12 @@ export class Stage {
    * running by an earlier run is picked up by its id; the STOP file ends the wait with code
    * "stopped" and keeps the id. A failed job throws with the server's code, which `retakeable`
    * says a new seed may fix. Returns `{ file, sha256, key, cost_usd, job_id, reused }`.
+   *
+   * Money is held before it is spent: the list price goes into the ledger as a `reserved` row
+   * under the request key before the submission, and `bookJob` replaces that row with the
+   * server's charge once the job is seen. A refusal from the server releases the hold, since no
+   * job exists; a run that dies or stops after submitting leaves it, beside the pending job id,
+   * for the next run to reconcile.
    */
   async generate({ kind, key, submit, request, id, target, usd, seconds = 0 }) {
     const expected = choiceFor(this.status, kind, this.format);
@@ -172,7 +181,17 @@ export class Stage {
     } else {
       if (this.stop()) throw stoppedError();
       this.spend(usd);
-      const submitted = await submit({ request, ...this.options });
+      reserve(this.workdir, { stage: this.stage, kind, id, provider: expected.provider, model: expected.model, key, seconds, cost_usd: usd }, this.now());
+      let submitted;
+      try {
+        submitted = await submit({ request, ...this.options });
+      } catch (error) {
+        // The server answered and took nothing (a spent budget, an exhausted request, a bad
+        // reference): nothing is held. A lost connection may have left a job behind, so its
+        // hold stays until a rerun submits the same key again and books what it finds.
+        if (error instanceof MediaError && error.status > 0) release(this.workdir, key);
+        throw error;
+      }
       if (TERMINAL.has(submitted.status)) job = submitted;
       else {
         rememberJob(this.workdir, key, { job_id: submitted.id, kind, target }, this.now());
@@ -238,9 +257,14 @@ export class Stage {
     return this.generate({ kind: "music", key, submit: submitMusic, request: { slug: this.slug, prompt, seconds }, id, target, usd: trackPrice(this.status), seconds });
   }
 
-  /** Ask the judge about some files and book the call; returns `{ overall, passed, scores, problems, notes }`. */
+  /**
+   * Ask the judge about some files and book the call; returns `{ overall, passed, scores, problems, notes }`.
+   * A call is money too (JUDGE_USD_PER_CALL): it passes the per-video cap first, and is booked
+   * once it has answered.
+   */
   async judge({ id, kind, files, rubric, context = {} }) {
     if (this.stop()) throw stoppedError();
+    this.spend(JUDGE_USD_PER_CALL, "judge call");
     const verdict = await askJudge({ request: { slug: this.slug, kind, files, rubric, context }, ...this.options });
     appendLedger(this.workdir, { stage: this.stage, kind: "judge", id, provider: "gemini", model: verdict.model ?? "", key: null, cost_usd: JUDGE_USD_PER_CALL, status: "judged" }, this.now());
     return { overall: verdict.overall, passed: Boolean(verdict.passed), scores: verdict.scores ?? {}, problems: verdict.problems ?? [], notes: verdict.notes ?? "" };
