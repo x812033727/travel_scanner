@@ -31,7 +31,7 @@ import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
 import { chosenSheets } from "./keyframes.mjs";
-import { bookImport, bookReuse, ledgerTotals } from "./ledger.mjs";
+import { bookImport, bookReuse, ledgerTotals, release, reserve } from "./ledger.mjs";
 import { blackdetectArgs, clipVerdict, framePsnrArgs, freezedetectArgs, parseBlackdetect, parseFreezedetect, parseProbe, parsePsnr, parseSceneCuts, probeArgs, sceneCutArgs } from "./qc.mjs";
 import { chosenModel, clipSecondPrice, JUDGE_USD_PER_CALL, retakeable, Stage, statusProblem } from "./stages.mjs";
 
@@ -243,7 +243,8 @@ export async function run(command, args, ctx) {
     if (status) {
       const problem = statusProblem(status, "clip");
       const budget = status.budgets?.clip_seconds;
-      ctx.stdout.write(`server: ${problem ? `NOT ready: ${problem}` : `${status.clip.provider} ${status.clip.model} ${status.clip.resolution} ready`}; about US$${(total * price + priced * JUDGE_USD_PER_CALL).toFixed(2)}${budget ? `; ${budget.remaining} of ${budget.limit} clip seconds left this month` : ""}; this video so far US$${ledgerTotals(workdir).usd.toFixed(2)} of the US$${status.max_usd_per_video} cap\n`);
+      const totals = ledgerTotals(workdir);
+      ctx.stdout.write(`server: ${problem ? `NOT ready: ${problem}` : `${status.clip.provider} ${status.clip.model} ${status.clip.resolution} ready`}; about US$${(total * price + priced * JUDGE_USD_PER_CALL).toFixed(2)}${budget ? `; ${budget.remaining} of ${budget.limit} clip seconds left this month` : ""}; this video so far US$${totals.usd.toFixed(2)}${totals.reserved > 0 ? ` (US$${totals.reserved.toFixed(2)} of it reserved for ${totals.reservations} request${totals.reservations === 1 ? "" : "s"} not yet reconciled)` : ""} of the US$${status.max_usd_per_video} cap\n`);
     } else {
       ctx.stdout.write("no video tool token yet; run `node tools/video/cli.mjs login` before generating\n");
     }
@@ -563,96 +564,116 @@ async function importClip(args, ctx) {
     const why = storyboard.status === "stale" ? "changed since it was approved" : "not approved yet";
     throw new MediaError(`the storyboard is ${why}: run review-push --gate storyboard, let the owner (or the auto-approve setting) decide on /admin/videos, then review-pull`, { who: "owner" });
   }
-  let tools = null;
-  if (!ctx.clipQc) {
-    try {
-      tools = await locateFfmpeg(ctx.env);
-    } catch (error) {
-      if (!(error instanceof ToolMissing)) throw error;
-      ctx.stderr.write(`${error.message}\n`);
-      return EXIT.missing;
-    }
-  }
-  const started = Date.now();
-  const existing = readJson(manifestFile(workdir), null);
-  const current = existing?.speech_hash === speech && existing.visual_hash === visual && existing.look_hash === hash;
-  const manifest = current ? existing : { speech_hash: speech, visual_hash: visual, look_hash: hash, shots: {} };
-  mkdirSync(path.join(workdir, "clips"), { recursive: true });
-  // The next free clips/<shot>-import-<n>.mp4; the same bytes brought in again keep their name.
+  // Money first, as for a bought take: the dollars --usd prices the credits at, and with --judge
+  // the judge's own call, count against the per-video cap. Both need the site's cap, so an import
+  // that costs nothing and asks no judge never calls the site. The dollars are held in the ledger
+  // under the import's key while the clip is checked, and the booking replaces the hold; an
+  // import that ends without booking (a missing ffmpeg, the STOP file, a failed check) lets it go.
   const sha256 = await sha256File(origin);
-  let n = 1;
-  let file = `clips/${scene.id}-import-${n}.mp4`;
-  while (existsSync(path.join(workdir, file)) && (await sha256File(path.join(workdir, file))) !== sha256) file = `clips/${scene.id}-import-${++n}.mp4`;
-  if (!existsSync(path.join(workdir, file))) copyFileSync(origin, path.join(workdir, file));
-
-  const framesOf = new Map(timeline.scenes.map((each) => [each.id, each.end_frame - each.start_frame]));
-  const neededFrames = framesOf.get(scene.id) ?? 0;
-  const neighbours = shotScenes(doc);
-  const at = neighbours.findIndex((each) => each.id === scene.id);
-  const rivals = [neighbours[at - 1], neighbours[at + 1]].filter(Boolean).map((each) => keyframes.shots[each.id]?.file).filter(Boolean).map((each) => path.join(workdir, each));
-  // Nothing was asked of a server, so there is no requested length to hold the clip to.
-  const inspected = await inspect(ctx, tools, path.join(workdir, file), { keyframe: path.join(workdir, keyframe.file), rivals, requested: null, needed: neededFrames / FPS });
-  let judge = null;
-  if (values.judge) {
+  const reservation = usd > 0 ? `import:${scene.id}:${sha256}` : null;
+  let stage = null;
+  if (reservation || values.judge) {
     const options = clientOptions(ctx, requireCredentials(ctx));
-    const stage = new Stage({ slug: doc.slug, workdir, options, status: await mediaStatus(options), stage: "clips", now: ctx.now });
-    const upload = (each) => stage.upload(path.join(workdir, each));
-    const characters = shotCast(doc, scene);
-    const lookManifest = readJson(path.join(workdir, ARTIFACTS.characters), null);
-    const sheets = chosenSheets(lookManifest, lookChosen(lookManifest, readJson(path.join(workdir, ARTIFACTS.characterChoice), null), hash) ?? {});
-    try {
-      const sheetFiles = [];
-      for (const character of characters) if (sheets[character.id]) sheetFiles.push({ sha256: await upload(sheets[character.id].file), label: sheetLabel(character) });
-      judge = await judgeClip({ ctx, tools, stage, workdir, scene, look, characters, sheetFiles, clip: { file, sha256: await upload(file) }, proxy: `clips/${scene.id}-import-${n}-proxy.mp4`, upload });
-    } catch (error) {
-      if (error.code !== "stopped") throw error;
-      ctx.stdout.write(`stopped by the STOP file before ${scene.id} was judged; nothing was recorded, rerun to continue\n`);
-      return EXIT.ok;
+    stage = new Stage({ slug: doc.slug, workdir, options, status: await mediaStatus(options), stage: "clips", now: ctx.now });
+  }
+  if (reservation) {
+    stage.spend(usd, "import");
+    reserve(workdir, { stage: "clips", kind: "clip", id: scene.id, provider: values.provider, plan: values.plan ?? null, credits, key: reservation, seconds: 0, cost_usd: usd }, ctx.now());
+  }
+  let booked = false;
+  try {
+    let tools = null;
+    if (!ctx.clipQc) {
+      try {
+        tools = await locateFfmpeg(ctx.env);
+      } catch (error) {
+        if (!(error instanceof ToolMissing)) throw error;
+        ctx.stderr.write(`${error.message}\n`);
+        return EXIT.missing;
+      }
     }
-  }
-  const verdict = clipVerdict({ ...inspected, requested_s: null, needed_s: neededFrames / FPS, judge });
-  const forced = !verdict.ok && Boolean(values.force);
-  const seconds = Math.max(1, Math.round(inspected.probe?.duration ?? 0));
-  const imported = { provider: values.provider, plan: values.plan ?? null, credits, imported_at: ctx.now().toISOString(), ...(values.note ? { note: values.note } : {}), ...(forced ? { forced: true } : {}) };
-  const take = { import: n, file, sha256, seconds, frames: inspected.probe?.frames ?? null, qc: verdict, judge, ...imported };
-  const previous = manifest.shots[scene.id];
-  const record = {
-    file,
-    sha256,
-    seconds,
-    frames: take.frames,
-    needed_s: Number((neededFrames / FPS).toFixed(3)),
-    first_frame: { file: keyframe.file, sha256: keyframe.sha256 },
-    qc: verdict,
-    judge,
-    takes: [...(previous?.takes ?? []).filter((each) => each.sha256 !== sha256), take],
-    needs_review: !verdict.ok && !forced,
-    ...imported,
-  };
-  if (record.needs_review) record.problems = verdict.problems;
-  manifest.shots[scene.id] = record;
-  // Shots cut from this shot's clip play the new file from now on.
-  const recut = sourcedShotScenes(doc).filter((each) => each.data.source.shot === scene.id && manifest.shots[each.id]);
-  for (const each of recut) manifest.shots[each.id] = cutRecord(record, each.data.source, framesOf.get(each.id) ?? 0);
-  writeManifest(workdir, doc, manifest);
-  const totals = bookImport(workdir, { stage: "clips", id: scene.id, provider: values.provider, plan: values.plan ?? null, credits, seconds, cost_usd: usd, file, sha256 }, ctx.now());
-  const waiting = Object.entries(manifest.shots).filter(([, shot]) => shot.needs_review).map(([id]) => id);
-  recordStage(workdir, "clips", { shots: Object.keys(manifest.shots).length, imported: Object.values(manifest.shots).filter((shot) => shot.imported_at).length, generated: 0, needs_review: waiting, clip_seconds: totals.clip_seconds, usd: totals.usd, seconds: Math.round((Date.now() - started) / 1000) }, ctx.now());
+    const started = Date.now();
+    const existing = readJson(manifestFile(workdir), null);
+    const current = existing?.speech_hash === speech && existing.visual_hash === visual && existing.look_hash === hash;
+    const manifest = current ? existing : { speech_hash: speech, visual_hash: visual, look_hash: hash, shots: {} };
+    mkdirSync(path.join(workdir, "clips"), { recursive: true });
+    // The next free clips/<shot>-import-<n>.mp4; the same bytes brought in again keep their name.
+    let n = 1;
+    let file = `clips/${scene.id}-import-${n}.mp4`;
+    while (existsSync(path.join(workdir, file)) && (await sha256File(path.join(workdir, file))) !== sha256) file = `clips/${scene.id}-import-${++n}.mp4`;
+    if (!existsSync(path.join(workdir, file))) copyFileSync(origin, path.join(workdir, file));
 
-  const probe = inspected.probe ?? {};
-  ctx.stdout.write(`${scene.id}: ${file} from ${importedFrom(imported)}${usd ? `, US$${usd.toFixed(2)}` : ""}: ${Number(probe.duration ?? 0).toFixed(1)} s for ${(neededFrames / FPS).toFixed(1)} s of lines, ${probe.width}x${probe.height}, ${judge ? `judge ${judge.overall}/10` : "not judged (--judge asks)"}${previous?.file && previous.file !== file ? `; replaces ${previous.file}` : ""}\n`);
-  if (Math.round((probe.duration ?? 0) * FPS) < neededFrames) ctx.stdout.write(`${scene.id}: the clip is shorter than its lines; assemble slows it and holds its last frame for the rest, and refuses a long hold unless the shot's fit says "freeze"\n`);
-  if (record.needs_review) {
-    ctx.stdout.write(`ERROR ${scene.id}: ${verdict.problems.join("; ")}\n`);
-    ctx.stdout.write(`make ${scene.id} again from its keyframe (${keyframe.file}) and import that, or keep this one with --force (needs_review in clips/manifest.json)\n`);
-    return EXIT.lint;
+    const framesOf = new Map(timeline.scenes.map((each) => [each.id, each.end_frame - each.start_frame]));
+    const neededFrames = framesOf.get(scene.id) ?? 0;
+    const neighbours = shotScenes(doc);
+    const at = neighbours.findIndex((each) => each.id === scene.id);
+    const rivals = [neighbours[at - 1], neighbours[at + 1]].filter(Boolean).map((each) => keyframes.shots[each.id]?.file).filter(Boolean).map((each) => path.join(workdir, each));
+    // Nothing was asked of a server, so there is no requested length to hold the clip to.
+    const inspected = await inspect(ctx, tools, path.join(workdir, file), { keyframe: path.join(workdir, keyframe.file), rivals, requested: null, needed: neededFrames / FPS });
+    let judge = null;
+    if (values.judge) {
+      const upload = (each) => stage.upload(path.join(workdir, each));
+      const characters = shotCast(doc, scene);
+      const lookManifest = readJson(path.join(workdir, ARTIFACTS.characters), null);
+      const sheets = chosenSheets(lookManifest, lookChosen(lookManifest, readJson(path.join(workdir, ARTIFACTS.characterChoice), null), hash) ?? {});
+      try {
+        const sheetFiles = [];
+        for (const character of characters) if (sheets[character.id]) sheetFiles.push({ sha256: await upload(sheets[character.id].file), label: sheetLabel(character) });
+        judge = await judgeClip({ ctx, tools, stage, workdir, scene, look, characters, sheetFiles, clip: { file, sha256: await upload(file) }, proxy: `clips/${scene.id}-import-${n}-proxy.mp4`, upload });
+      } catch (error) {
+        if (error.code !== "stopped") throw error;
+        ctx.stdout.write(`stopped by the STOP file before ${scene.id} was judged; nothing was recorded, rerun to continue\n`);
+        return EXIT.ok;
+      }
+    }
+    const verdict = clipVerdict({ ...inspected, requested_s: null, needed_s: neededFrames / FPS, judge });
+    const forced = !verdict.ok && Boolean(values.force);
+    const seconds = Math.max(1, Math.round(inspected.probe?.duration ?? 0));
+    const imported = { provider: values.provider, plan: values.plan ?? null, credits, imported_at: ctx.now().toISOString(), ...(values.note ? { note: values.note } : {}), ...(forced ? { forced: true } : {}) };
+    const take = { import: n, file, sha256, seconds, frames: inspected.probe?.frames ?? null, qc: verdict, judge, ...imported };
+    const previous = manifest.shots[scene.id];
+    const record = {
+      file,
+      sha256,
+      seconds,
+      frames: take.frames,
+      needed_s: Number((neededFrames / FPS).toFixed(3)),
+      first_frame: { file: keyframe.file, sha256: keyframe.sha256 },
+      qc: verdict,
+      judge,
+      takes: [...(previous?.takes ?? []).filter((each) => each.sha256 !== sha256), take],
+      needs_review: !verdict.ok && !forced,
+      ...imported,
+    };
+    if (record.needs_review) record.problems = verdict.problems;
+    manifest.shots[scene.id] = record;
+    // Shots cut from this shot's clip play the new file from now on.
+    const recut = sourcedShotScenes(doc).filter((each) => each.data.source.shot === scene.id && manifest.shots[each.id]);
+    for (const each of recut) manifest.shots[each.id] = cutRecord(record, each.data.source, framesOf.get(each.id) ?? 0);
+    writeManifest(workdir, doc, manifest);
+    const totals = bookImport(workdir, { stage: "clips", id: scene.id, provider: values.provider, plan: values.plan ?? null, credits, seconds, cost_usd: usd, file, sha256, ...(reservation ? { key: reservation } : {}) }, ctx.now());
+    booked = true;
+    const waiting = Object.entries(manifest.shots).filter(([, shot]) => shot.needs_review).map(([id]) => id);
+    recordStage(workdir, "clips", { shots: Object.keys(manifest.shots).length, imported: Object.values(manifest.shots).filter((shot) => shot.imported_at).length, generated: 0, needs_review: waiting, clip_seconds: totals.clip_seconds, usd: totals.usd, seconds: Math.round((Date.now() - started) / 1000) }, ctx.now());
+
+    const probe = inspected.probe ?? {};
+    ctx.stdout.write(`${scene.id}: ${file} from ${importedFrom(imported)}${usd ? `, US$${usd.toFixed(2)}` : ""}: ${Number(probe.duration ?? 0).toFixed(1)} s for ${(neededFrames / FPS).toFixed(1)} s of lines, ${probe.width}x${probe.height}, ${judge ? `judge ${judge.overall}/10` : "not judged (--judge asks)"}${previous?.file && previous.file !== file ? `; replaces ${previous.file}` : ""}\n`);
+    if (Math.round((probe.duration ?? 0) * FPS) < neededFrames) ctx.stdout.write(`${scene.id}: the clip is shorter than its lines; assemble slows it and holds its last frame for the rest, and refuses a long hold unless the shot's fit says "freeze"\n`);
+    if (record.needs_review) {
+      ctx.stdout.write(`ERROR ${scene.id}: ${verdict.problems.join("; ")}\n`);
+      ctx.stdout.write(`make ${scene.id} again from its keyframe (${keyframe.file}) and import that, or keep this one with --force (needs_review in clips/manifest.json)\n`);
+      return EXIT.lint;
+    }
+    if (forced) ctx.stdout.write(`${scene.id}: kept by --force although ${verdict.problems.join("; ")}\n`);
+    if (recut.length) ctx.stdout.write(`${recut.map((each) => each.id).join(", ")}: cut from ${scene.id}'s clip, now from the imported one\n`);
+    // A cut the imported clip is too short for is left for a fix, as `clips` leaves it.
+    const short = recut.filter((each) => manifest.shots[each.id].needs_review);
+    for (const each of short) ctx.stdout.write(`ERROR ${each.id}: ${manifest.shots[each.id].problems.join("; ")}\n`);
+    if (short.length) return EXIT.lint;
+    ctx.stdout.write(`next: node tools/video/cli.mjs status --slug ${doc.slug}\n`);
+    return EXIT.ok;
+  } finally {
+    // Nothing booked means nothing to count: the hold goes, whatever ended the import.
+    if (reservation && !booked) release(workdir, reservation);
   }
-  if (forced) ctx.stdout.write(`${scene.id}: kept by --force although ${verdict.problems.join("; ")}\n`);
-  if (recut.length) ctx.stdout.write(`${recut.map((each) => each.id).join(", ")}: cut from ${scene.id}'s clip, now from the imported one\n`);
-  // A cut the imported clip is too short for is left for a fix, as `clips` leaves it.
-  const short = recut.filter((each) => manifest.shots[each.id].needs_review);
-  for (const each of short) ctx.stdout.write(`ERROR ${each.id}: ${manifest.shots[each.id].problems.join("; ")}\n`);
-  if (short.length) return EXIT.lint;
-  ctx.stdout.write(`next: node tools/video/cli.mjs status --slug ${doc.slug}\n`);
-  return EXIT.ok;
 }
