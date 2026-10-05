@@ -39,4 +39,17 @@ cd /root/travel_scanner && python3 ops/release/hold.py clear <release_dir> <sha4
 
 ## 預檢腳本印什麼
 
-`scripts/host-preflight.sh` 只讀檔案：暫停檔內容、規則 1 標記的目錄、24 小時內動過的 `mokaair-*` 目錄、鎖是不是空的、live HEAD 與 origin/main 的 SHA、work tree 乾不乾淨、磁碟、最後一份部署 log 的尾巴。加 `--full` 才印驅動行程與容器清單：分類器曾把一次包含 `ps`、`who`、`last`、`docker images` 的唯讀調查擋成 Production Reads，純讀檔的版本一直都過。列 61 個以上的發布目錄時只印被標記的與 24 小時內動過的，`| tail` 整份清單會把重要的那幾個切掉。
+`scripts/host-preflight.sh` 讀檔案：暫停檔內容、規則 1 標記的目錄、24 小時內動過的 `mokaair-*` 目錄、鎖是不是空的、live HEAD 與 origin/main 的 SHA、work tree 乾不乾淨、磁碟、最後一份部署 log 的尾巴；另外對影片工作表下兩句唯讀 select（`paid video work`，見下一節）。加 `--full` 才印驅動行程與容器清單：分類器曾把一次包含 `ps`、`who`、`last`、`docker images` 的唯讀調查擋成 Production Reads，純讀檔的版本一直都過。列 61 個以上的發布目錄時只印被標記的與 24 小時內動過的，`| tail` 整份清單會把重要的那幾個切掉。
+
+## 付費影片工作（`paid video work`）
+
+每次部署都會重建 video-ai-worker 與 video-worker，只有文件的 commit 也一樣（原因見 `runbook.md`）。預檢因此印兩行：
+
+| 行 | 狀態 | 部署會怎樣 | 怎麼做 |
+| --- | --- | --- | --- |
+| `stage jobs` | `running` | 模型呼叫已經送出；process 被重啟就留下 `uncertain`，站主得自己查有沒有付錢、要不要重做（`app/video_automation/run_jobs.py`） | 預檢印 `PAID WORK IN FLIGHT`。等它結算再跑一次預檢；卡很久就把證據攤給站主，不要自己放 STOP 檔 |
+| `stage jobs` | `queued` | 還沒送出，重啟後照樣會被接走 | 可以部署 |
+| `stage jobs` | `uncertain` | 部署前就已經在等站主，部署不會改變它 | 可以部署，回報時提一句 |
+| `media jobs` | `queued`、`submitted` | 狀態都在 DB，重啟不丟、也不會向供應商重送，下次輪詢接著走（`app/video_media/jobs.py`） | 可以部署；有 session 正在跑恢復腳本等它時，照那份恢復文件 |
+
+兩行都是 `none` 就沒有東西會被打斷。2026-10-05 在 auto 模式實跑，兩句 select 沒被分類器擋。
