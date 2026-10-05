@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-rebind-receipts-after-scrubbing-host-details
 title: Rebind receipts after scrubbing host details from hash-bound evidence
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-receipts-rebind-scrub
 claimed_at: 2026-10-05T06:17:23Z
 created_at: 2026-10-02T17:16:40Z
-completed_at:
+completed_at: 2026-10-05T07:20:25Z
 branch: claude/receipts-rebind-scrub
 depends_on:
   - 2026-09-23-scrub-host-details-from-docs
@@ -130,8 +130,8 @@ cd apps/api && uv run pytest tests/test_catalog_content_review_followup.py -q
   - `docs/videos/long-form/review.json` and `review.md` still record the old `plans.json`
     digest. That is the duration receipt: it needs an independent DURATION_ONLY increment and
     is not edited here. `node tools/video/long-form/cli.mjs check` prints
-    `stale duration review binding: docs/videos/long-form/plans.json` (the only stale file).
-    Open PR #1235 also touches `review.json`.
+    `stale duration review binding: docs/videos/long-form/plans.json` (the only stale file,
+    also after rebasing onto #1235, which added its own increment).
   - `apps/api/app/video_plans/REVIEW.md` keeps the reviewed catalog digest. The expose task
     records that file, by its own SHA-256, as the reviewer's report copied unchanged, and three
     of its 24 rows were already historical. The expose task's new note says so.
@@ -145,6 +145,16 @@ cd apps/api && uv run pytest tests/test_catalog_content_review_followup.py -q
     the root login, and none of these names or reaches the host.
   - The batch022 outside root review (not in the repository) records the old Git blob; that
     blob is in 048d20f8f.
+- **Checks (Windows, 2026-10-05).** `node --test tools/repo-hygiene.test.mjs` 3/3;
+  `node docs/videos/so-thats-why/season2/validate.mjs --batch=completion` PASS;
+  `node tools/video/long-form/admin-catalog.mjs check` PASS; `cd apps/api && PYTHONUTF8=1 uv
+  run pytest tests/test_catalog_content_review_followup.py tests/test_video_plans.py -q` 61
+  passed, `ruff check` and `ruff format --check` clean; `npm run check:tasks` exit 0.
+  `npm run test:tools`: 1,634 pass, 2 skipped, 3 fail. One is the expected duration-receipt
+  test (`review.test.mjs`, plans.json stale until the increment), one the known Windows-only
+  `tts/check` test, and one `nginx-install.test.mjs` whose 300-round bash loop hit its 90 s
+  spawn timeout on a loaded machine (it reads only `ops/nginx/install.sh`, which this change
+  does not touch; it failed the same way when run alone).
 - **Filed** 2026-10-05-scrub-local-user-paths-from-the for the ten
   `docs/videos/sothatswhy-t27/` files still in `KNOWN`: their task is done, so the "another
   ticket's" reason no longer holds, and two of them are hash-bound inside that folder.
