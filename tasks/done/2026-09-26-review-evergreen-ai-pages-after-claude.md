@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-review-evergreen-ai-pages-after-claude
 title: Review evergreen AI pages after Claude Opus 5.5 and GPT-6 Sol/Luna (2026-09-22/23)
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-evergreen-ai-pages
 claimed_at: 2026-10-05T06:14:12Z
 created_at: 2026-09-26T14:06:22Z
-completed_at:
+completed_at: 2026-10-05T07:37:47Z
 branch: claude/evergreen-ai-pages
 depends_on: []
 scope:
