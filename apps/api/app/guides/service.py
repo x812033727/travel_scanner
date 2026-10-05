@@ -504,6 +504,7 @@ async def destination_facets(
     rows = await session.execute(query)
     articles: dict[str, set[UUID]] = {}
     for destination_id, article_id in rows:
+        assert destination_id is not None  # the query keeps rows with a destination only
         articles.setdefault(destination_id, set()).add(article_id)
     facets = [
         DestinationFacet(
@@ -744,10 +745,12 @@ async def sitemap_entries(
         )
         for article_id, kind, slug, row_locale, published_at, modified_at in rows
     ]
-    last = rows[-1] if rows and has_more else None
+    last = entries[-1] if entries and has_more else None
     return SitemapList(
         entries=entries,
-        next_cursor=_encode_sitemap_cursor(last[4], last[2], last[3]) if last else None,
+        next_cursor=(
+            _encode_sitemap_cursor(last.published_at, last.slug, last.locale) if last else None
+        ),
     )
 
 
