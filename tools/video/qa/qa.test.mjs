@@ -263,12 +263,19 @@ test("a blank channel stance and a failed verdict are failed items, exit 1", asy
 
 test("the judge being unreachable or out of budget is an external failure, exit 4; a revoked token is the owner's, exit 3", async () => {
   const { box, workdir } = finishedVideo();
-  const down = site({ policy: () => { throw new TypeError("fetch failed"); } });
+  const fetchFailed = (code) => Object.assign(new TypeError("fetch failed"), { cause: Object.assign(new Error(`socket ${code}`), { code }) });
+  const down = site({ policy: () => { throw fetchFailed("ECONNREFUSED"); } });
   const first = context(box, down.fetchImpl);
   assert.equal(await main(["qa", "--slug", box.slug], first.ctx), EXIT.external, first.out.stderr);
   const policy = readReport(workdir).items.find((item) => item.id === "policy");
   assert.equal(policy.ok, false);
   assert.match(policy.detail, /^the judge call failed: cannot reach https:\/\/site\.test/);
+  // A connection dropped after the judgement was sent may have spent the Jev call: asked once.
+  const lost = site({ policy: () => { throw fetchFailed("UND_ERR_SOCKET"); } });
+  const dropped = context(box, lost.fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], dropped.ctx), EXIT.external);
+  assert.match(readReport(workdir).items.find((item) => item.id === "policy").detail, /^the judge call failed: automation\/judge\/policy was sent and no answer came back/);
+  assert.equal(lost.calls.filter((call) => call.url.endsWith("/judge/policy")).length, 1, "not sent again");
   const spent = site({ policy: () => Response.json({ code: "jev_budget_exhausted", detail: "Jev 今天的次數用完了" }, { status: 429 }) });
   const budget = context(box, spent.fetchImpl);
   assert.equal(await main(["qa", "--slug", box.slug], budget.ctx), EXIT.external);
