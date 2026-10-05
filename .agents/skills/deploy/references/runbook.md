@@ -8,6 +8,8 @@
 
 順序規則（`README.md` 與 `docs/article-architecture.md`）：migration → API → web；API 先或一起，永遠不要讓 web 單獨領先一個新增操作的 API 改動。一次性腳本一起重建所有容器所以自然符合；分階段驅動要自己守。
 
+**為什麼每次都全部重建**：腳本沒有 `--force-recreate`，是 `up --build -d` 自己決定的。建置內容沒變時快取全中，映像的 `Created` 與 layer 都跟上次一樣，但映像 ID 是新的：主機是 Docker 29 加 containerd image store（`docker info` 的 `driver-type` 是 `io.containerd.snapshotter.v1`），映像 ID 是 OCI image index 的 digest（`docker image inspect -f '{{json .Descriptor}}'` 的 `mediaType` 是 `…image.index.v1+json`），每次建置都換，compose 看到 ID 變了就重建容器。2026-10-05 只改 skill 文件的 363489fe9，log 裡 postgres、redis 以外每個容器（含 `migrate`、video-ai-worker、video-worker）都是 `Recreate`，前後兩個 api 映像的 `Created` 都是 02:10:44.89Z（上一次真正建置的時間），ID 從 `67929f47…` 換成 `9e5d4be0…`。所以「只有文件，不會打斷工人」不成立：部署前看預檢的 `paid video work`（preflight.md）。
+
 ## 旗標
 
 | 旗標 | 意思 |

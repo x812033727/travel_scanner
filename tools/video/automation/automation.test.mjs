@@ -22,6 +22,7 @@ import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { ITEM_IDS } from "../qa/checks.mjs";
 import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
+import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
 import { automationClient } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
 import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, thumbnailAskHash } from "./flow.mjs";
@@ -2316,6 +2317,65 @@ test("a retake that no longer fits its window is shortened, not given up", async
   assert.equal(video.calls("translator", "reword").length, 0);
 });
 
+/**
+ * The line `tts`, `dub` and `check-audio` print last when a paid speech request went out and its
+ * answer was lost: the real client's error for a socket closed after the request was sent.
+ */
+async function lostSpeechLine(send) {
+  const fetchImpl = async () => {
+    throw Object.assign(new TypeError("fetch failed"), { cause: Object.assign(new Error("other side closed"), { code: "UND_ERR_SOCKET" }) });
+  };
+  const error = await send({ site: "https://mokaair.com", token: `mkv_${"t".repeat(43)}`, fetchImpl, sleep: async () => {} }).then(() => null, (caught) => caught);
+  assert.equal(error?.code, SPEECH_UNCERTAIN);
+  return error.message;
+}
+
+test("a dub whose paid request lost its answer blocks the video instead of giving the language up, and the owner's retry makes it; the owner's other problems still give it up", async () => {
+  const video = await finishedVideo();
+  video.choose({ en: { metadata: false, captions: true, dub: true }, ko: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: ko captions translated and reviewed$/);
+  const synthesis = await lostSpeechLine((options) => synthesize({ ...options, body: { voice: "gemini:Sulafat", segments: [] } }));
+  const judgement = await lostSpeechLine((options) => judgeLines({ ...options, lines: [{ id: "k7p2", intended: "a", spoken_form: "a", heard: "b" }], language: "en" }));
+  const owner = "dubs need a Gemini voice, which speaks every language; the narration voice is zh-TW-HsiaoChenNeural";
+  // Each of these answers once, as the CLI would print it with exit 3; then the fake dub plays.
+  const scripted = new Map([
+    ["dub en", { code: 3, out: `en: 1 of 3 requests synthesized\n${synthesis}\n` }],
+    ["check-audio en", { code: 3, out: `en: 2 of 3 lines transcribed\n${judgement}\n` }],
+    ["dub ko", { code: 3, out: `${owner}\n` }],
+  ]);
+  const played = video.ctx.runCommand;
+  video.ctx.runCommand = async (command, runCtx) => {
+    const key = `${command[0]} ${command[command.indexOf("--locale") + 1]}`;
+    if (!command.includes("--locale") || !scripted.has(key)) return played(command, runCtx);
+    video.runs.push(command.join(" "));
+    const answer = scripted.get(key);
+    scripted.delete(key);
+    return answer;
+  };
+  const retry = (id) => Object.assign(video.listed(), { retry_request_id: id, retry_acknowledged_id: null });
+
+  assert.equal(await video.step(), `chatgpt-ads-off: blocked — dub en needs the owner: ${synthesis}`);
+  assert.equal(video.state().status, "blocked");
+  assert.ok(!existsSync(dubArtifacts(video.workdir, "en").skipped), "the language is not given up for a request that may have worked");
+  assert.ok(!video.state().notes.some((note) => note.startsWith("en dub skipped")));
+  assert.equal(await video.step(), null, "a blocked video is not run again on its own");
+
+  retry("9a4e0c5e-5f43-4d8f-9a63-1d6f6c1a0b01");
+  assert.equal(await video.step(), `chatgpt-ads-off: blocked — check-audio en needs the owner: ${judgement}`);
+  assert.ok(!existsSync(dubArtifacts(video.workdir, "en").skipped));
+
+  retry("4c0f8a1e-2b7d-4e55-8f0a-6b3d2e9c7a12");
+  assert.equal(await video.step(), "chatgpt-ads-off: en dub made; Jev passed every line");
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub given up (dub needs the owner: ${owner}); the video goes on without it`);
+  assert.equal(readJson(dubArtifacts(video.workdir, "ko").skipped).reason, `dub needs the owner: ${owner}`);
+  assert.equal(scripted.size, 0);
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en captions\+dub, ko captions\+dub\)$/);
+  const { en, ko } = video.reviews("languages")[0].payload.locales;
+  assert.deepEqual([en.dub, ko.dub], ["ready", { status: "skipped", reason: `dub needs the owner: ${owner}` }]);
+  assert.deepEqual(video.runs.filter((run) => /^(dub|check-audio) .*--locale en/.test(run)).map((run) => run.split(" ")[0]), ["dub", "dub", "check-audio", "dub", "check-audio"], "the retried track is checked again before it goes out");
+});
+
 test("a language ticked after the video is on YouTube is made as a new batch", async () => {
   const video = await finishedVideo();
   video.choose({});
@@ -2555,6 +2615,41 @@ test("a STOP file that ends tts, a retake or check-audio defers the video to the
   assert.deepEqual(gate.reviews("audio"), [], "nothing was sent for review");
   assert.equal(gate.runs.filter((run) => run.startsWith("review-push")).length, 0);
 
+  assert.match(await gate.automation.step(), /narration checked \(Jev passed every line\) and sent for review$/);
+  assert.equal(gate.reviews("audio").length, 1);
+});
+
+test("a narration check that stops for the owner, a paid judgement whose answer was lost included, blocks the video and sends nothing for review; a service that is down still waits for the next run", async () => {
+  const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => false });
+  const judgement = await lostSpeechLine((options) => judgeLines({ ...options, lines: [{ id: "x9fe", intended: ORIGINAL, spoken_form: ORIGINAL, heard: HEARD_WRONG }] }));
+  const { ctx } = gate.automation;
+  const played = ctx.runCommand;
+  // check.json as an interrupted check leaves it: x9fe transcribed differently and never judged.
+  const scripted = [
+    { code: 4, out: "Jev 暫時無法判斷\n" },
+    { code: 3, out: `x9fe transcribed\n${judgement}\n`, half: true },
+    { code: 2, out: "usage: --slug is required\n" },
+  ];
+  ctx.runCommand = async (command, runCtx) => {
+    if (command[0] !== "check-audio" || !scripted.length) return played(command, runCtx);
+    gate.runs.push(command.join(" "));
+    const { half, ...answer } = scripted.shift();
+    if (half) atomicWrite(path.join(gate.workdir, "review", "check.json"), JSON.stringify({ lines: { x9fe: { match: false, match_kind: null, intended: ORIGINAL, heard: HEARD_WRONG, noul: null } } }));
+    return answer;
+  };
+  const retry = (id) => Object.assign(gate.site.listed.get("chatgpt-ads-off"), { retry_request_id: id, retry_acknowledged_id: null });
+
+  assert.equal(await gate.automation.step(), "chatgpt-ads-off: narration check could not finish (Jev 暫時無法判斷); the next run tries again");
+  assert.equal(await gate.automation.step(), `chatgpt-ads-off: blocked — check-audio needs the owner: ${judgement}`);
+  assert.equal(gate.runs.filter((run) => run.startsWith("review-push")).length, 0, "nothing was sent for review");
+  assert.equal(gate.reviews("audio").length, 0);
+  assert.equal(gate.state().status, "blocked");
+
+  retry("6f1d2c3b-4a5e-4f60-8b7c-9d0e1f2a3b4c");
+  assert.equal(await gate.automation.step(), "chatgpt-ads-off: blocked — check-audio failed: usage: --slug is required");
+  assert.equal(gate.reviews("audio").length, 0, "any other stop is not a finished check either");
+
+  retry("0b9a8c7d-6e5f-4a3b-9c2d-1e0f9a8b7c6d");
   assert.match(await gate.automation.step(), /narration checked \(Jev passed every line\) and sent for review$/);
   assert.equal(gate.reviews("audio").length, 1);
 });
