@@ -1,0 +1,170 @@
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import test from "node:test";
+import { judgeLines, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, transcribeClip } from "./client.mjs";
+import { encodeWav, parseWav } from "./wav.mjs";
+
+const SITE = "https://site.test";
+const TOKEN = `mkv_${"t".repeat(43)}`;
+const sha256 = (text) => createHash("sha256").update(text).digest("hex");
+const audio = () => encodeWav(Int16Array.from({ length: 4800 }, (_, i) => Math.round(Math.sin(i / 8) * 3000)));
+// What Node's fetch throws: a TypeError whose cause carries the socket's code.
+const failed = (code) => Object.assign(new TypeError("fetch failed"), { cause: Object.assign(new Error(`socket ${code}`), { code }) });
+const problem = (status, code, headers = {}) => Response.json({ code, detail: `${code} detail` }, { status, headers });
+// A 200 whose body breaks off after its first bytes, the way a dropped connection ends a download.
+const brokenBody = () =>
+  new Response(new ReadableStream({ start(controller) { controller.enqueue(new Uint8Array([82, 73, 70])); controller.error(new TypeError("terminated")); } }), { status: 200 });
+
+// One of each paid request, and the answer a working server gives it.
+const PAID = [
+  {
+    name: "synthesize",
+    path: "speech",
+    send: (options) => synthesize({ ...options, body: { voice: "zh-TW-HsiaoChenNeural", segments: [{ parts: [{ text: "好" }], break_after_ms: 0 }] } }),
+    ok: () => new Response(audio(), { status: 200, headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "37" } }),
+    check: (result) => {
+      assert.deepEqual(Buffer.from(result.wav), audio());
+      assert.equal(result.billable, 37);
+    },
+  },
+  {
+    name: "transcribeClip",
+    path: "speech/transcribe",
+    send: (options) => transcribeClip({ ...options, wav: audio(), terms: ["Jev"] }),
+    ok: () => Response.json({ text: "好" }),
+    check: (result) => assert.equal(result, "好"),
+  },
+  {
+    name: "judgeLines",
+    path: "speech/judge",
+    send: (options) => judgeLines({ ...options, lines: [{ id: "a1", intended: "好", spoken_form: "好", heard: "號" }] }),
+    ok: () => Response.json({ results: [{ id: "a1", noul: 0.9 }] }),
+    check: (result) => assert.deepEqual([...result], [["a1", 0.9]]),
+  },
+];
+
+/** A counting server that plays `answers` in order (each returns a Response or throws). */
+function server(answers) {
+  const calls = [];
+  const sleeps = [];
+  const options = {
+    site: SITE,
+    token: TOKEN,
+    fetchImpl: async (url, init) => {
+      calls.push({ url, method: init.method, body: init.body });
+      const answer = answers[Math.min(calls.length, answers.length) - 1];
+      return answer();
+    },
+    sleep: async (ms) => sleeps.push(ms),
+  };
+  return { calls, sleeps, options };
+}
+
+test("a paid request sent and left without its answer is sent once and names the request it lost", async () => {
+  const lost = [
+    ["a connection reset after it went out", () => { throw failed("ECONNRESET"); }, 0],
+    ["a socket closed mid-way", () => { throw failed("UND_ERR_SOCKET"); }, 0],
+    ["Node's deadline for the headers", () => { throw failed("UND_ERR_HEADERS_TIMEOUT"); }, 0],
+    ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
+    ["the web route's 502, which a lost answer gives too", () => problem(502, "upstream_unavailable"), 502],
+    ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
+    ["an answer that breaks off", brokenBody, 200],
+  ];
+  for (const paid of PAID) {
+    for (const [what, answer, status] of lost) {
+      const label = `${paid.name}: ${what}`;
+      const { calls, sleeps, options } = server([answer, paid.ok]);
+      await assert.rejects(paid.send(options), (error) => {
+        assert.ok(error instanceof SpeechError, label);
+        assert.equal(error.code, SPEECH_UNCERTAIN, label);
+        // Exit 3: the worker blocks the video or skips the dub instead of trying again next round.
+        assert.equal(error.who, "owner", label);
+        assert.equal(error.status, status, label);
+        assert.equal(error.path, paid.path, label);
+        assert.equal(error.requestSha256, sha256(calls[0].body), label);
+        assert.match(error.message, new RegExp(`POST /api/video/${paid.path} was sent and no usable answer came back.*not sent again \\(request sha256 ${error.requestSha256}\\)`), label);
+        return true;
+      });
+      assert.equal(calls.length, 1, `${label}: sent once, not five times`);
+      assert.deepEqual(sleeps, [], `${label}: no wait for a second try`);
+    }
+  }
+});
+
+test("a paid answer that arrives but cannot be read is not bought again", async () => {
+  const unreadable = [
+    [PAID[0], () => new Response("<html>not audio</html>", { status: 200, headers: { "X-Billable-Characters": "37" } })],
+    [PAID[1], () => new Response("<html>a proxy page</html>", { status: 200 })],
+    [PAID[2], () => Response.json(null)],
+  ];
+  for (const [paid, answer] of unreadable) {
+    const { calls, options } = server([answer, paid.ok]);
+    await assert.rejects(paid.send(options), (error) => error.code === SPEECH_UNCERTAIN && error.who === "owner" && /the answer could not be read/.test(error.message));
+    assert.equal(calls.length, 1, paid.name);
+  }
+});
+
+test("a paid request that never left, or that the API settled, is tried again and returns the answer that carried it", async () => {
+  const settled = [
+    ["a refused connection", () => { throw failed("ECONNREFUSED"); }, []],
+    ["an unknown host", () => { throw failed("ENOTFOUND"); }, []],
+    ["a DNS hiccup", () => { throw failed("EAI_AGAIN"); }, []],
+    ["a connect timeout", () => { throw failed("UND_ERR_CONNECT_TIMEOUT"); }, []],
+    ["the API's rate limit", () => problem(429, "rate_limit_exceeded", { "Retry-After": "3" }), [3000]],
+    ["a busy provider", () => problem(503, "video_speech_upstream_busy", { "Retry-After": "7" }), [7000]],
+    ["a provider failure the API answered", () => problem(502, "video_speech_upstream_failed"), [1000]],
+    ["a key the provider refused", () => problem(502, "video_speech_upstream_rejected_key"), [1000]],
+    ["Jev failing behind the API", () => problem(502, "video_judge_upstream_failed"), [1000]],
+  ];
+  for (const paid of PAID) {
+    for (const [what, answer, waits] of settled) {
+      const label = `${paid.name}: ${what}`;
+      const { calls, sleeps, options } = server([answer, paid.ok]);
+      paid.check(await paid.send(options));
+      assert.equal(calls.length, 2, `${label}: tried again`);
+      assert.equal(calls[1].body, calls[0].body, `${label}: the same request`);
+      if (waits.length) assert.deepEqual(sleeps, waits, label);
+    }
+  }
+});
+
+test("a settled failure that does not clear stops after the bounded attempts", async () => {
+  const down = server([() => problem(502, "video_speech_upstream_failed")]);
+  await assert.rejects(PAID[1].send(down.options), (error) => error.code === "video_speech_upstream_failed" && error.who === "service");
+  assert.equal(down.calls.length, 5);
+  const offline = server([() => { throw failed("ECONNREFUSED"); }]);
+  await assert.rejects(PAID[0].send(offline.options), (error) => error.code === "network" && error.who === "service");
+  assert.equal(offline.calls.length, 5);
+});
+
+test("the status GET keeps every retry, a dropped connection and a lost answer included", async () => {
+  const status = () => Response.json({ configured: true, voices: [] });
+  for (const [what, answer] of [
+    ["a connection reset", () => { throw failed("ECONNRESET"); }],
+    ["the web route's 502", () => problem(502, "upstream_unavailable")],
+    ["a gateway's timeout page", () => new Response("<html>504</html>", { status: 504 })],
+    ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 })],
+  ]) {
+    const { calls, options } = server([answer, status]);
+    assert.deepEqual(await speechStatus(options), { configured: true, voices: [] }, what);
+    assert.equal(calls.length, 2, what);
+    assert.equal(calls[0].method, "GET", what);
+  }
+});
+
+test("the owner's problems and a spent budget are told after one request, with their meaning kept", async () => {
+  const once = [
+    [PAID[0], () => problem(401, "video_tool_token_invalid"), "owner"],
+    [PAID[0], () => problem(503, "video_speech_not_configured"), "owner"],
+    [PAID[0], () => problem(422, "video_speech_voice_not_allowed"), "owner"],
+    [PAID[0], () => problem(429, "video_speech_budget_exhausted"), "service"],
+    [PAID[1], () => problem(503, "video_speech_not_configured"), "owner"],
+    [PAID[2], () => problem(429, "jev_budget_exhausted"), "service"],
+  ];
+  for (const [paid, answer, who] of once) {
+    const { calls, options } = server([answer, paid.ok]);
+    const expected = (await answer().json()).code;
+    await assert.rejects(paid.send(options), (error) => error instanceof SpeechError && error.code === expected && error.who === who);
+    assert.equal(calls.length, 1, `${paid.name}: ${expected}`);
+  }
+});

@@ -3,10 +3,20 @@
 // Failures are sorted by who can fix them, which is what the CLI's exit code reports: the owner
 // (a revoked token, the card not filled in, a voice not on the allowlist), the service (budget
 // spent, Azure down), or nobody right now (throttling, retried with the server's Retry-After).
+// A paid request (speech, speech/transcribe, speech/judge) is sent again only when it never left
+// or the API settled it; one that went out and lost its answer stops (SPEECH_UNCERTAIN).
+import { createHash } from "node:crypto";
 import { NARRATION_LOCALE } from "../core/schema.mjs";
 import { toNarrationRate } from "./wav.mjs";
 
 export const USER_AGENT = "Mokaair-video-cli/1.0 (https://mokaair.com; support@mokaair.com)";
+
+// A paid request was sent and no answer came back: the connection dropped after it went out, a
+// gateway or the web route answered instead of the API, or the answer broke off on the way. The
+// server may have synthesized, transcribed or judged it, and been charged; it keeps no answer to
+// fetch again and takes no idempotency key, so the request is not sent again. The error names the
+// request (`path`, `requestSha256` of the body sent) and waits for a person (exit 3).
+export const SPEECH_UNCERTAIN = "video_speech_uncertain";
 
 export class SpeechError extends Error {
   constructor(message, { status = 0, code = "", who = "service" } = {}) {
@@ -20,6 +30,22 @@ export class SpeechError extends Error {
 
 const OWNER_CODES = new Set(["video_tool_token_invalid", "video_speech_not_configured", "video_speech_voice_not_allowed"]);
 const RETRYABLE_CODES = new Set(["video_speech_upstream_busy", "rate_limit_exceeded", "video_speech_upstream_failed", "upstream_unavailable"]);
+// A paid request's 5xx that settles it: the API's own answer once the provider refused or failed
+// (apps/api/app/video_speech/admin_api.py; synthesis gives the reserved characters back before it
+// answers). Not the web route's 502 `upstream_unavailable`: the speech routes name no lost answer
+// of their own, so apps/web/app/api/video/speech/forward.ts answers it both for an API it never
+// reached and for one whose answer it lost after the request went out.
+const SETTLED_CODES = new Set(["video_speech_upstream_busy", "video_speech_upstream_failed", "video_speech_upstream_rejected_key", "video_judge_upstream_failed"]);
+// Connection errors that mean the request never reached a server, so nothing it asks has started.
+const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
+
+const neverSent = (error) => NEVER_SENT.has(error?.cause?.code ?? error?.code);
+
+function uncertain(path, body, why, status = 0) {
+  const requestSha256 = createHash("sha256").update(body ?? "").digest("hex");
+  const message = `POST /api/video/${path} was sent and no usable answer came back (${why}); it may have run and been charged, so it is not sent again (request sha256 ${requestSha256})`;
+  return Object.assign(new SpeechError(message, { status, code: SPEECH_UNCERTAIN, who: "owner" }), { path, requestSha256, why });
+}
 
 async function problemOf(response) {
   try {
@@ -36,7 +62,7 @@ function retryDelayMs(response, attempt) {
   return Math.min(2 ** attempt, 30) * 1000;
 }
 
-async function call({ site, token, path, init, fetchImpl, sleep, attempts }) {
+async function call({ site, token, path, init, fetchImpl, sleep, attempts, paid = false }) {
   let last;
   for (let attempt = 0; attempt < attempts; attempt++) {
     let response;
@@ -46,6 +72,7 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts }) {
         headers: { Authorization: `Bearer ${token}`, "User-Agent": USER_AGENT, "Accept-Language": "zh-TW", ...(init?.headers ?? {}) },
       });
     } catch (error) {
+      if (paid && !neverSent(error)) throw uncertain(path, init.body, error.cause?.message ?? error.message);
       last = new SpeechError(`cannot reach ${site}: ${error.message}`, { code: "network" });
       await sleep(retryDelayMs(null, attempt));
       continue;
@@ -57,6 +84,9 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts }) {
     // A spent budget stays spent for the rest of the month (speech) or day (Jev): do not retry.
     if (problem.code === "video_speech_budget_exhausted" || problem.code === "jev_budget_exhausted") {
       throw new SpeechError(message, { status: response.status, code: problem.code });
+    }
+    if (paid && response.status >= 500 && !SETTLED_CODES.has(problem.code)) {
+      throw uncertain(path, init.body, `HTTP ${response.status}${problem.code ? ` ${problem.code}` : ""}${problem.detail ? `: ${problem.detail}` : ""}`, response.status);
     }
     last = new SpeechError(message, { status: response.status, code: problem.code });
     if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
@@ -72,8 +102,19 @@ export async function speechStatus(options) {
   return response.json();
 }
 
-const postJson = (options, path, body) =>
-  call({ ...defaults(options), path, init: { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } });
+/**
+ * One paid POST and `read` of its answer. An answer that breaks off or cannot be read was still
+ * paid for, so it is SPEECH_UNCERTAIN like a lost one, never sent again.
+ */
+async function postPaid(options, path, body, read) {
+  const init = { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) };
+  const response = await call({ ...defaults(options), path, init, paid: true });
+  try {
+    return await read(response);
+  } catch (error) {
+    throw uncertain(path, init.body, `the answer could not be read: ${error.message}`, response.status);
+  }
+}
 
 // The server's default language for a clip and for Jev's state; a dub names its own.
 const trackLanguage = (language) => (language === NARRATION_LOCALE ? {} : { language });
@@ -85,9 +126,10 @@ const trackLanguage = (language) => (language === NARRATION_LOCALE ? {} : { lang
  */
 export async function transcribeClip({ wav, terms = [], language = NARRATION_LOCALE, ...options }) {
   const request = { audio: Buffer.from(wav).toString("base64"), ...(terms.length ? { terms } : {}), ...trackLanguage(language) };
-  const response = await postJson(options, "speech/transcribe", request);
-  const body = await response.json();
-  return typeof body.text === "string" ? body.text : "";
+  return postPaid(options, "speech/transcribe", request, async (response) => {
+    const body = await response.json();
+    return typeof body.text === "string" ? body.text : "";
+  });
 }
 
 /**
@@ -95,18 +137,17 @@ export async function transcribeClip({ wav, terms = [], language = NARRATION_LOC
  * `language` is what the lines are written in, sent the same way as for a clip.
  */
 export async function judgeLines({ lines, language = NARRATION_LOCALE, ...options }) {
-  const response = await postJson(options, "speech/judge", { lines, ...trackLanguage(language) });
-  const body = await response.json();
-  return new Map((body.results ?? []).map((result) => [result.id, Number(result.noul)]));
+  return postPaid(options, "speech/judge", { lines, ...trackLanguage(language) }, async (response) => {
+    const body = await response.json();
+    return new Map((body.results ?? []).map((result) => [result.id, Number(result.noul)]));
+  });
 }
 
 /** Synthesize one request body; resolves to the WAV bytes and the billable characters charged. */
 export async function synthesize({ body, ...options }) {
-  const response = await call({
-    ...defaults(options),
-    path: "speech",
-    init: { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) },
-  });
   // Gemini voices come back at 24 kHz; everything downstream works on the 48 kHz grid.
-  return { wav: toNarrationRate(Buffer.from(await response.arrayBuffer())), billable: Number(response.headers.get("x-billable-characters") || 0) };
+  return postPaid(options, "speech", body, async (response) => ({
+    wav: toNarrationRate(Buffer.from(await response.arrayBuffer())),
+    billable: Number(response.headers.get("x-billable-characters") || 0),
+  }));
 }
