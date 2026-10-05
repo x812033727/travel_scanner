@@ -10,6 +10,7 @@ const HELP = `Shorts pipeline (docs/videos/SHORTS.md)
   validate     --file SCRIPT.json [--source-base DIR]
   build        --file SCRIPT.json --workdir OUTSIDE_REPO [--source-base DIR] [--speech server|windows|files]
                [--audio-dir DIR] [--voice "Microsoft Hanhan Desktop"] [--channel msedge] [--redo BUILD_DIR]
+               [--captions plain|karaoke]   (else VIDEO_SHORTS_CAPTIONS, else plain)
   check-audio  --dir BUILD_DIR [--threshold 0.5]
   qa           --dir BUILD_DIR [--verify verify.json] [--offline]
   package      --dir BUILD_DIR
@@ -23,7 +24,7 @@ const HELP = `Shorts pipeline (docs/videos/SHORTS.md)
 Narration: server is the channel's voice through the site (needs \`node tools/video/cli.mjs login\`);
 windows is the installed voice; files takes one 000.wav, 001.wav, ... per phrase from --audio-dir.
 The order for one Short: build, check-audio, qa, package, push.`;
-const FLAGS = ['file', 'source-base', 'workdir', 'voice', 'channel', 'audio-dir', 'dir', 'start', 'now', 'speech', 'redo', 'threshold', 'verify', 'from', 'slug', 'episode-workdir', 'short'];
+const FLAGS = ['file', 'source-base', 'workdir', 'voice', 'channel', 'audio-dir', 'dir', 'start', 'now', 'speech', 'redo', 'threshold', 'verify', 'from', 'slug', 'episode-workdir', 'short', 'captions'];
 const print = (value) => console.log(typeof value === 'string' ? value : JSON.stringify(value, null, 2));
 const need = (values, name) => {
   if (!values[name]) throw new Error(`--${name} required`);
@@ -107,7 +108,7 @@ export async function main(args=process.argv.slice(2), { env = process.env, fetc
     const speech = values.speech ?? (values['audio-dir'] ? 'files' : defaultSource());
     if (!SOURCES.includes(speech)) throw new Error(`--speech must be one of ${SOURCES.join(', ')}`);
     if (values.redo && !existsSync(path.resolve(values.redo))) throw new Error(`--redo: ${values.redo} does not exist`);
-    print(await build({file:path.resolve(values.file),sourceBase,workdir:values.workdir,voice:values.voice,channel:values.channel,audioDir:values['audio-dir'],speech,client:speech==='server'?await site():null,redo:values.redo?path.resolve(values.redo):null,lexicon:lexicon()}));
+    print(await build({file:path.resolve(values.file),sourceBase,workdir:values.workdir,voice:values.voice,channel:values.channel,audioDir:values['audio-dir'],speech,client:speech==='server'?await site():null,redo:values.redo?path.resolve(values.redo):null,lexicon:lexicon(),captions:values.captions}));
   }
   return 0;
 }
@@ -143,7 +144,7 @@ async function fromEpisode(values, { env, home, site }) {
     const file = path.join(workdir, 'episode-scripts', `${doc.slug}.json`);
     mkdirSync(path.dirname(file), {recursive:true});
     writeFileSync(file, `${JSON.stringify(doc,null,2)}\n`);
-    results.push(await build({file, sourceBase:episode.workdir, workdir, voice:values.voice, channel:values.channel, audioDir:values['audio-dir'], speech, client, lexicon:episode.lexicon ?? lexicon()}));
+    results.push(await build({file, sourceBase:episode.workdir, workdir, voice:values.voice, channel:values.channel, audioDir:values['audio-dir'], speech, client, lexicon:episode.lexicon ?? lexicon(), captions:values.captions}));
   }
   print(results);
   return 0;
