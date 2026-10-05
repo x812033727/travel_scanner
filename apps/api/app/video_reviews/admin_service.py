@@ -68,6 +68,7 @@ from app.video_automation.settings import (
     look_pick_note,
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
+from app.video_reviews.producer_state import worker_state
 from app.video_reviews.schemas import (
     BROWSE_STATES,
     DUB_LOCALES,
@@ -92,6 +93,7 @@ from app.video_reviews.schemas import (
     ReviewFile,
     ReviewIn,
     ReviewOut,
+    WorkerState,
 )
 from app.video_reviews.storage import ReviewStore, valid_slug
 from app.video_shorts import costs as shorts_costs
@@ -499,6 +501,7 @@ def _summary(
     compilation: bool = False,
     download_available: bool = False,
     hold: shorts_slots.Hold | None = None,
+    producer: WorkerState | None = None,
 ) -> dict[str, Any]:
     choices = locale_choices(project)
     states = languages if languages is not None else language_states(choices, [])
@@ -537,6 +540,7 @@ def _summary(
         "locales": choices,
         "locales_decided_at": project.locales_decided_at,
         "languages": states,
+        "worker_state": None if is_short else producer,
         # A Short's languages are the Shorts settings', not a choice made video by video, so
         # it waits for no decision on the language panel.
         "ready_to_upload": (
@@ -687,6 +691,7 @@ async def project_view(session: AsyncSession, slug: str, work_dir: str | None = 
             compilation=compiled,
             download_available=compiled and download_file(work_dir, slug) is not None,
             hold=held.get(slug),
+            producer=worker_state(work_dir, slug) if project.shorts_line is None else None,
         ),
         reviews=[_review_out(review) for review in reviews],
     )
@@ -880,6 +885,9 @@ async def _summaries(
                 download_available=project.slug in compiled
                 and download_file(work_dir, project.slug) is not None,
                 hold=held.get(project.slug),
+                producer=worker_state(work_dir, project.slug)
+                if project.shorts_line is None
+                else None,
             )
         )
         for project, count, approved_at in listed

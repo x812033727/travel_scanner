@@ -2284,6 +2284,26 @@
     "studioStep1": "Download each language's track above.",
     "studioStep2": "In YouTube Studio open Languages in the left menu, then this video, Add language, pick the language, Add next to Dubbing, choose the file, Publish; once per language.",
     "studioStep3": "Come back and press \"Uploaded the dub tracks in Studio\". Languages ticked later arrive as a new card.",
+    "production": {
+      "states": {
+        "not_adopted": "Main worker has not taken over",
+        "registered": "Registered with the main worker",
+        "blocked": "Main worker blocked",
+        "stopped": "Worker STOP marker present",
+        "done": "Main worker marked complete",
+        "dropped": "Main worker marked dropped",
+        "unavailable": "Worker state unavailable"
+      },
+      "help": {
+        "not_adopted": "Continue from the original production workflow and approved media. This page does not enqueue it automatically; existing review files may already be available.",
+        "registered": "The worker has a persisted job for this video. This does not confirm that a process is running; review gates and settings can still hold it.",
+        "blocked": "The worker recorded a blocker. Check its error and existing results before requesting a retry.",
+        "stopped": "A STOP marker pauses this registered job. Check why it was placed before resuming the original workflow.",
+        "done": "The main worker marked its own workflow complete. This does not confirm that all newly chosen languages are ready.",
+        "dropped": "The main worker recorded this job as dropped. The site's review and publication records stay separate.",
+        "unavailable": "The API cannot verify the worker state from its mounted work directory. Check the mount and original producer before retrying."
+      }
+    },
     "publishStates": {
       "deciding": "Waiting for your language choice",
       "making": "Language results incomplete",

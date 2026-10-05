@@ -5,7 +5,7 @@
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
 import { stopRequested } from "../core/paths.mjs";
-import { normalizeRun, RunReceiptError, runReceiptStore } from "./run-receipts.mjs";
+import { normalizeRun, policyHeld, POLICY_HOLD_CODE, RunReceiptError, runReceiptStore } from "./run-receipts.mjs";
 import path from "node:path";
 
 // A stage answered something that is not the JSON it was asked for; flow.mjs retries it later.
@@ -21,6 +21,7 @@ export const RUN_UNCERTAIN = "video_ai_run_uncertain";
 // A durable run still has a recoverable server receipt. The worker ends this round and polls
 // that same operation next round instead of holding a gateway open for several minutes.
 export const RUN_PENDING = "video_ai_run_pending";
+export const POLICY_HOLD = POLICY_HOLD_CODE;
 
 export class AutomationError extends Error {
   constructor(message, { status = 0, code = "", who = "service" } = {}) {
@@ -33,6 +34,7 @@ export class AutomationError extends Error {
 }
 
 const OWNER_CODES = new Set([
+  POLICY_HOLD,
   "video_tool_token_invalid",
   "video_ai_provider_not_configured",
   "video_ai_budget_exhausted",
@@ -143,6 +145,12 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     let waited = 0, failures = 0;
     function completed() {
       const receipt = entry.record.receipt;
+      if (policyHeld(entry.record)) {
+        const refusal = receipt ?? entry.record.policy_rejection;
+        throw tagged(Object.assign(new AutomationError(refusal.error_detail || "the video route is disabled; its original refusal is retained", {
+          code: POLICY_HOLD, status: refusal.error_status ?? 409, who: "owner",
+        }), { policy_hold: { format: entry.record.request.format, stage: entry.record.request.stage, receipt_id: receipt?.id ?? null } }), body);
+      }
       if (receipt?.status === "succeeded") { receipts.consume(entry); return receipt.result; }
       if (receipt?.status === "uncertain") throw tagged(new AutomationError(receipt.error_detail || "the saved model run is uncertain; the owner must inspect it before retrying", { code: RUN_UNCERTAIN, status: receipt.error_status ?? 0, who: "owner" }), body);
       if (receipt?.status === "failed") {
@@ -172,6 +180,10 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
         });
         if (!response.ok) {
           const problem = await problemOf(response);
+          if (!known && response.status === 409 && problem.code === POLICY_HOLD) {
+            receipts.hold(entry, { error_code: POLICY_HOLD, error_status: 409, error_detail: problem.detail || "the video route is disabled" });
+            completed();
+          }
           const error = new AutomationError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code,
             who: response.status === 401 || OWNER_CODES.has(problem.code) || response.status === 409 ? "owner" : "service" });
           if (error.who === "owner" || response.status < 429 || PAUSE_CODES.has(problem.code)) throw tagged(error, body);
@@ -218,8 +230,29 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   async function retryRuns(slug, authorization = {}) {
     try {
       const confirmed = [];
-      for (const entry of receipts.retryCandidates(slug, authorization)) {
+      const candidates = receipts.retryCandidates(slug, authorization);
+      // A project-local owner retry authorizes one policy-held request. Do not partly
+      // archive a legacy/mixed set before discovering that its request was already used.
+      if (candidates.length > 1 && candidates.some((entry) => policyHeld(entry.record))) {
+        throw new Error("multiple saved runs include a policy hold; inspect their retained identities before retrying this project");
+      }
+      for (const entry of candidates) {
+        if (stopRequested(path.dirname(path.dirname(entry.file)))) throw new Error("STOP prevents this owner retry");
         const saved = entry.record.receipt;
+        if (policyHeld(entry.record)) {
+          const freshSettings = await request("GET", "automation/settings");
+          const requestFormat = entry.record.request.format;
+          const savedVideo = entry.record.request.payload.video;
+          const correctedSlides = requestFormat === "drama" && savedVideo && typeof savedVideo === "object" && !Array.isArray(savedVideo)
+            && (savedVideo.format ?? "slides") === "slides"
+            && authorization.format === "slides";
+          const dramaEnabled = freshSettings.drama?.drama_enabled ?? freshSettings.drama_enabled;
+          if (freshSettings.enabled !== true || (!correctedSlides && (requestFormat !== "drama" || dramaEnabled !== true))) {
+            throw Object.assign(new AutomationError("the saved policy still disables this video; its original receipt is retained", { code: POLICY_HOLD, status: 409, who: "owner" }),
+              { slug, policy_hold: { format: requestFormat, stage: entry.record.request.stage, receipt_id: saved?.id ?? null } });
+          }
+          if (!saved) { confirmed.push({ entry, fresh: null, policyValidated: true }); continue; }
+        }
         const response = await fetchImpl(`${site}/api/video/automation/run/jobs/${saved.id}?input_hash=${saved.input_hash}`, {
           method: "GET", headers: { Authorization: `Bearer ${token}`, "User-Agent": USER_AGENT, "Accept-Language": "zh-TW" },
           signal: AbortSignal.timeout(25_000),
@@ -229,16 +262,21 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
           throw new Error(problem.detail || `HTTP ${response.status}`);
         }
         const fresh = receipts.receive(entry, await response.json());
-        confirmed.push({ entry, fresh });
+        if (policyHeld(entry.record) && (fresh.status !== "failed" || fresh.error_code !== POLICY_HOLD || fresh.dispatched_at !== null)) {
+          throw new Error("the saved policy refusal is no longer a verified undispatched failure");
+        }
+        confirmed.push({ entry, fresh, policyValidated: policyHeld(entry.record) });
       }
       // Verify every selected lookup before archiving any operation. A failed lookup leaves
       // all keys in place, even when another operation's current state was already readable.
-      for (const { entry, fresh } of confirmed) {
+      for (const { entry, fresh, policyValidated } of confirmed) {
+        if (stopRequested(path.dirname(path.dirname(entry.file)))) throw new Error("STOP prevents this owner retry");
         // A late successful commit is recovered by the normal run path, before any budget
         // check. Only a freshly confirmed uncertain result permits this explicit new attempt.
-        if (fresh.status === "uncertain" || fresh.status === "succeeded" && authorization.reason?.includes("inputs changed")) receipts.archive(entry, authorization);
+        if (policyValidated || fresh.status === "uncertain" || fresh.status === "succeeded" && authorization.reason?.includes("inputs changed")) receipts.archive(entry, { ...authorization, policyValidated });
       }
     } catch (error) {
+      if (error instanceof AutomationError && error.code === POLICY_HOLD) throw error;
       throw Object.assign(new AutomationError(`could not verify the saved run before owner retry: ${error.message}; its receipt is retained`, { code: RUN_UNCERTAIN, who: "owner" }), { slug, why: error.message });
     }
   }
