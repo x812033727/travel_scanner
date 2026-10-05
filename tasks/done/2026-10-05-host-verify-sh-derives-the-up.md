@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-host-verify-sh-derives-the-up
 title: host-verify.sh derives the up-service set and alembic head, and accepts the AI-drama-off exit 4
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5.5
 claimed_at: 2026-10-05T02:28:36Z
 created_at: 2026-10-05T02:27:58Z
-completed_at:
+completed_at: 2026-10-05T03:09:27Z
 branch: claude/angry-mcclintock-5fc7c7
 depends_on: []
 scope:
@@ -74,5 +74,10 @@ and on the host, the usage in references/post-deploy.md: every check PASS with t
 - The drama-off message is matched by the UTF-8 bytes of 漫劇已停用 written in octal (`printf`), keeping
   the script ASCII like the rest; the Shorts knock's `video-worker: shorts:` lines are skipped when
   looking for the line before the exit, because the knock loop runs beside `auto`.
+- `npm run test:tools` on this Windows machine (2026-10-05): 1,628 tests, 1,624 pass, 2 fail, 2 skipped;
+  `tools/skills.test.mjs` alone 7/7. Both reds are outside this change: `tts/check` "a second transcript
+  clears a line only Gemini misheard" (the known Windows red), and `nginx-install.test.mjs` "never misses
+  an early marker in a large site under pipefail", whose 300 detections of a 2 MB fixture time out at
+  90 s in Git Bash here (`spawnSync bash ETIMEDOUT`, also alone); neither file differs from origin/main.
 - A stale api image would carry an old head and pass `alembic-head`; `containers-rebuilt-this-deploy`
   is the check that catches a stale image, so the two are read together.
