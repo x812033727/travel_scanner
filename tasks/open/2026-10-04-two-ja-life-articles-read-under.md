@@ -1,14 +1,14 @@
 ---
 id: 2026-10-04-two-ja-life-articles-read-under
 title: Two ja life articles read under the 1,500-character floor once link-only lines stopped counting
-status: open
+status: in-progress
 priority: P3
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5-ja-life-length
+claimed_at: 2026-10-05T06:28:37Z
 created_at: 2026-10-04T15:45:25Z
 completed_at:
-branch:
+branch: claude/ja-life-length
 depends_on: []
 scope:
   - apps/api/app/guides/content/household-inventory-spreadsheet.json
