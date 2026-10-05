@@ -8,7 +8,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const REPO = "/home/user/travel_scanner";
+const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "..", "..");
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const argv = process.argv.slice(2);
 const EP = Number(argv[argv.indexOf("--ep") + 1]);

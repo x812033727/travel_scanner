@@ -11,14 +11,14 @@
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
-const REPO = "/home/user/travel_scanner";
+const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "..", "..");
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const { validateVideo } = await import(`${REPO}/tools/video/core/schema.mjs`);
-const { estimateTimeline, frameToSeconds, spokenUnits } = await import(`${REPO}/tools/video/core/timeline.mjs`);
-const { craftChecks, renderCraftReport } = await import(`${REPO}/tools/video/core/craft.mjs`);
-const { lintProject, loadProject } = await import(`${REPO}/tools/video/core/state.mjs`);
+const { validateVideo } = await import(pathToFileURL(path.join(REPO, "tools/video/core/schema.mjs")).href);
+const { estimateTimeline, frameToSeconds, spokenUnits } = await import(pathToFileURL(path.join(REPO, "tools/video/core/timeline.mjs")).href);
+const { craftChecks, renderCraftReport } = await import(pathToFileURL(path.join(REPO, "tools/video/core/craft.mjs")).href);
+const { lintProject, loadProject } = await import(pathToFileURL(path.join(REPO, "tools/video/core/state.mjs")).href);
 
 const raw = process.argv.slice(2);
 const epAt = raw.indexOf("--ep");
@@ -61,7 +61,7 @@ for (const s of scenes)
 for (const s of scenes) for (const l of s.lines ?? []) delete l.__seen;
 
 const label = acts.length === 5 ? "all" : acts.join("-");
-const dir = path.join(EPDIR, "tmp", SLUG);
+const dir = path.join(EPDIR, `tmp-${label}`, SLUG);
 mkdirSync(dir, { recursive: true });
 const doc = { ...header, scenes };
 const file = path.join(dir, "video.json");
