@@ -364,6 +364,9 @@ export async function run(command, args, ctx) {
     const at = neighbours.findIndex((each) => each.id === scene.id);
     const rivals = [neighbours[at - 1], neighbours[at + 1]].filter(Boolean).map((each) => keyframes.shots[each.id]?.file).filter(Boolean).map((file) => path.join(workdir, file));
     const entry = present?.takes && !values.force ? present : { takes: [] };
+    // What the provider said each time it refused a seed: when it refuses them all, that is the
+    // problem the prompt fix starts from (a prompt too long for the model, say).
+    const refusals = [];
     for (let take = 1; take <= takes; take++) {
       const seed = take;
       if (entry.takes.some((each) => each.seed === seed && each.qc)) continue;
@@ -391,6 +394,7 @@ export async function run(command, args, ctx) {
         }
         if (retakeable(error)) {
           ctx.stdout.write(`${scene.id} seed ${seed}: ${error.message}; trying another seed\n`);
+          refusals.push(error.message.startsWith(`${scene.id}: `) ? error.message.slice(scene.id.length + 2) : error.message);
           continue;
         }
         throw error;
@@ -427,7 +431,10 @@ export async function run(command, args, ctx) {
     }
     const best = [...entry.takes].reverse().find((each) => each.qc?.ok) ?? entry.takes.at(-1) ?? null;
     if (!best) {
-      manifest.shots[scene.id] = { ...entry, needs_review: true, problems: ["no take could be generated"] };
+      // Every seed was refused. The entry has no clip: nothing of an earlier record is carried
+      // over, or the clips hash, a cut or a shot continuing from this one would read its file.
+      const why = [...new Set(refusals)].map((reason) => `no take could be generated: ${reason}`);
+      manifest.shots[scene.id] = { takes: [], needs_review: true, problems: why.length ? why : ["no take could be generated"] };
       writeManifest(workdir, doc, manifest);
       continue;
     }
@@ -489,7 +496,8 @@ export async function run(command, args, ctx) {
   recordStage(workdir, "clips", { shots: Object.keys(manifest.shots).length, stills: stillCount, ...(cutCount ? { cuts: cutCount, saved_clip_seconds: savedSeconds } : {}), ...(importCount ? { imported: importCount } : {}), generated, needs_review: waiting.map(([id]) => id), clip_seconds: totals.clip_seconds, usd: totals.usd, seconds }, ctx.now());
   ctx.stdout.write(`${generated} clips generated in ${seconds} s; ${Object.keys(manifest.shots).length} shots in the manifest (${stillCount} stills${cutCount ? `, ${cutCount} cuts from another shot's clip, ${savedSeconds} clip seconds not bought` : ""}${importCount ? `, ${importCount} imported from outside the pipeline` : ""}); this video has spent US$${totals.usd.toFixed(2)} (${totals.clip_seconds} clip seconds)\n`);
   if (waiting.length) {
-    for (const [id, shot] of waiting) ctx.stdout.write(`ERROR ${id}: no take passed: ${(shot.problems ?? []).join("; ")}\n`);
+    // A shot with neither a clip nor a take was refused outright: its problems say so themselves.
+    for (const [id, shot] of waiting) ctx.stdout.write(`ERROR ${id}: ${shot.file || shot.takes?.length ? "no take passed: " : ""}${(shot.problems ?? []).join("; ")}\n`);
     ctx.stdout.write(`fix the prompts of ${waiting.map(([id]) => id).join(", ")} and run clips again (needs_review in clips/manifest.json)\n`);
     return EXIT.lint;
   }
