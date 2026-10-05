@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-youtube-vps-web-settings-browser-acceptance
 title: Verify the VPS settings card in desktop and mobile browsers
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5-vps-settings-e2e
 claimed_at: 2026-10-05T01:19:29Z
 created_at: 2026-09-30T12:42:30Z
-completed_at:
+completed_at: 2026-10-05T04:13:01Z
 branch: claude/vps-settings-e2e
 depends_on:
   - 2026-09-30-youtube-vps-web-settings
