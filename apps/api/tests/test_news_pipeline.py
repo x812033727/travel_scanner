@@ -9,6 +9,7 @@ from typing import Any, cast
 from unittest.mock import AsyncMock, Mock
 from uuid import UUID, uuid4
 
+import httpx
 import pytest
 from pydantic import BaseModel, ValidationError
 from sqlalchemy import Table, select
@@ -19,6 +20,7 @@ from sqlalchemy.ext.asyncio import (
     create_async_engine,
 )
 
+from app.ai.jev import JevClient
 from app.config import get_settings
 from app.db import Base
 from app.guides.models import (
@@ -32,7 +34,7 @@ from app.guides.models import (
     GuideTopic,
 )
 from app.guides.schemas import GuideDocument
-from app.i18n import Locale
+from app.i18n import LOCALES, Locale
 from app.models import AdminAuditLog, User
 from app.news_automation import ai, jobs, pipeline, scheduler, service
 from app.news_automation.models import (
@@ -950,8 +952,6 @@ def test_news_replies_drop_imagery_the_model_should_not_supply() -> None:
 def test_a_reply_that_failed_validation_is_not_rerun_by_rq_but_outages_are(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    import httpx
-
     def invalid() -> None:
         LocalizedDocument.model_validate({"document": None})
 
@@ -1325,6 +1325,52 @@ async def test_a_single_website_that_is_not_first_party_still_waits_for_the_owne
     assert result == "manual_review"
     assert stored is not None and stored.error_code == "news_zh_draft_ready"
     mocks["translate"].assert_not_awaited()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("switch", "off"), [("enabled", False), ("mode", "shadow"), ("auto_publish_ai", False)]
+)
+async def test_a_switch_turned_off_while_the_story_is_drafted_holds_it_for_the_owner(
+    monkeypatch: pytest.MonkeyPatch, switch: str, off: object
+) -> None:
+    """The run holds the settings it claimed the candidate with, for the whole AI run. The
+    owner turning automatic publishing off meanwhile still keeps the story from going out
+    alone: the last check reads the switches as they are now."""
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        settings = await session.get(NewsAutomationSettings, 1)
+        assert settings is not None
+        settings.mode, settings.auto_publish_ai = "automatic", True
+        await session.commit()
+        candidate_id = candidate.id
+
+    async def turned_off_meanwhile(*_args: Any, **_kwargs: Any) -> tuple[str, float, list[Any]]:
+        async with factory() as other:
+            row = await other.get(NewsAutomationSettings, 1)
+            assert row is not None
+            setattr(row, switch, off)
+            await other.commit()
+        return "distinct", 0.01, []
+
+    monkeypatch.setattr(ai, "jev_duplicate_check", turned_off_meanwhile)
+    stage_one_mocks(monkeypatch)
+    # Everything stage two needs, so that a run still going by its old switches publishes.
+    translated = stage_two_mocks(monkeypatch)
+    monkeypatch.setattr(
+        ai,
+        "final_edit",
+        AsyncMock(return_value=(LocaleReviewResult(verdict="pass"), {}, "claude-opus-5-5")),
+    )
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+    await engine.dispose()
+
+    assert result == "manual_review"
+    assert stored is not None and stored.error_code == "news_zh_draft_ready"
+    assert translated == []
 
 
 @pytest.mark.asyncio
@@ -2211,3 +2257,107 @@ async def test_duplicate_question_tells_jev_a_new_model_version_is_a_new_event(
     assert "new version or successor" in instructions
     assert "GPT-6.1 Sol after GPT-6 Sol" in instructions
     assert verdict == "distinct"
+
+
+JEV_PUBLISH_ANSWER = {
+    "answers": {"publish": {"type": "noul", "noul": 0.97}},
+    "usage": {"input_tokens": 40, "output_tokens": 1},
+}
+
+
+def counting_jev(
+    monkeypatch: pytest.MonkeyPatch,
+    outcomes: dict[int, httpx.Response | type[httpx.RequestError]],
+) -> tuple[list[httpx.Request], AsyncMock]:
+    """The real JevClient over a fake transport; POST number n gets ``outcomes[n]``.
+
+    Every other POST is answered "publish" at 0.97. Returns each POST handed to the
+    transport and the mock standing in for the daily quota, so wires and quota units are
+    numbers the test reads rather than a reading of the loop.
+    """
+    wires: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        wires.append(request)
+        outcome = outcomes.get(len(wires) - 1, httpx.Response(200, json=JEV_PUBLISH_ANSWER))
+        if isinstance(outcome, httpx.Response):
+            return outcome
+        raise outcome("the fake transport lost this answer", request=request)
+
+    client = JevClient(
+        "jev-test-key",
+        "https://jev.example/v1",
+        "jev-test",
+        10.0,
+        client=httpx.AsyncClient(transport=httpx.MockTransport(handler)),
+    )
+    quota = AsyncMock(return_value=True)
+    monkeypatch.setattr(ai, "jev_client", lambda _environment: client)
+    monkeypatch.setattr(ai, "consume_jev_call", quota)
+    return wires, quota
+
+
+async def jevs_last_call() -> list[ai.JevLocaleDecision]:
+    """``jev_assessments`` the way ``_jev_final`` calls it: every site locale."""
+    return await ai.jev_assessments(
+        cast(Any, None),
+        get_settings(),
+        NewsAutomationSettings(jev_act_confidence=0.9),
+        NewsCandidate(vertical="ai", evidence_hash="e" * 64),
+        {locale: news_document(f"Model release ({locale})") for locale in LOCALES},
+    )
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("failing", "outcome", "reason"),
+    [
+        (0, httpx.ReadTimeout, "JevOutcomeUncertain"),
+        (2, httpx.Response(502, json={"message": "upstream hiccup"}), "JevOutcomeUncertain"),
+        (3, httpx.Response(200, text="not json"), "JevOutcomeUncertain"),
+        (1, httpx.Response(422, json={"message": "bad question"}), "JevRequestInvalid"),
+    ],
+    ids=["answer-lost-on-the-first", "5xx-on-the-third", "unreadable-fourth", "refused-second"],
+)
+async def test_jevs_last_call_stops_at_the_first_locale_jev_did_not_answer(
+    monkeypatch: pytest.MonkeyPatch,
+    failing: int,
+    outcome: httpx.Response | type[httpx.RequestError],
+    reason: str,
+) -> None:
+    """One unanswered locale already holds the article; the rest are not asked.
+
+    Since #1233 a lost answer is a ``JevError`` (``JevOutcomeUncertain``) rather than an
+    httpx error that ended the loop, and the loop went on: five quota units and five
+    possibly billed questions for an article the first failure had already held.
+    """
+    wires, quota = counting_jev(monkeypatch, {failing: outcome})
+
+    decisions = await jevs_last_call()
+
+    assert len(wires) == failing + 1, "no question is sent after the one that failed"
+    assert quota.await_count == failing + 1, "and no quota unit is taken for one"
+    assert [item.locale for item in decisions] == list(LOCALES)
+    assert [(item.tier, item.reasons) for item in decisions] == [
+        *[("act", [])] * failing,
+        ("confirm", [reason]),
+        *[("confirm", [ai.JEV_NOT_ASKED, reason])] * (len(LOCALES) - failing - 1),
+    ]
+    assert [item.confidence for item in decisions] == [0.97] * failing + [None] * (
+        len(LOCALES) - failing
+    )
+
+
+@pytest.mark.asyncio
+async def test_jevs_last_call_asks_each_locale_once_when_every_one_is_answered(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    wires, quota = counting_jev(monkeypatch, {})
+
+    decisions = await jevs_last_call()
+
+    assert len(wires) == quota.await_count == len(LOCALES)
+    usage = JEV_PUBLISH_ANSWER["usage"]
+    assert [
+        (item.locale, item.tier, item.confidence, item.reasons, item.usage) for item in decisions
+    ] == [(locale, "act", 0.97, [], usage) for locale in LOCALES]

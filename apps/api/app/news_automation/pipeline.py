@@ -242,13 +242,22 @@ async def _auto_publishable(
     No shadow gate any more (owner decision, 2026-09-25): the final editor and Jev's last
     call on all five locales guard what goes out on its own.
     """
-    fresh_settings = await settings_row(session)
-    if not (
-        fresh_settings.enabled
-        and fresh_settings.mode == "automatic"
-        and getattr(fresh_settings, f"auto_publish_{candidate.vertical}")
-        and candidate.would_publish
-    ):
+    # The run has held the settings row since it claimed the candidate, and selecting the row
+    # again hands back that object with the values it had then (expire_on_commit=False). The
+    # switches are read as columns, so an owner who turned publishing off meanwhile is obeyed.
+    switches = (
+        await session.execute(
+            select(
+                NewsAutomationSettings.enabled,
+                NewsAutomationSettings.mode,
+                getattr(NewsAutomationSettings, f"auto_publish_{candidate.vertical}"),
+            ).where(NewsAutomationSettings.id == 1)
+        )
+    ).one_or_none()
+    if switches is None:
+        return False
+    enabled, mode, vertical_on = switches
+    if not (enabled and mode == "automatic" and vertical_on and candidate.would_publish):
         return False
     sources = await session.scalars(select(NewsSource).where(NewsSource.enabled.is_(True)))
     # Two websites, the company's own announcement, or a newsroom the owner trusts to stand
