@@ -61,9 +61,11 @@
 | 新備份 SHA256 | `82c7604bbac7eac0b0e597b17685a2b002d9e2e9b54d27b1eb188bd816fef5fb` |
 | 原始 443 筆快照集合 | `e0ef9835bec07e55553b08275a769b1f426c4c29b8c26ef1d5847b5e7bd175fb` |
 | Fresh preflight baseline | `cb8c14d63dcb98927e2dd2a93316ffa1429b9906c9a4303a1f9a055f379887bb` |
-| 本批 manifest 語意指紋 | `f1ff565837229d70ba1398f137b81c4b48d3b262e79f12bb64b060e0d5cfd574` |
-| 本批 manifest 檔案 SHA256（LF） | `fcd3541f21d1b35ecadf252d0db46a0efa0456f6bb028b91b945711adb3adfdb` |
+| 本批 manifest 語意指紋 | `4444fa4abe0593e73e50a76a294109f8c6a406a636092c8490e4787f85da8d39` |
+| 本批 manifest 檔案 SHA256（LF） | `dfd1920f5d2d41e8f757b502c6c8f5634e09a2cacb3bb2b27084e2bc84c2b9fd` |
 | 獨立 postflight artifact | `1e0db19b381bda7399333705328c90f00ac0f1a18f162e30dd4efe8e69693e27` |
+
+2026-10-05 補記：倉庫是公開的，manifest 內 237 處本機使用者路徑已改為 `<home>`，其他內容不變；上表兩個 manifest 指紋因此改為遮蔽後的值（任務 2026-10-02-rebind-receipts-after-scrubbing-host-details）。遮蔽前的 manifest 與原指紋見 commit 2bd7c5153（#376）。
 
 驗證：
 

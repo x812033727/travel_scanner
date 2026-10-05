@@ -8,8 +8,8 @@
   "pr_pack_path": "apps/api/app/guides/content/jeju-car-rental-guide.json",
   "pr_pack_blob_oid": "216531f4194f8be065725f5f8f2e6dd085d13f16",
   "pr_pack_sha256": "0bced19c85270f92d07c1dc4e459fa57fc440f100db5f651899c0495c0602a2f",
-  "v1_bundle_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch011-korea\\jeju-release\\release-bundle-candidate",
-  "v2_bundle_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch011-korea\\jeju-release\\release-v2-topics-order\\bundle",
+  "v1_bundle_path": "<home>\\.codex\\article-localization-release\\batch011-korea\\jeju-release\\release-bundle-candidate",
+  "v2_bundle_path": "<home>\\.codex\\article-localization-release\\batch011-korea\\jeju-release\\release-v2-topics-order\\bundle",
   "v1_manifest_sha256": "a400c19e1ea036bbf22c2a10ecf656d51ee9a8d725b7c829d43432f94f3663ca",
   "v2_manifest_sha256": "c6051f2698e4355243f2e22a0fa62fbd60589ad7b05d53272763852f23d93eea",
   "v1_pack_sha256": "e43c2fcc25313c3f823d7a7c354afcf815c80e8a628b1ef68a0de2563a060c0f",
@@ -190,9 +190,10 @@
   "unchanged_external_evidence": {
     "source-correction-review-jeju.json": "d49b681dc0fbd946066a2558d8ace9a2d0e9c266fbda4fbf1d1df8a7a8857f2a",
     "review-projection-reconciled.json": "3517efc98f6bf8e1ddadaaa38d69866be3ab85b7e59cd6ccc88f0fe95d9237d7",
-    "lf-svg-independent-review.json": "421e65ba10467c24b6a79f03691a16ba09af193e7b54d8924fe57366a21967fc",
+    "lf-svg-independent-review.json": "47e2d7c2e2c6c3d723f702d3d934080d128224648be5c55366afd012e353f55e",
     "pr-svg-line-ending-attestation.json": "eeb683f2eeb83c44a7af404b41e0d777b7d71b1fc09efb60130a8bcd1a703229",
     "preflight.json": "a6ac5664b5a882fb7503265c52aeb33fd9575416221ffa29d1b0ef1f677fc2a5"
   },
+  "redaction_note": "Redacted 2026-10-05 for the public repository (task 2026-10-02-rebind-receipts-after-scrubbing-host-details): the local Windows profile path in the bundle paths here and in svg-independent-review.json became <home>. The lf-svg-independent-review.json digest above now records that redacted repository copy; no other value changed. The reviewed originals and the digests first recorded here are in commit 65ef4328b (#648).",
   "release_limit": "Read-only equivalence review only; PR remains open and this receipt does not authorize merge, deploy, database writes, import, or publication."
 }
