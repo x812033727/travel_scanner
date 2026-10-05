@@ -51,6 +51,7 @@
 
 - 流程：劇本 → 角色與場景設定圖 → 分鏡表 → 每鏡一張關鍵影格 → 圖生影片 → 配音 → 字幕 → 配樂 → 剪輯。鏡頭長度照 2026-10-03 量過參考片後定的規格（`.agents/skills/youtube-video/references/drama-craft.md`）：中位數 2.5–3.5 秒，九成不超過 6 秒，最長 8 秒，溶接不超過一成；檢查腳本的門檻是 `tools/video/core/craft.mjs` 的 `TARGETS`（`medianShotSeconds` 2–4、`p90ShotSeconds` 6、`longestShotSeconds` 8、`dissolveShare` 0.1）。每個要畫的鏡頭一張關鍵影格，從別鏡素材切來的（`source`）不畫（`tools/video/core/drama.mjs` 的 `drawnShotScenes`）。lint 對估計超過 12 秒的鏡頭報錯、超過 10 秒警告，有角色的漫劇中位數低於 2 秒也警告（同檔的 `MAX_SHOT_SECONDS`、`WARN_SHOT_SECONDS`、`MIN_MEDIAN_SHOT_SECONDS`）。每個角色鎖定基準圖；一部戲只用同一個影片模型。（2026-10-04 改；起草時這裡寫的是 2026-09-26 查到的業界慣例，比量到的參考片慢。）
 - 觀眾最在意的缺陷（自動品檢要抓的）：臉在鏡頭之間變形、六指、手臂扭曲、人物飄浮、群像比例錯、背景色偏、表情僵硬、名詞不一致、節奏拖沓。
+- 投影片風險（2026-10-05 加，票 `2026-10-05-slideshow-risk-craft-rows`）：站主對第一批試作的評語是「像投影片」，`tools/video/core/craft.mjs` 的六列 `risk.*` 在付錢前量它——同一種框法拍同一批人在同一地點連三個以上（`risk.setup_repeat`）、沒有人也不是插鏡的空景超過一成（`risk.decorative`）、`motion` 以鏡頭為主詞而沒人做事（`risk.motion_purpose`）、沒台詞只有眼神也沒揭露的靜拍超過 5%（`risk.intent`）、卡片超過兩張又占一成以上時長（`risk.text_first`）、`prompt` 寫 cinematic／epic／8k 卻沒景別沒運鏡（`risk.cinematic_claim`）。`lint` 把沒過的列印成警告；前三列進 `CRAFT_GATE_ROWS`，免關卡作品沒過會退回撰稿。2026-10-05 量過：偶的江湖五集全過，被退回的《喜宴未散》E1 實測剪輯在 `risk.setup_repeat` 連五個手部插鏡沒過。目標與讀法在 `.agents/skills/youtube-video/references/drama-craft.md` 一張表；計畫先評分再付錢的主意借自 OpenMontage（AGPL，只借做法）。
 - 字幕：Noto Sans TC 白字深色描邊、離底邊約 14%、每行最多 16 字兩行；多人對白可加「【角色名】」。
 - YouTube：3D 寫實畫面與 AI 音樂都勾「合成內容揭露」（官方明說不影響觸及與營利）；每集有獨立的劇情與構圖；站主關卡與製作紀錄（提示詞、參考圖）是作者證據；不轉載別人的漫劇；不用真人聲音或臉；音樂用有授權的來源。
 
