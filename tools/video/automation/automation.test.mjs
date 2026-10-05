@@ -9,6 +9,7 @@ import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
+import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
@@ -1936,6 +1937,33 @@ test("a language chosen for its title and description alone is translated withou
   assert.equal(video.onSite().ready_to_upload, true);
 });
 
+test("a choice narrowed after its package was written writes the package again once, without the parts it no longer has; a package that matches the choice is left alone", async () => {
+  const video = await finishedVideo();
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en metadata translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en metadata\)$/);
+  let ran = video.runs.length;
+  assert.equal(await video.step(), null, "the package was written for this choice");
+  assert.equal(video.runs.length, ran, "nothing is written again");
+
+  // The owner picks 只出繁體中文 now: nothing is left to make, but the package still holds en
+  // and records the choice it was written for, which the package check fails.
+  video.choose({});
+  assert.equal(await video.step(), "chatgpt-ads-off: upload package written again for the current language choice");
+  assert.deepEqual(video.runs.slice(ran).map((run) => run.split(" ")[0]), ["captions", "package"], "no translation, batch or review-push");
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.deepEqual([metadata.language_choice, metadata.localizations], [{}, {}]);
+  assert.ok(!existsSync(video.upload("description.en.txt")), "the part no longer chosen is gone");
+  assert.equal(video.reviews("languages").length, 1, "no batch is sent for it");
+  assert.notEqual(video.state().status, "blocked", video.state().blocked);
+
+  ran = video.runs.length;
+  const written = readFileSync(video.upload("metadata.json"));
+  assert.equal(await video.step(), null, "the package now records this choice: nothing to do");
+  assert.equal(video.runs.length, ran, "no package every round");
+  assert.ok(readFileSync(video.upload("metadata.json")).equals(written), "metadata.json keeps its hash");
+});
+
 /** filledSheet plus the thumbnail's words: each source word with the locale in front, its ** and line breaks kept. */
 function withThumbnail(sheet) {
   const filled = filledSheet(sheet);
@@ -2686,6 +2714,11 @@ test("a language ticked after the worker tidied the video is reported as skipped
   assert.ok(!existsSync(path.join(video.workdir, "final.mp4")) && !existsSync(video.upload("final.mp4")));
   assert.equal(video.state().tidied_at, now.toISOString());
   assert.equal(await video.step(), null, "nothing new ticked: the tidied video stays quiet");
+  // Nor is its package written again for a narrowed choice: final.mp4 is gone.
+  const quiet = video.runs.length;
+  video.choose({});
+  assert.equal(await video.step(), null, "a narrowed choice leaves the tidied video quiet");
+  assert.equal(video.runs.length, quiet, "no captions or package is tried");
 
   video.choose({ en: { metadata: true, captions: false, dub: false }, ja: { metadata: true, captions: true, dub: true } });
   const [runs, translations, batches] = [video.runs.length, video.calls("translator").length, video.reviews("languages").length];
@@ -2720,15 +2753,15 @@ const HEARD_WRONG = "第一個問題是，你要他做什麼工作。";
  * one does; the listener's rewrite pass answers `rewrite(body)`. tts writes a synthetic
  * narration for the script as it stands; review-push and review-pull are the real commands. A
  * command named in `stops` ("tts", "tts --redo", "check-audio") is ended once by a STOP file:
- * exit 6, nothing written.
+ * exit 6, nothing written. `retakeRounds` is the settings tab's max_retake_rounds.
  */
-async function narrationGate({ rewrite, stillFlagged }) {
+async function narrationGate({ rewrite, stillFlagged, retakeRounds = 1 }) {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
   assert.equal(fixture().scenes[1].lines[0].id, "x9fe");
   const video = { ...fixture(), slug };
   const answers = { ...answersFor(slug, { applies: "1、2" }), listener: (body) => (body.variant === "rewrite" ? rewrite(body) : { video, edits: [] }) };
-  const site = fakeSite({ answers, settings: { channel_stance: STANCE, max_retake_rounds: 1 }, judge: () => jevPick("B") });
+  const site = fakeSite({ answers, settings: { channel_stance: STANCE, max_retake_rounds: retakeRounds }, judge: () => jevPick("B") });
   const clock = { now: Date.parse("2026-09-27T09:00:00Z") };
   const { ctx } = context(box, site.fetchImpl, clock);
   ctx.encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
@@ -2772,6 +2805,7 @@ async function narrationGate({ rewrite, stillFlagged }) {
     site,
     automation,
     workdir,
+    docFile,
     runs,
     redos,
     stops,
@@ -2876,6 +2910,7 @@ test("a STOP file that ends tts, a retake or check-audio defers the video to the
   gate.stops.add("tts --redo");
   assert.match(await gate.automation.step(), /: the retake stopped \(stopped by the STOP file; rerun to continue\); the next run continues$/);
   unblocked();
+  assert.equal(gate.state().stopped_retake, undefined, "stopped before its first request, the retake made no take to record");
   // The next check is stopped before every line is heard.
   flagged = false;
   gate.stops.add("check-audio");
@@ -2886,6 +2921,142 @@ test("a STOP file that ends tts, a retake or check-audio defers the video to the
 
   assert.match(await gate.automation.step(), /narration checked \(Jev passed every line\) and sent for review$/);
   assert.equal(gate.reviews("audio").length, 1);
+});
+
+/** A take made again: the same length, other bytes (`at` picks which byte from the end differs). */
+function retakeFile(file, at = 1) {
+  const bytes = readFileSync(file);
+  bytes[bytes.length - at] ^= 1;
+  writeFileSync(file, bytes);
+}
+
+/**
+ * The narration gate with two retakes allowed, Jev hearing the first takes of x9fe and b3tn wrong
+ * and any later take right, and the speech commands working on the takes on disk as the real ones
+ * do: `tts --redo` makes the flagged lines' takes again, the first one ended by a STOP file after
+ * its first line (exit 6, timeline.json untouched); a plain `tts`, every take cached, synthesizes
+ * nothing and binds the takes on disk.
+ */
+async function stoppedRetakeGate() {
+  const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => false, retakeRounds: 2 });
+  const { ctx } = gate.automation;
+  const played = ctx.runCommand;
+  const timelineFile = path.join(gate.workdir, "timeline.json");
+  const take = (id) => path.join(gate.workdir, "audio", `${id}.wav`);
+  const wrong = ["x9fe", "b3tn"];
+  const first = Object.fromEntries(wrong.map((id) => [id, sha(take(id))]));
+  let stops = 1;
+  ctx.runCommand = async (command, runCtx) => {
+    const [name] = command;
+    if (name !== "tts" && name !== "check-audio") return played(command, runCtx);
+    gate.runs.push(command.join(" "));
+    if (name === "check-audio") {
+      const flags = wrong.filter((id) => sha(take(id)) === first[id]);
+      const texts = new Map([...eachLine(readJson(gate.docFile))].map(({ line }) => [line.id, line.text]));
+      const lines = Object.fromEntries(readJson(timelineFile).lines.map((line) => {
+        const heard = flags.includes(line.id) ? HEARD_WRONG : texts.get(line.id);
+        return [line.id, { match: !flags.includes(line.id), match_kind: flags.includes(line.id) ? null : "exact", intended: texts.get(line.id), heard, noul: flags.includes(line.id) ? 0.2 : null, clip: line.audio_sha256.slice(0, 16) }];
+      }));
+      atomicWrite(path.join(gate.workdir, "review", "check.json"), JSON.stringify({ lines }));
+      atomicWrite(path.join(gate.workdir, "review", "check-flags.json"), JSON.stringify({ slug: "chatgpt-ads-off", speech_hash: "s", flags, notes: {} }));
+      return { code: flags.length ? 1 : 0, out: flags.length ? `${flags.length} flagged` : "every line passed" };
+    }
+    const redo = command.indexOf("--redo");
+    if (redo >= 0) {
+      const { flags } = readJson(command[redo + 1]);
+      gate.redos.push([path.basename(command[redo + 1]), flags]);
+      if (stops-- > 0) {
+        retakeFile(take(flags[0]));
+        return { code: EXIT.incomplete, out: `stopped by the STOP file; 1 of ${flags.length} requests done, rerun to continue` };
+      }
+      for (const id of flags) retakeFile(take(id));
+    }
+    atomicWrite(timelineFile, JSON.stringify(bindAudioEvidence(readJson(timelineFile), gate.workdir)));
+    return { code: 0, out: redo >= 0 ? "retaken" : "0 requests synthesized, every take reused" };
+  };
+  // Jev flags both lines; the retake makes x9fe again and is stopped before b3tn.
+  assert.equal(await gate.automation.step(), "chatgpt-ads-off: the retake stopped (stopped by the STOP file; 1 of 2 requests done, rerun to continue); the next run continues");
+  return { ...gate, take };
+}
+
+test("a retake a STOP file ended is bound from the takes it made on the next run, checked again and continued without the owner, and no line is retaken twice", async () => {
+  const gate = await stoppedRetakeGate();
+  const stopped = gate.state();
+  assert.notEqual(stopped.status, "blocked", stopped.blocked);
+  assert.deepEqual(stopped.stopped_retake, { flags: "review/check-flags.json", ids: ["x9fe", "b3tn"], takes: { x9fe: sha(gate.take("x9fe")) } }, "the lines it was retaking and the one take it made");
+  assert.equal(stopped.retakes, 1, "the round it spent stays counted");
+
+  // The takes no longer match timeline.json, all of them because of the stopped retake: a plain
+  // tts binds them, synthesizing nothing, and nothing is blocked for the owner.
+  const ran = gate.runs.length;
+  assert.equal(await gate.automation.step(), "chatgpt-ads-off: narration synthesized from the takes of the retake a STOP file ended");
+  assert.deepEqual(gate.runs.slice(ran), ["tts --slug chatgpt-ads-off"], "no --redo, no --refresh-evidence");
+  assert.equal(gate.state().stopped_retake, undefined, "cleared once tts finished");
+  assert.notEqual(gate.state().status, "blocked", gate.state().blocked);
+
+  // x9fe is judged on its new take and passes; b3tn, never retaken, is retaken now, alone.
+  assert.match(await gate.automation.step(), /narration checked \(Jev passed every line\) and sent for review$/);
+  assert.deepEqual(gate.redos, [["check-flags.json", ["x9fe", "b3tn"]], ["check-flags.json", ["b3tn"]]], "x9fe is not retaken a second time");
+  assert.equal(gate.state().retakes, 2);
+  assert.equal(gate.reviews("audio").length, 1);
+});
+
+test("after a stopped retake, a take changed on another line, or to bytes the retake did not make, still blocks the video before tts", async (t) => {
+  for (const [name, tamper] of [
+    ["a line the retake was not retaking", (gate) => retakeFile(gate.take("r8wd"))],
+    ["a take the retake did not make", (gate) => retakeFile(gate.take("x9fe"), 2)],
+  ]) {
+    await t.test(name, async () => {
+      const gate = await stoppedRetakeGate();
+      tamper(gate);
+      const ran = gate.runs.length;
+      assert.equal(await gate.automation.step(), "chatgpt-ads-off: blocked — audio evidence no longer matches the saved takes; restore or explicitly retake and review the narration");
+      assert.equal(gate.runs.length, ran, "no tts binds the unexplained take");
+      assert.ok(gate.state().stopped_retake, "the record stays for the owner's retry");
+    });
+  }
+});
+
+test("a video its own STOP file holds is passed over: the round moves the next video, the held one runs no stage, and the owner's drop still reaches it", async () => {
+  const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => false });
+  const { automation } = gate;
+  const work = path.dirname(gate.workdir);
+  const stop = path.join(gate.workdir, "STOP");
+  // The older video is back at "narration synthesized"; its tts stops at once on a STOP file (exit 6).
+  rmSync(path.join(gate.workdir, "timeline.json"));
+  const played = automation.ctx.runCommand;
+  automation.ctx.runCommand = async (command, runCtx) => {
+    if (command[0] !== "tts" || !existsSync(stop)) return played(command, runCtx);
+    gate.runs.push(command.join(" "));
+    return { code: EXIT.incomplete, out: "stopped by the STOP file; 0 of 3 requests done, rerun to continue" };
+  };
+  mkdirSync(path.join(work, "newer-video"), { recursive: true });
+  writeFileSync(path.join(work, "newer-video", "auto.json"), JSON.stringify({ slug: "newer-video", status: "active", created_at: "2026-09-28T00:00:00Z" }));
+  const advance = automation.advance.bind(automation);
+  const moved = [];
+  automation.advance = async (state) => {
+    moved.push(state.slug);
+    return state.slug === "newer-video" ? "newer-video: moved" : advance(state);
+  };
+
+  writeFileSync(stop, "");
+  const held = readFileSync(path.join(gate.workdir, "auto.json"));
+  const ran = gate.runs.length;
+  assert.equal(await automation.step(), "newer-video: moved");
+  assert.equal(automation.halted, false, "the round goes on");
+  assert.deepEqual(moved, ["newer-video"]);
+  assert.equal(gate.runs.length, ran, "no stage ran for the held video");
+  assert.ok(readFileSync(path.join(gate.workdir, "auto.json")).equals(held), "its auto.json is untouched");
+
+  // The file removed, the held video is the oldest again and moves first.
+  rmSync(stop);
+  assert.equal(await automation.step(), "chatgpt-ads-off: narration synthesized");
+
+  // Held again, the owner's drop still reaches it.
+  writeFileSync(stop, "");
+  Object.assign(gate.site.listed.get("chatgpt-ads-off"), { dropped_at: "2026-09-28T01:00:00Z", dropped_note: "不做了" });
+  assert.equal(await automation.step(), "chatgpt-ads-off: the owner dropped it (不做了); the worker leaves it");
+  assert.equal(gate.state().status, "dropped");
 });
 
 test("a narration check that stops for the owner, a paid judgement whose answer was lost included, blocks the video and sends nothing for review; a service that is down still waits for the next run", async () => {

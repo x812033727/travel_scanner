@@ -34,6 +34,7 @@ import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipeline
 import { estimateTimeline, speechHash } from "../core/timeline.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { MAX_TEMPO } from "../dubs/plan.mjs";
+import { checkPackage, listFiles, METADATA_FILE, packageLocalesWanted, UPLOAD_DIR } from "../package/check.mjs";
 import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
 import { buildSheet, SHEET_PARTS } from "../i18n/cli.mjs";
@@ -50,6 +51,7 @@ import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
 import { SPEECH_UNCERTAIN } from "../tts/client.mjs";
+import { flaggedLines } from "../tts/synthesis.mjs";
 import { staleTakes } from "../tts/takes.mjs";
 
 // Slides keep the general eight-minute floor. Explainers use the reviewed ten-minute default
@@ -425,6 +427,71 @@ const lineFor = (slug, text) => (text.startsWith(`${slug}: `) ? text : `${slug}:
 const blockedLabel = (state) => `卡住，需要人處理：${state.blocked}`.slice(0, 120);
 const BLOCKED_REPORT_BACKOFF_MS = 5 * 60_000;
 
+/** A file's sha256, or null when it cannot be read. */
+function fileSha256(file) {
+  try {
+    return createHash("sha256").update(readFileSync(file)).digest("hex");
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The takes on disk (audio/<id>.wav) that differ from the ones timeline.json binds, as id → the
+ * sha256 of the take on disk, for the lines in `ids` (every line without); null when the timeline
+ * names no lines or a take cannot be read.
+ */
+function changedTakes(timeline, workdir, ids = null) {
+  if (!Array.isArray(timeline?.lines)) return null;
+  const changed = {};
+  for (const line of timeline.lines) {
+    if (ids && !ids.has(line.id)) continue;
+    const hash = LINE_ID.test(line.id ?? "") ? fileSha256(path.join(workdir, ARTIFACTS.audio, `${line.id}.wav`)) : null;
+    if (!hash) return null;
+    if (hash !== line.audio_sha256) changed[line.id] = hash;
+  }
+  return changed;
+}
+
+/**
+ * Whether every take that no longer matches timeline.json is one the retake a STOP file ended
+ * made (auto.json `stopped_retake`, written by retakeStopped), with the very bytes it wrote, and
+ * narration.wav, which a stopped tts never writes, is still the bound one. A take changed on any
+ * other line, or to other bytes, is not explained, and the guard before tts stays shut.
+ */
+function retakeExplains(stopped, timeline, workdir) {
+  const made = stopped?.takes;
+  if (!made || typeof made !== "object") return false;
+  const changed = changedTakes(timeline, workdir);
+  if (!changed || !Object.keys(changed).length) return false;
+  if (fileSha256(path.join(workdir, ARTIFACTS.narration)) !== timeline.audio_evidence?.narration_sha256) return false;
+  return Object.entries(changed).every(([id, hash]) => made[id] === hash);
+}
+
+// The package check's problems that only `package` run for the current choice fixes
+// (tools/video/package/check.mjs): a metadata.json written for another choice, and a part of a
+// locale the choice does not have.
+const CHOICE_PROBLEM = /written for another language choice|the language choice does not have/;
+
+/**
+ * Whether the upload package no longer fits the owner's language choice in the work directory:
+ * written for another choice, or holding a description, caption file, dub track or language
+ * thumbnail of a locale the choice does not have, which the package check fails with "run
+ * package again". Read the way that check reads it but without hashing final.mp4, so it costs
+ * little to ask every round. False without a package (it is written later, with the choice) or
+ * without a choice.
+ */
+function packageChoiceStale(workdir) {
+  const upload = path.join(workdir, UPLOAD_DIR);
+  const metadata = readJson(path.join(upload, METADATA_FILE), null);
+  if (!metadata) return false;
+  const { languages, locales, descriptionLocales } = packageLocalesWanted(workdir, metadata);
+  if (!languages) return false;
+  // Only the choice's problems are read, so the final's hashes are left out.
+  const report = checkPackage({ files: listFiles(upload), metadata, finalSha256: null, approvedSha256: null, metadataSha256: null, locales, descriptionLocales, languages });
+  return report.items.some((item) => !item.ok && CHOICE_PROBLEM.test(item.detail));
+}
+
 /**
  * What the script records for the site: the YouTube id, or null (a report without it would clear
  * the site's), and the video's category, the state's first (a brand story has it before its
@@ -663,6 +730,11 @@ export class Automation {
     }
     for (const state of automatedVideos(this.workBase)) {
       if (!["active", "done"].includes(state.status) || !free(state)) continue;
+      // A STOP file in the video's own work directory holds that video (the renewal handoff
+      // keeps one there until its readback is verified): its stages would stop at once and end
+      // the round on it, so the round passes over it. The owner's drop still reaches it above; a
+      // retry waits until the file is gone. The work base's STOP file is auto's, between units.
+      if (existsSync(path.join(this.workdir(state.slug), "STOP"))) continue;
       this.busy.add(state.slug);
       try {
         const done = await this.move(state, siteBySlug);
@@ -1390,7 +1462,11 @@ export class Automation {
       const previous = readJson(path.join(workdir, "timeline.json"), null);
       const project = loadProject({ slug: state.slug, root: ctx.root });
       const sameScript = previous?.speech_hash === speechHash(project.doc, project.lexicon);
-      if (sameScript && previous.audio_evidence && audioEvidenceProblems(previous, workdir).length) return this.block(state, "audio evidence no longer matches the saved takes; restore or explicitly retake and review the narration");
+      // Takes that no longer match stop the video, unless they are the ones a retake made before a
+      // STOP file ended it (retakeStopped): the plain tts below binds them without synthesizing
+      // anything, and the next round checks them again.
+      const resumed = Boolean(sameScript && previous.audio_evidence && audioEvidenceProblems(previous, workdir).length);
+      if (resumed && !retakeExplains(state.stopped_retake, previous, workdir)) return this.block(state, "audio evidence no longer matches the saved takes; restore or explicitly retake and review the narration");
       // A refresh binds evidence to the takes on disk and never records. Takes that no longer match
       // what is sent for synthesis (the accent wording changed under them) cannot be bound, and a
       // retry would refuse the same way for ever: those are recorded again by a plain tts, which
@@ -1400,8 +1476,12 @@ export class Automation {
       // A STOP file ended it between requests: the takes are saved and the next run continues.
       if (result.code === ctx.EXIT.incomplete) return this.later(`${state.slug}: tts stopped (${lastLine(result.out)}); the next run continues`);
       if (result.code !== 0) return this.block(state,`tts failed: ${result.out.trim().split("\n").at(-1)}`);
+      if (state.stopped_retake) {
+        delete state.stopped_retake;
+        saveState(workdir, state);
+      }
       await report(ctx, this.api, state, "narration synthesized");
-      return `${state.slug}: narration synthesized`;
+      return `${state.slug}: narration synthesized${resumed ? " from the takes of the retake a STOP file ended" : ""}`;
     }
     if (next === "narration approved") return this.narration(state);
     if (next === "frames rendered") {
@@ -1944,6 +2024,33 @@ export class Automation {
     return `${slug}: ${accepted.length} of ${listed.length} lines retold${refused.length ? `, ${refused.length} refused (review/restyle.json)` : ""}; now ${registerLine(after)}${accepted.length ? "; the worker fact-checks, records and reviews the narration again" : ""}`;
   }
 
+  /**
+   * A `tts --redo` that a STOP file ended (exit 6) after some of its requests were paid for: their
+   * takes are on disk and in audio/cache.json, while timeline.json still binds the takes before.
+   * auto.json keeps the lines it was retaking and the takes it made (`stopped_retake`), so the
+   * next run's guard before tts tells them from a take swapped without review and rebuilds the
+   * narration from them. A retake stopped before its first request made nothing and records
+   * nothing. Either way the run ends and the next one continues: a STOP is never a block.
+   */
+  retakeStopped(state, flagsFile, line) {
+    const workdir = this.workdir(state.slug);
+    let ids;
+    try {
+      ids = flaggedLines(readJson(flagsFile));
+    } catch {
+      ids = new Set();
+    }
+    // A flagged repeat is retaken through the original it repeats (tts --redo).
+    const doc = readJson(path.join(docDir(state.slug, this.ctx.root), "video.json"), null);
+    for (const { line: each } of doc ? eachLine(doc) : []) if (ids.has(each.id) && each.audio_ref) ids.add(each.audio_ref);
+    const takes = changedTakes(readJson(path.join(workdir, "timeline.json"), null), workdir, ids);
+    if (takes && Object.keys(takes).length) {
+      state.stopped_retake = { flags: path.relative(workdir, flagsFile).split(path.sep).join("/"), ids: [...ids], takes };
+      saveState(workdir, state);
+    }
+    return this.later(`${state.slug}: ${line}`);
+  }
+
   async narration(state) {
     const { ctx } = this;
     const workdir = this.workdir(state.slug);
@@ -1967,8 +2074,9 @@ export class Automation {
     while (check.code === 1 && state.retakes < retakeRounds) {
       state.retakes += 1;
       saveState(workdir, state);
-      const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", path.join(workdir, "review", "check-flags.json")]);
-      if (redo.code === ctx.EXIT.incomplete) return this.later(`${state.slug}: the retake stopped (${lastLine(redo.out)}); the next run continues`);
+      const flagsFile = path.join(workdir, "review", "check-flags.json");
+      const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", flagsFile]);
+      if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, flagsFile, `the retake stopped (${lastLine(redo.out)}); the next run continues`);
       if (redo.code !== 0) return this.block(state,`retake failed: ${redo.out.trim().split("\n").at(-1)}`);
       check = await run(ctx, ["check-audio", "--slug", state.slug]);
     }
@@ -1988,7 +2096,7 @@ export class Automation {
       // is told why the rewrites were refused.
       if (!round.ids.length) continue;
       const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", round.flagsFile]);
-      if (redo.code === ctx.EXIT.incomplete) return this.later(`${state.slug}: the retake after the rewrite stopped (${lastLine(redo.out)}); the next run continues`);
+      if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, round.flagsFile, `the retake after the rewrite stopped (${lastLine(redo.out)}); the next run continues`);
       if (redo.code !== 0) return this.block(state, `retake after the rewrite failed: ${lastLine(redo.out)}`);
       check = await run(ctx, ["check-audio", "--slug", state.slug]);
     }
@@ -2133,25 +2241,32 @@ export class Automation {
     // A zh-TW video reads nothing more than before; one narrated in another language may still
     // owe its zh-TW, which no choice lists (channelLocale).
     const zhNarrated = narrationLocale(readJson(path.join(dir, "video.json"), null)) === NARRATION_LOCALE;
-    if (!pending.length && zhNarrated) return null;
+    // Nothing to make, but the owner changed the choice after the package was written (narrowed
+    // it, or chose 只出繁體中文 for a package from before the panel): the package check would fail
+    // it, so it is written again once; the package it writes records this choice, and the next
+    // round finds nothing to do.
+    const repackage = !pending.length && packageChoiceStale(workdir);
+    if (!pending.length && zhNarrated && !repackage) return null;
     const project = loadProject({ slug, root: ctx.root });
     const doc = project.doc;
     const channel = zhNarrated ? null : this.channelLocale(project, workdir, state);
-    if (!pending.length && !channel) return null;
+    if (!pending.length && !channel && !repackage) return null;
     for (const { locale, parts } of [...(channel ? [channel] : []), ...pending]) {
       const sheetParts = parts.filter((part) => part !== "dub");
       if (!sheetParts.length) continue;
       const translated = await this.translateLocale(state, locale, sheetParts, doc);
       if (translated) return translated;
     }
-    // Only zh-TW was owed (the owner chose no other language): write it into the captions and the
-    // package; there is no batch to send, since the panel never offers zh-TW.
+    // Only zh-TW was owed (the owner chose no other language), or only the package is behind the
+    // choice: write the captions and the package; there is no batch to send, since the panel never
+    // offers zh-TW and no chosen part is still in the making.
     if (!pending.length) {
       await this.drawLanguageThumbnails(slug, project, workdir);
       const captions = await run(ctx, ["captions", "--slug", slug]);
       if (captions.code !== 0) return this.block(state, `captions failed: ${lastLine(captions.out)}`);
       const packaged = await run(ctx, ["package", "--slug", slug]);
       if (packaged.code !== 0) return this.block(state, `package failed: ${lastLine(packaged.out)}`);
+      if (!channel) return `${slug}: upload package written again for the current language choice`;
       return `${slug}: ${NARRATION_LOCALE} captions, title and description written into the upload package`;
     }
     const dubs = dubsStatus(project, workdir, speechHash(doc, project.lexicon));
