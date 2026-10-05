@@ -23,6 +23,9 @@ scope:
   - docs/videos/long-form/review.md
   - docs/videos/long-form/review.json
   - tools/video/automation/automation.test.mjs
+  - tools/video/automation/flow.mjs
+  - tools/video/i18n/cli.mjs
+  - tools/video/i18n/i18n.test.mjs
 ---
 
 # Caption translation chain: split rules, a glossary, and translate then reflect then refine in one call
@@ -39,10 +42,9 @@ idea only). Our en, ja, ko and zh-CN CC and metadata go through this prompt for 
 
 - [x] The translator answers `{draft, critique, final}` in one call; only `final` is used,
       and an answer without a critique is refused and retried.
-- [ ] The prompt carries a glossary built from the lexicon terms the video uses plus its
+- [x] The prompt carries a glossary built from the lexicon terms the video uses plus its
       `sources` names, and the zh-TW cue boundaries, so the translator sees where cues split.
-      (The prompt text, `translationContext()` and its tests are in; the worker's payload and
-      `i18n-sheet` do not carry the two fields yet, which is outside this ticket's scope: Notes.)
+      (`i18n-sheet` writes them into the worksheet and the worker sends them beside it; Notes.)
 - [x] `splitText` prefers clause ends and never splits a number from its unit.
 - [x] `prompts.test.mjs` pins the prompt sections; a fixture shows a glossary term kept the
       same across all four locales.
@@ -92,21 +94,39 @@ node tools/video/long-form/cli.mjs check
     every zh-TW video is told"), and this ticket means to. Only the two hashes and a dated
     comment line changed there; the shortening and rewording passes kept their bytes. It is
     receipt-bound too (`REVIEW_FILES`), so the increment covers `prompts.mjs` and it.
-  - **The glossary and the boundaries are built but not yet sent.** `translationContext(video,
-    lexicon)` in `prompts.mjs` returns `{glossary: {terms, sources}, boundaries}`; `entriesUsed`
-    in `core/lexicon.mjs` lists every dictionary entry the texts use (null entries included,
-    with the forms they appear in: "GPT" as "GPT-5.5") and `cuePieces` in `core/captions.mjs`
-    the pieces a line is cut into. The worker's payload is assembled in `flow.mjs`
-    `translateLocale` (`{locale, parts, worksheet, video, …source}`) and the worksheet in
-    `tools/video/i18n/cli.mjs` `buildSheet`; neither is in this scope, and `instructionsFor()`
-    never sees the video, so the request cannot grow from `prompts.mjs` alone. Follow-up
-    (file it with scope `tools/video/i18n/cli.mjs` or `tools/video/automation/flow.mjs`): spread
-    `translationContext(project.doc, project.lexicon)` into the sheet in `buildSheet` (then
-    `i18n-sheet` carries both, `sheetUnits`/`assembleSheet` keep unknown keys and `mergeSheet`
-    ignores them, and a hand run reads the same sheet) or into the `ask()` payload in
-    `translateLocale`. Until then the prompt tells the model to build the glossary itself from
-    the Latin-letter terms in the lines and `video.sources`, and the hand-run prompt points at
-    `lexicon.json` and `captions/zh-TW.srt`.
+  - **How the glossary and the boundaries reach the translator** (scope extended on the
+    coordinator's request to `tools/video/automation/flow.mjs`, `tools/video/i18n/cli.mjs` and
+    `tools/video/i18n/i18n.test.mjs`, because the worker's payload is assembled in
+    `translateLocale` and the worksheet in `buildSheet`, and `instructionsFor()` never sees the
+    video, so `prompts.mjs` alone could not carry them). `translationContext(video, lexicon)`
+    lives in `i18n/cli.mjs` (the CLI must not import the automation layer; `prompts.mjs`
+    re-exports it) and returns `{glossary: {terms, sources}, boundaries}`: `entriesUsed` in
+    `core/lexicon.mjs` lists every dictionary entry the texts use (null entries included, with
+    the forms they appear in: "GPT" as "GPT-5.5"), `cuePieces` in `core/captions.mjs` the pieces
+    a line is cut into. `i18n-sheet` builds it once per run (the narration's, the same for every
+    locale) and `buildSheet(…, context)` writes `glossary` into every sheet and `boundaries` into
+    one that holds lines, with a note saying what they are; the command's line says how many
+    terms, sources and lines. `translateLocale` reads them off the sheet (`sheetContext`) and
+    sends them at the top of every translator and caption reviewer request beside a worksheet
+    stripped of them (`withoutContext`, so the glossary is not sent twice); a lines unit gets
+    only its own lines' boundaries and the metadata unit none (`unitContext` in `flow.mjs`).
+    `sheetUnits`/`assembleSheet` keep the keys, `mergeSheet` reads neither (a test shows the
+    merge is byte-identical with or without them), and `channelLocale`'s `sheetDone` check
+    builds its sheet without a context. A sheet from before this change (no `glossary` key)
+    sends nothing extra, and the prompts read both as optional.
+  - **`unitKey` still hashes the unit as written**, context included, so a kept unit is bound
+    to the glossary it was translated with and a lexicon change mid-translation asks that unit
+    again (rare, and the honest choice). Stripping the context from the key would also break
+    `docs/videos/imported-long-languages/runner.test.mjs`, which asserts
+    `kept[unitKey(f.fresh, null)]` against the sheet exactly as `i18n-sheet` writes it; that
+    suite (out of scope) and `runner.mjs`'s strict wrapper, which reads `payload.worksheet`'s
+    `slug` and `parts`, both pass as they are (44/44).
+  - **Stage-aware refusal of the old `{worksheet}` shape: not done.** It would need
+    `finalAnswer` to mark an unwrapped final (a Symbol property) and `translateLocale` to refuse
+    an unmarked translator answer; the automation test's fake translators and the out-of-scope
+    `runner.test.mjs` fakes answer `{worksheet}` directly and drive `translateLocale`, so the
+    change is not cheap. A model that ignores the three-pass shape is therefore merged as before;
+    `prompts.test.mjs` pins that the prompt demands the shape.
   - **Output size.** The answer now carries two worksheets (draft and final) plus the critique:
     about twice the output tokens and time of before. A unit is at most 24 lines / 2400 chars
     (`sheet-units.mjs`, 3.2 s a line measured on 2026-09-29 → about 80 s), so a doubled unit
@@ -123,8 +143,9 @@ node tools/video/long-form/cli.mjs check
     `runner.test.mjs` and the fixtures stayed the same; a line with a number and a space before
     its unit at a former cut point will cut differently from now on, which `renewal-handoff`
     reports as captions to upload again for an old video.
-  - Verified: `node --test tools/video/automation/*.test.mjs tools/video/core/captions.test.mjs
-    tools/video/core/lexicon.test.mjs`, `npm run test:tools` (only `review.test.mjs` red, the
-    receipt for `prompts.mjs` and `automation.test.mjs`, which the independent increment
-    re-binds), `npm run check:tasks`, `node tools/video/long-form/cli.mjs check` (stale on those
-    two files, expected).
+  - Verified: `node --test tools/video/automation/*.test.mjs tools/video/i18n/*.test.mjs
+    tools/video/core/captions.test.mjs tools/video/core/lexicon.test.mjs`,
+    `node --test docs/videos/imported-long-languages/runner.test.mjs`, `npm run test:tools`
+    (only `review.test.mjs` red, the receipt for `prompts.mjs`, `automation.test.mjs` and
+    `flow.mjs`, which the independent increment re-binds), `npm run check:tasks`,
+    `node tools/video/long-form/cli.mjs check` (stale on those three files, expected).

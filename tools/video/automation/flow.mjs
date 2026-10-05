@@ -36,7 +36,7 @@ import { localizedThumbnailHash } from "../core/translations.mjs";
 import { MAX_TEMPO } from "../dubs/plan.mjs";
 import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
-import { buildSheet, SHEET_PARTS } from "../i18n/cli.mjs";
+import { buildSheet, SHEET_PARTS, sheetContext, withoutContext } from "../i18n/cli.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
@@ -157,6 +157,19 @@ export function thumbnailAskHash(sheet) {
  * `todo` whatever the model left out. A model that drops the thumbnail keeps `fallback`'s words
  * (the translator's, when the caption reviewer answers without them), else the sheet's own.
  */
+/**
+ * What a unit's request carries beside its worksheet (i18n/cli.mjs translationContext): the
+ * sheet's glossary, and the cue boundaries of the unit's own lines (a metadata unit has no lines,
+ * so none); a sheet from before the context adds nothing, and the prompts read both as optional.
+ */
+function unitContext(context, unit) {
+  const carried = {};
+  if (context.glossary) carried.glossary = context.glossary;
+  const lines = unit.lines ?? [];
+  if (context.boundaries && lines.length) carried.boundaries = Object.fromEntries(lines.filter((line) => context.boundaries[line.id]).map((line) => [line.id, context.boundaries[line.id]]));
+  return carried;
+}
+
 function keptWorksheet(worksheet, sheet, locale, fallback = null) {
   const kept = { ...worksheet, locale, slug: sheet.slug, parts: sheet.parts };
   if (!sheet.thumbnail) return kept;
@@ -2283,7 +2296,10 @@ export class Automation {
    * translator and read by the caption reviewer, then merged. A sheet too long for one model call
    * is asked in units, one unit a round (sheet-units.mjs); each answer is kept as it comes, so a
    * round that stops resumes without asking an answered unit again, and only the caption
-   * reviewer's own worksheet completes a unit. Null when the sheet has nothing left to translate;
+   * reviewer's own worksheet completes a unit. The sheet's glossary and cue boundaries
+   * (i18n/cli.mjs translationContext) travel beside the worksheet in every request, the
+   * worksheet itself without them, and a unit's key still hashes the sheet as written, so a
+   * glossary that changed asks the unit again. Null when the sheet has nothing left to translate;
    * else this run's line.
    */
   async translateLocale(state, locale, parts, video) {
@@ -2299,6 +2315,7 @@ export class Automation {
       return null;
     }
     const source = sourceLocale(video);
+    const context = sheetContext(sheet);
     const units = sheetUnits(sheet, this.unitLimits);
     const whole = units.length === 1 && units[0] === sheet;
     const keys = units.map((unit) => unitKey(unit, source.source_locale ?? null));
@@ -2309,7 +2326,7 @@ export class Automation {
       const label = whole ? locale : `${locale} part ${index + 1} of ${units.length}`;
       const ask = async (stage, worksheet) => {
         try {
-          return await this.stage(stage, state.slug, { locale, parts: whole ? parts : unit.parts, worksheet, video: unitVideo(video, unit, whole), ...source }, 32_000, state.format);
+          return await this.stage(stage, state.slug, { locale, parts: whole ? parts : unit.parts, worksheet: withoutContext(worksheet), video: unitVideo(video, unit, whole), ...unitContext(context, unit), ...source }, 32_000, state.format);
         } catch (error) {
           if (error instanceof AutomationError && error.code === RUN_UNCERTAIN) error.unit = label;
           throw error;

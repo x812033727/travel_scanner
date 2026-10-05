@@ -9,9 +9,6 @@ import path from "node:path";
 
 import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { isLongAnime } from "../core/anime-policy.mjs";
-import { cuePieces } from "../core/captions.mjs";
-import { entriesUsed } from "../core/lexicon.mjs";
-import { eachLine, narrationLocale } from "../core/schema.mjs";
 import { REGISTER_RULES } from "./register.mjs";
 import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
@@ -325,26 +322,11 @@ Return {"worksheet": <the worksheet with your fixes applied>, "fixes": ["<id>: <
 
 /**
  * What a translation request carries beside the worksheet (docs/videos/AUTOMATION.md §語言):
- * "glossary", the dictionary terms the video's lines and metadata use, in the forms they appear
- * in (core/lexicon.mjs entriesUsed), and the names of its sources, which every locale renders
- * one way; and "boundaries", the pieces the narration's captions cut each line into
- * (core/captions.mjs cuePieces), for the lines cut into more than one, so the translator keeps
- * the clauses in the order the viewer hears them. `locale` is the narration's.
+ * "glossary" and "boundaries", which the translator's and the caption reviewer's texts above
+ * read. `i18n-sheet` builds them into the worksheet and flow.mjs sends them beside it; the
+ * builder lives with the sheet (tools/video/i18n/cli.mjs) and is the automation's through here.
  */
-export function translationContext(video, lexicon, locale = narrationLocale(video)) {
-  const lines = [...eachLine(video)].map(({ line }) => line);
-  const youtube = video.youtube ?? {};
-  const metadata = [youtube.title, youtube.description, ...(Array.isArray(youtube.tags) ? youtube.tags : []), ...(video.scenes ?? []).map((scene) => scene.chapter), ...Object.values(video.thumbnail?.data ?? {})];
-  const texts = [...lines.map((line) => line.text), ...metadata].filter((text) => typeof text === "string" && text.trim());
-  const terms = [...new Set(entriesUsed(texts, lexicon).flatMap((entry) => entry.forms))].sort();
-  const sources = (Array.isArray(video.sources) ? video.sources : []).map((source) => source?.title).filter((title) => typeof title === "string" && title.trim());
-  const boundaries = {};
-  for (const line of lines) {
-    const pieces = cuePieces(line.text, locale);
-    if (pieces.length > 1) boundaries[line.id] = pieces;
-  }
-  return { glossary: { terms, sources }, boundaries };
-}
+export { translationContext } from "../i18n/cli.mjs";
 
 /**
  * The listener's rewrite pass (docs/videos/HANDS-OFF.md §旁白), variant "rewrite": after the

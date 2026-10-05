@@ -177,8 +177,8 @@ export function splitText(text, rules, canFit = fits) {
 
 /**
  * The pieces one line's captions are cut into before timing, for a locale: what a translator is
- * shown as the narration's cue boundaries (tools/video/automation/prompts.mjs). timePieces may
- * still merge a piece that would flash past.
+ * shown as the narration's cue boundaries (tools/video/i18n/cli.mjs translationContext).
+ * timePieces may still merge a piece that would flash past.
  */
 export function cuePieces(text, locale) {
   const rules = LOCALE_RULES[locale];

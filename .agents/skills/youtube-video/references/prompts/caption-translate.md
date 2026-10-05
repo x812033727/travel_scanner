@@ -16,8 +16,8 @@ WRITE HERE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`, the worksheet
 1. `<VIDEO_DOCS>/video.json`: the slides (`data`) show what the viewer sees while a line plays; use them for context and keep the terms consistent with what is on screen.
 2. The worksheet. Every entry with `todo: true` needs a translation: lines, chapters, the title, the description, the tags and the thumbnail's words (`thumbnail`, present on a sheet with `metadata` when the video's thumbnail has words). Its `text` is empty because it is missing, or because its zh-TW source changed since the last merge (a renamed chapter, a new paragraph, reordered tags). The others already have a current one, which you may improve only if it is wrong.
 3. `<ROOT>/apps/api/app/guides/content/<SOURCE>.json` when `video.json` names a `source_guide`: its `<LOCALE>` version, if any, is the site's own wording for the same terms.
-4. `<ROOT>/docs/videos/lexicon.json`: the pronunciation dictionary every Latin-letter term in the narration is in (lint refuses an unknown one). With the lines, the title, description, tags, chapter names and thumbnail words, it gives you the glossary below.
-5. `<VIDEO_WORKDIR>/<SLUG>/captions/zh-TW.srt`, written by `captions` before the final cut (or `node <ROOT>/tools/video/cli.mjs captions --slug <SLUG>`): where the tool cuts each zh-TW line into cues, the cue boundaries below.
+4. The worksheet's `glossary` and `boundaries`, which `i18n-sheet` builds (`translationContext` in `tools/video/i18n/cli.mjs`): the glossary and the cue boundaries below.
+5. Behind them, to check or extend what the sheet says: `<ROOT>/docs/videos/lexicon.json`, the pronunciation dictionary every Latin-letter term in the narration is in (lint refuses an unknown one), which the glossary's terms come from; and `<VIDEO_WORKDIR>/<SLUG>/captions/zh-TW.srt`, written by `captions` before the final cut (or `node <ROOT>/tools/video/cli.mjs captions --slug <SLUG>`), the same cuts timed.
 
 ## Rules
 
@@ -38,18 +38,18 @@ WRITE HERE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`, the worksheet
 
 ## Glossary
 
-Write the glossary before you translate a line: every dictionary term (`lexicon.json`) that the lines, the title, description, tags, chapter names and thumbnail words use, in the forms they appear in (`GPT-5.5`, `Claude Code`, `Node.js`), plus the `title` of every entry under `sources` in `video.json` (the names the facts come under). A table of two columns, term and the `<LOCALE>` rendering you choose; one rendering per term, everywhere it appears:
+The worksheet's `glossary` is the table you translate against, built by `i18n-sheet`: `terms`, every dictionary term (`lexicon.json`, through `entriesUsed` in `tools/video/core/lexicon.mjs`) that the lines, the title, description, tags, chapter names and thumbnail words use, in the forms they appear in (`GPT-5.5`, `Claude Code`, `Node.js`); `sources`, the `title` of every entry under `sources` in `video.json` (the names the facts come under). Before you translate a line, write the `<LOCALE>` rendering you choose beside each term; one rendering per term, everywhere it appears:
 
 - A product, company, model or feature name exactly as its maker writes it, in Latin letters, never transliterated or re-spelled.
 - An acronym as it is.
 - An English word used as a term in `<LOCALE>`'s own usual term for it (ja トークン for token, zh-CN 令牌 or token as the locale's own documentation says); when the `source_guide`'s `<LOCALE>` version renders the term, that rendering.
 - A source's name as the source writes it.
 
-The worker builds the same table into its request (`translationContext` in `tools/video/automation/prompts.mjs`: `glossary.terms` from `entriesUsed` in `tools/video/core/lexicon.mjs`, `glossary.sources` from `video.json`); a hand run builds it from those files.
+The worker sends the same `glossary` beside the worksheet in every request (`translateLocale` in `tools/video/automation/flow.mjs`); a sheet made before it carried one (no `glossary` key) gets the table built by hand from those files.
 
 ## Cue boundaries
 
-`captions/zh-TW.srt` shows where the tool cuts each zh-TW line into cues (`cuePieces` in `tools/video/core/captions.mjs`: at a sentence end first, then at a clause end, never between a number and its unit; a line short enough is one cue). The tool cuts your translation into its own cues, so keep the source's order of clauses: what a cue says, its numbers first of all, is read while the narration says it; end a clause where the source does when `<LOCALE>` allows. The worker sends the same cuts as `boundaries`, line id to pieces, for the lines cut into more than one.
+The worksheet's `boundaries` maps a line id to the pieces the tool cuts that line's zh-TW captions into (`cuePieces` in `tools/video/core/captions.mjs`: at a sentence end first, then at a clause end, never between a number and its unit); a line absent from it is one cue, and `captions/zh-TW.srt` shows the same cuts timed. The tool cuts your translation into its own cues, so keep the source's order of clauses: what a cue says, its numbers first of all, is read while the narration says it; end a clause where the source does when `<LOCALE>` allows. The worker sends the same `boundaries` beside the worksheet (a lines unit only its own lines').
 
 ## Three passes
 

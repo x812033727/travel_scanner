@@ -12,7 +12,7 @@ WRITE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.review.md`.
 
 ## The glossary you review against
 
-The same table the translator worked from (`caption-translate.md` §Glossary): every dictionary term the lines, title, description, tags, chapter names and thumbnail words use, in the forms they appear in, plus the `title` of every entry under `sources`. Build it yourself from `lexicon.json` and `video.json`; the worker sends it as `glossary` (`terms`, `sources`) in the payload. One rendering per term across every field: a product, company, model or feature name in Latin letters exactly as its maker writes it; an acronym as it is; an English word used as a term in `<LOCALE>`'s own usual term; a source's name as the source writes it.
+The same table the translator worked from (`caption-translate.md` §Glossary): every dictionary term the lines, title, description, tags, chapter names and thumbnail words use, in the forms they appear in, plus the `title` of every entry under `sources`. The worksheet (`<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`, written by `i18n-sheet`) carries it as `glossary` (`terms`, `sources`) and the worker sends the same beside the worksheet in its request; a sheet from before it carried one, build from `lexicon.json` and `video.json`. One rendering per term across every field: a product, company, model or feature name in Latin letters exactly as its maker writes it; an acronym as it is; an English word used as a term in `<LOCALE>`'s own usual term; a source's name as the source writes it.
 
 ## Look for, in this order
 
@@ -20,7 +20,7 @@ The same table the translator worked from (`caption-translate.md` §Glossary): e
 2. Facts: any number, price, date, version, product or company name that differs from the source line or the slide.
 3. Opinions that lost their first person, or statements that now sound like advice the source does not give (money, health, law).
 4. Glossary: a term rendered more than one way; a name transliterated or re-spelled; a source's name changed; a term that differs from the slide the viewer sees; product names not in their official `<LOCALE>` spelling.
-5. Cue order: against `captions/zh-TW.srt` (the worker's `boundaries`, line id to pieces), a translation whose clauses come in another order than the narration's cues, so a number or a name is read before or after the viewer hears it.
+5. Cue order: against the worksheet's `boundaries` (line id to the pieces the zh-TW captions cut that line into; the worker sends the same beside the worksheet, and `captions/zh-TW.srt` shows the cuts timed), a translation whose clauses come in another order than the narration's cues, so a number or a name is read before or after the viewer hears it.
 6. Readability: lines too long to read at speaking pace (en over about 80 characters, ja and ko over about 40), unnatural word order, register slips (ja です／ます, ko 합니다체, zh-CN Simplified with mainland wording).
 7. Budget: a line over its `max_chars` when the worksheet gives one (the dub must fit the zh-TW line's slot); suggest the cut, keeping every number and name.
 8. Title, description, tags and chapter names, when the worksheet holds them: searchable in `<LOCALE>`, title at most 100 characters, no angle brackets. Review only the parts the worksheet holds.
