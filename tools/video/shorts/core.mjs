@@ -27,6 +27,37 @@ export const USAGE_FILE = 'usage.json';
 export const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 // A scene's camera move over its picture (schema 2; motion.mjs), the long video's shot words.
 export const CAMERA = /^(?:push in|pull out|pan left|pan right|tilt up|tilt down|drift)$/;
+// The six beats of a Short (docs/videos/SHORTS.md §六拍文法), in the order they come: a scene may
+// say which it is (schema 2), several scenes may share one, and no beat comes back after a later
+// one. The writer prompts ask for all six; validate holds the order, the quality check holds the
+// picture (the first frame is the thumbnail, the last returns to it) and the words (no ask).
+export const BEATS = Object.freeze(['hook', 'setup', 'turn', 'proof', 'payoff', 'loop']);
+// What a Short never says (docs/videos/SHORTS.md §自動品管, `grammar`): the dated engagement call
+// to action, in Chinese or English. 訂閱 and 追蹤 are words a Short may need (a subscription
+// plan, tracking a parcel), so they count only when they ask the viewer to subscribe to or follow
+// the channel; 按讚, 小鈴鐺 and 點連結 ask nothing else.
+export const CALLS_TO_ACTION = Object.freeze([
+  /(?:按|點|給)(?:個|我個|我一個|一個|一下)?讚/u,
+  /小鈴鐺/u,
+  /點(?:擊|下|一下|個)?連結/u,
+  /(?:記得|別忘了?|請|快|歡迎|幫我|按|點|來)訂閱|訂閱(?:頻道|我們|我|本頻道|一下|起來|加|並|＋|\+)/u,
+  /(?:記得|別忘了?|請|快|歡迎|幫我|來)追蹤|追蹤(?:我們|我|頻道|本頻道|一下|起來)/u,
+  /\bsubscribe\b/i,
+  /\b(?:hit|smash|tap|click|give|leave|drop)\s+(?:that\s+|the\s+|a\s+|it\s+a\s+|us\s+a\s+)?like\b|\blike\s+and\s+subscribe\b/i,
+  /\b(?:notification\s+bell|hit\s+the\s+bell|ring\s+the\s+bell|bell\s+icon)\b/i,
+  /\blink\s+in\s+(?:the\s+|my\s+)?(?:bio|description|comments?)\b|\b(?:click|tap|hit)\s+(?:the\s+|that\s+|this\s+)?link\b/i,
+  /\bfollow\s+(?:us|me|for\s+more|the\s+channel|our\s+channel)\b/i,
+]);
+
+/** The calls to action a text makes, as the words that make them; empty when it makes none. */
+export function callsToAction(text) {
+  const found = [];
+  for (const pattern of CALLS_TO_ACTION) {
+    const match = pattern.exec(String(text ?? ''));
+    if (match) found.push(match[0]);
+  }
+  return found;
+}
 export const esc = (value) => String(value).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const text = (value) => typeof value === 'string' && value.trim().length > 0;
 
@@ -41,10 +72,17 @@ function sceneErrors(doc, errors) {
   if (!Array.isArray(doc?.scenes) || doc.scenes.length < 3 || doc.scenes.length > 12) errors.push('3–12 scenes required');
   if (!Array.isArray(doc?.scenes)) return;
   const evidence = Array.isArray(doc.evidence) ? doc.evidence : [];
+  // The latest beat named so far: a scene's beat may repeat it or go on, never back.
+  let beat = -1;
   for (const [i, scene] of doc.scenes.entries()) {
     if (!scene || typeof scene !== 'object' || Array.isArray(scene)) {
       errors.push(`scene ${i}: scene must be an object`);
       continue;
+    }
+    if (scene.beat !== undefined) {
+      if (!(doc.schema_version === 2 && BEATS.includes(scene.beat))) errors.push(`scene ${i}: beat must be one of ${BEATS.join(', ')} (schema 2)`);
+      else if (BEATS.indexOf(scene.beat) < beat) errors.push(`scene ${i}: beat ${scene.beat} comes after ${BEATS[beat]}; the order is ${BEATS.join(', ')}`);
+      else beat = BEATS.indexOf(scene.beat);
     }
     if (typeof scene.headline !== 'string' || !scene.headline.trim() || scene.headline.length > 36) errors.push(`scene ${i}: headline 1–36 characters`);
     if (!Array.isArray(scene.narration) || !scene.narration.length || scene.narration.some(t => typeof t !== 'string' || !t.trim() || [...t].length > 38)) errors.push(`scene ${i}: narration phrases 1–38 characters`);

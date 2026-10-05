@@ -72,6 +72,8 @@ function measured(timeline) {
     video: { width: 1080, height: 1920, codec_name: 'h264', r_frame_rate: '30/1', nb_frames: String(timeline.frames) },
     audio: { codec_name: 'aac', sample_rate: '48000', duration: String(timeline.seconds) },
     loudness: { input_i: '-14', input_tp: '-1' },
+    // The cut's two ends (qa.mjs grammar): the cover identical to frame 0, the last frame the first encoded again.
+    grammar: { cover_psnr: Infinity, loop_psnr: 48.1 },
   };
 }
 

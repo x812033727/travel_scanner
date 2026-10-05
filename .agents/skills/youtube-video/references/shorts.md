@@ -12,7 +12,7 @@ Shorts 是 1080×1920、30 fps、25–55 秒（Shorts 設定的 `seconds_min`／
 | **長片精華**（`cut`，系列是來源長片） | 本機：`from-episode` 從有 shot 的長片（原來如此事務所、插圖投影片）切兩支；別的工具做好的成片用 `import` | 工人的精華步驟（票 `2026-09-28-video-shorts-worker-cut`）還沒有。伺服器已經替公開的教學長片自動開精華題目，但工人與排片都先跳過 |
 | **漫劇直式短篇**（`drama`） | 只有 `import` 收得進來：`build` 拒絕 `line: "drama"` | 漫劇產線的 9:16（票 `2026-09-28-video-shorts-worker-drama`）還沒有 |
 
-不管誰做的，送上站之後都走同一條：成片審核（12 項自動品管）→ 上傳包審核（4 項）→ 片庫 → 月曆的時段 → YouTube。
+不管誰做的，送上站之後都走同一條：成片審核（13 項自動品管）→ 上傳包審核（4 項）→ 片庫 → 月曆的時段 → YouTube。
 
 ## 一次性設定
 
@@ -32,11 +32,14 @@ Shorts 是 1080×1920、30 fps、25–55 秒（Shorts 設定的 `seconds_min`／
 - 實測線另要 `experiment_summary`（測了什麼）、`limitations`（這次測試說不出什麼）、`evidence`（`[{path, sha256}]`，至少一個）；`series` 只能是 `daily`、`blind`、`prompts`。
 - 精華與漫劇另要 `source.slug`（站上那支長片）；`source.url`（YouTube 網址）可省略，`package` 會在長片有影片 id 之後向站上讀；可加 `start_seconds`、`end_seconds`。
 - 選填：`hashtags`（≤ 3）、`links`（≤ 5，`{label, url}`，只收 https）、`tags`（≤ 15，各 ≤ 30 字元）、`synthetic_media`（畫面有擬真生成圖時寫 `true`）、`music`、`sfx`（站主放在 `<VIDEO_WORKDIR>/_music/`、`_sfx/<set>/` 的授權檔；Shorts 不生成音樂）。
-- `scenes`：3–12 個。每個 `headline` ≤ 36 字元、`narration` 是短句陣列（每句 ≤ 38 字元，一句一張字卡；字幕條一行放 15 個全形字、最多兩行，超過 30 個顯示單位的句子 `layout` 會失敗，38 字只是格式上限）；可加 `kicker`、`body`（≤ 5 列、每列 ≤ 85 字元）、`big`、`note`、`asset`（必須列在 `evidence`）、`camera`（push in／pull out／pan left／pan right／tilt up／tilt down／drift）。`shot` 只給精華用，`from-episode` 會換成長片的關鍵影格。
+- `scenes`：3–12 個。每個 `headline` ≤ 36 字元、`narration` 是短句陣列（每句 ≤ 38 字元，一句一張字卡；字幕條一行放 15 個全形字、最多兩行，超過 30 個顯示單位的句子 `layout` 會失敗，38 字只是格式上限）；可加 `kicker`、`body`（≤ 5 列、每列 ≤ 85 字元）、`big`、`note`、`asset`（必須列在 `evidence`）、`camera`（push in／pull out／pan left／pan right／tilt up／tilt down／drift）、`beat`（`hook`／`setup`／`turn`／`proof`／`payoff`／`loop`：六拍的順序不能倒退，一拍可以跨兩個場景，也可以不寫）。`shot` 只給精華用，`from-episode` 會換成長片的關鍵影格。
 
 寫法：
 
 - **開場**：第一句就是題目或反直覺的結果，2 秒內出現重點字卡；不問候、不自我介紹。開場那一句不能跟最近 30 支一樣（`variety`）。
+- **六拍**：hook（題目或結果，2 秒內）→ setup（規則或題目）→ turn（跟預期不一樣的那一刻、兩個答案並排）→ proof（數字照證據）→ payoff（結果與這次測試的限制）→ loop（最後一句接回開頭：再問一次題目或丟下一題）。每個場景寫 `beat`，撰稿提示（`prompts/shorts-lab.md`、`shorts-cut.md`）要求六拍齊全。
+- **第一格就是縮圖**：第一張字卡的 `headline` ≤ 14 字，或帶 `big`。成片最後 12 格會溶接回第一格（`build` 自己做，`MOTION_VERSION` v3），所以結尾不要寫「影片到這裡」這類話，讓 loop 那一句自然接回開頭。
+- **不寫呼籲**：訂閱、按讚、小鈴鐺、點連結、追蹤與英文對應（subscribe、hit like、ring the bell、link in bio、follow us）一律不寫，`grammar` 會擋；「訂閱制方案」「追蹤包裹」這種用法不算。精華要導回長片就寫「完整影片在說明欄」，不寫「點連結」。
 - **結尾導流**：實測線收在結果與限制，導到下一個問題或對應文章；精華與漫劇的說明欄第一行由 `package` 自動放「完整影片：」連結（Shorts 的「相關影片」只能在 Studio 設，API 寫不了）。
 - **長度不對就改稿**：旁白超出範圍時 `build` 直接失敗（`edit script to fit`），不會裁旁白；增刪句子，不要改語速。
 - 數字照證據寫；實測平手就說平手、模型答錯就照實寫。
@@ -49,11 +52,11 @@ Shorts 是 1080×1920、30 fps、25–55 秒（Shorts 設定的 `seconds_min`／
 | 2 | `build --file <腳本> --workdir <VIDEO_WORKDIR> --speech server [--captions karaoke]` | `<VIDEO_WORKDIR>/<slug>/<buildId>-<時間>/`：`script.json`、`evidence/`、`audio/000.wav…`、`timeline.json`、`timing.json`（卡拉 OK 時）、`captions/`（亮字層）、`checks.json`、`contact-sheet.png`、`upload/`（`final.mp4`、`zh-TW.srt`、`cover.png`、`titles.json`、`manifest.json`） | 每次都開一個新的成品目錄；後面的指令都用 `--dir` 指它 |
 | 3 | `check-audio --dir <成品>` | `check.json`（綁音檔與逐句原文） | 0 句被標；被標就 `build --file <腳本> --redo <成品> …`，只重錄被標的句子，在新目錄再跑一次 |
 | 4 | 查核：另一個代理在新對話對照證據，寫 `verify.json`；`qa --dir <成品> --verify <verify.json>` 會把它放進成品 | `verify.json`：`{ok, document_sha256, checked_by, claims: [{text, ok, note}], problems: []}`，`document_sha256` 是成品裡 `script.json` 的雜湊 | 每個數字與結論都有證據 |
-| 5 | `qa --dir <成品>` | `qa.json`（12 項，綁所有輸入的雜湊） | 全過；沒過照下一節修 |
+| 5 | `qa --dir <成品>` | `qa.json`（13 項，綁所有輸入的雜湊） | 全過；沒過照下一節修 |
 | 6 | `package --dir <成品>` | `upload/metadata.json`、`upload/description.zh-TW.txt`、`package.json`（4 項） | 全過 |
 | 7 | `push --dir <成品>` | 站上的影片與審核 | 印出的 `waits` 是空的 |
 
-`push` 先送成片審核（`format: "shorts"`、`shorts_line`、720p 預覽、封面、證據、`payload.qa`）；站上當場核准（Shorts 設定的「品管全過就核准」開著、12 項全過）就接著送上傳包審核；成片還在等站主時，站主核准後再跑一次 `push`。同一份成片重送是安全的：站上回它已經有的那一筆。
+`push` 先送成片審核（`format: "shorts"`、`shorts_line`、720p 預覽、封面、證據、`payload.qa`）；站上當場核准（Shorts 設定的「品管全過就核准」開著、13 項全過）就接著送上傳包審核；成片還在等站主時，站主核准後再跑一次 `push`。同一份成片重送是安全的：站上回它已經有的那一筆。
 
 任何輸入改了（稿子、旁白、時間軸、字幕、證據、`verify.json`），都從受影響的那一步往下重跑：旁白改了先 `check-audio`，再 `qa` → `package` → `push`。不要只補雜湊、改 `ok` 或拿舊收據重包；`qa` 與 `push` 都會比對輸入快照，對不上就拒絕。
 
@@ -95,7 +98,7 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 
 **別的工具做好的成片（精華、漫劇直式短篇）**：`import --from <DIR>`。`meta.json` 是 `{slug, line, series, titles: [a, b], description, source, hashtags?, tags?, links?, synthetic_media?, headlines?}`；字幕當成旁白逐句切音，所以 `zh-TW.srt` 要一句一段、時間不重疊、不超過片長。成片要 30 fps、48 kHz、−14 LUFS，不是就先轉檔再匯入（`ffmpeg -vf fps=30`）。匯入的成品照主幹 3–7；`layout` 永遠不過（量不到字卡位置），由站主在 Shorts 分頁開安全區疊圖看一次再核准。
 
-## 自動品管 12 項：沒過時怎麼修
+## 自動品管 13 項：沒過時怎麼修
 
 `qa` 的項目依序如下，伺服器要每一項都在、都過，`final_sha256` 等於這份成片，才算過。
 
@@ -113,6 +116,7 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 | `links` | 說明欄每個網址回 200（`Mokaair-editorial` User-Agent） | 改 `links` 或說明 |
 | `variety` | 開場那一句不跟最近 30 支一樣；字卡結構不跟同系列前一支一模一樣 | 改第一句，或調整場景（句數、`big`、`body`、`asset`、`camera`） |
 | `disclosure` | 記下要不要勾「變造或合成內容」與原因；不會讓品管失敗 | — |
+| `grammar` | 封面是成片第 0 格（PSNR ≥ 40 dB，自己 `build` 的量到 inf）、第一張字卡 ≤ 14 字或有 `big`、最後一格回到第一格（末 12 格溶接，PSNR ≥ 30 dB）、字卡與旁白沒有訂閱／按讚／小鈴鐺／點連結／追蹤與英文對應 | 字卡太長或有呼籲：改稿重 `build`（工人會交撰稿模型改，lint 也會先擋）；封面或末格不對：這是 `build` 自己做的，不應該壞，匯入的成片要看做它的工具有沒有做同樣的事，不然交站主 |
 
 連不上的服務（Jev、轉寫、抓網址、站台）一律算沒過，不會因為判斷不了就核准。修不好的交站主：`push` 照樣送，成片審核停在 `/admin/videos` 等站主核准、退回或放棄，這一支不會擋住月曆（時段改用片庫的下一支）。
 
@@ -132,7 +136,7 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 - `brief`：題庫不夠兩週的配額或站主丟了想法時補題（`prompts/shorts-brief.md`），工人只寫實測題。
 - `make`：最早一格還沒做的題目，做一支實測（`tools/video/shorts/lab.mjs`），步驟是 `freeze` → `subject-a` → `subject-b` → `score` → `write` → `verify` → `build` → `audio` → `qa` → `package` → `push`（提示詞 `prompts/shorts-lab.md`；撰稿的答案先過不碰模型的 lint，數字不在證據裡就當場退回重寫）。
 
-自動修（每種最多 2 輪）：`facts`、`layout`、`metadata`、長度交回撰稿；`narration` 第一輪重錄被標的句子、第二輪交撰稿改寫。`build` 做不出來的長度或版面修 2 輪仍不行，這支卡住；`qa` 修完仍有項目沒過就照樣 `push`，成片停在站主那裡（`awaiting`），站主核准後下一輪工人自己送上傳包。同一步連續兩次交不出能用的答案，這支標成卡住，原因寫在 `/admin/videos`；`shorts/next` 會跳過卡住的那支、照常開下一格，站主在影片頁按重試後工人從卡住的那一步接著做。
+自動修（每種最多 2 輪）：`facts`、`layout`、`metadata`、`grammar`（第一卡太長或呼籲）、長度交回撰稿；`narration` 第一輪重錄被標的句子、第二輪交撰稿改寫。`build` 做不出來的長度或版面修 2 輪仍不行，這支卡住；`qa` 修完仍有項目沒過就照樣 `push`，成片停在站主那裡（`awaiting`），站主核准後下一輪工人自己送上傳包。同一步連續兩次交不出能用的答案，這支標成卡住，原因寫在 `/admin/videos`；`shorts/next` 會跳過卡住的那支、照常開下一格，站主在影片頁按重試後工人從卡住的那一步接著做。
 
 工作區：`<VIDEO_WORKDIR>/_shorts/<slug>/lab.json`（做到哪一步）、`lab/`（`protocol.json`、`subject-a.json`、`subject-b.json`、`scores.json`、`script.json`、`verify.json`）、每次 `build` 一個成品目錄、`answers/`（不能用的模型回答原文）；`_shorts/shorts-state.json` 記 plan、brief、report 的失敗次數。`_` 開頭的資料夾清理工作區時不動。
 
@@ -141,7 +145,7 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 - **在 Windows 忘了 `--speech server`**：會用 Hanhan 做出不能上架的版本。試片用 Hanhan 的那一版不上架。
 - **`push` 回 0 不代表送出**：看 `waits`。`video_shorts_final_review_stale`：工具舊了，更新後重新 `push`。`video_shorts_review_upload_started`：影片已經開始上 YouTube，先到後台與 Studio 核對，不要清掉上傳紀錄。
 - **改了說明也要重跑**：`package` 的產物不在 QA 輸入裡，但腳本改了 QA 與查核都失效，要從 `build` 重來。
-- **匯入的成片**：24 fps 的會被拒絕（要先轉 30 fps）；`layout` 一定要站主看；沒跑 `check-audio` 的 `narration` 一定不過。
+- **匯入的成片**：24 fps 的會被拒絕（要先轉 30 fps）；`layout` 一定要站主看；沒跑 `check-audio` 的 `narration` 一定不過；`grammar` 多半也不過——封面要等於第 0 格、最後一格要回到第一格、第一張字卡 ≤ 14 字，都是這個工具 `build` 時做的，別的工具做的成片沒做就交站主。
 - **卡拉 OK 字幕的亮字會偏**（Gemini 聲音；Azure 聲音的字時是伺服器量的，`timing.json` 的句子帶 `aligned`）：時間是估的，句子裡有長停頓或拉丁字（`spokenUnits` 把一個拉丁字算兩個單位）時亮得早或晚；工人做的 Shorts 在站上會自動核准，所以預設是 `plain`，站主看過一支 `--captions karaoke` 的樣片再在工人主機設 `VIDEO_SHORTS_CAPTIONS=karaoke`。每次 `build` 都是新目錄（`codeHash`、`MOTION_VERSION` 變了），舊成品要重跑 `check-audio` 與 `qa`；已核准的成片綁 `final_sha256`，不受影響。
 - **工人讀不到 `docs/videos/ai-shorts`**：它的 docs volume 比 repo 舊，題目、規格與脈絡一律由 `shorts/next` 給；不要寫依賴那個資料夾的步驟。
 - **Jev 的每日次數**跟自動新聞、景點介紹共用；大批 `check-audio` 前先看「AI 供應商與金鑰」卡片。

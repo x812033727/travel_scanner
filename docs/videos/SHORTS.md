@@ -56,7 +56,7 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 題庫
   → 每週排片（企劃模型把題目排進下週的時段；各內容線有配額）
   → 製作（依內容線，見下一節）
-  → 自動品管 12 項 → 伺服器規則
+  → 自動品管 13 項 → 伺服器規則
         全過：核准 → 上傳包 → 進片庫
         沒過：先自動修（每種最多 2 輪）；修不好就放進「需要你」，時段改用片庫裡的下一支
   → 排進時段（公開前 lock_hours 小時鎖定那一格用哪一支）
@@ -132,7 +132,7 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 - 兩個標題（使用中的與備案）、說明欄、標籤、揭露的答案。第一期只能看與複製；標題與說明要改的話，用「送到 YouTube」的表單改，它會重新送。
 - 實測線：原始證據（題目、每一組的原始回答、評分）與查核報告，每個檔案附 SHA-256。
 - 長片精華與漫劇：來源影片的連結與切出來的範圍。
-- 品管 12 項的結果、審核紀錄、YouTube 同步面板（沿用 `YoutubeSyncPanel`）、放棄這支影片。
+- 品管 13 項的結果、審核紀錄、YouTube 同步面板（沿用 `YoutubeSyncPanel`）、放棄這支影片。
 
 ## 自動品管（成片）
 
@@ -164,10 +164,11 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 | `links` | 說明欄每個網址都回 200；精華的完整影片連結是公開的 | 工人用固定的 User-Agent 抓 |
 | `variety` | 開場那一句跟最近 30 支不重複；字卡結構跟同系列前一支不是一模一樣 | 伺服器的影片清單 |
 | `disclosure` | 依內容線與素材決定要不要勾「變造或合成內容」，寫進 `metadata.json`；這一項只記答案，不會讓品管失敗 | 規則見「三條內容線」 |
+| `grammar` | 六拍文法的三件事（2026-10-05，票 `2026-10-05-shorts-six-beat-grammar-qa`）。**第一格就是縮圖**：`cover.png` 是成片第 0 格（用 ffmpeg 量 PSNR，自己 `build` 的兩者相同、量到 inf，門檻 40 dB），而且第一張字卡的 `headline` ≤ 14 字或帶 `big`，縮圖大小讀得到。**最後一格回到第一格**：最後一景的末 12 格溶接回第一格（`motion.mjs` 的 `LOOP_FRAMES`），成片第 0 格對最後一格的 PSNR ≥ 30 dB，YouTube 重播時接得上。**沒有呼籲**：字卡（headline、kicker、big、body、note）與旁白裡沒有訂閱、按讚、小鈴鐺、點連結、追蹤或對應的英文（`core.mjs` 的 `CALLS_TO_ACTION`；「訂閱制方案」「追蹤包裹」這種用法不算，只擋叫觀眾訂閱或追蹤頻道的寫法） | `build`／`qa` 用 ffmpeg 重量；腳本 |
 
-**過關規則**（伺服器端，`shorts_qa_passed`，跟 `final_qa_passed` 同一個信任模型）：`qa.ok` 為真、`qa.final_sha256` 等於這份審核的雜湊、`kind` 是 `shorts`，而且伺服器自己列的必要項目（`SHORTS_QA_ITEMS`）每一項都在、都過。Shorts 設定的「品管全過就核准」開著時，審核在送達的當下核准，備註寫「Shorts 自動品管 12 項全過，依設定自動核准」，寫一筆 `video_review_auto_approved`。
+**過關規則**（伺服器端，`shorts_qa_passed`，跟 `final_qa_passed` 同一個信任模型）：`qa.ok` 為真、`qa.final_sha256` 等於這份審核的雜湊、`kind` 是 `shorts`，而且伺服器自己列的必要項目（`SHORTS_QA_ITEMS`）每一項都在、都過。Shorts 設定的「品管全過就核准」開著時，審核在送達的當下核准，備註寫「Shorts 自動品管 13 項全過，依設定自動核准」，寫一筆 `video_review_auto_approved`。
 
-**沒過的時候**：工人先自己修——`narration` 重錄或改寫被聽錯的句子、`layout` 交撰稿模型縮短那張字卡、`facts` 交撰稿模型照查核的意見改、`metadata` 重寫；每種最多 2 輪。還是不過才送審，摘要寫「Shorts 自動品管 2 項沒過：facts、layout」，進「需要你」。**這支 Shorts 不會擋住月曆**：它原本的時段改用片庫裡的下一支。
+**沒過的時候**：工人先自己修——`narration` 重錄或改寫被聽錯的句子、`layout` 交撰稿模型縮短那張字卡、`facts` 交撰稿模型照查核的意見改、`metadata` 重寫、`grammar` 交撰稿模型縮短第一張字卡或拿掉呼籲（畫面那一半——封面與末格——是 `build` 自己做的，壞了是程式的事，撰稿改不了）；每種最多 2 輪。還是不過才送審，摘要寫「Shorts 自動品管 2 項沒過：facts、layout」，進「需要你」。**這支 Shorts 不會擋住月曆**：它原本的時段改用片庫裡的下一支。
 
 **上傳包**（`publish` 審核）沿用既有規則，項目換成 Shorts 的四項 `SHORTS_PACKAGE_ITEMS`：`files`（mp4、字幕、封面、`metadata.json`）、`descriptions`、`captions`、`disclosure`。
 
@@ -352,7 +353,7 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 | 腳本格式第 2 版 | 多 `line`、`source`（精華與漫劇的來源與範圍）、`hashtags`、`links`；`evidence` 只有實測線必填；`series` 不再寫死三個值，改成依 `line` 檢查。第 1 版的三支試片照舊讀得懂 |
 | `build --speech server` | 旁白經伺服器合成（既有的 `/video/speech`，頻道聲音與 style 來自 Shorts 設定），逐句快取；`windows` 與 `--audio-dir` 兩種來源保留 |
 | `check-audio` | 每一句送轉寫與 Jev，被標的句子重錄，最多照設定的輪數 |
-| `qa` | 上面的 12 項，寫 `qa.json` |
+| `qa` | 上面的 13 項，寫 `qa.json` |
 | `package` | 寫 `metadata.json`（標題、兩個備案、說明、標籤、分類、兒童設定、揭露、`final_sha256`、`line`、`series`、`source`）與上傳包檢查 |
 | `push` | 在站上建立或更新這支影片（`format: "shorts"`、`shorts_line`），分段上傳檔案，送 `final` 與 `publish` 兩筆審核。本機與工人用同一個指令；本機用配對好的工具權杖 |
 | `import --from <目錄>` | 把別的工具做好的 Shorts（mp4、srt、一份最小的 `meta.json`）包成同一種上傳包再 `push`。品管一樣要重跑，不信任外來的檢查結果 |
@@ -360,6 +361,7 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 | 腳本格式第 2 版的 `camera`、`music`、`sfx` | 場景可寫 `camera`（上面七個詞）；文件層可寫 `music {track, sha256?, gain_db?, duck_db?}` 與 `sfx {set, gain_db?}`，都是站主放在工人主機 `<VIDEO_WORKDIR>/_music/`、`_sfx/<set>/` 的授權檔（跟長片同一份，`docs/videos/ILLUSTRATED.md` §配樂與音效），Shorts 不生成音樂。有配樂或音效時 `build` 走長片的 `measureMixArgs`／`mixArgs`（床壓在旁白下、側鏈壓低、成片 −14 LUFS、床 ≤ −24 LUFS 否則失敗），音效依 `shortSfxPlan` 放：每個場景開頭一個 stamp（第一景除外）、有 `big` 的句子一個 pop、1.5 秒內不重複。`buildId` 加配樂 sha 與音效組雜湊；`checks.json` 多 `music {track, sha256, bed_lufs}`、`sfx {set, events}`。第 1 版腳本一個位元組都不用改 |
 | `karaoke.mjs`（2026-10-05，票 `2026-10-05-shorts-karaoke-captions-estimated-timing`） | 字幕條可以**逐組亮字**（`build --captions karaoke`，沒給旗標就讀 `VIDEO_SHORTS_CAPTIONS`，再沒有就是 `plain`，舊行為一個位元組不變）：每句先切成最多兩行、一行 ≤ 15 個全形字（820 px 盒的真正上限，38 字只是格式上限），每行再切成 5–10 個顯示單位一組（拉丁字與數字不拆、標點黏前一個字、偏好在句讀收尾）；字幕層是獨立的透明 PNG（`captionHtml`，只畫字幕條、裁到 `CAPTION_BOX` 80,1430,820×165），一個亮字狀態一張，疊在卡片上（`segmentArgs` 的最後一個輸入，`overlay=80:1430`），卡片本身把字隱藏但保留盒與底色，所以 `measurePage` 的量法不變；亮組只換顏色（主題的 `highlight`，或 `colors.karaoke`）與光暈，不換版面。時間是**估算**的：伺服器只回音檔，`speechSpan` 先用每句音檔的 RMS 找到頭尾靜音，再依 `spokenUnits` 加標點的權重分攤；寫在成品的 `timing.json`（`source: "estimated"`，每句的 lines、groups、start／end、states），`checks.json.captions = {style, source, groups, states, version}`。CC 的 `zh-TW.srt` 仍一句一段（YouTube CC 沒有逐字）。`MOTION_VERSION` 升到 v2、`karaoke.mjs` 進 `codeHash`、`captions` 進 `buildId`。伺服器的字幕樣式設定延後（要 migration、schemas、後台表單與五個 admin.json）；站主先看一支樣片，滿意再在工人主機設 `VIDEO_SHORTS_CAPTIONS=karaoke`。真實字時由下一列的 `speech/align` 補（同一個 `timing.json` 形狀，`source: "aligned"`） |
 | `speech/align`（2026-10-05，票 `2026-10-05-speech-align-character-timing`） | 伺服器量字時，工具照量到的亮字。**API**：`app/video_speech/align.py`＋`align_api.py`（自己的 router，掛在 `video_speech_router` 旁邊；端點表見 §端點）。Azure 聲音走 Speech SDK（`azure-cognitiveservices-speech`，裝起來 9 MB、import 後 36 MB RSS，核心函式庫只連 libstdc++ 與 libuuid，slim 映像不用加套件；只有裝置音訊的擴充才連 ALSA，記憶體內合成從不載入），在同一次合成裡收 `WordBoundary`／`PunctuationBoundary` 事件：Azure 一個「詞」常是兩三個中文字，時間平均分給每個字（一字一音節）；詞典的詞（`<sub alias>`）整個詞取它被唸成的那幾個字的時間；Azure 沒給的字（例如沒報的標點）取左右鄰居之間的空檔。**工具端**：`tts/client.mjs` 的 `synthesizeAligned`（Azure 聲音，付費，跟 `synthesize` 一樣的 SPEECH_UNCERTAIN 規則）與 `alignClip`（任何音檔，不付費；伺服器回 `video_align_unavailable`／`video_align_voice_unsupported` 或舊站的 404 時回 `null`，一次就停）；`shorts/speech.mjs` 把字時存在 `.speech-server/<key>.timing.json`，跟 WAV 同一把 key；沒拿到的只有 `--captions karaoke` 的 build 會再問一次（不付費），`plain` 的 build 不問，只用快取裡已有的；`karaoke.mjs` 的 `alignedGroupTimes` 讓每一組從它第一個字被唸到的時刻亮起（第一組仍從語音段開頭、最後一組仍到語音段結尾，組不會倒退），字時拼不出這句（別的斷詞、別的文字）就保留那句的估算。`timing.json` 的 `source` 只有**每一句**都量到才是 `"aligned"`，否則仍是 `"estimated"`；量到的句子各帶 `aligned: {source: "azure"|"aligned", model}`，`checks.json.captions` 多 `aligned`（量到幾句；零句時不寫，估算的輸出一個位元組不變）。`qa` 的 `captions` 警告只在 `estimated` 時出現。**Gemini 聲音目前仍是估算**：量過的 CPU 對齊器（4 核機器、2026-10-05）——Qwen3-ForcedAligner 與 WhisperX 的 wav2vec2 都要 torch，API 映像裝不下；`sherpa-onnx` 1.13.8 的 wheel 4.4 MB（裝起來 38 MB、import 27 MB RSS），中文 zipformer-14M int8 模型 25 MB、載入 0.6 s、126 MB RSS、一段 3 秒音檔單執行緒 55 ms，小 Paraformer-zh 78 MB、完整 Paraformer-zh int8 約 230 MB；但這裡沒有語音可對、沒有 Azure 可比，transducer 的 token 時間是發射時間（晚於起音），而且 Dockerfile 不在票的範圍，模型得在容器啟動後下載，所以沒有上線：`align.load_aligner()` 回 `None`，端點回 503，接手的票在那個 hook 後面裝模型即可，合約與工具端都不用再動 |
+| 六拍文法與 `grammar`（2026-10-05，票 `2026-10-05-shorts-six-beat-grammar-qa`） | **腳本**：第 2 版的場景可寫 `beat`（`hook`、`setup`、`turn`、`proof`、`payoff`、`loop`；`validate` 只檢查順序——可重複、不能倒退、可以不寫；第 1 版拒絕）。撰稿提示（實測 `writer:shorts-lab`、精華 `writer:shorts-cut`，連同 skill 裡的逐字複本）要求六拍齊全、每景寫 `beat`、第一張字卡 ≤ 14 字或帶 `big`、不寫呼籲；精華導回長片改寫成「完整影片在說明欄」，不寫「點連結」。工人的 `labScript`／`cutScript` 讓 `beat` 通過欄位白名單，lint（`scriptProblems`／`cutProblems`）先用 `qa.mjs` 的 `scriptGrammarProblems` 擋掉第一卡太長與呼籲，撰稿模型在付旁白錢之前就改；`grammar` 也進工人的 `QA_FIXES`。**畫面**：最後一景多一個輸入——第一段的第 0 格（`build/scene-000.png`，也就是封面）——`fade=t=in:s=0:n=12:alpha=1` 依格數淡入、`setpts` 移到段尾、`overlay=eof_action=repeat` 疊在字卡與字幕層之上，前面的格原樣通過、最後一格就是第一格（`LOOP_FRAMES = 12`，`MOTION_VERSION` 升到 v3，每支都重編）。**量測**：`measureFinal` 多量 `grammar {cover_psnr, loop_psnr}`（`framePsnrArgs`：成片第 0 格對封面、第 0 格對最後一格，都轉 RGB、同一時基，`psnr` 濾鏡的 `average`），`build` 自己先驗（`loopProblems`：封面 ≥ 40 dB、末格 ≥ 30 dB），`checks.json` 多 `grammar {cover_psnr, loop_psnr, loop_frames}`（相同的圖量到 inf，收據寫上限 100）；`qa` 的第 13 項 `grammar` 再量一次，加上第一卡與呼籲的檢查；伺服器的 `SHORTS_QA_ITEMS` 同步加 `grammar`，五個 `admin.json` 多 `qaItems.grammar`。冒煙測試的六個場景帶六拍，`grammar` 離線也要過（實測 2026-10-05：封面 inf、末格 38 dB）。匯入的成片（`import`）沒做這些就過不了，交站主 |
 | `from-episode` 接任何有 shot 的長片 | 原來如此事務所的漫劇與插圖投影片影片都行：`episodeShort` 把每個 shot 換成長片的關鍵影格（雜湊綁定，不另外生圖），並帶上長片那個 shot 的 `camera`（Short 自己寫了就用自己的）；系列依長片決定（`episodeSeries`）：explainer → `sothatswhy`、插圖投影片 → `illustrated`（主題 `cut:illustrated`，深青、奶油白、琥珀，每張卡指回長片）；沒有 shot 的長片直接拒絕 |
 | `tools/video/automation/shorts.mjs` | 工人的 `shortsStep()`：依 `next` 做 `plan`、`brief`、`make`、`report`。`make` 依內容線走 `lab.mjs`、`cut.mjs`、`vertical.mjs`（漫劇）。`auto` 現在一讀到自動產線沒開就結束；`shortsStep()` 要排在那個檢查之前，由 Shorts 自己的開關決定做不做。`tick` 不在這裡：工人的迴圈腳本另外每 5 分鐘敲一次（見「誰在什麼時候動手」） |
 | `track-init`、`report` | 留著給離線使用；伺服器是正本 |

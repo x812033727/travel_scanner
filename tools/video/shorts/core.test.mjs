@@ -6,7 +6,7 @@ import { syncBuiltinESMExports } from 'node:module';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { PROFILE, buildTimeline, cameraWords, captionHtml, captionWords, saveJson, sceneHtml, sha256, sourcePath, srt, validate, verifyEvidence } from './core.mjs';
+import { BEATS, PROFILE, buildTimeline, callsToAction, cameraWords, captionHtml, captionWords, saveJson, sceneHtml, sha256, sourcePath, srt, validate, verifyEvidence } from './core.mjs';
 import { themeOf } from './layouts.mjs';
 
 const base = fileURLToPath(new URL('../../../docs/videos/ai-shorts/',import.meta.url));
@@ -177,4 +177,29 @@ test('a karaoke card hides its words behind the caption bar; the layer draws the
   assert.equal(captionWords(lines, groups, 0), '<span class="g on">一張手寫的發票，</span><br><span class="g">兩個品項</span>');
   assert.ok(!captionWords(lines, groups, -1).includes(' on'));
   assert.equal(captionWords(['<b>'], [{ text: '<b>', line: 0 }], 0), '<span class="g on">&lt;b&gt;</span>', 'the words are escaped');
+});
+
+test('a schema 2 scene may name its beat, the six in order, a beat over two scenes but never going back; the first format knows none', () => {
+  assert.deepEqual(BEATS, ['hook', 'setup', 'turn', 'proof', 'payoff', 'loop']);
+  const base = { schema_version: 2, slug: 'six-beats', format: 'shorts', locale: 'zh-TW', line: 'cut', series: 'long-video', titles: ['a', 'b'], description: 'd', source: { slug: 'long-video' } };
+  const withBeats = (...beats) => ({ ...base, scenes: beats.map((beat, index) => ({ headline: `第 ${index + 1} 張`, narration: ['一句'], ...(beat ? { beat } : {}) })) });
+  assert.deepEqual(validate(withBeats('hook', 'setup', 'turn', 'proof', 'payoff', 'loop')), []);
+  assert.deepEqual(validate(withBeats('hook', 'setup', 'setup', 'proof', 'payoff', 'loop')), [], 'a beat may run over two scenes');
+  assert.deepEqual(validate(withBeats(null, 'turn', null, 'loop')), [], 'a scene may name none');
+  assert.deepEqual(validate(withBeats('hook', 'proof', 'turn')), ['scene 2: beat turn comes after proof; the order is hook, setup, turn, proof, payoff, loop']);
+  assert.deepEqual(validate(withBeats('setup', 'hook', 'loop')), ['scene 1: beat hook comes after setup; the order is hook, setup, turn, proof, payoff, loop']);
+  assert.deepEqual(validate(withBeats('hook', 'quiz', 'loop')), ['scene 1: beat must be one of hook, setup, turn, proof, payoff, loop (schema 2)']);
+  assert.deepEqual(validate(withBeats('hook', 'loop', 'proof', 'loop')), ['scene 2: beat proof comes after loop; the order is hook, setup, turn, proof, payoff, loop'], 'the latest beat named holds, not the last scene\'s');
+  const v1 = pilot();
+  assert.ok(validate({ ...v1, scenes: [{ ...v1.scenes[0], beat: 'hook' }, ...v1.scenes.slice(1)] }).some((error) => error.includes('beat')), 'the first format knows no beat');
+});
+
+test('a call to action is the ask, in Chinese or English, never a word a Short may need', () => {
+  for (const text of ['記得訂閱頻道', '別忘了訂閱', '訂閱加開啟小鈴鐺', '按讚', '點個讚', '給我一個讚', '點連結看完整影片', '點擊連結', '追蹤我們', '請追蹤', '追蹤一下', 'Subscribe for more', 'hit that like button', 'like and subscribe', 'ring the bell', 'link in bio', 'click the link', 'follow us']) {
+    assert.ok(callsToAction(text).length, text);
+  }
+  for (const text of ['訂閱制方案每月 20 美元', '付費訂閱的差別', '追蹤包裹的進度', '追蹤這個數字', '完整影片在說明欄', '這條線像鐘形曲線', 'the subscription plan', 'unsubscribe from the list', 'follow the steps', 'a bell curve', 'I like it', '', undefined]) {
+    assert.deepEqual(callsToAction(text), [], String(text));
+  }
+  assert.deepEqual(callsToAction('按讚、訂閱我們，再開小鈴鐺'), ['按讚', '小鈴鐺', '訂閱我們'], 'every ask, as the words that make it');
 });
