@@ -154,9 +154,7 @@ def _exercise_0042(connection: Connection) -> None:
         connection.execute(
             sa.text("SELECT id, notes FROM trip_plans WHERE id IN (:kept, :blank, :absent)"),
             {"kept": kept, "blank": blank, "absent": absent},
-        )
-        .tuples()
-        .all()
+        ).all()
     )
     assert notes[kept] == "  帶泳衣，週三看煙火  "
     assert notes[blank] is None
@@ -248,9 +246,7 @@ def _exercise_0044(connection: Connection) -> None:
             sa.text(
                 "SELECT slug, review_status FROM travel_hotspots WHERE slug LIKE 'dead-branch-%'"
             )
-        )
-        .tuples()
-        .all()
+        ).all()
     )
     assert statuses == {
         "dead-branch-quoted": "approved",

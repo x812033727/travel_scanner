@@ -92,6 +92,37 @@ async def seed(
 
 
 @pytest.mark.asyncio
+async def test_publish_bundle_leaves_no_stale_rows_on_the_callers_session() -> None:
+    engine, factory = await database()
+    article, versions = await seed(factory)
+    async with factory() as session:
+        # Hold the rows, as a caller that loaded them first would, so they stay in the identity map.
+        held = list(
+            await session.scalars(
+                select(GuideArticleLocale).where(GuideArticleLocale.article_id == article.id)
+            )
+        )
+        await admin_service.publish_bundle(
+            session,
+            None,
+            article.id,
+            {locale: document(locale) for locale in LOCALES},
+            versions,
+            reason="automated approval",
+        )
+        again = list(
+            await session.scalars(
+                select(GuideArticleLocale).where(GuideArticleLocale.article_id == article.id)
+            )
+        )
+        assert sorted((row.locale, row.version, row.published_version) for row in again) == sorted(
+            (locale, 2, 2) for locale in LOCALES
+        )
+        assert all(row.published_version == 2 for row in held)
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
 async def test_publish_bundle_commits_five_locales_revisions_index_and_system_audit() -> None:
     engine, factory = await database()
     article, versions = await seed(factory)

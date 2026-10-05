@@ -798,7 +798,7 @@ def backfill_locales(settings: Settings) -> list[Locale]:
 
 def guideless_hotspots_statement(
     limit: int, locale: Locale | None = None, *, retry_after: datetime | None = None
-) -> Select[tuple[TravelHotspot]]:
+) -> Select[TravelHotspot]:
     """Hotspots that still have nothing for a visitor to watch or read.
 
     With a ``locale`` the question is narrower, nothing in *that* language, and a pair

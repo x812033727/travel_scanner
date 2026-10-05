@@ -275,7 +275,7 @@ async def ready_destination_offers(
     )
     if module is not None:
         query = query.where(DestinationAffiliateOffer.module == module)
-    rows = list((await session.execute(query)).tuples().all())
+    rows = list((await session.execute(query)).all())
     # One CTA per brand and module: prefer the explicitly enrolled direct channel when both
     # channels are ready for the same brand.
     ready = [row for row in rows if ready_destination_offer(*row, settings, now)]
