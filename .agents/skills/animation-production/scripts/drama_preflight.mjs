@@ -3,6 +3,9 @@
 // （關卡沒核准或過期：exit 3；timeline 過期或 manifest 沒綁到現在的 hash：exit 2；lint 錯：exit 1），
 // 又會白花什麼（judge 題目超過 400 字被站上拒收、
 // 重跑把快取裡的 manifest 重寫而把核准作廢、production profile 的模型和存好的片段不合而整批重買）。
+// 有開拍鎖定（plan/lock.json，animation-preproduction 的 plan_lock.mjs 寫的）時，每個階段再對照每鏡的承諾與連戲鎖：
+// 鎖定時答應的 clip 變成 still、切或 fit freeze，或鎖住的道具／服裝／時刻字從 prompt 消失，而 plan/changes.jsonl 裡沒有
+// 對照這把鎖、站主點頭的變更單，就以 lint 的碼（exit 1）擋下；有變更單只提醒。沒有鎖定檔的集不查。
 // 只讀檔案：不碰伺服器、不要 token、不要 ffmpeg；伺服器實際選的模型得看 `media-status`，所以片段模型
 // 從 series.json 的 production.profile.video、存好的 clips/manifest.json 或 --model 來。
 //
@@ -24,6 +27,8 @@ import { readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } 
 import { ARTIFACTS, lintProject, loadProject, lookChosen, pipelineStatus } from "../../../../tools/video/core/state.mjs";
 import { FPS, speechHash, visualHash } from "../../../../tools/video/core/timeline.mjs";
 import { readLedger } from "../../../../tools/video/media/ledger.mjs";
+import { continuityBreaks, coveringOrder, LOCK_FILE, lockProblem, promiseBreaks, readChangeOrders } from "../../animation-preproduction/scripts/plan_lock.mjs";
+import { CONTINUITY_LABELS } from "../../animation-preproduction/scripts/shot_plan.mjs";
 import { DEFAULT_IMAGE_MODEL, MAX_CLIP_TAKES, MAX_KEYFRAME_TAKES, MAX_LOOK_ROUNDS, PRICES, secondsBought } from "./episode_estimate.mjs";
 
 // tools/video/cli.mjs EXIT（測試盯著一致）：各階段回的碼。
@@ -54,7 +59,9 @@ async function rubricBuilders() {
 
 /**
  * { slug, workdir, stage, next_paid, steps, gates, hashes, bindings, kept, needs_review, external, imported,
- *   stop, findings: [{ stage, level: refuse|waste|note, exit, what, fix, usd?, judge_calls? }], judge, exit_code }
+ *   stop, lock: null | { file, created_at, version, problem, broken: { promise, continuity }, signed: { promise, continuity } },
+ *   findings: [{ stage, level: refuse|waste|note, exit, what, fix, usd?, judge_calls?, id? }], judge, exit_code }
+ * findings 的 id 只有鎖定那幾條有：promise.broken、promise.signed、continuity.broken、continuity.signed。
  */
 export async function preflight({ slug, root, workdir: workdirFlag, env = process.env, home, stage: wanted = null, model: modelFlag = null }) {
   if (wanted && !STAGES.includes(wanted)) throw new UsageError(`--stage must be one of ${STAGES.join(", ")}`);
@@ -269,6 +276,40 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
     if (state.status === "stale") add("note", null, `${gate} 關卡的核准過期了（檔案在核准後變過）`, "要用到它的階段會以 exit 3 拒絕：再 review-push 那一關");
   }
 
+  // 開拍鎖定的承諾與連戲鎖（plan/lock.json）：鎖定時答應的 clip 變成 still、切、刪掉或 fit freeze，或鎖住的連戲字從 prompt
+  // 消失，而 changes.jsonl 沒有對照這把鎖、記了這一鏡這個改動的變更單，就以 lint 的碼擋；有變更單只提醒。每個階段都查：
+  // 承諾是錢還沒花之前的事，但花過之後也不該靜靜改掉。沒有鎖定檔（沒走 animation-preproduction 的集）不查。
+  const lockDoc = readJson(path.join(workdir, LOCK_FILE), null);
+  const lock = lockDoc ? { file: LOCK_FILE, created_at: lockDoc.created_at ?? null, version: lockDoc.version ?? null, problem: lockProblem(lockDoc), broken: { promise: [], continuity: [] }, signed: { promise: [], continuity: [] } } : null;
+  if (lock?.problem) add("note", null, `${LOCK_FILE}：${lock.problem}`, "承諾與連戲鎖這一項沒檢查；plan_lock.mjs 重鎖之後再跑");
+  else if (lock) {
+    const orders = readChangeOrders(workdir);
+    const nowKind = { still: "是 still", cut: "是切素材（source）", removed: "不在 video.json 裡" };
+    const signedBy = (order) => `有站主點頭的變更單（${order.at}${order.note ? `：${order.note}` : ""}）`;
+    for (const broken of promiseBreaks(lockDoc, doc)) {
+      const what = `${broken.id} 鎖定時答應的是 clip（買 ${broken.promise.buy_s} s，${broken.promise.route}），現在${broken.kind ? nowKind[broken.now.kind] ?? `是 ${broken.now.kind}` : ` fit 是 freeze（鎖定時 ${broken.promise.fit}）`}`;
+      const order = coveringOrder(orders, lockDoc, broken.id, { kind: broken.kind, fit: broken.fit });
+      if (order) {
+        lock.signed.promise.push(broken.id);
+        add("note", null, `${what}：${signedBy(order)}`, "照變更單做；一次改完再 plan_lock.mjs --write --force 重鎖", { id: "promise.signed" });
+      } else {
+        lock.broken.promise.push(broken.id);
+        add("refuse", EXIT.lint, `${what}，沒有變更單`, "不是站主的意思就改回鎖定的樣子；是的話 plan_lock.mjs --check 印變更單，站主點頭後 --accept --note \"<站主的話>\"，或一次改完 --write --force 重鎖", { id: "promise.broken" });
+      }
+    }
+    for (const broken of continuityBreaks(lockDoc, doc)) {
+      const what = `${broken.id} 鎖住的連戲字不在 prompt 裡了：${broken.missing.map((item) => `${CONTINUITY_LABELS[item.category] ?? item.category}「${item.text}」`).join("、")}${broken.depends_on.length ? `（接 ${broken.depends_on.join("、")} 的字）` : ""}`;
+      const order = coveringOrder(orders, lockDoc, broken.id, { continuity: broken });
+      if (order) {
+        lock.signed.continuity.push(broken.id);
+        add("note", null, `${what}：${signedBy(order)}`, "照變更單做；關鍵影格要不要重畫看 plan_lock.mjs --check 的「會重畫、重買或重做」", { id: "continuity.signed" });
+      } else {
+        lock.broken.continuity.push(broken.id);
+        add("refuse", EXIT.lint, `${what}，沒有變更單`, "把那個字寫回 prompt（每鏡的錨點寫一樣的字），或 plan_lock.mjs --check 看變更單、站主點頭後 --accept --note \"<站主的話>\"，或一次改完 --write --force 重鎖", { id: "continuity.broken" });
+      }
+    }
+  }
+
   const refused = findings.filter((finding) => finding.level === "refuse");
   const wasted = findings.filter((finding) => finding.level === "waste");
   return {
@@ -288,6 +329,7 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
     external,
     imported,
     stop,
+    lock,
     lint: { errors: lint.errors.length, warnings: lint.warnings.length },
     judge: { ...judge, per_hour: JUDGE_CALLS_PER_HOUR, monthly: JUDGE_MONTHLY_BUDGET },
     findings,
@@ -303,6 +345,7 @@ export function renderPreflight(result) {
   for (const [name, binding] of Object.entries(result.bindings)) out.push(`  ${name.padEnd(10)} ${binding.present ? (binding.bound ? "綁到現在的 " + binding.binds : "有，但是舊的（" + binding.binds + " 不同）") : "沒有"}${binding.model_current === false ? "；模型和 production profile 不合" : ""}`);
   out.push(`留用／要買：角色 ${result.kept.characters.length}／${result.new.characters.length}，keyframe ${result.kept.keyframes.length}／${result.new.keyframes.length}，clip ${result.kept.clips.length}／${result.new.clips.length}`);
   if (result.clip_model) out.push(`片段模型（離線推斷）：${result.clip_model} ${result.clip_resolution ?? ""}`);
+  if (result.lock) out.push(`開拍鎖定 ${result.lock.created_at ?? "?"}：${result.lock.problem ? result.lock.problem : `承諾改小 沒變更單 ${result.lock.broken.promise.length}／有 ${result.lock.signed.promise.length}；連戲字少了 沒變更單 ${result.lock.broken.continuity.length}／有 ${result.lock.signed.continuity.length}`}`);
   if (result.stop) out.push("STOP 檔在");
   out.push("");
   out.push(`階段 ${result.stage ?? "-"}：`);

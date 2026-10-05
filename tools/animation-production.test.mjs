@@ -39,7 +39,9 @@ import {
   secondsBought,
 } from "../.agents/skills/animation-production/scripts/episode_estimate.mjs";
 import { EXIT, JUDGE_CALLS_PER_HOUR, JUDGE_MONTHLY_BUDGET, KEYFRAME_MIN_PSNR, MAX_RUBRIC_QUESTION, preflight } from "../.agents/skills/animation-production/scripts/drama_preflight.mjs";
-import { renderMarkdown, runReport } from "../.agents/skills/animation-production/scripts/run_report.mjs";
+import { renderMarkdown, renderReport, runReport } from "../.agents/skills/animation-production/scripts/run_report.mjs";
+import { lockOf } from "../.agents/skills/animation-preproduction/scripts/plan_lock.mjs";
+import { planEpisode } from "../.agents/skills/animation-preproduction/scripts/shot_plan.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -124,6 +126,14 @@ const approveBoth = async (box) => {
   await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
 };
 const writeClips = (box, doc, timeline, shots) => writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({ speech_hash: timeline.speech_hash, visual_hash: visualHash(doc), look_hash: lookHash(doc), clips_hash: "0".repeat(16), shots }));
+// The lock package animation-preproduction writes before any money is spent: the server route, on the recorded timeline.
+const PLAN_LOCK = path.join(ROOT, ".agents", "skills", "animation-preproduction", "scripts", "plan_lock.mjs");
+const lockShots = (box, doc, timeline, created = "2026-10-05T00:00:00.000Z") => {
+  const lock = { ...lockOf(doc, fixtureLexicon(), planEpisode(doc, { route: "server", timeline })), created_at: created, note: "test" };
+  mkdirSync(path.join(box.workdir, "plan"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "plan", "lock.json"), JSON.stringify(lock));
+  return lock;
+};
 
 test("PRICES carries the catalog's API prices, model by model, and the judge price", () => {
   const { text, models } = catalogModels();
@@ -710,6 +720,106 @@ test("the run report adds the ledger up by kind and stage, reads takes and utili
   assert.deepEqual([brought.utilisation.ledger_s, brought.waste.clip_seconds_bought], [28, 28]);
   assert.deepEqual(brought.external, [{ id: "opening", file: "clips/opening-ext.mp4", seconds: 4, provider: "hailuo-web", route: "hailuo-web", plan: "pro", credits: 60, imported: true }]);
   assert.match(renderMarkdown(brought, new Date(at)), /\| 外部片段 \| 1 \| 1 支／4 秒 \| 0\.50（方案點數：60 點，方案 pro） \| — \| — \|/);
+});
+
+// Delivery promise and continuity locks (OpenMontage's and the drama-skills / shuohao-skills packs' names; the idea only).
+test("preflight refuses a promised clip that quietly became a still, a cut or a freeze, and a locked string that left the prompt, until a change order against the lock names it", async () => {
+  const { box, doc, timeline } = prepared();
+  await approveBoth(box);
+  const file = path.join(box.dir, "video.json");
+  const lock = lockShots(box, doc, timeline);
+  assert.equal(lock.shots["sea-storm"].promise.fit, "freeze", "the fixture's sea-storm was promised with its freeze fit");
+  assert.deepEqual(lock.shots.bird.continuity.depends_on, ["sea-storm"], "bird continues from sea-storm's last frame");
+  assert.deepEqual(lock.shots.opening.continuity.locks.time_of_day, ["dawn"]);
+  const clear = await preflight({ slug: box.slug, root: box.root, workdir: box.work });
+  assert.equal(clear.exit_code, 0, JSON.stringify(clear.findings));
+  assert.deepEqual(clear.lock.broken, { promise: [], continuity: [] });
+  assert.ok(!clear.findings.some((finding) => finding.id), "a kept promise says nothing");
+
+  // farewell becomes a still: refused with the lint code at whatever stage comes next.
+  const edit = (change) => { const current = JSON.parse(readFileSync(file, "utf8")); change(current); writeFileSync(file, JSON.stringify(current)); };
+  edit((current) => { current.scenes[1].data.visual = "still"; });
+  const still = await preflight({ slug: box.slug, root: box.root, workdir: box.work });
+  const broken = still.findings.find((finding) => finding.id === "promise.broken");
+  assert.ok(broken, JSON.stringify(still.findings));
+  assert.equal(broken.level, "refuse");
+  assert.equal(broken.exit, EXIT.lint);
+  assert.match(broken.what, /^farewell 鎖定時答應的是 clip（買 \d+ s，server），現在是 still，沒有變更單$/);
+  assert.match(broken.fix, /--accept --note/);
+  assert.deepEqual(still.lock.broken.promise, ["farewell"]);
+  assert.equal(still.exit_code, 1);
+  const cli = run("drama_preflight.mjs", "--slug", box.slug, "--root", box.root, "--workdir", box.work);
+  assert.equal(cli.status, 1, cli.stderr);
+  assert.match(cli.stdout, /開拍鎖定 2026-10-05T00:00:00\.000Z：承諾改小 沒變更單 1／有 0；連戲字少了 沒變更單 0／有 0/);
+  assert.match(cli.stdout, /\[拒絕 exit 1\] farewell 鎖定時答應的是 clip/);
+
+  // The owner's word, recorded by plan_lock --accept against this lock, lets it through as a note.
+  const accepted = spawnSync(process.execPath, [PLAN_LOCK, "--slug", box.slug, "--root", box.root, "--workdir", box.work, "--accept", "--note", "站主：farewell 改 still"], { encoding: "utf8", env: { ...process.env, VIDEO_MIN_EPISODE_MINUTES: "0" } });
+  assert.equal(accepted.status, 0, accepted.stderr);
+  const signed = await preflight({ slug: box.slug, root: box.root, workdir: box.work });
+  assert.equal(signed.exit_code, 0, JSON.stringify(signed.findings));
+  assert.deepEqual([signed.lock.broken.promise, signed.lock.signed.promise], [[], ["farewell"]]);
+  assert.match(signed.findings.find((finding) => finding.id === "promise.signed").what, /有站主點頭的變更單（.*：站主：farewell 改 still）/);
+
+  // A freeze fit on a clip promised without one, and a time of day that left the prompt, are each refused on their own; the order above covers neither.
+  edit((current) => { current.scenes[1].data.visual = "clip"; current.scenes[0].data.fit = "freeze"; current.scenes[0].data.prompt = current.scenes[0].data.prompt.replace("at dawn", "at dusk"); });
+  const twice = await preflight({ slug: box.slug, root: box.root, workdir: box.work });
+  assert.deepEqual(twice.findings.filter((finding) => finding.level === "refuse").map((finding) => finding.id), ["promise.broken", "continuity.broken"], JSON.stringify(twice.findings));
+  assert.match(twice.findings.find((finding) => finding.id === "promise.broken").what, /^opening .*現在 fit 是 freeze（鎖定時 auto），沒有變更單$/);
+  assert.match(twice.findings.find((finding) => finding.id === "continuity.broken").what, /^opening 鎖住的連戲字不在 prompt 裡了：時刻「dawn」，沒有變更單$/);
+  assert.equal(twice.exit_code, 1);
+  assert.deepEqual(twice.lock.broken, { promise: ["opening"], continuity: ["opening"] });
+
+  // A cut from another shot is a kind change too; an old lock is only a note and checks nothing.
+  edit((current) => { current.scenes[0].data.fit = "auto"; current.scenes[0].data.prompt = current.scenes[0].data.prompt.replace("at dusk", "at dawn"); current.scenes[3].data = { ...current.scenes[2].data, source: { shot: "sea-storm", from_s: 1 } }; delete current.scenes[3].data.fit; });
+  const cut = await preflight({ slug: box.slug, root: box.root, workdir: box.work });
+  assert.match(cut.findings.find((finding) => finding.id === "promise.broken")?.what ?? "", /^bird .*現在是切素材（source），沒有變更單$/);
+  writeFileSync(path.join(box.workdir, "plan", "lock.json"), JSON.stringify({ ...lock, version: 2 }));
+  const old = await preflight({ slug: box.slug, root: box.root, workdir: box.work });
+  assert.ok(old.findings.some((finding) => finding.level === "note" && /lock\.json.*version 2/.test(finding.what)), JSON.stringify(old.findings));
+  assert.ok(!old.findings.some((finding) => finding.id));
+  assert.equal(old.lock.problem !== null, true);
+});
+
+test("the run report sets each shot's promise against what was delivered and what the ledger spent, and marks a downgrade nobody signed", async () => {
+  const { box, doc, timeline } = prepared();
+  const lock = lockShots(box, doc, timeline);
+  const at = "2026-10-05T02:00:00.000Z";
+  const bought = lock.shots.farewell.buy_s;
+  const price = (seconds) => Math.round(seconds * 0.15 * 100) / 100;
+  const clip = (id, job, seconds) => ({ at, stage: "clips", kind: "clip", id, provider: "gemini", model: "gemini-omni-1.1-flash", key: `c-${job}`, job_id: job, seconds, cost_usd: price(seconds), status: "ready" });
+  mkdirSync(path.join(box.workdir, "media"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "media", "ledger.json"), JSON.stringify({ entries: [clip("farewell", "j1", bought), clip("farewell", "j2", bought)], totals: {} }));
+  writeClips(box, doc, timeline, {
+    farewell: { file: "clips/farewell-2.mp4", sha256: "f".repeat(64), seconds: bought, frames: bought * 30, needed_s: 6, qc: { ok: true }, needs_review: false },
+    "sea-storm": { still: true, file: "keyframes/sea-storm-1.png", sha256: "e".repeat(64) },
+  });
+  const report = await runReport({ slug: box.slug, root: box.root, workdir: box.work });
+  const shots = Object.fromEntries(report.promises.shots.map((shot) => [shot.id, shot]));
+  assert.deepEqual([report.promises.unit, report.promises.lock, report.promises.route], ["usd", lock.created_at, "server"]);
+  assert.deepEqual([shots.farewell.kept, shots.farewell.change, shots.farewell.delivered.kind, shots.farewell.delivered.external, shots.farewell.spent.jobs], [true, null, "clip", false, 2]);
+  near4(shots.farewell.delta, 2 * price(bought) - lock.shots.farewell.cost.one, "two takes against the one promised");
+  assert.deepEqual([shots["sea-storm"].kept, shots["sea-storm"].change, shots["sea-storm"].signed, shots["sea-storm"].delivered.kind], [false, "downgrade", false, "still"], "a still delivered on a promised clip, and nobody signed");
+  near4(shots["sea-storm"].delta, -lock.shots["sea-storm"].cost.one, "the promised clip's price was saved");
+  assert.deepEqual([shots.bird.delivered, shots.bird.kept, shots.bird.change], [null, true, null], "not made yet: the promise stands as the script stands");
+  assert.deepEqual([report.promises.totals.kept, report.promises.totals.downgraded, report.promises.totals.unsigned, report.promises.totals.upgraded, report.promises.totals.pending], [3, 1, 1, 0, 2]);
+  near4(report.promises.totals.promised_one, lock.totals.clip.one);
+  near4(report.promises.totals.spent, 2 * price(bought));
+  near4(report.promises.totals.delta, 2 * price(bought) - lock.totals.clip.one);
+  assert.deepEqual(report.promises.orders, { accepted: 0, settled: 0 });
+  const text = renderReport(report);
+  assert.ok(text.includes(`sea-storm    承諾 clip ${lock.shots["sea-storm"].buy_s} s fit freeze → still；花 0（0 筆），差 -${lock.shots["sea-storm"].cost.one}；改小（沒簽變更單）`), text);
+  assert.ok(text.includes(`farewell     承諾 clip ${bought} s → clip ${bought} s；花 ${2 * price(bought)}（2 筆），差 +${price(bought)}；守住`), text);
+  const markdown = renderMarkdown(report, new Date(at));
+  assert.match(markdown, /## 承諾與交付（plan\/lock\.json）/);
+  assert.ok(markdown.includes(`| farewell | clip ${bought} s（server） | clip ${bought} s | ${2 * price(bought)} | +${price(bought)} | 守住 |`), markdown);
+  assert.ok(markdown.includes("| bird | clip"), "a shot not made yet is still a row");
+  const cli = run("run_report.mjs", "--slug", box.slug, "--root", box.root, "--workdir", box.work, "--json");
+  assert.equal(cli.status, 0, cli.stderr);
+  assert.equal(JSON.parse(cli.stdout).promises.totals.unsigned, 1);
+  const empty = sandbox("fixture-drama", "drama");
+  mkdirSync(empty.workdir, { recursive: true });
+  assert.equal((await runReport({ slug: empty.slug, root: empty.root, workdir: empty.work })).promises, null, "no lock package: nothing was promised");
 });
 
 test("an empty work directory reports zero spend and no takes instead of failing", async () => {
