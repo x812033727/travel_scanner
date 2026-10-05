@@ -230,7 +230,13 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   async function retryRuns(slug, authorization = {}) {
     try {
       const confirmed = [];
-      for (const entry of receipts.retryCandidates(slug, authorization)) {
+      const candidates = receipts.retryCandidates(slug, authorization);
+      // A project-local owner retry authorizes one policy-held request. Do not partly
+      // archive a legacy/mixed set before discovering that its request was already used.
+      if (candidates.length > 1 && candidates.some((entry) => policyHeld(entry.record))) {
+        throw new Error("multiple saved runs include a policy hold; inspect their retained identities before retrying this project");
+      }
+      for (const entry of candidates) {
         if (stopRequested(path.dirname(path.dirname(entry.file)))) throw new Error("STOP prevents this owner retry");
         const saved = entry.record.receipt;
         if (policyHeld(entry.record)) {

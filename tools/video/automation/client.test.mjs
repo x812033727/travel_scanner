@@ -652,3 +652,26 @@ test("a verified undispatched slides repair may resume its corrected format whil
   assert.equal(readdirSync(dir).length, 1, "preserve the refused drama request instead of editing its identity");
   }
 });
+
+test("a mixed legacy set of policy holds cannot be partly archived by one owner retry", async () => {
+  const box = sandbox();
+  let requests = 0;
+  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+    requests++;
+    if (new URL(url).pathname.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: true } });
+    assert.equal(init.method, "POST");
+    return Response.json({ ...job(JSON.parse(init.body), "failed"), error_code: POLICY_HOLD, error_detail: "saved refusal", error_status: 409, dispatched_at: null });
+  } });
+  await client.settings();
+  for (const variant of [null, "discuss"]) {
+    await assert.rejects(client.run("writer", DURABLE_SLUG, "Original source", { video: { format: "drama" } }, 16_000, "drama", variant), (error) => error.code === POLICY_HOLD);
+  }
+  const files = durableFiles(box), before = files.map((file) => readFileSync(file, "utf8"));
+  assert.equal(files.length, 2);
+  const beforeRequests = requests;
+  await assert.rejects(client.retryRuns(DURABLE_SLUG, { requestId: "11112233-4455-6677-8899-aabbccddeeff", format: "drama" }), (error) => error.code === RUN_UNCERTAIN && /multiple saved runs/.test(error.message));
+  assert.deepEqual(durableFiles(box), files);
+  assert.deepEqual(files.map((file) => readFileSync(file, "utf8")), before, "retain every original refusal byte before any partial archive");
+  assert.equal(requests, beforeRequests, "an ambiguous retry does not dispatch, poll or buy work");
+  assert.equal(existsSync(path.join(path.dirname(files[0]), "archive")), false);
+});
