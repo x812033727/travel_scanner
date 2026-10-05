@@ -244,8 +244,14 @@ def _check_request_package(package: Package, request: dict[str, Any]) -> None:
 
 
 async def _locked_project(session: AsyncSession, slug: str) -> VideoProject:
+    # The Shorts sender holds every due project from before its loop, and a re-read keeps a
+    # loaded object's values: the locked row's replace them, so a drop or a run started
+    # meanwhile is seen here.
     project = await session.scalar(
-        select(VideoProject).where(VideoProject.slug == slug).with_for_update()
+        select(VideoProject)
+        .where(VideoProject.slug == slug)
+        .with_for_update()
+        .execution_options(populate_existing=True)
     )
     if project is None:
         raise Refused(404, "video_project_not_found", "找不到這支影片")
