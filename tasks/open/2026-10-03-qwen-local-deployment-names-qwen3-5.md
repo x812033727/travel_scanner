@@ -1,14 +1,14 @@
 ---
 id: 2026-10-03-qwen-local-deployment-names-qwen3-5
 title: qwen-local-deployment names qwen3.5:cloud as a cloud tag but the qwen3.5 tags page lists no cloud tag
-status: open
+status: in-progress
 priority: P3
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5-ai-article-rechecks
+claimed_at: 2026-10-05T06:14:45Z
 created_at: 2026-10-03T17:55:52Z
 completed_at:
-branch:
+branch: claude/ai-article-rechecks
 depends_on: []
 scope:
   - apps/api/app/guides/content/qwen-local-deployment.json

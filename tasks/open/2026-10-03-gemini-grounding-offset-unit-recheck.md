@@ -1,14 +1,14 @@
 ---
 id: 2026-10-03-gemini-grounding-offset-unit-recheck
 title: gemini-api-search-grounding-citations 說引用位移是 UTF-8 位元組，現行文件不支持
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5-ai-article-rechecks
+claimed_at: 2026-10-05T06:14:20Z
 created_at: 2026-10-03T12:04:02Z
 completed_at:
-branch:
+branch: claude/ai-article-rechecks
 depends_on: []
 scope:
   - apps/api/app/guides/content/gemini-api-search-grounding-citations.json
