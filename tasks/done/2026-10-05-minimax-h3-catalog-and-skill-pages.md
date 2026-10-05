@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-minimax-h3-catalog-and-skill-pages
 title: MiniMax-H3 catalog and skill pages still promise 9 reference images the v2 adapter never sends
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-h3-reference-images-catalog
 claimed_at: 2026-10-05T07:27:32Z
 created_at: 2026-10-05T07:27:10Z
-completed_at:
+completed_at: 2026-10-05T07:57:12Z
 branch: claude/h3-reference-images-catalog
 depends_on: []
 scope:
