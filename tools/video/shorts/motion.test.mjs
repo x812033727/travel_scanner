@@ -3,7 +3,7 @@ import test from 'node:test';
 
 import { DISSOLVE_FRAMES, MOTION_SOURCE_SCALE } from '../assemble/drama.mjs';
 import { PROFILE } from './core.mjs';
-import { backgroundChain, backgroundOf, cameraOf, cardsList, CAMERA_WORDS, firstFrameArgs, lastFrameArgs, sceneSpans, segmentArgs, shortSfxPlan } from './motion.mjs';
+import { backgroundChain, backgroundOf, cameraOf, cardsList, CAMERA_WORDS, firstFrameArgs, lastFrameArgs, MOTION_VERSION, sceneSpans, segmentArgs, shortSfxPlan } from './motion.mjs';
 
 const timeline = {
   fps: 30,
@@ -58,6 +58,25 @@ test('a segment lays the phrases\' cards over the moving background, dissolves f
   }
   assert.deepEqual(lastFrameArgs('/w/clips/000.mp4', 90, '/w/build/last-000.png'), ['-y', '-v', 'error', '-i', '/w/clips/000.mp4', '-vf', 'select=eq(n\\,89)', '-fps_mode', 'passthrough', '-frames:v', '1', '/w/build/last-000.png']);
   assert.deepEqual(firstFrameArgs('/w/clips/000.mp4', '/w/build/scene-000.png'), ['-y', '-v', 'error', '-i', '/w/clips/000.mp4', '-frames:v', '1', '/w/build/scene-000.png']);
+});
+
+test('the caption layer is the last input, laid over the cards at the bar; without it the arguments are what they were', () => {
+  assert.equal(MOTION_VERSION, 'shorts-motion-v2');
+  const scene = { background: '/w/assets/pic.png', move: 'push-in', frames: 90, cardsList: '/w/build/cards-000.txt', outFile: '/w/clips/000.mp4' };
+  const plain = segmentArgs(scene);
+  assert.deepEqual(segmentArgs({ ...scene, captionsList: null }), plain);
+  assert.ok(!plain.some((arg) => arg.includes('captions')), 'a plain cut knows no layer');
+  const lit = segmentArgs({ ...scene, captionsList: '/w/build/captions-000.txt' });
+  assert.equal(lit.filter((arg) => arg === '-i').length, 3);
+  const after = lit.indexOf('/w/build/cards-000.txt') + 1;
+  assert.deepEqual(lit.slice(after, after + 6), ['-f', 'concat', '-safe', '0', '-i', '/w/build/captions-000.txt'], 'the layer is the last input');
+  assert.match(lit[lit.indexOf('-filter_complex') + 1], /\[1:v\]format=rgba\[cards\];\[pic\]\[cards\]overlay=0:0:eof_action=pass\[carded\];\[2:v\]format=rgba\[captions\];\[carded\]\[captions\]overlay=80:1430:eof_action=pass\[captioned\];\[captioned\]format=yuv420p,setparams=.*\[out\]$/);
+  const dissolved = segmentArgs({ ...scene, dissolveFrom: '/w/build/last-000.png', captionsList: '/w/build/captions-001.txt' });
+  assert.equal(dissolved.filter((arg) => arg === '-i').length, 4);
+  assert.match(dissolved[dissolved.indexOf('-filter_complex') + 1], /\[2:v\]scale=1080:1920,format=yuva420p,fade=t=out:st=0:d=0\.500000:alpha=1\[prev\];\[pic\]\[prev\]overlay=0:0:eof_action=pass\[dissolved\];\[1:v\]format=rgba\[cards\];\[dissolved\]\[cards\]overlay=0:0:eof_action=pass\[carded\];\[3:v\]format=rgba\[captions\];\[carded\]\[captions\]overlay=80:1430:eof_action=pass\[captioned\];\[captioned\]format=yuv420p/);
+  for (const flag of ['libx264', '-g', '60', '-sc_threshold', '0', '+cgop', '-fps_mode', 'cfr']) assert.ok(lit.includes(flag), flag);
+  // The layer's list is the cards' ffconcat: every state held for its frames, the last named again.
+  assert.equal(cardsList([{ file: '/w/captions/000-00.png', frames: 40 }, { file: '/w/captions/000-01.png', frames: 20 }]), "ffconcat version 1.0\nfile '/w/captions/000-00.png'\noption framerate 30\nduration 1.333333\nfile '/w/captions/000-01.png'\noption framerate 30\nduration 0.666667\nfile '/w/captions/000-01.png'\noption framerate 30\n");
 });
 
 test('the sound effects fall on scene changes and big numbers, never at frame 0, never within 1.5 seconds of each other', () => {
