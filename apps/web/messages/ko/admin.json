@@ -36,6 +36,7 @@
       "content": "명소 콘텐츠",
       "travelData": "항공 및 숙박 데이터",
       "affiliate": "제휴 링크",
+      "video": "영상 소재",
       "other": "기타"
     }
   },
@@ -1541,6 +1542,14 @@
     "azure_speech_key": {
       "label": "Speech 키",
       "help": "Azure 포털 → Speech 리소스 → 키 및 엔드포인트의 “키 1”. 서버에만 저장되며 동영상 도구로 보내지 않습니다."
+    },
+    "pexels_api_key": {
+      "label": "Pexels API Key",
+      "help": "영상 파이프라인의 슬라이드에 쓸 실제 사진을 검색하고 가져옵니다. 서버에서 암호화되며 api.pexels.com에만 전송됩니다. Pexels는 설명란에 출처 표기(“Photo by … on Pexels”)를 요청합니다."
+    },
+    "pixabay_api_key": {
+      "label": "Pixabay API Key",
+      "help": "같은 용도로 Pixabay에 사용합니다. 서버에서 암호화되며 pixabay.com에만 전송됩니다. Pixabay는 설명란에 출처 표기(“Image by … from Pixabay”)를 요청합니다."
     }
   },
   "settingsPanel": {

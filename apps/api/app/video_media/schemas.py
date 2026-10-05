@@ -27,14 +27,23 @@ Aspect = Literal["16:9", "9:16", "1:1"]
 # frame under a camera move (docs/videos/ILLUSTRATED.md); priced with the model's 2K price.
 ImageSize = Literal["1K", "2K"]
 JudgeKind = Literal["look", "keyframe", "clip", "continuity"]
+# Stock photo sources (stock.py, docs/videos/ILLUSTRATED.md §圖庫照片): real photographs under
+# licences that allow commercial use, searched and fetched by the server with its own keys.
+StockProvider = Literal["pexels", "pixabay"]
+StockOrientation = Literal["landscape", "portrait", "square"]
 SLUG_PATTERN = r"^[a-z0-9](?:[a-z0-9-]{0,78}[a-z0-9])?$"
 SHOT_PATTERN = r"^[a-z0-9]+(?:-[a-z0-9]+)*$"
+# Both vendors number their photos; the id is sent back to them in a URL or a query.
+STOCK_ID_PATTERN = r"^[0-9]{1,20}$"
 MAX_REFERENCES = 4
 MAX_PROMPT_CHARS = 4000
 MAX_CONTEXT_BYTES = 64 * 1024
 MAX_JUDGE_FILES = 6
 MAX_RUBRIC = 12
 MAX_LOCATE_LABELS = 8
+# Pixabay caps a query at 100 characters; Pexels takes up to 80 results a page, Pixabay 200.
+MAX_STOCK_QUERY_CHARS = 100
+MAX_STOCK_PER_PAGE = 40
 
 
 class StrictModel(BaseModel):
@@ -202,6 +211,86 @@ class LocateOut(StrictModel):
     model: str
 
 
+class StockSearchIn(StrictModel):
+    """Photos to choose from (``POST /stock/search``, stock.py); nothing is downloaded yet."""
+
+    query: str = Field(min_length=1, max_length=MAX_STOCK_QUERY_CHARS)
+    # One vendor, or every vendor the site has a key for.
+    provider: StockProvider | None = None
+    # Pexels filters all three; Pixabay knows horizontal and vertical only, so ``square`` is
+    # not filtered there (the candidates carry their sizes).
+    orientation: StockOrientation | None = None
+    per_page: int = Field(default=15, ge=1, le=MAX_STOCK_PER_PAGE)
+    page: int = Field(default=1, ge=1, le=50)
+
+    @field_validator("query")
+    @classmethod
+    def _words(cls, value: str) -> str:
+        words = " ".join(value.split())
+        if not words:
+            raise ValueError("query is blank")
+        return words
+
+
+class StockCredit(StrictModel):
+    """What the description must say for one photo (docs/videos/ILLUSTRATED.md §圖庫照片)."""
+
+    provider: StockProvider
+    # The photographer's name as the vendor gives it, and their page there.
+    author: str
+    author_url: str | None
+    # The photo's own page on the vendor's site: the link a credit points at.
+    url: str
+    # The vendor's licence by name, and where it is written.
+    license: str
+    license_url: str
+    # The credit line the vendor asks for, ready to paste: "Photo by … on Pexels".
+    text: str
+
+
+class StockCandidate(StrictModel):
+    provider: StockProvider
+    id: str
+    width: int
+    height: int
+    # Vendor-hosted previews for choosing, never stored: a small one and a larger one (Pixabay's
+    # expire after a day).
+    thumbnail: str
+    preview: str
+    # The vendor's description or tags, for the judge or a reader.
+    alt: str | None
+    credit: StockCredit
+
+
+class StockSearchOut(StrictModel):
+    query: str
+    # Vendor by vendor, each in the vendor's order, at most ``per_page`` from each.
+    candidates: list[StockCandidate]
+    # How many the vendor says match in all, per vendor asked.
+    total: dict[str, int]
+    # A vendor that failed while another answered; empty when every vendor answered.
+    problems: list[str]
+
+
+class StockFetchIn(StrictModel):
+    """One photo to download into the media store (``POST /stock/fetch``)."""
+
+    slug: str = Field(pattern=SLUG_PATTERN)
+    provider: StockProvider
+    id: str = Field(pattern=STOCK_ID_PATTERN)
+
+
+class StockFetchOut(StrictModel):
+    # The stored file, named by its bytes like any media file, and its real pixel size read
+    # from those bytes (not the vendor's word for it).
+    sha256: str
+    size: int
+    content_type: str
+    width: int
+    height: int
+    credit: StockCredit
+
+
 class BudgetView(StrictModel):
     unit: str
     limit: int
@@ -242,6 +331,9 @@ class MediaStatus(StrictModel):
     slides_auto_approve_storyboard: bool = True
     slides_music_track: str | None = None
     slides_sfx_set: str | None = None
+    # Stock photo vendors by name and whether the site holds a key for each; a tool offers a
+    # stock photo only when at least one is true.
+    stock: dict[str, bool] = Field(default_factory=dict)
     models: MediaOptionsView
     budgets: dict[str, BudgetView]
     # This month's jobs priced with the catalog, submitted or ready.

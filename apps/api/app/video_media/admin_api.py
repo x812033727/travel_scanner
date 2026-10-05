@@ -27,7 +27,7 @@ from app.video_automation.settings import (
     slides_image_choice,
     slides_values,
 )
-from app.video_media import meter
+from app.video_media import meter, stock
 from app.video_media.catalog import find_model
 from app.video_media.jobs import (
     MediaContext,
@@ -45,6 +45,7 @@ from app.video_media.schemas import (
     MAX_LOCATE_LABELS,
     MAX_PROMPT_CHARS,
     MAX_REFERENCES,
+    MAX_STOCK_PER_PAGE,
     ChoiceView,
     ClipJobIn,
     ImageJobIn,
@@ -55,6 +56,10 @@ from app.video_media.schemas import (
     LocateOut,
     MediaStatus,
     MusicJobIn,
+    StockFetchIn,
+    StockFetchOut,
+    StockSearchIn,
+    StockSearchOut,
     StoreView,
 )
 from app.video_media.settings import MediaSettings, get_media_settings
@@ -74,13 +79,16 @@ Session = Annotated[AsyncSession, Depends(get_session)]
 # for each (docs/videos/STORY.md §上限與成本), so pictures and judge calls may run faster than
 # before; clips and music keep the lower limit they share, since a vendor takes minutes over
 # each of them anyway and a clip is the expensive kind. A locate call (subject boxes for one
-# picture) is a judge call with another question: it shares the judge limit and meter.
+# picture) is a judge call with another question: it shares the judge limit and meter. Stock
+# photo calls (stock.py) cost nothing and book nothing, so this limit is their only brake: a
+# search and a fetch each make one vendor call, and Pexels allows 200 an hour on a free key.
 IMAGE_SUBMITS_PER_HOUR = 240
 SUBMITS_PER_HOUR = 60
 POLLS_PER_HOUR = 900
 JUDGES_PER_HOUR = 360
 UPLOADS_PER_HOUR = 600
 DOWNLOADS_PER_HOUR = 600
+STOCK_CALLS_PER_HOUR = 150
 PRUNE_MARK = "video-media:prune-ran"
 PRUNE_EVERY_SECONDS = 3600
 
@@ -106,7 +114,7 @@ async def _context(session: AsyncSession, token_id: UUID | None) -> MediaContext
     )
 
 
-def _refused(error: MediaJobFailed | JudgeError | LocateError) -> AppError:
+def _refused(error: MediaJobFailed | JudgeError | LocateError | stock.StockError) -> AppError:
     return AppError(
         error.status,
         error.code,
@@ -176,6 +184,7 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
         slides_auto_approve_storyboard=slides.slides_auto_approve_storyboard,
         slides_music_track=slides.slides_music_track,
         slides_sfx_set=slides.slides_sfx_set,
+        stock=stock.configured(ctx.runtime),
         models=media_options_view(),
         budgets=await meter.budgets_view(ctx.redis, row),
         estimated_usd=await meter.month_usd(session, ctx.redis),
@@ -201,6 +210,9 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
             # POST /locate exists and takes this many labels; a tool asks for subject boxes only
             # of a server that says so.
             "locate_labels": MAX_LOCATE_LABELS,
+            # POST /stock/search and /stock/fetch exist (stock.py); ``stock`` above says which
+            # vendors have a key.
+            "stock_per_page": MAX_STOCK_PER_PAGE,
             "max_file_bytes": media.video_media_max_file_bytes,
         },
     )
@@ -339,3 +351,37 @@ async def locate_subjects(payload: LocateIn, tool: VideoTool, session: Session) 
     except LocateError as error:
         await meter.release_judge_call(ctx.redis)
         raise _refused(error) from error
+
+
+@media_router.post("/stock/search", response_model=StockSearchOut)
+async def stock_search(payload: StockSearchIn, tool: VideoTool, session: Session) -> StockSearchOut:
+    """Stock photo candidates from Pexels and Pixabay with their credits; nothing is stored yet.
+
+    Free at both vendors, so it books no budget unit and makes no job row; the per-hour limit
+    is the only brake. 503 ``video_media_stock_unavailable`` until a key is set.
+    """
+    await _limit("stock", tool.id, STOCK_CALLS_PER_HOUR)
+    ctx = await _context(session, tool.id)
+    try:
+        return await stock.search(ctx.runtime, payload)
+    except stock.StockError as error:
+        raise _refused(error) from error
+
+
+@media_router.post("/stock/fetch", response_model=StockFetchOut)
+async def stock_fetch(payload: StockFetchIn, tool: VideoTool, session: Session) -> StockFetchOut:
+    """One stock photo's largest file, fetched by the server into the media store.
+
+    The file is named by its bytes like any media file and pruned like one (the tool keeps its
+    own copy under the work directory); the answer carries the credit the description must show.
+    """
+    await _limit("stock", tool.id, STOCK_CALLS_PER_HOUR)
+    ctx = await _context(session, tool.id)
+    try:
+        fetched = await stock.fetch(ctx.runtime, ctx.media, ctx.store, payload)
+    except stock.StockError as error:
+        raise _refused(error) from error
+    except StorageRefused as error:
+        raise _storage_refused(error) from error
+    await _prune_sometimes(ctx)
+    return fetched
