@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-refresh-stale-parts-of-the-three
 title: Refresh stale parts of the three news indexes (crypto hero says four regions, AI month table, Japan heading)
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-news-indexes-refresh
 claimed_at: 2026-10-05T06:14:39Z
 created_at: 2026-09-26T16:55:04Z
-completed_at:
+completed_at: 2026-10-05T06:53:31Z
 branch: claude/news-indexes-refresh
 depends_on: []
 scope:
