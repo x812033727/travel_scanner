@@ -27,6 +27,7 @@ import { resolveLook, shotCast } from "./video/core/drama.mjs";
 import { estimateTimeline, FPS } from "./video/core/timeline.mjs";
 import { PLANS, secondsBought } from "../.agents/skills/animation-production/scripts/episode_estimate.mjs";
 import {
+  continuityTerms,
   DEFAULT_HANDLE_S,
   EXPECTED_TAKES,
   HAILUO_CLIP_SECONDS,
@@ -41,7 +42,7 @@ import {
   HAILUO_MODELS,
   expectedTakesFlag,
 } from "../.agents/skills/animation-preproduction/scripts/shot_plan.mjs";
-import { compareLock, lockOf, shotPrints } from "../.agents/skills/animation-preproduction/scripts/plan_lock.mjs";
+import { changeOrderLine, compareLock, continuityBreaks, coveringOrder, lockOf, promiseBreaks, renderChangeOrder, shotPrints } from "../.agents/skills/animation-preproduction/scripts/plan_lock.mjs";
 import { animaticFfmpegArgs, animaticHtml, animaticShots, animaticStats } from "../.agents/skills/animation-preproduction/scripts/animatic.mjs";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
@@ -372,6 +373,123 @@ test("the animatic keeps the timeline's length, uses keyframes when they exist a
     assert.ok(readFileSync(path.join(dir, "a.html"), "utf8").includes("動態分鏡"));
     assert.equal(run("animatic.mjs", "--file", EXAMPLE, "--out", path.join(dir, "b.html"), "--mp4", path.join(dir, "b.mp4")).status, 1, "--mp4 needs a picture for every shot");
     assert.equal(run("animatic.mjs", "--file", EXAMPLE).status, 2, "a file without a work directory needs --out");
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+// Delivery promise and continuity locks (the names are OpenMontage's and the drama-skills / shuohao-skills packs'; the idea only).
+test("continuity terms are the prompt's own words: nouns from the three lists with the adjective in front, a time of day on every mention", () => {
+  const terms = continuityTerms("Wide shot at dusk, Shen in her ivory robe, one jade hair cord, Shen's sword low, a right hand in a narrow silver cuff");
+  assert.deepEqual(terms.time_of_day, ["dusk"]);
+  assert.deepEqual(terms.costume, ["robe", "ivory robe", "hair cord", "jade hair cord", "cuff", "silver cuff"]);
+  assert.deepEqual(terms.prop, ["sword"], "a possessive (Shen's) is not an adjective, nor are `one` and `a`");
+  const friends = continuityTerms("the girl bowing to him, a swordsman at the gate at nightfall");
+  assert.deepEqual(friends.prop, [], "bowing is not a bow and a swordsman is not a sword");
+  assert.deepEqual(friends.time_of_day, ["nightfall"]);
+  assert.deepEqual(continuityTerms(undefined), { prop: [], costume: [], time_of_day: [] });
+});
+
+test("the plan carries each shot's promise and continuity locks: a shared anchor locks both ends, a time of day locks on one mention, a cut and a start_frame depend on their source", () => {
+  const doc = example();
+  const plan = planEpisode(doc, { route: "hailuo" });
+  const byId = Object.fromEntries(plan.shots.map((shot) => [shot.id, shot]));
+  for (const shot of plan.shots) assert.deepEqual(shot.promise, { visual_kind: "clip", buy_s: shot.buy_s, route: "hailuo", fit: "auto" }, shot.id);
+  assert.deepEqual(byId.s05.continuity.depends_on, ["s01", "s03", "s04"], "the sword from s01, the jade hair cord from s03, the silver cuff from s04");
+  assert.deepEqual(byId.s05.continuity.locks, { prop: ["sword"], costume: ["cuff", "silver cuff", "hair cord", "jade hair cord"], time_of_day: [] });
+  assert.deepEqual(byId.s03.continuity, { depends_on: [], locks: { prop: [], costume: ["hair cord", "jade hair cord"], time_of_day: [] } }, "the first end of a thread has nothing before it but holds the string");
+  assert.ok(!byId.s04.continuity.locks.prop.includes("steel sword"), "a phrase only one shot writes is not a thread");
+  assert.deepEqual(byId.s07.continuity.locks.costume, ["shoulder clasp", "bronze shoulder clasp"], "Lu's anchor, shared with s02");
+  const linked = example();
+  linked.scenes.find((scene) => scene.id === "s08").data.start_frame = { shot: "s07", at: "last" };
+  linked.scenes.find((scene) => scene.id === "s06").data = { ...linked.scenes.find((scene) => scene.id === "s01").data, source: { shot: "s01", from_s: 2 } };
+  const chained = planEpisode(linked, { route: "hailuo" });
+  assert.ok(chained.shots.find((shot) => shot.id === "s08").continuity.depends_on.includes("s07"), "a clip that continues from another's last frame depends on it");
+  const cut = chained.shots.find((shot) => shot.id === "s06");
+  assert.equal(cut.promise.visual_kind, "cut");
+  assert.ok(cut.continuity.depends_on.includes("s01"), "a cut depends on the shot it is cut from");
+  const timed = example();
+  timed.scenes.find((scene) => scene.id === "s01").data.prompt += ", at dusk";
+  assert.deepEqual(planEpisode(timed, { route: "hailuo" }).shots[0].continuity.locks.time_of_day, ["dusk"], "a time of day locks on its only mention");
+  const markdown = renderMarkdown(plan, "example.json");
+  assert.match(markdown, /## 承諾與連戲鎖/);
+  assert.ok(markdown.includes("- s05：接 s01、s03、s04；道具 「sword」、服裝 「cuff」「silver cuff」「hair cord」「jade hair cord」"), markdown);
+  const csv = renderCsv(plan).split("\n");
+  assert.match(csv[0], /,fit,depends_on,locks$/);
+  assert.ok(csv.find((row) => row.startsWith("s05,")).endsWith(",auto,s01 s03 s04,prop:sword; costume:cuff; costume:silver cuff; costume:hair cord; costume:jade hair cord"));
+});
+
+test("the lock holds each promise and continuity lock; --check names a promise made smaller and a missing string; a change-order line covers exactly the change it recorded", () => {
+  const doc = example();
+  const lock = { ...lockOf(doc, null, planEpisode(doc, { route: "hailuo" })), created_at: "2026-10-05T00:00:00Z", note: null };
+  assert.equal(lock.version, 3);
+  assert.deepEqual(lock.shots.s05.promise, { visual_kind: "clip", buy_s: lock.shots.s05.buy_s, route: "hailuo", fit: "auto" });
+  assert.deepEqual(lock.shots.s05.continuity.depends_on, ["s01", "s03", "s04"]);
+  const edited = example();
+  edited.scenes.find((scene) => scene.id === "s03").data.visual = "still";
+  edited.scenes.find((scene) => scene.id === "s02").data.fit = "freeze";
+  const s05 = edited.scenes.find((scene) => scene.id === "s05");
+  s05.data.prompt = s05.data.prompt.replace("jade hair cord", "red hair cord");
+  const result = compareLock(lock, lockOf(edited, null, planEpisode(edited, { route: "hailuo" })), { doc: edited });
+  const entry = Object.fromEntries(result.shots.map((shot) => [shot.id, shot]));
+  assert.deepEqual(entry.s03.kind, ["clip", "still"]);
+  assert.deepEqual(entry.s02.fit, ["auto", "freeze"]);
+  assert.deepEqual(entry.s05.continuity, { missing: [{ category: "costume", text: "jade hair cord" }], depends_on: ["s01", "s03", "s04"] });
+  assert.deepEqual(result.promises, [{ id: "s02", kind: null, fit: ["auto", "freeze"] }, { id: "s03", kind: ["clip", "still"], fit: null }]);
+  assert.ok(result.lines.includes("s05：畫面欄位（prompt／camera／characters／末格…）、連戲鎖少了 服裝「jade hair cord」（接 s01、s03、s04 的字）"), result.lines.join("\n"));
+  assert.match(renderChangeOrder(result, lock), /承諾改小的（鎖定時答應的 clip）：s02 fit auto → freeze、s03 clip → still/);
+  assert.deepEqual(promiseBreaks(lock, edited).map((broken) => [broken.id, broken.kind, broken.fit]), [["s02", null, ["auto", "freeze"]], ["s03", ["clip", "still"], null]]);
+  assert.deepEqual(continuityBreaks(lock, edited).map((broken) => broken.id), ["s05"]);
+  assert.equal(compareLock(lock, lockOf(edited, null, planEpisode(edited, { route: "hailuo" }))).shots.find((shot) => shot.id === "s05").continuity, null, "without the document the prompt cannot be read: no continuity line");
+  const removed = example();
+  removed.scenes = removed.scenes.filter((scene) => scene.id !== "s04");
+  assert.deepEqual(compareLock(lock, lockOf(removed, null, planEpisode(removed, { route: "hailuo" }))).promises, [{ id: "s04", kind: ["clip", "removed"], fit: null }], "a promised clip that is deleted is a promise made smaller too");
+
+  const line = changeOrderLine(result, { at: "2026-10-05T01:00:00Z", previous_lock: lock.created_at, note: "站主說可以", status: "accepted" });
+  assert.deepEqual(line.shots.map((shot) => shot.id), ["s02", "s03", "s05"]);
+  assert.deepEqual([line.status, line.previous_lock, line.note, line.changes], ["accepted", lock.created_at, "站主說可以", result.lines]);
+  assert.ok(coveringOrder([line], lock, "s03", { kind: ["clip", "still"] }));
+  assert.equal(coveringOrder([line], lock, "s03", { kind: ["clip", "cut"] }), null, "the order covers the change it recorded, not another");
+  assert.ok(coveringOrder([line], lock, "s02", { fit: ["auto", "freeze"] }));
+  assert.ok(coveringOrder([line], lock, "s05", { continuity: { missing: [{ category: "costume", text: "jade hair cord" }] } }));
+  assert.equal(coveringOrder([line], lock, "s05", { continuity: { missing: [{ category: "costume", text: "jade hair cord" }, { category: "prop", text: "sword" }] } }), null, "a string that went missing after the order is not covered");
+  assert.equal(coveringOrder([line], { ...lock, created_at: "2026-10-06T00:00:00Z" }, "s03", { kind: ["clip", "still"] }), null, "an order against another lock covers nothing");
+  assert.equal(coveringOrder([{ ...line, previous_lock: undefined }], { ...lock, created_at: undefined }, "s03", { kind: ["clip", "still"] }), null);
+});
+
+test("plan_lock --accept records the owner's decision against the lock in force; a re-lock settles it and promises the new kind", () => {
+  const dir = box();
+  try {
+    const file = path.join(dir, "doc", "video.json");
+    const work = path.join(dir, "work");
+    mkdirSync(path.dirname(file), { recursive: true });
+    copyFileSync(EXAMPLE, file);
+    const lock = (...args) => run("plan_lock.mjs", "--file", file, "--workdir", work, ...args);
+    assert.equal(lock("--accept", "--note", "x").status, 2, "nothing to accept against before a lock");
+    assert.equal(lock("--write", "--route", "kling", "--note", "yes").status, 0);
+    const written = JSON.parse(readFileSync(path.join(work, "plan", "lock.json"), "utf8"));
+    assert.equal(written.version, 3);
+    assert.equal(lock("--accept").status, 2, "the owner's words are the point of a change order");
+    assert.equal(lock("--accept", "--note", "x").status, 1, "nothing changed: nothing to record");
+    const doc = JSON.parse(readFileSync(file, "utf8"));
+    doc.scenes.find((scene) => scene.id === "s03").data.visual = "still";
+    writeFileSync(file, JSON.stringify(doc));
+    const checked = lock("--check");
+    assert.equal(checked.status, 1);
+    assert.match(checked.stdout, /承諾改小的（鎖定時答應的 clip）：s03 clip → still/);
+    const accepted = lock("--accept", "--note", "站主：s03 改成 still，省點數");
+    assert.equal(accepted.status, 0, accepted.stderr);
+    assert.match(accepted.stdout, /記下變更單（\d+ 項/);
+    let log = readFileSync(path.join(work, "plan", "changes.jsonl"), "utf8").trim().split("\n").map((line) => JSON.parse(line));
+    assert.equal(log.length, 1);
+    assert.deepEqual([log[0].status, log[0].previous_lock, log[0].note], ["accepted", written.created_at, "站主：s03 改成 still，省點數"]);
+    assert.deepEqual(log[0].shots.find((shot) => shot.id === "s03").kind, ["clip", "still"]);
+    assert.equal(lock("--write", "--force", "--note", "重鎖").status, 0);
+    log = readFileSync(path.join(work, "plan", "changes.jsonl"), "utf8").trim().split("\n").map((line) => JSON.parse(line));
+    assert.equal(log.length, 2);
+    assert.deepEqual([log[1].status, log[1].previous_lock], ["settled", written.created_at]);
+    assert.equal(JSON.parse(readFileSync(path.join(work, "plan", "lock.json"), "utf8")).shots.s03.promise.visual_kind, "still", "the new lock promises what was settled");
+    assert.equal(lock("--check").status, 0);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
