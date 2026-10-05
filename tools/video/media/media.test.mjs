@@ -4,11 +4,12 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
-import { tempDir } from "../core/fixtures/load.mjs";
+import { sandbox, tempDir } from "../core/fixtures/load.mjs";
 import { cached, forget, forgetJob, mediaKey, pendingJob, readCache, remember, rememberJob } from "./cache.mjs";
-import { MediaError, PART_BYTES, RETAKE_CODES, downloadFile, judge, locate, mediaStatus, putFile, runJob, scaleBox, submitClip, submitImage, waitForJob } from "./client.mjs";
-import { STAGES, exitFor, run, statusText } from "./cli.mjs";
+import { MediaError, PART_BYTES, RETAKE_CODES, downloadFile, judge, locate, mediaStatus, putFile, runJob, scaleBox, stockFetch, stockSearch, submitClip, submitImage, waitForJob } from "./client.mjs";
+import { STAGES, exitFor, main, run, statusText } from "./cli.mjs";
 import { appendLedger, bookImport, bookJob, capProblem, importedTotals, ledgerTotals, readLedger, release, reserve, reservedEntries, savedTotals } from "./ledger.mjs";
+import { VENDOR_NOTICES, assetEntry, candidateText, stockFile, withAsset, withAssets } from "./stock.mjs";
 import {
   THRESHOLDS,
   blackdetectArgs,
@@ -372,4 +373,169 @@ test("media-status prints the server's choices and the video's spend; unbuilt st
   assert.match(out.stderr, /2026-09-26-video-drama-clips-music/);
   const noToken = { ...ctx, env: {}, home: tempDir("video-home-") };
   assert.equal(await run("media-status", [], noToken), EXIT.owner);
+});
+
+// A 1×1 PNG: what a fetched stock photo is to these tests, which never decode it.
+const PNG = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==", "base64");
+const PEXELS_CREDIT = {
+  provider: "pexels",
+  author: "Lukas Rodriguez",
+  author_url: "https://www.pexels.com/@lukas-rodriguez-1845331",
+  url: "https://www.pexels.com/photo/seoul-at-night-3573351/",
+  license: "Pexels License",
+  license_url: "https://www.pexels.com/license/",
+  text: "Photo by Lukas Rodriguez on Pexels",
+};
+const PIXABAY_CREDIT = {
+  provider: "pixabay",
+  author: "Josch13",
+  author_url: "https://pixabay.com/users/Josch13-48777/",
+  url: "https://pixabay.com/photos/seoul-korea-195893/",
+  license: "Pixabay Content License",
+  license_url: "https://pixabay.com/service/license-summary/",
+  text: "Image by Josch13 from Pixabay",
+};
+const SEARCH_ANSWER = {
+  query: "Seoul skyline",
+  candidates: [
+    { provider: "pexels", id: "3573351", width: 3066, height: 3968, thumbnail: "https://images.pexels.com/photos/3573351/p.png?h=350", preview: "https://images.pexels.com/photos/3573351/p.png?w=940&h=650", alt: "Seoul skyline at night", credit: PEXELS_CREDIT },
+    { provider: "pixabay", id: "195893", width: 4000, height: 2250, thumbnail: "https://cdn.pixabay.com/photo/seoul-195893_150.jpg", preview: "https://pixabay.com/get/195893_640.jpg", alt: "seoul, korea, city", credit: PIXABAY_CREDIT },
+  ],
+  total: { pexels: 8000, pixabay: 1200 },
+  problems: [],
+};
+const FETCH_ANSWER = { sha256: SHA(PNG), size: PNG.length, content_type: "image/png", width: 1, height: 1, credit: PEXELS_CREDIT };
+
+test("stock search and fetch carry the token to the stock routes, and their failures say who can fix them", async () => {
+  let failed = 0;
+  let busy = 0;
+  const fake = site({
+    "POST stock/search": ({ init }) => {
+      const body = JSON.parse(init.body);
+      if (body.query === "nokey") return json({ code: "video_media_stock_unavailable", detail: "網站的 Pexels 或 Pixabay 金鑰還沒設定，圖庫照片不能用" }, 503);
+      if (body.query === "flaky") return ++failed < 3 ? json({ code: "video_media_stock_failed", detail: "Pexels 回的不是 JSON" }, 502) : json(SEARCH_ANSWER);
+      if (body.query === "busy") return ++busy < 2 ? json({ code: "video_media_upstream_busy", detail: "Pixabay 的額度用完或太忙" }, 429, { "Retry-After": "2" }) : json(SEARCH_ANSWER);
+      return json(SEARCH_ANSWER);
+    },
+    "POST stock/fetch": ({ init }) => {
+      const body = JSON.parse(init.body);
+      if (body.id === "404") return json({ code: "video_media_stock_not_found", detail: "Pexels 沒有這張照片" }, 404);
+      return json(FETCH_ANSWER);
+    },
+  });
+  const request = { query: "Seoul skyline", orientation: "landscape", per_page: 15, page: 1 };
+  assert.deepEqual(await stockSearch({ request, ...fake.options }), SEARCH_ANSWER);
+  assert.equal(fake.calls[0].route, "POST stock/search");
+  assert.equal(fake.calls[0].headers.Authorization, `Bearer ${TOKEN}`);
+  assert.deepEqual(JSON.parse(fake.calls[0].body), request, "the request goes up as given");
+  assert.deepEqual(await stockFetch({ request: { slug: "v", provider: "pexels", id: "3573351" }, ...fake.options }), FETCH_ANSWER);
+  await assert.rejects(stockSearch({ request: { query: "nokey" }, ...fake.options }), (error) => error instanceof MediaError && error.who === "owner" && error.code === "video_media_stock_unavailable" && error.status === 503);
+  assert.equal(fake.calls.filter((call) => call.route === "POST stock/search").length, 2, "a missing key is not retried");
+  await assert.rejects(stockFetch({ request: { slug: "v", provider: "pexels", id: "404" }, ...fake.options }), (error) => error.who === "tool" && error.code === "video_media_stock_not_found" && error.status === 404);
+  assert.equal(fake.calls.filter((call) => call.route === "POST stock/fetch").length, 2, "a wrong id is refused once; the tool picks another candidate");
+  assert.deepEqual(await stockSearch({ request: { query: "flaky" }, ...fake.options }), SEARCH_ANSWER, "a vendor that answered badly is asked again, like a failed locate call");
+  assert.equal(failed, 3);
+  const waits = [];
+  assert.deepEqual(await stockSearch({ request: { query: "busy" }, ...fake.options, sleep: async (ms) => waits.push(ms) }), SEARCH_ANSWER);
+  assert.deepEqual(waits, [2000], "a busy vendor sets the pace with its Retry-After");
+});
+
+test("a fetched photo is named by its bytes under stock/ and its credit becomes one assets[] entry", () => {
+  assert.equal(stockFile("a".repeat(64), "image/jpeg"), `stock/${"a".repeat(64)}.jpg`);
+  assert.equal(stockFile("b".repeat(64), "image/png; charset=binary"), `stock/${"b".repeat(64)}.png`);
+  assert.equal(stockFile("c".repeat(64), "image/webp"), `stock/${"c".repeat(64)}.webp`);
+  assert.throws(() => stockFile("d".repeat(64), "video/mp4"), (error) => error instanceof MediaError && error.who === "tool");
+  assert.throws(() => stockFile("not-a-hash", "image/png"), (error) => error instanceof MediaError && error.who === "tool");
+  const asset = assetEntry(PEXELS_CREDIT, "stock/x.jpg");
+  assert.deepEqual(asset, { path: "stock/x.jpg", source: "Photo by Lukas Rodriguez on Pexels", license: "Pexels License", author: "Lukas Rodriguez", url: "https://www.pexels.com/photo/seoul-at-night-3573351/" }, "the vendor's own wording, the licence, the photographer and the photo page");
+  const own = { path: "apps/web/public/d.svg", source: "Mokaair 自有圖解", license: "© Mokaair" };
+  assert.deepEqual(withAsset(undefined, asset), [asset]);
+  assert.deepEqual(withAsset([own], asset), [own, asset]);
+  assert.deepEqual(withAsset([own, { ...asset, source: "older" }], asset), [own, asset], "the same photo again replaces its entry");
+  const doc = { slug: "v", sources: [], scenes: [] };
+  assert.deepEqual(Object.keys(withAssets(doc, [asset])), ["slug", "sources", "assets", "scenes"], "a document without assets[] gets it before the scenes");
+  assert.deepEqual(Object.keys(withAssets({ slug: "v", assets: [], scenes: [] }, [asset])), ["slug", "assets", "scenes"]);
+  assert.deepEqual(withAssets({ slug: "v" }, [asset]).assets, [asset]);
+});
+
+test("stock search prints each candidate with its credit and the notices the vendors ask for", () => {
+  const text = candidateText(SEARCH_ANSWER, "seoul-guide");
+  assert.match(text, /^pexels 3573351  3066×3968 portrait  Photo by Lukas Rodriguez on Pexels  https:\/\/www\.pexels\.com\/photo\/seoul-at-night-3573351\/\n  Seoul skyline at night\n/);
+  assert.match(text, /\npixabay 195893  4000×2250 landscape  Image by Josch13 from Pixabay  https:\/\/pixabay\.com\/photos\/seoul-korea-195893\/\n/);
+  assert.match(text, /\nmatches: pexels 8,000, pixabay 1,200\n/);
+  assert.match(text, new RegExp(`\\n${VENDOR_NOTICES.pexels.replace(/[()./]/g, "\\$&")} · ${VENDOR_NOTICES.pixabay.replace(/[()./]/g, "\\$&")}\\n`));
+  assert.match(text, /Pixabay's preview links expire after a day/);
+  assert.match(text, /\nnext: node tools\/video\/media\/cli\.mjs stock fetch --slug seoul-guide --provider pexels --id 3573351\n$/);
+  const one = candidateText({ ...SEARCH_ANSWER, candidates: [SEARCH_ANSWER.candidates[0]], total: { pexels: 1 }, problems: ["Pixabay 的額度用完或太忙"] });
+  assert.match(one, /\nnote: Pixabay 的額度用完或太忙\n/);
+  assert.doesNotMatch(one, /Images from Pixabay|expire after a day/, "a vendor that did not answer is not named as a source");
+  assert.match(candidateText({ query: "nothing", candidates: [], total: { pexels: 0 }, problems: [] }), /^no photos for "nothing"\nmatches: pexels 0\n/);
+});
+
+test("stock fetch stores the photo under <workdir>/stock/<sha256>.<ext> and writes its credit into video.json assets[]", async () => {
+  const box = sandbox();
+  const EXIT = { ok: 0, lint: 1, usage: 2, owner: 3, external: 4, missing: 5 };
+  let fetches = 0;
+  let downloads = 0;
+  const fake = site({
+    "POST stock/search": () => json(SEARCH_ANSWER),
+    "POST stock/fetch": ({ init }) => {
+      fetches += 1;
+      const body = JSON.parse(init.body);
+      assert.deepEqual(body, { slug: "fixture-minimal", provider: "pexels", id: "3573351" });
+      return json(FETCH_ANSWER);
+    },
+    [`GET files/fixture-minimal/${SHA(PNG)}`]: () => {
+      downloads += 1;
+      return new Response(PNG, { headers: { "Content-Type": "image/png", "Content-Length": String(PNG.length) } });
+    },
+  });
+  const out = { stdout: "", stderr: "" };
+  const ctx = { EXIT, root: box.root, env: { MOKAAIR_SITE: SITE, MOKAAIR_VIDEO_TOKEN: TOKEN, VIDEO_WORKDIR: box.work }, home: tempDir("video-home-"), stdout: { write: (t) => (out.stdout += t) }, stderr: { write: (t) => (out.stderr += t) }, fetch: fake.fetchImpl, sleep: noSleep, now: () => new Date("2026-10-05T12:00:00Z") };
+
+  assert.equal(await run("stock", ["search", "--query", "  Seoul   skyline ", "--slug", box.slug, "--per-page", "2", "--orientation", "landscape"], ctx), EXIT.ok);
+  assert.deepEqual(JSON.parse(fake.calls[0].body), { query: "Seoul skyline", per_page: 2, page: 1, orientation: "landscape" }, "the query is tidied; provider is sent only when asked");
+  assert.match(out.stdout, /pexels 3573351 .*Photo by Lukas Rodriguez on Pexels/);
+  assert.match(out.stdout, /Photos provided by Pexels/);
+  assert.match(out.stdout, /stock fetch --slug fixture-minimal --provider pexels --id 3573351/);
+
+  out.stdout = "";
+  assert.equal(await run("stock", ["fetch", "--slug", box.slug, "--provider", "pexels", "--id", "3573351"], ctx), EXIT.ok, out.stderr);
+  const file = path.join(box.workdir, "stock", `${SHA(PNG)}.png`);
+  assert.ok(existsSync(file), "the photo is kept under the work directory");
+  assert.deepEqual(readFileSync(file), PNG);
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  const expected = { path: `stock/${SHA(PNG)}.png`, source: "Photo by Lukas Rodriguez on Pexels", license: "Pexels License", author: "Lukas Rodriguez", url: "https://www.pexels.com/photo/seoul-at-night-3573351/" };
+  assert.deepEqual(doc.assets, [expected]);
+  assert.deepEqual(Object.keys(doc).indexOf("assets"), Object.keys(doc).indexOf("scenes") - 1, "assets[] sits before the scenes");
+  assert.equal(doc.scenes.length, 3, "the rest of the script is as it was");
+  assert.match(out.stdout, new RegExp(`^stock/${SHA(PNG)}\\.png  1×1 square, 0\\.0 MB\\n`));
+  assert.match(out.stdout, /Photo by Lukas Rodriguez on Pexels · Pexels License · https:\/\/www\.pexels\.com\/photo\/seoul-at-night-3573351\/\n/);
+  assert.match(out.stdout, /assets\[\]: docs\/videos\/fixture-minimal\/video\.json now lists 1 pictures; package writes the credit into the description\n/);
+  assert.match(out.stdout, new RegExp(`"image": "stock/${SHA(PNG)}\\.png"`));
+
+  // The same photo again: one file, one entry, no second download.
+  out.stdout = "";
+  assert.equal(await run("stock", ["fetch", "--slug", box.slug, "--provider", "pexels", "--id", "3573351", "--json"], ctx), EXIT.ok);
+  assert.equal(fetches, 2);
+  assert.equal(downloads, 1, "a file named by its bytes is not downloaded twice");
+  assert.deepEqual(JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8")).assets, [expected]);
+  const printed = JSON.parse(out.stdout);
+  assert.deepEqual(printed, { file: expected.path, asset: expected, width: 1, height: 1, size: PNG.length, downloaded: false });
+
+  // A torn or replaced copy is fetched again.
+  writeFileSync(file, "not the photo");
+  assert.equal(await run("stock", ["fetch", "--slug", box.slug, "--provider", "pexels", "--id", "3573351"], ctx), EXIT.ok);
+  assert.equal(downloads, 2);
+  assert.deepEqual(readFileSync(file), PNG);
+
+  // Usage mistakes are the tool's; a site that does not forward the routes is the owner's deploy.
+  for (const args of [["search"], ["fetch", "--slug", box.slug, "--provider", "unsplash", "--id", "1"], ["fetch", "--slug", box.slug, "--provider", "pexels", "--id", "abc"], ["fetch", "--provider", "pexels", "--id", "1"], ["nope"]]) {
+    assert.equal(await main(["stock", ...args], ctx), EXIT.usage, args.join(" "));
+  }
+  const unknown = { ...ctx, fetch: site({}).fetchImpl, stderr: { write: (t) => (out.stderr += t) } };
+  out.stderr = "";
+  assert.equal(await run("stock", ["search", "--query", "Busan"], unknown), EXIT.owner);
+  assert.match(out.stderr, /does not serve the stock photo routes yet/);
+  assert.equal(await main(["stock", "search", "--query", "Busan"], { ...ctx, env: {}, home: tempDir("video-home-") }), EXIT.owner, "no token yet");
 });
