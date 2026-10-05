@@ -1,6 +1,6 @@
-# 路線 A：快照、baseline、bundle、發布
+# 路線 A：快照、baseline、bundle、發布（路線 B 從 §5 接入）
 
-腳本都在 `docs/article-localization/`，各自的 docstring 是權威；`tools/article-localization/README.md` §Reviewed release flow 是總覽。`<BASELINE>`、`<JOBS>` 同 SKILL.md；bundle 與 journal 的 state 目錄放 `<WORK>`（repo 外），`releases/<batch>/` 只放紀錄。
+腳本都在 `docs/article-localization/`，各自的 docstring 是權威；`tools/article-localization/README.md` §Reviewed release flow 是總覽。`<BASELINE>`、`<JOBS>` 同 SKILL.md；bundle 與 journal 的 state 目錄放 `<WORK>`（repo 外），`releases/<batch>/` 只放紀錄。路線 B 不跑 §2–§4：它用 §1 的快照與 baseline，以 `docs/article-localization/prepare_route_b_bundle.py` 編出同一種 bundle，再從 §5 接著走。
 
 ## 1. 正式站快照 → baseline
 
@@ -43,6 +43,8 @@ uv run --project apps/api python docs/article-localization/install_bundle.py --b
 
 ## 5. 部署之後發布
 
+**路線 B 的入口**：審過的一波（只補缺的語系）用 `docs/article-localization/prepare_route_b_bundle.py` 編成 bundle。它吃三個用檔外 SHA-256 釘住的輸入：從合併提交的 Git blob 凍結的 candidate（`route-b-candidate-v1`）、獨立審稿收據（`route-b-review-v1`）、內容 PR 部署之後由 §1 新快照建的 baseline（原樣，公開 API 投影會被拒絕）。輸出是新目錄裡的 schema-1 `release-manifest.json`、原生序列化的內容包、只有選到的文件用到的圖（加審過的同名 SVG 母檔），再加一份 `route-b-provenance.json`（`"authorizes_production": false`）；編譯器自己先跑過 `publish_bundle.verify_bundle`，印出 `manifest_sha256`。審過 manifest 與 provenance、記下那個 SHA 之後，從下面第 2 步接著走，所有參數與路線 A 相同；每篇都是 `hub: false`，`publish-hubs` 照跑。輸入 schema、拒絕表、交接步驟在 `docs/article-localization/route-b-bundle.md`，代理那一側的準備在 `.agents/skills/article-localization/references/agent-route.md` §3、§6。
+
 1. 部署含內容 PR 的版本（skill `deploy`；已經有就不必）。Codex 的批次用分階段驅動，從 prepare 到最後一個內容階段持有暫停檔，規則在 `ops/release/README.md`。
 2. **再匯出一次快照**，部署的來源版本、可見性、雜湊、語系狀態或 manifest 授權任何一項變了就停。
 3. 在正式站 API 環境裡，同一個 bundle、baseline、manifest SHA、state 目錄、actor、`--deployed-root`，依序跑四個階段：
@@ -56,7 +58,7 @@ python publish_bundle.py --bundle <BUNDLE> --baseline <BASELINE> --manifest-sha2
 - 用既有的編輯服務、serializable transaction、row 與 advisory lock、版本與文件雜湊、durable intent journal（`<STATE>/journal.json`）。repo 獨有的文章保持五個私人草稿；公開文章只發布被授權的語系。
 - 失敗會印 `{"status": "stopped", ...}` 到 stderr、exit 1：**用同一個 bundle 與 state 目錄重跑**就會對帳，不會重複產生版本。不要換新的 state 目錄。
 - 既有文件只准改圖的 `src`；要改已公開的文字只能靠 §6 的收據。
-- 這條路不讀 `apps/api/app/guides/publish_holds.json`（那個檔只擋 `guides-import --publish`）。
+- 發布的操作會被 `apps/api/app/guides/publish_holds.json` 擋（PR #966）：`dry-run` 對整個計畫的發布操作讀一次**部署版本**的清單，`publish-articles`、`publish-hubs` 在階段開始與每個發布操作之前再重讀；slug 在裡面就停。bundle 不能蓋過它；編譯成功也不會解除它。
 
 ## 6. 原文修正與 repo 保留
 
