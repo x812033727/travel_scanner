@@ -118,7 +118,7 @@ node .agents/skills/youtube-video/scripts/drama_craft_check.mjs <檔案> --json 
 
 ## 八、重新量參考片
 
-換題材、站主給新的參考片、或距離上次量測超過一季時重量。在內建瀏覽器開影片頁，照 `.agents/skills/youtube-video/scripts/yt_shot_probe.js` 開頭的步驟：設定視窗大小 → 貼上腳本 → 等廣告結束 → `measure` 量前 240 秒 → `stats()`（看 `suspected_multi_cut_runs` 與 `high_motion_share`，見下面特效片那一條）→ 每鏡一格的聯絡表與每半秒一格的字幕帶各截圖。規矩：
+換題材、站主給新的參考片、或距離上次量測超過一季時重量。兩種量法，紀錄都放 `docs/videos/drama-craft/`（資料夾的 `README.md` 列出每份紀錄、兩種量法的差別與 JSON 的欄位）：**瀏覽器探針**不下載、每 0.25 秒一格、看得到畫面內容，但一次只到 60–240 秒；**離線分析**（下一小節）逐格、任何長度、量得到聲音，但只有數字、要先下載。先寫探針的做法。在內建瀏覽器開影片頁，照 `.agents/skills/youtube-video/scripts/yt_shot_probe.js` 開頭的步驟：設定視窗大小 → 貼上腳本 → 等廣告結束 → `measure` 量前 240 秒 → `stats()`（看 `suspected_multi_cut_runs` 與 `high_motion_share`，見下面特效片那一條）→ 每鏡一格的聯絡表與每半秒一格的字幕帶各截圖。規矩：
 
 - 至少三支、同題材；記片名、頻道、網址、查閱日、查閱當下的觀看數；量到的數字與原始鏡長寫進 `docs/videos/drama-craft/` 新的一份紀錄，不覆寫舊的。
 - 「畫面可見」「推論」「沒有驗」分開寫，逐鏡數過的與目視的也分開寫。瀏覽器面板靜音時不對聲音下結論（有沒有旁白只能說「字幕讀起來像」）；只抽格就不對動作是否流暢下結論。
@@ -126,6 +126,34 @@ node .agents/skills/youtube-video/scripts/drama_craft_check.mjs <檔案> --json 
 - **特效多、一直在動的片（打鬥、法術、閃電、粒子、攝影機從不停）腳本兩個方向都會錯**：鏡頭內每 0.25 秒的亮度差常在 20–60，跟剪點一樣大，所以 0.25–0.5 秒的短鏡連在一起會被併成一個剪點，閃光、爆炸長大、甩鏡的模糊格又會被算成剪點。`stats()` 的 `suspected_multi_cut_runs` 有任何一段，或 `high_motion_share` 超過約 0.1（2026-10-05 量前 60 秒：對話劇 xVXEefk1vWs 是 0.014、沒有任何一段；布袋喵 B 片是 0.646、11 段），就當成這種片：每一段用 1/8 秒的聯絡表（`every(start - 0.25, end, 0.125)`，見腳本開頭第 6 步）逐格數剪點，其餘的剪點也用聯絡表挑掉假的；鏡數、平均與中位數**只能寫範圍**（腳本的數字到對過聯絡表的數字），不能引用單一支片的精確值。例子是 2026-10-04 的真一隻布袋喵量測（`docs/videos/drama-craft/reference-study-20261004-budaimiao.md` 的「交叉驗證」）：腳本預設的剪點比裁定後少約三成，只看聯絡表目視數的又多約五成；B 片 19.75–26 秒與 213.5–220.5 秒腳本一個剪點都沒有，實際各有 8 個以上。腳本的 `cuts()` 沒有改，舊的量測仍然可以比。
 - 不下載影片、不把別人的畫面或台詞放進我們的素材；引用只到說明結構所需的程度。
 - 數字改了，回來改這一篇的表與 `drama_craft_check.mjs` 的 `TARGETS`、`REFERENCE`，兩邊一起；表裡每一列都對得到腳本的一列。
+
+### 離線分析：任何長度、逐格
+
+```bash
+# 本機檔案；--range 可重複，省略就量整支
+node .agents/skills/youtube-video/scripts/reference_analysis.mjs --file <影片檔> [--range 0-240] [--range 1800-1920] --out <OUT>/<id>.json
+# YouTube：呼叫 yt-dlp 下載到暫存目錄、量完刪掉；--compare 拿既有紀錄對答案
+node .agents/skills/youtube-video/scripts/reference_analysis.mjs --url <id 或網址> --range 0-120 --out <OUT>/<id>-0-120.json --compare docs/videos/drama-craft/reference-study-20261003.json
+```
+
+- **什麼時候用**：探針只量到 60 秒（面板藏著時 seek 失敗，`2026-10-05-re-run-yt-shot-probe-past`）、要量全片或第 30 分鐘、要量鏡內動作量或聲音時。它量不到畫面內容：景別、臉、插鏡、誰在說話仍要聯絡表與字幕帶（上一小節），兩種量法互補，不互相取代。
+- **需要什麼**：ffmpeg，找法跟影片工具一樣（`FFMPEG_PATH`、PATH、Windows 的 winget 套件；指令只用參數陣列呼叫，Windows 與 WSL 都能跑）。`--url` 時另外要 yt-dlp（`pip install yt-dlp` 或 `winget install yt-dlp.yt-dlp`；不在 PATH 就 `--yt-dlp <路徑>` 或環境變數 `YT_DLP_PATH`）。yt-dlp 是當**外部程式呼叫**的，repo 不內含它的程式碼（Unlicense，借用它也只借做法）。**要不要下載是站主的決定**（YouTube 的服務條款）：腳本把檔案下載到暫存目錄，量完就刪（`--keep` 留著，路徑印在最後），進 repo 的只有 JSON 裡的數字；下載的影片不進 repo、不進素材。
+- **量什麼、怎麼量**（每一條都寫在輸出 JSON 的 `method`）：
+  - 剪點：`select='gt(scene,0.3)'` 逐格加 `showinfo`。ffmpeg 的 scene 分數是 min(d, |d − 前一對的 d|)／100，d 是相鄰兩格的平均亮度差（0–255），所以 0.3 是「亮度跳 30/255、而且比前一對多跳 30」的突變；探針的規則是 0.25 秒兩格差 26/255 加突變或直方圖位移。同一種量法、不同格距：相鄰格之間鏡內的差很小，所以門檻可以比探針嚴一點而不漏；ffmpeg 文件建議 0.3–0.5，`--scene` 可改。0.1 以上的候選分數都留在 `scene_scores`（`--floor`），不用重新解碼就看得到換門檻會多出或少掉哪幾個。剪點時間是新鏡頭的第一格（探針記的是取樣格，最多晚 0.25 秒）。溶接、慢擦接可能漏，閃光、爆炸長大、甩鏡可能多算——跟探針一樣，所以特效片一樣只寫範圍。
+  - 動作：`signalstats` 的 YDIF，每 0.25 秒一格（`--step`），畫面先縮成 64×64、去掉底部 26%（燒錄字幕換行的地方），門檻照探針：差 <1 frozen、1–4 slow、>4 active、≥20 跟剪點一樣大；含剪點的取樣格不算。`near_frozen_share`、`high_motion_share` 與探針同名同義，可以直接比；`motion` 裡另有四種比例與平均差。它量的是畫面變了多少，不是誰在動。
+  - 亮度與色彩：同一批取樣的 YAVG（平均、p10、p90）與 SATAVG，在 `picture`。
+  - 聲音：`silencedetect`（−30 dB、至少 0.5 秒，`--silence-db`、`--silence-min`），`sound.non_silent_share` 是有聲音的比例，`silence_times` 列出每段靜音。有配樂的片幾乎不會靜音，所以這是台詞密度的**上限**，不是台詞；台詞長度與是不是旁白仍然只能從字幕帶讀。
+- **輸出**：同 `docs/videos/drama-craft/` 紀錄 JSON 的形狀（`schema_version` 1；`videos[].ranges[]` 的 `shots`、`mean`、`median`、`p10`、`p90`、`longest`、`over_6s`、`opening_10s`、`opening_30s`、`spread_p90_over_p10`、`near_frozen_share`、`high_motion_share`、`cuts`、`lengths` 與探針的 `stats()` 同算法，`tools/reference-analysis.test.mjs` 拿 2026-10-03 紀錄的四段鏡長反算回每個已發表的數字），多出 `scene_scores`、`motion`、`picture`、`sound`，與 `source`（檔名、大小、sha256）。`--url` 時 `title`、`channel`、`published`、`views_at_check`、`highest_quality`、`caption_tracks` 從 yt-dlp 的 metadata 填；本機檔案這些是 null。欄位表在 `docs/videos/drama-craft/README.md`。
+- **跟探針對答案**：`--compare <紀錄.json>` 把紀錄裡同一支片的每份剪點清單（`ranges[].lengths` 累加、逐鏡表 `shots[]` 的起點、`cross_check[].verifier_cut_times`）跟這次量到的在 ±0.3 秒內一對一配對（`--tolerance`），寫進 `comparison`、印在最後：對上幾個、只有這邊有的、只有紀錄有的。對話劇要先對過 2026-10-03 的清單（xVXEefk1vWs 前 120 秒的 46 個剪點）再引用它的數字；特效片兩邊都會錯，照上一小節只寫範圍。
+- **還沒量的兩支**（2026-10-05 開這支腳本的環境連不到 YouTube，沒有下載任何影片；站主決定下載後在自己的機器跑）：
+
+  ```bash
+  node .agents/skills/youtube-video/scripts/reference_analysis.mjs --url xVXEefk1vWs --range 0-120 --out <OUT>/xVXEefk1vWs-0-120.json --compare docs/videos/drama-craft/reference-study-20261003.json
+  node .agents/skills/youtube-video/scripts/reference_analysis.mjs --url m2qhz2n9618 --out <OUT>/m2qhz2n9618-full.json --compare docs/videos/drama-craft/reference-study-20261004-budaimiao.json
+  ```
+
+  要看的：第一支對上 46 個剪點裡的幾個（探針前 60 秒的 23 個全對上）、`high_motion_share` 是否仍遠低於 0.1（探針前 60 秒是 0.014）；第二支 19.75–26 與 213.5–220.5 秒各量到幾個剪點（裁定是各 8 個以上，探針一個都沒有）、全片的 `high_motion_share`（探針前 60 秒是 0.646）。數字出來後寫成 `docs/videos/drama-craft/` 新的一份紀錄（不覆寫舊的），再回來改這一節的數字與上一小節 0.1 的門檻，`reference-study-20261003.md` 的「獨立重量」補一句離線量到的結果。
+- **測試**：`node --test tools/reference-analysis.test.mjs`，用 lavfi 合成的片（已知剪點、旋轉的中段、兩段靜音）與一個只會複製檔案的替身 yt-dlp，不連網；沒裝 ffmpeg 的機器（main 的 CI）會跳過實測那幾項、仍跑統計與解析的部分。
 
 ## 還沒驗、不能宣稱的事
 
