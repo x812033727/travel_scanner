@@ -11,11 +11,6 @@ completed_at:
 branch: claude/knowledge-series-planning-v84n79
 depends_on: []
 scope:
-  - tools/video/shorts/
-  - tools/video/core/fixtures/explainer/shorts.json
-  - tools/video/automation/prompts.mjs
-  - tools/video/automation/flow.mjs
-  - tools/video/automation/automation.test.mjs
   - docs/videos/so-thats-why/README.md
   - docs/videos/ai-shorts/README.md
   - docs/videos/so-thats-why/playlists.md
@@ -56,3 +51,8 @@ scope:
 - 2026-09-28：`writer:explainer` 的縮圖說明改成系列規格（headline 每行 ≤ 10 字、≤ 2 行，`tag`／`pillar`，可選 `layout`，`variants` 的 B、C），原本寫 ≤ 12 字會一直被 lint 擋下再修。改在這張票，因為它的 scope 本來就含 `tools/video/automation`。
 - 2026-09-28：併 #925（Shorts 腳本第 2 版、`speech.mjs`、`package`／`push`）後改寫：集的 Shorts 是第 2 版的 `line: "cut"`、`series: "sothatswhy"`、`source.slug`＝長片（`episode.mjs` 的 `episodeShortFields`），不再擴充第 1 版（#925 讓第 1 版只留給三支試片）。`build.mjs` 用 main 的原樣；`from-episode` 把 `shot` 換成關鍵影格後寫成腳本檔，交給一般 `build`（`--speech server` 預設），之後走 `check-audio`→`qa`→`package`→`push`，導回長片由 `package` 從網站讀網址。自己的 `voice.mjs` 刪掉（`speech.mjs` 的 server 旁白取代）。系列外觀是 `layouts.mjs` 的 `cut:sothatswhy` 主題（每張卡片底下「完整版在長片 ▶」，不再只有最後一格）。
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus (since 2026-09-28T09:34:49Z) was stale and is released so it stops locking its scope. Landed: #904 #950 #962. Still open: Run from-episode for real on a machine with ffmpeg (folded into pilot ticket 2026-09-28-sothatswhy-pilot-3).
+- 2026-10-05 (claude-fable-5-1-karaoke, filing the video-tooling series): the scope is narrowed
+  to the three documents. Every code step above landed (#904 #950 #962); the one open step is a
+  real `from-episode` run, folded into `2026-09-28-sothatswhy-pilot-3`. The old scope named the
+  whole `tools/video/shorts/` directory, which would have locked every Shorts ticket of the
+  series (`2026-10-05-shorts-*`) the moment this one was claimed.
