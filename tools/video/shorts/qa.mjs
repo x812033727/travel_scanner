@@ -29,7 +29,7 @@ export const VERIFY_FILE = 'verify.json';
  */
 export function qaInputBindings(directory) {
   const doc = readJson(path.join(directory, SCRIPT_FILE), null);
-  const names = [SCRIPT_FILE, 'timeline.json', CHECK_FILE, VERIFY_FILE, 'checks.json', 'upload/final.mp4',
+  const names = [SCRIPT_FILE, 'timeline.json', 'timing.json', CHECK_FILE, VERIFY_FILE, 'checks.json', 'upload/final.mp4',
     ...['zh-TW', ...EXTRA_LOCALES].map((locale) => `upload/${locale}.srt`),
     ...(doc ? phrasesOf(doc).map((_phrase, index) => `audio/${String(index).padStart(3, '0')}.wav`) : []),
     ...(doc?.evidence ?? []).map((entry) => `evidence/${entry.path}`)];
@@ -150,8 +150,13 @@ export function metadataItem({ metadata }) {
   return verdict('metadata', metadataProblems(metadata), `title ${[...metadata.title].length} characters, description ${Buffer.byteLength(metadata.description, 'utf8')} bytes, ${metadata.tags.length} tags, ${metadata.hashtags.length} hashtags`);
 }
 
-/** captions: zh-TW is there and on the timeline; so is every language the settings add. */
-export function captionsItem({ captions, timeline, locales = [] }) {
+/**
+ * captions: zh-TW is there and on the timeline; so is every language the settings add. A
+ * karaoke cut whose lit groups follow estimated timing (checks.json `captions`, karaoke.mjs)
+ * passes with a warning: the words are right and on the clock, only the highlight is a guess
+ * until the speech alignment measures it.
+ */
+export function captionsItem({ captions, timeline, locales = [], checks = null }) {
   const problems = captions.has('zh-TW') ? captionProblems(captions.get('zh-TW'), timeline) : [`${CAPTIONS_FILE} is missing`];
   for (const locale of locales) {
     if (!captions.has(locale)) problems.push(`${locale}.srt is missing`);
@@ -161,7 +166,12 @@ export function captionsItem({ captions, timeline, locales = [] }) {
       problems.push(...translated.map((problem) => `${locale}: ${problem}`));
     }
   }
-  return verdict('captions', problems, `${['zh-TW', ...locales].join(', ')}: ${timeline.cues.length} captions on the timeline`);
+  const result = verdict('captions', problems, `${['zh-TW', ...locales].join(', ')}: ${timeline.cues.length} captions on the timeline`);
+  const style = checks?.captions;
+  if (style?.style === 'karaoke' && style.source === 'estimated') {
+    result.warnings = [`the karaoke highlight follows estimated timing (timing.json source "estimated", ${style.groups ?? '?'} groups): measured character times come with the speech alignment`];
+  }
+  return result;
 }
 
 export function linksItem({ results, metadata }) {
@@ -282,16 +292,17 @@ export async function runQa({ directory, client = null, offline = false, setting
     }
   })();
 
+  const checks = readJson(path.join(directory, 'checks.json'), null);
   const items = [
     profileItem({ measured, frames: timeline.frames, range }),
     loudnessItem({ loudness: measured.loudness }),
-    layoutItem({ checks: readJson(path.join(directory, 'checks.json'), null), cues: timeline.cues.length }),
+    layoutItem({ checks, cues: timeline.cues.length }),
     clips ? narrationItem({ check: readJson(path.join(directory, CHECK_FILE), null), audioSha256: audioHash(clips), phrases }) : item('narration', false, 'the clips of the phrases are missing'),
     line !== 'lab' && doc.source?.slug && !online ? item('evidence', false, OFFLINE) : evidenceItem({ doc, evidenceError, source, now: now() }),
     factsItem({ verify: readJson(path.join(directory, VERIFY_FILE), null), documentSha256: sha256(scriptBytes) }),
     policy,
     metadataItem({ metadata }),
-    captionsItem({ captions, timeline, locales: used.locales ?? [] }),
+    captionsItem({ captions, timeline, locales: used.locales ?? [], checks }),
     links,
     past === null && offline ? item('variety', false, OFFLINE) : varietyItem({ doc, history: past }),
     disclosureItem({ doc }),
