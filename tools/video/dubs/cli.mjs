@@ -24,6 +24,7 @@ import { FPS, SAMPLES_PER_FRAME, framesFor, msToSamples, speechHash } from "../c
 import { SpeechError, speechStatus, synthesize } from "../tts/client.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { billableForRequest } from "../tts/requests.mjs";
+import { JOURNAL_DIR, openSpeechJournal } from "../tts/speech-journal.mjs";
 import { flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "../tts/synthesis.mjs";
 import { encodeWav, parseWav, requireNarrationFormat } from "../tts/wav.mjs";
 import { CODECS, encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
@@ -188,12 +189,15 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   mkdirSync(files.audio, { recursive: true });
   let billable = 0;
   const fallbacks = [];
+  // The video's speech journal, shared with tts (tts/speech-journal.mjs): an answer not yet in the
+  // cache below is taken from disk by the next run, and a lost one holds until a person clears it.
+  const journal = openSpeechJournal(path.join(workdir, ARTIFACTS.audio, JOURNAL_DIR), { now: ctx.now });
+  const send = journal.wrap((body) => synthesize({ ...options, body }));
   for (const request of pending) {
     if (stopRequested(workdir)) {
       ctx.stdout.write(`${locale}: stopped by the STOP file; ${pending.indexOf(request)} of ${pending.length} requests done, rerun to continue\n`);
       return EXIT.ok;
     }
-    const send = (body) => synthesize({ ...options, body });
     const lines = retakes(request);
     const result = lines ? { ...(await synthesizeLines(request, lines, send)), fallback: false } : await synthesizeRequest(request, send);
     billable += result.billable;
@@ -205,6 +209,7 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
       delete cache.stretched[id];
     }
     atomicWrite(files.cache, `${JSON.stringify(cache, null, 2)}\n`);
+    journal.release();
     const done = lines ? `${lines.length} of ${request.lines.length} lines retaken` : `${request.lines.length} lines`;
     ctx.stdout.write(`${locale} ${request.id}: ${done}${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`);
   }
@@ -309,6 +314,7 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   const carried = [sound.track ? "music bed" : null, sound.sfxFile ? "sound effects" : null].filter(Boolean);
   ctx.stdout.write(`${locale}: ${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; ${sped} of ${windows.length} windows sped up (max ${tempoMax}x)${carried.length ? `; with the ${carried.join(" and ")}` : ""}; ${track}\n`);
   for (const note of sound.notes) ctx.stdout.write(`  ${note}\n`);
+  if (journal.reused) ctx.stdout.write(`  ${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
   if (fallbacks.length) ctx.stdout.write(`  line-by-line fallback for: ${fallbacks.join(", ")}\n`);
   return EXIT.ok;
 }

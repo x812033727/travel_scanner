@@ -66,9 +66,9 @@ test("a paid request sent and left without its answer is sent once and names the
     ["a socket closed mid-way", () => { throw failed("UND_ERR_SOCKET"); }, 0],
     ["Node's deadline for the headers", () => { throw failed("UND_ERR_HEADERS_TIMEOUT"); }, 0],
     ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
-    // A host from before the routes' own lost answer gives this 502 for a lost answer too.
-    ["the web route's 502, which a lost answer gives too", () => problem(502, "upstream_unavailable"), 502],
     ["the web route's lost answer", () => problem(504, "video_speech_answer_lost"), 504],
+    // Only the route's 502 says the API was never reached; no speech route answers this one.
+    ["an upstream_unavailable no speech route answers", () => problem(503, "upstream_unavailable"), 503],
     ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
     ["an error whose detail runs over lines", () => Response.json({ detail: "Internal\nServer Error\n" }, { status: 500 }), 500],
     ["an answer that breaks off", brokenBody, 200],
@@ -115,6 +115,9 @@ test("a paid request that never left, or that the API settled, is tried again an
     ["an unknown host", () => { throw failed("ENOTFOUND"); }, []],
     ["a DNS hiccup", () => { throw failed("EAI_AGAIN"); }, []],
     ["a connect timeout", () => { throw failed("UND_ERR_CONNECT_TIMEOUT"); }, []],
+    // The route answers a lost answer with 504 video_speech_answer_lost since #1272, which the
+    // production host serves, so its 502 is an API it never reached.
+    ["the web route's 502 for an API it never reached", () => problem(502, "upstream_unavailable"), [1000]],
     ["the API's rate limit", () => problem(429, "rate_limit_exceeded", { "Retry-After": "3" }), [3000]],
     ["a busy provider", () => problem(503, "video_speech_upstream_busy", { "Retry-After": "7" }), [7000]],
     // Also what the API answers for a provider read timeout after the request went out, which
@@ -139,6 +142,9 @@ test("a settled failure that does not clear stops after the bounded attempts", a
   const down = server([() => problem(502, "video_speech_upstream_failed")]);
   await assert.rejects(PAID[1].send(down.options), (error) => error.code === "video_speech_upstream_failed" && error.who === "service");
   assert.equal(down.calls.length, 5);
+  const unreached = server([() => problem(502, "upstream_unavailable")]);
+  await assert.rejects(PAID[2].send(unreached.options), (error) => error.code === "upstream_unavailable" && error.who === "service");
+  assert.equal(unreached.calls.length, 5);
   const offline = server([() => { throw failed("ECONNREFUSED"); }]);
   await assert.rejects(PAID[0].send(offline.options), (error) => error.code === "network" && error.who === "service");
   assert.equal(offline.calls.length, 5);

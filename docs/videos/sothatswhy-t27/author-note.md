@@ -11,7 +11,7 @@
 - 題目與最後一句的「多數」均限定垃圾桶困擾；不把43.7%沒有困擾反過來說成「多數旅客沒有任何困擾」，也不把它和17.2%拼成圓餅。稿中三本筆記、行李、照片分享、街道盤點提問都是原創教學比喻，沒有站主經驗或真實受訪者訪談。
 - 作者今日讀到官方發布正文和PDF第1、4頁；claims逐景列出面訪、受訪範圍、起迄／公布日期、複選題與兩種回答。未用前一年變化、恐攻／政策起源、城市密度、商家代收承諾或第三方數字填篇幅。獨立查核及聽眾審稿另由 reviewer 執行。
 - reviewer 提出的三處口語精確修正已套用，同 line IDs 不變：公布日指「公開結果的時間」而非所有人當日看見；旅客不好找的場景明示「假設」；歷史因果句改「這份旅客回答」，不把調查日說成今天。另採 reviewer 親讀有日期的官方報道發表 PDF 作公布日期證據，來源已登記。
-- helper及scene線索保存在repo外 `C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/_tools/`。`build-script.mjs` 僅為作者初稿重建工具；交接後不得盲目重跑覆蓋 reviewer、素材或正式工具修改的 `video.json`。
+- helper及scene線索保存在repo外 `<home>/mokaair-work/videos/sothatswhy-t27/_tools/`。`build-script.mjs` 僅為作者初稿重建工具；交接後不得盲目重跑覆蓋 reviewer、素材或正式工具修改的 `video.json`。
 
 套用 reviewer 初輪修正後的作者稿 SHA256（未來來源變更須更新收據）：
 

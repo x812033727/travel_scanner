@@ -5,12 +5,14 @@
 | 目前綁定 | SHA256 |
 | --- | --- |
 | video.json | `89d7d0fb16acfb196d5f19f6f9cc96a776b69b08234a492f1d3e8fd7078d494c` |
-| 文字事實收據 | `1917da872e108114fbf2b3901e9a125ae0fd0f31d770c378903451bdb09bfe0e` |
+| 文字事實收據 | `fff4ae7c5bdac4beaaf8ce6b56253527836ced4024bd6f9a52efbf0e25582eda` |
 | READY art manifest | `260ed6f4a37ce2199e8ef563fc0de0b4d92bd3368b67b89d5d4809927b538bda` |
 | 原獨立 BODY 收據 | `88e9d72f4579b61d9a9f7ae142f7772419f76db428257c65a5485c235637b0d3` |
 | final.mp4 | `3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016` |
 | upload/metadata.json | `0b391df71413e3ea5ef4307b4984d332dd81174e43af5fc98b92e4ed0abe79d3` |
 | 本次成片閉環收據 | `b57d237ca6388663a2697973eae81bdb5efba46d0a17633e86c6f29509a991e8` |
+
+2026-10-05 補記：倉庫是公開的，本稽核、`runtime-audit.json`、`fact-source-audit.json` 與 `visual-review.json` 內的本機使用者路徑已改為 `<home>`，其他內容不變；上表「文字事實收據」的 SHA256 因此改為遮蔽後的 fact-source-audit.json（任務 2026-10-05-scrub-local-user-paths-from-the）。遮蔽前的檔案與原雜湊見 commit bc5f18db8（#1144）。
 
 ## 實際成片與正文
 
@@ -52,7 +54,9 @@ actual packet PTS 對 body 與 final 全部 137 景核對，正文開始在成�
 
 後台只讀證據確認 final review cab3a243-7d28-433e-bca1-a0a4de07e247 與 publish review 2922dac4-fd3a-438c-9614-128ddadd1cc2 都 approved，且 publish 的 final attachment SHA 是目前影片；YouTube ID null、on_youtube false、locales_decided_at null。這證明後台附件與當前包相符，不將此視為 YouTube 已上架。
 
-畫面查核保留137景初審與3修景重看的完整 lineage，visual-review.json current SHA `47a692798587e8b99cdb5c4f533eb743663347a4129d9de7ff02740c3f4397d1` 綁 source／art／frame bytes，並加入實際 final 15樣本的獨立實看。這是圖形語義覆核，不是人工聲音或站主完整播放。
+畫面查核保留137景初審與3修景重看的完整 lineage，visual-review.json current SHA `ef00f9439db65104f6f779ec7211d439efe956af6340c712699351fc1e42638a` 綁 source／art／frame bytes，並加入實際 final 15樣本的獨立實看。這是圖形語義覆核，不是人工聲音或站主完整播放。
+
+2026-10-05 補記：上段 visual-review.json 的 SHA 是本機使用者路徑改為 `<home>` 後的值，其他內容不變（任務 2026-10-05-scrub-local-user-paths-from-the）；遮蔽前的檔案與原 SHA 見 commit bc5f18db8（#1144）。
 
 品牌定案紀錄 SHA `43387f2d864d334a68dec480e3979c8e3169e153ad2d49fff3ad9488112d6f55` 及 owner-approval.json SHA `1247033a80b19e52cf59967dd55acb8aa3728634a8012eca57d95dc752fd9c80` 明列站主選用固定多語系列片頭；選定 intro／outro byte SHA 與本集 pin／實際媒體完全一致。片頭中的 English／美國為14國／地區穿插的一張品牌卡，不表示本集旁白／CC語系；本集仍是繁中旁白與繁中 CC，沒有因此選取額外語言。素材選用紀錄與本集 final/publish gate、站主完整播放驗收分開。
 
@@ -60,13 +64,13 @@ actual packet PTS 對 body 與 final 全部 137 景核對，正文開始在成�
 
 ## 可追溯收據
 
-- body：`C:\Users\x8120\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-runtime-independent-body.json`，SHA256 `88e9d72f4579b61d9a9f7ae142f7772419f76db428257c65a5485c235637b0d3`
-- final_audit：`C:\Users\x8120\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-final-audit.json`，SHA256 `3d5ad153b104373edc3b5317d7601a4503eb3f4a252b14219adcb731411948c5`
-- sync：`C:\Users\x8120\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-sync-readonly.json`，SHA256 `0929e30144989b987f72e4816e3479aca78429b82b5ebe751bf6f3593e4e883e`
-- remote_proof：`C:\Users\x8120\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-remote-delivery-2026-10-02T15-52-00-323Z.json`，SHA256 `bdc2f89fed065da15a9436a01a77c4fc138ea83e270bce2d7fd3a34867585c10`
-- samples_manifest：`C:\Users\x8120\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-final-samples\manifest.json`，SHA256 `97e262f85fd4af745cb8ba959f40ec86d9ab62d1ab4b287d0e5386bb91d0785f`
-- sample_review：`C:\Users\x8120\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-final-stills-review.json`，SHA256 `f223318f99da7df7b8c41b4a1da397e6b3ec768aa131c3040d7e2f65247a811d`
+- body：`<home>\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-runtime-independent-body.json`，SHA256 `88e9d72f4579b61d9a9f7ae142f7772419f76db428257c65a5485c235637b0d3`
+- final_audit：`<home>\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-final-audit.json`，SHA256 `3d5ad153b104373edc3b5317d7601a4503eb3f4a252b14219adcb731411948c5`
+- sync：`<home>\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-sync-readonly.json`，SHA256 `0929e30144989b987f72e4816e3479aca78429b82b5ebe751bf6f3593e4e883e`
+- remote_proof：`<home>\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-remote-delivery-2026-10-02T15-52-00-323Z.json`，SHA256 `bdc2f89fed065da15a9436a01a77c4fc138ea83e270bce2d7fd3a34867585c10`
+- samples_manifest：`<home>\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-final-samples\manifest.json`，SHA256 `97e262f85fd4af745cb8ba959f40ec86d9ab62d1ab4b287d0e5386bb91d0785f`
+- sample_review：`<home>\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-final-stills-review.json`，SHA256 `f223318f99da7df7b8c41b4a1da397e6b3ec768aa131c3040d7e2f65247a811d`
 
-閉環完整 JSON：`C:\Users\x8120\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-runtime-final-closure.json`，SHA256 `b57d237ca6388663a2697973eae81bdb5efba46d0a17633e86c6f29509a991e8`。之前正文摘要與 Markdown 原封不動保存在 repo 外 t27-runtime-body-summary-before-final.json/md。
+閉環完整 JSON：`<home>\.codex\visualizations\2026\10\01\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\t27-runtime-final-closure.json`，SHA256 `b57d237ca6388663a2697973eae81bdb5efba46d0a17633e86c6f29509a991e8`。之前正文摘要與 Markdown 原封不動保存在 repo 外 t27-runtime-body-summary-before-final.json/md。
 
 **owner full-play／player CC acceptance／owner language choice／YouTube upload/publication = PENDING**。human_final_full_play=false，owner_full_playback_confirmed=false，owner_language_choice_pending=true，youtube_video_id=null，published=false。

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, renameSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -138,6 +138,96 @@ test("adoption requires a consumed success and current saved artifact hashes", (
   assert.equal(JSON.parse(readFileSync(entry.file, "utf8")).adopted, undefined);
   const restarted = runReceiptStore(context(box), site);
   assert.throws(() => restarted.prepare({ ...request(), instructions: "Changed source" }), /inputs changed/);
+});
+
+// A journal rename that the OS refuses for the first `failures` matching attempts, or for ever.
+// The original Windows cause (scanner, indexer, another handle) is not known; only the error is.
+function denyRenames({ platform = "win32", code = "EPERM", failures = Infinity, only = () => true } = {}) {
+  const io = { platform, attempts: [], waits: [], wait: (ms) => io.waits.push(ms) };
+  let denied = 0;
+  io.rename = (from, to) => {
+    io.attempts.push({ from, to, mode: statSync(from).mode & 0o777, bytes: readFileSync(from, "utf8") });
+    if (only(to) && denied++ < failures) throw Object.assign(new Error(`${code}: operation not permitted, rename`), { code, syscall: "rename" });
+    renameSync(from, to);
+  };
+  return io;
+}
+const sha = (file) => createHash("sha256").update(readFileSync(file)).digest("hex");
+const leftovers = (entry) => readdirSync(path.dirname(entry.file)).filter((name) => name.endsWith(".tmp"));
+
+test("a transient Windows rename denial settles the same receipt from the same complete temporary file", () => {
+  const box = sandbox(), io = denyRenames({ failures: 2 }), store = runReceiptStore({ ...context(box), receiptIo: io }, site);
+  const entry = store.prepare(request()), key = entry.record.request_key;
+  const saved = store.receive(entry, receipt(entry));
+  assert.equal(io.attempts.length, 3);
+  assert.deepEqual(io.waits, [10, 20]);
+  assert.equal(new Set(io.attempts.map((attempt) => attempt.from)).size, 1, "every retry renames the one exclusive temporary file");
+  assert.match(path.basename(io.attempts[0].from), new RegExp(`^${path.basename(entry.file).replaceAll(".", "\\.")}\\.[0-9a-f-]{36}\\.tmp$`));
+  assert.ok(io.attempts.every((attempt) => attempt.to === entry.file));
+  const bytes = readFileSync(entry.file, "utf8");
+  assert.ok(io.attempts.every((attempt) => attempt.bytes === bytes), "the temporary file was complete before the first rename");
+  const restarted = runReceiptStore(context(box), site).find(request());
+  assert.equal(restarted.record.request_key, key);
+  assert.deepEqual(restarted.record.receipt, saved);
+  assert.equal(restarted.record.receipt.id, receipt(entry).id);
+  assert.deepEqual(leftovers(entry), []);
+});
+
+test("a permanent Windows rename denial fails with the original error and keeps the earlier receipt", () => {
+  const box = sandbox(), io = denyRenames(), ctx = { ...context(box), receiptIo: io };
+  const plain = runReceiptStore(context(box), site), entry = plain.prepare(request());
+  plain.receive(entry, receipt(entry, "running"));
+  const before = sha(entry.file), store = runReceiptStore(ctx, site), held = store.prepare(request());
+  assert.throws(() => store.receive(held, receipt(held)), (error) => error.code === "EPERM" && error.syscall === "rename");
+  assert.equal(io.attempts.length, 7, "one attempt and six bounded retries");
+  assert.deepEqual(io.waits, [10, 20, 40, 80, 160, 320]);
+  assert.equal(sha(entry.file), before, "the earlier journal bytes are unchanged");
+  assert.equal(held.record.receipt.status, "running", "the caller keeps the saved state, not the unsaved answer");
+  assert.deepEqual(leftovers(entry), [], "the unsaved temporary file is removed");
+  const restarted = runReceiptStore(context(box), site).prepare(request());
+  assert.equal(restarted.record.request_key, entry.record.request_key, "a restart resumes the same key instead of buying a new run");
+  assert.equal(restarted.record.receipt.id, receipt(entry).id);
+});
+
+test("rename errors off Windows, and other codes on Windows, fail on the first attempt", () => {
+  for (const [platform, code] of [["linux", "EPERM"], ["linux", "EBUSY"], ["darwin", "EACCES"], ["win32", "ENOSPC"], ["win32", "EXDEV"]]) {
+    const box = sandbox(), io = denyRenames({ platform, code, failures: 1 }), store = runReceiptStore({ ...context(box), receiptIo: io }, site);
+    const entry = store.prepare(request()), before = sha(entry.file);
+    assert.throws(() => store.receive(entry, receipt(entry, "running")), (error) => error.code === code, `${platform} ${code}`);
+    assert.equal(io.attempts.length, 1, `${platform} ${code} is not retried`);
+    assert.deepEqual(io.waits, []);
+    assert.equal(sha(entry.file), before);
+    assert.equal(entry.record.receipt, null);
+    assert.deepEqual(leftovers(entry), []);
+  }
+  for (const code of ["EACCES", "EBUSY"]) {
+    const box = sandbox(), io = denyRenames({ code, failures: 1 }), store = runReceiptStore({ ...context(box), receiptIo: io }, site);
+    const entry = store.prepare(request());
+    store.hold(entry, { error_code: POLICY_HOLD_CODE, error_status: 409, error_detail: "the video route is disabled" });
+    assert.equal(io.attempts.length, 2, `${code} is retried on Windows`);
+    assert.equal(runReceiptStore(context(box), site).find(request()).record.policy_rejection.error_code, POLICY_HOLD_CODE);
+  }
+});
+
+test("an owner retry archive survives a transient Windows denial of its final move", () => {
+  const box = sandbox(), io = denyRenames({ code: "EBUSY", failures: 1, only: (to) => path.basename(path.dirname(to)) === "archive" });
+  const store = runReceiptStore({ ...context(box), receiptIo: io }, site);
+  const entry = store.prepare(request()), archiveDir = path.join(path.dirname(entry.file), "archive");
+  store.receive(entry, receipt(entry, "uncertain"));
+  store.archive(entry);
+  assert.equal(existsSync(entry.file), false);
+  assert.deepEqual(io.waits, [10]);
+  assert.equal(io.attempts.filter((attempt) => attempt.from === entry.file).length, 2);
+  assert.deepEqual(readdirSync(archiveDir), [`${entry.record.source_hash}-${entry.record.request_key}.json`]);
+  assert.equal(JSON.parse(readFileSync(path.join(archiveDir, readdirSync(archiveDir)[0]), "utf8")).request_key, entry.record.request_key);
+});
+
+test("a journal replacement's temporary file is owner-only before its rename", { skip: process.platform === "win32" && "Windows does not report POSIX modes" }, () => {
+  const box = sandbox(), io = denyRenames({ platform: process.platform, failures: 0 }), store = runReceiptStore({ ...context(box), receiptIo: io }, site);
+  const entry = store.prepare(request());
+  store.receive(entry, receipt(entry, "running"));
+  assert.equal(io.attempts[0].mode, 0o600);
+  assert.equal(statSync(entry.file).mode & 0o777, 0o600);
 });
 
 test("pending lookup tolerates only derived date and shared lexicon drift and retains the original wire request", () => {

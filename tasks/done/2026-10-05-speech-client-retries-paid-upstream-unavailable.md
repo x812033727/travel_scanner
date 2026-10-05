@@ -1,14 +1,14 @@
 ---
 id: 2026-10-05-speech-client-retries-paid-upstream-unavailable
 title: Speech client retries a paid upstream_unavailable once the lost-answer routes are live
-status: open
+status: done
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-speech-client-upstream-unavailable
+claimed_at: 2026-10-05T12:31:13Z
 created_at: 2026-10-05T07:42:22Z
-completed_at:
-branch:
+completed_at: 2026-10-05T12:42:20Z
+branch: claude/speech-client-upstream-unavailable
 depends_on:
   - 2026-10-05-speech-routes-lost-paid-answer
 scope:
@@ -35,25 +35,25 @@ speech request) still blocks the video for the owner (`tools/video/automation/fl
 
 ## Definition of done
 
-- [ ] The production host serves the web change before the client change merges: the deployed
+- [x] The production host serves the web change before the client change merges: the deployed
   commit contains the pull request of 2026-10-05-speech-routes-lost-paid-answer.
-- [ ] A paid POST (speech, speech/transcribe, speech/judge) that gets the route's 502
+- [x] A paid POST (speech, speech/transcribe, speech/judge) that gets the route's 502
   `upstream_unavailable` is sent again within the bounded attempts, and one that gets 504
   `video_speech_answer_lost` (or any other unlisted 5xx) is still sent once and stops as
   `SPEECH_UNCERTAIN`.
 
 ## Steps
 
-- [ ] Check the deployed commit (skill `deploy` records it; `git merge-base --is-ancestor <PR merge
+- [x] Check the deployed commit (skill `deploy` records it; `git merge-base --is-ancestor <PR merge
   commit> <deployed commit>`). If the web change is not live, stop here.
-- [ ] Add `upstream_unavailable` to `SETTLED_CODES` in `tools/video/tts/client.mjs`, and rewrite the
+- [x] Add `upstream_unavailable` to `SETTLED_CODES` in `tools/video/tts/client.mjs`, and rewrite the
   comment above it (it says why the code is not there yet). Decide whether to settle only the
   route's own 502: `speech-journal.test.mjs` feeds a 503 `upstream_unavailable`, which no speech
   route answers.
-- [ ] In `tools/video/tts/client.test.mjs`, move "the web route's 502" from the lost list of the
+- [x] In `tools/video/tts/client.test.mjs`, move "the web route's 502" from the lost list of the
   first test to the settled list of the third; keep "the web route's lost answer" (504
   `video_speech_answer_lost`) in the lost list.
-- [ ] Update the `upstream_unavailable` case and its comment in
+- [x] Update the `upstream_unavailable` case and its comment in
   `docs/videos/imported-long-languages/speech-journal.test.mjs` to match.
 
 ## How to verify
@@ -76,3 +76,36 @@ docs/videos/imported-long-languages/speech-journal.test.mjs` (fake transports on
 - The automation client's `SETTLED_RUN_CODES` holds `upstream_unavailable` only because its run
   route passes `RUN_LOST`; the automation judge routes have their own ticket
   (2026-10-05-let-the-judge-routes-tell-a, filed in PR #1237).
+
+### Done 2026-10-05 (claude-opus-5-5-speech-client-upstream-unavailable)
+
+- Deploy order. The routes' change was PR #1265. That PR was closed without merging and landed
+  inside train #1272, squash `2e301aba3568f4a3f6f7994c484af06625c33c84`. #1235's client half is
+  `50fbb9b00`. The coordinator deployed `c12e159d012265ee431dc68cc3bacd4851279245` to production on
+  2026-10-05 12:07:49–12:08:43Z. Its host-verify run read live head c12e159d0 and passed
+  `web-speech-answer-lost`, so the web image contains `video_speech_answer_lost`. Both
+  `git merge-base --is-ancestor 2e301aba3 c12e159d0` and
+  `git merge-base --is-ancestor 50fbb9b00 c12e159d0` exit 0. This agent did not contact the host.
+  It read the coordinator's deploy record and host-verify output.
+- Decision: settle only the route's own 502, not every `upstream_unavailable`. `client.mjs` keeps
+  `SETTLED_CODES` as the API's own codes. It adds `NEVER_REACHED = { status: 502, code:
+  "upstream_unavailable" }` and a `settled(status, code)` helper used by the paid 5xx check. No
+  speech route answers that code with another status (`forward.ts` is the only producer under
+  `/api/video/speech`), so a 503 `upstream_unavailable` stays `SPEECH_UNCERTAIN`. The comment above
+  says why, and says that a host from before #1272 would make the resend unsafe.
+- `client.test.mjs`. The route's 502 moved from the lost list to the settled list, with one retry
+  and a 1 s wait. The lost list keeps 504 `video_speech_answer_lost` and gains a 503
+  `upstream_unavailable`. "A settled failure that does not clear" now also pins a 502
+  `upstream_unavailable` that never clears: 5 attempts, then `upstream_unavailable`, who `service`.
+- `speech-journal.test.mjs`. The 503 case stays `SPEECH_UNCERTAIN`. A new 502 case shows the
+  native client asking again, and the journal answering that second POST with its local 409
+  `video_speech_result_held`. That is one POST, the entry is `unknown`, and who is `service`. The
+  journal still never resends. Letting it release the route's 502 is filed as
+  2026-10-05-speech-journal-releases-never-reached-502.
+- Mutation checks, run against both test files. With main's `client.mjs`, 4 tests fail (the new 502
+  cases). With a status-blind variant that settles any `upstream_unavailable`, 3 fail (the 503
+  cases). The real change passes 67/67.
+- The claim needed `--force`. The scope overlaps the stale claim
+  2026-09-29-resume-imported-long-video-languages (codex-video-stall-followthrough, claimed
+  2026-10-04T10:51Z, branch `codex/video-approved-final-languages-20261004` not on the remote). No
+  open PR touches the three paths.

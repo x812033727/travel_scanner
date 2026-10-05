@@ -7,16 +7,20 @@
 //
 // Every source ends as one 48 kHz mono WAV per phrase. A server phrase is cached under the voice
 // and its own words, so editing one phrase, or sending back the ones the listener flagged,
-// synthesizes those alone.
+// synthesizes those alone. Each server request goes through the speech journal beside that
+// cache (tts/speech-journal.mjs): a phrase whose answer was lost is not sent again by the next
+// build or lab round until a person clears its hold, and one that came back but was not cached
+// yet is taken from the journal instead of being bought again.
 import { execFile } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
-import { readJson } from '../core/paths.mjs';
+import { atomicWrite, readJson } from '../core/paths.mjs';
 import { synthesize } from '../tts/client.mjs';
 import { spokenParts, voiceFields } from '../tts/requests.mjs';
+import { JOURNAL_DIR, openSpeechJournal } from '../tts/speech-journal.mjs';
 import { phrasesOf, sha256 } from './core.mjs';
 
 const exec = promisify(execFile);
@@ -38,10 +42,13 @@ export const phraseKey = (voice, phrase, lexicon = null) => sha256(JSON.stringif
 
 /**
  * The phrases from the narration server. `redo` lists the phrase numbers to synthesize again
- * whatever the cache holds; the usage counts only what this call was charged for.
+ * whatever the cache holds; the usage counts only what this call was charged for, so an answer
+ * an earlier build paid for and the journal kept is not counted again.
  */
 export async function serverNarration({ phrases, voice, cacheDir, client, lexicon = null, redo = [], synthesizeImpl = synthesize }) {
   mkdirSync(cacheDir, { recursive: true });
+  const journal = openSpeechJournal(path.join(cacheDir, JOURNAL_DIR));
+  const send = journal.wrap((body) => synthesizeImpl({ body, site: client.site, token: client.token, fetchImpl: client.fetch, sleep: client.sleep }));
   const again = new Set(redo);
   const clips = [];
   let calls = 0;
@@ -49,10 +56,14 @@ export async function serverNarration({ phrases, voice, cacheDir, client, lexico
   for (const [index, phrase] of phrases.entries()) {
     const file = path.join(cacheDir, `${phraseKey(voice, phrase, lexicon)}.wav`);
     if (again.has(index) || !existsSync(file)) {
-      const { wav, billable } = await synthesizeImpl({ body: phraseBody(voice, phrase, lexicon), site: client.site, token: client.token, fetchImpl: client.fetch, sleep: client.sleep });
-      writeFileSync(file, wav);
-      calls += 1;
-      characters += billable || [...phrase].length;
+      const { wav, billable, reused } = await send(phraseBody(voice, phrase, lexicon));
+      // Whole or not at all: a cached phrase is never asked for again.
+      atomicWrite(file, wav);
+      journal.release();
+      if (!reused) {
+        calls += 1;
+        characters += billable || [...phrase].length;
+      }
     }
     clips.push(readFileSync(file));
   }

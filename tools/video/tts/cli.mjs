@@ -17,6 +17,7 @@ import { SpeechError, speechStatus, synthesize } from "./client.mjs";
 import { TOKEN_PATTERN, readCredentials, validSite, writeCredentials } from "./credentials.mjs";
 import { defaultClientName, startPairing, waitForPairing } from "./pairing.mjs";
 import { GEMINI_VOICE_PREFIX, MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts, voiceFields } from "./requests.mjs";
+import { JOURNAL_DIR, openSpeechJournal } from "./speech-journal.mjs";
 import { buildNarration, flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "./synthesis.mjs";
 import { readCache, takeCurrent } from "./takes.mjs";
 import { encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
@@ -217,20 +218,26 @@ async function audition(args, ctx) {
   const problems = voices.map((voice) => voiceProblem(status, voice)).filter(Boolean);
   if (problems.length) throw new SpeechError([...new Set(problems)].join("; "), { who: "owner" });
   const stamp = ctx.now().toISOString().replace(/[:.]/g, "-");
-  const out = path.join(resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home }), "_audition", stamp);
+  const auditions = path.join(resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home }), "_audition");
+  const out = path.join(auditions, stamp);
   mkdirSync(out, { recursive: true });
   const parts = spokenParts(text, loadLexicon(ctx.root));
   // "gemini:Sulafat" is not a valid Windows file name.
   const fileName = (voice) => `${voice.replace(/[^A-Za-z0-9_.-]/g, "-")}.wav`;
+  // A sample whose answer was lost is not sent again, and one that came back is not bought again
+  // by the next audition (speech-journal.mjs).
+  const journal = openSpeechJournal(path.join(auditions, JOURNAL_DIR), { now: ctx.now });
+  const send = journal.wrap((body) => synthesize({ ...options, body }));
   let billable = 0;
   for (const voice of voices) {
     const fields = voice.startsWith(GEMINI_VOICE_PREFIX)
       ? voiceFields({ provider: "gemini", name: voice.slice(GEMINI_VOICE_PREFIX.length), style: values.style, model: values.model })
       : voiceFields({ provider: "azure", name: voice, rate: values.rate });
-    const result = await synthesize({ ...options, body: { ...fields, segments: [{ parts, break_after_ms: 0 }] } });
+    const result = await send({ ...fields, segments: [{ parts, break_after_ms: 0 }] });
     requireNarrationFormat(parseWav(result.wav));
     billable += result.billable;
-    writeFileSync(path.join(out, fileName(voice)), result.wav);
+    atomicWrite(path.join(out, fileName(voice)), result.wav);
+    journal.release();
     ctx.stdout.write(`${voice}: ${path.join(out, fileName(voice))}\n`);
   }
   const rows = voices.map((voice) => `<li><p>${escapeHtml(voice)}</p><audio controls preload="none" src="${encodeURIComponent(fileName(voice))}"></audio></li>`).join("");
@@ -347,6 +354,11 @@ async function tts(args, ctx) {
   }
   let billable = 0;
   const fallbacks = [];
+  // Each paid body is recorded before it goes out (speech-journal.mjs): an answer that came back
+  // but was not saved below is taken from disk by the next run, and one that was lost stops it
+  // until a person clears the hold. Released once cache.json holds the takes made from it.
+  const journal = openSpeechJournal(path.join(audioDir, JOURNAL_DIR), { now: ctx.now });
+  const send = journal.wrap((body) => synthesize({ ...options, body }));
   for (const request of pending) {
     if (stopRequested(workdir)) {
       // The takes so far are in cache.json and a rerun reuses them, but timeline.json and
@@ -354,7 +366,6 @@ async function tts(args, ctx) {
       ctx.stdout.write(`stopped by the STOP file; ${pending.indexOf(request)} of ${pending.length} requests done, rerun to continue\n`);
       return EXIT.incomplete;
     }
-    const send = (body) => synthesize({ ...options, body });
     const lines = retakes(request);
     const result = lines ? { ...(await synthesizeLines(request, lines, send)), fallback: false } : await synthesizeRequest(request, send);
     billable += result.billable;
@@ -368,6 +379,7 @@ async function tts(args, ctx) {
       cache.sha256[id] = wavHash(bytes);
     }
     atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
+    journal.release();
     const done = lines ? `${lines.length} of ${request.lines.length} lines retaken` : `${request.lines.length} lines`;
     const who = doc.format === "drama" ? ` [${speakerName(doc, request.speaker)}]` : "";
     ctx.stdout.write(`${request.id}${who}: ${done}${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`);
@@ -402,6 +414,7 @@ async function tts(args, ctx) {
   recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name, voices: voices.map((entry) => entry.voice), ...(chapters.length ? { ok: false, chapters } : {}) }, ctx.now());
 
   ctx.stdout.write(`${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; narration ${formatClock(frameToSeconds(timeline.total_frames))}\n`);
+  if (journal.reused) ctx.stdout.write(`${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
   if (fallbacks.length) ctx.stdout.write(`line-by-line fallback for: ${fallbacks.join(", ")}\n`);
   if (chapters.length) {
     // The problems come last, so a caller that reports the last line names one.
