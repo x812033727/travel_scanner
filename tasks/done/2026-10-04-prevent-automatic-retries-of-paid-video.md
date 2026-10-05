@@ -91,3 +91,13 @@ Run `node --test tools/video/automation/client.test.mjs` and relevant QA caller 
   `--test-concurrency=3` gave 1625 pass and 3 fail: the known Windows-only `tts/check` case, the
   Windows-only nginx detector timeout (filed as 2026-10-05-nginx-detector-pipefail-test-times-out),
   and the duration receipt binding, which is stale for `tools/video/qa/qa.test.mjs` as expected.
+- Review round 1 (2026-10-05): three reviewers found the same blocker. On PR #1237 the required
+  `web-checks`, `smoke` and `web` checks are red, all from review.test.mjs "the shipped independent
+  duration review binds the current plans and implementation" (stale binding for
+  `tools/video/qa/qa.test.mjs`). The fix is a DURATION_ONLY increment in
+  `docs/videos/long-form/review.json`/`review.md` by an independent reviewer, which neither the author
+  nor the fixer may write, so the PR stays a draft until that lands. The fixer checked that the
+  `qa.test.mjs` edit cannot be dropped instead: origin/main's copy of the "judge being unreachable"
+  case, run against this branch's `client.mjs`, fails with "automation/judge/policy was sent and no
+  answer came back (fetch failed); Jev may have run" where it expects "cannot reach". The four focused
+  files still give 128 of 128, and `cli.mjs check` lists only `tools/video/qa/qa.test.mjs` as stale.
