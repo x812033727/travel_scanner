@@ -24,8 +24,20 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
 const WORKFLOWS = join(ROOT, ".github", "workflows");
-const DOCKERFILES = ["apps/api/Dockerfile", "apps/web/Dockerfile"];
-const COMPOSE_FILES = ["docker-compose.community.yml"];
+const DOCKERFILES = ["apps/api/Dockerfile", "apps/web/Dockerfile", "ops/video/Dockerfile", "ops/youtube-uploader/Dockerfile"];
+const COMPOSE_FILES = ["docker-compose.yml", "docker-compose.community.yml"];
+
+/** Root compose files not scanned yet, each with the open task that pins and adds them. */
+const COMPOSE_NOT_SCANNED_YET = new Map([
+  // Pinning its postgres recreates the production database container on the next deploy, so
+  // that task checks what the host runs first.
+  ["docker-compose.prod.yml", "2026-10-05-pin-prod-compose-postgres-redis-by"],
+]);
+
+/** Images that run as more than one tag on purpose, with the reason; each tag has one digest. */
+const SEVERAL_TAGS = new Map([
+  ["node", "the web image is Node 22 on Alpine; the YouTube uploader needs Debian for `playwright install --with-deps`"],
+]);
 
 /** Images not pinned yet, each with the open task that pins it. */
 const NOT_PINNED_YET = new Map([
@@ -83,7 +95,7 @@ function images() {
   return found;
 }
 
-test("every image a Dockerfile, the community compose file or a workflow runs is pinned by digest", () => {
+test("every image a Dockerfile, a scanned compose file or a workflow runs is pinned by digest", () => {
   const found = images();
   // A guard that finds nothing passes forever.
   assert.ok(found.length >= 10, `only ${found.length} image references found — the scan itself is broken`);
@@ -105,10 +117,13 @@ test("a digest pin keeps its tag, so a reader and Dependabot know which version 
 
 test("one image is pinned to the same tag and digest everywhere", () => {
   const byName = new Map();
+  const tagsOf = new Map();
   for (const { file, reference } of images()) {
-    const { name } = parseReference(reference);
-    if (!byName.has(name)) byName.set(name, new Map());
-    const references = byName.get(name);
+    const { name, tag } = parseReference(reference);
+    tagsOf.set(name, new Set([...(tagsOf.get(name) ?? []), tag]));
+    const key = SEVERAL_TAGS.has(name) ? `${name}:${tag}` : name;
+    if (!byName.has(key)) byName.set(key, new Map());
+    const references = byName.get(key);
     references.set(reference, [...(references.get(reference) ?? []), file]);
   }
   const split = [...byName.entries()]
@@ -117,11 +132,25 @@ test("one image is pinned to the same tag and digest everywhere", () => {
       `${name}: ${[...references.entries()].map(([reference, files]) => `${reference} in ${[...new Set(files)].join(", ")}`).join(" / ")}`,
     );
   assert.deepEqual(split, [], "copy the new pin into every file that names this image");
+  for (const name of SEVERAL_TAGS.keys()) {
+    assert.ok((tagsOf.get(name)?.size ?? 0) > 1, `${name} runs one tag now — drop it from SEVERAL_TAGS`);
+  }
 });
 
 test("an image left unpinned names a task that is still open", () => {
   for (const [name, task] of NOT_PINNED_YET) {
     assert.ok(existsSync(join(ROOT, "tasks", "open", `${task}.md`)), `${name}: ${task} is closed — pin the image or drop it here`);
+  }
+});
+
+test("every root compose file is scanned, or names a task that is still open", () => {
+  // Dependabot's docker-compose entry reads all of these, so one left out here is a pin nothing checks.
+  const compose = readdirSync(ROOT).filter((name) => /^(?:docker-)?compose[^/]*\.ya?ml$/.test(name));
+  assert.ok(compose.length >= COMPOSE_FILES.length, "no compose files found at the root — the scan itself is broken");
+  const unscanned = compose.filter((name) => !COMPOSE_FILES.includes(name) && !COMPOSE_NOT_SCANNED_YET.has(name));
+  assert.deepEqual(unscanned, [], "add these to COMPOSE_FILES");
+  for (const [file, task] of COMPOSE_NOT_SCANNED_YET) {
+    assert.ok(existsSync(join(ROOT, "tasks", "open", `${task}.md`)), `${file}: ${task} is closed — scan the file or drop it here`);
   }
 });
 

@@ -36,7 +36,7 @@ metadata:
 
 | # | 階段 | 做什麼 | 關卡 |
 | --- | --- | --- | --- |
-| 1 | 預檢 | `host-preflight.sh`（唯讀）：暫停檔、被規則 1 標記的目錄、24 小時內動過的發布目錄、鎖、live HEAD 對 origin/main、磁碟 | 沒有暫停檔、沒有 FLAGGED、鎖是空的；否則進 preflight.md 的判斷 |
+| 1 | 預檢 | `host-preflight.sh`（唯讀）：暫停檔、被規則 1 標記的目錄、24 小時內動過的發布目錄、鎖、live HEAD 對 origin/main、磁碟、還沒結算的付費影片工作 | 沒有暫停檔、沒有 FLAGGED、鎖是空的、沒有 `PAID WORK IN FLIGHT`；否則進 preflight.md 的判斷 |
 | 2 | 決定 | 先看要不要部署：預檢加 `--dry-run`，別的 session 常部署，main 可能早就 live，那就不必問。要的話：站主要部署什麼（哪個 PR／SHA）、要不要 `--force`、要不要 `--ignore-hold` | 用有選項的提問，不接受一句「好」 |
 | 3 | 部署 | `host-deploy.sh`（背景），或站主自己跑一行 | `DEPLOY_EXIT=0`、腳本自己的 3/3 健康檢查過 |
 | 4 | 驗證 | 一支唯讀腳本、一次 SSH 跑完：`.agents/skills/deploy/scripts/host-verify.sh`（live SHA、部署 log、容器與映像、alembic、health、首頁、公開站），再加這次 diff 專屬的檢查（抓一個新程式才有的字串或行為），寫法見 `post-deploy.md` | 每行 `PASS`、`TOTAL fail=0` 才算部署完成 |
@@ -45,7 +45,7 @@ metadata:
 ## 指令
 
 ```bash
-# 1 唯讀預檢（只讀檔案；加 --full 才看行程與容器，分類器擋的是後者）
+# 1 唯讀預檢（讀檔案，加兩句影片工作表的 select；加 --full 才看行程與容器，分類器擋的是後者）
 MSYS_NO_PATHCONV=1 <SSH> -m .agents/skills/deploy/scripts/host-preflight.sh
 MSYS_NO_PATHCONV=1 <SSH> "bash -s -- --full" < .agents/skills/deploy/scripts/host-preflight.sh
 # 腳本自己的調查模式：只印會不會拒絕、原因是什麼，什麼都不做
@@ -73,7 +73,7 @@ curl -s -o /dev/null -w '%{http_code} %{time_total}s\n' https://mokaair.com/zh-T
 | 清掉建置快取後的冷建置 | 約 4.5 分鐘 |
 | 571 個內容包＋web＋api 一起 | 約 8 分鐘 |
 
-建置內容有變的服務會得到新的映像 ID 並重建（三個 profile 全開的應用容器，2026-10-05 是十二個；內容沒變的服務沿用舊容器），中間約 8 秒 502；hotspot-collector 重啟的第一輪會重算當天排行、也會跑 guide backfill（吃 YouTube 與 Brave 額度），所以同一天多次部署要集中。
+每次部署都重建所有從 repo 建置的容器（postgres、redis 以外全部，2026-10-05 是十二個應用容器加 `migrate`），只有文件的 commit 也一樣：建置內容沒變時快取全中、映像不會重做，但映像 ID 每次建置都會換新（主機用 containerd image store），compose 就把容器全部重建，原因見 `runbook.md`。所以 video-ai-worker 與 video-worker 每次都會重啟，進行中的付費影片工作會被打斷，部署前看預檢的「paid video work」。中間約 8 秒 502；hotspot-collector 重啟的第一輪會重算當天排行、也會跑 guide backfill（吃 YouTube 與 Brave 額度），所以同一天多次部署要集中。
 
 ## 規則在哪裡（不重抄）
 

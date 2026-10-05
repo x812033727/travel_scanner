@@ -1,11 +1,15 @@
 """The Jev client: answer parsing, the token guard, retries, and the key staying put.
 
 Jev is the one provider whose 422 means "this module built an illegal question", so
-the tests care as much about what is never retried as about what is.
+the tests care as much about what is never retried as about what is. A paid answer
+lost after the request left is the other thing never retried: the fake transport
+below counts every POST, so "sent once" is a number rather than a reading of the loop.
 """
 
 from __future__ import annotations
 
+import hashlib
+from collections.abc import Sequence
 from pathlib import Path
 
 import httpx
@@ -16,6 +20,8 @@ from app.ai.jev import (
     ChoiceQuestion,
     JevAuthError,
     JevClient,
+    JevError,
+    JevOutcomeUncertain,
     JevQuestion,
     JevRequestInvalid,
     JevRequestTooLarge,
@@ -66,14 +72,22 @@ QUESTIONS: dict[str, JevQuestion] = {
 
 
 def _client(
-    responses: list[httpx.Response],
+    responses: Sequence[httpx.Response | type[httpx.RequestError]],
 ) -> tuple[JevClient, list[httpx.Request]]:
+    """A client over a fake transport; ``seen`` is every POST it handed to the transport.
+
+    An exception class in ``responses`` is raised for that POST after it was recorded,
+    which is how a request the provider received but whose answer was lost looks here.
+    """
     seen: list[httpx.Request] = []
     queue = list(responses)
 
     def handler(request: httpx.Request) -> httpx.Response:
         seen.append(request)
-        return queue.pop(0)
+        outcome = queue.pop(0)
+        if isinstance(outcome, httpx.Response):
+            return outcome
+        raise outcome("the fake transport lost this one", request=request)
 
     transport = httpx.AsyncClient(transport=httpx.MockTransport(handler))
     return (
@@ -175,6 +189,159 @@ async def test_an_overloaded_service_is_retried_then_raises() -> None:
     assert len(seen) == 4, "three retries, then the failure is real"
 
 
+@pytest.fixture
+def waits(monkeypatch: pytest.MonkeyPatch) -> list[int]:
+    """Record each backoff instead of sleeping through it."""
+    recorded: list[int] = []
+
+    async def no_wait(attempt: int, **_: object) -> None:
+        recorded.append(attempt)
+
+    monkeypatch.setattr(JevClient, "_backoff", staticmethod(no_wait))
+    return recorded
+
+
+def _assert_held(error: JevOutcomeUncertain, seen: list[httpx.Request]) -> None:
+    """Callers catch ``JevError``; a 422-shaped error would be reported as our bug."""
+    assert isinstance(error, JevError)
+    assert not isinstance(error, JevRequestInvalid)
+    assert error.request_sha256 == hashlib.sha256(seen[-1].read()).hexdigest()
+    assert SECRET not in str(error)
+    assert "typesafe.ai" not in str(error)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "lost",
+    [httpx.ReadTimeout, httpx.WriteTimeout, httpx.ReadError, httpx.RemoteProtocolError],
+)
+async def test_an_answer_lost_after_the_request_left_is_never_sent_again(
+    lost: type[httpx.RequestError], waits: list[int]
+) -> None:
+    """The provider may have run (and billed) it; a second POST could be a second bill."""
+    client, seen = _client([lost, httpx.Response(200, json=ANSWERS)])
+    with pytest.raises(JevOutcomeUncertain) as held:
+        await client.ask("a support ticket", QUESTIONS)
+
+    assert len(seen) == 1, "one uncertain wire, and no second one"
+    assert (held.value.phase, held.value.wires_sent, held.value.status) == ("send", 1, None)
+    assert lost.__name__ in str(held.value)
+    _assert_held(held.value, seen)
+    assert (client.application_calls, client.wires_sent) == (1, 1)
+    assert waits == []
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("status", [500, 502, 503, 504])
+async def test_an_upstream_5xx_is_held_rather_than_sent_again(
+    status: int, waits: list[int]
+) -> None:
+    """A 5xx does not say whether the work ran; only the vendor's 529 says it did not."""
+    client, seen = _client(
+        [
+            httpx.Response(status, json={"message": "upstream hiccup"}),
+            httpx.Response(200, json=ANSWERS),
+        ]
+    )
+    with pytest.raises(JevOutcomeUncertain) as held:
+        await client.ask("a support ticket", QUESTIONS)
+
+    assert len(seen) == 1
+    assert (held.value.phase, held.value.wires_sent, held.value.status) == (
+        "response",
+        1,
+        status,
+    )
+    assert "upstream hiccup" in str(held.value)
+    _assert_held(held.value, seen)
+    assert waits == []
+
+
+@pytest.mark.asyncio
+async def test_a_success_whose_body_is_not_json_is_held(waits: list[int]) -> None:
+    client, seen = _client(
+        [httpx.Response(200, text="<html>gateway</html>"), httpx.Response(200, json=ANSWERS)]
+    )
+    with pytest.raises(JevOutcomeUncertain) as held:
+        await client.ask("a support ticket", QUESTIONS)
+
+    assert len(seen) == 1
+    assert (held.value.phase, held.value.wires_sent, held.value.status) == ("body", 1, 200)
+    _assert_held(held.value, seen)
+    assert waits == []
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "never_sent", [httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout]
+)
+async def test_a_connection_that_never_opened_is_tried_once_more(
+    never_sent: type[httpx.RequestError], waits: list[int]
+) -> None:
+    """Nothing reached the provider, so a second wire cannot be a second answer."""
+    client, seen = _client([never_sent, httpx.Response(200, json=ANSWERS)])
+    answers, usage = await client.ask("a support ticket", QUESTIONS)
+
+    assert len(seen) == 2
+    assert answers["department"].choice == "technical"  # type: ignore[union-attr]
+    assert usage == {"input_tokens": 392, "output_tokens": 65}
+    assert (client.application_calls, client.wires_sent) == (1, 2)
+    assert waits == [0]
+
+
+@pytest.mark.asyncio
+async def test_a_connection_that_never_opens_is_not_tried_a_third_time(
+    waits: list[int],
+) -> None:
+    client, seen = _client(
+        [httpx.ConnectError, httpx.ConnectError, httpx.Response(200, json=ANSWERS)]
+    )
+    with pytest.raises(httpx.ConnectError):
+        await client.ask("a support ticket", QUESTIONS)
+    assert len(seen) == 2
+    assert waits == [0]
+
+
+@pytest.mark.asyncio
+async def test_only_the_last_wire_of_one_ask_can_be_the_uncertain_one(
+    waits: list[int],
+) -> None:
+    """A 429 was turned away, so the timeout after it is still the only wire in doubt."""
+    client, seen = _client(
+        [
+            httpx.Response(429, headers={"Retry-After": "0"}),
+            httpx.ReadTimeout,
+            httpx.Response(200, json=ANSWERS),
+        ]
+    )
+    with pytest.raises(JevOutcomeUncertain) as held:
+        await client.ask("a support ticket", QUESTIONS)
+
+    assert len(seen) == 2
+    assert held.value.wires_sent == 2
+    assert seen[0].read() == seen[1].read(), "the refused and the uncertain wire are one question"
+    _assert_held(held.value, seen)
+    assert (client.application_calls, client.wires_sent) == (1, 2)
+    assert waits == [0]
+
+
+@pytest.mark.asyncio
+async def test_a_known_answer_is_returned_as_sent_and_counted_as_one_wire() -> None:
+    """Wires and application calls are counted apart; the answer itself is untouched."""
+    client, seen = _client([httpx.Response(200, json=ANSWERS), httpx.Response(200, json=ANSWERS)])
+    first, _ = await client.ask("東京車站的客服信", QUESTIONS)
+    assert (client.application_calls, client.wires_sent) == (1, 1)
+    second, _ = await client.ask("a support ticket", QUESTIONS)
+    assert (client.application_calls, client.wires_sent) == (2, 2)
+
+    assert first == second
+    assert {name: answer.model_dump() for name, answer in first.items()} == ANSWERS["answers"]
+    body = seen[0].read()
+    assert "東京車站的客服信".encode() in body, "CJK state is sent as UTF-8, not escaped"
+    assert seen[0].headers["Content-Type"] == "application/json"
+    assert seen[0].headers["Content-Length"] == str(len(body))
+
+
 @pytest.mark.asyncio
 async def test_an_illegal_question_never_reaches_the_vendor() -> None:
     client, seen = _client([])
@@ -186,6 +353,7 @@ async def test_an_illegal_question_never_reaches_the_vendor() -> None:
             {"bad": ChoiceQuestion(instructions="x", criteria={str(n): "o" for n in range(256)})},
         )
     assert seen == [], "the vendor should never be billed for a request we know is illegal"
+    assert (client.application_calls, client.wires_sent) == (0, 0)
 
 
 @pytest.mark.asyncio

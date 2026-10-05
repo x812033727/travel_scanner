@@ -58,7 +58,7 @@ CI 綠、部署成功、首頁 200，功能仍可能一半是啞的。2026-09-07
 
 ## 部署的副作用
 
-- 每次部署重建全部應用容器，約 8 秒 502；AdSense 爬蟲曾撞到。
+- 每次部署重建全部應用容器，只有文件的 commit 也一樣（原因見 `runbook.md` 的「為什麼每次都全部重建」），約 8 秒 502；AdSense 爬蟲曾撞到。video-ai-worker 與 video-worker 也會重啟，所以部署前要看預檢的 `paid video work`（`preflight.md`）。
 - hotspot-collector 重啟的第一輪會重算當天排行：部署前核准的景點幾分鐘內就公開，部署後核准的等最多 6 小時，所以重新部署也是讓新核准提早上線的方法。代價是那一輪也跑 guide backfill，吃 YouTube 與 Brave 額度；一天六次部署曾把兩個供應商都打到 quota_exhausted。
 - 內容包沒匯入就不上線：未發布的 slug 回 200 的 noindex「這篇文章目前看不到」頁，不是 404。
 
