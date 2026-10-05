@@ -275,15 +275,15 @@ def _request_fields(
             fields["resolution"] = "2K"
     elif isinstance(payload, ClipJobIn):
         resolution = payload.resolution or row.clip_resolution
-        if model.id == "veo-3.1-lite-generate-preview":
-            if payload.references:
-                raise MediaJobFailed(
-                    422, "video_media_model_not_allowed", "Veo Lite 不支援角色參考圖，請使用首幀"
-                )
-            if resolution == "1080p" and payload.seconds != 8:
-                raise MediaJobFailed(
-                    422, "video_media_model_not_allowed", "Veo Lite 的 1080p 素材固定為 8 秒"
-                )
+        if payload.references and model.reference_images == 0:  # Veo Lite, MiniMax-H3
+            raise MediaJobFailed(
+                422, "video_media_model_not_allowed", f"{model.label} 不收參考圖，只收首格與末格"
+            )
+        lite_1080p = model.id == "veo-3.1-lite-generate-preview" and resolution == "1080p"
+        if lite_1080p and payload.seconds != 8:
+            raise MediaJobFailed(
+                422, "video_media_model_not_allowed", "Veo Lite 的 1080p 素材固定為 8 秒"
+            )
         if payload.seconds not in model.durations:
             raise MediaJobFailed(
                 422,
