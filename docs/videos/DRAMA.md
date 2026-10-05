@@ -168,6 +168,7 @@ node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --p
 | `PUT /files/{slug}/{sha256}?part&parts&size` | 分段上傳（同 `video_reviews`） |
 | `GET /files/{slug}/{sha256}` | 串流、Range、`ETag` |
 | `POST /judge` | `{slug, kind, files ≤6 圖或 1 片, rubric ≤12, context, min_score?}` → `{scores: {key: 0–10}, overall, pass, problems, notes, model}` |
+| `POST /locate` | `{slug, sha256, labels? ≤8}` → `{boxes: [{label, box: [ymin, xmin, ymax, xmax], score}], width, height, model}`：媒體庫裡一張 png／jpeg／webp 的主體在哪裡（`locate.py`，2026-10-05 加）。`box` 是 Gemini 的 `box_2d`，0–1000 等分圖高與圖寬，乘 `height/1000`、`width/1000` 得像素（工具端 `client.mjs` 的 `scaleBox`）；`labels` 用劇本的字眼說要找誰，不給就找每個角色（主角在前）與最明顯的主體；沒找到回空陣列。跟 judge 同一次「Gemini 看一眼」：記在 `judge_calls` 預算與每小時 judge 次數上、每次 US$0.01、同一把金鑰與模型、同 `inline_judge_bytes` 上限；片段回 422 `video_media_invalid`，工具先抽一格上傳再問。直式裁切、Shorts 智慧裁切與日後任何重新取景都從這裡拿座標。`GET /status` 的 `limits.locate_labels` 表示伺服器有這個端點 |
 
 **輪詢驅動的狀態機**：API 沒有背景執行程序，工作存 Postgres（`queued → submitted → ready | failed | expired`），`GET /jobs/{id}` 拿 Redis 鎖後推進一步；同 `(slug, request_hash)` 去重；`failed` 三次後 409；`submitted` 超過 24 小時 `expired`。預算（片段秒數、圖片、音樂、judge 次數）在呼叫廠商前預留，廠商拒收或判失敗才釋放。Gemini 的下載要帶金鑰，只在 URL 是 https 且主機正是釘住的 `generativelanguage.googleapis.com` 時附上。媒體庫 `/var/lib/mokaair/video-media/<slug>/<sha256>`，單檔 200 MB、總量 30 GB、保留 14 天，`prune` 刪過期、已放棄、已上架的專案。
 
