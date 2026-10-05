@@ -12,6 +12,11 @@
  *
  * uv. `pip install uv` in the API image installed whatever uv was newest on build day.
  *
+ * Playwright. The video worker's base image carries the browsers of one Playwright release, and
+ * the worker drives them through the @playwright/test that ops/video/package.json installs, so a
+ * patch tag from Dependabot's docker entry, or an npm bump of @playwright/test alone, would leave
+ * a client looking for browser builds the image does not have.
+ *
  * Announcements. ci-red-main.yml listens to workflows by their `name:`, so a rename quietly
  * stops the issue; and its branch filter matches a branch name a fork chooses, so it also has to
  * look at the event that started the run.
@@ -162,6 +167,29 @@ test("the API image installs a pinned uv", () => {
     .filter((word) => /^uv\b/.test(word));
   assert.ok(installs.length > 0, "no `pip install ... uv` found in apps/api/Dockerfile — the scan itself is broken");
   for (const word of installs) assert.match(word, /^uv==\d+\.\d+\.\d+$/, "install uv as uv==<version>");
+});
+
+test("the video worker's Playwright image is the release of the @playwright/test it installs", () => {
+  const from = /^FROM\s+mcr\.microsoft\.com\/playwright:v(\d+\.\d+\.\d+)-[a-z]+[@\s]/m.exec(read("ops/video/Dockerfile"));
+  assert.ok(from, "no `FROM mcr.microsoft.com/playwright:v<version>-<distro>` in ops/video/Dockerfile — the scan itself is broken");
+  const image = from[1];
+  // The image's `npm install` reads this file without a lock file, so a range here would install
+  // whatever release is newest on build day.
+  const installed = JSON.parse(read("ops/video/package.json")).dependencies?.["@playwright/test"];
+  // What tools/video runs with in CI and on a laptop. @playwright/test pins playwright, which pins
+  // playwright-core, the package that names the browser builds.
+  const locked = JSON.parse(read("package-lock.json")).packages;
+  const versions = new Map([
+    ["ops/video/package.json @playwright/test", installed],
+    ...["@playwright/test", "playwright", "playwright-core"].map((name) => [`package-lock.json ${name}`, locked[`node_modules/${name}`]?.version]),
+  ]);
+  const apart = [...versions].filter(([, version]) => version !== image).map(([where, version]) => `${where}: ${version}`);
+  assert.deepEqual(
+    apart,
+    [],
+    `ops/video/Dockerfile runs Playwright ${image}'s browsers. Move the image (tag and digest: docker buildx imagetools ` +
+      "inspect mcr.microsoft.com/playwright:v<version>-noble), ops/video/package.json and package-lock.json to one release in one change",
+  );
 });
 
 function workflowName(file) {
