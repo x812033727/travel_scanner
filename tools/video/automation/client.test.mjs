@@ -301,7 +301,10 @@ test("a judge's refusal is thrown after one request, with the status its callers
   for (const [method, , body] of JUDGES) {
     for (const [status, code, detail] of refusals) {
       let calls = 0;
-      const client = automationClient({ ...credentials(sandbox()), fetch: async () => (calls++, Response.json({ code, detail }, { status })), sleep: async () => {} });
+      const client = automationClient({ ...credentials(sandbox()), fetch: async () => {
+        calls++;
+        return Response.json({ code, detail }, { status });
+      }, sleep: async () => {} });
       await assert.rejects(client[method](body), (error) => error instanceof AutomationError && error.status === status && error.code === code && error.message === detail);
       assert.equal(calls, 1, `${method}, ${status}`);
     }
