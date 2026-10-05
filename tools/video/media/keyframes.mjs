@@ -44,9 +44,11 @@ const CONTACT_SHEET = /^contact-sheet(?:-\d+)?\.png$/;
 /**
  * How a storyboard's tiles are laid over contact sheets: one keyframes/contact-sheet.png while
  * they fit on a page, else pages of at most CONTACT_SHEET_TILES in shot order,
- * keyframes/contact-sheet-01.png, -02.png and so on. Returns [{ file, tiles }].
+ * keyframes/contact-sheet-01.png, -02.png and so on; none while no shot has a picture. Returns
+ * [{ file, tiles }].
  */
 export function contactSheetPages(tiles, perPage = CONTACT_SHEET_TILES) {
+  if (!tiles.length) return [];
   if (tiles.length <= perPage) return [{ file: "keyframes/contact-sheet.png", tiles }];
   return Array.from({ length: Math.ceil(tiles.length / perPage) }, (_, index) => ({
     file: `keyframes/contact-sheet-${String(index + 1).padStart(2, "0")}.png`,
@@ -406,6 +408,9 @@ export async function run(command, args, ctx) {
       const start = { ...scene, data: { ...scene.data, end_frame: undefined } };
       if (!(await keyframeProblems({ doc: { scenes: [start] }, manifest: { shots: { [scene.id]: take } }, workdir, allowNeedsReview: true })).length) entry.takes.push(take);
     }
+    // What the provider said each time it refused a seed: when it refuses them all, that is the
+    // problem the prompt fix starts from (a prompt too long for the model, say).
+    const refusals = [];
     for (let take = 1; take <= takes; take++) {
       const seed = take;
       // A take judged on this question is not asked about again. One judged on another question
@@ -426,6 +431,7 @@ export async function run(command, args, ctx) {
         }
         if (retakeable(error)) {
           ctx.stdout.write(`${scene.id} seed ${seed}: ${error.message}; trying another seed\n`);
+          refusals.push(error.message.startsWith(`${scene.id}: `) ? error.message.slice(scene.id.length + 2) : error.message);
           continue;
         }
         throw error;
@@ -458,7 +464,10 @@ export async function run(command, args, ctx) {
     }
     const best = bestTake(entry.takes);
     if (!best) {
-      manifest.shots[scene.id] = { ...entry, needs_review: true, problems: ["no take could be generated"] };
+      // Every seed was refused. The entry has no picture: nothing of an earlier record is carried
+      // over, since a picture of it that still stood would have been one of the takes.
+      const why = [...new Set(refusals)].map((reason) => `no take could be generated: ${reason}`);
+      manifest.shots[scene.id] = { takes: [], needs_review: true, problems: why.length ? why : ["no take could be generated"] };
       writeManifest(workdir, manifest);
       continue;
     }
@@ -492,13 +501,15 @@ export async function run(command, args, ctx) {
     return EXIT.ok;
   }
 
-  // Two neighbouring shots that look the same read as a video that stalled; the writer fixes the prompt.
-  const drawn = shotScenes(doc).map((scene) => manifest.shots[scene.id] && { id: scene.id, file: manifest.shots[scene.id].file }).filter(Boolean);
+  // Two neighbouring shots that look the same read as a video that stalled; the writer fixes the
+  // prompt. A shot every seed was refused for has an entry and no picture: it is left out here,
+  // from the thumbnail and from the contact sheet, as a shot not drawn yet is.
+  const drawn = shotScenes(doc).filter((scene) => manifest.shots[scene.id]?.file).map((scene) => ({ id: scene.id, file: manifest.shots[scene.id].file }));
   const hashes = await pictureHashes(ctx, workdir, drawn);
   manifest.duplicates = hashes ? duplicates(hashes) : [];
   for (const pair of manifest.duplicates) ctx.stdout.write(`WARN shots ${pair.a} and ${pair.b} look alike (dHash distance ${pair.distance}); vary the prompt or the camera\n`);
   const thumbnailShot = doc.thumbnail?.data?.shot;
-  manifest.thumbnail_source = thumbnailShot && manifest.shots[thumbnailShot] ? manifest.shots[thumbnailShot].file : null;
+  manifest.thumbnail_source = (thumbnailShot && manifest.shots[thumbnailShot]?.file) || null;
   const tiles = drawn.map((shot) => ({ file: shot.file, label: `${shot.id} · ${manifest.shots[shot.id].judge?.overall ?? "?"}/10${manifest.shots[shot.id].needs_review ? " · 待修" : ""}` }));
   // contact_sheets lists every page in order; contact_sheet stays the first, for the readers
   // written before there were pages.
@@ -524,9 +535,9 @@ export async function run(command, args, ctx) {
   const seconds = Math.round((Date.now() - started) / 1000);
   const waiting = Object.entries(manifest.shots).filter(([, shot]) => shot.needs_review);
   recordStage(workdir, "keyframes", { shots: Object.keys(manifest.shots).length, generated, needs_review: waiting.map(([id]) => id), duplicates: manifest.duplicates.length, usd: ledgerTotals(workdir).usd, seconds }, ctx.now());
-  ctx.stdout.write(`${generated} keyframes generated in ${seconds} s; ${Object.keys(manifest.shots).length} shots drawn; this video has spent US$${ledgerTotals(workdir).usd.toFixed(2)}\n`);
+  ctx.stdout.write(`${generated} keyframes generated in ${seconds} s; ${drawn.length} shots drawn; this video has spent US$${ledgerTotals(workdir).usd.toFixed(2)}\n`);
   if (waiting.length) {
-    for (const [id, shot] of waiting) ctx.stdout.write(`ERROR ${id}: no take passed the judge: ${(shot.problems ?? []).join("; ")}\n`);
+    for (const [id, shot] of waiting) ctx.stdout.write(`ERROR ${id}: ${shot.file ? "no take passed the judge: " : ""}${(shot.problems ?? []).join("; ")}\n`);
     ctx.stdout.write(`fix the prompts of ${waiting.map(([id]) => id).join(", ")} and run keyframes again (needs_review in keyframes/manifest.json)\n`);
     return EXIT.lint;
   }
