@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-cancelled-requests-leave-asyncpg-connections-mid
 title: Cancelled requests leave asyncpg connections mid-operation and the next requests on them fail with 500
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-asyncpg-cancel
 claimed_at: 2026-10-05T01:23:07Z
 created_at: 2026-10-04T19:21:18Z
-completed_at:
+completed_at: 2026-10-05T02:26:29Z
 branch: claude/asyncpg-cancel
 depends_on: []
 scope:
