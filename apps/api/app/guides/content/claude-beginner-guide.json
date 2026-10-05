@@ -60,7 +60,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Claude 不是單一模型，而是一個家族。2026 年 9 月官方文件列出的現役模型有四個：Fable 5.1 的定位是最艱難的推理與長時間自主任務；Opus 5 針對複雜的程式與企業工作；Sonnet 5 是速度與能力的平衡點；Haiku 4.5 最快、能力接近前緣。名稱後面的數字是世代，每一代都會換，本文其他地方只用系列名。一般使用者不用背這些，在 claude.ai 的模型選單裡挑一個就好；說明中心另外提醒，Fable 系列只在付費方案提供，而且消耗用量比其他模型快。"
+          "text": "Claude 不是單一模型，而是一個家族。2026 年 10 月官方文件列出的現役模型有四個：Fable 5.1 的定位是最艱難的推理與長時間自主任務；Opus 5.5 針對長時間的代理式程式開發與知識工作；Sonnet 5.5 是速度與能力的平衡點；Haiku 4.5 最快、能力接近前緣。名稱後面的數字是世代，每一代都會換，本文其他地方只用系列名。一般使用者不用背這些，在 claude.ai 的模型選單裡挑一個就好；說明中心另外提醒，Fable 系列只在付費方案提供，而且消耗用量比其他模型快。"
         },
         {
           "type": "rich_paragraph",
@@ -186,7 +186,7 @@
         },
         {
           "type": "paragraph",
-          "text": "檔案上傳走輸入框左下角的加號，或直接把檔案拖進對話；支援 PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON、XLSX 與 JPEG、PNG、GIF、WebP 圖片，一個對話最多 20 個檔案、單檔 500 MB，圖片最大 8000 × 8000 像素。PDF 最多 1000 頁，前 100 頁會連圖表版面一起看，101 頁以後只讀文字。單一對話能裝多少內容取決於模型的脈絡視窗：付費方案上 Fable 5.1、Opus 5、Sonnet 5 是 1M token，Opus 4.8、4.7、4.6 與 Sonnet 4.6 是 500K，其餘 200K（官網換算約 500 頁文字）；免費版的數字官網沒有分開寫，以官網為準。"
+          "text": "檔案上傳走輸入框左下角的加號，或直接把檔案拖進對話；支援 PDF、DOCX、CSV、TXT、HTML、ODT、RTF、EPUB、JSON、XLSX 與 JPEG、PNG、GIF、WebP 圖片，一個對話最多 20 個檔案、單檔 500 MB，圖片最大 8000 × 8000 像素。PDF 最多 1000 頁，前 100 頁會連圖表版面一起看，101 頁以後只讀文字。單一對話能裝多少內容取決於模型的脈絡視窗：付費方案上 Fable 5.1、Opus 5.5、Opus 5、Sonnet 5.5、Sonnet 5 是 1M token，Fable 5、Opus 4.8、4.7、4.6 與 Sonnet 4.6 是 500K，其餘 200K（官網換算約 500 頁文字）；免費版的數字官網沒有分開寫，以官網為準。"
         },
         {
           "type": "rich_paragraph",
@@ -201,7 +201,7 @@
         },
         {
           "type": "paragraph",
-          "text": "延伸思考（介面上叫 Thinking 或 Extended）開啟後，Claude 會先花時間拆解問題、規劃步驟再回答，畫面上會出現帶計時器的 Thinking 指示，回答上方有一段可展開的思考摘要。免費版就能用，適合數學、規劃、多步驟分析；日常問答關掉比較快。要注意用 Fable 5.1 或 Opus 5 時思考模式關不掉，Fable 5.1 在每個 Effort 等級都會思考。"
+          "text": "延伸思考（介面上叫 Thinking 或 Extended）開啟後，Claude 會先花時間拆解問題、規劃步驟再回答，畫面上會出現帶計時器的 Thinking 指示，回答上方有一段可展開的思考摘要。免費版就能用，適合數學、規劃、多步驟分析；日常問答關掉比較快。要注意用 Sonnet 5.5、Opus 5.5、Fable 5.1 或 Opus 5 時思考模式關不掉，這時把 Effort 調低就會快一些；Opus 5.5 與 Fable 5.1 在每個 Effort 等級都會思考。"
         },
         {
           "type": "rich_paragraph",
@@ -225,7 +225,7 @@
           "width": 1600,
           "height": 900,
           "caption": "從中央的對話出發，五個功能各自解決一件事；數字是 2026 年 9 月官網查證的上限。",
-          "description": "結構圖。中央是「對話」：送出鍵旁邊可以換模型、調 Effort、開關 Thinking，免費版就有網頁搜尋與記憶，用量以工作階段計、每 5 小時重置。從對話連出五個功能。左上 Projects：知識庫加專案指令，每個對話都帶著背景，免費版最多 5 個、付費無上限，知識庫單檔 30 MB 只抽文字。右上 Artifacts：約 15 行以上的文件、程式、網頁、SVG、圖表放在旁邊的視窗，可以繼續改、切版本、下載，免費版也能發布成連結。左下 檔案上傳：用加號或拖進對話，支援 PDF、Word、Excel、圖片，一個對話 20 個檔案、單檔 500 MB，PDF 最多 1000 頁、前 100 頁看得到圖。右下 思考模式：先拆解、規劃再回答，有可展開的摘要，數學、規劃、多步驟分析時開，Fable 5.1 與 Opus 5 關不掉。下方 桌面版與手機 App：macOS 11、Windows 10、Linux 測試版，iOS 18.0、Android 8.0 以上，語音模式按聲波圖示。底部兩行：模型家族 Fable 5.1 最難的推理、Opus 5 複雜程式與企業工作、Sonnet 5 速度與能力平衡、Haiku 4.5 最快；免費版所有功能都能用，Pro 每月 20 美元、用量至少 5 倍，2026 年 9 月依官網查證。",
+          "description": "結構圖。中央是「對話」：送出鍵旁邊可以換模型、調 Effort、開關 Thinking，免費版就有網頁搜尋與記憶，用量以工作階段計、每 5 小時重置。從對話連出五個功能。左上 Projects：知識庫加專案指令，每個對話都帶著背景，免費版最多 5 個、付費無上限，知識庫單檔 30 MB 只抽文字。右上 Artifacts：約 15 行以上的文件、程式、網頁、SVG、圖表放在旁邊的視窗，可以繼續改、切版本、下載，免費版也能發布成連結。左下 檔案上傳：用加號或拖進對話，支援 PDF、Word、Excel、圖片，一個對話 20 個檔案、單檔 500 MB，PDF 最多 1000 頁、前 100 頁看得到圖。右下 思考模式：先拆解、規劃再回答，有可展開的摘要，數學、規劃、多步驟分析時開，Sonnet 5.5、Opus 5.5、Fable 5.1 關不掉。下方 桌面版與手機 App：macOS 11、Windows 10、Linux 測試版，iOS 18.0、Android 8.0 以上，語音模式按聲波圖示。底部兩行：模型家族 Fable 5.1 最難的推理、Opus 5.5 長時間程式與知識工作、Sonnet 5.5 速度與能力平衡、Haiku 4.5 最快；免費版所有功能都能用，Pro 每月 20 美元、用量至少 5 倍，2026 年 9 月依官網查證。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -247,7 +247,7 @@
             "寫作風格：官方模型文件把 Claude 的回應描述為偏向豐富、接近人與人對話的寫法，想要精簡就在提示裡直接要求字數或格式，這在 Claude 是預期中的用法。",
             "長文件：付費方案的新模型單一對話可以放 1M token，PDF 上限 1000 頁，再用 Projects 把常用資料固定下來；讀長合約、整本手冊是 Claude 的主場。",
             "做出來的東西放在旁邊：Artifacts 讓網頁、圖表、文件在對話旁邊的視窗裡持續修改，而且能發布成連結。",
-            "思考模式可以自己開關：想快就關，想深就開，還能調 Effort；只有 Fable 5.1 與 Opus 5 例外。",
+            "思考深淺可以自己調：想快就把 Effort 調低，想深就調高；Haiku 4.5 這類模型還能直接關掉思考，Sonnet 5.5、Opus 5.5、Fable 5.1 與 Opus 5 則一律會先想再答。",
             "不做的事：Claude 不產生照片或插圖，官網說明是它會用 HTML 與 SVG 畫圖表與示意圖，能看懂你上傳的圖片，但不是生圖工具；另外 Pro 方案不含 API 用量。",
             "資料使用是明確的選項：對話要不要用於訓練，註冊時就會問你，設定路徑見最後一節。"
           ],
@@ -365,9 +365,9 @@
           "checked_on": "2026-09-13"
         },
         {
-          "title": "Claude 說明中心：Change the model, effort, and thinking settings（模型選單、Effort 等級、Thinking 限制）",
+          "title": "Claude 說明中心：Change the model, effort, and thinking settings（模型選單、Effort 等級、Sonnet 5.5、Opus 5.5、Fable 5.1 與 Opus 5 關不掉思考）",
           "url": "https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Claude 說明中心：Upload files to Claude（檔案類型、20 個檔案、500 MB、PDF 1000 頁、Projects 單檔 30 MB）",
@@ -375,9 +375,9 @@
           "checked_on": "2026-09-13"
         },
         {
-          "title": "Claude 說明中心：How large is the context window on paid Claude plans?（1M、500K、200K）",
+          "title": "Claude 說明中心：How large is the context window on paid Claude plans?（Fable 5.1、Opus 5.5、Opus 5、Sonnet 5.5、Sonnet 5 為 1M；Fable 5、Opus 4.8 到 4.6、Sonnet 4.6 為 500K；其他 200K）",
           "url": "https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Claude 說明中心：Install Claude Desktop（macOS 11、Windows 10、Linux 測試版、Quick Entry）",
@@ -435,9 +435,9 @@
           "checked_on": "2026-09-13"
         },
         {
-          "title": "Claude Platform Docs：Models overview（Fable 5.1、Opus 5、Sonnet 5、Haiku 4.5 定位）",
-          "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
-          "checked_on": "2026-09-13"
+          "title": "Claude Platform Docs：Models overview（Fable 5.1、Opus 5.5、Sonnet 5.5、Haiku 4.5 定位）",
+          "url": "https://platform.claude.com/docs/en/models/overview",
+          "checked_on": "2026-10-05"
         }
       ]
     }
