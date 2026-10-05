@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-multi-language-maintenance-update-for-two
 title: Multi-language maintenance update for two five-locale tech articles (Matsu 5G showcase, Apple 9/18 launch day)
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-tech-news-maintenance
 claimed_at: 2026-10-05T07:24:13Z
 created_at: 2026-09-19T18:39:21Z
-completed_at:
+completed_at: 2026-10-05T08:35:42Z
 branch: claude/tech-news-maintenance
 depends_on: []
 scope:
