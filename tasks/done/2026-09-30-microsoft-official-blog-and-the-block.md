@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-microsoft-official-blog-and-the-block
 title: Microsoft official blog and The Block refuse the news scanner (Cloudflare 403): find readable pages or demote to lead_only
-status: open
+status: done
 priority: P2
 area: api
 owner:
 claimed_at:
 created_at: 2026-09-30T11:04:55Z
-completed_at:
+completed_at: 2026-10-05T23:44:12Z
 branch: claude/gifted-rubin-umw5s4
 depends_on: []
 scope:
@@ -28,7 +28,7 @@ was skipped every hour; with it, each recent entry becomes a `news_page_refused`
 
 ## Definition of done
 
-- [ ] On the host, confirm in `/admin/news` that both sources sit at `partial` with
+- [x] On the host, confirm in `/admin/news` that both sources sit at `partial` with
       `HTTPStatusError` skips (the host's IP may be treated differently).
 - [x] Microsoft: find a first-party page the scanner can read (a news.microsoft.com
       story page, the Microsoft Source regional sites, an official API) or record that none
@@ -47,3 +47,4 @@ was skipped every hour; with it, each recent entry becomes a `news_page_refused`
   Microsoft Research blog (readable) remains a source.
 - Left: confirm both 403s from the host (first box).
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5-news-4-9 (since 2026-09-30T12:20:14Z) was stale and is released so it stops locking its scope. Landed: #1041. Still open: On the host, confirm in /admin/news that both sources are at partial with HTTPStatusError skips.
+- 2026-10-06 (about 23:20Z on 10-05), claude-opus-5-5-incomplete-tickets: checked on production read-only (`news_sources` and `news_evidence`). The host is not refused any more for Microsoft: **Microsoft official blog** is enabled, `last_status = not_modified`, 0 consecutive failures, last scanned 10-05 23:18Z, and its one evidence page since #966 is 5,802 characters of real text (before, 49 excerpts with a median of 1,389, the refused-page leads). **The Block** is disabled with `last_status = validation_failed` and `HTTPStatusError` as its last error, which is the 403 the ticket describes. So the first box is answered: the 403 was confirmed for The Block (now off), and Microsoft reads fine from the host today; it stays enabled. A local check the same day also got 200 from blogs.microsoft.com and theblock.co with the editorial User-Agent. Closed.
