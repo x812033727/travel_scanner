@@ -5,8 +5,10 @@
 # out of the web image.
 #
 # Playwright's image already holds the browsers for its version, so the npm package below must be
-# the same version (package-lock.json pins @playwright/test 1.63.0).
-FROM mcr.microsoft.com/playwright:v1.63.0-noble AS worker
+# the same version (package-lock.json pins @playwright/test 1.63.0). Tag and digest: a tag moved
+# on the registry cannot change this image without a diff here; Dependabot (.github/dependabot.yml,
+# docker) moves the digest by pull request.
+FROM mcr.microsoft.com/playwright:v1.63.0-noble@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27 AS worker
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends ffmpeg \
