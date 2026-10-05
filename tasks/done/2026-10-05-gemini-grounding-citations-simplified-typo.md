@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-gemini-grounding-citations-simplified-typo
 title: gemini-api-search-grounding-citations writes 報错 with a simplified 错
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-small-content-fixes
 claimed_at: 2026-10-05T13:39:08Z
 created_at: 2026-10-05T06:45:31Z
-completed_at:
+completed_at: 2026-10-05T14:19:36Z
 branch: claude/small-content-fixes
 depends_on: []
 scope:

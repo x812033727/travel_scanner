@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-qwen-local-deployment-ollama-variant-sizes
 title: qwen-local-deployment does not explain Ollama's new size ranges, and its qwen3.6 sizes predate them
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-small-content-fixes
 claimed_at: 2026-10-05T13:38:31Z
 created_at: 2026-10-05T06:45:40Z
-completed_at:
+completed_at: 2026-10-05T14:19:16Z
 branch: claude/small-content-fixes
 depends_on: []
 scope:

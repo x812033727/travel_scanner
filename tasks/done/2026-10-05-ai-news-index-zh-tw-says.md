@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-ai-news-index-zh-tw-says
 title: AI news index zh-TW says every linked article has five languages
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-small-content-fixes
 claimed_at: 2026-10-05T13:38:03Z
 created_at: 2026-10-05T06:49:41Z
-completed_at:
+completed_at: 2026-10-05T14:19:26Z
 branch: claude/small-content-fixes
 depends_on: []
 scope:
