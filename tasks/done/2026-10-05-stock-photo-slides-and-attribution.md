@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-stock-photo-slides-and-attribution
 title: Stock photos on slides and the assets list credited in the description
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-fable-5-1-stockslides
 claimed_at: 2026-10-05T17:47:49Z
 created_at: 2026-10-05T16:08:26Z
-completed_at:
+completed_at: 2026-10-05T18:10:19Z
 branch: claude/stock-photo-slides
 depends_on:
   - 2026-10-05-stock-photo-source-endpoint
