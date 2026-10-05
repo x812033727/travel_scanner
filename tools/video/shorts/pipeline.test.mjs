@@ -389,11 +389,29 @@ test('the metadata fits YouTube, the captions sit on the timeline, the links ope
   assert.match(captionsItem({ captions, timeline, locales: ['en'] }).detail, /en.srt is missing/);
   const english = srt({ ...timeline, cues: timeline.cues.map((cue) => ({ ...cue, text: `line ${cue.index}` })) });
   assert.equal(captionsItem({ captions: new Map([...captions, ['en', english]]), timeline, locales: ['en'] }).ok, true, 'a translation says other words on the same clock');
+  // A karaoke cut on estimated timing passes with a warning; measured timing and plain captions carry none.
+  const lit = captionsItem({ captions, timeline, checks: { captions: { style: 'karaoke', source: 'estimated', groups: 12, states: 14 } } });
+  assert.equal(lit.ok, true);
+  assert.deepEqual(Object.keys(lit), ['id', 'ok', 'detail', 'warnings']);
+  assert.equal(lit.warnings.length, 1);
+  assert.match(lit.warnings[0], /estimated.*12 groups/);
+  assert.equal(captionsItem({ captions, timeline, checks: { captions: { style: 'plain' } } }).warnings, undefined);
+  assert.equal(captionsItem({ captions, timeline, checks: { captions: { style: 'karaoke', source: 'aligned', groups: 12 } } }).warnings, undefined);
+  assert.equal(captionsItem({ captions: new Map(), timeline, checks: { captions: { style: 'karaoke', source: 'estimated' } } }).ok, false, 'a warning never hides a failure');
   const opened = [{ url: 'https://youtu.be/dQw4w9WgXcQ', ok: true, status: 200 }];
   assert.equal(linksItem({ results: opened, metadata: composeMetadata({ doc: cut(), finalSha256: 'f'.repeat(64), seconds: 35, sourceUrl: 'https://youtu.be/dQw4w9WgXcQ' }) }).ok, true);
   assert.match(linksItem({ results: [{ url: 'https://mokaair.com/x', ok: false, status: 404, error: 'HTTP 404' }], metadata }).detail, /1 of 1 links do not open/);
   assert.match(linksItem({ results: [], metadata: composeMetadata({ doc: cut({ source: { slug: 'ai-model-choice' } }), finalSha256: 'f'.repeat(64), seconds: 35 }) }).detail, /does not lead back/);
   assert.equal(linksItem({ results: [], metadata }).detail, 'the description has no links');
+});
+
+test('the quality check binds the karaoke timing too, so a verdict never outlives a change of the highlight', (t) => {
+  const directory = temp(t);
+  const bindings = qaInputBindings(directory);
+  assert.ok(Object.hasOwn(bindings.files, 'timing.json'));
+  assert.equal(bindings.files['timing.json'], null, 'a build without the file binds its absence');
+  writeFileSync(path.join(directory, 'timing.json'), '{"source":"estimated"}');
+  assert.equal(qaInputBindings(directory).files['timing.json'], sha256('{"source":"estimated"}'));
 });
 
 test('an opening is not said twice, and two Shorts of a series are not built alike', () => {
