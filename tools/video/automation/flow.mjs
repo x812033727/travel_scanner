@@ -492,9 +492,10 @@ const CHOICE_PROBLEM = /written for another language choice|the language choice 
  * thumbnail of a locale the choice does not have, which the package check fails with "run
  * package again". Read the way that check reads it but without hashing final.mp4, so it costs
  * little to ask every round. False without a package (it is written later, with the choice) or
- * without a choice. A metadata.json that cannot be parsed, or whose fields are not of the types
- * package writes (a caption list that is a number, say), leaves the answer unknown: false too,
- * so the language round goes on instead of ending `auto` in an exception.
+ * without a choice. A metadata.json that cannot be parsed, or is not an object, leaves the answer
+ * unknown: false too, so the language round goes on instead of ending `auto` in an exception. A
+ * field not of the type package writes (a caption list that is a number, say) fails its own item
+ * by name, which is no choice problem, so only the choice decides.
  */
 function packageChoiceStale(workdir) {
   const upload = path.join(workdir, UPLOAD_DIR);
