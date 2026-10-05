@@ -4,6 +4,7 @@ import test from "node:test";
 import {
   buildCues,
   checkCues,
+  cuePieces,
   displayText,
   fits,
   joinPieces,
@@ -273,4 +274,45 @@ test("SRT and WebVTT use their own timestamp separators, and SRT reads back", ()
   assert.equal(srt, "1\n00:00:00,000 --> 00:00:01,500\n第一句\n\n2\n01:02:03,004 --> 01:02:04,000\n兩行\n字幕\n");
   assert.match(toVtt(cues), /^WEBVTT\n\n00:00:00\.000 --> 00:00:01\.500\n第一句\n/);
   assert.deepEqual(parseSrt(`﻿${srt.replace(/\n/g, "\r\n")}`), cues);
+});
+
+test("a number is never cut from its unit, by a cue or by a line break, in Chinese, English and Korean", () => {
+  // Cues one line wide, so every number would be the cheapest place to cut.
+  const narrow = (rules, maxChars) => ({ ...rules, maxChars, maxLines: 1 });
+  const chinese = splitText("記憶體頻寬每秒 300 GB，功耗 15.8%，售價 US$0.135，跑 5 分鐘，2026 年 9 月 24 日量的，比去年快 3 倍。", narrow(zh, 6));
+  for (const kept of ["300 GB", "15.8%", "US$0.135", "5 分鐘", "2026 年", "9 月", "24 日", "3 倍"]) {
+    assert.ok(chinese.some((piece) => piece.includes(kept)), `${kept} stays whole in ${chinese.join(" / ")}`);
+  }
+  assert.equal(chinese.join("").replace(/\s/g, ""), "記憶體頻寬每秒300GB，功耗15.8%，售價US$0.135，跑5分鐘，2026年9月24日量的，比去年快3倍。");
+  const english = splitText("The card moves 300 GB a second and costs US$0.135 for 5 minutes of use, about 15.8% of the bill.", narrow(en, 12));
+  for (const kept of ["300 GB", "US$0.135", "5 minutes", "15.8%"]) assert.ok(english.some((piece) => piece.includes(kept)), `${kept}: ${english.join(" / ")}`);
+  const korean = splitText("이 카드는 초당 300 GB 를 옮기고 5 분 동안 15.8% 를 씁니다.", narrow(LOCALE_RULES.ko, 10));
+  for (const kept of ["300 GB", "5 분", "15.8%"]) assert.ok(korean.some((piece) => piece.includes(kept)), `${kept}: ${korean.join(" / ")}`);
+  // The line break inside a cue keeps them together too.
+  assert.equal(wrapCue("頻寬每秒 300 GB 很快", { ...zh, maxChars: 6 }), "頻寬每秒\n300 GB 很快");
+  assert.equal(wrapCue("It moves 300 GB fast", { ...en, maxChars: 12 }), "It moves\n300 GB fast");
+  // A Latin suffix with no space, a bare number and a version are the whole tokens they always were.
+  const tokens = splitText("甲 24fps 乙 2026 丙 4.0 丁", narrow(zh, 3));
+  for (const kept of ["24fps", "2026", "4.0"]) assert.ok(tokens.some((piece) => piece.includes(kept)), `${kept}: ${tokens.join(" / ")}`);
+  assert.equal(tokens.join("").replace(/\s/g, ""), "甲24fps乙2026丙4.0丁");
+});
+
+test("a cut at a sentence end beats one at a comma unless the pieces become lopsided, and a comma still beats mid-clause", () => {
+  // 12 + 5 + 17 characters: the even cut is at the comma, the sentence end leaves 12 and 22.
+  const text = "這是第一句話已經說完了。然後再說，第二句比較長一直講到結尾才停下來。";
+  assert.deepEqual(splitText(text, zh), ["這是第一句話已經說完了。", "然後再說，第二句比較長一直講到結尾才停下來。"]);
+  // Sentence ends that would leave a scrap lose to the comma in the middle.
+  assert.deepEqual(splitText("第一句話說完了。第二句比較長一點，中間有個逗號，然後結束。第三句也在這裡。", zh), ["第一句話說完了。第二句比較長一點，", "中間有個逗號，然後結束。第三句也在這裡。"]);
+  // No sentence end inside: the comma wins over cutting mid-clause, as before.
+  assert.deepEqual(splitText("지난달에 겨우 모델 하나 정했는데, 이번 달엔 또 바뀌었습니다.", LOCALE_RULES.ko), ["지난달에 겨우 모델 하나 정했는데,", "이번 달엔 또 바뀌었습니다."]);
+});
+
+test("cuePieces is what a translator is shown as the narration's cue boundaries: the pieces before timing, one for a short line", () => {
+  assert.deepEqual(cuePieces("今天用三個問題幫你決定。", "zh-TW"), ["今天用三個問題幫你決定。"]);
+  const long = "每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？還是應該先想清楚自己要它做什麼，再決定要不要換？";
+  const pieces = cuePieces(long, "zh-TW");
+  assert.deepEqual(pieces, ["每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？", "還是應該先想清楚自己要它做什麼，再決定要不要換？"]);
+  assert.deepEqual(pieces, splitText(long, zh), "the same cut buildCues makes");
+  assert.equal(cuePieces("Every week a new model takes the top of the leaderboard, so do you switch every week?", "en").length, 2);
+  assert.throws(() => cuePieces("x", "fr"), /no caption rules for locale fr/);
 });

@@ -10,6 +10,7 @@ import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
+import { cuePieces } from "../core/captions.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
@@ -2253,9 +2254,13 @@ test("an English-narrated video the owner gives no other language gets zh-TW onc
 // 2026-10-02: the translator and the caption reviewer were told about the thumbnail's words
 // (2026-10-01-video-worker-translator-fills-the-thumbnail); the shortening and rewording passes
 // hold no thumbnail and kept their bytes.
+// 2026-10-05: the translator was told the three passes (draft, critique, final), the glossary and
+// the cue boundaries, and the caption reviewer the glossary and the boundaries
+// (2026-10-05-caption-translation-chain-upgrade, prompts.test.mjs pins the sections); the
+// shortening and rewording passes kept their bytes.
 const ZH_TW_PROMPT_SHA256 = {
-  translator: "1e3a4cfb65dc7bf33b98d85777a7db4d6fcd55dd50c2e3526ee7d60eb124f1dd",
-  caption_reviewer: "a0ad349317f907def87ce0cfbf260a2f9a14168910eee6fad5dece8f8b40aad5",
+  translator: "effa201292e5589a8341501689969bfcc076a7c85be8afe9de1f4cc35833b957",
+  caption_reviewer: "a46eca4ef3d8535d7f2c22723f8597ddd90f74db0ef81b78c0da03b3d70f1749",
   "translator:shorten": "eb96a8de3915d89bed631a93463d0b22344f44e442b5465abe57fcc06b1d6ac6",
   "translator:reword": "627d9729bd01b766d025ed82b9edde4dc5fd4f051372a14f8e1bad3b88a9eb6a",
 };
@@ -3498,4 +3503,44 @@ test("two lanes move two different videos at once, and only the first lane start
 test("VIDEO_WORKER_LANES is read as 1 to 3 lanes, 1 when unset or unreadable", async () => {
   const { laneCount } = await import("./cli.mjs");
   assert.deepEqual(["", "0", "x", "1", "2", "3", "8"].map((value) => laneCount(value ? { VIDEO_WORKER_LANES: value } : {})), [1, 1, 1, 1, 2, 3, 3]);
+});
+
+test("the translator's and the caption reviewer's requests carry the sheet's glossary and the narration's cue boundaries beside a worksheet without them, whole and in units", async () => {
+  const script = fixture();
+  const long = "每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？還是應該先想清楚自己要它做什麼，再決定要不要換？";
+  script.scenes[0].lines[0].text = long;
+  const glossary = { terms: ["AI"], sources: ["範例來源"] };
+  const boundaries = { k7p2: cuePieces(long, "zh-TW") };
+  assert.equal(boundaries.k7p2.length, 2, "the first line is cut into two cues");
+
+  const whole = await finishedVideo({ script });
+  whole.choose({ en: { metadata: true, captions: true, dub: false } });
+  assert.match(await whole.step(), /^chatgpt-ads-off: en metadata and captions translated and reviewed$/);
+  const calls = [...whole.calls("translator"), ...whole.calls("caption_reviewer")];
+  assert.equal(calls.length, 2);
+  for (const call of calls) {
+    assert.deepEqual([call.payload.glossary, call.payload.boundaries], [glossary, boundaries], `${call.stage} reads the glossary and every boundary`);
+    assert.equal("glossary" in call.payload.worksheet || "boundaries" in call.payload.worksheet, false, `${call.stage}: the worksheet holds the entries, the request the context`);
+    assert.equal(call.payload.worksheet.lines.length, 7, "and every line");
+  }
+  const translation = readJson(path.join(whole.box.root, "docs", "videos", whole.slug, "i18n", "en.json"));
+  assert.equal("glossary" in translation || "boundaries" in translation, false, "the merge writes neither");
+
+  // In units: the metadata unit reads the glossary and no boundaries, a lines unit only its own lines'.
+  const units = await finishedVideo({ script });
+  units.automation.unitLimits = { lines: 3, chars: 2400 };
+  units.choose({ en: { metadata: true, captions: true, dub: false } });
+  for (let round = 1; round <= 3; round++) assert.match(await units.step(), new RegExp(`^chatgpt-ads-off: en part ${round} of 4 translated and reviewed; the next part follows$`));
+  assert.match(await units.step(), /^chatgpt-ads-off: en metadata and captions translated and reviewed$/);
+  for (const stage of ["translator", "caption_reviewer"]) {
+    const [metadata, ...lines] = units.calls(stage);
+    assert.deepEqual([metadata.payload.parts, metadata.payload.glossary, "boundaries" in metadata.payload], [["metadata"], glossary, false], `${stage}: the metadata unit`);
+    assert.equal(lines.length, 3);
+    for (const call of lines) {
+      const ids = call.payload.worksheet.lines.map((line) => line.id);
+      assert.deepEqual(call.payload.glossary, glossary, stage);
+      assert.deepEqual(call.payload.boundaries, ids.includes("k7p2") ? boundaries : {}, `${stage}: a lines unit's own boundaries (${ids.join(", ")})`);
+      assert.equal("glossary" in call.payload.worksheet || "boundaries" in call.payload.worksheet, false);
+    }
+  }
 });
