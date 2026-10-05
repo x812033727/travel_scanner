@@ -10,7 +10,7 @@ import { lookHash } from "../core/drama.mjs";
 import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
 import { readLedger } from "./ledger.mjs";
 import { keepSheets } from "./series-store.mjs";
-import { readCache } from "./cache.mjs";
+import { readCache, readJobs } from "./cache.mjs";
 import { bestTake, chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, entryStands, keyframeChecks, keyframeRubric, MAX_KEYFRAME_TAKES, shotPrompt, STYLE_PLATE_ID, STYLE_PLATE_PROMPT } from "./keyframes.mjs";
 import { DEFAULT_SHEET_PROMPT, MAX_LOOK_ROUNDS, optionKey, parseChoice, sheetPrompt, suggestedOf } from "./look.mjs";
 import { imagePrice, statusProblem } from "./stages.mjs";
@@ -48,8 +48,10 @@ const STATUS = {
 /**
  * A media server that draws a picture per request (its bytes depend on the prompt and seed) and
  * answers the judge from `verdicts`: a function of (kind, context, count so far) → { overall, passed, problems }.
+ * `refuse(request)` returning `{ code, detail }` makes that image request a failed job instead,
+ * as the server reports a provider's refusal.
  */
-function mediaSite({ verdicts, status = STATUS, actualImageModel = () => status.image.model }) {
+function mediaSite({ verdicts, status = STATUS, actualImageModel = () => status.image.model, refuse = () => null }) {
   const state = { images: [], judges: [], uploads: [], files: new Map() };
   const fetchImpl = async (url, init = {}) => {
     const { pathname, search } = new URL(url);
@@ -59,6 +61,8 @@ function mediaSite({ verdicts, status = STATUS, actualImageModel = () => status.
     if (init.method === "POST" && route === "images") {
       const request = JSON.parse(init.body);
       state.images.push(request);
+      const refusal = refuse(request);
+      if (refusal) return Response.json({ id: `img${state.images.length}`, status: "failed", file: null, usd_estimate: 0, error: refusal, retry_after_seconds: 0 }, { status: 200 });
       // Like the server, choose from the series, independently of the global status response,
       // and price a 2K picture with the slides choice's 2K price.
       const model = actualImageModel();
@@ -330,6 +334,133 @@ test("a shot that never passes is left for a prompt fix after the last take", as
   assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.ok, stopped.out.stderr);
   assert.match(stopped.out.stdout, /stopped by the STOP file/);
   assert.equal(manifestOf(box, "keyframes").shots.farewell, undefined);
+});
+
+// What the server reports when the provider refuses a request outright, as MiniMax did a prompt
+// over its length limit on 2026-10-04: a failed job, refused again for every seed of that prompt.
+const TOO_LONG = { code: "video_media_upstream_invalid", detail: "prompt length must be less than 1500" };
+
+test("a shot every seed is refused for waits for a prompt fix with the refusal, while the drawn shots go on to the sheet and the look-alike check", async () => {
+  const box = sandbox("fixture-story", "story");
+  let refusing = true;
+  const site = mediaSite({
+    verdicts: () => ({ overall: 8, passed: true }),
+    // The thumbnail's shot is refused every time, the shot before it on its first seed only.
+    refuse: (request) => (refusing && (request.shot_id === "sand-lines" || (request.shot_id === "number-owner" && request.seed === 1)) ? TOO_LONG : null),
+  });
+  const sheets = [];
+  const hashed = [];
+  const extra = {
+    openRenderer: async () => ({ sheet: async (html) => (sheets.push(html), PNG(`sheet ${sheets.length}`)), close: async () => {} }),
+    hashImage: async (file) => (hashed.push(path.basename(file)), SHA(readFileSync(file)).slice(0, 16)),
+  };
+  const shots = ["--shot", "checkout-beep,number-owner,sand-lines"];
+  const run = context(box, site.fetchImpl, extra);
+  assert.equal(await main(["keyframes", "--slug", box.slug, ...shots], run.ctx), EXIT.lint, run.out.stderr);
+  assert.doesNotMatch(run.out.stderr, /TypeError|argument must be/, "the refusal is the result, not an exception");
+  assert.deepEqual(site.state.images.map((request) => [request.shot_id, request.seed]), [["checkout-beep", 1], ["number-owner", 1], ["number-owner", 2], ["sand-lines", 1], ["sand-lines", 2], ["sand-lines", 3]]);
+  assert.equal(site.state.judges.length, 2, "a refused seed has no picture to judge");
+  const manifest = manifestOf(box, "keyframes");
+  assert.deepEqual(manifest.shots["sand-lines"], { takes: [], needs_review: true, problems: [`no take could be generated: ${TOO_LONG.detail}`] });
+  assert.equal(manifest.shots["checkout-beep"].file, "keyframes/checkout-beep-1.png");
+  assert.equal(manifest.shots["checkout-beep"].needs_review, false);
+  assert.equal(manifest.shots["number-owner"].file, "keyframes/number-owner-2.png", "a refused seed is followed by the next");
+  assert.deepEqual(manifest.shots["number-owner"].takes.map((take) => take.seed), [2]);
+  assert.equal(manifest.shots["number-owner"].needs_review, false);
+  assert.equal(manifest.thumbnail_source, null, "the thumbnail's shot has no picture yet");
+  assert.deepEqual(hashed, ["checkout-beep-1.png", "number-owner-2.png"], "only pictures are compared");
+  assert.deepEqual(manifest.contact_sheets, ["keyframes/contact-sheet.png"]);
+  assert.equal(sheets.length, 1);
+  assert.equal(sheets[0].match(/<figure>/g).length, 2);
+  assert.match(sheets[0], /fixture-story：分鏡 2 鏡/);
+  assert.doesNotMatch(sheets[0], /sand-lines/);
+  assert.match(run.out.stdout, /2 keyframes generated in \d+ s; 2 shots drawn;/);
+  assert.match(run.out.stdout, /sand-lines seed 3: sand-lines: prompt length must be less than 1500; trying another seed\n/);
+  assert.match(run.out.stdout, /ERROR sand-lines: no take could be generated: prompt length must be less than 1500\n/);
+  assert.match(run.out.stdout, /fix the prompts of sand-lines and run keyframes again/);
+  // Each refusal is booked as a failed job at no cost, and none is left waiting to be picked up.
+  const images = readLedger(box.workdir).entries.filter((entry) => entry.kind === "image");
+  assert.deepEqual(images.map((entry) => [entry.id, entry.status, entry.error ?? null]), [
+    ["checkout-beep", "ready", null],
+    ["number-owner", "failed", TOO_LONG.code],
+    ["number-owner", "ready", null],
+    ["sand-lines", "failed", TOO_LONG.code],
+    ["sand-lines", "failed", TOO_LONG.code],
+    ["sand-lines", "failed", TOO_LONG.code],
+  ]);
+  assert.ok(images.filter((entry) => entry.status === "failed").every((entry) => entry.cost_usd === 0));
+  assert.deepEqual(readJobs(box.workdir).jobs, {});
+
+  // Once the prompt is one the provider takes, the rerun draws that shot alone and keeps the rest.
+  refusing = false;
+  const fixed = context(box, site.fetchImpl, extra);
+  assert.equal(await main(["keyframes", "--slug", box.slug, ...shots], fixed.ctx), EXIT.ok, fixed.out.stderr);
+  assert.match(fixed.out.stdout, /checkout-beep: kept \(judge 8\/10\)\n/);
+  assert.match(fixed.out.stdout, /number-owner: kept \(judge 8\/10\)\n/);
+  assert.deepEqual(site.state.images.slice(6).map((request) => [request.shot_id, request.seed]), [["sand-lines", 1]]);
+  const after = manifestOf(box, "keyframes");
+  assert.equal(after.shots["sand-lines"].file, "keyframes/sand-lines-1.png");
+  assert.equal(after.shots["sand-lines"].needs_review, false);
+  assert.equal(after.shots["sand-lines"].problems, undefined);
+  assert.equal(after.shots["number-owner"].sha256, manifest.shots["number-owner"].sha256);
+  assert.equal(after.thumbnail_source, "keyframes/sand-lines-1.png");
+  assert.equal(sheets.at(-1).match(/<figure>/g).length, 3);
+});
+
+test("a run where every seed of every shot is refused ends on the refusals, with no picture checked and no contact sheet", async () => {
+  const box = sandbox("fixture-story", "story");
+  // A sheet left by an earlier storyboard shows pictures that are not this manifest's.
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "keyframes", "contact-sheet.png"), PNG("an earlier storyboard"));
+  const BLOCKED = { code: "video_media_rejected", detail: "output blocked by the content filter" };
+  const site = mediaSite({
+    verdicts: () => ({ overall: 8, passed: true }),
+    refuse: (request) => (request.shot_id === "first-scan" && request.seed > 1 ? BLOCKED : TOO_LONG),
+  });
+  let renderers = 0;
+  let hashes = 0;
+  const run = context(box, site.fetchImpl, {
+    openRenderer: async () => {
+      renderers += 1;
+      return { sheet: async () => PNG("sheet"), close: async () => {} };
+    },
+    hashImage: async () => {
+      hashes += 1;
+      return "0".repeat(16);
+    },
+  });
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "sand-lines,first-scan"], run.ctx), EXIT.lint, run.out.stderr);
+  assert.doesNotMatch(run.out.stderr, /TypeError|argument must be/);
+  const manifest = manifestOf(box, "keyframes");
+  assert.deepEqual(manifest.shots, {
+    "sand-lines": { takes: [], needs_review: true, problems: [`no take could be generated: ${TOO_LONG.detail}`] },
+    "first-scan": { takes: [], needs_review: true, problems: [`no take could be generated: ${TOO_LONG.detail}`, `no take could be generated: ${BLOCKED.detail}`] },
+  });
+  assert.equal(site.state.images.length, 6);
+  assert.equal(site.state.judges.length, 0);
+  assert.equal(hashes, 0, "no picture to compare");
+  assert.equal(renderers, 0, "no sheet is drawn for a storyboard with no picture");
+  assert.deepEqual(manifest.duplicates, []);
+  assert.equal(manifest.thumbnail_source, null);
+  assert.equal(manifest.contact_sheet, null);
+  assert.deepEqual(manifest.contact_sheets, []);
+  assert.ok(!existsSync(path.join(box.workdir, "keyframes", "contact-sheet.png")), "the earlier storyboard's sheet is gone");
+  const ledger = readLedger(box.workdir);
+  assert.deepEqual(ledger.entries.map((entry) => [entry.id, entry.status, entry.error]), [
+    ["sand-lines", "failed", TOO_LONG.code],
+    ["sand-lines", "failed", TOO_LONG.code],
+    ["sand-lines", "failed", TOO_LONG.code],
+    ["first-scan", "failed", TOO_LONG.code],
+    ["first-scan", "failed", BLOCKED.code],
+    ["first-scan", "failed", BLOCKED.code],
+  ]);
+  assert.equal(ledger.totals.usd, 0, "a refused job costs nothing");
+  assert.deepEqual(readJobs(box.workdir).jobs, {});
+  assert.match(run.out.stdout, /0 keyframes generated in \d+ s; 0 shots drawn;/);
+  assert.match(run.out.stdout, /ERROR sand-lines: no take could be generated: prompt length must be less than 1500\n/);
+  assert.match(run.out.stdout, /ERROR first-scan: no take could be generated: prompt length must be less than 1500; no take could be generated: output blocked by the content filter\n/);
+  assert.match(run.out.stdout, /fix the prompts of sand-lines, first-scan and run keyframes again/);
+  assert.deepEqual(contactSheetPages([]), [], "a storyboard with no picture has no page");
 });
 
 test("a cap interruption before the end frame retains the judged start picture and resumes only the missing end", async () => {

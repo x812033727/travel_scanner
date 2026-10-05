@@ -13,13 +13,13 @@
 | 片段 Veo 3.1 Lite | US$0.08／秒；4／6／8 秒，1080p 只有 8（720p 貼需求選 4／6／8）；0 張參考圖；原生音訊必開；720p 官方價 0.05 但預算照 1080p 記。adapter 省略 Lite 不支援的 `negativePrompt`，把完整 `look.negative` 接成主提示的 `Avoid: …`（歷史失敗與修正在 `error-catalogue.md` #23） | catalog.py（2026-10-01 核對）；`apps/api/app/video_media/jobs.py:278-286`、`300-306` | 價目、模型限制 |
 | 片段 Veo 3.1 | US$0.40／秒；4／6／8，1080p 只有 8；3 張參考圖；id 仍 `preview` | catalog.py | 價目、模型限制 |
 | 片段 Veo 3.1 Fast | US$0.12／秒；同上 | catalog.py | 價目 |
-| 片段 MiniMax H3 | US$0.13／秒（2K 的價；768P 官方 0.08，catalog 不分）；catalog 秒數 4–10、官方頁 4–15；9 張參考圖 | catalog.py；`platform.minimax.io` 價目頁（2026-10-03 讀） | 價目、模型限制 |
+| 片段 MiniMax H3 | US$0.13／秒（2K 的價；768P 官方 0.08，catalog 不分）；catalog 秒數 4–10、官方頁 4–15；**0 張參考圖**：官方的「參考圖 ≤ 9」只在參考生影片，跟首格互斥，而我們的片段一定帶首格，所以 adapter 走 v2 圖生影片只送首格（與末格），帶參考圖的請求伺服器回 422、`clips` 不送 | catalog.py 的 `reference_images`；`platform.minimax.io` 價目頁（2026-10-03 讀）與 v2 建立文件（2026-10-05 讀）；`apps/api/app/video_media/providers/minimax.py` 的 `_v2_body`；`jobs.py` 的 `_request_fields`；`tools/video/media/clips.mjs` 的 `refs` | 價目、模型限制、工具規定 |
 | 音樂 Lyria 3.5 | US$0.08／首；10–600 秒；SynthID | catalog.py；`apps/api/app/video_media/schemas.py:80` | 價目 |
 | judge | US$0.01／次，記帳定值；真實成本是 Gemini 視覺模型的 token（DRAMA.md 寫「依 token」） | catalog.py `JUDGE_USD_PER_CALL`；`tools/video/media/stages.mjs:28` | 工具規定 |
 | 一次 take 的上限 | 設定圖 `MAX_LOOK_ROUNDS` 2（`look.candidates` 2–4，lint，預設 3；`look --candidates` 1–6 只改這一次跑的張數，不進 `video.json`）；關鍵影格 `MAX_KEYFRAME_TAKES` 3（`--takes` 1–6）；素材 `MAX_CLIP_TAKES` 2（`--takes` 1–5） | `look.mjs:21`、`drama.mjs:107,282-283`、`keyframes.mjs:24,136`、`clips.mjs:36,164` | 工具規定 |
 | 買的秒數 | `veo-3.1*` 配 **1080p** 固定 8；其他（含 Lite 720p）`clamp(ceil(frames/30), 4, 10)` 往上貼齊模型秒數表 | `clips.mjs:59-67`（`MIN_CLIP_SECONDS` 4、`MAX_CLIP_SECONDS` 10） | 工具規定 |
 | 鏡長估法 | 每個字 0.24 秒（`DEFAULT_CPM` 250）、每句 0.3 秒、每鏡 0.7 秒；`action_seconds` 直接是秒數 | `tools/video/core/timeline.mjs:19-22`；`estimateTimeline` | 工具規定 |
-| 參考圖 | 每張圖或片段最多 4 張（catalog 寫 Gemini 3 Pro Image 收 14，伺服器只放 4）；每張 ≤ 7 MB、合計 ≤ 20 MB | `schemas.py:32`、`keyframes.mjs:26`、`clips.mjs:39`；`jobs.py:74-75` | 工具規定 |
+| 參考圖 | 每張圖或片段最多 4 張（catalog 寫 Gemini 3 Pro Image 收 14，伺服器只放 4）；catalog 寫 0 的片段模型（Veo 3.1 Lite、MiniMax H3）一張都不收：`clips` 不送，伺服器回 422 `video_media_model_not_allowed`；每張 ≤ 7 MB、合計 ≤ 20 MB | `schemas.py:32`（`MAX_REFERENCES`）、`keyframes.mjs:28`、`clips.mjs:43`；`jobs.py:278-281`（`reference_images == 0`）；`jobs.py:74-75`（`MAX_REFERENCE_BYTES`、`MAX_REFERENCES_TOTAL_BYTES`） | 工具規定 |
 | 提示詞 | prompt ≤ 4000、negative ≤ 1000；judge 題目 ≤ 400、檔案 ≤ 6、題目 ≤ 12 | `schemas.py:33,52-53,120-131` | 工具規定 |
 | 月預算 | 片段 3,000 秒、圖 1,500、judge 3,000、音樂 60；單支 US$200；`max_retakes_per_shot` 2；`judge_min_score` 7 | `apps/api/app/video_automation/models.py:86-93` | 工具規定 |
 | 每小時 | 圖送出 240、片段與音樂送出 60、輪詢 900、judge 360、上傳 600、下載 600 | `apps/api/app/video_media/admin_api.py:73-78` | 工具規定 |

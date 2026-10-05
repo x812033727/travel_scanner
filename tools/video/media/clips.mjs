@@ -356,9 +356,9 @@ export async function run(command, args, ctx) {
       }
       references.push({ sha256: continues.sha256, role: "previous_frame" });
     }
-    // Lite supports first/last frames, not referenceImages. Keep the sheets for
-    // judging below; its approved first frame already carries the face identity.
-    const refs = /^veo-?3\.1-lite/.test(status.clip.model) ? [] : references.slice(0, MAX_REFERENCES);
+    // A model the catalog gives 0 reference images (Lite; H3, none beside a first frame) gets none: the server
+    // refuses them. Keep the sheets for judging below; the approved first frame already carries the face.
+    const refs = model?.reference_images === 0 || /^veo-?3\.1-lite/.test(status.clip.model) ? [] : references.slice(0, MAX_REFERENCES);
     const prompt = clipPrompt(scene, look, characters);
     const neighbours = shotScenes(doc);
     const at = neighbours.findIndex((each) => each.id === scene.id);

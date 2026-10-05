@@ -4,7 +4,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { createHash, randomBytes } from "node:crypto";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
@@ -2718,7 +2718,9 @@ const HEARD_WRONG = "第一個問題是，你要他做什麼工作。";
  * A tutorial taken to the narration gate with one retake allowed: the fake check-audio flags
  * x9fe while `stillFlagged(video)` says so, writing check.json and check-flags.json as the real
  * one does; the listener's rewrite pass answers `rewrite(body)`. tts writes a synthetic
- * narration for the script as it stands; review-push and review-pull are the real commands.
+ * narration for the script as it stands; review-push and review-pull are the real commands. A
+ * command named in `stops` ("tts", "tts --redo", "check-audio") is ended once by a STOP file:
+ * exit 6, nothing written.
  */
 async function narrationGate({ rewrite, stillFlagged }) {
   const box = sandbox();
@@ -2735,9 +2737,11 @@ async function narrationGate({ rewrite, stillFlagged }) {
   const lexicon = () => readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
   const runs = [];
   const redos = [];
+  const stops = new Set();
   ctx.runCommand = async (command, runCtx) => {
     runs.push(command.join(" "));
     const [name] = command;
+    if (stops.delete(command.includes("--redo") ? `${name} --redo` : name)) return { code: EXIT.incomplete, out: "stopped by the STOP file; rerun to continue" };
     const current = existsSync(docFile) ? readJson(docFile) : null;
     const write = (file, data) => atomicWrite(path.join(workdir, file), JSON.stringify(data));
     if (name === "tts") {
@@ -2770,6 +2774,7 @@ async function narrationGate({ rewrite, stillFlagged }) {
     workdir,
     runs,
     redos,
+    stops,
     state: () => automatedVideos(box.work)[0],
     reviews: (gate) => site.reviewsOf(slug).filter((review) => review.gate === gate),
     lineText: () => readJson(docFile).scenes[1].lines[0].text,
@@ -2851,6 +2856,38 @@ test("two rewrite rounds that Jev still flags send the narration to the owner wi
   assert.equal(await gate.automation.step(), null, "the owner decides");
 });
 
+test("a STOP file that ends tts, a retake or check-audio defers the video to the next run; it is never blocked, reported or sent for review", async () => {
+  let flagged = true;
+  const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => flagged });
+  const synthesized = () => gate.site.calls.reports.filter((report) => report.stage === "narration synthesized").length;
+  const reportedBefore = synthesized();
+  assert.equal(reportedBefore, 1);
+  const unblocked = () => assert.notEqual(gate.state().status, "blocked", gate.state().blocked);
+
+  // tts stopped before the narration was assembled: the step is not reported done.
+  rmSync(path.join(gate.workdir, "timeline.json"));
+  gate.stops.add("tts");
+  assert.match(await gate.automation.step(), /: tts stopped \(stopped by the STOP file; rerun to continue\); the next run continues$/);
+  unblocked();
+  assert.equal(synthesized(), reportedBefore);
+  assert.match(await gate.automation.step(), /narration synthesized/);
+
+  // The check flags x9fe and the retake is stopped: nothing is checked again or sent.
+  gate.stops.add("tts --redo");
+  assert.match(await gate.automation.step(), /: the retake stopped \(stopped by the STOP file; rerun to continue\); the next run continues$/);
+  unblocked();
+  // The next check is stopped before every line is heard.
+  flagged = false;
+  gate.stops.add("check-audio");
+  assert.match(await gate.automation.step(), /: narration check stopped \(stopped by the STOP file; rerun to continue\); the next run continues$/);
+  unblocked();
+  assert.deepEqual(gate.reviews("audio"), [], "nothing was sent for review");
+  assert.equal(gate.runs.filter((run) => run.startsWith("review-push")).length, 0);
+
+  assert.match(await gate.automation.step(), /narration checked \(Jev passed every line\) and sent for review$/);
+  assert.equal(gate.reviews("audio").length, 1);
+});
+
 test("a narration check that stops for the owner, a paid judgement whose answer was lost included, blocks the video and sends nothing for review; a service that is down still waits for the next run", async () => {
   const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => false });
   const judgement = await lostSpeechLine((options) => judgeLines({ ...options, lines: [{ id: "x9fe", intended: ORIGINAL, spoken_form: ORIGINAL, heard: HEARD_WRONG }] }));
@@ -2884,6 +2921,29 @@ test("a narration check that stops for the owner, a paid judgement whose answer 
   retry("0b9a8c7d-6e5f-4a3b-9c2d-1e0f9a8b7c6d");
   assert.match(await gate.automation.step(), /narration checked \(Jev passed every line\) and sent for review$/);
   assert.equal(gate.reviews("audio").length, 1);
+});
+
+test("a STOP file that ends a dub's check defers the language to the next run instead of blocking the video", async () => {
+  const video = await finishedVideo();
+  video.choose({ ja: { metadata: true, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: ja metadata and captions translated and reviewed$/);
+  const play = video.ctx.runCommand;
+  let checks = 0;
+  video.ctx.runCommand = async (command, runCtx) => {
+    if (command[0] === "check-audio" && command.includes("--locale") && checks++ === 0) {
+      video.runs.push(command.join(" "));
+      return { code: EXIT.incomplete, out: "STOP found; transcripts so far are saved, rerun to continue" };
+    }
+    return play(command, runCtx);
+  };
+  assert.match(await video.step(), /^chatgpt-ads-off: ja dub check stopped \(STOP found; transcripts so far are saved, rerun to continue\); the next run continues$/);
+  assert.notEqual(video.state().status, "blocked", video.state().blocked);
+  assert.equal(existsSync(path.join(video.workdir, "dubs", "ja", "skipped.json")), false, "the language is not given up");
+  assert.equal(video.state().languages.ja.check_stopped, true);
+  // The track is current, but it was never heard to the end: the next run checks it again.
+  assert.match(await video.step(), /^chatgpt-ads-off: ja dub made/);
+  assert.equal(checks, 2);
+  assert.equal(video.state().languages?.ja, undefined);
 });
 
 test("illustrated slides: settle gives the channel look and the owner's music and effects; an explainer one-off keeps no cast whatever the writer returned", async () => {
