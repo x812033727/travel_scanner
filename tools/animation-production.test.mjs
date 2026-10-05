@@ -29,6 +29,7 @@ import {
   hailuoSeconds,
   KLING_CREDITS_PER_SECOND,
   klingSeconds,
+  ledgerView,
   MAX_CLIP_TAKES,
   MAX_KEYFRAME_TAKES,
   MAX_LOOK_ROUNDS,
@@ -36,6 +37,7 @@ import {
   MAX_CLIP_SECONDS,
   PLANS,
   PRICES,
+  renderEstimate,
   secondsBought,
 } from "../.agents/skills/animation-production/scripts/episode_estimate.mjs";
 import { EXIT, JUDGE_CALLS_PER_HOUR, JUDGE_MONTHLY_BUDGET, KEYFRAME_MIN_PSNR, MAX_RUBRIC_QUESTION, preflight } from "../.agents/skills/animation-production/scripts/drama_preflight.mjs";
@@ -458,6 +460,59 @@ test("episode_estimate.mjs exits 0, 1 with --strict on a failed verdict, 2 on a 
   assert.equal(run("episode_estimate.mjs", path.join(ROOT, "nowhere.json")).status, 2);
   assert.equal(run("episode_estimate.mjs").status, 2);
   assert.equal(run("episode_estimate.mjs", DRAMA_FIXTURE_FILE, "--tier", "gold").status, 2);
+});
+
+test("the estimate takes the ledger's spent and reserved money off the cap: --workdir or --ledger, the remainder in the verdict, and a ledger from before reservations", () => {
+  const { box, doc } = prepared();
+  const at = "2026-10-05T09:00:00.000Z";
+  const entries = [
+    { at, stage: "look", kind: "image", id: "jingwei", provider: "gemini", model: "gemini-3-pro-image", key: "k1", job_id: "img-1", seconds: 0, cost_usd: 0.134, status: "ready" },
+    { at, stage: "look", kind: "judge", id: "jingwei", provider: "gemini", model: "gemini-judge", key: null, cost_usd: 0.01, status: "judged" },
+    // A clip submitted by a run that died before the job came back: held at list price, not yet reconciled.
+    { at, stage: "clips", kind: "clip", id: "opening", provider: "gemini", model: "gemini-omni-1.1-flash", key: "k-held", seconds: 4, cost_usd: 0.6, status: "reserved" },
+  ];
+  mkdirSync(path.join(box.workdir, "media"), { recursive: true });
+  const file = path.join(box.workdir, "media", "ledger.json");
+  writeFileSync(file, JSON.stringify({ entries, totals: {} }));
+  const plain = estimateEpisode(doc);
+  assert.equal(plain.ledger, null);
+  assert.deepEqual([plain.verdict.spent_usd, plain.verdict.reserved_usd, plain.verdict.remaining_usd], [0, 0, 200]);
+  const view = ledgerView({ file, entries }, 5);
+  assert.deepEqual(view, { file, entries: 3, spent_usd: 0.144, reserved_usd: 0.6, reservations: 1, committed_usd: 0.744, remaining_usd: 4.256, reserved: [{ stage: "clips", kind: "clip", id: "opening", key: "k-held", cost_usd: 0.6, at }] });
+  // Worst case under the cap but over what is left: the verdict fails and says what the ledger holds.
+  const cap = Math.round((plain.totals.usd_cap + 0.5) * 100) / 100;
+  const report = estimateEpisode(doc, { cap, ledger: { file, entries } });
+  assert.equal(report.ledger.remaining_usd, Math.round((cap - 0.744) * 10000) / 10000);
+  assert.deepEqual([report.verdict.spent_usd, report.verdict.reserved_usd, report.verdict.remaining_usd], [0.144, 0.6, report.ledger.remaining_usd]);
+  assert.equal(report.verdict.ok, false);
+  assert.match(report.verdict.problems[0], /超過每影片上限 US\$[\d.]+ 扣掉帳本已花 US\$0\.14 與預留 US\$0\.60 後剩下的 US\$/);
+  assert.equal(estimateEpisode(doc, { cap, ledger: { file, entries: entries.slice(0, 2) } }).verdict.ok, true, "without the hold the same cap passes");
+  // A ledger from before reservations existed holds nothing.
+  const old = ledgerView({ entries: entries.slice(0, 2), totals: { usd: 0.144, images: 1, clip_seconds: 0, music: 0, judge_calls: 1 } }, 1);
+  assert.deepEqual([old.spent_usd, old.reserved_usd, old.reservations, old.remaining_usd, old.reserved], [0.144, 0, 0, 0.856, []]);
+  const rendered = renderEstimate(report, "video.json");
+  assert.match(rendered, /帳本：已花 US\$0\.14、預留 US\$0\.60（1 筆送出未對帳）；上限 US\$[\d.]+ 還剩 US\$/);
+  assert.match(rendered, /預留 clips\/opening US\$0\.60（clip，2026-10-05T09:00:00\.000Z）：送出後沒對帳/);
+  assert.match(rendered, /裁定：不過/);
+  assert.match(renderEstimate(estimateEpisode(doc, { ledger: { file, entries } }), "video.json"), /裁定：過：最壞 US\$[\d.]+ ≤ 上限 US\$200\.00 剩下的 US\$199\.26（已花 US\$0\.14 ＋ 預留 US\$0\.60）/);
+  assert.match(renderEstimate(plain, "video.json"), /帳本：沒給 --workdir／--ledger，當作還沒花錢；上限 US\$200\.00 全可用/);
+  // The CLI: --workdir finds media/ledger.json, --ledger names it, a named file must exist, and an unpaid work directory reads as empty.
+  const script = path.join(box.dir, "video.json");
+  const strict = run("episode_estimate.mjs", script, "--workdir", box.workdir, "--cap", String(cap), "--strict");
+  assert.equal(strict.status, 1, strict.stderr);
+  assert.match(strict.stdout, /帳本：已花 US\$0\.14、預留 US\$0\.60（1 筆送出未對帳）/);
+  assert.match(strict.stdout, /裁定：不過/);
+  assert.equal(run("episode_estimate.mjs", script, "--workdir", box.workdir, "--cap", String(cap + 1), "--strict").status, 0);
+  const json = run("episode_estimate.mjs", script, "--ledger", file, "--json");
+  assert.equal(json.status, 0, json.stderr);
+  const parsed = JSON.parse(json.stdout);
+  assert.deepEqual([parsed.ledger.file, parsed.ledger.spent_usd, parsed.ledger.reserved_usd, parsed.verdict.remaining_usd], [file, 0.144, 0.6, 199.256]);
+  const missing = run("episode_estimate.mjs", script, "--ledger", path.join(box.workdir, "nowhere.json"));
+  assert.equal(missing.status, 2);
+  assert.match(missing.stderr, /nowhere\.json does not exist/);
+  const unpaid = run("episode_estimate.mjs", script, "--workdir", path.join(box.work, "other"), "--json");
+  assert.equal(unpaid.status, 0, unpaid.stderr);
+  assert.deepEqual([JSON.parse(unpaid.stdout).ledger.entries, JSON.parse(unpaid.stdout).ledger.spent_usd], [0, 0]);
 });
 
 test("preflight names the gate the next stage will refuse on, with the stage's exit code, and exits 1", async () => {
