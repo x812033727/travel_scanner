@@ -5,10 +5,10 @@
 | 檢查 | 怎麼看 | 正常 |
 | --- | --- | --- |
 | 部署腳本 | `DEPLOY_EXIT=0`，log 尾端「3/3 健康」 | 失敗會自動回滾，log 會寫 |
-| migration | `docker compose -f docker-compose.prod.yml exec -T api alembic current` | 等於 repo 最新的 revision |
+| migration | `docker compose -f docker-compose.prod.yml exec -T api alembic current` | 等於 api 映像裡唯一的 head（同一個容器的 `alembic heads`） |
 | 內部健康 | `curl 127.0.0.1:8090/health`、`/ready`；web `curl -sI 127.0.0.1:8091/` | 200；公開的 `/api/travel/health` 是 404，不是故障 |
 | 公開站 | `curl -s -o /dev/null -w '%{http_code} %{time_total}s' https://mokaair.com/zh-TW` | 200、小於 1 秒；`/` 回 307 到 `/zh-TW` 是正常的語系導向 |
-| 容器 | `docker compose -f docker-compose.prod.yml --profile hotspots --profile news --profile video ps -a` | 13 個 Up（postgres、redis 加十一個應用容器；`migrate` 是 `Exited (0)`），應用映像標籤 `:local`（分階段驅動部署的會是 `:<sha>`） |
+| 容器 | `docker compose -f docker-compose.prod.yml --profile hotspots --profile news --profile video ps -a` | compose 檔三個 profile 的每個長駐服務都 Up（2026-10-05 是 14 個：postgres、redis 加十二個應用容器），一次性的 `migrate`（`restart: "no"`）是 `Exited (0)`；應用映像標籤 `:local`（分階段驅動部署的會是 `:<sha>`） |
 | 新程式真的在跑 | 抓一個這次 diff 加進的字串：`curl -s <頁面> \| grep -c '<字串>'` | 有；內容包的改動要等匯入才會出現 |
 
 抓公開頁面要慢慢來：邊緣層對頁面有 5 r/s 的限流，自己的驗證迴圈跑太快會拿到 429，那是自己的節奏，不是站台壞了。腳本一律循序、每次至少 1 秒。
@@ -27,18 +27,24 @@ grep -E '^(PASS|FAIL|TOTAL|SHA |WARN)' "$TMP/verify.out"
 
 - `plink -m` 不傳位置參數，所以 `EXPECTED_SHA` 用 sed 填進檔案；用 `-m` 而不是 `bash -s` 餵 stdin，因為腳本裡有 `docker compose exec -T`，
   它會把 stdin 剩下的腳本吃掉。
-- 腳本頂端的 `ALEMBIC_HEAD`、`UP_COUNT`（13＝postgres、redis 加十一個應用容器，三個 profile 全開）是 2026-10-03 的值；有新 migration 或新服務時先改，
-  不然那一項會 FAIL 並印出實際值。
+- 只有 `EXPECTED_SHA` 要填，其他期待值都在主機上推出來，新服務、新 migration 都不用改腳本：該 Up 的服務是 live HEAD 的 compose 檔
+  `config --services`（三個 profile 全開）減掉 `restart: "no"` 的一次性服務（目前只有 `migrate`，它要 `Exited (0)`），跟實際 Up 的按名字比，
+  不合時印 `missing_up=`／`extra_up=`；compose 檔多出腳本沒開的 profile 時印 `WARN`。alembic 的期待值是 api 映像自己的 `alembic heads`，
+  要剛好一個 head、`alembic current` 等於它；映像漏了 migration 是舊映像，由 `containers-rebuilt-this-deploy` 抓。
+  （2026-10-05 以前這兩個值寫死在腳本頂端，加了 `video-ai-worker` 之後誤報 `up=14/13`，每次有 migration 都要先 sed。）
 - 共用的檢查只證明「部署成功、沒壞」。**這次 diff 的新程式有沒有在跑，要自己加檢查**，放在腳本的 `EXTRA CHECKS` 區：每一項抓一個改動之後才存在的字串或行為，
   而且舊映像跑起來一定是相反的結果。三個樣式都在腳本的註解裡：api 容器用 `python -c` 讀檔或 import 後印值（`/app/app/...`）；
   video-worker 用 `grep -c` 或 `node --input-type=module -e` import 新函式呼叫一次（程式在 `/opt/mokaair`）；web 容器是 busybox，
   讀 `/app/apps/web/package.json` 的 standalone 複本證明套件版本。非 ASCII 用 `chr()`／`String.fromCharCode` 寫成碼點，傳輸不會弄壞。
 - 大一點的部署，檢查先用 Workflow 設計再跑：兩個提案代理各從一個角度列檢查（「新程式真的在跑」、「部署成功且沒退步」），
   兩個反駁代理各審一個角度（主機與分類器安全：唯讀、不碰 .env、不 grep 部署腳本名、公開站不超過兩次；證明力：字串是不是改動前就有、容器路徑對不對、
-  期待值對不對），一個整合代理把活下來的寫成一支腳本；本機先 `bash -n`、把寫死的期待值對照 worktree 核一次（compose 服務數、migration head、
-  字串在舊版有沒有）再送主機。10-03 這樣做出 16 個提案、活 15 個，一次全過。
+  期待值對不對），一個整合代理把活下來的寫成一支腳本；本機先 `bash -n`、把 EXTRA 檢查寫死的期待值對照 worktree 核一次（字串在舊版有沒有、
+  計數對不對）再送主機。10-03 這樣做出 16 個提案、活 15 個，一次全過。
 - 讀結果：`with_rollback_lines` 不是 0 時看 SHA 有沒有對上，部署腳本的「health 3/3 ok」在回滾之後也會印（2026-09-29）；
   `knock_failed=1` 是工人剛起來 api 還沒好，預期中；公開站 502 而容器全 Up，是重建的 8 秒空窗，再跑一次。
+- `auto_exit4_drama_off` 不是 0：站主在後台影片自動化設定把 AI 漫劇關了，每一輪都撞到待執行的漫劇工作，API 回「AI 漫劇已停用，
+  待執行的工作不會送出模型請求」（`video_ai_drama_disabled`），`auto` 以 4 結束。這是開關的設計，不算失敗（2026-10-05 部署前後都是這樣）；
+  `auto_exited` 只數其他的退出，包括前一行（Shorts 敲門的行不算）不是這句話的 4。
 
 ## 大功能上線後的三個問題
 
@@ -52,7 +58,7 @@ CI 綠、部署成功、首頁 200，功能仍可能一半是啞的。2026-09-07
 
 ## 部署的副作用
 
-- 每次部署重建全部應用容器，約 8 秒 502；AdSense 爬蟲曾撞到。
+- 每次部署重建全部應用容器，只有文件的 commit 也一樣（原因見 `runbook.md` 的「為什麼每次都全部重建」），約 8 秒 502；AdSense 爬蟲曾撞到。video-ai-worker 與 video-worker 也會重啟，所以部署前要看預檢的 `paid video work`（`preflight.md`）。
 - hotspot-collector 重啟的第一輪會重算當天排行：部署前核准的景點幾分鐘內就公開，部署後核准的等最多 6 小時，所以重新部署也是讓新核准提早上線的方法。代價是那一輪也跑 guide backfill，吃 YouTube 與 Brave 額度；一天六次部署曾把兩個供應商都打到 quota_exhausted。
 - 內容包沒匯入就不上線：未發布的 slug 回 200 的 noindex「這篇文章目前看不到」頁，不是 404。
 

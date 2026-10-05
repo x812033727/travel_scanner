@@ -266,6 +266,103 @@ function shortsFile(request, response, file) {
   response.end(body.subarray(start, end + 1));
 }
 
+// Synthetic VPS uploader settings for admin-video-vps-settings.spec.ts, so the settings card's
+// reads, saves and connection tests cross the real Next BFF. It answers the way
+// apps/api/app/video_youtube/vps_settings.py does wherever the card can tell: the secret is
+// write-only, unknown fields are a 422, a stale expected_updated_at is a 409, a save clears the
+// last test, and a test answers 200 with its own verdict and a new revision. The background
+// status and job count are never stored: like the API's model_copy(update=details), only the
+// answer to a test that reached the service carries them, and every read or save says null.
+// Each test names its own store (?fixture=) so the desktop and mobile projects never share a
+// revision. Nothing is forwarded anywhere: no service, channel or secret here is real, and a
+// connection test "reaches" only the channel below.
+const vpsSettingsPath = "/api/v1/admin/video-youtube/vps/settings";
+const vpsChannelPattern = /^UC[A-Za-z0-9_-]{22}$/;
+const vpsReportedChannel = "UCSyntheticFixture000001";
+const vpsFields = new Set(["expected_updated_at", "enabled", "url", "channel_id", "desktop_url", "secret"]);
+const vpsStores = new Map();
+const vpsStamp = (store) => new Date(Date.UTC(2026, 9, 5, 0, 0, ++store.revision)).toISOString().replace(".000Z", "Z");
+const vpsView = (store) => ({
+  enabled: store.enabled, url: store.url, channel_id: store.channel_id, desktop_url: store.desktop_url,
+  secret_set: Boolean(store.secret),
+  configured: Boolean(store.url && vpsChannelPattern.test(store.channel_id) && store.secret),
+  source: store.updated_at ? "database" : "none", updated_at: store.updated_at,
+  last_test_status: store.last_test_status, last_test_message: store.last_test_message, last_tested_at: store.last_tested_at,
+  browser_status: null, active_jobs: null,
+});
+
+function vpsRefuse(response, status, code, detail) {
+  response.statusCode = status;
+  response.end(JSON.stringify({ status, code, detail }));
+}
+
+function vpsSave(store, response, text) {
+  let payload;
+  try { payload = JSON.parse(text); } catch { payload = null; }
+  if (!payload || typeof payload !== "object" || Array.isArray(payload) || !("expected_updated_at" in payload)
+    || Object.keys(payload).some((key) => !vpsFields.has(key))) {
+    return vpsRefuse(response, 422, "validation_error", "Synthetic fixture: unexpected settings fields");
+  }
+  if (payload.expected_updated_at !== store.updated_at) {
+    return vpsRefuse(response, 409, "vps_settings_conflict", "設定已被其他管理員更新，請重新載入後再儲存");
+  }
+  const next = { ...store };
+  for (const field of ["url", "channel_id", "desktop_url"]) {
+    if (field in payload) next[field] = String(payload[field] ?? "").trim();
+  }
+  if (typeof payload.enabled === "boolean") next.enabled = payload.enabled;
+  next.url = next.url.replace(/\/+$/, "");
+  if (next.channel_id && !vpsChannelPattern.test(next.channel_id)) {
+    return vpsRefuse(response, 422, "vps_channel_invalid", "請填入有效的 YouTube 頻道 ID");
+  }
+  const supplied = typeof payload.secret === "string" ? payload.secret.trim() : "";
+  if (supplied && (supplied.length < 32 || supplied.length > 2048 || /\s/.test(supplied))) {
+    return vpsRefuse(response, 422, "vps_secret_invalid", "服務密鑰須為 32 至 2048 個非空白字元");
+  }
+  if (next.url !== store.url && store.secret && !supplied) {
+    return vpsRefuse(response, 422, "vps_secret_required", "更換服務網址時，請重新填入該服務的密鑰");
+  }
+  Object.assign(store, next, {
+    secret: supplied || store.secret,
+    last_test_status: null, last_test_message: null, last_tested_at: null,
+  });
+  store.updated_at = vpsStamp(store);
+  response.end(JSON.stringify(vpsView(store)));
+}
+
+function serveVpsSettingsFixture(request, response, url) {
+  const test = url.pathname === `${vpsSettingsPath}/test`;
+  const key = url.searchParams.get("fixture");
+  if ((url.pathname !== vpsSettingsPath && !test) || !key) return false;
+  if (!vpsStores.has(key)) {
+    vpsStores.set(key, {
+      revision: 0, enabled: false, url: "", channel_id: "", desktop_url: "", secret: "", updated_at: null,
+      last_test_status: null, last_test_message: null, last_tested_at: null,
+    });
+  }
+  const store = vpsStores.get(key);
+  if (request.method === "GET" && !test) {
+    response.end(JSON.stringify(vpsView(store)));
+  } else if (request.method === "POST" && test) {
+    const configured = store.enabled && vpsView(store).configured;
+    const reached = configured && store.channel_id === vpsReportedChannel;
+    Object.assign(store, {
+      last_test_status: reached ? "success" : "failed",
+      last_test_message: !configured ? "請先啟用並儲存 VPS 上傳服務設定"
+        : reached ? "服務連線成功且頻道設定相符；Google 登入請到遠端桌面確認" : "VPS 設定的頻道與網站不同，請先核對",
+    });
+    store.last_tested_at = store.updated_at = vpsStamp(store);
+    response.end(JSON.stringify({ ...vpsView(store), ...(reached ? { browser_status: "idle", active_jobs: 0 } : {}) }));
+  } else if (request.method === "PUT" && !test) {
+    const chunks = [];
+    request.on("data", (chunk) => chunks.push(chunk));
+    request.on("end", () => vpsSave(store, response, Buffer.concat(chunks).toString("utf8")));
+  } else {
+    vpsRefuse(response, 405, "method_not_allowed", "Synthetic fixture: method not allowed");
+  }
+  return true;
+}
+
 function serveShortsFixture(request, response, url) {
   if (request.method !== "GET") return false;
   const path = url.pathname;
@@ -399,6 +496,7 @@ const server = createServer((request, response) => {
   }
   const requestUrl = new URL(request.url || "/", "http://127.0.0.1:8000");
   if (serveShortsFixture(request, response, requestUrl)) return;
+  if (serveVpsSettingsFixture(request, response, requestUrl)) return;
   if (request.method === "GET" && requestUrl.pathname === "/api/v1/community/status") {
     response.end(JSON.stringify({ enabled: false, posting_enabled: false, comments_enabled: false,
       messaging_enabled: false, translation_enabled: false, pet_reports_enabled: false }));
