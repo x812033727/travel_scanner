@@ -382,7 +382,7 @@
 
 **外觀基準：**Original 2D anime drowned-ghost master in ornate puppet-theatre style: emaciated old man of unknown age, long waterlogged grey-green hair plastered to the skull with no crown, bloated pale skin, one eye milky and one eye sharp, lips dark. Tattered layered robe that was once a magnificent black-and-gold court garment, embroidery faded to shadows, seaweed and rope still knotted around the sleeves. Lies face-down in the surf until he speaks.
 
-### 燕迴「斷浪」（yan-hui）
+### 燕迴「赤纓」（yan-hui）
 
 三宗盟客卿刀客，不做退隱支線的配角。
 
