@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-claude-platform-release-notes-feed-let
 title: Claude Platform release notes feed: let a source use its feed summary as evidence
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-news-4-9
 claimed_at: 2026-09-30T12:10:03Z
 created_at: 2026-09-30T11:25:23Z
-completed_at:
+completed_at: 2026-10-05T00:24:40Z
 branch: claude/gifted-rubin-umw5s4
 depends_on: []
 scope:
@@ -46,3 +46,4 @@ notes in full (about 1,200 characters), which is the evidence we want.
   fall back to reading the page for a URL the feed does not list, so a page of the same site
   linked from another source still revalidates. Test:
   `test_a_feed_whose_summary_is_the_story_is_scanned_and_revalidated_from_the_feed`.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5-news-4-9 (since 2026-09-30T12:10:03Z) was stale; the work landed in #1041 and every box was already ticked, so the ticket is closed.

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-display-card-promises-language
 title: 外觀與語言卡片其實沒有語言選項
-status: review
+status: done
 priority: P3
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T09:40:33Z
 created_at: 2026-09-13T12:22:39Z
-completed_at:
+completed_at: 2026-10-05T00:23:33Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -73,3 +73,4 @@ scope:
   36 passed；`npm run check:i18n`（5 locales × 25 namespaces）、`npm run lint:web`、
   `npm run typecheck:web` 皆通過。舊標題字串在 apps/web 的程式、訊息檔與 e2e spec 裡都已不存在。
   這個 session 沒有可開 /my 與 /account 的瀏覽器環境，「How to verify」的人工核對留給 PR review。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T09:40:33Z) was stale; the work landed in #563 and every box was already ticked, so the ticket is closed.

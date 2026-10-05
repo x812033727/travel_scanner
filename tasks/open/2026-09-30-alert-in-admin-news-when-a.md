@@ -1,11 +1,11 @@
 ---
 id: 2026-09-30-alert-in-admin-news-when-a
 title: Alert in /admin/news when a source keeps skipping the same entries
-status: review
+status: open
 priority: P2
 area: api
-owner: claude-opus-5-5-news-4-9
-claimed_at: 2026-09-30T12:15:05Z
+owner:
+claimed_at:
 created_at: 2026-09-30T10:34:33Z
 completed_at:
 branch: claude/gifted-rubin-umw5s4
@@ -46,3 +46,4 @@ Scanner tests with a fetcher that refuses one entry on consecutive scans.
   sources first. The week cap keeps a refused back catalogue (OpenAI's feed keeps ~100 entries)
   from marking the source stuck for good. Undated HTML listings cannot be judged this way.
 - Not done: a count on the dashboard and a daily summary to the owner.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5-news-4-9 (since 2026-09-30T12:15:05Z) was stale and is released so it stops locking its scope. Landed: #1041. Still open: Optional: daily summary to the owner via existing notification channel; Notes: dashboard count not done.

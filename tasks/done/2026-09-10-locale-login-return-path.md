@@ -1,13 +1,13 @@
 ---
 id: 2026-09-10-locale-login-return-path
 title: Normalize locale-prefixed login return paths
-status: review
+status: done
 priority: P2
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T09:33:04Z
 created_at: 2026-09-10T06:02:16Z
-completed_at:
+completed_at: 2026-10-05T00:23:37Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -83,3 +83,4 @@ to keep the user's transport-settings fix narrowly scoped.
   `npm run typecheck:web` and `npm run check:i18n` clean. The browser login from "How to
   verify" was not run in this session (no isolated browser or account here); the exact
   arguments reaching the router are pinned instead.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T09:33:04Z) was stale; the work landed in #563 and every box was already ticked, so the ticket is closed.

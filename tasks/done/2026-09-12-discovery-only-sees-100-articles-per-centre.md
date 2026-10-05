@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-discovery-only-sees-100-articles-per-centre
 title: Wikimedia discovery can only ever see the 100 nearest articles within 10 km of each city centre
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T08:43:12Z
 created_at: 2026-09-12T14:00:00Z
-completed_at:
+completed_at: 2026-10-05T00:23:49Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -110,3 +110,4 @@ a cap on how many *new* pending rows a single pass may add.
   client keeps its identifying User-Agent and retry/backoff. After the next pass, compare
   `added` in the collector report and spot-check Kabuki-za (Q1132766) and Tokyo International
   Forum (Q1141234) under NRT.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T08:43:12Z) was stale; the work landed in #561 and every box was already ticked, so the ticket is closed.

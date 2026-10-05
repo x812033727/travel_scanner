@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-drama-preloaded-document-approval-order
 title: Guard approval order for preloaded drama review documents
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-ten-drama
 claimed_at: 2026-09-28T14:38:38Z
 created_at: 2026-09-28T14:01:50Z
-completed_at:
+completed_at: 2026-10-05T00:24:28Z
 branch: codex/ten-drama-audit-fixes
 depends_on: []
 scope:
@@ -190,3 +190,4 @@ asyncio.run(main())
   task's scope. Reviewer: claude-fable-5-1.
 - Run `npm run test:web` as a whole before the pull request, not only the files
   the change touched: `DocPanel` is also rendered by the video page.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-ten-drama (since 2026-09-28T14:38:38Z) was stale; the work landed in #978 and every box was already ticked, so the ticket is closed.

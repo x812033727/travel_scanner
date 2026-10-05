@@ -1,13 +1,13 @@
 ---
 id: 2026-09-22-localize-taoyuan-airport-departure-guide-in
 title: Localize Taoyuan airport departure guide in four missing languages
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-gpt6-batch014
 claimed_at: 2026-09-22T03:43:42Z
 created_at: 2026-09-22T03:43:35Z
-completed_at:
+completed_at: 2026-10-05T00:24:02Z
 branch: codex/article-localization-batch-014-taoyuan
 depends_on: []
 scope:
@@ -62,3 +62,4 @@ eligibility conditions, citations, media credits, and article metadata.
   no outside text, overlaps, or card overflow in any locale.
 - The production `ContentBlocks` mobile layout uses a 1180px diagram in a horizontally scrollable
   390px viewport with 20px wrapper padding; left, center, and right captures cover the full image.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-gpt6-batch014 (since 2026-09-22T03:43:42Z) was stale; the work landed in #650 and every box was already ticked, so the ticket is closed.

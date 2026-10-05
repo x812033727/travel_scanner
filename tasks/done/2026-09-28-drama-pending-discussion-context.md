@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-drama-pending-discussion-context
 title: Provide prerequisite context when discussing preloaded drama documents
-status: review
+status: done
 priority: P2
 area: api
 owner: codex-ten-drama
 claimed_at: 2026-09-28T15:03:46Z
 created_at: 2026-09-28T14:17:08Z
-completed_at:
+completed_at: 2026-10-05T00:24:24Z
 branch: codex/ten-drama-audit-fixes
 depends_on: []
 scope:
@@ -101,3 +101,4 @@ chosen parent versions/status labels; retain the approved-only production tests.
 - Worker/tool suite: 578 pass, 1 existing Windows/Bash environment skip.
 - The branch is ready for code review; it has not been merged or deployed. The
   independent production/browser follow-up remains with its existing owner.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-ten-drama (since 2026-09-28T15:03:46Z) was stale; the work landed in #978 and every box was already ticked, so the ticket is closed.

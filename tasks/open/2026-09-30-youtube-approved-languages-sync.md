@@ -1,11 +1,11 @@
 ---
 id: 2026-09-30-youtube-approved-languages-sync
 title: YouTube sync reads stale publish package after approved languages
-status: review
+status: open
 priority: P1
 area: api
-owner: codex-approved-languages-sync
-claimed_at: 2026-09-30T13:24:06Z
+owner:
+claimed_at:
 created_at: 2026-09-30T10:35:02Z
 completed_at:
 branch: codex/youtube-approved-languages-sync-20260930
@@ -126,3 +126,4 @@ existing refusal to update already public videos; manual backfill is a separate 
   `2026-09-30-clarify-first-upload-of-pending-dubbed`. Pending reviews are not
   silently treated as approved to work around that workflow boundary.
 - No merge, deployment, live retry, Google login, video upload or paid generation.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-approved-languages-sync (since 2026-09-30T13:24:06Z) was stale and is released so it stops locking its scope. Landed: #1048 #1101. Still open: Sync includes current approved language metadata/captions end to end (needs the producer side); Apply source-bound producer contract and validate the real submission-to-upload path; Integrate producer contract in tools/video/review/sync.mjs and its test.

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-video-length-floor-only
 title: No upper bound on a video's length: only the eight-minute floor is enforced
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-length
 claimed_at: 2026-10-03T18:08:20Z
 created_at: 2026-10-03T17:11:05Z
-completed_at:
+completed_at: 2026-10-05T00:24:46Z
 branch: claude/video-length-floor-only
 depends_on: []
 scope:
@@ -138,3 +138,4 @@ old wording, look for an administrator copy override of
   (`EXPLAINER_MAX_MINUTES`); that is the request's target, not a cut's limit, and is out of
   scope here.
 - The prompts take effect for stages run after a deploy of the worker.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1-length (since 2026-10-03T18:08:20Z) was stale; the work landed in #1186 and every box was already ticked, so the ticket is closed.

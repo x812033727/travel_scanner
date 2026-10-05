@@ -1,11 +1,11 @@
 ---
 id: 2026-09-30-news-duplicate-check-treats-a-new
 title: News duplicate check treats a new model version as a duplicate of the previous one
-status: review
+status: open
 priority: P2
 area: api
-owner: claude-opus-5-5-news-4-9
-claimed_at: 2026-09-30T12:13:26Z
+owner:
+claimed_at:
 created_at: 2026-09-30T10:34:33Z
 completed_at:
 branch: claude/gifted-rubin-umw5s4
@@ -47,3 +47,4 @@ judged a duplicate or "uncertain" and wait in manual review. Not yet observed on
   (`test_duplicate_question_tells_jev_a_new_model_version_is_a_new_event`).
 - Left: the host count of `news_duplicate_uncertain` holds of the last 30 days that were new
   versions (needs the host database).
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5-news-4-9 (since 2026-09-30T12:13:26Z) was stale and is released so it stops locking its scope. Landed: #1041. Still open: Host count of news_duplicate_uncertain holds in last 30 days that were new versions.

@@ -1,11 +1,11 @@
 ---
 id: 2026-09-24-attach-a-second-evidence-source-to
 title: Attach a second evidence source to first-party news candidates
-status: review
+status: open
 priority: P2
 area: api
-owner: claude-opus-5-5-news-4-9
-claimed_at: 2026-09-30T11:25:43Z
+owner:
+claimed_at:
 created_at: 2026-09-24T00:27:44Z
 completed_at:
 branch: claude/gifted-rubin-umw5s4
@@ -69,3 +69,4 @@ cd apps/api && uv run pytest tests/test_news_automation.py -q
 - Not done: attaching a second site to a candidate that already drafts (only useful for
   automatic publication without a first-party page), and matching by event rather than
   by link (Jev). Left open for that; release it if nobody wants them.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5-news-4-9 (since 2026-09-30T11:25:43Z) was stale and is released so it stops locking its scope. Landed: #1041. Still open: Attach a later evidence page that links to, or covers the same event as, an open first-party candidate, then r; Idempotent attach that follows the allow-list and SSRF rules and never attaches lead_only pages; Attach, update evidence_hash and requeue, with scanner tests.

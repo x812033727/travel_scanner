@@ -1,11 +1,11 @@
 ---
 id: 2026-09-19-foreign-place-reason
 title: foreign_place 的三種誤判形狀：短片假名國名、含國名的地標名與別名缺口、reason 寫錯國家
-status: review
+status: open
 priority: P3
 area: api
-owner: claude-fable-5-1
-claimed_at: 2026-09-19T09:37:37Z
+owner:
+claimed_at:
 created_at: 2026-09-19T08:51:01Z
 completed_at:
 branch: claude/travel-scanner-pr-552-rpq36m
@@ -99,3 +99,4 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-f
 
 預期：拿掉 `--skip-id` 再跑一次時，`6da32c2d` 與 `c4706b00` 都不再出現在 findings 裡（兩者現在靠規則本身
 就是 keep）；已退的 115 筆不會回來（退件不在掃描的 statuses 裡）。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T09:37:37Z) was stale and is released so it stops locking its scope. Landed: #563. Still open: Re-run guides-foreign-place-scan (list only) on the host to confirm the keep-list rows no longer match.

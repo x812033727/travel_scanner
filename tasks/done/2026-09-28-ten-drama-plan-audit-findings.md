@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-ten-drama-plan-audit-findings
 title: Resolve ten drama planning audit findings before production
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-ten-drama
 claimed_at: 2026-09-28T14:34:44Z
 created_at: 2026-09-28T13:59:39Z
-completed_at:
+completed_at: 2026-10-05T00:24:36Z
 branch: codex/ten-drama-audit-fixes
 depends_on: []
 scope:
@@ -304,3 +304,4 @@ and can be overturned one by one; the repair is recorded in
   needs a human check before release; voices are proposals nobody has heard;
   looks and voices that change by episode wait for the pipeline ticket.
 - Production is unchanged.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-ten-drama (since 2026-09-28T14:34:44Z) was stale; the work landed in #978 and every box was already ticked, so the ticket is closed.

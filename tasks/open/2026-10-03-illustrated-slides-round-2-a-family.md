@@ -1,11 +1,11 @@
 ---
 id: 2026-10-03-illustrated-slides-round-2-a-family
 title: Illustrated slides round 2: a family of print looks, a style anchor per video, a sharper craft judge and lighting variety
-status: review
+status: open
 priority: P2
 area: tools
-owner: claude-fable-5-1-illustration-round2
-claimed_at: 2026-10-03T08:25:14Z
+owner:
+claimed_at:
 created_at: 2026-10-03T08:24:18Z
 completed_at:
 branch: claude/video-production-tutorial-optimization-f5d1bc
@@ -93,3 +93,4 @@ node tools/video/long-form/cli.mjs check
 - The plate is not on the contact sheet (`review/sync.mjs` pages by shot count).
 - Seven slides videos on production are blocked with "pictures for slides videos are off" from
   before the owner re-saved the settings; the owner has to retry them on /admin/videos.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1-illustration-round2 (since 2026-10-03T08:25:14Z) was stale and is released so it stops locking its scope. Landed: #1172. Still open: Long-form receipt rebound by an independent reviewer (docs/videos/long-form/review.*); After deploy: first illustrated video's plate and contact sheet, craft scores, cost.

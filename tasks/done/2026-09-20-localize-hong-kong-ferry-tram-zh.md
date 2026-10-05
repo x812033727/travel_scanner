@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-localize-hong-kong-ferry-tram-zh
 title: Localize Hong Kong ferry/tram zh-TW diagram labels
-status: review
+status: done
 priority: P2
 area: web
 owner: codex-batch005-author
 claimed_at: 2026-09-20T12:41:20Z
 created_at: 2026-09-20T12:34:47Z
-completed_at:
+completed_at: 2026-10-05T00:23:58Z
 branch: codex/hong-kong-zh-svg-localization
 depends_on: []
 scope:
@@ -75,3 +75,4 @@ PR #597 is open for independent review at commit `45cef541` (before this
 task-status follow-up). `npm run check:tasks` passed with only warnings from
 unrelated older tasks, and `git diff --check` passed. Keep this task in review
 until the PR is merged; no production asset or article document was changed.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-batch005-author (since 2026-09-20T12:41:20Z) was stale; the work landed in #597 and every box was already ticked, so the ticket is closed.
