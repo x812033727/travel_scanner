@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-visitjeju-hidden-payload-recheck
 title: Recheck live articles quoting Visit Jeju after its site redesign
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-visitjeju-recheck
 claimed_at: 2026-10-05T07:01:51Z
 created_at: 2026-09-20T13:05:00Z
-completed_at:
+completed_at: 2026-10-05T07:45:05Z
 branch: claude/visitjeju-recheck
 depends_on: []
 scope:
