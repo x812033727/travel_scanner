@@ -39,8 +39,10 @@ from app.video_media.jobs import (
     submit_job,
 )
 from app.video_media.judge import JudgeError, judge
+from app.video_media.locate import LocateError, locate
 from app.video_media.models import VideoMediaJob
 from app.video_media.schemas import (
+    MAX_LOCATE_LABELS,
     MAX_PROMPT_CHARS,
     MAX_REFERENCES,
     ChoiceView,
@@ -49,6 +51,8 @@ from app.video_media.schemas import (
     JobOut,
     JudgeIn,
     JudgeOut,
+    LocateIn,
+    LocateOut,
     MediaStatus,
     MusicJobIn,
     StoreView,
@@ -69,7 +73,8 @@ Session = Annotated[AsyncSession, Depends(get_session)]
 # per-video cap (max_usd_per_video). A brand story asks for about 120 pictures and a judge call
 # for each (docs/videos/STORY.md §上限與成本), so pictures and judge calls may run faster than
 # before; clips and music keep the lower limit they share, since a vendor takes minutes over
-# each of them anyway and a clip is the expensive kind.
+# each of them anyway and a clip is the expensive kind. A locate call (subject boxes for one
+# picture) is a judge call with another question: it shares the judge limit and meter.
 IMAGE_SUBMITS_PER_HOUR = 240
 SUBMITS_PER_HOUR = 60
 POLLS_PER_HOUR = 900
@@ -101,7 +106,7 @@ async def _context(session: AsyncSession, token_id: UUID | None) -> MediaContext
     )
 
 
-def _refused(error: MediaJobFailed | JudgeError) -> AppError:
+def _refused(error: MediaJobFailed | JudgeError | LocateError) -> AppError:
     return AppError(
         error.status,
         error.code,
@@ -119,6 +124,17 @@ async def _limit(name: str, tool_id: UUID, limit: int) -> None:
     await enforce_named_rate_limit(
         f"video_media_{name}", str(tool_id), limit=limit, window_seconds=3600
     )
+
+
+async def _book_judge_call(ctx: MediaContext) -> None:
+    """One unit of this month's judge-call budget for a judge or locate call, or 429."""
+    if not await meter.reserve_judge_call(ctx.redis, ctx.row):
+        budget = meter.budget_of(ctx.row, meter.JUDGE_CALLS)
+        raise AppError(
+            429,
+            "video_media_budget_exhausted",
+            f"本月的 judge 次數預算（{budget} 次）用完了；可到影片審核的設定分頁調高",
+        )
 
 
 async def _prune_sometimes(ctx: MediaContext) -> None:
@@ -182,6 +198,9 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
             # The judge takes fault checks (JudgeCriterion.cost); a tool asks that way only
             # of a server that says so.
             "judge_checks": 1,
+            # POST /locate exists and takes this many labels; a tool asks for subject boxes only
+            # of a server that says so.
+            "locate_labels": MAX_LOCATE_LABELS,
             "max_file_bytes": media.video_media_max_file_bytes,
         },
     )
@@ -295,17 +314,28 @@ async def judge_media(payload: JudgeIn, tool: VideoTool, session: Session) -> Ju
     """Gemini scores a sheet, a keyframe or a clip against the rubric; one call, one budget unit."""
     await _limit("judge", tool.id, JUDGES_PER_HOUR)
     ctx = await _context(session, tool.id)
-    budget = meter.budget_of(ctx.row, meter.JUDGE_CALLS)
-    if not await meter.reserve(ctx.redis, meter.JUDGE_CALLS, 1, budget):
-        raise AppError(
-            429,
-            "video_media_budget_exhausted",
-            f"本月的 judge 次數預算（{budget} 次）用完了；可到影片審核的設定分頁調高",
-        )
+    await _book_judge_call(ctx)
     # The owner's threshold is the floor: a call may ask for a higher bar, never a lower one.
     min_score = max(payload.min_score or 0, ctx.row.judge_min_score)
     try:
         return await judge(ctx.runtime, ctx.media, ctx.store, payload, min_score)
     except JudgeError as error:
-        await meter.release(ctx.redis, meter.JUDGE_CALLS, 1)
+        await meter.release_judge_call(ctx.redis)
+        raise _refused(error) from error
+
+
+@media_router.post("/locate", response_model=LocateOut)
+async def locate_subjects(payload: LocateIn, tool: VideoTool, session: Session) -> LocateOut:
+    """Gemini boxes the subjects of a stored picture; booked like a judge call, one budget unit.
+
+    A clip is refused with ``video_media_invalid`` before the budget is touched again: the tool
+    extracts a frame and uploads it first.
+    """
+    await _limit("judge", tool.id, JUDGES_PER_HOUR)
+    ctx = await _context(session, tool.id)
+    await _book_judge_call(ctx)
+    try:
+        return await locate(ctx.runtime, ctx.media, ctx.store, payload)
+    except LocateError as error:
+        await meter.release_judge_call(ctx.redis)
         raise _refused(error) from error

@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import json
 from datetime import datetime
-from typing import Any, Literal
+from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
@@ -34,6 +34,7 @@ MAX_PROMPT_CHARS = 4000
 MAX_CONTEXT_BYTES = 64 * 1024
 MAX_JUDGE_FILES = 6
 MAX_RUBRIC = 12
+MAX_LOCATE_LABELS = 8
 
 
 class StrictModel(BaseModel):
@@ -167,6 +168,37 @@ class JudgeOut(StrictModel):
     passed: bool
     problems: list[str]
     notes: str
+    model: str
+
+
+class LocateIn(StrictModel):
+    """One stored picture to find the subjects in (``POST /locate``, locate.py)."""
+
+    slug: str = Field(pattern=SLUG_PATTERN)
+    # A png, jpeg or webp in the media store; a clip is refused, the tool extracts a frame first.
+    sha256: str = Field(pattern=SHA256_PATTERN)
+    # What to look for, in the words of the script ("Jingwei", "the boat"); without any, the
+    # characters in the picture and its most prominent subjects.
+    labels: list[Annotated[str, Field(min_length=1, max_length=80)]] = Field(
+        default_factory=list, max_length=MAX_LOCATE_LABELS
+    )
+
+
+class SubjectBox(StrictModel):
+    label: str
+    # [ymin, xmin, ymax, xmax] on a 0-1000 scale of the picture's height and width, the way
+    # Gemini answers ``box_2d``; multiply by height / 1000 and width / 1000 for pixels.
+    box: tuple[int, int, int, int]
+    # 0-1, how sure the model is that the box holds that subject.
+    score: float
+
+
+class LocateOut(StrictModel):
+    # In the order the model gave them; empty when nothing asked for is in the picture.
+    boxes: list[SubjectBox]
+    # The stored picture's pixel size, read from its header, so the tool can scale the boxes.
+    width: int
+    height: int
     model: str
 
 

@@ -6,7 +6,7 @@ import test from "node:test";
 
 import { tempDir } from "../core/fixtures/load.mjs";
 import { cached, forget, forgetJob, mediaKey, pendingJob, readCache, remember, rememberJob } from "./cache.mjs";
-import { MediaError, PART_BYTES, RETAKE_CODES, downloadFile, judge, mediaStatus, putFile, runJob, submitClip, submitImage, waitForJob } from "./client.mjs";
+import { MediaError, PART_BYTES, RETAKE_CODES, downloadFile, judge, locate, mediaStatus, putFile, runJob, scaleBox, submitClip, submitImage, waitForJob } from "./client.mjs";
 import { STAGES, exitFor, run, statusText } from "./cli.mjs";
 import { appendLedger, bookImport, bookJob, capProblem, importedTotals, ledgerTotals, readLedger, release, reserve, reservedEntries, savedTotals } from "./ledger.mjs";
 import {
@@ -68,6 +68,29 @@ test("calls carry the token, and failures say who can fix them", async () => {
     (error) => error.who === "tool" && error.code === "video_media_reference_missing",
   );
   assert.ok(RETAKE_CODES.has("video_media_rejected") && !RETAKE_CODES.has("video_media_budget_exhausted"));
+});
+
+test("locate asks for subject boxes of a stored picture, and a clip is the tool's mistake", async () => {
+  const found = { boxes: [{ label: "Jingwei", box: [100, 200, 900, 600], score: 0.93 }], width: 1920, height: 1080, model: "m" };
+  let answers = 0;
+  const fake = site({
+    "POST locate": ({ init }) => {
+      const body = JSON.parse(init.body);
+      if (body.sha256 === "b".repeat(64)) return json({ code: "video_media_invalid", detail: "locate 只看圖片" }, 422);
+      if (body.sha256 === "c".repeat(64)) return ++answers < 2 ? json({ code: "video_media_locate_failed", detail: "no json" }, 502) : json({ ...found, boxes: [] });
+      return json(found);
+    },
+  });
+  const request = { slug: "v", sha256: "a".repeat(64), labels: ["Jingwei"] };
+  assert.deepEqual(await locate({ request, ...fake.options }), found);
+  assert.equal(fake.calls[0].route, "POST locate");
+  assert.deepEqual(JSON.parse(fake.calls[0].body), request, "the request goes up as given: slug, sha256, labels");
+  assert.deepEqual(scaleBox(found.boxes[0].box, found.width, found.height), { left: 384, top: 108, right: 1152, bottom: 972 });
+  assert.deepEqual(scaleBox([-10, 0, 1200, 1000], 100, 50), { left: 0, top: 0, right: 100, bottom: 50 }, "pixels never leave the frame");
+  await assert.rejects(locate({ request: { ...request, sha256: "b".repeat(64) }, ...fake.options }), (error) => error instanceof MediaError && error.who === "tool" && error.code === "video_media_invalid" && error.status === 422);
+  assert.equal(fake.calls.filter((call) => call.route === "POST locate").length, 2, "a clip is refused once; the tool extracts a frame, it does not retry");
+  const empty = await locate({ request: { ...request, sha256: "c".repeat(64) }, ...fake.options });
+  assert.deepEqual(empty.boxes, [], "an unusable answer is retried like a failed judge call; nothing found is a plain answer");
 });
 
 test("exhausted media requests require a source change instead of another service retry", async () => {
