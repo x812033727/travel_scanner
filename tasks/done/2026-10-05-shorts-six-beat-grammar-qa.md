@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-shorts-six-beat-grammar-qa
 title: Shorts six-beat grammar and a grammar QA item: first frame is the thumbnail, last frame returns to it, no CTA
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-fable-5-1-sixbeat
 claimed_at: 2026-10-05T18:00:54Z
 created_at: 2026-10-05T16:08:27Z
-completed_at:
+completed_at: 2026-10-05T18:25:35Z
 branch: claude/shorts-six-beat
 depends_on:
   - 2026-10-05-shorts-karaoke-captions-estimated-timing
