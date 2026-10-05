@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-audio-stage-incomplete-exits
 title: Audio stages distinguish incomplete runs and chapter failures from success
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-audio-stage-incomplete-exits
 claimed_at: 2026-10-05T01:44:27Z
 created_at: 2026-10-04T18:01:08Z
-completed_at:
+completed_at: 2026-10-05T02:25:08Z
 branch: claude/audio-stage-incomplete-exits
 depends_on: []
 scope:
@@ -96,3 +96,11 @@ Run the focused tests for tools/video/tts/tts.test.mjs and tools/video/tts/check
   the timeline does not bind, and the next run's evidence guard blocks; fail-safe, as before),
   2026-10-05-the-worker-passes-over-a-video (a video held by its own STOP file now ends each round
   after one unit; before, the worker spent the round on it or sent unchecked audio).
+- Checks on Windows: `tts.test.mjs` 26/26; `check.test.mjs` + `dubs.test.mjs` 30/31 (the known
+  Windows-only "a second transcript clears a line only Gemini misheard"); `npm run test:tools`
+  1626/1633 with 4 red: that same test, "nginx detector never misses an early marker" (a 90 s
+  timeout, red when run alone too, in `tools/nginx-install.test.mjs`, nothing here touches it),
+  the duration receipt test (expected: `cli.mjs check` lists `automated.md`, `DESIGN.md`,
+  `automation.test.mjs`, `flow.mjs`, `dubs.test.mjs`, `check.test.mjs`, `tts.test.mjs` for an
+  independent DURATION_ONLY increment), and the animation-production `EXIT` mirror, fixed after
+  that run started and green when rerun.
