@@ -304,6 +304,10 @@ test("a configured and tested card fits desktop and mobile in light and dark", a
   expect((await state.otherAdminTests()).last_test_status).toBe("success");
   const card = await openSettings(page);
   await expect(card.getByRole("status").filter({ hasText: vps.testSuccess })).toBeVisible();
+  // A page load shows the stored verdict only; the background status and job count come with a
+  // test's own answer (the connection-test case), so the screenshots show what a reload shows.
+  await expect(card.getByText(`${vps.browser}:`)).toHaveCount(0);
+  await expect(card.getByText(`${vps.activeJobs}:`)).toHaveCount(0);
   await expect(card.getByRole("link", { name: vps.openDesktop })).toBeVisible();
   await expect(fields(card).secret).toHaveAttribute("placeholder", vps.secretKept);
   // The screenshots are the visual evidence: CI keeps them as an artifact, VPS_ACCEPTANCE_DIR the receipt.

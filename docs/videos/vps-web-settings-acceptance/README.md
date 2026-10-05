@@ -23,7 +23,10 @@ every pull request in both projects of `apps/web/playwright.config.ts`
   `apps/api/app/video_youtube/vps_settings.py` does where the card can tell: the
   secret is write-only, unknown fields are a 422, a stale `expected_updated_at` is a
   409, a save clears the last test, and a connection test answers 200 with its
-  verdict and a new revision. It forwards nothing anywhere.
+  verdict and a new revision. Like the API, it never stores the background status
+  and job count: `view()` leaves both null, and only the answer to a test that
+  reached the service carries them (`test_connection`'s `model_copy(update=details)`),
+  so a page load never shows them. It forwards nothing anywhere.
 - The spec's route handler adds `?fixture=<project, test, attempt>` to those requests
   so the parallel desktop and mobile runs never share a revision. That query string
   is the only difference from what the card sends in production.
@@ -44,7 +47,7 @@ and secrets that say `synthetic-e2e-secret-not-real`.
 
 | Definition of done | Case in the spec | Local 2026-10-05 | CI |
 | --- | --- | --- | --- |
-| Desktop and mobile layouts, light and dark, no clipping or horizontal overflow | "a configured and tested card fits…" (and the empty card at the start of the save case, without screenshots) | passed, both projects; screenshots below | pending |
+| Desktop and mobile layouts, light and dark, no clipping or horizontal overflow | "a configured and tested card fits…": a page load after another administrator's successful test, which shows the stored verdict and, as asserted, no background status or job count (and the empty card at the start of the save case, without screenshots) | passed, both projects; screenshots below | pending |
 | Save, reload | "an owner saves and reloads…": first save sends every field with `expected_updated_at: null`; after a reload the URL, channel, desktop and switch persist and the password field is empty with the "kept" placeholder | passed | pending |
 | Test failure and success | "a connection test fails on a mistyped channel…": failed alert and reason, the test button stays off while the edit is unsaved, the correction sends only `channel_id` at the revision the test left, then success with background status idle and 0 jobs | passed | pending |
 | Stale-write recovery | "a stale save keeps the edits…": another administrator changes the desktop address; the card's save gets 409 and keeps the edited channel and secret; refresh takes the new desktop address and keeps both edits; the retry sends only `channel_id`, `secret` and the new revision | passed | pending |
@@ -56,7 +59,9 @@ and secrets that say `synthetic-e2e-secret-not-real`.
 Committed evidence, all from the local run:
 
 - `youtube-vps-settings-{desktop,mobile}-chromium-tested-{light,dark}.jpg`: the card
-  after a successful synthetic connection test, clipped from a full-page capture.
+  as a page load shows it after a successful synthetic connection test (the verdict,
+  its message and time, no background status or job count), clipped from a
+  full-page capture.
 - `observed-requests-{desktop,mobile}-chromium.json`: each case's settings requests
   as the browser saw them (method, path, status, fields sent with the secret replaced
   by a placeholder, and the non-secret fields received). Seeding and "another
@@ -66,7 +71,11 @@ Committed evidence, all from the local run:
 
 Regenerate them with `VPS_ACCEPTANCE_DIR=<absolute path of this folder>` set for a
 run of the spec; without it, CI writes the screenshots under `test-results` and keeps
-them for three days as the `youtube-manual-browser-evidence-*` artifact.
+them for three days as the `youtube-manual-browser-evidence-*` artifact. Playwright
+reuses any runtime fixture already listening on `127.0.0.1:8000`, so on a machine
+shared with other checkouts start this checkout's fixture on its own port
+(`E2E_API_PORT`) and point `API_INTERNAL_URL` at it, as the rerun in
+`attempt-20261005.json` did.
 
 ## Found and fixed during acceptance
 
@@ -75,6 +84,13 @@ out of view (viewport ratio 0 on both projects): the tab renders on the client, 
 the browser's own fragment jump found nothing. `YoutubeVpsSettingsCard` now scrolls
 itself into view once, when its settings first arrive and the URL names its fragment
 (unit test in `apps/web/components/admin-video-vps-settings.test.tsx`).
+
+Review of the first receipt found a fixture error, not a product one: the synthetic
+store kept a test's background status and job count and sent them back on every later
+read, so the first screenshots showed "背景工作狀態: 閒置" and "進行中的工作: 0" after a
+page load, a state the API cannot produce. The store now adds them to the test's own
+answer only, the layout case asserts a page load shows neither, and the screenshots,
+observed requests and hashes were regenerated.
 
 ## Limits
 
@@ -88,8 +104,9 @@ itself into view once, when its settings first arrive and the URL names its frag
   30 s. Before the read-only case dropped a layout pass the layout case already makes,
   it timed out once in 24 local repeats (an 8.5 s browser start and an 8 s stalled
   page evaluation). The final spec passed 12 of 12 in the receipt run and 24 of 24
-  repeated twice. Whether these budgets hold on CI's runners is what the pending CI
-  run shows.
+  repeated twice, both in the first run and in the rerun after the review correction
+  above (where the first case took up to 29 s). Whether these budgets hold on CI's
+  runners is what the pending CI run shows.
 - The synthetic store copies the API's rules; the rules themselves are proven by
   `apps/api/tests/test_video_youtube_vps_settings.py` (including
   `test_settings_routes_apply_explicit_read_and_manage_permissions` for direct writes

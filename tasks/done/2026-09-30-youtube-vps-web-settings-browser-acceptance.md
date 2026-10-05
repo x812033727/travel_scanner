@@ -94,6 +94,16 @@ Production deployment, Google login and real upload remain under the existing
   Screenshots, observed requests and `attempt-20261005.json` are in
   `docs/videos/vps-web-settings-acceptance/`; the README there marks CI as pending
   until this PR's `web-e2e` run is green.
+- Review round 1 (same owner): the synthetic store kept a test's `browser_status` and
+  `active_jobs` and sent them back on every later read, so the first layout screenshots
+  showed "背景工作狀態: 閒置" and "進行中的工作: 0" after a page load. The API never
+  stores them (`view()` leaves both null; only `test_connection`'s answer adds them
+  through `model_copy(update=details)`). The store now does the same, the layout case
+  asserts a page load shows neither (a store with the old behaviour fails it on both
+  projects), and the screenshots, observed requests and receipt hashes were regenerated:
+  12/12 and 24/24 again, this time against this checkout's fixture on its own port
+  (`E2E_API_PORT=18800`, `API_INTERNAL_URL`), because Playwright reuses whatever fixture
+  already listens on the shared `:8000`.
 - Not repeated here: a read-only role's direct API write is refused by the API
   (`test_settings_routes_apply_explicit_read_and_manage_permissions`); the spec checks
   that the UI sends no write. Real VPS, Google login, uploads and deployment stay with

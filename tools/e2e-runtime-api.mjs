@@ -270,10 +270,12 @@ function shortsFile(request, response, file) {
 // reads, saves and connection tests cross the real Next BFF. It answers the way
 // apps/api/app/video_youtube/vps_settings.py does wherever the card can tell: the secret is
 // write-only, unknown fields are a 422, a stale expected_updated_at is a 409, a save clears the
-// last test, and a test answers 200 with its own verdict and a new revision. Each test names its
-// own store (?fixture=) so the desktop and mobile projects never share a revision. Nothing is
-// forwarded anywhere: no service, channel or secret here is real, and a connection test
-// "reaches" only the channel below.
+// last test, and a test answers 200 with its own verdict and a new revision. The background
+// status and job count are never stored: like the API's model_copy(update=details), only the
+// answer to a test that reached the service carries them, and every read or save says null.
+// Each test names its own store (?fixture=) so the desktop and mobile projects never share a
+// revision. Nothing is forwarded anywhere: no service, channel or secret here is real, and a
+// connection test "reaches" only the channel below.
 const vpsSettingsPath = "/api/v1/admin/video-youtube/vps/settings";
 const vpsChannelPattern = /^UC[A-Za-z0-9_-]{22}$/;
 const vpsReportedChannel = "UCSyntheticFixture000001";
@@ -286,7 +288,7 @@ const vpsView = (store) => ({
   configured: Boolean(store.url && vpsChannelPattern.test(store.channel_id) && store.secret),
   source: store.updated_at ? "database" : "none", updated_at: store.updated_at,
   last_test_status: store.last_test_status, last_test_message: store.last_test_message, last_tested_at: store.last_tested_at,
-  browser_status: store.browser_status, active_jobs: store.active_jobs,
+  browser_status: null, active_jobs: null,
 });
 
 function vpsRefuse(response, status, code, detail) {
@@ -322,7 +324,7 @@ function vpsSave(store, response, text) {
   }
   Object.assign(store, next, {
     secret: supplied || store.secret,
-    last_test_status: null, last_test_message: null, last_tested_at: null, browser_status: null, active_jobs: null,
+    last_test_status: null, last_test_message: null, last_tested_at: null,
   });
   store.updated_at = vpsStamp(store);
   response.end(JSON.stringify(vpsView(store)));
@@ -335,7 +337,7 @@ function serveVpsSettingsFixture(request, response, url) {
   if (!vpsStores.has(key)) {
     vpsStores.set(key, {
       revision: 0, enabled: false, url: "", channel_id: "", desktop_url: "", secret: "", updated_at: null,
-      last_test_status: null, last_test_message: null, last_tested_at: null, browser_status: null, active_jobs: null,
+      last_test_status: null, last_test_message: null, last_tested_at: null,
     });
   }
   const store = vpsStores.get(key);
@@ -348,10 +350,9 @@ function serveVpsSettingsFixture(request, response, url) {
       last_test_status: reached ? "success" : "failed",
       last_test_message: !configured ? "請先啟用並儲存 VPS 上傳服務設定"
         : reached ? "服務連線成功且頻道設定相符；Google 登入請到遠端桌面確認" : "VPS 設定的頻道與網站不同，請先核對",
-      browser_status: reached ? "idle" : null, active_jobs: reached ? 0 : null,
     });
     store.last_tested_at = store.updated_at = vpsStamp(store);
-    response.end(JSON.stringify(vpsView(store)));
+    response.end(JSON.stringify({ ...vpsView(store), ...(reached ? { browser_status: "idle", active_jobs: 0 } : {}) }));
   } else if (request.method === "PUT" && !test) {
     const chunks = [];
     request.on("data", (chunk) => chunks.push(chunk));
