@@ -129,11 +129,11 @@ drama 的 `brief.md` 必要章節：「故事前提」「角色」「站主觀�
 | --- | --- | --- |
 | `look` | 每角色用 `sheet_prompt ?? 預設（正面、四分之三、全身、灰底）` 生 `candidates` 張，judge rubric `sheet`（辨識度、符合外觀、風格、乾淨、無文字），最好的當 `suggested`；全部不及格補一輪 | `MAX_LOOK_ROUNDS = 2` |
 | `keyframes` | 提示詞＝`data.prompt + look.style`＋角色短標籤；參考圖＝選定設定圖（＋風格圖）；1920×1080；rubric `keyframe`：每角色 `identity_<id>`、符合提示、風格、瑕疵、無文字、主體避開字幕帶；相鄰鏡頭 dHash 太近警告 | `MAX_KEYFRAME_TAKES = 3` |
-| `clips` | 依 `start_frame.shot` 拓撲排序；`start_frame`＝關鍵影格、`end_frame` 可選、參考圖給支援的供應商；提示詞＝`motion + camera + look.motion`；輪詢可續跑；QC：`ffprobe` 時長／解析度／fps、`blackdetect`、`freezedetect`、`select='gt(scene,0.5)'`、第 0 格對關鍵影格 PSNR ≥22 且比相鄰鏡頭高 3 dB、judge rubric `clip` | `MAX_CLIP_TAKES = 2`；送出前 `ledger` 對 `max_usd_per_video` |
+| `clips` | 依 `start_frame.shot` 拓撲排序；`start_frame`＝關鍵影格、`end_frame` 可選、參考圖給支援的供應商；提示詞＝`motion + camera + look.motion`；輪詢可續跑；QC：`ffprobe` 時長／解析度／fps、`blackdetect`、`freezedetect`、`select='gt(scene,0.5)'`、第 0 格對關鍵影格 PSNR ≥22 且比相鄰鏡頭高 3 dB、judge rubric `clip` | `MAX_CLIP_TAKES = 2`；送出前 `ledger` 對 `max_usd_per_video`：先記一筆 `reserved`，job 回來才對帳成實價（見「成本與紀錄」）；judge 每次 US$0.01 也過同一道 |
 | `music` | `music.prompt` → 伺服器生成 ≥ 影片長度的曲子；`music.track` → sha256 核對 | |
-| `media-status` | 印伺服器預算與本支總計 | |
+| `media-status` | 印伺服器預算與本支總計（`totals.usd` 含送出還沒對帳的 `reserved` 預留；`--json` 另列 `totals.reserved` 與 `reservations`） | |
 
-共用：`media/client.mjs`（比照 `tts/client.mjs`：重試分類、`Retry-After`、預算耗盡不重試）、`media/cache.json`（同一請求不付兩次）、`media/jobs.json`（中斷後接著輪詢）、`media/ledger.json`（花費帳）；每次遠端呼叫之間看 `STOP` 檔。
+共用：`media/client.mjs`（比照 `tts/client.mjs`：重試分類、`Retry-After`、預算耗盡不重試）、`media/cache.json`（同一請求不付兩次）、`media/jobs.json`（中斷後接著輪詢）、`media/ledger.json`（花費帳：送出前先記 `reserved`，job 回來再對帳）；每次遠端呼叫之間看 `STOP` 檔。
 
 ### 外面做的片段：`clips import`（2026-10-04 加，票 `2026-10-03-clips-import-bring-a-clip-made`）
 
@@ -144,10 +144,10 @@ node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --p
 ```
 
 - **前提與 `clips` 一樣**：timeline 與 keyframes manifest 是現在的劇本（否則 2）、這一鏡有通過 judge 的關鍵影格（否則 2）、storyboard 已核准（否則 3）。鏡頭必須是 clip 鏡：still 與從別鏡切的（`source`）都是 2。**有 production profile 的作品一律 3**：profile 指定了買片段的模型，`productionClipProblems` 會拿 manifest 對它；要收別條路線的片段得先由站主改 profile，那是另一張票。
-- **做什麼**：把檔案複製成 `clips/<shot>-import-<n>.mp4`（同一個檔再匯入一次沿用原編號），跑買來的 take 同一組 ffmpeg 檢查（`qc.mjs`：解析度、fps、黑格、旁白範圍內的凍格、模型自己切鏡、第 0 格對關鍵影格 PSNR ≥ 22 且比相鄰關鍵影格高 3 dB；沒有向伺服器要過秒數，所以不查「比要求的短」，比台詞短時只提醒，由 `assemble` 的 `fitPlan` 處理）。`--judge` 才把片段與角色設定圖上傳媒體庫、問 `clip` rubric，記一筆 US$0.01 的 judge；不帶就完全不碰網站。
+- **做什麼**：把檔案複製成 `clips/<shot>-import-<n>.mp4`（同一個檔再匯入一次沿用原編號），跑買來的 take 同一組 ffmpeg 檢查（`qc.mjs`：解析度、fps、黑格、旁白範圍內的凍格、模型自己切鏡、第 0 格對關鍵影格 PSNR ≥ 22 且比相鄰關鍵影格高 3 dB；沒有向伺服器要過秒數，所以不查「比要求的短」，比台詞短時只提醒，由 `assemble` 的 `fitPlan` 處理）。`--judge` 才把片段與角色設定圖上傳媒體庫、問 `clip` rubric，記一筆 US$0.01 的 judge，這一次也先過單支上限；不帶 `--judge`、`--usd` 也沒給（或給 0）就完全不碰網站，`--usd` 大於 0 要先讀一次 `status` 拿上限。
 - **沒過**：跟失敗的 take 一樣 `needs_review: true` 帶原因，結束碼 1；`--force` 留下它（`needs_review: false`、`forced: true`，量到的問題仍在 `qc.problems`）。外部生成時用這一鏡的關鍵影格當首格，PSNR 才過得了。
 - **manifest**：`clips` 寫的形狀（`file`、`sha256`、`seconds`、`frames`、`needed_s`、`first_frame`、`qc`、`judge`、`takes`、`needs_review`）加 `provider`、`plan`、`credits`、`imported_at`（與 `note`、`forced`）；原本買的 take 留在 `takes` 裡。從這一鏡切出去的鏡頭（`source`）跟著改指新檔，新檔不夠長的那個 `needs_review`、結束碼 1。`clips_hash` 重算，`state.json` 記一次 `clips`。
-- **帳本**：一筆 `{ stage: "clips", kind: "clip", id, provider, plan, credits, seconds, cost_usd, file, sha256, status: "imported" }`（`bookImport`，同一鏡同一檔只記一筆）。`cost_usd` 是 `--usd` 給的數，沒給是 0：點數換美元由操作的人算，工具不代換。秒數算進 `totals.clip_seconds`，`--usd` 算進單支上限；`importedTotals` 把匯入的另外加總。
+- **帳本**：一筆 `{ stage: "clips", kind: "clip", id, provider, plan, credits, seconds, cost_usd, file, sha256, status: "imported" }`（`bookImport`，同一鏡同一檔只記一筆）。`cost_usd` 是 `--usd` 給的數，沒給是 0：點數換美元由操作的人算，工具不代換。秒數算進 `totals.clip_seconds`；`--usd` 大於 0 先過單支上限（超過是結束碼 3，沒有 `--force` 可以越過），檢查期間在帳本記一筆 key 為 `import:<shot>:<sha256>` 的 `reserved`，`--judge` 的那一次 judge 看得到它，`bookImport` 用匯入列取代它，沒記成（STOP、ffmpeg 缺、檢查途中出錯）就放掉；`importedTotals` 把匯入的另外加總。
 - **之後**：`clips` 把匯入的鏡頭當已完成留用（`kept (imported from …)`），`--dry-run` 不替它估價，`status` 的 `clips generated` 後面寫「N of M clips imported: …」。`clips --force` 仍會把它重買。
 
 `tts`：`voiceFor(doc, line)` 決定每句聲音，場景內 `(speaker, emotion)` 改變就切一個請求。`render`：鏡頭場景不畫；字幕條用 `buildCues`（與 CC 同一套斷句計時）每個不同的字幕文字出一張 1920×260 透明 PNG，樣式 `drama`（Noto Sans TC 600 56px、4px 黑描邊、置中、離底 56px）。不用 libass：內建字型只有 woff2，fontconfig 會悄悄換系統字型，三個環境會不一樣。
@@ -193,6 +193,16 @@ node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --p
 | 磁碟：媒體庫每支 | 約 1 GB；14 天保留、3–4 支在做約 4–6 GB | 估計，試作後更新 |
 | 磁碟：工人 `video_work` 每支 | 1.5–2 GB；發布後刪片段 | 估計 |
 | 試作實際花費、每鏡秒數、重做率、地區測試 | （試作票 `2026-09-26-video-drama-pilot` 做完補） | |
+
+### 先預留、後對帳（2026-10-05 加，票 `2026-10-05-media-budget-estimate-reserve-reconcile`）
+
+錢在花掉之前先進帳本。`Stage.generate`（`tools/video/media/stages.mjs`）過了 `capProblem` 之後、送出之前，用 `reserve`（`ledger.mjs`）在 `media/ledger.json` 記一筆 `{ stage, kind, id, provider, model, key, seconds, cost_usd: 目錄價, status: "reserved" }`，`key` 是這個請求的快取 key；job 回來（ready、failed、`video_media_model_changed`）`bookJob` 以同一個 key 找到這筆，換成伺服器實際記的 `usd_estimate`，不多一列。伺服器拒收（有 HTTP 狀態：額度用完、同一請求失敗三次、參考圖缺）就 `release` 掉——沒有 job 就沒有錢；連不上（`code: "network"`）不放，因為伺服器可能已經收了請求，下次跑同一個 key 會把同一筆換掉（`reserve` 同 key 只留一筆）再對帳。程序在送出與對帳之間死掉或被 `STOP` 停下，帳本留著這筆 `reserved`、`media/jobs.json` 留著 job id：`media-status --slug` 的「this video」把它算進去（`--json` 的 `totals.reserved`／`reservations` 另列），`episode_estimate.mjs --workdir` 逐筆列出；再跑那個階段會接回 job 對帳。
+
+- `totals.usd` 是這支影片已承諾的錢（伺服器記的 ＋ 還在預留的）；`capProblem` 比的就是它加上這一次，所以進行中與死掉留下的預留都擋得到，訊息會寫出其中多少是預留。`totals.reserved`／`reservations` 是其中預留的部分；舊帳本沒有 `reserved` 列，讀起來就是 0，其他欄位照舊。
+- judge：`Stage.judge` 先 `spend(JUDGE_USD_PER_CALL)` 過上限才問，回來才記；一次 US$0.01 不另外預留，程序在問到一半死掉最多少記一筆。
+- `clips import --usd N`（N > 0）：先讀 `status` 拿上限、過 `spend`，以 `import:<shot>:<sha256>` 為 key 預留，`--judge` 的那一次 judge 看得到這筆；`bookImport` 用匯入列取代預留，沒記成就放掉。沒有 `--force` 可以越過上限。
+- 估價：`node .agents/skills/animation-production/scripts/episode_estimate.mjs <video.json> --workdir <VIDEO_WORKDIR>/<slug>`（或 `--ledger <檔>`）印「已花、預留、上限還剩」，裁定比的是最壞情況對剩餘；`--json` 多 `ledger` 與 `verdict.remaining_usd`。沒給就當還沒花錢。
+- 不管的：伺服器的月額度照舊由 `meter.py` 預留與退回，這裡只是單支的視角；`run_report.mjs` 把留下來的 `reserved` 當花費列出（它讀 `cost_usd`），對帳後自然消失。
 
 ## 分期與票
 

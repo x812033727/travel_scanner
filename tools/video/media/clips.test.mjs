@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -12,7 +12,7 @@ import { dramaFixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs
 import { pipelineStatus } from "../core/state.mjs";
 import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { clipPrompt, clipRubric, clipSeconds, lastFrameArgs, MAX_CLIP_TAKES, proxyArgs } from "./clips.mjs";
-import { importedTotals, readLedger, savedTotals } from "./ledger.mjs";
+import { importedTotals, readLedger, reserve, savedTotals } from "./ledger.mjs";
 import { MIN_TRACK_SECONDS, trackSeconds } from "./music.mjs";
 import { chosenModel, clipSecondPrice, statusProblem, trackPrice } from "./stages.mjs";
 
@@ -785,7 +785,7 @@ test("clips import brings a clip made elsewhere into a shot: gated like a bought
   const booked = readLedger(box.workdir);
   const { at, ...entry } = booked.entries[0];
   assert.deepEqual(entry, { stage: "clips", id: "opening", provider: "hailuo-web", plan: "pro", credits: 60, seconds: 8, cost_usd: 0, file: opening.file, sha256: opening.sha256, kind: "clip", status: "imported" });
-  assert.deepEqual(booked.totals, { usd: 0, images: 0, clip_seconds: 8, music: 0, judge_calls: 0 }, "the ledger counts its seconds");
+  assert.deepEqual(booked.totals, { usd: 0, images: 0, clip_seconds: 8, music: 0, judge_calls: 0, reserved: 0, reservations: 0 }, "the ledger counts its seconds");
   assert.deepEqual(importedTotals(booked.entries), { clips: 1, clip_seconds: 8, credits: 60, usd: 0 });
   const recorded = JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8")).runs.filter((each) => each.stage === "clips").at(-1);
   assert.deepEqual([recorded.shots, recorded.imported, recorded.generated], [1, 1, 0]);
@@ -945,4 +945,78 @@ test("clips import refuses a production profile, a still, a cut and a stale time
   assert.equal(await main(["clips", "import", "--slug", profiled.box.slug, "--shot", "opening", "--file", outsideFile(profiled.box, "opening.mp4", "opening"), "--provider", "hailuo-web"], refused.ctx), EXIT.owner);
   assert.match(refused.out.stderr, /approved production profile, which accepts only clips bought with its own model/);
   assert.equal(existsSync(path.join(profiled.box.workdir, "clips")), false);
+});
+
+test("clips import --usd is money: refused past the per-video cap before anything is copied, held while the clip is checked and booked in place of the hold; the judge's call counts too", async () => {
+  const { box } = prepared();
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  let heldAtJudge = null;
+  const site = mediaSite({
+    status: { ...STATUS, max_usd_per_video: 2 },
+    verdicts: () => {
+      heldAtJudge = readLedger(box.workdir).entries.filter((entry) => entry.status === "reserved");
+      return { overall: 8, passed: true };
+    },
+  });
+  let statusReads = 0;
+  const fetchImpl = async (url, init) => {
+    if (new URL(url).pathname.endsWith("/status")) statusReads += 1;
+    return site.fetchImpl(url, init);
+  };
+  const bring = (shot, file, ...extra) => ["clips", "import", "--slug", box.slug, "--shot", shot, "--file", file, "--provider", "hailuo-web", "--plan", "pro", "--credits", "60", ...extra];
+  const opening = outsideFile(box, "paid-opening.mp4", "paid opening");
+
+  // Past the cap: the owner's call (exit 3), nothing copied, nothing held, nothing booked.
+  const over = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("opening", opening, "--usd", "2.5"), over.ctx), EXIT.owner, over.out.stderr || over.out.stdout);
+  assert.match(over.out.stderr, /this video has spent US\$0\.00 and the next import costs about US\$2\.50, past the per-video cap of US\$2/);
+  assert.equal(existsSync(path.join(box.workdir, "clips", "opening-import-1.mp4")), false);
+  assert.deepEqual(readLedger(box.workdir).entries, []);
+  assert.equal(statusReads, 1, "the cap comes from the site: one status read");
+  // Free of charge and unjudged, the import never calls the site.
+  const free = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("opening", opening, "--usd", "0"), free.ctx), EXIT.ok, free.out.stderr || free.out.stdout);
+  assert.equal(statusReads, 1);
+  // Under the cap: booked at the price given, the hold gone with the booking.
+  const paid = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("opening", opening, "--usd", "0.5"), paid.ctx), EXIT.ok, paid.out.stderr || paid.out.stdout);
+  assert.equal(statusReads, 2);
+  let ledger = readLedger(box.workdir);
+  assert.deepEqual(ledger.entries.map((entry) => [entry.id, entry.status, entry.cost_usd, entry.key]), [["opening", "imported", 0.5, undefined]], "the same file again replaces its row; the booked row carries no key");
+  assert.deepEqual([ledger.totals.usd, ledger.totals.reserved, ledger.totals.reservations], [0.5, 0, 0]);
+
+  // With --judge the hold is in the ledger while the judge looks, and the judge's own call passes the cap.
+  const farewell = outsideFile(box, "paid-farewell.mp4", "paid farewell");
+  const judged = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("farewell", farewell, "--usd", "0.25", "--judge"), judged.ctx), EXIT.ok, judged.out.stderr || judged.out.stdout);
+  assert.equal(statusReads, 3, "one status read serves the cap check and the judge");
+  assert.deepEqual(heldAtJudge.map((entry) => [entry.id, entry.cost_usd, entry.key, entry.provider, entry.plan, entry.credits, entry.seconds]), [["farewell", 0.25, `import:farewell:${SHA(MP4("paid farewell"))}`, "hailuo-web", "pro", 60, 0]]);
+  ledger = readLedger(box.workdir);
+  assert.deepEqual([ledger.totals.usd, ledger.totals.judge_calls, ledger.totals.reservations], [0.76, 1, 0]);
+  assert.deepEqual(importedTotals(ledger.entries), { clips: 2, clip_seconds: 16, credits: 120, usd: 0.75 });
+
+  // The judge refused past the cap, with the hold counted: the clip is checked but not recorded, and its hold is let go.
+  const bird = outsideFile(box, "paid-bird.mp4", "paid bird");
+  const refused = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("bird", bird, "--usd", "1.24", "--judge"), refused.ctx), EXIT.owner, refused.out.stderr || refused.out.stdout);
+  assert.match(refused.out.stderr, /this video has spent US\$2\.00 \(US\$1\.24 of it reserved for 1 request not yet reconciled\) and the next judge call costs about US\$0\.01, past the per-video cap of US\$2/);
+  assert.equal(site.state.judges.length, 1, "the judge was not asked");
+  assert.equal(manifestOf(box, "clips").shots.bird, undefined);
+  ledger = readLedger(box.workdir);
+  assert.deepEqual([ledger.totals.usd, ledger.totals.reservations, ledger.entries.length], [0.76, 0, 3]);
+
+  // The STOP file before the judge: nothing recorded, nothing held.
+  writeFileSync(path.join(box.workdir, "STOP"), "");
+  const stopped = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("bird", bird, "--usd", "0.5", "--judge"), stopped.ctx), EXIT.ok, stopped.out.stderr || stopped.out.stdout);
+  assert.match(stopped.out.stdout, /stopped by the STOP file before bird was judged; nothing was recorded/);
+  assert.deepEqual([readLedger(box.workdir).totals.reservations, readLedger(box.workdir).entries.length], [0, 3]);
+  rmSync(path.join(box.workdir, "STOP"));
+
+  // A hold left by a run that died is money the next import sees.
+  reserve(box.workdir, { stage: "clips", kind: "clip", id: "sea-storm", provider: "gemini", model: "gemini-omni-1.1-flash", key: "k-dead", seconds: 4, cost_usd: 1 }, new Date("2026-09-26T09:00:00Z"));
+  const crowded = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("bird", bird, "--usd", "0.3"), crowded.ctx), EXIT.owner, crowded.out.stderr || crowded.out.stdout);
+  assert.match(crowded.out.stderr, /spent US\$1\.76 \(US\$1\.00 of it reserved for 1 request not yet reconciled\) and the next import costs about US\$0\.30/);
 });
