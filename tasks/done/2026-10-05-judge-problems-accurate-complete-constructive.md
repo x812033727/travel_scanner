@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-judge-problems-accurate-complete-constructive
 title: Judge problems that are accurate, complete and constructive: key, fault, and one prompt-level fix
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1-judge
 claimed_at: 2026-10-05T17:49:19Z
 created_at: 2026-10-05T16:08:25Z
-completed_at:
+completed_at: 2026-10-05T18:14:30Z
 branch: claude/judge-problems
 depends_on:
   - 2026-10-04-fault-checks-for-the-drama-judges
