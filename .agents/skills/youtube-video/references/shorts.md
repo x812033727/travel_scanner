@@ -10,7 +10,7 @@ Shorts 是 1080×1920、30 fps、25–55 秒（Shorts 設定的 `seconds_min`／
 | --- | --- | --- |
 | **實測**（`lab`，系列 `daily`、`blind`、`prompts`） | 主機工人照題庫自己做（Shorts 設定「讓主機工人自己做 Shorts」開著、選了受測模型）；本機也可以照腳本 `build` | 要看圖、修圖、執行程式、生圖的題目工人不做（`tools/video/shorts/lab.mjs` 的 `UNSUPPORTED`），題庫標「缺素材或工具」 |
 | **長片精華**（`cut`，系列是來源長片） | 本機：`from-episode` 從有 shot 的長片（原來如此事務所、插圖投影片）切兩支；別的工具做好的成片用 `import` | 工人的精華步驟（票 `2026-09-28-video-shorts-worker-cut`）還沒有。伺服器已經替公開的教學長片自動開精華題目，但工人與排片都先跳過 |
-| **漫劇直式短篇**（`drama`） | 只有 `import` 收得進來：`build` 拒絕 `line: "drama"` | 漫劇產線的 9:16（票 `2026-09-28-video-shorts-worker-drama`）還沒有 |
+| **漫劇直式短篇**（`drama`） | 本機：`from-drama` 從已核准的 16:9 成片剪一段，9:16 視窗跟著主角（每鏡問一次站上的 `locate`），字幕走 Shorts 的字幕層；別的工具做好的成片用 `import`。`build` 仍拒絕 `line: "drama"` | 原生 9:16 的漫劇產線（票 `2026-09-28-video-shorts-worker-drama`）與工人的漫劇步驟還沒有 |
 
 不管誰做的，送上站之後都走同一條：成片審核（12 項自動品管）→ 上傳包審核（4 項）→ 片庫 → 月曆的時段 → YouTube。
 
@@ -68,6 +68,7 @@ node tools/video/shorts/cli.mjs package      --dir <成品>
 node tools/video/shorts/cli.mjs push         --dir <成品>
 node tools/video/shorts/cli.mjs import       --from <DIR> --workdir <VIDEO_WORKDIR>    # DIR 裡要有 final.mp4、zh-TW.srt、meta.json
 node tools/video/shorts/cli.mjs from-episode --slug <長片> --workdir <VIDEO_WORKDIR> [--short 1|2] [--check]
+node tools/video/shorts/cli.mjs from-drama   --slug <漫劇集> --from <秒> --to <秒> --workdir <VIDEO_WORKDIR> [--episode-workdir <DIR>] [--meta <JSON>] [--captions plain|karaoke]
 node tools/video/shorts/cli.mjs tick         # 工人的敲門；手動跑等於讓站上現在做到期的事
 node tools/video/shorts/cli.mjs track-init   --dir <DIR> --start YYYY-MM-DD   # 只剩離線用途
 node tools/video/shorts/cli.mjs report       --dir <DIR>                     # 只剩離線用途
@@ -92,6 +93,13 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 - 有 shot 的長片：長片撰稿時工人順手寫 `docs/videos/<slug>/shorts.json`（兩支，`slug` 是 `<長片>-short-1|2`）。`from-episode --slug <長片> --check` 先確認每張關鍵影格的雜湊；再 `from-episode --slug <長片> --workdir <VIDEO_WORKDIR>` 建兩個成品（旁白預設 `server`），之後每個成品照主幹 3–7。系列依長片決定（`sothatswhy` 或 `illustrated`），規格在 `docs/videos/so-thats-why/README.md` §Shorts。要在長片的工作檔被清掉（上架滿 7 天）之前做。
 - 長片要已經公開，或成片已核准，`evidence` 才會過；長片還沒有 YouTube id 時說明欄缺完整影片連結，`metadata` 與 `links` 不過，等它上架再 `package`、`push`。
 - 一支長片最多兩支精華，兩支講不同的事。
+
+**漫劇直式短篇（後製，`from-drama`）**：不生圖、不重畫，從已核准的 16:9 成片直接裁 9:16（設計在 `docs/videos/SHORTS.md` §工具端的 `from-drama.mjs`）。
+
+- 要有：該集工作目錄裡的 `final.mp4`、`timeline.json`、`captions/zh-TW.srt`，以及 `approvals.json` 裡對得上的 `final` 核准（`review-pull` 拉過，或本機 `approve --gate final`）；影片工具權杖；站上要有 `locate`（`GET /video/media/status` 列出 `limits.locate_labels`）。repo 裡有 `docs/videos/<集>/video.json` 時標題、說明、標籤與每鏡的角色名（locate 的標籤）都從它來，沒有就用 `--meta` 給 `{titles, description, ...}`。
+- 選段：`--from`／`--to` 是該集的秒數，長度要在 Shorts 設定的範圍內，而且**不能切到句子一半**：切到了工具會拒絕並印出不切到的時間（`use --from 9.5 or --from 12.2`）。句子以 `captions/zh-TW.srt` 為準，所以先看字幕檔挑起訖。
+- 做法：每個 shot 問一次 `locate`（有關鍵影格用關鍵影格，沒有就從成片抽鏡頭中段一格），視窗置中在主角的方框上、整鏡不動、換鏡前 15 格線性移到下一鏡；卡片場景置中。聲音剪該集的混音再正規化。字幕是 Shorts 的字幕層（`--captions karaoke` 逐組亮字，`plain` 整句），每句量過安全區；一句超過兩行 15 字會停下來說是哪一句，換一段或改那一句。
+- 產物是一般的成品目錄（`<VIDEO_WORKDIR>/<集>-short-<起格>-<訖格>/<buildId>-<時間>/`），`checks.json` 多 `reframe`（每鏡的方框、視窗、移動與 locate 次數）；之後照主幹 3–7（`check-audio` → `qa` → `package` → `push`），`layout` 能過，`evidence` 要該集公開或成片已核准。不要用 `import` 再包一次。
 
 **別的工具做好的成片（精華、漫劇直式短篇）**：`import --from <DIR>`。`meta.json` 是 `{slug, line, series, titles: [a, b], description, source, hashtags?, tags?, links?, synthetic_media?, headlines?}`；字幕當成旁白逐句切音，所以 `zh-TW.srt` 要一句一段、時間不重疊、不超過片長。成片要 30 fps、48 kHz、−14 LUFS，不是就先轉檔再匯入（`ffmpeg -vf fps=30`）。匯入的成品照主幹 3–7；`layout` 永遠不過（量不到字卡位置），由站主在 Shorts 分頁開安全區疊圖看一次再核准。
 
@@ -143,6 +151,7 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 - **改了說明也要重跑**：`package` 的產物不在 QA 輸入裡，但腳本改了 QA 與查核都失效，要從 `build` 重來。
 - **匯入的成片**：24 fps 的會被拒絕（要先轉 30 fps）；`layout` 一定要站主看；沒跑 `check-audio` 的 `narration` 一定不過。
 - **卡拉 OK 字幕的亮字會偏**：時間是估的，句子裡有長停頓或拉丁字（`spokenUnits` 把一個拉丁字算兩個單位）時亮得早或晚；工人做的 Shorts 在站上會自動核准，所以預設是 `plain`，站主看過一支 `--captions karaoke` 的樣片再在工人主機設 `VIDEO_SHORTS_CAPTIONS=karaoke`。每次 `build` 都是新目錄（`codeHash`、`MOTION_VERSION` 變了），舊成品要重跑 `check-audio` 與 `qa`；已核准的成片綁 `final_sha256`，不受影響。
+- **`from-drama` 的視窗一鏡只看一張圖**：主角在一個鏡頭裡走位，視窗不會跟；方框是 Gemini 答的，第一支先把 `checks.json.reframe.shots` 的方框對著關鍵影格看一次。成片是 608 px 寬的視窗放大 1.78 倍，畫質比原生 9:16 軟；長句（超過兩行 15 字）放不進字幕條，工具會停下來說是哪一句。locate 每鏡 US$0.01，記在站上 judge 的額度，`usage.json` 不報。
 - **工人讀不到 `docs/videos/ai-shorts`**：它的 docs volume 比 repo 舊，題目、規格與脈絡一律由 `shorts/next` 給；不要寫依賴那個資料夾的步驟。
 - **Jev 的每日次數**跟自動新聞、景點介紹共用；大批 `check-audio` 前先看「AI 供應商與金鑰」卡片。
 - **中文參數**：PowerShell 會弄壞命令列上的非 ASCII 字，腳本與 `meta.json` 一律寫檔再傳路徑。
