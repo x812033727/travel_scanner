@@ -455,7 +455,7 @@
 | 扶瀾貝錢 | one white shell coin with a small round hole（本集不用） |
 | 扶瀾商船 | a merchant ship with sea-green sails and a carved wave-pattern prow（本集只在外港背景，sails furled, no one on deck） |
 | 鳳冠 | her towering black-and-silver phoenix crown with trailing silver chains |
-| 金印 | **本集改為** two faint gold seal marks on the back of her right hand, with an empty space beside them for a third（只寫在插鏡 prompt） |
+| 金印 | **本集改為** two faint gold seal marks on the back of her right hand, a slanted brush stroke and a small curling cloud hook, with an empty space beside them for a third（只寫在插鏡 prompt） |
 | 新月胎記 | a small crescent-shaped birthmark on the back of the neck（本集不用） |
 | 窗上白霜 | white frost spreading across the window paper in fern-like patterns（本集不用） |
 

@@ -1260,7 +1260,7 @@
 
 #### 235. a03-s050
 
-無台詞動作（1 秒）：The front of the long dark desk at its left of centre: Shen's pale right hand pulling a shallow desk drawer open, the drawer holding a stack of yellow seal strips, a coiled short length of dark-red bowstring and one black iron nail, the corner of a wrinkled, water-stained sheet of thin paper with a grey charcoal rubbing showing beneath the seal strips; the very wide white silk sleeve above; afternoon daylight from the window at screen left falling into the drawer
+無台詞動作（1 秒）：Under the right end of the long dark desk, below the unlit candle: Shen's pale right hand reaching along the desk to pull a shallow desk drawer open, the drawer holding a stack of yellow seal strips, a coiled short length of dark-red bowstring and one black iron nail, the corner of a wrinkled, water-stained sheet of thin paper with a grey charcoal rubbing showing beneath the seal strips; the very wide white silk sleeve above; afternoon daylight from the window at screen left falling into the drawer
 動作：The hand draws the shallow drawer open to its full depth
 
 
@@ -1285,7 +1285,7 @@
 
 #### 240. a03-s055
 
-無台詞動作（1 秒）：The front of the long dark desk: Shen's pale right hand on the open shallow drawer, the yellow seal strips and the coiled dark-red bowstring inside it, the very wide white silk sleeve above; afternoon daylight from the window at screen left
+無台詞動作（1 秒）：The front of the long dark desk at its right end, below the unlit candle: Shen's pale right hand on the open shallow drawer, the yellow seal strips and the coiled dark-red bowstring inside it, the very wide white silk sleeve above; afternoon daylight from the window at screen left
 動作：The hand pushes the shallow drawer shut
 
 
@@ -2465,5 +2465,5 @@
 動作：The oil lamp flame wavers once before standing straight again
 
 
-narrative b95e62892221517c
+narrative 7b7e40eec240cfea
 speech 9536e7cc62d0fd82

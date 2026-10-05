@@ -2141,13 +2141,13 @@
 
 #### 420. a05-s054
 
-無台詞動作（4 秒）：A pale slender right hand coming out of a long black sleeve embroidered with white frost ferns at frame centre, two faint gold seal marks on the back of her right hand, with an empty space beside them for a third, a left thumb resting at the edge of that empty skin, the dim doorway behind, afternoon sunlight from the upper left
+無台詞動作（4 秒）：A pale slender right hand coming out of a long black sleeve embroidered with white frost ferns at frame centre, two faint gold seal marks on the back of her right hand, a slanted brush stroke and a small curling cloud hook, with an empty space beside them for a third, a left thumb resting at the edge of that empty skin, the dim doorway behind, afternoon sunlight from the upper left
 動作：The left thumb slowly strokes across the empty space beside the two gold marks
 
 
 #### 421. a05-s055
 
-無台詞動作（2 秒）：The long black sleeve embroidered with white frost ferns gathered at the wrist of a pale right hand at frame centre, the edges of two faint gold marks still showing on the back of the hand, the deep violet mantle beyond, afternoon sunlight from the upper left
+無台詞動作（2 秒）：The long black sleeve embroidered with white frost ferns gathered at the wrist of a pale right hand at frame centre, the edges of two faint gold marks, a slanted stroke and a small curling hook, still showing on the back of the hand, the deep violet mantle beyond, afternoon sunlight from the upper left
 動作：The black sleeve slides down over the back of the hand until the gold marks are covered
 
 
@@ -2326,5 +2326,5 @@
 動作：A draught through the hall lifts all three banners at once, and they sink back still
 
 
-narrative a6262f0345b7301b
+narrative 2c437d9aec735d5e
 speech 2f0117de72ff9e45

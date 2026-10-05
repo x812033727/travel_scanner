@@ -1348,7 +1348,7 @@
 
 #### 274. a03-s087
 
-無台詞動作（4 秒）：The back of a pale right hand held up beside a small oil lamp flame at frame centre, one faint gold seal mark on the back of her right hand, the long black sleeve fallen back to the wrist, a left thumb resting on the bare skin just beside the mark, warm lamplight and cold blue shadow
+無台詞動作（4 秒）：The back of a pale right hand held up beside a small oil lamp flame at frame centre, one faint gold seal mark, a slanted brush stroke, on the back of her right hand, the long black sleeve fallen back to the wrist, a left thumb resting on the bare skin just beside the mark, warm lamplight and cold blue shadow
 動作：The left thumb slides slowly across the empty skin beside the gold mark and stops
 
 
@@ -2262,5 +2262,5 @@
 動作：The white stone drops from the fingers onto the board, rolling into the unfinished corner
 
 
-narrative f2c6291f3ea84589
+narrative 671616745bf67df3
 speech 3a5b0b1918d164cf

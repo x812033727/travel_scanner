@@ -129,7 +129,7 @@
 
 ## 連戲提醒
 
-1. **姬無霜的印**：基本外觀和 `wushuang-armed` 都不寫印。第 2 集起，凡是拍到她右手背的插鏡，prompt 都要寫「two faint gold seal marks on the back of her right hand, with an empty space beside them for a third」。第 3 集她舉手立誓，柳不活看見的「只差梵林一筆」就是這個構圖。她平時用袖子遮手（第 1 集 a03-s051 的做法）。
+1. **姬無霜的印**：基本外觀和 `wushuang-armed` 都不寫印。第 2 集起，凡是拍到她右手背的插鏡，prompt 都要寫「two faint gold seal marks on the back of her right hand, a slanted brush stroke and a small curling cloud hook, with an empty space beside them for a third」（第 3 集起的定句；第 2 集 a05-s054、s055 與第 1 集的一道印「one faint gold seal mark, a slanted brush stroke」都在 2026-10-05 跨集審後改成同一套形狀）。第 3 集她舉手立誓，柳不活看見的「只差梵林一筆」就是這個構圖。她平時用袖子遮手（第 1 集 a03-s051 的做法）。
 2. **第 5 集的「鬼燈君黑袍人」**：
    - 只寫在 prompt。這幾鏡的 `characters` 不列 `ji-wushuang`（列了就會帶進她的設定圖），也不配任何聲音；企劃包寫的「冷笑」只用畫面（面具下肩頭一聳、轉身），不放笑聲。
    - prompt 寫成「a tall hooded figure in a black robe embroidered with dark-violet seven-star and skull-lantern motifs, a blue-green mask covering the whole face」，兜帽壓低。不寫銀白長髮、鳳冠、霜蕨紋，也不寫「slim black lacquered bow」，弓只拍成逆著箭光的剪影。
