@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { safeVpsDesktopUrl, YoutubeVpsSettingsCard, type YoutubeVpsSettingsView } from "./admin-video-vps-settings";
@@ -134,6 +134,32 @@ describe("VPS settings", () => {
     expect(card.getByText("Service unavailable")).toBeTruthy();
     expect(card.queryByText("服務連線成功")).toBeNull();
     expect(card.getByRole("button", { name: "測試已儲存的連線" })).toHaveProperty("disabled", false);
+  });
+
+  it("brings itself into view once when a link named its fragment, and not otherwise", async () => {
+    // jsdom has no scrolling, so the card's call is recorded on a stand-in.
+    const scroll = vi.fn();
+    Object.defineProperty(Element.prototype, "scrollIntoView", { configurable: true, value: scroll });
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json(saved))));
+    const start = window.location.href;
+    try {
+      window.history.replaceState(null, "", "/zh-TW/admin/videos?tab=settings#youtube-vps-settings");
+      const card = await mount();
+      expect(scroll).toHaveBeenCalledTimes(1);
+      expect(scroll).toHaveBeenCalledWith({ block: "start" });
+      expect(scroll.mock.contexts[0]).toBe(document.getElementById("youtube-vps-settings"));
+      // A later read is the owner working on the card, not an arrival: the page stays where it is.
+      fireEvent.click(card.getByRole("button", { name: "重新讀取已儲存設定" }));
+      await card.findByText(/已讀取最新設定/);
+      expect(scroll).toHaveBeenCalledTimes(1);
+      cleanup();
+      window.history.replaceState(null, "", "/zh-TW/admin/videos?tab=settings");
+      await mount();
+      expect(scroll).toHaveBeenCalledTimes(1);
+    } finally {
+      window.history.replaceState(null, "", start);
+      Reflect.deleteProperty(Element.prototype, "scrollIntoView");
+    }
   });
 
   it("keeps drafts and shows the API reason when an incomplete legacy setting prevents saving", async () => {
