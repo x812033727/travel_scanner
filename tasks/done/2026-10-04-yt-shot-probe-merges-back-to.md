@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-yt-shot-probe-merges-back-to
 title: yt_shot_probe merges back-to-back cuts and counts flashes in high-motion videos
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-yt-shot-probe-cuts
 claimed_at: 2026-10-05T01:19:20Z
 created_at: 2026-10-04T18:49:05Z
-completed_at:
+completed_at: 2026-10-05T02:05:55Z
 branch: claude/yt-shot-probe-cuts
 depends_on: []
 scope:
