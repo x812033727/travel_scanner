@@ -478,13 +478,19 @@ const CHOICE_PROBLEM = /written for another language choice|the language choice 
  * written for another choice, or holding a description, caption file, dub track or language
  * thumbnail of a locale the choice does not have, which the package check fails with "run
  * package again". Read the way that check reads it but without hashing final.mp4, so it costs
- * little to ask every round. False without a package (it is written later, with the choice) or
- * without a choice.
+ * little to ask every round. False without a package (it is written later, with the choice),
+ * without a choice, or with a metadata.json that cannot be read, which the package check reports
+ * on its own.
  */
 function packageChoiceStale(workdir) {
   const upload = path.join(workdir, UPLOAD_DIR);
-  const metadata = readJson(path.join(upload, METADATA_FILE), null);
-  if (!metadata) return false;
+  let metadata;
+  try {
+    metadata = readJson(path.join(upload, METADATA_FILE), null);
+  } catch {
+    return false;
+  }
+  if (!metadata || typeof metadata !== "object") return false;
   const { languages, locales, descriptionLocales } = packageLocalesWanted(workdir, metadata);
   if (!languages) return false;
   // Only the choice's problems are read, so the final's hashes are left out.
