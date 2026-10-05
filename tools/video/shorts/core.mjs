@@ -234,6 +234,15 @@ export function parseSrt(source) {
   });
 }
 
+/**
+ * The words of a karaoke caption (karaoke.mjs): the phrase's lines, each a run of groups, the
+ * group at `active` lit. The card and the caption layer both draw exactly this markup, so the
+ * glyphs of the layer land where the card's hidden words are.
+ */
+export function captionWords(lines, groups, active = -1) {
+  return lines.map((_line, index) => groups.map((group, position) => (group.line === index ? `<span class="g${position === active ? ' on' : ''}">${esc(group.text)}</span>` : '')).join('')).join('<br>');
+}
+
 // What never moves between themes: the safe area the build measures (content inside x 78–902 and
 // above y 1380, the caption above y 1600), so every layout clears the Shorts interface.
 //
@@ -242,7 +251,12 @@ export function parseSrt(source) {
 // panel and scrims darken the top and bottom so the words read over any picture. `backdrop`
 // draws the background and glow alone, the still that drifts under a scene of cards. Neither
 // moves the content box, the caption bar or the frame, so the same measurement holds.
-export function sceneHtml(doc, cue, { fontCss = '', assetUrl = '', transparent = false, picture = false, backdrop = false } = {}) {
+//
+// `caption` ({ lines, groups }, karaoke.mjs) draws the caption bar with its words hidden: the box
+// keeps its place and its background on the card and the words come from the caption layer
+// (captionHtml) lit group by group; the overflow measurement still sees the words. Without it
+// the bar says the whole phrase, as before.
+export function sceneHtml(doc, cue, { fontCss = '', assetUrl = '', transparent = false, picture = false, backdrop = false, caption = null } = {}) {
   const scene = doc.scenes[cue.sceneIndex];
   const theme = themeOf(doc);
   const c = theme.colors;
@@ -256,6 +270,8 @@ export function sceneHtml(doc, cue, { fontCss = '', assetUrl = '', transparent =
   const background = transparent ? 'transparent' : c.background;
   const glow = transparent ? '' : '<div class="glow"></div>';
   const scrims = transparent && picture ? '<div class="scrim top"></div><div class="scrim bottom"></div>' : '';
+  const captionCss = caption ? '\n.caption .words.hidden{visibility:hidden}' : '';
+  const words = caption ? `<div class="words hidden">${captionWords(caption.lines, caption.groups, -1)}</div>` : esc(cue.text);
   return `<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><style>${fontCss}
 *{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:${background};color:${c.text};font-family:'Noto Sans TC Variable',sans-serif}
 .glow{position:absolute;${theme.glow};border-radius:50%;background:radial-gradient(circle,${c.glow},transparent 70%)}
@@ -270,6 +286,24 @@ h1{font-size:88px;line-height:1.2;letter-spacing:-2px;margin:0;font-weight:850;w
 .big{font-size:168px;line-height:1.12;font-weight:850;color:${c.highlight};letter-spacing:-3px;padding:25px 0}.note{font-size:28px;line-height:1.5;color:${c.muted}}
 .asset{max-height:835px;max-width:820px;object-fit:contain;align-self:center;border-radius:18px;border:2px solid ${c.rowBorder}}
 .caption{position:absolute;left:80px;top:1430px;width:820px;height:165px;padding:14px 20px;background:${c.caption};border-radius:22px;font-size:49px;line-height:1.36;font-weight:650;display:flex;align-items:center;justify-content:center;text-align:center}
-.count{position:absolute;top:1640px;left:80px;font-size:25px;color:${c.muted}}.progress{position:absolute;left:80px;top:1700px;width:820px;height:7px;background:${c.track}}.progress span{display:block;height:100%;background:${c.accent};width:${Math.round((cue.sceneIndex+1)/doc.scenes.length*100)}%}
-</style><body data-theme="${esc(theme.id)}"${transparent ? ' data-transparent="1"' : ''}>${glow}${scrims}<div class="brand">${esc(theme.brand)}</div><div class="series">${esc(scene.kicker ?? theme.kicker)}</div><main class="content${assetUrl?' with-asset':''}${transparent && picture ? ' on-picture' : ''}"><h1>${esc(scene.headline)}</h1><div class="line"></div>${scene.big ? `<div class="big">${esc(scene.big)}</div>`:''}${assetUrl ? `<img class="asset" src="${esc(assetUrl)}">`:''}${rows ? `<div class="body">${rows}</div>`:''}${scene.note ? `<div class="note">${esc(scene.note)}</div>`:''}</main><div class="caption">${esc(cue.text)}</div><div class="count">${String(cue.sceneIndex+1).padStart(2,'0')} / ${String(doc.scenes.length).padStart(2,'0')} · ${esc(theme.footer)}</div><div class="progress"><span></span></div></body></html>`;
+.count{position:absolute;top:1640px;left:80px;font-size:25px;color:${c.muted}}.progress{position:absolute;left:80px;top:1700px;width:820px;height:7px;background:${c.track}}.progress span{display:block;height:100%;background:${c.accent};width:${Math.round((cue.sceneIndex+1)/doc.scenes.length*100)}%}${captionCss}
+</style><body data-theme="${esc(theme.id)}"${transparent ? ' data-transparent="1"' : ''}>${glow}${scrims}<div class="brand">${esc(theme.brand)}</div><div class="series">${esc(scene.kicker ?? theme.kicker)}</div><main class="content${assetUrl?' with-asset':''}${transparent && picture ? ' on-picture' : ''}"><h1>${esc(scene.headline)}</h1><div class="line"></div>${scene.big ? `<div class="big">${esc(scene.big)}</div>`:''}${assetUrl ? `<img class="asset" src="${esc(assetUrl)}">`:''}${rows ? `<div class="body">${rows}</div>`:''}${scene.note ? `<div class="note">${esc(scene.note)}</div>`:''}</main><div class="caption">${words}</div><div class="count">${String(cue.sceneIndex+1).padStart(2,'0')} / ${String(doc.scenes.length).padStart(2,'0')} · ${esc(theme.footer)}</div><div class="progress"><span></span></div></body></html>`;
+}
+
+/**
+ * The caption layer of a karaoke Short (karaoke.mjs): the caption bar alone, at the card's
+ * geometry, on a transparent page, the words of the phrase with the group at `active` lit in
+ * the theme's karaoke colour. Only the colour and a glow change between states, never the
+ * layout, so the lit glyphs sit exactly over the card's hidden ones; build.mjs clips the
+ * screenshot to the bar (CAPTION_BOX) and motion.mjs lays it over the card at the same place.
+ */
+export function captionHtml(doc, { fontCss = '', lines = [], groups = [], active = 0 } = {}) {
+  const theme = themeOf(doc);
+  const c = theme.colors;
+  const lit = c.karaoke ?? c.highlight;
+  return `<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><style>${fontCss}
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:transparent;color:${c.text};font-family:'Noto Sans TC Variable',sans-serif}
+.caption{position:absolute;left:80px;top:1430px;width:820px;height:165px;padding:14px 20px;border-radius:22px;font-size:49px;line-height:1.36;font-weight:650;display:flex;align-items:center;justify-content:center;text-align:center}
+.g.on{color:${lit};text-shadow:0 0 14px ${lit}66}
+</style><body data-theme="${esc(theme.id)}" data-caption-layer="1"><div class="caption"><div class="words">${captionWords(lines, groups, active)}</div></div></body></html>`;
 }
