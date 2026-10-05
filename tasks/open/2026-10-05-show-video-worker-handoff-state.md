@@ -76,8 +76,8 @@ uv run --no-sync mypy app/video_reviews/producer_state.py app/video_reviews/sche
 uv run --no-sync pytest tests/test_video_producer_state.py tests/test_video_reviews.py -q
 ```
 
-Focused results on 2026-10-05: web 71 tests passed; API 61 passed, one symlink test
-skipped because this Windows session cannot create symlinks (it runs on Linux CI);
+Focused results on 2026-10-05: web 71 tests passed; API 62 passed, two symlink tests
+skipped because this Windows session cannot create symlinks (they run on Linux CI);
 mypy, ruff, full web lint, typecheck and five-locale/25-namespace i18n validation passed.
 
 ## Notes
@@ -97,3 +97,12 @@ mypy, ruff, full web lint, typecheck and five-locale/25-namespace i18n validatio
 - PR #1268 owns `admin-video-reviews.tsx`; this task leaves that file untouched and adds
   new message keys. Existing published/ready states and review truth are preserved.
 - No production write, generation, paid retry, upload, publication, or deployment occurred.
+- Independent review identified that a project symlink within the work base could falsely
+  look registered, although the real worker excludes symlinks via `Dirent.isDirectory()`.
+  The observer now checks the directory entry with `lstat` and `is_junction` before
+  resolving it and returns `unavailable` for a project symlink or Windows junction.
+  A source-bound within-base symlink regression runs on Linux CI and skips only when
+  the local platform cannot create directory symlinks. A Windows-only NTFS junction
+  regression creates a real within-base junction without requiring administrator access.
+  The real NTFS junction regression passed locally; ruff, mypy and the focused API
+  suite were rerun after the review fix.

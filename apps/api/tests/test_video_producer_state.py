@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import json
+import shutil
+import subprocess
+import sys
 from datetime import UTC, datetime
 from pathlib import Path
 from unittest.mock import AsyncMock
@@ -102,6 +105,39 @@ def test_symlinks_must_not_read_state_outside_the_work_mount(tmp_path: Path) -> 
         (base / SLUG).symlink_to(outside / SLUG, target_is_directory=True)
     except OSError:
         pytest.skip("this platform cannot create directory symlinks")
+    assert worker_state(str(base), SLUG) == "unavailable"
+
+
+def test_within_mount_project_symlink_is_not_registered_by_the_worker(tmp_path: Path) -> None:
+    base = tmp_path / "work"
+    base.mkdir()
+    target = _state(base / "original", "active").parent
+    assert target.is_relative_to(base)
+    try:
+        (base / SLUG).symlink_to(target, target_is_directory=True)
+    except OSError:
+        pytest.skip("this platform cannot create directory symlinks")
+    # The target's auto.json has the requested slug, but the worker does not enumerate
+    # the symlink as a directory. Containment and JSON identity alone are insufficient.
+    assert json.loads((target / "auto.json").read_text(encoding="utf-8"))["slug"] == SLUG
+    assert worker_state(str(base), SLUG) == "unavailable"
+
+
+@pytest.mark.skipif(sys.platform != "win32", reason="NTFS junctions are Windows-only")
+def test_within_mount_project_junction_is_not_registered_by_the_worker(tmp_path: Path) -> None:
+    base = tmp_path / "work"
+    base.mkdir()
+    target = _state(base / "original", "active").parent
+    entry = base / SLUG
+    command = shutil.which("cmd.exe")
+    assert command is not None and Path(command).is_absolute()
+    subprocess.run(
+        [command, "/c", "mklink", "/J", str(entry), str(target)],
+        check=True,
+        capture_output=True,
+    )
+    assert entry.is_junction() and target.is_relative_to(base)
+    assert json.loads((entry / "auto.json").read_text(encoding="utf-8"))["slug"] == SLUG
     assert worker_state(str(base), SLUG) == "unavailable"
 
 

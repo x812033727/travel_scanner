@@ -30,7 +30,20 @@ def worker_state(work_dir: str | None, slug: str) -> WorkerState:
         base = Path(work_dir).resolve(strict=True)
         if not base.is_dir():
             return "unavailable"
-        project = (base / slug).resolve()
+        entry = base / slug
+        try:
+            project_info = entry.lstat()
+        except FileNotFoundError:
+            return "not_adopted"
+        # automatedVideos uses Dirent.isDirectory(), which excludes symlink entries,
+        # including a link to another directory inside the same work base.
+        if (
+            stat.S_ISLNK(project_info.st_mode)
+            or entry.is_junction()
+            or not stat.S_ISDIR(project_info.st_mode)
+        ):
+            return "unavailable"
+        project = entry.resolve(strict=True)
         if not project.is_relative_to(base):
             return "unavailable"
         path = (project / "auto.json").resolve()
