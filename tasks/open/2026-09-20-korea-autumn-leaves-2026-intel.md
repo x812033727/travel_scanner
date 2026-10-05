@@ -1,17 +1,18 @@
 ---
 id: 2026-09-20-korea-autumn-leaves-2026-intel
 title: 韓國賞楓 2026 時效情報：10 月上旬山林廳預測地圖發布後再寫（第八批規劃時官方來源還沒開張）
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5-korea-autumn-leaves
+claimed_at: 2026-10-05T07:35:44Z
 created_at: 2026-09-20T00:24:20Z
 completed_at:
-branch:
+branch: claude/korea-autumn-leaves
 depends_on: []
 scope:
   - apps/api/app/guides/content/korea-autumn-leaves-2026.json
+  - apps/web/public/guides/korea-autumn-leaves-2026
 ---
 
 # 韓國賞楓 2026 時效情報：10 月上旬山林廳預測地圖發布後再寫
