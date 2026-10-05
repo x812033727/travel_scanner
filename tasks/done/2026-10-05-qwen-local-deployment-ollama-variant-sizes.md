@@ -115,8 +115,10 @@ cd apps/api && PYTHONUTF8=1 uv run python -m app.guides.pack_cli lint --kind lif
   bullet; two sentences that explain the range open the "檔案大小是要下載的量" paragraph (block 6);
   the table's qwen3.6:27b row (18 到 19GB) and caption; the image `description`, and the SVG's
   label and `<desc>`, now 「qwen3.5:9b 是 6.6 到 7.6GB」. The label fits its box (rendered to PNG
-  with `render_svg` and looked at). The search-page facts (block 4) and the description were not
-  re-read and keep their 2026-09-14 date.
+  with `render_svg` and looked at). The search-page facts (block 4) were not re-read and keep their
+  2026-09-14 date. The pack `description` first kept dating every source to 2026 年 9 月 14 日;
+  after review of PR #1290 it says, as block 1 does, that the Ollama tag-page file sizes were
+  re-checked on 10 月 5 日 (the parenthetical follows `ai-video-tools-compared`'s description).
 - Checks: `pack_cli lint --kind life --slug qwen-local-deployment` 0 errors, 1 warning
   (`no_summary`, as on main); `intake_check.py --slug qwen-local-deployment --from-content`: the
   diagram-number check passes. Its two FAILs (first block is not a summary; 本文/這篇 three times)
