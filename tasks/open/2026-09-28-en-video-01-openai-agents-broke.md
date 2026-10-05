@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-en-video-01-openai-agents-broke
 title: Produce EN video 01: OpenAI's agents broke into government websites
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: claude-fable-5-1
-claimed_at: 2026-09-28T02:48:20Z
+owner:
+claimed_at:
 created_at: 2026-09-28T02:13:09Z
 completed_at:
 branch: claude/ai-video-planning-l43qas
@@ -64,3 +64,4 @@ node tools/video/cli.mjs status --slug openai-agents-broke-in --workdir <VIDEO_W
 - 2026-09-28 09:47 UTC: final approved by the owner on /admin/videos (and recorded from the chat, same hash); `package` 4/4; publish gate auto-approved (「可以上架」); dubs gate sent with en, ja, ko and waiting for the owner to upload the tracks in Studio's Languages page and approve it. Left for the owner: upload private per `upload/UPLOAD.md`, paste the YouTube URL and publish time on the card, then fill `scoreboard.csv` at 48 h, 7 d and 28 d.
 - 2026-09-28 evening: the owner moved the upload to 2026-10-01 (`schedule.csv`: 11:00 UTC, 19:00 in Taiwan; the time is picked on the card). In October two lines would have gone stale, so they were rewritten in zh-TW and the four translations: 6dtj 「這個月 OpenAI 承認」 → 「9 月，OpenAI 承認」 (and the hook-sites slide), bp7z 「10 月 1 日…要開聽證會」 → 「把聽證會訂在 10 月 1 日，並請…出席」, true before and after the hearing. Re-recorded 2 zh-TW lines and 6 dub lines (Whisper-checked), re-rendered, re-assembled; audio gate auto-approved again; the final gate went back to the owner (final.mp4 513b44ac4270); packaging, publish and dubs run as soon as it is approved.
 - 2026-09-28 10:57 UTC: the owner approved the rebuilt final (513b44ac4270); `package` 4/4 (metadata.json 01fa65da66dd); publish gate auto-approved; the new dubs card is waiting for the owner. The owner had approved the old dubs cards of videos 1–3 at 09:55 without uploading anything yet (confirmed in chat); nothing is on YouTube yet.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-28T02:48:20Z) was stale and is released so it stops locking its scope. Landed: #968. Still open: Owner uploads private in Studio, pastes URL on /admin/videos, schedules; dubs gate approval; scoreboard.csv rows at 48h/7d/28d from Studio; Retitle to variant C on/after 2026-10-20 if news traffic faded.

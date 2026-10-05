@@ -1,13 +1,13 @@
 ---
 id: 2026-09-27-video-drama-room-withdraw-a-one
 title: Video drama room: withdraw a one-off before the worker starts it
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1-video-languages
 claimed_at: 2026-09-27T14:06:11Z
 created_at: 2026-09-27T13:54:14Z
-completed_at:
+completed_at: 2026-10-05T00:24:04Z
 branch: claude/video-review-manga-workflow-fp1rpz
 depends_on: []
 scope:
@@ -44,3 +44,4 @@ scope:
 - web：單集清單卡片在 `setting`，或 `active` 且那一集 `ready`、沒開始也沒完成時有「撤回」；作品頁在每一集都
   `planned`／`ready` 時有，撤回後回到清單。被拒絕時顯示伺服器的理由。
 - 整合測試 `test_a_drama_is_withdrawn_before_its_episode_starts_and_not_after` 要 PostgreSQL，本機沒跑，靠 CI。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1-video-languages (since 2026-09-27T14:06:11Z) was stale; the work landed in #870 and every box was already ticked, so the ticket is closed.

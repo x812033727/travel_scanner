@@ -542,6 +542,44 @@ async def test_link_maintenance_rotates_outages_but_disables_unsafe_redirects(
     assert link.status == ("disabled" if unsafe else "approved")
 
 
+async def test_link_maintenance_leaves_an_offer_reviewed_while_its_link_was_checked(
+    session, monkeypatch
+):
+    """The job holds the offers it read before checking their links. A review that lands
+    during the check moves ``version``; the job reads the locked row again rather than the
+    copy it holds, sees that, and leaves the review alone."""
+    from app.travel_services import jobs
+
+    item = await product(session)
+    link, _ = await offer(session, item)
+    link.updated_at = datetime(2020, 1, 1, tzinfo=UTC)
+    await session.commit()
+
+    @asynccontextmanager
+    async def same_session():
+        yield session
+
+    reviews: list[None] = []
+
+    async def reviewed_meanwhile(*_args, **_kwargs):
+        if not reviews:
+            # What admin.review_offer commits, written past the session's loaded objects.
+            await session.execute(
+                update(TravelServiceOffer)
+                .where(TravelServiceOffer.id == link.id)
+                .values(version=TravelServiceOffer.version + 1)
+                .execution_options(synchronize_session=False)
+            )
+            reviews.append(None)
+        raise ValueError("unsafe redirect")
+
+    monkeypatch.setattr(jobs, "SessionFactory", same_session)
+    monkeypatch.setattr(jobs, "verify_link", reviewed_meanwhile)
+    await jobs.maintain_links()
+    await session.refresh(link)
+    assert (link.status, link.version) == ("approved", 2)
+
+
 async def test_anonymous_clickout_is_303_and_never_books(client, session, monkeypatch):
     item = await product(session)
     link, _ = await offer(session, item)

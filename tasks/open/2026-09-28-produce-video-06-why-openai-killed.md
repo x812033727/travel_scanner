@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-produce-video-06-why-openai-killed
 title: Produce video 06: why OpenAI killed Sora, and what AI video costs per second now
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: claude-opus-5-5
-claimed_at: 2026-09-28T10:08:50Z
+owner:
+claimed_at:
 created_at: 2026-09-28T10:08:25Z
 completed_at:
 branch:
@@ -52,3 +52,4 @@ node tools/video/cli.mjs status --slug why-openai-killed-sora --workdir <VIDEO_W
 - 2026-09-28 15:00–15:30 UTC: narration recorded early after the Gemini limit was raised (see Steps). A site outage (「API 服務目前無法回應」) stopped the first `tts` run after 17 of 30 requests; the re-run reused them and synthesized the other 13 (1,680 characters; narration 08:22). `check-audio`: 101 lines, 71 word for word, 20 same-sound, 1 judged fine by Jev, 9 flagged. Local Whisper (large-v3) heard 46dv, uxum, ux5y and 7pcx as written, so Gemini misheard them (Veo 三點一 as 算便宜, 自家 as 這家). r7yj only gained a spoken 啊, so it stays. Both transcribers agreed that four clips were off: wcet said 這八秒 for 一支八秒, iysq sounded like 一至八秒, nfcf like 契約頁, and hc3t like 描述 for 秒數. The same words pass in itjj and iayh, so these four were retaken as written first (`review/retake-1.json`), with `say` held back in case a retake fails.
 - 2026-09-28 15:30–17:10 UTC: narration re-checked after the retakes. Local Whisper agreed with Gemini that four clips were off (一支八秒 → 一至八秒, 秒數 → 描述, 棄用頁 → 契約頁). A retake as written fixed nfcf. wcet, iysq and hc3t now say 一段八秒 and 長度 through `say`, with the captions unchanged. The owner approved the audio at 15:48. Dubs `--line-by-line`: en, ja and ko each needed a few lines trimmed to fit (en 32i6; ja ufsf, 5n89, pnnk, m6en, ctak; ko pnnk). `check-audio --locale` flagged en 8, ja 20 and ko 14 lines, and Whisper large-v3 decided each. Real misreads were fixed and retaken: en na3m (Kling 3.0); ja ctak (0.14秒 → ドル written back), whhz (停止 → 打ち切り), abiv (多社 → 複数社) and 2bmt/xvcc/7crj retaken; ko u9xn (포함끼리 → 포함 기준) and r26r (대체를 정하지). ja qm8a's 廃止ページ was heard as 配置 twice. The same term reads fine in iayh and gxbt, so it stays. QA 9 of 11: links fails because web.archive.org is blocked by this environment's egress proxy and The Verge and Business Insider refuse the checker (both return 200 to curl with our UA); policy fails because the channel stance is blank. Final submitted for the owner's review at about 17:05.
 - 2026-09-28 23:02 UTC: the owner approved the final (e7504a098f74). `package` passed 4 of 4 (metadata.json 383fc7b892a5), the publish card was approved automatically, and the dubs card waits for the owner. Next: the owner approves dubs, uploads privately per `docs/videos/UPLOAD.md`, adds the en/ja/ko tracks in Studio, then pastes the video URL and publish time on the 「可以上架」 card; `scoreboard.csv` rows after that.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5 (since 2026-09-28T10:08:50Z) was stale and is released so it stops locking its scope. Landed: #968. Still open: DoD: brief + outline pick (done per notes, unticked); DoD: script/narration verified (done per notes); DoD: CC 5 locales + en/ja/ko dubs (done per notes); DoD: dubs gate approval by owner, private upload, scoreboard.csv rows; Step: narration and dubs (done per notes, unticked).

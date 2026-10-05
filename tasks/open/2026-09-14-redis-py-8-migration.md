@@ -1,11 +1,11 @@
 ---
 id: 2026-09-14-redis-py-8-migration
 title: Migrate the API from redis-py 6 to redis-py 8
-status: review
+status: open
 priority: P2
 area: api
-owner: claude-fable-5-1
-claimed_at: 2026-09-19T11:33:47Z
+owner:
+claimed_at:
 created_at: 2026-09-14T11:01:03Z
 completed_at:
 branch: claude/travel-scanner-pr-552-rpq36m
@@ -121,3 +121,4 @@ a real socket. **After the deploy the owner confirms a worker still picks up a q
 docker compose -f docker-compose.prod.yml logs --since 10m worker | grep -c "Job OK"   # > 0 after any enqueue
 docker compose -f docker-compose.prod.yml exec -T api python -c "import redis; print(redis.__version__)"   # 8.1.0
 ```
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T11:33:47Z) was stale and is released so it stops locking its scope. Landed: #565 #1137. Still open: Full CI green including redis:7.4 integration tests; After deploy, worker still picks up and finishes a queued job; Run API checks, push, read CI integration results.

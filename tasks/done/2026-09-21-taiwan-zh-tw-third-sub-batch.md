@@ -1,13 +1,13 @@
 ---
 id: 2026-09-21-taiwan-zh-tw-third-sub-batch
 title: Taiwan zh-TW third sub-batch: Kaohsiung and Tainan itineraries
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-taiwan-zh-tw-batch003
 claimed_at: 2026-09-21T14:26:02Z
 created_at: 2026-09-21T14:26:00Z
-completed_at:
+completed_at: 2026-10-05T00:24:00Z
 branch: codex/taiwan-zh-tw-batch-003
 depends_on: []
 scope:
@@ -121,3 +121,4 @@ writing to production.
   `blocks[6]` add "R11", ja/zh-CN `blocks[16]` add the 1883 lighthouse date.
   tainan-2-day-itinerary: ja `blocks[3]` writes 05:50/23:00; zh-TW
   `diagram-1-zh-tw.svg` 14 px labels became 15 px. No zh-TW text changed.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-taiwan-zh-tw-batch003 (since 2026-09-21T14:26:02Z) was stale; the work landed in #622 and every box was already ticked, so the ticket is closed.

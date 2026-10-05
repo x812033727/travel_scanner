@@ -1,11 +1,11 @@
 ---
 id: 2026-09-22-destination-services-pages-differ-only-by
 title: Destination services pages differ only by their title, so Google picks its own canonical
-status: in-progress
+status: open
 priority: P2
 area: web
-owner: claude-opus-5
-claimed_at: 2026-09-22T10:43:12Z
+owner:
+claimed_at:
 created_at: 2026-09-22T10:39:00Z
 completed_at:
 branch:
@@ -96,3 +96,4 @@ Search Console's 網頁索引狀態 report.
   yet.
 - `/login` is crawlable and Google is spending fetches on it (it supplies both the 5xx and the
   soft 404 example). Worth its own ticket if anyone is tidying crawl budget.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5 (since 2026-09-22T10:43:12Z) was stale and is released so it stops locking its scope. Landed: #661. Still open: Search Console duplicate count for /destinations/*/services falls to zero on a later crawl; Deploy, then confirm on the live site.

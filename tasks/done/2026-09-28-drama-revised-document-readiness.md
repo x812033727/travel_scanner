@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-drama-revised-document-readiness
 title: Invalidate drama episode readiness when governing document versions change
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-ten-drama
 claimed_at: 2026-09-28T15:03:48Z
 created_at: 2026-09-28T14:26:39Z
-completed_at:
+completed_at: 2026-10-05T00:24:30Z
 branch: codex/ten-drama-audit-fixes
 depends_on: []
 scope:
@@ -130,3 +130,4 @@ HTTP concurrency behavior or browser acceptance.
 - Worker/tool suite: 578 pass, 1 existing Windows/Bash environment skip.
 - The branch is ready for code review; it has not been merged or deployed. The
   independent production/browser follow-up remains with its existing owner.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-ten-drama (since 2026-09-28T15:03:48Z) was stale; the work landed in #978 and every box was already ticked, so the ticket is closed.

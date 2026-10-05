@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-drama-manual-edit-structured-data
 title: Keep drama manual edits consistent with structured production data
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-ten-drama
 claimed_at: 2026-09-28T15:03:43Z
 created_at: 2026-09-28T14:13:50Z
-completed_at:
+completed_at: 2026-10-05T00:24:16Z
 branch: codex/ten-drama-audit-fixes
 depends_on: []
 scope:
@@ -148,3 +148,4 @@ agrees with what the owner approved, not just that the PUT returns success.
 - Revision race protections also bind AI replies to target/parent snapshots
   and owner decisions to the displayed expected_version. Stale operations cannot
   overwrite a newer draft or approve an unseen version.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-ten-drama (since 2026-09-28T15:03:43Z) was stale; the work landed in #978 and every box was already ticked, so the ticket is closed.

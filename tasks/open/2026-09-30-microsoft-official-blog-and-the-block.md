@@ -1,11 +1,11 @@
 ---
 id: 2026-09-30-microsoft-official-blog-and-the-block
 title: Microsoft official blog and The Block refuse the news scanner (Cloudflare 403): find readable pages or demote to lead_only
-status: review
+status: open
 priority: P2
 area: api
-owner: claude-opus-5-5-news-4-9
-claimed_at: 2026-09-30T12:20:14Z
+owner:
+claimed_at:
 created_at: 2026-09-30T11:04:55Z
 completed_at:
 branch: claude/gifted-rubin-umw5s4
@@ -46,3 +46,4 @@ was skipped every hour; with it, each recent entry becomes a `news_page_refused`
   answer Cloudflare 403). Its recent refused entries become `news_page_refused` leads, and the
   Microsoft Research blog (readable) remains a source.
 - Left: confirm both 403s from the host (first box).
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5-news-4-9 (since 2026-09-30T12:20:14Z) was stale and is released so it stops locking its scope. Landed: #1041. Still open: On the host, confirm in /admin/news that both sources are at partial with HTTPStatusError skips.
