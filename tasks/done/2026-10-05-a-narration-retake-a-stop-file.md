@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-a-narration-retake-a-stop-file
 title: A narration retake a STOP file interrupted resumes instead of blocking on the evidence guard
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-flow-stop-and-repackage
 claimed_at: 2026-10-05T12:26:33Z
 created_at: 2026-10-05T01:48:50Z
-completed_at:
+completed_at: 2026-10-05T13:39:10Z
 branch: claude/flow-stop-and-repackage
 depends_on: []
 scope:

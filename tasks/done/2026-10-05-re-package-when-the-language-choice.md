@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-re-package-when-the-language-choice
 title: Re-package when the language choice no longer matches the upload package
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-flow-stop-and-repackage
 claimed_at: 2026-10-05T12:26:26Z
 created_at: 2026-10-05T00:30:05Z
-completed_at:
+completed_at: 2026-10-05T13:38:50Z
 branch: claude/flow-stop-and-repackage
 depends_on: []
 scope:
@@ -67,7 +67,8 @@ DURATION_ONLY increment; do not edit review.json yourself.
   out so final.mp4 is never hashed, and reads only the two choice problems ("written for another
   language choice", "the language choice does not have"). `readPackageReport` was not used
   because it hashes final.mp4 every round for every finished video. False without metadata.json
-  (the package is written later, with the choice) or without a choice.
+  (the package is written later, with the choice), without a choice, or with a metadata.json that
+  cannot be parsed (the package check reports that itself; this new read must not crash `auto`).
 - In `languages()` both "nothing pending" returns (the zh-TW one and `!channel`) now fall through
   to the existing only-zh-TW branch when the package is stale: thumbnails, `captions`, `package`,
   a block on a failing exit, and the line "upload package written again for the current language

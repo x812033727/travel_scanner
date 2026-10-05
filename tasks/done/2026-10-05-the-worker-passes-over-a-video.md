@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-the-worker-passes-over-a-video
 title: The worker passes over a video its own STOP file holds instead of ending the round on it
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-flow-stop-and-repackage
 claimed_at: 2026-10-05T12:25:17Z
 created_at: 2026-10-05T01:50:50Z
-completed_at:
+completed_at: 2026-10-05T13:38:45Z
 branch: claude/flow-stop-and-repackage
 depends_on: []
 scope:
