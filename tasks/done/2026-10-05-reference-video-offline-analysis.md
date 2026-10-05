@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-reference-video-offline-analysis
 title: Reference video analysis offline: yt-dlp plus ffmpeg scene, motion and speech measures of any length
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-fable-5-1-refanalysis
 claimed_at: 2026-10-05T16:59:13Z
 created_at: 2026-10-05T16:08:27Z
-completed_at:
+completed_at: 2026-10-05T17:22:59Z
 branch: claude/reference-video-analysis
 depends_on:
   - 2026-10-05-slideshow-risk-craft-rows
