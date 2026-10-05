@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-nginx-detector-pipefail-test-times-out
 title: nginx detector pipefail test times out on Windows
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-nginx-test-windows
 claimed_at: 2026-10-05T12:49:16Z
 created_at: 2026-10-05T01:25:32Z
-completed_at:
+completed_at: 2026-10-05T13:04:13Z
 branch: claude/nginx-test-windows
 depends_on: []
 scope:
