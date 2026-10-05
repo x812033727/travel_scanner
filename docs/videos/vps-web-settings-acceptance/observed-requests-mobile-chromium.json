@@ -1,0 +1,265 @@
+{
+  "save and reload": [
+    {
+      "method": "GET",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 200,
+      "sent": null,
+      "received": {
+        "enabled": false,
+        "configured": false,
+        "secret_set": false,
+        "source": "none",
+        "updated_at": null,
+        "last_test_status": null,
+        "browser_status": null,
+        "active_jobs": null
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 200,
+      "sent": {
+        "enabled": true,
+        "url": "http://127.0.0.1:18781",
+        "channel_id": "UCSyntheticFixture000002",
+        "desktop_url": "http://127.0.0.1:16080/vnc.html",
+        "secret": "<synthetic secret>",
+        "expected_updated_at": null
+      },
+      "received": {
+        "enabled": true,
+        "configured": true,
+        "secret_set": true,
+        "source": "database",
+        "updated_at": "2026-10-05T00:00:01Z",
+        "last_test_status": null,
+        "browser_status": null,
+        "active_jobs": null
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 200,
+      "sent": null,
+      "received": {
+        "enabled": true,
+        "configured": true,
+        "secret_set": true,
+        "source": "database",
+        "updated_at": "2026-10-05T00:00:01Z",
+        "last_test_status": null,
+        "browser_status": null,
+        "active_jobs": null
+      }
+    }
+  ],
+  "connection test and desktop link": [
+    {
+      "method": "GET",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 200,
+      "sent": null,
+      "received": {
+        "enabled": true,
+        "configured": true,
+        "secret_set": true,
+        "source": "database",
+        "updated_at": "2026-10-05T00:00:01Z",
+        "last_test_status": null,
+        "browser_status": null,
+        "active_jobs": null
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/travel/admin/video-youtube/vps/settings/test",
+      "status": 200,
+      "sent": null,
+      "received": {
+        "enabled": true,
+        "configured": true,
+        "secret_set": true,
+        "source": "database",
+        "updated_at": "2026-10-05T00:00:02Z",
+        "last_test_status": "failed",
+        "browser_status": null,
+        "active_jobs": null
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 200,
+      "sent": {
+        "channel_id": "UCSyntheticFixture000001",
+        "expected_updated_at": "2026-10-05T00:00:02Z"
+      },
+      "received": {
+        "enabled": true,
+        "configured": true,
+        "secret_set": true,
+        "source": "database",
+        "updated_at": "2026-10-05T00:00:03Z",
+        "last_test_status": null,
+        "browser_status": null,
+        "active_jobs": null
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/travel/admin/video-youtube/vps/settings/test",
+      "status": 200,
+      "sent": null,
+      "received": {
+        "enabled": true,
+        "configured": true,
+        "secret_set": true,
+        "source": "database",
+        "updated_at": "2026-10-05T00:00:04Z",
+        "last_test_status": "success",
+        "browser_status": "idle",
+        "active_jobs": 0
+      }
+    }
+  ],
+  "layout": [
+    {
+      "method": "GET",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 200,
+      "sent": null,
+      "received": {
+        "enabled": true,
+        "configured": true,
+        "secret_set": true,
+        "source": "database",
+        "updated_at": "2026-10-05T00:00:02Z",
+        "last_test_status": "success",
+        "browser_status": "idle",
+        "active_jobs": 0
+      }
+    }
+  ],
+  "stale write recovery": [
+    {
+      "method": "GET",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 200,
+      "sent": null,
+      "received": {
+        "enabled": true,
+        "configured": true,
+        "secret_set": true,
+        "source": "database",
+        "updated_at": "2026-10-05T00:00:01Z",
+        "last_test_status": null,
+        "browser_status": null,
+        "active_jobs": null
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 409,
+      "sent": {
+        "channel_id": "UCSyntheticFixture000003",
+        "secret": "<synthetic secret>",
+        "expected_updated_at": "2026-10-05T00:00:01Z"
+      },
+      "received": {
+        "code": "vps_settings_conflict"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 200,
+      "sent": null,
+      "received": {
+        "enabled": true,
+        "configured": true,
+        "secret_set": true,
+        "source": "database",
+        "updated_at": "2026-10-05T00:00:02Z",
+        "last_test_status": null,
+        "browser_status": null,
+        "active_jobs": null
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 200,
+      "sent": {
+        "channel_id": "UCSyntheticFixture000003",
+        "secret": "<synthetic secret>",
+        "expected_updated_at": "2026-10-05T00:00:02Z"
+      },
+      "received": {
+        "enabled": true,
+        "configured": true,
+        "secret_set": true,
+        "source": "database",
+        "updated_at": "2026-10-05T00:00:03Z",
+        "last_test_status": null,
+        "browser_status": null,
+        "active_jobs": null
+      }
+    }
+  ],
+  "read-only": [
+    {
+      "method": "GET",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 200,
+      "sent": null,
+      "received": {
+        "enabled": true,
+        "configured": true,
+        "secret_set": true,
+        "source": "database",
+        "updated_at": "2026-10-05T00:00:01Z",
+        "last_test_status": null,
+        "browser_status": null,
+        "active_jobs": null
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 200,
+      "sent": null,
+      "received": {
+        "enabled": true,
+        "configured": true,
+        "secret_set": true,
+        "source": "database",
+        "updated_at": "2026-10-05T00:00:01Z",
+        "last_test_status": null,
+        "browser_status": null,
+        "active_jobs": null
+      }
+    }
+  ],
+  "uploader settings link": [
+    {
+      "method": "GET",
+      "path": "/api/travel/admin/video-youtube/vps/settings",
+      "status": 200,
+      "sent": null,
+      "received": {
+        "enabled": false,
+        "configured": false,
+        "secret_set": false,
+        "source": "none",
+        "updated_at": null,
+        "last_test_status": null,
+        "browser_status": null,
+        "active_jobs": null
+      }
+    }
+  ]
+}

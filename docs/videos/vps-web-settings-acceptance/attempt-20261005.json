@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "task": "2026-09-30-youtube-vps-web-settings-browser-acceptance",
+  "branch": "claude/vps-settings-e2e",
+  "base_commit": "981bd81fb",
+  "status": "passed_locally_ci_pending",
+  "environment": {
+    "os": "Windows 11 Home ARM64 (Snapdragon X Plus)",
+    "node_version": "24.13.0",
+    "next_version": "16.3.7",
+    "next_build": "next build --webpack (Turbopack refuses the linked node_modules on this machine)",
+    "playwright_version": "1.63.0",
+    "browser": "Chromium headless shell 153.0.8010.12",
+    "servers": "tools/e2e-runtime-api.mjs on 127.0.0.1:8000 and next start on 127.0.0.1:3187, both started and stopped by Playwright"
+  },
+  "commands": [
+    "cd apps/web && npx next build --webpack",
+    "PLAYWRIGHT_SERVE_BUILD=true PLAYWRIGHT_PORT=3187 VPS_ACCEPTANCE_DIR=<this folder> npx playwright test e2e/admin-video-vps-settings.spec.ts --workers=2",
+    "the same without VPS_ACCEPTANCE_DIR and with --repeat-each=2"
+  ],
+  "results": {
+    "projects": [
+      "desktop-chromium",
+      "mobile-chromium"
+    ],
+    "cases_per_project": 6,
+    "receipt_run": {
+      "passed": 12,
+      "failed": 0
+    },
+    "repeat_each_2": {
+      "passed": 24,
+      "failed": 0
+    },
+    "machine_load": "CPU at 100 percent with other agents running; the first case took up to 43 s of its 60 s budget",
+    "earlier_spec_versions": "Uncommitted earlier versions of the spec timed out locally at the default 30 s: in the first case of a worker, before the save and the connection test were split and the two cases with two full renders got 60 s; and once in 24 repeats in the read-only case, before it dropped a layout pass the layout case already makes.",
+    "secret_in_responses_page_or_receipt": false,
+    "external_requests": 0,
+    "page_errors": 0
+  },
+  "negative_checks": [
+    "Before the card scrolled itself into view, the uploader-link case failed on both projects at the heading's toBeInViewport (viewport ratio 0).",
+    "With the synthetic store temporarily echoing the secret in its view, the save-and-reload and read-only cases failed on the secret assertions; the store was restored to the hash below before the receipt run.",
+    "With the card's scroll disabled, its new unit test failed (scrollIntoView called 0 times)."
+  ],
+  "evidence": [
+    {
+      "path": "youtube-vps-settings-desktop-chromium-tested-light.jpg",
+      "sha256": "e2214578ea3c0af1b2cae86dae49384ff6d08755be3c61992fad2373beb915a5"
+    },
+    {
+      "path": "youtube-vps-settings-desktop-chromium-tested-dark.jpg",
+      "sha256": "9bd1e55de9642ed9a0e0af71e5f488eece1546f1d1229df3dc92716a14e63347"
+    },
+    {
+      "path": "youtube-vps-settings-mobile-chromium-tested-light.jpg",
+      "sha256": "2c329c5d29a26537ba59988317ccd8ae600ec6c85767ab18e43ad19fe3608976"
+    },
+    {
+      "path": "youtube-vps-settings-mobile-chromium-tested-dark.jpg",
+      "sha256": "91eaa634f6e389d7b0eb1e0def790ea4943cb5f75f667975750bbfbb1974bcac"
+    },
+    {
+      "path": "observed-requests-desktop-chromium.json",
+      "sha256": "45bec7161d98e16efbd2292b4c6d29ee246406f1ba6a1aef78d14e8ed4528428"
+    },
+    {
+      "path": "observed-requests-mobile-chromium.json",
+      "sha256": "45bec7161d98e16efbd2292b4c6d29ee246406f1ba6a1aef78d14e8ed4528428"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "apps/web/e2e/admin-video-vps-settings.spec.ts",
+      "sha256": "142a47afec69b79559ca4cdafa21ce3719f7ce15400a58f6e8ae01347588ff71"
+    },
+    {
+      "path": "tools/e2e-runtime-api.mjs",
+      "sha256": "5867676f84812b8247ef1a2a200942d1ddb7a294e2d9137ff87a86abb3fb6599"
+    },
+    {
+      "path": "apps/web/components/admin-video-vps-settings.tsx",
+      "sha256": "3c4ae5801e7caabb0ae132214f1ba11298f6caf05e151b32ddec83d92065ad30"
+    }
+  ],
+  "limitations": [
+    "A local run on a webpack build; the CI run of the same spec on the default build is the authoritative proof.",
+    "The settings requests reach a synthetic store that copies the API's rules; the rules are proven by apps/api/tests/test_video_youtube_vps_settings.py.",
+    "No production, VPS, Google, real channel, upload or paid-service operation was performed."
+  ]
+}
