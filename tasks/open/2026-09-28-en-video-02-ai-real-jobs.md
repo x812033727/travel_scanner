@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-en-video-02-ai-real-jobs
 title: Produce EN video 02: AI can now do 21% of real freelance jobs (Remote Labor Index curve)
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: claude-opus-5-5
-claimed_at: 2026-09-28T04:41:07Z
+owner:
+claimed_at:
 created_at: 2026-09-28T04:40:55Z
 completed_at:
 branch: claude/ai-video-planning-l43qas
@@ -52,3 +52,4 @@ node tools/video/cli.mjs status --slug ai-real-jobs-chart --workdir <VIDEO_WORKD
 
 - 2026-09-28（站主決定）：影片是繁中影片（繁中旁白與投影片），英文字幕之外，另做英文、日文、韓文三條配音音軌（`dub --locale en,ja,ko`，`docs/videos/DUBS.md`）；站主在 Studio「語言」頁上傳。前提：頻道已開通進階功能，且關掉「允許自動配音」。
 - 2026-09-28 09:47 UTC: final approved by the owner on /admin/videos (and recorded from the chat, same hash); `package` 4/4; publish gate auto-approved (「可以上架」); dubs gate sent with en, ja, ko and waiting for the owner to upload the tracks in Studio's Languages page and approve it. Left for the owner: upload private per `upload/UPLOAD.md`, paste the YouTube URL and publish time on the card, then fill `scoreboard.csv` at 48 h, 7 d and 28 d.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5 (since 2026-09-28T04:41:07Z) was stale and is released so it stops locking its scope. Landed: #968. Still open: Final, publish and dubs gates approved; owner uploads private; scoreboard.csv rows filled.

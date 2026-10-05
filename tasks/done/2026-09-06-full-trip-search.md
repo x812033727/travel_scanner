@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-full-trip-search
 title: 彈性日期區塊的價格標籤寫死 full_trip_search
-status: review
+status: done
 priority: P3
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T11:14:46Z
 created_at: 2026-09-06T20:32:08Z
-completed_at:
+completed_at: 2026-10-05T00:23:29Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -113,3 +113,4 @@ npm run lint:web        -> eslint . --max-warnings=0（exit 0）
 次數，到 `/search` 跑一次彈性日期搜尋、選一個估價日期，確認「套用並重新搜尋整趟 · 消耗 N 次」
 的 N 和 `/usage` 實際保留的數字一致；再開一個旅程頁看「查機票 · 消耗 N 次」等於
 `travel_search` 的價格。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T11:14:46Z) was stale; the work landed in #565 and every box was already ticked, so the ticket is closed.

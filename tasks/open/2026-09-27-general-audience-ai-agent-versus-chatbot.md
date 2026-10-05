@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-general-audience-ai-agent-versus-chatbot
 title: General audience AI agent versus chatbot video
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-video-review
-claimed_at: 2026-09-27T15:47:54Z
+owner:
+claimed_at:
 created_at: 2026-09-27T15:25:59Z
 completed_at:
 branch: codex/ai-general-videos
@@ -45,3 +45,4 @@ scope:
 2026-09-27 獨立查核寫入 `verify-1.md`，更正 `video.json.sources` 和 `claims.md` 原本誤指南門館 `n=5459` 的來源連結為本館 `n=5445`。`brief.md` 與 `demo-log.md` 的同一舊連結待撰稿者同步；開館日等旁白事實通過查核，`lint` 重跑仍為 0 錯 0 警。畫面渲染正在跑，音訊、字幕和上架包仍未完成。
 2026-09-28：舊來源連結已同步修正。五語字幕經獨立交叉審稿並重新合併；繁中旁白 10:18，五語 SRT 無速度警告。36 張字卡與縮圖已目視檢查，1080p 組裝中。大綱、旁白與成片審核及上架包仍待完成。
 2026-09-28：旁白逐句檢查初次標記 17 句；兩輪局部重錄後餘 6 句，已改寫歧義語句、獨立覆核四語翻譯並重新合成。最新 check-audio 142/142 已檢查、0 flagged；旁白約 10:14，五語字幕無速度警告。成片正在按新音軌重組。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-video-review (since 2026-09-27T15:47:54Z) was stale and is released so it stops locking its scope. Landed: #867. Still open: 8–12 min video, thumbnail and five-language subtitles pass the pipeline; full upload package handed to owner; Finish audio, visuals, subtitles, QA and upload package (render done; owner outline approval, prod review, 11-.

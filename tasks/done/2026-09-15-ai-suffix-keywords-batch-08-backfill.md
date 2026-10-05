@@ -1,13 +1,13 @@
 ---
 id: 2026-09-15-ai-suffix-keywords-batch-08-backfill
 title: 批次 08 落地後補 14 篇字尾關鍵字（生圖、去背、簡報、影片、配音、作曲、3D、Canva、字幕、版權）
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T11:09:29Z
 created_at: 2026-09-15T01:11:35Z
-completed_at:
+completed_at: 2026-10-05T00:23:45Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -136,3 +136,4 @@ python -m app.cli guides-import --actor-email <admin> --locale zh-TW \
   --dry-run
 # 看過 dry-run 後，同一串 --slug 把 --dry-run 換成 --publish
 ```
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T11:09:29Z) was stale; the work landed in #563 #565 and every box was already ticked, so the ticket is closed.

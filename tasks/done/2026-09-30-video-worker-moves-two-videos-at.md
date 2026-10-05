@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-video-worker-moves-two-videos-at
 title: Video worker moves two videos at once
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-09-30T01:13:28Z
 created_at: 2026-09-30T01:12:48Z
-completed_at:
+completed_at: 2026-10-05T00:24:42Z
 branch:
 depends_on: []
 scope:
@@ -45,3 +45,4 @@ After the deploy, the worker log shows `[lane 2]` lines while the first lane mov
 
 - Which lane takes the oldest video is a matter of timing; the test only asserts they differ.
 - Setting `VIDEO_WORKER_LANES: "1"` in docker-compose.prod.yml goes back to one at a time.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5 (since 2026-09-30T01:13:28Z) was stale; the work landed in #999 and every box was already ticked, so the ticket is closed.

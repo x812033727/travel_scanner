@@ -1,11 +1,11 @@
 ---
 id: 2026-09-07-mokaair-community-foundation
 title: Mokaair community foundation and account safety
-status: review
+status: open
 priority: P1
 area: api
-owner: codex-community-recovery-20261003
-claimed_at: 2026-10-03T12:37:39Z
+owner:
+claimed_at:
 created_at: 2026-09-07T09:22:13Z
 completed_at:
 branch: codex/unfinished-tickets-20261003
@@ -241,3 +241,4 @@ All-check snapshot SHA-256:
 `1a94a1b431240bd2e2a7e9623afe53cbbdad3295708d1e78e86f35f236f5f99d`.
 The earlier failed jobs remain historical evidence. A subsequent metadata-only
 commit is verified separately and does not change this owner boundary.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-community-recovery-20261003 (since 2026-10-03T12:37:39Z) was stale and is released so it stops locking its scope. Landed: #1175 #340. Still open: Complete real-service translation failure/revision, worker restart/outage and capacity recovery acceptance (lo.

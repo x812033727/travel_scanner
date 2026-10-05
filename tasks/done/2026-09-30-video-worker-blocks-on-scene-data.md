@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-video-worker-blocks-on-scene-data
 title: Video worker blocks on scene data and brief headings lint cannot see
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-09-30T00:29:31Z
 created_at: 2026-09-30T00:28:19Z
-completed_at:
+completed_at: 2026-10-05T00:24:44Z
 branch:
 depends_on: []
 scope:
@@ -51,3 +51,4 @@ lint as expected (three chat scenes flagged, all briefs pass).
   the writer anyway.
 - A render *layout* problem (text taller than its area, e.g. meta-anti-scam's outro with a
   two-line title and four lines) still blocks: only a browser finds it. Fixed by hand on the host.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5 (since 2026-09-30T00:29:31Z) was stale; the work landed in #995 and every box was already ticked, so the ticket is closed.

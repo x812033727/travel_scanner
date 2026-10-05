@@ -1,13 +1,13 @@
 ---
 id: 2026-09-16-guides-aliases-seed-crashes-in-the
 title: guides-aliases-seed crashes in the production image
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T08:32:15Z
 created_at: 2026-09-16T05:39:18Z
-completed_at:
+completed_at: 2026-10-05T00:23:52Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -86,3 +86,4 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli \
   repo 的 docs、monkeypatch `__file__` 成 `/app/app/guides/aliases.py` 後兩個預設都算得出且不是檔案、
   兩個 loader 回空、指錯路徑仍丟例外。
 - 部署後在正式站跑票上 How to verify 的兩條確認（第一條回 JSON、第二條報錯）即可 done。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T08:32:15Z) was stale; the work landed in #561 and every box was already ticked, so the ticket is closed.

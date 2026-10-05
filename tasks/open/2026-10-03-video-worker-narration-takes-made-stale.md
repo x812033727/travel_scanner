@@ -1,11 +1,11 @@
 ---
 id: 2026-10-03-video-worker-narration-takes-made-stale
 title: Video worker: narration takes made stale by the accent change are recorded again, not refused for ever
-status: in-progress
+status: open
 priority: P2
 area: tools
-owner: claude-opus-5-5
-claimed_at: 2026-10-03T16:23:36Z
+owner:
+claimed_at:
 created_at: 2026-10-03T16:23:10Z
 completed_at:
 branch:
@@ -50,3 +50,4 @@ scope:
 - 有 `audio_evidence` 但對不上錄音的情況沒動，照舊卡住要人處理。
 - 七支裡 gemini-skills-replace-gems-move-checklist 與 openai-agent-posted-53-user-images 另有「約 7.9 分鐘、不足 8 分鐘」的 lint 錯誤，會先回撰稿。
 - 審查者提的兩個已知風險：帶 `audio_ref` 的舊片若來源錄音還 current 但 cache 沒有它的 sha256，一般 `tts` 會以另一句 UsageError 停下（不是退步，原本 refresh 也拒絕）；以後再改送合成的內容，沒有證據的舊片會自動重錄，只受每月額度限制。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5 (since 2026-10-03T16:23:36Z) was stale and is released so it stops locking its scope. Landed: #1182. Still open: 部署後七支能走過「narration synthesized」.

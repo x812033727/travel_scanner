@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-drama-listener-stale-check
 title: Invalidate stale drama checks after listener narrative edits
-status: review
+status: done
 priority: P2
 area: tools
 owner: codex-ten-drama
 claimed_at: 2026-09-28T14:39:32Z
 created_at: 2026-09-28T14:28:35Z
-completed_at:
+completed_at: 2026-10-05T00:24:13Z
 branch: codex/ten-drama-audit-fixes
 depends_on: []
 scope:
@@ -157,3 +157,4 @@ the code before the fix.
   other bytes than before. An approval already given stays valid because
   script.md is only rewritten at the gate; a screenplay waiting for the owner at
   the deploy is sent again and leaves its first card behind.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-ten-drama (since 2026-09-28T14:39:32Z) was stale; the work landed in #978 and every box was already ticked, so the ticket is closed.

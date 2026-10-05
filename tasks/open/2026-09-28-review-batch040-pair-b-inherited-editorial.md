@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-review-batch040-pair-b-inherited-editorial
 title: Review Batch040 Pair B inherited editorial intake failures
-status: review
+status: open
 priority: P2
 area: docs
-owner: codex-batch040-editorial-20261003
-claimed_at: 2026-10-03T10:28:02Z
+owner:
+claimed_at:
 created_at: 2026-09-28T17:43:02Z
 completed_at:
 branch: codex/unfinished-tickets-20261003
@@ -122,3 +122,4 @@ release bindings. No fresh live source_correction receipt, production connection
 source-version reconciliation, import, publication or new browser acceptance
 occurred. Historical receipts remain immutable; future release work must capture
 fresh source versions and bind these reviewed files separately.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-batch040-editorial-20261003 (since 2026-10-03T10:28:02Z) was stale and is released so it stops locking its scope. Landed: #1175 #954. Still open: Review whether/how source should be corrected (done in #1175, box not ticked); Make accepted correction as separate versioned reviewed change (done in #1175); Keep five editions consistent and rerun strict intake/lint/source checks (done locally; residual missing-targe; Refresh release document hashes and source/review bindings (release/production work not done).

@@ -1,11 +1,11 @@
 ---
 id: 2026-09-19-api-keys-in-logged-urls
 title: Google API keys ride in request URLs and the collector logs them
-status: review
+status: open
 priority: P1
 area: api
-owner: claude-fable-5-1
-claimed_at: 2026-09-19T08:32:15Z
+owner:
+claimed_at:
 created_at: 2026-09-19T08:01:09Z
 completed_at:
 branch: claude/travel-scanner-pr-552-rpq36m
@@ -91,3 +91,4 @@ docker compose -f docker-compose.prod.yml logs --since 30m hotspot-collector | g
 - #561 deployed 2026-09-19 09:22 UTC (`f521b902`). Right after, `docker compose logs --since 10m <svc> | grep -c 'key=AIza'` was 0 for all seven app services (collector, api, worker, alert-worker, alert-scheduler, analytics-scheduler, community-sweeper), and the collector logged no `HTTP Request:` lines at all.
 - Not yet exercised live: that run reported `youtube` and `brave` as `quota_exhausted` (six deploys that day each triggered a collector startup run with guide backfill), so no YouTube call has gone out with the header yet. The next run after the daily quota reset is the first live check.
 - Left for the owner: rotate the YouTube key in Google Cloud and paste the new one into /admin/settings; this ticket stays in review until then.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T08:32:15Z) was stale and is released so it stops locking its scope. Landed: #561 #562 #976. Still open: Owner rotates the YouTube key (and the Maps and Travel Impact keys if they were logged); Ask the owner to rotate the keys in Google Cloud and update /admin/settings.

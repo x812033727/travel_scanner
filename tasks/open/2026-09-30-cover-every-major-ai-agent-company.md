@@ -1,11 +1,11 @@
 ---
 id: 2026-09-30-cover-every-major-ai-agent-company
 title: Cover every major AI agent company and the big tech companies with official news sources
-status: review
+status: open
 priority: P1
 area: api
-owner: claude-opus-5-5-news-4-9
-claimed_at: 2026-09-30T11:31:53Z
+owner:
+claimed_at:
 created_at: 2026-09-30T11:31:52Z
 completed_at:
 branch: claude/gifted-rubin-umw5s4
@@ -51,3 +51,7 @@ Cursor, TSMC, Samsung, Intel, AMD, Qualcomm, MediaTek and others.
 - Also added: a first-scan baseline in `scanner.py` (entries older than 72 hours or undated are
   recorded as seen, not drafted), so these sources do not draft their back catalogue. HTML blog
   listings keep the default 20 entries per scan because several pin older posts first.
+
+## Notes
+
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5-news-4-9 (since 2026-09-30T11:31:53Z) was stale and is released so it stops locking its scope. Landed: #1041. Still open: Loaded on the host with sources_cli after the deploy.
