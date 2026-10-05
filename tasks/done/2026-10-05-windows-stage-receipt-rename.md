@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-windows-stage-receipt-rename
 title: Handle a transient Windows rename denial while preserving stage receipt durability
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-stage-receipt-rename
 claimed_at: 2026-10-05T12:26:28Z
 created_at: 2026-10-05T11:22:44Z
-completed_at:
+completed_at: 2026-10-05T13:06:05Z
 branch: claude/stage-receipt-rename
 depends_on:
   - 2026-10-05-video-slides-prompt-repair-format
@@ -116,3 +116,17 @@ denial, a permanent denial and unchanged saved identities/bytes explicitly.
   - with a running receipt saved, it only GETs the job by id (1 POST in total);
   - a restart settles the same key. One request_key was used overall, and no new
     paid operation was dispatched.
+- Checks (Windows, Node 24.13.0, which matches CI's node 24):
+  - Before the repair, receipt + client suites passed 36/36. Run against the old store,
+    the new cases gave 4 failures and 1 skip.
+  - After the repair, receipt + client suites: 41 tests, 40 pass, 0 fail, 1 skip (the
+    POSIX mode test).
+  - `node --test --test-concurrency=3 "tools/video/automation/*.test.mjs"
+    tools/video/core/paths.test.mjs`: 345 tests, 343 pass, 0 fail, 2 skip (that mode
+    test and the existing symlink skip).
+  - The other importers of the automation client (qa.test, review/sync.test,
+    shorts/cut.test, shorts/lab.test): 101/101 pass.
+  - `tools/tasks.mjs check` passes, and `long-form/cli.mjs check` PASS (no
+    receipt-bound file changed).
+  - The full `npm run test:tools` was not repeated locally. Linux runs, including the
+    POSIX-only mode test, come from the PR's CI.
