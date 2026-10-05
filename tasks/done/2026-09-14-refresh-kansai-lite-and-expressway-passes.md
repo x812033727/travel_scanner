@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-refresh-kansai-lite-and-expressway-passes
 title: 十月起 KANSAI RAILWAY PASS LITE 與 TEP、KEP 高速周遊券的新版本要回填三篇文章
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-kansai-passes
 claimed_at: 2026-10-05T06:37:30Z
 created_at: 2026-09-14T00:49:22Z
-completed_at:
+completed_at: 2026-10-05T07:15:08Z
 branch: claude/kansai-passes
 depends_on: []
 scope:
