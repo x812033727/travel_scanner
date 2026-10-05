@@ -117,6 +117,58 @@
         {
           "type": "heading",
           "level": 2,
+          "text": "約定誰在什麼時候改狀態"
+        },
+        {
+          "type": "paragraph",
+          "text": "表格最常在「用完了卻沒人改」這一步失效。與其要求每個人隨時記得更新，不如把更新綁在一定會發生的動作上：拆開最後一份備品、或用到你們約定的補貨門檻的人，當下就把狀態改成「待買」；下單或買回的人改成「已買待歸位」；收進櫃子的人再更新數量、位置與確認日期。每個時機只由一個人負責，比較不會兩個人重複補貨，或都以為對方會改。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "時機",
+            "誰來更新",
+            "要改的欄位"
+          ],
+          "rows": [
+            [
+              "拆開最後一份備品",
+              "拆開的人",
+              "補貨狀態改為「待買」"
+            ],
+            [
+              "下單或買回家",
+              "負責採買的人",
+              "補貨狀態改為「已買待歸位」"
+            ],
+            [
+              "收進存放位置",
+              "歸位的人",
+              "現有數量、存放位置、最後確認"
+            ],
+            [
+              "準備採買",
+              "這次採買的人",
+              "先看「待買」，再到現場核對實物"
+            ]
+          ],
+          "caption": "分工依家裡的情況調整；重點是每個時機都有固定負責的人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "家裡有不方便開表格的人，例如長輩或孩子，也不必要求每個人都會改表格：約定拆開最後一份時告訴負責記錄的人，由那個人代為更新就好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一種用品分放兩處時，例如浴室放正在用的、儲藏櫃放備品，表格可以只記還沒開封的備品，正在用的那份不算。這樣「現有數量」比較容易數清楚，也和「拆開最後一份備品就改待買」的規則一致。如果兩個地方都放備品，就各列一行並寫明位置，免得有人只看了其中一處就以為不夠。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表格和櫃子裡的實物對不上時，不要只把數字改掉。先想是被移到別處、用掉了沒更新，還是買了還沒歸位；同一種落差反覆出現，通常代表某個時機沒有人負責。回頭調整上面的分工，會比要求大家更小心來得有效。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
           "text": "定期刪欄位，保留能帶來行動的資訊"
         },
         {
@@ -149,7 +201,7 @@
         {
           "title": "Google Sheets：建立儲存格下拉選單",
           "url": "https://support.google.com/docs/answer/186103?hl=en-na",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         }
       ]
     },
@@ -261,6 +313,58 @@
         },
         {
           "type": "heading",
+          "level": 2,
+          "text": "Agree on who changes the status, and when"
+        },
+        {
+          "type": "paragraph",
+          "text": "A sheet most often breaks down at the moment something runs out and nobody updates it. Instead of asking everyone to remember to update it at all times, tie each update to an action that is bound to happen. Whoever opens the last spare, or uses an item down to the restocking threshold you agreed on, changes its status to “To buy” right away. Whoever orders or buys it changes the status to “Bought, not put away,” and whoever puts it away updates the quantity, location, and check date. When each moment has one person responsible, it is less likely that two people restock the same item or that each assumes the other will update it."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Moment",
+            "Who updates",
+            "Fields to change"
+          ],
+          "rows": [
+            [
+              "Opening the last spare",
+              "The person who opens it",
+              "Change the restocking status to “To buy”"
+            ],
+            [
+              "Ordering it or bringing it home",
+              "The person who shops",
+              "Change the restocking status to “Bought, not put away”"
+            ],
+            [
+              "Putting it in its storage place",
+              "The person who puts it away",
+              "Quantity on hand, storage location, and last checked"
+            ],
+            [
+              "Getting ready to shop",
+              "Whoever is shopping this time",
+              "Look at “To buy” first, then check the actual supplies"
+            ]
+          ],
+          "caption": "Adjust the roles to suit your household; what matters is that each moment has a set person responsible."
+        },
+        {
+          "type": "paragraph",
+          "text": "If some people at home cannot easily open the sheet, such as older relatives or children, not everyone needs to edit it. Agree that whoever opens the last spare tells the person who keeps the records, and that person updates it for them."
+        },
+        {
+          "type": "paragraph",
+          "text": "When the same item is kept in two places, such as the one in use in the bathroom and the spares in a storage cupboard, the sheet can record only the unopened spares and leave out the one in use. This makes the quantity on hand easier to count and fits the rule of changing the status to “To buy” when the last spare is opened. If both places hold spares, give each its own row with the location, so that nobody looks in only one place and concludes there is not enough."
+        },
+        {
+          "type": "paragraph",
+          "text": "When the sheet and what is actually in the cupboard do not match, do not just overwrite the number. First consider whether the item was moved elsewhere, used up without an update, or bought but not yet put away. If the same kind of mismatch keeps recurring, it usually means no one is responsible for one of the moments above. Adjusting who does what works better than asking everyone to be more careful."
+        },
+        {
+          "type": "heading",
           "text": "Remove unused fields regularly and keep information that prompts action",
           "level": 2
         },
@@ -294,7 +398,7 @@
         {
           "title": "Google Sheets: Create an In-Cell Drop-Down List",
           "url": "https://support.google.com/docs/answer/186103?hl=en-na",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         }
       ]
     },
@@ -406,6 +510,58 @@
         },
         {
           "type": "heading",
+          "level": 2,
+          "text": "誰がいつ状態を変えるかを決めておく"
+        },
+        {
+          "type": "paragraph",
+          "text": "表がいちばん機能しなくなるのは、「使い切ったのに誰も更新しない」場面です。全員にいつも更新を覚えておいてもらうより、必ず起きる動作に更新を結び付けるほうが確実です。最後の予備を開けた人、または家族で決めた補充の目安まで使った人が、その場で状態を「購入予定」に変えます。注文した人や買ってきた人は「購入済み・未収納」に、収納した人は数量、場所、確認日を更新します。場面ごとに担当を一人に決めておけば、二人が同じ物をそれぞれ買ってしまったり、お互いに相手が更新すると思い込んだりすることが減ります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "場面",
+            "更新する人",
+            "変更する項目"
+          ],
+          "rows": [
+            [
+              "最後の予備を開けたとき",
+              "開けた人",
+              "補充状況を「購入予定」にする"
+            ],
+            [
+              "注文したとき・買って帰ったとき",
+              "買い物を担当した人",
+              "補充状況を「購入済み・未収納」にする"
+            ],
+            [
+              "保管場所にしまったとき",
+              "収納した人",
+              "現在の数量、保管場所、最終確認"
+            ],
+            [
+              "買い物の準備をするとき",
+              "今回買い物をする人",
+              "「購入予定」を見てから、実物を確認する"
+            ]
+          ],
+          "caption": "分担は家庭の事情に合わせて調整してください。大切なのは、どの場面にも決まった担当者がいることです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "高齢の家族や子どもなど、表を開くのが難しい人がいる場合は、全員が表を編集できる必要はありません。最後の予備を開けたら記録を担当する人に伝えると決めておき、その人が代わりに更新すれば十分です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ用品を二か所に分けて置く場合、例えば使用中の物をトイレや洗面所に、予備を収納棚に置いているなら、表には未開封の予備だけを記録し、使用中の分は数えなくても構いません。こうすると「現在の数量」を数えやすくなり、「最後の予備を開けたら購入予定にする」というルールとも合います。両方に予備を置いているなら、場所ごとに行を分けて記録し、片方だけを見て足りないと思い込むことを防ぎましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表と棚の実物が合わないときは、数字を書き換えるだけで済ませないでください。別の場所に移されたのか、使い切ったのに更新されていないのか、買ったもののまだ収納されていないのかを、まず考えます。同じ種類のずれが繰り返し起きるなら、たいていはどこかの場面に担当者がいないということです。全員にもっと注意するよう求めるより、上の分担を見直すほうが効果があります。"
+        },
+        {
+          "type": "heading",
           "text": "不要な項目を定期的に削り、行動につながる情報を残す",
           "level": 2
         },
@@ -439,7 +595,7 @@
         {
           "title": "Google Sheets：セル内にプルダウンリストを作成する",
           "url": "https://support.google.com/docs/answer/186103?hl=en-na",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         }
       ]
     },
@@ -551,6 +707,58 @@
         },
         {
           "type": "heading",
+          "level": 2,
+          "text": "누가 언제 상태를 바꿀지 정하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "표가 가장 자주 무너지는 순간은 ‘다 썼는데 아무도 고치지 않을 때’입니다. 모두에게 늘 업데이트를 기억하라고 요구하기보다, 반드시 일어나는 행동에 업데이트를 묶어 두는 편이 낫습니다. 마지막 여분을 뜯은 사람이나 가족이 정한 보충 기준까지 쓴 사람이 그 자리에서 상태를 ‘구매 필요’로 바꿉니다. 주문하거나 사 온 사람은 ‘구매 완료·정리 전’으로 바꾸고, 제자리에 넣은 사람은 수량, 위치, 확인 날짜를 업데이트합니다. 시점마다 담당자를 한 명으로 정해 두면 두 사람이 같은 물건을 중복으로 사거나, 서로 상대가 고칠 거라고 생각하는 일이 줄어듭니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "시점",
+            "업데이트할 사람",
+            "바꿀 항목"
+          ],
+          "rows": [
+            [
+              "마지막 여분을 뜯을 때",
+              "뜯은 사람",
+              "보충 상태를 ‘구매 필요’로 변경"
+            ],
+            [
+              "주문하거나 사 왔을 때",
+              "구매를 맡은 사람",
+              "보충 상태를 ‘구매 완료·정리 전’으로 변경"
+            ],
+            [
+              "보관 위치에 넣을 때",
+              "제자리에 넣은 사람",
+              "현재 수량, 보관 위치, 마지막 확인"
+            ],
+            [
+              "장보기를 준비할 때",
+              "이번에 장을 보는 사람",
+              "‘구매 필요’를 먼저 보고 실제 물건 확인"
+            ]
+          ],
+          "caption": "역할은 집안 사정에 맞게 조정하세요. 중요한 것은 시점마다 정해진 담당자가 있는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "어르신이나 아이처럼 표를 열기 어려운 가족이 있다면 모두가 표를 고칠 줄 알아야 하는 것은 아닙니다. 마지막 여분을 뜯으면 기록 담당자에게 말하기로 정해 두고, 그 사람이 대신 업데이트하면 충분합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 용품을 두 곳에 나눠 둘 때, 예를 들어 쓰고 있는 것은 욕실에, 여분은 수납장에 둔다면 표에는 뜯지 않은 여분만 기록하고 쓰고 있는 것은 세지 않아도 됩니다. 이렇게 하면 ‘현재 수량’을 세기 쉽고, ‘마지막 여분을 뜯으면 구매 필요로 바꾼다’는 규칙과도 맞습니다. 두 곳 모두에 여분을 둔다면 위치를 적어 행을 따로 만들어, 누군가 한쪽만 보고 부족하다고 판단하지 않도록 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "표와 수납장 속 실제 물건이 맞지 않을 때는 숫자만 고치고 넘어가지 마세요. 다른 곳으로 옮겨졌는지, 다 썼는데 업데이트하지 않았는지, 사 왔지만 아직 정리하지 않았는지 먼저 생각합니다. 같은 종류의 차이가 반복된다면 대개 위 시점 중 하나에 담당자가 없다는 뜻입니다. 모두에게 더 조심하라고 요구하는 것보다 역할 분담을 다시 조정하는 편이 효과적입니다."
+        },
+        {
+          "type": "heading",
           "text": "주기적으로 항목을 줄이고 행동에 도움이 되는 정보 남기기",
           "level": 2
         },
@@ -584,7 +792,7 @@
         {
           "title": "Google Sheets: 셀 내 드롭다운 목록 만들기",
           "url": "https://support.google.com/docs/answer/186103?hl=en-na",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         }
       ]
     },
@@ -696,6 +904,58 @@
         },
         {
           "type": "heading",
+          "level": 2,
+          "text": "约定谁在什么时候改状态"
+        },
+        {
+          "type": "paragraph",
+          "text": "表格最常在“用完了却没人改”这一步失效。与其要求每个人随时记得更新，不如把更新绑定在一定会发生的动作上：拆开最后一份备用品、或用到你们约定的补货门槛的人，当场就把状态改成“待买”；下单或买回来的人改成“已买待归位”；放进柜子的人再更新数量、位置和确认日期。每个时机只由一个人负责，就不太会出现两个人重复补货，或者都以为对方会改的情况。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "时机",
+            "谁来更新",
+            "要改的字段"
+          ],
+          "rows": [
+            [
+              "拆开最后一份备用品",
+              "拆开的人",
+              "补货状态改为“待买”"
+            ],
+            [
+              "下单或买回家",
+              "负责采购的人",
+              "补货状态改为“已买待归位”"
+            ],
+            [
+              "放进存放位置",
+              "归位的人",
+              "现有数量、存放位置、最后确认"
+            ],
+            [
+              "准备采购",
+              "这次采购的人",
+              "先看“待买”，再到现场核对实物"
+            ]
+          ],
+          "caption": "分工按家里的情况调整；关键是每个时机都有固定负责的人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "家里有不方便打开表格的人，比如老人或孩子，也不必要求每个人都会改表格：约定拆开最后一份时告诉负责记录的人，由那个人代为更新就好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一种用品分放两处时，例如浴室放正在用的、储物柜放备用品，表格可以只记录还没开封的备用品，正在用的那份不算。这样“现有数量”比较容易数清楚，也和“拆开最后一份备用品就改成待买”的规则一致。如果两个地方都放了备用品，就各列一行并写明位置，以免有人只看了其中一处就以为不够。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表格和柜子里的实物对不上时，不要只把数字改掉。先想想是被挪到了别处、用完了没更新，还是买了还没归位；同一种差异反复出现，通常说明某个时机没有人负责。回头调整上面的分工，会比要求大家多加小心更有效。"
+        },
+        {
+          "type": "heading",
           "text": "定期删字段，保留能带来行动的信息",
           "level": 2
         },
@@ -729,7 +989,7 @@
         {
           "title": "Google Sheets：创建单元格下拉菜单",
           "url": "https://support.google.com/docs/answer/186103?hl=en-na",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         }
       ]
     }
