@@ -220,7 +220,7 @@ const JUDGES = [
     { choice: "B", probabilities: { A: 0.45, B: 0.55 }, options: { A: { stance: 0.5, demo: 0.4 }, B: { stance: 0.55, demo: 0.6 } }, advice: 0.1, passed: false, note: "Jev 挑了 B（0.55）；沒過關" }],
 ];
 
-test("a Jev judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, the judge route's lost answer or 502", async () => {
+test("a Jev judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, the judge route's lost answer, a 502 with another code", async () => {
   const lost = [
     ["a connection reset after sending", () => {
       throw failed("ECONNRESET");
@@ -236,8 +236,9 @@ test("a Jev judgement sent and left without its answer is not asked again: a dro
     ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
     // The judge routes name their own lost answer (JUDGE_LOST in apps/web/app/api/video/speech/forward.ts).
     ["the judge route's lost answer", () => Response.json({ code: "video_judge_answer_lost", detail: "請求已送到 API" }, { status: 504 }), 504],
-    // A host from before that change answers this for an API it never reached and for one that took the request and went quiet.
-    ["the judge route's 502", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 502 }), 502],
+    // Only the route's never-reached 502 settles a judgement; the API's 502 for a Jev call whose
+    // outcome it cannot tell (2026-10-05-jev-judge-endpoints-report-an-uncertain) does not.
+    ["the API's uncertain Jev outcome", () => Response.json({ code: "video_judge_outcome_uncertain", detail: "Jev 可能已經判斷" }, { status: 502 }), 502],
   ];
   for (const [method, route, body] of JUDGES) {
     for (const [what, answer, status] of lost) {
@@ -273,6 +274,8 @@ test("a Jev judgement that never reached a server, or that the API settled, is a
     ["an unknown host", () => {
       throw failed("ENOTFOUND");
     }],
+    // The judge routes keep this 502 for an API they never reached (forward.ts); a lost answer is their 504 above.
+    ["the judge route's 502, an API it never reached", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 502 })],
     ["the API's answer after Jev failed", () => Response.json({ code: "video_judge_upstream_failed", detail: "Jev 暫時無法判斷" }, { status: 502 })],
     ["the judge's hourly limit", () => Response.json({ code: "rate_limit_exceeded", detail: "slow down" }, { status: 429 })],
     ["the spent Jev budget", () => Response.json({ code: "jev_budget_exhausted", detail: "今天的 Jev 呼叫次數已用完" }, { status: 429 })],
@@ -291,6 +294,28 @@ test("a Jev judgement that never reached a server, or that the API settled, is a
       assert.deepEqual(await client[method](body), verdict, `${method}, ${what}: the verdict as Jev gave it`);
       assert.deepEqual(calls, [{ path: route, body }, { path: route, body }], `${method}, ${what}: the same request asked again`);
     }
+  }
+});
+
+test("a Jev judgement whose route never reaches the API is asked within the bounded attempts, then left for a later round", async () => {
+  for (const [method, route, body] of JUDGES) {
+    const calls = [];
+    const client = automationClient({
+      ...credentials(sandbox()),
+      fetch: async (url) => {
+        calls.push(new URL(url).pathname);
+        return Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 502 });
+      },
+      sleep: async () => {},
+    }, { attempts: 2 });
+    await assert.rejects(client[method](body), (error) => {
+      assert.ok(error instanceof AutomationError, method);
+      assert.equal(error.code, "upstream_unavailable", method);
+      assert.equal(error.status, 502, method);
+      assert.equal(error.who, "service", `${method}: the caller leaves it for a later round`);
+      return true;
+    });
+    assert.deepEqual(calls, [route, route], `${method}: no more than the attempts it was given`);
   }
 });
 
