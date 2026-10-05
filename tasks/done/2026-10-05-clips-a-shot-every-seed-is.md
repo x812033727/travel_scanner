@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-clips-a-shot-every-seed-is
 title: Clips: a shot every seed is refused for loses the provider's refusal
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-clips-refusal-kept
 claimed_at: 2026-10-05T13:10:00Z
 created_at: 2026-10-05T00:37:01Z
-completed_at:
+completed_at: 2026-10-05T13:33:38Z
 branch: claude/clips-refusal-kept
 depends_on: []
 scope:
