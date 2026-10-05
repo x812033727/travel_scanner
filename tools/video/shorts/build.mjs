@@ -272,9 +272,9 @@ async function normalizeClips(clips, directory, ffmpeg) {
  * files); `client` is the site, needed for the server's voice; `redo` is a finished build whose
  * check flagged phrases, which are synthesized again while the rest come from the cache;
  * `captions` is the caption style (karaoke.mjs captionsOption: the flag, else the environment,
- * else plain).
+ * else plain); only a karaoke build asks the server to time the clips it has not timed yet.
  */
-export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, channel=process.platform==='win32'?'msedge':undefined, audioDir, speech, client=null, redo=null, lexicon=null, captions, synthesizeImpl, locateFfmpegImpl=locateFfmpeg }) {
+export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, channel=process.platform==='win32'?'msedge':undefined, audioDir, speech, client=null, redo=null, lexicon=null, captions, synthesizeImpl, synthesizeAlignedImpl, alignImpl, locateFfmpegImpl=locateFfmpeg }) {
   const documentBytes = readFileSync(file);
   const doc = JSON.parse(documentBytes);
   const errors = validate(doc);
@@ -295,7 +295,7 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   // The voice and the length a Short may have are the owner's settings when the site is asked.
   const settings = source === 'server' && client ? await client.settings() : null;
   const range = settings ? { minSeconds: settings.seconds_min, maxSeconds: settings.seconds_max } : PROFILE;
-  const narration = await narrate({ doc, source, workBase: base, voice: settings?.voice, client, audioDir, windowsVoice: voice, lexicon, redo: redo ? flaggedPhrases(path.join(redo,'check.json')) : [], synthesizeImpl });
+  const narration = await narrate({ doc, source, workBase: base, voice: settings?.voice, client, audioDir, windowsVoice: voice, lexicon, redo: redo ? flaggedPhrases(path.join(redo,'check.json')) : [], align: captionStyle === 'karaoke', synthesizeImpl, synthesizeAlignedImpl, alignImpl });
   const codeHash = sha256(['build.mjs','core.mjs','karaoke.mjs','layouts.mjs','motion.mjs','speech.mjs','speech.ps1'].map(f=>readFileSync(new URL(f,import.meta.url),'utf8')).join('\n') + MOTION_VERSION);
   const audioHash = sha256(narration.clips.map(bytes=>sha256(bytes)).join(''));
   // The bed and the effect set are part of what was built: another file under the same name is another cut.
@@ -321,10 +321,12 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   for (const cue of timeline.cues) samples.set(wavs[cue.index].samples,cue.startFrame*1600);
   writeFileSync(path.join(directory,'narration.wav'),encodeWav(samples));
   // The karaoke timing (karaoke.mjs): the groups of every phrase and how long each stays lit,
-  // estimated from the clip's own silence and the words' weight; the layer is drawn from it.
-  const timing = captionStyle === 'karaoke' ? timingFile(timeline, wavs) : null;
+  // from the server's measured character times where the narration brought them (speech.mjs),
+  // else estimated from the clip's own silence and the words' weight; the layer is drawn from it.
+  const timing = captionStyle === 'karaoke' ? timingFile(timeline, wavs, narration.timings ?? null) : null;
   const byCue = timing ? new Map(timing.phrases.map((phrase) => [phrase.cue, phrase])) : null;
-  console.error(`${doc.slug}: render ${timeline.cues.length} caption cards${timing ? ` and ${captionsSummary(timing).states} caption states` : ''} (${timeline.seconds.toFixed(2)}s, ${themeOf(doc).id})`);
+  const summary = timing ? captionsSummary(timing) : null;
+  console.error(`${doc.slug}: render ${timeline.cues.length} caption cards${summary ? ` and ${summary.states} caption states (${summary.aligned ?? 0} of ${timeline.cues.length} phrases on measured timing)` : ''} (${timeline.seconds.toFixed(2)}s, ${themeOf(doc).id})`);
   const { layout, backgrounds } = await renderFrames(doc,timeline,evidence,directory,channel,timing);
   // One segment per scene (motion.mjs): the background under its camera move, the phrases' cards
   // over it, a dissolve from the previous scene; the join copies, as before.

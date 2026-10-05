@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Annotated, Literal
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 
 # One Latin-script word from the pronunciation dictionary, as the script spells it: "Go",
 # "MMLU-Pro", "p95". No spaces and only a few joiners, so a hint cannot carry a sentence.
@@ -157,3 +157,44 @@ class JudgeResult(BaseModel):
 
 class JudgeOut(BaseModel):
     results: list[JudgeResult]
+
+
+class AlignIn(BaseModel):
+    """One phrase to time, either as audio already made or as speech still to be made."""
+
+    model_config = ConfigDict(extra="forbid")
+    # The phrase as written, what the captions show; required with `audio`, and with `speech`
+    # it must spell the segments' text.
+    text: str | None = Field(default=None, min_length=1, max_length=1500)
+    language: TrackLanguage = "zh-TW"
+    # The phrase as a base64 WAV, already synthesized: what the CPU aligner times.
+    audio: str | None = Field(default=None, min_length=64, max_length=2_800_000)
+    # Instead of audio: synthesize this with an Azure voice and answer with its word boundaries
+    # beside the WAV, in one paid call. The same body as POST /video/speech.
+    speech: SpeechRequest | None = None
+
+    @model_validator(mode="after")
+    def _one_source(self) -> AlignIn:
+        if (self.audio is None) == (self.speech is None):
+            raise ValueError("send exactly one of audio and speech")
+        if self.audio is not None and self.text is None:
+            raise ValueError("text is required with audio")
+        return self
+
+
+class CharTimingOut(BaseModel):
+    # One written unit: a CJK character, a Latin word or number, a punctuation mark.
+    text: str
+    start_ms: int
+    end_ms: int
+
+
+class AlignOut(BaseModel):
+    # "azure": the voice's own word boundaries; "aligned": the server's CPU aligner.
+    source: Literal["aligned", "azure"]
+    chars: list[CharTimingOut]
+    # The voice (azure) or the aligner (aligned) the times came from.
+    model: str
+    # With `speech` only: the WAV it made, base64, and the characters charged for it.
+    audio: str | None = None
+    billable_characters: int | None = None

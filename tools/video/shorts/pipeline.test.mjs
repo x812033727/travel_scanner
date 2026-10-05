@@ -20,7 +20,7 @@ import { composeDescription, composeMetadata, disclosureOf, metadataProblems, pa
 import { PART_BYTES, evidenceRole, finalReview, projectBody, publishReview, push } from './push.mjs';
 import { ITEM_IDS, captionsItem, evidenceItem, factsItem, layoutItem, linksItem, loudnessItem, metadataItem, narrationItem, policyItem, profileItem, qaInputBindings, qaReport, scriptShape, siteHistory, varietyItem } from './qa.mjs';
 import { CHANNEL_VOICE, SiteError, siteClient } from './site.mjs';
-import { defaultSource, flaggedPhrases, narrate, phraseBody, phraseKey, serverNarration } from './speech.mjs';
+import { defaultSource, flaggedPhrases, narrate, phraseBody, phraseKey, serverNarration, timingFileOf } from './speech.mjs';
 
 const FIXTURE = fileURLToPath(new URL('./fixtures/smoke/', import.meta.url));
 const REPO = fileURLToPath(new URL('../../../', import.meta.url));
@@ -116,27 +116,78 @@ test('a caption file reads back as the timeline it was written from', () => {
 test('a server phrase is asked for once, in the owner\'s voice, and again only when flagged', async (t) => {
   const cacheDir = path.join(temp(t), 'cache');
   const asked = [];
+  const timed = [];
   const synthesizeImpl = async ({ body, site, token }) => {
     asked.push({ body, site, token });
     return { wav: tone(1, 300 + asked.length), billable: 7 };
   };
+  // A Gemini voice has no boundaries of its own: its clip is sent for timing afterwards, and the
+  // server times what it can (here everything but the second phrase).
+  const synthesizeAlignedImpl = async () => { throw new Error('a Gemini voice never asks for boundaries'); };
+  const alignImpl = async ({ wav, text, site, token }) => {
+    timed.push({ text, site, token, bytes: wav.length });
+    return text === '再扣掉三十元的折價券' ? null : { source: 'aligned', model: 'm', chars: [{ text, start_ms: 0, end_ms: 900 }] };
+  };
   const client = { site: 'https://site.test', token: TOKEN };
   const phrases = ['一張手寫的發票', '再扣掉三十元的折價券', '一張手寫的發票'];
-  const first = await serverNarration({ phrases, voice: CHANNEL_VOICE, cacheDir, client, synthesizeImpl });
+  const first = await serverNarration({ phrases, voice: CHANNEL_VOICE, cacheDir, client, synthesizeImpl, synthesizeAlignedImpl, alignImpl });
   assert.equal(asked.length, 2, 'the same words in the same voice are one clip');
   assert.deepEqual(asked[0].body, { voice: 'gemini:Sulafat', style: CHANNEL_VOICE.style, segments: [{ parts: [{ text: '一張手寫的發票' }], break_after_ms: 0 }] });
   assert.equal(asked[0].token, TOKEN);
   assert.deepEqual([first.calls, first.characters, first.provider, first.clips.length], [2, 14, 'gemini', 3]);
   assert.deepEqual(first.clips[0], first.clips[2]);
-  const again = await serverNarration({ phrases, voice: CHANNEL_VOICE, cacheDir, client, synthesizeImpl });
+  assert.deepEqual(first.timings.map((timing) => timing?.source ?? null), ['aligned', null, 'aligned']);
+  assert.deepEqual(timed.map((call) => call.text), ['一張手寫的發票', '再扣掉三十元的折價券'], 'a clip with its timing cached is not sent again');
+  assert.deepEqual([timed[0].site, timed[0].token, timed[0].bytes], ['https://site.test', TOKEN, first.clips[0].length]);
+  assert.deepEqual(JSON.parse(readFileSync(timingFileOf(cacheDir, CHANNEL_VOICE, '一張手寫的發票'), 'utf8')), first.timings[0]);
+  assert.equal(existsSync(timingFileOf(cacheDir, CHANNEL_VOICE, '再扣掉三十元的折價券')), false, 'no file for what the server could not time');
+  const again = await serverNarration({ phrases, voice: CHANNEL_VOICE, cacheDir, client, synthesizeImpl, synthesizeAlignedImpl, alignImpl });
   assert.deepEqual([again.calls, again.characters, asked.length], [0, 0, 2], 'a second build costs nothing');
-  const redone = await serverNarration({ phrases, voice: CHANNEL_VOICE, cacheDir, client, redo: [1], synthesizeImpl });
+  assert.deepEqual(timed.map((call) => call.text), ['一張手寫的發票', '再扣掉三十元的折價券', '再扣掉三十元的折價券'], 'only the untimed clip is asked again');
+  assert.deepEqual(again.timings.map((timing) => timing?.source ?? null), ['aligned', null, 'aligned']);
+  const redone = await serverNarration({ phrases, voice: CHANNEL_VOICE, cacheDir, client, redo: [1], synthesizeImpl, synthesizeAlignedImpl, alignImpl });
   assert.deepEqual([redone.calls, asked.length], [1, 3]);
   assert.notDeepEqual(redone.clips[1], first.clips[1]);
-  const other = await serverNarration({ phrases: phrases.slice(0, 1), voice: { ...CHANNEL_VOICE, name: 'Kore' }, cacheDir, client, synthesizeImpl });
+  const other = await serverNarration({ phrases: phrases.slice(0, 1), voice: { ...CHANNEL_VOICE, name: 'Kore' }, cacheDir, client, synthesizeImpl, synthesizeAlignedImpl, alignImpl });
   assert.equal(other.calls, 1, 'another voice is another clip');
   assert.notEqual(phraseKey(CHANNEL_VOICE, 'API 是什麼'), phraseKey(CHANNEL_VOICE, 'API 是什麼', { terms: { API: 'A P I' } }));
   assert.deepEqual(phraseBody({ provider: 'azure', name: 'zh-TW-HsiaoChenNeural' }, '你好').voice, 'zh-TW-HsiaoChenNeural');
+});
+
+test('an Azure phrase brings its word boundaries with the one synthesis call; an older site synthesizes as before', async (t) => {
+  const cacheDir = path.join(temp(t), 'cache');
+  const azure = { provider: 'azure', name: 'zh-TW-HsiaoChenNeural' };
+  const client = { site: 'https://site.test', token: TOKEN };
+  const timing = { source: 'azure', model: 'zh-TW-HsiaoChenNeural', chars: [{ text: '你', start_ms: 10, end_ms: 300 }, { text: '好', start_ms: 300, end_ms: 600 }] };
+  const sent = [];
+  const synthesizeAlignedImpl = async ({ body, token }) => { sent.push({ body, token }); return { wav: tone(1), billable: 4, timing }; };
+  const synthesizeImpl = async () => { throw new Error('the plain synthesis is not used when the aligned one answers'); };
+  const alignImpl = async () => { throw new Error('a clip with its timing is never sent again'); };
+  const first = await serverNarration({ phrases: ['你好'], voice: azure, cacheDir, client, synthesizeImpl, synthesizeAlignedImpl, alignImpl });
+  assert.deepEqual(sent, [{ body: { voice: 'zh-TW-HsiaoChenNeural', rate: '+0%', segments: [{ parts: [{ text: '你好' }], break_after_ms: 0 }] }, token: TOKEN }]);
+  assert.deepEqual(first.timings, [timing]);
+  assert.deepEqual([first.calls, first.characters, first.provider], [1, 4, 'azure']);
+  assert.deepEqual(JSON.parse(readFileSync(timingFileOf(cacheDir, azure, '你好'), 'utf8')), timing);
+  const cached = await serverNarration({ phrases: ['你好'], voice: azure, cacheDir, client, synthesizeImpl, synthesizeAlignedImpl, alignImpl });
+  assert.deepEqual([cached.calls, sent.length, cached.timings], [0, 1, [timing]], 'the cache holds the clip and its timing');
+  // A site from before the route answers null: the phrase is synthesized as before and sent for
+  // timing afterwards, which the server cannot do for an Azure clip without its boundaries.
+  const older = path.join(temp(t), 'older');
+  const asked = [];
+  const plain = await serverNarration({
+    phrases: ['你好'], voice: azure, cacheDir: older, client,
+    synthesizeImpl: async () => { asked.push('synthesize'); return { wav: tone(1), billable: 4 }; },
+    synthesizeAlignedImpl: async () => { asked.push('aligned'); return null; },
+    alignImpl: async () => { asked.push('align'); return null; },
+  });
+  assert.deepEqual(asked, ['aligned', 'synthesize', 'align']);
+  assert.deepEqual([plain.calls, plain.timings], [1, [null]]);
+  assert.equal(existsSync(timingFileOf(older, azure, '你好')), false);
+  // A build that draws no karaoke never asks for timing; it still keeps what the cache holds.
+  const quiet = await serverNarration({ phrases: ['你好'], voice: azure, cacheDir: older, client, align: false, synthesizeImpl, synthesizeAlignedImpl, alignImpl: async () => { throw new Error('not asked without karaoke'); } });
+  assert.deepEqual([quiet.calls, quiet.timings], [0, [null]]);
+  const kept = await serverNarration({ phrases: ['你好'], voice: azure, cacheDir, client, align: false, synthesizeImpl, synthesizeAlignedImpl, alignImpl });
+  assert.deepEqual(kept.timings, [timing]);
 });
 
 test('the three sources, and which one a build takes when none is named', async (t) => {
@@ -147,6 +198,7 @@ test('the three sources, and which one a build takes when none is named', async 
   writeFileSync(path.join(dir, '000.wav'), tone(1, 300));
   writeFileSync(path.join(dir, '001.wav'), tone(1, 400));
   const supplied = await narrate({ doc, source: 'files', workBase: dir, audioDir: dir });
+  assert.equal(supplied.timings, undefined, 'supplied files carry no measured timing: the build estimates');
   assert.deepEqual([supplied.provider, supplied.calls, supplied.clips.length], ['files', 0, 2]);
   await assert.rejects(narrate({ doc, source: 'files', workBase: dir }), /--audio-dir/);
   await assert.rejects(narrate({ doc, source: 'server', workBase: dir }), /login/);
