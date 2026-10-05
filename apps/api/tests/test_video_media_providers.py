@@ -9,6 +9,7 @@ from typing import Any
 import httpx
 import pytest
 
+from app.video_media.catalog import find_model
 from app.video_media.providers import (
     Download,
     MediaRequest,
@@ -21,7 +22,12 @@ from app.video_media.providers import (
 from app.video_media.providers.gemini_images import GeminiImages
 from app.video_media.providers.gemini_music import GeminiMusic
 from app.video_media.providers.gemini_video import GeminiVideo
-from app.video_media.providers.minimax import MiniMaxImages, MiniMaxVideo, check_base_resp
+from app.video_media.providers.minimax import (
+    V2_VIDEO_MODELS,
+    MiniMaxImages,
+    MiniMaxVideo,
+    check_base_resp,
+)
 
 GEMINI = "https://generativelanguage.googleapis.com"
 MINIMAX = "https://api.minimaxi.com/v1"
@@ -542,6 +548,18 @@ def test_h3_sends_the_v2_body_and_never_a_reference_beside_its_frames(last: bool
     assert roles == [None, "first_frame", "last_frame"][: 2 + last]
     assert not {"first_frame_image", "subject_reference", "prompt_optimizer"} & body.keys()
     assert not any(str(role).startswith("reference") for role in roles), "i2v and r2v exclusive"
+
+
+def test_the_catalog_promises_no_reference_image_to_a_model_on_the_v2_body() -> None:
+    """The v2 body above drops every reference, so the catalog must not offer one: 0 makes the
+    jobs layer refuse them and the clips tool (which reads the media status) send none, and the
+    note on the settings tab says why."""
+    assert V2_VIDEO_MODELS
+    for model_id in V2_VIDEO_MODELS:
+        model = find_model("minimax", "clip", model_id)
+        assert model is not None and model.reference_images == 0, model_id
+    hailuo = find_model("minimax", "clip", "MiniMax-H3")
+    assert hailuo is not None and "9 張參考圖只在參考生影片" in (hailuo.note or "")
 
 
 @pytest.mark.asyncio

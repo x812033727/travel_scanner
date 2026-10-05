@@ -70,8 +70,9 @@
     "table-live-regression.json": "049984d73a4336f21cca5066d49a8963aa0bf140a36e21b3bf85cefc846a9415",
     "draft-public-verification.json": "eb8d0f93a8024d5f99cf9d6c589dbda4410c4815ffe806a1ba40e0a8c575b303",
     "preindex-public-verification.json": "4e06cb35fde23f892d379d821c5b5605e530a35432cc142709ddc911754cf50f",
-    "postgresql-validation.json": "28007f905eaedb54470ff7d6b7df136553baf811b9a2fdcde6b3125b3b64e882"
+    "postgresql-validation.json": "bcfedc468c3e57101f92a270c5f5b26b3e593eae3a76c6814f72e59af0aa8d95"
   },
+  "evidence_redaction_note": "Redacted 2026-10-05 for the public repository (task 2026-10-02-rebind-receipts-after-scrubbing-host-details): in postgresql-validation.json the PuTTY saved-session name, the disposable container's password and the local Windows profile path became <saved-session>, <disposable-password> and <home>; nothing else changed. Its evidence_sha256 entry above records the redacted bytes; the original file and the digest export_publication.py wrote are in commit 53bd1b8a2 (#489).",
   "articles": [
     {
       "title": "提示詞工程（Prompt Engineering）是什麼",

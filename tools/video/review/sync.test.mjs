@@ -77,7 +77,7 @@ test("the checklist, the Jev summary and the upload items are what the page show
  * default the outline judge is off (409) and the policy judge is not there (404). Any other
  * address is a description's link the quality check opens.
  */
-function site({ judge = null, policy = null, autoApproveFinal = false } = {}) {
+function site({ judge = null, policy = null, autoApproveFinal = false, project = {} } = {}) {
   const state = { calls: [], files: new Map(), reviews: [], judge: [] };
   const answer = (value) => (value instanceof Response ? value : Response.json(value));
   const fetchImpl = async (url, init = {}) => {
@@ -108,7 +108,7 @@ function site({ judge = null, policy = null, autoApproveFinal = false } = {}) {
       state.reviews.unshift({ id: `r${state.reviews.length}`, status, choice: null, note: null, decided_at: null, ...body });
       return Response.json(state.reviews[0], { status: 201 });
     }
-    return Response.json({ slug: "fixture-minimal", reviews: state.reviews });
+    return Response.json({ slug: "fixture-minimal", ...project, reviews: state.reviews });
   };
   return { state, fetchImpl };
 }
@@ -753,8 +753,8 @@ test("the final review carries the narration's and zh-TW's titles whatever the c
   assert.deepEqual(Object.keys(zh), ["zh-TW"], "a zh-TW video sends its own title alone, as before");
 });
 
-test("review-push --gate publish attaches every file of the package with the package check and what the card shows", async () => {
-  const box = sandbox();
+/** A cut with its approved final and a complete upload package, as `package` writes it. */
+function publishPackage(box) {
   const { final } = cutVideo(box);
   const upload = path.join(box.workdir, "upload");
   mkdirSync(path.join(upload, "captions"), { recursive: true });
@@ -775,6 +775,12 @@ test("review-push --gate publish attaches every file of the package with the pac
   const bytes = `${JSON.stringify(metadata, null, 2)}\n`;
   writeFileSync(path.join(upload, "metadata.json"), bytes);
   writeFileSync(path.join(box.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final", file: "final.mp4", sha256: sha(final), approved_at: "2026-09-25T00:00:00Z", note: "" }] }));
+  return { upload, bytes };
+}
+
+test("review-push --gate publish attaches every file of the package with the package check and what the card shows", async () => {
+  const box = sandbox();
+  const { upload, bytes } = publishPackage(box);
   const server = site();
   const push = context(box, server.fetchImpl);
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], push.ctx), EXIT.ok, push.out.stderr);
@@ -809,6 +815,68 @@ test("review-push --gate publish attaches every file of the package with the pac
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], again.ctx), EXIT.ok, again.out.stderr);
   assert.equal(broken.state.reviews[0].summary, "上傳包 1 項沒過：files");
   assert.equal(broken.state.reviews[0].payload.package.ok, false);
+});
+
+test("review-pull records an automatic publish approval as the package's approval and claims no YouTube upload", async () => {
+  const box = sandbox();
+  const { upload, bytes } = publishPackage(box);
+  // The site approved the package by itself (its check passed) and nothing is on YouTube.
+  const server = site({ project: { youtube_video_id: null, publish_approved_at: "2026-10-04T17:18:41Z" } });
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], push.ctx), EXIT.ok, push.out.stderr);
+  const [publish] = server.state.reviews;
+  Object.assign(publish, { status: "approved", decided_at: "2026-10-04T17:18:41Z" });
+
+  const pulled = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], pulled.ctx), EXIT.ok, pulled.out.stderr);
+  const line = pulled.out.stdout.split("\n").find((each) => each.startsWith("publish: "));
+  assert.equal(line, `publish: upload package approved (metadata.json ${sha(bytes).slice(0, 12)}); this records the approval only, not a YouTube upload — upload/UPLOAD.md has the Studio steps`);
+  assert.doesNotMatch(pulled.out.stdout, /owner|confirmed|uploaded|published|on YouTube/i, "package approval is not an upload or a publication");
+  const recorded = readApprovals(box.workdir).approvals.filter((entry) => entry.gate === "publish");
+  assert.equal(recorded.length, 1);
+  assert.equal(recorded[0].sha256, sha(bytes), "bound to the metadata.json that was approved");
+  assert.equal(recorded[0].file, "metadata.json");
+  assert.match(recorded[0].note, /^approved on \/admin\/videos at 2026-10-04T17:18:41Z$/);
+
+  const again = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(again.out.stdout, "publish: already recorded\n");
+
+  appendFileSync(path.join(upload, "metadata.json"), "\n");
+  const changed = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], changed.ctx), EXIT.ok, changed.out.stderr);
+  assert.equal(changed.out.stdout, "publish: approved a version that has since changed; run review-push again\n");
+  assert.equal(readApprovals(box.workdir).approvals.filter((entry) => entry.gate === "publish").length, 1, "the changed package is not approved");
+});
+
+test("review-pull says what each later gate's approval means, once, and only for the file it binds", async () => {
+  const box = sandbox();
+  const files = {
+    final: ["final.mp4", "the finished cut"],
+    languages: ["review/languages.json", `${JSON.stringify({ batch: 1, locales: { en: ["metadata", "captions"] } })}\n`],
+    dubs: ["dubs/manifest.json", `${JSON.stringify({ tracks: [{ locale: "en" }] })}\n`],
+  };
+  const server = site();
+  for (const [gate, [file, content]] of Object.entries(files)) {
+    mkdirSync(path.dirname(path.join(box.workdir, file)), { recursive: true });
+    writeFileSync(path.join(box.workdir, file), content);
+    server.state.reviews.unshift({ id: `r-${gate}`, gate, status: "approved", content_sha256: sha(content), payload: {}, choice: null, note: null, decided_at: "2026-10-04T12:00:00Z" });
+  }
+
+  const pulled = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], pulled.ctx), EXIT.ok, pulled.out.stderr);
+  assert.equal(pulled.out.stdout, [
+    "final: approval recorded",
+    "languages: the language batch is recorded; its dub tracks, if any, are up in YouTube Studio",
+    "dubs: the owner uploaded these dub tracks in YouTube Studio",
+    "",
+  ].join("\n"));
+  assert.deepEqual(readApprovals(box.workdir).approvals.map((entry) => [entry.gate, entry.file, entry.sha256]), Object.entries(files).map(([gate, [file, content]]) => [gate, path.basename(file), sha(content)]));
+
+  const again = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(again.out.stdout, "final: already recorded\nlanguages: already recorded\ndubs: already recorded\n");
+  assert.equal(readApprovals(box.workdir).approvals.length, 3);
 });
 
 test("without a token the push needs the owner", async () => {

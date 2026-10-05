@@ -41,7 +41,8 @@ class MediaModel:
     resolutions: tuple[str, ...] = ()
     durations: tuple[int, ...] = ()
     aspects: tuple[str, ...] = ("16:9", "9:16")
-    # How many reference images (character sheets, style frames) one request may carry.
+    # How many reference images (character sheets, style frames) one request may carry; a clip
+    # model given 0 has its references refused by the jobs layer (jobs._request_fields).
     reference_images: int = 0
     native_audio: bool = False
     usd_per_second: float | None = None
@@ -155,18 +156,21 @@ MEDIA_CATALOG: tuple[MediaModel, ...] = (
     # durations (tools/animation-production.test.mjs compares them), and no H3 clip has been
     # made yet: 11 to 15 seconds would raise the price of one clip to US$1.95 on a route whose
     # request has not been accepted live once. Widen it with that check.
+    # The v2 page (read again 2026-10-05) allows 9 reference images in reference-to-video only:
+    # image-to-video and reference-to-video are mutually exclusive, and every clip here has a
+    # first frame (ClipJobIn.first_frame), so H3 takes 0 and its references are refused.
     MediaModel(
         "MiniMax-H3",
         "minimax",
         "clip",
         "MiniMax H3（Hailuo 3.0）",
         note=(
-            "官方 4 到 15 秒，這裡開 4 到 10；最多 9 張參考圖，但官方不准參考圖與首格同送，"
-            "片段一定有首格，所以不送參考圖；2K 每秒 US$0.13、768p US$0.08"
+            "官方 4 到 15 秒，這裡開 4 到 10；官方的 9 張參考圖只在參考生影片，"
+            "不准與首格同送，片段一定有首格，所以不收參考圖；2K 每秒 US$0.13、768p US$0.08"
         ),
         resolutions=("768p", "2k"),
         durations=_SECONDS_4_TO_10,
-        reference_images=9,
+        reference_images=0,
         native_audio=True,
         usd_per_second=0.13,
     ),

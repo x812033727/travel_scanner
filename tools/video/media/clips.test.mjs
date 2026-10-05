@@ -436,6 +436,22 @@ test("Veo 3.1 Lite 1080p requests eight seconds and first frames, with sheets on
   assert.equal(clipSeconds(30, [4, 6, 8], { model: "veo-3.1-fast-generate-preview", resolution: "1080p" }), 8);
 });
 
+test("a clip model the catalog gives no reference images (MiniMax-H3) gets its frames alone, and its sheets go to the judge", async () => {
+  const { box, shots } = prepared();
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const model = "MiniMax-H3";
+  const status = { ...STATUS, clip: { ...STATUS.clip, provider: "minimax", model, resolution: "2k" }, models: { ...STATUS.models, clips: { minimax: [{ ...STATUS.models.clips.gemini[0], value: model, resolutions: ["768p", "2k"], reference_images: 0 }] } } };
+  const site = mediaSite({ status });
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr || run.out.stdout);
+  assert.ok(site.state.clips.length > 0 && site.state.clips.every((request) => request.references.length === 0), "no sheet and no previous frame: the server refuses them for H3");
+  const farewell = site.state.clips.find((request) => request.shot_id === "farewell");
+  assert.equal(farewell.first_frame, shots.farewell.sha256);
+  assert.equal(farewell.last_frame, shots.farewell.end_frame.sha256);
+  assert.ok(site.state.judges.find((request) => request.context.shot?.id === "farewell").files.some((file) => file.label === "sheet 精衛"));
+});
+
 test("clips keep the face reference while using the shot's named outfit in generation and judging", async () => {
   const { box, characters } = prepared((doc) => {
     doc.characters[0].shot_looks = [{ id: "present", appearance: "adult woman wearing a navy business suit" }];

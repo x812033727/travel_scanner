@@ -15,7 +15,7 @@
 | 誰在呼叫 | `node tools/video/cli.mjs clips` 經網站的媒體端點叫 Gemini／MiniMax；金鑰只在站上 | 本次代理用使用者提供的內建瀏覽器與**站主的登入**；檔案能力依 browser-production 查本次文件 | 本次同樣先用 Kling 網頁與站主登入；CLI／MCP 另選才用，開發者 API 的資源包與會員積分分開 |
 | 計價 | 每秒：`usd_per_second × seconds`，解析度不改價（工具規定，`apps/api/app/video_media/meter.py` `usd_for`） | 月費換積分，積分月底歸零；用完可加購 | 會員月費換積分；開發者 API 另賣資源包，兩邊不互通 |
 | 片段模型 | `apps/api/app/video_media/catalog.py` 列的：Omni 1.1 Flash、Veo 3.1／Fast／Lite、MiniMax-H3 | H3、H3 Max、Hailuo 2.0／2.3／1.0、Sora 2、Veo 3.1 | CLI 列的 `kling-video-v3_0`、`v3_0_omni`、`v3_0_turbo`、`o1`、`v2_5`、`v2_6`，另有 `motion_control`（實測 2026-10-04，§1.3） |
-| 首尾格與參考圖 | 首格必帶；參考圖最多 4（`MAX_REFERENCES`，`apps/api/app/video_media/schemas.py`；目錄寫 H3 9 張、Pro Image 14 張是供應商上限，不是我們送得出的）；Lite 不收參考圖 | H3 首格、末格；參考上傳區「參考 (0/12)」，但**有首格時不能再帶參考圖**（官方 2026-10-04：H3 的 v2 API 圖生影片與參考生影片互斥）；Hailuo 2.3 只有首格 | `kling-video-v3_0`：`first_image`＋`tail_image`、elements；`v3_0_omni`／`o1`：`image_1`…`image_7`；`v3_0_turbo` 只有 `first_image`（實測 2026-10-04）。網頁 VIDEO 3.0 可首格＋綁最多 3 個元素（官方 2026-10-04） |
+| 首尾格與參考圖 | 首格必帶；參考圖最多 4（`MAX_REFERENCES`，`apps/api/app/video_media/schemas.py`；目錄寫 Pro Image 14 張是供應商上限，不是我們送得出的）；目錄寫 0 張的 Lite 與 H3 不收參考圖：`clips` 不送（`tools/video/media/clips.mjs` 的 `refs`），帶了伺服器回 422（`apps/api/app/video_media/jobs.py` 的 `_request_fields`）；H3 走 v2 圖生影片，只送首格與末格（`apps/api/app/video_media/providers/minimax.py` 的 `_v2_body`） | H3 首格、末格；參考上傳區「參考 (0/12)」，但**有首格時不能再帶參考圖**（官方 2026-10-04：H3 的 v2 API 圖生影片與參考生影片互斥）；Hailuo 2.3 只有首格 | `kling-video-v3_0`：`first_image`＋`tail_image`、elements；`v3_0_omni`／`o1`：`image_1`…`image_7`；`v3_0_turbo` 只有 `first_image`（實測 2026-10-04）。網頁 VIDEO 3.0 可首格＋綁最多 3 個元素（官方 2026-10-04） |
 | 品檢 | ffmpeg（`tools/video/media/qc.mjs`）＋ judge 自動跑，不過換 seed，最多 2 次（`MAX_CLIP_TAKES`，`tools/video/media/clips.mjs`） | 站方沒有；`clips import` 匯入時跑同一組 ffmpeg 檢查，judge 要帶 `--judge` | 同左 |
 | 快取、帳本、預算 | `media/cache.json`（同一請求不付兩次）、`media/ledger.json`（每筆花費）、伺服器的每月預算與單支上限 | 沒有快取與伺服器預算；`clips import` 把點數與秒數記進帳本（`status: "imported"`） | 同左 |
 | 進產線 | 直接 | 下載後 `clips import`（§3） | 同左 |
@@ -34,7 +34,7 @@
 | veo-3.1-lite-generate-preview | US$0.08／秒 | 4／6／8 秒；1080p 固定 8 秒；無參考圖；preview | 官方 720p 是 US$0.05／秒，目錄按 1080p 計（目錄註解） |
 | veo-3.1-fast-generate-001 | US$0.12／秒 | 4／6／8 秒 | — |
 | veo-3.1-generate-001 | US$0.40／秒 | 4／6／8 秒；1080p 只有 8 秒 | — |
-| MiniMax-H3 | US$0.13／秒 | 目錄 4–10 秒、768p／2k、參考圖 9 | 官方 768P US$0.08／秒、2K US$0.13／秒、4–15 秒整數（platform.minimax.io，2026-10-03 讀）；`meter.usd_for` 不看解析度，768p 也記 0.13 |
+| MiniMax-H3 | US$0.13／秒 | 目錄 4–10 秒、768p／2k、參考圖 0（`reference_images`） | 官方 768P US$0.08／秒、2K US$0.13／秒、4–15 秒整數（platform.minimax.io，2026-10-03 讀）；官方的參考圖 ≤ 9 只在參考生影片，跟首格互斥（v2 建立文件，2026-10-05 讀），我們的片段一定帶首格；`meter.usd_for` 不看解析度，768p 也記 0.13 |
 | lyria-3.5 | US$0.08／首 | — | — |
 | judge | US$0.01／次（`JUDGE_USD_PER_CALL`） | — | 伺服器按實際 token 計，帳本記這個常數 |
 
@@ -217,7 +217,7 @@ platform.minimax.io 的 Video Packages（2026-10-03 讀）：Standard US$1,000�
 
 | 事實 | 來源 | 讀取日 |
 | --- | --- | --- |
-| 伺服器目錄價、秒數表、參考圖數 | `apps/api/app/video_media/catalog.py`、`apps/api/app/video_media/schemas.py` | 2026-09-26、2026-09-28（圖片） |
+| 伺服器目錄價、秒數表、參考圖數 | `apps/api/app/video_media/catalog.py`、`apps/api/app/video_media/schemas.py` | 2026-09-26、2026-09-28（圖片）；H3 參考圖 0 是 2026-10-05 |
 | 每秒計價、每月預算、單支上限、judge 門檻、每小時上限 | `apps/api/app/video_media/meter.py`、`apps/api/app/video_automation/models.py`、`apps/api/app/video_media/admin_api.py` | 程式碼 |
 | 買幾秒、take 上限、judge 單價、manifest 形狀 | `tools/video/media/clips.mjs`、`tools/video/media/stages.mjs`、`tools/video/media/ledger.mjs` | 程式碼 |
 | assemble 的檢查 | `tools/video/assemble/cli.mjs`、`tools/video/assemble/drama.mjs`、`tools/video/media/qc.mjs`、`tools/video/core/lint.mjs` | 程式碼 |
@@ -233,5 +233,5 @@ platform.minimax.io 的 Video Packages（2026-10-03 讀）：Standard US$1,000�
 | Kling 每秒積分、輸出數、單鏡、元素、首尾格 | kling.ai/quickstart 的 VIDEO 3.0、3.0 Omni、O1、2.6 user guide；kling.ai/blog 的積分花費指南；kling.ai 網頁 UI 字串 | 官方 2026-10-04 |
 | Kling API 價 | kling.ai/dev/pricing、API 價目文件 | 官方 2026-10-04 |
 | Hailuo 其他模型的積分、Max 無限的模型、隊列 | hailuoai.video 訂閱頁的方案表、FAQ、tooltip 與 UI 字串 | 官方 2026-10-04 |
-| H3 的首格與參考互斥、秒數、輸出、提示格式 | platform.minimax.io 的 v2 video generation 文件；Hugging Face 上 MiniMax-H3 的官方提示指南；hailuoai.video 的 H3 工具頁 | 官方 2026-10-04 |
+| H3 的首格與參考互斥、秒數、輸出、提示格式 | platform.minimax.io 的 v2 video generation 文件；Hugging Face 上 MiniMax-H3 的官方提示指南；hailuoai.video 的 H3 工具頁 | 官方 2026-10-04；互斥與「參考圖 ≤ 9」在 v2 建立文件 2026-10-05 再讀 |
 | 試作的花費與重拍 | `docs/videos/series-plans/competition-20261002/episodes/production-run-20261003.md`、`docs/videos/series-plans/competition-20261002/budget-and-launch.md`、`docs/videos/series-plans/competition-20261002/cost-ledger.csv` | 2026-10-03 |
