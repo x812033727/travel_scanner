@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-jev-provider-uncertain-retries
 title: Hold uncertain Jev provider POSTs before retrying or consuming new quota
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-jev-uncertain-retries
 claimed_at: 2026-10-05T00:15:11Z
 created_at: 2026-10-04T18:03:59Z
-completed_at:
+completed_at: 2026-10-05T01:06:21Z
 branch: claude/jev-uncertain-retries
 depends_on: []
 scope:
