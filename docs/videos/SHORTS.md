@@ -88,13 +88,13 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 | --- | --- | --- | --- |
 | 來源 | 題庫的企劃：固定輸入、先寫好的答案、評分方式、失敗時怎麼辦 | 已經公開的教學長片（有 YouTube 影片 id） | 成片已核准的漫劇集數或合集 |
 | 觀眾拿到什麼 | 一次真的測試的結果，連限制一起說 | 長片裡最值得記住的一段，結尾導回完整影片與文章 | 一個鉤子加一個懸念，導回完整的一集 |
-| 怎麼做 | 凍結題目 → 受測模型在全新對話各跑一次 → 對答案 → 撰稿照實寫（平手就說平手）→ 查核對證據 → 旁白 → 字卡 → 成片 | 企劃模型從長片挑 1–2 段（鉤子到結論在 55 秒內）→ 撰稿改寫成直式字卡與 38 字內的短句 → 旁白 → 成片 | 從該集挑鏡頭與台詞 → 每鏡用原關鍵影格當參考重畫一張 9:16 → 靜圖加運鏡，最多兩鏡買片段 → 燒錄字幕 → 成片 |
-| 產線 | `tools/video/shorts`（`format: "shorts"`） | 同左 | 漫劇產線加 9:16（`format: "drama"`、`aspect: "9:16"`） |
-| 旁白 | 頻道聲音 | 頻道聲音；句子跟長片一字不差時旁白快取直接命中 | 沿用該作品的旁白與角色聲音 |
-| 一支的花費（估） | 旁白不到 NT$1；模型走訂閱帳號；要生圖的題目每張約 NT$4 | 同左，沒有生圖 | 約 7 張圖加 0–2 個片段，約 NT$30–90 |
+| 怎麼做 | 凍結題目 → 受測模型在全新對話各跑一次 → 對答案 → 撰稿照實寫（平手就說平手）→ 查核對證據 → 旁白 → 字卡 → 成片 | 企劃模型從長片挑 1–2 段（鉤子到結論在 55 秒內）→ 撰稿改寫成直式字卡與 38 字內的短句 → 旁白 → 成片 | **原生路線**：從該集挑鏡頭與台詞 → 每鏡用原關鍵影格當參考重畫一張 9:16 → 靜圖加運鏡，最多兩鏡買片段 → 燒錄字幕 → 成片。**後製路線**（2026-10-05，`from-drama`）：站主選已核准成片的一段（`--from`／`--to`，不切到句子）→ 每鏡問一次 `locate` 找主角的方框 → 9:16 視窗置中在方框上、換鏡前 15 格線性移到下一鏡 → 字幕走 Shorts 的字幕層 → 成片；不生任何圖 |
+| 產線 | `tools/video/shorts`（`format: "shorts"`） | 同左 | 原生：漫劇產線加 9:16（`format: "drama"`、`aspect: "9:16"`）。後製：`tools/video/shorts/from-drama.mjs`（`line: "drama"`，送審時 `format: "drama"`） |
+| 旁白 | 頻道聲音 | 頻道聲音；句子跟長片一字不差時旁白快取直接命中 | 沿用該作品的旁白與角色聲音；後製路線直接剪該集的混音（人聲、配樂、音效一起）再正規化 |
+| 一支的花費（估） | 旁白不到 NT$1；模型走訂閱帳號；要生圖的題目每張約 NT$4 | 同左，沒有生圖 | 原生：約 7 張圖加 0–2 個片段，約 NT$30–90。後製：每鏡一次 `locate`（US$0.01 一次，記在 judge 的額度），一支不到 NT$5 |
 | 揭露 | 字卡加一般 TTS 不用勾；有擬真生成圖的那幾題要勾 | 不用勾 | 一律勾「變造或合成內容」 |
 | 分類 | 28（科學與技術） | 28 | 24（娛樂） |
-| 第一期（本機做好的） | #871 三支試片、之後本機做的 | PR #880 的 12 支 | 沒有 |
+| 第一期（本機做好的） | #871 三支試片、之後本機做的 | PR #880 的 12 支 | 後製路線本機就能做（`from-drama`，2026-10-05）；原生路線沒有 |
 | 第二期（主機自動） | 先做：15 題裡有 8 題只用文字（01、03、06、07、09、13、14、15），1 題產出不含程式的 HTML（02） | 第二個做 | 最後做：要等漫劇試作（`2026-09-26-video-drama-pilot`）先跑出第一集 |
 
 實測線其餘六題暫時排不進自動產線，題庫會標出原因：
@@ -358,6 +358,7 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 | `motion.mjs`（2026-09-29，票 `video-shorts-motion-music`） | 畫面不再是每句一張不透明字卡硬切：**一個場景一段**，底層是這個場景的圖（長片的關鍵影格，16:9 裁成 9:16 只留中間約 32%，依 `camera` 運鏡：push in／pull out／pan left／pan right／tilt up／tilt down／drift）或主題的底色與光暈（純字卡場景，慢慢漂移），上層是每句的**透明字卡**（`sceneHtml` 的 `transparent`：有圖時內容放在半透明面板上、上下加漸層遮罩；`.content`、字幕條、計數與進度條的幾何不變，`measurePage` 與 qa 的 layout 項照舊）；場景之間從上一段的最後一格溶接 15 格，第一個場景硬切。運鏡表達式與溶接長度直接 import `assemble/drama.mjs`，跟長片一致。`checks.json` 多 `motion`（每景的 camera、背景種類、有沒有溶接）。實測線的證據圖（`asset` 沒有 `camera`）仍放在卡片裡，清楚可讀，底下是漂移的底色 |
 | 腳本格式第 2 版的 `camera`、`music`、`sfx` | 場景可寫 `camera`（上面七個詞）；文件層可寫 `music {track, sha256?, gain_db?, duck_db?}` 與 `sfx {set, gain_db?}`，都是站主放在工人主機 `<VIDEO_WORKDIR>/_music/`、`_sfx/<set>/` 的授權檔（跟長片同一份，`docs/videos/ILLUSTRATED.md` §配樂與音效），Shorts 不生成音樂。有配樂或音效時 `build` 走長片的 `measureMixArgs`／`mixArgs`（床壓在旁白下、側鏈壓低、成片 −14 LUFS、床 ≤ −24 LUFS 否則失敗），音效依 `shortSfxPlan` 放：每個場景開頭一個 stamp（第一景除外）、有 `big` 的句子一個 pop、1.5 秒內不重複。`buildId` 加配樂 sha 與音效組雜湊；`checks.json` 多 `music {track, sha256, bed_lufs}`、`sfx {set, events}`。第 1 版腳本一個位元組都不用改 |
 | `karaoke.mjs`（2026-10-05，票 `2026-10-05-shorts-karaoke-captions-estimated-timing`） | 字幕條可以**逐組亮字**（`build --captions karaoke`，沒給旗標就讀 `VIDEO_SHORTS_CAPTIONS`，再沒有就是 `plain`，舊行為一個位元組不變）：每句先切成最多兩行、一行 ≤ 15 個全形字（820 px 盒的真正上限，38 字只是格式上限），每行再切成 5–10 個顯示單位一組（拉丁字與數字不拆、標點黏前一個字、偏好在句讀收尾）；字幕層是獨立的透明 PNG（`captionHtml`，只畫字幕條、裁到 `CAPTION_BOX` 80,1430,820×165），一個亮字狀態一張，疊在卡片上（`segmentArgs` 的最後一個輸入，`overlay=80:1430`），卡片本身把字隱藏但保留盒與底色，所以 `measurePage` 的量法不變；亮組只換顏色（主題的 `highlight`，或 `colors.karaoke`）與光暈，不換版面。時間是**估算**的：伺服器只回音檔，`speechSpan` 先用每句音檔的 RMS 找到頭尾靜音，再依 `spokenUnits` 加標點的權重分攤；寫在成品的 `timing.json`（`source: "estimated"`，每句的 lines、groups、start／end、states），`checks.json.captions = {style, source, groups, states, version}`。CC 的 `zh-TW.srt` 仍一句一段（YouTube CC 沒有逐字）。`MOTION_VERSION` 升到 v2、`karaoke.mjs` 進 `codeHash`、`captions` 進 `buildId`。伺服器的字幕樣式設定延後（要 migration、schemas、後台表單與五個 admin.json）；站主先看一支樣片，滿意再在工人主機設 `VIDEO_SHORTS_CAPTIONS=karaoke`。真實字時由票 `2026-10-05-speech-align-character-timing` 補（同一個 `timing.json` 形狀，`source: "aligned"`） |
+| `from-drama.mjs`（2026-10-05，票 `2026-10-05-shorts-from-drama-reframe`） | 漫劇直式短篇的**後製路線**：`from-drama --slug <集> --from <秒> --to <秒>` 讀該集已核准的 `final.mp4`（`approvals.json` 的 `final` 要對得上目前的雜湊，否則拒絕）、`timeline.json`（成片有片頭片尾時依 `checks.json.branding` 位移，跟字幕同一個時鐘）與 `captions/zh-TW.srt`，把 1920×1080 的畫面**按格數**（`trim=start_frame`，不 seek）切出這一段；每個 shot 問一次 `POST /video/media/locate`（工作目錄有 `keyframes/manifest.json` 就用該鏡的關鍵影格，沒有就從成片抽鏡頭中段那一格，都先 `putFile` 進該集的媒體庫；標籤是 `video.json` 裡該鏡的角色名，主角在前），取第一個對上的角色、否則分數最高的方框、都沒有就置中；`crop=608:1080:x='…'` 的視窗置中在方框上、整鏡不動、換鏡前 `MOVE_FRAMES`（15 格，等於溶接長度）線性移到下一鏡的位置，讓剪接點落在已經對好的構圖上；卡片場景（片頭、章節、片尾）置中，不問；再 `scale=1080:1920`。聲音是該集混音剪下來的這一段，兩段式 loudnorm 到 −14 LUFS，不合成旁白。字幕不用 libass：每句用 `core.mjs` 的 `captionHtml`（多加一條主題字幕條底色的規則，版面不動）畫成字幕層 PNG，`--captions karaoke` 時依 `karaoke.mjs` 估的時間逐組亮字、`plain` 時整句不亮，連同沒人說話時的空白圖用 ffconcat 清單疊在 `CAPTION_BOX`（跟 `motion.mjs` 疊卡片的做法相同）；每句都量過安全區（字幕條下緣 ≤ 1600、字在 x 78–902），超過兩行 15 字的句子會停下來說是哪一句。產物跟 `build` 一樣：`script.json`（`line: "drama"`、`source.slug` 與起訖秒數、標題說明預設抄 `video.json` 的 `youtube`，`--meta` 可改標題、說明、系列、標籤、連結、每景標題）、`audio/`（每句一個 WAV，給 `check-audio`）、`timeline.json`、`timing.json`、`checks.json`（`layout` 有量，另有 `reframe`：每鏡的圖片來源、方框、視窗、`pieces` 與 locate 次數）、`upload/`；之後 `check-audio`、`qa`（`layout` 能過）、`package`、`push` 照常。`usage.json` 不報 locate：站上已經記在 judge 的額度，而 `costs.py` 會把計費供應商的階段呼叫記成未知金額。`--from`／`--to` 切到句子一半、長度不在 Shorts 範圍、來源沒核准，都在任何呼叫之前拒絕並說怎麼改。原生 9:16 路線（T4）仍是另一條；這條不生圖、不重畫 |
 | `from-episode` 接任何有 shot 的長片 | 原來如此事務所的漫劇與插圖投影片影片都行：`episodeShort` 把每個 shot 換成長片的關鍵影格（雜湊綁定，不另外生圖），並帶上長片那個 shot 的 `camera`（Short 自己寫了就用自己的）；系列依長片決定（`episodeSeries`）：explainer → `sothatswhy`、插圖投影片 → `illustrated`（主題 `cut:illustrated`，深青、奶油白、琥珀，每張卡指回長片）；沒有 shot 的長片直接拒絕 |
 | `tools/video/automation/shorts.mjs` | 工人的 `shortsStep()`：依 `next` 做 `plan`、`brief`、`make`、`report`。`make` 依內容線走 `lab.mjs`、`cut.mjs`、`vertical.mjs`（漫劇）。`auto` 現在一讀到自動產線沒開就結束；`shortsStep()` 要排在那個檢查之前，由 Shorts 自己的開關決定做不做。`tick` 不在這裡：工人的迴圈腳本另外每 5 分鐘敲一次（見「誰在什麼時候動手」） |
 | `track-init`、`report` | 留著給離線使用；伺服器是正本 |
@@ -367,7 +368,7 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 
 實測線的製作步驟（`lab.mjs`）：凍結題目（把企劃的輸入、答案、評分寫成 `protocol.json` 並算雜湊）→ 受測模型各跑一次（`subject`；原始回答、模型名稱、時間、重試次數寫成證據）→ 評分（數字題用程式對答案，其餘交查核模型，結果寫 `scores.json`）→ 撰稿（只准照證據寫；兩組都對就說都對）→ 查核（新對話）→ lint → 旁白 → `build` → `qa` → `push`。技術失敗可以重試一次，兩次的紀錄都留；模型答錯不是失敗，是結果。
 
-漫劇直式短篇要動到漫劇產線：`tools/video` 目前把畫面寫死 1920×1080，伺服器的 `drama_aspect` 設定（`16:9`、`9:16`）工具沒有讀。那張票（T4）要讓關鍵影格、運鏡、片段、字幕條與合成都依 `aspect` 走，並且跟漫劇那條線協調。
+漫劇直式短篇的原生路線要動到漫劇產線：`tools/video` 目前把畫面寫死 1920×1080，伺服器的 `drama_aspect` 設定（`16:9`、`9:16`）工具沒有讀。那張票（T4）要讓關鍵影格、運鏡、片段、字幕條與合成都依 `aspect` 走，並且跟漫劇那條線協調。在那之前，`from-drama` 是後製路線：不生圖、不重畫，直接從已核准的 16:9 成片裁出跟著主角的 9:16（上表）。
 
 ## 政策與依據（2026-09-28 讀官方頁）
 
