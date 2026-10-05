@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-avoid-claiming-owner-youtube-upload-when
 title: Avoid claiming owner YouTube upload when pulling automatic publish approval
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-sync-auto-approval-message
 claimed_at: 2026-10-05T00:27:10Z
 created_at: 2026-10-04T17:29:40Z
-completed_at:
+completed_at: 2026-10-05T01:06:37Z
 branch: claude/sync-auto-approval-message
 depends_on: []
 scope:
