@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-prevent-automatic-retries-of-paid-video
 title: Prevent automatic retries of paid video judge requests
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-automation-judge-paid-retries
 claimed_at: 2026-10-05T00:13:32Z
 created_at: 2026-10-04T16:08:05Z
-completed_at:
+completed_at: 2026-10-05T01:26:02Z
 branch: claude/automation-judge-paid-retries
 depends_on: []
 scope:
@@ -84,3 +84,10 @@ Run `node --test tools/video/automation/client.test.mjs` and relevant QA caller 
   call is 2026-10-04-jev-provider-uncertain-retries; if that work makes an uncertain Jev outcome a
   `JevError`, `admin_api.py` should answer it with its own code, not `video_judge_upstream_failed`,
   or this client would still retry it as settled.
+- Measured on Windows, 2026-10-05: `node --test tools/video/automation/client.test.mjs
+  tools/video/review/sync.test.mjs tools/video/qa/qa.test.mjs tools/video/shorts/bindings.test.mjs`
+  gave 128 of 128 (origin/main: 125). Running the same tests against the origin/main `client.mjs`
+  fails the new judge lost-answer test and the QA caller case. The full tools suite with
+  `--test-concurrency=3` gave 1625 pass and 3 fail: the known Windows-only `tts/check` case, the
+  Windows-only nginx detector timeout (filed as 2026-10-05-nginx-detector-pipefail-test-times-out),
+  and the duration receipt binding, which is stale for `tools/video/qa/qa.test.mjs` as expected.
