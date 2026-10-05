@@ -385,6 +385,15 @@ LIFE_SEED_SUBTOPICS: tuple[tuple[str, str, Labels], ...] = (
             "加密货币与区块链",
         ),
     ),
+    # 0125. Earning with AI -- freelancing, selling digital goods, side businesses -- sits
+    # under ``ai`` rather than ``finance``: it is about the work and the platforms' rules, not
+    # about money products, and an article that does touch tax or returns adds ``finance``
+    # itself and so takes that topic's disclaimer rule with it.
+    (
+        "ai-income",
+        "ai",
+        ("Earning with AI", "AIで稼ぐ", "AI로 수익 내기", "AI 賺錢與副業", "AI 赚钱与副业"),
+    ),
 )
 
 # The lead paragraph of a topic's hub page, per locale. Seeded by 0076 only where a topic
@@ -465,6 +474,9 @@ LIFE_TOPIC_DESCRIPTIONS: dict[str, dict[str, str]] = {
         "zh-TW": (
             "加密貨幣與區塊鏈的法規、技術與產業動態。只講制度與運作方式，不寫價格、漲跌或買賣時機。"
         )
+    },
+    "ai-income": {
+        "zh-TW": "用 AI 接案、賣數位商品與經營副業：平台規則、報價、責任與成本，不保證收入。"
     },
 }
 

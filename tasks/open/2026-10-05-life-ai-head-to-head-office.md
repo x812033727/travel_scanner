@@ -11,8 +11,6 @@ completed_at:
 branch:
 depends_on: []
 scope:
-  - apps/api/app/guides/content
-  - apps/web/public/guides
   - docs/life-ai-head-to-head-office
 ---
 
