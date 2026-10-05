@@ -47,7 +47,7 @@
         },
         {
           "type": "paragraph",
-          "text": "整篇依 2026 年 9 月 OpenAI、Anthropic（Claude）與 Google（Gemini）官網查證。讀完你會知道三家免費版各能做什麼、卡在哪個額度；入門付費方案的名稱、價格、台灣有沒有台幣定價、年繳差多少；上一階的 Pro、Max、Ultra 是給誰的；學生與團隊方案有什麼；然後用五種典型使用者的情境、一張決策圖與一張比較表找到自己的答案，最後是付費前先做的三件事。"
+          "text": "整篇依 2026 年 9 月 OpenAI、Anthropic（Claude）與 Google（Gemini）官網查證，Codex 可用的模型與 Claude 的上下文視窗在 10 月 5 日重新查過。讀完你會知道三家免費版各能做什麼、卡在哪個額度；入門付費方案的名稱、價格、台灣有沒有台幣定價、年繳差多少；上一階的 Pro、Max、Ultra 是給誰的；學生與團隊方案有什麼；然後用五種典型使用者的情境、一張決策圖與一張比較表找到自己的答案，最後是付費前先做的三件事。"
         },
         {
           "type": "heading",
@@ -61,8 +61,8 @@
         {
           "type": "list",
           "items": [
-            "ChatGPT 免費版：預設模型是 GPT-5.6 Luna，日常文字對話不限次數，只保留防濫用機制；難題可以按 Think 讓 Luna 多想一下。卡的地方是檔案：每天只能上傳 3 個檔案；產圖、語音、資料分析各有獨立上限，官網沒有寫死數字，以官網為準。免費版拿不到旗艦的 GPT-5.6 Sol，可能出現廣告，台灣自 2026 年 9 月 23 日起陸續開始。",
-            "Claude 免費版：能用 Sonnet 與 Haiku 兩級模型，上下文視窗 200k token，網頁搜尋、記憶、產生檔案與執行程式碼都開放。卡的地方是用量：額度以 5 小時為一個 session，用完就要等重置，能送幾則訊息依當時的需求量浮動；旗艦的 Opus 與 Fable 都不在免費版。",
+            "ChatGPT 免費版：預設模型是 GPT-5.6 Luna，日常文字對話不限次數，只保留防濫用機制；難題可以按 Think 讓 Luna 多想一下。卡的地方是檔案：每天只能上傳 3 個檔案；產圖、語音、資料分析各有獨立上限，官網沒有寫死數字，以官網為準。免費版拿不到付費方案的 GPT-5.6 Sol，可能出現廣告，台灣自 2026 年 9 月 23 日起陸續開始。",
+            "Claude 免費版：能用 Sonnet 與 Haiku 兩級模型，上下文視窗依模型而定、最多 100 萬 token，網頁搜尋、記憶、產生檔案與執行程式碼都開放。卡的地方是用量：額度以 5 小時為一個 session，用完就要等重置，能送幾則訊息依當時的需求量浮動；旗艦的 Opus 與 Fable 都不在免費版。",
             "Gemini 免費版：用 Gemini 3.6 Flash，官網寫 3.1 Pro 的存取權限可能變動；能產圖與修圖，也能用 Deep Research、Gemini Live 與 Canvas。卡的地方是上下文視窗只有 32k token，長 PDF 讀不完；用量每 5 小時重設一次、另有每週上限；官網也註明沒有付費方案的使用者在需求高峰時可能用不到 Deep Research 這類吃資源的功能。影片生成要從付費方案開始。"
           ],
           "ordered": false
@@ -85,7 +85,7 @@
         },
         {
           "type": "paragraph",
-          "text": "ChatGPT 的入門付費方案叫 ChatGPT Go，台灣定價頁標每月新台幣 270 元（標價是否含 5% 營業稅，以結帳頁為準），開放給所有支援 ChatGPT 的國家；產圖、檔案上傳與資料分析的額度比免費版高，記憶更長，還能用專案、任務、自訂 GPT 與 Library，但模型仍是 GPT-5.6 Luna，而且和免費版一樣可能出現廣告。要旗艦的 GPT-5.6 Sol 與思考強度滑桿（Medium、High），得升到每月新台幣 690 元（美國定價 20 美元）的 ChatGPT Plus，Plus 沒有廣告，也包含程式代理工具 Codex 的完整雲端功能。help center 寫明 Go、Plus 與 Pro 目前都沒有年繳或一次預付多個月的選項。台灣的計費幣別：多幣別計費頁把新台幣（TWD）列為台灣的幣別，所以網頁結帳以新台幣計價；App 內購則以當地貨幣扣款。"
+          "text": "ChatGPT 的入門付費方案叫 ChatGPT Go，台灣定價頁標每月新台幣 270 元（標價是否含 5% 營業稅，以結帳頁為準），開放給所有支援 ChatGPT 的國家；產圖、檔案上傳與資料分析的額度比免費版高，記憶更長，還能用專案、任務、自訂 GPT 與 Library，但模型仍是 GPT-5.6 Luna，而且和免費版一樣可能出現廣告。要 GPT-5.6 Sol 與思考強度滑桿（Medium、High），得升到每月新台幣 690 元（美國定價 20 美元）的 ChatGPT Plus，Plus 沒有廣告，也包含程式代理工具 Codex 的完整雲端功能，Codex 裡可以用 GPT-6.1 Sol 與 GPT-6 Luna（GPT-6.1 Sol 目前不在聊天介面裡）。help center 寫明 Go、Plus 與 Pro 目前都沒有年繳或一次預付多個月的選項。台灣的計費幣別：多幣別計費頁把新台幣（TWD）列為台灣的幣別，所以網頁結帳以新台幣計價；App 內購則以當地貨幣扣款。"
         },
         {
           "type": "paragraph",
@@ -164,8 +164,8 @@
           "items": [
             "偶爾問問題：三家免費版都夠，不用付費。建議三家都開帳號試一輪，留最順手的一家；偶爾想用旗艦模型，再看月繳、隨時可取消的入門方案。",
             "每天寫作與翻譯：最先卡的是 Claude 免費版 5 小時內的訊息額度，其次是 ChatGPT 每天 3 個檔案。預算最低選 ChatGPT Go（台幣 270 元）或 Google AI Plus（台幣 165 元）；重視改稿品質與長文上下文，選 Claude Pro（20 美元，年繳折算 17 美元）。",
-            "大量讀文件：看上下文視窗與檔案數。Gemini 免費版 32k token最先撞牆，Google AI Pro（台幣 650 元）直接放大到 100 萬 token；Claude Pro 上下文 200k token，一個對話最多 20 個檔案、單檔 500 MB，適合逐份精讀。",
-            "寫程式：完整的代理工具都在付費版。Claude Pro（20 美元）包含 Claude Code 與 Cowork；ChatGPT Plus（台幣 690 元）才有 GPT-5.6 Sol 與完整的 Codex 雲端功能，免費版與 Go 只有基本的 Codex 用量。這類使用者最容易用到上一階，先買一個月入門方案看看額度夠不夠。",
+            "大量讀文件：看上下文視窗與檔案數。Gemini 免費版 32k token最先撞牆，Google AI Pro（台幣 650 元）直接放大到 100 萬 token；Claude Pro 的上下文視窗依模型而定、最多 100 萬 token，一個對話最多 20 個檔案、單檔 500 MB，適合逐份精讀。",
+            "寫程式：完整的代理工具都在付費版。Claude Pro（20 美元）包含 Claude Code 與 Cowork；ChatGPT Plus（台幣 690 元）才有完整的 Codex 雲端功能，Codex 裡可用 GPT-6.1 Sol；免費版與 Go 只有基本的 Codex 用量，桌面 App 可用 GPT-6 Luna（逐步開放）。這類使用者最容易用到上一階，先買一個月入門方案看看額度夠不夠。",
             "做圖做影片：免費版產圖有上限、影片生成幾乎都要付費。Gemini 從 Google AI Plus（台幣 165 元）就開放影片生成與 Flow 200 點，AI Pro（台幣 650 元）有 Flow 1,000 點；ChatGPT Go 的產圖額度比免費版高。"
           ],
           "ordered": false
@@ -177,7 +177,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由上往下看：先找自己最常做的事，看免費版卡到了沒，再對應到最下面一排的建議；最底下一行是上一階方案的價格帶。",
-          "description": "決策樹由上往下分三層。最上面一格：先用滿免費版兩週，再看你最常做什麼。第二層是五種情境，每種下面先問免費版卡到了嗎，再給建議。一、偶爾問問題：通常不會卡，ChatGPT 文字對話不限次數，Claude 與 Gemini 每 5 小時重置，三家免費版都能問；建議免費版就好，三家都開帳號試一輪，留最順手的一家，偶爾要旗艦模型再看月繳、隨時可取消的入門方案。二、每天寫作與翻譯：常卡，Claude 免費版 5 小時內的訊息額度先用完，ChatGPT 每天 3 個檔案，改稿要長上下文；建議預算最低選 ChatGPT Go 台幣 270 元或 Google AI Plus 台幣 165 元，重視改稿品質選 Claude Pro 20 美元、年繳折算 17 美元。三、大量讀文件：看上下文視窗與檔案數，Gemini 免費版上下文視窗只有 32k token，ChatGPT 每天 3 個檔案，長 PDF 讀不完就是卡了；建議 Google AI Pro 台幣 650 元，上下文放大到 100 萬 token，或 Claude Pro 20 美元，上下文 200k token，一個對話最多 20 個檔案、單檔 500 MB。四、寫程式：完整的代理工具都在付費版，Claude Code 只在付費版，ChatGPT Plus 才有 Sol 與完整 Codex 雲端功能，旗艦模型都要付費；建議 Claude Pro 20 美元含 Claude Code 與 Cowork，或 ChatGPT Plus 台幣 690 元有 GPT-5.6 Sol 與 Codex，先買一個月看額度夠不夠。五、做圖做影片：免費版產圖有上限，影片生成要付費，Gemini 的影片生成從 Google AI Plus 開始，數字以官網為準；建議 AI Plus 台幣 165 元有影片生成與 Flow 200 點，AI Pro 台幣 650 元有 Flow 1,000 點、用量 4 倍，ChatGPT Go 產圖上限更高。最下面三行補充：上一階給每天大量使用的人，ChatGPT Pro 每月 100、200 或 500 美元、Claude Max 100 或 200 美元、Google AI Ultra 台幣 3,300 或 6,500 元，一般使用者先從入門方案開始；美元為美國定價，台幣為 ChatGPT 與 Gemini 的台灣定價頁標價，Claude 的台幣價格以登入後看到的為準，App 內購以當地貨幣計價；三家都可月繳、隨時取消，只有 Claude Pro 有年繳折扣，方案與價格依 2026 年 9 月官網查證，之後可能變動。",
+          "description": "決策樹由上往下分三層。最上面一格：先用滿免費版兩週，再看你最常做什麼。第二層是五種情境，每種下面先問免費版卡到了嗎，再給建議。一、偶爾問問題：通常不會卡，ChatGPT 文字對話不限次數，Claude 與 Gemini 每 5 小時重置，三家免費版都能問；建議免費版就好，三家都開帳號試一輪，留最順手的一家，偶爾要旗艦模型再看月繳、隨時可取消的入門方案。二、每天寫作與翻譯：常卡，Claude 免費版 5 小時內的訊息額度先用完，ChatGPT 每天 3 個檔案，改稿要長上下文；建議預算最低選 ChatGPT Go 台幣 270 元或 Google AI Plus 台幣 165 元，重視改稿品質選 Claude Pro 20 美元、年繳折算 17 美元。三、大量讀文件：看上下文視窗與檔案數，Gemini 免費版上下文視窗只有 32k token，ChatGPT 每天 3 個檔案，長 PDF 讀不完就是卡了；建議 Google AI Pro 台幣 650 元，上下文放大到 100 萬 token，或 Claude Pro 20 美元，上下文依模型最多 100 萬 token，一個對話最多 20 個檔案、單檔 500 MB。四、寫程式：完整的代理工具都在付費版，Claude Code 只在付費版，ChatGPT Plus 才有完整的 Codex 雲端功能，旗艦模型都要付費；建議 Claude Pro 20 美元含 Claude Code 與 Cowork，或 ChatGPT Plus 台幣 690 元，Codex 可用 GPT-6.1 Sol，先買一個月看額度夠不夠。五、做圖做影片：免費版產圖有上限，影片生成要付費，Gemini 的影片生成從 Google AI Plus 開始，數字以官網為準；建議 AI Plus 台幣 165 元有影片生成與 Flow 200 點，AI Pro 台幣 650 元有 Flow 1,000 點、用量 4 倍，ChatGPT Go 產圖上限更高。最下面三行補充：上一階給每天大量使用的人，ChatGPT Pro 每月 100、200 或 500 美元、Claude Max 100 或 200 美元、Google AI Ultra 台幣 3,300 或 6,500 元，一般使用者先從入門方案開始；美元為美國定價，台幣為 ChatGPT 與 Gemini 的台灣定價頁標價，Claude 的台幣價格以登入後看到的為準，App 內購以當地貨幣計價；三家都可月繳、隨時取消，只有 Claude Pro 有年繳折扣，方案與價格依 2026 年 9 月官網查證，Codex 模型與 Claude 上下文視窗 10 月 5 日重查，之後可能變動。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -250,7 +250,7 @@
               "Claude 免費版",
               "0",
               "Sonnet、Haiku",
-              "每 5 小時重置，訊息數依需求浮動；上下文 200k token"
+              "每 5 小時重置，訊息數依需求浮動；上下文依模型而定、最多 100 萬 token"
             ],
             [
               "Claude Pro（入門）",
@@ -289,7 +289,7 @@
               "AI Pro 的 5 倍或 20 倍；Flow 10,000 或 25,000 點；20 TB 起"
             ]
           ],
-          "caption": "2026 年 9 月依三家官網整理；美元為美國定價，新台幣為 ChatGPT 與 Gemini 的台灣定價頁標價，Claude 的台幣價格以登入後看到的為準。"
+          "caption": "2026 年 9 月依三家官網整理，Claude 的上下文視窗 10 月 5 日重查；美元為美國定價，新台幣為 ChatGPT 與 Gemini 的台灣定價頁標價，Claude 的台幣價格以登入後看到的為準。"
         },
         {
           "type": "callout",
@@ -322,12 +322,12 @@
         {
           "title": "OpenAI Help Center：About ChatGPT Pro tiers（Pro 100、200、500 美元三級、Pro 200 重新開放新訂閱且新訂閱額度較低、Pro 500 含 Astra Ultrafast、Pro 只有月繳）",
           "url": "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers",
-          "checked_on": "2026-09-30"
+          "checked_on": "2026-10-05"
         },
         {
-          "title": "OpenAI Help Center：GPT-5.6 and GPT-6 Pro in ChatGPT（Free 與 Go 用 Luna 與 Think、Plus 用 Sol 且思考強度到 High、Pro 有 Extra High 與 GPT-6 Pro）",
-          "url": "https://help.openai.com/en/articles/20001354-gpt-5-6-in-chatgpt",
-          "checked_on": "2026-09-30"
+          "title": "OpenAI Help Center：GPT-5.6 and GPT-6 Pro in ChatGPT（Free 與 Go 用 Luna 與 Think、Plus 用 Sol 且思考強度到 High、Pro 有 Extra High 與 GPT-6 Pro、GPT-6.1 Sol 只在 Work 與 Codex）",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-56-and-gpt-6-pro-in-chatgpt",
+          "checked_on": "2026-10-05"
         },
         {
           "title": "OpenAI Help Center：Multi-currency billing（支援幣別含 TWD 新台幣（台灣）、換幣別需取消後重訂、App 內購以當地貨幣）",
@@ -335,9 +335,9 @@
           "checked_on": "2026-09-30"
         },
         {
-          "title": "ChatGPT Learn：Pricing（Go 8、Plus 20 美元、Pro 100／200／500 美元、Business 每人 20 美元年繳／25 美元月繳且 2 人以上、Plus 起有 Codex 網頁／CLI／雲端整合、Go 為輕量 Codex）",
+          "title": "ChatGPT Learn：Pricing（Go 8、Plus 20 美元、Pro 100／200／500 美元、Business 每人 20 美元年繳／25 美元月繳且 2 人以上、Plus 起有 Codex 網頁／CLI／雲端整合並可用 GPT-6.1 Sol 與 GPT-6 Luna、Free 與 Go 在桌面 App 可用 GPT-6 Luna）",
           "url": "https://learn.chatgpt.com/docs/pricing",
-          "checked_on": "2026-09-30"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "OpenAI Help Center：ChatGPT Back to School offer for students（僅限美國學位授予院校的學生、Plus 免費 4 個月、2026 年 10 月 31 日前申請）",
@@ -350,9 +350,9 @@
           "checked_on": "2026-09-30"
         },
         {
-          "title": "Claude：Plans & Pricing（Free、Pro 20 美元與年繳 17 美元、Max 100 與 200 美元、Team 座位價、各方案模型與 200k 上下文、取消規則）",
+          "title": "Claude：Plans & Pricing（Free、Pro 20 美元與年繳 17 美元、Max 100 與 200 美元、Team 座位價、各方案模型、上下文視窗最多 1M 依模型而定、取消規則）",
           "url": "https://claude.com/pricing",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Claude Help Center：What is the Pro plan（每 session 至少免費版 5 倍、5 小時重置、每週上限、當地貨幣）",

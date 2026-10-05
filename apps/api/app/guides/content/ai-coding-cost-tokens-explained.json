@@ -13,7 +13,7 @@
   "locales": {
     "zh-TW": {
       "title": "AI 寫程式的費用怎麼算：token、訂閱與 API 額度",
-      "description": "AI 寫程式的帳單有兩套算法：訂閱制付月費換一段時間區間的額度，API 按每百萬 token 計價。這篇用 2026 年 9 月官網當天查到的數字，說明 token 是什麼計價單位、為什麼代理每一輪都重送整段上下文所以比聊天燒得快、提示詞快取怎麼把重複輸入降到十分之一，並列出 Claude、ChatGPT、Copilot、Cursor、Gemini CLI 的入門方案與代表模型的 API 價格，附一條估算算式、一個算到底的範例與六個省錢做法。",
+      "description": "AI 寫程式的帳單有兩套算法：訂閱制付月費換一段時間區間的額度，API 按每百萬 token 計價。這篇用 2026 年 9 月官網當天查到的數字（模型與 API 價格在 10 月 5 日重新查證），說明 token 是什麼計價單位、為什麼代理每一輪都重送整段上下文所以比聊天燒得快、提示詞快取怎麼把重複輸入降到十分之一，並列出 Claude、ChatGPT、Copilot、Cursor、Gemini CLI 的入門方案與代表模型的 API 價格，附一條估算算式、一個算到底的範例與六個省錢做法。",
       "hero": {
         "src": "/guides/ai-coding-cost-tokens-explained/hero.jpg",
         "alt": "插圖：一個終端機視窗裡有三根越來越高的長條，旁邊是一個計量表，代表用量隨輪數累積並被計價",
@@ -47,7 +47,7 @@
         },
         {
           "type": "paragraph",
-          "text": "這篇先把 token、上下文視窗與提示詞快取講成看得懂的計價規則，再排出 2026 年 9 月 14 日各家官網的方案價格與 API 單價，最後給一條算式、一個算到底的範例與六個省錢做法。"
+          "text": "這篇先把 token、上下文視窗與提示詞快取講成看得懂的計價規則，再排出各家官網的方案價格與 API 單價（2026 年 9 月 14 日查證，模型與 API 價格 10 月 5 日重新查證），最後給一條算式、一個算到底的範例與六個省錢做法。"
         },
         {
           "type": "heading",
@@ -176,7 +176,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Anthropic 的價格頁列出三個倍率：五分鐘快取寫入是基本輸入價的 1.25 倍、一小時寫入 2 倍、快取讀取 0.1 倍，並寫明五分鐘版讀到一次就回本、一小時版讀到兩次回本；可快取的最短長度依模型而定，Claude Sonnet 5 是 1,024 個 token、Haiku 4.5 是 4,096 個。OpenAI 則預設就開，GPT-5.6 之後的模型最低 1,024 個可見輸入 token，命中的部分以快取輸入價計費、是未快取的 0.1 倍，最多省 90%。"
+          "text": "Anthropic 的價格頁列出三個倍率：五分鐘快取寫入是基本輸入價的 1.25 倍、一小時寫入 2 倍、快取讀取 0.1 倍，並寫明五分鐘版讀到一次就回本、一小時版讀到兩次回本；可快取的最短長度依模型而定，Claude Sonnet 5.5 是 512 個 token、Haiku 4.5 是 4,096 個。OpenAI 則預設就開，GPT-5.6 之後的模型最低 1,024 個可見輸入 token，寫入快取是未快取輸入價的 1.25 倍，命中的部分多數模型是 0.1 倍、GPT-6.1 Sol 是 0.05 倍，最多省 95%。"
         },
         {
           "type": "paragraph",
@@ -229,7 +229,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Anthropic 的個人方案分免費、Pro 與 Max，官網寫 Pro 每五小時區間的用量至少是免費版的 5 倍，Max 分 5x 與 20x 兩級。OpenAI 的 Codex 定價頁把單位寫成每五小時區間的本機訊息則數，每個模型上限不同，例如 Plus 的 GPT-5.6 Luna 是 250 到 2,000 則；說明中心另外寫明 Codex 有五小時與每週兩個視窗。實際則數會隨官網調整，以官網為準。"
+          "text": "Anthropic 的個人方案分免費、Pro 與 Max，官網寫 Pro 每五小時區間的用量至少是免費版的 5 倍，Max 分 5x 與 20x 兩級。OpenAI 的 Codex 定價頁把單位寫成每五小時區間的本機訊息則數，每個模型上限不同，例如 Plus 的 GPT-6 Luna 是 350 到 3,000 則；說明中心另外寫明 Codex 有五小時與每週兩個視窗。實際則數會隨官網調整，以官網為準。"
         },
         {
           "type": "paragraph",
@@ -296,13 +296,13 @@
               "Claude API",
               "用量",
               "每百萬 token",
-              "Sonnet 5 輸入 2、輸出 10 美元"
+              "Sonnet 5.5 輸入 2、輸出 10 美元"
             ],
             [
               "OpenAI API",
               "用量",
               "每百萬 token",
-              "GPT-5.6 Luna 輸入 0.20、輸出 1.20 美元"
+              "GPT-6 Luna 輸入 0.10、輸出 0.50 美元"
             ],
             [
               "Gemini API",
@@ -311,7 +311,7 @@
               "Gemini 3.8 Flash 輸入 0.75、輸出 3.75 美元"
             ]
           ],
-          "caption": "2026 年 9 月 14 日於各供應商官網查得；額度單位照官網寫法，未列出的細項以官網為準。"
+          "caption": "Claude、ChatGPT 與三列 API 的數字 2026 年 10 月 5 日、Copilot、Cursor 與 Gemini CLI 的數字 9 月 14 日於各供應商官網查得；額度單位照官網寫法，未列出的細項以官網為準。"
         },
         {
           "type": "rich_paragraph",
@@ -331,20 +331,20 @@
         },
         {
           "type": "paragraph",
-          "text": "API 沒有月費，開一把金鑰用多少算多少，單位是每百萬 token（官方寫成 per MTok），輸入與輸出分開計價，輸出通常是輸入的四到五倍。以下是各家官網上的代表模型。"
+          "text": "API 沒有月費，開一把金鑰用多少算多少，單位是每百萬 token（官方寫成 per MTok），輸入與輸出分開計價，輸出通常是輸入的五倍。以下是各家官網上的代表模型。"
         },
         {
           "type": "list",
           "items": [
-            "Anthropic：Claude Opus 5 每百萬 token 輸入 5 美元、輸出 25 美元；Sonnet 5 是 2 與 10 美元；Haiku 4.5 是 1 與 5 美元。",
-            "OpenAI：GPT-6 Astra 輸入 10 美元、快取輸入 1 美元、輸出 50 美元；GPT-5.6 Luna 是 0.20、0.02 與 1.20 美元。",
+            "Anthropic：Claude Opus 5.5 每百萬 token 輸入 4 美元、輸出 20 美元；Sonnet 5.5 是 2 與 10 美元；Haiku 4.5 是 1 與 5 美元。",
+            "OpenAI：GPT-6 Astra 輸入 10 美元、快取輸入 1 美元、輸出 50 美元；GPT-6 Luna 是 0.10、0.01 與 0.50 美元。",
             "Google：Gemini 3.8 Flash 輸入 0.75 美元、輸出 3.75 美元，官網註明這個價格到 2026 年 12 月 31 日，2027 年 1 月 1 日起改為 1.50 與 7.50 美元。"
           ],
           "ordered": false
         },
         {
           "type": "paragraph",
-          "text": "同一家的旗艦與輕量模型可以差到 50 倍，這是省錢最大的槓桿：改命名、補測試交給輕量模型，架構決策才用旗艦模型。"
+          "text": "同一家的旗艦與輕量模型可以差到 100 倍，這是省錢最大的槓桿：改命名、補測試交給輕量模型，架構決策才用旗艦模型。"
         },
         {
           "type": "rich_paragraph",
@@ -378,7 +378,7 @@
         },
         {
           "type": "paragraph",
-          "text": "舉個例子。用 Claude Sonnet 5 的 API，輸入每百萬 2 美元、輸出每百萬 10 美元、快取讀取每百萬 0.20 美元、五分鐘快取寫入每百萬 2.50 美元；起始上下文 30,000 個 token、每輪新增 2,000 個、跑 40 輪、每輪輸出 1,000 個。因為每輪都重送整包，40 輪的輸入合計 2,760,000 個 token，輸出共 40,000 個。"
+          "text": "舉個例子。用 Claude Sonnet 5.5 的 API，輸入每百萬 2 美元、輸出每百萬 10 美元、快取讀取每百萬 0.20 美元、五分鐘快取寫入每百萬 2.50 美元；起始上下文 30,000 個 token、每輪新增 2,000 個、跑 40 輪、每輪輸出 1,000 個。因為每輪都重送整包，40 輪的輸入合計 2,760,000 個 token，輸出共 40,000 個。"
         },
         {
           "type": "code",
@@ -501,37 +501,37 @@
         {
           "title": "提示詞快取：最短長度與快取壽命（Anthropic 官方文件）",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Claude API 價格與快取倍率（Anthropic 官方文件）",
           "url": "https://platform.claude.com/docs/en/about-claude/pricing",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Claude 方案與價格（Anthropic 官網）",
           "url": "https://claude.com/pricing",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
-          "title": "提示詞快取：預設開啟與快取輸入折扣（OpenAI 官方文件）",
+          "title": "提示詞快取：預設開啟、寫入 1.25 倍與快取輸入折扣（OpenAI 官方文件）",
           "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "OpenAI API 價格（官方文件）",
           "url": "https://developers.openai.com/api/docs/pricing",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "ChatGPT 與 Codex 方案價格與用量上限（OpenAI 官方文件）",
           "url": "https://learn.chatgpt.com/docs/pricing",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "用 ChatGPT 方案使用 Codex：用量視窗與查詢方式（OpenAI 說明中心）",
           "url": "https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "GitHub Copilot 方案與每月 AI credits（GitHub 官方文件）",
@@ -561,7 +561,7 @@
         {
           "title": "Gemini API 價格（Google 官方文件）",
           "url": "https://ai.google.dev/gemini-api/docs/pricing",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Gemini CLI 指令參考：stats（Google 官方文件）",
