@@ -45,8 +45,12 @@ Two things the original ticket asked for could not be done from an agent worktre
       `another operation is in progress`, `manually started transaction`,
       `Exception terminating connection`, `non-checked-in connection`. Read-only; nothing restarted.
 - [ ] Notes name a CI run (id and shard) where the Postgres test above ran and passed.
-- [ ] Notes record three full-stack-smoke runs on main after the fix merged whose service log has
-      none of the four strings (or the run ids where one appeared).
+- [ ] Notes name three green full-stack-smoke runs on main after the fix merged. A green run
+      prints no service log (`.github/workflows/ci.yml` prints `/tmp/travel-api.log` only in
+      "Show service logs on failure", `if: failure()`), so these runs show that no browser journey
+      failed, not that the four strings are absent. For every red full-stack-smoke run on main in
+      the same window, Notes also give its run id and the four strings' counts from that step's
+      output, zeros included.
 
 ## Steps
 
@@ -54,6 +58,8 @@ Two things the original ticket asked for could not be done from an agent worktre
       redeploy anything for it.
 - [ ] Find the api-tests shard that ran `tests/test_db_session_cancellation.py` on the fix's pull
       request or on main, and confirm the Postgres test is listed as passed, not skipped.
+- [ ] After the merge, list main's CI runs (`gh run list --workflow ci.yml --branch main`), take
+      three whose full-stack-smoke job passed, and grep the four strings in every red one's log.
 - [ ] Optional, if a disposable Postgres is at hand: run the Postgres test once with
       `CancellationSafeSession.__aexit__` reduced to `await super().__aexit__(...)` (a local edit,
       not committed) and record whether SQLAlchemy 2.1.3 alone already prevents the cascade (the
@@ -74,9 +80,13 @@ On the host, after the owner agrees (`<SSH>` as in `.agents/skills/prod-host-ops
 
 In CI: `gh run view <run-id> --log --job <api-tests job id> | grep test_db_session_cancellation`
 prints the file's progress line with seven dots and no `s` (locally, without PostgreSQL, it is
-`......s`: the seventh test skipped), and
-`gh run view <run-id> --log --job <full-stack-smoke job id> | grep -c 'Exception terminating connection'`
-prints 0.
+`......s`: the seventh test skipped).
+
+For a red full-stack-smoke run, `gh run view <run-id> --log --job <full-stack-smoke job id> | grep -c 'Exception terminating connection'`
+(and the same for the other three strings) counts the entries in its "Show service logs on
+failure" output. Do not read a green run this way: its log holds no service output, so every
+count is 0 whatever happened. This PR's own green run 37255563154 (job 111591751250) has 2,049
+lines and no uvicorn or API line.
 
 ## Notes
 
@@ -89,3 +99,11 @@ prints 0.
   what the fix changes. The SQLite test in the same file shows the difference locally.
 - The container log only reaches back to the api container's last start, so an empty grep right
   after a deploy says little; note the container's `StartedAt` next to the counts.
+- Review of PR #1243 (2026-10-05) found that the first draft asked for green full-stack-smoke
+  runs "whose service log has none of the four strings", which a green run cannot show: the
+  service log is printed only when the job fails. The 2026-10-04 cascade was seen because its
+  93 500s failed the job. A cascade that no journey notices would leave a green run with nothing
+  to read. If that ever matters, a step in `.github/workflows/ci.yml` that prints only the four
+  counts from `/tmp/travel-api.log` on every run (`if: always()`, no artifact, so none of the
+  storage cost the workflow's upload comments describe) would make green runs evidence; that file
+  is outside this ticket's scope.
