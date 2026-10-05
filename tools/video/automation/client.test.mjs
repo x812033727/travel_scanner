@@ -637,19 +637,19 @@ test("policy retry requires a fresh enabled route, a new owner request, and no S
 
 test("a verified undispatched slides repair may resume its corrected format while drama stays disabled", async () => {
   for (const video of [{ format: "slides" }, {}]) {
-  const box = sandbox();
-  let refusal;
-  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
-    if (new URL(url).pathname.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: false } });
-    if (init.method === "POST") refusal = { ...job(JSON.parse(init.body), "failed"), error_code: POLICY_HOLD, error_detail: "misrouted slides repair", error_status: 409, dispatched_at: null };
-    return Response.json(refusal);
-  } });
-  await client.settings();
-  await assert.rejects(client.run("writer", DURABLE_SLUG, "Repair keyframes", { video, fix: { kind: "keyframes" } }, 16_000, "drama"), (error) => error.code === POLICY_HOLD);
-  await client.retryRuns(DURABLE_SLUG, { requestId: "11112233-4455-6677-8899-aabbccddeeff", format: "slides", reason: "owner resumes the corrected slides route" });
-  assert.deepEqual(durableFiles(box), []);
-  const dir = path.join(box.work, DURABLE_SLUG, RUN_RECEIPTS_DIR, "archive");
-  assert.equal(readdirSync(dir).length, 1, "preserve the refused drama request instead of editing its identity");
+    const box = sandbox();
+    let refusal;
+    const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+      if (new URL(url).pathname.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: false } });
+      if (init.method === "POST") refusal = { ...job(JSON.parse(init.body), "failed"), error_code: POLICY_HOLD, error_detail: "misrouted slides repair", error_status: 409, dispatched_at: null };
+      return Response.json(refusal);
+    } });
+    await client.settings();
+    await assert.rejects(client.run("writer", DURABLE_SLUG, "Repair keyframes", { video, fix: { kind: "keyframes" } }, 16_000, "drama"), (error) => error.code === POLICY_HOLD);
+    await client.retryRuns(DURABLE_SLUG, { requestId: "11112233-4455-6677-8899-aabbccddeeff", format: "slides", reason: "owner resumes the corrected slides route" });
+    assert.deepEqual(durableFiles(box), []);
+    const dir = path.join(box.work, DURABLE_SLUG, RUN_RECEIPTS_DIR, "archive");
+    assert.equal(readdirSync(dir).length, 1, "preserve the refused drama request instead of editing its identity");
   }
 });
 
