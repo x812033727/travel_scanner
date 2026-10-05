@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-claude-computer-use-explained-recheck
 title: claude-computer-use-explained 的工具版本與 beta 字樣可能落後一版
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-ai-article-rechecks
 claimed_at: 2026-10-05T06:14:08Z
 created_at: 2026-10-03T12:04:02Z
-completed_at:
+completed_at: 2026-10-05T06:48:49Z
 branch: claude/ai-article-rechecks
 depends_on: []
 scope:
