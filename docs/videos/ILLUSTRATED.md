@@ -385,16 +385,35 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 | 說明欄 | `core/metadata.mjs` 的 `composeDescription` 在參考資料之後、hashtag 之前加「📷 圖片來源」區塊（各語系：圖片來源／图片来源／Image credits／画像の出典／이미지 출처），一張一行：`source（license）：url`（英、韓文用半形括號與冒號）。只列有 `author` 或 `url` 的 `assets[]`——自有圖解（只有 `path`／`source`／`license`）不列，所以列著自有圖解的既有影片，說明欄一個字都不會變，`publish` 關卡綁的 `upload/metadata.json` 也不會失效。`package/metadata.mjs` 每個語系都帶 `doc.assets` 進去；超過 5,000 位元組時的錯誤會註明是標示多了幾個位元組 |
 | 錯誤碼 | `video_media_stock_unavailable`（沒金鑰）→ 要站主（結束碼 3）；`video_media_stock_not_found` → 工具的錯（id 寫錯，結束碼 2）；`video_media_stock_failed`、429 → 和 `locate` 一樣重試，耗盡才算外部服務（4）；網站的 web app 還沒轉送 `stock/*` 路由時會收到 `video_media_route_unknown`，工具把它改說成「要部署會轉送這些路由的版本」（結束碼 3） |
 
-還沒做（開了票）：`apps/web/app/api/video/media/[...path]/forward.ts` 的 `mediaRoute` 白名單沒有 `stock/search`、`stock/fetch`（`locate` 也沒有），正式站上工具會收到 404，要補白名單；`tools/video/cli.mjs` 的 `AREAS` 沒列 `stock`，加一行就能用主指令跑。
+web app 的轉送（`apps/web/app/api/video/media/[...path]/forward.ts` 的 `mediaRoute` 白名單）由票 `2026-10-05-web-app-forwards-stock-and-locate` 補上了 `stock/search`、`stock/fetch` 與 `locate`。還沒做：`tools/video/cli.mjs` 的 `AREAS` 沒列 `stock`，加一行就能用主指令跑。
 
 ### 沒實測的事
 
 這個容器沒有金鑰：欄位名照兩家的文件寫（Pexels `photos[].src.original`、`photographer_url`、`alt`；Pixabay `hits[].largeImageURL`、`imageWidth`、`user_id`），第一次真的呼叫要看 `search` 的候選數、`fetch` 存下的檔案尺寸與 `credit` 是否對得上照片頁；Pixabay 沒有 full API access 時 `imageWidth`／`imageHeight` 有沒有回來（沒有就以 `webformatWidth`／`webformatHeight` 代替，候選的尺寸會是 640 px 那一檔）。
 
+## judge 的 problems：準確、完整、有解（2026-10-05）
+
+`problems` 原本是自由文字：一張圖可以某一題沒過卻沒有一句話提到它，也可以列一句跟沒過的題無關的意見；改提示詞的人（工人的撰稿修正迴圈、站主、重拍迴圈）拿到的東西不一定能動手。照 CHAI 研究的審稿三規矩（準確：指出在哪裡；完整：同一種毛病整張圖都找過；有解：每個嚴重的發現都附一個修法；OpenMontage 的 reviewer skill 用同一套，AGPL，只借想法）定成契約：
+
+**格式**：每一條 `problems` 都是一行 `<criterion key>: <哪裡有什麼不對> → <一個提示詞層級的修法>`。鍵是 rubric 的 key（`text`、`anatomy`、`identity_jingwei`…），箭頭後面是**可以直接貼進提示詞的字**（`clean: the barista's right hand is a blur → her right hand flat on the counter`），不是建議（「把手改好」）。
+
+| 誰 | 做什麼 | 在哪 |
+| --- | --- | --- |
+| 伺服器：問法 | 打分數的 `INSTRUCTIONS` 與是非題的 `CHECK_INSTRUCTIONS` 都要求這個格式：鍵照 rubric 寫、指出地方、寫之前把同一種毛病整張找過、最嚴重的放前面；刻度與「答有或沒有」那幾句逐字不動（它們是量過的，§judge 的刻度與判定沿用） | `apps/api/app/video_media/judge.py` `PROBLEM_FORMAT` |
+| 伺服器：扣到格式上 | `verdict()` 先算**沒過的題**：是非題是答有的那題（分數低於 10）；打分數是低於門檻的題（`min_score` 與每項下限 4 取大；overall 是加權平均，所以沒過的 take 一定至少有一題，過了的 take 也可能有一題在門檻下）。**丟掉**沒有鍵的行、鍵不是 rubric 的 key 的行、鍵指到沒有沒過的題的行（每項都 7、門檻 7 時的「意見」就是這種）；鍵的寫法寬鬆一點也認（`Text:`、`**anatomy** -`、`identity jingwei:`、直接 `anatomy → …`）。**補上**：沒過卻沒有任何一行提到的題，加一行 `<key>: the judge found it but did not say what or where (asked: <題目>) → write the correction into the prompt`；judge 寫了毛病卻沒給修法的行，箭頭後面補同一句。一行最長 400 字（修法最多 200 字、先裁毛病那段，箭頭後面一定留著）；judge 自己的行最多 20 條，之後接補上的行 | `judge.py` `failed_criteria`、`problems`、`PLACEHOLDER_FIX`、`UNDESCRIBED` |
+| 不變的 | `JudgeOut` 的形狀（`scores`／`overall`／`passed`／`problems`／`notes`／`model`）與送後台的 payload（`shots[].judge.overall`／`problems`、分鏡整體的 `judge.problems`、設定圖每張的 `judge.problems`）；後台頁照舊把 problems 接在分數後面顯示 | `schemas.py`、`tools/video/review/sync.mjs` |
+| 工具：下一個 take | 每個 take 之前把**它之前的 take** 的修法接在提示詞後面：`<prompt>. Corrections: <修法一>; <修法二>`（`fixesBefore`：箭頭後面那段，依 seed 排、去重；`retakePrompt`，上限 4000 字）。關鍵影格第 1 個 seed 照原提示詞，第 2 個帶第 1 個的修法，第 3 個帶前兩個的；片段同理（2 個 take）；設定圖同一角色第 2 張起帶前面幾張的修法，第二輪帶第一輪全部的；畫風樣張也一樣。帶了的修法記在該 take 的 `fixes`，stdout 印 `<id> take 2: asked with the corrections of the takes before: …` | `media/keyframes.mjs` `fixClauses`、`fixesBefore`、`retakePrompt`；`clips.mjs`、`look.mjs` 匯入同一組 |
+| 工具：佔位不貼 | 伺服器補的那句 `write the correction into the prompt` 是給改提示詞的人看的，不是提示詞：工具認得它（`PLACEHOLDER_FIX`，兩邊拼法相同、各自的測試釘住），不貼進下一個 take | `keyframes.mjs` `PLACEHOLDER_FIX` ↔ `judge.py` `PLACEHOLDER_FIX` |
+| 工具：快取與沿用 | 快取鍵含提示詞，帶了修法的 take 是另一個請求（會付錢），同樣的修法再跑一次仍從快取拿回；`entryStands` 用同一條規則（前面 take 記下的判定）重算每個 take 的鍵，所以改別鏡的提示詞時，帶著修法的 take 照樣沿用、不重判。舊 manifest 的 `problems` 沒有箭頭，等於沒有修法，行為跟以前一樣 | `keyframes.mjs` `entryStands` |
+| 工具：沒過時的提示 | manifest 條目除了 `problems`（每個 take 的每一行，去重）多一個 `fixes`（所有修法，去重），stdout 在 `ERROR <id>: …` 之後印 `  fixes for <id>: …`；匯入的片段沒過也一樣。工人的撰稿修正迴圈照舊讀 `problems`，拿到的每一行現在都帶鍵與修法 | `keyframes.mjs`、`clips.mjs`（含 `clips import`）、`look.mjs`；讀的是 `automation/flow.mjs` `failedTargets` |
+
+**還沒量**：票的 DoD 要在 163 張已記錄的出圖上量「沒過的 take 裡，`problems` 有一行點到沒過那一題的比例」前後對照。量測工具與每一輪的回答在做 DevDay 那台機器的 `<VIDEO_WORKDIR>/openai-devday-2026-recap/_tools/judge/calibration/`，這個 repo 沒有，而且圖只在站上的媒體庫留到 2026-10-17。要量：部署後用 `rejudge.mjs` 經正式站對同 163 張再判一輪（約 US$1.63，先問站主），對每個沒過的 take 數「`problems` 裡有沒有一行的鍵等於答有的題」；before 用 `host/fa.out` 裡的舊回答，鍵用關鍵字對（`text`／`letter`／`word`、`finger`／`hand`／`arm`、`float`／`detached`、`style`、`frame`／`border`）。系統指示只改了「problems」那一句，是非題的答案照理不受影響，但沒量過之前不能宣稱；量到了把數字寫回這一節。
+
 ## 沒做、留給後面
 
-- 圖庫照片（§圖庫照片 的「工具端」）還差兩件接線：web app 的 `mediaRoute` 白名單沒有 `stock/*`（也沒有 `locate`），正式站上工具會收到 404；`tools/video/cli.mjs` 的 `AREAS` 沒列 `stock`，現在要直接跑 `media/cli.mjs`。`lint` 不算說明欄的「圖片來源」位元組（`core/lint.mjs` 不讀 `assets[]`），稿子要自己留；`docs/videos/README.md` §說明欄 的四個部分還沒列第五個「圖片來源」。工人的撰稿提示詞還不會自己去搜照片，目前是代理或站主手動 `stock search`／`stock fetch` 再把路徑寫進 `screenshot` 景。
-- 是非題只用在插圖投影片（上一節）。漫劇的設定圖、關鍵影格、片段與原來如此事務所的靜圖仍是打分數、也頂在 7：各自量過已記錄的出圖、定好各自的題目再換。judge 漏看的瑕疵（六指、像字的記號）要靠更細的題目或更強的判定模型，也要先量；`subject` 在 163 張裡一次都沒答有，窯門大開那種「主動作不對」被歸到 `details`，這一題的寫法值得再試。
+- 圖庫照片（§圖庫照片 的「工具端」）還差一件接線：`tools/video/cli.mjs` 的 `AREAS` 沒列 `stock`，現在要直接跑 `media/cli.mjs`（web app 的轉送白名單已由票 `2026-10-05-web-app-forwards-stock-and-locate` 補上）。`lint` 不算說明欄的「圖片來源」位元組（`core/lint.mjs` 不讀 `assets[]`），稿子要自己留；`docs/videos/README.md` §說明欄 的四個部分還沒列第五個「圖片來源」。工人的撰稿提示詞還不會自己去搜照片，目前是代理或站主手動 `stock search`／`stock fetch` 再把路徑寫進 `screenshot` 景。
+- 是非題只用在插圖投影片（§judge 的刻度與判定沿用）。漫劇的設定圖、關鍵影格、片段與原來如此事務所的靜圖仍是打分數、也頂在 7：各自量過已記錄的出圖、定好各自的題目再換。judge 漏看的瑕疵（六指、像字的記號）要靠更細的題目或更強的判定模型，也要先量；`subject` 在 163 張裡一次都沒答有，窯門大開那種「主動作不對」被歸到 `details`，這一題的寫法值得再試。
+- judge 的 problems 改成「鍵、毛病、修法」之後（§judge 的 problems），163 張的前後對照還沒量；`drama_preflight.mjs` 與 `run_report.mjs` 印的是 `problems`，manifest 的 `fixes` 它們還沒印。
 - 樣張沒放進聯絡表（`review/sync.mjs` 用張數切頁，多一格會錯位）；要看就開 `keyframes/plate-N.png`。
 - 多狀態卡片（bullets、steps、table 逐條出現）的整景連續運鏡。
 - 插圖上沒有章節進度條（chrome 只在卡片上）；要的話把 chrome 截成透明疊層蓋在運鏡段上。

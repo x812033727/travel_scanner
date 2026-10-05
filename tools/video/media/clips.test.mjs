@@ -13,6 +13,7 @@ import { pipelineStatus } from "../core/state.mjs";
 import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { readJobs } from "./cache.mjs";
 import { clipPrompt, clipRubric, clipSeconds, lastFrameArgs, MAX_CLIP_TAKES, proxyArgs } from "./clips.mjs";
+import { FIX_ARROW } from "./keyframes.mjs";
 import { importedTotals, readLedger, reserve, savedTotals } from "./ledger.mjs";
 import { MIN_TRACK_SECONDS, trackSeconds } from "./music.mjs";
 import { chosenModel, clipSecondPrice, statusProblem, trackPrice } from "./stages.mjs";
@@ -477,10 +478,15 @@ test("clips keep the face reference while using the shot's named outfit in gener
   assert.match(judge.context.characters[0].description, /navy business suit/);
 });
 
-test("clips need an approved storyboard, then each shot gets a clip from its keyframe, checked and retaken", async () => {
+// A judge problem as the server shapes it: the criterion's key, the fault and where, and after
+// the arrow the words to put in the prompt (apps/api/app/video_media/judge.py).
+const BEARD_FIX = "the beard still, resting on the collar";
+const BEARD_PROBLEM = `motion: the emperor's beard morphs into the collar in the last second${FIX_ARROW}${BEARD_FIX}`;
+
+test("clips need an approved storyboard, then each shot gets a clip from its keyframe, checked and retaken with the judge's fix", async () => {
   const { box, doc, timeline, shots } = prepared();
   const site = mediaSite({
-    verdicts: (request) => (request.context.shot.id === "farewell" && site.state.judges.filter((each) => each.context.shot?.id === "farewell").length === 1 ? { overall: 4, passed: false, problems: ["the emperor's beard morphs"] } : { overall: 8, passed: true }),
+    verdicts: (request) => (request.context.shot.id === "farewell" && site.state.judges.filter((each) => each.context.shot?.id === "farewell").length === 1 ? { overall: 4, passed: false, problems: [BEARD_PROBLEM] } : { overall: 8, passed: true }),
     tooLargeOnce: "opening",
   });
   const early = context(box, site.fetchImpl);
@@ -509,6 +515,11 @@ test("clips need an approved storyboard, then each shot gets a clip from its key
   assert.equal(requests[0].native_audio, false);
   assert.match(requests[0].prompt, /^mist drifting through the pines.*slow push in\. slow cinematic camera move/);
   assert.match(requests[0].negative_prompt, /watermark/);
+  // The retake is asked with the judge's fix for the take before it; the first take as written.
+  assert.doesNotMatch(requests[1].prompt, /Corrections/);
+  assert.equal(requests[2].prompt, `${requests[1].prompt}. Corrections: ${BEARD_FIX}`);
+  assert.notEqual(requests[2].idempotency_key, requests[1].idempotency_key, "another prompt, another request");
+  assert.match(run.out.stdout, /farewell take 2: asked with the corrections of the takes before: the beard still, resting on the collar\n/);
   const bird = requests[4];
   assert.equal(bird.references.at(-1).role, "previous_frame", "a continued shot carries the previous clip's last frame");
   assert.equal(bird.references.at(-1).sha256, SHA(PNG("last of sea-storm-1.mp4")));
@@ -525,8 +536,11 @@ test("clips need an approved storyboard, then each shot gets a clip from its key
   assert.deepEqual(Object.keys(manifest.shots), ["opening", "farewell", "sea-storm", "bird"]);
   assert.equal(manifest.shots.farewell.seed, 2);
   assert.equal(manifest.shots.farewell.takes.length, 2);
-  assert.match(manifest.shots.farewell.takes[0].qc.problems[0], /judge 4\/10: the emperor's beard morphs/);
+  assert.match(manifest.shots.farewell.takes[0].qc.problems[0], /judge 4\/10: motion: the emperor's beard morphs into the collar in the last second → the beard still/);
+  assert.equal(manifest.shots.farewell.takes[0].fixes, undefined);
+  assert.deepEqual(manifest.shots.farewell.takes[1].fixes, [BEARD_FIX], "what the take was asked with is on record");
   assert.equal(manifest.shots.farewell.needs_review, false);
+  assert.equal(manifest.shots.farewell.fixes, undefined, "a shot that passed leaves no hint");
   assert.equal(manifest.shots.farewell.file, "clips/farewell-2.mp4");
   assert.equal(manifest.shots.bird.continues.shot, "sea-storm");
   assert.equal(manifest.shots.opening.first_frame.sha256, shots.opening.sha256);
@@ -545,11 +559,13 @@ test("clips need an approved storyboard, then each shot gets a clip from its key
   assert.equal(before, manifest.clips_hash);
 });
 
-test("a shot that fails every take is left for a prompt fix, and the STOP file ends a run cleanly", async () => {
+test("a shot that fails every take is left for a prompt fix with the judge's fixes as the hint, and the STOP file ends a run cleanly", async () => {
   const { box } = prepared();
   await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
   await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
-  const site = mediaSite();
+  // The storm fails the black-frame check every time, and the judge has a fix for it too.
+  const WAVES_FIX = "the waves rolling through the whole clip";
+  const site = mediaSite({ verdicts: (request) => (request.context.shot.id === "sea-storm" ? { overall: 5, passed: false, problems: [`motion: the waves freeze mid-roll${FIX_ARROW}${WAVES_FIX}`] } : { overall: 8, passed: true }) });
   const black = context(box, site.fetchImpl, {
     clipQc: async (file, wanted) => ({ probe: goodProbe(wanted.requested), black: file.includes("sea-storm") ? [{ start: 0.5, end: 1.2 }] : [], freezes: [], cuts: [], keyframe_psnr: 40, rival_psnr: 20 }),
   });
@@ -558,10 +574,14 @@ test("a shot that fails every take is left for a prompt fix, and the STOP file e
   assert.equal(manifest.shots["sea-storm"].takes.length, MAX_CLIP_TAKES);
   assert.equal(manifest.shots["sea-storm"].needs_review, true);
   assert.match(manifest.shots["sea-storm"].problems[0], /black from 0\.50 s to 1\.20 s/);
+  assert.match(manifest.shots["sea-storm"].problems[1], /judge 5\/10: motion: the waves freeze mid-roll → the waves rolling/);
+  assert.deepEqual(manifest.shots["sea-storm"].fixes, [WAVES_FIX], "the judge's fix, from under the check's line");
+  assert.deepEqual(site.state.clips.filter((request) => request.shot_id === "sea-storm").map((request) => request.prompt.endsWith(`. Corrections: ${WAVES_FIX}`)), [false, true], "the second take was asked with it");
   assert.equal(manifest.shots.opening.needs_review, false);
+  assert.equal(manifest.shots.opening.fixes, undefined);
   assert.equal(manifest.shots.bird, undefined);
   assert.match(black.out.stdout, /ERROR sea-storm: no take passed: black from/);
-  assert.match(black.out.stdout, /fix the prompts of sea-storm and run clips again/);
+  assert.match(black.out.stdout, /\n  fixes for sea-storm: the waves rolling through the whole clip\nfix the prompts of sea-storm and run clips again/);
 
   writeFileSync(path.join(box.workdir, "STOP"), "");
   const stopped = context(box, site.fetchImpl);
@@ -897,7 +917,7 @@ test("an imported clip that fails its checks is left for review, --force keeps i
   const { box } = prepared();
   await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
   await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
-  const site = mediaSite({ verdicts: (request) => (request.context.shot.id === "bird" ? { overall: 4, passed: false, problems: ["the wings morph"] } : { overall: 8, passed: true }) });
+  const site = mediaSite({ verdicts: (request) => (request.context.shot.id === "bird" ? { overall: 4, passed: false, problems: [`clean: the wings melt into the tail${FIX_ARROW}the wings beating clear of the tail`] } : { overall: 8, passed: true }) });
   const made = outsideFile(box, "kling-opening.mp4", "kling opening");
   const bring = ["clips", "import", "--slug", box.slug, "--shot", "opening", "--file", made, "--provider", "kling-mcp", "--credits", "40"];
 
@@ -943,7 +963,9 @@ test("an imported clip that fails its checks is left for review, --force keeps i
   const bird = outsideFile(box, "kling-bird.mp4", "kling bird");
   const refused = context(box, site.fetchImpl, outsideQc());
   assert.equal(await main(["clips", "import", "--slug", box.slug, "--shot", "bird", "--file", bird, "--provider", "kling-mcp", "--judge"], refused.ctx), EXIT.lint, refused.out.stderr || refused.out.stdout);
-  assert.match(manifestOf(box, "clips").shots.bird.problems[0], /judge 4\/10: the wings morph/);
+  assert.match(manifestOf(box, "clips").shots.bird.problems[0], /judge 4\/10: clean: the wings melt into the tail/);
+  assert.deepEqual(manifestOf(box, "clips").shots.bird.fixes, ["the wings beating clear of the tail"], "the judge's fix is the hint for the next attempt outside");
+  assert.match(refused.out.stdout, /\n  fixes for bird: the wings beating clear of the tail\nmake bird again from its keyframe/);
   assert.equal(manifestOf(box, "clips").shots.bird.credits, null, "credits that were not given are not invented");
   assert.equal((await clipsStep(box)).detail, "3 of 3 clips imported: kling-mcp 3");
 });
