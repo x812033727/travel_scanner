@@ -272,6 +272,21 @@ test("a slides video may carry a look and still shots: illustrated slides (docs/
   sfx.sfx = { set: "Studio A", gain_db: 3, extra: 1 };
   assert.deepEqual(paths(validateVideo(sfx)), ["sfx.extra", "sfx.gain_db", "sfx.set"]);
   assert.notEqual(sfxHash(illustratedFixture()), sfxHash(fixture()));
+  // The cue sheet (docs/videos/ILLUSTRATED.md §配樂與音效): a sound as a scene opens or on a frame,
+  // one of the two, by a sound's name, with an optional gain; sha256 binds the set's manifest.
+  const cues = illustratedFixture();
+  cues.sfx = { set: "studio-a", sha256: "b".repeat(64), cues: [{ scene: "door", sound: "bell", gain_db: -3 }, { frame: 120, sound: "stamp" }, { frame: 0, sound: "soft_chime-2" }] };
+  assert.deepEqual(validateVideo(cues), []);
+  const badCues = illustratedFixture();
+  badCues.sfx = { set: "studio-a", sha256: "nope", cues: [{ scene: "nowhere", sound: "bell" }, { frame: -1, sound: "Bell!" }, { scene: "door", frame: 3, sound: "pop", gain_db: 13, extra: 1 }, "pop"] };
+  assert.deepEqual(paths(validateVideo(badCues)), ["sfx.cues[0].scene", "sfx.cues[1].frame", "sfx.cues[1].sound", "sfx.cues[2]", "sfx.cues[2].extra", "sfx.cues[2].gain_db", "sfx.cues[3]", "sfx.sha256"]);
+  const tooMany = illustratedFixture();
+  tooMany.sfx = { set: "studio-a", cues: Array.from({ length: 201 }, () => ({ scene: "door", sound: "pop" })) };
+  assert.deepEqual(paths(validateVideo(tooMany)), ["sfx.cues"]);
+  // The hash follows the cue sheet and the bound manifest; a script with neither hashes as it did before them.
+  assert.notEqual(sfxHash(cues), sfxHash(illustratedFixture()), "a cue sheet");
+  assert.notEqual(sfxHash({ ...illustratedFixture(), sfx: { set: "studio-a", sha256: "b".repeat(64) } }), sfxHash(illustratedFixture()), "a bound manifest");
+  assert.equal(sfxHash(illustratedFixture()), sfxHash({ ...illustratedFixture(), sfx: { set: "studio-a", gain_db: -12 } }), "the default gain spelled out is the same track");
 });
 
 test("shots, speakers, references and music are range-checked", () => {

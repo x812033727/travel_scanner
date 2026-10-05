@@ -24,15 +24,17 @@
 | `look` | 插圖的畫風預設 | 有 `shot` 就必須有；沒寫時工人依 slug 從五個版畫預設裡輪流挑（§第二輪：`riso-teal`／`riso-navy`／`riso-forest`／`riso-plum`／`linocut-teal`）；`tech-story`（配深色主題：深藍綠底、奶油白、琥珀與一點磚紅；2026-10-03 起寫成版畫師的工單：墨線粗細不勻、網印平塗帶紙紋與套印微偏、手剪的陰影、焦點在畫面中間三分之一而兩側有不對稱的前後景、小小的簡筆人物（點狀眼睛或背影）、霧面；negative 擋文字、logo、真人相貌、寫實、光澤、霓虹光暈、無臉人偶、鏡像對稱）；沒有 `shot` 的投影片不能帶 `look` |
 | `shot` 場景 | 一張插圖：`data.prompt`（英文 ≤1000 字，依序寫景別、地點與時間、正在發生的事、視線落點的物件與材質、光從哪來；不寫風格與顏色）、`data.camera`（push in／pull out／pan left／pan right／tilt up／tilt down／drift）、`data.visual: "still"`、`data.transition?`（cut／dissolve，通常不寫） | 只准 still；不得有 `characters`、`fit`、`start_frame`、`end_frame`；shot 的句子不能 `reveal`；連續三張同一種運鏡是 lint 錯誤（§畫面不像 AI） |
 | `music` | `{ track, sha256?, gain_db?, duck_db?, fade_in_ms?, fade_out_ms? }`，檔案在 `<work base>/_music/` | 任何格式都可以帶（`prompt` 走 Lyria 也還在，但站主決定用授權檔） |
-| `sfx` | `{ set, gain_db? }`，音效組在 `<work base>/_sfx/<set>/` | 預設 gain −12 dB |
+| `sfx` | `{ set, gain_db?, cues?, sha256? }`，音效組在 `<work base>/_sfx/<set>/`；`cues` 是撰稿自己放的音效、`sha256` 綁音效組的 manifest（§配樂與音效） | 第 1 版音效組：`gain_db` 是整軌的音量，預設 −12 dB；第 2 版（量過的）音效組：每個 cue 各自算到目標響度，`gain_db` 是加在每個 cue 上的微調，沒寫是 0 |
 
-音效組的 `manifest.json`（站主寫）：
+音效組的 `manifest.json`（站主寫檔名、來源與授權，`assemble sfx-measure` 補量測；第 1 版沒有 `manifest_version` 與量測欄位，照舊能用）：
 
 ```json
-{ "set": "studio-a", "sounds": {
-  "stamp":  { "file": "stamp.wav",  "sha256": "…", "source": "YouTube 音效庫", "licence": "https://…" },
-  "whoosh": { "file": "whoosh.wav", "sha256": "…", "source": "…", "licence": "…" },
-  "pop":    { "file": "pop.wav",    "sha256": "…", "source": "…", "licence": "…" } } }
+{ "manifest_version": 2, "set": "studio-a", "sounds": {
+  "stamp":  { "file": "stamp.wav",  "sha256": "…", "source": "YouTube 音效庫", "licence": "https://…",
+              "lufs_i": -20.4, "lufs_m": -18.1, "peak_dbtp": -6.3, "seconds": 0.4 },
+  "whoosh": { "file": "whoosh.wav", "sha256": "…", "source": "…", "licence": "…", "lufs_i": -24.0, "lufs_m": -22.5, "peak_dbtp": -9.0, "seconds": 1.2, "target_lufs": -20 },
+  "pop":    { "file": "pop.wav",    "sha256": "…", "source": "…", "licence": "…", "lufs_i": -22.0, "lufs_m": -20.0, "peak_dbtp": -8.0, "seconds": 0.3 },
+  "bell":   { "file": "bell.ogg",   "sha256": "…", "source": "…", "licence": "…", "lufs_i": -19.0, "lufs_m": -17.0, "peak_dbtp": -4.0, "seconds": 0.8 } } }
 ```
 
 範例：`tools/video/core/fixtures/illustrated/video.json`（含 `brief.md`）。
@@ -48,15 +50,58 @@
 | 配樂 | `music --slug` | `music.track` 只核對檔案與 sha，不呼叫伺服器 |
 | 合成 | `assemble --slug` | 走漫劇的混合版面：shot＝關鍵影格加運鏡（smoothstep 緩入緩出、位移量隨鏡頭長度放大到 6 秒為止、drift 依場景 id 決定左右）；**單狀態卡片**（title、chapter、big、quote、cta、outro）在 drift 與 push-in 之間輪流漂移，漂移的卡片左右輪流；多狀態卡片維持逐條出現；轉場規則＝撰稿的 `data.transition` 優先，否則第一景與章節卡硬切、前一景最後一句有 ≥600 ms 的停頓節拍才溶接、其餘硬切；配樂床側鏈壓低；音效軌 |
 
-音效的規則（`assemble/sfx.mjs`）：章節卡開始→`stamp`（章節卡即使被撰稿設成溶接也是 stamp，不放 whoosh）；溶接前 5 格→`whoosh`；每個 reveal 狀態開始→`pop`；任兩個音效至少隔 1.5 秒，pop 每 2 秒最多一個，第 0 格不放。
+音效的規則（`assemble/sfx.mjs`）：章節卡開始→`stamp`（章節卡即使被撰稿設成溶接也是 stamp，不放 whoosh）；溶接前 5 格→`whoosh`；每個 reveal 狀態開始→`pop`；任兩個音效至少隔 1.5 秒，pop 每 2 秒最多一個，第 0 格不放。撰稿自己的 cue（`sfx.cues`）疊在這些 beat 上；每個 cue 的音量依音效組量過的響度算到目標，合成後再量每個 cue 聽不聽得見，被床蓋住或把旁白壓爆就不過（§配樂與音效）。
 
 ## 雜湊怎麼綁
 
 | 檔案 | 綁什麼 | 為什麼 |
 | --- | --- | --- |
 | `keyframes/manifest.json` | `look_hash` ＋ `pictures_hash`（每個 shot 的 id、prompt、camera） | 改卡片文字不重畫、不重判、分鏡核准不失效；改 camera 或 prompt 只重畫、重判那一張，其他張的請求沒變，連同判定原樣沿用（§judge 的刻度與判定沿用；2026-10-04 之前是全部重判，每張 US$0.01 而且過關的會被判掉） |
-| `checks.json` | `speech_hash`、`visual_hash`、`look_hash`、`pictures_hash`（`keyframesHash`：實際用的每張圖的 sha）、`mix_hash`（有配樂時）、`sfx_hash`（有音效時） | 圖重畫、配樂或音效換了，`status` 會說要重新合成，`package` 不會拿舊成片 |
+| `checks.json` | `speech_hash`、`visual_hash`、`look_hash`、`pictures_hash`（`keyframesHash`：實際用的每張圖的 sha）、`mix_hash`（有配樂時）、`sfx_hash`（有音效時：set、gain、cue 表、`sfx.sha256`）、`sfx_set_hash`（再加每個音效檔的 sha 與第 2 版的目標，給讀檔的人看；§配樂與音效） | 圖重畫、配樂或音效換了，`status` 會說要重新合成，`package` 不會拿舊成片 |
 | `timeline.json` | `speech_hash`（含 `voice.style`） | 改口吻＝全部重錄＋旁白關卡重審 |
+
+## 配樂與音效
+
+配樂是站主放在 `<VIDEO_WORKDIR>/_music/` 的授權檔（上表的 `music`），`assemble` 把它壓在旁白下：側鏈壓低、成片 −14 LUFS、床 ≤ −24 LUFS 否則不過。這一節寫音效。2026-10-05 起音效組有第 2 版（票 `2026-10-05-sfx-library-loudness-cue-sheet`）：之前是三個固定的音效、一個 `gain_db` 蓋全部、不量檔案本身多大聲——smoke 的合成音效（峰值 −21 dBTP）壓 −12 dB 之後在成片裡約 −36 LUFS，比旁白低 20 dB 以上，根本聽不到，而 `checks.json` 說一切都好。做法借自 faceless-shorts（MIT）的形狀：量過響度的音效庫、每支影片一張 cue 表、用量測而不是用耳朵確認聽得到；只借想法，沒有抄程式。
+
+**manifest 第 2 版**（上表的範例）：
+
+| 欄位 | 意思 |
+| --- | --- |
+| `manifest_version` | 沒寫或 1：第 1 版，三個固定音效、整軌一個 `gain_db`，照舊能用，一個位元組都不用改；2：下面的量測欄位每個音效都要有，缺了 `assemble` 會說去跑 `sfx-measure` |
+| `sounds.<name>` | 名字是小寫字母、數字、`_`、`-`（≤32 字）；`stamp`／`whoosh`／`pop` 仍是必要的（規則放它們），其餘隨意加，只有 cue 表叫得到 |
+| `lufs_i`／`lufs_m`／`peak_dbtp` | `ebur128` 量的整合響度、最大瞬時響度（400 ms 窗）、真峰值；`sfx-measure` 寫的，不要手填；少了 `lufs_m` 就用 `lufs_i` |
+| `seconds` | 檔案長度（ffprobe）；聽得見的檢查用它定每個 cue 的量測窗，第 1 版的組合成時現量 |
+| `target_lufs` | 這個音效在成片（−14 LUFS 節目）裡最響的 400 ms 要落在哪；沒寫用預設 `SFX_TARGET_LUFS`：stamp −14（章節卡開頭的停頓裡，跟旁白一樣響）、whoosh −16、pop −16、其餘 −16 |
+
+`node tools/video/cli.mjs assemble sfx-measure --set studio-a [--workdir D]`（或 `--slug S` 量那支影片的組）：每個檔案先變成軌上的樣子（48 kHz 立體聲），尾端補 1 秒靜音（250 ms 的檔不補就一個窗都量不到），過 `ebur128=peak=true`，把 `lufs_i`／`lufs_m`／`peak_dbtp`／`seconds` 與檔案現在的 sha256 寫回 manifest、版本改 2；`source`／`licence` 這些站主寫的欄位不動。最後印 manifest 的 sha256，貼到 `video.json` 的 `sfx.sha256` 就把成片綁到這一組（跟 `music.sha256` 同一個意思）：換了檔案或重量過，`sfx_hash` 跟著變，`status` 會說要重新合成，`package` 不拿舊成片。
+
+**cue 表**（`video.json` 的 `sfx.cues[]`，最多 200 個）：
+
+```json
+"sfx": { "set": "studio-a", "sha256": "…",
+  "cues": [ { "scene": "door", "sound": "bell" }, { "frame": 1230, "sound": "chime", "gain_db": -3 } ] }
+```
+
+每個 cue 寫 `scene`（那一景開始的那一格響）或 `frame`（那一格響）二選一、`sound`（組裡的名字；不在組裡 `assemble` 在碰 ffmpeg 之前就擋）、可選 `gain_db`（−40 到 +12，加在算出來的音量上）。cue 疊在規則的 beat 上：撰稿放的一定響，規則的 beat 跟某個 cue 差不到 1.5 秒就讓路；cue 之間不互相稀釋（撰稿要兩個就兩個，疊在一起的問題由聽得見的檢查抓）。`frame` 超過影片長度在合成一開始就擋，還沒編任何一段。
+
+**每個 cue 的音量**（第 2 版）：成片最後整體線性正規化到 −14 LUFS，所以「成片裡的目標」要換成「軌上的音量」。`assemble` 先把旁白加壓低後的配樂床（沒有床就旁白本身）過一次 `ebur128`，拿到整合響度 `I_under`，`G = −14 − I_under` 就是正規化會加的量；每個 cue 的 gain＝`target_lufs − G − lufs_m ＋ cue.gain_db ＋ sfx.gain_db（微調）`，再用「`peak_dbtp ＋ gain ＋ G ≤ −3 dBTP`」封頂（封頂的 cue 在 `checks.json` 記 `capped: true`）。第 1 版的組沒有量測，維持整軌一個 `gain_db`（預設 −12），cue 自己的 `gain_db` 照加。
+
+**聽得見的檢查**（合成後，不過就擋）：混完之後用同一個時鐘把四樣東西過 `ebur128`（每 100 ms 一行 400 ms 的瞬時響度，真峰值一起）——音效軌本身、音效下面的混音（旁白＋壓低後的床）、壓低後的床單獨一軌（用混音同一條側鏈壓縮器；沒有配樂就沒有這一樣）、整個正規化前的混音。每個 cue 的窗從它那一格到音效結束再加一個窗（0.4 秒），數字都換算成成片裡的值（加上 `G′ = −14 − loudnorm 第一遍量到的 I`）。
+
+| 條件 | 門檻 | 不過時 |
+| --- | --- | --- |
+| 被床蓋住（masked） | 音效最響的窗 − 床最響的窗 ≥ 6 dB（`SFX_ABOVE_BED_DB`） | `CHECK sound effect stamp at 12.90 s (scene desk) is masked by the music bed: 4.2 dB above it, below 6; …`，`checks.ok=false`、`assemble` 回 1 |
+| 把旁白壓爆（clips the voice） | 整個混音在這個窗的真峰值 ＋ G′ ≤ −1 dBTP（loudnorm 的上限；超過它 loudnorm 會悄悄從線性改成動態模式，整支旁白都被壓） | `CHECK sound effect … clips the voice: the mix would peak at 0.3 dBTP after normalization, above -1; …` |
+| 量不到 | cue 的窗裡沒有任何一行 | `… was not measured` |
+
+跟旁白的關係只記不擋（`voice_margin_db`＝音效 − 旁白＋床）：pop 的規則是落在 reveal 那一句的第一個字上，要它高過旁白 6 dB 又不壓爆峰值在物理上做不到，所以門檻只對床；要看某個 cue 有沒有被旁白蓋住，讀 `checks.json`。
+
+`checks.json`：`sfx_hash`（`status`／`package`／`dub` 比對的那個：set、gain、cue 表、`sfx.sha256`）、`sfx_set_hash`（再加每個音效檔的 sha256 與第 2 版的目標）、`metrics.sfx = { set, version, events, sounds: {name: 次數}, cues: [{ frame, t, sound, scene, cue?, gain_db, target_lufs, capped?, effect_lufs_m, under_lufs_m, bed_lufs_m, bed_margin_db, voice_margin_db, peak_dbtp, ok }], min_bed_margin_db }`；`assemble` 的最後一行多印「7 sound effects (lowest 29 dB above the bed)」。
+
+實測（`node tools/video/assemble/smoke.mjs --fixture illustrated`；合成音效組由 `synthetic.mjs` 寫成第 2 版，四個 250 ms 的正弦真的用 `ebur128` 量過：`lufs_m` −25.1 到 −26.0、峰值 −21.1 dBTP）：7 個 cue 全部落在目標 ±0.3 LU（stamp −14.0、whoosh −16.0、pop −16.0），床邊距 29–33 dB，混音峰值 −4.7 到 −10.9 dBTP。
+
+沒做：Shorts 還是第 1 版的放法（`shortSfxPlan` 加整軌 `gain_db`，沒有 cue 表、沒有聽得見的檢查；它讀得了第 2 版的 manifest 但不用量測值）；`dub` 照舊重用成片的 `build/sfx.wav`，它的 timeline 只記 `sfx_hash`。
 
 ## 節奏怎麼量（`core/cadence.mjs`）
 

@@ -157,10 +157,16 @@ const CHARACTER_KEYS = new Set(["id", "name", "appearance", "voice", "sheet_prom
 const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "character_looks", "fit", "seed", "transition", "start_frame", "end_frame", "visual", "source"]);
 const MUSIC_KEYS = new Set(["prompt", "track", "sha256", "gain_db", "duck_db", "fade_in_ms", "fade_out_ms"]);
 const SUBTITLE_KEYS = new Set(["burn_in", "style", "speaker_prefix"]);
-// Sound effects (docs/videos/ILLUSTRATED.md): a licensed set under <work base>/_sfx/<set>/, placed
-// by rules in assemble (a stamp on chapter cards, a whoosh into a dissolve, a pop on a reveal).
-const SFX_KEYS = new Set(["set", "gain_db"]);
+// Sound effects (docs/videos/ILLUSTRATED.md §配樂與音效): a licensed set under <work base>/_sfx/<set>/,
+// placed by rules in assemble (a stamp on chapter cards, a whoosh into a dissolve, a pop on a
+// reveal) and by the script's own cue sheet (`cues`: a sound as a scene opens or on a frame);
+// `sha256` binds the cut to the set's manifest, as music.sha256 binds it to the track.
+const SFX_KEYS = new Set(["set", "gain_db", "cues", "sha256"]);
+const SFX_CUE_KEYS = new Set(["scene", "frame", "sound", "gain_db"]);
 export const SFX_SET = /^[a-z0-9][a-z0-9._-]{0,63}$/;
+// A sound's name in a set's manifest and in a cue: the three rule sounds, or any other the owner adds.
+export const SFX_SOUND_NAME = /^[a-z][a-z0-9_-]{0,31}$/;
+export const MAX_SFX_CUES = 200;
 export const DEFAULT_SFX = { gain_db: -12 };
 const SERIES_KEYS = new Set(["slug", "episode", "chapter"]);
 const ANIME_SERIES_KEYS = new Set([...SERIES_KEYS, "kind", "genre", "lead", "planned_episodes", "open_ended", "closed_ending"]);
@@ -422,14 +428,36 @@ function validateMusic(music, errors) {
   if (music.fade_out_ms !== undefined && !(Number.isInteger(music.fade_out_ms) && inRange(music.fade_out_ms, 0, 15_000))) errors.push({ path: "music.fade_out_ms", message: "must be 0 to 15000" });
 }
 
-function validateSfx(sfx, errors) {
+function validateSfxCue(cue, where, sceneIds, errors) {
+  if (!isObject(cue)) {
+    errors.push({ path: where, message: "must be an object { scene | frame, sound, gain_db? }" });
+    return;
+  }
+  unknownKeys(cue, SFX_CUE_KEYS, where, errors);
+  const onScene = cue.scene !== undefined;
+  const onFrame = cue.frame !== undefined;
+  if (onScene === onFrame) errors.push({ path: where, message: "needs exactly one of scene (the id of the scene it sounds on) or frame (the frame it sounds on)" });
+  if (onScene && !(typeof cue.scene === "string" && sceneIds.has(cue.scene))) errors.push({ path: `${where}.scene`, message: "must be the id of a scene of this script" });
+  if (onFrame && !(Number.isInteger(cue.frame) && cue.frame >= 0)) errors.push({ path: `${where}.frame`, message: "must be a whole frame number, 0 or more" });
+  if (!(typeof cue.sound === "string" && SFX_SOUND_NAME.test(cue.sound))) errors.push({ path: `${where}.sound`, message: "must name a sound of the set: lowercase letters, digits, _ or -, like stamp or bell" });
+  if (cue.gain_db !== undefined && !inRange(cue.gain_db, -40, 12)) errors.push({ path: `${where}.gain_db`, message: "must be -40 to 12 dB" });
+}
+
+function validateSfx(sfx, errors, sceneIds) {
   if (!isObject(sfx)) {
-    errors.push({ path: "sfx", message: "must be an object { set, gain_db? }: a licensed sound-effect set under <work base>/_sfx/" });
+    errors.push({ path: "sfx", message: "must be an object { set, gain_db?, cues?, sha256? }: a licensed sound-effect set under <work base>/_sfx/" });
     return;
   }
   unknownKeys(sfx, SFX_KEYS, "sfx", errors);
   if (!(typeof sfx.set === "string" && SFX_SET.test(sfx.set))) errors.push({ path: "sfx.set", message: "must be the set's directory name under <work base>/_sfx/, like studio-a" });
   if (sfx.gain_db !== undefined && !inRange(sfx.gain_db, -40, 0)) errors.push({ path: "sfx.gain_db", message: "must be -40 to 0 dB" });
+  if (sfx.sha256 !== undefined && !(typeof sfx.sha256 === "string" && SHA256.test(sfx.sha256))) errors.push({ path: "sfx.sha256", message: "must be the set's manifest.json SHA-256, 64 hex characters" });
+  if (sfx.cues === undefined) return;
+  if (!Array.isArray(sfx.cues) || sfx.cues.length > MAX_SFX_CUES) {
+    errors.push({ path: "sfx.cues", message: `must be a list of at most ${MAX_SFX_CUES} cues { scene | frame, sound, gain_db? }` });
+    return;
+  }
+  sfx.cues.forEach((cue, index) => validateSfxCue(cue, `sfx.cues[${index}]`, sceneIds, errors));
 }
 
 function validateSubtitles(subtitles, errors) {
@@ -484,7 +512,7 @@ export function validateDrama(doc, errors, validateVoice) {
     }
   }
   if (doc.music !== undefined) validateMusic(doc.music, errors);
-  if (doc.sfx !== undefined) validateSfx(doc.sfx, errors);
+  if (doc.sfx !== undefined) validateSfx(doc.sfx, errors, new Set((Array.isArray(doc.scenes) ? doc.scenes : []).map((scene) => scene?.id)));
   if (doc.subtitles !== undefined) validateSubtitles(doc.subtitles, errors);
   if (!Array.isArray(doc.scenes)) return;
 
@@ -642,7 +670,12 @@ export function mixHash(doc) {
   return hash16(["mix", resolveMusic(doc)]);
 }
 
-/** What changes the sound-effect track apart from the picture's cut points: the set and its gain. */
+/**
+ * What changes the sound-effect track apart from the picture's cut points: the set, its gain,
+ * the script's cue sheet and, when the script binds one, the set manifest's hash (which lists
+ * every sound file's hash). The resolved block spreads the script's own keys, so a script with
+ * no cues hashes as it did before cue sheets existed.
+ */
 export function sfxHash(doc) {
   return hash16(["sfx", resolveSfx(doc)]);
 }
