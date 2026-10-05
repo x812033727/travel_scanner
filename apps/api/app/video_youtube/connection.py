@@ -77,7 +77,9 @@ def _challenge(verifier: str) -> str:
 async def connection_row(session: AsyncSession, *, lock: bool = False) -> VideoYoutubeConnection:
     statement = select(VideoYoutubeConnection).where(VideoYoutubeConnection.id == 1)
     if lock:
-        statement = statement.with_for_update()
+        # A caller may still hold the row from before a call to Google (``verify``), and a
+        # re-read keeps a loaded object's values: the locked row's replace them.
+        statement = statement.with_for_update().execution_options(populate_existing=True)
     row = await session.scalar(statement)
     if row is None:
         row = VideoYoutubeConnection(id=1, audited=False)
@@ -351,6 +353,7 @@ async def verify(session: AsyncSession) -> ConnectionView:
     if not linked(row):
         await session.commit()
         return view(row, site_url)
+    asked_for = row.linked_at
     async with http_client() as http:
         try:
             token = await access_token(session, http)
@@ -366,6 +369,11 @@ async def verify(session: AsyncSession) -> ConnectionView:
         except httpx.HTTPError as error:
             raise Refused(502, "video_youtube_unreachable", "連不到 YouTube，請再試一次") from error
     row = await connection_row(session, lock=True)
+    if not linked(row) or row.linked_at != asked_for:
+        # Unlinked or linked again while YouTube answered: the answer is about a grant the
+        # card no longer holds.
+        await session.commit()
+        return view(row, site_url)
     if channel is None or str(channel.get("id")) != row.channel_id:
         row.problem = "授權現在對應到另一個頻道或沒有頻道了，請重新連結"
     else:
