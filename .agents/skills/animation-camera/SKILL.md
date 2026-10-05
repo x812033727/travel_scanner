@@ -25,9 +25,9 @@ metadata:
 
 | 遇到 | 再讀 |
 | --- | --- |
-| 寫 `camera`，想知道某個字三個讀者各讀成什麼 | `.agents/skills/animation-camera/references/camera-keywords.md`（正則逐字表、分家的字、35 行例子） |
+| 寫 `camera`，想知道某個字三個讀者各讀成什麼 | `.agents/skills/animation-camera/references/camera-keywords.md`（正則逐字表、分家的字、各模型的提示長度與「疊加物不是景深」、35 行例子） |
 | 寫一場戲：軸線、視線、進出、連戲帳；一場 12 鏡的戲寫兩次（可接受版附腳本輸出、craft 列與估價；試拍式每鏡標錯） | `.agents/skills/animation-camera/references/scene-coverage.md` |
-| 被 judge、`assemble` 或站主退回 | `.agents/skills/animation-camera/references/model-misreads.md`（逐 take 的證據、提示怎麼組、Lite 的歷史參數失敗與此版本相容處理、judge 的題、Hailuo 與 Kling 的字彙來源）與 `visual-quality.md`（診斷、小卡、冷看） |
+| 被 judge、`assemble` 或站主退回 | `.agents/skills/animation-camera/references/model-misreads.md`（逐 take 的證據、提示怎麼組、Lite 的歷史參數失敗與此版本相容處理、judge 的題、Hailuo 與 Kling 的字彙來源、`H3_FIRST_LINE` 對官方格式的核對）與 `visual-quality.md`（診斷、小卡、冷看） |
 | 付費之前把整集排好：分鏡表、鏡位、每鏡路線與買幾秒、風險分級、動態分鏡、開拍鎖定 | `.agents/skills/animation-preproduction/SKILL.md`（鏡位設計是它的 P3） |
 | 要算錢、選路線、看每個付費階段的前提 | `.agents/skills/animation-production/SKILL.md`；這批動畫的 Lite 契約（8 秒、首尾格、無參考圖、CC）在 `animation-production.md` |
 | 使用者指定「布袋喵參考風格」或真一隻布袋喵頻道 | [.agents/skills/animation-camera/references/budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md)：三支原片抽樣、可選美術與導演規格、原創八鏡與同鏡的 Hailuo／Kling 網頁提示；只在點名時套用，其他作品保留原風格 |
