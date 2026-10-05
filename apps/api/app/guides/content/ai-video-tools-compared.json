@@ -68,7 +68,7 @@
         },
         {
           "type": "paragraph",
-          "text": "OpenAI 的 Sora 已經停止服務，不再是可選工具：網站與 App 在 2026 年 4 月 26 日停止，Videos API 在 2026 年 9 月 24 日關閉，官方請使用者到日落頁匯出作品，棄用表的建議替代欄全空。留下的官方規格可以當對照：sora-2 是 1280×720、每秒 0.10 美元，sora-2-pro 最高 1920×1080、每秒 0.30 到 0.70 美元，可生成 16 秒或 20 秒並帶音訊。"
+          "text": "OpenAI 的 Sora 已經停止服務，不再是可選工具：網站與 App 在 2026 年 4 月 26 日停止，Videos API 在 2026 年 9 月 24 日關閉，官方請使用者到日落頁匯出作品，也寫明沒有一對一的替代 API。留下的官方規格可以當對照：sora-2 是 1280×720、每秒 0.10 美元，sora-2-pro 最高 1920×1080、每秒 0.30 到 0.70 美元，可生成 16 秒或 20 秒並帶音訊。"
         },
         {
           "type": "paragraph",
@@ -100,6 +100,21 @@
         },
         {
           "type": "paragraph",
+          "text": "零成本的入口在 9 月下旬又多了一個。Google 在 2026 年 9 月 23 日宣布，任何有 Google 或 Google Workspace 帳號的人，都能在電腦上開 Google Vids（網址 vids.new，選「Create AI videos」）免費用 Gemini Omni 1.1 Flash 生成影片片段，可以指定片段長度、延長場景，也能直接生成 1080p；每段都嵌入看不見的 SynthID 浮水印。個人帳號想要更多生成量，Google 請讀者看 Google AI 方案。免費一個月能生成幾段，Google 的兩份說明頁寫法不同，下面這則新聞把兩種寫法與使用限制並列整理。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Google Vids 開放免費用 Gemini Omni 1.1 做影片：誰能用、額度怎麼讀、使用前的限制",
+              "kind": "life",
+              "slug": "ai-news-google-vids-omni-free-20260924"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
           "text": "海螺的訂閱條款頁把方案列得很完整，從 Standard 每月 14.99 美元含 1,000 點，一路到 Max 199.99 美元含 20,000 點，每一層都寫明無浮水印下載；另有 94.99 美元的舊制 Unlimited 方案，官網註明只賣到 2025 年 6 月 18 日。"
         },
         {
@@ -123,7 +138,7 @@
             ],
             [
               "OpenAI Sora（已停止服務）",
-              "網站與 App 已於 2026 年 4 月 26 日停止；Videos API 於 2026 年 9 月 24 日關閉，官方棄用表的建議替代欄全空",
+              "網站與 App 已於 2026 年 4 月 26 日停止；Videos API 於 2026 年 9 月 24 日關閉，官方寫明沒有一對一的替代 API",
               "官方留下的規格：sora-2 為 1280×720、每秒 0.10 美元；sora-2-pro 最高 1920×1080、每秒 0.30 到 0.70 美元；16 或 20 秒並帶音訊",
               "官方頁面現在只剩停止服務與資料匯出公告"
             ],
@@ -364,6 +379,11 @@
           "checked_on": "2026-09-14"
         },
         {
+          "title": "Google 官方部落格：Anyone can make stunning HD videos with Gemini Omni in Google Vids（2026 年 9 月 23 日；任何 Google 或 Google Workspace 帳號可在電腦版 Google Vids 免費用 Gemini Omni 1.1 Flash 生成影片、1080p、指定長度與延長場景、SynthID）",
+          "url": "https://blog.google/products-and-platforms/products/workspace/gemini-omni-in-google-vids/",
+          "checked_on": "2026-10-05"
+        },
+        {
           "title": "OpenAI 說明中心：Sora 停止服務說明",
           "url": "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
           "checked_on": "2026-09-14"
@@ -374,14 +394,9 @@
           "checked_on": "2026-09-14"
         },
         {
-          "title": "OpenAI 開發者文件：模型汰除清單（sora-2 關閉日期）",
-          "url": "https://developers.openai.com/api/docs/deprecations",
-          "checked_on": "2026-09-14"
-        },
-        {
-          "title": "OpenAI 開發者文件：Sora 2 模型頁（解析度與每秒計價）",
+          "title": "OpenAI 開發者文件：Sora 2 模型頁（解析度與每秒計價；Sora 2 模型與 Videos API 已於 2026 年 9 月 24 日關閉、沒有一對一的替代 API）",
           "url": "https://developers.openai.com/api/docs/models/sora-2",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Hailuo AI：影片訂閱服務條款（方案、點數、無浮水印與商用）",

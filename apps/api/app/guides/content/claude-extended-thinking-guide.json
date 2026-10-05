@@ -87,14 +87,14 @@
           "items": [
             "開新對話或在現有對話裡，點輸入框旁的模型名稱，先確認要用的模型；點「More models」可以看到更多選項。",
             "把滑鼠移到 Effort，看到 Thinking（或 Extended）開關，把它打開；手機版從畫面上方的模型名稱進入，細節以說明中心為準。",
-            "在同一個地方選 Effort 等級：Low、Medium、High、Extra high、Max，說明中心把 High 列為建議的預設值。",
+            "在同一個地方選 Effort 等級：Low、Medium、High、Extra high、Max，每個模型的建議等級在選單上標成 Default。",
             "送出問題，等計時器結束，先展開 Thinking 區塊看它有沒有讀對你的條件，再看答案。"
           ],
           "ordered": true
         },
         {
           "type": "paragraph",
-          "text": "方案方面，claude.com 定價頁在免費版的功能清單裡列了「延伸思考」，Pro 與 Max 包含免費版的全部功能再加上更多用量與模型，所以不用付費就能試。模型方面，說明中心寫明 Claude Fable 5.1 的思考一律開著，Claude Opus 5 在網頁與 App 上也一律開著，兩者都關不掉；其他模型才有開關可切。Effort 等級只在 Fable 5.1、Opus 5、Sonnet 5、Fable 5、Opus 4.8、4.7、4.6 與 Sonnet 4.6 提供，說明中心對各級的說明是：Low 與 Medium 適合例行工作、也讓額度撐得更久，High 是建議的預設值、品質與速度最平衡，Extra high 給長時間的程式與代理任務，Max 留給需要最深推理的題目。免費版當下能選哪幾個模型會隨時間調整，Fable 系列只在付費方案提供，以官網為準。"
+          "text": "方案方面，claude.com 定價頁在免費版的功能清單裡列了「延伸思考」，Pro 與 Max 包含免費版的全部功能再加上更多用量與模型，所以不用付費就能試。模型方面，說明中心寫明在 Claude 裡用 Sonnet 5.5、Opus 5.5、Fable 5.1 與 Opus 5 時思考都關不掉，其中 Opus 5.5 與 Fable 5.1 在每個 Effort 等級都會思考；其他模型才有開關可切，所以用這四個模型時，能調的只剩 Effort。Effort 等級在 Sonnet 5.5、Opus 5.5、Fable 5.1、Opus 5、Sonnet 5、Fable 5、Opus 4.7、4.6 與 Sonnet 4.6 提供，每個模型的建議等級在選單上標成 Default；說明中心對各級的說明是：Low 與 Medium 適合例行工作、也讓額度撐得更久，High 是品質與速度最平衡的一級，Extra high 給長時間的程式與代理任務，Max 留給需要最深推理的題目。免費版當下能選哪幾個模型會隨時間調整，Fable 系列只在付費方案提供，以官網為準。"
         },
         {
           "type": "rich_paragraph",
@@ -111,7 +111,7 @@
             },
             {
               "type": "text",
-              "text": "指定思考的 token 上限，最低 1,024 個 token；現役的 Opus 5、Sonnet 5、Fable 5.1 改用 effort 參數控制深淺，不再接受預算。這篇不談 API 用法，知道有這個參數就好。"
+              "text": "指定思考的 token 上限，最低 1,024 個 token；Opus 5.5、Sonnet 5.5、Fable 5.1 這些 4.7 之後的模型改用 effort 參數控制深淺，不接受預算。這篇不談 API 用法，知道有這個參數就好。"
             }
           ]
         },
@@ -173,7 +173,7 @@
           "width": 1600,
           "height": 900,
           "caption": "上半部左右對照兩條流程，延伸思考多出來的那一格就是你在畫面上看到的計時器與 Thinking 摘要；下半部五張卡片是五類題目的開關建議，綠色開、橘色看情況、藍色不開，2026 年 9 月 13 日依官網整理。",
-          "description": "上半部並排兩條流程。左邊是一般回答（不開）：問題直接到答案，一次寫到底，沒有草稿、不回頭檢查，快而且省額度，改信、翻譯、查天氣這類題目用這條就夠。右邊是延伸思考（開）：問題先進入一格「思考」，模型重述題目、試做法、檢查、換路，再根據推理寫答案；畫面上會看到帶計時器的 Thinking 指示與可展開的摘要，代價是慢一些、更耗額度，而且摘要不是原始思路，也不是正確保證。下半部五張卡片是五類題目的建議：數學與邏輯（開：分攤費用、算利息、邏輯題，一步錯全錯，讓它列式驗算，提示裡把例外條件寫清楚）、多步驟規劃（開：有前後相依的準備清單，誰卡住誰、誰有等待期，提示先列相依關係再排）、程式除錯（開：錯誤訊息找原因，假設、驗證、逐一排除，貼完整錯誤與程式碼）、長文分析（看情況：摘要、翻譯、抓重點不開，找矛盾、交叉比對才開，說清楚要重組還是判斷）、日常問答（不開：改信、翻譯、查天氣沒有中間步驟，開了只是慢，調低 Effort 更省額度）。底部兩行：開關位置是送出鍵旁的模型名稱、Effort、Thinking 或 Extended，Fable 5.1 與 Opus 5 關不掉，想省額度就調低 Effort；原則是先不開試一次，答案不穩再開，開了也要驗算。2026 年 9 月依官網查證。",
+          "description": "上半部並排兩條流程。左邊是一般回答（不開）：問題直接到答案，一次寫到底，沒有草稿、不回頭檢查，快而且省額度，改信、翻譯、查天氣這類題目用這條就夠。右邊是延伸思考（開）：問題先進入一格「思考」，模型重述題目、試做法、檢查、換路，再根據推理寫答案；畫面上會看到帶計時器的 Thinking 指示與可展開的摘要，代價是慢一些、更耗額度，而且摘要不是原始思路，也不是正確保證。下半部五張卡片是五類題目的建議：數學與邏輯（開：分攤費用、算利息、邏輯題，一步錯全錯，讓它列式驗算，提示裡把例外條件寫清楚）、多步驟規劃（開：有前後相依的準備清單，誰卡住誰、誰有等待期，提示先列相依關係再排）、程式除錯（開：錯誤訊息找原因，假設、驗證、逐一排除，貼完整錯誤與程式碼）、長文分析（看情況：摘要、翻譯、抓重點不開，找矛盾、交叉比對才開，說清楚要重組還是判斷）、日常問答（不開：改信、翻譯、查天氣沒有中間步驟，開了只是慢，調低 Effort 更省額度）。底部兩行：開關位置是送出鍵旁的模型名稱、Effort、Thinking 或 Extended，Sonnet 5.5、Opus 5.5、Fable 5.1 與 Opus 5 關不掉，想省額度就調低 Effort；原則是先不開試一次，答案不穩再開，開了也要驗算。2026 年 9 月依官網查證。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -277,7 +277,7 @@
           "type": "callout",
           "tone": "tip",
           "title": "先不開試一次，答案不穩再開；開了也要驗算",
-          "text": "拿不準的題目先用一般回答問一次，答案前後不一致、漏了條件或算不出來，再開延伸思考重問，並把第一次錯的地方寫進提示。開了之後仍然要驗算：摘要是給你檢查它有沒有讀對條件用的，不是正確保證。Fable 5.1 與 Opus 5 關不掉，想省額度就把 Effort 調到 Low 或 Medium。"
+          "text": "拿不準的題目先用一般回答問一次，答案前後不一致、漏了條件或算不出來，再開延伸思考重問，並把第一次錯的地方寫進提示。開了之後仍然要驗算：摘要是給你檢查它有沒有讀對條件用的，不是正確保證。Sonnet 5.5、Opus 5.5、Fable 5.1 與 Opus 5 關不掉，想省額度就把 Effort 調到 Low 或 Medium。"
         },
         {
           "type": "heading",
@@ -290,7 +290,7 @@
             "日常問答也開著：翻譯、改信、查匯率開了只是慢，摘要通常也很短或沒有；養成看題目再開的習慣，或者把 Effort 留在 Low、Medium。",
             "把思考內容當結論貼出去：摘要裡的中間假設常常在後面被推翻，而且它是另一個模型整理的摘要，不是原始思路；要引用就引用最後的答案，並且自己查證過。",
             "開了就不驗算：思考只是讓模型多做幾步檢查，不是正確保證；數字、日期、法規、程式碼仍然要自己算一次、跑一次。",
-            "把 Effort 一律拉到 Max 當保險：開發者文件寫在多數工作上 Max 會大幅增加成本、品質只有小幅提升，在不需要深度推理的任務上還可能想過頭；從 High 開始，不夠再往上。"
+            "把 Effort 一律拉到 Max 當保險：開發者文件寫在多數工作上 Max 會大幅增加成本、品質只有小幅提升，在不需要深度推理的任務上還可能想過頭；從模型的預設等級開始，不夠再往上。"
           ],
           "ordered": false
         },
@@ -317,9 +317,9 @@
       ],
       "sources": [
         {
-          "title": "Claude 說明中心：Change the model, effort, and thinking settings（模型選單位置、Effort 五級與建議、Thinking／Extended 開關、Fable 5.1 與 Opus 5 關不掉、計時器與可展開摘要、建議題型、Effort 越高越慢越耗）",
+          "title": "Claude 說明中心：Change the model, effort, and thinking settings（模型選單位置、Effort 五級與各模型標示的 Default、Thinking／Extended 開關、Sonnet 5.5、Opus 5.5、Fable 5.1 與 Opus 5 關不掉、計時器與可展開摘要、建議題型、Effort 越高越慢越耗）",
           "url": "https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Claude 說明中心：When should I use web search, extended thinking, and research（延伸思考適合不需要最新網路資訊的複雜推理：數學、除錯、多角度分析）",
@@ -364,12 +364,12 @@
         {
           "title": "Anthropic 官方文件：Extended thinking（budget_tokens 最低 1,024、預算越大延遲越高、4.7 以後的模型不接受預算）",
           "url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-10-05"
         },
         {
-          "title": "Anthropic 官方文件：Effort（low 到 max 五級、預設 high、Max 在多數工作上成本大增品質小增、可能過度思考）",
+          "title": "Anthropic 官方文件：Effort（low 到 max 五級、多數模型預設 high、Opus 5.5 預設 medium、Max 在多數工作上成本大增品質小增、可能過度思考）",
           "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Anthropic 官方文件：Models overview（Fable 5.1 自適應思考常開且相對較慢、實際延遲取決於提示長度、輸出長度與思考 Effort）",
