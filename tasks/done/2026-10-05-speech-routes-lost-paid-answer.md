@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-speech-routes-lost-paid-answer
 title: Speech routes answer a lost paid answer apart from an unreachable API
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5-speech-routes-lost-answer
 claimed_at: 2026-10-05T07:20:47Z
 created_at: 2026-10-05T00:38:51Z
-completed_at:
+completed_at: 2026-10-05T07:55:24Z
 branch: claude/speech-routes-lost-answer
 depends_on: []
 scope:
