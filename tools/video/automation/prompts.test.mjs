@@ -239,6 +239,7 @@ test("the worker's drama writer carries the craft rules the skill's writer promp
     "at most 35% of the spoken text",
     "a reaction shot or an insert carries the line of whoever is speaking off screen",
     "only to move a number; change what",
+    "at least a third of the lines carry one (lint warns below that)",
   ]) {
     assert.ok(skill.includes(phrase), `the skill's writer-drama.md says "${phrase}"`);
     assert.ok(writer.includes(phrase), `the worker's drama writer says "${phrase}"`);
@@ -373,4 +374,32 @@ test("a glossary term is kept the same across all four locales: each translator'
   }
   const { worksheet } = parseAnswer(answer("ja", "1つ目は、クロードコードでコードを書くのか、GPT-5.5 と話すのかです。"));
   assert.deepEqual(dropped(worksheet.lines[0].text), ["Claude Code"], "a transliterated name is what the reviewer sends back");
+});
+
+test("every writer asks for the performance contract, a plan on the narration's voice and a cue on at least a third of the lines, and the skill's prompts say the same (docs/videos/ILLUSTRATED.md §聲音表演)", () => {
+  const read = (name) => readFileSync(new URL(`../../../.agents/skills/youtube-video/references/prompts/${name}`, import.meta.url), "utf8");
+  const cue = "at least a third of the lines carry one (lint warns below that)";
+  for (const [label, text] of [
+    ["slides writer", INSTRUCTIONS.writer],
+    ["drama writer", DRAMA_INSTRUCTIONS.writer],
+    ["explainer writer", EXPLAINER_INSTRUCTIONS["writer:explainer"]],
+    ["writer-video.md", read("writer-video.md")],
+    ["writer-drama.md", read("writer-drama.md")],
+    ["writer-story.md", read("writer-story.md")],
+  ]) {
+    assert.ok(text.includes(cue), `${label}: "${cue}"`);
+    assert.match(text, /"emotion"|`emotion`/, label);
+    assert.match(text, /"performance"|`(?:voice\.)?performance`/, label);
+    assert.match(text, /ILLUSTRATED\.md`?\s+§聲音表演/, label);
+  }
+  assert.match(INSTRUCTIONS.writer, /"voice" also takes a\n\s+"performance" plan of yours \(zh-TW, at most 200 characters\)/);
+  assert.match(INSTRUCTIONS.writer, /A cue says how the sentence is spoken, never\n\s+what it means; a Gemini voice reads the plan and the cue in its style, an Azure voice ignores\n\s+them and lint says so\./);
+  assert.match(DRAMA_INSTRUCTIONS.writer, /The narrator's "voice" takes a "performance" plan \(zh-TW, ≤ 200 chars\)/);
+  assert.match(EXPLAINER_INSTRUCTIONS["writer:explainer"], /A line takes an "emotion" cue \(zh-TW, ≤ 80 chars\) where the\n\s+delivery turns/);
+  assert.equal(instructionsFor("writer", "slides").includes(cue), true);
+  assert.equal(instructionsFor("writer", "drama", "", "explainer").includes(cue), true);
+  // A brand story's chapter writer cannot write the voice: the plan is the voice's, the cues are the chapter's.
+  assert.match(read("writer-story.md"), /not the chapter's to write/);
+  // The stages that write no lines are not told to perform them.
+  for (const stage of ["planner", "verifier", "listener", "translator", "caption_reviewer"]) assert.equal(INSTRUCTIONS[stage].includes(cue), false, stage);
 });

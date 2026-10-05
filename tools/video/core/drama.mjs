@@ -53,6 +53,14 @@ export const SAME_MOVE_RUN_MAX = 2;
 export const MOTIF_SHARE_WARN = 1 / 3;
 export const MOTIF_MIN_SHOTS = 6;
 export const EMOTION_MAX = 80;
+// The narration's performance plan, `voice.performance` (docs/videos/ILLUSTRATED.md §聲音表演): how
+// the whole video is told (the register, the pace, where the voice lifts), read into the Gemini
+// style ahead of each line's own cue. 200 characters leaves the server's 400-character style
+// room for the channel's register style (about 110) and a line's 80-character cue.
+export const PERFORMANCE_MAX = 200;
+// The share of lines that carry a cue (`emotion`) under the performance contract: below it the
+// plan is read flat, and lint says so (cueCoverageProblems).
+export const CUE_SHARE_MIN = 1 / 3;
 const STYLE_MAX = 400;
 const LIMITS = { style: 600, negative: 400, motion: 300, appearance: 800, prompt: 1000, camera: 120, sheet_prompt: 600 };
 // Part of every media cache key: bump it and every keyframe and clip is generated again.
@@ -470,8 +478,29 @@ function validateSeries(series, errors, anime = false) {
   }
 }
 
+/**
+ * The narration's performance plan, `voice.performance` (docs/videos/ILLUSTRATED.md §聲音表演):
+ * what the voice does across the whole video (the register, the pace, where it lifts), which
+ * voiceFor reads into the Gemini style ahead of each line's own cue. It is the narration's
+ * alone: a character's voice carries its own style. The shared voice check (schema.mjs
+ * validateVoice) lists the fields the speech server takes, and the plan never reaches the server
+ * as a field, so its unknown-field report on this one path is replaced by the checks here.
+ */
+function validatePerformance(doc, errors) {
+  if (!isObject(doc.voice) || doc.voice.performance === undefined) return;
+  const unknown = errors.findIndex((error) => error.path === "voice.performance");
+  if (unknown !== -1) errors.splice(unknown, 1);
+  const { style, performance } = doc.voice;
+  if (!isShortText(performance, PERFORMANCE_MAX)) {
+    errors.push({ path: "voice.performance", message: `must be the narration's performance plan (the register, the pace, where the voice lifts), at most ${PERFORMANCE_MAX} characters` });
+  } else if (typeof style === "string" && style.length + 1 + performance.length > STYLE_MAX) {
+    errors.push({ path: "voice.performance", message: `with voice.style it runs past the ${STYLE_MAX} characters a style may hold; shorten one of them` });
+  }
+}
+
 export function validateDrama(doc, errors, validateVoice) {
   const drama = isDrama(doc);
+  validatePerformance(doc, errors);
   if (doc.pronunciation_hints !== undefined) {
     const hints = doc.pronunciation_hints;
     if (!drama || !isObject(hints) || Object.keys(hints).length > 300 || Object.entries(hints).some(([term, hint]) => !isShortText(term, 40) || !/[\u3400-\u9fff]/u.test(term) || (hint !== null && !isShortText(hint, 200)))) {
@@ -546,17 +575,19 @@ export function validateDrama(doc, errors, validateVoice) {
         if (!isObject(line)) return;
         const label = `${where}.lines[${lineIndex}]${typeof line.id === "string" ? ` (${line.id})` : ""}`;
         if (shot && line.reveal !== undefined) errors.push({ path: `${label}.reveal`, message: "a shot has nothing to reveal; split the narration into shots instead" });
+        // A cue for the voice may sit on any format's line (docs/videos/ILLUSTRATED.md §聲音表演);
+        // speakers and repeated takes stay a drama's.
+        if (line.emotion !== undefined && !isShortText(line.emotion, EMOTION_MAX)) {
+          errors.push({ path: `${label}.emotion`, message: `must be a short direction for the voice, at most ${EMOTION_MAX} characters` });
+        }
         if (!drama) {
-          for (const key of ["speaker", "emotion", "audio_ref"]) {
+          for (const key of ["speaker", "audio_ref"]) {
             if (line[key] !== undefined) errors.push({ path: `${label}.${key}`, message: `only a video with format "${DRAMA_FORMAT}" has line ${key}` });
           }
           return;
         }
         if (line.speaker !== undefined && line.speaker !== NARRATOR && !characterIds.has(line.speaker)) {
           errors.push({ path: `${label}.speaker`, message: `must be "${NARRATOR}" or a character id` });
-        }
-        if (line.emotion !== undefined && !isShortText(line.emotion, EMOTION_MAX)) {
-          errors.push({ path: `${label}.emotion`, message: `must be a short direction for the voice, at most ${EMOTION_MAX} characters` });
         }
         try {
           const voice = voiceFor(doc, line);
@@ -588,17 +619,20 @@ export function characterOf(doc, line) {
 }
 
 /**
- * The voice a line is synthesized with: the character's own, or the narrator's. A line's emotion
- * rides in a Gemini voice's style prompt; Azure voices have no such field, so lint warns instead.
+ * The voice a line is synthesized with: the character's own, or the narrator's. The narration's
+ * performance plan (`voice.performance`, the narrator's lines only) and the line's own cue
+ * (`emotion`, any format) ride in a Gemini voice's style prompt, the plan first, then the cue,
+ * then the pronunciation readings; the plan is never a field of the voice sent out. Azure voices
+ * have no style prompt, so lint warns instead (emotionProblems).
  */
 export function voiceFor(doc, line) {
   const character = characterOf(doc, line);
-  const base = character ? character.voice : doc.voice;
-  const voice = { ...base };
+  const { performance, ...voice } = (character ? character.voice : doc.voice) ?? {};
+  const plan = character ? null : performance;
   const hints = pronunciationHintsFor(doc, line);
   if (hints.length && voice.provider !== "gemini") throw new Error("pronunciation_hints require a Gemini voice with speech metadata");
-  if ((line?.emotion || hints.length) && voice.provider === "gemini") {
-    const style = [voice.style, line?.emotion, hints.length ? `發音提示（不唸指示）：${hints.map(([term, hint]) => `${term}＝${hint}`).join("；")}` : null].filter(Boolean).join("。");
+  if ((plan || line?.emotion || hints.length) && voice.provider === "gemini") {
+    const style = [voice.style, plan, line?.emotion, hints.length ? `發音提示（不唸指示）：${hints.map(([term, hint]) => `${term}＝${hint}`).join("；")}` : null].filter(Boolean).join("。");
     if (doc.pronunciation_hints !== undefined && style.length > STYLE_MAX) throw new Error(`line ${line?.id ?? "?"}: voice direction plus pronunciation exceeds ${STYLE_MAX} characters; shorten the line or direction without dropping required readings`);
     voice.style = style.slice(0, STYLE_MAX);
   }
@@ -853,15 +887,41 @@ export function visualTierProblems(doc, tier) {
   return { errors, warnings };
 }
 
-/** Lines whose emotion cannot reach the voice (the provider has no style prompt). */
+/** A plan or a cue that cannot reach the voice (the provider has no style prompt). */
 export function emotionProblems(doc) {
   const warnings = [];
+  if (isObject(doc.voice) && doc.voice.performance && doc.voice.provider !== "gemini") {
+    warnings.push({ path: "voice.performance", message: `the performance plan is ignored: the ${doc.voice.provider} voice has no style prompt` });
+  }
   for (const { line, label } of lines(doc)) {
     if (line.emotion && voiceFor(doc, line).provider !== "gemini") {
       warnings.push({ path: label, message: `emotion "${line.emotion}" is ignored: the ${voiceFor(doc, line).provider} voice has no style prompt` });
     }
   }
   return warnings;
+}
+
+/**
+ * Whether the lines keep the performance contract (docs/videos/ILLUSTRATED.md §聲音表演). A script
+ * takes part in it once it carries a plan on the voice or a cue on any line; then at least
+ * CUE_SHARE_MIN of the lines a cue can reach (Gemini voices; in a drama with a cast its
+ * characters' lines, since the narrator bridges) say where the voice turns, or the plan is read
+ * flat and lint says so. A script with neither is from before the contract and is left alone.
+ */
+export function cueCoverageProblems(doc) {
+  const cast = hasCast(doc);
+  const reachable = [];
+  let cued = 0;
+  for (const { line } of lines(doc)) {
+    if (line.emotion) cued += 1;
+    if (cast && !characterOf(doc, line)) continue;
+    if (voiceFor(doc, line).provider !== "gemini") continue;
+    reachable.push(line);
+  }
+  if (!reachable.length || !(cued || (isObject(doc.voice) && doc.voice.performance))) return [];
+  const carrying = reachable.filter((line) => line.emotion).length;
+  if (carrying >= reachable.length * CUE_SHARE_MIN) return [];
+  return [{ path: "scenes", message: `${carrying} of ${reachable.length} lines carry a performance cue ("emotion"); at least a third should say where the voice slows, lifts or pauses, or the plan is read flat (docs/videos/ILLUSTRATED.md §聲音表演)` }];
 }
 
 /** The spoken text per speaker, for tts --dry-run and the budget estimate. */

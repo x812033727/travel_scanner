@@ -38,7 +38,7 @@ import {
   visualTierProblems,
   voiceFor,
 } from "./drama.mjs";
-import { writeAudioFixture, dramaBrief, dramaFixture, fixture, fixtureLexicon, illustratedFixture, sandbox, storyFixture } from "./fixtures/load.mjs";
+import { writeAudioFixture, dramaBrief, dramaFixture, enFixture, explainerFixture, fixture, fixtureBrief, fixtureLexicon, illustratedBrief, illustratedFixture, sandbox, storyFixture } from "./fixtures/load.mjs";
 import { lintVideo } from "./lint.mjs";
 import { atomicWrite } from "./paths.mjs";
 import { validateVideo } from "./schema.mjs";
@@ -213,13 +213,18 @@ test("the drama example is valid and lints clean, apart from the craft rows a fo
   assert.equal(result.summary.chapters.length, 3);
 });
 
-test("a slides video cannot carry a cast, speakers or emotions, and a drama cannot use slide templates", () => {
+test("a slides video cannot carry a cast, speakers or repeated takes, while a cue is any line's; a drama cannot use slide templates", () => {
   const slides = fixture();
   slides.characters = [];
   slides.series = { slug: "xianxia", episode: 1, chapter: 1 };
   slides.scenes[0].lines[0].speaker = "narrator";
   slides.scenes[0].lines[1].emotion = "calm";
-  assert.deepEqual(paths(validateVideo(slides)), ["characters", "scenes[0].lines[0] (k7p2).speaker", "scenes[0].lines[1] (m4qa).emotion", "series"]);
+  slides.scenes[0].lines[1].audio_ref = slides.scenes[0].lines[0].id;
+  assert.deepEqual(paths(validateVideo(slides)), ["characters", "scenes[0].lines[0] (k7p2).speaker", "scenes[0].lines[1] (m4qa).audio_ref", "series"]);
+  // The cue is range-checked for every format (docs/videos/ILLUSTRATED.md §聲音表演).
+  const cued = fixture();
+  cued.scenes[0].lines[1].emotion = "x".repeat(81);
+  assert.deepEqual(paths(validateVideo(cued)), ["scenes[0].lines[1] (m4qa).emotion"]);
   const drama = dramaFixture();
   drama.scenes[0].template = "bullets";
   assert.deepEqual(paths(validateVideo(drama)), ["scenes[0].template"]);
@@ -788,4 +793,120 @@ test("a shot cut from another shot's clip names an earlier clip shot and a start
   assert.deepEqual(sourcedShotScenes(base).map((scene) => scene.id), ["bird"]);
   assert.deepEqual(drawnShotScenes(base).map((scene) => scene.id), ["opening", "farewell", "sea-storm"]);
   assert.equal(isSourced(base.scenes[2]), false);
+});
+
+test("the narration's performance plan is the document voice's alone, within the style's room, and voiceFor reads it ahead of the line's cue (docs/videos/ILLUSTRATED.md §聲音表演)", () => {
+  const plan = "開場壓低放慢；每個數字前停半拍；「其實」之後亮起來";
+  const doc = illustratedFixture();
+  doc.voice.performance = plan;
+  assert.deepEqual(validateVideo(doc), []);
+  // Accepted on an Azure voice too (lint warns that it is ignored); refused when it is not a plan.
+  const azure = fixture();
+  azure.voice.performance = plan;
+  assert.deepEqual(validateVideo(azure), []);
+  for (const bad of ["", "   ", 42, null, "字".repeat(201)]) {
+    const wrong = illustratedFixture();
+    wrong.voice.performance = bad;
+    const errors = validateVideo(wrong);
+    assert.deepEqual(paths(errors), ["voice.performance"], JSON.stringify(bad).slice(0, 12));
+    assert.match(errors[0].message, /^must be the narration's performance plan .* at most 200 characters$/);
+  }
+  // The plan and the style share the server's 400 characters.
+  const crowded = illustratedFixture();
+  crowded.voice.style = "字".repeat(300);
+  crowded.voice.performance = "字".repeat(100);
+  assert.deepEqual(validateVideo(crowded).map((error) => `${error.path}: ${error.message}`), ["voice.performance: with voice.style it runs past the 400 characters a style may hold; shorten one of them"]);
+  crowded.voice.performance = "字".repeat(99);
+  assert.deepEqual(validateVideo(crowded), []);
+  // A character's voice has its own style and no plan.
+  const cast = dramaFixture();
+  cast.characters[0].voice.performance = plan;
+  assert.deepEqual(paths(validateVideo(cast)), ["characters[0].voice.performance"]);
+  // voiceFor: the narrator's lines read the plan after the style and before the cue, a
+  // character's line reads neither, and the plan is never a field of the voice sent out.
+  const drama = dramaFixture();
+  drama.voice.performance = plan;
+  const narrator = drama.scenes[0].lines[0];
+  assert.deepEqual(voiceFor(drama, narrator), { provider: "gemini", name: "Sulafat", style: `${dramaFixture().voice.style}。${plan}` });
+  narrator.emotion = "壓低";
+  assert.equal(voiceFor(drama, narrator).style, `${dramaFixture().voice.style}。${plan}。壓低`);
+  assert.equal(voiceFor(drama, drama.scenes[1].lines[0]).style, "清亮、倔強的少女聲，台灣國語。開心、有點急");
+  assert.equal("performance" in voiceFor(drama, narrator), false);
+  assert.equal("performance" in voiceFor(drama, drama.scenes[1].lines[0]), false);
+  // An Azure voice takes neither: the plan and the cue leave with it.
+  azure.scenes[0].lines[0].emotion = "放慢";
+  assert.deepEqual(voiceFor(azure, azure.scenes[0].lines[0]), { provider: "azure", name: "zh-TW-HsiaoChenNeural", rate: "+0%" });
+  // A slides line's cue reaches a Gemini style on its own, without a plan.
+  const slides = illustratedFixture();
+  slides.scenes[1].lines[0].emotion = "放慢，一字一字";
+  assert.equal(voiceFor(slides, slides.scenes[1].lines[0]).style, `${slides.voice.style}。放慢，一字一字`);
+  assert.equal(voiceFor(slides, slides.scenes[0].lines[0]).style, slides.voice.style);
+});
+
+test("a script with no plan and no cue keeps the speech hash it had before the performance contract: the fixtures' hashes are pinned, and a plan or a cue moves them", () => {
+  const lexicon = fixtureLexicon();
+  // Recorded on 2026-10-05, before voice.performance and slides cues existed, so a timeline from
+  // before them stays current and no narration is recorded again for the contract alone. A
+  // fixture's narration or voice changing moves its hash on purpose: recompute it with
+  // speechHash(<fixture>(), fixtureLexicon()) and pin the new value here.
+  for (const [doc, pinned] of [
+    [fixture(), "af5d5f5eb75aaa69"],
+    [illustratedFixture(), "24b8bd53672b91e8"],
+    [dramaFixture(), "3701f1baabd22734"],
+    [explainerFixture(), "9fea1c4d8c68e0dc"],
+    [storyFixture(), "1a23e4d697759dd1"],
+    [enFixture(), "01f2da6b69601188"],
+  ]) {
+    assert.equal(speechHash(doc, lexicon), pinned, doc.slug);
+  }
+  const plan = illustratedFixture();
+  plan.voice.performance = "開場壓低";
+  assert.notEqual(speechHash(plan, lexicon), "24b8bd53672b91e8", "a plan records the narration again");
+  const cue = fixture();
+  cue.scenes[0].lines[1].emotion = "放慢";
+  assert.notEqual(speechHash(cue, lexicon), "af5d5f5eb75aaa69", "a cue on a slides line is another take");
+  const narrated = dramaFixture();
+  narrated.voice.performance = "壓低";
+  assert.notEqual(speechHash(narrated, lexicon), "3701f1baabd22734");
+});
+
+test("lint holds the lines to the performance contract: a plan or a cue puts a script in it, then a third of the reachable lines carry a cue or lint warns; an Azure voice gets the ignored warnings instead", () => {
+  const coverage = (result) => result.warnings.filter((warning) => /performance cue/.test(warning.message)).map((warning) => `${warning.path}: ${warning.message}`);
+  const flatMessage = (carrying, lines) => `scenes: ${carrying} of ${lines} lines carry a performance cue ("emotion"); at least a third should say where the voice slows, lifts or pauses, or the plan is read flat (docs/videos/ILLUSTRATED.md §聲音表演)`;
+  const illustrated = (change) => {
+    const doc = illustratedFixture();
+    change?.(doc);
+    return lintVideo(doc, { lexicon: fixtureLexicon(), brief: illustratedBrief(), others: [], translations: {} });
+  };
+  const cueLines = (doc, count) => {
+    let left = count;
+    for (const scene of doc.scenes) for (const line of scene.lines) if (left-- > 0) line.emotion = "放慢";
+  };
+  // Nothing of the contract: the example lints clean, as before it.
+  assert.deepEqual(illustrated().warnings, []);
+  // A plan with no cue: the voice would read it flat (a warning; the plan itself is valid).
+  const flat = illustrated((doc) => { doc.voice.performance = "開場壓低放慢；數字前停半拍"; });
+  assert.ok(!flat.errors.some((error) => error.path.startsWith("voice")), JSON.stringify(flat.errors));
+  assert.deepEqual(coverage(flat), [flatMessage(0, 11)]);
+  // A lone cue puts the script in the contract too.
+  assert.deepEqual(coverage(illustrated((doc) => { doc.scenes[1].lines[0].emotion = "放慢"; })), [flatMessage(1, 11)]);
+  // Three of eleven is under a third; four is enough, and then the plan has its cues.
+  assert.deepEqual(coverage(illustrated((doc) => { doc.voice.performance = "開場壓低"; cueLines(doc, 3); })), [flatMessage(3, 11)]);
+  assert.deepEqual(illustrated((doc) => { doc.voice.performance = "開場壓低"; cueLines(doc, 4); }).warnings, []);
+  // An Azure narration: the plan and the cue are warned as ignored, and no line can be reached,
+  // so coverage says nothing.
+  const azure = fixture();
+  azure.voice.performance = "開場壓低";
+  azure.scenes[0].lines[0].emotion = "放慢";
+  assert.deepEqual(lintVideo(azure, context({ brief: fixtureBrief() })).warnings.map((warning) => `${warning.path}: ${warning.message}`), [
+    "voice.performance: the performance plan is ignored: the azure voice has no style prompt",
+    'scenes[0].lines[0] (k7p2): emotion "放慢" is ignored: the azure voice has no style prompt',
+  ]);
+  // A drama with a cast is held on its characters' lines (the narrator bridges): the example's
+  // three all carry a cue, so a plan on its narrator adds no warning; without them it does.
+  const drama = dramaFixture();
+  drama.voice.performance = "沉著地說，慢";
+  assert.deepEqual(lintVideo(drama, context()).warnings.filter((warning) => !/^craft /.test(warning.message)), []);
+  for (const scene of drama.scenes) for (const line of scene.lines) delete line.emotion;
+  assert.deepEqual(coverage(lintVideo(drama, context())), [flatMessage(0, 3)]);
 });

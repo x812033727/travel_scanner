@@ -125,6 +125,12 @@ test("a drama's requests change with the speaker, and a line's emotion rides in 
   assert.equal(requests[1].body.voice, "gemini:Kore");
   assert.equal(requests[1].body.style, "少女。急");
   assert.equal(requests[2].body.style, "少女");
+  // The narration's performance plan rides on the narrator's lines alone, before any cue.
+  const planned = structuredClone(doc);
+  planned.voice.performance = "慢，壓低";
+  const withPlan = planRequests(planned, { terms: {} });
+  assert.deepEqual(withPlan.map((request) => request.body.style), ["說書人。慢，壓低", "少女。急", "少女", undefined, "說書人。慢，壓低"]);
+  assert.ok(withPlan.every((request) => !("performance" in request.body)));
   // Azure has no style prompt, so the emotion goes nowhere (lint warns about it).
   assert.deepEqual(requests[3].body, { voice: "zh-TW-YunJheNeural", rate: "+0%", segments: [{ parts: [{ text: "早點回來。" }], break_after_ms: 0 }] });
   // The same words in another emotion are another take, and a request of their own; the line
@@ -139,6 +145,37 @@ test("a drama's requests change with the speaker, and a line's emotion rides in 
   const verbose = structuredClone(doc);
   verbose.characters[0].voice.style = "字".repeat(398);
   assert.equal(planRequests(verbose, { terms: {} })[1].body.style.length, 400);
+});
+
+test("a performance plan on the narration voice and a cue on a slides line reach the Gemini style, never the server's fields; without them the requests and keys are what they were", () => {
+  const plain = {
+    voice: { provider: "gemini", name: "Sulafat", style: "說書人" },
+    scenes: [
+      { id: "a", lines: [{ id: "a1", text: "第一句。" }, { id: "a2", text: "第二句。" }, { id: "a3", text: "第三句。" }] },
+      { id: "b", lines: [{ id: "b1", text: "另一個場景。" }] },
+    ],
+  };
+  const before = planRequests(plain, { terms: {} });
+  assert.deepEqual(before.map((request) => request.lines.map((line) => line.id)), [["a1", "a2", "a3"], ["b1"]]);
+  const pinned = createHash("sha256").update(JSON.stringify([{ voice: "gemini:Sulafat", style: "說書人" }, [{ text: "另一個場景。" }]])).digest("hex").slice(0, 16);
+  assert.equal(before[1].lines[0].key, pinned, "a Gemini slides clip's key is the voice fields and the parts, as before the contract");
+  const told = structuredClone(plain);
+  told.voice.performance = "開場壓低放慢";
+  told.scenes[0].lines[1].emotion = "放慢，一字一字";
+  const after = planRequests(told, { terms: {} });
+  // The cued line takes a style of its own, so it is a request of its own; its neighbours share the plan.
+  assert.deepEqual(after.map((request) => request.lines.map((line) => line.id)), [["a1"], ["a2"], ["a3"], ["b1"]]);
+  assert.deepEqual(after[0].body, { voice: "gemini:Sulafat", style: "說書人。開場壓低放慢", segments: [{ parts: [{ text: "第一句。" }], break_after_ms: 0 }] });
+  assert.equal(after[1].body.style, "說書人。開場壓低放慢。放慢，一字一字");
+  assert.equal(after[2].body.style, "說書人。開場壓低放慢");
+  assert.ok(after.every((request) => !("performance" in request.body) && !("emotion" in request.body)));
+  assert.notEqual(after[3].lines[0].key, pinned, "the plan is in every take's key");
+  // The same on an Azure voice changes nothing the server sees (lint warns instead).
+  const azure = { voice: { provider: "azure", name: "zh-TW-HsiaoChenNeural", performance: "開場壓低" }, scenes: [{ id: "a", lines: [{ id: "a1", text: "第一句。", emotion: "放慢" }, { id: "a2", text: "第二句。" }] }] };
+  const silent = { voice: { provider: "azure", name: "zh-TW-HsiaoChenNeural" }, scenes: [{ id: "a", lines: [{ id: "a1", text: "第一句。" }, { id: "a2", text: "第二句。" }] }] };
+  const [withPlan, without] = [azure, silent].map((doc) => planRequests(doc, { terms: {} }));
+  assert.deepEqual(withPlan.map((request) => request.body), without.map((request) => request.body));
+  assert.deepEqual(withPlan.map((request) => request.lines.map((line) => line.key)), without.map((request) => request.lines.map((line) => line.key)));
 });
 
 test("production readings follow only spoken names, aliases and terms, and bind speech/request caches without changing CC", () => {
