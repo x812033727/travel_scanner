@@ -3,6 +3,7 @@
 2026-09-29 起草。一集講清楚一個 AI 名詞：它是什麼、怎麼運作、什麼時候該在意、跟誰容易搞混，每集約 10 分鐘。**不編集數**：每一集都能單獨看，不用等前一集；站上多一個名詞的文章，就能多出一集。題庫是站上已經查核發布的 81 篇 AI 名詞專文（[`../../ai-terms-series/ARTICLES.md`](../../ai-terms-series/ARTICLES.md)），影片是文章的「聽得懂」版本，說明欄連回文章。
 
 - 名詞庫（81 個名詞、影片代號、對應文章、分層與建議順序、鉤子、狀態）：[`terms.json`](terms.json)
+- 總覽集（一集講幾個總是一起出現的名詞，例如五層樓的提示詞到圖形工程）：[`overviews.json`](overviews.json)，規則在 §總覽集
 - 一集怎麼發起、做完怎麼登記：§一個名詞怎麼變成一集
 - 產線與關卡：skill `youtube-video` 的全自動路線（`.agents/skills/youtube-video/references/automated.md`），畫面是插圖投影片（[`../ILLUSTRATED.md`](../ILLUSTRATED.md)），頻道規格在 [`../README.md`](../README.md)
 
@@ -97,7 +98,7 @@ ja、ko 是草稿，第一集做字幕翻譯時由審稿模型確認；改了就
 | agents | AI 代理 | AI Agents | AI 代理（既有三支影片）、代理迴圈、多代理系統、子代理、代理協調、ReAct、工具呼叫、MCP、A2A、Agent Skills |
 | retrieval | 檢索與知識 | Retrieval & Knowledge | RAG、Agentic RAG、GraphRAG、嵌入向量、向量資料庫、語意搜尋、混合搜尋、重新排序、文件分塊、知識圖譜 |
 | training | 訓練與推論 | Training & Inference | 預訓練、微調、SFT、RLHF、DPO、LoRA、知識蒸餾、量化、推理模型、推論時計算、提示詞快取 |
-| engineering | 工程方法 | Engineering Practices | 提示詞工程、上下文工程、Harness Engineering、Loop Engineering、Agentic Engineering、Vibe Coding、規格驅動開發、LLMOps、AgentOps、提示詞串接 |
+| engineering | 工程方法 | Engineering Practices | 提示詞工程、上下文工程、Harness Engineering、Loop Engineering、Agentic Engineering、Vibe Coding、規格驅動開發、LLMOps、AgentOps、提示詞串接；總覽集「提示詞到圖形工程」（`ai-terms-prompt-to-graph-engineering`，五層樓地圖，§總覽集） |
 | evaluation-safety | 評測與安全 | Evaluation & Safety | Evals、基準測試、LLM-as-a-Judge、幻覺、提示詞注入、越獄提示、Guardrails、沙盒、人工介入、紅隊測試 |
 | multimodal-open | 多模態與開放 | Multimodal & Open Models | 多模態 AI、擴散模型、文生圖、文生影片、語音辨識、語音合成、深偽、開放權重、開源 AI、內容憑證 |
 
@@ -113,13 +114,22 @@ ja、ko 是草稿，第一集做字幕翻譯時由審稿模型確認；改了就
 
 發起一集的步驟（人或代理都一樣）：
 
-1. `terms.json` 找到那一列（沒有就照同樣的欄位加一列），`status` 改 `planned`；影片代號是 `video_slug`（`ai-term-<名詞>`）。
+1. `terms.json` 找到那一列（沒有就照同樣的欄位加一列），`status` 改 `planned`；影片代號是 `video_slug`（`ai-term-<名詞>`）。這一步與第 4 步改 `terms.json` 都會牽動長片目錄，同一個 PR 要一起重建（§名詞庫與出片順序 最後一段）。
 2. 照 `automated.md` 的主幹從第 1 步開始：企劃代理用 `prompts/planner.md`，IDENTITY 寫名詞、`source_guide`、目標 10 分鐘（`target_minutes: [9, 11]`）、最近五支本系列的影片代號（讓它避開同樣的開場與版型順序），並附上這份 README 的 §一集長什麼樣 與 §三種場景配方。`brief.md` 寫進 `docs/videos/<video_slug>/`。
 3. `review-push --gate outline` 起，一路到 `package` 與語言，關卡照 `automated.md`；`status` 改 `in-production`。
 4. 上架後：`terms.json` 填 `video_id`、`published_at`，`status` 改 `published`；影片加進總清單與分類清單。片尾指向它的那些集（別列的 `related` 含它）下次做時就能連到它。
 5. 站主看數據要改順序，只改 `tier` 或 `suggested_order`，不動已發布的列。
 
 主機工人目前只從最近 14 天發布的文章與搜尋挑題（`apps/api/app/video_automation/topics.py` 的 `SITE_DAYS`），名詞文章 2026-09-14 發布，已經不在窗口內；所以第一批由 session 逐集發起，工人接手每一集的後續步驟。要讓工人在沒有新題目時自己從名詞庫接下一個名詞，是票 `2026-09-29-video-worker-takes-next-ai-term`（P3，站主決定要不要）。
+
+## 總覽集
+
+幾個名詞總是一起出現、互相定義，單講其中一個都得先解釋另外幾個，而觀眾的問題是「名詞一直換，我該追哪一個」時，可以一集講一張地圖，不講一個名詞。第一集是站主 2026-10-03 要的 `ai-terms-prompt-to-graph-engineering`：提示詞、上下文、駕馭、迴圈、圖形工程排成五層樓，每層講管什麼、失敗長什麼樣，最後把樓層變成「AI 出錯先修哪一層」的診斷表（票 `2026-10-03-ai-terms-engineering-ladder-video`）。
+
+- **登記在 [`overviews.json`](overviews.json)**，一個總覽集一筆：`video_slug`、`source_guide`（一篇文章，通常是中間那一層；其餘文章連在說明欄本文）、`playlist`、`covers`（涵蓋的 `terms.json` 名詞 id）、`covers_without_term`（講到了、但站上沒有文章也沒有名詞庫列的名詞：`zh`、`en`、`why`）、`status`（意思同 `terms.json` 的 `statuses`）、`video_id`、`published_at`、`notes`。上架後跟單名詞集一樣填 `video_id`、`published_at`，`status` 改 `published`，影片進總清單與 `playlist` 那份分類清單。
+- **不寫進 `terms.json`**：那份檔一列是一集單名詞的計畫，而且整份綁在長片目錄上（§名詞庫與出片順序 的最後一段）；為了登記總覽集去加區塊或欄位，就得重建長片目錄並重做長度收據。總覽集放在旁邊的檔，名詞庫與長片目錄都不動。
+- **涵蓋的名詞照樣各出一集**：`covers` 裡那幾列在 `terms.json` 不改，`status` 照各自的進度。發起其中一集時先查 `overviews.json` 的 `covers`，讀總覽集的 `brief.md` 與 `video.json`，沿用同一組譯名，地圖講一句就指過去，不重講。
+- **檔名與格式**：資料夾 `docs/videos/ai-terms-<主題>/`（不用單名詞集的 `ai-term-` 前綴，代號不會撞到名詞庫）；標題照 §標題、縮圖、說明欄、播放清單 的格式，名詞部分列幾個名詞的短稱；版型配方可以另起（第一集用 D 先地圖）；`brief.md` 開頭寫明這集跟系列規格不同的地方，「不做的事」寫明不深講各層的機制。
 
 ## 名詞庫與出片順序
 
@@ -152,10 +162,13 @@ ja、ko 是草稿，第一集做字幕翻譯時由審稿模型確認；改了就
 
 AI 代理也在第 1 層，但已經有三支影片講過（`ai-agent-vs-chatbot`、`ai-agents-explained-what-they-cost`、`always-on-agent-explained`），`status: "covered"`，不單出一集；代理的機制由第 2 層的「代理迴圈」「工具呼叫」接手。第 2 層是其餘 55 個進階名詞，第 3 層是 5 個專業名詞（Harness Engineering、Loop Engineering、Agentic Engineering、LLMOps、AgentOps），看第 1 層的數據再排。
 
+**改 `terms.json` 會牽動長片目錄**（2026-10-05 查證）：`docs/videos/long-form/plans.json` 的 `source_hashes` 綁著這份檔整份的 SHA-256，每一列也綁一個雜湊（`source_record_sha256`），`plans.json` 又在長度收據 `docs/videos/long-form/review.json` 的受審檔案裡。所以改任何一個位元組（`status`、`video_id` 也算）都要在同一個 PR 重建 `plans.json`（`node tools/video/long-form/cli.mjs build`）與後台目錄 `apps/api/app/video_plans/data/catalog.json`（`node tools/video/long-form/admin-catalog.mjs build`），再請獨立代理補一次收據增量，不然 `npm run test:tools` 會報 `source hash drift`；新增一列還要改三處寫死的列數：`tools/video/long-form/plans.mjs` 的 `CATALOG_COUNTS`（81）、`docs/videos/long-form/policy.json` 的 `expected_entries`、`tools/video/long-form/admin-catalog.mjs` 的總數 473。做法見 [`../long-form/README.md`](../long-form/README.md) §重建與覆核。總覽集因此另放在 `overviews.json`，它不在長片目錄裡。
+
 ## 跟其他系列與既有影片的分工
 
 | 對象 | 分工 |
 | --- | --- |
+| 總覽集（[`overviews.json`](overviews.json)） | 總覽講地圖與診斷：幾個名詞各在哪一層、各管什麼、失敗長什麼樣、出錯時先查哪一層；單名詞集深講機制：示範、運作細節、跟鄰近名詞的界線。總覽集每層只講到「怎麼分辨」，分詞、檢索、壓縮、子代理、評測這類機制留給各自那一集；單名詞集講到地圖時一句帶過，指向總覽集。說明欄雙向互連：總覽集連它涵蓋的每篇文章（單名詞集上架後可以改連影片）；單名詞集的說明欄連總覽集（總覽集上架後）。五層樓這一集涵蓋提示詞工程、上下文工程、Harness Engineering、Loop Engineering 四列，圖形工程站上還沒有文章 |
 | 原來如此事務所（[`../so-thats-why/`](../so-thats-why/README.md)） | 那邊回答「為什麼」，一集一個故事；這邊回答「是什麼、什麼時候該在意」。同一個機制兩邊都碰到時，鉤子不能一樣：A08 用 strawberry 講 token，本系列的 token 集用「同一段中文換模型用量不同」；A01 講 AI 為什麼胡說，幻覺集講怎麼把回答拆成可查主張；A16 講畫錯手指，擴散模型集不用手指梗。兩邊在說明欄與片尾互連 |
 | 已經做好的長片 | AI 代理有三支，不再單出；vibe coding 有操作教學（`vibe-coding-first-website-2026`），名詞集只講定義與界線；本機 AI（`rtx-spark-local-ai`）講硬體，開放權重、量化、小模型三集講名詞本身。每一列的 `existing_videos` 與 `notes` 寫了分工 |
 | 站上的 AI 名詞文章 | 影片是文章的「聽得懂」版：刪掉一半段落、表格改字卡最多三列、示例只做一個（`formats.md` §從 Mokaair 文章改編）；文章之後可以嵌入影片，另開 content-pipeline 的票 |
@@ -228,8 +241,10 @@ Shorts 的說明欄第一行連回長片；精華線的每週配額照 `SHORTS.m
 | 檔案 | 用途 |
 | --- | --- |
 | `README.md` | 這份系列規格 |
-| `terms.json` | 名詞庫：81 列，一列一集；新名詞加一列 |
+| `terms.json` | 名詞庫：81 列，一列一集；新名詞加一列（牽動長片目錄，§名詞庫與出片順序） |
+| `overviews.json` | 總覽集：一集講幾個名詞，一筆一集（§總覽集） |
 | `../ai-term-<名詞>/` | 每一集的 `brief.md`、`video.json`、`claims.md`、`verify-*.md`、`i18n/`、`shorts.json` |
+| `../ai-terms-<主題>/` | 總覽集的同一組檔案，例如 `../ai-terms-prompt-to-graph-engineering/` |
 | `../../ai-terms-series/` | 文章批次的規格、目錄（`catalogue.json`）、發布收據 |
 
 ## 票
@@ -239,3 +254,5 @@ Shorts 的說明欄第一行連回長片；精華線的每週配額照 `SHORTS.m
 | `2026-09-29-ai-terms-video-series-plan` | 這份規格與名詞庫 |
 | `2026-09-29-ai-terms-video-pilot` | 前三集試片：token、上下文視窗、RAG；把實際長度、成本、留存數字填回這份 |
 | `2026-09-29-video-worker-takes-next-ai-term` | P3：工人沒有新題目時從名詞庫接下一個名詞 |
+| `2026-10-03-ai-terms-engineering-ladder-video` | 五層樓總覽集（提示詞到圖形工程）的企劃、撰稿與兩輪查核 |
+| `2026-10-03-ai-terms-register-engineering-ladder-episode` | `overviews.json` 與 §總覽集：把總覽集登記進系列 |
