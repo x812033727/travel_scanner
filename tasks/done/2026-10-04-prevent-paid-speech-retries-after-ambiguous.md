@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-prevent-paid-speech-retries-after-ambiguous
 title: Prevent paid speech retries after ambiguous transport outcomes
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-tts-client-paid-retries
 claimed_at: 2026-10-05T00:13:38Z
 created_at: 2026-10-04T15:41:30Z
-completed_at:
+completed_at: 2026-10-05T00:49:01Z
 branch: claude/tts-client-paid-retries
 depends_on: []
 scope:

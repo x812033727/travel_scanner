@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-preserve-normal-speech-results-before-retrying
 title: Preserve normal speech results before retrying uncertain paid requests
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-tts-client-paid-retries
 claimed_at: 2026-10-05T00:14:55Z
 created_at: 2026-10-04T13:06:25Z
-completed_at:
+completed_at: 2026-10-05T00:49:35Z
 branch: claude/tts-client-paid-retries
 depends_on: []
 scope:
