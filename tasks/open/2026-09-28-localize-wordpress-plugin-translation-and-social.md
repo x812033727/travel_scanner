@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-localize-wordpress-plugin-translation-and-social
 title: Localize WordPress plugin translation and social embeds guides
-status: review
+status: open
 priority: P2
 area: docs
-owner: codex-batch034-two-guides
-claimed_at: 2026-09-28T03:42:49Z
+owner:
+claimed_at:
 created_at: 2026-09-28T03:42:43Z
 completed_at:
 branch: codex/batch034-two-unblocked-guides
@@ -76,3 +76,4 @@ remain under review and are outside this task.
   write, or publication has occurred.
 - Draft PR: https://github.com/x812033727/travel_scanner/pull/889 . Keep this
   task in review while the PR is open; merge and publication are separate.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-batch034-two-guides (since 2026-09-28T03:42:49Z) was stale and is released so it stops locking its scope. Landed: #889. Still open: Draft PR is reviewed and merged (done: #889 merged).

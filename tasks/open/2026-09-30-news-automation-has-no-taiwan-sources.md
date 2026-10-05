@@ -1,11 +1,11 @@
 ---
 id: 2026-09-30-news-automation-has-no-taiwan-sources
 title: News automation has no Taiwan sources: add readable feeds from FSC, MODA, the central bank and others
-status: review
+status: open
 priority: P1
 area: api
-owner: claude-opus-5-5-news-4-9
-claimed_at: 2026-09-30T11:05:11Z
+owner:
+claimed_at:
 created_at: 2026-09-30T11:04:56Z
 completed_at:
 branch: claude/gifted-rubin-umw5s4
@@ -64,3 +64,4 @@ hand-wrote ten stories the automation missed, every one because its publisher is
   so it files nothing today). NSTC's news list page (`/folksonomy/list/9aa56881-…`) replaces
   the DTD feed, `#templateF` is the release with its headline, and only technology titles are
   kept. NCC remains out (SPA).
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5-news-4-9 (since 2026-09-30T11:05:11Z) was stale and is released so it stops locking its scope. Landed: #1041. Still open: Loaded on the host with sources_cli after the deploy.

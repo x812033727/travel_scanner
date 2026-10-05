@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-general-audience-ai-citation-checking-video
 title: General audience AI citation checking video
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-video-review
-claimed_at: 2026-09-27T15:48:03Z
+owner:
+claimed_at:
 created_at: 2026-09-27T15:26:42Z
 completed_at:
 branch: codex/ai-general-videos
@@ -44,3 +44,4 @@ scope:
 2026-09-27 獨立查核已寫入 `verify-1.md`：Anthropic 官方文件現頁 HTTP 200，必要短引文、限制與示意標示一致；`lint` 重跑為 0 錯 0 警。音訊、畫面、字幕與上架包仍待完成。
 2026-09-28：五語字幕經獨立交叉審稿；兩句顯示過快的英、日文字幕已縮短，五語 SRT 無速度警告。繁中旁白 10:22；36 張字卡與縮圖已目視檢查。成片、品管、審核與上架包仍待完成。
 2026-09-28：改寫五句並同步五語字幕，獨立覆核後重錄；`check-audio` 143/143 句、零標記。新版成片 18,749 影格、約 10:24、-14 LUFS，`lint` 零錯誤零警告。站主大綱核准、正式站審核、11 項品管及待上架包仍待完成。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-video-review (since 2026-09-27T15:48:03Z) was stale and is released so it stops locking its scope. Landed: #867. Still open: 8–12 min video, thumbnail and five-language subtitles pass pipeline checks; complete upload package handed to ; Finish audio, visuals, subtitles, QA and upload package (render, 11-item QA, owner outline approval, productio.

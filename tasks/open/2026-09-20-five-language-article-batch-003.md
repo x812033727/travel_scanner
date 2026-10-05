@@ -1,11 +1,11 @@
 ---
 id: 2026-09-20-five-language-article-batch-003
 title: Five-language article batch 003
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: codex-article-localization
-claimed_at: 2026-09-20T08:59:50Z
+owner:
+claimed_at:
 created_at: 2026-09-20T07:26:10Z
 completed_at:
 branch: codex/article-localization-batch-003
@@ -124,3 +124,4 @@ PR contains only the scoped article packs, diagrams and this task record.
   `2026-09-20-lodging-tax-wording-site-wide`): in this ticket's packs the zh-TW
   title, description and body now say 住宿稅 where they said 宿泊稅 or 宿泊税.
   No number changed; Japanese official page names in `sources` are unchanged.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-article-localization (since 2026-09-20T08:59:50Z) was stale and is released so it stops locking its scope. Landed: #592 #589. Still open: Independent review of text/SVG (done for 4 guides in #592); Hash-bound bundle install (done for 4 guides); Merge, deploy, production dry-run and publish of the 16 locales, then browser verify; Onsen ryokan guide: 4 locales plus SVGs never landed; Public page desktop/mobile/hreflang review.

@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-news-evidence-excerpts-stop-at-8
 title: News evidence excerpts stop at 8,000 characters, so the checks never see the rest of the page
-status: review
+status: open
 priority: P1
 area: api
-owner: codex-p1-news
-claimed_at: 2026-09-29T01:55:01Z
+owner:
+claimed_at:
 created_at: 2026-09-27T09:42:28Z
 completed_at:
 branch: codex/p1-task-audit
@@ -98,3 +98,4 @@ cd apps/api && uv run pytest tests/test_news_automation.py tests/test_news_pipel
   focused evidence suite passed all 10 tests. Ruff passed all six changed Python files;
   focused mypy passed the same six files. No live database, model, network fetch or
   paid generation was used by these tests.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-p1-news (since 2026-09-29T01:55:01Z) was stale and is released so it stops locking its scope. Landed: #966. Still open: Measure last month's production evidence page lengths per source to choose a limit.

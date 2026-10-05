@@ -1,11 +1,11 @@
 ---
 id: 2026-09-20-correct-kyoto-flat-fare-bus-ic
 title: Correct Kyoto flat-fare bus IC and one-day-pass boarding steps
-status: in-progress
+status: open
 priority: P2
 area: api
-owner: codex-article-localization
-claimed_at: 2026-09-20T09:43:56Z
+owner:
+claimed_at:
 created_at: 2026-09-20T09:43:51Z
 completed_at:
 branch: codex/nikko-pass-eligibility
@@ -79,3 +79,4 @@ overflow after the layout patch.
   `2026-09-20-lodging-tax-wording-site-wide`): in this ticket's packs the zh-TW
   title, description and body now say 住宿稅 where they said 宿泊稅 or 宿泊税.
   No number changed; Japanese official page names in `sources` are unchanged.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-article-localization (since 2026-09-20T09:43:56Z) was stale and is released so it stops locking its scope. Landed: #593 #1001 #1028. Still open: Correct boarding/payment steps in published zh-TW source (repo pack done in #593; live publish pending); Guard live revision/hash and publish corrected source with backup and desktop/mobile receipts; Rebase and review four Kyoto Batch 005 translations and diagrams; SVG heading/caption explain solid EX vs dashed bus lines (likely done in #593, unticked); Deploy, publish, validate source, refresh Batch 005 baseline.

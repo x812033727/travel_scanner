@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-en-video-03-gpt6-vs-opus55
 title: Produce EN video 03: GPT-6 Astra vs Claude Opus 5.5 vs Gemini, which is worth paying for
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: claude-fable-5-1
-claimed_at: 2026-09-28T02:48:21Z
+owner:
+claimed_at:
 created_at: 2026-09-28T02:47:48Z
 completed_at:
 branch: claude/ai-video-planning-l43qas
@@ -56,3 +56,4 @@ node tools/video/cli.mjs status --slug gpt6-vs-opus55-worth-paying --workdir <VI
   - Slides were re-paced so no state stays over 15 s (QA `pace`); line ids and texts did not change, so narration and translations stayed valid.
   - QA: `policy` fails until the channel stance is filled in on the site.
 - 2026-09-28 09:47 UTC: final approved by the owner on /admin/videos (and recorded from the chat, same hash); `package` 4/4; publish gate auto-approved (「可以上架」); dubs gate sent with en, ja, ko and waiting for the owner to upload the tracks in Studio's Languages page and approve it. Left for the owner: upload private per `upload/UPLOAD.md`, paste the YouTube URL and publish time on the card, then fill `scoreboard.csv` at 48 h, 7 d and 28 d.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-28T02:48:21Z) was stale and is released so it stops locking its scope. Landed: #968. Still open: Gates approved; owner uploads private; scoreboard.csv rows filled (dubs gate awaiting owner, upload, scoreboar.

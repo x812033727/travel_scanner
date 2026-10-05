@@ -1,11 +1,11 @@
 ---
 id: 2026-09-20-correct-nikko-pass-eligibility-for-accompanying
 title: Correct NIKKO PASS eligibility for accompanying Japanese nationals
-status: in-progress
+status: open
 priority: P2
 area: api
-owner: codex-article-localization
-claimed_at: 2026-09-20T09:40:50Z
+owner:
+claimed_at:
 created_at: 2026-09-20T09:40:44Z
 completed_at:
 branch: codex/nikko-pass-eligibility
@@ -55,3 +55,4 @@ locale version/published version 6, document SHA-256
 `5d81e30fa50ff59e2e4f18f774bf1ba1f5f1eff5a8c36f45f062e4a6a8ba6c61`,
 pack SHA-256 `90ed494224cabb3dfba94f9b7d209f5716787ee7344dab96e7214e2e7a353497`.
 The release must refresh this snapshot before any database write.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-article-localization (since 2026-09-20T09:40:50Z) was stale and is released so it stops locking its scope. Landed: #593. Still open: Correct eligibility paragraph in published zh-TW source (done in repo by #593, box not ticked); Pin live revision, deploy and publish with guarded revision/backup/browser receipt; Refresh Batch 005's four Nikko translations against corrected source; After merge: guarded deploy, publish source revision, refresh translation baseline.

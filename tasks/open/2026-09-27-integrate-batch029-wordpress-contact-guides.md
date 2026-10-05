@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-integrate-batch029-wordpress-contact-guides
 title: Integrate Batch029 WordPress contact guides
-status: review
+status: open
 priority: P2
 area: api
-owner: codex-batch029-integrator
-claimed_at: 2026-09-27T10:17:43Z
+owner:
+claimed_at:
 created_at: 2026-09-27T10:17:36Z
 completed_at:
 branch: codex/article-localization-batch029-contact
@@ -63,3 +63,4 @@ Full Windows `test:web` ran for over 18 minutes without a final summary; the coo
 The coordinator has authorized a PR after validation and rebase, but explicitly deferred merge until the Batch028 production release finishes. This does not authorize any production import or publication. No content has been imported, published or deployed by this integration task.
 
 Review PR: https://github.com/x812033727/travel_scanner/pull/857. It was opened after the `f44555bb97153fa05cf3ca565ffa28db473e86d3` rebase and attached to the Codex task; auto-merge is off. The broad API/web checks above remain CI gates before merge. Keep this task in `review` until the PR is merged and do not mistake the review branch for a production release.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-batch029-integrator (since 2026-09-27T10:17:43Z) was stale and is released so it stops locking its scope. Landed: #857. Still open: Relevant API/tools/web/CI checks pass; push rebased branch and open PR (done via #857, CI passed to merge).

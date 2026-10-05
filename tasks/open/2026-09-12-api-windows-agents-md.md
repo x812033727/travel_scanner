@@ -1,11 +1,11 @@
 ---
 id: 2026-09-12-api-windows-agents-md
 title: 三個 API 測試在 Windows 開發機上必紅，AGENTS.md 叫大家推送前跑的就是這套
-status: review
+status: open
 priority: P3
 area: api
-owner: claude-fable-5-1
-claimed_at: 2026-09-19T09:34:56Z
+owner:
+claimed_at:
 created_at: 2026-09-12T18:05:00Z
 completed_at:
 branch: claude/travel-scanner-pr-552-rpq36m
@@ -130,3 +130,4 @@ uv run ruff check tests/test_warning_codes.py tests/test_guides.py              
 
 Definition of done 第一條要在 Windows 開發機上跑才能打勾，這裡沒有 Windows，狀態先放 `review`；
 Windows 上照「How to verify」跑一次綠了就 `done`。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T09:34:56Z) was stale and is released so it stops locking its scope. Landed: #563 #442 #553 #565. Still open: Run pytest tests/test_warning_codes.py tests/test_guides.py on a Windows dev machine and see it all green.

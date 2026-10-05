@@ -1,14 +1,15 @@
 ---
 id: 2026-09-22-jev-review-advisory-tool
 title: Jev review: advisory editorial and overlap checks for content packs
-status: in-progress
+status: open
 priority: P2
 area: api
-owner: claude-fable-5-1
-claimed_at: 2026-09-22T13:08:10Z
+owner:
+claimed_at:
 created_at: 2026-09-22T13:08:06Z
 completed_at:
 branch: claude/jev-review-tool
+depends_on: []
 scope:
   - apps/api/app/guides/jev_review.py
   - apps/api/app/guides/pack_cli.py
@@ -16,7 +17,6 @@ scope:
   - apps/api/app/hotspots/guide_shadow_cli.py
   - apps/api/tests/test_guides_jev_review.py
   - README.md
-depends_on: []
 ---
 
 # Jev review: advisory editorial and overlap checks for content packs
@@ -220,3 +220,4 @@ were untouched. The owner's connection test on the card passed. Shadow rows appe
 when an admin runs the hotspot guide 「AI 搜尋」 (`POST /hotspots/guides/ai-search`); the
 first `jev-shadow-report` after the switch showed `runs_with_shadow_rows: 0` because no
 such search had been run yet.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-22T13:08:10Z) was stale and is released so it stops locking its scope. Landed: #663. Still open: Measurement run with a real key and numbers recorded (or tool recorded as not meeting the gate); Measure both checks with a real key (needs owner's .env); If gate met, add editorial to batch-8 and 4.7 intake runbook.

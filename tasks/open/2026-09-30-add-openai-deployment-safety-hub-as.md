@@ -1,11 +1,11 @@
 ---
 id: 2026-09-30-add-openai-deployment-safety-hub-as
 title: Add OpenAI Deployment Safety Hub as a first-party news source (openai.com article pages refuse the scanner)
-status: review
+status: open
 priority: P1
 area: api
-owner: claude-opus-5-5-news-4-9
-claimed_at: 2026-09-30T10:35:07Z
+owner:
+claimed_at:
 created_at: 2026-09-30T10:34:33Z
 completed_at:
 branch: claude/gifted-rubin-umw5s4
@@ -48,3 +48,4 @@ source `succeeded` after its first scan.
 - The GPT-6.1 Sol card will be this source's first candidate. If the hand-written
   `ai-news-gpt-61-sol-20260929` is published first, Jev's duplicate check should catch it;
   if not, reject the candidate in `/admin/news`.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5-news-4-9 (since 2026-09-30T10:35:07Z) was stale and is released so it stops locking its scope. Landed: #1041. Still open: Load on host with sources_cli (dry run, then --apply) after deploy.
