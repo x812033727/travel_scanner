@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-write-the-visit-jeju-hidden-payload
 title: Write the Visit Jeju hidden-payload and 더보기 rules into the content pitfalls
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-content-pitfalls-visitjeju
 claimed_at: 2026-10-05T13:23:38Z
 created_at: 2026-10-05T07:41:59Z
-completed_at:
+completed_at: 2026-10-05T13:36:22Z
 branch: claude/content-pitfalls-visitjeju
 depends_on: []
 scope:
