@@ -24,6 +24,10 @@ dependencies = [
   "uvicorn[standard]>=0.35,<1",
   "unidecode>=1.4,<2",
   "opencc-python-reimplemented>=0.1.7,<0.2",
+  # Azure Speech through its SDK, for the word boundaries the REST call cannot give
+  # (app/video_speech/align.py). 9 MB installed, 36 MB RSS on import; its core library
+  # links nothing beyond libstdc++ and libuuid, so the slim image needs no packages.
+  "azure-cognitiveservices-speech>=1.52,<2",
 ]
 
 [dependency-groups]
@@ -165,6 +169,11 @@ ignore_missing_imports = true
 # opencc-python-reimplemented ships no type information.
 [[tool.mypy.overrides]]
 module = ["opencc", "opencc.*"]
+ignore_missing_imports = true
+
+# The Azure Speech SDK is a compiled library with no py.typed marker.
+[[tool.mypy.overrides]]
+module = ["azure", "azure.cognitiveservices", "azure.cognitiveservices.speech", "azure.cognitiveservices.speech.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

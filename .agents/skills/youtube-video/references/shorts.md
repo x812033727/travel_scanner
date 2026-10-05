@@ -76,7 +76,7 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 ```
 
 - `--speech`：`server` 是頻道聲音（經站上合成，聲音與長度範圍來自 Shorts 設定，逐句快取）；`windows` 是本機的 Hanhan，只有 Windows 有，而且**在 Windows 上沒寫 `--speech` 就是它**；`files` 從 `--audio-dir` 讀 `000.wav`、`001.wav`…。要上架的一律 `--speech server`。
-- `--captions`：`karaoke` 讓字幕條隨旁白逐組亮字（`docs/videos/SHORTS.md` §工具端的 `karaoke.mjs`）；沒給就讀環境變數 `VIDEO_SHORTS_CAPTIONS`，再沒有就是 `plain`（舊的整句字幕條）。亮字的時間現在是從每句音檔的靜音邊界與字數估的，`timing.json` 寫 `source: "estimated"`，`qa` 的 `captions` 照樣過但帶一條警告；真實字時等 `speech/align`（票 `2026-10-05-speech-align-character-timing`）。
+- `--captions`：`karaoke` 讓字幕條隨旁白逐組亮字（`docs/videos/SHORTS.md` §工具端的 `karaoke.mjs`）；沒給就讀環境變數 `VIDEO_SHORTS_CAPTIONS`，再沒有就是 `plain`（舊的整句字幕條）。亮字的時間：Azure 聲音在合成的同一次呼叫拿到 Azure 的字時（`POST /video/speech/align`，`.speech-server/<key>.timing.json` 跟 WAV 一起快取），每一句都量到時 `timing.json` 寫 `source: "aligned"`，`qa` 不警告；Gemini 聲音伺服器還沒有 CPU 對齊器（`docs/videos/SHORTS.md` §工具端的 `speech/align` 列有量過的數字），仍從每句音檔的靜音邊界與字數估（`source: "estimated"`），`qa` 的 `captions` 照樣過但帶一條警告。
 - `--source-base` 預設 `docs/videos/ai-shorts`；證據路徑相對於它。
 - `qa --offline` 不連站台：要站台的項目（`policy`、`links`、`variety`，精華與漫劇的 `evidence`）一律記成沒查而不過，只拿來檢查本機能檢查的。
 - 結束碼：0 成功；1 檢查沒過或其他錯誤（`check-audio` 有句子被標、`qa`／`package` 有項目沒過）；3 要站主（沒有或失效的權杖）；4 站台或服務連不上（重試四次後）。**`push` 只要沒出錯就回 0**，有沒有送出要看印出的 `final`、`publish` 與 `waits`。
@@ -117,7 +117,7 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 | `facts` | `verify.json` 是這份 `script.json` 的查核、每個主張都 `ok` | 照查核意見改稿，重 `build`，再請新對話查一次 |
 | `policy` | Jev 照頻道立場判（`POST /video/automation/judge/policy`）；精華不問「觀眾能照著做的東西」 | 立場空白時永遠不過，交站主寫立場；其餘改內容 |
 | `metadata` | 標題 ≤ 100 字元、沒有角括號、兩個標題；說明 ≤ 5,000 位元組；標籤合計 ≤ 500 字元；話題標籤 ≤ 3；精華要有完整影片網址 | 改腳本的欄位重 `build`；精華等長片上架 |
-| `captions` | `zh-TW.srt` 每段跟時間軸一致；設定勾的語系也都在。卡拉 OK 字幕的時間是估算的（`checks.json.captions.source: "estimated"`）時仍過，只帶警告 | 重 `build`，不要手改 srt；警告不用修，等對齊票 |
+| `captions` | `zh-TW.srt` 每段跟時間軸一致；設定勾的語系也都在。卡拉 OK 字幕的時間是估算的（`checks.json.captions.source: "estimated"`）時仍過，只帶警告；伺服器量到的（`aligned`）沒有警告 | 重 `build`，不要手改 srt；Azure 聲音的警告重 `build` 就消失（舊快取的句子會補問一次字時），Gemini 聲音的等 CPU 對齊器 |
 | `links` | 說明欄每個網址回 200（`Mokaair-editorial` User-Agent） | 改 `links` 或說明 |
 | `variety` | 開場那一句不跟最近 30 支一樣；字卡結構不跟同系列前一支一模一樣 | 改第一句，或調整場景（句數、`big`、`body`、`asset`、`camera`） |
 | `disclosure` | 記下要不要勾「變造或合成內容」與原因；不會讓品管失敗 | — |
@@ -150,7 +150,7 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 - **`push` 回 0 不代表送出**：看 `waits`。`video_shorts_final_review_stale`：工具舊了，更新後重新 `push`。`video_shorts_review_upload_started`：影片已經開始上 YouTube，先到後台與 Studio 核對，不要清掉上傳紀錄。
 - **改了說明也要重跑**：`package` 的產物不在 QA 輸入裡，但腳本改了 QA 與查核都失效，要從 `build` 重來。
 - **匯入的成片**：24 fps 的會被拒絕（要先轉 30 fps）；`layout` 一定要站主看；沒跑 `check-audio` 的 `narration` 一定不過。
-- **卡拉 OK 字幕的亮字會偏**：時間是估的，句子裡有長停頓或拉丁字（`spokenUnits` 把一個拉丁字算兩個單位）時亮得早或晚；工人做的 Shorts 在站上會自動核准，所以預設是 `plain`，站主看過一支 `--captions karaoke` 的樣片再在工人主機設 `VIDEO_SHORTS_CAPTIONS=karaoke`。每次 `build` 都是新目錄（`codeHash`、`MOTION_VERSION` 變了），舊成品要重跑 `check-audio` 與 `qa`；已核准的成片綁 `final_sha256`，不受影響。
+- **卡拉 OK 字幕的亮字會偏**（Gemini 聲音；Azure 聲音的字時是伺服器量的，`timing.json` 的句子帶 `aligned`）：時間是估的，句子裡有長停頓或拉丁字（`spokenUnits` 把一個拉丁字算兩個單位）時亮得早或晚；工人做的 Shorts 在站上會自動核准，所以預設是 `plain`，站主看過一支 `--captions karaoke` 的樣片再在工人主機設 `VIDEO_SHORTS_CAPTIONS=karaoke`。每次 `build` 都是新目錄（`codeHash`、`MOTION_VERSION` 變了），舊成品要重跑 `check-audio` 與 `qa`；已核准的成片綁 `final_sha256`，不受影響。
 - **`from-drama` 的視窗一鏡只看一張圖**：主角在一個鏡頭裡走位，視窗不會跟；方框是 Gemini 答的，第一支先把 `checks.json.reframe.shots` 的方框對著關鍵影格看一次。成片是 608 px 寬的視窗放大 1.78 倍，畫質比原生 9:16 軟；長句（超過兩行 15 字）放不進字幕條，工具會停下來說是哪一句。locate 每鏡 US$0.01，記在站上 judge 的額度，`usage.json` 不報。
 - **工人讀不到 `docs/videos/ai-shorts`**：它的 docs volume 比 repo 舊，題目、規格與脈絡一律由 `shorts/next` 給；不要寫依賴那個資料夾的步驟。
 - **Jev 的每日次數**跟自動新聞、景點介紹共用；大批 `check-audio` 前先看「AI 供應商與金鑰」卡片。

@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { measure } from '../core/captions.mjs';
 import {
   CAPTION_BOX, CAPTION_RULES, CAPTIONS_ENV, DEFAULT_CAPTIONS, GROUP_MAX, GROUP_MIN, KARAOKE_VERSION, MIN_STATE_FRAMES,
-  captionLines, captionStates, captionsOption, captionsSummary, estimateGroupTimes, groupLine, phraseGroups, phraseTiming, speechSpan, timingFile, tokens, weightOf,
+  alignedGroupTimes, captionLines, captionStates, captionsOption, captionsSummary, estimateGroupTimes, groupLine, phraseGroups, phraseTiming, speechSpan, timingFile, tokens, weightOf,
 } from './karaoke.mjs';
 
 const tone = ({ lead = 0, speech = 1, tail = 0, amplitude = 8000, rate = 48_000 } = {}) => {
@@ -141,6 +141,70 @@ test('timing.json says where its times came from, one phrase per cue, in the fra
   assert.throws(() => timingFile(timeline, wavs.slice(1)), /a clip is required/);
   assert.deepEqual(captionsSummary(timing), { style: 'karaoke', source: 'estimated', version: KARAOKE_VERSION, groups: 4, states: first.states.length + 1 });
   assert.deepEqual(captionsSummary(null), { style: 'plain' });
+});
+
+test('measured character times light each group where its first unit is spoken, and the estimate stays when they do not spell the phrase', () => {
+  const text = '一張手寫的發票，兩個品項加上一張折價券';
+  const groups = phraseGroups(text);
+  const units = [...text].map((character, index) => ({ text: character, start_ms: 100 + index * 200, end_ms: 300 + index * 200 }));
+  const span = { start: 0.07, end: 4.5 };
+  const timed = alignedGroupTimes(groups, units, span);
+  assert.equal(timed.length, groups.length);
+  assert.equal(timed[0].start, span.start, 'the first group starts with the speech span, as captionStates lays it');
+  let offset = 0;
+  for (const [index, group] of groups.entries()) {
+    if (index > 0) assert.equal(timed[index].start, Number(((100 + offset * 200) / 1000).toFixed(3)), `${group.text} starts where its first character is spoken`);
+    offset += [...group.text.replace(/\s+/g, '')].length;
+  }
+  for (let index = 0; index < timed.length - 1; index++) assert.equal(timed[index].end, timed[index + 1].start, 'groups follow each other');
+  assert.equal(timed.at(-1).end, span.end, 'the last group ends with the span');
+  assert.deepEqual(timed.map((group) => group.text), groups.map((group) => group.text));
+  // A Latin word is one unit on both sides; whitespace counts for nothing.
+  const latin = [['我', 0], ['們', 200], ['請', 400], ['ChatGPT', 600], ['和', 1400], ['Gemini', 1600], ['各', 2200], ['算', 2400], ['一', 2600], ['次', 2800]].map(([t, s]) => ({ text: t, start_ms: s, end_ms: s + 200 }));
+  assert.deepEqual(alignedGroupTimes([{ text: '我們請 ChatGPT ' }, { text: '和 Gemini 各算一次' }], latin, { start: 0, end: 3.2 }).map((group) => [group.start, group.end]), [[0, 1.4], [1.4, 3.2]]);
+  // A term the lexicon reads as one unit, cut between its words, shares its time by its letters.
+  const term = alignedGroupTimes([{ text: '用 Claude ' }, { text: 'Code 寫' }], [{ text: '用', start_ms: 0, end_ms: 200 }, { text: 'Claude Code', start_ms: 200, end_ms: 1200 }, { text: '寫', start_ms: 1200, end_ms: 1400 }], { start: 0, end: 1.5 });
+  assert.deepEqual(term.map((group) => [group.start, group.end]), [[0, 0.8], [0.8, 1.5]]);
+  // Starts never run backwards and stay inside the span.
+  const odd = [['一', 500], ['二', 600], ['三', 100], ['四', 200], ['五', 5000], ['六', 5100]].map(([t, s]) => ({ text: t, start_ms: s, end_ms: s + 100 }));
+  assert.deepEqual(alignedGroupTimes([{ text: '一二' }, { text: '三四' }, { text: '五六' }], odd, { start: 0.05, end: 2 }).map((group) => [group.start, group.end]), [[0.05, 0.1], [0.1, 2], [2, 2]]);
+  // What keeps the estimate: units that start elsewhere, a broken entry, nothing at all.
+  assert.equal(alignedGroupTimes(groups, units.slice(1), span), null);
+  assert.equal(alignedGroupTimes(groups, [{ text: '一', start_ms: 'x', end_ms: 1 }], span), null);
+  assert.equal(alignedGroupTimes(groups, [], span), null);
+  assert.equal(alignedGroupTimes([], units, span), null);
+  assert.ok(alignedGroupTimes(groups, [...units, { text: '。', start_ms: 9000, end_ms: 9100 }], span), 'units past the last group are left alone');
+});
+
+test('timing.json follows measured times when every phrase has them, says which, and is the estimate byte for byte otherwise', () => {
+  const timeline = { fps: 30, frames: 150, cues: [{ index: 0, sceneIndex: 0, text: '一張手寫的發票，兩個品項加上一張折價券', startFrame: 0, endFrame: 90, frames: 90 }, { index: 1, sceneIndex: 0, text: '答案是 275 元', startFrame: 90, endFrame: 150, frames: 60 }] };
+  const wavs = [{ samples: tone({ lead: 0.1, speech: 2.5, tail: 0.2 }), sampleRate: 48_000 }, { samples: tone({ speech: 1.6 }), sampleRate: 48_000 }];
+  const chars = (text, step) => [...text].filter((c) => c.trim()).map((c, i) => ({ text: c, start_ms: 50 + i * step, end_ms: 50 + (i + 1) * step }));
+  const first = { source: 'azure', model: 'zh-TW-HsiaoChenNeural', chars: chars('一張手寫的發票，兩個品項加上一張折價券', 130) };
+  const second = { source: 'aligned', model: 'fake', chars: [['答', 0], ['案', 200], ['是', 400], ['275', 600], ['元', 1200]].map(([t, s]) => ({ text: t, start_ms: s, end_ms: s + 200 })) };
+  const estimate = timingFile(timeline, wavs);
+  assert.equal(JSON.stringify(timingFile(timeline, wavs, null)), JSON.stringify(estimate));
+  assert.equal(JSON.stringify(timingFile(timeline, wavs, [null, null])), JSON.stringify(estimate), 'nothing measured is the estimate, byte for byte');
+  assert.deepEqual(Object.keys(estimate.phrases[0]), ['cue', 'text', 'audio_seconds', 'speech', 'lines', 'groups', 'states']);
+  const partial = timingFile(timeline, wavs, [first, null]);
+  assert.equal(partial.source, 'estimated', 'one phrase on an estimate keeps the file an estimate');
+  assert.deepEqual(partial.phrases[0].aligned, { source: 'azure', model: 'zh-TW-HsiaoChenNeural' });
+  assert.equal(partial.phrases[0].groups[1].start, Number(((50 + 8 * 130) / 1000).toFixed(3)), 'the second group starts where 兩 is spoken');
+  assert.deepEqual(partial.phrases[1], estimate.phrases[1]);
+  assert.deepEqual(captionsSummary(partial), { style: 'karaoke', source: 'estimated', version: KARAOKE_VERSION, groups: 4, states: partial.phrases[0].states.length + 1, aligned: 1 });
+  const complete = timingFile(timeline, wavs, [first, second]);
+  assert.equal(complete.source, 'aligned');
+  assert.deepEqual(complete.phrases[1].aligned, { source: 'aligned', model: 'fake' });
+  assert.deepEqual(complete.phrases[1].groups.map((group) => [group.start, group.end]), [[0, 1.6]], 'one group still spans the clip');
+  assert.equal(captionsSummary(complete).aligned, 2);
+  assert.equal(captionsSummary(complete).source, 'aligned');
+  assert.equal(complete.phrases[0].states.reduce((sum, state) => sum + state.frames, 0), 90);
+  assert.deepEqual(phraseTiming(timeline.cues[0], wavs[0].samples, 48_000, 30, first).groups, complete.phrases[0].groups);
+  // A timing that does not spell the phrase keeps that phrase's estimate.
+  const wrong = timingFile(timeline, wavs, [{ source: 'azure', model: 'v', chars: chars('別的句子', 100) }, second]);
+  assert.equal(wrong.source, 'estimated');
+  assert.deepEqual(wrong.phrases[0], estimate.phrases[0]);
+  assert.deepEqual(wrong.phrases[1].aligned, { source: 'aligned', model: 'fake' });
 });
 
 test('the caption style is the flag, else the environment, else plain', () => {
