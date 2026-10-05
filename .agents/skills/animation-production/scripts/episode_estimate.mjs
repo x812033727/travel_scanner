@@ -8,6 +8,7 @@
 //     [--plan hailuo:standard|pro|master|max | kling:standard|pro|premier|ultra]
 //     [--image-price N] [--price-per-second N] [--credits-per-second N] [--minutes-per-clip N]
 //     [--keyframe-takes N] [--clip-takes N] [--cap N] [--month-clip-seconds N]
+//     [--workdir <VIDEO_WORKDIR>/<slug> | --ledger <media/ledger.json>]
 //     [--production] [--strict] [--json]
 //
 // 長度照 lint 的估法（tools/video/core/timeline.mjs estimateTimeline：一個字 0.24 s、一句停 0.3 s、
@@ -19,15 +20,18 @@
 // --plan 把同一集的片段換算成方案的 credits、月額度占比、兩種美元（月費攤／頁面價），並和伺服器路線並列、印損益
 // 平衡秒數（月費 ÷ 伺服器每秒價）；--resolution 給伺服器模型的解析度，--plan hailuo:* 時也選 768p 或 2k 的檔位，
 // --plan kling:* 時選 720p 或 1080p。
-// 結束碼：0；--strict 且裁定不過（超過 --cap、超過 --month-clip-seconds、超出 tier、production 下的長鏡頭、既有
-// data.source 超出來源實際買到的秒數）是 1；讀不到檔或參數錯是 2。
-import { readFileSync } from "node:fs";
+// --workdir（或直接 --ledger）讀這支影片的 media/ledger.json：已花的錢加上送出還沒對帳的預留（status
+// "reserved"，tools/video/media/ledger.mjs）先從 --cap 扣掉，裁定比的是最壞情況對「還剩多少」；沒給就當還沒花錢。
+// 結束碼：0；--strict 且裁定不過（最壞情況超過 --cap 扣掉已花與預留後的剩餘、超過 --month-clip-seconds、超出 tier、
+// production 下的長鏡頭、既有 data.source 超出來源實際買到的秒數）是 1；讀不到檔或參數錯是 2。
+import { existsSync, readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 
 import { isLookOnly, normalize, shotSize, TARGETS } from "../../../../tools/video/core/craft.mjs";
 import { DEFAULT_LOOK_CANDIDATES, hasCast, MAX_SOURCE_CLIP_SECONDS, resolveLook, resolveMusic, TIER_CLIP_SHARE_MAX, VISUAL_TIERS } from "../../../../tools/video/core/drama.mjs";
 import { estimateTimeline, FPS } from "../../../../tools/video/core/timeline.mjs";
+import { ledgerFile, reservedEntries, totalsOf } from "../../../../tools/video/media/ledger.mjs";
 
 export const CATALOG = "apps/api/app/video_media/catalog.py";
 export const CATALOG_READ_ON = "2026-09-26";
@@ -191,6 +195,28 @@ export function secondsBought(frames, model = DEFAULT_CLIP_MODEL, resolution = n
 export const hailuoSeconds = (frames) => Math.min(15, Math.max(4, Math.ceil(frames / FPS)));
 /** Kling 網頁的 VIDEO 3.0／3.0 Omni：整數秒，3 到 15（官方 user guide，2026-10-04 讀）。 */
 export const klingSeconds = (frames) => Math.min(KLING_CLIP_SECONDS[1], Math.max(KLING_CLIP_SECONDS[0], Math.ceil(frames / FPS)));
+
+/**
+ * 這支影片的帳本對上限還剩多少：`ledger` 是讀進來的 media/ledger.json（`{ entries }`，可帶 `file`）。
+ * 已花（spent_usd）是伺服器實際記的錢；預留（reserved_usd）是送出前先記、還沒對帳的 `reserved` 列
+ * （tools/video/media/ledger.mjs：一次跑到一半死掉會留下它，下次跑同一階段接回 job 才對帳）；兩者合計
+ * （committed_usd）就是 `capProblem` 算進上限的數，剩餘（remaining_usd）＝ cap − 合計。沒有 `reserved`
+ * 列的舊帳本預留是 0。
+ */
+export function ledgerView(ledger, cap) {
+  const entries = Array.isArray(ledger?.entries) ? ledger.entries : [];
+  const totals = totalsOf(entries);
+  return {
+    file: ledger?.file ?? null,
+    entries: entries.length,
+    spent_usd: round4(totals.usd - totals.reserved),
+    reserved_usd: totals.reserved,
+    reservations: totals.reservations,
+    committed_usd: totals.usd,
+    remaining_usd: round4(cap - totals.usd),
+    reserved: reservedEntries(entries).map((entry) => ({ stage: entry.stage ?? null, kind: entry.kind ?? null, id: entry.id ?? null, key: entry.key ?? null, cost_usd: Number(entry.cost_usd || 0), at: entry.at ?? null })),
+  };
+}
 
 // 同一個機位：camera 行加 prompt 第一個子句，和 tools/video/core/craft.mjs 的 setupKey 一樣。
 const setupKey = (data) => `${String(data?.camera ?? "").trim().toLowerCase()}|${String(data?.prompt ?? "").split(/[,.;]/)[0].trim().toLowerCase()}`;
@@ -527,7 +553,14 @@ export function estimateEpisode(doc, options = {}) {
       ? `${shot.id} 從 ${shot.source.shot} 的 ${shot.source.from_s} s 切、需要 ${round2(shot.frames / FPS)} s，但 ${shot.source.shot} 在 ${model} 下只買 ${shot.source_room_s} s（clips 會在來源買下之後才把它標 needs_review）：from_s 提早、來源鏡頭寫長（多買秒數），或換成自己的片段`
       : `${shot.id} 的 data.source 指向 ${shot.source.shot}，它不是 clip 鏡（不在這份 video.json、是 still 或本身是切鏡），沒有素材可切`);
   }
-  if (totals.usd_cap > cap) problems.push(`最壞情況 ${usd(totals.usd_cap)} 超過每影片上限 ${usd(cap)}（--cap；站上 max_usd_per_video，預設 ${DEFAULT_CAP_USD}）：先用槓桿把它壓到上限內，否則 clips 跑到一半會停在 video_media_cap`);
+  // The ledger's money comes off the cap first: what the server charged and what a submission still holds.
+  const ledger = options.ledger ? ledgerView(options.ledger, cap) : null;
+  const remaining = ledger ? ledger.remaining_usd : cap;
+  if (totals.usd_cap > remaining) {
+    problems.push(ledger
+      ? `最壞情況 ${usd(totals.usd_cap)} 超過每影片上限 ${usd(cap)} 扣掉帳本已花 ${usd(ledger.spent_usd)} 與預留 ${usd(ledger.reserved_usd)} 後剩下的 ${usd(remaining)}（--cap；站上 max_usd_per_video，預設 ${DEFAULT_CAP_USD}；帳本 ${ledger.file ?? "--ledger"}）：先用槓桿把它壓到剩餘內，或提高上限，否則下一個付費階段會停在 video_media_cap`
+      : `最壞情況 ${usd(totals.usd_cap)} 超過每影片上限 ${usd(cap)}（--cap；站上 max_usd_per_video，預設 ${DEFAULT_CAP_USD}）：先用槓桿把它壓到上限內，否則 clips 跑到一半會停在 video_media_cap`);
+  }
   if (stages.clips.clip_seconds_cap > monthClipSeconds) problems.push(`最壞情況要買 ${stages.clips.clip_seconds_cap} 秒片段，超過每月額度 ${monthClipSeconds} 秒（--month-clip-seconds；站上 monthly_clip_seconds_budget，預設 ${DEFAULT_MONTH_CLIP_SECONDS}）`);
   if (levers.stills?.over_by > 0) problems.push(`${tier} tier 最多 ${levers.stills.allowed_clips} 支片段，劇本有 ${clipShots.length} 支：lint 會擋（tools/video/core/drama.mjs visualTierProblems）；把 ${levers.stills.candidates.map((shot) => shot.id).join(", ")} 改成 visual "still"`);
   if (production) {
@@ -553,7 +586,8 @@ export function estimateEpisode(doc, options = {}) {
     totals,
     plan: planView,
     levers,
-    verdict: { ok: problems.length === 0, cap, month_clip_seconds: monthClipSeconds, usd_one: totals.usd_one, usd_cap: totals.usd_cap, clip_seconds_one: stages.clips.clip_seconds_one, clip_seconds_cap: stages.clips.clip_seconds_cap, problems },
+    ledger,
+    verdict: { ok: problems.length === 0, cap, spent_usd: ledger?.spent_usd ?? 0, reserved_usd: ledger?.reserved_usd ?? 0, remaining_usd: remaining, month_clip_seconds: monthClipSeconds, usd_one: totals.usd_one, usd_cap: totals.usd_cap, clip_seconds_one: stages.clips.clip_seconds_one, clip_seconds_cap: stages.clips.clip_seconds_cap, problems },
   };
 }
 
@@ -577,6 +611,14 @@ export function renderEstimate(report, file) {
   out.push(`  judge      ${stages.judge.calls_one} 次 → ${stages.judge.calls_cap} 次，${usd(stages.judge.usd_one)} → ${usd(stages.judge.usd_cap)}；${stages.judge.note}`);
   out.push(`  music      ${stages.music.tracks} 首，${usd(stages.music.usd)}；${stages.music.note}`);
   out.push(`一集：1 take ${usd(totals.usd_one)}；最壞 ${usd(totals.usd_cap)}`);
+  const { ledger, verdict } = report;
+  if (ledger) {
+    out.push(`帳本：已花 ${usd(ledger.spent_usd)}、預留 ${usd(ledger.reserved_usd)}（${ledger.reservations} 筆送出未對帳）；上限 ${usd(verdict.cap)} 還剩 ${usd(ledger.remaining_usd)}（${ledger.file ?? "--ledger"}，${ledger.entries} 筆）`);
+    for (const hold of ledger.reserved) out.push(`  預留 ${hold.stage ?? "?"}/${hold.id ?? "?"} ${usd(hold.cost_usd)}（${hold.kind ?? "?"}，${hold.at ?? "?"}）：送出後沒對帳——再跑一次那個階段讓它接回 job（media/jobs.json）並記實價`);
+    out.push("  最壞情況是整集從頭買的數；已買到、快取裡還在的鏡頭重跑不再付，實際還要花的通常比最壞少（哪些已買到看 drama_preflight.mjs）");
+  } else {
+    out.push(`帳本：沒給 --workdir／--ledger，當作還沒花錢；上限 ${usd(verdict.cap)} 全可用`);
+  }
   if (report.plan) {
     const plan = report.plan;
     out.push("");
@@ -610,7 +652,8 @@ export function renderEstimate(report, file) {
   if (levers.merges.length) for (const merge of levers.merges) out.push(`  merge ${merge.shots.join(" + ")}（同機位同人，合計 ${merge.seconds} s）：分開買 ${merge.bought_separately_s} s、合併買 ${merge.bought_merged_s} s，省 ${usd(merge.saving_usd)}`);
   else out.push("  merge 沒有相鄰、同機位同人、合計 8 s 內的兩鏡");
   out.push("");
-  out.push(`裁定：${report.verdict.ok ? `過：最壞 ${usd(totals.usd_cap)} ≤ 上限 ${usd(report.verdict.cap)}，最壞 ${report.verdict.clip_seconds_cap} s ≤ 月額 ${report.verdict.month_clip_seconds} s` : "不過"}`);
+  const room = ledger ? `上限 ${usd(verdict.cap)} 剩下的 ${usd(verdict.remaining_usd)}（已花 ${usd(verdict.spent_usd)} ＋ 預留 ${usd(verdict.reserved_usd)}）` : `上限 ${usd(verdict.cap)}`;
+  out.push(`裁定：${verdict.ok ? `過：最壞 ${usd(totals.usd_cap)} ≤ ${room}，最壞 ${verdict.clip_seconds_cap} s ≤ 月額 ${verdict.month_clip_seconds} s` : "不過"}`);
   for (const problem of report.verdict.problems) out.push(`  ✗ ${problem}`);
   return out.join("\n");
 }
@@ -641,6 +684,8 @@ export function main(argv, stdout = process.stdout, stderr = process.stderr) {
         "clip-takes": { type: "string" },
         cap: { type: "string" },
         "month-clip-seconds": { type: "string" },
+        workdir: { type: "string" },
+        ledger: { type: "string" },
         production: { type: "boolean" },
         strict: { type: "boolean" },
         json: { type: "boolean" },
@@ -654,13 +699,23 @@ export function main(argv, stdout = process.stdout, stderr = process.stderr) {
   }
   const file = positionals[0];
   if (!file) {
-    stderr.write("usage: episode_estimate.mjs <video.json> [--tier clips|hybrid|stills] [--model <clip model id>] [--resolution 1080p|720p|768p|2k (the server model's; with --plan hailuo:* also the H3 tier, with --plan kling:* 720p or 1080p)] [--plan hailuo:pro|kling:pro|...] [--image-price N] [--price-per-second N] [--credits-per-second N] [--keyframe-takes N] [--clip-takes N] [--cap N] [--month-clip-seconds N] [--production] [--strict] [--json]\n");
+    stderr.write("usage: episode_estimate.mjs <video.json> [--tier clips|hybrid|stills] [--model <clip model id>] [--resolution 1080p|720p|768p|2k (the server model's; with --plan hailuo:* also the H3 tier, with --plan kling:* 720p or 1080p)] [--plan hailuo:pro|kling:pro|...] [--image-price N] [--price-per-second N] [--credits-per-second N] [--keyframe-takes N] [--clip-takes N] [--cap N] [--month-clip-seconds N] [--workdir <VIDEO_WORKDIR>/<slug> | --ledger <media/ledger.json>] [--production] [--strict] [--json]\n");
     return 2;
   }
   let report;
   try {
     const doc = JSON.parse(readFileSync(file, "utf8").replace(/^﻿/, ""));
+    // The video's ledger: --ledger names the file, --workdir the work directory it lives under. A
+    // work directory that has not paid yet has no ledger and reads as empty; a named file must exist.
+    let ledger = null;
+    const ledgerPath = values.ledger ?? (values.workdir ? ledgerFile(values.workdir) : null);
+    if (ledgerPath) {
+      if (existsSync(ledgerPath)) ledger = { file: ledgerPath, ...JSON.parse(readFileSync(ledgerPath, "utf8").replace(/^﻿/, "")) };
+      else if (values.ledger) throw new Error(`--ledger ${values.ledger} does not exist`);
+      else ledger = { file: ledgerPath, entries: [] };
+    }
     report = estimateEpisode(doc, {
+      ledger,
       tier: values.tier,
       model: values.model,
       resolution: values.resolution,
