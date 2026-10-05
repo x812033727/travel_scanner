@@ -1,6 +1,6 @@
 # 每個階段真正查的前提：結束碼、dry-run、STOP、快取、地區、外部片段怎麼進來
 
-`SKILL.md` 的表是摘要；這裡逐階段列程式碼查什麼、以哪個結束碼停、印什麼訊息，給 `drama_preflight.mjs` 當規格，也給你在它說不清楚時對照原始碼。**行號 2026-10-03 讀**（疊在 PR #1170 上），程式改了以函式名為準，行號只是當天的座標。結束碼表在 `tools/video/cli.mjs:21`：`{ ok: 0, lint: 1, usage: 2, owner: 3, external: 4, missing: 5 }`。媒體階段丟 `MediaError` 時由 `exitFor`（`tools/video/media/cli.mjs:26-30`）決定：`who: "owner"` → 3、`"tool"` → 2、其他 → 4；`UsageError` 與 `parseArgs` 的錯 → 2（`cli.mjs:238-241`）。
+`SKILL.md` 的表是摘要；這裡逐階段列程式碼查什麼、以哪個結束碼停、印什麼訊息，給 `drama_preflight.mjs` 當規格，也給你在它說不清楚時對照原始碼。**行號 2026-10-03 讀**（疊在 PR #1170 上），程式改了以函式名為準，行號只是當天的座標。結束碼表在 `tools/video/cli.mjs` 的 `EXIT`：`{ ok: 0, lint: 1, usage: 2, owner: 3, external: 4, missing: 5, incomplete: 6 }`（6 是 `STOP` 檔讓 `tts`／`check-audio` 停在半途，2026-10-05 加）。媒體階段丟 `MediaError` 時由 `exitFor`（`tools/video/media/cli.mjs:26-30`）決定：`who: "owner"` → 3、`"tool"` → 2、其他 → 4；`UsageError` 與 `parseArgs` 的錯 → 2（`cli.mjs:238-241`）。
 
 關卡的狀態（`approvalState`，`tools/video/core/approvals.mjs:91-106`）：`absent`（綁的檔還不存在）、`missing`（檔在、沒核准過）、`stale`（核准過，檔的 SHA-256 變了）、`approved`。綁的檔：`script` → `<VIDEO_DOCS>/script.md`；`look` → `characters/manifest.json`；`storyboard` → `keyframes/manifest.json`；`audio` → `timeline.json`（另驗每句 WAV 與整段旁白的雜湊）；`final` → `final.mp4`；`publish` → `upload/metadata.json`。
 

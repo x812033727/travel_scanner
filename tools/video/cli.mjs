@@ -18,7 +18,9 @@ import { StageError, runCaptions } from "./core/stages.mjs";
 import { narrativeHash, writeScreenplay } from "./core/screenplay.mjs";
 import { lintProject, loadProject, pipelineStatus } from "./core/state.mjs";
 
-export const EXIT = { ok: 0, lint: 1, usage: 2, owner: 3, external: 4, missing: 5 };
+// `incomplete`: a STOP file ended the stage before it finished. What it made so far is kept and a
+// rerun continues, but nothing it was to write is current yet, so a caller must not move on.
+export const EXIT = { ok: 0, lint: 1, usage: 2, owner: 3, external: 4, missing: 5, incomplete: 6 };
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 
@@ -103,7 +105,8 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    zh-TW.srt and thumbnail.png): reported to /admin/videos with its final cut
 
 --workdir defaults to $VIDEO_WORKDIR, then ~/mokaair-work/videos; a video's files go in <workdir>/<slug>/, outside the repository.
-Exit codes: 0 ok, 1 lint or check failed, 2 usage, 3 needs the owner, 4 external service, 5 tool missing.
+Exit codes: 0 ok, 1 lint or check failed, 2 usage, 3 needs the owner, 4 external service, 5 tool missing,
+6 stopped by a STOP file before finishing (tts, check-audio; a rerun continues).
 `;
 
 function parse(args, options) {
