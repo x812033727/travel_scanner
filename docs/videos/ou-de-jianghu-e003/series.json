@@ -1,0 +1,302 @@
+{
+  "slug": "ou-de-jianghu",
+  "episode": 3,
+  "chapter": 1,
+  "kind": "series",
+  "genre": "custom",
+  "lead": "ensemble",
+  "planned_episodes": 24,
+  "open_ended": true,
+  "closed_ending": false,
+  "title": "三十六魂",
+  "logline": "柳不活在荒原找到自罰的鑄箭匠聶孤鐵，問出無歸箭要三股三宗精元才能發射；姬無霜在盟內請命剿鬼燈君，柳不活看見她手背的三宗印只差一道。",
+  "category": "anime",
+  "style_preset": "anime-2d",
+  "target_minutes": 22,
+  "production_policy": "long-anime-v1",
+  "runtime_spec": {
+    "body_target_seconds": 1320,
+    "op_ed_budget_seconds": 180,
+    "broadcast_slot_seconds": 1800,
+    "slot_reserve_seconds": 300
+  },
+  "characters": [
+    {
+      "id": "alliance-guard",
+      "name": "客院盟兵",
+      "appearance": "Original 2D anime alliance guard in ornate theatrical wuxia costume: young man in his early twenties, plain square face, round earnest eyes, black hair in a tight topknot under a white cloth headband trimmed with gold. White-and-gold alliance guard uniform: a white padded tunic with gold-edged lamellar shoulder guards and chest plate, a gold-trimmed belt, dark trousers bound at the shins, a long spear with a white tassel. Stands stiffly to attention.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十出頭的年輕男聲，清亮、略帶緊張；平常回話短而規矩；被長老追問時語速變快、句子太整齊，像事先背好的，問急了就把同一句說得更大聲。"
+      }
+    },
+    {
+      "id": "bao-sanqian",
+      "name": "包三錢",
+      "appearance": "Original 2D anime street informant in ornate theatrical wuxia costume: short wiry man in his forties, thin moustache, quick darting eyes, hair in a lopsided topknot with a cheap copper pin. Patched ochre and brown layered robe with mismatched embroidered trims, a bulging cloth purse and three square-holed copper coins on a red string at his belt, a wide straw hat pushed back on his head. Always half-crouched, always listening.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十多歲男聲，偏高、語速快、油滑，愛討價還價；害怕時聲音發緊、句子變短。"
+      },
+      "shot_looks": [
+        {
+          "id": "bao-soaked",
+          "appearance": "Original 2D anime street informant in ornate theatrical wuxia costume: short wiry man in his forties, thin moustache, quick darting eyes, soaked to the skin and shivering, his lopsided topknot collapsed with the cheap copper pin hanging loose, wet hair plastered to his forehead and neck. Patched ochre and brown layered robe dark and dripping with seawater, a coarse grey wool blanket wrapped around his shoulders, a bulging cloth purse and three square-holed copper coins on a red string at his belt, the wide straw hat hanging soaked down his back by its cord. Hunched over, clutching the blanket closed."
+        },
+        {
+          "id": "bao-chilled",
+          "appearance": "Original 2D anime street informant in ornate theatrical wuxia costume: short wiry man in his forties, thin moustache, quick darting eyes now red-rimmed and watery, nose and cheeks flushed with fever, his lopsided topknot loosened and sagging with the cheap copper pin askew. A plain off-white padded inner robe under a thick patched indigo quilt wrapped around his shoulders like a cape, a bulging cloth purse and three square-holed copper coins on a red string tied at his waist, no straw hat. Half-crouched and sniffling, still listening."
+        }
+      ]
+    },
+    {
+      "id": "ji-wen",
+      "name": "寂聞「怒目佛」",
+      "appearance": "Original 2D anime warrior monk in ornate theatrical wuxia costume: broad-shouldered man in his forties, shaved head under a tall gilded lotus crown with hanging gold bead strands, thick dark brows, fierce wide amber eyes. Layered saffron and crimson kasaya over a dark undershirt, a heavy embroidered collar with gold flame patterns, a string of dark wooden prayer beads wound three times around his left forearm. Bare-handed; when he gathers force a golden aura rises around his right palm.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十多歲男聲，渾厚、硬、胸腔共鳴重；句子短，說出口就不收回；動怒時不吼，字字往下壓。"
+      },
+      "shot_looks": [
+        {
+          "id": "jiwen-struck",
+          "appearance": "Original 2D anime warrior monk in ornate theatrical wuxia costume: broad-shouldered man in his forties, shaved head under a tall gilded lotus crown with hanging gold bead strands, thick dark brows, fierce wide amber eyes, his face drained grey-pale with cold sweat at the temples. Layered saffron and crimson kasaya over a dark undershirt, a heavy embroidered collar with gold flame patterns, the kasaya and undershirt torn open over the left chest where a palm-sized blue-green star-shaped arrow scar glows faintly on the bare skin over his heart, no arrow and no blood, a string of dark wooden prayer beads wound three times around his left forearm. Bare-handed; no golden aura around his palms."
+        },
+        {
+          "id": "jiwen-sealed",
+          "appearance": "Original 2D anime warrior monk in ornate theatrical wuxia costume: broad-shouldered man in his forties, shaved head bare with no crown, thick dark brows, wide amber eyes gone dull and heavy-lidded, his face pale and drawn. A plain grey monk's robe loosely closed over a white undershirt, no kasaya and no embroidered collar, the loose neckline showing the edge of a blue-green star-shaped arrow scar on the skin over his heart, a string of dark wooden prayer beads wound three times around his left forearm. Bare-handed; no golden aura. His broad shoulders slump; he cannot sit straight without support."
+        }
+      ]
+    },
+    {
+      "id": "ji-wushuang",
+      "name": "姬無霜「霜夫人」",
+      "appearance": "Original 2D anime noblewoman in ornate theatrical wuxia costume: tall elegant woman who looks thirty, waist-length silver-white hair worn loose under a towering black-and-silver phoenix crown with trailing silver chains, pale face, long narrow eyes with violet shadow, a small frost-flower mark at the outer corner of her left eye, a small crescent birthmark on the back of her neck usually hidden under her hair. Black layered court robe embroidered with white frost ferns, long sweeping sleeves, a deep violet outer mantle. Unarmed. Kneels with the same dignity as she stands.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Gacrux",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；成熟女聲，低、柔、慢，冷而有禮；跪著說話也不卑不亢，每句話都像留了半句沒說。"
+      },
+      "shot_looks": [
+        {
+          "id": "wushuang-armed",
+          "appearance": "Original 2D anime noblewoman in ornate theatrical wuxia costume: tall elegant woman who looks thirty, waist-length silver-white hair worn loose under a towering black-and-silver phoenix crown with trailing silver chains, pale face, long narrow eyes with violet shadow, a small frost-flower mark at the outer corner of her left eye, a small crescent birthmark on the back of her neck usually hidden under her hair. Black layered court robe embroidered with white frost ferns, long sweeping sleeves, a deep violet outer mantle. A slim black lacquered bow strung with a plain black cord slung across her back, and a lidded black lacquered quiver hanging at her right hip. Stands at the head of her people with the same dignity as she kneels."
+        }
+      ]
+    },
+    {
+      "id": "liu-buhuo",
+      "name": "柳不活「求死書生」",
+      "appearance": "Original 2D anime melancholy clerk in ornate theatrical wuxia costume: pale thin young scholar in his late twenties, long black hair worn loose and slightly unkempt under a low ash-grey scholar's cap, hollow cheeks, tired dark eyes with a faint smile. Layered grey and faded indigo robe with worn embroidered borders, ink stains on the right cuff, an official's wooden tally hanging at his belt beside a small sealed wine gourd. Unarmed. Stands a little stooped, as if he has not slept in a long time.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十七、八歲男聲，偏輕、帶氣音，語速慢，像一直沒睡飽；常帶一點自嘲的笑意，說到生死像在說天氣；下定決心時聲音反而變穩、變清楚，一個字都不多。"
+      },
+      "shot_looks": [
+        {
+          "id": "liu-wounded",
+          "appearance": "Original 2D anime melancholy clerk in ornate theatrical wuxia costume: pale thin young scholar in his late twenties, long black hair worn loose and slightly unkempt under a low ash-grey scholar's cap, hollow cheeks, tired dark eyes with a faint smile. Layered grey and faded indigo robe with worn embroidered borders, ink stains on the right cuff, a white cloth bandage wound over his left shoulder and showing at the collar, a dark bloodstain soaked through the robe at the left shoulder, his left arm held stiff against his side, an official's wooden tally hanging at his belt beside a small sealed wine gourd. Unarmed. Stands a little stooped."
+        },
+        {
+          "id": "liu-defected",
+          "appearance": "Original 2D anime melancholy clerk in ornate theatrical wuxia costume: pale thin young scholar in his late twenties, long black hair worn loose and slightly unkempt under a low ash-grey scholar's cap, hollow cheeks, tired dark eyes with a faint smile. Layered grey and faded indigo robe with worn embroidered borders, ink stains on the right cuff, the edge of a white bandage showing at the left side of his collar, his left arm held a little stiff, a small sealed wine gourd at his belt and no tally. Unarmed. Stands a little stooped."
+        }
+      ]
+    },
+    {
+      "id": "nie-gutie",
+      "name": "聶孤鐵「雕匠」",
+      "appearance": "Original 2D anime master smith in ornate theatrical wuxia costume: massive old man, scarred bare chest under a soot-black leather apron and a rust-red embroidered half-robe, grey hair cropped short under a burnt iron band, left eye clouded white, forearms covered in burn scars. Holds long iron forge tongs.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；老年男聲，沙啞、低、慢，像被煙燻過；每個字都很重。"
+      },
+      "shot_looks": [
+        {
+          "id": "nie-nail-wound",
+          "appearance": "Original 2D anime master smith in ornate theatrical wuxia costume: massive old man, scarred bare chest under a soot-black leather apron and a rust-red embroidered half-robe, grey hair cropped short under a burnt iron band, left eye clouded white, forearms covered in burn scars. The back of his right hand pierced clean through by a raw, rust-crusted nail wound, dried blood streaked down his right wrist and forearm. He carries no forge tongs. Hunched over himself like a man serving a sentence."
+        }
+      ]
+    },
+    {
+      "id": "shen-guihe",
+      "name": "沈歸鶴「白鶴先生」",
+      "appearance": "Original 2D anime wuxia strategist in ornate theatrical wuxia costume: tall slender man in his thirties, very long straight ink-black hair falling past the waist, a tall white jade crown with a single white crane-feather pin, pale calm face, narrow grey eyes. Layered white silk robe embroidered with silver cranes and cloud scrolls, very wide sleeves, a pale blue sash, one folded white paper fan held in his right hand or tucked in the sash. No other weapon. Moves slowly and never raises his voice.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十多歲男聲，清朗、溫和、不疾不徐，從不提高音量；越要緊的話越輕、越慢，偶爾壓住一聲咳。"
+      }
+    },
+    {
+      "id": "shuyuan-elder",
+      "name": "書院長老",
+      "appearance": "Original 2D anime academy elder in ornate theatrical wuxia costume: stout dignified old man in his sixties, round full face, heavy-lidded shrewd eyes, a neatly combed grey goatee and a long drooping grey moustache, grey hair gathered under a tall black lacquered scholar's crown edged with gold. Layered ivory-white and deep indigo scholar's robe embroidered with gold book-scroll and writing-brush patterns, very wide sleeves, a broad gold-embroidered belt, a plain ivory tablet held upright in both hands. Unarmed. Sits heavily and speaks without hurrying.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十多歲男聲，中低音、圓、穩，慢條斯理，像在講堂上說話；客氣裡帶著上位者的分量，不爭也不急；表態時一字一頓，說完就不再加一句。"
+      }
+    },
+    {
+      "id": "xuanmen-steward",
+      "name": "玄門執事長老",
+      "appearance": "Original 2D anime Taoist steward in ornate theatrical wuxia costume: narrow-shouldered, slightly stooped man in his late fifties, thinning grey hair in a small topknot under a plain dark-teal cloth Taoist cap, long thin face, anxious narrow eyes, a wispy grey beard. Layered dark-teal and grey Taoist robe with plain silver cloud trim at the hems, a ring of brass keys and a thin cloth-bound ledger hanging at his sash. Unarmed, no whisk. Keeps his hands clasped tight inside his sleeves.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十多歲男聲，中音偏薄，語速稍快，像管帳的人在念數目；自己不會武功，在高手面前說話先賠三分小心；講到玄門的人和東西時聲音繃緊，激動時會停半拍再說下去。"
+      }
+    },
+    {
+      "id": "yan-hui",
+      "name": "燕迴「赤纓」",
+      "appearance": "Original 2D anime wild sabre fighter in ornate theatrical wuxia costume: tall muscular man in his thirties, long dark-brown hair loose and windblown under a cracked bronze crown worn crooked, stubble, a loud grin. Layered rust-brown and black robe with torn embroidered hems, the left sleeve ripped off at the shoulder, one wide curved sabre with a red tassel carried over his right shoulder. Always first through the door.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十多歲男聲，粗、大嗓門、爽快，語尾上揚；認真起來一下子沉下去。"
+      }
+    },
+    {
+      "id": "yin-wusheng",
+      "name": "殷無聲「啞劍」",
+      "appearance": "Original 2D anime mute swordsman in ornate theatrical wuxia costume: lean young man in his late twenties, long black hair tied high with a plain iron ring, pale face with a thin old scar across the left cheek, dark watchful eyes. Charcoal and slate layered robe with narrow white embroidered trim, sleeves bound tight at the wrists, one straight sword in a plain black scabbard worn across his back with the hilt above his right shoulder. Stands very still and speaks only with small hand signs.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadaltager",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十多歲男聲，低、輕（角色天生不能說話，本集沒有台詞；聲音只為角色檔完整而設）。"
+      },
+      "shot_looks": [
+        {
+          "id": "yin-cut-hair",
+          "appearance": "Original 2D anime mute swordsman in ornate theatrical wuxia costume: lean young man in his late twenties, black hair tied high with a plain iron ring, the tail below the ring cut off bluntly so it now ends at his shoulders, pale face with a thin old scar across the left cheek, dark watchful eyes. Charcoal and slate layered robe with narrow white embroidered trim, sleeves bound tight at the wrists, one straight sword in a plain black scabbard worn across his back with the hilt above his right shoulder. Stands very still and speaks only with small hand signs."
+        }
+      ]
+    }
+  ],
+  "beats": {
+    "number": 3,
+    "title": "三十六魂",
+    "logline": "柳不活在荒原找到自罰的鑄箭匠聶孤鐵，問出無歸箭要三股三宗精元才能發射；姬無霜在盟內請命剿鬼燈君，柳不活看見她手背的三宗印只差一道。",
+    "hook": "東北荒原的風沙裡，一個人把自己的右手釘在鐵砧上，每日拔出來，隔日再釘回去；柳不活走到他面前，把一壺酒放在砧邊。",
+    "conflict": "柳不活是三宗派去押解幽都俘虜的押解官，他不信長老閉關，要查長老到底怎麼了；聶孤鐵是鑄箭的人，他知道箭怎麼射，卻用自罰逃避說出來。柳不活不逼出答案，三宗下一個死的高手不知是誰；逼出來，聶孤鐵會知道自己鑄的箭已經殺了人。",
+    "turn": "聶孤鐵說出無歸箭的規矩：持箭者要在體內植入書院、梵林、玄門三股精元，每取一股要殺一位三宗高手，兩股就能射、三股齊才能追著元神射，分魂也躲不掉；柳不活推算盟內「閉關」與「暴斃」的名單，已死的正好是書院一位、玄門一位：書院長老在姬無霜跪盟前半月在路上「暴斃」、盟內一直當他閉關，那是她手背的第一道印；第 1 集當夜的玄門長老是第二道。",
+    "cliffhanger": {
+      "type": "choice",
+      "text": "柳不活看著姬無霜手背上那道只差梵林一筆的三宗印，把自己的押解牌折成兩半：「我去做她的人。」"
+    },
+    "tension": [
+      3,
+      4,
+      3,
+      4,
+      4
+    ],
+    "setups": [
+      "m02",
+      "m12"
+    ],
+    "payoffs": [],
+    "general_payoffs": [
+      "柳不活從聶孤鐵口中問出無歸箭發射的條件，推算出已死兩位高手，確認第三個目標在梵林。"
+    ],
+    "characters": [
+      "shen-guihe",
+      "ji-wen",
+      "bao-sanqian",
+      "ji-wushuang",
+      "liu-buhuo",
+      "nie-gutie",
+      "yan-hui"
+    ],
+    "locations": [
+      "東北荒原鐵廬",
+      "齊雲殿盟堂",
+      "盟府客院"
+    ],
+    "theme": "最接近真相的人，往往是先決定站錯邊的人",
+    "high_tension": [
+      {
+        "beat": "first_half",
+        "event": "荒原鐵廬裡，聶孤鐵拔出釘手的鐵釘向柳不活擲去，吼他滾；柳不活不躲，釘子穿過肩頭，他坐下來說「三十六個人裡本該有我——名單按三宗血裔點，不按武功——你欠的我也欠」，聶孤鐵終於開口說箭的規矩。",
+        "stakes": "聶孤鐵不說，三宗只能等下一具無傷的屍體；他說了，就得面對自己鑄的箭已經在殺人。",
+        "consequence": "柳不活帶著肩傷與箭的規矩回盟；聶孤鐵知道了箭已殺人，把鐵砧砸碎，從此不再自罰，改為等柳不活回來。"
+      },
+      {
+        "beat": "second_half",
+        "event": "齊雲殿盟堂，姬無霜當眾請命率幽都舊部為三宗先鋒剿鬼燈君，三宗長老動容；她舉手立誓時，剛回盟的柳不活看見她手背的三宗印只差梵林一道，而堂上寂聞正是梵林之首。",
+        "stakes": "三宗若准她領兵，她就能名正言順接近寂聞；柳不活當場揭穿，她手上若已有兩股精元，堂上無人擋得住她先射一箭。",
+        "consequence": "三宗准她領兵，寂聞沉默未反對；柳不活沒揭穿，他決定潛進她身邊做內應，不告訴任何人，連沈歸鶴。"
+      }
+    ],
+    "consequence": "姬無霜獲准領幽都舊部為三宗先鋒，身分從被收容者變成盟友；柳不活自斷押解官身分投向她，三宗以為他叛變；聶孤鐵在荒原等著。沈歸鶴從包三錢處得知柳不活「投敵」，沒說話。",
+    "state": {
+      "time": "第8日至第14日",
+      "knowledge": "觀眾與柳不活知道箭要三股精元、已取書院與玄門兩股、第三股目標是梵林高手；三宗高層仍信姬無霜；沈歸鶴只知道柳不活投向了她。",
+      "character_state": "柳不活肩傷，已離盟隨姬無霜；聶孤鐵不再自罰，在荒原等候；姬無霜領幽都舊部為先鋒；寂聞成為最可能的第三個目標而不知。",
+      "evidence": "折成兩半的押解牌（一半留在盟堂階上）、柳不活畫下的三宗印圖樣、聶孤鐵的斷砧。",
+      "carry_forward": "柳不活在姬無霜身邊做內應；第三股精元的目標是誰；柳不活欠聶孤鐵什麼、為何求死。"
+    },
+    "closed_ending": false
+  },
+  "recaps": [],
+  "earlier": [
+    {
+      "number": 1,
+      "title": "幽皇之女",
+      "logline": "幽皇死後一年，他的女兒帶著幽都老弱跪在三宗盟門前求收容；沈歸鶴接下她，當夜玄門長老死在房中，無傷無血。"
+    },
+    {
+      "number": 2,
+      "title": "鯨背嶼",
+      "logline": "鯨背嶼上的孩童一夜之間全部睡著不醒，包三錢潛入島底發現收魂陣；竹虛道人為沈歸鶴的舊傷西行，沈歸鶴咳血瞞住寂聞。"
+    }
+  ],
+  "next_logline": "盟內傳單指竹虛道人盜走玄門鎮派的《裂山秘錄》叛逃，三宗發九洲通緝，沈歸鶴被迫同意；竹虛在齊雲殿被圍，交出的秘錄翻開竟是無字。",
+  "mysteries": [
+    {
+      "id": "m12",
+      "question": "柳不活為什麼求死、欠聶孤鐵什麼？",
+      "answer": "一年前三十六人鑄箭時他是第三十六個，聶孤鐵之子因他家有老母而替他入爐；第 9 集他在爐前飲鴆，把借來的一年連頭顱一起還給聶孤鐵。",
+      "introduced_in": 3,
+      "resolved_in": 9
+    },
+    {
+      "id": "m02",
+      "question": "霜夫人體內的三宗精元來自誰、還差誰？",
+      "answer": "第一道是書院一位長老：她跪盟前半月在路上「暴斃」、盟內一直當他閉關，所以第 1 集第 1 日她手背已有一道印；第二道是第 1 集當夜的玄門長老；第 3 集柳不活推出只差一道；第 9 集第三道的目標是沈歸鶴；第 12 集三支正箭射盡，她再也湊不齊第三道印。",
+      "introduced_in": 3,
+      "resolved_in": 12
+    }
+  ],
+  "series": {
+    "kind": "series",
+    "category": "anime",
+    "production_policy": "long-anime-v1",
+    "runtime_spec": {
+      "body_target_seconds": 1320,
+      "op_ed_budget_seconds": 180,
+      "broadcast_slot_seconds": 1800,
+      "slot_reserve_seconds": 300
+    },
+    "target_minutes": 22,
+    "planned_episodes": 24,
+    "closed_ending": false,
+    "title": "偶的江湖",
+    "premise": "三宗盟一年前聯手誅殺幽皇，卻把三十六條人命鑄成的無歸箭丟了；箭回來的那天，幽皇之女跪在三宗門前求收容。",
+    "style_preset": "anime-2d",
+    "open_ended": true,
+    "genre": "custom",
+    "lead": "ensemble",
+    "visual_tier": "clips",
+    "compilation": false
+  },
+  "visual_tier": "clips",
+  "compilation": false
+}

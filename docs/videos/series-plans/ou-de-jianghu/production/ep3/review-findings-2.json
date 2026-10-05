@@ -1,0 +1,29 @@
+{
+ "checks": "對抗式驗收第 1 輪（ep3）。node check-act.mjs --all --craft：454 個 scene（451 鏡＋3 卡）、SCHEMA 0、LINT 錯誤 0、LINT 警告 3 條都是分場表第一節預期內的（2 個 still 做動畫關鍵影格、估算 23.4 分、runtime_spec 1404.6 秒對實測門檻）；各幕 a01 278.9／a02 279.5／a03 284.1／a04 282.6／a05 279.4，都在 281±10；總長 1404.6 秒，在 1,390–1,418 內；craft 24/24 達標；SHOT READING 0 陷阱。python dialogue.py --ep 3 重新產生 dialogue.txt 全文讀過。自寫腳本核對：分場表每一段「必留」的 350 句（含冷開場、片名卡、前情、兩首詩號）逐字都在、0 缺；說話的只有 narrator 與九個允許的 id，yin-wusheng 與 alliance-guard 0 台詞；characters 沒有超過 3 個，character_looks 的角色都在同鏡的 characters 裡；聶孤鐵每鏡 nie-nail-wound；柳不活的 look 分段正確（a02-s061 前無 look、a02-s061–a05-s080 liu-wounded、a05-s085／s087／s090 liu-defected 且 prompt 都補了 dried bloodstain）；姬無霜無 look、無弓箭；id 五幕都連號；章名 13 個都掛在分場表指定的鏡上；prompt／motion／camera 沒有雙引號、沒有要畫文字的字眼（writing desk、no writing、no characters 是道具寫法）、沒有 fit／reveal／transition／seed／negative／source、dissolve 0；同一運鏡最多連 2；禁字：「鬼燈」只在 a03-s037、a03-s053 與 a04 盟堂的四句，「印」只有 a02-s078，「精元」只在 a02 場 5，「黑風」只在詩號，柳不活 0 次「寂聞」，「三宗的符」0，「第 N 日」0，第 1 集名句 0，自我介紹無「押解官」，手背只在 a04-s067 與 a05-s079 露出（a05-s078 袖子仍蓋著），a04-s061–s066 南側機位沒有拍到舉起的手背。review-findings.json 的 8 條逐條到 acts 核對：(1) a03-s002「a pace back from the anvil, leaning away from it」、a03-s008「two paces apart」已改；(2) a03-s004 已換成「砧碎了，」「釘，往哪裡釘？」接 a03-s005「不釘了。」；(3) a01-s067「我伸手要三錢，」「他笑著走了。」、a01-s068「一個錢也沒掏！」，a01-s070「三錢。」「記帳。」保留，a04-s010 不動；(4) a04-s020 改成室內全景、門關著、Liu alone；(5) a04-s089 先鋒令改左手、右手藏在袖裡放膝上，motion 也改成左手；(6) a05-s008 lines 空、action_seconds 3；(7) a01-s002 補 pinned by one long rust-crusted iron nail、a01-s052 補拓片與封條並排、a01-s075 motion 改成肩靠門柱、門仍開；(8) a03-s063 characters 加 yan-hui。八條都修了，前後 5 鏡抽查過接縫、角色、單一動作、speaker、必留。剩下兩條都是修訂本身留下的小連戲，見 findings。",
+ "findings": [
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s050",
+    "a02-s054",
+    "a02-s063",
+    "a02-s069",
+    "a03-s002",
+    "a03-s008"
+   ],
+   "problem": "第 1 條接縫只修了第三幕這一半、而且是往少數那一邊修：第二幕本身仍然從「三步」跳到「一步」。纏布前的五個鏡與分場表第四節都寫兩人隔鐵砧約三步，纏布之後 Liu 沒有移動，a02-s063 卻變成離砧一步；修訂把 a03 改成跟 a02-s063 一樣的一步，於是 a02-s054 → a02-s063 這一跳還在，a03-s008 又變成兩步，三個數字並存。",
+   "evidence": "a02-s003「three paces apart」、a02-s007「three paces away beyond the anvil」、a02-s011「about three paces apart」、a02-s050「Nie standing at the anvil and Liu sitting on the sand three paces apart」、a02-s054「three paces of grey sand between them」（Nie 走過去跪在 Liu 旁邊，Liu 沒動）；a02-s063「Liu sitting cross-legged on the sand at the anvil's left side, one pace away」、a02-s069「one pace of grey sand and the ash-filmed anvil between them」；修訂後 a03-s002「a pace back from the anvil」、a03-s008「two paces apart」。分場表第四節：「兩人隔著鐵砧與一盆炭火約三步」。",
+   "fix": "以多數鏡與分場表的三步為準，改四個字串：a02-s063「one pace away」→「three paces away」；a02-s069「one pace of grey sand」→「three paces of grey sand」；a03-s002「a pace back from the anvil, leaning away from it」→「three paces back from the anvil, leaning away from it」；a03-s008「two paces apart」→「three paces apart」。秒數不變。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a04-s088",
+    "a04-s089"
+   ],
+   "problem": "第 5 條把先鋒令改到左手之後，前一鏡接令的還是右手掌：Steward 把先鋒令放進她右掌心，下一鏡先鋒令已經在左手、右手收回袖裡放在膝上，中間沒有換手的動作。",
+   "evidence": "a04-s088 prompt「Wushuang's pale right palm turned up at frame centre at waist height … only the palm showing」、motion「The Steward's hand lays the white jade token in her open palm and withdraws」；a04-s089 prompt「the white jade command token with its gold tassel held level before her chest in her left hand … her right hand hidden inside its long black sleeve on her lap」。分場表第四幕分場 5 只寫「Steward 把一枚白玉先鋒令放在她掌心（插鏡）」，沒指定哪隻手；a04-s085 她的右手已經放回膝上、袖子蓋到指尖。",
+   "fix": "a04-s088 的「pale right palm」改成「pale left palm」（其餘不動），讓右手從 a04-s085 落下之後一直留在袖裡，a04-s089 的左手就接得上；也更守第八節「手背本集只露兩次」。秒數不變。"
+  }
+ ]
+}
