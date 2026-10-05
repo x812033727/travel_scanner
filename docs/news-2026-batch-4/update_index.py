@@ -85,6 +85,17 @@ So ``EDITS`` learned one more target, ``"hero_alt"`` -- the redrawn hero prints 
     update_index.py ai tech crypto [--dry-run]
 
 Batch 4.11's tables are kept as ``_NEW_4_11``, ``_EDITS_4_11`` and ``_INSERT_4_11``.
+
+The zh-TW language note of 2026-10-05 (task ``2026-10-05-ai-news-index-zh-tw-says``) is a second
+run over the AI index that day, zh-TW only, and it too adds no link and moves no date. zh-TW
+links the zh-TW-only articles of 4.4, 4.6 and 4.7, which the other four locales do not, and
+three of its sentences -- the description, the month table's caption and block 24 -- still
+promised five languages for every linked article. It rewrites those three and nothing else; the
+other four locales link only five-locale articles, so their sentences stay true:
+
+    update_index.py ai --locale=zh-TW [--dry-run]
+
+The refresh's tables are kept as ``_EDITS_2026_10_05`` and ``_TABLE_2026_10_05``.
 """
 from __future__ import annotations
 
@@ -146,7 +157,7 @@ NEWEST_AI_EVENT = "2026-10-01"
 # may name a slug inserted just before it.
 #
 # The refresh of 2026-10-05 links nothing: it rewrites prose (``EDITS``) and table cells
-# (``TABLE``) only.
+# (``TABLE``) only. Its zh-TW language note links nothing either: prose and a caption.
 NEW: dict[str, list[tuple[str, object]]] = {"crypto": [], "tech": [], "ai": []}
 # Batch 4.11 (2026-10-04), kept for the record: one article, Claude Code mods (10-01), five
 # locales. It is the first October event, so ``INSERT`` opened an October heading after the
@@ -798,7 +809,8 @@ _TECH_DESCRIPTION = {
         "主权 AI 语料库、《网络弹性法案》通报义务、KIDS Act 提案、Apple 欧盟 App 条款与追踪透明度询问框。",
     ),
 }
-EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
+# The refresh's table, as it ran.
+_EDITS_2026_10_05: dict[str, dict[str, list[tuple[object, str, str]]]] = {
     "crypto": {locale: [("hero_alt", *_CRYPTO_ALT[locale]), (24, *_JP_HEADING[locale])] for locale in LOCALES},
     "tech": {locale: [("description", *_TECH_DESCRIPTION[locale])] for locale in LOCALES},
     "ai": {
@@ -806,12 +818,37 @@ EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
         for locale in LOCALES
     },
 }
+# The zh-TW language note of 2026-10-05: the description and block 24 of the zh-TW AI index said
+# every linked article could be read in five languages, and zh-TW also links articles that
+# exist in zh-TW only. They now say most do, naming the other four languages, and block 24 says
+# that some are in Traditional Chinese only. No count (``COUNT_RULE``); the month-range in the
+# description is the title ticket's (``2026-10-03-ai-news-index-month-range``) and stays.
+_AI_LANGUAGES_TW: list[tuple[object, str, str]] = [
+    ("description", "連到五語完整解析", "連到完整解析，多數另有簡體中文、英文、日文與韓文版"),
+    (
+        24,
+        "繁體中文、簡體中文、英文、日文與韓文均提供全文，透過頁面的語言切換即可閱讀",
+        "多數文章另提供簡體中文、英文、日文與韓文全文，可透過頁面的語言切換閱讀；部分文章目前只有繁體中文",
+    ),
+]
+EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
+    "crypto": {locale: [] for locale in LOCALES},
+    "tech": {locale: [] for locale in LOCALES},
+    "ai": {locale: _AI_LANGUAGES_TW if locale == "zh-TW" else [] for locale in LOCALES},
+}
 
-# vertical -> locale -> (row label in column 0, column index, current cell, new cell). Batch 4.3
-# widened the AI month table's reading-focus cells, and no batch has touched them since; the
-# refresh of 2026-10-05 adds what September's links now cover (prices, ads, video, and in zh-TW
-# the learning tools of 4.6 and 4.7) and, in zh-TW only, what 4.4 added to August.
+# vertical -> locale -> (row label in column 0, column index, current cell, new cell). The zh-TW
+# language note of 2026-10-05 touches no cell.
 TABLE: dict[str, dict[str, list[tuple[str, int, str, str]]]] = {
+    "crypto": {locale: [] for locale in LOCALES},
+    "tech": {locale: [] for locale in LOCALES},
+    "ai": {locale: [] for locale in LOCALES},
+}
+# Batch 4.3 widened the AI month table's reading-focus cells, and no batch touched them again
+# until the refresh of 2026-10-05, which added what September's links now cover (prices, ads,
+# video, and in zh-TW the learning tools of 4.6 and 4.7) and, in zh-TW only, what 4.4 added to
+# August. Kept as it ran.
+_TABLE_2026_10_05: dict[str, dict[str, list[tuple[str, int, str, str]]]] = {
     "crypto": {locale: [] for locale in LOCALES},
     "tech": {locale: [] for locale in LOCALES},
     "ai": {
@@ -865,11 +902,13 @@ DROP_COLUMN: dict[str, dict[str, str]] = {
     "tech": {},
     "ai": {},
 }
-# vertical -> locale -> (old caption fragment, new caption fragment). None this batch.
+# vertical -> locale -> (old caption fragment, new caption fragment). The zh-TW language note
+# rewrites the AI month table's zh-TW caption, which said every month's analyses came in five
+# languages, the same way as the description and block 24.
 CAPTION: dict[str, dict[str, tuple[str, str]]] = {
     "crypto": {},
     "tech": {},
-    "ai": {},
+    "ai": {"zh-TW": ("各月的新聞解析都提供五種語言", "多數新聞解析另有簡體中文、英文、日文與韓文版")},
 }
 
 

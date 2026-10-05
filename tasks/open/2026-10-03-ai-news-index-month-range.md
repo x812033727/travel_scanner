@@ -39,3 +39,9 @@ scope:
 ## Notes
 
 - Filed by batch 4.11 (`docs/news-2026-batch-4/agents/DELTA-4-11.md` §7).
+- 2026-10-05: `2026-10-05-ai-news-index-zh-tw-says` (branch `claude/small-content-fixes`) rewrote
+  the language clause of the zh-TW description (「連到五語完整解析」 → 「連到完整解析，多數另有簡體中文、
+  英文、日文與韓文版」) with a zh-TW-only `update_index.py` run. It left 「1 月至 9 月」 and the title
+  alone, so this ticket's description edit must match the new zh-TW sentence. Its rows are still in
+  `EDITS` and `CAPTION` and already applied, so `replace_once` refuses them: move them out (as
+  `_EDITS_2026_10_05` was) before the next run.
