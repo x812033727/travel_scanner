@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-video-slides-prompt-repair-format
 title: Preserve slides format in keyframe prompt repair
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-news-video-stall-fixes
 claimed_at: 2026-10-05T10:26:04Z
 created_at: 2026-10-05T10:18:55Z
-completed_at:
+completed_at: 2026-10-05T10:47:36Z
 branch: codex/news-video-stall-fixes-20261005
 depends_on: []
 scope:
@@ -63,7 +63,7 @@ the last successful narration-approved backend status.
 - [x] Check current main, active claims, worktrees and PRs before claiming the
       shared flow scope; coordinate with its owners without force claiming.
 - [x] Unify effective format handling for newly created and historical states.
-- [ ] Add meaningful offline regression cases and have the implementation
+- [x] Add meaningful offline regression cases and have the implementation
       independently reviewed before any production use.
 
 ## How to verify
@@ -119,3 +119,10 @@ Run affected automation tests and npm run test:tools with compatible Node.
 - Production deployment and continuation remain distinct from offline validation.
   Prior scripts, source-bound approvals and paid artifacts are retained; no
   production write or paid request has been made by this repair branch.
+- Independent video review found and verified repairs for legacy saved
+  video.json without format and ambiguous multi-receipt policy retries. The
+  final client/receipt suite passed 36/36. Independent duration review commit
+  562b2d718 covers the eleven changed bound files: baseline SHA-256 matches,
+  473 plans PASS, review tests 2/2, duration/plan tests 16/16 and the new
+  automation tests 28/28. Production activation remains a separate owner
+  PR/SHA decision; full branch validation and CI are in the PR handoff.
