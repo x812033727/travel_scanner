@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-point-the-article-localization-skill-at
 title: Point the article-localization skill at the Route B bundle compiler
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-article-localization-skill-route-b
 claimed_at: 2026-10-05T13:11:12Z
 created_at: 2026-10-05T09:54:35Z
-completed_at:
+completed_at: 2026-10-05T13:26:50Z
 branch: claude/article-localization-skill-route-b
 depends_on:
   - 2026-09-29-route-b-reviewed-bundle-compiler
