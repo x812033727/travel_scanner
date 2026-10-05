@@ -1,13 +1,13 @@
 ---
 id: 2026-09-29-route-b-reviewed-bundle-compiler
 title: Compile reviewed Route B packs for guarded locale publication
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-route-b-bundle-compiler
 claimed_at: 2026-10-05T09:32:09Z
 created_at: 2026-09-29T05:56:13Z
-completed_at:
+completed_at: 2026-10-05T09:57:37Z
 branch: claude/route-b-bundle-compiler
 depends_on:
   - 2026-09-22-respect-per-slug-publish-holds-in
