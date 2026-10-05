@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-keyframes-crashes-when-every-image-take
 title: Keyframes crashes when every image take is rejected
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-keyframes-all-rejected
 claimed_at: 2026-10-05T00:15:07Z
 created_at: 2026-10-04T12:07:14Z
-completed_at:
+completed_at: 2026-10-05T00:39:33Z
 branch: claude/keyframes-all-rejected
 depends_on: []
 scope:
