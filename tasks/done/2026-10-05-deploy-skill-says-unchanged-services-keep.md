@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-deploy-skill-says-unchanged-services-keep
 title: Deploy skill says unchanged services keep their containers, but every deploy recreates all of them; preflight checks paid video work
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5.5
 claimed_at: 2026-10-05T03:40:54Z
 created_at: 2026-10-05T03:40:42Z
-completed_at:
+completed_at: 2026-10-05T04:31:53Z
 branch: claude/deploy-recreates-all
 depends_on: []
 scope:
@@ -45,8 +45,22 @@ containers are rebuilt, so the docs contradicted each other.
       second-transcript case and the `nginx-install` large-site timeout fail here every run. The
       `claude-code-series` Hook-scripts case (EPERM on a temp dir) and its JSON-examples case passed
       when rerun alone.
-- [ ] After it merges: deploy, run the new preflight first and `host-verify.sh` after, record the
-      result here and close the task in a tasks-only PR.
+- [x] After it merges: deploy, run the new preflight first and `host-verify.sh` after, record the
+      result here and close the task in a tasks-only PR. Merged as 519c8e54c (#1248, 20 checks green)
+      on top of d5e630c7a (#1246, someone else's api fix, 21 checks green, no migration).
+  - Preflight at 04:29:07Z: no hold file, lock free, nothing flagged, live 363489fe9, origin/main
+    519c8e5. The new section printed `stage jobs … none` and `media jobs … none`.
+  - Deploy 04:29:17–04:30:25Z, `DEPLOY_EXIT=0`, health 3/3, alembic `0124_video_review_subject (head)`,
+    public site 200. Log: `/root/deploy-logs/deploy_20261005_042920.log`.
+  - `host-verify.sh` with EXPECTED_SHA=519c8e54c, plus two checks added for this deploy:
+    TOTAL pass=13 fail=0. The extra checks were:
+    - `api-1246-populate-existing`: `populate_existing=True` counted 2,1,1,1 in
+      travel_services/jobs.py, video_shorts/claim.py, video_youtube/connection.py and
+      video_youtube/sync.py inside the api container. Before #1246 the counts were 1,0,0,0.
+    - `paid-video-jobs-settled`: both job tables showed `none` after the deploy.
+  - The cause showed up again. The api image really was rebuilt (Created 04:29:28Z). web and
+    video-worker kept the Created time of their 02:12/02:13Z builds but still got new ids, and their
+    containers were recreated.
 
 ## How to verify
 
