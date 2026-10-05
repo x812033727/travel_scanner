@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-review-the-openai-and-cross-vendor
 title: Review the OpenAI and cross-vendor evergreen AI pages after GPT-6 Sol/Luna, GPT-6.1 Sol and Claude 5.5
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-openai-evergreen-pages
 claimed_at: 2026-10-05T13:36:14Z
 created_at: 2026-10-05T07:33:00Z
-completed_at:
+completed_at: 2026-10-05T14:42:06Z
 branch: claude/openai-evergreen-pages
 depends_on: []
 scope:
