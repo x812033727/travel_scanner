@@ -11,6 +11,7 @@ import { clipsHash, lookHash, mixHash } from "../core/drama.mjs";
 import { dramaFixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { pipelineStatus } from "../core/state.mjs";
 import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
+import { readJobs } from "./cache.mjs";
 import { clipPrompt, clipRubric, clipSeconds, lastFrameArgs, MAX_CLIP_TAKES, proxyArgs } from "./clips.mjs";
 import { importedTotals, readLedger, savedTotals } from "./ledger.mjs";
 import { MIN_TRACK_SECONDS, trackSeconds } from "./music.mjs";
@@ -46,8 +47,12 @@ const STATUS = {
   limits: {},
 };
 
-/** A media server whose clips need one poll, and whose judge answers from `verdicts(request, count)`. */
-function mediaSite({ verdicts = () => ({ overall: 8, passed: true }), tooLargeOnce = null, status = STATUS } = {}) {
+/**
+ * A media server whose clips need one poll, and whose judge answers from `verdicts(request, count)`.
+ * `refuse(request)` returning `{ code, detail }` makes that clip job end failed when it is polled,
+ * as the server reports a provider's refusal.
+ */
+function mediaSite({ verdicts = () => ({ overall: 8, passed: true }), tooLargeOnce = null, status = STATUS, refuse = () => null } = {}) {
   const state = { clips: [], music: [], polls: {}, judges: [], uploads: [], files: new Map(), jobs: new Map() };
   let large = tooLargeOnce;
   const fetchImpl = async (url, init = {}) => {
@@ -60,7 +65,7 @@ function mediaSite({ verdicts = () => ({ overall: 8, passed: true }), tooLargeOn
       state.clips.push(request);
       const id = `clip${state.clips.length}`;
       const bytes = MP4(`${request.shot_id}|${request.prompt}|${request.seed}|${request.first_frame}|${request.seconds}`);
-      state.jobs.set(id, { bytes, seconds: request.seconds });
+      state.jobs.set(id, { bytes, seconds: request.seconds, refusal: refuse(request) });
       return Response.json({ id, status: "queued", file: null, error: null, retry_after_seconds: 1, usd_estimate: request.seconds * 0.15 }, { status: 202 });
     }
     if (init.method === "POST" && route === "music") {
@@ -75,6 +80,7 @@ function mediaSite({ verdicts = () => ({ overall: 8, passed: true }), tooLargeOn
       state.polls[id] = (state.polls[id] ?? 0) + 1;
       const job = state.jobs.get(id);
       if (state.polls[id] < 2) return Response.json({ id, status: "submitted", file: null, error: null, retry_after_seconds: 1, usd_estimate: job.seconds * 0.15 });
+      if (job.refusal) return Response.json({ id, status: "failed", file: null, error: job.refusal, retry_after_seconds: 0, usd_estimate: job.seconds * 0.15 });
       state.files.set(SHA(job.bytes), job.bytes);
       return Response.json({ id, status: "ready", file: { sha256: SHA(job.bytes), size: job.bytes.length, content_type: "video/mp4" }, error: null, retry_after_seconds: 0, usd_estimate: job.seconds * 0.15 });
     }
@@ -562,6 +568,65 @@ test("a shot that fails every take is left for a prompt fix, and the STOP file e
   assert.equal(await main(["clips", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.ok, stopped.out.stderr);
   assert.match(stopped.out.stdout, /stopped by the STOP file/);
   assert.equal(manifestOf(box, "clips").shots.farewell, undefined);
+});
+
+// What the server reports when the provider refuses a job outright (MiniMax refused keyframe prompts
+// over its length limit this way on 2026-10-04): a failed job, refused again for every seed.
+const TOO_LONG = { code: "video_media_upstream_invalid", detail: "prompt length must be less than 1500" };
+const BLOCKED = { code: "video_media_rejected", detail: "output blocked by the content filter" };
+
+test("a shot every seed is refused for waits for a prompt fix with the provider's refusal, and a rerun once it is taken buys that shot alone", async () => {
+  const { box, doc, timeline } = prepared();
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  let refusing = true;
+  // sea-storm is refused on every seed, twice for its length and then by the filter; opening on its first seed only.
+  const site = mediaSite({
+    refuse: (request) => (!refusing ? null : request.shot_id === "sea-storm" ? (request.seed < 3 ? TOO_LONG : BLOCKED) : request.shot_id === "opening" && request.seed === 1 ? TOO_LONG : null),
+  });
+  // A record for sea-storm that names a clip no longer on disk and no take: nothing of it may
+  // stand in the new record, or the clips hash and a shot continuing from it would read that clip.
+  mkdirSync(path.join(box.workdir, "clips"), { recursive: true });
+  const stale = { file: "clips/sea-storm-9.mp4", sha256: "9".repeat(64), seed: 9, seconds: 6, judge: { overall: 4, passed: false, problems: ["the waves freeze"] }, takes: [], needs_review: true, problems: ["judge 4/10: the waves freeze"] };
+  writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({ speech_hash: timeline.speech_hash, visual_hash: visualHash(doc), look_hash: lookHash(doc), shots: { "sea-storm": stale } }));
+  const shots = ["--shot", "opening,sea-storm", "--takes", "3"];
+
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug, ...shots], run.ctx), EXIT.lint, run.out.stderr);
+  assert.deepEqual(site.state.clips.map((request) => [request.shot_id, request.seed]), [["opening", 1], ["opening", 2], ["sea-storm", 1], ["sea-storm", 2], ["sea-storm", 3]]);
+  assert.equal(site.state.judges.length, 1, "a refused seed has no clip to judge");
+  const manifest = manifestOf(box, "clips");
+  assert.deepEqual(manifest.shots["sea-storm"], { takes: [], needs_review: true, problems: [`no take could be generated: ${TOO_LONG.detail}`, `no take could be generated: ${BLOCKED.detail}`] }, "one problem per distinct refusal, nothing of the earlier record");
+  assert.equal(manifest.shots.opening.file, "clips/opening-2.mp4", "a refused seed is followed by the next");
+  assert.deepEqual(manifest.shots.opening.takes.map((take) => take.seed), [2]);
+  assert.equal(manifest.shots.opening.needs_review, false);
+  assert.equal(manifest.clips_hash, clipsHash([{ id: "opening", sha256: manifest.shots.opening.sha256 }]), "the refused shot has no clip to hash");
+  assert.match(run.out.stdout, /sea-storm seed 3: sea-storm: output blocked by the content filter; trying another seed\n/);
+  assert.match(run.out.stdout, /ERROR sea-storm: no take could be generated: prompt length must be less than 1500; no take could be generated: output blocked by the content filter\n/);
+  assert.match(run.out.stdout, /fix the prompts of sea-storm and run clips again/);
+  // Each refusal is booked as a failed job at no cost, and none is left waiting to be picked up.
+  const clips = readLedger(box.workdir).entries.filter((entry) => entry.kind === "clip");
+  assert.deepEqual(clips.map((entry) => [entry.id, entry.status, entry.error ?? null]), [
+    ["opening", "failed", TOO_LONG.code],
+    ["opening", "ready", null],
+    ["sea-storm", "failed", TOO_LONG.code],
+    ["sea-storm", "failed", TOO_LONG.code],
+    ["sea-storm", "failed", BLOCKED.code],
+  ]);
+  assert.ok(clips.filter((entry) => entry.status === "failed").every((entry) => entry.cost_usd === 0));
+  assert.deepEqual(readJobs(box.workdir).jobs, {});
+
+  // Once the provider takes the prompt, the rerun buys that shot alone and keeps the other.
+  refusing = false;
+  const fixed = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug, ...shots], fixed.ctx), EXIT.ok, fixed.out.stderr);
+  assert.match(fixed.out.stdout, /opening: kept \(/);
+  assert.deepEqual(site.state.clips.slice(5).map((request) => [request.shot_id, request.seed]), [["sea-storm", 1]]);
+  const after = manifestOf(box, "clips");
+  assert.equal(after.shots["sea-storm"].file, "clips/sea-storm-1.mp4");
+  assert.equal(after.shots["sea-storm"].needs_review, false);
+  assert.equal(after.shots["sea-storm"].problems, undefined);
+  assert.equal(after.shots.opening.sha256, manifest.shots.opening.sha256);
 });
 
 test("a still shot buys no clip: its keyframe goes into the manifest, a clip may continue from it, and it needs a passed keyframe", async () => {
