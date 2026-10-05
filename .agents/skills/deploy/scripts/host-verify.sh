@@ -108,10 +108,14 @@ ok=0
 if [ "$logs_n" -ge 1 ] && [ "$logs_fresh" -eq "$logs_n" ] && [ "$logs_33" -eq "$logs_n" ] && { [ "$logs_rb" -eq 0 ] || [ "$sha_ok" -eq 1 ]; }; then ok=1; fi
 verdict deploy-logs "$ok" "logs_newer_than_head_commit=$logs_n (2 via host-deploy.sh, 1 when the owner ran the deploy script directly) with_3of3=$logs_33 with_rollback_lines=$logs_rb release_state_json=$rel"
 
-# A service is rebuilt and recreated only when its build context changed: `up --build -d` without
-# --force-recreate keeps a container whose image id did not move. So "fresh" means "newer than the
-# last commit that touched that service's build context", not "newer than HEAD" (a docs-only or
-# tools/video-only commit leaves api and web exactly as they were, and that is correct).
+# An image is built again only when its build context changed: a docs-only commit hits the build
+# cache, and the image keeps the Created time of its last real build. So "fresh" means "newer than
+# the last commit that touched that service's build context", not "newer than HEAD". Containers are
+# another matter: the docs-only deploy of 2026-10-05 recreated every one built from the repo,
+# because the build gave each image a new id on a full cache hit (same Created, same layers): with
+# the containerd image store (Docker 29) the id is the digest of an OCI image index, which changes
+# with every build, and `up --build -d` recreates a container whose image id moved. The started-time checks use the
+# build-context cutoff all the same, so they stay right if image ids ever become stable.
 api_ct=$(git log -1 --format=%ct HEAD -- apps/api 2>/dev/null); api_ct=${api_ct:-0}
 web_ct=$(git log -1 --format=%ct HEAD -- apps/web package.json package-lock.json 2>/dev/null); web_ct=${web_ct:-0}
 vw_ct=$(git log -1 --format=%ct HEAD -- tools/video ops/video .agents/skills/youtube-video docs/videos apps/api/app/guides/content 2>/dev/null); vw_ct=${vw_ct:-0}
