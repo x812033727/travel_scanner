@@ -1,0 +1,140 @@
+{
+ "checks": "node check-act.mjs --all --craft（ep2，454 個 scene＝452 鏡＋2 張卡）：SCHEMA 錯誤 0；LINT 錯誤 0；LINT 警告 3 條，都是預期內的：(1) clips tier 的 still 會做成動畫關鍵影格（a03-s069 詩號定格）；(2) 「about 23.3 minutes; the target is 22-22」；(3) runtime_spec 估算正文 1397.9 秒，實測門檻 1260–1380 秒。分場表第一節本來就預期估算比實測多，所以 (2)(3) 不算錯。各幕秒數：a01 277.9（90 鏡＋1 卡）、a02 280.1（92 鏡）、a03 282.0（91 鏡＋1 卡）、a04 278.7（91 鏡）、a05 279.3（88 鏡），全部在 281±10 秒內。總長 1397.9 秒，在 1,390–1,418 秒的目標內（目標約 1,404）。台詞 658 行，旁白占行數 2.9%、占口播字數 4%；台詞中位長度 4 字，超過 20 字的 0%。鏡長中位 3.0 秒，p90 4.5 秒，最長 6.8 秒。章名（估算起點／分場表）：晨鐘三響 0:00／0:00、不派兵 0:20／0:21、鯨的肚子 3:03／3:05、送米的船 4:38／4:41、潮聲 5:54／5:56、四十三縷 7:23／7:23、一條魚 9:18／9:22、封門 12:37／12:35、找路回家 14:00／14:03、只是夜露 14:58／15:01、奔喪 18:39／18:44、請命 19:51／19:56、拓片 21:35／21:41，全部對得上。高張力時間碼：石窟陣揭示 7:41、黑衣人現身 8:34、跳海 9:13、撈起到回港 9:18–10:07（分場表 7:23–10:14）；後山倒地 15:29（目標約 15:38）、燈籠 16:01（約 16:13）、「只是夜露」16:43（約 17:02）；最後一句 a05-s087 在 23:10.5–23:16，尾鏡 a05-s088 收在 23:17.9（目標 23:15–23:22），就是分場表指定的「收魂陣的四個角，／是三宗盟，／自己的符。」。craft 24/24 全數達標，沒有未達標列。info 列有兩項：79 鏡短於 2 秒；44 條 motion 含 and/then，逐條看過，大多是同一動作的停住或收勢，只有 a05-s066、a05-s072 確實是兩個動作（見 findings）。shot_reading 陷阱 0。另外用腳本核對過：每一句必留台詞都在；說話的只有 narrator 和六個角色，殷無聲、盟兵、群眾都沒有台詞；character_looks 只用在 Bao 身上，而且都在同一鏡的 characters 裡（bao-soaked：a03-s007–s032；bao-chilled：a03-s033–s063、a05-s057–s085）；沒有超過 3 個角色的鏡頭；alliance-guard 只出現在 a01-s015、a05-s043；禁字（鬼燈、無歸箭、印、精元、一年前、黑風、那一夜我在）0 次，「傷」「死」「壓」都只出現在必留或建議台詞裡；燕迴沒說過「島底下」；banned.txt 與 allnames.txt 0 命中；跟第 1 集逐字相同的只有短句，以及刻意呼應的「……但願如此。」。",
+ "findings": [
+  {
+   "severity": "major",
+   "shots": [
+    "a05-s063",
+    "a05-s064",
+    "a05-s065",
+    "a05-s066",
+    "a05-s067",
+    "a05-s068",
+    "a05-s069",
+    "a05-s070",
+    "a05-s071"
+   ],
+   "problem": "懸念場裡加了一大段沈歸鶴教包三錢怎麼答寂聞的戲：把第四幕的必留句逐字重說一次，把第三幕包三錢的話換個說法再講一次，把第 3 集要演的「包三錢臨場替他瞞」變成事先串好的供詞，還把拓片延後約 46 秒才上桌。",
+   "evidence": "a05-s067 沈歸鶴「什麼都沒看清，」「就掉進了海裡。」跟 a04-s063 的必留逐字相同。a05-s069「你在青光底下，」「只顧著擦，」「本來就沒看清。」重述 a03-s049 包三錢的「青光底下，」「只顧著擦，」「沒顧上看。」。這一段在 21:46–22:32（s061–s071，11 鏡），夾在進門寒暄和「拓片，救回來了」中間；分場表 a05 書齋第 1–2 步是進門寒暄後直接上拓片。分場表第十一節把「等他退燒」那一問留給第 3 集。ep3/beats.md a01 場 6 寫的是「Bao 眼角瞄一下沈歸鶴…答得跟沈歸鶴第 2 集一模一樣——這是他替沈歸鶴瞞陣說的謊」，第 2 集先排練過，第 3 集那一瞄就沒有戲了。",
+   "fix": "保留 s063–s066（轉告寂聞要來問話、Bao「問什麼？」「那……我看見什麼？」）。s067–s069 改寫成不給答案、也不重複舊句的對話，長度相近，例：s067 Shen「到時候，」「你看著我。」；s068 Bao「看著您……」「就知道答什麼？」；s069 Shen「你一向，」「比我會答。」。s070、s071 照舊。這樣不重複第三、四幕的句子，還替第 3 集「眼角瞄一下沈歸鶴」埋了伏筆，秒數也大致不變，整集仍在 1,390 秒以上。若要直接刪 s067–s069（約 13 秒），省下的時間要補進 s082 並排鏡、s083 反應鏡、s086 指尖鏡，否則總長會掉到 1,390 秒以下。"
+  },
+  {
+   "severity": "major",
+   "shots": [
+    "a05-s062",
+    "a05-s042",
+    "a05-s043",
+    "a05-s044"
+   ],
+   "problem": "包三錢說盟府守夜的在打盹，就排在盟兵作證姬無霜夜裡沒出門之後約一分鐘，等於暗示盟兵的證詞靠不住、她夜裡可能溜出去過，跟第八節「這幾夜盟兵說的是真話、本集不給任何暗示他撒謊的眼神或動作」相衝。第 3 集要用這份證詞，第 5 集他們還要再作證。",
+   "evidence": "a05-s062 沈歸鶴「上山的時候，」「有人看見嗎？」 包三錢「守夜的打著盹，」「沒人。」（21:52）。前面 a05-s042–s044（約 20:56）寂聞問「她夜裡，」「出過這道門嗎？」，兩名盟兵用力搖頭。分場表第八節：「客院盟兵：第 2 集這幾夜他們說的是真話…本集不給任何暗示他撒謊的眼神或動作。」ep3/beats.md a03 場 3 寂聞要提這份證詞，沈歸鶴回他「盟兵守的是門」。",
+   "fix": "把包三錢的回答換成跟守衛無關、長度相近的句子，例：「走挑水的小路，」「一個人也沒碰上。」，或者整組刪掉，6 秒挪給 a05-s061 或揭示段。不要出現任何守夜、守衛鬆懈的字眼。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s046",
+    "a02-s001",
+    "a02-s002",
+    "a02-s020"
+   ],
+   "problem": "寂聞說大夫在島上「看了一天」，可是第二幕明明拍了大夫黃昏才跟米船上島，天黑前就回船了。",
+   "evidence": "a02-s046 寂聞「大夫，」「看了一天。」「包三錢呢？」。a02-s001 旁白「當天黃昏，」「送米的船靠上鯨背嶼。」；a02-s002 的 prompt 是兩名大夫「climbing down the boat's side」，燕迴喊「大夫跟我來！」；a02-s020 燕迴「天黑前，」「大夫跟我回船！」。",
+   "fix": "改成同長度、不涉及時數的說法，例：「大夫，」「也只會搖頭。」，後面接「包三錢呢？」。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a01-s086",
+    "a02-s019",
+    "a02-s053",
+    "a02-s054",
+    "a02-s085"
+   ],
+   "problem": "「三十錢收少了」這個笑點在一、二幕講了四次，後兩次都是寫手自己加的，笑點被磨平，也搶了必留「三十錢買我一條命！」的力道。",
+   "evidence": "a01-s086「三十錢，」「太便宜了。」；a02-s019「三十錢，」「說不定還收少了。」；a02-s053–s054「三十錢……」「就買我半夜下海。」「虧大了。」「早知道，」「要五十。」；a02-s085「三十錢買我一條命！」「便宜您了！」。",
+   "fix": "a02-s019 換一句別的反應，例：「燒都不燒……」「怪事。」，或改成 2 秒無台詞的動作插鏡。a02-s085 刪掉「便宜您了！」，讓必留句單獨落地。分場表建議的礁岸「三十錢……」「虧大了」保留。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a03-s086",
+    "a03-s087"
+   ],
+   "problem": "竹虛剛點破「扇子不動」、又補了「現在動了」，接著兩人再把這個記號講一遍，等於第三次解釋同一個破綻，違反第六節竹虛「說到正事一句收住，不解釋」。",
+   "evidence": "a03-s083–s085 已經說了「白鶴，」「你說謊的時候，」「扇子是不動的。」「現在動了。」；緊接著 a03-s086 沈歸鶴「你該看人，」「不該看扇子。」，a03-s087 竹虛「人會說謊，」「扇子不會。」。",
+   "fix": "保留沈歸鶴那句推開話題的台詞。竹虛的回答換成不解釋、長度相近的乾話，例：「我兩樣，」「都看。」，然後照原 motion 轉向房門。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a01-s051",
+    "a01-s059",
+    "a05-s016",
+    "a05-s022",
+    "a05-s023",
+    "a05-s024"
+   ],
+   "problem": "同一座盟堂，兩場戲的出口方向相反。",
+   "evidence": "a01-s051 燕迴「strides toward camera, out past the lower left edge of frame」；a01-s059 殷無聲「walking toward screen left past the empty north cushion」跟著寂聞離席。a05-s022 寂聞與殷無聲「past the camera out of the lower right edge of frame」；a05-s023、s024 燕迴「turned toward the hall door at screen right」。",
+   "fix": "以 a01 為準（分場表要求殷無聲出堂時經過北側空座，出口在畫面左比較順）：a05-s022 改成「out of the lower left edge」，a05-s016 的手指方向、a05-s023 與 a05-s024 的「hall door at screen right」一併改成 screen left。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a04-s091",
+    "a05-s073"
+   ],
+   "problem": "第四幕尾鏡的閣樓寫成空屋，可是包三錢正臥病在這間閣樓的床上。第五幕他又說炭盆從沒熄過，跟尾鏡「將熄」的炭火有點兜不起來。",
+   "evidence": "a04-s091 prompt「A cramped attic room above a harbour shop late at night, no one in the room ... small iron brazier with dying coals」；a03 閣樓的床在畫面右，a05-s059 包三錢「躺了三天」；a05-s073 包三錢「乾紙換了二十回，」「炭盆沒敢熄過。」。",
+   "fix": "a04-s091 把「no one in the room」改成「the low bed out of frame at the right」，鏡頭只框木板與炭盆；炭火改寫成「coals burning low」，不寫「dying」，跟包三錢的台詞對得上。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a01-s061"
+   ],
+   "problem": "銅錢穿回的那一鏡列了 bao-sanqian，基本外觀會自動帶上「腰間三枚銅錢」，prompt 卻寫膝上兩枚、手裡一枚，生圖很容易畫出五、六枚。",
+   "evidence": "a01-s061 prompt「a red string with two square-holed copper coins across his lap」，motion「Bao lifts a third square-holed copper coin」；header 的 bao-sanqian appearance 是「three square-holed copper coins on a red string at his belt」。cast-notes.md 連戲提醒第 4 條建議用插鏡處理這件事。",
+   "fix": "prompt 明寫「the red string untied from his belt and lying across his lap with two coins, nothing at his belt」。或把 Bao 拍小、拍背影，數錢的細節只留給 a01-s062 插鏡。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a01-s026",
+    "a01-s034",
+    "a01-s048",
+    "a01-s056",
+    "a03-s082",
+    "a03-s087",
+    "a05-s008",
+    "a05-s012",
+    "a05-s016",
+    "a05-s039",
+    "a02-s038"
+   ],
+   "problem": "有些鏡頭殷無聲看得見、characters 也還有空位，卻只在 prompt 裡寫成「a lean swordsman」，沒有設定圖可依，臉上的疤和鐵環容易走樣。反過來，a02-s038 他躲在梯子下看不見，卻列進了 characters。",
+   "evidence": "例：a05-s039 prompt「Yin a half step behind him」，characters 只有 ji-wushuang、ji-wen；a01-s026 只列 ji-wen，prompt 卻寫「a lean swordsman in charcoal robes ... stands behind Jiwen」。a02-s038 prompt 寫「Yin below him on the ladder」，卻列了 yin-wusheng。",
+   "fix": "characters 少於 3 人、殷無聲又看得見的鏡頭，把 yin-wusheng 加進 characters（分場表只要求四人同框時才把他寫進 prompt）。a02-s038 改成讓殷無聲的頭肩露出梯口，或把他從 characters 拿掉。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a05-s057"
+   ],
+   "problem": "懸念場的建立鏡寫沈歸鶴拿筆懸在一張紙上，模型容易在紙上畫出假字，也容易跟稍後的拓片混淆。",
+   "evidence": "a05-s057 prompt「Shen seated behind the desk facing the camera, a brush in his right hand over a sheet of paper」。",
+   "fix": "改成「a brush resting in his right hand above the inkstone」或「a closed book before him」，桌上不放攤開的紙，避開文字，也讓拓片成為桌上唯一的紙。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a05-s066",
+    "a05-s072"
+   ],
+   "problem": "這兩鏡的 motion 各寫了兩個動作。",
+   "evidence": "a05-s066「Bao sniffs hard and cocks his head toward Shen」；a05-s072「The hand sets the folded paper down on the desk and slides it toward Shen」。",
+   "fix": "各留一個動作：s066 只留「cocks his head toward Shen」；s072 只留「sets the folded paper down on the desk」，推向沈歸鶴的動作交給 s076 他把紙拉過去。"
+  }
+ ]
+}
