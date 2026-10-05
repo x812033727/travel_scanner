@@ -41,6 +41,8 @@ containers are rebuilt, so the docs contradicted each other.
 - [x] Correct the docs and the comment.
 - [x] Add the paid-work section to the preflight script and run it on the host.
 - [ ] `npm run test:tools`, open a PR.
+- [ ] After it merges: deploy, run the new preflight first and `host-verify.sh` after, record the
+      result here and close the task in a tasks-only PR.
 
 ## How to verify
 
