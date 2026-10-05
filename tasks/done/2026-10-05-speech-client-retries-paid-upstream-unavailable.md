@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-speech-client-retries-paid-upstream-unavailable
 title: Speech client retries a paid upstream_unavailable once the lost-answer routes are live
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-speech-client-upstream-unavailable
 claimed_at: 2026-10-05T12:31:13Z
 created_at: 2026-10-05T07:42:22Z
-completed_at:
+completed_at: 2026-10-05T12:42:20Z
 branch: claude/speech-client-upstream-unavailable
 depends_on:
   - 2026-10-05-speech-routes-lost-paid-answer
