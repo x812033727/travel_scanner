@@ -2,7 +2,7 @@
 
 import { ExternalLink } from "lucide-react";
 import { useLocale } from "next-intl";
-import { type FormEvent, useEffect, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { Button, fieldClass, panelClass } from "@/components/community/ui";
 import { ApiError, api } from "@/lib/api";
@@ -76,6 +76,16 @@ export function YoutubeVpsSettingsCard() {
       .finally(() => { if (!controller.signal.aborted) setBusy(null); });
     return () => controller.abort();
   }, [copy.failed]);
+  // The uploader's settings link names this card by its fragment, but the settings tab renders on
+  // the client, after the browser's own jump found nothing to scroll to: arrive here once, when
+  // the saved settings first show.
+  const section = useRef<HTMLElement>(null);
+  const arrived = useRef(false);
+  useEffect(() => {
+    if (!view || arrived.current) return;
+    arrived.current = true;
+    if (window.location.hash === "#youtube-vps-settings") section.current?.scrollIntoView?.({ block: "start" });
+  }, [view]);
 
   const refresh = async () => {
     if (busy) return;
@@ -121,7 +131,7 @@ export function YoutubeVpsSettingsCard() {
   const browser = view?.browser_status === "working" ? copy.browserWorking : view?.browser_status === "idle" ? copy.browserIdle : view?.browser_status === "stopped" ? copy.browserStopped : null;
   const timestamp = view?.last_tested_at ? new Date(view.last_tested_at) : null;
 
-  return <section id="youtube-vps-settings" className={`${panelClass} grid min-w-0 scroll-mt-6 gap-4`} aria-labelledby="youtube-vps-settings-title">
+  return <section ref={section} id="youtube-vps-settings" className={`${panelClass} grid min-w-0 scroll-mt-6 gap-4`} aria-labelledby="youtube-vps-settings-title">
     <h2 id="youtube-vps-settings-title" className="text-xl font-bold">{copy.title}</h2>
     <p className="text-sm leading-6 text-[var(--muted)]">{copy.help}</p>
     {!manage.allowed && <p role="note" className="text-sm">{copy.readOnly}</p>}
