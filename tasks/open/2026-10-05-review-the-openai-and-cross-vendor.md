@@ -1,14 +1,14 @@
 ---
 id: 2026-10-05-review-the-openai-and-cross-vendor
 title: Review the OpenAI and cross-vendor evergreen AI pages after GPT-6 Sol/Luna, GPT-6.1 Sol and Claude 5.5
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5-openai-evergreen-pages
+claimed_at: 2026-10-05T13:36:14Z
 created_at: 2026-10-05T07:33:00Z
 completed_at:
-branch:
+branch: claude/openai-evergreen-pages
 depends_on: []
 scope:
   - apps/api/app/guides/content/ai-coding-cost-tokens-explained.json
