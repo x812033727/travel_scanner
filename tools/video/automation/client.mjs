@@ -236,7 +236,9 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
         if (policyHeld(entry.record)) {
           const freshSettings = await request("GET", "automation/settings");
           const requestFormat = entry.record.request.format;
-          const correctedSlides = requestFormat === "drama" && entry.record.request.payload.video?.format === "slides"
+          const savedVideo = entry.record.request.payload.video;
+          const correctedSlides = requestFormat === "drama" && savedVideo && typeof savedVideo === "object" && !Array.isArray(savedVideo)
+            && (savedVideo.format ?? "slides") === "slides"
             && authorization.format === "slides";
           const dramaEnabled = freshSettings.drama?.drama_enabled ?? freshSettings.drama_enabled;
           if (freshSettings.enabled !== true || (!correctedSlides && (requestFormat !== "drama" || dramaEnabled !== true))) {

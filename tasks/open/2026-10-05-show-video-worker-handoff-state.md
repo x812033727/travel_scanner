@@ -78,7 +78,7 @@ uv run --no-sync pytest tests/test_video_producer_state.py tests/test_video_revi
 
 Focused results on 2026-10-05: web 71 tests passed; API 61 passed, one symlink test
 skipped because this Windows session cannot create symlinks (it runs on Linux CI);
-mypy, ruff, typecheck and five-locale/25-namespace i18n validation passed.
+mypy, ruff, full web lint, typecheck and five-locale/25-namespace i18n validation passed.
 
 ## Notes
 
