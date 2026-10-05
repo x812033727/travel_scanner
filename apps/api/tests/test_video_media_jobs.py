@@ -98,6 +98,33 @@ async def test_lite_incompatible_jobs_spend_nothing(
     assert ctx.session.commits == 0  # type: ignore[attr-defined]
 
 
+@pytest.mark.parametrize("role", ["character", "style", "previous_frame"])
+@pytest.mark.asyncio
+async def test_h3_refuses_a_reference_its_v2_request_could_never_carry(
+    tmp_path: Path, role: str
+) -> None:
+    """H3's v2 image-to-video request holds no reference beside the first frame every clip has
+    (providers/minimax.py), so the catalog gives it 0 and a reference is refused, unspent,
+    instead of being stored, counted and dropped; its frames alone pass."""
+    model = find_model("minimax", "clip", "MiniMax-H3")
+    assert model is not None and model.reference_images == 0
+    provider = FakeProvider()
+    row = _row(clip_provider="minimax", clip_model="MiniMax-H3", clip_resolution="2k")
+    ctx = _context(tmp_path, provider, row=row)
+    clip = {"slug": "v", "shot_id": "opening", "prompt": "push in", "first_frame": "a" * 64,
+            "last_frame": "c" * 64, "seconds": 8}
+    payload = ClipJobIn.model_validate({**clip, "references": [{"sha256": "b" * 64, "role": role}]})
+    with pytest.raises(MediaJobFailed) as refused:
+        await submit_job(ctx, "clip", payload)
+    assert (refused.value.status, refused.value.code) == (422, "video_media_model_not_allowed")
+    assert refused.value.detail.startswith("MiniMax H3")
+    assert provider.requests == [] and ctx.session.added == []  # type: ignore[attr-defined]
+    assert ctx.session.commits == 0  # type: ignore[attr-defined]
+    assert await meter.used(ctx.redis, meter.CLIP_SECONDS) == 0
+    fields = service._request_fields(ClipJobIn.model_validate(clip), row, model)
+    assert [ref["role"] for ref in fields["references"]] == ["first_frame", "last_frame"]
+
+
 def _row(**changes: Any) -> VideoAutomationSettings:
     values = {
         **copy.deepcopy(DEFAULT_DRAMA),
