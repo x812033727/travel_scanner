@@ -1,11 +1,11 @@
 ---
 id: 2026-09-20-launch-korea-food-specials-1
 title: Launch the Korea food and cafe specials batch 1
-status: review
+status: open
 priority: P2
 area: docs
-owner: codex
-claimed_at: 2026-09-20T12:09:46Z
+owner:
+claimed_at:
 created_at: 2026-09-20T09:06:28Z
 completed_at:
 branch: codex/korea-food-specials-complete
@@ -167,3 +167,4 @@ curl -s -o /dev/null -w "%{http_code}\n" https://mokaair.com/zh-TW/guides/topics
   description, summary, table, blocks 23 and 36, the diagram and its lifted
   description, image alt), and 비빔고기국수's row reads 豬肉拌麵. The pack's
   search aliases keep the old names. Nothing else in this ticket's scope changed.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex (since 2026-09-20T12:09:46Z) was stale and is released so it stops locking its scope. Landed: #601. Still open: Per-article production checks (200, h1, canonical, noindex, hero/diagram 200) for the remaining 19 of 22; Subtopic hubs list the right articles; breadcrumb check; Page-by-page verification incl. Naver link spot check in a real browser; Admin todos in docs/korea-food-specials/admin-todo.md.

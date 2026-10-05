@@ -20,7 +20,7 @@ if (destinations.some(existsSync)) throw new Error('Runtime already exists; insp
 cpSync(path.join(repo, 'tools/video'), destinations[0], { recursive: true, force: false, errorOnExist: true });
 cpSync(path.join(repo, '.agents/skills/youtube-video'), destinations[1], { recursive: true, force: false, errorOnExist: true });
 mkdirSync(code, { recursive: true });
-for (const name of ['runner.mjs', 'prepare.mjs', 'preflight.mjs']) {
+for (const name of ['runner.mjs', 'prepare.mjs', 'preflight.mjs', 'speech-journal.mjs']) {
   cpSync(path.join(here, name), path.join(code, name), { force: false, errorOnExist: true });
 }
 const files = [];

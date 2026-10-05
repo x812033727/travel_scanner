@@ -1,11 +1,11 @@
 ---
 id: 2026-09-20-correct-hakone-and-noboribetsu-bathing-tax
 title: Correct Hakone and Noboribetsu bathing tax age wording
-status: in-progress
+status: open
 priority: P2
 area: api
-owner: codex-article-localization
-claimed_at: 2026-09-20T08:37:35Z
+owner:
+claimed_at:
 created_at: 2026-09-20T08:37:30Z
 completed_at:
 branch:
@@ -60,3 +60,4 @@ draft and publish calls, then match the corrected published hash afterward.
   `2026-09-20-lodging-tax-wording-site-wide`): in this ticket's packs the zh-TW
   title, description and body now say 住宿稅 where they said 宿泊稅 or 宿泊税.
   No number changed; Japanese official page names in `sources` are unchanged.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-article-localization (since 2026-09-20T08:37:35Z) was stale and is released so it stops locking its scope. Landed: #588 #1028. Still open: Pack passes CI and guarded zh-TW publication; Deploy, version-pinned dry run and publication; Verify desktop/mobile live page and preserved non-public locales.

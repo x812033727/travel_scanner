@@ -1,11 +1,11 @@
 ---
 id: 2026-09-16-news-batch-4-4-the-8
 title: "News batch 4.4: secondary news for the three verticals (AI/tech 8/1–9/15, crypto all-2026), zh-TW only"
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: claude-fable-5-1
-claimed_at: 2026-09-23T00:17:49Z
+owner:
+claimed_at:
 created_at: 2026-09-16T14:16:20Z
 completed_at:
 branch: claude/news-batch-4-4-secondary
@@ -141,3 +141,4 @@ scope:
   `blocks[16].alt` of `ai-news-gemini-student-offer-20260820` changed, to
   describe the diagram as drawn (2×2 boxes, no arrows, each box's title and
   line). Nothing else in this ticket's scope changed.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-23T00:17:49Z) was stale and is released so it stops locking its scope. Landed: #672. Still open: 29 content packs with research records (only 6 done); check_article/pack_cli lint for every article; three indexes zh-TW only (tech and crypto indexes not touched); merge, deploy, guides-import x29 + indexes, publish, verify; candidate lists, DELTA-4-4.md and the RELATED 4.4 section; per-article research -> writing -> fact-check -> art pipeline for the remaining 23; quota rule notes; commit/PR/CI/owner merge -> deploy -> import -> done.

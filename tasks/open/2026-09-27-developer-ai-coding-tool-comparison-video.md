@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-developer-ai-coding-tool-comparison-video
 title: Developer AI coding tool comparison video
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-video-review
-claimed_at: 2026-09-27T16:32:22Z
+owner:
+claimed_at:
 created_at: 2026-09-27T15:25:28Z
 completed_at:
 branch: codex/ai-developer-videos
@@ -42,3 +42,4 @@ scope:
 2026-09-28：獨立 verify-1.md、verify-2.md 完成；Google 官方棄用公告與本機登入錯誤重新核對，影片明示 Gemini 未進入程式能力比較。五語字幕經獨立交叉審稿，28 張字卡與縮圖已目視檢查，TTS 正在進行。原始 CLI 輸出只在 repo 外；畫面為實際輸出的視覺化。
 2026-09-28：Gemini Sulafat 旁白完成，`check-audio` 131/131 句、零標記；改寫的八句已同步五語字幕並經獨立覆核，`lint` 零錯誤零警告，最終成片重組中。站主大綱核准、正式站審核、11 項品管與待上架包尚待完成。
 2026-09-28：新版 1080p `final.mp4` 完成，18,899 影格、約 10:30、-14 LUFS；`checks.json` 全過且無問題。五語字幕已按最終時間軸重產。待站主大綱核准及正式站各審核關卡。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-video-review (since 2026-09-27T16:32:22Z) was stale and is released so it stops locking its scope. Landed: #868. Still open: Independent check passed; TTS, five-language subtitles, thumbnail, final cut and upload package; Run the media pipeline and quality checks after the independent check.

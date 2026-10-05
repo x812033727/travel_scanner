@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-batch036-marketing-pair-a
 title: Batch036 localize marketing pair A in five languages
-status: review
+status: open
 priority: P2
 area: docs
-owner: codex-root
-claimed_at: 2026-09-28T10:23:38Z
+owner:
+claimed_at:
 created_at: 2026-09-28T09:19:38Z
 completed_at:
 branch: codex/article-localization-036-marketing-a
@@ -70,3 +70,4 @@ source-metadata follow-up. Public browser QA is pending.
 Draft PR: https://github.com/x812033727/travel_scanner/pull/908.
 CI began on the submitted branch; merge remains gated on independent editorial
 review and green checks.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-root (since 2026-09-28T10:23:38Z) was stale and is released so it stops locking its scope. Landed: #908. Still open: Green PR checks before merge (done implicitly, merged); Correct inherited Google SEO title and hl=zh-Hant source metadata via versioned source follow-up; Import/publish guarded locale revisions and verify live pages.

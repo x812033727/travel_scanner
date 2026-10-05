@@ -4,6 +4,8 @@
 
 每個數字都標來源：**價目**是官方頁或目錄檔讀到的（附日期）；**工具規定**是 `tools/video` 或 `apps/api` 裡的常數（附檔名）；**模型限制**是供應商文件寫的；**實測**是在站主的帳號上送出、下載或讀到的（附日期；2026-10-04 是 Hailuo 的一支片段與 Kling CLI 的輸出）；**推算**是本文從前兩者算出來、沒有在生成器裡核對過的；**未驗證**是第三方整理或根本讀不到的。價目與積分會不預告就改：定一場戲的錢之前，先把本文 §5 的頁面再讀一遍，把日期更新。
 
+**開拍前先讀 `.agents/skills/animation-preproduction/references/route-decisions.md`**：每鏡走哪條路、買幾秒、哪個解析度、正文照哪家官方格式寫，都在那裡定，並寫進開拍鎖定包；這篇是方案、價目與帳的細節。2026-10-04 研究代理逐頁讀了官方頁（MiniMax 平台文件、hailuoai.video 訂閱頁與 UI 字串、Hugging Face 上的 MiniMax-H3 官方提示指南、kling.ai 的 quickstart、API 文件與價目頁），本文標「官方 2026-10-04」的都來自那次。
+
 **本次 route 以使用者指定為準**：使用者提供內建瀏覽器並選 Hailuo／Kling 時，先讀 `browser-production.md`、依當次工具文件查 upload／download、做三鏡 pilot，再沿既有接受流程擴大。下面的價格與 Claude／Kling CLI 操作結果保留為歷史來源；它們不把本次 Kling 網頁換成 CLI，不代表今天的 UI、點數或 Codex 瀏覽器能力已驗。
 
 ## 1. 三條路線並排
@@ -13,12 +15,12 @@
 | 誰在呼叫 | `node tools/video/cli.mjs clips` 經網站的媒體端點叫 Gemini／MiniMax；金鑰只在站上 | 本次代理用使用者提供的內建瀏覽器與**站主的登入**；檔案能力依 browser-production 查本次文件 | 本次同樣先用 Kling 網頁與站主登入；CLI／MCP 另選才用，開發者 API 的資源包與會員積分分開 |
 | 計價 | 每秒：`usd_per_second × seconds`，解析度不改價（工具規定，`apps/api/app/video_media/meter.py` `usd_for`） | 月費換積分，積分月底歸零；用完可加購 | 會員月費換積分；開發者 API 另賣資源包，兩邊不互通 |
 | 片段模型 | `apps/api/app/video_media/catalog.py` 列的：Omni 1.1 Flash、Veo 3.1／Fast／Lite、MiniMax-H3 | H3、H3 Max、Hailuo 2.0／2.3／1.0、Sora 2、Veo 3.1 | CLI 列的 `kling-video-v3_0`、`v3_0_omni`、`v3_0_turbo`、`o1`、`v2_5`、`v2_6`，另有 `motion_control`（實測 2026-10-04，§1.3） |
-| 首尾格與參考圖 | 首格必帶；參考圖最多 4（`MAX_REFERENCES`，`apps/api/app/video_media/schemas.py`；目錄寫 H3 9 張、Pro Image 14 張是供應商上限，不是我們送得出的）；Lite 不收參考圖 | 首格與末格；參考上傳區「參考 (0/12)」 | `kling-video-v3_0`：`first_image`＋`tail_image`、elements；`v3_0_omni`／`o1`：`image_1`…`image_7`；`v3_0_turbo` 只有 `first_image`（實測 2026-10-04） |
+| 首尾格與參考圖 | 首格必帶；參考圖最多 4（`MAX_REFERENCES`，`apps/api/app/video_media/schemas.py`；目錄寫 H3 9 張、Pro Image 14 張是供應商上限，不是我們送得出的）；Lite 不收參考圖 | H3 首格、末格；參考上傳區「參考 (0/12)」，但**有首格時不能再帶參考圖**（官方 2026-10-04：H3 的 v2 API 圖生影片與參考生影片互斥）；Hailuo 2.3 只有首格 | `kling-video-v3_0`：`first_image`＋`tail_image`、elements；`v3_0_omni`／`o1`：`image_1`…`image_7`；`v3_0_turbo` 只有 `first_image`（實測 2026-10-04）。網頁 VIDEO 3.0 可首格＋綁最多 3 個元素（官方 2026-10-04） |
 | 品檢 | ffmpeg（`tools/video/media/qc.mjs`）＋ judge 自動跑，不過換 seed，最多 2 次（`MAX_CLIP_TAKES`，`tools/video/media/clips.mjs`） | 站方沒有；`clips import` 匯入時跑同一組 ffmpeg 檢查，judge 要帶 `--judge` | 同左 |
 | 快取、帳本、預算 | `media/cache.json`（同一請求不付兩次）、`media/ledger.json`（每筆花費）、伺服器的每月預算與單支上限 | 沒有快取與伺服器預算；`clips import` 把點數與秒數記進帳本（`status: "imported"`） | 同左 |
 | 進產線 | 直接 | 下載後 `clips import`（§3） | 同左 |
 | 浮水印、商用 | 無浮水印；依各供應商條款 | 免費下載有浮水印；Standard 以上沒有，且保留 IP 含商用（條款，2026-10-03 讀）。付費帳號也要走「無水印下載」：結果卡 `<video>` 的 src 是有浮水印的版本（實測 2026-10-04，§1.2） | 付費方案去浮水印、「Generated content is for commercial use」（會員頁，2026-10-03 讀） |
-| 併發 | 伺服器每小時 240 次圖片送出、360 次 judge（`apps/api/app/video_media/admin_api.py`）；每月 3,000 片段秒、1,500 張圖、3,000 次 judge、60 首音樂（預設，`apps/api/app/video_automation/models.py`） | 方案表：8–12 個排隊、1–2 個執行；條款另寫付費「最多五個同時」 | 付費方案：排隊不限、fast-track |
+| 併發 | 伺服器每小時 240 次圖片送出、360 次 judge（`apps/api/app/video_media/admin_api.py`）；每月 3,000 片段秒、1,500 張圖、3,000 次 judge、60 首音樂（預設，`apps/api/app/video_automation/models.py`） | 方案表：排隊 Standard 8、Pro 8、Master 12、Max 12，同時跑 1／2／2／2（官方 2026-10-04 再讀）；條款（2025-07-14 版）的「排 5、跑 2」是舊的 | 付費方案：排隊不限、fast-track |
 | 今天能用在 | 任何漫劇；有 production profile 的作品只能用 profile 指定的模型 | **沒有** production profile 的漫劇；import 對任何 profile 都拒絕，不只是不符 provider（§3） | 同左；repo 沒有 Kling adapter（`tasks/open/2026-09-26-video-drama-kling-provider-card.md`，P3） |
 
 ### 1.1 伺服器 API
@@ -50,11 +52,11 @@
 | Standard | US$14.99 | US$8.40（US$100.80／年） | 1,000 | 8／1 | — | — |
 | Pro | US$54.99 | US$30.40 | 4,500 | 8／2 | 1K 無限（Nano Banana Pro／2、Seedream 4.5、GPT Image 1.5） | — |
 | Master | US$119.99 | US$71.20 | 10,500 | 12／2 | 2K 無限 | — |
-| Max | US$199.99 | US$184.00（US$2,208／年） | 27,000 | 12／2 | 4K 無限 | 積分用完後無限生成、進較慢的隊列。**哪些模型，兩個來源說法不同**（2026-10-03 同日讀）：方案表寫「海螺 2.0／2.3 模型 無限制」，FAQ 寫「MAX 會員可以使用海螺 1.0 和 2.0 系列模型無限制生成」；H3 兩邊都不在。`SKILL.md`、`cost-model.md` 與 `episode_estimate.mjs` 的 PLANS 都指這一格 |
+| Max | US$199.99 | US$184.00（US$2,208／年） | 27,000 | 12／2 | 4K 無限 | 積分用完後無限生成、進較慢的 relax 隊列。2026-10-04 的 tooltip 列 Hailuo 1.0、1.0-Director、1.0-Live、2.0、2.3、2.3-Fast，**H3 不在**（官方）；FAQ 還寫「20,000 積分」與「1.0 和 2.0」，是沒更新的舊答案。`SKILL.md`、`cost-model.md` 與 `episode_estimate.mjs` 的 PLANS 都指這一格 |
 
 條款（價目，2026-10-03）：會員積分一個月到期；加購 US$1 換 70 積分，有效到購買後第二個日曆年的 12 月 31 日；付費方案「retain any and all intellectual property rights to such content, including the right to use it for commercial purposes」；免費下載有浮水印、Standard 以上沒有；取消不退款；生成失敗或**內容審查不過**自動退積分（所以有內容審查）。條款頁還列著舊方案 Unlimited US$94.99 與 Ultra US$124.99，訂閱頁沒有。
 
-**積分怎麼換秒**：H3 2K 每秒 12 積分是**實測 2026-10-04**——建立列「創建」旁邊顯示這次送出要扣的積分，H3 2K 5 秒顯示 60，送出後餘額 27,150 → 27,090；跟先前用訂閱頁每方案「約可做幾秒」反推的數字一致。量的是 Max 帳號；其他方案也是 12，仍是那個反推（四個方案的每月秒數都對得上）。H3／H3 Max 768P 每秒 7 積分、H3 Max 480P 每秒 4 積分仍是**推算**（同一個反推，四個方案都對得上；768P 沒有量）。所以一段 8 秒 2K 是 96 積分（12 × 8），8 秒 768P 是 56 積分（推算）。訂閱頁自己標的「每秒美元」（Standard：2K US$0.101、768P US$0.059；Pro 以上：2K US$0.081、768P US$0.047、480P US$0.027）**只在年繳價成立**（375 秒 × 0.081 ≈ US$30.40，就是 Pro 的年繳月價）；月繳要用下表。
+**積分怎麼換秒**：H3 2K 每秒 12 積分是**實測 2026-10-04**——建立列「創建」旁邊顯示這次送出要扣的積分，H3 2K 5 秒顯示 60，送出後餘額 27,150 → 27,090；跟先前用訂閱頁每方案「約可做幾秒」反推的數字一致。量的是 Max 帳號；其他方案也是 12，仍是那個反推（四個方案的每月秒數都對得上）。H3／H3 Max 768P 每秒 7 積分、H3 Max 480P 每秒 4 積分仍是**推算**（同一個反推：方案表 1,000 積分＝768P 143 秒、H3 Max 480P 250 秒；帳號上沒實扣）。UI 另有一句價錢提示「Video: 12 Credits/s、圖片前 5 張免費之後 3 點／張、音訊免費」，那是 H3 參考模式（Omni Reference）**輸入素材**的計價，不是輸出的每秒價；用首格的圖生影片不會帶參考素材（官方 2026-10-04）。頁面程式包裡另有每月繳的每秒美元標籤（H3 2K：Standard 0.126、Pro／Master 0.102、Max 0.096），跟標價月費 ÷ 秒數（Pro 0.147）對不上，可能是促銷價，送出前以頁面為準。所以一段 8 秒 2K 是 96 積分（12 × 8），8 秒 768P 是 56 積分（推算）。訂閱頁自己標的「每秒美元」（Standard：2K US$0.101、768P US$0.059；Pro 以上：2K US$0.081、768P US$0.047、480P US$0.027）**只在年繳價成立**（375 秒 × 0.081 ≈ US$30.40，就是 Pro 的年繳月價）；月繳要用下表。
 
 | 每秒 | Standard | Pro | Master | Max | 加購積分 |
 | --- | --- | --- | --- | --- | --- |
@@ -64,7 +66,7 @@
 | 每月 2K 秒數 | 84 | 375 | 875 | 2,250 | — |
 | 每月 768P 秒數 | 143 | 643 | 1,500 | 3,857 | — |
 
-模型與方案（訂閱頁）：H3 4–15 秒 768p／2K；H3 Max 5–15 秒 480p／768p；Hailuo 2.3 6 秒 768p／1080p（Pro 以上 10 秒）；Hailuo 2.0（首尾格）6 秒 512p／768p／1080p（Pro 以上 10 秒）；Sora 2 4／8／12 秒 720p；Veo 3.1 8 秒 720p／1080p；Hailuo 1.0 6 秒 720p。各模型每段扣幾積分在生成器的建立列（「創建」旁）看得到：H3 2K 實測過（上段），H3 768P 與 H3 Max 是推算；Hailuo 2.3、Sora 2、Veo 3.1 在這裡的積分**未驗證**。注意 H3 沒有 1080p：2K 的輸出是 2560×1440（實測 2026-10-04），768P 在 1080p 之下（輸出尺寸沒量）；production profile 要求原生 1920×1080（§3）。
+模型與方案（訂閱頁）：H3 4–15 秒 768p／2K；H3 Max 5–15 秒 480p／768p；Hailuo 2.3 6 秒 768p／1080p，768p 另有 10 秒（Pro 以上）；Hailuo 2.0（首尾格）6 秒 512p／768p／1080p，512p／768p 另有 10 秒（Pro 以上）；Sora 2 4／8／12 秒 720p；Veo 3.1 8 秒 720p／1080p；Hailuo 1.0 6 秒 720p。各模型每段扣幾積分在生成器的建立列（「創建」旁）看得到：H3 2K 實測過（上段），H3 768P 與 H3 Max 是推算（上段）；其他模型訂閱頁 FAQ 有寫（官方 2026-10-04）：Hailuo 2.3／2.0 768p 6 秒 25、1080p 6 秒 80、768p 10 秒 50；2.3-Fast 15／50／30；Sora 2 4／8／12 秒 40／80／120；Veo 3.1 8 秒 120（促銷，原價 320）、3.1-Fast 60（原價 120）。首尾格只有 Hailuo 2.0（API 的 fl2v 是 02）；2.3 與 2.3-Fast 沒有首尾格。注意 H3 沒有 1080p：2K 的輸出是 2560×1440（實測 2026-10-04），768P 在 1080p 之下（輸出尺寸沒量）；production profile 要求原生 1920×1080（§3）。
 
 **實測的一支**（2026-10-04，站主的 Max 帳號，文生影片，MiniMax H3、2K、5 秒、16:9；只有這一支，768P 與圖生影片都沒量）：
 
@@ -80,7 +82,7 @@
 - **當時的 Claude 桌面版圖生影片沒有本機 upload 工具**；頁面讀 loopback 也被擋（`net::ERR_BLOCKED_BY_CLIENT`）。沒有送出圖生影片，換瀏覽器的 upload 方案亦未驗；不能推論現在的 Codex 同樣做不到。
 - 當時隱藏 pane 的選單／截圖失敗，窄視窗的設定鈕難操作，提示框是 Slate 編輯器。這些是當時 UI 的觀察，現行表單先讀新狀態，不沿用舊選擇器、頁面 action JS 或讀取 browser profile 的做法。
 
-**本次操作**照 `browser-production.md`：使用者登入與提供分頁 → 查工具能力與匯入目的地 → 上傳核准首格 → 核對 16:9、模型、解析度、單鏡與秒數 → 記完整提示、首格 hash、job 與點數 → 一次送出 → 查同一 job → 官方無浮水印下載 → 三鏡實速小樣 → 匯入。無負面欄位時，把已核准的限制清楚接入正文並記輸入方式；不以未核對的舊 UI 細節作為操作依據。
+**本次操作**照 `browser-production.md`：使用者登入與提供分頁 → 查工具能力與匯入目的地 → 上傳核准首格 → 核對 16:9、模型、解析度、單鏡與秒數 → 記完整提示、首格 hash、job 與點數 → 一次送出 → 查同一 job → 官方無浮水印下載 → 三鏡實速小樣 → 匯入。`look.negative` 只貼進表單真的有的負面欄，沒有就不貼、收據記 negative=not_available，不寫進正文；不以未核對的舊 UI 細節作為操作依據。
 
 浮水印歷史實測：卡片播放檔右下角有「MINIMAX | Hailuo AI」，官方「無水印下載」取得另一份乾淨檔。`clips import` 的 ffmpeg 檢查看不出浮水印，下載錯版本仍可能通過；`--judge` 的 `no_text` 題也只可能抓到，所以下載後實看。送出到完成約 4 分 40 秒與 60 點只是當時那一支的結果，不給本次隊列或價錢保證。
 
@@ -97,7 +99,9 @@
 | Premier | US$92 | US$64.99 | US$80.96 | 8,000 | US$0.81 |
 | Ultra | US$180 | US$127.99 | US$159.99 | 26,000 | US$0.49 |
 
-年繳 34% off。每個付費方案：排隊不限、fast-track、1080p、圖片放大、去品牌浮水印、影片延長、商用；Pro 以上先用新功能；一次最多出 4 支（Basic 1）；高階有 4K。每段扣幾積分**未驗證**：第三方 2026 年的整理說 3.0 Omni 標準模式 5 秒約 35–45 積分、專業模式約 70；官方 CLI 的 `who_am_i` 列模型與參數、不給積分價，而 2026-10-04 授權進來的帳號是 NORMAL、0 積分，一支都沒生成（見下）。本文的 Kling 美元數全部建立在「標準 5 秒 40 積分、10 秒 80 積分」這個未驗證的假設上。第三方說的「Kling 只有 5 秒或 10 秒」對 3.0 不成立（`kling-video-v3_0` 是 3–15 秒整數，實測 2026-10-04），但 5、10 以外的秒數扣幾積分沒有任何來源。
+年繳 34% off。每個付費方案：排隊不限、fast-track、1080p、圖片放大、去品牌浮水印、影片延長、商用；Pro 以上先用新功能；高階有 4K。官方的「每 100 積分」以續訂價算是 Standard US$1.33、Pro 1.09、Premier 1.01、Ultra 0.62（kling.ai 積分花費部落格，2026-07-28；上表的頁面數字是首月價算的）。
+
+**每秒扣幾積分（官方 2026-10-04，還沒在站主帳號實扣）**：VIDEO 3.0 與 3.0 Omni 不開原生音訊 1080p 8、720p 6；開音訊 12／9；語音控制再加 2；4K 30；Omni 帶參考影片 16／12（不支援音訊）；O1 1080p 8、720p 6；2.6 不開音訊專業 5、標準 3（kling.ai quickstart 的各模型 user guide 與積分花費部落格）。所以 1080p 不開音訊的 5 秒是 40——先前第三方的「5 秒 40」只對這一種成立。秒數：3.0／Omni 3–15 整數，O1 3–10，2.6 只有 5 或 10。網頁有「輸出數」設定（2.6 指南寫一次最多 4 支）：要設 1；積分是不是照支數乘官方沒寫，送出前看 Generate 旁的數字。失敗的生成退積分，「批次生成」標不退（UI 字串）。Multi-Shot 關著時 3.0 預設產生單鏡；正文寫 single continuous shot。Kling 4.0 官方說 10 月上線（3–30 秒、10 張關鍵影格），價目頁還沒有。
 
 **另選 CLI／MCP 的歷史資料**（指南 `kling.ai/app/mcp/guide`，登入後讀得到；實測 2026-10-04）。指南說同一個助理只裝其中一種；先前 CLI 的選擇不覆蓋本次網頁指定：
 
@@ -106,7 +110,7 @@
 
 指令與 MCP 的工具一對一：`who_am_i`、`text_to_video`、`image_to_video`、`omni_ref_video`、`text_to_image`、`image_to_image`、`motion_control`、`motion_library_list`、`element_create`／`element_list`／`element_get`／`element_update`／`element_delete`、`query_tasks`、`file_upload`、`account`、`tool_list`、`feedback`、`logout`。
 
-- `kling account` 回 `membershipType` 與 `availableRemainCredits`：讀起來是**會員積分**，不是開發者資源包；還沒有用一次付費生成確認（未驗證）。
+- `kling account` 回 `membershipType` 與 `availableRemainCredits`：是**會員積分**（官方 MCP／CLI 常見問題說跟網頁同一套，2026-10-04 讀），不是開發者資源包；還沒有用一次付費生成核對扣點。
 - `kling who_am_i` 列模型與參數，不給積分價。
 
 `image_to_video` 的模型（NORMAL 免費帳號列出的，**全部只有 720p**；實測 2026-10-04）：
@@ -118,11 +122,11 @@
 
 **進產線時 `enable_audio` 與 `prefer_multi_shots` 都要傳 false**：一鏡是一個連續鏡頭（模型自己切鏡是 `tools/video/media/qc.mjs` 會擋的那一類），片段的聲音成片不用。
 
-**還沒驗的**：當時帳號顯示 `membershipType` NORMAL、0 積分，所以沒有生成任何東西。每支扣幾積分、付費方案在 CLI 上有沒有 1080p（會員頁寫付費方案有 1080p）、CLI 扣的是不是會員積分，都還是**未驗證**；另選 CLI 且有生成授權時，先讀帳號／模型資料並記一次生成前後差額，再改實測紀錄。CLI 做的片段匯入時用 `--provider kling-mcp`（`clips import` 只有 `hailuo-web`、`kling-mcp`、`external` 三個值），是 CLI 做的就寫進 `--note`；網頁用 external，兩者不混寫。
+**還沒驗的**：當時帳號顯示 `membershipType` NORMAL、0 積分，所以沒有生成任何東西。官方的 MCP／CLI 常見問題（kling.ai 網頁的 UI 字串，2026-10-04 讀）說 MCP 與 CLI 跟網頁用同一套積分、訂閱權益通用；每秒的價也有官方數字（上段）。還沒實際扣過一支、付費方案在 CLI 上有沒有 1080p 仍**未驗證**；另選 CLI 且有生成授權時，先讀帳號／模型資料並記一次生成前後差額，再改實測紀錄。CLI 做的片段匯入時用 `--provider kling-mcp`（`clips import` 只有 `hailuo-web`、`kling-mcp`、`external` 三個值），是 CLI 做的就寫進 `--note`；網頁用 external，兩者不混寫。
 
 **社群 MCP**（github.com/199-mcp/mcp-kling，2026-10-03 讀 README）：用開發者 API 的 access key 與 secret key 自動簽 JWT，扣的是**資源包**，不是會員積分；工具有 `generate_video`（5 或 10 秒、標準／專業、cfg_scale、鏡頭控制）、`generate_image_to_video`（圖生影片，鏡頭控制 `static`／`zoom`／`pan`／`auto` 加一段 motion prompt）、`extend_video`、`create_lipsync`、`generate_image`（KOLORS）、`get_account_balance`、`get_resource_packages`、`list_tasks`；結果下載到本機 `./downloads/` 底下分類資料夾。對應我們的運鏡字（詳見 animation-camera skill）：`locked`→`static`，`push-in`／`pull-out`→`zoom`（方向寫進 prompt），`pan-left`／`pan-right`→`pan`，`drift` 沒有對應，用 `static` 加 motion prompt。它的 `generate_video` 只給 5 或 10 秒，是這個社群工具的限制，不是 Kling 3.0 的。
 
-**開發者 API**（kling.ai/dev；頁面是殼，數字是第三方整理，**未驗證**）：試用 US$9.80／100 units（30 天）、US$98／1,000；Standard US$700／5,000、US$2,100／15,000、US$4,200／30,000、US$7,560／60,000，180 天有效、20 併發；3.0 Omni 標準 5 秒約 US$0.42、10 秒約 US$0.84、專業 5 秒約 US$0.56；1080p 無音訊約 US$0.112／秒、有原生音訊 US$0.168／秒、4K 約 US$0.42／秒。會員方案沒有 API 權限，API 的額度也不會進網頁生成器。
+**開發者 API**（kling.ai/dev/pricing 與 API 價目文件，官方 2026-10-04，從官方 JS 包讀；`docs/videos/why-openai-killed-sora/verify-1.md` 2026-09-28 讀的一致）：1 unit ＝ US$0.14；Kling 3.0 每秒 720P 0.6 u（US$0.084）、1080P 0.8 u（US$0.112），有音訊 0.9／1.2 u，4K 3.0 u；3.0 Omni 無影片無音訊 0.6／0.8 u；失敗不扣。先前第三方整理的資源包價（US$9.80／100 units 起、180 天、20 併發）在官方頁沒找到，**未驗證**。會員積分與 API units 分開賣，不互通。
 
 ### 1.4 MiniMax 預付套餐
 
@@ -141,10 +145,9 @@ platform.minimax.io 的 Video Packages（2026-10-03 讀）：Standard US$1,000�
 | 伺服器 MiniMax-H3 2K | 1.04（帳本）；官方 768P 0.64、2K 1.04 | 價目 0.13／秒；`meter.usd_for` 不分解析度 |
 | Hailuo H3 2K，96 積分 | 月繳 Standard 1.44、Pro 1.17、Master 1.10、Max 0.71；年繳 0.81／0.65／0.65／0.65；加購 1.37 | 12 積分／秒實測 2026-10-04（§1.2）；美元是月費 ÷ 積分的換算；輸出 2560×1440，不是 1080p |
 | Hailuo H3 768P，56 積分 | 月繳 0.84／0.68／0.64／0.41；年繳 0.47／0.38／0.38／0.38 | 推算（768P 沒量）；低於 1080p |
-| Hailuo 2.3 1080p 10 秒（Max 無限） | 月費之外 0；積分內的價未讀 | 訂閱頁 |
-| Kling 標準 10 秒（第三方的兩個檔位之一；80 積分） | 標價 Standard 1.21、Pro 0.99、Premier 0.92、Ultra 0.55；之後月價 1.07／0.87／0.81／0.49；年繳 0.80／0.65／0.61／0.37 | 未驗證（積分假設）。`kling-video-v3_0` 可以直接要 8 秒（3–15 秒整數，實測 2026-10-04），但 8 秒扣幾積分沒有來源，所以這裡仍列 10 秒 |
-| Kling 標準 5 秒（`episode_estimate.mjs` 的預設單位；40 積分） | 上列的一半：標價 0.61／0.49／0.46／0.28 | 未驗證（積分假設） |
-| Kling 開發者 API 10 秒 1080p | 0.84–1.12 | 未驗證（兩個第三方數字） |
+| Hailuo 2.3 1080p 6 秒（不夠 8 秒；1080p 沒有 10 秒），80 積分 | 月繳 Standard 1.20、Pro 0.98、Master 0.91、Max 0.59；Max 積分用完後月費之外 0（relax 佇列） | 官方訂閱頁 FAQ 與 tooltip 2026-10-04 |
+| Kling 3.0 1080p 8 秒、音訊關（64 積分） | 標價 Standard 0.97、Pro 0.79、Premier 0.74、Ultra 0.44；續訂 0.85／0.69／0.65／0.39；年繳 0.64／0.52／0.49／0.29 | 官方每秒 8 積分（2026-10-04），未實扣；美元是月費 ÷ 積分的換算；原生 1920×1080（官方說 1080p，尺寸未量） |
+| Kling 開發者 API 3.0 1080p 8 秒 | 0.90（0.8 u × 8 × 0.14） | 官方 2026-10-04 |
 
 **一集 60 鏡，一次成功**（假設：全部是 clip、每鏡買 8 秒＝480 秒；關鍵影格 60 × 0.134 ＝ 8.04；設定圖 3 角色 × 3 候選 × 0.134 ＝ 1.21；judge 9 ＋ 60 ＋ 60 ＝ 1.29，外部路線沒有片段 judge 是 0.69；音樂 0.08。照 `drama-craft.md` 的節奏，60 鏡大約是 3 分鐘、每鏡需求 2.5–3.5 秒，所以 480 秒是**買到的**，不是片長——利用率約四成；Omni／H3 上短鏡只買 4 秒，片段那欄可以減半）：
 
@@ -157,13 +160,13 @@ platform.minimax.io 的 Video Packages（2026-10-03 讀）：Standard US$1,000�
 | 伺服器 H3 2K | 62.40 | 10.62 | 73.02 | 帳本價；短鏡買 4 秒則 31.20 |
 | Hailuo H3 2K（5,760 積分＝480 秒 × 12，12 是實測 2026-10-04） | Master 月繳 65.82、年繳 39.06；Max 月繳 42.66、年繳 39.25 | 10.02 | 49–76 | Pro 的 4,500 不夠一集，要兩個月或加購 1,260 積分（US$18）；輸出 2560×1440，profile 不收 |
 | Hailuo H3 768P（3,360 積分，推算） | Pro 月繳 41.06、年繳 22.70；Max 月繳 24.89 | 10.02 | 33–51 | 低於 1080p，profile 不收 |
-| Kling 標準每鏡一支 10 秒（4,800 積分） | Premier 標價 55.20、之後月價 48.58、年繳 36.43；Ultra 33.23／29.54／21.93 | 10.02 | 32–65 | 未驗證；Pro 的 3,000 不夠一集 |
-| Kling 標準每鏡一支 5 秒（2,400 積分＝Pro 的 80%，`SKILL.md` 三條路線表與 `episode_estimate.mjs` 用這個） | Pro 標價 29.60、之後月價 26.05、年繳 19.54 | 10.02 | 30–40 | 未驗證；一集 60 鏡 Pro 剛好夠一次 take，兩次不夠。`kling-video-v3_0` 能照鏡長要 3–15 秒整數（實測 2026-10-04），那樣扣幾積分沒有來源 |
-| Kling 開發者 API | 50.40–67.20 | 10.02 | 60–77 | 未驗證 |
+| Kling 3.0 1080p 每鏡 8 秒（3,840 積分） | Premier 標價 44.16、續訂 38.86、年繳 29.15；Ultra 26.58／23.63／17.60 | 10.02 | 28–54 | 官方每秒價，未實扣；Pro 的 3,000 不夠一集 |
+| Kling 3.0 1080p 照鏡長買（每鏡約 4 秒＝1,920 積分，`shot_plan.mjs` 與 `episode_estimate.mjs` 的算法） | Pro 標價 23.68、續訂 20.84、年繳 15.63 | 10.02 | 26–34 | 官方每秒價，未實扣；Pro 一個月夠一次 take，兩次不夠 |
+| Kling 開發者 API 1080p 8 秒 | 53.76 | 10.02 | 64 | 官方（0.8 u × 480 秒 × US$0.14） |
 
 重拍不在表裡：伺服器路線每鏡最多 2 次（工具規定）；試作實際是 S01 送 4 次、S03 送 2 次、0 段被接受（量到的，`production-run-20261003.md`），而 `budget-and-launch.md` 的規矩是三份成功素材都不合格就重新設計鏡頭，不靠重抽。外部路線的重拍上限只有你自己的紀律，先在紀錄 JSON 裡寫下這一鏡允許幾次。操作時間也不在表裡：每段上傳、設定、等隊列、下載、`clips import`。量過的只有一支：Hailuo H3 2K 5 秒、沒有別的在排隊，送出到完成約 4 分 40 秒（實測 2026-10-04）；60 鏡的人工時數沒有量過。
 
-**訂閱什麼時候贏過每秒計價**：只有一個條件——這個月**真的用掉的秒數** ≥ 月費 ÷ 伺服器的每秒價。沒用完的積分月底歸零，所以分母是用掉的，不是方案給的。下表 Hailuo 的方案秒數是積分 ÷ 12（H3 2K 每秒 12 積分，實測 2026-10-04）；Kling 兩列仍建立在未驗證的積分假設上。
+**訂閱什麼時候贏過每秒計價**：只有一個條件——這個月**真的用掉的秒數** ≥ 月費 ÷ 伺服器的每秒價。沒用完的積分月底歸零，所以分母是用掉的，不是方案給的。下表 Hailuo 的方案秒數是積分 ÷ 12（H3 2K 每秒 12 積分，實測 2026-10-04）；Kling 兩列是積分 ÷ 8（官方每秒價，未實扣）。
 
 | 方案（H3 2K） | 月費 | 方案秒數 | 換算每秒 | 要用到幾秒才贏 Lite 0.08 | 贏 H3 API 0.13 | 贏 Omni 0.15 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -172,10 +175,10 @@ platform.minimax.io 的 Video Packages（2026-10-03 讀）：Standard US$1,000�
 | Hailuo Master 月繳 | 119.99 | 875 | 0.137 | 1,500（不可能） | 923（不可能） | 800 |
 | Hailuo Master 年繳 | 71.20 | 875 | 0.081 | 890（不可能） | 548 | 475 |
 | Hailuo Max 月繳 | 199.99 | 2,250 | 0.089 | 2,500（積分內不可能；之後 Hailuo 2.3 無限） | 1,538 | 1,333 |
-| Kling Pro 標價（未驗證） | 37 | 375 | 0.099 | 不可能 | 285 | 247 |
-| Kling Ultra 標價（未驗證） | 180 | 3,250 | 0.055 | 2,250 | 1,385 | 1,200 |
+| Kling Pro 標價（官方每秒價，未實扣） | 37 | 375 | 0.099 | 不可能 | 285 | 247 |
+| Kling Ultra 標價（官方每秒價，未實扣） | 180 | 3,250 | 0.055 | 2,250 | 1,385 | 1,200 |
 
-結論（編輯判斷，建立在上面的數字）：在產線現在的 Lite 價（0.08／秒 1080p）之下，**沒有任何訂閱靠積分贏**；訂閱贏的是（a）對 Omni 或 H3 API 的價，且每個月把積分用到八九成；（b）Max 積分用完後 Hailuo 2.3 1080p 的無限生成，量大且等得起隊列時；（c）Pro 以上無限的圖片生成，前提是關鍵影格能進 `keyframes/manifest.json`——今天沒有 import，storyboard 關卡綁的是工具畫的那份；（d）伺服器沒有 adapter（Kling）或主機地區被擋（`docs/videos/DRAMA.md` 的地區一節）。代價在 §3：沒有快取與自動 retake、judge 要另外問，每一段都要自己下載再 `clips import`。
+結論（編輯判斷，建立在上面的數字）：在產線現在的 Lite 價（0.08／秒 1080p）之下，**沒有任何訂閱靠每秒單價贏**；但網頁照鏡長買（3 秒的鏡頭 Kling 買 4 秒、Lite 永遠 8 秒），一鏡的錢網頁可能比較少（`animation-preproduction/references/route-decisions.md` 第三節的表），這要用 `shot_plan.mjs` 對整集各算一次。訂閱贏的是（a）對 Omni 或 H3 API 的價，且每個月把積分用到八九成；（b）Max 積分用完後 Hailuo 2.3 1080p 的無限生成，量大且等得起隊列時；（c）Pro 以上無限的圖片生成，前提是關鍵影格能進 `keyframes/manifest.json`——今天沒有 import，storyboard 關卡綁的是工具畫的那份；（d）伺服器沒有 adapter（Kling）或主機地區被擋（`docs/videos/DRAMA.md` 的地區一節）。代價在 §3：沒有快取與自動 retake、judge 要另外問，每一段都要自己下載再 `clips import`。
 
 ## 3. 外部素材怎麼進產線
 
@@ -204,11 +207,11 @@ platform.minimax.io 的 Video Packages（2026-10-03 讀）：Standard US$1,000�
 
 - **帳號是站主的**。Hailuo 與 Kling 的登入、訂閱、加購都由站主做；代理不建帳號、不輸入密碼、不用自己的帳號、不把 cookie 或權杖寫進對話、檔案與指令參數（`youtube-video` skill 規矩 9）。MCP 連接器也是站主在自己的 Claude Desktop／claude.ai 加的；Kling CLI 的 `kling login` 由站主在瀏覽器裡同意 OAuth，權杖檔 `~/.kling/.credentials` 不讀、不貼、不進 repo。
 - **商用與浮水印**：Hailuo 免費方案的下載有浮水印，不能上架；Standard 以上無浮水印且條款寫明保留 IP 含商用，但歷史付費帳號的卡片播放檔仍有浮水印，要走官方無水印下載（§1.2）。Kling 付費方案的去浮水印與商用描述也是當時資料；本次核對實際方案、下載與條款。產線自己的 Lyria 音樂帶 SynthID 浮水印（目錄註解），是允許的。
-- **內容規則**：Hailuo 有內容審查，審查不過退積分；MiniMax API 的 1026／1027／2013 是內容被拒（`apps/api/app/video_media/providers/minimax.py`）；Kling 的內容政策沒有逐條讀，當作一樣有。被拒的題材先回報，不換字繞。
+- **內容規則**：Hailuo 有內容審查，審查不過退積分；MiniMax API 的 1026／1027 是內容被拒，2013 是參數錯（`apps/api/app/video_media/providers/minimax.py` 照官方文件這樣分）；Kling 的內容政策沒有逐條讀，當作一樣有。被拒的題材先回報，不換字繞。
 - **提示詞不帶個資**：不寫真人姓名、照片、聲音、站主的資料、金鑰；不用真人臉與聲音；這跟產線的規矩一樣（`docs/videos/DRAMA.md` 的 YouTube 一節）。
 - **上架揭露**：3D 寫實 AI 畫面與 AI 配樂都勾「變造或合成內容」，不分哪一條路線買的。
 - **檔案不進 git**：下載的 mp4、紀錄 JSON 都在 `<VIDEO_WORKDIR>` 底下；repo 是公開的。
-- **價目會變**：本文的方案價 2026-10-03 讀、目錄價 2026-09-26／28 讀、profile 2026-10-01 核實；Hailuo H3 2K 的每秒積分、生成時間與輸出規格、Kling CLI 的指令與模型表是 2026-10-04 實測；Kling 積分與 API 價未驗證。定一場戲的錢之前先讀 §5 的頁面，改日期；頁面讀不到（SPA、登入牆）就寫「未驗證」，不要補一個數字。
+- **價目會變**：本文的方案價 2026-10-03 讀、目錄價 2026-09-26／28 讀、profile 2026-10-01 核實；Hailuo H3 2K 的每秒積分、生成時間與輸出規格、Kling CLI 的指令與模型表是 2026-10-04 實測；Kling 的每秒積分與 API 價、Hailuo 其他模型的積分是 2026-10-04 讀的官方頁，還沒實扣。定一場戲的錢之前先讀 §5 的頁面，改日期；頁面讀不到（SPA、登入牆）就寫「未驗證」，不要補一個數字。
 
 ## 5. 來源
 
@@ -227,5 +230,8 @@ platform.minimax.io 的 Video Packages（2026-10-03 讀）：Standard US$1,000�
 | Kling 官方 MCP 與 CLI：端點、套件、登入、指令、`image_to_video` 的模型與參數 | kling.ai/app/mcp/guide（登入後）、npm `@klingai/cli-global` 0.2.1、`kling who_am_i` 與 `kling account` 的輸出（NORMAL 帳號、0 積分） | 實測 2026-10-04 |
 | `clips import` | PR #1183（`tools/video/media/clips.mjs`）；真的 ffmpeg 跑在下載的 Hailuo 片段上 | 實測 2026-10-04 |
 | Kling 社群 MCP | github.com/199-mcp/mcp-kling README | 2026-10-03 |
-| Kling 積分／段、API 價 | 第三方整理，未驗證 | 2026 |
+| Kling 每秒積分、輸出數、單鏡、元素、首尾格 | kling.ai/quickstart 的 VIDEO 3.0、3.0 Omni、O1、2.6 user guide；kling.ai/blog 的積分花費指南；kling.ai 網頁 UI 字串 | 官方 2026-10-04 |
+| Kling API 價 | kling.ai/dev/pricing、API 價目文件 | 官方 2026-10-04 |
+| Hailuo 其他模型的積分、Max 無限的模型、隊列 | hailuoai.video 訂閱頁的方案表、FAQ、tooltip 與 UI 字串 | 官方 2026-10-04 |
+| H3 的首格與參考互斥、秒數、輸出、提示格式 | platform.minimax.io 的 v2 video generation 文件；Hugging Face 上 MiniMax-H3 的官方提示指南；hailuoai.video 的 H3 工具頁 | 官方 2026-10-04 |
 | 試作的花費與重拍 | `docs/videos/series-plans/competition-20261002/episodes/production-run-20261003.md`、`docs/videos/series-plans/competition-20261002/budget-and-launch.md`、`docs/videos/series-plans/competition-20261002/cost-ledger.csv` | 2026-10-03 |

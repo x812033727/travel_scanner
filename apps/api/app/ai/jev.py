@@ -21,12 +21,16 @@ this shop, is this page a fare page.
 Kept out of ``app.hotspots`` and ``app.foods`` so either can import it. The vendor
 ships an SDK; this module is plain ``httpx`` like every other provider here, because
 one POST does not earn a dependency whose own retry loop would fight the circuit
-breaker this stack already has.
+breaker this stack already has. The retry loop this module does have
+(``JevClient._send``) never sends a question again once the provider may have answered
+it: a lost answer is ``JevOutcomeUncertain``, not a second paid request.
 """
 
 from __future__ import annotations
 
 import asyncio
+import hashlib
+import json
 import random
 import re
 from collections.abc import Mapping
@@ -34,7 +38,7 @@ from datetime import UTC, datetime
 from typing import Any, Literal
 
 import httpx
-from pydantic import BaseModel, Field, ValidationError
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from redis.asyncio import Redis
 from redis.exceptions import RedisError
 
@@ -48,10 +52,9 @@ SYSTEM_ONE_PATH = "/systemone"
 # longest single question may carry 32k.
 VENDOR_MAX_REQUEST_TOKENS = 64_000
 VENDOR_MAX_STATE_TOKENS = 32_000
-# The score range is the vendor's: "ordered rubric levels (2-10 levels)". The choice
-# cap is ours -- TypeSafe documents no maximum -- and exists because a question with
-# hundreds of options is a retrieval problem wearing a classifier's clothes, and
-# because accuracy is documented to fall as unrelated detail grows.
+# Both ranges are the vendor's (docs.typesafe.ai/api): a score takes two to ten ordered
+# levels, and a choice "a maximum of 255 options". Checking them here makes a question
+# over either limit our own error instead of a 422 from the far side.
 MAX_CHOICE_OPTIONS = 255
 MIN_SCORE_LEVELS = 2
 MAX_SCORE_LEVELS = 10
@@ -77,6 +80,41 @@ class JevRequestTooLarge(JevRequestInvalid):
     """The estimated token count exceeds a configured cap. Split the batch and retry."""
 
 
+UncertainPhase = Literal["send", "response", "body"]
+
+
+class JevOutcomeUncertain(JevError):
+    """Jev may have processed, and billed, this request, but no usable answer came back.
+
+    Raised at once and never retried by the client: a timeout or an upstream 5xx can
+    follow a request the provider already answered, so a second POST of the same
+    question may be a second paid answer to it. ``phase`` says where the answer was lost:
+    ``send`` (the connection failed after the request may have left), ``response`` (an
+    upstream 5xx, which does not say whether the work ran) or ``body`` (an answer that
+    arrived but could not be read as JSON). ``wires_sent`` counts every POST this
+    ``ask()`` handed to the transport; only the last of them can have been processed, the
+    others were refused (429, 529) or never connected. ``request_sha256`` is the hash of
+    the exact body that was sent, so a caller that records the outcome can recognise the
+    same question before asking it again. The message is a type name, a status and, for a
+    5xx, the vendor's own message -- never the key or a URL.
+    """
+
+    def __init__(
+        self,
+        message: str,
+        *,
+        phase: UncertainPhase,
+        wires_sent: int,
+        request_sha256: str,
+        status: int | None = None,
+    ) -> None:
+        super().__init__(message)
+        self.phase = phase
+        self.wires_sent = wires_sent
+        self.request_sha256 = request_sha256
+        self.status = status
+
+
 class ChoiceQuestion(BaseModel):
     type: Literal["choice"] = "choice"
     instructions: str
@@ -89,12 +127,27 @@ class ScoreQuestion(BaseModel):
     criteria: list[str]
 
 
+class NoulCriteria(BaseModel):
+    """What a yes and a no mean, under the only two keys TypeSafe documents.
+
+    TypeSafe documents a noul's ``criteria`` as an object with ``true`` and ``false``
+    descriptions (docs.typesafe.ai/primitives/noul). Until 2026-10-04 this code sent
+    ``yes`` / ``no`` instead; those calls succeeded, and whether the far side read the two
+    descriptions is not documented. Any other key is refused here, before a call is spent.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    true: str
+    false: str
+
+
 class NoulQuestion(BaseModel):
     type: Literal["noul"] = "noul"
     instructions: str
     # Optional on a noul, unlike choice and score where it is required: it clarifies
     # what yes and no are meant to cover when the statement alone is ambiguous.
-    criteria: dict[str, str] | None = None
+    criteria: NoulCriteria | None = None
 
 
 JevQuestion = ChoiceQuestion | ScoreQuestion | NoulQuestion
@@ -144,6 +197,17 @@ def estimate_tokens(value: Any) -> int:
     return cjk + int((len(text) - cjk) / 3.5) + 1
 
 
+# A connection that never opened cannot have carried the request, so it is tried once more.
+_NEVER_SENT = (httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout)
+# Refused inside this process before a byte left: a bad URL scheme, or a request httpx will
+# not write. Nothing is uncertain about them and a second try cannot help.
+_NOT_SENT_AND_FINAL = (httpx.UnsupportedProtocol, httpx.LocalProtocolError)
+# The two statuses the vendor says to retry, with how many retries each gets. This code
+# takes both to mean the request was turned away rather than run; if TypeSafe ever bills a
+# 429 or a 529, this is the line to change.
+_REFUSED_RETRIES = {429: 2, 529: 3}
+
+
 class JevClient:
     name = "jev"
 
@@ -165,6 +229,13 @@ class JevClient:
         self.max_request_tokens = max_request_tokens
         self._external_client = client
         self._client = client or httpx.AsyncClient(timeout=timeout_seconds)
+        # Evidence, not control. ``application_calls`` counts the ``ask()`` calls that
+        # reached the network and ``wires_sent`` the POSTs handed to the transport for
+        # them, so a caller can tell one application call -- and the one daily quota unit
+        # its caller consumed for it -- apart from the provider requests it cost. Both
+        # only grow, which keeps them correct when one client serves concurrent asks.
+        self.application_calls = 0
+        self.wires_sent = 0
 
     async def close(self) -> None:
         if self._external_client is None:
@@ -247,13 +318,33 @@ class JevClient:
         return answers, usage if isinstance(usage, dict) else {}
 
     async def _send(self, payload: dict[str, Any], *, question_names: list[str]) -> dict[str, Any]:
-        """POST once, retrying only the statuses the vendor says are worth retrying.
+        """POST the question so that at most one request the provider may have run is sent.
 
-        The key travels in the Authorization header and the path is a constant, so
-        nothing here can put a credential in a URL that httpx then logs.
+        A paid answer that is lost on the way back does not say whether the provider ran
+        the request, so the loop retries only what it can prove was not run: a connection
+        that never opened (once), and the 429 (twice) and 529 (three times) the vendor
+        says to retry. A read or write timeout, a dropped connection, any other 5xx and a
+        2xx whose body is not JSON raise ``JevOutcomeUncertain`` at once. One ``ask()``
+        therefore puts at most one possibly-processed request on the wire, plus at most
+        three the provider refused or never received; the shared ``attempt`` count caps
+        the whole loop at four POSTs. The daily quota (``consume_jev_call``) counts the
+        application call, not these wires.
+
+        The body is serialised here, byte for byte as httpx's ``json=`` would, so the
+        hash on an uncertain outcome is the hash of what was actually sent. The key
+        travels in the Authorization header and the path is a constant, so nothing here
+        can put a credential in a URL that httpx then logs.
         """
+        content = json.dumps(
+            payload, ensure_ascii=False, separators=(",", ":"), allow_nan=False
+        ).encode("utf-8")
+        request_sha256 = hashlib.sha256(content).hexdigest()
+        self.application_calls += 1
+        wires = 0
         attempt = 0
         while True:
+            wires += 1
+            self.wires_sent += 1
             try:
                 response = await self._client.post(
                     f"{self.base_url}{SYSTEM_ONE_PATH}",
@@ -261,14 +352,26 @@ class JevClient:
                         "Authorization": f"Bearer {self.api_key}",
                         "Content-Type": "application/json",
                     },
-                    json=payload,
+                    content=content,
                 )
-            except httpx.TimeoutException:
+            except _NEVER_SENT:
                 if attempt >= 1:
                     raise
                 await self._backoff(attempt, base=1.0, jitter=0.5)
                 attempt += 1
                 continue
+            except httpx.RequestError as exc:
+                if isinstance(exc, _NOT_SENT_AND_FINAL):
+                    raise
+                raise JevOutcomeUncertain(
+                    f"Jev may have received the request, but its answer was lost "
+                    f"({type(exc).__name__}); not sent again",
+                    # A body httpx could not decode did arrive; everything else here is
+                    # a connection that failed after the request may have left.
+                    phase="body" if isinstance(exc, httpx.DecodingError) else "send",
+                    wires_sent=wires,
+                    request_sha256=request_sha256,
+                ) from exc
             status = response.status_code
             if status in {401, 403}:
                 # 403 is the vendor's "access was denied": the key is real but not
@@ -286,20 +389,34 @@ class JevClient:
                     f"Jev refused the request ({status}) for {', '.join(question_names)}: "
                     f"{_vendor_message(response)}"
                 )
-            if status == 429 and attempt < 2:
-                await self._backoff(attempt, base=0.5, jitter=0.25, retry_after=response)
-                attempt += 1
-                continue
-            if status == 529 and attempt < 3:
-                await self._backoff(attempt, base=1.0, jitter=0.5, retry_after=response)
-                attempt += 1
-                continue
-            if status >= 500 and attempt < 1:
-                await self._backoff(attempt, base=1.0, jitter=0.5)
-                attempt += 1
-                continue
+            if status in _REFUSED_RETRIES:
+                if attempt < _REFUSED_RETRIES[status]:
+                    base, jitter = (0.5, 0.25) if status == 429 else (1.0, 0.5)
+                    await self._backoff(attempt, base=base, jitter=jitter, retry_after=response)
+                    attempt += 1
+                    continue
+                # Refused every time: a settled failure, raised as the status it is.
+                response.raise_for_status()
+            if status >= 500:
+                raise JevOutcomeUncertain(
+                    f"Jev answered HTTP {status}, which does not say whether the request "
+                    f"ran; not sent again: {_vendor_message(response)}",
+                    phase="response",
+                    wires_sent=wires,
+                    request_sha256=request_sha256,
+                    status=status,
+                )
             response.raise_for_status()
-            body = response.json()
+            try:
+                body = response.json()
+            except ValueError as exc:
+                raise JevOutcomeUncertain(
+                    f"Jev answered HTTP {status} with a body that is not JSON; not sent again",
+                    phase="body",
+                    wires_sent=wires,
+                    request_sha256=request_sha256,
+                    status=status,
+                ) from exc
             return body if isinstance(body, dict) else {}
 
     @staticmethod
@@ -380,10 +497,16 @@ def route(
 ) -> Tier:
     """Turn one answer into act / confirm / hold.
 
-    Two things live here rather than in a comment. A noul answer has no ``confidence``
-    -- its own value is the probability -- so it needs thresholds chosen for noul and
-    not borrowed from a choice. And while ``cjk_autopilot`` is off, a confident answer
-    about non-English state is downgraded to ``confirm``. TypeSafe states that
+    The same two thresholds are compared with a noul's value and with a choice's or a
+    score's ``confidence``, although the two are on different scales. A noul answer has
+    no ``confidence``: its value is the probability of yes, and the vendor's
+    confidence-style number for it is |2p-1|, which is 0 at p = 0.5
+    (docs.typesafe.ai/confidence). Only noul answers are routed today, so the mismatch
+    costs nothing yet; routing a choice or a score as well needs thresholds of its own
+    for each scale first.
+
+    While ``cjk_autopilot`` is off, a confident answer about non-English state is
+    downgraded to ``confirm``. TypeSafe states that
     "English is the primary training language and where accuracy is currently best"
     and publishes no accuracy figures for any other language; this product is written
     in five. Until our own numbers say otherwise, that gap is a default-closed switch.
@@ -419,10 +542,11 @@ def route_answer(answer: JevAnswer, settings: Settings, *, locale: str = "en") -
 async def probe(settings: Settings, client: httpx.AsyncClient | None = None) -> str:
     """The cheapest call that proves the key, the host, the model id and the shape.
 
-    TypeSafe documents no models endpoint, so the list-models probe every other vendor
-    on the admin card uses has nothing to call here, and a 405 from a gateway would
-    arrive before the key was ever checked. One real noul question over a four-word
-    state is about forty input tokens; output is not billed at all.
+    The other vendors on the admin card are probed by listing their models. TypeSafe
+    documents ``GET /v1/models`` (docs.typesafe.ai/models), but it lists only the aliases
+    and the model field accepts versioned ids it does not list, so a listing cannot show
+    that the pinned ``jev_model`` answers; a real question can. One noul question over a
+    four-word state is about forty input tokens; output is not billed at all.
     """
     jev = jev_client(settings, client)
     try:

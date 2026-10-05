@@ -70,7 +70,7 @@ curl -s -H 'X-Travel-Locale: zh-TW' "https://mokaair.com/api/travel/foods/mercha
 ## 會踩到的點
 
 - 榜頁是虛擬化清單：捲到底再抓會漏掉榜首；`scrollTo` 跳著捲會撞到回收卡片；候位榜第 1–4 名首次渲染沒有 `href`。
-- 店頁服務區塊是 lazy section，**面板隱藏或分頁在背景時永遠不掛載**，看到的「只有候位鈕」不算證據；正面證據可信、缺席不可信。做法在 references/browser.md。
+- 店頁服務區塊是 lazy section，**面板隱藏或分頁在背景時永遠不掛載**，看到的「只有候位鈕」不算證據；正面證據可信、缺席不可信。做法在 .agents/skills/catchtable-discovery/references/browser.md。
 - `naver.me` 短網址後台會退 422，要先解成 `https://map.naver.com/p/entry/place/<id>`；同一個 Naver id 不能給兩家店（園區內的第二間餐飲要有自己的條目）。
 - 店頁網址：`catchtable.co.kr` 是韓國內需站，不收；`/ja/` 會 404 並轉到 `/zh-TW/ja/shop/…`，日文是 `/ja-JP/`。`canonical_url` 存無前綴的網址，語系版本放 `localized_urls`；拿 `/zh-TW/` 當 canonical 會讓其他語系的公開按鈕都顯示外語提示。
 - 來源網址只收 https（只有 http 的官網不算）；`notes` 1000 字、`quote` 300 字、分類至多 3 個，`--check` 會擋。候選檔多出來的欄位（例如 `naver_map_url`）整檔拒收：Naver 精準頁要不要從候選檔進來是設計文件待決事項 2，站主決定前不做。

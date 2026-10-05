@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-correct-wordpress-user-roles-unrelated-ai
 title: Correct WordPress user roles unrelated AI parameters link before Batch031 release
-status: in-progress
+status: open
 priority: P2
 area: api
-owner: codex-batch031-source-link
-claimed_at: 2026-09-27T23:57:26Z
+owner:
+claimed_at:
 created_at: 2026-09-27T13:09:35Z
 completed_at:
 branch: codex/batch031-user-roles-source-link
@@ -68,3 +68,4 @@ Structural comparison found only the `type` change and removal of `kind` and
 one pre-existing no-summary warning. Targeted guide pack/link/ingest tests:
 73 passed, 11 skipped. `npm run check:tasks` and `git diff --check` passed.
 No production revision, import, or public verification has occurred for this fix.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-batch031-source-link (since 2026-09-27T23:57:26Z) was stale and is released so it stops locking its scope. Landed: #875. Still open: Publish corrected zh-TW revision via guarded release (after Batch030 closes); Verify public revision, recapture Batch031 source version/hash and rebind translation bundle.

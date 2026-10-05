@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-produce-video-05-nvidia-rtx-spark
 title: Produce video 05: NVIDIA RTX Spark and local AI, can a laptop replace ChatGPT
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: claude-opus-5-5
-claimed_at: 2026-09-28T10:08:48Z
+owner:
+claimed_at:
 created_at: 2026-09-28T10:08:16Z
 completed_at:
 branch:
@@ -51,3 +51,4 @@ node tools/video/cli.mjs status --slug rtx-spark-local-ai --workdir <VIDEO_WORKD
 - 2026-09-28 evening: script done and verified three times (the owner kept the theoretical speed ceilings, labelled 理論上限／不是實測／每步一個 token; see `claims.md`), listener pass done. Translations: zh-CN (reviewed; one fix, ujr7 专家的参数是 4 位多) and en (review running); ja and ko in progress. Narration started at about 15:25 UTC after the Gemini limit was raised (see Steps).
 - 2026-09-28 15:25–17:10 UTC: narration checked in four rounds with Gemini `check-audio` and local Whisper large-v3. Spoken forms (`say`, captions unchanged): m5b4/ey2n 兩種筆電, c876 佔用記憶體, 2cph 留在家裡…搬回本機做, xj2j 太擠了, 6p8h 四千多億. Before 乘, 億 sounds like 一 (一乘 takes the fourth tone), so both transcribers heard 4051. The remaining 10 flags are Gemini mishearings or accent (xzup 有名有姓). The render found the fit table 6px too tall with its title, so the caveat moved into the first column's header. The owner approved the audio at 16:03, but the English and Japanese dubs could not fit nbyi, kn4k and d45i, whose zh-TW reads 100 度 in one syllable. Those three lines got longer pauses (1.4, 1.5 and 1.2 s; no re-recording), and the audio went back for approval at 16:49. Translations: every review applied, and all five composed descriptions are under 5,000 bytes (ja and ko were over before their reviews). Korean writes 기가 for GB and 킬로와트시 for kWh. Dubs en, ja and ko fit after trims.
 - 2026-09-28 23:03 UTC: the owner approved the audio again with the new pauses (17:01) and then the final (37089fc81602). QA passed 10 of 11; only `policy` failed, because the stance is blank. The ko dub's four uncertain lines were checked with Whisper and are fine; prq6's 구독 has an unreleased final ㄱ. `package` passed 4 of 4 (metadata.json c14424b3c0f1), the publish card was approved automatically, and the dubs card waits for the owner. Next: the owner approves dubs, uploads privately per `docs/videos/UPLOAD.md`, adds the en/ja/ko tracks, and pastes the video URL and publish time on the 「可以上架」 card.
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5 (since 2026-09-28T10:08:48Z) was stale and is released so it stops locking its scope. Landed: #968. Still open: brief + owner outline pick (done per notes); script/narration checked (done per notes); CC five languages + dubs (done per notes); Final/publish/dubs gates approved; owner uploads private; scoreboard.csv rows; Steps: narration and dubs (done per notes).

@@ -794,6 +794,10 @@ async def publish_bundle(
                 )
             )
             published_versions[locale] = new_version
+        # The UPDATE above skips the identity map; with expire_on_commit=False a caller that
+        # reads these rows again on this session would otherwise see the old versions.
+        for row in rows.values():
+            session.expire(row)
         await session.commit()
     except Exception:
         await session.rollback()

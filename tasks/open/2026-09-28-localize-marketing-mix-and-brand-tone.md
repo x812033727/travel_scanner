@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-localize-marketing-mix-and-brand-tone
 title: Localize marketing mix and brand tone guides in Batch 036 Pair B
-status: review
+status: open
 priority: P1
 area: docs
-owner: codex-root
-claimed_at: 2026-09-28T10:00:53Z
+owner:
+claimed_at:
 created_at: 2026-09-28T09:20:03Z
 completed_at:
 branch: codex/article-localization-036-marketing-b
@@ -78,3 +78,4 @@ review and green checks.
 站主已同意「準備逐批發布清單與步驟，再讓我確認」。本輪一次正式站唯讀盤點已完成；發布清單、精確來源雜湊、依賴與逐步驗收見 docs/work-status-2026-09-29-article-release-plan.md。未授權正式寫入、部署或發布；原門檻維持。
 
 本次僅追加交接證據，不改既有owner、scope、branch或執行狀態。
+- 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-root (since 2026-09-28T10:00:53Z) was stale and is released so it stops locking its scope. Landed: #907. Still open: Green PR checks before merge (done implicitly by merge); Import/publish guarded locale revisions and verify live pages.
