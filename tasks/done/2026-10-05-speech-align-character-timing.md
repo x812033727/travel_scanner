@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-speech-align-character-timing
 title: Speech align: character timing from the server for Gemini voices (CPU aligner) and Azure word boundaries
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1-align
 claimed_at: 2026-10-05T17:03:51Z
 created_at: 2026-10-05T16:08:22Z
-completed_at:
+completed_at: 2026-10-05T17:33:47Z
 branch: claude/speech-align-timing
 depends_on:
   - 2026-10-05-speech-api-tells-a-provider-answer
