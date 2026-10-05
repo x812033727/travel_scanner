@@ -40,7 +40,7 @@ from app.models import (
 from app.problems import AppError, app_error_handler
 from app.video_media.models import VideoMediaJob
 from app.video_youtube import admin_api, connection, requests, sync
-from app.video_youtube.client import SCOPE, YoutubeError, error_from
+from app.video_youtube.client import SCOPE, YoutubeClient, YoutubeError, error_from
 from app.video_youtube.errors import Refused
 from app.video_youtube.schemas import ClientIn, OAuthExchangeIn, OAuthStartIn
 from app.video_youtube.state import new_state, public_state, retried, running
@@ -718,6 +718,48 @@ async def test_a_stale_check_reads_the_channel_again_and_a_revoked_grant_says_so
     async with site.factory() as session:
         view = await connection.verify(session)
     assert view.problem == connection.LOST_GRANT
+
+
+@pytest.mark.parametrize("meanwhile", ["unlinked", "linked_again"])
+async def test_a_check_that_crosses_an_unlink_or_a_new_link_writes_nothing(
+    site: Site, monkeypatch: pytest.MonkeyPatch, meanwhile: str
+) -> None:
+    """The owner unlinks, or links another channel, while the check waits on YouTube. The
+    check's session still holds the card from before, and its answer is about the old grant:
+    under the lock it reads the card again and leaves it as the owner left it."""
+    await site.link()
+    before = await site.connection()
+    reads_channel = YoutubeClient.my_channel
+    crossed: list[str] = []
+
+    async def answered(client: YoutubeClient) -> dict[str, Any] | None:
+        channel = await reads_channel(client)
+        if crossed:
+            # The new link reads its own channel through here too.
+            return channel
+        crossed.append(meanwhile)
+        if meanwhile == "unlinked":
+            async with site.factory() as session:
+                await connection.unlink(session, site.owner)
+        else:
+            site.google.channel = {"id": "UCanotherchannel000000", "snippet": {"title": "另一個"}}
+            await site.link()
+        return channel
+
+    monkeypatch.setattr(YoutubeClient, "my_channel", answered)
+    async with site.factory() as session:
+        view = await connection.verify(session)
+
+    row = await site.connection()
+    assert view.problem is None and row.problem is None
+    if meanwhile == "unlinked":
+        assert not view.linked
+        assert (row.channel_id, row.channel_title, row.verified_at) == (None, None, None)
+    else:
+        assert view.linked and row.channel_id == "UCanotherchannel000000"
+        assert row.channel_title == "另一個"
+        assert row.verified_at is not None and before.verified_at is not None
+        assert row.verified_at > before.verified_at, "the new link's own check stands"
 
 
 async def test_unlinking_revokes_the_grant_and_forgets_it(site: Site) -> None:
