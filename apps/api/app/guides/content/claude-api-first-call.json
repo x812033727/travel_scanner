@@ -13,7 +13,7 @@
   "locales": {
     "zh-TW": {
       "title": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
-      "description": "訂閱 Claude Pro 不等於能用 API：兩者是兩套帳號、兩套帳單。這篇依 2026 年 9 月查證的官方文件，帶你在 Claude Console 開帳號、儲值、設每月上限、建立金鑰，再用十行 Python 送出第一則訊息，逐行解釋 model、max_tokens、messages 三個參數，另附 curl；最後講金鑰外洩怎麼辦、一次呼叫多少錢，以及四種常見錯誤怎麼修。",
+      "description": "訂閱 Claude Pro 不等於能用 API：兩者是兩套帳號、兩套帳單。這篇依 2026 年 9 月查證、10 月 5 日更新模型與價格的官方文件，帶你在 Claude Console 開帳號、儲值、設每月上限、建立金鑰，再用十行 Python 送出第一則訊息，逐行解釋 model、max_tokens、messages 三個參數，另附 curl；最後講金鑰外洩怎麼辦、一次呼叫多少錢，以及四種常見錯誤怎麼修。",
       "hero": {
         "src": "/guides/claude-api-first-call/hero.jpg",
         "alt": "一把鑰匙插進一個終端機視窗的鎖孔，視窗裡有幾行程式碼，下方一行字寫著第一次呼叫 API",
@@ -35,7 +35,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "這篇依 2026 年 9 月 14 日查證的 Anthropic 官方文件與 Claude 說明中心，帶你把第一次呼叫做完：開 Console 帳號、儲值、設每月上限、建立金鑰、把金鑰放進環境變數，然後用十行 Python 送出一則訊息並印出回覆，逐行解釋 model、max_tokens、messages 三個必要"
+              "text": "這篇依 2026 年 9 月 14 日查證的 Anthropic 官方文件與 Claude 說明中心（模型、價格與官方範例在 10 月 5 日重新查證），帶你把第一次呼叫做完：開 Console 帳號、儲值、設每月上限、建立金鑰、把金鑰放進環境變數，然後用十行 Python 送出一則訊息並印出回覆，逐行解釋 model、max_tokens、messages 三個必要"
             },
             {
               "type": "article",
@@ -271,7 +271,7 @@
               "上限是唯一擋得住迴圈寫錯的東西；不主動設，等於直接用級距的上限，Start 級距是每月 500 美元"
             ]
           ],
-          "caption": "2026 年 9 月 14 日依 Anthropic 官方文件與 Claude 說明中心整理；級距上限與介面名稱以官網當下頁面為準。"
+          "caption": "2026 年 9 月 14 日依 Anthropic 官方文件與 Claude 說明中心整理，模型與 quickstart 設定在 10 月 5 日重新查證；級距上限與介面名稱以官網當下頁面為準。"
         }
       ],
       "sources": [

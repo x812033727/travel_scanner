@@ -44,14 +44,14 @@
         },
         {
           "type": "paragraph",
-          "text": "第三個是 Claude Sonnet 5.5，2026 年 9 月 28 日上市，定位是「速度與智慧的最佳組合」；上市公告把它定為 Opus 5.5 較快、較便宜的搭檔，最擅長範圍明確的日常工作、修 bug，以及做文件、簡報與試算表。它的思考預設開啟，在 Claude 的網頁與 App 裡關不掉，App 裡預設的 Effort 是中。最後是 Claude Haiku 4.5，2025 年 10 月 15 日上市，定位是「最快、接近前緣智慧的模型」；它是四個裡唯一沒有自適應思考的，用的是舊式的延伸思考，要手動開、還要指定思考的 token 額度，官網也標明它不支援 Effort 等級。Anthropic 在 Sonnet 5.5 的公告寫 Haiku 5.5 會在未來幾週加入 5.5 家族，沒有給日期。上下文視窗方面，Fable 5.1、Opus 5.5、Sonnet 5.5 都是 1M token，Haiku 4.5 是 200K token。"
+          "text": "第三個是 Claude Sonnet 5.5，2026 年 9 月 28 日上市，定位是「速度與智慧的最佳組合」；上市公告把它定為 Opus 5.5 較快、較便宜的搭檔，最擅長範圍明確的日常工作、修 bug，以及做文件、簡報與試算表。它的思考預設開啟，在 Claude 的網頁與 App 裡關不掉，App 裡預設的 Effort 是中。最後是 Claude Haiku 4.5，2025 年 10 月 15 日上市，定位是「最快、接近前緣智慧的模型」；它是四個裡唯一沒有自適應思考的，用的是舊式的延伸思考，要手動開、還要指定思考的 token 額度，官網也標明它不支援 Effort 等級。Anthropic 在 Sonnet 5.5 的公告寫 Haiku 5.5 會在未來幾週加入 5.5 家族，沒有給日期。上下文視窗方面，Fable 5.1、Opus 5.5、Sonnet 5.5 都是 1M token，Haiku 4.5 是 200K token；官網換算 1M token 大約是 55.5 萬個英文單字，200K 大約是 15 萬個。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "過去的世代並沒有消失。官網把 Opus 5、Sonnet 5、Fable 5（Fable 5.1 是它同價、更強的接班版）、Opus 4.8、4.7、4.6、4.5 與 Sonnet 4.6、4.5 列為 legacy，API 還叫得到，claude."
+              "text": "過去的世代並沒有消失。官網把 Opus 5、Sonnet 5、Fable 5（Fable 5.1 是它同價、更強的接班版）、Opus 4.8、4.7、4.6、4.5 與 Sonnet 4.6 列為 legacy，API 還叫得到，claude."
             },
             {
               "type": "article",
@@ -126,7 +126,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Fable 的規則值得單獨講。說明中心寫明 Fable 5 與 Fable 5.1 只在付費方案提供：Max 與 Team、Enterprise 的進階席次把它當成方案的一部分，每週額度最多一半可以花在 Fable 上；Pro 與標準席次則是用隨用隨付的「用量點數」跑 Fable，點數按標準 API 價格計費，不算在方案內含的用量裡。至於預設模型，新對話開的是哪一個，看輸入框送出鍵旁顯示的模型名稱就知道；換模型的入口也在那裡，點開可以換模型、調 Effort（低、中、高、特高、最高，每個模型的建議等級在選單上標成 Default）與開關思考，改了之後從下一則回覆生效。Enterprise 帳號如果少了某個模型或等級，可能是管理員替你的角色關掉了。方案細節與額度怎麼算，另有一篇比較。"
+          "text": "Fable 的規則值得單獨講。說明中心寫明 Fable 5 與 Fable 5.1 只在付費方案提供：Max 與 Team、Enterprise 的進階席次把它當成方案的一部分，每週額度最多一半可以花在 Fable 上；Pro 與標準席次則是用隨用隨付的「用量點數」跑 Fable，不算在方案內含的用量裡。至於預設模型，新對話開的是哪一個，看輸入框送出鍵旁顯示的模型名稱就知道；換模型的入口也在那裡，點開可以換模型、調 Effort（低、中、高、特高、最高，每個模型的建議等級在選單上標成 Default）與開關思考，改了之後從下一則回覆生效。Enterprise 帳號如果少了某個模型或等級，可能是管理員替你的角色關掉了。方案細節與額度怎麼算，另有一篇比較。"
         },
         {
           "type": "rich_paragraph",
@@ -311,7 +311,7 @@
       ],
       "sources": [
         {
-          "title": "Anthropic 官方文件：Models overview（四個現役模型的定位、相對速度、價格、思考模式、預設 Effort、上下文視窗與退役承諾，多數工作從 Opus 5.5 開始）",
+          "title": "Anthropic 官方文件：Models overview（四個現役模型的定位、相對速度、價格、思考模式、預設 Effort、上下文視窗與字數換算、退役承諾、legacy 名單，多數工作從 Opus 5.5 開始）",
           "url": "https://platform.claude.com/docs/en/models/overview",
           "checked_on": "2026-10-05"
         },

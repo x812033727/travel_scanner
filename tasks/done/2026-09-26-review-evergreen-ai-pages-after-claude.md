@@ -92,8 +92,28 @@ prices as current.
     models for Opus 5.5. The "default model per plan" claim was dropped: the Opus 5.5 and Sonnet 5.5
     announcements no longer say which model each plan defaults to, so the page now tells readers to
     look at the model name next to the send button. Daily advice changed from "use the default" to
-    "start with Sonnet 5.5". The Sonnet 5 promo-price note and the 1M-token word conversion are gone
-    from the docs, so they were removed. Sources trimmed to the 20-item limit.
+    "start with Sonnet 5.5". The Sonnet 5 promo-price note was dropped as less relevant now that
+    Sonnet 5 is legacy (pricing footnote 3 still says its $2/$10 price is standard and the $3/$15
+    increase will not happen); the paragraph compares Opus 5.5 and Sonnet 5.5 with their
+    predecessors instead. The 1M ≈ 555k-word / 200K ≈ 150k-word conversion stays: the models overview
+    still gives it (re-read 2026-10-05). Sources trimmed to the 20-item limit.
+  - Review round (2026-10-05, PR #1263): the legacy list no longer names Sonnet 4.5 (the overview's
+    "Legacy models (still available)" line lists Fable 5, Opus 5, Opus 4.8, 4.7, 4.6, 4.5, Sonnet 5
+    and Sonnet 4.6; model-deprecations shows Sonnet 4.5 as Deprecated, which the page says
+    separately). "點數按標準 API 價格計費" was taken out of the Fable paragraph: its only source,
+    "Manage usage credits for paid Claude plans" (12429409, still live and still saying so), had
+    been cut for the 20-source limit, and each of the 20 remaining sources backs a claim no other
+    source on the list carries. The plans comparison page (claude-plans-free-pro-max-2026) still
+    states the API-rate billing with that source, and the lineup page links to it.
+  - Review round, check dates: pages whose body now carries 10-05 facts say so next to their
+    original check date instead of claiming one date for everything — claude-api-first-call
+    (description, intro, table caption), claude-api-prompt-caching-cost (description and intro;
+    its diagram names no model and its multipliers did not change, so the diagram keeps 9/14),
+    claude-extended-thinking-guide (description, intro, diagram caption, diagram description, and
+    the SVG title and `<desc>`; the task table keeps 9/13 because no row carries a model or effort
+    fact), ai-search-llmo (intro), ai-subscription-which-to-pay-2026 (description, intro, closing
+    paragraph; only the Claude facts were re-read, ChatGPT and Gemini keep 9/15) and
+    ai-video-tools-compared (description, intro, comparison-table caption).
   - claude-plans-free-pro-max-2026, claude-beginner-guide, claude-for-translation-zh-tw,
     ai-subscription-which-to-pay-2026: paid-plan context windows (Opus 5.5, Sonnet 5.5 1M; Fable 5
     now listed at 500K). ai-subscription also: the pricing table now says "Up to 1M varies by
@@ -128,4 +148,8 @@ prices as current.
   本文/這篇 more than once. The edit removed one 這篇 from claude-model-lineup-2026 and added none.
 - Fetching tip: `help.openai.com` answers `curl -sSL` with the editorial User-Agent but returns 403
   to Node's `fetch`; `support.claude.com/en/articles/11049762-choose-a-claude-plan` is now a 404
-  (replaced by the Max plan article in claude-model-lineup-2026).
+  (replaced by the Max plan article in claude-model-lineup-2026). On platform.claude.com, stripping
+  the HTML loses the footnote bullets under the comparison table (word conversion, cache-read
+  rates) and the "Legacy models (still available)" line; append `.md` to the page URL
+  (`.../docs/en/models/overview.md`) and read the Markdown, which has them. That is the likely reason
+  the word conversion was first judged gone.
