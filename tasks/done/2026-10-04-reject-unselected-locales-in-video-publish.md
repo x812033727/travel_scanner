@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-reject-unselected-locales-in-video-publish
 title: Reject unselected locales in video publish packages
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-publish-unselected-locales
 claimed_at: 2026-10-05T00:14:05Z
 created_at: 2026-10-04T15:43:21Z
-completed_at:
+completed_at: 2026-10-05T01:08:09Z
 branch: claude/publish-unselected-locales
 depends_on: []
 scope:
