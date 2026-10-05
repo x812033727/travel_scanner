@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -191,6 +191,8 @@ test("audio_ref requires an earlier original's speaker, spoken content and effec
   }
 });
 
+const SPEECH_MS_PER_CHARACTER = 200;
+
 function fakeServer({ status = {}, failures = [], gain = () => 1 } = {}) {
   const calls = [];
   const fetchImpl = async (url, init) => {
@@ -201,8 +203,9 @@ function fakeServer({ status = {}, failures = [], gain = () => 1 } = {}) {
       return Response.json({ configured: true, region: "eastasia", voices: ["zh-TW-HsiaoChenNeural", "zh-TW-YunJheNeural"], output_format: "riff-48khz-16bit-mono-pcm", max_request_characters: 1500, monthly_limit: 450000, used: 0, remaining: 450000, ...status });
     }
     const body = JSON.parse(init.body);
-    // Speech takes 60 ms a character, then the requested break.
-    const audio = concatSamples(body.segments.flatMap((segment) => [tone(segment.parts.reduce((sum, part) => sum + part.text.length, 0) * 60).map((sample) => Math.round(sample * gain())), quiet(segment.break_after_ms)]));
+    // Speech takes 200 ms a character, the voices' 300 characters a minute, then the requested
+    // break: at that pace every fixture's chapters run the 10 s YouTube needs, as a real video's do.
+    const audio = concatSamples(body.segments.flatMap((segment) => [tone(segment.parts.reduce((sum, part) => sum + part.text.length, 0) * SPEECH_MS_PER_CHARACTER).map((sample) => Math.round(sample * gain())), quiet(segment.break_after_ms)]));
     return new Response(encodeWav(audio), { status: 200, headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "10" } });
   };
   return { calls, fetchImpl };
@@ -411,7 +414,8 @@ test("same-duration exact-take retakes invalidate listening approval; legacy evi
   const file = path.join(box.dir, "video.json");
   const doc = JSON.parse(readFileSync(file));
   const original = doc.scenes[1].lines[0];
-  doc.scenes[3].lines = [{ ...original, id: "copy1", audio_ref: original.id }];
+  // Added to the scene rather than replacing it: its chapter keeps the 10 s YouTube needs.
+  doc.scenes[3].lines.push({ ...original, id: "copy1", audio_ref: original.id });
   writeFileSync(file, JSON.stringify(doc));
   let gain = 1;
   const server = fakeServer({ status: { gemini_configured: true, gemini_monthly_limit: 300000, gemini_used: 0 }, gain: () => gain });
@@ -516,6 +520,102 @@ test("tts --redo retakes only the flagged line and keeps the rest of its scene",
   const again = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
   await main(["tts", "--slug", box.slug], again.ctx);
   assert.equal(speechCalls().length, before + 1, "the retake counts as current afterwards");
+});
+
+test("a STOP file ends tts as incomplete: the takes so far are kept, no narration is current, and the rerun buys only the rest", async () => {
+  const box = sandbox();
+  const server = fakeServer();
+  const posts = () => server.calls.filter((call) => call.url.endsWith("/api/video/speech")).length;
+  const stop = path.join(box.work, "STOP");
+  // The owner drops a STOP file while the first request is being synthesized.
+  const fetchImpl = async (url, init) => {
+    const response = await server.fetchImpl(url, init);
+    if (url.endsWith("/api/video/speech") && posts() === 1) writeFileSync(stop, "");
+    return response;
+  };
+  const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
+  const run = () => capture({ root: box.root, env, home: box.base, fetch: fetchImpl });
+  const status = async () => {
+    const shown = capture({ root: box.root, env, home: box.base });
+    await main(["status", "--slug", box.slug], shown.ctx);
+    return shown.out.stdout;
+  };
+
+  const stopped = run();
+  assert.equal(await main(["tts", "--slug", box.slug], stopped.ctx), EXIT.incomplete, stopped.out.stderr);
+  assert.match(stopped.out.stdout, /stopped by the STOP file; 1 of 3 requests done, rerun to continue/);
+  assert.equal(posts(), 1);
+  const [first] = planRequests(JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8")), fixtureLexicon());
+  const cache = JSON.parse(readFileSync(path.join(box.workdir, "audio", "cache.json"), "utf8"));
+  for (const line of first.lines) {
+    assert.equal(cache.lines[line.id], line.key, `${line.id}'s take is kept`);
+    assert.equal(cache.sha256[line.id], createHash("sha256").update(readFileSync(path.join(box.workdir, "audio", `${line.id}.wav`))).digest("hex"));
+  }
+  assert.equal(existsSync(path.join(box.workdir, "timeline.json")), false);
+  assert.equal(existsSync(path.join(box.workdir, "narration.wav")), false);
+  assert.equal(existsSync(path.join(box.workdir, "state.json")), false, "no tts run is recorded");
+  assert.match(await status(), /\[ \] narration synthesized/);
+
+  // With the STOP file still there, the next run stops before it pays for anything.
+  const held = run();
+  assert.equal(await main(["tts", "--slug", box.slug], held.ctx), EXIT.incomplete);
+  assert.match(held.out.stdout, /0 of 2 requests done/);
+  assert.equal(posts(), 1);
+
+  rmSync(stop);
+  const resumed = run();
+  assert.equal(await main(["tts", "--slug", box.slug], resumed.ctx), EXIT.ok, resumed.out.stderr);
+  assert.equal(posts(), 3, "only the two requests left are synthesized");
+  assert.match(resumed.out.stdout, /^2 requests synthesized \(20 billable characters\), 1 reused;/m);
+  assert.match(await status(), /\[x\] narration synthesized/);
+
+  // A stop after the script changed leaves the old timeline, which no longer counts as current.
+  const file = path.join(box.dir, "video.json");
+  writeFileSync(file, readFileSync(file, "utf8").replace("第二個問題是", "第二個問題則是"));
+  writeFileSync(stop, "");
+  const edited = run();
+  assert.equal(await main(["tts", "--slug", box.slug], edited.ctx), EXIT.incomplete);
+  assert.equal(posts(), 3);
+  assert.match(await status(), /\[ \] narration synthesized: timeline\.json was built for an older script/);
+});
+
+test("chapters YouTube would not show fail tts after its files are written; the cut's bookends count", async () => {
+  const box = sandbox();
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  // The closing chapter is cut to one short line, a few seconds of speech.
+  doc.scenes.at(-1).lines = [{ id: doc.scenes.at(-1).lines.at(-1).id, text: "我們下一支影片見。" }];
+  writeFileSync(file, JSON.stringify(doc));
+  const server = fakeServer();
+  const posts = () => server.calls.filter((call) => call.url.endsWith("/api/video/speech")).length;
+  const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
+  const run = () => capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
+
+  const short = run();
+  assert.equal(await main(["tts", "--slug", box.slug], short.ctx), EXIT.lint, short.out.stderr);
+  assert.match(short.out.stdout.trim().split("\n").at(-1), /^chapters: chapter "結論" lasts \d+\.\d s; YouTube needs 10 s$/, "the problem is the last line a caller reports");
+  assert.doesNotMatch(short.out.stdout, /next: node tools\/video\/cli\.mjs review/);
+  assert.ok(existsSync(path.join(box.workdir, "timeline.json")) && existsSync(path.join(box.workdir, "narration.wav")), "the files are written, so a rerun reuses every take");
+  const recorded = JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8")).runs.at(-1);
+  assert.equal(recorded.stage, "tts");
+  assert.equal(recorded.ok, false);
+  assert.equal(recorded.synthesized, 3, "the paid run is still recorded");
+  assert.match(recorded.chapters[0], /"結論"/);
+  const bought = posts();
+  const again = run();
+  assert.equal(await main(["tts", "--slug", box.slug], again.ctx), EXIT.lint);
+  assert.equal(posts(), bought, "nothing is synthesized again");
+
+  // The channel outro the first build adds is part of the last chapter on YouTube.
+  const brandingDir = path.join(box.work, "_branding");
+  mkdirSync(brandingDir, { recursive: true });
+  const clip = (name, frames) => ({ file: name, sha256: createHash("sha256").update(name).digest("hex"), frames });
+  writeFileSync(path.join(brandingDir, "current.json"), JSON.stringify({ schema_version: 1, id: "test-bookends", intro: clip("intro.mp4", 150), outro: clip("outro.mp4", 300) }));
+  const branded = run();
+  assert.equal(await main(["tts", "--slug", box.slug], branded.ctx), EXIT.ok, branded.out.stdout);
+  assert.match(branded.out.stdout, /next: node tools\/video\/cli\.mjs review/);
+  assert.equal(posts(), bought);
+  assert.equal(JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8")).runs.at(-1).ok, undefined);
 });
 
 test("tts without a token, or against an unconfigured card, needs the owner", async () => {

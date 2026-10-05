@@ -1348,6 +1348,8 @@ export class Automation {
       // writes a new timeline, so the narration is reviewed again.
       const refresh = sameScript && !previous.audio_evidence && !staleTakes(project.doc, project.lexicon, workdir).length;
       const result = await run(ctx, ["tts", "--slug", state.slug, ...(refresh ? ["--refresh-evidence"] : [])]);
+      // A STOP file ended it between requests: the takes are saved and the next run continues.
+      if (result.code === ctx.EXIT.incomplete) return this.later(`${state.slug}: tts stopped (${lastLine(result.out)}); the next run continues`);
       if (result.code !== 0) return this.block(state,`tts failed: ${result.out.trim().split("\n").at(-1)}`);
       await report(ctx, this.api, state, "narration synthesized");
       return `${state.slug}: narration synthesized`;
@@ -1911,6 +1913,7 @@ export class Automation {
       state.retakes += 1;
       saveState(workdir, state);
       const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", path.join(workdir, "review", "check-flags.json")]);
+      if (redo.code === ctx.EXIT.incomplete) return this.later(`${state.slug}: the retake stopped (${lastLine(redo.out)}); the next run continues`);
       if (redo.code !== 0) return this.block(state,`retake failed: ${redo.out.trim().split("\n").at(-1)}`);
       check = await run(ctx, ["check-audio", "--slug", state.slug]);
     }
@@ -1930,10 +1933,13 @@ export class Automation {
       // is told why the rewrites were refused.
       if (!round.ids.length) continue;
       const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", round.flagsFile]);
+      if (redo.code === ctx.EXIT.incomplete) return this.later(`${state.slug}: the retake after the rewrite stopped (${lastLine(redo.out)}); the next run continues`);
       if (redo.code !== 0) return this.block(state, `retake after the rewrite failed: ${lastLine(redo.out)}`);
       check = await run(ctx, ["check-audio", "--slug", state.slug]);
     }
     if (check.code === 4) return this.later(`${state.slug}: narration check could not finish (${check.out.trim().split("\n").at(-1)}); the next run tries again`);
+    // Stopped before every line was heard: nothing is judged yet, so nothing goes for review.
+    if (check.code === ctx.EXIT.incomplete) return this.later(`${state.slug}: narration check stopped (${lastLine(check.out)}); the next run continues`);
     const pushed = await run(ctx, ["review-push", "--slug", state.slug, "--gate", "audio"]);
     if (pushed.code !== 0) return this.later(`${state.slug}: could not send the narration for review: ${pushed.out.trim()}`);
     await this.pull(state.slug);
@@ -2089,7 +2095,9 @@ export class Automation {
     }
     const dubs = dubsStatus(project, workdir, speechHash(doc, project.lexicon));
     for (const { locale, parts } of pending) {
-      if (!parts.includes("dub") || ["current", "skipped"].includes(dubs[locale]?.status)) continue;
+      // A track is current once `dub` wrote it; one whose check a STOP file ended is checked again.
+      const unheard = dubs[locale]?.status === "current" && state.languages?.[locale]?.check_stopped;
+      if (!parts.includes("dub") || (["current", "skipped"].includes(dubs[locale]?.status) && !unheard)) continue;
       return this.makeDub(state, locale);
     }
     // Every chosen part is made: cut the captions on the dubs, write the package with the chosen
@@ -2365,6 +2373,11 @@ export class Automation {
         if (reworded.ids.length) continue;
       }
       if (check.code === 4) return this.later(`${slug}: ${locale} dub check could not finish (${lastLine(check.out)}); the next run tries again`);
+      if (check.code === ctx.EXIT.incomplete) {
+        rounds.check_stopped = true;
+        remember();
+        return this.later(`${slug}: ${locale} dub check stopped (${lastLine(check.out)}); the next run continues`);
+      }
       if (check.code === 1) {
         const reworded = rounds.reword ? ` and ${rounds.reword} rewording round${rounds.reword === 1 ? "" : "s"}` : "";
         return this.giveUpDub(state, locale, `Jev still hears lines wrong after ${rounds.retakes} retake${rounds.retakes === 1 ? "" : "s"}${reworded}: ${lastLine(check.out)}`);
