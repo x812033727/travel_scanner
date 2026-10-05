@@ -6,7 +6,8 @@ import { syncBuiltinESMExports } from 'node:module';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { PROFILE, buildTimeline, cameraWords, saveJson, sceneHtml, sha256, sourcePath, srt, validate, verifyEvidence } from './core.mjs';
+import { PROFILE, buildTimeline, cameraWords, captionHtml, captionWords, saveJson, sceneHtml, sha256, sourcePath, srt, validate, verifyEvidence } from './core.mjs';
+import { themeOf } from './layouts.mjs';
 
 const base = fileURLToPath(new URL('../../../docs/videos/ai-shorts/',import.meta.url));
 const pilot = () => JSON.parse(readFileSync(path.join(base,'pilots/shorts-receipt-total.json'),'utf8'));
@@ -148,4 +149,32 @@ test('a card can be drawn transparent over a moving background, on a panel over 
     assert.match(page, /\.caption\{position:absolute;left:80px;top:1430px;width:820px;height:165px/);
   }
   assert.deepEqual(['slow push in', 'pull back a little', 'pan to the left', 'pan right', 'tilt up', 'crane down', 'hold still', undefined].map(cameraWords), ['push in', 'pull out', 'pan left', 'pan right', 'tilt up', 'tilt down', 'drift', 'drift']);
+});
+
+test('a karaoke card hides its words behind the caption bar; the layer draws them lit, at the same place, changing only their colour', () => {
+  const doc = pilot();
+  const cue = { sceneIndex: 0, text: '一張手寫的發票，兩個品項' };
+  const lines = ['一張手寫的發票，', '兩個品項'];
+  const groups = [{ text: '一張手寫的發票，', line: 0 }, { text: '兩個品項', line: 1 }];
+  const plain = sceneHtml(doc, cue, { transparent: true });
+  assert.equal(sceneHtml(doc, cue, { transparent: true, caption: null }), plain, 'without a caption contract the markup is what it was');
+  assert.ok(!plain.includes('words hidden') && !plain.includes('visibility:hidden'));
+  assert.match(plain, /<div class="caption">一張手寫的發票，兩個品項<\/div>/);
+  const card = sceneHtml(doc, cue, { transparent: true, caption: { lines, groups } });
+  assert.match(card, /<div class="caption"><div class="words hidden"><span class="g">一張手寫的發票，<\/span><br><span class="g">兩個品項<\/span><\/div><\/div>/);
+  assert.match(card, /\.caption \.words\.hidden\{visibility:hidden\}/);
+  assert.match(card, /\.caption\{position:absolute;left:80px;top:1430px;width:820px;height:165px;padding:14px 20px;background:/, 'the bar keeps its background on the card');
+  const layer = captionHtml(doc, { lines, groups, active: 1 });
+  assert.match(layer, /data-caption-layer="1"/);
+  assert.ok(!layer.includes('class="content') && !layer.includes('<h1') && !layer.includes('class="brand"'), 'the layer is the bar alone');
+  assert.match(layer, /\.caption\{position:absolute;left:80px;top:1430px;width:820px;height:165px;padding:14px 20px;border-radius:22px;font-size:49px;line-height:1.36;font-weight:650;display:flex;align-items:center;justify-content:center;text-align:center\}/);
+  assert.ok(!/\.caption\{[^}]*background/.test(layer), "the bar's background stays on the card");
+  assert.match(layer, /html,body\{[^}]*background:transparent/);
+  assert.match(layer, /<div class="caption"><div class="words"><span class="g">一張手寫的發票，<\/span><br><span class="g on">兩個品項<\/span><\/div><\/div>/);
+  const rule = /\.g\.on\{([^}]*)\}/.exec(layer)[1];
+  assert.deepEqual(rule.split(';').filter(Boolean).map((part) => part.split(':')[0]), ['color', 'text-shadow'], 'only the colour changes between states, never the layout');
+  assert.ok(rule.startsWith(`color:${themeOf(doc).colors.highlight}`), 'lit in the theme\'s highlight unless it names a karaoke colour');
+  assert.equal(captionWords(lines, groups, 0), '<span class="g on">一張手寫的發票，</span><br><span class="g">兩個品項</span>');
+  assert.ok(!captionWords(lines, groups, -1).includes(' on'));
+  assert.equal(captionWords(['<b>'], [{ text: '<b>', line: 0 }], 0), '<span class="g on">&lt;b&gt;</span>', 'the words are escaped');
 });
