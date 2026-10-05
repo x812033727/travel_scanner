@@ -1,4 +1,4 @@
-# Grok language source resubmission preparation
+# Grok language source resubmission
 
 Project: `grok-4-7-bedrock-output-doubles`.
 
@@ -106,15 +106,58 @@ The fixed receipt directory was genuinely absent at both ends of this snapshot:
 Any future intent in that namespace permanently prohibits another POST, including
 after an unknown response. Do not switch directories to bypass the receipt.
 
-Preparation is complete; a specific owner decision is still required. No Grok
-file PUT, review POST, owner approval, paid generation, deployment, worker restart
-or YouTube action has occurred. If authorized, use the frozen driver for two small
-JSON PUTs and one review POST after fresh owner/source/settings/store checks.
-Verify the actual new pending review and all twelve stored files afterwards.
+At the 17:15Z preparation checkpoint, no Grok file PUT or review POST had occurred.
+The owner subsequently named this Grok video, Registrar and the LLM video and
+explicitly requested source/metadata resubmission. That later request supplied
+the specific Grok authorization. The already completed WAF action remains separate.
 
-The completed Cloudflare-only resubmission request does not authorize making a
-new Grok pending batch the current language version. Obtain a specific owner
-decision after the complete packet and transport are independently validated.
+## Actual authorized submission
+
+Fresh actual-only preflight at 23:23:43.084943–23:23:58.861606Z verified the
+unchanged frozen sources, ten real stored attachments, owner, selected choices,
+acknowledged nonce and protected settings. The fixed intent namespace was absent
+at both ends. All 22 guards passed; producer observations were snapshots, not leases.
+Full proof `<temp>/mokaair-grok-human-resubmit-preflight-20261004-stdin-evidence.json`
+is 297,346 bytes, SHA-256
+`d10fd2a6f17b222bc2a0ff45ffb760347fe417316aae59cf25b0a9f860eda084`.
+
+Root executed the frozen driver once. Two small JSON PUTs and one review POST
+created `bef902a6-8fc4-4b0f-9ea4-0841863e1c13` at
+2026-10-04 23:31:10.468497Z, with status `pending` and manifest
+`00e8260712b3eac0f7b65f45162665049e5b158373144ea40f93fd6fe2668afb`.
+The real API response and immediate API readback agreed. Driver exit was zero,
+stderr was empty, and the 344-byte local execution log has SHA-256
+`a112cf9b5ca447b74d4ef4989b6b536e937997c379f078a3b6d8504dbe171fe0`.
+
+An independent actual-only post-submit read at 23:32:30.174279–23:32:36.590150Z
+verified all twelve new and ten old ReviewStore attachments against their full
+bytes, sizes and hashes. The new review remained latest and pending, without a
+decision actor or decision timestamp. Old approval stamps/payload/files, final,
+publish, original choices, native metadata, EN/KO technical QA, JA skip, canonical
+files and protected settings remained exact. Five durable receipts were genuine,
+stable and bound to the returned ID, exact request SHA and raw response.
+All 27 post-submit guards passed.
+
+The actual deployed `read_approved_package(verify_files=True)` now refuses with
+409 “最新語言包尚未核准，請完成語言審核後再送出”. This is the new review awaiting the owner's
+decision, not the old missing-source error. The twelve-file verification is
+separate evidence; the pending refusal alone does not prove attachment validity.
+There was no approval simulation in this verification, and both SQL sessions had
+zero dirty/new/deleted objects.
+
+Full proof `<temp>/mokaair-grok-human-postsubmit-actual-only-20261004-evidence.json`
+is 333,400 bytes, SHA-256
+`cf762cb7e2d3db51f6b4cbdbdcc2ed6111f97bd04fabb869178e147c3c15dbbb`.
+Compact proof is 108,942 bytes, SHA-256
+`8d58a9c508071c0d91cc18a13c405ad4134a21df8a34a2ed089eac86cba23ebd`.
+
+The fixed receipt namespace now contains intent, raw response, response metadata,
+accepted identity and readback. Its existing intent permanently prohibits another
+POST, including transport/body loss, an unknown result, a restart or another
+directory. Do not repeat this submission. Root did not regenerate speech, change
+source/settings, approve a review, deploy code, restart a worker or operate YouTube.
+The new package requires the owner's real review decision.
+
 The broader normal-producer fix already belongs to
 `2026-09-30-youtube-approved-languages-sync`; its overlapping scopes remain held.
 This document and preparation do not modify that producer or its task claims.

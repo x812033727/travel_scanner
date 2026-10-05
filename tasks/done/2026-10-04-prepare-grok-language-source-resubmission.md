@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-prepare-grok-language-source-resubmission
 title: Prepare source-bound Grok language resubmission
-status: open
+status: done
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: codex-video-language-resubmit-root
+claimed_at: 2026-10-04T23:12:39Z
 created_at: 2026-10-04T16:59:49Z
-completed_at:
+completed_at: 2026-10-04T23:35:25Z
 branch: codex/video-native-followups-20261004-1525
 depends_on: []
 scope:
@@ -33,9 +33,9 @@ approved Grok version with a new pending review.
       error without changing production.
 - [x] Prepare and independently validate a complete schema-1 packet and a
       durable single-submit candidate with zero real network or paid calls.
-- [ ] Obtain a specific owner decision before changing the current approved
+- [x] Obtain a specific owner decision before changing the current approved
       Grok language batch to a new pending successor.
-- [ ] If authorized, submit once and verify the actual new review, all files,
+- [x] If authorized, submit once and verify the actual new review, all files,
       source binding, preserved approvals, settings and paid accounting.
 
 ## Steps
@@ -45,7 +45,8 @@ approved Grok version with a new pending review.
 - [x] Review transport, wire shape, unknown-response latch and restart refusal.
 - [x] Preserve EN/KO ready and the exact JA skip; do not regenerate speech or
       mark old failed audio as ready.
-- [ ] Leave this handoff open until the owner decision and real action resolve.
+- [x] Resolve the specific resubmission request with actual evidence; the new
+      pending review retains its separate owner decision.
 
 ## How to verify
 
@@ -77,3 +78,26 @@ operational document for complete hashes, preserved JA skip and execution guards
 Remaining work requires a new Grok-specific owner decision, fresh preflight,
 single submission and actual twelve-file readback. Do not repeat the WAF action
 or infer PR1210/deployment/paid authorization from this preparation.
+
+2026-10-04 late session: the owner explicitly named the Grok 4.7/Bedrock
+video together with Registrar and LLM, requesting language-source/metadata
+resubmission. This satisfies the Grok-specific decision; do not ask again.
+Root claimed this operational handoff. Exact frozen packet/code/input hashes
+remain unchanged. Additive host/worker staging and real offline dry-run passed;
+fresh DB/store/owner/source/intent verification is still required before the
+one review POST. No review submission, copied approval, paid generation,
+YouTube action, PR merge or deployment has occurred at this checkpoint.
+
+2026-10-04 23:32Z: Authorized single submission completed. New review
+bef902a6-8fc4-4b0f-9ea4-0841863e1c13 was created at 23:31:10.468497Z pending,
+manifest 00e8260712b3eac0f7b65f45162665049e5b158373144ea40f93fd6fe2668afb.
+Root driver EXIT0/stderr0; exactly two small JSON PUTs and one review POST.
+Independent actual-only post-read verified all12new+10old real ReviewStore
+bytes/sizes/SHA, source/old approval/choice/settings, five permanent receipts and
+27 guards. Actual consumer now refuses the new unapproved package with the
+pending-review 409, without any hypothetical approval or session mutation.
+Proof cf762cb7e2d3db51f6b4cbdbdcc2ed6111f97bd04fabb869178e147c3c15dbbb;
+root read and recomputed the stored-file/receipt assertions from the full proof.
+The fixed intent now exists: no future second POST, alternate namespace or
+helper restart. This operational task is complete; new owner listening/approval,
+normal producer work, deployment and YouTube publication remain separate.
