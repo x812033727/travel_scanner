@@ -50,3 +50,4 @@ npm run check:tasks
 - `overviews.json` 那一筆的 `status` 是 `planned`，跟試片三集同樣狀態（brief、稿子、查核做完，等站主挑大綱；README 第 3 步才改 `in-production`）。`covers` 四個 id 都在 `terms.json`；`covers_without_term` 記圖形工程；`notes` 記旁白用「駕馭工程」、文章卡與片尾說站上譯名「代理執行環境工程」，給之後的 harness-engineering 單名詞集沿用。
 - 長片目錄（`plans.json`、後台 `/admin` 的長片企劃）不列總覽集；總覽集在 `/admin/videos` 出現靠 `review-push`，跟其他全自動影片一樣，所以沒有另開票。
 - 留下的：上架後補 `video_id`、`published_at` 與 `status`，拆到 `2026-10-05-ai-terms-overview-episode-after-upload`（只改 `overviews.json`）。
+- 2026-10-05 審查更正：README 那一段原本寫「新增一列還要改三處寫死的列數」，漏了 `apps/api/app/video_plans/schemas.py` 的 `CATALOG_COUNTS`（`CatalogBundle` 逐類核對列數，漏改的話 API 讀不進目錄、後台企劃頁回 503），也沒提五份寫死 473／81 的測試（`plans.test.mjs`、`admin-catalog.test.mjs`、`apps/api/tests/test_video_plans.py`、`admin-video-plans.test.tsx`、`admin-video-plans.spec.ts`）。已改成程式四處、測試五份，並附 `git grep` 指令讓下一個人以實際結果為準。
