@@ -28,8 +28,9 @@ metadata:
 | 寫 `camera`，想知道某個字三個讀者各讀成什麼 | `.agents/skills/animation-camera/references/camera-keywords.md`（正則逐字表、分家的字、35 行例子） |
 | 寫一場戲：軸線、視線、進出、連戲帳；一場 12 鏡的戲寫兩次（可接受版附腳本輸出、craft 列與估價；試拍式每鏡標錯） | `.agents/skills/animation-camera/references/scene-coverage.md` |
 | 被 judge、`assemble` 或站主退回 | `.agents/skills/animation-camera/references/model-misreads.md`（逐 take 的證據、提示怎麼組、Lite 的歷史參數失敗與此版本相容處理、judge 的題、Hailuo 與 Kling 的字彙來源）與 `visual-quality.md`（診斷、小卡、冷看） |
+| 付費之前把整集排好：分鏡表、鏡位、每鏡路線與買幾秒、風險分級、動態分鏡、開拍鎖定 | `.agents/skills/animation-preproduction/SKILL.md`（鏡位設計是它的 P3） |
 | 要算錢、選路線、看每個付費階段的前提 | `.agents/skills/animation-production/SKILL.md`；這批動畫的 Lite 契約（8 秒、首尾格、無參考圖、CC）在 `animation-production.md` |
-| 使用者指定「布袋喵參考風格」或真一隻布袋喵頻道 | [references/budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md)：三支原片抽樣、可選美術與導演規格、原創八鏡與同鏡的 Hailuo／Kling 網頁提示；只在點名時套用，其他作品保留原風格 |
+| 使用者指定「布袋喵參考風格」或真一隻布袋喵頻道 | [.agents/skills/animation-camera/references/budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md)：三支原片抽樣、可選美術與導演規格、原創八鏡與同鏡的 Hailuo／Kling 網頁提示；只在點名時套用，其他作品保留原風格 |
 | 要透過內建瀏覽器製作 Hailuo／Kling 片段 | [.agents/skills/animation-production/references/browser-production.md](../../../.agents/skills/animation-production/references/browser-production.md)：依本次工具能力上傳、選設定、記帳與下載；先檢查 production profile 的匯入限制 |
 
 ## 三個欄位各給誰讀
@@ -145,7 +146,7 @@ metadata:
 | 回到同一鏡位的第二、三次 | `source: { shot, from_s }` | 不畫圖、不買素材、不 judge（帳本記 `cut`） |
 | 無聲的動作拍 | 場景層 `action_seconds`＋空 `lines`（上一節） | 同 clip 或 still |
 
-每一種的價錢在 `.agents/skills/animation-production/SKILL.md` 的「錢怎麼算」；三條路線的點數換算在它的 `references/cost-model.md`。
+每一種的價錢在 `.agents/skills/animation-production/SKILL.md` 的「錢怎麼算」；三條路線的點數換算在它的 `.agents/skills/animation-production/references/cost-model.md`。
 
 - 靜圖的運鏡：要驗第 0 格就寫 `push in`、`drift` 或 `locked`（`IDENTITY_START`：第 0 格是整張關鍵影格，`assemble` 算 PSNR ≥ 22）；`locked` 只給刻意的 hold（`shot_reading` 報 `still.locked` 問一次：是就留著並在回報說明，不是就給 `push in` 或 `drift`）；`pull out`、pan、tilt 一開始就裁掉邊緣，不驗第 0 格。`checks.json` 的 `metrics.shots[]` 記 `kind: "motion"`、`move` 與 `keyframe_psnr`，看到 `drift` 多半是 `camera` 沒寫或用了表外的字（`still.drift`）。靜圖不能有 `end_frame`（lint 錯誤）。
 - `source` 的規矩（lint，`tools/video/core/drama.mjs` 的 `validateShotData`）：來源要是更早的 clip 鏡頭、自己有素材（不是 still、不是本身切來的）；不能同時有 `start_frame`／`end_frame`；不能當縮圖底圖；`from_s`＋鏡長在 lint 的上限內：沒有 production profile 10 秒（`MAX_SOURCE_CLIP_SECONDS`）、有 profile 8 秒（`tools/video/core/lint.mjs`）。但素材真正有幾秒是來源鏡頭**買到的**：Lite 1080p 永遠 8；Omni／H3 是 ceil(需要) 最少 4（`clipSeconds`），一個 3 秒的來源在伺服器預設的 Omni 下只有 4 秒可切，`clips.mjs` 在來源買下之後才把超出的切鏡標 `needs_review`。Omni／H3 下要嘛刻意把來源鏡頭寫長（多買秒數），要嘛接受重播來源的開頭；「說—聽—說回同一鏡位」切尾巴之後那段，只在 Lite 1080p 固定 8 秒時成立。`shot_reading` 分兩個陷阱：`source.length`（超過 lint 上限）、`source.bought`（在上限內但超過來源買到的秒數，以 Omni／H3 的 4–10 算）。`assemble` 拿第 0 格對來源素材第 `from_s` 秒那一格算 PSNR。
@@ -157,13 +158,13 @@ metadata:
 
 ## 同一鏡在 Hailuo 與 Kling 怎麼寫
 
-先沿**使用者本次指定的路線**：要求內建瀏覽器，就用 Hailuo／Kling 網頁；CLI／MCP 是另外選定的路線，不因歷史選擇自動取代網頁。產線的關鍵影格已定景別、構圖與軸線，兩家都用同一鏡核准首格；`camera` 仍照上面的工具讀法寫，網頁的動態正文用動作＋一種運鏡＋身份／道具穩定。操作讀 [browser-production.md](../../../.agents/skills/animation-production/references/browser-production.md)，具體八鏡改寫讀 [budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md) 第四節。
+先沿**使用者本次指定的路線**：要求內建瀏覽器，就用 Hailuo／Kling 網頁；CLI／MCP 是另外選定的路線，不因歷史選擇自動取代網頁。產線的關鍵影格已定景別、構圖與軸線，兩家都用同一鏡核准首格；`camera` 仍照上面的工具讀法寫，網頁的動態正文由 `animation-preproduction` 的 `shot_plan.mjs --route hailuo|kling` 照各家官方格式組好（Hailuo H3 的固定第一行與三個欄位、運鏡寫成「種類＋幅度＋速度」；Hailuo 2.3 的方括號指令；Kling 3.0 的自然語言），運鏡字的對照表在 `.agents/skills/animation-preproduction/references/route-decisions.md` 第六節。操作讀 [browser-production.md](../../../.agents/skills/animation-production/references/browser-production.md)，具體八鏡改寫讀 [budaimiao-style.md](../../../.agents/skills/animation-camera/references/budaimiao-style.md) 第四節。
 
 | 東西 | Hailuo 網頁 | Kling 網頁 |
 | --- | --- | --- |
 | 首格與參考 | 用當前瀏覽器有文件的上傳工具交同一張首格，確認預覽；參考欄另核對 | 同；CLI 的 image 欄位名不當成網頁欄位 |
-| 運鏡與動作 | 一鏡一個主要可見動作，運鏡先用英文語意；API 方括號指令對網頁仍未驗 | 同；不把社群 MCP 的 camera control 當網頁選項 |
-| 風格與否定 | 保留本集 `look.motion` 的穩定要求；負面欄有就用，沒有就接 `Avoid: …` | 同；負面欄、字數上限按當前 UI 核對 |
+| 運鏡與動作 | 一鏡一個主要可見動作、一個運鏡；H3 用官方的運鏡句子（種類＋幅度＋速度），方括號只給 2.3 | 一個連續鏡頭、一個運鏡寫在正文開頭；不把社群 MCP 的 camera control 當網頁選項 |
+| 風格與否定 | 保留本集 `look.motion` 的穩定要求；H3 的 API 沒有負面欄（官方），網頁有沒有沒驗；正文只寫正面狀態，`look.negative` 只貼進真的有的負面欄 | 同：負面欄真的有才貼；字數上限按當前 UI 核對 |
 | 秒數、比例、模型 | 由本鏡需求與當前 UI 決定，16:9；歷史 H3 2K 實測不是原生 1080p | 同；CLI 列出的秒數／解析度不代替網頁實測 |
 | 聲音與分鏡 | 一個連續鏡頭；原生聲音按本案契約處理，既有配音／CC不改 | 同；多鏡／原生音訊開關只操作網頁實際提供的 |
 | 下載與匯入 | 用網站下載按鈕取得正確版本；先檢查浮水印，再依 stage-preconditions 匯入 | 同；網頁來源以 `--provider external` 並在 `--note` 記 Kling web，CLI／MCP 的歷史標籤不冒充網頁 |
@@ -181,7 +182,7 @@ craft 的列（景別有名、`camera` 與 `prompt` 同家族、全景占比與�
 | 1 | 畫外說話者不在 `characters`，prompt 寫 off screen | `shot_reading` `cast.offscreen`、`cast.speaker`；craft `size.listeners` info |
 | 2 | 每鏡 ≤ 3 人 | lint 錯誤 `must list at most 3 distinct character ids`；`shot_reading` `cast.count` |
 | 3 | still 的 `camera` 照上一節「靜圖的運鏡」那一段；`drift`＋`static` 不並寫 | `shot_reading` `still.drift`、`still.locked`、`move.disagree`；`checks.json` `metrics.shots[].move`、`keyframe_psnr` |
-| 4 | `source` 的 `from_s`＋鏡長在 lint 上限內，也在來源買到的秒數內；來源是有素材的 clip 鏡 | lint 錯誤；`shot_reading` `source.length`、`source.bought`、`source.shot` |
+| 4 | `source` 的 `from_s`＋鏡長在 lint 上限內，也在來源買到的秒數內（伺服器路線；網頁路線的母鏡頭由 `animation-preproduction` 的 `shot_plan.mjs` 買到蓋住切鏡，`shot_reading --route hailuo|kling` 不報 `source.bought`）；來源是有素材的 clip 鏡 | lint 錯誤；`shot_reading` `source.length`、`source.bought`、`source.shot` |
 | 5 | 鎖定作品的 `look.motion` 是空字串；`look.negative` 保留所需限制，兩者在 `look` 之前定好；不為 Lite 清空已核准的 negative | `shot_reading` `look.motion`；`animation-production` 的 `drama_preflight.mjs` |
 | 6 | `camera` ≤ 120、`prompt` ≤ 1000、`motion` ≤ 300；組合後的關鍵影格提示 ≤ 4000；人的動詞不在 `camera`；prompt 不抄 `camera` | lint；`shot_reading` `prompt.length`、`camera.person`、`prompt.camera` |
 | 7 | 軸線、畫面側、視線、進出方向、採用格連戲帳 | 只有人；寫在這場戲的回報裡 |
@@ -194,6 +195,7 @@ craft 的列沒過，改到過或在回報裡逐列寫這一集為什麼不同�
 
 ```bash
 node .agents/skills/animation-camera/scripts/shot_reading.mjs <VIDEO_DOCS>/video.json            # 每鏡一塊：visual、craft 景別與家族、三個讀者的運鏡與要不要驗 PSNR、look-only、台詞與說話者、characters、組合後的提示長度；陷阱與修法；最後一行計數
+node .agents/skills/animation-camera/scripts/shot_reading.mjs <VIDEO_DOCS>/video.json --route kling   # 網頁路線：source.bought 不報（母鏡頭的秒數由 shot_plan 定）
 node .agents/skills/animation-camera/scripts/shot_reading.mjs <VIDEO_DOCS>/video.json --shot a,b  # 只看這幾鏡（照文件順序）；旁邊有 series.json 的 production profile 時 source 以 8 秒算
 node .agents/skills/animation-camera/scripts/shot_reading.mjs --file one-shot.json                 # 一個 { camera, prompt, motion, characters?, visual?, source?, lines?, look? } 物件
 node .agents/skills/animation-camera/scripts/shot_reading.mjs <file> --json | --strict             # --json 的 summary 有 shots、traps、by_kind；--strict 有陷阱就結束碼 1；讀不到 2
@@ -212,5 +214,5 @@ node .agents/skills/animation-camera/scripts/shot_reading.mjs <file> --json | --
 - 片段模型對 `locked`、`pan left`、`push in` 原文的反應：沒有量過，`camera` 的字只保證三個讀者讀對。
 - 參考片的運鏡：量到的只有鏡長與景別（`drama-craft.md` 最後一節），「鎖定不是預設」「同一運鏡 ≤ 連 3」是編輯判斷。
 - 手部插鏡列不列角色哪種更穩、過肩近側的 identity 題過不過、`eyes open throughout, one natural blink is fine` 會不會改變 judge 分數：各一次證據或零次。
-- Hailuo 網頁是否照 API 文件解讀方括號指令、Kling MCP 的 pan 方向與 zoom 正負、Kling 官方 API 的 `camera_control` 欄位：沒有在頁面上核對（`model-misreads.md` 第五節）。2026-10-04 的實測沒有補上這幾項：Hailuo 那一支是文生影片，量的是點數、時間與輸出規格；Kling 官方 CLI 讀了指令、模型與參數，帳號 0 點、一支都沒生成。
+- H3 照不照方括號指令（官方只寫給 Hailuo 2.3／02）、H3 與 Kling 3.0 對官方運鏡句子的實際反應、Kling MCP 的 pan 方向與 zoom 正負：都沒有實拍（`model-misreads.md` 第五節）。2026-10-04 的實測沒有補上這幾項：Hailuo 那一支是文生影片，量的是點數、時間與輸出規格；Kling 官方 CLI 讀了指令、模型與參數，帳號 0 點、一支都沒生成。
 - 這份 skill 讓一個沒看過產線的代理寫出可接受的一場戲（任務的驗收第五條）：一次前向測試（2026-10-03，12 鏡的兩人餐桌戲）三稿到可接受，但寫的人開了 `timeline.mjs`、`clips.mjs` 與 craft 的正則才過；`action_seconds` 的位置、`holds` 那組字、來源買到的秒數就是從那次來的。這個 12 鏡用例尚未重跑；2026-10-04 另做布袋喵風格的原創三鏡前向測試，讀法零陷阱並能寫出兩家網頁提示與 profile 匯入限制，但只完成離線分鏡，未驗模型、媒體或完整集。

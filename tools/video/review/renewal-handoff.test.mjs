@@ -1,14 +1,15 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, renameSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, renameSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
+import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { validateBranding } from "../core/branding.mjs";
 import { fixture as sourceFixture, fixtureLexicon, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { checkPackage, listFiles, packageFiles } from "../package/check.mjs";
-import { activateHandoff, bindManualSubmission, fileInventory, prepareHandoff, shiftSrt, stageManualPublish, verifyHandoff } from "./renewal-handoff.mjs";
+import { activateHandoff, bindManualSubmission, fileInventory, nativeApprovedFinalAdapter, nativeLiteralLexicon, prepareApprovedFinalHandoff, prepareHandoff, readManualLanguageSource, renameRollbackDirectory, shiftSrt, stageManualPublish, verifyHandoff, verifyRetainedMedia, verifyRetainedPictures } from "./renewal-handoff.mjs";
 
 const sha = (b) => createHash("sha256").update(b).digest("hex");
 const oldId = "11111111-1111-4111-8111-111111111111", finalId = "22222222-2222-4222-8222-222222222222", publishId = "33333333-3333-4333-8333-333333333333";
@@ -183,4 +184,245 @@ test("manual original-cut range records packet provenance without inventing a mi
   assert.equal(receipt.source.body_proof.candidate_body_container_unavailable, true);
   assert.equal(existsSync(path.join(f.out, "build/body.mp4")), false);
   await verifyHandoff({ receipt, remote: f.remote });
+});
+
+const windowCaption = "1\n00:00:00,100 --> 00:00:03,000\n文字12\n\n2\n00:00:03,000 --> 00:00:09,000\n句內；末句\n\n3\n00:00:10,100 --> 00:00:19,000\n數字34？「引號」\n";
+function currentFixture(t) {
+  const f = windowFixture(t), evidence = {};
+  const values = { evidence_script: f.source.adapter.project.doc, evidence_body_timeline: f.source.adapter.timeline, "captions_zh-TW": shiftSrt(windowCaption, 5000), narration: "current AAC preview", thumbnail: "current thumbnail" };
+  for (const [role, value] of Object.entries(values)) {
+    const file = path.join(f.old, `current-${role}`); if (typeof value === "object") json(file, value); else writeFileSync(file, value);
+    evidence[role] = { ...proof(file, role, finalId), content_type: role === "narration" ? "audio/mp4" : role.startsWith("evidence") ? "application/json" : "text/plain" };
+  }
+  f.final.files = [f.final.files[0], ...Object.values(evidence)];
+  f.final.payload = { ...f.final.payload, manual_review: true, metadata: { "zh-TW": { title: "Current title", description: "Current chapter text\n00:00 開始\n00:12 新章" } }, chapters: [{ time: "00:00", title: "開始" }, { time: "00:12", title: "新章" }], body_change: { new_script: evidence.evidence_script, new_body_timeline: evidence.evidence_body_timeline, new_body: { sha256: sha("unavailable changed master") }, new_voice: { sha256: sha("unavailable raw WAV") }, speech_hash: f.source.adapter.timeline.speech_hash, full_playback_owner_accepted: false, audio_owner_accepted: false, source_body_changed: true } };
+  const actor = "55555555-5555-4555-8555-555555555555";
+  const decisionAuthority = { slug: f.slug, status: "approved", review_id: finalId, content_sha256: f.final.content_sha256, decided_at: f.final.decided_at, decided_by_user_id: actor, approval_audits: [{ id: "66666666-6666-4666-8666-666666666666", action: "video_review_approved", actor_user_id: actor, target: `video_review:${finalId}`, metadata_json: { slug: f.slug, gate: "final", sha256: f.final.content_sha256 } }] };
+  const media = { scope: "approved-current-media-identity", preservation_claim: false, full_decode_ok: true, video_packets: 600, body_range_sha256: sha("actual packets"), body_audio_pcm_sha256: sha("actual decoded current PCM"), narration: { sha256: evidence.narration.sha256, full_decode_ok: true, raw_voice_claimed: false, listening_approval_claimed: false } };
+  return { ...f, config: { ...f.config, source: { evidence, adapter: f.source.adapter, disclosure: { synthetic: true, reason: "Current synthetic narration" } }, decisionAuthority, verifyMedia: async () => media } };
+}
+
+test("changed approved final is an independent current identity, keeps current captions/chapters and never fabricates old-body or listening approval", async (t) => {
+  const f = currentFixture(t), receipt = await prepareApprovedFinalHandoff(f.config), contract = await readManualLanguageSource({ workdir: f.out, remote: f.remote });
+  assert.equal(receipt.mode, "approved-final-body-range"); assert.equal(receipt.media.preservation_claim, false);
+  assert.equal(contract.source.body.sha256, f.final.content_sha256); assert.equal(contract.source.body.file, "final.mp4");
+  assert.equal(contract.source.historical_declarations.audio_owner_accepted, false); assert.notEqual(contract.source.body.sha256, contract.source.historical_declarations.new_body.sha256);
+  assert.deepEqual(JSON.parse(readFileSync(path.join(f.out, "upload/metadata.json"))).chapters, f.final.payload.chapters);
+  assert.equal(readFileSync(path.join(f.out, "upload/captions/zh-TW.srt"), "utf8"), shiftSrt(windowCaption, 5000));
+  for (const file of ["checks.json", "narration.wav", "approvals.json", "build/body.mp4"]) assert.equal(existsSync(path.join(f.out, file)), false);
+  await verifyHandoff({ receipt, remote: f.remote });
+  f.final.payload.body_change.audio_owner_accepted = true;
+  await assert.rejects(readManualLanguageSource({ workdir: f.out, remote: f.remote }), /owner decision|authority changed/);
+});
+
+test("current final source rejects audit actor, missing actual narration, stale evidence and claimed preservation", async (t) => {
+  for (const [name, change, pattern] of [["wrong actor", (f) => { f.config.decisionAuthority.approval_audits[0].actor_user_id = oldId; }, /matching approval audit/], ["missing narration", (f) => { delete f.config.source.evidence.narration; }, /narration/], ["wrong source script", (f) => { f.final.payload.body_change.new_script = { sha256: sha("old script") }; }, /changed script/], ["false preservation", (f) => { f.config.verifyMedia = async () => ({ scope: "approved-current-media-identity", preservation_claim: true }); }, /identity evidence/]]) await t.test(name, async (child) => { const f = currentFixture(child); change(f); await assert.rejects(prepareApprovedFinalHandoff(f.config), pattern); });
+});
+
+test("current-source native aliases preserve valid IDs, every raw word/window and speech identity, and reject collisions", (t) => {
+  const f = currentFixture(t), raw = structuredClone(f.config.source.adapter), hash = sha("raw current script bytes");
+  raw.project.doc.slug = "ai-real-world-01-image-trust"; raw.project.doc.scenes[0].lines[0].id = "ext8-01-01"; raw.timeline.lines[0].id = "ext8-01-01"; raw.timeline.speech_hash = speechHash(raw.project.doc, raw.project.lexicon);
+  const before = structuredClone(raw), adapted = nativeApprovedFinalAdapter(raw.project, raw.timeline, hash), alias = adapted.line_id_aliases.map["ext8-01-01"];
+  assert.match(alias, /^r[a-f0-9]{7}$/); assert.equal(adapted.project.doc.scenes[0].lines[1].id, "bbbb"); assert.deepEqual(raw, before);
+  assert.equal(adapted.project.doc.scenes[0].lines[0].text, raw.project.doc.scenes[0].lines[0].text); assert.equal(adapted.timeline.lines[0].end_frame, raw.timeline.lines[0].end_frame);
+  assert.equal(adapted.line_id_aliases.raw_speech_hash, raw.timeline.speech_hash); assert.notEqual(adapted.timeline.speech_hash, raw.timeline.speech_hash);
+  raw.project.doc.scenes[0].lines[1].id = alias; raw.timeline.lines[1].id = alias; raw.timeline.speech_hash = speechHash(raw.project.doc, raw.project.lexicon);
+  assert.throws(() => nativeApprovedFinalAdapter(raw.project, raw.timeline, hash), /alias collision/);
+  raw.project.doc.scenes[0].lines[0].id = "unsupported-legacy-id"; raw.timeline.lines[0].id = "unsupported-legacy-id"; raw.timeline.speech_hash = speechHash(raw.project.doc, raw.project.lexicon);
+  assert.throws(() => nativeApprovedFinalAdapter(raw.project, raw.timeline, hash), /only the approved/);
+});
+
+test("EP06 native literal annotation changes only the spelling allowlist, preserves speech and claims no pronunciation approval", (t) => {
+  const f = currentFixture(t), project = structuredClone(f.config.source.adapter.project);
+  project.doc.slug = "ai-real-world-06-digital-yesman"; project.lexicon = { schema_version: 1, terms: {} };
+  project.doc.scenes[0].lines[0].text = "Anthropic 做模型。"; delete project.doc.scenes[0].lines[0].say; delete project.doc.scenes[0].lines[0].say_for;
+  const before = structuredClone(project), result = nativeLiteralLexicon(project);
+  assert.deepEqual(project, before); assert.deepEqual(result.lexicon, { schema_version: 1, terms: { Anthropic: null } });
+  assert.equal(speechHash(project.doc, result.lexicon), speechHash(project.doc, project.lexicon));
+  assert.equal(result.literal_term_annotations.listening_approval_claimed, false); assert.equal(result.literal_term_annotations.pronunciation_approval_claimed, false);
+  const timeline = structuredClone(f.config.source.adapter.timeline); timeline.speech_hash = speechHash(project.doc, project.lexicon);
+  assert.throws(() => nativeApprovedFinalAdapter(project, timeline, sha("different owner source")), /exact approved raw\/native speech identities/);
+  project.doc.scenes[0].lines[0].text += "OpenAI。"; assert.throws(() => nativeLiteralLexicon(project), /only the EP06/);
+  project.doc.scenes[0].lines[0].text = "Anthropic。"; project.lexicon.terms.Unrelated = null; assert.throws(() => nativeLiteralLexicon(project), /only the EP06/);
+});
+
+test("current readers rederive aliases and refuse jointly relabelled mapping, valid ID, words or raw evidence", async (t) => {
+  const f = currentFixture(t), receipt = await prepareApprovedFinalHandoff(f.config), contractFile = path.join(f.out, "renewal-language-source.json"), original = readFileSync(contractFile);
+  for (const [name, change] of [["unknown mode", (v) => { v.adapter.line_id_aliases.algorithm = "ignore-ids"; }], ["changed alias", (v) => { v.adapter.line_id_aliases.map.aaaa = "r0000000"; }]]) await t.test(name, async () => {
+    const contract = JSON.parse(original); change(contract); json(contractFile, contract); receipt.files["renewal-language-source.json"].sha256 = sha(readFileSync(contractFile)); json(path.join(f.out, "renewal-handoff.json"), receipt);
+    await assert.rejects(readManualLanguageSource({ workdir: f.out, remote: f.remote }), /native adapter\/alias map/);
+  });
+  writeFileSync(contractFile, original); receipt.files["renewal-language-source.json"].sha256 = sha(original); json(path.join(f.out, "renewal-handoff.json"), receipt);
+  const projectFile = path.join(f.out, "language-adapter/project.json"), timingFile = path.join(f.out, "language-adapter/timeline.json"), projectBytes = readFileSync(projectFile), timingBytes = readFileSync(timingFile);
+  for (const [name, change] of [["legal ID renamed", (p, v) => { p.doc.scenes[0].lines[1].id = "cccc"; v.lines[1].id = "cccc"; }], ["source word changed", (p) => { p.doc.scenes[0].lines[0].text += "改字"; }], ["source timing changed", (_p, v) => { v.lines[0].start_frame = 1; }]]) await t.test(name, async () => {
+    const p = JSON.parse(projectBytes), timing = JSON.parse(timingBytes), contract = JSON.parse(original); change(p, timing); timing.speech_hash = speechHash(p.doc, p.lexicon); json(projectFile, p); json(timingFile, timing);
+    Object.assign(contract.adapter, { project_sha256: sha(readFileSync(projectFile)), timeline_sha256: sha(readFileSync(timingFile)), doc_sha256: sha(JSON.stringify(p.doc)), speech_hash: timing.speech_hash });
+    json(contractFile, contract); for (const file of ["renewal-language-source.json", "language-adapter/project.json", "language-adapter/timeline.json"]) receipt.files[file].sha256 = sha(readFileSync(path.join(f.out, file))); json(path.join(f.out, "renewal-handoff.json"), receipt);
+    await assert.rejects(readManualLanguageSource({ workdir: f.out, remote: f.remote }), /native adapter\/alias map/);
+  });
+  writeFileSync(projectFile, projectBytes); writeFileSync(timingFile, timingBytes); writeFileSync(contractFile, original); for (const file of ["renewal-language-source.json", "language-adapter/project.json", "language-adapter/timeline.json"]) receipt.files[file].sha256 = sha(readFileSync(path.join(f.out, file))); json(path.join(f.out, "renewal-handoff.json"), receipt);
+  const evidence = path.join(f.out, "approved-source/evidence_script"); writeFileSync(evidence, "changed raw source");
+  await assert.rejects(readManualLanguageSource({ workdir: f.out, remote: f.remote }), /approved evidence changed/);
+});
+function windowFixture(t, bytes = windowCaption) {
+  const f = fixture(t, { choices: {} }), doc = sourceFixture(); doc.slug = f.slug;
+  doc.scenes = [{ ...doc.scenes[0], lines: [{ id: "aaaa", text: "文字12，句內；末句。", pause_after_ms: 0 }, { id: "bbbb", text: "數字34？「引號」", pause_after_ms: 0 }] }];
+  const project = { doc, lexicon: fixtureLexicon(), translations: {} };
+  f.source.adapter = { caption_mode: "approved-line-windows", project, timeline: { fps: 30, total_frames: 600, speech_hash: speechHash(doc, project.lexicon), lines: [{ id: "aaaa", start_frame: 0, end_frame: 300, audio_samples: 480000 }, { id: "bbbb", start_frame: 300, end_frame: 600, audio_samples: 480000 }] } };
+  writeFileSync(f.source.package.captions["zh-TW"].file, bytes);
+  Object.assign(f.source.package.captions["zh-TW"], proof(f.source.package.captions["zh-TW"].file, "captions_zh-TW"));
+  for (const row of [f.original, f.published]) Object.assign(row.files.find((v) => v.role === "captions_zh-TW"), f.source.package.captions["zh-TW"]);
+  f.final.files.find((v) => v.role === "captions_zh-TW").sha256 = sha(shiftSrt(bytes, 5000));
+  return f;
+}
+
+test("explicit approved line windows retain actual split cues and pin mode, text and exact source timing", async (t) => {
+  const f = windowFixture(t); await prepareHandoff(f.config);
+  const contract = await readManualLanguageSource({ workdir: f.out, remote: f.remote });
+  assert.equal(contract.adapter.caption_mode, "approved-line-windows");
+  assert.equal(readFileSync(path.join(f.out, contract.captions_zh_TW.file), "utf8"), shiftSrt(windowCaption, 5000));
+  assert.equal(existsSync(path.join(f.out, "checks.json")), false);
+  const file = path.join(f.out, contract.captions_zh_TW.file);
+  writeFileSync(file, readFileSync(file, "utf8").replace("00:00:05,100", "00:00:05,101"));
+  await assert.rejects(readManualLanguageSource({ workdir: f.out, remote: f.remote }), /source changed|prepared source receipt/);
+});
+
+test("approved line windows cannot omit words, digits, internal punctuation, questions or source cues", async (t) => {
+  const repeated = windowCaption.replace("2\n00:00:03,000 --> 00:00:09,000\n句內；末句", "2\n00:00:03,000 --> 00:00:09,000\n文字12");
+  const missing = windowCaption.replace("1\n00:00:00,100 --> 00:00:03,000\n文字12\n\n", "").replace("2\n", "1\n").replace("3\n", "2\n");
+  for (const [name, bytes] of [["CJK word", windowCaption.replace("末句", "末字")], ["number", windowCaption.replace("12", "13")], ["internal punctuation", windowCaption.replace("句內；末句", "句內末句")], ["question punctuation", windowCaption.replace("34？", "34")], ["quotation punctuation", windowCaption.replace("「引號」", "引號")], ["repeated cue", repeated], ["missing cue", missing], ["cross-window cue", windowCaption.replace("00:00:09,000", "00:00:10,002")]]) {
+    await t.test(name, async (child) => { const f = windowFixture(child, bytes); await assert.rejects(prepareHandoff(f.config), /approved caption/); });
+  }
+});
+
+test("approved source line windows require bounded integer frames in source order without overlap", async (t) => {
+  for (const [name, change] of [["negative start", (v) => { v.lines[0].start_frame = -30; }], ["fractional start", (v) => { v.lines[0].start_frame = 0.5; }], ["end beyond body", (v) => { v.lines[1].end_frame = 601; }], ["overlapping line windows", (v) => { v.lines[1].start_frame = 299; }]]) {
+    await t.test(name, async (child) => { const f = windowFixture(child); change(f.source.adapter.timeline); await assert.rejects(prepareHandoff(f.config), /approved caption source line order\/window/); });
+  }
+});
+
+test("actual H.264 concat preserves every Annex-B byte and rejects altered pictures, parameters and timestamps", async (t) => {
+  let tools;
+  try { tools = await locateFfmpeg(); } catch (error) { if (error instanceof ToolMissing) { t.skip(error.message); return; } throw error; }
+  const base = mkdtempSync(path.join(os.tmpdir(), "renewal-real-packets-"));
+  t.after(() => rmSync(base, { recursive: true, force: true }));
+  const body = path.join(base, "body.mp4"), final = path.join(base, "final.mp4"), intro = path.join(base, "intro.mp4"), outro = path.join(base, "outro.mp4");
+  const video = ["-c:v", "libx264", "-threads", "1", "-preset", "veryfast", "-crf", "18", "-profile:v", "high", "-pix_fmt", "yuv420p", "-g", "30", "-bf", "2"];
+  await runTool(tools.ffmpeg, ["-v", "error", "-f", "lavfi", "-i", "color=blue:s=1920x1080:r=30:d=2", "-f", "lavfi", "-i", "sine=frequency=220:sample_rate=48000:duration=2", ...video, "-af", "loudnorm=I=-14:TP=-1:LRA=7", "-c:a", "aac", "-b:a", "384k", "-ar", "48000", "-ac", "2", "-t", "2", body]);
+  for (const [file, color] of [[intro, "red"], [outro, "green"]]) await runTool(tools.ffmpeg, ["-v", "error", "-f", "lavfi", "-i", `color=${color}:s=1920x1080:r=30:d=1`, ...video, file]);
+  const list = path.join(base, "join.ffconcat");
+  writeFileSync(list, `ffconcat version 1.0\n${[intro, body, outro].map((file) => `file '${file.replaceAll("\\", "/")}'`).join("\n")}\n`);
+  await runTool(tools.ffmpeg, ["-v", "error", "-f", "concat", "-safe", "0", "-i", list, "-i", body, "-map", "0:v:0", "-filter_complex", "[1:a]adelay=1000|1000,apad,atrim=duration=4[a]", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "384k", "-ar", "48000", "-ac", "2", final]);
+  const config = { body, final, branding: { intro: { frames: 30 }, outro: { frames: 30 } }, bodyFrames: 60 };
+  await t.test("real concat gets exact parameter-inclusive proof plus fresh audio and full decode", async () => {
+    const result = await verifyRetainedMedia(config);
+    assert.equal(result.full_decode_ok, true); assert.equal(result.video_packets, 60);
+    assert.equal(result.video_proof.kind, "h264-annexb-exact"); assert.equal(result.video_proof.raw_packets_identical, false);
+    assert.equal(result.video_proof.source_file_sha256, sha(readFileSync(body))); assert.equal(result.video_proof.final_file_sha256, sha(readFileSync(final)));
+    assert.match(result.video_proof.annexb_sha256, /^[a-f0-9]{64}$/); assert.ok(result.video_proof.annexb_bytes > 0);
+  });
+  const raw = path.join(base, "original.h264");
+  await runTool(tools.ffmpeg, ["-v", "error", "-i", body, "-map", "0:v:0", "-c:v", "copy", "-bsf:v", "h264_mp4toannexb", "-an", "-f", "h264", raw]);
+  const original = readFileSync(raw), starts = [];
+  for (let i = 0; i < original.length - 3; i++) if (original[i] === 0 && original[i + 1] === 0 && (original[i + 2] === 1 || original[i + 2] === 0 && original[i + 3] === 1)) { const length = original[i + 2] === 1 ? 3 : 4; starts.push({ at: i, start: i + length, type: original[i + length] & 31 }); i += length - 1; }
+  for (const [kind, type] of [["VCL", 5], ["SPS", 7]]) await t.test(`a changed ${kind} byte is refused`, async () => {
+    const index = starts.findIndex((v) => v.type === type), begin = starts[index].start, end = starts[index + 1]?.at ?? original.length;
+    const nal = original.subarray(begin, end), bytes = readFileSync(body), at = bytes.indexOf(nal);
+    assert.ok(at >= 0, `${kind} NAL occurs in the actual MP4 packet/avcC data`);
+    // Mutate the actual MP4's slice or avcC parameter bytes without remuxing:
+    // unchanged timestamps ensure this exercises the parameter-inclusive proof.
+    bytes[at + (type === 7 ? 3 : Math.floor(nal.length / 2))] ^= 1;
+    const changed = path.join(base, `${kind}.mp4`); writeFileSync(changed, bytes);
+    await assert.rejects(verifyRetainedPictures({ ...config, body: changed }), /changes retained H.264 pictures or codec parameters/);
+  });
+  await t.test("a timestamp shift is refused before bitstream fallback", async () => {
+    const changed = path.join(base, "shifted.mp4");
+    await runTool(tools.ffmpeg, ["-v", "error", "-itsoffset", "0.005", "-i", final, "-map", "0:v:0", "-c:v", "copy", "-copyts", changed]);
+    await assert.rejects(verifyRetainedPictures({ ...config, final: changed }), /picture timestamp|packet count/);
+  });
+});
+
+function rollbackDirectoryFixture(t) {
+  const base = mkdtempSync(path.join(os.tmpdir(), "renewal-rollback-retry-")), from = path.join(base, "canonical"), to = path.join(base, "prepared");
+  t.after(() => rmSync(base, { recursive: true, force: true }));
+  mkdirSync(from); writeFileSync(path.join(from, "STOP"), "held candidate");
+  return { from, to };
+}
+
+test("Windows rollback retries transient sharing errors on the exact pair without losing STOP", async (t) => {
+  for (const code of ["EPERM", "EACCES", "EBUSY"]) await t.test(code, async (child) => {
+    const { from, to } = rollbackDirectoryFixture(child), pairs = [], delays = [];
+    await renameRollbackDirectory(from, to, { platform: "win32", wait: async (ms) => { delays.push(ms); }, rename: (a, b) => {
+      pairs.push([a, b]); if (pairs.length === 1) throw Object.assign(new Error("transient sharing obstruction"), { code });
+      renameSync(a, b);
+    } });
+    assert.ok(pairs.length >= 2 && pairs.length <= 5); assert.ok(pairs.every(([a, b]) => a === from && b === to));
+    assert.equal(delays[0], 25); assert.ok(delays.reduce((sum, ms) => sum + ms, 0) <= 375);
+    assert.equal(existsSync(from), false); assert.equal(readFileSync(path.join(to, "STOP"), "utf8"), "held candidate");
+  });
+});
+
+test("Windows rollback retry exhaustion retains source and never replaces a destination", async (t) => {
+  for (const code of ["EPERM", "EACCES", "EBUSY"]) await t.test(code, async (child) => {
+    const { from, to } = rollbackDirectoryFixture(child), delays = []; let attempts = 0;
+    await assert.rejects(renameRollbackDirectory(from, to, { platform: "win32", wait: async (ms) => { delays.push(ms); }, rename: (a, b) => {
+      assert.equal(a, from); assert.equal(b, to); attempts++;
+      throw Object.assign(new Error("permanent sharing obstruction"), { code });
+    } }), /permanent sharing obstruction/);
+    assert.equal(attempts, 5); assert.deepEqual(delays, [25, 50, 100, 200]);
+    assert.equal(readFileSync(path.join(from, "STOP"), "utf8"), "held candidate"); assert.equal(existsSync(to), false);
+  });
+  await t.test("destination appears while waiting", async (child) => {
+    const { from, to } = rollbackDirectoryFixture(child); let attempts = 0;
+    await assert.rejects(renameRollbackDirectory(from, to, { platform: "win32", wait: async () => { mkdirSync(to); writeFileSync(path.join(to, "keep.wav"), "other owner source"); }, rename: () => {
+      attempts++; throw Object.assign(new Error("transient sharing obstruction"), { code: "EPERM" });
+    } }), /rollback paths changed/);
+    assert.equal(attempts, 1); assert.equal(readFileSync(path.join(to, "keep.wav"), "utf8"), "other owner source");
+    assert.equal(readFileSync(path.join(from, "STOP"), "utf8"), "held candidate");
+  });
+  await t.test("source moves while waiting", async (child) => {
+    const { from, to } = rollbackDirectoryFixture(child), retained = `${from}.retained`; let attempts = 0;
+    await assert.rejects(renameRollbackDirectory(from, to, { platform: "win32", wait: async () => { renameSync(from, retained); }, rename: () => {
+      attempts++; throw Object.assign(new Error("transient sharing obstruction"), { code: "EPERM" });
+    } }), /rollback paths changed/);
+    assert.equal(attempts, 1); assert.equal(readFileSync(path.join(retained, "STOP"), "utf8"), "held candidate"); assert.equal(existsSync(to), false);
+  });
+  await t.test("same source path with a replacement directory is not renamed", async (child) => {
+    const { from, to } = rollbackDirectoryFixture(child), retained = `${from}.retained`; let attempts = 0;
+    await assert.rejects(renameRollbackDirectory(from, to, { platform: "win32", wait: async () => {
+      renameSync(from, retained); mkdirSync(from); writeFileSync(path.join(from, "owner.wav"), "new owner data");
+    }, rename: () => {
+      attempts++; throw Object.assign(new Error("transient sharing obstruction"), { code: "EPERM" });
+    } }), /rollback paths changed/);
+    assert.equal(attempts, 1); assert.equal(readFileSync(path.join(retained, "STOP"), "utf8"), "held candidate");
+    assert.equal(readFileSync(path.join(from, "owner.wav"), "utf8"), "new owner data"); assert.equal(existsSync(to), false);
+  });
+  await t.test("dangling destination link is not replaced", async (child) => {
+    const { from, to } = rollbackDirectoryFixture(child); symlinkSync(`${to}.missing`, to, "junction");
+    assert.equal(existsSync(to), false);
+    await assert.rejects(renameRollbackDirectory(from, to, { platform: "win32", rename: () => assert.fail("destination link would be replaced") }), /rollback paths changed/);
+    assert.equal(readFileSync(path.join(from, "STOP"), "utf8"), "held candidate");
+  });
+  for (const [platform, code] of [["linux", "EPERM"], ["win32", "EIO"]]) await t.test(`${platform} ${code} is not retried`, async (child) => {
+    const { from, to } = rollbackDirectoryFixture(child); let attempts = 0;
+    await assert.rejects(renameRollbackDirectory(from, to, { platform, wait: async () => assert.fail("unexpected retry"), rename: () => {
+      attempts++; throw Object.assign(new Error("nonretryable obstruction"), { code });
+    } }), /nonretryable obstruction/);
+    assert.equal(attempts, 1); assert.ok(existsSync(from)); assert.equal(existsSync(to), false);
+  });
+});
+
+test("permanent rollback obstruction keeps recovery-required, both exact sources and STOP", async (t) => {
+  const f = fixture(t), receipt = await prepareHandoff(f.config); let calls = 0, rollbackAttempts = 0;
+  await assert.rejects(activateHandoff({ receipt, readRemote: async () => ++calls === 3 ? { ...f.remote, youtube_sync: {} } : f.remote, workerIdle: idle, rename: (from, to) => {
+    if (from === f.canonical && to === f.out) { rollbackAttempts++; throw Object.assign(new Error("permanent rollback obstruction"), { code: "EPERM" }); }
+    renameSync(from, to);
+  } }), /activity prevents/);
+  const journal = JSON.parse(readFileSync(`${f.canonical}.handoff-${receipt.id}.json`));
+  assert.equal(journal.phase, "recovery-required"); assert.match(journal.rollback_error, /permanent rollback obstruction/);
+  assert.equal(rollbackAttempts, process.platform === "win32" ? 5 : 1);
+  assert.equal(readFileSync(path.join(receipt.archive, "cache.wav"), "utf8"), "canonical cache");
+  assert.equal(readFileSync(path.join(f.canonical, "final.mp4"), "utf8"), "new final"); assert.ok(existsSync(path.join(f.canonical, "STOP")));
+  assert.ok(existsSync(path.join(path.dirname(f.canonical), "STOP"))); assert.equal(existsSync(f.out), false);
+  await assert.rejects(activateHandoff({ receipt, readRemote: async () => f.remote, workerIdle: idle }), /already attempted/);
 });

@@ -284,6 +284,20 @@ test("cast.offscreen keeps an ambiguous clause reviewable without telling the au
   assert.match(offscreenTraps({ motion: "Yan speaks to Wei off screen." })[0].message, /說話的動詞接「to Wei」/);
 });
 
+test("o.s. and v.o. survive the clause split and read as off screen", () => {
+  const listed = trapsOf(clean({ characters: CLEAN.characters, prompt: "Close-up of Lin, Zhao (o.s.)" }));
+  assert.ok(listed.includes("cast.offscreen"), `(o.s.) marks Zhao off screen: ${JSON.stringify(listed)}`);
+  for (const prompt of ["Close-up of Lin, Zhao (O.S.)", "Close-up of Lin, Zhao V.O.", "Close-up of Lin, Zhao v.o."]) {
+    const ids = trapsOf(clean({ prompt }));
+    assert.ok(!ids.includes("cast.speaker"), `${prompt}: the abbreviation already says Zhao is off screen`);
+  }
+  const message = offscreenTraps({ prompt: "Medium close-up of Yan on screen left facing right, Wei (o.s.)", characters: ["yan", "wei"] });
+  assert.equal(message.length, 1);
+  assert.match(message[0].message, /（「Wei \(off screen\)」），但 data\.characters 列了 wei/);
+  // a period that ends an honorific still splits as before; only the two abbreviations are spelled out
+  assert.ok(trapsOf(clean({ prompt: "Mr. Lin lifts the teacup with both hands at the banquet table" })).includes("cast.speaker"));
+});
+
 test("look.motion claims a contradiction only when the look's motion names a camera move", () => {
   // The pilot's override (production-run-20261003.md) names no move, so a locked clip under it is not two instructions.
   const plain = { style: "2D anime", motion: "One clearly motivated character or prop action per clip, consistent adult identity, no morphing, no internal cuts." };
@@ -343,6 +357,12 @@ test("source.bought trips when a cut ends past what its source buys under the se
   const production = readDocument(cut(3), { series: { production: { profile: { id: "test" } } } });
   assert.ok(!production.shots[1].traps.some((each) => each.id === "source.bought"), "under the profile the source buys 8 s and the cut fits");
   assert.ok(!trapsOf(clean({ source: { shot: "s1", from_s: 3 } })).includes("source.bought"), "--file mode has no source to measure");
+  // On a web route the master is bought to cover every cut (animation-preproduction's shot_plan.mjs),
+  // so the server's 4 s does not apply.
+  for (const route of ["hailuo", "kling"]) {
+    assert.ok(!readDocument(cut(3), { route }).shots[1].traps.some((each) => each.id === "source.bought"), `--route ${route} does not price the source at the server's 4 s`);
+  }
+  assert.ok(readDocument(cut(3), { route: "server" }).shots[1].traps.some((each) => each.id === "source.bought"), "--route server is the default reading");
 });
 
 test("every trap id has a case above, so a deleted trap is noticed", () => {

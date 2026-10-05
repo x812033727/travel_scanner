@@ -188,6 +188,21 @@ def test_prepare_checks_actual_directory(tmp_path: Path, mutation: str) -> None:
         prepare_bundle(pack)
 
 
+@windows_only
+def test_prepare_refuses_a_pack_that_is_itself_a_junction(tmp_path: Path) -> None:
+    """The bundle's source names the pack directory, so its bytes must not come from elsewhere."""
+    elsewhere = tmp_path / "elsewhere"
+    shutil.copytree(PACK, elsewhere)
+    pack = tmp_path / PACK.name
+    if sys.platform == "win32":
+        import _winapi
+
+        _winapi.CreateJunction(str(elsewhere), str(pack))
+    assert pack.is_junction() and not pack.is_symlink()
+    with pytest.raises(ValueError, match="pack must be a real directory"):
+        prepare_bundle(pack)
+
+
 @pytest.mark.parametrize(
     "field,value",
     [

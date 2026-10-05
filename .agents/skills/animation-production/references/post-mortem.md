@@ -127,7 +127,7 @@
 ## 下次改什麼
 - 分鏡：81 鏡全 locked、E1 沒有全景、插鏡 46%、開場三鏡沒事發生（drama-craft.md 的表）；先改分鏡再重拍。
 - prompt／camera／motion：插鏡的 camera 第一個詞寫 Insert；識別道具寫明哪隻手；「微顫」改寫成可讀幅度的既有手筆關係；避免的字進 prompt（Lite）。
-- 路線或模型：Lite 留著（profile 釘的）；`look.negative` 一開始就空。
-- 流程：開拍前跑 preflight（會抓 Lite negative、judge 題目長度）；五個數字分開報；重拍兩次同一類內容問題就停。
+- 路線或模型：Lite 留著（profile 釘的）；`look.negative` 保留（現行 Lite adapter 把它接成 `Avoid: …`，error-catalogue #23），不清空。
+- 流程：花錢前先走 `animation-preproduction` 的開拍鎖定包；開跑前跑 preflight（judge 題目長度、雜湊與關卡）；五個數字分開報；重拍兩次同一類內容問題就停。
 - 不改的：judge 門檻 7、6.72 不改分；profile 的模型與解析度。
 ```

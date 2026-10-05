@@ -1,0 +1,136 @@
+[
+  {
+    "schema_version": 2,
+    "slug": "ai-term-large-language-model-short-1",
+    "format": "shorts",
+    "locale": "zh-TW",
+    "line": "cut",
+    "series": "illustrated",
+    "source": {
+      "slug": "ai-term-large-language-model"
+    },
+    "titles": [
+      "LLM 把話說完整，就等於查到了嗎？",
+      "AI 回答很肯定：先找哪句真的有根據"
+    ],
+    "description": "大型語言模型能生成通順文字，仍要核對每個主張的依據。用六筆虛構失物資料，分清文字生成、資料查找與工具計數；不是模型實測。三種工作可以同時存在，即使有來源或工具回傳，最後文字仍可能由模型生成。完整解說與三欄卡在長片。",
+    "scenes": [
+      {
+        "headline": "會接話，查到了嗎？",
+        "narration": [
+          "你以為話說得完整，",
+          "就代表真的查到了嗎？"
+        ],
+        "asset": "keyframes/counter-handoff-3.jpg"
+      },
+      {
+        "shot": "counter-hands",
+        "headline": "虛構清單：有位置，沒有失主電話",
+        "narration": [
+          "這份虛構清單有雨傘位置，",
+          "卻沒有失主姓名與電話。"
+        ],
+        "note": "虛構示意，非模型實測"
+      },
+      {
+        "shot": "garden-record",
+        "headline": "有來源也會生成文字",
+        "narration": [
+          "一份回答可以同時生成、查找和計數。",
+          "有資料或工具結果，最後也可能由模型生成文字。"
+        ]
+      },
+      {
+        "headline": "三欄核對：依據與執行紀錄",
+        "narration": [
+          "三欄是核對每句的依據與執行紀錄，",
+          "不是把模型能力分成互斥的三種。"
+        ],
+        "asset": "keyframes/garden-three-baskets-1.jpg"
+      },
+      {
+        "headline": "用三欄卡檢查下一份回答",
+        "narration": [
+          "內容有哪筆資料，數字有哪個結果？",
+          "完整方法和示範在長片。"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "path": "keyframes/counter-handoff-3.jpg",
+        "sha256": "284037e5b0ab3ac9292b607514a7c3ac0085a904fe7a8b1e7d2c27d8b8dcc5a2"
+      },
+      {
+        "path": "keyframes/garden-three-baskets-1.jpg",
+        "sha256": "8d3a9e8d13d47cc3ab49ad25bf276c74b7557c873dc554fc920fd6079aaeea1c"
+      }
+    ]
+  },
+  {
+    "schema_version": 2,
+    "slug": "ai-term-large-language-model-short-2",
+    "format": "shorts",
+    "locale": "zh-TW",
+    "line": "cut",
+    "series": "illustrated",
+    "source": {
+      "slug": "ai-term-large-language-model"
+    },
+    "titles": [
+      "6、4、2 都沒算錯？先看 AI 回答的是哪一題",
+      "同一份失物清單：六件、四件、兩把，差在條件"
+    ],
+    "description": "同一份虛構失物清單，全部六筆、未領四筆、未領雨傘兩筆。數字看起來合理，仍要核對問題條件與工具執行結果。數字來自離線 Python 程式，不是任何模型實測。原始資料、代號與三題完整示範在長片。",
+    "scenes": [
+      {
+        "headline": "六、四、二，哪個才是答案？",
+        "narration": [
+          "同一份失物清單，",
+          "六、四、二，都可能是正確數字。"
+        ],
+        "note": "虛構資料，離線程式示範，非模型實測"
+      },
+      {
+        "shot": "demo-two-baskets",
+        "headline": "全部紀錄",
+        "big": "6 件",
+        "narration": [
+          "全部六件裡，兩件已領。",
+          "如果問題是未領，就不能全算進去。"
+        ]
+      },
+      {
+        "headline": "只數未領",
+        "big": "4 件",
+        "narration": [
+          "先按未領篩選，留下四筆，",
+          "每個代號都能回清單核對。"
+        ]
+      },
+      {
+        "headline": "未領，而且是雨傘",
+        "big": "2 把",
+        "narration": [
+          "再從未領裡只挑雨傘，",
+          "剩下兩把，條件又不一樣。"
+        ],
+        "asset": "keyframes/demo-two-umbrellas-2.jpg"
+      },
+      {
+        "shot": "demo-trace",
+        "headline": "先看題目、條件與實際結果",
+        "narration": [
+          "看到數字先問，它回答的是哪一題？",
+          "三個離線步驟和結果在長片。"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "path": "keyframes/demo-two-umbrellas-2.jpg",
+        "sha256": "6a665211331580c3d56d851718b9a8263cc933deb7f365a07e42a65d64c60a0a"
+      }
+    ]
+  }
+]

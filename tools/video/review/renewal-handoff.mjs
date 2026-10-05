@@ -1,7 +1,8 @@
 // A replacement owner decision is transferable only with its retained source. This module
 // prepares a separate, stopped snapshot; it never generates media or approves a review.
 import { createHash, randomUUID } from "node:crypto";
-import { copyFileSync, createReadStream, existsSync, lstatSync, mkdirSync, openSync, closeSync, readdirSync, readFileSync, readSync, renameSync, rmSync } from "node:fs";
+import { copyFileSync, createReadStream, existsSync, lstatSync, mkdirSync, mkdtempSync, openSync, closeSync, readdirSync, readFileSync, readSync, renameSync, rmSync, statSync } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { isDeepStrictEqual, parseArgs } from "node:util";
 import { fileURLToPath } from "node:url";
@@ -13,7 +14,8 @@ import { buildCues, toSrt } from "../core/captions.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, ROOT, UsageError } from "../core/paths.mjs";
 import { speechHash } from "../core/timeline.mjs";
-import { eachLine } from "../core/schema.mjs";
+import { eachLine, spokenText } from "../core/schema.mjs";
+import { unknownTermsFor } from "../core/lexicon.mjs";
 import { captionTimelineOf, currentDub, dubsForUpload, localeTexts } from "../core/stages.mjs";
 import { measureCut, measureProblems } from "../import/import.mjs";
 import { checkPackage, listFiles, packageFiles } from "../package/check.mjs";
@@ -29,6 +31,72 @@ const requireThat = (ok, message) => { if (!ok) throw new UsageError(message); }
 const save = (file, value) => atomicWrite(file, `${JSON.stringify(value, null, 2)}\n`);
 const identity = (row) => ({ review_id: row.id, content_sha256: row.content_sha256 });
 const latest = (remote, gate) => remote.reviews?.find((r) => r.gate === gate && !r.subject);
+const manualMode = (mode) => ["manual-import", "approved-final-body-range"].includes(mode);
+const currentAuthority = (final) => ({ ...identity(final), branding_hash: final.payload.branding_hash, decided_at: final.decided_at, body_change_sha256: digest(JSON.stringify(final.payload.body_change)), metadata_sha256: digest(JSON.stringify({ metadata: final.payload.metadata, chapters: final.payload.chapters ?? [] })), attachments_sha256: digest(JSON.stringify(final.files.map(({ role, sha256, size, content_type }) => ({ role, sha256, size, content_type })).sort((a, b) => `${a.role}:${a.sha256}`.localeCompare(`${b.role}:${b.sha256}`)))) });
+
+function currentAttachment(final, binding, role) {
+  const files = final.files?.filter((v) => v.role === role);
+  requireThat(binding?.review_id === final.id && files?.length === 1 && files[0].sha256 === binding.sha256 && HASH.test(binding.sha256), `missing current approved attachment for ${role}`);
+  return { review_id: final.id, role, sha256: files[0].sha256, size: files[0].size, content_type: files[0].content_type };
+}
+
+/** Owner source IDs are evidence, not filenames to silently rewrite. The six known
+ * extension IDs get a deterministic, collision-refusing native alias only in this mode. */
+export function nativeLiteralLexicon(project) {
+  const lexicon = structuredClone(project.lexicon);
+  const unknown = [...new Set([...eachLine(project.doc)].flatMap(({ line }) => unknownTermsFor(spokenText(line), project.lexicon, "zh-TW")))];
+  if (project.doc.slug !== "ai-real-world-06-digital-yesman" || !unknown.length) return { lexicon };
+  requireThat(project.lexicon.schema_version === 1 && Object.keys(project.lexicon.terms).length === 0 && isDeepStrictEqual(unknown, ["Anthropic"]), "only the EP06 raw empty lexicon's literal Anthropic has a native annotation");
+  lexicon.terms.Anthropic = null;
+  requireThat(speechHash(project.doc, lexicon) === speechHash(project.doc, project.lexicon), "native literal annotation must not change the raw speech identity");
+  return { lexicon, literal_term_annotations: { algorithm: "ep06-raw-empty-literal-Anthropic-null-v1", terms: { Anthropic: null }, raw_lexicon_sha256: digest(JSON.stringify(project.lexicon)), raw_speech_hash: speechHash(project.doc, project.lexicon), speech_hash_unchanged: true, pronunciation_approval_claimed: false, listening_approval_claimed: false } };
+}
+
+export function nativeApprovedFinalAdapter(project, timeline, rawScriptSha256) {
+  requireThat(HASH.test(rawScriptSha256 ?? ""), "native alias requires the exact raw script hash");
+  const rawLines = [...eachLine(project.doc)].map(({ line }) => line), ids = rawLines.map((v) => v.id);
+  requireThat(new Set(ids).size === ids.length && rawLines.length === timeline.lines?.length && rawLines.every((v, i) => v.id === timeline.lines[i].id) && speechHash(project.doc, project.lexicon) === timeline.speech_hash, "native aliases require unique ordered current source line IDs and raw speech identity");
+  const valid = new Set(ids.filter((id) => /^[a-z0-9]{4,8}$/.test(id))), map = {};
+  const episode = /^ai-real-world-(0[1-6])-/.exec(project.doc.slug)?.[1];
+  for (const id of ids.filter((v) => !valid.has(v))) {
+    requireThat(episode && new RegExp(`^ext8-${episode}-0[1-7]$`).test(id), "only the approved six-video extension line IDs have a native alias mode");
+    const alias = `r${digest(`${project.doc.slug}\0${rawScriptSha256}\0${id}`).slice(0, 7)}`;
+    requireThat(!valid.has(alias) && !Object.values(map).includes(alias), "native source line alias collision; do not choose another ID");
+    map[id] = alias;
+  }
+  const literal = nativeLiteralLexicon(project);
+  const native = { project: { doc: structuredClone(project.doc), lexicon: literal.lexicon }, timeline: structuredClone(timeline), line_id_aliases: { algorithm: "r+sha256(slug\\0raw_script_sha256\\0raw_line_id)[0:7]", raw_script_sha256: rawScriptSha256, raw_speech_hash: timeline.speech_hash, map }, ...(literal.literal_term_annotations ? { literal_term_annotations: literal.literal_term_annotations } : {}) };
+  for (const { line } of eachLine(native.project.doc)) if (map[line.id]) line.id = map[line.id];
+  for (const line of native.timeline.lines) if (map[line.id]) line.id = map[line.id];
+  native.timeline.speech_hash = speechHash(native.project.doc, native.project.lexicon);
+  if (native.literal_term_annotations) requireThat(timeline.speech_hash === "6e3e1eabe7be8cc4" && native.timeline.speech_hash === "45ca1b6ec2ca41d4", "EP06 literal annotation is restricted to the exact approved raw/native speech identities");
+  return native;
+}
+
+function validateCurrentSource(source, receipt, final, pin, read, sha, text) {
+  requireThat(receipt.mode === "approved-final-body-range" && source.source.kind === receipt.mode && isDeepStrictEqual(source.source.authority, currentAuthority(final)) && isDeepStrictEqual(receipt.owner_final, source.source.authority), "current approved source authority changed");
+  const body = source.source.body, media = source.source.media;
+  requireThat(body.kind === receipt.mode && body.file === "final.mp4" && body.sha256 === final.content_sha256 && body.start_frame === pin.intro.frames && body.frames === receipt.source.body_frames && body.end_frame === body.start_frame + body.frames && body.fps === 30 && isDeepStrictEqual(body, receipt.source.body_proof) && media.scope === "approved-current-media-identity" && media.preservation_claim === false && media.full_decode_ok === true && media.video_packets === body.frames && HASH.test(media.body_range_sha256 ?? "") && HASH.test(media.body_audio_pcm_sha256 ?? ""), "current approved body range/media identity changed");
+  requireThat(isDeepStrictEqual(source.source.historical_declarations, final.payload.body_change) && isDeepStrictEqual(receipt.source.historical_declarations, final.payload.body_change), "current source historical declarations changed");
+  for (const [role, binding] of Object.entries(source.evidence ?? {})) {
+    requireThat(isDeepStrictEqual(currentAttachment(final, binding, role), { review_id: binding.review_id, role, sha256: binding.sha256, size: binding.size, content_type: binding.content_type }) && receipt.files[binding.file]?.sha256 === binding.sha256 && sha(binding.file) === binding.sha256, `current approved evidence changed: ${role}`);
+  }
+  requireThat(["evidence_script", "evidence_body_timeline", "captions_zh-TW", "narration", "thumbnail"].every((v) => source.evidence?.[v]), "current approved source attachments are incomplete");
+  const script = source.evidence.evidence_script, timing = source.evidence.evidence_body_timeline;
+  requireThat(script.sha256 === final.payload.body_change.new_script?.sha256 && timing.sha256 === final.payload.body_change.new_body_timeline?.sha256 && source.evidence.narration.content_type === "audio/mp4" && media.narration?.sha256 === source.evidence.narration.sha256 && media.narration.full_decode_ok === true && media.narration.raw_voice_claimed === false && media.narration.listening_approval_claimed === false, "current script, timeline or narration authority differs");
+  requireThat(source.adapter && ["project", "timeline"].every((key) => receipt.files[source.adapter[`${key}_file`]]?.sha256 === source.adapter[`${key}_sha256`] && sha(source.adapter[`${key}_file`]) === source.adapter[`${key}_sha256`]), "current adapter bytes differ from the prepared evidence receipt");
+  const adapter = read(source.adapter.project_file), timeline = read(source.adapter.timeline_file);
+  const rawLexicon = source.adapter.raw_lexicon, rawDoc = read(script.file);
+  if (rawDoc.slug === "ai-real-world-06-digital-yesman" && final.payload.body_change.speech_hash === "6e3e1eabe7be8cc4") requireThat(source.adapter.literal_term_annotations && rawLexicon, "the approved EP06 literal source requires its raw lexicon and native-only annotation");
+  if (source.adapter.literal_term_annotations) requireThat(rawLexicon?.kind === "raw-source-adapter-lexicon-snapshot" && rawLexicon.file === "approved-source/raw-lexicon.json" && HASH.test(rawLexicon.sha256 ?? "") && sha(rawLexicon.file) === rawLexicon.sha256 && receipt.files[rawLexicon.file]?.sha256 === rawLexicon.sha256 && digest(JSON.stringify(read(rawLexicon.file))) === rawLexicon.content_sha256, "native literal annotation requires its independently pinned raw lexicon snapshot");
+  else requireThat(!rawLexicon, "unexpected raw lexicon annotation binding");
+  const rawProject = { doc: rawDoc, lexicon: rawLexicon ? read(rawLexicon.file) : adapter.lexicon }, rawTimeline = read(timing.file), expected = nativeApprovedFinalAdapter(rawProject, rawTimeline, script.sha256);
+  requireThat(isDeepStrictEqual(adapter, expected.project) && isDeepStrictEqual(timeline, expected.timeline) && isDeepStrictEqual(source.adapter.line_id_aliases, expected.line_id_aliases) && isDeepStrictEqual(source.adapter.literal_term_annotations, expected.literal_term_annotations) && rawTimeline.speech_hash === final.payload.body_change.speech_hash && source.captions_zh_TW.sha256 === source.evidence["captions_zh-TW"].sha256, "current native adapter/alias map differs from actual approved source evidence");
+  validateRealAdapter({ project: rawProject, timeline: rawTimeline, caption_mode: source.adapter.caption_mode }, text(source.evidence["captions_zh-TW"].file), pin, body.frames);
+  requireThat(sha(source.metadata.file) === source.metadata.sha256 && receipt.files[source.metadata.file]?.sha256 === source.metadata.sha256, "current approved metadata bytes changed");
+  const metadata = read(source.metadata.file);
+  requireThat(metadata.title === final.payload.metadata?.["zh-TW"]?.title && metadata.description === final.payload.metadata?.["zh-TW"]?.description && isDeepStrictEqual(metadata.chapters, final.payload.chapters ?? []), "current approved metadata or chapters changed");
+}
 const normalizedChoices = (locales) => Object.fromEntries(LOCALES.map((locale) => {
   const v = locales?.[locale] ?? {};
   return [locale, { metadata: v.metadata === true, captions: v.captions === true || v.dub === true, dub: v.dub === true }];
@@ -89,9 +157,9 @@ async function copyVerified(source, target, expected) {
 /** Compare every encoded body picture and its timestamp; then decode the complete cut and
  * measure the re-encoded audio difference against its retained mix. No acceptance booleans
  * from an old candidate receipt substitute for this verification. */
-export async function verifyRetainedMedia({ body, final, branding, bodyFrames, bodyStartFrames = 0, env = process.env, exec = runTool }) {
+export async function verifyRetainedPictures({ body, final, branding, bodyFrames, bodyStartFrames = 0, env = process.env, exec = runTool }) {
   const tools = await locateFfmpeg(env);
-  const packets = async (file) => JSON.parse((await exec(tools.ffprobe, ["-v", "error", "-select_streams", "v:0", "-show_packets", "-show_entries", "packet=pts_time,data_hash", "-show_data_hash", "sha256", "-of", "json", file])).stdout).packets;
+  const packets = async (file) => JSON.parse((await exec(tools.ffprobe, ["-v", "error", "-select_streams", "v:0", "-show_packets", "-show_entries", "packet=pts_time,data_hash,flags", "-show_data_hash", "sha256", "-of", "json", file])).stdout).packets;
   const allOriginal = await packets(body), replacement = await packets(final);
   const startSeconds = bodyStartFrames / 30;
   const original = allOriginal?.filter((p) => Number(p.pts_time) >= startSeconds - 0.00001 && Number(p.pts_time) < startSeconds + bodyFrames / 30 - 0.00001);
@@ -99,7 +167,37 @@ export async function verifyRetainedMedia({ body, final, branding, bodyFrames, b
   requireThat(original?.length === bodyFrames, "retained body packet count differs from its source timeline");
   const first = Number(original[0].pts_time);
   const selected = replacement.filter((p) => Number(p.pts_time) >= offset - 0.00001 && Number(p.pts_time) < offset + bodyFrames / 30 - 0.00001);
-  requireThat(selected.length === original.length && original.every((p, i) => p.data_hash === selected[i].data_hash && Math.abs(Number(selected[i].pts_time) - (Number(p.pts_time) - first + offset)) < 0.0001), "the approved replacement does not preserve every retained body picture and timestamp");
+  requireThat(selected.length === original.length && original.every((p, i) => Math.abs(Number(selected[i].pts_time) - (Number(p.pts_time) - first + offset)) < 0.0001), "the approved replacement does not preserve every retained body picture timestamp");
+  const rawIdentical = original.every((p, i) => p.data_hash === selected[i].data_hash);
+  let videoProof = { kind: "raw-packet-exact", raw_packets_identical: true };
+  if (!rawIdentical) {
+    // MP4 concat may inject the source SPS/PPS into each keyframe packet. Preserve
+    // every parameter set, SEI and encoded picture: compare the entire Annex-B
+    // byte stream produced by the SAME lossless bitstream filter on both ranges.
+    const codec = async (file) => JSON.parse((await exec(tools.ffprobe, ["-v", "error", "-select_streams", "v:0", "-show_entries", "stream=codec_name", "-of", "json", file])).stdout).streams?.[0]?.codec_name;
+    requireThat(await codec(body) === "h264" && await codec(final) === "h264" && original[0].flags?.includes("K") && selected[0].flags?.includes("K"), "changed raw packets require H.264 body ranges starting at exact keyframes");
+    const temporary = mkdtempSync(path.join(os.tmpdir(), "renewal-body-bitstream-"));
+    try {
+      const extracted = [];
+      for (const [file, start] of [[body, first], [final, offset]]) {
+        const output = path.join(temporary, `${extracted.length}.h264`);
+        await exec(tools.ffmpeg, ["-v", "error", "-ss", String(start), "-i", file, "-map", "0:v:0", "-frames:v", String(bodyFrames), "-c:v", "copy", "-bsf:v", "h264_mp4toannexb", "-an", "-f", "h264", output]);
+        extracted.push({ sha256: await sha256File(output), bytes: statSync(output).size });
+      }
+      requireThat(extracted[0].bytes > 0 && isDeepStrictEqual(extracted[0], extracted[1]), "the approved replacement changes retained H.264 pictures or codec parameters");
+      videoProof = { kind: "h264-annexb-exact", raw_packets_identical: false, annexb_sha256: extracted[0].sha256, annexb_bytes: extracted[0].bytes, packets: bodyFrames, source_file_sha256: await sha256File(body), final_file_sha256: await sha256File(final), source_start_frame: bodyStartFrames, replacement_start_frame: branding.intro.frames, frames: bodyFrames, fps: 30, source_raw_packets_sha256: digest(JSON.stringify(original)), replacement_raw_packets_sha256: digest(JSON.stringify(selected)) };
+    } finally {
+      requireThat(isInside(temporary, os.tmpdir()), "temporary bitstream path escapes its scratch directory");
+      rmSync(temporary, { recursive: true, force: true });
+    }
+  }
+  return { video_packets: original.length, packet_sha256: digest(JSON.stringify(original)), video_proof: videoProof };
+}
+
+export async function verifyRetainedMedia({ body, final, branding, bodyFrames, bodyStartFrames = 0, env = process.env, exec = runTool }) {
+  const tools = await locateFfmpeg(env);
+  const pictures = await verifyRetainedPictures({ body, final, branding, bodyFrames, bodyStartFrames, env, exec });
+  const offset = branding.intro.frames / 30, startSeconds = bodyStartFrames / 30;
   await exec(tools.ffmpeg, ["-v", "error", "-xerror", "-i", final, "-map", "0:v:0", "-map", "0:a:0", "-f", "null", "-"]);
   const seconds = bodyFrames / 30;
   // amix's negative weights do not invert samples; subtract channels explicitly after
@@ -109,7 +207,40 @@ export async function verifyRetainedMedia({ body, final, branding, bodyFrames, b
   requireThat(values.length && values.every((v) => v <= -35), "replacement audio does not preserve the retained mix at the new intro offset");
   const measured = await measureCut(final, env), checked = measureProblems(measured.probe, measured.loudness);
   requireThat(!checked.problems.length && Math.abs(checked.seconds - (offset + seconds + branding.outro.frames / 30)) <= 0.1, `replacement media verification failed: ${checked.problems.join("; ") || "duration differs"}`);
-  return { video_packets: original.length, packet_sha256: digest(JSON.stringify(original)), audio_difference_rms_db: values.map((v) => Number.isFinite(v) ? v : "-inf"), full_decode_ok: true, seconds: checked.seconds, loudness: measured.loudness };
+  return { ...pictures, audio_difference_rms_db: values.map((v) => Number.isFinite(v) ? v : "-inf"), full_decode_ok: true, seconds: checked.seconds, loudness: measured.loudness };
+}
+
+/** A current human-approved changed cut is a new media identity. Its body range is
+ * fingerprinted and decoded, never compared with itself as old-body preservation. */
+export async function verifyApprovedCurrentMedia({ final, narration, branding, bodyFrames, env = process.env, exec = runTool }) {
+  const tools = await locateFfmpeg(env), total = branding.intro.frames + bodyFrames + branding.outro.frames;
+  const stream = JSON.parse((await exec(tools.ffprobe, ["-v", "error", "-select_streams", "v:0", "-show_entries", "stream=nb_frames,r_frame_rate", "-of", "json", final])).stdout).streams?.[0];
+  requireThat(stream?.r_frame_rate === "30/1" && Number(stream.nb_frames) === total, "current approved media frame count/rate differs from its exact body range");
+  const packets = JSON.parse((await exec(tools.ffprobe, ["-v", "error", "-select_streams", "v:0", "-show_packets", "-show_entries", "packet=pts_time,data_hash", "-show_data_hash", "sha256", "-of", "json", final])).stdout).packets;
+  const start = branding.intro.frames / 30, seconds = bodyFrames / 30;
+  const range = packets.filter((p) => +p.pts_time >= start - 0.00001 && +p.pts_time < start + seconds - 0.00001);
+  const times = range.map((p) => +p.pts_time).sort((a, b) => a - b);
+  requireThat(range.length === bodyFrames && times.every((v, i) => Math.abs(v - start - i / 30) < 0.0001), "current approved body range has missing or changed frame timestamps");
+  await exec(tools.ffmpeg, ["-v", "error", "-xerror", "-i", final, "-map", "0:v:0", "-map", "0:a:0", "-f", "null", "-"]);
+  const measured = await measureCut(final, env), checked = measureProblems(measured.probe, measured.loudness);
+  requireThat(!checked.problems.length && Math.abs(checked.seconds - total / 30) <= 0.1, "current approved media does not meet the measured presentation profile");
+  const bookends = {};
+  for (const [kind, at] of [["intro", 0], ["outro", branding.intro.frames + bodyFrames]]) {
+    const frames = branding[kind].frames;
+    const { stderr } = await exec(tools.ffmpeg, ["-hide_banner", "-nostats", "-i", final, "-i", branding[kind].file, "-filter_complex", `[0:v]trim=start_frame=${at}:end_frame=${at + frames},setpts=PTS-STARTPTS,format=yuv420p[a];[1:v]trim=end_frame=${frames},setpts=PTS-STARTPTS,format=yuv420p[b];[a][b]psnr`, "-frames:v", String(frames), "-an", "-f", "null", "-"]);
+    const raw = /average:(inf|[\d.]+)/.exec(stderr)?.[1], value = raw === "inf" ? Infinity : Number(raw);
+    requireThat(raw && value >= 38, `current approved ${kind} pictures differ from the pinned branding asset`);
+    bookends[kind] = { start_frame: at, frames, psnr_db: Number.isFinite(value) ? value : "inf", threshold_db: 38 };
+  }
+  const audioHash = (await exec(tools.ffmpeg, ["-v", "error", "-i", final, "-af", `atrim=start=${start}:duration=${seconds},asetpts=PTS-STARTPTS`, "-vn", "-ac", "2", "-ar", "48000", "-c:a", "pcm_s16le", "-f", "hash", "-hash", "sha256", "-"])).stdout.trim().split("=")[1];
+  requireThat(HASH.test(audioHash ?? ""), "current approved body audio has no actual decoded fingerprint");
+  const audioProbe = JSON.parse((await exec(tools.ffprobe, ["-v", "error", "-show_entries", "format=duration:stream=codec_name,codec_type,channels,sample_rate,duration", "-of", "json", narration])).stdout);
+  requireThat(audioProbe.streams?.some((s) => s.codec_type === "audio") && Math.abs(Number(audioProbe.format?.duration) - seconds) <= 0.05, "current narration attachment duration differs from the source body clock");
+  await exec(tools.ffmpeg, ["-v", "error", "-xerror", "-i", narration, "-f", "null", "-"]);
+  const { stderr } = await exec(tools.ffmpeg, ["-hide_banner", "-nostats", "-i", narration, "-i", final, "-filter_complex", `[0:a]atrim=duration=${seconds},asetpts=PTS-STARTPTS,aformat=sample_rates=48000:channel_layouts=stereo[a];[1:a]atrim=start=${start}:duration=${seconds},asetpts=PTS-STARTPTS,aformat=sample_rates=48000:channel_layouts=stereo[b];[a][b]amerge=inputs=2,pan=stereo|c0=c0-c2|c1=c1-c3,astats=metadata=0:reset=0`, "-t", String(seconds), "-vn", "-f", "null", "-"]);
+  const rms = [...stderr.matchAll(/RMS level dB:\s*(-?inf|[-\d.]+)/g)].map((v) => v[1] === "-inf" ? "-inf" : +v[1]);
+  requireThat(rms.length > 0, "current narration comparison has no actual measurements");
+  return { scope: "approved-current-media-identity", preservation_claim: false, full_decode_ok: true, video_packets: bodyFrames, body_range_sha256: digest(JSON.stringify(range)), body_audio_pcm_sha256: audioHash, seconds: checked.seconds, loudness: measured.loudness, bookends, narration: { sha256: await sha256File(narration), probe: audioProbe, full_decode_ok: true, difference_rms_db: rms, raw_voice_claimed: false, listening_approval_claimed: false } };
 }
 
 /** Parse the complete SRT rather than shifting a guessed first/last timestamp. */
@@ -134,10 +265,37 @@ export function shiftSrt(bytes, offsetMs) {
   }).join("\n\n")}\n`;
 }
 
-function validateRealAdapter(adapter, caption, branding, bodyFrames) {
+export function validateRealAdapter(adapter, caption, branding, bodyFrames) {
   requireThat(adapter?.project?.doc && adapter.timeline?.speech_hash === speechHash(adapter.project.doc, adapter.project.lexicon) && adapter.timeline.total_frames === bodyFrames, "retained language adapter script/body timing is missing or stale");
   const lines = [...eachLine(adapter.project.doc)].map(({ line }) => line);
   const cues = shiftSrt(caption, 0).trim().split(/\n\s*\n/).map((block) => block.split("\n"));
+  requireThat(adapter.caption_mode === undefined || adapter.caption_mode === "approved-line-windows", "unknown retained caption adapter mode");
+  if (adapter.caption_mode === "approved-line-windows") {
+    requireThat(adapter.timeline.fps === 30 && Number.isSafeInteger(bodyFrames) && bodyFrames > 0 && adapter.timeline.lines.length === lines.length, "approved caption source line windows are missing");
+    const clock = (s) => { const m = /^(\d+):(\d{2}):(\d{2}),(\d{3})$/.exec(s); return (+m[1] * 3600 + +m[2] * 60 + +m[3]) * 1000 + +m[4]; };
+    const normalize = (s) => s.normalize("NFC").replace(/\s+/gu, "");
+    const timedCues = cues.map((cue) => { const [start, end] = cue[1].split(" --> "); return { start: clock(start), end: clock(end), text: normalize(cue.slice(2).join("\n")) }; });
+    let cursor = 0, lastEnd = -1, previousFrameEnd = 0;
+    for (const [index, line] of lines.entries()) {
+      const timed = adapter.timeline.lines[index], start = (timed.start_frame + branding.intro.frames) * 1000 / 30, end = (timed.end_frame + branding.intro.frames) * 1000 / 30;
+      requireThat(timed.id === line.id && Number.isSafeInteger(timed.start_frame) && Number.isSafeInteger(timed.end_frame) && timed.start_frame >= previousFrameEnd && timed.start_frame >= 0 && timed.end_frame <= bodyFrames && timed.end_frame > timed.start_frame, "approved caption source line order/window differs");
+      previousFrameEnd = timed.end_frame;
+      let remaining = normalize(line.text), count = 0;
+      while (cursor < timedCues.length && timedCues[cursor].start < end - 1) {
+        const cue = timedCues[cursor++]; count++;
+        requireThat(cue.start >= start - 1 && cue.end <= end + 1 && cue.start >= lastEnd, "approved caption cue crosses a source line window or overlaps");
+        lastEnd = cue.end;
+        requireThat(cue.text && remaining.startsWith(cue.text), "approved caption words, numbers or punctuation differ from the source line");
+        remaining = remaining.slice(cue.text.length);
+        // Only the five observed cue-END punctuation marks may be omitted. Never
+        // strip punctuation inside a cue, questions, quotes, digits or CJK text.
+        remaining = remaining.replace(/^[，。、；：]+/u, "");
+      }
+      requireThat(count > 0 && remaining === "", "approved caption source line is missing, repeated or incompletely covered");
+    }
+    requireThat(cursor === timedCues.length, "approved captions include unmapped or repeated cues");
+    return;
+  }
   const texts = localeTexts(adapter.project.doc, adapter.project.translations ?? {}).texts["zh-TW"];
   const presented = presentationTimeline(adapter.timeline, { hash: branding.hash, intro_frames: branding.intro.frames, outro_frames: branding.outro.frames, body_frames: bodyFrames });
   if (toSrt(buildCues(presented, texts, "zh-TW").cues) === shiftSrt(caption, 0)) return;
@@ -223,6 +381,76 @@ export async function prepareManualPackage({ workdir, remote, final, source, off
   return { metadata, holds };
 }
 
+/** Independent source admission for a changed, human-approved current final. Historical
+ * masters remain declarations; this does not weaken the retained-body handoff branch. */
+export async function prepareApprovedFinalHandoff({ slug, canonical, out, source, candidate, branding, remote, decisionAuthority, verifyMedia = verifyApprovedCurrentMedia, now = new Date() }) {
+  const mode = "approved-final-body-range";
+  canonical = path.resolve(canonical); out = path.resolve(out);
+  requireThat(/^[a-z0-9][a-z0-9-]{0,79}$/.test(slug) && !isInside(canonical, ROOT) && !isInside(ROOT, canonical) && canonical !== path.parse(canonical).root && !existsSync(out) && path.dirname(out) === path.dirname(canonical) && !isInside(out, canonical) && !isInside(canonical, out), "current source preparation needs a new sibling outside the repository");
+  const final = approved(remote, slug); inactive(remote);
+  const authority = decisionAuthority, audits = authority?.approval_audits, audit = audits?.[0];
+  requireThat(final.payload.manual_review === true && final.payload.body_change && authority?.slug === slug && authority.status === "approved" && authority.review_id === final.id && authority.content_sha256 === final.content_sha256 && authority.decided_at === final.decided_at && UUID.test(authority.decided_by_user_id ?? "") && audits?.length === 1 && UUID.test(audit?.id ?? "") && audit.action === "video_review_approved" && audit.actor_user_id === authority.decided_by_user_id && audit.target === `video_review:${final.id}` && audit.metadata_json?.slug === slug && audit.metadata_json.gate === "final" && audit.metadata_json.sha256 === final.content_sha256, "current source requires the exact human decision row and matching approval audit");
+  const pin = validateBranding(readJson(branding), { base: path.dirname(path.resolve(branding)) });
+  requireThat(pin.hash === final.payload.branding_hash && await sha256File(candidate) === final.content_sha256, "current final bytes or branding differs from the human decision");
+  for (const role of ["intro", "outro"]) requireThat(await sha256File(pin[role].file) === pin[role].sha256, `current ${role} branding asset changed`);
+  const evidence = {};
+  for (const role of ["evidence_script", "evidence_body_timeline", "captions_zh-TW", "narration", "thumbnail"]) {
+    const binding = source.evidence?.[role], proof = currentAttachment(final, binding, role);
+    requireThat(lstatSync(binding.file).isFile() && !lstatSync(binding.file).isSymbolicLink() && statSync(binding.file).size === proof.size && await sha256File(binding.file) === proof.sha256, `current attachment bytes differ: ${role}`);
+    evidence[role] = { ...proof, file: `approved-source/${role}` };
+  }
+  requireThat(evidence.evidence_script.sha256 === final.payload.body_change.new_script?.sha256 && evidence.evidence_body_timeline.sha256 === final.payload.body_change.new_body_timeline?.sha256 && evidence.narration.content_type === "audio/mp4", "current changed script/timing/narration is not the attached human-approved evidence");
+  const adapter = source.adapter, bodyFrames = adapter?.timeline?.total_frames;
+  requireThat(adapter?.project?.doc?.slug === slug && !isCompilation(adapter.project.doc) && Number.isSafeInteger(bodyFrames) && bodyFrames > 0 && isDeepStrictEqual(adapter.project.doc, readJson(source.evidence.evidence_script.file)) && isDeepStrictEqual(adapter.timeline, readJson(source.evidence.evidence_body_timeline.file)) && adapter.timeline.speech_hash === final.payload.body_change.speech_hash, "current adapter is not the exact approved script/body timing");
+  validateRealAdapter(adapter, readFileSync(source.evidence["captions_zh-TW"].file, "utf8"), pin, bodyFrames);
+  const native = nativeApprovedFinalAdapter(adapter.project, adapter.timeline, evidence.evidence_script.sha256);
+  validateRealAdapter({ ...native, caption_mode: adapter.caption_mode }, readFileSync(source.evidence["captions_zh-TW"].file, "utf8"), pin, bodyFrames);
+  const media = await verifyMedia({ final: candidate, narration: source.evidence.narration.file, branding: pin, bodyFrames });
+  requireThat(media.scope === "approved-current-media-identity" && media.preservation_claim === false && media.full_decode_ok === true && media.video_packets === bodyFrames && HASH.test(media.body_range_sha256 ?? "") && HASH.test(media.body_audio_pcm_sha256 ?? "") && media.narration?.sha256 === evidence.narration.sha256, "current media decode/identity evidence is incomplete");
+  const canonicalBefore = await fileInventory(canonical);
+  mkdirSync(out);
+  try {
+    atomicWrite(path.join(out, "STOP"), "Current approved final source; hold until canonical and publish/language readback are verified.\n");
+    await copyVerified(candidate, path.join(out, "final.mp4"), final.content_sha256);
+    for (const [role, proof] of Object.entries(evidence)) await copyVerified(source.evidence[role].file, path.join(out, proof.file), proof.sha256);
+    const internalPin = { ...pin };
+    for (const role of ["intro", "outro"]) { const file = `build/branding-assets/${role}.mp4`; await copyVerified(pin[role].file, path.join(out, file), pin[role].sha256); internalPin[role] = { ...pin[role], file }; }
+    save(path.join(out, "branding.json"), internalPin);
+    save(path.join(out, "languages.json"), { locales: normalizedChoices(remote.locales), decided_at: remote.locales_decided_at });
+    save(path.join(out, "language-adapter/project.json"), native.project);
+    save(path.join(out, "language-adapter/timeline.json"), native.timeline);
+    if (native.literal_term_annotations) save(path.join(out, "approved-source/raw-lexicon.json"), adapter.project.lexicon);
+    const fields = final.payload.metadata?.["zh-TW"], chapters = final.payload.chapters ?? [], holds = Object.entries(normalizedChoices(remote.locales)).flatMap(([locale, parts]) => Object.keys(parts).filter((v) => parts[v]).map((v) => `${locale}: new current-source ${v} remains pending; previous translations are stale`));
+    requireThat(fields?.title?.trim() && fields.description?.trim() && typeof source.disclosure?.synthetic === "boolean" && source.disclosure.reason?.trim(), "current source needs its approved metadata and explicit disclosure");
+    const upload = path.join(out, "upload"); mkdirSync(path.join(upload, "captions"), { recursive: true });
+    await copyVerified(candidate, path.join(upload, "final.mp4"), final.content_sha256);
+    await copyVerified(source.evidence["captions_zh-TW"].file, path.join(upload, "captions/zh-TW.srt"), evidence["captions_zh-TW"].sha256);
+    await copyVerified(source.evidence.thumbnail.file, path.join(upload, "thumbnail.jpg"), evidence.thumbnail.sha256);
+    const metadata = { ...fields, slug, default_language: "zh-TW", category_id: adapter.project.doc.youtube.category_id, made_for_kids: adapter.project.doc.youtube.made_for_kids, tags: adapter.project.doc.youtube.tags ?? [], privacy_status: "private", chapters, localizations: {}, final_sha256: final.content_sha256, final_review_id: final.id, branding_hash: pin.hash, language_choice: normalizedChoices(remote.locales), thumbnail: "thumbnail.jpg", captions: ["captions/zh-TW.srt"], dubs: [], skipped_dub_locales: {}, skipped_caption_locales: {}, contains_synthetic_media: source.disclosure.synthetic, disclosure_reason: source.disclosure.reason, renewal_handoff: { schema_version: 1, kind: mode, preservation_claim: false, source_metadata: { review_id: final.id, kind: "current-approved-final-payload", sha256: digest(JSON.stringify({ metadata: final.payload.metadata, chapters })) }, holds } };
+    save(path.join(upload, "metadata.json"), metadata); atomicWrite(path.join(upload, "description.zh-TW.txt"), `${fields.title}\n\n${fields.description}\n`);
+    const body = { kind: mode, file: "final.mp4", sha256: final.content_sha256, start_frame: pin.intro.frames, frames: bodyFrames, end_frame: pin.intro.frames + bodyFrames, fps: 30 };
+    const contract = { schema_version: 1, kind: "renewed-import-language-source", slug, source: { kind: mode, final: identity(final), authority: currentAuthority(final), original_final: { review_id: final.payload._final_renewal.previous_review_id, content_sha256: final.payload._final_renewal.previous_sha256 }, historical_declarations: final.payload.body_change, branding_hash: pin.hash, body, media }, evidence, choice: { locales: normalizedChoices(remote.locales), decided_at: remote.locales_decided_at }, metadata: { file: "upload/metadata.json", sha256: await sha256File(path.join(upload, "metadata.json")) }, captions_zh_TW: { file: "upload/captions/zh-TW.srt", sha256: evidence["captions_zh-TW"].sha256, original: evidence["captions_zh-TW"] }, adapter: { project_file: "language-adapter/project.json", project_sha256: await sha256File(path.join(out, "language-adapter/project.json")), timeline_file: "language-adapter/timeline.json", timeline_sha256: evidence.evidence_body_timeline.sha256, doc_sha256: digest(JSON.stringify(adapter.project.doc)), lexicon_sha256: digest(JSON.stringify(adapter.project.lexicon)), speech_hash: adapter.timeline.speech_hash, caption_mode: adapter.caption_mode, original_narration_claimed: false }, holds, adapter_requirement: "Current final attachments authorize a new source identity; no prior script/audio/listening approval or translation is reused." };
+    contract.source.final_attachments = final.files;
+    contract.source.final_metadata = final.payload.metadata;
+    contract.source.final_chapters = final.payload.chapters ?? [];
+    contract.adapter.timeline_sha256 = await sha256File(path.join(out, "language-adapter/timeline.json"));
+    contract.adapter.doc_sha256 = digest(JSON.stringify(native.project.doc));
+    contract.adapter.lexicon_sha256 = digest(JSON.stringify(native.project.lexicon));
+    contract.adapter.speech_hash = native.timeline.speech_hash;
+    contract.adapter.line_id_aliases = native.line_id_aliases;
+    if (native.literal_term_annotations) {
+      contract.adapter.literal_term_annotations = native.literal_term_annotations;
+      contract.adapter.raw_lexicon = { kind: "raw-source-adapter-lexicon-snapshot", file: "approved-source/raw-lexicon.json", sha256: await sha256File(path.join(out, "approved-source/raw-lexicon.json")), content_sha256: digest(JSON.stringify(adapter.project.lexicon)) };
+    }
+    save(path.join(out, "renewal-language-source.json"), contract);
+    const receipt = { schema_version: 1, kind: "renewal-handoff", id: randomUUID(), slug, mode, prepared_at: now.toISOString(), canonical, snapshot: out, archive: `${canonical}.renewal-archive-${randomUUID()}`, owner_final: currentAuthority(final), decision_authority: authority, source: { ...final.payload.renewal_candidate.source, body_frames: bodyFrames, body_proof: body, historical_declarations: final.payload.body_change, canonical_files: canonicalBefore, retained_files: {} }, choice: contract.choice, media, holds, files: await fileInventory(out, { exclude: [RECEIPT, "STOP"] }) };
+    save(path.join(out, RECEIPT), receipt);
+    requireThat(isDeepStrictEqual(canonicalBefore, await fileInventory(canonical)) && await sha256File(candidate) === final.content_sha256, "current sources changed during preparation; preserve the held snapshot");
+    await readManualLanguageSource({ workdir: out, remote });
+    return receipt;
+  } catch (error) { atomicWrite(path.join(out, "STOP"), `Failed current source preparation: ${error.message}\n`); throw error; }
+}
+
 /** Preparation is safe while a worker runs: it reads sources, writes only NEW snapshot/out
  * paths, and will refuse activation if any canonical source changed meanwhile. */
 export async function prepareHandoff({ slug, canonical, out, source, candidate, branding, remote, mode = "normal", project, verifyMedia = verifyRetainedMedia, now = new Date() }) {
@@ -285,7 +513,7 @@ export async function prepareHandoff({ slug, canonical, out, source, candidate, 
         validateRealAdapter(source.adapter, readFileSync(path.join(out, "upload/captions/zh-TW.srt"), "utf8"), pin, bodyFrames);
         save(path.join(out, "language-adapter/project.json"), source.adapter.project);
         save(path.join(out, "language-adapter/timeline.json"), source.adapter.timeline);
-        adapter = { project_file: "language-adapter/project.json", project_sha256: await sha256File(path.join(out, "language-adapter/project.json")), timeline_file: "language-adapter/timeline.json", timeline_sha256: await sha256File(path.join(out, "language-adapter/timeline.json")), doc_sha256: digest(JSON.stringify(source.adapter.project.doc)), lexicon_sha256: digest(JSON.stringify(source.adapter.project.lexicon)), speech_hash: source.adapter.timeline.speech_hash, original_narration_claimed: false };
+        adapter = { project_file: "language-adapter/project.json", project_sha256: await sha256File(path.join(out, "language-adapter/project.json")), timeline_file: "language-adapter/timeline.json", timeline_sha256: await sha256File(path.join(out, "language-adapter/timeline.json")), doc_sha256: digest(JSON.stringify(source.adapter.project.doc)), lexicon_sha256: digest(JSON.stringify(source.adapter.project.lexicon)), speech_hash: source.adapter.timeline.speech_hash, ...(source.adapter.caption_mode ? { caption_mode: source.adapter.caption_mode } : {}), original_narration_claimed: false };
       }
       save(path.join(out, "renewal-language-source.json"), { schema_version: 1, kind: "renewed-import-language-source", slug, source: { final: identity(final), original_final: { review_id: bound.final_review_id, content_sha256: bound.final_sha256 }, branding_hash: pin.hash, body: { kind: rangeSource ? "original-cut-range" : "retained-body-file", sha256: actualBodySha, file: bodyPath, start_frame: bodyStartFrames, frames: bodyFrames }, media }, choice: { locales: normalizedChoices(remote.locales), decided_at: remote.locales_decided_at }, metadata: { file: "upload/metadata.json", sha256: await sha256File(path.join(out, "upload/metadata.json")) }, captions_zh_TW: { file: "upload/captions/zh-TW.srt", sha256: await sha256File(path.join(out, "upload/captions/zh-TW.srt")), original: manual.metadata.renewal_handoff.captions["zh-TW"] }, adapter, holds: manual.holds, adapter_requirement: "Only a retained real script/body timing adapter may translate or fit dubs; this contract does not fabricate narration/TTS evidence." });
     }
@@ -297,19 +525,37 @@ export async function prepareHandoff({ slug, canonical, out, source, candidate, 
 }
 
 export async function verifyHandoff({ receipt, workdir = receipt.snapshot, remote, project, verifyCanonical = true }) {
-  requireThat(receipt?.schema_version === 1 && receipt.kind === "renewal-handoff" && UUID.test(receipt.id ?? "") && ["normal", "manual-import"].includes(receipt.mode), "invalid handoff receipt");
+  requireThat(receipt?.schema_version === 1 && receipt.kind === "renewal-handoff" && UUID.test(receipt.id ?? "") && ["normal", "manual-import", "approved-final-body-range"].includes(receipt.mode), "invalid handoff receipt");
   const final = approved(remote, receipt.slug); inactive(remote);
   requireThat(path.dirname(receipt.canonical) === path.dirname(receipt.snapshot) && path.dirname(receipt.archive) === path.dirname(receipt.canonical) && new Set([receipt.canonical, receipt.snapshot, receipt.archive]).size === 3 && !isInside(receipt.canonical, ROOT) && !isInside(ROOT, receipt.canonical), "handoff paths must be distinct siblings outside the repository");
   const bound = final.payload.renewal_candidate.source;
   requireThat(receipt.source.final_review_id === bound.final_review_id && receipt.source.final_sha256 === bound.final_sha256 && receipt.source.body_sha256 === bound.body_sha256 && receipt.source.body_proof?.frames === receipt.source.body_frames && receipt.media.full_decode_ok === true && receipt.media.video_packets === receipt.source.body_frames, "handoff source identity or media proof differs from the approved renewal");
   const bodyProof = receipt.source.body_proof;
-  requireThat(bodyProof.kind === "retained-body-file" && bodyProof.sha256 === bound.body_sha256 && bodyProof.file === "build/body.mp4" && bodyProof.start_frame === 0 || receipt.mode === "manual-import" && bodyProof.kind === "original-cut-range" && bodyProof.sha256 === bound.final_sha256 && bodyProof.file === "retained-source/body-original-cut.mp4" && bodyProof.candidate_body_container_unavailable === true && Number.isSafeInteger(bodyProof.start_frame) && bodyProof.start_frame >= 0, "invalid retained-body file/range proof");
-  requireThat(isDeepStrictEqual(receipt.owner_final, { ...identity(final), branding_hash: final.payload.branding_hash, decided_at: final.decided_at }) && isDeepStrictEqual(receipt.choice, { locales: normalizedChoices(remote.locales), decided_at: remote.locales_decided_at }), "owner final approval or language choice changed; keep both snapshots held");
+  if (receipt.mode === "approved-final-body-range") await readManualLanguageSource({ workdir, remote });
+  else requireThat(bodyProof.kind === "retained-body-file" && bodyProof.sha256 === bound.body_sha256 && bodyProof.file === "build/body.mp4" && bodyProof.start_frame === 0 || receipt.mode === "manual-import" && bodyProof.kind === "original-cut-range" && bodyProof.sha256 === bound.final_sha256 && bodyProof.file === "retained-source/body-original-cut.mp4" && bodyProof.candidate_body_container_unavailable === true && Number.isSafeInteger(bodyProof.start_frame) && bodyProof.start_frame >= 0, "invalid retained-body file/range proof");
+  requireThat(isDeepStrictEqual(receipt.owner_final, receipt.mode === "approved-final-body-range" ? currentAuthority(final) : { ...identity(final), branding_hash: final.payload.branding_hash, decided_at: final.decided_at }) && isDeepStrictEqual(receipt.choice, { locales: normalizedChoices(remote.locales), decided_at: remote.locales_decided_at }), "owner final approval or language choice changed; keep both snapshots held");
   if (receipt.mode === "normal") requireThat(project && isDeepStrictEqual(receipt.source.project, { doc_sha256: digest(JSON.stringify(project.doc)), lexicon_sha256: digest(JSON.stringify(project.lexicon)) }), "source document or lexicon changed since prepare; keep the worker held");
   requireThat(isDeepStrictEqual(receipt.files, await fileInventory(workdir, { exclude: [RECEIPT, "STOP"] })), "prepared snapshot bytes changed; keep both snapshots held");
   requireThat(receipt.files["final.mp4"]?.sha256 === final.content_sha256 && receipt.files[receipt.source.body_proof?.file]?.sha256 === receipt.source.body_proof?.sha256 && existsSync(path.join(workdir, "STOP")), "snapshot is not the stopped approved final and retained body");
   if (verifyCanonical) requireThat(isDeepStrictEqual(receipt.source.canonical_files, await fileInventory(receipt.canonical)), "canonical source changed since prepare; keep the worker held");
   return receipt;
+}
+
+/** Retry only a transient Windows rollback obstruction on the original exact pair.
+ * Never replace a target, delete a source or convert an exhausted rollback into success. */
+export async function renameRollbackDirectory(from, to, { rename = renameSync, platform = process.platform, wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms)) } = {}) {
+  const original = lstatSync(from, { bigint: true, throwIfNoEntry: false });
+  requireThat(original?.isDirectory() && !original.isSymbolicLink() && typeof original.dev === "bigint" && original.dev >= 0n && typeof original.ino === "bigint" && original.ino > 0n, "rollback source directory identity is unavailable; keep both snapshots held");
+  const delays = [25, 50, 100, 200];
+  for (let attempt = 0; ; attempt++) {
+    const source = lstatSync(from, { bigint: true, throwIfNoEntry: false });
+    requireThat(source?.isDirectory() && !source.isSymbolicLink() && source.dev === original.dev && source.ino === original.ino && !lstatSync(to, { throwIfNoEntry: false }), "rollback paths changed; keep source and destination held");
+    try { await rename(from, to); return; }
+    catch (error) {
+      if (platform !== "win32" || !["EPERM", "EACCES", "EBUSY"].includes(error.code) || attempt === delays.length) throw error;
+      await wait(delays[attempt]);
+    }
+  }
 }
 
 /** Caller must independently stop/drain the worker and all media jobs. A STOP file alone
@@ -344,8 +590,8 @@ export async function activateHandoff({ receipt, readRemote, readProject, worker
   } catch (error) {
     // No source is deleted. If rollback is interrupted the journal keeps every exact path.
     try {
-      if (promoted) { state("rolling-back-candidate"); rename(receipt.canonical, receipt.snapshot); promoted = false; }
-      if (archived) { state("rolling-back-original"); rename(receipt.archive, receipt.canonical); archived = false; }
+      if (promoted) { state("rolling-back-candidate"); await renameRollbackDirectory(receipt.canonical, receipt.snapshot, { rename }); promoted = false; }
+      if (archived) { state("rolling-back-original"); await renameRollbackDirectory(receipt.archive, receipt.canonical, { rename }); archived = false; }
       state("failed-held", { error: error.message });
     } catch (rollback) { state("recovery-required", { error: error.message, rollback_error: rollback.message }); }
     throw error;
@@ -356,7 +602,7 @@ export async function activateHandoff({ receipt, readRemote, readProject, worker
  * publish proof, never a new final approval; unresolved chosen parts forbid submission. */
 export async function bindManualSubmission({ body, remote, workdir }) {
   const receipt = readJson(path.join(workdir, RECEIPT), null);
-  if (receipt?.mode !== "manual-import") return null;
+  if (!manualMode(receipt?.mode)) return null;
   requireThat(body.gate === "publish", "manual language output requires bindManualLanguageSubmission with the real timed adapter");
   const final = approved(remote, receipt.slug); inactive(remote);
   requireThat((body.payload?.base_only === true || !receipt.holds.length) && isDeepStrictEqual(receipt.choice, { locales: normalizedChoices(remote.locales), decided_at: remote.locales_decided_at }), `manual package remains held: ${receipt.holds.join("; ") || "language choice changed"}`);
@@ -377,14 +623,15 @@ export async function bindManualSubmission({ body, remote, workdir }) {
 export async function readManualLanguageSource({ workdir, remote }) {
   const contractFile = path.join(workdir, "renewal-language-source.json"), source = readJson(contractFile, null), receipt = readJson(path.join(workdir, RECEIPT), null);
   requireThat(source?.schema_version === 1 && source.kind === "renewed-import-language-source", "renewed imported languages have no source-bound handoff contract");
-  requireThat(receipt?.kind === "renewal-handoff" && receipt.mode === "manual-import" && receipt.slug === source.slug && receipt.files?.["renewal-language-source.json"]?.sha256 === await sha256File(contractFile), "renewed language source contract differs from its prepared handoff receipt");
+  requireThat(receipt?.kind === "renewal-handoff" && manualMode(receipt.mode) && receipt.slug === source.slug && receipt.files?.["renewal-language-source.json"]?.sha256 === await sha256File(contractFile), "renewed language source contract differs from its prepared handoff receipt");
   const final = approved(remote, source.slug);
   requireThat(isDeepStrictEqual(source.source.final, identity(final)) && source.source.branding_hash === final.payload.branding_hash && isDeepStrictEqual(source.choice, { locales: normalizedChoices(remote.locales), decided_at: remote.locales_decided_at }), "imported language source final, branding or owner choice changed");
-  requireThat(isDeepStrictEqual(receipt.owner_final, { ...identity(final), branding_hash: final.payload.branding_hash, decided_at: final.decided_at }) && await sha256File(path.join(workdir, "final.mp4")) === final.content_sha256, "imported language handoff owner decision or final bytes changed");
+  inactive(remote);
+  requireThat(isDeepStrictEqual(receipt.owner_final, receipt.mode === "approved-final-body-range" ? currentAuthority(final) : { ...identity(final), branding_hash: final.payload.branding_hash, decided_at: final.decided_at }) && await sha256File(path.join(workdir, "final.mp4")) === final.content_sha256, "imported language handoff owner decision or final bytes changed");
   const bound = final.payload.renewal_candidate.source;
   requireThat(source.source.original_final.review_id === bound.final_review_id && source.source.original_final.content_sha256 === bound.final_sha256 && source.source.media.full_decode_ok === true && source.source.media.video_packets === source.source.body.frames, "imported language retained body proof is inconsistent with the approved final");
   const body = path.resolve(workdir, source.source.body.file);
-  requireThat(isInside(body, workdir) && await sha256File(body) === source.source.body.sha256 && (source.source.body.kind === "retained-body-file" ? source.source.body.sha256 === bound.body_sha256 : source.source.body.kind === "original-cut-range" && source.source.body.sha256 === bound.final_sha256), "imported language retained body bytes changed");
+  requireThat(isInside(body, workdir) && await sha256File(body) === source.source.body.sha256 && (receipt.mode === "approved-final-body-range" ? source.source.body.kind === receipt.mode && source.source.body.sha256 === final.content_sha256 : source.source.body.kind === "retained-body-file" ? source.source.body.sha256 === bound.body_sha256 : source.source.body.kind === "original-cut-range" && source.source.body.sha256 === bound.final_sha256), "imported language retained body bytes changed");
   for (const item of [source.metadata, source.captions_zh_TW]) {
     const file = path.resolve(workdir, item.file);
     requireThat(isInside(file, workdir) && await sha256File(file) === item.sha256, "renewed imported metadata/default caption source changed");
@@ -393,6 +640,18 @@ export async function readManualLanguageSource({ workdir, remote }) {
   const pin = validateBranding(readJson(path.join(workdir, "branding.json")), { base: workdir });
   requireThat(pin.hash === source.source.branding_hash, "imported language branding pin changed");
   for (const role of ["intro", "outro"]) requireThat(await sha256File(pin[role].file) === pin[role].sha256, `imported language ${role} asset changed`);
+  if (receipt.mode === "approved-final-body-range") {
+    const hashes = {};
+    for (const binding of Object.values(source.evidence ?? {})) {
+      const file = path.resolve(workdir, binding.file); requireThat(isInside(file, workdir) && !lstatSync(file).isSymbolicLink() && lstatSync(file).isFile(), "current source evidence file escapes its regular snapshot");
+      hashes[binding.file] = await sha256File(file);
+    }
+    for (const name of [source.metadata.file, source.adapter?.project_file, source.adapter?.timeline_file, ...(source.adapter?.raw_lexicon ? [source.adapter.raw_lexicon.file] : [])]) {
+      requireThat(typeof name === "string", "current adapter source file is missing"); const file = path.resolve(workdir, name);
+      requireThat(isInside(file, workdir) && !lstatSync(file).isSymbolicLink() && lstatSync(file).isFile(), "current adapter source file escapes its regular snapshot"); hashes[name] = await sha256File(file);
+    }
+    validateCurrentSource(source, receipt, final, pin, (name) => readJson(path.join(workdir, name)), (name) => hashes[name], (name) => readFileSync(path.join(workdir, name), "utf8"));
+  }
   if (source.adapter) {
     const files = ["project", "timeline"];
     for (const key of files) {
@@ -401,7 +660,7 @@ export async function readManualLanguageSource({ workdir, remote }) {
     }
     const project = readJson(path.join(workdir, source.adapter.project_file)), timeline = readJson(path.join(workdir, source.adapter.timeline_file));
     requireThat(digest(JSON.stringify(project.doc)) === source.adapter.doc_sha256 && digest(JSON.stringify(project.lexicon)) === source.adapter.lexicon_sha256, "retained language adapter script/lexicon hash changed");
-    validateRealAdapter({ project, timeline }, readFileSync(path.join(workdir, source.captions_zh_TW.file), "utf8"), pin, source.source.body.frames);
+    validateRealAdapter({ project, timeline, caption_mode: source.adapter.caption_mode }, readFileSync(path.join(workdir, source.captions_zh_TW.file), "utf8"), pin, source.source.body.frames);
   }
   return source;
 }
@@ -421,17 +680,25 @@ export function verifiedManualPresentation({ project, workdir, timeline }) {
     return hash.digest("hex");
   };
   const source = readJson(contractFile), receipt = readJson(path.join(workdir, RECEIPT)), pin = validateBranding(readJson(path.join(workdir, "branding.json")), { base: workdir });
-  requireThat(source?.kind === "renewed-import-language-source" && receipt?.mode === "manual-import" && receipt.slug === project.doc.slug && source.slug === project.doc.slug && receipt.files?.["renewal-language-source.json"]?.sha256 === sha("renewal-language-source.json"), "manual presentation contract differs from its prepared source receipt");
+  requireThat(source?.kind === "renewed-import-language-source" && manualMode(receipt?.mode) && receipt.slug === project.doc.slug && source.slug === project.doc.slug && receipt.files?.["renewal-language-source.json"]?.sha256 === sha("renewal-language-source.json"), "manual presentation contract differs from its prepared source receipt");
   requireThat(isDeepStrictEqual(source.source.final, { review_id: receipt.owner_final.review_id, content_sha256: receipt.owner_final.content_sha256 }) && source.source.branding_hash === receipt.owner_final.branding_hash && pin.hash === source.source.branding_hash, "manual presentation owner final or branding changed");
   const approval = readJson(path.join(workdir, "approvals.json"), { approvals: [] }).approvals.filter((v) => v.gate === "final").at(-1);
   requireThat(approval?.sha256 === source.source.final.content_sha256 && sha("final.mp4") === source.source.final.content_sha256, "manual presentation needs the exact pulled owner final approval");
   const body = source.source.body, proof = receipt.source.body_proof;
-  requireThat(isDeepStrictEqual(body, { kind: proof.kind, sha256: proof.sha256, file: proof.file, start_frame: proof.start_frame, frames: proof.frames }) && source.source.media.full_decode_ok === true && source.source.media.video_packets === body.frames && sha(body.file) === body.sha256, "manual presentation retained original body proof changed");
+  requireThat(isDeepStrictEqual(body, receipt.mode === "approved-final-body-range" ? proof : { kind: proof.kind, sha256: proof.sha256, file: proof.file, start_frame: proof.start_frame, frames: proof.frames }) && source.source.media.full_decode_ok === true && source.source.media.video_packets === body.frames && sha(body.file) === body.sha256, "manual presentation retained original body proof changed");
+  if (receipt.mode === "approved-final-body-range") {
+    // Native commands use the same immutable current authority captured by the fresh
+    // remote reader; pulled final approval + exact local attachment hashes remain required.
+    const final = { id: receipt.owner_final.review_id, content_sha256: receipt.owner_final.content_sha256, decided_at: receipt.owner_final.decided_at, files: source.source.final_attachments, payload: { branding_hash: source.source.branding_hash, body_change: source.source.historical_declarations, metadata: source.source.final_metadata, chapters: source.source.final_chapters } };
+    // All final attachments (not just required media) are pinned at preparation.
+    final.files = source.source.final_attachments;
+    validateCurrentSource(source, receipt, final, pin, (name) => readJson(path.join(workdir, name)), sha, (name) => readFileSync(path.join(workdir, name), "utf8"));
+  }
   requireThat(source.adapter && digest(JSON.stringify(project.doc)) === source.adapter.doc_sha256 && digest(JSON.stringify(project.lexicon)) === source.adapter.lexicon_sha256 && sha("timeline.json") === source.adapter.timeline_sha256, "manual presentation has no current real script/body timing adapter");
   for (const key of ["project", "timeline"]) requireThat(receipt.files[source.adapter[`${key}_file`]]?.sha256 === source.adapter[`${key}_sha256`] && sha(source.adapter[`${key}_file`]) === source.adapter[`${key}_sha256`], "manual presentation adapter differs from the prepared source receipt");
   requireThat(sha(source.captions_zh_TW.file) === source.captions_zh_TW.sha256 && receipt.files[source.captions_zh_TW.file]?.sha256 === source.captions_zh_TW.sha256, "manual presentation approved default caption bytes changed");
   for (const key of ["intro", "outro"]) requireThat(sha(pin[key].file) === pin[key].sha256, `manual presentation ${key} asset changed`);
-  validateRealAdapter({ project, timeline }, readFileSync(path.join(workdir, source.captions_zh_TW.file), "utf8"), pin, body.frames);
+  validateRealAdapter({ project, timeline, caption_mode: source.adapter.caption_mode }, readFileSync(path.join(workdir, source.captions_zh_TW.file), "utf8"), pin, body.frames);
   return { hash: pin.hash, id: pin.id, intro_frames: pin.intro.frames, outro_frames: pin.outro.frames, body_frames: body.frames, source_kind: "renewed-import-language-source", final_sha256: source.source.final.content_sha256 };
 }
 
@@ -500,7 +767,7 @@ export async function bindManualLanguageSubmission({ body, remote, workdir, proj
  * response is preserved and never retried automatically. The uploader remains untouched. */
 export async function stageManualPublish({ workdir, client, send, uploadInactive, baseOnly = false, now = new Date() }) {
   const receipt = readJson(path.join(workdir, RECEIPT));
-  requireThat(receipt.mode === "manual-import" && (baseOnly || !receipt.holds.length), `manual package remains held: ${receipt.holds.join("; ")}`);
+  requireThat(manualMode(receipt.mode) && (baseOnly || !receipt.holds.length), `manual package remains held: ${receipt.holds.join("; ")}`);
   const stagedFile = path.join(workdir, "review/manual-publish-submission.json");
   requireThat(!existsSync(stagedFile), "publish submission already attempted; inspect site state and the saved receipt before another attempt");
   requireThat(typeof uploadInactive === "function" && await uploadInactive(receipt.slug) === true, "publish staging requires a fresh upload-session/job inactivity probe");
@@ -530,6 +797,7 @@ export async function handoffMain(args) {
   const [command, ...rest] = args;
   const { values } = parseArgs({ args: rest, options: { config: { type: "string" }, receipt: { type: "string" }, remote: { type: "string" }, project: { type: "string" } }, strict: true });
   if (command === "prepare" && values.config) return prepareHandoff(readJson(values.config));
+  if (command === "prepare-current-final" && values.config) return prepareApprovedFinalHandoff(readJson(values.config));
   if (command === "verify" && values.receipt && values.remote) return verifyHandoff({ receipt: readJson(values.receipt), remote: readJson(values.remote), project: values.project ? readJson(values.project) : undefined });
   throw new UsageError("renewal-handoff.mjs prepare --config JSON; verify --receipt JSON --remote JSON. Activation is a guarded host operation requiring fresh probes.");
 }

@@ -1346,11 +1346,15 @@ async def submit_review(
         and payload.gate in ("publish", "languages", "dubs")
     ):
         await asyncio.to_thread(_renewed_source, store, slug, payload, current)
+    # A subject is part of what was reviewed: every character's look review is bound to the one
+    # characters/manifest.json, so they share a hash and only the subject tells them apart.
     same = next(
         (
             review
             for review in reviews
-            if review.gate == payload.gate and review.content_sha256 == payload.content_sha256
+            if review.gate == payload.gate
+            and review.subject == payload.subject
+            and review.content_sha256 == payload.content_sha256
         ),
         None,
     )

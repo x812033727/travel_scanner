@@ -2332,12 +2332,29 @@ class VideoReview(Timestamped, Base):
 
     __tablename__ = "video_reviews"
     __table_args__ = (
-        UniqueConstraint(
+        # One review per gate, subject, hash and revision (migration 0124). Every character's
+        # look review is bound to the same manifest, so the subject keeps them apart; a NULL
+        # never equals another, so the gates without a subject keep their own index.
+        Index(
+            "uq_video_review_no_subject",
             "project_id",
             "gate",
             "content_sha256",
             "revision",
-            name="uq_video_review_content_revision",
+            unique=True,
+            postgresql_where=text("subject IS NULL"),
+            sqlite_where=text("subject IS NULL"),
+        ),
+        Index(
+            "uq_video_review_subject",
+            "project_id",
+            "gate",
+            "subject",
+            "content_sha256",
+            "revision",
+            unique=True,
+            postgresql_where=text("subject IS NOT NULL"),
+            sqlite_where=text("subject IS NOT NULL"),
         ),
         CheckConstraint("revision >= 0", name="ck_video_review_revision"),
         # look and storyboard are the drama format's gates (docs/videos/DRAMA.md; migration 0095);
