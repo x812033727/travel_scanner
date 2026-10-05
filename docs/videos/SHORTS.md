@@ -140,7 +140,7 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 
 `check-audio` 的 `check.json` 同時綁定依序排列的 WAV（`audio_sha256`）和逐句原文（`phrases_sha256`）；`qa` 還核對 `results` 的順序、文字與每句結果。只改文字、句數不變，也要重查，不能沿用原音檔的舊通過結果。
 
-`qa.inputs` 記錄本機的 `script.json`、`timeline.json`、`check.json`、`verify.json`、`checks.json`、成片、逐句 WAV、五種支援語系的字幕與腳本列出的證據檔；缺檔記成 `null`，之後補檔也要重跑 QA。`qa` 在非同步檢查前後比對快照，途中改檔就拒絕寫入新結果。`push` 在任何後台寫入前及送出審核前重核；沒有綁定或任一輸入改變時，回報 `waits` 並停止。`package` 產出的 metadata、說明及 manifest 不列入 QA 輸入，仍走原有的上傳包檢查。
+`qa.inputs` 記錄本機的 `script.json`、`timeline.json`、`timing.json`（卡拉 OK 字幕的時間，沒有就記 `null`）、`check.json`、`verify.json`、`checks.json`、成片、逐句 WAV、五種支援語系的字幕與腳本列出的證據檔；缺檔記成 `null`，之後補檔也要重跑 QA。`qa` 在非同步檢查前後比對快照，途中改檔就拒絕寫入新結果。`push` 在任何後台寫入前及送出審核前重核；沒有綁定或任一輸入改變時，回報 `waits` 並停止。`package` 產出的 metadata、說明及 manifest 不列入 QA 輸入，仍走原有的上傳包檢查。
 
 舊成片升級順序：先對目前版本重新查核並更新 `verify.json`，再跑 `check-audio --dir <成片目錄>` → `qa --dir <成片目錄>` → `package --dir <成片目錄>` → `push --dir <成片目錄>`（各指令前加 `node tools/video/shorts/cli.mjs`）。若旁白、字卡或時間軸改了，先依修改內容重建成片；只改說明也會使 QA 與事實查核失效。不可只補 hash、改 `ok`，或把舊收據重新包裝成通過；新跑出的失敗項仍照下方規則交站主處理。這份綁定記錄本機檔案的一致性，不替代重新查詢網站狀態或站主驗收。
 
@@ -160,7 +160,7 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 | `facts` | 查核模型在新對話對照證據：字卡與旁白的每個數字和結論都對得上；沒有超出這次測試範圍的說法 | `verify.json` |
 | `policy` | Jev：照頻道立場、有觀眾能照著做的東西、沒有投資醫療法律政治建議、沒有業配。精華（`cut`）不問「有觀眾能照著做的東西」：二、三十秒的片段放不下示範，示範留在它連回去的長片（站主 2026-09-30 決定） | 既有的 `POST /video/automation/judge/policy`；伺服器依影片的內容線選題組 |
 | `metadata` | 標題 ≤ 100 字元、沒有角括號；說明 ≤ 5,000 位元組；標籤合計 ≤ 500 字元；話題標籤最多 3 個 | `package` |
-| `captions` | `zh-TW.srt` 讀得懂、每段時間跟時間軸一致；有勾其他語言時每個語系都在而且沒過期 | `package` |
+| `captions` | `zh-TW.srt` 讀得懂、每段時間跟時間軸一致；有勾其他語言時每個語系都在而且沒過期。卡拉 OK 字幕的亮字時間還是估算的（`checks.json.captions.source` 是 `estimated`）時照樣過，但帶一條 `warnings`，後台卡片會列出 | `package`、`checks.json.captions` |
 | `links` | 說明欄每個網址都回 200；精華的完整影片連結是公開的 | 工人用固定的 User-Agent 抓 |
 | `variety` | 開場那一句跟最近 30 支不重複；字卡結構跟同系列前一支不是一模一樣 | 伺服器的影片清單 |
 | `disclosure` | 依內容線與素材決定要不要勾「變造或合成內容」，寫進 `metadata.json`；這一項只記答案，不會讓品管失敗 | 規則見「三條內容線」 |
@@ -357,6 +357,7 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 | `import --from <目錄>` | 把別的工具做好的 Shorts（mp4、srt、一份最小的 `meta.json`）包成同一種上傳包再 `push`。品管一樣要重跑，不信任外來的檢查結果 |
 | `motion.mjs`（2026-09-29，票 `video-shorts-motion-music`） | 畫面不再是每句一張不透明字卡硬切：**一個場景一段**，底層是這個場景的圖（長片的關鍵影格，16:9 裁成 9:16 只留中間約 32%，依 `camera` 運鏡：push in／pull out／pan left／pan right／tilt up／tilt down／drift）或主題的底色與光暈（純字卡場景，慢慢漂移），上層是每句的**透明字卡**（`sceneHtml` 的 `transparent`：有圖時內容放在半透明面板上、上下加漸層遮罩；`.content`、字幕條、計數與進度條的幾何不變，`measurePage` 與 qa 的 layout 項照舊）；場景之間從上一段的最後一格溶接 15 格，第一個場景硬切。運鏡表達式與溶接長度直接 import `assemble/drama.mjs`，跟長片一致。`checks.json` 多 `motion`（每景的 camera、背景種類、有沒有溶接）。實測線的證據圖（`asset` 沒有 `camera`）仍放在卡片裡，清楚可讀，底下是漂移的底色 |
 | 腳本格式第 2 版的 `camera`、`music`、`sfx` | 場景可寫 `camera`（上面七個詞）；文件層可寫 `music {track, sha256?, gain_db?, duck_db?}` 與 `sfx {set, gain_db?}`，都是站主放在工人主機 `<VIDEO_WORKDIR>/_music/`、`_sfx/<set>/` 的授權檔（跟長片同一份，`docs/videos/ILLUSTRATED.md` §配樂與音效），Shorts 不生成音樂。有配樂或音效時 `build` 走長片的 `measureMixArgs`／`mixArgs`（床壓在旁白下、側鏈壓低、成片 −14 LUFS、床 ≤ −24 LUFS 否則失敗），音效依 `shortSfxPlan` 放：每個場景開頭一個 stamp（第一景除外）、有 `big` 的句子一個 pop、1.5 秒內不重複。`buildId` 加配樂 sha 與音效組雜湊；`checks.json` 多 `music {track, sha256, bed_lufs}`、`sfx {set, events}`。第 1 版腳本一個位元組都不用改 |
+| `karaoke.mjs`（2026-10-05，票 `2026-10-05-shorts-karaoke-captions-estimated-timing`） | 字幕條可以**逐組亮字**（`build --captions karaoke`，沒給旗標就讀 `VIDEO_SHORTS_CAPTIONS`，再沒有就是 `plain`，舊行為一個位元組不變）：每句先切成最多兩行、一行 ≤ 15 個全形字（820 px 盒的真正上限，38 字只是格式上限），每行再切成 5–10 個顯示單位一組（拉丁字與數字不拆、標點黏前一個字、偏好在句讀收尾）；字幕層是獨立的透明 PNG（`captionHtml`，只畫字幕條、裁到 `CAPTION_BOX` 80,1430,820×165），一個亮字狀態一張，疊在卡片上（`segmentArgs` 的最後一個輸入，`overlay=80:1430`），卡片本身把字隱藏但保留盒與底色，所以 `measurePage` 的量法不變；亮組只換顏色（主題的 `highlight`，或 `colors.karaoke`）與光暈，不換版面。時間是**估算**的：伺服器只回音檔，`speechSpan` 先用每句音檔的 RMS 找到頭尾靜音，再依 `spokenUnits` 加標點的權重分攤；寫在成品的 `timing.json`（`source: "estimated"`，每句的 lines、groups、start／end、states），`checks.json.captions = {style, source, groups, states, version}`。CC 的 `zh-TW.srt` 仍一句一段（YouTube CC 沒有逐字）。`MOTION_VERSION` 升到 v2、`karaoke.mjs` 進 `codeHash`、`captions` 進 `buildId`。伺服器的字幕樣式設定延後（要 migration、schemas、後台表單與五個 admin.json）；站主先看一支樣片，滿意再在工人主機設 `VIDEO_SHORTS_CAPTIONS=karaoke`。真實字時由票 `2026-10-05-speech-align-character-timing` 補（同一個 `timing.json` 形狀，`source: "aligned"`） |
 | `from-episode` 接任何有 shot 的長片 | 原來如此事務所的漫劇與插圖投影片影片都行：`episodeShort` 把每個 shot 換成長片的關鍵影格（雜湊綁定，不另外生圖），並帶上長片那個 shot 的 `camera`（Short 自己寫了就用自己的）；系列依長片決定（`episodeSeries`）：explainer → `sothatswhy`、插圖投影片 → `illustrated`（主題 `cut:illustrated`，深青、奶油白、琥珀，每張卡指回長片）；沒有 shot 的長片直接拒絕 |
 | `tools/video/automation/shorts.mjs` | 工人的 `shortsStep()`：依 `next` 做 `plan`、`brief`、`make`、`report`。`make` 依內容線走 `lab.mjs`、`cut.mjs`、`vertical.mjs`（漫劇）。`auto` 現在一讀到自動產線沒開就結束；`shortsStep()` 要排在那個檢查之前，由 Shorts 自己的開關決定做不做。`tick` 不在這裡：工人的迴圈腳本另外每 5 分鐘敲一次（見「誰在什麼時候動手」） |
 | `track-init`、`report` | 留著給離線使用；伺服器是正本 |
