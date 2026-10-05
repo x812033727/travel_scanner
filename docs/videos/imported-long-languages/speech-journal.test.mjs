@@ -4,7 +4,7 @@ import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSy
 import os from "node:os";
 import path from "node:path";
 import { createHash } from "node:crypto";
-import { synthesize, transcribeClip, judgeLines, speechStatus } from "../../../tools/video/tts/client.mjs";
+import { synthesize, transcribeClip, judgeLines, speechStatus, SPEECH_UNCERTAIN } from "../../../tools/video/tts/client.mjs";
 import { encodeWav, parseWav } from "../../../tools/video/tts/wav.mjs";
 import { createSpeechJournalFetch, speechConfiguration } from "./speech-journal.mjs";
 
@@ -139,9 +139,11 @@ test("GET and unrelated routes pass through, while foreign or changed paid origi
 });
 
 test("native server auth/quota classification is preserved and retryable upstream failure still buys once", async (t) => {
-  for (const [status, code, who] of [[401, "video_tool_token_invalid", "owner"], [429, "video_speech_budget_exhausted", "service"], [503, "upstream_unavailable", "service"]]) await t.test(code, async (t) => {
+  // The web route's 503/502 `upstream_unavailable` can also mean an answer lost after the POST went
+  // out, so the native client itself stops on it as uncertain (exit 3) before the journal's hold.
+  for (const [status, code, who, seen = code] of [[401, "video_tool_token_invalid", "owner"], [429, "video_speech_budget_exhausted", "service"], [503, "upstream_unavailable", "owner", SPEECH_UNCERTAIN]]) await t.test(code, async (t) => {
     const f = fixture(t); let posts = 0;
-    await assert.rejects(invoke(f, f.make(async () => { posts++; return Response.json({ code, detail: code }, { status }); })), (error) => error.who === who && error.code === (status === 503 ? "video_speech_result_held" : code));
+    await assert.rejects(invoke(f, f.make(async () => { posts++; return Response.json({ code, detail: code }, { status }); })), (error) => error.who === who && error.code === seen);
     assert.equal(posts, 1); assert.equal(Object.values(f.read().entries)[0].status, "unknown");
   });
 });
