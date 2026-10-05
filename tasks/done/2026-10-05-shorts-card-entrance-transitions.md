@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-shorts-card-entrance-transitions
 title: Shorts card entrance transitions captured with the long video's paused-animation renderer
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-fable-5-1-entrances
 claimed_at: 2026-10-05T18:38:56Z
 created_at: 2026-10-05T16:08:23Z
-completed_at:
+completed_at: 2026-10-05T23:08:12Z
 branch: claude/shorts-card-entrances
 depends_on:
   - 2026-10-03-illustrated-slides-lint-heuristics-the-shorts
