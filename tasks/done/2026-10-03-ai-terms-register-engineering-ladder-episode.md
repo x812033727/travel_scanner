@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-ai-terms-register-engineering-ladder-episode
 title: AI 名詞庫登記五層樓總覽集（terms.json 與系列 README）
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-ai-terms-ladder-register
 claimed_at: 2026-10-05T07:06:34Z
 created_at: 2026-10-03T23:45:46Z
-completed_at:
+completed_at: 2026-10-05T07:28:06Z
 branch: claude/ai-terms-ladder-register
 depends_on: []
 scope:
