@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-pin-remaining-base-images-by-digest
 title: Pin the remaining base images by digest: dev and production compose, video worker, uploader
-status: in-progress
+status: done
 priority: P3
 area: ops
 owner: claude-opus-5-5-pin-base-images
 claimed_at: 2026-10-05T01:34:21Z
 created_at: 2026-10-02T17:56:20Z
-completed_at:
+completed_at: 2026-10-05T02:13:57Z
 branch: claude/pin-base-images
 depends_on: []
 scope:
