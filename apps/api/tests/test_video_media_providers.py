@@ -249,10 +249,10 @@ def test_minimax_bodies_and_status_codes() -> None:
     assert image["aspect_ratio"] == "16:9" and image["n"] == 1
     assert image["response_format"] == "base64", "the picture comes back in the answer"
     clip = MiniMaxVideo(MINIMAX, "k").request_body(
-        _clip_request(model="MiniMax-H3", resolution="2k")
+        _clip_request(model="MiniMax-Hailuo-2.3", resolution="1080p")
     )
     assert clip["first_frame_image"].startswith("data:image/jpeg;base64,")
-    assert clip["resolution"] == "2K" and clip["duration"] == 8
+    assert clip["resolution"] == "1080P" and clip["duration"] == 8
     assert clip["subject_reference"][0]["image"][0].startswith("data:image/png")
     check_base_resp({"base_resp": {"status_code": 0}})
     for code, kind in (
@@ -428,7 +428,7 @@ async def test_minimax_video_polls_to_a_download_url_without_sending_the_key() -
     provider = MiniMaxVideo(MINIMAX, "secret")
     async with _client(handler) as client:
         submitted = await provider.submit(
-            _clip_request(model="MiniMax-H3", resolution="768p"), client
+            _clip_request(model="MiniMax-Hailuo-2.3", resolution="768p"), client
         )
         running = await provider.poll("t-1", client)
         done = await provider.poll("t-1", client)
@@ -487,7 +487,9 @@ async def test_every_model_but_h3_keeps_the_v1_path_body_and_poll_byte_for_byte(
     if full:
         sheet = f"data:image/png;base64,{base64.b64encode(SHEET.data).decode()}"
         expected["resolution"] = "1080P"
-        expected["last_frame_image"] = f"data:image/png;base64,{base64.b64encode(LAST.data).decode()}"
+        expected["last_frame_image"] = (
+            f"data:image/png;base64,{base64.b64encode(LAST.data).decode()}"
+        )
         expected["subject_reference"] = [{"type": "character", "image": [sheet, sheet]}]
     sent = calls[0]
     assert (sent.method, str(sent.url)) == ("POST", "https://api.minimaxi.com/v1/video_generation")
@@ -500,6 +502,205 @@ async def test_every_model_but_h3_keeps_the_v1_path_body_and_poll_byte_for_byte(
         "https://api.minimaxi.com/v1/files/retrieve?file_id=f%201",
     ]
     assert done.state == "done" and done.download is not None
+
+
+def _data(image: ReferenceImage) -> str:
+    return f"data:{image.content_type};base64,{base64.b64encode(image.data).decode()}"
+
+
+def _h3_body(*, last: bool, resolution: str = "2K", seconds: int = 8) -> dict[str, Any]:
+    """The documented v2 image-to-video body (platform.minimax.io, read 2026-10-05)."""
+    content: list[dict[str, Any]] = [
+        {"type": "text", "text": "slow push in. Avoid: blur"},
+        {"type": "image_url", "image_url": {"url": _data(FRAME)}, "role": "first_frame"},
+    ]
+    if last:
+        content.append(
+            {"type": "image_url", "image_url": {"url": _data(LAST)}, "role": "last_frame"}
+        )
+    return {
+        "model": "MiniMax-H3",
+        "content": content,
+        "resolution": resolution,
+        "duration": seconds,
+    }
+
+
+@pytest.mark.parametrize("last", [True, False], ids=["first-and-last-frame", "first-frame"])
+def test_h3_sends_the_v2_body_and_never_a_reference_beside_its_frames(last: bool) -> None:
+    request = _clip_request(
+        model="MiniMax-H3",
+        resolution="2k",
+        negative_prompt="blur",
+        last_frame=LAST if last else None,
+        references=(SHEET, PREVIOUS, SHEET),
+    )
+    body = MiniMaxVideo(MINIMAX, "k").request_body(request)
+    # json.dumps compares key order too, nested items included.
+    assert json.dumps(body) == json.dumps(_h3_body(last=last))
+    roles = [item.get("role") for item in body["content"]]
+    assert roles == [None, "first_frame", "last_frame"][: 2 + last]
+    assert not {"first_frame_image", "subject_reference", "prompt_optimizer"} & body.keys()
+    assert not any(str(role).startswith("reference") for role in roles), "i2v and r2v exclusive"
+
+
+@pytest.mark.asyncio
+async def test_h3_without_a_resolution_is_refused_before_the_paid_endpoint() -> None:
+    seen: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(request)
+        return httpx.Response(200, json={"task_id": "1"})
+
+    async with _client(handler) as client:
+        with pytest.raises(MediaUpstreamError) as error:
+            await MiniMaxVideo(MINIMAX, "k").submit(
+                _clip_request(model="MiniMax-H3", resolution=None), client
+            )
+    assert (error.value.status, error.value.kind) == (422, "invalid")
+    assert seen == []
+
+
+@pytest.mark.parametrize(
+    ("base", "root"),
+    [
+        ("https://api.minimaxi.com/v1", "https://api.minimaxi.com"),
+        ("https://api.minimax.io/v1/", "https://api.minimax.io"),
+        ("https://api.minimax.io", "https://api.minimax.io"),
+    ],
+)
+@pytest.mark.asyncio
+async def test_h3_submits_and_polls_on_the_v2_paths_of_the_configured_host(
+    base: str, root: str
+) -> None:
+    calls: list[httpx.Request] = []
+    states = iter(["queued", "running", "succeeded"])
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        calls.append(request)
+        if request.method == "POST":
+            return httpx.Response(200, json={"task_id": "424010985738629"})
+        status = next(states)
+        task: dict[str, Any] = {"id": "424010985738629", "model": "MiniMax-H3", "status": status}
+        if status == "succeeded":
+            task["content"] = {"url": "https://video-product.cdn.minimax.io/out/output.mp4"}
+        return httpx.Response(200, json={"task": task})
+
+    provider = MiniMaxVideo(base, "secret")
+    request = _clip_request(model="MiniMax-H3", resolution="768p", negative_prompt="blur")
+    async with _client(handler) as client:
+        submitted = await provider.submit(request, client)
+        polls = [await provider.poll(submitted.vendor_ref or "", client) for _ in range(3)]
+    assert submitted.vendor_ref == "v2:424010985738629", "the prefix tells poll which API asks"
+    sent = calls[0]
+    assert (sent.method, str(sent.url)) == ("POST", f"{root}/v2/video_generation")
+    expected = _h3_body(last=False, resolution="768P")
+    assert sent.content == httpx.Request("POST", sent.url, json=expected).content
+    query = f"{root}/v2/query/video_generation/424010985738629"
+    assert [(call.method, str(call.url)) for call in calls[1:]] == [("GET", query)] * 3
+    for call in calls:
+        assert call.headers["authorization"] == "Bearer secret"
+        assert call.headers["user-agent"].startswith("Mokaair-video/")
+    assert [poll.state for poll in polls] == ["running", "running", "done"]
+    assert polls[0].retry_after == 10
+    download = polls[2].download
+    assert download == Download(
+        url="https://video-product.cdn.minimax.io/out/output.mp4", content_type_hint="video/mp4"
+    )
+    assert provider.fetch(download) == (download.url, {}), "the CDN link needs no key"
+
+
+def _v2_refusal(status: int, message: str | None) -> httpx.Response:
+    if message is None:
+        return httpx.Response(status, text="<html>upstream</html>")
+    error = {"type": "x_error", "message": message, "http_code": str(status)}
+    return httpx.Response(status, json={"type": "error", "error": error, "request_id": "r-1"})
+
+
+@pytest.mark.parametrize(
+    ("answer", "status", "kind", "message"),
+    [
+        (
+            _v2_refusal(400, "invalid params, content must include a non-empty text item (2013)"),
+            422,
+            "invalid",
+            "MiniMax rejected the parameters (2013)",
+        ),
+        (_v2_refusal(400, None), 422, "invalid", "MiniMax rejected the parameters (HTTP 400)"),
+        (_v2_refusal(401, "login fail: carry the key (1004)"), 502, "key", None),
+        (_v2_refusal(402, "insufficient balance (1008)"), 502, "key", None),
+        (_v2_refusal(402, "no code"), 502, "key", None),
+        (
+            _v2_refusal(422, "video description contains sensitive content (1026)"),
+            422,
+            "blocked",
+            "MiniMax refused the content (1026)",
+        ),
+        (_v2_refusal(422, None), 422, "blocked", "MiniMax refused the content (HTTP 422)"),
+        (_v2_refusal(429, "rate limit, please retry later (1002)"), 429, "busy", None),
+        (_v2_refusal(529, "overloaded"), 429, "busy", "MiniMax is busy (HTTP 529)"),
+        (_v2_refusal(500, "internal error (1000)"), 502, "failed", "MiniMax answered HTTP 500"),
+        (httpx.Response(200, json={"task_id": ""}), 502, "failed", "MiniMax returned no task id"),
+        (httpx.Response(200, json={"base_resp": {"status_code": 1008}}), 502, "key", None),
+        (httpx.Response(200, text="not json"), 502, "failed", "MiniMax answered without JSON"),
+    ],
+)
+@pytest.mark.asyncio
+async def test_a_v2_refusal_says_who_can_fix_it_without_the_vendors_words(
+    answer: httpx.Response, status: int, kind: str, message: str | None
+) -> None:
+    async with _client(lambda request: answer) as client:
+        with pytest.raises(MediaUpstreamError) as error:
+            await MiniMaxVideo(MINIMAX, "k").submit(
+                _clip_request(model="MiniMax-H3", resolution="2k"), client
+            )
+    assert (error.value.status, error.value.kind) == (status, kind)
+    if message is not None:
+        assert error.value.message == message
+    for words in ("invalid params", "sensitive", "login fail", "upstream", "retry later"):
+        assert words not in error.value.message
+
+
+@pytest.mark.asyncio
+async def test_a_numeric_v2_task_id_is_kept_since_the_task_is_already_paid_for() -> None:
+    async with _client(lambda request: httpx.Response(200, json={"task_id": 4240})) as client:
+        submitted = await MiniMaxVideo(MINIMAX, "k").submit(
+            _clip_request(model="MiniMax-H3", resolution="2k"), client
+        )
+    assert submitted.vendor_ref == "v2:4240"
+
+
+@pytest.mark.parametrize(
+    ("task", "reason"),
+    [
+        (
+            {"status": "failed", "error": {"code": "1000", "message": "x"}},
+            "MiniMax task failed (1000)",
+        ),
+        ({"status": "failed", "error": {"code": "VENDOR TEXT"}}, "MiniMax task failed"),
+        ({"status": "cancelled"}, "MiniMax task cancelled"),
+        ({"status": "exploded"}, "MiniMax task in an unknown state"),
+        ({"status": "succeeded", "content": {}}, "MiniMax task succeeded without a video URL"),
+        ({"status": "succeeded", "content": ["x"]}, "MiniMax task succeeded without a video URL"),
+    ],
+)
+@pytest.mark.asyncio
+async def test_a_v2_task_that_ends_without_a_video_fails_with_a_fixed_reason(
+    task: dict[str, Any], reason: str
+) -> None:
+    async with _client(lambda request: httpx.Response(200, json={"task": task})) as client:
+        polled = await MiniMaxVideo(MINIMAX, "k").poll("v2:t-9", client)
+    assert (polled.state, polled.reason) == ("failed", reason)
+
+
+@pytest.mark.asyncio
+async def test_a_v2_task_refused_for_its_content_is_blocked_so_a_retake_may_pass() -> None:
+    task = {"status": "failed", "error": {"code": "1026", "message": "sensitive content"}}
+    async with _client(lambda request: httpx.Response(200, json={"task": task})) as client:
+        with pytest.raises(MediaUpstreamError) as error:
+            await MiniMaxVideo(MINIMAX, "k").poll("v2:t-9", client)
+    assert (error.value.status, error.value.kind) == (422, "blocked")
+    assert error.value.message == "MiniMax refused the content (1026)"
 
 
 def test_downloads_must_be_https_on_a_real_host() -> None:
