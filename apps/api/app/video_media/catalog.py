@@ -149,12 +149,21 @@ MEDIA_CATALOG: tuple[MediaModel, ...] = (
         native_audio=True,
         usd_per_second=0.12,
     ),
+    # The v2 API (providers/minimax.py, read 2026-10-05) sells H3 at 4 to 15 whole seconds; this
+    # entry stays at 4 to 10 on purpose. The drama tools never ask for more than 10
+    # (MAX_CLIP_SECONDS in tools/video/media/clips.mjs), the episode estimator mirrors these
+    # durations (tools/animation-production.test.mjs compares them), and no H3 clip has been
+    # made yet: 11 to 15 seconds would raise the price of one clip to US$1.95 on a route whose
+    # request has not been accepted live once. Widen it with that check.
     MediaModel(
         "MiniMax-H3",
         "minimax",
         "clip",
         "MiniMax H3（Hailuo 3.0）",
-        note="4 到 15 秒；最多 9 張參考圖，可帶音訊參考；2K 每秒 US$0.13、768p US$0.08",
+        note=(
+            "官方 4 到 15 秒，這裡開 4 到 10；最多 9 張參考圖，但官方不准參考圖與首格同送，"
+            "片段一定有首格，所以不送參考圖；2K 每秒 US$0.13、768p US$0.08"
+        ),
         resolutions=("768p", "2k"),
         durations=_SECONDS_4_TO_10,
         reference_images=9,

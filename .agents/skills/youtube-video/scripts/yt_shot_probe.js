@@ -1,7 +1,9 @@
 // Shot probe for a YouTube watch page: how often a reference video cuts, and what each shot shows.
 //
 // Run it in the in-app browser's JavaScript tool on an open watch page (the pane may be hidden;
-// seeking and reading frames still work there). It defines window.__probe and changes nothing on
+// seeking and reading frames usually still work there, but on 2026-10-05 a hidden pane kept the
+// paused video at readyState 1 and every seek failed: if state.failed climbs while the status is
+// "running", ask for the pane to be shown). It defines window.__probe and changes nothing on
 // the page except pausing and muting the player and, for a contact sheet, drawing one overlay.
 // What the numbers do and do not prove, and how to record a study, is in
 // .agents/skills/youtube-video/references/drama-craft.md.
@@ -25,12 +27,19 @@
 //      sheet() draws only what fits the window and returns { drawn, dropped }; ask for the rest
 //      with mids(count, from). Keep a call under about 30 frames when the page is slow, and wait
 //      a second before the screenshot: a hidden pane paints the overlay late.
-//   6. Burned-in dialogue, read without sound: the subtitle band of every half second.
+//   6. stats() lists suspected_multi_cut_runs (three or more flagged samples in a row, kept as
+//      one cut) and high_motion_share (0.014 on the first minute of a dialogue drama, 0.646 on a
+//      budaimiao battle video). When there is any run, or the share is above about 0.1, the cut
+//      list is not a count (see below). Draw each run at 1/8 s, count its cuts by eye, and quote
+//      a range from the probe's count to the reconciled one:
+//          const run = __probe.stats().suspected_multi_cut_runs[0]
+//          await __probe.sheet(__probe.every(run.start - 0.25, run.end, 0.125), { cols: 8 })
+//   7. Burned-in dialogue, read without sound: the subtitle band of every half second.
 //          await __probe.sheet(__probe.every(0.5, 12, 0.5), { cols: 3, crop: [0.76, 0.98] })
 //      The crop is [top, bottom] as fractions of the frame height: about [0.76, 0.98] on a 16:9
 //      frame, [0.64, 0.8] or [0.74, 0.9] on a 9:16 one; look at one full frame first. A step
 //      longer than half a second misses short lines, so do not state line lengths from one.
-//   7. __probe.hide() removes the overlay. Reset the viewport and close the tab when done.
+//   8. __probe.hide() removes the overlay. Reset the viewport and close the tab when done.
 //
 // What a cut is here: the frame's luma grid changed sharply against the sample before it, as a
 // spike rather than as part of a run. Most cuts are placed within the step. A dissolve can be
@@ -38,6 +47,12 @@
 // counted once, at its first sample, which can be more than a second before the real cut, and a
 // fast move inside one shot can be counted as a cut. So quote the median and the spread, not a
 // single shot's length, and check a contact sheet against the cuts before quoting anything.
+// In an effect-heavy edit (lightning, particles, a camera that never stops) the probe is wrong
+// both ways: shots of 0.25-0.5 s back to back make one long run that keeps a single cut, and a
+// flash or an explosion growing inside one shot is flagged as a cut. On the 2026-10-04 budaimiao
+// battle videos the default list was about 30% short of the reconciled count (B: 19.75-26 s and
+// 213.5-220.5 s held 8 or more real cuts each and none from the probe). runs() names those
+// stretches; cuts() is left as it was so earlier studies stay comparable.
 (() => {
   const video = document.querySelector("video");
   const player = document.getElementById("movie_player");
@@ -101,7 +116,8 @@
     state.status = "done";
   }
 
-  function cuts({ mad = 26, hd = 0.22, soft = 16 } = {}) {
+  /** Every sample the cut rule flags, before a run of them is folded into one cut. */
+  function flagged({ mad = 26, hd = 0.22, soft = 16 } = {}) {
     const s = state.samples, [, end, step] = state.range, out = [];
     for (let i = 0; i < s.length; i++) {
       const [t, m, h] = s[i];
@@ -111,8 +127,29 @@
       const spike = m > 2.2 * Math.max(before, after, 4);
       if ((m >= mad && (h >= hd / 2 || spike)) || (m >= soft && h >= hd && spike)) out.push(t);
     }
+    return out;
+  }
+
+  function cuts(options) {
+    const out = flagged(options), step = state.range[2];
     // Flagged samples in a row are one cut seen more than once; the first is kept.
     return out.filter((t, i) => i === 0 || t - out[i - 1] > step * 1.5);
+  }
+
+  /**
+   * Suspected multi-cut runs: at least `min` flagged samples in a row, which cuts() keeps as one
+   * cut at `start`. In a fast effect-heavy edit such a run can hold several real cuts (shots of
+   * 0.25-0.5 s back to back) or none (a flash, an explosion growing, a whip pan); only a contact
+   * sheet tells which. `start` and `end` are the first and last flagged sample.
+   */
+  function runs(options, { min = 3 } = {}) {
+    const out = flagged(options), step = state.range[2], found = [];
+    for (let first = 0, i = 1; i <= out.length; i++) {
+      if (i < out.length && out[i] - out[i - 1] <= step * 1.5) continue;
+      if (i - first >= min) found.push({ start: out[first], end: out[i - 1], flagged: i - first });
+      first = i;
+    }
+    return found;
   }
 
   const edges = (options) => [state.range[0], ...cuts(options), state.range[1]];
@@ -124,15 +161,20 @@
     const q = (p) => sorted[Math.min(sorted.length - 1, Math.floor(p * sorted.length))];
     // Inside shots: the share of samples whose picture all but equals the one before. It says
     // how often the frame is frozen, not how much anyone moves.
-    const flagged = new Set(found);
-    const inside = state.samples.filter((sample) => !flagged.has(sample[0])).map((sample) => sample[1]);
+    const kept = new Set(found);
+    const inside = state.samples.filter((sample) => !kept.has(sample[0])).map((sample) => sample[1]);
+    // high_motion_share: the share of those samples that change as much as many cuts do (20 or
+    // more: lightning, particles, a camera that never stops). Where it is high, the cut list is
+    // off in both directions: back-to-back cuts merge into runs and flashes count as cuts.
+    const share = (keep) => (inside.length ? +(inside.filter(keep).length / inside.length).toFixed(3) : null);
     return {
       status: state.status, failed: state.failed, range: state.range, shots: lengths.length,
       mean: +((end - start) / lengths.length).toFixed(2), median: q(0.5), p10: q(0.1), p90: q(0.9),
       longest: sorted[sorted.length - 1], over_6s: lengths.filter((x) => x > 6).length,
       opening_10s: all.slice(0, -1).filter((t) => t < start + 10).length,
       opening_30s: all.slice(0, -1).filter((t) => t < start + 30).length,
-      near_frozen_share: inside.length ? +(inside.filter((x) => x < 1).length / inside.length).toFixed(3) : null,
+      near_frozen_share: share((x) => x < 1), high_motion_share: share((x) => x >= 20),
+      suspected_multi_cut_runs: runs(options),
       cuts: found, lengths,
     };
   }
@@ -200,6 +242,6 @@
     };
   }
 
-  window.__probe = { measure, cuts, stats, mids, every, sheet, hide, meta, state, seek };
+  window.__probe = { measure, cuts, flagged, runs, stats, mids, every, sheet, hide, meta, state, seek };
   return "probe ready";
 })();
