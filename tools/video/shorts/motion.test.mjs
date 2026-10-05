@@ -3,7 +3,8 @@ import test from 'node:test';
 
 import { DISSOLVE_FRAMES, MOTION_SOURCE_SCALE } from '../assemble/drama.mjs';
 import { PROFILE } from './core.mjs';
-import { backgroundChain, backgroundOf, cameraOf, cardsList, CAMERA_WORDS, COVER_MIN_PSNR, firstFrameArgs, framePsnrArgs, lastFrameArgs, LOOP_FRAMES, LOOP_MIN_PSNR, loopProblems, MOTION_VERSION, parsePsnr, PSNR_CAP, psnrText, psnrValue, sceneSpans, segmentArgs, shortSfxPlan } from './motion.mjs';
+import { backgroundChain, backgroundOf, cameraOf, cardEntries, cardsList, CAMERA_WORDS, COVER_MIN_PSNR, ENTRANCE_FRAMES, firstFrameArgs, framePsnrArgs, lastFrameArgs, LOOP_FRAMES, LOOP_MIN_PSNR, loopProblems, MOTION_VERSION, parsePsnr, PSNR_CAP, psnrText, psnrValue, sceneSpans, segmentArgs, shortSfxPlan } from './motion.mjs';
+import { ENTRANCE } from './layouts.mjs';
 
 const timeline = {
   fps: 30,
@@ -61,7 +62,7 @@ test('a segment lays the phrases\' cards over the moving background, dissolves f
 });
 
 test('the caption layer is the last input, laid over the cards at the bar; without it the arguments are what they were', () => {
-  assert.equal(MOTION_VERSION, 'shorts-motion-v3');
+  assert.equal(MOTION_VERSION, 'shorts-motion-v4');
   const scene = { background: '/w/assets/pic.png', move: 'push-in', frames: 90, cardsList: '/w/build/cards-000.txt', outFile: '/w/clips/000.mp4' };
   const plain = segmentArgs(scene);
   assert.deepEqual(segmentArgs({ ...scene, captionsList: null }), plain);
@@ -77,6 +78,25 @@ test('the caption layer is the last input, laid over the cards at the bar; witho
   for (const flag of ['libx264', '-g', '60', '-sc_threshold', '0', '+cgop', '-fps_mode', 'cfr']) assert.ok(lit.includes(flag), flag);
   // The layer's list is the cards' ffconcat: every state held for its frames, the last named again.
   assert.equal(cardsList([{ file: '/w/captions/000-00.png', frames: 40 }, { file: '/w/captions/000-01.png', frames: 20 }]), "ffconcat version 1.0\nfile '/w/captions/000-00.png'\noption framerate 30\nduration 1.333333\nfile '/w/captions/000-01.png'\noption framerate 30\nduration 0.666667\nfile '/w/captions/000-01.png'\noption framerate 30\n");
+});
+
+test('a scene\'s first card enters over at most twelve one-frame entries before its still; a card without an entrance is its still alone, as before', () => {
+  assert.equal(ENTRANCE_FRAMES, 12);
+  // The longest entrance the theme writes (layouts.mjs ENTRANCE) settles inside the captured frames.
+  assert.ok(ENTRANCE.staggerLimit * ENTRANCE.stagger + ENTRANCE.duration <= ENTRANCE_FRAMES * (1000 / PROFILE.fps) + 1e-6, 'the entrance outlasts its frames');
+  const still = { file: '/w/frames/003.png', frames: 60 };
+  assert.deepEqual(cardEntries(still), [still], 'no entrance, no change');
+  assert.deepEqual(cardEntries({ ...still, entrance: [] }), [still]);
+  const entrance = ['/w/frames/003-e00.png', '/w/frames/003-e01.png', '/w/frames/003-e02.png'];
+  assert.deepEqual(cardEntries({ ...still, entrance }), [
+    { file: '/w/frames/003-e00.png', frames: 1 }, { file: '/w/frames/003-e01.png', frames: 1 }, { file: '/w/frames/003-e02.png', frames: 1 }, { file: '/w/frames/003.png', frames: 57 },
+  ], 'one frame each, then the still for the rest');
+  assert.deepEqual(cardEntries({ file: '/w/frames/003.png', frames: 3, entrance }), [{ file: '/w/frames/003-e00.png', frames: 1 }, { file: '/w/frames/003-e01.png', frames: 1 }, { file: '/w/frames/003.png', frames: 1 }], 'a short card keeps a frame for its still');
+  assert.deepEqual(cardEntries({ file: '/w/frames/003.png', frames: 1, entrance }), [{ file: '/w/frames/003.png', frames: 1 }]);
+  // In the scene's list: the one-frame entries, the still, the next card, the last named again.
+  const list = cardsList([...cardEntries({ file: '/w/frames/003.png', frames: 40, entrance: entrance.slice(0, 2) }), ...cardEntries({ file: '/w/frames/004.png', frames: 30 })]);
+  assert.equal(list, "ffconcat version 1.0\nfile '/w/frames/003-e00.png'\noption framerate 30\nduration 0.033333\nfile '/w/frames/003-e01.png'\noption framerate 30\nduration 0.033333\nfile '/w/frames/003.png'\noption framerate 30\nduration 1.266667\nfile '/w/frames/004.png'\noption framerate 30\nduration 1.000000\nfile '/w/frames/004.png'\noption framerate 30\n");
+  assert.equal(cardsList([...cardEntries({ file: '/w/frames/000.png', frames: 60 }), ...cardEntries({ file: "/w/it's/001.png", frames: 30 })]), cardsList([{ file: '/w/frames/000.png', frames: 60 }, { file: "/w/it's/001.png", frames: 30 }]), 'a scene without entrances lists what it listed');
 });
 
 test('the sound effects fall on scene changes and big numbers, never at frame 0, never within 1.5 seconds of each other', () => {

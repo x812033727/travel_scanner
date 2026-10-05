@@ -3,7 +3,7 @@ import { readFileSync, realpathSync } from 'node:fs';
 import path from 'node:path';
 import { MUSIC_TRACK, SFX_SET } from '../core/drama.mjs';
 import { atomicWrite, isInside } from '../core/paths.mjs';
-import { themeOf } from './layouts.mjs';
+import { ENTRANCE, entranceCss, themeOf } from './layouts.mjs';
 
 export const PROFILE = Object.freeze({ width: 1080, height: 1920, fps: 30, minSeconds: 25, maxSeconds: 55 });
 // The three content lines of the Shorts tab (docs/videos/SHORTS.md): an experiment, a highlight cut
@@ -294,7 +294,13 @@ export function captionWords(lines, groups, active = -1) {
 // keeps its place and its background on the card and the words come from the caption layer
 // (captionHtml) lit group by group; the overflow measurement still sees the words. Without it
 // the bar says the whole phrase, as before.
-export function sceneHtml(doc, cue, { fontCss = '', assetUrl = '', transparent = false, picture = false, backdrop = false, caption = null } = {}) {
+//
+// `entrance` gives the content its entrance (layouts.mjs ENTRANCE, motion.mjs ENTRANCE_FRAMES):
+// the headline, the rule, the big number, the picture, each row and the note carry the `in`
+// class and their step of the stagger in `--i`, paused at their start, for build.mjs to seek
+// frame by frame. The frame around them (brand, kicker, caption bar, count, progress) never
+// moves, so the caption layer and the measurement hold. Without it the markup is what it was.
+export function sceneHtml(doc, cue, { fontCss = '', assetUrl = '', transparent = false, picture = false, backdrop = false, caption = null, entrance = false } = {}) {
   const scene = doc.scenes[cue.sceneIndex];
   const theme = themeOf(doc);
   const c = theme.colors;
@@ -302,13 +308,23 @@ export function sceneHtml(doc, cue, { fontCss = '', assetUrl = '', transparent =
     return `<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><style>*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:${c.background}}
 .glow{position:absolute;${theme.glow};border-radius:50%;background:radial-gradient(circle,${c.glow},transparent 70%)}</style><body data-theme="${esc(theme.id)}" data-backdrop="1"><div class="glow"></div></body></html>`;
   }
+  // The attributes of an element of the content, in the order the elements enter.
+  let step = 0;
+  const attrs = (classes) => {
+    if (!entrance) return classes ? ` class="${classes}"` : '';
+    return ` class="${classes ? `${classes} ` : ''}in" style="--i:${Math.min(step++, ENTRANCE.staggerLimit)}"`;
+  };
+  const headline = `<h1${attrs('')}>${esc(scene.headline)}</h1><div${attrs('line')}></div>`;
+  const big = scene.big ? `<div${attrs('big')}>${esc(scene.big)}</div>` : '';
+  const asset = assetUrl ? `<img${attrs('asset')} src="${esc(assetUrl)}">` : '';
   const rows = (scene.body ?? []).map((row, index) => theme.rows === 'numbered'
-    ? `<div class="row numbered"><span class="n">${index + 1}</span><span>${esc(row)}</span></div>`
-    : `<div class="row${theme.rows === 'compare' ? ` side-${index % 2 ? 'b' : 'a'}` : ''}">${esc(row)}</div>`).join('');
+    ? `<div${attrs('row numbered')}><span class="n">${index + 1}</span><span>${esc(row)}</span></div>`
+    : `<div${attrs(`row${theme.rows === 'compare' ? ` side-${index % 2 ? 'b' : 'a'}` : ''}`)}>${esc(row)}</div>`).join('');
+  const note = scene.note ? `<div${attrs('note')}>${esc(scene.note)}</div>` : '';
   const background = transparent ? 'transparent' : c.background;
   const glow = transparent ? '' : '<div class="glow"></div>';
   const scrims = transparent && picture ? '<div class="scrim top"></div><div class="scrim bottom"></div>' : '';
-  const captionCss = caption ? '\n.caption .words.hidden{visibility:hidden}' : '';
+  const captionCss = `${caption ? '\n.caption .words.hidden{visibility:hidden}' : ''}${entrance ? `\n${entranceCss()}` : ''}`;
   const words = caption ? `<div class="words hidden">${captionWords(caption.lines, caption.groups, -1)}</div>` : esc(cue.text);
   return `<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><style>${fontCss}
 *{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:${background};color:${c.text};font-family:'Noto Sans TC Variable',sans-serif}
@@ -325,7 +341,7 @@ h1{font-size:88px;line-height:1.2;letter-spacing:-2px;margin:0;font-weight:850;w
 .asset{max-height:835px;max-width:820px;object-fit:contain;align-self:center;border-radius:18px;border:2px solid ${c.rowBorder}}
 .caption{position:absolute;left:80px;top:1430px;width:820px;height:165px;padding:14px 20px;background:${c.caption};border-radius:22px;font-size:49px;line-height:1.36;font-weight:650;display:flex;align-items:center;justify-content:center;text-align:center}
 .count{position:absolute;top:1640px;left:80px;font-size:25px;color:${c.muted}}.progress{position:absolute;left:80px;top:1700px;width:820px;height:7px;background:${c.track}}.progress span{display:block;height:100%;background:${c.accent};width:${Math.round((cue.sceneIndex+1)/doc.scenes.length*100)}%}${captionCss}
-</style><body data-theme="${esc(theme.id)}"${transparent ? ' data-transparent="1"' : ''}>${glow}${scrims}<div class="brand">${esc(theme.brand)}</div><div class="series">${esc(scene.kicker ?? theme.kicker)}</div><main class="content${assetUrl?' with-asset':''}${transparent && picture ? ' on-picture' : ''}"><h1>${esc(scene.headline)}</h1><div class="line"></div>${scene.big ? `<div class="big">${esc(scene.big)}</div>`:''}${assetUrl ? `<img class="asset" src="${esc(assetUrl)}">`:''}${rows ? `<div class="body">${rows}</div>`:''}${scene.note ? `<div class="note">${esc(scene.note)}</div>`:''}</main><div class="caption">${words}</div><div class="count">${String(cue.sceneIndex+1).padStart(2,'0')} / ${String(doc.scenes.length).padStart(2,'0')} · ${esc(theme.footer)}</div><div class="progress"><span></span></div></body></html>`;
+</style><body data-theme="${esc(theme.id)}"${transparent ? ' data-transparent="1"' : ''}>${glow}${scrims}<div class="brand">${esc(theme.brand)}</div><div class="series">${esc(scene.kicker ?? theme.kicker)}</div><main class="content${assetUrl?' with-asset':''}${transparent && picture ? ' on-picture' : ''}">${headline}${big}${asset}${rows ? `<div class="body">${rows}</div>`:''}${note}</main><div class="caption">${words}</div><div class="count">${String(cue.sceneIndex+1).padStart(2,'0')} / ${String(doc.scenes.length).padStart(2,'0')} · ${esc(theme.footer)}</div><div class="progress"><span></span></div></body></html>`;
 }
 
 /**

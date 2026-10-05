@@ -11,8 +11,14 @@ import { CAPTION_BOX } from './karaoke.mjs';
 
 export { DISSOLVE_FRAMES };
 // Folded into the build id: a change here re-encodes every Short. v2: the caption layer input;
-// v3: the loop tail, the last frames dissolving into the first.
-export const MOTION_VERSION = 'shorts-motion-v3';
+// v3: the loop tail, the last frames dissolving into the first; v4: the entrance frames of each
+// scene's first card.
+export const MOTION_VERSION = 'shorts-motion-v4';
+// The entrance of a scene's first card (layouts.mjs ENTRANCE): at most this many frames, drawn
+// one by one by build.mjs with the card's animations paused and seeked at 1/30 s steps
+// (render/browser.mjs), each listed for one frame before the settled still (cardEntries). The
+// first scene has none: its first frame is the cover and the frame the loop tail returns to.
+export const ENTRANCE_FRAMES = 12;
 // The words a scene's `camera` may say, the long video's shot vocabulary (docs/videos/ILLUSTRATED.md).
 export const CAMERA_WORDS = Object.freeze(['push in', 'pull out', 'pan left', 'pan right', 'tilt up', 'tilt down', 'drift']);
 // The loop (docs/videos/SHORTS.md §自動品管, `grammar`): YouTube replays a Short from its first
@@ -89,6 +95,16 @@ export function cardsList(cards) {
   for (const { file, frames } of cards) lines.push(`file ${quote(file)}`, `option framerate ${FPS}`, `duration ${seconds(frames)}`);
   if (cards.length) lines.push(`file ${quote(cards.at(-1).file)}`, `option framerate ${FPS}`);
   return `${lines.join('\n')}\n`;
+}
+
+/**
+ * The entries of one card in a scene's list (cardsList): its entrance frames first, one frame
+ * each, then the still for the rest of the card's frames. A card without an entrance is its
+ * still alone, as before; an entrance longer than the card is cut so the still keeps a frame.
+ */
+export function cardEntries({ file, frames, entrance = [] }) {
+  const shown = entrance.slice(0, Math.max(0, frames - 1));
+  return [...shown.map((frame) => ({ file: frame, frames: 1 })), { file, frames: frames - shown.length }];
 }
 
 /**

@@ -10,8 +10,8 @@
 // The script gets what a cut of an illustrated video has (docs/videos/ILLUSTRATED.md): a picture
 // scene under a camera move (a stand-in picture, generated here), a music bed and a sound-effect
 // set (stand-ins under the work base), and the six beats, so the moving segments, the dissolves,
-// the loop tail, the bed and the effects go through the same chain. CI runs it in
-// .github/workflows/video-tooling.yml after installing Chromium and ffmpeg.
+// the card entrances, the loop tail, the bed and the effects go through the same chain. CI runs
+// it in .github/workflows/video-tooling.yml after installing Chromium and ffmpeg.
 import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -24,7 +24,7 @@ import { writeSyntheticSfx, writeSyntheticTrack } from '../assemble/synthetic.mj
 import { encodeWav } from '../tts/wav.mjs';
 import { build } from './build.mjs';
 import { BEATS, phrasesOf, sha256, validate } from './core.mjs';
-import { COVER_MIN_PSNR, LOOP_FRAMES, LOOP_MIN_PSNR } from './motion.mjs';
+import { COVER_MIN_PSNR, ENTRANCE_FRAMES, LOOP_FRAMES, LOOP_MIN_PSNR, sceneSpans } from './motion.mjs';
 import { packageBuild } from './package.mjs';
 import { runQa } from './qa.mjs';
 
@@ -100,6 +100,33 @@ if (checks.motion.filter((scene) => scene.background === 'backdrop').length !== 
 // the cut against the cover (the cover is that frame; the last frame is it encoded once more).
 if (!(checks.motion.at(-1).loop === true && checks.motion.slice(0, -1).every((scene) => scene.loop === false))) fail(`loops: ${checks.motion.map((scene) => scene.loop)}`);
 if (!(checks.grammar?.loop_frames === LOOP_FRAMES && checks.grammar.cover_psnr >= COVER_MIN_PSNR && checks.grammar.loop_psnr >= LOOP_MIN_PSNR)) fail(`the loop: ${JSON.stringify(checks.grammar)}`);
+// The entrances (motion.mjs ENTRANCE_FRAMES): the first card of every scene after the first rises
+// in over at most twelve frames, each a one-frame entry of the scene's list before the settled
+// still; the first scene opens on its settled card, the cover. Frame 0 of an entrance is the
+// card before anything has moved, so it is never the still, and the last frame has moved.
+const timeline = JSON.parse(readFileSync(path.join(built.directory, 'timeline.json'), 'utf8'));
+const spans = sceneSpans(timeline);
+if (checks.motion[0].entrance !== 0) fail(`the first scene enters over ${checks.motion[0].entrance} frames; its first frame is the cover`);
+let entranceFrames = 0;
+for (const [index, span] of spans.entries()) {
+  if (index === 0) continue;
+  const entrance = checks.motion[index].entrance;
+  if (!(entrance >= 1 && entrance <= ENTRANCE_FRAMES)) fail(`scene ${index + 1} enters over ${entrance} frames, not 1–${ENTRANCE_FRAMES}`);
+  const first = String(span.cues[0].index).padStart(3, '0');
+  const still = sha256(readFileSync(path.join(built.directory, 'frames', `${first}.png`)));
+  const pictures = [];
+  for (let frame = 0; frame < entrance; frame++) {
+    const file = path.join(built.directory, 'frames', `${first}-e${String(frame).padStart(2, '0')}.png`);
+    if (!existsSync(file)) fail(`scene ${index + 1}: entrance frame ${path.basename(file)} is missing`);
+    pictures.push(sha256(readFileSync(file)));
+  }
+  if (pictures[0] === still) fail(`scene ${index + 1}: frame 0 of the entrance is the still`);
+  if (pictures[0] === pictures.at(-1)) fail(`scene ${index + 1}: the entrance does not move`);
+  const list = readFileSync(path.join(built.directory, 'build', `cards-${String(span.sceneIndex).padStart(3, '0')}.txt`), 'utf8');
+  if ((list.match(/^duration 0\.033333$/gm) ?? []).length !== entrance) fail(`scene ${index + 1}: the cards list does not hold ${entrance} one-frame entries`);
+  entranceFrames += entrance;
+}
+if (readdirSync(path.join(built.directory, 'frames')).filter((name) => /-e\d\d\.png$/.test(name)).length !== entranceFrames) fail('the entrance frames on disk are not the ones the receipt counts');
 if (!(checks.music && checks.music.track === 'bed.mp3' && checks.music.bed_lufs <= MAX_BED_LUFS)) fail(`the music bed: ${JSON.stringify(checks.music)}`);
 if (!(checks.sfx && checks.sfx.set === 'studio-a' && checks.sfx.events > 0)) fail(`the sound effects: ${JSON.stringify(checks.sfx)}`);
 const report = await runQa({ directory: built.directory, offline: true });
@@ -127,4 +154,4 @@ const items = Object.fromEntries(packaged.items.map((each) => [each.id, each.ok]
 if (!items.files || !items.descriptions || !items.captions || !items.disclosure) fail(`the package check: ${JSON.stringify(packaged.items)}`);
 const manifest = JSON.parse(readFileSync(path.join(built.directory, 'upload', 'manifest.json'), 'utf8'));
 if (manifest.status !== 'qa-failed') fail(`the manifest says ${manifest.status}, and the check did not pass`);
-process.stdout.write(`shorts smoke: ${built.seconds.toFixed(2)}s, ${checks.motion.length} moving scenes (one on a picture), ${checks.captions.groups} caption groups in ${checks.captions.states} states (${checks.captions.source}), bed ${checks.music.bed_lufs} LUFS, ${checks.sfx.events} effects, loop tail ${checks.grammar.loop_psnr} dB; ${report.items.filter((each) => each.ok).length} of ${report.items.length} items checked without the site, package complete\n  ${built.directory}\n`);
+process.stdout.write(`shorts smoke: ${built.seconds.toFixed(2)}s, ${checks.motion.length} moving scenes (one on a picture), ${entranceFrames} entrance frames, ${checks.captions.groups} caption groups in ${checks.captions.states} states (${checks.captions.source}), bed ${checks.music.bed_lufs} LUFS, ${checks.sfx.events} effects, loop tail ${checks.grammar.loop_psnr} dB; ${report.items.filter((each) => each.ok).length} of ${report.items.length} items checked without the site, package complete\n  ${built.directory}\n`);

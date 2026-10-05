@@ -38,7 +38,8 @@ Shorts 是 1080×1920、30 fps、25–55 秒（Shorts 設定的 `seconds_min`／
 
 - **開場**：第一句就是題目或反直覺的結果，2 秒內出現重點字卡；不問候、不自我介紹。開場那一句不能跟最近 30 支一樣（`variety`）。
 - **六拍**：hook（題目或結果，2 秒內）→ setup（規則或題目）→ turn（跟預期不一樣的那一刻、兩個答案並排）→ proof（數字照證據）→ payoff（結果與這次測試的限制）→ loop（最後一句接回開頭：再問一次題目或丟下一題）。每個場景寫 `beat`，撰稿提示（`prompts/shorts-lab.md`、`shorts-cut.md`）要求六拍齊全。
-- **第一格就是縮圖**：第一張字卡的 `headline` ≤ 14 字，或帶 `big`。成片最後 12 格會溶接回第一格（`build` 自己做，`MOTION_VERSION` v3），所以結尾不要寫「影片到這裡」這類話，讓 loop 那一句自然接回開頭。
+- **第一格就是縮圖**：第一張字卡的 `headline` ≤ 14 字，或帶 `big`。成片最後 12 格會溶接回第一格（`build` 自己做，`MOTION_VERSION` v4），所以結尾不要寫「影片到這裡」這類話，讓 loop 那一句自然接回開頭。
+- **字卡會升起淡入**：第二景起每一景的第一張字卡在溶接之下用最多 12 格升起淡入（標題、橫線、大數字、圖、每一列、註記依序，`layouts.mjs` 的 `ENTRANCE`），第一景不做——第 0 格就是縮圖與迴圈的終點。腳本不用寫任何東西，也關不掉；版面量的是定格，`layout` 的規則不變。進場的每一格存在成品的 `frames/NNN-eKK.png`，`checks.json.motion[].entrance` 寫實際的格數（第一景 0）。
 - **不寫呼籲**：訂閱、按讚、小鈴鐺、點連結、追蹤與英文對應（subscribe、hit like、ring the bell、link in bio、follow us）一律不寫，`grammar` 會擋；「訂閱制方案」「追蹤包裹」這種用法不算。精華要導回長片就寫「完整影片在說明欄」，不寫「點連結」。
 - **結尾導流**：實測線收在結果與限制，導到下一個問題或對應文章；精華與漫劇的說明欄第一行由 `package` 自動放「完整影片：」連結（Shorts 的「相關影片」只能在 Studio 設，API 寫不了）。
 - **長度不對就改稿**：旁白超出範圍時 `build` 直接失敗（`edit script to fit`），不會裁旁白；增刪句子，不要改語速。
@@ -49,7 +50,7 @@ Shorts 是 1080×1920、30 fps、25–55 秒（Shorts 設定的 `seconds_min`／
 | # | 指令 | 產出 | 過關 |
 | --- | --- | --- | --- |
 | 1 | `validate --file <腳本>` | — | 格式與證據雜湊都對 |
-| 2 | `build --file <腳本> --workdir <VIDEO_WORKDIR> --speech server [--captions karaoke]` | `<VIDEO_WORKDIR>/<slug>/<buildId>-<時間>/`：`script.json`、`evidence/`、`audio/000.wav…`、`timeline.json`、`timing.json`（卡拉 OK 時）、`captions/`（亮字層）、`checks.json`、`contact-sheet.png`、`upload/`（`final.mp4`、`zh-TW.srt`、`cover.png`、`titles.json`、`manifest.json`） | 每次都開一個新的成品目錄；後面的指令都用 `--dir` 指它 |
+| 2 | `build --file <腳本> --workdir <VIDEO_WORKDIR> --speech server [--captions karaoke]` | `<VIDEO_WORKDIR>/<slug>/<buildId>-<時間>/`：`script.json`、`evidence/`、`audio/000.wav…`、`timeline.json`、`timing.json`（卡拉 OK 時）、`frames/`（每句的字卡，第二景起每景第一張的進場格 `NNN-eKK.png`）、`captions/`（亮字層）、`checks.json`、`contact-sheet.png`、`upload/`（`final.mp4`、`zh-TW.srt`、`cover.png`、`titles.json`、`manifest.json`） | 每次都開一個新的成品目錄；後面的指令都用 `--dir` 指它 |
 | 3 | `check-audio --dir <成品>` | `check.json`（綁音檔與逐句原文） | 0 句被標；被標就 `build --file <腳本> --redo <成品> …`，只重錄被標的句子，在新目錄再跑一次 |
 | 4 | 查核：另一個代理在新對話對照證據，寫 `verify.json`；`qa --dir <成品> --verify <verify.json>` 會把它放進成品 | `verify.json`：`{ok, document_sha256, checked_by, claims: [{text, ok, note}], problems: []}`，`document_sha256` 是成品裡 `script.json` 的雜湊 | 每個數字與結論都有證據 |
 | 5 | `qa --dir <成品>` | `qa.json`（13 項，綁所有輸入的雜湊） | 全過；沒過照下一節修 |
@@ -156,6 +157,7 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 - **匯入的成片**：24 fps 的會被拒絕（要先轉 30 fps）；`layout` 一定要站主看；沒跑 `check-audio` 的 `narration` 一定不過；`grammar` 多半也不過——封面要等於第 0 格、最後一格要回到第一格、第一張字卡 ≤ 14 字，都是這個工具 `build` 時做的，別的工具做的成片沒做就交站主。
 - **卡拉 OK 字幕的亮字會偏**（Gemini 聲音；Azure 聲音的字時是伺服器量的，`timing.json` 的句子帶 `aligned`）：時間是估的，句子裡有長停頓或拉丁字（`spokenUnits` 把一個拉丁字算兩個單位）時亮得早或晚；工人做的 Shorts 在站上會自動核准，所以預設是 `plain`，站主看過一支 `--captions karaoke` 的樣片再在工人主機設 `VIDEO_SHORTS_CAPTIONS=karaoke`。每次 `build` 都是新目錄（`codeHash`、`MOTION_VERSION` 變了），舊成品要重跑 `check-audio` 與 `qa`；已核准的成片綁 `final_sha256`，不受影響。
 - **`from-drama` 的視窗一鏡只看一張圖**：主角在一個鏡頭裡走位，視窗不會跟；方框是 Gemini 答的，第一支先把 `checks.json.reframe.shots` 的方框對著關鍵影格看一次。成片是 608 px 寬的視窗放大 1.78 倍，畫質比原生 9:16 軟；長句（超過兩行 15 字）放不進字幕條，工具會停下來說是哪一句。locate 每鏡 US$0.01，記在站上 judge 的額度，`usage.json` 不報。
+- **進場是 `build` 自己畫的**：字卡頁在開著 JavaScript 的第二個 context 裡凍住動畫逐格 seek（長片 `render/browser.mjs` 的 `pauseAnimations`／`seekAnimations`；關掉 JavaScript 的頁面等不到 animation frame，seek 會卡住），證據 HTML 仍在關掉 JavaScript 的頁面畫。匯入的成片沒有進場；`import` 之外沒有旗標可以關。看起來像硬切時先看 `checks.json.motion[].entrance`（第一景永遠 0），再抽成片的格：`ffmpeg -i <成品>/upload/final.mp4 -vf "select='between(n\,<景的起始格>\,<起始格+14>)'" -fps_mode vfr /tmp/e-%02d.png`。
 - **工人讀不到 `docs/videos/ai-shorts`**：它的 docs volume 比 repo 舊，題目、規格與脈絡一律由 `shorts/next` 給；不要寫依賴那個資料夾的步驟。
 - **Jev 的每日次數**跟自動新聞、景點介紹共用；大批 `check-audio` 前先看「AI 供應商與金鑰」卡片。
 - **中文參數**：PowerShell 會弄壞命令列上的非 ASCII 字，腳本與 `meta.json` 一律寫檔再傳路徑。
