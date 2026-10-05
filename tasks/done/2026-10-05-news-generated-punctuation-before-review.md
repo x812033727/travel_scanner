@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-news-generated-punctuation-before-review
 title: Normalize generated CJK news punctuation before review
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-news-punctuation
 claimed_at: 2026-10-05T10:28:20Z
 created_at: 2026-10-05T10:28:18Z
-completed_at:
+completed_at: 2026-10-05T10:48:24Z
 branch: codex/news-video-stall-fixes-20261005
 depends_on: []
 scope:
@@ -83,3 +83,13 @@ uv run mypy app/news_automation/typography.py app/news_automation/schemas.py tes
 - API dependencies were installed with `uv sync --frozen` in this worktree's
   ignored `.venv`. These are offline model/network fixtures, not a live provider
   call, production publication, deployment, or owner content acceptance.
+- Independent review by `video_flow` completed. It confirmed that all four news
+  reply models retain byte-equivalent `model_json_schema()` results compared
+  with their pre-change schemas, while generated prose is normalized before
+  pipeline review fingerprints are recorded.
+- After integrating current main, the combined API check passed 166 tests with
+  1 skip. It included the 42 new typography cases, news pipeline compatibility,
+  producer-state and related backend coverage. The full repository suite is
+  still running under the parent task; this completed implementation task does
+  not claim that broader result. Production has not been deployed, and held
+  saved articles have not been retried or published by this task.
