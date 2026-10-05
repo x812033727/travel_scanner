@@ -73,7 +73,7 @@ curl -s -o /dev/null -w '%{http_code} %{time_total}s\n' https://mokaair.com/zh-T
 | 清掉建置快取後的冷建置 | 約 4.5 分鐘 |
 | 571 個內容包＋web＋api 一起 | 約 8 分鐘 |
 
-建置內容有變的服務會得到新的映像 ID 並重建（三個 profile 全開共十一個應用容器；內容沒變的服務沿用舊容器），中間約 8 秒 502；hotspot-collector 重啟的第一輪會重算當天排行、也會跑 guide backfill（吃 YouTube 與 Brave 額度），所以同一天多次部署要集中。
+建置內容有變的服務會得到新的映像 ID 並重建（三個 profile 全開的應用容器，2026-10-05 是十二個；內容沒變的服務沿用舊容器），中間約 8 秒 502；hotspot-collector 重啟的第一輪會重算當天排行、也會跑 guide backfill（吃 YouTube 與 Brave 額度），所以同一天多次部署要集中。
 
 ## 規則在哪裡（不重抄）
 
@@ -92,5 +92,5 @@ curl -s -o /dev/null -w '%{http_code} %{time_total}s\n' https://mokaair.com/zh-T
 - `.agents/skills/deploy/references/runbook.md`：腳本做了什麼、旗標、包裝腳本、讀 log、交給站主跑的一行指令長什麼樣、回滾。
 - `.agents/skills/deploy/references/post-deploy.md`：驗證清單、`host-verify.sh` 怎麼用與怎麼加這次專屬的檢查、大功能上線後的三個稽核問題、邊緣層的假陽性檢查。
 - `.agents/skills/deploy/references/pitfalls.md`：SSH、分類器、磁碟、腳本、nginx 的坑。
-- `.agents/skills/deploy/scripts/host-preflight.sh`、`.agents/skills/deploy/scripts/host-deploy.sh`、`.agents/skills/deploy/scripts/host-verify.sh`：在主機上跑的 bash，不含任何憑證；`host-verify.sh` 頂端的期待值怎麼填、怎麼加這次專屬的檢查，見 `post-deploy.md`。
+- `.agents/skills/deploy/scripts/host-preflight.sh`、`.agents/skills/deploy/scripts/host-deploy.sh`、`.agents/skills/deploy/scripts/host-verify.sh`：在主機上跑的 bash，不含任何憑證；`host-verify.sh` 只要填頂端的 `EXPECTED_SHA`（該 Up 的服務與 alembic head 都在主機上推出來），怎麼加這次專屬的檢查，見 `post-deploy.md`。
 - `.claude/skills/deploy/SKILL.md` 是這一份的逐字複本，`npm run test:tools` 會比對。

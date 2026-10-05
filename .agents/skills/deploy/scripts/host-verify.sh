@@ -8,13 +8,15 @@
 #   MSYS_NO_PATHCONV=1 <SSH> -m "$TMP/verify.sh"
 #
 # `plink -m` passes no positional arguments, so EXPECTED_SHA is filled in before sending ($1 also works
-# when a transport does pass arguments). ALEMBIC_HEAD and UP_COUNT are the values of 2026-10-03; update
-# them when a migration lands or a compose service is added, and the check will say so when they drift.
+# when a transport does pass arguments). It is the only value to fill in: the services that should be
+# Up come from the compose file at the live HEAD, and the alembic head from the api image itself, so a
+# new service or a new migration needs no edit here.
 #
-# Strictly read-only: git log/merge-base/status, a flock -n probe, docker inspect/logs, compose ps and
-# `exec -T` one-liners that only read files, curl to 127.0.0.1:8090/8091 and exactly two sequential
-# requests to https://mokaair.com (>= 1.2 s apart, the edge allows 5 r/s). No ps/who/last, no docker
-# images, nothing reads .env, nothing writes. The permission classifier has let this shape through.
+# Strictly read-only: git log/merge-base/status, a flock -n probe, docker inspect/logs, compose ps,
+# compose `config --services`/`--profiles` (names only, never a resolved value), awk over the compose
+# file, `exec -T` one-liners that only read files, curl to 127.0.0.1:8090/8091 and exactly two
+# sequential requests to https://mokaair.com (>= 1.2 s apart, the edge allows 5 r/s). No ps/who/last, no
+# docker images, nothing reads .env, nothing writes. The permission classifier has let this shape through.
 #
 # This file holds the checks every deploy needs. The deploy-specific ones ("is the NEW code running?")
 # go in the EXTRA CHECKS section near the end: read references/post-deploy.md for the three patterns
@@ -23,11 +25,11 @@
 set -u
 
 EXPECTED_SHA=""
-ALEMBIC_HEAD="0122_video_anime_production"
-UP_COUNT=13   # postgres, redis and the eleven app containers of docker-compose.prod.yml (all profiles)
 
 REPO=/root/travel_scanner
 COMPOSE="docker compose -f docker-compose.prod.yml"
+PROFILE_NAMES="hotspots news video"   # every profile the host runs
+PROFILES=""; for p in $PROFILE_NAMES; do PROFILES="$PROFILES --profile $p"; done
 PASS_N=0
 FAIL_N=0
 
@@ -118,12 +120,37 @@ echo "build-context cutoffs: api/worker $(date -u -d @"$api_ct" +%FT%TZ 2>/dev/n
 
 # ---------------------------------------------------------------- 3 containers-up-local-images-disk
 section containers-up-local-images-disk
-ps_out=$($COMPOSE --profile hotspots --profile news --profile video ps -a --format '{{.Name}} {{.Image}} {{.Status}}' 2>&1 | sort)
+# What should be Up is read from the compose file at the live HEAD, not written here: every service of
+# the profiles above except the one-shot ones (restart: "no", today only migrate), which should have
+# Exited (0). The running set is compared with it by name, so a drift says which service.
+services=$($COMPOSE $PROFILES config --services 2>/dev/null | tr -d '\r' | grep -E '^[A-Za-z0-9._-]+$' | sort)
+[ -n "$services" ] || echo "compose config --services printed nothing: the expected set is unknown"
+oneshot=$(awk '/^services:/ {s = 1; next} /^[^ #]/ {s = 0}
+  s && /^  [A-Za-z0-9._-]+:/ {svc = $1; sub(/:$/, "", svc)}
+  s && /^    restart: *.no.[[:space:]]*$/ {print svc}' docker-compose.prod.yml | sort)
+want_up=$(for s in $services; do echo "$oneshot" | grep -qxF "$s" || echo "$s"; done)
+want_n=$(echo "$want_up" | count .)
+unchecked=""
+for p in $($COMPOSE config --profiles 2>/dev/null | tr -d '\r'); do
+  case " $PROFILE_NAMES " in *" $p "*) ;; *) unchecked="$unchecked $p" ;; esac
+done
+[ -n "$unchecked" ] && echo "WARN compose profiles this script does not check:$unchecked"
+echo "expected Up ($want_n): $(echo $want_up)"
+echo "one-shot, expected Exited (0): $(echo $oneshot)"
+ps_out=$($COMPOSE $PROFILES ps -a --format '{{.Name}} {{.Service}} {{.Image}} {{.Status}}' 2>&1 | sort)
 echo "$ps_out"
 up_n=$(echo "$ps_out" | count ' Up')
+have_up=$(echo "$ps_out" | awk '/ Up/ {print $2}' | sort -u)
+missing=""; for s in $want_up; do echo "$have_up" | grep -qxF "$s" || missing="$missing,$s"; done
+extra=""; for s in $have_up; do echo "$want_up" | grep -qxF "$s" || extra="$extra,$s"; done
+missing=${missing#,}; extra=${extra#,}
 nonlocal=$(echo "$ps_out" | grep ' Up' | grep -vE ' (postgres|redis):' | grep -vc ':local ' || true)
 bad_state=$(echo "$ps_out" | grep -ciE 'restarting|unhealthy' || true)
-migrate_ok=$(echo "$ps_out" | count '^travel_scanner-migrate-1 .*Exited \(0\)')
+oneshot_n=0; oneshot_ok=0
+for s in $oneshot; do
+  oneshot_n=$((oneshot_n + 1))
+  [ "$(echo "$ps_out" | awk -v s="$s" '$2 == s && /Exited \(0\)/' | count .)" -eq 1 ] && oneshot_ok=$((oneshot_ok + 1))
+done
 echo '-- state --'
 not_running=0; restarts_bad=0; old_start=0
 for name in $(echo "$ps_out" | grep ' Up' | awk '{print $1}'); do
@@ -141,9 +168,10 @@ echo '-- disk --'
 df -h / /var/lib/containerd 2>/dev/null | sort -u
 disk_pct=$(df -P / /var/lib/containerd 2>/dev/null | awk 'NR>1 {v=$(NF-1); sub("%","",v); if (v+0>m) m=v+0} END{print m+0}')
 ok=0
-if [ "$up_n" -eq "$UP_COUNT" ] && [ "$nonlocal" -eq 0 ] && [ "$bad_state" -eq 0 ] && [ "$migrate_ok" -eq 1 ] \
-   && [ "$not_running" -eq 0 ] && [ "$restarts_bad" -eq 0 ] && [ "$old_start" -eq 0 ] && [ "$disk_pct" -lt 80 ]; then ok=1; fi
-verdict containers-up-local-images-disk "$ok" "up=$up_n/$UP_COUNT non_local_app_images=$nonlocal restarting_or_unhealthy=$bad_state migrate_exited0=$migrate_ok not_running=$not_running restarts_nonzero=$restarts_bad app_started_before_head=$old_start disk_use_pct=$disk_pct"
+if [ "$want_n" -ge 1 ] && [ "$up_n" -eq "$want_n" ] && [ -z "$missing" ] && [ -z "$extra" ] && [ "$nonlocal" -eq 0 ] \
+   && [ "$bad_state" -eq 0 ] && [ "$oneshot_ok" -eq "$oneshot_n" ] && [ "$not_running" -eq 0 ] && [ "$restarts_bad" -eq 0 ] \
+   && [ "$old_start" -eq 0 ] && [ "$disk_pct" -lt 80 ]; then ok=1; fi
+verdict containers-up-local-images-disk "$ok" "up=$up_n/$want_n missing_up=${missing:-none} extra_up=${extra:-none} non_local_app_images=$nonlocal restarting_or_unhealthy=$bad_state oneshot_exited0=$oneshot_ok/$oneshot_n not_running=$not_running restarts_nonzero=$restarts_bad app_started_before_head=$old_start disk_use_pct=$disk_pct"
 
 # ---------------------------------------------------------------- 4 containers-rebuilt-this-deploy
 section containers-rebuilt-this-deploy
@@ -167,13 +195,21 @@ verdict containers-rebuilt-this-deploy "$rb_ok" "rebuilt_after_context_commit=$r
 
 # ---------------------------------------------------------------- 5 alembic-head
 section alembic-head
+# The expected head is the api image's own: `alembic heads` reads the migration scripts baked into it,
+# so the database must stand on that single head. An image that missed a migration is a stale image,
+# and containers-rebuilt-this-deploy is the check that catches it.
+out=$($COMPOSE exec -T api alembic heads 2>&1)
+heads=$(echo "$out" | grep -E '^[0-9]{4,}_[^ ]* .*\(head\)' | tr -d '\r' || true)
+if [ -n "$heads" ]; then echo "heads: $heads"; else echo "no head line; raw output:"; echo "$out" | tail -5; fi
+head_n=$(echo "$heads" | count '^[0-9]{4,}_')
+alembic_head=$(echo "$heads" | head -1 | awk '{print $1}')
 out=$($COMPOSE exec -T api alembic current 2>&1)
-revs=$(echo "$out" | grep -E '^0[0-9]{3}_' || true)
-if [ -n "$revs" ]; then echo "$revs"; else echo "no revision line; raw output:"; echo "$out" | tail -5; fi
-rev_n=$(echo "$revs" | count '^0[0-9]{3}_')
+revs=$(echo "$out" | grep -E '^[0-9]{4,}_' | tr -d '\r' || true)
+if [ -n "$revs" ]; then echo "current: $revs"; else echo "no revision line; raw output:"; echo "$out" | tail -5; fi
+rev_n=$(echo "$revs" | count '^[0-9]{4,}_')
 ok=0
-if [ "$rev_n" -eq 1 ]; then case "$revs" in "$ALEMBIC_HEAD (head)"*) ok=1 ;; esac; fi
-verdict alembic-head "$ok" "revision_lines=$rev_n current=$(echo "$revs" | head -1 | tr -d '\r') expected=$ALEMBIC_HEAD"
+if [ "$head_n" -eq 1 ] && [ "$rev_n" -eq 1 ]; then case "$revs" in "$alembic_head (head)"*) ok=1 ;; esac; fi
+verdict alembic-head "$ok" "heads=$head_n revision_lines=$rev_n current=$(echo "$revs" | head -1) expected=${alembic_head:-unknown}"
 
 # ---------------------------------------------------------------- 6 api-health-ready-200
 section api-health-ready-200
@@ -241,12 +277,22 @@ wlog=$(docker logs --tail 30 travel_scanner-video-worker-1 2>&1 | grep -v '^[[:s
 echo "$wlog" | tail -8
 # The first Shorts knock right after a restart fails while api is still starting: expected, once.
 knock=$(echo "$wlog" | count 'the knock failed')
-exited=$(echo "$wlog" | count 'auto exited with')
 unpaired=$(echo "$wlog" | count 'not paired yet')
-echo "knock_failed=$knock (1 right after start is expected) auto_exited=$exited not_paired=$unpaired"
+# With AI drama switched off in the admin video settings, every round ends on a pending drama job: the
+# API refuses it with the "AI drama is disabled" message (video_ai_drama_disabled) and `auto` exits 4.
+# That is the owner's switch, not a fault, so an exit 4 whose last line before it (the Shorts knock's
+# lines aside) carries that message is counted apart. drama_off is the message's "drama ... disabled"
+# part as UTF-8 bytes in octal, so the transport cannot mangle it.
+drama_off=$(printf '\346\274\253\345\212\207\345\267\262\345\201\234\347\224\250')
+read -r exited drama_exits <<< "$(echo "$wlog" | awk -v off="$drama_off" '
+  /auto exited with / {if ($NF == 4 && index(prev, off)) d++; else n++; next}
+  /^video-worker: shorts: / {next}
+  {prev = $0}
+  END {print n + 0, d + 0}')"
+echo "knock_failed=$knock (1 right after start is expected) auto_exited=$exited (exit 4 after the AI-drama-off answer, not counted: $drama_exits) not_paired=$unpaired"
 ok=0
 if [ "$st" = running ] && [ "${rc:-1}" = 0 ] && [ "$w_started_ok" -eq 1 ] && [ "$knock" -le 1 ] && [ "$exited" -eq 0 ] && [ "$unpaired" -eq 0 ]; then ok=1; fi
-verdict video-worker-started "$ok" "state=${st:-none} restarts=${rc:-?} started_after_head=$w_started_ok knock_failed=$knock auto_exited=$exited not_paired=$unpaired"
+verdict video-worker-started "$ok" "state=${st:-none} restarts=${rc:-?} started_after_head=$w_started_ok knock_failed=$knock auto_exited=$exited auto_exit4_drama_off=$drama_exits not_paired=$unpaired"
 
 # ---------------------------------------------------------------- EXTRA CHECKS: this deploy's new code
 # Add one section per thing the diff changed, each proving a string or behaviour that exists only
