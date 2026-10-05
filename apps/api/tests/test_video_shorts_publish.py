@@ -14,8 +14,9 @@ import copy
 import hashlib
 import io
 import json
+import os
 import zipfile
-from collections.abc import AsyncIterator, Awaitable, Callable
+from collections.abc import AsyncIterator, Awaitable, Callable, Sequence
 from contextlib import asynccontextmanager
 from dataclasses import dataclass, field
 from datetime import UTC, datetime, timedelta
@@ -32,11 +33,11 @@ import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
 from redis.exceptions import ConnectionError as RedisConnectionError
-from sqlalchemy import event, select
+from sqlalchemy import event, select, text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.auth.service import current_user
-from app.config import Settings
+from app.config import Settings, get_settings
 from app.db import Base, get_session
 from app.models import (
     AdminAuditLog,
@@ -226,11 +227,23 @@ class ShortsSite(Site):
 
 @asynccontextmanager
 async def open_shorts_site(
-    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, database: str = "sqlite"
 ) -> AsyncIterator[ShortsSite]:
     """The database with the Shorts' tables, the fake YouTube and the patched site;
-    test_video_shorts_stats.py shares it."""
-    engine = create_async_engine("sqlite+aiosqlite://")
+    test_video_shorts_stats.py shares it. ``postgresql`` is a schema of its own in the
+    database CI runs the integration tests against, for what SQLite cannot show: row locks
+    and a second connection that commits while the first one waits."""
+    schema = f"shorts_site_{uuid4().hex}"
+    administrator = None
+    if database == "postgresql":
+        administrator = create_async_engine(get_settings().database_url)
+        async with administrator.begin() as db:
+            await db.execute(text(f'CREATE SCHEMA "{schema}"'))
+        engine = create_async_engine(
+            get_settings().database_url, connect_args={"server_settings": {"search_path": schema}}
+        )
+    else:
+        engine = create_async_engine("sqlite+aiosqlite://")
 
     # SQLite drops timezone offsets; PostgreSQL hands back aware datetimes.
     def restore_utc(target: Any, _context: Any, *_more: Any) -> None:
@@ -242,39 +255,57 @@ async def open_shorts_site(
     for model in MODELS:
         event.listen(model, "load", restore_utc)
         event.listen(model, "refresh", restore_utc)
-    async with engine.begin() as db:
-        await db.run_sync(
-            lambda sync_db: Base.metadata.create_all(
-                sync_db, tables=[model.__table__ for model in MODELS]
+    try:
+        async with engine.begin() as db:
+            await db.run_sync(
+                lambda sync_db: Base.metadata.create_all(
+                    sync_db, tables=[model.__table__ for model in MODELS]
+                )
             )
-        )
-    factory = async_sessionmaker(engine, expire_on_commit=False)
-    google = ShortsGoogle()
-    settings = Settings(next_public_site_url=SITE, video_review_dir=str(tmp_path / "reviews"))
-    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
-    monkeypatch.setattr(connection, "get_redis", lambda: redis)
-    monkeypatch.setattr(connection, "http_client", google.client_factory())
-    for module in (connection, sync, knock, admin_publish_api):
-        monkeypatch.setattr(module, "load_runtime_settings", AsyncMock(return_value=settings))
-    # A run is awaited by the test that wants it; nothing is left running behind a test.
-    launched: list[str] = []
-    monkeypatch.setattr(sync, "launch", launched.append)
-    monkeypatch.setattr(sync, "BACKOFF_SECONDS", (0.0, 0.0))
-    owner = User(id=uuid4(), email="owner@example.test", password_hash="unused", auth_version=1)
-    owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
-    async with factory() as session:
-        session.add(User(id=owner.id, email=owner.email, password_hash="unused"))
-        await session.commit()
-    yield ShortsSite(factory, google, settings, owner, redis, review_store(settings), launched)
-    for model in MODELS:
-        event.remove(model, "load", restore_utc)
-        event.remove(model, "refresh", restore_utc)
-    await engine.dispose()
+        factory = async_sessionmaker(engine, expire_on_commit=False)
+        google = ShortsGoogle()
+        settings = Settings(next_public_site_url=SITE, video_review_dir=str(tmp_path / "reviews"))
+        redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+        monkeypatch.setattr(connection, "get_redis", lambda: redis)
+        monkeypatch.setattr(connection, "http_client", google.client_factory())
+        for module in (connection, sync, knock, admin_publish_api):
+            monkeypatch.setattr(module, "load_runtime_settings", AsyncMock(return_value=settings))
+        # A run is awaited by the test that wants it; nothing is left running behind a test.
+        launched: list[str] = []
+        monkeypatch.setattr(sync, "launch", launched.append)
+        monkeypatch.setattr(sync, "BACKOFF_SECONDS", (0.0, 0.0))
+        owner = User(id=uuid4(), email="owner@example.test", password_hash="unused", auth_version=1)
+        owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
+        async with factory() as session:
+            session.add(User(id=owner.id, email=owner.email, password_hash="unused"))
+            await session.commit()
+        yield ShortsSite(factory, google, settings, owner, redis, review_store(settings), launched)
+    finally:
+        for model in MODELS:
+            event.remove(model, "load", restore_utc)
+            event.remove(model, "refresh", restore_utc)
+        await engine.dispose()
+        if administrator is not None:
+            async with administrator.begin() as db:
+                await db.execute(text(f'DROP SCHEMA "{schema}" CASCADE'))
+            await administrator.dispose()
 
 
 @pytest.fixture
 async def site(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> AsyncIterator[ShortsSite]:
     async with open_shorts_site(monkeypatch, tmp_path) as value:
+        yield value
+
+
+@pytest.fixture(
+    params=["sqlite"] + (["postgresql"] if os.getenv("RUN_INTEGRATION_TESTS") == "1" else [])
+)
+async def shared_site(
+    request: pytest.FixtureRequest, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> AsyncIterator[ShortsSite]:
+    """The site on SQLite and, where CI runs the integration tests, on PostgreSQL too: for a
+    test in which another session writes while the one under test holds its transaction."""
+    async with open_shorts_site(monkeypatch, tmp_path, request.param) as value:
         yield value
 
 
@@ -692,6 +723,31 @@ async def test_a_vertical_drama_short_goes_out_as_entertainment_and_discloses_it
     (sent,) = site.google.updates
     assert sent["snippet"]["categoryId"] == "24"
     assert sent["status"]["containsSyntheticMedia"] is True
+
+
+async def test_a_short_dropped_while_the_sender_runs_is_not_sent(
+    shared_site: ShortsSite, now: datetime, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The sender reads every due Short before its loop and holds them through it. A Short
+    the owner drops in that time is caught where the request locks the project, which reads
+    it again rather than keeping the values the sender's copy has."""
+    site = shared_site
+    slot_id = await ready(site, now)
+    places = publish._places
+
+    async def meanwhile(
+        session: AsyncSession, slots: Sequence[VideoShortsSlot], timezone: str
+    ) -> dict[UUID, int]:
+        found = await places(session, slots, timezone)
+        await change(site, "receipt", dropped_at=now)
+        return found
+
+    monkeypatch.setattr(publish, "_places", meanwhile)
+
+    assert await send(site, now) == publish.Sent(held=1)
+    assert (await slot_of(site, slot_id)).note == "站主已經放棄這支影片"
+    assert site.launched == []
+    assert (await project_of(site)).youtube_sync is None
 
 
 async def no_upload(site: ShortsSite, _now: datetime) -> None:
@@ -1418,6 +1474,49 @@ async def test_i_uploaded_them_gives_the_waiting_shorts_their_videos(
     again = await claimed(site, now)
     assert again.claimed == 0
     assert [item.slug for item in again.items] == ["missing", "public", "long"]
+
+
+async def test_a_video_given_while_the_claim_asks_youtube_is_kept(
+    shared_site: ShortsSite, now: datetime, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The claim reads what waits, asks YouTube for seconds, and only then locks each project.
+    A Studio sync or a review that gives the Short its video in those seconds must win: the
+    locked re-read sees that video and leaves it.
+
+    The claim's session has loaded the project before the wait. SQLAlchemy 2.1.0 to 2.1.3 keep
+    what a session iterated alive until the garbage collector runs (sqlalchemy#13639), and a
+    re-read keeps the values an object already has unless it is told to populate them again.
+    The test holds the loaded project itself, so the outcome depends neither on when the
+    collector runs nor on the version."""
+    site = shared_site
+    await site.link()
+    await short(site, "receipt")
+    await slot(site, now + 20 * HOURS, "receipt", "locked")
+    site.youtube.uploads = [VIDEO]
+    site.google.videos[VIDEO] = upload(VIDEO, claim.file_name("receipt"))
+    reads_waiting = claim.waiting_uploads
+    held: list[VideoProject] = []
+
+    async def meanwhile(
+        session: AsyncSession, row: VideoShortsSettings, moment: datetime | None = None
+    ) -> list[claim.Waiting]:
+        waiting = await reads_waiting(session, row, moment)
+        held.extend(
+            (
+                await session.scalars(select(VideoProject).where(VideoProject.slug == "receipt"))
+            ).all()
+        )
+        await change(site, "receipt", youtube_video_id="StudioVid01")
+        return waiting
+
+    monkeypatch.setattr(claim, "waiting_uploads", meanwhile)
+
+    answer = await claimed(site, now)
+
+    assert len(held) == 1
+    assert answer.claimed == 0
+    assert (await project_of(site)).youtube_video_id == "StudioVid01"
+    assert await audits(site, "video_shorts_upload_claimed") == []
 
 
 async def test_a_claimed_short_is_sent_on_the_next_knock(site: ShortsSite, now: datetime) -> None:
