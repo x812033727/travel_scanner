@@ -1802,9 +1802,10 @@ const rewordAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id:
 /**
  * A tutorial taken to the confirmed upload without the owner, the way the end-to-end test does,
  * with the dub and its check played by `fakeDub`; the languages then wait for the owner's
- * choice on /admin/videos (docs/videos/LANGUAGES.md), which `choose` makes.
+ * choice on /admin/videos (docs/videos/LANGUAGES.md), which `choose` makes. `confirmed: false`
+ * stops it one step before: the publish review waits on the owner, and the video is still active.
  */
-async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet, renderer = null } = {}) {
+async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet, renderer = null, confirmed = true } = {}) {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
   const passes = { shorten, reword };
@@ -1868,8 +1869,12 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
   };
   const automation = new Automation(ctx, automationClient(ctx), site.settings);
   automation.refs = smallRefs;
-  const expected = [/Jev picked outline B/, /Jev chose outline B/, /script drafted/, /fact-check round 1/, /listener edit/, /narration synthesized/, /narration checked/, /frames rendered/, /video assembled/, /captions written/, /final sent/, /the final is approved/, /upload package written/, /publish confirmation sent/, /the upload is confirmed/];
-  for (const line of expected) assert.match(await automation.step(), line);
+  const expected = [/Jev picked outline B/, /Jev chose outline B/, /script drafted/, /fact-check round 1/, /listener edit/, /narration synthesized/, /narration checked/, /frames rendered/, /video assembled/, /captions written/, /final sent/, /the final is approved/, /upload package written/, /publish confirmation sent/, ...(confirmed ? [/the upload is confirmed/] : [])];
+  for (const line of expected) {
+    // Unconfirmed, the publish review waits on the owner and the video stays active, before its upload.
+    if (!confirmed && line.source === "publish confirmation sent") site.settings.auto_approve_final = false;
+    assert.match(await automation.step(), line);
+  }
   assert.equal(await automation.step(), null, "the languages wait for the owner's choice");
   return {
     box, site, automation, ctx, out, workdir, docFile, runs, slug, captures,
@@ -1937,11 +1942,13 @@ test("a language chosen for its title and description alone is translated withou
   assert.equal(video.onSite().ready_to_upload, true);
 });
 
-test("a choice narrowed after its package was written writes the package again once, without the parts it no longer has; a package that matches the choice is left alone", async () => {
-  const video = await finishedVideo();
+test("a choice narrowed before the upload, after its package was written, writes the package again once, without the parts it no longer has, and the exact package goes up for the confirmation; a package that matches the choice is left alone", async () => {
+  const video = await finishedVideo({ confirmed: false });
   video.choose({ en: { metadata: true, captions: false, dub: false } });
   assert.match(await video.step(), /^chatgpt-ads-off: en metadata translated and reviewed$/);
   assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en metadata\)$/);
+  // The batch wrote the package again, so the confirmation is asked for the new one.
+  assert.match(await video.step(), /^chatgpt-ads-off: publish confirmation sent to \/admin\/videos$/);
   let ran = video.runs.length;
   assert.equal(await video.step(), null, "the package was written for this choice");
   assert.equal(video.runs.length, ran, "nothing is written again");
@@ -1955,13 +1962,65 @@ test("a choice narrowed after its package was written writes the package again o
   assert.deepEqual([metadata.language_choice, metadata.localizations], [{}, {}]);
   assert.ok(!existsSync(video.upload("description.en.txt")), "the part no longer chosen is gone");
   assert.equal(video.reviews("languages").length, 1, "no batch is sent for it");
-  assert.notEqual(video.state().status, "blocked", video.state().blocked);
+  assert.equal(video.state().status, "active", video.state().blocked);
+
+  // The confirmation the owner has not given yet is asked for the exact package.
+  assert.match(await video.step(), /^chatgpt-ads-off: publish confirmation sent to \/admin\/videos$/);
+  const [publish] = video.reviews("publish");
+  assert.equal(publish.content_sha256, sha(video.upload("metadata.json")));
+  assert.equal(publish.payload.package.ok, true, JSON.stringify(publish.payload.package.items));
 
   ran = video.runs.length;
   const written = readFileSync(video.upload("metadata.json"));
   assert.equal(await video.step(), null, "the package now records this choice: nothing to do");
   assert.equal(video.runs.length, ran, "no package every round");
   assert.ok(readFileSync(video.upload("metadata.json")).equals(written), "metadata.json keeps its hash");
+});
+
+test("a choice narrowed after the upload confirmation leaves the package as it went up: no captions or package runs and the video stays done, round after round, on YouTube too", async () => {
+  const video = await finishedVideo();
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en metadata translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en metadata\)$/);
+  assert.equal(await video.step(), null);
+  assert.equal(video.state().status, "done");
+  const written = readFileSync(video.upload("metadata.json"));
+  const ran = video.runs.length;
+
+  // A package written again now would go nowhere, and one that can no longer be written (the
+  // final's checks older than the script) would block a published video every round.
+  video.choose({});
+  assert.equal(await video.step(), null, "confirmed, not yet on YouTube");
+  video.listed().youtube_video_id = "dQw4w9WgXcQ";
+  assert.match(await video.step(), /^chatgpt-ads-off: on YouTube as dQw4w9WgXcQ/);
+  assert.equal(await video.step(), null, "on YouTube");
+  assert.equal(await video.step(), null, "and the round after");
+  assert.equal(video.runs.length, ran, "no captions or package");
+  assert.equal(video.state().status, "done");
+  assert.ok(readFileSync(video.upload("metadata.json")).equals(written), "the package keeps the choice it went up with");
+  assert.equal(video.reviews("languages").length, 1);
+});
+
+test("an upload metadata.json whose fields have the wrong types leaves the re-package check unknown: the round goes on and writes nothing, and the same file with the right types is written again", async () => {
+  const video = await finishedVideo({ confirmed: false });
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /en metadata translated and reviewed$/);
+  assert.match(await video.step(), /language batch sent/);
+  assert.match(await video.step(), /publish confirmation sent/);
+  // Narrowed, so a readable package holding en would be written again; this one's caption list
+  // is a number, which the package check cannot read.
+  video.choose({});
+  const readable = readFileSync(video.upload("metadata.json"));
+  atomicWrite(video.upload("metadata.json"), JSON.stringify({ ...JSON.parse(readable), captions: 5 }));
+  // Its publish review waits on the owner too, so the round comes to the languages.
+  video.site.reviewsOf(video.slug).unshift({ id: "r-typed", gate: "publish", status: "pending", content_sha256: sha(video.upload("metadata.json")), payload: {}, files: [] });
+  const ran = video.runs.length;
+  assert.equal(await video.step(), null, "unknown is not stale, and nothing throws");
+  assert.equal(video.runs.length, ran, "no captions or package");
+  assert.equal(video.state().status, "active", video.state().blocked);
+
+  writeFileSync(video.upload("metadata.json"), readable);
+  assert.equal(await video.step(), "chatgpt-ads-off: upload package written again for the current language choice");
 });
 
 /** filledSheet plus the thumbnail's words: each source word with the locale in front, its ** and line breaks kept. */

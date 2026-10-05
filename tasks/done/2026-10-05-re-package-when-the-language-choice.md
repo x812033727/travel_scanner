@@ -39,6 +39,7 @@ re-package nobody runs.
 - [x] When the current choice differs from the upload package's `language_choice` (or the package holds parts the choice no longer has) and nothing is pending, the worker runs `captions` and `package` again once, so the next publish push carries an exact package.
 - [x] A choice that matches the package does not trigger a re-package (no loop, no new metadata hash every round).
 - [x] A tidied video (final.mp4 gone) is left to `tidiedLanguages` as today.
+- [x] A video past its upload confirmation (status `done`, or on YouTube) is never re-packaged for a changed choice, so a package that can no longer be written never blocks a published video (review fix, 2026-10-06).
 
 ## Steps
 
@@ -68,7 +69,9 @@ DURATION_ONLY increment; do not edit review.json yourself.
   language choice", "the language choice does not have"). `readPackageReport` was not used
   because it hashes final.mp4 every round for every finished video. False without metadata.json
   (the package is written later, with the choice), without a choice, or with a metadata.json that
-  cannot be parsed (the package check reports that itself; this new read must not crash `auto`).
+  cannot be parsed or whose fields have the wrong types (a `captions` that is a number makes
+  `checkPackage()` throw a TypeError): the whole read is in one try, and an unknown answer is
+  "not stale", so this new read never crashes `auto`.
 - In `languages()` both "nothing pending" returns (the zh-TW one and `!channel`) now fall through
   to the existing only-zh-TW branch when the package is stale: thumbnails, `captions`, `package`,
   a block on a failing exit, and the line "upload package written again for the current language
@@ -83,5 +86,25 @@ DURATION_ONLY increment; do not edit review.json yourself.
 - A legacy package (written before the owner decided, `language_choice: null`) that holds only
   zh-TW passes the strict check for 只出繁體中文 and is left alone, so the existing "byte for
   byte as before" test is unchanged; one that holds a translated locale is written again.
-- Test: "a choice narrowed after its package was written writes the package again once, …".
-  Forcing the re-package off turns it red.
+- Only before the upload confirmation (review fix, 2026-10-06). The first version also ran for
+  videos whose status is `done`; a narrowed choice on a published video then ran `captions` and
+  `package` on its own after deploy, and where the package could no longer be written (final.mp4's
+  checks older than the script, after the speech hash moved) `package` failed and blocked the done
+  video, which the owner's retry returned to done and the next round blocked again. Past the
+  confirmation the package already went up with the publish review and nothing pushes the publish
+  gate again, so `languages()` now asks `packageChoiceStale()` only when `pastUpload(state)` is
+  false. `pastUpload` is the notion `restyle` already used (`state.youtube_video_id` or status
+  `done`, which the approved publish review sets), now one helper both read. A stale package on
+  such a video is left as it went up, without a log line (it would repeat every round).
+- Tests: "a choice narrowed before the upload, …" (`finishedVideo({ confirmed: false })` keeps
+  the publish review pending, so the video is still active: it re-packages once, the publish gate
+  goes up with the exact package, then the round returns null with no command run); "a choice
+  narrowed after the upload confirmation …" (status done, then on YouTube: null every round, no
+  command, still done, metadata.json byte for byte); "an upload metadata.json whose fields have
+  the wrong types …" (`captions: 5`: null, no command, still active; the same file with the right
+  types is written again). Dropping the `pastUpload` guard turns the second red; catching only
+  `SyntaxError` turns the third red with the TypeError.
+- Not fixed here: `readPackageReport()` in `tools/video/package/check.mjs` throws the same
+  TypeError on such a metadata.json, and `auto` runs `review-push` in process. Only a hand-edited
+  metadata.json can be like that (`package` writes a list); filed as
+  `2026-10-05-the-upload-package-check-throws-on` (P3, scope `check.mjs` and its test).

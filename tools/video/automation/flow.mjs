@@ -478,25 +478,32 @@ const CHOICE_PROBLEM = /written for another language choice|the language choice 
  * written for another choice, or holding a description, caption file, dub track or language
  * thumbnail of a locale the choice does not have, which the package check fails with "run
  * package again". Read the way that check reads it but without hashing final.mp4, so it costs
- * little to ask every round. False without a package (it is written later, with the choice),
- * without a choice, or with a metadata.json that cannot be read, which the package check reports
- * on its own.
+ * little to ask every round. False without a package (it is written later, with the choice) or
+ * without a choice. A metadata.json that cannot be parsed, or whose fields are not of the types
+ * package writes (a caption list that is a number, say), leaves the answer unknown: false too,
+ * so the language round goes on instead of ending `auto` in an exception.
  */
 function packageChoiceStale(workdir) {
   const upload = path.join(workdir, UPLOAD_DIR);
-  let metadata;
   try {
-    metadata = readJson(path.join(upload, METADATA_FILE), null);
+    const metadata = readJson(path.join(upload, METADATA_FILE), null);
+    if (!metadata || typeof metadata !== "object" || Array.isArray(metadata)) return false;
+    const { languages, locales, descriptionLocales } = packageLocalesWanted(workdir, metadata);
+    if (!languages) return false;
+    // Only the choice's problems are read, so the final's hashes are left out.
+    const report = checkPackage({ files: listFiles(upload), metadata, finalSha256: null, approvedSha256: null, metadataSha256: null, locales, descriptionLocales, languages });
+    return report.items.some((item) => !item.ok && CHOICE_PROBLEM.test(item.detail));
   } catch {
     return false;
   }
-  if (!metadata || typeof metadata !== "object") return false;
-  const { languages, locales, descriptionLocales } = packageLocalesWanted(workdir, metadata);
-  if (!languages) return false;
-  // Only the choice's problems are read, so the final's hashes are left out.
-  const report = checkPackage({ files: listFiles(upload), metadata, finalSha256: null, approvedSha256: null, metadataSha256: null, locales, descriptionLocales, languages });
-  return report.items.some((item) => !item.ok && CHOICE_PROBLEM.test(item.detail));
 }
+
+/**
+ * Whether the video is past its upload confirmation: the publish review approved (status done)
+ * or the owner's YouTube id recorded. Its package went up with that review, and nothing writes or
+ * pushes the publish gate again.
+ */
+const pastUpload = (state) => Boolean(state.youtube_video_id) || state.status === "done";
 
 /**
  * What the script records for the site: the YouTube id, or null (a report without it would clear
@@ -1953,7 +1960,7 @@ export class Automation {
     const state = automatedVideos(this.workBase).find((each) => each.slug === slug);
     if (!state) throw new UsageError(`${slug} was not started by the worker (no ${STATE_FILE} in its work directory); restyle works on the worker's videos`);
     if (state.format === "drama") throw new UsageError(`${slug} is a drama: its narration is the screenplay's, the register is for slides videos`);
-    if (state.youtube_video_id || state.status === "done") throw new UsageError(`${slug} is already on YouTube; a restyle would make a different video`);
+    if (pastUpload(state)) throw new UsageError(`${slug} is already on YouTube; a restyle would make a different video`);
     const dir = docDir(slug, this.ctx.root);
     const file = path.join(dir, "video.json");
     if (!existsSync(file)) throw new UsageError(`${slug} has no video.json yet; restyle retells a written script`);
@@ -2249,9 +2256,12 @@ export class Automation {
     const zhNarrated = narrationLocale(readJson(path.join(dir, "video.json"), null)) === NARRATION_LOCALE;
     // Nothing to make, but the owner changed the choice after the package was written (narrowed
     // it, or chose 只出繁體中文 for a package from before the panel): the package check would fail
-    // it, so it is written again once; the package it writes records this choice, and the next
-    // round finds nothing to do.
-    const repackage = !pending.length && packageChoiceStale(workdir);
+    // it at the publish push, so it is written again once; the package it writes records this
+    // choice, and the next round finds nothing to do. Only before the upload confirmation: past
+    // it (pastUpload) the package already went up and no publish push reads it again, and one
+    // that can no longer be written (final.mp4's checks older than the script) would block a
+    // published video every round. That package is left as it is.
+    const repackage = !pending.length && !pastUpload(state) && packageChoiceStale(workdir);
     if (!pending.length && zhNarrated && !repackage) return null;
     const project = loadProject({ slug, root: ctx.root });
     const doc = project.doc;
