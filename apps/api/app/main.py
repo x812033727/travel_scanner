@@ -90,6 +90,7 @@ from app.video_media.admin_api import media_router as video_media_router
 from app.video_plans.router import router as admin_video_plans_router
 from app.video_reviews.admin_api import admin_router as admin_video_reviews_router
 from app.video_reviews.admin_api import tool_router as video_reviews_router
+from app.video_reviews.public_api import public_router as videos_public_router
 from app.video_shorts.admin_api import admin_router as admin_video_shorts_router
 from app.video_shorts.admin_api import tool_router as video_shorts_router
 from app.video_shorts.admin_automation_api import admin_router as admin_video_shorts_jobs_router
@@ -164,6 +165,7 @@ app.include_router(admin_news_router, prefix="/api/v1")
 app.include_router(news_assets_router, prefix="/api/v1")
 app.include_router(admin_site_pages_router, prefix="/api/v1")
 app.include_router(site_pages_public_router, prefix="/api/v1")
+app.include_router(videos_public_router, prefix="/api/v1")
 app.include_router(ads_router, prefix="/api/v1")
 app.include_router(affiliates_router, prefix="/api/v1")
 app.include_router(usage_router, prefix="/api/v1")

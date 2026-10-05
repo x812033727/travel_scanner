@@ -409,6 +409,18 @@ const server = createServer((request, response) => {
     response.end(JSON.stringify({ items: [] }));
     return;
   }
+  // The public video library: one synthetic long video and one Short, linked to no article.
+  if (request.method === "GET" && requestUrl.pathname === "/api/v1/videos") {
+    const all = [
+      { slug: "fixture-long", title: "Synthetic tutorial video", youtube_video_id: "aaaaaaaaaaa", category: "tutorial", kind: "long", source_guide: null, source_guide_kind: null, published_at: fixtureNow },
+      { slug: "fixture-short", title: "Synthetic Short", youtube_video_id: "bbbbbbbbbbb", category: "explainer", kind: "shorts", source_guide: null, source_guide_kind: null, published_at: fixtureNow },
+    ];
+    const kind = requestUrl.searchParams.get("kind");
+    const guide = requestUrl.searchParams.get("guide");
+    const videos = guide ? [] : all.filter((item) => !kind || item.kind === kind);
+    response.end(JSON.stringify({ videos, next_cursor: null, categories: ["tutorial", "explainer"] }));
+    return;
+  }
   // Clearly synthetic SSR fixtures: never a production policy or owner identity.
   if (request.method === "GET" && requestUrl.pathname.startsWith("/api/v1/site-pages/")) {
     const slug = requestUrl.pathname.split("/").at(-1);

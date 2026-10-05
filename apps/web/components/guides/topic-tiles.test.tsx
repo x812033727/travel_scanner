@@ -18,7 +18,7 @@ describe("topic tiles", () => {
   it("draws a tile per top-level topic with something under it, linking to its hub, with its lead and no figure", () => {
     const { container } = render(<TopicTiles section="life" topics={topics} labels={labels} />);
     expect(screen.getByRole("heading", { level: 2 }).textContent).toBe("依主題瀏覽");
-    expect(screen.getByRole("link", { name: "AI 工具" }).getAttribute("href")).toBe("/life/topics/ai");
+    expect(screen.getByRole("link", { name: "AI 工具" }).getAttribute("href")).toBe("/ai");
     expect(screen.getByText("AI 的一切。")).toBeTruthy();
     // The count decides which tiles draw (below); it is never printed on one.
     expect(container.textContent).not.toMatch(/\d/);
