@@ -7,7 +7,7 @@ import test from "node:test";
 import { tempDir } from "../core/fixtures/load.mjs";
 import { cached, forget, forgetJob, mediaKey, pendingJob, readCache, remember, rememberJob } from "./cache.mjs";
 import { MediaError, PART_BYTES, RETAKE_CODES, downloadFile, judge, mediaStatus, putFile, runJob, submitClip, submitImage, waitForJob } from "./client.mjs";
-import { STAGES, run, statusText } from "./cli.mjs";
+import { STAGES, exitFor, run, statusText } from "./cli.mjs";
 import { appendLedger, capProblem, ledgerTotals, readLedger } from "./ledger.mjs";
 import {
   THRESHOLDS,
@@ -68,6 +68,40 @@ test("calls carry the token, and failures say who can fix them", async () => {
     (error) => error.who === "tool" && error.code === "video_media_reference_missing",
   );
   assert.ok(RETAKE_CODES.has("video_media_rejected") && !RETAKE_CODES.has("video_media_budget_exhausted"));
+});
+
+test("exhausted media requests require a source change instead of another service retry", async () => {
+  const detail = "這個請求已經失敗 3 次；改提示詞或 seed 再試";
+  const waits = [];
+  const fake = site({
+    "POST images": () => json({ code: "video_media_job_exhausted", detail }, 409),
+    "POST clips": () => json({ code: "video_media_job_exhausted", detail }, 409),
+  });
+  const EXIT = { owner: 3, external: 4, usage: 2 };
+  for (const submit of [submitImage, submitClip]) {
+    await assert.rejects(
+      submit({ request: { slug: "held", prompt: "unchanged", seed: 1 }, ...fake.options, attempts: 5, sleep: async (ms) => waits.push(ms) }),
+      (error) => {
+        assert.ok(error instanceof MediaError);
+        assert.equal(error.code, "video_media_job_exhausted");
+        assert.equal(error.status, 409);
+        assert.equal(error.message, detail);
+        assert.equal(error.who, "owner");
+        assert.equal(exitFor(error, EXIT), EXIT.owner, "Automation blocks only this video on exit 3");
+        return true;
+      },
+    );
+  }
+  assert.equal(fake.calls.length, 2, "each refused operation is submitted only once");
+  assert.deepEqual(waits, []);
+  assert.ok(!RETAKE_CODES.has("video_media_job_exhausted"), "no identical or blind seed retake after exhaustion");
+
+  const other = site({ "POST images": () => json({ code: "video_media_upstream_invalid", detail: "invalid" }, 409) });
+  await assert.rejects(
+    submitImage({ request: {}, ...other.options }),
+    (error) => error.who === "service" && error.code === "video_media_upstream_invalid" && exitFor(error, EXIT) === EXIT.external,
+    "an unrelated 409 keeps its existing classification",
+  );
 });
 
 test("a job is polled until it is terminal, honouring the server's retry_after and the STOP file", async () => {

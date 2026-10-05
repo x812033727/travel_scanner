@@ -39,6 +39,8 @@ const OWNER_CODES = new Set([
   "video_media_model_not_allowed",
   "video_media_budget_exhausted",
   "video_media_judge_unavailable",
+  // The same payload exhausted the server's attempts; another round cannot fix it.
+  "video_media_job_exhausted",
 ]);
 const TOOL_CODES = new Set(["video_media_reference_missing", "video_media_reference_too_large", "video_media_route_unknown", "video_media_bad_part", "video_media_hash_mismatch"]);
 const RETRYABLE_CODES = new Set(["video_media_upstream_busy", "video_media_job_busy", "rate_limit_exceeded", "upstream_unavailable", "video_media_judge_failed"]);
