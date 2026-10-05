@@ -13,13 +13,13 @@ metadata:
 
 ## 不變的規矩
 
-1. **exit code 才算數，不是輸出的最後幾行。** Bash 工具沒有 `pipefail`，`cmd | tail` 的狀態是 `tail` 的，lint 與 typecheck 曾在本機「通過」、CI 紅。每個檢查寫進 log、印 `exit=$?`，再 grep log；背景指令讀完整個 log。用 `scripts/run-checks.sh`。
-2. **每個 worktree 自己 `npm ci`（在 repo 根目錄）。** 沒裝時 tsc／eslint／vitest 會往上找到主 checkout 的 `node_modules`，版本可能落後好幾個大版本，於是「本機紅、CI 綠」或反過來，失敗訊息不會提到版本。相信本機紅燈前先比對版本（`references/local-env.md`）。
+1. **exit code 才算數，不是輸出的最後幾行。** Bash 工具沒有 `pipefail`，`cmd | tail` 的狀態是 `tail` 的，lint 與 typecheck 曾在本機「通過」、CI 紅。每個檢查寫進 log、印 `exit=$?`，再 grep log；背景指令讀完整個 log。用 `.agents/skills/dev-and-ci/scripts/run-checks.sh`。
+2. **每個 worktree 自己 `npm ci`（在 repo 根目錄）。** 沒裝時 tsc／eslint／vitest 會往上找到主 checkout 的 `node_modules`，版本可能落後好幾個大版本，於是「本機紅、CI 綠」或反過來，失敗訊息不會提到版本。相信本機紅燈前先比對版本（`.agents/skills/dev-and-ci/references/local-env.md`）。
 3. **本機全綠不等於 CI 綠。** 本機沒有 PostgreSQL／Redis，`RUN_INTEGRATION_TESTS=1` 的測試全部 skip；e2e 要的 chromium build 本機可能沒有。只有 CI 驗得到的，推之前先想清楚，一輪 CI 約 15–18 分鐘。
 4. **含非 ASCII、反斜線、引號、反引號的腳本或檔案編輯，用 Write 工具寫進 scratchpad 再執行。** Bash 的 heredoc 會改寫它們，`perl -pi`／`sed -i` 會把中文寫壞。新檔 commit 後看 `git show --stat`，出現 `Bin` 就是寫進了 NUL。
 5. **紅燈先分類再動手**：環境（重跑）、已知 flake（對照表）、自己的錯（修）。一個「單獨跑永遠過」的 web 測試在負載下紅，先想 passive effect 空檔，不要加 `waitFor` 或 timeout 掩蓋。
 6. **量到完美的數字先證明儀器量得到不完美的**：CLS 0、scrollWidth 等於 innerWidth，都可能是量法根本不可能給別的答案。
-7. **綁在長片時長收據裡的檔（`tools/video/long-form/review.mjs` 的 `REVIEW_FILES`），改了要獨立審查代理補增量，作者不能自己重綁。** 推之前 `node tools/video/long-form/cli.mjs check`；紅就照 `references/duration-receipt.md`（連別人漏補的綁定讓你的 PR 紅的情況）。
+7. **綁在長片時長收據裡的檔（`tools/video/long-form/review.mjs` 的 `REVIEW_FILES`），改了要獨立審查代理補增量，作者不能自己重綁。** 推之前 `node tools/video/long-form/cli.mjs check`；紅就照 `.agents/skills/dev-and-ci/references/duration-receipt.md`（連別人漏補的綁定讓你的 PR 紅的情況）。
 
 ## 主幹
 
@@ -28,7 +28,7 @@ metadata:
 | 1 | 準備 | worktree 根目錄 `npm ci`；`apps/api` 裡 `uv sync --frozen` | `node_modules` 與 `.venv` 都在這個 worktree 裡 |
 | 2 | 跑檢查 | 只跑你動到的那幾組：`bash .agents/skills/dev-and-ci/scripts/run-checks.sh web api tools` | 每組都印 `exit=0`；失敗就讀那個 log |
 | 3 | 推、等 CI | 推之後照 `task-board` 讀四個必要檢查 | `api`、`web`、`containers`、`full-stack-smoke` 都 `completed success` |
-| 4 | 紅了 | 存完整 job log、比對 `references/ci-triage.md` 的表 | 分出環境／flake／自己的錯；flake 才重跑 |
+| 4 | 紅了 | 存完整 job log、比對 `.agents/skills/dev-and-ci/references/ci-triage.md` 的表 | 分出環境／flake／自己的錯；flake 才重跑 |
 | 5 | 修 flake | 寫一個確定會紅的測試再修（helper 見 ci-triage） | 換回舊程式紅、修正版綠 |
 
 ## 指令
@@ -87,6 +87,6 @@ PR 只跑 `pull_request` 事件（`push` 只在 main），同一個 PR 的新 pu
 
 ## 這個 skill 的檔案
 
-- `scripts/run-checks.sh`：依組別跑檢查，每個檢查一個 log，印 exit code 與彙總，有任何失敗就非零結束。
+- `.agents/skills/dev-and-ci/scripts/run-checks.sh`：依組別跑檢查，每個檢查一個 log，印 exit code 與彙總，有任何失敗就非零結束。
 - `references/*.md`：上表六份。
 - `.claude/skills/dev-and-ci/SKILL.md` 是這一份的逐字複本，`npm run test:tools` 會比對；references 與 scripts 只放在 `.agents/` 這一份。

@@ -25,10 +25,10 @@ import { lookHash, resolveLook } from "./video/core/drama.mjs";
 import { DRAMA_FIXTURE_FILE, dramaFixture, fixtureLexicon, sandbox } from "./video/core/fixtures/load.mjs";
 import { estimateTimeline, FPS, visualHash } from "./video/core/timeline.mjs";
 import {
-  DEFAULT_KLING_CREDITS_PER_VIDEO,
   estimateEpisode,
   hailuoSeconds,
-  klingVideos,
+  KLING_CREDITS_PER_SECOND,
+  klingSeconds,
   MAX_CLIP_TAKES,
   MAX_KEYFRAME_TAKES,
   MAX_LOOK_ROUNDS,
@@ -184,7 +184,7 @@ test("the take, round, clip-second and exit constants mirror the tools, and seco
   assert.equal(secondsBought(30, "veo-3.1-lite-generate-preview", "1080p"), 8, "Lite at 1080p buys eight seconds whatever the need");
   assert.equal(secondsBought(30, "veo-3.1-lite-generate-preview", "720p"), 4);
   assert.deepEqual([hailuoSeconds(30), hailuoSeconds(95), hailuoSeconds(300), hailuoSeconds(900)], [4, 4, 10, 15]);
-  assert.deepEqual([klingVideos(30), klingVideos(150), klingVideos(151), klingVideos(300)], [1, 1, 2, 2]);
+  assert.deepEqual([klingSeconds(30), klingSeconds(95), klingSeconds(300), klingSeconds(900)], [3, 4, 10, 15], "Kling VIDEO 3.0 sells 3 to 15 whole seconds");
   const admin = readFileSync(path.join(ROOT, "apps", "api", "app", "video_media", "admin_api.py"), "utf8");
   assert.match(admin, new RegExp(`\\bJUDGES_PER_HOUR = ${JUDGE_CALLS_PER_HOUR}\\b`), "the media route's judge rate limit");
   const models = readFileSync(path.join(ROOT, "apps", "api", "app", "video_automation", "models.py"), "utf8");
@@ -304,7 +304,7 @@ test("--tier caps the clips and names the stills to make; --cap and --month-clip
   assert.match(month.verdict.problems[0], /每月額度 10 秒/);
 });
 
-test("--plan prices the same clips in Hailuo credits (2K or 768P, per plan) and in Kling credits (unverified, overridable)", () => {
+test("--plan prices the same clips in Hailuo credits (2K or 768P, per plan) and in Kling credits (official per-second price, overridable)", () => {
   const doc = dramaFixture();
   const frames = framesOf(doc);
   const seconds = SHOT_IDS.map((id) => hailuoSeconds(frames(id)));
@@ -343,23 +343,31 @@ test("--plan prices the same clips in Hailuo credits (2K or 768P, per plan) and 
   assert.equal(standard.plan.rounds_one, 4, "Standard runs one task at a time");
   for (const [id, plan] of Object.entries(PLANS)) {
     if (plan.vendor === "hailuo") assert.ok(plan.fee_usd > 0 && plan.credits > 0 && plan.running >= 1, id);
-    else assert.ok(plan.fee_usd > 0 && plan.credits > 0 && plan.credits_per_video === DEFAULT_KLING_CREDITS_PER_VIDEO, id);
+    else assert.ok(plan.fee_usd > 0 && plan.credits > 0 && plan.credits_per_second === KLING_CREDITS_PER_SECOND, id);
   }
 
-  const videos = SHOT_IDS.map((id) => klingVideos(frames(id)));
+  const klingSecs = SHOT_IDS.map((id) => klingSeconds(frames(id)));
   const kling = estimateEpisode(doc, { plan: "kling:pro" });
   assert.equal(kling.plan.vendor, "kling");
-  assert.equal(kling.plan.unverified, true);
-  assert.ok(kling.plan.notes.some((note) => /enable_audio false/.test(note) && /prefer_multi_shots false/.test(note)), "both Kling defaults a shot must turn off are named");
-  assert.deepEqual(kling.plan.shots.map((shot) => shot.videos), videos);
-  assert.equal(kling.plan.credits_one, sum(videos) * DEFAULT_KLING_CREDITS_PER_VIDEO);
-  assert.equal(kling.plan.credits_cap, sum(videos) * DEFAULT_KLING_CREDITS_PER_VIDEO * MAX_CLIP_TAKES);
-  near4(kling.plan.share_one, (sum(videos) * DEFAULT_KLING_CREDITS_PER_VIDEO) / 3000);
-  near4(kling.plan.usd_fee_one, (sum(videos) * DEFAULT_KLING_CREDITS_PER_VIDEO * 37) / 3000);
+  assert.equal(kling.plan.unverified, false, "the per-second price is the official user guide's");
+  assert.equal(kling.plan.resolution, "1080p");
+  assert.equal(kling.plan.credits_per_second, 8, "VIDEO 3.0 at 1080p without native audio");
+  assert.match(kling.plan.credits_basis, /官方價目 2026-10-04（未實扣）/, "official, but no clip has been charged on the owner's account yet");
+  assert.ok(kling.plan.notes.some((note) => /enable_audio false/.test(note) && /prefer_multi_shots false/.test(note)), "both Kling CLI defaults a shot must turn off are named");
+  assert.ok(kling.plan.notes.some((note) => /輸出數/.test(note) && /設 1/.test(note)), "the outputs-per-generation setting multiplies credits and is named");
+  assert.deepEqual(kling.plan.shots.map((shot) => shot.seconds), klingSecs);
+  assert.equal(kling.plan.credits_one, sum(klingSecs) * 8);
+  assert.equal(kling.plan.credits_cap, sum(klingSecs) * 8 * MAX_CLIP_TAKES);
+  near4(kling.plan.share_one, (sum(klingSecs) * 8) / 3000);
+  near4(kling.plan.usd_fee_one, (sum(klingSecs) * 8 * 37) / 3000);
   assert.equal(kling.plan.breakeven_seconds_monthly, Math.ceil(37 / 0.15));
   assert.equal(kling.plan.breakeven_seconds_first_month, Math.ceil(25.99 / 0.15));
-  assert.equal(kling.plan.plan_seconds_per_month, Math.floor(3000 / DEFAULT_KLING_CREDITS_PER_VIDEO) * 5);
-  assert.equal(estimateEpisode(doc, { plan: "kling:pro", creditsPerVideo: 70 }).plan.credits_one, sum(videos) * 70);
+  assert.equal(kling.plan.plan_seconds_per_month, Math.floor(3000 / 8));
+  const kling720 = estimateEpisode(doc, { plan: "kling:pro", resolution: "720p" });
+  assert.equal(kling720.plan.credits_one, sum(klingSecs) * 6);
+  assert.equal(kling720.resolution, "720p", "720p is also an Omni resolution on the server side");
+  assert.equal(estimateEpisode(doc, { plan: "kling:pro", creditsPerSecond: 10 }).plan.credits_one, sum(klingSecs) * 10);
+  assert.equal(estimateEpisode(doc, { plan: "kling:pro", creditsPerSecond: 10 }).plan.credits_basis, "旗標");
   assert.throws(() => estimateEpisode(doc, { plan: "kling:gold" }), /unknown plan/);
 });
 
@@ -428,12 +436,12 @@ test("episode_estimate.mjs exits 0, 1 with --strict on a failed verdict, 2 on a 
   assert.equal(lite.status, 0, "Lite with the preset's negative is supported by the adapter");
   assert.match(lite.stdout, /裁定：過/);
   assert.equal(run("episode_estimate.mjs", DRAMA_FIXTURE_FILE, "--cap", "1").status, 0, "without --strict a failed verdict is only printed");
-  const json = run("episode_estimate.mjs", DRAMA_FIXTURE_FILE, "--json", "--plan", "kling:pro", "--credits-per-video", "70");
+  const json = run("episode_estimate.mjs", DRAMA_FIXTURE_FILE, "--json", "--plan", "kling:pro", "--credits-per-second", "10");
   assert.equal(json.status, 0, json.stderr);
   const parsed = JSON.parse(json.stdout);
   assert.equal(parsed.shots.length, 4);
   assert.equal(parsed.plan.vendor, "kling", "--plan kling:pro reaches the estimator through argv");
-  assert.equal(parsed.plan.credits_per_video, 70);
+  assert.equal(parsed.plan.credits_per_second, 10);
   const hailuo = run("episode_estimate.mjs", DRAMA_FIXTURE_FILE, "--json", "--plan", "hailuo:pro");
   assert.equal(hailuo.status, 0, hailuo.stderr);
   assert.equal(JSON.parse(hailuo.stdout).plan.vendor, "hailuo", "--plan hailuo:pro reaches the estimator through argv");

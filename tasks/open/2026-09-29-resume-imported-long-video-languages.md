@@ -8,7 +8,7 @@ owner: codex-video-stall-followthrough
 claimed_at: 2026-10-04T10:51:05Z
 created_at: 2026-09-29T11:13:51Z
 completed_at:
-branch: codex/video-stall-followthrough-20261004
+branch: codex/video-approved-final-languages-20261004
 depends_on: []
 scope:
   - docs/videos/imported-long-languages
@@ -26,10 +26,11 @@ The standard worker cannot adopt these external cuts automatically.
 
 ## Definition of done
 
-- [x] The six local final hashes match the currently approved backend reviews.
-- [x] Original source timing is faithfully adapted with provenance that separates
+- [ ] The active six-project batch's final hashes match the currently approved
+  backend reviews (the 2026-09-29 batch is retained historical evidence).
+- [ ] Current source timing is faithfully adapted with provenance that separates
   the original Hanhan narration from the Gemini target dub voice.
-- [x] An isolated, resumable runner makes only the six projects' selected languages,
+- [ ] An isolated, resumable runner makes only the six projects' selected languages,
   preserving the approved cuts and the owner's language and publication choices.
 - [ ] Completed metadata/captions and checked dub tracks are submitted cumulatively;
   failures retain actual reasons and partial progress survives a restart.
@@ -41,7 +42,8 @@ The standard worker cannot adopt these external cuts automatically.
 - [x] Read the video workflow and inspect competing work; keep Shorts out of scope.
 - [x] Read-only preflight verifies all six exact approved hashes and language choices.
 - [x] Build and independently check the adapter, runner and focused regression tests.
-- [x] Start the authorized language work and verify persisted progress in the backend.
+- [ ] Start the current approved-source language work and verify persisted
+  progress in the backend; the previous producer has stopped.
 - [x] Record the final receipt or the concrete continuation state.
 
 ## How to verify
@@ -52,6 +54,63 @@ review's locale payload and attached file hashes by reading the persisted projec
 The job must not call the general auto loop, assemble, tidy or youtube-sync.
 
 ## Notes
+
+- PR #1208's initial head 737d484 was merged at 2026-10-04T12:01:08Z after all
+  CI checks passed. It has not been deployed or started a new language producer.
+  Further actual-source corrections are on the approved-final-languages branch.
+  Full web checks passed (351 files / 3,950 tests), API
+  provider/job checks passed (85 tests plus Ruff/mypy). Full tools identified a
+  transient Windows rollback rename obstruction; bounded retry preserves the
+  original recovery-required failure state when it cannot restore the directory.
+- Actual 18-current-final audit prepared all 18 snapshots offline: ten strict
+  retained-body/bookend sources and eight separately approved current-body sources.
+  All eight current script/body timeline/default-caption mappings passed the
+  narrow approved-line-windows
+  validator. Current narration attachments are AAC previews, separately hashed;
+  they do not establish raw WAV identity or a fresh listening approval.
+- A fresh read-only SQL snapshot at 2026-10-04T12:06:33Z matched all 18 exact
+  current final IDs/SHA/decided_at to the source inventory. Each has a real
+  decided_by_user_id and one same-actor video_review_approved audit bound to
+  slug/gate/hash. This is an offline preparation input, not future fresh authority.
+- The distinct approved-final-body-range reader/fresh-batch entry is being
+  implemented for the six changed sources. It must preserve old translations,
+  worksheets, runtime and unknown-paid accounting outside active discovery.
+  Actual frozen CLI caption/dub dry-run and production acceptance remain required.
+
+- 2026-10-04 source continuation: eight actual current finals passed complete
+  media decode/body-range/bookend/audio-identity proofs and independent source
+  readback; legacy preservation claims remain false for these changed sources.
+  Native IDs use deterministic aliases while raw IDs/evidence remain intact.
+  EP06 alone has an explicit native spelling annotation Anthropic:null, with a
+  separate raw empty-lexicon snapshot and unchanged raw/native speech hashes.
+  It does not claim pronunciation/listening approval. Exact profiles are
+  01+05, 02+03+04, and 06; their union is the original six without duplication.
+- Sync model stages now persist exact intent/result before dispatch/return.
+  Restart after an unknown translator result makes no additional POST; source,
+  namespace, owner choice, model/capability and same-unit request drift all hold
+  existing receipts. A shared parent owner lock serializes sibling producers.
+  The independent paid-speech journal passed 54 native/unknown/replay/drift tests
+  and is wired into each new-source command's fetch. Two real default-CLI runner
+  restart tests also pass: a lost speech response sends one POST across two
+  invocations; a saved raw WAV replays after consumer failure with no new POST.
+  The earlier complete docs suite passed 93 tests with no skips. V5 frozen
+  captions/dub dry-run and changed-final refusal passed all six actual sources,
+  zero network/paid, in three exact profiles. No new paid producer has started.
+
+- Final 2026-10-04 source validation: the root independently passed the full
+  imported-language suite, 115 tests / zero skips, after the actual runner and
+  native-client STOP, lost-response, saved-WAV replay and same-invocation owner
+  drift regressions. Each new-source translator/reviewer stage freshly verifies
+  local evidence, current final/source, owner choices and selected configuration;
+  cancelling a language after translation prevents the reviewer POST while
+  retaining the first paid answer byte for byte. Stage intent/results now fsync
+  their file and POSIX parent directory before dispatch/return. The speech guard
+  remains local to this approved-final batch; the shared normal-client follow-up
+  is explicitly unclaimed in its own task. Full tools also passed independently.
+  Final V6 code-only refreeze retains each previous 334-file runtime and installs
+  the actual reviewed code. All six real native captions/dub dry runs and changed
+  final rejection passed, zero network/paid calls. All six STOP files remain;
+  production activation and persisted new-language progress are still pending.
 
 - 2026-10-04 fresh continuation: all six isolated producers are stopped, latest
   progress remains 2026-09-29T12:16:31.822Z; 279 English cues are preserved.

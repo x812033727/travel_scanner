@@ -513,9 +513,13 @@ class Settings(BaseSettings):
     # instead of on a 422 from the far side.
     jev_max_state_tokens: int = Field(default=24_000, ge=1_000, le=32_000)
     jev_max_request_tokens: int = Field(default=56_000, ge=2_000, le=64_000)
-    # The vendor's own example thresholds, and placeholders until shadow-mode numbers
-    # from our own data replace them. Above `act` the answer may be acted on; between
-    # the two it is flagged for review; below `flag` nothing happens.
+    # Placeholders until shadow-mode numbers from our own data replace them. Above `act`
+    # the answer may be acted on; between the two it is flagged for review; below `flag`
+    # nothing happens. 0.9 / 0.5 are the vendor's example for a choice's `confidence`
+    # (docs.typesafe.ai/confidence); its noul example uses other numbers. `route_answer()`
+    # in app.ai.jev applies both to a noul's probability and to a choice's or a score's
+    # `confidence` alike, although a noul's confidence-style number is |2p-1|; only noul
+    # answers are routed today.
     jev_act_confidence: float = Field(default=0.9, ge=0, le=1)
     jev_flag_confidence: float = Field(default=0.5, ge=0, le=1)
     # TypeSafe says accuracy is best in English and asks you to validate on your own

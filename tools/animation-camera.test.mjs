@@ -32,6 +32,7 @@ import {
   boughtSeconds,
   keyframePrompt,
   lookMotionMove,
+  offScreenRoles,
   personClause,
   readDocument,
   renderReading,
@@ -211,6 +212,92 @@ for (const [id, what, change] of cases) {
   });
 }
 
+// cast.offscreen reads whom the off-screen words attach to. A visible actor aiming at someone off
+// screen keeps its place in characters; the one off screen is still reported; a clause it cannot
+// read is still reported, as a question rather than an instruction to remove a character.
+const DUEL = [{ id: "yan", name: "Yan", appearance: "a swordsman in grey" }, { id: "wei", name: "Wei", appearance: "a rival in black" }];
+const duel = (data) => ({
+  format: "drama",
+  characters: DUEL,
+  look: { preset: "anime-2d" },
+  scenes: [{ id: "s1", template: "shot", data: { camera: "Medium close-up, slow push in", prompt: "Medium close-up of Yan on screen left facing right", motion: "Yan swings the sword once.", characters: ["yan"], ...data }, lines: [{ id: "l1", speaker: "yan", text: "接招。" }] }],
+});
+const offscreenTraps = (data) => readDocument(duel(data)).shots[0].traps.filter((trap) => trap.id === "cast.offscreen");
+
+test("offScreenRoles tells the visible actor from the named off-screen target, and leaves what it cannot read unsure", () => {
+  const rows = [
+    // the ticket's sentence: Yan acts, Wei is the target off screen
+    ["One cyan arc leaves Yan's sword toward Wei off screen right", ["wei"], []],
+    ["Yan with his eyes on Wei off screen right", ["wei"], []],
+    ["Yan turns to Wei off screen left", ["wei"], []],
+    ["Yan bows toward Old Wei off screen", ["wei"], []],
+    ["Yan looks off screen right", [], []],
+    ["Yan glances off screen right at Wei", ["wei"], []],
+    ["Yan looks toward the gate off screen", [], []],
+    // an explicit off-screen subject, alone in its clause
+    ["Wei speaks off screen", ["wei"], []],
+    ["Wei off screen left at his eyeline", ["wei"], []],
+    ["Wei is off screen to the right", ["wei"], []],
+    ["the gift remains held by Wei off screen", ["wei"], []],
+    ["a voice from off screen", ["yan"], []],
+    // what the wording does not settle
+    ["Yan raises the sword as Wei shouts off screen", [], ["yan", "wei"]],
+    ["Yan speaks to Wei off screen", [], ["yan", "wei"]],
+    ["Yan swings toward the gate off screen", [], ["yan"]],
+    ["Yan faces the unseen Wei", [], ["yan", "wei"]],
+  ];
+  for (const [clause, off, unsure] of rows) {
+    const roles = offScreenRoles(clause, DUEL, ["yan"]);
+    assert.deepEqual({ off: roles.off, unsure: roles.unsure }, { off, unsure }, clause);
+    assert.equal(Boolean(roles.why), unsure.length > 0, `${clause}: an unsure reading says why`);
+  }
+  // --file lists only who is in the shot: an unlisted capitalised name after toward is still a target, not the actor
+  assert.deepEqual(offScreenRoles("One cyan arc leaves Yan's sword toward Wei off screen right", [DUEL[0]]), { off: [], unsure: [], why: "" });
+});
+
+test("cast.offscreen leaves a visible actor aiming at a named off-screen target alone", () => {
+  const motion = "One cyan arc leaves Yan's sword toward Wei off screen right.";
+  assert.deepEqual(offscreenTraps({ motion }), [], "Yan is in the shot and stays in characters");
+  assert.ok(!trapsOf({ ...clean(), characters: [{ id: "yan", name: "Yan", appearance: "a swordsman" }], prompt: "Medium close-up of Yan on screen left facing right", motion, lines: [{ speaker: "yan", text: "接招。" }] }).includes("cast.offscreen"), "--file mode, where Wei is not in the cast at all");
+  const both = offscreenTraps({ motion, characters: ["yan", "wei"] });
+  assert.equal(both.length, 1, "only the target listed by mistake is reported");
+  assert.match(both[0].message, /列了 wei/);
+  assert.equal(both[0].fix, "從 characters 拿掉 wei；台詞的 speaker 留著");
+});
+
+test("cast.offscreen still reports an explicit off-screen subject listed in characters", () => {
+  const traps = offscreenTraps({ prompt: "Medium close-up of Yan on screen left facing right, Wei speaks off screen", characters: ["yan", "wei"] });
+  assert.equal(traps.length, 1);
+  assert.match(traps[0].message, /（「Wei speaks off screen」），但 data\.characters 列了 wei/);
+  assert.equal(traps[0].fix, "從 characters 拿掉 wei；台詞的 speaker 留著");
+});
+
+test("cast.offscreen keeps an ambiguous clause reviewable without telling the author to remove a visible character", () => {
+  const traps = offscreenTraps({ motion: "Yan raises the sword as Wei shouts off screen." });
+  assert.equal(traps.length, 1, "the clause names Yan and Wei and says off screen: still a trap, so --strict stops on it");
+  assert.match(traps[0].message, /讀不出是誰（同一子句點了 yan、wei）/);
+  assert.match(traps[0].fix, /^先確認 yan 在不在畫面裡/);
+  assert.match(traps[0].fix, /在畫面裡就留著/);
+  assert.ok(!traps[0].fix.startsWith("從 characters 拿掉"));
+  const split = offscreenTraps({ motion: "Yan raises the sword, Wei shouts off screen." });
+  assert.deepEqual(split, [], "split into its own clause, the off-screen subject is read and Yan is left alone");
+  assert.match(offscreenTraps({ motion: "Yan speaks to Wei off screen." })[0].message, /說話的動詞接「to Wei」/);
+});
+
+test("o.s. and v.o. survive the clause split and read as off screen", () => {
+  const listed = trapsOf(clean({ characters: CLEAN.characters, prompt: "Close-up of Lin, Zhao (o.s.)" }));
+  assert.ok(listed.includes("cast.offscreen"), `(o.s.) marks Zhao off screen: ${JSON.stringify(listed)}`);
+  for (const prompt of ["Close-up of Lin, Zhao (O.S.)", "Close-up of Lin, Zhao V.O.", "Close-up of Lin, Zhao v.o."]) {
+    const ids = trapsOf(clean({ prompt }));
+    assert.ok(!ids.includes("cast.speaker"), `${prompt}: the abbreviation already says Zhao is off screen`);
+  }
+  const message = offscreenTraps({ prompt: "Medium close-up of Yan on screen left facing right, Wei (o.s.)", characters: ["yan", "wei"] });
+  assert.equal(message.length, 1);
+  assert.match(message[0].message, /（「Wei \(off screen\)」），但 data\.characters 列了 wei/);
+  // a period that ends an honorific still splits as before; only the two abbreviations are spelled out
+  assert.ok(trapsOf(clean({ prompt: "Mr. Lin lifts the teacup with both hands at the banquet table" })).includes("cast.speaker"));
+});
+
 test("look.motion claims a contradiction only when the look's motion names a camera move", () => {
   // The pilot's override (production-run-20261003.md) names no move, so a locked clip under it is not two instructions.
   const plain = { style: "2D anime", motion: "One clearly motivated character or prop action per clip, consistent adult identity, no morphing, no internal cuts." };
@@ -270,6 +357,12 @@ test("source.bought trips when a cut ends past what its source buys under the se
   const production = readDocument(cut(3), { series: { production: { profile: { id: "test" } } } });
   assert.ok(!production.shots[1].traps.some((each) => each.id === "source.bought"), "under the profile the source buys 8 s and the cut fits");
   assert.ok(!trapsOf(clean({ source: { shot: "s1", from_s: 3 } })).includes("source.bought"), "--file mode has no source to measure");
+  // On a web route the master is bought to cover every cut (animation-preproduction's shot_plan.mjs),
+  // so the server's 4 s does not apply.
+  for (const route of ["hailuo", "kling"]) {
+    assert.ok(!readDocument(cut(3), { route }).shots[1].traps.some((each) => each.id === "source.bought"), `--route ${route} does not price the source at the server's 4 s`);
+  }
+  assert.ok(readDocument(cut(3), { route: "server" }).shots[1].traps.some((each) => each.id === "source.bought"), "--route server is the default reading");
 });
 
 test("every trap id has a case above, so a deleted trap is noticed", () => {
