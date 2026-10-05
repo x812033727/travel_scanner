@@ -11,7 +11,7 @@ import { ROOT, isInside, resolveWorkBase, stopRequested } from '../core/paths.mj
 import { PROFILE, SCRIPT_FILE, USAGE_FILE, buildTimeline, captionHtml, esc, lineOf, phrasesOf, sceneHtml, sha256, srt, validate, verifyEvidence } from './core.mjs';
 import { CAPTION_BOX, captionsOption, captionsSummary, timingFile } from './karaoke.mjs';
 import { themeOf, themeText } from './layouts.mjs';
-import { MOTION_VERSION, backgroundOf, cameraOf, cardsList, firstFrameArgs, lastFrameArgs, sceneSpans, segmentArgs, shortSfxPlan } from './motion.mjs';
+import { LOOP_FRAMES, MOTION_VERSION, backgroundOf, cameraOf, cardsList, firstFrameArgs, framePsnrArgs, lastFrameArgs, loopProblems, parsePsnr, psnrValue, sceneSpans, segmentArgs, shortSfxPlan } from './motion.mjs';
 import { WINDOWS_VOICE, defaultSource, flaggedPhrases, narrate } from './speech.mjs';
 
 const saveJson = (file, data) => writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
@@ -24,13 +24,31 @@ export function loudnessResult(stderr) {
   return data;
 }
 
-/** What a final cut measures as: the streams of final.mp4 and its loudness, read from the file. */
-export async function measureFinal(final, { ffmpeg, ffprobe }) {
+/**
+ * What a final cut measures as: the streams of final.mp4 and its loudness, read from the file,
+ * and, given `cover` (the thumbnail PNG) and `frames` (the timeline's), `grammar`: its two ends
+ * (measureLoop), which motion.mjs loopProblems and the quality check's `grammar` item read.
+ */
+export async function measureFinal(final, { ffmpeg, ffprobe }, { cover = null, frames = null } = {}) {
   const probe = JSON.parse((await runTool(ffprobe,['-v','error','-show_streams','-show_format','-of','json',final])).stdout);
   const video = probe.streams.find(s=>s.codec_type==='video');
   const audio = probe.streams.find(s=>s.codec_type==='audio');
   const measured = await runTool(ffmpeg,['-hide_banner','-i',final,'-af','loudnorm=I=-14:TP=-1:LRA=11:print_format=json','-f','null','-']);
-  return { video, audio, format: probe.format, loudness: loudnessResult(measured.stderr) };
+  const result = { video, audio, format: probe.format, loudness: loudnessResult(measured.stderr) };
+  if (cover !== null && frames !== null) result.grammar = await measureLoop(final, cover, frames, ffmpeg);
+  return result;
+}
+
+/**
+ * The two ends of a cut, in dB: the cover against its first frame (identical, infinite, when the
+ * build made both) and its first frame against its last (the loop tail of motion.mjs, the same
+ * picture encoded twice). Null when there is no cover file to measure against.
+ */
+export async function measureLoop(final, cover, frames, ffmpeg) {
+  if (!existsSync(cover)) return null;
+  const coverPsnr = parsePsnr((await runTool(ffmpeg, framePsnrArgs(final, 0, cover))).stderr);
+  const loopPsnr = parsePsnr((await runTool(ffmpeg, framePsnrArgs(final, frames - 1, final, 0))).stderr);
+  return { cover_psnr: coverPsnr, loop_psnr: loopPsnr };
 }
 
 /** Why a measured cut is not a Short of `frames` frames; empty when it is one. */
@@ -347,9 +365,12 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
       captionsList = path.join(directory,'build',`captions-${number(span.sceneIndex)}.txt`);
       writeFileSync(captionsList, cardsList(span.cues.flatMap(cue => byCue.get(cue.index).states.map((state, index) => ({ file: path.join(directory,'captions',`${number(cue.index)}-${String(index).padStart(2,'0')}.png`), frames: state.frames })))));
     }
+    // The last scene ends on the Short's first frame (motion.mjs LOOP_FRAMES): the still of the
+    // first segment, drawn when that segment was encoded, is the cover and what the replay joins.
+    const loopTo = index === spans.length - 1 && stills.length ? stills[0] : null;
     const segment = path.join(directory,'clips',`${number(span.sceneIndex)}.mp4`);
-    await runTool(ffmpeg, segmentArgs({ background: background.file, move: background.camera, frames: span.frames, cardsList: list, dissolveFrom, captionsList, outFile: segment }));
-    motion.push({ scene: span.sceneIndex, frames: span.frames, camera: background.camera, background: background.background, dissolve: dissolveFrom !== null });
+    await runTool(ffmpeg, segmentArgs({ background: background.file, move: background.camera, frames: span.frames, cardsList: list, dissolveFrom, captionsList, loopTo, outFile: segment }));
+    motion.push({ scene: span.sceneIndex, frames: span.frames, camera: background.camera, background: background.background, dissolve: dissolveFrom !== null, loop: loopTo !== null });
     const still = path.join(directory,'build',`scene-${number(span.sceneIndex)}.png`);
     await runTool(ffmpeg, firstFrameArgs(segment, still));
     stills.push(still);
@@ -397,11 +418,15 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   }
   const final = path.join(directory,'upload','final.mp4');
   await runTool(ffmpeg,['-y','-hide_banner','-f','concat','-safe','1','-i',listFile,'-i',audioFile,'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','copy','-movflags','+faststart',final]);
-  const measured = await measureFinal(final,{ffmpeg,ffprobe});
+  // The cover is the first frame as the viewer sees it (stills[0], written below), so the cut's
+  // two ends are measured against it here: the loop tail is checked on every build, not trusted.
+  const measured = await measureFinal(final,{ffmpeg,ffprobe},{cover:stills[0],frames:timeline.frames});
   const wrong = profileProblems(measured,timeline.frames);
   if (wrong.length) throw new Error(`encoded output failed profile/duration checks: ${wrong.join('; ')}`);
   const loudWrong = loudnessProblems(measured.loudness);
   if (loudWrong.length) throw new Error(`final loudness failed: ${loudWrong.join('; ')}`);
+  const loopWrong = loopProblems(measured.grammar);
+  if (loopWrong.length) throw new Error(`the loop failed: ${loopWrong.join('; ')}`);
   const {video,audio} = measured;
   writeFileSync(path.join(directory,'upload','zh-TW.srt'),srt(timeline));
   // The cover is the first frame as the viewer sees it: the card over its background, not the transparent card alone.
@@ -409,7 +434,7 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   saveJson(path.join(directory,'upload','titles.json'),doc.titles);
   saveJson(path.join(directory,'timeline.json'),timeline);
   if (timing) saveJson(path.join(directory,'timing.json'),timing);
-  saveJson(path.join(directory,'checks.json'),{ok:true,profile:PROFILE,range,seconds:timeline.seconds,frames:timeline.frames,layout,motion,captions:captionsSummary(timing),music:sound.track?{track:doc.music.track,sha256:sound.track.sha256,bed_lufs:bed}:null,sfx:sound.sfx?{set:doc.sfx.set,events:effects.length}:null,loudness:measured.loudness,video:{codec:video.codec_name,width:video.width,height:video.height,fps:video.r_frame_rate},audio:{codec:audio.codec_name,sample_rate:audio.sample_rate},evidence_verified:true,audio_sha256:sha256(wavs.map((_w,i)=>sha256(readFileSync(path.join(directory,'audio',`${number(i)}.wav`)))).join('')),final_sha256:sha256(readFileSync(final)),checked_at:new Date().toISOString()});
+  saveJson(path.join(directory,'checks.json'),{ok:true,profile:PROFILE,range,seconds:timeline.seconds,frames:timeline.frames,layout,motion,captions:captionsSummary(timing),grammar:{cover_psnr:psnrValue(measured.grammar.cover_psnr),loop_psnr:psnrValue(measured.grammar.loop_psnr),loop_frames:LOOP_FRAMES},music:sound.track?{track:doc.music.track,sha256:sound.track.sha256,bed_lufs:bed}:null,sfx:sound.sfx?{set:doc.sfx.set,events:effects.length}:null,loudness:measured.loudness,video:{codec:video.codec_name,width:video.width,height:video.height,fps:video.r_frame_rate},audio:{codec:audio.codec_name,sample_rate:audio.sample_rate},evidence_verified:true,audio_sha256:sha256(wavs.map((_w,i)=>sha256(readFileSync(path.join(directory,'audio',`${number(i)}.wav`)))).join('')),final_sha256:sha256(readFileSync(final)),checked_at:new Date().toISOString()});
   // What the site's ledger is told when the final cut is approved: /video/speech takes no slug,
   // so only the tool knows which Short the narration was for (docs/videos/SHORTS.md §花費與預算).
   saveJson(path.join(directory,USAGE_FILE),{narration:{seconds:Number(wavs.reduce((sum,w)=>sum+w.samples.length/w.sampleRate,0).toFixed(3)),characters:phrasesOf(doc).reduce((sum,phrase)=>sum+[...phrase].length,0),calls:narration.calls,provider:narration.provider,...(narration.model?{model:narration.model}:{})},stages:{},checks:{}});

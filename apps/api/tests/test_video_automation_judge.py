@@ -455,11 +455,17 @@ def test_a_compilation_s_final_cut_is_held_to_its_own_items() -> None:
     assert not judging.retention_required_for(None)
 
 
-def test_a_short_is_held_to_its_own_twelve_and_a_long_video_s_report_never_passes_it() -> None:
+def test_a_short_is_held_to_its_own_thirteen_and_a_long_video_s_report_never_passes_it() -> None:
     sha = "f" * 64
     report = _report(judging.SHORTS_QA_ITEMS, sha, kind="shorts", line="lab")
-    assert len(judging.SHORTS_QA_ITEMS) == 12
+    # The tool's ITEM_IDS (tools/video/shorts/qa.mjs) is pinned to this tuple by its own test;
+    # the loop grammar (2026-10-05) is the thirteenth, after the disclosure.
+    assert len(judging.SHORTS_QA_ITEMS) == 13
+    assert judging.SHORTS_QA_ITEMS[-2:] == ("disclosure", "grammar")
     assert judging.shorts_qa_passed({"qa": report}, sha)
+    assert not judging.shorts_qa_passed(
+        {"qa": _report(judging.SHORTS_QA_ITEMS[:12], sha, kind="shorts")}, sha
+    ), "a report from before the grammar item never approves a Short"
     assert not judging.shorts_qa_passed({"qa": report}, "0" * 64), "another cut"
     assert not judging.shorts_qa_passed(
         {"qa": _report(judging.SHORTS_QA_ITEMS[:-1], sha, kind="shorts")}, sha
@@ -473,7 +479,7 @@ def test_a_short_is_held_to_its_own_twelve_and_a_long_video_s_report_never_passe
     ), "a report that does not say it is a Short's is not one"
     assert not judging.shorts_qa_passed(
         {"qa": _report(judging.QA_ITEMS, sha, kind="shorts")}, sha
-    ), "the eleven of a long video are not the twelve"
+    ), "the eleven of a long video are not the thirteen"
     assert not judging.shorts_qa_passed({}, sha)
     # The long video's rules are what they were: a Short's report does not pass them either.
     assert not final_qa_passed({"qa": report}, sha)

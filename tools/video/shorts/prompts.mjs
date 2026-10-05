@@ -138,9 +138,11 @@ wrote one.
 Write the Short's script, format version 2:
 {"titles": ["<in use>", "<spare>"], "description": "...", "experiment_summary": "<what was
 tested, how>", "limitations": "<what this test cannot tell>", "hashtags": ["AI", "實測"],
-"tags": ["..."], "scenes": [{"headline": "...", "kicker": "...", "narration": ["...", "..."],
-"body": ["..."], "big": "...", "note": "...", "asset": "<an html path from evidence_files>"}]}
-(kicker, body, big, note and asset are optional.)
+"tags": ["..."], "scenes": [{"beat": "hook", "headline": "...", "kicker": "...", "narration":
+["...", "..."], "body": ["..."], "big": "...", "note": "...", "asset": "<an html path from
+evidence_files>"}]}
+(kicker, body, big, note and asset are optional; beat is one of hook, setup, turn, proof, payoff,
+loop.)
 
 Rules:
 - Say only what the evidence shows. Every number on a card, in a title or in the narration comes
@@ -151,8 +153,15 @@ Rules:
   answers; never pick the one that makes a better story.
 - experiment_summary says what was asked and how often; limitations says what one run of one
   question cannot tell (not the model's general ability, not other models).
-- The first two seconds are the question or the result as a hook; then the rule; then the two
-  answers; the end gives the result and one limit of this test.
+- Six beats in this order, every scene naming its "beat" (a beat may run over two scenes, none
+  comes back after a later one): "hook", the question or the result in the first two seconds;
+  "setup", what was asked and the rule; "turn", the moment it goes other than expected, the two
+  answers side by side; "proof", the numbers as they came; "payoff", the result and one limit of
+  this test; "loop", one last phrase that hands back to the hook (the question again, or the next
+  one), because the picture ends on its first frame and YouTube replays a Short from there.
+- The first card is the thumbnail: its headline at most 14 characters, or a "big" number on it.
+- No call to action anywhere: never ask the viewer to subscribe, like, ring the bell, click a
+  link or follow (訂閱、按讚、小鈴鐺、點連結、追蹤); a check refuses it.
 - 3 to 12 scenes; a headline at most 36 characters; each narration phrase at most 38 characters;
   at most five body rows of 85 characters. The narration in all is about "seconds" × 4
   characters. Numbers in the narration may be read out in Chinese (兩百七十五).

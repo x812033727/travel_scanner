@@ -9,9 +9,9 @@
 // listener, Jev, the links, the latest Shorts) must fail saying it was not checked, never pass.
 // The script gets what a cut of an illustrated video has (docs/videos/ILLUSTRATED.md): a picture
 // scene under a camera move (a stand-in picture, generated here), a music bed and a sound-effect
-// set (stand-ins under the work base), so the moving segments, the dissolves, the bed and the
-// effects go through the same chain. CI runs it in .github/workflows/video-tooling.yml after
-// installing Chromium and ffmpeg.
+// set (stand-ins under the work base), and the six beats, so the moving segments, the dissolves,
+// the loop tail, the bed and the effects go through the same chain. CI runs it in
+// .github/workflows/video-tooling.yml after installing Chromium and ffmpeg.
 import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -23,7 +23,8 @@ import { MAX_BED_LUFS } from '../assemble/drama.mjs';
 import { writeSyntheticSfx, writeSyntheticTrack } from '../assemble/synthetic.mjs';
 import { encodeWav } from '../tts/wav.mjs';
 import { build } from './build.mjs';
-import { phrasesOf, sha256, validate } from './core.mjs';
+import { BEATS, phrasesOf, sha256, validate } from './core.mjs';
+import { COVER_MIN_PSNR, LOOP_FRAMES, LOOP_MIN_PSNR } from './motion.mjs';
 import { packageBuild } from './package.mjs';
 import { runQa } from './qa.mjs';
 
@@ -48,6 +49,10 @@ doc.evidence.push({ path: 'evidence/picture.png', sha256: sha256(pictureBytes) }
 doc.scenes[1] = { ...doc.scenes[1], asset: 'evidence/picture.png', camera: 'push in' };
 doc.music = { track: 'bed.mp3', gain_db: -22 };
 doc.sfx = { set: 'studio-a' };
+// The six beats (core.mjs BEATS): the fixture's five scenes carry the first five and a sixth
+// scene the loop, handing back to the first card's question, so the grammar check sees them all.
+doc.scenes = doc.scenes.map((scene, index) => ({ ...scene, beat: BEATS[index] }));
+doc.scenes.push({ beat: 'loop', headline: '再問一次', narration: ['下一張發票，AI 還算得對嗎'] });
 const invalid = validate(doc);
 if (invalid.length) fail(`the smoke script is not valid: ${invalid.join('; ')}`);
 writeFileSync(path.join(source, 'script.json'), `${JSON.stringify(doc, null, 2)}\n`);
@@ -91,6 +96,10 @@ if (!Array.isArray(checks.motion) || checks.motion.length !== doc.scenes.length)
 if (checks.motion[1].background !== 'picture' || checks.motion[1].camera !== 'push-in') fail(`scene 2 is ${JSON.stringify(checks.motion[1])}, not the picture under a push in`);
 if (!checks.motion.slice(1).every((scene) => scene.dissolve) || checks.motion[0].dissolve) fail(`dissolves: ${checks.motion.map((scene) => scene.dissolve)}`);
 if (checks.motion.filter((scene) => scene.background === 'backdrop').length !== doc.scenes.length - 1) fail('every scene of cards drifts over the backdrop');
+// The loop: the last scene alone ends on the first frame, and the build measured both ends of
+// the cut against the cover (the cover is that frame; the last frame is it encoded once more).
+if (!(checks.motion.at(-1).loop === true && checks.motion.slice(0, -1).every((scene) => scene.loop === false))) fail(`loops: ${checks.motion.map((scene) => scene.loop)}`);
+if (!(checks.grammar?.loop_frames === LOOP_FRAMES && checks.grammar.cover_psnr >= COVER_MIN_PSNR && checks.grammar.loop_psnr >= LOOP_MIN_PSNR)) fail(`the loop: ${JSON.stringify(checks.grammar)}`);
 if (!(checks.music && checks.music.track === 'bed.mp3' && checks.music.bed_lufs <= MAX_BED_LUFS)) fail(`the music bed: ${JSON.stringify(checks.music)}`);
 if (!(checks.sfx && checks.sfx.set === 'studio-a' && checks.sfx.events > 0)) fail(`the sound effects: ${JSON.stringify(checks.sfx)}`);
 const report = await runQa({ directory: built.directory, offline: true });
@@ -106,6 +115,8 @@ if (report.ok) fail('the quality check passed although five items were never che
 if (report.kind !== 'shorts' || report.line !== 'lab') fail(`the report says ${report.kind}/${report.line}`);
 if (!/1080×1920/.test(verdicts.profile.detail)) fail(`profile: ${verdicts.profile.detail}`);
 if (!(verdicts.captions.ok && verdicts.captions.warnings?.length === 1 && /estimated/.test(verdicts.captions.warnings[0]))) fail(`captions: ${JSON.stringify(verdicts.captions)}`);
+// The grammar item measured the cut's two ends again and read the cards: nothing to ask of the site.
+if (!(verdicts.grammar.ok && /the cover is the first frame \(PSNR inf, identical\), the last frame returns to it \(PSNR \d+\.\d dB\)/.test(verdicts.grammar.detail))) fail(`grammar: ${JSON.stringify(verdicts.grammar)}`);
 for (const name of ['final.mp4', 'zh-TW.srt', 'cover.png', 'metadata.json', 'description.zh-TW.txt', 'manifest.json']) {
   if (!existsSync(path.join(built.directory, 'upload', name))) fail(`upload/${name} is missing`);
 }
@@ -116,4 +127,4 @@ const items = Object.fromEntries(packaged.items.map((each) => [each.id, each.ok]
 if (!items.files || !items.descriptions || !items.captions || !items.disclosure) fail(`the package check: ${JSON.stringify(packaged.items)}`);
 const manifest = JSON.parse(readFileSync(path.join(built.directory, 'upload', 'manifest.json'), 'utf8'));
 if (manifest.status !== 'qa-failed') fail(`the manifest says ${manifest.status}, and the check did not pass`);
-process.stdout.write(`shorts smoke: ${built.seconds.toFixed(2)}s, ${checks.motion.length} moving scenes (one on a picture), ${checks.captions.groups} caption groups in ${checks.captions.states} states (${checks.captions.source}), bed ${checks.music.bed_lufs} LUFS, ${checks.sfx.events} effects; ${report.items.filter((each) => each.ok).length} of ${report.items.length} items checked without the site, package complete\n  ${built.directory}\n`);
+process.stdout.write(`shorts smoke: ${built.seconds.toFixed(2)}s, ${checks.motion.length} moving scenes (one on a picture), ${checks.captions.groups} caption groups in ${checks.captions.states} states (${checks.captions.source}), bed ${checks.music.bed_lufs} LUFS, ${checks.sfx.events} effects, loop tail ${checks.grammar.loop_psnr} dB; ${report.items.filter((each) => each.ok).length} of ${report.items.length} items checked without the site, package complete\n  ${built.directory}\n`);
