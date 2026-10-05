@@ -91,16 +91,6 @@ function findings(text) {
 // open/ to done/ keeps its entry. The numbers only go down: when you clean a file, lower its
 // entry or delete it.
 const KNOWN = {
-  "docs/videos/sothatswhy-t27/author-note.md": { "user-path": 1 },
-  "docs/videos/sothatswhy-t27/branding-adoption.json": { "user-path": 9 },
-  "docs/videos/sothatswhy-t27/fact-source-audit.json": { "user-path": 6 },
-  "docs/videos/sothatswhy-t27/final-runtime-review.json": { "user-path": 42 },
-  "docs/videos/sothatswhy-t27/final-runtime-review.md": { "user-path": 2 },
-  "docs/videos/sothatswhy-t27/production-record.md": { "user-path": 1 },
-  "docs/videos/sothatswhy-t27/runtime-audit.json": { "user-path": 11 },
-  "docs/videos/sothatswhy-t27/runtime-audit.md": { "user-path": 7 },
-  "docs/videos/sothatswhy-t27/visual-review.json": { "user-path": 234 },
-  "docs/videos/sothatswhy-t27/visual-review.md": { "user-path": 2 },
   "tasks/2026-09-07-contextual-travel-services.md": { "user-path": 1 },
   "tasks/2026-09-07-hotel-platform-options-and-quote-readiness.md": { "user-path": 1 },
   "tasks/2026-09-16-news-batch-4-4-the-8.md": { "user-path": 1 },

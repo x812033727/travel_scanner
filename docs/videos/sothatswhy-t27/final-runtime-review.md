@@ -1,10 +1,12 @@
 # T27 實際成片 runtime 覆核
 
-結果：**PASS_CURRENT_FINAL_RUNTIME_BINDINGS_AND_SAMPLES**。覆核者 codex-art-t27；記錄時間 2026-10-02T15:59:11.248Z。本次只讀檢查實際成片、時間戳、字幕、正常 gates、交付包與已保存的 backend GET proof，只寫本紀錄及 JSON。覆核者曾製作本集 SVG，沒有撰寫旁白或執行合成；插畫語義的獨立覆核由 codex-write-t27 的 `visual-review.json` 提供（目前 SHA `47a692798587e8b99cdb5c4f533eb743663347a4129d9de7ff02740c3f4397d1`）。
+結果：**PASS_CURRENT_FINAL_RUNTIME_BINDINGS_AND_SAMPLES**。覆核者 codex-art-t27；記錄時間 2026-10-02T15:59:11.248Z。本次只讀檢查實際成片、時間戳、字幕、正常 gates、交付包與已保存的 backend GET proof，只寫本紀錄及 JSON。覆核者曾製作本集 SVG，沒有撰寫旁白或執行合成；插畫語義的獨立覆核由 codex-write-t27 的 `visual-review.json` 提供（目前 SHA `ef00f9439db65104f6f779ec7211d439efe956af6340c712699351fc1e42638a`）。
+
+2026-10-05 補記：倉庫是公開的，本紀錄與 `visual-review.json` 內的本機使用者路徑已改為 `<home>`，其他內容不變；上段 `visual-review.json` 的 SHA 因此改為遮蔽後的值（任務 2026-10-05-scrub-local-user-paths-from-the）。遮蔽前的檔案與原 SHA 見 commit bc5f18db8（#1144）。
 
 ## 實片與完整解碼
 
-實檔 `C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/final.mp4` 的 SHA-256 為 `3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016`；105455029 bytes。ffprobe 實讀 20644 video frames，影片與 AAC 音訊均為 688.200 秒（11:28.2），H.264、1920×1080、yuv420p、AAC 48 kHz 雙聲道。實測 `r_frame_rate=30/1`、`avg_frame_rate=103220/3441`，沒有硬套平均 30 fps。音訊封包 nb_frames=32258、decoded audio frames=32257 分別保留，不把 AAC priming 的差異当作掉幀。
+實檔 `<home>/mokaair-work/videos/sothatswhy-t27/final.mp4` 的 SHA-256 為 `3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016`；105455029 bytes。ffprobe 實讀 20644 video frames，影片與 AAC 音訊均為 688.200 秒（11:28.2），H.264、1920×1080、yuv420p、AAC 48 kHz 雙聲道。實測 `r_frame_rate=30/1`、`avg_frame_rate=103220/3441`，沒有硬套平均 30 fps。音訊封包 nb_frames=32258、decoded audio frames=32257 分別保留，不把 AAC priming 的差異当作掉幀。
 
 完整 ffmpeg 解碼映射所有 video/audio 到 null，以實測來源 time base `1:15360` 輸出：exit 0、stderr 空、20644 幀、dup/drop 0、progress=end、out_time=688.200 秒；開始 15:42:49.691954Z，完成 15:44:20.250566Z。前後實片雜湊一致。
 
@@ -30,7 +32,7 @@ root PCM/PTS 收據也逐一核對 narration WAV、body、final 雜湊。開頭�
 
 ## 收據
 
-所有收據位於 `C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78`，精確 SHA、完整命令、probe 與比對結果列於 `final-runtime-review.json`：
+所有收據位於 `<home>/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78`，精確 SHA、完整命令、probe 與比對結果列於 `final-runtime-review.json`：
 
 - `t27-independent-full-decode-initial.json` 及 `.stderr.log`：首次警告原始紀錄。
 - `t27-independent-full-decode-source-timebase-option-refusal.json`：-1 setup 拒絕，0 幀。
