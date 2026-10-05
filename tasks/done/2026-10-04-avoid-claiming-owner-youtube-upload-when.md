@@ -67,3 +67,10 @@ Run the focused `tools/video/review/sync.test.mjs` tests. Assert that a newly pu
   PR touched `tools/video/review/sync*` at claim time.
 - Both files are bound by `docs/videos/long-form/review.json`; the PR is a draft until an
   independent reviewer adds the receipt increment.
+- 2026-10-05 review round 1 (PR #1234): the only red is that receipt. smoke and web-checks
+  (runs 37250630224 and 37250630245) fail on one test, `tools/video/long-form/review.test.mjs`
+  "the shipped independent duration review binds the current plans and implementation", and
+  `node tools/video/long-form/cli.mjs check` prints `stale duration review binding:` for
+  `tools/video/review/sync.mjs` and `tools/video/review/sync.test.mjs` (review.json lines
+  111-112) and nothing else. The change only rewords one stdout line and adds tests, so a
+  DURATION_ONLY increment fits; the author session must not write it. No code change.
