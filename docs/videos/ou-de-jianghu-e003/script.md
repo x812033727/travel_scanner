@@ -371,11 +371,11 @@
 #### 67. a01-s067
 
 【包三錢】（又氣又好笑）我伸手要三錢，
-【包三錢】他說：記帳。
+【包三錢】他笑著走了。
 
 #### 68. a01-s068
 
-【包三錢】（拍大腿，又氣又樂）又一個記帳的！
+【包三錢】（拍大腿，又氣又樂）一個錢也沒掏！
 
 #### 69. a01-s069
 
@@ -806,7 +806,7 @@
 
 #### 152. a02-s063
 
-無台詞動作（4 秒）：The open-sided forge shed later in the morning seen from the south: the great cracked stone forge, cold and dark, grey ash heaped in its mouth at the left rear; Nie seated again on the right side of the anvil facing left, his freed right hand with its raw wound resting on his knee, the bloodied long rust-crusted iron nail lying on the anvil's edge, the hammer leaning on the stump; Liu sitting cross-legged on the sand at the anvil's left side, one pace away, facing right, his left arm stiff; the unopened clay jar on the anvil's edge; flat grey-white morning light from screen right, the sun higher now, grey ash drifting from left to right
+無台詞動作（4 秒）：The open-sided forge shed later in the morning seen from the south: the great cracked stone forge, cold and dark, grey ash heaped in its mouth at the left rear; Nie seated again on the right side of the anvil facing left, his freed right hand with its raw wound resting on his knee, the bloodied long rust-crusted iron nail lying on the anvil's edge, the hammer leaning on the stump; Liu sitting cross-legged on the sand at the anvil's left side, three paces away, facing right, his left arm stiff; the unopened clay jar on the anvil's edge; flat grey-white morning light from screen right, the sun higher now, grey ash drifting from left to right
 動作：The wind lays a thin even film of grey ash across the anvil face from left to right
 
 
@@ -958,7 +958,7 @@
 
 #### 182. a03-s002
 
-無台詞動作（3 秒）：The open-sided forge shed on the grey plain seen low from the south in the morning: the great cracked stone forge, cold and dark, grey ash heaped in its mouth at the left rear; under the shed at centre-right Nie standing on the right side of a scarred black iron anvil set on a tree-stump block, facing left, both burn-scarred hands on a long-handled smith's hammer with a blackened iron head, its head resting on the anvil face in a haze of ash and dying sparks; the clay jar and the bloodied nail on the anvil's near edge; Liu sitting cross-legged on the sand in front of an upturned wooden crate at screen left three paces away, facing right, his left arm held stiff; a small iron brazier gone to cold grey ash between them; flat grey-white morning light from screen right, fine grey ash drifting from left to right
+無台詞動作（3 秒）：The open-sided forge shed on the grey plain seen low from the south in the morning: the great cracked stone forge, cold and dark, grey ash heaped in its mouth at the left rear; under the shed at centre-right Nie standing on the right side of a scarred black iron anvil set on a tree-stump block, facing left, both burn-scarred hands on a long-handled smith's hammer with a blackened iron head, its head resting on the anvil face in a haze of ash and dying sparks; the clay jar and the bloodied nail on the anvil's near edge; Liu sitting cross-legged on the sand at screen left three paces back from the anvil, leaning away from it, facing right, his left arm held stiff, the upturned wooden crate behind him; a small iron brazier gone to cold grey ash at his side; flat grey-white morning light from screen right, fine grey ash drifting from left to right
 動作：The anvil cracks apart down its middle, its two halves tipping away from each other as the stump block splits beneath
 
 
@@ -969,8 +969,8 @@
 
 #### 184. a03-s004
 
-【柳不活「求死書生」】（像念帳，一筆一筆，輕）一天一根，
-【柳不活「求死書生」】一年，三百多根。
+【柳不活「求死書生」】（輕，帶點笑，像隨口問一筆帳）砧碎了，
+【柳不活「求死書生」】釘，往哪裡釘？
 
 #### 185. a03-s005
 
@@ -1923,7 +1923,9 @@
 
 #### 371. a05-s008
 
-【柳不活「求死書生」】（對木牌說，輕，帶一點笑）還用得著你。
+無台詞動作（3 秒）：Liu kneeling at the left side of the low desk facing right, his head bowed over his belt, the narrow wooden tally in his right hand at his waist beside the small sealed gourd, his left arm stiff; the square window at screen right glowing orange with the three far peaks beyond, the roster rack dark behind him
+動作：Liu ties the tally back onto his belt by its dark cord
+
 
 ### 夜訪
 
@@ -2332,5 +2334,5 @@
 動作：The cold mist creeps slowly across the stone over the half tally
 
 
-narrative 6c1356e7205cd44c
-speech 23a943081d4dadf9
+narrative 7595f45757fce9f1
+speech 3e1024958248c2ad

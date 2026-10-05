@@ -566,8 +566,8 @@
 
 #### 110. a02-s019
 
-【包三錢】（算盤打得響，小聲）三十錢，
-【包三錢】說不定還收少了。
+【包三錢】（小聲嘀咕，想不通）燒都不燒……
+【包三錢】怪事。
 
 #### 111. a02-s020
 
@@ -701,7 +701,7 @@
 #### 137. a02-s046
 
 【寂聞「怒目佛」】（不以為然）大夫，
-【寂聞「怒目佛」】看了一天。
+【寂聞「怒目佛」】也只會搖頭。
 【寂聞「怒目佛」】（像隨口一問）包三錢呢？
 
 #### 138. a02-s047
@@ -903,7 +903,6 @@
 #### 176. a02-s085
 
 【包三錢】（又怕又氣，喊出來）三十錢買我一條命！
-【包三錢】便宜您了！
 
 #### 177. a02-s086
 
@@ -1379,8 +1378,8 @@
 
 #### 270. a03-s087
 
-【竹虛道人】（乾，一句收住）人會說謊，
-【竹虛道人】扇子不會。
+【竹虛道人】（乾，一句收住，不解釋）我兩樣，
+【竹虛道人】都看。
 
 #### 271. a03-s088
 
@@ -1874,7 +1873,7 @@
 
 #### 366. a04-s091
 
-無台詞動作（2 秒）：A cramped attic room above a harbour shop late at night, no one in the room: a wooden board beside a small iron brazier with dying coals, a sheet of thin paper pressed between dry sheets, the corner of the top dry sheet curling up in the heat to uncover a single grey charcoal curve at the edge of the paper beneath, the rest still covered; the dark red glow of the dying coals from below, a thin line of cold moonlight from the small window at screen right
+無台詞動作（2 秒）：A cramped attic room above a harbour shop late at night, the low bed out of frame at the right: a wooden board beside a small iron brazier with coals burning low, a sheet of thin paper pressed between dry sheets, the corner of the top dry sheet curling up in the heat to uncover a single grey charcoal curve at the edge of the paper beneath, the rest still covered; the dark red glow of the low coals from below, a thin line of cold moonlight from the small window at screen right
 動作：The corner of the top dry sheet lifts a finger's width higher in the brazier's heat, uncovering the single grey charcoal curve
 
 
@@ -1979,8 +1978,8 @@
 
 #### 388. a05-s022
 
-無台詞動作（3 秒）：The south-east corner of the council hall: Jiwen striding toward the camera at screen right, Yin a half step behind him with his straight sword hilt above his right shoulder, the square table and the gold and dark-teal banners behind them, morning daylight slanting down from the high windows at the upper right, cloud mist beyond the windows
-動作：Jiwen strides past the camera out of the lower right edge of frame, Yin following on his heel
+無台詞動作（3 秒）：The south-west corner of the council hall: Jiwen striding toward the camera at screen left, Yin a half step behind him with his straight sword hilt above his right shoulder, the square table and the gold and dark-teal banners behind them, morning daylight slanting down from the high windows at the upper right, cloud mist beyond the windows
+動作：Jiwen strides past the camera out of the lower left edge of frame, Yin following on his heel
 
 
 #### 389. a05-s023
@@ -2189,8 +2188,8 @@
 
 【沈歸鶴「白鶴先生」】（壓低，很平常地問）上山的時候，
 【沈歸鶴「白鶴先生」】有人看見嗎？
-【包三錢】（吸鼻子，有點得意）守夜的打著盹，
-【包三錢】沒人。
+【包三錢】（吸鼻子，有點得意）走挑水的小路，
+【包三錢】沒碰上人。
 
 #### 429. a05-s063
 
@@ -2214,19 +2213,18 @@
 
 #### 433. a05-s067
 
-【沈歸鶴「白鶴先生」】（很平，一字一字教他）什麼都沒看清，
-【沈歸鶴「白鶴先生」】就掉進了海裡。
+【沈歸鶴「白鶴先生」】（很平，不給答案）到時候，
+【沈歸鶴「白鶴先生」】你看著我。
 
 #### 434. a05-s068
 
-【包三錢】（油滑，討價還價的老毛病）替您撒謊，
-【包三錢】可比賣消息貴。
+【包三錢】（沒聽懂，鼻音，試探）看著您……
+【包三錢】就知道答什麼？
 
 #### 435. a05-s069
 
-【沈歸鶴「白鶴先生」】（溫和，把他自己的話還給他）你在青光底下，
-【沈歸鶴「白鶴先生」】只顧著擦，
-【沈歸鶴「白鶴先生」】本來就沒看清。
+【沈歸鶴「白鶴先生」】（溫和，帶一點笑）你一向，
+【沈歸鶴「白鶴先生」】比我會答。
 
 #### 436. a05-s070
 
@@ -2288,13 +2286,13 @@
 
 #### 448. a05-s082
 
-無台詞動作（3 秒）：Looking down on the dark desktop: on the left, a wrinkled, water-stained sheet of thin paper with a grey charcoal rubbing of one carved corner sigil: three interlocking circles with one vertical stroke through their centre, its strokes swelling and tapering like brushwork, held under a folded white fan; on the right, Shen's pale fingers holding one yellow paper seal strip stamped in cinnabar red with the alliance sigil: three interlocking circles with one vertical stroke through their centre, just above the desk beside it; the two sigils side by side, the same shape; warm candlelight from the right
+無台詞動作（4 秒）：Looking down on the dark desktop: on the left, a wrinkled, water-stained sheet of thin paper with a grey charcoal rubbing of one carved corner sigil: three interlocking circles with one vertical stroke through their centre, its strokes swelling and tapering like brushwork, held under a folded white fan; on the right, Shen's pale fingers holding one yellow paper seal strip stamped in cinnabar red with the alliance sigil: three interlocking circles with one vertical stroke through their centre, just above the desk beside it; the two sigils side by side, the same shape; warm candlelight from the right
 動作：Shen's fingers lay the yellow seal strip flat beside the rubbing, its red sigil level with the grey one
 
 
 #### 449. a05-s083
 
-無台詞動作（2 秒）：Bao's face at screen right facing left toward the desk, his mouth hanging open, watery eyes wide and fixed on the papers below the frame, the indigo quilt slipping off one shoulder, the candle flame beside him
+無台詞動作（3 秒）：Bao's face at screen right facing left toward the desk, his mouth hanging open, watery eyes wide and fixed on the papers below the frame, the indigo quilt slipping off one shoulder, the candle flame beside him
 動作：Bao leans in over the desk, his mouth hanging open
 
 
@@ -2328,5 +2326,5 @@
 動作：A draught through the hall lifts all three banners at once, and they sink back still
 
 
-narrative 7fa57dcc1467cfbd
-speech 7e16d4d17272dd94
+narrative a6262f0345b7301b
+speech 2f0117de72ff9e45

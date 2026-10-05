@@ -1,0 +1,94 @@
+{
+ "checks": "node check-act.mjs --all --craft（ep3，454 個 scene＝451 鏡＋3 張卡）：SCHEMA 錯誤 0；LINT 錯誤 0；LINT 警告 3 條，都是預期內的：(1) clips tier 的 2 個 still 會做成動畫關鍵影格（a01-s013 柳不活詩號定格、a02-s001 聶孤鐵詩號定格）；(2) 「about 23.4 minutes; the target is 22-22」；(3) runtime_spec 估算正文 1404.1 秒，實測門檻 1260–1380 秒。分場表第一節本來就寫明估算 1,404 秒、實測才落在門檻內，所以 (2)(3) 不算錯。各幕秒數：a01 278.7（87 鏡＋2 卡）、a02 279.5（90 鏡＋1 卡）、a03 284.6（91 鏡）、a04 282.6（92 鏡）、a05 278.6（91 鏡），全部在 281±10 秒內。總長 1404.1 秒，在 1,390–1,418 秒的目標內。各場對分場表目標：a01 冷開場 16.9（≤18）、前情 10.9（≤12）、詩號 9.4、鐵廬夜 119.7（目標 135）、書齋 117.8（目標 104）——兩場互補，幕總長仍在範圍；a02 五場 9.4／52.8／44.3／80.6／92.4；a03 四場 67.8／82.4／77.4／57.0；a04 兩場 62.4／220.2；a05 四場 24.1／119.1／42.8／92.7，都在分場表的估算附近。台詞 662 行，口播 2,889 字，旁白占 4.2%；台詞中位長度 4 字，超過 20 字的 0%。鏡長中位 3.0 秒，p90 4.5 秒，最長 6.9 秒。章名（估算起點／分場表）：鐵砧 0:00／0:00、求死書生 0:20／0:21、拓片 2:40／約 2:57、雕匠 4:38／約 4:41、三股精元 7:45／約 7:53、斷砧 9:18／約 9:22、客院 10:26／約 10:27、風聲 11:48／約 11:52、推算 14:02／約 14:03、請命 15:05／約 15:05、只差一筆 17:22／約 17:09、夜訪 19:09／約 19:09、折牌 21:51／約 21:49；每一章都掛在分場表指定的那一鏡上（拓片 a01-s052、三股精元 a02-s063 場 5 第一鏡、客院 a03-s024、風聲 a03-s050、請命 a04-s022、只差一筆 a04-s061 舉手的反打鏡、夜訪 a05-s009 月洞門第一鏡、折牌 a05-s061 望樓），文字逐字相同；第 1 章 20 秒，每章 ≥ 10 秒。高張力時間碼：前半拔釘 a02-s034 6:25、擲釘 a02-s036 6:28、「本該有我」a02-s043 6:44、場 4 收在 7:45、規矩到 9:18（分場表 6:33–7:53、擲釘約 6:37，接規矩到 9:22）；後半舉手 a04-s061 17:22、Liu 視角的手背 a04-s067 17:39、「只差一筆」a04-s072 17:52、「梵林記下了」a04-s077 18:03、「三宗，准奏」a04-s084 18:18、本幕收在 18:45（分場表 17:04–18:10、准奏收約 18:44）。最後一句 a05-s090 柳不活「我去做她的人。」在 23:16–23:19，尾鏡 a05-s091 半截押解牌被山霧漫過，收在 23:24，照分場表。craft 24/24 全數達標；info 列三項：60 鏡短於 2 秒（多是單字台詞與動作插鏡）；314 鏡 locked、最長連 9；52 條 motion 含 and／then，逐條看過，都是同一動作的起勢與收勢（握住釘頭又放開、跨過三步單膝跪下、擲出後停住、掀開一角壓住小圓），沒有一條真的是兩個動作。shot_reading 陷阱 0。另外用腳本核對過：分場表每一句必留台詞（含冷開場、前情、兩首詩號、章名卡）逐字都在，順序也對；說話的只有 narrator 與九個允許的 id，殷無聲、客院盟兵、第二名盟兵、護送隊、玄門弟子都沒有台詞；characters 沒有超過 3 個的鏡頭，盟堂與書齋四人以上同框都照第四節寫死的做法（主全景列書院長老、執事長老、寂聞，沈歸鶴只拍背影白袖，殷無聲寫成東牆柱影裡的瘦削劍客；書齋 a01-s074、a01-s085 殷無聲寫成門框邊側身面朝門外的劍客，不寫臉）；聶孤鐵每一鏡都選 nie-nail-wound；柳不活的 look 照第二節分段：a02-s058 以前基本外觀（a02-s039–s056 肩上的釘子與暈開的血漬逐鏡寫在 prompt、a02-s058 與 s060 寫破洞滲血未包紮），纏布插鏡之後 a02-s061 起到 a05-s080 一律 liu-wounded，折牌後 a05-s085、a05-s090 用 liu-defected 並補了左肩乾掉的血漬；姬無霜全集基本外觀、沒有弓、沒有箭囊，殿階上先鋒令一直拿在左手；手背只在 a04-s067（Liu 視角）與 a05-s079（Liu 視線高度）露出，兩鏡都照抄第九節的金印整句，客院兩場與書齋都把右手收在袖裡；立誓從舉手 a04-s061 到 POV a04-s067 之間沒有任何南側機位拍她舉起的手（a04-s064 從沈歸鶴背後拍時手藏在頭與鳳冠後面，a04-s065 是朝北的掌心）。扇子的記號只有兩處靜止的插鏡：a01-s082「看一局殘棋」、a03-s067「山上風大」；握扇的手四處：a01-s063 聽到柳不活、a03-s030「三百零七」、a05-s055 報信、a05-s062 望樓；真話時扇子都會動（a01-s058–s059 扇尖點拓片與封條的符、a03-s055 在欄杆上輕敲、a04-s082 投准前合扇）；a01-s084「該說的，盟堂上，都會說」拍的是臉，沒配扇子。吞藥 a01-s053–s054 在包三錢進門前；袖口血點 a01-s087 時 Bao 背對著收拓片；a05 書齋沈歸鶴一句台詞都沒有，黑子懸在棋盤上沒落。禁字：「鬼燈」只出現在分場表允許的句子（a03-s037 客院「門外，是鬼燈君」、a03-s053 石台分場 1、a04 盟堂姬無霜與執事長老的必留與建議台詞），燕迴上石台之後沒有人再說；「印」只有聶孤鐵 a02-s078 講規矩那一句；「精元」只在 a02 場 5；「黑風」只在詩號；柳不活沒說過「寂聞」、沒對包三錢說任何數目（a04-s020–s021「梵林的先天，只有一個」寫的是獨自一人，見 findings）；「三宗的符」0 次，全集說「盟符」；旁白與台詞沒有「第幾日」，時間詞只有七天前、二十多天前、那幾天、到今天、那一夜、同一個晚上、前幾天、明天該回來、天亮了、第二天、半個時辰、晚了兩天、晚了三天、明天、一大早、午後、當天午後、明日清晨、今天盟堂上、明天清晨、剛才、到現在、第二天清晨、再等一刻，和第十節的帳對得上（原訂第 9 日回盟，第 11 日黃昏「晚了兩天」、第 12 日夜「晚了三天」）。第 1 集的名句「你知道的，我都要知道」「瞞得過一天，是一天」「幽都殺人，用不著走門」0 次，石台上沈歸鶴回的是「盟兵守的是門」；跟第 1、2 集逐字相同的只有刻意呼應的「……第三十六個。」、必留的「什麼都沒看清」、以及「一個都沒醒」這類同一件事的短句；同一集裡逐字重複的有兩處（見 findings）。prompt 沒有雙引號，沒有要畫文字的字眼（名冊、報單、帳冊都寫 illegible brush marks，宗旗與先鋒旗寫 no writing／no characters）；data 沒有 fit、reveal、transition、seed、negative、source，dissolve 0；camera 每鏡都有景別，同一運鏡最多連 2；每一場的出口方向一致：鐵廬 Liu 由右往左走出（a03-s020–s021），書齋的門一律在右前景（Bao、寂聞、殷無聲都從右進出），客院的門在畫面左（a03-s026、a05-s012、a05-s042），盟府門前的側門在畫面右（a03-s089），殿階由右上走到左下（a05-s070–s073），燕迴在階頂、她在階腳回身看右上。光：荒原黃昏→夜→清晨→上午的光向照第四節（黃昏與清晨分別從左、從右），書齋燭火右、月光左，客院午後光從左，石台夕光從右，盟堂依機位朝向把高窗寫在左上或右上，望樓晨光從左、殿階晨光從右上，兩個機位朝向不同，是正常的。承接第 2 集：跑過 dialogue.py --ep 2；第 2 集結束在書齋，拓片與備用封條並排在案上、沈歸鶴的指尖按在符上說「收魂陣的四個角，是三宗盟，自己的符」，包三錢裹著被子（bao-chilled）；本集 a01-s056–s059 接著問「另外三個角，你看清了？」、扇尖點兩個符，包三錢第 8 日已回基本外觀、三枚銅錢（a05-s017 捂住三枚），寂聞第 2 集的「等你退燒，要來問話」在 a01-s079 兌現，兩邊都接得上。審稿途中 ep2/acts 在工作樹被另一個代理照 ep2 review 改過（git 顯示 M，a05-s067–s069 已改成「到時候，」「你看著我。」…「比我會答。」，守夜那句改成「走挑水的小路」），所以第 2 集不再排練答案，本集 a01-s080 包三錢眼角瞄一下沈歸鶴（motion 已寫 eyes flick sideways toward Shen）才是臨場替他瞞，兩集接得上；ep2 review 改前改後本集都不用動。縮圖：meta.json 的 a01-s013 照分場表第五節，prompt 已把右半邊留成乾淨的灰橘天空放「只差一筆」，建議維持；若站主想要劇情圖，替代鏡是 a04-s067（Liu 視角的兩道金印與空位，與標語字面相合，但沒有臉）。",
+ "findings": [
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s063",
+    "a02-s069",
+    "a02-s091",
+    "a03-s002",
+    "a03-s008"
+   ],
+   "problem": "第二幕與第三幕的接縫：鍛錘舉到最高點和砸下去是連續的兩鏡，可是柳不活跟鐵砧的距離從第二幕的一步變成第三幕的三步，中間沒有任何走位。",
+   "evidence": "a02-s063「Liu sitting cross-legged on the sand at the anvil's left side, one pace away」、a02-s069「one pace of grey sand and the ash-filmed anvil between them」；a02-s091 只寫「leaning back from the anvil」；接著 a03-s002「Liu sitting cross-legged on the sand in front of an upturned wooden crate at screen left three paces away」、a03-s008「three paces apart」。分場表 a03 場 1 第 1–2 步寫明第一鏡接第二幕最後一鏡。",
+   "fix": "以第二幕為準改第三幕：a03-s002 把「three paces away」改成「a pace back from the anvil, leaning away from it」；a03-s008 的「three paces apart」改成「two paces apart」（他在 a03-s002 被裂開的砧嚇得往後挪半步，說得通）。或者反過來在 a02-s091 的 motion 前面加一句 Liu 往後挪，但那樣會變成兩個動作，不建議。秒數不變。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s020",
+    "a02-s021",
+    "a03-s004"
+   ],
+   "problem": "柳不活「一天一根，一年，三百多根」在逼問場說過一次，砸砧之後又逐字說了一次，隔四分半鐘重講同一筆帳。",
+   "evidence": "a02-s020「一天一根，」「一年，」「三百多根。」接 a02-s021「還的是誰的帳？」；a03-s004「一天一根，」「一年，三百多根。」接 a03-s005 聶孤鐵「不釘了。」。兩處都是寫手補的，不是必留。",
+   "fix": "保留第二幕那一次（它引出「我的帳，不用你數」）。a03-s004 換成引出「不釘了」的新句，長度相近，例：Liu「砧碎了，」「釘，往哪裡釘？」，motion 照舊。總長少約 0.5 秒，不用補。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a01-s067",
+    "a01-s068",
+    "a04-s010"
+   ],
+   "problem": "「又一個記帳的！」這個笑點在第一幕已經由包三錢轉述過一次（連「他說：記帳」都先講了），第四幕押解房當面那一次（必留）變成第二次講，力道被第一幕搶走。",
+   "evidence": "a01-s067 包三錢「我伸手要三錢，」「他說：記帳。」、a01-s068「又一個記帳的！」；a04-s009–s010 包三錢「這種帳，我也收三錢。」柳不活「記帳。」包三錢「又一個記帳的！」。分場表第六節把「連柳不活也回他記帳（又一個記帳的！）」放在第四幕；第一幕書齋分場 3 的「記帳小笑點」指的是 a01-s070 的「三錢。」「記帳。」，沒有要包三錢轉述柳不活說記帳。",
+   "fix": "a01-s067 改成 Bao「我伸手要三錢，」「他笑著走了。」；a01-s068 改成 Bao「一個錢也沒掏！」（7 字，與原句同長，拍腿的 motion 照舊）。a01-s070 的「三錢。」「記帳。」保留，第四幕 a04-s010 不動，包三錢在那裡才第一次聽到柳不活說「記帳」。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a04-s018",
+    "a04-s019",
+    "a04-s020",
+    "a04-s021"
+   ],
+   "problem": "包三錢沒有離場的畫面，下一鏡柳不活就說出「梵林的先天，只有一個」。第八節規定對包三錢不說任何數目、包三錢不知道柳不活在想什麼，第五幕他也只報投敵；剪起來觀眾會以為包三錢還蹲在案邊聽到了。",
+   "evidence": "a04-s018 包三錢「half risen from his crouch … half turned toward the door」說「午後盟堂議事，」；a04-s019 插鏡只拍他的手指點名冊紅繩；a04-s020 立刻是窗外梵林峰的全景壓柳不活「梵林的先天，」，a04-s021 的 prompt 才寫「alone」。從 s019 到 s020 沒有門、沒有背影、沒有腳步。",
+   "fix": "把 a04-s020 改成室內全景而不是窗外：camera「Wide shot, eye level, slow push in」，prompt 寫「the archive room, the door at the back left shut, Liu alone kneeling at the low desk turned toward the square window at screen right, the three peaks and the temple peak with saffron-tiled roofs in the window」，motion「A band of mist drifts across the temple peak in the window from left to right」，台詞照舊；a04-s021 的近景不動。這樣門關著、屋裡只有他一個人都在畫面上，秒數不變。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a04-s089"
+   ],
+   "problem": "她雙手把先鋒令舉到眉前、面向鏡頭，右手背正對觀眾，prompt 又沒寫金印，生出來會是乾淨的手背；觀眾二十秒前才在 Liu 視角看過那兩道印。第八節規定手背本集只露兩次（盟堂 Liu 視角、殿階 Liu 視角），cast-notes 連戲提醒第 1 條也規定凡拍到右手背都要寫金印那一句。",
+   "evidence": "a04-s089 prompt「the white jade command token with its gold tassel held level before her chest in both hands, the long black sleeves covering her wrists」，motion「Wushuang lifts the white jade token to her brow in both hands」；a04-s088 刻意寫成掌心朝上只見手掌，a05-s064、s065、s074、s077 都寫先鋒令在左手，只有這一鏡漏了。",
+   "fix": "prompt 改成「the white jade command token with its gold tassel held level before her chest in her left hand, her right hand hidden inside its long black sleeve on her lap」，motion 改成「Wushuang lifts the white jade token to her brow in her left hand」。或者兩手都寫「both hands hidden to the fingertips inside the long black sleeves, the token resting on the sleeve cloth」。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a05-s008",
+    "a05-s010"
+   ],
+   "problem": "柳不活對押解牌說「還用得著你」，把下一場拿牌子過月洞門的手法先講出來，也在分場表要的「解下押解牌放在掌心看，又繫回去」兩個插鏡上多加了一句台詞；場 1 的規定是不說出計畫本身。",
+   "evidence": "a05-s008 柳不活「還用得著你。」（emotion「對木牌說」），接 a05-s009–s010 他舉押解牌過盟兵的槍。分場表 a05 場 1：「最後他解下押解牌放在掌心看（插鏡），又繫回去」，沒有台詞；「不說出計畫本身：觀眾只知道他做了決定，不知道是什麼」。",
+   "fix": "a05-s008 改成無台詞的動作鏡：lines 空、action_seconds 3，motion 照舊「Liu ties the tally back onto his belt by its dark cord」。場 1 由 24.1 秒變約 24.7 秒，仍在 25 秒目標；觀眾到月洞門那一鏡才看懂他為什麼繫回去。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a01-s002",
+    "a01-s052",
+    "a01-s056",
+    "a01-s075",
+    "a01-s081",
+    "a01-s085"
+   ],
+   "problem": "第一幕三處小連戲：冷開場第二鏡的右手沒有釘子；書齋的拓片和封條在全景裡不存在、下一個雙人鏡就並排在案上；殷無聲把門拉半掩，後面幾鏡又寫門開著有穿堂風。",
+   "evidence": "a01-s001 錘子剛砸下釘頭，a01-s002 卻寫「his right hand flat on the anvil」沒提釘子，到 a01-s004 才是「the pinned hand」。a01-s052 書案上列了筆、硯、燭、降書匣、扇，沒有兩張紙，a01-s056「on the desk between them two papers laid side by side」、a01-s058 俯角插鏡，中間沒人把紙攤出來。a01-s075 motion「Yin draws the door half closed」，a01-s081「the open door and the dark corridor behind Jiwen」、a01-s082「the draught from the open door」、a01-s085「strides out through the open door」。",
+   "fix": "a01-s002 在「his right hand flat on the anvil」後面加「pinned by one long rust-crusted iron nail」。a01-s052 在扇子後面加「the wrinkled rubbing and one yellow paper seal strip lying side by side before him」（照第 2 集最後一場留在案上的樣子）。a01-s075 的 motion 改成「Yin sets his shoulder against the door post, keeping his back to the room」，門不動。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a03-s063"
+   ],
+   "problem": "燕迴在畫面左緣看得見，characters 還有空位卻沒列他，臉容易走樣。",
+   "evidence": "a03-s063 prompt「Shen at screen left by the railing facing right … Yan a step behind him at the left edge」，characters 只有 ji-wen、shen-guihe。",
+   "fix": "characters 加 yan-hui（三人，不超過上限）；或把 prompt 改成只露他的肩與刀穗「the red tassel of a sabre at the left edge」，不露臉。"
+  }
+ ]
+}
