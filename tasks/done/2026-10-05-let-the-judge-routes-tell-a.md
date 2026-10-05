@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-let-the-judge-routes-tell-a
 title: Let the judge routes tell a lost answer from an API they never reached
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-opus-5-5-judge-routes-lost-answer
 claimed_at: 2026-10-05T12:27:02Z
 created_at: 2026-10-05T00:44:31Z
-completed_at:
+completed_at: 2026-10-05T13:04:00Z
 branch: claude/judge-routes-lost-answer
 depends_on: []
 scope:
