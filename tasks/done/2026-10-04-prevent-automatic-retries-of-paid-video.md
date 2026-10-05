@@ -101,3 +101,15 @@ Run `node --test tools/video/automation/client.test.mjs` and relevant QA caller 
   case, run against this branch's `client.mjs`, fails with "automation/judge/policy was sent and no
   answer came back (fetch failed); Jev may have run" where it expects "cannot reach". The four focused
   files still give 128 of 128, and `cli.mjs check` lists only `tools/video/qa/qa.test.mjs` as stale.
+- Review round 2 (2026-10-05): the same blocker, still open at 965a60e2c, and still not the fixer's to
+  write. The CI logs of that head show `smoke` and `web-checks` each with one failing test, the
+  receipt binding above (`web` is red because `web-checks` is); every other check passed. The
+  receipt binds `tools/video/qa/qa.test.mjs` at 4ea9fb91… (origin/main's blob); this branch's blob
+  is 3f4df95d…, the hash the increment has to record. The origin/main copy of that test was run
+  again against this `client.mjs` and fails the same way, so the edit stays. Since round 1, #1233
+  (2026-10-04-jev-provider-uncertain-retries) landed: `JevOutcomeUncertain` is a `JevError`, and
+  `admin_api.py` still answers it with 502 `video_judge_upstream_failed`, which this client retries
+  as settled. That is the case the note above warned about. origin/main filed
+  2026-10-05-jev-judge-endpoints-report-an-uncertain to give it its own code. Any code outside
+  `SETTLED_JUDGE_CODES` and `RETRYABLE_CODES`, at any status but 429, is sent once here, so that
+  ticket needs no client change.
