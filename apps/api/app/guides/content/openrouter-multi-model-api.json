@@ -47,7 +47,7 @@
         },
         {
           "type": "paragraph",
-          "text": "這篇照 openrouter.ai 在 2026 年 9 月 14 日的文件、定價頁與條款走一遍：開帳號拿金鑰、儲值手續費、模型頁那兩個「每百萬 token」的數字怎麼讀、免費模型一天能打幾次、供應商掛掉時 fallback 怎麼接手，還有隱私分成哪兩層、哪一層一定要自己設定。"
+          "text": "這篇照 openrouter.ai 在 2026 年 9 月 14 日的文件、定價頁與條款走一遍（範例模型、模型頁價格與模型數在 10 月 5 日重新查過）：開帳號拿金鑰、儲值手續費、模型頁那兩個「每百萬 token」的數字怎麼讀、免費模型一天能打幾次、供應商掛掉時 fallback 怎麼接手，還有隱私分成哪兩層、哪一層一定要自己設定。"
         },
         {
           "type": "heading",
@@ -56,7 +56,7 @@
         },
         {
           "type": "paragraph",
-          "text": "官方快速入門的第一句話是「OpenRouter 透過單一 API 端點提供數百個 AI 模型」，並說它會自動處理 fallback、為每個請求挑成本最划算的選項。文件的模型頁寫「400+ models and providers」；當天用公開的模型 API 查，只算文字輸出的模型是 447 個，把圖像、語音、嵌入全算進去是 602 個。定價頁的方案表寫付費方案「500+ models」「80+ providers」，免費方案「25+ free models」「4 free providers」。"
+          "text": "官方快速入門的第一句話是「OpenRouter 透過單一 API 端點提供數百個 AI 模型」，並說它會自動處理 fallback、為每個請求挑成本最划算的選項。文件的模型頁寫「400+ models and providers」；2026 年 10 月 5 日用公開的模型 API 查，只算文字輸出的模型是 466 個，把圖像、語音、嵌入全算進去是 649 個。定價頁的方案表寫付費方案「500+ models」「80+ providers」，免費方案「25+ free models」「4 free providers」。"
         },
         {
           "type": "paragraph",
@@ -81,19 +81,19 @@
         },
         {
           "type": "paragraph",
-          "text": "最小的呼叫就是把 OpenAI SDK 的 base_url 指過來。下面兩段照官方 quickstart 的原文，只把模型代號換成當天模型頁上的 anthropic/claude-sonnet-5；兩個 OpenRouter 專用標頭是選用的，設了你的應用程式才會出現在官網排行榜上。"
+          "text": "最小的呼叫就是把 OpenAI SDK 的 base_url 指過來。下面兩段照官方 quickstart 的原文，只把模型代號換成 2026 年 10 月 5 日模型頁上的 anthropic/claude-sonnet-5.5；兩個 OpenRouter 專用標頭是選用的，設了你的應用程式才會出現在官網排行榜上。"
         },
         {
           "type": "code",
           "language": "python",
           "label": "用 OpenAI 的 Python SDK 呼叫 OpenRouter（照官方 quickstart）",
-          "code": "from openai import OpenAI\n\nclient = OpenAI(\n  base_url=\"https://openrouter.ai/api/v1\",\n  api_key=\"<OPENROUTER_API_KEY>\",\n)\n\ncompletion = client.chat.completions.create(\n  extra_headers={\n    \"HTTP-Referer\": \"<YOUR_SITE_URL>\",       # 選用，排行榜用\n    \"X-OpenRouter-Title\": \"<YOUR_SITE_NAME>\", # 選用，排行榜用\n  },\n  model=\"anthropic/claude-sonnet-5\",\n  messages=[\n    {\"role\": \"user\", \"content\": \"What is the meaning of life?\"}\n  ]\n)\n\nprint(completion.choices[0].message.content)"
+          "code": "from openai import OpenAI\n\nclient = OpenAI(\n  base_url=\"https://openrouter.ai/api/v1\",\n  api_key=\"<OPENROUTER_API_KEY>\",\n)\n\ncompletion = client.chat.completions.create(\n  extra_headers={\n    \"HTTP-Referer\": \"<YOUR_SITE_URL>\",       # 選用，排行榜用\n    \"X-OpenRouter-Title\": \"<YOUR_SITE_NAME>\", # 選用，排行榜用\n  },\n  model=\"anthropic/claude-sonnet-5.5\",\n  messages=[\n    {\"role\": \"user\", \"content\": \"What is the meaning of life?\"}\n  ]\n)\n\nprint(completion.choices[0].message.content)"
         },
         {
           "type": "code",
           "language": "bash",
           "label": "同一個請求的 curl 版本（照官方 quickstart）",
-          "code": "curl https://openrouter.ai/api/v1/chat/completions \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $OPENROUTER_API_KEY\" \\\n  -d '{\n  \"model\": \"anthropic/claude-sonnet-5\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the meaning of life?\"\n    }\n  ]\n}'"
+          "code": "curl https://openrouter.ai/api/v1/chat/completions \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $OPENROUTER_API_KEY\" \\\n  -d '{\n  \"model\": \"anthropic/claude-sonnet-5.5\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"What is the meaning of life?\"\n    }\n  ]\n}'"
         },
         {
           "type": "paragraph",
@@ -140,7 +140,7 @@
         },
         {
           "type": "paragraph",
-          "text": "模型頁的價格是兩個並排的數字，寫成「$2 /M input tokens」與「$10 /M output tokens」，也就是每一百萬個輸入 token 和每一百萬個輸出 token 各多少美元。以 2026 年 9 月 14 日的模型頁為例：Claude Sonnet 5 是輸入 2 美元、輸出 10 美元，上下文視窗 1.0M；Gemini 3.8 Flash 是 0.75 與 3.75；gpt-oss-20b 是 0.03 與 0.13。點進單一模型頁往下拉，還有每一家代管供應商各自的輸入、輸出與快取讀取價格。"
+          "text": "模型頁的價格是兩個並排的數字，寫成「$2 /M input tokens」與「$10 /M output tokens」，也就是每一百萬個輸入 token 和每一百萬個輸出 token 各多少美元。以 2026 年 10 月 5 日的模型頁為例：Claude Sonnet 5.5 是輸入 2 美元、輸出 10 美元，上下文視窗 1M；Gemini 3.8 Flash 是 0.75 與 3.75；gpt-oss-20b 是 0.018 與 0.09。點進單一模型頁往下拉，還有每一家代管供應商各自的輸入、輸出與快取讀取價格。"
         },
         {
           "type": "paragraph",
@@ -150,11 +150,11 @@
           "type": "code",
           "language": "bash",
           "label": "不需金鑰的模型與價格查詢（照官方模型文件）",
-          "code": "# 全部模型與價格\ncurl \"https://openrouter.ai/api/v1/models\"\n\n# 只看一個模型\ncurl \"https://openrouter.ai/api/v1/model/anthropic/claude-sonnet-5\"\n\n# 只看支援工具呼叫的模型\ncurl \"https://openrouter.ai/api/v1/models?supported_parameters=tools\""
+          "code": "# 全部模型與價格\ncurl \"https://openrouter.ai/api/v1/models\"\n\n# 只看一個模型\ncurl \"https://openrouter.ai/api/v1/model/anthropic/claude-sonnet-5.5\"\n\n# 只看支援工具呼叫的模型\ncurl \"https://openrouter.ai/api/v1/models?supported_parameters=tools\""
         },
         {
           "type": "paragraph",
-          "text": "有些模型的價格會隨條件變。文件的 pricing.overrides 欄位就是用來表示長上下文或離峰時段的另一組價格，例如當天的 GPT-5.6 Luna 基本價是輸入 0.2、輸出 1.2 美元，提示詞超過 272,000 個 token 之後改成 0.4 與 1.8。輸入快取讀取是獨立的一欄，通常比原價便宜一截。"
+          "text": "有些模型的價格會隨條件變。文件的 pricing.overrides 欄位就是用來表示長上下文或離峰時段的另一組價格，例如 2026 年 10 月 5 日的 GPT-6 Luna 基本價是輸入 0.1、輸出 0.5 美元，提示詞超過 272,000 個 token 之後改成 0.2 與 0.75。輸入快取讀取是獨立的一欄，通常比原價便宜一截。"
         },
         {
           "type": "rich_paragraph",
@@ -187,7 +187,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "當天用公開 API 查，結尾是 :free 的模型在文字模型裡有 19 個，把所有輸出型態算進來是 25 個。想讓 OpenRouter 自己挑一個免費模型，文件提供 openrouter/free 這個代號。免費清單裡不少是"
+              "text": "2026 年 10 月 5 日用公開 API 查，結尾是 :free 的模型在文字模型裡有 17 個，把所有輸出型態算進來是 24 個。想讓 OpenRouter 自己挑一個免費模型，文件提供 openrouter/free 這個代號。免費清單裡不少是"
             },
             {
               "type": "article",
@@ -219,7 +219,7 @@
         },
         {
           "type": "paragraph",
-          "text": "同一個模型常常有好幾家公司代管。模型頁的說明寫：不同公司代管同一個模型，OpenRouter 依你選的路由模式送到其中一家，模式有 Balanced（價格加速度）、Nitro（最快）與 Exacto（工具呼叫準確度最高）。預設是價格優先的負載平衡，路由文件把規則列成三步：先排掉最近 30 秒內出現明顯故障的供應商；在穩定的供應商裡看價格最低的幾家，依價格平方的倒數加權挑一家；剩下的當備援。"
+          "text": "同一個模型常常有好幾家公司代管。模型頁的說明寫：不同公司代管同一個模型，OpenRouter 依你選的路由模式送到其中一家，模式有 Balanced（價格加速度）、Nitro（最快）、Floor（最便宜）與 Exacto（工具呼叫準確度最高）。預設是價格優先的負載平衡，路由文件把規則列成三步：先排掉最近 30 秒內出現明顯故障的供應商；在穩定的供應商裡看價格最低的幾家，依價格平方的倒數加權挑一家；剩下的當備援。"
         },
         {
           "type": "paragraph",
@@ -252,7 +252,7 @@
           "type": "code",
           "language": "json",
           "label": "同時指定模型備援與供應商偏好（照官方路由文件的欄位）",
-          "code": "{\n  \"models\": [\"anthropic/claude-sonnet-5\", \"google/gemini-3.8-flash\"],\n  \"messages\": [{ \"role\": \"user\", \"content\": \"Hello\" }],\n  \"provider\": {\n    \"order\": [\"anthropic\", \"google\"],\n    \"allow_fallbacks\": false,\n    \"require_parameters\": true,\n    \"data_collection\": \"deny\",\n    \"zdr\": true\n  }\n}"
+          "code": "{\n  \"models\": [\"anthropic/claude-sonnet-5.5\", \"google/gemini-3.8-flash\"],\n  \"messages\": [{ \"role\": \"user\", \"content\": \"Hello\" }],\n  \"provider\": {\n    \"order\": [\"anthropic\", \"google\"],\n    \"allow_fallbacks\": false,\n    \"require_parameters\": true,\n    \"data_collection\": \"deny\",\n    \"zdr\": true\n  }\n}"
         },
         {
           "type": "image",
@@ -270,7 +270,7 @@
         },
         {
           "type": "paragraph",
-          "text": "不是每個模型都吃同樣的參數。定價頁的問答寫：底層模型如果支援 tools 或 function calling，你就能透過同一個 API 使用它——支不支援看模型本身，不是 OpenRouter 幫你補上。當天用模型 API 的 supported_parameters=tools 篩選，447 個文字模型裡有 358 個列出工具呼叫。路由文件也提到，請求帶了 tools 或 tool_choice 時，OpenRouter 會盡量路由到已知支援工具使用的供應商。"
+          "text": "不是每個模型都吃同樣的參數。定價頁的問答寫：底層模型如果支援 tools 或 function calling，你就能透過同一個 API 使用它——支不支援看模型本身，不是 OpenRouter 幫你補上。2026 年 10 月 5 日用模型 API 的 supported_parameters=tools 篩選，466 個文字模型裡篩出來的是 376 個。路由文件也提到，請求帶了 tools 或 tool_choice 時，OpenRouter 會盡量路由到已知支援工具使用的供應商。"
         },
         {
           "type": "rich_paragraph",
@@ -423,7 +423,7 @@
         {
           "title": "OpenRouter Quickstart（單一端點、自動 fallback、OpenAI SDK 與 curl 範例）",
           "url": "https://openrouter.ai/docs/quickstart",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "OpenRouter Frequently Asked Questions（手續費 5.5% 與 0.80 美元下限、免費模型每日次數、資料記錄、退款）",
@@ -488,22 +488,22 @@
         {
           "title": "OpenRouter Docs：Models（400+ 模型、pricing 欄位單位與 overrides、單一模型查詢）",
           "url": "https://openrouter.ai/docs/guides/overview/models",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "OpenRouter Models API（當天模型數與各模型每 token 價格的一手資料）",
           "url": "https://openrouter.ai/api/v1/models",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "OpenRouter Models（模型頁的每百萬 token 輸入與輸出價格欄位）",
           "url": "https://openrouter.ai/models",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
-          "title": "OpenRouter：Anthropic Claude Sonnet 5 模型頁（每百萬 token 2 與 10 美元、各供應商價格與路由模式說明）",
-          "url": "https://openrouter.ai/anthropic/claude-sonnet-5",
-          "checked_on": "2026-09-14"
+          "title": "OpenRouter：Anthropic Claude Sonnet 5.5 模型頁（每百萬 token 2 與 10 美元、上下文視窗 1M、各供應商價格與四種路由模式說明）",
+          "url": "https://openrouter.ai/anthropic/claude-sonnet-5.5",
+          "checked_on": "2026-10-05"
         },
         {
           "title": "OpenRouter Docs：OpenAI SDK（把 baseURL 指向 OpenRouter 的官方寫法）",
