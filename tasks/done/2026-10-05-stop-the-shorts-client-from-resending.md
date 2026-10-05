@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-stop-the-shorts-client-from-resending
 title: Stop the Shorts client from resending a judge policy request after a lost answer
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-shorts-client-no-resend
 claimed_at: 2026-10-05T12:27:46Z
 created_at: 2026-10-05T00:44:19Z
-completed_at:
+completed_at: 2026-10-05T12:38:21Z
 branch: claude/shorts-client-no-resend
 depends_on: []
 scope:
