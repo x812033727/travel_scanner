@@ -1,7 +1,7 @@
 ---
 id: 2026-10-05-videos-ai-gap-batch
 title: Admin queue for a slides video of a chosen article, and the eight AI-gap videos through it
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-opus-5-5
@@ -38,25 +38,38 @@ scope:
   - docs/videos/AUTOMATION.md
 ---
 
-# Eight videos from the AI income, investing, head-to-head and office batches
+# Admin queue for a slides video of a chosen article, and the eight AI-gap videos through it
 
 ## Why
 
-Describe the problem in the terms someone who has never seen it would need.
+The owner wants eight videos from the new AI income and investing articles, started from the
+admin. The admin had no way to do that: the worker's planner chose its own topic from recent
+articles and a web search, and the drama request queue turns every request into a one-off
+drama series.
 
 ## Definition of done
 
-- [ ] The observable outcome, not the implementation.
-
-## Steps
-
-- [ ] First sub-task.
-- [ ] Second sub-task.
-
-## How to verify
-
-The exact commands or clicks that prove it works.
+- [x] `video_slides_requests` (migration 0126) with admin routes (list, file, withdraw) and
+      worker routes (next, start, done); a request is refused while automation is off, for an
+      article that is not a published zh-TW life article, one already queued or started, or
+      one a live slides video already retells.
+- [x] The worker takes a request after drama requests and before the scheduled draft, plans
+      only that article (variant-free, so it counts toward max_drafts_per_month), keeps it
+      through a re-plan and reports done on publish approval.
+- [x] The tutorials tab shows the queue and, for content managers, the form (five locales).
+- [x] Long-form duration receipt rebound by an independent DURATION_ONLY review (10 files):
+      a requested video keeps the eight-minute floor.
+- [x] API, web, tools suites green; PR #1268 CI green.
+- [ ] After deploy: the owner queues the eight videos (order and the finance note are in the
+      PR description).
 
 ## Notes
 
-Findings, decisions and dead ends, so the next agent does not repeat them.
+- Implemented by a workflow: three layer implementers against one contract, four adversarial
+  reviewers (8 confirmed findings: an idempotent start for a retried claim, a per-article
+  advisory lock against double filing, only the two "withdrawn" 409s end a claim, i18n
+  wording, a heading level, tests for the room() gate), then fixes.
+- The e2e runtime API needed the new admin list (`{requests: []}`), or the admin video specs
+  saw a 404; fixed in 2f93043b.
+- A crash between the claim and the worker saving its state leaves an orphan `started`
+  request that blocks re-queueing that article; the same window exists for drama requests.

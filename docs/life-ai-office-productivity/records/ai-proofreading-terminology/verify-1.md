@@ -1,0 +1,58 @@
+# ai-proofreading-terminology 查核第一輪（2026-10-05）
+
+格式：主張｜判定（ok / fixed / softened / removed）｜來源網址
+
+- 標題「用 AI 校稿：錯字、用語一致與繁簡轉換的陷阱」與 description 的範圍描述｜ok（與正文一致）｜—
+- 摘要：台灣用語以教育部辭典兩岸對照為準；原「軟體不是軟件、資料不是數據」→ 改為「台灣寫軟體、列印，大陸寫軟件、打印」（修訂本「數據」台灣照用）｜fixed｜https://dict.concised.moe.edu.tw/appendix.jsp?ID=54 ；https://dict.revised.moe.edu.tw/dictView.jsp?ID=133742
+- 摘要：发可能是發或髮、干可能是乾或幹｜ok｜https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=53D1 ；https://github.com/BYVoid/OpenCC/blob/master/data/dictionary/STCharacters.txt
+- Microsoft Editor 對繁體中文提供文法檢查（Chinese (Traditional)：Spell ◌、Grammar ●、Refinements ◌）｜ok｜https://support.microsoft.com/en-us/word/editor-s-spelling-grammar-and-refinement-availability-by-language
+- Editor 標出「再／在」：原稿歸為「形音相近」，指南歸在「易混淆錯字」→ 改「易混淆或形音相近的錯字」｜fixed｜https://download.microsoft.com/download/1/0/3/103d9025-7673-4746-8332-739f34b08a52/Editor%20guidance%20details_Chinese_Traditional.docx
+- Editor 標出「以經／已經」、量詞、的地得、重複字、全形數字、中英文標點混用、「后來」繁簡混用｜ok｜同上 docx
+- Editor 偵測需登入：原「微軟帳號（Microsoft 365）」→「Microsoft 365 帳號」｜fixed｜同上 docx
+- Google 文件拼字與文法建議只支援英、西、法、德、葡、義文｜ok｜https://support.google.com/docs/answer/57859?hl=zh-Hant （hl=en 同）
+- Copilot in Word：寫得流暢但內容可能不正確、無法理解意思或評估正確性、品質預期以英文最高、建議可能出錯｜ok｜https://support.microsoft.com/en-us/word/frequently-asked-questions-about-copilot-in-word
+- 「AI 不會自動知道你要台灣用語」→「不一定知道」（無來源）｜softened｜—
+- 兩岸表：軟體／軟件｜ok｜https://dict.concised.moe.edu.tw/appendix.jsp?ID=54
+- 兩岸表：資料／數據｜ok｜同上
+- 兩岸表：影片／視頻｜ok｜同上
+- 兩岸表：程式／程序｜ok｜同上
+- 兩岸表：列印／打印｜ok｜同上
+- 兩岸表：品質／質量 → 附錄大陸語詞為「品質／質量」，改格並改注意欄｜fixed｜同上
+- 注意欄：只換字形會留下「軟件」（软→軟，件不變；STPhrases 無「软件」）｜ok｜https://github.com/BYVoid/OpenCC/blob/master/data/dictionary/STCharacters.txt
+- 注意欄：數據指調查或實驗得到的數值時台灣也用｜ok｜https://dict.revised.moe.edu.tw/dictView.jsp?ID=133742
+- 注意欄：視頻也可能是視訊（TWPhrases：視頻→影片 視訊）｜ok｜https://github.com/BYVoid/OpenCC/blob/master/data/dictionary/TWPhrases.txt
+- 注意欄：程序在台灣指辦事的規則次序｜ok｜https://dict.revised.moe.edu.tw/dictView.jsp?ID=124548
+- 表格 caption 依據只寫教育部辭典，注意欄有兩格出自 OpenCC → 加「OpenCC 台灣詞庫」｜fixed｜https://github.com/BYVoid/OpenCC/blob/master/data/dictionary/TWPhrases.txt
+- 質量：原「在物理上指物體所含物質的量」→ 修訂本原文無「物理上」，改「可指物體內所含物質的量」｜fixed｜https://dict.revised.moe.edu.tw/dictView.jsp?ID=113680
+- 質量當品質講是大陸地區沿用｜ok｜同上
+- 土豆：落花生別名、大陸地區指馬鈴薯｜ok｜https://dict.revised.moe.edu.tw/dictView.jsp?ID=54254
+- 一對多清單 发：發、髮｜ok｜https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=53D1
+- 干：乾、幹、干（Unihan U+5E72；STCharacters 幹 乾 干 榦）｜ok｜https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=5E72
+- 后：後、后｜ok｜https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=540E
+- 台：臺、檯、颱、台｜ok｜https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=53F0
+- 复：復、複、覆｜ok｜https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=590D
+- 面：面、麵（Unihan；OpenCC 為麪，TWVariants 麪→麵）｜ok｜https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=9762
+- 里：裡、裏、里（Unihan；OpenCC 裏 里 哩，TWVariants 裏→裡）｜ok｜https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=91CC
+- 例詞 發展、頭髮、理髮、乾燥、餅乾、幹部、干涉、以後、後來、皇后、檯燈、颱風、恢復、複製、答覆、麵條、這裡、公里｜ok（STPhrases 各條；麪條、這裏經 TWVariants 為麵條、這裡）｜https://github.com/BYVoid/OpenCC/blob/master/data/dictionary/STPhrases.txt
+- OpenCC 靠詞庫：头发→頭髮、发展→發展｜ok｜同上
+- 「轉換工具不是逐字替換」泛指所有工具 → 改成只講 OpenCC｜fixed｜https://github.com/BYVoid/OpenCC
+- OpenCC 不使用大型語言模型、結果穩定可預期｜ok｜https://github.com/BYVoid/OpenCC
+- 詞庫沒收的詞只能用單字的預設對應｜ok（詞組表優先於單字表；--ambiguities 的 t 為 default candidate）｜https://github.com/BYVoid/OpenCC
+- --ambiguities 標出一對多片段：原稿未說明只有原生 CLI 支援 → 補「Python 與 npm 版命令列工具不支援」｜fixed｜https://github.com/BYVoid/OpenCC
+- 預設的 s2t 轉成 OpenCC 標準繁體、不等於台灣用字｜ok（README 配置清單；DESIGN_PRINCIPLES「默認……為 s2t」）｜https://github.com/BYVoid/OpenCC
+- s2tw 台灣正體字形、s2twp 加台灣常用詞彙｜ok｜https://github.com/BYVoid/OpenCC
+- 数据库 先轉數據庫再轉資料庫（--inspect 範例 stage 1／2）｜ok｜https://github.com/BYVoid/OpenCC
+- 台灣詞庫：數據→資料／數據、視頻→影片／視訊｜ok｜https://github.com/BYVoid/OpenCC/blob/master/data/dictionary/TWPhrases.txt
+- 風格表：引號用「」，引號內再用『』｜ok｜https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/h6.htm
+- 風格表：公布也作公佈（兩種都收）｜ok｜https://dict.revised.moe.edu.tw/dictView.jsp?ID=75132
+- 風格表：英文字母與阿拉伯數字用半形（Editor 繁中規則）｜ok｜https://download.microsoft.com/download/1/0/3/103d9025-7673-4746-8332-739f34b08a52/Editor%20guidance%20details_Chinese_Traditional.docx
+- 風格表：樂詞網可查學術名詞譯名｜ok｜https://terms.naer.edu.tw/
+- Word 追蹤修訂：「校閱」索引標籤 → 追蹤 → 追蹤修訂，逐條接受或拒絕｜ok（頁面為機器翻譯，「檢閱」「校閱」混用）｜https://support.microsoft.com/zh-tw/word/training/track-changes-in-word
+- Google 文件建議模式：右上角編輯圖示 → 建議｜ok｜https://support.google.com/docs/answer/6033474?hl=zh-Hant
+- Word 法律黑線：Windows 版 Word、「校閱」索引標籤的比較、兩份原稿不變、可選字元層級｜ok｜https://support.microsoft.com/zh-tw/word/compare-document-differences-using-the-legal-blackline-option
+- 法律黑線：差異「顯示在第三份新文件」→ 頁面寫「根據預設」，可改顯示在原始或修訂文件，補「預設」｜fixed｜同上
+- callout：轉換工具與 AI 可能在一對多的字上挑錯（例：頭發、皇後）｜ok（措辭為「可能」，屬示意）｜—
+- 圖解 diagram-1.svg：唯一數字 2026 在兩張表格 caption 出現；例字（发／發／髮、软件／軟件／軟體、再／在、以經／已經、后來／後來、數據／資料）正文都有｜ok｜—
+- hero.svg：無數字、無 logo／臉孔／遞增長條；alt 與渲染圖一致｜ok｜—
+- 站內連結 immersive-translate-guide、ai-prompt-library-personal、ai-tools-choose-by-task：皆在指派清單內，repo 內存在且 kind=life｜ok｜https://mokaair.com/zh-TW/life/immersive-translate-guide 等
+- sources 20 筆：教育部、Unicode、Microsoft、Google、國教院網址皆 curl 200；github.com 4 筆經代理 403，以 WebFetch 確認頁面存在、以 raw.githubusercontent.com 讀內容｜ok｜（見 notes.md）
