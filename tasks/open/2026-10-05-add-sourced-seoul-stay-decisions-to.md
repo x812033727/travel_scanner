@@ -1,7 +1,7 @@
 ---
 id: 2026-10-05-add-sourced-seoul-stay-decisions-to
 title: Add sourced Seoul stay decisions to the city page
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: claude-opus-seoul
