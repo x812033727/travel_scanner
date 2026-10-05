@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-the-video-worker-s-playwright-image
 title: The video worker's Playwright image tag and @playwright/test version can drift apart
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-playwright-tag-sync
 claimed_at: 2026-10-05T07:27:14Z
 created_at: 2026-10-05T07:26:52Z
-completed_at:
+completed_at: 2026-10-05T07:38:29Z
 branch: claude/playwright-tag-sync
 depends_on: []
 scope:
