@@ -133,8 +133,9 @@ Found in passing, outside `with_for_update`:
 - `news_automation/pipeline.py:245` `_auto_publishable`: its "fresh" `settings_row(session)`
   returns the object `_claim_capacity` loaded at the start of the run (pipeline.py:427).
   Verified: owner switches turned off during an AI run (`enabled`, `mode`,
-  `auto_publish_<vertical>`) are ignored for that candidate. Filed as
-  `2026-10-05-news-auto-publish-reads-its-switches`.
+  `auto_publish_<vertical>`) are ignored for that candidate. Filed and fixed as
+  `2026-10-05-news-auto-publish-reads-its-switches` in a pull request of its own
+  (branch `claude/news-auto-publish-fresh-switches`).
 - Not verified, from the audit: `video_shorts/slots.py:292` `unplan` selects under
   `no_autoflush` right after `release()` set a slot back to planned, so it may miss that
   slot. The settings saves in `video_automation/admin_api.py:169`,
