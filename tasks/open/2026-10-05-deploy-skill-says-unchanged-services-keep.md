@@ -40,7 +40,11 @@ containers are rebuilt, so the docs contradicted each other.
 - [x] Find the cause on the host, read-only.
 - [x] Correct the docs and the comment.
 - [x] Add the paid-work section to the preflight script and run it on the host.
-- [ ] `npm run test:tools`, open a PR.
+- [x] `npm run test:tools`, open a PR. Windows, 2026-10-05: 1,628 tests, 1,622 pass, 4 fail, 2 skipped;
+      `tools/skills.test.mjs` 7/7. None of the four reds touches this change. The `tts/check`
+      second-transcript case and the `nginx-install` large-site timeout fail here every run. The
+      `claude-code-series` Hook-scripts case (EPERM on a temp dir) and its JSON-examples case passed
+      when rerun alone.
 - [ ] After it merges: deploy, run the new preflight first and `host-verify.sh` after, record the
       result here and close the task in a tasks-only PR.
 
