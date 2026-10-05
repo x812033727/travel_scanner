@@ -36,7 +36,7 @@
 | 用途 | 第一版 | 備援／第二期 | 單價（1080p） |
 | --- | --- | --- | --- |
 | 角色設定圖、關鍵影格 | Gemini 3 Pro Image（每次請求最多 4 張參考圖：伺服器 `apps/api/app/video_media/schemas.py` 的 `MAX_REFERENCES`，`tools/video/media/keyframes.mjs` 送最後 4 張；模型頁寫的上限 14 用不到） | Gemini 3.1 Flash Image、MiniMax image-01 | 約 US$0.134／張 |
-| 圖生影片 | Gemini Omni 1.1 Flash（3–10 秒、首尾影格、角色參考圖） | Veo 3.1 只給主鏡頭；MiniMax H3 2K 當第二個 adapter；Kling 3.0 第二期 | Omni US$0.15／秒、Veo US$0.40／秒、H3 US$0.13／秒 |
+| 圖生影片 | Gemini Omni 1.1 Flash（3–10 秒、首尾影格、角色參考圖） | Veo 3.1 只給主鏡頭；MiniMax H3 2K 當第二個 adapter（`apps/api/app/video_media/providers/minimax.py` 會組官方 v2 的兩種請求：帶首格的圖生影片，或最多 9 張參考圖、不帶首格的參考生影片；兩者不得同送，同送在付費前就被退；2026-10-05 查官方 v2 頁。站上的片段請求 `ClipJobIn.first_frame` 必填，所以 H3 現在只走首格，角色設定圖還到不了它，`catalog.py` 的 `reference_images` 因此是 0）；Kling 3.0 第二期 | Omni US$0.15／秒、Veo US$0.40／秒、H3 US$0.13／秒 |
 | 旁白 | 現有 Gemini 3.8 Flash TTS（Sulafat＋頻道口音 style） | — | 約 US$0.81／小時 |
 | 角色配音 | Gemini TTS：30 個內建聲音配 style；之後用聲音設計拿持久的 `voice_…` id | MiniMax speech-2.8（情緒參數、聲音複製，沒有台灣腔）；Azure zh-TW 三個聲音沒有語氣 | 同旁白 |
 | 品檢（judge） | Gemini 視覺模型看圖與片段打分 | — | 依 token |
