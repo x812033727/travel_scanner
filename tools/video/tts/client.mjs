@@ -37,10 +37,12 @@ const RETRYABLE_CODES = new Set(["video_speech_upstream_busy", "rate_limit_excee
 // the provider's answer or never connected: `video_speech_upstream_failed` and
 // `video_judge_upstream_failed` also cover a provider read timeout or dropped answer after the
 // request went out (any httpx.HTTPError), which may have been billed, and are still resent until
-// 2026-10-05-speech-api-tells-a-provider-answer gives that case its own code. Not the web route's
-// 502 `upstream_unavailable`: the speech routes name no lost answer of their own, so
-// apps/web/app/api/video/speech/forward.ts answers it both for an API it never reached and for
-// one whose answer it lost after the request went out.
+// 2026-10-05-speech-api-tells-a-provider-answer gives that case its own code. Not yet the web
+// route's 502 `upstream_unavailable`: the speech routes now answer a lost answer with 504
+// `video_speech_answer_lost` (SPEECH_LOST in apps/web/app/api/video/speech/forward.ts, uncertain
+// here like any 5xx not listed) and keep the 502 for an API they never reached, but a host from
+// before that change answers the 502 for both, so it moves here only once the change is live
+// (2026-10-05-speech-client-retries-paid-upstream-unavailable).
 const SETTLED_CODES = new Set(["video_speech_upstream_busy", "video_speech_upstream_failed", "video_speech_upstream_rejected_key", "video_judge_upstream_failed"]);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);

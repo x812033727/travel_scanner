@@ -66,7 +66,9 @@ test("a paid request sent and left without its answer is sent once and names the
     ["a socket closed mid-way", () => { throw failed("UND_ERR_SOCKET"); }, 0],
     ["Node's deadline for the headers", () => { throw failed("UND_ERR_HEADERS_TIMEOUT"); }, 0],
     ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
+    // A host from before the routes' own lost answer gives this 502 for a lost answer too.
     ["the web route's 502, which a lost answer gives too", () => problem(502, "upstream_unavailable"), 502],
+    ["the web route's lost answer", () => problem(504, "video_speech_answer_lost"), 504],
     ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
     ["an error whose detail runs over lines", () => Response.json({ detail: "Internal\nServer Error\n" }, { status: 500 }), 500],
     ["an answer that breaks off", brokenBody, 200],
