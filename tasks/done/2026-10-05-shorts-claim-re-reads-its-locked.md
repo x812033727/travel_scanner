@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-shorts-claim-re-reads-its-locked
 title: "Locked re-reads take the row's values, not a held copy's (sqlalchemy#13639): Shorts claim, Shorts sender, YouTube check, link maintenance"
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-10-05T02:25:50Z
 created_at: 2026-10-05T02:25:42Z
-completed_at:
+completed_at: 2026-10-05T04:11:50Z
 branch: claude/claim-locked-reread-populate-existing
 depends_on: []
 scope:
@@ -48,7 +48,7 @@ that column in the window was overwritten.
       YouTube, on SQLite and on PostgreSQL.
 - [x] Every other `with_for_update` re-read in apps/api/app that guards a decision on a column
       another path writes is fixed, or listed below.
-- [ ] SQLAlchemy is on 2.1.4 or later (see "SQLAlchemy 2.1.4" below).
+- [x] The 2.1.4 bump has a task of its own, `2026-10-05-sqlalchemy-2-1-4-bump` (blocked on the release).
 
 ## Steps
 
@@ -59,7 +59,7 @@ that column in the window was overwritten.
       in a `finally`.
 - [x] Audit of all 154 `with_for_update` sites (below). Three more fixed, each with a test that
       fails without the fix.
-- [ ] Bump to 2.1.4 once released.
+- [x] Bump to 2.1.4: moved to `2026-10-05-sqlalchemy-2-1-4-bump`.
 
 ## How to verify
 

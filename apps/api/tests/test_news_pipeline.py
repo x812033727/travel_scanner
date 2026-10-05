@@ -1328,6 +1328,52 @@ async def test_a_single_website_that_is_not_first_party_still_waits_for_the_owne
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("switch", "off"), [("enabled", False), ("mode", "shadow"), ("auto_publish_ai", False)]
+)
+async def test_a_switch_turned_off_while_the_story_is_drafted_holds_it_for_the_owner(
+    monkeypatch: pytest.MonkeyPatch, switch: str, off: object
+) -> None:
+    """The run holds the settings it claimed the candidate with, for the whole AI run. The
+    owner turning automatic publishing off meanwhile still keeps the story from going out
+    alone: the last check reads the switches as they are now."""
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        settings = await session.get(NewsAutomationSettings, 1)
+        assert settings is not None
+        settings.mode, settings.auto_publish_ai = "automatic", True
+        await session.commit()
+        candidate_id = candidate.id
+
+    async def turned_off_meanwhile(*_args: Any, **_kwargs: Any) -> tuple[str, float, list[Any]]:
+        async with factory() as other:
+            row = await other.get(NewsAutomationSettings, 1)
+            assert row is not None
+            setattr(row, switch, off)
+            await other.commit()
+        return "distinct", 0.01, []
+
+    monkeypatch.setattr(ai, "jev_duplicate_check", turned_off_meanwhile)
+    stage_one_mocks(monkeypatch)
+    # Everything stage two needs, so that a run still going by its old switches publishes.
+    translated = stage_two_mocks(monkeypatch)
+    monkeypatch.setattr(
+        ai,
+        "final_edit",
+        AsyncMock(return_value=(LocaleReviewResult(verdict="pass"), {}, "claude-opus-5-5")),
+    )
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+    await engine.dispose()
+
+    assert result == "manual_review"
+    assert stored is not None and stored.error_code == "news_zh_draft_ready"
+    assert translated == []
+
+
+@pytest.mark.asyncio
 async def test_a_translation_the_reviewer_corrected_gets_its_topic_link_back(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
