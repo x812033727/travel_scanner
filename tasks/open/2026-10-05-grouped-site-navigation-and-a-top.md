@@ -1,7 +1,7 @@
 ---
 id: 2026-10-05-grouped-site-navigation-and-a-top
 title: Grouped site navigation and a top-level AI hub at /ai
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: claude-opus-5-5
@@ -23,7 +23,6 @@ scope:
   - apps/web/components/guides/ai-hub-rails.test.tsx
   - apps/web/app/[locale]/ai
   - apps/web/app/[locale]/life/topics/[topic]
-  - apps/web/messages
   - apps/web/e2e/site-navigation.spec.ts
   - apps/web/components/guides/topic-hub-page.test.tsx
   - apps/web/components/guides/topic-chips.test.tsx
@@ -33,6 +32,21 @@ scope:
   - apps/web/app/[locale]/search/articles/page.test.tsx
   - apps/web/app/llms.txt/route.test.ts
   - apps/web/app/sitemaps/sitemap.test.ts
+  - apps/web/messages/en/navigation.json
+  - apps/web/messages/en/common.json
+  - apps/web/messages/en/metadata.json
+  - apps/web/messages/ja/navigation.json
+  - apps/web/messages/ja/common.json
+  - apps/web/messages/ja/metadata.json
+  - apps/web/messages/ko/navigation.json
+  - apps/web/messages/ko/common.json
+  - apps/web/messages/ko/metadata.json
+  - apps/web/messages/zh-CN/navigation.json
+  - apps/web/messages/zh-CN/common.json
+  - apps/web/messages/zh-CN/metadata.json
+  - apps/web/messages/zh-TW/navigation.json
+  - apps/web/messages/zh-TW/common.json
+  - apps/web/messages/zh-TW/metadata.json
 ---
 
 # Grouped site navigation and a top-level AI hub at /ai

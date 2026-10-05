@@ -1,7 +1,7 @@
 ---
 id: 2026-10-05-life-ai-income-investing-batch
 title: Life batch: AI side income and investing with AI concept stocks (12 articles)
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-opus-5-5

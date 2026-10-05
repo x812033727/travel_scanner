@@ -1,7 +1,7 @@
 ---
 id: 2026-10-05-public-video-library-at-videos-with
 title: Public video library at /videos with article embeds
-status: in-progress
+status: review
 priority: P2
 area: web
 owner: claude-opus-5-5
