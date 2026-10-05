@@ -42,7 +42,7 @@ changes. Do not fabricate Route A receipts or implement a second writer.
       target already present in the initial baseline. Keep v1 missing-locales only.
 - [x] Preserve editorial/source-correction and per-slug hold gates. Compiler
       success does not authorize production operations or removing a hold.
-- [ ] Exercise compiler and publisher contract cases locally and in PostgreSQL
+- [x] Exercise compiler and publisher contract cases locally and in PostgreSQL
       CI; clearly leave same-image rehearsal and actual release to their tickets.
 
 ## Steps
@@ -144,7 +144,7 @@ and scope are available. No production connection or write is part of it.
   baseline after publication refuses the same targets, source drift stops the
   publisher before and after dry-run, a lost response and a failure before commit
   resume exactly once, and a hold added after compiling blocks publication.
-- Unticked: "in PostgreSQL CI". The new file is added to the release-safety step that
+- Left unticked at first (ticked after the review fix below): "in PostgreSQL CI". The new file is added to the release-safety step that
   sets `RUN_INTEGRATION_TESTS=1`; its PostgreSQL variants, including a second session
   holding the publisher's advisory lock or the article row lock, skip on this machine
   (no PostgreSQL or Docker). Their result is the PR's `release-safety` run. Same-image
@@ -169,3 +169,11 @@ and scope are available. No production connection or write is part of it.
 - Local (Windows, PYTHONUTF8=1): the compiler suite 54 passed, 12 skipped (the two
   symlink variants now skip here); with `test_publish_bundle.py` 123 passed, 80 skipped;
   `ruff check tools/article-localization docs/article-localization` passes.
+- PostgreSQL CI evidence, which ticks the last Definition-of-done item: `release-safety`
+  run 37295655685 on head `94834324` is green. Its "Verify transactional publication on
+  SQLite and PostgreSQL" step (`test_publish_bundle.py` and this compiler's tests with
+  `RUN_INTEGRATION_TESTS=1` against the job's PostgreSQL 17 service) reported 201 passed,
+  2 skipped; the 2 skips are the SQLite variants of the two lock cases, which need
+  PostgreSQL. Both linked-path variants and both two-session lock cases ran and passed.
+  The same-image rehearsal and the actual release stay with
+  `2026-10-05-rehearse-a-compiled-route-b-wave` and each wave's ticket.
