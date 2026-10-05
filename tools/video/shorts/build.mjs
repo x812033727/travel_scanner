@@ -8,7 +8,8 @@ import { sfxSetHash, sfxTrackArgs } from '../assemble/sfx.mjs';
 import { musicInputs, sfxInputs } from '../assemble/sound.mjs';
 import { encodeWav, parseWav, requireNarrationFormat } from '../tts/wav.mjs';
 import { ROOT, isInside, resolveWorkBase, stopRequested } from '../core/paths.mjs';
-import { PROFILE, SCRIPT_FILE, USAGE_FILE, buildTimeline, esc, lineOf, phrasesOf, sceneHtml, sha256, srt, validate, verifyEvidence } from './core.mjs';
+import { PROFILE, SCRIPT_FILE, USAGE_FILE, buildTimeline, captionHtml, esc, lineOf, phrasesOf, sceneHtml, sha256, srt, validate, verifyEvidence } from './core.mjs';
+import { CAPTION_BOX, captionsOption, captionsSummary, timingFile } from './karaoke.mjs';
 import { themeOf, themeText } from './layouts.mjs';
 import { MOTION_VERSION, backgroundOf, cameraOf, cardsList, firstFrameArgs, lastFrameArgs, sceneSpans, segmentArgs, shortSfxPlan } from './motion.mjs';
 import { WINDOWS_VOICE, defaultSource, flaggedPhrases, narrate } from './speech.mjs';
@@ -84,13 +85,27 @@ async function measurePage(page) {
   });
 }
 
+/** The caption layer's own measurement: the bar's words inside the bar, the bar above the interface. */
+async function measureCaption(page) {
+  return page.evaluate(() => {
+    const problems = [];
+    const caption = document.querySelector('.caption');
+    if (caption.scrollHeight > caption.clientHeight + 2 || caption.scrollWidth > caption.clientWidth + 2) problems.push('caption layer: overflow');
+    if (caption.getBoundingClientRect().bottom > 1600) problems.push('caption layer outside safe area');
+    return problems;
+  });
+}
+
 /**
  * Draw what the segments are made of (motion.mjs): every phrase's card as a transparent PNG in
  * frames/ (the layout measured as before), the theme's backdrop once per scene of cards in
- * backdrops/, and each picture background as a file in assets/. Returns the layout report and the
- * background of every scene.
+ * backdrops/, and each picture background as a file in assets/. With `timing` (karaoke.mjs) the
+ * card's caption bar is drawn with its words hidden and the words come from the caption layer:
+ * one transparent PNG per state in captions/, clipped to the bar, the group being spoken lit.
+ * Returns the layout report and the background of every scene.
  */
-async function renderFrames(doc, timeline, evidence, directory, channel) {
+async function renderFrames(doc, timeline, evidence, directory, channel, timing = null) {
+  const byCue = timing ? new Map(timing.phrases.map((phrase) => [phrase.cue, phrase])) : null;
   const { chromium } = await import('@playwright/test');
   const browser = await chromium.launch({ ...(channel ? { channel } : {}), headless: true });
   const context = await browser.newContext({ viewport: { width: PROFILE.width, height: PROFILE.height }, deviceScaleFactor: 1, javaScriptEnabled: false });
@@ -173,13 +188,35 @@ async function renderFrames(doc, timeline, evidence, directory, channel) {
       if (stopRequested(directory)) throw new Error('STOP requested');
       const scene = doc.scenes[cue.sceneIndex];
       const picture = backgroundOf(scene) === 'picture';
+      const phrase = byCue?.get(cue.index) ?? null;
+      const caption = phrase ? { lines: phrase.lines, groups: phrase.groups } : null;
       // A picture scene's card carries no image: the picture is the moving background under it.
-      await page.setContent(sceneHtml(doc, cue, { fontCss, assetUrl: picture ? '' : (assets.get(scene.asset) ?? ''), transparent: true, picture }));
+      await page.setContent(sceneHtml(doc, cue, { fontCss, assetUrl: picture ? '' : (assets.get(scene.asset) ?? ''), transparent: true, picture, caption }));
       await ready(`cue ${cue.index}`);
       const problems = await measurePage(page);
-      layout.push({ cue: cue.index, problems });
-      if (problems.length) throw new Error(`scene ${cue.sceneIndex}, cue ${cue.index}: ${problems.join('; ')}`);
+      if (problems.length) {
+        layout.push({ cue: cue.index, problems });
+        throw new Error(`scene ${cue.sceneIndex}, cue ${cue.index}: ${problems.join('; ')}`);
+      }
       await page.screenshot({ path: path.join(directory, 'frames', `${number(cue.index)}.png`), omitBackground: true });
+      if (phrase) {
+        // The layer: the same words at the same place, lit one group at a time; the page is set
+        // once per phrase and the lit group toggled between the clipped screenshots.
+        await page.setContent(captionHtml(doc, { fontCss, lines: phrase.lines, groups: phrase.groups, active: phrase.states[0]?.group ?? 0 }));
+        await ready(`caption ${cue.index}`);
+        problems.push(...await measureCaption(page));
+        if (problems.length) {
+          layout.push({ cue: cue.index, problems });
+          throw new Error(`scene ${cue.sceneIndex}, cue ${cue.index}: ${problems.join('; ')}`);
+        }
+        for (const [state, { group }] of phrase.states.entries()) {
+          await page.evaluate((active) => {
+            document.querySelectorAll('.caption .g').forEach((element, index) => element.classList.toggle('on', index === active));
+          }, group);
+          await page.screenshot({ path: path.join(directory, 'captions', `${number(cue.index)}-${String(state).padStart(2, '0')}.png`), clip: { ...CAPTION_BOX }, omitBackground: true });
+        }
+      }
+      layout.push({ cue: cue.index, problems });
     }
     return { layout, backgrounds };
   } finally { await browser.close(); }
@@ -233,14 +270,17 @@ async function normalizeClips(clips, directory, ffmpeg) {
 /**
  * Build a Short from its script. `speech` names where the narration comes from (server, windows,
  * files); `client` is the site, needed for the server's voice; `redo` is a finished build whose
- * check flagged phrases, which are synthesized again while the rest come from the cache.
+ * check flagged phrases, which are synthesized again while the rest come from the cache;
+ * `captions` is the caption style (karaoke.mjs captionsOption: the flag, else the environment,
+ * else plain).
  */
-export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, channel=process.platform==='win32'?'msedge':undefined, audioDir, speech, client=null, redo=null, lexicon=null, synthesizeImpl, locateFfmpegImpl=locateFfmpeg }) {
+export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, channel=process.platform==='win32'?'msedge':undefined, audioDir, speech, client=null, redo=null, lexicon=null, captions, synthesizeImpl, locateFfmpegImpl=locateFfmpeg }) {
   const documentBytes = readFileSync(file);
   const doc = JSON.parse(documentBytes);
   const errors = validate(doc);
   if (errors.length) throw new Error(errors.join('\n'));
   if (lineOf(doc) === 'drama') throw new Error('a vertical drama short is made by the drama pipeline; bring its cut in with `import`');
+  const captionStyle = captionsOption(captions);
   const evidence = verifyEvidence(doc,sourceBase);
   const base = resolveWorkBase({flag:workdir,root:ROOT});
   let ancestor = base;
@@ -256,16 +296,16 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   const settings = source === 'server' && client ? await client.settings() : null;
   const range = settings ? { minSeconds: settings.seconds_min, maxSeconds: settings.seconds_max } : PROFILE;
   const narration = await narrate({ doc, source, workBase: base, voice: settings?.voice, client, audioDir, windowsVoice: voice, lexicon, redo: redo ? flaggedPhrases(path.join(redo,'check.json')) : [], synthesizeImpl });
-  const codeHash = sha256(['build.mjs','core.mjs','layouts.mjs','motion.mjs','speech.mjs','speech.ps1'].map(f=>readFileSync(new URL(f,import.meta.url),'utf8')).join('\n') + MOTION_VERSION);
+  const codeHash = sha256(['build.mjs','core.mjs','karaoke.mjs','layouts.mjs','motion.mjs','speech.mjs','speech.ps1'].map(f=>readFileSync(new URL(f,import.meta.url),'utf8')).join('\n') + MOTION_VERSION);
   const audioHash = sha256(narration.clips.map(bytes=>sha256(bytes)).join(''));
   // The bed and the effect set are part of what was built: another file under the same name is another cut.
   const sound = await shortSound(doc, base);
   const soundHash = sha256(JSON.stringify({ track: sound.track?.sha256 ?? null, sfx: sound.sfx ? sfxSetHash(doc, sound.sfx.manifest) : null }));
-  const buildId = sha256(JSON.stringify({document:sha256(documentBytes),codeHash,source,voice:narration.voice,channel,audioHash,soundHash})).slice(0,16);
+  const buildId = sha256(JSON.stringify({document:sha256(documentBytes),codeHash,source,voice:narration.voice,channel,audioHash,soundHash,captions:captionStyle})).slice(0,16);
   // Every attempt is separate: a failed rerun must never leave an old successful manifest next to new bytes.
   const directory = path.join(base,doc.slug,`${buildId}-${Date.now()}`);
   if (stopRequested(path.join(base,doc.slug)) || stopRequested(directory)) throw new Error('STOP requested');
-  for (const sub of ['audio','frames','clips','assets','upload','evidence','build']) mkdirSync(path.join(directory,sub),{recursive:true});
+  for (const sub of ['audio','frames','captions','clips','assets','upload','evidence','build']) mkdirSync(path.join(directory,sub),{recursive:true});
   // The script and its evidence travel with the build: the checks and the push read them from
   // here, so a script edited afterwards cannot stand in for the one that was filmed.
   writeFileSync(path.join(directory,SCRIPT_FILE),documentBytes);
@@ -280,8 +320,12 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   const samples = new Int16Array(timeline.frames*1600);
   for (const cue of timeline.cues) samples.set(wavs[cue.index].samples,cue.startFrame*1600);
   writeFileSync(path.join(directory,'narration.wav'),encodeWav(samples));
-  console.error(`${doc.slug}: render ${timeline.cues.length} caption cards (${timeline.seconds.toFixed(2)}s, ${themeOf(doc).id})`);
-  const { layout, backgrounds } = await renderFrames(doc,timeline,evidence,directory,channel);
+  // The karaoke timing (karaoke.mjs): the groups of every phrase and how long each stays lit,
+  // estimated from the clip's own silence and the words' weight; the layer is drawn from it.
+  const timing = captionStyle === 'karaoke' ? timingFile(timeline, wavs) : null;
+  const byCue = timing ? new Map(timing.phrases.map((phrase) => [phrase.cue, phrase])) : null;
+  console.error(`${doc.slug}: render ${timeline.cues.length} caption cards${timing ? ` and ${captionsSummary(timing).states} caption states` : ''} (${timeline.seconds.toFixed(2)}s, ${themeOf(doc).id})`);
+  const { layout, backgrounds } = await renderFrames(doc,timeline,evidence,directory,channel,timing);
   // One segment per scene (motion.mjs): the background under its camera move, the phrases' cards
   // over it, a dissolve from the previous scene; the join copies, as before.
   console.error(`${doc.slug}: encode ${backgrounds.length} moving scenes`);
@@ -294,8 +338,15 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
     const background = backgrounds[span.sceneIndex];
     const list = path.join(directory,'build',`cards-${number(span.sceneIndex)}.txt`);
     writeFileSync(list, cardsList(span.cues.map(cue => ({ file: path.join(directory,'frames',`${number(cue.index)}.png`), frames: cue.frames }))));
+    // The caption layer of the scene: every state of every phrase, each held for its frames, so
+    // the layer's list covers the span exactly as the cards' does.
+    let captionsList = null;
+    if (byCue) {
+      captionsList = path.join(directory,'build',`captions-${number(span.sceneIndex)}.txt`);
+      writeFileSync(captionsList, cardsList(span.cues.flatMap(cue => byCue.get(cue.index).states.map((state, index) => ({ file: path.join(directory,'captions',`${number(cue.index)}-${String(index).padStart(2,'0')}.png`), frames: state.frames })))));
+    }
     const segment = path.join(directory,'clips',`${number(span.sceneIndex)}.mp4`);
-    await runTool(ffmpeg, segmentArgs({ background: background.file, move: background.camera, frames: span.frames, cardsList: list, dissolveFrom, outFile: segment }));
+    await runTool(ffmpeg, segmentArgs({ background: background.file, move: background.camera, frames: span.frames, cardsList: list, dissolveFrom, captionsList, outFile: segment }));
     motion.push({ scene: span.sceneIndex, frames: span.frames, camera: background.camera, background: background.background, dissolve: dissolveFrom !== null });
     const still = path.join(directory,'build',`scene-${number(span.sceneIndex)}.png`);
     await runTool(ffmpeg, firstFrameArgs(segment, still));
@@ -355,7 +406,8 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   writeFileSync(path.join(directory,'upload','cover.png'),readFileSync(stills[0]));
   saveJson(path.join(directory,'upload','titles.json'),doc.titles);
   saveJson(path.join(directory,'timeline.json'),timeline);
-  saveJson(path.join(directory,'checks.json'),{ok:true,profile:PROFILE,range,seconds:timeline.seconds,frames:timeline.frames,layout,motion,music:sound.track?{track:doc.music.track,sha256:sound.track.sha256,bed_lufs:bed}:null,sfx:sound.sfx?{set:doc.sfx.set,events:effects.length}:null,loudness:measured.loudness,video:{codec:video.codec_name,width:video.width,height:video.height,fps:video.r_frame_rate},audio:{codec:audio.codec_name,sample_rate:audio.sample_rate},evidence_verified:true,audio_sha256:sha256(wavs.map((_w,i)=>sha256(readFileSync(path.join(directory,'audio',`${number(i)}.wav`)))).join('')),final_sha256:sha256(readFileSync(final)),checked_at:new Date().toISOString()});
+  if (timing) saveJson(path.join(directory,'timing.json'),timing);
+  saveJson(path.join(directory,'checks.json'),{ok:true,profile:PROFILE,range,seconds:timeline.seconds,frames:timeline.frames,layout,motion,captions:captionsSummary(timing),music:sound.track?{track:doc.music.track,sha256:sound.track.sha256,bed_lufs:bed}:null,sfx:sound.sfx?{set:doc.sfx.set,events:effects.length}:null,loudness:measured.loudness,video:{codec:video.codec_name,width:video.width,height:video.height,fps:video.r_frame_rate},audio:{codec:audio.codec_name,sample_rate:audio.sample_rate},evidence_verified:true,audio_sha256:sha256(wavs.map((_w,i)=>sha256(readFileSync(path.join(directory,'audio',`${number(i)}.wav`)))).join('')),final_sha256:sha256(readFileSync(final)),checked_at:new Date().toISOString()});
   // What the site's ledger is told when the final cut is approved: /video/speech takes no slug,
   // so only the tool knows which Short the narration was for (docs/videos/SHORTS.md §花費與預算).
   saveJson(path.join(directory,USAGE_FILE),{narration:{seconds:Number(wavs.reduce((sum,w)=>sum+w.samples.length/w.sampleRate,0).toFixed(3)),characters:phrasesOf(doc).reduce((sum,phrase)=>sum+[...phrase].length,0),calls:narration.calls,provider:narration.provider,...(narration.model?{model:narration.model}:{})},stages:{},checks:{}});
