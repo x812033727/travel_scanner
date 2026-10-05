@@ -103,7 +103,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 | 8 Shorts | `2026-09-29-video-shorts-motion-music` | 已落地：`tools/video/shorts/motion.mjs`（一景一段、透明字卡疊在運鏡的圖或漂移的底色上、景間溶接）、schema 2 的 `camera`／`music`／`sfx`、`from-episode` 接插圖投影片（主題 `cut:illustrated`）、頻道聲音的 style 改說書式；細節在 `SHORTS.md` §工具端 |
 | 9 試片〈Jev〉 | `2026-09-29-video-pilot-jev-decision-model` | 開著 |
 | 10 圖庫照片來源（伺服器端） | `2026-10-05-stock-photo-source-endpoint` | 已落地：§圖庫照片 |
-| 11 照片上投影片、說明欄的圖片來源 | `2026-10-05-stock-photo-slides-and-attribution` | 開著 |
+| 11 照片上投影片、說明欄的圖片來源 | `2026-10-05-stock-photo-slides-and-attribution` | 已落地：§圖庫照片 的「工具端」 |
 
 ## 試片的數字表（試片後填）
 
@@ -294,7 +294,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 ## 圖庫照片（stock photos）：Pexels 與 Pixabay（2026-10-05）
 
-產線一直沒有任何真實照片：旅遊攻略的投影片只有深色卡片、版畫插圖或 AI 圖，而 Pexels 與 Pixabay 都有首爾、釜山、濟州的實景照片，授權允許商業使用。票 `2026-10-05-stock-photo-source-endpoint` 做的是伺服器端：兩家的金鑰只存在伺服器（和旁白、生圖一樣，本機工具拿不到），搜尋與抓檔都走 `/api/v1/video/media/stock/*`（`apps/api/app/video_media/stock.py`），原圖進媒體庫並附上版權標示。把照片放上投影片、把來源寫進說明欄是下一張票 `2026-10-05-stock-photo-slides-and-attribution`。
+產線一直沒有任何真實照片：旅遊攻略的投影片只有深色卡片、版畫插圖或 AI 圖，而 Pexels 與 Pixabay 都有首爾、釜山、濟州的實景照片，授權允許商業使用。票 `2026-10-05-stock-photo-source-endpoint` 做的是伺服器端：兩家的金鑰只存在伺服器（和旁白、生圖一樣，本機工具拿不到），搜尋與抓檔都走 `/api/v1/video/media/stock/*`（`apps/api/app/video_media/stock.py`），原圖進媒體庫並附上版權標示。把照片放上投影片、把來源寫進說明欄是票 `2026-10-05-stock-photo-slides-and-attribution`（下面的「工具端」）。
 
 ### 設定
 
@@ -323,9 +323,24 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 | 授權 | [Pexels License](https://www.pexels.com/license/)：免費、可商用、可修改、不必標示 | [Pixabay Content License](https://pixabay.com/service/license-summary/)：免費、可商用、可修改、不必標示 |
 | 不可以 | 原樣轉售或在別的圖庫重新發布；暗示人物或品牌背書；把可辨識的人放進負面或冒犯的情境 | 原樣轉售或當成獨立檔案重新發布；暗示背書；把可辨識的人放進負面或冒犯的情境 |
 | API 規則 | 可能的話標示攝影師並連回照片頁（「Photo by … on Pexels」）；用到 API 的地方要有顯眼的 Pexels 連結（「Photos provided by Pexels」）；不可整批下載、不可複製 Pexels 本身的功能；快取結果 | 顯示搜尋結果的地方要標示 Pixabay；不可熱連結，必須下載到自己這邊（fetch 做的正是這件事）；API 回應最多快取 24 小時（`webformatURL` 這類網址一天後失效）；不可整批下載；金鑰不可公開 |
-| 我們怎麼做 | `credit.text` 就是廠商要的那一句，說明欄逐張列出（下一張票的「圖片來源」區塊）；影片本身不燒錄文字（站主的規則） | 同左；CLI 印候選時帶「Images from Pixabay」 |
+| 我們怎麼做 | `credit.text` 就是廠商要的那一句，`stock fetch` 原樣寫進 `assets[].source`，說明欄的「圖片來源」區塊逐張列出（§工具端）；投影片預設不畫字（站主的規則），要畫才寫 `data.credit`；`stock search` 印候選時帶「Photos provided by Pexels」 | 同左；印候選時帶「Images from Pixabay」，並提醒預覽網址一天後失效 |
 
-兩家都不「要求」標示，但都希望有，而且 API 使用規則要求來源可見；說明欄 5,000 位元組的上限要留給 `assets[]` 多少，在下一張票算。這一段只讀了兩家的公開 API 文件與授權頁，沒有參考任何第三方程式。
+兩家都不「要求」標示，但都希望有，而且 API 使用規則要求來源可見。說明欄 5,000 位元組的上限：一行標示約 110–130 位元組（「Photo by … on Pexels（Pexels License）：照片頁網址」），區塊的標題與空行 19 位元組；`lint` 不算這些（`core/lint.mjs` 不讀 `assets[]`），只有 `package` 算，所以稿子的 `youtube.description` 要比 `lint` 的上限少留每張約 130 位元組——兩張照片留 300 位元組就夠，超過時 `package` 會說是標示把它推過線。這一段只讀了兩家的公開 API 文件與授權頁，沒有參考任何第三方程式。
+
+### 工具端（2026-10-05，票 `2026-10-05-stock-photo-slides-and-attribution`）
+
+| 項目 | 怎麼做 |
+| --- | --- |
+| 指令 | `node tools/video/media/cli.mjs stock search --query "Seoul skyline" [--provider pexels\|pixabay] [--orientation landscape\|portrait\|square] [--per-page N] [--page N] [--slug S] [--json]`，印每個候選的廠商、id、尺寸與方向、廠商要的那句標示、照片頁網址、alt，以及兩家 API 條款要的來源字樣；`node tools/video/media/cli.mjs stock fetch --slug S --provider P --id N [--workdir D] [--json]`。`tools/video/cli.mjs` 的指令表還沒有 `stock`，所以是直接跑 `media/cli.mjs`（它自己有 `main`，結束碼同主指令：2 用法、3 要站主、4 外部服務） |
+| 檔案 | `stock fetch` 請伺服器抓進媒體庫後，用 `downloadFile` 邊收邊核對雜湊下載到 `<VIDEO_WORKDIR>/<slug>/stock/<sha256>.<png\|jpg\|webp>`（副檔名照伺服器回的 `content_type`）；同一張再抓一次不會重載（檔名就是雜湊，核對過就跳過），壞掉的複本會重載。媒體庫那份 14 天後會被 `prune` 清掉，工作目錄這份才是成片用的 |
+| `assets[]` | 每抓一張就在 `docs/videos/<slug>/video.json` 的 `assets[]` 寫（或換掉同路徑的）一筆 `{path: "stock/<sha256>.<ext>", source: credit.text, license: credit.license, author: credit.author, url: credit.url}`：`source` 是廠商自己的措辭（「Photo by … on Pexels」「Image by … from Pixabay」），`author` 只有名字，`url` 是照片頁。沒有 `assets` 的 `video.json` 會在 `scenes` 前面長出來；整個檔案會以工具的格式（兩格縮排）重寫 |
+| 投影片 | `screenshot` 範本的 `data.image` 多接受 `stock/<sha256>.<png\|jpg\|webp>`（只有這個寫法，小寫、64 個十六進位字；repo 路徑的規則不變），渲染時從 `https://video.local/work/stock/…` 載入（和關鍵影格同一個假來源）；`data.credit`（選填，一行、≤60 字）畫在照片右下角的深色小膠囊裡，它的 CSS 只在有 `credit` 的那一頁隨頁帶，所以沒寫 `credit` 的截圖頁和 `theme.css` 都一個位元組都沒動，既有影片的畫格鍵不變。直向或方形照片照高度放、置中；超寬的全景會超出版面，渲染會當版面問題報出來，換一張 |
+| 畫格鍵 | `render/plan.mjs` 的 `renderPlan` 多吃 `workdir`，照片的位元組和 SVG 一樣雜湊進那一景的鍵：換了照片（同名不同位元組）只重畫那一景；沒給 `workdir`（例如 `render/repeat.mjs`）就不讀、不入鍵 |
+| 渲染前的檢查 | `renderProblems(doc, root, {workdir})`：用到 `stock/…` 的景，`assets[]` 裡一定要有同路徑的那筆（沒有就代表說明欄不會有標示，`render` 以 lint 結束碼拒絕），檔案也要在工作目錄裡（沒有就叫你跑 `stock fetch`）。`lint` 只檢查 `data.image`／`data.credit` 的寫法（範本的 `check` 共用），不看工作目錄 |
+| 說明欄 | `core/metadata.mjs` 的 `composeDescription` 在參考資料之後、hashtag 之前加「📷 圖片來源」區塊（各語系：圖片來源／图片来源／Image credits／画像の出典／이미지 출처），一張一行：`source（license）：url`（英、韓文用半形括號與冒號）。只列有 `author` 或 `url` 的 `assets[]`——自有圖解（只有 `path`／`source`／`license`）不列，所以列著自有圖解的既有影片，說明欄一個字都不會變，`publish` 關卡綁的 `upload/metadata.json` 也不會失效。`package/metadata.mjs` 每個語系都帶 `doc.assets` 進去；超過 5,000 位元組時的錯誤會註明是標示多了幾個位元組 |
+| 錯誤碼 | `video_media_stock_unavailable`（沒金鑰）→ 要站主（結束碼 3）；`video_media_stock_not_found` → 工具的錯（id 寫錯，結束碼 2）；`video_media_stock_failed`、429 → 和 `locate` 一樣重試，耗盡才算外部服務（4）；網站的 web app 還沒轉送 `stock/*` 路由時會收到 `video_media_route_unknown`，工具把它改說成「要部署會轉送這些路由的版本」（結束碼 3） |
+
+還沒做（開了票）：`apps/web/app/api/video/media/[...path]/forward.ts` 的 `mediaRoute` 白名單沒有 `stock/search`、`stock/fetch`（`locate` 也沒有），正式站上工具會收到 404，要補白名單；`tools/video/cli.mjs` 的 `AREAS` 沒列 `stock`，加一行就能用主指令跑。
 
 ### 沒實測的事
 
@@ -333,7 +348,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 ## 沒做、留給後面
 
-- 圖庫照片只有伺服器端（§圖庫照片）：`media/cli.mjs` 的 `stock search`／`stock fetch`、`screenshot` 範本吃 `stock/<sha256>.<ext>`、說明欄的「圖片來源」區塊，都在 `2026-10-05-stock-photo-slides-and-attribution`。
+- 圖庫照片（§圖庫照片 的「工具端」）還差兩件接線：web app 的 `mediaRoute` 白名單沒有 `stock/*`（也沒有 `locate`），正式站上工具會收到 404；`tools/video/cli.mjs` 的 `AREAS` 沒列 `stock`，現在要直接跑 `media/cli.mjs`。`lint` 不算說明欄的「圖片來源」位元組（`core/lint.mjs` 不讀 `assets[]`），稿子要自己留；`docs/videos/README.md` §說明欄 的四個部分還沒列第五個「圖片來源」。工人的撰稿提示詞還不會自己去搜照片，目前是代理或站主手動 `stock search`／`stock fetch` 再把路徑寫進 `screenshot` 景。
 - 是非題只用在插圖投影片（上一節）。漫劇的設定圖、關鍵影格、片段與原來如此事務所的靜圖仍是打分數、也頂在 7：各自量過已記錄的出圖、定好各自的題目再換。judge 漏看的瑕疵（六指、像字的記號）要靠更細的題目或更強的判定模型，也要先量；`subject` 在 163 張裡一次都沒答有，窯門大開那種「主動作不對」被歸到 `details`，這一題的寫法值得再試。
 - 樣張沒放進聯絡表（`review/sync.mjs` 用張數切頁，多一格會錯位）；要看就開 `keyframes/plate-N.png`。
 - 多狀態卡片（bullets、steps、table 逐條出現）的整景連續運鏡。

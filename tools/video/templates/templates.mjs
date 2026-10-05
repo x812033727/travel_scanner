@@ -36,6 +36,17 @@ export const assetUrl = (repoPath) => `${ORIGIN}/repo/${repoPath.split("/").map(
 export const ASSET_ROOTS = ["apps/web/public/", "docs/videos/"];
 const isAssetPath = (value, extensions) =>
   isText(value) && ASSET_ROOTS.some((root) => value.startsWith(root)) && !value.includes("..") && extensions.test(value);
+/**
+ * The other place a screenshot slide may load its picture from: a stock photo `stock fetch`
+ * (tools/video/media/stock.mjs) put in the work directory as stock/<sha256>.<ext>, named by its
+ * bytes, with its credit in video.json's assets[] (docs/videos/ILLUSTRATED.md §圖庫照片). The
+ * renderer's fake origin serves the work directory under /work/, as it does the keyframes.
+ */
+export const STOCK_PATH = /^stock\/[0-9a-f]{64}\.(?:png|jpg|webp)$/;
+export const isStockPath = (value) => typeof value === "string" && STOCK_PATH.test(value);
+export const workUrl = (file) => `${ORIGIN}/work/${file.split("/").map(encodeURIComponent).join("/")}`;
+// A credit drawn on the slide is a short line in the picture's corner; the description carries it in full.
+export const CREDIT_MAX_CHARS = 60;
 
 // Per template: which data it needs, and how many elements lines may reveal.
 export const TEMPLATE_SPECS = {
@@ -102,9 +113,14 @@ export const TEMPLATE_SPECS = {
   },
   screenshot: {
     check: (data) => [
-      !isAssetPath(data.image, /\.(png|jpe?g|webp)$/i) && `image must be a repository path under ${ASSET_ROOTS.join(" or ")}`,
+      !(isAssetPath(data.image, /\.(png|jpe?g|webp)$/i) || isStockPath(data.image)) &&
+        `image must be a repository path under ${ASSET_ROOTS.join(" or ")}, or a stock photo fetched into the work directory (stock/<sha256>.png|jpg|webp)`,
       data.highlight !== undefined && !(data.highlight && ["x", "y", "w", "h"].every((key) => isPercent(data.highlight[key]))) && "highlight must be { x, y, w, h } in percent",
       data.caption !== undefined && !isText(data.caption) && "caption must be text",
+      // Optional, and the description credits the picture whether or not the slide does (the
+      // owner burns no text in by default): one short line in the picture's corner.
+      data.credit !== undefined && !(isText(data.credit) && !data.credit.includes("\n") && visibleLength(data.credit) <= CREDIT_MAX_CHARS) &&
+        `credit must be one line of text (at most ${CREDIT_MAX_CHARS} characters)`,
     ],
     capacity: (data) => (data.highlight ? 1 : 0),
   },
@@ -214,9 +230,20 @@ const heading = (data, first) => (data.title ? `<h2 ${enterClass(first, "heading
 const pad = (number) => String(number).padStart(2, "0");
 const knowsChapters = (state) => (state.chapterCount ?? 0) >= 2 && (state.chapterNumber ?? 0) >= 1;
 
+// A stock photo's credit, in the picture's corner over the highlight's scrim: a dark pill with
+// one short line, cut with an ellipsis rather than wrapped should the lint cap ever be passed.
+const CREDIT_CSS =
+  ".t-screenshot .credit{position:absolute;right:16px;bottom:14px;max-width:80%;padding:6px 16px;border-radius:999px;" +
+  "background:rgba(8,24,25,.62);color:rgba(255,255,255,.88);font-size:22px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}";
+
 // CSS a template carries in its own page instead of the theme, so that adding the template moved
-// no other video's frame keys.
-const TEMPLATE_CSS = { terminal: TERMINAL_CSS };
+// no other video's frame keys. A function takes the scene's data: a screenshot slide carries the
+// credit CSS only when it draws a credit, so every other screenshot page is byte for byte what it was.
+const TEMPLATE_CSS = { terminal: TERMINAL_CSS, screenshot: (data) => (data.credit ? CREDIT_CSS : "") };
+const templateCss = (scene) => {
+  const own = TEMPLATE_CSS[scene.template];
+  return typeof own === "function" ? own(scene.data ?? {}) : own ?? "";
+};
 
 const RENDERERS = {
   title(data, state) {
@@ -285,7 +312,10 @@ const RENDERERS = {
     const box = data.highlight
       ? `<div${attrs(state.visible(1)(0), "box mark", `left:${data.highlight.x}%;top:${data.highlight.y}%;width:${data.highlight.w}%;height:${data.highlight.h}%`)}></div>`
       : "";
-    return `${heading(data, state.first)}<div class="frame"><div ${enterClass(state.first, "shot", 1)}><img src="${assetUrl(data.image)}" alt="">${box}</div></div>${data.caption ? `<div class="caption-line">${richText(data.caption)}</div>` : ""}`;
+    // A stock photo is served from the work directory; a repository picture from the repository.
+    const src = isStockPath(data.image) ? workUrl(data.image) : assetUrl(data.image);
+    const credit = data.credit ? `<div class="credit">${richText(data.credit)}</div>` : "";
+    return `${heading(data, state.first)}<div class="frame"><div ${enterClass(state.first, "shot", 1)}><img src="${src}" alt="">${box}${credit}</div></div>${data.caption ? `<div class="caption-line">${richText(data.caption)}</div>` : ""}`;
   },
   chat(data, state) {
     const show = state.visible(data.messages.length);
@@ -373,7 +403,7 @@ export function slideHtml(scene, state) {
     ...state,
     visible: (count) => visibility(count, state.totalReveals, state.reveal, state.previousReveal, state.first),
   };
-  return page(`${chrome(scene, state)}<main class="content t-${scene.template}">${renderer(scene.data, context)}</main>`, SIZE, TEMPLATE_CSS[scene.template] ?? "");
+  return page(`${chrome(scene, state)}<main class="content t-${scene.template}">${renderer(scene.data, context)}</main>`, SIZE, templateCss(scene));
 }
 
 /**

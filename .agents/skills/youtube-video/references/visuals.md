@@ -24,6 +24,18 @@
 - 框出重點用字卡範本的 `.mark` 樣式或剪輯軟體的框，不要在截圖上手畫。
 - 截圖日期記進 `facts.md`；網頁會改版，說明欄寫「畫面為錄製當時」。
 
+## 圖庫照片（全自動路線的真實照片：Pexels、Pixabay）
+
+旅遊題材要實景（首爾夜景、釜山海邊）時用圖庫照片，不用 AI 畫、不用別人的截圖。金鑰在網站上，工具只帶影片工具權杖；兩家都免費，不記帳。設計與規則在 `docs/videos/ILLUSTRATED.md` §圖庫照片。
+
+1. **搜**：`node tools/video/media/cli.mjs stock search --query "Seoul skyline at night" --orientation landscape --slug <SLUG>`（英文、幾個字就好，≤100 字；`--provider pexels|pixabay` 只問一家；`--per-page` 最多 40）。每個候選印廠商、id、尺寸與方向、廠商要的那句標示、照片頁網址、alt；挑橫向、主體在中間、沒有可辨識的人臉或品牌的那張。Pixabay 的預覽網址一天後失效，挑好就抓。
+2. **抓**：`node tools/video/media/cli.mjs stock fetch --slug <SLUG> --provider pexels --id 3573351`。伺服器向廠商要原檔進媒體庫，工具再下載到 `<VIDEO_WORKDIR>/<SLUG>/stock/<sha256>.<jpg|png|webp>`（檔名是內容雜湊，同一張再抓不會重載），並在 `video.json` 的 `assets[]` 寫一筆 `{path, source, license, author, url}`：`source` 是廠商自己的措辭（「Photo by … on Pexels」「Image by … from Pixabay」），不要改寫。這筆就是說明欄標示的來源，不要手刪；`video.json` 會以工具的格式重寫，所以在改稿前先抓，抓完再 `lint`。
+3. **放上投影片**：一個 `screenshot` 景，`data.image` 寫 `stock/<sha256>.<ext>`（只有這個寫法），`data.title`／`caption`／`highlight` 照截圖景的用法；`data.credit`（選填，一行、≤60 字，例如「Photo by Lukas Rodriguez on Pexels」）才會把標示畫在照片右下角——站主的規則是影片不燒字，所以預設不寫，標示靠說明欄。直向照片會照高度放、置中；超寬的全景會超出版面，換一張。
+4. **標示在說明欄**：`package` 會在參考資料之後加「📷 圖片來源」區塊，一張一行「Photo by … on Pexels（Pexels License）：照片頁網址」，各語系都有。`lint` 不算這幾行的位元組，所以 `youtube.description` 要比 5,000 位元組的上限多留每張約 130 位元組（兩張留 300 就夠）；超過時 `package` 會說是標示把它推過線。
+5. **渲染前**：`render` 會拒絕用了 `stock/…` 卻沒在 `assets[]` 裡的景（說明欄會沒有標示）和還沒抓到工作目錄的照片；換了照片（同名不同位元組）只重畫那一景。
+
+不可以：原樣轉售或把照片當獨立檔案再發布、暗示人物或品牌背書、把可辨識的人放進負面情境、熱連結廠商的網址（一定要抓到自己這邊）、刪掉 `assets[]` 的那一筆。正式站的 web app 還沒轉送 `stock/*` 路由時工具會說「要部署會轉送這些路由的版本」（結束碼 3），先把那張票做完。
+
 ## 螢幕錄影（示範）
 
 1. **準備示範環境**：一個專用的示範目錄或專案，內容是假的（假公司、假客戶、假資料）。終端機提示字元改短，例如 `PS1='$ '`，不露出使用者名稱與主機名。
