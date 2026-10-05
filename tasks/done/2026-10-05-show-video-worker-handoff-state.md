@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-show-video-worker-handoff-state
 title: Show video worker handoff state for unfinished projects
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: codex-video-handoff-state
 claimed_at: 2026-10-05T10:27:46Z
 created_at: 2026-10-05T10:27:19Z
-completed_at:
+completed_at: 2026-10-05T10:48:59Z
 branch: codex/news-video-stall-fixes-20261005
 depends_on: []
 scope:
@@ -106,3 +106,8 @@ mypy, ruff, full web lint, typecheck and five-locale/25-namespace i18n validatio
   regression creates a real within-base junction without requiring administrator access.
   The real NTFS junction regression passed locally; ruff, mypy and the focused API
   suite were rerun after the review fix.
+- Independent `video_flow` review found no additional bug in the unchanged language
+  completion or ready-to-upload decisions. The final helper-only run passed 25 tests
+  with two Windows symlink-capability skips; the real NTFS junction test passed.
+  Repository-wide suites are still being checked by the coordinating task, and this
+  task's completion does not mean production deployment or resumed generation.
