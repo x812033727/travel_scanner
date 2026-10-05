@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-ai-terms-batch-01-self-reference
 title: 第一批 AI 名詞專文有 52 篇「本文／這篇」超過一次
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-ai-terms-self-reference
 claimed_at: 2026-10-05T06:55:47Z
 created_at: 2026-10-03T12:04:01Z
-completed_at:
+completed_at: 2026-10-05T07:39:03Z
 branch: claude/ai-terms-self-reference
 depends_on: []
 scope:
