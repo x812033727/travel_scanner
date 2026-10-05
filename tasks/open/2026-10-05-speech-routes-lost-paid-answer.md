@@ -33,7 +33,9 @@ been charged). `forwardToSpeech` already takes a `LostAnswer` for that second ca
 So `tools/video/tts/client.mjs` cannot tell the two apart and, since
 2026-10-04-prevent-paid-speech-retries-after-ambiguous, treats a 502 `upstream_unavailable`
 after a paid POST as uncertain (exit 3, a person reconciles). An API restart while the web
-container is up therefore stops a narration batch that could safely have retried.
+container is up therefore blocks the video for the owner (narration, a dub, its retake or its
+check: `tools/video/automation/flow.mjs` blocks on `video_speech_uncertain`) where the request
+could safely have been retried. A deploy that lands during a speech request does this.
 
 ## Definition of done
 

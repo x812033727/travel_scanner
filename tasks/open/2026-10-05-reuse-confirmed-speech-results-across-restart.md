@@ -79,3 +79,7 @@ tools/video/shorts/*.test.mjs tools/video/dubs/*.test.mjs`, then `npm run test:t
   in `tools/video/tts/client.mjs` (`SETTLED_CODES`, `NEVER_SENT`).
 - `tools/video/shorts/lab.mjs` is not in scope; if the hold has to live there instead of in
   `shorts/speech.mjs`, check claims and widen the scope first.
+- Since the review of PR #1235 the main worker (`tools/video/automation/flow.mjs`) blocks the
+  video on `video_speech_uncertain` from `tts`, `dub` (and its retake) and `check-audio`, instead
+  of giving a dub up; the owner's retry runs the command again and resends the request. That
+  resend is what this ticket's hold should stop until a person reconciles it.

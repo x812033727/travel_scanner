@@ -49,6 +49,7 @@ import { assembleSheet, clearUnits, readUnits, refusedUnits, sheetUnits, UNIT_CH
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
+import { SPEECH_UNCERTAIN } from "../tts/client.mjs";
 import { staleTakes } from "../tts/takes.mjs";
 
 // Slides keep the general eight-minute floor. Explainers use the reviewed ten-minute default
@@ -410,6 +411,13 @@ async function run(ctx, command) {
 }
 
 const lastLine = (out, lines = 1) => out.trim().split("\n").slice(-lines).join(" ");
+/**
+ * A speech command (tts, dub, check-audio) that stopped because a paid request went out and its
+ * answer was lost (tts/client.mjs SPEECH_UNCERTAIN, exit 3 with the code in its last line). It
+ * may have been charged: running the command again would buy it again, and giving a dub up would
+ * drop the language for good, so the video waits for the owner.
+ */
+const speechUncertain = (result) => result.code === 3 && lastLine(result.out).includes(SPEECH_UNCERTAIN);
 /** The digits of a line, in order: a shortened translation must keep every one of them. */
 const digitsOf = (text) => (String(text).match(/\d+(?:[.,]\d+)*/g) ?? []).join(" ");
 /** A unit's report line names its video once: a phrase gets the slug, a line that has it stays. */
@@ -1934,6 +1942,11 @@ export class Automation {
       check = await run(ctx, ["check-audio", "--slug", state.slug]);
     }
     if (check.code === 4) return this.later(`${state.slug}: narration check could not finish (${check.out.trim().split("\n").at(-1)}); the next run tries again`);
+    // Only a finished check (0, or 1 with lines still flagged) goes for review. One that stopped
+    // for the owner (a token, a key, a paid transcription or judgement whose answer was lost) did
+    // not finish check.json, and the lines Jev never judged would read as fine on the card.
+    if (check.code === 3) return this.block(state, `check-audio needs the owner: ${lastLine(check.out)}`);
+    if (check.code !== 0 && check.code !== 1) return this.block(state, `check-audio failed: ${lastLine(check.out, 2)}`);
     const pushed = await run(ctx, ["review-push", "--slug", state.slug, "--gate", "audio"]);
     if (pushed.code !== 0) return this.later(`${state.slug}: could not send the narration for review: ${pushed.out.trim()}`);
     await this.pull(state.slug);
@@ -2089,7 +2102,10 @@ export class Automation {
     }
     const dubs = dubsStatus(project, workdir, speechHash(doc, project.lexicon));
     for (const { locale, parts } of pending) {
-      if (!parts.includes("dub") || ["current", "skipped"].includes(dubs[locale]?.status)) continue;
+      // A track is current once `dub` wrote it; one whose check stopped before it finished (a
+      // paid request whose answer was lost, see makeDub) is checked again.
+      const unheard = dubs[locale]?.status === "current" && state.languages?.[locale]?.check_stopped;
+      if (!parts.includes("dub") || (["current", "skipped"].includes(dubs[locale]?.status) && !unheard)) continue;
       return this.makeDub(state, locale);
     }
     // Every chosen part is made: cut the captions on the dubs, write the package with the chosen
@@ -2300,7 +2316,9 @@ export class Automation {
    * translator and dubbed again, MAX_DUB_REWORD_ROUNDS times. A retake that no longer fits its
    * window goes back to the shortening. What still fails after that, and what needs the owner (a
    * voice that speaks one language, a missing key), gives the locale up with the reason instead
-   * of blocking the video; a service that is down ends this run and the next one tries again.
+   * of blocking the video; a service that is down ends this run and the next one tries again. A
+   * paid request whose answer was lost (speechUncertain) blocks the video: the locale is not
+   * given up for a request that may well have worked, nor bought again without the owner.
    */
   async makeDub(state, locale) {
     const { ctx } = this;
@@ -2315,6 +2333,13 @@ export class Automation {
     const flags = path.join(workdir, "review", `check-flags.${locale}.json`);
     const checkArgs = ["check-audio", "--slug", slug, "--locale", locale];
     const overLines = () => readJson(dubArtifacts(workdir, locale).fit, null)?.over;
+    // A paid request whose answer was lost: the video waits for the owner, and the owner's retry
+    // runs this locale again, its check included, though its track may already read as current.
+    const lost = (what, result) => {
+      rounds.check_stopped = true;
+      remember();
+      return this.block(state, `${what} needs the owner: ${lastLine(result.out)}`);
+    };
     // Each pass makes the track (only the lines whose words changed are synthesized again) and
     // checks it; a reworded line or a retake that no longer fits starts another pass.
     for (;;) {
@@ -2335,6 +2360,7 @@ export class Automation {
         const why = over.length ? `${over.length} lines (${over.map((line) => line.id).join(", ")}) do not fit even at ${MAX_TEMPO}x after ${rounds.shorten} shortening round${rounds.shorten === 1 ? "" : "s"}` : lastLine(made.out);
         return this.giveUpDub(state, locale, why);
       }
+      if (speechUncertain(made)) return lost(`dub ${locale}`, made);
       if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
       if (made.code === 4) return this.later(`${slug}: ${locale} dub could not finish (${lastLine(made.out)}); the next run tries again`);
       if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
@@ -2345,6 +2371,7 @@ export class Automation {
         remember();
         const redo = await run(ctx, [...dubArgs, "--redo", flags]);
         if (redo.code === 4) return this.later(`${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)}); the next run tries again`);
+        if (speechUncertain(redo)) return lost(`dub ${locale} retake`, redo);
         // The new take is longer than its window allows: the next pass's `dub` reports the same
         // window and shortens it, while shortening rounds are left.
         if (redo.code === 1 && overLines()?.length && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
@@ -2369,6 +2396,7 @@ export class Automation {
         const reworded = rounds.reword ? ` and ${rounds.reword} rewording round${rounds.reword === 1 ? "" : "s"}` : "";
         return this.giveUpDub(state, locale, `Jev still hears lines wrong after ${rounds.retakes} retake${rounds.retakes === 1 ? "" : "s"}${reworded}: ${lastLine(check.out)}`);
       }
+      if (speechUncertain(check)) return lost(`check-audio ${locale}`, check);
       if (check.code === 3) return this.giveUpDub(state, locale, `the dub check needs the owner: ${lastLine(check.out)}`);
       if (check.code !== 0) return this.block(state, `check-audio ${locale} failed: ${lastLine(check.out, 2)}`);
       break;

@@ -85,3 +85,12 @@ Run the affected tools tests and the repository tools suite.
   to fetch again, so a client-side journal is the only way to reuse a paid result.
 - Claimed with `--force`: the only overlapping claim was this agent's own claim of
   2026-10-04-prevent-paid-speech-retries-after-ambiguous on the same branch (same two files).
+- Review of PR #1235 (2026-10-05): DoD 1 holds for a POST or body lost between the client and
+  the site. When the API itself loses the provider's answer (a read timeout or dropped answer
+  after it sent the request) it answers 502 `video_speech_upstream_failed` or
+  `video_judge_upstream_failed`, which the client still retries as settled; that is split into
+  2026-10-05-speech-api-tells-a-provider-answer. The reviewed imported-long-languages suite
+  (`docs/videos/imported-long-languages/speech-journal.test.mjs`) now expects
+  `video_speech_uncertain` for a 503 `upstream_unavailable` behind its journal, and the worker
+  blocks the video on that code instead of giving a dub up; both are written up in
+  2026-10-04-prevent-paid-speech-retries-after-ambiguous.

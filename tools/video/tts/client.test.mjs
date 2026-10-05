@@ -68,6 +68,7 @@ test("a paid request sent and left without its answer is sent once and names the
     ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
     ["the web route's 502, which a lost answer gives too", () => problem(502, "upstream_unavailable"), 502],
     ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
+    ["an error whose detail runs over lines", () => Response.json({ detail: "Internal\nServer Error\n" }, { status: 500 }), 500],
     ["an answer that breaks off", brokenBody, 200],
   ];
   for (const paid of PAID) {
@@ -77,12 +78,14 @@ test("a paid request sent and left without its answer is sent once and names the
       await assert.rejects(paid.send(options), (error) => {
         assert.ok(error instanceof SpeechError, label);
         assert.equal(error.code, SPEECH_UNCERTAIN, label);
-        // Exit 3: the worker blocks the video or skips the dub instead of trying again next round.
+        // Exit 3, with the code in the message's one line: the worker blocks the video instead of
+        // trying again next round or giving a dub up.
         assert.equal(error.who, "owner", label);
         assert.equal(error.status, status, label);
         assert.equal(error.path, paid.path, label);
         assert.equal(error.requestSha256, sha256(calls[0].body), label);
-        assert.match(error.message, new RegExp(`POST /api/video/${paid.path} was sent and no usable answer came back.*not sent again \\(request sha256 ${error.requestSha256}\\)`), label);
+        assert.match(error.message, new RegExp(`^POST /api/video/${paid.path} was sent and no usable answer came back.*not sent again \\(${SPEECH_UNCERTAIN}, request sha256 ${error.requestSha256}\\)$`), label);
+        assert.doesNotMatch(error.message, /\n/, label);
         return true;
       });
       assert.equal(calls.length, 1, `${label}: sent once, not five times`);
@@ -112,6 +115,8 @@ test("a paid request that never left, or that the API settled, is tried again an
     ["a connect timeout", () => { throw failed("UND_ERR_CONNECT_TIMEOUT"); }, []],
     ["the API's rate limit", () => problem(429, "rate_limit_exceeded", { "Retry-After": "3" }), [3000]],
     ["a busy provider", () => problem(503, "video_speech_upstream_busy", { "Retry-After": "7" }), [7000]],
+    // Also what the API answers for a provider read timeout after the request went out, which
+    // may have been billed: 2026-10-05-speech-api-tells-a-provider-answer gives that its own code.
     ["a provider failure the API answered", () => problem(502, "video_speech_upstream_failed"), [1000]],
     ["a key the provider refused", () => problem(502, "video_speech_upstream_rejected_key"), [1000]],
     ["Jev failing behind the API", () => problem(502, "video_judge_upstream_failed"), [1000]],

@@ -15,7 +15,9 @@ export const USER_AGENT = "Mokaair-video-cli/1.0 (https://mokaair.com; support@m
 // gateway or the web route answered instead of the API, or the answer broke off on the way. The
 // server may have synthesized, transcribed or judged it, and been charged; it keeps no answer to
 // fetch again and takes no idempotency key, so the request is not sent again. The error names the
-// request (`path`, `requestSha256` of the body sent) and waits for a person (exit 3).
+// request (`path`, `requestSha256` of the body sent) and is the owner's (exit 3); its one-line
+// message ends with this code, which the worker (automation/flow.mjs) reads to block the video
+// rather than give a dub up.
 export const SPEECH_UNCERTAIN = "video_speech_uncertain";
 
 export class SpeechError extends Error {
@@ -30,20 +32,26 @@ export class SpeechError extends Error {
 
 const OWNER_CODES = new Set(["video_tool_token_invalid", "video_speech_not_configured", "video_speech_voice_not_allowed"]);
 const RETRYABLE_CODES = new Set(["video_speech_upstream_busy", "rate_limit_exceeded", "video_speech_upstream_failed", "upstream_unavailable"]);
-// A paid request's 5xx that settles it: the API's own answer once the provider refused or failed
-// (apps/api/app/video_speech/admin_api.py; synthesis gives the reserved characters back before it
-// answers). Not the web route's 502 `upstream_unavailable`: the speech routes name no lost answer
-// of their own, so apps/web/app/api/video/speech/forward.ts answers it both for an API it never
-// reached and for one whose answer it lost after the request went out.
+// A paid request's 5xx the API answers itself (apps/api/app/video_speech/admin_api.py; synthesis
+// gives the reserved characters back first), retried as before. Settled only when the API reached
+// the provider's answer or never connected: `video_speech_upstream_failed` and
+// `video_judge_upstream_failed` also cover a provider read timeout or dropped answer after the
+// request went out (any httpx.HTTPError), which may have been billed, and are still resent until
+// 2026-10-05-speech-api-tells-a-provider-answer gives that case its own code. Not the web route's
+// 502 `upstream_unavailable`: the speech routes name no lost answer of their own, so
+// apps/web/app/api/video/speech/forward.ts answers it both for an API it never reached and for
+// one whose answer it lost after the request went out.
 const SETTLED_CODES = new Set(["video_speech_upstream_busy", "video_speech_upstream_failed", "video_speech_upstream_rejected_key", "video_judge_upstream_failed"]);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
 
 const neverSent = (error) => NEVER_SENT.has(error?.cause?.code ?? error?.code);
 
-function uncertain(path, body, why, status = 0) {
+function uncertain(path, body, cause, status = 0) {
   const requestSha256 = createHash("sha256").update(body ?? "").digest("hex");
-  const message = `POST /api/video/${path} was sent and no usable answer came back (${why}); it may have run and been charged, so it is not sent again (request sha256 ${requestSha256})`;
+  // One line, so the code stays in the last line the CLIs print.
+  const why = String(cause).replace(/\s+/g, " ").trim();
+  const message = `POST /api/video/${path} was sent and no usable answer came back (${why}); it may have run and been charged, so it is not sent again (${SPEECH_UNCERTAIN}, request sha256 ${requestSha256})`;
   return Object.assign(new SpeechError(message, { status, code: SPEECH_UNCERTAIN, who: "owner" }), { path, requestSha256, why });
 }
 
