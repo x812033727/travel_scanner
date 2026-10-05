@@ -90,6 +90,15 @@ Two things the plan did not expect:
   `2026-10-05-qwen-local-deployment-ollama-variant-sizes`; the qwen3.6, qwen3.8 and
   flash-next sources keep 2026-09-14.
 
+Review of PR #1255 found that the comparison table near the end still gave the September sizes
+for the same tags (qwen3.5:4b 3.4GB, 35b 24GB) under the caption 查證於 2026 年 9 月, so the article
+showed two sizes for one tag. The tags page re-read on 2026-10-05 (HTTP 200) shows 4b 3.3GB - 4.0GB,
+9b 6.6GB - 7.6GB, 27b 17GB - 20GB and 35b 22GB, so the four qwen3.5 rows now carry those values,
+the caption says the qwen3.5 sizes were re-checked on 2026 年 10 月 5 日, and the intro sentence
+that dated every number to 2026 年 9 月 14 日 now names the same exception. The table's qwen3.6:27b
+row (18GB) and the diagram's "qwen3.5:9b 是 6.6GB" (in `diagram-1.svg`, outside this scope) were
+added to `2026-10-05-qwen-local-deployment-ollama-variant-sizes`.
+
 Checks: `PYTHONUTF8=1 uv run python -m app.guides.pack_cli lint --kind life --slug qwen-local-deployment`
 reports 0 errors; with `--warnings` only the existing `no_summary` warning.
 
