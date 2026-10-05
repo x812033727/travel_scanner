@@ -139,9 +139,11 @@ test("GET and unrelated routes pass through, while foreign or changed paid origi
 });
 
 test("native server auth/quota classification is preserved and retryable upstream failure still buys once", async (t) => {
-  // The web route's 503/502 `upstream_unavailable` can also mean an answer lost after the POST went
-  // out, so the native client itself stops on it as uncertain (exit 3) before the journal's hold.
-  for (const [status, code, who, seen = code] of [[401, "video_tool_token_invalid", "owner"], [429, "video_speech_budget_exhausted", "service"], [503, "upstream_unavailable", "owner", SPEECH_UNCERTAIN]]) await t.test(code, async (t) => {
+  // The speech route's 502 `upstream_unavailable` is an API it never reached (it answers a lost
+  // answer with 504 since #1272), so the native client asks again and the journal holds that second
+  // POST. A 503 `upstream_unavailable` comes from no speech route, so the native client itself stops
+  // on it as uncertain (exit 3) before the journal's hold.
+  for (const [status, code, who, seen = code] of [[401, "video_tool_token_invalid", "owner"], [429, "video_speech_budget_exhausted", "service"], [502, "upstream_unavailable", "service", "video_speech_result_held"], [503, "upstream_unavailable", "owner", SPEECH_UNCERTAIN]]) await t.test(`${status} ${code}`, async (t) => {
     const f = fixture(t); let posts = 0;
     await assert.rejects(invoke(f, f.make(async () => { posts++; return Response.json({ code, detail: code }, { status }); })), (error) => error.who === who && error.code === seen);
     assert.equal(posts, 1); assert.equal(Object.values(f.read().entries)[0].status, "unknown");
