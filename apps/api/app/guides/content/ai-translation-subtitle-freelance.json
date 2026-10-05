@@ -1,0 +1,384 @@
+{
+  "slug": "ai-translation-subtitle-freelance",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-income"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "翻譯與字幕接案搭配 AI：譯後編修流程、品質檢查與計價",
+      "description": "用 AI 接翻譯與字幕案，交付的是經過譯後編修（MTPE）的成品，不是機器翻譯原稿。整理 ISO 18587 對完整與輕度譯後編修的定義，Netflix 繁體中文字幕每行 16 字、最多兩行、成人節目每秒最多 9 字等規範，附交付前的品質檢查清單、按字與按分鐘計價的算法（數字為假設），以及怎麼向客戶說明用了機器翻譯。",
+      "hero": {
+        "src": "/guides/ai-translation-subtitle-freelance/hero.jpg",
+        "alt": "米色底上，左邊是深青色的影片畫面，底部有上短下長兩條白色字幕，畫面下方是一條時間軸與幾段字幕區塊；一條虛線箭頭從畫面指向右邊的白色文件，橘色鉛筆正在修改標成橘色的一行，文件右下角有綠色勾號，最下方寫著「譯後編修與字幕」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "機器翻譯譯後編修（MTPE）是由人對照原文修改機器譯稿，ISO 18587 把它分成完整與輕度兩級。",
+            "Netflix 的繁體中文字幕規範是每行最多 16 字、最多兩行，成人節目每秒最多 9 字，每則最長 7 秒。",
+            "計價先估工時再換算單價；以假設數字示範，3,000 英文單字的手冊約每字 2.1 元，30 分鐘的訪談約每分鐘 270 元。",
+            "用不用機器翻譯，開工前問客戶並寫進合約；客戶資料取得同意前不要貼進免費翻譯工具。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "用 AI 接翻譯與字幕案，真正賣的是譯後編修：機器先出譯稿，再由人逐句對照原文改到能用，並為成品負責。AI 省下的是打草稿的時間，意思、術語、斷行與時間軸仍要人把關，報價也要照這些工時算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下面依序說明譯後編修流程、字幕的字數與時間規範、交付前的品質檢查、計價算法與怎麼向客戶說明。"
+        },
+        {
+          "type": "heading",
+          "text": "譯後編修（MTPE）是什麼：完整與輕度兩種",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "機器翻譯譯後編修（machine translation post-editing，簡稱 MTPE）是先用機器翻譯產出譯稿，再由人修改、校正。國際標準化組織（ISO）的 ISO 18587:2017 專門規範這件事，並點出它和從頭翻譯的不同：要同時處理原文、機器譯稿與最後的譯文三份文字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標準把譯後編修分成兩級：完整譯後編修（full post-editing）要做到和人工翻譯相當的品質，輕度譯後編修（light post-editing）只求看得懂。標準本體規範的是完整等級；用哪一級看譯文用途與客戶要求，要公開發布或販售的內容，按完整等級估工時比較穩妥。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標準也要求開工前確認原文適不適合機器翻譯，並與客戶達成協議、留下紀錄，口頭談定的事要再用電子郵件等書面確認。仍在草案投票階段的第二版（ISO/DIS 18587），把對象從機器翻譯改寫成「非人工翻譯」（non-human translation）系統產出的內容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一件譯後編修案的工作順序如下。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "確認需求：用途、完整或輕度、術語表、交期與交付格式。",
+            "試編樣本：抽一小段原文跑機器翻譯再編修，量出每小時能完成多少。",
+            "產出初稿：文件直接機器翻譯；影片先用語音辨識轉逐字稿，校對後再翻譯。",
+            "逐句譯後編修：對照原文修正意思、術語、語氣與台灣用語。",
+            "字幕案再做斷行與時間軸。",
+            "品質檢查後交付，說明用了哪些工具、哪幾步由人處理。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-translation-subtitle-freelance/diagram-1.svg",
+          "alt": "六個步驟的工作流程圖：確認需求、試編樣本、產出初稿、逐句譯後編修、字幕斷行與時間軸、品質檢查與交付，文件案從第四步直接接到第六步；下方兩欄是計價公式與兩個假設算例，以及向客戶說明的三件事",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看：六個步驟依序進行，第五步只有字幕案需要，文件翻譯從第四步直接接到品質檢查；下方兩欄是計價算法（附按字與按分鐘兩個假設算例）與向客戶說明的事。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 Whisper 指令列在本機轉逐字稿：pip、ffmpeg 安裝與 SRT 字幕輸出",
+              "kind": "life",
+              "slug": "whisper-local-transcription"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "字幕的字數與時間：以 Netflix 繁體中文規範為例",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "字幕案比文件翻譯多兩道限制：字數與時間。客戶有自己的規範就照客戶的；沒有的話，Netflix 公開的繁體中文字幕風格指南（Timed Text Style Guide）與時間規範可以當成起點。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最常卡住的是閱讀速度。成人節目每秒最多 9 個字，一則 18 個字的兩行字幕，至少要在畫面上停 2 秒；對白太快、字幕放不下時，要精簡譯文，而不是把字硬塞進去。時間軸上，進場對準聲音的第一格，後面沒有接字幕時，出場最好在聲音結束後至少半秒。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "Netflix 繁體中文規範",
+            "交付前怎麼檢查"
+          ],
+          "rows": [
+            [
+              "每行字數",
+              "最多 16 個字；聽障字幕（SDH）可到 18 個字",
+              "逐則數字數，超過就改寫"
+            ],
+            [
+              "行數",
+              "最多兩行，放得下一行就不拆；有幾種拆法時，偏好上短下長",
+              "不把一個詞拆到兩行"
+            ],
+            [
+              "閱讀速度",
+              "成人每秒最多 9 個字、兒童 7 個字；聽障字幕成人 11 個字、兒童 9 個字",
+              "字數除以秒數，超過就精簡"
+            ],
+            [
+              "單則長度",
+              "最長 7 秒；每秒 24 格的影片最短 20 格",
+              "過短的合併、過長的拆開"
+            ],
+            [
+              "字幕間隔",
+              "至少 2 格；每秒 24 格的影片，3 到 11 格的空隙收成 2 格",
+              "檢查連續字幕的空隙"
+            ],
+            [
+              "標點與數字",
+              "全形標點；行尾與每則結尾不加頓號與逗號，句號一律不用；數字用半形",
+              "搜尋句號、行尾標點與全形數字"
+            ]
+          ],
+          "caption": "整理自 Netflix 繁體中文字幕風格指南、通用規範與字幕時間規範，客戶另有規範時以客戶為準；查證於 2026 年 10 月。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 上字幕與翻譯影片：CapCut、Whisper 與 YouTube 三條路",
+              "kind": "life",
+              "slug": "ai-video-subtitles-translation"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "交付前的品質檢查清單",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 譯稿最危險的錯誤往往讀起來最順：否定句變肯定、數字少一個零、同一個人名兩種譯法。照固定順序檢查，從意思到格式。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "意思：逐句對照原文，找漏譯、多譯與否定反轉；數字、日期、單位逐一核對。",
+            "術語與專名：照客戶的術語表，沒有就自己建一份；人名、作品名有官方譯名就照用。",
+            "用語：簡轉繁後改成台灣用法，例如「軟件」改「軟體」、「視頻」改「影片」；稱謂與「你」「您」全篇一致。",
+            "字幕格式：照上表逐項檢查。",
+            "整片回看：Netflix 的時間規範要求製作階段完整看過一遍；文件案則只讀譯文、從頭讀一遍。",
+            "檔案：時間碼格式、文字編碼與檔名符合客戶要求，交付前自己重新打開一次。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "驗收標準可以參考 ISO 5060:2024，它以錯誤類型加扣分算出錯誤分數與品質等級，人工翻譯、譯後編修過的機器翻譯與未編修的機器翻譯都適用。查字詞可用教育部重編國語辭典修訂本與國家教育研究院樂詞網。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "沉浸式翻譯怎麼設定：網頁、文件與內容校對",
+              "kind": "life",
+              "slug": "immersive-translate-guide"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "計價：按字與按分鐘怎麼算",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "按字或按分鐘，起點都是工時：估出幾小時，乘上目標時薪，再換算成單價。譯後編修的速度因原文、語言組合與機器譯稿品質差很多，要用樣本實測。以下數字全是假設，不代表市場行情。"
+        },
+        {
+          "type": "paragraph",
+          "text": "按字計價（假設）："
+        },
+        {
+          "type": "list",
+          "items": [
+            "原文：3,000 個英文單字的產品手冊。",
+            "試編：抽 300 字實測，每小時完成 600 字，正文編修 3,000 ÷ 600 = 5 小時。",
+            "其他工時：建術語表 1 小時、最後通讀 1 小時，合計 7 小時。",
+            "報價：目標時薪新台幣 900 元，7 × 900 = 6,300 元，÷ 3,000 字 = 每字 2.1 元。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "按字計價要先講定算原文還是譯文、英文按單字還是中文按字，以及重複句與客戶提供的舊譯文怎麼折算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "按分鐘計價（假設）："
+        },
+        {
+          "type": "list",
+          "items": [
+            "影片：30 分鐘、對白密集的訪談。",
+            "工時：校對語音辨識逐字稿 2 小時、翻譯與譯後編修 4 小時、斷行與時間軸 2 小時、整片回看與修正 1 小時，合計 9 小時。",
+            "報價：同樣以時薪 900 元計，9 × 900 = 8,100 元，÷ 30 分鐘 = 每分鐘片長 270 元。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "字幕的工時跟對白多寡關係最大，報價前先看過片子；報價單寫清楚片長怎麼算、含不含逐字稿、修改幾輪、急件怎麼加價。在會抽成的平台接案，報價還要除以（1－抽成比例）。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 接案入門：哪些案子適合用 AI、在哪裡接、報價怎麼算",
+              "kind": "life",
+              "slug": "ai-freelance-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "向客戶說明用了機器翻譯",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用不用機器翻譯，開工前就問，答案寫進合約或訂單。Fiverr 的 AI 使用規則規定，客戶在下單前或開始時要求不用 AI，接案者就得照做，並說明預計的工作流程。客戶要求依翻譯服務標準 ISO 17100:2015 交件時也要先談，這份標準不涵蓋機器翻譯加譯後編修。"
+        },
+        {
+          "type": "paragraph",
+          "text": "合約或訂單至少寫下："
+        },
+        {
+          "type": "list",
+          "items": [
+            "會不會用機器翻譯或 AI、用在哪一步，做完整還是輕度譯後編修。",
+            "原文、影片與逐字稿可以上傳到哪些工具。",
+            "譯文的著作財產權歸誰，客戶要買斷就寫明。",
+            "修改幾輪、驗收標準與交期。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "免費翻譯工具可能拿輸入的內容訓練模型。以 DeepL 為例，免費版會在有限期間內這樣使用上傳的內容與譯文，依使用條款也不能翻譯含個人資料的文字；Pro 版則在完成服務後刪除送出的文字與譯文。客戶的原文與未公開的影片，取得同意前不要上傳。"
+        },
+        {
+          "type": "paragraph",
+          "text": "著作權法第 3 條把翻譯列為「改作」，第 28 條規定改作權由著作人專有，第 36 條允許著作財產權讓與他人，接案前要確認客戶有權委託翻譯。依第 12 條，出資聘人完成的著作，契約沒約定時，著作財產權歸受聘的譯者，出資人可以利用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "接案用 AI 的保密與責任：客戶資料、合約條款與揭露",
+              "kind": "life",
+              "slug": "ai-freelance-client-confidentiality"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "譯稿越順，越要逐句對原文",
+          "text": "出了錯，責任在交付的人，不在翻譯工具。報價前先試編樣本，交付前照清單逐項跑一遍。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "ISO 18587:2017 Translation services — Post-editing of machine translation output — Requirements（完整與輕度譯後編修的定義、流程與客戶協議）",
+          "url": "https://www.iso.org/standard/62970.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "SIS 瑞典標準協會：ISO 18587:2017 標準預覽（第 1 至 4.2 節原文）",
+          "url": "https://www.sis.se/api/document/preview/921739/",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "ISO/DIS 18587 Translation services — Post-editing of non-human translation output — Requirements（第二版草案，DIS 投票階段）",
+          "url": "https://www.iso.org/standard/88184.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "ISO 17100:2015 Translation services — Requirements for translation services（機器翻譯加譯後編修不在適用範圍）",
+          "url": "https://www.iso.org/standard/59149.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "ISO 5060:2024 Translation services — Evaluation of translation output — General guidance（錯誤類型與扣分的評估方法）",
+          "url": "https://www.iso.org/standard/80701.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Netflix Partner Help Center: Chinese (Traditional) Timed Text Style Guide（每行字數、行數、閱讀速度、標點與數字）",
+          "url": "https://partnerhelp.netflixstudios.com/hc/en-us/articles/215994807-Chinese-Traditional-Timed-Text-Style-Guide",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Netflix Partner Help Center: Timed Text Style Guide: General Requirements（單則最短與最長時間、行數與斷行原則）",
+          "url": "https://partnerhelp.netflixstudios.com/hc/en-us/articles/215758617-Timed-Text-Style-Guide-General-Requirements",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Netflix Partner Help Center: Timed Text Style Guide: Subtitle Timing Guidelines（最短 20 格、間隔 2 格、出場時間、整片回看）",
+          "url": "https://partnerhelp.netflixstudios.com/hc/en-us/articles/360051554394-Timed-Text-Style-Guide-Subtitle-Timing-Guidelines",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Fiverr Help Center: Using AI on Fiverr, guidelines for freelancers and clients（客戶要求不用 AI 時須遵守、接案者對成果負責）",
+          "url": "https://help.fiverr.com/hc/en-us/articles/34998793899665-Using-AI-on-Fiverr-Guidelines-for-freelancers-and-clients",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "DeepL Privacy Policy（免費版與 Pro 版的文字處理與保存）",
+          "url": "https://www.deepl.com/en/privacy",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：著作權法第 3 條（改作的定義）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070017&flno=3",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：著作權法第 12 條（出資聘人完成之著作）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070017&flno=12",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：著作權法第 28 條（改作權）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070017&flno=28",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：著作權法第 36 條（著作財產權得讓與）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070017&flno=36",
+          "checked_on": "2026-10-05"
+        }
+      ]
+    }
+  }
+}

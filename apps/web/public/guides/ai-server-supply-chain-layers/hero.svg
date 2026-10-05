@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">從晶片到機櫃 / From chip to rack</title>
+  <desc id="desc">插圖：左邊一座深色機櫃裡排著八層伺服器，左側有兩條藍色冷卻水管接到每一層，底部一條橘色電線連到一個閃電符號；其中一層伺服器被圈出，用虛線放大到右邊的大圓圈裡。圓圈裡是一個先進封裝：中間一顆青綠色的運算晶片，兩側各一疊藍色的多層記憶體，底下一條中介層，晶片上方接著兩條藍色冷卻管。圓圈下方寫著「從晶片到機櫃」。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <g transform="translate(0,-40)">
+  <!-- coolant manifold pipes -->
+  <line x1="248" y1="170" x2="248" y2="730" stroke="#2F6F9F" stroke-width="16" stroke-linecap="round"/>
+  <line x1="282" y1="170" x2="282" y2="730" stroke="#2F6F9F" stroke-width="16" stroke-linecap="round"/>
+  <line x1="282" y1="170" x2="282" y2="730" stroke="#E6F0F7" stroke-width="8" stroke-linecap="round"/>
+  <line x1="288" y1="205" x2="312" y2="205" stroke="#2F6F9F" stroke-width="8"/>
+  <line x1="288" y1="275" x2="312" y2="275" stroke="#2F6F9F" stroke-width="8"/>
+  <line x1="288" y1="345" x2="312" y2="345" stroke="#2F6F9F" stroke-width="8"/>
+  <line x1="288" y1="415" x2="312" y2="415" stroke="#2F6F9F" stroke-width="8"/>
+  <line x1="288" y1="485" x2="312" y2="485" stroke="#2F6F9F" stroke-width="8"/>
+  <line x1="288" y1="555" x2="312" y2="555" stroke="#2F6F9F" stroke-width="8"/>
+  <line x1="288" y1="625" x2="312" y2="625" stroke="#2F6F9F" stroke-width="8"/>
+  <line x1="288" y1="695" x2="312" y2="695" stroke="#2F6F9F" stroke-width="8"/>
+
+  <!-- rack -->
+  <rect x="310" y="140" width="380" height="620" rx="18" fill="#102A2B"/>
+  <rect x="340" y="180" width="320" height="50" rx="8" fill="#E3F0EF"/>
+  <rect x="362" y="199" width="200" height="12" rx="6" fill="#FFFFFF"/>
+  <circle cx="630" cy="205" r="8" fill="#2E7D5B"/>
+  <rect x="340" y="250" width="320" height="50" rx="8" fill="#E3F0EF"/>
+  <rect x="362" y="269" width="200" height="12" rx="6" fill="#FFFFFF"/>
+  <circle cx="630" cy="275" r="8" fill="#2E7D5B"/>
+  <rect x="340" y="320" width="320" height="50" rx="8" fill="#E3F0EF"/>
+  <rect x="362" y="339" width="200" height="12" rx="6" fill="#FFFFFF"/>
+  <circle cx="630" cy="345" r="8" fill="#2E7D5B"/>
+  <rect x="340" y="390" width="320" height="50" rx="8" fill="#FFFFFF" stroke="#D97A2B" stroke-width="6"/>
+  <rect x="362" y="409" width="200" height="12" rx="6" fill="#E3F0EF"/>
+  <circle cx="630" cy="415" r="8" fill="#2E7D5B"/>
+  <rect x="340" y="460" width="320" height="50" rx="8" fill="#E3F0EF"/>
+  <rect x="362" y="479" width="200" height="12" rx="6" fill="#FFFFFF"/>
+  <circle cx="630" cy="485" r="8" fill="#2E7D5B"/>
+  <rect x="340" y="530" width="320" height="50" rx="8" fill="#E3F0EF"/>
+  <rect x="362" y="549" width="200" height="12" rx="6" fill="#FFFFFF"/>
+  <circle cx="630" cy="555" r="8" fill="#2E7D5B"/>
+  <rect x="340" y="600" width="320" height="50" rx="8" fill="#E3F0EF"/>
+  <rect x="362" y="619" width="200" height="12" rx="6" fill="#FFFFFF"/>
+  <circle cx="630" cy="625" r="8" fill="#2E7D5B"/>
+  <rect x="340" y="670" width="320" height="50" rx="8" fill="#E3F0EF"/>
+  <rect x="362" y="689" width="200" height="12" rx="6" fill="#FFFFFF"/>
+  <circle cx="630" cy="695" r="8" fill="#2E7D5B"/>
+
+  <!-- power cable and bolt -->
+  <path d="M500 760 L500 810 L236 810" fill="none" stroke="#D97A2B" stroke-width="12" stroke-linecap="butt" stroke-linejoin="round"/>
+  <circle cx="200" cy="810" r="40" fill="#D97A2B"/>
+  <polygon points="210,782 184,816 199,816 189,840 217,804 202,804 214,782" fill="#FFFFFF"/>
+
+  <!-- zoom lines -->
+  <line x1="663" y1="390" x2="942" y2="232" stroke="#D97A2B" stroke-width="4" stroke-dasharray="12 10"/>
+  <line x1="663" y1="440" x2="942" y2="628" stroke="#D97A2B" stroke-width="4" stroke-dasharray="12 10"/>
+
+  <!-- magnifier -->
+  <circle cx="1140" cy="430" r="280" fill="#FFFFFF" stroke="#D97A2B" stroke-width="8"/>
+
+  <!-- coolant tubes to the chip -->
+  <line x1="1115" y1="156" x2="1115" y2="352" stroke="#2F6F9F" stroke-width="14" stroke-linecap="butt"/>
+  <line x1="1165" y1="157" x2="1165" y2="352" stroke="#2F6F9F" stroke-width="14" stroke-linecap="butt"/>
+
+  <!-- package -->
+  <rect x="930" y="320" width="420" height="230" rx="18" fill="#E3F0EF" stroke="#0D6B68" stroke-width="5"/>
+  <line x1="1115" y1="320" x2="1115" y2="352" stroke="#2F6F9F" stroke-width="14" stroke-linecap="butt"/>
+  <line x1="1165" y1="320" x2="1165" y2="352" stroke="#2F6F9F" stroke-width="14" stroke-linecap="butt"/>
+  <rect x="1060" y="350" width="160" height="160" rx="12" fill="#0D6B68"/>
+  <rect x="960" y="360" width="70" height="22" rx="4" fill="#2F6F9F"/>
+  <rect x="960" y="390" width="70" height="22" rx="4" fill="#2F6F9F"/>
+  <rect x="960" y="420" width="70" height="22" rx="4" fill="#2F6F9F"/>
+  <rect x="960" y="450" width="70" height="22" rx="4" fill="#2F6F9F"/>
+  <rect x="960" y="480" width="70" height="22" rx="4" fill="#2F6F9F"/>
+  <rect x="1250" y="360" width="70" height="22" rx="4" fill="#2F6F9F"/>
+  <rect x="1250" y="390" width="70" height="22" rx="4" fill="#2F6F9F"/>
+  <rect x="1250" y="420" width="70" height="22" rx="4" fill="#2F6F9F"/>
+  <rect x="1250" y="450" width="70" height="22" rx="4" fill="#2F6F9F"/>
+  <rect x="1250" y="480" width="70" height="22" rx="4" fill="#2F6F9F"/>
+  <rect x="950" y="518" width="380" height="20" rx="6" fill="#F7F1E8" stroke="#5C6B6B" stroke-width="3"/>
+
+  <text x="1140" y="800" font-size="56" font-weight="700" fill="#102A2B" text-anchor="middle">從晶片到機櫃</text>
+  </g>
+</svg>

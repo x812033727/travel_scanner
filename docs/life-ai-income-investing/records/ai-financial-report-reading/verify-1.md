@@ -1,0 +1,50 @@
+# verify-1：ai-financial-report-reading 查核第一輪（2026-10-05）
+
+主張｜判定｜來源
+
+- 標題「用 AI 讀財報與法說會：提示詞、對照原文與常見錯誤」（方法性標題，無事實數字）｜ok｜—
+- description「單位、期間、合併與個體、年增與季增最容易讀錯」→「很容易讀錯」（無頻率來源）｜softened｜—
+- 公開資訊觀測站由證交所、櫃買中心等單位共同建立，可查上市、上櫃、興櫃與公開發行公司資訊｜ok｜https://dsp.tpex.org.tw/storage/education_event/113/5.%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%84%AA%E5%8C%96%E5%85%AC%E9%96%8B%E8%B3%87%E8%A8%8A%E8%A7%80%E6%B8%AC%E7%AB%99%E8%AA%AA%E6%98%8E.pdf
+- 首頁搜尋列可輸入公司代號或簡稱；年度欄位用民國年（手冊截圖年度 112）｜ok｜同上（手冊頁 2–4、14）
+- 民國 115 年 = 2026 年（115 + 1911）｜ok｜算術
+- 單一公司 → 電子文件下載 → 財務報告書，輸入代號與年度，新視窗清單下載 PDF｜ok｜同上（手冊頁 17 截圖）
+- 第一至第三季通常只有合併財報；第四季另有個體財報｜ok｜同上（手冊頁 17 截圖）；https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400050（第 7 條）
+- 英文版只出現在第四季的暗示 → 截圖第一至三季也有「IFRSs英文版-合併財報」，改成「有些公司各季都另外上傳英文版」｜fixed｜手冊頁 17 截圖
+- 單一公司 → 財務報表 → 合併/個別報表，可查資產負債表、綜合損益表、現金流量表，表頭標金額單位（截圖「單位：新台幣仟元」）｜ok｜手冊頁 13–14
+- 單一公司 → 營運概況 → 每月營收 → 月營業收入資訊｜ok｜手冊頁 19 截圖
+- 重大訊息/公告 → 法說會 分頁｜ok｜手冊頁 21 截圖（今天的新版網站對本環境為 WAF 頁，未能親見）
+- 法說會一覽表欄位：召開日期、擇要訊息、中文檔案、英文檔案、影音連結資訊｜ok｜https://mopsov.twse.com.tw/mops/web/t100sb02_1（WebFetch 讀頁面與 ajax 結果頁）
+- 年度財報：會計年度終了後三個月內公告申報，經會計師查核簽證｜ok｜https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0400001&flno=36
+- 第一至三季財報：季終了後 45 日內，經會計師核閱｜ok｜同上
+- 每月 10 日以前公告申報上月營運情形｜ok｜同上
+- 營運情形指合併營業收入額等｜ok｜https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0400002&flno=5
+- 每月營收格「條文沒有要求會計師查核或核閱」→ 改為描述條文（只定申報期限，不像年報、季報寫明會計師程序）｜fixed（措辭，非數字）｜https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0400001&flno=36
+- 上市公司年度自結財務資訊：會計年度終了後 75 日內申報，經董事會通過｜ok｜https://twse-regulation.twse.com.tw/m/LawContent.aspx?FID=FL007250（第 3 條第 1 項第 2 款，115.09.30 版）
+- 法說會財務業務資訊：盤前或盤中召開者會前非交易時間輸入，其餘至遲會後當日，中英文同時輸入｜ok｜同上（第 3 條第 2 項第 14 款）
+- 國內自辦法說會：次一營業日交易時間開始二小時前輸入完整影音連結，影音留存至少一年｜ok｜同上；TPEx 問答集第九題
+- 上市公司每年至少在國內自辦或受邀參加一次法說會｜ok｜https://twse-regulation.twse.com.tw/m/LawContent.aspx?FID=FL007111（第 8 條，115.09.30 版）
+- 上櫃公司自 114 年 1 月 1 日起每年至少一次；財務業務資訊即中英文簡報檔｜ok｜https://dsp.tpex.org.tw/storage/co_download/%E4%B8%8A%E6%AB%83%E5%85%AC%E5%8F%B8%E8%BE%A6%E7%90%86%E6%B3%95%E4%BA%BA%E8%AA%AA%E6%98%8E%E6%9C%83%E5%8F%83%E8%80%83%E5%95%8F%E7%AD%94%E9%9B%86.pdf（114.01）
+- 法說會簡報可能同時有查核或核閱數、自結數與預測性資訊；簡報含未來展望｜ok｜同上（第二、十題）
+- 表格 caption「依證券交易法與證交所、櫃買中心規定整理，資料時間為 2026 年 10 月」｜ok｜上列來源
+- 年度財報沒有第四季單季欄；年度綜合損益表只有本期、上期｜ok｜https://law.moj.gov.tw/LawClass/LawGetFile.ashx?FileId=0000412547&lan=C（格式二）
+- 「期中綜合損益表並列四組數字」→ 第 20 條四個期間在第一季重合，改成第二、三季並列四組、第一季當季即年初累計（正文與表格）｜fixed｜https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400050（第 20 條）；格式二之一
+- 標準格式表頭「單位：新臺幣千元」｜ok｜格式二、二之一（115 年版）；現行格式三（FileId 0000199838）同樣寫千元
+- 每股盈餘以新臺幣元為單位｜ok｜https://law.moj.gov.tw/LawClass/LawGetFile.ashx?FileId=0000412548&lan=C（註八；現行舊版格式檔下載不到，見 notes.md）
+- 期中欄名「本期 1 月至 X 月」（例子中的「本期 1 月至 9 月」）｜ok｜格式二之一
+- 合併含子公司；個體對子公司採權益法；個體本期損益等於合併中歸屬於母公司業主之分攤數｜ok｜https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400050（第 7、21 條）
+- 非曆年制會計年度存在，第一季不一定是 1–3 月｜ok｜TPEx 手冊頁 14、17 截圖（「採非曆年制者」「月制會計年度」）
+- 每月營收並列上月比、去年同月比、累計與去年累計比三個增減百分比｜ok｜https://data.gov.tw/dataset/18420
+- 編製準則 115 年 2 月 6 日修正，格式一至二之一、格式四自 117 會計年度施行｜ok｜https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400050（頁首與第 32 條沿革）
+- 假設例子 1,234,567 千元 ≈ 12.3 億元｜ok｜算術（1,234,567,000 元）
+- 生成式 AI 以有把握的語氣產出錯誤內容（confabulation / 幻覺）｜ok｜https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf（2.2）
+- 「回答越長、題目越需要專業脈絡，越容易出現」→ NIST 只說長篇開放式回答與專業領域特別相關，改成「尤其要留意」｜fixed｜同上
+- 限定只用提供的文件、允許回答不知道、長文件先逐字摘錄、每個主張附引文、找不到就撤回｜ok｜https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations
+- 「最常讀錯」（summary、導言、H2）沒有量測來源 → 「容易讀錯」｜softened｜—
+- 站內連結 ai-concept-stocks-explained（批次姊妹篇，工作區有 pack，含年報產品營業比重與重大訊息章節）｜ok｜https://mokaair.com/zh-TW/life/ai-concept-stocks-explained
+- 站內連結 ai-pdf-tools-summarize-translate（標題「AI PDF 工具：摘要、翻譯、問答怎麼分工」）｜ok｜https://mokaair.com/zh-TW/life/ai-pdf-tools-summarize-translate
+- 站內連結 ai-hallucination-fact-check｜ok｜https://mokaair.com/zh-TW/life/ai-hallucination-fact-check
+- 站內連結 finance-glossary-50-terms 的文字寫「營業毛利、每股盈餘、殖利率」，速查表沒有每股盈餘詞條 → 改「毛利、淨利、殖利率」｜fixed｜https://mokaair.com/zh-TW/life/finance-glossary-50-terms
+- 免責 callout：含「不是投資建議」、中括號為「費用、稅負與交易規則」、查證日 2026-10-05｜ok｜docs/life-finance-series-brief.md §5
+- diagram-1 上的數字：只有頁尾 2026（正文 caption 與免責都有）；五個檢查框內容與正文一致｜ok｜—
+- hero：無數字、無 logo、無上升長條；alt 與渲染圖一致（左報告六列、右對話框三行、三條虛線、兩綠勾一橘驚嘆號、下方一行字）｜ok｜—
+- sources[] 13 筆：12 筆 curl -sSL 200 且為實際內容；mopsov 對 curl 為 WAF，WebFetch 可讀｜ok｜見上

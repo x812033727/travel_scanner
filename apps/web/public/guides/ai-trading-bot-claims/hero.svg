@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">回測只看得到過去 / A backtest only shows the road behind</title>
+  <desc id="desc">米色底的插圖。畫面中央是一面橫向的後照鏡，深色圓角外框，頂端用一根短桿接到一顆青綠色的晶片，代表 AI。鏡面裡映出走過的路：淺藍的天空有兩朵白雲，淺綠的地面上一條灰色道路從鏡面下緣往遠方延伸、向右彎進地平線，路中央有白色分隔線，路旁左右各有兩棵綠色的樹。下方一行字寫著回測只看得到過去。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <clipPath id="glass">
+      <rect x="306" y="291" width="988" height="298" rx="124"/>
+    </clipPath>
+  </defs>
+
+  <!-- chip mount -->
+  <g stroke="#0D6B68" stroke-width="8" stroke-linecap="butt">
+    <line x1="776" y1="96" x2="776" y2="120"/>
+    <line x1="800" y1="96" x2="800" y2="120"/>
+    <line x1="824" y1="96" x2="824" y2="120"/>
+    <line x1="728" y1="142" x2="752" y2="142"/>
+    <line x1="728" y1="166" x2="752" y2="166"/>
+    <line x1="728" y1="190" x2="752" y2="190"/>
+    <line x1="848" y1="142" x2="872" y2="142"/>
+    <line x1="848" y1="166" x2="872" y2="166"/>
+    <line x1="848" y1="190" x2="872" y2="190"/>
+  </g>
+  <rect x="786" y="208" width="28" height="62" fill="#102A2B"/>
+  <rect x="752" y="118" width="96" height="96" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="8"/>
+  <rect x="778" y="144" width="44" height="44" rx="6" fill="#0D6B68"/>
+
+  <!-- mirror frame -->
+  <rect x="280" y="265" width="1040" height="350" rx="150" fill="#102A2B"/>
+
+  <!-- what the mirror shows -->
+  <g clip-path="url(#glass)">
+    <rect x="306" y="291" width="988" height="298" fill="#E6F0F7"/>
+    <rect x="306" y="455" width="988" height="140" fill="#D3E8DC"/>
+
+    <!-- clouds -->
+    <rect x="470" y="336" width="150" height="34" rx="17" fill="#FFFFFF"/>
+    <rect x="508" y="318" width="76" height="34" rx="17" fill="#FFFFFF"/>
+    <rect x="1010" y="350" width="120" height="28" rx="14" fill="#FFFFFF"/>
+    <rect x="1040" y="334" width="60" height="28" rx="14" fill="#FFFFFF"/>
+
+    <!-- road -->
+    <path d="M600 600 C690 540 740 495 754 455 L770 455 C784 495 880 540 1000 600 Z" fill="#5C6B6B"/>
+    <g stroke="#FFFFFF" stroke-linecap="round">
+      <line x1="799" y1="596" x2="792" y2="572" stroke-width="10"/>
+      <line x1="784" y1="545" x2="779" y2="530" stroke-width="8"/>
+      <line x1="772" y1="508" x2="769" y2="498" stroke-width="6"/>
+      <line x1="765" y1="478" x2="764" y2="472" stroke-width="4"/>
+    </g>
+
+    <!-- trees -->
+    <rect x="465" y="470" width="12" height="62" fill="#5C6B6B"/>
+    <circle cx="471" cy="462" r="38" fill="#2E7D5B"/>
+    <rect x="676" y="452" width="8" height="30" fill="#5C6B6B"/>
+    <circle cx="680" cy="446" r="20" fill="#2E7D5B"/>
+    <rect x="1015" y="452" width="8" height="28" fill="#5C6B6B"/>
+    <circle cx="1019" cy="446" r="18" fill="#2E7D5B"/>
+    <rect x="1124" y="468" width="12" height="60" fill="#5C6B6B"/>
+    <circle cx="1130" cy="460" r="34" fill="#2E7D5B"/>
+  </g>
+
+  <text x="800" y="790" font-size="60" font-weight="700" fill="#102A2B" text-anchor="middle">回測只看得到過去</text>
+</svg>
