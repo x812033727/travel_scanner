@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-automation-client-retries-a-judge-s
 title: Automation client retries a judge's upstream_unavailable once the judge lost-answer routes are live
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-judge-settled-502
 claimed_at: 2026-10-05T23:41:40Z
 created_at: 2026-10-05T12:43:03Z
-completed_at:
+completed_at: 2026-10-05T23:55:20Z
 branch: claude/judge-settled-502
 depends_on:
   - 2026-10-05-let-the-judge-routes-tell-a
