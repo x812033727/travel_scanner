@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-sfx-library-loudness-cue-sheet
 title: Sound-effect library with measured loudness, a cue sheet in video.json, and an audibility check
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-fable-5-1-sfx
 claimed_at: 2026-10-05T17:00:10Z
 created_at: 2026-10-05T16:08:26Z
-completed_at:
+completed_at: 2026-10-05T17:29:36Z
 branch: claude/sfx-library-cue-sheet
 depends_on:
   - 2026-10-03-illustrated-slides-lint-heuristics-the-shorts
