@@ -57,9 +57,11 @@ const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_
 // A Jev judgement (judge/policy, judge/outline) takes one call off the daily Jev budget before it
 // asks Jev (apps/api/app/video_automation/judge.py `_ask`), so it is paid like a stage run. Its only
 // settling 5xx is the API's own 502 once its Jev call failed: the API answered, and no verdict was
-// lost on the way back. The judge routes name no lost answer of their own
-// (apps/web/app/api/video/speech/forward.ts `lost`), so their 502 upstream_unavailable may follow a
-// request the API received and answered too late: uncertain here, unlike a stage run's.
+// lost on the way back. Not yet the judge routes' 502 `upstream_unavailable`, unlike a stage run's:
+// they now answer a lost answer with 504 `video_judge_answer_lost` (JUDGE_LOST in
+// apps/web/app/api/video/speech/forward.ts, uncertain here like any 5xx not listed) and keep the 502
+// for an API they never reached, but a host from before that change answers the 502 for both, so
+// it moves here only once the change is live (2026-10-05-automation-client-retries-a-judge-s).
 const SETTLED_JUDGE_CODES = new Set(["video_judge_upstream_failed"]);
 const JUDGE = Object.freeze({ paid: true, settled: SETTLED_JUDGE_CODES, what: "Jev" });
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
