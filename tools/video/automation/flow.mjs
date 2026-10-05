@@ -25,7 +25,7 @@ import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
-import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
+import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, LOCALES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
@@ -38,7 +38,7 @@ import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
 import { buildSheet, SHEET_PARTS } from "../i18n/cli.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
-import { AutomationError, OUTPUT_INVALID, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
+import { AutomationError, OUTPUT_INVALID, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
@@ -702,7 +702,23 @@ export class Automation {
       const siteVideo = siteBySlug.get(state.slug);
       const request = siteVideo?.retry_request_id;
       if (state.status !== "blocked" || !free(state) || !request || request === siteVideo.retry_acknowledged_id || request === state.retry_request_id) continue;
-      await this.api.retryRuns?.(state.slug, { requestId: request, reason: state.blocked ?? "" });
+      if (siteVideo?.dropped_at || stopRequested(this.workdir(state.slug))) continue;
+      const currentVideo = readJson(path.join(docDir(state.slug, this.ctx.root), "video.json"), null);
+      if (state.policy_hold && state.format && currentVideo?.format && state.format !== currentVideo.format) {
+        state.retry_request_id = request;
+        return this.block(state, `policy retry refused: auto.json is ${state.format}, video.json is ${currentVideo.format}`);
+      }
+      if (state.policy_hold?.source_files && JSON.stringify(state.policy_hold.source_files) !== JSON.stringify(this.policySource(state))) {
+        state.retry_request_id = request;
+        return this.block(state, "policy retry refused: the source changed since the held request; restore its exact source or inspect the retained receipt before resuming");
+      }
+      try {
+        await this.api.retryRuns?.(state.slug, { requestId: request, reason: state.blocked ?? "", format: state.format ?? currentVideo?.format ?? "slides" });
+      } catch (error) {
+        if (!(error instanceof AutomationError && error.code === POLICY_HOLD)) throw error;
+        state.retry_request_id = request;
+        return this.policyHold(state, error);
+      }
       state.retry_request_id = request;
       // A language batch can fail after the finished video reached YouTube. Resume
       // only its languages, rather than revisiting the production stages.
@@ -713,6 +729,7 @@ export class Automation {
       delete state.blocked;
       delete state.blocked_report_pending;
       delete state.blocked_report_retry_at;
+      delete state.policy_hold;
       saveState(this.workdir(state.slug), state);
       try {
         await report(this.ctx, this.api, state, "retrying");
@@ -769,6 +786,7 @@ export class Automation {
       // video still on its way to YouTube or already there; nothing while a step of its own is due.
       done ??= await this.languages(state);
     } catch (error) {
+      if (error instanceof AutomationError && error.code === POLICY_HOLD) return this.policyHold(state, error);
       if (error instanceof AutomationError && error.code === RUN_UNCERTAIN) return this.unanswered(state, error);
       if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
       return this.retryLater(state, error.stage, error.message);
@@ -923,6 +941,7 @@ export class Automation {
     writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
     const state = {
       slug: plan.slug,
+      format: "slides",
       title: String(plan.title || titleOf(plan.brief)).slice(0, 200),
       status: "active",
       created_at: this.ctx.now().toISOString(),
@@ -1244,13 +1263,35 @@ export class Automation {
 
   /** Stop working on a video and say why on /admin/videos; the owner or a person takes over. */
   async block(state, why) {
-    state.blocked_from_status = state.status;
+    if (state.status !== "blocked") state.blocked_from_status = state.status;
     state.status = "blocked";
     state.blocked = why;
     state.blocked_report_pending = true;
     saveState(this.workdir(state.slug), state);
     const reported = await this.reportBlocked(state);
     return `${state.slug}: blocked — ${why}${reported ? "" : "; could not report it yet"}`;
+  }
+
+  /** The canonical source a policy-held writer must still be bound to before an explicit retry. */
+  policySource(state) {
+    const dir = docDir(state.slug, this.ctx.root);
+    return Object.fromEntries(["brief.md", "video.json", "series.json", "script.md"].map((name) => {
+      const file = path.join(dir, name);
+      return [name, existsSync(file) ? createHash("sha256").update(readFileSync(file)).digest("hex") : null];
+    }));
+  }
+
+  /** A settled policy rejection parks only its project; a failed report cannot buy another run. */
+  policyHold(state, error) {
+    state.policy_hold = { code: error.code, ...error.policy_hold, source_files: state.policy_hold?.source_files ?? this.policySource(state) };
+    return this.block(state, `${error.stage ?? error.policy_hold?.stage ?? "writer"} is held by policy (${error.code}): ${error.message}`);
+  }
+
+  /** Permanent rejected payloads stop this video; temporary delivery failures wait for another round. */
+  submissionFailure(state, gate, result) {
+    const detail = lastLine(result.out, 2);
+    if (result.code === this.ctx.EXIT.lint) return this.block(state, `${gate} submission rejected: ${detail}`);
+    return this.later(`${state.slug}: could not send the ${gate} for review: ${detail}`);
   }
 
   async reportBlocked(state) {
@@ -1388,7 +1429,8 @@ export class Automation {
       const upload = path.join(workdir, "upload", "metadata.json");
       const review = await this.decision(state, "publish", upload);
       if (!review) {
-        await run(ctx, ["review-push", "--slug", state.slug, "--gate", "publish"]);
+        const pushed = await run(ctx, ["review-push", "--slug", state.slug, "--gate", "publish"]);
+        if (pushed.code !== 0) return this.submissionFailure(state, "publish", pushed);
         return `${state.slug}: publish confirmation sent to /admin/videos`;
       }
       if (review.status === "approved") {
@@ -1624,8 +1666,13 @@ export class Automation {
     if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`);
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    if (state.format && video.format && state.format !== video.format) return this.block(state, `prompt repair format conflicts: auto.json is ${state.format}, video.json is ${video.format}`);
+    // Historical teaching drafts omit format. Bind their repair to the saved script,
+    // while an explicit drama retains its own settings and policy checks.
+    state.format ??= video.format ?? "slides";
+    saveState(workdir, state);
     const fix = { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote };
-    const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `prompt-${kind}-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format ?? "drama", this.variantOf(state), state.series ?? null);
+    const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `prompt-${kind}-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format ?? "slides", this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     if (problem) return this.retryLater(state, "writer", `the ${kind} fix ${problem}`);
     this.cleared(state, "writer");
@@ -1650,7 +1697,7 @@ export class Automation {
     const reviews = (project?.reviews ?? []).filter((review) => review.gate === "look" && review.content_sha256 === sha);
     if (!reviews.length) {
       const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", "look"]);
-      if (pushed.code !== 0) return this.later(`${state.slug}: could not send the look for review: ${lastLine(pushed.out)}`);
+      if (pushed.code !== 0) return this.submissionFailure(state, "look", pushed);
       return `${state.slug}: character sheets sent to /admin/videos`;
     }
     const rejected = reviews.filter((review) => review.status === "rejected");
@@ -1672,7 +1719,7 @@ export class Automation {
     const review = await this.decision(state, "storyboard", path.join(workdir, ARTIFACTS.keyframes));
     if (!review) {
       const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", "storyboard"]);
-      if (pushed.code !== 0) return this.later(`${state.slug}: could not send the storyboard for review: ${lastLine(pushed.out)}`);
+      if (pushed.code !== 0) return this.submissionFailure(state, "storyboard", pushed);
       return `${state.slug}: storyboard sent to /admin/videos`;
     }
     if (review.status === "approved") {
@@ -2583,7 +2630,7 @@ export class Automation {
     const review = await this.decision(state, gate, file);
     if (!review) {
       const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", gate]);
-      if (pushed.code !== 0) return this.later(`${state.slug}: could not send the ${gate} for review: ${lastLine(pushed.out, 2)}`);
+      if (pushed.code !== 0) return this.submissionFailure(state, gate, pushed);
       return `${state.slug}: ${gate} sent to /admin/videos (${lastLine(pushed.out)})`;
     }
     if (review.status === "approved") {

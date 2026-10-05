@@ -5,12 +5,27 @@ import path from "node:path";
 import test from "node:test";
 
 import { sandbox } from "../core/fixtures/load.mjs";
-import { canonicalJson, normalizeRun, runReceiptStore, sourceHash, validateRunReceipt } from "./run-receipts.mjs";
+import { canonicalJson, normalizeRun, POLICY_HOLD_CODE, runReceiptStore, sourceHash, validateRunReceipt } from "./run-receipts.mjs";
 
 const site = "https://site.test";
 const request = (slug = "video-one") => ({ stage: "writer", slug, instructions: "Write the checked story.", payload: { locale: "zh-TW", rows: [1, 2] } });
 const context = (box) => ({ home: box.base, root: box.root, env: { VIDEO_WORKDIR: box.work } });
 const result = { text: '{"scenes":[]}', provider: "gemini", model: "chosen-before-restart", input_tokens: 25, output_tokens: 12, usage: { tokens: 37, token_budget: 1000 } };
+
+test("settled policy refusals cannot be deleted or archived without fresh validated owner authority", () => {
+  const box = sandbox(), store = runReceiptStore(context(box), site), entry = store.prepare(request());
+  store.receive(entry, { ...receipt(entry, "failed"), error_code: POLICY_HOLD_CODE, dispatched_at: null });
+  assert.throws(() => store.removeFailed(entry), /policy refusal must be retained/);
+  assert.throws(() => store.archive(entry, { requestId: "11112233-4455-6677-8899-aabbccddeeff" }), /validated policy retry/);
+  assert.equal(store.retryCandidates("video-one").length, 0, "an old or unidentified retry cannot clear a policy hold");
+  const authorization = { requestId: "11112233-4455-6677-8899-aabbccddeeff", policyValidated: true, reason: "fresh owner retry" };
+  assert.equal(store.retryCandidates("video-one", authorization).length, 1);
+  store.archive(entry, authorization);
+  const again = store.prepare(request());
+  store.receive(again, { ...receipt(again, "failed"), error_code: POLICY_HOLD_CODE, dispatched_at: null });
+  assert.throws(() => store.archive(again, authorization), /already used/);
+  assert.ok(existsSync(again.file), "a repeated acknowledgement preserves the newly held operation");
+});
 function receipt(entry, status = "succeeded") {
   return { id: "00112233-4455-6677-8899-aabbccddeeff", request_key: entry.record.request_key,
     request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: result.provider, model: result.model, status,

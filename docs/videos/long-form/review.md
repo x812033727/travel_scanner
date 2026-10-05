@@ -1176,6 +1176,42 @@ Non-claims. This review does not accept any of the five changes themselves: the 
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch news-video-stall-fixes increment: 11 files (2026-10-05)
+
+Reviewer: `codex-independent-news-video-duration`. Author: `codex-news-video-stall-fixes` and the video/UI implementation authors. Scope: **DURATION_ONLY** for the 11 changed registered paths at author HEAD `9d6ef3438d77ff49781dca84ffd0e4c2fd7b3c49`, after merging origin/main `2e301aba3568f4a3f6f7994c484af06625c33c84`. This reviewer wrote none of the video/UI implementation or tests and edits only this report and review.json for this increment.
+
+Baseline: `git diff 2e301aba3..9d6ef3438` intersects REVIEW_FILES at exactly 11 paths. The raw Git bytes at the merge base/main commit `2e301aba3568f4a3f6f7994c484af06625c33c84` hash to the existing receipt for all 11 paths. Every current registered file equals its raw bytes at the reviewed author HEAD; the other 97 files still match their previous receipt bindings. The registry is unchanged at exactly 108 paths, and the previous report hashes to its existing report_sha256. The complete diff of each changed path was read before rebinding, including the branch delta after the main merge. All pre-existing report paragraphs and 97 untouched table entries are retained.
+
+Findings, automation/flow.mjs: slides drafts now persist format=slides. Prompt repairs derive a missing historical format from the saved video.json and otherwise default to slides; explicit drama keeps its format, and conflicting explicit formats block before the writer. The existing long-anime rewrite branch, prompt-fix bound, saveAndLint path and duration-aware script validation are unchanged. This restores the ordinary slides route and its existing floor rather than creating a drama exception. A policy-held project records its canonical source file hashes, retains its original resume status, and waits for a fresh owner retry; STOP, drop, format and source drift are checked before transport validation. These added hashes are retry guards: no duration evidence, catalog source_hash or covered state is rewritten. Publish, look, storyboard and other review pushes now inspect the returned exit code. A permanent rejected submission blocks only that project, while a temporary delivery failure ends the round; neither response approves a gate or regenerates media.
+
+Findings, automation/automation.test.mjs: only imports and new regression cases were added. The cases exercise slides/drama keyframe and rejected-storyboard repair routes, conflicting formats, a persisted policy hold across failed reporting and restart, STOP/source/drop/format retry guards, explicit retry after transport validation, a native retained undispatched refusal, publish HTTP 413/422/401/429/503, and permanent final/look/storyboard submission refusals. They verify no duplicate model dispatch, preservation of saved final media, correct blocked/active state and progress of another project. Existing measured-duration assertions and production timing fixtures were not removed or weakened.
+
+Findings, API/UI: video_reviews/admin_service.py adds only read-only worker_state data to long-video summaries; schemas.py adds the optional state type and field, without modifying ready_to_upload or any length validation. admin-video-review-card.tsx presents worker registration separately from output/upload readiness; it excludes Shorts, dropped videos and completed work, and preserves the existing duration and readiness calculations. admin-video-reviews.test.tsx adds a GET-only imported-final scenario showing incomplete languages and a missing worker handoff without enqueuing work. The five admin locale catalogs add the same production-state labels and explanatory text. They distinguish persisted registration from a running process and from completed output; no target or duration label changes.
+
+Unbound context: client.mjs and run-receipts.mjs were read for retry authority and settled-receipt preservation. Two independent findings were reported to the author before this binding: a legacy saved slides video without a format field was incorrectly refused as drama, and a mixed set of policy journals could be partly archived by one owner request. The author corrected the legacy default and made a multiple-candidate set containing a policy hold fail before any transport or archive. Offline reproduction confirmed the original legacy refusal and the repaired behavior with one model-job POST; the multiple-journal reproduction retained the second refusal and led to the fail-closed change. These unregistered files are contextual evidence, not new duration bindings. producer_state.py and the production-state component were read to establish that the summary/display additions do not enqueue work.
+
+Ran: independent raw-byte SHA-256 checks for the 11 baseline/author bindings, the 97 unchanged bindings, the registry and the existing report; full registered-path diff inspection; `node --test tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs` passed 16/16, exit 0. `node --test --test-name-pattern="keyframe and rejected-storyboard repairs|prompt repair refuses conflicting|policy hold survives|policy retries respect|authorized policy retry|native worker retains|publish submission failures|permanent final, look" tools/video/automation/automation.test.mjs` passed 28/28, exit 0. After installing the two receipt files, `node tools/video/long-form/cli.mjs check` passed all 473 plans with preserved 600/780-second targets, 480-second measured minimums, source hashes and covered status, exit 0; `node --test tools/video/long-form/review.test.mjs` passed 2/2, exit 0. The bundled compatible Node runtime was used for all Node executions.
+
+Non-claims: this is not news editorial acceptance, a general API/UI or retry-security certification, CI approval, deployment authority, owner playback, generation, recovery of a production receipt, upload, scheduling or publication. The reviewer did not invoke production, change settings, relax policy, or run the full API/web/tooling suites. The 97 previous bindings were checked for byte preservation, not reviewed afresh. The 600-/780-second targets, 480-second measured-body proof, eight-minute ordinary-video floor, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, long-anime runtime_spec/action_seconds rules, effective plans and historical source/covered states retain their previously reviewed bytes and rules.
+
+Verdict: **PASS — DURATION_ONLY** for the 11 rebound files. No duration-rule issue remains in this increment.
+
+## PR #1274 merge with #1271 follow-up
+
+Reviewer: `codex-independent-news-video-duration`. Author: `codex-news-video-stall-fixes` (root) and the previously identified implementation authors. Review date: 2026-10-05. Scope: **DURATION_ONLY** for the final merged working tree of PR #1274, combining its pre-merge HEAD `f9a3358544b10fbd66d1b898aac6f75ae7a5d3a9` with main `f695426163daff1b338b4c67dec4bef95f133d79` (#1271). This reviewer wrote none of the source changes and resolves only review.md/review.json; the root completes the Git merge commit.
+
+Baseline: the unmerged stage-2 and stage-3 reports each hash to their respective receipts. Their 72 common report sections are byte-identical; stage 2 adds only the preceding 11-file stall-fixes increment and stage 3 adds only the preceding 12-file receipt-train increment. Both complete increments and every common paragraph are preserved unchanged here. REVIEW_FILES stays exactly 108 paths and equals main byte-for-byte. All 108 raw file hashes at f69542616 match the stage-3 receipt. The complete final-working-tree diff against f69542616 intersects the registry at exactly 11 paths; each therefore starts at the correctly bound main baseline. The remaining 97 final bindings retain main values. Nine changed API/UI paths keep the bytes independently reviewed in the stall-fixes increment; flow.mjs and automation.test.mjs combine both sides and receive their actual merged hashes below.
+
+Findings, merged automation: the full flow.mjs and automation.test.mjs diffs were read relative to both f69542616 and the pre-merge PR head. The main STOP/incomplete handling remains in tts, both narration-retake paths, narration check-audio and dub check-audio. Incomplete audio defers its next run and preserves a dub check_stopped marker rather than approving review or discarding the language. The stall-fix path continues to retain policy refusals, source bindings, original resume status and one owner retry; source/format/drop/STOP guards precede that retry. Explicit saved slides/drama routes still determine prompt repairs, conflicting formats block, and long-anime rewrites and existing duration-aware validation remain unchanged. Permanent review-submission refusals block only that project, and temporary failures do not claim submission. The added hold/route/submission fixtures and the two main STOP fixtures coexist without dropping assertions. The automatic source merge introduced no new duration exception.
+
+Findings, nine API/UI bindings: admin_service.py and schemas.py retain only the read-only worker-state field addition; admin-video-review-card.tsx separates persisted producer registration from upload readiness. Its GET-only imported-final regression and all five production-state locale additions retain their previous reviewed bytes. No readiness or duration calculation changes. The other 97 files, including the main receipt-train files outside flow/test, keep main hashes. Main's already reviewed T37 redaction and rebuilt plans.json hash are preserved from #1271; this follow-up neither rewrites that source nor changes plan entries, targets or covered states.
+
+Ran: independent raw-byte checks of both staged reports/receipts, all 108 main baseline files, the 97 unchanged final bindings and the nine previously reviewed branch bindings; complete 11-path diff inspection plus the two-sided merged flow/test diff. `node --test --test-name-pattern="keyframe and rejected-storyboard repairs|prompt repair refuses conflicting|policy hold survives|policy retries respect|authorized policy retry|native worker retains|publish submission failures|permanent final, look|a STOP file that ends" tools/video/automation/automation.test.mjs` passed 30/30, exit 0, including both newly merged STOP fixtures. The compatible bundled Node runtime was used. After installing the merged receipt, `node tools/video/long-form/cli.mjs check` passed all 473 plans with the 600/780-second targets, 480-second measured minimums, original source hashes and covered status preserved, exit 0; `node --test tools/video/long-form/review.test.mjs` passed 2/2, exit 0.
+
+Non-claims: PASS here covers duration bindings and their integration only. It does not certify the entire receipt train, general runtime correctness, news editorial acceptance, current CI, deployment, generation, production recovery, playback, upload or publication. No source/runtime file, provider setting, budget, auto-publish setting or production row was edited by this reviewer. The 600-/780-second targets, 480-second measured minimum, ordinary eight-minute floor, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec/action_seconds rules, measured evidence, source-hash rules and covered states retain their reviewed behavior.
+
+Verdict: **PASS — DURATION_ONLY** for the 11 rebound final files, with all 108 registry bindings reconciled to the merged working tree.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1192,8 +1228,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/app/video_automation/schemas.py` | `e5e710ccd21a7855ae9bc668e598b98356ebf31e8c9385b705c94956e2b0fde5` |
 | `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
 | `apps/api/app/video_automation/settings.py` | `c35f43db945777021e484d39c4906afb508093772116b24e17f1b9d82425e65e` |
-| `apps/api/app/video_reviews/admin_service.py` | `b9b27520427fbc78dd0b032be33935eb601f6a68ae04d7dbdb1e288484f0f51c` |
-| `apps/api/app/video_reviews/schemas.py` | `7953a70a195c647638a78b35055ab7b0a9d365d87146b92e9fa568afb3bd759c` |
+| `apps/api/app/video_reviews/admin_service.py` | `942e9fb8222ce6db96ccde0a529d4ab03d7e58c96f9f9594c9869064df8c960f` |
+| `apps/api/app/video_reviews/schemas.py` | `8a78266a9026b8b7f872281e3d4375f39972883e4bd4db996e1aefb22f1bca2f` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
 | `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
@@ -1206,16 +1242,16 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
-| `apps/web/components/admin-video-review-card.tsx` | `f1614e57cbcca6696f3884b19f4f3f1dc18ce1c910fdafc698e9a606a13c549a` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `39b0aab92150a8969ef9ae9a2a8d4fca9fbef37da25f042a2767c912a9d392ae` |
+| `apps/web/components/admin-video-review-card.tsx` | `f08060c0da7adb7489b570c7a7859d2e58b582f23b915e3f9126efc33138e468` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `8ee1ee52620dcbe04809fbbf61fa3b86972e22b2a27d19421a226c271af59166` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `c49a4e2560e77e42a4d6432901d400069161e1e22e797b330befb14af98bd399` |
-| `apps/web/messages/ja/admin.json` | `eb19e2b244a37f2de709474cb7b2cd5c208f257354f4a4425e57802ee3a950e0` |
-| `apps/web/messages/ko/admin.json` | `01ccc46a0c22e07cab836faec06b8b79cc7d39bdc456d50f0b00be1e194cd2ed` |
-| `apps/web/messages/zh-CN/admin.json` | `2689e7bb9100437fd3fd1c9500fd6e30bfe591b1c22fbd87cdd3ea947d74966c` |
-| `apps/web/messages/zh-TW/admin.json` | `e9a49b5bbb560eeeaba342d21210284ae872f986384b2c903baef690c934a2b3` |
+| `apps/web/messages/en/admin.json` | `5495646cf3664ad1f5532b7bdd534587e366f3df8a82efd9bbb7119ec9f470ff` |
+| `apps/web/messages/ja/admin.json` | `85b37a61ae19641bfb44dcba3c35cfb36d166ebb2e938bf997566c6f0fe860de` |
+| `apps/web/messages/ko/admin.json` | `9adfbf4ff2372df9167518ccedbc684863080f667c3164c5ea1a9bf307b62ebb` |
+| `apps/web/messages/zh-CN/admin.json` | `4b2de313cc83ca63ecfcf27ae260b93a413b6b2afacdd7459082f73bf365d726` |
+| `apps/web/messages/zh-TW/admin.json` | `f3c34cb2346f910788c7c394eea4743338dbb2c02e605867a4b076593225bc53` |
 | `docs/videos/DESIGN.md` | `2e05313b83ded7ee3e537a8fd3041149f9773af1d762f942f1d7cab79b3d7d35` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
@@ -1232,9 +1268,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `2b4a1882fb3e9509db5422e3adebfa657183eda69765cefa33dc897a41829b4b` |
+| `tools/video/automation/automation.test.mjs` | `f08003281de652f4ffc816183c8f4763c38327ecda671cdf8fb7110aa9aa6691` |
 | `tools/video/automation/discuss.mjs` | `691f6ec55bde0b1c34c54fd38f39681d50617035dab78b0d2c751266a61f43ee` |
-| `tools/video/automation/flow.mjs` | `057fa58cae0fb4318e0d1b022af1af952dcaec65c1eabae13fda6d817efb2625` |
+| `tools/video/automation/flow.mjs` | `62f8ddcb62d4d2f3fe5270174432fef8666ecc245c89e377fb443a90dc53e722` |
 | `tools/video/automation/prompts.mjs` | `fa440300b1363796581cc349381e3b75d7dab3661dfb4c41954d8c59f4a16504` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `ce8d18d30137ea172dc4ccf6ab7be5e3d1f4cb849f8e0b95626a7d6696de3f3c` |
