@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-scrub-local-user-paths-from-the
 title: Scrub local user paths from the T27 trash-bin evidence and rebind its digests
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-t27-scrub-paths
 claimed_at: 2026-10-05T13:12:08Z
 created_at: 2026-10-05T06:55:22Z
-completed_at:
+completed_at: 2026-10-05T13:51:03Z
 branch: claude/t27-scrub-paths
 depends_on: []
 scope:
@@ -114,3 +114,18 @@ git grep -n <each old digest>   # expect no hit outside an explicitly historical
   `git grep` hit for either old digest.
 - **Left alone.** The `KNOWN` entry for `tasks/2026-10-02-produce-one-t27-japan-trash-bin.md`
   stays. That task file is outside this scope.
+- **Checks (Windows, 2026-10-05).**
+  - `node --test tools/repo-hygiene.test.mjs`: 3/3 pass.
+  - `node tools/video/long-form/cli.mjs check`: PASS, with no stale binding, because no file
+    in the duration receipt changed.
+  - `node tools/tasks.mjs check`: exit 0.
+  - `npm run test:tools` (`node --test --test-concurrency=3`, same file set): 1,695 tests,
+    1,690 pass, 3 skipped, 2 fail. Neither failure touches this change:
+    - The known Windows-only `tts/check` test ("a second transcript clears a line only
+      Gemini misheard").
+    - `nginx-install.test.mjs`. Its 300-round bash loop hit the 90 s spawn timeout on a
+      loaded machine, as it did for the previous rebind task. It reads only
+      `ops/nginx/install.sh`.
+
+    The run borrowed the shared `node_modules`. That copy was installed from an older
+    `package-lock.json`, and the only lock change since then (#1252) bumps web packages.
