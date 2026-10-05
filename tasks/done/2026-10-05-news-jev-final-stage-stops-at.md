@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-news-jev-final-stage-stops-at
 title: News Jev final stage stops at the first uncertain answer instead of spending one quota unit per locale
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-jev-news-locale-uncertain-stop
 claimed_at: 2026-10-05T07:49:19Z
 created_at: 2026-10-05T07:47:05Z
-completed_at:
+completed_at: 2026-10-05T08:44:53Z
 branch: claude/jev-news-locale-uncertain-stop
 depends_on: []
 scope:
