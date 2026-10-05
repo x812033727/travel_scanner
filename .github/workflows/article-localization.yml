@@ -77,5 +77,6 @@ jobs:
         run: >-
           uv run --project apps/api pytest -q -o asyncio_mode=auto
           docs/article-localization/test_publish_bundle.py
+          docs/article-localization/test_prepare_route_b_bundle.py
         env:
           RUN_INTEGRATION_TESTS: '1'
