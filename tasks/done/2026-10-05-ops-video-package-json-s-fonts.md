@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-ops-video-package-json-s-fonts
 title: ops/video/package.json's fonts and pinyin-pro can drift from package-lock.json
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-video-fonts-pinyin-sync
 claimed_at: 2026-10-05T13:17:08Z
 created_at: 2026-10-05T07:36:47Z
-completed_at:
+completed_at: 2026-10-05T13:28:08Z
 branch: claude/video-fonts-pinyin-sync
 depends_on: []
 scope:
