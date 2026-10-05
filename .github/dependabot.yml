@@ -23,6 +23,12 @@ updates:
       # deserves to arrive on its own.
       minor-and-patch:
         update-types: [minor, patch]
+        # @playwright/test arrives in a pull request of its own, because it does not pass alone:
+        # the video worker's image (ops/video/Dockerfile) and ops/video/package.json have to move
+        # to the same release, no ecosystem here updates those two with it, and
+        # tools/supply-chain.test.mjs stays red until a person adds them. In the group, that red
+        # would hold back the week's other bumps.
+        exclude-patterns: ["@playwright/test"]
 
   # apps/api is a uv project: pyproject.toml plus uv.lock, installed frozen in CI and in
   # the image. Dependabot updates both together.
@@ -65,15 +71,20 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: [version-update:semver-major, version-update:semver-minor]
-  # The video worker. Playwright's image carries the browsers of its own version, so a patch tag
-  # here has to move with @playwright/test in package-lock.json and ops/video/package.json.
+  # The video worker. Playwright's image carries the browsers of its own release, so its tag has
+  # to move with @playwright/test in package-lock.json and ops/video/package.json, and
+  # tools/supply-chain.test.mjs fails while they differ. The npm entry above is what proposes a new
+  # release; this one ignores patch tags as well and only refreshes the digest of the tag in use
+  # (the publisher's rebuild of the same Playwright release). Dependabot's multi-ecosystem groups
+  # would not keep them together: they bundle whatever each ecosystem finds that week, and nothing
+  # updates ops/video/package.json. Playwright is the only image in this directory.
   - package-ecosystem: docker
     directory: /ops/video
     schedule:
       interval: weekly
     ignore:
       - dependency-name: "*"
-        update-types: [version-update:semver-major, version-update:semver-minor]
+        update-types: [version-update:semver-major, version-update:semver-minor, version-update:semver-patch]
   - package-ecosystem: docker
     directory: /ops/youtube-uploader
     schedule:

@@ -7,6 +7,7 @@ import { parseArgs } from "node:util";
 
 import { NARRATOR } from "../core/drama.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
+import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
@@ -122,6 +123,21 @@ function remainingFor(status, voice) {
     return status.gemini_monthly_limit > 0 && status.gemini_used !== null ? status.gemini_monthly_limit - status.gemini_used : null;
   }
   return status.monthly_limit > 0 ? status.remaining : null;
+}
+
+/**
+ * The bookends the first build would add (the choice `assemble` makes), or null. YouTube reads
+ * the chapters of the cut, where the intro lengthens the first chapter and the outro the last.
+ * A pin or package that does not validate stops `assemble` with its own message; until then the
+ * chapters are checked on the narration alone.
+ */
+async function plannedBranding({ doc, workdir, values, ctx }) {
+  try {
+    return await selectBrandingForBuild({ doc, workdir, workBase: resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home }) });
+  } catch (error) {
+    if (!(error instanceof UsageError)) throw error;
+    return null;
+  }
 }
 
 /** The provider whose month a request voice counts against. */
@@ -333,8 +349,10 @@ async function tts(args, ctx) {
   const fallbacks = [];
   for (const request of pending) {
     if (stopRequested(workdir)) {
+      // The takes so far are in cache.json and a rerun reuses them, but timeline.json and
+      // narration.wav are still the last run's (or absent): this is not current narration.
       ctx.stdout.write(`stopped by the STOP file; ${pending.indexOf(request)} of ${pending.length} requests done, rerun to continue\n`);
-      return EXIT.ok;
+      return EXIT.incomplete;
     }
     const send = (body) => synthesize({ ...options, body });
     const lines = retakes(request);
@@ -377,11 +395,20 @@ async function tts(args, ctx) {
   for (const [id, clip] of clips) if (clip.length === 0) clips.set(id, new Int16Array(1));
   atomicWrite(path.join(workdir, ARTIFACTS.narration), encodeWav(buildNarration(timeline, clips)));
   atomicWrite(path.join(workdir, ARTIFACTS.timeline), `${JSON.stringify(bindAudioEvidence(timeline, workdir), null, 2)}\n`);
-  recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name, voices: voices.map((entry) => entry.voice) }, ctx.now());
+  // Lint checked the chapters on an estimate; this is the real check. Chapters YouTube would not
+  // show fail the run, after the files are written, so a fix to the script reuses every take whose
+  // words it keeps. The run is recorded either way: its characters were paid for.
+  const chapters = checkChapters(presentationTimeline(timeline, await plannedBranding({ doc, workdir, values, ctx })));
+  recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name, voices: voices.map((entry) => entry.voice), ...(chapters.length ? { ok: false, chapters } : {}) }, ctx.now());
 
   ctx.stdout.write(`${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; narration ${formatClock(frameToSeconds(timeline.total_frames))}\n`);
-  for (const problem of checkChapters(timeline)) ctx.stdout.write(`chapters: ${problem}\n`);
   if (fallbacks.length) ctx.stdout.write(`line-by-line fallback for: ${fallbacks.join(", ")}\n`);
+  if (chapters.length) {
+    // The problems come last, so a caller that reports the last line names one.
+    ctx.stdout.write(`next: lengthen or merge the short chapters in video.json, then tts again (unchanged clips are reused)\n`);
+    for (const problem of chapters) ctx.stdout.write(`chapters: ${problem}\n`);
+    return EXIT.lint;
+  }
   ctx.stdout.write(`next: node tools/video/cli.mjs review --slug ${doc.slug}\n`);
   return EXIT.ok;
 }

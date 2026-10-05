@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "note": "總覽集：一集把幾個總是一起出現、互相定義的名詞排成一張地圖，單名詞的深講留給 terms.json 各自那一集。總覽集不寫進 terms.json：那個檔整份的 SHA-256 綁在 docs/videos/long-form/plans.json 的 source_hashes，改一個位元組就要重建 plans.json 並重做長度收據。status 的意思同 terms.json 的 statuses。規則在 README.md §總覽集。",
+  "overviews": [
+    {
+      "video_slug": "ai-terms-prompt-to-graph-engineering",
+      "source_guide": "ai-term-harness-engineering",
+      "playlist": "engineering",
+      "covers": [
+        "prompt-engineering",
+        "context-engineering",
+        "harness-engineering",
+        "loop-engineering"
+      ],
+      "covers_without_term": [
+        {
+          "zh": "圖形工程",
+          "en": "Graph Engineering",
+          "why": "站上沒有文章，terms.json 沒有這一列；要替它出單名詞集，先走 content-pipeline 寫文章"
+        }
+      ],
+      "status": "planned",
+      "video_id": null,
+      "published_at": null,
+      "notes": "站主 2026-10-03 要的五層樓總覽：提示詞、上下文、駕馭、迴圈、圖形工程，一層一章講管什麼、失敗長什麼樣，最後一章把樓層變成診斷表（票 2026-10-03-ai-terms-engineering-ladder-video，PR #1188）。brief、video.json（lint 零錯誤）、claims、demo-log、Shorts 寫好，兩輪獨立查核做完；等站主在 /admin/videos 挑大綱（review-push --gate outline）後改 in-production。旁白把 Harness Engineering 叫「駕馭工程」，文章卡（cta）與片尾說站上文章的譯名「代理執行環境工程」；之後的 harness-engineering 單名詞集沿用同一組說法。說明欄連 source_guide 與另外三篇文章（提示詞、上下文、Loop Engineering），片尾的下一個名詞是代理迴圈（agent-loop）。"
+    }
+  ]
+}

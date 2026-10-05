@@ -27,7 +27,7 @@ import { readLedger } from "../../../../tools/video/media/ledger.mjs";
 import { DEFAULT_IMAGE_MODEL, MAX_CLIP_TAKES, MAX_KEYFRAME_TAKES, MAX_LOOK_ROUNDS, PRICES, secondsBought } from "./episode_estimate.mjs";
 
 // tools/video/cli.mjs EXIT（測試盯著一致）：各階段回的碼。
-export const EXIT = { ok: 0, lint: 1, usage: 2, owner: 3, external: 4, missing: 5 };
+export const EXIT = { ok: 0, lint: 1, usage: 2, owner: 3, external: 4, missing: 5, incomplete: 6 };
 export const STAGES = ["look", "keyframes", "clips", "music", "assemble"];
 const STEP_OF = { look: "look generated", keyframes: "keyframes drawn", clips: "clips generated", music: "music generated", assemble: "video assembled" };
 // 站上規定：judge 題目最長 400 字（apps/api/app/video_media/schemas.py JudgeCriterion.question）。

@@ -1023,7 +1023,9 @@ async function recordApproval(review, { dir, workdir, now }) {
   }
   const note = `approved on /admin/videos at ${review.decided_at}${review.choice ? `; chose outline ${review.choice}` : ""}${review.note ? `; ${review.note}` : ""}`;
   await approve({ gate: review.gate, docDir: dir, workdir, now, note, ...(ANIME_APPROVAL_GATES.has(review.gate) ? { expected_runtime_policy_hash: hash } : {}) });
-  if (review.gate === "publish") return "the owner confirmed the upload; follow upload/UPLOAD.md in YouTube Studio";
+  // The site approves a package whose check passed by itself, and nothing here knows of an
+  // upload: say what was approved and leave YouTube out of it.
+  if (review.gate === "publish") return `upload package approved (metadata.json ${review.content_sha256.slice(0, 12)}); this records the approval only, not a YouTube upload — upload/UPLOAD.md has the Studio steps`;
   if (review.gate === "languages") return "the language batch is recorded; its dub tracks, if any, are up in YouTube Studio";
   if (review.gate === "dubs") return "the owner uploaded these dub tracks in YouTube Studio";
   return `approval recorded${review.choice ? ` (outline ${review.choice})` : ""}`;
