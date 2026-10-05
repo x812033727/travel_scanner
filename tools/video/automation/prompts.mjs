@@ -193,6 +193,16 @@ them, **one word** stressed), tag: the topic in ≤ 6 characters, shot: <the mos
 - One line is one spoken sentence, about 25 characters, at most 40. The first scene's first
   sentence is the hook (the viewer's question or the counter-intuitive claim) and the viewer knows
   what they will get within 20 seconds.
+- The voice's performance (docs/videos/ILLUSTRATED.md §聲音表演): "voice" also takes a
+  "performance" plan of yours (zh-TW, at most 200 characters) saying how THIS video is told
+  beside the owner's style, never repeating it: the register, the pace, where the voice lifts
+  and where it holds back (「開場壓低放慢；每個數字前停半拍；『其實』之後亮起來；章末的問句輕輕收」).
+  A line takes an "emotion" cue (zh-TW, at most 80 characters) where the delivery turns:
+  slower, softer, a lift, a held breath, a smile (「壓低」「放慢，一字一字」「問句上揚」);
+  at least a third of the lines carry one (lint warns below that), the hook, every 「其實」
+  and every chapter's closing question among them. A cue says how the sentence is spoken, never
+  what it means; a Gemini voice reads the plan and the cue in its style, an Azure voice ignores
+  them and lint says so.
 - "shorts": two vertical Shorts (25 to 55 seconds each, about 110 to 220 spoken characters), cut
   from THIS script: Short 1 is the hook and the answer in brief, Short 2 the one most surprising
   fact. Each is {"titles": [two titles ≤ 100 chars], "description": zh-TW, "scenes": 3 to 6 of
@@ -459,7 +469,11 @@ video.json for a drama (the payload's "drama_example" shows the shape; copy it, 
   "speaker" is the lead's id with "emotion" 內心獨白, a new picture in which something happens
   for every sentence, finished within 45 seconds.
 - Lines: one spoken sentence each; "speaker" is "narrator" or a character id, one speaker per
-  line; "emotion" (≤ 80 chars, zh-TW) on a character's line. In a story with a cast the people
+  line; "emotion" (≤ 80 chars, zh-TW), a delivery cue, on every character's line and on a
+  narrator's line where the telling turns: at least a third of the lines carry one (lint warns below that).
+  The narrator's "voice" takes a "performance" plan (zh-TW, ≤ 200 chars): how this episode's
+  narration is told, its pace and where it lifts, beside the voice's own style
+  (docs/videos/ILLUSTRATED.md §聲音表演). In a story with a cast the people
   in the scene carry it: a line is at most about 12 characters, over 20 for at most one line in ten,
   never over 40, and a longer thought breaks where the picture changes; the narrator bridges a
   jump in time, at most 35% of the spoken text. Every shot needs a line or action_seconds
@@ -1327,7 +1341,12 @@ not the text or its characters):
   background; 3 or 4 chapters, one reason each ("chapter" on the first scene of each, ≥ 10 s,
   named as a viewer would search); the one-sentence answer, said plainly; then the next question.
 - Lines: one spoken sentence each, about 25 characters, at most 40. Every Latin-letter word is in
-  "lexicon" or lexicon_additions.
+  "lexicon" or lexicon_additions. A line takes an "emotion" cue (zh-TW, ≤ 80 chars) where the
+  delivery turns (slower on the number, a lift on the question, a held breath before the
+  answer): at least a third of the lines carry one (lint warns below that). The narrator's
+  "voice" takes a "performance" plan (zh-TW, ≤ 200 chars): the register and pace of this
+  episode and where the voice lifts, beside the voice's own style (docs/videos/ILLUSTRATED.md
+  §聲音表演).
 - "music": {prompt (English: light, curious, no vocals)} when "drama_settings.music_enabled";
   "subtitles": {burn_in: true}; "thumbnail": {template: "thumb", data: {headline: the question
   shortened, at most 2 lines of ≤ 10 characters (\n between them, **one word** stressed), tag: the

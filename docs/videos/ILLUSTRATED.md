@@ -58,7 +58,7 @@
 | --- | --- | --- |
 | `keyframes/manifest.json` | `look_hash` ＋ `pictures_hash`（每個 shot 的 id、prompt、camera） | 改卡片文字不重畫、不重判、分鏡核准不失效；改 camera 或 prompt 只重畫、重判那一張，其他張的請求沒變，連同判定原樣沿用（§judge 的刻度與判定沿用；2026-10-04 之前是全部重判，每張 US$0.01 而且過關的會被判掉） |
 | `checks.json` | `speech_hash`、`visual_hash`、`look_hash`、`pictures_hash`（`keyframesHash`：實際用的每張圖的 sha）、`mix_hash`（有配樂時）、`sfx_hash`（有音效時：set、gain、cue 表、`sfx.sha256`）、`sfx_set_hash`（再加每個音效檔的 sha 與第 2 版的目標，給讀檔的人看；§配樂與音效） | 圖重畫、配樂或音效換了，`status` 會說要重新合成，`package` 不會拿舊成片 |
-| `timeline.json` | `speech_hash`（含 `voice.style`） | 改口吻＝全部重錄＋旁白關卡重審 |
+| `timeline.json` | `speech_hash`（含 `voice.style`、`voice.performance`，與每句有寫的 `emotion`；§聲音表演） | 改口吻或表演計畫＝全部重錄＋旁白關卡重審；改一句的提示只重錄那一句 |
 
 ## 配樂與音效
 
@@ -408,6 +408,30 @@ web app 的轉送（`apps/web/app/api/video/media/[...path]/forward.ts` 的 `med
 | 工具：沒過時的提示 | manifest 條目除了 `problems`（每個 take 的每一行，去重）多一個 `fixes`（所有修法，去重），stdout 在 `ERROR <id>: …` 之後印 `  fixes for <id>: …`；匯入的片段沒過也一樣。工人的撰稿修正迴圈照舊讀 `problems`，拿到的每一行現在都帶鍵與修法 | `keyframes.mjs`、`clips.mjs`（含 `clips import`）、`look.mjs`；讀的是 `automation/flow.mjs` `failedTargets` |
 
 **還沒量**：票的 DoD 要在 163 張已記錄的出圖上量「沒過的 take 裡，`problems` 有一行點到沒過那一題的比例」前後對照。量測工具與每一輪的回答在做 DevDay 那台機器的 `<VIDEO_WORKDIR>/openai-devday-2026-recap/_tools/judge/calibration/`，這個 repo 沒有，而且圖只在站上的媒體庫留到 2026-10-17。要量：部署後用 `rejudge.mjs` 經正式站對同 163 張再判一輪（約 US$1.63，先問站主），對每個沒過的 take 數「`problems` 裡有沒有一行的鍵等於答有的題」；before 用 `host/fa.out` 裡的舊回答，鍵用關鍵字對（`text`／`letter`／`word`、`finger`／`hand`／`arm`、`float`／`detached`、`style`、`frame`／`border`）。系統指示只改了「problems」那一句，是非題的答案照理不受影響，但沒量過之前不能宣稱；量到了把數字寫回這一節。
+
+## 聲音表演（voice performance contract，2026-10-05）
+
+旁白一直是「自然地唸」：Gemini 的 `voice.style` 帶口音與口吻（§說書式旁白的 `STORY_VOICE_STYLE`），漫劇的角色台詞帶 `emotion`，但解說與品牌故事沒有任何東西告訴聲音哪裡放慢、哪裡亮起來、哪裡停。票 `2026-10-05-voice-performance-contract` 把**表演計畫**從稿子一路帶到合成（想法來自 OpenMontage 的 voice-performance director，AGPL，只借想法、沒抄程式）：
+
+| 欄位 | 意思 | 規則 |
+| --- | --- | --- |
+| `voice.performance` | 整支影片的表演計畫（zh-TW，≤ 200 字）：口吻、速度、哪裡抬起來、哪裡收；寫在站主的 `voice.style` 旁邊，不重複它 | 只在文件的 `voice`（旁白）上，角色的 `voice` 不收（`core/drama.mjs` `validatePerformance`；schema 的 `VOICE_KEYS` 不認這個鍵，所以 drama.mjs 收回它對 `voice.performance` 那一條 unknown-field 錯誤，自己檢查）；與 `voice.style` 相加不得超過 style 的 400 字；Azure 聲音收下但 lint 警告它被忽略 |
+| `lines[].emotion` | 這一句的表演提示（zh-TW，≤ 80 字）：壓低、放慢一字一字、問句上揚、揭曉前吸一口氣 | 任何格式的句子都可以帶（之前只有漫劇）；`speaker` 與 `audio_ref` 仍是漫劇才有 |
+
+`voiceFor(doc, line)`（`core/drama.mjs`）組 Gemini 的 style：`voice.style`。計畫。這句的 `emotion`。發音提示，截到 400 字；`performance` 不會成為送出的欄位（`tts/requests.mjs` 的 `voiceFields` 只送 voice／style／model），角色台詞不套旁白的計畫。`planRequests` 本來就按有效聲音切請求，所以帶 `emotion` 的投影片句子自己成一個請求與一個片段快取鍵，鄰句不重錄。
+
+雜湊：`speechHash` 本來就把整個 `doc.voice` 放進去，所以加或改計畫＝全部重錄＋旁白關卡重審；投影片的句子只在**有** `emotion` 時多雜湊那一項，所以沒有計畫也沒有提示的影片 `speech_hash` 逐位元不變（`core/drama.test.mjs` 釘住六個範例的雜湊），既有的 timeline 不會因為這張票變舊。
+
+lint（`core/drama.mjs` `cueCoverageProblems`，經 `core/lint.mjs` 進警告）：稿子一旦參與這份合約（`voice` 有計畫，或任何一句有提示），能收到提示的句子（Gemini 聲音；有角色的漫劇只算角色的台詞，旁白是過場）至少三分之一要帶 `emotion`（`CUE_SHARE_MIN`），不然計畫會被平平地唸過去，lint 印 `N of M lines carry a performance cue`。兩者都沒有的既有影片不警告（警告本來只給人看，工人的修正迴圈只吃錯誤）。`emotionProblems` 對 Azure 聲音上的計畫與每句提示各警告一條，任何格式都查。
+
+撰稿提示（`writer-video.md`／`INSTRUCTIONS.writer`、`writer-drama.md`／`DRAMA_INSTRUCTIONS.writer`、`writer:explainer`、`writer-story.md`）要求：計畫寫在 `voice.performance`，至少三分之一的句子帶提示（鉤子、每個「其實」、每章收尾的問句一定有），提示說的是這句**怎麼唸**，不是它的意思。
+
+還沒接上的（留給後面的票）：
+
+- 工人路線的 `settle()`（`automation/flow.mjs`）把撰稿回來的 `voice` 整個換成設定分頁的聲音，計畫在那裡會被丟掉（句子上的提示留著）；要讓工人路線也帶計畫，`settle()` 要保留 `video.voice.performance`（設定分頁的 `VoiceSettings` 沒有這個欄位）。本機（skill）路線的撰稿代理直接寫 `video.json`，計畫會留下。
+- 品牌故事逐章撰稿的工人文字（`automation/story-prompts.mjs`）還沒帶提示的規則；`writer-story.md` 先寫了。
+- `dubs/plan.mjs` 的 `dubVoice` 展開 `doc.voice`，計畫會跟進每個語言配音的 style（提示本來就跟進漫劇的配音）；要留給配音還是在那裡拿掉，再決定。
+- `voice-audition.md` 的試聽樣稿應該改成最吃表演的一段而不是開頭（票的 DoD 第四項；那份檔案不在票的範圍）。
 
 ## 沒做、留給後面
 
