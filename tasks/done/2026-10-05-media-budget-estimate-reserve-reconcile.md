@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-media-budget-estimate-reserve-reconcile
 title: Media budget gate: estimate, reserve, reconcile; judge calls and clip imports count against the cap
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-fable-5-1-budget
 claimed_at: 2026-10-05T16:52:49Z
 created_at: 2026-10-05T16:08:24Z
-completed_at:
+completed_at: 2026-10-05T17:13:23Z
 branch: claude/media-budget-reserve
 depends_on:
   - 2026-10-04-native-video-project-stop-and-producer-exclusion
