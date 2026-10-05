@@ -9,6 +9,9 @@ import path from "node:path";
 
 import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { isLongAnime } from "../core/anime-policy.mjs";
+import { cuePieces } from "../core/captions.mjs";
+import { entriesUsed } from "../core/lexicon.mjs";
+import { eachLine, narrationLocale } from "../core/schema.mjs";
 import { REGISTER_RULES } from "./register.mjs";
 import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 
@@ -268,23 +271,80 @@ short as the source: the headline at most 2 lines of a few words, the tag 1 to 3
 Words too long for the layout are not drawn and the locale keeps the video's own thumbnail, so
 cut to the key noun or number rather than drop a word.
 
-Return {"worksheet": <the worksheet with every empty "text" filled; "id", "scene", "source" and
-"todo" unchanged>}.`,
+Glossary. "glossary", when the payload carries one, lists under "terms" the dictionary terms
+this video uses, in the forms they appear in (product, company, model and feature names,
+acronyms, English words used as terms), and under "sources" the names of the pages its facts
+come from. Without one, build it yourself before the draft from the Latin-letter terms in the
+lines and the titles under "video.sources". Render each term one way only, everywhere it appears
+(lines, title, description, tags, chapter names, thumbnail words): a product, company, model or
+feature name exactly as its maker writes it, in Latin letters, never transliterated or
+re-spelled; an acronym as it is; an English word used as a term in the locale's own usual term
+for it; a source's name as the source writes it.
+
+Cue boundaries. "boundaries", when the payload carries it, maps a line id to the pieces the
+narration's captions cut that line into (a line absent from it is shown as one cue). The tool
+cuts your translation into its own cues, so keep the source's order of clauses: what a piece
+says, its numbers first of all, is read while the narration says it, and a clause ends where
+the source's does when the locale allows.
+
+Three passes, all three in the answer. "draft": the worksheet translated as it first comes to
+you. "critique": read the draft as a native viewer against the source, the glossary and the
+rules above, and list every fault, one string each ("<id or field>: <problem> → <fix>"):
+meaning that differs, a number or name changed, a glossary term rendered another way, a line
+too long or over its "max_chars", a register slip, a clause moved across a cue boundary; a
+draft with nothing to fix still gets a critique saying what you checked and found right.
+"final": the worksheet with every fault fixed, the only part that is used. An answer without a
+critique is refused and asked again.
+
+Return {"draft": {"worksheet": <the worksheet with every empty "text" filled; "id", "scene",
+"source" and "todo" unchanged>}, "critique": ["<id or field>: <problem> → <fix>", …], "final":
+{"worksheet": <the draft's worksheet with the critique's fixes applied>}}.`,
 
   caption_reviewer: `${COMMON}
 
 You review another model's "locale" translation as a native viewer who also reads Traditional
 Chinese. Fix, most serious first: meaning that differs from the zh-TW line; any number, date,
-version or name that differs; opinions that lost their first person; one term translated two ways
-or differently from the slide; lines too long to read at speaking pace, or over their "max_chars"
-when a line carries one (the dub's budget); register slips; a title, description, tags or chapter
-names a viewer would not search for; thumbnail words ("thumbnail") left empty, differing from
-their "source" in meaning or number, missing its ** emphasis or \\n line breaks, or too long to
-read on a phone (shorten to the key noun or number, never empty one). Review only the parts the
-worksheet holds ("parts"). Change nothing that is already right; do not invent style changes.
+version or name that differs; opinions that lost their first person; a glossary term rendered
+more than one way, or a name not as its maker writes it ("glossary", when the payload carries
+one, lists the dictionary terms the video uses and its sources' names; without one, the
+Latin-letter terms in the lines and the titles under "video.sources" are the glossary: one
+rendering per term across lines, title, description, tags, chapter names and thumbnail words, a
+product, company, model or feature name in Latin letters as its maker spells it, a source's name
+as the source writes it); one term translated two ways or differently from the slide; a clause
+moved across a cue boundary ("boundaries", when the payload carries it, maps a line id to the
+pieces the narration's captions cut that line into, and the translation reads in that order);
+lines too long to read at speaking pace, or over their "max_chars" when a line carries one (the
+dub's budget); register slips; a title, description, tags or chapter names a viewer would not
+search for; thumbnail words ("thumbnail") left empty, differing from their "source" in meaning or
+number, missing its ** emphasis or \\n line breaks, or too long to read on a phone (shorten to the
+key noun or number, never empty one). Review only the parts the worksheet holds ("parts"). Change
+nothing that is already right; do not invent style changes.
 
 Return {"worksheet": <the worksheet with your fixes applied>, "fixes": ["<id>: <problem> → <fix>", …]}.`,
 };
+
+/**
+ * What a translation request carries beside the worksheet (docs/videos/AUTOMATION.md §語言):
+ * "glossary", the dictionary terms the video's lines and metadata use, in the forms they appear
+ * in (core/lexicon.mjs entriesUsed), and the names of its sources, which every locale renders
+ * one way; and "boundaries", the pieces the narration's captions cut each line into
+ * (core/captions.mjs cuePieces), for the lines cut into more than one, so the translator keeps
+ * the clauses in the order the viewer hears them. `locale` is the narration's.
+ */
+export function translationContext(video, lexicon, locale = narrationLocale(video)) {
+  const lines = [...eachLine(video)].map(({ line }) => line);
+  const youtube = video.youtube ?? {};
+  const metadata = [youtube.title, youtube.description, ...(Array.isArray(youtube.tags) ? youtube.tags : []), ...(video.scenes ?? []).map((scene) => scene.chapter), ...Object.values(video.thumbnail?.data ?? {})];
+  const texts = [...lines.map((line) => line.text), ...metadata].filter((text) => typeof text === "string" && text.trim());
+  const terms = [...new Set(entriesUsed(texts, lexicon).flatMap((entry) => entry.forms))].sort();
+  const sources = (Array.isArray(video.sources) ? video.sources : []).map((source) => source?.title).filter((title) => typeof title === "string" && title.trim());
+  const boundaries = {};
+  for (const line of lines) {
+    const pieces = cuePieces(line.text, locale);
+    if (pieces.length > 1) boundaries[line.id] = pieces;
+  }
+  return { glossary: { terms, sources }, boundaries };
+}
 
 /**
  * The listener's rewrite pass (docs/videos/HANDS-OFF.md §旁白), variant "rewrite": after the
@@ -589,8 +649,34 @@ export function instructionsFor(stage, format = "slides", standing = "", variant
 }
 const GENRE_STAGES = new Set(["planner", "writer", "verifier"]);
 
-/** The model's answer as JSON: the whole text, or the object inside a stray Markdown fence. */
+/**
+ * The model's answer as JSON: the whole text, or the object inside a stray Markdown fence. An
+ * answer in the draft, critique, final shape (the caption translator's) is its "final" alone,
+ * and one that skipped the critique is refused (finalAnswer).
+ */
 export function parseAnswer(text) {
+  return finalAnswer(parseObject(text));
+}
+
+/**
+ * A draft–critique–final answer (the caption translator's three passes in one call: translate,
+ * read the draft as a viewer, refine): its "final" is the answer, shaped as the stage would
+ * otherwise answer, and only it is used. A chain that skipped its critique, or has a draft and
+ * no final object, is refused, so the stage is asked again rather than merging an unreflected
+ * draft; an answer that is not a chain passes through as it is.
+ */
+export function finalAnswer(answer) {
+  if (answer === null || typeof answer !== "object" || Array.isArray(answer)) return answer;
+  if (!Object.hasOwn(answer, "final") && !Object.hasOwn(answer, "draft")) return answer;
+  const critique = Array.isArray(answer.critique)
+    ? answer.critique.filter((entry) => typeof entry === "string" && entry.trim())
+    : typeof answer.critique === "string" && answer.critique.trim() ? [answer.critique.trim()] : [];
+  if (!critique.length) throw new Error("the answer skipped its critique: a draft, critique, final answer says what the draft got wrong, or that nothing did, before its final");
+  if (answer.final === null || typeof answer.final !== "object" || Array.isArray(answer.final)) throw new Error("the answer has a draft and a critique but no final object to use");
+  return answer.final;
+}
+
+function parseObject(text) {
   const trimmed = String(text).trim();
   const fenced = /^```(?:json)?\s*([\s\S]*?)\s*```$/.exec(trimmed);
   const body = fenced ? fenced[1] : trimmed;

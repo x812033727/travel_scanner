@@ -16,6 +16,8 @@ WRITE HERE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`, the worksheet
 1. `<VIDEO_DOCS>/video.json`: the slides (`data`) show what the viewer sees while a line plays; use them for context and keep the terms consistent with what is on screen.
 2. The worksheet. Every entry with `todo: true` needs a translation: lines, chapters, the title, the description, the tags and the thumbnail's words (`thumbnail`, present on a sheet with `metadata` when the video's thumbnail has words). Its `text` is empty because it is missing, or because its zh-TW source changed since the last merge (a renamed chapter, a new paragraph, reordered tags). The others already have a current one, which you may improve only if it is wrong.
 3. `<ROOT>/apps/api/app/guides/content/<SOURCE>.json` when `video.json` names a `source_guide`: its `<LOCALE>` version, if any, is the site's own wording for the same terms.
+4. `<ROOT>/docs/videos/lexicon.json`: the pronunciation dictionary every Latin-letter term in the narration is in (lint refuses an unknown one). With the lines, the title, description, tags, chapter names and thumbnail words, it gives you the glossary below.
+5. `<VIDEO_WORKDIR>/<SLUG>/captions/zh-TW.srt`, written by `captions` before the final cut (or `node <ROOT>/tools/video/cli.mjs captions --slug <SLUG>`): where the tool cuts each zh-TW line into cues, the cue boundaries below.
 
 ## Rules
 
@@ -34,6 +36,29 @@ WRITE HERE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`, the worksheet
 - When `render` prints `note: no <LOCALE> thumbnail of its own … did not fit` (or `qa` warns about the language thumbnail), the words are too long for the layout: cut them to the key noun or number in a new metadata sheet, merge, and run `render` again. Never empty a word to skip it; a locale without thumbnail words keeps the video's own thumbnail.
 - Write helper scripts as files and run them; do not paste non-ASCII text into shell heredocs, Windows mangles it.
 
+## Glossary
+
+Write the glossary before you translate a line: every dictionary term (`lexicon.json`) that the lines, the title, description, tags, chapter names and thumbnail words use, in the forms they appear in (`GPT-5.5`, `Claude Code`, `Node.js`), plus the `title` of every entry under `sources` in `video.json` (the names the facts come under). A table of two columns, term and the `<LOCALE>` rendering you choose; one rendering per term, everywhere it appears:
+
+- A product, company, model or feature name exactly as its maker writes it, in Latin letters, never transliterated or re-spelled.
+- An acronym as it is.
+- An English word used as a term in `<LOCALE>`'s own usual term for it (ja トークン for token, zh-CN 令牌 or token as the locale's own documentation says); when the `source_guide`'s `<LOCALE>` version renders the term, that rendering.
+- A source's name as the source writes it.
+
+The worker builds the same table into its request (`translationContext` in `tools/video/automation/prompts.mjs`: `glossary.terms` from `entriesUsed` in `tools/video/core/lexicon.mjs`, `glossary.sources` from `video.json`); a hand run builds it from those files.
+
+## Cue boundaries
+
+`captions/zh-TW.srt` shows where the tool cuts each zh-TW line into cues (`cuePieces` in `tools/video/core/captions.mjs`: at a sentence end first, then at a clause end, never between a number and its unit; a line short enough is one cue). The tool cuts your translation into its own cues, so keep the source's order of clauses: what a cue says, its numbers first of all, is read while the narration says it; end a clause where the source does when `<LOCALE>` allows. The worker sends the same cuts as `boundaries`, line id to pieces, for the lines cut into more than one.
+
+## Three passes
+
+1. **Draft**: translate every `todo` entry, the glossary beside you.
+2. **Critique**: read the draft as a native `<LOCALE>` viewer against the source, the glossary and the rules above, and write one line per fault (`<id or field> ｜ problem ｜ fix`): meaning that differs, a number or name changed, a glossary term rendered another way, a line too long or over its `max_chars`, a register slip, a clause moved across a cue boundary. A draft with nothing to fix still gets a critique saying what you checked and found right.
+3. **Final**: apply every fix. The worksheet holds the final alone; keep the draft to yourself, and the critique's findings go into your report.
+
+The worker asks the same three passes of one model call and expects `{"draft": {"worksheet": …}, "critique": ["<id or field>: <problem> → <fix>", …], "final": {"worksheet": …}}`; `parseAnswer` in `tools/video/automation/prompts.mjs` uses `final` alone and refuses an answer without a critique, which is asked again like any unusable answer.
+
 ## Check before reporting
 
     node <ROOT>/tools/video/cli.mjs i18n-merge --slug <SLUG> --locale <LOCALE>
@@ -42,7 +67,7 @@ It writes `<VIDEO_DOCS>/i18n/<LOCALE>.json` and lists anything not translated or
 
 ## Report (the coordinator scans it, one line per item)
 
-Lines translated, the title you chose, terms you kept in English or transliterated and why, lines you were unsure of (id and why).
+Lines translated, the title you chose, the glossary (each term and the rendering you chose, the sources' names), the critique's findings and what they changed in the final, terms you kept in English or transliterated and why, lines you were unsure of (id and why).
 
 ## Shortening pass (the worker's `translator:shorten`)
 

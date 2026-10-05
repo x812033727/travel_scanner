@@ -103,3 +103,34 @@ export function termsUsed(texts, lexicon) {
   for (const text of texts) for (const match of text.matchAll(pattern)) used.add(match[0]);
   return entries.filter(([term]) => used.has(term)).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0));
 }
+
+// The joined term around a dictionary entry's match: "GPT" in "GPT-5.5", "Opus" in "Claude-Opus-5.5".
+const JOINED_BEFORE = /(?:[A-Za-z0-9]+[-.+#'])*$/u;
+const JOINED_AFTER = /^(?:[-.+#'][A-Za-z0-9]+)*[+#]*/u;
+
+/**
+ * Every dictionary entry some texts use, with a spoken form or without one, each with the forms
+ * it appears in ("GPT" as "GPT-5.5" and "GPT-6"): the terms a video's translations keep
+ * consistent, which the caption translator's glossary is built from. Matched whole-word and
+ * longest first like the speech request, so "Claude Code" is its own entry and never a use of
+ * "Claude"; sorted by term, forms in order of appearance.
+ */
+export function entriesUsed(texts, lexicon) {
+  const entries = Object.entries(lexicon?.terms ?? {}).sort(([a], [b]) => b.length - a.length);
+  const pattern = termPattern(entries);
+  if (!pattern) return [];
+  const forms = new Map();
+  for (const text of texts) {
+    for (const match of String(text).matchAll(pattern)) {
+      const start = match.index;
+      const end = start + match[0].length;
+      const form = `${JOINED_BEFORE.exec(text.slice(0, start))[0]}${match[0]}${JOINED_AFTER.exec(text.slice(end))[0]}`;
+      if (!forms.has(match[0])) forms.set(match[0], new Set());
+      forms.get(match[0]).add(form);
+    }
+  }
+  return entries
+    .filter(([term]) => forms.has(term))
+    .map(([term, say]) => ({ term, say, forms: [...forms.get(term)] }))
+    .sort((a, b) => (a.term < b.term ? -1 : a.term > b.term ? 1 : 0));
+}

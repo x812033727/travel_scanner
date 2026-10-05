@@ -2,7 +2,10 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
+import { cuePieces } from "../core/captions.mjs";
+import { enFixture, fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
+import { eachLine } from "../core/schema.mjs";
+import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SOURCE_INSTRUCTIONS, translationContext, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
 import { REGISTER_RULES } from "./register.mjs";
 import { documentPayload } from "./series.mjs";
 
@@ -250,4 +253,124 @@ test("the worker's drama writer carries the craft rules the skill's writer promp
   assert.match(writer, /"fix\.kind" is look[\s\S]*or script \(the owner\s+or the checker sent the screenplay back/);
   assert.match(writer, /source\?\s+\{shot, from_s\}/);
   assert.match(writer, /"action_seconds" \(an integer, 1 to 8\)/);
+});
+
+test("the caption translator works in three passes in one call, against a glossary and the narration's cue boundaries, and only its final is used", () => {
+  const translator = INSTRUCTIONS.translator;
+  assert.equal(instructionsFor("translator", "slides"), translator);
+  assert.equal(instructionsFor("translator", "drama"), translator);
+  // The glossary: the dictionary terms the video uses and its sources' names, one rendering each.
+  assert.match(translator, /Glossary\. "glossary", when the payload carries one, lists under "terms" the dictionary terms\nthis video uses, in the forms they appear in/);
+  assert.match(translator, /under "sources" the names of the pages its facts\ncome from/);
+  assert.match(translator, /Without one, build it yourself before the draft from the Latin-letter terms in the\nlines and the titles under "video\.sources"/);
+  assert.match(translator, /Render each term one way only, everywhere it appears\n\(lines, title, description, tags, chapter names, thumbnail words\)/);
+  assert.match(translator, /exactly as its maker writes it, in Latin letters, never transliterated or\nre-spelled/);
+  // The cue boundaries: where the narration's captions cut each line.
+  assert.match(translator, /Cue boundaries\. "boundaries", when the payload carries it, maps a line id to the pieces the\nnarration's captions cut that line into \(a line absent from it is shown as one cue\)/);
+  assert.match(translator, /keep the source's order of clauses/);
+  // The three passes and the answer's shape.
+  assert.match(translator, /Three passes, all three in the answer\. "draft": the worksheet translated as it first comes to\nyou\. "critique": read the draft as a native viewer against the source, the glossary and the\nrules above/);
+  assert.match(translator, /a\ndraft with nothing to fix still gets a critique saying what you checked and found right/);
+  assert.match(translator, /"final": the worksheet with every fault fixed, the only part that is used\. An answer without a\ncritique is refused and asked again\./);
+  assert.match(translator, /Return \{"draft": \{"worksheet": <the worksheet with every empty "text" filled; "id", "scene",\n"source" and "todo" unchanged>\}, "critique": \["<id or field>: <problem> → <fix>", …\], "final":\n\{"worksheet": <the draft's worksheet with the critique's fixes applied>\}\}\.$/);
+  // The rules that were there stay: the parts, the dub budget, the thumbnail's words.
+  assert.match(translator, /The worksheet's "parts" says what the owner chose for this locale/);
+  assert.match(translator, /"thumbnail", on a worksheet with "metadata"/);
+  assert.match(translator, /in the time the zh-TW line takes/);
+  // A video narrated in another language reads the same passes, naming its source.
+  for (const [source, texts] of Object.entries(SOURCE_INSTRUCTIONS)) {
+    assert.match(texts.translator, /Three passes, all three in the answer/, source);
+    assert.match(texts.translator, /Glossary\. "glossary"/, source);
+    assert.match(texts.translator, /Cue boundaries\. "boundaries"/, source);
+    assert.match(texts.translator, /in the time the source line takes/, source);
+    assert.doesNotMatch(texts.translator, /zh-TW line|zh-TW captions/, source);
+  }
+});
+
+test("the caption reviewer reviews against the glossary and the cue boundaries, and still answers a worksheet and its fixes", () => {
+  const reviewer = INSTRUCTIONS.caption_reviewer;
+  assert.match(reviewer, /a glossary term rendered\nmore than one way, or a name not as its maker writes it \("glossary", when the payload carries\none, lists the dictionary terms the video uses and its sources' names; without one, the\nLatin-letter terms in the lines and the titles under "video\.sources" are the glossary/);
+  assert.match(reviewer, /a clause\nmoved across a cue boundary \("boundaries", when the payload carries it/);
+  assert.match(reviewer, /thumbnail words \("thumbnail"\)/);
+  assert.match(reviewer, /Return \{"worksheet": <the worksheet with your fixes applied>, "fixes": \["<id>: <problem> → <fix>", …\]\}\.$/);
+  for (const [source, texts] of Object.entries(SOURCE_INSTRUCTIONS)) {
+    assert.match(texts.caption_reviewer, /a glossary term rendered\nmore than one way/, source);
+    assert.match(texts.caption_reviewer, /meaning that differs from the .+ source line;/, source);
+  }
+});
+
+test("a draft, critique, final answer is read as its final; one that skipped the critique is refused; any other answer passes through", () => {
+  const worksheet = { locale: "en", lines: [{ id: "k7p2", text: "Every week a new model takes the top of the leaderboard." }] };
+  const chain = {
+    draft: { worksheet: { ...worksheet, lines: [{ id: "k7p2", text: "Each week a new model is the leaderboard's number one." }] } },
+    critique: ["k7p2: 'is number one' loses the recurrence of 換一次第一名 → 'takes the top'"],
+    final: { worksheet },
+  };
+  assert.deepEqual(parseAnswer(JSON.stringify(chain)), { worksheet });
+  assert.deepEqual(parseAnswer(`\`\`\`json\n${JSON.stringify(chain)}\n\`\`\``), { worksheet }, "inside a fence too");
+  assert.deepEqual(parseAnswer(`Here: ${JSON.stringify(chain)} done`), { worksheet }, "and around a sentence");
+  assert.deepEqual(parseAnswer(JSON.stringify({ ...chain, critique: "nothing to fix: every number, name and glossary term checked" })), { worksheet }, "a critique may be one string");
+  assert.deepEqual(finalAnswer(chain), { worksheet });
+  for (const skipped of [{ draft: chain.draft, final: chain.final }, { ...chain, critique: [] }, { ...chain, critique: ["", "  "] }, { ...chain, critique: null }, { ...chain, critique: "" }, { final: chain.final }]) {
+    assert.throws(() => finalAnswer(skipped), /skipped its critique/, JSON.stringify(skipped).slice(0, 80));
+    assert.throws(() => parseAnswer(JSON.stringify(skipped)), /skipped its critique/);
+  }
+  assert.throws(() => parseAnswer(JSON.stringify({ draft: chain.draft, critique: chain.critique })), /no final object to use/);
+  assert.throws(() => parseAnswer(JSON.stringify({ draft: chain.draft, critique: chain.critique, final: "done" })), /no final object to use/);
+  // The other stages' answers, and a translator that answers the old shape, are untouched.
+  assert.deepEqual(parseAnswer(JSON.stringify({ worksheet, fixes: [] })), { worksheet, fixes: [] });
+  assert.deepEqual(parseAnswer('{"video": {"slug": "x"}, "claims": "# c"}'), { video: { slug: "x" }, claims: "# c" });
+  assert.deepEqual(finalAnswer([1, 2]), [1, 2]);
+  assert.equal(finalAnswer(null), null);
+});
+
+test("translationContext builds the glossary from the dictionary terms the video uses and its sources' names, and the boundaries from the narration's cues", () => {
+  const video = fixture();
+  video.scenes[0].lines[0].text = "每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？還是應該先想清楚自己要它做什麼，再決定要不要換？";
+  video.scenes[1].lines[0].text = "第一個問題是，用 Claude Code 寫 API，還是用 GPT-5.5 聊天。";
+  video.youtube.tags.push("LLM 比較");
+  const lexicon = { schema_version: 1, terms: { ...fixtureLexicon().terms, Claude: "克勞德", "Claude Code": "克勞德扣德", GPT: "G P T" } };
+  const context = translationContext(video, lexicon);
+  assert.deepEqual(context.glossary, {
+    // Forms as the viewer sees them, each once, sorted; the title's "AI" and the tag's "LLM" count too,
+    // and "Claude Code" is never a use of "Claude".
+    terms: ["AI", "API", "Claude Code", "GPT-5.5", "LLM"],
+    sources: ["範例來源"],
+  });
+  // Only the lines the narration's captions cut into more than one cue, as cuePieces cuts them.
+  assert.deepEqual(Object.keys(context.boundaries), ["k7p2"]);
+  assert.deepEqual(context.boundaries.k7p2, cuePieces(video.scenes[0].lines[0].text, "zh-TW"));
+  assert.equal(context.boundaries.k7p2.length, 2);
+  // A video narrated in another language is cut by that language's rules.
+  const english = enFixture();
+  const en = translationContext(english, lexicon);
+  assert.ok(Object.keys(en.boundaries).length > 0, "the en fixture has a line longer than one English cue");
+  for (const [id, pieces] of Object.entries(en.boundaries)) assert.deepEqual(pieces, cuePieces([...eachLine(english)].find(({ line }) => line.id === id).line.text, "en"));
+  assert.deepEqual(translationContext({ ...video, sources: undefined, youtube: {}, thumbnail: undefined }, { terms: {} }).glossary, { terms: [], sources: [] });
+});
+
+test("a glossary term is kept the same across all four locales: each translator's final carries it verbatim, and a transliterated one is caught", () => {
+  const video = fixture();
+  video.scenes[1].lines[0].text = "第一個問題是，用 Claude Code 寫程式，還是用 GPT-5.5 聊天。";
+  const { glossary } = translationContext(video, { schema_version: 1, terms: { "Claude Code": "克勞德扣德", GPT: "G P T" } });
+  assert.deepEqual(glossary.terms, ["Claude Code", "GPT-5.5"]);
+  const finals = {
+    en: "First, what job is it for: writing code with Claude Code, or chatting with GPT-5.5?",
+    ja: "1つ目は、Claude Code でコードを書くのか、GPT-5.5 と話すのかです。",
+    ko: "첫째, Claude Code 로 코드를 쓸지, GPT-5.5 와 대화할지입니다.",
+    "zh-CN": "第一个问题是，用 Claude Code 写代码，还是用 GPT-5.5 聊天。",
+  };
+  const answer = (locale, text) => JSON.stringify({
+    draft: { worksheet: { locale, lines: [{ id: "x9fe", text: `${text} (draft)` }] } },
+    critique: [`x9fe: ${glossary.terms.join(", ")} checked against the glossary, kept as written`],
+    final: { worksheet: { locale, lines: [{ id: "x9fe", text }] } },
+  });
+  const dropped = (text) => glossary.terms.filter((term) => !text.includes(term));
+  for (const [locale, text] of Object.entries(finals)) {
+    const { worksheet } = parseAnswer(answer(locale, text));
+    assert.equal(worksheet.locale, locale);
+    assert.deepEqual(dropped(worksheet.lines[0].text), [], `${locale} keeps every glossary term`);
+  }
+  const { worksheet } = parseAnswer(answer("ja", "1つ目は、クロードコードでコードを書くのか、GPT-5.5 と話すのかです。"));
+  assert.deepEqual(dropped(worksheet.lines[0].text), ["Claude Code"], "a transliterated name is what the reviewer sends back");
 });

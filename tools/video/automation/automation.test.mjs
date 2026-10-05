@@ -2166,9 +2166,13 @@ test("an English-narrated video the owner gives no other language gets zh-TW onc
 // 2026-10-02: the translator and the caption reviewer were told about the thumbnail's words
 // (2026-10-01-video-worker-translator-fills-the-thumbnail); the shortening and rewording passes
 // hold no thumbnail and kept their bytes.
+// 2026-10-05: the translator was told the three passes (draft, critique, final), the glossary and
+// the cue boundaries, and the caption reviewer the glossary and the boundaries
+// (2026-10-05-caption-translation-chain-upgrade, prompts.test.mjs pins the sections); the
+// shortening and rewording passes kept their bytes.
 const ZH_TW_PROMPT_SHA256 = {
-  translator: "1e3a4cfb65dc7bf33b98d85777a7db4d6fcd55dd50c2e3526ee7d60eb124f1dd",
-  caption_reviewer: "a0ad349317f907def87ce0cfbf260a2f9a14168910eee6fad5dece8f8b40aad5",
+  translator: "effa201292e5589a8341501689969bfcc076a7c85be8afe9de1f4cc35833b957",
+  caption_reviewer: "a46eca4ef3d8535d7f2c22723f8597ddd90f74db0ef81b78c0da03b3d70f1749",
   "translator:shorten": "eb96a8de3915d89bed631a93463d0b22344f44e442b5465abe57fcc06b1d6ac6",
   "translator:reword": "627d9729bd01b766d025ed82b9edde4dc5fd4f051372a14f8e1bad3b88a9eb6a",
 };
