@@ -32,7 +32,7 @@ Shorts 是 1080×1920、30 fps、25–55 秒（Shorts 設定的 `seconds_min`／
 - 實測線另要 `experiment_summary`（測了什麼）、`limitations`（這次測試說不出什麼）、`evidence`（`[{path, sha256}]`，至少一個）；`series` 只能是 `daily`、`blind`、`prompts`。
 - 精華與漫劇另要 `source.slug`（站上那支長片）；`source.url`（YouTube 網址）可省略，`package` 會在長片有影片 id 之後向站上讀；可加 `start_seconds`、`end_seconds`。
 - 選填：`hashtags`（≤ 3）、`links`（≤ 5，`{label, url}`，只收 https）、`tags`（≤ 15，各 ≤ 30 字元）、`synthetic_media`（畫面有擬真生成圖時寫 `true`）、`music`、`sfx`（站主放在 `<VIDEO_WORKDIR>/_music/`、`_sfx/<set>/` 的授權檔；Shorts 不生成音樂）。
-- `scenes`：3–12 個。每個 `headline` ≤ 36 字元、`narration` 是短句陣列（每句 ≤ 38 字元，一句一張字卡）；可加 `kicker`、`body`（≤ 5 列、每列 ≤ 85 字元）、`big`、`note`、`asset`（必須列在 `evidence`）、`camera`（push in／pull out／pan left／pan right／tilt up／tilt down／drift）。`shot` 只給精華用，`from-episode` 會換成長片的關鍵影格。
+- `scenes`：3–12 個。每個 `headline` ≤ 36 字元、`narration` 是短句陣列（每句 ≤ 38 字元，一句一張字卡；字幕條一行放 15 個全形字、最多兩行，超過 30 個顯示單位的句子 `layout` 會失敗，38 字只是格式上限）；可加 `kicker`、`body`（≤ 5 列、每列 ≤ 85 字元）、`big`、`note`、`asset`（必須列在 `evidence`）、`camera`（push in／pull out／pan left／pan right／tilt up／tilt down／drift）。`shot` 只給精華用，`from-episode` 會換成長片的關鍵影格。
 
 寫法：
 
@@ -46,7 +46,7 @@ Shorts 是 1080×1920、30 fps、25–55 秒（Shorts 設定的 `seconds_min`／
 | # | 指令 | 產出 | 過關 |
 | --- | --- | --- | --- |
 | 1 | `validate --file <腳本>` | — | 格式與證據雜湊都對 |
-| 2 | `build --file <腳本> --workdir <VIDEO_WORKDIR> --speech server` | `<VIDEO_WORKDIR>/<slug>/<buildId>-<時間>/`：`script.json`、`evidence/`、`audio/000.wav…`、`timeline.json`、`checks.json`、`contact-sheet.png`、`upload/`（`final.mp4`、`zh-TW.srt`、`cover.png`、`titles.json`、`manifest.json`） | 每次都開一個新的成品目錄；後面的指令都用 `--dir` 指它 |
+| 2 | `build --file <腳本> --workdir <VIDEO_WORKDIR> --speech server [--captions karaoke]` | `<VIDEO_WORKDIR>/<slug>/<buildId>-<時間>/`：`script.json`、`evidence/`、`audio/000.wav…`、`timeline.json`、`timing.json`（卡拉 OK 時）、`captions/`（亮字層）、`checks.json`、`contact-sheet.png`、`upload/`（`final.mp4`、`zh-TW.srt`、`cover.png`、`titles.json`、`manifest.json`） | 每次都開一個新的成品目錄；後面的指令都用 `--dir` 指它 |
 | 3 | `check-audio --dir <成品>` | `check.json`（綁音檔與逐句原文） | 0 句被標；被標就 `build --file <腳本> --redo <成品> …`，只重錄被標的句子，在新目錄再跑一次 |
 | 4 | 查核：另一個代理在新對話對照證據，寫 `verify.json`；`qa --dir <成品> --verify <verify.json>` 會把它放進成品 | `verify.json`：`{ok, document_sha256, checked_by, claims: [{text, ok, note}], problems: []}`，`document_sha256` 是成品裡 `script.json` 的雜湊 | 每個數字與結論都有證據 |
 | 5 | `qa --dir <成品>` | `qa.json`（12 項，綁所有輸入的雜湊） | 全過；沒過照下一節修 |
@@ -61,7 +61,7 @@ Shorts 是 1080×1920、30 fps、25–55 秒（Shorts 設定的 `seconds_min`／
 
 ```bash
 node tools/video/shorts/cli.mjs validate     --file <腳本> [--source-base <證據的根目錄>]
-node tools/video/shorts/cli.mjs build        --file <腳本> --workdir <VIDEO_WORKDIR> [--speech server|windows|files] [--audio-dir <DIR>] [--channel msedge] [--redo <成品>]
+node tools/video/shorts/cli.mjs build        --file <腳本> --workdir <VIDEO_WORKDIR> [--speech server|windows|files] [--audio-dir <DIR>] [--channel msedge] [--redo <成品>] [--captions plain|karaoke]
 node tools/video/shorts/cli.mjs check-audio  --dir <成品> [--threshold 0.5]
 node tools/video/shorts/cli.mjs qa           --dir <成品> [--verify <verify.json>] [--offline]
 node tools/video/shorts/cli.mjs package      --dir <成品>
@@ -75,6 +75,7 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 ```
 
 - `--speech`：`server` 是頻道聲音（經站上合成，聲音與長度範圍來自 Shorts 設定，逐句快取）；`windows` 是本機的 Hanhan，只有 Windows 有，而且**在 Windows 上沒寫 `--speech` 就是它**；`files` 從 `--audio-dir` 讀 `000.wav`、`001.wav`…。要上架的一律 `--speech server`。
+- `--captions`：`karaoke` 讓字幕條隨旁白逐組亮字（`docs/videos/SHORTS.md` §工具端的 `karaoke.mjs`）；沒給就讀環境變數 `VIDEO_SHORTS_CAPTIONS`，再沒有就是 `plain`（舊的整句字幕條）。亮字的時間現在是從每句音檔的靜音邊界與字數估的，`timing.json` 寫 `source: "estimated"`，`qa` 的 `captions` 照樣過但帶一條警告；真實字時等 `speech/align`（票 `2026-10-05-speech-align-character-timing`）。
 - `--source-base` 預設 `docs/videos/ai-shorts`；證據路徑相對於它。
 - `qa --offline` 不連站台：要站台的項目（`policy`、`links`、`variety`，精華與漫劇的 `evidence`）一律記成沒查而不過，只拿來檢查本機能檢查的。
 - 結束碼：0 成功；1 檢查沒過或其他錯誤（`check-audio` 有句子被標、`qa`／`package` 有項目沒過）；3 要站主（沒有或失效的權杖）；4 站台或服務連不上（重試四次後）。**`push` 只要沒出錯就回 0**，有沒有送出要看印出的 `final`、`publish` 與 `waits`。
@@ -108,7 +109,7 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 | `facts` | `verify.json` 是這份 `script.json` 的查核、每個主張都 `ok` | 照查核意見改稿，重 `build`，再請新對話查一次 |
 | `policy` | Jev 照頻道立場判（`POST /video/automation/judge/policy`）；精華不問「觀眾能照著做的東西」 | 立場空白時永遠不過，交站主寫立場；其餘改內容 |
 | `metadata` | 標題 ≤ 100 字元、沒有角括號、兩個標題；說明 ≤ 5,000 位元組；標籤合計 ≤ 500 字元；話題標籤 ≤ 3；精華要有完整影片網址 | 改腳本的欄位重 `build`；精華等長片上架 |
-| `captions` | `zh-TW.srt` 每段跟時間軸一致；設定勾的語系也都在 | 重 `build`，不要手改 srt |
+| `captions` | `zh-TW.srt` 每段跟時間軸一致；設定勾的語系也都在。卡拉 OK 字幕的時間是估算的（`checks.json.captions.source: "estimated"`）時仍過，只帶警告 | 重 `build`，不要手改 srt；警告不用修，等對齊票 |
 | `links` | 說明欄每個網址回 200（`Mokaair-editorial` User-Agent） | 改 `links` 或說明 |
 | `variety` | 開場那一句不跟最近 30 支一樣；字卡結構不跟同系列前一支一模一樣 | 改第一句，或調整場景（句數、`big`、`body`、`asset`、`camera`） |
 | `disclosure` | 記下要不要勾「變造或合成內容」與原因；不會讓品管失敗 | — |
@@ -141,6 +142,7 @@ node tools/video/shorts/smoke.mjs [--workdir <DIR>]   # 不用站台的冒煙測
 - **`push` 回 0 不代表送出**：看 `waits`。`video_shorts_final_review_stale`：工具舊了，更新後重新 `push`。`video_shorts_review_upload_started`：影片已經開始上 YouTube，先到後台與 Studio 核對，不要清掉上傳紀錄。
 - **改了說明也要重跑**：`package` 的產物不在 QA 輸入裡，但腳本改了 QA 與查核都失效，要從 `build` 重來。
 - **匯入的成片**：24 fps 的會被拒絕（要先轉 30 fps）；`layout` 一定要站主看；沒跑 `check-audio` 的 `narration` 一定不過。
+- **卡拉 OK 字幕的亮字會偏**：時間是估的，句子裡有長停頓或拉丁字（`spokenUnits` 把一個拉丁字算兩個單位）時亮得早或晚；工人做的 Shorts 在站上會自動核准，所以預設是 `plain`，站主看過一支 `--captions karaoke` 的樣片再在工人主機設 `VIDEO_SHORTS_CAPTIONS=karaoke`。每次 `build` 都是新目錄（`codeHash`、`MOTION_VERSION` 變了），舊成品要重跑 `check-audio` 與 `qa`；已核准的成片綁 `final_sha256`，不受影響。
 - **工人讀不到 `docs/videos/ai-shorts`**：它的 docs volume 比 repo 舊，題目、規格與脈絡一律由 `shorts/next` 給；不要寫依賴那個資料夾的步驟。
 - **Jev 的每日次數**跟自動新聞、景點介紹共用；大批 `check-audio` 前先看「AI 供應商與金鑰」卡片。
 - **中文參數**：PowerShell 會弄壞命令列上的非 ASCII 字，腳本與 `meta.json` 一律寫檔再傳路徑。

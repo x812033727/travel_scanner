@@ -12,7 +12,7 @@
 // set (stand-ins under the work base), so the moving segments, the dissolves, the bed and the
 // effects go through the same chain. CI runs it in .github/workflows/video-tooling.yml after
 // installing Chromium and ffmpeg.
-import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -69,8 +69,22 @@ for (const [index] of phrasesOf(doc).entries()) {
   writeFileSync(path.join(audioDir, `${String(index).padStart(3, '0')}.wav`), encodeWav(samples));
 }
 
-const built = await build({ file: path.join(source, 'script.json'), sourceBase: source, workdir: base, speech: 'files', audioDir, ...(values.channel ? { channel: values.channel } : {}) });
+// The captions are the karaoke ones (karaoke.mjs): the layer, its timing file and its warning go
+// through the same chain as the picture and the sound.
+const built = await build({ file: path.join(source, 'script.json'), sourceBase: source, workdir: base, speech: 'files', audioDir, captions: 'karaoke', ...(values.channel ? { channel: values.channel } : {}) });
 const checks = JSON.parse(readFileSync(path.join(built.directory, 'checks.json'), 'utf8'));
+// The caption layer: a timing file with every phrase, one state picture per state, the lit group
+// moving between the states of a phrase, and the estimate declared as one.
+if (checks.captions?.style !== 'karaoke' || checks.captions.source !== 'estimated') fail(`the captions: ${JSON.stringify(checks.captions)}`);
+const timing = JSON.parse(readFileSync(path.join(built.directory, 'timing.json'), 'utf8'));
+if (timing.source !== 'estimated' || timing.phrases.length !== phrasesOf(doc).length) fail(`timing.json: ${timing.source}, ${timing.phrases?.length} phrases for ${phrasesOf(doc).length}`);
+if (!timing.phrases.every((phrase) => phrase.groups.length >= 1 && phrase.states.length >= 1)) fail('a phrase has no group or no state');
+const stateFiles = readdirSync(path.join(built.directory, 'captions')).filter((name) => name.endsWith('.png'));
+if (stateFiles.length !== checks.captions.states) fail(`${stateFiles.length} caption state pictures for ${checks.captions.states} states`);
+const lit = timing.phrases.find((phrase) => phrase.states.length > 1);
+if (!lit) fail('no phrase of the smoke script lights in more than one group');
+const pictures = new Set(lit.states.map((_state, index) => sha256(readFileSync(path.join(built.directory, 'captions', `${String(lit.cue).padStart(3, '0')}-${String(index).padStart(2, '0')}.png`)))));
+if (pictures.size !== lit.states.length) fail(`two caption states of phrase ${lit.cue} are the same picture`);
 // The moving picture: one segment per scene, the second on the picture under its push in, every
 // later scene opening on a dissolve, and the bed and the effects in the mix.
 if (!Array.isArray(checks.motion) || checks.motion.length !== doc.scenes.length) fail(`${checks.motion?.length} moving scenes for ${doc.scenes.length} scenes`);
@@ -91,6 +105,7 @@ for (const each of report.items) {
 if (report.ok) fail('the quality check passed although five items were never checked');
 if (report.kind !== 'shorts' || report.line !== 'lab') fail(`the report says ${report.kind}/${report.line}`);
 if (!/1080×1920/.test(verdicts.profile.detail)) fail(`profile: ${verdicts.profile.detail}`);
+if (!(verdicts.captions.ok && verdicts.captions.warnings?.length === 1 && /estimated/.test(verdicts.captions.warnings[0]))) fail(`captions: ${JSON.stringify(verdicts.captions)}`);
 for (const name of ['final.mp4', 'zh-TW.srt', 'cover.png', 'metadata.json', 'description.zh-TW.txt', 'manifest.json']) {
   if (!existsSync(path.join(built.directory, 'upload', name))) fail(`upload/${name} is missing`);
 }
@@ -101,4 +116,4 @@ const items = Object.fromEntries(packaged.items.map((each) => [each.id, each.ok]
 if (!items.files || !items.descriptions || !items.captions || !items.disclosure) fail(`the package check: ${JSON.stringify(packaged.items)}`);
 const manifest = JSON.parse(readFileSync(path.join(built.directory, 'upload', 'manifest.json'), 'utf8'));
 if (manifest.status !== 'qa-failed') fail(`the manifest says ${manifest.status}, and the check did not pass`);
-process.stdout.write(`shorts smoke: ${built.seconds.toFixed(2)}s, ${checks.motion.length} moving scenes (one on a picture), bed ${checks.music.bed_lufs} LUFS, ${checks.sfx.events} effects; ${report.items.filter((each) => each.ok).length} of ${report.items.length} items checked without the site, package complete\n  ${built.directory}\n`);
+process.stdout.write(`shorts smoke: ${built.seconds.toFixed(2)}s, ${checks.motion.length} moving scenes (one on a picture), ${checks.captions.groups} caption groups in ${checks.captions.states} states (${checks.captions.source}), bed ${checks.music.bed_lufs} LUFS, ${checks.sfx.events} effects; ${report.items.filter((each) => each.ok).length} of ${report.items.length} items checked without the site, package complete\n  ${built.directory}\n`);
