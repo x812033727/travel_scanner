@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-kept-pictures-show-on-the-review
 title: Kept pictures show on the review card, their summary fits the server's limit, and only illustrated videos keep them
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-fable-5-1-video-unstuck
 claimed_at: 2026-10-06T12:27:53Z
 created_at: 2026-10-06T12:27:16Z
-completed_at:
+completed_at: 2026-10-06T16:29:56Z
 branch: claude/video-unstuck-kept-pictures-card
 depends_on: []
 scope:
