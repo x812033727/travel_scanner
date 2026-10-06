@@ -1,8 +1,9 @@
 // `clips`: one motion clip per shot, generated from the shot's keyframe with the chosen sheets
-// as references, checked by ffmpeg and the judge, retaken with another seed when it fails
-// (docs/videos/DRAMA.md). The most expensive stage, so it runs after the look, the narration,
-// the keyframes and the storyboard have been approved, and every submission is checked against
-// the per-video cap first. Writes clips/manifest.json (what assemble reads) and clips/<shot>-<seed>.mp4.
+// as references, checked by ffmpeg and the judge, retaken with another seed, and the judge's
+// fixes in the prompt, when it fails (docs/videos/DRAMA.md). The most expensive stage, so it
+// runs after the look, the narration, the keyframes and the storyboard have been approved, and
+// every submission is checked against the per-video cap first. Writes clips/manifest.json (what
+// assemble reads) and clips/<shot>-<seed>.mp4.
 //
 // A shot marked visual "still" (docs/videos/BINGE.md) buys no clip: assemble animates its
 // keyframe instead. It still gets a manifest entry naming that keyframe and its hash, so the
@@ -30,7 +31,7 @@ import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
-import { chosenSheets } from "./keyframes.mjs";
+import { chosenSheets, fixClauses, fixesBefore, retakePrompt } from "./keyframes.mjs";
 import { bookImport, bookReuse, ledgerTotals, release, reserve } from "./ledger.mjs";
 import { blackdetectArgs, clipVerdict, framePsnrArgs, freezedetectArgs, parseBlackdetect, parseFreezedetect, parseProbe, parsePsnr, parseSceneCuts, probeArgs, sceneCutArgs } from "./qc.mjs";
 import { chosenModel, clipSecondPrice, JUDGE_USD_PER_CALL, retakeable, Stage, statusProblem } from "./stages.mjs";
@@ -371,10 +372,14 @@ export async function run(command, args, ctx) {
     for (let take = 1; take <= takes; take++) {
       const seed = take;
       if (entry.takes.some((each) => each.seed === seed && each.qc)) continue;
-      const key = clipKey({ provider: status.clip.provider, model: status.clip.model, prompt, negative: look.negative, seconds, resolution, seed, startFrame: firstFrame, endFrame, references: refs.map((reference) => reference.sha256) });
+      // The judge's fixes for the takes before this one go into its prompt.
+      const fixes = fixesBefore(entry.takes, seed);
+      if (fixes.length) ctx.stdout.write(`${scene.id} take ${take}: asked with the corrections of the takes before: ${fixes.join("; ")}\n`);
+      const asked = retakePrompt(prompt, fixes);
+      const key = clipKey({ provider: status.clip.provider, model: status.clip.model, prompt: asked, negative: look.negative, seconds, resolution, seed, startFrame: firstFrame, endFrame, references: refs.map((reference) => reference.sha256) });
       const request = {
         shot_id: scene.id,
-        prompt,
+        prompt: asked,
         ...(look.negative ? { negative_prompt: look.negative } : {}),
         first_frame: firstFrame,
         ...(endFrame ? { last_frame: endFrame } : {}),
@@ -421,7 +426,7 @@ export async function run(command, args, ctx) {
         verdict.ok = false;
         verdict.problems.push("the production profile requires motion for the whole shot; this take would need padding or slowing to cover its dialogue");
       }
-      entry.takes.push({ seed, file: clip.file, sha256: clip.sha256, key, seconds, frames: inspected.probe?.frames ?? null, qc: verdict, judge });
+      entry.takes.push({ seed, file: clip.file, sha256: clip.sha256, key, seconds, frames: inspected.probe?.frames ?? null, ...(fixes.length ? { fixes } : {}), qc: verdict, judge });
       ctx.stdout.write(`${scene.id} take ${take}: ${verdict.ok ? "passed" : `NOT passed: ${verdict.problems.join("; ")}`} (judge ${judge.overall}/10${clip.reused ? ", reused" : ""})\n`);
       if (verdict.ok) break;
     }
@@ -455,7 +460,12 @@ export async function run(command, args, ctx) {
       takes: entry.takes,
       needs_review: !best.qc?.ok,
     };
-    if (record.needs_review) record.problems = [...new Set(entry.takes.flatMap((each) => each.qc?.problems ?? []))];
+    if (record.needs_review) {
+      // Every check and judge problem of every take, and the judge's fixes among them.
+      record.problems = [...new Set(entry.takes.flatMap((each) => each.qc?.problems ?? []))];
+      const fixes = fixClauses(entry.takes.flatMap((each) => each.judge?.problems ?? []));
+      if (fixes.length) record.fixes = fixes;
+    }
     manifest.shots[scene.id] = record;
     writeManifest(workdir, doc, manifest);
   }
@@ -498,7 +508,10 @@ export async function run(command, args, ctx) {
   ctx.stdout.write(`${generated} clips generated in ${seconds} s; ${Object.keys(manifest.shots).length} shots in the manifest (${stillCount} stills${cutCount ? `, ${cutCount} cuts from another shot's clip, ${savedSeconds} clip seconds not bought` : ""}${importCount ? `, ${importCount} imported from outside the pipeline` : ""}); this video has spent US$${totals.usd.toFixed(2)} (${totals.clip_seconds} clip seconds)\n`);
   if (waiting.length) {
     // A shot with neither a clip nor a take was refused outright: its problems say so themselves.
-    for (const [id, shot] of waiting) ctx.stdout.write(`ERROR ${id}: ${shot.file || shot.takes?.length ? "no take passed: " : ""}${(shot.problems ?? []).join("; ")}\n`);
+    for (const [id, shot] of waiting) {
+      ctx.stdout.write(`ERROR ${id}: ${shot.file || shot.takes?.length ? "no take passed: " : ""}${(shot.problems ?? []).join("; ")}\n`);
+      if (shot.fixes?.length) ctx.stdout.write(`  fixes for ${id}: ${shot.fixes.join("; ")}\n`);
+    }
     ctx.stdout.write(`fix the prompts of ${waiting.map(([id]) => id).join(", ")} and run clips again (needs_review in clips/manifest.json)\n`);
     return EXIT.lint;
   }
@@ -653,7 +666,11 @@ async function importClip(args, ctx) {
       needs_review: !verdict.ok && !forced,
       ...imported,
     };
-    if (record.needs_review) record.problems = verdict.problems;
+    if (record.needs_review) {
+      record.problems = verdict.problems;
+      const fixes = fixClauses(judge?.problems ?? []);
+      if (fixes.length) record.fixes = fixes;
+    }
     manifest.shots[scene.id] = record;
     // Shots cut from this shot's clip play the new file from now on.
     const recut = sourcedShotScenes(doc).filter((each) => each.data.source.shot === scene.id && manifest.shots[each.id]);
@@ -669,6 +686,7 @@ async function importClip(args, ctx) {
     if (Math.round((probe.duration ?? 0) * FPS) < neededFrames) ctx.stdout.write(`${scene.id}: the clip is shorter than its lines; assemble slows it and holds its last frame for the rest, and refuses a long hold unless the shot's fit says "freeze"\n`);
     if (record.needs_review) {
       ctx.stdout.write(`ERROR ${scene.id}: ${verdict.problems.join("; ")}\n`);
+      if (record.fixes) ctx.stdout.write(`  fixes for ${scene.id}: ${record.fixes.join("; ")}\n`);
       ctx.stdout.write(`make ${scene.id} again from its keyframe (${keyframe.file}) and import that, or keep this one with --force (needs_review in clips/manifest.json)\n`);
       return EXIT.lint;
     }

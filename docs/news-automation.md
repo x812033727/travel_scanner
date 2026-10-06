@@ -136,6 +136,17 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    editor and Jev's last call guard every article. A candidate uses up to seven Jev calls
    (duplicate check, zh-TW draft, five locales) from `JEV_DAILY_CALL_BUDGET`.
 
+   **What `act` means.** Both Jev questions about a draft (the zh-TW one in step 4 and the
+   last call in step 6) ask one statement, `ai.PUBLISH_QUESTION`, with no criteria, and
+   `act` is a probability of yes at or above `jev_act_confidence` on `/admin/news`.
+   Production acts at about 0.5. Jev's answer to this statement has not gone above 0.78 since
+   2026-09-24, so 0.9, the default, would never publish. The criteria are left out on
+   purpose. Until 2026-10-05 they went out under keys Jev ignores. When #1218 sent them under
+   the documented `true`/`false` keys, "Any condition fails or is uncertain" lowered every
+   answer by 0.10–0.21, and no draft reached the threshold. That was measured with 21
+   production calls on 2026-10-06 (`tasks/done/2026-10-06-news-jev-publish-confidence-fell-below.md`).
+   Adding criteria back changes the meaning of the threshold; measure it before doing so.
+
 An edited article (「重新查核」 in the guide editor) runs the fact check, the locale reviews
 and the hard checks again on the editor's text, but neither the final editor nor Jev's last
 call: a person's edits are not rewritten. A confirmed one then publishes, an unconfirmed

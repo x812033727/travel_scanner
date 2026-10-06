@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { fixture } from "./fixtures/load.mjs";
-import { articlePath, articleUrl, checkYoutubeFields, composeDescription, hashtagsFrom, tagsLength } from "./metadata.mjs";
+import { articlePath, articleUrl, ASSET_FIELDS, checkYoutubeFields, composeDescription, creditBytes, creditedAssets, creditLine, hashtagsFrom, pictureCredits, tagsLength } from "./metadata.mjs";
 import { estimateTimeline } from "./timeline.mjs";
 
 test("tag length is counted YouTube's way: commas between tags, quotes around tags with spaces", () => {
@@ -38,6 +38,36 @@ test("the composed description opens with the article, then body, chapters, sour
   const en = composeDescription({ body: "Body", timeline: estimateTimeline(doc), chapterTitles: { hook: "Intro" }, sources: doc.sources, locale: "en" });
   assert.match(en, /^Body\n\n📌 Chapters\n00:00 Intro\n/, "no article, no link line");
   assert.match(en, /📚 Sources\n範例來源: https[^\n]*$/, "no tags, no hashtag line");
+});
+
+test("the description credits the stock photos after the sources, in the vendors' wording, and leaves own diagrams out", () => {
+  const pexels = { path: "stock/a.jpg", source: "Photo by Lukas Rodriguez on Pexels", license: "Pexels License", author: "Lukas Rodriguez", url: "https://www.pexels.com/photo/seoul-at-night-3573351/" };
+  const pixabay = { path: "stock/b.jpg", source: "Image by Josch13 from Pixabay", license: "Pixabay Content License", author: "Josch13", url: "https://pixabay.com/photos/seoul-korea-195893/" };
+  const own = { path: "apps/web/public/guides/x/diagram-1.svg", source: "Mokaair 自有圖解（文章 x）", license: "© Mokaair" };
+  const assets = [own, pexels, pixabay, { ...pexels, source: "the same photo listed twice" }];
+  assert.deepEqual(ASSET_FIELDS, ["path", "source", "license", "author", "url"]);
+  assert.deepEqual(creditedAssets(assets), [pexels, pixabay], "an author or a page is what makes a credit; one line per path");
+  assert.deepEqual(creditedAssets(undefined), []);
+  assert.deepEqual(creditedAssets([null, "x", { path: "p", author: "A" }]), [], "a credit needs the source line the schema requires");
+  const doc = fixture();
+  const zh = composeDescription({ body: "正文", timeline: estimateTimeline(doc), sources: doc.sources, assets, locale: "zh-TW", tags: ["AI 模型"] });
+  assert.match(
+    zh,
+    /\n\n📚 參考資料\n範例來源：https:\/\/example\.com\/models\n\n📷 圖片來源\nPhoto by Lukas Rodriguez on Pexels（Pexels License）：https:\/\/www\.pexels\.com\/photo\/seoul-at-night-3573351\/\nImage by Josch13 from Pixabay（Pixabay Content License）：https:\/\/pixabay\.com\/photos\/seoul-korea-195893\/\n\n#AI模型$/,
+    "after the sources, before the hashtags",
+  );
+  assert.match(composeDescription({ body: "Body", assets, locale: "en" }), /^Body\n\n📷 Image credits\nPhoto by Lukas Rodriguez on Pexels \(Pexels License\): https:\/\/www\.pexels\.com[^\n]*\nImage by Josch13 from Pixabay \(Pixabay Content License\): https/);
+  assert.match(composeDescription({ body: "Body", assets, locale: "ko" }), /\n\n📷 이미지 출처\nPhoto by Lukas Rodriguez on Pexels \(Pexels License\): https/);
+  assert.match(composeDescription({ body: "Body", assets, locale: "ja" }), /\n\n📷 画像の出典\nPhoto by Lukas Rodriguez on Pexels（Pexels License）：https/);
+  assert.match(composeDescription({ body: "Body", assets, locale: "zh-CN" }), /\n\n📷 图片来源\n/);
+  assert.equal(composeDescription({ body: "Body", assets: [own], locale: "en" }), "Body", "own diagrams: no block, so the descriptions of the videos that list them do not move");
+  assert.equal(composeDescription({ body: "Body", locale: "en" }), "Body");
+  assert.equal(creditLine({ path: "p", source: " Photo by A on Pexels ", license: " ", author: "A" }, "ko"), "Photo by A on Pexels", "no licence, no page: the credit alone");
+  assert.equal(creditLine({ path: "p", source: "Photo by A on Pexels", license: "Pexels License", url: "https://x" }, "ja"), "Photo by A on Pexels（Pexels License）：https://x");
+  assert.equal(pictureCredits([own], "zh-TW"), "");
+  assert.equal(creditBytes([own], "zh-TW"), 0);
+  assert.equal(creditBytes(assets, "zh-TW"), Buffer.byteLength(`\n\n${pictureCredits(assets, "zh-TW")}`, "utf8"), "what the block adds to a description, blank lines included");
+  assert.ok(creditBytes(assets, "zh-TW") > 200 && creditBytes(assets, "zh-TW") < 300, `two credits cost ${creditBytes(assets, "zh-TW")} bytes`);
 });
 
 test("hashtags drop spaces and punctuation, skip repeats in any case and stop at three", () => {

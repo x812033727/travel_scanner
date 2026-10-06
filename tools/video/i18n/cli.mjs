@@ -13,9 +13,14 @@
 // names and the thumbnail's words, "captions" the lines; a part left out keeps whatever
 // translation it had. The thumbnail's words (render draws the locale's own thumbnail from them)
 // are optional: a sheet without them merges, with a note, and the locale keeps the video's own.
+// Beside its entries a sheet carries what the translation works against (translationContext):
+// the glossary and the narration's cue boundaries, which the worker also sends beside the
+// worksheet; `i18n-merge` reads neither.
 import path from "node:path";
 import { parseArgs } from "node:util";
 
+import { cuePieces } from "../core/captions.mjs";
+import { entriesUsed } from "../core/lexicon.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, textHash } from "../core/schema.mjs";
 import { readLanguages } from "../core/stages.mjs";
@@ -39,8 +44,49 @@ const SHEET_NOTE = "Fill the `text` of everything marked todo: lines, chapters, 
 const THUMBNAIL_NOTE = " `thumbnail.text` holds the words of this locale's own thumbnail, one for each word in `thumbnail.source` (tag, headline, sub): short enough to read on a phone, with the same `**` emphasis and line breaks.";
 const PART_NOTES = { metadata: "This sheet holds only the title, the description, the tags, the chapter names and the thumbnail's words; the lines are not wanted for this locale.", captions: "This sheet holds only the lines; the title, description, tags, chapter names and thumbnail words are not wanted for this locale." };
 const BUDGET_NOTE = " `max_chars` is how many characters a line's dub may have (docs/videos/DUBS.md): the translation is also read aloud in the time the narration line takes, so stay under it.";
+const CONTEXT_NOTE = " `glossary.terms` are the dictionary terms this video uses, in the forms they appear in, and `glossary.sources` the names of its sources: render each one way everywhere, a product, company, model or feature name as its maker writes it. `boundaries` maps a line id to the pieces the narration's captions cut that line into (a line absent from it is one cue): keep the clauses in that order.";
 
 const partsOf = (sheet) => (Array.isArray(sheet?.parts) && sheet.parts.length ? sheet.parts : SHEET_PARTS);
+
+/**
+ * The context a translation works against, carried by the worksheet (buildSheet) and sent by the
+ * worker beside it (tools/video/automation/flow.mjs translateLocale): "glossary", the dictionary
+ * terms the video's lines and metadata use, in the forms they appear in (core/lexicon.mjs
+ * entriesUsed), and the names of its sources, which every locale renders one way; and
+ * "boundaries", the pieces the narration's captions cut each line into (core/captions.mjs
+ * cuePieces), for the lines cut into more than one, so the translator keeps the clauses in the
+ * order the viewer hears them. `locale` is the narration's.
+ */
+export function translationContext(video, lexicon, locale = narrationLocale(video)) {
+  const lines = [...eachLine(video)].map(({ line }) => line);
+  const youtube = video.youtube ?? {};
+  const metadata = [youtube.title, youtube.description, ...(Array.isArray(youtube.tags) ? youtube.tags : []), ...(video.scenes ?? []).map((scene) => scene.chapter), ...Object.values(video.thumbnail?.data ?? {})];
+  const texts = [...lines.map((line) => line.text), ...metadata].filter((text) => typeof text === "string" && text.trim());
+  const terms = [...new Set(entriesUsed(texts, lexicon).flatMap((entry) => entry.forms))].sort();
+  const sources = (Array.isArray(video.sources) ? video.sources : []).map((source) => source?.title).filter((title) => typeof title === "string" && title.trim());
+  const boundaries = {};
+  for (const line of lines) {
+    const pieces = cuePieces(line.text, locale);
+    if (pieces.length > 1) boundaries[line.id] = pieces;
+  }
+  return { glossary: { terms, sources }, boundaries };
+}
+
+/** The keys a sheet carries beside its entries (translationContext), which a model's answer need not repeat. */
+export const CONTEXT_KEYS = ["glossary", "boundaries"];
+
+/** A sheet's glossary and boundaries, the ones it has: what the worker sends beside the worksheet. */
+export function sheetContext(sheet) {
+  return Object.fromEntries(CONTEXT_KEYS.filter((key) => sheet?.[key] !== undefined && sheet[key] !== null).map((key) => [key, sheet[key]]));
+}
+
+/** The sheet without them: the worksheet a model is shown, since the request carries the context on its own. */
+export function withoutContext(sheet) {
+  if (sheet === null || typeof sheet !== "object") return sheet;
+  const copy = { ...sheet };
+  for (const key of CONTEXT_KEYS) delete copy[key];
+  return copy;
+}
 
 /**
  * The worksheet for one locale: every line, chapter and YouTube field with its current
@@ -48,9 +94,10 @@ const partsOf = (sheet) => (Array.isArray(sheet?.parts) && sheet.parts.length ? 
  * was hashed, is marked todo with an empty `text`, like a missing one. With `budgets` (line id to
  * characters, from the narration timeline), each line also says how long its dub may be. `parts`
  * narrows the sheet: without "captions" it has no lines, without "metadata" no title,
- * description, tags or chapters (those fields are null and the list empty).
+ * description, tags or chapters (those fields are null and the list empty). With `context`
+ * (translationContext) the sheet carries the glossary, and the boundaries when it holds lines.
  */
-export function buildSheet(doc, translation, locale, budgets = null, parts = SHEET_PARTS) {
+export function buildSheet(doc, translation, locale, budgets = null, parts = SHEET_PARTS, context = null) {
   const current = translation ?? {};
   const wantLines = parts.includes("captions");
   const wantMetadata = parts.includes("metadata");
@@ -76,12 +123,13 @@ export function buildSheet(doc, translation, locale, budgets = null, parts = SHE
     locale,
     slug: doc.slug,
     parts: [...parts],
-    note: `${SHEET_NOTE}${thumbnail ? THUMBNAIL_NOTE : ""}${only}${budgets ? BUDGET_NOTE : ""}`,
+    note: `${SHEET_NOTE}${thumbnail ? THUMBNAIL_NOTE : ""}${only}${budgets ? BUDGET_NOTE : ""}${context ? CONTEXT_NOTE : ""}`,
     title: wantMetadata ? field("title", "") : null,
     description: wantMetadata ? field("description", "") : null,
     tags: wantMetadata ? field("tags", []) : null,
     thumbnail,
     chapters: wantMetadata ? chapters : [],
+    ...(context ? { glossary: context.glossary, ...(wantLines ? { boundaries: context.boundaries } : {}) } : {}),
     lines,
   };
 }
@@ -253,14 +301,18 @@ export async function run(command, args, ctx) {
     const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
     const timed = timeline && timeline.speech_hash === speechHash(doc, project.lexicon);
     const languages = readLanguages(workdir);
+    // The same glossary and cue boundaries for every locale: they are the narration's.
+    const context = translationContext(doc, project.lexicon);
+    const count = (items, word) => `${items.length} ${word}${items.length === 1 ? "" : "s"}`;
+    const carried = `; glossary ${count(context.glossary.terms, "term")} and ${count(context.glossary.sources, "source")}${values.parts.includes("captions") ? `, cue boundaries for ${count(Object.keys(context.boundaries), "line")}` : ""}`;
     for (const locale of locales) {
       const dubbed = timed && values.parts.includes("captions") && (!languages || languages.locales[locale]?.dub === true);
       const fit = dubbed ? readJson(dubArtifacts(workdir, locale).fit, null) : null;
       const budgets = dubbed ? lineBudgets(timeline, fit?.rates?.measured ?? defaultRate(locale, doc, timeline)) : null;
-      const sheet = buildSheet(doc, project.translations[locale], locale, budgets, values.parts);
+      const sheet = buildSheet(doc, project.translations[locale], locale, budgets, values.parts, context);
       atomicWrite(sheetFile(workdir, locale), `${JSON.stringify(sheet, null, 2)}\n`);
       const scope = values.parts.length < SHEET_PARTS.length ? ` (${values.parts.join(", ")} only)` : "";
-      ctx.stdout.write(`${locale}: to translate ${sheetTodo(sheet)}; ${sheetFile(workdir, locale)}${scope}${budgets ? " (with max_chars for the dub)" : ""}\n`);
+      ctx.stdout.write(`${locale}: to translate ${sheetTodo(sheet)}; ${sheetFile(workdir, locale)}${carried}${scope}${budgets ? " (with max_chars for the dub)" : ""}\n`);
     }
     return EXIT.ok;
   }

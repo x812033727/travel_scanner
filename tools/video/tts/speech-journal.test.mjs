@@ -33,6 +33,8 @@ function speechServer(answers = []) {
     if (url.endsWith("/api/video/speech/status")) {
       return Response.json({ configured: true, voices: ["zh-TW-HsiaoChenNeural"], monthly_limit: 0, used: 0, remaining: 0, gemini_configured: true, gemini_monthly_limit: 300000, gemini_used: 0 });
     }
+    // A site from before speech/align: tts asks it first for an Azure voice and is refused, unpaid.
+    if (url.endsWith("/api/video/speech/align")) return new Response("not found", { status: 404 });
     posts.push(JSON.parse(init.body));
     const answer = answers.shift();
     if (typeof answer === "function") return answer();
@@ -354,9 +356,11 @@ test("a Short's server phrase holds when lost, and is taken from the journal whe
   const phrases = ["一張手寫的發票", "再扣掉三十元的折價券"];
   const server = speechServer([() => { throw lost(); }]);
   const client = { site: SITE, token: TOKEN, fetch: server.fetchImpl, sleep: async () => {} };
-  await assert.rejects(serverNarration({ phrases, voice, cacheDir, client }), held());
+  // No karaoke here (a build asks the aligner only for --captions karaoke), and this server has
+  // no align route: every phrase POST it counts is a synthesis.
+  await assert.rejects(serverNarration({ phrases, voice, cacheDir, client, align: false }), held());
   assert.equal(server.posts.length, 1);
-  await assert.rejects(serverNarration({ phrases, voice, cacheDir, client }), held(/held in the speech journal/));
+  await assert.rejects(serverNarration({ phrases, voice, cacheDir, client, align: false }), held(/held in the speech journal/));
   assert.equal(server.posts.length, 1, "the next build or lab round does not send it again");
   const [held1] = listSpeechJournal(path.join(cacheDir, JOURNAL_DIR));
   assert.equal(held1.sha, requestSha256(phraseBody(voice, phrases[0])));
@@ -365,7 +369,7 @@ test("a Short's server phrase holds when lost, and is taken from the journal whe
   // The second phrase was bought by a build that stopped before caching it.
   const bought = await openSpeechJournal(path.join(cacheDir, JOURNAL_DIR)).wrap((sent) => synthesize({ ...options(server), body: sent }))(phraseBody(voice, phrases[1]));
   const posts = server.posts.length;
-  const built = await serverNarration({ phrases, voice, cacheDir, client });
+  const built = await serverNarration({ phrases, voice, cacheDir, client, align: false });
   assert.equal(server.posts.length, posts + 1, "only the first phrase is bought");
   assert.deepEqual([built.calls, built.characters], [1, 10], "the reused phrase is not counted as this build's");
   assert.deepEqual(built.clips[1], bought.wav);

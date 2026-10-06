@@ -50,6 +50,12 @@ const NEVER_REACHED = { status: 502, code: "upstream_unavailable" };
 const settled = (status, code) => SETTLED_CODES.has(code) || (status === NEVER_REACHED.status && code === NEVER_REACHED.code);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
+// Answers that do not change by asking again in this run, whatever their status: the server has no
+// aligner for this clip (503), or the voice has no boundaries (422). Told after one request.
+const FINAL_CODES = new Set(["video_align_unavailable", "video_align_voice_unsupported"]);
+// What `alignClip` and `synthesizeAligned` answer with null instead of throwing: the server cannot
+// time this clip, or it is a site from before the route (404), so the build keeps its estimate.
+const unaligned = (error) => error instanceof SpeechError && (error.status === 404 || FINAL_CODES.has(error.code));
 
 const neverSent = (error) => NEVER_SENT.has(error?.cause?.code ?? error?.code);
 
@@ -96,7 +102,7 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts, paid 
     const message = problem.detail || `HTTP ${response.status}`;
     if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new SpeechError(message, { status: response.status, code: problem.code, who: "owner" });
     // A spent budget stays spent for the rest of the month (speech) or day (Jev): do not retry.
-    if (problem.code === "video_speech_budget_exhausted" || problem.code === "jev_budget_exhausted") {
+    if (problem.code === "video_speech_budget_exhausted" || problem.code === "jev_budget_exhausted" || FINAL_CODES.has(problem.code)) {
       throw new SpeechError(message, { status: response.status, code: problem.code });
     }
     if (paid && response.status >= 500 && !settled(response.status, problem.code)) {
@@ -164,4 +170,53 @@ export async function synthesize({ body, ...options }) {
     wav: toNarrationRate(Buffer.from(await response.arrayBuffer())),
     billable: Number(response.headers.get("x-billable-characters") || 0),
   }));
+}
+
+/** The server's timing answer as the build keeps it: `{ source, model, chars }`, or null when malformed. */
+function timingOf(body) {
+  const chars = Array.isArray(body?.chars) ? body.chars : null;
+  if (!chars || typeof body.source !== "string" || !chars.every((c) => typeof c?.text === "string" && Number.isFinite(c.start_ms) && Number.isFinite(c.end_ms))) return null;
+  return { source: body.source, model: typeof body.model === "string" ? body.model : "", chars: chars.map((c) => ({ text: c.text, start_ms: Number(c.start_ms), end_ms: Number(c.end_ms) })) };
+}
+
+/**
+ * When each written unit of one clip is spoken, measured by the server's aligner: `{ source,
+ * model, chars: [{ text, start_ms, end_ms }] }`, or null when the server cannot time it (no
+ * aligner installed for this clip, or a site from before the route), so the caller keeps its
+ * estimate. Nothing is billed, so a failed request is tried again like the status GET.
+ */
+export async function alignClip({ wav, text, language = NARRATION_LOCALE, ...options }) {
+  const body = { audio: Buffer.from(wav).toString("base64"), text, ...trackLanguage(language) };
+  const init = { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) };
+  try {
+    const response = await call({ ...defaults(options), path: "speech/align", init });
+    return timingOf(await response.json());
+  } catch (error) {
+    if (unaligned(error)) return null;
+    throw error;
+  }
+}
+
+/**
+ * Synthesize one request body (an Azure voice) with the word boundaries the service sends during
+ * that same synthesis: `{ wav, billable, timing }`, the WAV on the 48 kHz grid as `synthesize`
+ * gives it. Null when the server cannot (a Gemini voice, or a site from before the route): the
+ * caller synthesizes as before, and nothing was paid for here. Paid, so a lost answer is
+ * SPEECH_UNCERTAIN as for `synthesize`.
+ */
+export async function synthesizeAligned({ body, ...options }) {
+  try {
+    return await postPaid(options, "speech/align", { speech: body }, async (response) => {
+      const answer = await response.json();
+      if (typeof answer?.audio !== "string") throw new Error("the answer carries no audio");
+      return {
+        wav: toNarrationRate(Buffer.from(answer.audio, "base64")),
+        billable: Number(answer.billable_characters || 0),
+        timing: timingOf(answer),
+      };
+    });
+  } catch (error) {
+    if (unaligned(error)) return null;
+    throw error;
+  }
 }

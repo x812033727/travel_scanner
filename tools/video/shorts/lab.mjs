@@ -25,7 +25,7 @@ import { parseAnswer } from '../automation/prompts.mjs';
 import { atomicWrite, readJson, stopRequested } from '../core/paths.mjs';
 import { LAB_SERIES, SCRIPT_FILE, USAGE_FILE, saveJson, sha256, validate } from './core.mjs';
 import { shortsInstructions } from './prompts.mjs';
-import { VERIFY_FILE } from './qa.mjs';
+import { VERIFY_FILE, scriptGrammarProblems } from './qa.mjs';
 
 export const LAB_FILE = 'lab.json';
 export const LAB_DIR = 'lab';
@@ -55,8 +55,10 @@ export const UNSUPPORTED = Object.freeze({
 // A request the tested model never received: the owner's setting, budget or account is in the way.
 const NOTHING_RAN = new Set(['video_ai_subscription_paused', 'video_ai_subject_not_chosen', 'video_ai_budget_exhausted', 'video_ai_provider_not_configured', 'video_tool_token_invalid']);
 // The automatic fixes in the order they are tried when the quality check fails.
-const QA_FIXES = ['facts', 'layout', 'metadata', 'narration'];
-const SCENE_FIELDS = ['headline', 'kicker', 'narration', 'body', 'big', 'note', 'asset'];
+// The quality check's items the writer can fix (grammar: a first card too long for a thumbnail,
+// a call to action; its picture half, the loop tail, is the build's and never fails on its own).
+const QA_FIXES = ['facts', 'layout', 'metadata', 'narration', 'grammar'];
+const SCENE_FIELDS = ['beat', 'headline', 'kicker', 'narration', 'body', 'big', 'note', 'asset'];
 const SCRIPT_FIELDS = ['titles', 'description', 'experiment_summary', 'limitations', 'hashtags', 'tags'];
 
 const iso = (date) => date.toISOString();
@@ -277,6 +279,9 @@ export function scriptProblems(doc, { evidenceText, htmlAssets = [] }) {
   (Array.isArray(doc.scenes) ? doc.scenes : []).forEach((scene, index) => {
     if (scene?.asset !== undefined && !htmlAssets.includes(scene.asset)) problems.push(`scene ${index}: asset may only be an HTML answer listed in evidence_files (${htmlAssets.join(', ') || 'none'})`);
   });
+  // The grammar the quality check holds the cut to (qa.mjs): the first card reads at thumbnail
+  // size, no call to action; refused here so the writer fixes it before anything is paid for.
+  problems.push(...scriptGrammarProblems(doc));
   return problems;
 }
 

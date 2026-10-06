@@ -3,7 +3,12 @@
 ``app.providers.usage_meter`` keys its calendar-month counters by a provider string, so the
 clip seconds, images, tracks and judge calls each get their own key and the same atomic
 "refuse a request that would pass the budget" reservation. Dollars are not metered there:
-they are the sum of ``usd_estimate`` over this month's jobs, priced from the catalog.
+they are the sum of ``usd_estimate`` over this month's jobs, priced from the catalog, plus
+the judge calls at ``JUDGE_USD_PER_CALL``.
+
+A judge call is one Gemini look at stored media; a locate call (locate.py, subject boxes for a
+picture) is the same look with another question, so it is booked on ``JUDGE_CALLS`` and priced
+the same, and the owner's judge budget bounds both.
 """
 
 from __future__ import annotations
@@ -61,6 +66,16 @@ async def reserve(redis: Redis, meter: str, units: int, budget: int) -> bool:
 
 async def release(redis: Redis, meter: str, units: int) -> None:
     await release_azure_speech_characters(redis, units, provider=meter)
+
+
+async def reserve_judge_call(redis: Redis, row: VideoAutomationSettings) -> bool:
+    """Book one Gemini look (a judge or a locate call) on this month's judge-call budget."""
+    return await reserve(redis, JUDGE_CALLS, 1, budget_of(row, JUDGE_CALLS))
+
+
+async def release_judge_call(redis: Redis) -> None:
+    """Give the look back: Gemini was never asked, or answered nothing usable."""
+    await release(redis, JUDGE_CALLS, 1)
 
 
 async def used(redis: Redis, meter: str) -> int:

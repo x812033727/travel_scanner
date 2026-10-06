@@ -154,9 +154,10 @@ export function chapterText(timeline, titles = {}) {
 }
 
 /**
- * Hash of everything that changes the audio: the voice, the spoken words, the pauses and the
- * dictionary entries those words use. The TTS stage stores it in timeline.json, and status
- * treats a timeline whose hash no longer matches video.json as stale.
+ * Hash of everything that changes the audio: the voice (its performance plan with it), the spoken
+ * words, the pauses, the cues and the dictionary entries those words use. The TTS stage stores
+ * it in timeline.json, and status treats a timeline whose hash no longer matches video.json as
+ * stale.
  */
 export function speechHash(doc, lexicon) {
   const hash = createHash("sha256");
@@ -174,6 +175,9 @@ export function speechHash(doc, lexicon) {
   for (const { scene, line, last } of eachLine(doc)) {
     const fields = [scene.id, line.id, spokenText(line), line.pause_after_ms ?? null, last];
     if (drama) fields.push(line.speaker ?? "narrator", line.emotion ?? null);
+    // A cue on a slides line changes its take (docs/videos/ILLUSTRATED.md §聲音表演); a line
+    // without one hashes as it always did, so no timeline from before the cues goes stale.
+    else if (line.emotion) fields.push(["emotion", line.emotion]);
     const hints = pronunciationHintsFor(doc, line);
     if (hints.length) fields.push(["pronunciation_hints", hints]);
     if (line.audio_ref !== undefined) fields.push(["audio_ref", line.audio_ref]);
