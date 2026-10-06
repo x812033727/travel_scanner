@@ -11,7 +11,9 @@
 // round ends; the same job failing twice in a row stops asking (a Short is blocked and the site
 // says why; a plan is recorded empty so it is not asked again at once; a report is saved saying it
 // could not be written, with the raw values; new topics wait half a day); a service that is down
-// does not count; a STOP file is read between units.
+// does not count; a STOP file is read between units. A planner job sent whose answer never came
+// back (client.mjs RUN_UNCERTAIN) may have run and been paid for: its slug, one day's plan or brief
+// or one week's report, is recorded under `lost` and that call is not asked again (`unanswered`).
 import { mkdirSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
@@ -21,7 +23,7 @@ import { CutShort } from "../shorts/cut.mjs";
 import { defaultTools, LAB_FILE, LabShort, labRefusal, numbersIn } from "../shorts/lab.mjs";
 import { shortsInstructions } from "../shorts/prompts.mjs";
 import { siteClient } from "../shorts/site.mjs";
-import { AutomationError, automationClient, OUTPUT_INVALID } from "./client.mjs";
+import { AutomationError, automationClient, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
 import { parseAnswer } from "./prompts.mjs";
 
 export const SHORTS_DIR = "_shorts";
@@ -34,6 +36,8 @@ const MAX_PLANNER_TRIES = 2;
 const MAX_JOB_FAILURES = 2;
 // New topics that failed twice wait as long as the server waits between two briefs.
 const BRIEF_HOLD_MS = 12 * 3600_000;
+// A lost planner answer is remembered this long: its slug names a day or a week long gone by then.
+const LOST_KEEP_MS = 14 * 86_400_000;
 const TOPIC_SLUG = /^[a-z][a-z0-9-]{1,78}[a-z0-9]$/;
 const SERIES = /^[a-z0-9][a-z0-9-]{0,39}$/;
 const PERIODS = { d1: "第 1 天", d3: "第 3 天", d7: "第 7 天", now: "最新" };
@@ -380,6 +384,34 @@ export class ShortsWorker {
     this.saveState(state);
   }
 
+  /**
+   * A planner job was sent and its answer never came back (client.mjs RUN_UNCERTAIN): the model
+   * may have run, and been paid for, on the server, which keeps no answer to fetch again. Its slug
+   * is kept under `lost` in the state, so the same call is not asked again on its own; the slug
+   * names one day's plan or brief or one week's report, so the next one is a new call.
+   */
+  unanswered(kind, variant, slug, error) {
+    this.lastAnswer = null;
+    const state = this.state();
+    const now = this.ctx.now();
+    const kept = Object.entries(state.lost ?? {}).filter(([, entry]) => now.getTime() - Date.parse(entry?.at) < LOST_KEEP_MS);
+    const entry = { kind, variant, at: now.toISOString(), why: error.why ?? error.message };
+    state.lost = { ...Object.fromEntries(kept), [slug]: entry };
+    this.saveState(state);
+    return entry;
+  }
+
+  /** The planner job under `slug` whose answer was lost, if it was: then it is not asked again. */
+  lostBefore(slug) {
+    return this.state().lost?.[slug] ?? null;
+  }
+
+  /** What the owner reads in the log about a lost planner answer, and what happens instead. */
+  lostLine(kind, slug, entry, before, instead) {
+    if (before) return `shorts: the ${kind} ${slug} is not asked again: its answer was lost at ${entry.at} (${entry.why}) and the model may have run; ${instead}`;
+    return `shorts: the ${kind} ${slug} may have run on the server without its answer reaching the worker (${entry.why}); it is not asked again; ${instead}`;
+  }
+
   /** Try a planner job twice within the unit, the second time told why the first could not be used. */
   async attempt(kind, variant, slug, payload, use) {
     let problem = null;
@@ -388,6 +420,7 @@ export class ShortsWorker {
       try {
         asked = await this.ask(variant, slug, problem ? { ...payload, previous_problem: problem } : payload);
       } catch (error) {
+        if (error instanceof AutomationError && error.code === RUN_UNCERTAIN) return { lost: this.unanswered(kind, variant, slug, error) };
         if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
         problem = error.message;
         continue;
@@ -416,7 +449,8 @@ export class ShortsWorker {
     const day = localDay(this.ctx.now(), job.timezone);
     const slug = `shorts-plan-${day}`;
     const payload = { ...job, today: day };
-    const result = await this.attempt("plan", "shorts-plan", slug, payload, async ({ value }) => {
+    const before = this.lostBefore(slug);
+    const result = before ? { lost: before } : await this.attempt("plan", "shorts-plan", slug, payload, async ({ value }) => {
       const { items, dropped, problem } = planItems(value, job);
       if (problem) return { problem };
       const sent = await this.send(() => this.api.shortsPlan(items));
@@ -425,6 +459,11 @@ export class ShortsWorker {
       return { line: `shorts: planned ${sent.out.planned.length} of ${job.open_slots.length} open slots until ${localTime(job.window_end, job.timezone)}${dropped.length ? ` (left out: ${dropped.join("; ")})` : ""}` };
     });
     if (result.line) return [result.line];
+    if (result.lost) {
+      // Recorded empty too, so the server names no plan for half a day and the other jobs go on.
+      await this.api.shortsPlan([]);
+      return [this.lostLine("plan", slug, result.lost, before, "an empty plan was recorded, so no plan is asked for half a day, and the next day's plan is a new call")];
+    }
     // An empty plan is recorded, so the server does not ask again for half a day.
     return this.failedJob("plan", result.problem, async () => {
       await this.api.shortsPlan([]);
@@ -443,7 +482,9 @@ export class ShortsWorker {
     const hold = Date.parse(state.holds?.brief ?? "");
     if (Number.isFinite(hold) && hold > this.ctx.now().getTime()) return [];
     const day = localDay(this.ctx.now(), this.shorts?.timezone ?? "Asia/Taipei");
-    const result = await this.attempt("brief", "shorts-brief", `shorts-brief-${day}`, { ...job, today: day }, async ({ value }) => {
+    const slug = `shorts-brief-${day}`;
+    const before = this.lostBefore(slug);
+    const result = before ? { lost: before } : await this.attempt("brief", "shorts-brief", slug, { ...job, today: day }, async ({ value }) => {
       const { topics, dropped } = briefTopics(value, job);
       if (!topics.length) return { problem: `no topic the server can take: ${dropped.join("; ") || "the list is empty"}` };
       const sent = await this.send(() => this.api.shortsTopics(topics));
@@ -451,12 +492,21 @@ export class ShortsWorker {
       return { line: `shorts: ${sent.out.created} new topics, ${sent.out.updated} ideas completed${dropped.length ? ` (left out: ${dropped.join("; ")})` : ""}` };
     });
     if (result.line) return [result.line];
+    // The server keeps no empty brief (it takes one topic at least): the wait is the worker's own.
+    if (result.lost) {
+      this.holdBrief();
+      return [this.lostLine("brief", slug, result.lost, before, "new topics wait half a day, and the next day's brief is a new call")];
+    }
     return this.failedJob("brief", result.problem, async () => {
-      const now = this.state();
-      now.holds = { ...(now.holds ?? {}), brief: new Date(this.ctx.now().getTime() + BRIEF_HOLD_MS).toISOString() };
-      this.saveState(now);
+      this.holdBrief();
       return "new topics wait half a day";
     });
+  }
+
+  holdBrief() {
+    const state = this.state();
+    state.holds = { ...(state.holds ?? {}), brief: new Date(this.ctx.now().getTime() + BRIEF_HOLD_MS).toISOString() };
+    this.saveState(state);
   }
 
   async report(job) {
@@ -472,7 +522,9 @@ export class ShortsWorker {
       const note = slot.topic_slug && typeof notes[slot.topic_slug] === "string" ? notes[slot.topic_slug].trim().slice(0, 500) : "";
       return { starts_at: slot.starts_at, ...(slot.topic_slug ? { topic_slug: slot.topic_slug } : {}), ...(slot.line ? { line: slot.line } : {}), ...(note ? { note } : {}) };
     });
-    const result = await this.attempt("report", "shorts-report", `shorts-report-${job.week_start}`, { ...job, raw_values: table }, async ({ value, answer }) => {
+    const slug = `shorts-report-${job.week_start}`;
+    const before = this.lostBefore(slug);
+    const result = before ? { lost: before } : await this.attempt("report", "shorts-report", slug, { ...job, raw_values: table }, async ({ value, answer }) => {
       const problems = reportProblems(value?.body_md, table);
       if (problems.length) return { problem: problems.join("; ") };
       const sent = await this.send(() => this.api.shortsReport({ week_start: job.week_start, body_md: `${value.body_md.trim()}\n\n${table}`, rows: rows.slice(0, 400), plan: plan(value.notes ?? {}), provider: answer.provider ?? null, model: answer.model ?? null }));
@@ -481,8 +533,15 @@ export class ShortsWorker {
     });
     if (result.line) return [result.line];
     // The week still gets a report: what went wrong, and the raw values, so later jobs are not held up.
+    const unwritten = (why) => this.api.shortsReport({ week_start: job.week_start, body_md: `## 這一週的報告沒有寫成\n\n${why}下面是伺服器存的原值，照抄；判斷請站主自己看。\n\n${table}`, rows: rows.slice(0, 400), plan: plan() });
+    if (result.lost) {
+      // Saved whenever the server names the week again (the round that lost the answer may not have
+      // saved it), never by asking the planner a second time.
+      await unwritten(`企劃模型的回答在回傳途中遺失（${String(result.lost.why).slice(0, 1500)}）：它可能已經在伺服器上跑完並計費，所以不自動再問一次。`);
+      return [this.lostLine("report", slug, result.lost, before, "a report saying so, with the raw values, is on the site instead")];
+    }
     return this.failedJob("report", result.problem, async (detail) => {
-      await this.api.shortsReport({ week_start: job.week_start, body_md: `## 這一週的報告沒有寫成\n\n企劃模型連續兩次交不出能用的報告（${detail.slice(0, 1500)}）。下面是伺服器存的原值，照抄；判斷請站主自己看。\n\n${table}`, rows: rows.slice(0, 400), plan: plan() });
+      await unwritten(`企劃模型連續兩次交不出能用的報告（${detail.slice(0, 1500)}）。`);
       return "a report saying so, with the raw values, is on the site instead";
     });
   }
