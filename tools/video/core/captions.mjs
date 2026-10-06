@@ -3,10 +3,15 @@
 // Captions are the only thing that subdivides a line. A long line is cut into the fewest cues
 // that fit the locale's lines, preferably where a sentence ends, else where a clause ends, and
 // the line's speech time is shared among them in proportion to how long each piece takes to say.
+// When the timeline carries when each character of the line was spoken (`timing`, written by
+// tts from the server's measured times, tts/synthesis.mjs), a cue starts when its first
+// character is spoken instead, for the text those times were measured on.
 // A number is never parted from its unit, by a cue or by a line break. Each locale cuts its own
 // translation inside the same line window, so locales never need the same number of cues:
 // English word order makes a one-to-one split with Chinese impossible to keep natural; the
-// translator is shown the narration's cue boundaries instead (cuePieces).
+// translator is shown the narration's cue boundaries instead (cuePieces). A translation's cues
+// keep the shares by weight: buildCues is given that locale's text and the timeline only, and
+// neither holds the narration's text the measured boundaries are cut on.
 import { frameToMs, samplesToMs, spokenUnits } from "./timeline.mjs";
 
 // Starting values from common subtitle guidelines (characters per line, lines per cue, reading
@@ -235,19 +240,55 @@ function weight(text) {
   return Math.max(1, spokenUnits(text)) + (text.match(/[，。！？；：、,.!?;:]/gu)?.length ?? 0) * 0.5;
 }
 
+// What is heard: a letter or a number. Spaces are never timed, and punctuation, which the server
+// times only by filling the gap between its neighbours (apps/api/app/video_speech/align.py), is
+// never where a cue starts.
+const SPOKEN = /[\p{L}\p{N}]/u;
+
 /**
- * Share [startMs, endMs] among the pieces by spoken weight. A piece that would be shorter than
- * MIN_CUE_MS is merged with a neighbour, when `rules` are given only if the merged cue still fits;
- * a short piece with no neighbour it fits with stays short rather than wrapping onto a third line.
+ * When each piece of a line is first heard, from the line's measured characters: `chars` are the
+ * written units the server timed ({ text, start_ms, end_ms }, a CJK character, a Latin word or
+ * number, a term read through its spoken form, a punctuation mark), relative to the line's own
+ * clip, which starts at `startMs`. A piece starts where the unit holding its first spoken
+ * character starts. Null, so the caller shares the time by weight, when the pieces and the units
+ * do not line up: their letters and numbers differ in any way or order (a `say` that changes the
+ * words, a translation), a piece starts inside a unit (in the middle of a term read as one), or a
+ * start runs backwards or outside [startMs, endMs).
  */
-export function timePieces(pieces, startMs, endMs, rules = null, canFit = fits) {
-  let entries = pieces.map((text) => ({ text, weight: weight(text) }));
-  const span = Math.max(0, endMs - startMs);
-  const duration = (entry, total) => (span * entry.weight) / total;
+function measuredStarts(pieces, startMs, endMs, chars) {
+  const heard = [];
+  chars.forEach((unit, index) => {
+    let first = true;
+    for (const char of String(unit?.text ?? "").normalize("NFC")) {
+      if (!SPOKEN.test(char)) continue;
+      heard.push({ char, unit: index, first });
+      first = false;
+    }
+  });
+  const starts = [];
+  let at = 0;
+  for (const piece of pieces) {
+    const spoken = [...piece.normalize("NFC")].filter((char) => SPOKEN.test(char));
+    const head = heard[at];
+    if (!spoken.length || !head?.first) return null;
+    for (const char of spoken) if (heard[at++]?.char !== char) return null;
+    const start = startMs + Number(chars[head.unit].start_ms);
+    if (!Number.isFinite(start) || start < startMs || start >= endMs || (starts.length && start <= starts.at(-1))) return null;
+    starts.push(start);
+  }
+  return at === heard.length ? starts : null;
+}
+
+/**
+ * Merge each piece that would last less than MIN_CUE_MS with a neighbour, the next one first;
+ * when `rules` are given only if the merged cue still fits, so a short piece with no neighbour it
+ * fits with stays short rather than wrapping onto a third line. `duration(entries, index)` is how
+ * long a piece would last, `combine(first, second, text)` the entry two pieces merge into.
+ */
+function mergeShort(entries, duration, combine, rules, canFit) {
   const merged = (first, second) => (rules ? joinPieces(first.text, second.text, rules) : `${first.text}${second.text}`);
   for (;;) {
-    const total = entries.reduce((sum, entry) => sum + entry.weight, 0);
-    const short = entries.findIndex((entry) => !entry.settled && duration(entry, total) < MIN_CUE_MS);
+    const short = entries.findIndex((entry, index) => !entry.settled && duration(entries, index) < MIN_CUE_MS);
     if (short < 0 || entries.length === 1) break;
     const neighbours = [short + 1, short - 1].filter((index) => index >= 0 && index < entries.length);
     const other = neighbours.find((index) => {
@@ -259,12 +300,47 @@ export function timePieces(pieces, startMs, endMs, rules = null, canFit = fits) 
       continue;
     }
     const [first, second] = [Math.min(short, other), Math.max(short, other)];
-    entries.splice(first, 2, { text: merged(entries[first], entries[second]), weight: entries[first].weight + entries[second].weight });
+    entries.splice(first, 2, combine(entries[first], entries[second], merged(entries[first], entries[second])));
   }
-  const total = entries.reduce((sum, entry) => sum + entry.weight, 0);
+  return entries;
+}
+
+/**
+ * Time the pieces of one line inside [startMs, endMs], the line's speech window. With `chars`,
+ * the line's measured characters relative to its clip (see measuredStarts), each piece starts
+ * when its first spoken character does and runs to the next piece's start, the last to endMs;
+ * a piece merged for being short starts at the first character of the first of the two.
+ * Otherwise, or when the characters do not line up with the pieces, the window is shared by
+ * spoken weight, from startMs. Either way a piece that would be shorter than MIN_CUE_MS is merged
+ * with a neighbour (mergeShort).
+ */
+export function timePieces(pieces, startMs, endMs, rules = null, canFit = fits, chars = null) {
+  const starts = Array.isArray(chars) ? measuredStarts(pieces, startMs, endMs, chars) : null;
+  if (starts) {
+    const until = (entries, index) => (index + 1 < entries.length ? entries[index + 1].start : endMs);
+    const entries = mergeShort(
+      pieces.map((text, index) => ({ text, start: starts[index] })),
+      (all, index) => until(all, index) - all[index].start,
+      (first, _second, text) => ({ text, start: first.start }),
+      rules,
+      canFit,
+    );
+    return entries.map((entry, index) => ({ start_ms: Math.round(entry.start), end_ms: Math.round(until(entries, index)), text: entry.text }));
+  }
+  const span = Math.max(0, endMs - startMs);
+  const total = (entries) => entries.reduce((sum, entry) => sum + entry.weight, 0);
+  const duration = (entry, sum) => (span * entry.weight) / sum;
+  const entries = mergeShort(
+    pieces.map((text) => ({ text, weight: weight(text) })),
+    (all, index) => duration(all[index], total(all)),
+    (first, second, text) => ({ text, weight: first.weight + second.weight }),
+    rules,
+    canFit,
+  );
+  const sum = total(entries);
   let cursor = startMs;
   return entries.map((entry, index) => {
-    const end = index === entries.length - 1 ? endMs : cursor + duration(entry, total);
+    const end = index === entries.length - 1 ? endMs : cursor + duration(entry, sum);
     const cue = { start_ms: Math.round(cursor), end_ms: Math.round(end), text: entry.text };
     cursor = end;
     return cue;
@@ -273,7 +349,10 @@ export function timePieces(pieces, startMs, endMs, rules = null, canFit = fits) 
 
 /**
  * Cues for one locale. `texts` maps line id to that locale's text (the narration itself for
- * zh-TW); a line missing from it is skipped and reported.
+ * zh-TW); a line missing from it is skipped and reported. A line whose timeline entry carries
+ * `timing.chars` (its measured characters, relative to its clip) has its cues start when their
+ * first characters are spoken, when the text is the one that was timed (timePieces); any other
+ * text, a translation among them, shares the line's time by weight.
  */
 export function buildCues(timeline, texts, locale) {
   const rules = LOCALE_RULES[locale];
@@ -290,7 +369,8 @@ export function buildCues(timeline, texts, locale) {
     const start = frameToMs(line.start_frame);
     const speechEnd = start + samplesToMs(line.audio_samples);
     const end = Math.min(frameToMs(line.end_frame), speechEnd + LINGER_MS);
-    for (const cue of timePieces(splitText(text, rules, canFit), start, end, rules, canFit)) {
+    const chars = Array.isArray(line.timing?.chars) ? line.timing.chars : null;
+    for (const cue of timePieces(splitText(text, rules, canFit), start, end, rules, canFit, chars)) {
       cues.push({ ...cue, line: line.id, text: wrapCue(displayText(cue.text, rules), rules) });
     }
   }
