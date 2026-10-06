@@ -1,51 +1,24 @@
 {
-  "schema_version": 1,
-  "slug": "ou-de-jianghu-e007",
-  "format": "drama",
+  "slug": "ou-de-jianghu",
+  "episode": 7,
+  "chapter": 1,
+  "kind": "series",
+  "genre": "custom",
+  "lead": "ensemble",
+  "planned_episodes": 24,
+  "open_ended": true,
+  "closed_ending": false,
+  "title": "西嶺來客",
+  "logline": "西嶺兩位隱士同日下山：滄瀾客為救寂聞來盟，岳嵐客化名赤羽帶著「能救沈歸鶴」的藥而來；無名劍客攔下毒藥，卻沒攔住赤羽換掉寂聞的藥。",
   "category": "anime",
-  "target_minutes": [
-    22,
-    22
-  ],
+  "style_preset": "anime-2d",
+  "target_minutes": 22,
   "production_policy": "long-anime-v1",
   "runtime_spec": {
     "body_target_seconds": 1320,
     "op_ed_budget_seconds": 180,
     "broadcast_slot_seconds": 1800,
     "slot_reserve_seconds": 300
-  },
-  "voice": {
-    "provider": "gemini",
-    "name": "Rasalgethi",
-    "style": "標準國語，咬字清楚，台北人平常說話的語調；說書人，男聲，低而穩，像在茶館講一段老故事；句尾收住不拖；念四句七言詩號時一句一頓、字字分明。"
-  },
-  "youtube": {
-    "category_id": 1,
-    "made_for_kids": false,
-    "default_language": "zh-TW",
-    "title": "偶的江湖 第一季 第7集〈西嶺來客〉｜原創武俠動畫",
-    "description": "霜夫人入盟的第三十五天，西嶺雪線上兩道腳印分向兩邊：披毛皮斗篷的滄瀾客往東走向三宗盟，紅衣的赤羽往南走向海港。滄瀾客是怒目佛寂聞年少時的至交，他說封功可以解——在梵林後山的寒潭，以至交的血引潭水，引血的人從此折壽；寂聞以封功之身一掌推開他。赤羽帶來一顆據說能壓住白鶴先生舊傷的火脊丹，紗女與包三錢要不要給昏病的本體服下。無名劍客在客院截下赤羽的藥童，劍尖挑開丹藥，裡面是能化散元神的陰毒；他追到外港，一劍劃開赤羽的紅衣，衣裡繡著赤淵宮的雙淵紋。當天深夜，梵林寺禪房外有人把一只空瓶丟進井裡；禪房內，啞劍殷無聲端起寂聞每日的湯藥，藥面浮著一層不該有的紅。\n\n《偶的江湖》是原創武俠動畫，取材經典布袋戲「魔女入盟、詛咒之箭」的故事結構，人名、門派、世界、台詞全部原創。國語配音。",
-    "tags": [
-      "偶的江湖",
-      "原創武俠動畫",
-      "武俠動畫",
-      "布袋戲風格",
-      "國漫",
-      "西嶺來客",
-      "滄瀾客",
-      "赤羽",
-      "無名劍客",
-      "寂聞"
-    ],
-    "video_id": null
-  },
-  "sources": [],
-  "look": {
-    "preset": "anime-2d",
-    "style": "Chinese fantasy wuxia 2D anime illustration, adult heroic proportions, expressive eyes, precise clean linework, sculpted cel shading, tall ornate crowns, very long flowing hair, layered embroidered silk robes with readable metal ornaments and consistent fabric materials, painterly environments with clear foreground, midground and background depth, readable silhouettes, 16:9",
-    "negative": "text, letters, watermark, logo, photorealistic skin, plastic skin, 3D render, puppet strings, wooden puppet face, chibi proportions, extra fingers, extra limbs, duplicate weapons, deformed hands, distorted face, blurry subject",
-    "motion": "One motivated visible action with a clear start and finish per continuous shot, stable faces, crowns, costume details and weapon geometry, hair and sleeves respond softly, consistent screen direction, no morphing, no cuts",
-    "candidates": 3
   },
   "characters": [
     {
@@ -221,24 +194,140 @@
       ]
     }
   ],
-  "music": {
-    "prompt": "original instrumental Chinese wuxia score, guqin and xiao over low strings and restrained war drums, tense and melancholic, no vocals",
-    "gain_db": -20,
-    "duck_db": -10
+  "beats": {
+    "number": 7,
+    "title": "西嶺來客",
+    "logline": "西嶺兩位隱士同日下山：滄瀾客為救寂聞來盟，岳嵐客化名赤羽帶著「能救沈歸鶴」的藥而來；無名劍客攔下毒藥，卻沒攔住赤羽換掉寂聞的藥。",
+    "hook": "西嶺雪線上兩道腳印分向兩邊：一個披毛皮斗篷的老者往東走向三宗盟，一個紅衣人往南走向海港，兩人在嶺口擦肩，都沒有回頭。",
+    "conflict": "滄瀾客是寂聞的至交，他說封功可以解，但要在寒潭以至交的血引，引血者折壽；寂聞不肯讓他折壽。赤羽拿著一瓶據稱能壓沈歸鶴舊傷的火脊丹，紗女與包三錢要不要給昏病的本體服下——不服，本體撐不過入秋；服了，藥是誰的？",
+    "turn": "無名劍客在客院截下赤羽的藥童，劍尖挑開丹藥，裡面是能化散元神的陰毒；他追赤羽到海港，赤羽脫下紅衣，衣內繡著赤淵宮的雙淵紋——他是赤淵宮大宮主岳嵐客，無名劍客一劍廢了他的左臂，卻被三宗守衛當成襲擊貴客而攔下。",
+    "cliffhanger": {
+      "type": "danger",
+      "text": "梵林寺禪房外，赤羽的藥童把一只空瓶丟進井裡；禪房內，殷無聲端起寂聞每日的湯藥，藥面浮著一層不該有的紅。"
+    },
+    "tension": [
+      3,
+      4,
+      4,
+      3,
+      4
+    ],
+    "setups": [
+      "m06"
+    ],
+    "payoffs": [],
+    "general_payoffs": [
+      "無名劍客攔下赤羽毒害沈歸鶴本體的丹藥，並查出赤羽真身是赤淵宮大宮主岳嵐客；滄瀾客抵盟，說出封功可解的條件。"
+    ],
+    "characters": [
+      "shen-guihe",
+      "ji-wen",
+      "yin-wusheng",
+      "bao-sanqian",
+      "ji-wushuang",
+      "luo-qingyan",
+      "canglan-ke",
+      "yuelan-ke",
+      "sha-nu",
+      "wuming-jianke",
+      "yan-hui"
+    ],
+    "locations": [
+      "西嶺雪線",
+      "三宗盟盟府客院",
+      "盟府外港",
+      "梵林寺禪房"
+    ],
+    "theme": "來救你的人和來害你的人，走的是同一條山路",
+    "high_tension": [
+      {
+        "beat": "first_half",
+        "event": "滄瀾客在禪房對寂聞說出寒潭引血之法，自己已帶來引血的刀；寂聞以封功之身一掌推開他，說「我不用你的壽來買我的功」，兩人在禪房內以言語相逼，殷無聲持劍橫在門口不讓任何人進。",
+        "stakes": "滄瀾客引血，折壽不可逆；寂聞不解封，三宗在姬無霜面前就永遠少一個先天。",
+        "consequence": "寂聞拒絕，滄瀾客留在梵林寺不走；三宗高層得知寂聞「可解封」，開始催促。"
+      },
+      {
+        "beat": "second_half",
+        "event": "盟府外港，無名劍客追上要登船的赤羽，一劍劃開紅衣露出赤淵宮雙淵紋，再一劍廢其左臂；燕迴率守衛趕到，認得赤羽是三宗的貴客，反把無名劍客圍住，赤羽趁亂登船而去。",
+        "stakes": "無名劍客殺赤羽，就是沈歸鶴的化身當眾殺三宗貴客；放他走，赤淵宮知道三宗內有人認出了他們。",
+        "consequence": "岳嵐客左臂被廢逃回赤淵宮，三宗仍視赤羽為被襲的貴客；無名劍客被盟內記了一筆「無故傷客」，沈歸鶴本體因化身受創而咳血。"
+      }
+    ],
+    "consequence": "赤淵宮第一次被三宗內的人認出，但三宗不信；滄瀾客留在梵林寺等寂聞改口；赤羽留下的藥童換了寂聞的湯藥，殷無聲發現時藥已端在手上。紗女代昏病的本體拒了一切外來的藥，改以玄門的養氣法暫壓舊傷。",
+    "state": {
+      "time": "第35日至第41日",
+      "knowledge": "觀眾、無名劍客、紗女知道赤羽是赤淵宮大宮主岳嵐客且藥有毒；三宗高層視赤羽為貴客；寂聞與滄瀾客知道封功可解但需折壽；殷無聲懷疑湯藥被換。",
+      "character_state": "岳嵐客左臂被廢逃回赤淵宮；滄瀾客駐梵林寺；寂聞仍封功；沈歸鶴本體因無名劍客受創而加重；洛青衍在客院旁觀整場，對無名劍客生出敬意。",
+      "evidence": "挑開的毒丹、赤羽紅衣內的雙淵紋碎片、井裡的空瓶、浮紅的湯藥。",
+      "carry_forward": "寂聞的藥被換了什麼；滄瀾客的血引之法；赤淵宮為什麼要沈歸鶴死。"
+    },
+    "closed_ending": false
   },
-  "subtitles": {
-    "burn_in": false,
-    "style": "drama"
-  },
+  "recaps": [],
+  "earlier": [
+    {
+      "number": 1,
+      "title": "幽皇之女",
+      "logline": "幽皇死後一年，他的女兒帶著幽都老弱跪在三宗盟門前求收容；沈歸鶴接下她，當夜玄門長老死在房中，無傷無血。"
+    },
+    {
+      "number": 2,
+      "title": "鯨背嶼",
+      "logline": "鯨背嶼上的孩童一夜之間全部睡著不醒，包三錢潛入島底發現收魂陣；竹虛道人為沈歸鶴的舊傷西行，沈歸鶴咳血瞞住寂聞。"
+    },
+    {
+      "number": 3,
+      "title": "三十六魂",
+      "logline": "柳不活在荒原找到自罰的鑄箭匠聶孤鐵，問出無歸箭要三股三宗精元才能發射；姬無霜在盟內請命剿鬼燈君，柳不活看見她手背的三宗印只差一道。"
+    },
+    {
+      "number": 4,
+      "title": "裂山秘錄",
+      "logline": "盟內傳單指竹虛道人盜走玄門鎮派的《裂山秘錄》叛逃，三宗發九洲通緝，沈歸鶴被迫同意；竹虛在齊雲殿被圍，交出的秘錄翻開竟是無字。"
+    },
+    {
+      "number": 5,
+      "title": "封功",
+      "logline": "三宗以為玄門長老死於第一支箭，所以把這一箭叫第二支；箭光劃過夜空，寂聞中箭，當場自封畢生功力保住元神；放箭的人穿著鬼燈君的黑袍，姬無霜借機接掌鯨背嶼防務，三宗全信她。"
+    },
+    {
+      "number": 6,
+      "title": "紗女",
+      "logline": "沈歸鶴倒下，床前出現一名蒙紗女子與一名無名劍客替他行走江湖；扶瀾國使者洛青衍抵盟，姬無霜看見他頸後的胎記。"
+    }
+  ],
+  "next_logline": "鯨背嶼海面浮起千盞燈，滄瀾客硬闖島底破陣，昏睡的孩童甦醒，鬼燈君現身；紗女揭露收魂陣是鬼燈君嫁禍姬無霜的局，姬無霜當場斬鬼燈君奪回幽都。",
+  "mysteries": [
+    {
+      "id": "m06",
+      "question": "寂聞封功後怎麼回來？",
+      "answer": "第 7 集赤羽的藥童在他的湯藥裡換進能讓封功者永不能解封的藥，殷無聲發現藥面浮紅，從那夜起每一碗都倒在井邊，寂聞一口沒喝；第 11 集滄瀾客在寒潭邊認出井邊藥渣是什麼，以自己的血引寒潭，寂聞沉潭重生，滄瀾客折壽。",
+      "introduced_in": 5,
+      "resolved_in": 11
+    }
+  ],
   "series": {
-    "slug": "ou-de-jianghu",
-    "episode": 7,
-    "chapter": 1,
     "kind": "series",
+    "category": "anime",
+    "production_policy": "long-anime-v1",
+    "runtime_spec": {
+      "body_target_seconds": 1320,
+      "op_ed_budget_seconds": 180,
+      "broadcast_slot_seconds": 1800,
+      "slot_reserve_seconds": 300
+    },
+    "target_minutes": 22,
+    "planned_episodes": 24,
+    "closed_ending": false,
+    "title": "偶的江湖",
+    "premise": "三宗盟一年前聯手誅殺幽皇，卻把三十六條人命鑄成的無歸箭丟了；箭回來的那天，幽皇之女跪在三宗門前求收容。",
+    "style_preset": "anime-2d",
+    "open_ended": true,
     "genre": "custom",
     "lead": "ensemble",
-    "planned_episodes": 24,
-    "open_ended": true,
-    "closed_ending": false
-  }
+    "visual_tier": "clips",
+    "compilation": false
+  },
+  "visual_tier": "clips",
+  "compilation": false
 }

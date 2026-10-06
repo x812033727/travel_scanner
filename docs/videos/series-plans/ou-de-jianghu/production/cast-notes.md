@@ -1,6 +1,6 @@
-# 《偶的江湖》第 1–7 集共用角色表說明
+# 《偶的江湖》第 1–8 集共用角色表說明
 
-`cast.json` 是第 1–7 集角色物件的唯一來源。每一集的 `video.json` 只放這一集會入鏡的角色，但每個角色物件都要從 `cast.json` 整個照抄（`id`、`name`、`appearance`、`voice`、`shot_looks` 全部逐字，不刪 look、不改順序），設定圖才能共用。旁白聲音照抄 `narrator_voice`（與第 1 集表頭 `voice` 相同）。
+`cast.json` 是第 1–8 集角色物件的唯一來源。每一集的 `video.json` 只放這一集會入鏡的角色，但每個角色物件都要從 `cast.json` 整個照抄（`id`、`name`、`appearance`、`voice`、`shot_looks` 全部逐字，不刪 look、不改順序），設定圖才能共用。旁白聲音照抄 `narrator_voice`（與第 1 集表頭 `voice` 相同）。
 
 逐鏡選 look 的寫法是 `scene.data.character_looks: {"<角色 id>": "<look id>"}`。被選的角色必須在同一鏡的 `characters` 裡，而一鏡最多 3 個角色。沒有選 look 的鏡頭一律用基本外觀。所以只拍局部的插鏡（手、胸口、髮尾）不列角色，傷、印、道具都要直接寫進 prompt。
 
@@ -29,34 +29,45 @@
 - `zhuxu` **新增第二個 look `zhuxu-disarmed`**（基本外觀與 `zhuxu-returned` 一字未改）：外觀照抄 `zhuxu-returned`，只把「a plain straight sword in a dark-green scabbard at his left hip」換成「nothing at his left hip but the dark-green sash」。理由：第 4 集 a05-s016 他把劍連鞘丟在燕迴腳前（第 4 集分場表第七節 a05 第 8 點），`zhuxu-returned` 寫死了左腰的劍，prompt 說劍不在了、設定圖說劍在腰上，跪交秘錄到被押下那二十來鏡腰間會長回一把劍。刻意不寫「no sword」「an empty sword hanger」這類否定句或帶 sword 字眼的句子：生圖模型常反過來把劍畫出來。用在 a05-s017 起凡是列了 `zhuxu` 的鏡頭（21 鏡）；a05-s016 本身首格劍還在腰上，仍用 `zhuxu-returned`。已跑 `node header.mjs --ep 4` 與 `merge.mjs --ep 4`。
 - 第 2 集用不到這個 look，但 `ep2/header.json` 與成品 `docs/videos/ou-de-jianghu-e002/video.json`、`series.json` 裡的 `zhuxu` 因此少了一個 `shot_looks` 元素。要讓第 2 集再跟 `cast.json` 逐字相同，照第 6 集的做法對第 2 集跑 `node header.mjs --ep 2` 與 `node merge.mjs --ep 2`（ids.json 會保住 line id），再跑 `cli.mjs script`；由主控決定什麼時候做，本次沒有動第 2 集。
 
-## 角色總表（18 人）
+## 第 8 集的改動（2026-10-06）
 
-| id | 名字 | 聲音 | 第 2–5 集 | 第 6 集 | 第 7 集 |
-| --- | --- | --- | --- | --- | --- |
-| bao-sanqian | 包三錢 | Puck | 2、3、4、5 | 6 | 7 |
-| ji-wen | 寂聞「怒目佛」 | Alnilam | 2、3、4、5 | 6（`jiwen-sealed`） | 7（`jiwen-sealed`） |
-| ji-wushuang | 姬無霜「霜夫人」 | Gacrux | 2、3、4、5 | 6 | 7（企劃包列了她，地點卻沒有鯨背嶼；主編定，可省） |
-| luo-qingyan | 洛青衍 | Achird | 不出場（第 6 集抵盟） | 6（抵盟，第一次正式出場） | 7（客院旁觀） |
-| nie-gutie | 聶孤鐵「雕匠」 | Algenib | 3 | 不出場 | 不出場 |
-| shen-guihe | 沈歸鶴「白鶴先生」 | Iapetus | 2、3、4、5 | 6（分魂前基本外觀；之後 `shen-bedridden`，沒有台詞） | 7（`shen-bedridden`，沒有台詞） |
-| xuanmen-elder | 玄門長老 | Schedar | 已死；只在回憶鏡用基本外觀 | 不出場 | 不出場 |
-| yan-hui | 燕迴「赤纓」 | Fenrir | 2、3、4、5 | 6 | 7 |
-| yin-wusheng | 殷無聲「啞劍」 | Sadaltager | 2、3（可省）、4、5 | 6（不說話，`yin-cut-hair`） | 7（不說話，`yin-cut-hair`） |
-| zhuxu（新） | 竹虛道人 | Umbriel | 2、4 | 不出場（押在玄門） | 不出場（押在玄門） |
-| liu-buhuo（新） | 柳不活「求死書生」 | Enceladus | 3、4、5 | 6（`liu-defected`） | 不出場（在島上；企劃包第 7 集沒有他） |
-| shuyuan-elder（新） | 書院長老 | Orus | 3、4、5 | 6 | 7 |
-| xuanmen-steward（新） | 玄門執事長老 | Charon | 3、4、5 | 6 | 7 |
-| alliance-guard（新） | 客院盟兵 | Sadachbia | 2（不說話）、3（可省，不說話）、5 | 不出場（客院門口的盟兵只寫 prompt） | 不出場（外港的守衛只寫 prompt） |
-| sha-nu（第 6 集新） | 紗女 | Iapetus（沈歸鶴的聲音） | 不出場 | 6 起 | 7 |
-| wuming-jianke（第 6 集新） | 無名劍客 | Iapetus（沈歸鶴的聲音） | 不出場 | 6 起（第 10 集滅） | 7 |
-| canglan-ke（第 7 集新） | 滄瀾客 | Zubenelgenubi | 不出場 | 不出場 | 7 起（第一次正式出場，詩號） |
-| yuelan-ke（第 7 集新） | 岳嵐客「赤羽」 | Algieba | 不出場 | 不出場 | 7（化名赤羽；外港 `yuelan-crest`→`yuelan-crippled`；第 17 集再現） |
+- 新增 `guideng-jun`（鬼燈君）：幽都三派之一的首領，第 8 集現身、說話、當場被姬無霜斬殺，只活這一集。聲音用 **Azure 的 `zh-TW-YunJheNeural`，`rate: "-8%"`**——全劇第一個不走 Gemini 的角色聲音，理由見下方〈第 8 集的新聲音：鬼燈君為什麼用 Azure〉。Azure 聲音不能帶 `style`（`tools/video/core/schema.mjs` 的 `validateVoice`：「style and model are for Gemini voices only」），所以他是唯一一個沒有「標準國語，咬字清楚，台北人平常說話的語調；……」那段 style 的角色。
+- 外觀照 setting 改寫成第 1 集的寫法（「Original 2D anime … in ornate theatrical wuxia costume」，不寫 puppet-theatre），只寫第 8 集登島時的樣子。識別物件寫死：高高的七角黑冠（a tall seven-pointed black crown）、腰間一串七枚小銅鈴（a chain of seven small bronze bells）、灰白的臉、深陷的紫眼、合不太攏的薄唇、垂肩的灰紫長髮、下襬剪成爪尖的長袖。袍的繡紋用第 5 集山脊黑袍人那一句「embroidered with dark-violet seven-star and skull-lantern motifs」：第 5 集姬無霜在盟堂說「那件鬼燈袍，是他自己的」，觀眾要一眼認出是同一款袍。但他本人**不戴兜帽、不戴面具**（「青面具，是鬼燈君貼身死士戴的」，第 5 集 a03-s021）。setting 的「Appears first as a silhouette on the sea of lanterns」不寫進外觀，剪影只寫 prompt（〈連戲提醒〉第 30 條）。setting 的「陰功」寫成出手時袖尖聚起的一點青綠鬼光（照寂聞「when he gathers force a golden aura rises」的寫法）；青綠是收魂陣的顏色（visual_style），陣是他的，顏色也就是他的。**不建斬首後的 look**（第 31 條）。
+- `canglan-ke` **新增 look `canglan-spent`**（基本外觀與 voice 一字未改；他原本沒有 `shot_looks`，這次新建陣列）：一掌碎陣、真氣大耗之後的樣子——布冠撞歪、長髮糾結、眼皮沉、風霜色的臉褪成灰白冒汗、袍子胸前撕開、兩臂袖口破爛、肩上與袍襬落滿石窟的灰、毛皮斗篷撕裂滑到左肩下、素劍仍在左腰。理由：企劃包 state「滄瀾客真氣大耗」，他出窟後要在灘頭把傳單紙交給紗女，整個後半都在場；基本外觀寫的是「Stands planted like a man on a ridge in the wind」，不換 look 的話，後半每一鏡他都站得像沒事。刻意不寫血（布袋戲的寫意；嘴角若要一線血，只寫插鏡 prompt）。
+- 其他十七人與已有的 look 一字未改。用 node 核對過：第 1–6 集成品 `docs/videos/ou-de-jianghu-e00N/video.json`、`series.json` 與 `ep1–6/header.json` 的角色物件全部與 `cast.json` 逐字相同。第 7 集成品還沒合併（`docs/videos/ou-de-jianghu-e007/` 不存在）；`ep7/header.json` 唯一的差別是 `canglan-ke` 還沒有 `canglan-spent`，舊欄位全同。**第 7 集合併前要先跑一次 `node header.mjs --ep 7`**（還沒畫設定圖、還沒合併，不會作廢任何東西），否則第 7、8 集的 `canglan-ke` 會不一樣；由主控決定什麼時候跑，本次沒有動 `ep7/`。
+- `ep8/meta.json`、`ep8/check-act.mjs` 照第 7 集的形狀建好，`node header.mjs --ep 8` 產出十四個角色的表頭；縮圖只填了 `headline`（「千燈收魂」），`shot` 由主控在幕寫完後填。
+
+## 角色總表（19 人）
+
+| id | 名字 | 聲音 | 第 2–5 集 | 第 6 集 | 第 7 集 | 第 8 集 |
+| --- | --- | --- | --- | --- | --- | --- |
+| bao-sanqian | 包三錢 | Puck | 2、3、4、5 | 6 | 7 | 8（守石窟外） |
+| ji-wen | 寂聞「怒目佛」 | Alnilam | 2、3、4、5 | 6（`jiwen-sealed`） | 7（`jiwen-sealed`） | 8（`jiwen-sealed`；梵林寺禪房那一碗藥，可省） |
+| ji-wushuang | 姬無霜「霜夫人」 | Gacrux | 2、3、4、5 | 6 | 7（企劃包列了她，地點卻沒有鯨背嶼；主編定，可省） | 8（鯨背嶼室外 `wushuang-armed`；斬首的刀寫 prompt） |
+| luo-qingyan | 洛青衍 | Achird | 不出場（第 6 集抵盟） | 6（抵盟，第一次正式出場） | 7（客院旁觀） | 不出場（住盟府客院） |
+| nie-gutie | 聶孤鐵「雕匠」 | Algenib | 3 | 不出場 | 不出場 | 不出場 |
+| shen-guihe | 沈歸鶴「白鶴先生」 | Iapetus | 2、3、4、5 | 6（分魂前基本外觀；之後 `shen-bedridden`，沒有台詞） | 7（`shen-bedridden`，沒有台詞） | 8（`shen-bedridden`，沒有台詞；只在書齋的切回鏡） |
+| xuanmen-elder | 玄門長老 | Schedar | 已死；只在回憶鏡用基本外觀 | 不出場 | 不出場 | 不出場 |
+| yan-hui | 燕迴「赤纓」 | Fenrir | 2、3、4、5 | 6 | 7 | 8（守石窟外） |
+| yin-wusheng | 殷無聲「啞劍」 | Sadaltager | 2、3（可省）、4、5 | 6（不說話，`yin-cut-hair`） | 7（不說話，`yin-cut-hair`） | 8（不說話，`yin-cut-hair`；倒藥、守石窟外） |
+| zhuxu（新） | 竹虛道人 | Umbriel | 2、4 | 不出場（押在玄門） | 不出場（押在玄門） | 不出場（押在玄門） |
+| liu-buhuo（新） | 柳不活「求死書生」 | Enceladus | 3、4、5 | 6（`liu-defected`） | 不出場（在島上；企劃包第 7 集沒有他） | 8（`liu-defected`；石窟讓路、塞傳單紙） |
+| shuyuan-elder（新） | 書院長老 | Orus | 3、4、5 | 6 | 7 | 8（灘頭代三宗道謝） |
+| xuanmen-steward（新） | 玄門執事長老 | Charon | 3、4、5 | 6 | 7 | 8（灘頭；可省） |
+| alliance-guard（新） | 客院盟兵 | Sadachbia | 2（不說話）、3（可省，不說話）、5 | 不出場（客院門口的盟兵只寫 prompt） | 不出場（外港的守衛只寫 prompt） | 8（可省：紗女私下押下兩名被收買的盟兵；表頭留著） |
+| sha-nu（第 6 集新） | 紗女 | Iapetus（沈歸鶴的聲音） | 不出場 | 6 起 | 7 | 8（灘頭揭局） |
+| wuming-jianke（第 6 集新） | 無名劍客 | Iapetus（沈歸鶴的聲音） | 不出場 | 6 起（第 10 集滅） | 7 | 8 |
+| canglan-ke（第 7 集新） | 滄瀾客 | Zubenelgenubi | 不出場 | 不出場 | 7 起（第一次正式出場，詩號） | 8（碎陣之後 `canglan-spent`） |
+| yuelan-ke（第 7 集新） | 岳嵐客「赤羽」 | Algieba | 不出場 | 不出場 | 7（化名赤羽；外港 `yuelan-crest`→`yuelan-crippled`；第 17 集再現） | 不出場（坐船離港） |
+| guideng-jun（第 8 集新） | 鬼燈君 | Azure `zh-TW-YunJheNeural`（`rate: "-8%"`） | 不出場（第 5 集的「鬼燈君黑袍人」是姬無霜，只寫 prompt） | 不出場 | 不出場 | 8（第一次正式出場，詩號；斬首後不再列 id） |
 
 新角色的聲音都沒有跟第 1 集已用的十個聲音（Rasalgethi、Iapetus、Alnilam、Gacrux、Puck、Fenrir、Algenib、Achird、Schedar、Sadaltager）重複，新角色彼此之間也不重複。五個新角色都是男性，從可用男聲裡照年齡挑：中年、乾冷的竹虛用 Umbriel；二十多歲、帶氣音的柳不活用 Enceladus；六十多歲、有分量的書院長老用 Orus；五十多歲、管帳口吻的執事長老用 Charon；二十出頭的盟兵用 Sadachbia。
 
 第 6 集的兩個化身是唯一的例外：`sha-nu` 與 `wuming-jianke` 刻意與 `shen-guihe` 共用 Iapetus（企劃包的鉤子寫死「她的聲音是沈歸鶴的聲音」），只靠 `style` 分：紗女更輕、更慢、更柔，無名劍客更硬、更短、更冷，兩個都不咳。工具允不允許，查證結果在〈兩個化身為什麼用同一個聲音〉。
 
 第 7 集的兩個新角色用掉了最後兩個沒用過的男聲（岳嵐客 Algieba、滄瀾客 Zubenelgenubi），彼此不重複、也不跟前面任何人重複；從第 8 集起新的男角色沒有沒用過的男聲可挑，見〈第 7 集的兩個新聲音〉。
+
+第 8 集的鬼燈君改用 Azure 的 `zh-TW-YunJheNeural`：全劇第一個不走 Gemini 的角色聲音，跟任何人都不重複（Azure 與 Gemini 是兩家供應商的聲音，不會撞名），見〈第 8 集的新聲音：鬼燈君為什麼用 Azure〉。
 
 ## 各集出場的角色 id
 
@@ -104,6 +115,23 @@
 - 詩號：**滄瀾客**是企劃包的主要人物、本集第一次正式出場，給（建議放在他走進梵林寺禪房、寂聞認出他的那一刻；嶺口擦肩的冷開場不給——冷開場 ≤ 20 秒）。**岳嵐客**也是主要人物，但他化名赤羽入盟，入盟時給詩號等於開場揭底；建議放在外港揭穿那一刻的定格上（第一劍劃開紅衣、雙淵紋露出，visual_style：「重要一擊在定格上疊詩號」），字卡 `title` 寫「岳嵐客」、`tag` 寫「赤淵宮大宮主」——那也是觀眾第一次聽到他的名字。紗女與無名劍客是化身，不用。已有詩號的七位（姬無霜、寂聞、沈歸鶴、竹虛、柳不活、聶孤鐵、洛青衍）不再給。
 - 三宗高層：細綱 consequence「三宗高層得知寂聞可解封，開始催促」「三宗仍視赤羽為被襲的貴客」「無名劍客被盟內記了一筆無故傷客」——照第 3–5 集的做法，這些話要由書院長老或執事長老親口說（旁白代說沒有分量），所以兩人在 `cast` 裡。
 
+### 第 8 集〈鬼燈〉（第 42–45 日）
+
+企劃包第 8 集的 characters 是十一人（沈歸鶴、寂聞、殷無聲、包三錢、姬無霜、柳不活、滄瀾客、鬼燈君、紗女、無名劍客、燕迴），四個地點都在鯨背嶼（外海、島底石窟、灘頭、主帳）。`ep8/meta.json` 的 `cast` 另外加了書院長老、執事長老（懸念「三宗長老在灘上向她作揖道謝」）與客院盟兵（state.evidence「紗女揭出並私下押下的兩名被收買的客院盟兵」），共十四人。表頭裡沒入鏡的角色 lint 不檢查；分場表定案時用不到的人，從 `cast` 拿掉再跑 `node header.mjs --ep 8` 即可。
+
+- 說話：`guideng-jun`、`sha-nu`、`wuming-jianke`、`ji-wushuang`、`canglan-ke`、`liu-buhuo`、`bao-sanqian`、`yan-hui`、`shuyuan-elder`。
+  - 鬼燈君：登島當眾指控姬無霜、被拆穿後翻臉，見下方〈鬼燈君〉。
+  - 柳不活：石窟混戰中讓開一線、把靴底那張傳單紙塞進滄瀾客掌心是他的戲；可以一句不說，要說也只在姬無霜聽不到的地方（他的讓路沒被她看見、卻被鬼燈君的細作看見——企劃包前半 consequence）。
+  - 書院長老：三宗在灘上向姬無霜作揖道謝那一句由他說；紗女拆穿之前「三宗以為陣是她的、當場要殺她」（後半 stakes）的那一句也要由長老說，照第 3–5 集，旁白代說沒有分量。
+- 說話或只入鏡（主編定，表頭都留著）：
+  - `xuanmen-steward`：灘頭附和長老；可省。
+  - `ji-wen`（`jiwen-sealed`）：第 7 集停在殷無聲端著浮紅的湯藥、寂聞說「……藥。」，第 8 集要先交代這一碗沒有喝（殷無聲沒有餵，從這一夜起每一碗都倒在井邊，m06）。這一場若拍，寂聞可以有一兩句，也可以不說話；不拍就由殷無聲倒藥的一鏡（只拍手、碗與井口，`characters: []`）帶過。
+  - `alliance-guard`：企劃包 consequence 寫紗女回盟後查出第 5 集那夜監看客院的兩名盟兵收了幽都的金、姬無霜根本不在客院，私下押下兩人，沒有當眾說。若分場拍這一場，開口的是他（第 5 集作證的就是他，觀眾認得這張臉），第二名照第 5 集只寫 prompt（年紀較大、留鬍子）；要拍被押、槍被收走的樣子，先看下方 shot_looks 表那一列。若不拍，這件事留給第 9 集回頭交代，`cast` 拿掉他。
+- 入鏡不說話：`yin-wusheng`（`yin-cut-hair`；禪房倒藥，之後與燕迴、包三錢守在石窟外）、`shen-guihe`（`shen-bedridden`；本體在盟府書齋，本集的地點都在鯨背嶼，他只出現在書齋的切回鏡；沒有台詞，到第 12 集合魂前都沒有）。
+- 只寫在 prompt、不建角色：鬼燈君的貼身死士與幽都精兵、鬼燈君安在舊部營裡的細作、幽都舊部、灘上甦醒的孩童與老弱、第二名被收買的盟兵、千盞青燈（見下方〈沒有建的角色〉與〈連戲提醒〉第 30–41 條）。
+- 不出場：`luo-qingyan`（住盟府客院；企劃包第 8 集沒有他）、`zhuxu`（押在玄門）、`nie-gutie`、`xuanmen-elder`、`yuelan-ke`（第 7 集坐船離港，第 17 集再現）。
+- 詩號：**鬼燈君**是 setting 的主要人物（「第一季表面的反派」），本集第一次正式出場，給。建議放在他親率幽都精兵登上灘頭、第一次在亮處露臉的定格上；海面千燈上的剪影不給（還看不到臉；冷開場也 ≤ 20 秒）。字卡 `title` 寫「鬼燈君」。只活一集的人有了詩號，姬無霜那一刀才有分量。已有詩號的不再給（第 1–6 集七位，第 7 集的滄瀾客與岳嵐客）；紗女與無名劍客是化身，不用。
+
 ## 新角色為什麼要說話
 
 ### 竹虛道人 `zhuxu`（第 2、4 集）
@@ -146,6 +174,8 @@
 ### 客院盟兵 `alliance-guard`（第 5 集說話；第 2、3 集只入鏡）
 
 第 5 集的轉折是「監看客院的兩名盟兵咬定姬無霜整夜未出房門」，盟內因此認定箭在鬼燈君手上。姬無霜的不在場證明只有這一個來源，必須由證人當著長老親口說出。要是改由燕迴或沈歸鶴轉述，「被買通的證人」這一層就沒了，柳不活知情、沈歸鶴半信半疑的戲也落不了地。兩名盟兵只建一個角色：說話的是他，第二名是只寫在 prompt 裡的臨時演員（建議寫成年紀較大、留鬍子，跟他分得開），只點頭附和，不列 id。他的外觀照第 1 集 a03-s040、a03-s082 的「alliance guards in white-and-gold uniforms holding spears」設計。
+
+第 8 集（可省）：企劃包寫紗女回盟後查出這兩人收了幽都的金、姬無霜那夜根本不在客院，私下押下兩人，沒有當眾說。若分場拍這一場，認罪的話要由他自己說出口：第 5 集他當著長老咬定的那一句，觀眾要聽見同一個嗓子把它收回去，旁白代說就沒有這一層。第二名仍只寫 prompt。他被押下、槍被收走的樣子要先加 look（見 shot_looks 表第 8 集那一列）。
 
 ### 紗女 `sha-nu`（第 6 集起；第 12 集合魂後不再出現）
 
@@ -201,6 +231,29 @@
 - **第 8 集起沒有沒用過的男聲了。** 鬼燈君（第 8 集現身、說話、當場被斬）就要一個男聲；第二季的冷玉衡、衛千籌、酆赤髓、褚無常、白蘅也都要。第 8 集的角色表主控要先請站主定重用規則：(a) 重用已經不再說話的角色的聲音——玄門長老的 Schedar（第 1 集死，之後只在回憶鏡）最先空出來，柳不活第 9 集死後 Enceladus、聶孤鐵第 10 集後 Algenib 也會空——但 narrative_constraints 寫死者以記憶與他人的台詞出現，回憶鏡可能還要原聲；(b) 用 Gemini 的 `voice_…` 自訂聲音 id（schema 的 `GEMINI_VOICE` 允許）；(c) 像化身那樣刻意同聲。鬼燈君只活一集、台詞少，用 (a) 的 Schedar 最省。
 - 紗女與無名劍客仍用沈歸鶴的 Iapetus（上一節），第 7 集不改。
 
+### 鬼燈君 `guideng-jun`（只在第 8 集）
+
+鬼燈君是 setting 的主要人物、第一季表面的反派，只活這一集。他的話沒有人能代說：
+
+- 轉折：滄瀾客破陣之後，他親率幽都精兵登島，**當眾**說收魂陣是姬無霜拿三宗的符嫁禍三宗的局。這句指控要由他本人在三宗長老面前說出口：三宗一信，就要當場殺她（後半 stakes）。旁白代說只是解說，紗女的拆穿也就沒有對手。
+- 後半高張力：紗女攤開包三錢的拓片與柳不活靴底的傳單紙，指出陣符與通緝傳單出自他安在舊部營裡的細作之手，他翻臉動手。被拆穿之後的一兩句與那一下出手，是姬無霜那一刀的理由。
+- 他要的是三宗殺姬無霜，他好以「為幽皇之女復仇」收服幽都三派。這一層由紗女點破，不由他自白：被拆穿的人不會替拆穿他的人把話說完。
+- 他**不是**鑄箭當日奪箭的黑風（setting：「他拿不到箭，所以他不是奪箭的黑風」），第 5 集的箭也不是他放的（是姬無霜借他的名）。他的台詞不認箭，也不能寫成知道箭在誰手上。他的符印從哪裡流出去，第一期沒有證實（setting 的 ending），他的台詞也不交代。
+- 台詞少而慢。Azure 聲音不吃逐句的 `emotion`（lint 會警告「emotion … is ignored: the azure voice has no style prompt」，見 `tools/video/core/drama.mjs` 的 `emotionProblems`），他的語氣只能靠字句本身（短句、頓點、刪節號）加上 `rate: "-8%"` 的慢。**他的台詞不要加 `emotion`**；其他角色照舊。cue 覆蓋率的檢查（`cueCoverageProblems`）本來就不算 Azure 的句子，不會因為他沒有 cue 而警告。
+- `name` 只寫「鬼燈君」，沒有別號；字幕沒有 speaker 前綴，觀眾看不到名字，台詞裡要有人叫出這三個字（第 1、3、5 集已經叫過很多次了）。
+
+### 第 8 集的新聲音：鬼燈君為什麼用 Azure
+
+- 十六個 Gemini 男聲（`docs/videos/series-plans/binge-five-20260928/DECISIONS-20260929.md` 第 13 行）到第 7 集已全部有主：旁白 Rasalgethi、沈歸鶴與兩個化身 Iapetus、寂聞 Alnilam、包三錢 Puck、燕迴 Fenrir、聶孤鐵 Algenib、洛青衍 Achird、玄門長老 Schedar、殷無聲 Sadaltager、竹虛 Umbriel、柳不活 Enceladus、書院長老 Orus、執事 Charon、盟兵 Sadachbia、滄瀾客 Zubenelgenubi、岳嵐客 Algieba。十六人之後都還會出場（玄門長老在回憶鏡）；除了玄門長老與天生不能說話的殷無聲（見下方備案），每一位之後都還會開口：柳不活第 9 集、聶孤鐵第 10 集才死，竹虛第 12 集回來，岳嵐客第 17 集再現，盟兵本集可能還要開口。
+- 第 7 集那一節列的三條路都不合用：(a) 借不再說話的角色的聲音——最先空出來的是玄門長老的 Schedar，但**不能借**：他的死是第一季的懸疑主線（第 1 集精元被抽走、無傷無血；第 3–5 集閉關之謊；第 4 集受審揭開死訊；第 5 集三宗把射寂聞的箭叫成「第二支」），他的聲音觀眾第 1 集聽過，回憶鏡也可能還要原聲。鬼燈君一開口是長老的嗓子，觀眾會以為長老回來了，或以為兩人有關係，等於在懸疑主線上放一條假線索。(b) Gemini 的 `voice_…` 自訂聲音 id：沒有現成的。(c) 刻意同聲：只有化身那樣「本來就是同一個人」的設定撐得住；鬼燈君跟誰同聲，都會被當成線索。
+- 所以改走第二家：Azure 的台灣男聲 `zh-TW-YunJheNeural`。`tools/video/tts` 支援個別角色用 Azure 聲音（`tools/video/tts/tts.test.mjs`：同一部戲旁白用 Gemini、某個角色用 Azure），兩家的聲音名字不會撞，他跟任何人都不重複。Azure 的台灣口音男聲只有這一個（`zh-TW-HsiaoChenNeural`、`zh-TW-HsiaoYuNeural` 是女聲）；預設清單裡另有兩個多語男聲（`en-US-AndrewMultilingualNeural`、`en-US-BrianMultilingualNeural`，會改講台灣國語，口音要先試聽）。之後第二季的新男角（冷玉衡、衛千籌、酆赤髓、褚無常）到時要另議，不能再假設有空的聲音。
+- 備案（本次沒用，記下來給主控與站主）：殷無聲的 Sadaltager 從來沒出過聲——他天生不能說話（setting 的 limits），角色檔裡的聲音「只為角色檔完整而設」，觀眾沒聽過。把 Sadaltager 給鬼燈君，台詞還能吃 style 與 `emotion`、音色也跟其他人一致；代價是 `cast.json` 裡有兩個角色同一個聲音物件名（lint 不擋，見〈兩個化身為什麼用同一個聲音〉），而且如果第一期有哪一場要殷無聲出聲（夢、心聲、回憶），就得另想辦法。要改，只動 `guideng-jun` 的 `voice`（改成 `{"provider":"gemini","name":"Sadaltager","style":"標準國語，咬字清楚，台北人平常說話的語調；……"}`），再跑 `node header.mjs --ep 8`。
+- 代價：
+  1. Azure 沒有 style：不能寫「陰、慢、冷」這種表演指示，也不吃逐句的 `emotion`（lint 只警告、不擋）；能調的只有 `rate`。給 `-8%`：比常速慢一點，聽起來不急不躁，又不會慢到拖垮本集的時段帳。lint 估算時長不看 `rate`，實際會比估算略長；tts 之後先用 `tools/video/qa/pace.mjs` 量。
+  2. 音色跟 Gemini 那一群不同、機器感較重。對一個只活一集、從海上燈潮裡走出來的反派不算壞事，但 tts 之後主編要聽一次；太出戲就把他的台詞再砍短。
+  3. **TTS 前要請站主確認**後台「API 與供應商設定 → Azure 語音（影片旁白）」已填金鑰與區域，而且「允許的聲音」裡有 `zh-TW-YunJheNeural`。伺服器的預設清單（`apps/api/app/config.py` 的 `azure_speech_voices`）本來就有它，但後台存過自己的清單就以後台為準。不在清單裡，`tts` 會在送出任何一句之前停下，點名「spoken by guideng-jun (鬼燈君)」（`tts.test.mjs`）。有影片工具權杖時，`node tools/video/cli.mjs tts --slug ou-de-jianghu-e008 --dry-run` 會印出「voice zh-TW-YunJheNeural ready」或「NOT ready」與原因。Azure 有自己的每月計費字元上限（預設 450,000，一個中文字算兩個）；鬼燈君一集的台詞量碰不到。
+- 2026-10-06 又查了一次「兩個角色能不能同聲」：`tools/video/core/state.mjs` 裡關於 voice 的仍只有 `dubSpeechCurrent`（配音是否過期）；`schema.mjs` 的 `validateVoice` 只查單一聲音物件（provider、名字格式、Azure 不能有 style／model、Gemini 不能有 rate、`rate` 要像「-8%」）；`lint.mjs` 只要求每集的角色物件（含 `voice`）與 `series.json` 逐字相同。唯一會擋同聲的仍是 `tools/video/production/design.mjs` 的 `designProblems`（製作設計書那條流程，這部戲沒走）。鬼燈君沒跟任何人同聲，這一條本來就碰不到。
+
 ### 沒有建的角色
 
 - 姬無霜的侍女（第 6 集）：企劃包的轉折寫她在鯨背嶼向柳不活打聽「扶瀾國的船什麼時候到」。不建角色、不配聲音：她只在 prompt 裡（建議寫成幽都舊部的年輕侍女，黑衣、無冠，跟姬無霜分得開），走到柳不活身邊低聲說了一句，**那句話由柳不活重複出來**（「扶瀾國的船？」），或由旁白接一句。要是主編覺得非她本人說不可，就得在 `cast.json` 建角色、配一個沒用過的女聲，再跑 `header.mjs`。
@@ -215,6 +268,10 @@
 - 赤羽登的船與水手（第 7 集）：prompt；船寫成一艘無旗的褐帆商船（a two-masted southern merchant junk with patched ochre-brown matting sails, flying no flag），不寫赤淵宮的紋。**不用灰帆**（2026-10-06 改）：第 5 集的三宗運船、第 6 集姬無霜回鯨背嶼的小船都是灰帆，同一個碼頭再出現灰帆，觀眾會把赤羽跟鯨背嶼連在一起。
 - 梵林僧人、客院門口的盟兵（第 7 集）：照第 5、6 集，只寫 prompt。
 - 西嶺已逝的第三位隱士：不出場、不提名字。
+- 鬼燈君的貼身死士與幽都精兵（第 8 集）：prompt。貼身死士照第 5 集姬無霜的話戴青面具，寫「black-clad guards each with a blue-green mask covering the whole face」；精兵寫成黑衣、無冠、持長刀的一群。伏地稱主那一鏡是群眾，不列 id。他們不說話（沒有男聲可配）；喊聲只用畫面，或由旁白帶。
+- 鬼燈君安在幽都舊部營裡的細作（第 8 集）：prompt。前半他看見柳不活讓路，後半被紗女指出陣符與傳單是他的筆。**不建角色、不說話**：Gemini 男聲沒有空的，Azure 的台灣男聲只有一個、已經給了鬼燈君。他被指出時的反應只用畫面（例如退半步、被舊部按住），話由紗女、鬼燈君或姬無霜說。他要跟柳不活分得開：柳不活是灰與褪色靛藍的書生袍、灰色書生帽；細作寫成幽都舊部的素黑衣、無冠，**不戴青面具**（戴了就成了鬼燈君的死士，一眼揭底）。分場表第九節要定他的一句固定英文，每一鏡照抄，觀眾才認得前半看見讓路的就是後半被指出的這一個。
+- 第二名被收買的客院盟兵（第 8 集）：照第 5 集，prompt（年紀較大、留鬍子），只點頭、不說話。
+- 灘上甦醒的孩童與老弱、幽都舊部、幽都黑衣人（第 8 集）：prompt，不說話；孩子一個接一個睜眼用畫面交代，照第 2 集的做法。
 
 ## shot_looks 用在哪裡
 
@@ -251,6 +308,16 @@
 | yuelan-ke | `yuelan-crippled` | 7 | 第二劍之後的每一鏡：左臂垂著、左袖血濕，不包紮；到 a04 場 1 第 1 點那一格插鏡（a04-s001：守衛圍上來之前，他用右手把衣襟攏上）為止。a03 場 4 最後一鏡燕迴喊「住手」時還在碼頭根部；守衛圍住劍客的全景（a04 場 1 第 2 點）已經是 `yuelan-covered`。 |
 | yuelan-ke | `yuelan-covered` | 7 | 2026-10-06 新增。a04 場 1 第 1 點（a04-s001，右手攏衣的插鏡）之後拍到他的每一鏡（第 2 點守衛圍成半圈的全景起）：同 crippled，但衣襟被右手攏在胸前、雙淵紋看不見，只在指縫露一線銅線；趁亂登船、船舷欠身、船離岸。燕迴從此看不到紋（盟堂上他說「衣裡，我也沒看見」）。第 17 集起他在赤淵宮的樣子另加 look（冠回來、左臂藏在長袖裡）。 |
 | sha-nu、wuming-jianke | 基本外觀 | 7 | 仍只有基本外觀。劍客在外港挨了赤羽一指（細綱：本體「因化身受創」咳血）：白袍左胸一個指尖大的焦痕只寫 prompt——外港這一場（a03 場 4 第 21 點起到 a04 場 1 結束）正面拍到他左胸的鏡頭都寫；a04 場 2 起改寫他的左手平按在左胸上蓋住，不寫焦痕、不寫繃帶、不加 look（分場表第二節）。 |
+| ji-wushuang | `wushuang-armed` | 8 | 鯨背嶼室外的每一鏡：灘頭、石窟口、率舊部、與鬼燈君對峙、斬首、擲頭顱、受三宗作揖。背弓、有蓋箭囊。**斬首的刀不在 look 裡，寫 prompt**（刀從哪裡來由分場表定，例如從身旁舊部腰間拔出；定了就照抄）。基本外觀寫死了「Unarmed」，所以凡是她手上有刀的鏡頭都必須選 `wushuang-armed`。右手背的布條只寫插鏡 prompt（第 14 條）。主帳內若照第 6 集弓與箭囊在架上，用基本外觀；由分場表定，定了全集不換。 |
+| canglan-ke | 基本外觀 | 8 | 梵林下山、登島、躍入石窟、混戰、柳不活把傳單紙塞進他掌心，到一掌碎陣那一鏡為止（碎陣那一掌本身用基本外觀）。引血的刀仍在斗篷裡，本集不出鞘、不寫進 look。 |
+| canglan-ke | `canglan-spent` | 8 | 碎陣之後、千燈熄滅的下一鏡起：出窟、把傳單紙交給紗女、灘頭全場，到本集結束。傳單紙在他手上時寫 prompt。第 9 集起沿不沿用由第 9 集定（state：真氣大耗）；第 10 集接劍、第 11 集引血前回不回基本外觀，到時再議；第 11 集後白髮拄杖另加 look。 |
+| guideng-jun | 基本外觀 | 8 | 從他在灘頭第一次露臉起，到斬首那一刀為止。海面千燈上的剪影不列 id（第 30 條）。**斬首之後任何一鏡都不列 `guideng-jun`**：設定圖畫的是有頭的人；冠落、身形倒下、頭顱都寫插鏡或群眾鏡的 prompt（第 31 條）。沒有斬首後的 look。 |
+| ji-wen | `jiwen-sealed` | 8 | 若入鏡（梵林寺禪房，那一碗藥）。 |
+| yin-wusheng | `yin-cut-hair` | 8 | 全集（禪房倒藥、鯨背嶼石窟外）。 |
+| liu-buhuo | `liu-defected` | 8 | 全集（石窟混戰讓路、灘頭）。靴底的傳單紙、袖裡的印圖樣、腰間的封口葫蘆照第 6 集第十一節；紙從靴底到滄瀾客掌心那一下寫插鏡 prompt（`characters: []`）。 |
+| shen-guihe | `shen-bedridden` | 8 | 若入鏡（書齋切回鏡），全集都是這個；沒有台詞（第 34 條）。 |
+| sha-nu、wuming-jianke | 基本外觀 | 8 | 仍只有基本外觀；影子淡只寫 prompt（第 35 條）。劍客左胸的焦痕：照第 7 集第十一節，第 8 集若他換了袍就不再寫——由第 8 集分場表第十一節（承接）定一次，定了全集照辦，不加 look。 |
+| alliance-guard | 基本外觀 | 8（可省） | 只拍他被叫來問話（槍在手上、站著回話）就用基本外觀。基本外觀寫死了「a long spear with a white tassel」：要拍他被押下、槍被收走的樣子，先照 `zhuxu-disarmed` 的先例在 `cast.json` 末尾加一個不帶槍的 look（只把那一句換成不提槍的句子，不寫「no spear」這類否定句），再跑 `node header.mjs --ep 8`。加了之後第 2、3、5 集的表頭與成品會少一個 look，要照第 6 集的做法重跑那三集的 `header.mjs`／`merge.mjs`；所以能不拍就不拍，押下兩人可以只用紗女的一句話與一扇關上的門交代。 |
 
 ## 連戲提醒
 
@@ -290,4 +357,16 @@
 26. **滄瀾客與寂聞**：滄瀾客五十多歲、鐵灰長髮、深藍布冠；寂聞四十多歲、光頭、`jiwen-sealed`。禪房一場兩人隔榻；寂聞推開他那一掌是封功之身的一掌（motion 寫「his palm lands with no light and no force」，沒有金色氣勁），滄瀾客被推開是因為他不擋。滄瀾客的深藍袍與玄門執事的暗青灰袍別混：執事戴布帽、掛鑰匙與帳冊、袖手；滄瀾客披毛皮、佩劍。滄瀾客的「至交」身分只用動作與那把刀呈現，不寫「我把你當朋友」（narrative_constraints）。
 27. **寂聞每日的湯藥**：第 6 集 a04 場 3 立下的——殷無聲端、殷無聲餵、黑陶碗；本集懸念就是這一碗（第 22 條的寫法）。殷無聲發現後「從那夜起每一碗都倒在井邊」是第 8 集起的事（m06），本集只到他端在手上、看見浮紅。
 28. **洛青衍在第 7 集**：他住客院，截藥童那場他在旁觀（細綱：「在客院旁觀整場，對無名劍客生出敬意」）——他不知道劍客是誰，也沒有人告訴他。本集不拍他的頸後（第 6 集已給過；主編若真要再給一次胎記插鏡，照第 13 條同構圖）；手腕還沒有黑繩（第 16 集起）；他與那位夫人仍沒有正臉同框。
-29. **岳嵐客的左臂**：第 7 集外港被劍客廢去之後永久不能用。本集 `yuelan-crippled` 是血濕垂臂、不包紮；第 17 集起的 look 要寫「左臂藏在長袖裡」。第 7 集之後他不再入盟。
+29. **岳嵐客的左臂**：第 7 集外港被劍客廢去之後永久不能用。本集 `yuelan-crippled` 是血濕垂臂、不包紮；第 17 集起的 look 要寫「左臂藏在長袖裡」。第 7 集之後他不再入盟。第 7 集的黑漆藥箱在外港落海（`ep7` a03-s072），第 17 集的 look 若照 setting 寫藥箱，寫成另一只（不寫 black、不寫 right shoulder）。
+30. **鬼燈君的剪影（第 8 集）**：setting 寫「Appears first as a silhouette on the sea of lanterns」。千燈上的剪影鏡 `characters: []`，prompt 寫「a tall gaunt figure seen only as a black silhouette against the glow of the lanterns, the seven points of his crown and the ragged claw-pointed hems of his long sleeves sharp in outline」，不寫臉、不寫髮色。要到灘頭露臉那一鏡才列 `guideng-jun`（列了，設定圖就會把臉畫出來）。腰間七枚銅鈴的聲音可以比臉先到（sfx）。
+31. **斬首的寫法（第 8 集）**：照布袋戲的寫意，不拍血腥，分三格：一刀（刀光一閃；出刀那一格 `characters` 可以是 `ji-wushuang`（`wushuang-armed`）與 `guideng-jun`，刀寫 prompt）→ 七角黑冠落地的插鏡（`characters: []`，「the tall seven-pointed black crown falling onto the wet sand」）→ 身形倒下（背光全景或剪影，`characters: []`，「a tall gaunt figure in a black-and-violet robe crumpling onto the sand, seen against the light」）。不拍頸上的斷口，不見血。頭顱一律寫成被黑布裹住（「a round bundle wrapped in black cloth」）或背光的剪影。懸念「姬無霜拾起鬼燈君的頭顱向幽都方向一擲」：`characters: ["ji-wushuang"]` 配 `wushuang-armed`，手裡是黑布裹著的圓包，擲出的弧線逆光；屍身與頭顱都不列 `guideng-jun`。narrative_constraints：死者只以遺物、記憶與他人的台詞出現。之後的集數若要提他，拍冠、銅鈴、鬼燈袍這些遺物，不用他的設定圖。
+32. **鬼燈君與姬無霜不要混（第 8 集）**：兩人都是幽都的黑與紫（visual_style：幽都用黑紫）。姬無霜是銀白長髮、黑銀鳳冠帶銀鏈、黑袍繡白霜蕨、深紫外氅、背弓（`wushuang-armed`）；鬼燈君是灰紫長髮、七角黑冠、灰白臉、黑與暗紫袍繡七星與骷髏燈紋、爪尖長袖、腰間七枚銅鈴、空手。灘頭對峙的軸線由分場表第四節定，定了不換，兩人各占畫面一側；反應鏡各拍各的。紗女（月白、白紗冠）也在灘上時照第 15 條。
+33. **鬼燈袍與青面具（第 8 集）**：第 5 集山脊上的黑袍人（其實是姬無霜）穿「a black robe embroidered with dark-violet seven-star and skull-lantern motifs」、戴「a blue-green mask covering the whole face」，她在盟堂說「青面具，是鬼燈君貼身死士戴的」「那件鬼燈袍，是他自己的」。本集鬼燈君本人的袍用同一句繡紋，觀眾一眼認得；但他戴七角冠，不戴兜帽、不戴面具。他的貼身死士戴青面具（prompt）。紗女在灘頭若提到第 5 集那一夜，台詞不能讓三宗知道放箭的是姬無霜：三宗本集只知道陣是鬼燈君布的、她是幫他們除害的恩人；知道箭是她從齊雲殿後山射的，只有觀眾與紗女（state.knowledge）。
+34. **分魂的同框規則（第 8 集）**：本集的地點都在鯨背嶼，本體在盟府書齋。凡是拍到本體身形或臉的鏡頭（書齋切回鏡），`characters` 列 `shen-guihe` 就要配 `character_looks: {"shen-guihe": "shen-bedridden"}`；只拍手、枕邊紙扇的插鏡不列角色。本體與化身不在同一地，不要放進同一鏡；化身在灘上、本體在書齋，照第 7 集化身受創那一刻的做法兩地交叉剪。一鏡仍是 3 人上限。本體仍沒有台詞；紗女、無名劍客、本體仍是同一個 Iapetus。姬無霜知道兩人是分魂（第 6 集「找不到了，一個整的人」），但在三宗面前不說。長老、燕迴、鬼燈君聽得見的台詞裡仍不出現「分魂」「元神」「化身」；本集的陣收的是「魂」，台詞要小心，別讓長老把紗女跟「魂」連在一起。
+35. **化身的影子（第 8 集）**：紗女與無名劍客的影子「比應有的淡」**只寫在 prompt**（「her shadow on the sand slightly fainter than it should be」「his shadow on the sand slightly fainter than it should be」），appearance、look、設定圖都不寫（第 12 條）。只在看得到地面影子的鏡頭寫。收魂陣的青綠光與千盞燈光底下，每個人的影子都會被打亂，看不出誰淡；建議放在破陣、千燈熄滅之後的灘頭（火把或日光下）。
+36. **胎記插鏡（第 8 集）**：本集若拍姬無霜頸後的胎記（例如斬首那一刀她長髮揚起），與第 1 集 a02-s037（姬無霜）、a04-s043（洛青衍）**同構圖**：`camera: "Insert of the back of her neck, locked"`、`characters: []`；prompt 照第 1 集的句型——從背後稍高處看頸後，冠的底部在畫面頂端，長髮被一陣風吹向頸的兩側，「a small crescent-shaped birthmark on the back of the neck at the centre of frame」，下面是袍領；`motion` 是一陣風把長髮分開、停一口氣。不換別的構圖，觀眾才連得起第 1、6 集。洛青衍本集不出場，不拍他的。
+37. **姬無霜的弓弦（第 8 集）**：後半「無名劍客在她身後看見她袖中一截弓弦滑過，紗女也看見了」與懸念「紗女手裡捏著一截新的斷弦」都是道具，只寫 prompt。`wushuang-armed` 背上那把弓寫死是上著弦的「a plain black cord」，袖中那一截與紗女手裡那一截都**不是**背上那條弦。分場表第九節要定這一截的固定英文（顏色、長短），而且要跟第 1 集那條暗紅血弦（斷成兩截：一截在聶孤鐵手裡，一截在沈歸鶴書齋案抽屜）分得開，或刻意連上，定了照抄（第 3 條）。若分場要讓背上那把弓的弦斷掉，得另加一個沒有弦的 look，不能只改 prompt。
+38. **紗女的兩張紙（第 8 集）**：包三錢第 2 集拓下的陣符拓片，照第 2 集 a03-s036 的句子「a sodden, crumpled sheet of thin paper, its grey charcoal rubbing smeared and blurred」（泡過海水，乾了仍是糊的；本集寫 dried and stiff 即可）；柳不活靴底的通緝傳單，照第 4 集 a01-s003／s004 的句子「a grey hemp-paper leaflet with four short columns of thick black brush strokes」「the black pine-soot ink bleeding at the edges with a faint blue-black sheen」。筆跡比對的插鏡 `characters: []`，兩張紙並排。拓片怎麼從書齋抽屜到了鯨背嶼（紗女帶來），由分場表定。島底陣符的刻槽照第 2 集 a02-s072 的「cold blue-green light rising from the carved grooves」。
+39. **千盞青燈的顏色（第 8 集）**：visual_style 寫「鯨背嶼用海面千燈的暖黃對照島底收魂陣的青綠」，企劃包第 8 集的 hook 寫「千盞青燈，每盞燈裡一縷幽光」。建議兩者合起來寫：燈罩是暖黃的紙燈，燈芯是一縷青綠的幽光（孩子的魂）；破陣時青綠一齊熄滅。第 2 集鯨背嶼山脊上的「tiny warm lamps」照舊。由分場表第九節定一句固定英文，全集照抄。
+40. **鬼燈君的聲音（第 8 集）**：Azure、沒有 style；他的台詞**不加 `emotion`**（lint 會警告），語氣靠短句與標點。他與任何人都不同聲，質地也跟 Gemini 那一群不一樣，tts 之後主編要聽一次。TTS 前要站主確認後台允許清單有 `zh-TW-YunJheNeural`（〈第 8 集的新聲音〉）。
+41. **第 7 集留下的狀態（第 8 集要守）**：照 `ep7/beats.md` 第十一節〈本集結束時交給第 8 集〉。寂聞 `jiwen-sealed`、殷無聲 `yin-cut-hair`、本體 `shen-bedridden`（不服任何人的藥，紗女每夜用玄門養氣法暫壓）；第 8 集先交代那一碗浮紅的湯藥沒有喝（殷無聲沒有餵、倒在井邊，m06；倒在井邊的藥渣第 11 集滄瀾客會認出來）。滄瀾客的刀在斗篷裡，本集不出鞘。柳不活 `liu-defected`，靴底傳單紙、袖裡印圖樣、腰間封口葫蘆都在身上。姬無霜右手背的布條（第 14 條），繡布與木匣在主帳。包三錢懷裡仍是那只空青瓷瓶。劍客的焦痕照 shot_looks 表。三宗仍不知道分魂、陣、盟兵被收買。
