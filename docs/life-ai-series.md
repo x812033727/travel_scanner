@@ -310,7 +310,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life --catalogue
 |---|---|---|---|---|---|---|
 | 181 | `ai-subscription-which-to-pay-2026` | 只能訂一個的話訂哪個：ChatGPT、Claude、Gemini | ai, software | 插 |  | ✓ |
 | 182 | `ai-benchmarks-explained` | 模型跑分怎麼看：LMArena、SWE-bench 與三個陷阱 | ai | 插 |  | ✓ |
-| 183 | `ai-model-release-timeline-2026` | 2026 年 AI 模型大事記：1 月到 9 月 15 日的官方發布時間軸 | ai, misc | 插 |  | ✓ |
+| 183 | `ai-model-release-timeline-2026` | 2026 年 AI 模型大事記：1 月到 9 月的官方發布時間軸 | ai, misc | 插 |  | ✓ |
 | 184 | `ai-api-pricing-comparison-2026` | API 價格比較：每百萬 token 各家多少 | ai, software | 插 |  | ✓ |
 | 185 | `ai-scams-deepfake-taiwan` | AI 詐騙與 Deepfake：台灣案例與防範 | ai, daily | 插 |  |  |
 | 186 | `ai-account-security-2fa-api-keys` | 保護你的 AI 帳號：兩步驟驗證與金鑰外洩 | ai, tutorial | 插 |  |  |

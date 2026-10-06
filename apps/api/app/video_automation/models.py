@@ -533,6 +533,44 @@ class VideoDramaRequest(Base):
     cancelled_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
+# What the owner asked for on the tutorials tab of /admin/videos: a slides video of one published
+# lifestyle article, made ahead of the scheduled drafts (docs/videos/AUTOMATION.md). Its own table
+# rather than rows of video_drama_requests, whose style_preset is required and checked against the
+# drama presets, and whose next request a deployed worker would take as a drama (migration 0126).
+class VideoSlidesRequest(Base):
+    __tablename__ = "video_slides_requests"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('queued', 'started', 'done', 'cancelled')",
+            name="ck_video_slides_request_status",
+        ),
+        UniqueConstraint("slug", name="uq_video_slides_requests_slug"),
+        Index("ix_video_slides_requests_status_created", "status", "created_at"),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    # The zh-TW lifestyle article to retell, by slug, and its title when the owner queued it.
+    source_guide: Mapped[str] = mapped_column(String(120))
+    title: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    status: Mapped[str] = mapped_column(String(12), default="queued")
+    # The video the worker made of it, once it started; the project row carries the rest.
+    slug: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    created_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    started_by_token_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("video_tool_tokens.id", ondelete="SET NULL"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, onupdate=utcnow
+    )
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    cancelled_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
 # A long drama series (docs/videos/SERIES.md; migration 0099): the series the owner planned, the
 # documents the owner approves (the setting book, the whole-series outline, each chapter's
 # detailed outline, one row per version), and the episode table. A one-off drama is a series of

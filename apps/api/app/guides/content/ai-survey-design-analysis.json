@@ -1,0 +1,390 @@
+{
+  "slug": "ai-survey-design-analysis",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity",
+    "ai-work"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 AI 設計問卷與整理開放題：題目偏誤、匿名與個資",
+      "description": "請 AI 擬問卷很快，但引導性問題、雙重問題與不對稱的量表要靠人挑出來；Google 表單的收集電子郵件與 Microsoft Forms 的記錄名稱決定填答是否記名，回覆上限也各有設定；蒐集個資原則上要依個資法第 8 條告知。開放題可交給 AI 分類，但原始回覆先去識別、只用公司核可的工具，並逐類人工抽查。",
+      "hero": {
+        "src": "/guides/ai-survey-design-analysis/hero.jpg",
+        "alt": "米色底插圖：左邊白色問卷卡上有打勾與空白的方框、五個等大圓圈的評分量表和開放題作答框；橘色虛線箭頭連到右上方顏色混雜的對話框，再由三支深色箭頭指向下方三個同樣大小的青綠、藍、橘色托盤，各裝三條同色長條，右邊托盤前有一支放大鏡，底部寫著問卷設計與開放題整理。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "AI（人工智慧）擬的題目先挑出偏誤：引導性問題、雙重問題、情緒性字眼與不對稱的量表。",
+            "不記名不等於匿名：小團體、作答時間與背景題的組合仍可能認出是誰。",
+            "蒐集電子郵件、姓名等個資，除法定免告知情形外，要依個人資料保護法第 8 條先告知目的、類別與利用方式等事項。",
+            "開放題可交給 AI 分類，但原始回覆先去識別、只用公司核可的工具，各類別都要人工抽查。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "用 AI 擬問卷初稿、把幾百則開放題回覆分類都很省力，但題目會不會帶偏答案、填答者是否真的匿名、個資有沒有依法告知，仍要由發問卷的人把關。"
+        },
+        {
+          "type": "paragraph",
+          "text": "照順序做完，題目會中立、記名與否寫明並依法告知，開放題也能在不外流原文的情況下分好類、經人抽查再回報。"
+        },
+        {
+          "type": "heading",
+          "text": "請 AI 擬題前，先講清楚目的與對象",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "提示詞至少寫出：結果要拿來做什麼決定、誰來填、幾分鐘填完、要不要記名，再交代出題規則，最後要它自我檢查。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞範本：擬問卷初稿並自我檢查",
+          "code": "你是協助設計問卷的助理。\n調查目的：［結果要拿來做什麼決定，例如決定明年教育訓練加開哪些課］\n填答對象：［例如全公司員工，是否都有公司帳號］\n作答時間：［例如五分鐘內］\n是否記名：［匿名／具名］\n\n請擬出問卷初稿，規則如下：\n1. 每題只問一件事；題目裡有「和」「或」的就拆開。\n2. 不在題目裡替填答者表態，不用帶情緒的字眼，不預設對方做過某件事。\n3. 評分題用正負對稱的量表，中間放「普通」，必要時在最後加「不知道」。\n4. 敏感題放在後段、說明為什麼要問，並提供「不願透露」。\n5. 除非我要求，不要問姓名、電子郵件、員工編號，也不要問健康或病歷。\n6. 擬完逐題自我檢查，列出可能有引導、雙重問題、情緒字眼或量表不對稱的題目，以及哪幾題合起來可能認出填答者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 的自我檢查只是初篩，每題仍要由人對照下一節的表格看過。微軟表單服務 Microsoft Forms 的 AI 助理 Copilot（截至 2026 年 10 月需 Copilot 授權）也能擬題、改寫，並協助避開引導性與雙重問題；但微軟提醒產出可能不正確，而且不得用來產生績效評估這類與僱用相關的內容。"
+        },
+        {
+          "type": "heading",
+          "text": "常見的題目偏誤，以及怎麼改",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "澳洲統計局（ABS）與英國政府分析專業（Government Analysis Function）的問卷設計指引，提醒避開下列寫法："
+        },
+        {
+          "type": "table",
+          "header": [
+            "偏誤",
+            "有問題的寫法",
+            "為什麼會偏",
+            "改寫方向"
+          ],
+          "rows": [
+            [
+              "引導性問題",
+              "「大家都很喜歡這次訓練，你滿意嗎？」",
+              "先替填答者表態",
+              "「你對這次訓練的滿意程度為何？」"
+            ],
+            [
+              "預設前提",
+              "「你上週加班了幾天？」",
+              "沒加班的人無從作答",
+              "先問有沒有加班，答有的人再問天數"
+            ],
+            [
+              "雙重問題",
+              "「你對講師和教材滿意嗎？」",
+              "兩者評價不同時答不出來",
+              "拆成講師、教材各一題"
+            ],
+            [
+              "情緒性字眼",
+              "「你支持取消浪費時間的週會嗎？」",
+              "填答者回應的是字眼，不是議題",
+              "「你認為週會應該維持、調整還是取消？」"
+            ],
+            [
+              "量表不對稱",
+              "選項只有「差、好、非常好」",
+              "正面選項較多，結果偏向正面",
+              "從「非常不滿意」到「非常滿意」，正負用詞相反、強度相當"
+            ]
+          ],
+          "caption": "題目偏誤與改寫方向，例句為示意；依澳洲統計局與英國政府分析專業的問卷設計指引整理，2026 年 10 月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "英國指引建議評分量表至少五個等級、中間放中立選項，適合時在最後加「不知道」。敏感題只在必要時問，不放開頭，說明為什麼問並提供「不願透露」。"
+        },
+        {
+          "type": "heading",
+          "text": "匿名、收集電子郵件與回覆上限怎麼設",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 表單的身分設定在［設定］→「回覆」：「收集電子郵件地址」選「已驗證」會收集作答者的 Google 帳戶電子郵件，選「由作答者手動輸入」則由對方自己填。開啟「僅限回覆 1 次」時作答者必須登入，但沒開收集電子郵件就不記錄使用者名稱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「呈現方式」的「查看結果摘要」開啟後，能填表單的人都看得到每題的回覆全文或圖表，有開放題時請關閉；連結的試算表也可能被表單協作者看到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft Forms 在［設定］的「誰可以填寫此表單」選擇：「任何人都可以回應」時不記錄姓名；限組織內作答時，取消勾選「記錄名稱」（Record name）就不記，勾選則記下姓名與電子郵件；個人帳號建立的表單一律不記。"
+        },
+        {
+          "type": "paragraph",
+          "text": "但不記名不等於匿名。微軟舉了三種仍認得出人的情況：題目要求填姓名、表單只發給少數幾人、用開始與完成時間比對出不同時區的同事。部門、職稱、年資合起來也一樣，人數少的單位最好合併。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "要做的事",
+            "Google 表單",
+            "Microsoft Forms"
+          ],
+          "rows": [
+            [
+              "不留身分",
+              "不開啟「收集電子郵件地址」",
+              "選「任何人都可以回應」，或取消勾選「記錄名稱」"
+            ],
+            [
+              "留下身分",
+              "「收集電子郵件地址」選「已驗證」或「由作答者手動輸入」",
+              "限組織內作答並勾選「記錄名稱」"
+            ],
+            [
+              "每人只填一次",
+              "「僅限回覆 1 次」，作答者須登入 Google 帳戶",
+              "「每人一個回應」，超過 50,000 則回覆後不保證"
+            ],
+            [
+              "截止與數量",
+              "「設定截止日或回覆限制」，多人同時送出可能超過上限",
+              "「接受回應」開關，加上開始與結束日期"
+            ],
+            [
+              "每份表單上限",
+              "自 2026 年 9 月起 50 萬則回覆、儲存空間 1 GB",
+              "商務與教育版 5,000,000 則；個人帳號免費版 200 則、付費版 1,000 則"
+            ]
+          ],
+          "caption": "兩套表單的匿名、收集與上限設定，選項名稱照兩家的繁體中文說明，介面可能隨改版調整；整理於 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "text": "蒐集個資前，原則上要先告知",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "個人資料保護法所稱的個人資料，包括姓名、聯絡方式與其他能直接或間接識別個人的資料，電子郵件、員工編號、部門加職稱的組合都可能算在內。公司蒐集個資要有特定目的並符合當事人同意等法定情形，範圍也不能超過目的所需。"
+        },
+        {
+          "type": "paragraph",
+          "text": "直接向填答者蒐集時，第 8 條要求明確告知以下事項（同條第 2 項另有免告知的例外，是否適用要個案判斷）；施行細則允許用電子文件等方式告知，寫在表單開頭的說明欄最直接，Microsoft Forms 的說明欄最多 1,700 個字元。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "蒐集者名稱，例如「某某公司人資部」。",
+            "蒐集目的，例如「作為明年課程規劃的參考」。",
+            "個人資料類別，例如電子郵件、所屬部門。",
+            "利用的期間、地區、對象及方式：保存多久、誰會看、會不會交給 AI 等外部服務處理。",
+            "可行使的權利與方式：查詢或閱覽、製給複製本、補充或更正、停止蒐集處理利用、刪除，附上聯絡窗口。",
+            "可自由選擇是否提供時，不提供的影響，例如「部門欄可不填，但不會納入部門別統計」。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "明確告知後，填答者沒有表示拒絕並提供了資料，推定為同意。病歷、醫療、基因、性生活、健康檢查與犯罪前科原則上不得蒐集，一般意見調查別問；第 3 條列的權利，也不能要求填答者預先拋棄。"
+        },
+        {
+          "type": "heading",
+          "text": "開放題交給 AI 分類：去識別、選對工具、人工抽查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "開放題常藏著個資，例如主管名字或自己的病況。個人帳號的 AI 服務可能用對話改進模型，2026 年 10 月的條款是：Google 的 AI 助理 Gemini 在「保留活動記錄」開啟時會這樣用，部分對話由人工審查員閱讀、最多保留三年；Anthropic 的 AI 助理 Claude 個人方案則在使用者允許、或對話被標記為安全審查時使用。公司訂閱版的條款不同：Google Workspace（Google 企業版辦公套件）的 Gemini 未經許可，不會把內容交給人工審查或用於網域外的訓練；微軟企業訂閱的 Copilot（原名 Microsoft 365 Copilot），提示詞與回應不用於訓練基礎模型。原始回覆只放進公司核可的工具。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "公司還沒訂 AI 使用規範，可以先看公司裡用 AI 的規範：資料外流與合規",
+              "kind": "life",
+              "slug": "ai-at-work-policy-checklist"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "去識別：刪掉電子郵件、姓名與作答時間，內文的人名、單位名換成代號。",
+            "請 AI 提類別：名稱、一句定義、納入與排除條件、兩三則代表回覆，另設「其他」與「無法判斷」。",
+            "人工修訂類別後，再請 AI 逐則標類別並寫理由；各類則數用試算表自己算。",
+            "人工抽查：每類隨機抽幾則對照原文，「其他」與「無法判斷」全看；不一致就改定義重跑。",
+            "引用原文前，確認不會讓人認出是誰寫的。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "截至 2026 年 10 月，兩套表單也有內建摘要：Google 表單搭配符合資格的方案，文字題有 3 到 200 則回覆時會自動產生摘要，回覆數符合條件時還能在試算表歸納主題；Microsoft Forms 有 Copilot 授權時，可在「檢視回應」請 Copilot 整理重點。AI 可能出錯，摘要只當線索，結論要回到原文。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-survey-design-analysis/diagram-1.svg",
+          "alt": "流程圖：上排由左到右是請 AI 擬題、挑出偏誤、設定表單、寫好告知，下排由右到左是匯出後去識別、AI 提類別、人工抽查、定稿回報；抽查不一致時沿紅色虛線回到 AI 提類別，兩排中間是全程守則。",
+          "width": 1600,
+          "height": 900,
+          "caption": "上排是發出問卷前、下排是收回之後；橘框的人工抽查若判斷不一致，沿紅色虛線回頭修改類別定義再跑一次。",
+          "description": "流程圖分兩排。上排是發出問卷前，由左到右：一、請 AI 擬題（寫明目的與對象、說清楚是否記名、要它自我檢查）；二、挑出偏誤（引導與預設前提、雙重問題與情緒字眼、量表正負對稱）；三、設定表單（不收電子郵件、不勾選記錄名稱、設好截止日與回覆上限）；四、寫好告知（個資法第 8 條事項、放在表單說明欄、不問特種個資）。往下接到下排，是收回之後，由右到左：五、匯出後去識別（刪電子郵件與姓名、刪作答時間、人名換成代號）；六、AI 提類別（定義與納入排除條件、另設其他與無法判斷、逐則標類別並附理由）；七、人工抽查（每類抽幾則對照原文、其他類全部看過、不一致就改定義），抽查不一致時沿紅色虛線回到第六步重跑；八、定稿回報（則數用試算表算、引用前確認匿名、摘要只當線索）。兩排中間的紅框是全程守則：原始回覆只放進公司核可的 AI 工具，不貼進個人帳號。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分類結果要在試算表裡計數、畫圖，可以參考 Google 試算表 AI 函式與 Excel Copilot 怎麼分工",
+              "kind": "life",
+              "slug": "ai-spreadsheet-automation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "已去識別的統計表要再分析，可以參考 ChatGPT 資料分析：上傳 CSV 讓它跑程式畫圖表",
+              "kind": "life",
+              "slug": "chatgpt-data-analysis-csv"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "調查結果要寫進提案，每個數字的出處怎麼記，見用 AI 寫企劃書與提案",
+              "kind": "life",
+              "slug": "ai-proposal-writing"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "說了匿名，就別事後比對身分",
+          "text": "表單說明寫了匿名，就別開啟收集電子郵件或記錄名稱，也別事後用作答時間、部門去推敲是誰填的。需要追蹤，就寫明具名，並依個資法第 8 條告知。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "全國法規資料庫：個人資料保護法（第 2、3、5、6、7、8、19 條；修正日期民國 114 年 11 月 11 日，部分條文施行日期由行政院定之）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0050021",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：個人資料保護法施行細則（第 16 條告知的方式）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0050022",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "澳洲統計局：ABS Forms Design Standards, 2023－Question structure（雙重問題、平衡提問、引導性與情緒性字眼）",
+          "url": "https://www.abs.gov.au/statistics/standards/abs-forms-design-standards/2023/general-forms-design-principles-question-structure",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "澳洲統計局：Basic Survey Design－Questionnaire Design（引導性題目、預設前提、不平衡的題目與選項）",
+          "url": "https://www.abs.gov.au/websitedbs/d3310114.nsf/home/Basic+Survey+Design+-+Questionnaire+Design",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "英國政府分析專業（Government Analysis Function）：Questionnaire design guidance（引導性、平衡提問、雙重問題、敏感題、量表等級）",
+          "url": "https://analysisfunction.civilservice.gov.uk/policy-store/questionnaire-design-guidance/",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google 文件編輯器說明：發布表單並與作答者共用（僅限回覆 1 次、查看結果摘要）",
+          "url": "https://support.google.com/docs/answer/2839588?hl=zh-Hant",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google 文件編輯器說明：查看及管理表單回覆（收集電子郵件地址、截止日與回覆限制、2026 年 9 月起的回覆與儲存上限）",
+          "url": "https://support.google.com/docs/answer/139706?hl=zh-Hant",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google 文件編輯器說明：使用 Google 表單內建 Gemini 總結及分析回覆內容（文字題摘要、主題歸納、適用方案）",
+          "url": "https://support.google.com/docs/answer/16231981?hl=zh-Hant",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft 支援：設定您的問卷，讓收集回應時不會記錄名稱（記錄名稱、每人一個回應、仍可能認出作答者的情況）",
+          "url": "https://support.microsoft.com/zh-tw/forms/set-up-your-survey-so-names-aren-t-recorded-when-collecting-responses",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft 支援：調整 Microsoft Forms 中的表單或測驗設定（誰可以填寫此表單、接受回應、開始與結束日期）",
+          "url": "https://support.microsoft.com/zh-tw/forms/adjust-your-form-or-quiz-settings-in-microsoft-forms",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft 支援：選擇誰可以填寫表單或測驗（勾選記錄名稱會記下每位回應者的名稱及電子郵件）",
+          "url": "https://support.microsoft.com/zh-tw/forms/choose-who-can-fill-out-a-form-or-quiz",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft 支援：Microsoft Forms 中的表單、問題、回應和字元限制（回應上限、每人一個回應的適用範圍、說明欄字元數）",
+          "url": "https://support.microsoft.com/zh-tw/forms/form-question-response-and-character-limits-in-microsoft-forms",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft 支援：歡迎使用 Forms 中的 Copilot（擬題、避開設計偏誤、分析回應、需 Copilot 授權）",
+          "url": "https://support.microsoft.com/zh-tw/forms/welcome-to-copilot-in-forms",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft 支援：Frequently asked questions about Copilot in Forms（不得用於與僱用相關的內容、產出可能不正確）",
+          "url": "https://support.microsoft.com/en-us/forms/frequently-asked-questions-about-copilot-in-forms",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Gemini 系列應用程式說明：Gemini 系列應用程式隱私權專區（保留活動記錄、人工審查、審查過的對話最多保留三年）",
+          "url": "https://support.google.com/gemini/answer/13594961?hl=zh-Hant",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google Workspace 說明：Generative AI in Google Workspace Privacy Hub（未經許可不交人工審查、不用於網域外的模型訓練）",
+          "url": "https://knowledge.workspace.google.com/admin/generative-ai/generative-ai-in-google-workspace-privacy-hub",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft Learn：Data, Privacy, and Security for Microsoft Copilot（Microsoft 365 Copilot 已更名；提示詞與回應不用於訓練基礎模型）",
+          "url": "https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-privacy",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Anthropic 隱私中心：Is my data used for model training?（Claude 個人方案在使用者允許或對話被標記為安全審查時以對話改進模型）",
+          "url": "https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training",
+          "checked_on": "2026-10-05"
+        }
+      ]
+    }
+  }
+}

@@ -17,7 +17,7 @@ const topics = [
 describe("the two-level topic chips", () => {
   it("links each top-level topic to its hub and leaves out what this language has nothing under", () => {
     render(<TopicChips section="life" topics={topics} active={null} allHref="/life" labels={labels} />);
-    expect(screen.getByRole("link", { name: /AI 工具/ }).getAttribute("href")).toBe("/life/topics/ai");
+    expect(screen.getByRole("link", { name: /AI 工具/ }).getAttribute("href")).toBe("/ai");
     // The count decides whether the chip draws at all; it is not printed on it.
     expect(screen.getByRole("link", { name: /AI 工具/ }).textContent).toBe("AI 工具");
     expect(screen.queryByRole("link", { name: /理財與金錢/ })).toBeNull();

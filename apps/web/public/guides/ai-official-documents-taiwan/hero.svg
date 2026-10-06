@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">用 AI 寫公文 / Drafting official documents with AI</title>
+  <desc id="desc">米色底的插圖。中央是一張直式公文紙，最上方一條青綠色色塊代表主旨，下面幾條灰線代表說明與辦法，其中一條是橘色，右下角蓋著一枚紅色方印。左上方一個青綠色對話框裡有三個點，用虛線箭頭連到公文紙，代表 AI 起草；一支藍色的筆從右下方斜斜伸進紙面，筆尖停在那條橘色線的尾端，右上方是一個綠色打勾圓章，代表由人核稿；左下方是一個橘色資料夾，上面掛著一把黑色鎖，代表機密文書另外鎖起來。下方一行字寫著「AI 起草，人來核」。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="26" markerHeight="26" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+
+  <g transform="translate(60,0)">
+    <!-- document sheet -->
+    <rect x="616" y="126" width="400" height="580" rx="18" fill="#E6DCCB"/>
+    <rect x="600" y="110" width="400" height="580" rx="18" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+    <rect x="640" y="160" width="320" height="48" rx="10" fill="#0D6B68"/>
+    <line x1="640" y1="262" x2="940" y2="262" stroke="#CFC7BA" stroke-width="14" stroke-linecap="round"/>
+    <line x1="640" y1="302" x2="900" y2="302" stroke="#CFC7BA" stroke-width="14" stroke-linecap="round"/>
+    <line x1="640" y1="342" x2="950" y2="342" stroke="#CFC7BA" stroke-width="14" stroke-linecap="round"/>
+    <line x1="640" y1="382" x2="860" y2="382" stroke="#CFC7BA" stroke-width="14" stroke-linecap="round"/>
+    <line x1="640" y1="452" x2="930" y2="452" stroke="#CFC7BA" stroke-width="14" stroke-linecap="round"/>
+    <line x1="640" y1="492" x2="900" y2="492" stroke="#D97A2B" stroke-width="14" stroke-linecap="round"/>
+    <line x1="640" y1="532" x2="880" y2="532" stroke="#CFC7BA" stroke-width="14" stroke-linecap="round"/>
+    <rect x="860" y="590" width="80" height="80" rx="8" fill="none" stroke="#B8442D" stroke-width="6"/>
+    <rect x="878" y="608" width="44" height="44" rx="4" fill="none" stroke="#B8442D" stroke-width="4"/>
+
+    <!-- chat bubble (AI drafts) -->
+    <polygon points="392,336 486,420 446,336" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6" stroke-linejoin="round"/>
+    <rect x="170" y="170" width="300" height="180" rx="36" fill="#E3F0EF" stroke="#0D6B68" stroke-width="6"/>
+    <circle cx="260" cy="260" r="16" fill="#0D6B68"/>
+    <circle cx="320" cy="260" r="16" fill="#0D6B68"/>
+    <circle cx="380" cy="260" r="16" fill="#0D6B68"/>
+    <line x1="482" y1="260" x2="586" y2="260" stroke="#0D6B68" stroke-width="6" stroke-dasharray="14 10" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+    <!-- reviewing pen (people check): nib at the end of the orange line, body toward lower right -->
+    <g transform="translate(912,496) rotate(40)">
+      <rect x="54" y="-22" width="262" height="44" rx="16" fill="#2F6F9F"/>
+      <rect x="50" y="-22" width="60" height="44" fill="#2F6F9F"/>
+      <rect x="150" y="-31" width="120" height="12" rx="6" fill="#102A2B"/>
+      <rect x="206" y="-22" width="14" height="44" fill="#E6F0F7"/>
+      <polygon points="0,0 56,-20 56,20" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="5" stroke-linejoin="round"/>
+      <polygon points="0,0 20,-7 20,7" fill="#102A2B"/>
+    </g>
+    <circle cx="1240" cy="250" r="60" fill="#2E7D5B"/>
+    <path d="M1210,252 L1233,276 L1272,228" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- locked folder (confidential documents) -->
+    <rect x="190" y="496" width="110" height="44" rx="10" fill="#F6D9B8" stroke="#D97A2B" stroke-width="5"/>
+    <rect x="190" y="520" width="260" height="170" rx="14" fill="#F6D9B8" stroke="#D97A2B" stroke-width="5"/>
+    <path d="M296,592 L296,566 A24,24 0 0 1 344,566 L344,592" fill="none" stroke="#102A2B" stroke-width="9"/>
+    <rect x="284" y="586" width="72" height="58" rx="10" fill="#102A2B"/>
+    <circle cx="320" cy="609" r="8" fill="#F6D9B8"/>
+  </g>
+
+  <text x="800" y="810" font-size="52" font-weight="700" fill="#102A2B" text-anchor="middle">AI 起草，人來核</text>
+</svg>

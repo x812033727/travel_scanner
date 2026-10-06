@@ -661,7 +661,10 @@ test("a chapter the writer answers badly is asked for again once, then the video
   const first = await automation.step();
   assert.match(first, /writer gave nothing usable \(writer answered something that is not JSON.*the next run tries once more/);
   assert.equal(automation.halted, true);
+  assert.ok(automation.skipped.has(state().slug), "no other lane asks the writer for it again in this run");
+  // The next run.
   automation.halted = false;
+  automation.skipped.clear();
   const second = await automation.step();
   assert.match(second, /blocked — writer failed 2 times in a row: chapter idea: scenes is missing or empty/);
   assert.equal(MAX_STAGE_FAILURES, 2);

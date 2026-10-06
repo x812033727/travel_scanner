@@ -1,0 +1,369 @@
+{
+  "slug": "ai-trading-bot-claims",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "finance",
+    "ai",
+    "investing"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "「AI 選股」「AI 交易機器人」的宣傳怎麼看：回測、績效宣稱與合法業者",
+      "description": "「AI 選股」「AI 交易機器人」的廣告常拿回測報酬和勝率當賣點。說明回測與實際交易的落差（過度配適、存活者偏差、交易成本），證券投資信託及顧問法對未經許可提供個股建議、販售選股軟體與投資廣告的規定，在投信投顧公會與證期局名冊查合法業者的步驟，以及合法服務與 AI 投資詐騙的分界。",
+      "hero": {
+        "src": "/guides/ai-trading-bot-claims/hero.jpg",
+        "alt": "插圖：一面深色外框的後照鏡，頂端用短桿接著一顆青綠色晶片，鏡中映出一條延伸到地平線的灰色道路、路旁的樹與白雲；下方寫著回測只看得到過去",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "回測（backtest）是把買賣規則套進過去行情算出的假設性績效，不是真的下單紀錄；事後調參數、資料少了下市公司、沒扣交易成本，都可能讓它比實際交易好看。",
+            "在台灣，收取報酬、經常性地對個股提供分析或建議，屬於須經許可的證券投資顧問業務；販售會報個股買賣價位的選股軟體，也可能涉及非法經營。",
+            "查業者要從投信投顧公會名錄與證期局名冊反查；遇到保證獲利、要你匯款到指定帳戶或交出帳號密碼的，撥 165 或（02）2737-3434。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "看標榜人工智慧（AI）選股或交易機器人的宣傳，先確認對方是不是經許可的業者，再追問績效數字怎麼來：回測只是假設的結果，而在台灣，收費對個股提供買賣建議須經證券投資顧問許可。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下依序說明回測的落差、台灣的法律限制、怎麼在中華民國證券投資信託暨顧問商業同業公會（投信投顧公會）與金融監督管理委員會（金管會）證券期貨局（證期局）的名冊查業者，以及和詐騙的分界。"
+        },
+        {
+          "type": "heading",
+          "text": "回測和實際交易，差在哪裡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "回測是把一套買賣規則套進過去的行情，計算「如果當時照做」的結果。美國證券交易委員會（SEC）的投資顧問廣告規則把回測歸為假設性績效，也就是沒有實際投資組合真正達成過的結果；美國商品期貨交易委員會（CFTC）規定，商品交易顧問等期貨業者展示模擬或假設性績效時要附上警語，標準警語寫明：模擬不代表實際交易，可能低估或高估流動性不足等因素的影響，而且是在已知結果的情況下設計出來的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "常見的落差來源："
+        },
+        {
+          "type": "list",
+          "items": [
+            "過度配適（overfitting）：參數反覆調到恰好貼合過去行情，像看過答案再出題，換一段期間就可能失靈。",
+            "存活者偏差（survivorship bias）：只用現在還在上市的股票，已下市或被併購的公司不在資料裡。",
+            "挑期間、挑參數：只展示表現最好的年份，或最好的那一組設定。",
+            "沒扣成本：手續費、證券交易稅、買賣價差與滑價（slippage，看到的價格和實際成交價的落差）。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "成本在頻繁交易時特別明顯。依證券交易稅條例，賣出股票按成交價格課徵千分之 3；當日沖銷交易在 2027 年 12 月 31 日前減按千分之 1.5 課徵。假設每次成交 100 萬元、一年賣出 50 次、都按千分之 3 課稅，光證券交易稅就是 15 萬元，還沒算手續費與滑價。"
+        },
+        {
+          "type": "paragraph",
+          "text": "就算換成實際帳戶的紀錄，也只代表過去那段期間，不表示之後會有類似結果。依證券投資顧問事業管理規則第 25-3 條，投顧提供自動化投資顧問服務（機器人理財）或變更演算法，須送投信投顧公會審查，審查事項包括以歷史資料回測能否達成預期成效。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "機器人理財在台灣怎麼管、費用怎麼算",
+              "kind": "life",
+              "slug": "robo-advisor-taiwan-explained"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "台灣怎麼管：收費給個股建議、賣選股軟體都要有許可",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "證券投資信託及顧問法第 4 條的證券投資顧問，是取得報酬、對有價證券投資提供分析意見或推介建議；依第 63 條要經許可才能營業，未經許可經營投顧或全權委託投資業務，第 107 條訂有五年以下有期徒刑，併科新臺幣 100 萬元以上 5,000 萬元以下罰金。"
+        },
+        {
+          "type": "paragraph",
+          "text": "投信投顧公會的《認定經營證券投資顧問業務之問答集》列出四個要件：提供分析或建議、取得報酬、兩者有對價關係、經常性反覆為之。和 AI 選股最相關的是："
+        },
+        {
+          "type": "list",
+          "items": [
+            "以個人名義或社群群組收費，不論叫課程費、訂閱費或會員費，只要是提供特定股票的買賣時點或價位並經常性為之，就與經營投顧業務無異。",
+            "銷售的軟體若會對個別股票給出買賣價位、支撐壓力點、停損停利價位，可能涉及非法經營；只做市場資訊基本統計分析的不屬之。",
+            "只分享經驗、教技術分析理論而不涉及特定股票的，屬於一般性證券投資資訊；是否違法，最後由司法機關依個案判斷。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "同法第 70-1 條規定，不是投信投顧事業的人刊登涉及有價證券投資或業務招攬的廣告，不得讓人誤信已獲核准，不得表示保證獲利，不得引用推薦書、感謝函、過去績效等易使人誤認確可獲利的內容，也不得冒用名人名義；經許可的投顧依證券投資顧問事業管理規則第 14 條，同樣不得保證獲利或引用過去績效。"
+        },
+        {
+          "type": "heading",
+          "text": "合法業者怎麼查：從名錄反查，不用對方給的資料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "投顧為推廣業務製發的書面文件，要列明公司登記名稱、地址、電話與營業執照字號。拿到公司名稱後："
+        },
+        {
+          "type": "list",
+          "items": [
+            "在投信投顧公會網站的「會員名錄查詢」選投顧名錄或兼營投顧名錄，輸入公司名稱，核對詳細資料裡的地址與電話。",
+            "在「經營事項一覽表」看它核准哪些業務；要替你操作帳戶的，再到「全權委託各項資料」查經營公司。",
+            "證期局網站的「證券期貨特許事業」頁可下載投顧公司名冊與期貨業名冊。",
+            "用名錄上的電話聯絡公司；查人員是否為合格登錄人員，可撥投信投顧公會（02）2581-7288 分機 110。",
+            "仍不確定，撥證券期貨反詐騙諮詢專線（02）2737-3434，有合法業者查詢服務。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "公會的非法業者警示專區並未涵蓋所有非法業者，不在名單上不代表合法。合法投顧要簽書面契約，收到契約後七日內可以書面終止；投顧不得收受客戶資金、代理客戶投資或保管客戶的存摺印鑑。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "宣傳裡的服務",
+            "適用規定",
+            "去哪裡確認"
+          ],
+          "rows": [
+            [
+              "群組或訂閱收費報個股買賣點",
+              "證券投資顧問業務，須經許可",
+              "公會投顧名錄、兼營投顧名錄"
+            ],
+            [
+              "販售會報個股價位的選股軟體",
+              "可能涉及非法經營投顧業務",
+              "公會名錄與經營事項一覽表"
+            ],
+            [
+              "代你下單、操作你的證券帳戶",
+              "全權委託投資業務，須另經核准",
+              "公會「全權委託各項資料」的經營公司"
+            ],
+            [
+              "期貨、外匯保證金的訊號或自動交易",
+              "期貨交易法第 82 條：期貨顧問、期貨經理事業須經許可",
+              "證期局期貨業名冊"
+            ],
+            [
+              "用 AI 交易虛擬資產的平台",
+              "洗錢防制法第 6 條：須完成洗錢防制登記",
+              "證期局虛擬資產服務業者名單"
+            ]
+          ],
+          "caption": "依服務內容對照適用規定與查詢入口，是否違法由司法機關依個案認定；查證於 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "text": "合法服務與 AI 投資詐騙的分界",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "誇大行銷和詐騙的界線，常落在錢與帳戶的去向。假投資的典型流程是：拉進通訊軟體 LINE 的投資群組，先讓人小額獲利，再引導下載應用程式（App）投入大筆資金，最後以洗碼量不足、要繳保證金等理由拒絕出金；也有冒用財經名人名義成立的群組。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 在這些劇本裡多半只是包裝。CFTC 的客戶警示提醒，AI 無法預測未來或突如其來的市場變化，宣稱百分之百勝率正是常見話術。SEC、北美證券管理者協會（NASAA）與美國金融業監管局（FINRA）的聯合投資人警示也提到，詐騙者會用 AI 仿造聲音、製作假影片來冒充他人。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深度偽造影片怎麼辨認、該向誰通報",
+              "kind": "life",
+              "slug": "ai-scams-deepfake-taiwan"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "宣傳或對話裡出現下列任何一項，都是常見的詐騙徵兆，先停下來："
+        },
+        {
+          "type": "list",
+          "items": [
+            "對方說保證獲利、穩賺不賠。",
+            "要你把錢匯到對方指定的帳戶。",
+            "要你交出證券帳號密碼或集保存摺，由對方代為下單。",
+            "出金前要你先補繳保證金。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "可撥 165 反詐騙諮詢專線或上 165 全民防騙網報案；檢舉非法證券期貨業者，可撥證期局（02）8773-4136。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-trading-bot-claims/diagram-1.svg",
+          "alt": "判斷流程圖：依序問有沒有詐騙徵兆、是否只是一般性投資資訊、公會名錄與證期局名冊是否查不到、績效是否只有回測或模擬，答是往右分別對應停止付款、不屬投顧業務、可能非法經營、只是假設性績效，四題都否再看契約；右下角另列人員資格查詢與檢舉非法業者的電話",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下依序判斷，答「是」往右看對應的處理方式；四題都答「否」，再回頭看契約內容。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "帳號密碼與存摺，不交給任何人代操",
+          "text": "AI 交易服務若要你交出證券帳號密碼或集保存摺，做法正是金管會列舉的非法全權委託態樣。合法的全權委託投資要簽全權委託投資契約，原則上客戶還要另與保管機構簽約，不是把帳號密碼交給對方；對方查不到全權委託資格，獲利說得再好也不要把錢或帳戶交出去。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "帳戶交給別人使用的後果：警示帳戶是怎麼來的",
+              "kind": "life",
+              "slug": "warning-account-prevention"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "網銀的一次性密碼與裝置綁定各防什麼",
+              "kind": "life",
+              "slug": "online-banking-security"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "資訊整理，不是投資建議",
+          "text": "以上說明的是制度、交易成本與查詢方法，不推薦任何個別商品、服務或業者，也不是投資建議。費用、稅負與交易規則依主管機關與業者當期公告為準，本文查證日為 2026-10-05；實際適用請以官方資訊或合格專業人員的意見為準。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "全國法規資料庫：證券投資信託及顧問法（第 4、61、63、70-1、107 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400121",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：證券投資顧問事業管理規則（第 10、13、14、25-3 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400077",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "投信投顧公會：認定經營證券投資顧問業務之問答集（證期局 112 年 6 月 13 日函洽悉）",
+          "url": "https://www.sitca.org.tw/ROC/Legal/files/%E8%AA%8D%E5%AE%9A%E7%B6%93%E7%87%9F%E8%AD%89%E5%88%B8%E6%8A%95%E8%B3%87%E9%A1%A7%E5%95%8F%E6%A5%AD%E5%8B%99%E4%B9%8B%E5%95%8F%E7%AD%94%E9%9B%86.pdf",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "投信投顧公會：會員名錄查詢（投顧名錄、兼營投顧名錄、公司詳細資料與人員查詢專線）",
+          "url": "https://www.sitca.org.tw/ROC/MemData/MD2001N.aspx?PGMID=AS0701",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "投信投顧公會：經營事項一覽表",
+          "url": "https://www.sitca.org.tw/ROC/MemData/MD1001N.aspx?PGMID=AS0702",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "投信投顧公會：非法業者警示專區（註明未含所有非法業者）",
+          "url": "https://www.sitca.org.tw/ROC/Legal/main2.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "證期局：證券期貨特許事業（投顧公司名冊、期貨業名冊下載）",
+          "url": "https://www.sfb.gov.tw/ch/home.jsp?id=1015&parentpath=0%2C4",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "證期局：非法經營證券期貨業務態樣（非法投信投顧業類型、非法期貨業類型）",
+          "url": "https://www.sfb.gov.tw/ch/home.jsp?id=1046&parentpath=0%2C5%2C775",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "證期局：詐騙類型（假冒金融業者或財經名人成立群組）",
+          "url": "https://www.sfb.gov.tw/ch/home.jsp?id=1047&parentpath=0%2C5%2C775",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "證期局：投資人申訴方式（檢舉電話、證券期貨反詐騙諮詢專線）",
+          "url": "https://www.sfb.gov.tw/ch/home.jsp?id=1048&parentpath=0%2C5%2C775",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "證期局：提供虛擬資產服務之事業或人員（洗錢防制法第 6 條與登記名單）",
+          "url": "https://www.sfb.gov.tw/ch/home.jsp?id=1053&parentpath=0%2C8",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：期貨交易法（第 82 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400100",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：證券交易稅條例（第 2、2-2 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340078",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "刑事警察局：常見詐騙手法話術解析－假投資",
+          "url": "https://www.cib.npa.gov.tw/ch/app/data/view?module=wg116&id=1909&serno=a4f8d5ab-3d53-4d22-9411-031fddde7a4e",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "警政署：165 反詐騙諮詢專線與網路報案",
+          "url": "https://www.npa.gov.tw/ch/app/faq/view?module=faq&id=2144&serno=A1078837",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "證券暨期貨法令判解查詢系統：投信投顧公會證券投資顧問事業以自動化工具提供證券投資顧問服務審查小組之設置及作業要點（第 2 條審查事項）",
+          "url": "https://www.selaw.com.tw/Chinese/RegulatoryInformationResult/Article?sysnumber=LW11301204",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "eCFR：17 CFR 275.206(4)-1，美國 SEC 投資顧問廣告規則（假設性績效包含回測）",
+          "url": "https://www.ecfr.gov/current/title-17/chapter-II/part-275/section-275.206(4)-1",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "eCFR：17 CFR 4.41，美國 CFTC 模擬或假設性績效的警語",
+          "url": "https://www.ecfr.gov/current/title-17/chapter-I/part-4/subpart-D/section-4.41",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "CFTC：Customer Advisory: AI Won't Turn Trading Bots into Money Machines（AI 交易機器人客戶警示）",
+          "url": "https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/AITradingBots.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "FINRA：Artificial Intelligence (AI) and Investment Fraud（SEC、NASAA 與 FINRA 聯合投資人警示，含深度偽造影音）",
+          "url": "https://www.finra.org/investors/insights/artificial-intelligence-and-investment-fraud",
+          "checked_on": "2026-10-05"
+        }
+      ]
+    }
+  }
+}

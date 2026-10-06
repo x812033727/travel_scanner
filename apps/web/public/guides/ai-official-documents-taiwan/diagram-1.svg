@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">用 AI 起草公文：哪一步交給 AI，哪一步由人核對 / Drafting official documents with AI</title>
+  <desc id="desc">流程圖。左上方是起點「收到交辦或來文」，往下到判斷框「是機密文書嗎？」（絕對機密、極機密、機密、密）。答「是」往下走紅色路線：承辦人親自撰寫，全程不用生成式 AI，起草、潤稿、摘要都不貼進 AI。答「否」往右走四步：去識別（人名、金額換成○○）、AI 起草（主旨、說明、辦法）、人工核對、核稿與判行（照分層負責）。人工核對那一步往下展開成逐項確認的五件事：期限要寫進主旨、法規條號回法規資料庫比對、數字與日期對照原始資料、機關全銜不省文縮寫、來文字號對照原件。底部註明 AI 只產出草稿，最終判斷由業務承辦人做。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#102A2B"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B8442D"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2E7D5B"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2F6F9F"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">用 AI 起草公文：哪一步交給 AI，哪一步由人核對</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Drafting official documents with AI: where the tool helps and where people decide</text>
+
+  <!-- legend -->
+  <rect x="460" y="160" width="1080" height="90" rx="14" fill="#FFFFFF" stroke="#D9D2C5" stroke-width="2"/>
+  <text x="490" y="213" font-size="20" font-weight="700" fill="#5C6B6B">顏色怎麼看</text>
+  <rect x="640" y="185" width="40" height="40" rx="8" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="696" y="213" font-size="20" fill="#102A2B">交給 AI 起草</text>
+  <rect x="900" y="185" width="40" height="40" rx="8" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="956" y="213" font-size="20" fill="#102A2B">由人來做、由人核對</text>
+  <rect x="1220" y="185" width="40" height="40" rx="8" fill="#FBEAE6" stroke="#B8442D" stroke-width="4"/>
+  <text x="1276" y="213" font-size="20" fill="#102A2B">不使用生成式 AI</text>
+
+  <!-- start -->
+  <rect x="60" y="150" width="320" height="110" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="220" y="214" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">收到交辦或來文</text>
+
+  <line x1="220" y1="260" x2="220" y2="326" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <!-- decision -->
+  <rect x="60" y="330" width="320" height="150" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="220" y="397" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">是機密文書嗎？</text>
+  <text x="220" y="440" font-size="17" fill="#5C6B6B" text-anchor="middle">絕對機密、極機密、機密、密</text>
+
+  <!-- yes branch -->
+  <line x1="220" y1="480" x2="220" y2="566" stroke="#B8442D" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrowRed)"/>
+  <text x="240" y="530" font-size="20" font-weight="700" fill="#B8442D">是</text>
+
+  <rect x="60" y="570" width="320" height="230" rx="14" fill="#FBEAE6" stroke="#B8442D" stroke-width="4"/>
+  <text x="220" y="640" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">承辦人親自撰寫</text>
+  <text x="220" y="688" font-size="20" font-weight="700" fill="#B8442D" text-anchor="middle">全程不用生成式 AI</text>
+  <text x="220" y="736" font-size="17" fill="#102A2B" text-anchor="middle">起草、潤稿、摘要</text>
+  <text x="220" y="764" font-size="17" fill="#102A2B" text-anchor="middle">都不貼進 AI</text>
+
+  <!-- no branch -->
+  <line x1="380" y1="405" x2="456" y2="405" stroke="#2E7D5B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrowGreen)"/>
+  <text x="418" y="388" font-size="20" font-weight="700" fill="#2E7D5B" text-anchor="middle">否</text>
+
+  <!-- pipeline -->
+  <rect x="460" y="330" width="240" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="580" y="392" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">去識別</text>
+  <text x="580" y="432" font-size="17" fill="#5C6B6B" text-anchor="middle">人名、金額換成○○</text>
+
+  <line x1="700" y1="405" x2="736" y2="405" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <rect x="740" y="330" width="240" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="860" y="392" font-size="26" font-weight="700" fill="#0D6B68" text-anchor="middle">AI 起草</text>
+  <text x="860" y="432" font-size="17" fill="#5C6B6B" text-anchor="middle">主旨、說明、辦法</text>
+
+  <line x1="980" y1="405" x2="1016" y2="405" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <rect x="1020" y="330" width="240" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1140" y="392" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">人工核對</text>
+  <text x="1140" y="432" font-size="17" fill="#5C6B6B" text-anchor="middle">展開見下方</text>
+
+  <line x1="1260" y1="405" x2="1296" y2="405" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <rect x="1300" y="330" width="240" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1420" y="392" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">核稿、判行</text>
+  <text x="1420" y="432" font-size="17" fill="#5C6B6B" text-anchor="middle">照分層負責</text>
+
+  <!-- checklist panel -->
+  <line x1="1140" y1="480" x2="1140" y2="556" stroke="#2F6F9F" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="butt" marker-end="url(#arrowBlue)"/>
+  <rect x="460" y="560" width="1080" height="240" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="490" y="606" font-size="22" font-weight="700" fill="#102A2B">人工核對：逐項確認的五件事</text>
+
+  <rect x="490" y="635" width="188" height="135" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="584" y="692" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">期限</text>
+  <text x="584" y="730" font-size="16" fill="#5C6B6B" text-anchor="middle">寫進主旨</text>
+
+  <rect x="698" y="635" width="188" height="135" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="792" y="692" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">法規條號</text>
+  <text x="792" y="730" font-size="16" fill="#5C6B6B" text-anchor="middle">回法規資料庫比對</text>
+
+  <rect x="906" y="635" width="188" height="135" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1000" y="692" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">數字與日期</text>
+  <text x="1000" y="730" font-size="16" fill="#5C6B6B" text-anchor="middle">對照原始資料</text>
+
+  <rect x="1114" y="635" width="188" height="135" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1208" y="692" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">機關全銜</text>
+  <text x="1208" y="730" font-size="16" fill="#5C6B6B" text-anchor="middle">不省文縮寫</text>
+
+  <rect x="1322" y="635" width="188" height="135" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1416" y="692" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">來文字號</text>
+  <text x="1416" y="730" font-size="16" fill="#5C6B6B" text-anchor="middle">對照原件</text>
+
+  <text x="60" y="852" font-size="17" fill="#5C6B6B">AI 只產出草稿，最終判斷由業務承辦人做</text>
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

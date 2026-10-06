@@ -80,7 +80,7 @@ describe("the lifestyle listing", () => {
     // The chip leads to the topic's hub, the page that ranks for it, not to another
     // `?topic=` view of this listing.
     const chip = screen.getByRole("link", { name: "AI 工具" });
-    expect(chip.getAttribute("href")).toBe("/life/topics/ai");
+    expect(chip.getAttribute("href")).toBe("/ai");
     expect(chip.getAttribute("aria-current")).toBe("page");
   });
 
@@ -248,7 +248,7 @@ describe("the lifestyle listing", () => {
 describe("what the lifestyle listing tells search engines", () => {
   it("names the topic hub as canonical for a ?topic= view, and nothing otherwise", async () => {
     const filtered = await generateMetadata({ params, searchParams: search({ topic: "ai" }) });
-    expect(filtered.alternates).toEqual({ canonical: "http://localhost:3000/zh-TW/life/topics/ai" });
+    expect(filtered.alternates).toEqual({ canonical: "http://localhost:3000/zh-TW/ai" });
     const plain = await generateMetadata({ params, searchParams: search() });
     expect(plain.alternates).toBeUndefined();
   });

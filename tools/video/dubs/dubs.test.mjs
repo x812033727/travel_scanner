@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -8,13 +8,13 @@ import { sha256File } from "../core/approvals.mjs";
 import { brandingHash, pinBranding } from "../core/branding.mjs";
 import { fixture, sandbox } from "../core/fixtures/load.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
-import { dubArtifacts } from "../core/state.mjs";
+import { dubArtifacts, loadProject } from "../core/state.mjs";
 import { estimateTimeline, framesFor, msToSamples, SAMPLE_RATE, SAMPLES_PER_FRAME } from "../core/timeline.mjs";
 import { concatSamples, encodeWav, parseWav } from "../tts/wav.mjs";
 import { encodeArgs, stretchArgs } from "./encode.mjs";
 import {
   BUDGET_MARGIN, DEFAULT_RATES, DUB_STYLES, GAP_MS, GUARD_MS, LINE_OVERHEAD_MS, MAX_TEMPO, RATE_RATIOS,
-  assembleTrack, defaultRate, dubLexicon, dubScript, estimatedLengths, layoutDub, layoutWindow, lineBudgets, measureRate, narrationRate, placeLines, shrinkBudgets, translationHash, windowsOf,
+  assembleTrack, defaultRate, dubLexicon, dubRequests, dubScript, estimatedLengths, layoutDub, layoutWindow, lineBudgets, measureRate, narrationRate, placeLines, shrinkBudgets, translationHash, windowsOf,
 } from "./plan.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -399,6 +399,95 @@ test("--line-by-line sends one request a line, so a scene is never paid for twic
   assert.ok(bodies.every((body) => body.segments.length === 1), "each request carries a single line");
   assert.doesNotMatch(run.out.stdout, /fallback/);
   assert.ok(existsSync(dubArtifacts(box.workdir, "en").track("m4a")));
+});
+
+test("a STOP file ends a dub as incomplete: the takes so far are kept, no fit report, timeline or track is written, and the rerun buys only the rest", async () => {
+  const box = sandbox();
+  const doc = geminiDoc(fixture());
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(doc, null, 2)}\n`);
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  for (const locale of ["en", "ja"]) writeFileSync(path.join(box.dir, "i18n", `${locale}.json`), JSON.stringify(translationFor(doc, (line) => `${locale} ${line.id}`)));
+  const server = fakeServer();
+  const ffmpeg = fakeFfmpeg();
+  await narrate(box, server, ffmpeg);
+  const posts = () => server.calls.filter((call) => call.url.endsWith("/api/video/speech")).length;
+  const narrated = posts();
+  const stop = path.join(box.work, "STOP");
+  // The owner drops a STOP file while the dub's request number `dropAt` is being answered.
+  let dropAt = null;
+  const owner = {
+    calls: server.calls,
+    fetchImpl: async (url, init) => {
+      const response = await server.fetchImpl(url, init);
+      if (url.endsWith("/api/video/speech") && posts() - narrated === dropAt) writeFileSync(stop, "");
+      return response;
+    },
+  };
+  const dub = async (...args) => {
+    const { ctx, out } = capture(box, owner, ffmpeg);
+    return { code: await main(["dub", "--slug", box.slug, ...args], ctx), ...out };
+  };
+  const en = dubArtifacts(box.workdir, "en");
+  const made = () => [en.fit, en.timeline, en.narration, en.track("m4a")].filter((file) => existsSync(file));
+  const { requests } = dubRequests(loadProject({ slug: box.slug, root: box.root }), "en");
+  assert.equal(requests.length, 3, "a request a scene");
+
+  // A STOP file already there: nothing is bought.
+  writeFileSync(stop, "");
+  const before = await dub("--locale", "en");
+  assert.equal(before.code, EXIT.incomplete, before.stderr);
+  assert.match(before.stdout, /^en: stopped by the STOP file; 0 of 3 requests done, rerun to continue$/m);
+  assert.equal(posts(), narrated);
+  assert.deepEqual(made(), []);
+
+  // Dropped while the first request is answered: its takes are kept, and the next locale is not started.
+  rmSync(stop);
+  dropAt = 1;
+  const stopped = await dub("--locale", "en,ja");
+  assert.equal(stopped.code, EXIT.incomplete, stopped.stderr);
+  assert.match(stopped.stdout, /^en: stopped by the STOP file; 1 of 3 requests done, rerun to continue$/m);
+  assert.doesNotMatch(stopped.stdout, /^(ja|next)\b/m, "the STOP file stops the next locale too, and check-audio is not next");
+  assert.equal(posts(), narrated + 1);
+  const cache = JSON.parse(readFileSync(en.cache, "utf8"));
+  assert.deepEqual(Object.keys(cache.lines), requests[0].lines.map((line) => line.id));
+  for (const line of requests[0].lines) {
+    assert.equal(cache.lines[line.id], line.key, `${line.id}'s take is kept`);
+    assert.ok(existsSync(path.join(en.audio, `${line.id}.wav`)));
+  }
+  assert.deepEqual(made(), [], "no fit report, timeline or track");
+  assert.equal(existsSync(dubArtifacts(box.workdir, "ja").dir), false);
+
+  // With the STOP file still there, the next run stops before it pays for anything.
+  const held = await dub("--locale", "en");
+  assert.equal(held.code, EXIT.incomplete);
+  assert.match(held.stdout, /^en: stopped by the STOP file; 0 of 2 requests done/m);
+  assert.equal(posts(), narrated + 1);
+
+  rmSync(stop);
+  const resumed = await dub("--locale", "en");
+  assert.equal(resumed.code, EXIT.ok, resumed.stderr);
+  assert.equal(posts(), narrated + 3, "only the two requests left are synthesized");
+  assert.match(resumed.stdout, /^en: 2 requests synthesized \(20 billable characters\), 1 reused;/m);
+  assert.deepEqual(made(), [en.fit, en.timeline, en.narration, en.track("m4a")]);
+
+  // A retake the STOP file ends leaves the made track as it was, and the next plain run lays the
+  // takes out again without buying any (the worker's next run, automation/flow.mjs makeDub).
+  const flags = path.join(box.workdir, "review", "check-flags.en.json");
+  mkdirSync(path.dirname(flags), { recursive: true });
+  writeFileSync(flags, JSON.stringify({ flags: [requests[0].lines[0].id, requests[2].lines[0].id] }));
+  const hashes = () => Promise.all(made().map((file) => sha256File(file)));
+  const kept = await hashes();
+  dropAt = posts() - narrated + 1;
+  const retake = await dub("--locale", "en", "--redo", flags);
+  assert.equal(retake.code, EXIT.incomplete, retake.stderr);
+  assert.match(retake.stdout, /^en: stopped by the STOP file; 1 of 2 requests done, rerun to continue$/m);
+  assert.deepEqual(await hashes(), kept, "the fit report, timeline and track are the last made ones");
+  rmSync(stop);
+  const paid = posts();
+  const remade = await dub("--locale", "en");
+  assert.equal(remade.code, EXIT.ok, remade.stderr);
+  assert.equal(posts(), paid, "every take is in the cache");
+  assert.match(remade.stdout, /^en: 0 requests synthesized \(0 billable characters\), 3 reused;/m);
 });
 
 test("dub refuses what it cannot do: an Azure voice, a missing timeline, a bad locale or format", async () => {

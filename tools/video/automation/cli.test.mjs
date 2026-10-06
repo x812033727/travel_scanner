@@ -110,6 +110,30 @@ test("auto clears one finished video once a round, after the units, whether or n
   assert.deepEqual([...first.commands, ...second.commands, ...third.commands], [], "no stage ran");
 });
 
+test("a round that moves nothing because videos wait on their own names them with the time each is tried again, instead of saying every video waits on the owner", async () => {
+  const { idleLine } = await import("./cli.mjs");
+  assert.equal(idleLine(), "nothing to do now: every video waits on the owner, or the next draft is not due");
+  assert.equal(idleLine([{ slug: "one-video", until: "2026-10-20T12:30:00.000Z" }]), "nothing to do now: 1 deferred and tried again later (one-video until 2026-10-20T12:30:00.000Z); the other videos wait on the owner, or the next draft is not due");
+  // A video only this run left (a STOP file between requests) has no time of its own.
+  assert.match(idleLine([{ slug: "one-video", until: "2026-10-20T12:30:00.000Z" }, { slug: "stopped-video", until: null }]), /^nothing to do now: 2 deferred and tried again later \(one-video until 2026-10-20T12:30:00\.000Z, stopped-video until the next round\); /);
+
+  const box = sandbox();
+  const state = (slug, extra) => put(path.join(box.work, slug), STATE_FILE, `${JSON.stringify({ slug, title: slug, created_at: daysAgo(3), notes: [], ...extra })}\n`);
+  state("vendor-busy", { status: "active", created_at: daysAgo(5), deferred_until: "2026-10-20T12:30:00.000Z", defer_count: 3 });
+  state("push-refused", { status: "active", created_at: daysAgo(4), deferred_until: "2026-10-20T13:10:00.000Z", defer_count: 5 });
+  // Its wait is over: the round looks at it, finds nothing to do and ends its row of deferrals; it is not named.
+  state("wait-over", { status: "done", deferred_until: "2026-10-20T11:00:00.000Z", defer_count: 1 });
+  const site = fakeSite({ videos: ["vendor-busy", "push-refused", "wait-over"].map((slug) => listing(slug, { youtube_video_id: null, publish_approved_at: null, locales_decided_at: null })) });
+  const round = context(box, site, { env: { VIDEO_TIDY_DAYS: "off" } });
+  assert.equal(await main(["auto"], round.ctx), EXIT.ok);
+  // Before: "nothing to do now: every video waits on the owner, or the next draft is not due".
+  assert.equal(round.out.stdout, "nothing to do now: 2 deferred and tried again later (vendor-busy until 2026-10-20T12:30:00.000Z, push-refused until 2026-10-20T13:10:00.000Z); the other videos wait on the owner, or the next draft is not due\n");
+  assert.deepEqual(round.commands, [], "no stage ran for a video whose wait is not over");
+  const rested = JSON.parse(readFileSync(path.join(box.work, "wait-over", STATE_FILE), "utf8"));
+  assert.deepEqual([rested.deferred_until, rested.defer_count], [undefined, undefined]);
+  assert.equal(JSON.parse(readFileSync(path.join(box.work, "vendor-busy", STATE_FILE), "utf8")).defer_count, 3);
+});
+
 test("auto clears nothing when automatic drafts are off, when STOP is found, or when VIDEO_TIDY_DAYS is off", async () => {
   const box = sandbox();
   const dir = video(box.work, "old-on-youtube");

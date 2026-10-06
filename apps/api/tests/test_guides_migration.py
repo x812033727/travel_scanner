@@ -231,10 +231,15 @@ LIFE_SEED_MIGRATIONS = (
     "0075_finance_topic",
     "0076_guide_topic_hierarchy",
     "0080_crypto_and_tech_topics",
+    "0126_ai_income_topic",
 )
 #: The subset that seeds sub-topics and hub leads. 0074 and 0075 predate both, so they carry
 #: no ``LIFE_SEED_SUBTOPICS`` at all.
-LIFE_SUBTOPIC_MIGRATIONS = ("0076_guide_topic_hierarchy", "0080_crypto_and_tech_topics")
+LIFE_SUBTOPIC_MIGRATIONS = (
+    "0076_guide_topic_hierarchy",
+    "0080_crypto_and_tech_topics",
+    "0126_ai_income_topic",
+)
 
 
 def seeded_life_topics(name: str) -> list[tuple[str, int, object]]:
@@ -757,6 +762,88 @@ def topic_rows(connection):
             )
         )
     }
+
+
+def test_0125_seeds_ai_income_under_ai_and_its_rollback_takes_only_that_row(monkeypatch):
+    """0125 hangs ``ai-income`` under ``ai`` (seeded by 0074), writes its lead once, leaves an
+    editor's rewrite alone on a re-run, and its rollback removes that one row and its links."""
+    names = (
+        "0072_travel_guides",
+        "0074_lifestyle_guides",
+        "0075_finance_topic",
+        "0076_guide_topic_hierarchy",
+        "0080_crypto_and_tech_topics",
+        "0126_ai_income_topic",
+    )
+    modules = [migration(name) for name in names]
+    for module in modules:
+        monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
+    *earlier, income = modules
+    engine = sa.create_engine("sqlite://")
+    with engine.begin() as connection:
+        Base.metadata.create_all(
+            connection,
+            tables=[
+                mapped_table(User),
+                mapped_table(GuideTopic),
+                mapped_table(GuideArticle),
+                mapped_table(GuideArticleLocale),
+                mapped_table(GuideArticleRevision),
+                mapped_table(GuideArticleTopic),
+            ],
+        )
+        with Operations.context(MigrationContext.configure(connection)):
+            for module in earlier:
+                module.upgrade()
+            before = sections(connection)
+
+            income.upgrade()
+
+            rows = {
+                row.slug: row
+                for row in connection.execute(
+                    sa.select(
+                        GuideTopic.slug,
+                        GuideTopic.id,
+                        GuideTopic.parent_id,
+                        GuideTopic.section,
+                        GuideTopic.display_order,
+                        GuideTopic.descriptions_json,
+                        GuideTopic.source,
+                    )
+                )
+            }
+            assert set(rows) == set(before) | {"ai-income"}
+            row = rows["ai-income"]
+            assert row.parent_id == rows["ai"].id
+            assert (row.section, row.display_order, row.source) == ("life", 560, "seed")
+            assert row.descriptions_json == income.TOPIC_DESCRIPTIONS["ai-income"]
+
+            connection.execute(
+                sa.update(GuideTopic)
+                .where(GuideTopic.slug == "ai-income")
+                .values(descriptions_json={"zh-TW": "\u81ea\u8a02"})
+            )
+            income.upgrade()
+            assert len(sections(connection)) == len(before) + 1
+            assert connection.scalar(
+                sa.select(GuideTopic.descriptions_json).where(GuideTopic.slug == "ai-income")
+            ) == {"zh-TW": "\u81ea\u8a02"}
+
+            article = uuid4()
+            connection.execute(
+                sa.insert(GuideArticle).values(id=article, slug="ai-freelance", kind="life")
+            )
+            connection.execute(
+                sa.insert(GuideArticleTopic).values(article_id=article, topic_id=row.id)
+            )
+
+            income.downgrade()
+
+            assert sections(connection) == before
+            assert connection.scalar(
+                sa.select(sa.func.count()).select_from(GuideArticleTopic)
+            ) == 0
 
 
 def test_0082_files_every_dish_under_food_and_its_rollback_takes_only_its_own_rows(monkeypatch):

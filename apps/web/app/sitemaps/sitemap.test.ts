@@ -390,7 +390,7 @@ describe("guide articles in the section children", () => {
     arrange();
     vi.mocked(guideTopicSitemapEntries).mockResolvedValue([{ section: "life", slug: "ai", locales: ["zh-TW"] }]);
     const first = await child("life-zh-TW");
-    expect(first.map((entry) => entry.url)).toEqual([`${siteUrl}/zh-TW/life/topics/ai`, `${siteUrl}/zh-TW/life/ai-notes`]);
+    expect(first.map((entry) => entry.url)).toEqual([`${siteUrl}/zh-TW/ai`, `${siteUrl}/zh-TW/life/ai-notes`]);
     const second = await child("life-zh-TW-2");
     expect(guideSitemapEntries).toHaveBeenLastCalledWith({ section: "life", locale: "zh-TW", offset: 5000 });
     expect(second.map((entry) => entry.url)).toEqual([`${siteUrl}/zh-TW/life/ai-notes`]);
@@ -591,16 +591,17 @@ describe("topic hubs in the section children", () => {
     vi.mocked(getDiscoveryStatus).mockReset().mockResolvedValue({ enabled: false });
     vi.mocked(getCommunityState).mockReset().mockResolvedValue(closedCommunity);
     mockPlaces([]);
-    return (await everything()).filter((entry) => new URL(entry.url).pathname.includes("/topics/"));
+    // The AI family's hub is a topic hub at its own address, `/ai`.
+    return (await everything()).filter((entry) => { const path = new URL(entry.url).pathname; return path.includes("/topics/") || /^\/[^/]+\/ai$/.test(path); });
   }
 
   it("lists a hub only in the languages that publish something under its topic", async () => {
     const topics = await build();
     expect(topics.map((entry) => entry.url).sort()).toEqual([
-      `${siteUrl}/en/life/topics/ai`,
+      `${siteUrl}/en/ai`,
       `${siteUrl}/ja/guides/topics/transport`,
+      `${siteUrl}/zh-TW/ai`,
       `${siteUrl}/zh-TW/guides/topics/transport`,
-      `${siteUrl}/zh-TW/life/topics/ai`,
       `${siteUrl}/zh-TW/life/topics/ai-terms`,
     ]);
   });
@@ -608,18 +609,18 @@ describe("topic hubs in the section children", () => {
   it("files each hub in the child of its own section and language, ahead of that child's articles", async () => {
     await build();
     expect((await child("life-zh-TW")).map((entry) => entry.url)).toEqual([
-      `${siteUrl}/zh-TW/life/topics/ai`, `${siteUrl}/zh-TW/life/topics/ai-terms`,
+      `${siteUrl}/zh-TW/ai`, `${siteUrl}/zh-TW/life/topics/ai-terms`,
     ]);
-    expect((await child("life-en")).map((entry) => entry.url)).toEqual([`${siteUrl}/en/life/topics/ai`]);
+    expect((await child("life-en")).map((entry) => entry.url)).toEqual([`${siteUrl}/en/ai`]);
     expect((await child("travel-en")).map((entry) => entry.url)).toEqual([]);
-    expect((await child("static")).some((entry) => entry.url.includes("/topics/"))).toBe(false);
+    expect((await child("static")).some((entry) => entry.url.includes("/topics/") || entry.url.endsWith("/ai"))).toBe(false);
   });
 
   it("carries alternates for those languages only, x-default only with English, and no lastmod", async () => {
     const topics = await build();
-    const ai = topics.find((entry) => entry.url.endsWith("/zh-TW/life/topics/ai"));
+    const ai = topics.find((entry) => entry.url.endsWith("/zh-TW/ai"));
     expect(ai!.alternates!.languages).toEqual({
-      "zh-TW": `${siteUrl}/zh-TW/life/topics/ai`, en: `${siteUrl}/en/life/topics/ai`, "x-default": `${siteUrl}/en/life/topics/ai`,
+      "zh-TW": `${siteUrl}/zh-TW/ai`, en: `${siteUrl}/en/ai`, "x-default": `${siteUrl}/en/ai`,
     });
     const transport = topics.find((entry) => entry.url.endsWith("/ja/guides/topics/transport"));
     expect(Object.keys(transport!.alternates!.languages!).sort()).toEqual(["ja", "zh-TW"]);

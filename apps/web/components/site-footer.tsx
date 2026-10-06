@@ -5,6 +5,10 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { destinationsCopy } from "@/lib/destinations-copy";
 import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { featureVisible } from "@/lib/site-features";
+import { navGroups, navItemLabelKey } from "@/lib/nav-links";
+
+const ai = navGroups.find((group) => group.key === "ai")!;
+const footerLink = "inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline";
 
 // The admin console is not a public page and has its own chrome. The planner runs as a
 // full-screen shell that already hides the bottom navigation, and a footer under it would
@@ -24,8 +28,8 @@ export function SiteFooter({ year }: { year: number }) {
 
   return (
     <footer aria-label={t("footerLabel")} className="mt-16 border-t border-[var(--line)] bg-[var(--paper)]">
-      <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-2 lg:grid-cols-3">
-        <div className="sm:col-span-2 lg:col-span-1">
+      <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="sm:col-span-2 lg:col-span-4">
           <p className="text-lg font-bold">Mokaair</p>
           <p className="mt-2 max-w-sm text-sm leading-6 text-[var(--muted)]">{t("footerTagline")}</p>
         </div>
@@ -34,6 +38,15 @@ export function SiteFooter({ year }: { year: number }) {
           <ul className="mt-3 grid text-sm">
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/privacy">{t("footerPrivacy")}</Link></li>
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/terms">{t("footerTerms")}</Link></li>
+          </ul>
+        </nav>
+        {/* The AI section is the site's largest and has its own hub, so it gets its own column
+            rather than one line in the site list: the hub, then the pages its menu names. */}
+        <nav aria-label={t("ai")}>
+          <h2 className="text-sm font-bold">{t("ai")}</h2>
+          <ul className="mt-3 grid text-sm">
+            <li><Link className={footerLink} href="/ai">{t("ai")}</Link></li>
+            {ai.items.map((item) => <li key={item.href}><Link className={footerLink} href={item.href}>{t(navItemLabelKey("ai", item.key))}</Link></li>)}
           </ul>
         </nav>
         <nav aria-label={t("footerSite")}>
@@ -48,6 +61,7 @@ export function SiteFooter({ year }: { year: number }) {
                 once the switch has resolved, so on a first paint this is the only entry. */}
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/guides">{t("guides")}</Link></li>
             <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/life">{t("life")}</Link></li>
+            <li><Link className="inline-flex min-h-11 items-center text-[var(--muted)] underline-offset-4 hover:underline" href="/videos">{t("videos")}</Link></li>
             {/* /hotspots, /foods and /explore are in the sitemap but were linked from nowhere:
                 the header renders its nav only after the discovery switch resolves on the
                 client, so no response body carried them and a crawler never reached the 593

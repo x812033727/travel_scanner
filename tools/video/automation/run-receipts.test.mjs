@@ -5,7 +5,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { sandbox } from "../core/fixtures/load.mjs";
-import { AUTO_ARCHIVE_REASON, canonicalJson, INPUT_CHANGED_CODE, jobGoneReason, normalizeRun, POLICY_HOLD_CODE, runReceiptStore, sourceHash, validateRunReceipt } from "./run-receipts.mjs";
+import { AUTO_ARCHIVE_REASON, canonicalJson, INPUT_CHANGED_CODE, JOB_GONE_KIND, jobGoneReason, normalizeRun, POLICY_HOLD_CODE, runReceiptStore, sourceHash, validateRunReceipt } from "./run-receipts.mjs";
 
 const site = "https://site.test";
 const request = (slug = "video-one") => ({ stage: "writer", slug, instructions: "Write the checked story.", payload: { locale: "zh-TW", rows: [1, 2] } });
@@ -199,6 +199,36 @@ test("an owner retry lists plain failed journals so the retry can clear them, an
   assert.deepEqual(store.retryCandidates("video-two"), []);
 });
 
+test("the retry of a job_gone block lists that stage's queued and running journals, under the owner's request id only; no other retry touches a journal whose job may still be running", () => {
+  const box = sandbox(), store = runReceiptStore(context(box), site);
+  assert.equal(JOB_GONE_KIND, "job_gone:");
+  const slug = "video-one";
+  const journal = (extra, status) => {
+    const entry = store.prepare({ ...request(slug), ...extra });
+    if (status) store.receive(entry, receipt(entry, status));
+    return entry;
+  };
+  const queued = journal({}, "queued"), running = journal({ variant: "episode" }, "running"), other = journal({ stage: "verifier" }, "running");
+  // Not candidates under this kind: an answer that arrived (the normal run takes it) and a request that never reached the server.
+  journal({ variant: "discuss" }, "succeeded");
+  journal({ variant: "explainer" }, null);
+  const requestId = "11112233-4455-6677-8899-aabbccddeeff";
+  const reason = "the server no longer has the saved writer job (video_ai_job_not_found: 找不到這個權杖的影片工作)";
+  const listed = (authorization) => store.retryCandidates(slug, authorization).map((entry) => entry.file).sort();
+  assert.deepEqual(listed({ requestId, reason, kind: "job_gone:writer" }), [queued.file, running.file].sort());
+  assert.deepEqual(listed({ requestId, reason, kind: "job_gone:verifier" }), [other.file]);
+  for (const authorization of [undefined, { requestId, reason }, { requestId, reason, kind: null }, { requestId, reason, kind: "uncertain:writer" }, { requestId, reason, kind: "deferred:writer" },
+    { requestId, reason, kind: "unrecorded:script" }, { requestId, reason, kind: "job_gone" }, { requestId, reason, kind: "job_gone:" }, { requestId, reason, kind: "job_gone:planner" },
+    { reason, kind: "job_gone:writer" }, { requestId: "not-a-request", reason, kind: "job_gone:writer" }]) {
+    assert.deepEqual(listed(authorization), [], JSON.stringify(authorization ?? null));
+  }
+  // The store archives such a journal only with the server's answer in hand (client.mjs retryRuns looks it up first).
+  assert.throws(() => store.archive(running, { requestId, reason }), /can be archived/);
+  assert.ok(existsSync(running.file));
+  store.archive(running, { autoArchive: true, gone: { status: 404, code: "video_ai_job_not_found" } });
+  assert.deepEqual(listed({ requestId, reason, kind: "job_gone:writer" }), [queued.file]);
+});
+
 test("persisted artifact adoption permits a correction after restart and survives later legitimate artifact changes", () => {
   const box = sandbox(), store = runReceiptStore(context(box), site), entry = store.prepare(request());
   store.receive(entry, receipt(entry)); store.consume(entry);
@@ -339,4 +369,40 @@ test("pending lookup tolerates only derived date and shared lexicon drift and re
   const changed = { ...drift, payload: { ...drift.payload, brief: "new unreviewed facts" } };
   assert.throws(() => restarted.prepare(changed), /inputs changed/);
   assert.equal(restarted.find(changed).stale, true);
+});
+
+test("a video's saved runs whose answer is still to be taken are listed by stage and variant: prepared, queued, running, or succeeded and not adopted; the journals are only read", () => {
+  const box = sandbox(), store = runReceiptStore(context(box), site);
+  assert.deepEqual(store.untaken("video-one"), [], "a video with no journal yet");
+  // A discussion of the screenplay: the writer's own variant, beside whatever the video's stages saved.
+  const entry = store.prepare({ ...request(), variant: "discuss" });
+  const listed = (status) => [{ stage: "writer", variant: "discuss", status }];
+  assert.deepEqual(store.untaken("video-one"), listed(null), "prepared and perhaps sent");
+  for (const status of ["queued", "running", "succeeded"]) {
+    store.receive(entry, receipt(entry, status));
+    const bytes = readFileSync(entry.file, "utf8");
+    assert.deepEqual(store.untaken("video-one"), listed(status));
+    assert.equal(readFileSync(entry.file, "utf8"), bytes, `${status}: nothing is written`);
+  }
+  assert.deepEqual(runReceiptStore(context(box), site).untaken("video-one"), listed("succeeded"), "another process reads the same");
+  assert.deepEqual(store.untaken("video-two"), [], "another video's runs are its own");
+  // Once its output is saved the answer has been taken, whether or not the unit settled the journal yet.
+  const artifact = path.join(box.base, "video.json"); writeFileSync(artifact, result.text);
+  store.consume(entry);
+  store.adopt("video-one", { artifacts: [{ path: artifact, sha256: createHash("sha256").update(result.text).digest("hex") }] });
+  assert.deepEqual(store.untaken("video-one"), []);
+
+  // A failed run is cleared by the next request, an uncertain one waits for the owner, a policy hold for a validated retry: none has an answer to take.
+  for (const [slug, status, extra] of [["video-failed", "failed", {}], ["video-uncertain", "uncertain", {}], ["video-held", "failed", { error_code: POLICY_HOLD_CODE, dispatched_at: null }]]) {
+    const other = store.prepare(request(slug));
+    store.receive(other, { ...receipt(other, status), ...extra });
+    assert.deepEqual(store.untaken(slug), [], slug);
+  }
+  // A journal set aside is not listed, and one that cannot be read fails closed like every other read.
+  const aside = store.prepare(request("video-aside"));
+  store.archive(aside, { autoArchive: true });
+  assert.deepEqual(store.untaken("video-aside"), []);
+  const broken = store.prepare(request("video-broken"));
+  writeFileSync(broken.file, "{ not json");
+  assert.throws(() => store.untaken("video-broken"), /unreadable/);
 });

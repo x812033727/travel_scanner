@@ -72,6 +72,28 @@ test("a generic upstream failure remains a service error with bounded retries", 
   assert.deepEqual(sleeps, [5000, 10000, 20000]);
 });
 
+test("an error keeps the seconds of the server's Retry-After, for a stage run and for any other request; without the header, or with a date in it, it carries none", async () => {
+  const box = sandbox();
+  let answer;
+  const sleeps = [];
+  const client = automationClient({ ...credentials(box), fetch: async () => answer(), sleep: async (ms) => sleeps.push(ms) }, { attempts: 2 });
+  const refused = (status, code, after) => () => Response.json({ code, detail: "later" }, { status, headers: after === undefined ? {} : { "Retry-After": after } });
+  // Before: only a durable writer's failed receipt carried it, so flow.mjs deferred every other request by its own clock.
+  answer = refused(429, "rate_limit_exceeded", "900");
+  await assert.rejects(client.run("verifier", "draft-example", "Check", {}), (error) => error.status === 429 && error.retry_after === 900);
+  assert.deepEqual(sleeps, [120_000, 120_000], "the client's own sleeps stay capped at two minutes");
+  await assert.rejects(client.reviews("draft-example"), (error) => error.code === "rate_limit_exceeded" && error.retry_after === 900);
+  answer = refused(503, "video_ai_upstream_busy", "30");
+  await assert.rejects(client.run("translator", "draft-example", "Translate", {}), (error) => error.code === "video_ai_upstream_busy" && error.retry_after === 30);
+  // A refusal that is thrown at once keeps it too.
+  answer = refused(409, "video_ai_project_dropped", "60");
+  await assert.rejects(client.run("planner", "draft-example", "Plan", {}), (error) => error.status === 409 && error.retry_after === 60);
+  for (const after of [undefined, "0", "Wed, 21 Oct 2026 07:28:00 GMT"]) {
+    answer = refused(503, "video_ai_upstream_busy", after);
+    await assert.rejects(client.run("planner", "draft-example", "Plan", {}), (error) => error.status === 503 && !("retry_after" in error), String(after));
+  }
+});
+
 // Every subscription account rests: at its usage cap, or because its CLI can no longer
 // authenticate (the API's video_ai_subscription_auth_failed, 503 with a retry_after). Nothing
 // ran either way; the run ends and the worker's next round asks again.
@@ -129,6 +151,8 @@ test("auto exits for the owner after one real stage request when Claude Code nee
       if (route === "/api/video/automation/videos") return Response.json([]);
       // A site from before Shorts (docs/videos/SHORTS.md): the Shorts round has nothing to do.
       if (route.startsWith("/api/video/automation/shorts/")) return Response.json({ code: "not_found", detail: route }, { status: 404 });
+      // No slides video of an article the owner asked for: the scheduled draft comes next.
+      if (route === "/api/video/automation/slides-requests/next") return Response.json({ request: null });
       if (route === "/api/video/automation/topics") return Response.json({ topics: [], notes: "" });
       if (route === "/api/video/automation/run") {
         stages.push(JSON.parse(init.body));
@@ -147,6 +171,7 @@ test("auto exits for the owner after one real stage request when Claude Code nee
     "GET /api/video/automation/settings",
     "GET /api/video/automation/shorts/settings",
     "GET /api/video/automation/videos",
+    "GET /api/video/automation/slides-requests/next",
     "GET /api/video/automation/topics",
     "POST /api/video/automation/run",
   ]);
@@ -371,6 +396,39 @@ test("a judge's refusal is thrown after one request, with the status its callers
   }
 });
 
+test("the owner's slides requests go through the worker relay, and a site from before them reads as none at once", async () => {
+  const box = sandbox();
+  const id = "6f1d2c3b-4a59-4e6f-8a7b-9c0d1e2f3a4b";
+  const queued = { id, source_guide: "ai-freelance-getting-started", title: "AI 接案入門", url: "https://mokaair.com/zh-TW/life/ai-freelance-getting-started", note: null, status: "queued", slug: null };
+  const calls = [];
+  const sleeps = [];
+  let older = false;
+  const client = automationClient({
+    ...credentials(box),
+    fetch: async (url, init) => {
+      const route = new URL(url).pathname;
+      calls.push({ route, method: init.method, body: init.body ? JSON.parse(init.body) : null });
+      if (older) return Response.json({ code: "not_found", detail: route }, { status: 404 });
+      if (route.endsWith("/next")) return Response.json({ request: queued });
+      if (route.endsWith("/start")) return Response.json({ ...queued, status: "started", slug: "ai-freelance-pricing" });
+      return Response.json({ ...queued, status: "done", slug: "ai-freelance-pricing" });
+    },
+    sleep: async (ms) => sleeps.push(ms),
+  });
+  assert.deepEqual(await client.slidesNext(), queued);
+  assert.equal((await client.slidesStart(id, "ai-freelance-pricing")).status, "started");
+  assert.equal((await client.slidesDone(id)).status, "done");
+  assert.deepEqual(calls, [
+    { route: "/api/video/automation/slides-requests/next", method: "GET", body: null },
+    { route: `/api/video/automation/slides-requests/${id}/start`, method: "POST", body: { slug: "ai-freelance-pricing" } },
+    { route: `/api/video/automation/slides-requests/${id}/done`, method: "POST", body: null },
+  ]);
+  older = true;
+  assert.equal(await client.slidesNext(), null, "a site without the queue has nothing queued");
+  assert.equal(calls.length, 4, "a 404 is not asked again");
+  assert.deepEqual(sleeps, []);
+});
+
 const DURABLE_SLUG = "saved-writer";
 const DURABLE_PATH = "/api/video/automation/run/jobs";
 const savedAnswer = { text: '{"answer":"exact saved body"}', provider: "gemini", model: "original-model", input_tokens: 20, output_tokens: 15, usage: { tokens: 35, token_budget: 1000 } };
@@ -442,6 +500,42 @@ test("a pending writer restarts with GET and returns the persisted result despit
   assert.deepEqual(await runWriter(disconnected), savedAnswer);
   disconnected.settleRuns([DURABLE_SLUG]);
   assert.deepEqual(durableFiles(box), []);
+});
+
+test("a client lists a video's saved runs whose answer is still to be taken, from the journals alone: a pending discussion until its unit settles it, and none for a journal that cannot be read", async () => {
+  const box = sandbox(), requests = [];
+  let original;
+  let status = "running";
+  const client = durableClient(box, async (url, init) => {
+    requests.push(init.method);
+    if (init.method === "POST") original = JSON.parse(init.body);
+    return Response.json(job(original, status));
+  });
+  await client.settings();
+  const discuss = (from) => from.run("writer", DURABLE_SLUG, "Answer the owner's line", { message: "沈瀾為什麼不回答？" }, 16_000, "drama", "discuss");
+  const listed = (state) => [{ stage: "writer", variant: "discuss", status: state }];
+  assert.deepEqual(client.untakenRuns(DURABLE_SLUG), []);
+  await assert.rejects(discuss(client), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG);
+  const sent = requests.length;
+  assert.deepEqual(client.untakenRuns(DURABLE_SLUG), listed("running"));
+  // The next round is another process: it reads the same, and asks the server nothing for it.
+  const restarted = durableClient(box, async () => assert.fail("listing the saved runs sends nothing"));
+  assert.deepEqual(restarted.untakenRuns(DURABLE_SLUG), listed("running"));
+  assert.deepEqual(restarted.untakenRuns("another-video"), []);
+  assert.equal(requests.length, sent);
+  // The answer arrives: still to be taken until the unit that used it settles the journal.
+  status = "succeeded";
+  assert.deepEqual(await discuss(client), savedAnswer);
+  assert.deepEqual(client.untakenRuns(DURABLE_SLUG), listed("succeeded"));
+  client.settleRuns([DURABLE_SLUG]);
+  assert.deepEqual(client.untakenRuns(DURABLE_SLUG), []);
+
+  // A journal that cannot be read is the business of the stage that owns it, which blocks the video with the reason.
+  status = "running";
+  await assert.rejects(discuss(client), (error) => error.code === RUN_PENDING);
+  writeFileSync(durableFiles(box)[0], "{ not json");
+  assert.deepEqual(client.untakenRuns(DURABLE_SLUG), []);
+  await assert.rejects(discuss(client), (error) => error.code === RUN_UNCERTAIN && /unreadable/.test(error.message));
 });
 
 test("malformed and rebound receipts preserve their saved key and never dispatch a replacement run", async () => {
@@ -726,6 +820,80 @@ test("a failed owner retry lookup preserves the uncertain journal and never auth
   await assert.rejects(runWriter(client), (error) => error.code === RUN_UNCERTAIN);
   assert.equal(posts, 1);
   assert.equal(durableFiles(box).length, 1);
+});
+
+test("a running journal whose lookup answers a settled 4xx says the job is gone and stays in place; only the owner's retry of a job_gone block archives it, and one new request follows", async () => {
+  for (const [status, code] of [[404, "video_ai_job_not_found"], [409, "video_ai_job_input_changed"], [400, "video_ai_receipt_invalid"]]) {
+    const box = sandbox(), posted = [];
+    let lost = false, gets = 0;
+    const client = durableClient(box, async (_url, init) => {
+      if (init.method === "POST") { const body = JSON.parse(init.body); posted.push(body); return Response.json(job(body, posted.length === 1 ? "running" : "succeeded")); }
+      gets++;
+      return lost ? Response.json({ code, detail: `the server says ${code}` }, { status }) : Response.json(job(posted[0], "running"));
+    });
+    await client.settings();
+    await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING, status);
+    const [file] = durableFiles(box), before = readFileSync(file, "utf8");
+    // The worker was paired again: the same request finds its journal and looks the job up.
+    lost = true;
+    gets = 0;
+    await assert.rejects(runWriter(client), (error) => {
+      assert.deepEqual([error.status, error.code, error.slug, error.stage], [status, code, DURABLE_SLUG, "writer"], status);
+      assert.deepEqual(error.gone, { status, code }, `${status}: as lookupReceipt marks it`);
+      return true;
+    });
+    assert.equal(gets, 1, `${status}: thrown at once`);
+    // The old job may still be running under the old token: nothing is archived or sent on the worker's own.
+    assert.equal(readFileSync(file, "utf8"), before, status);
+    assert.equal(existsSync(path.join(path.dirname(file), "archive")), false, status);
+    assert.equal(posted.length, 1, status);
+
+    // An owner retry of any other block leaves a running journal alone: with no kind, with another kind, without the owner's request.
+    const requestId = "22223333-4455-6677-8899-aabbccddeeff";
+    const reason = "the server no longer has the saved writer job";
+    for (const authorization of [{ requestId, reason }, { requestId, reason, kind: "failures:writer" }, { requestId, reason, kind: "job_gone:verifier" }, { reason, kind: "job_gone:writer" }]) {
+      gets = 0;
+      await client.retryRuns(DURABLE_SLUG, authorization);
+      assert.deepEqual([gets, durableFiles(box).length, posted.length], [0, 1, 1], `${status} ${JSON.stringify(authorization)}`);
+    }
+    // The retry of the job_gone block looks the job up once more and, the server still answering the same, archives the journal.
+    await client.retryRuns(DURABLE_SLUG, { requestId, reason, kind: "job_gone:writer" });
+    assert.equal(gets, 1, status);
+    assert.deepEqual(durableFiles(box), [], status);
+    const [archived] = archiveOf(box);
+    assert.equal(archived.request_key, posted[0].request_key, status);
+    assert.equal(archived.receipt.status, "running", `${status}: the receipt bytes are kept`);
+    assert.deepEqual({ ...archived.owner_retry, archived_at: null }, { request_id: null, reason: jobGoneReason({ status, code }), archived_at: null }, status);
+    assert.deepEqual(await runWriter(client), savedAnswer, status);
+    assert.equal(posted.length, 2, `${status}: exactly one new POST follows`);
+    assert.notEqual(posted[1].request_key, posted[0].request_key, status);
+  }
+});
+
+test("the retry of a job_gone block waits when the job is found running after all, and takes its answer when it finished: no new request either way", async () => {
+  for (const found of ["running", "succeeded"]) {
+    const box = sandbox();
+    let original, posts = 0, state = "running";
+    const client = durableClient(box, async (_url, init) => {
+      if (init.method === "POST") { posts++; original = JSON.parse(init.body); return Response.json(job(original, "running")); }
+      return state === "lost" ? Response.json({ code: "video_ai_job_not_found", detail: "no job for this token" }, { status: 404 }) : Response.json(job(original, state));
+    });
+    await client.settings();
+    await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING, found);
+    state = "lost";
+    await assert.rejects(runWriter(client), (error) => error.gone?.status === 404, found);
+    const authorization = { requestId: "33334444-5566-7788-99aa-bbccddeeff00", reason: "the server no longer has the saved writer job", kind: "job_gone:writer" };
+    state = found;
+    if (found === "running") {
+      await assert.rejects(client.retryRuns(DURABLE_SLUG, authorization), (error) => error.code === RUN_PENDING && error.stage === "writer");
+    } else {
+      await client.retryRuns(DURABLE_SLUG, authorization);
+      assert.deepEqual(await runWriter(client), savedAnswer, "the late answer is recovered by the normal run");
+    }
+    assert.equal(durableFiles(box).length, 1, `${found}: the journal is kept`);
+    assert.equal(existsSync(path.join(box.work, DURABLE_SLUG, RUN_RECEIPTS_DIR, "archive")), false, found);
+    assert.equal(posts, 1, found);
+  }
 });
 
 test("writer reconnect across midnight and shared lexicon changes uses the original saved operation", async () => {
