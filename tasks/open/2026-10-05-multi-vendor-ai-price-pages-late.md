@@ -1,14 +1,14 @@
 ---
 id: 2026-10-05-multi-vendor-ai-price-pages-late
 title: Refresh the multi-vendor AI price pages and the 2026 release timeline for the late-September line-up
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5-ai-price-pages
+claimed_at: 2026-10-06T00:53:30Z
 created_at: 2026-10-05T14:16:06Z
 completed_at:
-branch:
+branch: claude/ai-price-pages
 depends_on: []
 scope:
   - apps/api/app/guides/content/ai-api-pricing-comparison-2026.json
@@ -19,6 +19,10 @@ scope:
   - apps/web/public/guides/ai-model-release-timeline-2026/diagram-1.svg
   - docs/content-research/ai-model-comparison-table-2026
   - docs/content-research/ai-pricing-beyond-list-price
+  - apps/api/app/guides/content/ai-news-sources-to-follow.json
+  - apps/api/app/guides/content/ai-hype-vs-reality-2026.json
+  - apps/api/app/guides/content/ai-benchmarks-explained.json
+  - tasks/open/2026-09-16-model-table-quarterly-recheck.md
 ---
 
 # Refresh the multi-vendor AI price pages and the 2026 release timeline for the late-September line-up
@@ -47,26 +51,27 @@ Anthropic's:
 
 ## Definition of done
 
-- [ ] The three price pages show each vendor's current line-up and prices from that vendor's own
+- [x] The three price pages show each vendor's current line-up and prices from that vendor's own
       pricing page, read on the day of the edit, with every derived range, ratio, percentage and
       worked example recomputed and each source's `checked_on` bumped only where it was re-read.
-- [ ] The timeline either extends past 2026-09-15 for all nine vendors it covers (title,
+- [x] The timeline either extends past 2026-09-15 for all nine vendors it covers (title,
       description, table, diagram) or keeps its 9/15 cut-off; the choice is written in the notes.
-- [ ] Diagrams in scope that show an old line-up are redrawn, `image.description` stays a verbatim
+- [x] Diagrams in scope that show an old line-up are redrawn, `image.description` stays a verbatim
       copy of the SVG `<desc>`, and every diagram number is in the text.
-- [ ] `pack_cli lint --kind life` and `intake_check.py --from-content` pass for each edited slug
+- [x] `pack_cli lint --kind life` and `intake_check.py --from-content` pass for each edited slug
       (pre-existing intake FAILs noted, not added to).
+- [ ] Production import of the seven edited slugs: publish after merge (coordinator, owner consent).
 
 ## Steps
 
-- [ ] Re-read the pricing pages: OpenAI, Anthropic, Google Gemini API, xAI, DeepSeek, Mistral,
+- [x] Re-read the pricing pages: OpenAI, Anthropic, Google Gemini API, xAI, DeepSeek, Mistral,
       Alibaba Model Studio, MiniMax pay-as-you-go, Moonshot Kimi, Z.ai, plus the model cards the
       comparison table cites (Hugging Face, Google DeepMind, Qwen, xAI, OpenAI).
-- [ ] Update `build_pack.py` and `notes.md` for the two generated packs and run `reingest.sh`; edit
+- [x] Update `build_pack.py` and `notes.md` for the two generated packs and run `reingest.sh`; edit
       `ai-api-pricing-comparison-2026` and its diagram by hand.
-- [ ] Decide the timeline's cut-off; if extending, read each vendor's official announcement feed
+- [x] Decide the timeline's cut-off; if extending, read each vendor's official announcement feed
       for 9/16 to the new cut-off and add the entries (sources are at the 20-item limit, so trim).
-- [ ] Render the diagrams (`pack_cli lint --render-dir`, `CHROMIUM_BIN` = Edge) and look at them.
+- [x] Render the diagrams (`pack_cli lint --render-dir`, `CHROMIUM_BIN` = Edge) and look at them.
 
 ## How to verify
 
@@ -98,3 +103,82 @@ and check by hand that every remaining hit is history or a promotional-price not
 - All of these returned HTTP 200 to `curl -sSL` with the editorial User-Agent on 2026-10-05:
   docs.x.ai pricing and models, api-docs.deepseek.com pricing, mistral.ai/pricing/api,
   alibabacloud.com model-pricing, platform.minimax.io pricing-paygo, platform.kimi.ai pricing.
+
+### Done on 2026-10-06 (claude-opus-5-5-ai-price-pages)
+
+Every price, context and score line was re-read on 2026-10-06 from the vendor's own page with
+the editorial User-Agent (`.md` variants for developers.openai.com, platform.claude.com,
+docs.x.ai, platform.kimi.ai and platform.minimax.io). The two generated packs record every
+reading, with URLs, in their `notes.md` (new 2026-10-06 sections; the 9/16 and 9/17 sections
+are kept). Facts that changed since the 10-05 notes above: none of the prices did; what changed
+is which models count as current.
+
+- **Tier rule** (written down so the next run uses the same one): a vendor's own naming decides
+  the tier. OpenAI's models page names GPT-6 Astra (flagship), GPT-6.1 Sol ("balance intelligence
+  and cost") and GPT-6 Luna ("cost-sensitive, high-volume"); Anthropic's overview lists Fable 5.1,
+  Opus 5.5, Sonnet 5.5 and Haiku 4.5, with Fable and Opus both flagship as before. Models a vendor
+  marks legacy or previous-generation leave the tables (Opus 5, Sonnet 5, gpt-5.6-terra/luna);
+  gpt-5.6-sol stays only as the promotional-price note (at least through 2026-11-21).
+- **ai-api-pricing-comparison-2026**: bands recomputed over the models the article names per
+  tier (flagship: gpt-6-astra, Fable 5.1, Opus 5.5, gemini-3.1-pro-preview, grok-4.7, qwen3.8-max,
+  MiniMax-M3, deepseek-v4-pro; mid: gpt-6.1-sol, Sonnet 5.5, gemini-3.8-flash, gemini-3.5-flash,
+  Mistral Medium 3.5, qwen3.7-plus; light: gpt-6-luna, Haiku 4.5, gemini-3.5-flash-lite,
+  Mistral Small 4, qwen3.8-flash). Flagship 0.30–10.00 / 1.20–50.00 (unchanged); mid 0.40–2.00 /
+  1.60–10.00 (was 12.00); light 0.10–1.00 / 0.47–5.00 (was 0.15). The worked example swaps in
+  Sonnet 5.5 (90.00) and adds gpt-6-luna (20 × 0.10 + 5 × 0.50 = 4.50), so the spread is
+  450.00 vs 4.50, "一百倍". Gemini 4 Argon (announced 9/30, not on the pricing page) gets one
+  sentence with its announced introductory price; one source added (13 now). Mistral's source
+  moves to `docs.mistral.ai/inference/pricing` (the old URL redirects there); its Batch toggle reads
+  "-50%" and Regional inference "+10%" (checked in the built-in browser), and the EUR toggle the
+  9/15 text mentioned is gone, so that sentence went. Alibaba's "China site in RMB" became the
+  page's actual Singapore-vs-Beijing USD prices for qwen3.8-max.
+- **ai-model-comparison-table-2026** (rebuilt from `build_pack.py`): line-ups as above; the score
+  column now lives only in the flagship table (the 9/16 "官網未公布" cells in the mid/light tables
+  were partly wrong — several models do publish on their model cards — so the column went rather
+  than being half-filled). The disclosure table and its thesis were rewritten: Anthropic's Opus 5.5
+  page now has a numeric table, DeepSeek's API change log had GPQA Diamond for V4.1-Flash all
+  along, and Qwen's blog footnote names the Claude Code harness and 256K context (not "自家 agent
+  scaffold、20 萬"). GPQA Diamond and Terminal-Bench 4.0 are each published by four of the six,
+  none by all six. Corrected: MiniMax-M3 context is 1M (the 51.2 萬 was the price tier), grok-4.7
+  has "no text output limit". Sources: Opus 5 → Opus 5.5 announcement, grok-4.6 → grok-4.7.
+  Mistral Large 3's HF "GPQA 67.17" is a third-party (EvalEval) pull request, so not used.
+- **ai-pricing-beyond-list-price** (rebuilt): cache table moves to Opus 5.5 (5%), Sonnet 5.5,
+  gpt-6.1-sol (5%), gpt-6-luna, grok-4.7, and adds Mistral Medium 3.5 (10%) and Z.AI GLM-5.3 (19%),
+  the two the 9/17 notes said were not checked. OpenAI's long-context row now has the 272K
+  threshold and the whole-request 2x/1.5x rule from the gpt-6-astra model page (source added, 11 now).
+- **ingest**: `pack_cli ingest` accepts `ai-plans` (ticket 805 is done), so both `reingest.sh`
+  lose the remove-and-restore step; `build_pack.py` now carries the diagram `<desc>` into
+  `image.description` itself (ingest used to drop it) and writes LF. Ingest was run with
+  `--public-dir <scratch>`: the re-rendered hero.jpg is not committed, and the scratch
+  `diagram-1.svg`/`hero.svg` came out byte-identical to the committed ones. Re-running build and
+  ingest a second time gave identical files.
+- **Timeline: extended to 2026-09-30** (a clean Q3 boundary; title now "1 月到 9 月"). Feeds read
+  for 9/16–9/30: OpenAI RSS (GPT-6 Sol and Luna 9/22, GPT-6.1 Sol 9/29), Anthropic newsroom
+  (Opus 5.5 9/22, Sonnet 5.5 9/28), DeepMind RSS (Gemini 4 Argon 9/30; 3.8 TTS 9/23 and 3.8 Live
+  with Live Avatar 9/24 are speech models, left out under the existing rule), xAI release notes
+  (Grok 4.7 9/21), qwen.ai/research (Qwen3.8-Omni-Flash 9/18; LiveTranslate and Qwen-Image-2.1
+  left out), DeepSeek change log (nothing after 9/10), Mistral news (only company posts 9/16 and
+  9/28), ai.meta.com/blog (no September posts), MiniMax release notes (latest 7/31). The 30-row
+  table became two (1–6 月, 20 rows; 7–9 月, 17 rows; the schema caps a table at 30). The two
+  September paragraphs were folded into one so the body stays at 5,982 characters (guideline
+  6,000), which also meant dropping two narration phrases and one duplicated rule; "2 月是今年最密集"
+  became "上半年" because September now has more entries. Sources stay at 20: dropped the Opus 4.6,
+  4.7, 4.8 and Gemini 3.7 Flash pages (their dates and lines are unchanged; the 3.7 Flash date is
+  still in the DeepMind RSS), added the Anthropic newsroom, the GPT-6 Sol/Luna post, the Gemini 4
+  Argon post and qwen.ai/research. The inline that links ai-news-2026-january-september-index was
+  not touched.
+- **Scope additions**: three packs linked the timeline by its old title text ("1 月到 9 月 15 日的
+  官方發布時間軸"); their link text now matches the new title (one line each). The quarterly
+  ticket gets this run appended to its notes.
+- **Checks**: `pack_cli lint --kind life` for the seven slugs: 0 errors; warnings are only the
+  pre-existing `no_summary` on three of them. `intake_check.py`, compared against origin/main in
+  `--workdir` mode: no new FAIL. Pre-existing FAILs: pricing comparison (no summary first,
+  self-reference 2), comparison table (5-column tables, now 2 instead of 4; self-reference 4),
+  beyond-list-price (5-column cache table, self-reference 3), timeline (no summary first,
+  self-reference 3, four paragraphs with two attribution phrases). `image.description` equals the
+  SVG `<desc>` for all four diagrams. `pytest tests/test_guides_content_pack.py
+  tests/test_guides_content_links.py`: 12 passed, 5 skipped.
+- **Left for later**: the production import (publish after merge, coordinator, owner consent).
+  Gaps before 9/15 that the timeline does not carry (Meta Muse Spark 1.1 on 7/9, the Muse Glimmer
+  30B weights, an undated MiniMax-M3.1-Flash-Preview) are filed as
+  `2026-10-06-timeline-gaps-before-0915`.
