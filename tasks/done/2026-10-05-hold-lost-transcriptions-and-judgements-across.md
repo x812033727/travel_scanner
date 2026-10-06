@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-hold-lost-transcriptions-and-judgements-across
 title: Hold lost check-audio transcriptions and Jev judgements across a restart
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-check-journal
 claimed_at: 2026-10-05T23:48:13Z
 created_at: 2026-10-05T12:51:09Z
-completed_at:
+completed_at: 2026-10-06T00:24:26Z
 branch: claude/check-journal
 depends_on: []
 scope:
@@ -117,3 +117,5 @@ duration receipt (`docs/videos/long-form/review.json`): put new tests in new fil
     install path.
   - `node tools/video/long-form/cli.mjs check` passes and lists nothing stale, because no
     receipt-bound file changed.
+- Filed 2026-10-06-from-drama-test-s-brightness-filter for a Windows-only red that came in with
+  #1315. It turned up while re-running the Shorts tests after rebasing onto cff4a6ac6.
