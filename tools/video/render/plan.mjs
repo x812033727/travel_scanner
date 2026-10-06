@@ -17,7 +17,7 @@ export const thumbnailSeries = (doc) => (isExplainer(doc) ? "sothatswhy" : null)
 import { estimateTimeline } from "../core/timeline.mjs";
 import { screencastHtml, screencastPlan } from "../screencast/scene.mjs";
 import { isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
-import { ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
+import { isStockPath, ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
 
 export const THEME_FILE = fileURLToPath(new URL("../templates/theme.css", import.meta.url));
 // Chapter cards and the title card say where they are themselves; a label on top would repeat it.
@@ -33,27 +33,45 @@ export function themeHash(css = readFileSync(THEME_FILE, "utf8")) {
   return hash(css);
 }
 
-/** The repository files a scene draws: its diagram or its screenshot. */
+/**
+ * The files a scene draws: its diagram or its screenshot, as a repository path or a stock photo's
+ * work-directory path (stock/<sha256>.<ext>, templates.mjs isStockPath).
+ */
 export function sceneAssets(scene) {
   if (scene.template === "diagram" && typeof scene.data?.svg === "string") return [scene.data.svg];
   if (scene.template === "screenshot" && typeof scene.data?.image === "string") return [scene.data.image];
   return [];
 }
 
+/** Where an asset is read: a stock photo under the work directory (null without one), anything else under the repository. */
+export function assetFile(asset, { root, workdir = null }) {
+  if (isStockPath(asset)) return workdir ? path.join(workdir, asset) : null;
+  return path.join(root, asset);
+}
+
 /**
  * Template data problems for the whole video, labelled like lint's. With `root`, also the asset
- * files: they must exist, and an SVG must not script or reach the network. A drama's shots are
- * generated clips, not slides: lint checks their prompts and the media stages draw them.
+ * files: they must exist, and an SVG must not script or reach the network. A stock photo must be
+ * listed in assets[] (that is where the description's credit comes from; `stock fetch` writes the
+ * entry) and, with `workdir`, be fetched into it. A drama's shots are generated clips, not
+ * slides: lint checks their prompts and the media stages draw them.
  */
-export function renderProblems(doc, root = null) {
+export function renderProblems(doc, root = null, { workdir = null } = {}) {
   const problems = [];
+  const listed = (asset) => (Array.isArray(doc.assets) ? doc.assets : []).some((entry) => entry?.path === asset);
   doc.scenes.forEach((scene, index) => {
     if (isShot(scene)) return;
     const where = `scenes[${index}] (${scene.id}).data`;
     const own = isScreencast(scene) ? screencastSceneProblems(scene) : sceneProblems(scene);
     for (const message of own) problems.push({ path: where, message });
-    if (!root || own.length) return;
+    if (own.length) return;
     for (const asset of sceneAssets(scene)) {
+      if (isStockPath(asset)) {
+        if (!listed(asset)) problems.push({ path: where, message: `${asset} is not in assets[]: stock fetch writes the entry there, and without it the description carries no credit` });
+        if (workdir && !existsSync(path.join(workdir, asset))) problems.push({ path: where, message: `${asset} is not in the work directory; fetch it with stock fetch (tools/video/media/cli.mjs)` });
+        continue;
+      }
+      if (!root) continue;
       const file = path.join(root, asset);
       if (!existsSync(file)) problems.push({ path: where, message: `${asset} does not exist` });
       else if (asset.endsWith(".svg")) for (const message of svgProblems(readFileSync(file, "utf8"))) problems.push({ path: where, message: `${asset}: ${message}` });
@@ -73,6 +91,8 @@ export function renderProblems(doc, root = null) {
  * Every state to draw. Returns { scenes: [{ id, kind, states: [{ reveal, first, html, key, text }] }], thumbnail }.
  * `theme` is the stylesheet's hash, part of every key; with `root`, diagrams are inlined and each
  * asset's bytes are part of its scene's keys, so replacing an image redraws the slides that show it.
+ * A stock photo's bytes are read from `workdir` (stock/<sha256>.<ext>), so a swapped photo
+ * redraws its slide too; without `workdir` the photo is not read and not part of the key.
  * A drama's shots come back as `{ kind: "clip", states: [] }`: the clips stage supplies their
  * pictures. `keyframes` maps a shot id to its drawn keyframe `{ file, sha256 }` (the keyframes
  * manifest's `shots`); a thumbnail that names a shot uses that picture as its background, and the
@@ -84,7 +104,7 @@ export function renderProblems(doc, root = null) {
  * `thumbnail.locales` ({ locale, file, hash, html, key, text }), the same picture and layout with
  * its words; `thumbnail.gaps` says why each other locale has none.
  */
-export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = {}, screencasts = {}, translations = null } = {}) {
+export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = {}, screencasts = {}, translations = null, workdir = null } = {}) {
   const timeline = estimateTimeline(doc);
   const chapterCount = doc.scenes.filter((scene) => scene.chapter).length;
   let chapter = null;
@@ -100,7 +120,7 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
       return { id: scene.id, template: scene.template, kind: "stills", states };
     }
     const totalReveals = scene.lines.reduce((sum, line) => sum + (line.reveal ?? 0), 0);
-    const assets = root ? sceneAssets(scene).map((asset) => readFileSync(path.join(root, asset))) : [];
+    const assets = root ? sceneAssets(scene).map((asset) => assetFile(asset, { root, workdir })).filter(Boolean).map((file) => readFileSync(file)) : [];
     const assetHash = hash(...assets);
     const svg = scene.template === "diagram" && assets.length ? assets[0].toString("utf8") : undefined;
     const states = timeline.scenes[index].states.map((state, stateIndex, all) => {

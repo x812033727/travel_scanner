@@ -233,6 +233,17 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         ),
         ("azure_speech_key",),
     ),
+    "stock_photos": ProviderDefinition(
+        "圖庫照片（Pexels、Pixabay）",
+        "影片產線的投影片用的真實照片（例如首爾、釜山、濟州的街景）。金鑰只存在這台伺服器：本機的"
+        "影片工具帶著「影片工具權杖」送出關鍵字，由伺服器向 Pexels 與 Pixabay 搜尋、把選中的原圖"
+        "抓進媒體庫並附上版權標示；Base URL 釘在兩家的官方網域，改成別的網域不會被接受。"
+        "兩家的照片都免費、允許商業使用，但都希望在影片說明欄標示攝影師與來源"
+        "（「Photo by … on Pexels」、「Image by … from Pixabay」），"
+        "規則在 docs/videos/ILLUSTRATED.md。",
+        ("pexels_api_base_url", "pixabay_api_base_url"),
+        ("pexels_api_key", "pixabay_api_key"),
+    ),
     "ai_planner": ProviderDefinition(
         "AI 行程規劃",
         "由後台選擇 OpenAI／ChatGPT、Claude、MiniMax、Gemini 或內建備援，並指定各家使用的模型；"
@@ -937,6 +948,23 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
                 else "請啟用並設定 Demand Affiliate ID 與 Bearer Token"
             ),
         )
+    if provider == "stock_photos":
+        vendor_names = [
+            label
+            for key, label in (
+                (settings.pexels_api_key, "Pexels"),
+                (settings.pixabay_api_key, "Pixabay"),
+            )
+            if key
+        ]
+        configured = bool(vendor_names)
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"已設定：{'、'.join(vendor_names)}"
+            if configured
+            else "尚未設定 Pexels 或 Pixabay 的金鑰；設定任一家就能搜尋",
+        )
     if provider == "hotspot_guides":
         source_labels = [
             label
@@ -1051,6 +1079,7 @@ CONNECTION_TESTED_PROVIDERS = frozenset({
     "google_maps", "naver_maps", "youtube_guides", "brave_guides", "gemini_guides",
     "amadeus", "skyscanner", "duffel", "flightaware", "google_travel_impact",
     "booking_demand", "met_norway", "ekispert", "odsay", "navitime", "azure_speech",
+    "stock_photos",
     "travelpayouts", "kkday", "klook", "airalo", "trip_com", "agoda", "booking",
     "skyscanner_affiliate",
 })
@@ -2148,6 +2177,16 @@ async def _test_provider(
         return (
             f"Azure 語音連線成功，允許的 {len(settings.azure_speech_voice_list)} 個聲音都可用"
         )
+    if provider == "stock_photos":
+        from app.video_media.stock import StockError
+        from app.video_media.stock import probe as stock_probe
+
+        # One real search per configured vendor: it proves the key, the pinned host and the
+        # answer's shape at once, and neither vendor charges for it.
+        try:
+            return await stock_probe(settings)
+        except StockError as error:
+            raise ConnectionError(error.detail) from error
     if provider == "navitime":
         gateway = "RapidAPI" if settings.navitime_rapidapi else "直接契約"
         navitime_probe = await NavitimeRouteProvider(settings, None, redis).probe(

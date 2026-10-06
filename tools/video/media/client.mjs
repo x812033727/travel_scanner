@@ -39,11 +39,16 @@ const OWNER_CODES = new Set([
   "video_media_model_not_allowed",
   "video_media_budget_exhausted",
   "video_media_judge_unavailable",
+  "video_media_locate_unavailable",
+  // No Pexels or Pixabay key on the site yet (docs/videos/ILLUSTRATED.md §圖庫照片).
+  "video_media_stock_unavailable",
   // The same payload exhausted the server's attempts; another round cannot fix it.
   "video_media_job_exhausted",
 ]);
-const TOOL_CODES = new Set(["video_media_reference_missing", "video_media_reference_too_large", "video_media_route_unknown", "video_media_bad_part", "video_media_hash_mismatch"]);
-const RETRYABLE_CODES = new Set(["video_media_upstream_busy", "video_media_job_busy", "rate_limit_exceeded", "upstream_unavailable", "video_media_judge_failed"]);
+// video_media_invalid: locate was sent something that is not a picture (a clip); the tool extracts a frame first.
+// video_media_stock_not_found: the vendor has no photo under the id the tool asked for; pick another candidate.
+const TOOL_CODES = new Set(["video_media_reference_missing", "video_media_reference_too_large", "video_media_route_unknown", "video_media_bad_part", "video_media_hash_mismatch", "video_media_invalid", "video_media_stock_not_found"]);
+const RETRYABLE_CODES = new Set(["video_media_upstream_busy", "video_media_job_busy", "rate_limit_exceeded", "upstream_unavailable", "video_media_judge_failed", "video_media_locate_failed", "video_media_stock_failed"]);
 // Codes of a failed job that a new seed may fix; the stages retake on these, not on the owner's.
 export const RETAKE_CODES = new Set(["video_media_rejected", "video_media_upstream_failed", "video_media_upstream_expired", "video_media_unsupported_type", "video_media_upstream_invalid"]);
 
@@ -211,4 +216,50 @@ export async function putFile({ slug, file, ...options }) {
  */
 export async function judge({ request, ...options }) {
   return (await postJson(options, "judge", request)).json();
+}
+
+/**
+ * Where the subjects are in a stored picture (png, jpeg or webp already in the media store):
+ * `{ slug, sha256, labels? }` → `{ boxes: [{ label, box: [ymin, xmin, ymax, xmax], score }], width, height, model }`.
+ * A box is on a 0–1000 scale of the picture's height and width (`scaleBox` turns one into pixels);
+ * `labels` names what to find in the script's words, and without any the server asks for every
+ * character and the most prominent subjects. Booked on the server like a judge call (same budget,
+ * same per-hour limit, US$0.01-class). A clip is refused with `video_media_invalid`: extract a
+ * frame, `putFile` it, and ask about that. Only on a server whose status lists `limits.locate_labels`.
+ */
+export async function locate({ request, ...options }) {
+  return (await postJson(options, "locate", request)).json();
+}
+
+/**
+ * Stock photo candidates from Pexels and Pixabay (docs/videos/ILLUSTRATED.md §圖庫照片), nothing
+ * downloaded yet: `{ query, provider?, orientation?, per_page?, page? }` → `{ query, candidates:
+ * [{ provider, id, width, height, thumbnail, preview, alt, credit }], total: { <provider>: n },
+ * problems }`. Each `credit` is `{ provider, author, author_url, url, license, license_url, text }`
+ * with the credit line in the vendor's own wording. Free at both vendors, so nothing is booked;
+ * the server's per-hour limit is the only brake, and a vendor that is busy answers 429 with a
+ * Retry-After the call honours. 503 `video_media_stock_unavailable` (the owner's) until the site
+ * has a key. Only on a server whose status lists `stock` and `limits.stock_per_page`.
+ */
+export async function stockSearch({ request, ...options }) {
+  return (await postJson(options, "stock/search", request)).json();
+}
+
+/**
+ * One stock photo fetched by the server into the media store: `{ slug, provider, id }` →
+ * `{ sha256, size, content_type, width, height, credit }`. The file is then read with
+ * `downloadFile` like a generated picture; tools/video/media/stock.mjs keeps the tool's copy
+ * under <workdir>/stock/ and writes the credit into video.json. 404 `video_media_stock_not_found`
+ * is the tool's (a wrong id); 502 `video_media_stock_failed` (the vendor refused the key, the file
+ * sat off its host, the download tore) is retried like a failed locate call.
+ */
+export async function stockFetch({ request, ...options }) {
+  return (await postJson(options, "stock/fetch", request)).json();
+}
+
+/** A located box in pixels of the `width`×`height` picture: `{ left, top, right, bottom }`, clamped to the frame. */
+export function scaleBox(box, width, height) {
+  const [ymin, xmin, ymax, xmax] = box;
+  const clamp = (value, max) => Math.min(Math.max(Math.round(value), 0), max);
+  return { left: clamp((xmin / 1000) * width, width), top: clamp((ymin / 1000) * height, height), right: clamp((xmax / 1000) * width, width), bottom: clamp((ymax / 1000) * height, height) };
 }

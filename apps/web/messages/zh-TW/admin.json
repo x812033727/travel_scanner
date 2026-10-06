@@ -36,6 +36,7 @@
       "content": "景點內容",
       "travelData": "航班與住宿資料",
       "affiliate": "分潤導流",
+      "video": "影片素材",
       "other": "其他"
     }
   },
@@ -1541,6 +1542,14 @@
     "azure_speech_key": {
       "label": "Speech 金鑰",
       "help": "Azure 入口網站 → Speech 資源 → 金鑰與端點的「金鑰 1」。只存在伺服器，不會傳給影片工具。"
+    },
+    "pexels_api_key": {
+      "label": "Pexels API Key",
+      "help": "供影片產線搜尋、抓取投影片用的真實照片。加密存在伺服器，只會送到 api.pexels.com；Pexels 希望在說明欄標示「Photo by … on Pexels」。"
+    },
+    "pixabay_api_key": {
+      "label": "Pixabay API Key",
+      "help": "用途相同，對應 Pixabay。加密存在伺服器，只會送到 pixabay.com；Pixabay 希望在說明欄標示「Image by … from Pixabay」。"
     }
   },
   "settingsPanel": {
@@ -2429,7 +2438,8 @@
       "loudness": "響度",
       "layout": "版面",
       "evidence": "證據",
-      "variety": "多樣性"
+      "variety": "多樣性",
+      "grammar": "首尾循環"
     },
     "uploadPackage": "上傳包",
     "packageChapters": "{count} 章",

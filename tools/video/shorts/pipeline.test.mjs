@@ -9,6 +9,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { encodeWav } from '../tts/wav.mjs';
+import { SPEECH_UNCERTAIN, SpeechError } from '../tts/client.mjs';
+import { JOURNAL_DIR, openSpeechJournal } from '../tts/speech-journal.mjs';
 import { ToolMissing } from '../assemble/ffmpeg.mjs';
 import { build, loudnessProblems, profileProblems } from './build.mjs';
 import { audioHash, checkPhrases, phrasesHash } from './check.mjs';
@@ -18,9 +20,9 @@ import { captionTimingProblems, frameRateProblem, importShort, scriptFromImport,
 import { THEMES, themeOf } from './layouts.mjs';
 import { composeDescription, composeMetadata, disclosureOf, metadataProblems, packageBuild, packageItems, packageReport, PACKAGE_ITEM_IDS } from './package.mjs';
 import { PART_BYTES, evidenceRole, finalReview, projectBody, publishReview, push } from './push.mjs';
-import { ITEM_IDS, captionsItem, evidenceItem, factsItem, layoutItem, linksItem, loudnessItem, metadataItem, narrationItem, policyItem, profileItem, qaInputBindings, qaReport, scriptShape, siteHistory, varietyItem } from './qa.mjs';
+import { ITEM_IDS, captionsItem, evidenceItem, factsItem, grammarItem, layoutItem, linksItem, loudnessItem, metadataItem, narrationItem, policyItem, profileItem, qaInputBindings, qaReport, runQa, scriptShape, siteHistory, varietyItem } from './qa.mjs';
 import { CHANNEL_VOICE, SiteError, siteClient } from './site.mjs';
-import { defaultSource, flaggedPhrases, narrate, phraseBody, phraseKey, serverNarration } from './speech.mjs';
+import { defaultSource, flaggedPhrases, narrate, phraseBody, phraseKey, serverNarration, timingFileOf } from './speech.mjs';
 
 const FIXTURE = fileURLToPath(new URL('./fixtures/smoke/', import.meta.url));
 const REPO = fileURLToPath(new URL('../../../', import.meta.url));
@@ -116,27 +118,102 @@ test('a caption file reads back as the timeline it was written from', () => {
 test('a server phrase is asked for once, in the owner\'s voice, and again only when flagged', async (t) => {
   const cacheDir = path.join(temp(t), 'cache');
   const asked = [];
+  const timed = [];
   const synthesizeImpl = async ({ body, site, token }) => {
     asked.push({ body, site, token });
     return { wav: tone(1, 300 + asked.length), billable: 7 };
   };
+  // A Gemini voice has no boundaries of its own: its clip is sent for timing afterwards, and the
+  // server times what it can (here everything but the second phrase).
+  const synthesizeAlignedImpl = async () => { throw new Error('a Gemini voice never asks for boundaries'); };
+  const alignImpl = async ({ wav, text, site, token }) => {
+    timed.push({ text, site, token, bytes: wav.length });
+    return text === '再扣掉三十元的折價券' ? null : { source: 'aligned', model: 'm', chars: [{ text, start_ms: 0, end_ms: 900 }] };
+  };
   const client = { site: 'https://site.test', token: TOKEN };
   const phrases = ['一張手寫的發票', '再扣掉三十元的折價券', '一張手寫的發票'];
-  const first = await serverNarration({ phrases, voice: CHANNEL_VOICE, cacheDir, client, synthesizeImpl });
+  const first = await serverNarration({ phrases, voice: CHANNEL_VOICE, cacheDir, client, synthesizeImpl, synthesizeAlignedImpl, alignImpl });
   assert.equal(asked.length, 2, 'the same words in the same voice are one clip');
   assert.deepEqual(asked[0].body, { voice: 'gemini:Sulafat', style: CHANNEL_VOICE.style, segments: [{ parts: [{ text: '一張手寫的發票' }], break_after_ms: 0 }] });
   assert.equal(asked[0].token, TOKEN);
   assert.deepEqual([first.calls, first.characters, first.provider, first.clips.length], [2, 14, 'gemini', 3]);
   assert.deepEqual(first.clips[0], first.clips[2]);
-  const again = await serverNarration({ phrases, voice: CHANNEL_VOICE, cacheDir, client, synthesizeImpl });
+  assert.deepEqual(first.timings.map((timing) => timing?.source ?? null), ['aligned', null, 'aligned']);
+  assert.deepEqual(timed.map((call) => call.text), ['一張手寫的發票', '再扣掉三十元的折價券'], 'a clip with its timing cached is not sent again');
+  assert.deepEqual([timed[0].site, timed[0].token, timed[0].bytes], ['https://site.test', TOKEN, first.clips[0].length]);
+  assert.deepEqual(JSON.parse(readFileSync(timingFileOf(cacheDir, CHANNEL_VOICE, '一張手寫的發票'), 'utf8')), first.timings[0]);
+  assert.equal(existsSync(timingFileOf(cacheDir, CHANNEL_VOICE, '再扣掉三十元的折價券')), false, 'no file for what the server could not time');
+  const again = await serverNarration({ phrases, voice: CHANNEL_VOICE, cacheDir, client, synthesizeImpl, synthesizeAlignedImpl, alignImpl });
   assert.deepEqual([again.calls, again.characters, asked.length], [0, 0, 2], 'a second build costs nothing');
-  const redone = await serverNarration({ phrases, voice: CHANNEL_VOICE, cacheDir, client, redo: [1], synthesizeImpl });
+  assert.deepEqual(timed.map((call) => call.text), ['一張手寫的發票', '再扣掉三十元的折價券', '再扣掉三十元的折價券'], 'only the untimed clip is asked again');
+  assert.deepEqual(again.timings.map((timing) => timing?.source ?? null), ['aligned', null, 'aligned']);
+  const redone = await serverNarration({ phrases, voice: CHANNEL_VOICE, cacheDir, client, redo: [1], synthesizeImpl, synthesizeAlignedImpl, alignImpl });
   assert.deepEqual([redone.calls, asked.length], [1, 3]);
   assert.notDeepEqual(redone.clips[1], first.clips[1]);
-  const other = await serverNarration({ phrases: phrases.slice(0, 1), voice: { ...CHANNEL_VOICE, name: 'Kore' }, cacheDir, client, synthesizeImpl });
+  const other = await serverNarration({ phrases: phrases.slice(0, 1), voice: { ...CHANNEL_VOICE, name: 'Kore' }, cacheDir, client, synthesizeImpl, synthesizeAlignedImpl, alignImpl });
   assert.equal(other.calls, 1, 'another voice is another clip');
   assert.notEqual(phraseKey(CHANNEL_VOICE, 'API 是什麼'), phraseKey(CHANNEL_VOICE, 'API 是什麼', { terms: { API: 'A P I' } }));
   assert.deepEqual(phraseBody({ provider: 'azure', name: 'zh-TW-HsiaoChenNeural' }, '你好').voice, 'zh-TW-HsiaoChenNeural');
+});
+
+test('an Azure phrase brings its word boundaries with the one synthesis call; an older site synthesizes as before', async (t) => {
+  const cacheDir = path.join(temp(t), 'cache');
+  const azure = { provider: 'azure', name: 'zh-TW-HsiaoChenNeural' };
+  const client = { site: 'https://site.test', token: TOKEN };
+  const timing = { source: 'azure', model: 'zh-TW-HsiaoChenNeural', chars: [{ text: '你', start_ms: 10, end_ms: 300 }, { text: '好', start_ms: 300, end_ms: 600 }] };
+  const sent = [];
+  const synthesizeAlignedImpl = async ({ body, token }) => { sent.push({ body, token }); return { wav: tone(1), billable: 4, timing }; };
+  const synthesizeImpl = async () => { throw new Error('the plain synthesis is not used when the aligned one answers'); };
+  const alignImpl = async () => { throw new Error('a clip with its timing is never sent again'); };
+  const first = await serverNarration({ phrases: ['你好'], voice: azure, cacheDir, client, synthesizeImpl, synthesizeAlignedImpl, alignImpl });
+  assert.deepEqual(sent, [{ body: { voice: 'zh-TW-HsiaoChenNeural', rate: '+0%', segments: [{ parts: [{ text: '你好' }], break_after_ms: 0 }] }, token: TOKEN }]);
+  assert.deepEqual(first.timings, [timing]);
+  assert.deepEqual([first.calls, first.characters, first.provider], [1, 4, 'azure']);
+  assert.deepEqual(JSON.parse(readFileSync(timingFileOf(cacheDir, azure, '你好'), 'utf8')), timing);
+  const cached = await serverNarration({ phrases: ['你好'], voice: azure, cacheDir, client, synthesizeImpl, synthesizeAlignedImpl, alignImpl });
+  assert.deepEqual([cached.calls, sent.length, cached.timings], [0, 1, [timing]], 'the cache holds the clip and its timing');
+  // A site from before the route answers null: the phrase is synthesized as before and sent for
+  // timing afterwards, which the server cannot do for an Azure clip without its boundaries.
+  const older = path.join(temp(t), 'older');
+  const asked = [];
+  const plain = await serverNarration({
+    phrases: ['你好'], voice: azure, cacheDir: older, client,
+    synthesizeImpl: async () => { asked.push('synthesize'); return { wav: tone(1), billable: 4 }; },
+    synthesizeAlignedImpl: async () => { asked.push('aligned'); return null; },
+    alignImpl: async () => { asked.push('align'); return null; },
+  });
+  assert.deepEqual(asked, ['aligned', 'synthesize', 'align']);
+  assert.deepEqual([plain.calls, plain.timings], [1, [null]]);
+  assert.equal(existsSync(timingFileOf(older, azure, '你好')), false);
+  // A build that draws no karaoke never asks for timing; it still keeps what the cache holds.
+  const quiet = await serverNarration({ phrases: ['你好'], voice: azure, cacheDir: older, client, align: false, synthesizeImpl, synthesizeAlignedImpl, alignImpl: async () => { throw new Error('not asked without karaoke'); } });
+  assert.deepEqual([quiet.calls, quiet.timings], [0, [null]]);
+  const kept = await serverNarration({ phrases: ['你好'], voice: azure, cacheDir, client, align: false, synthesizeImpl, synthesizeAlignedImpl, alignImpl });
+  assert.deepEqual(kept.timings, [timing]);
+});
+
+test('an Azure phrase sent on the align route goes through the speech journal like any paid phrase', async (t) => {
+  const azure = { provider: 'azure', name: 'zh-TW-HsiaoChenNeural' };
+  const client = { site: 'https://site.test', token: TOKEN };
+  const synthesizeImpl = async () => { throw new Error('no plain synthesis after the aligned one was sent'); };
+  // A lost answer holds the phrase: the next build does not send it again on either route.
+  const cacheDir = path.join(temp(t), 'cache');
+  let sent = 0;
+  const lost = async () => { sent += 1; throw new SpeechError('the answer was lost', { status: 504, code: SPEECH_UNCERTAIN, who: 'owner' }); };
+  const run = () => serverNarration({ phrases: ['你好'], voice: azure, cacheDir, client, align: false, synthesizeImpl, synthesizeAlignedImpl: lost });
+  await assert.rejects(run(), (error) => error.code === SPEECH_UNCERTAIN);
+  await assert.rejects(run(), /held in the speech journal/);
+  assert.equal(sent, 1, 'the next build does not send it again');
+  // An answer an earlier build bought and did not cache is reused, not bought again; its timing
+  // was not kept, so the phrase has none until it is aligned.
+  const kept = path.join(temp(t), 'kept');
+  const wav = tone(1);
+  const timing = { source: 'azure', model: 'zh-TW-HsiaoChenNeural', chars: [{ text: '你', start_ms: 10, end_ms: 300 }, { text: '好', start_ms: 300, end_ms: 600 }] };
+  await openSpeechJournal(path.join(kept, JOURNAL_DIR)).wrap(async () => ({ wav, billable: 4, timing }))(phraseBody(azure, '你好'));
+  const reused = await serverNarration({ phrases: ['你好'], voice: azure, cacheDir: kept, client, align: false, synthesizeImpl, synthesizeAlignedImpl: async () => { throw new Error('a kept answer is not bought again'); } });
+  assert.deepEqual([reused.calls, reused.characters, reused.timings], [0, 0, [null]]);
+  assert.deepEqual(reused.clips[0], wav);
+  assert.deepEqual(readdirSync(path.join(kept, JOURNAL_DIR)), []);
 });
 
 test('the three sources, and which one a build takes when none is named', async (t) => {
@@ -147,6 +224,7 @@ test('the three sources, and which one a build takes when none is named', async 
   writeFileSync(path.join(dir, '000.wav'), tone(1, 300));
   writeFileSync(path.join(dir, '001.wav'), tone(1, 400));
   const supplied = await narrate({ doc, source: 'files', workBase: dir, audioDir: dir });
+  assert.equal(supplied.timings, undefined, 'supplied files carry no measured timing: the build estimates');
   assert.deepEqual([supplied.provider, supplied.calls, supplied.clips.length], ['files', 0, 2]);
   await assert.rejects(narrate({ doc, source: 'files', workBase: dir }), /--audio-dir/);
   await assert.rejects(narrate({ doc, source: 'server', workBase: dir }), /login/);
@@ -301,10 +379,11 @@ const measured = (changes = {}) => ({
   loudness: { input_i: '-14.20', input_tp: '-1.50', ...changes.loudness },
 });
 
-test('the twelve items are the site\'s twelve, in its order', () => {
+test('the thirteen items are the site\'s thirteen, in its order', () => {
   const source = readFileSync(path.join(REPO, 'apps/api/app/video_automation/judge.py'), 'utf8');
   const tuple = (name) => [...source.match(new RegExp(`${name}: tuple\\[str, \\.\\.\\.\\] = \\(([^)]*)\\)`))[1].matchAll(/"([a-z_]+)"/g)].map((match) => match[1]);
   assert.deepEqual([...ITEM_IDS], tuple('SHORTS_QA_ITEMS'));
+  assert.deepEqual([ITEM_IDS.length, ITEM_IDS.at(-1)], [13, 'grammar']);
   assert.deepEqual([...PACKAGE_ITEM_IDS], tuple('SHORTS_PACKAGE_ITEMS'));
   const items = ITEM_IDS.map((id) => ({ id, ok: true, detail: '' }));
   assert.deepEqual(qaReport(items, 'f'.repeat(64), 'lab'), { ok: true, final_sha256: 'f'.repeat(64), kind: 'shorts', line: 'lab', items });
@@ -447,6 +526,47 @@ test('the latest Shorts are read from their final reviews on the site', async ()
   assert.deepEqual(asked, [{ shorts: 'only', limit: '60' }]);
 });
 
+test('the grammar item: the cover is the first frame, the last frame returns to it, the first card reads at thumbnail size, nobody is asked to act', () => {
+  const grammar = { cover_psnr: Infinity, loop_psnr: 47.3 };
+  const fine = grammarItem({ doc: script(), grammar });
+  assert.deepEqual([fine.id, fine.ok], ['grammar', true]);
+  assert.match(fine.detail, /^the cover is the first frame \(PSNR inf, identical\), the last frame returns to it \(PSNR 47\.3 dB\), the first card reads at thumbnail size, no call to action in 25 texts of 5 cards$/);
+  assert.match(grammarItem({ doc: script(), grammar: { cover_psnr: 31.2, loop_psnr: 47.3 } }).detail, /^the cover is not the first frame \(PSNR 31\.2 dB, below 40 dB\)$/);
+  assert.match(grammarItem({ doc: script(), grammar: { cover_psnr: Infinity, loop_psnr: 12 } }).detail, /^the last frame does not return to the first \(PSNR 12\.0 dB, below 30 dB\)$/);
+  assert.match(grammarItem({ doc: script(), grammar: null }).detail, /were not measured against the cover/);
+  const scenes = (edit, at) => script().scenes.map((scene, index) => (index === at ? { ...scene, ...edit } : scene));
+  assert.match(grammarItem({ doc: { ...script(), scenes: scenes({ headline: '這張手寫發票的總額到底是多少元' }, 0) }, grammar }).detail, /^the first card is the thumbnail: its headline is 15 characters and it carries no big number; at most 14 characters, or a big$/);
+  assert.equal(grammarItem({ doc: { ...script(), scenes: scenes({ headline: '這張手寫發票的總額到底是多少元', big: '275' }, 0) }, grammar }).ok, true, 'a big number reads at any size');
+  assert.match(grammarItem({ doc: { ...script(), scenes: scenes({ narration: ['一題不能代表全部', '記得訂閱頻道'] }, 4) }, grammar }).detail, /^scene 4 narration asks the viewer to act \(記得訂閱\); a Short ends on its first frame, not on an ask$/);
+  assert.match(grammarItem({ doc: { ...script(), scenes: scenes({ note: '按讚加小鈴鐺' }, 2) }, grammar }).detail, /scene 2 note asks the viewer to act \(按讚、小鈴鐺\)/);
+  assert.match(grammarItem({ doc: { ...script(), scenes: scenes({ body: ['點連結看完整文章'] }, 1) }, grammar }).detail, /scene 1 body asks the viewer to act \(點連結\)/);
+  assert.match(grammarItem({ doc: { ...script(), scenes: scenes({ headline: 'Follow us for more' }, 3) }, grammar }).detail, /scene 3 headline asks the viewer to act \(Follow us\)/);
+  assert.equal(grammarItem({ doc: { ...script(), scenes: scenes({ body: ['訂閱制方案每月 20 美元', '追蹤包裹的進度'] }, 1) }, grammar }).ok, true, 'a subscription plan and tracking a parcel are not asks');
+  const twice = grammarItem({ doc: { ...script(), scenes: scenes({ headline: '這張手寫發票的總額到底是多少元', narration: ['記得訂閱頻道'] }, 0) }, grammar: { cover_psnr: 10, loop_psnr: 47.3 } });
+  assert.equal(twice.ok, false);
+  for (const problem of [/the cover is not the first frame \(PSNR 10\.0 dB/, /the first card is the thumbnail: its headline is 15 characters/, /scene 0 narration asks the viewer to act \(記得訂閱\)/]) assert.match(twice.detail, problem, 'every problem is named');
+});
+
+test('the quality check measures the cut\'s two ends against the cover with the rest, and the grammar item reads them', async (t) => {
+  const { directory, timeline } = builtDirectory(t);
+  const asked = [];
+  const ends = { cover_psnr: Infinity, loop_psnr: 44.4 };
+  const stream = () => measured({ video: { nb_frames: String(timeline.frames) }, audio: { duration: String(timeline.seconds) } });
+  const measureImpl = async (final, tools, options) => {
+    asked.push({ final, tools, options });
+    return { ...stream(), grammar: ends };
+  };
+  const report = await runQa({ directory, offline: true, tools: { ffmpeg: 'ffmpeg', ffprobe: 'ffprobe' }, measureImpl });
+  assert.deepEqual(asked, [{ final: path.join(directory, 'upload', 'final.mp4'), tools: { ffmpeg: 'ffmpeg', ffprobe: 'ffprobe' }, options: { cover: path.join(directory, 'upload', 'cover.png'), frames: timeline.frames } }]);
+  assert.deepEqual(report.items.map((item) => item.id), [...ITEM_IDS]);
+  const grammar = report.items.find((item) => item.id === 'grammar');
+  assert.equal(grammar.ok, true, grammar.detail);
+  assert.match(grammar.detail, /the last frame returns to it \(PSNR 44\.4 dB\)/);
+  assert.equal(JSON.parse(readFileSync(path.join(directory, 'qa.json'), 'utf8')).items.at(-1).id, 'grammar');
+  const unmeasured = await runQa({ directory, offline: true, tools: {}, measureImpl: async () => stream() });
+  assert.match(unmeasured.items.find((item) => item.id === 'grammar').detail, /were not measured against the cover/, 'a measurement that brings no ends never passes');
+});
+
 // --- the upload package --------------------------------------------------------------------------
 
 test('the description leads back to the full video, and says what an experiment tested', () => {
@@ -562,11 +682,11 @@ test('a Short whose cut is approved goes on to its upload package', async (t) =>
   const [final, publish] = calls.filter(([kind]) => kind === 'submit').map(([, , review]) => review);
   assert.deepEqual([final.gate, final.content_sha256], ['final', finalSha]);
   assert.deepEqual(final.files.map((file) => [file.role, file.content_type]), [['preview', 'video/mp4'], ['thumbnail', 'image/png'], ['contact_sheet', 'image/png'], ['evidence_evidence_result', 'application/json']]);
-  assert.deepEqual([final.payload.qa.kind, final.payload.qa.final_sha256, final.payload.qa.items.length], ['shorts', finalSha, 12]);
+  assert.deepEqual([final.payload.qa.kind, final.payload.qa.final_sha256, final.payload.qa.items.length], ['shorts', finalSha, 13]);
   assert.ok(!('checked_at' in final.payload.qa) && !('script' in final.payload.qa), 'the report goes as the site reads it');
   assert.deepEqual(final.payload.usage.narration, { seconds: 33, characters: 96, calls: 11, provider: 'gemini' });
   assert.deepEqual(final.payload.script, { series: 'daily', opening: '一張手寫的發票', structure: '30-23-2b0n-22-20n' });
-  assert.match(final.summary, /^Shorts 35\.\d 秒，Shorts 自動品管 12 項全過$/);
+  assert.match(final.summary, /^Shorts 35\.\d 秒，Shorts 自動品管 13 項全過$/);
   const metadataSha = sha256(readFileSync(path.join(directory, 'upload', 'metadata.json')));
   assert.deepEqual([publish.gate, publish.content_sha256, publish.payload.package.final_sha256, publish.payload.package.kind], ['publish', metadataSha, metadataSha, 'shorts']);
   assert.equal(publish.payload.final_review_id, result.final.id);

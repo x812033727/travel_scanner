@@ -1,10 +1,11 @@
 // `keyframes`: one 1920x1080 picture per shot, generated from the shot's prompt with the chosen
-// character sheets as references, scored by the judge and retaken with another seed when it
-// fails (docs/videos/DRAMA.md). Needs the look gate approved: the sheets are what keep every
-// character the same from shot to shot. A drama with no characters (a narrator-only story,
-// docs/videos/STORY.md) has no sheets and no look gate, and its keyframes take the look's style
-// frames as their only references. Writes keyframes/manifest.json (the storyboard gate binds to
-// it), keyframes/<shot>-<seed>.png and a contact sheet, in pages when there are many shots.
+// character sheets as references, scored by the judge and retaken with another seed, and the
+// judge's fixes in the prompt, when it fails (docs/videos/DRAMA.md). Needs the look gate
+// approved: the sheets are what keep every character the same from shot to shot. A drama with
+// no characters (a narrator-only story, docs/videos/STORY.md) has no sheets and no look gate,
+// and its keyframes take the look's style frames as their only references. Writes
+// keyframes/manifest.json (the storyboard gate binds to it), keyframes/<shot>-<seed>.png and a
+// contact sheet, in pages when there are many shots.
 import { existsSync, mkdirSync, readdirSync, rmSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -150,16 +151,51 @@ export function bestTake(takes) {
   return [...takes].reverse().find((each) => each.judge?.passed) ?? takes.reduce((best, each) => ((each.judge?.overall ?? -1) > (best?.judge?.overall ?? -1) ? each : best), null);
 }
 
+// A judge problem is one line "<criterion key>: <what is wrong and where> → <one change to the
+// prompt>", and the server holds it to that (apps/api/app/video_media/judge.py;
+// docs/videos/ILLUSTRATED.md §judge 的 problems). The clause after the arrow is prompt text: the
+// next take of a shot is asked with the clauses of the takes before it, so a retake chases the
+// fault instead of rolling the same dice. The server writes PLACEHOLDER_FIX on a line the judge
+// gave no fix for, and on the line it adds for a fault the judge found but did not describe:
+// that is a note to whoever rewrites the prompt, not prompt text, so it stays out of the retake.
+// Both sides spell it the same.
+export const FIX_ARROW = " → ";
+export const PLACEHOLDER_FIX = "write the correction into the prompt";
+
+/** The fix clauses of some problem lines, each once, in order; a line with no fix of its own gives none. */
+export function fixClauses(problems) {
+  const fixes = [];
+  for (const line of problems ?? []) {
+    const text = String(line);
+    const at = text.indexOf(FIX_ARROW);
+    if (at < 0) continue;
+    const fix = text.slice(at + FIX_ARROW.length).trim();
+    if (fix && fix !== PLACEHOLDER_FIX && !fixes.includes(fix)) fixes.push(fix);
+  }
+  return fixes;
+}
+
+/** What the take with `seed` is asked to correct: the fix clauses of the judged takes before it, in seed order. */
+export function fixesBefore(takes, seed) {
+  return fixClauses([...(takes ?? [])].filter((take) => take.judge && take.seed < seed).sort((a, b) => a.seed - b.seed).flatMap((take) => take.judge.problems ?? []));
+}
+
+/** A prompt with the corrections of the earlier takes appended, or the prompt itself when there are none. */
+export function retakePrompt(prompt, fixes) {
+  return fixes?.length ? `${prompt}. Corrections: ${fixes.join("; ")}`.slice(0, 4000) : prompt;
+}
+
 /**
  * Whether a shot's entry from a manifest bound to other pictures still stands: every take was
- * asked for exactly as it would be asked for now (`keys.take(seed)`, the image cache key: prompt,
- * camera, style, cast, references, model, size), its end frame too, and judged on the question
- * the judge would be asked now (`stamp`: rubric, context, the owner's bar). A verdict from before
- * takes carried a stamp stands only on a shot that passed.
+ * asked for exactly as it would be asked for now (`keys.take(seed, fixes)`, the image cache key:
+ * prompt with the fixes of the takes before it, camera, style, cast, references, model, size),
+ * its end frame too, and judged on the question the judge would be asked now (`stamp`: rubric,
+ * context, the owner's bar). A verdict from before takes carried a stamp stands only on a shot
+ * that passed.
  */
 export function entryStands(entry, { keys, stamp }) {
   const takes = entry?.takes ?? [];
-  if (!takes.length || !takes.every((take) => take.judge && take.key === keys.take(take.seed))) return false;
+  if (!takes.length || !takes.every((take) => take.judge && take.key === keys.take(take.seed, fixesBefore(takes, take.seed)))) return false;
   if ((entry.end_frame?.key ?? null) !== keys.end) return false;
   return takes.every((take) => take.judged === stamp || (take.judged === undefined && !entry.needs_review));
 }
@@ -202,9 +238,10 @@ async function stylePlate({ stage, workdir, look, hash, takes, size, rubric, for
   const taken = [];
   let generated = 0;
   for (let take = 1; take <= takes; take++) {
+    const fixes = fixesBefore(taken, take);
     let picture;
     try {
-      picture = await stage.image({ id: STYLE_PLATE_ID, purpose: "style_frame", prompt, negative: look.negative, references: [], seed: take, shotId: STYLE_PLATE_ID, size, target: `keyframes/plate-${take}` });
+      picture = await stage.image({ id: STYLE_PLATE_ID, purpose: "style_frame", prompt: retakePrompt(prompt, fixes), negative: look.negative, references: [], seed: take, shotId: STYLE_PLATE_ID, size, target: `keyframes/plate-${take}` });
       if (!picture.reused) generated += 1;
     } catch (error) {
       if (error.code === "stopped") return null;
@@ -223,7 +260,7 @@ async function stylePlate({ stage, workdir, look, hash, takes, size, rubric, for
     }
     // The plate goes to every shot as its reference, so a margin on it would be copied: cut it off.
     if (trim) picture = await trimmed(ctx, workdir, picture, STYLE_PLATE_ID);
-    taken.push({ seed: take, file: picture.file, sha256: picture.sha256, key: picture.key, judge, ...(picture.margins ? { margins: picture.margins } : {}) });
+    taken.push({ seed: take, file: picture.file, sha256: picture.sha256, key: picture.key, judge, ...(fixes.length ? { fixes } : {}), ...(picture.margins ? { margins: picture.margins } : {}) });
     ctx.stdout.write(`style plate take ${take}: judge ${judge.overall}/10${judge.passed ? "" : ` NOT passed: ${judge.problems.join("; ") || "below the bar"}`}${picture.reused ? " (reused)" : ""}\n`);
     if (judge.passed) break;
   }
@@ -383,7 +420,7 @@ export async function run(command, args, ctx) {
       const references = referencesOf(characters);
       const prompt = shotPrompt(scene, look, characters);
       const keys = {
-        take: (seed) => stage.imageKey({ prompt, negative: look.negative, references, seed, size }),
+        take: (seed, fixes = []) => stage.imageKey({ prompt: retakePrompt(prompt, fixes), negative: look.negative, references, seed, size }),
         end: scene.data.end_frame?.prompt ? stage.imageKey({ prompt: endPrompt(scene, characters), negative: look.negative, references, seed: 1 }) : null,
       };
       if (entryStands(existing.shots?.[scene.id], { keys, stamp: stampOf(question(scene, characters)) })) manifest.shots[scene.id] = existing.shots[scene.id];
@@ -421,9 +458,12 @@ export async function run(command, args, ctx) {
         if (previous.judge.passed) break;
         continue;
       }
+      // The judge's fixes for the takes before this one go into its prompt.
+      const fixes = fixesBefore(entry.takes, seed);
+      if (fixes.length) ctx.stdout.write(`${scene.id} take ${take}: asked with the corrections of the takes before: ${fixes.join("; ")}\n`);
       let picture;
       try {
-        picture = await stage.image({ id: scene.id, purpose: "keyframe", prompt, negative: look.negative, references, seed, shotId: scene.id, size, target: `keyframes/${scene.id}-${seed}` });
+        picture = await stage.image({ id: scene.id, purpose: "keyframe", prompt: retakePrompt(prompt, fixes), negative: look.negative, references, seed, shotId: scene.id, size, target: `keyframes/${scene.id}-${seed}` });
       } catch (error) {
         if (error.code === "stopped") {
           stopped = true;
@@ -452,7 +492,7 @@ export async function run(command, args, ctx) {
       }
       // A still under a camera move is used without its paper margin; the judge saw it whole.
       if (stillPictures) picture = await trimmed(ctx, workdir, picture, scene.id);
-      entry.takes = [...entry.takes.filter((each) => each.seed !== seed), { seed, file: picture.file, sha256: picture.sha256, key: picture.key, judge, judged, ...(picture.margins ? { margins: picture.margins } : {}) }].sort((a, b) => a.seed - b.seed);
+      entry.takes = [...entry.takes.filter((each) => each.seed !== seed), { seed, file: picture.file, sha256: picture.sha256, key: picture.key, judge, judged, ...(fixes.length ? { fixes } : {}), ...(picture.margins ? { margins: picture.margins } : {}) }].sort((a, b) => a.seed - b.seed);
       ctx.stdout.write(`${scene.id} take ${take}: judge ${judge.overall}/10${judge.passed ? "" : ` NOT passed: ${judge.problems.join("; ") || "below the bar"}`}${picture.reused ? " (reused)" : ""}\n`);
       if (judge.passed) break;
     }
@@ -472,7 +512,12 @@ export async function run(command, args, ctx) {
       continue;
     }
     const record = { file: best.file, sha256: best.sha256, key: best.key, seed: best.seed, judge: best.judge, takes: entry.takes, needs_review: !best.judge?.passed, ...(best.margins ? { margins: best.margins } : {}) };
-    if (record.needs_review) record.problems = [...new Set(entry.takes.flatMap((each) => each.judge?.problems ?? []))];
+    if (record.needs_review) {
+      // Every problem of every take, and the fixes among them: what a prompt rewrite starts from.
+      record.problems = [...new Set(entry.takes.flatMap((each) => each.judge?.problems ?? []))];
+      const fixes = fixClauses(record.problems);
+      if (fixes.length) record.fixes = fixes;
+    }
     // An end frame guides the clip's last picture; it is not judged, only drawn.
     if (scene.data.end_frame?.prompt) {
       // Keep the selected start picture before the next paid call. A cap, upstream error or
@@ -537,7 +582,10 @@ export async function run(command, args, ctx) {
   recordStage(workdir, "keyframes", { shots: Object.keys(manifest.shots).length, generated, needs_review: waiting.map(([id]) => id), duplicates: manifest.duplicates.length, usd: ledgerTotals(workdir).usd, seconds }, ctx.now());
   ctx.stdout.write(`${generated} keyframes generated in ${seconds} s; ${drawn.length} shots drawn; this video has spent US$${ledgerTotals(workdir).usd.toFixed(2)}\n`);
   if (waiting.length) {
-    for (const [id, shot] of waiting) ctx.stdout.write(`ERROR ${id}: ${shot.file ? "no take passed the judge: " : ""}${(shot.problems ?? []).join("; ")}\n`);
+    for (const [id, shot] of waiting) {
+      ctx.stdout.write(`ERROR ${id}: ${shot.file ? "no take passed the judge: " : ""}${(shot.problems ?? []).join("; ")}\n`);
+      if (shot.fixes?.length) ctx.stdout.write(`  fixes for ${id}: ${shot.fixes.join("; ")}\n`);
+    }
     ctx.stdout.write(`fix the prompts of ${waiting.map(([id]) => id).join(", ")} and run keyframes again (needs_review in keyframes/manifest.json)\n`);
     return EXIT.lint;
   }

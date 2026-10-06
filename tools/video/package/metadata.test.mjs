@@ -7,10 +7,37 @@ import { EXIT, main } from "../cli.mjs";
 import { approve } from "../core/approvals.mjs";
 import { compilationDocument, compilationLayout, compilationTimeline } from "../core/compilation.mjs";
 import { COMPILATION_REVIEW_FILE, publicTexts, reviewHash } from "../core/compilation-review.mjs";
+import { fixture } from "../core/fixtures/load.mjs";
+import { creditBytes, DESCRIPTION_MAX_BYTES } from "../core/metadata.mjs";
 import { readJson } from "../core/paths.mjs";
 import { writeLanguages } from "../core/stages.mjs";
+import { estimateTimeline } from "../core/timeline.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
 import { composeMetadata } from "./metadata.mjs";
+
+test("every locale's description credits the stock photos of assets[], and says so when they tip it over the byte limit", () => {
+  const doc = fixture();
+  const timeline = estimateTimeline(doc);
+  doc.assets = [
+    { path: "apps/web/public/guides/x/diagram-1.svg", source: "Mokaair 自有圖解（文章 x）", license: "© Mokaair" },
+    { path: "stock/a.jpg", source: "Photo by Lukas Rodriguez on Pexels", license: "Pexels License", author: "Lukas Rodriguez", url: "https://www.pexels.com/photo/seoul-at-night-3573351/" },
+  ];
+  const translations = { en: { title: "How to pick an AI model", description: "Three questions decide it." } };
+  const { problems, metadata } = composeMetadata({ doc, timeline, translations });
+  assert.deepEqual(problems, []);
+  assert.match(metadata.description, /\n\n📚 參考資料\n[^\n]+\n\n📷 圖片來源\nPhoto by Lukas Rodriguez on Pexels（Pexels License）：https:\/\/www\.pexels\.com\/photo\/seoul-at-night-3573351\/\n\n#/);
+  assert.doesNotMatch(metadata.description, /Mokaair 自有圖解/, "own diagrams are not credited");
+  assert.match(metadata.localizations.en.description, /\n\n📷 Image credits\nPhoto by Lukas Rodriguez on Pexels \(Pexels License\): https:\/\/www\.pexels\.com/);
+  // A body that fits without the credits (lint composes it that way) and not with them.
+  const credits = creditBytes(doc.assets, "zh-TW");
+  const slack = () => DESCRIPTION_MAX_BYTES - Buffer.byteLength(composeMetadata({ doc: { ...doc, assets: [] }, timeline }).metadata.description, "utf8");
+  doc.youtube.description += "字".repeat(Math.ceil((slack() - credits + 1) / 3));
+  assert.ok(slack() >= 0 && slack() < credits, `${slack()} bytes of room under lint's count, ${credits} needed`);
+  assert.deepEqual(composeMetadata({ doc: { ...doc, assets: [] }, timeline }).problems, []);
+  const over = composeMetadata({ doc, timeline }).problems;
+  assert.equal(over.length, 1);
+  assert.match(over[0], new RegExp(`^zh-TW\\.description: \\d+ bytes once composed, at most ${DESCRIPTION_MAX_BYTES} \\(the 圖片來源 credits of assets\\[\\] add ${credits} bytes that lint does not count: shorten youtube\\.description or use fewer stock photos\\)$`));
+});
 
 test("cardless compilation descriptions use revised chapter titles on an older measured timeline", () => {
   const episodes = [{ slug: "mystery-e020", number: 20, title: "她還活著" }, { slug: "mystery-e023", number: 23, title: "舊名" }];

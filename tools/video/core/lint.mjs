@@ -5,7 +5,7 @@
 // passes one route's check does not fail the other's.
 import { cadenceProblems, HOOK_SECONDS as ILLUSTRATED_HOOK_SECONDS } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
-import { emotionProblems, EXPLAINER_PRESET, hasCast, illustrated, isDrama, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
+import { cueCoverageProblems, emotionProblems, EXPLAINER_PRESET, hasCast, illustrated, isDrama, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
@@ -293,7 +293,10 @@ export function lintVideo(doc, context = {}) {
   // drama_craft_check.mjs prints): the rows it misses are warnings the writer fixes or answers.
   // A long anime keeps to its own production policy instead.
   if (hasCast(doc) && !isLongAnime(doc)) for (const problem of craftProblems(doc, timeline)) warn(problem.path, problem.message);
-  if (drama) for (const problem of emotionProblems(doc)) warn(problem.path, problem.message);
+  // The performance contract (docs/videos/ILLUSTRATED.md §聲音表演): a plan on the narration's voice
+  // and a cue on any format's line reach a Gemini style; one an Azure voice cannot take, and
+  // lines that leave the plan to be read flat, are warnings for the writer.
+  for (const problem of [...emotionProblems(doc), ...cueCoverageProblems(doc)]) warn(problem.path, problem.message);
   // The cadence of an illustrated video (docs/videos/ILLUSTRATED.md) is estimated here and
   // measured at the final gate; warnings, so the writer's draft is never blocked on an estimate.
   for (const problem of cadenceProblems(doc, timeline)) warn(problem.path, `${problem.message} (estimated; the final gate measures the synthesized timeline)`);

@@ -78,6 +78,10 @@ OFFICIAL_PROVIDER_HOSTS: dict[str, frozenset[str]] = {
     "ekispert_api_base_url": frozenset({"api.ekispert.jp"}),
     "jev_api_base_url": frozenset({"api.typesafe.ai"}),
     "odsay_api_base_url": frozenset({"api.odsay.com"}),
+    # Stock photos for the video pipeline (app.video_media.stock): a key only ever goes to the
+    # vendor's own API host, and the files are fetched from the vendor's own hosts.
+    "pexels_api_base_url": frozenset({"api.pexels.com"}),
+    "pixabay_api_base_url": frozenset({"pixabay.com"}),
 }
 
 
@@ -569,6 +573,15 @@ class Settings(BaseSettings):
         default=300_000, ge=0, le=100_000_000
     )
     video_speech_gemini_timeout_seconds: float = Field(default=150.0, ge=5, le=280)
+    # Stock photos for the illustrated slides (docs/videos/ILLUSTRATED.md §圖庫照片): the
+    # pipeline searches Pexels and Pixabay through POST /api/v1/video/media/stock/* with a video
+    # tool token and the server fetches the file into the media store, so the keys stay here.
+    # Both base URLs are pinned to the vendor's host (OFFICIAL_PROVIDER_HOSTS). Pixabay takes
+    # the key as a query parameter, which is why no stock error ever carries a URL.
+    pexels_api_key: str | None = None
+    pexels_api_base_url: str = "https://api.pexels.com/v1"
+    pixabay_api_key: str | None = None
+    pixabay_api_base_url: str = "https://pixabay.com/api/"
     # Previews the owner reviews on /admin/videos: a 720p cut, the narration, the contact sheet.
     # Production has no object storage, so they live in a volume on the host
     # (docker-compose.prod.yml) and are served to admins only.
@@ -859,6 +872,8 @@ class Settings(BaseSettings):
                 self.hotspot_guide_gemini_api_key,
                 "hotspot_guide_gemini_base_url",
             ),
+            "PEXELS_API_BASE_URL": (self.pexels_api_key, "pexels_api_base_url"),
+            "PIXABAY_API_BASE_URL": (self.pixabay_api_key, "pixabay_api_base_url"),
         }
         for env_name, (credential, field) in pinned_endpoints.items():
             if credential and not official_provider_url_ok(field, getattr(self, field)):
