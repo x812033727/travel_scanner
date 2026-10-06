@@ -10,6 +10,11 @@ import { MediaError } from "./client.mjs";
 
 /** Per-vendor prompt limits (the prompt must be strictly shorter), for a server that does not report them. */
 export const IMAGE_PROMPT_LIMITS = { minimax: 1500 };
+// The vendor of each image model the settings may name by id alone: the worker's settings
+// carry the slides image model (`slides.slides_image_model`) without its vendor, and the
+// writer's first draft has to hear the budget of the model that will draw it. The ids are the
+// catalog's (apps/api/app/video_media/catalog.py; media.test.mjs holds this table to it).
+export const IMAGE_MODEL_VENDORS = { "gemini-3-pro-image": "gemini", "gemini-3.1-flash-image": "gemini", "image-01": "minimax" };
 // The server's own limit on a prompt field (apps/api/app/video_media/schemas.py MAX_PROMPT_CHARS).
 export const DEFAULT_IMAGE_PROMPT_LIMIT = 4000;
 // What the server puts between the prompt and the negative prompt: minimax.py's
@@ -35,6 +40,12 @@ export function imagePromptLimit(choice, status) {
   const reported = (provider && limits[`image_prompt_chars_${provider}`]) ?? limits.image_prompt_chars;
   if (typeof reported === "number" && Number.isFinite(reported) && reported > 0) return reported;
   return (provider && IMAGE_PROMPT_LIMITS[provider]) ?? DEFAULT_IMAGE_PROMPT_LIMIT;
+}
+
+/** The vendor of an image model named by id (IMAGE_MODEL_VENDORS, else a Gemini-looking id), or `fallback`. */
+export function imageModelVendor(model, fallback = null) {
+  if (typeof model !== "string" || !model) return fallback;
+  return IMAGE_MODEL_VENDORS[model] ?? (/^gemini-/.test(model) ? "gemini" : fallback);
 }
 
 /** The fixed text that goes round a shot's prompt: style, camera, cast and the server's avoidance text. */

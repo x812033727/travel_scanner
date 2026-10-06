@@ -44,6 +44,13 @@ class MediaModel:
     # How many reference images (character sheets, style frames) one request may carry; a clip
     # model given 0 has its references refused by the jobs layer (jobs._request_fields).
     reference_images: int = 0
+    # How many of those an image model reads as a style sample (a style plate, the owner's
+    # style frames; role "style"): the Gemini adapter forwards them with its own instruction
+    # (providers/gemini_images.py), the MiniMax adapter sends only a character reference
+    # (providers/minimax.py), so image-01 never sees a plate. The tools draw a plate only for a
+    # model that takes one (tools/video/media/keyframes.mjs); on 2026-10-06 three slides videos
+    # blocked on plates image-01 could not follow.
+    style_references: int = 0
     native_audio: bool = False
     usd_per_second: float | None = None
     usd_per_image: float | None = None
@@ -68,6 +75,7 @@ MEDIA_CATALOG: tuple[MediaModel, ...] = (
             "1K 到 2K 每張 US$0.134（2026-09-28 查 Google 價目頁）"
         ),
         reference_images=14,
+        style_references=1,
         usd_per_image=0.134,
         usd_per_image_2k=0.134,
     ),
@@ -84,6 +92,7 @@ MEDIA_CATALOG: tuple[MediaModel, ...] = (
             "1K 每張 US$0.067、投影片插圖的 2K 每張 US$0.101（2026-09-28 查 Google 價目頁）"
         ),
         reference_images=5,
+        style_references=1,
         usd_per_image=0.067,
         usd_per_image_2k=0.101,
     ),

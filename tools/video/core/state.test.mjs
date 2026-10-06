@@ -443,6 +443,22 @@ test("keyframe coverage requires end-frame evidence, detects duplicate IDs and k
   assert.match((await check()).join("; "), /duplicate expected keyframe ID: start/);
 });
 
+test("a picture kept with the judge's remarks is no review need: its failed verdict stands beside accepted_with_problems", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "keyframes/desk.png"), "desk");
+  const doc = { scenes: [{ id: "desk", template: "shot", data: {} }] };
+  const failed = { file: "keyframes/desk.png", sha256: sha("desk"), judge: { overall: 5, passed: false, problems: ["awkward: the hand"] } };
+  const check = (shot) => keyframeProblems({ doc, manifest: { shots: { desk: shot } }, workdir: box.workdir });
+  assert.deepEqual(await check(failed), ["desk keyframe needs review"]);
+  assert.deepEqual(await check({ ...failed, needs_review: true }), ["desk keyframe needs review"]);
+  assert.deepEqual(await check({ ...failed, needs_review: false, accepted_with_problems: ["awkward: the hand"] }), [], "kept with its remarks (keyframes --accept-best)");
+  assert.deepEqual(await check({ ...failed, needs_review: false, accepted_with_problems: [] }), []);
+  assert.deepEqual(await check({ ...failed, needs_review: true, accepted_with_problems: ["awkward: the hand"] }), ["desk keyframe needs review"], "needs_review is the stage's word and stands");
+  assert.deepEqual(await check({ ...failed, needs_review: false, accepted_with_problems: "yes" }), ["desk keyframe needs review"], "only the list the stage writes counts");
+  assert.deepEqual(await keyframeProblems({ doc, manifest: { shots: { desk: failed } }, workdir: box.workdir, allowNeedsReview: true }), []);
+});
+
 test("a compilation walks its own steps: planned metadata, cards, the join, the translations, then the shared gates", async () => {
   const box = compilationSandbox({ rendered: false, planned: false });
   const status = async () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });

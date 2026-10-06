@@ -8,8 +8,8 @@ import { fileURLToPath } from "node:url";
 import { resolveLook } from "../core/drama.mjs";
 import { sandbox, tempDir } from "../core/fixtures/load.mjs";
 import { cached, forget, forgetJob, mediaKey, pendingJob, readCache, remember, rememberJob } from "./cache.mjs";
-import { AVOID, DEFAULT_IMAGE_PROMPT_LIMIT, IMAGE_PROMPT_LIMITS, MIN_SHOT_PROMPT_BUDGET, composeShotPrompt, imagePromptLimit, promptOverhead, shotPromptBudget } from "./prompt-budget.mjs";
-import { MediaError, PART_BYTES, RETAKE_CODES, downloadFile, judge, locate, mediaStatus, putFile, runJob, scaleBox, stockFetch, stockSearch, submitClip, submitImage, waitForJob } from "./client.mjs";
+import { AVOID, DEFAULT_IMAGE_PROMPT_LIMIT, IMAGE_MODEL_VENDORS, IMAGE_PROMPT_LIMITS, MIN_SHOT_PROMPT_BUDGET, composeShotPrompt, imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "./prompt-budget.mjs";
+import { EXHAUSTED_CODES, MediaError, PART_BYTES, RETAKE_CODES, downloadFile, judge, locate, mediaStatus, putFile, runJob, scaleBox, stockFetch, stockSearch, submitClip, submitImage, waitForJob } from "./client.mjs";
 import { STAGES, exitFor, main, run, statusText } from "./cli.mjs";
 import { appendLedger, bookImport, bookJob, capProblem, importedTotals, ledgerTotals, readLedger, release, reserve, reservedEntries, savedTotals } from "./ledger.mjs";
 import { VENDOR_NOTICES, assetEntry, candidateText, stockFile, withAsset, withAssets } from "./stock.mjs";
@@ -113,6 +113,10 @@ test("exhausted media requests require a source change instead of another servic
         assert.equal(error.code, "video_media_job_exhausted");
         assert.equal(error.status, 409);
         assert.equal(error.message, detail);
+        // The code is the stages' to act on (keyframes moves to the next seed; an owner retry
+        // shifts every seed), not the owner's as such; where a stage lets it escape it still
+        // exits 3, which parks that video alone, where exit 4 would end every round on it.
+        assert.ok(EXHAUSTED_CODES.has(error.code), "a spent request is its own kind, apart from the owner's settings and keys");
         assert.equal(error.who, "owner");
         assert.equal(exitFor(error, EXIT), EXIT.owner, "Automation blocks only this video on exit 3");
         return true;
@@ -122,6 +126,7 @@ test("exhausted media requests require a source change instead of another servic
   assert.equal(fake.calls.length, 2, "each refused operation is submitted only once");
   assert.deepEqual(waits, []);
   assert.ok(!RETAKE_CODES.has("video_media_job_exhausted"), "no identical or blind seed retake after exhaustion");
+  assert.deepEqual([...EXHAUSTED_CODES], ["video_media_job_exhausted"]);
 
   const other = site({ "POST images": () => json({ code: "video_media_upstream_invalid", detail: "invalid" }, 409) });
   await assert.rejects(
@@ -610,4 +615,20 @@ test("a shot's prompt is composed under the image model's limit: corrections go 
   assert.equal(imagePromptLimit({ provider: "minimax", model: "image-01" }, {}), 1500);
   assert.equal(imagePromptLimit({ provider: "gemini", model: "flash" }, { limits: {} }), 4000);
   assert.equal(imagePromptLimit(null, undefined), 4000);
+});
+
+// The catalog the vendor table mirrors: every image model's id and vendor.
+const CATALOG_SOURCE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "apps", "api", "app", "video_media", "catalog.py");
+
+test("the vendor of an image model named by id alone is the catalog's, so the first draft hears the budget of the model that will draw it", () => {
+  const source = readFileSync(CATALOG_SOURCE, "utf8");
+  const images = Object.fromEntries([...source.matchAll(/MediaModel\(\s*"([^"]+)",\s*"([^"]+)",\s*"image",/g)].map((match) => [match[1], match[2]]));
+  assert.ok(Object.keys(images).length >= 3, "the catalog's image models were read");
+  assert.deepEqual(IMAGE_MODEL_VENDORS, images, "IMAGE_MODEL_VENDORS is catalog.py's image models");
+  assert.equal(imageModelVendor("image-01"), "minimax");
+  assert.equal(imageModelVendor("gemini-3.1-flash-image"), "gemini");
+  assert.equal(imageModelVendor("gemini-4-image-preview"), "gemini", "a Gemini id the table does not know yet reads as Gemini");
+  assert.equal(imageModelVendor("hailuo-image", "minimax"), "minimax", "an unknown id is the caller's fallback");
+  assert.equal(imageModelVendor(null), null);
+  assert.equal(imageModelVendor(""), null);
 });
