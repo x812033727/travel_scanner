@@ -232,3 +232,253 @@ Each source was re-opened on 2026-10-06 with the same User-Agent before the chan
 5. Phuket blocks[6]: now reads 「查龍寺 1 到 2 小時」, from the FAQ (200): "A typical visit lasts between 1 to 2 hours."
 
 `docs/travel-guides-batch-8/shared-numbers.json` now carries shared-check rules for findings 2–4: `首末班沒有公布` must not appear, `07:00 到午夜` must appear, `最適合旅行` must not appear, and `跳表計程車另加 50 泰銖` must appear. It also checks that `沒有卡隆觀景台這一站` stays in the Phuket pack.
+
+---
+
+# verify-2: PR #1335 (claude/batch-8-wave-2), batch 8 wave 2
+
+Verifier: independent round 2 (not the writer, not the round-1 verifier). Date: 2026-10-06.
+Branch head checked: `78b1d922` (fetched again before starting; `git log` shows it as the tip of `origin/claude/batch-8-wave-2`).
+Every page was fetched with `curl -sSL --compressed -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'`, waiting at least 1 s per host. No personal data was sent. Before reading I stripped `<!-- -->` comments, scripts and styles and checked the HTTP status.
+
+Special read methods:
+- AOT: the Next.js `times` arrays.
+- TTD: the embedded `data` JSON.
+- Visit Jeju: removed `__SEARCH_DATA__` first.
+- Smart Bus: all five timetable JPGs and the Dragon map, viewed as images.
+- Royal Office 2567 PDF: rendered with pymupdf and read pages 4 and 5.
+- Diagram: rendered `diagram-1.svg` with resvg (WenQuanYi Zen Hei, because there is no Chromium on this host) and checked it by eye.
+
+## Summary
+
+| Part | Claims | Confirmed | Problems | Unverifiable |
+|---|---|---|---|---|
+| Round-1 corrections, re-checked | 19 | 18 | 1 consistency (left over in the edited field) | 0 |
+| FOLLOWUPS row 7: live phuket-airport-transport-where-to-stay | 22 | 21 | 1 consistency ([14]) | 0 |
+| phuket-old-town-big-buddha-viewpoints, random third | 40 | 37 | 0 | 3 |
+| pattaya-koh-larn-day-trip-from-bangkok, random third | 46 | 45 | 1 consistency (summary) | 0 |
+| chiang-mai-airport-transport-where-to-stay, random third | 37 | 37 | 0 | 0 |
+| chiang-mai-night-markets-walking-streets, random third | 31 | 22 | 0 | 9 (cmcity 403) |
+| thailand-temple-etiquette-dress-code, random third | 63 | 63 | 0 | 0 |
+| hallasan-hiking-reservation-guide, random third | 65 | 61 | 0 | 4 (bus.jeju TLS) |
+| marado-gapado-ferry-day-trip, random third | 55 | 52 | 0 | 3 (songakferry 403) |
+| **Total** | **378** | **356** | **3 (all consistency, no fact errors)** | **19** |
+
+Random third: blocks were drawn with `random.seed(1335)` from each pack's text, table, list, callout, FAQ and summary blocks:
+- phuket: 1, 2, 5, 12, 17, 25, 28, 29, 34
+- pattaya: 4, 5, 8, 12, 16, 19, 20, 23, 31, 36
+- CNX airport: 8, 9, 14, 19, 21, 28, 29
+- CNX night markets: 0, 2, 4, 6, 9, 12, 14, 24, 27
+- temples: 5, 14, 18, 19, 22, 24, 27, 28, 32, 38, 41, 42
+- hallasan: 0, 5, 8, 11, 15, 20, 24, 30, 31, 41, 46, 47, 48
+- marado: 1, 2, 4, 5, 20, 23, 25, 28, 30, 42
+
+**Verdict:** all five round-1 corrections are correct, and none introduced a new fact error. Round 2 found no fact errors, so no third round is needed. Three consistency items are listed below. The Phuket image-description one belongs in this PR. The Pattaya summary wording is a one-line clarification. The live Phuket-airport [14] item is for a follow-up ticket.
+
+## 1. Round-1 corrections, re-checked on 78b1d922
+
+| # | Correction | Source (status) | Result |
+|---|---|---|---|
+| 1 | Phuket diagram: 卡隆觀景台→神仙半島 is now a dashed red charter leg (`line x=800 y=640→740`, `stroke-dasharray 14 10`) labelled 「沒有公車，要包車」. The lower-left note reads 「Route 1｜100 泰銖」「不停卡隆觀景台，只有三班從拉威延駛神仙半島」. | Route 1 JPG `rawai/cyNL6…jpg` (200) | CONFIRMED. The stop columns run Airport … PEA Patong, Karon Circle, Kata Night Plaza, Kata Palm, Sai Yuan, Rawai Beach; there is no Karon View Point. The box reads 「Rawai >> Phromthep Cape 17:22 / 17:47 / 19:02」 and 「Phromthep Cape >> Kata/Karon/Patong/Airport 17:23 / 17:48 / 19:03」. Yellow rows are the 14:00, 15:00 and 16:00 airport departures, reaching Rawai at 16:20, 17:20 and 18:20. The fare is 100 ฿ (the /timetable page, 200). |
+| 1a | Diagram render | resvg PNG | No overlaps. The note at x=60, y=742/768 sits below the Karon box (y≤680) and left of the island (x≥500). Font sizes are ≥16 px. intake_check: "every number on the diagram is in the text". |
+| 1b | SVG `<desc>` and blocks[7].description | SVG file | `<desc>` matches the drawing. blocks[7].description matches on the legs and the note, but still says 「普吉大佛與神仙半島之間的**右側**有一個小圈標卡隆觀景台」, while the box is on the left. That is error #1 below (consistency, left over from before the fix). |
+| 2 | CNX [9]: 「接駁巴士的服務時間是每天 07:00 到午夜，班距沒有公布」; 固定價 07:00 到午夜, 跳表 07:00 到 23:00, Grab 24 h | AOT detail 145, 125, 126, 138 (all 200) | CONFIRMED. `times` arrays for all 7 weekdays: 145 = 07:00:00–00:00:59, 125 = 07:00:00–00:00:59, 126 = 07:00:00–23:00:59, 138 = 00:00:00–23:59:59. Page 145 is "International, Floor: 1, Zone: Arrival", which matches the new source title, and it lists no headway. [27] 「沒有官方班距」 is still true. |
+| 3 | CNX [22]: 「11 月到 2 月氣候涼、花開，是推薦的健行與賞鳥季節」 | TAT Tokyo areainfo/chiangmai (200) | CONFIRMED: 「トレッキングやバード・ウォッチングなどは、気候が涼しく花々が満開となる11月〜2月頃がおすすめ…寺院めぐりや伝統工芸品などは、年間を通じて楽しむことができます」. chiang-mai-3-day-itinerary [22] says 「這幾個月氣候涼、花開，適合健行賞鳥」, so the two agree and no change is needed there. |
+| 4 | CNX [8] row 5: 「跳表計程車另加 50 泰銖」, plus the source title | AOT 126 (200) | CONFIRMED: "An additional charge of 50 Baht will be collected as a gratuity for taxi drivers, in accordance with the announcement from the Ministry of Transport." |
+| 5 | Phuket [6]: 「查龍寺 1 到 2 小時」, plus the FAQ source title | wat-chalong-phuket.com/faq.html (200) | CONFIRMED: "A typical visit lasts between 1 to 2 hours." |
+
+Guard rules in `shared-numbers.json` (最適合旅行 and 首末班沒有公布 absent; 07:00 到午夜, 跳表計程車另加 50 泰銖 and 沒有卡隆觀景台這一站 present): all hold. `shared_check.py --from-content` against the branch content dir: **RESULT PASS (0)**, all 6 groups.
+
+## 2. FOLLOWUPS row 7: live phuket-airport-transport-where-to-stay vs the official Smart Bus timetable
+
+`/timetable` (200) still serves `rawai/cyNL6…jpg` (Airport→Rawai, start 16 Jan 2026), `rawai/uxwoQ…jpg` (Rawai→Airport, start 16 Jan 2026) and the Route 2 images. I read both Route 1 images cell by cell.
+
+- **[18]** CONFIRMED. Last bus 23:30. After 22:00 only 22:40 and 23:30 run. The 22:00 reaches PEA Patong at 23:30. The 23:30 reaches Patong at 01:00 and Rawai at 01:50. First bus 08:15.
+- **[19]** CONFIRMED.
+  - First northbound bus is 05:20 from Kata Palm (the Rawai cell is blank), at Bangla Police Box at 06:00 and the airport at 07:32.
+  - Rawai's first bus is 06:45, at the airport at 09:17.
+  - Last bus is 19:30 from Rawai, at Bangla at 20:20 and the airport at 21:52.
+  - Patong to the airport is 92 min both times. Rawai to the airport is 2 h 32 and 2 h 22.
+- **[25]** CONFIRMED. Some runs extend from Rawai to Phromthep and are marked yellow (legend 「ไปแหลมพรหมเทพ Go To Phromthep Cape」). [25] quotes no times, so the 14:00/15:00/16:00 vs 17:22/17:47/19:02 mismatch noted in ERRATA does not make it wrong.
+- **[28]** CONFIRMED. Route 2 runs from Terminal 1 for 50 ฿ flat (the tab text says "Bus Terminal 2", the image says Terminal 1, as FOLLOWUPS already notes). Dragon Line runs every 30 min, 07:00–19:00 (map: 「รถออกทุก 30 นาที เริ่มตั้งแต่ 07.00 - 19.00 น.」).
+- **No correction is needed in [18]/[19]/[25]/[28].**
+- Outside those four blocks:
+  - **[14]**: the Payment page (200) says "Children under 6 ride free with a paying adult". The operator blog of 2026-06-25 (200) says "Children under 90 cm … free … Height is the determining factor, regardless of age". That is error #3 (consistency, follow-up ticket).
+  - **[24]** 「Promthep Cape」: FOLLOWUPS already rules it 「不是錯字、低優先備查」, so it is not reported.
+
+## 3. Random third: per-claim results
+
+### phuket-old-town-big-buddha-viewpoints
+
+**TAT Tokyo pages (all 200):**
+- Wat Chalong: 08:00～17:00, 参拝自由, about 8 km SW, 15–20 min by car from town and 30 min from Patong, 1876 ✓ ([5], [19]).
+- Big Buddha: 08:00～19:00, width 25.454 m, height 45 m, 10,000+ marble pieces, Chalong Bay and Rawai, sunset, 20–30 and 30–40 min ✓ ([5], [23]).
+- Chui Tui: 1907, 斗母, around October for 9 days, 10–15 min walk ✓.
+- areainfo/phuket: 無病息災 (Chui Tui), 恋愛運 (Put Cho), 学問・商売 (Sang Tham) → 消災、姻緣、學業與生意 ✓ ([12]).
+- Put Cho and Sang Tham spellings ✓.
+- Thaihua: 200 バーツ, 09:00～17:00／月曜休館 ✓.
+- Rang Hill: 無休 ✓.
+- Karon VP: no hours or fee listed ✓.
+- Laem Phromthep: sunset, the Rama IX 50th-year Kanchanaphisek lighthouse, Phra Phrom shrine, elephant offerings, about 40 min by chartered tuk-tuk and 30 min from Patong ✓ ([28]).
+
+**Smart Bus:**
+- Dragon map ✓ ([5]).
+- Old-town blog: 10-minute walk north, 50 ฿ ✓ ([34]).
+- Route 1 has no Wat Chalong or Big Buddha stop ✓ ([17]).
+- [29] matches the image word for word ✓.
+
+**Unverifiable:** TAT HQ 06:30–18:30 (403); the 2024 landslide (news only).
+
+### pattaya-koh-larn-day-trip-from-bangkok
+
+**RRC pages (all 200):**
+- Mo Chit 2: 155 ฿, departs 5:00–18:00 hourly; return 5:00, 7:30, then 9:00–18:00; window 34, platform 42 ✓.
+- Ekkamai: 144 ฿, departs 5:00, 6:00, then 9:00–22:00; return 4:30, 8:00–20:00, 22:00; floor 1 window 13, platform 1 ✓.
+- Bang Na: 144 ฿, 6:30 then 9:30–21:30, counter only ✓.
+- Airport → North terminal: 135 ฿, 7 trips (7:30 … 17:30, 18:30); return 8:00 … 18:00 plus 21:00; Floor 1 Gate 8 ✓.
+- Jomtien: 158 ฿, 6:00–22:00; the 22:00 goes to the North terminal ✓.
+- About 2 h, arrive 15 min early, North Pattaya Rd near Sukhumvit ✓ ([4], [5], [8]).
+
+**TTD 1689 / 5009 (200):**
+- Thai list: 8.00, 9.00, 11.00, 13.00 out; return 13.00–16.00, with Thai adding 17.00 ✓ ([19]).
+- 7 km, 5.6 ตร.กม., Bang Lamung, หมู่เกาะปะการัง ✓ ([16]).
+
+**TAT Bali Hai (200):** 06:00～21:00, boats 08:00頃～17:00頃, about 10 min from the centre, South Pattaya Rd ✓ ([12]).
+
+**Arithmetic:** 16:45 landing leaves 5 h 15 / 4 h 15 / 1 h 15 before the last buses ✓ ([31]).
+
+**Finding:** summary [0] item 2 attaches the outbound 05:00/06:00→09:00 gap to 「回程」. That is error #2.
+
+### chiang-mai-airport-transport-where-to-stay
+
+**AOT home (200):**
+- A1/A2/A3 40/40/60 ฿, routes ✓.
+- International gate 12 ✓.
+- Yellow and red stop lists exactly as in [8] row 4 ✓.
+- 06:00–23:30 ✓, รถแดง ✓, car rental on the first floor ✓, 2 h early ✓.
+
+**AOT 139 (200):** colours swapped, Waroros listed ✓ ([8] caption).
+
+**TAT Tokyo (all 200):**
+- Bus Terminal 2: largest; Bangkok, Khon Kaen, Nakhon Ratchasima; Chiang Rai, Mae Hong Son (Pai), Lampang; about 3 km; tuk-tuk or songthaew ✓ ([14]).
+- Warorot: 20 min from the station ✓.
+- Tha Phae: east wall, 15 min from the airport ✓.
+- Nimman: about 1 km, Soi 1, 15 min ✓.
+- Night Bazaar: Chang Khlan, hotels, malls and restaurants, busy until late, 10 min ✓.
+- Wat Ket Karam: east bank formerly the economic district, now residential and cultural tourism, 10–15 min ✓ ([19], [29]).
+
+### chiang-mai-night-markets-walking-streets
+
+**TAT Tokyo:**
+- Jing Jai: 08:00～22:00, farmers' market Sat–Sun only, time may change, NO PLASTIC BAGS ✓ ([27]).
+- Warorot: Rama V 1868–1910, Kad Luang, B1 plus 3 floors, about 500 shops, Wichayanon Rd, Chang Moi, Tue 10:30 ✓ ([24]).
+- Night Bazaar: 17:00～24:00, 年中無休 ✓ ([6]).
+- Wualai: Saturday 17:00～22:00 ✓.
+
+**AOT:** home 06:00–23:30 ✓; 139 lists Waroros ✓ ([0]).
+
+**Unverifiable:** cmcity.go.th claims in [0], [9], [12], [14] (403).
+
+### thailand-temple-etiquette-dress-code
+
+**Grand Palace site (200):**
+- Practical information: 11-item list = [5] ✓; 500 ฿ incl. Wat Phra Kaew and the Queen Sirikit Museum ✓; no-drone ✓; footer 8:30–16:30, tickets 8:30–15:30 ✓.
+- FAQ: Mani Noppharat from 10 Jan 2024 ✓; 1 month ahead ✓; no refund or change ✓; under 120 cm free ✓; audio guide 200 ฿, 8 languages incl. Mandarin ✓.
+- Schedules: Oct 2026, all three "Open all day" ✓ ([27], [28]).
+
+**Royal Office 2567 PDF (200):**
+- 10(2): no touching murals, coloured glass, statues ✓ ([38]).
+- 10(3): laser pointer use ✓. 10(4): commercial signage ✓. 10(6): weapons and imitation weapons ✓. 10(7): pets ✓.
+- 11(1): no lights, crane, dolly, wireless mic or camera drone ✓.
+- 11(3): pre-wedding ✓ ([18]).
+
+**Wat Pho plan (200):** 08:00–19:30, 300 ฿, under 120 cm free, no shorts, shoes onto shelves, no physical contact between women and monks or novices, women barred from monks' areas ✓ ([22], [27]).
+
+**TAT Tokyo:**
+- Wat Arun: 200 ฿, 08:00～18:00 ✓.
+- White Temple: 200 ฿, 08:00～17:00, 14 km ✓.
+- Doi Suthep: 30 ฿, cable car 50 ฿, 05:00～21:00, cable car 06:00～18:00頃, 40 min ✓.
+- Etiquette: anthem at 08:00 and 18:00, cinema, royal family, soles, stepping over feet ✓ ([14], [24]).
+- Visiting-temples: no smoking with fines; hand-holding, laughing, running, jumping and dancing ✓ ([38]).
+
+### hallasan-hiking-reservation-guide
+
+**Reservation info, id=49 (200):**
+- First business day at 09:00; local holidays do not delay ✓.
+- Penalties 3 months, then 1 year ✓.
+- Control table: winter (10, 11, 12, 1, 2, 3) / summer (4–9) entry 11:30/12:30; 동능정상 13:30/14:30 ✓.
+- An old 3-season table still hangs below it ✓ ([24]).
+- Gear: 사탕, 초코렛, 소금, 여벌옷, 방한복, 아이젠, 장갑, 따뜻한 물 ✓.
+- Bans and 자연공원법 §27(1) ✓; 김밥 and 햄버거 allowed ✓ ([46]).
+
+**Notices:**
+- 1291: 800/400, 200/100 ✓.
+- 1284: example 4/1 → 4/2; max 4 per booking; once a week; QR plus ID; 281/181 ✓ ([0], [11]).
+- 1297: queue, availability page hidden ✓ ([20]).
+- 1300: reopening 9/24 05:00 ✓.
+- 1299: all certificate methods same-day; paper/kiosk, app, web ✓ ([48]).
+
+**Trail pages:**
+- id=62: 8.7 km, 3 h 20 / 5 h; 475 runs 06:20–19:45 every 45–90 min; airport/terminal have no direct service, change at 산천단 한국폴리텍대학[서] ✓ ([30]).
+- jeju.go.kr info.htm: 6.8 km (2 h / 3 h), 5.8 km (1 h 30 / 2 h 30), 9.6 km (3 h / 4 h 30); 산록북로 588 ✓ ([5], [30]).
+- safety.htm: visibility 20 m, snow 30 cm, 랜턴, 등산화, 식수 ✓ ([46], [47]).
+
+**Login page:** SNS (Kakao) and non-member; foreigners use the foreign-language page's email verification, only without a phone number ✓ ([15]).
+
+**Unverifiable:** [31] fares (bus.jeju.go.kr TLS failure).
+
+### marado-gapado-ferry-day-trip
+
+**wonderfulis.co.kr:**
+- Timetable (200): Marado 4 runs, Gapado 6 runs (09:00, 10:00, 11:00, 12:00, 14:00, 15:50) ✓; 30 / 10 min ✓; online booking until the day before ✓; 40 min ✓; 10-minute cut-off ✓; 064-794-5490, 08:00–16:30 incl. holidays ✓; address 최남단해안로 120 ✓; festival extra runs every 30 min ✓ ([0], [4], [5], [23], [28], [42]).
+- Fares (200): 10,000/20,000 + 1,000 = 21,000; 7,300/14,500 + 1,000 = 15,500 ✓.
+- Notice v=83 (200): at least 20 days' notice, priced by booking date, no top-up or refund, Oct and Nov both 3,600/2,600 round trip ✓ ([0], [20]).
+- Boarding procedure (200): forms in groups of 6, minors included, one representative, passport or alien registration card ✓ ([25]).
+- FAQ (200): status after 08:00; rain is not a reason, wind and waves decide ✓; 유선 및 도선사업법 §25 and 해운법 §21-2 ✓; no copies, phone-stored IDs, photo-less IDs, or papers older than 3 months ✓; overnight guests get round-trip tickets, phone or counter only ✓; no direct boat between the islands ✓ ([1], [23], [25], [28]).
+
+**PATIS (200):** 「내일의 운항예보 14시 이후 제공」 ✓ ([28]).
+
+**Visit Jeju festival (200, visible body):** 15th festival 2026-04-17 to 05-17, 09:00–17:00, 가파리 일원 ✓ ([42]).
+
+**Unverifiable:** Songak Ferry column (403).
+
+## 4. Shared numbers across the batch (word for word)
+
+`shared_check.py` PASS on all groups (okinawa, chiang-mai, thailand-temples, phuket, jeju, vietnam). Manual comparisons:
+- Phuket: Route 1 100 ฿, Route 2 50 ฿, Dragon 07:00 到 19:00 每 30 分鐘 agree between the old-town article and the live airport article.
+- Chiang Mai: A1/A2 全程 40 泰銖 is in all three packs. 07:00 到午夜 and 跳表計程車另加 50 泰銖 appear only in the airport article. The 3-day itinerary's gaps are already in ticket 2026-10-06-chiang-mai-3-day-itinerary-airport.
+- Temples: Wat Chalong 08:00 到 17:00 and 查龍寺官方網站 … 07:00 agree between the old-town and temple articles. The Grand Palace and Wat Pho numbers match bangkok-4-day-itinerary.
+- Jeju: 진달래밭 is 金達萊田 in hallasan and 杜鵑田 in jeju-3-day-itinerary. The official zh_CN trail page (id=61, 200) uses both 「杜鹃花田」 and 「金达莱田」, so this is not an error.
+
+## 5. Mechanical checks (exported branch tree, `uv sync --frozen`)
+
+- `intake_check.py --from-content --manifest docs/travel-guides-batch-8/batch.json`: all 7 slugs **PASS (0 failures)**. The Phuket log says "every number on the diagram is in the text". Self-reference count is 1 (the limit).
+- `pack_cli lint --slug` on the two fixed slugs: exit 0.
+
+## 6. Time-sensitive rows today
+
+- Grand Palace schedule: open all day.
+- Hallasan Gwaneumsa upper section: reopened on 2026-09-24. No newer notice changes it.
+- Marado fuel surcharge: the October and November periods are the same; December is not announced.
+- Smart Bus: the timetable images are still the 15/16 Jan 2026 versions.
+- Big Buddha: the TAT HQ page was unreadable (403); the article still tells readers to check before going.
+
+## 7. Suspected, not reported
+
+CNX [8] row 5 and FAQ [29] still suggest a taxi for 深夜落地. AOT lists the taxis until 23:00 and midnight, and [9] says 「午夜後落地用 Grab」. This was there before the round-1 fix and is not wrong as written, but the coordinator may want to tighten it.
+
+`verify-1.md` is cut off in the marado section, and the fixer marked the cut honestly.
+
+## Errors reported
+
+1. phuket-old-town blocks[7].description says the Karon View Point box is on the 右側; it is drawn on the left (consistency, in this PR).
+2. pattaya summary [0] item 2 attaches the Ekkamai departure gap to the return trip (consistency, in this PR).
+3. live phuket-airport-transport-where-to-stay [14]: two operator pages give different child rules, under 6 years vs under 90 cm (consistency, follow-up ticket).
+
+## Round-2 corrections as applied on the branch (2026-10-06)
+
+Before each change, its source was re-opened on 2026-10-06 with the same User-Agent and read with comments, scripts and styles stripped. All three pages returned HTTP 200. The two packs have only the zh-TW locale, so no other locale needed a change.
+
+1. Phuket blocks[7].description: 「普吉大佛與神仙半島之間的右側有一個小圈標卡隆觀景台。」 now reads 「普吉大佛與神仙半島之間的軸線上有一個小圈，連到左側標卡隆觀景台的方框。」 In `diagram-1.svg` the small white circle is at `cx=800 cy=640` on the central line, and the 卡隆觀景台 box is `rect x=60 y=600 width=500 height=80`, joined by `line x1=560 x2=788 y=640`. A resvg render (WenQuanYi Zen Hei) shows the box on the left, the same side as 蘭山觀景台. The SVG and its `<desc>` were not changed. The spec `phuket-old-town-big-buddha-viewpoints.md` still says 「右側在第 3 站與第 4 站之間拉一個小圈」. The drawing departs from the spec there, so the description now follows the drawing.
+2. Pattaya blocks[0] item 2: 「住蘇坤蔚一帶走 Ekkamai，回程末班到 22:00，但 05:00、06:00 之後直接跳到 09:00；…」 now reads 「住蘇坤蔚一帶走 Ekkamai：去程 05:00、06:00 之後直接跳到 09:00，回程末班到 22:00；…」. The RRC Bangkok Terminal page (`airportpattayabus.com/bangkok-terminal-pattaya/`, 200) lists departures from สถานีขนส่งเอกมัย as 5:00, 6:00, then 9:00 through 22:00 hourly. It lists departures from สถานีขนส่งพัทยา as 4:30, then 8:00 through 20:00 hourly, then 22:00. Every number in the item is unchanged, and the blocks[5] table already had this right. The checklist item 「早上的空檔：Ekkamai 05:00、06:00 之後直接跳到 09:00。」 in the 行前檢查 list already names the morning departures from Ekkamai, so it was left as is.
+3. Live `phuket-airport-transport-where-to-stay` blocks[14]: not changed in this PR, because the article is live and outside this PR's packs. The two operator pages were re-read on 2026-10-06. `phuketsmartbus.com/payment` (200) says "Children under 6 ride free with a paying adult." `phuketsmartbus.com/blog/children-under-90-cm-ride-for-free` (200, June 25, 2026) says "Height is the determining factor, regardless of age." The follow-up is filed as `tasks/open/2026-10-06-phuket-airport-smart-bus-child-fare.md` (P2, scope: that pack only), with a suggested sentence that discloses both rules. No other pack in the content directory has a Smart Bus child-fare sentence.
