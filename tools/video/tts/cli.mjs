@@ -25,6 +25,34 @@ import { encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 const FREE_TIER = 500_000;
 const wavHash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
+// Only a phrase-sized request asks speech/align. That route answers with the WAV as base64 inside
+// its JSON, "which suits a phrase of a Short; a six-minute scene belongs to the speech route, whose
+// bytes stream" (apps/api/app/video_speech/align_api.py), so a request goes there only when its
+// WAV stays inside the route's own clip bound, MAX_CLIP_BYTES = 2,000,000 bytes. Its synthesis asks
+// Azure for Riff48Khz16BitMonoPcm (align.py synthesize_with_boundaries_blocking): 48,000 samples
+// × 2 bytes = 96,000 bytes a second, so (2,000,000 − 44 bytes of RIFF header) / 96,000 = 20.83 s,
+// less 1 s for the silence around the speech = 19.83 s. At a slow 3 characters a second
+// (SLOW_PACE; the channel's scripts are sized at 250 a minute, 4.17 a second, and a voice slowed
+// by a rate of −25% still reads 3.13), 19.83 × 3 = 59.5, so 59 characters, counted by
+// alignedCharacters. A larger request, a scene in practice, goes straight to speech: one call,
+// no timing, the same journal entry.
+export const ALIGNED_MAX_CHARACTERS = 59;
+const SLOW_PACE = 3;
+
+/**
+ * A request body's size as ALIGNED_MAX_CHARACTERS counts it: every character its voice reads
+ * (a dictionary term's spoken form, not its written one), and each break as the characters
+ * SLOW_PACE would read in it (the 800 ms break between two lines of a scene counts 3).
+ */
+export function alignedCharacters(body) {
+  let characters = 0;
+  for (const segment of body.segments ?? []) {
+    for (const part of segment.parts ?? []) characters += [...String(part.alias || part.text || "")].length;
+    characters += Math.ceil(((segment.break_after_ms ?? 0) * SLOW_PACE) / 1000);
+  }
+  return characters;
+}
+
 // A take's measured character timing (synthesis.mjs) lives beside its clip, audio/<id>.timing.json,
 // bound to the SHA-256 of the WAV it was measured on, so a run that reuses the clip still writes
 // it into timeline.json and a timing never outlives its take.
@@ -376,14 +404,16 @@ async function tts(args, ctx) {
   // Each paid body is recorded before it goes out (speech-journal.mjs): an answer that came back
   // but was not saved below is taken from disk by the next run, and one that was lost stops it
   // until a person clears the hold. Released once cache.json holds the takes made from it.
-  // An Azure voice asks speech/align first: the WAV and when each written unit is spoken, in the
-  // one paid call. A site that cannot time it answers null without charging, and the body goes to
-  // speech as before; Gemini voices go straight there (no aligner is live). Either route is the
-  // one journal entry for its body, so a lost answer holds the request, and an answer the journal
+  // A phrase-sized request in an Azure voice asks speech/align first: the WAV and when each
+  // written unit is spoken, in the one paid call. A site that cannot time it answers null without
+  // charging, and the body goes to speech as before. A scene-sized request (ALIGNED_MAX_CHARACTERS)
+  // and every Gemini voice (no aligner is live) go straight to speech. Either route is the one
+  // journal entry for its body, so a lost answer holds the request, and an answer the journal
   // kept comes back without timing.
   const journal = openSpeechJournal(path.join(audioDir, JOURNAL_DIR), { now: ctx.now });
   const send = journal.wrap(async (body) => {
-    const aligned = providerOf(body.voice) === "gemini" ? null : await synthesizeAligned({ ...options, body });
+    const phrase = providerOf(body.voice) !== "gemini" && alignedCharacters(body) <= ALIGNED_MAX_CHARACTERS;
+    const aligned = phrase ? await synthesizeAligned({ ...options, body }) : null;
     return aligned ?? synthesize({ ...options, body });
   });
   for (const request of pending) {

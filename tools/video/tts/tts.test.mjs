@@ -15,6 +15,7 @@ import { approve, approvalState } from "../core/approvals.mjs";
 import { SpeechError, speechStatus, synthesize } from "./client.mjs";
 import { credentialsFile, readCredentials, writeCredentials } from "./credentials.mjs";
 import { MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts } from "./requests.mjs";
+import { ALIGNED_MAX_CHARACTERS, alignedCharacters } from "./cli.mjs";
 import { listSpeechJournal } from "./speech-journal.mjs";
 import { plausibleSplit, silenceRuns, splitAtSilences, trimSilence } from "./split.mjs";
 import { buildNarration, flaggedLines, synthesizeRequest } from "./synthesis.mjs";
@@ -812,9 +813,15 @@ function cueHeads(cues, chars) {
   });
 }
 
-test("an Azure voice is timed in its one paid call: timeline.json carries each line's measured characters, its CC cues start on them, a reused take keeps them, and the speech hash does not move", async () => {
+test("an Azure voice's phrase-sized request is timed in its one paid call: timeline.json carries each line's measured characters, its CC cues start on them, a reused take keeps them, and the speech hash does not move", async () => {
   const box = sandbox();
   const server = fakeServer({ align: true });
+  // The minimal fixture has both kinds: two scenes past the aligned route's ceiling and one under it.
+  const fixtureProject = loadProject({ slug: box.slug, root: box.root });
+  const planned = planRequests(fixtureProject.doc, fixtureProject.lexicon);
+  const phrases = planned.filter((request) => alignedCharacters(request.body) <= ALIGNED_MAX_CHARACTERS);
+  const timedIds = phrases.flatMap((request) => request.lines.map((line) => line.id));
+  assert.ok(phrases.length && phrases.length < planned.length);
   const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
   const run = (fetch = server.fetchImpl) => capture({ root: box.root, env, home: box.base, fetch });
   const timelineFile = path.join(box.workdir, "timeline.json");
@@ -833,56 +840,90 @@ test("an Azure voice is timed in its one paid call: timeline.json carries each l
 
   const first = run();
   assert.equal(await main(["tts", "--slug", box.slug], first.ctx), EXIT.ok, first.out.stderr);
-  assert.deepEqual(paidRoutes(server), { align: 3, speech: 0 }, "one paid call a scene, on the route that times it as well");
-  assert.match(first.out.stdout, /^7 of 7 lines carry measured character times/m);
+  assert.deepEqual(paidRoutes(server), { align: phrases.length, speech: planned.length - phrases.length }, "one paid call a scene, on the route that times it only for a phrase");
+  assert.match(first.out.stdout, new RegExp(`^${timedIds.length} of 7 lines carry measured character times`, "m"));
   const timeline = JSON.parse(readFileSync(timelineFile, "utf8"));
   // The minimal fixture's hash as core/drama.test.mjs pins it: the timing never enters it.
   assert.equal(timeline.speech_hash, "af5d5f5eb75aaa69");
-  for (const line of timeline.lines) {
+  assert.deepEqual(timeline.lines.filter((line) => line.timing).map((line) => line.id), timedIds);
+  for (const line of timeline.lines.filter((each) => each.timing)) {
     const clip = parseWav(readFileSync(path.join(box.workdir, "audio", `${line.id}.wav`))).samples;
     assert.deepEqual([line.timing.source, line.timing.model], ["azure", "zh-TW-HsiaoChenNeural"]);
     assert.ok(Math.abs(line.timing.chars[0].start_ms - onsetMs(clip)) <= 1, `${line.id}: first unit at ${line.timing.chars[0].start_ms} ms, speech at ${onsetMs(clip)} ms of its clip`);
     assert.deepEqual(Object.keys(line).slice(-2), ["audio_sha256", "timing"]);
   }
   // p5vs is read from a `say` that changes only its punctuation, so its letters line up as well.
+  assert.ok(timedIds.includes("p5vs"));
   const cues = cuesOnTheirCharacters(timeline);
   // The captions stage (core/stages.mjs, unchanged) writes those same cues.
   const captions = run();
   assert.equal(await main(["captions", "--slug", box.slug], captions.ctx), EXIT.ok, captions.out.stderr + captions.out.stdout);
   assert.deepEqual(parseSrt(readFileSync(path.join(box.workdir, "captions", "zh-TW.srt"), "utf8")), cues.map(({ start_ms, end_ms, text }) => ({ start_ms, end_ms, text })));
-  assert.equal(JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8")).runs.filter((entry) => entry.stage === "tts").at(-1).timed, 7);
+  assert.equal(JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8")).runs.filter((entry) => entry.stage === "tts").at(-1).timed, timedIds.length);
 
   // A run that reuses every take buys nothing and writes the same timeline, timing and all.
   const bytes = readFileSync(timelineFile);
+  const routes = paidRoutes(server);
   const again = run();
   assert.equal(await main(["tts", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
-  assert.deepEqual(paidRoutes(server), { align: 3, speech: 0 });
+  assert.deepEqual(paidRoutes(server), routes);
   assert.deepEqual(readFileSync(timelineFile), bytes);
 
-  // An edited line is retaken on its own and timed; each of its two cues starts on its first character.
+  // A line of a scene-sized request, edited, is retaken on its own: a phrase, so it is timed now,
+  // and each of its two cues starts on its first character.
+  assert.ok(!timedIds.includes("b3tn"));
   const file = path.join(box.dir, "video.json");
   writeFileSync(file, readFileSync(file, "utf8").replace("你能接受它想多久才回答。", "你能接受它想多久才回答？如果答案是越快越好，那就先從小模型開始試，再看要不要換。"));
   const edited = run();
   assert.equal(await main(["tts", "--slug", box.slug], edited.ctx), EXIT.ok, edited.out.stderr);
-  assert.deepEqual(paidRoutes(server), { align: 4, speech: 0 });
+  assert.deepEqual(paidRoutes(server), { ...routes, align: routes.align + 1 });
   const longer = JSON.parse(readFileSync(timelineFile, "utf8"));
   const project = loadProject({ slug: box.slug, root: box.root });
   assert.equal(longer.speech_hash, speechHash(project.doc, project.lexicon));
+  assert.ok(longer.lines.find((line) => line.id === "b3tn").timing);
   assert.equal(cuesOnTheirCharacters(longer).filter((cue) => cue.line === "b3tn").length, 2);
 
   // A retake on a site without the align route has no timing, and the old take's goes with it.
   const old = fakeServer();
   const flags = path.join(box.work, "flags.json");
-  writeFileSync(flags, JSON.stringify({ flags: ["m4qa"] }));
+  writeFileSync(flags, JSON.stringify({ flags: ["b3tn"] }));
   const redo = run(old.fetchImpl);
   assert.equal(await main(["tts", "--slug", box.slug, "--redo", flags], redo.ctx), EXIT.ok, redo.out.stderr);
   assert.deepEqual(paidRoutes(old), { align: 1, speech: 1 }, "asked once, refused without a charge, then synthesized");
   const after = JSON.parse(readFileSync(timelineFile, "utf8"));
-  assert.equal(after.lines.find((line) => line.id === "m4qa").timing, undefined);
-  assert.equal(existsSync(path.join(box.workdir, "audio", "m4qa.timing.json")), false);
-  for (const line of after.lines.filter((each) => each.id !== "m4qa")) assert.deepEqual(line.timing, longer.lines.find((each) => each.id === line.id).timing, line.id);
-  assert.match(redo.out.stdout, /^6 of 7 lines carry measured character times/m);
+  assert.equal(after.lines.find((line) => line.id === "b3tn").timing, undefined);
+  assert.equal(existsSync(path.join(box.workdir, "audio", "b3tn.timing.json")), false);
+  for (const line of after.lines.filter((each) => each.id !== "b3tn")) assert.deepEqual(line.timing, longer.lines.find((each) => each.id === line.id).timing, line.id);
+  assert.match(redo.out.stdout, new RegExp(`^${timedIds.length} of 7 lines carry measured character times`, "m"));
   assert.equal(after.speech_hash, longer.speech_hash);
+});
+
+test("only a phrase-sized request asks speech/align: one past ALIGNED_MAX_CHARACTERS goes straight to speech and is not timed, one at it still is", async () => {
+  // What is read counts, a term by its spoken form, and an 800 ms break between two lines counts 3.
+  assert.equal(alignedCharacters({ segments: [{ parts: [{ text: "用 " }, { text: "LLM", alias: "L L M" }], break_after_ms: 800 }, { parts: [{ text: "好。" }], break_after_ms: 0 }] }), 2 + 5 + 3 + 2);
+  const box = sandbox();
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  // One line of exactly `length` characters, ending a sentence.
+  const sentence = (length) => `${"這一句旁白只是為了量出請求的長度而寫，".repeat(6).slice(0, length - 1)}。`;
+  doc.scenes[0].lines = [{ id: "k7p2", text: sentence(ALIGNED_MAX_CHARACTERS) }];
+  doc.scenes[1].lines = [{ id: "x9fe", text: sentence(ALIGNED_MAX_CHARACTERS + 1) }];
+  writeFileSync(file, JSON.stringify(doc));
+  const project = loadProject({ slug: box.slug, root: box.root });
+  const [atCeiling, past] = planRequests(project.doc, project.lexicon);
+  assert.deepEqual([alignedCharacters(atCeiling.body), alignedCharacters(past.body)], [ALIGNED_MAX_CHARACTERS, ALIGNED_MAX_CHARACTERS + 1]);
+  const server = fakeServer({ align: true });
+  const { ctx, out } = capture({ root: box.root, env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" }, home: box.base, fetch: server.fetchImpl });
+  assert.equal(await main(["tts", "--slug", box.slug], ctx), EXIT.ok, out.stderr);
+  const sent = (route) => server.calls.filter((call) => call.url.endsWith(route)).map((call) => JSON.parse(call.init.body));
+  const aligned = sent("/api/video/speech/align").map((body) => JSON.stringify(body.speech));
+  const spoken = sent("/api/video/speech").map((body) => JSON.stringify(body));
+  assert.ok(aligned.includes(JSON.stringify(atCeiling.body)) && !spoken.includes(JSON.stringify(atCeiling.body)), "the request at the ceiling is timed in its one call");
+  assert.ok(spoken.includes(JSON.stringify(past.body)) && !aligned.includes(JSON.stringify(past.body)), "the one past it never asks speech/align");
+  const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+  assert.ok(timeline.lines.find((line) => line.id === "k7p2").timing);
+  assert.equal(timeline.lines.find((line) => line.id === "x9fe").timing, undefined);
+  assert.equal(existsSync(path.join(box.workdir, "audio", "x9fe.timing.json")), false);
 });
 
 test("a repeated take is its original's take, measured times included, and loses them with it", async () => {
@@ -930,17 +971,21 @@ test("an answer lost on the aligned route holds its request in the speech journa
   const server = fakeServer({ align: lost });
   const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
   const run = () => capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
+  const project = loadProject({ slug: box.slug, root: box.root });
+  const requests = planRequests(project.doc, project.lexicon);
+  // The fixture's scene-sized requests go to speech and are saved; its phrase-sized one asks speech/align.
+  const phrase = requests.findIndex((request) => alignedCharacters(request.body) <= ALIGNED_MAX_CHARACTERS);
+  assert.ok(phrase > 0);
+  const sha = createHash("sha256").update(JSON.stringify(requests[phrase].body)).digest("hex");
   const first = run();
   assert.equal(await main(["tts", "--slug", box.slug], first.ctx), EXIT.owner);
-  const project = loadProject({ slug: box.slug, root: box.root });
-  const sha = createHash("sha256").update(JSON.stringify(planRequests(project.doc, project.lexicon)[0].body)).digest("hex");
   assert.match(first.out.stderr, new RegExp(`video_speech_uncertain, request sha256 ${sha}\\)`));
-  assert.deepEqual(paidRoutes(server), { align: 1, speech: 0 }, "the speech route is never asked for what may have been paid for");
+  assert.deepEqual(paidRoutes(server), { align: 1, speech: phrase }, "the speech route is never asked for what may have been paid for");
   assert.deepEqual(listSpeechJournal(path.join(box.workdir, "audio", "speech-journal")).map((entry) => [entry.sha, entry.status]), [[sha, "held"]]);
   const second = run();
   assert.equal(await main(["tts", "--slug", box.slug], second.ctx), EXIT.owner);
   assert.match(second.out.stderr, /is held in the speech journal/);
-  assert.deepEqual(paidRoutes(server), { align: 1, speech: 0 });
+  assert.deepEqual(paidRoutes(server), { align: 1, speech: phrase });
 });
 
 test("audition writes one clip per allowed voice and a page to compare them", async () => {

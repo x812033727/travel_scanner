@@ -80,8 +80,9 @@ node tools/video/long-form/cli.mjs check
   other three dependencies are done: speech-align and the caption chain landed in #1315,
   reuse-speech in #1302.
 - 2026-10-06, claude-opus-5-5-cc-aligned, work in 14a96140c:
-  - **Synthesis.** For an Azure voice, `tts` sends each body to `speech/align` first, inside the
-    same speech-journal entry as `speech` (`journal.wrap`), as Shorts' `serverNarration` does. A
+  - **Synthesis.** For an Azure voice, `tts` sends each phrase-sized body (the size gate below) to
+    `speech/align` first, inside the same speech-journal entry as `speech` (`journal.wrap`), as
+    Shorts' `serverNarration` does. A
     null answer (404, `video_align_unavailable`, `video_align_voice_unsupported`) goes on to
     `speech`, unpaid. A lost answer on either route is SPEECH_UNCERTAIN and holds the body. An
     answer the journal kept comes back without timing. Gemini voices never ask.
@@ -131,9 +132,25 @@ node tools/video/long-form/cli.mjs check
     30 use Gemini Sulafat or Rasalgethi), so nothing changes for them until a voice switch or
     `2026-10-05-speech-align-gemini-cpu-aligner`. On the first Azure-voiced video, `tts` should
     print "N of M lines carry measured character times", and the zh-TW CC should start on the
-    spoken character against the audio; check a few long lines in a player. `speech/align` returns
-    the WAV as base64 inside JSON, and a long-video request is a whole scene where a Short sends
-    one phrase: up to 1,500 characters, about 5 minutes, ~30 MB of WAV, ~40 MB of JSON. The BFF
-    gives up at 180 s, and the align route's docstring expects long scenes on `speech`. Watch
-    the first run's latency and API memory. A lost answer is held by the journal, not resent.
-    `timeline.json` grows by about 100 bytes per character.
+    spoken character against the audio; check a few long lines in a player. Only phrase-sized
+    requests reach `speech/align` (the size gate), so an aligned answer stays near 2 MB of WAV,
+    about 2.7 MB of JSON, far inside the BFF's 180 s. A lost answer is held by the journal, not
+    resent. `timeline.json` grows by about 100 bytes per timed character.
+  - **Size gate (2026-10-06 follow-up, after the done commit).** Only a phrase-sized request asks
+    `speech/align`: `ALIGNED_MAX_CHARACTERS = 59` in `tts/cli.mjs`, counted by
+    `alignedCharacters`. That counts every character the voice reads (an alias by its spoken
+    form) and each break as the characters 3 a second would read in it, so the 800 ms between
+    two lines counts 3. The route answers with the WAV as base64 in JSON, "which suits a phrase
+    of a Short; a six-minute scene belongs to the speech route, whose bytes stream"
+    (`align_api.py`), so the WAV must stay inside the route's own clip bound,
+    `MAX_CLIP_BYTES = 2,000,000`. Riff48Khz16BitMonoPcm (`align.py`) is 96,000 bytes a second:
+    (2,000,000 − 44) / 96,000 = 20.83 s, less 1 s of silence = 19.83 s, at a slow 3 characters
+    a second (scripts are sized at 250 a minute, 4.17 a second) = 59.5, so 59. A larger request
+    goes straight to `speech`: one call, no timing, the same journal entry. The minimal fixture's
+    scenes measure 64, 61 and 58, so two of its three stay untimed. A long video's scene request
+    usually runs to hundreds of characters, so most long-video lines get timing only once the
+    server's CPU aligner ships (`2026-10-05-speech-align-gemini-cpu-aligner`; it could then time
+    each line's clip through `alignClip`, Gemini voices included). Until then timing comes from a
+    line retaken on its own, a line synthesized alone after its scene's split did not match, and
+    a very short scene. Tests: the boundary at 59 and 60, plus the end-to-end and lost-answer
+    tests, now read their expectations from the gate.
