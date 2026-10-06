@@ -55,7 +55,14 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    A source whose dated entries of the last week keep failing for more than six hours is
    reported `stuck` instead of `partial` (the note names those URLs first); `/admin/news`
    lists stuck sources first under a warning, so a publisher that starts refusing the
-   scanner is noticed the same day.
+   scanner is noticed the same day. The `/admin` dashboard's News card counts them too
+   (`news_sources_stuck` in the operations pending counts), in red when there are any and
+   linked to `/admin/news?tab=sources`; a stuck source is an incident, not a review, so it
+   stays out of the Pending total. A switched-off source keeps its last status but is not
+   scanned, so neither count includes it. The six hours are `STUCK_AFTER` in
+   `scanner.py`, a code constant rather than a per-source setting. Nothing tells the owner
+   outside the admin yet: the only senders (community SMTP and LINE push) write to users,
+   and a daily summary waits on the owner choosing a channel.
    **Old entries.** Each source has a freshness window, `max_entry_age_hours` in its config
    (72 hours unless set; `0` or `null` switches it off, and a value that is not a number
    keeps 72). A source's **first scan** (`last_scanned_at` empty) records every listed
