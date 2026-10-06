@@ -454,3 +454,10 @@ What was decided, and what the code then asked for:
     returns null, and the loop could move the video whose discussion is still open with its own
     stages. The site hands lines over oldest first (`messages.py` `order_by(created_at)`), which
     one reader found keeps the open discussion's line first. No test was written.
+- **A third reader verified `4a7e644a` and `134d3f7e`.** The hold is complete. Nothing that
+  `submitOutline` reaches checks `busy` for its own slug. Every `job_gone` instruction fits
+  within 120 characters (the longest is 104). Both new tests fail when the code they cover is
+  reverted. The reader also found the same unheld shape in `draftEpisode`: it saves the
+  episode as active and then awaits `approve()` and `report()`. A lane that listed the episode
+  in that window would find no outline approval and submit the outline. It now holds the
+  episode until the report is sent, and a test fails without the hold.

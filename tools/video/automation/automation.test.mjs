@@ -1258,6 +1258,27 @@ test("an approved legacy explainer episode keeps the ten-minute target for its w
   assert.deepEqual(automation.scriptPayload(state, {}).target_minutes, [10, 10]);
 });
 
+test("a new series episode is held from its save until its outline's approval is written and reported", async () => {
+  const box = sandbox();
+  const slug = "held-thunder-episode";
+  const site = fakeSite();
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-02T02:00:00Z") });
+  const busy = new Set();
+  const automation = new Automation(ctx, automationClient(ctx), site.settings, { busy });
+  automation.refs = smallRefs;
+  const seen = [];
+  const reports = automation.api.report.bind(automation.api);
+  automation.api.report = async (...args) => {
+    seen.push(busy.has(slug));
+    return reports(...args);
+  };
+  const series = { slug: "thunder-held", kind: "one-off", title: "雷聲", premise: "雷聲為什麼晚到？", style_preset: "flat-explainer", target_minutes: 10 };
+  const episode = { number: 1, chapter_number: 0, title: "雷聲", beats: { question: "雷聲為什麼晚到？", answer: "光速遠快於聲速。", reasons: ["光速", "聲速"] } };
+  await automation.draftEpisode({ id: "request", slug, premise: series.premise, target_minutes: 10 }, { series, setting: { body_json: { characters: [] } }, episodes: [episode] }, episode);
+  assert.deepEqual(seen, [true], "the report goes out while the video is held");
+  assert.equal(busy.size, 0, "the hold ends with the report");
+});
+
 test("a saved three-minute explainer uses ten in lint fixes, script fixes and replanning, then persists the repaired target", async () => {
   const slug = "legacy-thunder-state";
   const box = sandbox(slug, "explainer");

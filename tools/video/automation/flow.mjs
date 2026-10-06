@@ -1794,9 +1794,16 @@ export class Automation {
     writeFileSync(path.join(dir, "brief.md"), episodeBrief(series, episode, cast, beats));
     const workdir = this.workdir(slug);
     writeLocalizationRetention(workdir, { slug, seriesSlug: series.slug, production });
-    saveState(workdir, state);
-    await approve({ gate: "outline", docDir: dir, workdir, now: this.ctx.now(), note: oneOff ? "依故事聖經" : `planned by chapter ${episode.chapter_number}'s approved outline` });
-    await report(this.ctx, this.api, state, "outline approved");
+    // Held from the save until the outline's approval is written and reported, as firstOutline
+    // holds a new video: a lane that listed it before the approval would submit its outline.
+    this.busy.add(slug);
+    try {
+      saveState(workdir, state);
+      await approve({ gate: "outline", docDir: dir, workdir, now: this.ctx.now(), note: oneOff ? "依故事聖經" : `planned by chapter ${episode.chapter_number}'s approved outline` });
+      await report(this.ctx, this.api, state, "outline approved");
+    } finally {
+      this.busy.delete(slug);
+    }
     if (oneOff) return `one-off ${series.slug}: ${slug} started from the approved story bible`;
     return `series ${series.slug}: episode ${episode.number} (${slug}) started from the chapter outline`;
   }
