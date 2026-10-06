@@ -105,6 +105,26 @@ picture; on its storyboard card the kept shots have a blue border and a 「保�
 - **Pull request.** #1344, a draft against main on `claude/video-unstuck-kept-pictures-card`,
   opened on 2026-10-06. It waits for the independent re-binding of the duration receipt
   (above) before it can be green.
+- **What verification found on 2026-10-06 (head `3127e6e3e`): the receipt, and nothing
+  else.** The stale receipt reddens more than `cli.mjs check`. On the pull request CI's
+  `web-checks` (`npm run test:tools`, 1 failure in 1,897 tests) and Video tooling's `smoke`
+  (1 in 1,605) both fail in `tools/video/long-form/review.test.mjs`, 「the shipped
+  independent duration review binds the current plans and implementation」; `web` fails
+  only as the roll-up of `web-checks`, and every other check is green.
+  `checkDurationReview()` returns nine `stale duration review binding` problems: one for
+  each bound file named under How to verify, and for no other. Checked for the reviewer:
+  that test file passes 2 of 2 on an export of the base `a435f0672`; each of the nine
+  hashes `review.json` holds equals the base's file, so the baseline holds; and main up to
+  `fdc0ce920` (#1345) changed none of the 108 bound files, so the increment is these nine
+  files against that base and needs no merge first. The pass that repaired what
+  verification found changed no code and left `review.md` and `review.json` as they were.
+  It works on the author's side (`author_agent` is this task's owner),
+  `durationReviewProblems` refuses a receipt whose reviewer is its author, and
+  `.agents/skills/dev-and-ci/references/duration-receipt.md` gives the re-binding to the
+  review agent alone. One step is left, and it comes last because any later edit to one of
+  the nine files stales the receipt again: an independent reviewer (`claude-pr-review-1344`)
+  reads the nine diffs, adds a `## PR #1344 … increment: 9 files (2026-10-06)` section to
+  `review.md` and binds the nine hashes in both files.
 - **Reverse checks** (the base tree exported with `git archive`, the new tests copied in;
   run again by the agent that finished this from the first one's patch). The new keyframes
   test fails on the base at the first `--accept-best`: an explainer's failing shot is kept,
