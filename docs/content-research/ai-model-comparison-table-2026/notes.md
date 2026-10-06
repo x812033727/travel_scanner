@@ -278,7 +278,8 @@ Moonshot（Model-as-a-Service 營收門檻）。
 - Google｜https://ai.google.dev/gemini-api/docs/pricing（頁尾 Last updated 2026-10-01）｜2026-10-06
   - 與 9/16 相同：gemini-3.1-pro-preview 2／12（>20 萬 4／18）；gemini-3.8-flash 0.75／3.75 到 2026-12-31，
     之後 1.50／7.50；gemini-3.5-flash 1.50／9.00；3.5-flash-lite 0.30／2.50；3.1-flash-lite 0.25／1.50；
-    2.5-flash-lite 0.10／0.40。https://ai.google.dev/gemini-api/docs/models 仍沒有 token 上限欄。
+    2.5-flash-lite 0.10／0.40。https://ai.google.dev/gemini-api/docs/models 總表沒有 token 上限欄，
+    但它連到的各模型頁有，見文末「獨立查核第一輪的更正」（原本這裡寫「仍沒有 token 上限欄」，查錯了頁）。
   - 9/30 公告的 Gemini 4 Argon 不在定價頁（只開放給受信任的資安防禦者），不進表。
 - xAI｜https://docs.x.ai/developers/pricing.md、models、release-notes｜2026-10-06
   - grok-4.7（9/21 上 API）50 萬；<20 萬 2／6、快取 0.50；≥20 萬 4／12、快取 1.00。
@@ -339,4 +340,29 @@ GPQA Diamond 67.17 是第三方（EvalEval）用 pull request 加的，不是 Mi
 
 上限仍是 20 筆：Opus 5 發布頁換成 Opus 5.5 發布頁，grok-4.6 發布頁換成 grok-4.7 發布頁；Mistral 換成
 轉址後的 docs 網址。GLM-5.3、DeepSeek 更新紀錄與 MiniMax 文字生成頁沒有進 `sources`，網址記在上面。
+
+## 2026-10-06 獨立查核第一輪的更正
+
+PR #1333 的獨立查核（第一輪）指出的錯，套用前逐頁用 `curl -sSL` 加編輯部 User-Agent 重開過，
+全部 HTTP 200。`sources` 已滿 20 筆，下面這些模型頁沒有進 `sources`，網址記在這裡。
+
+- **Gemini 的上下文／最大輸出**：每個模型自己的頁面都有「Token limits」一欄，五個 Flash／Flash-Lite
+  都是 Input token limit 1,048,576、Output token limit 65,536，與 gemini-3.1-pro-preview 相同，表上寫「1M／64K」。
+  https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash 、/gemini-3.5-flash 、/gemini-3.5-flash-lite 、
+  /gemini-3.1-flash-lite 、/gemini-2.5-flash-lite（/gemini-3.1-pro-preview 同樣 1,048,576／65,536）｜2026-10-06
+- **Mistral 的上下文**：各模型頁的 Context 欄都是 256k，最大輸出沒寫，表上寫「26.2 萬／官網未公布」
+  （與開放權重表的 Medium 3.5 一致）。https://docs.mistral.ai/models/mistral-large-3-25-12 、
+  /models/mistral-medium-3-5-26-04 、/models/mistral-small-4-0-26-03 、/models/ministral-3-3b-25-12｜2026-10-06
+- **Z.AI**：https://docs.z.ai/guides/llm/glm-5.3 寫「a 1M-token context window and a maximum output length of 128K tokens」；
+  https://docs.z.ai/guides/vlm/glm-5.3-flash 寫 Context Length 1M、Maximum Output Tokens 128K。兩列都寫「1M／128K」｜2026-10-06
+- **MiniMax-M2.7**：https://platform.minimax.io/docs/guides/text-generation 的模型表寫 Context Window 204,800，
+  表上寫「20.5 萬／官網未公布」｜2026-10-06
+- **Mistral Large 4**：https://docs.mistral.ai/inference/pricing 在 10/06 把 Mistral Large 4 排在第一列，
+  輸入 0.68、快取 0.07、輸出 2.09；模型頁 https://docs.mistral.ai/models/mistral-large-4-0 寫 October 6, 2026
+  Public Preview、Context 1M，價格欄把 1.36／0.14／4.18 劃掉改標 0.68／0.07／2.09；
+  https://mistral.ai/news/mistral-large-4/ 寫「our largest and most capable model to date」、權重月底釋出。
+  `mistral-large-latest` 仍在 Large 3 的模型頁上。表上照列 Large 3，旗艦表下面那段加一句說明。
+- **DeepSeek 的揭露列**：GPQA Diamond 90.9 與 Terminal-Bench 4.0 31.2 屬於 9/10 的 DeepSeek-V4.1-Flash
+  （中階表的 deepseek-flash），8/13 的 V4-Pro 那一則只有 Terminal Bench 2.1 87.9。揭露表的 DeepSeek 列
+  標成「中階模型」，caption 寫明這一點；「六家裡各有四家列出」是以廠商計，仍成立。
 

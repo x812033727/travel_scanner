@@ -134,7 +134,7 @@
             [
               "Z.AI",
               "GLM-5.3",
-              "官網未公布",
+              "1M／128K",
               "1.40 美元／4.40 美元",
               "Terminal-Bench 2.1 88.2%"
             ],
@@ -148,7 +148,7 @@
             [
               "Mistral",
               "Mistral Large 3",
-              "官網未公布",
+              "26.2 萬／官網未公布",
               "0.50 美元／1.50 美元",
               "模型卡只附比較圖"
             ],
@@ -164,7 +164,7 @@
         },
         {
           "type": "paragraph",
-          "text": "有幾個欄位要小心讀。gemini-3.1-pro-preview 與 grok-4.7 的價格是 20 萬 token 以內的價，超過門檻兩欄都會往上跳；xAI 的釋出說明寫 grok-4.7 沒有文字輸出上限，所以那一格寫「無輸出上限」。MiniMax-M3 的上下文是 100 萬 token，但輸入超過 51.2 萬就改收另一段價。deepseek-v4-pro 寫的是尖峰價，離峰對折，而且官網的輸入價分「快取命中」與「快取未命中」兩欄，表上用的是未命中那一欄。kimi-k3 同樣有快取命中價，未命中是 3.00 美元、命中只要 0.30 美元。Mistral 的命名跟價位帶對不上：掛著 Large 的 Mistral Large 3 反而比掛著 Medium 的便宜。"
+          "text": "有幾個欄位要小心讀。gemini-3.1-pro-preview 與 grok-4.7 的價格是 20 萬 token 以內的價，超過門檻兩欄都會往上跳；xAI 的釋出說明寫 grok-4.7 沒有文字輸出上限，所以那一格寫「無輸出上限」。MiniMax-M3 的上下文是 100 萬 token，但輸入超過 51.2 萬就改收另一段價。deepseek-v4-pro 寫的是尖峰價，離峰對折，而且官網的輸入價分「快取命中」與「快取未命中」兩欄，表上用的是未命中那一欄。kimi-k3 同樣有快取命中價，未命中是 3.00 美元、命中只要 0.30 美元。Mistral 的命名跟價位帶對不上：掛著 Large 的 Mistral Large 3 反而比掛著 Medium 的便宜。同一天 Mistral 的定價頁還把剛開放公開預覽的 Mistral Large 4 排在第一列，每百萬 token 輸入 0.68 美元、輸出 2.09 美元，上下文 100 萬 token；API 的 mistral-large-latest 仍指向 Large 3，表上照列 Large 3。"
         },
         {
           "type": "rich_paragraph",
@@ -218,13 +218,13 @@
             [
               "Google",
               "gemini-3.5-flash",
-              "官網未公布",
+              "1M／64K",
               "1.50 美元／9.00 美元"
             ],
             [
               "Mistral",
               "Mistral Medium 3.5",
-              "官網未公布",
+              "26.2 萬／官網未公布",
               "1.50 美元／7.50 美元"
             ],
             [
@@ -242,7 +242,7 @@
             [
               "Google",
               "gemini-3.8-flash",
-              "官網未公布",
+              "1M／64K",
               "0.75 美元／3.75 美元"
             ],
             [
@@ -254,7 +254,7 @@
             [
               "MiniMax",
               "MiniMax-M2.7",
-              "官網未公布",
+              "20.5 萬／官網未公布",
               "0.30 美元／1.20 美元"
             ],
             [
@@ -299,13 +299,13 @@
             [
               "Google",
               "gemini-3.5-flash-lite",
-              "官網未公布",
+              "1M／64K",
               "0.30 美元／2.50 美元"
             ],
             [
               "Google",
               "gemini-3.1-flash-lite",
-              "官網未公布",
+              "1M／64K",
               "0.25 美元／1.50 美元"
             ],
             [
@@ -317,13 +317,13 @@
             [
               "Mistral",
               "Mistral Small 4",
-              "官網未公布",
+              "26.2 萬／官網未公布",
               "0.15 美元／0.60 美元"
             ],
             [
               "Z.AI",
               "GLM-5.3-Flash",
-              "官網未公布",
+              "1M／128K",
               "0.15 美元／0.50 美元"
             ],
             [
@@ -335,13 +335,13 @@
             [
               "Google",
               "gemini-2.5-flash-lite",
-              "官網未公布",
+              "1M／64K",
               "0.10 美元／0.40 美元"
             ],
             [
               "Mistral",
               "Ministral 3（3B）",
-              "官網未公布",
+              "26.2 萬／官網未公布",
               "0.10 美元／0.10 美元"
             ],
             [
@@ -575,13 +575,13 @@
               "程式類用 Claude Code 測試框架、temperature 1.0、256K token 上下文"
             ],
             [
-              "DeepSeek",
+              "DeepSeek（中階模型）",
               "DeepSeek-V4.1-Flash 90.9%",
               "DeepSeek-V4.1-Flash 31.2%",
               "寫在 API 文件的更新紀錄，這一則沒有寫測試條件"
             ]
           ],
-          "caption": "2026 年 10 月 6 日各家官方發布頁、模型卡與 API 文件的揭露情況；「官網未列」指該廠商在表上這個模型的官方頁面沒有列這一項。"
+          "caption": "2026 年 10 月 6 日各家官方發布頁、模型卡與 API 文件的揭露情況。DeepSeek 一列是中階表的 deepseek-flash（V4.1-Flash），旗艦表的 deepseek-v4-pro 這兩項都沒列；「官網未列」指該廠商在表上這個模型的官方頁面沒有列這一項。"
         },
         {
           "type": "image",
@@ -734,7 +734,7 @@
           "checked_on": "2026-10-06"
         },
         {
-          "title": "Mistral 文件：定價頁（Large 3、Medium 3.5、Small 4 與 Ministral 3 的每百萬 token 價）",
+          "title": "Mistral 文件：定價頁（Large 4、Large 3、Medium 3.5、Small 4 與 Ministral 3 的每百萬 token 價）",
           "url": "https://docs.mistral.ai/inference/pricing",
           "checked_on": "2026-10-06"
         },

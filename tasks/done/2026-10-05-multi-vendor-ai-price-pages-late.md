@@ -23,6 +23,7 @@ scope:
   - apps/api/app/guides/content/ai-hype-vs-reality-2026.json
   - apps/api/app/guides/content/ai-benchmarks-explained.json
   - tasks/open/2026-09-16-model-table-quarterly-recheck.md
+  - docs/life-ai-series.md
 ---
 
 # Refresh the multi-vendor AI price pages and the 2026 release timeline for the late-September line-up
@@ -182,3 +183,152 @@ is which models count as current.
   Gaps before 9/15 that the timeline does not carry (Meta Muse Spark 1.1 on 7/9, the Muse Glimmer
   30B weights, an undated MiniMax-M3.1-Flash-Preview) are filed as
   `2026-10-06-timeline-gaps-before-0915`.
+
+## Review round (independent, 2026-10-06)
+
+The round-1 report follows verbatim, with its headings moved down two levels so they sit under this section.
+
+### verify-1: PR #1333 `claude/ai-price-pages` (independent round 1)
+
+- **Date:** 2026-10-06
+- **Mode:** read-only. Nothing was edited, committed or commented.
+- **Fetching:** every fetch used `curl -sSL` with UA `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`. No personal data was sent. `<!-- -->` comments were stripped before reading, and HTTP status was checked on every fetch.
+- **Scope:** the diff `origin/main...origin/claude/ai-price-pages`. It touches four rewritten zh-TW packs (`ai-api-pricing-comparison-2026`, `ai-model-comparison-table-2026`, `ai-pricing-beyond-list-price`, `ai-model-release-timeline-2026`), two diagrams, and link-text-only edits in `ai-benchmarks-explained`, `ai-hype-vs-reality-2026` and `ai-news-sources-to-follow`. All packs are zh-TW only, so no cross-locale review was needed.
+- **Claims checked:** about 300 atomic claims (prices, ratios, dates, context and output limits, scores, rules, quotes, counts).
+- **Second round:** **required.** Round 1 found 5 fact errors, which is more than 3.
+
+#### Sources fetched (all 2026-10-06)
+
+| URL | HTTP | Used for |
+|---|---|---|
+| developers.openai.com/api/docs/pricing.md | 200 | All OpenAI prices; 272K short/long split; gpt-5.6-sol promo "at least through November 21, 2026"; Batch 50% |
+| developers.openai.com/api/docs/models.md and models/{gpt-6-astra, gpt-6.1-sol, gpt-6-luna, gpt-5.4-mini, gpt-5-nano}.md | 200 | Tiers (Astra flagship / 6.1 Sol "balance" / Luna "cost-sensitive"); 1,050,000/128,000; 400,000/128,000; ">272K … 2x input and cache, 1.5x output for the full request"; 6.1 Sol cache 5% |
+| openai.com/index/gpt-6-astra/, openai.com/index/introducing-gpt-6-sol-and-luna | **403** | Could not be read (see Unverifiable) |
+| openai.com/news/rss.xml | 200 | GPT-6 Astra 9/3 "most intelligent and aligned"; Sol & Luna 9/22; GPT-6.1 Sol 9/29 "one-fifth of Astra's standard … prices"; GPT-5.6 7/9; no other model launch 9/16–9/30 |
+| learn.chatgpt.com/docs/changelog | 200 | 2026-09-22: "Free and Go users can access Luna in the desktop app" |
+| platform.claude.com/docs/en/about-claude/pricing.md | 200 | Fable 5.1 10/50, cache 0.25 (0.025x); Opus 5.5 4/20, cache 0.20 (0.05x); Opus 5 5/25 still listed; Sonnet 5.5 2/10/0.20; Haiku 4.5 1/5/0.10; 1.25x/2x writes and break-even; batch 50%; 1M at standard price ("900k … same as 9k"); new tokenizer ~30% from 4.7; FAQ free credits |
+| platform.claude.com/docs/en/about-claude/models/overview.md → redirects to /docs/en/models/overview | 200 | 1M/128K for Fable 5.1, Opus 5.5 and Sonnet 5.5; Haiku 200K/64K; legacy list |
+| anthropic.com/claude-opus-5-5 | 200 | Sep 22; Terminal-Bench 4.0: Opus 5.5 66.4%, Fable 5.1 55.8%, GPT-6 Astra 57.9%; xhigh vs high; ±2.6; "level of Fable 5.1 … 40% less than Opus 5"; no GPQA |
+| anthropic.com/claude-sonnet-5-5; anthropic.com/news | 200 | Sep 28; "clear upgrade over Sonnet 5, runs 30%+ faster"; newsroom lists items back to Aug 25 only |
+| anthropic.com/news/claude-opus-4-6, -4-7, -4-8 | 200 | Feb 5, Apr 16, May 28 (dates fine; these URLs were dropped from sources) |
+| ai.google.dev/gemini-api/docs/pricing (Last updated 2026-10-06) | 200 | 3.8 Flash 0.75/3.75 to 12-31, 1.50/7.50 from 2027-01-01, cache 0.075 + 0.50/h, batch 0.375/1.875; 3.5 Flash 1.50/9.00; 3.5 Flash-Lite 0.30/2.50; 3.1 Flash-Lite 0.25/1.50; 2.5 Flash-Lite 0.10/0.40; 3.1 Pro preview 2/12 → 4/18, cache 0.20 → 0.40, storage 4.50/h, free tier "Not available"; free/paid terms; "Batch API (50% cost reduction)"; no Argon |
+| ai.google.dev/gemini-api/docs/models/{gemini-3.8-flash, 3.5-flash, 3.5-flash-lite, 3.1-flash-lite, 2.5-flash-lite, 3.1-pro-preview} | 200 | **Input 1,048,576 / Output 65,536 on every page** |
+| deepmind.google/models/model-cards/gemini-3-1-pro/ | 200 | GPQA Diamond 94.3%; SWE-Bench Verified 80.6% (single attempt); lists Terminal-Bench 2.0; 1M in / 64K out; methodology page |
+| blog.google/…/gemini-4-argon/ | 200 | Sep 30; Fairwind; intro $2/$10, then $4/$20; "starting with paid API customers and Google AI Ultra subscribers" |
+| deepmind.google/blog/rss.xml | 200 | Argon 9/30; 3.8 TTS 9/23 and 3.8 Live Avatar 9/24 (speech, excluded); 3.7 Flash 8/13 |
+| docs.x.ai/developers/{pricing, models, release-notes, grok-4-7, models/grok-4.3}.md | 200 | grok-4.7: 500k, 2/0.50/6 below 200k and 4/1/12 at or above, whole-request rule, "no text output limit"; batch 20% only for grok-4.3/4.20; grok-4.3 1M 1.25/0.20/2.50; priority 2x |
+| x.ai/news/grok-4-7 | 200 | Sep 21; Terminal-Bench 4.0 37.6% (xHigh); no GPQA |
+| api-docs.deepseek.com/quick_start/pricing/ | 200 | flash 0.3/1.2 peak, 0.15/0.6 off-peak, cache 0.006; v4-pro 1.32/3.96, cache 0.044; 1M/384K; peak 01–04 and 06–10 UTC Mon–Fri excluding Chinese public holidays |
+| api-docs.deepseek.com/updates | 200 | 9/10 V4.1-Flash GPQA Diamond 90.9, TB 4.0 31.2; 8/13 V4-Pro TB 2.1 87.9; V4-Pro kept after 9/14; nothing after 9/10 |
+| docs.mistral.ai/inference/pricing (mistral.ai/pricing/api/ redirects here) | 200 | Large 3 0.5/0.05/1.5; Medium 3.5 1.5/0.15/7.5; Small 4 0.15/0.015/0.6; Ministral 3 3B 0.1/0.01/0.1; Moderation 2 free; no EUR; **Mistral Large 4 listed first: 0.68/0.07/2.09** |
+| docs.mistral.ai/models/{mistral-large-3-25-12, mistral-medium-3-5-26-04, mistral-small-4-0-26-03, ministral-3-3b-25-12, mistral-large-4-0}; /inference/regional-inference; mistral.ai/news; mistral.ai/news/mistral-large-4/ | 200 | Context 256k on all four; aliases (mistral-large-latest is still Large 3); Large 4 public preview Oct 6, 1M, list 1.36/4.18; regional 1.1x; September news has company posts only (9/16, 9/28) |
+| alibabacloud.com/help/en/model-studio/model-pricing (Last Updated Oct 06, 2026) | 200 | qwen3.8-max SG 2/6, Beijing 1.65/4.951; qwen3.7-plus 0.4/1.6 at or below 256K with "Limited-time 20% off"; qwen3.8-flash 0.15/0.47; 1M free quota, 90 days, SG only; batch 50%; cache 125%/10%; batch and cache cannot combine |
+| qwen.ai/api/v2/article/?…path=qwen3.8 (data source of qwen.ai/blog?id=qwen3.8) | 200 | GPQA Diamond 92.6; TB 2.1 86.6 (not 4.0); SWE-bench Pro footnote: Claude Code harness, temp 1.0, 256K |
+| qwen.ai/api/v2/article/retrieval (data source of qwen.ai/research) | 200 | Qwen3.8-Omni-Flash listed 2026-09-18 15:00 +08 (see notes) |
+| platform.minimax.io/docs/guides/pricing-paygo.md and text-generation.md | 200 | M3 0.30/1.20/0.06 at or below 512k ("Permanent 50% off"), 0.60/2.40/0.12 above; M2.7 0.3/1.2; M3 context 1,000,000; **M2.7 204,800** |
+| huggingface.co MiniMaxAI/MiniMax-M3 (README and .eval_results/minimax-m3.yaml) | 200 | 1M; ~428B/23B; minimax-community licence; SWE-bench Verified 80.5 (source "MiniMax-M3 model card") |
+| platform.kimi.ai/docs/pricing/chat.md | 200 | kimi-k3 3.00/15.00, cache 0.30, 1,048,576; k2.7-code 0.95/4.00, 262,144 |
+| huggingface.co moonshotai/Kimi-K3, zai-org/GLM-5.3 | 200 | K3 GPQA Diamond 93.5; GLM-5.3 TB 2.1 88.2 |
+| docs.z.ai/guides/overview/pricing; docs.z.ai/guides/llm/glm-5.3; …/vlm/glm-5.3-flash | 200 | GLM-5.3 1.4/0.26/4.4; GLM-5.3-Flash 0.15/0.03/0.50; 4.7-Flash and 4.5-Flash free; **GLM-5.3 1M/128K; GLM-5.3-Flash 1M/128K** |
+| OpenAI supported-countries.md, anthropic.com/supported-countries, Gemini available-regions | 200 | Taiwan listed on all three |
+| ai.meta.com/blog/ | 200 | Latest post Jul 27, 2026; none in September |
+
+#### Outcome per article
+
+##### ai-api-pricing-comparison-2026: CONFIRMED except error 5
+- **Confirmed:**
+  - Every price in the body, the 13-row table, the worked example and the bands.
+  - Arithmetic: Astra 450.00, Sonnet 5.5 90.00, 3.8 Flash 33.75, M3 12.00, qwen3.8-flash 5.35, Luna 4.50, so 「一百倍」. 6.1 Sol vs Luna is 20x. Opus 5.5 is 20% below Opus 5.
+  - Bands: flagship 0.30–10.00 / 1.20–50.00, mid 0.40–2.00 / 1.60–10.00, light 0.10–1.00 / 0.47–5.00.
+  - Diagram text and `<desc>` equal `image.description`, and every diagram number appears in the body.
+  - Cache multipliers; OpenAI cache at 1/10 and 1/20; Mistral cache at 10%; Google cache and storage.
+  - Batch rules, the xAI batch list, and DeepSeek peak hours including the holiday exception.
+  - Alibaba free quota and the batch/cache exclusivity; Anthropic free credits; Moderation 2 free; regional +10%.
+  - Currencies; Singapore vs Beijing prices; thresholds 20萬 / 27.2萬 / 51.2萬.
+  - Gemini 4 Argon sentence; Taiwan support lists.
+- **Error 5:** Mistral Large 4 is missing (public preview on the pricing page, dated 10-06).
+
+##### ai-model-comparison-table-2026: errors 1–6
+- **Confirmed:**
+  - Every price.
+  - OpenAI, Anthropic, xAI, DeepSeek, Kimi and Alibaba context and output cells.
+  - MiniMax-M3 at 100萬; grok-4.7 「無輸出上限」.
+  - Ratios 40x and 1/200.
+  - Every score: Astra TB4.0 57.9 (via Anthropic and xAI), Fable 5.1 55.8, Opus 5.5 66.4, K3 93.5, Gemini 3.1 Pro 94.3 and 80.6, grok-4.7 37.6, Qwen3.8-Max 92.6, GLM-5.3 TB2.1 88.2, V4-Pro TB2.1 87.9, M3 SWE-V 80.5, V4.1-Flash 90.9 and 31.2.
+  - Disclosure conditions for Google, Anthropic, xAI, Qwen and DeepSeek.
+  - Mistral Large 3 HF "67.17" being a third-party pull request was not re-checked; it is not used in the article.
+  - Open-weight table: unchanged from 9/16 except the caption date.
+- **Errors 1–4:** 「官網未公布」 cells are wrong for Google ×5, Mistral ×4, Z.AI ×2 and MiniMax-M2.7. Three of them also contradict block 19 of the same article.
+- **Error 5:** Mistral Large 4 is missing.
+- **Error 6:** the DeepSeek disclosure row mixes models.
+- **Not flagged:** summary item 1 still says 「三張欄位一致的表」 although only the flagship table has the score column (style).
+
+##### ai-pricing-beyond-list-price: CONFIRMED
+- **Cache table, 19 rows:** every hit price, base price and percentage is right (GLM 0.26/1.4 = 18.6% rounds to 19%; grok-4.3 16%; V4-Pro 3.3%; flash 2%), and the descending order holds.
+- **Long-context table:** Anthropic, Google, xAI, OpenAI 272K (10→20 and 50→75; whole-request 2x/1.5x) and MiniMax are all right.
+- **Also confirmed:** tokenizer text; Fable 2.5%, Opus 5.5 5% and 6.1 Sol 5%; description and summary ("多數 10%, DeepSeek 2%, xAI 25%, 十倍以上"); sources.
+
+##### ai-model-release-timeline-2026: errors 7, 8, 9
+- **Confirmed:**
+  - New entries: Grok 4.7 9/21, Opus 5.5 9/22, GPT-6 Sol & Luna 9/22, Sonnet 5.5 9/28 ("30%+ faster"), GPT-6.1 Sol 9/29 ("one-fifth"), Gemini 4 Argon 9/30 (cyber defenders first).
+  - Free/Go users get Luna in the desktop app (via the changelog).
+  - Opus 5.5 line 「多數工作達 Fable 5.1 水準，比 Opus 5 省四成」.
+  - Counts: 20 + 17 = 37 rows; 「超過三十個」.
+  - Diagram text and `<desc>` match.
+  - Vendors with no qualifying release 9/16–9/30: DeepSeek, Mistral, Meta and OpenAI (beyond the entries above) confirmed.
+- **Errors:** 7 (「2 月是上半年最密集」 does not hold under the article's own counting), 8 (Opus 4.6/4.7/4.8 lines now unsourced), 9 (docs/life-ai-series.md row 183 still has the old title).
+
+##### Link-text packs
+- `ai-benchmarks-explained`, `ai-hype-vs-reality-2026` and `ai-news-sources-to-follow` now carry the new timeline title. Nothing else in `apps/api/app/guides/content` keeps the old title. The only remaining copy is docs/life-ai-series.md:313 (error 9).
+
+#### Errors (see the structured list)
+1. Gemini Flash / Flash-Lite context and output: 「官網未公布」 should be 1M／64K, from the model pages on ai.google.dev. notes.md's 「仍沒有 token 上限欄」 checked the wrong page.
+2. Mistral Large 3, Medium 3.5, Small 4 and Ministral 3 3B context should be 256K, from docs.mistral.ai model pages. This also conflicts with block 19.
+3. Z.AI GLM-5.3 and GLM-5.3-Flash should be 1M／128K. This also conflicts with block 19.
+4. MiniMax-M2.7 context should be 204,800.
+5. Mistral Large 4 (public preview, 10-06, 0.68/2.09 promo, list 1.36/4.18, 1M) is on the cited pricing page but missing from both price pages.
+6. DeepSeek disclosure row uses V4.1-Flash, while the flagship table and caption refer to deepseek-v4-pro. The "four of six" tallies depend on this.
+7. Timeline: 「2 月是上半年最密集」 does not hold; February, March and April each have six dated items in the body.
+8. Timeline sources: the three Opus 4.x lines lost their sources, and anthropic.com/news does not list them.
+9. docs/life-ai-series.md row 183 still has the old timeline title.
+
+#### Unverifiable
+- **openai.com posts (403):** Astra GPQA Diamond 96.0% and "estimated cost per reasoning effort"; Sol/Luna 「把 Astra 的進展帶到更便宜的模型」.
+- **Mistral Batch '-50%' toggle label:** needs a browser; the substance is confirmed in static text.
+- **Max output for Qwen and Kimi K3:** not found on the pages checked.
+
+#### Suspected but not flagged
+- **Qwen3.8-Omni-Flash date:** the qwen.ai/research listing (the cited source) shows 2026-09-18 15:00 +08. The article's own HTML carries `article:published_time` 2026-09-14 and a "[draft]" marker. 9/18 matches the cited page; round 2 may want to re-check.
+- **Grok 4.7 source title:** the timeline cites docs.x.ai release notes as the source of 「9 月 21 日」, but those notes only say "September". The day comes from x.ai/news/grok-4-7.
+- **「DeepSeek 是八家裡唯一按時段計價的」** (unchanged list item in the pricing comparison): Alibaba's page now shows "Limited-time night 60% off, daytime 20% off" on some models in its Hong Kong and Beijing tables. It is a promotion, not standing time-of-day pricing.
+- **Redirected source URL:** the Anthropic models overview URL in two packs' sources redirects to /docs/en/models/overview (pitfalls: cite the final URL). This was already the case on main.
+- **Timeline excluded models:** the timeline leaves out Gemini 3.8 Live and TTS (9/23, 9/24) and Qwen3.8-LiveTranslate (9/18) as speech models. That is an inclusion-rule judgement, not a fact error. Meta Muse Spark 1.1 (7/9) is also missing; it is already ticketed in 2026-10-06-timeline-gaps-before-0915.
+
+#### Summary
+- **Claims:** about 300 checked, 9 errors (5 fact, 4 consistency), 4 unverifiable groups.
+- **Second round:** required (5 fact changes, more than 3). Round 2 should re-check errors 1–5 after the fix, plus a random third of the confirmed price and score cells.
+
+### Round-1 corrections applied (2026-10-06, claude-opus-5-5)
+
+Before applying anything, every cited page was re-opened with `curl -sSL` and the editorial User-Agent, with `<!-- -->` stripped and the status checked; all returned HTTP 200. All nine corrections were applied; none was rejected.
+
+- **Errors 1–4** (comparison table): edited `build_pack.py`, then ran `reingest.sh` with `PUBLIC_DIR` set to a scratch folder, so `diagram-1.svg` and `hero.svg` stay byte-identical. Gemini 3.8 Flash, 3.5 Flash, 3.5 Flash-Lite, 3.1 Flash-Lite and 2.5 Flash-Lite are now 「1M／64K」: each model page lists 1,048,576 / 65,536. Mistral Large 3, Medium 3.5, Small 4 and Ministral 3 3B are now 「26.2 萬／官網未公布」: Context 256k, no max output given. GLM-5.3 and GLM-5.3-Flash are now 「1M／128K」. MiniMax-M2.7 is now 「20.5 萬／官網未公布」 (204,800). `notes.md` corrects the 「仍沒有 token 上限欄」 line and gets a new section listing the model-page URLs; `sources` is full at 20, so they are recorded there instead.
+- **Error 5** (Mistral Large 4): one sentence on each price page.
+  - Pricing comparison, block 15: 0.68/2.09 on the pricing page, 1.36/4.18 struck through on the model page, public preview on 10/06, and `mistral-large-latest` still points to Large 3. The model page is added as a source (14 now), and the pricing-page source title now names Large 4.
+  - Comparison table, block 9 (after the flagship table): 0.68/2.09, 1M context, and the alias still points to Large 3, so the table keeps Large 3. The source title names Large 4.
+  - Tables, bands and the worked example are unchanged: 0.68/2.09 sits inside the flagship band.
+- **Error 6** (DeepSeek disclosure row): used the labelling option. The vendor cell now reads 「DeepSeek（中階模型）」. The caption says the row is the mid-tier deepseek-flash (V4.1-Flash) and that deepseek-v4-pro lists neither benchmark. The "four of six" tallies in summary item 2 and block 24 count vendors and are still true, so they are unchanged.
+- **Error 7**: 「2 月是上半年最密集的一個月」 is now 「2 月起，新模型明顯多了起來」. September's 「今年換代最密集」 still holds (11 dated entries; no other month has more than 6).
+- **Error 8** (timeline sources): the Opus 4.6, 4.7 and 4.8 announcement URLs are back, with the titles they had on main; each page carries its date and the quoted line. Three entries went to stay at the 20-source cap:
+  - The 1/29 retirement post and the 8/6 GPT-5.6 Sol/Luna post. Their OpenAI RSS items carry every claim the article takes from them, and the RSS entry's title now names both.
+  - The blog.google Gemini 3.5 post. Its date and 「前沿智慧加上行動力」 are in the DeepMind RSS.
+  - One claim loses its listed source: block 14's 「公告寫 Gemini App 與 Google 搜尋的 AI 模式全球都能用」. It is true on https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/ ("3.5 Flash is now the default model for the Gemini app and AI Mode in Search globally"), read 2026-10-06.
+  - No other entry was redundant. The Sonnet 4.6, Sonnet 5, Opus 5, Fable 5, Fable 5.1, Gemini 3.8 Flash, Gemini 4 Argon and GPT-6 Sol/Luna pages each carry a claim no other listed source has. Anthropic has no feed (`rss.xml` and `feed.xml` return 404), and its product page anthropic.com/claude/opus lists the 4.x dates but with different blurbs, not the quoted lines.
+- **Error 9**: `docs/life-ai-series.md` row 183 now carries the new title, and the file is added to this ticket's scope.
+- **Checks** (`apps/api`, `PYTHONUTF8=1`):
+  - `pack_cli lint --kind life --slug` on the three edited slugs: 0 errors. The only warnings are the existing `no_summary` on the pricing comparison and the timeline.
+  - `intake_check.py --from-content` against a detached origin/main worktree: no new FAIL. The comparison table drops from 5 FAILs to 3, and the other two have the same FAILs as main.
+  - All packs are zh-TW only, so no translation checks were needed.
+- **For round 2**:
+  - Re-check errors 1–5 in the new cells and sentences, plus the trimmed timeline sources.
+  - The 0.68/2.09 Large 4 price has no label on Mistral's pages (only the strike-through), so it may change without notice.

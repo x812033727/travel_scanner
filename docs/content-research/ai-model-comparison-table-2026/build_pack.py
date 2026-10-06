@@ -35,36 +35,36 @@ flagship = [
     ["Google", "gemini-3.1-pro-preview", "1M／64K", "2.00 美元／12.00 美元", "GPQA Diamond 94.3%、SWE-Bench Verified 80.6%"],
     ["xAI", "grok-4.7", "50 萬／無輸出上限", "2.00 美元／6.00 美元", "Terminal-Bench 4.0 37.6%"],
     ["阿里雲百鍊", "qwen3.8-max", "1M／官網未公布", "2 美元／6 美元", "GPQA Diamond 92.6%"],
-    ["Z.AI", "GLM-5.3", "官網未公布", "1.40 美元／4.40 美元", "Terminal-Bench 2.1 88.2%"],
+    ["Z.AI", "GLM-5.3", "1M／128K", "1.40 美元／4.40 美元", "Terminal-Bench 2.1 88.2%"],
     ["DeepSeek", "deepseek-v4-pro", "1M／384K", "1.32 美元／3.96 美元", "Terminal-Bench 2.1 87.9%"],
-    ["Mistral", "Mistral Large 3", "官網未公布", "0.50 美元／1.50 美元", "模型卡只附比較圖"],
+    ["Mistral", "Mistral Large 3", "26.2 萬／官網未公布", "0.50 美元／1.50 美元", "模型卡只附比較圖"],
     ["MiniMax", "MiniMax-M3", "100 萬／官網未公布", "0.30 美元／1.20 美元", "SWE-bench Verified 80.5%"],
 ]
 
 mid = [
     ["OpenAI", "gpt-6.1-sol", "1.05M／128K", "2.00 美元／10.00 美元"],
     ["Anthropic", "Claude Sonnet 5.5", "1M／128K", "2 美元／10 美元"],
-    ["Google", "gemini-3.5-flash", "官網未公布", "1.50 美元／9.00 美元"],
-    ["Mistral", "Mistral Medium 3.5", "官網未公布", "1.50 美元／7.50 美元"],
+    ["Google", "gemini-3.5-flash", "1M／64K", "1.50 美元／9.00 美元"],
+    ["Mistral", "Mistral Medium 3.5", "26.2 萬／官網未公布", "1.50 美元／7.50 美元"],
     ["xAI", "grok-4.3", "1M／官網未公布", "1.25 美元／2.50 美元"],
     ["Moonshot", "kimi-k2.7-code", "26.2 萬／官網未公布", "0.95 美元／4.00 美元"],
-    ["Google", "gemini-3.8-flash", "官網未公布", "0.75 美元／3.75 美元"],
+    ["Google", "gemini-3.8-flash", "1M／64K", "0.75 美元／3.75 美元"],
     ["阿里雲百鍊", "qwen3.7-plus", "1M／官網未公布", "0.40 美元起／1.60 美元起"],
-    ["MiniMax", "MiniMax-M2.7", "官網未公布", "0.30 美元／1.20 美元"],
+    ["MiniMax", "MiniMax-M2.7", "20.5 萬／官網未公布", "0.30 美元／1.20 美元"],
     ["DeepSeek", "deepseek-flash", "1M／384K", "0.30 美元／1.20 美元"],
 ]
 
 light = [
     ["Anthropic", "Claude Haiku 4.5", "200K／64K", "1 美元／5 美元"],
     ["OpenAI", "gpt-5.4-mini", "400K／128K", "0.75 美元／4.50 美元"],
-    ["Google", "gemini-3.5-flash-lite", "官網未公布", "0.30 美元／2.50 美元"],
-    ["Google", "gemini-3.1-flash-lite", "官網未公布", "0.25 美元／1.50 美元"],
+    ["Google", "gemini-3.5-flash-lite", "1M／64K", "0.30 美元／2.50 美元"],
+    ["Google", "gemini-3.1-flash-lite", "1M／64K", "0.25 美元／1.50 美元"],
     ["阿里雲百鍊", "qwen3.8-flash", "1M／官網未公布", "0.15 美元／0.47 美元"],
-    ["Mistral", "Mistral Small 4", "官網未公布", "0.15 美元／0.60 美元"],
-    ["Z.AI", "GLM-5.3-Flash", "官網未公布", "0.15 美元／0.50 美元"],
+    ["Mistral", "Mistral Small 4", "26.2 萬／官網未公布", "0.15 美元／0.60 美元"],
+    ["Z.AI", "GLM-5.3-Flash", "1M／128K", "0.15 美元／0.50 美元"],
     ["OpenAI", "gpt-6-luna", "1.05M／128K", "0.10 美元／0.50 美元"],
-    ["Google", "gemini-2.5-flash-lite", "官網未公布", "0.10 美元／0.40 美元"],
-    ["Mistral", "Ministral 3（3B）", "官網未公布", "0.10 美元／0.10 美元"],
+    ["Google", "gemini-2.5-flash-lite", "1M／64K", "0.10 美元／0.40 美元"],
+    ["Mistral", "Ministral 3（3B）", "26.2 萬／官網未公布", "0.10 美元／0.10 美元"],
     ["OpenAI", "gpt-5-nano", "400K／128K", "0.05 美元／0.40 美元"],
 ]
 
@@ -75,7 +75,7 @@ disclosure = [
     ["Anthropic", "官網未列", "Claude Opus 5.5 66.4%", "註明 Opus 5.5 用 xhigh、GPT-6 Astra 用 high，標準誤差約正負 2.6 分"],
     ["xAI", "官網未列", "grok-4.7 37.6%", "註明 grok-4.7 用 xHigh 推理強度"],
     ["阿里雲百鍊（Qwen）", "Qwen3.8-Max 92.6%", "官網未列，列的是 2.1 版", "程式類用 Claude Code 測試框架、temperature 1.0、256K token 上下文"],
-    ["DeepSeek", "DeepSeek-V4.1-Flash 90.9%", "DeepSeek-V4.1-Flash 31.2%", "寫在 API 文件的更新紀錄，這一則沒有寫測試條件"],
+    ["DeepSeek（中階模型）", "DeepSeek-V4.1-Flash 90.9%", "DeepSeek-V4.1-Flash 31.2%", "寫在 API 文件的更新紀錄，這一則沒有寫測試條件"],
 ]
 
 OPEN_HEADER = ["廠商", "模型", "參數規模", "上下文視窗", "權重授權"]
@@ -120,7 +120,7 @@ blocks = [
     {"type": "paragraph", "text": "旗艦這一級最值得注意的不是誰最強，是這一級內部的價差。同樣掛著旗艦名字，最貴的每百萬輸出 token 要 50 美元，最便宜的 1.20 美元，中間差了四十倍以上。上下文視窗反而趨於一致，多數已經站上 100 萬 token。"},
     {"type": "table", "header": FLAGSHIP_HEADER, "rows": flagship,
      "caption": "十家官網 2026 年 10 月 6 日當天的標準價，未套用快取、批次與離峰折扣。分數為廠商自報、項目與測試條件各家不同，不可直接相減排名次。"},
-    {"type": "paragraph", "text": "有幾個欄位要小心讀。gemini-3.1-pro-preview 與 grok-4.7 的價格是 20 萬 token 以內的價，超過門檻兩欄都會往上跳；xAI 的釋出說明寫 grok-4.7 沒有文字輸出上限，所以那一格寫「無輸出上限」。MiniMax-M3 的上下文是 100 萬 token，但輸入超過 51.2 萬就改收另一段價。deepseek-v4-pro 寫的是尖峰價，離峰對折，而且官網的輸入價分「快取命中」與「快取未命中」兩欄，表上用的是未命中那一欄。kimi-k3 同樣有快取命中價，未命中是 3.00 美元、命中只要 0.30 美元。Mistral 的命名跟價位帶對不上：掛著 Large 的 Mistral Large 3 反而比掛著 Medium 的便宜。"},
+    {"type": "paragraph", "text": "有幾個欄位要小心讀。gemini-3.1-pro-preview 與 grok-4.7 的價格是 20 萬 token 以內的價，超過門檻兩欄都會往上跳；xAI 的釋出說明寫 grok-4.7 沒有文字輸出上限，所以那一格寫「無輸出上限」。MiniMax-M3 的上下文是 100 萬 token，但輸入超過 51.2 萬就改收另一段價。deepseek-v4-pro 寫的是尖峰價，離峰對折，而且官網的輸入價分「快取命中」與「快取未命中」兩欄，表上用的是未命中那一欄。kimi-k3 同樣有快取命中價，未命中是 3.00 美元、命中只要 0.30 美元。Mistral 的命名跟價位帶對不上：掛著 Large 的 Mistral Large 3 反而比掛著 Medium 的便宜。同一天 Mistral 的定價頁還把剛開放公開預覽的 Mistral Large 4 排在第一列，每百萬 token 輸入 0.68 美元、輸出 2.09 美元，上下文 100 萬 token；API 的 mistral-large-latest 仍指向 Large 3，表上照列 Large 3。"},
 
     {"type": "rich_paragraph", "inlines": [
         txt("這些欄位背後還有三件會改變帳單的事——快取命中價、長上下文加價門檻，以及各家 tokenizer 切出來的 token 數不一樣——寫在"),
@@ -161,7 +161,7 @@ blocks = [
     {"type": "heading", "level": 2, "text": "效能為什麼還是比不了：同一個 benchmark，各家跑法不同"},
     {"type": "paragraph", "text": "旗艦表的分數欄每一列放的項目都不一樣，這不是漏抄。2026 年 10 月 6 日逐一打開六家官網，GPQA Diamond 與 Terminal-Bench 4.0 這兩項各有四家列出，看起來好像可以比了；但兩項都沒有六家到齊，各家寫明的推理強度、測試框架與誤差範圍也不一樣，所以還是沒有一把尺能把它們排在一起。"},
     {"type": "table", "header": DISCLOSURE_HEADER, "rows": disclosure,
-     "caption": "2026 年 10 月 6 日各家官方發布頁、模型卡與 API 文件的揭露情況；「官網未列」指該廠商在表上這個模型的官方頁面沒有列這一項。"},
+     "caption": "2026 年 10 月 6 日各家官方發布頁、模型卡與 API 文件的揭露情況。DeepSeek 一列是中階表的 deepseek-flash（V4.1-Flash），旗艦表的 deepseek-v4-pro 這兩項都沒列；「官網未列」指該廠商在表上這個模型的官方頁面沒有列這一項。"},
     {"type": "image", "src": f"/guides/{SLUG}/diagram-1.svg",
      "alt": "左側四個方塊代表旗艦、中階、輕量與開放權重四個級距，四個方塊接到中間一條縱線後分成兩條箭頭，一條通往標示可比的規格欄位，一條通往標示不可比的效能欄位",
      "width": 1, "height": 1,
@@ -202,7 +202,7 @@ sources = [
     ("xAI 開發者文件：模型頁（grok-4.7 的上下文與每百萬 token 價）", "https://docs.x.ai/developers/models"),
     ("xAI Grok 4.7 發布頁（官方跑分表：Terminal-Bench 4.0 37.6%，xHigh 推理強度，未列 GPQA Diamond）", "https://x.ai/news/grok-4-7"),
     ("DeepSeek API 文件：模型與定價（快取命中與未命中、尖峰與離峰四欄價）", "https://api-docs.deepseek.com/quick_start/pricing/"),
-    ("Mistral 文件：定價頁（Large 3、Medium 3.5、Small 4 與 Ministral 3 的每百萬 token 價）", "https://docs.mistral.ai/inference/pricing"),
+    ("Mistral 文件：定價頁（Large 4、Large 3、Medium 3.5、Small 4 與 Ministral 3 的每百萬 token 價）", "https://docs.mistral.ai/inference/pricing"),
     ("阿里雲 Model Studio（百鍊）模型計費頁（qwen3.8-max、qwen3.7-plus、qwen3.8-flash 新加坡站美元價與上下文）", "https://www.alibabacloud.com/help/en/model-studio/model-pricing"),
     ("Qwen 官方 blog：Qwen3.8-Max（GPQA Diamond 92.6，程式類用 Claude Code 測試框架、temperature 1.0 與 256K 上下文）", "https://qwen.ai/blog?id=qwen3.8"),
     ("MiniMax API 文件：隨用隨付定價（MiniMax-M3 的永久五折價與 51.2 萬 token 分段）", "https://platform.minimax.io/docs/guides/pricing-paygo"),
