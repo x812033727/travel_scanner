@@ -1,7 +1,7 @@
 ---
 id: 2026-10-06-pictures-keep-best-after-prompt-fixes
 title: Pictures a model takes no style plate for are judged from the look's text, and a slides shot still failing after its prompt fixes keeps its best picture for the owner's final review
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: claude-fable-5-1-video-unstuck
