@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-speech-journal-releases-never-reached-502
 title: Imported-language speech journal lets a paid POST the route never sent go again
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-speech-journal-502
 claimed_at: 2026-10-05T23:41:35Z
 created_at: 2026-10-05T12:39:17Z
-completed_at:
+completed_at: 2026-10-06T00:00:40Z
 branch: claude/speech-journal-502
 depends_on:
   - 2026-10-05-speech-client-retries-paid-upstream-unavailable
@@ -109,4 +109,6 @@ first file.
   classification table passed on both versions. `docs/videos/imported-long-languages/runner.test.mjs`
   passed 43 of 44. Its one red, "replay saved raw WAV after consumer interruption", fails the same
   way on unchanged a9e4c3851. It most likely comes from the dub's own journal that #1302 added and
-  is filed as 2026-10-05-imported-language-runner-test-still-expects.
+  is filed as 2026-10-05-imported-language-runner-test-still-expects. After a rebase onto
+  d829b18dc (#1315, which adds speech/align to client.mjs but leaves this directory alone), the
+  three files together passed 122 of 123: journal 71, runner 43 of 44 (the same red) and client 8.

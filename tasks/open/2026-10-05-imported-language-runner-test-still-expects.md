@@ -65,7 +65,8 @@ so attach the output to the PR.
 - Found by claude-opus-5-5-speech-journal-502 while verifying
   2026-10-05-speech-journal-releases-never-reached-502. It was red the same way before that
   change. The baseline run of the three files above on unchanged a9e4c3851 code (Windows 11,
-  Node with node_modules linked) passed 110 of 111, and this test was the only failure.
+  Node with node_modules linked) passed 110 of 111, and this test was the only failure. It is
+  still the only failure after a rebase onto d829b18dc (#1315): 122 of 123 passed.
 - The directory is also the whole scope of the stale claim
   2026-09-29-resume-imported-long-video-languages (codex-video-stall-followthrough). Its branch
   was merged as PR #1210. Check it before claiming.
