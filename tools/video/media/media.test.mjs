@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 import { resolveLook } from "../core/drama.mjs";
 import { sandbox, tempDir } from "../core/fixtures/load.mjs";
 import { cached, forget, forgetJob, mediaKey, pendingJob, readCache, remember, rememberJob } from "./cache.mjs";
-import { AVOID, DEFAULT_IMAGE_PROMPT_LIMIT, IMAGE_PROMPT_LIMITS, MIN_SHOT_PROMPT_BUDGET, composeShotPrompt, imagePromptLimit, promptOverhead, shotPromptBudget } from "./prompt-budget.mjs";
+import { AVOID, DEFAULT_IMAGE_PROMPT_LIMIT, IMAGE_MODEL_VENDORS, IMAGE_PROMPT_LIMITS, MIN_SHOT_PROMPT_BUDGET, composeShotPrompt, imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "./prompt-budget.mjs";
 import { EXHAUSTED_CODES, MediaError, PART_BYTES, RETAKE_CODES, downloadFile, judge, locate, mediaStatus, putFile, runJob, scaleBox, stockFetch, stockSearch, submitClip, submitImage, waitForJob } from "./client.mjs";
 import { STAGES, exitFor, main, run, statusText } from "./cli.mjs";
 import { appendLedger, bookImport, bookJob, capProblem, importedTotals, ledgerTotals, readLedger, release, reserve, reservedEntries, savedTotals } from "./ledger.mjs";
@@ -615,4 +615,20 @@ test("a shot's prompt is composed under the image model's limit: corrections go 
   assert.equal(imagePromptLimit({ provider: "minimax", model: "image-01" }, {}), 1500);
   assert.equal(imagePromptLimit({ provider: "gemini", model: "flash" }, { limits: {} }), 4000);
   assert.equal(imagePromptLimit(null, undefined), 4000);
+});
+
+// The catalog the vendor table mirrors: every image model's id and vendor.
+const CATALOG_SOURCE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "apps", "api", "app", "video_media", "catalog.py");
+
+test("the vendor of an image model named by id alone is the catalog's, so the first draft hears the budget of the model that will draw it", () => {
+  const source = readFileSync(CATALOG_SOURCE, "utf8");
+  const images = Object.fromEntries([...source.matchAll(/MediaModel\(\s*"([^"]+)",\s*"([^"]+)",\s*"image",/g)].map((match) => [match[1], match[2]]));
+  assert.ok(Object.keys(images).length >= 3, "the catalog's image models were read");
+  assert.deepEqual(IMAGE_MODEL_VENDORS, images, "IMAGE_MODEL_VENDORS is catalog.py's image models");
+  assert.equal(imageModelVendor("image-01"), "minimax");
+  assert.equal(imageModelVendor("gemini-3.1-flash-image"), "gemini");
+  assert.equal(imageModelVendor("gemini-4-image-preview"), "gemini", "a Gemini id the table does not know yet reads as Gemini");
+  assert.equal(imageModelVendor("hailuo-image", "minimax"), "minimax", "an unknown id is the caller's fallback");
+  assert.equal(imageModelVendor(null), null);
+  assert.equal(imageModelVendor(""), null);
 });

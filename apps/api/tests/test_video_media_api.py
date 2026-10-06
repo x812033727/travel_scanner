@@ -137,6 +137,15 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
         "usd_per_image_2k": None,
     }
     assert body["image"]["configured"] and not body["models"]["clips"]["minimax"] == []
+    # The tool draws a style plate only for an image model that takes one (media/stages.mjs
+    # takesStyleReference): both Gemini image models do, MiniMax image-01 does not.
+    images = {
+        entry["value"]: entry["style_references"]
+        for vendor in body["models"]["images"].values()
+        for entry in vendor
+    }
+    assert images["gemini-3-pro-image"] == 1 and images["gemini-3.1-flash-image"] == 1
+    assert images["image-01"] == 0
     # The image choices say what a 2K picture costs, which is how the tool knows to ask for one.
     assert body["image"]["usd_per_image_2k"] == 0.134
     assert body["budgets"]["clip_seconds"] == {

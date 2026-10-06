@@ -1304,7 +1304,10 @@ export async function fixStoryPrompts(automation, state, kind, { targets = null,
   if (rounds >= STORY_PROMPT_FIX_ROUNDS) return automation.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`);
   const info = seriesInfo(automation, state);
   const plan = info.plan;
-  const common = { fix: { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote }, look: info.look, names: plan.names ?? [], cast: (plan.cast ?? []).map(({ id, role, appearance }) => ({ id, role, appearance })), image_notes: plan.image_notes ?? "", sensitivity: plan.sensitivity ?? "none", story_rules: STORY_RULES };
+  // The tightest budget among the targets that carry one (media/keyframes.mjs prompt_budget_chars,
+  // as flow.mjs fixPrompts sends it); each target keeps its own.
+  const budgets = found.map((target) => target.prompt_budget_chars).filter((value) => typeof value === "number");
+  const common = { fix: { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote, ...(budgets.length ? { prompt_budget_chars: Math.min(...budgets) } : {}) }, look: info.look, names: plan.names ?? [], cast: (plan.cast ?? []).map(({ id, role, appearance }) => ({ id, role, appearance })), image_notes: plan.image_notes ?? "", sensitivity: plan.sensitivity ?? "none", story_rules: STORY_RULES };
   let line;
   if (kind === "look") {
     const wanted = new Set(found.map((target) => target.id));

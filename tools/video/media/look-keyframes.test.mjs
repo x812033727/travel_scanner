@@ -1348,8 +1348,9 @@ test("a slides shot whose prompt cannot fit MiniMax's limit beside the look is n
   // The dry run names each shot's budget and the shots over it.
   const dry = context(box, site.fetchImpl);
   assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
-  assert.match(dry.out.stdout, new RegExp(`podium: .*\\n  references: style plate\\n  prompt budget: 900 of ${podiumBudget} characters OVER BUDGET for minimax: shorten the prompt\\n`));
-  assert.match(dry.out.stdout, /desk: .*\n  references: style plate\n  prompt budget: 300 of \d+ characters\n/);
+  // image-01 takes no style reference, so no plate is drawn for it (the test below).
+  assert.match(dry.out.stdout, new RegExp(`podium: .*\\n  references: none\\n  prompt budget: 900 of ${podiumBudget} characters OVER BUDGET for minimax: shorten the prompt\\n`));
+  assert.match(dry.out.stdout, /desk: .*\n  references: none\n  prompt budget: 300 of \d+ characters\n/);
   assert.match(dry.out.stdout, /1 shots over the minimax prompt budget \(limit 1500 less the look's style, the camera and the avoidance text\) would not be drawn: podium\n/);
   assert.match(dry.out.stdout, /server: minimax image-01 ready/);
   assert.equal(site.state.images.length, 0);
@@ -1362,9 +1363,9 @@ test("a slides shot whose prompt cannot fit MiniMax's limit beside the look is n
   assert.match(run.out.stdout, new RegExp(`podium: not drawn: prompt is 900 characters; the minimax budget for this shot is ${podiumBudget} `));
   assert.match(run.out.stdout, new RegExp(`ERROR podium: prompt is 900 characters; the minimax budget for this shot is ${podiumBudget} \\(style, camera and avoidance text take the rest\\) → shorten the prompt to at most ${podiumBudget} characters\\n`));
   assert.match(run.out.stdout, /fix the prompts of desk, podium and run keyframes again|fix the prompts of podium, desk and run keyframes again/);
-  // Every request sent, the plate's and the retakes with corrections among them, was shorter than
-  // 1500 with the avoidance text the server appends: nothing for the vendor to refuse.
-  assert.ok(site.state.images.length >= 6, "the plate, the desk three times and the three other shots");
+  // Every request sent, the retakes with corrections among them, was shorter than 1500 with the
+  // avoidance text the server appends: nothing for the vendor to refuse.
+  assert.ok(site.state.images.length >= 6, "the desk three times and the three other shots");
   for (const request of site.state.images) assert.ok(request.prompt.length + AVOID.length + request.negative_prompt.length < 1500, `${request.shot_id} seed ${request.seed}: ${request.prompt.length} characters`);
   const deskRequests = site.state.images.filter((request) => request.shot_id === "desk");
   assert.deepEqual(deskRequests.map((request) => request.seed), [1, 2, 3]);
@@ -1397,4 +1398,151 @@ test("a slides shot whose prompt cannot fit MiniMax's limit beside the look is n
   assert.equal(after.shots.podium.needs_review, false);
   assert.equal(after.shots.podium.prompt_budget_chars, podiumBudget);
   assert.equal(after.shots.desk.needs_review, false);
+});
+
+test("an image model that takes no style reference is drawn no style plate: image-01's pictures go without one and are judged on the look's text, while a Gemini model keeps its plate", async () => {
+  const { illustratedFixture } = await import("../core/fixtures/load.mjs");
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const site = mediaSite({ status: MINIMAX_SLIDES_STATUS, verdicts: () => ({ overall: 8, passed: true }) });
+  const dry = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
+  assert.match(dry.out.stdout, /keyframes for 5 shots \(0 end frames\), up to 3 takes each\nstyle plate: skipped; minimax\/image-01 takes no style reference, the style is judged from the look's text\n/);
+  assert.match(dry.out.stdout, /podium: .*\n  references: none\n/);
+  assert.equal(site.state.images.length, 0);
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.match(run.out.stdout, /style plate: skipped; minimax\/image-01 takes no style reference, the style is judged from the look's text\n/);
+  const shots = illustratedFixture().scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
+  assert.deepEqual(site.state.images.map((request) => request.shot_id), shots, "no plate request before the shots");
+  assert.ok(site.state.images.every((request) => request.purpose === "keyframe" && request.references.length === 0), "nothing goes with a shot that the model would not read");
+  assert.ok(!existsSync(path.join(box.workdir, "keyframes", "plate.json")));
+  assert.equal(site.state.judges.length, shots.length);
+  for (const request of site.state.judges) {
+    assert.deepEqual(request.files.map((each) => each.label), ["keyframe"], "no plate for the judge either");
+    assert.match(request.rubric.find((item) => item.key === "style").question, /style description in the context/);
+  }
+  const manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.plate, undefined);
+  assert.deepEqual(manifest.image, { provider: "minimax", model: "image-01" });
+  assert.equal(readLedger(box.workdir).totals.images, shots.length, "no plate paid for");
+  // The catalog's word decides, not the vendor: a Gemini model it lists with none draws no plate
+  // either, and a server from before the field is read by its vendor (stages.mjs takesStyleReference).
+  const flashWithout = { ...SLIDES_STATUS, models: { ...SLIDES_STATUS.models, images: { gemini: SLIDES_STATUS.models.images.gemini.map((entry) => (entry.value === FLASH_MODEL ? { ...entry, style_references: 0 } : entry)) } } };
+  const without = context(sandbox("fixture-illustrated", "illustrated"), mediaSite({ status: flashWithout, verdicts: () => ({ overall: 8, passed: true }) }).fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], without.ctx), EXIT.ok, without.out.stderr);
+  assert.match(without.out.stdout, /up to 3 takes each\nstyle plate: skipped; gemini\/gemini-3\.1-flash-image takes no style reference/);
+  const before = context(sandbox("fixture-illustrated", "illustrated"), mediaSite({ status: SLIDES_STATUS, verdicts: () => ({ overall: 8, passed: true }) }).fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], before.ctx), EXIT.ok, before.out.stderr);
+  assert.match(before.out.stdout, /up to 3 takes each, after one style plate\n/, "a Gemini model on a server that does not say still draws its plate");
+  assert.doesNotMatch(before.out.stdout, /style plate: skipped/);
+});
+
+test("--accept-best keeps the judge's best take of a shot still failing after its prompt fixes, marked 保留 on the sheet; a rerun leaves it, a rewritten prompt is judged anew, and a shot with no picture cannot be kept", async () => {
+  const { keyframeProblems, loadProject } = await import("../core/state.mjs");
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const file = path.join(box.dir, "video.json");
+  const doc = readJson(file);
+  const podium = doc.scenes.find((scene) => scene.id === "podium");
+  const desk = doc.scenes.find((scene) => scene.id === "desk");
+  // The podium cannot be drawn at all (over the budget); the desk fails every take on one fault.
+  podium.data.prompt = promptOf(900);
+  writeFileSync(file, JSON.stringify(doc));
+  const DESK_PROBLEMS = [`awkward: the hand holds the cup wrong${FIX_ARROW}the hand resting flat on the desk`];
+  const site = mediaSite({ status: MINIMAX_SLIDES_STATUS, verdicts: (kind, request) => (request.context.shot.id === "desk" ? { overall: 5, passed: false, problems: DESK_PROBLEMS } : { overall: 8, passed: true }) });
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.lint, run.out.stderr);
+  const before = manifestOf(box, "keyframes");
+  assert.equal(before.shots.desk.needs_review, true);
+  assert.ok(before.shots.desk.file && before.shots.desk.takes.length === 3);
+  assert.equal(before.shots.podium.file, undefined);
+  const project = () => loadProject({ slug: box.slug, root: box.root });
+  assert.equal((await keyframeProblems({ doc: project().doc, manifest: before, workdir: box.workdir })).join("; "), "podium keyframe needs review; podium has no selected picture; desk keyframe needs review");
+  const drawn = site.state.images.length;
+
+  // The desk is kept with its remarks; the podium, with no picture, is refused and still waits for a prompt.
+  let sheetHtml = null;
+  const accept = context(box, site.fetchImpl, { openRenderer: async () => ({ sheet: async (html) => { sheetHtml = html; return PNG("sheet"); }, close: async () => {} }) });
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "desk,podium"], accept.ctx), EXIT.lint, accept.out.stderr);
+  assert.match(accept.out.stdout, /desk: kept with the judge's remarks \(judge 5\/10\): awkward: the hand holds the cup wrong → the hand resting flat on the desk\n/);
+  assert.match(accept.out.stdout, /ERROR podium: no picture to keep \(prompt is 900 characters; the minimax budget for this shot is \d+/);
+  assert.match(accept.out.stdout, /1 pictures kept with the judge's remarks \(desk\); the final cut goes to the owner\nfix the prompts of podium and run keyframes again/);
+  assert.equal(site.state.images.length, drawn, "nothing is drawn or judged");
+  const after = manifestOf(box, "keyframes");
+  assert.equal(after.shots.desk.needs_review, false);
+  assert.deepEqual(after.shots.desk.accepted_with_problems, DESK_PROBLEMS);
+  assert.deepEqual(after.shots.desk.judge, before.shots.desk.judge, "the verdict stays as it was");
+  assert.deepEqual(after.shots.desk.takes, before.shots.desk.takes);
+  assert.deepEqual([after.shots.desk.file, after.shots.desk.sha256], [before.shots.desk.file, before.shots.desk.sha256]);
+  assert.equal(after.shots.desk.problems, undefined, "the problems moved: an entry's problems are what a prompt fix starts from");
+  assert.equal(after.shots.desk.fixes, undefined);
+  assert.deepEqual(after.shots.podium, before.shots.podium, "a refused shot is left as it was");
+  assert.equal(after.shots.clock.accepted_with_problems, undefined, "a shot that passed is not marked");
+  assert.ok(existsSync(path.join(box.workdir, after.contact_sheet)));
+  assert.match(sheetHtml, /desk · 5\/10 · 保留/);
+  assert.match(sheetHtml, /clock · 8\/10</);
+  assert.doesNotMatch(sheetHtml, /待修/);
+  assert.equal((await keyframeProblems({ doc: project().doc, manifest: after, workdir: box.workdir })).join("; "), "podium keyframe needs review; podium has no selected picture", "the kept desk is no review need");
+
+  // The podium shortened: it is drawn, the kept desk is left as it is, and the stage passes.
+  podium.data.prompt = promptOf(200);
+  writeFileSync(file, JSON.stringify(doc));
+  const again = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.match(again.out.stdout, /desk: kept \(judge 5\/10\)\n/);
+  assert.deepEqual(site.state.images.slice(drawn).map((request) => request.shot_id), ["podium"]);
+  const passed = manifestOf(box, "keyframes");
+  assert.deepEqual(passed.shots.desk.accepted_with_problems, DESK_PROBLEMS);
+  assert.equal(passed.shots.desk.needs_review, false);
+  assert.deepEqual(await keyframeProblems({ doc: project().doc, manifest: passed, workdir: box.workdir }), []);
+  assert.match(again.out.stdout, /next: node tools\/video\/cli\.mjs review-push --slug .* --gate storyboard/);
+  // Nothing waits: there is nothing to keep, and a kept shot is said so.
+  const nothing = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "desk"], nothing.ctx), EXIT.ok, nothing.out.stderr);
+  assert.match(nothing.out.stdout, /desk: already kept; nothing to keep\n0 pictures kept/);
+
+  // A rewritten desk prompt is a new picture, judged anew: kept no longer.
+  desk.data.prompt = promptOf(240);
+  writeFileSync(file, JSON.stringify(doc));
+  const rewritten = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], rewritten.ctx), EXIT.lint, rewritten.out.stderr);
+  const redrawn = manifestOf(box, "keyframes");
+  assert.equal(redrawn.shots.desk.needs_review, true);
+  assert.equal(redrawn.shots.desk.accepted_with_problems, undefined);
+  assert.deepEqual(redrawn.shots.desk.problems, DESK_PROBLEMS);
+  // A manifest drawn for other pictures cannot have its shots kept: the pictures come first.
+  desk.data.prompt = promptOf(250);
+  writeFileSync(file, JSON.stringify(doc));
+  const stale = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "desk"], stale.ctx), EXIT.usage);
+  assert.match(stale.out.stderr, /keyframes\/manifest\.json was drawn for another look or other pictures; run keyframes first/);
+  assert.equal(manifestOf(box, "keyframes").shots.desk.needs_review, true, "nothing written");
+});
+
+test("a shot whose prompt stops fitting the image model's budget keeps its earlier takes on record beside the note", async () => {
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const file = path.join(box.dir, "video.json");
+  const doc = readJson(file);
+  const desk = doc.scenes.find((scene) => scene.id === "desk");
+  desk.data.prompt = promptOf(700);
+  writeFileSync(file, JSON.stringify(doc));
+  const verdicts = (kind, request) => (request.context.shot.id === "desk" ? { overall: 4, passed: false, problems: [`details: the cup is missing${FIX_ARROW}a cup on the desk`] } : { overall: 8, passed: true });
+  // A server that reported the vendor's limit as the field's: the desk fits, and fails every take.
+  const wide = mediaSite({ status: { ...MINIMAX_SLIDES_STATUS, limits: { image_prompt_chars: 4000, image_prompt_chars_minimax: 4000 } }, verdicts });
+  const first = context(box, wide.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], first.ctx), EXIT.lint, first.out.stderr);
+  const before = manifestOf(box, "keyframes");
+  assert.equal(before.shots.desk.takes.length, 3);
+  assert.equal(before.shots.desk.needs_review, true);
+  // The server now says what image-01 refuses: the same prompt is over the budget, and is not sent.
+  const narrow = mediaSite({ status: MINIMAX_SLIDES_STATUS, verdicts });
+  const second = context(box, narrow.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], second.ctx), EXIT.lint, second.out.stderr);
+  assert.ok(!narrow.state.images.some((request) => request.shot_id === "desk"), "not sent");
+  const after = manifestOf(box, "keyframes");
+  assert.deepEqual(after.shots.desk.takes, before.shots.desk.takes, "the takes of this very prompt stay on record");
+  assert.equal(after.shots.desk.needs_review, true);
+  assert.equal(after.shots.desk.file, undefined, "none of them is selected: the shot has no picture");
+  assert.ok(after.shots.desk.prompt_budget_chars < 700);
+  assert.match(after.shots.desk.problems.join("; "), /^prompt is 700 characters; the minimax budget for this shot is \d+ /);
+  assert.equal(after.shots.desk.problems.length, 1);
 });
