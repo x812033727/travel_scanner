@@ -66,7 +66,7 @@
 - 四個以上已定角色同框（盟堂、殿階）時，`characters` 列這一鏡最要緊的三個，其他人寫進 prompt 當遠景小人物（例：`in the far background at the right end of the landing, a broad monk in a gilded lotus crown stands with a lean swordsman behind him`）。
 - `data.character_looks`（被選 look 的角色必須在同一鏡的 `characters` 裡）：
   - `liu-buhuo`：**每一鏡**都用 `{"liu-buhuo":"liu-defected"}`（押解牌已折、腰間沒有牌、領口露一角繃帶）。
-  - `zhuxu`：基本外觀寫死了 `a cloth-wrapped bundle on his back`，所以基本外觀**只用到他把布包從背上卸下來的那一鏡為止**（第四幕西路全場，以及廢窯從第一鏡到第 3 點「把布包從背上卸到身前」那一鏡）。**從下一鏡起，凡是 `characters` 列了 `zhuxu` 的鏡頭，一律 `{"zhuxu":"zhuxu-returned"}`**（背上沒有東西），一直到全集結束。
+  - `zhuxu`：基本外觀寫死了 `a cloth-wrapped bundle on his back`，所以基本外觀**只用到他把布包從背上卸下來的那一鏡為止**（第四幕西路全場，以及廢窯從第一鏡到第 3 點「把布包從背上卸到身前」那一鏡）。**從下一鏡起，凡是 `characters` 列了 `zhuxu` 的鏡頭，一律 `{"zhuxu":"zhuxu-returned"}`**（背上沒有東西），**到 a05-s016 卸劍那一鏡為止**（那一鏡的首格劍還在左腰）。**a05-s017 起改用 `{"zhuxu":"zhuxu-disarmed"}`**（背上沒有東西、左腰只剩深綠腰帶），一直到全集結束：`zhuxu-returned` 的外觀寫死了左腰的劍，卸劍之後還用它，設定圖會把劍畫回腰上。
   - 其他人一律基本外觀：姬無霜**不用** `wushuang-armed`（帳中的弓與箭囊寫成架上的道具）；寂聞不用 `jiwen-struck`／`jiwen-sealed`；殷無聲不用 `yin-cut-hair`；包三錢不用 `bao-soaked`／`bao-chilled`。
   - 只拍局部的插鏡（手、袖、靴、胸口、腳、頸側）不列角色；印泥、藥丸、樣鐵、血帕、通緝令直接寫進 prompt（她的手背本集不露，見第八節）。
 - 卡片：`{"id":"a01-s009","template":"title","data":{"title":"…","subtitle":"…","tag":"…"},"lines":[{"speaker":"narrator","text":"…"}]}`。卡片一定要有台詞，否則長度為零會被跳過。本集只有片名卡一張卡片。
@@ -377,7 +377,7 @@
 
 章名：`不還手`（a05-s001）、`奉還`（殿階第一鏡）。
 細綱 high_tension second_half 的後半與 cliffhanger 都在這一幕。
-竹虛全幕 `zhuxu-returned`；從第 1 段第 7 點那一槍起，他每一鏡的 prompt 都加 `a thin red scratch on the right side of his neck`，到全集結束。
+竹虛 a05-s016 卸劍那一鏡為止用 `zhuxu-returned`，下一鏡（a05-s017）起用 `zhuxu-disarmed`（左腰沒有劍，見第二節）；從第 1 段第 7 點那一槍起，他每一鏡的 prompt 都加 `a thin red scratch on the right side of his neck`，到全集結束。
 
 **1. 齊雲殿外・不還手（第 22 日清晨；約 88 秒、約 28 鏡）**
 - 出場：Zhuxu、Yan；群眾：燕迴帶的十來名盟府追兵（不說話）。

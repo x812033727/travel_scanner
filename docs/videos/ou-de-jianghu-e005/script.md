@@ -854,14 +854,14 @@
 
 #### 154. a02-s061
 
-無台詞動作（3 秒）：The back of Yin's head and neck seen from behind and to one side, the plain iron ring binding his black hair high, the long tail of hair below it hanging down the charcoal robe, his left hand in its tight-bound sleeve closing on the tail just under the ring; grey-blue dawn light from the right
-動作：Yin's left hand draws the long tail of hair below the iron ring forward over his left shoulder
+無台詞動作（3 秒）：The back of Yin's head and neck seen from behind and to one side, the plain iron ring binding his black hair high, the long tail of hair below it hanging down the charcoal robe, his left hand in its tight-bound sleeve closing on the tail at the level of his shoulder, a forearm's length below the ring; grey-blue dawn light from the right
+動作：Yin's left hand draws the lower length of the hair tail forward over his left shoulder
 
 
 #### 155. a02-s062
 
-無台詞動作（3 秒）：The bare steel of the straight sword held flat in Yin's right hand, its edge laid against the gathered tail of black hair just below the plain iron ring, his left hand holding the hair taut before his shoulder, the tight-bound charcoal sleeves; grey-blue dawn light from the right glinting on the edge
-動作：The sword edge slices through the gathered hair just below the iron ring and the cut tail drops loose in his left hand
+無台詞動作（3 秒）：The bare steel of the straight sword held flat in Yin's right hand, its edge laid across the gathered tail at shoulder height, well below the plain iron ring, his left hand holding the hair taut before his shoulder, the tight-bound charcoal sleeves; grey-blue dawn light from the right glinting on the edge
+動作：The sword edge slices through the gathered tail at shoulder height and the cut lower length drops loose in his left hand
 
 
 #### 156. a02-s063
@@ -1163,7 +1163,7 @@
 
 #### 214. a03-s029
 
-無台詞動作（1 秒）：In the dim doorway: Liu's left grey sleeve hanging at his side, the hand drawn up inside it pressing a folded paper against the forearm so that one corner bulges under the cloth, the small sealed wine gourd stoppered with wax tied at his belt beside it; pale light from the courtyard at the left, the room dark behind
+無台詞動作（1 秒）：In the dim doorway: Liu's ink-stained right sleeve hanging at his side, the right hand drawn up inside it pressing a folded paper against the forearm so that one corner bulges under the cloth, the small sealed wine gourd stoppered with wax tied at his belt beside it; pale light from the courtyard at the left, the room dark behind
 動作：The hand inside the sleeve presses the folded paper flat against the forearm
 
 
@@ -1458,7 +1458,7 @@
 
 #### 277. a03-s092
 
-無台詞動作（2 秒）：Close on Liu's left grey sleeve, held open a little by his right hand with its ink-stained cuff under cold blue moonlight: inside it his thin fingers on a folded scrap of yellowed paper with three small ink marks: a slanted stroke, a small ring and a curling hook, the small ring circled twice in fresh ink; the dark lane behind
+無台詞動作（2 秒）：Close on Liu's ink-stained right cuff under cold blue moonlight, his right hand half drawn up inside it, his thin fingers on a folded scrap of yellowed paper with three small ink marks: a slanted stroke, a small ring and a curling hook, the small ring circled twice in fresh ink; the dark lane behind
 動作：His thumb stops on the small ring that is circled twice
 
 
@@ -1691,8 +1691,8 @@
 
 #### 320. a04-s043
 
-無台詞動作（3 秒）：Shen's right hand resting on his knee holding one folded white paper fan with white jade ribs, the fan half turned between his fingers, the white silk robe embroidered with silver cranes beneath, the dark edge of the council table above; afternoon daylight from the high windows at the upper left
-動作：The folded fan turning between his fingers stops dead in his palm
+無台詞動作（3 秒）：Shen's right hand resting on his knee holding one folded white paper fan with white jade ribs, his fingers loose around it, the white silk robe embroidered with silver cranes beneath, the dark edge of the council table above; afternoon daylight from the high windows at the upper left
+動作：Shen's fingers close tighter around the folded fan, one knuckle at a time
 
 
 #### 321. a04-s044
@@ -2149,7 +2149,7 @@
 
 #### 406. a05-s037
 
-無台詞動作（2 秒）：Liu's right hand half inside the mouth of his grey left sleeve at frame centre, the worn embroidered border, the ink-stained right cuff, a small fold of yellowed paper showing only as a bulge under the cloth, the gangplank boards beneath; morning light from the left
+無台詞動作（2 秒）：Liu's right hand half inside its own ink-stained right sleeve at frame centre, the worn embroidered border, a small fold of yellowed paper showing only as a bulge under the cloth, the gangplank boards beneath; morning light from the left
 動作：The hand slips back out of the sleeve empty, dropping to his side
 
 
@@ -2271,7 +2271,7 @@
 #### 428. a05-s059
 
 無台詞動作（2 秒）：The stern of the foremost grey-sailed transport ship at sea in the morning: Liu at the stern rail facing left, looking back toward the cloud-wrapped mountain hall shrinking on its mountain far off at the left, the grey sail above him, a small sealed wine gourd stoppered with wax, tied at his belt, the ink stains on his right cuff, the edge of white bandage at his collar; morning light from the upper left behind the mountain backlighting him, his face half in shadow, the sea bright
-動作：Liu presses his right hand once against the mouth of his left sleeve
+動作：Liu presses his left hand once against his right sleeve over the hidden paper
 
 
 #### 429. a05-s060
@@ -2465,5 +2465,5 @@
 動作：The oil lamp flame wavers once before standing straight again
 
 
-narrative 7b7e40eec240cfea
+narrative 72eb9e17e345bb55
 speech 9536e7cc62d0fd82

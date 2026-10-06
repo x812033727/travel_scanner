@@ -1,0 +1,34 @@
+{
+ "checks": "第 1 輪驗收（對 review-findings.json 的修訂）。node check-act.mjs --all --craft：463 個 scene（461 鏡＋2 卡），SCHEMA 0、LINT 錯誤 0，警告 3 條（still 做成動畫關鍵影格、about 23.5 minutes、runtime_spec 1409.0 秒，都是預期內）；opening chapter 的警告已消失（書齋@30）。各幕 a01 274.7、a02 287.9、a03 282.9、a04 279.9、a05 283.6，都在 281±10；總長 1409.0 秒，在 1,390–1,418 內。craft 24/24 達標，SHOT READING 陷阱 0。腳本核對：分場表第七節必留 453 段逐字都在（含冷開場、片名卡、前情、詩號）；speaker 只有 narrator 與十一個角色，殷無聲 0 句，沈歸鶴最後一句在 a01-s058；characters 沒有超過 3 人；character_looks 都在同鏡 characters 裡，shen-guihe 到 a01-s079 為基本外觀、之後 shen-bedridden，ji-wen／yin-wusheng／liu-buhuo 的 look 全對、ji-wushuang 全集基本外觀；同運鏡連續最多 1；prompt／motion／camera 沒有雙引號與中文字；鏡號各幕連號；禁字只剩必留（元神、化身、影子、印子三次、箭只在前情與 a01／a02 必留、兒子只在最後一句、幽皇只在 a03-s083），藥 0、一粒只在 a01 兩次；無名劍客 28 行、22 句、每個「」最多 7 字；章名十三章位置與文字都對。第 1 輪八條裡第 1、2、3、4、6、7、8 條已修好：a01-s001/s002/s005、a02-s073、a03-s088、a04-s014/s015/s032/s039 秒數照改，a04-s005 改成無台詞反應鏡，a04-s037 只留「有沒有第二瓶？」，a05-s016 拿掉兩句；a04-s040 prompt 換成案上三樣；a01 卸冠前 36 鏡都加了 no fan on him，a01-s013/s014 加了 only fan 那句；a04-s055–s058、a04-s068 的光照改；姬無霜十個背面鏡都加了髮蓋頸後；a05-s087 手留在絹上。剩下的與新發現的列在 findings。",
+ "findings": [
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s060"
+   ],
+   "problem": "第 1 輪第五條沒有修：洛青衍詩號定格鏡的 camera 仍是 slow push in，分場表第五節寫死定格是 Full shot, low angle, locked。定格要做成 still、上面念兩句旁白再接字卡，推鏡會讓這一格一直在動。",
+   "evidence": "a02-s060 camera「Full shot, low angle, slow push in」、visual: still；分場表第五節第 1 點：camera: Full shot, low angle, locked。review-findings.json 第五條 fix 要求改成 locked。",
+   "fix": "a02-s060 的 camera 改成 Full shot, low angle, locked；prompt、motion、旁白都不動。",
+   "resolution": "主控裁定（2026-10-06，同第 5 集 a01-s027）：詩號／招式定格鏡一律 slow push in。visual: still 加 locked 會被 shot_reading.mjs 判成陷阱 still.locked，而本票要 0 陷阱；第 1–5 集所有定格鏡都是 slow push in。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a04-s037"
+   ],
+   "problem": "第 1 輪把這一鏡的台詞刪到只剩「有沒有第二瓶？」，這一鏡的動作現在只靠 motion，可是 prompt 的首格已經是動作做完的樣子：瓶子已經舉在臉頰旁，motion 又寫把瓶子舉到臉頰旁，生出來的片段會沒有動作（或先放下再舉）。修訂前就有，第 1 輪沒列。",
+   "evidence": "a04-s037 prompt「the small celadon bottle held up beside his cheek」；motion「Bao raises the empty bottle up beside his cheek for her to see」。前一鏡 a04-s036 是插鏡，瓶子倒拿在手裡、軟木塞在另一隻手；後一鏡 a04-s038 motion「Bao tucks the empty celadon bottle into the breast of his patched robe」。",
+   "fix": "a04-s037 prompt 的 the small celadon bottle held up beside his cheek 改成 the small celadon bottle in his right hand at chest height；motion、台詞、秒數不動。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s079",
+    "a05-s050"
+   ],
+   "problem": "第 1 輪第七條只補了列出的十鏡；同一類還有兩鏡：姬無霜背著或半背著鏡頭往畫面左後的兵器架走，characters 列了 ji-wushuang（基本外觀寫死頸後有月牙胎記），prompt 卻沒寫髮蓋住頸後。a03-s004 同樣是她背對鏡頭走開的全景，已經補了這一句，這兩鏡沒補，寫法不一致；分場表「本集不拍姬無霜的頸後」。",
+   "evidence": "a02-s079 motion「Wushuang walks across the tent behind Liu to the weapon rack at the left」，prompt 只寫 Wushuang by the door flap at the right；a05-s050 prompt「Wushuang standing beside the right side of the low desk, turned toward the weapon rack at the left rear」、motion「Wushuang walks three steps around the desk toward the weapon rack at the left rear」。對照 a03-s004「her loose silver-white hair covering the back of her neck」。",
+   "fix": "兩鏡在描述姬無霜的地方加上 her loose silver-white hair covering the back of her neck；構圖、motion、秒數不動。"
+  }
+ ]
+}
