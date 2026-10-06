@@ -67,3 +67,43 @@ caption 已註明。xAI 的 25%（0.50／2.00）與 16%（0.20／1.25）是全�
   2026-09-17 回 HTTP 503，讀不到，因此這篇沒有列阿里雲的快取價。下次更新時再試。
 - Mistral 與 Z.AI 的快取價當天沒有查（這篇的表以已確認的七家為準），不是「沒有」而是「沒查」，
   下次要補的話從它們的定價頁開始。
+
+## 2026-10-06 重查（票 2026-10-05-multi-vendor-ai-price-pages-late）
+
+上面 9 月 17 日的段落保留不動。這一段是 2026-10-06 重開每個來源讀到的數字，`sources` 的
+`checked_on` 全部換成這一天。`developers.openai.com` 與 `platform.claude.com` 加 `.md` 讀完整表格。
+
+### 快取命中價（換掉的列）
+
+- OpenAI：gpt-6-astra 1.00（10%）、gpt-6.1-sol 0.10（**5%**，模型頁寫「Cached input tokens are priced at
+  5% of the uncached input token rate」）、gpt-6-luna 0.01（10%）、gpt-5.4-mini 0.075、gpt-5-nano 0.005。
+  gpt-5.6-terra／luna 換成 GPT-6 家族（5.6 系列仍在定價頁，但模型頁的推薦已換代）
+  ｜https://developers.openai.com/api/docs/pricing.md｜2026-10-06
+- Anthropic：命中倍率表多一個例外「0.05x on Claude Opus 5.5」。Opus 5.5 4 美元、命中 0.20；
+  Sonnet 5.5 2 美元、命中 0.20；Fable 5.1 命中 0.25；Haiku 4.5 命中 0.10。寫入倍率與回本說明不變
+  ｜https://platform.claude.com/docs/en/about-claude/pricing.md｜2026-10-06
+- xAI：grok-4.7 0.50（<20 萬）／1.00（≥20 萬），與 grok-4.6 相同；grok-4.3 0.20／0.40
+  ｜https://docs.x.ai/developers/pricing.md｜2026-10-06
+- Google、DeepSeek、MiniMax、Moonshot：數字與 9/17 相同（各自定價頁 2026-10-06 重讀）。
+- **新增兩家**（9/17 沒查的）：Mistral 定價頁現在把快取輸入另列一欄，Medium 3.5 是 0.15（原價 1.50 的 10%）
+  ｜https://docs.mistral.ai/inference/pricing（`mistral.ai/pricing/api/` 轉址到這裡）｜2026-10-06；
+  Z.AI GLM-5.3 快取輸入 0.26、原價 1.4，0.26／1.4 = 18.6%，表上四捨五入成 19%
+  ｜https://docs.z.ai/guides/overview/pricing｜2026-10-06。
+- 阿里雲百鍊這次讀得到（不再 503），但頁面只在總說明裡舉例「explicit cache creation is billed at 125% … cache hits
+  at 10%」，各型號的快取價要另開 Context Cache 頁，這次沒有加進表。
+
+### 長上下文門檻
+
+- **OpenAI 現在有寫門檻**：定價頁「Short context: ≤272K input tokens. Long context: >272K input tokens.」；
+  gpt-6-astra 模型頁「Prompts with more than 272K input tokens are priced at 2x input and cache rates and 1.5x
+  output for the full request.」所以表上那一列改成 27.2 萬輸入 token、整筆請求改價，正文把 OpenAI 和 xAI
+  並列為整筆改價的兩家｜https://developers.openai.com/api/docs/models/gpt-6-astra.md｜2026-10-06
+- xAI 規則原文仍是「requests whose prompt reaches the listed token threshold are billed at the higher rate for all
+  tokens in the request」，grok-4.7 輸入 2.00 → 4.00、輸出 6.00 → 12.00。
+- Anthropic、Google、MiniMax 三列不變。
+
+### 做法
+
+`build_pack.py` 改完後跑 ingest（`pack_cli --public-dir <scratch> ingest ...`，讓已提交的圖不被重新渲染），
+`topics` 直接帶 `ai-plans`：ingest 已經接受這個子主題，`reingest.sh` 的拿掉再補回步驟一併刪掉。
+圖解的 `<desc>` 由 `build_pack.py` 讀 `diagram-1.svg` 帶進 image block 的 `description`，重跑 ingest 不會再把它洗掉。
