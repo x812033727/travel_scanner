@@ -42,9 +42,15 @@ const OWNER_CODES = new Set([
   "video_media_locate_unavailable",
   // No Pexels or Pixabay key on the site yet (docs/videos/ILLUSTRATED.md §圖庫照片).
   "video_media_stock_unavailable",
-  // The same payload exhausted the server's attempts; another round cannot fix it.
-  "video_media_job_exhausted",
 ]);
+// The same request (its hash: prompt, seed, references, model) failed the server's attempts
+// (apps/api/app/video_media/jobs.py MAX_ATTEMPTS), and the server refuses it with 409 until
+// the request changes. Not a seed retake in the sense of RETAKE_CODES (no job ran; no vendor
+// said anything), yet what fixes it is another seed or another prompt: keyframes.mjs moves to
+// the next seed, and an owner retry on /admin/videos shifts every seed (--seed-offset). Where a
+// stage lets it escape, it still exits 3 and parks that video alone: exit 4 would end the whole
+// run on it every round, in front of the videos behind it.
+export const EXHAUSTED_CODES = new Set(["video_media_job_exhausted"]);
 // video_media_invalid: locate was sent something that is not a picture (a clip); the tool extracts a frame first.
 // video_media_stock_not_found: the vendor has no photo under the id the tool asked for; pick another candidate.
 const TOOL_CODES = new Set(["video_media_reference_missing", "video_media_reference_too_large", "video_media_route_unknown", "video_media_bad_part", "video_media_hash_mismatch", "video_media_invalid", "video_media_stock_not_found"]);
@@ -84,7 +90,7 @@ async function call({ site, token, path: route, init, fetchImpl, sleep, attempts
     if (response.ok) return response;
     const problem = await problemOf(response);
     const message = problem.detail || `HTTP ${response.status}`;
-    if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new MediaError(message, { status: response.status, code: problem.code, who: "owner" });
+    if (response.status === 401 || OWNER_CODES.has(problem.code) || EXHAUSTED_CODES.has(problem.code)) throw new MediaError(message, { status: response.status, code: problem.code, who: "owner" });
     if (TOOL_CODES.has(problem.code)) throw new MediaError(message, { status: response.status, code: problem.code, who: "tool" });
     last = new MediaError(message, { status: response.status, code: problem.code });
     if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;

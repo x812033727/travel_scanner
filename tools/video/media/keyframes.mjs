@@ -16,7 +16,7 @@ import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths
 import { ARTIFACTS, keyframeProblems, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { visualHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
-import { MediaError, mediaStatus } from "./client.mjs";
+import { EXHAUSTED_CODES, MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
 import { ledgerTotals } from "./ledger.mjs";
 import { mediaKey } from "./cache.mjs";
@@ -26,6 +26,14 @@ import { capFor, choiceFor, drawContactSheet, imagePrice, imageSelectionVersion,
 import { trimMargins } from "./trim.mjs";
 
 export const MAX_KEYFRAME_TAKES = 3;
+// How far `--seed-offset` may shift a shot's seeds. The server refuses a request whose hash
+// (prompt, seed, references, model) failed MAX_ATTEMPTS times until the request changes, and an
+// owner retry of a video blocked on that moves every seed by MAX_KEYFRAME_TAKES
+// (automation/flow.mjs resetForRetry): ten such retries reach this cap.
+export const MAX_SEED_OFFSET = 30;
+// The server's attempts for this exact request are spent (client.mjs EXHAUSTED_CODES): the next
+// seed is another request, so it is treated like a provider's refusal of the seed.
+const exhausted = (error) => error instanceof MediaError && EXHAUSTED_CODES.has(error.code);
 // The server takes at most four reference pictures per image.
 export const MAX_REFERENCES = 4;
 // Illustrated slides draw one style plate per video first (docs/videos/ILLUSTRATED.md §第二輪):
@@ -299,6 +307,7 @@ export async function run(command, args, ctx) {
       force: { type: "boolean" },
       "dry-run": { type: "boolean" },
       takes: { type: "string" },
+      "seed-offset": { type: "string" },
       channel: { type: "string" },
     },
     strict: true,
@@ -329,6 +338,11 @@ export async function run(command, args, ctx) {
   if (!shots.length) throw new UsageError(`--shot ${values.shot} names no shot of ${doc.slug} with a keyframe of its own`);
   const takes = values.takes ? Number(values.takes) : MAX_KEYFRAME_TAKES;
   if (!Number.isInteger(takes) || takes < 1 || takes > 6) throw new UsageError("--takes must be 1 to 6");
+  // Every shot's seeds shifted by this much: take 1 is seed 1 + offset. A take is recorded under
+  // the seed it was asked with, so a take from one offset is never mistaken for one of another.
+  const offset = values["seed-offset"] ? Number(values["seed-offset"]) : 0;
+  if (!Number.isInteger(offset) || offset < 0 || offset > MAX_SEED_OFFSET) throw new UsageError(`--seed-offset must be 0 to ${MAX_SEED_OFFSET}`);
+  const offsetField = offset ? { seed_offset: offset } : {};
   const cast = (scene) => shotCast(doc, scene);
 
   // The look must be approved as it stands, with a sheet chosen (or suggested) for every
@@ -471,14 +485,15 @@ export async function run(command, args, ctx) {
     const budget = budgetOf(scene, characters);
     if (scene.data.prompt.length > budget) {
       const problem = `prompt is ${scene.data.prompt.length} characters; the ${chosenImage.provider} budget for this shot is ${budget} (style, camera and avoidance text take the rest)${FIX_ARROW}shorten the prompt to at most ${budget} characters`;
-      manifest.shots[scene.id] = { takes: [], needs_review: true, prompt_budget_chars: budget, problems: [problem] };
+      manifest.shots[scene.id] = { takes: [], needs_review: true, prompt_budget_chars: budget, problems: [problem], ...offsetField };
       writeManifest(workdir, manifest);
       ctx.stdout.write(`${scene.id}: not drawn: ${problem}\n`);
       continue;
     }
     const asked = question(scene, characters);
     const judged = stampOf(asked);
-    const entry = current?.takes && !values.force ? { ...current, takes: [], prompt_budget_chars: budget } : { takes: [], prompt_budget_chars: budget };
+    const entry = { ...(current?.takes && !values.force ? current : {}), takes: [], prompt_budget_chars: budget, ...offsetField };
+    if (!offset) delete entry.seed_offset;
     // A cached verdict cannot stand in for a picture whose file was removed or changed.
     for (const take of !values.force ? current?.takes ?? [] : []) {
       const start = { ...scene, data: { ...scene.data, end_frame: undefined } };
@@ -488,7 +503,7 @@ export async function run(command, args, ctx) {
     // problem the prompt fix starts from (a prompt too long for the model, say).
     const refusals = [];
     for (let take = 1; take <= takes; take++) {
-      const seed = take;
+      const seed = take + offset;
       // A take judged on this question is not asked about again. One judged on another question
       // is, from its cached picture; a take from before verdicts were stamped is of another
       // question only where the question is now the checks.
@@ -510,7 +525,9 @@ export async function run(command, args, ctx) {
           stopped = true;
           break;
         }
-        if (retakeable(error)) {
+        // A seed the provider refused, or one the server will not ask the provider about again
+        // (its attempts for this exact request are spent): the next seed is another request.
+        if (retakeable(error) || exhausted(error)) {
           ctx.stdout.write(`${scene.id} seed ${seed}: ${error.message}; trying another seed\n`);
           refusals.push(error.message.startsWith(`${scene.id}: `) ? error.message.slice(scene.id.length + 2) : error.message);
           continue;
@@ -548,11 +565,11 @@ export async function run(command, args, ctx) {
       // Every seed was refused. The entry has no picture: nothing of an earlier record is carried
       // over, since a picture of it that still stood would have been one of the takes.
       const why = [...new Set(refusals)].map((reason) => `no take could be generated: ${reason}`);
-      manifest.shots[scene.id] = { takes: [], needs_review: true, prompt_budget_chars: budget, problems: why.length ? why : ["no take could be generated"] };
+      manifest.shots[scene.id] = { takes: [], needs_review: true, prompt_budget_chars: budget, problems: why.length ? why : ["no take could be generated"], ...offsetField };
       writeManifest(workdir, manifest);
       continue;
     }
-    const record = { file: best.file, sha256: best.sha256, key: best.key, seed: best.seed, judge: best.judge, takes: entry.takes, needs_review: !best.judge?.passed, prompt_budget_chars: budget, ...(best.margins ? { margins: best.margins } : {}) };
+    const record = { file: best.file, sha256: best.sha256, key: best.key, seed: best.seed, judge: best.judge, takes: entry.takes, needs_review: !best.judge?.passed, prompt_budget_chars: budget, ...offsetField, ...(best.margins ? { margins: best.margins } : {}) };
     if (record.needs_review) {
       // Every problem of every take, and the fixes among them: what a prompt rewrite starts from.
       record.problems = [...new Set(entry.takes.flatMap((each) => each.judge?.problems ?? []))];

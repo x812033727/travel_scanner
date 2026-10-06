@@ -38,9 +38,11 @@ import { checkPackage, listFiles, METADATA_FILE, packageLocalesWanted, UPLOAD_DI
 import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
 import { buildSheet, SHEET_PARTS, sheetContext, withoutContext } from "../i18n/cli.mjs";
+import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
+import { RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
@@ -79,6 +81,53 @@ export const MAX_STAGE_FAILURES = 2;
 // A drama's failed sheets, keyframes or clips are handed to the writer to fix the prompts, this
 // many times per kind, before the video is blocked for a person (docs/videos/DRAMA.md).
 export const MAX_PROMPT_FIX_ROUNDS = 2;
+// The media stages that take `--seed-offset` (media/keyframes.mjs): an owner retry of a video
+// the server stopped answering for (every seed's request hash spent its attempts) shifts the
+// stage's seeds, and `media()` passes the shift from state.seed_offsets.
+const SEED_OFFSET_COMMANDS = new Set(["keyframes"]);
+// What a blocked video's reason reads as, for a state from before `blocked_kind` was recorded
+// (the nine host videos blocked on 2026-10-06): the counter an owner retry has to reset.
+// The server's spent attempts first: a stage blocked on them by `media()` (exit 3) or by
+// `fixPrompts` (the fixes left the request as it was) needs other seeds, not only its rounds
+// back; then `prompt_fixes:<kind>`, whose wording also contains "fails".
+const LEGACY_BLOCKED_KINDS = [
+  [/^(?:([a-z_]+) needs the owner: |([a-z_]+) still fails after \d+ prompt fixes )?.*(?:video_media_job_exhausted|已經失敗 \d+ 次)/, (match) => `media_exhausted:${match[1] ?? match[2] ?? "keyframes"}`],
+  [/^([a-z_]+) still fails after \d+ prompt fixes/, (match) => `prompt_fixes:${match[1]}`],
+  [/sent the screenplay back \d+ times/, () => "prompt_fixes:script"],
+  [/^the outline was sent back \d+ times/, () => "replans"],
+  [/^([a-z_]+) failed \d+ times in a row:/, (match) => `failures:${match[1]}`],
+];
+
+/** The kind of block a state carries: recorded by `block()`, else read from the legacy reason; null when neither says. */
+export function blockedKindOf(state) {
+  if (typeof state.blocked_kind === "string" && state.blocked_kind) return state.blocked_kind;
+  for (const [pattern, kind] of LEGACY_BLOCKED_KINDS) {
+    const match = pattern.exec(state.blocked ?? "");
+    if (match) return kind(match);
+  }
+  return null;
+}
+
+/**
+ * What an owner's retry on /admin/videos resets, so the stage that blocked the video runs again
+ * instead of blocking at the same line: the prompt-fix rounds of the kind that ran out, the
+ * outline replans, a stage's failures in a row; a media request the server stopped answering
+ * for gets the next seeds (state.seed_offsets, MAX_KEYFRAME_TAKES further) and its prompt-fix
+ * rounds back, since the fix that could not change the request is what blocked it. An
+ * uncertain writer run is the retry transport's (client.mjs retryRuns). Returns the kind.
+ */
+export function resetForRetry(state) {
+  const kind = blockedKindOf(state);
+  const [group, name] = kind ? kind.split(":") : [];
+  if (group === "prompt_fixes" && state.prompt_fixes) delete state.prompt_fixes[name];
+  else if (group === "replans") state.replans = 0;
+  else if (group === "failures" && state.failures) delete state.failures[name];
+  else if (group === "media_exhausted") {
+    if (state.prompt_fixes) delete state.prompt_fixes[name];
+    if (SEED_OFFSET_COMMANDS.has(name)) state.seed_offsets = { ...(state.seed_offsets ?? {}), [name]: Math.min((state.seed_offsets?.[name] ?? 0) + MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET) };
+  }
+  return kind;
+}
 // Once the retakes are spent, the lines Jev still hears wrong are reworded by the listener and
 // retaken, this many rounds in all, before the narration waits for the owner (docs/videos/HANDS-OFF.md §旁白).
 export const MAX_REWRITE_ROUNDS = 2;
@@ -549,6 +598,8 @@ async function report(ctx, api, state, stage) {
     ...(hasAnimePolicy(state) ? { production_policy: state.production_policy, runtime_spec: state.runtime_spec } : {}),
     ...(state.series ? { series_slug: state.series.slug, ...(Number.isInteger(state.series.episode) ? { episode_number: state.series.episode } : {}) } : {}),
     ...(state.retry_request_id ? { retry_acknowledged_id: state.retry_request_id } : {}),
+    // What kind of block it is (`block()`), for a site that will read it; today's ignores the key.
+    ...(state.status === "blocked" && state.blocked_kind ? { blocked_kind: state.blocked_kind } : {}),
   });
 }
 
@@ -703,7 +754,7 @@ export class Automation {
     saveState(workdir, state);
     this.halted = true;
     const detail = `${why}${kept ? `; the answer is in ${kept}` : ""}`;
-    if (state.failures[what] >= MAX_STAGE_FAILURES) return this.block(state, `${what} failed ${state.failures[what]} times in a row: ${detail}`);
+    if (state.failures[what] >= MAX_STAGE_FAILURES) return this.block(state, `${what} failed ${state.failures[what]} times in a row: ${detail}`, `failures:${what}`);
     return `${state.slug}: ${what} gave nothing usable (${detail}); the next run tries once more`;
   }
 
@@ -723,7 +774,7 @@ export class Automation {
     this.halted = true;
     this.lastAnswer = null;
     const what = `${error.stage ?? "a stage"}${error.unit ? ` (${error.unit})` : ""}`;
-    return this.block(state, `${what} may have run on the server without its answer reaching the worker (${error.why ?? error.message}); it is not asked again until the owner retries`);
+    return this.block(state, `${what} may have run on the server without its answer reaching the worker (${error.why ?? error.message}); it is not asked again until the owner retries`, `uncertain:${error.stage ?? "stage"}`);
   }
 
   /** One unit of work; returns a line saying what was done, or null when nothing could be. */
@@ -813,18 +864,36 @@ export class Automation {
       try {
         await this.api.retryRuns?.(state.slug, { requestId: request, reason: state.blocked ?? "", format: state.format ?? currentVideo?.format ?? "slides" });
       } catch (error) {
-        if (!(error instanceof AutomationError && error.code === POLICY_HOLD)) throw error;
+        if (error instanceof AutomationError && error.code === POLICY_HOLD) {
+          state.retry_request_id = request;
+          return this.policyHold(state, error);
+        }
+        // The run the owner wants replaced is still on the server: the request stays unconsumed
+        // and this video waits for it; the next round asks again. The other videos go on.
+        if (error instanceof AutomationError && error.code === RUN_PENDING) {
+          this.log(`${state.slug}: retry waits; the saved ${error.stage ?? "writer"} run is still running on the server, its receipt is checked next round`);
+          continue;
+        }
+        // Any other answer of the retry transport (an uncertain saved run, a lookup that failed, a
+        // receipt that cannot be read): this video alone is blocked with the reason, and the
+        // request is consumed, so the page stops showing the retry as pending and the owner reads
+        // why. Until 2026-10-06 the error ended the whole run, every round. A programming error
+        // is not the owner's to read: it still ends the run. The kind stays what blocked the video
+        // in the first place (read from a legacy reason now, before it is replaced): nothing ran,
+        // and that counter is still the one a retry that goes through has to reset.
+        if (!(error instanceof AutomationError || error instanceof RunReceiptError)) throw error;
         state.retry_request_id = request;
-        return this.policyHold(state, error);
+        return this.block(state, `retry could not verify the saved writer run: ${error.message}`, blockedKindOf(state) ?? "uncertain:writer");
       }
       state.retry_request_id = request;
       // A language batch can fail after the finished video reached YouTube. Resume
       // only its languages, rather than revisiting the production stages.
       state.status = state.blocked_from_status === "done" ? "done" : "active";
       delete state.blocked_from_status;
-      const failedStage = /^([a-z_]+) failed \d+ times in a row:/.exec(state.blocked ?? "")?.[1];
-      if (failedStage && state.failures) delete state.failures[failedStage];
+      // The counter that blocked it starts again, or the stage would block at the same line.
+      resetForRetry(state);
       delete state.blocked;
+      delete state.blocked_kind;
       delete state.blocked_report_pending;
       delete state.blocked_report_retry_at;
       delete state.policy_hold;
@@ -1307,7 +1376,7 @@ export class Automation {
   /** The screenplay was sent back (by the owner, or the checker on a hands-off series): the writer rewrites from the note, then it is checked again. */
   async fixScript(state, note, by = "the owner") {
     const rounds = state.prompt_fixes?.script ?? 0;
-    if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${by} sent the screenplay back ${rounds + 1} times: ${note}`);
+    if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${by} sent the screenplay back ${rounds + 1} times: ${note}`, "prompt_fixes:script");
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     const fix = { kind: "script", targets: [], problems: [note], owner_note: note };
@@ -1359,11 +1428,18 @@ export class Automation {
     return run(this.ctx, ["review-pull", "--slug", slug]);
   }
 
-  /** Stop working on a video and say why on /admin/videos; the owner or a person takes over. */
-  async block(state, why) {
+  /**
+   * Stop working on a video and say why on /admin/videos; the owner or a person takes over.
+   * `kind` names what blocked it (`prompt_fixes:<kind>`, `replans`, `failures:<stage>`,
+   * `media_owner:<command>`, `media_exhausted:<command>`, `uncertain:<stage>`), which is what
+   * the owner's retry resets (resetForRetry); a block with none is only retried as it was.
+   */
+  async block(state, why, kind = null) {
     if (state.status !== "blocked") state.blocked_from_status = state.status;
     state.status = "blocked";
     state.blocked = why;
+    if (kind) state.blocked_kind = kind;
+    else delete state.blocked_kind;
     state.blocked_report_pending = true;
     saveState(this.workdir(state.slug), state);
     const reported = await this.reportBlocked(state);
@@ -1446,7 +1522,7 @@ export class Automation {
         return `${state.slug}: ${jev ? "Jev" : "the owner"} chose outline ${review.choice}${review.note ? ` (${review.note})` : ""}`;
       }
       if (review.status === "rejected") {
-        if (state.replans >= MAX_REPLANS) return this.block(state,`the outline was sent back ${state.replans + 1} times (Jev and the owner together): ${review.note}`);
+        if (state.replans >= MAX_REPLANS) return this.block(state, `the outline was sent back ${state.replans + 1} times (Jev and the owner together): ${review.note}`, "replans");
         return lineFor(state.slug, await this.replan(state, review.note ?? ""));
       }
       return null;
@@ -1730,16 +1806,31 @@ export class Automation {
   async media(state, command) {
     const { ctx } = this;
     const channel = ["look", "keyframes"].includes(command) && ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", ctx.env.VIDEO_BROWSER_CHANNEL] : [];
-    const result = await run(ctx, [command, "--slug", state.slug, ...channel]);
+    // The seeds an owner retry moved this stage to (resetForRetry), once the server stopped
+    // answering for the seeds before them.
+    const offset = state.seed_offsets?.[command];
+    const seedOffset = SEED_OFFSET_COMMANDS.has(command) && Number.isInteger(offset) && offset > 0 ? ["--seed-offset", String(offset)] : [];
+    const result = await run(ctx, [command, "--slug", state.slug, ...channel, ...seedOffset]);
     if (result.code === 0) {
       this.cleared(state, command);
       delete state.prompt_fixes?.[command];
+      // The stage is through its seeds: a later rerun (a storyboard sent back, say) starts at
+      // seeds 1 to 3 again, with other prompts.
+      delete state.seed_offsets?.[command];
       saveState(this.workdir(state.slug), state);
       await report(ctx, this.api, state, `${command} done`);
       return `${state.slug}: ${command} done`;
     }
     if (result.code === 1 && FIX_SOURCES[command]) return this.fixPrompts(state, command, {});
-    if (result.code === 3) return this.block(state, `${command} needs the owner: ${lastLine(result.out)}`);
+    if (result.code === 3) {
+      // The server's attempts for a request are spent (media/client.mjs EXHAUSTED_CODES): the
+      // owner's retry moves the stage to other seeds, where a cap or a setting it leaves as it
+      // is. Only the reason the owner reads (the last line) says which: a run that logged a
+      // spent seed on its way to the cap stopped for the cap.
+      const reason = lastLine(result.out);
+      const kind = /video_media_job_exhausted|已經失敗 \d+ 次/.test(reason) ? `media_exhausted:${command}` : `media_owner:${command}`;
+      return this.block(state, `${command} needs the owner: ${reason}`, kind);
+    }
     if (result.code === 4) return this.later(`${state.slug}: ${command} could not finish (${lastLine(result.out)}); the next run tries again`);
     return this.block(state, `${command} failed: ${lastLine(result.out, 2)}`);
   }
@@ -1772,7 +1863,10 @@ export class Automation {
     const what = FIX_SOURCES[kind]?.what ?? "shot";
     const summary = found.map((target) => `${target.id}: ${(target.problems ?? []).join("; ") || "failed"}`).join(" | ") || ownerNote || "no detail";
     const rounds = state.prompt_fixes?.[kind] ?? 0;
-    if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`);
+    // A kind whose every seed the server stopped answering for (the fixes did not change the
+    // request enough) is retried on other seeds; any other, with its rounds given back.
+    const blockedKind = /video_media_job_exhausted|已經失敗 \d+ 次/.test(summary) ? `media_exhausted:${kind}` : `prompt_fixes:${kind}`;
+    if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`, blockedKind);
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     if (state.format && video.format && state.format !== video.format) return this.block(state, `prompt repair format conflicts: auto.json is ${state.format}, video.json is ${video.format}`);

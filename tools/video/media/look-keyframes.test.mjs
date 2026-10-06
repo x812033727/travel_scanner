@@ -11,7 +11,7 @@ import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.m
 import { readLedger } from "./ledger.mjs";
 import { keepSheets } from "./series-store.mjs";
 import { readCache, readJobs } from "./cache.mjs";
-import { bestTake, chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, entryStands, FIX_ARROW, fixClauses, fixesBefore, keyframeChecks, keyframeRubric, MAX_KEYFRAME_TAKES, PLACEHOLDER_FIX, retakePrompt, shotPrompt, STYLE_PLATE_ID, STYLE_PLATE_PROMPT } from "./keyframes.mjs";
+import { bestTake, chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, entryStands, FIX_ARROW, fixClauses, fixesBefore, keyframeChecks, keyframeRubric, MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET, PLACEHOLDER_FIX, retakePrompt, shotPrompt, STYLE_PLATE_ID, STYLE_PLATE_PROMPT } from "./keyframes.mjs";
 import { DEFAULT_SHEET_PROMPT, MAX_LOOK_ROUNDS, optionKey, parseChoice, sheetPrompt, suggestedOf } from "./look.mjs";
 import { imagePrice, statusProblem } from "./stages.mjs";
 
@@ -49,9 +49,10 @@ const STATUS = {
  * A media server that draws a picture per request (its bytes depend on the prompt and seed) and
  * answers the judge from `verdicts`: a function of (kind, context, count so far) → { overall, passed, problems }.
  * `refuse(request)` returning `{ code, detail }` makes that image request a failed job instead,
- * as the server reports a provider's refusal.
+ * as the server reports a provider's refusal. `exhaust(request)` returning true answers it with
+ * the 409 the server gives a request whose hash spent its attempts (video_media_job_exhausted).
  */
-function mediaSite({ verdicts, status = STATUS, actualImageModel = () => status.image.model, refuse = () => null }) {
+function mediaSite({ verdicts, status = STATUS, actualImageModel = () => status.image.model, refuse = () => null, exhaust = () => false }) {
   const state = { images: [], judges: [], uploads: [], files: new Map() };
   const fetchImpl = async (url, init = {}) => {
     const { pathname, search } = new URL(url);
@@ -61,6 +62,7 @@ function mediaSite({ verdicts, status = STATUS, actualImageModel = () => status.
     if (init.method === "POST" && route === "images") {
       const request = JSON.parse(init.body);
       state.images.push(request);
+      if (exhaust(request)) return Response.json({ code: "video_media_job_exhausted", detail: EXHAUSTED_DETAIL }, { status: 409 });
       const refusal = refuse(request);
       if (refusal) return Response.json({ id: `img${state.images.length}`, status: "failed", file: null, usd_estimate: 0, error: refusal, retry_after_seconds: 0 }, { status: 200 });
       // Like the server, choose from the series, independently of the global status response,
@@ -372,6 +374,11 @@ test("a shot that never passes is left for a prompt fix after the last take, wit
 // What the server reports when the provider refuses a request outright, as MiniMax did a prompt
 // over its length limit on 2026-10-04: a failed job, refused again for every seed of that prompt.
 const TOO_LONG = { code: "video_media_upstream_invalid", detail: "prompt length must be less than 1500" };
+// What the server answers (409 video_media_job_exhausted) a request whose hash (prompt, seed,
+// references, model) failed its attempts (apps/api/app/video_media/jobs.py MAX_ATTEMPTS): the
+// request itself has to change. On 2026-10-06 two host videos were blocked on it, every retry
+// replaying seeds 1 to 3.
+const EXHAUSTED_DETAIL = "這個請求已經失敗 3 次；改提示詞或 seed 再試";
 
 test("a shot every seed is refused for waits for a prompt fix with the refusal, while the drawn shots go on to the sheet and the look-alike check", async () => {
   const box = sandbox("fixture-story", "story");
@@ -441,6 +448,58 @@ test("a shot every seed is refused for waits for a prompt fix with the refusal, 
   assert.equal(after.shots["number-owner"].sha256, manifest.shots["number-owner"].sha256);
   assert.equal(after.thumbnail_source, "keyframes/sand-lines-1.png");
   assert.equal(sheets.at(-1).match(/<figure>/g).length, 3);
+});
+
+test("a seed the server's attempts are spent for is followed by the next, and --seed-offset asks for the seeds past the spent ones", async () => {
+  const box = sandbox("fixture-story", "story");
+  // number-owner's first seed is spent; every seed of sand-lines up to 5 is.
+  const spent = (request) => (request.shot_id === "number-owner" && request.seed === 1) || (request.shot_id === "sand-lines" && request.seed <= 5);
+  const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }), exhaust: spent });
+  const shots = ["--shot", "checkout-beep,number-owner,sand-lines"];
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, ...shots], run.ctx), EXIT.lint, run.out.stderr);
+  assert.doesNotMatch(run.out.stderr, /已經失敗/, "a spent seed is a result of the run, not its end");
+  assert.deepEqual(site.state.images.map((request) => [request.shot_id, request.seed]), [["checkout-beep", 1], ["number-owner", 1], ["number-owner", 2], ["sand-lines", 1], ["sand-lines", 2], ["sand-lines", 3]]);
+  assert.match(run.out.stdout, /number-owner seed 1: 這個請求已經失敗 3 次；改提示詞或 seed 再試; trying another seed\n/);
+  const manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.shots["number-owner"].file, "keyframes/number-owner-2.png", "a spent seed is followed by the next, like a refused one");
+  assert.deepEqual(manifest.shots["number-owner"].takes.map((take) => take.seed), [2]);
+  assert.equal(manifest.shots["number-owner"].seed_offset, undefined, "no offset, no field");
+  const budget = manifest.shots["sand-lines"].prompt_budget_chars;
+  assert.deepEqual(manifest.shots["sand-lines"], { takes: [], needs_review: true, prompt_budget_chars: budget, problems: [`no take could be generated: ${EXHAUSTED_DETAIL}`] }, "the writer's prompt fix starts from what the server said");
+  assert.match(run.out.stdout, /ERROR sand-lines: no take could be generated: 這個請求已經失敗 3 次/);
+  // Nothing is booked for a request the server took nothing for, and no job is left to pick up.
+  const images = readLedger(box.workdir).entries.filter((entry) => entry.kind === "image");
+  assert.deepEqual(images.map((entry) => [entry.id, entry.status]), [["checkout-beep", "ready"], ["number-owner", "ready"]]);
+  assert.deepEqual(readJobs(box.workdir).jobs, {});
+
+  // The owner's retry (automation/flow.mjs resetForRetry) runs the stage with every seed moved
+  // by MAX_KEYFRAME_TAKES: the shot is asked for at seeds 4, 5 and 6 under the same prompt, each
+  // another request to the server, and the drawn shots are kept.
+  const shifted = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, ...shots, "--seed-offset", String(MAX_KEYFRAME_TAKES)], shifted.ctx), EXIT.ok, shifted.out.stderr);
+  assert.deepEqual(site.state.images.slice(6).map((request) => [request.shot_id, request.seed]), [["sand-lines", 4], ["sand-lines", 5], ["sand-lines", 6]]);
+  assert.match(shifted.out.stdout, /checkout-beep: kept \(judge 8\/10\)\n/);
+  assert.match(shifted.out.stdout, /number-owner: kept \(judge 8\/10\)\n/);
+  assert.match(shifted.out.stdout, /sand-lines seed 4: 這個請求已經失敗 3 次；改提示詞或 seed 再試; trying another seed\n/);
+  assert.match(shifted.out.stdout, /sand-lines take 3: judge 8\/10\n/, "the run's third take is seed 6");
+  const after = manifestOf(box, "keyframes");
+  assert.equal(after.shots["sand-lines"].file, "keyframes/sand-lines-6.png");
+  assert.equal(after.shots["sand-lines"].seed, 6);
+  assert.equal(after.shots["sand-lines"].seed_offset, 3, "the entry records the offset its seeds were asked under");
+  assert.deepEqual(after.shots["sand-lines"].takes.map((take) => take.seed), [6]);
+  assert.equal(after.shots["number-owner"].seed_offset, undefined, "a kept shot keeps its record");
+  assert.equal(after.thumbnail_source, "keyframes/sand-lines-6.png");
+
+  // Run again at the same offset: the takes stand under the seeds they were asked with.
+  const again = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, ...shots, "--seed-offset", "3"], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(site.state.images.length, 9, "nothing is asked for again");
+  assert.match(again.out.stdout, /sand-lines: kept \(judge 8\/10\)\n/);
+
+  const over = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, ...shots, "--seed-offset", String(MAX_SEED_OFFSET + 1)], over.ctx), EXIT.usage);
+  assert.match(over.out.stderr, /--seed-offset must be 0 to 30/);
 });
 
 test("a run where every seed of every shot is refused ends on the refusals, with no picture checked and no contact sheet", async () => {

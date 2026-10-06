@@ -25,9 +25,9 @@ import { ITEM_IDS } from "../qa/checks.mjs";
 import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
 import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
-import { AutomationError, automationClient, POLICY_HOLD } from "./client.mjs";
+import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, thumbnailAskHash } from "./flow.mjs";
+import { Automation, automatedVideos, blockedKindOf, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -3562,4 +3562,242 @@ test("the translator's and the caption reviewer's requests carry the sheet's glo
       assert.equal("glossary" in call.payload.worksheet || "boundaries" in call.payload.worksheet, false);
     }
   }
+});
+
+// What the owner's 重試 on /admin/videos resets. On 2026-10-06 nine host videos were blocked on
+// their keyframes and every retry re-blocked them within hours: the retry gave back only a
+// stage's failures in a row, never the prompt-fix rounds, the replans or the seeds the server
+// had stopped answering for, so the paid stage ran once and blocked at the same line.
+
+/**
+ * A slides video blocked before its keyframes, as the host videos were, with `blocked` as its
+ * reason (a legacy state: no blocked_kind) and `extra` on its auto.json; `commands` plays the
+ * keyframes stage (the n-th run of a command in the test); `others` are active videos beside it.
+ */
+function blockedVideo({ slug, blocked, extra = {}, commands = () => assert.fail("no stage runs"), others = [] }) {
+  const box = sandbox(slug, "illustrated");
+  const docFile = path.join(box.dir, "video.json");
+  atomicWrite(docFile, JSON.stringify({ ...readJson(docFile), slug, format: "slides" }));
+  const state = { slug, status: "blocked", blocked_from_status: "active", blocked, format: "slides", created_at: "2026-10-05T10:00:00Z", notes: [], chosen: "A", ...extra };
+  atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+  for (const [index, other] of others.entries()) atomicWrite(path.join(box.work, other, "auto.json"), JSON.stringify({ slug: other, status: "active", notes: [], created_at: `2026-10-05T1${index + 1}:00:00Z` }));
+  // The site already shows the reason, so the round has nothing to reconcile.
+  const listed = { slug, stage: "blocked", checklist: [{ key: "blocked", label: `卡住，需要人處理：${blocked}`.slice(0, 120), done: false }] };
+  const site = fakeSite({ videos: [listed, ...others.map((other) => ({ slug: other, stage: "writing" }))], settings: { max_waiting_drafts: 0, slides: { slides_media_enabled: true } }, answers: { writer: (body) => ({ video: body.payload.video, lexicon_additions: {} }) } });
+  const clock = { now: Date.parse("2026-10-06T10:00:00Z") };
+  const { ctx, out } = context(box, site.fetchImpl, clock);
+  const runs = [];
+  ctx.runCommand = async (command) => {
+    runs.push(command);
+    return commands(command, runs.filter((each) => each[0] === command[0]).length);
+  };
+  const worker = (api = automationClient(ctx)) => {
+    const automation = new Automation(ctx, api, site.settings);
+    automation.refs = smallRefs;
+    automation.advance = (item) => (item.slug === slug ? automation.media(item, "keyframes") : `${item.slug}: advanced`);
+    return automation;
+  };
+  const retry = (id) => Object.assign(site.listed.get(slug), { retry_request_id: id, retry_acknowledged_id: null });
+  const read = () => automatedVideos(box.work).find((item) => item.slug === slug);
+  return { box, site, ctx, out, runs, worker, retry, state: read, listed: () => site.listed.get(slug) };
+}
+
+test("an owner retry of a video blocked after its prompt fixes gives the rounds back, and its keyframes run again in the same round", async () => {
+  const slug = "retry-prompt-fixes";
+  const video = blockedVideo({
+    slug,
+    blocked: "keyframes still fails after 2 prompt fixes (repair: wrong object)",
+    extra: { prompt_fixes: { keyframes: 2 } },
+    commands: () => ({ code: EXIT.lint, out: "fix the prompts of repair" }),
+  });
+  atomicWrite(path.join(video.box.workdir, "keyframes", "manifest.json"), JSON.stringify({ shots: { repair: { needs_review: true, problems: ["wrong object"] } } }));
+  assert.equal(await video.worker().step(), null, "blocked: nothing runs");
+  assert.equal(video.runs.length, 0);
+  const request = "7f0c1a2e-5b3d-4c6e-9a8f-0d1e2f3a4b5c";
+  video.retry(request);
+  const first = video.worker();
+  // Before: the retry reset nothing, keyframes ran once (paid) and fixPrompts blocked at the same line.
+  assert.match(await first.step(), /keyframes prompts fixed \(round 1\) for repair; keyframes runs again next/);
+  assert.equal(first.halted, false);
+  assert.deepEqual(video.runs, [["keyframes", "--slug", slug]], "the stage ran again in the round of the retry, at its seeds");
+  assert.equal(video.listed().retry_acknowledged_id, request);
+  assert.deepEqual(video.state().prompt_fixes, { keyframes: 1 }, "the rounds start again");
+  assert.equal(video.state().status, "active");
+  assert.equal(video.state().blocked, undefined);
+  assert.equal(video.state().blocked_kind, undefined);
+  assert.equal(video.site.calls.run.filter((call) => call.stage === "writer").length, 1, "one prompt fix was asked for");
+  // The video is moving again: the same failure spends the rounds once more, then blocks with its kind recorded.
+  assert.match(await video.worker().step(), /keyframes prompts fixed \(round 2\) for repair/);
+  assert.match(await video.worker().step(), /blocked — keyframes still fails after 2 prompt fixes \(repair: wrong object\)/);
+  assert.equal(video.state().blocked_kind, "prompt_fixes:keyframes");
+  assert.equal(video.runs.length, 3);
+  assert.equal(await video.worker().step(), null, "the acknowledged request is not replayed");
+  assert.equal(video.runs.length, 3);
+});
+
+test("the counters a block records are the ones its retry resets, and a legacy reason is read the same way", async () => {
+  const kinds = [
+    [{ blocked: "writer failed 2 times in a row: no video object", failures: { writer: 2, planner: 1 } }, "failures:writer", (state) => assert.deepEqual(state.failures, { planner: 1 })],
+    [{ blocked: "keyframes still fails after 2 prompt fixes (desk: wrong object)", prompt_fixes: { keyframes: 2, look: 1 } }, "prompt_fixes:keyframes", (state) => assert.deepEqual(state.prompt_fixes, { look: 1 })],
+    [{ blocked: "the owner sent the screenplay back 3 times: too long", prompt_fixes: { script: 2 } }, "prompt_fixes:script", (state) => assert.deepEqual(state.prompt_fixes, {})],
+    [{ blocked: "the outline was sent back 3 times (Jev and the owner together): no angle", replans: 2 }, "replans", (state) => assert.equal(state.replans, 0)],
+    [{ blocked: "keyframes needs the owner: 這個請求已經失敗 3 次；改提示詞或 seed 再試", prompt_fixes: { keyframes: 2 } }, "media_exhausted:keyframes", (state) => assert.deepEqual([state.seed_offsets, state.prompt_fixes], [{ keyframes: 3 }, {}])],
+    [{ blocked: "keyframes still fails after 2 prompt fixes (desk: no take could be generated: 這個請求已經失敗 3 次；改提示詞或 seed 再試)", prompt_fixes: { keyframes: 2 }, seed_offsets: { keyframes: 3 } }, "media_exhausted:keyframes", (state) => assert.deepEqual([state.seed_offsets, state.prompt_fixes], [{ keyframes: 6 }, {}])],
+    [{ blocked: "look needs the owner: 這個請求已經失敗 3 次；改提示詞或 seed 再試", prompt_fixes: { look: 2 } }, "media_exhausted:look", (state) => assert.deepEqual([state.seed_offsets, state.prompt_fixes], [undefined, {}], "only keyframes takes --seed-offset")],
+    [{ blocked: "keyframes needs the owner: the month's images are spent", prompt_fixes: { keyframes: 1 } }, null, (state) => assert.deepEqual(state.prompt_fixes, { keyframes: 1 })],
+    [{ blocked: "writer may have run on the server without its answer reaching the worker (lost); it is not asked again until the owner retries", failures: { writer: 1 } }, null, (state) => assert.deepEqual(state.failures, { writer: 1 })],
+    [{ blocked: "keyframes needs the owner: 這個請求已經失敗 3 次", blocked_kind: "uncertain:writer", seed_offsets: { keyframes: 27 } }, "uncertain:writer", (state) => assert.deepEqual(state.seed_offsets, { keyframes: 27 }, "a recorded kind is not second-guessed from the wording")],
+    [{ blocked: "x", blocked_kind: "media_exhausted:keyframes", seed_offsets: { keyframes: 28 } }, "media_exhausted:keyframes", (state) => assert.deepEqual(state.seed_offsets, { keyframes: 30 }, "the offset stops at keyframes.mjs's cap")],
+  ];
+  for (const [fields, kind, check] of kinds) {
+    const state = { slug: "kinds", status: "blocked", ...fields };
+    assert.equal(blockedKindOf(state), kind, fields.blocked);
+    assert.equal(resetForRetry(state), kind, fields.blocked);
+    check(state);
+  }
+});
+
+test("an owner retry of a video the server stopped answering for moves its keyframes to the next seeds, and the next retry further", async () => {
+  const slug = "retry-spent-seeds";
+  const exhausted = "這個請求已經失敗 3 次；改提示詞或 seed 再試";
+  const video = blockedVideo({
+    slug,
+    blocked: `keyframes needs the owner: ${exhausted}`,
+    extra: { prompt_fixes: { keyframes: 2 } },
+    // The seeds after the shift are spent too (another video's identical prompts, say); the ones after that draw.
+    commands: (command, n) => (n === 1 ? { code: EXIT.owner, out: `keyframes for 3 shots\n${exhausted}\n` } : { code: EXIT.ok, out: "3 keyframes generated" }),
+  });
+  assert.equal(await video.worker().step(), null);
+  const first = "1a2b3c4d-0001-4000-8000-000000000001";
+  video.retry(first);
+  const worker = video.worker();
+  assert.match(await worker.step(), /blocked — keyframes needs the owner: 這個請求已經失敗 3 次/);
+  assert.equal(worker.halted, false);
+  assert.deepEqual(video.runs, [["keyframes", "--slug", slug, "--seed-offset", "3"]], "the retry asks for seeds 4 to 6");
+  assert.equal(video.state().blocked_kind, "media_exhausted:keyframes", "the stage's own exit 3 names the spent request");
+  assert.deepEqual(video.state().seed_offsets, { keyframes: 3 });
+  assert.equal(video.state().prompt_fixes.keyframes, undefined, "the fix rounds come back with the seeds");
+  assert.equal(video.listed().retry_acknowledged_id, first);
+  assert.equal(video.site.calls.reports.at(-1).blocked_kind, "media_exhausted:keyframes", "the report says what kind of block it is");
+  assert.equal(await video.worker().step(), null, "blocked again: the same request is not replayed");
+  assert.equal(video.runs.length, 1);
+  const second = "1a2b3c4d-0002-4000-8000-000000000002";
+  video.retry(second);
+  assert.match(await video.worker().step(), /keyframes done/);
+  assert.deepEqual(video.runs.at(-1), ["keyframes", "--slug", slug, "--seed-offset", "6"], "the next retry asks for seeds 7 to 9");
+  assert.deepEqual(video.state().seed_offsets, {}, "a stage that is through its seeds starts a later rerun at seeds 1 to 3 again");
+  assert.equal(video.state().status, "active");
+  assert.equal(video.state().blocked_kind, undefined);
+  assert.equal(video.listed().retry_acknowledged_id, second);
+  assert.equal("blocked_kind" in video.site.calls.reports.at(-1), false, "a video that moves reports no kind");
+});
+
+test("a keyframes run that logged a spent seed but stopped for the owner is blocked as the owner's: its retry keeps the seeds", async () => {
+  const slug = "retry-cap-after-spent";
+  const cap = "this video is at its US$5 cap; raise it on the settings tab";
+  const video = blockedVideo({
+    slug,
+    blocked: "keyframes needs the owner: earlier",
+    commands: () => ({ code: EXIT.owner, out: `desk seed 1: 這個請求已經失敗 3 次；改提示詞或 seed 再試; trying another seed\n${cap}\n` }),
+  });
+  video.retry("1a2b3c4d-0006-4000-8000-000000000006");
+  assert.match(await video.worker().step(), /blocked — keyframes needs the owner: this video is at its US\$5 cap/);
+  assert.equal(video.state().blocked_kind, "media_owner:keyframes", "the reason the owner reads is the cap, not the spent seed on the way to it");
+  assert.equal(video.state().seed_offsets, undefined);
+  video.retry("1a2b3c4d-0007-4000-8000-000000000007");
+  assert.match(await video.worker().step(), /blocked — keyframes needs the owner: this video is at its US\$5 cap/);
+  assert.deepEqual(video.runs, [["keyframes", "--slug", slug], ["keyframes", "--slug", slug]], "the retry runs the stage at its seeds; nothing is shifted");
+  assert.equal(video.state().seed_offsets, undefined);
+});
+
+test("a retry whose saved run cannot be verified blocks that video alone, with the reason and the request consumed; the videos beside it go on in the same round", async () => {
+  const slug = "retry-unverified";
+  const other = "retry-neighbour";
+  const video = blockedVideo({ slug, blocked: "writer failed 2 times in a row: the script had no video object", extra: { failures: { writer: 2 } }, others: [other] });
+  const api = automationClient(video.ctx);
+  let retries = 0;
+  // What client.mjs retryRuns throws when the receipt lookup fails (RUN_UNCERTAIN), or anything else.
+  api.retryRuns = async () => {
+    retries++;
+    throw Object.assign(new AutomationError("could not verify the saved run before owner retry: the receipt lookup failed; its receipt is retained", { code: RUN_UNCERTAIN, who: "owner" }), { slug });
+  };
+  const request = "9e8d7c6b-0003-4000-8000-000000000003";
+  video.retry(request);
+  const worker = video.worker(api);
+  // Before: the error ended the whole run, every round, and the site kept showing the retry as pending.
+  assert.match(await worker.step(), /^retry-unverified: blocked — retry could not verify the saved writer run: could not verify the saved run before owner retry: the receipt lookup failed/);
+  assert.equal(worker.halted, false, "only this video is parked");
+  assert.equal(retries, 1);
+  assert.equal(video.state().status, "blocked");
+  assert.equal(video.state().blocked_from_status, "active");
+  assert.equal(video.state().retry_request_id, request, "the request is consumed");
+  assert.equal(video.listed().retry_acknowledged_id, request, "the site stops showing the retry as pending");
+  assert.equal(video.site.calls.reports.at(-1).retry_acknowledged_id, request);
+  assert.match(video.site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：retry could not verify the saved writer run/);
+  assert.equal(video.state().blocked_kind, "failures:writer", "the counter to reset once a retry goes through is still the stage's");
+  assert.deepEqual(video.state().failures, { writer: 2 }, "nothing ran, nothing is reset");
+  assert.match(await worker.step(), /^retry-neighbour: advanced$/, "the next unit of the same round is another video's");
+  assert.equal(retries, 1, "an acknowledged request is not replayed");
+  // The owner retries once more, and this time the saved run is verified.
+  api.retryRuns = async () => { retries++; };
+  video.retry("9e8d7c6b-0004-4000-8000-000000000004");
+  const resumed = video.worker(api);
+  resumed.advance = (item) => `${item.slug}: advanced`;
+  assert.match(await resumed.step(), /^retry-unverified: advanced$/);
+  assert.equal(retries, 2);
+  assert.equal(video.state().status, "active");
+  assert.equal(video.state().failures?.writer, undefined, "the writer's failures in a row start again");
+  assert.equal(video.state().blocked_kind, undefined);
+});
+
+test("a retry while the saved writer run is still running waits for it without consuming the request; the videos beside it go on", async () => {
+  const slug = "retry-pending";
+  const other = "retry-pending-neighbour";
+  const video = blockedVideo({ slug, blocked: "writer failed 2 times in a row: the script had no video object", extra: { failures: { writer: 2 } }, others: [other] });
+  const api = automationClient(video.ctx);
+  let retries = 0;
+  api.retryRuns = async () => {
+    retries++;
+    throw Object.assign(new AutomationError("the saved stage run is still running; the owner retry waits for it and its receipt is recovered next round", { code: RUN_PENDING }), { slug, stage: "writer" });
+  };
+  const request = "9e8d7c6b-0005-4000-8000-000000000005";
+  video.retry(request);
+  const worker = video.worker(api);
+  assert.match(await worker.step(), /^retry-pending-neighbour: advanced$/, "this video waits; the round goes on");
+  assert.equal(worker.halted, false);
+  assert.match(video.out.stdout, /retry-pending: retry waits; the saved writer run is still running on the server, its receipt is checked next round\n/);
+  assert.equal(retries, 1);
+  assert.equal(video.state().status, "blocked");
+  assert.equal(video.state().retry_request_id, undefined, "nothing is consumed");
+  assert.equal(video.listed().retry_acknowledged_id, null, "the site keeps showing the retry as pending");
+  assert.ok(!video.site.calls.reports.some((report) => report.stage === "retrying"), "no retry is acknowledged");
+  assert.match(await video.worker(api).step(), /^retry-pending-neighbour: advanced$/);
+  assert.equal(retries, 2, "the next round asks again");
+  // The saved run is over: the retry goes through.
+  api.retryRuns = async () => { retries++; };
+  const resumed = video.worker(api);
+  resumed.advance = (item) => `${item.slug}: advanced`;
+  assert.match(await resumed.step(), /^retry-pending: advanced$/);
+  assert.equal(retries, 3);
+  assert.equal(video.state().status, "active");
+  assert.equal(video.state().retry_request_id, request);
+  assert.equal(video.listed().retry_acknowledged_id, request);
+  assert.equal(video.state().failures?.writer, undefined);
+});
+
+test("a programming error in the retry transport still ends the run: it is not reported to the owner as a block", async () => {
+  const slug = "retry-transport-bug";
+  const video = blockedVideo({ slug, blocked: "writer failed 2 times in a row: the script had no video object", extra: { failures: { writer: 2 } }, others: ["retry-transport-neighbour"] });
+  const api = automationClient(video.ctx);
+  api.retryRuns = async () => {
+    throw new TypeError("Cannot read properties of undefined (reading 'receipt')");
+  };
+  const request = "9e8d7c6b-0008-4000-8000-000000000008";
+  video.retry(request);
+  await assert.rejects(video.worker(api).step(), TypeError);
+  assert.equal(video.state().status, "blocked");
+  assert.equal(video.state().blocked, "writer failed 2 times in a row: the script had no video object", "the reason is the stage's, not the bug's");
+  assert.equal(video.state().retry_request_id, undefined, "nothing is consumed");
+  assert.equal(video.listed().retry_acknowledged_id, null);
+  assert.equal(video.site.calls.reports.length, 0, "nothing is reported");
 });
