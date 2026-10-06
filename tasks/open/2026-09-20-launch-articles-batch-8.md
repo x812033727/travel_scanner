@@ -4,11 +4,11 @@ title: 撰寫並上線第八批旅遊文章：二十篇 zh-TW 攻略與情報
 status: in-progress
 priority: P2
 area: docs
-owner: claude-fable-5-1
-claimed_at: 2026-09-22T13:07:55Z
+owner: claude-opus-5-5
+claimed_at: 2026-10-06T03:44:57Z
 created_at: 2026-09-20T02:32:43Z
 completed_at:
-branch: claude/launch-articles-batch-8
+branch: claude/batch-8-wave-2
 depends_on:
   - 2026-09-19-plan-articles-batch-8
 scope:
