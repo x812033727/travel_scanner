@@ -125,6 +125,14 @@ picture; on its storyboard card the kept shots have a blue border and a 「保�
   the nine files stales the receipt again: an independent reviewer (`claude-pr-review-1344`)
   reads the nine diffs, adds a `## PR #1344 … increment: 9 files (2026-10-06)` section to
   `review.md` and binds the nine hashes in both files.
+  A second verification, on head `f74b00490`, handed back that one problem again and no
+  other, and the pass that answered it changed nothing but this note. On that head CI
+  fails in the same two jobs on the same one test (1 of 1,897 and 1 of 1,605, every other
+  check green), `checkDurationReview()` names the same nine files, each of the nine hashes
+  `review.json` holds still equals the file at the base `a435f0672`, the other 99 bound
+  files match their bindings, and main has not moved past `fdc0ce920`. The nine files are
+  as final as verification can make them, so the re-binding can start from the branch as
+  it is; another pass on the author's side has nothing it may change.
 - **Reverse checks** (the base tree exported with `git archive`, the new tests copied in;
   run again by the agent that finished this from the first one's patch). The new keyframes
   test fails on the base at the first `--accept-best`: an explainer's failing shot is kept,
