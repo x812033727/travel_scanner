@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-a-failing-video-is-deferred
 title: A failing video is deferred on its own instead of halting the lane
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-video-unstuck
 claimed_at: 2026-10-06T08:03:45Z
 created_at: 2026-10-06T08:03:10Z
-completed_at:
+completed_at: 2026-10-06T22:51:49Z
 branch: claude/video-unstuck-loop-fairness
 depends_on: []
 scope:
