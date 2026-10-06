@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-alert-in-admin-news-when-a
 title: Alert in /admin/news when a source keeps skipping the same entries
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-news-admin-followups
 claimed_at: 2026-10-06T00:41:19Z
 created_at: 2026-09-30T10:34:33Z
-completed_at:
+completed_at: 2026-10-06T01:13:37Z
 branch: claude/news-admin-followups
 depends_on: []
 scope:
