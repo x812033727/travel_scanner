@@ -6,14 +6,16 @@ import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
 import { fixtureLexicon, sandbox, tempDir } from "../core/fixtures/load.mjs";
-import { SAMPLES_PER_FRAME, SAMPLE_RATE, speechHash } from "../core/timeline.mjs";
+import { FPS, SAMPLES_PER_FRAME, SAMPLE_RATE, frameToMs, speechHash } from "../core/timeline.mjs";
+import { eachLine } from "../core/schema.mjs";
 import { LONG_ANIME_POLICY, runtimePolicyHash } from "../core/anime-policy.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
-import { buildCues } from "../core/captions.mjs";
+import { buildCues, parseSrt } from "../core/captions.mjs";
 import { approve, approvalState } from "../core/approvals.mjs";
 import { SpeechError, speechStatus, synthesize } from "./client.mjs";
 import { credentialsFile, readCredentials, writeCredentials } from "./credentials.mjs";
 import { MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts } from "./requests.mjs";
+import { listSpeechJournal } from "./speech-journal.mjs";
 import { plausibleSplit, silenceRuns, splitAtSilences, trimSilence } from "./split.mjs";
 import { buildNarration, flaggedLines, synthesizeRequest } from "./synthesis.mjs";
 import { staleTakes } from "./takes.mjs";
@@ -230,7 +232,35 @@ test("audio_ref requires an earlier original's speaker, spoken content and effec
 
 const SPEECH_MS_PER_CHARACTER = 200;
 
-function fakeServer({ status = {}, failures = [], gain = () => 1 } = {}) {
+// The written units the server times (apps/api/app/video_speech/align.py units_of), written out
+// again here so that the client's own reading (synthesis.mjs) is checked against another one.
+const serverUnits = (parts) => parts.flatMap((part) => (part.alias ? [part.text] : (part.text.match(/[A-Za-z0-9][A-Za-z0-9.+#'_%-]*|\s|./gsu) ?? []).filter((unit) => !/^\s$/u.test(unit))));
+
+/**
+ * The fake voice. Speech takes 200 ms a character, the voices' 300 characters a minute, then the
+ * requested break: at that pace every fixture's chapters run the 10 s YouTube needs, as a real
+ * video's do. `chars` is when each written unit is spoken: a segment's units share its tone evenly.
+ */
+function speechOf(segments, gain) {
+  const audio = [];
+  const chars = [];
+  let at = 0;
+  for (const segment of segments) {
+    const length = segment.parts.reduce((sum, part) => sum + part.text.length, 0) * SPEECH_MS_PER_CHARACTER;
+    const units = serverUnits(segment.parts);
+    units.forEach((text, index) => chars.push({ text, start_ms: Math.round(at + (length * index) / units.length), end_ms: Math.round(at + (length * (index + 1)) / units.length) }));
+    audio.push(tone(length).map((sample) => Math.round(sample * gain())), quiet(segment.break_after_ms));
+    at += length + (segment.break_after_ms ?? 0);
+  }
+  return { wav: encodeWav(concatSamples(audio)), chars };
+}
+
+/**
+ * A narration server. Its POST /speech/align answers 404, as a site from before the route does,
+ * unless `align` is given: then it times an Azure body in the same paid call, as the site does
+ * since #1315, or answers whatever `align(body)` returns when that is a function.
+ */
+function fakeServer({ status = {}, failures = [], gain = () => 1, align = null } = {}) {
   const calls = [];
   const fetchImpl = async (url, init) => {
     calls.push({ url, init });
@@ -240,13 +270,22 @@ function fakeServer({ status = {}, failures = [], gain = () => 1 } = {}) {
       return Response.json({ configured: true, region: "eastasia", voices: ["zh-TW-HsiaoChenNeural", "zh-TW-YunJheNeural"], output_format: "riff-48khz-16bit-mono-pcm", max_request_characters: 1500, monthly_limit: 450000, used: 0, remaining: 450000, ...status });
     }
     const body = JSON.parse(init.body);
-    // Speech takes 200 ms a character, the voices' 300 characters a minute, then the requested
-    // break: at that pace every fixture's chapters run the 10 s YouTube needs, as a real video's do.
-    const audio = concatSamples(body.segments.flatMap((segment) => [tone(segment.parts.reduce((sum, part) => sum + part.text.length, 0) * SPEECH_MS_PER_CHARACTER).map((sample) => Math.round(sample * gain())), quiet(segment.break_after_ms)]));
-    return new Response(encodeWav(audio), { status: 200, headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "10" } });
+    if (url.endsWith("/api/video/speech/align")) {
+      if (!align) return new Response("not found", { status: 404 });
+      const answer = typeof align === "function" ? align(body) : null;
+      if (answer) return answer;
+      const { wav, chars } = speechOf(body.speech.segments, gain);
+      return Response.json({ source: "azure", model: body.speech.voice, chars, audio: wav.toString("base64"), billable_characters: 10 });
+    }
+    return new Response(speechOf(body.segments, gain).wav, { status: 200, headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "10" } });
   };
   return { calls, fetchImpl };
 }
+/** How many calls went to each paid route. */
+const paidRoutes = (server) => ({
+  align: server.calls.filter((call) => call.url.endsWith("/api/video/speech/align")).length,
+  speech: server.calls.filter((call) => call.url.endsWith("/api/video/speech")).length,
+});
 
 test("the client retries throttling with Retry-After and sorts failures by who can fix them", async () => {
   const slept = [];
@@ -291,6 +330,52 @@ test("a request whose silences do not match its text is redone line by line", as
   assert.equal(bodies.length, 3);
   assert.equal(result.billable, 15);
   assert.deepEqual([...result.clips.keys()], ["a", "b"]);
+});
+
+/** Where a fake take's speech starts in its clip, in ms: the fake voice's tone opens on a zero sample. */
+const onsetMs = (clip) => ((clip.findIndex((sample) => sample !== 0) - 1) * 1000) / SAMPLE_RATE;
+
+test("a request's measured timing goes to its lines in text order, moved to each line's own clip, and only when every unit the server timed is the request's", async () => {
+  const lines = [
+    { id: "a", parts: [{ text: "第一句，用 " }, { text: "LLM", alias: "L L M" }, { text: " 說。" }], weight: 6 },
+    { id: "b", parts: [{ text: "第二句 GPT-6 也說了。" }], weight: 8 },
+  ];
+  const request = { id: "s#0", lines, body: { voice: "zh-TW-HsiaoChenNeural", rate: "+0%", segments: lines.map((line, index) => ({ parts: line.parts, break_after_ms: index ? 0 : 800 })) } };
+  const answer = (body, edit = (chars) => chars) => {
+    const { wav, chars } = speechOf(body.segments, () => 1);
+    return { wav, billable: 10, timing: { source: "azure", model: body.voice, chars: edit(chars) } };
+  };
+  const result = await synthesizeRequest(request, async (body) => answer(body));
+  assert.equal(result.fallback, false);
+  // A term read through its spoken form is one unit, as the server times it.
+  assert.deepEqual(result.timings.get("a").chars.map((unit) => unit.text), ["第", "一", "句", "，", "用", "LLM", "說", "。"]);
+  assert.deepEqual(result.timings.get("b").chars.map((unit) => unit.text), ["第", "二", "句", "GPT-6", "也", "說", "了", "。"]);
+  for (const id of ["a", "b"]) {
+    const clip = result.clips.get(id);
+    const { source, model, chars } = result.timings.get(id);
+    assert.deepEqual([source, model], ["azure", "zh-TW-HsiaoChenNeural"]);
+    assert.ok(Math.abs(chars[0].start_ms - onsetMs(clip)) <= 1, `${id}: first unit at ${chars[0].start_ms} ms, speech at ${onsetMs(clip)} ms of its clip`);
+    assert.ok(chars.every((unit, index) => unit.start_ms >= 0 && unit.start_ms <= unit.end_ms && unit.end_ms <= (clip.length * 1000) / SAMPLE_RATE && (!index || chars[index - 1].start_ms <= unit.start_ms)));
+  }
+  // Units that are not exactly the request's leave every line of it untimed: nothing is guessed.
+  for (const edit of [
+    (chars) => chars.flatMap((unit) => (unit.text === "LLM" ? ["L", "L", "M"].map((text) => ({ ...unit, text })) : [unit])),
+    (chars) => chars.slice(1),
+    (chars) => chars.map((unit) => (unit.text === "也" ? { ...unit, text: "又" } : unit)),
+  ]) {
+    assert.equal((await synthesizeRequest(request, async (body) => answer(body, edit))).timings.size, 0);
+  }
+  // Units heard in a neighbour's clip are not the line's: that line keeps none, the other its own.
+  const crossed = await synthesizeRequest(request, async (body) => answer(body, (chars) => chars.map((unit, index) => (index >= 8 ? { ...unit, start_ms: unit.start_ms - 1500 } : unit))));
+  assert.deepEqual([...crossed.timings.keys()], ["a"]);
+  // A request whose silences do not fit its text is redone line by line; each answer times its own line.
+  const joined = { ...request, body: { ...request.body, segments: request.body.segments.map((segment) => ({ ...segment, break_after_ms: 0 })) } };
+  const single = await synthesizeRequest(joined, async (body) => answer(body));
+  assert.equal(single.fallback, true);
+  assert.deepEqual([...single.timings.keys()], ["a", "b"]);
+  assert.equal(single.timings.get("b").chars[0].start_ms, Math.round(onsetMs(single.clips.get("b"))));
+  // An answer without timing (a Gemini voice, an answer kept by the journal) times nothing.
+  assert.equal((await synthesizeRequest(request, async (body) => ({ ...answer(body), timing: undefined }))).timings.size, 0);
 });
 
 test("narration is each clip followed by silence up to its end frame", () => {
@@ -713,6 +798,149 @@ test("tts on a drama gives each speaker their voice, and names the character who
   assert.equal(await main(["tts", "--slug", box.slug], refused.ctx), EXIT.owner);
   assert.match(refused.out.stderr, /voice zh-TW-YunJheNeural is not on the admin card's allowlist \(spoken by yandi \(炎帝\)\)/);
   assert.equal(strict.calls.filter((call) => call.url.endsWith("/api/video/speech")).length, 0, "nothing synthesized");
+});
+
+/** The unit each cue's first letter or number was timed in: a line's cues hold its letters and numbers, in order. */
+function cueHeads(cues, chars) {
+  const heard = /[\p{L}\p{N}]/u;
+  const owners = chars.flatMap((unit, index) => [...unit.text].filter((char) => heard.test(char)).map(() => index));
+  let at = 0;
+  return cues.map((cue) => {
+    const head = owners[at];
+    at += [...cue.text].filter((char) => heard.test(char)).length;
+    return head;
+  });
+}
+
+test("an Azure voice is timed in its one paid call: timeline.json carries each line's measured characters, its CC cues start on them, a reused take keeps them, and the speech hash does not move", async () => {
+  const box = sandbox();
+  const server = fakeServer({ align: true });
+  const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
+  const run = (fetch = server.fetchImpl) => capture({ root: box.root, env, home: box.base, fetch });
+  const timelineFile = path.join(box.workdir, "timeline.json");
+  const cuesOnTheirCharacters = (timeline) => {
+    const { doc } = loadProject({ slug: box.slug, root: box.root });
+    const { cues } = buildCues(timeline, Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, line.text])), "zh-TW");
+    for (const line of timeline.lines.filter((each) => each.timing)) {
+      const own = cues.filter((cue) => cue.line === line.id);
+      cueHeads(own, line.timing.chars).forEach((unit, index) => {
+        const heard = frameToMs(line.start_frame) + line.timing.chars[unit].start_ms;
+        assert.ok(Math.abs(own[index].start_ms - heard) <= 1000 / FPS, `${line.id} cue ${index + 1} starts at ${own[index].start_ms} ms, its first character at ${heard} ms`);
+      });
+    }
+    return cues;
+  };
+
+  const first = run();
+  assert.equal(await main(["tts", "--slug", box.slug], first.ctx), EXIT.ok, first.out.stderr);
+  assert.deepEqual(paidRoutes(server), { align: 3, speech: 0 }, "one paid call a scene, on the route that times it as well");
+  assert.match(first.out.stdout, /^7 of 7 lines carry measured character times/m);
+  const timeline = JSON.parse(readFileSync(timelineFile, "utf8"));
+  // The minimal fixture's hash as core/drama.test.mjs pins it: the timing never enters it.
+  assert.equal(timeline.speech_hash, "af5d5f5eb75aaa69");
+  for (const line of timeline.lines) {
+    const clip = parseWav(readFileSync(path.join(box.workdir, "audio", `${line.id}.wav`))).samples;
+    assert.deepEqual([line.timing.source, line.timing.model], ["azure", "zh-TW-HsiaoChenNeural"]);
+    assert.ok(Math.abs(line.timing.chars[0].start_ms - onsetMs(clip)) <= 1, `${line.id}: first unit at ${line.timing.chars[0].start_ms} ms, speech at ${onsetMs(clip)} ms of its clip`);
+    assert.deepEqual(Object.keys(line).slice(-2), ["audio_sha256", "timing"]);
+  }
+  // p5vs is read from a `say` that changes only its punctuation, so its letters line up as well.
+  const cues = cuesOnTheirCharacters(timeline);
+  // The captions stage (core/stages.mjs, unchanged) writes those same cues.
+  const captions = run();
+  assert.equal(await main(["captions", "--slug", box.slug], captions.ctx), EXIT.ok, captions.out.stderr + captions.out.stdout);
+  assert.deepEqual(parseSrt(readFileSync(path.join(box.workdir, "captions", "zh-TW.srt"), "utf8")), cues.map(({ start_ms, end_ms, text }) => ({ start_ms, end_ms, text })));
+  assert.equal(JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8")).runs.filter((entry) => entry.stage === "tts").at(-1).timed, 7);
+
+  // A run that reuses every take buys nothing and writes the same timeline, timing and all.
+  const bytes = readFileSync(timelineFile);
+  const again = run();
+  assert.equal(await main(["tts", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.deepEqual(paidRoutes(server), { align: 3, speech: 0 });
+  assert.deepEqual(readFileSync(timelineFile), bytes);
+
+  // An edited line is retaken on its own and timed; each of its two cues starts on its first character.
+  const file = path.join(box.dir, "video.json");
+  writeFileSync(file, readFileSync(file, "utf8").replace("你能接受它想多久才回答。", "你能接受它想多久才回答？如果答案是越快越好，那就先從小模型開始試，再看要不要換。"));
+  const edited = run();
+  assert.equal(await main(["tts", "--slug", box.slug], edited.ctx), EXIT.ok, edited.out.stderr);
+  assert.deepEqual(paidRoutes(server), { align: 4, speech: 0 });
+  const longer = JSON.parse(readFileSync(timelineFile, "utf8"));
+  const project = loadProject({ slug: box.slug, root: box.root });
+  assert.equal(longer.speech_hash, speechHash(project.doc, project.lexicon));
+  assert.equal(cuesOnTheirCharacters(longer).filter((cue) => cue.line === "b3tn").length, 2);
+
+  // A retake on a site without the align route has no timing, and the old take's goes with it.
+  const old = fakeServer();
+  const flags = path.join(box.work, "flags.json");
+  writeFileSync(flags, JSON.stringify({ flags: ["m4qa"] }));
+  const redo = run(old.fetchImpl);
+  assert.equal(await main(["tts", "--slug", box.slug, "--redo", flags], redo.ctx), EXIT.ok, redo.out.stderr);
+  assert.deepEqual(paidRoutes(old), { align: 1, speech: 1 }, "asked once, refused without a charge, then synthesized");
+  const after = JSON.parse(readFileSync(timelineFile, "utf8"));
+  assert.equal(after.lines.find((line) => line.id === "m4qa").timing, undefined);
+  assert.equal(existsSync(path.join(box.workdir, "audio", "m4qa.timing.json")), false);
+  for (const line of after.lines.filter((each) => each.id !== "m4qa")) assert.deepEqual(line.timing, longer.lines.find((each) => each.id === line.id).timing, line.id);
+  assert.match(redo.out.stdout, /^6 of 7 lines carry measured character times/m);
+  assert.equal(after.speech_hash, longer.speech_hash);
+});
+
+test("a repeated take is its original's take, measured times included, and loses them with it", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  doc.voice = { provider: "azure", name: "zh-TW-HsiaoChenNeural" };
+  for (const character of doc.characters) character.voice = { provider: "azure", name: "zh-TW-YunJheNeural" };
+  const original = doc.scenes[1].lines[0];
+  doc.scenes[3].lines.push({ ...original, id: "copy1", audio_ref: original.id });
+  writeFileSync(file, JSON.stringify(doc));
+  const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
+  const timingOf = (id) => JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8")).lines.find((line) => line.id === id).timing;
+  const server = fakeServer({ align: true });
+  const first = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
+  assert.equal(await main(["tts", "--slug", box.slug], first.ctx), EXIT.ok, first.out.stderr);
+  assert.equal(paidRoutes(server).speech, 0);
+  assert.ok(timingOf(original.id));
+  assert.deepEqual(timingOf("copy1"), timingOf(original.id));
+  // Retaken on a site that cannot time it, the original has no times, and neither has its repeat.
+  const flags = path.join(box.work, "flags.json");
+  writeFileSync(flags, JSON.stringify({ flags: ["copy1"] }));
+  const old = fakeServer();
+  const retake = capture({ root: box.root, env, home: box.base, fetch: old.fetchImpl });
+  assert.equal(await main(["tts", "--slug", box.slug, "--redo", flags], retake.ctx), EXIT.ok, retake.out.stderr);
+  assert.deepEqual(paidRoutes(old), { align: 1, speech: 1 });
+  assert.equal(timingOf(original.id), undefined);
+  assert.equal(timingOf("copy1"), undefined);
+});
+
+test("a Gemini voice never asks for timing: no aligner is live, so its lines keep the estimate", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const server = fakeServer({ align: true, status: { gemini_configured: true, gemini_monthly_limit: 300000, gemini_used: 0 } });
+  const { ctx, out } = capture({ root: box.root, env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" }, home: box.base, fetch: server.fetchImpl });
+  assert.equal(await main(["tts", "--slug", box.slug], ctx), EXIT.ok, out.stderr);
+  assert.deepEqual(paidRoutes(server), { align: 0, speech: 7 });
+  const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+  assert.ok(timeline.lines.every((line) => !("timing" in line)));
+  assert.doesNotMatch(out.stdout, /measured character times/);
+});
+
+test("an answer lost on the aligned route holds its request in the speech journal: it is sent again on neither route", async () => {
+  const box = sandbox();
+  const lost = () => new Response(JSON.stringify({ code: "video_speech_answer_lost", detail: "請求已送到 API，回覆沒有在時限內回來" }), { status: 504, headers: { "Content-Type": "application/json" } });
+  const server = fakeServer({ align: lost });
+  const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
+  const run = () => capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
+  const first = run();
+  assert.equal(await main(["tts", "--slug", box.slug], first.ctx), EXIT.owner);
+  const project = loadProject({ slug: box.slug, root: box.root });
+  const sha = createHash("sha256").update(JSON.stringify(planRequests(project.doc, project.lexicon)[0].body)).digest("hex");
+  assert.match(first.out.stderr, new RegExp(`video_speech_uncertain, request sha256 ${sha}\\)`));
+  assert.deepEqual(paidRoutes(server), { align: 1, speech: 0 }, "the speech route is never asked for what may have been paid for");
+  assert.deepEqual(listSpeechJournal(path.join(box.workdir, "audio", "speech-journal")).map((entry) => [entry.sha, entry.status]), [[sha, "held"]]);
+  const second = run();
+  assert.equal(await main(["tts", "--slug", box.slug], second.ctx), EXIT.owner);
+  assert.match(second.out.stderr, /is held in the speech journal/);
+  assert.deepEqual(paidRoutes(server), { align: 1, speech: 0 });
 });
 
 test("audition writes one clip per allowed voice and a page to compare them", async () => {

@@ -33,6 +33,8 @@ function speechServer(answers = []) {
     if (url.endsWith("/api/video/speech/status")) {
       return Response.json({ configured: true, voices: ["zh-TW-HsiaoChenNeural"], monthly_limit: 0, used: 0, remaining: 0, gemini_configured: true, gemini_monthly_limit: 300000, gemini_used: 0 });
     }
+    // A site from before speech/align: tts asks it first for an Azure voice and is refused, unpaid.
+    if (url.endsWith("/api/video/speech/align")) return new Response("not found", { status: 404 });
     posts.push(JSON.parse(init.body));
     const answer = answers.shift();
     if (typeof answer === "function") return answer();

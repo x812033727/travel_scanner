@@ -19,6 +19,8 @@ scope:
   - tools/video/tts/synthesis.mjs
   - tools/video/tts/cli.mjs
   - tools/video/tts/tts.test.mjs
+  - tools/video/tts/check.test.mjs
+  - tools/video/tts/speech-journal.test.mjs
   - docs/videos/DESIGN.md
   - docs/videos/long-form/review.md
   - docs/videos/long-form/review.json
