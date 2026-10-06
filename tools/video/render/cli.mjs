@@ -138,7 +138,7 @@ async function thumbnailsOnly({ ctx, project, workdir, channel }) {
     return EXIT.ok;
   }
   const keyframes = hasPictures(doc) ? (readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots ?? {}) : {};
-  const plan = renderPlan({ ...doc, scenes: doc.scenes.filter((scene) => !isScreencast(scene)) }, themeHash(), ctx.root, { keyframes, translations: project.translations });
+  const plan = renderPlan({ ...doc, scenes: doc.scenes.filter((scene) => !isScreencast(scene)) }, themeHash(), ctx.root, { keyframes, translations: project.translations, workdir });
   if (plan.thumbnail.shot && !plan.thumbnail.keyframe) {
     ctx.stderr.write(`the thumbnail's background is the keyframe of shot ${plan.thumbnail.shot}, which is not drawn yet; run keyframes first\n`);
     return EXIT.usage;
@@ -188,12 +188,13 @@ export async function run(command, args, ctx) {
     return EXIT.lint;
   }
   const { doc, lexicon } = project;
-  const dataProblems = renderProblems(doc, ctx.root);
+  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug, root: ctx.root });
+  // Stock photos (docs/videos/ILLUSTRATED.md §圖庫照片) live in the work directory, so the check needs it too.
+  const dataProblems = renderProblems(doc, ctx.root, { workdir });
   if (dataProblems.length) {
     print(ctx.stdout, "ERROR", dataProblems);
     return EXIT.lint;
   }
-  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug, root: ctx.root });
   if (values["thumbnails-only"]) return thumbnailsOnly({ ctx, project, workdir, channel: values.channel ?? ctx.env.VIDEO_BROWSER_CHANNEL });
   // A series' compilation (docs/videos/BINGE.md) is a drama with cards and a thumbnail only:
   // the episodes' cuts already carry their subtitles, so nothing is timed to a narration here.
@@ -240,7 +241,7 @@ export async function run(command, args, ctx) {
   }
   // A drama's thumbnail and an illustrated slides video's may sit on a keyframe (docs/videos/ILLUSTRATED.md).
   const keyframes = hasPictures(doc) ? (readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots ?? {}) : {};
-  const plan = renderPlan(doc, themeHash(), ctx.root, { keyframes, screencasts, translations: project.translations });
+  const plan = renderPlan(doc, themeHash(), ctx.root, { keyframes, screencasts, translations: project.translations, workdir });
   const undrawn = (plan.thumbnail?.variants ?? []).find((variant) => variant.shot && !variant.keyframe);
   if (undrawn) {
     ctx.stderr.write(`thumbnail variant ${undrawn.id}'s background is the keyframe of shot ${undrawn.shot}, which is not drawn yet; run keyframes first\n`);
@@ -273,7 +274,7 @@ export async function run(command, args, ctx) {
   const tiles = plan.scenes.flatMap((scene) => scene.states.map((state, index) => ({ file: stillFile(state.key), label: `${scene.id} · ${scene.template} · ${index + 1}/${scene.states.length}` })));
   let renderer;
   try {
-    renderer = await openRenderer({ root: ctx.root, workdir, channel });
+    renderer = await (ctx.openRenderer ?? openRenderer)({ root: ctx.root, workdir, channel });
   } catch (error) {
     if (!(error instanceof RendererError)) throw error;
     ctx.stderr.write(`${error.message}\n`);

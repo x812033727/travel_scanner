@@ -3,10 +3,12 @@
 // of its clip this module decides the caption's lines, the groups a line is lit in, how long each
 // group is lit, and the sequence of states motion.mjs lays over the card as its own overlay.
 //
-// The timing is ESTIMATED: the speech server returns audio only, so a group's start is its share
-// of the spoken weight inside the span where the clip is not silent. timing.json says so
-// (`source: "estimated"`); the alignment ticket replaces the estimate with measured character
-// times in the same shape, and the quality check carries a warning until then.
+// The timing is MEASURED when the speech server gives it (POST /video/speech/align, speech.mjs:
+// an Azure voice's own word boundaries, or the server's aligner for any clip): a group then
+// starts where its first character is spoken. Otherwise it is ESTIMATED: a group's start is its
+// share of the spoken weight inside the span where the clip is not silent. timing.json says
+// which (`source: "aligned"` only when every phrase was measured, else `"estimated"`, and each
+// measured phrase carries `aligned: { source, model }`); the quality check warns on an estimate.
 import { measure, wrapCue } from '../core/captions.mjs';
 import { SAMPLE_RATE, spokenUnits } from '../core/timeline.mjs';
 import { PROFILE } from './core.mjs';
@@ -183,6 +185,58 @@ export function estimateGroupTimes(groups, span) {
   });
 }
 
+const spelled = (text) => String(text).replace(/\s+/g, '').normalize('NFC');
+
+/**
+ * Each group's start and end from the measured times of the phrase's written units (the server's
+ * `chars`: a CJK character, a Latin word or number, a punctuation mark each, in order, spelling the
+ * phrase with whitespace left out). A group starts where its first unit is spoken and ends where
+ * the next group starts; the first group still starts with the speech span and the last still ends
+ * with it, as captionStates lays them, and starts never run backwards. Null when the units do not
+ * spell the groups (another text, another tokenization), so the caller keeps its estimate.
+ */
+export function alignedGroupTimes(groups, chars, span) {
+  if (!groups.length || !Array.isArray(chars) || !chars.length) return null;
+  const units = chars.map((unit) => ({ text: spelled(unit?.text ?? ''), start: Number(unit?.start_ms) / 1000, end: Number(unit?.end_ms) / 1000 }));
+  if (units.some((unit) => !unit.text || !Number.isFinite(unit.start) || !Number.isFinite(unit.end))) return null;
+  const starts = [];
+  let index = 0;
+  let consumed = 0;
+  for (const group of groups) {
+    let remaining = spelled(group.text);
+    const unit = units[index];
+    if (!remaining || !unit) return null;
+    // A group that begins inside a unit an earlier group started (a term the lexicon reads as one
+    // unit, cut between its words) takes its share of that unit's time.
+    starts.push(unit.start + ((unit.end - unit.start) * consumed) / unit.text.length);
+    while (remaining.length) {
+      const current = units[index];
+      if (!current) return null;
+      const rest = current.text.slice(consumed);
+      if (remaining.startsWith(rest)) {
+        remaining = remaining.slice(rest.length);
+        index += 1;
+        consumed = 0;
+      } else if (rest.startsWith(remaining)) {
+        consumed += remaining.length;
+        remaining = '';
+      } else {
+        return null;
+      }
+    }
+  }
+  const clamp = (seconds) => Number(Math.min(span.end, Math.max(span.start, seconds)).toFixed(3));
+  const timed = [];
+  let cursor = span.start;
+  for (let position = 0; position < groups.length; position++) {
+    const start = position === 0 ? span.start : clamp(Math.max(cursor, starts[position]));
+    const end = position === groups.length - 1 ? span.end : clamp(Math.max(start, starts[position + 1]));
+    timed.push({ ...groups[position], start, end });
+    cursor = end;
+  }
+  return timed;
+}
+
 /**
  * The states of a cue's caption, each the frames one group stays lit: the first from the cue's
  * first frame (the leading silence belongs to the first group), the last to the cue's last
@@ -210,31 +264,45 @@ export function captionStates(cue, groups, fps = PROFILE.fps) {
   return states;
 }
 
-/** One phrase of timing.json, from its cue and the PCM of its clip. */
-export function phraseTiming(cue, samples, sampleRate = SAMPLE_RATE, fps = PROFILE.fps) {
+/**
+ * One phrase of timing.json, from its cue and the PCM of its clip; with `timing` (the server's
+ * `{ source, model, chars }` for this clip, speech.mjs) the groups follow the measured times and
+ * the phrase says so, else the estimate, in exactly the shape it always had.
+ */
+export function phraseTiming(cue, samples, sampleRate = SAMPLE_RATE, fps = PROFILE.fps, timing = null) {
   const lines = captionLines(cue.text);
   const span = speechSpan(samples, sampleRate);
-  const groups = estimateGroupTimes(phraseGroups(cue.text), span);
-  return {
+  const groups = phraseGroups(cue.text);
+  const aligned = timing ? alignedGroupTimes(groups, timing.chars, span) : null;
+  const timed = aligned ?? estimateGroupTimes(groups, span);
+  const phrase = {
     cue: cue.index,
     text: cue.text,
     audio_seconds: Number((samples.length / sampleRate).toFixed(3)),
     speech: span,
     lines,
-    groups,
-    states: captionStates(cue, groups, fps),
+    groups: timed,
+    states: captionStates(cue, timed, fps),
   };
+  if (aligned) phrase.aligned = { source: String(timing.source), model: String(timing.model ?? '') };
+  return phrase;
 }
 
-/** timing.json: every phrase's lines, groups, times and states, and where the times came from. */
-export function timingFile(timeline, wavs) {
+/**
+ * timing.json: every phrase's lines, groups, times and states, and where the times came from.
+ * `timings` is one server timing (or null) per cue; without it, or with none measured, the file
+ * is the estimate, byte for byte.
+ */
+export function timingFile(timeline, wavs, timings = null) {
   if (wavs.length !== timeline.cues.length) throw new Error('a clip is required for every phrase');
+  const phrases = timeline.cues.map((cue) => phraseTiming(cue, wavs[cue.index].samples, wavs[cue.index].sampleRate, timeline.fps, timings?.[cue.index] ?? null));
+  const measured = phrases.filter((phrase) => phrase.aligned).length;
   return {
     version: 1,
-    source: 'estimated',
+    source: measured === phrases.length ? 'aligned' : 'estimated',
     method: KARAOKE_VERSION,
     fps: timeline.fps,
-    phrases: timeline.cues.map((cue) => phraseTiming(cue, wavs[cue.index].samples, wavs[cue.index].sampleRate, timeline.fps)),
+    phrases,
   };
 }
 
@@ -248,11 +316,14 @@ export function captionsOption(value, env = process.env) {
 /** What checks.json records about the captions of a build. */
 export function captionsSummary(timing) {
   if (!timing) return { style: 'plain' };
+  const aligned = timing.phrases.filter((phrase) => phrase.aligned).length;
   return {
     style: 'karaoke',
     source: timing.source,
     version: timing.method,
     groups: timing.phrases.reduce((sum, phrase) => sum + phrase.groups.length, 0),
     states: timing.phrases.reduce((sum, phrase) => sum + phrase.states.length, 0),
+    // How many phrases follow measured times; left out when none, as before.
+    ...(aligned ? { aligned } : {}),
   };
 }

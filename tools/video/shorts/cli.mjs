@@ -18,13 +18,16 @@ const HELP = `Shorts pipeline (docs/videos/SHORTS.md)
   import       --from DIR --workdir OUTSIDE_REPO      (final.mp4, zh-TW.srt, meta.json)
   from-episode --slug EPISODE --workdir OUTSIDE_REPO [--episode-workdir DIR] [--short 1|2] [--speech ...] [--check]
                an explainer's two Shorts (docs/videos/<slug>/shorts.json) built on its keyframes
+  from-drama   --slug EPISODE --from SECONDS --to SECONDS --workdir OUTSIDE_REPO [--episode-workdir DIR]
+               [--meta FILE] [--captions plain|karaoke] [--channel msedge]
+               a vertical cut of an approved drama episode, the 9:16 window following the subject (locate)
   tick         the worker's knock: the site does what is due on the Shorts calendar
   track-init   --dir OUTSIDE_REPO --start YYYY-MM-DD
   report       --dir TRACKING_DIR [--now ISO]
 Narration: server is the channel's voice through the site (needs \`node tools/video/cli.mjs login\`);
 windows is the installed voice; files takes one 000.wav, 001.wav, ... per phrase from --audio-dir.
 The order for one Short: build, check-audio, qa, package, push.`;
-const FLAGS = ['file', 'source-base', 'workdir', 'voice', 'channel', 'audio-dir', 'dir', 'start', 'now', 'speech', 'redo', 'threshold', 'verify', 'from', 'slug', 'episode-workdir', 'short', 'captions'];
+const FLAGS = ['file', 'source-base', 'workdir', 'voice', 'channel', 'audio-dir', 'dir', 'start', 'now', 'speech', 'redo', 'threshold', 'verify', 'from', 'to', 'meta', 'slug', 'episode-workdir', 'short', 'captions'];
 const print = (value) => console.log(typeof value === 'string' ? value : JSON.stringify(value, null, 2));
 const need = (values, name) => {
   if (!values[name]) throw new Error(`--${name} required`);
@@ -34,7 +37,7 @@ const need = (values, name) => {
 const lexicon = () => readJson(lexiconFile(ROOT), null);
 
 /** Runs one command; resolves to the exit code: 0 done, 1 a check did not pass. */
-export async function main(args=process.argv.slice(2), { env = process.env, fetch: fetchImpl, home } = {}) {
+export async function main(args=process.argv.slice(2), { env = process.env, fetch: fetchImpl, home, root = ROOT } = {}) {
   const command = args[0];
   if (!command || command==='help' || command==='--help') {
     print(HELP);
@@ -94,6 +97,7 @@ export async function main(args=process.argv.slice(2), { env = process.env, fetc
     return 0;
   }
   if (command==='from-episode') return fromEpisode(values, { env, home, site });
+  if (command==='from-drama') return fromDramaCommand(values, { env, home, site, root });
   if (!['validate','build'].includes(command)) throw new Error(`unknown command ${command}`);
   if (!values.file) throw new Error('--file required');
   const sourceBase = path.resolve(values['source-base'] ?? path.join(ROOT,'docs/videos/ai-shorts'));
@@ -147,6 +151,23 @@ async function fromEpisode(values, { env, home, site }) {
     results.push(await build({file, sourceBase:episode.workdir, workdir, voice:values.voice, channel:values.channel, audioDir:values['audio-dir'], speech, client, lexicon:episode.lexicon ?? lexicon(), captions:values.captions}));
   }
   print(results);
+  return 0;
+}
+/**
+ * A vertical Short cut from an approved drama episode (from-drama.mjs): the episode's final.mp4
+ * between --from and --to seconds, reframed to 9:16 around the subject each shot's locate call
+ * finds, its captions drawn by the Shorts caption layer. The site is needed for the Shorts
+ * settings and for locate. After this, check-audio, qa, package and push take the build
+ * directory as usual. `root` is the repository the episode's video.json is read from (the
+ * tests hand in a throwaway one).
+ */
+async function fromDramaCommand(values, { env, home, site, root }) {
+  if (!values.slug) throw new Error('--slug required: the drama episode');
+  if (values.from === undefined || values.to === undefined) throw new Error('--from and --to required: the seconds of the episode the Short covers');
+  const workdir = need(values, 'workdir');
+  const meta = values.meta ? JSON.parse(readFileSync(path.resolve(values.meta), 'utf8')) : null;
+  const { fromDrama } = await import('./from-drama.mjs');
+  print(await fromDrama({ slug: values.slug, from: values.from, to: values.to, workdir, episodeWorkdir: values['episode-workdir'], meta, captions: values.captions, ...(values.channel ? { channel: values.channel } : {}), client: await site(), root, env, home }));
   return 0;
 }
 

@@ -18,6 +18,9 @@ describe("video media proxy for the pipeline", () => {
     expect(mediaRoute(["clips"], "POST")?.maxBytes).toBe(256 * 1024);
     expect(mediaRoute(["music"], "POST")?.kind).toBe("json");
     expect(mediaRoute(["judge"], "POST")?.timeoutMs).toBe(180_000);
+    expect(mediaRoute(["locate"], "POST")?.timeoutMs).toBe(180_000);
+    expect(mediaRoute(["stock", "search"], "POST")?.timeoutMs).toBe(90_000);
+    expect(mediaRoute(["stock", "fetch"], "POST")).toEqual({ kind: "json", maxBytes: 256 * 1024, timeoutMs: 240_000 });
     expect(mediaRoute(["jobs", JOB], "GET")?.timeoutMs).toBe(240_000);
     expect(mediaRoute(["files", "v", SHA], "PUT")?.maxBytes).toBe(PART_MAX_BYTES);
     expect(mediaRoute(["files", "v", SHA], "GET")?.kind).toBe("download");
@@ -26,6 +29,12 @@ describe("video media proxy for the pipeline", () => {
       [["images"], "GET"],
       [["jobs", "not-a-uuid"], "GET"],
       [["jobs", JOB, "x"], "GET"],
+      [["locate"], "GET"],
+      [["locate", "subjects"], "POST"],
+      [["stock"], "POST"],
+      [["stock", "search"], "GET"],
+      [["stock", "fetch", "x"], "POST"],
+      [["stock", "probe"], "POST"],
       [["files", "Upper", SHA], "GET"],
       [["files", "v", "nothash"], "PUT"],
       [["files", "v", SHA], "POST"],
@@ -53,6 +62,37 @@ describe("video media proxy for the pipeline", () => {
     expect(response.headers.get("retry-after")).toBe("30");
     expect(response.headers.get("set-cookie")).toBeNull();
     expect(await response.json()).toEqual({ code: "video_media_upstream_busy" });
+  });
+
+  it("forwards locate and the stock routes as JSON and refuses their siblings", async () => {
+    const seen: string[] = [];
+    const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
+      seen.push(url);
+      const headers = new Headers(init?.headers);
+      expect(headers.get("authorization")).toBe(`Bearer ${TOKEN}`);
+      expect(headers.get("content-type")).toBe("application/json");
+      expect(headers.has("cookie")).toBe(false);
+      expect(new TextDecoder().decode(init?.body as ArrayBuffer)).toBe('{"slug":"v"}');
+      return Response.json({ ok: true });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    for (const path of [["locate"], ["stock", "search"], ["stock", "fetch"]]) {
+      const request = new NextRequest(`https://mokaair.com/api/video/media/${path.join("/")}`, { method: "POST", headers: { ...auth, "Content-Type": "application/json" }, body: '{"slug":"v"}' });
+      const response = await POST(request, context(...path));
+      expect(response.status).toBe(200);
+      expect(await response.json()).toEqual({ ok: true });
+    }
+    expect(seen).toEqual([
+      "http://localhost:8000/api/v1/video/media/locate",
+      "http://localhost:8000/api/v1/video/media/stock/search",
+      "http://localhost:8000/api/v1/video/media/stock/fetch",
+    ]);
+    for (const path of [["stock"], ["stock", "probe"], ["locate", "subjects"]]) {
+      const response = await POST(new NextRequest(`https://mokaair.com/api/video/media/${path.join("/")}`, { method: "POST", headers: auth, body: "{}" }), context(...path));
+      expect(response.status).toBe(404);
+      expect((await response.json()).code).toBe("video_media_route_unknown");
+    }
+    expect(fetchMock).toHaveBeenCalledTimes(3);
   });
 
   it("streams a download with its byte range and file headers", async () => {

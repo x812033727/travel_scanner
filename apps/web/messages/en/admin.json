@@ -36,6 +36,7 @@
       "content": "Hotspot content",
       "travelData": "Flight & hotel data",
       "affiliate": "Affiliate links",
+      "video": "Video media",
       "other": "Other"
     }
   },
@@ -1541,6 +1542,14 @@
     "azure_speech_key": {
       "label": "Speech key",
       "help": "Azure portal → Speech resource → Keys and Endpoint, “KEY 1”. It stays on the server and is never sent to the video tool."
+    },
+    "pexels_api_key": {
+      "label": "Pexels API Key",
+      "help": "Searches and fetches real photos for the video pipeline's slides. Encrypted on the server and only ever sent to api.pexels.com; Pexels asks for a credit in the description (“Photo by … on Pexels”)."
+    },
+    "pixabay_api_key": {
+      "label": "Pixabay API Key",
+      "help": "The same use, for Pixabay. Encrypted on the server and only ever sent to pixabay.com; Pixabay asks for a credit in the description (“Image by … from Pixabay”)."
     }
   },
   "settingsPanel": {
@@ -2429,7 +2438,8 @@
       "loudness": "Loudness",
       "layout": "Layout",
       "evidence": "Evidence",
-      "variety": "Variety"
+      "variety": "Variety",
+      "grammar": "Loop grammar"
     },
     "uploadPackage": "Upload package",
     "packageChapters": "{count} chapters",
