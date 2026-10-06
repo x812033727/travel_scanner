@@ -185,6 +185,14 @@ async def reject_candidate(
     return await service.reject_candidate(session, user, candidate_id, payload)
 
 
+@admin_router.post("/candidates/{candidate_id}/reopen", response_model=CandidateDetail)
+async def reopen_candidate(
+    candidate_id: UUID, payload: CandidateAction, user: ContentManager, session: Session
+) -> CandidateDetail:
+    # Nothing is queued: the story goes back to its list for the owner, not to the pipeline.
+    return await service.reopen_candidate(session, user, candidate_id, payload)
+
+
 @admin_router.post("/candidates/{candidate_id}/publish", response_model=CandidateDetail)
 async def publish_candidate(
     candidate_id: UUID,

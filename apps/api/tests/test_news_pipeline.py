@@ -6,7 +6,7 @@ from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 from types import TracebackType
 from typing import Any, cast
-from unittest.mock import AsyncMock, Mock
+from unittest.mock import DEFAULT, AsyncMock, Mock
 from uuid import UUID, uuid4
 
 import httpx
@@ -49,6 +49,7 @@ from app.news_automation.models import (
 from app.news_automation.policy import (
     EVIDENCE_REFRESH_MARKER,
     document_fingerprint,
+    evidence_fingerprint,
 )
 from app.news_automation.policy import (
     hard_policy_problems as actual_hard_policy_problems,
@@ -56,9 +57,12 @@ from app.news_automation.policy import (
 from app.news_automation.provider_schema import portable_json_schema
 from app.news_automation.schemas import (
     CandidateAction,
+    DuplicateJudgement,
     EditorialDraft,
     LocaleReviewResult,
     LocalizedDocument,
+    RedraftJudgement,
+    ReviewJudgement,
     SettingsWrite,
     VerificationResult,
 )
@@ -71,6 +75,9 @@ REPLY_MODELS: tuple[type[BaseModel], ...] = (
     VerificationResult,
     LocalizedDocument,
     LocaleReviewResult,
+    ReviewJudgement,
+    DuplicateJudgement,
+    RedraftJudgement,
 )
 # Keywords OpenAI strict mode or Anthropic structured outputs reject over raw HTTP.
 REJECTED_KEYWORDS = {
@@ -150,6 +157,32 @@ def test_dropped_bounds_stay_visible_to_the_model_and_enforced_by_pydantic() -> 
         )
     with pytest.raises(ValueError, match="map-typed"):
         portable_json_schema({"type": "object", "additionalProperties": {"type": "string"}})
+
+
+@pytest.mark.parametrize(
+    ("model", "decisions"),
+    [
+        (ReviewJudgement, ["publish", "reject", "manual"]),
+        (DuplicateJudgement, ["distinct", "duplicate", "manual"]),
+        (RedraftJudgement, ["rewrite", "reject", "manual"]),
+    ],
+    ids=lambda value: value.__name__ if isinstance(value, type) else None,
+)
+def test_a_judge_reply_names_its_decisions_and_has_no_bound_to_fail_on(
+    model: type[BaseModel], decisions: list[str]
+) -> None:
+    schema = model.model_json_schema()
+    assert schema["properties"]["decision"]["enum"] == decisions
+    assert set(schema["properties"]) == {"decision", "reasons"}
+    # A bound a strict provider cannot enforce would only show up as a failed validation,
+    # which costs the repair round; the code that stores the reasons cuts them instead.
+    assert "Constraints:" not in str(schema)
+    long_winded = model.model_validate({"decision": decisions[0], "reasons": ["字" * 5_000] * 40})
+    assert len(long_winded.model_dump()["reasons"]) == 40
+    assert model.model_validate({"decision": decisions[2]}).model_dump()["reasons"] == []
+    for other in ({"publish", "distinct", "rewrite"} - set(decisions)) | {"approve"}:
+        with pytest.raises(ValidationError):
+            model.model_validate({"decision": other, "reasons": []})
 
 
 def test_model_ids_are_held_to_the_catalog_pattern() -> None:
@@ -809,16 +842,21 @@ def test_candidate_job_reads_admin_ai_settings_and_requeues_only_full_capacity(
         return next(outcomes)
 
     queue = Mock()
+    offered = AsyncMock()
     monkeypatch.setattr(jobs, "SessionFactory", FakeSessionFactory)
     monkeypatch.setattr(jobs, "load_runtime_settings", AsyncMock(return_value=runtime))
     monkeypatch.setattr(jobs, "process_candidate", process)
     monkeypatch.setattr(jobs, "get_redis", Mock())
     monkeypatch.setattr(jobs, "_close_resources", AsyncMock())
     monkeypatch.setattr(jobs, "_queue", lambda: (Mock(), queue))
+    # A skipped candidate may be resting in a hold; whether the review judge is asked about
+    # it is test_news_judge.py's subject, and needs a real session.
+    monkeypatch.setattr(jobs, "_offer_to_judge", offered)
     for _ in range(4):
         jobs.run_candidate(str(uuid4()))
     assert environments == [runtime] * 4
     assert queue.enqueue_in.call_count == 1
+    assert offered.await_count == 1
 
 
 def test_scheduler_requeues_a_candidate_once_per_reason_and_hour(
@@ -1064,6 +1102,8 @@ def test_the_news_worker_container_runs_a_pool_after_recovering_once(
             events.append("start")
 
     monkeypatch.setattr(worker, "recover_interrupted", recover)
+    # The review judge's cut-off runs are recovered beside it (test_news_judge.py).
+    monkeypatch.setattr(worker, "recover_interrupted_judging", AsyncMock(return_value=[]))
     monkeypatch.setattr(worker, "WorkerPool", Pool)
     pool_size = worker.pool_size
     monkeypatch.setattr(worker, "pool_size", lambda configured: configured)
@@ -2361,3 +2401,654 @@ async def test_jevs_last_call_asks_each_locale_once_when_every_one_is_answered(
     assert [
         (item.locale, item.tier, item.confidence, item.reasons, item.usage) for item in decisions
     ] == [(locale, "act", 0.97, [], usage) for locale in LOCALES]
+
+
+JUDGE_REASONS = ["每一項說法都有來源支持。", "對一般讀者是重要的 AI 事件。"]
+JUDGE_DIRECTIONS = ["刪掉來源沒有提到的上市日期。", "效能數字改寫成該公司自己的說法。"]
+# The hash the pipeline computes from seed_single_source_candidate's one evidence page.
+SEEDED_EVIDENCE_HASH = evidence_fingerprint([{"url": FIRST_PARTY_URL, "content_hash": "f" * 64}])
+
+
+def every_account_full() -> AppError:
+    return AppError(429, "subscription_quota_paused", "every Claude account is at 100%")
+
+
+def judge_row(
+    candidate: NewsCandidate, verdict: str, stage: str, hold: str, /, **changes: Any
+) -> NewsAssessment:
+    """A verdict the way judge.py stores one; these tests write the row themselves.
+
+    ``changes`` replace columns of that row, the verdict included.
+    """
+
+    values: dict[str, Any] = {
+        "candidate_id": candidate.id,
+        "assessment_type": "judge",
+        "verdict": verdict,
+        "provider": "anthropic",
+        "model": "claude-opus-5-5",
+        "reasons_json": list(JUDGE_REASONS),
+        "details_json": {"stage": stage, "hold": hold},
+        "evidence_hash": candidate.evidence_hash,
+        "prompt_version": candidate.prompt_version,
+    }
+    return NewsAssessment(**{**values, **changes})
+
+
+def test_the_judge_markers_are_kept_for_a_rerun_and_never_read_as_a_reverify() -> None:
+    markers = {pipeline.JUDGE_APPROVED_MARKER, pipeline.JUDGE_REDRAFT_MARKER}
+    assert markers == {"news_judge_approved", "news_judge_redraft"}
+    assert markers <= pipeline.KEPT_MARKERS
+    assert not markers & pipeline.REVERIFY_MARKERS
+
+
+def test_a_judged_publication_is_recorded_with_what_the_judge_wrote() -> None:
+    written = pipeline.judge_publish_reason([" 來源充分。", "", "重要事件。 "])
+    assert written == "來源充分。 重要事件。"
+    # The publication record always carries a reason, also when the judge gave none.
+    assert pipeline.judge_publish_reason([]) == pipeline.judge_publish_reason(["  "])
+    assert "judge" in pipeline.judge_publish_reason([])
+
+
+async def seed_judge_approved_draft(
+    factory: async_sessionmaker[AsyncSession], monkeypatch: pytest.MonkeyPatch
+) -> tuple[UUID, dict[str, Any], list[Locale]]:
+    """A verified draft the judge approved, left the way judge.py applies that verdict.
+
+    The four switches the judge needs are on, and the one page is not first-party: stage
+    one cannot send the story out on its own, so it stops as a draft for the review queue.
+    """
+
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        settings = await session.get(NewsAutomationSettings, 1)
+        assert settings is not None
+        settings.mode, settings.auto_publish_ai, settings.judge_enabled = "automatic", True, True
+        for row in await session.scalars(
+            select(NewsEvidence).where(NewsEvidence.candidate_id == candidate.id)
+        ):
+            row.is_first_party = False
+        await session.commit()
+        candidate_id = candidate.id
+    mocks = stage_one_mocks(monkeypatch)
+    mocks["duplicate"] = AsyncMock(return_value=("distinct", 0.01, []))
+    monkeypatch.setattr(ai, "jev_duplicate_check", mocks["duplicate"])
+    translated = stage_two_mocks(monkeypatch)
+    async with factory() as session:
+        assert await pipeline.process_candidate(
+            session, Mock(), get_settings(), candidate_id
+        ) == "manual_review"
+        stored = await session.get(NewsCandidate, candidate_id)
+        assert stored is not None and stored.error_code == "news_zh_draft_ready"
+        session.add(judge_row(stored, "publish", "zh_draft", "news_zh_draft_ready"))
+        stored.judge_decision, stored.judge_hold = "publish", "news_zh_draft_ready"
+        stored.status, stored.error_code = "discovered", pipeline.JUDGE_APPROVED_MARKER
+        stored.error_detail = None
+        stored.retry_count += 1
+        await session.commit()
+    return candidate_id, mocks, translated
+
+
+@pytest.mark.asyncio
+async def test_a_draft_the_judge_approved_is_translated_and_published_in_the_owners_place(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    candidate_id, mocks, translated = await seed_judge_approved_draft(factory, monkeypatch)
+
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        audits = list(await session.scalars(select(AdminAuditLog)))
+        human = list(
+            await session.scalars(
+                select(NewsAssessment).where(NewsAssessment.assessment_type == "human")
+            )
+        )
+        published = {
+            row.locale: row.published_version
+            for row in await session.scalars(select(GuideArticleLocale))
+        }
+    await engine.dispose()
+
+    assert result == "published"
+    assert stored is not None
+    assert (stored.status, stored.error_code) == ("published", None)
+    # The judge never signs as a person.
+    assert (stored.human_decision, stored.human_reason, human) == (None, None, [])
+    # The stored draft is what gets translated: no second draft, no second duplicate check.
+    mocks["draft"].assert_awaited_once()
+    mocks["duplicate"].assert_awaited_once()
+    assert translated == ["zh-CN", "en", "ja", "ko"]
+    assert mocks["jev_locales"] == [("zh-TW",), ("zh-TW", "zh-CN", "en", "ja", "ko")], (
+        "Jev's last call ran on the five locales"
+    )
+    assert set(published) == {"zh-TW", "zh-CN", "en", "ja", "ko"}
+    assert all(version is not None for version in published.values())
+    assert "news_candidate_auto_published" not in [row.action for row in audits]
+    judged = [row for row in audits if row.action == "news_candidate_judge_published"]
+    assert len(judged) == 1 and judged[0].actor_user_id is None
+    assert judged[0].metadata_json["system_actor"] is True
+    assert judged[0].metadata_json["judge_model"] == "claude-opus-5-5"
+    publications = [row for row in audits if row.action == "guide_article_published"]
+    assert len(publications) == 5
+    for row in publications:
+        metadata = row.metadata_json
+        assert row.actor_user_id is None
+        assert "human_override" not in metadata
+        assert {
+            key: metadata[key]
+            for key in ("judge", "judge_provider", "judge_model", "judged_stage")
+        } == {
+            "judge": True,
+            "judge_provider": "anthropic",
+            "judge_model": "claude-opus-5-5",
+            "judged_stage": "zh_draft",
+        }
+        assert metadata["reason"] == " ".join(JUDGE_REASONS)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "withdrawn",
+    [
+        "other-evidence",
+        "newer-verdict",
+        "another-stage",
+        "draft-edited",
+        "no-event-date",
+        "no-verdict",
+    ],
+)
+async def test_the_approved_marker_alone_publishes_nothing(
+    monkeypatch: pytest.MonkeyPatch, withdrawn: str
+) -> None:
+    """The marker says the judge asked; the verdict row and the verified draft are the
+    approval. Without them the story is drafted and checked again like any other."""
+
+    engine, factory = await database()
+    candidate_id, mocks, translated = await seed_judge_approved_draft(factory, monkeypatch)
+    async with factory() as session:
+        stored = await session.get(NewsCandidate, candidate_id)
+        approval = await session.scalar(
+            select(NewsAssessment).where(NewsAssessment.assessment_type == "judge")
+        )
+        assert stored is not None and approval is not None
+        if withdrawn == "other-evidence":
+            approval.evidence_hash = "0" * 64
+        elif withdrawn == "newer-verdict":
+            session.add(
+                judge_row(
+                    stored,
+                    "manual",
+                    "zh_draft",
+                    "news_zh_draft_ready",
+                    created_at=datetime.now(UTC) + timedelta(seconds=5),
+                )
+            )
+        elif withdrawn == "another-stage":
+            approval.details_json = {**approval.details_json, "stage": "final"}
+        elif withdrawn == "draft-edited":
+            stored.draft_bundle_json = {
+                "zh-TW": news_document("Changed since it was verified").model_dump(mode="json")
+            }
+        elif withdrawn == "no-event-date":
+            stored.event_date = None
+        else:
+            await session.delete(approval)
+        await session.commit()
+
+    seen_by_the_writer: list[str | None] = []
+
+    async def watched(*_args: Any, **_kwargs: Any) -> Any:
+        async with factory() as other:
+            seen_by_the_writer.append(
+                await other.scalar(
+                    select(NewsCandidate.error_code).where(NewsCandidate.id == candidate_id)
+                )
+            )
+        return DEFAULT
+
+    mocks["draft"].side_effect = watched
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        actions = list(await session.scalars(select(AdminAuditLog.action)))
+    await engine.dispose()
+
+    assert result == "manual_review"
+    assert stored is not None
+    assert (stored.status, stored.error_code) == ("manual_review", "news_zh_draft_ready")
+    assert seen_by_the_writer == [None], "the marker is dropped, not kept for the next rerun"
+    assert mocks["draft"].await_count == 2
+    assert mocks["draft"].await_args.kwargs == {}
+    assert translated == []
+    assert "news_candidate_judge_published" not in actions
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("switch", "off"),
+    [
+        ("enabled", False),
+        ("mode", "shadow"),
+        ("auto_publish_ai", False),
+        ("judge_enabled", False),
+    ],
+)
+async def test_a_switch_turned_off_while_a_judged_story_is_finished_leaves_it_to_the_owner(
+    monkeypatch: pytest.MonkeyPatch, switch: str, off: object
+) -> None:
+    engine, factory = await database()
+    candidate_id, _mocks, translated = await seed_judge_approved_draft(factory, monkeypatch)
+    async with factory() as session:
+        owner_id = await seed_owner(session)
+
+    async def last_call(*_args: Any, **kwargs: Any) -> list[ai.JevLocaleDecision]:
+        locales = kwargs.get("locales", ("zh-TW", "zh-CN", "en", "ja", "ko"))
+        if len(locales) == 5:
+            # As late as a test can reach: the last model call before publication.
+            async with factory() as other:
+                row = await other.get(NewsAutomationSettings, 1)
+                assert row is not None
+                setattr(row, switch, off)
+                await other.commit()
+        return [ai.JevLocaleDecision(locale, "act", 0.97, [], {}) for locale in locales]
+
+    monkeypatch.setattr(ai, "jev_assessments", last_call)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        assert stored is not None
+        held = (stored.status, stored.error_code, stored.human_decision)
+        unpublished = [
+            row.published_version for row in await session.scalars(select(GuideArticleLocale))
+        ]
+        actions = list(await session.scalars(select(AdminAuditLog.action)))
+        owner = await session.get(User, owner_id)
+        assert owner is not None
+        published = await service.publish_candidate(
+            session, owner, candidate_id, CandidateAction(reason="Read it myself")
+        )
+    await engine.dispose()
+
+    assert result == "manual_review"
+    assert held == ("manual_review", "news_ready_to_publish", None)
+    assert translated == ["zh-CN", "en", "ja", "ko"]
+    assert unpublished == [None] * 5, "the checked article is saved, and nothing went out"
+    assert "news_candidate_judge_published" not in actions
+    assert published.status == "published", "the hold is the ordinary publish button"
+
+
+@pytest.mark.asyncio
+async def test_jevs_last_call_can_still_hold_a_story_the_judge_approved(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    candidate_id, mocks, _translated = await seed_judge_approved_draft(factory, monkeypatch)
+
+    async def jev(*_args: Any, **kwargs: Any) -> list[ai.JevLocaleDecision]:
+        locales = kwargs.get("locales", ("zh-TW", "zh-CN", "en", "ja", "ko"))
+        mocks["jev_locales"].append(tuple(locales))
+        return [
+            ai.JevLocaleDecision(locale, "confirm" if locale == "ja" else "act", 0.8, [], {})
+            for locale in locales
+        ]
+
+    monkeypatch.setattr(ai, "jev_assessments", jev)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        unpublished = [
+            row.published_version for row in await session.scalars(select(GuideArticleLocale))
+        ]
+    await engine.dispose()
+
+    assert result == "manual_review"
+    assert stored is not None
+    assert (stored.status, stored.error_code, stored.human_decision) == (
+        "manual_review",
+        "news_jev_final_hold",
+        None,
+    )
+    assert "ja" in (stored.error_detail or "")
+    assert mocks["jev_locales"][-1] == ("zh-TW", "zh-CN", "en", "ja", "ko")
+    assert unpublished == [None] * 5
+
+
+@pytest.mark.asyncio
+async def test_a_judged_story_waiting_for_a_subscription_account_goes_on_from_its_approval(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    candidate_id, mocks, translated = await seed_judge_approved_draft(factory, monkeypatch)
+    translate = ai.translate_article
+    monkeypatch.setattr(ai, "translate_article", AsyncMock(side_effect=every_account_full()))
+
+    async with factory() as session:
+        paused = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        assert stored is not None
+        waiting = (stored.status, stored.error_code)
+    monkeypatch.setattr(ai, "translate_article", translate)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+    await engine.dispose()
+
+    assert paused == "paused"
+    assert waiting == ("discovered", pipeline.JUDGE_APPROVED_MARKER)
+    assert result == "published"
+    assert translated == ["zh-CN", "en", "ja", "ko"]
+    mocks["draft"].assert_awaited_once()
+
+
+async def seed_judge_redraft(
+    session: AsyncSession, *, marker: bool = True, **verdict: Any
+) -> tuple[UUID, UUID]:
+    """A story the judge sent back to the writer with directions, as judge.py leaves it."""
+
+    candidate = await seed_single_source_candidate(session)
+    candidate.evidence_hash = SEEDED_EVIDENCE_HASH
+    candidate.retry_count = 1
+    if marker:
+        candidate.error_code = pipeline.JUDGE_REDRAFT_MARKER
+    directions = judge_row(
+        candidate,
+        "revise",
+        "redraft",
+        "news_verification_failed",
+        **{"reasons_json": list(JUDGE_DIRECTIONS), **verdict},
+    )
+    session.add(directions)
+    await session.commit()
+    return candidate.id, directions.id
+
+
+@pytest.mark.asyncio
+async def test_a_redraft_the_judge_ordered_puts_its_directions_in_front_of_the_writer(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate_id, directions_id = await seed_judge_redraft(session)
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+    )
+    mocks = stage_one_mocks(monkeypatch)
+    reply = mocks["draft"].return_value
+
+    async with factory() as session:
+        mocks["draft"].side_effect = every_account_full()
+        paused = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        assert stored is not None
+        waiting = (stored.status, stored.error_code)
+    mocks["draft"].side_effect = None
+    mocks["draft"].return_value = reply
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        draft_run = await session.scalar(
+            select(NewsPipelineRun).where(
+                NewsPipelineRun.candidate_id == candidate_id,
+                NewsPipelineRun.stage == "draft",
+                NewsPipelineRun.status == "succeeded",
+            )
+        )
+    await engine.dispose()
+
+    # The directions wait with the story for a subscription account.
+    assert paused == "paused"
+    assert waiting == ("discovered", pipeline.JUDGE_REDRAFT_MARKER)
+    assert [call.kwargs for call in mocks["draft"].await_args_list] == [
+        {"notes": JUDGE_DIRECTIONS}
+    ] * 2
+    assert draft_run is not None
+    assert draft_run.metadata_json == {"slug": SLUG, "judge_notes": str(directions_id)}
+    # The rewrite meets every check again and, not being first-party news in automatic
+    # mode, waits in the review queue like any verified draft.
+    assert result == "manual_review"
+    assert stored is not None
+    assert (stored.status, stored.error_code) == ("manual_review", "news_zh_draft_ready")
+
+
+UNSTEERED: dict[str, dict[str, Any]] = {
+    "no-marker": {"marker": False},
+    "other-evidence": {"evidence_hash": "0" * 64},
+    "another-stage": {"details_json": {"stage": "zh_draft", "hold": "news_zh_draft_ready"}},
+    "another-verdict": {"verdict": "manual"},
+    "no-directions": {"reasons_json": []},
+    "newer-verdict": {},
+    "no-verdict": {},
+}
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("missing", list(UNSTEERED))
+async def test_a_draft_is_steered_only_by_the_marker_and_directions_for_this_evidence(
+    monkeypatch: pytest.MonkeyPatch, missing: str
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate_id, directions_id = await seed_judge_redraft(session, **UNSTEERED[missing])
+        candidate = await session.get(NewsCandidate, candidate_id)
+        directions = await session.get(NewsAssessment, directions_id)
+        assert candidate is not None and directions is not None
+        if missing == "newer-verdict":
+            session.add(
+                judge_row(
+                    candidate,
+                    "manual",
+                    "redraft",
+                    "news_verification_failed",
+                    created_at=datetime.now(UTC) + timedelta(seconds=5),
+                )
+            )
+        elif missing == "no-verdict":
+            await session.delete(directions)
+        await session.commit()
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+    )
+    mocks = stage_one_mocks(monkeypatch)
+    mocks["draft"].side_effect = every_account_full()
+
+    async with factory() as session:
+        paused = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        assert stored is not None
+        waiting = stored.error_code
+    mocks["draft"].side_effect = None
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        draft_run = await session.scalar(
+            select(NewsPipelineRun).where(
+                NewsPipelineRun.candidate_id == candidate_id,
+                NewsPipelineRun.stage == "draft",
+                NewsPipelineRun.status == "succeeded",
+            )
+        )
+    await engine.dispose()
+
+    assert (paused, result) == ("paused", "manual_review")
+    # A marker with no directions behind it is not kept: the row waits as any other does.
+    assert waiting == pipeline.SUBSCRIPTION_PAUSED
+    # The existing doubles take four positional arguments, so the keyword is not passed.
+    for call in mocks["draft"].await_args_list:
+        assert (len(call.args), call.kwargs) == (4, {})
+    assert draft_run is not None and draft_run.metadata_json == {"slug": SLUG}
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("steered", [True, False])
+async def test_a_story_the_writer_declines_is_rejected_unless_the_judge_ordered_the_rewrite(
+    monkeypatch: pytest.MonkeyPatch, steered: bool
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate_id, _directions_id = await seed_judge_redraft(session, marker=steered)
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+    )
+    mocks = stage_one_mocks(monkeypatch)
+    draft, usage, model = mocks["draft"].return_value
+    declined = draft.model_copy(
+        update={"eligible": False, "exclusion_reason": "A product promotion, not news."}
+    )
+    mocks["draft"].return_value = (declined, usage, model)
+
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+    await engine.dispose()
+
+    # The judge thought a rewrite could pass and the writer says there is no story: the
+    # owner settles that, under a code the judge does not answer. Otherwise as before.
+    outcome = "needs_redraft" if steered else "rejected"
+    assert result == outcome
+    assert stored is not None
+    assert (stored.status, stored.error_code, stored.error_detail) == (
+        outcome,
+        "news_not_eligible",
+        "A product promotion, not news.",
+    )
+    # The declined rewrite is marked as handed back, so the list badges and counts it. No
+    # hold is marked answered: this code is not one the judge is asked about.
+    assert (stored.human_decision, stored.judge_decision, stored.judge_hold) == (
+        None,
+        "manual" if steered else None,
+        None,
+    )
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("marker", "answer", "noted"),
+    [(True, "manual", True), (False, "manual", False), (True, "distinct", False)],
+    ids=["a-rewrite-stopped", "an-ordinary-run-stopped", "a-rewrite-that-goes-on"],
+)
+async def test_an_uncertain_duplicate_check_says_when_it_stopped_a_rewrite_the_judge_ordered(
+    monkeypatch: pytest.MonkeyPatch, marker: bool, answer: str, noted: bool
+) -> None:
+    """The hold replaces the marker on the row. What Jev's answer says is all that is left
+    to tell the judge, should it call the story distinct, that its rewrite is still owed."""
+
+    engine, factory = await database()
+    async with factory() as session:
+        candidate_id, _directions_id = await seed_judge_redraft(session, marker=marker)
+    monkeypatch.setattr(
+        ai,
+        "jev_duplicate_check",
+        AsyncMock(return_value=(answer, 0.5, ["semantic_duplicate_uncertain"])),
+    )
+    mocks = stage_one_mocks(monkeypatch)
+
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        said = await session.scalar(
+            select(NewsAssessment).where(NewsAssessment.assessment_type == "duplicate")
+        )
+    await engine.dispose()
+
+    assert result == "manual_review"
+    assert stored is not None and said is not None
+    held = answer == "manual"
+    assert stored.error_code == ("news_duplicate_uncertain" if held else "news_zh_draft_ready")
+    assert mocks["draft"].await_count == (0 if held else 1)
+    assert (said.provider, said.verdict) == ("jev", "manual" if held else "pass")
+    assert said.details_json == ({"interrupted": "news_judge_redraft"} if noted else {})
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("held_as", "kept"),
+    [
+        (pipeline.JUDGE_APPROVED_MARKER, "news_judge_approved"),
+        (pipeline.JUDGE_REDRAFT_MARKER, "news_judge_redraft"),
+        ("news_zh_draft_ready", None),
+    ],
+)
+async def test_a_claim_forgets_the_judges_last_answer_and_keeps_only_its_marker(
+    held_as: str, kept: str | None
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        candidate = await seed_candidate(session)
+        candidate.error_code = held_as
+        candidate.judge_decision, candidate.judge_hold = "manual", "news_zh_draft_ready"
+        await session.commit()
+        candidate_id = candidate.id
+    async with factory() as session:
+        claimed = await session.get(NewsCandidate, candidate_id)
+        assert claimed is not None
+        outcome, _settings = await pipeline._claim_capacity(session, claimed)
+    async with factory() as session:
+        stored = await session.get(NewsCandidate, candidate_id)
+    await engine.dispose()
+
+    assert outcome == "claimed"
+    assert stored is not None
+    # Whatever stops the new run is a hold the judge has not answered yet.
+    assert (stored.status, stored.error_code, stored.judge_decision, stored.judge_hold) == (
+        "drafting",
+        kept,
+        None,
+        None,
+    )
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "marker", [pipeline.JUDGE_APPROVED_MARKER, pipeline.JUDGE_REDRAFT_MARKER]
+)
+async def test_a_judged_run_whose_worker_stopped_keeps_its_marker_for_the_rerun(
+    marker: str,
+) -> None:
+    engine, factory = await database()
+    now = datetime.now(UTC)
+    async with factory() as session:
+        stalled = await seed_candidate(
+            session, status="locale_review", processing_started_at=now - timedelta(hours=2)
+        )
+        stalled.error_code = marker
+        await session.commit()
+        rerun = await pipeline.recover_stalled_candidates(session, now=now)
+        await session.refresh(stalled)
+        recovered = (stalled.status, stalled.error_code)
+        expected = [stalled.id]
+    await engine.dispose()
+
+    assert rerun == expected
+    assert recovered == ("failed", marker)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("verdict", "asked"),
+    [({}, 0), ({"evidence_hash": "0" * 64}, 1), ({"verdict": "manual"}, 1)],
+    ids=["distinct", "distinct-on-other-evidence", "handed-back"],
+)
+async def test_a_story_the_judge_called_distinct_is_not_put_to_jev_again(
+    monkeypatch: pytest.MonkeyPatch, verdict: dict[str, Any], asked: int
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        candidate.evidence_hash = SEEDED_EVIDENCE_HASH
+        session.add(
+            judge_row(candidate, "pass", "duplicate", "news_duplicate_uncertain", **verdict)
+        )
+        await session.commit()
+        candidate_id = candidate.id
+    duplicate_check = AsyncMock(return_value=("distinct", 0.01, []))
+    monkeypatch.setattr(ai, "jev_duplicate_check", duplicate_check)
+    stage_one_mocks(monkeypatch)
+
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+    await engine.dispose()
+
+    assert result == "manual_review"
+    assert duplicate_check.await_count == asked

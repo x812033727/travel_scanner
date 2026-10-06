@@ -153,6 +153,44 @@ async def test_the_detail_names_the_saved_articles_address_for_its_public_link()
 
 
 @pytest.mark.asyncio
+async def test_the_judges_answer_is_listed_and_the_stats_count_its_redraft_hand_backs() -> None:
+    from tests.test_news_pipeline import database, seed_candidate
+
+    engine, factory = await database()
+    async with factory() as session:
+        # The count is of redraft rows the judge handed back, and of nothing else it answered.
+        for status, decision in (
+            ("needs_redraft", "manual"),
+            ("needs_redraft", "manual"),
+            ("needs_redraft", None),
+            ("manual_review", "manual"),
+            ("rejected", "reject"),
+            ("duplicate", "duplicate"),
+        ):
+            row = await seed_candidate(session, status=status)
+            row.judge_decision = decision
+        await session.commit()
+
+        listed = await service.list_candidates(session, page=1, limit=20)
+        rejected = next(row for row in listed.candidates if row.status == "rejected")
+        detail = await service.candidate_detail(session, rejected.id)
+        totals = await service.stats(session)
+    await engine.dispose()
+
+    assert sorted((row.status, row.judge_decision or "") for row in listed.candidates) == [
+        ("duplicate", "duplicate"),
+        ("manual_review", "manual"),
+        ("needs_redraft", ""),
+        ("needs_redraft", "manual"),
+        ("needs_redraft", "manual"),
+        ("rejected", "reject"),
+    ]
+    assert detail.model_dump(mode="json")["judge_decision"] == "reject"
+    assert totals.judge_handed_back == 2
+    assert totals.queue_by_status["needs_redraft"] == 3
+
+
+@pytest.mark.asyncio
 async def test_candidate_list_takes_repeated_statuses_and_refuses_unknown_ones(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -253,3 +291,77 @@ async def test_not_a_duplicate_needs_content_manage_and_queues_the_candidate(
     assert cleared.await_args.args[2] == candidate_id
     assert cleared.await_args.args[3].reason == "Different event"
     enqueue.assert_called_once_with(candidate_id, retry_count=3)
+
+
+@pytest.mark.asyncio
+async def test_taking_back_a_story_the_judge_closed_needs_content_manage_and_queues_nothing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from datetime import UTC, datetime
+
+    from app.news_automation.schemas import CandidateDetail
+
+    holder = {"roles": frozenset({"viewer"})}
+    candidate_id = uuid4()
+
+    async def user() -> User:
+        editor = User(id=uuid4(), email="editor@example.com", password_hash="unused")
+        editor._admin_roles_cache = holder["roles"]  # type: ignore[attr-defined]
+        return editor
+
+    async def session() -> object:
+        yield AsyncMock()
+
+    now = datetime.now(UTC)
+    detail = CandidateDetail(
+        id=candidate_id,
+        vertical="ai",
+        status="manual_review",
+        source_title="Model release",
+        canonical_url="https://official.example/release",
+        event_date=None,
+        would_publish=None,
+        human_decision=None,
+        judge_decision="manual",
+        error_code="news_zh_draft_ready",
+        error_detail=None,
+        guide_article_id=None,
+        created_at=now,
+        updated_at=now,
+        evidence=[],
+        assessments=[],
+        runs=[],
+        documents={},
+        claim_ledger=[],
+        lint={},
+        human_reason=None,
+        human_major_error=False,
+    )
+    reopened = AsyncMock(return_value=detail)
+    enqueue = Mock(return_value="job")
+    monkeypatch.setattr(service, "reopen_candidate", reopened)
+    # The story goes back to the owner's list, not to the pipeline.
+    monkeypatch.setattr(jobs, "enqueue_candidate", enqueue)
+    app = FastAPI()
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
+    app.include_router(router.admin_router, prefix="/api/v1")
+    app.dependency_overrides[current_user] = user
+    app.dependency_overrides[get_session] = session
+    url = f"/api/v1/admin/news/candidates/{candidate_id}/reopen"
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        forbidden = await client.post(url, json={"reason": "I want to read this one"})
+        holder["roles"] = frozenset({"content"})
+        unexplained = await client.post(url, json={})
+        allowed = await client.post(url, json={"reason": "I want to read this one"})
+    assert forbidden.status_code == 403
+    assert unexplained.status_code == 422
+    assert allowed.status_code == 200
+    assert (allowed.json()["status"], allowed.json()["judge_decision"]) == (
+        "manual_review",
+        "manual",
+    )
+    reopened.assert_awaited_once()
+    assert reopened.await_args is not None
+    assert reopened.await_args.args[2] == candidate_id
+    assert reopened.await_args.args[3].reason == "I want to read this one"
+    enqueue.assert_not_called()
