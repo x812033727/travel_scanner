@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-image-prompts-fit-the-chosen-image
 title: Image prompts fit the chosen image model's limit (MiniMax 1500) instead of being refused
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-video-unstuck
 claimed_at: 2026-10-06T05:58:01Z
 created_at: 2026-10-06T05:57:42Z
-completed_at:
+completed_at: 2026-10-06T15:57:30Z
 branch: claude/video-unstuck-prompt-budget
 depends_on: []
 scope:
@@ -104,3 +104,5 @@ job in the ledger. Then clear `prompt_fixes.keyframes` in the two blocked videos
   purpose and is re-bound by an independent review agent.
 - Windows-only red left alone: `media.test.mjs` "stock fetch stores the photo…" expects
   forward slashes in a `docs/videos/...` path and gets backslashes; not touched here.
+
+- 2026-10-06: landed on main as 9c2f3aa5 (PR #1339); closed in the board sweep that carried train #1346's complete PRs.

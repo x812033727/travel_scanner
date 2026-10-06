@@ -7,6 +7,8 @@ from uuid import uuid4
 import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.admin import operations_router, operations_service
 from app.admin.operations_schemas import AdminAuditItem, AdminAuditPage
@@ -14,10 +16,11 @@ from app.auth.service import current_user
 from app.config import get_settings
 from app.database_admin.agent import DatabaseAgentClient
 from app.database_admin.schemas import AgentDatabaseOverview, AgentVerifiedBackup
-from app.db import get_session
+from app.db import Base, get_session
 from app.deployments.agent import DeploymentAgentClient
 from app.deployments.schemas import AgentOverview
 from app.models import AdminAuditLog, User
+from app.news_automation.models import NewsSource
 from app.problems import AppError, app_error_handler
 from app.schema import expected_schema_revision
 
@@ -410,8 +413,10 @@ class _Counts:
 
     def __init__(self, values: dict[str, int]) -> None:
         self.values = values
+        self.statements: list[Any] = []
 
-    async def execute(self, _statement: Any) -> Any:
+    async def execute(self, statement: Any) -> Any:
+        self.statements.append(statement)
         mapping = Mock()
         mapping.one.return_value = self.values
         result = Mock()
@@ -419,24 +424,30 @@ class _Counts:
         return result
 
 
+# The labels of that one statement.
+_COUNT_LABELS = (
+    "users",
+    "hotspots_pending",
+    "foods_pending",
+    "merchants_pending",
+    "guides_pending",
+    "hotels_pending",
+    "community_jobs_pending",
+    "news_review_pending",
+    "news_sources_stuck",
+    "video_reviews_pending",
+    "deployments_active",
+    "providers_unhealthy",
+)
+
+
 @pytest.mark.asyncio
 async def test_the_videos_badge_takes_in_what_waits_on_the_shorts_tab(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    labels = (
-        "users",
-        "hotspots_pending",
-        "foods_pending",
-        "merchants_pending",
-        "guides_pending",
-        "hotels_pending",
-        "community_jobs_pending",
-        "news_review_pending",
-        "video_reviews_pending",
-        "deployments_active",
-        "providers_unhealthy",
+    session = _Counts(
+        {**dict.fromkeys(_COUNT_LABELS, 0), "video_reviews_pending": 2, "foods_pending": 1}
     )
-    session = _Counts({**dict.fromkeys(labels, 0), "video_reviews_pending": 2, "foods_pending": 1})
     waiting = AsyncMock(return_value=3)
     monkeypatch.setattr(operations_service, "shorts_owner_needs_count", waiting)
 
@@ -448,10 +459,62 @@ async def test_the_videos_badge_takes_in_what_waits_on_the_shorts_tab(
 
 
 @pytest.mark.asyncio
-async def test_the_counts_are_cached_under_a_key_a_count_without_shorts_never_used(
+async def test_stuck_news_sources_are_counted_apart_from_the_pending_reviews(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    stored: dict[str, str] = {"admin:operations:pending:v3": '{"video_reviews_pending":1}'}
+    session = _Counts(
+        {**dict.fromkeys(_COUNT_LABELS, 0), "news_review_pending": 1, "news_sources_stuck": 2}
+    )
+    monkeypatch.setattr(operations_service, "shorts_owner_needs_count", AsyncMock(return_value=0))
+
+    values = await operations_service._live_pending_counts(session)  # type: ignore[arg-type]  # noqa: SLF001
+
+    assert values["news_sources_stuck"] == 2
+    # An incident, not a review: neither the Pending card nor the incidents card counts it.
+    assert values["pending_total"] == 1
+    assert values["alerts_total"] == 0
+
+    # The count itself, run on a database: enabled sources the scanner reported "stuck".
+    stuck = next(
+        column
+        for column in session.statements[0].selected_columns
+        if column.name == "news_sources_stuck"
+    )
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(sync, tables=[NewsSource.__table__])
+        )
+    async with async_sessionmaker(engine)() as database:
+        database.add_all(
+            NewsSource(
+                name=name,
+                url=f"https://{name}.example/feed",
+                format="rss",
+                role="evidence",
+                vertical="ai",
+                enabled=enabled,
+                last_status=status,
+            )
+            for name, enabled, status in (
+                ("refused", True, "stuck"),
+                ("challenged", True, "stuck"),
+                ("switched-off", False, "stuck"),
+                ("timed-out-once", True, "partial"),
+                ("fine", True, "succeeded"),
+            )
+        )
+        await database.commit()
+        assert await database.scalar(select(stuck)) == 2
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_the_counts_are_cached_under_a_key_no_older_count_used(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # A dict cached under v4 has no news_sources_stuck, so it is never read.
+    stored: dict[str, str] = {"admin:operations:pending:v4": '{"video_reviews_pending":1}'}
 
     async def get(key: str) -> str | None:
         return stored.get(key)
@@ -470,5 +533,5 @@ async def test_the_counts_are_cached_under_a_key_a_count_without_shorts_never_us
     second = await operations_service.pending_counts(object())  # type: ignore[arg-type]
 
     assert first == second == {"video_reviews_pending": 5}
-    assert stored["admin:operations:pending:v4"] == '{"video_reviews_pending":5}'
+    assert stored["admin:operations:pending:v5"] == '{"video_reviews_pending":5}'
     live.assert_awaited_once()

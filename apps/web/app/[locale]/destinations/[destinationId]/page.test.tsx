@@ -79,16 +79,33 @@ describe("destination guide publication boundaries", () => {
   });
 
   it("filters another destination's article request while retaining its catalog areas", async () => {
-    const other = { ...tokyo, id: "seoul", city: "Seoul", areas: ["Hongdae", "Jongno"] };
+    const other = { ...tokyo, id: "busan", city: "Busan", areas: ["Haeundae", "Seomyeon"] };
     mocks.catalog.mockResolvedValue([tokyo, other]);
     mocks.guides.mockResolvedValue({ articles: [], next_cursor: null, available: true });
-    render(await DestinationGuidePage({ params: Promise.resolve({ locale: "en", destinationId: "seoul" }) }));
-    expect(mocks.guides).toHaveBeenCalledExactlyOnceWith("en", { section: "travel", destination: "seoul" }, 3);
+    render(await DestinationGuidePage({ params: Promise.resolve({ locale: "en", destinationId: "busan" }) }));
+    expect(mocks.guides).toHaveBeenCalledExactlyOnceWith("en", { section: "travel", destination: "busan" }, 3);
     expect(screen.getByText(other.areas[0])).toBeTruthy();
     expect(screen.getByText(other.areas[1])).toBeTruthy();
     expect(screen.queryByRole("region", { name: destinationDecisions("en", "tokyo")!.title })).toBeNull();
     expect(screen.getByRole("link", { name: destinationsCopy("en").guidesHowto }).getAttribute("href"))
-      .toBe("/guides/howto?destination=seoul");
+      .toBe("/guides/howto?destination=busan");
+  });
+
+  it("renders Seoul's sourced stay decisions before partner options in server HTML", async () => {
+    const seoul = { ...tokyo, id: "seoul", city: "Seoul", areas: ["Myeongdong", "Hongdae", "Dongdaemun", "Gangnam"] };
+    mocks.catalog.mockResolvedValue([tokyo, seoul]);
+    mocks.guides.mockResolvedValue({ articles: [], next_cursor: null, available: true });
+    const html = renderToStaticMarkup(await DestinationGuidePage({ params: Promise.resolve({ locale: "en", destinationId: "seoul" }) }));
+    const decisions = destinationDecisions("en", "seoul")!;
+    const partnerAt = html.indexOf('data-testid="affiliate"');
+    expect(partnerAt).toBeGreaterThan(-1);
+    expect(html).toContain(decisions.title);
+    expect(html).not.toContain(destinationDecisions("en", "tokyo")!.title);
+    for (const row of decisions.areas) {
+      expect(html.indexOf(row.tradeoff.replaceAll("&", "&amp;"))).toBeGreaterThan(-1);
+      expect(html.indexOf(row.sources[0].url)).toBeGreaterThan(-1);
+      expect(html.indexOf(row.sources[0].url)).toBeLessThan(partnerAt);
+    }
   });
 
   it.each([true, false])("renders an honest article state when available=%s and the list is empty", async (available) => {

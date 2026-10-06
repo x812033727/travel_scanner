@@ -73,3 +73,9 @@ verify a `published` candidate's article and locales on the public site.
 - Preserve separate review decisions for 162 `news_zh_draft_ready`, 133
   `news_duplicate_uncertain`, and other evidence/locale/Jev holds.
 - No production writes, restarts, retries or publication were made during diagnosis.
+- 2026-10-06 pilot of three held drafts through `backfill_cli --resume-saved-bundles --limit 3
+  --apply` (live e12925cc4): 3 of 3 published in five locales, only a `jev-final` run each, no
+  model drafting. Details and slugs are in
+  `tasks/done/2026-10-04-resume-held-news-drafts-from-their.md`. Left for the owner: whether to
+  resume the remaining held drafts the same way (the dry run without `--limit` lists them and
+  which locales today's checks still refuse).

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-22-destination-services-pages-differ-only-by
 title: Destination services pages differ only by their title, so Google picks its own canonical
-status: open
+status: done
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-5-board-closures
+claimed_at: 2026-10-06T00:47:23Z
 created_at: 2026-09-22T10:39:00Z
-completed_at:
-branch:
+completed_at: 2026-10-06T01:39:43Z
+branch: claude/board-closures
 depends_on: []
 scope:
   - apps/web/components/travel-services/destination-services-page.tsx
@@ -48,7 +48,7 @@ are the same page.
       the route is deliberately kept out of the index and says so in its own code.
       **The owner chose the second on 2026-09-22: `noindex, follow`, all of them.**
 - [ ] Search Console's duplicate count for `/destinations/*/services` falls to zero on a
-      later crawl.
+      later crawl. Moved to `2026-10-06-confirm-search-console-services-duplicates` (owner only).
 
 ## Steps
 
@@ -63,7 +63,7 @@ are the same page.
 - [x] Tests for both halves. `e2e/seo.spec.ts` counts the runtime sitemap's `<url>`
       elements and had `5 * (7 + 33 + 33)` written into it; `npm run test:web` does not run
       the Playwright suite, so CI caught this and the local checks did not.
-- [ ] Deploy, then confirm on the live site.
+- [x] Deploy, then confirm on the live site.
 
 ## How to verify
 
@@ -97,3 +97,21 @@ Search Console's 網頁索引狀態 report.
 - `/login` is crawlable and Google is spending fetches on it (it supplies both the 5xx and the
   soft 404 example). Worth its own ticket if anyone is tidying crawl budget.
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5 (since 2026-09-22T10:43:12Z) was stale and is released so it stops locking its scope. Landed: #661. Still open: Search Console duplicate count for /destinations/*/services falls to zero on a later crawl; Deploy, then confirm on the live site.
+- 2026-10-06 (claude-opus-5-5-board-closures). The live site was checked read-only and the
+  Search Console item is split off:
+  - **Code on main (cff4a6ac6).** `destination-services-page.tsx:61` has
+    `robots: { index: false, follow: true }`, and `app/sitemaps/sitemap.ts:59-63` and `:89`
+    record that the services pages are left out.
+  - **Live, editorial User-Agent.** Eight pages across all five locales return 200 with
+    `<meta name="robots" content="noindex, follow">` and a self-canonical. They are
+    `/zh-TW/destinations/{hiroshima,nagoya,kaohsiung,sapporo}/services` (the four in the
+    table above), `/en/destinations/tokyo/services`, `/ja/destinations/osaka/services`,
+    `/ko/destinations/seoul/services` and `/zh-CN/destinations/taipei/services`. None sends
+    an `X-Robots-Tag` header, so the meta tag is the only robots signal.
+  - **Live sitemaps.** `https://mokaair.com/sitemap.xml` lists 11 sub-sitemaps (static,
+    travel-×5, life-×5), all 200. None of them has a `/destinations/*/services` URL; the
+    count is 0 across all 11.
+  - **What is left.** The Search Console DoD item. Only the owner can read that report, and
+    it waits on Google recrawling the pages. It is filed as
+    `2026-10-06-confirm-search-console-services-duplicates`, so no repository work remains
+    here.

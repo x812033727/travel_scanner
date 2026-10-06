@@ -70,14 +70,6 @@ const DIGEST_ONLY = new Map([
   ["cgr.dev/chainguard/minio", "Chainguard's free tier publishes only :latest (see ci.yml)"],
 ]);
 
-/** Fonts tools/video draws with that the video worker's image does not install yet, each with the open task that adds them. */
-const WORKER_FONTS_NOT_INSTALLED_YET = new Map([
-  // The caption locales' own thumbnail fonts (#1109, #1111) came after ops/video/package.json (#755).
-  ["@fontsource-variable/noto-sans-kr", "2026-10-05-video-worker-image-lacks-locale-thumbnail"],
-  ["@fontsource-variable/noto-sans-sc", "2026-10-05-video-worker-image-lacks-locale-thumbnail"],
-  ["@fontsource-variable/noto-sans-jp", "2026-10-05-video-worker-image-lacks-locale-thumbnail"],
-]);
-
 const read = (path) => readFileSync(join(ROOT, path), "utf8");
 
 function workflowFiles() {
@@ -230,17 +222,15 @@ test("the video worker installs exactly the versions package-lock.json resolves"
   );
 });
 
-test("the video worker installs every font tools/video draws with, or names a task that is still open", () => {
+test("the video worker installs every font tools/video draws with", () => {
   // fonts.mjs finds a font by require.resolve when a page needs it, so a missing one fails nowhere but on the host.
+  // No font may wait here for a task: the image's smoke stage (ops/video/Dockerfile) resolves every one, so
+  // a font left out would fail the image build anyway.
   const installed = JSON.parse(read("ops/video/package.json")).dependencies ?? {};
   const fonts = Object.values(FONT_PACKAGES);
   assert.ok(fonts.length >= 2, `only ${fonts.length} fonts in tools/video/render/fonts.mjs — the scan itself is broken`);
-  const missing = fonts.filter((name) => !Object.hasOwn(installed, name) && !WORKER_FONTS_NOT_INSTALLED_YET.has(name));
+  const missing = fonts.filter((name) => !Object.hasOwn(installed, name));
   assert.deepEqual(missing, [], "add these to ops/video/package.json at the version package-lock.json resolves");
-  for (const [name, task] of WORKER_FONTS_NOT_INSTALLED_YET) {
-    assert.ok(!Object.hasOwn(installed, name), `${name} is installed now — drop it from WORKER_FONTS_NOT_INSTALLED_YET`);
-    assert.ok(existsSync(join(ROOT, "tasks", "open", `${task}.md`)), `${name}: ${task} is closed — install the font or drop it here`);
-  }
 });
 
 function workflowName(file) {
