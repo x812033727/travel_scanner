@@ -88,6 +88,27 @@ describe("domain overview", () => {
     expect(within(videos).getByRole("link", { name: /影片待處理\s*0$/ }).getAttribute("href")).toBe("/admin/videos");
   });
 
+  it("shows stuck news sources in red, linked to the sources tab and outside the pending total", async () => {
+    vi.mocked(api).mockResolvedValue({ counts: { ...knownPending, news_sources_stuck: 2 }, can_deploy: false });
+    render(<AdminDashboard />);
+
+    const news = await screen.findByRole("region", { name: adminCopy.navigation.news });
+    const stuck = within(news).getByRole("link", { name: /連續抓不到文章的新聞來源\s*2$/ });
+    expect(stuck.getAttribute("href")).toBe("/admin/news?tab=sources");
+    expect(stuck.className).toContain("text-red-800");
+    await expectPendingTotal("9");
+  });
+
+  it("shows zero stuck news sources as an ordinary line", async () => {
+    vi.mocked(api).mockResolvedValue({ counts: { ...knownPending, news_sources_stuck: 0 }, can_deploy: false });
+    render(<AdminDashboard />);
+
+    const news = await screen.findByRole("region", { name: adminCopy.navigation.news });
+    const stuck = within(news).getByRole("link", { name: /連續抓不到文章的新聞來源\s*0$/ });
+    expect(stuck.className).not.toContain("text-red-800");
+    await expectPendingTotal("9");
+  });
+
   it("sums all seven known queue counts without bootstrap instead of trusting a stale total", async () => {
     vi.mocked(api).mockResolvedValue({ counts: { ...knownPending, pending_total: 999 }, can_deploy: false });
     render(<AdminDashboard />);

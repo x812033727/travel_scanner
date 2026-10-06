@@ -44,7 +44,7 @@ from app.models import (
     User,
     VideoReview,
 )
-from app.news_automation.models import NewsCandidate
+from app.news_automation.models import NewsCandidate, NewsSource
 from app.problems import AppError
 from app.schema import expected_schema_revision
 from app.video_shorts.overview import owner_needs_count as shorts_owner_needs_count
@@ -185,6 +185,14 @@ async def _live_pending_counts(session: AsyncSession) -> dict[str, int]:
             NewsCandidate,
             NewsCandidate.status.in_(("manual_review", "shadow_review")),
         ).label("news_review_pending"),
+        # Enabled news sources the scanner reports "stuck": a recent entry has failed on every
+        # hourly scan for more than six hours (docs/news-automation.md). An incident, not a
+        # review, so it stays out of pending_total.
+        _scalar_count(
+            NewsSource,
+            NewsSource.enabled.is_(True),
+            NewsSource.last_status == "stuck",
+        ).label("news_sources_stuck"),
         _scalar_count(VideoReview, VideoReview.status == "pending").label(
             "video_reviews_pending"
         ),
@@ -224,7 +232,8 @@ async def pending_counts(session: AsyncSession) -> dict[str, int]:
     redis = get_redis()
     # v3: video_reviews_pending joined the counts; a cached v2 dict would show no badge.
     # v4: that count takes in what waits on the Shorts tab besides reviews.
-    cache_key = "admin:operations:pending:v4"
+    # v5: news_sources_stuck joined the counts; a cached v4 dict would hide the alert.
+    cache_key = "admin:operations:pending:v5"
     try:
         cached = await redis.get(cache_key)
         if cached:
