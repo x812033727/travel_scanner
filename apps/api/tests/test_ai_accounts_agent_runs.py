@@ -19,6 +19,7 @@ from ai_accounts_agent.runner import CliError
 from ai_accounts_agent.runs import (
     RunRefused,
     RunRequest,
+    auth_refusal,
     limit_refusal,
     model_family,
     pick_slot,
@@ -33,10 +34,16 @@ OUTDATED_CLAUDE = (
     "API Error: 400 Claude Code 2.1.259 does not support this model; "
     "version 2.1.280 or newer is required."
 )
+# The host's claude-a on 2026-10-06, word for word.
+AUTH_FAILED_CLAUDE = (
+    "Failed to authenticate. API Error: 403 Access to this model requires an access grant "
+    "your request does not have."
+)
 
 # Records what it was given in the account folder, then answers like `claude -p --output-format
 # json`. The prompt decides the outcome: LIMIT answers as a spent window, FAIL exits with an error;
-# a file named "spent" in the account folder makes that account answer as spent.
+# a file named "spent" in the account folder makes that account answer as spent, and one named
+# "signed-out" makes it fail to authenticate.
 FAKE_CLAUDE = textwrap.dedent(
     """
     import json, os, sys
@@ -50,6 +57,11 @@ FAKE_CLAUDE = textwrap.dedent(
         json.dump(record, out)
     if "FAIL" in prompt:
         print("boom: model overloaded", file=sys.stderr)
+        sys.exit(1)
+    if os.path.exists(os.path.join(folder, "signed-out")):
+        notice = "Failed to authenticate. API Error: 403 Access to this model requires an "
+        notice += "access grant your request does not have."
+        print(json.dumps({"type": "result", "is_error": True, "result": notice}))
         sys.exit(1)
     if "LIMIT" in prompt or os.path.exists(os.path.join(folder, "spent")):
         spent = {"type": "result", "is_error": True, "result": "You've hit your weekly limit"}
@@ -82,6 +94,9 @@ FAKE_CODEX = textwrap.dedent(
         json.dump({"args": args, "prompt": prompt, "env": dict(os.environ)}, out)
     if "LIMIT" in prompt:
         print(json.dumps({"type": "turn.failed", "message": "You've hit your weekly limit"}))
+        sys.exit(1)
+    if "SIGNED-OUT" in prompt:
+        print(json.dumps({"type": "turn.failed", "message": "Error: not logged in"}))
         sys.exit(1)
     if "TOOL" in prompt:
         print(json.dumps({"type": "item.completed", "item": {"type": "command_execution"}}))
@@ -310,6 +325,68 @@ def test_an_unrecognized_cli_failure_keeps_the_generic_error(
         run_claude(config, "a", _request())
 
 
+@pytest.mark.parametrize(
+    ("channel", "exit_code"),
+    [("json", 0), ("json", 1), ("stderr", 1), ("stdout", 1)],
+)
+def test_a_failed_run_that_cannot_authenticate_rests_the_account_for_every_model(
+    tmp_path: Path, channel: str, exit_code: int
+) -> None:
+    stdout = (
+        json.dumps({"type": "result", "is_error": True, "result": AUTH_FAILED_CLAUDE})
+        if channel == "json"
+        else AUTH_FAILED_CLAUDE if channel == "stdout" else ""
+    )
+    config = _cli_output(
+        tmp_path,
+        stdout=stdout,
+        stderr=AUTH_FAILED_CLAUDE if channel == "stderr" else "",
+        exit_code=exit_code,
+    )
+    with pytest.raises(RunRefused) as refused:
+        run_claude(config, "a", _request())
+    assert (refused.value.status, refused.value.code) == (503, "subscription_auth_failed")
+    assert refused.value.family == "*", "no run can sign the account in again for any model"
+    assert "account a" in refused.value.detail and "sign it in again" in refused.value.detail
+    assert "403" not in refused.value.detail, "the CLI's output is not echoed"
+    assert not any((config.state_root / "runs").iterdir()), "the failed run is cleaned up"
+
+
+@pytest.mark.parametrize(
+    "message",
+    [
+        "Failed to authenticate. API Error: 403 Access to this model requires an access grant",
+        "API Error: 401 Unauthorized",
+        "Error: not logged in. Run claude login",
+        "OAuth token has expired",
+        "Invalid API key · Please run /login",
+    ],
+)
+def test_sign_in_notices_rest_the_account_and_other_failures_do_not(message: str) -> None:
+    refusal = auth_refusal("b", message)
+    assert refusal is not None and refusal.code == "subscription_auth_failed"
+    assert auth_refusal("b", "API Error: 404 model not found") is None
+    assert auth_refusal("b", "The selected model is unavailable.") is None
+    assert auth_refusal("b", "You've hit your weekly limit") is None
+
+
+def test_a_long_successful_answer_that_mentions_a_403_is_still_an_answer(tmp_path: Path) -> None:
+    story = "The outage report: API Error: 403 and failed to authenticate " + "x" * 1_000
+    config = _cli_output(
+        tmp_path,
+        stdout=json.dumps({"type": "result", "is_error": False, "result": story}),
+        exit_code=0,
+    )
+    assert run_claude(config, "a", _request())["text"] == story
+    short = f"Short answer that quotes {AUTH_FAILED_CLAUDE}"
+    config = _cli_output(
+        tmp_path,
+        stdout=json.dumps({"type": "result", "is_error": False, "result": short}),
+        exit_code=0,
+    )
+    assert run_claude(config, "a", _request())["text"] == short, "only a failed run is read"
+
+
 def test_codex_runs_with_all_tools_disabled_and_rejects_any_tool_event(tmp_path: Path) -> None:
     config = _config(tmp_path)
     result = run_codex(config, "b", _request(tool="codex", model="gpt-6-sol"))
@@ -338,6 +415,9 @@ def test_codex_runs_with_all_tools_disabled_and_rejects_any_tool_event(tmp_path:
     with pytest.raises(RunRefused) as paused:
         run_codex(config, "a", _request("LIMIT", tool="codex", model="gpt-6-sol"))
     assert paused.value.code == "subscription_quota_paused"
+    with pytest.raises(RunRefused) as signed_out:
+        run_codex(config, "a", _request("SIGNED-OUT", tool="codex", model="gpt-6-sol"))
+    assert (signed_out.value.status, signed_out.value.code) == (503, "subscription_auth_failed")
 
 
 def test_codex_upgrade_needs_a_new_tool_isolation_check(tmp_path: Path) -> None:
@@ -514,6 +594,53 @@ def test_a_run_that_hits_the_limit_moves_on_to_the_next_account_and_rests_the_fi
     (config.slot_path("claude", "a") / "spent").unlink()
     status, body = _signed(application, run)
     assert status == 200 and body["slot"] == "b", "a has room again, but b keeps its turn"
+
+
+class CountingAccounts(Accounts):
+    """Records each usage probe, so a test can tell when none was forced."""
+
+    def __init__(self, usage: dict[str, float]) -> None:
+        super().__init__(usage)
+        self.probed: list[str] = []
+
+    def refresh_usage(self, slot: str) -> bool:
+        self.probed.append(slot)
+        return True
+
+
+def test_a_run_that_cannot_authenticate_rests_the_account_and_every_such_account_says_so(
+    tmp_path: Path,
+) -> None:
+    config = _config(tmp_path)
+    (config.slot_path("claude", "a") / "signed-out").write_text("", encoding="utf-8")
+    run = {"tool": "claude", "model": "claude-opus-5-5", "system": "Write.", "prompt": "{}"}
+    accounts = CountingAccounts({"a": 10, "b": 20})
+    application = AgentApplication(config, claude=accounts, codex=Accounts({}))  # type: ignore[arg-type]
+    application.overview(False)
+    _wait_until(lambda: not application._usage_running)
+    probes = list(accounts.probed)
+    status, body = _signed(application, run)
+    assert status == 200 and body["slot"] == "b", "it was a's turn but a cannot authenticate"
+    assert ("claude", "a", "*") in application._runs_resting and not application._runs_busy
+    assert ("claude", "a") in application._auth_failed
+    assert config.current_path("claude").read_text(encoding="utf-8").strip() == "b"
+    _wait_until(lambda: not application._usage_running)
+    assert accounts.probed == probes, "no usage probe is forced on an account that cannot sign in"
+    # With b signed out as well, the next run tries b, rests it too, and names the remedy
+    # rather than a usage window.
+    (config.slot_path("claude", "b") / "signed-out").write_text("", encoding="utf-8")
+    status, body = _signed(application, {**run, "queue_seconds": 0})
+    assert (status, body["code"]) == (503, "subscription_auth_failed")
+    assert "sign one in again" in body["detail"]
+    assert {("claude", "a"), ("claude", "b")} <= set(application._auth_failed)
+    assert not application._runs_busy
+    # One account at its limit and the other signed out is still a usage pause.
+    application._runs_resting.clear()
+    application._auth_failed.clear()
+    (config.slot_path("claude", "b") / "signed-out").unlink()
+    (config.slot_path("claude", "b") / "spent").write_text("", encoding="utf-8")
+    status, body = _signed(application, {**run, "queue_seconds": 0})
+    assert (status, body["code"]) == (429, "subscription_quota_paused")
 
 
 def test_a_model_family_limit_passes_that_family_to_the_next_account_only(

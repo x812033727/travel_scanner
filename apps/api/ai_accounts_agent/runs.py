@@ -72,6 +72,16 @@ LIMIT_MESSAGE = re.compile(
     r"hit your (?:[a-z0-9-]+ ){0,2}limit|usage limit|(?:weekly|5-hour|session) limit reached",
     re.I,
 )
+# How a CLI says the account itself cannot be used (2026-10-06, claude-a on the host: "Failed
+# to authenticate. API Error: 403 Access to this model requires an access grant your request
+# does not have."). Nothing ran, and the same account cannot answer until a person signs it in
+# again, so the run rests the account and moves on; before this the run failed as
+# subscription_run_failed and a video stage job turned "uncertain" although no model ran.
+AUTH_MESSAGE = re.compile(
+    r"failed to authenticate|API Error: 40[13]\b|requires an access grant|not logged in"
+    r"|oauth token (?:has )?expired|invalid api key",
+    re.I,
+)
 CLAUDE_OUTDATED_MESSAGE = re.compile(
     r"\bClaude\s+Code\s+(?P<installed>\d+\.\d+\.\d+(?:-[\w.-]+)?)\s+"
     r"does not support this model;\s*version\s+"
@@ -124,6 +134,23 @@ def limit_refusal(slot: str, *messages: str) -> RunRefused | None:
     scope = f"its {match.group(1)} limit" if match else "its usage limit"
     return RunRefused(
         429, "subscription_quota_paused", f"account {slot} hit {scope}", family=family
+    )
+
+
+def auth_refusal(slot: str, *messages: str) -> RunRefused | None:
+    """The rest for a failed run whose output says the account cannot authenticate, or None.
+
+    Only a failed CLI result is looked at, and only its short notice: a long successful answer
+    that quotes a 403 is an answer. The rest covers every model on the account, as no run can
+    sign it in again.
+    """
+    if not AUTH_MESSAGE.search("\n".join(messages)):
+        return None
+    return RunRefused(
+        503,
+        "subscription_auth_failed",
+        f"account {slot} cannot authenticate (sign it in again on the AI accounts page)",
+        family=ANY_MODEL,
     )
 
 
@@ -207,6 +234,35 @@ def rotation(current: str | None) -> list[str]:
     return [*SLOTS[start:], *SLOTS[:start]]
 
 
+def _usable(slot: dict[str, Any]) -> bool:
+    """Whether a slot from the overview is a signed-in subscription a run may use."""
+    if slot.get("logged_in") is not True:
+        return False
+    return slot.get("auth_method") != "api_key" and slot.get("email_allowed") is not False
+
+
+def auth_failed_everywhere(
+    slots: list[dict[str, Any]], tool: str, auth_resting: Collection[str]
+) -> RunRefused | None:
+    """The refusal when every usable account of ``tool`` rests for failing to authenticate.
+
+    ``pick_slot`` answers ``subscription_quota_paused`` for a resting account; when the only
+    accounts there are ones no run can sign in again, the caller should hear that instead of
+    waiting for a usage window.
+    """
+    usable = {
+        str(slot.get("slot")) for slot in slots if slot.get("tool") == tool and _usable(slot)
+    }
+    if not usable or not usable <= set(auth_resting):
+        return None
+    label = TOOL_NAMES.get(tool, tool)
+    return RunRefused(
+        503,
+        "subscription_auth_failed",
+        f"every {label} account failed to authenticate; sign one in again",
+    )
+
+
 def pick_slot(
     slots: list[dict[str, Any]],
     cap: int,
@@ -232,9 +288,7 @@ def pick_slot(
     spent = False
     for name in rotation(current):
         slot = by_name.get(name)
-        if slot is None or slot.get("logged_in") is not True:
-            continue
-        if slot.get("auth_method") == "api_key" or slot.get("email_allowed") is False:
+        if slot is None or not _usable(slot):
             continue
         peak, resets = _peak(slot)
         if name in resting:
@@ -331,6 +385,12 @@ def run_claude(config: AgentConfig, slot: str, request: RunRequest) -> dict[str,
     # The CLI's limit notice is one line in place of the answer; a long answer that merely
     # mentions a limit (a news story about AI plans) is an answer.
     notice = str(text or "") if len(str(text or "")) <= LIMIT_NOTICE_CHARS else ""
+    if failed:
+        # The sign-in notice is as short, and comes as the JSON result, on stderr, or as bare
+        # stdout when the CLI printed no JSON at all.
+        bare = completed.stdout if len(completed.stdout) <= LIMIT_NOTICE_CHARS else ""
+        if (auth := auth_refusal(slot, notice, completed.stderr, bare)) is not None:
+            raise auth
     if (limit := limit_refusal(slot, notice, completed.stderr)) is not None:
         raise limit
     if failed:
@@ -425,6 +485,12 @@ def run_codex(config: AgentConfig, slot: str, request: RunRequest) -> dict[str, 
     if limit is not None:
         raise limit
     if completed.returncode or not isinstance(text, str) or not text:
+        # A failed turn's event messages are notices, not an answer; a long answer is one.
+        auth = auth_refusal(
+            slot, completed.stderr, *(str(event.get("message", "")) for event in events)
+        )
+        if auth is not None:
+            raise auth
         raise CliError(f"codex run failed: exit {completed.returncode}")
     usage = next(
         (event.get("usage") for event in reversed(events) if event.get("type") == "turn.completed"),
