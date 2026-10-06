@@ -302,6 +302,21 @@ async def final_edit(
     )
 
 
+# Asked without criteria on purpose. Until 2026-10-05 the criteria went out under keys Jev
+# ignores (yes/no), so every answer the act threshold was tuned on came from this statement
+# alone. With the documented true/false keys, "Any condition fails or is uncertain" lowered
+# every answer by 0.10-0.21 (21 production calls, 2026-10-06) and nothing reached the
+# threshold; sending no criteria measured the same as the old behaviour, within 0.03
+# (tasks/done/2026-10-06-news-jev-publish-confidence-fell-below.md).
+PUBLISH_QUESTION = NoulQuestion(
+    instructions=(
+        "This localized news article is accurate, sufficiently important, "
+        "fully supported by its listed sources, safe for general readers, "
+        "not investment or purchasing advice, and ready to publish."
+    ),
+)
+
+
 @dataclass(frozen=True)
 class JevLocaleDecision:
     locale: Locale
@@ -336,19 +351,7 @@ async def jev_assessments(
                         "evidence_sha256": candidate.evidence_hash,
                         "document": documents[typed_locale].model_dump(mode="json"),
                     },
-                    {
-                        "publish": NoulQuestion(
-                            instructions=(
-                                "This localized news article is accurate, sufficiently important, "
-                                "fully supported by its listed sources, safe for general readers, "
-                                "not investment or purchasing advice, and ready to publish."
-                            ),
-                            criteria=NoulCriteria(
-                                true="Every condition holds.",
-                                false="Any condition fails or is uncertain.",
-                            ),
-                        )
-                    },
+                    {"publish": PUBLISH_QUESTION},
                 )
                 answer = answers["publish"]
                 confidence = answer.noul if isinstance(answer, NoulAnswer) else None

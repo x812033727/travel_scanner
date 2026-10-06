@@ -33,6 +33,16 @@ export const SPEECH_LOST: LostAnswer = {
   detail: "請求已送到 API，回覆沒有在時限內回來或連線中途斷了；它可能已經執行並計費",
 };
 
+// The Jev judgement routes' lost answer (automation/judge/policy, automation/judge/outline): the API
+// takes one call off the daily Jev budget before it asks Jev (apps/api/app/video_automation/judge.py
+// `_ask`) and keeps no verdict to fetch again, so tools/video/automation/client.mjs does not ask
+// again. Their 502 `upstream_unavailable` then means only an API they never reached.
+export const JUDGE_LOST: LostAnswer = {
+  status: 504,
+  code: "video_judge_answer_lost",
+  detail: "請求已送到 API，回覆沒有在時限內回來或連線中途斷了；Jev 可能已經判斷，並用掉當天的一次呼叫",
+};
+
 function neverConnected(error: unknown) {
   const code = (error as { cause?: { code?: unknown } } | null)?.cause?.code;
   return typeof code === "string" && NEVER_CONNECTED.has(code);

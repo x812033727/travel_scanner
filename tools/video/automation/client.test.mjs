@@ -220,7 +220,7 @@ const JUDGES = [
     { choice: "B", probabilities: { A: 0.45, B: 0.55 }, options: { A: { stance: 0.5, demo: 0.4 }, B: { stance: 0.55, demo: 0.6 } }, advice: 0.1, passed: false, note: "Jev 挑了 B（0.55）；沒過關" }],
 ];
 
-test("a Jev judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, the judge route's 502", async () => {
+test("a Jev judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, the judge route's lost answer or 502", async () => {
   const lost = [
     ["a connection reset after sending", () => {
       throw failed("ECONNRESET");
@@ -234,7 +234,9 @@ test("a Jev judgement sent and left without its answer is not asked again: a dro
     ["a verdict that breaks off", () => new Response('{"stance": 0.3, "passed": fal', { status: 200, headers: { "Content-Type": "application/json" } }), 200],
     ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
     ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
-    // The judge routes answer this for an API they never reached and for one that took the request and went quiet.
+    // The judge routes name their own lost answer (JUDGE_LOST in apps/web/app/api/video/speech/forward.ts).
+    ["the judge route's lost answer", () => Response.json({ code: "video_judge_answer_lost", detail: "請求已送到 API" }, { status: 504 }), 504],
+    // A host from before that change answers this for an API it never reached and for one that took the request and went quiet.
     ["the judge route's 502", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 502 }), 502],
   ];
   for (const [method, route, body] of JUDGES) {

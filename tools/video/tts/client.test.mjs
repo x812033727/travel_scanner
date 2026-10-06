@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import test from "node:test";
-import { judgeLines, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, transcribeClip } from "./client.mjs";
+import { alignClip, judgeLines, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, synthesizeAligned, transcribeClip } from "./client.mjs";
 import { encodeWav, parseWav } from "./wav.mjs";
 
 const SITE = "https://site.test";
@@ -41,6 +41,18 @@ const PAID = [
     ok: () => Response.json({ results: [{ id: "a1", noul: 0.9 }] }),
     check: (result) => assert.deepEqual([...result], [["a1", 0.9]]),
   },
+  {
+    // An Azure voice synthesized with its word boundaries: paid like `synthesize`.
+    name: "synthesizeAligned",
+    path: "speech/align",
+    send: (options) => synthesizeAligned({ ...options, body: { voice: "zh-TW-HsiaoChenNeural", segments: [{ parts: [{ text: "好" }], break_after_ms: 0 }] } }),
+    ok: () => Response.json({ source: "azure", model: "zh-TW-HsiaoChenNeural", chars: [{ text: "好", start_ms: 10, end_ms: 200 }], audio: audio().toString("base64"), billable_characters: 37 }),
+    check: (result) => {
+      assert.deepEqual(Buffer.from(result.wav), audio());
+      assert.equal(result.billable, 37);
+      assert.deepEqual(result.timing, { source: "azure", model: "zh-TW-HsiaoChenNeural", chars: [{ text: "好", start_ms: 10, end_ms: 200 }] });
+    },
+  },
 ];
 
 /** A counting server that plays `answers` in order (each returns a Response or throws). */
@@ -66,9 +78,9 @@ test("a paid request sent and left without its answer is sent once and names the
     ["a socket closed mid-way", () => { throw failed("UND_ERR_SOCKET"); }, 0],
     ["Node's deadline for the headers", () => { throw failed("UND_ERR_HEADERS_TIMEOUT"); }, 0],
     ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
-    // A host from before the routes' own lost answer gives this 502 for a lost answer too.
-    ["the web route's 502, which a lost answer gives too", () => problem(502, "upstream_unavailable"), 502],
     ["the web route's lost answer", () => problem(504, "video_speech_answer_lost"), 504],
+    // Only the route's 502 says the API was never reached; no speech route answers this one.
+    ["an upstream_unavailable no speech route answers", () => problem(503, "upstream_unavailable"), 503],
     ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
     ["an error whose detail runs over lines", () => Response.json({ detail: "Internal\nServer Error\n" }, { status: 500 }), 500],
     ["an answer that breaks off", brokenBody, 200],
@@ -101,6 +113,7 @@ test("a paid answer that arrives but cannot be read is not bought again", async 
     [PAID[0], () => new Response("<html>not audio</html>", { status: 200, headers: { "X-Billable-Characters": "37" } })],
     [PAID[1], () => new Response("<html>a proxy page</html>", { status: 200 })],
     [PAID[2], () => Response.json(null)],
+    [PAID[3], () => Response.json({ source: "azure", chars: [] })],
   ];
   for (const [paid, answer] of unreadable) {
     const { calls, options } = server([answer, paid.ok]);
@@ -115,6 +128,9 @@ test("a paid request that never left, or that the API settled, is tried again an
     ["an unknown host", () => { throw failed("ENOTFOUND"); }, []],
     ["a DNS hiccup", () => { throw failed("EAI_AGAIN"); }, []],
     ["a connect timeout", () => { throw failed("UND_ERR_CONNECT_TIMEOUT"); }, []],
+    // The route answers a lost answer with 504 video_speech_answer_lost since #1272, which the
+    // production host serves, so its 502 is an API it never reached.
+    ["the web route's 502 for an API it never reached", () => problem(502, "upstream_unavailable"), [1000]],
     ["the API's rate limit", () => problem(429, "rate_limit_exceeded", { "Retry-After": "3" }), [3000]],
     ["a busy provider", () => problem(503, "video_speech_upstream_busy", { "Retry-After": "7" }), [7000]],
     // Also what the API answers for a provider read timeout after the request went out, which
@@ -139,6 +155,9 @@ test("a settled failure that does not clear stops after the bounded attempts", a
   const down = server([() => problem(502, "video_speech_upstream_failed")]);
   await assert.rejects(PAID[1].send(down.options), (error) => error.code === "video_speech_upstream_failed" && error.who === "service");
   assert.equal(down.calls.length, 5);
+  const unreached = server([() => problem(502, "upstream_unavailable")]);
+  await assert.rejects(PAID[2].send(unreached.options), (error) => error.code === "upstream_unavailable" && error.who === "service");
+  assert.equal(unreached.calls.length, 5);
   const offline = server([() => { throw failed("ECONNREFUSED"); }]);
   await assert.rejects(PAID[0].send(offline.options), (error) => error.code === "network" && error.who === "service");
   assert.equal(offline.calls.length, 5);
@@ -167,11 +186,56 @@ test("the owner's problems and a spent budget are told after one request, with t
     [PAID[0], () => problem(429, "video_speech_budget_exhausted"), "service"],
     [PAID[1], () => problem(503, "video_speech_not_configured"), "owner"],
     [PAID[2], () => problem(429, "jev_budget_exhausted"), "service"],
+    [PAID[3], () => problem(422, "video_speech_voice_not_allowed"), "owner"],
+    [PAID[3], () => problem(429, "video_speech_budget_exhausted"), "service"],
   ];
   for (const [paid, answer, who] of once) {
     const { calls, options } = server([answer, paid.ok]);
     const expected = (await answer().json()).code;
     await assert.rejects(paid.send(options), (error) => error instanceof SpeechError && error.code === expected && error.who === who);
     assert.equal(calls.length, 1, `${paid.name}: ${expected}`);
+  }
+});
+
+test("a clip the server cannot time answers null after one request; a timed one answers its chars", async () => {
+  const wav = audio();
+  for (const [what, answer] of [
+    ["a site from before the route", () => new Response("<html>404</html>", { status: 404 })],
+    ["no aligner on the server", () => problem(503, "video_align_unavailable")],
+    ["a voice without boundaries", () => problem(422, "video_align_voice_unsupported")],
+  ]) {
+    const { calls, sleeps, options } = server([answer]);
+    assert.equal(await alignClip({ ...options, wav, text: "好" }), null, what);
+    assert.equal(calls.length, 1, `${what}: asked once`);
+    assert.deepEqual(sleeps, [], `${what}: no wait`);
+  }
+  const timed = server([() => Response.json({ source: "aligned", model: "m", chars: [{ text: "好", start_ms: 10, end_ms: 200 }] })]);
+  assert.deepEqual(await alignClip({ ...timed.options, wav, text: "好", language: "en" }), { source: "aligned", model: "m", chars: [{ text: "好", start_ms: 10, end_ms: 200 }] });
+  assert.equal(timed.calls[0].url, `${SITE}/api/video/speech/align`);
+  const sent = JSON.parse(timed.calls[0].body);
+  assert.deepEqual(sent, { audio: Buffer.from(wav).toString("base64"), text: "好", language: "en" });
+  const plain = server([() => Response.json({ source: "aligned", model: "m", chars: [] })]);
+  await alignClip({ ...plain.options, wav, text: "好" });
+  assert.ok(!("language" in JSON.parse(plain.calls[0].body)), "the default language is not sent");
+  const odd = server([() => Response.json({ source: "aligned", chars: [{ text: 1 }] })]);
+  assert.equal(await alignClip({ ...odd.options, wav, text: "好" }), null, "a malformed answer is no timing");
+  // Nothing is billed, so a failure that may clear is tried again, and the owner's problems are told.
+  const flaky = server([() => problem(502, "upstream_unavailable"), () => Response.json({ source: "aligned", model: "m", chars: [] })]);
+  assert.deepEqual(await alignClip({ ...flaky.options, wav, text: "好" }), { source: "aligned", model: "m", chars: [] });
+  assert.equal(flaky.calls.length, 2);
+  const revoked = server([() => problem(401, "video_tool_token_invalid")]);
+  await assert.rejects(alignClip({ ...revoked.options, wav, text: "好" }), (error) => error.code === "video_tool_token_invalid" && error.who === "owner");
+});
+
+test("synthesizeAligned answers null when the site cannot do it in one call, with nothing paid", async () => {
+  for (const [what, answer] of [
+    ["a site from before the route", () => new Response("Not Found", { status: 404 })],
+    ["a Gemini voice", () => problem(422, "video_align_voice_unsupported")],
+  ]) {
+    const { calls, sleeps, options } = server([answer]);
+    assert.equal(await PAID[3].send(options), null, what);
+    assert.equal(calls.length, 1, `${what}: asked once`);
+    assert.deepEqual(sleeps, [], `${what}: no wait`);
+    assert.deepEqual(JSON.parse(calls[0].body), { speech: { voice: "zh-TW-HsiaoChenNeural", segments: [{ parts: [{ text: "好" }], break_after_ms: 0 }] } }, what);
   }
 });

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import hashlib
 import os
+import re
 import shutil
 from collections.abc import AsyncIterator
 from dataclasses import dataclass
@@ -30,6 +31,9 @@ EXTENSIONS = {
     "audio/mpeg": "mp3",
     "audio/wav": "wav",
 }
+# A partial file's name under ``.incoming``: a job's UUID or ``stock-<vendor>-<id>``; never a
+# path, never hidden.
+INCOMING_NAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_-]{0,119}$")
 
 
 @dataclass(frozen=True)
@@ -78,12 +82,26 @@ class MediaStore(ReviewStore):
             return {}
         return {f.name: f for f in folder.iterdir() if f.is_file() and valid_sha256(f.name)}
 
-    async def put_stream(self, slug: str, job_id: str, chunks: AsyncIterator[bytes]) -> StoredFile:
-        """Write a vendor download as it arrives; the file is named only once it checks out."""
+    async def put_stream(
+        self,
+        slug: str,
+        name: str,
+        chunks: AsyncIterator[bytes],
+        *,
+        accept: frozenset[str] | None = None,
+    ) -> StoredFile:
+        """Write a vendor download as it arrives; the file is named only once it checks out.
+
+        ``name`` is the partial file's name while it arrives: a job id, or ``stock-<vendor>-<id>``
+        for a stock photo (stock.py). ``accept`` narrows the types taken: a stock photo endpoint
+        takes pictures only, so an mp4 from it is refused like a web page would be.
+        """
+        if not INCOMING_NAME.fullmatch(name):
+            raise StorageRefused(422, "video_media_bad_name", "the partial file's name is unsafe")
         folder = self._project(slug)
         incoming = folder / ".incoming"
         incoming.mkdir(parents=True, exist_ok=True)
-        partial = incoming / job_id
+        partial = incoming / name
         digest = hashlib.sha256()
         size = 0
         head = b""
@@ -112,6 +130,13 @@ class MediaStore(ReviewStore):
             if size == 0 or content_type is None:
                 raise StorageRefused(
                     415, "video_media_unsupported_type", "廠商回傳的不是圖片、mp4 或音檔"
+                )
+            if accept is not None and content_type not in accept:
+                wanted = "、".join(sorted(EXTENSIONS[kind] for kind in accept))
+                raise StorageRefused(
+                    415,
+                    "video_media_unsupported_type",
+                    f"廠商回傳的是 {content_type}，這裡只收 {wanted}",
                 )
             sha256 = digest.hexdigest()
             target = folder / sha256

@@ -115,9 +115,12 @@ COMPILATION_QA_ITEMS: tuple[str, ...] = (
 )
 PACKAGE_ITEMS: tuple[str, ...] = ("files", "descriptions", "captions", "disclosure")
 # A Short (docs/videos/SHORTS.md §自動品管) is a 25 to 55 second vertical cut, and is held to
-# what such a cut can be checked for; its reports say ``kind: "shorts"``. Its upload package
-# has the same four items by name, over its own files (the mp4, the captions, the cover and
-# metadata.json).
+# what such a cut can be checked for; its reports say ``kind: "shorts"``. ``grammar``
+# (2026-10-05) is the loop a Short reads as: its first frame is the thumbnail, its last frame
+# returns to the first, and nothing in it asks the viewer to act. The tool's ``ITEM_IDS``
+# (tools/video/shorts/qa.mjs) is this tuple, in this order, and changes with it. Its upload
+# package has the same four items by name, over its own files (the mp4, the captions, the
+# cover and metadata.json).
 SHORTS_QA_ITEMS: tuple[str, ...] = (
     "profile",
     "loudness",
@@ -131,6 +134,7 @@ SHORTS_QA_ITEMS: tuple[str, ...] = (
     "links",
     "variety",
     "disclosure",
+    "grammar",
 )
 SHORTS_PACKAGE_ITEMS: tuple[str, ...] = ("files", "descriptions", "captions", "disclosure")
 
@@ -760,7 +764,7 @@ def _shorts_report(report: Any) -> Any:
 
 
 def shorts_qa_passed(payload: dict[str, Any], sha: str) -> bool:
-    """Whether a Short's final review passed all twelve checks for exactly this cut."""
+    """Whether a Short's final review passed all thirteen checks for exactly this cut."""
     return _items_passed(_shorts_report(payload.get("qa")), sha, SHORTS_QA_ITEMS)
 
 

@@ -50,8 +50,13 @@ done`, "detect", fixture.replaceAll("\\", "/"), String(attempts), expected ? "0"
 const padding = "set $fixture 0123456789abcdef;\n".repeat(65_536);
 assert.ok(Buffer.byteLength(padding) > 1_048_576);
 
+// Linux CI runs 300 attempts and is this race's proof. Git Bash on Windows forks each grep
+// slowly (up to 0.9 s an attempt over this fixture under load), so 300 overran the 90 s
+// timeout; there a `grep -q` reader misses on the first attempt, so 20 still catch it.
+const RACE_ATTEMPTS = process.platform === "win32" ? 20 : 300;
+
 test("nginx detector never misses an early marker in a large site under pipefail", { skip: bashUnavailable }, (t) => {
-  detect(t, `server_name mokaair.com;\n${padding}`, true, 300);
+  detect(t, `server_name mokaair.com;\n${padding}`, true, RACE_ATTEMPTS);
 });
 
 test("nginx detector finds a marker after a large site's other directives", { skip: bashUnavailable }, (t) => {

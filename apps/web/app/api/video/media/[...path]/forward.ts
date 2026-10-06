@@ -21,7 +21,8 @@ const RANGE = /^bytes=\d*-\d*$/;
 // A part of an upload (PART_BYTES in apps/api/app/video_reviews/storage.py), under nginx's 6 MB.
 export const PART_MAX_BYTES = 4 * 1024 * 1024;
 const JSON_MAX_BYTES = 256 * 1024;
-// A poll may run the vendor download inside the API; nginx allows 300 s for /api/.
+// A poll may run the vendor download inside the API and a stock fetch always does
+// (video_media_fetch_timeout_seconds); nginx allows 300 s for /api/.
 const JOB_TIMEOUT_MS = 240_000;
 const JUDGE_TIMEOUT_MS = 180_000;
 const SUBMIT_TIMEOUT_MS = 90_000;
@@ -37,6 +38,14 @@ export function mediaRoute(path: string[], method: Method): Route | null {
   if (head === "status" && rest.length === 0 && method === "GET") return json(SHORT_TIMEOUT_MS);
   if ((head === "images" || head === "clips" || head === "music") && rest.length === 0 && method === "POST") return json(SUBMIT_TIMEOUT_MS);
   if (head === "judge" && rest.length === 0 && method === "POST") return json(JUDGE_TIMEOUT_MS);
+  // A locate call is a judge call with another question: Gemini boxes a stored picture's subjects.
+  if (head === "locate" && rest.length === 0 && method === "POST") return json(JUDGE_TIMEOUT_MS);
+  // Stock photos: a search asks each configured vendor in turn (20 s each inside the API); a fetch
+  // downloads the photo into the media store, so it waits as long as a poll that does the same.
+  if (head === "stock" && rest.length === 1 && method === "POST") {
+    if (rest[0] === "search") return json(SUBMIT_TIMEOUT_MS);
+    if (rest[0] === "fetch") return json(JOB_TIMEOUT_MS);
+  }
   if (head === "jobs" && rest.length === 1 && UUID.test(rest[0]) && method === "GET") return json(JOB_TIMEOUT_MS);
   if (head === "files" && rest.length === 2 && SLUG.test(rest[0]) && SHA256.test(rest[1])) {
     if (method === "PUT") return { kind: "upload", maxBytes: PART_MAX_BYTES, timeoutMs: UPLOAD_TIMEOUT_MS };

@@ -49,10 +49,12 @@ const clauses = (text) => String(text ?? "").toLowerCase().split(/[,;:.]|\b(?:th
 const words = (list) => new RegExp(`\\b(?:${list})\\b`);
 // 拿小東西做事的動詞（寫完整的字形，不用開放字尾：stable、drawer、pressure 才不會被讀成動作）。
 const HANDLE_VERB = words("lifts?|lifting|picks? up|picking up|pours?|pouring|writes?|writing|signs?|signing|ties?|tying|unties?|untying|threads?|threading|inserts?|inserting|unfolds?|unfolding|folds?|folding|hands? over|handing over|passes|passing|gives?|giving|offers?|offering|takes?|taking|twists?|twisting|taps?|tapping|counts?|counting|flips?|flipping|unscrews?|tears?|tearing|stamps?|stamping|seals?|sealing|opens?|opening|pockets?|pocketing|lights?|lighting");
-const SMALL_PROP = words("pens?|brush(?:es)?|needles?|keys?|coins?|rings?|chopsticks?|teacups?|cups?|bowls?|spoons?|papers?|notes?|letters?|envelopes?|cards?|buttons?|lighters?|matches|phones?|teapots?|kettles?|bottles?|cigarettes?|scrolls?|tokens?|pages?|books?|tickets?|contracts?|documents?|tea|wine|ink|seal");
+const SMALL_PROP_WORDS = "pens?|brush(?:es)?|needles?|keys?|coins?|rings?|chopsticks?|teacups?|cups?|bowls?|spoons?|papers?|notes?|letters?|envelopes?|cards?|buttons?|lighters?|matches|phones?|teapots?|kettles?|bottles?|cigarettes?|scrolls?|tokens?|pages?|books?|tickets?|contracts?|documents?|tea|wine|ink|seal";
+const SMALL_PROP = words(SMALL_PROP_WORDS);
 // 武器在手上做的動作。
 const WEAPON_VERB = words("draws?|drawing|sheathes?|sheathing|unsheathes?|twirls?|twirling|spins?|spinning|tosses|tossing|throws?|throwing|catches|catching|lifts?|lifting|raises?|raising|flips?|flipping");
-const WEAPON = words("swords?|blades?|sabres?|sabers?|staffs?|staves|spears?|daggers?|knives|knife|fans?|bows?|arrows?|whips?|axes?|hilts?");
+const WEAPON_WORDS = "swords?|blades?|sabres?|sabers?|staffs?|staves|spears?|daggers?|knives|knife|fans?|bows?|arrows?|whips?|axes?|hilts?";
+const WEAPON = words(WEAPON_WORDS);
 // 兩個人之間的接觸：強動詞要有對象（人、別人的東西、武器或身體部位）；抱、推、拉、扛這類只算直接接人。
 const CONTACT_VERB = words("hugs?|hugging|embraces?|embracing|kiss(?:es)?|kissing|slaps?|slapping|punch(?:es)?|punching|hits?|hitting|strikes?|striking|grabs?|grabbing|seizes?|seizing|shoves?|shoving|stabs?|stabbing|thrusts?|thrusting|slash(?:es)?|slashing|cuts?|cutting|pierces?|piercing|kicks?|kicking|blocks?|blocking|parr(?:y|ies|ying)|clash(?:es)?|clashing|tackles?|tackling|strangles?|strangling|chokes?|choking|wrestles?|wrestling|collides?|colliding|deflects?|deflecting|meets?|meeting");
 const CONTACT_TARGET = words("him|her|them|each other|one another|swords?|blades?|sabres?|sabers?|staffs?|spears?|shields?|daggers?|fists?|arms?|wrists?|hands?|chests?|shoulders?|faces?|necks?|throats?|backs?|guards?|shafts?|weapons?");
@@ -214,6 +216,67 @@ export function shotRisk(data, visual, ctx, expected = EXPECTED_TAKES) {
   const grade = reasons.reduce((worst, reason) => (GRADE_ORDER[reason.grade] > GRADE_ORDER[worst] ? reason.grade : worst), "A");
   const takes = visual === "clip" ? Math.min(expected[grade], ctx.clipTakes ?? Infinity) : 0;
   return { grade, reasons, expected_takes: takes };
+}
+
+/** 一鏡是 clip、still 還是切素材（cut）：有 source 是切、visual "still" 是 still，其餘要買素材。 */
+export const visualKindOf = (scene) => (isSourced(scene) ? "cut" : scene?.data?.visual === "still" ? "still" : "clip");
+
+// ---------- 連戲鎖 ----------
+// 「連戲鎖」（continuity locks）是 drama-skills（MIT）與 shuohao-skills（Apache-2.0）兩個中文漫劇技能包在分鏡表裡要人填的
+// 欄位：依賴鏡頭、道具鎖、服裝鎖、時間鎖；這裡只借名字與想法，沒有看它們的碼。video.json 的鏡頭欄位是封閉集合
+// （drama.mjs SHOT_KEYS），所以鎖的字從 `prompt`（首格裡有什麼）抓出來、由 plan_lock.mjs 寫進 plan/lock.json，
+// drama_preflight.mjs 再對照現在的 prompt。三類詞表：道具（武器、小道具、場景道具）、服裝、時刻。道具與服裝要同一場
+// 至少兩鏡寫到同一個字才鎖（一鏡獨有的插鏡道具不是連戲線）；時刻每寫一次就鎖（一句 at dusk 定了整場的光）。鎖的是
+// prompt 裡原樣的字（小寫）：名詞本身，加上緊接在前的一個形容詞連名詞（jade hair cord 改成 red hair cord 才抓得到），
+// 所以每一鏡的錨點要寫一樣的字。
+const SCENE_PROP_WORDS = "lanterns?|torch(?:es)?|candles?|umbrellas?|baskets?|bags?|bundles?|satchels?|pouch(?:es)?|flags?|banners?|mirrors?|maps?|pebbles?|boats?|horses?|carts?|canes?|pipes?|flutes?|drums?|bells?|ropes?|chains?|nets?";
+const COSTUME_WORDS = "hair cords?|hair ribbons?|hair ?pins?|hair ties?|shoulder clasps?|sleeve cuffs?|robes?|cloaks?|hoods?|capes?|cowls?|armou?r|breastplates?|sash(?:es)?|belts?|cuffs?|sleeves?|collars?|headbands?|hats?|veils?|gloves?|boots?|scar(?:f|ves)|masks?|crowns?|helmets?|brooch(?:es)?|clasps?|pendants?|earrings?|bracelets?|necklaces?|suits?|dress(?:es)?|coats?|jackets?|uniforms?|aprons?|tunics?|gowns?|shawls?|hanfu|kimonos?|qipaos?|skirts?|trousers|shirts?|vests?|cords?";
+const TIME_WORDS = "early morning|late afternoon|golden hour|blue hour|dawn|daybreak|sunrise|morning|noon|midday|afternoon|dusk|sunset|twilight|nightfall|evening|midnight|night";
+export const CONTINUITY_TERMS = { prop: `${WEAPON_WORDS}|${SMALL_PROP_WORDS}|${SCENE_PROP_WORDS}`, costume: COSTUME_WORDS, time_of_day: TIME_WORDS };
+export const CONTINUITY_CATEGORIES = Object.keys(CONTINUITY_TERMS);
+export const CONTINUITY_LABELS = { prop: "道具", costume: "服裝", time_of_day: "時刻" };
+// 不算形容詞的前一個字：冠詞、數量、代名詞、介系詞、畫面位置；所有格（shen's）由正則擋掉。
+const NOT_A_DESCRIPTOR = new Set(["a", "an", "the", "one", "two", "three", "four", "five", "her", "his", "their", "its", "my", "your", "our", "same", "single", "only", "no", "with", "of", "in", "on", "at", "and", "or", "to", "from", "this", "that", "these", "those", "each", "every", "both", "another", "other", "any", "some", "still", "visible", "intact", "own", "first", "second", "left", "right", "upper", "lower", "front", "back"]);
+
+/** prompt 裡的連戲字：{ prop, costume, time_of_day }，每類是 prompt 裡原樣的小寫字（名詞，和形容詞＋名詞）。 */
+export function continuityTerms(prompt) {
+  const text = String(prompt ?? "").toLowerCase();
+  const found = {};
+  for (const category of CONTINUITY_CATEGORIES) {
+    const terms = new Set();
+    for (const match of text.matchAll(new RegExp(`(?<![\\w-])(?:${CONTINUITY_TERMS[category]})(?![\\w-])`, "g"))) {
+      terms.add(match[0]);
+      if (category === "time_of_day") continue;
+      const before = /(?:^|[^\w'-])([a-z][a-z-]*)\s+$/.exec(text.slice(0, match.index))?.[1];
+      if (before && !NOT_A_DESCRIPTOR.has(before)) terms.add(`${before} ${match[0]}`);
+    }
+    found[category] = [...terms];
+  }
+  return found;
+}
+
+/**
+ * 每鏡的連戲鎖：Map id → { depends_on, locks: { prop, costume, time_of_day } }。locks 是這一鏡 prompt 裡被鎖的字；
+ * depends_on 是同一場更早、跟它共用至少一個鎖定字的鏡頭，加上 source.shot（切自它的素材）與 start_frame.shot
+ * （接它的末格）。shots 是 planEpisode 的列（index、id、chapter、scene）。
+ */
+export function continuityLocks(shots) {
+  const terms = new Map(shots.map((shot) => [shot.id, continuityTerms(shot.scene?.data?.prompt)]));
+  const out = new Map();
+  for (const shot of shots) {
+    const siblings = shots.filter((each) => each.chapter === shot.chapter && each.id !== shot.id);
+    const own = terms.get(shot.id);
+    const locks = {};
+    for (const category of CONTINUITY_CATEGORIES) locks[category] = own[category].filter((term) => category === "time_of_day" || siblings.some((each) => terms.get(each.id)[category].includes(term)));
+    const shares = (each) => CONTINUITY_CATEGORIES.some((category) => terms.get(each.id)[category].some((term) => locks[category].includes(term)));
+    const data = shot.scene?.data ?? {};
+    const dependsOn = new Set(siblings.filter((each) => each.index < shot.index && shares(each)).map((each) => each.id));
+    if (data.source?.shot) dependsOn.add(data.source.shot);
+    if (data.start_frame?.shot) dependsOn.add(data.start_frame.shot);
+    dependsOn.delete(shot.id);
+    out.set(shot.id, { depends_on: [...dependsOn], locks });
+  }
+  return out;
 }
 
 /**
@@ -401,7 +464,7 @@ export function planEpisode(doc, options = {}) {
     const scene = sceneById.get(row.id);
     const data = row.data ?? {};
     const frames = framesOf.get(row.id) ?? Math.round(row.seconds * FPS);
-    const visual = isSourced(scene) ? "cut" : data.visual === "still" ? "still" : "clip";
+    const visual = visualKindOf(scene);
     const chapterName = chapterOf.get(row.id);
     const codes = setupCodes.get(chapterName) ?? new Map();
     setupCodes.set(chapterName, codes);
@@ -504,6 +567,15 @@ export function planEpisode(doc, options = {}) {
     shot.end_frame = shot.end_frame_planned ? { planned: true, file: entry?.end_frame?.file ?? null, sha256: entry?.end_frame?.sha256 ?? null } : { planned: false };
     shot.prompt = shot.visual === "clip" ? webPrompt(route, shot.scene, look, shot.cast, { hailuoModel: hailuoModel ?? undefined }) : null;
     if (shot.visual === "clip" && shot.move.web.unsupported) problems.push({ level: "review", shot: shot.id, what: `camera 行的「${shot.move.web.unsupported}」不在八組運鏡字裡，定稿正文沒寫運鏡`, fix: "改成 push in、pull out、pan left／right、tilt up／down、locked 或 drift（animation-camera 的「寫 camera」）" });
+  }
+
+  // 承諾與連戲鎖，鎖定時寫進 plan/lock.json（plan_lock.mjs lockOf）。承諾是這一鏡答應做成什麼：類型、買幾秒、路線、fit——
+  // 「交付承諾」（delivery promise）是 OpenMontage 的叫法（AGPL，只借想法）；鎖定後答應的 clip 變成 still、切或 fit freeze，
+  // drama_preflight.mjs 以 exit 1 擋到站主的變更單為止。
+  const continuity = continuityLocks(shots);
+  for (const shot of shots) {
+    shot.promise = { visual_kind: shot.visual, buy_s: shot.buy_s, route, fit: shot.scene.data?.fit ?? "auto" };
+    shot.continuity = continuity.get(shot.id);
   }
 
   // lint 會擋的鏡頭問題：schema 的鏡頭欄位、鏡長與切素材上限、production profile 的規則。照 lint 的估法量（lint 本來就是）。
@@ -663,6 +735,13 @@ export function renderMarkdown(plan, file = "video.json") {
       for (const reason of shot.risk.reasons) out.push(`  - ${reason.id}（${reason.grade}）：${reason.why}。改法：${reason.redesign}`);
     }
   }
+  out.push("");
+  out.push("## 承諾與連戲鎖（鎖定時寫進 plan/lock.json）");
+  out.push("");
+  out.push(`- 承諾（類型、買幾秒、路線、fit）：${plan.shots.map((shot) => `${shot.id} ${KIND[shot.visual]}${shot.buy_s ? ` ${shot.buy_s} s` : ""}${shot.promise.fit !== "auto" ? ` fit ${shot.promise.fit}` : ""}`).join("、")}。鎖定後 clip 改成 still、切或 fit freeze，drama_preflight.mjs 以 exit 1 擋，直到站主的變更單`);
+  const locked = plan.shots.filter((shot) => shot.continuity.depends_on.length || CONTINUITY_CATEGORIES.some((category) => shot.continuity.locks[category].length));
+  if (locked.length) for (const shot of locked) out.push(`- ${shot.id}：${shot.continuity.depends_on.length ? `接 ${shot.continuity.depends_on.join("、")}；` : ""}${CONTINUITY_CATEGORIES.filter((category) => shot.continuity.locks[category].length).map((category) => `${CONTINUITY_LABELS[category]} ${shot.continuity.locks[category].map((term) => `「${term}」`).join("")}`).join("、") || "沒有鎖定字（只接前一鏡的素材或末格）"}`);
+  else out.push("- 沒有鏡頭共用道具、服裝或時刻的字：連戲只靠 look 與人設圖；prompt 裡把錨點（髮繩、袖扣、時刻）每鏡寫一樣的字才鎖得住");
   const clips = plan.shots.filter((shot) => shot.prompt);
   if (clips.length) {
     out.push("");
@@ -711,7 +790,7 @@ export function renderMarkdown(plan, file = "video.json") {
   return out.join("\n");
 }
 
-const CSV_COLUMNS = ["id", "chapter", "setup", "camera", "characters", "need_s", "visual", "source", "buy_s", "first_frame", "end_frame", "risk", "risk_reasons", "expected_takes", "cost_one", "cost_expected", "cost_cap", "prompt_sha256"];
+const CSV_COLUMNS = ["id", "chapter", "setup", "camera", "characters", "need_s", "visual", "source", "buy_s", "first_frame", "end_frame", "risk", "risk_reasons", "expected_takes", "cost_one", "cost_expected", "cost_cap", "prompt_sha256", "fit", "depends_on", "locks"];
 export function renderCsv(plan) {
   const quote = (value) => (/[",\n]/.test(String(value)) ? `"${String(value).replace(/"/g, '""')}"` : String(value));
   const rows = plan.shots.map((shot) => [
@@ -719,6 +798,7 @@ export function renderCsv(plan) {
     shot.source ? `${shot.source.shot}@${shot.source.from_s}` : "", shot.buy_s, shot.first_frame.file ?? shot.first_frame.kind,
     shot.end_frame.planned ? shot.end_frame.file ?? "to-draw" : "", shot.risk.grade, shot.risk.reasons.map((reason) => reason.id).join(" "),
     shot.risk.expected_takes, shot.cost.one, shot.cost.expected, shot.cost.cap, shot.prompt?.sha256 ?? "",
+    shot.promise.fit, shot.continuity.depends_on.join(" "), CONTINUITY_CATEGORIES.flatMap((category) => shot.continuity.locks[category].map((term) => `${category}:${term}`)).join("; "),
   ].map(quote).join(","));
   return [CSV_COLUMNS.join(","), ...rows].join("\n");
 }

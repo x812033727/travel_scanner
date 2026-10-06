@@ -17,6 +17,17 @@
  * patch tag from Dependabot's docker entry, or an npm bump of @playwright/test alone, would leave
  * a client looking for browser builds the image does not have.
  *
+ * The video worker's other packages. Its image installs ops/video/package.json without a lock
+ * file, and that file is not a workspace, so the root npm Dependabot group moves package-lock.json
+ * alone: tools/video's tests would then run one release of a font or of pinyin-pro and the worker
+ * another, which shows first in a published video's frames or in which narrated lines pass
+ * check-audio. Dependabot brings them in a group of their own (`video-worker` in
+ * .github/dependabot.yml): when its pull request moves a package ops/video/package.json pins, it
+ * stays red here until a person copies the lock's versions into that file on its branch, and the
+ * week's other bumps do not wait for it.
+ * And a font tools/video draws with but the image lacks fails only on the host, quietly: the
+ * worker keeps the video's own thumbnail for that language.
+ *
  * Announcements. ci-red-main.yml listens to workflows by their `name:`, so a rename quietly
  * stops the issue; and its branch filter matches a branch name a fork chooses, so it also has to
  * look at the event that started the run.
@@ -26,6 +37,8 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+
+import { FONT_PACKAGES } from "./video/render/fonts.mjs";
 
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
 const WORKFLOWS = join(ROOT, ".github", "workflows");
@@ -55,6 +68,14 @@ const NOT_PINNED_YET = new Map([
 /** Images pinned by digest alone, with the reason a tag would say nothing. */
 const DIGEST_ONLY = new Map([
   ["cgr.dev/chainguard/minio", "Chainguard's free tier publishes only :latest (see ci.yml)"],
+]);
+
+/** Fonts tools/video draws with that the video worker's image does not install yet, each with the open task that adds them. */
+const WORKER_FONTS_NOT_INSTALLED_YET = new Map([
+  // The caption locales' own thumbnail fonts (#1109, #1111) came after ops/video/package.json (#755).
+  ["@fontsource-variable/noto-sans-kr", "2026-10-05-video-worker-image-lacks-locale-thumbnail"],
+  ["@fontsource-variable/noto-sans-sc", "2026-10-05-video-worker-image-lacks-locale-thumbnail"],
+  ["@fontsource-variable/noto-sans-jp", "2026-10-05-video-worker-image-lacks-locale-thumbnail"],
 ]);
 
 const read = (path) => readFileSync(join(ROOT, path), "utf8");
@@ -190,6 +211,36 @@ test("the video worker's Playwright image is the release of the @playwright/test
     `ops/video/Dockerfile runs Playwright ${image}'s browsers. Move the image (tag and digest: docker buildx imagetools ` +
       "inspect mcr.microsoft.com/playwright:v<version>-noble), ops/video/package.json and package-lock.json to one release in one change",
   );
+});
+
+test("the video worker installs exactly the versions package-lock.json resolves", () => {
+  const pinned = Object.entries(JSON.parse(read("ops/video/package.json")).dependencies ?? {});
+  assert.ok(pinned.length > 0, "no dependencies in ops/video/package.json — the scan itself is broken");
+  const locked = JSON.parse(read("package-lock.json")).packages;
+  // The lock always holds one exact version, so a range here (`^3.29.4`) is apart from it too.
+  const apart = pinned
+    .map(([name, version]) => ({ name, version, lock: locked[`node_modules/${name}`]?.version }))
+    .filter(({ version, lock }) => version !== lock)
+    .map(({ name, version, lock }) => `${name}: ${version} in ops/video/package.json, ${lock ?? "nothing"} in package-lock.json`);
+  assert.deepEqual(
+    apart,
+    [],
+    "write package-lock.json's version, exactly, into ops/video/package.json in the same change " +
+      "(for @playwright/test, move the image as well: see the test above)",
+  );
+});
+
+test("the video worker installs every font tools/video draws with, or names a task that is still open", () => {
+  // fonts.mjs finds a font by require.resolve when a page needs it, so a missing one fails nowhere but on the host.
+  const installed = JSON.parse(read("ops/video/package.json")).dependencies ?? {};
+  const fonts = Object.values(FONT_PACKAGES);
+  assert.ok(fonts.length >= 2, `only ${fonts.length} fonts in tools/video/render/fonts.mjs — the scan itself is broken`);
+  const missing = fonts.filter((name) => !Object.hasOwn(installed, name) && !WORKER_FONTS_NOT_INSTALLED_YET.has(name));
+  assert.deepEqual(missing, [], "add these to ops/video/package.json at the version package-lock.json resolves");
+  for (const [name, task] of WORKER_FONTS_NOT_INSTALLED_YET) {
+    assert.ok(!Object.hasOwn(installed, name), `${name} is installed now — drop it from WORKER_FONTS_NOT_INSTALLED_YET`);
+    assert.ok(existsSync(join(ROOT, "tasks", "open", `${task}.md`)), `${name}: ${task} is closed — install the font or drop it here`);
+  }
 });
 
 function workflowName(file) {

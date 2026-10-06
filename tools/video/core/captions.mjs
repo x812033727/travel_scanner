@@ -1,10 +1,12 @@
 // Caption cues and the SRT / WebVTT files YouTube accepts (support.google.com/youtube/answer/2734698).
 //
 // Captions are the only thing that subdivides a line. A long line is cut into the fewest cues
-// that fit the locale's lines, preferably where a clause ends, and the line's speech time is
-// shared among them in proportion to how long each piece takes to say. Each locale cuts its own
+// that fit the locale's lines, preferably where a sentence ends, else where a clause ends, and
+// the line's speech time is shared among them in proportion to how long each piece takes to say.
+// A number is never parted from its unit, by a cue or by a line break. Each locale cuts its own
 // translation inside the same line window, so locales never need the same number of cues:
-// English word order makes a one-to-one split with Chinese impossible to keep natural.
+// English word order makes a one-to-one split with Chinese impossible to keep natural; the
+// translator is shown the narration's cue boundaries instead (cuePieces).
 import { frameToMs, samplesToMs, spokenUnits } from "./timeline.mjs";
 
 // Starting values from common subtitle guidelines (characters per line, lines per cue, reading
@@ -23,11 +25,31 @@ export const LINGER_MS = 400;
 
 const WIDE = /[ᄀ-ᅟ⺀-꓏가-힣豈-﫿︰-﹏＀-｠￠-￦]/u;
 const TRAILING = /[，。、；：,;:\s]+$/u;
-// A cue that ends on one of these ends a clause; a cue must never start with one.
-const ENDS_CLAUSE = /[，。！？；：、,.!?;:—]$/u;
+// A cue that ends on one of these (closing quotes and brackets allowed after it) ends a sentence,
+// the best place to cut; on one of the second set, a clause, the next best. A cue must never
+// start with one.
+const ENDS_SENTENCE = /[。！？.!?][」』）)\]"'”’]*$/u;
+const ENDS_CLAUSE = /[，。！？；：、,.!?;:—][」』）)\]"'”’]*$/u;
 const OPENS_BADLY = /^[，。！？；：、,.!?;:）」』)\]]/u;
 // Chinese and Japanese break between characters but never inside a Latin word or a number.
-const CJK_TOKEN = /[A-Za-z0-9][A-Za-z0-9.+#'_-]*|\s+|./gsu;
+const LATIN_RUN = "[A-Za-z0-9][A-Za-z0-9.+#'_-]*";
+// A number keeps its unit: "300 GB", "15.8%", "1.15×", "US$0.135", "5 分鐘", "2026 年", "3 million".
+// The digits may carry a currency sign; the unit is a symbol, a Chinese or Japanese measure word
+// (with or without a space), or a Latin unit word after a space. A Latin suffix with no space
+// ("24fps", "5G") is a Latin run already. A false match only keeps two things together.
+const CURRENCY = "(?:US\\$|NT\\$|HK\\$|[$€£¥₩])";
+const DIGITS = "\\d+(?:[,.]\\d+)*";
+const SYMBOL_UNIT = "%|％|×|°C|℃|°";
+const CJK_UNIT = "分鐘|小時|公里|公尺|公分|公斤|公克|毫秒|美元|美金|台幣|日圓|日元|韓元|人民幣|歐元|英鎊|時間|か月|ヶ月|カ月|年|月|日|週|天|秒|分|元|円|萬|万|億|兆|倍|次|回|個|位|名|人|台|支|款|種|項|頁|行|字|張|條|顆|部|集|季|層|級|歲|度|塊|成|折|筆|組|份|批|場|句|段|篇|章|節|步|幀|格|件|本|枚|點|点|號|つ";
+const LATIN_UNIT = "[kKMGTPE]?[bB]|[kKMGT]?Hz|[kKMG]?bps|fps|ms|μs|ns|s|sec|secs|min|mins|h|hr|hrs|km|m|cm|mm|nm|kg|g|mg|lb|lbs|oz|mi|ft|W|kW|MW|Wh|kWh|mAh|px|dpi|ppi|pt|k|K|M|USD|EUR|GBP|JPY|KRW|TWD|NTD|CNY|RMB|HKD|million|billion|trillion|thousand|percent|points?|seconds?|minutes?|hours?|days?|weeks?|months?|years?|tokens?|times|fold|x";
+const HANGUL_UNIT = "분|초|시간|일|주|개월|년|원|달러|만|억|배|번|개|명|대|건|회|등|위|점|자|줄|장|퍼센트";
+const NUMBER_UNIT = `${CURRENCY}?${DIGITS}(?:\\s?(?:${SYMBOL_UNIT}|${CJK_UNIT})|\\s(?:${LATIN_UNIT}))(?![A-Za-z0-9])`;
+// A currency sign stays with its number even without a unit ("US$0.135").
+const PRICED = `${CURRENCY}${DIGITS}(?![A-Za-z0-9])`;
+const CJK_TOKEN = new RegExp(`${NUMBER_UNIT}|${PRICED}|${LATIN_RUN}|\\s+|.`, "gsu");
+// Word-based locales split at spaces; a number and the unit word after it are joined again.
+const NUMBER_WORD = new RegExp(`^[(\\[「『"']?${CURRENCY}?${DIGITS}$`, "u");
+const UNIT_WORD = new RegExp(`^(?:${SYMBOL_UNIT}|${LATIN_UNIT}|${CJK_UNIT}|${HANGUL_UNIT})[,.;:!?)\\]」』"']*$`, "u");
 
 /** Display width in the locale's units: CJK locales count half-width characters as half. */
 export function measure(text, rules) {
@@ -37,8 +59,22 @@ export function measure(text, rules) {
   return width;
 }
 
+// "300", " ", "GB" become "300 GB": a number and its unit word are one token.
+function joinUnits(parts) {
+  const joined = [];
+  for (const token of parts) {
+    const at = joined.length;
+    if (at >= 2 && UNIT_WORD.test(token) && !joined[at - 1].trim() && NUMBER_WORD.test(joined[at - 2])) {
+      joined.splice(at - 2, 2, joined[at - 2] + joined[at - 1] + token);
+    } else {
+      joined.push(token);
+    }
+  }
+  return joined;
+}
+
 function rawTokens(text, rules) {
-  return rules.words ? text.split(/(\s+)/).filter(Boolean) : (text.match(CJK_TOKEN) ?? []);
+  return rules.words ? joinUnits(text.split(/(\s+)/).filter(Boolean)) : (text.match(CJK_TOKEN) ?? []);
 }
 
 function tokens(text, rules) {
@@ -98,9 +134,13 @@ function fitsDisplayed(text, rules) {
     && fits(displayText(text, rules), rules);
 }
 
+/** The fit check buildCues uses: the displayed text for the CJK locales, the raw text for word-based ones. */
+const canFitFor = (rules) => (rules.words ? fits : fitsDisplayed);
+
 /**
  * Cut one line's text into cue-sized pieces: the fewest cues that fit, as even in length as
- * possible, preferring to cut where a clause ends. Every piece fits in the locale's cue.
+ * possible, preferring to cut where a sentence ends, then where a clause ends. Every piece fits
+ * in the locale's cue, and a number stays with its unit (tokens).
  */
 export function splitText(text, rules, canFit = fits) {
   const clean = text.trim();
@@ -108,8 +148,11 @@ export function splitText(text, rules, canFit = fits) {
   const parts = tokens(clean, rules);
   const piece = (from, to) => parts.slice(from, to).join("").trim();
   const cap = rules.maxChars * rules.maxLines;
-  // Cutting mid-clause costs about as much as leaving one cue a quarter of the others' length.
+  // Cutting mid-clause costs about as much as leaving one cue a quarter of the others' length;
+  // cutting at a clause end (a comma) half of that, so a sentence end wins over a comma unless
+  // the pieces become clearly lopsided, and a comma wins over mid-clause the same way.
   const midClause = (cap * cap) / 4;
+  const cutCost = (text) => (ENDS_SENTENCE.test(text) ? 0 : ENDS_CLAUSE.test(text) ? midClause / 2 : midClause);
   // best[to] = the cheapest way to cut parts[0..to): fewest cues first, then the most even.
   const best = [{ count: 0, cost: 0, from: -1 }];
   for (let to = 1; to <= parts.length; to++) {
@@ -121,7 +164,7 @@ export function splitText(text, rules, canFit = fits) {
       if (!canFit(text, rules)) break;
       const size = measure(text, rules);
       const count = best[from].count + 1;
-      const cost = best[from].cost + size * size + (to < parts.length && !ENDS_CLAUSE.test(text) ? midClause : 0);
+      const cost = best[from].cost + size * size + (to < parts.length ? cutCost(text) : 0);
       const current = best[to];
       if (!current || count < current.count || (count === current.count && cost < current.cost)) best[to] = { count, cost, from };
     }
@@ -133,8 +176,20 @@ export function splitText(text, rules, canFit = fits) {
 }
 
 /**
+ * The pieces one line's captions are cut into before timing, for a locale: what a translator is
+ * shown as the narration's cue boundaries (tools/video/i18n/cli.mjs translationContext).
+ * timePieces may still merge a piece that would flash past.
+ */
+export function cuePieces(text, locale) {
+  const rules = LOCALE_RULES[locale];
+  if (!rules) throw new Error(`no caption rules for locale ${locale}`);
+  return splitText(text, rules, canFitFor(rules));
+}
+
+/**
  * Break a cue into two lines near the middle when it is wider than one line: after punctuation
- * if possible, never inside a Latin word or a number, at a space for word-based locales.
+ * if possible, never inside a Latin word, a number or a number and its unit, at a space for
+ * word-based locales.
  */
 export function wrapCue(text, rules) {
   if (measure(text, rules) <= rules.maxChars || rules.maxLines < 2) return text;
@@ -223,7 +278,7 @@ export function timePieces(pieces, startMs, endMs, rules = null, canFit = fits) 
 export function buildCues(timeline, texts, locale) {
   const rules = LOCALE_RULES[locale];
   if (!rules) throw new Error(`no caption rules for locale ${locale}`);
-  const canFit = rules.words ? fits : fitsDisplayed;
+  const canFit = canFitFor(rules);
   const cues = [];
   const missing = [];
   for (const line of timeline.lines) {

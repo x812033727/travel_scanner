@@ -87,9 +87,25 @@ AI 潤飾（Hailuo AI Polish／Kling AI Prompter）：開／關
 
 站主點頭後：`plan_lock.mjs --write --note "<站主的原話>" --assist on|off`，加上跟 `shot_plan.mjs` 同一組規劃旗標。
 
+## 鎖定包裡的承諾與連戲鎖（`plan/lock.json` 第 3 版）
+
+`--write` 寫的鎖定檔，每一鏡除了三個指紋、類型、買幾秒、風險與定稿正文，還有兩樣 `shot_plan.mjs` 算出來、`--markdown` 的「承諾與連戲鎖」一節也印的東西：
+
+```json
+"s05": {
+  "visual_kind": "clip", "buy_s": 4,
+  "promise": { "visual_kind": "clip", "buy_s": 4, "route": "hailuo", "fit": "auto" },
+  "continuity": { "depends_on": ["s01", "s03", "s04"], "locks": { "prop": ["sword"], "costume": ["cuff", "silver cuff", "hair cord", "jade hair cord"], "time_of_day": [] } }
+}
+```
+
+- **承諾（`promise`）**：這一鏡答應做成什麼——類型（clip／still／cut）、買幾秒、哪條路線、`fit`。「交付承諾」（delivery promise）是 OpenMontage 的叫法（AGPL，只借這個想法，沒有看它的碼）。鎖定之後把答應的 clip 改成 still、改成切素材、刪掉，或把 `fit` 改成 `freeze`（鎖定時不是），`drama_preflight.mjs` 在每個階段都以 lint 的碼（exit 1，`promise.broken`）擋下，直到 `plan/changes.jsonl` 有一張對照這把鎖、記了這一鏡這個改動的變更單；買貴的方向（still 改成 clip）只進變更單，不擋。
+- **連戲鎖（`continuity`）**：`depends_on` 是這一鏡要接得上的更早鏡頭——同一場共用鎖定字的、`source.shot` 切自的、`start_frame.shot` 接末格的；`locks` 是這一鏡 `prompt` 裡鎖住的字，分道具、服裝、時刻三類。「連戲鎖」（continuity locks）是 drama-skills（MIT）與 shuohao-skills（Apache-2.0）兩個中文漫劇技能包分鏡表裡要人填的欄位（依賴鏡頭、道具鎖、服裝鎖、時間鎖），這裡只借名字與想法。`video.json` 的鏡頭欄位是封閉集合，所以字從 `prompt` 用三張詞表抓（`shot_plan.mjs` 的 `CONTINUITY_TERMS`：道具是風險表的武器與小道具加場景道具，服裝是 robe、cuff、hair cord 這類，時刻是 dawn、dusk、night 這類）：道具與服裝要同一場至少兩鏡寫到同一個字才鎖（一鏡獨有的插鏡道具不是連戲線），時刻每寫一次就鎖；名詞前面緊接的一個形容詞連名詞再鎖一個（「jade hair cord」改成「red hair cord」才抓得到）。鎖定之後鎖住的字從那一鏡的 `prompt` 消失，preflight 一樣擋（`continuity.broken`）。所以每一鏡的錨點（髮繩、袖扣、銅環）要寫一樣的字、光與時刻寫進 `prompt`；只在人設 `appearance` 裡的東西由 look 關卡守，不在這裡。
+- 第 2 版的鎖定檔沒有這兩欄：`--check`／`--ready`／`--accept` 以 2 停下、preflight 只提醒。重鎖一次（`--write --force`）就好。
+
 ## 變更單
 
-`plan_lock.mjs --check` 印的就是變更單；送給站主之前補上「誰要改、為什麼」：
+`plan_lock.mjs --check` 印的就是變更單（改小的承諾與少掉的連戲字各有一行）；送給站主之前補上「誰要改、為什麼」：
 
 ```text
 變更單：對照 <鎖定時間> 的開拍鎖定（<站主當時的話>）
@@ -102,7 +118,18 @@ AI 潤飾（Hailuo AI Polish／Kling AI Prompter）：開／關
 決定：站主 ___（日期）
 ```
 
-決定之後一次改完、`--write --force --note "<決定>"`（沒給規劃旗標就沿用鎖定的設定）；舊鎖留在 `plan/`，這筆變更記進 `plan/changes.jsonl`。
+決定之後：批次進行中、還不想重鎖的，`--accept --note "<站主的決定>"` 把這張變更單原樣記進 `plan/changes.jsonl`（`status: "accepted"`，`previous_lock` 是現在這把鎖的 `created_at`），`drama_preflight.mjs` 就放行它列出的鏡頭、只提醒（`promise.signed`／`continuity.signed`）；攢齊之後一次改完、`--write --force --note "<決定>"`（沒給規劃旗標就沿用鎖定的設定）重鎖，舊鎖留在 `plan/`，這次結掉的變更再記一行（`status: "settled"`），新鎖的承諾就是改過的樣子。沒有 `--accept` 也沒有重鎖，改小的承諾與少掉的連戲字就一直被擋。
+
+`changes.jsonl` 一行一張：
+
+```json
+{ "at": "2026-10-05T01:00:00Z", "previous_lock": "2026-10-05T00:00:00Z", "status": "accepted", "note": "站主：s03 改 still，省點數",
+  "changes": ["s03：畫面欄位（motion、source、chapter 這類不進關鍵影格請求的）、要貼的定稿正文、買的秒數 4 → 0、類型 clip → still"],
+  "shots": [{ "id": "s03", "kind": ["clip", "still"], "fit": null, "buy": [4, 0], "continuity": null }],
+  "added": [], "removed": [], "rebuy": [], "approvals": ["storyboard"], "judge_calls": 0 }
+```
+
+preflight 認的是：`previous_lock` 等於現在這把鎖的 `created_at`，`shots` 裡有這一鏡，而且 `kind`／`fit` 的第二個值就是現在的樣子（連戲是 `continuity.missing` 列了每個少掉的字；刪掉的鏡頭看 `removed`）。對照更早那把鎖的行、或只記了別的改動的行（例如只記了秒數，之後才改成 still），都不算。更早的行沒有 `status`，當 `settled`。
 
 ## 例子：布袋喵參考風格的八鏡（2026-10-04 實跑）
 
@@ -156,4 +183,4 @@ node .agents/skills/animation-preproduction/scripts/plan_lock.mjs --file <改過
 node .agents/skills/animation-preproduction/scripts/plan_lock.mjs --file <改過的 video.json> --workdir <這集的工作目錄> --write --route kling --pilot s05,s06,s07 --assist off --note "<站主的話>"
 ```
 
-文字卡版的動態分鏡在這一步就能看節奏：八鏡中位數約 2.5 秒、最長 4 秒、前 10 秒開始 5 鏡（對話戲的目標是前 10 秒至少 4 鏡；整集的前 30 秒至少 10 鏡這一列，單場戲不評）。鎖定前的 `--ready` 列出還沒有的關卡、配音與關鍵影格，放進鎖定包第 7 項。鎖定之後有人把 s05 的 `motion` 加了一個字，`--check` 立刻印出變更單：s05 的畫面欄位與定稿正文變了；關鍵影格不用重畫（`motion` 不在畫面請求裡），但 storyboard 核准過的話會失效，伺服器買過的素材要再 judge、匯入過的外部片段要重匯。
+文字卡版的動態分鏡在這一步就能看節奏：八鏡中位數約 2.5 秒、最長 4 秒、前 10 秒開始 5 鏡（對話戲的目標是前 10 秒至少 4 鏡；整集的前 30 秒至少 10 鏡這一列，單場戲不評）。鎖定前的 `--ready` 列出還沒有的關卡、配音與關鍵影格，放進鎖定包第 7 項。鎖定之後有人把 s05 的 `motion` 加了一個字，`--check` 立刻印出變更單：s05 的畫面欄位與定稿正文變了；關鍵影格不用重畫（`motion` 不在畫面請求裡），但 storyboard 核准過的話會失效，伺服器買過的素材要再 judge、匯入過的外部片段要重匯。把 s03 改成 still 的話，變更單多一行「承諾改小的：s03 clip → still」，`drama_preflight.mjs` 立刻以 exit 1 擋；把 s05 的「jade hair cord」改成「red hair cord」，多一行「連戲鎖少了 服裝「jade hair cord」（接 s01、s03、s04 的字）」。站主點頭後 `--accept --note` 或重鎖才放行。

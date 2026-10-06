@@ -6,7 +6,8 @@
   "master_sha256": "89d7d0fb16acfb196d5f19f6f9cc96a776b69b08234a492f1d3e8fd7078d494c",
   "speech_hash": "e763f5bdd108bfa1",
   "visual_hash": "ecc202c8cc01eec0",
-  "fact_receipt_sha256": "1917da872e108114fbf2b3901e9a125ae0fd0f31d770c378903451bdb09bfe0e",
+  "fact_receipt_sha256": "fff4ae7c5bdac4beaaf8ce6b56253527836ced4024bd6f9a52efbf0e25582eda",
+  "redaction_note": "Redacted 2026-10-05 for the public repository (task 2026-10-05-scrub-local-user-paths-from-the): the local Windows profile path in every path in this audit, in fact-source-audit.json and in visual-review.json became <home>. fact_receipt_sha256, final_closure.pins.fact and final_closure.visual_review.sha256 now record those redacted repository copies; no other value changed. The audited originals and the digests first recorded here are in commit bc5f18db8 (#1144).",
   "text_review_report_sha256": "783cdf2689cb1c7f32b05681f900b820f99a3b6ca54a072584f569e87e4e0131",
   "approvals_file_sha256": "b4208553d7e9083caca3a5680a607ac83b9d40b0187e34972b0d61404f5f84e0",
   "timeline_sha256": "8e662e6faefb04b1d4c661f907affc983322d82eab752f8c4da1243e6814fc9e",
@@ -186,7 +187,7 @@
     "youtube_upload_and_publication": "not_uploaded"
   },
   "raw_receipt": {
-    "path": "C:\\Users\\x8120\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-runtime-independent-body.json",
+    "path": "<home>\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-runtime-independent-body.json",
     "sha256": "88e9d72f4579b61d9a9f7ae142f7772419f76db428257c65a5485c235637b0d3"
   },
   "helper_sha256": "eebcb8cd4095fba3c01c2dd114415718b54e544233d274e1adbb71f7f523d8a4",
@@ -202,35 +203,36 @@
     "reviewer_agent": "facts_t27",
     "pins": {
       "master": "89d7d0fb16acfb196d5f19f6f9cc96a776b69b08234a492f1d3e8fd7078d494c",
-      "fact": "1917da872e108114fbf2b3901e9a125ae0fd0f31d770c378903451bdb09bfe0e",
+      "fact": "fff4ae7c5bdac4beaaf8ce6b56253527836ced4024bd6f9a52efbf0e25582eda",
       "manifest": "260ed6f4a37ce2199e8ef563fc0de0b4d92bd3368b67b89d5d4809927b538bda",
       "body": "88e9d72f4579b61d9a9f7ae142f7772419f76db428257c65a5485c235637b0d3"
     },
+    "redaction_note": "Redacted 2026-10-05 (task 2026-10-05-scrub-local-user-paths-from-the): pins.fact records fact-source-audit.json after its local Windows profile paths became <home>; no other pin changed. The original pin is in commit bc5f18db8 (#1144).",
     "final_sha256": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016",
     "upload_metadata_sha256": "0b391df71413e3ea5ef4307b4984d332dd81174e43af5fc98b92e4ed0abe79d3",
     "receipts": {
       "body": {
-        "path": "C:\\Users\\x8120\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-runtime-independent-body.json",
+        "path": "<home>\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-runtime-independent-body.json",
         "sha256": "88e9d72f4579b61d9a9f7ae142f7772419f76db428257c65a5485c235637b0d3"
       },
       "final_audit": {
-        "path": "C:\\Users\\x8120\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-final-audit.json",
+        "path": "<home>\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-final-audit.json",
         "sha256": "3d5ad153b104373edc3b5317d7601a4503eb3f4a252b14219adcb731411948c5"
       },
       "sync": {
-        "path": "C:\\Users\\x8120\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-sync-readonly.json",
+        "path": "<home>\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-sync-readonly.json",
         "sha256": "0929e30144989b987f72e4816e3479aca78429b82b5ebe751bf6f3593e4e883e"
       },
       "remote_proof": {
-        "path": "C:\\Users\\x8120\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-remote-delivery-2026-10-02T15-52-00-323Z.json",
+        "path": "<home>\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-remote-delivery-2026-10-02T15-52-00-323Z.json",
         "sha256": "bdc2f89fed065da15a9436a01a77c4fc138ea83e270bce2d7fd3a34867585c10"
       },
       "samples_manifest": {
-        "path": "C:\\Users\\x8120\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-final-samples\\manifest.json",
+        "path": "<home>\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-final-samples\\manifest.json",
         "sha256": "97e262f85fd4af745cb8ba959f40ec86d9ab62d1ab4b287d0e5386bb91d0785f"
       },
       "sample_review": {
-        "path": "C:\\Users\\x8120\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-final-stills-review.json",
+        "path": "<home>\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-final-stills-review.json",
         "sha256": "f223318f99da7df7b8c41b4a1da397e6b3ec768aa131c3040d7e2f65247a811d"
       }
     },
@@ -289,11 +291,11 @@
     },
     "branding_selection_proof": {
       "approval_doc": {
-        "path": "C:\\Users\\x8120\\.codex\\worktrees\\sothatswhy-t27\\travel_scanㄐ\\docs\\videos\\branding-release\\2026-10-02-sothatswhy-intro-approval.md",
+        "path": "<home>\\.codex\\worktrees\\sothatswhy-t27\\travel_scanㄐ\\docs\\videos\\branding-release\\2026-10-02-sothatswhy-intro-approval.md",
         "sha256": "43387f2d864d334a68dec480e3979c8e3169e153ad2d49fff3ad9488112d6f55"
       },
       "owner_selection": {
-        "path": "C:/Users/x8120/mokaair-work/so-thats-why-intro-20261002/v2-7s-interleaved/approved/owner-approval.json",
+        "path": "<home>/mokaair-work/so-thats-why-intro-20261002/v2-7s-interleaved/approved/owner-approval.json",
         "sha256": "1247033a80b19e52cf59967dd55acb8aa3728634a8012eca57d95dc752fd9c80",
         "owner_statement": "好 當作原來如此系列的開頭影片"
       },
@@ -303,8 +305,9 @@
       "note": "The selected fixed series opening interleaves fourteen countries/regions and languages. English/USA in one sample is a brand card, not the T27 narration or subtitle locale; this does not select extra languages or establish per-episode full playback acceptance."
     },
     "visual_review": {
-      "path": "C:\\Users\\x8120\\.codex\\worktrees\\sothatswhy-t27\\travel_scanㄐ\\docs\\videos\\sothatswhy-t27\\visual-review.json",
-      "sha256": "47a692798587e8b99cdb5c4f533eb743663347a4129d9de7ff02740c3f4397d1",
+      "path": "<home>\\.codex\\worktrees\\sothatswhy-t27\\travel_scanㄐ\\docs\\videos\\sothatswhy-t27\\visual-review.json",
+      "sha256": "ef00f9439db65104f6f779ec7211d439efe956af6340c712699351fc1e42638a",
+      "redaction_note": "Redacted 2026-10-05 (task 2026-10-05-scrub-local-user-paths-from-the): sha256 records visual-review.json after its local Windows profile paths became <home>, and path names it with <home>. The original path and digest are in commit bc5f18db8 (#1144).",
       "status": "CURRENT_STILLS_AND_FINAL_MP4_SAMPLES_PASS",
       "whole_current_stills": 137,
       "final_sample_count": 15
@@ -590,7 +593,7 @@
     "youtube_video_id": null,
     "published": false,
     "raw_closure": {
-      "path": "C:\\Users\\x8120\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-runtime-final-closure.json",
+      "path": "<home>\\.codex\\visualizations\\2026\\10\\01\\01a0f5cd-1f4c-7f91-9af1-b02370fcce78\\t27-runtime-final-closure.json",
       "sha256": "b57d237ca6388663a2697973eae81bdb5efba46d0a17633e86c6f29509a991e8"
     }
   },

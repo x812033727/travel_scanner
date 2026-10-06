@@ -20,6 +20,15 @@ MiniMax's own code (``… (2013)``). The v1 model list (.../video-generation-i2v
 the v1 request every other model keeps would never have made an H3 clip. The configured base
 names the v1 API (``…/v1``); the v2 paths hang off the same host. An H3 task's ``vendor_ref``
 carries a ``v2:`` prefix so that ``poll``, which sees only the reference, asks the v2 query.
+
+The same v2 request has two shapes (the create page and .../guides/video-generation, read
+2026-10-05; the China page platform.minimax.cn/docs/api-reference/video-generation-v2-create
+states the same rules): image-to-video, where ``content[]`` carries the text and the first
+frame (an optional last one too), and reference-to-video, where it carries the text and up to
+nine ``reference_image`` items (reference videos and audio exist too, three each; nothing here
+sends them). The two are mutually exclusive, so a request with a frame and a reference image
+is refused before the paid call rather than having either dropped. Which shape a request takes
+follows from what it carries: frames, or reference images and no frame.
 """
 
 from __future__ import annotations
@@ -58,6 +67,12 @@ IMAGE_PROMPT_LIMIT = 1500
 # catalog; every model not named here keeps the v1 request unchanged.
 V2_VIDEO_MODELS = frozenset({"MiniMax-H3"})
 V2_REF_PREFIX = "v2:"
+# The v2 create page (read 2026-10-05): "reference images ≤ 9" in reference-to-video, and
+# ``ratio`` is one of these (``adaptive`` is the default; image-to-video ignores it and always
+# follows the first frame). A reference-to-video request has no frame to follow, so it names
+# the ratio the clip is for.
+V2_MAX_REFERENCE_IMAGES = 9
+V2_RATIOS = frozenset({"adaptive", "21:9", "16:9", "4:3", "1:1", "3:4", "9:16"})
 # The code MiniMax puts at the end of a v2 error message: "invalid params, … (2013)".
 _V2_ERROR_CODE = re.compile(r"\((\d{1,6})\)\s*$")
 
@@ -103,6 +118,11 @@ def api_root(base_url: str) -> str:
     """The configured base without its ``/v1``: where the v2 paths start."""
     root = base_url.rstrip("/")
     return root.removesuffix("/v1")
+
+
+def v2_image(image: ReferenceImage, role: str) -> dict[str, Any]:
+    """One picture of a v2 ``content[]`` array, in the documented data-URI form."""
+    return {"type": "image_url", "image_url": {"url": data_url(image)}, "role": role}
 
 
 def _digits(value: object) -> int | None:
@@ -250,10 +270,10 @@ class MiniMaxVideo:
         return {"Authorization": f"Bearer {self.key}"}
 
     def request_body(self, request: MediaRequest) -> dict[str, Any]:
+        if request.model in V2_VIDEO_MODELS:
+            return self._v2_body(request)
         if request.first_frame is None:
             raise MediaUpstreamError(422, "a clip needs its first frame", "invalid")
-        if request.model in V2_VIDEO_MODELS:
-            return self._v2_body(request, request.first_frame)
         body: dict[str, Any] = {
             "model": request.model,
             "prompt": request.prompt
@@ -274,41 +294,66 @@ class MiniMaxVideo:
             ]
         return body
 
-    def _v2_body(self, request: MediaRequest, first: ReferenceImage) -> dict[str, Any]:
-        """H3's image-to-video request: the prompt, the first frame and an optional last one.
+    def _v2_body(self, request: MediaRequest) -> dict[str, Any]:
+        """H3's v2 request: image-to-video from its frames, or reference-to-video from its
+        reference images.
 
-        The v2 API makes image-to-video and reference-to-video mutually exclusive: no
-        ``reference_image``/``reference_video``/``reference_audio`` item may sit next to a
-        ``first_frame`` or ``last_frame``. Every clip here starts from its approved keyframe,
-        which already carries the faces, so the character sheets are not sent to H3. Nothing
-        else is either: in image-to-video the ratio always follows the first frame
-        (``adaptive``), and v2 has no ``prompt_optimizer`` (H3-Max alone takes ``extra``).
+        The v2 API makes the two mutually exclusive: no ``reference_image``/``reference_video``/
+        ``reference_audio`` item may sit next to a ``first_frame`` or ``last_frame``. A request
+        carrying both is refused here, before the paid call, rather than having either dropped
+        (the jobs layer refuses it earlier still: the catalog gives H3 no reference image beside
+        the first frame every clip job has). Image-to-video sends the prompt and the frames and
+        nothing else: the ratio always follows the first frame (``adaptive``), and v2 has no
+        ``prompt_optimizer`` (H3-Max alone takes ``extra``). Reference-to-video sends every
+        reference image, whatever its role, in the order given, since the text names them by
+        number (the guide's example: "follows reference images 1 and 2"; the official H3
+        prompt guide writes ``<Picture N>``), and the ratio the clip is for, since no frame
+        sets it. The prompt is sent as written either way.
         """
         if not request.resolution:
             raise MediaUpstreamError(422, "MiniMax H3 needs a resolution (768P or 2K)", "invalid")
+        frames = request.first_frame is not None or request.last_frame is not None
+        if frames and request.references:
+            raise MediaUpstreamError(
+                422, "MiniMax H3 takes a first frame or reference images, not both", "invalid"
+            )
         prompt = (
             request.prompt
             if not request.negative_prompt
             else f"{request.prompt}. Avoid: {request.negative_prompt}"
         )
-        content: list[dict[str, Any]] = [
-            {"type": "text", "text": prompt},
-            {"type": "image_url", "image_url": {"url": data_url(first)}, "role": "first_frame"},
-        ]
-        if request.last_frame is not None:
-            content.append(
-                {
-                    "type": "image_url",
-                    "image_url": {"url": data_url(request.last_frame)},
-                    "role": "last_frame",
-                }
-            )
-        return {
+        content: list[dict[str, Any]] = [{"type": "text", "text": prompt}]
+        body: dict[str, Any] = {
             "model": request.model,
             "content": content,
             "resolution": request.resolution.upper(),
             "duration": request.seconds,
         }
+        if request.first_frame is not None:
+            content.append(v2_image(request.first_frame, "first_frame"))
+            if request.last_frame is not None:
+                content.append(v2_image(request.last_frame, "last_frame"))
+            return body
+        if not request.references:
+            # A last frame alone pairs with nothing: the page says it goes with a first frame.
+            raise MediaUpstreamError(
+                422, "a clip needs its first frame or its reference images", "invalid"
+            )
+        if len(request.references) > V2_MAX_REFERENCE_IMAGES:
+            raise MediaUpstreamError(
+                422,
+                f"MiniMax H3 takes at most {V2_MAX_REFERENCE_IMAGES} reference images",
+                "invalid",
+            )
+        if request.aspect not in V2_RATIOS:
+            raise MediaUpstreamError(
+                422,
+                f"MiniMax H3 has no {request.aspect} ratio for reference-to-video",
+                "invalid",
+            )
+        content.extend(v2_image(image, "reference_image") for image in request.references)
+        body["ratio"] = request.aspect
+        return body
 
     async def submit(self, request: MediaRequest, client: httpx.AsyncClient) -> Submitted:
         if request.model in V2_VIDEO_MODELS:
