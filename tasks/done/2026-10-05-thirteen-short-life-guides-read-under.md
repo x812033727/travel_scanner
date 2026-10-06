@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-thirteen-short-life-guides-read-under
 title: Thirteen short life guides read under the 1,500-character floor in zh-TW, zh-CN and ko
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-short-life-a
 claimed_at: 2026-10-06T01:15:09Z
 created_at: 2026-10-05T06:52:42Z
-completed_at:
+completed_at: 2026-10-06T13:35:41Z
 branch: claude/short-life-a
 depends_on: []
 scope:
@@ -56,15 +56,15 @@ scope:
 
 ## Definition of done
 
-- [ ] 每一篇要嘛五語都補到 1,500 字以上（補讀者用得到的操作段落，不是填字數、不是連結清單），要嘛在本票 Notes 寫明為什麼保留短篇。
-- [ ] `pack_cli lint --kind life` 對這 13 個 slug 不再有低於下限的 `text_length` 警告，或 Notes 逐篇交代保留的理由。
+- [x] 每一篇要嘛五語都補到 1,500 字以上（補讀者用得到的操作段落，不是填字數、不是連結清單），要嘛在本票 Notes 寫明為什麼保留短篇。
+- [x] `pack_cli lint --kind life` 對這 13 個 slug 不再有低於下限的 `text_length` 警告，或 Notes 逐篇交代保留的理由。
 - [ ] 改過的內容包在合併後由協調者經站主同意重新匯入（`guides-import --slug ... --dry-run`，再 `--publish`）。
 
 ## Steps
 
-- [ ] 逐篇讀 zh-TW 原文，判斷缺哪一段讀者真的會用到的內容（走 skill `content-pipeline`，五語一起改，en 不要超過 6,000）。
-- [ ] 新增的產品功能、數字都要有當天打開的官方來源並更新 `checked_on`；沒有新事實就只重開既有來源確認仍成立。
-- [ ] 跑下方的 lint、`intake_check.py --from-content`、`docs/news-2026-batch-4/translation_checks.py`、`tests/test_guides_content_pack.py`。
+- [x] 逐篇讀 zh-TW 原文，判斷缺哪一段讀者真的會用到的內容（走 skill `content-pipeline`，五語一起改，en 不要超過 6,000）。
+- [x] 新增的產品功能、數字都要有當天打開的官方來源並更新 `checked_on`；沒有新事實就只重開既有來源確認仍成立。
+- [x] 跑下方的 lint、`intake_check.py --from-content`、`docs/news-2026-batch-4/translation_checks.py`、`tests/test_guides_content_pack.py`。
 
 ## How to verify
 
@@ -139,3 +139,7 @@ PYTHONUTF8=1 uv run python -m app.guides.pack_cli lint --kind life \
 - 發布（合併並部署之後，協調者取得站主同意才做；publish after merge (coordinator, owner consent)）：兩個 PR 都合併後，
   `guides-import --slug <13 個 slug> --locale zh-TW --locale en --locale ja --locale ko --locale zh-CN --dry-run` 應為 65 個 `update`
   （只有 short-life-a 合併時是前七篇的 35 個），再換成 `--publish --actor-email <ACTOR_EMAIL>`，之後 `guides-links-rebuild`。
+- 2026-10-06 claude-opus-5-5-train-a：#1331（short-life-a，七篇）與 #1332（short-life-b，六篇）一起併入 train 分支 `claude/train-a-18-green`。
+  併完後上方 How to verify 的 13 個 slug `pack_cli lint --kind life` 沒有任何 `text_length` 警告（只剩本票範圍外的 `no_summary`），
+  前兩項 DoD 與 Steps 都勾選。第三項（合併並部署後經站主同意的 `guides-import` dry-run 65 個 update → `--publish` → `guides-links-rebuild`）
+  是合併後的發布動作，不是程式工作，留給協調者照上一條 Notes 做；本票以 done 結案。

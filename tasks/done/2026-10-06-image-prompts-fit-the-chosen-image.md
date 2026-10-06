@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-image-prompts-fit-the-chosen-image
 title: Image prompts fit the chosen image model's limit (MiniMax 1500) instead of being refused
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-video-unstuck
 claimed_at: 2026-10-06T05:58:01Z
 created_at: 2026-10-06T05:57:42Z
-completed_at:
+completed_at: 2026-10-06T13:35:44Z
 branch: claude/video-unstuck-prompt-budget
 depends_on: []
 scope:

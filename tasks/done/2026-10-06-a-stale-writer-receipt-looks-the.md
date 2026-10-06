@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-a-stale-writer-receipt-looks-the
 title: A stale writer receipt looks the saved job up and archives it when it is over instead of blocking the video
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-video-unstuck
 claimed_at: 2026-10-06T05:56:11Z
 created_at: 2026-10-06T05:55:39Z
-completed_at:
+completed_at: 2026-10-06T13:35:42Z
 branch: claude/video-unstuck-stale-receipts
 depends_on: []
 scope:
