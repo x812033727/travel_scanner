@@ -415,7 +415,7 @@
 
 #### 72. a01-s072
 
-無台詞動作（3 秒）：A bare meditation cell in the temple at dusk from the door side: the low bed across the middle right of frame, Jiwen propped half sitting against a rolled quilt with his head at the left, facing right; the oil lamp lit on the low table at the bed's head at the left; the square window in the back wall at the right glowing orange; on the back wall at the left the tall gilded lotus crown with hanging gold bead strands, set on a plain wooden shelf, beside the saffron-and-crimson kasaya folded on the shelf, its torn left breast showing; in the doorway at the left foreground a tall dark silhouette against the orange light of the corridor
+無台詞動作（3 秒）：A bare meditation cell in the temple at dusk from the door side: the low bed across the middle right of frame, Jiwen propped half sitting against a rolled quilt over the flat pillow with his head at the left, facing right; the oil lamp lit on the low table at the bed's head at the left; the square window in the back wall at the right glowing orange; on the back wall at the left the tall gilded lotus crown with hanging gold bead strands, set on a plain wooden shelf, beside the saffron-and-crimson kasaya folded on the shelf, its torn left breast showing; in the doorway at the left foreground a tall dark silhouette against the orange light of the corridor
 動作：Jiwen lifts his head off the rolled quilt toward the doorway
 
 
@@ -1967,7 +1967,7 @@
 
 #### 353. a04-s075
 
-【書院長老】（追一句，不太高興）那先生的病——
+【書院長老】（追一句，不太高興）那沈先生的病——
 【紗女】（接得快，平平的）玄門有養氣的法子，
 【紗女】不用藥。
 
@@ -2601,5 +2601,5 @@
 動作：The thin film of red turns slowly on the dark broth under the reflected flame
 
 
-narrative 12cf444fd7aa1c0b
-speech 6fd9d44ac7bece98
+narrative 31a80a3db5279ce8
+speech 99108d90048dea5d
