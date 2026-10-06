@@ -2006,26 +2006,28 @@ test("a choice narrowed after the upload confirmation leaves the package as it w
   assert.equal(video.reviews("languages").length, 1);
 });
 
-test("an upload metadata.json whose fields have the wrong types leaves the re-package check unknown: the round goes on and writes nothing, and the same file with the right types is written again", async () => {
+test("an upload metadata.json whose fields have the wrong types is still read by the re-package check: nothing throws, a package of the current choice is left alone, and one of another choice is written again", async () => {
   const video = await finishedVideo({ confirmed: false });
   video.choose({ en: { metadata: true, captions: false, dub: false } });
   assert.match(await video.step(), /en metadata translated and reviewed$/);
   assert.match(await video.step(), /language batch sent/);
   assert.match(await video.step(), /publish confirmation sent/);
-  // Narrowed, so a readable package holding en would be written again; this one's caption list
-  // is a number, which the package check cannot read.
-  video.choose({});
+  // The caption list is a number: the package check fails that item by name without throwing,
+  // and that is no language-choice problem, so the package of the current choice is not stale.
   const readable = readFileSync(video.upload("metadata.json"));
   atomicWrite(video.upload("metadata.json"), JSON.stringify({ ...JSON.parse(readable), captions: 5 }));
   // Its publish review waits on the owner too, so the round comes to the languages.
   video.site.reviewsOf(video.slug).unshift({ id: "r-typed", gate: "publish", status: "pending", content_sha256: sha(video.upload("metadata.json")), payload: {}, files: [] });
   const ran = video.runs.length;
-  assert.equal(await video.step(), null, "unknown is not stale, and nothing throws");
+  assert.equal(await video.step(), null, "not stale, and nothing throws");
   assert.equal(video.runs.length, ran, "no captions or package");
   assert.equal(video.state().status, "active", video.state().blocked);
 
-  writeFileSync(video.upload("metadata.json"), readable);
+  // Narrowed: the same file was written for another choice, which the check still reads, so it is
+  // written again, with the types package writes.
+  video.choose({});
   assert.equal(await video.step(), "chatgpt-ads-off: upload package written again for the current language choice");
+  assert.deepEqual(JSON.parse(readFileSync(video.upload("metadata.json"), "utf8")).captions, ["captions/zh-TW.srt"]);
 });
 
 /** filledSheet plus the thumbnail's words: each source word with the locale in front, its ** and line breaks kept. */

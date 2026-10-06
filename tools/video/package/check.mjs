@@ -73,6 +73,31 @@ export function packageReport(items, metadataSha256) {
 const sizeOf = (files, name) => files.get(name) ?? null;
 const present = (files, name) => sizeOf(files, name) !== null;
 
+// metadata.json as `package` writes it: an object whose lists are arrays and whose maps (locale
+// → entry) are objects. A hand-edited one may break that ("captions": 5), and the check then fails
+// the item that reads the field, naming it, instead of throwing out of review-push or reading a
+// string's characters as entries. An absent (or null) field reads as empty, as before.
+const isObject = (value) => Boolean(value) && typeof value === "object" && !Array.isArray(value);
+
+/** Why the items cannot read metadata.json (missing, or not an object), or null when they can. */
+const metadataProblem = (metadata) => (!metadata ? `${METADATA_FILE} is missing` : isObject(metadata) ? null : `${METADATA_FILE} is not an object; run package again`);
+
+/** metadata.json's list `field`, or [] without one; a field of another type also adds a problem naming it. */
+function listField(metadata, field, problems = []) {
+  const value = metadata?.[field] ?? null;
+  if (Array.isArray(value)) return value;
+  if (value !== null) problems.push(`${METADATA_FILE} ${field} is not a list; run package again`);
+  return [];
+}
+
+/** metadata.json's map `field`, or {} without one; a field of another type also adds a problem naming it. */
+function mapField(metadata, field, problems = []) {
+  const value = metadata?.[field] ?? null;
+  if (isObject(value)) return value;
+  if (value !== null) problems.push(`${METADATA_FILE} ${field} is not an object; run package again`);
+  return {};
+}
+
 /** The narration locale metadata.json names as its default_language; zh-TW without a known one. */
 const narrationOf = (metadata) => (LOCALES.includes(metadata?.default_language) ? metadata.default_language : NARRATION_LOCALE);
 
@@ -109,14 +134,14 @@ const sameChoice = (a, b) => LOCALES.filter((locale) => locale !== NARRATION_LOC
  * language thumbnails are of chosen locales only, as package writes them. A chosen dub may be
  * absent: still being made, given up with its reason in skipped_dub_locales, or a compilation's,
  * which has none. A track or a thumbnail of a locale nobody chose may not be there, nor a track
- * metadata.json does not list.
+ * metadata.json does not list. `thumbnails` is metadata.json's map as filesItem read it.
  */
-function choiceProblems({ files, metadata, languages }) {
+function choiceProblems({ files, metadata, languages, thumbnails }) {
   const problems = [];
-  if (!sameChoice(metadata.language_choice, languages.locales)) problems.push(`${METADATA_FILE} was written for another language choice; run package again`);
+  if (!sameChoice(mapField(metadata, "language_choice", problems), languages.locales)) problems.push(`${METADATA_FILE} was written for another language choice; run package again`);
   const narration = narrationOf(metadata);
   const dubLocales = chosenLocales(languages, "dub").filter((locale) => locale !== narration);
-  const listed = Array.isArray(metadata.dubs) ? metadata.dubs : [];
+  const listed = listField(metadata, "dubs", problems);
   const tracks = localesOf(files.keys(), DUB_FILE);
   for (const dub of listed) if (!present(files, dub?.file)) problems.push(`${dub?.file} is listed but missing`);
   for (const [, file] of tracks) if (!listed.some((dub) => dub?.file === file)) problems.push(`${file} is not listed in ${METADATA_FILE}`);
@@ -124,7 +149,7 @@ function choiceProblems({ files, metadata, languages }) {
   if (extraDubs.length) problems.push(unchosenProblem("dub tracks", extraDubs));
   // A language's own thumbnail goes with any part chosen for it (package's youtubeLocales).
   const thumbnailLocales = [...captionLocalesOf(languages, narration), ...(metadataLocalesOf(languages, narration) ?? []), ...dubLocales].filter((locale) => locale !== narration);
-  const extraThumbnails = unchosen([...Object.entries(metadata.thumbnails ?? {}), ...localesOf(files.keys(), LOCALE_THUMBNAIL_FILE)], thumbnailLocales);
+  const extraThumbnails = unchosen([...Object.entries(thumbnails), ...localesOf(files.keys(), LOCALE_THUMBNAIL_FILE)], thumbnailLocales);
   if (extraThumbnails.length) problems.push(unchosenProblem("language thumbnails", extraThumbnails));
   return problems;
 }
@@ -136,34 +161,37 @@ function choiceProblems({ files, metadata, languages }) {
  * choice (`languages`) the dub tracks, language thumbnails and metadata.json's language_choice
  * agree with it (choiceProblems); `unchanged` is false when upload/ changed while it was read.
  */
-export function filesItem({ files, metadata, finalSha256, approvedSha256, brandingMatches = true, languages = null, unchanged = true }) {
+export function filesItem({ files, metadata: read, finalSha256, approvedSha256, brandingMatches = true, languages = null, unchanged = true }) {
   const problems = [];
   if (!unchanged) problems.push(`${UPLOAD_DIR}/ or the language choice changed while the package was being checked; check it again`);
-  if (!metadata) problems.push(`${METADATA_FILE} is missing`);
+  const unreadable = metadataProblem(read);
+  if (unreadable) problems.push(unreadable);
+  const metadata = unreadable ? null : read;
   if (!present(files, FINAL_FILE)) problems.push(`${FINAL_FILE} is missing`);
   else if (!approvedSha256) problems.push("no approved final to compare final.mp4 with");
   else if (finalSha256 !== approvedSha256) problems.push(`${FINAL_FILE} is not the approved final (${String(finalSha256).slice(0, 12)} vs ${approvedSha256.slice(0, 12)})`);
   else if (metadata && metadata.final_sha256 !== finalSha256) problems.push(`${METADATA_FILE} records another final (${String(metadata.final_sha256).slice(0, 12)})`);
   if (metadata?.thumbnail && !present(files, THUMBNAIL_FILE)) problems.push(`${THUMBNAIL_FILE} is missing`);
   // Each language's own thumbnail metadata.json lists is there; the languages without one are only noted.
-  for (const listed of Object.values(metadata?.thumbnails ?? {})) if (!present(files, listed)) problems.push(`${listed} is listed but missing`);
+  const thumbnails = mapField(metadata, "thumbnails", problems);
+  for (const listed of Object.values(thumbnails)) if (!present(files, listed)) problems.push(`${listed} is listed but missing`);
   // So is each "Test & compare" variant, B and C beside A.
-  const variants = Array.isArray(metadata?.thumbnail_variants) ? metadata.thumbnail_variants : [];
+  const variants = listField(metadata, "thumbnail_variants", problems);
   for (const listed of variants) if (!present(files, listed)) problems.push(`${listed} is listed but missing`);
   // Every thumbnail stays within YouTube's 2 MB, A as much as its variants and languages.
-  for (const image of [...(metadata?.thumbnail ? [THUMBNAIL_FILE] : []), ...variants, ...Object.values(metadata?.thumbnails ?? {})]) {
+  for (const image of [...(metadata?.thumbnail ? [THUMBNAIL_FILE] : []), ...variants, ...Object.values(thumbnails)]) {
     if (sizeOf(files, image) > THUMBNAIL_MAX_BYTES) problems.push(`${image} is ${sizeOf(files, image)} bytes; YouTube's limit is 2 MB`);
   }
   if (!brandingMatches) problems.push("the upload package does not match the selected and applied branding; rebuild the final and run package again");
-  if (languages && metadata) problems.push(...choiceProblems({ files, metadata, languages }));
+  if (languages && metadata) problems.push(...choiceProblems({ files, metadata, languages, thumbnails }));
   if (problems.length) return item("files", false, problems.join("; "));
-  const named = [FINAL_FILE, ...(metadata.thumbnail ? [THUMBNAIL_FILE] : []), ...variants, ...Object.values(metadata.thumbnails ?? {}), METADATA_FILE];
+  const named = [FINAL_FILE, ...(metadata.thumbnail ? [THUMBNAIL_FILE] : []), ...variants, ...Object.values(thumbnails), METADATA_FILE];
   return item("files", true, `${named.join(", ")}; ${FINAL_FILE} is the approved final (${finalSha256.slice(0, 12)})`);
 }
 
-/** The locales a package describes: the default language and every localization. */
+/** The locales a package describes: the default language and every localization (none when localizations is not an object). */
 export function packageLocales(metadata) {
-  return [metadata?.default_language ?? "zh-TW", ...Object.keys(metadata?.localizations ?? {})];
+  return [metadata?.default_language ?? "zh-TW", ...Object.keys(mapField(metadata, "localizations"))];
 }
 
 /**
@@ -174,13 +202,15 @@ export function packageLocales(metadata) {
  * localization or a default_language of a locale outside `locales`.
  */
 export function descriptionsItem({ files, metadata, locales = null, strict = false }) {
-  if (!metadata) return item("descriptions", false, `${METADATA_FILE} is missing`);
-  const wanted = locales ?? packageLocales(metadata);
+  const unreadable = metadataProblem(metadata);
+  if (unreadable) return item("descriptions", false, unreadable);
   const problems = [];
+  const localizations = mapField(metadata, "localizations", problems);
+  const wanted = locales ?? packageLocales(metadata);
   const missing = wanted.filter((locale) => !(sizeOf(files, `description.${locale}.txt`) > 0));
   if (missing.length) problems.push(`no description for ${missing.join(", ")}`);
   if (strict && locales) {
-    const found = [...localesOf(files.keys(), DESCRIPTION_FILE), ...Object.keys(metadata.localizations ?? {}).map((locale) => [locale, `localizations.${locale}`]), [packageLocales(metadata)[0], "default_language"]];
+    const found = [...localesOf(files.keys(), DESCRIPTION_FILE), ...Object.keys(localizations).map((locale) => [locale, `localizations.${locale}`]), [packageLocales(metadata)[0], "default_language"]];
     const extra = unchosen(found, locales);
     if (extra.length) problems.push(unchosenProblem("titles and descriptions", extra));
   }
@@ -203,8 +233,11 @@ export function skipReason(skipped, locale) {
  * `locales`.
  */
 export function captionsItem({ files, metadata, locales = LOCALES, strict = false }) {
-  if (!metadata) return item("captions", false, `${METADATA_FILE} is missing`);
+  const unreadable = metadataProblem(metadata);
+  if (unreadable) return item("captions", false, unreadable);
   const problems = [];
+  const captions = listField(metadata, "captions", problems);
+  const reasons = mapField(metadata, "skipped_caption_locales", problems);
   const written = [];
   const skipped = [];
   for (const locale of locales) {
@@ -212,13 +245,13 @@ export function captionsItem({ files, metadata, locales = LOCALES, strict = fals
       written.push(locale);
       continue;
     }
-    const reason = skipReason(metadata.skipped_caption_locales, locale);
+    const reason = skipReason(reasons, locale);
     if (reason) skipped.push(`${locale} (${reason})`);
     else problems.push(`${locale}: no caption file and no reason in skipped_caption_locales`);
   }
-  for (const listed of metadata.captions ?? []) if (!present(files, listed)) problems.push(`${listed} is listed but missing`);
+  for (const listed of captions) if (!present(files, listed)) problems.push(`${listed} is listed but missing`);
   if (strict) {
-    const extra = unchosen([...localesOf(files.keys(), CAPTION_FILE), ...localesOf(metadata.captions ?? [], CAPTION_FILE)], locales);
+    const extra = unchosen([...localesOf(files.keys(), CAPTION_FILE), ...localesOf(captions, CAPTION_FILE)], locales);
     if (extra.length) problems.push(unchosenProblem("caption files", extra));
   }
   if (problems.length) return item("captions", false, problems.join("; "));
@@ -227,7 +260,8 @@ export function captionsItem({ files, metadata, locales = LOCALES, strict = fals
 
 /** disclosure: metadata.json answers whether Studio's "altered or synthetic content" is ticked, and why. */
 export function disclosureItem({ metadata }) {
-  if (!metadata) return item("disclosure", false, `${METADATA_FILE} is missing`);
+  const unreadable = metadataProblem(metadata);
+  if (unreadable) return item("disclosure", false, unreadable);
   const synthetic = metadata.contains_synthetic_media;
   const reason = metadata.disclosure_reason;
   if (typeof synthetic !== "boolean") return item("disclosure", false, `${METADATA_FILE} has no contains_synthetic_media answer; run package again`);
