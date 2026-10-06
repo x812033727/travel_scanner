@@ -114,3 +114,156 @@ passes from `apps/api`.
   Gemini"; outside the lines this ticket names.
 - Publish after merge (coordinator, owner consent): `ai-tools-2026-overview`,
   `chatgpt-beginner-guide`.
+
+## Review round (independent, 2026-10-06)
+
+- **Applied 2026-10-06** (claude-opus-5-5, apply pass; I wrote neither the PR nor the report
+  below). The report's one finding was applied as suggested.
+  - Block 22 of `ai-tools-2026-overview` now reads:
+    「價格是 2026 年 9 月 13 日各家官網的數字：Google 用台灣方案頁的新台幣價，ChatGPT 寫的是美國定價，其他有標價的幾家也都用美元；ChatGPT 在台灣以新台幣計費，實際金額以官網為準。」
+  - The diagram footnote (line 103), the SVG `<desc>` (after 「底注：」) and `image.description` now
+    carry the new footnote verbatim (`image.description` == `<desc>`, checked by script):
+    「價格為 2026 年 9 月 13 日各家官網數字：Google 是台灣頁的台幣價，ChatGPT 是美國定價，其餘是美元；ChatGPT 在台灣以新台幣計費，金額以官網為準；海螺 AI 各方案價格以官網為準。」
+  - The report's headings are nested two levels down so they sit under this section; its text is
+    otherwise unchanged.
+  - No source added or dropped; the pack stays at 20. This supersedes the Done note's account of
+    the table intro ("listed currency ... the others in USD ... not the billing currency").
+- **Source re-opened for this pass** (`curl -sSL`, editorial UA): chatgpt.com/zh-Hant/pricing/,
+  chatgpt.com/pricing/, openai.com/chatgpt/pricing/ and help.openai.com Multi-currency billing all
+  returned 403 (Cloudflare challenge). archive.org has no capture of the zh-Hant pricing page.
+  learn.chatgpt.com/docs/pricing (200) lists Go $8 and Plus $20 in USD and names no Taiwan or local
+  currency. So the NT$ listing on ChatGPT's Taiwan page still rests on the 2026-09-30 reads in
+  `chatgpt-plans-plus-pro-2026` and `ai-free-vs-paid-plans-2026`. The fix was applied anyway because
+  the new wording asserts nothing about that page's listing currency: it labels the ChatGPT figures
+  as US prices, as the table and the diagram already did, and keeps the NT$ billing fact the pack
+  already sources.
+- **Checks after the edit** (from `apps/api`): `pack_cli lint --kind life --slug
+  ai-tools-2026-overview --slug chatgpt-beginner-guide --render-dir`: 0 errors, the same two
+  `no_summary` warnings; diagram PNG looked at (footnote on one line, ending near x=1335, clear of
+  the credit). `intake_check.py --from-content` for both slugs: the same FAILs as origin/main
+  (ai-tools 3, beginner 2), none new. Both packs are zh-TW only, so no translation checks apply.
+
+### verify-1: PR #1329 (claude/chatgpt-taiwan): ChatGPT bills Taiwan in NT$, ads on Free and Go
+
+- Checker: independent round-1 fact-checker (claude-opus-5-5). I did not write this PR. Read-only: no edits, commits or comments.
+- Date: 2026-10-06. All fetches used `curl -sSL` with UA `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`, at least 1 s apart per host, with no personal data. I did not use WebFetch or third-party readers, so every request carried the required UA.
+- Diff: `git diff origin/main...origin/claude/chatgpt-taiwan`.
+  - Changed: `ai-tools-2026-overview.json`, `chatgpt-beginner-guide.json`, `ai-tools-2026-overview/diagram-1.svg` and three ticket files.
+  - Both packs are **zh-TW only**, so no per-locale review applies.
+
+#### Fetch log
+
+| URL | HTTP | Notes |
+| --- | --- | --- |
+| help.openai.com/en/articles/10421635-multicurrency-billing | 403 ×4 | Cloudflare challenge page (about 10 KB) |
+| help.openai.com/en/articles/20001047-ads-in-chatgpt | 403 ×4 | Cloudflare challenge |
+| help.openai.com/en/articles/11989085 (What is ChatGPT Go) | 403 | Cloudflare challenge |
+| help.openai.com/en/articles/9275245-chatgpt-free-tier-faq | 403 | Cloudflare challenge |
+| openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/ (+ zh-Hant) | 403 ×4 | Cloudflare challenge |
+| openai.com/policies/row-terms-of-use/ | 403 | |
+| openai.com/index/introducing-chatgpt-go/ | 403 | |
+| chatgpt.com/zh-Hant/pricing/, chatgpt.com/pricing/ | 403 | |
+| openai.com/news/rss.xml | 200 | 1,247 items; Taiwan item pubDate Wed, 23 Sep 2026 02:00:00 GMT |
+| openai.com/sitemap.xml/product/ | 200 | Taiwan announcement lastmod 2026-10-06T11:40:05.728Z; the page now has hreflang alternates |
+| archive.org/wayback/available | 200 | Captures exist: Ads FAQ 2026-10-04, Go 2026-09-11, Free Tier FAQ 2026-09-23. None for Multi-currency billing, the Taiwan announcement or ROW ToU |
+| web.archive.org (snapshots, CDX) | — | HTTPS connection reset ×5; HTTP "Blocked by egress policy" |
+| platform.minimax.io/docs/guides/pricing-token-plan | 200 | |
+| hailuoai.video/doc/payment-policy.html | 200 | |
+| gemini.google/tw/subscriptions/ | 200 | Redirects to ?hl=zh-TW |
+| claude.com/pricing | 200 | |
+| support.claude.com/en/articles/8325606-what-is-the-pro-plan | 200 | |
+| learn.chatgpt.com/docs/pricing | 200 | |
+
+#### Claim table
+
+| # | Claim (location) | Source | HTTP | Verdict |
+| --- | --- | --- | --- | --- |
+| 1 | Overview intro: ChatGPT billing currency re-checked 10-06 | — | — | OUT OF SCOPE: a dating line. Adds verification narration (see reader-first) |
+| 2 | Overview MiniMax: free users can generate videos; downloads carry a watermark | Hailuo payment policy | 200 | CONFIRMED: "Free Users … download videos that include a watermark" |
+| 3 | Overview MiniMax: H3 clause and its source removed; nothing else in the pack or SVG mentions H3, 15 秒, 2K or 立體聲 | grep of pack and SVG | — | CONFIRMED: no orphaned dependants. H3 is still listed on MiniMax's site, so this is only a cut, not a correction |
+| 4 | Overview MiniMax: Speech 2.8 and Music 3.0 names, now backed by the Token Plan page | Token Plan | 200 | CONFIRMED: the site navigation lists "MiniMax Speech 2.8" and "MiniMax Music 3.0" (also M3, H3) |
+| 5 | Token Plan Plus $22 / Max $55 / Ultra $132 (body, diagram; checked_on moved to 10-06) | Token Plan | 200 | CONFIRMED: "Plus Max Ultra Price $22 /month $55 /month $132 /month" |
+| 6 | Token Plan source title: "頁面列出 M3、Speech 2.8、Music 3.0 等模型" | Token Plan | 200 | CONFIRMED |
+| 7 | Table intro: "Google 的台灣方案頁直接以新台幣標價" | gemini.google/tw/subscriptions | 200 | CONFIRMED: 每月 NT$ 165 元, NT$ 650 元, NT$ 3300 or 6500 元 |
+| 8 | Table intro: "其他有標價的幾家都用美元" | claude.com/pricing; learn.chatgpt.com; Token Plan | 200 | PARTLY CONFIRMED. Claude ($20/$17), the ChatGPT US doc ($8/$20) and Token Plan are in USD. But **ChatGPT's Taiwan pricing page lists NT$** according to two packs on main (checked 2026-09-30), so ChatGPT does not belong in "lists in USD". **CONSISTENCY finding**, see below |
+| 9 | Table intro: "標價幣別不等於扣款幣別，ChatGPT 在台灣就以新台幣計費" | Multi-currency billing | 403 | NOT CHECKED FIRST-HAND. The NT$ billing fact agrees with three packs that read it on 09-30 and 10-05. The "listed ≠ billed" example is part of the consistency finding |
+| 10 | "實際金額以結帳頁為準" | — | — | OUT OF SCOPE (hedge) |
+| 11 | Diagram footnote says the same as the table intro | SVG line 103 | — | CONFIRMED (same consistency issue as #8) |
+| 12 | image.description equals the SVG `<desc>` verbatim | script | — | CONFIRMED (True) |
+| 13 | Multi-currency billing source title "含台灣的新台幣 TWD", checked_on 10-06 | help.openai.com | 403 | NOT CHECKED FIRST-HAND |
+| 14 | Overview: 20 sources, all URLs unique | script | — | CONFIRMED |
+| 15 | Beginner list: "OpenAI 在 2026 年 9 月 23 日宣布" | OpenAI RSS | 200 | CONFIRMED: pubDate 23 Sep 2026 02:00 GMT (10:00 Taipei, 9/23) |
+| 16 | Beginner list: ads "開始在台灣逐步推出" | RSS; announcement | 200 / 403 | PARTLY CONFIRMED: RSS says "expanding to Southeast Asia and Taiwan". The "begin rolling out" wording could not be read today; it matches the 2026-09-26 verbatim record |
+| 17 | Beginner list: "只會出現在 Free 與 Go 方案" | announcement | 403 | NOT CHECKED FIRST-HAND. Matches the 09-26 record: "ads will be shown only to users on the Free and Go plans" |
+| 18 | Beginner list: "Plus、Pro 維持沒有廣告" | announcement | 403 | NOT CHECKED FIRST-HAND. Matches the 09-26 record: "Plus, Pro, and Enterprise subscriptions will remain ad-free" |
+| 19 | Table Free: "可能出現（台灣 2026 年 9 月 23 日起逐步推出）" | RSS; Ads FAQ | 200 / 403 | Date CONFIRMED; the rest as #16 and #17 |
+| 20 | Table Go: "可能出現" | Ads FAQ; Go help page | 403 / 403 | NOT CHECKED FIRST-HAND. Handling of the conflict judged fair (below) |
+| 21 | Table Plus: "沒有廣告" | announcement | 403 | As #18 |
+| 22 | Intro and caption: ads re-checked 10-06 | — | — | OUT OF SCOPE (dating). The announcement page changed after the writer's read (#31) |
+| 23 | Taiwan announcement source title (date, Free/Go, Plus/Pro ad-free) | RSS; page | 200 / 403 | Title and date CONFIRMED; the rest as #17 and #18 |
+| 24 | Go launch post title: "廣告測試" removed | — | — | CONFIRMED: no remaining line relies on it |
+| 25 | ROW ToU checked_on moved to 10-06; age facts 13+, under 18 needs parental consent, effective 2026-01-01 | openai.com | 403 | NOT CHECKED FIRST-HAND |
+| 26 | Dropping 8313401 leaves no age fact without a source: the text attributes ages to the ToU, and the diagram repeats the same facts | pack text | — | CONFIRMED |
+| 27 | Beginner: 20 sources, all URLs unique | script | — | CONFIRMED |
+| 28 | The beginner diagram has no stale ads text | SVG grep | — | CONFIRMED (none) |
+| 29 | The overview has no other ChatGPT ads line that could be stale | pack grep | — | CONFIRMED (only DeepSeek "無廣告") |
+| 30 | Go ads source conflict handled fairly | see below | — | JUDGED FAIR |
+| 31 | Time-sensitive: the Taiwan announcement page changed 2026-10-06T11:40Z, after the writer's read (ticket closed 01:43Z) | sitemap | 200 | NOTE: re-read before publishing |
+
+#### Finding (1, consistency)
+
+**ai-tools-2026-overview: the table intro and the diagram footnote still say, in effect, that only Google lists NT$.**
+
+- **Where:** block 22, plus the diagram footnote, the SVG `<desc>` and `image.description`.
+- **What it says:** 「Google 的台灣方案頁直接以新台幣標價，其他有標價的幾家都用美元。標價幣別不等於扣款幣別，ChatGPT 在台灣就以新台幣計費」.
+- **Why it is wrong:** it groups ChatGPT with the sites that list in USD. It then uses ChatGPT as the example of a listed price that differs from the billing currency. Other sources disagree:
+  - chatgpt-plans-plus-pro-2026: 「台灣定價頁以新台幣標價：Go 每月 NT$270、Plus 每月 NT$690」.
+  - ai-free-vs-paid-plans-2026: 「台幣為 ChatGPT 與 Gemini 的台灣定價頁標價」.
+  - Both cite https://chatgpt.com/zh-Hant/pricing/ (checked 2026-09-30). The writer's own follow-up ticket also says ChatGPT's Taiwan pricing page shows NT$.
+- **Where the USD figure comes from:** this pack's ChatGPT figure is the US price, already labelled 「（美國定價）」.
+- **Suggested fix:**
+  - Text: 「價格是 2026 年 9 月 13 日各家官網的數字：Google 用台灣方案頁的新台幣價，ChatGPT 寫的是美國定價，其他有標價的幾家也都用美元；ChatGPT 在台灣以新台幣計費，實際金額以官網為準。」
+  - Footnote, `<desc>` and `image.description`, kept verbatim-equal: 「價格為 2026 年 9 月 13 日各家官網數字：Google 是台灣頁的台幣價，ChatGPT 是美國定價，其餘是美元；ChatGPT 在台灣以新台幣計費，金額以官網為準；海螺 AI 各方案價格以官網為準。」
+  - This matches chatgpt-beginner-guide's 月費 row and needs no new source.
+- **Severity:** consistency, not fact. ChatGPT's pricing page returned 403 today, so I could not confirm today's NT$ listing first-hand.
+
+#### Go ads source conflict: judgement
+
+- **The conflict:** according to the writer, What is ChatGPT Go (11989085) still says Go ads are a possible future test. The 2026-09-23 Taiwan announcement and the Ads FAQ (updated 2026-09-26 per the repo record) both say ads appear on Free and Go.
+- **How the article handles it:**
+  - The list item attributes the Free/Go statement to the 9/23 announcement by name. That attribution is correct: the date and title are confirmed via RSS, and the wording matches the verbatim 09-26 record.
+  - The table cell for Go is hedged as 「可能出現」, which matches the FAQ's "may appear".
+  - The Go help page stays in `sources`, but its title makes no ads claim.
+- **Verdict:** fair. The article follows the newer, more specific Taiwan source, does not overstate (no "every Go user sees ads"), and does not lean on the stale page. I could not read the Go page or the FAQ today, so the conflict itself rests on the writer's note.
+- **Minor, not filed:** the table gives the Taiwan start date only in the Free cell; the Go cell is bare 「可能出現」, although the rollout covers both. The list item above makes this clear.
+
+#### Reader-first (report only)
+
+- **Dating in prose:** the PR adds more verification dating to the body.
+  - Overview intro: 「ChatGPT 的計費幣別在 10 月 6 日重新查過」.
+  - Beginner intro: 「廣告在 10 月 6 日重新查過」.
+  - Beginner caption: 「廣告列 10 月 6 日重查」.
+  - The intros already carried 10-05 dating lines.
+- **Self-references:** 這篇/本文 appears 2 times in each pack. Both predate this PR.
+- **New sentences:** no untranslated foreign quotes, and the new zh-TW sentences read naturally.
+
+#### Self-checks
+
+- Not run: the clone has no `apps/api/.venv`, and creating one or a worktree would write into the repo, which this read-only task forbids.
+- Checked by script instead: `<desc>` == `image.description` (True), 20 unique sources per pack, and no H3 or 15 秒 / 2K leftovers.
+- Footnote fit, estimated: about 75 CJK characters × 15 px from x=60 is about 1,185 px, clear of the credit at y=870.
+
+#### Unverifiable today
+
+- **OpenAI pages:** every help.openai.com, openai.com and chatgpt.com page cited for the PR's core claims returned 403. That covers NT$ billing, Free/Go only, Plus/Pro ad-free, the Go conflict, and the ToU ages.
+- **Wayback:** the archive copies exist but web.archive.org is unreachable from this environment.
+- **RSS:** confirms only the title, date and "expanding to … Taiwan".
+
+#### Summary
+
+- **Claims:** 30 checked. 14 confirmed (some partly), 0 changed, 1 consistency finding, 9 not checked first-hand (403 on official pages), 5 out of scope (dating lines and hedges), 1 judgement (Go conflict: fair).
+- **Second round:** not required by the rule (0 fact changes). However, the central OpenAI claims could not be read first-hand today, and the Taiwan announcement page changed at 2026-10-06T11:40Z, after the writer's read. Before publishing, someone should re-read the announcement, the Ads FAQ and Multi-currency billing from an environment where help.openai.com and openai.com return 200, or in a real browser.
+- **Suspected but not filed (outside this PR's lines):**
+  - The overview's Gemini 「有台幣定價」 strength (the writer filed a ticket for it).
+  - Claude also bills in local currency where supported ("$20 per month (US), with pricing in your local currency where supported"). Whether that includes TWD is unknown, so I left it alone.
+  - ai-free-vs-paid-plans-2026 contradicts itself: 「Gemini 是三家裡唯一在台灣頁直接標台幣的」 vs 「台幣為 ChatGPT 與 Gemini 的台灣定價頁標價」. Outside this PR's scope; worth a ticket.
