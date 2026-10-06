@@ -18,7 +18,8 @@ const texts = (elements: Iterable<Element>) => [...elements].map((element) => el
 
 const REASON = "有 2 張插圖未通過 judge（desk、race），需站主審看成片；機械品管僅供參考。";
 const REPORT = { ok: false, final_sha256: sha("b"), items: [
-  { id: "assemble", ok: true, detail: "1800 frames", warnings: ["desk: kept with the judge's remarks after the prompt fixes"] },
+  // The one warning the quality check carries for kept pictures (tools/video/qa/cli.mjs keptPicturesWarning).
+  { id: "assemble", ok: true, detail: "1800 frames", warnings: ["2 pictures kept with the judge's remarks after the prompt fixes (desk, race); the owner decides on the cut, and keyframes/manifest.json has what the judge said of each"] },
   { id: "pace", ok: false, detail: "slide 4 stays 21 s" },
 ] };
 const final = (payload: Review["payload"]) => review("final", { checks: { ok: true, problems: [] }, ...payload }, [{ role: "preview", sha256: sha("c"), size: 10, content_type: "video/mp4" }]);
@@ -42,7 +43,7 @@ describe("a final cut sent for the owner's own review", () => {
     const items = texts(report.querySelectorAll(":scope > ul > li"));
     expect(items[0]).toContain("節奏 · slide 4 stays 21 s");
     expect(items[1]).toContain("合成 · 1800 frames");
-    expect(items[1]).toContain("注意：desk: kept with the judge's remarks after the prompt fixes");
+    expect(items[1]).toContain("注意：2 pictures kept with the judge's remarks after the prompt fixes (desk, race); the owner decides on the cut");
     expect(within(card).getAllByLabelText("自動品管")).toHaveLength(1);
 
     const kept = within(card).getByRole("region", { name: "保留的插圖（2 張）" });
@@ -181,6 +182,39 @@ describe("a storyboard with pictures kept with the judge's remarks", () => {
     const card = screen.getByRole("article", { name: "分鏡" });
     expect(card.textContent).toContain("3 鏡保留：judge 沒過，成片時由你審看");
     for (const shot of every) expect(row(shot.id).textContent).toContain("judge 4/10：generated: glossy");
+  });
+
+  it("shows the automatic check's line only when the board has a score: not for a board whose every shot was kept", () => {
+    const every = shots.map((shot) => ({ ...shot, needs_review: false, accepted: true, judge: { overall: 4, problems: ["x"] } }));
+    const accepted = every.map((shot) => ({ id: shot.id, overall: 4, problems: ["generated: glossy"] }));
+    // What review-push sends for such a board: no lowest score, no problems of its own.
+    const { unmount } = show(review("storyboard", { shots: every, judge: { overall: null, problems: [] }, accepted }, files));
+    const card = screen.getByRole("article", { name: "分鏡" });
+    expect(card.textContent).not.toContain("自動檢查");
+    expect(card.querySelector("p strong")).toBeNull();
+    // The rest of the card is there: the count of kept shots, and each shot with its own remarks.
+    expect(card.textContent).toContain("3 鏡保留：judge 沒過，成片時由你審看");
+    expect(row("desk").textContent).toContain("judge 4/10：generated: glossy");
+    unmount();
+
+    // A board with a score shows the line as before, kept shots or not.
+    const scored = show(review("storyboard", { shots, judge: { overall: 6, problems: ["details: no clock"] }, accepted: [{ id: "desk", overall: 5, problems: ["awkward: the hand"] }] }, files));
+    expect(screen.getByRole("article", { name: "分鏡" }).textContent).toContain("自動檢查 judge 6/10：details: no clock");
+    scored.unmount();
+    const zero = show(review("storyboard", { shots, judge: { overall: 0, problems: [] } }, files));
+    expect(screen.getByRole("article", { name: "分鏡" }).textContent).toContain("自動檢查 judge 0/10");
+    zero.unmount();
+  });
+
+  it.each([
+    ["missing", undefined], ["null", null], ["text", "8/10"], ["a list", [8]], ["an object with no score", { problems: ["no bird"] }], ["a score that is text", { overall: "8", problems: [] }],
+  ])("shows no line for the automatic check when the board's verdict is %s", (_label, judge) => {
+    show(review("storyboard", { shots, judge }, files));
+    const card = screen.getByRole("article", { name: "分鏡" });
+    expect(card.textContent).not.toContain("自動檢查");
+    // The shots keep their own verdicts.
+    expect(row("clock").textContent).toContain("judge 6/10：details: no clock");
+    expect(screen.getAllByRole("listitem")).toHaveLength(3);
   });
 
   it("reads a shot's own accepted flag and verdict when the list is missing or says less", () => {

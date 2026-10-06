@@ -473,8 +473,12 @@ function StoryboardBody({ slug, review, vertical }: { slug: string; review: Revi
     return { shot, id, waiting, kept };
   });
   const keptCount = rows.filter((row) => row.kept).length;
+  // The board's score is the lowest among the shots the judge's word stands for; a board whose
+  // every shot was kept has none (payload.judge.overall is null), and neither has one sent
+  // without a verdict. JudgeLine shows nothing then, so its label is left out with it.
+  const scored = typeof record(review.payload.judge).overall === "number";
   return <div className="grid gap-4">
-    <p className="leading-7"><strong>{t("checks")}</strong> <JudgeLine value={review.payload.judge} /></p>
+    {scored && <p className="leading-7"><strong>{t("checks")}</strong> <JudgeLine value={review.payload.judge} /></p>}
     {keptCount > 0 && <p className="text-sm font-semibold leading-6 text-sky-900">{t("storyboardKept", { count: keptCount })}</p>}
     {duplicates.length > 0 && <p className="text-sm leading-6 text-[var(--muted)]">{t("lookAlike", { pairs: duplicates.map((pair) => `${text(pair.a)}／${text(pair.b)}`).join("、") })}</p>}
     {rows.length > 0 && <ol className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">{rows.map(({ shot, id, waiting, kept }, index) => {

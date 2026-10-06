@@ -36,6 +36,21 @@ import { thumbnailChecks } from "./thumbnail.mjs";
 import { localizedThumbnail } from "../core/translations.mjs";
 
 export const QA_FILE = path.join("review", "qa.json");
+// How many kept pictures the assemble item's warning names before it counts the rest, as many as
+// a review's summary does (review/sync.mjs SUMMARY_PICTURE_IDS).
+export const WARNING_PICTURE_IDS = 5;
+
+/**
+ * The assemble item's warning for the pictures kept with the judge's remarks: how many there are
+ * and the first few by id, in one line whatever their number. The report travels in the final
+ * review's payload, which the server limits (review/sync.mjs fitPayload), and what the judge said
+ * of each picture is already there, in accepted_pictures; keyframes/manifest.json has it whole.
+ */
+export function keptPicturesWarning(ids) {
+  const named = ids.slice(0, WARNING_PICTURE_IDS).join(", ");
+  const more = ids.length - WARNING_PICTURE_IDS;
+  return `${ids.length} ${ids.length === 1 ? "picture" : "pictures"} kept with the judge's remarks after the prompt fixes (${more > 0 ? `${named} and ${more} more` : named}); the owner decides on the cut, and keyframes/manifest.json has what the judge said of each`;
+}
 
 /** The disclosure answer, kept in upload/metadata.json for youtube-sync. Idempotent: the publish gate hashes that file. */
 function recordDisclosure(file, decision) {
@@ -214,10 +229,10 @@ export async function run(command, args, ctx) {
   let who = null;
   const assemble = assembleItem({ checks, current: audioCurrent && checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, doc, timeline, presented, timelineCurrent, finalSha256, minMinutes: needsMinimumLength(doc) ? minEpisodeMinutes() : 0, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined });
   // Pictures kept with the judge's remarks once their prompt fixes were spent (keyframes
-  // --accept-best) ride on the assemble item as warnings: the cut is of them, the items are the
+  // --accept-best) ride on the assemble item as one warning: the cut is of them, the items are the
   // server's fixed eleven, and the owner decides on the cut (the review goes up for a manual review).
-  const acceptedPictures = pictures ? drawnShotScenes(doc).filter((scene) => Array.isArray(keyframes?.shots?.[scene.id]?.accepted_with_problems)).map((scene) => `${scene.id}: kept with the judge's remarks after the prompt fixes (${keyframes.shots[scene.id].accepted_with_problems.join("; ") || "below the bar"}); the owner decides on the cut`) : [];
-  items.push(acceptedPictures.length ? { ...assemble, warnings: [...(assemble.warnings ?? []), ...acceptedPictures] } : assemble);
+  const acceptedPictures = pictures ? drawnShotScenes(doc).filter((scene) => Array.isArray(keyframes?.shots?.[scene.id]?.accepted_with_problems)).map((scene) => scene.id) : [];
+  items.push(acceptedPictures.length ? { ...assemble, warnings: [...(assemble.warnings ?? []), keptPicturesWarning(acceptedPictures)] } : assemble);
   items.push(renderItem({ manifest: frames, cache, visual, speech, subtitles: drama ? subtitlesHash(doc) : null, burnIn: drama && burnIn(doc), hasThumbnail: Boolean(doc.thumbnail) }));
   items.push(narrationItem({ approval, current: timelineCurrent }));
   if (!timelineCurrent) {

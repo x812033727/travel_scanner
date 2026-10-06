@@ -15,6 +15,8 @@ scope:
   - tools/video/review/sync.test.mjs
   - tools/video/media/keyframes.mjs
   - tools/video/media/look-keyframes.test.mjs
+  - tools/video/qa/cli.mjs
+  - tools/video/qa/qa.test.mjs
   - apps/web/components/admin-video-review-card.tsx
   - apps/web/components/admin-video-kept-pictures.test.tsx
   - apps/web/messages/en/admin.json
@@ -51,6 +53,15 @@ card lists the kept pictures. Three things were left open:
    `manual_review_qa`, `accepted_pictures` nor `accepted`, so for a cut with kept pictures
    the owner saw one summary line.
 
+A review of this pull request found a fourth, the same stall one field over:
+
+4. **The payload has a limit too.** The server refuses a review whose payload is larger than
+   262,144 bytes (`ReviewIn._small`), with the same 422. What the judge said of a kept
+   picture is the remarks of every take, and each review carried them twice: the final in
+   `accepted_pictures` and again as a warning of the `assemble` item inside
+   `manual_review_qa`, the storyboard in `accepted` and again in each shot's own verdict.
+   Two hundred kept pictures with nine remarks of 300 characters each are over a megabyte.
+
 ## Definition of done
 
 - [x] A final review with any number of kept pictures is accepted by the site: its summary
@@ -64,6 +75,12 @@ card lists the kept pictures. Three things were left open:
       storyboard card marks kept shots apart from shots waiting for a prompt fix.
 - [x] A payload missing any of those fields, or carrying them in another shape, shows
       nothing for that part and never breaks the card.
+- [x] A final review and a storyboard review with any number of kept pictures stay within
+      the server's payload limit: every kept picture keeps its id, what the judge said is
+      cut until the payload fits, and a review that still cannot fit is refused by
+      `review-push` with its size, never by the server.
+- [x] A storyboard whose every shot was kept shows no automatic-check label with nothing
+      after it, and the Japanese pill on a kept shot does not read 「保留」 (on hold).
 
 ## Steps
 
@@ -82,23 +99,41 @@ card lists the kept pictures. Three things were left open:
       and an explainer refused; slides and a screencast with stills kept by the worker's
       call), `admin-video-kept-pictures.test.tsx` (36 cases, most of them malformed payloads).
 - [x] `docs/videos/ILLUSTRATED.md`: the follow-up under the 2026-10-06 section.
+- [x] `tools/video/qa/cli.mjs`: the `assemble` item carries one warning for the kept
+      pictures, their number and at most five ids (`keptPicturesWarning`), where it carried
+      a line of remarks for each.
+- [x] `tools/video/review/sync.mjs`: `keptRemarks` (six lines of 300 characters, then a
+      line counting the rest), `payloadBytes` (the server's measure) and `fitPayload`, which
+      `reviewPush` passes every review through before the post: two lines a picture, then
+      none, while the payload is past 240,000 bytes, and a refusal with the size when it is
+      still past the server's limit.
+- [x] `apps/web/components/admin-video-review-card.tsx`: the storyboard's automatic-check
+      line only when the board has a score. `apps/web/messages/ja/admin.json`: `shotKept`
+      is 「採用」, and the kept pictures are 「イラスト」 as on the settings page.
+- [x] Tests: `sync.test.mjs` (the fake site answers 422 past 262,144 bytes as the server
+      counts them; two hundred kept pictures with nine remarks of 300 characters go up as a
+      storyboard and as a cut; a storyboard that cannot fit is not sent), `qa.test.mjs` (the
+      one warning), `admin-video-kept-pictures.test.tsx` (seven cases for the line).
 
 ## How to verify
 
 ```bash
-node --test tools/video/review/sync.test.mjs tools/video/media/look-keyframes.test.mjs
+node --test tools/video/review/sync.test.mjs tools/video/qa/qa.test.mjs tools/video/media/look-keyframes.test.mjs
 npm run lint:web && npm run check:i18n && npm run typecheck:web
 cd apps/web && npx vitest run components/admin-video-kept-pictures.test.tsx components/admin-video-review-card.test.tsx components/admin-video-storyboard-pages.test.tsx components/admin-video-reviews.test.tsx
 ```
 
 `node tools/video/long-form/cli.mjs check` is red on this branch until an independent
 reviewer re-binds the duration receipt: `sync.mjs`, `sync.test.mjs`,
-`look-keyframes.test.mjs`, `admin-video-review-card.tsx` and the five `admin.json` are bound
-files (`tools/video/long-form/review.mjs` `REVIEW_FILES`), and the author may not re-bind.
+`look-keyframes.test.mjs`, `qa/cli.mjs`, `qa/qa.test.mjs`, `admin-video-review-card.tsx` and
+the five `admin.json` are bound files (`tools/video/long-form/review.mjs` `REVIEW_FILES`),
+eleven in all, and the author may not re-bind.
 
 After the deploy: a video with kept pictures shows, on its final card, the amber notice with
 the reason, 「自動品管」 with a 「僅供參考」 pill, and 「保留的插圖（N 張）」 with one row per
-picture; on its storyboard card the kept shots have a blue border and a 「保留」 pill.
+picture; on its storyboard card the kept shots have a blue border and a 「保留」 pill. A
+video with many kept pictures logs `the judge's remarks on the kept pictures were cut to 2
+lines a picture` (or `were left out`) when it sends a review, and the review is there.
 
 ## Notes
 
@@ -133,6 +168,62 @@ picture; on its storyboard card the kept shots have a blue border and a 「保�
   files match their bindings, and main has not moved past `fdc0ce920`. The nine files are
   as final as verification can make them, so the re-binding can start from the branch as
   it is; another pass on the author's side has nothing it may change.
+- **The payload limit and two card details (2026-10-06, after head `cee129f71`): the
+  receipt's increment is eleven files now.** The pass that made these three fixes changed
+  six bound files: `sync.mjs`, `sync.test.mjs`, `admin-video-review-card.tsx` and
+  `ja/admin.json` again, and `tools/video/qa/cli.mjs` and `tools/video/qa/qa.test.mjs` for
+  the first time. `checkDurationReview()` names eleven stale bindings on the result, the
+  nine above and those two, and no other problem; what the two notes above say of nine
+  files, and of the branch being ready for the re-binding as it was, is superseded by this
+  one. Nothing here touches a duration rule: the qa change is the text of one warning on
+  the `assemble` item, whose verdict and detail are as they were. The pass merged main
+  (`fdc0ce920`, #1345) first, which changed none of the bound files, and left `review.md`
+  and `review.json` alone as before.
+- **How a payload is measured.** `ReviewIn._small` takes
+  `len(json.dumps(value, ensure_ascii=False).encode())`: Python's default separators put a
+  space after every comma and colon, and text outside ASCII stays as it is, three bytes a
+  Chinese character. `payloadBytes` writes the same (on the JSON the request carries), so
+  it agrees with the server to the byte except for a very small number such as `1e-7`,
+  which Python writes `1e-07`. That is what the gap between the budget (240,000) and the
+  limit (262,144) is for. The fake site in `sync.test.mjs` counts apart from it: the
+  compact JSON plus one for each separator.
+- **What is cut, and what is not.** Only what the judge said of kept pictures: on a final
+  `accepted_pictures[].problems`, on a storyboard `accepted[].problems` and the
+  `judge.problems` of the shots sent with `accepted: true`. The server reads none of the
+  three (`storyboard_check_passed` skips an accepted shot's verdict), and the worker reads
+  `shots[].judge.problems` only of shots with `needs_review` (`flow.mjs` `storyboardGate`,
+  for the prompt fix), so those and the board's own `judge.problems` go up whole. The
+  builders still assemble the whole remarks; `fitPayload` cuts them in one place, where
+  `reviewPush` posts, so the line that counts the rest always counts from the whole list.
+  With no line left the list's entry says so (「意見因審核資料的大小上限略去…」) and the kept
+  shot's own verdict is empty: the card reads the list first and the shot's verdict only
+  when the list has nothing, so the note shows once.
+- **A review that still does not fit is refused before the post, with the lint code.**
+  `fitPayload` throws a `ReviewError` with code `payload_too_large`, and `fail` answers it as
+  it answers the server's 413 and 422: the worker blocks the video with the message as the
+  reason (`submissionFailure`), which names the gate, the size and the limit. The server's
+  own answer to such a payload names none of them: 「payload：格式或內容不正確」
+  (`apps/api/app/problems.py` `_localized_issue`), which is what the fake site answers too.
+  Between the budget and the limit a review is sent as it is: a screenplay of 250 KB went
+  up before this change and still does. The limit follows the server's rule, 1 MB for the
+  screenplay of a long-anime series episode (`payloadLimit`, with `validateAnimeRuntime`
+  standing for `AnimeRuntimeSpec`).
+- **Not bounded here.** A storyboard's `shots[].prompt`, up to 1,000 characters a shot by
+  the writer's budget: two hundred shots with prompts of that length come to about the
+  limit by themselves, kept or not, and a board past it is now refused with its size,
+  where it was a bare 422 before. Sending it in pages is another change. The outline
+  review the worker posts itself (`flow.mjs` `submitOutline`) does not pass through
+  `fitPayload`; its payload is the brief and its options.
+- **Reverse checks of this pass.** With the fitting switched off in `reviewPush` the
+  two-hundred-pictures test fails at its first push: the storyboard is answered
+  「payload：格式或內容不正確」 and `review-push` exits 1 where 0 is expected, which is the
+  stall; the twelve-pictures test fails on remarks that went up whole. With the
+  storyboard's line rendered whatever the score, the seven new component cases fail.
+- **The Japanese strings.** 「保留」 is the Chinese word; in Japanese it reads "on hold",
+  which is the opposite of a picture that was taken. The other new strings were read again
+  in Japanese and Korean and none carries a Chinese word over (the Korean pill is 「유지」,
+  not 「보류」). One was changed for another reason: the kept pictures were 「挿絵」, and the
+  settings page and the rest of the admin call the same pictures 「イラスト」.
 - **Reverse checks** (the base tree exported with `git archive`, the new tests copied in;
   run again by the agent that finished this from the first one's patch). The new keyframes
   test fails on the base at the first `--accept-best`: an explainer's failing shot is kept,
@@ -178,15 +269,13 @@ picture; on its storyboard card the kept shots have a blue border and a 「保�
   is not about kept pictures: `blockedLabel` and the stage are cut with `String.slice`,
   which counts UTF-16 units, so a character outside the basic plane that straddles the
   cut is left as half a pair; the limit itself is never passed.
-- **Left for later.** The payload limit of 256 KB is the next thing a refused submission
-  could come from, not the summary: a kept picture's remarks travel twice in each review
-  (`shots[].judge.problems` and `accepted[].problems` on the storyboard;
-  `accepted_pictures[].problems` and the `assemble` item's `warnings` in
-  `manual_review_qa` on the final). By a rough count (not measured on a real video) a
-  storyboard of sixty kept shots with 1,000-character prompts and three remarks each is
-  about 120 KB, so it is not close today. The final card lists kept pictures by shot id
-  with no time in the cut; the payload carries chapters but not each shot's start.
+- **Left for later.** The final card lists kept pictures by shot id with no time in the
+  cut; the payload carries chapters but not each shot's start. (The payload limit, which
+  stood here as left for later, is done: see above.)
 - **The claim was forced.** The scope overlaps three sibling tasks of the same owner
   (in review) and `2026-10-01-hand-off-owner-approved-renewed-finals`
   (codex-video-stall-followthrough, claimed 2026-10-04, stale by the 24-hour rule; its
-  branch is not on origin), which lists `sync.mjs` and `sync.test.mjs`.
+  branch is not on origin), which lists `sync.mjs` and `sync.test.mjs`. The two qa files
+  added to the scope later are also in the scope of
+  `2026-10-06-pictures-keep-best-after-prompt-fixes` (the same owner, in review; its change
+  is on main as #1341).

@@ -16,7 +16,7 @@ import { isDeepStrictEqual, parseArgs } from "node:util";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { AutomationError, automationClient } from "../automation/client.mjs";
 import { ANIME_APPROVAL_GATES, approvalRuntimePolicyHash, GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
-import { animeRuntimeContext, hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
+import { animeRuntimeContext, hasAnimePolicy, LONG_ANIME_POLICY, runtimePolicyHash, validateAnimeRuntime } from "../core/anime-policy.mjs";
 import { assembledAudioProblems, audioEvidenceProblems, currentAudioCheck } from "../core/audio-evidence.mjs";
 import { animeBodyDurationProblems, animeRuntimeProof } from "../core/duration.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
@@ -101,14 +101,126 @@ export const SUMMARY_PICTURE_IDS = 5;
  * whose review the worker posts itself.
  */
 export function fitSummary(summary) {
-  const characters = [...String(summary ?? "")];
-  return characters.length <= MAX_REVIEW_SUMMARY_LENGTH ? characters.join("") : `${characters.slice(0, MAX_REVIEW_SUMMARY_LENGTH - 1).join("")}…`;
+  return cutText(String(summary ?? ""), MAX_REVIEW_SUMMARY_LENGTH);
+}
+
+/** A text of at most `length` characters, counted as code points: itself, or cut there with an ellipsis as its last one. */
+function cutText(text, length) {
+  const characters = [...text];
+  return characters.length <= length ? text : `${characters.slice(0, length - 1).join("")}…`;
 }
 
 /** The kept pictures as a summary names them: the first SUMMARY_PICTURE_IDS ids, then how many more there are. */
 export function namedPictures(ids) {
   const named = ids.slice(0, SUMMARY_PICTURE_IDS).join("、");
   return ids.length > SUMMARY_PICTURE_IDS ? `${named} 等，另 ${ids.length - SUMMARY_PICTURE_IDS} 張` : named;
+}
+
+// ReviewIn._small in apps/api/app/video_reviews/schemas.py refuses a payload larger than
+// MAX_PAYLOAD_BYTES with 422, and a refused review blocks the video as a summary too long does.
+// The screenplay of a long-anime series episode alone may be larger (MAX_ANIME_SCRIPT_BYTES).
+export const MAX_REVIEW_PAYLOAD_BYTES = 256 * 1024;
+export const MAX_ANIME_SCRIPT_BYTES = 1024 * 1024;
+// Where review-push starts leaving more of the judge's remarks out, short of the limit:
+// payloadBytes writes a number as JSON.stringify does, and Python writes a few of them a
+// character longer.
+export const REVIEW_PAYLOAD_BUDGET = 240_000;
+// What a review carries of the judge's remarks on one kept picture: this many lines, each cut to
+// this many characters. An illustrated video may keep hundreds of pictures, each with what the
+// judge said of every take; keyframes/manifest.json keeps all of it (accepted_with_problems).
+export const KEPT_REMARK_LINES = 6;
+export const KEPT_REMARK_LENGTH = 300;
+// The lines a picture keeps when the payload is still past the budget: two, then none.
+const FEWER_REMARK_LINES = [2, 0];
+const REMARKS_LEFT_OUT = "意見因審核資料的大小上限略去，全文在 keyframes/manifest.json";
+
+/**
+ * The judge's remarks on a kept picture as a review carries them: the first `lines` of them, each
+ * cut to KEPT_REMARK_LENGTH characters, then one line counting the rest. With no line to spend,
+ * the one line that says they were left out for size; none for a picture the judge said nothing of.
+ */
+export function keptRemarks(problems, lines = KEPT_REMARK_LINES) {
+  const remarks = (Array.isArray(problems) ? problems : []).filter((each) => typeof each === "string" && each);
+  if (!remarks.length) return [];
+  if (lines <= 0) return [REMARKS_LEFT_OUT];
+  const shown = remarks.slice(0, lines).map((each) => cutText(each, KEPT_REMARK_LENGTH));
+  return remarks.length > lines ? [...shown, `…另有 ${remarks.length - lines} 則，全文在 keyframes/manifest.json`] : shown;
+}
+
+/**
+ * A payload's size as the server measures it (ReviewIn._small): Python's json.dumps(value,
+ * ensure_ascii=False) in UTF-8, which puts a space after every comma and colon and leaves text
+ * outside ASCII as it is. Measured on what the request carries: JSON.stringify drops what JSON
+ * has no word for.
+ */
+export function payloadBytes(payload) {
+  const written = (value) => {
+    if (Array.isArray(value)) return `[${value.map(written).join(", ")}]`;
+    if (value !== null && typeof value === "object") return `{${Object.entries(value).map(([key, each]) => `${JSON.stringify(key)}: ${written(each)}`).join(", ")}}`;
+    return JSON.stringify(value);
+  };
+  return Buffer.byteLength(written(JSON.parse(JSON.stringify(payload ?? {}))), "utf8");
+}
+
+const isRecord = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
+
+/** The most bytes the server takes for a review's payload: the ordinary limit, or a long-anime series screenplay's, by the rule ReviewIn._small applies. */
+function payloadLimit({ gate, payload }) {
+  const context = payload?.runtime_context;
+  const longScreenplay = gate === "script" && payload?.production_policy === LONG_ANIME_POLICY
+    && isRecord(context) && context.kind === "series" && context.genre === "custom" && context.lead === "ensemble"
+    && validateAnimeRuntime(payload.runtime_spec).length === 0;
+  return longScreenplay ? MAX_ANIME_SCRIPT_BYTES : MAX_REVIEW_PAYLOAD_BYTES;
+}
+
+// The list in a review's payload that names the pictures kept with the judge's remarks, by gate.
+const KEPT_LIST = { final: "accepted_pictures", storyboard: "accepted" };
+
+/**
+ * A review's payload with the judge's remarks on its kept pictures cut to `lines` a picture
+ * (keptRemarks) wherever that review carries them: on its list of kept pictures and, on a
+ * storyboard, in the own verdict of each kept shot, which is left empty when the lines are none
+ * (the list says why). Every picture keeps its id. Null for a review that names no kept picture.
+ */
+function withKeptRemarks({ gate, payload }, lines) {
+  if (!isRecord(payload)) return null;
+  const list = KEPT_LIST[gate];
+  const pictures = list && Array.isArray(payload[list]) ? payload[list] : [];
+  const shots = gate === "storyboard" && Array.isArray(payload.shots) ? payload.shots : [];
+  const keptShot = (shot) => isRecord(shot) && shot.accepted === true;
+  if (!pictures.length && !shots.some(keptShot)) return null;
+  return {
+    ...payload,
+    ...(pictures.length ? { [list]: pictures.map((picture) => (isRecord(picture) ? { ...picture, problems: keptRemarks(picture.problems, lines) } : picture)) } : {}),
+    ...(shots.length ? { shots: shots.map((shot) => (keptShot(shot) ? { ...shot, judge: { ...(isRecord(shot.judge) ? shot.judge : {}), problems: lines > 0 ? keptRemarks(shot.judge?.problems, lines) : [] } } : shot)) } : {}),
+  };
+}
+
+/**
+ * A review as review-push posts it, its payload within what the server takes. The judge's
+ * remarks on the kept pictures go up cut to KEPT_REMARK_LINES lines a picture; while the payload
+ * is past REVIEW_PAYLOAD_BUDGET they are cut further in steps, to two lines and then to none,
+ * every picture keeping its id. A payload still past the server's limit is not sent: the server
+ * would answer 422, and this says how large it is. Returns { body, bytes, lines }, `lines` null
+ * unless the remarks were cut past their usual lines.
+ */
+export function fitPayload(body) {
+  const limit = payloadLimit(body);
+  const budget = limit - (MAX_REVIEW_PAYLOAD_BYTES - REVIEW_PAYLOAD_BUDGET);
+  const kept = withKeptRemarks(body, KEPT_REMARK_LINES);
+  let payload = kept ?? body.payload;
+  let bytes = payloadBytes(payload);
+  let lines = null;
+  for (const fewer of kept ? FEWER_REMARK_LINES : []) {
+    if (bytes <= budget) break;
+    payload = withKeptRemarks(body, fewer);
+    bytes = payloadBytes(payload);
+    lines = fewer;
+  }
+  if (bytes > limit) {
+    throw new ReviewError(`the ${body.gate} review's payload is ${bytes} bytes, over the ${limit} the site takes${kept ? ", even with the judge's remarks on the kept pictures left out" : ""}; nothing was sent`, { code: "payload_too_large", submission: true });
+  }
+  return { body: kept ? { ...body, payload } : body, bytes, lines };
 }
 
 /** The outline options a brief offers: `### 選項 A：title`, its 一行說明, its 開場鉤子. */
@@ -549,7 +661,8 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     // --accept-best): the owner looks at the cut whatever the quality check says, and the
     // card lists them. The worker asks for the manual review too (automation/flow.mjs gate).
     // The summary and the reason name the first few and count the rest (namedPictures): every
-    // one of them, with what the judge said, is in accepted_pictures.
+    // one of them is in accepted_pictures with what the judge said, which review-push cuts to
+    // a few lines a picture where it posts the review (fitPayload).
     const acceptedPictures = acceptedPicturesOf(doc, workdir);
     const keptIds = namedPictures(acceptedPictures.map((picture) => picture.id));
     const manual = manualReview || acceptedPictures.length > 0;
@@ -873,7 +986,8 @@ async function storyboardSubmission({ request, project, workdir }) {
     // A picture kept with the judge's remarks once its prompt fixes were spent (keyframes
     // --accept-best): sent as accepted, not as a review need, so the board can approve itself
     // (apps/api/app/video_automation/settings.py storyboard_check_passed); the owner sees it on
-    // the final cut, which goes up for a manual review.
+    // the final cut, which goes up for a manual review. What the judge said of it, here and on
+    // the list below, is cut to a few lines where review-push posts the review (fitPayload).
     const accepted = Array.isArray(shot.accepted_with_problems);
     shots.push({
       id: scene.id,
@@ -945,7 +1059,8 @@ function fail(error, ctx) {
   ctx.stderr.write(`${error.message}\n`);
   // Bad review/file payloads cannot recover by waiting. A failed project report or read still
   // stops the round: the worker could not reliably report a blocked state on that same route.
-  if (error instanceof ReviewError && error.submission && [413, 422].includes(error.status)) return ctx.EXIT.lint;
+  // A payload this command found too large itself (fitPayload) is one the site would refuse so.
+  if (error instanceof ReviewError && error.submission && ([413, 422].includes(error.status) || error.code === "payload_too_large")) return ctx.EXIT.lint;
   return error.who === "owner" ? ctx.EXIT.owner : ctx.EXIT.external;
 }
 
@@ -990,10 +1105,11 @@ export async function reviewPush(args, ctx) {
       const remote = ["publish", "languages", "dubs"].includes(candidate.gate) ? await request("GET", values.slug) : null;
       const bound = await bindRenewalSubmission({ body: candidate, remote, project, workdir, request, upload });
       // Every review this command sends leaves through here, so none carries a summary the
-      // site would refuse for its length.
-      const body = { ...bound, summary: fitSummary(bound.summary) };
-      const review = await request("POST", `${values.slug}/reviews`, { json: body });
+      // site would refuse for its length, nor a payload it would refuse for its size.
+      const { body, bytes, lines } = fitPayload({ ...bound, summary: fitSummary(bound.summary) });
       const what = body.subject ? `${gate} (${body.subject})` : gate;
+      if (lines !== null) ctx.stdout.write(`${values.slug}: ${what}: the judge's remarks on the kept pictures were ${lines ? `cut to ${lines} lines a picture` : "left out"} to keep the review's payload within the site's limit (${bytes} bytes now); keyframes/manifest.json has them all\n`);
+      const review = await request("POST", `${values.slug}/reviews`, { json: body });
       ctx.stdout.write(`${values.slug}: ${what} submitted for review (${review.status}); the owner decides on /admin/videos, then run review-pull\n`);
     }
     return ctx.EXIT.ok;
