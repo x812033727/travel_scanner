@@ -5,7 +5,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { sandbox } from "../core/fixtures/load.mjs";
-import { AUTO_ARCHIVE_REASON, canonicalJson, INPUT_CHANGED_CODE, normalizeRun, POLICY_HOLD_CODE, runReceiptStore, sourceHash, validateRunReceipt } from "./run-receipts.mjs";
+import { AUTO_ARCHIVE_REASON, canonicalJson, INPUT_CHANGED_CODE, jobGoneReason, normalizeRun, POLICY_HOLD_CODE, runReceiptStore, sourceHash, validateRunReceipt } from "./run-receipts.mjs";
 
 const site = "https://site.test";
 const request = (slug = "video-one") => ({ stage: "writer", slug, instructions: "Write the checked story.", payload: { locale: "zh-TW", rows: [1, 2] } });
@@ -154,6 +154,40 @@ test("a stale journal archives itself only when its run is over or never reached
   const artifact = path.join(box.base, "adopted.json"); writeFileSync(artifact, result.text);
   store.adopt("adopted-video", { artifacts: [{ path: artifact, sha256: createHash("sha256").update(result.text).digest("hex") }] });
   assert.throws(() => store.archive(adopted, { autoArchive: true }), /terminal stale run/, "an adopted success is settled, never archived");
+});
+
+test("a stale journal whose job the server no longer has is archived with the answer named, whatever its saved status", () => {
+  const box = sandbox(), store = runReceiptStore(context(box), site);
+  const gone = { status: 404, code: "video_ai_job_not_found" };
+  assert.equal(jobGoneReason(gone), "the server no longer has this job (404 video_ai_job_not_found)");
+  assert.equal(jobGoneReason({ status: 422, code: "" }), "the server no longer has this job (422)");
+  for (const status of ["running", "uncertain", "succeeded"]) {
+    const entry = store.prepare(request(`${status}-video`));
+    store.receive(entry, receipt(entry, status));
+    const before = JSON.parse(readFileSync(entry.file, "utf8"));
+    store.archive(entry, { autoArchive: true, gone });
+    assert.equal(existsSync(entry.file), false, status);
+    const archiveDir = path.join(path.dirname(entry.file), "archive");
+    const archived = JSON.parse(readFileSync(path.join(archiveDir, readdirSync(archiveDir)[0]), "utf8"));
+    assert.deepEqual(archived.receipt, before.receipt, status);
+    assert.equal(archived.owner_retry.request_id, null, status);
+    assert.equal(archived.owner_retry.reason, jobGoneReason(gone), status);
+  }
+  // A policy hold stays for a validated retry; the worker, not the store, classifies the
+  // answer, but it must at least be a 4xx with a code, and autoArchive must be asked for.
+  const held = store.prepare(request("held-video")), running = store.prepare(request("kept-video"));
+  store.receive(held, { ...receipt(held, "failed"), error_code: POLICY_HOLD_CODE, dispatched_at: null });
+  store.receive(running, receipt(running, "running"));
+  for (const [entry, options] of [[held, { autoArchive: true, gone }], [running, { gone }],
+    [running, { autoArchive: true, gone: { status: 502, code: "upstream_unavailable" } }], [running, { autoArchive: true, gone: { status: 404 } }], [running, { autoArchive: true, gone: "404" }]]) {
+    assert.throws(() => store.archive(entry, options), /can be archived/, JSON.stringify(options));
+    assert.ok(existsSync(entry.file));
+  }
+  // A journal with no receipt has no job to be gone: it is archived as never dispatched.
+  const never = store.prepare(request("never-video"));
+  store.archive(never, { autoArchive: true, gone });
+  const neverDir = path.join(path.dirname(never.file), "archive");
+  assert.equal(JSON.parse(readFileSync(path.join(neverDir, readdirSync(neverDir)[0]), "utf8")).owner_retry.reason, AUTO_ARCHIVE_REASON);
 });
 
 test("an owner retry lists plain failed journals so the retry can clear them, and never policy holds without authority", () => {
