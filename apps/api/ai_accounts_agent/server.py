@@ -24,6 +24,7 @@ from ai_accounts_agent.runs import (
     ANY_MODEL,
     RunRefused,
     RunRequest,
+    auth_failed_everywhere,
     model_family,
     pick_slot,
     run_claude,
@@ -170,6 +171,11 @@ class AgentApplication:
         # by tool, slot and the model family the limit covers (ANY_MODEL for the account's
         # 5-hour or weekly window), so an Opus limit leaves the account to Fable and Sonnet.
         self._runs_resting: dict[tuple[str, str, str], float] = {}
+        # Accounts whose run could not authenticate (2026-10-06), until when. Such an account
+        # rests like one at its limit, but the rest is told apart: when every signed-in account
+        # is resting for this reason, the answer names a sign-in, not a usage window, and no
+        # usage probe is forced on it (the probe would fail the same way).
+        self._auth_failed: dict[tuple[str, str], float] = {}
         self._prepare_state()
 
     def _prepare_state(self) -> None:
@@ -491,6 +497,14 @@ class AgentApplication:
                     )
                 except RunRefused as exc:
                     left = deadline - time.monotonic()
+                    if exc.code == "subscription_quota_paused":
+                        auth_resting = {
+                            slot for (name, slot), until in self._auth_failed.items()
+                            if name == tool and until > now
+                        }
+                        everywhere = auth_failed_everywhere(slots, tool, auth_resting)
+                        if everywhere is not None:
+                            raise everywhere from exc
                     if exc.code != "subscription_busy" or left <= 0:
                         raise
                     self._runs_changed.wait(timeout=min(RUN_WAIT_POLL_SECONDS, left))
@@ -519,15 +533,25 @@ class AgentApplication:
                 return slot
 
     def _release_run_slot(
-        self, slot: str, *, spent: bool, tool: str = "claude", family: str = ANY_MODEL
+        self,
+        slot: str,
+        *,
+        spent: bool,
+        tool: str = "claude",
+        family: str = ANY_MODEL,
+        auth_failed: bool = False,
     ) -> None:
         with self._runs_changed:
             self._runs_busy.discard((tool, slot))
             if spent:
-                self._runs_resting[(tool, slot, family)] = self.clock() + RUN_REST_SECONDS
+                until = self.clock() + RUN_REST_SECONDS
+                self._runs_resting[(tool, slot, family)] = until
+                if auth_failed:
+                    self._auth_failed[(tool, slot)] = until
             self._runs_changed.notify_all()
-        if spent and tool == "claude":
-            # Probe it now, so the picks after the rest see the spent window in its usage.
+        if spent and tool == "claude" and not auth_failed:
+            # Probe it now, so the picks after the rest see the spent window in its usage. An
+            # account that cannot authenticate is not probed: the probe would fail the same way.
             self.maybe_refresh_usage("claude", slot, self.status("claude", slot), force=True)
 
     def run_prompt(self, body: bytes) -> Response:
@@ -536,6 +560,7 @@ class AgentApplication:
             while True:
                 slot = self._claim_run_slot(request)
                 spent = False
+                auth_failed = False
                 family = ANY_MODEL
                 try:
                     result = (
@@ -544,14 +569,22 @@ class AgentApplication:
                         else run_claude(self.config, slot, request)
                     )
                 except RunRefused as exc:
-                    # This account is spent; the next pick skips it and tries another one.
-                    spent = exc.code == "subscription_quota_paused"
+                    # This account is spent, or cannot authenticate; the next pick skips it
+                    # and tries another one.
+                    auth_failed = exc.code == "subscription_auth_failed"
+                    spent = auth_failed or exc.code == "subscription_quota_paused"
                     if not spent:
                         raise
                     family = exc.family
                     continue
                 finally:
-                    self._release_run_slot(slot, spent=spent, tool=request.tool, family=family)
+                    self._release_run_slot(
+                        slot,
+                        spent=spent,
+                        tool=request.tool,
+                        family=family,
+                        auth_failed=auth_failed,
+                    )
                 return HTTPStatus.OK, result
         except RunRefused as exc:
             return exc.status, {"code": exc.code, "detail": exc.detail, **exc.extra}

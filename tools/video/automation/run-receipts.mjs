@@ -21,6 +21,10 @@ const inputChanged = () => Object.assign(new RunReceiptError(INPUT_CHANGED_MESSA
 // What archive() writes for a stale journal it may close on its own: the run is over (or never
 // reached the server), so no owner retry is needed and no request id is consumed.
 export const AUTO_ARCHIVE_REASON = "inputs changed; the saved run is terminal";
+// The same when the server answered the job lookup with a settled 4xx (`gone`): no job under
+// this token (404 after a re-pair), not the receipt's job (409 input hash), a malformed identity.
+export const jobGoneReason = (gone) => `the server no longer has this job (${gone.status}${gone.code ? ` ${gone.code}` : ""})`;
+const validGone = (gone) => object(gone) && Number.isInteger(gone.status) && gone.status >= 400 && gone.status < 500 && typeof gone.code === "string";
 const requireThat = (condition, message) => { if (!condition) throw new RunReceiptError(message); };
 const object = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 
@@ -244,20 +248,22 @@ export function runReceiptStore(ctx, site) {
      * Move a journal aside, keeping its bytes: an uncertain run the owner retries, a changed-input
      * success the owner retries (`requestId`, `reason`), a validated policy retry, or
      * (`autoArchive`) a stale journal the worker reconciled itself: its run succeeded and was
-     * never adopted, or it never reached the server (no receipt, no policy hold).
+     * never adopted, it never reached the server (no receipt, no policy hold), or the server
+     * answered its lookup with a settled 4xx (`gone: { status, code }`; not a policy hold).
      */
-    archive(entry, { requestId = null, reason = "", policyValidated = false, autoArchive = false } = {}) {
+    archive(entry, { requestId = null, reason = "", policyValidated = false, autoArchive = false, gone = null } = {}) {
       const current = read(entry.file);
       requireThat(current.request_key === entry.record.request_key, "stage journal changed before owner retry");
       const successfulSourceChange = current.receipt?.status === "succeeded" && !current.adopted
         && UUID.test(requestId ?? "") && typeof reason === "string" && reason.includes("inputs changed");
       const policyRetry = policyHeld(current) && UUID.test(requestId ?? "") && policyValidated === true
         && (!current.receipt || current.receipt.dispatched_at === null);
+      const jobGone = autoArchive === true && validGone(gone) && current.receipt !== null && !current.adopted && !policyHeld(current);
       const terminal = autoArchive === true && (current.receipt?.status === "succeeded" && !current.adopted
-        || current.receipt === null && !policyHeld(current));
+        || current.receipt === null && !policyHeld(current)) || jobGone;
       requireThat(current.receipt?.status === "uncertain" || successfulSourceChange || policyRetry || terminal,
         "only a confirmed uncertain run, authorized changed input, validated policy retry or terminal stale run can be archived");
-      if (terminal) { requestId = null; reason = AUTO_ARCHIVE_REASON; }
+      if (terminal) { requestId = null; reason = jobGone ? jobGoneReason(gone) : AUTO_ARCHIVE_REASON; }
       const archiveDir = path.join(path.dirname(entry.file), "archive");
       mkdirSync(archiveDir, { recursive: true });
       if (policyRetry) for (const name of readdirSync(archiveDir).filter((name) => name.endsWith(".json"))) {

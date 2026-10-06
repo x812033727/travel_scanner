@@ -3722,11 +3722,29 @@ test("an owner retry of a video the server stopped answering for moves its keyfr
   video.retry(second);
   assert.match(await video.worker().step(), /keyframes done/);
   assert.deepEqual(video.runs.at(-1), ["keyframes", "--slug", slug, "--seed-offset", "6"], "the next retry asks for seeds 7 to 9");
-  assert.deepEqual(video.state().seed_offsets, { keyframes: 6 }, "the shift stays, so the seeds before it are never asked for again");
+  assert.deepEqual(video.state().seed_offsets, {}, "a stage that is through its seeds starts a later rerun at seeds 1 to 3 again");
   assert.equal(video.state().status, "active");
   assert.equal(video.state().blocked_kind, undefined);
   assert.equal(video.listed().retry_acknowledged_id, second);
   assert.equal("blocked_kind" in video.site.calls.reports.at(-1), false, "a video that moves reports no kind");
+});
+
+test("a keyframes run that logged a spent seed but stopped for the owner is blocked as the owner's: its retry keeps the seeds", async () => {
+  const slug = "retry-cap-after-spent";
+  const cap = "this video is at its US$5 cap; raise it on the settings tab";
+  const video = blockedVideo({
+    slug,
+    blocked: "keyframes needs the owner: earlier",
+    commands: () => ({ code: EXIT.owner, out: `desk seed 1: 這個請求已經失敗 3 次；改提示詞或 seed 再試; trying another seed\n${cap}\n` }),
+  });
+  video.retry("1a2b3c4d-0006-4000-8000-000000000006");
+  assert.match(await video.worker().step(), /blocked — keyframes needs the owner: this video is at its US\$5 cap/);
+  assert.equal(video.state().blocked_kind, "media_owner:keyframes", "the reason the owner reads is the cap, not the spent seed on the way to it");
+  assert.equal(video.state().seed_offsets, undefined);
+  video.retry("1a2b3c4d-0007-4000-8000-000000000007");
+  assert.match(await video.worker().step(), /blocked — keyframes needs the owner: this video is at its US\$5 cap/);
+  assert.deepEqual(video.runs, [["keyframes", "--slug", slug], ["keyframes", "--slug", slug]], "the retry runs the stage at its seeds; nothing is shifted");
+  assert.equal(video.state().seed_offsets, undefined);
 });
 
 test("a retry whose saved run cannot be verified blocks that video alone, with the reason and the request consumed; the videos beside it go on in the same round", async () => {
@@ -3921,4 +3939,21 @@ test("the first draft of a slides video hears the prompt budget of the image mod
   assert.equal(slidesImageVendor({ slides: { slides_media_enabled: true, slides_image_model: "hailuo-image" }, drama: { image_provider: "gemini", image_model: "gemini-3-pro-image" } }), null, "an id nothing says the vendor of");
   assert.equal(slidesImageVendor({}), null);
   assert.equal(slidesImageVendor(undefined), null);
+});
+
+test("a programming error in the retry transport still ends the run: it is not reported to the owner as a block", async () => {
+  const slug = "retry-transport-bug";
+  const video = blockedVideo({ slug, blocked: "writer failed 2 times in a row: the script had no video object", extra: { failures: { writer: 2 } }, others: ["retry-transport-neighbour"] });
+  const api = automationClient(video.ctx);
+  api.retryRuns = async () => {
+    throw new TypeError("Cannot read properties of undefined (reading 'receipt')");
+  };
+  const request = "9e8d7c6b-0008-4000-8000-000000000008";
+  video.retry(request);
+  await assert.rejects(video.worker(api).step(), TypeError);
+  assert.equal(video.state().status, "blocked");
+  assert.equal(video.state().blocked, "writer failed 2 times in a row: the script had no video object", "the reason is the stage's, not the bug's");
+  assert.equal(video.state().retry_request_id, undefined, "nothing is consumed");
+  assert.equal(video.listed().retry_acknowledged_id, null);
+  assert.equal(video.site.calls.reports.length, 0, "nothing is reported");
 });
