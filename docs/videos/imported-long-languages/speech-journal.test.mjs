@@ -13,6 +13,8 @@ const hash = (v) => createHash("sha256").update(v).digest("hex");
 const raw = encodeWav(Int16Array.from([0, 100, -100, 200, -200, 0]), 24000);
 const speechBody = { voice: "gemini:Sulafat", model: "gemini-2.5-flash-preview-tts", style: "Clearly", segments: [{ parts: [{ text: "Approved words" }], break_after_ms: 0 }] };
 const wavResponse = () => new Response(raw, { headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "14", "Cache-Control": "no-store", "Authorization": `Bearer ${token}`, "Set-Cookie": token } });
+// What apps/web/app/api/video/speech/forward.ts answers when it never reached the API.
+const unreached = () => Response.json({ title: "Request not completed", status: 502, code: "upstream_unavailable", detail: "API unavailable" }, { status: 502, headers: { "Cache-Control": "no-store" } });
 function fixture(t) {
   const workdir = mkdtempSync(path.join(os.tmpdir(), "speech-journal-")); t.after(() => rmSync(workdir, { recursive: true, force: true }));
   const identity = { source_kind: "approved-final-body-range", slug, final_sha256: "a".repeat(64), source_sha256: "b".repeat(64), raw_source: { script_sha256: "c".repeat(64), timeline_sha256: "d".repeat(64), lexicon_sha256: "e".repeat(64) }, request_namespace: "11111111-1111-4111-8111-111111111111", choice: { locales: { en: { metadata: true, captions: true, dub: true } }, decided_at: "2026-10-04T00:00:00Z" }, configuration: speechConfiguration({ voice: { provider: "gemini", name: "Sulafat", model: "selected-model" }, stage_models: { caption_reviewer: { provider: "gemini", model: "selected-reviewer" } } }, { gemini_configured: true, gemini_models: ["selected-model"], gemini_monthly_limit: 1000 }) };
@@ -138,15 +140,66 @@ test("GET and unrelated routes pass through, while foreign or changed paid origi
   assert.equal(calls, 2); assert.equal(existsSync(path.join(f.workdir, "speech-journal")), false);
 });
 
-test("native server auth/quota classification is preserved and retryable upstream failure still buys once", async (t) => {
-  // The speech route's 502 `upstream_unavailable` is an API it never reached (it answers a lost
-  // answer with 504 since #1272), so the native client asks again and the journal holds that second
-  // POST. A 503 `upstream_unavailable` comes from no speech route, so the native client itself stops
-  // on it as uncertain (exit 3) before the journal's hold.
-  for (const [status, code, who, seen = code] of [[401, "video_tool_token_invalid", "owner"], [429, "video_speech_budget_exhausted", "service"], [502, "upstream_unavailable", "service", "video_speech_result_held"], [503, "upstream_unavailable", "owner", SPEECH_UNCERTAIN]]) await t.test(`${status} ${code}`, async (t) => {
+test("native server auth/quota classification is preserved and every failure but the route's never-reached 502 still buys once", async (t) => {
+  // A 503 `upstream_unavailable` comes from no speech route, and 504 `video_speech_answer_lost` is
+  // the route's lost answer (#1272), so the native client itself stops on both as uncertain (exit 3),
+  // as on a gateway's HTML 502. A settled API 5xx is sent again by the client and meets the hold.
+  const problem = (status, code) => () => Response.json({ code, detail: code }, { status });
+  for (const [name, answer, who, seen] of [
+    ["401 video_tool_token_invalid", problem(401, "video_tool_token_invalid"), "owner", "video_tool_token_invalid"],
+    ["429 video_speech_budget_exhausted", problem(429, "video_speech_budget_exhausted"), "service", "video_speech_budget_exhausted"],
+    ["503 upstream_unavailable", problem(503, "upstream_unavailable"), "owner", SPEECH_UNCERTAIN],
+    ["504 video_speech_answer_lost", problem(504, "video_speech_answer_lost"), "owner", SPEECH_UNCERTAIN],
+    ["502 gateway HTML", () => new Response("<html>502 Bad Gateway</html>", { status: 502, headers: { "Content-Type": "text/html" } }), "owner", SPEECH_UNCERTAIN],
+    ["502 video_speech_upstream_failed", problem(502, "video_speech_upstream_failed"), "service", "video_speech_result_held"],
+  ]) await t.test(name, async (t) => {
     const f = fixture(t); let posts = 0;
-    await assert.rejects(invoke(f, f.make(async () => { posts++; return Response.json({ code, detail: code }, { status }); })), (error) => error.who === who && error.code === seen);
+    await assert.rejects(invoke(f, f.make(async () => { posts++; return answer(); })), (error) => error.who === who && error.code === seen);
     assert.equal(posts, 1); assert.equal(Object.values(f.read().entries)[0].status, "unknown");
+    await assert.rejects(invoke(f, f.make(async () => { posts++; return wavResponse(); })), /held/); assert.equal(posts, 1);
+  });
+});
+
+test("the route's own 502 upstream_unavailable leaves no entry, and the native retry is journaled like a first answer", async (t) => {
+  const lines = [{ id: "aaaa", intended: "x", spoken_form: "x", heard: "x" }];
+  for (const [route, call, answer, value, expected] of [
+    ["speech", (options) => synthesize({ ...options, body: speechBody }), wavResponse, (v) => v.billable, 14],
+    ["transcribe", (options) => transcribeClip({ ...options, wav: raw, terms: ["Actual"], language: "en" }), () => Response.json({ text: "Actual heard words" }), (v) => v, "Actual heard words"],
+    ["judge", (options) => judgeLines({ ...options, lines, language: "en" }), () => Response.json({ results: [{ id: "aaaa", noul: 0.8 }] }), (v) => v.get("aaaa"), 0.8],
+  ]) await t.test(route, async (t) => {
+    const f = fixture(t); let posts = 0, sleeps = 0;
+    const fetchImpl = f.make(async () => (++posts === 1 ? unreached() : answer()));
+    // Between the native client's attempts the journal holds nothing for that request.
+    const first = await call({ ...f.options(fetchImpl), sleep: async () => { sleeps++; assert.deepEqual(f.read().entries, {}); } });
+    assert.equal(value(first), expected); assert.equal(posts, 2); assert.equal(sleeps, 1);
+    const entries = Object.values(f.read().entries); assert.equal(entries.length, 1); assert.equal(entries[0].status, "succeeded"); assert.equal(entries[0].http_status, undefined);
+    assert.deepEqual(await call(f.options(f.make(async () => { posts++; assert.fail("the journaled answer replays"); }))), first); assert.equal(posts, 2);
+  });
+});
+
+test("a route that never reaches the API on all five native attempts keeps no entry, and the next run sends again", async (t) => {
+  const f = fixture(t); let posts = 0;
+  await assert.rejects(invoke(f, f.make(async () => { posts++; return unreached(); })), (error) => error.who === "service" && error.code === "upstream_unavailable" && error.status === 502);
+  assert.equal(posts, 5); assert.deepEqual(f.read().entries, {});
+  assert.equal((await invoke(f, f.make(async () => { posts++; return wavResponse(); }))).billable, 14); assert.equal(posts, 6);
+  assert.equal(Object.values(f.read().entries)[0].status, "succeeded");
+});
+
+test("a never-reached 502 is forgotten only once its journal is saved, and STOP still holds the native retry", async (t) => {
+  for (const when of ["write", "stop"]) await t.test(when, async (t) => {
+    const f = fixture(t); let posts = 0, journalWrites = 0;
+    const write = (file, bytes) => {
+      const journal = file.endsWith("journal.json") ? JSON.parse(String(bytes)) : null;
+      // The second journal write is the one without the 502's intent.
+      if (when === "write" && journal && ++journalWrites === 2) throw Error("disk unavailable");
+      writeFileSync(file, bytes);
+      if (when === "stop" && journal && Object.keys(journal.entries).length === 0) writeFileSync(path.join(f.workdir, "STOP"), "owner STOP after the 502");
+    };
+    await assert.rejects(invoke(f, f.make(async () => { posts++; return posts === 1 ? unreached() : wavResponse(); }, { write })), (error) => error.code === "video_speech_result_held");
+    assert.equal(posts, 1);
+    if (when === "write") assert.equal(Object.values(f.read().entries)[0].status, "unknown");
+    else { assert.deepEqual(f.read().entries, {}); assert.ok(existsSync(path.join(f.workdir, "STOP"))); }
+    await assert.rejects(invoke(f, f.make(async () => { posts++; return wavResponse(); })), /held/); assert.equal(posts, 1);
   });
 });
 

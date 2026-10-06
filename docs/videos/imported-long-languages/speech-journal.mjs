@@ -49,6 +49,15 @@ function durableWrite(file, bytes) {
   if (process.platform !== "win32") { const dir = openSync(path.dirname(file), "r"); try { fsyncSync(dir); } finally { closeSync(dir); } }
 }
 function held() { return Response.json({ code: "video_speech_result_held", detail: "Speech request or saved result is held. Preserve its local receipt and inspect the existing result; no paid POST was retried." }, { status: 409 }); }
+// The speech routes' own 502 `upstream_unavailable` (apps/web/app/api/video/speech/forward.ts) is an
+// API they never reached; since #1272 a request the API took and lost answers 504
+// `video_speech_answer_lost` (a host from before #1272 does not; production serves it since
+// c12e159d0). Only this exact status and JSON code, as NEVER_REACHED in
+// tools/video/tts/client.mjs: an HTML gateway 502, a 503 or any other code stays uncertain.
+async function neverReached(response) {
+  if (response.status !== 502) return false;
+  try { return (await response.clone().json())?.code === "upstream_unavailable"; } catch { return false; }
+}
 
 function checkedRequest(route, body) {
   requireThat(ROUTES.has(route) && typeof body === "string", "paid speech requires its exact JSON wire body");
@@ -122,7 +131,8 @@ function responseBytes(dir, key, record) {
 }
 
 /** readIdentity rechecks current source/choice/settings before each paid boundary.
- * Local 409 holds stop the native client's internal retry loop without changing it.
+ * Local 409 holds stop the native client's internal retry loop without changing it; only the
+ * route's never-reached 502 leaves no entry, so that loop's next attempt is journaled afresh.
  * The enclosing runner owns its batch/account lock; this lock also closes per-call races. */
 export function createSpeechJournalFetch({ fetchImpl, site, workdir, readIdentity, now = () => new Date().toISOString(), write = durableWrite }) {
   const origin = new URL(site);
@@ -161,8 +171,17 @@ export function createSpeechJournalFetch({ fetchImpl, site, workdir, readIdentit
       requireThat(!stopRequested(workdir), "STOP requested before the paid speech POST");
       const response = await fetchImpl(input, { ...init, redirect: "error" });
       if (!response.ok) {
+        if (await neverReached(response)) {
+          // Nothing ran or was charged, so drop the intent and let the native client's bounded
+          // retry pass every check above again. Save the journal without it before forgetting it:
+          // if that write fails, the catch below still marks this entry unknown and holds.
+          const next = { ...journal, entries: { ...journal.entries } }; delete next.entries[key];
+          write(file, `${JSON.stringify(next, null, 2)}\n`);
+          delete journal.entries[key]; record = null;
+          return response;
+        }
         // Preserve the server's owner/quota classification for this first response.
-        // Even a retryable failure has no local authority to submit another POST.
+        // Any other failure, retryable or not, has no local authority to submit another POST.
         record.status = "unknown"; record.http_status = response.status; record.updated_at = now(); write(file, `${JSON.stringify(journal, null, 2)}\n`);
         return response;
       }
