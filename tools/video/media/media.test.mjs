@@ -3,9 +3,12 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
+import { resolveLook } from "../core/drama.mjs";
 import { sandbox, tempDir } from "../core/fixtures/load.mjs";
 import { cached, forget, forgetJob, mediaKey, pendingJob, readCache, remember, rememberJob } from "./cache.mjs";
+import { AVOID, DEFAULT_IMAGE_PROMPT_LIMIT, IMAGE_PROMPT_LIMITS, MIN_SHOT_PROMPT_BUDGET, composeShotPrompt, imagePromptLimit, promptOverhead, shotPromptBudget } from "./prompt-budget.mjs";
 import { MediaError, PART_BYTES, RETAKE_CODES, downloadFile, judge, locate, mediaStatus, putFile, runJob, scaleBox, stockFetch, stockSearch, submitClip, submitImage, waitForJob } from "./client.mjs";
 import { STAGES, exitFor, main, run, statusText } from "./cli.mjs";
 import { appendLedger, bookImport, bookJob, capProblem, importedTotals, ledgerTotals, readLedger, release, reserve, reservedEntries, savedTotals } from "./ledger.mjs";
@@ -538,4 +541,73 @@ test("stock fetch stores the photo under <workdir>/stock/<sha256>.<ext> and writ
   assert.equal(await run("stock", ["search", "--query", "Busan"], unknown), EXIT.owner);
   assert.match(out.stderr, /does not serve the stock photo routes yet/);
   assert.equal(await main(["stock", "search", "--query", "Busan"], { ...ctx, env: {}, home: tempDir("video-home-") }), EXIT.owner, "no token yet");
+});
+
+// The vendor module the budget mirrors: what it puts between the prompt and the negative
+// prompt, and the length it refuses at.
+const MINIMAX_SOURCE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "apps", "api", "app", "video_media", "providers", "minimax.py");
+
+test("a shot's prompt is composed under the image model's limit: corrections go first, from the last, then the scene is cut at a word, and the look never", () => {
+  const source = readFileSync(MINIMAX_SOURCE, "utf8");
+  assert.equal(source.match(/f"\{request\.prompt\}(\. Avoid: )\{request\.negative_prompt\}"/)[1], AVOID, "AVOID is what minimax.py appends");
+  assert.equal(Number(source.match(/^IMAGE_PROMPT_LIMIT = (\d+)$/m)[1]), IMAGE_PROMPT_LIMITS.minimax, "the table carries minimax.py's limit");
+  assert.equal(DEFAULT_IMAGE_PROMPT_LIMIT, 4000, "schemas.py MAX_PROMPT_CHARS");
+
+  // A riso look takes about a thousand characters of a 1500 request: the scene gets what is left.
+  const look = resolveLook({ preset: "riso-teal" });
+  const overhead = promptOverhead({ look, camera: "push in" });
+  assert.equal(overhead, `. Style: ${look.style}`.length + ". Camera: push in".length + `${AVOID}${look.negative}`.length);
+  const budget = shotPromptBudget({ look, camera: "push in", limit: 1500 });
+  assert.equal(budget, 1500 - 1 - overhead);
+  assert.ok(budget >= 400 && budget <= 520, `a riso look leaves ${budget} characters for the scene`);
+  assert.ok(shotPromptBudget({ look, camera: "push in", cast: "阿明: a tall man", limit: 1500 }) < budget, "a cast takes from the scene's budget");
+  assert.equal(shotPromptBudget({ look: { style: "ink", negative: "" }, limit: 100 }), 100 - 1 - ". Style: ink".length, "no negative, no avoidance text");
+
+  // Four corrections of 150 characters beside a 300-character prompt: the last three go, in order.
+  const fixes = ["a", "b", "c", "d"].map((letter) => letter.repeat(150));
+  const fits = (composed) => composed.prompt.length + AVOID.length + look.negative.length < 1500;
+  const corrected = composeShotPrompt({ prompt: "p".repeat(300), look, camera: "push in", fixes, limit: 1500 });
+  assert.equal(corrected.droppedFixes, 3);
+  assert.equal(corrected.cutChars, 0);
+  assert.ok(corrected.prompt.endsWith(`. Camera: push in. Corrections: ${fixes[0]}`), corrected.prompt.slice(-200));
+  assert.ok(corrected.prompt.startsWith(`${"p".repeat(300)}. Style: ${look.style}`));
+  assert.ok(fits(corrected));
+  const whole = composeShotPrompt({ prompt: "p".repeat(300), look, camera: "push in", fixes: fixes.slice(0, 1), limit: 1500 });
+  assert.deepEqual([whole.droppedFixes, whole.cutChars], [0, 0], "what fits is sent whole");
+  assert.equal(whole.prompt, corrected.prompt);
+
+  // A scene the look leaves no room for is cut at the last word that fits, and the look stays whole.
+  const words = Array.from({ length: 120 }, () => "word").join(" ");
+  const cut = composeShotPrompt({ prompt: words, look, camera: "push in", fixes, limit: 1500 });
+  assert.equal(cut.droppedFixes, 4);
+  assert.ok(cut.cutChars > 0 && cut.cutChars < words.length);
+  assert.ok(fits(cut));
+  const scene = cut.prompt.slice(0, cut.prompt.indexOf(". Style: "));
+  assert.ok(scene.length <= budget && scene.length > budget - 6, `cut to ${scene.length} of ${budget}`);
+  assert.match(scene, /word$/, "ends on a whole word");
+  assert.ok(cut.prompt.includes(`. Style: ${look.style}. Camera: push in`), "the look and the camera are never cut");
+  assert.doesNotMatch(cut.prompt, /Corrections/);
+  // Whatever the scene and the fixes, the request with the avoidance text is under the limit.
+  for (const length of [10, 480, 504, 505, 700, 1000]) {
+    for (const given of [[], fixes.slice(0, 2), fixes]) {
+      const composed = composeShotPrompt({ prompt: "x ".repeat(length / 2), look, camera: "pan left", fixes: given, limit: 1500 });
+      assert.ok(fits(composed), `${length} characters with ${given.length} fixes: ${composed.prompt.length}`);
+    }
+  }
+  assert.equal(composeShotPrompt({ prompt: "a gull", fixes: ["no lettering"] }).prompt, "a gull. Corrections: no lettering", "no look: the prompt and its corrections, as retakePrompt composes them");
+
+  // A look written for a model with a longer limit is the owner's to shorten, not the shot's.
+  const heavy = { style: "s".repeat(1000), negative: "n".repeat(500) };
+  assert.throws(() => shotPromptBudget({ look: heavy, limit: 1500 }), (error) => error instanceof MediaError && error.code === "video_media_prompt_budget" && error.who === "owner" && /style is 1000 characters and its negative 500/.test(error.message));
+  assert.throws(() => composeShotPrompt({ prompt: "x".repeat(100), look: heavy, limit: 1500 }), /video_media_prompt_budget|leaves -?\d+ characters/);
+  assert.ok(shotPromptBudget({ look: heavy, limit: 4000 }) > MIN_SHOT_PROMPT_BUDGET, "the same look is fine under the server's field limit");
+
+  // Which limit applies: the server's word for the vendor, then its word for itself, then the table, then the field limit.
+  const limits = { image_prompt_chars_minimax: 1200, image_prompt_chars: 3000 };
+  assert.equal(imagePromptLimit({ provider: "minimax", model: "image-01" }, { limits }), 1200);
+  assert.equal(imagePromptLimit({ provider: "gemini", model: "flash" }, { limits }), 3000);
+  assert.equal(imagePromptLimit({ provider: "minimax", model: "image-01" }, { limits: {} }), 1500, "an older server: the table");
+  assert.equal(imagePromptLimit({ provider: "minimax", model: "image-01" }, {}), 1500);
+  assert.equal(imagePromptLimit({ provider: "gemini", model: "flash" }, { limits: {} }), 4000);
+  assert.equal(imagePromptLimit(null, undefined), 4000);
 });
