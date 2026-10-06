@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-investigate-braces-advisory-in-the-next
 title: Investigate braces advisory in the Next ESLint toolchain
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5-board-closures
 claimed_at: 2026-10-06T00:45:44Z
 created_at: 2026-10-04T06:02:00Z
-completed_at:
+completed_at: 2026-10-06T01:39:33Z
 branch: claude/board-closures
 depends_on: []
 scope:

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-correct-nikko-pass-eligibility-for-accompanying
 title: Correct NIKKO PASS eligibility for accompanying Japanese nationals
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-board-closures
 claimed_at: 2026-10-06T00:48:00Z
 created_at: 2026-09-20T09:40:44Z
-completed_at:
+completed_at: 2026-10-06T01:40:03Z
 branch: claude/board-closures
 depends_on: []
 scope:

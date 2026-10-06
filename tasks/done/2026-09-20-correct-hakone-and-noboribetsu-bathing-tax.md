@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-correct-hakone-and-noboribetsu-bathing-tax
 title: Correct Hakone and Noboribetsu bathing tax age wording
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-board-closures
 claimed_at: 2026-10-06T00:46:31Z
 created_at: 2026-09-20T08:37:30Z
-completed_at:
+completed_at: 2026-10-06T01:39:38Z
 branch: claude/board-closures
 depends_on: []
 scope:

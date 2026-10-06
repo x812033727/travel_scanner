@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-correct-kyoto-flat-fare-bus-ic
 title: Correct Kyoto flat-fare bus IC and one-day-pass boarding steps
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-board-closures
 claimed_at: 2026-10-06T00:48:41Z
 created_at: 2026-09-20T09:43:51Z
-completed_at:
+completed_at: 2026-10-06T01:40:26Z
 branch: claude/board-closures
 depends_on: []
 scope:
