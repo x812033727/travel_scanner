@@ -211,7 +211,7 @@
 
 #### 34. a01-s034
 
-【沈歸鶴「白鶴先生」】（輕、慢，藥剛下去）壓得住，
+【沈歸鶴「白鶴先生」】（輕、慢，藥剛下去）拖得住，
 【沈歸鶴「白鶴先生」】一個時辰。
 【包三錢】（聲音發緊，短）一個時辰，
 【包三錢】夠幹什麼？
@@ -2656,5 +2656,5 @@
 動作：The flame rises straight again after the spark, the shadow of the bound hand lying still across the silk
 
 
-narrative e4ce37d81673a4f8
-speech 3270b46fc5396853
+narrative f4043f8f7ff88a23
+speech c912777b8d3d3963

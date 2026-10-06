@@ -22,6 +22,12 @@
 - `yuelan-ke` 帶兩個 look（`yuelan-crest`、`yuelan-crippled`），都是第 7 集外港那一場用的；`canglan-ke` 只有基本外觀。基本外觀都只寫第 7 集出場時的樣子（赤羽的素袍與紗巾、滄瀾客的毛皮斗篷與素劍），不寫 setting 裡後面集數的狀態（紅銅折翼冠、左臂藏袖、白髮拄杖、無愧劍）。
 - 其他十六人與已有的 look 一字未改。用 node 核對過：第 1–5 集成品 `docs/videos/ou-de-jianghu-e00N/video.json` 的角色物件（含 `shen-guihe` 的 `shot_looks`，第 6 集準備時已重新同步）全部與 `cast.json` 逐字相同；第 6 集成品還沒合併（`ep6/` 只有分場表與表頭）。
 - `ep7/meta.json`、`ep7/check-act.mjs` 照第 6 集的形狀建好，`node header.mjs --ep 7` 產出十三個角色的表頭；縮圖只填了 `headline`，`shot` 由主控在幕寫完後填。
+- 2026-10-06（第 7 集分場表第 1 輪修訂）：`yuelan-ke` **新增第三個 look `yuelan-covered`**（舊的兩個 look 一字未改）：同 `yuelan-crippled`，但劃開的衣襟被右手攏在胸前、雙淵紋看不見，只在指縫露一線銅線。理由：分場表 a04 場 1 要燕迴「看不到紋」（盟堂上他說「衣裡，我也沒看見」），`yuelan-crippled` 寫死了紋翻在外面，設定圖與每一鏡都會把紋畫在燕迴眼前，prompt 寫「掩著」會跟 look 打架。用在 a04 場 1 第 1 點那一格插鏡（a04-s001，右手攏衣）之後拍到他的每一鏡，到登船離岸。已跑 `node header.mjs --ep 7`。（第 2 輪修訂：分場表 a04 場 1 原第 1 點全景與第 2 點插鏡對調——守衛圍上來、燕迴站在最前的全景若還是 crippled，紋就擺在燕迴面前；現在掩衣是 a04-s001，圍住的全景起就是 covered。look 本身沒改，不必重跑 header。）
+
+## 第 4 集跨集連戲修訂（2026-10-06）
+
+- `zhuxu` **新增第二個 look `zhuxu-disarmed`**（基本外觀與 `zhuxu-returned` 一字未改）：外觀照抄 `zhuxu-returned`，只把「a plain straight sword in a dark-green scabbard at his left hip」換成「nothing at his left hip but the dark-green sash」。理由：第 4 集 a05-s016 他把劍連鞘丟在燕迴腳前（第 4 集分場表第七節 a05 第 8 點），`zhuxu-returned` 寫死了左腰的劍，prompt 說劍不在了、設定圖說劍在腰上，跪交秘錄到被押下那二十來鏡腰間會長回一把劍。刻意不寫「no sword」「an empty sword hanger」這類否定句或帶 sword 字眼的句子：生圖模型常反過來把劍畫出來。用在 a05-s017 起凡是列了 `zhuxu` 的鏡頭（21 鏡）；a05-s016 本身首格劍還在腰上，仍用 `zhuxu-returned`。已跑 `node header.mjs --ep 4` 與 `merge.mjs --ep 4`。
+- 第 2 集用不到這個 look，但 `ep2/header.json` 與成品 `docs/videos/ou-de-jianghu-e002/video.json`、`series.json` 裡的 `zhuxu` 因此少了一個 `shot_looks` 元素。要讓第 2 集再跟 `cast.json` 逐字相同，照第 6 集的做法對第 2 集跑 `node header.mjs --ep 2` 與 `node merge.mjs --ep 2`（ids.json 會保住 line id），再跑 `cli.mjs script`；由主控決定什麼時候做，本次沒有動第 2 集。
 
 ## 角色總表（18 人）
 
@@ -91,7 +97,7 @@
 
 ### 第 7 集〈西嶺來客〉（第 35–41 日）
 
-- 說話：`canglan-ke`、`yuelan-ke`、`ji-wen`、`sha-nu`、`wuming-jianke`、`bao-sanqian`、`yan-hui`、`luo-qingyan`、`shuyuan-elder`、`xuanmen-steward`；`ji-wushuang`（企劃包第 7 集的 characters 有她，但四個地點——西嶺雪線、盟府客院、盟府外港、梵林寺禪房——都不在鯨背嶼。主編若給她島上一場（例如化身受創那一刻她在主帳感應到）就說話、基本外觀、手背布條只寫插鏡 prompt；不給就把 id 從 `ep7/meta.json` 的 `cast` 拿掉再跑 `node header.mjs --ep 7`）
+- 說話：`canglan-ke`、`yuelan-ke`、`ji-wen`、`sha-nu`、`wuming-jianke`、`bao-sanqian`、`yan-hui`、`luo-qingyan`、`shuyuan-elder`、`xuanmen-steward`。`ji-wushuang`：企劃包第 7 集的 characters 有她，但四個地點——西嶺雪線、盟府客院、盟府外港、梵林寺禪房——都不在鯨背嶼。**主編定：不入鏡、沒有台詞，表頭留著**（`ep7/meta.json` 的 `cast` 仍列她；分場表第 6 行與第十一節）；任何一鏡的 `characters` 都不列她。
 - 入鏡不說話：`shen-guihe`（`shen-bedridden`，全集沒有台詞，到第 12 集合魂前都沒有；化身受創那一刻本體咳血，血只寫插鏡 prompt）、`yin-wusheng`（`yin-cut-hair`；禪房門口持劍橫在門口不讓任何人進、端湯藥、懸念那一鏡）
 - 只寫在 prompt、不建角色：赤羽的藥童、燕迴帶到外港的盟府守衛、赤羽登的船與水手、梵林僧人、客院門口的盟兵（見下方〈沒有建的角色〉）
 - 不出場：`zhuxu`（押在玄門）、`nie-gutie`、`xuanmen-elder`、`alliance-guard`（外港的守衛是 prompt 裡的另一群人）、`liu-buhuo`（在鯨背嶼管帳；企劃包第 7 集的 characters 沒有他。主編若拍島上的姬無霜，他多半在她旁邊——要他入鏡就把 id 加進 `cast` 再跑 `header.mjs`）
@@ -107,7 +113,7 @@
 - 第 2 集後半的高張力：他在三宗盟後山認出沈歸鶴咳出的血裡有鐵屑，把血帕塞進自己懷裡，對寂聞說「只是夜露」。這是他替沈歸鶴說的第一個謊，非他本人開口不可。
 - 第 4 集後半：他在齊雲殿外被圍，不還手，走上殿階跪交《裂山秘錄》。
 
-外觀照 setting 改寫成第 2 集的樣子。背上的布包寫成中性的「a cloth-wrapped bundle on his back」，不交代裡面是什麼。另外加了一柄收在鞘裡的劍：他是「Taoist swordsman」，招式是裂山訣劍法。不寫死的話，生圖模型會時有時無地自己補劍。寫死之後，第 4 集的「不還手」也有了畫面：手不碰劍。
+外觀照 setting 改寫成第 2 集的樣子。背上的布包寫成中性的「a cloth-wrapped bundle on his back」，不交代裡面是什麼。另外加了一柄收在鞘裡的劍：他是「Taoist swordsman」，招式是裂山訣劍法。不寫死的話，生圖模型會時有時無地自己補劍。寫死之後，第 4 集的「不還手」也有了畫面：手不碰劍。第 4 集最後交出劍：殿前廣場他解下劍、連鞘丟在燕迴腳前，從下一鏡起換成左腰沒有劍的 `zhuxu-disarmed`。
 
 ### 柳不活 `liu-buhuo`（第 3、4、5 集）
 
@@ -183,11 +189,11 @@
 
 ### 岳嵐客（化名「赤羽」）`yuelan-ke`（第 7 集；第 17、21、24 集再現）
 
-岳嵐客是 setting 說的「第一期最深的一盤棋」。第 7 集他以大夫「赤羽」的身分把火脊丹送到書齋，要說服紗女與包三錢給昏病的本體服下——這場的張力全在他的客氣，藥童代說不了；外港被無名劍客追上、紅衣劃開、廢臂，他不喊不叫，只說一兩句（主編定），之後登船而去。第 17 集默許白蘅入爐、第 24 集收下衛千籌，都是這個聲音。
+岳嵐客是 setting 說的「第一期最深的一盤棋」。第 7 集他以大夫「赤羽」的身分把火脊丹送到書齋，要說服紗女與包三錢給昏病的本體服下——這場的張力全在他的客氣，藥童代說不了；外港被無名劍客追上、紅衣劃開、廢臂，他不喊不叫，揭穿後的話照分場表（`ep7/beats.md` a03 場 4 與 a04 場 1：自報名號、「三宗，不會知道」、「……好劍」、對燕迴演成受害的客人），之後登船而去。第 17 集默許白蘅入爐、第 24 集收下衛千籌，都是這個聲音。
 
 - `name` 寫「岳嵐客「赤羽」」，照 `燕迴「赤纓」` 的格式。字幕沒有 speaker 前綴（`ep1/header.base.json` 的 `subtitles` 沒開 `speaker_prefix`），觀眾看不到名字；只有 `script.md` 的審稿人與設定圖 prompt 讀得到。台詞裡他自稱「赤羽」「在下」，揭穿之前沒有人叫他岳嵐客。
 - 外觀：基本外觀是第 7 集化名赤羽的樣子（setting：「As 'Red Feather' in episode 7 he wears a plain russet healer's robe and a half-veil」）：暗赤紅素袍、沒有繡紋、沒有冠、暗紅長髮束成素髻插一根銅簪、遮住口鼻的赤褐紗巾（只露眼與眉）、右肩掛一只黑漆藥箱。setting 的真身（紅銅折翼冠、赤銅繡羽袍）是他在赤淵宮時的樣子，第 7 集不出現，第 17 集再加 look；「左臂廢後藏在長袖裡」也是第 7 集以後的事，到時一起加。
-- 兩個 look：`yuelan-crest`（第一劍之後：紗巾掉到頸上、臉全露、紅衣從左肩劃開到胸口、內裡的雙淵紋露出、兩臂都好、沒有藥箱）、`yuelan-crippled`（第二劍之後：再加左臂垂著、左袖血濕）。雙淵紋的固定寫法是「the twin-abyss crest of the Red Abyss Palace, two dark whirlpools side by side in bronze thread」，第 12、17、21 集赤淵宮的人與物照這句寫。
+- 三個 look：`yuelan-crest`（第一劍之後：紗巾掉到頸上、臉全露、紅衣從左肩劃開到胸口、內裡的雙淵紋露出、兩臂都好、沒有藥箱）、`yuelan-crippled`（第二劍之後：再加左臂垂著、左袖血濕）、`yuelan-covered`（2026-10-06 新增：同 crippled，但右手把劃開的衣襟攏在胸前、紋看不見，只在指縫露一線銅線；燕迴圍住劍客之後到登船離岸）。雙淵紋的固定寫法是「the twin-abyss crest of the Red Abyss Palace, two dark whirlpools side by side in bronze thread」，第 12、17、21 集赤淵宮的人與物照這句寫。
 
 ### 第 7 集的兩個新聲音
 
@@ -206,7 +212,7 @@
 - 梵林長老：第 5 集盟堂上，梵林的位子是寂聞的空位，劇情要的就是這張空椅子，所以不補人。
 - 赤羽的藥童（第 7 集）：不建角色、不說話。prompt 固定寫「a boy of twelve in a plain russet-brown tunic, hair in two small knots, carrying a small cloth-wrapped bundle」（跟在赤羽身後；藥箱在赤羽肩上，不在他手上）。客院被劍客截下時他只發抖，劍客挑開的丹藥是從他的布包裡拿的；懸念丟空瓶那一鏡只拍一隻小手、瓶子與井口（`characters: []`）。他不能說話的另一個理由：沒有男聲可配。
 - 燕迴帶到外港的盟府守衛（第 7 集）：prompt 照第 1 集「alliance guards in white-and-gold uniforms holding spears」，不是 `alliance-guard`；他們圍住劍客、認出赤羽是貴客，台詞由燕迴說。
-- 赤羽登的船與水手（第 7 集）：prompt；船寫成一艘無旗的灰帆商船（a grey-sailed merchant junk flying no flag），不寫赤淵宮的紋。
+- 赤羽登的船與水手（第 7 集）：prompt；船寫成一艘無旗的褐帆商船（a two-masted southern merchant junk with patched ochre-brown matting sails, flying no flag），不寫赤淵宮的紋。**不用灰帆**（2026-10-06 改）：第 5 集的三宗運船、第 6 集姬無霜回鯨背嶼的小船都是灰帆，同一個碼頭再出現灰帆，觀眾會把赤羽跟鯨背嶼連在一起。
 - 梵林僧人、客院門口的盟兵（第 7 集）：照第 5、6 集，只寫 prompt。
 - 西嶺已逝的第三位隱士：不出場、不提名字。
 
@@ -220,7 +226,8 @@
 | liu-buhuo | `liu-wounded` | 3 | 前半：鐵釘穿過左肩之後，從鐵廬到回盟、在盟堂看見姬無霜的手背，都用這個。押解牌還掛在腰上，折牌的那一鏡也用它（牌在手上）。 |
 | liu-buhuo | `liu-defected` | 3、4、5 | 押解牌折斷之後的每一鏡：第 3 集懸念之後（如果還有鏡頭）、第 4 集姬無霜帳中、第 5 集盟堂上站在她身後。腰間沒有押解牌，左肩繃帶只在領口露一角。 |
 | zhuxu | 基本外觀 | 2、4 | 第 2 集全集（背著布包西行），以及第 4 集他回到齊雲山外、把火脊鐵藏進廢窯那一段。 |
-| zhuxu | `zhuxu-returned` | 4 | 從廢窯出來之後：背上已經沒有布包、一身路塵，被燕迴的追兵圍住、走上殿階跪交秘錄，一直到本集結束。樣鐵和秘錄都收在懷裡，要拿出來時寫在 prompt。 |
+| zhuxu | `zhuxu-returned` | 4 | 從廢窯出來之後：背上已經沒有布包、一身路塵，被燕迴的追兵圍住，到殿前廣場卸劍那一鏡（a05-s016）為止。樣鐵和秘錄都收在懷裡，要拿出來時寫在 prompt。 |
+| zhuxu | `zhuxu-disarmed` | 4 | 從卸劍後（a05-s017）到全集結束：同 `zhuxu-returned`，但左腰沒有劍，只剩深綠腰帶。搜身、走上殿階跪交秘錄、被玄門弟子押下都用這個。劍的去向只寫 prompt（a05-s017 劍躺在他腳前的霜上、a05-s030 一名追兵拿著）。 |
 | ji-wushuang | `wushuang-armed` | 5 | 只在第 5 集：盟堂准奏之後，她率幽都舊部登鯨背嶼那一段（照第 5 集分場表）。第 3 集盟堂與點兵、第 4 集營帳都用基本外觀；第 4 集帳中的弓與箭囊寫成架上的道具。盟堂跪請一律用基本外觀、不帶兵器。 |
 | yin-wusheng | `yin-cut-hair` | 5 | 第 5 集他在梵林寺禪房、跪在寂聞榻前以劍割下一截髮尾之後的每一鏡（照第 5 集分場表的禪房版）。割髮那一鏡本身用基本外觀，髮尾還是長的。之後的集數沿用，直到另有變化。 |
 | ji-wen | 基本外觀 | 5 | 冷開場、連夜赴鯨背嶼、走到海道上，到箭光射下之前。 |
@@ -234,15 +241,16 @@
 | ji-wushuang | 基本外觀 | 6 | 盟堂列席（代幽都舊部）、以手傷告退：不帶弓、不帶箭囊。手背的割傷只寫插鏡 prompt（〈連戲提醒〉第 14 條）。 |
 | ji-wushuang | `wushuang-armed` | 6 | 第 6 集不用（主編定案：主帳裡的弓與箭囊寫成架上道具，照第 4 集；燈下攤開繡布用基本外觀）。 |
 | sha-nu、wuming-jianke | 基本外觀 | 6 起 | 兩人只有基本外觀。影子淡只寫 prompt；白紗冠、半面具、白柄劍都寫死在外觀裡。 |
-| shen-guihe | `shen-bedridden` | 7 | 全集（本體昏臥書齋，沒有台詞）。化身受創那一刻本體咳血：唇角的血只寫插鏡 prompt（「a thread of dark blood at the corner of his colourless lips」），look 不改；包三錢替他擦。 |
+| shen-guihe | `shen-bedridden` | 7 | 全集（本體昏臥書齋，沒有台詞）。化身受創那一刻本體咳血：唇角的血只寫插鏡 prompt（「a thread of dark blood at the corner of his colourless lips」），look 不改；紗女替他擦，包三錢捧水（分場表 a04 場 2 第 1 點）。 |
 | ji-wen | `jiwen-sealed` | 7 | 全集（禪房）。推開滄瀾客那一掌也是這個 look：封功之身的一掌，沒有金色氣勁，寫在 motion。 |
 | yin-wusheng | `yin-cut-hair` | 7 | 全集。 |
-| ji-wushuang | 基本外觀 | 7 | 若入鏡：基本外觀；右手背的布條只寫插鏡 prompt（第 14 條）；弓與箭囊在架上。 |
+| ji-wushuang | — | 7 | 主編定：本集不入鏡（表頭留著）。第 8 集入鏡時照第 6 集：基本外觀；右手背的布條只寫插鏡 prompt（第 14 條）；弓與箭囊在架上。 |
 | canglan-ke | 基本外觀 | 7 | 全集（雪線、梵林寺禪房）。毛皮斗篷進了禪房也不脫——他剛下山；第 8 集要打鬥時再議要不要加不披斗篷的 look。引血的刀只寫 prompt。 |
 | yuelan-ke | 基本外觀 | 7 | 雪線、入盟、書齋送藥、客院，到外港被第一劍劃開紅衣之前：紗巾遮口鼻、藥箱在肩。 |
-| yuelan-ke | `yuelan-crest` | 7 | 外港：第一劍劃開紅衣、雙淵紋露出之後，到第二劍廢臂之前——揭穿的定格、詩號字卡、燕迴與洛青衍的反應鏡之間回拍他，都用這個。紗巾掉下來掛在頸上、臉全露、兩臂都好、沒有藥箱。 |
-| yuelan-ke | `yuelan-crippled` | 7 | 第二劍之後的每一鏡：左臂垂著、左袖血濕，不包紮；燕迴圍住劍客、他趁亂登船、船離岸。第 17 集起他在赤淵宮的樣子另加 look（冠回來、左臂藏在長袖裡）。 |
-| sha-nu、wuming-jianke | 基本外觀 | 7 | 仍只有基本外觀。劍客在外港若受傷（細綱：本體「因化身受創」咳血），傷只寫那幾鏡的 prompt；要是傷會留到之後的場（繃帶），先在 `cast.json` 加 look、跑 `header.mjs`，再寫幕。 |
+| yuelan-ke | `yuelan-crest` | 7 | 外港：第一劍劃開紅衣、雙淵紋露出之後，到第二劍廢臂之前——揭穿的定格、詩號字卡、劍客的反應鏡之間回拍他，都用這個（燕迴第二劍之後才到，洛青衍不在外港）。紗巾掉下來掛在頸上、臉全露、兩臂都好、沒有藥箱。 |
+| yuelan-ke | `yuelan-crippled` | 7 | 第二劍之後的每一鏡：左臂垂著、左袖血濕，不包紮；到 a04 場 1 第 1 點那一格插鏡（a04-s001：守衛圍上來之前，他用右手把衣襟攏上）為止。a03 場 4 最後一鏡燕迴喊「住手」時還在碼頭根部；守衛圍住劍客的全景（a04 場 1 第 2 點）已經是 `yuelan-covered`。 |
+| yuelan-ke | `yuelan-covered` | 7 | 2026-10-06 新增。a04 場 1 第 1 點（a04-s001，右手攏衣的插鏡）之後拍到他的每一鏡（第 2 點守衛圍成半圈的全景起）：同 crippled，但衣襟被右手攏在胸前、雙淵紋看不見，只在指縫露一線銅線；趁亂登船、船舷欠身、船離岸。燕迴從此看不到紋（盟堂上他說「衣裡，我也沒看見」）。第 17 集起他在赤淵宮的樣子另加 look（冠回來、左臂藏在長袖裡）。 |
+| sha-nu、wuming-jianke | 基本外觀 | 7 | 仍只有基本外觀。劍客在外港挨了赤羽一指（細綱：本體「因化身受創」咳血）：白袍左胸一個指尖大的焦痕只寫 prompt——外港這一場（a03 場 4 第 21 點起到 a04 場 1 結束）正面拍到他左胸的鏡頭都寫；a04 場 2 起改寫他的左手平按在左胸上蓋住，不寫焦痕、不寫繃帶、不加 look（分場表第二節）。 |
 
 ## 連戲提醒
 
@@ -256,7 +264,7 @@
 4. **包三錢的銅錢**：第 1 集結尾掉了一枚（a05-s089），但他的基本外觀和兩個 look 都寫三枚。第 2 集開頭最好給一個插鏡，讓他把掉的那枚撿回、穿回紅繩上（照他「數一數，心裡踏實」的性子），之後三枚就都對得上了。如果第 2 集想讓那枚銅錢留在長老房裡另作伏筆，就要在 `cast.json` 另加兩枚銅錢的 look，不能只改 prompt。
 5. **柳不活的酒葫蘆**：第 3 集冷開場他「把一壺酒放在砧邊」。建議那一壺寫成另一只陶酒壺，腰間那個封口小葫蘆始終不開、不離身，跟基本外觀和兩個 look 一致。
 6. **寂聞的念珠**：第 1 集他捏裂了一顆（a05-s067）。三個外觀都沒提，插鏡可以拍那顆裂珠。兩個 look 都保留念珠，這是他跟沈歸鶴之間的羈絆物件。
-7. **竹虛的布包**：第 2 集是西行的行囊。第 4 集他先把整塊火脊鐵藏進廢窯，所以藏鐵之前用基本外觀，之後用 `zhuxu-returned`。被燕迴收走、送進庫房的那一小塊樣鐵，只在插鏡 prompt 裡出現。
+7. **竹虛的布包**：第 2 集是西行的行囊。第 4 集他先把整塊火脊鐵藏進廢窯，所以藏鐵之前用基本外觀，之後用 `zhuxu-returned`；殿前廣場卸劍之後換 `zhuxu-disarmed`（見上表）。被燕迴收走、送進庫房的那一小塊樣鐵，只在插鏡 prompt 裡出現。
 8. **玄門長老**：第 1 集已死。第 3 集柳不活推算、第 4 集受審揭開死訊時，如果要拍回憶，用 `xuanmen-elder` 的基本外觀，或拍棋盤、窗上白霜等第 1 集已經有的物件。第 1 集的 `source` 只能切同一支片裡的鏡頭，所以不能跨集取用素材。
 9. **洛青衍**：第 1 集結束時他留在外港的扶瀾商船上，第 2–5 集不出場，第 6 集才抵盟。這四集不要讓他入鏡。
 10. **聶孤鐵的鍛鉗**：基本外觀寫的是「Holds long iron forge tongs」，所以第 3 集一律選 `nie-nail-wound`，否則每一鏡都會被補上鍛鉗。第 1 集冷開場（鑄箭當日）的回憶照舊用基本外觀。
@@ -274,8 +282,8 @@
 18. **第 6 集留下的狀態（第 7 集要守）**：照 `ep6/beats.md` 第十一節〈本集結束時交給第 7 集〉。本體 `shen-bedridden`、鶴冠與國書在書案上、紙扇在枕邊矮几、染血的外袍在榻底；**青瓷藥瓶空了、在包三錢懷裡**（第 6 集主編定案：他撿到、看見、不知道來歷）——赤羽送火脊丹時，包三錢知道本體曾靠一種藥撐著、現在沒有了，紗女對「有沒有第二瓶」只說「別問」；傷的來歷（寒毒、火脊鐵、竹虛）仍沒有人說出口，本集也不說。寂聞 `jiwen-sealed`、殷無聲 `yin-cut-hair`、柳不活 `liu-defected`（若入鏡）沿用。
 19. **第 7 集的三張遮著的臉**：紗女（白紗冠遮上半臉，露嘴與下巴）、無名劍客（白半面具遮上半臉，素白鐵冠）、赤羽（赤褐紗巾遮口鼻，露眼與眉，沒有冠）。三個人遮的不是同一半；prompt 寫到任何一個都照 `cast.json` 的句子，不要只寫「veiled」「masked」。赤羽與無名劍客同框（客院截藥童、外港）時，一個遮下、一個遮上，剛好分得開。
 20. **赤羽與燕迴不要混**：兩人都帶紅。燕迴是鏽褐與黑、左袖撕掉、裂銅冠、紅纓刀；赤羽是暗赤紅素袍、沒有冠、紗巾、藥箱、兩袖完整。外港一場兩人同框，燕迴在守衛那一側，赤羽在跳板那一側（軸線由分場表第四節定，定了就不換）。
-21. **雙淵紋**：固定句「the twin-abyss crest of the Red Abyss Palace, two dark whirlpools side by side in bronze thread」；第 7 集只在 `yuelan-crest`、`yuelan-crippled` 與「紅衣碎片」插鏡寫（細綱 evidence：「赤羽紅衣內的雙淵紋碎片」——劍客手裡那一角布，`characters: []`）。三宗長老看不懂這個紋、也不信；叫得出「赤淵宮」的只有劍客與紗女。
-22. **赤羽的藥與寂聞的湯藥是兩件事**：赤羽送到書齋的是「火脊丹」，寫成「a small red lacquered pill case holding a single dark-red pill」，被劍客劍尖挑開（挑開後的寫法由分場表第九節定）；藥童換進禪房的是另一種藥，碗照第 6 集的句子「a plain black earthenware bowl of dark herbal broth」，加「a thin film of red floating on the dark broth」；丟進井裡的空瓶寫成「a small plain brown glazed bottle」——**不是**第 6 集的青瓷藥瓶（那只空瓶在包三錢懷裡；本集若入畫照第 6 集的句子「a small round celadon medicine bottle with a cork stopper」）。
+21. **雙淵紋**：固定句「the twin-abyss crest of the Red Abyss Palace, two dark whirlpools side by side in bronze thread」；第 7 集只在 `yuelan-crest`、`yuelan-crippled`、「紅衣碎片」插鏡（細綱 evidence：「赤羽紅衣內的雙淵紋碎片」——劍客手裡那一角布，`characters: []`）與外港幾格出招插鏡（a03 場 4 第 11、13、26 點，`characters` 為空，衣服與紋寫在 prompt）寫；`yuelan-covered` 不寫紋（衣襟攏上了，燕迴看不到）。三宗長老看不懂這個紋、也不信；叫得出「赤淵宮」的只有劍客與紗女。
+22. **赤羽的藥與寂聞的湯藥是兩件事**：赤羽送到書齋的是「火脊丹」，寫成「a small red lacquered pill case holding a single glossy crimson pill the size of a longan seed, flecked with fine gold」（2026-10-06 改：原本的 single dark-red pill 跟竹虛那瓶藥的 small dark-red pill 幾乎一樣，觀眾會當成同一種藥；火脊丹故意比它大、亮、帶金點），被劍客劍尖挑開（挑開後的寫法由分場表第九節定）；藥童換進禪房的是另一種藥，碗照第 6 集的句子「a plain black earthenware bowl of dark herbal broth」，加「a thin film of red floating on the dark broth」；丟進井裡的空瓶寫成「a small plain brown glazed bottle」——**不是**第 6 集的青瓷藥瓶（那只空瓶在包三錢懷裡；本集若入畫照第 6 集的句子「a small round celadon medicine bottle with a cork stopper」）。
 23. **本體與化身的同框（第 7 集的場）**：紗女與包三錢在榻前決定要不要服藥，`characters` 是 `sha-nu`、`bao-sanqian`、`shen-guihe`（配 `character_looks: {"shen-guihe": "shen-bedridden"}`）三個就滿了；赤羽若在同一鏡，拆成兩鏡，或把本體拍成榻上的局部（插鏡不列角色）。化身受創、本體咳血是兩地同一刻：外港一鏡、書齋一鏡交叉剪，不要把化身與本體放進同一鏡去「感應」。本體仍沒有台詞；他要說的話仍由紗女（盟內）或劍客（江湖）說。
 24. **影子淡（第 7 集）**：外港是日光下的碼頭，劍客在石面上的影子每一鏡都看得見，凡是拍到地面就寫「his shadow on the stone slightly fainter than it should be」；紗女在書齋燭光下同樣。look 與設定圖都不寫（第 12 條）。
 25. **三宗不知道分魂（第 7 集）**：長老、執事、燕迴、洛青衍、赤羽、滄瀾客聽得見的台詞裡沒有「分魂」「元神」「化身」「影子」；赤羽懂（他的藥是衝著元神來的），但他只說「先生的病」「舊傷」。盟內記劍客「無故傷客」用的稱呼是「先生的人」。滄瀾客對寂聞只談封功與寒潭，不談沈歸鶴。
