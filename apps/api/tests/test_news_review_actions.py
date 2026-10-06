@@ -3,7 +3,7 @@ parks a candidate that stopped before its five-locale article existed."""
 
 from __future__ import annotations
 
-from datetime import timedelta
+from datetime import UTC, datetime, timedelta
 from typing import Any
 from unittest.mock import AsyncMock, Mock
 from uuid import uuid4
@@ -39,6 +39,7 @@ from tests.test_news_pipeline import (
     SLUG,
     TODAY,
     database,
+    judge_row,
     news_document,
     seed_candidate,
     seed_published_news,
@@ -409,6 +410,144 @@ async def test_a_confirmed_draft_that_failed_can_be_confirmed_again_and_retry_fo
     await engine.dispose()
     assert (again.status, again.human_decision) == ("discovered", "publish")
     assert (retried.status, retried.human_decision) == ("discovered", None)
+
+
+async def closed_by_the_judge(
+    session: AsyncSession, status: str, verdict: str, stage: str, hold: str
+) -> NewsCandidate:
+    """A story as the review judge leaves it when it closes one: the hold's code kept."""
+
+    candidate = await seed_candidate(session, status=status)
+    candidate.error_code = hold
+    candidate.error_detail = "Why the pipeline stopped here."
+    candidate.evidence_hash = "a" * 64
+    candidate.judge_decision, candidate.judge_hold = verdict, hold
+    session.add(judge_row(candidate, verdict, stage, hold))
+    await session.commit()
+    return candidate
+
+
+@pytest.mark.parametrize(
+    ("status", "verdict", "stage", "hold", "restored"),
+    [
+        ("rejected", "reject", "zh_draft", ZH_DRAFT_READY, "manual_review"),
+        ("rejected", "reject", "final", "news_jev_final_hold", "manual_review"),
+        ("duplicate", "duplicate", "duplicate", DUPLICATE_UNCERTAIN, "manual_review"),
+        ("rejected", "reject", "redraft", "news_verification_failed", "needs_redraft"),
+    ],
+)
+@pytest.mark.asyncio
+async def test_the_owner_takes_back_a_story_the_judge_closed_into_the_list_it_was_in(
+    status: str, verdict: str, stage: str, hold: str, restored: str
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await closed_by_the_judge(session, status, verdict, stage, hold)
+
+        detail = await service.reopen_candidate(session, EDITOR, candidate.id, ACTION)
+        row = await session.get(NewsCandidate, candidate.id)
+        signed = list(
+            await session.scalars(
+                select(NewsAssessment.id).where(NewsAssessment.assessment_type == "human")
+            )
+        )
+        audits = list(await session.scalars(select(AdminAuditLog)))
+    await engine.dispose()
+
+    assert row is not None
+    assert (row.status, row.error_code, row.error_detail) == (
+        restored,
+        hold,
+        "Why the pipeline stopped here.",
+    )
+    # The judge's answer to this hold stays, so the hold is not put to it again.
+    assert (row.judge_decision, row.judge_hold) == ("manual", hold)
+    # Taking a story back decides nothing yet: no decision is recorded for the owner.
+    assert (row.human_decision, row.human_reason, row.human_major_error) == (None, None, False)
+    assert signed == []
+    assert row.retry_count == 0
+    assert (detail.status, detail.judge_decision) == (restored, "manual")
+    [audit] = audits
+    assert (audit.action, audit.actor_user_id) == ("news_candidate_reopened_by_owner", EDITOR.id)
+    assert audit.metadata_json == {
+        "system_actor": False,
+        "reason": "Checked by hand",
+        "closed_as": status,
+        "restored_status": restored,
+        "hold": hold,
+    }
+
+
+@pytest.mark.asyncio
+async def test_the_list_a_reopened_story_returns_to_is_the_one_of_the_judges_last_word() -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        # Rewritten on the judge's directions once, then rejected as a verified draft.
+        candidate = await closed_by_the_judge(
+            session, "rejected", "reject", "zh_draft", ZH_DRAFT_READY
+        )
+        earlier = judge_row(candidate, "revise", "redraft", "news_verification_failed")
+        earlier.created_at = datetime.now(UTC) - timedelta(hours=3)
+        session.add(earlier)
+        await session.commit()
+
+        detail = await service.reopen_candidate(session, EDITOR, candidate.id, ACTION)
+    await engine.dispose()
+    assert (detail.status, detail.error_code) == ("manual_review", ZH_DRAFT_READY)
+
+
+@pytest.mark.parametrize(
+    ("status", "judge_decision", "human_decision"),
+    [
+        # A person closed it, before or after the judge looked.
+        ("rejected", None, "reject"),
+        ("rejected", "reject", "reject"),
+        ("rejected", "duplicate", "reject"),
+        ("rejected", "manual", "reject"),
+        # Closed by the pipeline itself: Jev's duplicate verdict, the writer's "not news".
+        ("duplicate", None, None),
+        ("rejected", None, None),
+        ("rejected", "manual", None),
+        ("rejected", "publish", None),
+        # Already back with the owner, or never closed.
+        ("manual_review", "manual", None),
+        ("needs_redraft", "manual", None),
+        ("manual_review", "reject", None),
+        ("published", "publish", None),
+        ("discovered", "publish", None),
+    ],
+)
+@pytest.mark.asyncio
+async def test_only_a_story_the_judge_closed_and_no_person_touched_can_be_taken_back(
+    status: str, judge_decision: str | None, human_decision: str | None
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await closed_by_the_judge(
+            session, status, "reject", "zh_draft", ZH_DRAFT_READY
+        )
+        candidate.judge_decision = judge_decision
+        candidate.human_decision = human_decision
+        await session.commit()
+        candidate_id = candidate.id
+        with pytest.raises(AppError) as refused:
+            await service.reopen_candidate(session, EDITOR, candidate_id, ACTION)
+        await session.rollback()
+        row = await session.get(NewsCandidate, candidate_id)
+        actions = list(await session.scalars(select(AdminAuditLog.action)))
+        with pytest.raises(AppError) as missing:
+            await service.reopen_candidate(session, EDITOR, uuid4(), ACTION)
+    await engine.dispose()
+
+    assert (refused.value.status, refused.value.code) == (409, "news_candidate_not_reopenable")
+    assert row is not None
+    assert (row.status, row.judge_decision, row.human_decision) == (
+        status,
+        judge_decision,
+        human_decision,
+    )
+    assert actions == []
+    assert missing.value.code == "news_candidate_not_found"
 
 
 def _settings_write(**changes: object) -> SettingsWrite:
