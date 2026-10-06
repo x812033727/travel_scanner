@@ -15,6 +15,7 @@ import { runCaptions } from "../core/stages.mjs";
 import { buildTimeline, SAMPLE_RATE, speechHash, visualHash } from "../core/timeline.mjs";
 import { sourceHashes } from "../core/translations.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "./checks.mjs";
+import { keptPicturesWarning, WARNING_PICTURE_IDS } from "./cli.mjs";
 import { jpegBytes } from "./test-images.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
 
@@ -379,7 +380,19 @@ test("a compilation missing a locale's captions in one episode fails its caption
   assert.match(captions.detail, /ja: no caption file, 3 episodes have none/);
 });
 
-test("illustrated slides are measured on their cadence: a picture held too long or too few pictures fail the pace item; a picture kept with the judge's remarks warns on the assemble item", async () => {
+test("the warning for pictures kept with the judge's remarks is one line: their number and at most five ids, as a review's summary names them", async () => {
+  const { SUMMARY_PICTURE_IDS } = await import("../review/sync.mjs");
+  assert.equal(WARNING_PICTURE_IDS, SUMMARY_PICTURE_IDS, "the report names as many as the summary beside it");
+  const line = (count, named) => `${count} kept with the judge's remarks after the prompt fixes (${named}); the owner decides on the cut, and keyframes/manifest.json has what the judge said of each`;
+  assert.equal(keptPicturesWarning(["desk"]), line("1 picture", "desk"));
+  assert.equal(keptPicturesWarning(["a", "b", "c", "d", "e"]), line("5 pictures", "a, b, c, d, e"));
+  assert.equal(keptPicturesWarning(["a", "b", "c", "d", "e", "f"]), line("6 pictures", "a, b, c, d, e and 1 more"));
+  const many = Array.from({ length: 200 }, (_, index) => `s${index + 1}`);
+  assert.equal(keptPicturesWarning(many), line("200 pictures", "s1, s2, s3, s4, s5 and 195 more"));
+  assert.ok(keptPicturesWarning(many).length < 200, "two hundred kept pictures cost the report one short line");
+});
+
+test("illustrated slides are measured on their cadence: a picture held too long or too few pictures fail the pace item; pictures kept with the judge's remarks are one warning on the assemble item", async () => {
   const { illustratedFixture } = await import("../core/fixtures/load.mjs");
   const { keyframesHash, lookHash, mixHash, sfxHash } = await import("../core/drama.mjs");
   const run = async (seconds, { accepted = {} } = {}) => {
@@ -419,14 +432,24 @@ test("illustrated slides are measured on their cadence: a picture held too long 
   assert.equal(good.assemble.warnings, undefined);
   assert.equal(good.pace.ok, true, good.pace.detail);
   // Pictures kept with the judge's remarks (keyframes --accept-best) ride on the assemble item as
-  // warnings, in shot order: the item passes, the cut is of them, and the owner decides on the cut.
+  // one warning that names them in shot order: the item passes, the cut is of them, and the owner
+  // decides on the cut. What the judge said of each stays out of the report: it travels in the
+  // final review's payload, which the server limits, and that review lists the remarks itself
+  // (review/sync.mjs accepted_pictures).
   const kept = await run(shotLines, { accepted: { race: ["generated: glossy finish"], desk: ["awkward: the hand", "details: no cup"] } });
   assert.equal(kept.assemble.ok, true, kept.assemble.detail);
-  assert.deepEqual(kept.assemble.warnings, [
-    "desk: kept with the judge's remarks after the prompt fixes (awkward: the hand; details: no cup); the owner decides on the cut",
-    "race: kept with the judge's remarks after the prompt fixes (generated: glossy finish); the owner decides on the cut",
-  ]);
+  assert.deepEqual(kept.assemble.warnings, ["2 pictures kept with the judge's remarks after the prompt fixes (desk, race); the owner decides on the cut, and keyframes/manifest.json has what the judge said of each"]);
   assert.equal(kept.pace.ok, true);
+  // Every picture kept, each with nine remarks of 300 characters: still the one line, and none of
+  // the 13,500 characters the judge wrote.
+  const shotIds = illustratedFixture().scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
+  const remarks = (id) => Array.from({ length: 9 }, (_, index) => `${id} remark ${index + 1}: ${"the hand bends the wrong way; ".repeat(12)}`.slice(0, 300));
+  const every = await run(shotLines, { accepted: Object.fromEntries(shotIds.map((id) => [id, remarks(id)])) });
+  assert.deepEqual(shotIds, ["podium", "desk", "clock", "race", "door"]);
+  assert.equal(every.assemble.ok, true, every.assemble.detail);
+  assert.deepEqual(every.assemble.warnings, [keptPicturesWarning(shotIds)]);
+  assert.match(every.assemble.warnings[0], /^5 pictures kept with the judge's remarks after the prompt fixes \(podium, desk, clock, race, door\); /);
+  assert.ok(!JSON.stringify(Object.values(every)).includes("the hand bends"), "no remark of the judge's is anywhere in the report");
   assert.match(good.pace.detail, /^\d+ pictures, the longest [\d.]+ s, a new one every [\d.]+ s on average, \d+% of the runtime illustrated \(limits: 8 s, 50%\)$/);
   assert.match(good.disclosure.detail, /^no disclosure needed: illustrated slides: stylised tech-story pictures, a licensed music bed/);
   const slow = await run({ ...shotLines, a2pd: 12, a5nm: 9, a6nm: 9, a7nm: 9 });

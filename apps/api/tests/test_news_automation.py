@@ -1419,8 +1419,19 @@ async def test_a_report_linking_to_a_waiting_story_becomes_its_evidence() -> Non
         vertical="ai",
         enabled=True,
     )
+    wire = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
+        name="Wire",
+        url="https://wire.example/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+    )
     published = (datetime.now(UTC) - timedelta(hours=3)).strftime("%a, %d %b %Y %H:%M:%S GMT")
     announcement = "https://official.example/index/new-model"
+    # Every request with the hosts the scanner allowed for it.
+    requests: list[tuple[str, set[str]]] = []
 
     def feed(link: str, title: str, summary: str = "") -> bytes:
         return (
@@ -1430,11 +1441,15 @@ async def test_a_report_linking_to_a_waiting_story_becomes_its_evidence() -> Non
         ).encode()
 
     class Fetcher:
-        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+        async def fetch(
+            self, url: str, *, allowed_hosts: set[str], **_kwargs: object
+        ) -> FetchResult:
+            requests.append((url, set(allowed_hosts)))
             listings = {
                 official.url: feed(announcement, "Introducing new model", "Meet new model."),
                 press.url: feed("https://press.example/story", "The new model, explained"),
                 gossip.url: feed("https://gossip.example/rumour", "Rumour about the new model"),
+                wire.url: feed("https://wire.example/report", "Wire: the new model ships"),
             }
             if url in listings:
                 return FetchResult(
@@ -1444,10 +1459,12 @@ async def test_a_report_linking_to_a_waiting_story_becomes_its_evidence() -> Non
                 request = httpx.Request("GET", url)
                 response = httpx.Response(403, request=request)
                 raise httpx.HTTPStatusError("refused", request=request, response=response)
-            # Both reports link to the announcement, with a tracking query and a slash.
+            # Every report links to the announcement, with a tracking query and a slash, and
+            # to a site that is not an enabled source.
             body = (
                 f"<html><main>{url}: {'A long report about the new model. ' * 20}"
-                f'<a href="{announcement}/?utm_source=feed">the announcement</a></main></html>'
+                f'<a href="{announcement}/?utm_source=feed">the announcement</a>'
+                '<a href="https://elsewhere.example/copy">a copy</a></main></html>'
             )
             return FetchResult(
                 url=url, status_code=200, content_type="text/html", body=body.encode()
@@ -1463,7 +1480,7 @@ async def test_a_report_linking_to_a_waiting_story_becomes_its_evidence() -> Non
 
     async with factory() as session:
         session.add(NewsAutomationSettings(id=1, enabled=True))
-        session.add_all([official, press, gossip])
+        session.add_all([official, press, gossip, wire])
         await session.commit()
         await scan_source(session, official.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
         lead = await session.scalar(
@@ -1482,6 +1499,29 @@ async def test_a_report_linking_to_a_waiting_story_becomes_its_evidence() -> Non
         lead_evidence = list(
             await session.scalars(select(NewsEvidence).where(NewsEvidence.candidate_id == lead.id))
         )
+        queued_after_attach = list(queued)
+        candidates_after_attach = len(list(await session.scalars(select(NewsCandidate))))
+
+        # Attaching is idempotent: the next scan of the same feed finds the report already
+        # seen, so it neither attaches it again nor files it nor queues anything.
+        rescanned = await scan_source(session, press.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        lead_evidence_again = list(
+            await session.scalars(select(NewsEvidence).where(NewsEvidence.candidate_id == lead.id))
+        )
+        candidates_again = len(list(await session.scalars(select(NewsCandidate))))
+        queued_again = list(queued)
+
+        # Only a story still in needs_evidence takes a page. Once the lead is on its way to
+        # a draft, a later report linking to it is its own candidate (attaching a second site
+        # to a drafting story is left to 2026-10-06-match-news-evidence-by-event).
+        await scan_source(session, wire.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(lead)
+        later = await session.scalar(
+            select(NewsCandidate).where(NewsCandidate.canonical_url == "https://wire.example/report")
+        )
+        lead_evidence_last = list(
+            await session.scalars(select(NewsEvidence).where(NewsEvidence.candidate_id == lead.id))
+        )
     assert attached == 1
     assert lead.status == "discovered" and lead.error_code is None
     assert sorted((row.role, row.url) for row in lead_evidence) == [
@@ -1491,7 +1531,27 @@ async def test_a_report_linking_to_a_waiting_story_becomes_its_evidence() -> Non
     # The report does not become a second story, and only the waiting one is queued.
     assert report is not None and report.status == "duplicate"
     assert report.error_code == "news_attached_as_evidence"
-    assert queued[-1] == lead.id and report.id not in queued
+    assert queued_after_attach[-1] == lead.id and report.id not in queued
+    assert rescanned == 0
+    assert sorted(row.url for row in lead_evidence_again) == sorted(
+        row.url for row in lead_evidence
+    )
+    assert candidates_again == candidates_after_attach and queued_again == queued_after_attach
+    assert later is not None and later.status == "discovered" and later.error_code is None
+    assert sorted(row.url for row in lead_evidence_last) == sorted(
+        row.url for row in lead_evidence
+    )
+    assert queued == [*queued_after_attach, later.id], "the lead is not queued a second time"
+    # The allow-list holds for the attached page as for any other: every article and linked
+    # page was asked for with the enabled sources' hosts only, and the link to a site that is
+    # no source was never requested at all.
+    enabled_hosts = {"official.example", "press.example", "gossip.example", "wire.example"}
+    listing_urls = {official.url, press.url, gossip.url, wire.url}
+    assert all(
+        allowed == enabled_hosts for url, allowed in requests if url not in listing_urls
+    )
+    assert ("https://press.example/story", enabled_hosts) in requests
+    assert not any(url.startswith("https://elsewhere.example") for url, _ in requests)
     await engine.dispose()
 
 

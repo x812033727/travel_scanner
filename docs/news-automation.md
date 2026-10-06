@@ -48,6 +48,16 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    and is queued, and the report itself is closed as `duplicate`
    (`news_attached_as_evidence`) instead of filing the same story twice. This applies to
    any candidate in `needs_evidence`, including one that had only `lead_only` pages.
+   Only a page from an enabled `evidence` source is attached, fetched under the same host
+   allow-list and SSRF checks as every other page; a `lead_only` site's page never is. It
+   is attached once: the next scan finds the report already seen and does nothing, and a
+   later report linking to a story that has left `needs_evidence` files its own candidate.
+   Since the owner's decisions of 2026-09-25 (one evidence page drafts; a first-party page
+   publishes on its own) and 2026-09-28 (so does a page from a trusted newsroom), a
+   first-party candidate no longer waits for a second site, so nothing attaches one to a
+   candidate already drafting. Matching a page to a story by event rather than by link
+   (through Jev) is not built; both wait on an owner decision (task
+   `2026-10-06-match-news-evidence-by-event`).
    A source with `evidence_from_feed_summary` (the Claude Platform release notes, whose
    entries all link to anchors on one page) is not fetched page by page: each entry's feed
    summary is its evidence, its anchor URL the canonical URL, and revalidation and
@@ -56,7 +66,14 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    A source whose dated entries of the last week keep failing for more than six hours is
    reported `stuck` instead of `partial` (the note names those URLs first); `/admin/news`
    lists stuck sources first under a warning, so a publisher that starts refusing the
-   scanner is noticed the same day.
+   scanner is noticed the same day. The `/admin` dashboard's News card counts them too
+   (`news_sources_stuck` in the operations pending counts), in red when there are any and
+   linked to `/admin/news?tab=sources`; a stuck source is an incident, not a review, so it
+   stays out of the Pending total. A switched-off source keeps its last status but is not
+   scanned, so neither count includes it. The six hours are `STUCK_AFTER` in
+   `scanner.py`, a code constant rather than a per-source setting. Nothing tells the owner
+   outside the admin yet: the only senders (community SMTP and LINE push) write to users,
+   and a daily summary waits on the owner choosing a channel.
    **Old entries.** Each source has a freshness window, `max_entry_age_hours` in its config
    (72 hours unless set; `0` or `null` switches it off, and a value that is not a number
    keeps 72). A source's **first scan** (`last_scanned_at` empty) records every listed

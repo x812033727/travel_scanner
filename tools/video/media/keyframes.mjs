@@ -266,9 +266,15 @@ async function drawContactSheets(ctx, { doc, workdir, manifest, drawn, channel }
  * cut goes to the owner for a manual review, with the kept pictures listed. A shot with no
  * picture (every seed refused) cannot be kept: it still needs a prompt. Exit 1 while any shot
  * still waits for one.
+ *
+ * For an illustrated video alone, by the predicate the two readers of a kept picture use
+ * (review/sync.mjs acceptedPicturesOf, automation/flow.mjs acceptBestPictures): they send no
+ * other video's cut for the manual review, so a drama's shot kept here would leave needs_review
+ * and its storyboard and cut could be approved on arrival with nobody asked to look at it.
  */
 async function acceptBest(ctx, { doc, workdir, hash, bound, wanted, channel }) {
   const { EXIT } = ctx;
+  if (!illustrated(doc)) throw new UsageError(`--accept-best keeps pictures of an illustrated video alone (still "shot" scenes outside a drama, docs/videos/ILLUSTRATED.md): only an illustrated video's cut is sent for the owner's manual review, and ${doc.slug} is not one; fix the prompts of its shots instead`);
   const manifest = readJson(manifestFile(workdir), null);
   if (!manifest?.shots) throw new UsageError("keyframes/manifest.json is missing; run keyframes first");
   if (manifest.look_hash !== hash || !bound(manifest)) throw new UsageError("keyframes/manifest.json was drawn for another look or other pictures; run keyframes first");

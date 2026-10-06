@@ -36,8 +36,11 @@ const REPORT_JOB = {
   next_week: [slot("11111111-1111-4111-8111-111111111111", "2026-10-06", "19:30", { status: "planned", topic_slug: "shorts-self-check", line: "lab" })],
 };
 
-/** The site `auto` reads: the tutorials' settings, the Shorts' settings and jobs, the models. */
-function fakeSite({ settings = {}, shorts = SHORTS_SETTINGS, jobs = [], answers = {}, library = [], refusePlan = null } = {}) {
+/**
+ * The site `auto` reads: the tutorials' settings, the Shorts' settings and jobs, the models. A run
+ * `lose` names is counted, then answered as the web route's 504 when its answer was lost.
+ */
+function fakeSite({ settings = {}, shorts = SHORTS_SETTINGS, jobs = [], answers = {}, library = [], refusePlan = null, lose = () => false } = {}) {
   const calls = { all: [], run: [], plan: [], topics: [], report: [], start: [], videos: [] };
   const queue = [...jobs];
   const fetchImpl = async (url, init = {}) => {
@@ -54,6 +57,7 @@ function fakeSite({ settings = {}, shorts = SHORTS_SETTINGS, jobs = [], answers 
     if (pathname === "/api/video/automation/shorts/next") return Response.json(queue.shift() ?? { kind: null, holds: ["沒有事"] });
     if (pathname === "/api/video/automation/run") {
       calls.run.push(body);
+      if (lose(body, calls)) return Response.json({ code: "video_ai_run_uncertain", detail: "no answer within the deadline" }, { status: 504 });
       const reply = answers[`${body.stage}:${body.variant}`];
       const value = typeof reply === "function" ? reply(body, calls) : reply;
       return Response.json({ text: typeof value === "string" ? value : JSON.stringify(value ?? {}), provider: "claude_code", model: "claude-planner", input_tokens: 10, output_tokens: 5, usage: { tokens: 15, token_budget: 20_000_000 } });
@@ -98,6 +102,9 @@ function context(box, site, extra = {}) {
   };
   return { ctx, out };
 }
+
+const at = (hours) => () => new Date(NOW.getTime() + hours * 3600_000);
+const shortsState = (box) => JSON.parse(readFileSync(path.join(box.work, SHORTS_DIR, SHORTS_STATE), "utf8"));
 
 // --- the pieces ------------------------------------------------------------------------------------
 
@@ -260,6 +267,104 @@ test("new topics are written back, and a brief that fails twice waits half a day
   await main(["auto"], third.ctx);
   assert.equal(empty.calls.run.length, asked, "no model is asked while the brief waits");
   assert.equal(third.out.stdout, "automatic drafts are off in the settings on /admin/videos; nothing to do\n");
+});
+
+// --- a planner answer lost on the way (client.mjs RUN_UNCERTAIN) ---------------------------------
+
+test("a plan whose answer was lost is not asked again that day: an empty plan is recorded instead, and the next day's is a new call", async () => {
+  const box = sandbox();
+  mkdirSync(path.join(box.work, SHORTS_DIR), { recursive: true });
+  const old = { kind: "plan", variant: "shorts-plan", at: "2026-09-14T01:00:00.000Z", why: "HTTP 504" };
+  writeFileSync(path.join(box.work, SHORTS_DIR, SHORTS_STATE), JSON.stringify({ failures: {}, holds: {}, lost: { "shorts-plan-2026-09-14": old } }));
+  let lose = true;
+  const answers = { "planner:shorts-plan": { items: [{ slot_id: PLAN_JOB.open_slots[0].id, topic_slug: "shorts-self-check" }] } };
+  const site = fakeSite({ settings: { enabled: false }, jobs: Array(3).fill({ kind: "plan", holds: [], plan: PLAN_JOB }), answers, lose: (body) => lose && body.variant === "shorts-plan" });
+  const one = context(box, site);
+  await main(["auto"], one.ctx);
+  assert.match(one.out.stdout, /^shorts: the plan shorts-plan-2026-10-05 may have run on the server without its answer reaching the worker \(HTTP 504: no answer within the deadline\); it is not asked again; an empty plan was recorded, so no plan is asked for half a day, and the next day's plan is a new call\n/);
+  assert.equal(site.calls.run.length, 1, "sent once: the client does not send it again");
+  assert.deepEqual(site.calls.plan, [{ items: [] }], "so the server names no plan for half a day and the other Shorts jobs go on");
+  const { lost, failures } = shortsState(box);
+  assert.deepEqual(lost, { "shorts-plan-2026-10-05": { kind: "plan", variant: "shorts-plan", at: NOW.toISOString(), why: "HTTP 504: no answer within the deadline" } }, "kept under its slug; one from three weeks ago is let go");
+  assert.deepEqual(failures, {}, "a lost answer is not an unusable one");
+
+  // Thirteen hours on it is still the 5th in Taipei, and the server names a plan again.
+  const two = context(box, site, { now: at(13) });
+  await main(["auto"], two.ctx);
+  assert.equal(site.calls.run.length, 1, "nor does the next round");
+  assert.match(two.out.stdout, /^shorts: the plan shorts-plan-2026-10-05 is not asked again: its answer was lost at 2026-10-05T01:00:00\.000Z \(HTTP 504: no answer within the deadline\) and the model may have run; an empty plan was recorded/);
+  assert.deepEqual(site.calls.plan, [{ items: [] }, { items: [] }]);
+
+  lose = false;
+  const three = context(box, site, { now: at(24) });
+  await main(["auto"], three.ctx);
+  assert.deepEqual(site.calls.run.map((call) => call.slug), ["shorts-plan-2026-10-05", "shorts-plan-2026-10-06"], "the next day's plan is a new call");
+  assert.match(three.out.stdout, /^shorts: planned 1 of 3 open slots/);
+});
+
+test("a brief whose answer was lost waits half a day and is not asked again that day, the second try's included", async () => {
+  const box = sandbox();
+  const job = { lines: ["lab"], weekly_quota: { lab: 5 }, have: 3, want: 10, by_line: { lab: 3 }, ideas: [], existing: [] };
+  let lose = true;
+  // The first try answers something unusable; the second, told why, is the one whose answer is lost.
+  const site = fakeSite({ settings: { enabled: false }, jobs: Array(4).fill({ kind: "brief", holds: [], brief: job }), answers: { "planner:shorts-brief": "not JSON at all" }, lose: (body) => lose && Boolean(body.payload.previous_problem) });
+  const one = context(box, site);
+  await main(["auto"], one.ctx);
+  assert.equal(site.calls.run.length, 2);
+  assert.match(one.out.stdout, /^shorts: the brief shorts-brief-2026-10-05 may have run on the server without its answer reaching the worker \(HTTP 504: no answer within the deadline\); it is not asked again; new topics wait half a day, and the next day's brief is a new call\n/);
+  const state = shortsState(box);
+  assert.equal(state.holds.brief, at(12)().toISOString());
+  assert.deepEqual(Object.keys(state.lost), ["shorts-brief-2026-10-05"]);
+  assert.deepEqual(state.failures, {});
+  assert.equal(existsSync(path.join(box.work, SHORTS_DIR, "answers")), false, "nothing unusable is kept as if the brief had failed");
+
+  await main(["auto"], context(box, site, { now: at(1) }).ctx);
+  assert.equal(site.calls.run.length, 2, "nothing is asked while the brief waits");
+  const later = context(box, site, { now: at(13) });
+  await main(["auto"], later.ctx);
+  assert.equal(site.calls.run.length, 2, "nor once the wait is over the same day");
+  assert.match(later.out.stdout, /^shorts: the brief shorts-brief-2026-10-05 is not asked again: its answer was lost at 2026-10-05T01:00:00\.000Z/);
+  assert.equal(shortsState(box).holds.brief, at(25)().toISOString(), "it waits again");
+
+  lose = false;
+  await main(["auto"], context(box, site, { now: at(26) }).ctx);
+  assert.deepEqual(site.calls.run.slice(2).map((call) => call.slug), ["shorts-brief-2026-10-06", "shorts-brief-2026-10-06"], "the next day's brief is a new call");
+});
+
+test("a report whose answer was lost is saved saying so, with the raw values, and its week is not asked again", async () => {
+  const lostReport = /^## 這一週的報告沒有寫成\n\n企劃模型的回答在回傳途中遺失（HTTP 504: no answer within the deadline）：它可能已經在伺服器上跑完並計費，所以不自動再問一次。/;
+  const box = sandbox();
+  const site = fakeSite({ settings: { enabled: false }, jobs: [{ kind: "report", holds: [], report: REPORT_JOB }], lose: (body) => body.variant === "shorts-report" });
+  const { ctx, out } = context(box, site);
+  await main(["auto"], ctx);
+  assert.equal(site.calls.run.length, 1);
+  assert.match(out.stdout, /^shorts: the report shorts-report-2026-09-28 may have run on the server without its answer reaching the worker \(HTTP 504: no answer within the deadline\); it is not asked again; a report saying so, with the raw values, is on the site instead\n/);
+  const [saved] = site.calls.report;
+  assert.match(saved.body_md, lostReport, "the owner reads why on the site");
+  assert.ok(saved.body_md.endsWith(rawTable(REPORT_JOB)));
+  assert.equal("model" in saved, false, "no model wrote it");
+  assert.deepEqual(Object.keys(shortsState(box).lost), ["shorts-report-2026-09-28"]);
+
+  // The round that lost the answer could not save the report either: the site names the week again.
+  const other = sandbox();
+  const again = fakeSite({ settings: { enabled: false }, jobs: Array(2).fill({ kind: "report", holds: [], report: REPORT_JOB }), lose: (body) => body.variant === "shorts-report" });
+  let refuse = true;
+  const fetch = async (url, init) => {
+    if (refuse && new URL(url).pathname === "/api/video/automation/shorts/report") {
+      refuse = false;
+      return Response.json({ code: "bad_request", detail: "the site could not save it" }, { status: 400 });
+    }
+    return again.fetchImpl(url, init);
+  };
+  const first = context(other, again, { fetch });
+  await main(["auto"], first.ctx);
+  assert.match(first.out.stdout, /^shorts: stopped by the site \(the site could not save it\); the round goes on\n/);
+  assert.deepEqual(Object.keys(shortsState(other).lost), ["shorts-report-2026-09-28"], "recorded before the report is saved");
+  const second = context(other, again, { fetch, now: at(1) });
+  await main(["auto"], second.ctx);
+  assert.equal(again.calls.run.length, 1, "the week is not asked again");
+  assert.match(second.out.stdout, /^shorts: the report shorts-report-2026-09-28 is not asked again: its answer was lost at 2026-10-05T01:00:00\.000Z .*; a report saying so, with the raw values, is on the site instead\n/);
+  assert.match(again.calls.report[0].body_md, lostReport);
 });
 
 test("while the library runs low the Shorts go before the tutorials, otherwise after them", async () => {

@@ -16,7 +16,7 @@ import { isDeepStrictEqual, parseArgs } from "node:util";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { AutomationError, automationClient } from "../automation/client.mjs";
 import { ANIME_APPROVAL_GATES, approvalRuntimePolicyHash, GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
-import { animeRuntimeContext, hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
+import { animeRuntimeContext, hasAnimePolicy, LONG_ANIME_POLICY, runtimePolicyHash, validateAnimeRuntime } from "../core/anime-policy.mjs";
 import { assembledAudioProblems, audioEvidenceProblems, currentAudioCheck } from "../core/audio-evidence.mjs";
 import { animeBodyDurationProblems, animeRuntimeProof } from "../core/duration.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
@@ -83,6 +83,144 @@ export class ReviewError extends Error {
     this.who = who;
     this.submission = submission;
   }
+}
+
+// ReviewIn.summary in apps/api/app/video_reviews/schemas.py takes at most this many characters,
+// counted as Unicode code points. A longer one is refused with 422, review-push answers that with
+// the lint code, and the worker blocks the video (automation/flow.mjs submissionFailure).
+export const MAX_REVIEW_SUMMARY_LENGTH = 500;
+// How many pictures kept with the judge's remarks a summary names before it counts the rest: an
+// illustrated video may keep dozens, and the whole list is the payload's, which the card shows.
+export const SUMMARY_PICTURE_IDS = 5;
+
+/**
+ * A review's summary as the site takes it: itself while it fits, else cut to
+ * MAX_REVIEW_SUMMARY_LENGTH characters, the last one an ellipsis. Every summary here is written
+ * to fit; this is what holds when one does not (an id has no length limit of its own). Every
+ * review this file assembles goes through it: reviewPush before it posts one, and outlineReview,
+ * whose review the worker posts itself.
+ */
+export function fitSummary(summary) {
+  return cutText(String(summary ?? ""), MAX_REVIEW_SUMMARY_LENGTH);
+}
+
+/** A text of at most `length` characters, counted as code points: itself, or cut there with an ellipsis as its last one. */
+function cutText(text, length) {
+  const characters = [...text];
+  return characters.length <= length ? text : `${characters.slice(0, length - 1).join("")}…`;
+}
+
+/** The kept pictures as a summary names them: the first SUMMARY_PICTURE_IDS ids, then how many more there are. */
+export function namedPictures(ids) {
+  const named = ids.slice(0, SUMMARY_PICTURE_IDS).join("、");
+  return ids.length > SUMMARY_PICTURE_IDS ? `${named} 等，另 ${ids.length - SUMMARY_PICTURE_IDS} 張` : named;
+}
+
+// ReviewIn._small in apps/api/app/video_reviews/schemas.py refuses a payload larger than
+// MAX_PAYLOAD_BYTES with 422, and a refused review blocks the video as a summary too long does.
+// The screenplay of a long-anime series episode alone may be larger (MAX_ANIME_SCRIPT_BYTES).
+export const MAX_REVIEW_PAYLOAD_BYTES = 256 * 1024;
+export const MAX_ANIME_SCRIPT_BYTES = 1024 * 1024;
+// Where review-push starts leaving more of the judge's remarks out, short of the limit:
+// payloadBytes writes a number as JSON.stringify does, and Python writes a few of them a
+// character longer.
+export const REVIEW_PAYLOAD_BUDGET = 240_000;
+// What a review carries of the judge's remarks on one kept picture: this many lines, each cut to
+// this many characters. An illustrated video may keep hundreds of pictures, each with what the
+// judge said of every take; keyframes/manifest.json keeps all of it (accepted_with_problems).
+export const KEPT_REMARK_LINES = 6;
+export const KEPT_REMARK_LENGTH = 300;
+// The lines a picture keeps when the payload is still past the budget: two, then none.
+const FEWER_REMARK_LINES = [2, 0];
+const REMARKS_LEFT_OUT = "意見因審核資料的大小上限略去，全文在 keyframes/manifest.json";
+
+/**
+ * The judge's remarks on a kept picture as a review carries them: the first `lines` of them, each
+ * cut to KEPT_REMARK_LENGTH characters, then one line counting the rest. With no line to spend,
+ * the one line that says they were left out for size; none for a picture the judge said nothing of.
+ */
+export function keptRemarks(problems, lines = KEPT_REMARK_LINES) {
+  const remarks = (Array.isArray(problems) ? problems : []).filter((each) => typeof each === "string" && each);
+  if (!remarks.length) return [];
+  if (lines <= 0) return [REMARKS_LEFT_OUT];
+  const shown = remarks.slice(0, lines).map((each) => cutText(each, KEPT_REMARK_LENGTH));
+  return remarks.length > lines ? [...shown, `…另有 ${remarks.length - lines} 則，全文在 keyframes/manifest.json`] : shown;
+}
+
+/**
+ * A payload's size as the server measures it (ReviewIn._small): Python's json.dumps(value,
+ * ensure_ascii=False) in UTF-8, which puts a space after every comma and colon and leaves text
+ * outside ASCII as it is. Measured on what the request carries: JSON.stringify drops what JSON
+ * has no word for.
+ */
+export function payloadBytes(payload) {
+  const written = (value) => {
+    if (Array.isArray(value)) return `[${value.map(written).join(", ")}]`;
+    if (value !== null && typeof value === "object") return `{${Object.entries(value).map(([key, each]) => `${JSON.stringify(key)}: ${written(each)}`).join(", ")}}`;
+    return JSON.stringify(value);
+  };
+  return Buffer.byteLength(written(JSON.parse(JSON.stringify(payload ?? {}))), "utf8");
+}
+
+const isRecord = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
+
+/** The most bytes the server takes for a review's payload: the ordinary limit, or a long-anime series screenplay's, by the rule ReviewIn._small applies. */
+function payloadLimit({ gate, payload }) {
+  const context = payload?.runtime_context;
+  const longScreenplay = gate === "script" && payload?.production_policy === LONG_ANIME_POLICY
+    && isRecord(context) && context.kind === "series" && context.genre === "custom" && context.lead === "ensemble"
+    && validateAnimeRuntime(payload.runtime_spec).length === 0;
+  return longScreenplay ? MAX_ANIME_SCRIPT_BYTES : MAX_REVIEW_PAYLOAD_BYTES;
+}
+
+// The list in a review's payload that names the pictures kept with the judge's remarks, by gate.
+const KEPT_LIST = { final: "accepted_pictures", storyboard: "accepted" };
+
+/**
+ * A review's payload with the judge's remarks on its kept pictures cut to `lines` a picture
+ * (keptRemarks) wherever that review carries them: on its list of kept pictures and, on a
+ * storyboard, in the own verdict of each kept shot, which is left empty when the lines are none
+ * (the list says why). Every picture keeps its id. Null for a review that names no kept picture.
+ */
+function withKeptRemarks({ gate, payload }, lines) {
+  if (!isRecord(payload)) return null;
+  const list = KEPT_LIST[gate];
+  const pictures = list && Array.isArray(payload[list]) ? payload[list] : [];
+  const shots = gate === "storyboard" && Array.isArray(payload.shots) ? payload.shots : [];
+  const keptShot = (shot) => isRecord(shot) && shot.accepted === true;
+  if (!pictures.length && !shots.some(keptShot)) return null;
+  return {
+    ...payload,
+    ...(pictures.length ? { [list]: pictures.map((picture) => (isRecord(picture) ? { ...picture, problems: keptRemarks(picture.problems, lines) } : picture)) } : {}),
+    ...(shots.length ? { shots: shots.map((shot) => (keptShot(shot) ? { ...shot, judge: { ...(isRecord(shot.judge) ? shot.judge : {}), problems: lines > 0 ? keptRemarks(shot.judge?.problems, lines) : [] } } : shot)) } : {}),
+  };
+}
+
+/**
+ * A review as review-push posts it, its payload within what the server takes. The judge's
+ * remarks on the kept pictures go up cut to KEPT_REMARK_LINES lines a picture; while the payload
+ * is past REVIEW_PAYLOAD_BUDGET they are cut further in steps, to two lines and then to none,
+ * every picture keeping its id. A payload still past the server's limit is not sent: the server
+ * would answer 422, and this says how large it is. Returns { body, bytes, lines }, `lines` null
+ * unless the remarks were cut past their usual lines.
+ */
+export function fitPayload(body) {
+  const limit = payloadLimit(body);
+  const budget = limit - (MAX_REVIEW_PAYLOAD_BYTES - REVIEW_PAYLOAD_BUDGET);
+  const kept = withKeptRemarks(body, KEPT_REMARK_LINES);
+  let payload = kept ?? body.payload;
+  let bytes = payloadBytes(payload);
+  let lines = null;
+  for (const fewer of kept ? FEWER_REMARK_LINES : []) {
+    if (bytes <= budget) break;
+    payload = withKeptRemarks(body, fewer);
+    bytes = payloadBytes(payload);
+    lines = fewer;
+  }
+  if (bytes > limit) {
+    throw new ReviewError(`the ${body.gate} review's payload is ${bytes} bytes, over the ${limit} the site takes${kept ? ", even with the judge's remarks on the kept pictures left out" : ""}; nothing was sent`, { code: "payload_too_large", submission: true });
+  }
+  return { body: kept ? { ...body, payload } : body, bytes, lines };
 }
 
 /** The outline options a brief offers: `### 選項 A：title`, its 一行說明, its 開場鉤子. */
@@ -154,12 +292,23 @@ export function audioCheck(check, flags, lineCount) {
   };
 }
 
-/** The audio card's summary line for the second transcript's work, or "" when it cleared nothing. */
-export function clearedSummary(check) {
+/**
+ * The audio card's summary line for the second transcript's work, or "" when it cleared nothing.
+ * `ids: false` leaves the line ids out: a narration with dozens of cleared lines would name them
+ * past the summary's limit, and the payload's cleared_lines keeps every one.
+ */
+export function clearedSummary(check, { ids = true } = {}) {
   const lines = check.cleared_lines ?? [];
   if (!lines.length) return "";
   const by = [...new Set(lines.map((line) => line.second.by))].join("、");
-  return `；${by} 另外轉寫、排除 ${lines.length} 句（${lines.map((line) => line.id).join("、")}）`;
+  return `；${by} 另外轉寫、排除 ${lines.length} 句${ids ? `（${lines.map((line) => line.id).join("、")}）` : ""}`;
+}
+
+/** The audio review's summary: the cleared lines by id while that fits the site's limit, by their number alone otherwise. */
+export function audioSummary({ seconds, lines, check, rewrites }) {
+  const said = (ids) => `旁白 ${formatClock(Math.round(seconds))}，${lines} 句；Jev 標記 ${check.check.flagged} 句${clearedSummary(check, { ids })}${rewrites ? `；改寫 ${rewrites} 句` : ""}`;
+  const detailed = said(true);
+  return [...detailed].length <= MAX_REVIEW_SUMMARY_LENGTH ? detailed : said(false);
 }
 
 /** The unticked items of UPLOAD.md, without their Markdown emphasis. */
@@ -222,7 +371,12 @@ export async function judgeOutline(api, slug, brief, options) {
   return { status: pick.passed ? "passed" : "failed", pick };
 }
 
-/** The outline review's payload and summary: the brief, its options and Jev's pick when there is one. */
+/**
+ * The outline review's payload and summary: the brief, its options and Jev's pick when there is
+ * one. The worker posts this one itself (automation/flow.mjs submitOutline), past reviewPush, so
+ * the summary is fitted here: the choice is the judge's answer as it came (pickFrom asks only
+ * that it is text).
+ */
 export function outlineReview(brief, options, verdict, suffix = "") {
   const payload = { brief, options };
   let summary = `企劃書與 ${options.length} 個大綱選項${suffix}`;
@@ -230,7 +384,7 @@ export function outlineReview(brief, options, verdict, suffix = "") {
     payload.pick = verdict.pick;
     summary += verdict.status === "passed" ? `；Jev 挑了 ${verdict.pick.choice}` : "；Jev 沒有挑出過關的大綱，請站主選";
   }
-  return { payload, summary };
+  return { payload, summary: fitSummary(summary) };
 }
 
 /** A review's summary for the quality check's report: 「自動品管 11 項全過」 or 「自動品管 2 項沒過：pace、links」. */
@@ -454,7 +608,7 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     return {
       gate,
       content_sha256: await sha256File(file),
-      summary: `旁白 ${formatClock(Math.round(seconds))}，${timeline.lines.length} 句；Jev 標記 ${check.check.flagged} 句${clearedSummary(check)}${rewrites.length ? `；改寫 ${rewrites.length} 句` : ""}`,
+      summary: audioSummary({ seconds, lines: timeline.lines.length, check, rewrites: rewrites.length }),
       payload: { duration_seconds: seconds, ...check, rewrites, ...runtimeFields, ...(measurement ? { runtime_measurement: measurement } : {}) },
       files: [narration],
     };
@@ -506,10 +660,14 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     // Pictures kept with the judge's remarks once their prompt fixes were spent (keyframes
     // --accept-best): the owner looks at the cut whatever the quality check says, and the
     // card lists them. The worker asks for the manual review too (automation/flow.mjs gate).
+    // The summary and the reason name the first few and count the rest (namedPictures): every
+    // one of them is in accepted_pictures with what the judge said, which review-push cuts to
+    // a few lines a picture where it posts the review (fitPayload).
     const acceptedPictures = acceptedPicturesOf(doc, workdir);
+    const keptIds = namedPictures(acceptedPictures.map((picture) => picture.id));
     const manual = manualReview || acceptedPictures.length > 0;
     const manualReason = acceptedPictures.length
-      ? `有 ${acceptedPictures.length} 張插圖未通過 judge（${acceptedPictures.map((picture) => picture.id).join("、")}），需站主審看成片；機械品管僅供參考。`
+      ? `有 ${acceptedPictures.length} 張插圖未通過 judge（${keptIds}），需站主審看成片；機械品管僅供參考。`
       : applied ? "已重製頻道片頭與片尾，需站主重新審看成片與銜接；機械品管僅供參考。" : "此成片明確要求站主重新審看；機械品管僅供參考。";
     const files = [await upload(request, slug, await preview(ctx, workdir, "preview", file, { compilation }), "preview", "video/mp4")];
     const sheet = path.join(workdir, ARTIFACTS.contactSheet);
@@ -538,7 +696,7 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     return {
       gate,
       content_sha256: sha,
-      summary: `成片 ${formatClock(Math.round(seconds))}，${qa ? qaSummary(qa) : `自動檢查${checks.ok ? "全部通過" : `有 ${(checks.problems ?? []).length} 項問題`}；${qaSummary(null)}`}${dubs.length ? `，配音 ${dubs.map((dub) => dub.locale).join("、")}` : ""}${acceptedPictures.length ? `；${acceptedPictures.length} 張插圖未通過 judge（${acceptedPictures.map((picture) => picture.id).join("、")}），需站主審看` : manual ? "；需站主重新審看" : ""}`,
+      summary: `成片 ${formatClock(Math.round(seconds))}，${qa ? qaSummary(qa) : `自動檢查${checks.ok ? "全部通過" : `有 ${(checks.problems ?? []).length} 項問題`}；${qaSummary(null)}`}${dubs.length ? `，配音 ${dubs.map((dub) => dub.locale).join("、")}` : ""}${acceptedPictures.length ? `；${acceptedPictures.length} 張插圖未通過 judge（${keptIds}），需站主審看` : manual ? "；需站主重新審看" : ""}`,
       payload: {
         duration_seconds: seconds,
         ...runtimeFields,
@@ -593,8 +751,6 @@ export function downloadNote(bytes) {
 
 // The Traditional Chinese names of a language's parts, for a batch's summary line.
 const PART_NAMES = { metadata: "標題說明", captions: "CC", dub: "配音" };
-// ReviewSubmit.summary in apps/api/app/video_reviews/schemas.py counts Unicode characters.
-const MAX_REVIEW_SUMMARY_LENGTH = 500;
 
 /** Keep every locale and its upload instruction visible; full skip reasons stay in the payload. */
 function languagesSummary(locales) {
@@ -830,7 +986,8 @@ async function storyboardSubmission({ request, project, workdir }) {
     // A picture kept with the judge's remarks once its prompt fixes were spent (keyframes
     // --accept-best): sent as accepted, not as a review need, so the board can approve itself
     // (apps/api/app/video_automation/settings.py storyboard_check_passed); the owner sees it on
-    // the final cut, which goes up for a manual review.
+    // the final cut, which goes up for a manual review. What the judge said of it, here and on
+    // the list below, is cut to a few lines where review-push posts the review (fitPayload).
     const accepted = Array.isArray(shot.accepted_with_problems);
     shots.push({
       id: scene.id,
@@ -902,7 +1059,8 @@ function fail(error, ctx) {
   ctx.stderr.write(`${error.message}\n`);
   // Bad review/file payloads cannot recover by waiting. A failed project report or read still
   // stops the round: the worker could not reliably report a blocked state on that same route.
-  if (error instanceof ReviewError && error.submission && [413, 422].includes(error.status)) return ctx.EXIT.lint;
+  // A payload this command found too large itself (fitPayload) is one the site would refuse so.
+  if (error instanceof ReviewError && error.submission && ([413, 422].includes(error.status) || error.code === "payload_too_large")) return ctx.EXIT.lint;
   return error.who === "owner" ? ctx.EXIT.owner : ctx.EXIT.external;
 }
 
@@ -945,9 +1103,13 @@ export async function reviewPush(args, ctx) {
       // An owner renewal invalidates old downstream approvals. Resolve its identity from
       // the site, then verify bytes/timing before adding the new final-review binding.
       const remote = ["publish", "languages", "dubs"].includes(candidate.gate) ? await request("GET", values.slug) : null;
-      const body = await bindRenewalSubmission({ body: candidate, remote, project, workdir, request, upload });
-      const review = await request("POST", `${values.slug}/reviews`, { json: body });
+      const bound = await bindRenewalSubmission({ body: candidate, remote, project, workdir, request, upload });
+      // Every review this command sends leaves through here, so none carries a summary the
+      // site would refuse for its length, nor a payload it would refuse for its size.
+      const { body, bytes, lines } = fitPayload({ ...bound, summary: fitSummary(bound.summary) });
       const what = body.subject ? `${gate} (${body.subject})` : gate;
+      if (lines !== null) ctx.stdout.write(`${values.slug}: ${what}: the judge's remarks on the kept pictures were ${lines ? `cut to ${lines} lines a picture` : "left out"} to keep the review's payload within the site's limit (${bytes} bytes now); keyframes/manifest.json has them all\n`);
+      const review = await request("POST", `${values.slug}/reviews`, { json: body });
       ctx.stdout.write(`${values.slug}: ${what} submitted for review (${review.status}); the owner decides on /admin/videos, then run review-pull\n`);
     }
     return ctx.EXIT.ok;

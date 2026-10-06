@@ -22,7 +22,7 @@ import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
 import { StructuredData } from "@/components/structured-data";
 import { Link } from "@/i18n/navigation";
 import { localeLabels, type Locale } from "@/i18n/routing";
-import { citiesForCountry, countryKeys, destinationSeeds, type CatalogTranslator } from "@/lib/destinations";
+import { citiesForCountry, destinationSeeds, type CatalogTranslator } from "@/lib/destinations";
 import { contentBlockLink } from "@/lib/content-blocks";
 import { guideAffiliateDestination } from "@/lib/guide-affiliate";
 import { splitArticleExtras, guideTopicHref, guideSection,
@@ -139,26 +139,30 @@ async function socialCard(
 }
 
 /**
- * The destinations a lifestyle article hands the reader on to. A destination the editor
- * chose points at one country, so the reader gets that country's cities; without one, the
- * first city of every country, so the row spans the catalogue. The renderer caps the count.
+ * The destinations a lifestyle article hands the reader on to: the cities of the country its
+ * destination points at. A destination outside the catalogue gives no row rather than one city
+ * of every country. The renderer caps the count.
  */
-function crosslinkCities(destinationId: string | null, tc: CatalogTranslator): { id: string; name: string }[] {
+function crosslinkCities(destinationId: string, tc: CatalogTranslator): { id: string; name: string }[] {
   const catalogId = guideAffiliateDestination(destinationId);
   const country = destinationSeeds.find((seed) => seed.id === catalogId)?.country;
-  const cities = country
-    ? citiesForCountry(country, tc)
-    : countryKeys.flatMap((key) => citiesForCountry(key, tc).slice(0, 1));
-  return cities.map(({ id, name }) => ({ id, name }));
+  return country ? citiesForCountry(country, tc).map(({ id, name }) => ({ id, name })) : [];
 }
 
+/**
+ * The handover from a lifestyle article to the travel section, and only from one whose editor
+ * named a destination: the travel guides about that destination and its country's cities. An
+ * AI, tech or finance article names none, and the site's newest travel guides have nothing to
+ * do with it, so it ends with its own related reading instead.
+ */
 async function travelCrosslinks(
   locale: Locale, destinationId: string | null, labels: TravelCrosslinksLabels,
 ): Promise<ReactNode> {
+  if (!destinationId) return null;
   // The same `search.catalog` translator the home page hands to `citiesForCountry`, so a
   // city is named here exactly as it is on the destination rail.
   const [travel, tc] = await Promise.all([
-    getGuideList(locale, { section: "travel" }, 3),
+    getGuideList(locale, { section: "travel", destination: destinationId }, 3),
     getTranslations({ locale, namespace: "search.catalog" }),
   ]);
   return <TravelCrosslinks articles={travel.articles} cities={crosslinkCities(destinationId, tc)} labels={labels} />;
@@ -249,9 +253,9 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const card: GuideCardLabels = kindLabels;
   // What to read next comes from the API's ranked list when it has one (the editor's picks,
   // then the nearest neighbours); a lesson's own related lessons are already listed by the
-  // series navigation just above and are not repeated. A lifestyle article keeps the travel
-  // handover after it; a travel article's list replaces the same-city cards it used to end
-  // with, which an API without the list still supplies.
+  // series navigation just above and are not repeated. A lifestyle article that names a
+  // destination keeps the travel handover after it; a travel article's list replaces the
+  // same-city cards it used to end with, which an API without the list still supplies.
   const seriesRelated = (state.series?.related ?? []).map((item) => item.slug);
   const grid = state.related?.length
     ? <RelatedGrid heading={t("guides.relatedSameTopic")} items={state.related} kindLabels={kindLabels} exclude={seriesRelated} />

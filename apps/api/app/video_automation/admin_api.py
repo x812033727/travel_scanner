@@ -20,7 +20,7 @@ from pydantic import AwareDatetime, BaseModel, ConfigDict, ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.ai.jev import JevError, JevRequestInvalid
+from app.ai.jev import JevError, JevOutcomeUncertain, JevRequestInvalid
 from app.auth.service import require_capability
 from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
@@ -102,7 +102,7 @@ from app.video_automation.topics import gather_topics
 from app.video_reviews.admin_service import LIST_LIMIT, list_projects
 from app.video_reviews.schemas import ProjectSummary, VideoFormat
 from app.video_shorts.schemas import ShortsFilter, ShortsState
-from app.video_speech.admin_api import VideoTool
+from app.video_speech.admin_api import VideoTool, jev_outcome_uncertain_response
 from app.video_speech.checking import CheckUnavailable
 
 # A whole video is a few dozen stage calls; this only stops a runaway loop.
@@ -208,8 +208,8 @@ async def get_tool_video_automation_settings(tool: VideoTool, session: Session) 
 
 @tool_router.post("/judge/outline", response_model=OutlinePick)
 async def judge_video_outline(
-    payload: JudgeOutlineIn, tool: VideoTool, session: Session
-) -> OutlinePick:
+    payload: JudgeOutlineIn, request: Request, tool: VideoTool, session: Session
+) -> OutlinePick | JSONResponse:
     """Jev chooses among a brief's outlines against the channel's stance; one Jev call."""
     await enforce_named_rate_limit(
         "video_judge", str(tool.id), limit=JUDGE_CALLS_PER_HOUR, window_seconds=3600
@@ -230,14 +230,16 @@ async def judge_video_outline(
         raise AppError(error.status, error.code, error.detail) from error
     except JevRequestInvalid as error:
         raise AppError(422, "video_judge_invalid", f"Jev 拒絕這個問題（{error}）") from error
+    except JevOutcomeUncertain as error:
+        return await jev_outcome_uncertain_response(request, error)
     except (JevError, httpx.HTTPError) as error:
         raise AppError(502, "video_judge_upstream_failed", "Jev 暫時無法判斷") from error
 
 
 @tool_router.post("/judge/policy", response_model=PolicyVerdict)
 async def judge_video_policy(
-    payload: JudgePolicyIn, tool: VideoTool, session: Session
-) -> PolicyVerdict:
+    payload: JudgePolicyIn, request: Request, tool: VideoTool, session: Session
+) -> PolicyVerdict | JSONResponse:
     """Jev judges a final cut's narration against the stance (the quality check's policy item)."""
     await enforce_named_rate_limit(
         "video_judge", str(tool.id), limit=JUDGE_CALLS_PER_HOUR, window_seconds=3600
@@ -262,6 +264,8 @@ async def judge_video_policy(
         raise AppError(error.status, error.code, error.detail) from error
     except JevRequestInvalid as error:
         raise AppError(422, "video_judge_invalid", f"Jev 拒絕這個問題（{error}）") from error
+    except JevOutcomeUncertain as error:
+        return await jev_outcome_uncertain_response(request, error)
     except (JevError, httpx.HTTPError) as error:
         raise AppError(502, "video_judge_upstream_failed", "Jev 暫時無法判斷") from error
 

@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { DestinationGuide } from "@/components/destination-guide";
 import { locales } from "@/i18n/routing";
-import { destinationDecisions } from "@/lib/destination-decisions";
+import { decisionDestinationIds, destinationDecisions } from "@/lib/destination-decisions";
 import { guideHref, type GuideSummary } from "@/lib/guides";
 
 vi.mock("@/components/destination-affiliate-options", () => ({
@@ -20,6 +20,10 @@ const tokyo: DestinationSummary = {
   extensionIds: ["yokohama"], areas: ["新宿", "澀谷"],
   recommendedDays: { min: 4, max: 6 }, timezone: "Asia/Tokyo", currency: "JPY",
   center: { latitude: 35.68, longitude: 139.76 }, reason: "第一次去日本最順的城市。",
+};
+const seoul: DestinationSummary = {
+  ...tokyo, id: "seoul", city: "首爾", localName: "서울", englishName: "Seoul", country: "韓國", countryCode: "KR",
+  extensionIds: [], areas: ["明洞", "弘大", "東大門", "江南"], timezone: "Asia/Seoul", currency: "KRW",
 };
 const yokohama: DestinationSummary = { ...tokyo, id: "yokohama", city: "橫濱", localName: "横浜", extensionIds: [], role: "extension", parentDestinationId: "tokyo" };
 const copy = destinationsCopy("zh-TW");
@@ -145,9 +149,12 @@ describe("DestinationGuide", () => {
     expect(screen.queryByText(copy.emptyFood)).toBeNull();
   });
 
-  it.each(locales)("renders four complete, sourced decision cards in %s", (locale) => {
-    const decisions = destinationDecisions(locale, "tokyo")!;
-    const { container } = draw({ locale });
+  const cities = { tokyo, seoul };
+  it.each(decisionDestinationIds.flatMap((id) => locales.map((locale) => [id, locale] as const)))(
+    "renders four complete, sourced %s decision cards in %s", (id, locale) => {
+    const decisions = destinationDecisions(locale, id)!;
+    expect(decisions.areas).toHaveLength(4);
+    const { container } = draw({ locale, destination: cities[id as keyof typeof cities] });
     const section = screen.getByRole("region", { name: decisions.title });
     const cards = within(section).getAllByRole("heading", { level: 3 });
     expect(cards.map((heading) => heading.textContent)).toEqual(decisions.areas.map((area) => area.name));
@@ -156,11 +163,28 @@ describe("DestinationGuide", () => {
       expect(within(card).getByText(area.suitable)).toBeTruthy();
       expect(within(card).getByText(area.tradeoff)).toBeTruthy();
       expect(within(card).getByText(area.check)).toBeTruthy();
+      expect(area.sources.length).toBeGreaterThan(0);
       for (const source of area.sources) {
+        expect(source.url).toMatch(/^https:\/\//);
         expect(within(card).getByRole("link", { name: source.label }).getAttribute("href")).toBe(source.url);
       }
     }
     expect(container.querySelector("time")?.getAttribute("datetime")).toBe(decisions.checkedOn);
+  });
+
+  it("covers every destination in the decision data with a test fixture", () => {
+    expect([...decisionDestinationIds].sort()).toEqual(Object.keys(cities).sort());
+  });
+
+  it("shows Seoul's own comparisons in place of its catalog area names", () => {
+    draw({ destination: seoul });
+    const decisions = destinationDecisions("zh-TW", "seoul")!;
+    const section = screen.getByRole("region", { name: decisions.title });
+    expect(within(section).getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent))
+      .toEqual(seoul.areas);
+    expect(screen.queryByText(copy.areasTitle)).toBeNull();
+    expect(screen.queryByRole("region", { name: destinationDecisions("zh-TW", "tokyo")!.title })).toBeNull();
+    expect(screen.queryByRole("link", { name: /GO TOKYO/ })).toBeNull();
   });
 
   it("preserves the catalog area list for other destinations without Tokyo comparisons", () => {

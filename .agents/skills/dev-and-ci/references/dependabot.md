@@ -28,7 +28,7 @@
 node -e 'const fs=require("fs");const f="ops/video/package.json";const p=JSON.parse(fs.readFileSync(f));const l=JSON.parse(fs.readFileSync("package-lock.json")).packages;for(const n in p.dependencies)p.dependencies[n]=l["node_modules/"+n].version;fs.writeFileSync(f,JSON.stringify(p,null,2)+"\n")'
 ```
 
-改到 `ops/video/` 會觸發 `Video worker image` workflow 在 CI 建映像，並在映像裡把範例影片從 render 跑到 package。只動到 `ops/video/package.json` 沒列的字型時是綠的，照一般流程合。
+改到 `ops/video/` 會觸發 `Video worker image` workflow 在 CI 建映像，在映像裡解析 `tools/video/render/fonts.mjs` 列的每個字型，並把範例影片從 render 跑到 package。工人裝了 `fonts.mjs` 列的全部字型（`tools/supply-chain.test.mjs` 要求），所以這群 PR 只要動到字型就要補這一步。
 
 ## 目前被擋住的大版本（以票為準，動手前先看票）
 
