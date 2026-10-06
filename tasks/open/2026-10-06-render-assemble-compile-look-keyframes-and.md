@@ -71,9 +71,9 @@ the log line, the site report and the recap are wrong.
 - [ ] Return `EXIT.incomplete` from each STOP branch listed under Why.
 - [ ] In `flow.mjs`, map exit 6 to `this.later` in `media()` and in the "frames rendered" and
       "video assembled" branches, with a test in `automation.test.mjs` for each.
-- [ ] `docs/videos/AUTOMATION.md` §語言 item 2 (配音) says only `check-audio --locale` exits 6 on
-      STOP. Make it name `dub` and `dub --redo` too, and give the media stages the same sentence
-      where AUTOMATION.md describes them.
+- [ ] `docs/videos/AUTOMATION.md` says, for the narration (item 3) and the dub (§語言 item 2), that
+      a STOP ends the round with exit 6 and the next run continues. Add the same sentence where
+      it describes the media stages, the render and the cut.
 
 ## How to verify
 
@@ -89,11 +89,10 @@ duration receipt to an independent reviewer.
 
 ## Notes
 
-- Split out of 2026-10-05-dub-exits-incomplete-when-a-stop. That ticket's Notes named these stages,
-  and it left the AUTOMATION.md clause out on purpose. The clause is on line 154 (item 2), right
-  below line 153 (item 1), which the open PRs #1315 (train), #1312 and #1301 all rewrite. Git
-  treats edits on adjacent lines as a conflict, so check whether those PRs have landed before you
-  edit line 154.
+- Split out of 2026-10-05-dub-exits-incomplete-when-a-stop, whose Notes named these stages. That
+  ticket moved `dub` and `dub --redo` to exit 6 and taught the worker's `makeDub` to wait on it,
+  with a local `stopped()` helper. `media()` and the render and assemble branches need the same
+  treatment.
 - A STOP can also arrive while a media job runs on the server. `media/client.mjs` then throws a
   MediaError with code "stopped" (`media/stages.mjs` has `stoppedError()`), and `clips.mjs` and
   `keyframes.mjs` catch it in several places. Every one of those paths needs the same exit 6, not
