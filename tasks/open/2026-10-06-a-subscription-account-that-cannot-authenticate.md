@@ -1,7 +1,7 @@
 ---
 id: 2026-10-06-a-subscription-account-that-cannot-authenticate
 title: A subscription account that cannot authenticate rests and the stage job fails instead of turning uncertain
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-fable-5-1-video-unstuck
