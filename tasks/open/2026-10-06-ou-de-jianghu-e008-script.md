@@ -31,7 +31,7 @@ scope:
 
 ## Steps
 
-- [ ] 1. 角色表、meta、表頭。
+- [x] 1. 角色表、meta、表頭（2026-10-06，在第 7 集的分支上先做：`guideng-jun`、`canglan-spent`、`ep8/meta.json`、`ep8/header.json`、`ep8/check-act.mjs`；見 cast-notes〈第 8 集的改動〉）。
 - [ ] 2. 分場表：撰寫 → 連戲審與戲劇審 → 修訂 → 對抗驗收。
 - [ ] 3. 五幕分鏡、整集審修驗收。
 - [ ] 4. 合併、跨集審、brief 與 review、名字掃描。

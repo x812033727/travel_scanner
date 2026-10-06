@@ -1,8 +1,8 @@
-# 《偶的江湖》第 1–5 集的製作檔（續寫用）
+# 《偶的江湖》第 1–7 集的製作檔（續寫用）
 
-這裡是寫第 1–5 集劇本時用的工作檔，2026-10-05 從雲端 session 的暫存區備份進 repo，同一天由本機 session 接手寫完。正式成品在 `docs/videos/ou-de-jianghu-e00N/`；這裡是產生它們的來源，之後哪一集要改，先改這裡再合併。
+這裡是寫第 1–7 集劇本時用的工作檔，2026-10-05 從雲端 session 的暫存區備份進 repo，同一天由本機 session 接手寫完第 2–5 集，第 6、7 集 2026-10-06 照同一套流程寫成。正式成品在 `docs/videos/ou-de-jianghu-e00N/`；這裡是產生它們的來源，之後哪一集要改，先改這裡再合併。
 
-## 進度（2026-10-05 完成）
+## 進度（第 1–5 集 2026-10-05、第 6–7 集 2026-10-06 完成）
 
 | 集 | 分場表 | 五幕 | 整集審 | 整集修與驗收 | 成品 |
 | --- | --- | --- | --- | --- | --- |
@@ -11,6 +11,8 @@
 | 3 | 完成 | 完成 | `ep3/review-findings.json`（8 minor）＋第二輪 `review-findings-2.json`（2） | 完成，驗收通過（1,404.6 秒） | `ou-de-jianghu-e003/` 五檔齊 |
 | 4 | 完成 | 完成 | `ep4/review-findings.json`（7 minor） | 完成，驗收通過（1,400.0 秒） | `ou-de-jianghu-e004/` 五檔齊 |
 | 5 | 完成 | 完成 | `ep5/review-findings.json`（7 minor）＋第二輪 `review-findings-2.json`（1，主控裁定不改） | 完成，驗收通過（1,404.5 秒） | `ou-de-jianghu-e005/` 五檔齊 |
+| 6 | 完成（連戲審、戲劇審、三輪修訂） | 完成 | `ep6/review-findings.json`（3 major、5 minor）＋第二輪 `review-findings-2.json`（3，定格鏡那條主控裁定不改） | 完成，驗收通過（1,409.0 秒） | `ou-de-jianghu-e006/` 五檔齊 |
+| 7 | 完成（連戲審、戲劇審、三輪修訂） | 完成 | `ep7/review-findings.json`（1 major、9 minor，定格鏡那條主控裁定不改）＋第二輪 `-2.json`（4）＋第三輪 `-3.json`（2，主控套用） | 完成，驗收通過（1,413.5 秒） | `ou-de-jianghu-e007/` 五檔齊 |
 
 跨集連戲審（三個鏡頭：時間線與位置、物證與知情、台詞與口吻）提了 7 條，對抗驗證後成立 2 條（第 2 集金印的形狀、第 5 集書齋抽屜的位置），都已修進 acts 並重新合併；第 1 集的一道印也補了形狀。四集的 `brief.md` 與 `review.md` 照第 1 集的形狀寫成；每集 lint 0 錯誤、craft 全達標、shot_reading 0 陷阱，原作名稱掃描 0 筆。主編裁定記在票 `tasks/done/2026-10-04-ou-de-jianghu-e002-e005-scripts.md` 的 Notes。
 
@@ -45,6 +47,6 @@
 - 詩號與招式的定格鏡（`visual: "still"`）一律用 `slow push in`，不用 `locked`：`shot_reading.mjs` 把 still＋locked 判成陷阱 `still.locked`。第 1–6 集所有定格鏡都是這樣。
 - 旁白只用相對時間，不報「第幾日」；第 1 集名句不逐字重用；島底的符叫「盟符」。
 
-## 寫下一集（第 6 集起）
+## 寫下一集（第 8 集起）
 
 照第 2–5 集的做法：分場表 → 每幕一個代理（讀 `beats.md`、`cast-notes.md`、`header.json`、第 1 集同一幕當範本、`ep2/review-findings.json` 當反例）→ 每幕過 `check-act.mjs` → 一位整集審寫 `review-findings.json` → 一位修訂 → 一位對抗驗收（剩的寫 `-2`）→ 合併 → 跨集審 → `brief.md` 與 `review.md`。新角色先加進 `cast.json` 與 `cast-notes.md`，再 `node header.mjs --ep N`。
