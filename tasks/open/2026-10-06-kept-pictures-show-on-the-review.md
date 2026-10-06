@@ -1,7 +1,7 @@
 ---
 id: 2026-10-06-kept-pictures-show-on-the-review
 title: Kept pictures show on the review card, their summary fits the server's limit, and only illustrated videos keep them
-status: in-progress
+status: review
 priority: P1
 area: web
 owner: claude-fable-5-1-video-unstuck
@@ -102,6 +102,9 @@ picture; on its storyboard card the kept shots have a blue border and a 「保�
 
 ## Notes
 
+- **Pull request.** #1344, a draft against main on `claude/video-unstuck-kept-pictures-card`,
+  opened on 2026-10-06. It waits for the independent re-binding of the duration receipt
+  (above) before it can be green.
 - **Reverse checks** (the base tree exported with `git archive`, the new tests copied in;
   run again by the agent that finished this from the first one's patch). The new keyframes
   test fails on the base at the first `--accept-best`: an explainer's failing shot is kept,
