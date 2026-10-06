@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-correct-nikko-pass-eligibility-for-accompanying
 title: Correct NIKKO PASS eligibility for accompanying Japanese nationals
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-board-closures
+claimed_at: 2026-10-06T00:48:00Z
 created_at: 2026-09-20T09:40:44Z
 completed_at:
-branch: codex/nikko-pass-eligibility
+branch: claude/board-closures
 depends_on: []
 scope:
   - apps/api/app/guides/content/nikko-day-trip-from-tokyo.json

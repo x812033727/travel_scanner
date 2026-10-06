@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-correct-kyoto-flat-fare-bus-ic
 title: Correct Kyoto flat-fare bus IC and one-day-pass boarding steps
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-board-closures
+claimed_at: 2026-10-06T00:48:41Z
 created_at: 2026-09-20T09:43:51Z
 completed_at:
-branch: codex/nikko-pass-eligibility
+branch: claude/board-closures
 depends_on: []
 scope:
   - apps/api/app/guides/content/kyoto-bus-subway-guide.json

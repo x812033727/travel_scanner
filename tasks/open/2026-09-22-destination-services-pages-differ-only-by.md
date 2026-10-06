@@ -1,14 +1,14 @@
 ---
 id: 2026-09-22-destination-services-pages-differ-only-by
 title: Destination services pages differ only by their title, so Google picks its own canonical
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-5-board-closures
+claimed_at: 2026-10-06T00:47:23Z
 created_at: 2026-09-22T10:39:00Z
 completed_at:
-branch:
+branch: claude/board-closures
 depends_on: []
 scope:
   - apps/web/components/travel-services/destination-services-page.tsx
