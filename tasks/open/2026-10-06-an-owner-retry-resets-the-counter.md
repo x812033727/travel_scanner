@@ -1,7 +1,7 @@
 ---
 id: 2026-10-06-an-owner-retry-resets-the-counter
 title: An owner retry resets the counter that blocked the video and a new seed replaces an exhausted picture request
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: claude-fable-5-1-video-unstuck
