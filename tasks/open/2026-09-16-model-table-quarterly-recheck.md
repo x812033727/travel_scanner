@@ -78,3 +78,12 @@ Meta Llama 2026-09-16 當天查不到現行版本（llama.com 轉 developer.meta
 
 這張票照舊開著：下一次是 2026-12 或 2027-01，必改的是 `gemini-3.8-flash`（0.75／3.75 標到
 2026-12-31，之後 1.50／7.50），以及 `gpt-5.6-sol` 的促銷價（至少到 2026-11-21）是否還在定價頁上。
+
+同一天的獨立查核第二輪再補兩件（讀數在 notes.md 的「獨立查核第二輪的更正」）：
+
+- Mistral Large 4（10/06 公開預覽）的 0.68／2.09 是上市兩週的五折價，更新紀錄寫「Launch pricing: 50% off for
+  2 weeks.」，原價 1.36／4.18；大約 10/20 結束。旗艦表下面那段與 `ai-api-pricing-comparison-2026` 第 15 段、
+  第 22 段的提醒框都寫了。下次重查時看 Large 4 是否已正式上線、`mistral-large-latest` 是否改指 Large 4，
+  是的話旗艦表那一列要換。
+- `sources` 仍是 20 筆，但 Meta Muse Glimmer 30B 權重頁換成 Mistral 更新紀錄；上下文與最大輸出改在旗艦表
+  caption 寫明「在定價頁沒寫的，照各家的模型說明頁」，模型頁網址都在 notes.md。

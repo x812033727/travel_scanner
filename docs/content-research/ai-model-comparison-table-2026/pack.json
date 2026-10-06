@@ -160,11 +160,11 @@
               "SWE-bench Verified 80.5%"
             ]
           ],
-          "caption": "十家官網 2026 年 10 月 6 日當天的標準價，未套用快取、批次與離峰折扣。分數為廠商自報、項目與測試條件各家不同，不可直接相減排名次。"
+          "caption": "十家官網 2026 年 10 月 6 日當天的標準價，未套用快取、批次與離峰折扣；上下文與最大輸出在定價頁沒寫的，照各家的模型說明頁。分數為廠商在發布頁、官方模型卡或 API 文件更新紀錄裡自報的數字，項目與測試條件各家不同，不可直接相減排名次。"
         },
         {
           "type": "paragraph",
-          "text": "有幾個欄位要小心讀。gemini-3.1-pro-preview 與 grok-4.7 的價格是 20 萬 token 以內的價，超過門檻兩欄都會往上跳；xAI 的釋出說明寫 grok-4.7 沒有文字輸出上限，所以那一格寫「無輸出上限」。MiniMax-M3 的上下文是 100 萬 token，但輸入超過 51.2 萬就改收另一段價。deepseek-v4-pro 寫的是尖峰價，離峰對折，而且官網的輸入價分「快取命中」與「快取未命中」兩欄，表上用的是未命中那一欄。kimi-k3 同樣有快取命中價，未命中是 3.00 美元、命中只要 0.30 美元。Mistral 的命名跟價位帶對不上：掛著 Large 的 Mistral Large 3 反而比掛著 Medium 的便宜。同一天 Mistral 的定價頁還把剛開放公開預覽的 Mistral Large 4 排在第一列，每百萬 token 輸入 0.68 美元、輸出 2.09 美元，上下文 100 萬 token；API 的 mistral-large-latest 仍指向 Large 3，表上照列 Large 3。"
+          "text": "有幾個欄位要小心讀。gemini-3.1-pro-preview 與 grok-4.7 的價格是 20 萬 token 以內的價，超過門檻兩欄都會往上跳；xAI 的釋出說明寫 grok-4.7 沒有文字輸出上限，所以那一格寫「無輸出上限」。MiniMax-M3 的上下文是 100 萬 token，但輸入超過 51.2 萬就改收另一段價。deepseek-v4-pro 寫的是尖峰價，離峰對折，而且官網的輸入價分「快取命中」與「快取未命中」兩欄，表上用的是未命中那一欄。kimi-k3 同樣有快取命中價，未命中是 3.00 美元、命中只要 0.30 美元。Mistral 的命名跟價位帶對不上：掛著 Large 的 Mistral Large 3 反而比掛著 Medium 的便宜。同一天 Mistral 的定價頁還把剛開放公開預覽的 Mistral Large 4 排在第一列，標的是上市兩週的五折價：每百萬 token 輸入 0.68 美元、輸出 2.09 美元（原價 1.36 美元與 4.18 美元），上下文 100 萬 token；API 的 mistral-large-latest 仍指向 Large 3，表上照列 Large 3。"
         },
         {
           "type": "rich_paragraph",
@@ -734,8 +734,13 @@
           "checked_on": "2026-10-06"
         },
         {
-          "title": "Mistral 文件：定價頁（Large 4、Large 3、Medium 3.5、Small 4 與 Ministral 3 的每百萬 token 價）",
+          "title": "Mistral 文件：定價頁（Large 4 的五折特價與原價，Large 3、Medium 3.5、Small 4 與 Ministral 3 的每百萬 token 價）",
           "url": "https://docs.mistral.ai/inference/pricing",
+          "checked_on": "2026-10-06"
+        },
+        {
+          "title": "Mistral 文件：更新紀錄（2026 年 10 月 6 日 Mistral Large 4 開放公開預覽、100 萬 token 上下文，上市價兩週內五折）",
+          "url": "https://docs.mistral.ai/resources/changelogs",
           "checked_on": "2026-10-06"
         },
         {
@@ -761,11 +766,6 @@
         {
           "title": "Z.AI 文件：定價總覽（GLM-5.3 與 GLM-5.3-Flash 的每百萬 token 價）",
           "url": "https://docs.z.ai/guides/overview/pricing",
-          "checked_on": "2026-10-06"
-        },
-        {
-          "title": "Meta 官方權重庫：Muse Glimmer 30B（LICENSE 檔為未修改的 Apache License 2.0，參數與上下文取自 config.json）",
-          "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
           "checked_on": "2026-10-06"
         },
         {

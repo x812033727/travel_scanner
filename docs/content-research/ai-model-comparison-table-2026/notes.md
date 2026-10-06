@@ -366,3 +366,30 @@ PR #1333 的獨立查核（第一輪）指出的錯，套用前逐頁用 `curl -
   （中階表的 deepseek-flash），8/13 的 V4-Pro 那一則只有 Terminal Bench 2.1 87.9。揭露表的 DeepSeek 列
   標成「中階模型」，caption 寫明這一點；「六家裡各有四家列出」是以廠商計，仍成立。
 
+## 2026-10-06 獨立查核第二輪的更正
+
+第二輪（換人）指出三件事，套用前逐頁用 `curl -sSL` 加編輯部 User-Agent 重開過，全部 HTTP 200。
+
+- **Mistral Large 4 的 0.68／2.09 是上市兩週的五折價**：https://docs.mistral.ai/inference/pricing 那一列的徽章就是
+  「Sale price」，三欄都是「Original price $1.36／$0.14／$4.18」對「Sale price $0.68／$0.07／$2.09」；
+  https://docs.mistral.ai/resources/changelogs 的 October 6 寫「Mistral Large 4 (mistral-large-4) is now available in
+  Public Preview」「a 1M context window」「Launch pricing: 50% off for 2 weeks.」。定價頁與模型頁都沒有寫結束日
+  （徽章是 tooltip，頁面資料裡沒有期限字樣）。旗艦表下面那段改成「標的是上市兩週的五折價……（原價 1.36 美元與
+  4.18 美元）」，表與價位帶不動：兩組價都在旗艦區間內，表上照列 Large 3。
+- **`sources` 撐不起的格子**：第一輪補的 12 格上下文／最大輸出（Gemini 五個 Flash／Flash-Lite、Mistral 四個、
+  GLM-5.3 兩個、MiniMax-M2.7），加上第一版就有的 GLM-5.3 分數、deepseek-v4-pro 分數與揭露表的 DeepSeek 列，
+  來源都只在這份筆記。四家定價頁（Gemini、Mistral、Z.AI、MiniMax）今天重看，都沒有上下文或最大輸出；值本身全部
+  再對過一次，沒有錯。要逐頁列進 `sources` 需要十四個網址，上限 20 筆放不下，所以這樣處理：
+  - 旗艦表 caption 加一句「上下文與最大輸出在定價頁沒寫的，照各家的模型說明頁」與「分數為廠商在發布頁、官方模型卡
+    或 API 文件更新紀錄裡自報的數字」；中階與輕量表的 caption 是「同上」，輕量那段正文本來就寫「這一級的上下文視窗
+    官網多半不在定價頁寫，得自己翻模型文件確認」。這和開放權重表 caption「各家自己的權重發布頁」是同一種寫法。
+  - 換掉一筆：拿掉 Meta Muse Glimmer 30B 的權重頁（開放權重表十二列裡的一列，另外八列本來就只靠那張表的 caption），
+    換成 Mistral 更新紀錄。這一頁撐住旗艦表下面那段 Large 4 的三件事：公開預覽、100 萬 token 上下文、上市兩週五折。
+    DeepSeek 更新紀錄與 GLM-5.3 的 HF 模型卡沒有進 `sources`：揭露表 caption 本來就寫明 DeepSeek 一列「寫在 API
+    文件的更新紀錄」，新的旗艦 caption 也點名這三類頁面。Muse Glimmer 那列的網址與讀法仍在上面「進表的十二列」。
+  - 結果：`sources` 仍是 20 筆，權重頁剩三筆（Qwen、MiniMax、Moonshot）。
+- 重讀的值（2026-10-06）：Gemini 各模型頁 Input token limit 1,048,576、Output token limit 65,536；Mistral 四個模型頁
+  Context 256k；docs.z.ai GLM-5.3「a 1M-token context window and a maximum output length of 128K tokens」、GLM-5.3-Flash
+  Context Length 1M、Maximum Output Tokens 128K；MiniMax 文字生成頁 MiniMax-M2.7 204,800（MiniMax-M3 1,000,000）；
+  https://huggingface.co/zai-org/GLM-5.3 Terminal Bench 2.1 88.2；https://api-docs.deepseek.com/updates 8/13 V4-Pro
+  Terminal Bench 2.1 87.9、9/10 V4.1-Flash GPQA Diamond 90.9 與 Terminal-Bench 4.0 31.2。
