@@ -5,7 +5,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { sandbox } from "../core/fixtures/load.mjs";
-import { canonicalJson, normalizeRun, POLICY_HOLD_CODE, runReceiptStore, sourceHash, validateRunReceipt } from "./run-receipts.mjs";
+import { AUTO_ARCHIVE_REASON, canonicalJson, INPUT_CHANGED_CODE, normalizeRun, POLICY_HOLD_CODE, runReceiptStore, sourceHash, validateRunReceipt } from "./run-receipts.mjs";
 
 const site = "https://site.test";
 const request = (slug = "video-one") => ({ stage: "writer", slug, instructions: "Write the checked story.", payload: { locale: "zh-TW", rows: [1, 2] } });
@@ -102,11 +102,67 @@ test("explicit owner retry removes uncertain receipts and preserves running or c
   assert.equal(existsSync(complete.file), true);
 });
 
-test("changed inputs require an owner while a logical stage still has an unfinished receipt", () => {
+test("changed inputs find the unfinished journal as stale, and prepare refuses a new journal beside it until it is reconciled", () => {
   const box = sandbox(), store = runReceiptStore(context(box), site), entry = store.prepare(request());
   store.receive(entry, receipt(entry, "running"));
-  assert.throws(() => store.prepare({ ...request(), instructions: "Use a different source" }), (error) => error.code === "video_ai_receipt_input_changed");
+  const changed = { ...request(), instructions: "Use a different source" };
+  const found = store.find(changed);
+  assert.equal(found.stale, true);
+  assert.equal(found.file, entry.file);
+  assert.equal(found.record.request_key, entry.record.request_key, "the caller gets the saved journal to reconcile with the server");
+  assert.equal(store.find(request()).stale, undefined, "the exact request is a match, not stale");
+  assert.throws(() => store.prepare(changed), (error) => error.code === INPUT_CHANGED_CODE && /inputs changed/.test(error.message));
   assert.ok(existsSync(entry.file));
+  assert.equal(readdirSync(path.dirname(entry.file)).length, 1, "no second journal was created");
+  // Reconciled by the caller (here: the run is over), the next prepare starts the new request.
+  store.receive(entry, receipt(entry));
+  store.archive(entry, { autoArchive: true });
+  assert.equal(store.find(changed), null);
+  const fresh = store.prepare(changed);
+  assert.notEqual(fresh.record.request_key, entry.record.request_key);
+  assert.equal(fresh.record.receipt, null);
+});
+
+test("a stale journal archives itself only when its run is over or never reached the server", () => {
+  const box = sandbox(), store = runReceiptStore(context(box), site);
+  const done = store.prepare(request("done-video")), never = store.prepare(request("never-video"));
+  store.receive(done, receipt(done));
+  for (const entry of [done, never]) {
+    const before = JSON.parse(readFileSync(entry.file, "utf8"));
+    store.archive(entry, { autoArchive: true });
+    assert.equal(existsSync(entry.file), false);
+    const archiveDir = path.join(path.dirname(entry.file), "archive");
+    assert.deepEqual(readdirSync(archiveDir), [`${before.source_hash}-${before.request_key}.json`]);
+    const archived = JSON.parse(readFileSync(path.join(archiveDir, readdirSync(archiveDir)[0]), "utf8"));
+    assert.deepEqual(archived.receipt, before.receipt, "the saved receipt bytes are kept");
+    assert.equal(archived.owner_retry.request_id, null, "no owner request id is consumed");
+    assert.equal(archived.owner_retry.reason, AUTO_ARCHIVE_REASON);
+    assert.match(archived.owner_retry.archived_at, /^\d{4}-\d{2}-\d{2}T/);
+    assert.equal(store.find(request(before.request.slug)), null);
+  }
+  const running = store.prepare(request("running-video")), failed = store.prepare(request("failed-video")), held = store.prepare(request("held-video"));
+  store.receive(running, receipt(running, "running")); store.receive(failed, receipt(failed, "failed"));
+  store.hold(held, { error_code: POLICY_HOLD_CODE, error_status: 409, error_detail: "the video route is disabled" });
+  for (const entry of [running, failed, held]) {
+    assert.throws(() => store.archive(entry, { autoArchive: true }), /terminal stale run/, entry.record.request.slug);
+    assert.ok(existsSync(entry.file));
+  }
+  store.removeFailed(failed);
+  assert.equal(existsSync(failed.file), false, "a plain failure is cleared by removeFailed, not archived");
+  const adopted = store.prepare(request("adopted-video"));
+  store.receive(adopted, receipt(adopted)); store.consume(adopted);
+  const artifact = path.join(box.base, "adopted.json"); writeFileSync(artifact, result.text);
+  store.adopt("adopted-video", { artifacts: [{ path: artifact, sha256: createHash("sha256").update(result.text).digest("hex") }] });
+  assert.throws(() => store.archive(adopted, { autoArchive: true }), /terminal stale run/, "an adopted success is settled, never archived");
+});
+
+test("an owner retry lists plain failed journals so the retry can clear them, and never policy holds without authority", () => {
+  const box = sandbox(), store = runReceiptStore(context(box), site);
+  const failed = store.prepare(request("video-one")), held = store.prepare(request("video-two"));
+  store.receive(failed, receipt(failed, "failed"));
+  store.receive(held, { ...receipt(held, "failed"), error_code: POLICY_HOLD_CODE, dispatched_at: null });
+  assert.deepEqual(store.retryCandidates("video-one").map((entry) => entry.file), [failed.file]);
+  assert.deepEqual(store.retryCandidates("video-two"), []);
 });
 
 test("persisted artifact adoption permits a correction after restart and survives later legitimate artifact changes", () => {
@@ -209,17 +265,24 @@ test("rename errors off Windows, and other codes on Windows, fail on the first a
   }
 });
 
-test("an owner retry archive survives a transient Windows denial of its final move", () => {
-  const box = sandbox(), io = denyRenames({ code: "EBUSY", failures: 1, only: (to) => path.basename(path.dirname(to)) === "archive" });
-  const store = runReceiptStore({ ...context(box), receiptIo: io }, site);
-  const entry = store.prepare(request()), archiveDir = path.join(path.dirname(entry.file), "archive");
-  store.receive(entry, receipt(entry, "uncertain"));
-  store.archive(entry);
-  assert.equal(existsSync(entry.file), false);
-  assert.deepEqual(io.waits, [10]);
-  assert.equal(io.attempts.filter((attempt) => attempt.from === entry.file).length, 2);
-  assert.deepEqual(readdirSync(archiveDir), [`${entry.record.source_hash}-${entry.record.request_key}.json`]);
-  assert.equal(JSON.parse(readFileSync(path.join(archiveDir, readdirSync(archiveDir)[0]), "utf8")).request_key, entry.record.request_key);
+test("an owner retry archive and a stale run's own archive survive a transient Windows denial of the final move", () => {
+  for (const [status, options] of [["uncertain", {}], ["succeeded", { autoArchive: true }]]) {
+    const box = sandbox(), io = denyRenames({ code: "EBUSY", failures: 1, only: (to) => path.basename(path.dirname(to)) === "archive" });
+    const store = runReceiptStore({ ...context(box), receiptIo: io }, site);
+    const entry = store.prepare(request()), archiveDir = path.join(path.dirname(entry.file), "archive");
+    store.receive(entry, receipt(entry, status));
+    const bytes = readFileSync(entry.file, "utf8");
+    store.archive(entry, options);
+    assert.equal(existsSync(entry.file), false, status);
+    assert.deepEqual(io.waits, [10], status);
+    assert.equal(io.attempts.filter((attempt) => attempt.from === entry.file).length, 2, status);
+    assert.deepEqual(readdirSync(archiveDir), [`${entry.record.source_hash}-${entry.record.request_key}.json`], status);
+    const archived = JSON.parse(readFileSync(path.join(archiveDir, readdirSync(archiveDir)[0]), "utf8"));
+    assert.equal(archived.request_key, entry.record.request_key, status);
+    assert.deepEqual(archived.receipt, JSON.parse(bytes).receipt, `${status}: the receipt bytes moved, never rewritten`);
+    assert.deepEqual(leftovers(entry), [], status);
+    if (options.autoArchive) assert.deepEqual({ ...archived.owner_retry, archived_at: null }, { request_id: null, reason: AUTO_ARCHIVE_REASON, archived_at: null });
+  }
 });
 
 test("a journal replacement's temporary file is owner-only before its rename", { skip: process.platform === "win32" && "Windows does not report POSIX modes" }, () => {
@@ -239,5 +302,7 @@ test("pending lookup tolerates only derived date and shared lexicon drift and re
   const recovered = restarted.prepare(drift);
   assert.equal(recovered.record.request_key, entry.record.request_key);
   assert.deepEqual(recovered.record.request.payload, original.payload);
-  assert.throws(() => restarted.prepare({ ...drift, payload: { ...drift.payload, brief: "new unreviewed facts" } }), /inputs changed/);
+  const changed = { ...drift, payload: { ...drift.payload, brief: "new unreviewed facts" } };
+  assert.throws(() => restarted.prepare(changed), /inputs changed/);
+  assert.equal(restarted.find(changed).stale, true);
 });
