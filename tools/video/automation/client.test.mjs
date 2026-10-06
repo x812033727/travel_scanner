@@ -5,7 +5,7 @@ import test from "node:test";
 
 import { EXIT, main as runCli } from "../cli.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
-import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
+import { AutomationError, automationClient, PAUSE_CODES, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { AUTO_ARCHIVE_REASON, INPUT_CHANGED_CODE, RUN_RECEIPTS_DIR, runReceiptStore } from "./run-receipts.mjs";
 
 const SITE = "https://site.test";
@@ -70,6 +70,39 @@ test("a generic upstream failure remains a service error with bounded retries", 
   });
   assert.equal(calls, 3);
   assert.deepEqual(sleeps, [5000, 10000, 20000]);
+});
+
+// Every subscription account rests: at its usage cap, or because its CLI can no longer
+// authenticate (the API's video_ai_subscription_auth_failed, 503 with a retry_after). Nothing
+// ran either way; the run ends and the worker's next round asks again.
+test("a subscription whose every account cannot authenticate pauses the run like one at its cap: one request, no wait, not the owner's", async () => {
+  assert.deepEqual([...PAUSE_CODES].sort(), ["video_ai_subscription_auth_failed", "video_ai_subscription_paused"]);
+  for (const [code, status, detail] of [
+    ["video_ai_subscription_paused", 429, "every Claude account is at or above 80%"],
+    ["video_ai_subscription_auth_failed", 503, "every subscription account's CLI failed to authenticate; sign one in again on /admin/ai-accounts"],
+  ]) {
+    const box = sandbox();
+    let calls = 0;
+    const sleeps = [];
+    const client = automationClient({
+      ...credentials(box),
+      fetch: async () => {
+        calls++;
+        return Response.json({ code, detail }, { status, headers: { "Retry-After": "900" } });
+      },
+      sleep: async (ms) => sleeps.push(ms),
+    }, { attempts: 3 });
+    await assert.rejects(client.run("writer", "draft-example", "Write a video", {}), (error) => {
+      assert.ok(error instanceof AutomationError, code);
+      assert.equal(error.code, code);
+      assert.equal(error.status, status);
+      assert.equal(error.message, detail);
+      assert.notEqual(error.who, "owner", `${code}: auto ends with exit 4 and the next round tries again, as for a pause`);
+      return true;
+    });
+    assert.equal(calls, 1, `${code}: asked once in the run`);
+    assert.deepEqual(sleeps, [], `${code}: not retried within the run`);
+  }
 });
 
 test("auto exits for the owner after one real stage request when Claude Code needs updating", async () => {

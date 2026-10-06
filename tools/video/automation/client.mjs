@@ -47,9 +47,11 @@ const OWNER_CODES = new Set([
 // days of Shorts do not push them past the list's cap of 200 (docs/videos/SHORTS.md §資料模型).
 export const TUTORIAL_LIST = Object.freeze({ shorts: "exclude" });
 const RETRYABLE_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "rate_limit_exceeded", "upstream_unavailable"]);
-// Every subscription account is at the owner's cap: nothing ran, and retrying within minutes will
-// not help. This run of `auto` ends; the worker's loop tries again on its next round.
-const PAUSE_CODES = new Set(["video_ai_subscription_paused"]);
+// Every subscription account is at the owner's cap, or every one's CLI can no longer
+// authenticate and the owner has to sign one in again (video_ai_subscription_auth_failed, 503
+// with a retry_after): nothing ran, and retrying within minutes will not help. This run of
+// `auto` ends; the worker's loop tries again on its next round.
+export const PAUSE_CODES = new Set(["video_ai_subscription_paused", "video_ai_subscription_auth_failed"]);
 // A stage run's 5xx that settles it: the API's own answer once the run is over (it is recorded as
 // failed, no answer was lost), or the web route's 502 for an API it never reached. Any other 5xx
 // after a stage run was sent leaves its outcome unknown (RUN_UNCERTAIN).
