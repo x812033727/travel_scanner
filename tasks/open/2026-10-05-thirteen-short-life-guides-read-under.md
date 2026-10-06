@@ -265,3 +265,129 @@ All eight corrections were applied after their sources were re-read with the edi
 - `digital-receipt-archive` en block 11: “Date_Product_Seller”, which matches block 6.
 - `file-naming-system-for-home` en block 14: “Anyone else who has an opinion leaves a comment”.
 - The two items under “suspected” were not changed. Second round: the coordinator decides, as the report says.
+
+The round-2 report follows verbatim, with its headings moved down two levels so they sit under this section.
+
+### verify-2: PR #1331 (claude/short-life-a), seven short life guides, new sections
+
+An independent round-2 fact-checker ran this check on 2026-10-06, read-only. Branch head: `0e8c6a84e5045f1df866a698befd7203fe4c096f` (fetched again before checking). Every fetch used `curl -sSL` with UA `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`, at least 1.2 s apart per host. HTML comments were stripped before reading and the HTTP status was checked each time. No personal data was sent in any UA, header, query or form.
+
+Scope: `git diff origin/main...origin/claude/short-life-a` covers 7 packs × 5 locales plus the task file. For each slug and locale I took every block that is new or changed against the merge-base and compared it with the head. Changes outside the new sections are limited to these:
+- desk-cable zh-TW/zh-CN block 3, email-triage zh-TW/zh-CN block 3 and digital-receipt zh-TW/zh-CN callout: 本文/這篇文章 → 這裡/這套做法.
+- file-naming block 3 in all locales: 「重新命名」 → 「命名」.
+- `checked_on` re-dated to 2026-10-06.
+- backup source URLs replaced.
+
+Title, description and hero are unchanged in every locale.
+
+#### Outcome
+
+**No errors found.** All 8 round-1 corrections are applied correctly in every locale they cover and introduced nothing new. Every other new-section claim I checked (more than the required random third; in practice all of them) is CONFIRMED against the cited help page, in English and in the localized help page for ja, ko, zh-CN and zh-TW. The per-locale review of en/ja/ko/zh-CN against zh-TW found no mistranslation or meaning drift. Second round required: no further round (zero fact changes in this round).
+
+#### Sources fetched
+| Source | Final URL | Status | Locales also read |
+|---|---|---|---|
+| MS File History | support.microsoft.com/en-au/windows/experience/backup-recovery/backup-and-restore-with-file-history | 200 | zh-tw, ja-jp, ko-kr, zh-cn (all 200) |
+| MS Backup/Restore/Recovery | support.microsoft.com/en-us/windows/experience/backup-recovery/backup-restore-and-recovery-in-windows | 200 | none |
+| Old pack URL 1 (`/en-US/Windows/Experience/...`) | 301 to the URL above | 301 | none |
+| Old pack URL 2 (`/en-au/windows/backup-and-restore-with-file-history-7bf065bf-...`) | 301 to the File History URL above | 301 | none |
+| Chrome bookmarks | support.google.com/chrome/answer/188842?hl=en-UM | 200 | zh-Hant, ja, ko, zh-Hans (all 200) |
+| USB-IF | www.usb.org/cable_connector | 200 | none |
+| OneDrive for Android scan | support.microsoft.com/en-us/onedrive/scan-a-whiteboard-document-business-card-or-photo-in-onedrive-for-android | 200 | zh-tw, ja-jp, ko-kr, zh-cn (all 200) |
+| Gmail organize & archive | support.google.com/mail/answer/9259770?hl=en | 200 | ko, ja, zh-Hans, zh-Hant (all 200) |
+| Google Drive organize | support.google.com/drive/answer/2375091?co=GENIE.Platform%3DDesktop&hl=en | 200 | none |
+| iFixit scoring | www.ifixit.com/News/75533/how-ifixit-scores-repairability | 200 | none |
+| OneDrive marketing page | www.microsoft.com/en-us/microsoft-365/onedrive/document-scanning | 200, but a bot-block shell, so not a source | unchanged claim, `checked_on` stays 2026-09-14 (UNVERIFIABLE) |
+
+#### A. Round-1 corrections, checked again at 0e8c6a84
+| # | Correction | Verdict | Evidence |
+|---|---|---|---|
+| R1 | backup zh-TW block 14 → 「打開檔案總管，找到檔案原本所在的資料夾，按右鍵選「還原先前版本」」 | CONFIRMED | MS zh-tw: 「打開檔案總管，然後導航到原本包含該檔案或資料夾的資料夾。右鍵點擊資料夾名稱，然後選擇 還原先前版本」 |
+| R2 | backup en block 14 → "Open File Explorer, go to the folder where the file used to be, right-click it and select Restore previous versions" | CONFIRMED | MS en-au: "Open File Explorer and navigate to the folder that used to contain the file or folder. Right-click on the folder name, and then select Restore previous versions." |
+| R3 | backup ja block 14 → 「エクスプローラーで、…右クリックして［以前のバージョンの復元］」 | CONFIRMED | MS ja-jp: 「エクスプローラーを開き、…フォルダーに移動します。フォルダー名を右クリックし、[以前のバージョンの 復元] を選択します」 |
+| R4 | backup ko block 14 → 「파일 탐색기에서 … 마우스 오른쪽 단추로 클릭하고 ‘이전 버전 복원’」 | CONFIRMED | MS ko-kr: 「파일 탐색기 열고 … 폴더 이름을 마우스 오른쪽 단추로 클릭한 다음 이전 버전 복원을 선택합니다」 |
+| R5 | backup zh-CN block 14 → 「打开文件资源管理器，…右键单击并选择“还原以前的版本”」 | CONFIRMED | MS zh-cn: 「打开文件资源管理器并导航到用于包含文件或文件夹的文件夹。右键单击文件夹名称，然后选择“还原以前的版本”」 |
+| R6 | backup sources[0]/[1] in all 5 locales → post-redirect URLs | CONFIRMED | Both old URLs return 301 to exactly the new URLs, and both new URLs return 200 with the real article. No old URL is left anywhere in the pack (grep count 0). |
+| R7 | digital-receipt en block 11 "Date_Item_Seller" → "Date_Product_Seller" | CONFIRMED | Matches en block 6 table row 1. Pattern counts across the pack: Date_Product_Seller ×2, 日期_商品_店家 ×4 (zh-TW + zh-CN), 日付_商品_購入店 ×2, 날짜_상품_판매처 ×2. |
+| R8 | file-naming en block 14 "Anyone else with a view" → "Anyone else who has an opinion" | CONFIRMED | Matches zh-TW 「其他人有意見就留言」, ja 「意見があれば」, ko 「의견이 있으면」 and zh-CN 「有意见就留言」. |
+
+A grep of the head packs finds no leftover pre-fix wording: no "In File History", 「在檔案歷程記錄裡」, 「ファイル履歴では」, 「파일 히스토리에서는」, 「在文件历史记录中」, "Date_Item_Seller" or "with a view". Each fix sentence is otherwise unchanged, so the rest of block 14 (yesterday's version, preview, Restore to…, the irreversible-replace warning, recovery drive) still holds; see B3–B8.
+
+#### B. Other changed claims (all new-section claims checked; all CONFIRMED)
+##### backup-and-restore-home-files (blocks 11–15)
+1. File History automatically backs up Documents, Pictures, Videos and Desktop plus libraries. Source: "automatically backs up all your libraries"; "automatically backs up essential folders like Documents, Pictures, Videos, and Desktop".
+2. Folders elsewhere must be added to a library. Source: "add them to an existing library or create a new library"; "Include in library".
+3. Deleted today → choose yesterday's folder version. Confirmed in all 5 MS locales.
+4. Preview before restoring. Source: expand Open → Open in File History.
+5. Expand Restore → Restore to… another location.
+6. A plain restore replaces the current version and cannot be undone (Warning box, all locales).
+7. The recovery drive does not include personal files. Source: "The Recovery Drive doesn't include your personal files".
+8. Restore points and the recovery drive handle system state (System Protection / System Restore / Recovery Drive sections).
+9. Table row 3: backups go to an external drive or network location.
+10. UI names. zh-TW 檔案歷程記錄 matches the MS zh-tw page title 「使用 [檔案歷程記錄] 備份與還原」. ko 파일 히스토리 matches the MS ko-kr title 「파일 히스토리를 사용하여 백업 및 복원」. ja ファイル履歴, zh-CN 文件历史记录, 还原以前的版本 and 还原到 also match.
+
+##### browser-bookmark-project-folders (blocks 11–15)
+11. More > Bookmarks and lists > Show all bookmarks opens the side panel.
+12. Organize icon → Sort by last opened. Localized labels match the help pages: zh-Hant 「整理」/按「上次開啟時間」排序; zh-Hans 整理/按上次打开时间排序; ja 管理アイコン/最後に開いた日付で並べ替え; ko 구성/최근 연 날짜순으로 정렬. 書籤和清單/顯示所有書籤, 书签和清单/显示所有书签, ブックマークとリスト/すべてのブックマークを表示 and 북마크 및 목록/모든 북마크 표시 also match.
+13. A deleted bookmark cannot be recovered: "After you delete a bookmark, you can't get it back"; zh-Hant 「刪除書籤後就無法還原」; zh-Hans 「书签一经删除，便无法恢复」.
+14. @bookmarks, then Tab or Space, then keywords.
+15. Same Google Account on all devices: "When you sign in to Chrome with your Google Account, you can use bookmarks … on all your devices".
+
+##### desk-cable-charging-organization (blocks 8–12)
+16. Certified USB-C to USB-C cables must carry a 60W or 240W power logo.
+17. Every cable except High-Speed USB (USB 2.0) must also show its data rate.
+18. Example: the Combined Performance and Power 20Gbps/60W logo.
+19. A certified cable with a power logo only is USB 2.0 class. This follows from 17: USB 2.0 cables are "required to have the power icon", and the speed logo is optional for them.
+20. One non-USB end or a fixed cable puts it outside certification. Source: "Captive cables are not eligible … one USB connector and is either permanently attached or has a non-USB connector".
+21. A certified cable does not raise a device's capability. Source: "nor does it augment the capabilities of those products".
+
+##### digital-receipt-archive (blocks 8–12, 15)
+22. Choose Document mode when scanning. Localized names match: 文件 / ドキュメント / 문서 / 文档.
+23. Done → enter a file name → Save (en; ko 「완료를 탭하고 파일 이름을 입력한 다음 저장」).
+24. Files are saved as PDF automatically (all 5 locales).
+25. Multi-page scanning holds at most 10 pages. Source: "The maximum number of pages/images that can be multi-page scanned is 10" (also confirmed in zh-tw, ja-jp, ko-kr and zh-cn).
+26. Callout change 本文 → 這套做法 is wording only.
+
+##### email-triage-three-actions (blocks 11–15)
+27. Archived mail stays in All Mail. Localized: 所有郵件 / 所有邮件 / すべてのメール / 전체보관함.
+28. Muted conversations: replies skip the inbox and go to the archive. Localized: 略過 / 忽略 / ミュート / 알림 끄기 (ko step: 「더보기 알림 끄기」).
+29. "If someone replies to a message you archive, it returns to your inbox" (en, ja, ko).
+30. Trash is deleted automatically after 30 days. zh-Hans uses 已删除邮件, which matches the zh-CN text.
+31. Snooze. Localized: 延後 / 延后 / スヌーズ / 다시 알림.
+32. is:muted finds muted threads.
+33. "Search by sender, select all, archive": the page describes multi-select. No numeric claim.
+
+##### file-naming-system-for-home (blocks 3 and 11–15)
+34. List view plus sort by name puts similar names together. Source: "Sort files by name and ensure you're in the list view".
+35. The search bar can find suspected duplicates.
+36. "If you delete a shortcut, the original file is not deleted."
+37. Without move permission, "A shortcut is created in the destination folder instead."
+38. Folder colors: "it only applies to your version of Drive".
+39. Items can be restored from the trash.
+40. Block 3 「重新命名」 → 「命名」 (en "name them clearly"): consistent with the page, which now gives naming-convention advice, not rename steps.
+41. Folder and file descriptions exist ("Add or edit descriptions").
+
+##### gadget-purchase-needs-checklist (blocks 11–15)
+42. Service manual 10%, replacement parts 10%, design 80%.
+43. Manual and parts can be checked on the OEM support site, or through a third party the support site links to.
+44. A manual behind registration or a paywall earns no credit (table row 1).
+45. "it's not uncommon for 3-6 months to elapse after a device first goes on sale before replacement parts … become available".
+46. Parts pairing: genuine parts that need calibration or pairing software.
+47. "Studies show that if the cost of repair exceeds about a third of the price of a new product, many people won't bother fixing it." The article attributes this to studies cited by iFixit.
+48. Model identifier: iFixit raises missing identifying marks and the settings menu.
+49. Software updates: iFixit raises this as a concern. The article does not claim it is scored (see notes).
+
+#### C. Per-locale review (en/ja/ko/zh-CN against zh-TW, new sections of all 7 slugs)
+I read every new heading, paragraph, table and caption. No meaning drift and no number mismatch. UI names follow each language's official help page (B10, B12, B22, B27–B31). The ko speech level matches each article's base text: email-triage stays in 해라체, the others in 합니다체.
+
+#### D. Reader-first
+In zh-TW and zh-CN, 本文 appears 0 times and 這篇/这篇 at most once per pack. The PR's 本文 → 這裡 replacements bring every pack under the limit. The new sections contain no verification narration.
+
+#### E. Suspected but not changed (no error)
+- gadget table rows 「軟體與安全更新」 and 「送修方式」 are not part of iFixit's current scorecard: software updates are "not yet integrated into our scorecard". Block 12 only says to add these rows when comparing candidates and does not claim they are scored, so this is not a factual error.
+- desk-cable ja and ko block 12 render 「一直沒用到」 as "never used once" (一度も使わなかった / 한 번도 쓰지 않은). The nuance is negligible.
+- backup en block 14 says "choose Restore to a different location", while the MS label is "Restore to…". zh-TW has the same structure (「還原到」另一個位置), so this is not an error.
+
+#### F. Not done
+- I did not run the mechanical self-checks (ingest dry-run, intake_check): there is no venv in the detached main clone, and this round is read-only. All 7 packs load as valid JSON.
+- The OneDrive marketing page is unverifiable (bot-block shell). The PR did not change the claim it backs.
