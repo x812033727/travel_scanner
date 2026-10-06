@@ -1,7 +1,7 @@
 """The owner's requests for a slides video of a chosen site article (docs/videos/AUTOMATION.md).
 
-Revision ID: 0126_video_slides_requests
-Revises: 0125_ai_income_topic
+Revision ID: 0127_video_slides_requests
+Revises: 0126_ai_income_topic
 
 ``video_slides_requests`` is what the owner files on the tutorials tab of /admin/videos to have
 one published lifestyle article made into a slides video next, ahead of the scheduled drafts;
@@ -22,8 +22,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0126_video_slides_requests"
-down_revision: str | None = "0125_ai_income_topic"
+revision: str = "0127_video_slides_requests"
+down_revision: str | None = "0126_ai_income_topic"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

@@ -25,7 +25,7 @@ from app.db import engine
 from app.models import VideoToolToken
 from app.video_automation.models import VideoSlidesRequest
 
-MIGRATION = "0126_video_slides_requests"
+MIGRATION = "0127_video_slides_requests"
 TABLE = "video_slides_requests"
 NOW = datetime(2026, 10, 5, 8, 0, tzinfo=UTC)
 POSTGRES = pytest.mark.skipif(
@@ -55,10 +55,10 @@ def test_model_and_migration_constraints_match() -> None:
     }
     assert migration.STATUS_CHECK in checks
     uniques = {item.name for item in table.constraints if isinstance(item, sa.UniqueConstraint)}
-    assert "uq_video_slides_requests_slug" in uniques, "a fresh database names it as 0126 does"
+    assert "uq_video_slides_requests_slug" in uniques, "a fresh database names it as 0127 does"
     assert migration.INDEX in {index.name for index in table.indexes}
     assert migration.revision == MIGRATION
-    assert migration.down_revision == "0125_ai_income_topic"
+    assert migration.down_revision == "0126_ai_income_topic"
     assert len(migration.revision) <= 32
 
 

@@ -1,7 +1,7 @@
 """The lifestyle vocabulary gains ``ai-income`` under ``ai``: earning with AI.
 
-Revision ID: 0125_ai_income_topic
-Revises: 0124_video_review_subject
+Revision ID: 0126_ai_income_topic
+Revises: 0125_news_review_judge
 
 Seeding only, on 0080's contract: only a slug the database does not already hold is
 inserted, so a re-run is a no-op and a label an administrator rewrote is never restored; the
@@ -24,8 +24,8 @@ import sqlalchemy as sa
 from alembic import context, op
 from sqlalchemy.engine import Connection
 
-revision: str = "0125_ai_income_topic"
-down_revision: str | None = "0124_video_review_subject"
+revision: str = "0126_ai_income_topic"
+down_revision: str | None = "0125_news_review_judge"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

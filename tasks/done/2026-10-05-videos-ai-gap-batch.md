@@ -16,8 +16,8 @@ scope:
   - apps/api/app/video_automation/topics.py
   - apps/api/app/video_automation/slides_requests.py
   - apps/api/app/video_automation/admin_api.py
-  - apps/api/migrations/versions/0126_video_slides_requests.py
-  - apps/api/tests/test_migration_0126_video_slides_requests.py
+  - apps/api/migrations/versions/0127_video_slides_requests.py
+  - apps/api/tests/test_migration_0127_video_slides_requests.py
   - apps/api/tests/test_video_slides_requests.py
   - apps/api/tests/test_video_automation_ai.py
   - apps/web/app/api/video/automation/slides-requests
@@ -49,7 +49,7 @@ drama series.
 
 ## Definition of done
 
-- [x] `video_slides_requests` (migration 0126) with admin routes (list, file, withdraw) and
+- [x] `video_slides_requests` (migration 0127; renumbered from 0126 after #1345 took 0125) with admin routes (list, file, withdraw) and
       worker routes (next, start, done); a request is refused while automation is off, for an
       article that is not a published zh-TW life article, one already queued or started, or
       one a live slides video already retells.

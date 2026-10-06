@@ -36,7 +36,7 @@ scope:
   - apps/web/public/guides/robo-advisor-taiwan-explained
   - apps/web/public/guides/ai-trading-bot-claims
   - apps/api/app/guides/taxonomy.py
-  - apps/api/migrations/versions/0125_ai_income_topic.py
+  - apps/api/migrations/versions/0126_ai_income_topic.py
   - apps/api/tests/test_guides_migration.py
   - docs/life-ai-income-investing
 ---
@@ -52,7 +52,7 @@ The site had no article on the first and `investing` had none at all. Spec and a
 
 ## Definition of done
 
-- [x] Sub-topic `ai-income` under `ai` (taxonomy + migration 0125 + migration test).
+- [x] Sub-topic `ai-income` under `ai` (taxonomy + migration 0126, renumbered from 0125 after #1345 took it, + migration test).
 - [x] Twelve zh-TW packs, each with a self-drawn hero, one diagram, at least 3 h2s, a table,
       sources with `checked_on` 2026-10-05, and internal links (sibling links added by the
       cross-check).

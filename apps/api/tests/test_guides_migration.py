@@ -231,14 +231,14 @@ LIFE_SEED_MIGRATIONS = (
     "0075_finance_topic",
     "0076_guide_topic_hierarchy",
     "0080_crypto_and_tech_topics",
-    "0125_ai_income_topic",
+    "0126_ai_income_topic",
 )
 #: The subset that seeds sub-topics and hub leads. 0074 and 0075 predate both, so they carry
 #: no ``LIFE_SEED_SUBTOPICS`` at all.
 LIFE_SUBTOPIC_MIGRATIONS = (
     "0076_guide_topic_hierarchy",
     "0080_crypto_and_tech_topics",
-    "0125_ai_income_topic",
+    "0126_ai_income_topic",
 )
 
 
@@ -773,7 +773,7 @@ def test_0125_seeds_ai_income_under_ai_and_its_rollback_takes_only_that_row(monk
         "0075_finance_topic",
         "0076_guide_topic_hierarchy",
         "0080_crypto_and_tech_topics",
-        "0125_ai_income_topic",
+        "0126_ai_income_topic",
     )
     modules = [migration(name) for name in names]
     for module in modules:
