@@ -88,3 +88,4 @@ node tools/video/shorts/cli.mjs qa --dir <build> --offline     # captions: ok, n
   align here, no Azure to compare against, and the Dockerfile outside that ticket's scope.
 - `numpy` is already a runtime dependency (through ortools), so an ONNX model needs only
   `sherpa-onnx` (which bundles onnxruntime) or `onnxruntime` (a 23.6 MB wheel) itself.
+- 2026-10-06 (from `2026-10-05-long-video-cc-from-aligned-times`): once this ships, long-video lines could be aligned per clip through `tools/video/tts/client.mjs` `alignClip`, which would cover Gemini voices too; long-video `tts` does not call it yet, and sends only phrase-sized Azure requests to `speech/align` (`ALIGNED_MAX_CHARACTERS` in `tools/video/tts/cli.mjs`).

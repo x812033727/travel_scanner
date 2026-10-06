@@ -2,11 +2,11 @@
   "schema_version": 1,
   "status": "PASS",
   "review_scope": "DURATION_ONLY",
-  "checked_on": "2026-10-05",
-  "author_agent": "claude-fable-5-1 (video tooling series PR authors) and claude-opus-5-5 (train E integration)",
-  "reviewer_agent": "claude-pr-review-receipt-train-e",
+  "checked_on": "2026-10-06",
+  "author_agent": "claude-opus-5-5-cc-aligned",
+  "reviewer_agent": "claude-pr-review-long-video-cc-aligned-times",
   "report": "docs/videos/long-form/review.md",
-  "report_sha256": "6d7269bad39c5f8154c400141e530b631c9691b20838ddbe47dbfb01edd43203",
+  "report_sha256": "a76df53bd69cb7df9c1b4a278ee3737db7edccb057289ad18a8b6e129f773008",
   "reviewed_files": {
     ".agents/skills/youtube-video/SKILL.md": "40d5a29805a4bae05d1abe59c54c91f6b6da0e2ee66d12cec3ee4957e51fca61",
     ".agents/skills/youtube-video/references/automated.md": "efabb7c2d95a445e6046df56469e57cad37a49ab1217ae8ce75bc0df318c34d0",
@@ -42,7 +42,7 @@
     "apps/web/messages/ko/admin.json": "67b027ef1da18538c0271188b5c9b8a8a8206b06ceeab45c67913bcf908960fa",
     "apps/web/messages/zh-CN/admin.json": "f5793094e8e3d20410dd50a02cbcd9e6e74658186d07e8dfccdd6174b67046c5",
     "apps/web/messages/zh-TW/admin.json": "48bf4d69e0ca7b14766ec6e4238afb8b3c6f0af51124fe926c24e9df54c2ad04",
-    "docs/videos/DESIGN.md": "81aea1e08c76c1c5d252b461fb358d47b5d8e9a14988e0d347dfe3f819c95dd1",
+    "docs/videos/DESIGN.md": "d906618972e95bdf27c070cebc1a9b1ed016aa8a062d573f16d54f989c0d02ea",
     "docs/videos/KNOWLEDGE-STORIES.md": "ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80",
     "docs/videos/LONG-ANIME-PRODUCTION.md": "98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145",
     "docs/videos/README.md": "08a49222ddb89e98c97f6c160e82786a1dda711e5b7e9037ec500985e8abda29",
@@ -113,8 +113,8 @@
     "tools/video/screencast/screencast.test.mjs": "9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a",
     "tools/video/templates/terminal/terminal.test.mjs": "fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d",
     "tools/video/tts/batch-recovery.test.mjs": "7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd",
-    "tools/video/tts/check.test.mjs": "483bcb85477944bb9b69328d16f9e3101c67d8eccee24abf67f86fb2d86d611b",
-    "tools/video/tts/synthesis.mjs": "0081296cca9114ec528d8581f29fa553e2b5657a347988bf5b789e5eed2b6680",
-    "tools/video/tts/tts.test.mjs": "b25d94d1eb431ef4e978632d1763b25bfa6e4a4ae0d092c7974820d02bb0f9b8"
+    "tools/video/tts/check.test.mjs": "8c995ae7c7b30213c9e301fc39d7222f50da97a5f0fd8da0b359dea0762ff872",
+    "tools/video/tts/synthesis.mjs": "589ebe665bd281aaefba6749d61148f4c7011f71c962513efd5a6cd6830f3cb3",
+    "tools/video/tts/tts.test.mjs": "6f7dda4d4cb36292ca5445a83698d74c693464a9502b88be731564ef5c923403"
   }
 }

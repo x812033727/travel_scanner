@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import test from "node:test";
 
 import {
@@ -18,12 +19,37 @@ import {
   toVtt,
   wrapCue,
 } from "./captions.mjs";
-import { fixture } from "./fixtures/load.mjs";
+import { presentationTimeline } from "./branding.mjs";
+import { enFixture, fixture } from "./fixtures/load.mjs";
 import { eachLine } from "./schema.mjs";
-import { estimateTimeline, frameToMs } from "./timeline.mjs";
+import { estimateTimeline, FPS, frameToMs } from "./timeline.mjs";
 
 const zh = LOCALE_RULES["zh-TW"];
 const en = LOCALE_RULES.en;
+const FRAME_MS = 1000 / FPS;
+const sha256 = (text) => createHash("sha256").update(text).digest("hex");
+
+// The written units the server times for plain text (apps/api/app/video_speech/align.py
+// units_of): a Latin word or number is one, whitespace none, any other character one.
+const unitsOf = (text) => (text.match(/[A-Za-z0-9][A-Za-z0-9.+#'_%-]*|\s|./gsu) ?? []).filter((unit) => !/^\s$/u.test(unit));
+/** Measured units of `text`, as tts writes them: unit i starts at `at(i, unit)` and lasts until the next one starts. */
+function timed(text, at) {
+  const units = unitsOf(text);
+  const starts = units.map((unit, index) => at(index, unit));
+  return units.map((unit, index) => ({ text: unit, start_ms: starts[index], end_ms: index + 1 < units.length ? starts[index + 1] : starts[index] + 200 }));
+}
+const HEARD = /[\p{L}\p{N}]/u;
+/** The unit each cue's first letter or number was timed in: the cues' letters and numbers are the line's, in order. */
+function firstUnits(cues, chars) {
+  const owners = chars.flatMap((unit, index) => [...unit.text].filter((char) => HEARD.test(char)).map(() => index));
+  let at = 0;
+  return cues.map((cue) => {
+    const first = owners[at];
+    at += [...cue.text].filter((char) => HEARD.test(char)).length;
+    return first;
+  });
+}
+const untimed = (timeline) => ({ ...timeline, lines: timeline.lines.map((line) => Object.fromEntries(Object.entries(line).filter(([key]) => key !== "timing"))) });
 
 test("measure counts half-width characters as half in Chinese captions", () => {
   assert.equal(measure("排行榜", zh), 3);
@@ -315,4 +341,167 @@ test("cuePieces is what a translator is shown as the narration's cue boundaries:
   assert.deepEqual(pieces, splitText(long, zh), "the same cut buildCues makes");
   assert.equal(cuePieces("Every week a new model takes the top of the leaderboard, so do you switch every week?", "en").length, 2);
   assert.throws(() => cuePieces("x", "fr"), /no caption rules for locale fr/);
+});
+
+// Pinned on main at d829b18dc, before measured timing existed: a timeline whose lines carry no
+// `timing` must keep producing these files byte for byte (renewed finals reuse their offsets).
+test("a timeline without timing keeps the SRT and VTT it produced before measured timing, byte for byte", () => {
+  const doc = fixture();
+  const timeline = estimateTimeline(doc);
+  const zhTexts = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, line.text]));
+  const zhCues = buildCues(timeline, zhTexts, "zh-TW").cues;
+  assert.equal(toSrt(zhCues), [
+    "1", "00:00:00,000 --> 00:00:07,267", "每次有新模型出來，排行榜就換一次", "第一名，你真的每次都要跟著換嗎？", "",
+    "2", "00:00:07,267 --> 00:00:13,667", "今天用三個問題，幫你在五分", "鐘內決定要用哪一個 AI 模型", "",
+    "3", "00:00:14,267 --> 00:00:17,933", "第一個問題是，你要它做什麼工作", "",
+    "4", "00:00:17,933 --> 00:00:22,333", "第二個問題是，", "你能接受它想多久才回答", "",
+    "5", "00:00:22,333 --> 00:00:27,053", "第三個問題是，", "你每個月願意為它付多少錢", "",
+    "6", "00:00:27,667 --> 00:00:34,233", "把這三個答案寫下來，再去看排", "行榜，你會發現選擇變得很清楚", "",
+    "7", "00:00:34,233 --> 00:00:40,153", "完整的比較表放在說明欄的", "文章裡，我們下一支影片見", "",
+  ].join("\n"));
+  assert.equal(sha256(toVtt(zhCues)), "b7f01d85db2ce41135e5f35b776dc73a3158bfbd175f6ef730388e56c8b69a8e");
+  // The English fixture's lines as this video's translation.
+  const english = [...eachLine(enFixture())].map(({ line }) => line.text);
+  const enCues = buildCues(timeline, Object.fromEntries([...eachLine(doc)].map(({ line }, index) => [line.id, english[index]])), "en").cues;
+  assert.deepEqual([enCues.length, sha256(toSrt(enCues)), sha256(toVtt(enCues))], [8, "82d532ca9301982e9e3b9ca51cb1818cd4ea8050549b8dca3b6a367fa2a790f1", "73c3fe85949f0f25eb52063cb79b55f88b2bb2b9fa657b6e35b7fe8522f20f5f"]);
+  // Lines cut into two cues or more, one with a scrap merged, in every locale.
+  const lines = { lines: [
+    { id: "aaaa", start_frame: 0, end_frame: 330, audio_samples: 489600 },
+    { id: "bbbb", start_frame: 330, end_frame: 600, audio_samples: 403200 },
+    { id: "cccc", start_frame: 600, end_frame: 900, audio_samples: 456000 },
+  ] };
+  for (const [locale, texts, cues, srt, vtt] of [
+    ["zh-TW", ["每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？還是應該先想清楚自己要它做什麼，再決定要不要換？", "有公布的：算力、記憶體容量、功耗，還有記憶體頻寬，每秒 300 GB。好。", "第一句話說完了。第二句比較長一點，中間有個逗號，然後結束。第三句也在這裡。"],
+      6, "1d62f0bc22f2301e0ca9d8fc6d667af7e6836826d5dcfcdcdd7fa421a3bdbbcc", "6d7d4f6480abf5d82646439597cd47199ef543b53a366b8c0f33a48eefdd7609"],
+    ["zh-CN", ["每次有新模型出来，排行榜就换一次第一名，你真的每次都要跟着换吗？还是应该先想清楚自己要它做什么，再决定要不要换？", "有公布的：算力、内存容量、功耗，还有内存带宽，每秒 300 GB。好。", "第一句话说完了。第二句比较长一点，中间有个逗号，然后结束。第三句也在这里。"],
+      5, "fb2a433a2eb5b29d6744e9d8832743bb7d4f9187e146f5a107c83f1639996730", "50543468f48d94c081c2ae9616213a4ec0ed228a22cad6c5272d227ca1af3a60"],
+    ["en", ["Every time a new model comes out, the leaderboard gets a new number one. Do you really switch every time, or decide first what you need it for?", "What was published: compute, memory capacity, power draw, and memory bandwidth, 300 GB a second. Okay.", "The first sentence is done. The second one is a bit longer, with a comma in the middle, and then it ends. The third is here too."],
+      6, "62e6b02d2b1a70cc46ce98bf140c927a3347d72278d800e275291671d234d723", "eaac3f6385ac09a0ecebef566864a1f92526d021ef6d09bc1882e1144cd1963b"],
+    ["ja", ["では、AIはあなたの仕事を奪うのか。私の答えは「まずタスクを奪う。しかも2月の見出しが示したより速く」です。", "私の選択です。これは測定ではなく、私の意見です。毎日の要約には、ちゃんと読める中で一番安いモデル。金額はわずかです。", "公開されたのは演算性能、メモリ容量、消費電力、そしてメモリ帯域で、毎秒 300 GB です。"],
+      6, "8572c13146523a2fe3e1c01264340b0c41743f6133dde742b4897ce65bed3845", "4625c7f540523c2af827b865af1d637f17a6863c240a1e218b611e3380334146"],
+    ["ko", ["리더보드 1위만 보면 정확하긴 해도 여러분에게 맞다는 보장은 없습니다.", "둘째, 저는 대부분 작업에 저렴하게 시작해 승급하는 캐스케이드를 씁니다.", "병렬 교차 검토가 비싼 건 두 모델이 각각 한 번씩 답해야 하기 때문입니다."],
+      6, "95cf6ebb53d45d2e60bb2a15a20ef69b537825db47b0f79094a02c3670524782", "98a743c78c19e197cde32b79d63b3966f37e4de4fa4df5d18b1109f589eac10e"],
+  ]) {
+    const built = buildCues(lines, Object.fromEntries(lines.lines.map((line, index) => [line.id, texts[index]])), locale).cues;
+    assert.deepEqual([built.length, sha256(toSrt(built)), sha256(toVtt(built))], [cues, srt, vtt], locale);
+  }
+});
+
+/** One line of a timeline at `startFrame`, its clip `audioMs` long, timed by `chars` when given. */
+function timedLine(id, startFrame, audioMs, chars) {
+  return { id, start_frame: startFrame, end_frame: startFrame + Math.ceil((audioMs + 700) / FRAME_MS), audio_samples: audioMs * 48, ...(chars ? { timing: { source: "azure", model: "zh-TW-HsiaoChenNeural", chars } } : {}) };
+}
+
+test("a line whose timeline entry carries measured characters starts each cue when its first character is spoken, within a frame", () => {
+  // A number and its unit open the second cue: its first character is the first of the unit "300".
+  const text = "第一個問題很簡單，我們先看第一個例子。GPT-6 每秒處理 300 GB 的資料，比去年快了三倍，這個數字到底代表什麼意思？";
+  // Said briskly, with a long breath after the first sentence: nothing like a share by weight.
+  let clock = 37;
+  const chars = timed(text, (_index, unit) => {
+    const start = clock;
+    clock += unit === "。" ? 1400 : 170;
+    return start;
+  });
+  const line = timedLine("tm01", 45, clock + 150, chars);
+  const { cues } = buildCues({ lines: [line] }, { tm01: text }, "zh-TW");
+  const weighted = buildCues(untimed({ lines: [line] }), { tm01: text }, "zh-TW").cues;
+  assert.deepEqual(cues.map((cue) => cue.text), ["第一個問題很簡單，我們先看\n第一個例子。GPT-6 每秒處理", "300 GB 的資料，比去年快了三倍，\n這個數字到底代表什麼意思？"]);
+  assert.deepEqual(cues.map((cue) => cue.text), weighted.map((cue) => cue.text), "the same cut, timed by what was heard");
+  const start = frameToMs(line.start_frame);
+  firstUnits(cues, chars).forEach((unit, index) => {
+    assert.ok(Math.abs(cues[index].start_ms - (start + chars[unit].start_ms)) <= FRAME_MS, `cue ${index + 1} starts at ${cues[index].start_ms}, its first character at ${start + chars[unit].start_ms}`);
+  });
+  assert.equal(chars[firstUnits(cues, chars)[1]].text, "300");
+  assert.equal(cues[0].end_ms, cues[1].start_ms, "a cue runs to the next one's start");
+  assert.equal(cues.at(-1).end_ms, weighted.at(-1).end_ms, "the last still ends after the speech, inside the line");
+  assert.ok(Math.abs(cues[1].start_ms - weighted[1].start_ms) > 10 * FRAME_MS, "the weights would have put it elsewhere");
+  assert.deepEqual(checkCues(cues, "zh-TW"), []);
+});
+
+test("the branded presentation timeline keeps each line's timing: its cues move with the intro and still start on their characters", () => {
+  const text = "第一個問題很簡單，我們先看第一個例子。GPT-6 每秒處理 300 GB 的資料，比去年快了三倍，這個數字到底代表什麼意思？";
+  const chars = timed(text, (index) => 40 + index * 190);
+  const body = { total_frames: 600, lines: [timedLine("br01", 30, 40 + chars.length * 190, chars)], scenes: [], chapters: [] };
+  const presented = presentationTimeline(body, { hash: "bookends", intro_frames: 150, outro_frames: 300 });
+  assert.deepEqual(presented.lines[0].timing, body.lines[0].timing);
+  const plain = buildCues(body, { br01: text }, "zh-TW").cues;
+  const branded = buildCues(presented, { br01: text }, "zh-TW").cues;
+  assert.deepEqual(branded, plain.map((cue) => ({ ...cue, start_ms: cue.start_ms + 5000, end_ms: cue.end_ms + 5000 })));
+  firstUnits(branded, chars).forEach((unit, index) => assert.ok(Math.abs(branded[index].start_ms - (frameToMs(180) + chars[unit].start_ms)) <= FRAME_MS));
+});
+
+test("a say that differs from the text only in punctuation still lines up: its letters were all heard, in order", () => {
+  const text = "他停了很久很久，才終於開口回答。好。然後我們繼續往下看第三個問題的答案。";
+  const say = "他停了很久很久才終於開口回答，好，然後我們繼續往下看第三個問題的答案。";
+  const chars = timed(say, (index) => 60 + index * 210);
+  const line = timedLine("tm02", 0, 60 + chars.length * 210, chars);
+  const { cues } = buildCues({ lines: [line] }, { tm02: text }, "zh-TW");
+  assert.equal(cues.length, 2);
+  firstUnits(cues, chars).forEach((unit, index) => assert.ok(Math.abs(cues[index].start_ms - chars[unit].start_ms) <= FRAME_MS));
+});
+
+test("a measured piece too short to read merges with its neighbour and starts at its own first character", () => {
+  const pieces = ["第一句話慢慢說完了。", "很快。", "第三句也慢慢地說完。"];
+  let clock = 0;
+  const chars = timed(pieces.join(""), (_index, unit) => {
+    const start = clock;
+    clock += unit === "。" ? 300 : unit === "很" || unit === "快" ? 120 : 280;
+    return start;
+  });
+  const cues = timePieces(pieces, 1000, 1000 + clock + 400, zh, fits, chars);
+  assert.deepEqual(cues.map((cue) => cue.text), ["第一句話慢慢說完了。", "很快。第三句也慢慢地說完。"]);
+  assert.equal(cues[0].start_ms, 1000);
+  assert.equal(cues[1].start_ms, 1000 + chars.find((unit) => unit.text === "很").start_ms);
+  assert.equal(cues[1].end_ms, 1000 + clock + 400);
+  for (const cue of cues) assert.ok(cue.end_ms - cue.start_ms >= MIN_CUE_MS);
+});
+
+test("measured characters that do not line up with the text leave that line's cues on the weighted split", () => {
+  const text = "第一個問題很簡單，我們先看第一個例子。GPT-6 每秒處理 300 GB 的資料，比去年快了三倍，這個數字到底代表什麼意思？";
+  const even = timed(text, (index) => 40 + index * 200);
+  const weighted = buildCues({ lines: [timedLine("mm01", 0, 9000)] }, { mm01: text }, "zh-TW");
+  const cases = [
+    ["a say that changes the words", timed(text.replace("簡單", "容易"), (index) => 40 + index * 200)],
+    ["another language", timed("The first question is simple: GPT-6 moves 300 GB a second.", (index) => 40 + index * 300)],
+    ["a unit missing", even.filter((unit) => unit.text !== "GB")],
+    ["a unit left over", [...even, { text: "嗎", start_ms: 8600, end_ms: 8800 }]],
+    ["a cue that would start before the one before it", even.map((unit) => (unit.text === "300" ? { ...unit, start_ms: 10 } : unit))],
+    ["a start outside the speech", even.map((unit) => (unit.text === "300" ? { ...unit, start_ms: 60000 } : unit))],
+  ];
+  for (const [why, chars] of cases) assert.deepEqual(buildCues({ lines: [timedLine("mm01", 0, 9000, chars)] }, { mm01: text }, "zh-TW"), weighted, why);
+  // A cut inside a unit the server timed as one, a term read through its spoken form, has no
+  // measured start of its own.
+  const pieces = ["請打開 Claude", "Code 再試一次"];
+  const term = [..."請打開"].map((unit, index) => ({ text: unit, start_ms: index * 200, end_ms: index * 200 + 200 }))
+    .concat([{ text: "Claude Code", start_ms: 600, end_ms: 1400 }], [..."再試一次"].map((unit, index) => ({ text: unit, start_ms: 1400 + index * 200, end_ms: 1600 + index * 200 })));
+  assert.deepEqual(timePieces(pieces, 0, 2600, null, fits, term), timePieces(pieces, 0, 2600));
+});
+
+test("a translation keeps its own cut and its shares by weight: the measured characters are the narration's", () => {
+  const doc = fixture();
+  const texts = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, line.text]));
+  const timeline = estimateTimeline(doc);
+  for (const line of timeline.lines) line.timing = { source: "azure", model: "zh-TW-HsiaoChenNeural", chars: timed(texts[line.id], (index) => 40 + index * 150) };
+  const english = [...eachLine(enFixture())].map(({ line }) => line.text);
+  const enTexts = Object.fromEntries(timeline.lines.map((line, index) => [line.id, english[index]]));
+  assert.deepEqual(buildCues(timeline, enTexts, "en"), buildCues(untimed(timeline), enTexts, "en"));
+  assert.notDeepEqual(buildCues(timeline, texts, "zh-TW"), buildCues(untimed(timeline), texts, "zh-TW"), "while the narration's own cues follow what was heard");
+});
+
+test("checkCues reads the reading speed from the measured spans", () => {
+  const text = "第一句話慢慢地說，說了很久很久才說完。第二句很快就一口氣說完了，第三句也是。";
+  let clock = 0;
+  const chars = timed(text, (_index, unit) => {
+    const start = clock;
+    clock += unit === "第" && start > 0 ? 70 : start > 4000 ? 70 : 260;
+    return start;
+  });
+  // The clip ends 100 ms after its last character, so the last cue lingers as it always does.
+  const line = timedLine("sp01", 0, clock + 100, chars);
+  const measured = buildCues({ lines: [line] }, { sp01: text }, "zh-TW").cues;
+  const weighted = buildCues(untimed({ lines: [line] }), { sp01: text }, "zh-TW").cues;
+  assert.equal(measured.length, 2);
+  assert.deepEqual(checkCues(weighted, "zh-TW"), []);
+  assert.deepEqual(checkCues(measured, "zh-TW").map((problem) => problem.split(":")[0]), ["cue 2 (sp01)"]);
+  assert.match(checkCues(measured, "zh-TW")[0], /characters a second, above 9/);
 });
