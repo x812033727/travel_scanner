@@ -36,6 +36,8 @@ export type NewsSettings = {
   writer_provider: NewsProvider; writer_model: string | null;
   verifier_provider: NewsProvider; verifier_model: string | null;
   editor_provider: NewsProvider; editor_model: string | null;
+  // The judge decides the review and redraft lists in the owner's place while it is on.
+  judge_enabled: boolean; judge_provider: NewsProvider; judge_model: string | null;
   global_concurrency: number; per_vertical_concurrency: number; min_shadow_days: number;
   min_shadow_candidates: number; min_human_agreement: number; jev_act_confidence: number;
   auto_publish_ai: boolean; auto_publish_tech: boolean; auto_publish_crypto: boolean;
@@ -56,6 +58,8 @@ export type NewsCandidateSummary = {
   id: string; vertical: NewsVertical; status: NewsCandidateStatus; source_title: string; canonical_url: string;
   event_date: string | null; would_publish: boolean | null; human_decision: "publish" | "reject" | null;
   error_code: string | null; error_detail: string | null; guide_article_id: string | null;
+  // The judge's verdict on the hold the row rests at; a rerun clears it.
+  judge_decision?: "publish" | "reject" | "manual" | "duplicate" | null;
   created_at: string; updated_at: string;
 };
 
@@ -94,4 +98,6 @@ export type NewsCandidate = NewsCandidateSummary & {
 export type NewsStats = {
   pending_review: number; failed: number; published: number; queue_by_status: Record<string, number>;
   pipeline_runs: number; pipeline_failures: number; input_tokens: number; output_tokens: number;
+  // Stories in the redraft list that the judge read and handed back to the owner.
+  judge_handed_back?: number;
 };
