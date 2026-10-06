@@ -21,6 +21,7 @@ const providers = (vendors: Record<string, string | null> = {}) => ({
 const news = {
   writer_provider: "anthropic", writer_model: null, verifier_provider: "minimax", verifier_model: "MiniMax-M3",
   editor_provider: "gemini", editor_model: "gemini-3.8-flash",
+  judge_enabled: true, judge_provider: "anthropic", judge_model: "claude-opus-5-5",
   model_options: { anthropic: [{ value: "claude-opus-5-5", label: "Claude Opus 5.5", description: null, status: "stable" }] },
   default_models: { anthropic: "claude-opus-5-5", minimax: "MiniMax-M3" },
 } as unknown as NewsSettings;
@@ -29,7 +30,9 @@ const video = {
   model_options: { claude_code: [], codex: [{ value: "gpt-6-sol", label: "GPT-6 Sol", description: null, status: "stable" }], anthropic: [], openai: [{ value: "gpt-6-sol", label: "GPT-6 Sol", description: null, status: "stable" }], gemini: [], minimax: [] },
 } as unknown as VideoSettingsView;
 
-const row = (sources: OverviewSources, key: string) => overviewRows(sources, t, stage).find((item) => item.key === key)!;
+// The judge's row is named by the news page's own copy, handed in by the component.
+const JUDGE = "News review judge";
+const row = (sources: OverviewSources, key: string) => overviewRows(sources, t, stage, JUDGE).find((item) => item.key === key)!;
 
 describe("overviewRows", () => {
   it("resolves every empty model to the one it inherits", () => {
@@ -40,6 +43,9 @@ describe("overviewRows", () => {
     expect(row(sources, "intros")).toMatchObject({ model: "gpt-6-luna", inherited: "overview.features.guideSearch" });
     expect(row(sources, "news-writer")).toMatchObject({ model: "Claude Opus 5.5", inherited: "overview.features.guideSearch" });
     expect(row(sources, "news-verifier")).toMatchObject({ model: "MiniMax-M3", inherited: undefined });
+    expect(row(sources, "news-writer")).toMatchObject({ feature: "overview.features.newsWriter" });
+    expect(row(sources, "news-judge")).toMatchObject({ feature: JUDGE, vendor: "Anthropic Claude", model: "Claude Opus 5.5", inherited: undefined });
+    expect(row({ news: { ...news, judge_model: null } }, "news-judge")).toMatchObject({ model: "Claude Opus 5.5", inherited: "overview.features.guideSearch" });
   });
 
   it("marks the features that can only run on an API key", () => {
@@ -54,6 +60,7 @@ describe("overviewRows", () => {
     const sources = { providers: providers({ anthropic_connection: "subscription" }), news };
     expect(row(sources, "guideSearch")).toMatchObject({ support: "claudeSubscription", connection: "subscription" });
     expect(row(sources, "news-writer")).toMatchObject({ connection: "subscription" });
+    expect(row(sources, "news-judge")).toMatchObject({ support: "claudeSubscription", connection: "subscription" });
     // Not Claude, so still the API key; the planner never takes the subscription.
     expect(row(sources, "intros")).toMatchObject({ support: "apiKeyOnly", connection: "apiKey" });
     expect(row(sources, "planner")).toMatchObject({ support: "apiKeyOnly", connection: "apiKey" });
@@ -75,6 +82,7 @@ describe("overviewRows", () => {
     const gemini = rows.filter((item) => item.support === "geminiApiKeyOnly").map((item) => item.key);
     expect(gemini).toEqual(["geminiSearch", "news-editor", "video-translator"]);
     expect(rows.filter((item) => item.support === "geminiApiKeyOnly").every((item) => item.connection === "apiKey")).toBe(true);
+    expect(row({ news: { ...news, judge_provider: "gemini", judge_model: null } }, "news-judge")).toMatchObject({ support: "geminiApiKeyOnly", connection: "apiKey" });
     const onGemini = providers({ anthropic_connection: "subscription" });
     onGemini.providers[3].config.hotspot_intro_ai_default_provider = "gemini";
     expect(row({ providers: onGemini }, "intros")).toMatchObject({ support: "geminiApiKeyOnly", connection: "apiKey" });
@@ -99,7 +107,12 @@ describe("overviewRows", () => {
   });
 
   it("leaves out what a reader cannot load and a planner that calls no AI", () => {
-    expect(overviewRows({ news }, t, stage).map((item) => item.key)).toEqual(["news-writer", "news-verifier", "news-editor"]);
+    expect(overviewRows({ news }, t, stage).map((item) => item.key)).toEqual(["news-writer", "news-verifier", "news-editor", "news-judge"]);
+    // A server from before the judge answers without its fields: still settings, three rows.
+    const older = { ...news } as Partial<NewsSettings>;
+    delete older.judge_enabled; delete older.judge_provider; delete older.judge_model;
+    expect(isNewsSettings(older)).toBe(true);
+    expect(overviewRows({ news: older as NewsSettings }, t, stage).map((item) => item.key)).toEqual(["news-writer", "news-verifier", "news-editor"]);
     const off = providers();
     off.providers[1].config.ai_planner_mode = "disabled";
     expect(row({ providers: off }, "planner")).toMatchObject({ vendor: "overview.plannerDisabled", connection: "none" });

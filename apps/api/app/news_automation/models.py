@@ -43,7 +43,7 @@ CANDIDATE_STATUSES = (
     "failed",
 )
 RUN_STATUSES = ("running", "succeeded", "failed")
-ASSESSMENT_TYPES = ("duplicate", "verification", "locale_review", "jev", "human")
+ASSESSMENT_TYPES = ("duplicate", "verification", "locale_review", "jev", "human", "judge")
 ASSESSMENT_VERDICTS = ("pass", "revise", "manual", "publish", "reject", "duplicate")
 ASSET_VARIANTS = ("hero", "social", "diagram")
 LOCALES = ("zh-TW", "zh-CN", "en", "ja", "ko")
@@ -81,6 +81,10 @@ class NewsAutomationSettings(Timestamped, Base):
             "editor_provider IN ('openai','anthropic','minimax','gemini')",
             name="ck_news_editor_provider",
         ),
+        CheckConstraint(
+            "judge_provider IN ('openai','anthropic','minimax','gemini')",
+            name="ck_news_judge_provider",
+        ),
         CheckConstraint("global_concurrency BETWEEN 1 AND 8", name="ck_news_global_concurrency"),
         CheckConstraint(
             "per_vertical_concurrency BETWEEN 1 AND 4",
@@ -109,6 +113,14 @@ class NewsAutomationSettings(Timestamped, Base):
     # call (owner decision, 2026-09-25; migration 0094).
     editor_provider: Mapped[str] = mapped_column(String(16), default="anthropic")
     editor_model: Mapped[str | None] = mapped_column(
+        String(128), nullable=True, default="claude-opus-5-5"
+    )
+    # The judge decides the stories waiting in the review queue and the redraft list in the
+    # owner's place, and only while its switch is on (owner decision, 2026-10-06; migration
+    # 0125).
+    judge_enabled: Mapped[bool] = mapped_column(Boolean, default=False)
+    judge_provider: Mapped[str] = mapped_column(String(16), default="anthropic")
+    judge_model: Mapped[str | None] = mapped_column(
         String(128), nullable=True, default="claude-opus-5-5"
     )
     global_concurrency: Mapped[int] = mapped_column(Integer, default=2)
@@ -183,6 +195,10 @@ class NewsCandidate(Timestamped, Base):
             "human_decision IS NULL OR human_decision IN ('publish','reject')",
             name="ck_news_candidate_human_decision",
         ),
+        CheckConstraint(
+            "judge_decision IS NULL OR judge_decision IN ('publish','reject','manual','duplicate')",
+            name="ck_news_candidate_judge_decision",
+        ),
         Index("ix_news_candidates_review", "status", "updated_at"),
         Index("ix_news_candidates_vertical_status", "vertical", "status"),
     )
@@ -216,6 +232,10 @@ class NewsCandidate(Timestamped, Base):
     human_decision: Mapped[str | None] = mapped_column(String(16), nullable=True)
     human_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
     human_major_error: Mapped[bool] = mapped_column(Boolean, default=False)
+    # The judge's latest answer and the hold (error_code) it answered, so one hold is judged
+    # once. Never a person's decision: that is human_decision.
+    judge_decision: Mapped[str | None] = mapped_column(String(16), nullable=True)
+    judge_hold: Mapped[str | None] = mapped_column(String(64), nullable=True)
     error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
     error_detail: Mapped[str | None] = mapped_column(Text, nullable=True)
     retry_count: Mapped[int] = mapped_column(Integer, default=0)

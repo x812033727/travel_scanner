@@ -48,7 +48,7 @@ const newsCandidate: NewsCandidateSummary = {
   source_title: "Synthetic pending news navigation candidate",
   canonical_url: "https://example.test/synthetic-news", event_date: "2026-09-09",
   would_publish: false, human_decision: null, error_code: null, error_detail: null,
-  guide_article_id: null, created_at: now, updated_at: now,
+  guide_article_id: null, judge_decision: null, created_at: now, updated_at: now,
 };
 const newsGate = {
   days: 0, labelled_candidates: 0, agreements: 0, agreement_rate: 0,
@@ -57,6 +57,7 @@ const newsGate = {
 const newsSettings: NewsSettings = {
   enabled: false, mode: "shadow", writer_provider: "openai", writer_model: null,
   verifier_provider: "openai", verifier_model: null, editor_provider: "anthropic", editor_model: null,
+  judge_enabled: false, judge_provider: "anthropic", judge_model: null,
   global_concurrency: 2, per_vertical_concurrency: 1, min_shadow_days: 14,
   min_shadow_candidates: 50, min_human_agreement: 0.95, jev_act_confidence: 0.9,
   auto_publish_ai: false, auto_publish_tech: false, auto_publish_crypto: false,
@@ -76,7 +77,7 @@ const newsSettings: NewsSettings = {
 };
 const newsStats: NewsStats = {
   pending_review: 1, failed: 0, published: 0, queue_by_status: { manual_review: 1 },
-  pipeline_runs: 0, pipeline_failures: 0, input_tokens: 0, output_tokens: 0,
+  pipeline_runs: 0, pipeline_failures: 0, input_tokens: 0, output_tokens: 0, judge_handed_back: 0,
 };
 const newsRunsSummary = Object.entries({
   runs: newsStats.pipeline_runs, failures: newsStats.pipeline_failures,
