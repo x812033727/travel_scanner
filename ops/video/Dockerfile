@@ -42,8 +42,10 @@ CMD ["/usr/local/bin/video-worker"]
 
 # CI builds this target (.github/workflows/video-worker-image.yml): the example video through
 # render, assemble and package inside the image, as the worker user, so a missing font, codec
-# or browser fails the build here instead of on the host. Chromium needs more /dev/shm than a
-# build step gets by default for 1080p pages.
+# or browser fails the build here instead of on the host. The example draws no caption locale's
+# thumbnail, so every font tools/video/render/fonts.mjs names is resolved and its coverage read
+# on its own: a font added there but not to ops/video/package.json fails here too. Chromium needs
+# more /dev/shm than a build step gets by default for 1080p pages.
 FROM worker AS smoke
 RUN --mount=type=tmpfs,target=/dev/shm \
     set -e; \
@@ -56,6 +58,7 @@ RUN --mount=type=tmpfs,target=/dev/shm \
     test -f docs/videos/README.md; \
     test ! -e "$HOME/.mokaair/video-tool.json"; \
     ! find /opt/mokaair -name '.env*' | grep -q .; \
+    node --input-type=module -e 'const f = await import("./tools/video/render/fonts.mjs"); for (const name of Object.keys(f.FONT_PACKAGES)) console.log(f.fontDir(name)); for (const locale of [null, ...Object.keys(f.LOCALE_FONTS)]) f.bundledCoverage(locale);'; \
     node tools/video/assemble/smoke.mjs --workdir /tmp/video-smoke
 
 # The image compose builds: the worker itself, without the smoke test's files.

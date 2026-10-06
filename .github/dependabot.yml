@@ -37,8 +37,8 @@ updates:
       # request's branch (.agents/skills/dev-and-ci/references/dependabot.md). Kept out of
       # minor-and-patch for the same reason as @playwright/test, and together in one pull request
       # because fontsource releases its fonts together: one red pull request and one edit, instead
-      # of several that conflict in the lock. The pattern also takes the fonts the worker does not
-      # install; a pull request that moves only those is green.
+      # of several that conflict in the lock. The worker installs every font tools/video draws
+      # with, so each pull request of this group that moves a font needs that edit.
       video-worker:
         update-types: [minor, patch]
         patterns: ["@fontsource-variable/*", "pinyin-pro"]
