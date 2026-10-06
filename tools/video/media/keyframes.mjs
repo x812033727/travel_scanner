@@ -21,6 +21,7 @@ import { clientOptions, requireCredentials } from "./cli.mjs";
 import { ledgerTotals } from "./ledger.mjs";
 import { mediaKey } from "./cache.mjs";
 import { duplicates } from "./qc.mjs";
+import { composeShotPrompt, DEFAULT_IMAGE_PROMPT_LIMIT, imagePromptLimit, shotPromptBudget } from "./prompt-budget.mjs";
 import { capFor, choiceFor, drawContactSheet, imagePrice, imageSelectionVersion, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, pictureHashes, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
 import { trimMargins } from "./trim.mjs";
 
@@ -127,9 +128,13 @@ export function keyframeChecks({ plate = false } = {}) {
   ];
 }
 
-export function shotPrompt(scene, look, characters) {
-  const cast = shotAppearancePrompt(characters);
-  return `${scene.data.prompt}. Style: ${look.style}${scene.data.camera ? `. Camera: ${scene.data.camera}` : ""}${cast ? `. Characters: ${cast}` : ""}`.slice(0, 4000);
+/**
+ * What a shot is asked for: its prompt, the look's style, the camera and the cast, under the
+ * image model's `limit` (prompt-budget.mjs: the scene is cut at a word boundary when the look
+ * leaves it no room, the look never).
+ */
+export function shotPrompt(scene, look, characters, limit = DEFAULT_IMAGE_PROMPT_LIMIT) {
+  return composeShotPrompt({ prompt: scene.data.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit }).prompt;
 }
 
 /** The chosen sheet of each character: `{ <id>: { file, sha256 } }`, from the look manifest and the owner's choice. */
@@ -180,9 +185,18 @@ export function fixesBefore(takes, seed) {
   return fixClauses([...(takes ?? [])].filter((take) => take.judge && take.seed < seed).sort((a, b) => a.seed - b.seed).flatMap((take) => take.judge.problems ?? []));
 }
 
-/** A prompt with the corrections of the earlier takes appended, or the prompt itself when there are none. */
-export function retakePrompt(prompt, fixes) {
-  return fixes?.length ? `${prompt}. Corrections: ${fixes.join("; ")}`.slice(0, 4000) : prompt;
+/**
+ * A prompt with the corrections of the earlier takes appended, or the prompt itself when there
+ * are none; under `limit` the last corrections go first, then the prompt's tail (prompt-budget.mjs).
+ */
+export function retakePrompt(prompt, fixes, limit = DEFAULT_IMAGE_PROMPT_LIMIT) {
+  return composeShotPrompt({ prompt, fixes: fixes ?? [], limit }).prompt;
+}
+
+/** Say when a request was trimmed to fit the image model, so a quiet retake is not mistaken for the full one. */
+function reportTrim(ctx, id, take, composed, provider) {
+  if (!composed.cutChars && !composed.droppedFixes) return;
+  ctx.stdout.write(`${id} take ${take}: prompt trimmed to the ${provider} budget (${composed.cutChars} chars cut, ${composed.droppedFixes} corrections dropped)\n`);
 }
 
 /**
@@ -228,20 +242,22 @@ async function trimmed(ctx, workdir, picture, id) {
   return { ...picture, file: cut.file, sha256: cut.sha256, margins: cut.margins };
 }
 
-async function stylePlate({ stage, workdir, look, hash, takes, size, rubric, force, trim, ctx }) {
+async function stylePlate({ stage, workdir, look, hash, takes, size, rubric, force, trim, limit = DEFAULT_IMAGE_PROMPT_LIMIT, provider = "image model", ctx }) {
   const kept = force ? null : readStylePlate(workdir, hash);
   if (kept) {
     ctx.stdout.write(`style plate: kept (judge ${kept.judge?.overall ?? "?"}/10)\n`);
     return kept;
   }
-  const prompt = `${STYLE_PLATE_PROMPT}. Style: ${look.style}`.slice(0, 4000);
   const taken = [];
   let generated = 0;
   for (let take = 1; take <= takes; take++) {
     const fixes = fixesBefore(taken, take);
+    // The plate's prompt, the look and the corrections, under the image model's limit.
+    const composed = composeShotPrompt({ prompt: STYLE_PLATE_PROMPT, look, fixes, limit });
+    reportTrim(ctx, "style plate", take, composed, provider);
     let picture;
     try {
-      picture = await stage.image({ id: STYLE_PLATE_ID, purpose: "style_frame", prompt: retakePrompt(prompt, fixes), negative: look.negative, references: [], seed: take, shotId: STYLE_PLATE_ID, size, target: `keyframes/plate-${take}` });
+      picture = await stage.image({ id: STYLE_PLATE_ID, purpose: "style_frame", prompt: composed.prompt, negative: look.negative, references: [], seed: take, shotId: STYLE_PLATE_ID, size, target: `keyframes/plate-${take}` });
       if (!picture.reused) generated += 1;
     } catch (error) {
       if (error.code === "stopped") return null;
@@ -339,13 +355,23 @@ export async function run(command, args, ctx) {
   const plated = slides && !look.style_frames.length;
 
   if (values["dry-run"]) {
-    ctx.stdout.write(`keyframes for ${shots.length} shots (${endFrames} end frames), up to ${takes} takes each${plated ? `, after one style plate${readStylePlate(workdir, hash) ? " (already drawn)" : ""}` : ""}\n`);
-    for (const scene of shots) ctx.stdout.write(`${scene.id}: ${shotPrompt(scene, look, cast(scene))}\n  references: ${[...(scene.data.characters ?? []).map((id) => `${id}=${sheets[id] ? optionOf(chosen[id]) : "?"}`), ...(plated ? ["style plate"] : [])].join(", ") || "none"}\n`);
+    // Each shot's budget depends on the model the server will draw it with: known with a token, else the server's field limit.
     const credentials = readCredentials({ env: ctx.env, home: ctx.home });
-    if (credentials.token) {
-      const status = imageStatus(await mediaStatus(clientOptions(ctx, credentials)), project.series);
+    const status = credentials.token ? imageStatus(await mediaStatus(clientOptions(ctx, credentials)), project.series) : null;
+    const choice = status ? choiceFor(status, "image", format) : null;
+    const promptLimit = status ? imagePromptLimit(choice, status) : DEFAULT_IMAGE_PROMPT_LIMIT;
+    const provider = choice?.provider ?? "image model";
+    ctx.stdout.write(`keyframes for ${shots.length} shots (${endFrames} end frames), up to ${takes} takes each${plated ? `, after one style plate${readStylePlate(workdir, hash) ? " (already drawn)" : ""}` : ""}\n`);
+    const over = [];
+    for (const scene of shots) {
+      const characters = cast(scene);
+      const budget = shotPromptBudget({ look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
+      if (scene.data.prompt.length > budget) over.push(scene.id);
+      ctx.stdout.write(`${scene.id}: ${shotPrompt(scene, look, characters, promptLimit)}\n  references: ${[...(scene.data.characters ?? []).map((id) => `${id}=${sheets[id] ? optionOf(chosen[id]) : "?"}`), ...(plated ? ["style plate"] : [])].join(", ") || "none"}\n  prompt budget: ${scene.data.prompt.length} of ${budget} characters${scene.data.prompt.length > budget ? ` OVER BUDGET for ${provider}: shorten the prompt` : ""}\n`);
+    }
+    if (over.length) ctx.stdout.write(`${over.length} shots over the ${provider} prompt budget (limit ${promptLimit} less the look's style, the camera and the avoidance text) would not be drawn: ${over.join(", ")}\n`);
+    if (status) {
       const problem = statusProblem(status, "image", format);
-      const choice = choiceFor(status, "image", format);
       const size = sizeFor(status);
       const plates = plated && !readStylePlate(workdir, hash) ? 1 : 0;
       const usd = (shots.length + plates) * (imagePrice(status, format, size) + JUDGE_USD_PER_CALL) + endFrames * (imagePrice(status, format) + JUDGE_USD_PER_CALL);
@@ -361,6 +387,9 @@ export async function run(command, args, ctx) {
   const status = imageStatus(await mediaStatus(options), project.series);
   const problem = statusProblem(status, "image", format);
   if (problem) throw new MediaError(problem, { who: "owner" });
+  const chosenImage = choiceFor(status, "image", format);
+  // Every request is composed under the chosen image model's limit, counted with the avoidance text the server appends.
+  const promptLimit = imagePromptLimit(chosenImage, status);
   const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "keyframes", imageVersion, format, now: ctx.now });
   // Illustrated slides are judged by yes/no fault checks once the server takes them; a drama's
   // pictures, and any picture on an older server, are scored on the rubric as before.
@@ -384,7 +413,7 @@ export async function run(command, args, ctx) {
   // model the last reference is the plate); it is put in the store again in case it was pruned.
   let plate = null;
   if (plated) {
-    plate = await stylePlate({ stage, workdir, look, hash, takes, size, rubric: checks ? keyframeChecks() : keyframeRubric([], rubricOptions), force: values.force, trim: stillPictures, ctx });
+    plate = await stylePlate({ stage, workdir, look, hash, takes, size, rubric: checks ? keyframeChecks() : keyframeRubric([], rubricOptions), force: values.force, trim: stillPictures, limit: promptLimit, provider: chosenImage.provider, ctx });
     if (!plate) {
       ctx.stdout.write("stopped by the STOP file before the style plate; rerun to continue\n");
       return EXIT.ok;
@@ -394,7 +423,6 @@ export async function run(command, args, ctx) {
     styleReferences.push({ sha256: plate.sha256, role: "style" });
   }
   const existing = readJson(manifestFile(workdir), null);
-  const chosenImage = choiceFor(status, "image", format);
   const sameSetup = existing?.look_hash === hash && sameImage(existing.image, chosenImage) && (!imageVersion || existing.image_selection_version === imageVersion) && !values.force;
   const manifest = sameSetup && bound(existing) ? existing : { look_hash: hash, ...binding, image_selection_version: 1, shots: {} };
   manifest.image = { provider: chosenImage.provider, model: chosenImage.model };
@@ -403,7 +431,10 @@ export async function run(command, args, ctx) {
 
   // What a shot is drawn from and what the judge is asked about it, as they stand now.
   const referencesOf = (characters) => [...characters.map((character) => ({ sha256: uploaded[character.id], role: "character" })).filter((reference) => reference.sha256), ...styleReferences].slice(-MAX_REFERENCES);
-  const endPrompt = (scene, characters) => shotPrompt({ ...scene, data: { ...scene.data, prompt: scene.data.end_frame.prompt } }, look, characters);
+  // A shot's request as it stands, with the corrections of the takes before it, under the model's limit; its end frame's too.
+  const composeFor = (scene, characters, fixes = []) => composeShotPrompt({ prompt: scene.data.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), fixes, limit: promptLimit });
+  const endPrompt = (scene, characters) => composeShotPrompt({ prompt: scene.data.end_frame.prompt, look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
+  const budgetOf = (scene, characters) => shotPromptBudget({ look, camera: scene.data.camera, cast: shotAppearancePrompt(characters), limit: promptLimit });
   const question = (scene, characters) => ({
     rubric: checks ? keyframeChecks({ plate: Boolean(plate) }) : keyframeRubric(characters, { ...rubricOptions, plate: Boolean(plate) }),
     context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: look.style },
@@ -418,10 +449,9 @@ export async function run(command, args, ctx) {
     for (const scene of drawnShotScenes(doc)) {
       const characters = cast(scene);
       const references = referencesOf(characters);
-      const prompt = shotPrompt(scene, look, characters);
       const keys = {
-        take: (seed, fixes = []) => stage.imageKey({ prompt: retakePrompt(prompt, fixes), negative: look.negative, references, seed, size }),
-        end: scene.data.end_frame?.prompt ? stage.imageKey({ prompt: endPrompt(scene, characters), negative: look.negative, references, seed: 1 }) : null,
+        take: (seed, fixes = []) => stage.imageKey({ prompt: composeFor(scene, characters, fixes).prompt, negative: look.negative, references, seed, size }),
+        end: scene.data.end_frame?.prompt ? stage.imageKey({ prompt: endPrompt(scene, characters).prompt, negative: look.negative, references, seed: 1 }) : null,
       };
       if (entryStands(existing.shots?.[scene.id], { keys, stamp: stampOf(question(scene, characters)) })) manifest.shots[scene.id] = existing.shots[scene.id];
     }
@@ -436,10 +466,19 @@ export async function run(command, args, ctx) {
       continue;
     }
     const references = referencesOf(characters);
-    const prompt = shotPrompt(scene, look, characters);
+    // A prompt the model cannot take with the look around it is not sent at all: every seed would
+    // be refused the same way, and the writer needs the number, not the refusal.
+    const budget = budgetOf(scene, characters);
+    if (scene.data.prompt.length > budget) {
+      const problem = `prompt is ${scene.data.prompt.length} characters; the ${chosenImage.provider} budget for this shot is ${budget} (style, camera and avoidance text take the rest)${FIX_ARROW}shorten the prompt to at most ${budget} characters`;
+      manifest.shots[scene.id] = { takes: [], needs_review: true, prompt_budget_chars: budget, problems: [problem] };
+      writeManifest(workdir, manifest);
+      ctx.stdout.write(`${scene.id}: not drawn: ${problem}\n`);
+      continue;
+    }
     const asked = question(scene, characters);
     const judged = stampOf(asked);
-    const entry = current?.takes && !values.force ? { ...current, takes: [] } : { takes: [] };
+    const entry = current?.takes && !values.force ? { ...current, takes: [], prompt_budget_chars: budget } : { takes: [], prompt_budget_chars: budget };
     // A cached verdict cannot stand in for a picture whose file was removed or changed.
     for (const take of !values.force ? current?.takes ?? [] : []) {
       const start = { ...scene, data: { ...scene.data, end_frame: undefined } };
@@ -461,9 +500,11 @@ export async function run(command, args, ctx) {
       // The judge's fixes for the takes before this one go into its prompt.
       const fixes = fixesBefore(entry.takes, seed);
       if (fixes.length) ctx.stdout.write(`${scene.id} take ${take}: asked with the corrections of the takes before: ${fixes.join("; ")}\n`);
+      const composed = composeFor(scene, characters, fixes);
+      reportTrim(ctx, scene.id, take, composed, chosenImage.provider);
       let picture;
       try {
-        picture = await stage.image({ id: scene.id, purpose: "keyframe", prompt: retakePrompt(prompt, fixes), negative: look.negative, references, seed, shotId: scene.id, size, target: `keyframes/${scene.id}-${seed}` });
+        picture = await stage.image({ id: scene.id, purpose: "keyframe", prompt: composed.prompt, negative: look.negative, references, seed, shotId: scene.id, size, target: `keyframes/${scene.id}-${seed}` });
       } catch (error) {
         if (error.code === "stopped") {
           stopped = true;
@@ -507,11 +548,11 @@ export async function run(command, args, ctx) {
       // Every seed was refused. The entry has no picture: nothing of an earlier record is carried
       // over, since a picture of it that still stood would have been one of the takes.
       const why = [...new Set(refusals)].map((reason) => `no take could be generated: ${reason}`);
-      manifest.shots[scene.id] = { takes: [], needs_review: true, problems: why.length ? why : ["no take could be generated"] };
+      manifest.shots[scene.id] = { takes: [], needs_review: true, prompt_budget_chars: budget, problems: why.length ? why : ["no take could be generated"] };
       writeManifest(workdir, manifest);
       continue;
     }
-    const record = { file: best.file, sha256: best.sha256, key: best.key, seed: best.seed, judge: best.judge, takes: entry.takes, needs_review: !best.judge?.passed, ...(best.margins ? { margins: best.margins } : {}) };
+    const record = { file: best.file, sha256: best.sha256, key: best.key, seed: best.seed, judge: best.judge, takes: entry.takes, needs_review: !best.judge?.passed, prompt_budget_chars: budget, ...(best.margins ? { margins: best.margins } : {}) };
     if (record.needs_review) {
       // Every problem of every take, and the fixes among them: what a prompt rewrite starts from.
       record.problems = [...new Set(entry.takes.flatMap((each) => each.judge?.problems ?? []))];
@@ -525,7 +566,9 @@ export async function run(command, args, ctx) {
       manifest.shots[scene.id] = { ...record, incomplete: true };
       writeManifest(workdir, manifest);
       try {
-        const end = await stage.image({ id: `${scene.id}/end`, purpose: "keyframe", prompt: endPrompt(scene, characters), negative: look.negative, references, seed: 1, shotId: scene.id, target: `keyframes/${scene.id}-end` });
+        const ending = endPrompt(scene, characters);
+        reportTrim(ctx, `${scene.id}/end`, 1, ending, chosenImage.provider);
+        const end = await stage.image({ id: `${scene.id}/end`, purpose: "keyframe", prompt: ending.prompt, negative: look.negative, references, seed: 1, shotId: scene.id, target: `keyframes/${scene.id}-end` });
         if (!end.reused) generated += 1;
         record.end_frame = { file: end.file, sha256: end.sha256, key: end.key };
       } catch (error) {

@@ -161,6 +161,10 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
     assert (body["slides_music_track"], body["slides_sfx_set"]) == (None, None)
     assert body["store"]["writable"] and body["limits"]["max_reference_images"] == 4
     assert body["limits"]["judge_checks"] == 1, "the tools ask yes/no only of a server that says so"
+    # The tool composes each shot's prompt under the chosen image model's limit, counting the
+    # avoidance text minimax.py appends (tools/video/media/prompt-budget.mjs reads these).
+    assert body["limits"]["image_prompt_chars"] == 4000
+    assert body["limits"]["image_prompt_chars_minimax"] == 1500
 
 
 @pytest.mark.asyncio
