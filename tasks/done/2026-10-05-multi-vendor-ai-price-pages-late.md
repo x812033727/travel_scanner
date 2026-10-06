@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-multi-vendor-ai-price-pages-late
 title: Refresh the multi-vendor AI price pages and the 2026 release timeline for the late-September line-up
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-ai-price-pages
 claimed_at: 2026-10-06T00:53:30Z
 created_at: 2026-10-05T14:16:06Z
-completed_at:
+completed_at: 2026-10-06T02:20:59Z
 branch: claude/ai-price-pages
 depends_on: []
 scope:
