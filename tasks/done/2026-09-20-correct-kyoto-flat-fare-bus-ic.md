@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-correct-kyoto-flat-fare-bus-ic
 title: Correct Kyoto flat-fare bus IC and one-day-pass boarding steps
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-board-closures
+claimed_at: 2026-10-06T00:48:41Z
 created_at: 2026-09-20T09:43:51Z
-completed_at:
-branch: codex/nikko-pass-eligibility
+completed_at: 2026-10-06T01:40:26Z
+branch: claude/board-closures
 depends_on: []
 scope:
   - apps/api/app/guides/content/kyoto-bus-subway-guide.json
@@ -33,17 +33,19 @@ source caption and heading claiming all solid lines are rail.
 
 ## Definition of done
 
-- [ ] Correct the ordered boarding/payment steps and applicable bus type in the published zh-TW source, preserving unrelated prose and visibility.
-- [ ] Guard the live revision/hash and publish the exact corrected source with backup and desktop/mobile receipts.
+- [x] Correct the ordered boarding/payment steps and applicable bus type in the published zh-TW source, preserving unrelated prose and visibility.
+- [x] Guard the live revision/hash and publish the exact corrected source with backup and desktop/mobile receipts.
 - [ ] Rebase and review all four Kyoto translations and diagrams before their publication.
-- [ ] Make the source SVG heading and article caption accurately explain solid EX and dashed ordinary bus lines.
+  Moved to `2026-10-06-batch-005-nikko-kyoto-translations-refresh`.
+- [x] Make the source SVG heading and article caption accurately explain solid EX and dashed ordinary bus lines.
 - [x] Render the source SVG at 1600x900 and remove existing destination-card/label overlaps without changing route facts or credits.
 
 ## Steps
 
 - [x] Check Kyoto City's official boarding, IC and pass guidance.
 - [x] Reconcile the 2026-09-20 read-only live snapshot with repository pack and prepare exact source correction PR.
-- [ ] Deploy, publish and validate source, then refresh Batch 005 baseline.
+- [x] Deploy, publish and validate source.
+- [ ] Refresh Batch 005 baseline. Moved to `2026-10-06-batch-005-nikko-kyoto-translations-refresh`.
 
 ## How to verify
 
@@ -80,3 +82,40 @@ overflow after the layout patch.
   title, description and body now say 住宿稅 where they said 宿泊稅 or 宿泊税.
   No number changed; Japanese official page names in `sources` are unchanged.
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-article-localization (since 2026-09-20T09:43:56Z) was stale and is released so it stops locking its scope. Landed: #593 #1001 #1028. Still open: Correct boarding/payment steps in published zh-TW source (repo pack done in #593; live publish pending); Guard live revision/hash and publish corrected source with backup and desktop/mobile receipts; Rebase and review four Kyoto Batch 005 translations and diagrams; SVG heading/caption explain solid EX vs dashed bus lines (likely done in #593, unticked); Deploy, publish, validate source, refresh Batch 005 baseline.
+- 2026-10-06 (claude-opus-5-5-board-closures). The publication was done on 2026-09-20; it is
+  verified read-only here, and the translation rebase is split off:
+  - **Live text.** The public API (editorial User-Agent) returns `status: published`,
+    `published_locales: ['zh-TW']`, document `version: 8` and
+    `modified_at: 2026-09-20T11:56:56Z`, an hour after #593 merged (10:51:54Z). Normalized
+    through `GuideDocument`, its `document_hash` is `865362fe…9caa`, the same as the pack at
+    #593 (42adda043). The corrected sentences are all live:
+    - 「上車時不用感應，前門下車時在運賃箱的讀卡機感應一次」
+    - 「整理券車，才要在上車與下車時各感應一次」
+    - 「第一次在前門下車時把卡插入運賃箱的讀卡機印上日期」
+    - the caption 「實線是電車或觀光特急巴士，虛線是一般市巴士」
+  - **Live diagram.** `https://mokaair.com/guides/kyoto-bus-subway-guide/diagram-1.svg` has
+    SHA-256 `34d93fba…c395d`, byte-identical to main. Its heading reads
+    「京都站出發觀光走廊　實線：電車／觀光特急；虛線：一般市巴士」. EX100 is drawn solid, and
+    206 and 205 are dashed (`stroke-dasharray`). The 15 px labels from #1001 are live too,
+    because the SVG ships with the web deploy.
+  - **Repo ahead of live.** The repo pack's hash is `da86dc07…513c`. It differs from live in
+    two fields only, neither belonging to this ticket. `blocks[18].items[0]` says 6:00
+    instead of 6 點 (#1001), and `blocks[22].text` says 住宿稅 instead of 宿泊税 (#1028).
+    Publishing them is filed as `2026-10-06-publish-onsen-kyoto-bus-zh-tw` (host only,
+    owner consent).
+  - **Desktop and mobile.** In the built-in browser, signed out, at 1366×900 and 375×812, the
+    page shows the corrected IC and caption text, and on mobile has no page-level horizontal
+    overflow (scrollWidth 375). The diagram loads at 1600 px inside its own `overflow-x-auto`
+    strip. `verify_public.py --slug kyoto-bus-subway-guide --kind howto --locale zh-TW
+    --sitemap` passed. en, ja, ko and zh-CN are still `unpublished` with `noindex`.
+  - **Sources re-read 2026-10-06, both HTTP 200.** On Kyoto City's riding guide, 均一区間車
+    have no boarding reader (「均一区間車には設置されていません」), and
+    「整理券車においては乗車時にもタッチが必要です」. The 地下鉄・バス1日券 goes through the
+    reader on first use, and later rides show the date to the driver. The 2026-03-20
+    busnavi PDF also returns 200.
+  - **Not verified.** The 2026-09-20 backup and receipts are not in the repository. What is
+    verified is the outcome.
+  - **Split.** DoD 3 and the "refresh Batch 005 baseline" half of the last step moved to
+    `2026-10-06-batch-005-nikko-kyoto-translations-refresh`. It asks for the publish ticket to
+    land first, so the four locales bind to the zh-TW readers will see.
+  - `pack_cli lint --slug kyoto-bus-subway-guide`: clean.

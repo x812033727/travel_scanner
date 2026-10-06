@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-news-auto-publish-reads-its-switches
 title: News auto-publish reads its switches fresh, not the settings held since the run began
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-10-05T03:42:20Z
 created_at: 2026-10-05T03:13:54Z
-completed_at:
+completed_at: 2026-10-06T03:29:32Z
 branch: claude/news-auto-publish-fresh-switches
 depends_on: []
 scope:
@@ -71,3 +71,6 @@ cd apps/api && uv run pytest tests/test_news_pipeline.py -q
 - Found in the `with_for_update` audit of `2026-10-05-shorts-claim-re-reads-its-locked`
   (sqlalchemy#13639). This bug does not need 2.1.3: `process_candidate` keeps `settings` in
   a local variable for the whole run, so it is stale on every version.
+- Closed 2026-10-06. #1247 merged on 2026-10-05 07:26Z (1ff45131f) with every box ticked, and
+  it is in the deployed commit a9e4c3851 (deploy 2026-10-05 23:13Z). The ticket had stayed in
+  review and kept locking pipeline.py.

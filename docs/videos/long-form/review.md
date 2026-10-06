@@ -1459,6 +1459,82 @@ Non-claims. This review does not accept the change itself: not that a shot faili
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1344 kept-pictures review card and summary limit increment: 11 files (2026-10-07)
+
+Reviewer: `claude-pr-review-1344`. Author: `claude-fable-5-1-video-unstuck` (the session that wrote the branch's commits: `86f62111`, "fix(video): kept pictures show on the review card, their summary fits the server's limit, and only illustrated videos keep them", `3127e6e3`, `f74b0049` and `cee129f7`, three task-file commits, `4d296e30`, "fix(video): a kept-pictures review stays under the server's payload limit, and two card details", and `766f419b`, "chore(tasks): record the kept-pictures verification and file the storyboard size floor"; branch claude/video-unstuck-kept-pictures-card, PR #1344; each carries `Co-Authored-By: Claude Opus 5.5`, and the git author of all but the last is the owner's own GitHub identity). The merge `e1ab4c78` joins origin/main at `fdc0ce92` (#1345) as its second parent. The head is `766f419b334e9d932002d27c60e78d2274da4ff7`. Scope: DURATION_ONLY for the eleven changed bindings below. The reviewer wrote none of the branch's commits, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: the merge base of the head with origin/main is `fdc0ce9205569eee272baa7c54dd2ea0b90929ca` (#1345), which is also origin/main's tip at review time after a fresh fetch. At that revision review.md and review.json are the "PR #1341 kept pictures and style plate increment" receipt above, and the report (593,580 bytes) hashes to `419b80a873fad5ac8e1f44f525e7fcd53becf0c6245a27b38695bd855e2c9fbc`, the report_sha256 review.json held before this increment. By script (blobs exported with `git show` and hashed in Node with `crypto`, the method of review.mjs), all 108 registered files hash to that receipt at the merge base, 0 stale; at the head 97 still do and 11 do not; the working tree equals the head for all 108; and none of the 11 head files holds a CR byte or a BOM. `git diff --name-only fdc0ce92 766f419b` names 16 paths, and the 11 stale bindings are exactly their intersection with REVIEW_FILES. The other five are apps/web/components/admin-video-kept-pictures.test.tsx, docs/videos/ILLUSTRATED.md, tools/video/media/keyframes.mjs and two task files, all unbound. review.mjs and review.test.mjs are byte-identical at the merge base and the head. `86f62111` changed nine of the bound files and `4d296e30` changed qa/cli.mjs, qa.test.mjs, sync.mjs, sync.test.mjs, the card and ja/admin.json; the task-file commits and the merge change no bound file against main. What is reviewed here is the whole diff from main to the head, whichever commit wrote a line. Before rebinding, `node tools/video/long-form/cli.mjs check` failed on exactly these 11 paths and nothing else. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with eleven hashes rebound and the other 97 unchanged.
+
+What the change is. It follows #1341, whose section above ended with three remarks for the code review: the card did not show the kept pictures or the reason, the final summary named every kept shot against the site's 500-character limit, and `keyframes --accept-best` would keep a drama's picture. This PR addresses all three. It also caps what a review carries of the judge's remarks so that the payload stays under the server's 256 KB limit. This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/qa/cli.mjs (+18/−3, 19,669 → 20,540 bytes). It adds `WARNING_PICTURE_IDS = 5` and an exported `keptPicturesWarning(ids)`, one line that gives the number of kept pictures and the first five ids. The `acceptedPictures` map now yields ids, and the assemble item gets that one warning instead of one warning per picture with the judge's remarks. The `const assemble = assembleItem({ … })` line is the same at both revisions by hash, including `minMinutes: needsMinimumLength(doc) ? minEpisodeMinutes() : 0`, the timeline, presented, timelineCurrent and finalSha256 arguments. The diff writes only `warnings` on a spread copy of the item. As at #1341, the item's `id`, `ok` and `detail` come from the unchanged qa/checks.mjs, and `qaReport` and the server's `_items_passed` read `ok`, so the new warning text cannot change a verdict.
+
+Findings, tools/video/qa/qa.test.mjs (+29/−6, 30,678 → 33,050 bytes). It adds one import line and one test of `keptPicturesWarning` (1, 5, 6 and 200 ids, and that `WARNING_PICTURE_IDS` equals sync.mjs's `SUMMARY_PICTURE_IDS`). In the illustrated cadence test, the title is reworded, the two-warning `deepEqual` becomes the one-line form, and a case with every shot kept and long remarks asserts `assemble.ok`, the one warning, and that no remark text is in the report. Of the six removed lines, one is the old title, four are the old warnings assertion and one is a comment line reworded. The cadence assertion `(limits: 8 s, 50%)` is unchanged context. The opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` is byte-unchanged and moves from line 22 to 23 under the new import. qa/duration.test.mjs and core/duration.test.mjs are not in the diff.
+
+Findings, tools/video/review/sync.mjs (+177/−15, 64,930 → 74,761 bytes). New exports `MAX_REVIEW_SUMMARY_LENGTH = 500` (moved up from a private constant further down), `SUMMARY_PICTURE_IDS`, `fitSummary`, `namedPictures`, `keptRemarks`, `payloadBytes`, `fitPayload`, `audioSummary`, and the payload constants (`MAX_REVIEW_PAYLOAD_BYTES` 256 KiB, `MAX_ANIME_SCRIPT_BYTES` 1 MiB, `REVIEW_PAYLOAD_BUDGET` 240,000, `KEPT_REMARK_LINES` 6, `KEPT_REMARK_LENGTH` 300). Each of these numbers counts characters, lines or bytes, and none is a time. What each new path does to duration data:
+
+- `fitSummary` cuts a summary's tail at 500 code points. The final summary starts `成片 ${formatClock(Math.round(seconds))}，` followed by the quality check's summary, and the audio one starts `旁白 ${formatClock(…)}，N 句`. The cut can therefore never reach the clock or the list of failed items. The final summary's source is identical for its first 239 characters at both revisions by hash, and only the kept-pictures tail now goes through `namedPictures`.
+- `audioSummary` builds the same string the inline template built (the clock part is verbatim). It falls back to counting the cleared lines instead of naming them only when the named form passes 500 characters.
+- `fitPayload` changes a payload only through `withKeptRemarks`. That rewrites `accepted_pictures` on a final, and on a storyboard `accepted` plus each kept shot's `judge.problems`, as `{ ...payload, [list]: … , shots: … }`. Every other key is spread through untouched, including `duration_seconds`, `runtime_proof`, the runtime fields, `qa` and `manual_review_qa`, and on a storyboard each shot's `seconds`. The sync.test.mjs case "nothing moves" pins the final payload's key order, `duration_seconds` first.
+- `payloadLimit` gives a long-anime series screenplay the 1 MiB limit by the server's own condition. `validateAnimeRuntime` (core/anime-policy.mjs, unchanged) and the server's `AnimeRuntimeSpec` (anime_policy.py, unchanged) apply the same bounds: 9–30 whole minutes, OP/ED 0–300, reserve 0–900, slot 1–3600, exact sum. A payload past the limit is now refused locally with `payload_too_large` → EXIT.lint, the outcome a server 422 had before, so nothing that was refused is now sent.
+- At the final gate, the clock lines (`qualityCheck(ctx, slug, workdir, flags)`, `const seconds = timeline.total_frames / timeline.fps`, `duration_seconds: seconds`, `runtime_proof`, `animeRuntimeProof`) occur the same 12 times at both revisions. `manual` is still `manualReview || acceptedPictures.length > 0`, and the `manual ? { manual_review, manual_review_reason, manual_review_qa } : qa ? { qa } : {}` shape is unchanged. So no cut that went up for a manual review now goes up for automatic approval.
+- The storyboard hunk is a comment only, and `fail()` adds the `payload_too_large` code to the lint exit.
+
+Findings, tools/video/review/sync.test.mjs (+344/−2, 102,083 → 130,991 bytes; 46 → 52 top-level tests). The two removed lines are the sync.mjs import, which comes back wider, and one comment line that comes back extended. The fake site now also answers 422 for a payload over 256 KB (1 MB for a long-anime script), counted independently of the tool. Its auto-approval still reads `body.payload?.qa?.ok === true` only. The six new tests cover the summary helpers (`audioSummary` with `seconds: 600` as a fixture value, where the clock appears verbatim as `formatClock(600)`), `fitPayload` on final, storyboard and long-anime screenplay payloads, and the 80-picture final and storyboard pushes. The latter assert that the summary starts `成片 M:SS，自動品管 11 項全過；`, that the review stays pending and that `manual_review_qa.ok` is true. No existing assertion is changed, and the opt-out at line 28 is byte-unchanged.
+
+Findings, tools/video/media/look-keyframes.test.mjs (+53/−1, 115,330 → 119,677 bytes). The one removed line is the drama.mjs import, which comes back with `illustrated`. Two tests are added. `--accept-best` on the explainer and drama fixtures is EXIT.usage and leaves the manifest byte-identical. The worker's own `--accept-best` call still keeps a picture for illustrated slides and for a screencast with stills. Every number in the added lines is an exit code, a judge score or a count. The opt-out at line 19 is byte-unchanged.
+
+Findings, apps/web/components/admin-video-review-card.tsx (+78/−11, 69,118 → 74,431 bytes). This is the card's duration display:
+
+- Storyboard: the per-shot `{typeof shot.seconds === "number" && … t("seconds", { seconds: shot.seconds })}` expression is identical at both revisions by hash. Only `text(shot.id)` beside it became `id`.
+- New on the storyboard: a "kept" state, a sky border, `KeptRemarks` in place of `JudgeLine` for a kept shot, and the board's `checks` line hidden when `payload.judge.overall` is not a number.
+- Final: a manual-review banner with `manual_review_reason`, a list of kept pictures, and `CheckItems` for `manual_review_qa` with a "for reference only" pill, shown only when `payload.qa` has no items. `CheckItems` itself only moves its item filter into `checkItems` and gains the pill. Failed items, the assemble item among them, are still listed first with their detail and the red "N failed" pill. The final body's chapters, checks and the rest are unchanged.
+
+So on a cut with kept pictures, the owner can now read the assemble item's own detail on the card. At #1341 it showed in the summary only by id (the remark in that section). This adds duration information to the card and removes none.
+
+Findings, apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json (+8/−0 each; en 197,121 → 197,839, ja 233,983 → 234,908, ko 219,566 → 220,441, zh-CN 188,581 → 189,192, zh-TW 188,181 → 188,792 bytes). Each adds the same eight keys under `videoReviews`: `shotKept`, `shotKeptHelp`, `storyboardKept`, `qaReferenceOnly`, `manualReview`, `keptPictures`, `keptPicturesHelp` and `keptNoRemarks`. None names a length, and no existing key is changed or removed. `seconds` and `qaItems.assemble` read the same in all five, and each file's `videoReviews` has 228 keys.
+
+Across the eleven full diffs there is no change to:
+
+- the 480-second / 14,400-frame measured floor or the 600- and 780-second targets;
+- the frame boundary or the excluded bookends;
+- the eight-minute floor, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES or target_minutes;
+- the long-anime policy (body target, OP/ED budget, broadcast slot, reserve, runtime_spec, action_seconds);
+- how a cut's measured duration is computed (`timeline.total_frames / timeline.fps`), reported (`duration_seconds`, the summary's clock, the card's shot seconds) or gated (the assemble item via qa/checks.mjs, `final_qa_passed` reading `payload.qa` only, `manual_review` routing);
+- plans.json or policy.json.
+
+No duration assertion is removed or loosened. A case-insensitive scan of the bound diffs' changed lines for minute, MIN_EPISODE, needsMinimumLength, minEpisodeMinutes, isKnowledgeLongform, target_, minMinutes, 480, 14,400, 600, 780, total_frames, duration, runtime, body_target, op_ed, broadcast, slot_reserve, action_seconds, second, frame, fps, floor, process.env, .skip, .only, formatClock, 分鐘, 秒, 時長 and 片長 finds only the following:
+
+- "keyframes" (the stage, command and manifest);
+- the card's shot line, whose seconds expression is identical;
+- the widened anime-policy import (`LONG_ANIME_POLICY`, `validateAnimeRuntime`) and `payload?.runtime_context` in `payloadLimit`;
+- `audioSummary` and the two versions of the audio and final summary lines, whose clock part is identical.
+
+In the test files the matches are `seconds: 600` as a fixture's clock in `audioSummary` tests, the long-anime fixture's runtime_spec numbers (1200/180/1500/120) used to select the payload limit, `duration_seconds` 3 and 600 in fitPayload fixtures, and `600_000` as a byte count. Every duration-rule file named in the #1341 section (qa/checks.mjs, core/duration.mjs, core/schema.mjs, core/drama.mjs, core/lint.mjs, core/timeline.mjs, core/anime-policy.mjs, assemble/cli.mjs, package/cli.mjs, judge.py, anime_policy.py, admin_service.py, plans.json, policy.json) is outside the 16-path delta.
+
+Unbound context, read and not certified. tools/video/media/keyframes.mjs (+6/−0) refuses `--accept-best` with a UsageError for any video that is not `illustrated(doc)`, before reading the manifest. That narrows which videos can keep a picture and touches no time. docs/videos/ILLUSTRATED.md gains one dated section describing the above. admin-video-kept-pictures.test.tsx tests the card. The two task files were scanned only.
+
+Ran (Node v22.22.0, Linux, in the worktree at `766f419b`, offline apart from `git fetch origin`, with VIDEO_MIN_EPISODE_MINUTES unset in the shell). As scripts: the baseline hashing (108 blobs at the merge base and the head, and the working tree), the CR and BOM checks, the intersection with REVIEW_FILES, the scans above, and the by-hash comparisons of the assemble item call, the final summary's first 239 characters, the card's seconds expression and the count of final-gate clock lines at both revisions. By reading: each of the eleven full diffs (`git diff fdc0ce92 766f419b -- <path>`), the unbound keyframes.mjs and ILLUSTRATED.md diffs, the server's `ReviewIn._small` and `AnimeRuntimeSpec`, and `validateAnimeRuntime`. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding:` for the eleven paths above and nothing else. On the branch's bytes:
+
+- `node --test tools/video/long-form/*.test.mjs tools/video/qa/qa.test.mjs tools/video/review/sync.test.mjs`: 104 tests, 103 passed and 1 failed, exit 1. The failure is "the shipped independent duration review binds the current plans and implementation", the stale receipt this section rebinds.
+- `node --test tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs tools/video/qa/checks.test.mjs tools/video/core/lint.test.mjs tools/video/media/look-keyframes.test.mjs`: 107 tests, 107 passed, exit 0.
+- In apps/web, `npx vitest run components/admin-video-kept-pictures.test.tsx components/admin-video-reviews.test.tsx components/admin-video-explainer-duration.test.tsx`: 3 files, 112 tests, 112 passed.
+
+The CLI check and the long-form tests are run again after rebinding. Their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the kept-pictures feature itself. That includes keeping a picture that failed the judge, the five-id and six-line caps, the 240,000-byte budget and its step-down, the summary cut and its ellipsis, the card's layout, colours and wording in five languages, the "for reference only" label, and whether the owner reads a failed assemble item under that label as binding.
+- `payloadBytes` measures numbers as JavaScript writes them. Python can write some numbers longer, so a payload near the limit without kept pictures could still meet a server 422. That is the pre-existing outcome, not a duration change.
+- The server's `submit_review` was not run against any of these payloads. No real cut under the eight-minute or 480-second floor was combined with kept pictures here, and the fixtures run under the tests' opt-out.
+- keyframes.mjs, ILLUSTRATED.md, admin-video-kept-pictures.test.tsx and the task files are unbound.
+- Not run or seen: the rest of the tool, Vitest and API suites, lint, typecheck, check:i18n, PostgreSQL, CI, any real model, provider or media call, and the production host.
+- The 97 bindings this branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the eleven rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1489,16 +1565,16 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
-| `apps/web/components/admin-video-review-card.tsx` | `f08060c0da7adb7489b570c7a7859d2e58b582f23b915e3f9126efc33138e468` |
+| `apps/web/components/admin-video-review-card.tsx` | `0c36f63cf55240e8de32596ee7ca7e7095145658c172788aaf1b2631313219a5` |
 | `apps/web/components/admin-video-reviews.test.tsx` | `8ee1ee52620dcbe04809fbbf61fa3b86972e22b2a27d19421a226c271af59166` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `74592ad49b5f511a44a5ff7de7fe7c68705c3cf7b6346f6306af108ff1a7bd1b` |
-| `apps/web/messages/ja/admin.json` | `a24bfc48a57d7152c68341abf6697f45b87bdcda293c21e29732124c2b80828e` |
-| `apps/web/messages/ko/admin.json` | `67b027ef1da18538c0271188b5c9b8a8a8206b06ceeab45c67913bcf908960fa` |
-| `apps/web/messages/zh-CN/admin.json` | `f5793094e8e3d20410dd50a02cbcd9e6e74658186d07e8dfccdd6174b67046c5` |
-| `apps/web/messages/zh-TW/admin.json` | `48bf4d69e0ca7b14766ec6e4238afb8b3c6f0af51124fe926c24e9df54c2ad04` |
+| `apps/web/messages/en/admin.json` | `e22e4ed7ea01d076e739a7b15253466ecb03dbaf95f6f8df6a67c638a111873a` |
+| `apps/web/messages/ja/admin.json` | `734df49fa20417bca227e0b94a7d20322e45223d0a726c4e652bf2d751dbf4a8` |
+| `apps/web/messages/ko/admin.json` | `11562d54981ca9f185ad114cf0289a1ae22b68bf4cc2bbba479081727c61eb3d` |
+| `apps/web/messages/zh-CN/admin.json` | `a7b77c4173f4e15a9c752ab382545d46c1fa95bfa797aed89b235c43635eb9fb` |
+| `apps/web/messages/zh-TW/admin.json` | `0e45149692d0e1d0de2d5491d8523bd7862e0873a94863b2f3a53052d81d3e20` |
 | `docs/videos/DESIGN.md` | `d906618972e95bdf27c070cebc1a9b1ed016aa8a062d573f16d54f989c0d02ea` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
@@ -1555,18 +1631,18 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
 | `tools/video/media/clips.test.mjs` | `142d00151868e05ce593fde515f09dc58855207d8880ca694fc08d22a4b1c572` |
-| `tools/video/media/look-keyframes.test.mjs` | `e6f3ce054e700538bec12582b26aaacabfe18c78498bdcdcc27bf43add0cd1df` |
+| `tools/video/media/look-keyframes.test.mjs` | `24e0c81feb9b2ad052b1397befac316ba11eeffad83c52e547a0955d7a41acd7` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `05814a6fc0191d1b91fb209b12bd90293787dae24eb71c9fc32ea115646bbd4f` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
 | `tools/video/production/anime-input.test.mjs` | `76b4082fd9245ea331c04d430f82aa5e4afa742d4f830c0794531cc4bbe80d02` |
 | `tools/video/qa/checks.mjs` | `0c13be6eb906f9a322eab71dd18974a2cfa3f9d9b27cc5a9cba9f3570891567b` |
 | `tools/video/qa/checks.test.mjs` | `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` |
-| `tools/video/qa/cli.mjs` | `33ca3d20a4c275116a856dc22f9579c9002c98b8d508f8f5375668be863e5da1` |
+| `tools/video/qa/cli.mjs` | `6920a7948db405bd084e010db51e237fb2b4a51860e663743fbf11de5bc86b91` |
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
-| `tools/video/qa/qa.test.mjs` | `09f74ab391f8402ec8abf704c0881a9127abeb928b23c098e4680946c69a107a` |
-| `tools/video/review/sync.mjs` | `47e3977c9d90c4083ebfa19b622704d2c8e1d43de1b4067b5fa2870f4ed1b155` |
-| `tools/video/review/sync.test.mjs` | `53e8341c8cba3ec70a0732e265f19f2d9ef51228022945464fc78035fa5bae2d` |
+| `tools/video/qa/qa.test.mjs` | `9a5430e90e3d6234198024e8bf8801d34dad0fabd3f9a6e2ceaf5e8df8a9af44` |
+| `tools/video/review/sync.mjs` | `88c85ec2d663cde32da07e5b619f31ab3126cbea00977e9a1c6a46e7a40c2e67` |
+| `tools/video/review/sync.test.mjs` | `6318fe64068bb948f38e72b9cdf561ff7d4e0f76fe2eb78d24c0eabaddb3e33a` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
