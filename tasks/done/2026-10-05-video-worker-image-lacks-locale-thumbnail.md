@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-video-worker-image-lacks-locale-thumbnail
 title: The video worker image installs no Korean, Simplified Chinese or Japanese font, so it never draws language thumbnails
-status: in-progress
+status: done
 priority: P2
 area: ops
 owner: claude-opus-5-5-worker-locale-fonts
 claimed_at: 2026-10-06T00:06:39Z
 created_at: 2026-10-05T13:18:32Z
-completed_at:
+completed_at: 2026-10-06T00:26:49Z
 branch: claude/worker-locale-fonts
 depends_on: []
 scope:
