@@ -63,7 +63,7 @@ and the required tools checks before a PR.
   paths now match new MiniMax jobs; thirty-three differ from older entries because
   of prior Gemini versions. This does not establish original asset loss or an
   incorrectly adopted storyboard in the automatic flow.
-- Private diagnosis: C:/Users/x8120/mokaair-work/diagnostics/news-video-20261005/pr1275-direct-picture-consumer-gap-readonly.md.
+- Private diagnosis (kept off the repository, in the owner's local diagnostics folder): news-video-20261005/pr1275-direct-picture-consumer-gap-readonly.md.
 - Existing automatic/review/download guards passed five targeted offline checks.
   No direct-consumer fix, production restore, paid generation or deployment is
   included in this task filing. Claim remains open for a separate bounded fix.
