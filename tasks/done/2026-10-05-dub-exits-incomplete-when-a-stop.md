@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-dub-exits-incomplete-when-a-stop
 title: dub exits incomplete when a STOP file ends it, like tts and check-audio
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-dub-stop-exit
 claimed_at: 2026-10-05T23:46:11Z
 created_at: 2026-10-05T01:47:46Z
-completed_at:
+completed_at: 2026-10-06T00:26:19Z
 branch: claude/dub-stop-exit
 depends_on: []
 scope:
@@ -19,6 +19,7 @@ scope:
   - docs/videos/DUBS.md
   - docs/videos/DESIGN.md
   - .agents/skills/youtube-video/references/automated.md
+  - docs/videos/AUTOMATION.md
 ---
 
 # dub exits incomplete when a STOP file ends it, like tts and check-audio
@@ -101,11 +102,17 @@ and leave the receipt to an independent reviewer.
   the dub test fails on its first exit code.
 - Docs: `dub` is named beside `tts` and `check-audio` in the exit-6 lists in the `tools/video/cli.mjs`
   help, `docs/videos/DESIGN.md` and `.agents/skills/youtube-video/references/automated.md`, and
-  `docs/videos/DUBS.md` gains a paragraph on STOP; all four were added to the scope. Two files were
-  left out on purpose. First, `docs/videos/AUTOMATION.md` §語言 item 2 (line 154) still names only
-  `check-audio --locale` for exit 6. Line 153 above it is rewritten by the open PRs #1315 (train),
-  #1312 and #1301, and git treats edits on adjacent lines as a conflict (checked with
-  `git merge-file`). Second, the `.claude/skills` copy of `automated.md` does not exist (only
-  SKILL.md is mirrored).
+  `docs/videos/DUBS.md` gains a paragraph on STOP. `docs/videos/AUTOMATION.md` §語言 item 2 names
+  `dub` and `dub --redo` beside `check-audio --locale`. All five were added to the scope. The
+  AUTOMATION.md edit waited until train #1315 had landed, since it rewrote line 153 just above and
+  git treats edits on adjacent lines as a conflict (checked with `git merge-file`); #1312 and #1301
+  closed with it. There is no `.claude/skills` copy of `automated.md` (only SKILL.md is mirrored).
 - Follow-up: 2026-10-06-render-assemble-compile-look-keyframes-and holds the audit from the note
-  above (render, assemble, compile, look, keyframes, clips) and the AUTOMATION.md clause.
+  above (render, assemble, compile, look, keyframes, clips).
+- `npm run test:tools` on this Windows machine: 1767 of 1775 pass, 3 fail, the rest skipped. The
+  3 are the known Windows red "a second transcript clears a line only Gemini misheard", the
+  receipt test "the shipped independent duration review binds…" (expected: the receipt-bound files
+  above wait for an independent increment), and `tools/reference-analysis.test.mjs` "--compare
+  matches the measured cuts…". That last one has nothing to do with this change: it is ffmpeg on
+  Windows, it fails alone too, and CI on main is green. Draft PR #1323 files it as
+  2026-10-06-reference-analysis-compare-range-4-6.
