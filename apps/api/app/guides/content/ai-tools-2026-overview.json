@@ -56,7 +56,7 @@
         },
         {
           "type": "paragraph",
-          "text": "這篇先用一段話講清楚每個工具的定位，再依 2026 年 9 月各家官網的資料（OpenAI 與 Anthropic 的模型、ChatGPT 的方案在 10 月 5 日重新查過）整理免費版能做什麼、付費從哪一階開始、在台灣能不能用、資料放在哪裡，最後給你一張比較表、一張比較矩陣圖，以及依需求挑第一個工具的建議。方案與價格幾個月就會變，文中價格寫的是官網當天的幣別，之後以官網為準。"
+          "text": "這篇先用一段話講清楚每個工具的定位，再依 2026 年 9 月各家官網的資料（OpenAI 與 Anthropic 的模型、ChatGPT 的方案在 10 月 5 日，ChatGPT 的計費幣別在 10 月 6 日重新查過）整理免費版能做什麼、付費從哪一階開始、在台灣能不能用、資料放在哪裡，最後給你一張比較表、一張比較矩陣圖，以及依需求挑第一個工具的建議。方案與價格幾個月就會變，文中價格寫的是官網當天的幣別，之後以官網為準。"
         },
         {
           "type": "heading",
@@ -175,7 +175,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "MiniMax 的公司全名是上海稀宇科技，在台灣最常被看到的產品是海螺 AI（Hailuo AI），一個做影片、圖片與音訊的生成工具。最新的模型 MiniMax H3 可以生成最長 15 秒、2K 解析度、帶原生立體聲的影片；免費使用者可以生成，但下載的影片會有浮水印，付費方案由低到高是 Standard、Pro、Master、Ultra、Max，每月配給的點數月底歸零，價格以官網為準。除了影片，MiniMax 還有語音模型 Speech 2.8、音樂模型 Music 3.0，以及開放權重的文字模型 M3："
+              "text": "MiniMax 的公司全名是上海稀宇科技，在台灣最常被看到的產品是海螺 AI（Hailuo AI），一個做影片、圖片與音訊的生成工具。免費使用者可以生成影片，但下載的影片會有浮水印，付費方案由低到高是 Standard、Pro、Master、Ultra、Max，每月配給的點數月底歸零，價格以官網為準。除了影片，MiniMax 還有語音模型 Speech 2.8、音樂模型 Music 3.0，以及開放權重的文字模型 M3："
             },
             {
               "type": "article",
@@ -222,7 +222,7 @@
         },
         {
           "type": "paragraph",
-          "text": "下表把六個工具的公司、免費版、入門付費方案、強項、台灣可用性與隱私要點放在一起，價格是 2026 年 9 月 13 日各家官網的幣別與數字，台灣有台幣定價的只有 Google。圖解是同一份資料的濃縮版，看圖時記得三件事：入門方案的價格幾乎都落在每月 20 美元上下，免費版的差別主要在模型等級與額度而不是功能，資料存放在中國的兩家要另外考慮。"
+          "text": "下表把六個工具的公司、免費版、入門付費方案、強項、台灣可用性與隱私要點放在一起，價格是 2026 年 9 月 13 日各家官網的標價幣別與數字：Google 的台灣方案頁直接以新台幣標價，其他有標價的幾家都用美元。標價幣別不等於扣款幣別，ChatGPT 在台灣就以新台幣計費，實際金額以結帳頁為準。圖解是同一份資料的濃縮版，看圖時記得三件事：入門方案的價格幾乎都落在每月 20 美元上下，免費版的差別主要在模型等級與額度而不是功能，資料存放在中國的兩家要另外考慮。"
         },
         {
           "type": "table",
@@ -293,7 +293,7 @@
           "width": 1600,
           "height": 900,
           "caption": "一列一個工具、一欄一個面向：先看第二欄免費版夠不夠，再看第三欄的入門價格，最後一欄是資料放哪裡。",
-          "description": "六列六個工具、四個面向的比較矩陣。ChatGPT（OpenAI，美國）：免費版文字對話不限次數，檔案、圖片、語音另有額度；入門付費 Go 8 美元（美國定價）、Plus 20 美元；強項是功能最齊、使用者最多，同帳號可用 Codex；支援名單有台灣，美國公司，可關「為所有人改善模型」或用臨時聊天。Claude（Anthropic，美國）：免費版有 Sonnet、Haiku 模型與搜尋、記憶、檔案、語音；Pro 20 美元，年繳換算 17 美元；強項是長文件、寫作、程式，Pro 含 Claude Code；支援名單有台灣，美國公司，隱私設定可關模型改善，無痕對話不用於改善。Gemini（Google，美國）：免費版 Gemini 3.6 Flash、圖片生成、Deep Research、15 GB 雲端空間；Google AI Plus 165 元、AI Pro 650 元台幣；強項是與 Gmail、文件、YouTube 整合並有台幣定價；有台灣、含繁體中文，全球伺服器，可關「保留活動記錄」，關掉後只保留 72 小時。Codex（OpenAI，美國）：Free 方案可試小任務，不含圖片生成；隨 ChatGPT Plus 20 美元；寫程式代理，有網頁、CLI、編輯器、iOS；台灣與資料隨 ChatGPT。MiniMax 海螺 AI（上海稀宇科技，中國）：免費可生成影片但下載有浮水印；海螺 Standard 價格以官網為準，Token Plan Plus 22 美元；強項是影片、語音、音樂與開放權重模型 M3；國際版網站可開，由新加坡公司營運，中國版資料存放在中國境內。DeepSeek（杭州深度求索，中國）：網頁與 App 全部免費、無廣告、無內購；沒有個人付費方案；免費、MIT 授權開源、能看圖；民眾可用，公務機關 2025 年起全面禁用，資料在中國境內存放。底注：價格為 2026 年 9 月 13 日各家官網幣別，Google 有台幣定價，其餘以美元計。",
+          "description": "六列六個工具、四個面向的比較矩陣。ChatGPT（OpenAI，美國）：免費版文字對話不限次數，檔案、圖片、語音另有額度；入門付費 Go 8 美元（美國定價）、Plus 20 美元；強項是功能最齊、使用者最多，同帳號可用 Codex；支援名單有台灣，美國公司，可關「為所有人改善模型」或用臨時聊天。Claude（Anthropic，美國）：免費版有 Sonnet、Haiku 模型與搜尋、記憶、檔案、語音；Pro 20 美元，年繳換算 17 美元；強項是長文件、寫作、程式，Pro 含 Claude Code；支援名單有台灣，美國公司，隱私設定可關模型改善，無痕對話不用於改善。Gemini（Google，美國）：免費版 Gemini 3.6 Flash、圖片生成、Deep Research、15 GB 雲端空間；Google AI Plus 165 元、AI Pro 650 元台幣；強項是與 Gmail、文件、YouTube 整合並有台幣定價；有台灣、含繁體中文，全球伺服器，可關「保留活動記錄」，關掉後只保留 72 小時。Codex（OpenAI，美國）：Free 方案可試小任務，不含圖片生成；隨 ChatGPT Plus 20 美元；寫程式代理，有網頁、CLI、編輯器、iOS；台灣與資料隨 ChatGPT。MiniMax 海螺 AI（上海稀宇科技，中國）：免費可生成影片但下載有浮水印；海螺 Standard 價格以官網為準，Token Plan Plus 22 美元；強項是影片、語音、音樂與開放權重模型 M3；國際版網站可開，由新加坡公司營運，中國版資料存放在中國境內。DeepSeek（杭州深度求索，中國）：網頁與 App 全部免費、無廣告、無內購；沒有個人付費方案；免費、MIT 授權開源、能看圖；民眾可用，公務機關 2025 年起全面禁用，資料在中國境內存放。底注：價格為 2026 年 9 月 13 日各家官網的標價幣別，Google 是台幣、其餘是美元；ChatGPT 在台灣以新台幣計費，金額以結帳頁為準；海螺 AI 各方案價格以官網為準。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -404,6 +404,11 @@
           "checked_on": "2026-10-05"
         },
         {
+          "title": "OpenAI 說明中心：Multi-currency billing（ChatGPT 訂閱支援的計費幣別含台灣的新台幣 TWD）",
+          "url": "https://help.openai.com/en/articles/10421635-multicurrency-billing",
+          "checked_on": "2026-10-06"
+        },
+        {
           "title": "OpenAI 開發者文件：支援的國家與地區（含台灣）",
           "url": "https://developers.openai.com/api/docs/supported-countries",
           "checked_on": "2026-09-13"
@@ -454,11 +459,6 @@
           "checked_on": "2026-09-13"
         },
         {
-          "title": "MiniMax 官方部落格：MiniMax H3（影片最長 15 秒、2K、原生立體聲）",
-          "url": "https://www.minimax.io/blog/minimax-h3",
-          "checked_on": "2026-09-13"
-        },
-        {
           "title": "Hailuo AI 訂閱服務條款（Standard、Pro、Master、Ultra、Max、免費使用者浮水印、點數月底歸零）",
           "url": "https://hailuoai.video/doc/payment-policy.html",
           "checked_on": "2026-09-13"
@@ -469,9 +469,9 @@
           "checked_on": "2026-09-13"
         },
         {
-          "title": "MiniMax 開放平台文件：Token Plan（Plus、Max、Ultra 價格）",
+          "title": "MiniMax 開放平台文件：Token Plan（Plus、Max、Ultra 價格；頁面列出 M3、Speech 2.8、Music 3.0 等模型）",
           "url": "https://platform.minimax.io/docs/guides/pricing-token-plan",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-10-06"
         },
         {
           "title": "DeepSeek 官方公告：DeepSeek App（完全免費、無廣告、無內購、網頁搜尋、深度思考、檔案上傳）",
