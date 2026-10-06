@@ -1,0 +1,142 @@
+{
+ "checks": "node check-act.mjs --all --craft（ep7，467 個 scene＝464 鏡＋3 張卡）：SCHEMA 錯誤 0；LINT 錯誤 0；LINT 警告 3 條，都是預期內的：(1) clips tier 的 still 會做成動畫關鍵影格（a01-s077 滄瀾客詩號定格、a03-s075 岳嵐客詩號定格，正好是分場表第二節允許的兩格）；(2)「about 23.6 minutes; the target is 22-22」；(3) runtime_spec 估算正文 1415.3 秒，實測門檻 1260–1380 秒。分場表第一節本來就預期估算比實測多，所以 (2)(3) 不算錯。各幕秒數與鏡數：a01 279.8（92 鏡＋2 卡，目標約 277）、a02 283.5（92 鏡，目標約 283）、a03 281.0（92 鏡＋1 卡，目標約 281）、a04 291.7（92 鏡，目標約 290）、a05 279.2（96 鏡，目標約 280），全部在各自目標 ±10 秒內。總長 1415.3 秒，在 1,390–1,418 秒內，但只剩 2.7 秒餘裕：下面任何修法都不能淨增秒數，要加就得在同一幕扣回。台詞 545 行，旁白占行數 7.7%、占口播字數 7%；台詞中位長度 4 字，超過 20 字的 0%。鏡長中位 3.0 秒，p90 4.5 秒，最長 7.2 秒（a02-s083、a04-s045）。冷開場 s001–s008 共 11.7 秒（≤ 14）、片名卡 4.0 秒、前情 s010–s012 共 11.2 秒（≤ 12），第一章 26.9 秒（≤ 30）；第一句人物台詞「往東？」在 4.0 秒；前 10 秒 8 鏡、前 30 秒 13 鏡。章名（估算起點／分場表）：雪線 0:00／0:00、病榻 0:27／0:27、無旗船 1:23／1:22、故人 3:05／3:02、引血 4:40／4:37、貴客 7:45／7:52、火脊丹 9:23／9:20、藥童 11:53／11:45、外港 12:43／12:37、記一筆 16:05／15:58、改口 18:56／18:51、養氣 20:57／20:54、井口 22:22／22:19，十三章都落在分場表指定的那一場第一鏡（a04-s001 沒有章名），文字逐字相同；各章長 27／56／102／95／185／98／150／50／202／171／121／85／73 秒，都 ≥ 10。高張力時間碼：前半在 a02 場 1，執事在門外三步站定 4:42.8（分場表約 4:41）、「至交的」4:58.3（4:56）、刀放上被子 5:11.1（5:10）、劍橫門口 5:25.3（5:23）、「頭一回開口，要我欠你」6:01.5（6:13）、推掌 6:17.5（6:33）、「不拿你的壽來換」6:20.5（6:38）、「所以我不走」6:40.0（6:53），本場收在 7:05.4，全在 4:37–7:09 內，也全在全集中點 11:47.6 之前；後半在 a03 場 4 與 a04 場 1，第一劍 13:08.5（12:57）、定格與字卡 13:17.5–13:26.9（13:01–13:14）、「三宗，不會知道」13:36.7（13:26）、赤羽指 13:43.5（13:32）、本體咳血 13:48.2（13:36）、第二劍 13:58.0（13:48）、「住手——！」14:02.9（13:58）、掩衣 14:04.4、圍住 14:06.4、登船 14:39.6（14:37）、離岸 14:45.6（14:43），本場收在 15:08.1（約 15:03），前因藥童場從 11:53.1 起，在中點之後；整段比分場表晚 5–12 秒，是前面各幕累積的 +4 秒加上外港場內台詞稍長，屬估算誤差，不列 finding。最後一句台詞是 a05-s094 寂聞「……藥。」（23:27.0–23:28.3），前一句「無聲。」在 a05-s092，兩行各在一鏡；全集最後一鏡 a05-s096 是殷無聲手上那碗浮紅的湯藥插鏡、無台詞，收在 23:35.3，照分場表。craft 30/30 全數達標，沒有未達標列；info 列：64 鏡短於 2 秒（多是冷開場與外港出招的 1 秒拍，照分場表）；3 條 motion 含 and/then，逐條看過：a02-s034 是推掌與它造成的後晃（同一個動作的結果，分場表第 33 點原文），a02-s050 是第六節寫死的手勢，a03-s075 是第五節寫死的定格收勢，都不算兩個動作；locked 332／464，最長連 17 鏡，同一運鏡最多連 2 鏡。shot_reading 陷阱 0。另外用腳本核對過：分場表各場「必留」區塊裡的 439 個引號句全都逐字在對的幕裡（腳本報的 3 個缺都是括號說明裡的「我」「不記名」，不是台詞）；冷開場三句、片名卡兩句、前情三句、兩首詩號的旁白與字卡 subtitle 逐字相同，卡片只有 a01-s009、a01-s078、a03-s076 三張。說話的只有 narrator 與分場表允許的十個 id（yuelan-ke 72、sha-nu 81、canglan-ke 69、shuyuan-elder 53、bao-sanqian 47、yan-hui 47、wuming-jianke 41、ji-wen 41、luo-qingyan 27、xuanmen-steward 25 行），殷無聲、沈歸鶴本體、藥童、守衛、僧人、盟兵都沒有台詞；ji-wushuang 沒有出現在任何一鏡的 characters；沒有超過 3 個角色的鏡頭；凡列 shen-guihe 都配 shen-bedridden、列 ji-wen 都配 jiwen-sealed、列 yin-wusheng 都配 yin-cut-hair；yuelan-ke 的 look 照第二節換：基本外觀到 a03-s070（最後一格接觸插鏡 a03-s072 之前），yuelan-crest 從 a03-s073 到 a03-s089（第二劍接觸插鏡 a03-s090 之前），yuelan-crippled a03-s091、a03-s093，a04-s001 掩衣插鏡 characters 為空，yuelan-covered 從 a04-s002 到 a04-s020 離岸，本集沒有一鏡在 a04 用 crippled；character_looks 的角色都在同一鏡的 characters 裡。赤羽入盟後只有「歸我管」用「我」（另一個是冷開場「我往南。」）；無名劍客 31 句、沒有一個「」超過 8 字；洛青衍的頸後全集沒入畫（客院、盟堂、石台的 prompt 都寫頭髮蓋住頸後）。時段帳：旁白時間詞依序是「四天後」「當天午後」「同一個黃昏」「隔天一早」「同一個上午」「當天午後」「那一夜」「天快亮時」「當天午後」「同一個午後」「當天黃昏」「梵林後山，寒潭」「同一夜」「夜深了」，跟第十節逐列對得上；前情不帶時間詞；全集沒有報「第幾日」；台詞裡的「三天前」「十二天」「十三天」「十幾天」「一個多月」「十八天了」「今早」「午後」「今天黃昏」「早上八口」都照第十節的日數差。禁字掃過：火脊鐵、寒毒、竹虛、第二支、第三支、姬無霜、霜夫人、幽都、朋友、收魂、鬼燈、樣鐵、金印、傳單、柳不活、八天前、有沒有第二瓶、梵林不求、求來的、不算什麼、不記名、收不回 0 次；三宗、燕迴、洛青衍、滄瀾客聽得見的台詞裡沒有分魂、元神、化身、影子（「影子」只在 a03 場 2 書齋、「元神」只在 a04 場 2 書齋、「分了」只在 a05 場 4 書齋）；「岳嵐客」只在外港 a03-s079 與書齋 a04-s038，「大宮主」只在書齋 a04-s039–s040，盟堂上紗女只說到「赤淵宮的」；寂聞沒有說「謝」「朋友」，也沒問書齋（「謝」只出現在滄瀾客的必留「謝什麼。」）；長老在寂聞面前沒提沈歸鶴、赤羽、外港；旁白只交代時間地點、前情與詩號，沒有替人物解釋心思。跟第 1 集逐字相同的名句（「你知道的，我都要知道」「瞞得過一天，是一天」「幽都殺人，用不著走門」）0 次；第 1–6 集的詩號沒有重念；跟第 1–6 集逐字相同的只有旁白時間詞與「先生的人，」「下一支箭，」「三宗的帳，」這類短句。道具鏈：引血的刀斗篷→被上→寂聞手裡→被上→斗篷→潭邊石上→斗篷，全集沒出鞘；藥箱 a03-s072 落海後不再出現；紅漆丹盒客院石階→劍客腰帶→外港掌心→腰帶→書齋案→盟堂桌→書齋案；紅衣碎片劍尖→左拳→書齋案→盟堂桌→書齋案；劍客左胸焦痕 a03-s082 起寫、a04 場 2 起改成左手按胸；空青瓷瓶一直在包三錢身上；扇一直在枕邊；養氣冊從紗女膝上到榻頭矮几；殷無聲端藥前把劍連鞘擱在門口木板上（a05-s076）。承接：跑過 dialogue.py --ep 6，第 6 集收在鯨背嶼繡布，書齋（空瓶在包三錢身上、扇在枕邊、劍客守門外迴廊）與禪房（殷無聲端碗餵藥、「無聲。」「燈。」）的狀態都跟本集前情與 a01 場 4 接得上，第 6 集「有沒有第二瓶」那一拍本集沒有重演（a01-s021 紗女不答）。另：分場表開頭說 meta.json 的 cast 仍列 ji-wushuang，實際 meta.json 與 header.json 都是 12 人、沒有她；不影響寫幕，主控合併時知道就好。縮圖照第五節用 a03-s075 岳嵐客詩號定格（meta.json headline「赤羽真身」）。",
+ "findings": [
+  {
+   "severity": "major",
+   "shots": [
+    "a05-s076",
+    "a05-s077",
+    "a05-s078",
+    "a05-s080",
+    "a05-s082",
+    "a05-s083",
+    "a05-s086",
+    "a05-s087",
+    "a05-s088",
+    "a05-s093",
+    "a05-s095"
+   ],
+   "problem": "懸念場殷無聲端藥前把劍連鞘擱在門口的木板上，可是 yin-cut-hair 這個 look 寫死劍背在背上；之後每一鏡都會自動帶上背上的劍，a05-s082 甚至同一格裡有兩把劍（木板上一把、他背上一把），分場表要的「端藥時劍留在門口」在畫面上不成立。",
+   "evidence": "header 的 yin-cut-hair appearance 是「one straight sword in a plain black scabbard worn across his back with the hilt above his right shoulder」。a05-s076 motion「Yin lays the sheathed sword flat on the floorboards beside the door frame」；a05-s077 prompt 只寫「his hands empty」；a05-s082 prompt「Yin coming along the boards ... the sheathed sword lying on the floorboards beside the open door frame」，characters 列了 yin-wusheng。分場表第四節〈殷無聲的劍〉：「全集不寫他坐著時劍在背上……端藥時劍連鞘留在門口的木板上（照第 6 集 a04-s041）」；第七節 a05 場 5 第 7 點同。這幾鏡的 prompt 都沒有一個字壓住背上那把劍。",
+   "fix": "不改 cast.json 的話，就在這幾鏡的 prompt 補上同一句：a05-s076 把「the straight sword in its plain black scabbard in his left hand」改成「the straight sword in its plain black scabbard already off his back and in his left hand, nothing on his back」；a05-s077、s078、s080、s083、s086、s087、s088、s093、s095 各加「nothing on his back, his sword left on the corridor boards outside the door」；a05-s082 加「nothing on his back」，木板上那把劍保留。a05-s090 是眼睛大特寫，不必改。秒數不變。根本的修法是讓 yin-cut-hair 不寫劍的位置（由主控在 cast.json 決定，會連帶第 5、6 集的設定圖）。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a01-s064",
+    "a01-s065",
+    "a01-s091",
+    "a01-s092",
+    "a02-s002",
+    "a02-s015",
+    "a02-s017",
+    "a02-s036",
+    "a02-s048",
+    "a02-s049",
+    "a02-s053",
+    "a02-s062",
+    "a05-s005",
+    "a05-s008",
+    "a05-s024",
+    "a05-s031",
+    "a05-s070",
+    "a05-s073",
+    "a03-s043",
+    "a05-s043",
+    "a05-s052",
+    "a05-s053",
+    "a05-s068",
+    "a03-s023"
+   ],
+   "problem": "同一類的外觀衝突還有三組，風險較小：殷無聲坐在門口劍橫膝上、或手握劍鞘站著時，look 仍會加上背上的劍；無名劍客坐在門外劍橫膝上時，基本外觀仍把劍寫在左腰；赤羽跪著把藥箱擱在膝上那一鏡，基本外觀仍把藥箱寫在右肩。",
+   "evidence": "a01-s064「the straight sword in its plain black scabbard laid across his knees」、a02-s053「Yin one step behind him with the sheathed sword in his left hand」、a05-s008「the black scabbard in his left hand at his hip」，配上 yin-cut-hair 的「worn across his back」。wuming-jianke 基本外觀「one long straight sword with a plain white hilt in a plain black scabbard at his left hip」，a03-s043、a05-s043、a05-s052、a05-s053、a05-s068 寫的是劍連鞘橫在膝上（例：a05-s053「the white-hilted sword across his knees」）。yuelan-ke 基本外觀「a physician's black lacquered medicine box hanging on a strap over his right shoulder」，a03-s023 寫「the black lacquered medicine box on his knees with its lid half down」。第 5、6 集也是這樣寫，所以只列 minor。",
+   "fix": "殷無聲劍在膝上或手上的鏡頭（上列 a01–a05 各鏡，另含 a01-s066–s069、a02-s019、a02-s056–s059 同類）在劍的那一句後面加「taken off his back, nothing on his back」，照第 2 集的寫法；無名劍客五鏡加「his scabbard unhooked from his hip and laid across his knees, nothing at his hip」；a03-s023 改成「the strap of the black lacquered medicine box slipped off his shoulder, the open box on his knees」。都不動秒數。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a01-s077",
+    "a03-s075"
+   ],
+   "problem": "兩格詩號定格的 camera 都寫了 slow push in，分場表第五節寫死定格是 locked。定格要做成 still、上面念兩句旁白再接字卡，推鏡會讓 still 變成一段慢推，跟第 5、6 集主編改掉的是同一個問題。",
+   "evidence": "a01-s077 camera「Full shot, low angle, slow push in」、a03-s075 camera「Full shot, low angle, slow push in」，兩格都是 visual: still。分場表第五節：「定格鏡：template: shot、data.visual: still、camera: Full shot, low angle, locked」（兩位都是這一句）。ep5、ep6 review-findings 都把同一條列過。",
+   "fix": "兩格的 camera 都改成「Full shot, low angle, locked」，prompt 與 motion 不動。前一鏡 a01-s076、a03-s073 也是 slow push in，改了之後同運鏡連續數反而變少；秒數不變。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a04-s033",
+    "a04-s051",
+    "a05-s058"
+   ],
+   "problem": "毒丹被挑開之後，書齋案上、盟堂桌上、隔了大半天的夜裡，它都還在冒黑煙。三宗長老眼前桌上一直冒著黑煙，洛青衍卻要用過去式作證「它冒了一縷黑煙」、燕迴說「毒，我沒看見」、長老說「一顆碎丹？」，三宗不信的戲就站不住；夜裡那縷煙還往燭火那邊彎，像毒還活著、就在昏睡的本體旁邊。",
+   "evidence": "a04-s033、a04-s051、a05-s058 的 prompt 都整句抄了第九節「挑開的毒丹」：「a black-green core inside giving off a thin thread of cold dark vapour」；a05-s058 motion「The thin thread of dark vapour from the split pill bends toward the candle」。分場表 a04 場 2 第 7 點、a04 場 3 第 9 點、a05 場 4 第 16 點寫的都只是「裂開的丹、黑綠的芯」，沒有煙；a04-s061 洛青衍「它冒了一縷黑煙。」、a04-s066 燕迴「毒，我沒看見。」、a04-s059 長老「一顆碎丹？」。",
+   "fix": "這三鏡把那半句改成「a dull black-green core inside, no vapour now」；a05-s058 motion 改成「The candle flame leans, its light sliding once across the split pill and the torn scrap」。外港 a03-s065（挑開後二十來分鐘）可以留著煙。秒數不變。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a03-s086",
+    "a03-s064",
+    "a03-s067",
+    "a03-s084",
+    "a03-s085",
+    "a04-s012"
+   ],
+   "problem": "寫手選用了「可省」的「先生的人，也會痛？」，而且放在書齋咳血那兩格之後：觀眾剛看到本體嘴角的血，赤羽就問「也會痛？」，等於替畫面說出「化身受創、本體受苦」，搶了第四幕紗女那一句的規則；同時是一分鐘內赤羽第三次用「先生的人」開頭，「痛」也重複了五十秒前的「不會痛」。",
+   "evidence": "a03-s064（12:53）「先生的人。」「來送行？」；a03-s067（13:02）「好在，」「先生吃了，」「不會痛。」；a03-s084–s085（13:46–13:51）書齋 Bao「先生！」與唇角黑血；a03-s086（13:51）「先生的人，」「也會痛？」；a04-s012（14:30）「燕爺，」「先生的人，」「病得比先生重。」。分場表第八節：「本集新給的一層是『化身受創，本體受苦』，只由紗女在 a04 場 2 對包三錢與劍客說一次」（a04-s031「你挨的，先生替你咳出來。」）；第七節 a03 場 4 把這句標為「可省」。",
+   "fix": "刪掉 a03-s086（3.0 秒，總長 1415.3→1412.3，仍在 1,390 以上）。咳血插鏡之後直接接 a03-s087 劍客「這隻手，」「送的藥。」，交叉剪本身已經交代兩地同一刻。想保住咳血的重量，可把 a03-s085 的 action_seconds 從 3 改成 4（總長 1413.3）。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a01-s086"
+   ],
+   "problem": "滄瀾客自己剛說「我走了四天下來」，進禪房時毛皮袖子上卻還黏著一塊雪；春末的山下走了四天，雪不會還在，畫面跟台詞互相拆台，也把「嶺上的雪」那句變成畫面笑點。",
+   "evidence": "a01-s084「我走了四天下來。」；a01-s086 prompt「a crust of snow still clinging to one fur sleeve」，motion「Canglan flicks the crust of snow off his fur sleeve」，台詞是 a01-s085 寂聞「嶺上的雪，」「還是那麼厚。」之後的「比人多。」。第十節：第 35 日下嶺、第 39 日黃昏到梵林。",
+   "fix": "prompt 改成「the fur of one sleeve matted and frayed from the road」，motion 改成「Canglan brushes a few dry pine needles off his fur sleeve」。台詞與 1.7 秒不變。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s012",
+    "a01-s073"
+   ],
+   "problem": "寂聞聽到「折一半」的那格大特寫，跟前一天黃昏認出滄瀾客那格是同一個鏡頭、同一個動作，兩個不同的反應被拍成同一拍，第二次就沒有新的資訊。",
+   "evidence": "a01-s073（3:36）camera「Extreme close-up of Jiwen's eyes, locked」，motion「Jiwen's eyes open wide, a flash of the old fierce light in them」；a02-s012（5:09）camera 相同，motion「Jiwen's eyes open wide, for an instant the old fierce light in them」。分場表 a01 場 7 第 12 點要的是「睜大——從前那種凶光」，a02 場 1 第 11 點只寫「大特寫 Jiwen 的眼睛（動作 2 秒）」，是聽到朋友要折一半壽數的反應。",
+   "fix": "a02-s012 motion 改成「Jiwen's eyes narrow hard on Canglan beyond the frame, the lids not blinking」（或「his heavy eyelids drop shut and lift again, the eyes gone hard」），prompt 首格的 dull heavy-lidded 保留。2 秒不變。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a05-s029"
+   ],
+   "problem": "改口場那格「藥爐還在冒煙」的插鏡是從迴廊看出去的，prompt 卻把藥爐整句寫進畫面；第四節定了從門口看不見井院，生圖很容易把炭爐和藥罐畫在轉角，迴廊與井院的地理就亂了，懸念場「Yin 從門口看不見井院」也跟著不成立。",
+   "evidence": "a05-s029 prompt「The right end of the wooden corridor where it turns a corner and three stone steps drop out of sight below; beyond the corner, over the eaves of the small well yard, a thin grey thread of smoke rising from a small clay medicine pot steaming on a charcoal brazier under the eaves」。第四節〈梵林寺迴廊〉：「迴廊畫面右端轉角下三級台階是井院——從門口看不見井院」；a05-s070 也寫「three stone steps drop away out of sight」。",
+   "fix": "把後半改成「beyond the corner, a thin grey thread of smoke rising from below the eaves of the small well yard, its source out of sight」，不寫藥罐與炭爐。3 秒不變。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a04-s057",
+    "a04-s052",
+    "a04-s058"
+   ],
+   "problem": "紗女在盟堂站到桌邊擺出毒丹與碎布，下一鏡才坐回座上，中間那一鏡卻寫她已經坐著。",
+   "evidence": "a04-s050 motion「The veiled woman walks barefoot from her cushion to the west edge of the council table」；a04-s052 prompt「The veiled woman standing at the west edge of the council table」；a04-s057 prompt「The veiled woman seated at the west edge of the council table」；a04-s058 motion「The veiled woman settles back onto her west cushion」。",
+   "fix": "a04-s057 prompt 改成「The veiled woman standing at the west edge of the council table」，其餘不動，秒數不變。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a04-s013",
+    "a04-s023",
+    "a03-s070",
+    "a03-s089"
+   ],
+   "problem": "外港這一場的兩條寫法有幾鏡漏了：劍客左胸的焦痕在同一個構圖的近景裡時有時無；拍得到碼頭石面的鏡頭沒寫他的淡影。",
+   "evidence": "a04-s013 是「The masked swordsman at screen left facing right」的中近景，同構圖的 a03-s083、a03-s087、a04-s006 都寫了「a small scorched fingertip mark on the white robe over his left chest」，這一鏡沒寫（第二節：外港這一場凡是正面拍得到他左胸的鏡頭都寫）。a04-s023 雙人鏡、a03-s070 與 a03-s089 兩格全景都拍到碼頭石面，沒寫「his shadow on the stone slightly fainter than it should be」（cast-notes 第 24 條：外港凡是拍到地面就寫）。",
+   "fix": "a04-s013 在白面具那一句後加「a small scorched fingertip mark on the white robe over his left chest」；a04-s023、a03-s070、a03-s089 在劍客那一句後加「his shadow on the stone slightly fainter than it should be」。秒數不變。"
+  }
+ ]
+}
