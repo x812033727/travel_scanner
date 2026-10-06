@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-chatgpt-taiwan-currency-and-ads-lines
 title: "ChatGPT now bills Taiwan in NT$: fix the USD-only and US-only-ads lines in two AI guides"
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-chatgpt-taiwan
 claimed_at: 2026-10-06T01:07:45Z
 created_at: 2026-10-05T14:20:00Z
-completed_at:
+completed_at: 2026-10-06T01:43:09Z
 branch: claude/chatgpt-taiwan
 depends_on: []
 scope:
