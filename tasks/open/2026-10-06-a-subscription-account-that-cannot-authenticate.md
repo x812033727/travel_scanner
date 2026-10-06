@@ -20,6 +20,7 @@ scope:
   - apps/api/tests/test_ai_accounts_agent_runs.py
   - apps/api/tests/test_video_automation_subscription.py
   - apps/api/tests/test_video_automation_ai.py
+  - apps/api/tests/test_video_stage_jobs.py
   - apps/api/tests/test_ai_subscription.py
   - ops/ai-accounts/README.md
 ---
@@ -69,7 +70,9 @@ failure that was not a usage limit (only `LIMIT_MESSAGE` rested an account and m
 - [x] `video_automation/subscription.py` mapping; `ai.py` `NO_MODEL_CALL_ERRORS` and
       `SUBSCRIPTION_RAN_NOTHING`; `app/ai/subscription.py` `WAIT_CODES`; `agent.py`
       docstring; `ops/ai-accounts/README.md` next to the 30-minute limit rule.
-- [x] Tests in the four test files.
+- [x] Tests in the five test files (`test_video_stage_jobs.py` drives `run_jobs._run` end to
+      end: the row ends `failed` / 503 / `retry_after` 900, `dispatched_at` set, no
+      `VideoAiRun`).
 
 ## How to verify
 
@@ -89,9 +92,13 @@ accounts page still shows it signed in, and the owner signs it in again there.
 
 ## Notes
 
-- The tools side (`tools/video/automation/client.mjs` `PAUSE_CODES`) must learn
-  `video_ai_subscription_auth_failed` so the worker treats it like a pause; a sibling PR owns
-  that file, so it is not in this task's scope.
+- The tools side (`tools/video/automation/client.mjs` `PAUSE_CODES`) learns
+  `video_ai_subscription_auth_failed` in the stacked retry PR, which owns that file. Deploy
+  this PR together with that one, never alone: without the client change a sync stage would
+  treat the new 503 as an uncertain run instead of a pause.
+- `run_codex` reads only stderr and the failed turn's event messages that are no longer
+  than `LIMIT_NOTICE_CHARS` each (review of PR #1338); a long message that merely quotes
+  "not logged in" fails the run as before and does not rest the account.
 - `.agents/skills/prod-host-ops/references/ai-accounts.md` (mirrored under
   `.claude/skills/`) still describes only the usage-limit rest; it is outside this scope and
   could take one line about the auth rest.

@@ -485,10 +485,14 @@ def run_codex(config: AgentConfig, slot: str, request: RunRequest) -> dict[str, 
     if limit is not None:
         raise limit
     if completed.returncode or not isinstance(text, str) or not text:
-        # A failed turn's event messages are notices, not an answer; a long answer is one.
-        auth = auth_refusal(
-            slot, completed.stderr, *(str(event.get("message", "")) for event in events)
-        )
+        # A failed turn's sign-in notice is one short message, as on the Claude path; a long
+        # message that merely quotes "not logged in" is not one and does not rest the account.
+        notices = [
+            message
+            for message in (str(event.get("message", "")) for event in events)
+            if len(message) <= LIMIT_NOTICE_CHARS
+        ]
+        auth = auth_refusal(slot, completed.stderr, *notices)
         if auth is not None:
             raise auth
         raise CliError(f"codex run failed: exit {completed.returncode}")

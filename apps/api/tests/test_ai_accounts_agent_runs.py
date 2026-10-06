@@ -95,6 +95,10 @@ FAKE_CODEX = textwrap.dedent(
     if "LIMIT" in prompt:
         print(json.dumps({"type": "turn.failed", "message": "You've hit your weekly limit"}))
         sys.exit(1)
+    if "LONG-SIGNED-OUT" in prompt:
+        message = "The turn failed after a tool said not logged in; its log: " + "x" * 1000
+        print(json.dumps({"type": "turn.failed", "message": message}))
+        sys.exit(1)
     if "SIGNED-OUT" in prompt:
         print(json.dumps({"type": "turn.failed", "message": "Error: not logged in"}))
         sys.exit(1)
@@ -418,6 +422,9 @@ def test_codex_runs_with_all_tools_disabled_and_rejects_any_tool_event(tmp_path:
     with pytest.raises(RunRefused) as signed_out:
         run_codex(config, "a", _request("SIGNED-OUT", tool="codex", model="gpt-6-sol"))
     assert (signed_out.value.status, signed_out.value.code) == (503, "subscription_auth_failed")
+    # A long failed-turn message that merely quotes "not logged in" is not the sign-in notice.
+    with pytest.raises(CliError, match="codex run failed"):
+        run_codex(config, "a", _request("LONG-SIGNED-OUT", tool="codex", model="gpt-6-sol"))
 
 
 def test_codex_upgrade_needs_a_new_tool_isolation_check(tmp_path: Path) -> None:
