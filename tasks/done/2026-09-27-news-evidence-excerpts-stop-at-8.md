@@ -1,13 +1,13 @@
 ---
 id: 2026-09-27-news-evidence-excerpts-stop-at-8
 title: News evidence excerpts stop at 8,000 characters, so the checks never see the rest of the page
-status: open
+status: done
 priority: P1
 area: api
 owner:
 claimed_at:
 created_at: 2026-09-27T09:42:28Z
-completed_at:
+completed_at: 2026-10-05T23:44:11Z
 branch: codex/p1-task-audit
 depends_on: []
 scope:
@@ -49,7 +49,7 @@ A refresh cannot help either: it re-reads the page and truncates it at the same 
 
 ## Steps
 
-- [ ] Measure the extracted text length of the last month's evidence pages, per source, to
+- [x] Measure the extracted text length of the last month's evidence pages, per source, to
       choose a limit or an extraction change.
 - [x] Change the scanner and `refresh_evidence` together, so that a refresh never shortens
       what the first scan stored.
@@ -99,3 +99,4 @@ cd apps/api && uv run pytest tests/test_news_automation.py tests/test_news_pipel
   focused mypy passed the same six files. No live database, model, network fetch or
   paid generation was used by these tests.
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-p1-news (since 2026-09-29T01:55:01Z) was stale and is released so it stops locking its scope. Landed: #966. Still open: Measure last month's production evidence page lengths per source to choose a limit.
+- 2026-10-06 (about 23:20Z on 10-05), claude-opus-5-5-incomplete-tickets: read-only measurement on production, `news_evidence` retrieved in the last 30 days, split at #966 (2026-09-29 10:14Z). Before: the 8,000 cut was the median for Anthropic, Apple, Cloudflare, Ethereum Foundation, GitHub, Google Cloud, Microsoft Research and The Verge (for example Apple 89 of 100 and Ethereum Foundation 96 of 97 excerpts sat exactly at 8,000). After, with the 40,000 ceiling: medians 1.3k to 15.6k, p90 up to 27.8k (AWS ML blog), and only 7 of 615 excerpts reach 40,000 (AWS 3; CoinDesk, Decrypt, TechCrunch and The Verge 1 each, the last four being live blogs). So 40,000 keeps almost every article whole and no extraction change is needed now. Every box is ticked; closed.

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-news-duplicate-check-treats-a-new
 title: News duplicate check treats a new model version as a duplicate of the previous one
-status: open
+status: done
 priority: P2
 area: api
 owner:
 claimed_at:
 created_at: 2026-09-30T10:34:33Z
-completed_at:
+completed_at: 2026-10-05T23:44:08Z
 branch: claude/gifted-rubin-umw5s4
 depends_on: []
 scope:
@@ -31,7 +31,7 @@ judged a duplicate or "uncertain" and wait in manual review. Not yet observed on
 - [x] The duplicate prompt states that a new version, a new model in a family, or a price
       change announced later is a new event, and a regression test holds a pair like
       "GPT-6 Sol and Luna launch" / "GPT-6.1 Sol launch" as not duplicate.
-- [ ] Look up on the host how many `news_duplicate_uncertain` holds of the last 30 days were
+- [x] Look up on the host how many `news_duplicate_uncertain` holds of the last 30 days were
       new versions; write the number here.
 
 ## How to verify
@@ -48,3 +48,4 @@ judged a duplicate or "uncertain" and wait in manual review. Not yet observed on
 - Left: the host count of `news_duplicate_uncertain` holds of the last 30 days that were new
   versions (needs the host database).
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-opus-5-5-news-4-9 (since 2026-09-30T12:13:26Z) was stale and is released so it stops locking its scope. Landed: #1041. Still open: Host count of news_duplicate_uncertain holds in last 30 days that were new versions.
+- 2026-10-06 (about 23:20Z on 10-05), claude-opus-5-5-incomplete-tickets: read-only query on production (`news_candidates`, `error_code = 'news_duplicate_uncertain'`, created in the last 30 days): **155 holds**, all `manual_review`, created 09-24 to 10-05. Read by title, **7 were plainly a new version or a new model in a family**: Gemini 3.8 Flash, Lyria 3.5, iPhone 18 Pro, AirPods 5, Mac Studio with M5 Max/Ultra, Mac mini with M6, Claude Sonnet 5.5 on AWS; 2 more are borderline (Siri AI on iOS 27, Ray-Ban Meta Audio). All nine were created 09-24 to 09-28, before #1041 merged (09-30 23:13Z). None of the holds created 10-01 to 10-05 is a new version: they are mostly repeated crypto price and live-update stories and follow-ups of one event (Meta Muse, DevDay coverage), which is what the check should hold.
