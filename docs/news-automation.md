@@ -47,6 +47,16 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    and is queued, and the report itself is closed as `duplicate`
    (`news_attached_as_evidence`) instead of filing the same story twice. This applies to
    any candidate in `needs_evidence`, including one that had only `lead_only` pages.
+   Only a page from an enabled `evidence` source is attached, fetched under the same host
+   allow-list and SSRF checks as every other page; a `lead_only` site's page never is. It
+   is attached once: the next scan finds the report already seen and does nothing, and a
+   later report linking to a story that has left `needs_evidence` files its own candidate.
+   Since the owner's decisions of 2026-09-25 (one evidence page drafts; a first-party page
+   publishes on its own) and 2026-09-28 (so does a page from a trusted newsroom), a
+   first-party candidate no longer waits for a second site, so nothing attaches one to a
+   candidate already drafting. Matching a page to a story by event rather than by link
+   (through Jev) is not built; both wait on an owner decision (task
+   `2026-10-06-match-news-evidence-by-event`).
    A source with `evidence_from_feed_summary` (the Claude Platform release notes, whose
    entries all link to anchors on one page) is not fetched page by page: each entry's feed
    summary is its evidence, its anchor URL the canonical URL, and revalidation and
