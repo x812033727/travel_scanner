@@ -3187,6 +3187,42 @@ test("a STOP file that ends a dub's check defers the language to the next run in
   assert.equal(video.state().languages?.ja, undefined);
 });
 
+test("a STOP file that ends a dub or its retake defers the language: the track is not heard, and the next run makes it again from the cache and checks it", async () => {
+  const video = await finishedVideo({ checks: { ja: 1 } });
+  video.choose({ ja: { metadata: true, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: ja metadata and captions translated and reviewed$/);
+  const play = video.ctx.runCommand;
+  const stops = new Set(["dub", "dub --redo"]);
+  video.ctx.runCommand = async (command, runCtx) => {
+    if (command[0] === "dub" && stops.delete(command.includes("--redo") ? "dub --redo" : "dub")) {
+      video.runs.push(command.join(" "));
+      return { code: EXIT.incomplete, out: "ja: stopped by the STOP file; 1 of 3 requests done, rerun to continue\n" };
+    }
+    return play(command, runCtx);
+  };
+  const dubbing = () => video.runs.filter((run) => /^(dub|check-audio) .*--locale/.test(run));
+  const flags = path.join(video.workdir, "review", "check-flags.ja.json");
+  const waits = (what) => {
+    assert.notEqual(video.state().status, "blocked", video.state().blocked);
+    assert.equal(existsSync(path.join(video.workdir, "dubs", "ja", "skipped.json")), false, `${what}: the language is not given up`);
+    assert.equal(video.state().languages.ja.check_stopped, true);
+  };
+
+  assert.equal(await video.step(), "chatgpt-ads-off: ja dub stopped (ja: stopped by the STOP file; 1 of 3 requests done, rerun to continue); the next run continues");
+  waits("dub");
+  assert.deepEqual(dubbing(), [`dub --slug ${video.slug} --locale ja`], "a dub that stopped is not a track to check");
+
+  assert.equal(await video.step(), "chatgpt-ads-off: ja dub retake stopped (ja: stopped by the STOP file; 1 of 3 requests done, rerun to continue); the next run continues");
+  waits("retake");
+  assert.equal(video.state().languages.ja.retakes, 1);
+  assert.deepEqual(dubbing().slice(1), [`dub --slug ${video.slug} --locale ja`, `check-audio --slug ${video.slug} --locale ja`, `dub --slug ${video.slug} --locale ja --redo ${flags}`], "a stopped retake is not heard either");
+
+  // The old track still reads as current: the next run lays the takes out again and hears it.
+  assert.equal(await video.step(), "chatgpt-ads-off: ja dub made after 1 retake; Jev passed every line");
+  assert.deepEqual(dubbing().slice(4), [`dub --slug ${video.slug} --locale ja`, `check-audio --slug ${video.slug} --locale ja`]);
+  assert.equal(video.state().languages?.ja, undefined);
+});
+
 test("illustrated slides: settle gives the channel look and the owner's music and effects; an explainer one-off keeps no cast whatever the writer returned", async () => {
   const { illustratedFixture } = await import("../core/fixtures/load.mjs");
   const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, slides: { slides_music_track: "bed.mp3", slides_sfx_set: "studio-a" } };
