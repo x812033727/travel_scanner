@@ -8,12 +8,18 @@
 // The same two endpoints and the same rules as the long videos' check (tools/video/tts/check.mjs),
 // over a Short's phrases instead of a script's lines. A service that does not answer fails the
 // check: nothing passes because it could not be judged.
+//
+// Both calls are paid and go through a speech journal in the build directory
+// (tts/speech-journal.mjs): one whose answer was lost is not sent again by the next check of that
+// build until a person clears its hold, and one that came back before the check was saved is taken
+// from the journal instead of being bought again.
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
 import { readJson } from '../core/paths.mjs';
 import { DEFAULT_THRESHOLD, MAX_HEARD_CHARACTERS, MAX_INTENDED_CHARACTERS, MAX_JUDGE_LINES, hintTerms, matchKind, spokenForm } from '../tts/check.mjs';
 import { judgeLines, transcribeClip } from '../tts/client.mjs';
+import { JOURNAL_DIR, openSpeechJournal } from '../tts/speech-journal.mjs';
 import { downsample, encodeWav, parseWav, requireNarrationFormat } from '../tts/wav.mjs';
 import { SCRIPT_FILE, phrasesOf, saveJson, sha256 } from './core.mjs';
 
@@ -97,20 +103,34 @@ export function buildClips(directory, count) {
   });
 }
 
-/** Check a build directory and write its check.json; returns the check. */
+/**
+ * Check a build directory and write its check.json; returns the check. Its call counts are this
+ * run's: an answer the journal kept from an earlier check of the build is not counted again.
+ */
 export async function checkAudio({ directory, client, lexicon = null, threshold, transcribeImpl = transcribeClip, judgeImpl = judgeLines }) {
   const doc = readJson(path.join(directory, SCRIPT_FILE), null);
   if (!doc) throw new Error(`${directory} holds no ${SCRIPT_FILE}: it is not a build of this tool`);
   const phrases = phrasesOf(doc);
   const calls = { site: client.site, token: client.token, fetchImpl: client.fetch, sleep: client.sleep };
+  // Released once check.json is written: until then a restart takes what was bought from here.
+  const journal = openSpeechJournal(path.join(directory, JOURNAL_DIR));
+  const paid = { transcribe: 0, judge: 0 };
+  const counted = (what, send) => async (options) => {
+    const reused = journal.reused;
+    const answer = await send({ ...calls, ...options });
+    if (journal.reused === reused) paid[what] += 1;
+    return answer;
+  };
   const check = await checkPhrases({
     phrases,
     clips: buildClips(directory, phrases.length),
     lexicon,
     threshold,
-    transcribe: (options) => transcribeImpl({ ...calls, ...options }),
-    judge: (options) => judgeImpl({ ...calls, ...options }),
+    transcribe: counted('transcribe', journal.wrapTranscribe(transcribeImpl)),
+    judge: counted('judge', journal.wrapJudge(judgeImpl)),
   });
-  saveJson(path.join(directory, CHECK_FILE), { ...check, checked_at: new Date().toISOString() });
-  return check;
+  const result = { ...check, transcribe_calls: paid.transcribe, judge_calls: paid.judge };
+  saveJson(path.join(directory, CHECK_FILE), { ...result, checked_at: new Date().toISOString() });
+  journal.release();
+  return result;
 }
