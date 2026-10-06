@@ -139,3 +139,129 @@ PYTHONUTF8=1 uv run python -m app.guides.pack_cli lint --kind life \
 - 發布（合併並部署之後，協調者取得站主同意才做；publish after merge (coordinator, owner consent)）：兩個 PR 都合併後，
   `guides-import --slug <13 個 slug> --locale zh-TW --locale en --locale ja --locale ko --locale zh-CN --dry-run` 應為 65 個 `update`
   （只有 short-life-a 合併時是前七篇的 35 個），再換成 `--publish --actor-email <ACTOR_EMAIL>`，之後 `guides-links-rebuild`。
+
+## Review round (independent, 2026-10-06) — #1331
+
+The round-1 report follows verbatim, with its headings moved down two levels so they sit under this section.
+
+### verify-1: PR #1331 (claude/short-life-a), seven short life guides, new sections
+
+Checked 2026-10-06 by an independent round-1 fact-checker (read-only). Every fetch used `curl -sSL` with UA `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`, with HTML comments stripped and the HTTP status checked. No personal data was sent.
+
+Diff read: `git diff origin/main...origin/claude/short-life-a`, 7 packs × 5 locales plus the task file. I extracted every block that is new or changed against main, per slug and locale, and read all of them in en, ja, ko and zh-CN against zh-TW.
+
+#### Sources fetched (all HTTP 200 with real body unless noted)
+| Source | URL (final) | Locales also read |
+|---|---|---|
+| MS File History | support.microsoft.com/en-au/windows/experience/backup-recovery/backup-and-restore-with-file-history (301 from the pack URL) | zh-tw, zh-cn, ja-jp, ko-kr |
+| MS Backup/Restore/Recovery | support.microsoft.com/en-us/windows/experience/backup-recovery/backup-restore-and-recovery-in-windows (301 from the pack URL) | none |
+| Chrome bookmarks | support.google.com/chrome/answer/188842?hl=en-UM | zh-Hant, zh-Hans, ja, ko |
+| USB-IF | www.usb.org/cable_connector | none |
+| OneDrive for Android scan | support.microsoft.com/en-us/onedrive/scan-a-whiteboard-document-business-card-or-photo-in-onedrive-for-android | zh-tw, zh-cn, ja-jp, ko-kr |
+| Gmail organize & archive | support.google.com/mail/answer/9259770?hl=en | zh-Hant, zh-Hans, ja, ko |
+| Google Drive organize | support.google.com/drive/answer/2375091?co=GENIE.Platform%3DDesktop&hl=en | zh-Hant, zh-Hans, ja, ko |
+| iFixit scoring | www.ifixit.com/News/75533/how-ifixit-scores-repairability | none |
+| OneDrive marketing page | www.microsoft.com/en-us/microsoft-365/onedrive/document-scanning | **200 bot-block shell, so not a source** (unchanged claim; checked_on correctly left at 2026-09-14) |
+
+#### Claims (58 checked)
+##### backup-and-restore-home-files (blocks 11–15)
+1. File History automatically backs up Documents/Pictures/Videos/Desktop plus all libraries: CONFIRMED ("automatically backs up essential folders like Documents, Pictures, Videos, and Desktop"; "automatically backs up all your libraries").
+2. Folders elsewhere must be added to a library: CONFIRMED.
+3. "In File History, right-click the folder → Restore previous versions": **CHANGE NEEDED (all 5 locales).** The source does this step in File Explorer: "Open File Explorer and navigate to the folder… Right-click on the folder name, and then select Restore previous versions." File History only opens later, for the preview (Open → Open in File History).
+4. Deleted today → choose yesterday's folder version: CONFIRMED.
+5. Preview before restoring: CONFIRMED (expand Open → Open in File History).
+6. Expand Restore → Restore to… another location: CONFIRMED.
+7. A plain restore replaces the current version and can't be undone: CONFIRMED.
+8. The recovery drive does not include personal files: CONFIRMED ("The Recovery Drive doesn't include your personal files").
+9. Restore points and the recovery drive handle system state: CONFIRMED.
+10. UI names: zh-TW 檔案歷程記錄/媒體櫃/還原先前版本/還原到; zh-CN 文件历史记录/库/还原以前的版本/还原到; ja ファイル履歴/ライブラリ/以前のバージョンの復元; ko 파일 히스토리 (MS ko page title)/라이브러리/이전 버전 복원: CONFIRMED.
+- Sources: both pack URLs return 301. pitfalls.md wants the final URL; this predates the PR but the PR re-dated checked_on (style).
+
+##### browser-bookmark-project-folders (blocks 11–15)
+11. More > Bookmarks and lists > Show all bookmarks opens the side panel: CONFIRMED.
+12. Organize icon → Sort by last opened: CONFIRMED (zh-Hant 「整理」/按「上次開啟時間」排序; zh-Hans 整理/按上次打开时间排序; ja 管理アイコン/最後に開いた日付で並べ替え; ko 구성/최근 연 날짜순으로 정렬).
+13. A deleted bookmark can't be recovered: CONFIRMED in all 5 languages.
+14. @bookmarks + Tab or Space, then keywords, searches bookmarks only: CONFIRMED.
+15. Bookmarks and lists / Show all bookmarks localized labels: CONFIRMED (書籤和清單/顯示所有書籤; 书签和清单/显示所有书签; ブックマークとリスト/すべてのブックマークを表示; 북마크 및 목록/모든 북마크 표시).
+16–17. Multi-device and shared-profile advice: editorial, no factual claim (OUT OF SCOPE).
+
+##### desk-cable-charging-organization (blocks 3 wording, 8–12)
+18. Certified USB-C to USB-C cables must carry a 60W or 240W power logo: CONFIRMED.
+19. All except High-Speed USB (USB 2.0) cables must show the data rate: CONFIRMED.
+20. Example 20Gbps/60W combined logo: CONFIRMED ("Combined Performance and Power 20Gbps/60W logo").
+21. A certified cable with a power logo only is USB 2.0 class: CONFIRMED (follows from rule 19; USB 2.0 cables "required to have the power icon", speed logo optional).
+22. A cable with one non-USB end or fixed to a device is outside certification: CONFIRMED ("Captive cables are not eligible… one USB connector and is either permanently attached or has a non-USB connector").
+23. A certified cable doesn't raise a device's capability: CONFIRMED ("nor does it augment the capabilities of those products").
+24. Block 3 change 本文→這裡 (zh-TW, zh-CN): wording only.
+- Numbers 60/240/20 match across all 5 locales.
+
+##### digital-receipt-archive (blocks 8–12, 15 wording)
+25. OneDrive Android: choose Document mode: CONFIRMED (zh-tw [文件], zh-cn 文档, ja ドキュメント, ko 문서).
+26. Enter a file name before saving: CONFIRMED ("tap Done, enter a file name, then tap Save").
+27. Saved as PDF automatically: CONFIRMED.
+28. Multi-page scan combines into one PDF, max 10 pages: CONFIRMED (all 4 localized pages say 10).
+29. Receipt categories, weekly sorting, shared intake folder: editorial (OUT OF SCOPE).
+30. en block 11 "Date_Item_Seller" vs en block 6 "Date_Product_Seller": **CONSISTENCY ERROR (en only).** The other four locales are identical in both places.
+31. Callout 這套做法 (from 本文): wording only.
+- Source 1 (marketing page) is unreadable to bots, so it is unverifiable. The PR correctly left its checked_on and its sentence alone.
+
+##### email-triage-three-actions (blocks 3 wording, 11–15)
+32. Archived mail is still in All Mail: CONFIRMED.
+33. An archived message returns to the inbox when someone replies: CONFIRMED ("If someone replies to a message you archive, it returns to your inbox").
+34. Trash auto-deletes after 30 days: CONFIRMED.
+35. Mute: later replies skip the inbox and go to the archive: CONFIRMED.
+36. is:muted finds muted threads: CONFIRMED.
+37. Snooze: CONFIRMED.
+38. Localized labels: zh-TW 封存/所有郵件/略過/延後/垃圾桶; zh-CN 归档/所有邮件/忽略/延后/已删除邮件; ja アーカイブ/すべてのメール/ミュート/スヌーズ/ゴミ箱; ko 보관처리/전체보관함/알림 끄기/다시 알림/휴지통: CONFIRMED.
+39. The state names To do/Waiting/Archive in the new table match the existing table in every locale: CONFIRMED.
+
+##### file-naming-system-for-home (blocks 3 changed, 11–15)
+40. Block 3: "重新命名" removed. The Drive page has no rename step (naming-convention advice only): CONFIRMED, so the change is justified.
+41. List view + sort by name surfaces similar-named duplicates: CONFIRMED.
+42. Search bar to find suspected duplicates: CONFIRMED.
+43. Deleting a shortcut doesn't delete the original: CONFIRMED.
+44. Without move permission, a shortcut is created in the destination: CONFIRMED.
+45. Custom folder colours apply only to your own view of Drive: CONFIRMED (zh-Hant 「只會套用到自己的雲端硬碟檢視畫面」).
+46. Restore from trash: CONFIRMED.
+47. Folder descriptions exist: CONFIRMED ("Add or edit descriptions").
+48. Status examples 待確認→定稿 match the existing table (草稿、待確認、定稿): CONFIRMED.
+49. Localized UI names (清單檢視/列表视图/リスト表示/목록 보기; 捷徑/快捷方式/ショートカット/바로가기): CONFIRMED.
+- en block 14 "Anyone else with a view leaves a comment" is ambiguous ("view access"); zh-TW means "has an opinion" (translation).
+
+##### gadget-purchase-needs-checklist (blocks 11–15)
+50. Service manual 10%: CONFIRMED.
+51. Replacement parts 10%: CONFIRMED.
+52. Design for repair 80%: CONFIRMED.
+53. Manual and parts are checkable on the OEM support site; registration or paywall disqualifies: CONFIRMED ("It can't be hidden away, require registration to access, or be locked behind a paywall").
+54. 3–6 months after launch before parts are available: CONFIRMED ("not uncommon for 3-6 months to elapse").
+55. Some genuine parts need OEM calibration or pairing software: CONFIRMED.
+56. Studies cited by iFixit: repair over about 1/3 of the new price → many won't fix: CONFIRMED ("Studies show that if the cost of repair exceeds about a third of the price of a new product, many people won't bother fixing it").
+57. Identifying marks and the settings screen: CONFIRMED.
+58. Software-update length as a concern: CONFIRMED (iFixit notes it is not yet scored; the article only lists it as a check, which is fine).
+- Ratios across locales: zh 一成/八成/三到六個月/三分之一, en 10 percent/80 percent/three to six months/a third, ja 1割/8割/3〜6か月/3分の1, ko 10%/80%/3~6개월/3분의 1. All match.
+
+#### Per-locale review (en/ja/ko/zh-CN vs zh-TW, new sections)
+- Numbers, dates and names match zh-TW in every locale (I diffed the numbers mechanically and then compared meaning by hand).
+- Each locale keeps the register of its existing article (ko email uses -다 like the rest of that pack; the other ko packs use -요/-ㅂ니다).
+- Issues: en receipt filename pattern inconsistency; en file-naming "with a view" ambiguity. ja backup block 14 doesn't name the [復元先] label but describes the action correctly (OK). ko desk-cable 「문제가 있다는 뜻은 아닙니다」 is slightly stronger than 不一定代表, but acceptable.
+
+#### Reader-first
+- 本文/這篇: exactly 1 in every zh-TW and zh-CN pack after the PR. The new sections contain no verification narration, and foreign terms are glossed on first use (檔案歷程記錄（File History）).
+
+#### Suspected, not flagged as errors
+- browser-bookmark zh-TW 「使用者資料」 and zh-CN 「用户配置」 for a Chrome profile repeat the wording of the existing block 3. Chrome's help pages say 設定檔 (zh-Hant) and 个人资料 (zh-Hans). The new block is consistent with the article, but the term is not Chrome's official one.
+- desk-cable block 3 (existing) says USB-IF marks power and data speed 「分開標示」, while the new block 9 cites the combined 20Gbps/60W logo. These don't contradict each other (they are separate attributes shown on one combined logo), but a reader could notice.
+
+#### Outcome
+- 58 claims checked: 54 confirmed or out of scope, 1 fact change needed (the File History right-click step, in all 5 locales), 1 en consistency fix, 1 en translation fix, 1 source-URL style fix (301 redirects).
+- 1 source unverifiable (OneDrive marketing page bot-block); unchanged content depends on it.
+- Second round: the fact change is one claim repeated in five locales, so on the "more than three FACT changes" rule a second round is optional. The coordinator decides.
+
+### Applied (2026-10-06, on claude/short-life-a)
+
+All eight corrections were applied after their sources were re-read with the editorial UA (`curl -sSL`, comments stripped). The Microsoft File History page returned 200 in en-au, zh-tw, zh-cn, ja-jp and ko-kr, and every one starts the restore in File Explorer. Both old pack URLs return 301 to the final URLs.
+- `backup-and-restore-home-files` block 14, all five locales: the right-click now happens in File Explorer (檔案總管／File Explorer／エクスプローラー／파일 탐색기／文件资源管理器). The rest of the paragraph is unchanged.
+- `backup-and-restore-home-files` sources[0] and sources[1], all five locales: the post-redirect URLs. checked_on stays 2026-10-06.
+- `digital-receipt-archive` en block 11: “Date_Product_Seller”, which matches block 6.
+- `file-naming-system-for-home` en block 14: “Anyone else who has an opinion leaves a comment”.
+- The two items under “suspected” were not changed. Second round: the coordinator decides, as the report says.
