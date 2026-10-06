@@ -15,6 +15,12 @@ const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 const STATUSES = new Set(["queued", "running", "succeeded", "failed", "uncertain"]);
 
 export class RunReceiptError extends Error {}
+export const INPUT_CHANGED_CODE = "video_ai_receipt_input_changed";
+export const INPUT_CHANGED_MESSAGE = "stage inputs changed while a saved run is unfinished; restore its exact inputs or inspect the receipt before an owner retry";
+const inputChanged = () => Object.assign(new RunReceiptError(INPUT_CHANGED_MESSAGE), { code: INPUT_CHANGED_CODE });
+// What archive() writes for a stale journal it may close on its own: the run is over (or never
+// reached the server), so no owner retry is needed and no request id is consumed.
+export const AUTO_ARCHIVE_REASON = "inputs changed; the saved run is terminal";
 const requireThat = (condition, message) => { if (!condition) throw new RunReceiptError(message); };
 const object = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 
@@ -136,23 +142,32 @@ export function runReceiptStore(ctx, site) {
     return record;
   }
   return {
+    /**
+     * The journal of this exact request, or of the same unit with only derived drift (unitSource);
+     * else, with `stale: true`, an unfinished journal of the same stage and variant whose inputs
+     * differ (a deploy changed the prompt, the owner edited a setting or the source). The caller
+     * reconciles a stale journal with the server (client.mjs) and archives or removes it; it is
+     * never a match, and `prepare` refuses to create a new journal beside it.
+     */
     find(request) {
       const normalized = normalizeRun(request), hash = sourceHash(normalized), file = path.join(directory(normalized.slug), `${hash}.json`);
       if (existsSync(file)) return { file, record: read(file) };
       const dir = path.dirname(file);
       if (!existsSync(dir)) return null;
+      let stale = null;
       for (const name of readdirSync(dir).filter((name) => name.endsWith(".json"))) {
         const otherFile = path.join(dir, name), record = read(otherFile);
         if (record.request.stage === normalized.stage && record.request.variant === normalized.variant
           && !record.adopted && !consumed.has(otherFile)) {
           if (unitSource(record.request) === unitSource(normalized)) return { file: otherFile, record };
-          throw Object.assign(new RunReceiptError("stage inputs changed while a saved run is unfinished; restore its exact inputs or inspect the receipt before an owner retry"), { code: "video_ai_receipt_input_changed" });
+          stale ??= { file: otherFile, record, stale: true };
         }
       }
-      return null;
+      return stale;
     },
     prepare(request) {
       const previous = this.find(request);
+      if (previous?.stale) throw inputChanged();
       if (previous) return previous;
       const normalized = normalizeRun(request), hash = sourceHash(normalized), file = path.join(directory(normalized.slug), `${hash}.json`);
       mkdirSync(path.dirname(file), { recursive: true });
@@ -225,14 +240,24 @@ export function runReceiptStore(ctx, site) {
         }
       }
     },
-    archive(entry, { requestId = null, reason = "", policyValidated = false } = {}) {
+    /**
+     * Move a journal aside, keeping its bytes: an uncertain run the owner retries, a changed-input
+     * success the owner retries (`requestId`, `reason`), a validated policy retry, or
+     * (`autoArchive`) a stale journal the worker reconciled itself: its run succeeded and was
+     * never adopted, or it never reached the server (no receipt, no policy hold).
+     */
+    archive(entry, { requestId = null, reason = "", policyValidated = false, autoArchive = false } = {}) {
       const current = read(entry.file);
       requireThat(current.request_key === entry.record.request_key, "stage journal changed before owner retry");
       const successfulSourceChange = current.receipt?.status === "succeeded" && !current.adopted
         && UUID.test(requestId ?? "") && typeof reason === "string" && reason.includes("inputs changed");
       const policyRetry = policyHeld(current) && UUID.test(requestId ?? "") && policyValidated === true
         && (!current.receipt || current.receipt.dispatched_at === null);
-      requireThat(current.receipt?.status === "uncertain" || successfulSourceChange || policyRetry, "only a confirmed uncertain run, authorized changed input or validated policy retry can be archived");
+      const terminal = autoArchive === true && (current.receipt?.status === "succeeded" && !current.adopted
+        || current.receipt === null && !policyHeld(current));
+      requireThat(current.receipt?.status === "uncertain" || successfulSourceChange || policyRetry || terminal,
+        "only a confirmed uncertain run, authorized changed input, validated policy retry or terminal stale run can be archived");
+      if (terminal) { requestId = null; reason = AUTO_ARCHIVE_REASON; }
       const archiveDir = path.join(path.dirname(entry.file), "archive");
       mkdirSync(archiveDir, { recursive: true });
       if (policyRetry) for (const name of readdirSync(archiveDir).filter((name) => name.endsWith(".json"))) {
@@ -255,13 +280,15 @@ export function runReceiptStore(ctx, site) {
         if (record.receipt?.status === "uncertain") this.archive({ file, record });
       }
     },
+    /** What an owner retry may touch; a plain failed journal is listed so the retry can clear it. */
     retryCandidates(slug, { requestId = null, reason = "" } = {}) {
       const dir = directory(slug);
       if (!existsSync(dir)) return [];
       return readdirSync(dir).filter((name) => name.endsWith(".json")).map((name) => {
         const file = path.join(dir, name);
         return { file, record: read(file) };
-      }).filter((entry) => entry.record.receipt?.status === "uncertain" || UUID.test(requestId ?? "") && policyHeld(entry.record) || UUID.test(requestId ?? "")
+      }).filter((entry) => entry.record.receipt?.status === "uncertain" || entry.record.receipt?.status === "failed" && !policyHeld(entry.record)
+        || UUID.test(requestId ?? "") && policyHeld(entry.record) || UUID.test(requestId ?? "")
         && typeof reason === "string" && reason.includes("inputs changed")
         && ["queued", "running", "succeeded"].includes(entry.record.receipt?.status) && !entry.record.adopted);
     },

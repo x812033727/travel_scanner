@@ -6,7 +6,7 @@ import test from "node:test";
 import { EXIT, main as runCli } from "../cli.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
 import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
-import { RUN_RECEIPTS_DIR } from "./run-receipts.mjs";
+import { AUTO_ARCHIVE_REASON, INPUT_CHANGED_CODE, RUN_RECEIPTS_DIR, runReceiptStore } from "./run-receipts.mjs";
 
 const SITE = "https://site.test";
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -467,10 +467,15 @@ test("a durable receipt keeps the chosen model alias while returning the upstrea
   assert.equal(saved.receipt.result.model, savedAnswer.model);
 });
 
-test("owner retry for changed input archives verified stale success before one new source request", async () => {
+const archiveOf = (box) => {
+  const dir = path.join(box.work, DURABLE_SLUG, RUN_RECEIPTS_DIR, "archive");
+  return readdirSync(dir).map((name) => JSON.parse(readFileSync(path.join(dir, name), "utf8")));
+};
+
+test("a stale journal whose run succeeded is archived by the worker after one lookup, and one new source request follows", async () => {
   const box = sandbox();
   const posted = [];
-  let original;
+  let original, gets = 0;
   const client = durableClient(box, async (_url, init) => {
     if (init.method === "GET") return Response.json(job(original));
     const body = JSON.parse(init.body); posted.push(body); original = body;
@@ -478,24 +483,113 @@ test("owner retry for changed input archives verified stale success before one n
   });
   await client.settings();
   await runWriter(client);
-  const changed = { text: "owner's changed source" };
+  const changed = { text: "a deploy changed the prompt" };
   // Model a restarted worker whose prior successful result was never adopted into artifacts.
-  const restarted = durableClient(box, async (_url, init) => {
-    if (init.method === "GET") return Response.json(job(original));
+  const restarted = durableClient(box, async (url, init) => {
+    if (init.method === "GET") { gets++; assert.equal(new URL(url).searchParams.get("input_hash"), "b".repeat(64)); return Response.json(job(original)); }
     const body = JSON.parse(init.body); posted.push(body); return Response.json(job(body));
   });
   await restarted.settings();
-  await assert.rejects(runWriter(restarted, changed), (error) => error.code === RUN_UNCERTAIN && /inputs changed/.test(error.why));
-  const requestId = "11112233-4455-6677-8899-aabbccddeeff";
-  await restarted.retryRuns(DURABLE_SLUG, { requestId, reason: "stage inputs changed while the previous result was unfinished" });
-  const archive = path.join(box.work, DURABLE_SLUG, RUN_RECEIPTS_DIR, "archive");
-  const archived = JSON.parse(readFileSync(path.join(archive, readdirSync(archive)[0]), "utf8"));
-  assert.equal(archived.owner_retry.request_id, requestId);
-  assert.equal(archived.receipt.result.text, savedAnswer.text);
-  assert.deepEqual(await runWriter(restarted, changed), savedAnswer);
-  assert.equal(posted.length, 2);
+  assert.deepEqual(await runWriter(restarted, changed), savedAnswer, "no owner retry is needed: the spent run is over");
+  assert.equal(gets, 1, "the stale job is looked up exactly once");
+  assert.equal(posted.length, 2, "exactly one new POST follows");
   assert.notEqual(posted[0].request_key, posted[1].request_key);
   assert.deepEqual(posted[1].payload, changed);
+  const [archived] = archiveOf(box);
+  assert.equal(archived.request_key, posted[0].request_key);
+  assert.equal(archived.owner_retry.request_id, null, "no owner request id was consumed");
+  assert.equal(archived.owner_retry.reason, AUTO_ARCHIVE_REASON);
+  assert.equal(archived.receipt.result.text, savedAnswer.text, "the paid answer is kept for inspection");
+  assert.equal(durableFiles(box).length, 1, "only the new request's journal remains");
+  assert.equal(JSON.parse(readFileSync(durableFiles(box)[0], "utf8")).request_key, posted[1].request_key);
+});
+
+test("a stale journal that never reached the server is archived without a lookup, then the current request is sent", async () => {
+  const box = sandbox();
+  writeFileSync(path.join(box.work, "STOP"), "stop");
+  const held = durableClient(box, async () => assert.fail("STOP must prevent a new paid submit"));
+  await held.settings();
+  await assert.rejects(runWriter(held), (error) => error.code === RUN_PENDING);
+  const [undispatched] = durableFiles(box);
+  const key = JSON.parse(readFileSync(undispatched, "utf8")).request_key;
+  const { unlinkSync } = await import("node:fs");
+  unlinkSync(path.join(box.work, "STOP"));
+  const calls = [];
+  const client = durableClient(box, async (_url, init) => {
+    calls.push(init.method);
+    assert.equal(init.method, "POST", "a journal with no receipt has no job to look up");
+    return Response.json(job(JSON.parse(init.body)));
+  });
+  await client.settings();
+  assert.deepEqual(await runWriter(client, { text: "the owner edited the stance" }), savedAnswer);
+  assert.deepEqual(calls, ["POST"]);
+  const [archived] = archiveOf(box);
+  assert.equal(archived.request_key, key);
+  assert.equal(archived.receipt, null);
+  assert.deepEqual({ ...archived.owner_retry, archived_at: null }, { request_id: null, reason: AUTO_ARCHIVE_REASON, archived_at: null });
+  assert.notEqual(JSON.parse(readFileSync(durableFiles(box)[0], "utf8")).request_key, key);
+});
+
+test("a stale journal whose run is uncertain still needs the owner, and a lookup that fails waits instead of blocking", async () => {
+  for (const answer of ["uncertain", "HTTP 502", "connection lost", "half a body"]) {
+    const box = sandbox(), posts = [];
+    let original, gets = 0, stale = false;
+    const client = durableClient(box, async (_url, init) => {
+      if (init.method === "POST") { original = JSON.parse(init.body); posts.push(original); return Response.json(job(original, "running")); }
+      // The first round's own poll sees a running job; the answers below are for the stale lookup.
+      if (!stale) return Response.json(job(original, "running"));
+      gets++;
+      if (answer === "uncertain") return Response.json(job(original, "uncertain"));
+      if (answer === "HTTP 502") return Response.json({ code: "upstream_unavailable", detail: "Cannot read its current state" }, { status: 502 });
+      if (answer === "half a body") return new Response('{"id":', { status: 200, headers: { "Content-Type": "application/json" } });
+      throw Object.assign(new TypeError("fetch failed"), { cause: { code: "ECONNRESET", message: "socket hang up" } });
+    });
+    await client.settings();
+    await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING, answer);
+    const [file] = durableFiles(box), before = readFileSync(file, "utf8");
+    const changed = { text: "a deploy changed the prompt" };
+    stale = true;
+    if (answer === "uncertain") {
+      await assert.rejects(runWriter(client, changed), (error) => error.code === RUN_UNCERTAIN && error.who === "owner" && /inputs changed/.test(error.why)
+        && error.receipt_code === INPUT_CHANGED_CODE && error.slug === DURABLE_SLUG && error.stage === "writer", answer);
+    } else {
+      await assert.rejects(runWriter(client, changed), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG && error.stage === "writer" && /could not be looked up/.test(error.message), answer);
+    }
+    assert.equal(gets, 1, answer);
+    assert.equal(posts.length, 1, `${answer}: the stale run is never paid for again and no new run starts`);
+    assert.deepEqual(durableFiles(box), [file], answer);
+    if (answer !== "uncertain") assert.equal(readFileSync(file, "utf8"), before, `${answer}: the journal is intact`);
+    else assert.equal(JSON.parse(readFileSync(file, "utf8")).receipt.status, "uncertain", "the lookup's answer is recorded for the owner");
+  }
+});
+
+test("an owner retry on a still-running stale journal waits without consuming the request, and clears a plain failed journal", async () => {
+  const box = sandbox();
+  let original, gets = 0;
+  const client = durableClient(box, async (_url, init) => {
+    if (init.method === "POST") { original = JSON.parse(init.body); return Response.json(job(original, "running")); }
+    gets++;
+    return Response.json(job(original, "queued"));
+  });
+  await client.settings();
+  await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING);
+  const [file] = durableFiles(box);
+  const authorization = { requestId: "11112233-4455-6677-8899-aabbccddeeff", reason: "writer may have run on the server (stage inputs changed while a saved run is unfinished)" };
+  gets = 0;
+  await assert.rejects(client.retryRuns(DURABLE_SLUG, authorization), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG && error.stage === "writer");
+  assert.equal(gets, 1, "the retry looks the job up once");
+  assert.deepEqual(durableFiles(box), [file], "the running journal stays for the next round");
+  assert.equal(JSON.parse(readFileSync(file, "utf8")).receipt.status, "queued");
+  assert.equal(existsSync(path.join(path.dirname(file), "archive")), false);
+  // A plain failure left on disk (the process died before removeFailed) is cleared by the retry.
+  const failedBox = sandbox(), store = runReceiptStore({ ...credentials(failedBox), root: failedBox.root }, SITE);
+  const entry = store.prepare({ stage: "writer", slug: DURABLE_SLUG, instructions: "Write exact source", payload: { text: "原稿" } });
+  store.receive(entry, { ...job({ request_key: entry.record.request_key }, "failed"), error_code: "video_ai_upstream_failed", error_detail: "vendor error", error_status: 502 });
+  const quiet = durableClient(failedBox, async () => assert.fail("a settled failure needs no lookup"));
+  await quiet.settings();
+  await quiet.retryRuns(DURABLE_SLUG, authorization);
+  assert.deepEqual(durableFiles(failedBox), []);
+  assert.equal(existsSync(path.join(path.dirname(entry.file), "archive")), false, "a failure is deleted, not archived");
 });
 
 test("a failed owner retry lookup preserves the uncertain journal and never authorizes a new paid request", async () => {
@@ -532,7 +626,7 @@ test("writer reconnect across midnight and shared lexicon changes uses the origi
   assert.deepEqual(JSON.parse(readFileSync(durableFiles(box)[0], "utf8")).request.payload, before);
 });
 
-test("definitive failed receipts surface their stored error, and input changes cannot replace an unfinished writer", async () => {
+test("definitive failed receipts surface their stored error, and input changes wait for an unfinished writer instead of replacing it", async () => {
   const box = sandbox(), posted = [];
   const client = durableClient(box, async (_url, init) => {
     const body = JSON.parse(init.body); posted.push(body);
@@ -541,12 +635,21 @@ test("definitive failed receipts surface their stored error, and input changes c
   await client.settings();
   await assert.rejects(runWriter(client), (error) => error.code === "video_ai_upstream_busy" && error.status === 503 && error.message === "Saved vendor refusal" && error.retry_after === "2026-10-04T15:00:00Z");
   assert.deepEqual(durableFiles(box), [], "the server definitively settled this failure");
-  const pendingBox = sandbox();
-  const pending = durableClient(pendingBox, async (_url, init) => Response.json(job(JSON.parse(init.body), "running")));
+  const pendingBox = sandbox(), calls = [];
+  let original;
+  const pending = durableClient(pendingBox, async (_url, init) => {
+    calls.push(init.method);
+    if (init.method === "POST") original = JSON.parse(init.body);
+    return Response.json(job(original, "running"));
+  });
   await pending.settings();
   await assert.rejects(runWriter(pending), (error) => error.code === RUN_PENDING);
-  await assert.rejects(runWriter(pending, { text: "new source" }), (error) => error.code === RUN_UNCERTAIN && error.who === "owner" && /inputs changed/.test(error.why));
-  assert.equal(durableFiles(pendingBox).length, 1);
+  const [file] = durableFiles(pendingBox), before = readFileSync(file, "utf8");
+  calls.length = 0;
+  await assert.rejects(runWriter(pending, { text: "new source" }), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG && /still running/.test(error.message));
+  assert.deepEqual(calls, ["GET"], "the running job is looked up once and nothing new is paid for");
+  assert.deepEqual(durableFiles(pendingBox), [file]);
+  assert.equal(readFileSync(file, "utf8"), before, "the running journal is intact for the next round");
 });
 
 test("durable capability preserves the synchronous planner and bounded anime/story writer checkpoints", async () => {
