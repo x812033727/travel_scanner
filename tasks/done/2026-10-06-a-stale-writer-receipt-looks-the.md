@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-a-stale-writer-receipt-looks-the
 title: A stale writer receipt looks the saved job up and archives it when it is over instead of blocking the video
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-video-unstuck
 claimed_at: 2026-10-06T05:56:11Z
 created_at: 2026-10-06T05:55:39Z
-completed_at:
+completed_at: 2026-10-06T15:57:29Z
 branch: claude/video-unstuck-stale-receipts
 depends_on: []
 scope:
@@ -144,3 +144,5 @@ the video stays blocked with the same wording as before and the owner's retry cl
   helper absorbed it, but the test's injected wait list then had seven extra entries). The
   suite passed alone three times in a row and together once more; the same flake class is
   documented in 2026-10-05-windows-stage-receipt-rename.
+
+- 2026-10-06: landed on main as 6d7985fa (PR #1337); closed in the board sweep that carried train #1346's complete PRs.
