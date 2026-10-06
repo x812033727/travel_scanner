@@ -1,6 +1,6 @@
 {
   "slug": "ou-de-jianghu",
-  "episode": 5,
+  "episode": 6,
   "chapter": 1,
   "kind": "series",
   "genre": "custom",
@@ -8,8 +8,8 @@
   "planned_episodes": 24,
   "open_ended": true,
   "closed_ending": false,
-  "title": "封功",
-  "logline": "三宗以為玄門長老死於第一支箭，所以把這一箭叫第二支；箭光劃過夜空，寂聞中箭，當場自封畢生功力保住元神；放箭的人穿著鬼燈君的黑袍，姬無霜借機接掌鯨背嶼防務，三宗全信她。",
+  "title": "紗女",
+  "logline": "沈歸鶴倒下，床前出現一名蒙紗女子與一名無名劍客替他行走江湖；扶瀾國使者洛青衍抵盟，姬無霜看見他頸後的胎記。",
   "category": "anime",
   "style_preset": "anime-2d",
   "target_minutes": 22,
@@ -21,16 +21,6 @@
     "slot_reserve_seconds": 300
   },
   "characters": [
-    {
-      "id": "alliance-guard",
-      "name": "客院盟兵",
-      "appearance": "Original 2D anime alliance guard in ornate theatrical wuxia costume: young man in his early twenties, plain square face, round earnest eyes, black hair in a tight topknot under a white cloth headband trimmed with gold. White-and-gold alliance guard uniform: a white padded tunic with gold-edged lamellar shoulder guards and chest plate, a gold-trimmed belt, dark trousers bound at the shins, a long spear with a white tassel. Stands stiffly to attention.",
-      "voice": {
-        "provider": "gemini",
-        "name": "Sadachbia",
-        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十出頭的年輕男聲，清亮、略帶緊張；平常回話短而規矩；被長老追問時語速變快、句子太整齊，像事先背好的，問急了就把同一句說得更大聲。"
-      }
-    },
     {
       "id": "bao-sanqian",
       "name": "包三錢",
@@ -108,6 +98,26 @@
       ]
     },
     {
+      "id": "luo-qingyan",
+      "name": "洛青衍",
+      "appearance": "Original 2D anime young envoy in ornate theatrical wuxia costume: slender youth of twenty, long dark blue-black hair half tied under a low sea-green coral crown, clear bright eyes, an open friendly face, a small crescent birthmark on the back of his neck usually hidden by his hair and collar. Sea-green and ivory layered island robe with wave-pattern embroidery and a white shell-clasp belt. Unarmed.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achird",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲男聲，明亮、乾淨、好奇，語速中等，帶一點海島來的客氣。"
+      }
+    },
+    {
+      "id": "sha-nu",
+      "name": "紗女",
+      "appearance": "Original 2D anime veiled woman in ornate theatrical wuxia costume: slender figure of ambiguous age, waist-length pale silver-white hair worn loose under a low translucent white gauze veil-crown that hides the whole upper half of her face, only a calm pale mouth and chin visible below the veil. Layered robe of pale moonlight-white and grey gauze with faint silver crane embroidery, very long trailing sleeves that never seem to touch the ground, bare feet. Unarmed; carries nothing. Moves without a sound.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十多歲男聲——紗女是沈歸鶴的分魂，用的就是他的聲音，不配女聲；比沈歸鶴更輕、更慢、更柔，幾乎不用力氣，像隔著一層紗說話，句尾收得更輕；不咳。"
+      }
+    },
+    {
       "id": "shen-guihe",
       "name": "沈歸鶴「白鶴先生」",
       "appearance": "Original 2D anime wuxia strategist in ornate theatrical wuxia costume: tall slender man in his thirties, very long straight ink-black hair falling past the waist, a tall white jade crown with a single white crane-feather pin, pale calm face, narrow grey eyes. Layered white silk robe embroidered with silver cranes and cloud scrolls, very wide sleeves, a pale blue sash, one folded white paper fan held in his right hand or tucked in the sash. No other weapon. Moves slowly and never raises his voice.",
@@ -131,6 +141,16 @@
         "provider": "gemini",
         "name": "Orus",
         "style": "標準國語，咬字清楚，台北人平常說話的語調；六十多歲男聲，中低音、圓、穩，慢條斯理，像在講堂上說話；客氣裡帶著上位者的分量，不爭也不急；表態時一字一頓，說完就不再加一句。"
+      }
+    },
+    {
+      "id": "wuming-jianke",
+      "name": "無名劍客",
+      "appearance": "Original 2D anime nameless swordsman in ornate theatrical wuxia costume: tall lean figure, very long straight ink-black hair tied severely back under a plain white iron crown, the face hidden behind a featureless white half-mask that covers everything above the jaw, only a hard mouth and jaw visible. Layered robe of stark white and black with no embroidery at all, sleeves bound at the wrists, a black sash, one long straight sword with a plain white hilt in a plain black scabbard at his left hip. Stands like a drawn blade and says nothing he does not need to.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十多歲男聲——無名劍客是沈歸鶴的分魂，用的就是他的聲音；比沈歸鶴更硬、更短、更冷，字字出口就收，不解釋、不拖尾、沒有笑意；不咳。"
       }
     },
     {
@@ -171,31 +191,29 @@
     }
   ],
   "beats": {
-    "number": 5,
-    "title": "封功",
-    "logline": "三宗以為玄門長老死於第一支箭，所以把這一箭叫第二支；箭光劃過夜空，寂聞中箭，當場自封畢生功力保住元神；放箭的人穿著鬼燈君的黑袍，姬無霜借機接掌鯨背嶼防務，三宗全信她。",
-    "hook": "三宗盟盟府上空，一道青白的箭光自齊雲殿後山射下，劃過海道上的夜空，像一根針縫過整片天；梵林寺的鐘無人撞自鳴。",
-    "conflict": "寂聞連夜赴鯨背嶼查孩童昏睡之事，行至齊雲殿後山下的海道，箭自山脊射下，殷無聲擋不住箭光；寂聞中箭，元神要被毀，他唯一的活路是當場自封畢生功力，讓箭找不到可以毀的東西——封了，他就是廢人；不封，他是第二個無傷無血的屍體。",
-    "turn": "三宗趕到時，放箭的人站在齊雲殿後山的山脊上，一身鬼燈君的黑袍與青面具，冷笑而去；監看客院的兩名盟兵咬定姬無霜整夜未出房門，盟內上下認定箭在鬼燈君手上，姬無霜在盟堂請求接掌鯨背嶼防務以保護幽都老弱，三宗長老一致准奏。",
+    "number": 6,
+    "title": "紗女",
+    "logline": "沈歸鶴倒下，床前出現一名蒙紗女子與一名無名劍客替他行走江湖；扶瀾國使者洛青衍抵盟，姬無霜看見他頸後的胎記。",
+    "hook": "沈歸鶴倒在盟府書齋，筆從指間滑落；燭火晃了一下，床前站著一名蒙著白紗的女子，她的聲音是沈歸鶴的聲音。",
+    "conflict": "沈歸鶴的傷再撐不住，他若昏在盟府，姬無霜的下一支正箭隨時可以射；他把元神分成紗女與無名劍客兩個化身，箭找不到完整元神可毀，代價是本體昏病，任一化身被毀就永久缺一塊記憶與一半功力。寂聞得知後怒斥這是以命換謊。",
+    "turn": "扶瀾國正式遣使來盟修好，使者是二十歲的洛青衍，他在外港候見近一月才獲召見；他在盟堂行禮時長髮揚起，露出頸後的胎記，堂上的姬無霜手中茶盞落地；同一刻鯨背嶼上，姬無霜的侍女向柳不活打聽「扶瀾國的船什麼時候到」。",
     "cliffhanger": {
-      "type": "emotion",
-      "text": "寂聞躺在禪房，功力盡封，連坐都坐不直，對床前的沈歸鶴只說一句：「你還要留她到幾時。」"
+      "type": "reveal",
+      "text": "鯨背嶼燈下，姬無霜攤開一塊二十年前的半幅繡布，布角一點硃砂與洛青衍頸後的胎記同形，另外半幅繡著一個「洛」字、隨襁褓上了船；她對柳不活說：「他是我的兒子。」"
     },
     "tension": [
-      5,
       4,
       3,
       4,
-      5
+      3,
+      4
     ],
-    "setups": [
-      "m02",
-      "m04",
-      "m06"
+    "setups": [],
+    "payoffs": [
+      "m03"
     ],
-    "payoffs": [],
     "general_payoffs": [
-      "寂聞以自封功力保住元神，成為中箭而未死的第一人；三宗確認箭已在「鬼燈君」手上。"
+      "沈歸鶴成功分魂，紗女與無名劍客開始替他行走，姬無霜一時找不到完整元神可射。"
     ],
     "characters": [
       "shen-guihe",
@@ -203,37 +221,40 @@
       "yin-wusheng",
       "bao-sanqian",
       "ji-wushuang",
+      "luo-qingyan",
       "liu-buhuo",
+      "sha-nu",
+      "wuming-jianke",
       "yan-hui"
     ],
     "locations": [
-      "齊雲殿後山海道",
-      "齊雲殿後山",
+      "盟府書齋",
       "齊雲殿盟堂",
-      "梵林寺禪房"
+      "梵林寺禪房",
+      "鯨背嶼主帳"
     ],
-    "theme": "活下來的方式，有時比死更像一種懲罰",
+    "theme": "把自己分成兩半去保護人，是不是另一種逃",
     "high_tension": [
       {
         "beat": "first_half",
-        "event": "齊雲殿後山下的海道，寂聞赴鯨背嶼途中，箭光自山脊射下，穿過殷無聲的劍網釘進寂聞胸口，寂聞盤坐不倒，雙掌反扣丹田，把畢生功力一層一層封死；箭光在他體內找不到元神可毀，化成一縷青煙從他口中散去。",
-        "stakes": "寂聞不封，元神被毀，梵林失去唯一先天，三宗少一宗；封了，三宗少一個能殺姬無霜的人。",
-        "consequence": "寂聞活著，但功力全封，成了廢人；殷無聲跪在他面前以劍割下一截髮尾。"
+        "event": "盟府書齋，沈歸鶴在包三錢與殷無聲面前分魂：元神一分為二，白紗女子與無名劍客自他身側立起，他本體氣息驟弱昏迷；寂聞被殷無聲抬到書齋外看見，怒斥「你拿命去圓謊」。",
+        "stakes": "分魂失敗，沈歸鶴元神裂散當場死；成功，他的本體從此昏病，誰被毀他就少一塊自己。",
+        "consequence": "紗女接下沈歸鶴在盟內的議事，無名劍客接下他在江湖上的行走；寂聞與沈歸鶴本體再無法對話。"
       },
       {
         "beat": "second_half",
-        "event": "盟堂上，姬無霜跪請以幽都舊部接掌鯨背嶼防務，說「鬼燈君的人連齊雲殿後山都摸得進，島上老弱更在他掌中」；三宗長老一致准奏，寂聞不在堂上，沈歸鶴唯一的反對票被寂聞的空位壓過。柳不活站在她身後，手指在袖中掐出血。",
-        "stakes": "她得到鯨背嶼，就得到收魂陣與兩百人質；沈歸鶴若當場反對，三宗會問他憑什麼，而他沒有能說出口的證據。",
-        "consequence": "姬無霜領幽都舊部登鯨背嶼，三宗撤走燕迴的巡船；沈歸鶴在三宗盟內徹底孤立。"
+        "event": "扶瀾國使者洛青衍在盟堂上獻國書，紗女代沈歸鶴接國書；洛青衍行大禮時長髮揚起，頸後胎記露出一瞬，堂上代幽都舊部列席的姬無霜茶盞落地，碎瓷割破她的手背，正好劃在那兩道三宗印上。",
+        "stakes": "姬無霜當場失態，三宗會問她為什麼；洛青衍若被她認回，就成了她在三宗內的另一枚棋或另一個軟肋。",
+        "consequence": "姬無霜以手傷告退回鯨背嶼，柳不活在島上迎她；洛青衍留在盟府為客，對堂上那名失手的夫人一無所知。"
       }
     ],
-    "consequence": "第一支正箭射盡（三宗誤以為是第二支），寂聞功力全封；姬無霜掌鯨背嶼，盟內把她當恩人；沈歸鶴只剩殷無聲、包三錢，與一個他不知道的內應柳不活。他的舊傷因連夜趕路再度發作。",
+    "consequence": "沈歸鶴本體昏臥書齋，紗女與無名劍客代他行走；洛青衍以扶瀾使者身分住進盟府客院；姬無霜確認了洛青衍是她二十年前送出海的兒子，只告訴柳不活一人。寂聞斷了與沈歸鶴本體的所有對話。",
     "state": {
-      "time": "第23日至第26日",
-      "knowledge": "觀眾看見放箭者穿鬼燈君的黑袍但面具下是誰未揭；三宗認定箭在鬼燈君手上；柳不活知道箭是姬無霜從齊雲殿後山射的、監看客院的兩名盟兵被她買通替她瞞了一夜，她身上已有書院、玄門兩股精元而這一箭沒取到梵林的；沈歸鶴半信半疑。只有觀眾與柳不活知道玄門長老死於被抽精元而非中箭，三宗口中的「第二支箭」其實是第一支射出的箭。",
-      "character_state": "寂聞功力全封臥禪房；殷無聲割下一截髮尾，守在禪房外；姬無霜率幽都舊部駐鯨背嶼；柳不活隨她上島；沈歸鶴舊傷再發；燕迴巡船被撤回。",
-      "evidence": "寂聞胸口青色的箭痕、後山山脊留下的鬼燈君青面具一片碎角、客院兩名盟兵寫著「姬無霜整夜未出」的值夜簿、三宗准奏的防務令。",
-      "carry_forward": "寂聞封功後怎麼回來；姬無霜取得鯨背嶼；第三股精元仍缺梵林一道，她會換誰取；她的箭囊裡還有兩支正箭與一支餘箭。"
+      "time": "第27日至第34日",
+      "knowledge": "觀眾、姬無霜、柳不活知道洛青衍是她的兒子；洛青衍自己不知道；三宗只知道紗女與無名劍客是沈歸鶴的「代行」，不知道是分魂；姬無霜知道沈歸鶴分了魂因為箭感應不到完整元神。",
+      "character_state": "沈歸鶴本體昏病；紗女在盟內、無名劍客在江湖；寂聞仍封功；洛青衍住盟府客院；姬無霜手背割傷在鯨背嶼；柳不活知情而不能送信。",
+      "evidence": "姬無霜的二十年前半幅繡布（硃砂胎記印）、洛青衍的扶瀾國書、碎茶盞。",
+      "carry_forward": "姬無霜要父仇、權位、兒子三樣，只能拿到一樣；箭找不到完整元神；洛青衍住在盟府，不知道母親在海對面。"
     },
     "closed_ending": false
   },
@@ -258,32 +279,15 @@
       "number": 4,
       "title": "裂山秘錄",
       "logline": "盟內傳單指竹虛道人盜走玄門鎮派的《裂山秘錄》叛逃，三宗發九洲通緝，沈歸鶴被迫同意；竹虛在齊雲殿被圍，交出的秘錄翻開竟是無字。"
-    }
-  ],
-  "next_logline": "沈歸鶴倒下，床前出現一名蒙紗女子與一名無名劍客替他行走江湖；扶瀾國使者洛青衍抵盟，姬無霜看見他頸後的胎記。",
-  "mysteries": [
-    {
-      "id": "m04",
-      "question": "鯨背嶼收魂陣是誰的局？",
-      "answer": "第 8 集紗女揭露是鬼燈君用從三宗流出的符印設的局，要嫁禍霜夫人；符印從誰手上流出去，第一期不證實，併入 m08 留給續期。",
-      "introduced_in": 2,
-      "resolved_in": 8
     },
     {
-      "id": "m06",
-      "question": "寂聞封功後怎麼回來？",
-      "answer": "第 7 集赤羽的藥童在他的湯藥裡換進能讓封功者永不能解封的藥，殷無聲發現藥面浮紅，從那夜起每一碗都倒在井邊，寂聞一口沒喝；第 11 集滄瀾客在寒潭邊認出井邊藥渣是什麼，以自己的血引寒潭，寂聞沉潭重生，滄瀾客折壽。",
-      "introduced_in": 5,
-      "resolved_in": 11
-    },
-    {
-      "id": "m02",
-      "question": "霜夫人體內的三宗精元來自誰、還差誰？",
-      "answer": "第一道是書院一位長老：她跪盟前半月在路上「暴斃」、盟內一直當他閉關，所以第 1 集第 1 日她手背已有一道印；第二道是第 1 集當夜的玄門長老；第 3 集柳不活推出只差一道；第 9 集第三道的目標是沈歸鶴；第 12 集三支正箭射盡，她再也湊不齊第三道印。",
-      "introduced_in": 3,
-      "resolved_in": 12
+      "number": 5,
+      "title": "封功",
+      "logline": "三宗以為玄門長老死於第一支箭，所以把這一箭叫第二支；箭光劃過夜空，寂聞中箭，當場自封畢生功力保住元神；放箭的人穿著鬼燈君的黑袍，姬無霜借機接掌鯨背嶼防務，三宗全信她。"
     }
   ],
+  "next_logline": "西嶺兩位隱士同日下山：滄瀾客為救寂聞來盟，岳嵐客化名赤羽帶著「能救沈歸鶴」的藥而來；無名劍客攔下毒藥，卻沒攔住赤羽換掉寂聞的藥。",
+  "mysteries": [],
   "series": {
     "kind": "series",
     "category": "anime",
