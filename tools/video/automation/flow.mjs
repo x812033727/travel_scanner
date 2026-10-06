@@ -2300,8 +2300,9 @@ export class Automation {
     }
     const dubs = dubsStatus(project, workdir, speechHash(doc, project.lexicon));
     for (const { locale, parts } of pending) {
-      // A track is current once `dub` wrote it; one whose check stopped before it finished (a STOP
-      // file, or a paid request whose answer was lost, see makeDub) is checked again.
+      // A track is current once `dub` wrote it; one left unheard by a `dub`, retake or check that
+      // stopped before it finished (a STOP file, or a paid request whose answer was lost, see
+      // makeDub) is made and checked again.
       const unheard = dubs[locale]?.status === "current" && state.languages?.[locale]?.check_stopped;
       if (!parts.includes("dub") || (["current", "skipped"].includes(dubs[locale]?.status) && !unheard)) continue;
       return this.makeDub(state, locale);
@@ -2518,9 +2519,11 @@ export class Automation {
    * translator and dubbed again, MAX_DUB_REWORD_ROUNDS times. A retake that no longer fits its
    * window goes back to the shortening. What still fails after that, and what needs the owner (a
    * voice that speaks one language, a missing key), gives the locale up with the reason instead
-   * of blocking the video; a service that is down ends this run and the next one tries again. A
-   * paid request whose answer was lost (speechUncertain) blocks the video: the locale is not
-   * given up for a request that may well have worked, nor bought again without the owner.
+   * of blocking the video; a service that is down ends this run and the next one tries again, and
+   * a STOP file that ends `dub`, a retake or the check (exit 6) ends it too, the next run going on
+   * from the takes already paid for. A paid request whose answer was lost (speechUncertain)
+   * blocks the video: the locale is not given up for a request that may well have worked, nor
+   * bought again without the owner.
    */
   async makeDub(state, locale) {
     const { ctx } = this;
@@ -2542,6 +2545,14 @@ export class Automation {
       remember();
       return this.block(state, `${what} needs the owner: ${lastLine(result.out)}`);
     };
+    // A STOP file ended `dub`, a retake or the check before it finished: the takes paid for so far
+    // are in the dub's cache, and the track may still read as current (a retake keeps the words),
+    // so the next run makes this locale's track again from the cache and hears it to the end.
+    const stopped = (what, result) => {
+      rounds.check_stopped = true;
+      remember();
+      return this.later(`${slug}: ${locale} ${what} stopped (${lastLine(result.out)}); the next run continues`);
+    };
     // Each pass makes the track (only the lines whose words changed are synthesized again) and
     // checks it; a reworded line or a retake that no longer fits starts another pass.
     for (;;) {
@@ -2557,6 +2568,7 @@ export class Automation {
         if (!shortened.ids.length) break;
         made = await run(ctx, dubArgs);
       }
+      if (made.code === ctx.EXIT.incomplete) return stopped("dub", made);
       if (made.code === 1) {
         const over = overLines() ?? [];
         const why = over.length ? `${over.length} lines (${over.map((line) => line.id).join(", ")}) do not fit even at ${MAX_TEMPO}x after ${rounds.shorten} shortening round${rounds.shorten === 1 ? "" : "s"}` : lastLine(made.out);
@@ -2572,6 +2584,7 @@ export class Automation {
         rounds.retakes += 1;
         remember();
         const redo = await run(ctx, [...dubArgs, "--redo", flags]);
+        if (redo.code === ctx.EXIT.incomplete) return stopped("dub retake", redo);
         if (redo.code === 4) return this.later(`${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)}); the next run tries again`);
         if (speechUncertain(redo)) return lost(`dub ${locale} retake`, redo);
         // The new take is longer than its window allows: the next pass's `dub` reports the same
@@ -2594,11 +2607,7 @@ export class Automation {
         if (reworded.ids.length) continue;
       }
       if (check.code === 4) return this.later(`${slug}: ${locale} dub check could not finish (${lastLine(check.out)}); the next run tries again`);
-      if (check.code === ctx.EXIT.incomplete) {
-        rounds.check_stopped = true;
-        remember();
-        return this.later(`${slug}: ${locale} dub check stopped (${lastLine(check.out)}); the next run continues`);
-      }
+      if (check.code === ctx.EXIT.incomplete) return stopped("dub check", check);
       if (check.code === 1) {
         const reworded = rounds.reword ? ` and ${rounds.reword} rewording round${rounds.reword === 1 ? "" : "s"}` : "";
         return this.giveUpDub(state, locale, `Jev still hears lines wrong after ${rounds.retakes} retake${rounds.retakes === 1 ? "" : "s"}${reworded}: ${lastLine(check.out)}`);
