@@ -1,7 +1,8 @@
 // What goes into YouTube's fields, per locale: title, the composed description (the Mokaair
-// article, body, chapters, sources, hashtags) and tags, each checked against YouTube's limits.
+// article, body, chapters, sources, picture credits, hashtags) and tags, each checked against
+// YouTube's limits.
 import { chapterTitle, descriptionWithinBudget, episodeNumbers, isCompilation } from "../core/compilation.mjs";
-import { articleUrl, checkYoutubeFields, composeDescription, tagsLength, TAGS_MAX_CHARS } from "../core/metadata.mjs";
+import { articleUrl, checkYoutubeFields, composeDescription, creditBytes, LABELS, tagsLength, TAGS_MAX_CHARS } from "../core/metadata.mjs";
 import { narrationLocale } from "../core/schema.mjs";
 import { chapterList, formatClock } from "../core/timeline.mjs";
 
@@ -12,14 +13,26 @@ export function compilationChapterTitles(doc) {
 }
 
 /**
+ * Lint composes the description without the picture credits (lint.mjs reads no assets), so a
+ * description that passed lint and passes the byte limit only here says what tipped it over.
+ */
+function withCreditHint(problem, assets, locale) {
+  const bytes = creditBytes(assets, locale);
+  if (!bytes || !/bytes once composed/.test(problem)) return problem;
+  const label = (LABELS[locale] ?? LABELS.en).pictures;
+  return `${problem} (the ${label} credits of assets[] add ${bytes} bytes that lint does not count: shorten youtube.description or use fewer stock photos)`;
+}
+
+/**
  * Metadata for the narration locale and the localized locales: the ones the owner chose titles
  * and descriptions for (`locales`, docs/videos/LANGUAGES.md), else every locale with a
  * translation file. A chosen locale whose title or description is not translated yet is a
  * problem. A locale's translation supplies { title, description, tags?, chapters?: { sceneId:
  * title } }; the article link uses that locale when the source article has it, the narration
- * locale otherwise. A compilation's chapters key on its episode slugs, and when every title
- * would pass YouTube's description limit they fall back to 「第 N 集」 (docs/videos/BINGE.md), in
- * the chapter list the upload card shows as well.
+ * locale otherwise. Every locale's description credits the stock photos in assets[] (docs/videos/
+ * ILLUSTRATED.md §圖庫照片). A compilation's chapters key on its episode slugs, and when every
+ * title would pass YouTube's description limit they fall back to 「第 N 集」 (docs/videos/BINGE.md),
+ * in the chapter list the upload card shows as well.
  */
 export function composeMetadata({ doc, timeline, translations = {}, pack = null, locales: wanted = null }) {
   const narration = narrationLocale(doc);
@@ -41,6 +54,7 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null,
       chapterTitles: compilation ? { ...compilationChapterTitles(doc), ...(translation?.chapters ?? {}) } : translation?.chapters ?? {},
       article: pack ? articleUrl(pack, articleLocale, doc.slug) : null,
       sources: doc.sources ?? [],
+      assets: doc.assets ?? [],
       locale,
       tags: translation?.tags?.length ? translation.tags : doc.youtube.tags,
     };
@@ -50,7 +64,7 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null,
       description = budget.description;
       if (locale === narration) zhChapters = budget.titles;
     } else description = composeDescription(fields);
-    problems.push(...checkYoutubeFields({ title, description, tags: [] }, `${locale}`));
+    problems.push(...checkYoutubeFields({ title, description, tags: [] }, `${locale}`).map((problem) => withCreditHint(problem, fields.assets, locale)));
     perLocale[locale] = { title, description };
   }
   // Tags are one list per video, not per locale: the narration's first, then translated ones.

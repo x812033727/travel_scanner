@@ -36,7 +36,7 @@
 | 用途 | 第一版 | 備援／第二期 | 單價（1080p） |
 | --- | --- | --- | --- |
 | 角色設定圖、關鍵影格 | Gemini 3 Pro Image（每次請求最多 4 張參考圖：伺服器 `apps/api/app/video_media/schemas.py` 的 `MAX_REFERENCES`，`tools/video/media/keyframes.mjs` 送最後 4 張；模型頁寫的上限 14 用不到） | Gemini 3.1 Flash Image、MiniMax image-01 | 約 US$0.134／張 |
-| 圖生影片 | Gemini Omni 1.1 Flash（3–10 秒、首尾影格、角色參考圖） | Veo 3.1 只給主鏡頭；MiniMax H3 2K 當第二個 adapter；Kling 3.0 第二期 | Omni US$0.15／秒、Veo US$0.40／秒、H3 US$0.13／秒 |
+| 圖生影片 | Gemini Omni 1.1 Flash（3–10 秒、首尾影格、角色參考圖） | Veo 3.1 只給主鏡頭；MiniMax H3 2K 當第二個 adapter（`apps/api/app/video_media/providers/minimax.py` 會組官方 v2 的兩種請求：帶首格的圖生影片，或最多 9 張參考圖、不帶首格的參考生影片；兩者不得同送，同送在付費前就被退；2026-10-05 查官方 v2 頁。站上的片段請求 `ClipJobIn.first_frame` 必填，所以 H3 現在只走首格，角色設定圖還到不了它，`catalog.py` 的 `reference_images` 因此是 0）；Kling 3.0 第二期 | Omni US$0.15／秒、Veo US$0.40／秒、H3 US$0.13／秒 |
 | 旁白 | 現有 Gemini 3.8 Flash TTS（Sulafat＋頻道口音 style） | — | 約 US$0.81／小時 |
 | 角色配音 | Gemini TTS：30 個內建聲音配 style；之後用聲音設計拿持久的 `voice_…` id | MiniMax speech-2.8（情緒參數、聲音複製，沒有台灣腔）；Azure zh-TW 三個聲音沒有語氣 | 同旁白 |
 | 品檢（judge） | Gemini 視覺模型看圖與片段打分 | — | 依 token |
@@ -51,6 +51,7 @@
 
 - 流程：劇本 → 角色與場景設定圖 → 分鏡表 → 每鏡一張關鍵影格 → 圖生影片 → 配音 → 字幕 → 配樂 → 剪輯。鏡頭長度照 2026-10-03 量過參考片後定的規格（`.agents/skills/youtube-video/references/drama-craft.md`）：中位數 2.5–3.5 秒，九成不超過 6 秒，最長 8 秒，溶接不超過一成；檢查腳本的門檻是 `tools/video/core/craft.mjs` 的 `TARGETS`（`medianShotSeconds` 2–4、`p90ShotSeconds` 6、`longestShotSeconds` 8、`dissolveShare` 0.1）。每個要畫的鏡頭一張關鍵影格，從別鏡素材切來的（`source`）不畫（`tools/video/core/drama.mjs` 的 `drawnShotScenes`）。lint 對估計超過 12 秒的鏡頭報錯、超過 10 秒警告，有角色的漫劇中位數低於 2 秒也警告（同檔的 `MAX_SHOT_SECONDS`、`WARN_SHOT_SECONDS`、`MIN_MEDIAN_SHOT_SECONDS`）。每個角色鎖定基準圖；一部戲只用同一個影片模型。（2026-10-04 改；起草時這裡寫的是 2026-09-26 查到的業界慣例，比量到的參考片慢。）
 - 觀眾最在意的缺陷（自動品檢要抓的）：臉在鏡頭之間變形、六指、手臂扭曲、人物飄浮、群像比例錯、背景色偏、表情僵硬、名詞不一致、節奏拖沓。
+- 投影片風險（2026-10-05 加，票 `2026-10-05-slideshow-risk-craft-rows`）：站主對第一批試作的評語是「像投影片」，`tools/video/core/craft.mjs` 的六列 `risk.*` 在付錢前量它——同一種框法拍同一批人在同一地點連三個以上（`risk.setup_repeat`）、沒有人也不是插鏡的空景超過一成（`risk.decorative`）、`motion` 以鏡頭為主詞而沒人做事（`risk.motion_purpose`）、沒台詞只有眼神也沒揭露的靜拍超過 5%（`risk.intent`）、卡片超過兩張又占一成以上時長（`risk.text_first`）、`prompt` 寫 cinematic／epic／8k 卻沒景別沒運鏡（`risk.cinematic_claim`）。`lint` 把沒過的列印成警告；前三列進 `CRAFT_GATE_ROWS`，免關卡作品沒過會退回撰稿。2026-10-05 量過：偶的江湖五集全過，被退回的《喜宴未散》E1 實測剪輯在 `risk.setup_repeat` 連五個手部插鏡沒過。目標與讀法在 `.agents/skills/youtube-video/references/drama-craft.md` 一張表；計畫先評分再付錢的主意借自 OpenMontage（AGPL，只借做法）。
 - 字幕：Noto Sans TC 白字深色描邊、離底邊約 14%、每行最多 16 字兩行；多人對白可加「【角色名】」。
 - YouTube：3D 寫實畫面與 AI 音樂都勾「合成內容揭露」（官方明說不影響觸及與營利）；每集有獨立的劇情與構圖；站主關卡與製作紀錄（提示詞、參考圖）是作者證據；不轉載別人的漫劇；不用真人聲音或臉；音樂用有授權的來源。
 
@@ -168,6 +169,7 @@ node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --p
 | `PUT /files/{slug}/{sha256}?part&parts&size` | 分段上傳（同 `video_reviews`） |
 | `GET /files/{slug}/{sha256}` | 串流、Range、`ETag` |
 | `POST /judge` | `{slug, kind, files ≤6 圖或 1 片, rubric ≤12, context, min_score?}` → `{scores: {key: 0–10}, overall, pass, problems, notes, model}` |
+| `POST /locate` | `{slug, sha256, labels? ≤8}` → `{boxes: [{label, box: [ymin, xmin, ymax, xmax], score}], width, height, model}`：媒體庫裡一張 png／jpeg／webp 的主體在哪裡（`locate.py`，2026-10-05 加）。`box` 是 Gemini 的 `box_2d`，0–1000 等分圖高與圖寬，乘 `height/1000`、`width/1000` 得像素（工具端 `client.mjs` 的 `scaleBox`）；`labels` 用劇本的字眼說要找誰，不給就找每個角色（主角在前）與最明顯的主體；沒找到回空陣列。跟 judge 同一次「Gemini 看一眼」：記在 `judge_calls` 預算與每小時 judge 次數上、每次 US$0.01、同一把金鑰與模型、同 `inline_judge_bytes` 上限；片段回 422 `video_media_invalid`，工具先抽一格上傳再問。直式裁切、Shorts 智慧裁切與日後任何重新取景都從這裡拿座標。`GET /status` 的 `limits.locate_labels` 表示伺服器有這個端點 |
 
 **輪詢驅動的狀態機**：API 沒有背景執行程序，工作存 Postgres（`queued → submitted → ready | failed | expired`），`GET /jobs/{id}` 拿 Redis 鎖後推進一步；同 `(slug, request_hash)` 去重；`failed` 三次後 409；`submitted` 超過 24 小時 `expired`。預算（片段秒數、圖片、音樂、judge 次數）在呼叫廠商前預留，廠商拒收或判失敗才釋放。Gemini 的下載要帶金鑰，只在 URL 是 https 且主機正是釘住的 `generativelanguage.googleapis.com` 時附上。媒體庫 `/var/lib/mokaair/video-media/<slug>/<sha256>`，單檔 200 MB、總量 30 GB、保留 14 天，`prune` 刪過期、已放棄、已上架的專案。
 

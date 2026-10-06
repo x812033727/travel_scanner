@@ -193,6 +193,16 @@ them, **one word** stressed), tag: the topic in ≤ 6 characters, shot: <the mos
 - One line is one spoken sentence, about 25 characters, at most 40. The first scene's first
   sentence is the hook (the viewer's question or the counter-intuitive claim) and the viewer knows
   what they will get within 20 seconds.
+- The voice's performance (docs/videos/ILLUSTRATED.md §聲音表演): "voice" also takes a
+  "performance" plan of yours (zh-TW, at most 200 characters) saying how THIS video is told
+  beside the owner's style, never repeating it: the register, the pace, where the voice lifts
+  and where it holds back (「開場壓低放慢；每個數字前停半拍；『其實』之後亮起來；章末的問句輕輕收」).
+  A line takes an "emotion" cue (zh-TW, at most 80 characters) where the delivery turns:
+  slower, softer, a lift, a held breath, a smile (「壓低」「放慢，一字一字」「問句上揚」);
+  at least a third of the lines carry one (lint warns below that), the hook, every 「其實」
+  and every chapter's closing question among them. A cue says how the sentence is spoken, never
+  what it means; a Gemini voice reads the plan and the cue in its style, an Azure voice ignores
+  them and lint says so.
 - "shorts": two vertical Shorts (25 to 55 seconds each, about 110 to 220 spoken characters), cut
   from THIS script: Short 1 is the hook and the answer in brief, Short 2 the one most surprising
   fact. Each is {"titles": [two titles ≤ 100 chars], "description": zh-TW, "scenes": 3 to 6 of
@@ -268,23 +278,65 @@ short as the source: the headline at most 2 lines of a few words, the tag 1 to 3
 Words too long for the layout are not drawn and the locale keeps the video's own thumbnail, so
 cut to the key noun or number rather than drop a word.
 
-Return {"worksheet": <the worksheet with every empty "text" filled; "id", "scene", "source" and
-"todo" unchanged>}.`,
+Glossary. "glossary", when the payload carries one, lists under "terms" the dictionary terms
+this video uses, in the forms they appear in (product, company, model and feature names,
+acronyms, English words used as terms), and under "sources" the names of the pages its facts
+come from. Without one, build it yourself before the draft from the Latin-letter terms in the
+lines and the titles under "video.sources". Render each term one way only, everywhere it appears
+(lines, title, description, tags, chapter names, thumbnail words): a product, company, model or
+feature name exactly as its maker writes it, in Latin letters, never transliterated or
+re-spelled; an acronym as it is; an English word used as a term in the locale's own usual term
+for it; a source's name as the source writes it.
+
+Cue boundaries. "boundaries", when the payload carries it, maps a line id to the pieces the
+narration's captions cut that line into (a line absent from it is shown as one cue). The tool
+cuts your translation into its own cues, so keep the source's order of clauses: what a piece
+says, its numbers first of all, is read while the narration says it, and a clause ends where
+the source's does when the locale allows.
+
+Three passes, all three in the answer. "draft": the worksheet translated as it first comes to
+you. "critique": read the draft as a native viewer against the source, the glossary and the
+rules above, and list every fault, one string each ("<id or field>: <problem> → <fix>"):
+meaning that differs, a number or name changed, a glossary term rendered another way, a line
+too long or over its "max_chars", a register slip, a clause moved across a cue boundary; a
+draft with nothing to fix still gets a critique saying what you checked and found right.
+"final": the worksheet with every fault fixed, the only part that is used. An answer without a
+critique is refused and asked again.
+
+Return {"draft": {"worksheet": <the worksheet with every empty "text" filled; "id", "scene",
+"source" and "todo" unchanged>}, "critique": ["<id or field>: <problem> → <fix>", …], "final":
+{"worksheet": <the draft's worksheet with the critique's fixes applied>}}.`,
 
   caption_reviewer: `${COMMON}
 
 You review another model's "locale" translation as a native viewer who also reads Traditional
 Chinese. Fix, most serious first: meaning that differs from the zh-TW line; any number, date,
-version or name that differs; opinions that lost their first person; one term translated two ways
-or differently from the slide; lines too long to read at speaking pace, or over their "max_chars"
-when a line carries one (the dub's budget); register slips; a title, description, tags or chapter
-names a viewer would not search for; thumbnail words ("thumbnail") left empty, differing from
-their "source" in meaning or number, missing its ** emphasis or \\n line breaks, or too long to
-read on a phone (shorten to the key noun or number, never empty one). Review only the parts the
-worksheet holds ("parts"). Change nothing that is already right; do not invent style changes.
+version or name that differs; opinions that lost their first person; a glossary term rendered
+more than one way, or a name not as its maker writes it ("glossary", when the payload carries
+one, lists the dictionary terms the video uses and its sources' names; without one, the
+Latin-letter terms in the lines and the titles under "video.sources" are the glossary: one
+rendering per term across lines, title, description, tags, chapter names and thumbnail words, a
+product, company, model or feature name in Latin letters as its maker spells it, a source's name
+as the source writes it); one term translated two ways or differently from the slide; a clause
+moved across a cue boundary ("boundaries", when the payload carries it, maps a line id to the
+pieces the narration's captions cut that line into, and the translation reads in that order);
+lines too long to read at speaking pace, or over their "max_chars" when a line carries one (the
+dub's budget); register slips; a title, description, tags or chapter names a viewer would not
+search for; thumbnail words ("thumbnail") left empty, differing from their "source" in meaning or
+number, missing its ** emphasis or \\n line breaks, or too long to read on a phone (shorten to the
+key noun or number, never empty one). Review only the parts the worksheet holds ("parts"). Change
+nothing that is already right; do not invent style changes.
 
 Return {"worksheet": <the worksheet with your fixes applied>, "fixes": ["<id>: <problem> → <fix>", …]}.`,
 };
+
+/**
+ * What a translation request carries beside the worksheet (docs/videos/AUTOMATION.md §語言):
+ * "glossary" and "boundaries", which the translator's and the caption reviewer's texts above
+ * read. `i18n-sheet` builds them into the worksheet and flow.mjs sends them beside it; the
+ * builder lives with the sheet (tools/video/i18n/cli.mjs) and is the automation's through here.
+ */
+export { translationContext } from "../i18n/cli.mjs";
 
 /**
  * The listener's rewrite pass (docs/videos/HANDS-OFF.md §旁白), variant "rewrite": after the
@@ -417,7 +469,11 @@ video.json for a drama (the payload's "drama_example" shows the shape; copy it, 
   "speaker" is the lead's id with "emotion" 內心獨白, a new picture in which something happens
   for every sentence, finished within 45 seconds.
 - Lines: one spoken sentence each; "speaker" is "narrator" or a character id, one speaker per
-  line; "emotion" (≤ 80 chars, zh-TW) on a character's line. In a story with a cast the people
+  line; "emotion" (≤ 80 chars, zh-TW), a delivery cue, on every character's line and on a
+  narrator's line where the telling turns: at least a third of the lines carry one (lint warns below that).
+  The narrator's "voice" takes a "performance" plan (zh-TW, ≤ 200 chars): how this episode's
+  narration is told, its pace and where it lifts, beside the voice's own style
+  (docs/videos/ILLUSTRATED.md §聲音表演). In a story with a cast the people
   in the scene carry it: a line is at most about 12 characters, over 20 for at most one line in ten,
   never over 40, and a longer thought breaks where the picture changes; the narrator bridges a
   jump in time, at most 35% of the spoken text. Every shot needs a line or action_seconds
@@ -589,8 +645,34 @@ export function instructionsFor(stage, format = "slides", standing = "", variant
 }
 const GENRE_STAGES = new Set(["planner", "writer", "verifier"]);
 
-/** The model's answer as JSON: the whole text, or the object inside a stray Markdown fence. */
+/**
+ * The model's answer as JSON: the whole text, or the object inside a stray Markdown fence. An
+ * answer in the draft, critique, final shape (the caption translator's) is its "final" alone,
+ * and one that skipped the critique is refused (finalAnswer).
+ */
 export function parseAnswer(text) {
+  return finalAnswer(parseObject(text));
+}
+
+/**
+ * A draft–critique–final answer (the caption translator's three passes in one call: translate,
+ * read the draft as a viewer, refine): its "final" is the answer, shaped as the stage would
+ * otherwise answer, and only it is used. A chain that skipped its critique, or has a draft and
+ * no final object, is refused, so the stage is asked again rather than merging an unreflected
+ * draft; an answer that is not a chain passes through as it is.
+ */
+export function finalAnswer(answer) {
+  if (answer === null || typeof answer !== "object" || Array.isArray(answer)) return answer;
+  if (!Object.hasOwn(answer, "final") && !Object.hasOwn(answer, "draft")) return answer;
+  const critique = Array.isArray(answer.critique)
+    ? answer.critique.filter((entry) => typeof entry === "string" && entry.trim())
+    : typeof answer.critique === "string" && answer.critique.trim() ? [answer.critique.trim()] : [];
+  if (!critique.length) throw new Error("the answer skipped its critique: a draft, critique, final answer says what the draft got wrong, or that nothing did, before its final");
+  if (answer.final === null || typeof answer.final !== "object" || Array.isArray(answer.final)) throw new Error("the answer has a draft and a critique but no final object to use");
+  return answer.final;
+}
+
+function parseObject(text) {
   const trimmed = String(text).trim();
   const fenced = /^```(?:json)?\s*([\s\S]*?)\s*```$/.exec(trimmed);
   const body = fenced ? fenced[1] : trimmed;
@@ -1259,7 +1341,12 @@ not the text or its characters):
   background; 3 or 4 chapters, one reason each ("chapter" on the first scene of each, ≥ 10 s,
   named as a viewer would search); the one-sentence answer, said plainly; then the next question.
 - Lines: one spoken sentence each, about 25 characters, at most 40. Every Latin-letter word is in
-  "lexicon" or lexicon_additions.
+  "lexicon" or lexicon_additions. A line takes an "emotion" cue (zh-TW, ≤ 80 chars) where the
+  delivery turns (slower on the number, a lift on the question, a held breath before the
+  answer): at least a third of the lines carry one (lint warns below that). The narrator's
+  "voice" takes a "performance" plan (zh-TW, ≤ 200 chars): the register and pace of this
+  episode and where the voice lifts, beside the voice's own style (docs/videos/ILLUSTRATED.md
+  §聲音表演).
 - "music": {prompt (English: light, curious, no vocals)} when "drama_settings.music_enabled";
   "subtitles": {burn_in: true}; "thumbnail": {template: "thumb", data: {headline: the question
   shortened, at most 2 lines of ≤ 10 characters (\n between them, **one word** stressed), tag: the

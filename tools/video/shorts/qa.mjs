@@ -1,4 +1,4 @@
-// `qa`: the twelve checks a Short's final cut passes before the site approves it without the
+// `qa`: the thirteen checks a Short's final cut passes before the site approves it without the
 // owner (docs/videos/SHORTS.md §自動品管). The report is what `push` sends with the final review:
 // { ok, final_sha256, kind: "shorts", line, items }, the items in ITEM_IDS order, which is the
 // order of SHORTS_QA_ITEMS in apps/api/app/video_automation/judge.py.
@@ -17,10 +17,11 @@ import { policyVerdict } from '../qa/policy.mjs';
 import { comparable } from '../tts/check.mjs';
 import { loudnessProblems, measureFinal, profileProblems } from './build.mjs';
 import { audioHash, buildClips, CHECK_FILE, phrasesHash } from './check.mjs';
-import { PROFILE, SCRIPT_FILE, lineOf, phrasesOf, saveJson, sha256, verifyEvidence } from './core.mjs';
+import { PROFILE, SCRIPT_FILE, callsToAction, lineOf, phrasesOf, saveJson, sha256, verifyEvidence } from './core.mjs';
+import { loopProblems, psnrText } from './motion.mjs';
 import { CAPTIONS_FILE, EXTRA_LOCALES, captionProblems, composeMetadata, disclosureOf, metadataProblems, sourceUrlOf } from './package.mjs';
 
-export const ITEM_IDS = Object.freeze(['profile', 'loudness', 'layout', 'narration', 'evidence', 'facts', 'policy', 'metadata', 'captions', 'links', 'variety', 'disclosure']);
+export const ITEM_IDS = Object.freeze(['profile', 'loudness', 'layout', 'narration', 'evidence', 'facts', 'policy', 'metadata', 'captions', 'links', 'variety', 'disclosure', 'grammar']);
 export const QA_FILE = 'qa.json';
 export const VERIFY_FILE = 'verify.json';
 /** Local inputs of a QA verdict. Missing inputs stay explicit so adding them invalidates it too.
@@ -57,7 +58,7 @@ const OFFLINE = 'not checked: the quality check ran without the site';
 export const item = (id, ok, detail) => ({ id, ok: Boolean(ok), detail: String(detail) });
 const verdict = (id, problems, fine) => item(id, !problems.length, problems.length ? problems.join('; ') : fine);
 
-/** The report the site reads; throws when the items are not exactly the twelve, in order. */
+/** The report the site reads; throws when the items are not exactly the thirteen, in order. */
 export function qaReport(items, finalSha256, line) {
   const ids = items.map((each) => each.id);
   if (ids.length !== ITEM_IDS.length || ids.some((id, index) => id !== ITEM_IDS[index])) throw new Error(`qa items must be exactly ${ITEM_IDS.join(', ')}; got ${ids.join(', ')}`);
@@ -212,6 +213,50 @@ export function disclosureItem({ doc }) {
   return item('disclosure', true, `${synthetic ? 'disclosed as altered or synthetic content' : 'not disclosed'}: ${reason}`);
 }
 
+// The thumbnail's words: the first card's headline at most this many characters, unless the card
+// carries a big number, which reads at any size.
+export const THUMBNAIL_HEADLINE_MAX = 14;
+
+/** Every text a viewer reads on the cards or hears, with where it is. */
+export function cardTexts(doc) {
+  const texts = [];
+  (Array.isArray(doc?.scenes) ? doc.scenes : []).forEach((scene, index) => {
+    for (const field of ['headline', 'kicker', 'big', 'note']) if (typeof scene?.[field] === 'string') texts.push([`scene ${index} ${field}`, scene[field]]);
+    for (const field of ['body', 'narration']) (Array.isArray(scene?.[field]) ? scene[field] : []).forEach((text) => { if (typeof text === 'string') texts.push([`scene ${index} ${field}`, text]); });
+  });
+  return texts;
+}
+
+/**
+ * The grammar a script is held to before it is built (the lints of lab.mjs and cut.mjs refuse
+ * these too, so the writer fixes them before anything is paid for): the first card reads at
+ * thumbnail size, and nothing on a card or in the narration asks the viewer to act.
+ */
+export function scriptGrammarProblems(doc) {
+  const problems = [];
+  const first = Array.isArray(doc?.scenes) && doc.scenes[0] && typeof doc.scenes[0] === 'object' ? doc.scenes[0] : null;
+  const headline = [...String(first?.headline ?? '')].length;
+  if (first && !(headline <= THUMBNAIL_HEADLINE_MAX || first.big)) problems.push(`the first card is the thumbnail: its headline is ${headline} characters and it carries no big number; at most ${THUMBNAIL_HEADLINE_MAX} characters, or a big`);
+  for (const [where, text] of cardTexts(doc)) {
+    const asks = callsToAction(text);
+    if (asks.length) problems.push(`${where} asks the viewer to act (${asks.join('、')}); a Short ends on its first frame, not on an ask`);
+  }
+  return problems;
+}
+
+/**
+ * grammar: the Short is a loop (docs/videos/SHORTS.md §自動品管). Its first frame is its
+ * thumbnail: the cover is frame 0, measured, and the first card says it at thumbnail size; its
+ * last frame returns to the first, the tail motion.mjs encodes, measured; and nowhere on a card
+ * or in the narration does it ask the viewer to subscribe, like, ring the bell, click a link or
+ * follow. `grammar` is measureFinal's { cover_psnr, loop_psnr }, null when there was no cover.
+ */
+export function grammarItem({ doc, grammar }) {
+  const problems = [...loopProblems(grammar), ...scriptGrammarProblems(doc)];
+  const fine = problems.length ? '' : `the cover is the first frame (PSNR ${psnrText(grammar.cover_psnr)}), the last frame returns to it (PSNR ${psnrText(grammar.loop_psnr)}), the first card reads at thumbnail size, no call to action in ${cardTexts(doc).length} texts of ${doc.scenes.length} cards`;
+  return verdict('grammar', problems, fine);
+}
+
 /** The latest Shorts as the site has them: what each final review carried in payload.script. */
 export async function siteHistory(client, limit = VARIETY_WINDOW) {
   const listed = await client.videos({ shorts: 'only', limit: String(limit * 2) });
@@ -254,7 +299,8 @@ export async function runQa({ directory, client = null, offline = false, setting
   const inputs = qaInputBindings(directory);
   const used = settings ?? (online ? (await failing(() => client.settings())).value : null) ?? {};
   const range = { minSeconds: used.seconds_min ?? PROFILE.minSeconds, maxSeconds: used.seconds_max ?? PROFILE.maxSeconds };
-  const measured = await measureImpl(final, tools ?? (await locateFfmpeg()));
+  // The cut's two ends are measured with the rest: the cover against frame 0, frame 0 against the last.
+  const measured = await measureImpl(final, tools ?? (await locateFfmpeg()), { cover: path.join(directory, 'upload', 'cover.png'), frames: timeline.frames });
 
   const line = lineOf(doc);
   let evidenceError = null;
@@ -306,6 +352,7 @@ export async function runQa({ directory, client = null, offline = false, setting
     links,
     past === null && offline ? item('variety', false, OFFLINE) : varietyItem({ doc, history: past }),
     disclosureItem({ doc }),
+    grammarItem({ doc, grammar: measured.grammar ?? null }),
   ];
   if (!sameQaInputs(inputs, qaInputBindings(directory))) throw new Error('QA inputs changed while checking: run qa again');
   const report = { ...qaReport(items, finalSha, line), inputs };

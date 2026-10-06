@@ -4,7 +4,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import { ORIGIN, slideHtml } from "../templates/templates.mjs";
-import { openRenderer } from "./browser.mjs";
+import { FPS, LAUNCH_ARGS, MAX_TRANSITION_FRAMES, openRenderer, pauseAnimations, seekAnimations } from "./browser.mjs";
 
 // This exercises the actual layout engine. Opt in on a host with Chromium installed:
 // VIDEO_RENDER_BROWSER_TESTS=1 VIDEO_BROWSER_CHANNEL=msedge node --test tools/video/render/browser.test.mjs
@@ -13,6 +13,52 @@ const root = fileURLToPath(new URL("../../../", import.meta.url));
 const digest = (buffer) => createHash("sha256").update(buffer).digest("hex");
 const style = (html, css) => html.replace("</head>", `<style>${css}</style></head>`);
 const content = (html, body) => html.replace(/<main[^>]*>.*?<\/main>/s, `<main class="content">${body}</main>`);
+
+test("the page functions that freeze an entrance are shared with the Shorts renderer: self-contained, sent into a page as they are", () => {
+  // shorts/build.mjs sends them into its own card page with page.evaluate, so neither may
+  // reach for anything of this module: only the page's document and animation frames.
+  assert.equal(typeof pauseAnimations, "function");
+  assert.equal(typeof seekAnimations, "function");
+  assert.equal(pauseAnimations.length, 0);
+  assert.equal(seekAnimations.length, 1);
+  assert.match(String(pauseAnimations), /document\.getAnimations\(\)/);
+  assert.match(String(pauseAnimations), /animation\.pause\(\)/);
+  assert.match(String(pauseAnimations), /getComputedTiming\(\)/);
+  assert.match(String(seekAnimations), /animation\.currentTime = time/);
+  assert.equal((String(seekAnimations).match(/requestAnimationFrame/g) ?? []).length, 2, "two frames: the first draws the seek, the second starts after it");
+  for (const fn of [pauseAnimations, seekAnimations]) assert.ok(!/\b(?:FPS|ORIGIN|SIZE|import|require)\b/.test(String(fn)), "nothing of the module");
+  assert.equal(FPS, 30);
+  assert.equal(MAX_TRANSITION_FRAMES, 18);
+  assert.deepEqual(LAUNCH_ARGS, ["--disable-gpu", "--disable-threaded-animation"]);
+});
+
+test("in a page, the functions pause every animation at the time asked and resolve once that frame is drawn", {
+  skip: browserTests ? false : "set VIDEO_RENDER_BROWSER_TESTS=1 to run the actual browser regression",
+}, async () => {
+  const { chromium } = await import("@playwright/test");
+  const browser = await chromium.launch({ headless: true, args: LAUNCH_ARGS, ...(process.env.VIDEO_BROWSER_CHANNEL ? { channel: process.env.VIDEO_BROWSER_CHANNEL } : {}) });
+  try {
+    const page = await browser.newPage({ viewport: { width: 400, height: 200 }, deviceScaleFactor: 1 });
+    await page.setContent('<style>body{margin:0;background:#123}@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}.in{animation:rise 240ms linear both;animation-delay:calc(var(--i,0)*40ms);animation-play-state:paused}h1{color:#fff;font:40px sans-serif;margin:20px}</style><h1 class="in" style="--i:0">Headline</h1><h1 class="in" style="--i:4">Row</h1>');
+    assert.equal(await page.evaluate(pauseAnimations), 400, "the end of the longest animation, delay and duration");
+    assert.deepEqual(await page.evaluate(() => document.getAnimations().map((animation) => animation.playState)), ["paused", "paused"]);
+    await page.evaluate(seekAnimations, 401);
+    const still = digest(await page.screenshot());
+    await page.evaluate(seekAnimations, 0);
+    const first = digest(await page.screenshot());
+    assert.notEqual(first, still, "frame 0 is the moment before anything has moved");
+    await page.evaluate(seekAnimations, 200);
+    assert.deepEqual(await page.evaluate(() => document.getAnimations().map((animation) => animation.currentTime)), [200, 200]);
+    const mid = digest(await page.screenshot());
+    assert.notEqual(mid, first);
+    assert.notEqual(mid, still);
+    await page.evaluate(seekAnimations, 0);
+    await page.evaluate(seekAnimations, 200);
+    assert.equal(digest(await page.screenshot()), mid, "a seek draws the same frame every time");
+  } finally {
+    await browser.close();
+  }
+});
 
 const diagram = slideHtml(
   { template: "diagram", data: { svg: "docs/videos/fixture.svg" } },

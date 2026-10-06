@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import { EXIT, main } from "../cli.mjs";
 import { compilationDocument } from "../core/compilation.mjs";
-import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, explainerFixture, sandbox, tempDir } from "../core/fixtures/load.mjs";
 import { estimateTimeline, visualHash } from "../core/timeline.mjs";
 import { LAUNCH_ARGS, resolveRequest } from "./browser.mjs";
 import { compareRuns } from "./repeat.mjs";
@@ -14,7 +14,7 @@ import { localizedThumbnailHash, thumbnailSource, thumbnailSourceHash } from "..
 import { coverageProblems, localizedThumbnails } from "./cli.mjs";
 import { contactSheetHtml } from "./contact.mjs";
 import { bundledCoverage, covers, mergeRanges, parseUnicodeRanges, uncovered } from "./fonts.mjs";
-import { localeThumbnailFile, renderPlan, renderProblems, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
+import { assetFile, localeThumbnailFile, renderPlan, renderProblems, sceneAssets, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
 import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, stripHtml, subtitlePlan } from "./subtitles.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -115,6 +115,107 @@ test("with the repository root, diagrams are inlined and asset bytes are part of
   const missing = structuredClone(showcase);
   missing.scenes.find((scene) => scene.id === "screen").data.image = "apps/web/public/nope.png";
   assert.match(renderProblems(missing, root)[0].message, /apps\/web\/public\/nope\.png does not exist/);
+});
+
+test("a stock photo is read from the work directory: listed in assets[], fetched, and its bytes part of the key", () => {
+  const sha = "f".repeat(64);
+  const stock = `stock/${sha}.png`;
+  const doc = structuredClone(showcase);
+  const index = doc.scenes.findIndex((scene) => scene.id === "screen");
+  doc.scenes[index].data.image = stock;
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const workdir = tempDir("video-render-");
+  const where = `scenes[${index}] (screen).data`;
+  assert.deepEqual(sceneAssets(doc.scenes[index]), [stock]);
+  assert.equal(assetFile(stock, { root, workdir }), path.join(workdir, "stock", `${sha}.png`));
+  assert.equal(assetFile(stock, { root }), null, "no work directory, no file to read");
+  assert.equal(assetFile("apps/web/public/a.png", { root, workdir }), path.join(root, "apps/web/public/a.png"));
+  assert.deepEqual(renderProblems(doc, root, { workdir }), [
+    { path: where, message: `${stock} is not in assets[]: stock fetch writes the entry there, and without it the description carries no credit` },
+    { path: where, message: `${stock} is not in the work directory; fetch it with stock fetch (tools/video/media/cli.mjs)` },
+  ]);
+  doc.assets = [{ path: stock, source: "Photo by Lukas Rodriguez on Pexels", license: "Pexels License", author: "Lukas Rodriguez", url: "https://www.pexels.com/photo/seoul-at-night-3573351/" }];
+  assert.deepEqual(renderProblems(doc), [], "without root or work directory only the data is checked, as before");
+  assert.deepEqual(renderProblems(doc, root).map((problem) => problem.message), [], "without a work directory the file is not looked for");
+  assert.match(renderProblems(doc, root, { workdir })[0].message, /not in the work directory/);
+  mkdirSync(path.join(workdir, "stock"));
+  writeFileSync(path.join(workdir, "stock", `${sha}.png`), "png one");
+  assert.deepEqual(renderProblems(doc, root, { workdir }), []);
+  const state = (plan) => plan.scenes.find((scene) => scene.id === "screen").states[0];
+  const one = state(renderPlan(doc, "t", root, { workdir }));
+  assert.match(one.html, new RegExp(`<img src="https://video\\.local/work/stock/${sha}\\.png" alt="">`));
+  assert.equal(state(renderPlan(doc, "t", root, { workdir })).key, one.key, "the same bytes, the same key");
+  writeFileSync(path.join(workdir, "stock", `${sha}.png`), "png two");
+  const two = state(renderPlan(doc, "t", root, { workdir }));
+  assert.equal(two.html, one.html);
+  assert.notEqual(two.key, one.key, "a swapped photo redraws the slide that shows it");
+  assert.notEqual(state(renderPlan(doc, "t", root)).key, two.key, "without the work directory the bytes are not in the key");
+  assert.equal(resolveRequest(`https://video.local/work/${stock}`, { root, workdir, pages: new Map() }).file, path.join(workdir, "stock", `${sha}.png`), "the fake origin serves it from the work directory");
+});
+
+test("render draws a stock photo slide from the work directory and redraws it when the photo changes", async () => {
+  const box = sandbox();
+  const sha = "e".repeat(64);
+  const stock = `stock/${sha}.png`;
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  const [, questions] = doc.scenes;
+  doc.scenes[1] = { ...questions, template: "screenshot", data: { title: "首爾的夜景", image: stock, credit: "Photo by Lukas Rodriguez on Pexels" }, lines: questions.lines.map(({ id, text }) => ({ id, text })) };
+  doc.assets = [{ path: stock, source: "Photo by Lukas Rodriguez on Pexels", license: "Pexels License", author: "Lukas Rodriguez", url: "https://www.pexels.com/photo/seoul-at-night-3573351/" }];
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  const photo = path.join(box.workdir, "stock", `${sha}.png`);
+  mkdirSync(path.dirname(photo), { recursive: true });
+  writeFileSync(photo, "png one");
+  const captures = [];
+  let out = "";
+  const ctx = {
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work },
+    stdout: { write: (text) => (out += text) },
+    stderr: { write: (text) => (out += text) },
+    now: () => new Date("2026-10-05T00:00:00Z"),
+    openRenderer: async () => ({
+      capture: async (key, html) => {
+        captures.push({ key, html });
+        return { still: Buffer.from(`png ${key}`), frames: [], problems: [] };
+      },
+      sheet: async () => Buffer.from("sheet"),
+      close: async () => {},
+    }),
+  };
+  const args = ["render", "--slug", box.slug];
+  assert.equal(await main(args, ctx), EXIT.ok, out);
+  const drawn = captures.filter((capture) => capture.html.includes(`https://video.local/work/${stock}`));
+  assert.equal(drawn.length, 1, "the photo slide is drawn once, from the work directory");
+  assert.match(drawn[0].html, /<div class="credit">Photo by Lukas Rodriguez on Pexels<\/div>/);
+  assert.ok(existsSync(path.join(box.workdir, stillFile(drawn[0].key))));
+  const manifest = JSON.parse(readFileSync(path.join(box.workdir, "frames", "manifest.json"), "utf8"));
+  assert.deepEqual(manifest.scenes.map((scene) => [scene.id, scene.states.length]), [["hook", 1], ["questions", 1], ["wrap", 1]]);
+  assert.match(out, /3 states drawn, 0 reused/);
+
+  // The same photo again: every state is reused. Another photo under the name: that slide alone is redrawn.
+  const before = captures.length;
+  out = "";
+  assert.equal(await main(args, ctx), EXIT.ok, out);
+  assert.match(out, /0 states drawn, 3 reused/);
+  assert.equal(captures.length - before, 1, "only the thumbnail is captured again");
+  writeFileSync(photo, "png two");
+  out = "";
+  assert.equal(await main(args, ctx), EXIT.ok, out);
+  assert.match(out, /1 states drawn, 2 reused/);
+  const redrawn = captures.slice(before + 1).filter((capture) => capture.html.includes(`/work/${stock}`));
+  assert.equal(redrawn.length, 1);
+  assert.notEqual(redrawn[0].key, drawn[0].key, "the key carries the photo's bytes");
+
+  // A photo not fetched yet, or not listed in assets[], stops the render with the reason.
+  rmSync(photo);
+  out = "";
+  assert.equal(await main(args, ctx), EXIT.lint);
+  assert.match(out, /ERROR scenes\[1\] \(questions\)\.data: stock\/e+\.png is not in the work directory; fetch it with stock fetch/);
+  writeFileSync(photo, "png two");
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify({ ...doc, assets: [] }));
+  out = "";
+  assert.equal(await main(args, ctx), EXIT.lint);
+  assert.match(out, /is not in assets\[\]: stock fetch writes the entry there, and without it the description carries no credit/);
 });
 
 test("frame paths are relative with forward slashes", () => {

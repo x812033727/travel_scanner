@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -12,7 +13,13 @@ import pytest
 from app.config import Settings
 from app.video_media.judge import (
     CHECK_INSTRUCTIONS,
+    FIX_ARROW,
     INSTRUCTIONS,
+    MAX_FIX_CHARS,
+    MAX_PROBLEM_CHARS,
+    MAX_PROBLEMS,
+    PLACEHOLDER_FIX,
+    UNDESCRIBED,
     JudgeError,
     judge,
     request_body,
@@ -198,6 +205,116 @@ def test_a_checks_verdict_scores_ten_less_the_cost_of_each_fault_found() -> None
         verdict(json.dumps({"scores": {"text": 10}, "problems": []}), payload, 7, "m")
 
 
+# One line per fault: "<criterion key>: <what is wrong and where> → <one change to the prompt>"
+# (docs/videos/ILLUSTRATED.md §judge 的 problems). The judge is asked for it and held to it.
+LINE = re.compile(r"[a-z][a-z0-9_]*: .+ → .+")
+
+
+def test_the_instructions_ask_for_a_keyed_line_with_a_prompt_fix_per_fault() -> None:
+    for text in (INSTRUCTIONS, CHECK_INSTRUCTIONS):
+        assert '"<criterion key>: <what is wrong and where> → <the one change to the prompt' in text
+        assert "as the words to put in the prompt" in text
+        assert "name the criterion by its key as the rubric writes it" in text
+        assert "look for the same fault everywhere" in text
+    # The scale and the fault questions are asked as they were measured; only the problems changed.
+    assert "from 0 (fails completely) to 10 (flawless)" in INSTRUCTIONS
+    assert "Be strict" in INSTRUCTIONS
+    assert "answer true when it is there and false when it is not" in CHECK_INSTRUCTIONS
+    assert "never reads the prompt" in CHECK_INSTRUCTIONS
+
+
+def test_checks_problems_are_one_keyed_line_per_fault_found_with_a_prompt_fix() -> None:
+    payload = _checks("a" * 64)
+    found = {"text": True, "anatomy": True, "details": False, "awkward": True}
+    hand = "awkward: the barista's right hand is a blur → her right hand flat on the counter"
+    told = [
+        hand,
+        "details: the lamp is on the left → the lamp on the right",  # not a fault found: dropped
+        "the sign over the door reads CAFE → a plain sign",  # names no criterion: dropped
+        "`Text`: a sign over the door reads CAFE",  # no fix: the placeholder
+        "anatomy -> every hand with four fingers and a thumb",  # straight to the fix
+        hand,  # said twice, kept once
+    ]
+    out = verdict(json.dumps({"faults": found, "problems": told, "notes": ""}), payload, 7, "m")
+    assert out.problems == [
+        hand,
+        f"text: a sign over the door reads CAFE → {PLACEHOLDER_FIX}",
+        f"anatomy: {UNDESCRIBED} → every hand with four fingers and a thumb",
+    ], "the judge's order, one line per fault it found, the key as the rubric writes it"
+    assert all(LINE.fullmatch(line) for line in out.problems)
+    assert not out.passed and out.scores["details"] == 10.0
+    # A fault found with no word about it gets a line of its own, with the question asked.
+    quiet = {**found, "anatomy": False, "awkward": False}
+    silent = verdict(
+        json.dumps({"faults": quiet, "problems": ["awkward: a stiff hand → a relaxed hand"]}),
+        payload,
+        7,
+        "m",
+    )
+    assert silent.problems == [
+        f"text: {UNDESCRIBED} (asked: Can you read any letter?) → {PLACEHOLDER_FIX}"
+    ]
+    # Nothing found: nothing kept, whatever the judge remarked.
+    clean = verdict(
+        json.dumps({"faults": dict.fromkeys(found, False), "problems": ["details: x → y"]}),
+        payload,
+        7,
+        "m",
+    )
+    assert clean.problems == [] and clean.passed
+
+
+def test_scored_problems_name_the_criteria_under_the_bar_or_the_floor() -> None:
+    payload = _payload("a" * 64)
+    hair = "identity_jingwei: the hair is longer than on the sheet → hair to the shoulder"
+    hand = "artifacts: six fingers on the left hand → the left hand with five fingers"
+    # The key dressed up as a title or in bold, with a dash: still the rubric's key.
+    told = [
+        "Identity Jingwei: the hair is longer than on the sheet → hair to the shoulder",
+        "**artifacts** - six fingers on the left hand → the left hand with five fingers",
+    ]
+
+    def answer(scores: dict[str, float], bar: int = 7) -> Any:
+        return verdict(json.dumps({"scores": scores, "problems": told}), payload, bar, "m")
+
+    under = answer({"identity_jingwei": 9, "artifacts": 6.5})
+    assert under.problems == [hand], "a remark on a criterion at or over the bar is dropped"
+    assert under.passed, "a passed take still names the criterion under the bar"
+    both = answer({"identity_jingwei": 6.9, "artifacts": 6.5})
+    assert both.problems == [hair, hand] and not both.passed
+    # The seven the judge gives "nothing wrong" (ILLUSTRATED.md §judge 的刻度與判定沿用) fails
+    # no criterion, so its remarks go.
+    seven = answer({"identity_jingwei": 7, "artifacts": 7})
+    assert seven.problems == [] and seven.passed
+    # Under the floor of 4 a criterion fails the take at any bar, and is named when the judge
+    # said nothing about it.
+    floor = verdict(
+        json.dumps({"scores": {"identity_jingwei": 10, "artifacts": 3}, "problems": []}),
+        payload,
+        0,
+        "m",
+    )
+    assert floor.problems == [
+        f"artifacts: {UNDESCRIBED} (asked: Hands, faces, text?) → {PLACEHOLDER_FIX}"
+    ]
+    assert not floor.passed
+
+
+def test_a_problem_line_is_cut_to_size_with_its_fix_kept_and_twenty_lines_at_most() -> None:
+    payload = _checks("a" * 64)
+    found = {"text": True, "anatomy": False, "details": False, "awkward": False}
+    long_line = f"text: {'x' * 600} → {'y' * 300}"
+    out = verdict(json.dumps({"faults": found, "problems": [long_line]}), payload, 7, "m")
+    assert len(out.problems) == 1 and len(out.problems[0]) == MAX_PROBLEM_CHARS
+    assert out.problems[0].startswith("text: xxx")
+    assert out.problems[0].endswith(FIX_ARROW + "y" * MAX_FIX_CHARS), "the fix keeps its place"
+    many = [f"text: fault {n} → fix {n}" for n in range(25)]
+    out = verdict(json.dumps({"faults": found, "problems": many}), payload, 7, "m")
+    assert len(out.problems) == MAX_PROBLEMS and out.problems[-1] == "text: fault 19 → fix 19"
+    odd = verdict(json.dumps({"faults": found, "problems": "not a list"}), payload, 7, "m")
+    assert len(odd.problems) == 1 and odd.problems[0].startswith(f"text: {UNDESCRIBED}")
+
+
 @pytest.mark.asyncio
 async def test_judge_calls_gemini_with_the_site_key_and_reads_the_json_answer(
     tmp_path: Path,
@@ -209,8 +326,8 @@ async def test_judge_calls_gemini_with_the_site_key_and_reads_the_json_answer(
     def handler(request: httpx.Request) -> httpx.Response:
         seen.append(request)
         answer = {
-            "scores": {"identity_jingwei": 8, "artifacts": 9},
-            "problems": [],
+            "scores": {"identity_jingwei": 8, "artifacts": 9 if len(seen) == 1 else 6},
+            "problems": ["artifacts: a smear across the sky → a clear sky"],
             "notes": "fine",
         }
         return httpx.Response(
@@ -225,7 +342,11 @@ async def test_judge_calls_gemini_with_the_site_key_and_reads_the_json_answer(
     runtime = Settings(hotspot_guide_gemini_api_key="g")
     async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
         out = await judge(runtime, media, store, _payload(sha), 7, client)
+        again = await judge(runtime, media, store, _payload(sha), 7, client)
     assert out.passed and out.overall == 8.33
+    assert out.problems == [], "a remark on a criterion over the bar is not a problem"
+    assert again.passed and again.overall == 7.33
+    assert again.problems == ["artifacts: a smear across the sky → a clear sky"]
     assert seen[0].headers["x-goog-api-key"] == "g" and ":generateContent" in seen[0].url.path
     with pytest.raises(JudgeError) as no_key:
         await judge(Settings(), media, store, _payload(sha), 7)

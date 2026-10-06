@@ -25,10 +25,14 @@ import {
   SCENE_GAP_MS,
   SILENT_SHOT_SECONDS,
   TARGETS,
+  cameraInMotion,
   cameraMove,
+  castWords,
   craftChecks,
   isLookOnly,
+  nobodyIn,
   normalize,
+  placeOf,
   quantile,
   shotSize,
   sizesDisagree,
@@ -204,6 +208,34 @@ test("a look, a breath or a tremor is a look; anything done to someone or someth
   assert.equal(isLookOnly({ camera: "Slow push in", motion: "She looks at the door." }), true, "a camera move does not turn a look into an action");
 });
 
+test("the slideshow rows read who is in the shot, where it is, and whether the camera is the one acting", () => {
+  const cast = castWords({ characters: [{ id: "nie-gutie", name: "聶孤鐵" }, { id: "lin", name: "Lin Zhitang" }] });
+  assert.deepEqual([...cast], ["nie", "gutie", "lin", "lin zhitang"]);
+  assert.equal(placeOf({ prompt: "From the south side of a stone forge on a night wasteland: the forge mouth glowing" }), "forge wasteland");
+  assert.equal(placeOf({ prompt: "Nie at the forge mouth, turned toward it" }), "forge");
+  assert.equal(placeOf({ prompt: "Her hands folded on the cup" }), "");
+  const nobody = [
+    [{ prompt: "Lanterns over the empty courtyard at dusk", motion: "Mist drifts across the stones.", characters: [] }, true],
+    [{ prompt: "A scroll on the table", motion: "The wind lifts a page" }, true],
+    [{ prompt: "Nie at the forge mouth", characters: [] }, false],
+    [{ prompt: "close-up of a small bird on a wet rock", characters: [] }, false],
+    [{ prompt: "The banquet hall", characters: ["lin"] }, false],
+    [{ prompt: "The hall at night", motion: "She closes the door." }, false],
+    [{ camera: "Close-up" }, false],
+  ];
+  for (const [data, expected] of nobody) assert.equal(nobodyIn(data, cast), expected, JSON.stringify(data));
+  const camera = [
+    ["The camera pushes in slowly on her face.", true, false],
+    ["Slow push in on her face, her eyes narrow", true, false],
+    ["Pan across the table to the empty chair", true, false],
+    ["She sets the cup down, the camera tilts up", true, true],
+    ["Nie walks three slow steps toward the camera", false, true],
+    ["A gust snaps all three banners out flat and the crane feather on his crown lifts", false, true],
+    ["Her fingers tighten once around the pen.", false, false],
+  ];
+  for (const [motion, moves, event] of camera) assert.deepEqual(cameraInMotion({ motion }), { camera: moves, event }, motion);
+});
+
 test("a covered scene meets every check", () => {
   assert.deepEqual(missed(craftChecks(covered())), []);
 });
@@ -211,7 +243,7 @@ test("a covered scene meets every check", () => {
 test("narrated portraits miss on the opening, the lines, the coverage and the motion", () => {
   const report = craftChecks(portraits());
   const checks = byId(report);
-  for (const id of ["pace.median", "pace.spread", "hook.opening", "hook.dialogue", "lines.median", "lines.long", "lines.narrator", "size.wide", "size.stall", "motion.look", "motion.run", "motion.opening"]) {
+  for (const id of ["pace.median", "pace.spread", "hook.opening", "hook.dialogue", "lines.median", "lines.long", "lines.narrator", "size.wide", "size.stall", "motion.look", "motion.run", "motion.opening", "risk.setup_repeat"]) {
     assert.equal(checks[id]?.ok, false, `${id} should miss`);
   }
   assert.equal(checks["hook.card"].ok, true);
@@ -246,6 +278,13 @@ const cases = [
   ["motion.opening", "an opening of three looks, each with a camera move", (doc) => { for (const index of [0, 1, 2]) Object.assign(doc.scenes[index].data, { motion: "She stares ahead.", camera: `${doc.scenes[index].data.camera}, slow push in` }); }],
   ["motion.repeat", "the same push four times", (doc) => { for (const index of [8, 9, 10, 11]) doc.scenes[index].data.camera = `${doc.scenes[index].data.camera}, slow push in`; }],
   ["cut.dissolve", "dissolves as a habit", (doc) => doc.scenes.forEach((scene, index) => { if (index % 5 === 0) scene.data.transition = "dissolve"; })],
+  // The slideshow rows: the same face from three distances passes size.stall (three sizes) and is still one setup drawn three times.
+  ["risk.setup_repeat", "the same face three times from three distances", (doc) => { for (const [index, camera] of [[2, "Close-up"], [3, "Medium close-up"], [4, "Extreme close-up"]]) Object.assign(doc.scenes[index].data, { camera, characters: ["zhao"] }); }],
+  ["risk.decorative", "postcards of the place between the people", (doc) => doc.scenes.forEach((scene, index) => { if (index % 8 === 1) Object.assign(scene.data, { prompt: "Lanterns over the empty courtyard at dusk, mist on the stones", motion: "Mist drifts across the stones.", characters: [] }); })],
+  ["risk.motion_purpose", "the camera moving while nobody does anything", (doc) => { doc.scenes[6].data.motion = "The camera pushes in slowly on her face, her eyes narrow."; }],
+  ["risk.intent", "silent looks timed as beats", (doc) => { for (const index of [5, 13]) Object.assign(doc.scenes[index], { lines: [], action_seconds: 3, data: { ...doc.scenes[index].data, motion: "She looks down." } }); }],
+  ["risk.text_first", "cards carrying the story", (doc) => { doc.scenes = doc.scenes.flatMap((scene, index) => (index % 8 === 7 ? [scene, { id: `card${index}`, template: "chapter", data: { title: "三年後" }, lines: [{ id: `card${index}-l`, text: "三年後，她回到了這座大廳，手裡握著當年那份沒有簽的契約。" }] }] : [scene])); }],
+  ["risk.cinematic_claim", "a cinematic wish instead of a shot", (doc) => { Object.assign(doc.scenes[3].data, { camera: "", prompt: "Cinematic, epic lighting on Lin at the table" }); }],
 ];
 for (const [id, what, change] of cases) {
   test(`${id} misses on ${what}`, () => {
@@ -286,6 +325,8 @@ test("a measured edit is read with its real lengths and line times, and may hold
   assert.equal(report.measured, true);
   assert.deepEqual(report.rows.map((row) => row.seconds), [2, 3, 9]);
   const checks = byId(report);
+  assert.equal(checks["risk.decorative"].value, "0% (0)", "a measured edit without its storyboard is not read as empty");
+  assert.equal(checks["risk.intent"].value, "0% (0)", "nor its silent shots as beats with nothing in them");
   assert.equal(checks["pace.longest"].ok, false);
   assert.deepEqual(checks["pace.longest"].shots, ["C"]);
   assert.equal(checks["hook.dialogue"].value, "0.2 s");
@@ -305,6 +346,9 @@ test("the repository's drama fixture can be read", () => {
   const fixture = JSON.parse(readFileSync(new URL("./video/core/fixtures/drama/video.json", import.meta.url), "utf8"));
   const report = craftChecks(fixture);
   assert.ok(report.applies && report.shots > 0 && report.checks.length > 0);
+  assert.deepEqual(report.checks.filter((check) => check.id.startsWith("risk.") && !check.ok).map((check) => check.id), [], "the fixture is not a slideshow");
+  assert.deepEqual(report.rows.map((row) => [row.place, row.nobody]), [["forest mountain ridge", false], ["gate palace", false], ["boat sea", false], ["sea", false]], "each shot's place is its prompt's place nouns; the bird is somebody");
+  assert.deepEqual(craftChecks({ ...fixture, scenes: fixture.scenes.map((scene, index) => (index === 3 ? { ...scene, data: { ...scene.data, prompt: "close-up of a small bird, a pebble in its beak" } } : scene)) }).rows[3].place, "boat sea", "a shot that names no place is read as the previous shot's");
 });
 
 test("the command exits 0, 1 with --strict on a miss, and 2 on a file it cannot read", () => {
@@ -339,9 +383,11 @@ test("lint and the worker read the same rows through tools/video/core/craft.mjs,
   assert.ok(Math.abs(onTimeline.rows[3].seconds - checks(doc).rows[3].seconds) < 0.1, "and the estimate agrees with it to a frame or two");
   assert.deepEqual(craftProblems(doc, timeline), [], "a covered scene prints nothing");
   const problems = craftProblems(portraits());
-  assert.ok(problems.length && problems.every((problem) => problem.path === "scenes" && /^craft [a-z]+\.[a-z0-9]+: .*drama-craft\.md\)$/.test(problem.message)), JSON.stringify(problems));
+  assert.ok(problems.length && problems.every((problem) => problem.path === "scenes" && /^craft [a-z]+\.[a-z0-9_]+: .*drama-craft\.md\)$/.test(problem.message)), JSON.stringify(problems));
   const gate = craftGateProblems(checks(portraits()));
   assert.ok(gate.some((problem) => /^craft hook\.opening: /.test(problem)));
+  assert.ok(gate.some((problem) => /^craft risk\.setup_repeat: /.test(problem)), "eight portraits of one face are sent back");
+  assert.ok(["risk.setup_repeat", "risk.decorative", "risk.text_first"].every((id) => CRAFT_GATE_ROWS.includes(id)) && !["risk.intent", "risk.motion_purpose", "risk.cinematic_claim"].some((id) => CRAFT_GATE_ROWS.includes(id)), "the three structural slideshow rows gate; the three that read one line's words warn");
   assert.ok(gate.every((problem) => CRAFT_GATE_ROWS.some((id) => problem.startsWith(`craft ${id}: `))), "only the opening and coverage rows send a script back");
   assert.ok(!gate.some((problem) => /lines\.narrator/.test(problem)), "the narration share is a warning, not a gate");
   assert.deepEqual(craftGateProblems(null), []);
