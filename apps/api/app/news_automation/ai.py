@@ -53,13 +53,18 @@ marketing, event recaps, rumours, hiring, minor promotions, market-price comment
 duplicates. Write a complete Traditional Chinese GuideDocument, never HTML or Markdown.
 It must contain a summary, at least three level-2 headings, one comparison table, one
 callout and a useful FAQ. Every factual statement, date, number and quotation must appear
-in the claim ledger and point to the supplied evidence URLs; use nothing else. When the
+in the claim ledger and point to the supplied evidence URLs; use nothing else. A claim may
+cite only items whose role is evidence, with the url copied exactly; a lead_only item is
+context and is never cited. When the
 evidence comes from one website only, attribute each claim to that organisation ("X
 announced", "according to X") and never present it as independently confirmed. Explain
 practical impact to general readers. Technology news must not recommend purchases or
 provide actionable attack steps.
 Cryptocurrency news must not discuss prices, returns or trading and must contain a clear
-non-investment-advice warning. The slug is <vertical>-news-<topic>-YYYYMMDD. Do not invent
+non-investment-advice warning. The slug is <vertical>-news-<topic>-YYYYMMDD, and that date
+is event_date. event_date is never later than today, nor later than the newest date among
+the items whose role is evidence, where an item's date is its source_date or, when that is
+null, the date of retrieved_at. Do not invent
 links, quotations, dates, people, organisations or product details. Related discovery is
 provided by the dynamic topic hub; never request or modify a static index article.
 Leave document.hero null and add no image, offer or partner-link blocks: the pipeline
