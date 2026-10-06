@@ -132,7 +132,7 @@ uv run python -m app.guides.pack_cli lint --kind intel
 ## 進度（2026-10-06，第二波）
 
 - 接手：claude-opus-5-5，分支 `claude/batch-8-wave-2`。舊工作區 `mokaair-work/write8` 與 `_tools` 已不在，改用 skill `content-pipeline` 的
-  提示與腳本；新的工作區仍是 `C:/Users/x8120/mokaair-work/write8/`，狀態檔 `write8/STATE.md`。
+  提示與腳本；新的工作區在 repo 外的持久目錄 `mokaair-work/write8/`，狀態檔 `write8/STATE.md`。
 - 第二波七篇（普吉、芭達雅與格蘭島、清邁機場、清邁夜市、泰國寺廟禮儀、漢拏山、馬羅島與加波島）：sonnet 撰稿各一位，opus 查核各一位；
   第一輪事實改動：普吉 6、清邁機場 6、漢拏山 6、芭達雅 5、馬羅島 4、清邁夜市 2、寺廟禮儀 2。超過三處的五篇加上清邁夜市做了第二輪
   （普吉 2、馬羅島 3、芭達雅 0、清邁機場 2、清邁夜市 2、漢拏山 1）。裁決與規格差異在 `docs/travel-guides-batch-8/ERRATA.md`「第二波」。
