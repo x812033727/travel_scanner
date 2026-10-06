@@ -3222,7 +3222,8 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   ];
   const answers = {
     ...answersFor(slug),
-    writer: () => ({ video, claims: "c1｜Go 每月 270 元｜https://openai.com/a｜2026-09-25｜hook\n", lexicon_additions: {}, shorts: shortsDraft }),
+    // A prompt fix returns the script as it is (the number is what matters here); the draft comes with its Shorts.
+    writer: (body) => (body.payload.fix ? { video: body.payload.video } : { video, claims: "c1｜Go 每月 270 元｜https://openai.com/a｜2026-09-25｜hook\n", lexicon_additions: {}, shorts: shortsDraft }),
     // The listener sets a pause of its own: the tool clears it again when the edit is saved.
     listener: (body) => {
       const edited = structuredClone(body.payload.video);
@@ -3237,6 +3238,10 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   const docFile = path.join(box.root, "docs", "videos", slug, "video.json");
   const lexicon = () => readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
   const runs = [];
+  let keyframeRuns = 0;
+  // What keyframes leaves for a shot whose prompt cannot fit the image model beside the look
+  // (media/keyframes.mjs): the number of characters it may have, which the writer is told.
+  const PODIUM_BUDGET_PROBLEM = "prompt is 900 characters; the minimax budget for this shot is 420 (style, camera and avoidance text take the rest) → shorten the prompt to at most 420 characters";
   mkdirSync(path.join(box.work, "_music"), { recursive: true });
   writeFileSync(path.join(box.work, "_music", "bed.mp3"), "bed bytes");
   ctx.runCommand = async (command, runCtx) => {
@@ -3259,6 +3264,12 @@ test("illustrated slides walk the picture, storyboard and music steps between th
         write(file, { picture: scene.id });
         return [scene.id, { file, sha256: sha(path.join(workdir, file)), needs_review: false, judge: { overall: 8, problems: [] } }];
       }));
+      // The first run cannot draw the opener: its prompt is over the image model's budget.
+      if (keyframeRuns++ === 0) {
+        shots.podium = { takes: [], needs_review: true, prompt_budget_chars: 420, problems: [PODIUM_BUDGET_PROBLEM] };
+        write("keyframes/manifest.json", { look_hash: lookOf(current), pictures_hash: picturesHash(current), shots });
+        return { code: 1, out: `ERROR podium: ${PODIUM_BUDGET_PROBLEM}\nfix the prompts of podium and run keyframes again` };
+      }
       write("keyframes/manifest.json", { look_hash: lookOf(current), pictures_hash: picturesHash(current), shots });
       return { code: 0, out: "5 keyframes" };
     }
@@ -3311,6 +3322,14 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   assert.equal(automatedVideos(box.work)[0].verified, true, "with its pause cleared the listener's script is the checked one");
   assert.match(await automation.step(), /narration synthesized/);
   assert.match(await automation.step(), /narration checked \(Jev passed every line\) and sent for review/);
+  // The opener's prompt is over the image model's budget: the writer is told the number, for the
+  // shot and for the fix as a whole, and keyframes runs again on the rewritten script.
+  assert.match(await automation.step(), /keyframes prompts fixed \(round 1\) for podium; keyframes runs again next/);
+  const budgetFix = site.calls.run.filter((call) => call.stage === "writer").at(-1).payload.fix;
+  assert.equal(budgetFix.kind, "keyframes");
+  assert.equal(budgetFix.prompt_budget_chars, 420, "the tightest budget among the targets that carry one");
+  assert.deepEqual(budgetFix.targets, [{ id: "podium", problems: [PODIUM_BUDGET_PROBLEM], prompt_budget_chars: 420 }]);
+  assert.deepEqual(budgetFix.problems, [PODIUM_BUDGET_PROBLEM]);
   assert.match(await automation.step(), /keyframes done/);
   assert.match(await automation.step(), /storyboard sent to \/admin\/videos/);
   assert.match(await automation.step(), /the owner approved the storyboard/);
@@ -3323,7 +3342,7 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   assert.match(await automation.step(), /captions written/);
   const status = await pipelineStatus({ slug, root: box.root, workdir });
   assert.equal(status.next.id, "final video approved");
-  assert.deepEqual(runs.filter((run) => /^(tts|keyframes|render|music|assemble|captions) /.test(run)).map((run) => run.split(" ")[0]), ["tts", "keyframes", "render", "music", "assemble", "captions"]);
+  assert.deepEqual(runs.filter((run) => /^(tts|keyframes|render|music|assemble|captions) /.test(run)).map((run) => run.split(" ")[0]), ["tts", "keyframes", "keyframes", "render", "music", "assemble", "captions"]);
 
   // A narration recorded before audio evidence existed, script unchanged. Its takes carry no
   // current key (what is sent for synthesis changed since), so a refresh could only refuse:
