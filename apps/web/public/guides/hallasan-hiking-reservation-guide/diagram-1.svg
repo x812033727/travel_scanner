@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans KR','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">漢拏山登頂：從搶名額到入山的時間軸 / Hallasan summit: from booking to the trailhead</title>
+  <desc id="desc">一條由左到右的時間軸，四個節點。第一個節點是前一個月第一個上班日 09:00 名額開放，每次最多 4 人、一週 1 次；第二個節點是預約完成，QR 碼寄到電話或電子郵件，每人一個 QR 碼；第三個節點是當天 05:00 起入山，查 QR 碼加證件；第四個節點是冬季 11:30、夏季 12:30 管制所關門。時間軸上方的方框列出兩個入山時段的名額：05:00–08:00 城板岳 800、觀音寺 400，08:01–11:30 城板岳 200、觀音寺 100。時間軸下方提醒：訂了沒去又沒取消，第一次 3 個月、第二次 1 年不能預約。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0D6B68"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">漢拏山登頂：從搶名額到入山</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Hallasan summit: from booking to the trailhead</text>
+
+  <!-- quota box -->
+  <rect x="470" y="124" width="660" height="124" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="158" font-size="18" fill="#5C6B6B" text-anchor="middle">入山時段與名額（人）</text>
+  <text x="800" y="196" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">05:00–08:00　城板岳 800／觀音寺 400</text>
+  <text x="800" y="230" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">08:01–11:30　城板岳 200／觀音寺 100</text>
+  <line x1="960" y1="248" x2="960" y2="356" stroke="#2F6F9F" stroke-width="3" stroke-dasharray="8 6"/>
+
+  <!-- timeline -->
+  <line x1="100" y1="380" x2="1500" y2="380" stroke="#0D6B68" stroke-width="6" marker-end="url(#arrow)"/>
+
+  <g>
+    <circle cx="280" cy="380" r="19" fill="#0D6B68"/>
+    <text x="280" y="386" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">01</text>
+    <line x1="280" y1="399" x2="280" y2="432" stroke="#0D6B68" stroke-width="3"/>
+    <rect x="130" y="432" width="300" height="230" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+    <text x="280" y="476" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">前一個月第一個上班日</text>
+    <text x="280" y="512" font-size="26" font-weight="700" fill="#0D6B68" text-anchor="middle">09:00</text>
+    <text x="280" y="556" font-size="22" fill="#102A2B" text-anchor="middle">名額開放</text>
+    <text x="280" y="612" font-size="17" fill="#5C6B6B" text-anchor="middle">一次最多 4 人、一週 1 次</text>
+  </g>
+
+  <g>
+    <circle cx="620" cy="380" r="19" fill="#0D6B68"/>
+    <text x="620" y="386" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">02</text>
+    <line x1="620" y1="399" x2="620" y2="432" stroke="#0D6B68" stroke-width="3"/>
+    <rect x="470" y="432" width="300" height="230" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+    <text x="620" y="476" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">預約完成</text>
+    <text x="620" y="520" font-size="22" font-weight="700" fill="#0D6B68" text-anchor="middle">QR 碼寄到電話</text>
+    <text x="620" y="552" font-size="22" font-weight="700" fill="#0D6B68" text-anchor="middle">或電子郵件</text>
+    <text x="620" y="612" font-size="17" fill="#5C6B6B" text-anchor="middle">每人一個 QR</text>
+  </g>
+
+  <g>
+    <circle cx="960" cy="380" r="19" fill="#0D6B68"/>
+    <text x="960" y="386" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">03</text>
+    <line x1="960" y1="399" x2="960" y2="432" stroke="#0D6B68" stroke-width="3"/>
+    <rect x="810" y="432" width="300" height="230" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+    <text x="960" y="476" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">當天</text>
+    <text x="960" y="512" font-size="26" font-weight="700" fill="#0D6B68" text-anchor="middle">05:00 起</text>
+    <text x="960" y="556" font-size="22" fill="#102A2B" text-anchor="middle">入山</text>
+    <text x="960" y="612" font-size="17" fill="#5C6B6B" text-anchor="middle">查 QR 碼加證件</text>
+  </g>
+
+  <g>
+    <circle cx="1300" cy="380" r="19" fill="#B8442D"/>
+    <text x="1300" y="386" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">04</text>
+    <line x1="1300" y1="399" x2="1300" y2="432" stroke="#B8442D" stroke-width="3"/>
+    <rect x="1150" y="432" width="300" height="230" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+    <text x="1300" y="476" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">冬季 11:30</text>
+    <text x="1300" y="512" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">夏季 12:30</text>
+    <text x="1300" y="556" font-size="22" font-weight="700" fill="#B8442D" text-anchor="middle">管制所關門</text>
+    <text x="1300" y="612" font-size="17" fill="#5C6B6B" text-anchor="middle">過了就不能再入山</text>
+  </g>
+
+  <!-- penalty bar -->
+  <rect x="330" y="720" width="940" height="72" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="800" y="764" font-size="22" font-weight="700" fill="#B8442D" text-anchor="middle">訂了沒去又沒取消：第一次 3 個月、第二次 1 年不能預約</text>
+
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

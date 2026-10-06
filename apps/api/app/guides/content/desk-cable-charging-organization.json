@@ -51,7 +51,7 @@
         },
         {
           "type": "paragraph",
-          "text": "USB-IF 的線材資訊把支援功率與資料速度分開標示，提醒我們介面外形相同不代表能力相同。買線或整理時，要核對裝置需求、線材標示和製造商說明，不只看插頭能不能插入。這篇不推薦特定功率或型號，因為合適規格取決於實際裝置與用途。"
+          "text": "USB-IF 的線材資訊把支援功率與資料速度分開標示，提醒我們介面外形相同不代表能力相同。買線或整理時，要核對裝置需求、線材標示和製造商說明，不只看插頭能不能插入。這裡不推薦特定功率或型號，因為合適規格取決於實際裝置與用途。"
         },
         {
           "type": "image",
@@ -114,6 +114,54 @@
         {
           "type": "heading",
           "level": 2,
+          "text": "看懂 USB-C 線上的標誌，再決定放哪一區"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩端都是 USB-C 的線，外觀幾乎一樣，能力卻可能差很多。整理時可以先找線上的認證標誌：通過 USB-IF 認證的 USB-C 對 USB-C 線，必須標示 60W 或 240W 的功率標誌；除了只支援 USB 2.0 速度的線，也要標出支援的資料速度，例如同時寫著 20Gbps 與 60W 的組合標誌。看懂這兩個數字，就能先把線分到大致的位置。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "線上看到的標示",
+            "可以確定的事",
+            "建議放的區域"
+          ],
+          "rows": [
+            [
+              "功率與資料速度都有，例如 20Gbps／60W",
+              "這條線的充電與傳輸能力",
+              "依標示分到充電或傳輸用途"
+            ],
+            [
+              "只有功率標誌",
+              "充電能力；依規則，沒標速度的認證線是 USB 2.0 等級",
+              "充電區，不拿來接需要高速傳輸的裝置"
+            ],
+            [
+              "沒有任何標示",
+              "無法從外觀判斷",
+              "待確認區，查到產品資料前不當成高功率或高速線"
+            ],
+            [
+              "一端不是 USB 接頭，或固定在裝置上",
+              "不在 USB-IF 線材認證範圍內",
+              "跟著裝置收納，規格查裝置說明"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "標誌說的是線本身的能力。實際能充多快、傳多快，還要看兩端的裝置和充電器支援什麼；換一條認證線，也不會讓裝置本身的能力變高。查到的規格寫進標籤或備忘錄，下次就不必再翻線身找小字。家裡有人新買線時，也可以順手先看標誌，再收進對應的區域，待確認區才不會越堆越多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "沒有標誌只代表無法從外觀確認能力，不一定代表線有問題；反過來，外觀破損或接頭鬆動的線，即使有標誌也一樣先停用。待確認區可以每隔一段時間清一次：查得到產品資料的補上標籤、歸回日用區，查不到又一直沒用到的，就按所在地的回收方式處理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
           "text": "讓走線配合每天的動作"
         },
         {
@@ -161,7 +209,7 @@
         {
           "title": "USB-IF：線材與接頭的功率、傳輸能力標示",
           "url": "https://www.usb.org/cable_connector",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-06"
         }
       ]
     },
@@ -272,6 +320,54 @@
         {
           "type": "heading",
           "level": 2,
+          "text": "Read the logos on a USB-C cable before deciding where it goes"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cables with USB-C on both ends look almost identical but can differ a lot in capability. When sorting, look for the certification logos on the cable first. A USB-C to USB-C cable certified by USB-IF must carry a power logo of either 60W or 240W. Apart from cables that only support USB 2.0 speed, it must also show the data rate it supports, for example a combined logo that reads 20Gbps and 60W. Once you can read those two numbers, you can sort each cable into a rough area straight away."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Marking on the cable",
+            "What you can be sure of",
+            "Where to keep it"
+          ],
+          "rows": [
+            [
+              "Both power and data rate, such as 20Gbps/60W",
+              "The cable's charging and data capability",
+              "Sort it by the marking into charging or data use"
+            ],
+            [
+              "A power logo only",
+              "Its charging capability; under the rules, a certified cable without a speed marking is USB 2.0 class",
+              "Charging area, not for devices that need fast data transfer"
+            ],
+            [
+              "No marking at all",
+              "Nothing can be judged from its appearance",
+              "Unconfirmed area; until you find the product details, don't treat it as high-power or high-speed"
+            ],
+            [
+              "One end is not a USB connector, or the cable is attached to a device",
+              "Outside USB-IF's cable certification",
+              "Store it with the device and check the device's documentation for specs"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "The logo describes the cable itself. How fast something actually charges or transfers data also depends on what the devices and charger at each end support, and switching to a certified cable does not raise a device's own capability. Write the specs you find on the label or in a note, so you don't have to search the cable for small print next time. When someone at home buys a new cable, check its logo before putting it in the matching area, so the unconfirmed area doesn't keep growing."
+        },
+        {
+          "type": "paragraph",
+          "text": "A missing logo only means you can't confirm a cable's capability by looking at it; it doesn't necessarily mean the cable is faulty. Conversely, take a cable out of use if it looks damaged or has a loose connector, even if it carries a logo. Clear the unconfirmed area every so often: cables whose product details you can find get a label and go back to the everyday area, while ones you still can't identify and never use can go through your local recycling route."
+        },
+        {
+          "type": "heading",
+          "level": 2,
           "text": "Route cables to match what you actually do each day"
         },
         {
@@ -319,7 +415,7 @@
         {
           "title": "USB-IF: power and data capability labeling for cables and connectors",
           "url": "https://www.usb.org/cable_connector",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-06"
         }
       ]
     },
@@ -429,6 +525,54 @@
         {
           "type": "heading",
           "level": 2,
+          "text": "USB-C ケーブルのロゴを読んでから置き場所を決める"
+        },
+        {
+          "type": "paragraph",
+          "text": "両端が USB-C のケーブルは見た目がほとんど同じでも、性能は大きく違うことがあります。整理するときは、まずケーブルに表示された認証ロゴを探しましょう。USB-IF の認証を受けた USB-C to USB-C ケーブルには、60W か 240W の電力ロゴの表示が必要です。USB 2.0 の速度にしか対応しないケーブルを除き、対応するデータ転送速度も表示しなければならず、たとえば 20Gbps と 60W を一緒に示す組み合わせロゴがあります。この二つの数字が読めれば、ケーブルをおおまかな置き場所へすぐに分けられます。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "ケーブルの表示",
+            "確実に分かること",
+            "置く場所の目安"
+          ],
+          "rows": [
+            [
+              "電力とデータ速度の両方（例：20Gbps／60W）",
+              "そのケーブルの充電性能と転送性能",
+              "表示に合わせて充電用か転送用に分ける"
+            ],
+            [
+              "電力ロゴだけ",
+              "充電性能。規則上、速度表示のない認証ケーブルは USB 2.0 クラス",
+              "充電エリア。高速転送が必要な機器には使わない"
+            ],
+            [
+              "表示が何もない",
+              "見た目からは判断できない",
+              "要確認エリア。製品情報が分かるまで高出力・高速用として扱わない"
+            ],
+            [
+              "片側が USB 端子ではない、または機器に固定されている",
+              "USB-IF のケーブル認証の対象外",
+              "機器と一緒に収納し、仕様は機器の説明書で確認する"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "ロゴが示すのはケーブル自体の性能です。実際にどれだけ速く充電・転送できるかは、両端の機器や充電器が何に対応しているかでも変わります。認証ケーブルに替えても、機器そのものの性能が上がるわけではありません。調べた仕様はラベルかメモに書いておけば、次回ケーブルの小さな文字を探さずに済みます。家族が新しいケーブルを買ったときも、先にロゴを確認してから該当するエリアにしまえば、要確認エリアがふくらみ続けることはありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ロゴがないことは、見た目から性能を確認できないというだけで、ケーブルに問題があるとは限りません。逆に、外観が傷んでいたり端子がぐらついたりするケーブルは、ロゴがあっても使用をやめます。要確認エリアはときどき見直しましょう。製品情報が分かったものはラベルを付けて普段使いのエリアへ戻し、分からないまま一度も使わなかったものは、お住まいの地域の回収方法で処分します。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
           "text": "毎日の動きに合わせて配線する"
         },
         {
@@ -476,7 +620,7 @@
         {
           "title": "USB-IF：ケーブルとコネクタの電力・データ転送能力の表示",
           "url": "https://www.usb.org/cable_connector",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-06"
         }
       ]
     },
@@ -586,6 +730,54 @@
         {
           "type": "heading",
           "level": 2,
+          "text": "USB-C 케이블의 로고를 읽고 나서 둘 곳 정하기"
+        },
+        {
+          "type": "paragraph",
+          "text": "양쪽 끝이 모두 USB-C인 케이블은 겉모습이 거의 같아도 성능은 크게 다를 수 있습니다. 정리할 때는 먼저 케이블에 표시된 인증 로고를 찾아보세요. USB-IF 인증을 받은 USB-C to USB-C 케이블에는 60W 또는 240W 전력 로고가 반드시 표시됩니다. USB 2.0 속도만 지원하는 케이블을 제외하면 지원하는 데이터 속도도 표시해야 하며, 예를 들어 20Gbps와 60W를 함께 적은 결합 로고가 있습니다. 이 두 숫자를 읽을 수 있으면 케이블을 대략적인 구역으로 바로 나눌 수 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "케이블에 보이는 표시",
+            "확실히 알 수 있는 것",
+            "둘 구역"
+          ],
+          "rows": [
+            [
+              "전력과 데이터 속도가 모두 있음(예: 20Gbps/60W)",
+              "그 케이블의 충전·전송 성능",
+              "표시에 따라 충전용 또는 전송용으로 분류"
+            ],
+            [
+              "전력 로고만 있음",
+              "충전 성능. 규정상 속도 표시가 없는 인증 케이블은 USB 2.0 등급",
+              "충전 구역. 고속 전송이 필요한 기기에는 쓰지 않음"
+            ],
+            [
+              "아무 표시도 없음",
+              "겉모습으로는 판단할 수 없음",
+              "확인 필요 구역. 제품 정보를 찾기 전까지 고출력·고속 케이블로 쓰지 않음"
+            ],
+            [
+              "한쪽이 USB 커넥터가 아니거나 기기에 고정된 케이블",
+              "USB-IF 케이블 인증 대상이 아님",
+              "기기와 함께 보관하고 규격은 기기 설명서에서 확인"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "로고가 알려 주는 것은 케이블 자체의 성능입니다. 실제로 얼마나 빨리 충전하고 전송하는지는 양쪽 기기와 충전기가 무엇을 지원하는지에 따라서도 달라지며, 인증 케이블로 바꾼다고 기기 자체의 성능이 올라가지는 않습니다. 찾아본 규격은 라벨이나 메모에 적어 두면 다음에 케이블의 작은 글씨를 찾지 않아도 됩니다. 가족이 새 케이블을 샀을 때도 먼저 로고를 확인하고 맞는 구역에 넣으면 확인 필요 구역이 계속 늘어나지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "로고가 없다는 것은 겉모습으로 성능을 확인할 수 없다는 뜻일 뿐, 케이블에 문제가 있다는 뜻은 아닙니다. 반대로 겉이 손상되었거나 커넥터가 헐거운 케이블은 로고가 있어도 사용을 멈춥니다. 확인 필요 구역은 가끔 정리하세요. 제품 정보를 찾은 케이블은 라벨을 붙여 일상 사용 구역으로 돌려놓고, 끝내 알 수 없고 한 번도 쓰지 않은 케이블은 거주 지역의 재활용 방식에 따라 처리합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
           "text": "배선을 매일의 동작에 맞추기"
         },
         {
@@ -633,7 +825,7 @@
         {
           "title": "USB-IF: 케이블과 커넥터의 전력·전송 성능 표시",
           "url": "https://www.usb.org/cable_connector",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-06"
         }
       ]
     },
@@ -680,7 +872,7 @@
         },
         {
           "type": "paragraph",
-          "text": "USB-IF 的线材信息把支持的功率与数据速度分开标示，提醒我们接口外形相同不代表能力相同。买线或整理时，要核对设备需求、线材标示和制造商说明，不能只看插头能不能插入。这篇文章不推荐特定功率或型号，因为合适的规格取决于实际设备与用途。"
+          "text": "USB-IF 的线材信息把支持的功率与数据速度分开标示，提醒我们接口外形相同不代表能力相同。买线或整理时，要核对设备需求、线材标示和制造商说明，不能只看插头能不能插入。这里不推荐特定功率或型号，因为合适的规格取决于实际设备与用途。"
         },
         {
           "type": "image",
@@ -744,6 +936,54 @@
         {
           "type": "heading",
           "level": 2,
+          "text": "看懂 USB-C 线上的标志，再决定放在哪一区"
+        },
+        {
+          "type": "paragraph",
+          "text": "两端都是 USB-C 的线，外观几乎一样，能力却可能相差很大。整理时可以先找线上的认证标志：通过 USB-IF 认证的 USB-C 对 USB-C 线，必须标示 60W 或 240W 的功率标志；除了只支持 USB 2.0 速度的线，也要标出支持的数据速度，例如同时写着 20Gbps 与 60W 的组合标志。看懂这两个数字，就能先把线分到大致的位置。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "线上看到的标示",
+            "可以确定的事",
+            "建议放的区域"
+          ],
+          "rows": [
+            [
+              "功率与数据速度都有，例如 20Gbps／60W",
+              "这条线的充电与传输能力",
+              "按标示分到充电或传输用途"
+            ],
+            [
+              "只有功率标志",
+              "充电能力；按规定，没标速度的认证线是 USB 2.0 级别",
+              "充电区，不用来连接需要高速传输的设备"
+            ],
+            [
+              "没有任何标示",
+              "无法从外观判断",
+              "待确认区，查到产品资料前不当作高功率或高速线"
+            ],
+            [
+              "一端不是 USB 接头，或固定在设备上",
+              "不在 USB-IF 线材认证范围内",
+              "跟设备一起收纳，规格查设备说明"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "标志说明的是线本身的能力。实际能充多快、传多快，还要看两端的设备和充电器支持什么；换一条认证线，也不会让设备本身的能力变高。查到的规格写进标签或备忘录，下次就不必再翻线身找小字。家里有人新买线时，也可以顺手先看标志，再收进对应的区域，待确认区才不会越堆越多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "没有标志只代表无法从外观确认能力，不一定代表线有问题；反过来，外观破损或接头松动的线，即使有标志也要先停用。待确认区可以隔一段时间清一次：查得到产品资料的贴上标签、放回常用区，查不到又一直没用过的，就按所在地的回收方式处理。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
           "text": "让走线配合每天的动作"
         },
         {
@@ -791,7 +1031,7 @@
         {
           "title": "USB-IF：线材与接头的功率、传输能力标示",
           "url": "https://www.usb.org/cable_connector",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-06"
         }
       ]
     }
