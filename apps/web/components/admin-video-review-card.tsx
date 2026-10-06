@@ -396,6 +396,26 @@ export function JudgeLine({ value }: { value: unknown }) {
   return <span className="text-sm leading-6 text-[var(--muted)]">{t("judgeScore", { score: judge.overall })}{problems.length > 0 && `：${problems.join("；")}`}</span>;
 }
 
+/**
+ * The pictures of an illustrated video that the worker kept with the judge's remarks once their
+ * prompt fixes were spent (tools/video/media/keyframes.mjs --accept-best), as a review lists them
+ * (tools/video/review/sync.mjs): a storyboard in payload.accepted as { id, overall, problems }, a
+ * final cut in payload.accepted_pictures as { id, problems }. Anything else there (no list, an
+ * entry that is no object, one with no id, a problem that is no text) is left out.
+ */
+type KeptPicture = { id: string; overall: number | null; problems: string[] };
+const remarksOf = (value: unknown) => list(value).map(text).filter(Boolean);
+const keptPictures = (value: unknown): KeptPicture[] => list(value).map(record)
+  .map((entry) => ({ id: text(entry.id), overall: number(entry.overall), problems: remarksOf(entry.problems) }))
+  .filter((entry) => entry.id);
+
+/** What the judge said of a kept picture: its score when there is one, then the faults it named. */
+function KeptRemarks({ picture }: { picture: KeptPicture }) {
+  const t = useTranslations("admin.videoReviews");
+  const said = [picture.overall === null ? "" : t("judgeScore", { score: picture.overall }), picture.problems.join("；")].filter(Boolean);
+  return <span className="text-sm leading-6 text-[var(--muted)]">{said.length > 0 ? said.join("：") : t("keptNoRemarks")}</span>;
+}
+
 // A picture of a video that is sixteen by nine is cropped to that; one of a Short is shown whole.
 const pictureClass = (vertical: boolean) => (vertical ? "mx-auto aspect-[9/16] w-full max-w-[14rem] rounded-xl bg-black object-contain" : "aspect-video w-full rounded-xl object-cover");
 
@@ -438,20 +458,37 @@ function StoryboardBody({ slug, review, vertical }: { slug: string; review: Revi
     .sort((a, b) => a.role.localeCompare(b.role, "en", { numeric: true }))
     .map(file => ({ file, shots: metadata.filter(page => text(page.role) === file.role).flatMap(page => list(page.shots).map(text)) }));
   const sheetLabel = (index: number) => sheets.length === 1 ? t("contactSheet") : `${t("contactSheet")} ${index + 1} / ${sheets.length}`;
+  // A shot kept with the judge's remarks is named in payload.accepted and carries accepted: true
+  // itself; either says so. One still waiting for a prompt fix (needs_review) is not kept, whatever
+  // else is said of it. The score and the remarks are the list's, else the shot's own verdict.
+  const accepted = new Map(keptPictures(review.payload.accepted).map((picture) => [picture.id, picture]));
+  const rows = shots.map((shot) => {
+    const id = text(shot.id);
+    const waiting = shot.needs_review === true;
+    const named = accepted.get(id);
+    const verdict = record(shot.judge);
+    const kept: KeptPicture | null = !waiting && (named !== undefined || shot.accepted === true)
+      ? { id, overall: named?.overall ?? number(verdict.overall), problems: named?.problems.length ? named.problems : remarksOf(verdict.problems) }
+      : null;
+    return { shot, id, waiting, kept };
+  });
+  const keptCount = rows.filter((row) => row.kept).length;
   return <div className="grid gap-4">
     <p className="leading-7"><strong>{t("checks")}</strong> <JudgeLine value={review.payload.judge} /></p>
+    {keptCount > 0 && <p className="text-sm font-semibold leading-6 text-sky-900">{t("storyboardKept", { count: keptCount })}</p>}
     {duplicates.length > 0 && <p className="text-sm leading-6 text-[var(--muted)]">{t("lookAlike", { pairs: duplicates.map((pair) => `${text(pair.a)}／${text(pair.b)}`).join("、") })}</p>}
-    {shots.length > 0 && <ol className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">{shots.map((shot, index) => {
+    {rows.length > 0 && <ol className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">{rows.map(({ shot, id, waiting, kept }, index) => {
       const src = fileUrl(slug, fileFor(review, text(shot.file_role)));
-      const page = sheets.findIndex(sheet => sheet.shots.includes(text(shot.id)));
-      return <li key={text(shot.id) || index} className={`grid gap-2 rounded-2xl border p-3 ${shot.needs_review === true ? "border-amber-600" : "border-[var(--line)]"}`}>
+      const page = sheets.findIndex(sheet => sheet.shots.includes(id));
+      return <li key={id || index} className={`grid gap-2 rounded-2xl border p-3 ${waiting ? "border-amber-600" : kept ? "border-sky-600" : "border-[var(--line)]"}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        {src && <img src={src} alt={text(shot.id)} className={pictureClass(vertical)} loading="lazy" />}
+        {src && <img src={src} alt={id} className={pictureClass(vertical)} loading="lazy" />}
         {!src && page >= 0 && <a href={fileUrl(slug, sheets[page].file)} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[var(--teal)] underline underline-offset-4">{sheetLabel(page)}</a>}
-        <span className="font-bold">{index + 1}. {text(shot.id)}{text(shot.chapter) && <span className="text-sm font-normal text-[var(--muted)]"> · {text(shot.chapter)}</span>}{typeof shot.seconds === "number" && <span className="text-sm font-normal text-[var(--muted)]"> · {t("seconds", { seconds: shot.seconds })}</span>}</span>
-        {shot.needs_review === true && <span className="text-sm font-semibold text-amber-800">{t("shotNeedsReview")}</span>}
+        <span className="font-bold">{index + 1}. {id}{text(shot.chapter) && <span className="text-sm font-normal text-[var(--muted)]"> · {text(shot.chapter)}</span>}{typeof shot.seconds === "number" && <span className="text-sm font-normal text-[var(--muted)]"> · {t("seconds", { seconds: shot.seconds })}</span>}</span>
+        {waiting && <span className="text-sm font-semibold text-amber-800">{t("shotNeedsReview")}</span>}
+        {kept && <span className="flex flex-wrap items-center gap-2 text-sm font-semibold text-sky-900"><AdminStatusPill status="queued">{t("shotKept")}</AdminStatusPill>{t("shotKeptHelp")}</span>}
         <span className="text-sm leading-6">{text(shot.prompt)}</span>
-        <JudgeLine value={shot.judge} />
+        {kept ? <KeptRemarks picture={kept} /> : <JudgeLine value={shot.judge} />}
       </li>;
     })}</ol>}
     {sheets.map((sheet, index) => <details key={sheet.file.role} className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{sheetLabel(index)}</summary>
@@ -481,22 +518,27 @@ function AudioBody({ slug, review }: { slug: string; review: Review }) {
   </div>;
 }
 
+/** The items of a check report that name what they checked; none for anything that is not a report. */
+const checkItems = (report: unknown) => list(record(report).items).map(record).filter((item) => text(item.id));
+
 /**
  * A check report as the worker sends it (docs/videos/HANDS-OFF.md, the automatic quality check): a final review's
  * payload.qa over the eleven ids assemble, render, narration, pace, captions, metadata, facts,
  * links, thumbnail, policy, disclosure, and a publish review's payload.package over files,
  * descriptions, captions, disclosure. Shape: { ok, final_sha256, items: [{ id, ok, detail,
  * warnings? }] }. The failed items come first with their detail; warnings sit under their item.
+ * `reference` marks a report nothing is approved from: a final cut sent for the owner's own review
+ * carries its report as payload.manual_review_qa, for the owner to read beside the cut.
  */
-export function CheckItems({ report, title }: { report: unknown; title: string }) {
+export function CheckItems({ report, title, reference = false }: { report: unknown; title: string; reference?: boolean }) {
   const t = useTranslations("admin.videoReviews");
-  const items = list(record(report).items).map(record).filter((item) => text(item.id));
+  const items = checkItems(report);
   if (items.length === 0) return null;
   const failed = items.filter((item) => item.ok !== true);
   const passed = items.filter((item) => item.ok === true);
   const label = (id: string) => (t.has(`qaItems.${id}`) ? t(`qaItems.${id}`) : id);
   return <div className="grid gap-2" aria-label={title}>
-    <p className="flex flex-wrap items-center gap-2 font-bold">{title}<AdminStatusPill status={failed.length ? "failed" : "ok"}>{failed.length ? t("qaFailedCount", { count: failed.length }) : t("qaAllPassed", { count: items.length })}</AdminStatusPill></p>
+    <p className="flex flex-wrap items-center gap-2 font-bold">{title}<AdminStatusPill status={failed.length ? "failed" : "ok"}>{failed.length ? t("qaFailedCount", { count: failed.length }) : t("qaAllPassed", { count: items.length })}</AdminStatusPill>{reference && <AdminStatusPill status="inactive">{t("qaReferenceOnly")}</AdminStatusPill>}</p>
     <ul className="grid gap-1 text-sm leading-6">{[...failed, ...passed].map((item) => {
       const id = text(item.id);
       const ok = item.ok === true;
@@ -750,7 +792,20 @@ function FinalBody({ slug, review, mp4Gone, vertical }: { slug: string; review: 
   // What an experiment's claims rest on (tools/video/shorts/push.mjs names each file evidence_<path>).
   const evidence = review.files.filter((file) => file.role.startsWith("evidence_"));
   const titles = list(review.payload.titles).map(text).filter(Boolean);
+  // A cut sent for the owner's own review is never approved on arrival (tools/video/review/sync.mjs:
+  // pictures kept with the judge's remarks, renewed branding, an explicit request; the server, on
+  // an owner's renewal). It says so in payload.manual_review with its reason, carries its quality
+  // report as manual_review_qa in place of the qa an approval reads, and lists the kept pictures
+  // in accepted_pictures.
+  const manual = review.payload.manual_review === true;
+  const manualReason = typeof review.payload.manual_review_reason === "string" ? review.payload.manual_review_reason.trim() : "";
+  const kept = keptPictures(review.payload.accepted_pictures);
+  const referenceReport = checkItems(review.payload.qa).length === 0 ? review.payload.manual_review_qa : null;
   return <div className="grid gap-4">
+    {manual && <section className="grid gap-1 rounded-xl bg-amber-50 p-3 text-sm leading-6 text-amber-900" aria-label={t("manualReview")}>
+      <p className="font-bold">{t("manualReview")}</p>
+      {manualReason && <p className="min-w-0 whitespace-pre-wrap break-words">{manualReason}</p>}
+    </section>}
     {video && vertical && <ShortsPlayer src={video} poster={poster} />}
     {video && !vertical && <label className="grid gap-2 font-bold">{t("preview")}<video controls preload="metadata" src={video} poster={poster} className="aspect-video w-full rounded-xl bg-black" /></label>}
     {hasVariants && <ul className="grid grid-cols-3 gap-2">{variants.map(({ letter, src }) => <li key={letter} className="grid gap-1 text-center text-sm font-bold">
@@ -759,7 +814,15 @@ function FinalBody({ slug, review, mp4Gone, vertical }: { slug: string; review: 
       <img src={src} alt={t("downloadLocaleThumbnail", { locale: letter })} className="aspect-video w-full rounded-lg object-cover" loading="lazy" />{letter}
     </li>)}</ul>}
     {titles.length > 0 && <div><p className="font-bold">{t("titles")}</p><ol className="mt-2 grid gap-1 text-sm leading-6">{titles.map((title, index) => <li key={title} className="flex flex-wrap items-center gap-2"><span>{title}</span><AdminStatusPill status={index === 0 ? "active" : "inactive"}>{index === 0 ? t("titleInUse") : t("titleSpare")}</AdminStatusPill></li>)}</ol></div>}
+    {kept.length > 0 && <section className="grid gap-2 rounded-2xl border border-sky-200 bg-sky-50 p-4 text-sm leading-6 text-sky-950" aria-label={t("keptPictures", { count: kept.length })}>
+      <p className="font-bold">{t("keptPictures", { count: kept.length })}</p>
+      <p>{t("keptPicturesHelp")}</p>
+      <ul className="grid max-h-[24rem] gap-1 overflow-y-auto">{kept.map((picture, index) => <li key={`${picture.id}:${index}`} className="min-w-0 break-words">
+        <strong className="font-mono">{picture.id}</strong>{" · "}{picture.problems.length > 0 ? picture.problems.join("；") : t("keptNoRemarks")}
+      </li>)}</ul>
+    </section>}
     <CheckItems report={review.payload.qa} title={t("qaTitle")} />
+    <CheckItems report={referenceReport} title={t("qaTitle")} reference />
     <ShortsEvidence files={evidence} urlOf={(file) => fileUrl(slug, file)} />
     {Object.keys(checks).length > 0 && <p className="leading-7"><strong>{t("checks")}</strong>{" "}{checks.ok === true ? t("checksOk") : problems.join("; ")}</p>}
     {chapters.length > 0 && <div><p className="font-bold">{t("chapters")}</p><ol className="mt-2 grid gap-1 text-sm">{chapters.map((chapter, index) => <li key={index}><span className="font-mono">{text(chapter.time)}</span> {text(chapter.title)}</li>)}</ol></div>}

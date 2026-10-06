@@ -447,6 +447,16 @@ lint（`core/drama.mjs` `cueCoverageProblems`，經 `core/lint.mjs` 進警告）
 
 部署後要驗的事：三支卡在樣張的影片站主按重試後，工人日誌有 `style plate: skipped`、判定改用文字版；一支修兩輪仍沒過的影片日誌有 `N pictures kept with the judge's remarks after 2 prompt fixes`、`auto.json` 有 `accepted_pictures`、分鏡自動核准、成片卡片 summary 列出保留的 shot 並等站主。
 
+### 同日後續：卡片列出保留的圖、summary 不超過 500 字、只有插圖影片能保留
+
+站主 10-06 的決定：有保留圖的成片一律不自動核准，審核卡片要把保留的圖列出來。上面那一版只把它們寫進一行 summary，而且每個 shot id 都寫，圖一多就會被站台退件。
+
+| 改了什麼 | 怎麼做 | 在哪裡 |
+| --- | --- | --- |
+| summary 不會被站台退件 | 伺服器的 `ReviewIn.summary` 上限 500 字（算碼位），超過回 422，`review-push` 以 lint 碼結束，工人把影片卡住（`submissionFailure`）。成片的 summary 與 `manual_review_reason` 只點名前 5 個保留的 shot，後面寫「等，另 N 張」（`namedPictures`）；完整清單在 `payload.accepted_pictures`。`reviewPush` 送出每一筆審核前都過 `fitSummary`：500 字以內原樣，超過就切到 500 字、最後一個字是「…」（shot id 本身沒有長度上限，這是最後一道防線）；大綱那一筆是工人自己送的（`flow.mjs` `submitOutline`），不經過 `reviewPush`，所以在 `outlineReview` 組好時就過一次。旁白的 summary 在第二轉寫排除的句子多到放不下時只寫句數（`audioSummary`），句子 id 還在 `payload.cleared_lines`。分鏡與其他關卡的 summary 只有數字與固定的幾個代號 | `review/sync.mjs` |
+| 只有插圖影片能保留 | `keyframes --accept-best` 對 `illustrated(doc)` 以外的影片（漫劇、解說漫劇）回用法錯誤：只有插圖影片的成片會送站主人工審看（`acceptedPicturesOf`、`acceptBestPictures` 用同一個判斷），漫劇的 shot 要是被保留，分鏡與成片可能一到站就核准、沒有人看過那張圖 | `media/keyframes.mjs` `acceptBest` |
+| 卡片看得到 | 成片卡片：`payload.manual_review` 為 true 時最上面顯示「這支成片要由你審看，不會自動核准」與 `manual_review_reason`；沒有 `payload.qa` 時把 `manual_review_qa` 的項目列在同一個「自動品管」清單並標「僅供參考」；`accepted_pictures` 列成「保留的插圖（N 張）」，每張帶 judge 的意見。分鏡卡片：`payload.accepted` 點名（或自己帶 `accepted: true`）的 shot 標「保留」、藍框、分數與意見，跟「待修」的琥珀框分開；還在 `needs_review` 的 shot 不會被標成保留。欄位缺漏或型別不對就不顯示那一塊，卡片照常 | `apps/web/components/admin-video-review-card.tsx`、五語 `admin.json` |
+
 ## 沒做、留給後面
 
 - 圖庫照片（§圖庫照片 的「工具端」）還差一件接線：`tools/video/cli.mjs` 的 `AREAS` 沒列 `stock`，現在要直接跑 `media/cli.mjs`（web app 的轉送白名單已由票 `2026-10-05-web-app-forwards-stock-and-locate` 補上）。`lint` 不算說明欄的「圖片來源」位元組（`core/lint.mjs` 不讀 `assets[]`），稿子要自己留；`docs/videos/README.md` §說明欄 的四個部分還沒列第五個「圖片來源」。工人的撰稿提示詞還不會自己去搜照片，目前是代理或站主手動 `stock search`／`stock fetch` 再把路徑寫進 `screenshot` 景。

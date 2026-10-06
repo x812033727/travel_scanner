@@ -6,7 +6,7 @@ import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
 import { approvalState, approve, readApprovals } from "../core/approvals.mjs";
-import { lookHash } from "../core/drama.mjs";
+import { illustrated, lookHash } from "../core/drama.mjs";
 import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
 import { readLedger } from "./ledger.mjs";
 import { keepSheets } from "./series-store.mjs";
@@ -1516,6 +1516,58 @@ test("--accept-best keeps the judge's best take of a shot still failing after it
   assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "desk"], stale.ctx), EXIT.usage);
   assert.match(stale.out.stderr, /keyframes\/manifest\.json was drawn for another look or other pictures; run keyframes first/);
   assert.equal(manifestOf(box, "keyframes").shots.desk.needs_review, true, "nothing written");
+});
+
+test("--accept-best is for an illustrated video alone: a drama's failing shot is refused, since nobody is sent that cut to look at", async () => {
+  // An explainer draws its stills like a slides video and has no look gate, but it is a drama:
+  // its cut is not sent for the owner's manual review (review/sync.mjs acceptedPicturesOf).
+  const box = sandbox("fixture-explainer", "explainer");
+  assert.equal(illustrated(explainerFixture()), false);
+  const [failing] = explainerFixture().scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
+  const site = mediaSite({ verdicts: (kind, request) => (kind === "keyframe" && request.context.shot.id === failing ? { overall: 4, passed: false, problems: ["details: nothing the prompt names is there"] } : { overall: 8, passed: true }) });
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.lint, run.out.stderr);
+  const file = path.join(box.workdir, "keyframes", "manifest.json");
+  const before = readFileSync(file, "utf8");
+  const entry = JSON.parse(before).shots[failing];
+  assert.ok(entry.needs_review && entry.file, "a failing shot with a picture: what --accept-best keeps in an illustrated video");
+  for (const wanted of [failing, "all"]) {
+    const refused = context(box, site.fetchImpl);
+    assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", wanted], refused.ctx), EXIT.usage);
+    assert.match(refused.out.stderr, /--accept-best keeps pictures of an illustrated video alone .* only an illustrated video's cut is sent for the owner's manual review, and fixture-explainer is not one; fix the prompts of its shots instead/);
+    assert.doesNotMatch(refused.out.stdout, /kept with the judge's remarks/);
+  }
+  assert.equal(readFileSync(file, "utf8"), before, "nothing is kept, and the shot still waits for its prompt");
+  // A drama with a cast is told the same, before anything in its work directory is read.
+  const drama = sandbox("fixture-drama", "drama");
+  assert.equal(illustrated(dramaFixture()), false);
+  const told = context(drama, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", drama.slug, "--accept-best", "bird"], told.ctx), EXIT.usage);
+  assert.match(told.out.stderr, /only an illustrated video's cut is sent for the owner's manual review, and fixture-drama is not one/);
+});
+
+test("the worker's own --accept-best call still keeps the pictures of every video illustrated() covers: illustrated slides, and a screencast with stills", async () => {
+  const PROBLEMS = [`awkward: the hand holds the cup wrong${FIX_ARROW}the hand resting flat on the desk`];
+  // Slides draw under their own switch and model; any other format with stills draws under the
+  // drama route's (stages.mjs choiceFor), where a Gemini model is drawn a style plate first.
+  for (const [format, status] of [["slides", MINIMAX_SLIDES_STATUS], ["screencast", STATUS]]) {
+    const box = sandbox("fixture-illustrated", "illustrated");
+    const file = path.join(box.dir, "video.json");
+    const doc = { ...readJson(file), format };
+    writeFileSync(file, JSON.stringify(doc));
+    assert.equal(illustrated(doc), true, format);
+    const site = mediaSite({ status, verdicts: (kind, request) => (request.context?.shot?.id === "desk" ? { overall: 5, passed: false, problems: PROBLEMS } : { overall: 8, passed: true }) });
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.lint, `${format}: ${run.out.stderr}`);
+    assert.equal(manifestOf(box, "keyframes").shots.desk.needs_review, true, format);
+    // automation/flow.mjs acceptBestPictures runs: keyframes --slug <slug> [--channel <channel>] --accept-best <id,id>.
+    const kept = context(box, site.fetchImpl);
+    assert.equal(await main(["keyframes", "--slug", box.slug, "--channel", "chrome", "--accept-best", "desk"], kept.ctx), EXIT.ok, `${format}: ${kept.out.stderr}`);
+    assert.match(kept.out.stdout, /1 pictures kept with the judge's remarks \(desk\); the final cut goes to the owner\nnext: node tools\/video\/cli\.mjs review-push/);
+    const { desk } = manifestOf(box, "keyframes").shots;
+    assert.equal(desk.needs_review, false, format);
+    assert.deepEqual(desk.accepted_with_problems, PROBLEMS, format);
+  }
 });
 
 test("a shot whose prompt stops fitting the image model's budget keeps its earlier takes on record beside the note", async () => {
