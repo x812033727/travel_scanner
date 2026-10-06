@@ -66,3 +66,6 @@ PYTHONUTF8=1 .venv/Scripts/python.exe ../../.agents/skills/content-pipeline/scri
   `?city=` 不是錯，不用改。
 - 環球影城的三頁（`usj.co.jp` 兩頁、`usjticketing.com`）curl 只拿到 app shell；2026-10-06 用 Playwright 的
   `chromium_headless_shell` 加編輯 UA 渲染讀得到（營業時間日曆要點月份標題右邊的箭頭換月）。
+- 2026-10-06 #1330 的獨立查核第一輪之後，`description` 與開頭段落已從「2026 年 9 月」改成「2026 年 9 至 10 月」
+  （紀錄在 `tasks/done/2026-10-05-itinerary-usj-september-hours.md` 的 Review round）。上面 Why 引的是改之前的字；
+  重查時照 DoD 換成這次重查的月份或拿掉月份，兩張表的 caption 沒動。
