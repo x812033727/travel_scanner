@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-resume-held-news-drafts-from-their
 title: Resume held news drafts from their five stored locales, without drafting again
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-news-resume
 claimed_at: 2026-10-04T14:12:27Z
 created_at: 2026-10-04T14:12:11Z
-completed_at:
+completed_at: 2026-10-06T04:18:08Z
 branch: claude/news-resume-saved-bundles
 depends_on: []
 scope:
@@ -45,7 +45,7 @@ On 2026-10-04 the owner chose to add a recovery path and pilot it on three stori
   budget. A rerun never redrafts.
 - [x] The dry run lists which stored locales today's checks still refuse, and puts the clean
   bundles first, so a pilot picks the ones that can actually go out.
-- [ ] Merged, deployed, and a three-story pilot run on production with the owner's approval.
+- [x] Merged, deployed, and a three-story pilot run on production with the owner's approval.
   The outcomes are recorded in `2026-10-04-news-publication-recovery`.
 
 ## Steps
@@ -58,7 +58,7 @@ On 2026-10-04 the owner chose to add a recovery path and pilot it on three stori
 - [x] Tests in `apps/api/tests/test_news_resume_saved_bundle.py`, which recreate the pre-#1136
   state from a real pipeline run.
 - [x] Host procedure in `.agents/skills/prod-host-ops/references/news-ops.md`.
-- [ ] PR, CI, deploy (skill `deploy`), dry run on the host, `--limit 3 --apply` after the
+- [x] PR, CI, deploy (skill `deploy`), dry run on the host, `--limit 3 --apply` after the
   owner's go-ahead.
 
 ## How to verify
@@ -88,3 +88,15 @@ with no `draft`, `translation-*` or `final-edit-*`.
 - `apps/api/tests` is listed in the stale `2026-10-03-illustrated-slides-round-2-a-family`
   (a video task, claimed on 10-03). This task adds one new test file there, so it was claimed
   with `--force`.
+- Pilot, 2026-10-06 (owner: "dry run clean, run the three"). Deployed e12925cc4 at 04:05-04:10Z
+  (it carries #1318, the Jev publish question without criteria; `host-verify.sh` 12/12). The dry
+  run listed three candidates with empty `hard_checks` and `still_failing: 0`; `--limit 3 --apply`
+  ran at 04:10:54Z. All three were published within 65 seconds. Each has exactly one new run,
+  `jev-final`, and no `draft`, `translation-*` or `final-edit-*` run. The duplicate check passed
+  (0.09-0.19) and Jev's last call passed on all five locales (0.57-0.74).
+  - `tech-news-cloudflare-web-search-api-20261002` (candidate 19113502)
+  - `tech-news-cloudflare-traces-20261002` (candidate 45b7ea9a)
+  - `ai-news-nvidia-dgx-spark-64gb-20261002` (candidate 9ff3de6d)
+  The fifteen public pages (`/<locale>/life/<slug>`, five locales each) answer 200 without
+  noindex. The other held candidates were not touched: resuming them is the owner's call,
+  tracked in `2026-10-04-news-publication-recovery`.
