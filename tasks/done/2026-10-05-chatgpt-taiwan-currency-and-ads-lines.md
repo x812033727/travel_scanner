@@ -430,3 +430,134 @@ These ran on a scratchpad copy of the branch head made with `git archive`; nothi
 - https://platform.minimax.io/docs/guides/pricing-token-plan
 - https://developers.openai.com/api/docs/supported-countries
 - https://archive.org/wayback/available
+
+### verify-3: PR #1329 (claude/chatgpt-taiwan): OpenAI sources opened first-hand
+
+**Result: no errors.** All 34 claims hold against the OpenAI pages, which rounds 1 and 2 could not open (they got 403).
+
+- **Checker:** independent round-3 fact-checker (claude-opus-5-5). I wrote none of the PR, round 1, round 2 or the fix.
+- **Read-only:** no edits, commits, pushes or comments. `git status` stayed clean.
+- **Date:** 2026-10-06.
+- **Head checked:** `803a326e88546e58cc38f868baf3ff3a2e75c7e8` ("docs: record independent fact-check round 2 for #1329"), fetched again just before this report. The content is the same as at ec1635fe (round 2's head).
+- **Locales:** both packs are zh-TW only, so there are no other locales to check.
+
+#### How the pages were opened
+
+- **Browser:** headless Chromium (`/opt/pw-browsers/chromium-1194`) through Playwright, with User-Agent exactly `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`.
+  - No personal data went into any request, and TLS verification stayed on.
+  - The scripts are in the session scratchpad, not in the repo.
+- **First pass:** in one run of all seven pages, five returned 403 (Cloudflare).
+- **Retry:** I opened those five again one at a time, each in a fresh browser after a 15 s wait, and all returned 200.
+- **Taiwan announcement:** the page returned 200, but the browser only showed "This page couldn't load". The same 200 response carries the server-rendered Next.js data with the whole article (headline, `publicationDate`, every paragraph), so I read it there. That is the article itself, not an empty page.
+
+| URL | HTTP | Page date or detected country |
+| --- | --- | --- |
+| help.openai.com/en/articles/10421635-multicurrency-billing | 200 | "Updated: 8 days ago" |
+| help.openai.com/en/articles/20001047-ads-in-chatgpt | 200 (after one 403) | "Updated: 8 days ago" |
+| help.openai.com/en/articles/11989085-what-is-chatgpt-go | 200 (after one 403) | "Updated: 19 hours ago" |
+| help.openai.com/en/articles/9275245-chatgpt-free-tier-faq | 200 (after one 403) | "Updated: 2 months ago" |
+| openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/ | 200 (after one 403) | `publicationDate` "September 23, 2026"; read from the server-rendered data |
+| openai.com/policies/row-terms-of-use/ | 200 (after one 403) | "Published: January 1, 2026 / Effective: January 1, 2026" |
+| chatgpt.com/zh-Hant/pricing/ | 200 (twice) | The page data says `"country":"US"`; prices shown in US$ |
+| help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers | 200 | Background only: "Updated: 3 days ago" |
+
+#### ai-tools-2026-overview (zh-TW)
+
+| # | Claim (location) | Source | Outcome |
+| --- | --- | --- | --- |
+| 1 | Intro: 「ChatGPT 的計費幣別在 10 月 6 日重新查過」 | Multi-currency billing | CONFIRMED: the page opens today and lists "TWD (NT$) — Taiwan". This is a dating line; see the reader-first note |
+| 2 | Block 22: 「ChatGPT 寫的是美國定價」 (Go 8 美元, Plus 20 美元) | chatgpt.com/zh-Hant/pricing (served as US) | CONFIRMED: "Go US$8 /每月", "Plus US$20 /每月" |
+| 3 | Block 22: 「ChatGPT 在台灣以新台幣計費」 | Multi-currency billing; What is ChatGPT Go | CONFIRMED: TWD (NT$) is listed for Taiwan. The Go page agrees: "All purchases are in USD - we offer a local currency billing in a limited set of countries (see: Multi-currency billing)". Two caveats, neither material for readers: the table covers web purchases, and "If you already have an active subscription, you'll continue to be billed in your current currency" |
+| 4 | Block 22: 「實際金額以官網為準」 | — | A hedge, and the right one: the pricing page shows prices by the visitor's country |
+| 5 | Table, ChatGPT: 「Go 每月 8 美元（美國定價）；Plus 每月 20 美元」 | pricing page | CONFIRMED |
+| 6 | Diagram footnote (SVG line 103), the `<desc>` text after 底注 and `image.description` | SVG at head | CONFIRMED: same wording as the text; `<desc>` == `image.description` is True. The other SVG price texts are 「Go 8 美元（美國定價）」 and 「Plus 20 美元」 |
+| 7 | New source: Multi-currency billing (「ChatGPT 訂閱支援的計費幣別含台灣的新台幣 TWD」), `checked_on` 2026-10-06 | Multi-currency billing | CONFIRMED: the title is accurate, and the page was readable on 10-06 |
+| 8 | Paragraph 7 (not changed by the PR): 「Pro 分每月 100、200、500 美元三級」 | pricing page; About ChatGPT Pro tiers | CONFIRMED: details in the note below |
+| 9 | The overview has no ChatGPT ads line left to update | pack grep | CONFIRMED: the only ads mention is DeepSeek's 「無廣告」 |
+| 10 | Pack has 20 sources, all URLs unique | script | CONFIRMED |
+
+**Note on #8.** The Multi-currency page still mentions "the pause on new ChatGPT Pro $200 (Pro 20X) subscriptions". About ChatGPT Pro tiers, updated 3 days ago, says "Pro 200 is also available for new subscriptions again". So the pause note is stale on OpenAI's side, and the article's three Pro tiers are correct. The pricing page agrees: "From US$100 … 3 種用量層級".
+
+#### chatgpt-beginner-guide (zh-TW)
+
+| # | Claim (location) | Source | Outcome |
+| --- | --- | --- | --- |
+| 11 | Intro: 「廣告在 10 月 6 日重新查過」 | — | The ads pages are readable today, so the date stands. This is a dating line; see the reader-first note |
+| 12 | List: 「OpenAI 在 2026 年 9 月 23 日宣布」 | Taiwan announcement | CONFIRMED: `publicationDate` "September 23, 2026" |
+| 13 | List: 「ChatGPT 廣告開始在台灣逐步推出」 | Taiwan announcement | CONFIRMED: "Starting today, ChatGPT Ads will begin rolling out across Indonesia, Malaysia, the Philippines, Singapore, Thailand, Vietnam, and Taiwan." |
+| 14 | List: 「只會出現在 Free 與 Go 方案」 | announcement; Ads FAQ | CONFIRMED: "ads will be shown only to users on the Free and Go plans"; the FAQ says "Ads may appear for users on the Free and Go plans." |
+| 15 | List: 「Plus、Pro 維持沒有廣告」 | announcement; Ads FAQ | CONFIRMED: "Plus, Pro, and Enterprise subscriptions will remain ad-free"; the FAQ says "Plus, Pro, Business, Enterprise, and Edu accounts will not have ads" |
+| 16 | Table, Free: 「可能出現（台灣 2026 年 9 月 23 日起逐步推出）」 | announcement; Ads FAQ | CONFIRMED |
+| 17 | Table, Go: 「可能出現」 | Ads FAQ; announcement; pricing page | CONFIRMED: the FAQ says "may appear"; the zh-Hant pricing page's Go card says 「此方案可能包含廣告。」 |
+| 18 | Table, Plus: 「沒有廣告」 | announcement; Ads FAQ | CONFIRMED |
+| 19 | Caption: 「廣告列 10 月 6 日重查」 | — | Dating line; the date stands |
+| 20 | Taiwan announcement source title (9/23, Free and Go only, Plus and Pro ad-free), `checked_on` 10-06 | announcement | CONFIRMED |
+| 21 | How the article handles the Go-page conflict | What is ChatGPT Go | JUDGED FAIR: details below the table |
+| 22 | Block 4: ToU (Rest of World version) 「2026 年 1 月 1 日生效」 | ROW ToU | CONFIRMED: "Effective: January 1, 2026" |
+| 23 | Block 4: 「至少 13 歲，未滿 18 歲要有父母或監護人同意」 | ROW ToU | CONFIRMED: "You must be at least 13 years old or the minimum age required in your country to consent to use the Services. If you are under 18 you must have your parent or legal guardian's permission". The article leaves out the country-minimum clause, which predates this PR and is harmless |
+| 24 | Steps list, step 3: 「未滿 18 歲請先取得家長同意」 | ROW ToU | CONFIRMED |
+| 25 | Diagram texts 「至少 13 歲；未滿 18 歲」 and 「年齡規定來自 OpenAI 使用條款：至少 13 歲，未滿 18 歲要父母或監護人同意」, plus the same in `<desc>` | ROW ToU | CONFIRMED; `<desc>` == `image.description` is True |
+| 26 | ROW ToU source title (1 January 2026, 13 and 18), `checked_on` moved to 10-06 | ROW ToU | CONFIRMED |
+| 27 | Free Tier FAQ claims: GPT-5.6 Luna; Think in the + menu on mobile and rolling out on the web; unlimited everyday text chats with abuse-prevention safeguards; separate limits for uploads, images, voice and data analysis, with an in-app notice; Library 500 MB; ads on Free "in certain countries" (the source title says 廣告) | Free Tier FAQ | CONFIRMED, all verbatim in substance. The page was updated 2 months ago, so `checked_on` 10-05 stands |
+| 28 | Go page claims: Think uses GPT-5.6 Luna; no GPT-5.6 Sol; unlimited everyday text chats; projects, tasks, custom GPTs and Library | What is ChatGPT Go | CONFIRMED: "Think uses GPT-5.6 Luna. ChatGPT Go does not include GPT-5.6 Sol."; "Free and Go users both have unlimited everyday text chats" |
+| 29 | Block 11: the Multi-currency page lists TWD for Taiwan; App Store and Google Play purchases are charged in local currency | Multi-currency billing | CONFIRMED: "If you subscribe via the ChatGPT app on iOS or Android … charges will appear in your local currency." The source title is accurate |
+| 30 | Block 27: in-app purchases are shown in local currency | Multi-currency billing | CONFIRMED |
+| 31 | Table, 月費: Go 「美國 8 美元；台灣以新台幣計費，金額以官網為準」, Plus 20 美元 | pricing page; Multi-currency billing | CONFIRMED |
+| 32 | Diagram: 「美國定價每月 8 美元」, 「Plus，每月 20 美元」, 「台灣以新台幣計費、金額以官網為準；App 內購以當地貨幣計價」 | same | CONFIRMED |
+| 33 | Pack has 20 unique sources; no stale ads or currency wording in either pack or SVG | script; grep | CONFIRMED: the grep finds 0 matches for 部分國家, 先在美國測試, 以美元計 and 台幣定價的只有 |
+
+**Go-page conflict (#21).** What is ChatGPT Go (updated 19 hours ago) still says "We may start testing ads in ChatGPT Go in the future." The article handles this fairly:
+
+- Three sources disagree with the Go page and back the article:
+  - the newer Ads FAQ;
+  - the dated Taiwan announcement;
+  - the zh-Hant pricing page's own Go card (「此方案可能包含廣告」).
+- The Go source's title in the pack makes no ads claim.
+- The table hedges Go as 「可能出現」 and does not overstate.
+
+#### chatgpt.com/zh-Hant/pricing/: does it show NT$?
+
+| # | Question | Outcome |
+| --- | --- | --- |
+| 34 | Does the page show NT$ prices? | NOT FROM HERE. The page data has `"country":"US"`, and the cards show US$0, US$8, US$20 and "From US$100". |
+
+The PR quotes no NT$ amount: it labels ChatGPT figures as US prices and points readers to 官網 for the Taiwan amount. So no claim in this PR depends on what the page shows a visitor in Taiwan.
+
+#### Checked_on dates
+
+| Pack | Source | `checked_on` | Outcome |
+| --- | --- | --- | --- |
+| overview | Multi-currency billing | 2026-10-06 | Readable 10-06 |
+| beginner | ROW ToU | 2026-10-06 | Readable 10-06 |
+| beginner | Taiwan announcement | 2026-10-06 | Readable 10-06 |
+| beginner | Free Tier FAQ | 2026-10-05 | Page last updated about 2 months ago, so it was the same on 10-05 |
+| beginner | What is ChatGPT Go | 2026-10-05 | The claims it backs still hold |
+| beginner | Multi-currency billing | 2026-10-05 | Page last updated 8 days ago, so it was the same on 10-05 |
+
+#### Findings
+
+None.
+
+#### Reader-first (report only, carried over from rounds 1 and 2)
+
+The PR adds three verification-dating phrases to the article text:
+
+- overview intro: 「ChatGPT 的計費幣別在 10 月 6 日重新查過」;
+- beginner intro: 「廣告在 10 月 6 日重新查過」;
+- beginner caption: 「廣告列 10 月 6 日重查」.
+
+#### Noticed, not filed (outside this PR's lines; nothing here is wrong in the article)
+
+- **Voice limits:** the Go help page says "Voice mode is included with the same usage limits as the Free tier", while the pricing page gives Go 「更多語音對話」 and lists its voice as 擴充額度. The beginner table (Free 「有每日時數上限」, Go 「每天最多 3 小時」) contradicts neither.
+- **Optional extras the beginner guide could mention:**
+  - The Ads FAQ describes a "free, no-ads option with additional limits", with availability varying by region.
+  - The Ads FAQ also says no ads are shown to accounts identified as under 18, or in Temporary Chats.
+- **Pricing page models:** the Plus card says 「使用 GPT-6 的進階推理模型」, and the model table lists GPT-6 Sol, GPT-6 Astra, GPT-6.1 Sol and GPT-6 Luna. I couldn't tell from the text which plan columns each model belongs to. The model line-up was re-checked 10-05 in another PR. Whoever next reviews models should compare this page with the GPT-5.6 / GPT-6 Pro help article.
+
+#### Self-checks
+
+- Ran by script on the branch-head files copied into the scratchpad:
+  - SVG `<desc>` == `image.description` in both packs: True.
+  - 20 unique source URLs in each pack.
+  - The stale-phrase grep: 0 matches.
+- Not run: pack_cli, intake_check and pytest. Rounds 1 and 2 already ran them on the same content, and this pass is read-only.
