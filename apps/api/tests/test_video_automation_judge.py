@@ -2,16 +2,19 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 from types import SimpleNamespace
 from typing import Any
 from unittest.mock import AsyncMock
 from uuid import uuid4
 
+import httpx
 import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
 
-from app.ai.jev import ChoiceAnswer, JevError, NoulAnswer
+from app.ai.jev import ChoiceAnswer, JevClient, JevError, NoulAnswer
 from app.config import Settings
 from app.db import get_session
 from app.models import VideoToolToken
@@ -320,6 +323,164 @@ async def test_the_judge_routes_need_a_video_tool_token() -> None:
             "/api/v1/video/automation/judge/policy", json={"slug": "x", "script": "s"}
         )
     assert outline.status_code == 401 and policy.status_code == 401
+
+
+def _route_jev(
+    monkeypatch: pytest.MonkeyPatch, provider: httpx.AsyncClient
+) -> tuple[JevClient, AsyncMock]:
+    _settings(monkeypatch, "1. 先把帳算清楚再花錢")
+    jev = JevClient(
+        "private-jev-key", "https://private-jev.invalid", "test-model", 1, client=provider
+    )
+    consumed = AsyncMock(return_value=True)
+    monkeypatch.setattr(judging, "jev_client", lambda settings, client=None: jev)
+    monkeypatch.setattr(judging, "consume_jev_call", consumed)
+    monkeypatch.setattr(judging, "policy_questions_for", AsyncMock(return_value="tutorial"))
+    monkeypatch.setattr(JevClient, "_backoff", AsyncMock())
+    return jev, consumed
+
+
+def _judge_body(route: str) -> dict[str, Any]:
+    return (
+        OUTLINE_BODY
+        if route == "outline"
+        else {"slug": "ai-agent-permissions", "script": "private-narration", "viewpoint": "立場：2"}
+    )
+
+
+def _valid_jev_answers(request: httpx.Request) -> httpx.Response:
+    questions = json.loads(request.content)["questions"]
+    answers = {
+        name: (
+            {
+                "type": "choice",
+                "choice": "B",
+                "confidence": 0.8,
+                "probabilities": {"A": 0.2, "B": 0.8},
+            }
+            if question["type"] == "choice"
+            else {"type": "noul", "noul": 0.1 if name in {"advice", "sponsored"} else 0.9}
+        )
+        for name, question in questions.items()
+    }
+    return httpx.Response(200, json={"answers": answers})
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("route", ["outline", "policy"])
+@pytest.mark.parametrize("failure", ["read_timeout", "502", "non_json", "connect_then_read"])
+async def test_judge_routes_preserve_uncertain_jev_evidence_without_resending(
+    monkeypatch: pytest.MonkeyPatch, route: str, failure: str
+) -> None:
+    sent: list[bytes] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        sent.append(request.content)
+        if failure == "connect_then_read" and len(sent) == 1:
+            raise httpx.ConnectError("not connected", request=request)
+        if failure in {"read_timeout", "connect_then_read"}:
+            raise httpx.ReadTimeout("private-jev-key https://private-jev.invalid", request=request)
+        if failure == "502":
+            return httpx.Response(502, json={"error": {"message": "private-jev-key"}})
+        return httpx.Response(200, text="private-jev-key non-json answer")
+
+    app = _app()
+    _worker(app)
+
+    @app.middleware("http")
+    async def identify(request: Any, call_next: Any) -> Any:
+        request.state.request_id = "judge-evidence-test"
+        return await call_next(request)
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as provider:
+        jev, consumed = _route_jev(monkeypatch, provider)
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
+            response = await client.post(
+                f"/api/v1/video/automation/judge/{route}", json=_judge_body(route)
+            )
+    assert response.status_code == 502
+    assert response.headers["content-type"].startswith("application/problem+json")
+    body = response.json()
+    assert body["code"] == "video_judge_outcome_uncertain" and body["status"] == 502
+    assert body["request_id"] == "judge-evidence-test"
+    assert body["quota_units_consumed"] == 1 and consumed.await_count == 1
+    expected_wires = 2 if failure == "connect_then_read" else 1
+    assert len(sent) == jev.wires_sent == expected_wires and jev.application_calls == 1
+    assert body["jev_outcome"] == {
+        "phase": "response" if failure == "502" else "body" if failure == "non_json" else "send",
+        "status": 502 if failure == "502" else 200 if failure == "non_json" else None,
+        "wires_sent": expected_wires,
+        "request_sha256": hashlib.sha256(sent[-1]).hexdigest(),
+    }
+    assert all(content == sent[0] for content in sent)
+    for secret in (
+        "private-jev-key",
+        "private-jev.invalid",
+        "private-narration",
+        str(OUTLINE_BODY["brief"]),
+    ):
+        assert secret not in response.text
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("route", ["outline", "policy"])
+async def test_judge_routes_retry_a_never_connected_wire_without_spending_another_quota(
+    monkeypatch: pytest.MonkeyPatch, route: str
+) -> None:
+    sent: list[bytes] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        sent.append(request.content)
+        if len(sent) == 1:
+            raise httpx.ConnectError("not connected", request=request)
+        return _valid_jev_answers(request)
+
+    app = _app()
+    _worker(app)
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as provider:
+        jev, consumed = _route_jev(monkeypatch, provider)
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
+            response = await client.post(
+                f"/api/v1/video/automation/judge/{route}", json=_judge_body(route)
+            )
+    assert response.status_code == 200, response.text
+    assert response.json()["passed"] is True
+    assert len(sent) == jev.wires_sent == 2 and sent[0] == sent[1]
+    assert jev.application_calls == consumed.await_count == 1
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("route", ["outline", "policy"])
+@pytest.mark.parametrize("failure", [401, 403, 400, 422, 429, 529, "connect"])
+async def test_judge_routes_keep_settled_jev_failures_under_the_existing_contract(
+    monkeypatch: pytest.MonkeyPatch, route: str, failure: int | str
+) -> None:
+    sent: list[bytes] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        sent.append(request.content)
+        if failure == "connect":
+            raise httpx.ConnectError("not connected", request=request)
+        assert isinstance(failure, int)
+        return httpx.Response(failure, json={"error": {"message": "refused"}})
+
+    app = _app()
+    _worker(app)
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as provider:
+        jev, consumed = _route_jev(monkeypatch, provider)
+        async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
+            response = await client.post(
+                f"/api/v1/video/automation/judge/{route}", json=_judge_body(route)
+            )
+    invalid = failure in {400, 422}
+    assert response.status_code == (422 if invalid else 502)
+    assert response.json()["code"] == (
+        "video_judge_invalid" if invalid else "video_judge_upstream_failed"
+    )
+    assert "jev_outcome" not in response.json()
+    expected_wires = {429: 3, 529: 4, "connect": 2}.get(failure, 1)
+    assert len(sent) == jev.wires_sent == expected_wires
+    assert jev.application_calls == consumed.await_count == 1
 
 
 def test_the_pick_the_worker_carries_is_what_the_route_returned() -> None:
