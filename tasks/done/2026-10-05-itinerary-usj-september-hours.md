@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-itinerary-usj-september-hours
 title: 大阪京都奈良四天行程的環球影城營業時間與票價寫死 2026 年 9 月
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-usj-hours
 claimed_at: 2026-10-06T01:44:35Z
 created_at: 2026-10-05T07:05:00Z
-completed_at:
+completed_at: 2026-10-06T02:00:40Z
 branch: claude/usj-hours
 depends_on: []
 scope:
