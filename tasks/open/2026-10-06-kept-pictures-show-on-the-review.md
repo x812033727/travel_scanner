@@ -279,3 +279,19 @@ lines a picture` (or `were left out`) when it sends a review, and the review is 
   added to the scope later are also in the scope of
   `2026-10-06-pictures-keep-best-after-prompt-fixes` (the same owner, in review; its change
   is on main as #1341).
+- **Verified at `4d296e304` (2026-10-07, independent read-only reader).** Worst case
+  through `review-push` and the fake site: 200 kept pictures, 165-character ids, nine
+  remarks of 300 characters each, measured as `ReviewIn._small` does
+  (`len(json.dumps(payload, ensure_ascii=False).encode())`, equal to `payloadBytes` to the
+  byte). The final review is 56,691 bytes (CJK or astral remarks, which are left out) or
+  173,691 bytes (ASCII, cut to two lines); the storyboard is 241,737 bytes. Every summary
+  is at most 500 characters. Every field the card reads is still there. The tests in
+  "How to verify" are green. One limit is left: a kept shot still costs about 300 bytes
+  after its remarks are left out, because its id is repeated in `payload.accepted` with
+  the "left out" line. So a board of 200 shots with long ids and long prompts, all kept,
+  is refused at 270,537 bytes, while the same board with nothing kept goes up at 210,720.
+  That is beyond any brand story's 85–100 shots; it is filed as
+  `2026-10-06-a-storyboard-with-many-kept-pictures`. Also on the storyboard, a kept
+  shot's remarks travel twice (`shots[].judge.problems` and `payload.accepted[].problems`)
+  until the last step empties the shot's copy. "Remarks sent once" holds for the final
+  review only.
