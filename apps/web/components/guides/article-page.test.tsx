@@ -4,7 +4,11 @@ import { guideArticleMetadata, renderGuideArticle } from "./article-page";
 import type { LearningEntry } from "@/lib/codex-learning";
 
 const mocks = vi.hoisted(() => ({
-  article: vi.fn(), series: vi.fn(), topics: vi.fn(async (): Promise<Record<string, unknown>[]> => []),
+  article: vi.fn(), series: vi.fn(),
+  list: vi.fn<(locale: string, filters: Record<string, string>, limit: number) => Promise<{ articles: Record<string, unknown>[]; next_cursor: null }>>(
+    async () => ({ articles: [], next_cursor: null }),
+  ),
+  topics: vi.fn(async (): Promise<Record<string, unknown>[]> => []),
   permanentRedirect: vi.fn((url: string) => { throw new Error(`NEXT_REDIRECT ${url}`); }),
   headers: vi.fn(async () => new Headers()),
 }));
@@ -16,7 +20,7 @@ vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 vi.mock("@/lib/adsense.server", () => ({ getAdsenseSlot: async () => ({ enabled: false }) }));
 vi.mock("@/lib/guides.server", () => ({
   getGuideArticle: mocks.article, getGuideSeries: mocks.series,
-  getGuideList: async () => ({ articles: [], next_cursor: null }),
+  getGuideList: mocks.list,
   getGuideTopics: mocks.topics,
 }));
 vi.mock("@/components/codex-learning/hub", () => ({ LearningHub: ({ entries, available }: { entries: LearningEntry[]; available: boolean }) =>
@@ -117,9 +121,41 @@ describe("further reading", () => {
     expect(within(grid).queryByRole("link", { name: "已列" })).toBeNull();
     expect(within(grid).getByRole("link", { name: "旅遊攻略" }).getAttribute("href")).toBe("/guides/howto/guide");
     expect(screen.getByRole("region", { name: "引用本文的文章" }).textContent).toContain("引用者");
-    // The lifestyle handover to the travel section still follows.
-    expect(screen.getByTestId("travel-crosslinks")).toBeTruthy();
-    const order = [screen.getByTestId("related-grid"), screen.getByTestId("backlinks"), screen.getByTestId("travel-crosslinks")];
+    const order = [screen.getByTestId("related-grid"), screen.getByTestId("backlinks")];
+    expect(order[0].compareDocumentPosition(order[1]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it("ends an article that names no destination without travel cards or city chips", async () => {
+    // What an AI, tech or finance article looks like: topical related reading, no destination.
+    // The site's newest travel guides used to follow every one of them, whatever it was about.
+    mocks.list.mockResolvedValue({ articles: [{ ...ref("okinawa-lodging-tax-2027", "沖繩住宿稅", "howto"), kind: "intel", destination_label: null, hero: null, topics: [] }], next_cursor: null });
+    mocks.article.mockResolvedValue({ ...state, related: [ref("next", "接著讀")] });
+    render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
+    expect(screen.getByTestId("related-grid")).toBeTruthy();
+    expect(screen.queryByTestId("travel-crosslinks")).toBeNull();
+    expect(screen.queryByText("沖繩住宿稅")).toBeNull();
+    expect(mocks.list).not.toHaveBeenCalledWith("en", { section: "travel" }, expect.anything());
+  });
+
+  it("hands an article that names a destination over to that destination's travel guides, after its own lists", async () => {
+    mocks.list.mockImplementation(async (_locale, filters) => ({
+      articles: filters.destination === "tokyo"
+        ? [{ ...ref("tokyo-transit-passes", "東京交通票券", "howto"), destination_label: "Tokyo", hero: null, topics: [] }]
+        : [],
+      next_cursor: null,
+    }));
+    mocks.article.mockResolvedValue({
+      ...state, destination_id: "tokyo", related: [ref("next", "接著讀")], backlinks: [ref("citing", "引用者")],
+    });
+    render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
+    expect(mocks.list).toHaveBeenCalledWith("en", { section: "travel", destination: "tokyo" }, 3);
+    const handover = screen.getByTestId("travel-crosslinks");
+    expect(within(handover).getByRole("link", { name: "東京交通票券" }).getAttribute("href")).toBe("/guides/howto/tokyo-transit-passes");
+    // The chips are that country's cities, not one city of every country.
+    const chips = within(handover).getAllByRole("link").map((link) => link.getAttribute("href")).filter((href) => href?.startsWith("/destinations/"));
+    expect(chips).toContain("/destinations/tokyo");
+    expect(chips).not.toContain("/destinations/seoul");
+    const order = [screen.getByTestId("related-grid"), screen.getByTestId("backlinks"), handover];
     expect(order[0].compareDocumentPosition(order[1]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(order[1].compareDocumentPosition(order[2]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });

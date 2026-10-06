@@ -124,15 +124,17 @@ const actionButtons = () => ["確認發布，翻譯其他語言", "重新翻譯�
 
 describe("AdminNewsWorkspace", () => {
   it("lists a source that keeps failing on its recent articles first, with a warning", async () => {
-    const source = (id: string, name: string, lastStatus: string, lastError: string | null) => ({
+    const source = (id: string, name: string, lastStatus: string, lastError: string | null, enabled = true) => ({
       id, name, url: `https://${id}.example/feed`, format: "rss", role: "evidence", vertical: "ai",
-      is_first_party: true, enabled: true, scan_interval_minutes: 60, allowed_redirect_hosts: [], config: {},
+      is_first_party: true, enabled, scan_interval_minutes: 60, allowed_redirect_hosts: [], config: {},
       etag: null, last_modified: null, last_scanned_at: "2026-09-30T10:00:00Z", next_scan_at: "2026-09-30T11:00:00Z",
       last_status: lastStatus, last_error: lastError, consecutive_failures: 0,
       created_at: "2026-09-01T00:00:00Z", updated_at: "2026-09-30T10:00:00Z",
     });
     sourceRows = [
       source("fine", "Fine source", "partial", "Skipped 1 page(s): https://fine.example/a (ConnectTimeout)"),
+      // Switched off after it got stuck: no longer scanned, so neither counted nor put first.
+      source("off", "Switched-off source", "stuck", "Failing for more than 6 hours: https://off.example/c", false),
       source("stuck", "Stuck source", "stuck", "Failing for more than 6 hours: https://stuck.example/b. Skipped 1 page(s)"),
     ];
     window.history.replaceState(null, "", "/zh-TW/admin/news?tab=sources");
@@ -140,7 +142,7 @@ describe("AdminNewsWorkspace", () => {
     expect(await screen.findByRole("alert")).toBeTruthy();
     expect(screen.getByText(/1 個來源最近的文章已連續抓不到超過 6 小時/)).toBeTruthy();
     const names = screen.getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent);
-    expect(names.indexOf("Stuck source")).toBeLessThan(names.indexOf("Fine source"));
+    expect(names).toEqual(["Stuck source", "Fine source", "Switched-off source"]);
   });
 
   it("explains a Jev hold in Chinese and publishes it with an audited reason", async () => {

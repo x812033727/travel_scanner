@@ -5,8 +5,8 @@ import LifeArticlePage, { generateMetadata } from "./page";
 
 /**
  * A lifestyle article shares the article screen with `/guides/[kind]/[slug]`, so these cases
- * cover what the section changes: its own URL and breadcrumb, the crosslinks that always end
- * it, and the partner panel that appears only when an editor named a destination.
+ * cover what the section changes: its own URL and breadcrumb, and the travel crosslinks and
+ * partner panel that appear only when an editor named a destination.
  */
 
 const mocks = vi.hoisted(() => ({ article: vi.fn(), list: vi.fn() }));
@@ -84,9 +84,19 @@ describe("a published lifestyle article", () => {
     expect(container.querySelector("a[hreflang]")).toBeNull();
   });
 
-  it("always ends with the travel crosslinks, whether or not it has a destination", async () => {
+  it("ends without travel crosslinks when it names no destination, which is the usual case", async () => {
+    // An AI or finance article has nothing to do with the site's newest travel guides.
     render(await LifeArticlePage({ params: params() }));
-    expect(mocks.list).toHaveBeenCalledWith("zh-TW", { section: "travel" }, 3);
+    expect(mocks.list).not.toHaveBeenCalled();
+    expect(screen.queryByTestId("travel-crosslinks")).toBeNull();
+    expect(screen.queryByRole("heading", { name: "最新旅遊情報攻略" })).toBeNull();
+    expect(screen.queryByRole("heading", { name: "熱門目的地" })).toBeNull();
+  });
+
+  it("hands over to the named destination's travel guides and cities", async () => {
+    mocks.article.mockResolvedValue({ ...published, destination_id: "tokyo", destination_label: "東京" });
+    render(await LifeArticlePage({ params: params() }));
+    expect(mocks.list).toHaveBeenCalledWith("zh-TW", { section: "travel", destination: "tokyo" }, 3);
     expect(screen.getByRole("heading", { name: "最新旅遊情報攻略" })).toBeTruthy();
     expect(screen.getByRole("link", { name: "成田到東京怎麼走" }).getAttribute("href"))
       .toBe("/guides/howto/narita-to-tokyo");
@@ -109,7 +119,8 @@ describe("a published lifestyle article", () => {
     expect(panel.getAttribute("data-modules")).toBe("flight,hotel,activities,transport,connectivity");
   });
 
-  it("still renders the crosslinks when there is no travel article to show", async () => {
+  it("still lists the destination's cities when there is no travel article about it", async () => {
+    mocks.article.mockResolvedValue({ ...published, destination_id: "tokyo", destination_label: "東京" });
     mocks.list.mockResolvedValue({ articles: [], next_cursor: null });
     render(await LifeArticlePage({ params: params() }));
     expect(screen.queryByRole("heading", { name: "最新旅遊情報攻略" })).toBeNull();

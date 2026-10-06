@@ -545,7 +545,8 @@ tap follows the link); Escape, blur and a pointer elsewhere close it. Without Ja
 is the link and nothing else. The end of an article shows `related` as "同主題延伸閱讀"
 (`components/guides/related-grid.tsx`, minus the lessons the series navigation already
 lists) and `backlinks` as "引用本文的文章"; a travel article's list replaces the same-city
-cards it used to end with, a lifestyle article keeps the travel handover after it.
+cards it used to end with, a lifestyle article that names a destination keeps the travel
+handover after it.
 Level-3 headings carry `section-N-M` ids so a citation can point at a sub-answer.
 
 ## Verification
@@ -812,10 +813,13 @@ the site card inherits. The `Article` JSON-LD claims `image` only when a hero ex
 
 ### The end of a lifestyle article
 
-Always, and with no commission attached: `components/guides/travel-crosslinks.tsx` — the
-three newest travel articles as `GuideCard`s (omitted when there are none), then at most six
-destination links. When the article names a destination the six come from that city's
-country; otherwise one per country. It is a synchronous presentational component in its own
+Only when the editor named a destination, and with no commission attached:
+`components/guides/travel-crosslinks.tsx` — up to three travel articles about that
+destination as `GuideCard`s (omitted when there are none), then at most six links to the
+cities of its country. An article without a destination (every AI, tech, crypto and
+finance piece) ends with its own related reading and backlinks: the site's newest travel
+articles and one city per country used to follow every lifestyle article, and on those they
+were filler (dropped 2026-10-05). It is a synchronous presentational component in its own
 `<section>` with a `border-t` heading, fetched by `renderGuideArticle` and passed in through
 `related`, so `GuideArticle` stays synchronous and testable. Internal links carry no
 disclosure, and the separator is what keeps them visibly apart from any offer panel above —

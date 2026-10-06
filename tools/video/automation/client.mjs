@@ -57,14 +57,16 @@ export const PAUSE_CODES = new Set(["video_ai_subscription_paused", "video_ai_su
 // after a stage run was sent leaves its outcome unknown (RUN_UNCERTAIN).
 const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "video_ai_upstream_failed", OUTPUT_INVALID, "upstream_unavailable"]);
 // A Jev judgement (judge/policy, judge/outline) takes one call off the daily Jev budget before it
-// asks Jev (apps/api/app/video_automation/judge.py `_ask`), so it is paid like a stage run. Its only
-// settling 5xx is the API's own 502 once its Jev call failed: the API answered, and no verdict was
-// lost on the way back. Not yet the judge routes' 502 `upstream_unavailable`, unlike a stage run's:
-// they now answer a lost answer with 504 `video_judge_answer_lost` (JUDGE_LOST in
-// apps/web/app/api/video/speech/forward.ts, uncertain here like any 5xx not listed) and keep the 502
-// for an API they never reached, but a host from before that change answers the 502 for both, so
-// it moves here only once the change is live (2026-10-05-automation-client-retries-a-judge-s).
-const SETTLED_JUDGE_CODES = new Set(["video_judge_upstream_failed"]);
+// asks Jev (apps/api/app/video_automation/judge.py `_ask`), so it is paid like a stage run. It is
+// settled by the API's own 502 once its Jev call failed (the API answered, and no verdict was lost on
+// the way back) and, like a stage run, by the judge routes' 502 `upstream_unavailable`, which now
+// means only an API they never reached: a request the API took and whose answer was lost is their
+// 504 `video_judge_answer_lost` (JUDGE_LOST in apps/web/app/api/video/speech/forward.ts), uncertain
+// here like any 5xx not listed, a 502 with another code included (such as the API's
+// `video_judge_outcome_uncertain`, 2026-10-05-jev-judge-endpoints-report-an-uncertain). A host from
+// before that route change answers the 502 for both, so this client needs a host that serves it:
+// production does since a9e4c3851, deployed 2026-10-05.
+const SETTLED_JUDGE_CODES = new Set(["video_judge_upstream_failed", "upstream_unavailable"]);
 const JUDGE = Object.freeze({ paid: true, settled: SETTLED_JUDGE_CODES, what: "Jev" });
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);

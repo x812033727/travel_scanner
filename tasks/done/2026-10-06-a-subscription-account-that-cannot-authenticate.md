@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-a-subscription-account-that-cannot-authenticate
 title: A subscription account that cannot authenticate rests and the stage job fails instead of turning uncertain
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-fable-5-1-video-unstuck
 claimed_at: 2026-10-06T05:57:31Z
 created_at: 2026-10-06T05:57:11Z
-completed_at:
+completed_at: 2026-10-06T15:57:29Z
 branch: claude/video-unstuck-subscription-auth
 depends_on: []
 scope:
@@ -111,3 +111,5 @@ accounts page still shows it signed in, and the owner signs it in again there.
   the same account and would fail the same way (and would count as a run on the account).
 - The blocked production video still needs its stage job retried once this is deployed; the
   fix only changes what happens to the next such failure.
+
+- 2026-10-06: landed on main as e0e8a14d (PR #1338); closed in the board sweep that carried train #1346's complete PRs.
