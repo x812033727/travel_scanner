@@ -610,3 +610,193 @@ The correction is right. Under README rule 3 the numbers now follow the operator
 - `shared_check.py --rules docs/travel-guides-batch-8/shared-numbers.json --from-content`: PASS (0). Only two jeju info counts changed (濟州巴士轉運站, 漢拏山).
 - `pytest tests/test_guides_content_pack.py -q`: 9 passed, 5 skipped.
 - `tasks/` was not changed.
+
+# verify-4 (wave 2): Round-4 independent fact-check: PR #1335 (claude/batch-8-wave-2)
+
+Two independent verifiers checked head `1f8f4919c06c9cb80627ac6f3ce464c39157f098` on 2026-10-06. Verifier A re-checked the round-3 fix in `hallasan-hiking-reservation-guide`. Verifier B worked around the two hosts no earlier round could open (`cmcity.go.th`, `songakferry.com`). Both reports follow as delivered, with headings moved down one level. The corrections applied after them are at the end.
+
+## Round-3 fix re-check: PR #1335 (claude/batch-8-wave-2)
+
+- **Head checked:** `1f8f4919c06c9cb80627ac6f3ce464c39157f098`. I fetched it before starting and again at the end, and it did not move. The tip commit is 「content: independent fact-check round 3 for #1335」.
+- **Read-only:** no edits, commits, pushes or comments. The working tree is clean.
+- **Fetching:**
+  - Every request used the UA `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)` and carried no personal data. TLS verification stayed on.
+  - curl still fails TLS on bus.jeju.go.kr, so that host was read in headless Chromium (HTTP 200) with the page's own `POST /publicTrafficInformation/getBusRouteNum` and `/data/schedule/downScheduleExcel?gscheduleId=…`.
+  - I cross-checked the workbooks against the rendered `/schedule/viewNew/181`, `/schedule/viewNew/281` and `/schedule/view/181` pages.
+  - visithalla, visitjeju and jeju.go.kr were read with `curl -sSL`, with comments, scripts and styles stripped.
+
+### Result
+
+22 claims checked, 22 confirmed, **0 errors**. Every number the round-3 commit changed in `hallasan-hiking-reservation-guide` is correct. The disclosure sentence is accurate and meets README rule 3. No other article in the batch now contradicts it.
+
+### What I checked against what
+
+| Block | Claim | Source today | Outcome |
+|---|---|---|---|
+| [29] 281 | Jeju Bus Terminal first bus 05:40; Seogwipo Bus Terminal first bus 05:55; extra 05:50 from the old Seogwipo terminal; last bus 22:00 both ways; every 10–20 min | BIS 405019, both sheets, 「시행일 : 2026. 6. 24.」, 동진여객 | CONFIRMED (computed gaps are 10–20 both ways) |
+| [29] 281 | 約 45 分 / 約 50 分 | same | Consistent: 37–44 min (44 on 52 of 72 trips) and 46–52 min (52 on 54 of 71 trips) |
+| [29] 181 | Airport first bus 06:40, last 22:15, every 40–60 min, 38–46 min to Seongpanak; a 06:00 trip starts at Jeju Bus Terminal and skips the airport | BIS 405007, 「시행일 : 2024.8.1.」 | CONFIRMED. Airport→Seongpanak is 46 min on 16 of 19 trips, then 44, 40 and 38 |
+| [28] | Disclosure: visithalla has 281 first bus 06:00, 181 first bus 06:10 and last bus 22:29 | visithalla `contents.do?id=61&language=ko` (200) | CONFIRMED word for word: 281 「첫차 06:00, 막차 22:00 (10~14분 / 11~17분)」, 181 「첫차 06:10, 막차 22:29 (30~45분) 약 35분」 |
+| [36] | 281 05:40 / 05:55, 181 06:40 | same sheets | CONFIRMED, agrees with [29] |
+| sources | Sheets effective 2026-06-24 and 2024-08-01 | BIS notice 685 (281/282 timetable change effective 2026-06-24); notice 537 (2024-08-01 express reorganization; its 181 attachment matches 405007 cell for cell) | CONFIRMED |
+
+**README rule 3**
+- The numbers follow one version, the BIS route sheets.
+- The other version is disclosed in one sentence and is not offered as a second option.
+- The narrower-window clause does not apply, because the dates settle which version is current:
+  - BIS notice 685 documents the 281 change of 2026-06-24.
+  - The visithalla 181 figures match the **superseded 2021-09-10 sheet** (notice 360): first departure 06:10 from Jeju Bus Terminal, 35 min to Seongpanak, last bus 22:29 at Jeju Bus Terminal, header 30~65분.
+  - So the park page has not been maintained ("疏於維護"), which independently supports the choice.
+
+### Is there a newer 181 timetable than 2024-08-01?
+
+**No.**
+- **BIS:** the route list has a single 181 entry (gscheduleId 405007, scheduleId 1399). Searching notices by subject and content for 181/182/급행/시간표 shows these 181 timetable or stop notices, and none after 537:
+  - 360: timetable, effective 2021-09-10
+  - 437: stop designation, effective 2023-08-10
+  - 537: 2024-08-01 reorganization
+- **visitjeju.net:** the 181 article (CNTS_300000000013541) links to the BIS timetable instead of carrying one. Its 10:40 airport departure matches the 2024 sheet. Its 「30분~65분」 headway is the 2021 header.
+- **jeju.go.kr (Hallasan park, course07.htm):** sends readers to the BIS and has no times.
+
+### Cross-batch consistency
+
+- **marado-gapado-ferry-day-trip:** has routes and fares but no 281/181 times.
+- **jeju-3-day-itinerary:** has no 281/181 times.
+- **Diagrams:** no Jeju diagram SVG carries bus times.
+- **shared-numbers.json:** the `jeju` rules still hold on the branch packs (my replication of the patterns passes). It has no 281/181 rule.
+- **FOLLOWUPS / ERRATA:** do not mention these times.
+
+### Observations, not reported as errors
+
+- **Wording of [28].** It calls the sheets 「業者在濟州巴士資訊系統公布的時刻表」. The sheets carry 동진여객's name, but the system is the province's BIS, and the notices point to 도청 대중교통과. This is accurate enough; the rule-3 choice holds either way.
+- **The spec is out of date.** `docs/travel-guides-batch-8/hallasan-hiking-reservation-guide.md` (lines 120–121, 276, rule (11) at 335) still has the visithalla numbers. Round 3 already recorded this.
+- **The return direction is still undocumented.** visithalla lists 182 (서귀포→5.16→공항) for the return; the article names only 281 for that direction and leaves the day's buses to Naver Map or Kakao Map [32]. This was there before round 3.
+
+### Still unverifiable
+
+- **The 281 attachment to notice 685.** `/notice/download/1067` returns 200 with 0 bytes. The sheet 405019 and the notice text agree on 2026-06-24, so the numbers stand.
+- **A visitjeju Seongpanak transport page with times.** I could not find one on visitjeju.net.
+
+
+---
+
+## Blocked-source check: PR #1335 (claude/batch-8-wave-2)
+
+- **Head:** `1f8f4919c06c9cb80627ac6f3ce464c39157f098`. I fetched it before starting and again at the end; it did not move.
+- **Read-only:** I made no edits, commits, pushes or comments. Scripts and downloads stayed in the session scratchpad.
+- **Requests:** every request used the UA `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)` and sent no personal data. TLS verification was never disabled.
+
+### How I got around the 403s
+
+Both hosts still refuse every client from here:
+- `cmcity.go.th` returns Apache 403 on `www.` and on the bare domain.
+- `songakferry.com` and `songakferry.imweb.me` return the imweb block page.
+- `web.archive.org`, `index.commoncrawl.org` and `archive.ph` reset the connection.
+
+Three routes worked:
+1. **Common Crawl WARCs**, read through `data.commoncrawl.org`, which is reachable. I binary-searched each crawl's `cluster.idx` with HTTP Range requests, read the CDX block, then range-fetched the WARC record. These are the crawler's own copies of the official pages; I stripped comments, scripts and styles before reading.
+   - `songakferry.com/time_regular` and `/price`: captured **2026-09-06** (CC-MAIN-2026-39).
+   - `cmcity.go.th/list/page/496/ประวัติความเป็นมา/`: captured **2024-10-09** (CC-MAIN-2024-42), plus 2024-03, 2024-04, 2024-07 and 2023 copies with the same text. Page 488 was captured 2024-03-01.
+2. **Korea Shipping Association booking system** (`island.theksa.co.kr`, 한국해운조합). Songak Ferry's own "공식예매" link points to it (`sourcesiteid=FLL7Y2TE5B9V1UBIIN9G`). I read it live through `/booking/selectPairPortList` and `/booking/selectDepartureList`.
+3. **TAT head office Thai pages**, live in headed Chromium under xvfb: `thai.tourismthailand.org/Shop/ถนนคนเดินประตูท่าแพ` and `/Shop/ถนนคนเดินเชียงใหม่`. The English pages carry only an address.
+
+### (1) chiang-mai-night-markets-walking-streets
+
+I checked every claim that rests on cmcity against the archived official page. All of them match except one wording point:
+
+| Claim (blocks) | Result |
+|---|---|
+| Sat/Sun road closures by the municipality ([0], [9]) | Confirmed |
+| Wualai: near Chiang Mai Gate, Sat only, about 17:00–22:00, local vendors so smaller than Tha Phae, silver village ([0], [5], [16], [17], [37]) | Confirmed |
+| Sunday: Ratchadamnoen × Phra Pokklao crossing at สี่แยกกลางเวียง, from Tha Phae Gate to Wat Phra Singh, Sunday only, about 17:00–22:00, largest and most famous ([0], [5], [12], [37], diagram) | Confirmed. TAT HQ's live page also says Sunday only, 17.00–22.00 and gives the same route |
+| About 1.5 km ([0], [5], [9], [11], [37], diagram) | Confirmed (「ระยะทางประมาณ 1.50 กิโลเมตร」); TAT has a different figure, see notes |
+| 2545 start on Tha Phae Rd; moved to Ratchadamnoen 31 Aug 2547; hours changed to 15:00–22:00 ([9], [37]) | Confirmed |
+| Goods, food, massage booths, portraits, music and busking incl. human statues ([13]) | Confirmed |
+| Five named temples incl. Chedi Luang and Phra Singh; lit up, selling allowed on the grounds ([14]) | Confirmed |
+| 「市政府的頁名仍叫塔佩步行街（ถนนคนเดินท่าแพ）」 ([9]) | **Wrong (minor).** The page is titled ถนนคนเดินเชียงใหม่ ＞ ประวัติความเป็นมา; ถนนคนเดินท่าแพ is the body's name for the Sunday street. Change to 「市政府的頁面仍把週日這條叫塔佩步行街」 |
+| Jing Jai registered name จริงใจ Farmers Market ([26]) | **Still unverifiable.** The 2566 PDF was never captured |
+
+### (2) marado-gapado-ferry-day-trip: Songak column
+
+Everything is confirmed, by the operator's own page (2026-09-06 copy) and by today's KSA data:
+- **Two timetable sets** ([5], [8]):
+  - 09:20-first: 09:20, 10:50, 12:40, 14:10; returns 11:30, 13:20, 14:50, 16:10; stays 1h40, 2h, 1h40, 1h30; plus 15:30 「편도(숙박)」.
+  - 10:00-first: 10:00, 11:50, 13:30; returns 12:30, 14:10, 15:30; stays 2h, 1h50, 1h30; plus 14:50 「편도(숙박)」.
+- **Which set runs when:** KSA has the 10:00 set on Oct 7–8 and the 09:20 set on Oct 9–31. November is not on sale yet.
+- **Stays of 1h30–2h** and **the last row being 편도(숙박)** ([5], [13], [14]): confirmed.
+- **30 min crossing** ([5], diagram): KSA says 「0시간 30분」.
+- **Fare** ([5], [8]): 20,000 + 1,000 = 21,000, excluding the fuel surcharge. The price table's column is 왕복요금, and KSA's adult fare is 10,000 per leg.
+- **Songak goes only to Marado:** KSA's port-pair list for this operator has only 송악산 산이수동 ↔ 마라도.
+
+### Notes (not reported as errors)
+
+- **The 1.5 km figure has a second official value.** Both TAT HQ's live Thai page (「รวมระยะทางประมาณ 1 กิโลเมตร」) and TAT Tokyo (約1km) give about 1 km. The spec's rule (3) forbids writing both, and round 1 ruled the spec overrides README rule 3 for this pack, so I left it alone. The new evidence does help on hours: TAT HQ now agrees with the municipality on 17:00–22:00, so only TAT Tokyo still says 24:00.
+- **Where readers can see the day's Songak set.** The operator site posts both sets with no dates, while KSA's booking shows which one runs on a given date. [8]'s 「出發前看官網當天用的是哪一套」 could point readers to the operator's booking page. This is optional.
+- **편도(숙박) sailings are not bookable online.** They do not appear in KSA online booking, which fits overnight guests booking by phone.
+- **One-way prices on the Songak price page.** Besides the 왕복요금 table, the page lists 마라도주민 1,000원(편도) and a VIP-room surcharge (편도 20,000 / 왕복 30,000). 「票價頁只列來回票價」 holds for ordinary passengers.
+- **`checked_on: 2026-10-06` on the cmcity and songakferry sources.** These hosts are 403 here, but the writer worked from a different machine (see the launch ticket), so this is not evidence the pages were not opened. The content matches the archive copies either way.
+- **Gapado [12] (14:20 printed twice).** I did not re-check it; it was out of scope.
+
+### Still unverifiable
+
+- **Jing Jai's registered name** (cmcity 2566 PDF). It is in no Common Crawl index from 2023 to 2025-47. The live host is 403, the Wayback, archive.ph and CC index servers reset, data.go.th returns 403, and chiangmai.go.th serves a self-signed certificate, which I did not bypass.
+- **Whether cmcity page 496 changed after 2024-10-09.** No newer capture exists; Common Crawl also got 403 on 2026-09-11. The spec's 2026-09-20 quotes match the 2024 copy word for word.
+
+### Verdict
+
+- **Songak column:** fully confirmed; nothing to change.
+- **Night markets:** every cmcity claim except one matches the official page as archived, and the live TAT HQ page corroborates the hours and route.
+- **To fix:** one minor wording error in night-markets [9] (「頁名」).
+- **Still open:** Jing Jai's registered name.
+
+## Round-4 corrections as applied on the branch (2026-10-06)
+
+Before changing anything I re-opened the sources myself, with the same User-Agent and no personal data. TLS verification stayed on. The pack has only the zh-TW locale, so no other locale needed a change.
+
+**1. Night markets blocks[9], 「頁名」: applied.**
+- The live page `www.cmcity.go.th/list/page/496/ประวัติความเป็นมา/` still returns 403 (401 bytes) to curl.
+- I range-fetched the Common Crawl record the verifier cited: CC-MAIN-2024-42, offset 33144695, length 23815. The fetch returned HTTP 206 with 23,815 bytes. The record's WARC-Date is 2024-10-09T12:52:56Z and its target URI is the page-496 URL.
+- After I stripped comments, scripts and styles, the page reads as follows:
+  - The `<title>` is เทศบาลนครเชียงใหม่.
+  - The breadcrumb is ขณะนี้คุณอยู่ที่ > หน้าแรก > ประวัติความเป็นมา.
+  - The content heading is ถนนคนเดินเชียงใหม่, then ประวัติความเป็นมา.
+  - ถนนคนเดินท่าแพ appears only in the body, twice: 「จึงมีขนาดเล็กกว่าถนนคนเดินท่าแพ」 and 「ถนนคนเดินวันอาทิตย์ (ถนนคนเดินท่าแพ)อยู่บนถนนราชดำเนินและถนนพระปกเกล้า」.
+- The verifier is right. 「市政府的頁名仍叫塔佩步行街（ถนนคนเดินท่าแพ），攤位卻在 Ratchadamnoen 路上。」 now reads 「市政府的頁面仍把週日這條叫塔佩步行街（ถนนคนเดินท่าแพ），攤位卻在 Ratchadamnoen 路上。」
+- No number changed. The title of source 0 (「ถนนคนเดินเชียงใหม่ 沿革與一般資料」) already matched the page heading, so it stays.
+- The spec has the same wording at line 50 and in rule (4) at line 167. `ERRATA.md` says spec files are not edited after the fact, so the spec stays as it is. The error is recorded in `ERRATA.md` under 第二波, in the chiang-mai section.
+
+**2. Night markets blocks[26], Jing Jai's registered name: attribution added, value unchanged.**
+- No official source I can reach confirms it.
+- I extended the verifier's Common Crawl search to the ten crawls it had not covered: CC-MAIN-2025-51 and CC-MAIN-2026-04, -08, -12, -17, -21, -25, -30, -34 and -39.
+  - None of them has a capture of `cmcity.go.th/Download/…`, of page 488 or of page 496.
+  - The search itself works: the same crawls hold other cmcity URLs, such as the homepage, `/list/page/334/…`, `/list/page/411/…` and `/list/pdf/…`.
+  - So the market PDF was never crawled. The live host is still 403.
+- The sentence already named the municipality as the source. It now also gives the document's year, as [32] dates the TAT Tokyo bus hours (「泰國觀光局東京辦事處寫 2024 年 11 月當時…」).
+  - 「Jing Jai 市集（Jing Jai Market，市政府登記名稱是 จริงใจ Farmers Market）」 now reads 「Jing Jai 市集（Jing Jai Market，市政府 2023 年版市場資料上的登記名稱是 จริงใจ Farmers Market）」.
+  - 2023 is Thai year 2566. That year appears in the attachment name the verifier saw on the 2024-03-01 capture of page 488 (「ข้อมูลตลาดในเขตเทศบาลนครเชียงใหม่ 2566.pdf」) and in the title of source 1 (「市場資料表 2566 年版」).
+  - No name or number was invented.
+
+**Not changed**
+- **Hallasan (verifier A):** 22 of 22 confirmed, so there was nothing to apply. Its two still-unverifiable items are not claims the article makes:
+  - The 281 numbers rest on sheet 405019 and the notice text, not on the 0-byte attachment.
+  - The article cites no visitjeju Seongpanak page.
+- **Marado, Songak column:** confirmed by the 2026-09-06 operator copy and by live KSA data. The block page on the live songakferry.com does not affect any sentence.
+- **Night markets, whether page 496 changed after 2024-10-09:** no attribution added, for three reasons:
+  - [9] already attributes the history to the municipal page.
+  - The spec's 2026-09-20 quotes match the 2024 copy word for word.
+  - TAT HQ's live page corroborates the hours and the route.
+- **Gapado [12], 14:20 printed twice:** no change. The article itself already says 「官網把加波島「島上出發」的 14:20 寫了兩次…上表只列一次」, so this describes the source and is not a duplication error.
+- **Optional notes not applied, because they are not errors:**
+  - Pointing [8] to KSA booking.
+  - 편도(숙박) sailings not being bookable online.
+  - The one-way prices on the Songak price page.
+  - TAT's 1 km figure. The spec's rule (3) also bars it, as round 1 ruled.
+
+**Checks (from `apps/api`, after `uv sync --frozen`)**
+- `uv run python -m app.guides.pack_cli lint --slug chiang-mai-night-markets-walking-streets`: exit 0.
+- `intake_check.py --slug <slug> --from-content --manifest docs/travel-guides-batch-8/batch.json`: PASS (0 failures) on all seven wave-2 slugs.
+  - Night markets: body_length 3697, inside the 1800–4200 band.
+  - The night-markets diagram still passes "every number on the diagram is in the text".
+- `shared_check.py --rules docs/travel-guides-batch-8/shared-numbers.json --from-content`: PASS (0). Its output is identical before and after the change.
+- `pytest tests/test_guides_content_pack.py -q`: 9 passed, 5 skipped.
+- `tasks/` was not changed.
