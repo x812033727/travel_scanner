@@ -177,3 +177,97 @@ Other internal checks: the Day 4 row of the overview table (「開園前 30 分�
   1. `usj-guide.json` (five locales) still ties its hours to September 2026: 「2026 年 9 月閉園時間是 21:00 到 22:00」, 「9 月開園 8:00 到 9:00」, also in its diagram description. This is the same staleness this PR fixed in the itinerary. No open task covers it; worth filing.
   2. The SNW sentence in blocks[17] states the entry requirement flatly. Officially it applies depending on the day's conditions. The sentence predates this PR.
 - Second round required: no (0 fact changes in this round).
+
+### verify-2: PR #1330 `claude/usj-hours`, osaka-kyoto-nara-4-day-itinerary (zh-TW only)
+
+Checker: independent round-2 verifier. I wrote neither the PR, the round-1 report nor the apply pass. Date: 2026-10-06. Mode: read-only (no edits, commits, pushes or comments).
+Branch head checked: `81e49ae151cf99a32e8331936f2a3a91c9559b0c`, fetched again at the start. Commits: 36d81079 (Day 4 paragraph and 3 USJ `checked_on`), 74db2e46 (task close), 81e49ae1 (round-1 apply). Main is 11 commits ahead of the merge-base, and none of them touch this pack or its task files.
+
+#### Fetch method
+- Every request used UA `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`, with no personal data in any header, query or form.
+- The pages were rendered with Playwright 1.56.1 (`/opt/node-tools`) and `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`, through the session proxy, waiting for `networkidle` plus 6-7 s.
+- For each page I saved `innerText`, the DOM `textContent`, all links and image URLs, and a full-page screenshot.
+- The hours calendar was walked by clicking `[data-aui="nextMonth"]` until the button disappeared (after 2026-12).
+- Fetch time was 17:29 UTC, which is 10/7 02:29 JST, so the calendar starts at 10/7.
+
+| URL | HTTP | Final URL |
+|---|---|---|
+| https://www.usjticketing.com/ | 200 (rendered) | same |
+| https://www.usj.co.jp/web/zh/tw/park-guide/schedule/park-hour2 | 200 (rendered) | same |
+| https://www.usj.co.jp/web/zh/tw/tickets | 200 (rendered) | same |
+| https://www.usj.co.jp/web/en/us/tickets | 200 (rendered) | same |
+| https://www.usj.co.jp/web/zh/tw/enjoy/numbered-ticket | 200 (rendered) | same |
+| https://www.usj.co.jp/web/zh/tw/access/train | 200 (rendered) | same (not in sample; page list only) |
+
+#### A. Round-1 corrections, re-checked on the current head
+
+| # | Location | Now reads | Check | Verdict |
+|---|---|---|---|---|
+| R1 | `locales.zh-TW.description` | 「…清水寺、東大寺、大阪城、環球影城的門票與開放時間（2026 年 9 至 10 月查證）…」 | The `sources` give 清水寺 (0-2), 東大寺 (5-6) and 大阪城 (7) a `checked_on` of 2026-09-13, and USJ (8-10) 2026-10-06. So 「9 至 10 月」 is true for every item in the list. | CORRECT FIX |
+| R2 | `blocks[1]` | 「…門票、開放時間、車程都在 2026 年 9 至 10 月從官網查證過。」 | Transport times are 2026-09-13, KANSAI LITE is 2026-10-05 (#1258, commit 88459c4e) and USJ is 2026-10-06. Nothing is dated outside September-October. The intro and the description now agree. | CORRECT FIX |
+| R3 | `blocks[22]` and `blocks[24]` captions (untouched) | 「2026 年 9 月查證…；KANSAI RAILWAY PASS LITE 為 2026 年 10 月 5 日查證…」 / 「…票價 2026 年 9 月查證」 | Both cover only the transport-pass and route tables, whose sources are 2026-09-13, plus KANSAI LITE at 10-05, which the caption dates separately. Neither table mentions USJ. | NOT INCONSISTENT; leaving them was right |
+| R4 | Diff 74db2e46..81e49ae1 on the pack | Only the two strings above changed. | No number, source, block order or other text changed. The JSON is valid and lint passes. | NOTHING NEW INTRODUCED |
+
+**Asked to decide: the September wording against the USJ paragraph dated 2026-10-06.** On the current head this is no longer an inconsistency for readers.
+- The description and intro now say 「2026 年 9 至 10 月」, which includes the USJ date 10/6.
+- The only September-only dates left are the two table captions. They cover transport tables that were in fact checked in September, and they say nothing about USJ.
+- The page does not show a reader two different check dates for the same fact.
+- Remaining staleness of the pack as a whole (16 of 20 sources from 2026-09-13, no summary, two self-references) is deferred to the open ticket `2026-10-06-itinerary-osaka-kyoto-nara-full-recheck`, which is correct.
+
+#### B. Changed claims in blocks[17] and the sources
+
+The task asked me to check all USJ hours and price claims. On top of those, I drew a random third of round 1's other claims with `random.Random(13302).sample`, which picked #7, 8, 9, 12, 14, 18, 20 and 22.
+
+| # | Claim | Source | Verdict | Evidence seen today |
+|---|---|---|---|---|
+| 3 | Hours differ by date | park-hour2 | CONFIRMED | The calendar lists hours per day. The page says 「營業時間可能不經預告逕自更改…當天可能會較園區開園時間提早開放入場」. |
+| 4 | Opens roughly 8:00-9:00 | park-hour2 | CONFIRMED (through 2026-12-31) | Oct 7-31: 08:00, except 10/25 at 08:30. Nov: 08:00 / 08:30 / 09:00. Dec: 08:00 / 08:30 / 09:00. |
+| 5 | Closes roughly 19:00-22:00 | park-hour2 | CONFIRMED | Oct: 22:00, except 10/25 at 21:30. Nov: 19:00-22:00 (11/20 and 11/27 at 08:30-19:00). Dec: 19:00-21:30 (12/4, 12/11 and 12/18 at 19:00). |
+| 6 | 「少數日子更早閉園」 | park-hour2 | CONFIRMED | The dated DOM list shows 「2026年 12月 31日(四) 09:00 〜 17:00」. |
+| 7* | The official 「營業時間、時間表」 calendar lists every day | park-hour2 | CONFIRMED | The page heading is 「營業時間、時間表」. The calendar is published only through 2026-12, so the text's 「出發前一週再確認」 is sound. |
+| 8* | Floating price that varies by admission date | usjticketing.com; usj.co.jp zh-TW tickets | CONFIRMED | 「*Prices vary depending on the date of admission.」 and 「* 價格依日期而有所不同。請上網站查看價格日曆。」 |
+| 9* | 1-day adult ticket from 8,400 日圓 | usjticketing.com | CONFIRMED | 「1 Day Studio Pass … Adult from ¥8,400〜 (incl. tax)」 |
+| 10 | Adult means age 12 and over | zh-TW tickets | CONFIRMED | 「若入場當日遊客年齡為4至11歲，請購買兒童票，12歲以上者請購買成人票」 |
+| 11 | 1.5-day ticket from 13,600 日圓 | usjticketing.com | CONFIRMED | 「1.5 Day Studio Pass (Visit Date 9/1~) … Adult from ¥13,600〜」 (entry from 3:00 PM) |
+| 12* | 2-day ticket from 16,000 日圓 | usjticketing.com | CONFIRMED | 「2 Day Studio Pass (Visit Date 9/1~) … Adult from ¥16,000〜」 |
+| 13 | Prices include tax | usjticketing.com | CONFIRMED | 「(incl. tax)」 on all three |
+| 14* | usjticketing.com is the 官方指定售票網站 | usj.co.jp/web/en/us/tickets; usjticketing.com | CONFIRMED | USJ's EN tickets page links 「Official Web Ticket Store => https://www.usjticketing.com/」 twice. The store's header says 「operated by JTRWeb LTD. - an authorised ticket reseller of Universal Studios Japan」. |
+| 15 | 「2026 年 10 月 6 日的起價」 | usjticketing.com | CONFIRMED | The same three starting prices on 10/6 UTC. |
+| 16 | Separate child ticket for ages 4-11 | zh-TW tickets | CONFIRMED | Same sentence as #10. |
+| 17 | The visit date is set at purchase | zh-TW tickets | CONFIRMED | 「※購買影城入場券需要指定來園日期。請於購買時選擇您的來園日期。」 Rescheduling afterwards is possible, which the text does not contradict. |
+| 18* | SNW needs an app ticket, or a ticket with guaranteed entry bought in advance (sentence unchanged by this PR) | zh-TW numbered-ticket; usjticketing.com | CONFIRMED, with the same nuance round 1 noted | 「依照當天的現場狀況，進入部分區域時需要「區域入場號碼券」或「區域入場保證券」」. The store says entry may sometimes be possible without one. This wording predates the PR and is out of scope. |
+| 19 | Resale is banned; tickets from auction sites are voided | zh-TW tickets | CONFIRMED | 「警告：票券嚴禁轉售。」 and 「…在門票販售網站或拍賣網站上向轉賣者購買的門票，其QR Code將會無效且無法使用。」 |
+| 20* | `checked_on` 2026-10-06 on sources[8-10]; titles match the pages | the three USJ URLs | CONFIRMED | All three render today with the facts used. The titles match the page headings. |
+| 22* | Follow-up ticket: 16 of 20 sources at 2026-09-13, KANSAI LITE changed in #1258 on 2026-10-05, 「這篇／本文」 used twice | branch pack; git log | CONFIRMED | 16 sources at 09-13, 3 at 10-06, 1 at 10-05. Commit 88459c4e (#1258). `intake_check` reports 本文/這篇 = 2 (blocks[1] and blocks[22]). |
+| 24 | Prices shared with `usj-guide.json` (zh-TW) | content pack | CONSISTENT | 8,400 / 13,600 / 16,000 日圓起 in both. |
+
+\* = in the random third.
+
+I also checked the facts the apply pass says it re-read:
+- usjticketing.com: 200, ¥8,400〜 / ¥13,600〜 / ¥16,000〜 incl. tax, 「Prices vary…」.
+- park-hour2: 200, renders 2026-10 to 2026-12, October 08:00〜22:00 with one day at 08:30〜21:30.
+
+All of these are CONFIRMED.
+
+#### C. Self-checks
+These were run on a `git archive` export of the branch in my scratchpad, not in the repo.
+- `pack_cli lint --slug osaka-kyoto-nara-4-day-itinerary`: 0 errors. The only warning is `no_summary`, which already exists on main.
+- `pytest tests/test_guides_content_pack.py -q`: 9 passed, 5 skipped. This run used the full `apps/web/public/guides` export; a first run with only this slug's images failed on other slugs' missing files, which is an artifact of the export.
+- `intake_check.py --from-content`: 3 FAILs. All three already exist on main and are deferred to the follow-up ticket: no summary, the `?city=` link (which travel-batch.md says is not an error) and two self-references. The diagram-number check passes.
+- `node tools/tasks.mjs check`: validated 1538 task files, exit 0. Its warnings are about unrelated stale claims.
+
+#### D. Observations (not errors, no change required)
+1. The follow-up ticket's 「How to verify」 still runs `grep -n "9 月"`, which no longer matches the new 「9 至 10 月」 in the description and intro. The apply pass added a Notes bullet that says this, so the recheck agent is told. It may also want to search for 「9 至 10 月」.
+2. 「營業時間每天不一樣」 overstates a little. October is 08:00-22:00 every day except 10/25, and November and December vary much more. 「依日期不同」 would be more exact. This is style, not a fact error, and round 1 noted it too.
+3. `usj-guide.json` (five locales) still ties its hours to September 2026. Neither main nor the branch has an open ticket for it, so it is still worth filing. It is outside this PR's scope.
+
+#### Summary
+- Round-1 corrections re-checked: 2 text edits plus the caption decision, plus a check that nothing else changed. All are correct and nothing new was introduced.
+- Claims checked: 24. Confirmed: 24, including 1 consistent shared-number check. Errors: 0. Fact changes needed: 0.
+- The September-against-10/6 question is resolved for readers: the description and intro say 「9 至 10 月」, and the captions cover only transport tables actually checked in September.
+- Time-sensitive state today:
+  - Calendar published through 2026-12-31.
+  - Starting prices ¥8,400 / ¥13,600 / ¥16,000 incl. tax.
+  - The store notes maintenance from 10/13 22:00 to 10/14 06:00 JST, which does not matter for the article.
+- Third round required: no.
+- Recommendation: no blocking findings for the content. Publishing still follows the DoD: guides-import with `--slug` after merge, with the owner's consent.
