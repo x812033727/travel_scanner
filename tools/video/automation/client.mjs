@@ -145,24 +145,37 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   const fetchJob = (receipt, timeoutMs) => fetchImpl(`${site}/api/video/automation/run/jobs/${receipt.id}?input_hash=${receipt.input_hash}`, {
     method: "GET", headers: jobHeaders, signal: AbortSignal.timeout(Math.max(1, Math.floor(timeoutMs))),
   });
-  /** Look a journal's saved job up and record what the server says; a bad answer throws. */
+  // A 4xx that settles a job lookup: the server has no such job for this token (404 after a
+  // re-pair), the job is not the receipt's (409 video_ai_job_input_changed) or the identity is
+  // malformed (400, 422). Asking again cannot change it. Not a token problem (401, 403: the
+  // owner's, like everywhere else), a timeout (408) or a rate limit (429), which are tried again.
+  const settledLookup = (status) => status >= 400 && status < 500 && ![401, 403, 408, 429].includes(status);
+  /**
+   * Look a journal's saved job up and record what the server says; a bad answer throws. The
+   * error of a settled 4xx carries `gone: { status, code }` so the caller may archive the journal.
+   */
   async function lookupReceipt(entry, timeoutMs = 25_000) {
     const response = await fetchJob(entry.record.receipt, timeoutMs);
     if (!response.ok) {
       const problem = await problemOf(response);
-      throw new AutomationError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code,
-        who: response.status === 401 || OWNER_CODES.has(problem.code) ? "owner" : "service" });
+      const owner = response.status === 401 || response.status === 403 || OWNER_CODES.has(problem.code);
+      throw Object.assign(new AutomationError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code, who: owner ? "owner" : "service" }),
+        !owner && settledLookup(response.status) ? { gone: { status: response.status, code: problem.code } } : {});
     }
     return receipts.receive(entry, await response.json());
   }
   const pending = (body, why) => tagged(new AutomationError(`the saved stage run is still pending${why ? ` (${why})` : ""}; its receipt will be recovered next round`, { code: RUN_PENDING }), body);
-  const inputChanged = (body) => tagged(Object.assign(new AutomationError(INPUT_CHANGED_MESSAGE, { code: RUN_UNCERTAIN, who: "owner" }),
-    { why: INPUT_CHANGED_MESSAGE, receipt_code: INPUT_CHANGED_CODE }), body);
+  // The owner's card shows this message (flow.mjs unanswered): the saved run's own cause first.
+  const inputChanged = (body, detail = "") => {
+    const message = detail ? `${detail}; ${INPUT_CHANGED_MESSAGE}` : INPUT_CHANGED_MESSAGE;
+    return tagged(Object.assign(new AutomationError(message, { code: RUN_UNCERTAIN, who: "owner" }), { why: message, receipt_code: INPUT_CHANGED_CODE }), body);
+  };
   /**
    * An unfinished journal of this stage whose inputs differ from today's (a deploy changed the
    * prompt, the owner edited a setting): what was spent on it is spent either way, so only a job
-   * still running (wait) or uncertain (the owner looks) keeps the video. A job that is over is
-   * archived, a never-dispatched request too, and the caller starts the current request.
+   * still running (wait) or uncertain (the owner looks) keeps the video. A job that is over, or
+   * that the server no longer has, is archived, a never-dispatched request too, and the caller
+   * starts the current request.
    */
   async function reconcileStale(entry, body) {
     const saved = entry.record.receipt;
@@ -173,11 +186,12 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     try { fresh = await lookupReceipt(entry); }
     catch (error) {
       if (error instanceof RunReceiptError || error instanceof AutomationError && error.who === "owner") throw error;
+      if (error.gone) { receipts.archive(entry, { autoArchive: true, gone: error.gone }); return; }
       throw pending(body, `the stale run could not be looked up: ${error.message}`);
     }
     if (fresh.status === "succeeded") receipts.archive(entry, { autoArchive: true });
     else if (fresh.status === "failed") receipts.removeFailed(entry);
-    else if (fresh.status === "uncertain") throw inputChanged(body);
+    else if (fresh.status === "uncertain") throw inputChanged(body, fresh.error_detail || "the saved model run is uncertain");
     else throw pending(body, "an earlier request of this stage is still running");
   }
   async function durableRun(body, previous) {
@@ -273,20 +287,20 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   async function retryRuns(slug, authorization = {}) {
     try {
       const confirmed = [];
-      // A plain failure is settled on the server: nothing to look up, and nothing to keep.
-      const candidates = receipts.retryCandidates(slug, authorization).filter((entry) => {
-        if (entry.record.receipt?.status !== "failed" || policyHeld(entry.record)) return true;
-        receipts.removeFailed(entry);
-        return false;
-      });
+      const candidates = receipts.retryCandidates(slug, authorization);
+      // A plain failure is settled on the server: nothing to look up, and nothing to keep. It
+      // is cleared below, after the STOP checks, and does not make a policy retry ambiguous.
+      const plainFailure = (entry) => entry.record.receipt?.status === "failed" && !policyHeld(entry.record);
       // A project-local owner retry authorizes one policy-held request. Do not partly
       // archive a legacy/mixed set before discovering that its request was already used.
-      if (candidates.length > 1 && candidates.some((entry) => policyHeld(entry.record))) {
+      const live = candidates.filter((entry) => !plainFailure(entry));
+      if (live.length > 1 && live.some((entry) => policyHeld(entry.record))) {
         throw new Error("multiple saved runs include a policy hold; inspect their retained identities before retrying this project");
       }
       for (const entry of candidates) {
         if (stopRequested(path.dirname(path.dirname(entry.file)))) throw new Error("STOP prevents this owner retry");
         const saved = entry.record.receipt;
+        if (plainFailure(entry)) { confirmed.push({ entry, fresh: saved, policyValidated: false }); continue; }
         if (policyHeld(entry.record)) {
           const freshSettings = await request("GET", "automation/settings");
           const requestFormat = entry.record.request.format;
@@ -301,7 +315,15 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
           }
           if (!saved) { confirmed.push({ entry, fresh: null, policyValidated: true }); continue; }
         }
-        const fresh = await lookupReceipt(entry);
+        let fresh;
+        try { fresh = await lookupReceipt(entry); }
+        catch (error) {
+          // The server no longer has the job: nothing to recover and nothing to wait for. A
+          // policy hold is verified by its job, so without one it stays for the owner.
+          if (!error.gone || policyHeld(entry.record)) throw error;
+          confirmed.push({ entry, fresh: null, policyValidated: false, gone: error.gone });
+          continue;
+        }
         if (policyHeld(entry.record) && (fresh.status !== "failed" || fresh.error_code !== POLICY_HOLD || fresh.dispatched_at !== null)) {
           throw new Error("the saved policy refusal is no longer a verified undispatched failure");
         }
@@ -315,11 +337,12 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       }
       // Verify every selected lookup before archiving any operation. A failed lookup leaves
       // all keys in place, even when another operation's current state was already readable.
-      for (const { entry, fresh, policyValidated } of confirmed) {
+      for (const { entry, fresh, policyValidated, gone = null } of confirmed) {
         if (stopRequested(path.dirname(path.dirname(entry.file)))) throw new Error("STOP prevents this owner retry");
         // A late successful commit is recovered by the normal run path, before any budget
         // check. Only a freshly confirmed uncertain result permits this explicit new attempt.
-        if (fresh?.status === "failed" && !policyValidated) receipts.removeFailed(entry);
+        if (gone) receipts.archive(entry, { autoArchive: true, gone });
+        else if (fresh?.status === "failed" && !policyValidated) receipts.removeFailed(entry);
         else if (policyValidated || fresh.status === "uncertain" || fresh.status === "succeeded" && authorization.reason?.includes("inputs changed")) receipts.archive(entry, { ...authorization, policyValidated });
       }
     } catch (error) {

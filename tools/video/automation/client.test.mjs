@@ -6,7 +6,7 @@ import test from "node:test";
 import { EXIT, main as runCli } from "../cli.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
 import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
-import { AUTO_ARCHIVE_REASON, INPUT_CHANGED_CODE, RUN_RECEIPTS_DIR, runReceiptStore } from "./run-receipts.mjs";
+import { AUTO_ARCHIVE_REASON, INPUT_CHANGED_CODE, INPUT_CHANGED_MESSAGE, jobGoneReason, RUN_RECEIPTS_DIR, runReceiptStore } from "./run-receipts.mjs";
 
 const SITE = "https://site.test";
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -539,7 +539,7 @@ test("a stale journal whose run is uncertain still needs the owner, and a lookup
       // The first round's own poll sees a running job; the answers below are for the stale lookup.
       if (!stale) return Response.json(job(original, "running"));
       gets++;
-      if (answer === "uncertain") return Response.json(job(original, "uncertain"));
+      if (answer === "uncertain") return Response.json({ ...job(original, "uncertain"), error_detail: "HTTP 403: the subscription refused this run", error_status: 403 });
       if (answer === "HTTP 502") return Response.json({ code: "upstream_unavailable", detail: "Cannot read its current state" }, { status: 502 });
       if (answer === "half a body") return new Response('{"id":', { status: 200, headers: { "Content-Type": "application/json" } });
       throw Object.assign(new TypeError("fetch failed"), { cause: { code: "ECONNRESET", message: "socket hang up" } });
@@ -550,8 +550,14 @@ test("a stale journal whose run is uncertain still needs the owner, and a lookup
     const changed = { text: "a deploy changed the prompt" };
     stale = true;
     if (answer === "uncertain") {
-      await assert.rejects(runWriter(client, changed), (error) => error.code === RUN_UNCERTAIN && error.who === "owner" && /inputs changed/.test(error.why)
-        && error.receipt_code === INPUT_CHANGED_CODE && error.slug === DURABLE_SLUG && error.stage === "writer", answer);
+      await assert.rejects(runWriter(client, changed), (error) => {
+        assert.equal(error.code, RUN_UNCERTAIN); assert.equal(error.who, "owner"); assert.equal(error.receipt_code, INPUT_CHANGED_CODE);
+        assert.equal(error.slug, DURABLE_SLUG); assert.equal(error.stage, "writer");
+        // The owner's card (flow.mjs unanswered) shows the saved run's own cause before the input-changed sentence.
+        assert.equal(error.message, `HTTP 403: the subscription refused this run; ${INPUT_CHANGED_MESSAGE}`);
+        assert.equal(error.why, error.message);
+        return true;
+      }, answer);
     } else {
       await assert.rejects(runWriter(client, changed), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG && error.stage === "writer" && /could not be looked up/.test(error.message), answer);
     }
@@ -560,6 +566,40 @@ test("a stale journal whose run is uncertain still needs the owner, and a lookup
     assert.deepEqual(durableFiles(box), [file], answer);
     if (answer !== "uncertain") assert.equal(readFileSync(file, "utf8"), before, `${answer}: the journal is intact`);
     else assert.equal(JSON.parse(readFileSync(file, "utf8")).receipt.status, "uncertain", "the lookup's answer is recorded for the owner");
+  }
+});
+
+test("a stale journal whose lookup answers a settled 4xx is archived with the answer named, and one new request follows; 408 and 429 wait", async () => {
+  for (const [status, code] of [[404, "video_ai_job_not_found"], [409, "video_ai_job_input_changed"], [422, ""], [408, ""], [429, "rate_limit_exceeded"]]) {
+    const box = sandbox(), posted = [];
+    let original, stale = false, gets = 0;
+    const client = durableClient(box, async (_url, init) => {
+      if (init.method === "POST") { const body = JSON.parse(init.body); posted.push(body); original ??= body; return Response.json(job(body, body === original ? "running" : "succeeded")); }
+      if (!stale) return Response.json(job(original, "running"));
+      gets++;
+      return Response.json({ code, detail: code ? `the server says ${code}` : "" }, { status });
+    });
+    await client.settings();
+    await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING, status);
+    const [file] = durableFiles(box), before = readFileSync(file, "utf8");
+    stale = true;
+    const changed = { text: "a deploy changed the prompt" };
+    if ([408, 429].includes(status)) {
+      await assert.rejects(runWriter(client, changed), (error) => error.code === RUN_PENDING && /could not be looked up/.test(error.message), status);
+      assert.deepEqual(durableFiles(box), [file], status);
+      assert.equal(readFileSync(file, "utf8"), before, `${status}: the journal is intact for the next round`);
+      assert.equal(posted.length, 1, status);
+    } else {
+      assert.deepEqual(await runWriter(client, changed), savedAnswer, status);
+      assert.equal(posted.length, 2, `${status}: exactly one new POST follows`);
+      assert.deepEqual(posted[1].payload, changed, status);
+      const [archived] = archiveOf(box);
+      assert.equal(archived.request_key, posted[0].request_key, status);
+      assert.equal(archived.receipt.status, "running", `${status}: the receipt bytes are kept`);
+      assert.deepEqual({ ...archived.owner_retry, archived_at: null }, { request_id: null, reason: jobGoneReason({ status, code }), archived_at: null }, status);
+      assert.equal(durableFiles(box).length, 1, status);
+    }
+    assert.equal(gets, 1, `${status}: the stale job is looked up once`);
   }
 });
 
@@ -587,9 +627,32 @@ test("an owner retry on a still-running stale journal waits without consuming th
   store.receive(entry, { ...job({ request_key: entry.record.request_key }, "failed"), error_code: "video_ai_upstream_failed", error_detail: "vendor error", error_status: 502 });
   const quiet = durableClient(failedBox, async () => assert.fail("a settled failure needs no lookup"));
   await quiet.settings();
+  const stop = path.join(failedBox.work, DURABLE_SLUG, "STOP");
+  writeFileSync(stop, "hold");
+  await assert.rejects(quiet.retryRuns(DURABLE_SLUG, authorization), (error) => error.code === RUN_UNCERTAIN && /STOP/.test(error.message));
+  assert.ok(existsSync(entry.file), "nothing is mutated under a STOP file");
+  const { unlinkSync } = await import("node:fs");
+  unlinkSync(stop);
   await quiet.retryRuns(DURABLE_SLUG, authorization);
   assert.deepEqual(durableFiles(failedBox), []);
   assert.equal(existsSync(path.join(path.dirname(entry.file), "archive")), false, "a failure is deleted, not archived");
+  // The job the owner wants replaced is gone from the server (a re-pair): the retry archives
+  // the journal instead of looping on "could not verify" every round.
+  const goneBox = sandbox();
+  let goneOriginal, goneStale = false;
+  const goneClient = durableClient(goneBox, async (_url, init) => {
+    if (init.method === "POST") { goneOriginal = JSON.parse(init.body); return Response.json(job(goneOriginal, "running")); }
+    if (!goneStale) return Response.json(job(goneOriginal, "running"));
+    return Response.json({ code: "video_ai_job_not_found", detail: "no job for this token" }, { status: 404 });
+  });
+  await goneClient.settings();
+  await assert.rejects(runWriter(goneClient), (error) => error.code === RUN_PENDING);
+  goneStale = true;
+  await goneClient.retryRuns(DURABLE_SLUG, authorization);
+  assert.deepEqual(durableFiles(goneBox), []);
+  const [goneArchived] = archiveOf(goneBox);
+  assert.equal(goneArchived.owner_retry.reason, jobGoneReason({ status: 404, code: "video_ai_job_not_found" }));
+  assert.equal(goneArchived.owner_retry.request_id, null);
 });
 
 test("a failed owner retry lookup preserves the uncertain journal and never authorizes a new paid request", async () => {
