@@ -106,7 +106,7 @@ Usage: node tools/video/cli.mjs <command> [options]
 
 --workdir defaults to $VIDEO_WORKDIR, then ~/mokaair-work/videos; a video's files go in <workdir>/<slug>/, outside the repository.
 Exit codes: 0 ok, 1 lint or check failed, 2 usage, 3 needs the owner, 4 external service, 5 tool missing,
-6 stopped by a STOP file before finishing (tts, check-audio; a rerun continues).
+6 stopped by a STOP file before finishing (tts, check-audio, dub; a rerun continues).
 `;
 
 function parse(args, options) {

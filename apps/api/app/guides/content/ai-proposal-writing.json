@@ -1,0 +1,395 @@
+{
+  "slug": "ai-proposal-writing",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity",
+    "ai-work"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 AI 寫企劃書與提案：結構、數字查核與版本管理",
+      "description": "企劃書可以用 AI 排大綱、扮演反方找漏洞、在定稿後壓縮執行摘要，但數字與決策要由人負責。從問題、目標、做法到預算與成效指標整理企劃書骨架與各段的 AI 分工，附三組提示詞範本，說明每個數字怎麼回到原始資料、Word 與 Google 文件的版本紀錄怎麼用，以及決策紀錄該記哪些欄位。",
+      "hero": {
+        "src": "/guides/ai-proposal-writing/hero.jpg",
+        "alt": "米色底上，中間是三層疊起的企劃書，後兩層露出橘色與藍色的版本標籤；最前面一頁有深綠頁首與四組文字行，其中一行末端的橘色數字標記以虛線經過綠色打勾圓章，連到右邊藍框資料表裡的橘色格子；左邊是畫著大綱條列的藍色對話框與三列打勾的橘框清單，下方寫著企劃書的每個數字都有出處。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "企劃書依問題、目標、做法、資源、時程、風險、預算、成效指標排列；AI 適合排大綱、當反方找漏洞，以及在定稿後壓縮摘要。",
+            "AI 給的數字與出處只當線索，每個數字都要回到原始資料，記下出處、期間、單位與取得日期。",
+            "版本紀錄留下改了什麼，決策紀錄寫下為什麼改、誰拍板、放棄了哪個方案。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "用 AI 寫企劃書，省下的是排結構、想反方與寫摘要的時間；它不能保證數字正確，也不會記得誰在什麼時候決定了什麼。可靠的分工是讓 AI 處理結構與文字，數字一律回到原始資料，每一輪修改與每一個決定都留下紀錄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下依序是企劃書骨架與各段的 AI 分工、排大綱與找反方的提示詞、數字溯源、執行摘要，以及版本與決策紀錄。"
+        },
+        {
+          "type": "heading",
+          "text": "企劃書的骨架：每一段回答一個問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "內部提案、客戶企劃與補助申請，審查者想知道的事大致相同。《行政院所屬各機關中長程個案計畫編審要點》第五點列出計畫書應包括的事項，107 年 10 月的版本從計畫緣起、計畫目標、執行策略及方法、期程與資源需求，到預期效果及影響、財務計畫，附則還有風險管理；這一點在 114 年 2 月又修正過，現行條文以國家發展委員會公告為準。濃縮成一般企劃書，就是下表的順序。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "段落",
+            "回答的問題",
+            "AI 可以幫的事",
+            "人要確認的事"
+          ],
+          "rows": [
+            [
+              "問題",
+              "哪裡出了狀況、影響誰",
+              "把會議紀錄與訪談整理成問題陳述",
+              "證據來自原始資料，不是 AI 的推論"
+            ],
+            [
+              "目標",
+              "做完後要變成什麼樣子",
+              "把模糊的願景改寫成可衡量的句子",
+              "目標值由負責的人訂，不讓 AI 代填"
+            ],
+            [
+              "做法",
+              "工作項目、步驟與分工",
+              "拆解工作項目、提醒漏掉的步驟",
+              "分工對象已經同意"
+            ],
+            [
+              "資源",
+              "要哪些人力、設備與其他單位配合",
+              "列出可能需要的資源",
+              "人力與設備真的排得出來"
+            ],
+            [
+              "時程",
+              "分幾期、每期交付什麼",
+              "排出里程碑草稿",
+              "採購與審核的等待時間有算進去"
+            ],
+            [
+              "風險",
+              "什麼可能出錯、怎麼應對",
+              "扮演反方找漏洞",
+              "每條風險都有對策與負責人"
+            ],
+            [
+              "預算",
+              "要多少錢、怎麼算的",
+              "檢查算式與加總",
+              "單價與數量有報價或前例可查"
+            ],
+            [
+              "成效指標",
+              "怎麼知道成功了",
+              "建議可量測的指標",
+              "衡量方式、目標值與量測時間"
+            ]
+          ],
+          "caption": "企劃書各段與 AI 的分工；骨架參考行政院中長程個案計畫的格式，工具功能查證於 2026 年 10 月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目標與成效指標最容易寫空。把每個目標拆成三項：績效指標、衡量標準與目標值，也就是量什麼、怎麼量、做到多少才算達成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "預算段至少放一個替代方案。依預算法第 34 條，政府的重要公共工程建設與重大施政計畫，要先做選擇方案與替代方案的成本效益分析，才能編列預算；一般提案不必這麼正式，但不做或做小一點各省多少、少得到什麼，常是決策者的第一個問題。經費寫成單價乘數量，對方才能驗算。"
+        },
+        {
+          "type": "heading",
+          "text": "用 AI 排大綱：先給材料，再要結構",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "大綱好不好，取決於你給 AI 的材料。先寫清楚背景、讀者是誰、要對方做什麼決定、預算上限與期限，再請它照骨架排；材料沒提到的地方標成待補，不讓它自己補數字。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範本一：排大綱",
+          "code": "你是協助我寫企劃書的助理。以下是背景資料：［貼上會議紀錄、需求單或訪談摘要］\n讀者：［例如部門主管、客戶的採購窗口］\n要對方做的決定：［例如核准試辦一季］\n限制：［預算上限、期限、不能動用的資源］\n\n請依「問題、目標、做法、資源、時程、風險、預算、成效指標」的順序排出大綱，每段列出三到五個要點。\n規則：\n1. 只使用我提供的資料，不要自行加入數字、統計或案例。\n2. 資料不足的地方寫【待補：需要什麼資料】。\n3. 最後列出你認為我還沒回答的問題。"
+        },
+        {
+          "type": "paragraph",
+          "text": "辦公軟體內建的 AI 也能做這一步。微軟 Word 的 Copilot（AI 助理）可以從提示詞、筆記或引用的檔案起草，在對話窗格輸入「/」指定要參考的文件、郵件或會議；共用文件裡的修改會先預覽，經你核准才寫入。Google 文件的 Gemini（Google 的 AI 助理）可以在提示框輸入「@」，選取雲端硬碟的檔案當參考；側邊欄的對話在重新整理瀏覽器、關閉再開啟文件或電腦離線時會消失，要保留的大綱先插入文件。兩者都要有符合資格的方案或公司授權。"
+        },
+        {
+          "type": "heading",
+          "text": "請 AI 當反方：先找漏洞，再寫風險",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自己寫的企劃書最難看出漏洞。請 AI 扮演審查者、出資者或執行單位逐段提出反對意見，再由你判斷；Word 的 Copilot 也把「壓力測試想法」列為它能做的事。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範本二：反方意見",
+          "code": "請扮演［審查委員／出資主管／要負責執行的部門］，閱讀附件的企劃書草稿。\n請逐段提出反對意見，每一條寫明：\n- 反對的理由\n- 要回應這個疑問，需要哪一種證據\n- 如果疑問成立，企劃書該怎麼改\n\n最後列出最可能讓提案被退回的三個原因。不要評論文筆，只看邏輯、證據、時程與預算。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以從這幾個角度追問："
+        },
+        {
+          "type": "list",
+          "items": [
+            "問題是否真的存在，還是只有少數個案。",
+            "做完這些工作，是否真的會達到目標。",
+            "時程有沒有漏算採購、審核與等待其他單位。",
+            "預算有沒有漏掉上線後的維運與授權費用。",
+            "做不起來時怎麼停損，誰決定喊停。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 的反對意見不一定成立。成立的寫進風險段，附上可能性、影響、對策與負責人；不成立的在決策紀錄寫一句為什麼不採納，下次被問到才答得出來。"
+        },
+        {
+          "type": "heading",
+          "text": "每個數字回到原始資料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "市場規模、成長率、成本與預估效益是企劃書最常被引用的數字，而 AI 寫出的數字可能是錯的：Copilot 生成的內容可能不正確，它也無法評估正確性；Gemini 能從雲端硬碟、Gmail 郵件或網路帶入統計與引用，帶進來的每一筆一樣要點開來源核對。"
+        },
+        {
+          "type": "paragraph",
+          "text": "做法是另建一張數字清單，企劃書每出現一個數字就記一列："
+        },
+        {
+          "type": "list",
+          "items": [
+            "數字本身，以及它在企劃書的哪一段。",
+            "原始出處：機關或公司、文件名稱、表號或頁碼；新聞轉述不算，要追到它引用的那一份。",
+            "期間與單位照原文抄，換算自己算，算式寫在旁邊。",
+            "發布日期與取得日期，資料更新時才知道要換哪一筆。",
+            "誰打開原文核對過。",
+            "估算的數字標明是估算，並列出假設。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "官方統計可以從行政院主計總處的中華民國統計資訊網找起，它也連到各部會與縣市的統計網站；開放資料在政府資料開放平臺下載，採用《政府資料開放授權條款》的資料，引用時要附上顯名聲明，寫出提供機關、年份、資料名稱與版本號，沒有標示就視為自始未取得授權。AI 給的出處一律親自打開；找不到原文的數字，換掉或刪掉。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-proposal-writing/diagram-1.svg",
+          "alt": "泳道圖：橫向四個步驟為排大綱、補數字、找反方、寫摘要，每一步分成 AI 做、人確認、留紀錄三列，最下一列依序是草稿版本、數字清單、決策紀錄、命名版本與對照表。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右是寫作順序，由上到下是每一步的分工：AI 的產出都要經過中間那一列的人工確認，才寫進最下面的紀錄。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把 AI 的流暢回答拆成一條條可以查核的主張，方法整理在 AI 幻覺查核",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "要從長篇報告裡找出數字與出處，可以參考用 Claude 讀論文與長報告",
+              "kind": "life",
+              "slug": "claude-for-research-summaries"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "問題段的證據要自己發問卷蒐集，題目偏誤與個資告知見用 AI 設計問卷與整理開放題",
+              "kind": "life",
+              "slug": "ai-survey-design-analysis"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "執行摘要最後寫",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "執行摘要是決策者最可能唯一讀完的一頁，要等全文定稿才寫：第一句寫要對方決定什麼，再交代問題、做法、預算總額、時程與預期成效。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "範本三：執行摘要",
+          "code": "以下是定稿的企劃書全文。請寫一頁以內的執行摘要：\n1. 第一句寫要讀者做的決定。\n2. 依序交代問題、做法、預算總額、時程、預期成效。\n3. 只能使用全文已有的內容與數字，不要新增、換算或四捨五入任何數字。\n4. 每個數字後面用括號註明它在全文的哪一段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Copilot 與 Gemini 都能替整份文件產生摘要，但最後一步要自己做：摘要的每個數字都到全文搜尋，必須一字不差找得到，核完再刪括號註記。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提案要做成簡報，可以接著看 AI 做簡報的工具與流程",
+              "kind": "life",
+              "slug": "ai-slides-generation-tools"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "版本與決策紀錄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "版本紀錄回答改了什麼，決策紀錄回答為什麼改，兩份分開記，交接或被追問時才說得清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "檔案的版本交給編輯軟體。Google 文件有編輯權限的人，按右上角的「上次編輯」圖示就能查看、還原或複製舊版本；系統有時會合併修訂版本，送審、定稿這類節點要「為這個版本命名」，命名版本不會被合併，每份文件最多 40 個。Word 的版本歷程記錄只適用於存在 OneDrive 或 SharePoint（微軟的雲端儲存與協作服務）的檔案，個人帳戶可取回最近 25 個版本，公司或學校帳戶看文件庫設定。多人審稿時，Word 用追蹤修訂、Google 文件用「建議」模式；另存新檔時，檔名寫上日期與狀態（草稿、送審、定稿），不要只寫最新版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "決策紀錄可以是一張表，每做一個決定記一列："
+        },
+        {
+          "type": "list",
+          "items": [
+            "日期，以及決定了什麼。",
+            "理由與依據，連到數字清單的那一列。",
+            "誰提出、誰拍板。",
+            "放棄的方案，以及放棄的原因。",
+            "影響企劃書的哪幾段，改在哪一個版本。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "送出新版時，附一張修正內容對照表，列出改了哪幾段、為什麼改、對應哪一筆決策。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "內部資料先確認能不能交給 AI",
+          "text": "企劃書常含未公開的營收、報價與客戶名單。公司有開通企業版工具時用公司帳號：微軟表示，以公司帳號使用的 Copilot，提示詞與回應不會用來訓練基礎模型；Google Workspace（Google 的企業版辦公套件）也承諾未經許可不用客戶資料訓練模型。個人帳號的規則不同，先看公司的 AI 使用規範與各家隱私設定，再決定什麼能貼進去。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "國家發展委員會：行政院所屬各機關中長程個案計畫編審要點（107 年 10 月修正版全文，計畫內容各款）",
+          "url": "https://ws.ndc.gov.tw/Download.ashx?u=LzAwMS9hZG1pbmlzdHJhdG9yLzEwL3JlbGZpbGUvNTU2Ni80ODAzL2U2NjVlYTliLTkzYzItNDA4Ny1iMjRhLWE3ZTA1MDM4ZTc2ZS5wZGY%3D&n=6KGM5pS%2F6Zmi5omA5bGs5ZCE5qmf6Zec5Lit6ZW356iL5YCL5qGI6KiI55Wr57eo5a%2Bp6KaB6bueKOWQq%2BmZhOihqCkucGRm&icon=..pdf",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "行政院函：修正行政院所屬各機關中長程個案計畫編審要點第五點（114 年 2 月 4 日院授發管字第1141400149號）",
+          "url": "https://www.ey.gov.tw/File/5B5C5FDCFE8479A9?A=C",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：預算法第 34 條（選擇方案及替代方案之成本效益分析）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=T0020001&flno=34",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "行政院主計總處：中華民國統計資訊網",
+          "url": "https://www.stat.gov.tw/",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "政府資料開放平臺：政府資料開放授權條款－第1版（顯名聲明）",
+          "url": "https://data.gov.tw/license",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft 支援：Welcome to Copilot in Word（起草、摘要、壓力測試想法、引用檔案）",
+          "url": "https://support.microsoft.com/en-us/word/welcome-to-copilot-in-word",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft 支援：Frequently asked questions about Copilot in Word（內容可能不正確，需審閱與查核）",
+          "url": "https://support.microsoft.com/en-us/word/frequently-asked-questions-about-copilot-in-word",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google 文件編輯器說明：Collaborate with Gemini in Google Docs（參考檔案、對話記錄、方案需求）",
+          "url": "https://support.google.com/docs/answer/14206696?hl=en",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google 文件編輯器說明：查看檔案異動內容（版本記錄、命名版本上限）",
+          "url": "https://support.google.com/docs/answer/190843?hl=zh-Hant",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google 文件編輯器說明：在 Google 文件中提出修訂建議",
+          "url": "https://support.google.com/docs/answer/6033474?hl=zh-Hant",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft 支援：檢視舊版 Office 檔案（版本歷程記錄）",
+          "url": "https://support.microsoft.com/zh-tw/office/collab-files/view-previous-versions-of-office-files",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft 支援：在 Word 中使用追蹤修訂",
+          "url": "https://support.microsoft.com/zh-tw/word/training/track-changes-in-word",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft Learn：Data, Privacy, and Security for Microsoft Copilot（Microsoft 365 Copilot 已更名；提示詞與回應不用於訓練基礎模型）",
+          "url": "https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-privacy",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google Workspace：Generative AI in Google Workspace Privacy Hub（模型訓練與資料使用）",
+          "url": "https://knowledge.workspace.google.com/admin/generative-ai/generative-ai-in-google-workspace-privacy-hub",
+          "checked_on": "2026-10-05"
+        }
+      ]
+    }
+  }
+}

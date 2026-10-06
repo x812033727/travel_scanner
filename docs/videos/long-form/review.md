@@ -1573,6 +1573,50 @@ PASS is DURATION_ONLY for the four rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1347 train (#1323, #1324, #1268) increment: 14 files (2026-10-07)
+
+Reviewer: `claude-pr-review-1347`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The train's commits are by the authors of #1323 (`5eb5e353`, "fix(tools): the upload package check names a mistyped metadata.json field instead of throwing", and `fef25007`), #1324 (`63c10675`, "fix(tools): dub exits incomplete when a STOP file ends it, and the worker waits", and `55ea8e41`) and #1268 (`03a7b96c`, "Let the owner queue a slides video of a chosen site article", `2f93043b`, `806ba430` and the other article commits), merged on branch claude/train-1323-1324-1268 (PR #1347) with `a4fc72f0` renumbering #1268's migrations. The head is `6758b4b9`, a merge of origin/main at `f99c8032` (#1342). Scope: DURATION_ONLY for the 14 changed bindings below. The reviewer wrote none of the train's commits, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `f99c8032` (#1342), whose receipt is the "PR #1342 per-video deferral increment" above. At `f99c8032` each of the 14 files hashes to its row in review.json (by `git show` piped to `sha256sum`). Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding:` for exactly these 14 and nothing else. #1268 carried its own receipt section ("PR #1268 claude-pr-review-1268-slides-request-queue increment", commit `6bf0d520`); the train's review.md is main's, so that section is not in this report and is not relied on here. The train also changes unbound files (apps/api admin_api.py, slides_requests.py, topics.py, video_reviews/public_api.py and the migrations; tools/video/automation/client.mjs, client.test.mjs, prompts.test.mjs; tools/video/cli.mjs, dubs/cli.mjs, package/check.mjs, check.test.mjs; docs/videos/AUTOMATION.md, DUBS.md; tools/e2e-runtime-api.mjs; the web components, other message namespaces and 18 articles). Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with 14 hashes rebound and the other 94 unchanged.
+
+The question this section answers is whether a slides video made from an owner's article gets the same minimum and target as a scheduled draft, and whether anything else in the 14 diffs reaches a length rule.
+
+Findings, tools/video/automation/flow.mjs (+140/−22, 222,198 bytes at the head). The duration code is outside every hunk: the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29), `slidesMinutes` and `episodeMinutes` (62–73), `planPayload`'s `target_minutes: slidesMinutes(this.settings)` (1539) and `scriptPayload`'s `drama ? [state.target_minutes, state.target_minutes] : slidesMinutes(this.settings)` (2320–2330). The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` number 20 at both revisions. The only changed line naming one of them is the re-plan's drama payload, which is split over three lines with the same `target_minutes: [state.target_minutes, state.target_minutes]`. On the new slides-request path:
+
+- `draftSlides` (1627) calls `planPayload` with `{ topics: [], requested_guide, sources, previous_problem? }`. None of those keys is `target_minutes`, so the spread keeps `slidesMinutes(this.settings)`, the same `[max(8, target_minutes_min), max(low, target_minutes_max)]` a scheduled `draft()` sends. The request (models.py, schemas.py) has no length field for the worker to read.
+- The saved state has no `format` key, where `draft()` writes `format: "slides"`. Every reader treats a missing format as slides: `scriptPayload`'s `drama` is `state.format === "drama"`, `settingsFor`, `stage` and `settle` default the parameter to "slides", the site summary sends `state.format ?? "slides"` (752), the prompt repair sets `state.format ??= video.format ?? "slides"` (2535), and the policy-retry comparison (1266) needs both formats present. So the writer and every rewrite get the slides target, and `settle` writes the same slides video.json (no `format`, `look` per illustrated or plain slides) that a scheduled draft gets. Whatever lint, QA and the eight-minute floor do with a slides video.json therefore applies to this one unchanged; `core/duration.mjs`, `core/lint.mjs`, `qa/checks.mjs` and `package/cli.mjs` are not in the diff.
+- The re-plan (2299–2318) keeps `requested_guide`, empties `topics`, pins `source_guide`, and adds no `target_minutes`; the non-drama planner payload is again `slidesMinutes`.
+- `markDrafted()` (1490) only factors out the `last_draft_at` write. `slidesNext?.()` (1245) runs under `this.room()`, the waiting cap, before `due()`. Neither is a length rule.
+- A probe in the scratchpad calling `Automation.prototype.planPayload` and `scriptPayload` on a stub (settings `target_minutes_min: 3`, `target_minutes_max: 13`) gave `[8, 13]` for a scheduled draft's planner payload, a slides request's planner payload, a `format: "slides"` writer payload and a writer payload for a format-less `slides_request` state. It gave the same with `VIDEO_MIN_EPISODE_MINUTES=0`, since `minEpisodeMinutes` honours the opt-out only for a repository test or the smoke entry point (core/schema.mjs 59–67).
+- #1324's `stopped` helper (3373) and its three uses (3393, 3409, 3432) give a dub, a retake or a dub check that a STOP file ended a zero-backoff deferral with `check_stopped`, so the next run makes the track again and hears it. Before, a `dub` stopped this way exited 0 with the last run's fit.json and track (dubs/cli.mjs, unbound) and the worker went on to the check. A dub's fit is the per-line window gate, not the cut's length, and the change only stops a partial track from passing as made. The `packageChoiceStale` comment change (#1323) is wording only.
+
+Findings, tools/video/automation/prompts.mjs (+10/−2). The planner prompt gains the `requested_guide` paragraph: plan that article only, return its slug as `source_guide`, and the scope, used-guides and avoid rules for it. It names no length and does not tell the planner to ignore `target_minutes`. The file's 12 duration-term lines are the same at both revisions.
+
+Findings, apps/api/app/video_automation/models.py (+38) and schemas.py (+49). `VideoSlidesRequest` (table `video_slides_requests`) holds `source_guide`, `title`, `note`, `status`, `slug`, the user and token ids and timestamps. `SlidesRequestIn` takes `source_guide` and `note`; `SlidesRequestOut`, `SlidesRequestsOut` and `NextSlidesRequestOut` add `url` and the status. No column or field is a length, minimum, target or setting, and the existing duration settings (`target_minutes_min`, `target_minutes_max`, the drama and explainer lengths) are outside the hunks.
+
+Findings, the five apps/web/messages/*/admin.json (each +20/−1, the same keys). The removed line is `compilationOf` gaining a trailing comma. The added `slidesRequests` block (title, help, article and note labels and placeholders, submit, error, queue, openArticle and five statuses) says the request goes before scheduled drafts, still waits on the waiting cap and counts toward the month's drafts. No added string names minutes, seconds or a length.
+
+Findings, docs/videos/DESIGN.md and .agents/skills/youtube-video/references/automated.md (each +1/−1). Exit code 6's list of commands a STOP file can leave unfinished adds `dub`. No length wording changes.
+
+Findings, tools/video/automation/automation.test.mjs (+292/−13, 390,931 bytes; 157 tests at the head, 150 at the baseline). Seven tests are added (six on slides requests, one on a STOP that ends a dub or retake) and one is rewritten (the mistyped metadata.json now read by the re-package check). The duration-term lines go from 30 to 31; the new one is a flat-explainer drama request fixture with `target_minutes: 8` in the ordering test, which asserts which request is taken, not a length. No slides-request test asserts `target_minutes`; the probe above stands in for that. No added line reads or sets process.env, and the opt-out at the top of the file is unchanged.
+
+Findings, tools/video/dubs/dubs.test.mjs (+92/−3, the removed lines imports; 11 tests) adds the test that a STOP file ends `dub` as incomplete and keeps the takes, and tools/video/package/package.test.mjs (+3/−4: imports and one temp directory; 17 tests) swaps `mkdtempSync` for the fixtures' `tempDir`. Each has the same 2 duration-term lines at both revisions, and no changed line names a length.
+
+Ran (Node v22.22.0, Linux, in the worktree at `6758b4b9`, node_modules installed, VIDEO_MIN_EPISODE_MINUTES unset in the shell): the baseline hashing, `git diff origin/main HEAD` of all 14 files read in full, changed-line scans and duration-term counts at both revisions, reads of `draftSlides`, `draft`, `planPayload`, `scriptPayload`, `settle`, `settingsFor`, the re-plan, `makeDub`'s STOP handling, `core/drama.mjs` `isKnowledgeLongform` and `core/schema.mjs` `minEpisodeMinutes`, and the probe above. Before rebinding, `node --test tools/video/long-form/*.test.mjs tools/video/automation/automation.test.mjs tools/video/dubs/dubs.test.mjs tools/video/package/package.test.mjs` ran 208 tests: 207 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same 14 paths. Run alone, automation.test.mjs passed 157 of 157, dubs.test.mjs 11 of 11 and package.test.mjs 17 of 17. The CLI check and the long-form tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the slides-request feature itself: the queue, its status machine, the claim and withdrawn-claim codes, the article reading, the planner's `requested_guide` rules, the monthly draft count, the ordering against drama requests and the waiting cap, or the done report.
+- It does not accept #1323's package check or #1324's STOP handling beyond the point that neither changes a length rule.
+- No real slides video from an owner's article was planned, written, assembled or measured, and no cut under the eight-minute floor went through the new path. The tests run under the opt-out.
+- The unbound files listed above, among them the API service and routes behind the request, the migrations, dubs/cli.mjs, package/check.mjs and the 18 articles, are not reviewed.
+- Not run or seen: the rest of the tool, Vitest and API suites, lint, typecheck, check:i18n, CI, any real model, provider or media call, and the production host. No read was refused.
+- The 94 bindings this train did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the 14 rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1580,13 +1624,13 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | File | SHA256 |
 | --- | --- |
 | `.agents/skills/youtube-video/SKILL.md` | `40d5a29805a4bae05d1abe59c54c91f6b6da0e2ee66d12cec3ee4957e51fca61` |
-| `.agents/skills/youtube-video/references/automated.md` | `efabb7c2d95a445e6046df56469e57cad37a49ab1217ae8ce75bc0df318c34d0` |
+| `.agents/skills/youtube-video/references/automated.md` | `8cfc4ac5e0e0f23500e4da6263d27b35e8b39d83113304bf71d1a30284a859c4` |
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
 | `.claude/skills/youtube-video/SKILL.md` | `40d5a29805a4bae05d1abe59c54c91f6b6da0e2ee66d12cec3ee4957e51fca61` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `fe502055df82612df2dee120c9db78ff54029c0514a73df683ad8ce2e14e9637` |
-| `apps/api/app/video_automation/models.py` | `f403f833cc842ebc4b54bb14d95698520d810af9609fac42ae0387b2e3c32f7f` |
-| `apps/api/app/video_automation/schemas.py` | `3ff2720ca8ea912ac3e34b5b4772fb93e2b997759cc064bae81f4ea518a654ca` |
+| `apps/api/app/video_automation/models.py` | `54cedbf59e1cbfb373a2091c849804cdba3c054118f6272a168799831d6939e0` |
+| `apps/api/app/video_automation/schemas.py` | `08ad195d6c5befa11e15a307d04a9f38e441701605cc2559571c2e1e65ec21ab` |
 | `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
 | `apps/api/app/video_automation/settings.py` | `eacb5d7aea4ca3acb969e3210d99920ca06a371b7dc19f7fec7e8da999b300c3` |
 | `apps/api/app/video_reviews/admin_service.py` | `942e9fb8222ce6db96ccde0a529d4ab03d7e58c96f9f9594c9869064df8c960f` |
@@ -1608,12 +1652,12 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `e22e4ed7ea01d076e739a7b15253466ecb03dbaf95f6f8df6a67c638a111873a` |
-| `apps/web/messages/ja/admin.json` | `734df49fa20417bca227e0b94a7d20322e45223d0a726c4e652bf2d751dbf4a8` |
-| `apps/web/messages/ko/admin.json` | `11562d54981ca9f185ad114cf0289a1ae22b68bf4cc2bbba479081727c61eb3d` |
-| `apps/web/messages/zh-CN/admin.json` | `a7b77c4173f4e15a9c752ab382545d46c1fa95bfa797aed89b235c43635eb9fb` |
-| `apps/web/messages/zh-TW/admin.json` | `0e45149692d0e1d0de2d5491d8523bd7862e0873a94863b2f3a53052d81d3e20` |
-| `docs/videos/DESIGN.md` | `d906618972e95bdf27c070cebc1a9b1ed016aa8a062d573f16d54f989c0d02ea` |
+| `apps/web/messages/en/admin.json` | `a7c7c19313718e783e9332630a5be51906ba02ea46e0ce99886881d7c5a640d8` |
+| `apps/web/messages/ja/admin.json` | `3ebdf2b528ed1ac0282ceb8b59f5dd37cb2c384c6c34cc6d8465905e39a59e4a` |
+| `apps/web/messages/ko/admin.json` | `ca41042bb95d583596348e3a2ef93217cda523a7794511688f95154f1c97fe54` |
+| `apps/web/messages/zh-CN/admin.json` | `134c7ba87c8b02e5905ca84ff4d5d9a7e0fdc34d23198f77c01fdf105f6579cd` |
+| `apps/web/messages/zh-TW/admin.json` | `4e92fc21a885e14140d4bae62d97da1c4ae5b437ab28c1f2375ca88f9b67424f` |
+| `docs/videos/DESIGN.md` | `55cd021813e3bb30941b41e55518a8a589a88cdb98924ef1a0ec74074d00fc14` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
 | `docs/videos/README.md` | `08a49222ddb89e98c97f6c160e82786a1dda711e5b7e9037ec500985e8abda29` |
@@ -1629,10 +1673,10 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `e202b7e2d7f068115aa4d490418b89167b239e4e09a423305cd7ca13023ef5e5` |
+| `tools/video/automation/automation.test.mjs` | `1c562dc36b1e3e9418f6390764f5d3117891f83fe41a8a46b69b5861ec23a97b` |
 | `tools/video/automation/discuss.mjs` | `fcb1a59b6861c8b18582aeece052b7d6f21930aae495f231e7e0f2c7d0dca9f5` |
-| `tools/video/automation/flow.mjs` | `1bfc5c8cbf14b8f7201e907429f86c65111d12403227e8829b71100f6303423c` |
-| `tools/video/automation/prompts.mjs` | `b1519d874cc5f2f85503b22e24e07cac0671cc73a1626f02c5b855402ae9e606` |
+| `tools/video/automation/flow.mjs` | `8990782a737126d7c7a6ba22d6dae7232ac8472555fd8e4ad210e89533eb1d45` |
+| `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
@@ -1659,7 +1703,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
 | `tools/video/dubs/captions-package.test.mjs` | `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` |
-| `tools/video/dubs/dubs.test.mjs` | `4bbf31dea3b796e0112a92d8174abbcb0c6ecf0d7687649c3ac57b9cd1483ccc` |
+| `tools/video/dubs/dubs.test.mjs` | `e8aa53b2e0e210d53df89d9e4d9a510e6bb9385488c695e2542f435cfff25812` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
 | `tools/video/dubs/plan.test.mjs` | `94e61419eda766e722c07675f1f75a569f3eb07fdeecce5c03dc862db1a0d572` |
 | `tools/video/long-form/cli.mjs` | `3a0b26f900daaf1a08f7ed210ad1239d7f172035fa1e14c6dafc28bf55dedfa4` |
@@ -1671,7 +1715,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/media/clips.test.mjs` | `142d00151868e05ce593fde515f09dc58855207d8880ca694fc08d22a4b1c572` |
 | `tools/video/media/look-keyframes.test.mjs` | `24e0c81feb9b2ad052b1397befac316ba11eeffad83c52e547a0955d7a41acd7` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
-| `tools/video/package/package.test.mjs` | `05814a6fc0191d1b91fb209b12bd90293787dae24eb71c9fc32ea115646bbd4f` |
+| `tools/video/package/package.test.mjs` | `3f81ff3bfb8b600f06c1ba54bc72e685b74ff8bcbd1f096b7b5d4b77ff9d175d` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
 | `tools/video/production/anime-input.test.mjs` | `76b4082fd9245ea331c04d430f82aa5e4afa742d4f830c0794531cc4bbe80d02` |
 | `tools/video/qa/checks.mjs` | `0c13be6eb906f9a322eab71dd18974a2cfa3f9d9b27cc5a9cba9f3570891567b` |

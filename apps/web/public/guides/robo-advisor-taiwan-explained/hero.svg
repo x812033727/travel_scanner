@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">機器人理財：問卷、演算法與再平衡 / Questionnaire, algorithm and rebalancing</title>
+  <desc id="desc">米色底的插圖，上方一行字寫著機器人理財。左邊是一塊白色問卷夾板，頂端有青綠色夾子，板上三列各有一個打勾的方框和一條灰色橫線。中間是一個青綠色齒輪，代表演算法。右邊是一座深色天平，橫桿水平，左盤放一個橘色圓形，右盤放一個綠色方形，兩邊平衡，代表再平衡。夾板到齒輪、齒輪到天平之間各有一條灰色虛線箭頭，表示從問卷到投資組合建議再到調整比例的流程。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="26" markerHeight="26" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="800" y="160" font-size="64" font-weight="700" fill="#102A2B" text-anchor="middle">機器人理財</text>
+
+  <!-- clipboard questionnaire -->
+  <rect x="80" y="290" width="310" height="480" rx="26" fill="#FFFFFF" stroke="#102A2B" stroke-width="6"/>
+  <rect x="175" y="262" width="120" height="58" rx="14" fill="#0D6B68"/>
+  <g fill="#FFFFFF" stroke="#0D6B68" stroke-width="6">
+    <rect x="130" y="380" width="56" height="56" rx="8"/>
+    <rect x="130" y="500" width="56" height="56" rx="8"/>
+    <rect x="130" y="620" width="56" height="56" rx="8"/>
+  </g>
+  <g fill="none" stroke="#2E7D5B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="142,408 155,422 176,392"/>
+    <polyline points="142,528 155,542 176,512"/>
+    <polyline points="142,648 155,662 176,632"/>
+  </g>
+  <g fill="#CBD5D4">
+    <rect x="210" y="398" width="140" height="20" rx="10"/>
+    <rect x="210" y="518" width="120" height="20" rx="10"/>
+    <rect x="210" y="638" width="140" height="20" rx="10"/>
+  </g>
+
+  <!-- gear (algorithm) -->
+  <g fill="#0D6B68">
+    <rect x="688" y="378" width="56" height="64" rx="8" transform="rotate(0 716 530)"/>
+    <rect x="688" y="378" width="56" height="64" rx="8" transform="rotate(45 716 530)"/>
+    <rect x="688" y="378" width="56" height="64" rx="8" transform="rotate(90 716 530)"/>
+    <rect x="688" y="378" width="56" height="64" rx="8" transform="rotate(135 716 530)"/>
+    <rect x="688" y="378" width="56" height="64" rx="8" transform="rotate(180 716 530)"/>
+    <rect x="688" y="378" width="56" height="64" rx="8" transform="rotate(225 716 530)"/>
+    <rect x="688" y="378" width="56" height="64" rx="8" transform="rotate(270 716 530)"/>
+    <rect x="688" y="378" width="56" height="64" rx="8" transform="rotate(315 716 530)"/>
+    <circle cx="716" cy="530" r="122"/>
+  </g>
+  <circle cx="716" cy="530" r="48" fill="#F7F1E8"/>
+
+  <!-- balance scale (rebalancing) -->
+  <rect x="1190" y="742" width="180" height="30" rx="12" fill="#102A2B"/>
+  <rect x="1270" y="352" width="20" height="396" fill="#102A2B"/>
+  <rect x="1090" y="372" width="380" height="20" rx="10" fill="#102A2B"/>
+  <circle cx="1280" cy="350" r="22" fill="#D97A2B"/>
+  <g stroke="#102A2B" stroke-width="5" stroke-linecap="butt">
+    <line x1="1120" y1="382" x2="1050" y2="560"/>
+    <line x1="1120" y1="382" x2="1190" y2="560"/>
+    <line x1="1440" y1="382" x2="1370" y2="560"/>
+    <line x1="1440" y1="382" x2="1510" y2="560"/>
+  </g>
+  <path d="M1040,560 A80,44 0 0 0 1200,560 Z" fill="#2F6F9F"/>
+  <path d="M1360,560 A80,44 0 0 0 1520,560 Z" fill="#2F6F9F"/>
+  <circle cx="1120" cy="526" r="32" fill="#D97A2B"/>
+  <rect x="1410" y="496" width="60" height="60" rx="8" fill="#2E7D5B"/>
+
+  <!-- flow arrows -->
+  <g stroke="#5C6B6B" stroke-width="6" fill="none" stroke-linecap="butt" stroke-dasharray="16 12">
+    <line x1="414" y1="530" x2="544" y2="530" marker-end="url(#arrow)"/>
+    <line x1="890" y1="530" x2="1020" y2="530" marker-end="url(#arrow)"/>
+  </g>
+</svg>

@@ -1,0 +1,324 @@
+{
+  "slug": "ai-sop-manual-writing",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity",
+    "ai-work"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 AI 整理 SOP 與操作手冊：從口述到可交接的步驟",
+      "description": "把熟手的口述或螢幕錄影交給 AI，很快就能拆成編號步驟，但要能交接，還得補上判斷點與例外、截圖位置、負責人與版次，再請沒做過的人照著試做一次。從錄音轉逐字稿、提示詞範本、截圖遮蔽個資，到文件頭欄位與定期複審，一步步整理成新人照著就能完成的標準作業程序（SOP）。",
+      "hero": {
+        "src": "/guides/ai-sop-manual-writing/hero.jpg",
+        "alt": "米色底上，左邊是青綠色對話框，裡面有三條長短不一的波浪線；中間三個並排的橘色箭頭符號指向右邊的藍框寫字板，板上四列等長的步驟，每列左邊一個青綠色圓點，三列右邊打綠勾、一列是橘色菱形判斷點，下方寫著從口述到可交接的步驟。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "最好的素材是熟手實際操作一次、邊做邊說的錄音或錄影；請 AI 每一步只寫單一動作、只用逐字稿的內容，沒說清楚的標成待確認。",
+            "「看情況」「通常」改寫成條件與分支，例外寫明停在哪一步、通知誰；截圖放在對應步驟下方，個資用不透明色塊蓋住。",
+            "文件頭寫清楚負責人、核准人、版次與生效日，定稿前請沒做過的人試做，改掉卡住的地方再發布。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "用 AI 整理標準作業程序（SOP），做法是請熟手邊操作邊口述並錄下來，交給 AI 拆成一步一個動作的草稿，再由人補上判斷點與例外、截圖位置、負責人與版次，最後讓沒做過的人照著試做、改掉卡住的地方，才算可以交接。"
+        },
+        {
+          "type": "paragraph",
+          "text": "照順序做完，會得到一份新人拿到就能操作、出錯知道找誰、改版有紀錄的 SOP。"
+        },
+        {
+          "type": "heading",
+          "text": "先錄下熟手怎麼做，不要只憑記憶口述",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "憑記憶講流程，最容易漏掉已經做到不用想的動作。比較好的素材是請熟手實際操作一次，邊做邊說正在看哪個畫面、點哪個按鈕、為什麼這樣選。美國環保署（EPA）的標準作業程序撰寫指引也建議由實際做這項工作的人來寫。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "錄音轉文字：微軟文書軟體 Word 的轉譯（Transcribe）功能在「常用」索引標籤的「聽寫」下拉選單裡，可直接錄音或上傳 .wav、.mp4、.m4a、.mp3 檔，轉成依講者分段、帶時間戳記的逐字稿，點時間戳記就能回放核對；語言清單有台灣華語。截至 2026 年 10 月，Microsoft 365（微軟的訂閱方案）使用者每月最多可轉譯 300 分鐘的上傳音訊，錄音存在 OneDrive（微軟的雲端硬碟）。Windows 版與網頁版 Word 都有這項功能，帳號類型的限制以微軟說明為準。",
+            "Mac 錄畫面：按 Shift + Command + 5 打開「截圖」App，錄整個螢幕或所選範圍；在「選項」選一個麥克風就能同時錄下口述，選「顯示滑鼠點按」會在每次點擊時於指標周圍顯示黑色圓圈。",
+            "Windows 11 錄畫面：剪取工具按 Windows 標誌鍵 + Shift + R，選取要錄的範圍後開始錄影。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "開錄前先關掉通知，改用測試帳號與假資料；錄進去的客戶名單與密碼，之後每張截圖、每段逐字稿都得再處理。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "錄音、逐字稿與草稿要放在哪裡、怎麼分工，可以參考用 AI 做筆記的工作流",
+              "kind": "life",
+              "slug": "ai-note-taking-workflow"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "請 AI 拆成一步一個動作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先把規則寫進提示詞。微軟與 Google 的技術寫作風格指南都要求：用編號清單，一步只放一個動作，先說在哪個畫面再說做什麼，以動詞開頭；Google 另外要求動作帶出畫面變化時，結果寫在同一步。也要限制 AI 只用逐字稿的內容，因為它可能寫出看似正確其實錯誤的步驟，沒說清楚的寧可留成問題。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "提示詞範本：逐字稿轉成步驟",
+          "code": "你是協助整理標準作業程序（SOP）的助理。以下是［工作名稱］的操作逐字稿：\n［貼上逐字稿；人名、帳號與客戶資料先換成代號］\n讀者：［例如剛到職、會用試算表但沒做過這件事的同事］\n\n請整理成編號步驟，規則如下：\n1. 一個步驟只寫一個動作，以動詞開頭；先寫在哪個畫面或欄位，再寫要做什麼。\n2. 動作之後畫面會變化的，用一句話寫出預期結果。\n3. 逐字稿裡的「看情況」「通常」「有時候」改寫成「如果……就……；否則……」，條件不清楚的標【待確認：要問什麼】。\n4. 需要截圖的步驟，在下方標【截圖：哪個畫面，框出哪個按鈕】。\n5. 只用逐字稿的內容，不要補上逐字稿沒有的步驟、按鈕名稱或數字。\n6. 最後另外列出：所有【待確認】、可能漏掉的收尾動作（儲存、送出、登出），以及出錯時該找誰。"
+        },
+        {
+          "type": "paragraph",
+          "text": "拿到草稿後對照錄影逐步核對：按鈕名稱與畫面一致嗎、順序有沒有調換、有沒有漏掉「儲存」「送出」這類收尾動作，微軟的指南特別提醒要寫出完成程序的這一下。同一畫面連續的選單可以合成一步，用「>」連起來，例如「選取 檔案 > 匯出」。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "口述原句",
+            "問題在哪",
+            "改寫後的步驟"
+          ],
+          "rows": [
+            [
+              "然後就匯出一下",
+              "沒說在哪裡、匯出成什麼",
+              "在報表頁，選取「匯出」>「試算表」。"
+            ],
+            [
+              "這邊通常會跳一個視窗",
+              "「通常」代表有時不會",
+              "如果出現「確認匯出」視窗，選取「確定」；沒出現就直接進行下一步。"
+            ],
+            [
+              "金額怪怪的就先不要送",
+              "「怪怪的」沒有標準",
+              "如果合計與上月差超過兩成（門檻由負責人訂），停下並通知主管；否則繼續。"
+            ],
+            [
+              "弄好就可以了",
+              "缺收尾動作與完成的樣子",
+              "選取「送出」。畫面顯示單號，表示已完成。"
+            ],
+            [
+              "密碼問小王",
+              "人名與帳密寫進文件",
+              "向帳務窗口申請帳號權限；文件不寫任何帳號密碼。"
+            ]
+          ],
+          "caption": "口述常見的模糊說法與改寫方式，畫面與欄位名稱為示意；整理於 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "text": "判斷點與例外：把「看情況」寫成條件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "口述裡的「看情況」「通常」「有時候」幾乎都是判斷點：熟手不用想就知道該看哪個欄位，新人卻會停在這裡。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "判斷點：寫出看什麼、標準是什麼，每個分支接到哪一步；分支太多就另立一份程序。",
+            "例外：系統錯誤、資料不齊或超出權限時，寫明停在哪一步、通知誰、怎麼記錄，不要只寫「請洽相關人員」。",
+            "可以跳過的步驟：在步驟開頭標「選擇性：」，讀者才知道不做也沒關係。",
+            "重複的程序：別份 SOP 寫過的，寫出那份的名稱與編號，不再抄一次，改版時才不會兩邊不一致。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 適合把這些地方挑出來：請它列出模糊字眼與沒有結局的分支，改寫成問題拿去問熟手；答案由人提供，AI 只整理成條件句。"
+        },
+        {
+          "type": "heading",
+          "text": "截圖放在哪裡、怎麼遮",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "截圖放在它說明的那一步下方。Google 的開發者文件風格指南建議截圖要節制，介面元素不好找時再放，並裁切到相關範圍，其他地方改版時比較不必重截；文字說明不要做成圖片。截取時就框好範圍：Mac 按 Shift + Command + 4 拖選，Windows 按 Windows 標誌鍵 + Shift + S。"
+        },
+        {
+          "type": "paragraph",
+          "text": "草稿先保留【截圖】標記，等步驟定案再照清單一次補齊，免得流程一改就白截。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的指南也要求截圖不得含有可識別個人的資訊，要用 100% 不透明的色塊蓋住，不用模糊或馬賽克，因為可能被還原；輸出成 PDF 這類有圖層的格式，先合併圖層。Windows 11 的剪取工具截圖後按「文字動作」，可以「快速修訂」圖中的電子郵件與電話號碼，辨識在本機進行；遮完仍要逐張看過，姓名、帳號、金額得自己蓋。"
+        },
+        {
+          "type": "heading",
+          "text": "文件頭、版次與新人試做",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "SOP 第一頁要讓人一眼看出：是不是最新版、適用在哪裡、有問題找誰。EPA 指引建議封面列出標題、編號、發行或修訂日期、適用單位，以及撰寫與核准者的簽名；之後每頁標上短標題與編號、版次、日期與頁數。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "文件名稱與編號，加一句適用範圍，以及哪些情況不適用。",
+            "負責人：維護這份文件、回答提問的人；核准人：確認內容可以上線的人。",
+            "版次、生效日與下次複審日。",
+            "修訂紀錄：版次、日期、修改人、改了什麼。",
+            "事前準備：需要的權限、工具與資料。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "檔案本身的舊版本可以交給 Word 或 Google 文件的版本記錄保存，做法見用 AI 寫企劃書與提案的版本與決策紀錄",
+              "kind": "life",
+              "slug": "ai-proposal-writing"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "試做的標準可以借用 EPA 指引：經驗不多、只有基本背景的人，在無人監督下也能照著完成；指引也建議定稿前由撰寫者以外的人實際試做。做法是請一位新同事照文件操作，旁人只記錄不提示，把卡住、提問與做錯的地方標回對應步驟；改完換一個人再試，兩輪都順利才送核准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "發布後，流程一改就更新並重新核准。EPA 舉的例子是每一到兩年系統性複審一次，確認程序仍在用、內容正確；不再使用的撤下封存，免得有人拿舊版做事。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-sop-manual-writing/diagram-1.svg",
+          "alt": "流程圖：上排依序是錄下實際操作、轉成逐字稿、AI 拆成步驟、人工補齊，下排由右到左是新人試做、核准發布、定期複審，試做卡住沿紅色虛線回到人工補齊；左下紅色虛線框是全程守則。",
+          "width": 1600,
+          "height": 900,
+          "caption": "照編號看：上排由左到右整理出草稿，下排由右到左完成試做、發布與複審；紅色虛線是試做卡住時回頭修改的路線。",
+          "description": "上排由左到右：01 錄下實際操作（熟手邊做邊說、錄音加螢幕錄影、用測試帳號與假資料）；02 轉成逐字稿（依講者分段、點時間戳記回放、核對聽錯的字）；03 AI 拆成步驟（一步一個動作、先寫位置再寫動作、只用逐字稿的內容）；04 人工補齊（看情況改寫成條件、例外寫明停在哪與找誰、標出截圖位置）。往下到下排由右到左：05 新人試做（沒做過的人照著做、旁人只記錄不提示、兩輪都順才送核准），卡住時回到 04 修改；06 核准發布（負責人與核准人、版次與生效日、附上修訂紀錄）；07 定期複審（流程一改就改版、寫下次複審日、舊版撤下封存）。全程守則：個資換成代號、截圖用不透明色塊蓋、不寫帳號密碼。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "負責人與下一步怎麼寫才有人接手，可以參考會議筆記的寫法",
+              "kind": "life",
+              "slug": "meeting-notes-action-template"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "常做的流程定稿後，也能交給 AI 照做，結果仍由負責人核對。Anthropic 的 AI 助理 Claude 有技能（Skills）：裝著指示、腳本與資源的資料夾，用得上時才載入；截至 2026 年 10 月，免費的 Free 與付費的 Pro、Max、Team、Enterprise 方案都能用，但要開啟程式碼執行。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "技能怎麼建立、說明檔該寫什麼，接著看 Claude Skills 是什麼",
+              "kind": "life",
+              "slug": "claude-skills-explained"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "個資與公司機密不要寫進 SOP，也不要貼給 AI",
+          "text": "個人資料保護法第 2 條所稱的個人資料，包括姓名、出生年月日、國民身分證統一編號、聯絡方式、財務情況，以及其他能直接或間接識別個人的資料。逐字稿與截圖交給 AI 前先換成代號或假資料；SOP 只寫角色（例如「帳務窗口」），不寫人名、帳號或密碼。流程本身也可能是營業秘密：營業秘密法第 2 條把方法、製程等可用於經營的資訊列入，要件之一是所有人已採取合理的保密措施。用哪個 AI 工具、個人或公司帳號，先照公司的 AI 使用規範。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Microsoft Learn：Microsoft Writing Style Guide－Writing step-by-step instructions（編號清單、每個指示一個步驟、先說位置再說動作、寫出完成程序的動作）",
+          "url": "https://learn.microsoft.com/en-us/style-guide/procedures-instructions/writing-step-by-step-instructions",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google developer documentation style guide：Procedures（一個動作一個步驟、選擇性步驟、重複程序改用參照、介面難找時才放截圖）",
+          "url": "https://developers.google.com/style/procedures",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google developer documentation style guide：Diagrams, figures, and other images（截圖裁切、不含個資、以不透明色塊遮蔽、合併圖層）",
+          "url": "https://developers.google.com/style/images",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "美國環保署（EPA）：Guidance for Preparing Standard Operating Procedures, EPA QA/G-6（2007 年 4 月版；撰寫者、試做、複審、文件控制）",
+          "url": "https://www.epa.gov/sites/default/files/2015-06/documents/g6-final.pdf",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft 支援：轉譯您的錄製內容（Word 轉譯的位置與適用版本、支援的音訊格式、每月上傳音訊上限、OneDrive 存放位置、語言清單）",
+          "url": "https://support.microsoft.com/zh-tw/word/transcribe-your-recordings",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft 支援：使用剪取工具擷取螢幕擷取畫面（快速鍵；Windows 11 的影片剪取、文字動作與快速修訂）",
+          "url": "https://support.microsoft.com/zh-tw/windows/apps/use-snipping-tool-to-capture-screenshots",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Apple 支援：在 Mac 上拍攝截圖（Shift + Command + 4、截圖 App）",
+          "url": "https://support.apple.com/zh-tw/102646",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Apple 支援：如何在 Mac 上錄製螢幕（Shift + Command + 5、選擇麥克風、顯示滑鼠點按）",
+          "url": "https://support.apple.com/zh-tw/102618",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：個人資料保護法第 2 條（個人資料的定義）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0050021&flno=2",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：營業秘密法第 2 條（營業秘密的定義與要件）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0080028&flno=2",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Claude 說明中心：What are skills?（技能的定義、可用方案、需開啟程式碼執行）",
+          "url": "https://support.claude.com/en/articles/12512176-what-are-skills",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Claude 說明中心：Claude is providing incorrect or misleading responses（AI 可能產生看似正確的錯誤內容）",
+          "url": "https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on",
+          "checked_on": "2026-10-05"
+        }
+      ]
+    }
+  }
+}

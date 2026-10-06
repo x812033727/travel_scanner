@@ -17,6 +17,7 @@ import { AdminVideoRenewal } from "@/components/admin-video-renewal";
 import { AdminVideoShorts } from "@/components/admin-video-shorts";
 import { AdminVideoPlans } from "@/components/admin-video-plans";
 import { stateTone } from "@/components/admin-video-shorts-data";
+import { SlidesRequests } from "@/components/admin-video-slides-requests";
 import { DiscussionThread, scriptSubject } from "@/components/admin-video-thread";
 import { syncRunning, useYoutubeConnection, YoutubeChannelCard, type YoutubeConnection, YoutubeLinkHint, YoutubePublishForm, YoutubeSyncPanel } from "@/components/admin-video-youtube";
 import { Button, Tabs } from "@/components/community/ui";
@@ -431,7 +432,8 @@ function Group({ title, children }: { title: string; children: ReactNode }) {
  * ready to upload (docs/videos/HANDS-OFF.md, docs/videos/LANGUAGES.md); under the two, every tutorial
  * is in the catalog, one line each, with the category and state filters, a search and pages
  * (VideoBrowser). A video that needs the owner is in both: the group is the reminder, the catalog the
- * record.
+ * record. Above them all, the owner asks for a video of one site article and sees those requests
+ * (admin-video-slides-requests.tsx).
  */
 function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   const t = useTranslations("admin.videoReviews");
@@ -451,6 +453,7 @@ function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
     return { needs: listed.filter(needsOwner), ready: listed.filter((project) => !needsOwner(project) && readyToUpload(project)) };
   }, [projects]);
   return <div className="grid gap-6" aria-label={t("listTitle")}>
+    <SlidesRequests onOpen={onOpen} />
     {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
     {groups.needs.length > 0 && <Group title={t("needsYou")}>{groups.needs.map((project) => <ProjectItem key={project.slug} project={project} onOpen={onOpen} />)}</Group>}
     {groups.ready.length > 0 && <Group title={t("readyToUpload")}>{groups.ready.map((project) => <ReadyCard key={project.slug} project={project} canManage={manage.allowed} connection={connection} onOpen={onOpen} onLinked={changed} />)}</Group>}

@@ -73,7 +73,7 @@ node tools/video/cli.mjs dub      --slug <SLUG> --locale en,ja [--dry-run] [--fo
 node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整條流程的冒煙測試
 ```
 
-結束碼：0 成功；1 lint 或檢查沒過（`tts` 的章節不合 YouTube 規則也是 1，檔案照寫）；2 用法錯誤或順序不對（例如還沒 tts 就 assemble）；3 需要站主（權杖、後台設定、核准）；4 外部服務或額度；5 工具沒裝；6 被 `STOP` 檔停下、還沒做完（`tts`、`check-audio`）。要中途停下來，在工作區或它的上一層放一個 `STOP` 檔：長的階段做完手上那一段就會停，下次從快取接著做。
+結束碼：0 成功；1 lint 或檢查沒過（`tts` 的章節不合 YouTube 規則也是 1，檔案照寫）；2 用法錯誤或順序不對（例如還沒 tts 就 assemble）；3 需要站主（權杖、後台設定、核准）；4 外部服務或額度；5 工具沒裝；6 被 `STOP` 檔停下、還沒做完（`tts`、`check-audio`、`dub`）。要中途停下來，在工作區或它的上一層放一個 `STOP` 檔：長的階段做完手上那一段就會停，下次從快取接著做。
 
 ## video.json 的重點
 

@@ -187,7 +187,7 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     const { container } = render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
     const nav = screen.getByRole("navigation", { name: "頁面路徑" });
     expect(within(nav).getAllByRole("link").map((link) => link.getAttribute("href"))).toEqual([
-      "/life", "/life/topics/ai", "/life/topics/ai-terms",
+      "/life", "/ai", "/life/topics/ai-terms",
     ]);
     expect(mocks.topics).toHaveBeenCalledWith("en", "life");
     const json = [...container.querySelectorAll('script[type="application/ld+json"]')].flatMap(script => JSON.parse(script.textContent!));
@@ -199,7 +199,7 @@ describe("breadcrumb, summary, FAQ and glossary markup", () => {
     mocks.article.mockResolvedValue({ ...state, series: null, topics: [{ slug: "ai", label: "AI" }] });
     render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));
     expect(within(screen.getByRole("navigation", { name: "頁面路徑" })).getAllByRole("link").map((link) => link.getAttribute("href")))
-      .toEqual(["/life", "/life/topics/ai"]);
+      .toEqual(["/life", "/ai"]);
     cleanup();
     mocks.article.mockResolvedValue({ ...state, series: null, topics: [] });
     render(await renderGuideArticle({ locale: "en", kind: "life", slug: reference.slug }));

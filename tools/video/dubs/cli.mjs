@@ -195,8 +195,10 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   const send = journal.wrap((body) => synthesize({ ...options, body }));
   for (const request of pending) {
     if (stopRequested(workdir)) {
+      // The takes so far are in cache.json and a rerun reuses them, but fit.json, the dub's
+      // timeline and its track are still the last run's (or absent): this is not a made track.
       ctx.stdout.write(`${locale}: stopped by the STOP file; ${pending.indexOf(request)} of ${pending.length} requests done, rerun to continue\n`);
-      return EXIT.ok;
+      return EXIT.incomplete;
     }
     const lines = retakes(request);
     const result = lines ? { ...(await synthesizeLines(request, lines, send)), fallback: false } : await synthesizeRequest(request, send);
@@ -392,6 +394,8 @@ async function dub(args, ctx) {
   let worst = EXIT.ok;
   for (const dub of dubs) {
     const code = await dubLocale(dub, project, timeline, values, ctx, clientOpts, ffmpeg, workdir, workBase);
+    // The STOP file stops the locales after this one as well: the run ends here.
+    if (code === EXIT.incomplete) return code;
     worst = Math.max(worst, code);
   }
   if (worst === EXIT.ok) ctx.stdout.write(`next: node tools/video/cli.mjs check-audio --slug ${doc.slug} --locale ${values.locales[0]}\n`);

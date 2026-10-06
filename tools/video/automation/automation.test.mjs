@@ -128,6 +128,11 @@ test("a planner's brief must have a new slug, the owner's sections and two optio
   assert.equal(mainGuide(cited), "ai-news-gemini-student-offer-20260820");
   assert.equal(mainGuide({ source_guide: null, source_urls: ["https://mokaair.com/zh-TW/life/ai-news-gpt-6-sol-luna-20260923"] }), "ai-news-gpt-6-sol-luna-20260923");
   assert.equal(planProblem({ ...plan, source_guide: "chatgpt-ads-status" }, new Set(), used), null);
+  // The owner asked for a video of one article (draftSlides): the brief retells that one and no other.
+  const asked = (answer) => planProblem(answer, new Set(), new Set(), "slides", "", null, "ai-news-gemini-student-offer-20260820");
+  assert.match(asked({ ...plan, source_guide: "chatgpt-ads-status" }), /source_guide must be "ai-news-gemini-student-offer-20260820", the site article the owner asked for/);
+  assert.match(asked(cited), /source_guide must be/, "citing the article is not naming it");
+  assert.equal(asked({ ...plan, source_guide: "ai-news-gemini-student-offer-20260820" }), null);
 });
 
 test("a stage reads the site article where the site serves it, stale /guides/<slug> addresses included", () => {
@@ -193,16 +198,17 @@ function jevPick(choice, { passed = true, stance = 0.9, demo = 0.8, advice = 0.1
 
 /**
  * The site as the worker sees it: settings, topics, the model runner, the judge, reviews and
- * their files, drama requests and source pages. Reviews are decided on arrival by the server's
+ * their files, drama and slides requests, and source pages. Reviews are decided on arrival by the server's
  * own rules (apps/api/app/video_automation/judge.py, settings.py): Jev's pick on an outline, the
  * quality check on a final cut, the package check on a publish, Jev's line check on a narration.
  * `judge(body)` answers the outline judgement (an object, or a Response for an error) once the
  * stance is written and the switch on; otherwise the site answers 409 as it does.
  */
-function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused = false, videos = [], dramaRequests = [], judge = null } = {}) {
-  const calls = { run: [], reviews: [], reports: [], pages: [], drama: [], judge: [] };
+function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused = false, videos = [], dramaRequests = [], slidesRequests = [], judge = null } = {}) {
+  const calls = { run: [], reviews: [], reports: [], pages: [], drama: [], slides: [], topics: 0, judge: [] };
   const files = new Map();
   const requests = dramaRequests.map((request) => ({ status: "queued", slug: null, ...request }));
+  const slides = slidesRequests.map((request) => ({ status: "queued", slug: null, title: null, note: null, ...request }));
   const projects = new Map();
   // /admin/videos as a list: videos made elsewhere, then whatever the worker reports.
   const listed = new Map(videos.map((video) => [video.slug, { dropped_at: null, dropped_note: null, source_guide: null, youtube_video_id: null, locales: {}, locales_decided_at: null, ...video }]));
@@ -291,7 +297,10 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
       const answer = judge ? judge(body) : json({ code: "not_found", detail: pathname }, 404);
       return answer instanceof Response ? answer : json(answer);
     }
-    if (pathname === "/api/video/automation/topics") return json({ topics: [{ source: "site", title: "ChatGPT 廣告", summary: "s", url: "https://mokaair.com/zh-TW/life/chatgpt-ads-status", slug: "chatgpt-ads-status", date: "2026-09-24" }], notes: [] });
+    if (pathname === "/api/video/automation/topics") {
+      calls.topics += 1;
+      return json({ topics: [{ source: "site", title: "ChatGPT 廣告", summary: "s", url: "https://mokaair.com/zh-TW/life/chatgpt-ads-status", slug: "chatgpt-ads-status", date: "2026-09-24" }], notes: [] });
+    }
     if (pathname === "/api/video/automation/drama-requests/next") return json({ request: requests.find((request) => request.status === "queued") ?? null });
     const drama = /^\/api\/video\/automation\/drama-requests\/([^/]+)\/(start|done)$/.exec(pathname);
     if (drama) {
@@ -299,6 +308,19 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
       calls.drama.push({ id: drama[1], action: drama[2], slug: body?.slug ?? null });
       if (!request) return json({ code: "video_drama_request_not_found", detail: "no" }, 404);
       Object.assign(request, drama[2] === "start" ? { status: "started", slug: body.slug } : { status: "done" });
+      return json(request);
+    }
+    if (pathname === "/api/video/automation/slides-requests/next") return json({ request: slides.find((request) => request.status === "queued") ?? null });
+    const slidesCall = /^\/api\/video\/automation\/slides-requests\/([^/]+)\/(start|done)$/.exec(pathname);
+    if (slidesCall) {
+      const request = slides.find((each) => each.id === slidesCall[1]);
+      calls.slides.push({ id: slidesCall[1], action: slidesCall[2], slug: body?.slug ?? null });
+      if (!request) return json({ code: "video_slides_request_not_found", detail: "no" }, 404);
+      // As the server does (slides_requests.py): only a queued request is claimed, only a started one
+      // finished, and the same claim sent again is answered as the first was.
+      if (slidesCall[2] === "start" && request.status === "started" && request.slug === body?.slug) return json(request);
+      if (request.status !== (slidesCall[2] === "start" ? "queued" : "started")) return json({ code: `video_slides_request_not_${slidesCall[2] === "start" ? "queued" : "started"}`, detail: `the request is ${request.status}` }, 409);
+      Object.assign(request, slidesCall[2] === "start" ? { status: "started", slug: body.slug } : { status: "done" });
       return json(request);
     }
     if (pathname === "/api/video/automation/run") {
@@ -340,7 +362,7 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
     }
     return json({ code: "not_found", detail: pathname }, 404);
   };
-  return { calls, fetchImpl, reviewsOf, listed, settings: current, requests, files };
+  return { calls, fetchImpl, reviewsOf, listed, settings: current, requests, slidesRequests: slides, files };
 }
 
 function context(box, fetchImpl, clock) {
@@ -999,8 +1021,211 @@ test("an outline sent back is re-planned with the owner's note, and a spent budg
   assert.equal(off.calls.run.length, 0);
 });
 
+// The owner's slides requests (docs/videos/AUTOMATION.md §站主指定文章的教學影片): a published life article named on /admin/videos.
+const SLIDES_REQUEST = { id: "0b5e4c2a-7d1f-4e3b-9a6c-5d8e7f9a1b2c", source_guide: "chatgpt-ads-status", title: "ChatGPT 廣告現況", note: "只講設定怎麼關，不推薦付費方案" };
+const REQUESTED_URL = "https://mokaair.com/zh-TW/life/chatgpt-ads-status";
+
+test("an owner's slides request is planned from its article before any scheduled draft, claimed under the video's slug, and pinned through a re-plan", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  // Another video already retells the article: a scheduled draft could not pick it, the owner may ask for it.
+  const elsewhere = { slug: "gemini-student-offer", title: "Gemini 學生方案", source_guide: "chatgpt-ads-status" };
+  // The planner's source_guide, answer by answer: wrong, right, then right and wrong in the two re-plans.
+  const guides = ["ai-news-gemini-student-offer-20260820", "chatgpt-ads-status", "chatgpt-ads-status", "ai-news-gemini-student-offer-20260820"];
+  const plain = answersFor(slug);
+  const answers = { ...plain, planner: (body) => ({ ...plain.planner(body), source_guide: guides.shift() }) };
+  const site = fakeSite({ answers, videos: [elsewhere], slidesRequests: [SLIDES_REQUEST] });
+  const clock = { now: Date.parse("2026-10-05T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+
+  assert.match(await automation.step(), /^slides: chatgpt-ads-off planned from the owner's article chatgpt-ads-status; outline sent to \/admin\/videos for the owner/);
+  // Two tries under one stable slug and no variant: the server counts one draft of the month.
+  assert.deepEqual(site.calls.run.map((call) => [call.stage, call.slug, call.variant ?? null]), [["planner", "slides-0b5e4c2a", null], ["planner", "slides-0b5e4c2a", null]]);
+  const [first, second] = site.calls.run;
+  assert.deepEqual(first.payload.requested_guide, { slug: "chatgpt-ads-status", title: SLIDES_REQUEST.title, url: REQUESTED_URL, note: SLIDES_REQUEST.note });
+  assert.deepEqual(first.payload.topics, []);
+  assert.deepEqual(first.payload.sources.map((page) => [page.url, page.ok]), [[REQUESTED_URL, true]]);
+  assert.match(second.payload.previous_problem, /source_guide must be "chatgpt-ads-status"/, "an answer about another article is tried once more with the reason");
+  assert.equal(site.calls.topics, 0, "no topics are fetched for an article the owner chose");
+  assert.deepEqual(site.calls.slides, [{ id: SLIDES_REQUEST.id, action: "start", slug }]);
+  assert.equal(site.slidesRequests[0].status, "started");
+  const state = () => automatedVideos(box.work).find((each) => each.slug === slug);
+  assert.deepEqual(state().slides_request, { id: SLIDES_REQUEST.id, source_guide: "chatgpt-ads-status", title: SLIDES_REQUEST.title, note: SLIDES_REQUEST.note });
+  assert.equal(state().source_guide, "chatgpt-ads-status");
+  assert.deepEqual(state().notes, [`owner request: ${SLIDES_REQUEST.note}`], "the writer reads the note as owner_notes");
+  assert.equal(readJson(path.join(box.work, "auto-state.json")).last_draft_at, "2026-10-05T09:00:00.000Z", "it takes the place of the interval's draft");
+  assert.equal(site.calls.reports.at(-1).source_guide, "chatgpt-ads-status");
+  assert.ok(existsSync(path.join(box.root, "docs", "videos", slug, "brief.md")));
+  assert.equal(await automation.step(), null, "the outline waits for the owner, the request is started and no draft is due");
+
+  // The owner sends the outline back: the re-plan is told the same article and fetches no topics.
+  Object.assign(site.reviewsOf(slug)[0], { status: "rejected", note: "換一個角度" });
+  assert.match(await automation.step(), /brief rewritten after the owner's note \(round 1\)/);
+  const replan = site.calls.run.at(-1);
+  assert.equal(replan.slug, slug);
+  assert.equal(replan.variant ?? null, null);
+  assert.deepEqual(replan.payload.requested_guide, first.payload.requested_guide);
+  assert.deepEqual(replan.payload.topics, []);
+  assert.equal(site.calls.topics, 0);
+  assert.equal(state().source_guide, "chatgpt-ads-status");
+
+  // A re-plan about another article is not taken: the brief, and the article, stay as they were.
+  const kept = readFileSync(path.join(box.root, "docs", "videos", slug, "brief.md"), "utf8");
+  Object.assign(site.reviewsOf(slug)[0], { status: "rejected", note: "還是不對" });
+  assert.match(await automation.step(), /planner gave nothing usable \(the re-planned brief was not usable \(source_guide must be "chatgpt-ads-status"/);
+  assert.equal(readFileSync(path.join(box.root, "docs", "videos", slug, "brief.md"), "utf8"), kept);
+  assert.equal(state().source_guide, "chatgpt-ads-status");
+  assert.deepEqual(site.calls.slides.map((call) => call.action), ["start"], "claimed once");
+});
+
+test("an owner's article that cannot be read waits without a paid call or a claim; a request withdrawn while planned keeps nothing; a planner that fails twice blocks the claimed video", async () => {
+  const clock = { now: Date.parse("2026-10-05T09:00:00Z") };
+  const setup = ({ answers = answersFor("chatgpt-ads-off"), unreadable = () => false, claim = () => null } = {}) => {
+    const box = sandbox();
+    const site = fakeSite({ answers, slidesRequests: [SLIDES_REQUEST] });
+    const claims = (url) => /\/slides-requests\/[^/]+\/start$/.test(new URL(url).pathname);
+    const fetchImpl = async (url, init) => {
+      if (unreadable(url)) return new Response("busy", { status: 503, headers: { "content-type": "text/html" } });
+      return (claims(url) && claim()) || site.fetchImpl(url, init);
+    };
+    const { ctx } = context(box, fetchImpl, clock);
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    return { box, site, automation };
+  };
+
+  let down = true;
+  const unread = setup({ unreadable: (url) => down && url === REQUESTED_URL });
+  assert.match(await unread.automation.step(), /^slides: the owner's article chatgpt-ads-status could not be read \(HTTP 503\); the next round tries again$/);
+  assert.equal(unread.automation.halted, true, "the round ends");
+  assert.deepEqual([unread.site.calls.run.length, unread.site.calls.slides.length, unread.site.calls.topics], [0, 0, 0], "nothing paid for, claimed or drafted instead");
+  assert.equal(existsSync(path.join(unread.box.work, "auto-state.json")), false, "the interval is not used up");
+  down = false;
+  unread.automation.halted = false;
+  assert.match(await unread.automation.step(), /^slides: chatgpt-ads-off planned from the owner's article/, "the next round heals it");
+
+  // Cancelled on the page while the planner was writing: the claim is refused and nothing stays.
+  const plain = answersFor("chatgpt-ads-off");
+  const answers = { ...plain };
+  const late = setup({ answers });
+  answers.planner = (body) => {
+    late.site.slidesRequests[0].status = "cancelled";
+    return plain.planner(body);
+  };
+  assert.match(await late.automation.step(), /^slides: the owner's request for chatgpt-ads-status could not be claimed \(the request is cancelled\); nothing was kept$/);
+  assert.equal(late.automation.halted, true);
+  assert.deepEqual(late.site.calls.slides.map((call) => call.action), ["start"]);
+  assert.deepEqual(automatedVideos(late.box.work), [], "no video is left behind");
+  assert.equal(existsSync(path.join(late.box.root, "docs", "videos", "chatgpt-ads-off")), false);
+  assert.equal(late.site.calls.reviews.length, 0);
+
+  // Only the owner's cancel or a slug taken since reads as withdrawn: any other refusal is an error to look into.
+  const odd = setup({ claim: () => Response.json({ code: "video_slides_request_unexpected", detail: "not a cancel" }, { status: 409 }) });
+  await assert.rejects(odd.automation.step(), { status: 409, code: "video_slides_request_unexpected" });
+  assert.equal(odd.automation.halted, false, "the round does not end as if the owner had withdrawn it");
+
+  // Two answers that are not a brief: the request is claimed under the run's slug and the video is blocked with the reason.
+  const failing = setup({ answers: { planner: () => ({ note: "no brief" }) } });
+  assert.match(await failing.automation.step(), /^slides-0b5e4c2a: blocked — the planner could not write a usable brief for the owner's article chatgpt-ads-status \(slug "undefined"/);
+  assert.equal(failing.site.calls.run.length, 2);
+  assert.deepEqual(failing.site.calls.slides, [{ id: SLIDES_REQUEST.id, action: "start", slug: "slides-0b5e4c2a" }]);
+  const blocked = automatedVideos(failing.box.work)[0];
+  assert.deepEqual([blocked.slug, blocked.status, blocked.source_guide, blocked.slides_request.id], ["slides-0b5e4c2a", "blocked", "chatgpt-ads-status", SLIDES_REQUEST.id]);
+  assert.equal(blocked.title, SLIDES_REQUEST.title);
+  assert.match(failing.site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：the planner could not write a usable brief/);
+  assert.equal(await failing.automation.step(), null, "a blocked request is not planned again, and no draft is due");
+});
+
+test("a claim whose answer is lost on the way is sent again and answered as the first was: the planned video is kept, not thrown away as a cancel", async () => {
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off"), slidesRequests: [SLIDES_REQUEST] });
+  // The first claim reaches the site and goes through; its answer never comes back, as on a dropped socket.
+  let lose = true;
+  const fetchImpl = async (url, init) => {
+    const answer = await site.fetchImpl(url, init);
+    if (lose && /\/slides-requests\/[^/]+\/start$/.test(new URL(url).pathname)) {
+      lose = false;
+      throw new TypeError("fetch failed: socket hang up");
+    }
+    return answer;
+  };
+  const { ctx } = context(box, fetchImpl, { now: Date.parse("2026-10-05T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+
+  assert.match(await automation.step(), /^slides: chatgpt-ads-off planned from the owner's article chatgpt-ads-status; outline sent to \/admin\/videos/);
+  const claim = { id: SLIDES_REQUEST.id, action: "start", slug: "chatgpt-ads-off" };
+  assert.deepEqual(site.calls.slides, [claim, claim], "the client sends the same claim again");
+  assert.deepEqual([site.slidesRequests[0].status, site.slidesRequests[0].slug], ["started", "chatgpt-ads-off"]);
+  assert.equal(site.calls.run.length, 1, "the plan is paid for once");
+  const state = automatedVideos(box.work)[0];
+  assert.deepEqual([state.slug, state.status, state.slides_request.id], ["chatgpt-ads-off", "active", SLIDES_REQUEST.id]);
+  assert.ok(existsSync(path.join(box.root, "docs", "videos", "chatgpt-ads-off", "brief.md")));
+  assert.equal(site.calls.reviews[0].gate, "outline", "the outline reaches the owner");
+});
+
+test("an owner's slides request is held from its save until its first outline is in, so a second lane cannot submit it again", async () => {
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off"), slidesRequests: [SLIDES_REQUEST] });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-05T09:00:00Z") });
+  const busy = new Set();
+  const automation = new Automation(ctx, automationClient(ctx), site.settings, { busy });
+  automation.refs = smallRefs;
+  const seen = [];
+  automation.submitOutline = async (state) => {
+    seen.push({ saved: automatedVideos(box.work)[0]?.status, held: busy.has(state.slug) });
+    return "outline sent";
+  };
+  assert.match(await automation.step(), /^slides: chatgpt-ads-off planned from the owner's article chatgpt-ads-status; outline sent$/);
+  assert.deepEqual(seen, [{ saved: "active", held: true }]);
+  assert.equal(busy.size, 0, "the hold ends with the outline");
+});
+
 // auto_pick_look is the drama-look ticket's switch (docs/videos/HANDS-OFF.md); the server applies it on look reviews.
 const DRAMA_SETTINGS = { drama_enabled: true, style_preset: "ink-wash", subtitle_burn_in: true, music_enabled: false, auto_pick_look: false, character_voice_pool: [{ provider: "gemini", name: "Kore", hint: "少女" }] };
+
+test("the owner's slides requests come after the drama requests and wait for room under the waiting cap, though no draft interval", async () => {
+  const box = sandbox();
+  const drama = { id: "8b2e3d4c-5b6a-4f7e-9b8c-0d1e2f3a4b5c", premise: "為什麼雷聲總比閃電晚到？", title: null, source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: null };
+  const dramaBrief = `${explainerBrief()}\n### 選項 B：從賽跑講起\n一行說明：光聲賽跑。\n開場鉤子：「誰先到？」\n`;
+  const slides = answersFor("chatgpt-ads-off");
+  const answers = { ...slides, planner: (body) => (body.format === "drama" ? { slug: "why-thunder-is-late", title: "為什麼雷聲總比閃電晚到？", source_guide: null, source_urls: [], brief: dramaBrief } : slides.planner(body)) };
+  // One video may wait on the owner, and the last scheduled draft was an hour ago: none is due.
+  const site = fakeSite({ answers, settings: { drama: DRAMA_SETTINGS, max_waiting_drafts: 1 }, dramaRequests: [drama], slidesRequests: [SLIDES_REQUEST] });
+  mkdirSync(box.work, { recursive: true });
+  atomicWrite(path.join(box.work, "auto-state.json"), `${JSON.stringify({ last_draft_at: "2026-10-05T08:00:00.000Z" })}\n`);
+  const asked = [];
+  const fetchImpl = async (url, init) => {
+    asked.push(new URL(url).pathname);
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-10-05T09:00:00Z") };
+  const { ctx } = context(box, fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  const slidesAsked = () => asked.filter((route) => route.includes("/slides-requests/")).length;
+
+  // Both are queued: the drama request is drafted first, and the slides queue is not even asked.
+  assert.match(await automation.step(), /^drama: why-thunder-is-late planned from the owner's request/);
+  assert.equal(slidesAsked(), 0);
+  assert.deepEqual(site.calls.slides, []);
+
+  // Its outline waits on the owner and fills the one place: the slides request waits, with no paid call.
+  const planned = site.calls.run.length;
+  assert.equal(await automation.step(), null);
+  assert.equal(site.calls.run.length, planned, "no planner run past the cap");
+  assert.equal(slidesAsked(), 0, "no slides call past the cap");
+  assert.equal(site.slidesRequests[0].status, "queued");
+
+  // The owner drops that video: it no longer waits on them, and the slides request is planned at once, interval or not.
+  Object.assign(site.listed.get("why-thunder-is-late"), { dropped_at: "2026-10-05T09:30:00Z", dropped_note: "先做教學" });
+  assert.match(await automation.step(), /the owner dropped it/);
+  assert.match(await automation.step(), /^slides: chatgpt-ads-off planned from the owner's article chatgpt-ads-status/);
+  assert.deepEqual(site.calls.slides.map((call) => call.action), ["start"]);
+  assert.equal(site.calls.topics, 0, "no scheduled draft was made along the way");
+});
 
 test("a drama reads the drama part's own settings and falls back to the tutorial's (docs/videos/DRAMA-FLOW.md, section 1)", () => {
   const voice = { provider: "gemini", name: "Sulafat", style: "Relaxed", model: null, rate: "+0%" };
@@ -1879,8 +2104,9 @@ const rewordAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id:
  * with the dub and its check played by `fakeDub`; the languages then wait for the owner's
  * choice on /admin/videos (docs/videos/LANGUAGES.md), which `choose` makes. `confirmed: false`
  * stops it one step before: the publish review waits on the owner, and the video is still active.
+ * With `slidesRequest` the video is the owner's slides request instead of a scheduled draft.
  */
-async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet, renderer = null, confirmed = true } = {}) {
+async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet, renderer = null, confirmed = true, slidesRequest = null } = {}) {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
   const passes = { shorten, reword };
@@ -1889,7 +2115,7 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
     translator: (body) => (passes[body.variant] ? passes[body.variant](body) : { worksheet: translate(body.payload.worksheet) }),
     caption_reviewer: (body) => ({ worksheet: review(body.payload.worksheet), fixes: [] }),
   };
-  const site = fakeSite({ answers, settings: { channel_stance: STANCE }, judge: () => jevPick("B") });
+  const site = fakeSite({ answers, settings: { channel_stance: STANCE }, judge: () => jevPick("B"), slidesRequests: slidesRequest ? [slidesRequest] : [] });
   const clock = { now: Date.parse("2026-09-27T09:00:00Z") };
   const { ctx, out } = context(box, site.fetchImpl, clock);
   ctx.encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
@@ -1963,6 +2189,18 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
     upload: (...parts) => path.join(workdir, "upload", ...parts),
   };
 }
+
+test("a requested slides video tells the site its request is done once the upload is confirmed, and never as a drama request", async () => {
+  const video = await finishedVideo({ slidesRequest: SLIDES_REQUEST });
+  assert.deepEqual(video.site.calls.slides, [
+    { id: SLIDES_REQUEST.id, action: "start", slug: video.slug },
+    { id: SLIDES_REQUEST.id, action: "done", slug: null },
+  ]);
+  assert.equal(video.site.slidesRequests[0].status, "done");
+  assert.deepEqual(video.site.calls.drama, []);
+  assert.equal(video.site.calls.topics, 0, "the video came from the request, not from a scheduled draft");
+  assert.equal(video.state().slides_request.id, SLIDES_REQUEST.id);
+});
 
 test("the languages wait for the owner: an undecided video is translated into nothing, and one chosen as Traditional Chinese only packages zh-TW alone, byte for byte as before", async () => {
   const video = await finishedVideo();
@@ -2076,26 +2314,28 @@ test("a choice narrowed after the upload confirmation leaves the package as it w
   assert.equal(video.reviews("languages").length, 1);
 });
 
-test("an upload metadata.json whose fields have the wrong types leaves the re-package check unknown: the round goes on and writes nothing, and the same file with the right types is written again", async () => {
+test("an upload metadata.json whose fields have the wrong types is still read by the re-package check: nothing throws, a package of the current choice is left alone, and one of another choice is written again", async () => {
   const video = await finishedVideo({ confirmed: false });
   video.choose({ en: { metadata: true, captions: false, dub: false } });
   assert.match(await video.step(), /en metadata translated and reviewed$/);
   assert.match(await video.step(), /language batch sent/);
   assert.match(await video.step(), /publish confirmation sent/);
-  // Narrowed, so a readable package holding en would be written again; this one's caption list
-  // is a number, which the package check cannot read.
-  video.choose({});
+  // The caption list is a number: the package check fails that item by name without throwing,
+  // and that is no language-choice problem, so the package of the current choice is not stale.
   const readable = readFileSync(video.upload("metadata.json"));
   atomicWrite(video.upload("metadata.json"), JSON.stringify({ ...JSON.parse(readable), captions: 5 }));
   // Its publish review waits on the owner too, so the round comes to the languages.
   video.site.reviewsOf(video.slug).unshift({ id: "r-typed", gate: "publish", status: "pending", content_sha256: sha(video.upload("metadata.json")), payload: {}, files: [] });
   const ran = video.runs.length;
-  assert.equal(await video.step(), null, "unknown is not stale, and nothing throws");
+  assert.equal(await video.step(), null, "not stale, and nothing throws");
   assert.equal(video.runs.length, ran, "no captions or package");
   assert.equal(video.state().status, "active", video.state().blocked);
 
-  writeFileSync(video.upload("metadata.json"), readable);
+  // Narrowed: the same file was written for another choice, which the check still reads, so it is
+  // written again, with the types package writes.
+  video.choose({});
   assert.equal(await video.step(), "chatgpt-ads-off: upload package written again for the current language choice");
+  assert.deepEqual(JSON.parse(readFileSync(video.upload("metadata.json"), "utf8")).captions, ["captions/zh-TW.srt"]);
 });
 
 /** filledSheet plus the thumbnail's words: each source word with the locale in front, its ** and line breaks kept. */
@@ -3280,6 +3520,45 @@ test("a STOP file that ends a dub's check defers the language to the next run in
   nextRun(video.automation);
   assert.match(await video.step(), /^chatgpt-ads-off: ja dub made/);
   assert.equal(checks, 2);
+  assert.equal(video.state().languages?.ja, undefined);
+});
+
+test("a STOP file that ends a dub or its retake defers the language: the track is not heard, and the next run makes it again from the cache and checks it", async () => {
+  const video = await finishedVideo({ checks: { ja: 1 } });
+  video.choose({ ja: { metadata: true, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: ja metadata and captions translated and reviewed$/);
+  const play = video.ctx.runCommand;
+  const stops = new Set(["dub", "dub --redo"]);
+  video.ctx.runCommand = async (command, runCtx) => {
+    if (command[0] === "dub" && stops.delete(command.includes("--redo") ? "dub --redo" : "dub")) {
+      video.runs.push(command.join(" "));
+      return { code: EXIT.incomplete, out: "ja: stopped by the STOP file; 1 of 3 requests done, rerun to continue\n" };
+    }
+    return play(command, runCtx);
+  };
+  const dubbing = () => video.runs.filter((run) => /^(dub|check-audio) .*--locale/.test(run));
+  const flags = path.join(video.workdir, "review", "check-flags.ja.json");
+  const waits = (what) => {
+    assert.notEqual(video.state().status, "blocked", video.state().blocked);
+    assert.equal(existsSync(path.join(video.workdir, "dubs", "ja", "skipped.json")), false, `${what}: the language is not given up`);
+    assert.equal(video.state().languages.ja.check_stopped, true);
+  };
+
+  assert.equal(await video.step(), "chatgpt-ads-off: ja dub stopped (ja: stopped by the STOP file; 1 of 3 requests done, rerun to continue); the next run continues");
+  waits("dub");
+  assert.deepEqual(dubbing(), [`dub --slug ${video.slug} --locale ja`], "a dub that stopped is not a track to check");
+
+  // A STOP defers the video for the rest of the run; the next run takes it up again.
+  nextRun(video.automation);
+  assert.equal(await video.step(), "chatgpt-ads-off: ja dub retake stopped (ja: stopped by the STOP file; 1 of 3 requests done, rerun to continue); the next run continues");
+  waits("retake");
+  assert.equal(video.state().languages.ja.retakes, 1);
+  assert.deepEqual(dubbing().slice(1), [`dub --slug ${video.slug} --locale ja`, `check-audio --slug ${video.slug} --locale ja`, `dub --slug ${video.slug} --locale ja --redo ${flags}`], "a stopped retake is not heard either");
+
+  // The old track still reads as current: the next run lays the takes out again and hears it.
+  nextRun(video.automation);
+  assert.equal(await video.step(), "chatgpt-ads-off: ja dub made after 1 retake; Jev passed every line");
+  assert.deepEqual(dubbing().slice(4), [`dub --slug ${video.slug} --locale ja`, `check-audio --slug ${video.slug} --locale ja`]);
   assert.equal(video.state().languages?.ja, undefined);
 });
 
