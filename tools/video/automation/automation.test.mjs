@@ -1222,6 +1222,27 @@ test("new legacy or missing explainer requests plan ten minutes and reject an in
   }
 });
 
+test("a new video is held from its save until its first outline is in, so a second lane cannot submit it again", async () => {
+  const plannedBrief = `${explainerBrief()}\n### 選項 B：從賽跑講起\n一行說明：光聲賽跑。\n開場鉤子：「誰先到？」\n`;
+  const box = sandbox();
+  const slug = "held-thunder-request";
+  const request = { id: "9c3f4e5d-6b7a-4f8e-9c9d-1e2f3a4b5c6d", premise: "為什麼雷聲晚到？", style_preset: "flat-explainer", target_minutes: 10 };
+  const site = fakeSite({ dramaRequests: [request], answers: { planner: () => ({ slug, brief: plannedBrief, source_urls: [] }) } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-02T02:00:00Z") });
+  const busy = new Set();
+  const automation = new Automation(ctx, automationClient(ctx), site.settings, { busy });
+  const second = new Automation(ctx, automationClient(ctx), site.settings, { busy, secondary: true });
+  automation.refs = smallRefs;
+  const seen = [];
+  automation.submitOutline = async (state) => {
+    seen.push({ saved: readJson(path.join(box.work, slug, "auto.json")).status, held: busy.has(slug), resting: second.resting(state) });
+    return "outline sent";
+  };
+  assert.match(await automation.draftDrama(request), /planned from the owner's request; outline sent/);
+  assert.deepEqual(seen, [{ saved: "active", held: true, resting: false }]);
+  assert.equal(busy.size, 0, "the hold ends with the outline");
+});
+
 test("an approved legacy explainer episode keeps the ten-minute target for its writer", async () => {
   const box = sandbox();
   const slug = "legacy-thunder-episode";
@@ -4414,7 +4435,7 @@ test("a saved writer job the server no longer has blocks its video as job_gone; 
   server.lose(old, 404, { code: "video_ai_job_not_found", detail: "找不到這個權杖的影片工作" });
   server.finish(other);
 
-  const reason = "the server no longer has the saved writer job (video_ai_job_not_found: 找不到這個權杖的影片工作); a retry sets the saved request aside and sends the writer stage once more";
+  const reason = "saved writer job gone from the server; a retry sends the writer stage once more (video_ai_job_not_found: 找不到這個權杖的影片工作)";
   assert.deepEqual(await lines(await videos.worker()), [`${slug}: blocked — ${reason}`, "other-video: script drafted"]);
   const blocked = videos.state(slug);
   assert.deepEqual([blocked.status, blocked.blocked, blocked.blocked_kind], ["blocked", reason, "job_gone:writer"]);
@@ -4849,7 +4870,7 @@ test("the counters a block records are the ones its retry resets, and a legacy r
       (state) => assert.deepEqual([state.prompt_fixes, state.failures, state.seed_offsets, state.replans], [{ keyframes: 2 }, { keyframes: 1 }, { keyframes: 3 }, 1], "deferrals at their limit reset nothing")],
     [{ blocked: "the script is approved on the site but cannot be recorded locally: script: approved a runtime policy or episode context that has since changed; run review-push again", blocked_kind: "unrecorded:script", prompt_fixes: { script: 1 }, replans: 2 }, "unrecorded:script",
       (state) => assert.deepEqual([state.prompt_fixes, state.replans], [{ script: 1 }, 2], "an approval that cannot be recorded is a person's to look at")],
-    [{ blocked: "the server no longer has the saved writer job (video_ai_job_not_found: 找不到這個權杖的影片工作); a retry sets the saved request aside and sends the writer stage once more", blocked_kind: "job_gone:writer", failures: { writer: 1 }, prompt_fixes: { script: 1 } }, "job_gone:writer",
+    [{ blocked: "saved writer job gone from the server; a retry sends the writer stage once more (video_ai_job_not_found: 找不到這個權杖的影片工作)", blocked_kind: "job_gone:writer", failures: { writer: 1 }, prompt_fixes: { script: 1 } }, "job_gone:writer",
       (state) => assert.deepEqual([state.failures, state.prompt_fixes], [{ writer: 1 }, { script: 1 }], "the saved job's journal is the retry transport's")],
   ];
   for (const [fields, kind, check] of kinds) {

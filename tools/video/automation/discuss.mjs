@@ -235,7 +235,7 @@ async function answerHeld(automation, job, state) {
       } else answer = { reply: answer.reply, revised: null };
     } else answer = await automation.stage("writer", state.slug, scriptDiscussionPayload(automation, job, state, video), 32_000, "drama", "discuss");
   } catch (error) {
-    if (error instanceof AutomationError && error.gone) return automation.jobGone(state, error, `the owner's line on ${job.subject} is answered once more`);
+    if (error instanceof AutomationError && error.gone) return automation.jobGone(state, error, `answers the owner's line on ${job.subject} once more`);
     if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
     automation.keepAnswer(automation.workdir(state.slug), "discuss");
     await automation.api.messageAnswer(job.message.id, { reply_md: unusableReply(error.message), revised: null });

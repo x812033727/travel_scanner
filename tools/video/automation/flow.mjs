@@ -1405,7 +1405,8 @@ export class Automation {
   jobGone(state, error, sends = null) {
     const stage = error.stage ?? "writer";
     const code = error.code || `HTTP ${error.status}`;
-    return this.block(state, `the server no longer has the saved ${stage} job (${code}: ${error.message}); a retry sets the saved request aside and ${sends ?? `sends the ${stage} stage once more`}`, `${JOB_GONE_KIND}${stage}`);
+    // The instruction comes before the server's words: the card's label is cut at 120 characters.
+    return this.block(state, `saved ${stage} job gone from the server; a retry ${sends ?? `sends the ${stage} stage once more`} (${code}: ${error.message})`, `${JOB_GONE_KIND}${stage}`);
   }
 
   /** Whether another video may start without passing the owner's cap on drafts waiting on them. */
@@ -1569,8 +1570,23 @@ export class Automation {
       rewrites: 0,
       notes: [],
     };
-    saveState(this.workdir(plan.slug), state);
-    return `draft: ${plan.slug} planned from ${topics.length} topics; ${await this.submitOutline(state)}`;
+    return `draft: ${plan.slug} planned from ${topics.length} topics; ${await this.firstOutline(state)}`;
+  }
+
+  /**
+   * Save a new video and send its first outline, holding the video the whole time. auto.json
+   * says "active" from the save on, so without the hold a second lane could take the video
+   * while Jev judges the outline here, submit it again and, when Jev fails it, pay the planner
+   * twice for one rewrite.
+   */
+  async firstOutline(state) {
+    this.busy.add(state.slug);
+    try {
+      saveState(this.workdir(state.slug), state);
+      return await this.submitOutline(state);
+    } finally {
+      this.busy.delete(state.slug);
+    }
   }
 
   /**
@@ -1686,8 +1702,7 @@ export class Automation {
     const dir = docDir(slug, this.ctx.root);
     mkdirSync(dir, { recursive: true });
     writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
-    saveState(this.workdir(slug), state);
-    return `drama: ${slug} planned from the owner's request; ${await this.submitOutline(state)}`;
+    return `drama: ${slug} planned from the owner's request; ${await this.firstOutline(state)}`;
   }
 
   /**

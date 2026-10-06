@@ -1110,7 +1110,7 @@ test("a discussion's saved writer job the server no longer has blocks its video 
   // Before: the lookup's 404 left the discussion step as an exception, every round: `auto` ended
   // there (exit 4) ahead of the series, the drama requests and the scheduled draft, the journal
   // stayed, and no retry could reach it because no video was blocked for it.
-  const reason = "the server no longer has the saved writer job (video_ai_job_not_found: 找不到這個權杖的影片工作); a retry sets the saved request aside and the owner's line on script:1 is answered once more";
+  const reason = "saved writer job gone from the server; a retry answers the owner's line on script:1 once more (video_ai_job_not_found: 找不到這個權杖的影片工作)";
   assert.deepEqual(await lines(), [`${slug}: blocked — ${reason}`]);
   assert.deepEqual([state().status, state().blocked, state().blocked_kind], ["blocked", reason, "job_gone:writer"]);
   assert.deepEqual([listed.stage, listed.checklist[0].key], ["blocked", "blocked"], "the owner reads it on the card");
