@@ -31,7 +31,7 @@ flagship = [
     ["OpenAI", "gpt-6-astra", "1.05M／128K", "10.00 美元／50.00 美元", "GPQA Diamond 96.0%"],
     ["Anthropic", "Claude Fable 5.1", "1M／128K", "10 美元／50 美元", "Terminal-Bench 4.0 55.8%"],
     ["Anthropic", "Claude Opus 5.5", "1M／128K", "4 美元／20 美元", "Terminal-Bench 4.0 66.4%"],
-    ["Moonshot", "kimi-k3", "1.05M／官網未公布", "3.00 美元／15.00 美元", "GPQA Diamond 93.5%"],
+    ["Moonshot", "kimi-k3", "1M／官網未公布", "3.00 美元／15.00 美元", "GPQA Diamond 93.5%"],
     ["Google", "gemini-3.1-pro-preview", "1M／64K", "2.00 美元／12.00 美元", "GPQA Diamond 94.3%、SWE-Bench Verified 80.6%"],
     ["xAI", "grok-4.7", "50 萬／無輸出上限", "2.00 美元／6.00 美元", "Terminal-Bench 4.0 37.6%"],
     ["阿里雲百鍊", "qwen3.8-max", "1M／官網未公布", "2 美元／6 美元", "GPQA Diamond 92.6%"],

@@ -186,7 +186,7 @@ is which models count as current.
 
 ## Review round (independent, 2026-10-06)
 
-The round-1 and round-2 reports follow verbatim, each with its headings moved down two levels so they sit under this section, and each is followed by the corrections applied.
+The round-1, round-2 and round-3 reports follow verbatim, each with its headings moved down two levels so they sit under this section, and each is followed by the corrections applied.
 
 ### verify-1: PR #1333 `claude/ai-price-pages` (independent round 1)
 
@@ -513,3 +513,129 @@ Before applying anything, every page behind the three findings was re-opened wit
   - `pytest tests/test_guides_content_pack.py tests/test_guides_content_links.py`: 12 passed, 5 skipped.
   - All packs are zh-TW only, so no translation checks were needed. There is no `shared-numbers.json` for these pages. The Large 4 figures in the two price pages were compared by hand and match: 0.68/2.09, 1.36/4.18, two weeks.
 - **Third round:** not required. This round made one fact change (A); B and C changed source support, not facts.
+
+### verify-3: PR #1333 `claude/ai-price-pages` (independent round 3)
+
+- **Date:** 2026-10-06
+- **Branch head checked:** `04a31d15d2ab0b0a890d0e8e8b17ac56f3ac19b5`, fetched at the start and again at the end. Commits since main: 83ec2894 (content), b1b799a0 (ticket), 90be40a8 (round-1 fixes), 04a31d15 (round-2 fixes).
+- **Mode:** read-only. Nothing was edited, committed, pushed or commented. All scratch files are under the session scratchpad, not the repo.
+- **Fetching:**
+  - Tools: `curl -sSL`, or headless Chromium from `/opt/pw-browsers/chromium-1194` driven by Playwright.
+  - User-Agent on every request: exactly `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`. No personal data in any request, and TLS verification was never disabled.
+  - The HTTP status was checked on every fetch.
+  - DeepMind's RSS arrived gzip-compressed and was decompressed before parsing.
+- **Scope:**
+  - (a) Every change in 04a31d15.
+  - (b) The two OpenAI pages that rounds 1 and 2 could not open.
+  - (c) The 12 上下文／最大輸出 cells filled in round 1.
+- **Claims checked:** about 52 atomic claims.
+
+#### (a) Round-2 changes, re-checked
+
+##### Mistral Large 4 (`ai-api-pricing-comparison-2026` and `ai-model-comparison-table-2026`)
+
+| # | Claim on the branch | Source (HTTP) | What the page says | Outcome |
+|---|---|---|---|---|
+| 1 | Pricing comparison block 15: Large 4 is the first row of Mistral's pricing page | docs.mistral.ai/inference/pricing (200) | The first Flagship row is "Mistral Large 4 ↗ SALE PRICE" | CONFIRMED |
+| 2 | 「10 月 6 日剛開放公開預覽」 | docs.mistral.ai/models/mistral-large-4-0 (200); docs.mistral.ai/resources/changelogs (200) | Model page: "October 6, 2026 · PUBLIC PREVIEW". Changelog, Oct 6: "Mistral Large 4 (mistral-large-4) is now available in Public Preview" | CONFIRMED |
+| 3 | 「上市兩週內五折」 | changelogs (200) | "Launch pricing: 50% off for 2 weeks." | CONFIRMED |
+| 4 | Sale price 0.68 / 2.09 | pricing (200), model page (200) | Sale price $0.68 input, $0.07 cached, $2.09 output | CONFIRMED |
+| 5 | Original price 1.36 / 4.18 | pricing (200), model page (200) | Original price $1.36 input, $0.14 cached, $4.18 output | CONFIRMED |
+| 6 | 「mistral-large-latest 目前仍指向 Large 3」 | docs.mistral.ai/models/mistral-large-3-25-12 (curl, 200); the Large 4 page | `mistral-large-latest` appears in the Large 3 page payload and not in the Large 4 one. Large 4's aliases are `mistral-large-4` +1 | CONFIRMED. Neither pack lists the Large 3 page; round 2 already noted this |
+| 7 | Block 22 callout: 「Mistral Large 4 的五折上市價只維持兩週」 | changelogs | As in #3 | CONFIRMED |
+| 8 | Block 22 callout: 「定價頁上還有『區域推論加 10%』」 | pricing (200), with the Regional inference toggle clicked | The label becomes "REGIONAL INFERENCE (+10%)". Prices become 1.1×: Large 3 $0.55 / $1.65, Large 4 sale $0.748 / $2.299 | CONFIRMED |
+| 9 | Pricing-page source title (sale price and original, batch −50%, regional +10%, Moderation 2 free) | pricing (200) | Matches. "Mistral Moderation 2 Free" is on the page | CONFIRMED |
+| 10 | New source in both packs: the changelog (public preview, 1M context, launch price half off for two weeks) | changelogs (200) | "… a 1M context window." "Launch pricing: 50% off for 2 weeks." | CONFIRMED |
+| 11 | Comparison table block 9: 「標的是上市兩週的五折價：…0.68…2.09（原價 1.36 美元與 4.18 美元），上下文 100 萬 token；…表上照列 Large 3」 | pricing, model page (Context 1M), changelogs | All values match | CONFIRMED. Minor wording only: 「定價頁…標的是上市兩週的五折價」 credits the pricing page with the "two weeks", which only the changelog states. The changelog is in sources, so this is not an error |
+| 12 | Price bands unchanged | — | 0.68/2.09 and 1.36/4.18 both fall inside the flagship band (input 0.30–10, output 1.20–50) | CONFIRMED |
+
+##### Comparison table captions and sources
+
+| # | Claim on the branch | Source | Outcome |
+|---|---|---|---|
+| 13 | Flagship caption: 「上下文與最大輸出在定價頁沒寫的，照各家的模型說明頁」 | Mistral pricing page re-read: it has no context column. Context is on each model page (Large 4 1M; Large 3, Medium 3.5, Small 4 and Ministral 3 3B 256k) | CONFIRMED as a description of where the values come from |
+| 14 | Flagship caption: 「分數為廠商在發布頁、官方模型卡或 API 文件更新紀錄裡自報的數字」 | Astra GPQA: release page. Fable 5.1 and Opus 5.5 TB 4.0: Anthropic release page. kimi-k3: Hugging Face model card. gemini-3.1-pro: DeepMind model card. grok-4.7: x.ai release post. qwen3.8-max: Qwen blog. GLM-5.3: Hugging Face model card. deepseek-v4-pro: API updates log. MiniMax-M3: Hugging Face model card | CONFIRMED: every score cell falls into one of the three named kinds of page |
+| 15 | Source removed: Meta Muse Glimmer 30B weight page. Its open-weight row (30B dense, 13.1 萬, Apache 2.0) now rests on the table caption | huggingface.co/meta-models/Muse-Glimmer-30B (200); config.json (200); LICENSE (200) | Row still true. Model card: "Dense Causal Transformer", "30B params". config.json: `max_position_embeddings` 131072. LICENSE is the unmodified Apache License 2.0, md5 3b83ef96387f14655fc854ddc3c6bd57. No other sentence depended on that source. Sources stay at 20 |
+| 16 | Research `pack.json` matches the content pack | Compared block by block | Only the image width/height and credit differ. `sources` are identical | CONFIRMED |
+
+##### Timeline (`ai-model-release-timeline-2026`)
+
+| # | Claim on the branch | Source | Outcome |
+|---|---|---|---|
+| 17 | Block 14: 「5 月 Google 發 Gemini 3.5，官方那句話是『前沿智慧加上行動力』」, with the availability clause cut | deepmind.google/blog/rss.xml (200): 15 May 2026, "Gemini 3.5: frontier intelligence with action" | CONFIRMED. Nothing unsupported is left from the old clause |
+| 18 | Block 14: 「同月稍後再發…Gemini Omni」 | RSS: 17 May 2026, "Introducing Gemini Omni" | Date and order CONFIRMED. **「全模態」 has no listed source; see error 2** |
+| 19 | Block 20: 「8 月 13 日 Google 發 Gemini 3.7 Flash，同一天 DeepSeek…」, with the positioning clause cut | RSS: 13 Aug 2026, "Introducing Gemini 3.7 Flash", empty description | CONFIRMED. The sentence now rests on the RSS title and date |
+| 20 | Spot check of the table row Gemini 3.8 Flash 「最聰明的主力模型，軟體工程與多步推理再進步」 (unchanged, but similar wording to the cut 3.7 clause) | blog.google 3-8-flash-and-3-8-flash-cyber (200): "our most intelligent workhorse model, delivering significant improvements from 3.7 Flash across software engineering, agentic tasks, and critical, multi-step reasoning" | CONFIRMED |
+
+Round 2 made no other content changes. Only one changed fact was within reach of a new error, and that change is right.
+
+#### (b) OpenAI pages that rounds 1 and 2 could not open
+
+**openai.com/index/gpt-6-astra/** (HTTP 200).
+- How it was read: hydrating the page triggers 403s on its own RSC and gate requests, the page then shows "This page couldn't load", and a reload gets a Cloudflare challenge. I read the first server-rendered page text and the chart data embedded in the 200 response.
+- Results:
+  - Date: `publicationDateText` "September 3". The RSS item says "our most intelligent and aligned model yet", which matches 「至今最聰明、最對齊的模型」. **CONFIRMED**
+  - **GPQA Diamond 96.0%**: "GPT‑6 Astra reaches a new high in the comparison shown at 96.0%", and the appendix table also gives 96.0%. **CONFIRMED**
+  - **Terminal-Bench 4.0 57.9%**: "57.9%, compared with 37.3% for GPT‑5.6 Sol and 55.8% for Claude Fable 5.1, at approximately 9% and 63% lower estimated API cost per task". **CONFIRMED**
+  - **「依推理強度分開列，附每項任務的估計成本」**: the GPQA chart is a Vega-Lite plot whose x-axis defaults to "API Cost" (also selectable: Latency, Output tokens). It has one point per reasoning effort (Low, Medium, High, Xhigh, Max) for GPT‑6 Astra and GPT‑5.6 Sol, with a tooltip field "Reasoning effort". Astra Max scores 0.959596 at about $0.134 per question; Low scores 0.9179 at about $0.053. The text says "estimated API cost per task", and the appendix says "Evaluation scores are the maximum at any effort." **CONFIRMED**. The source title 「依推理強度列出估計成本」 is also accurate.
+
+**openai.com/index/introducing-gpt-6-sol-and-luna/** (HTTP 200 in a fresh browser context with the trailing slash; the first attempt without the slash got 403).
+- Date: `publicationDateText` "September 22". **CONFIRMED**
+- Block 21 and the source title, 「ChatGPT 免費與 Go 方案的使用者可以在桌面版用到 GPT-6 Luna」: "Free and Go users can access GPT‑6 Luna in the desktop app. These models are not yet available in Chat." **CONFIRMED**. The article does not claim Chat access.
+- Table row 「把 Astra 的進展帶到更便宜的模型」: "bringing the advances behind Astra's state-of-the-art performance … to faster, more affordable models". **CONFIRMED**
+- Side check: the page's price table, $4 → $2 and $20 → $10 for Sol and $0.20 → $0.10 and $1.20 → $0.50 for Luna, matches the packs.
+
+#### (c) The 12 context and max-output cells filled in round 1
+
+None of the 12 model pages is in `sources[]`. All 12 cells are covered by the flagship caption 「上下文與最大輸出在定價頁沒寫的，照各家的模型說明頁」. The mid and light captions begin 「同上」, and the light-tier body adds 「這一級的上下文視窗官網多半不在定價頁寫，得自己翻模型文件確認」. That is the same blanket attribution the open-weight table uses, so I count these cells as explicitly attributed, though without a URL. Every value was re-read today:
+
+| Cells | Page (HTTP) | Value on page | Table | Outcome |
+|---|---|---|---|---|
+| gemini-3.8-flash, 3.5-flash, 3.5-flash-lite, 3.1-flash-lite, 2.5-flash-lite | ai.google.dev/gemini-api/docs/models/<id> (200 ×5) | Input token limit 1,048,576; Output token limit 65,536 | 1M／64K | CONFIRMED (see error 1 on notation) |
+| Mistral Large 3, Medium 3.5, Small 4, Ministral 3 (3B) | docs.mistral.ai/models/{mistral-large-3-25-12, mistral-medium-3-5-26-04, mistral-small-4-0-26-03, ministral-3-3b-25-12} (200 ×4) | CONTEXT 256k; no max output | 26.2 萬／官網未公布 | CONFIRMED (256k → 262,144 still unverifiable) |
+| GLM-5.3 | docs.z.ai/guides/llm/glm-5.3 (200) | "a 1M-token context window and a maximum output length of 128K tokens" | 1M／128K | CONFIRMED |
+| GLM-5.3-Flash | docs.z.ai/guides/vlm/glm-5.3-flash (200) | Context Length 1M; Maximum Output Tokens 128K | 1M／128K | CONFIRMED |
+| MiniMax-M2.7 | platform.minimax.io/docs/guides/text-generation (200) | Context Window 204,800 | 20.5 萬／官網未公布 | CONFIRMED |
+
+Cross-check: platform.kimi.ai/docs/pricing/chat (200) gives kimi-k3 "1,048,576 tokens", and developers.openai.com/api/docs/models/gpt-6-astra (200) gives "1,050,000 context window, 128,000 max output tokens". **Error 1** comes from this: kimi-k3's 1,048,576 is written 「1.05M」, while the same 1,048,576 for six Gemini models is written 「1M」.
+
+#### Errors (round 3)
+
+1. **Consistency.** In `ai-model-comparison-table-2026`, the same context window of 1,048,576 tokens appears two ways: kimi-k3 「1.05M」, the Gemini rows 「1M」. Readers will think kimi-k3's window is bigger than Gemini's when the two are identical. Fix: pick one notation, for example kimi-k3 → 「1M／官網未公布」. MiniMax-M3's 「100 萬」 is a third style in the same column. Source: platform.kimi.ai/docs/pricing/chat, and the ai.google.dev model pages.
+2. **Consistency, already there before round 2, low priority.** Timeline block 14, 「全模態的 Gemini Omni」: no entry in `sources[]` supports 「全模態」; the DeepMind RSS item has an empty description. Round 2's fix B cut two unsourced clauses from this same sentence, and the same rule covers this one. The Omni page says "create anything from any input — starting with video", with image and audio output to come later. Fix: cut 「全模態的」 or reword to match the page.
+
+Fact changes this round: 0. Both items are consistency.
+
+#### Noted, not counted as errors
+
+- Comparison table block 9: 「定價頁…標的是上市兩週的五折價」 credits the pricing page with the "two weeks", which only the listed changelog states.
+- Timeline block 14: 「5 月 22 日 Mistral 公告 Mistral Medium 3.5…」 still has no listed URL. Round 2 noted this and left it, and it is unchanged from main.
+- Time-sensitive: the Large 4 launch price should end around 10/20. The quarterly ticket already tracks it.
+
+#### Still unverifiable
+
+- Whether Mistral's "256k" means 262,144 (26.2 萬) or 256,000. No Mistral API page gives an exact number, and the Hugging Face weight configs differ from model to model.
+- The end date of the Large 4 launch price; none is given beyond "2 weeks".
+- The fully loaded Astra page. I read it from the server-rendered HTML; see above.
+
+#### Checks
+
+I made no edits, so I did not run `pack_cli lint`, `intake_check` or pytest. The round-2 fixer reports lint 0 errors, no new intake FAIL, and pytest 12 passed, 5 skipped.
+
+### Round-3 corrections applied (2026-10-06, claude-opus-5-5)
+
+Before applying anything, the pages behind both findings were re-opened with the editorial User-Agent and the status checked. The Kimi pricing page and the Gemini Omni page went through headless Chromium (`/opt/pw-browsers/chromium-1194`, driven by Playwright): platform.kimi.ai/docs/pricing/chat returned 200, deepmind.google/blog/introducing-gemini-omni/ returned 200 after redirecting to blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni/, and that URL opened directly also returned 200. The six Gemini model pages were re-read with `curl -sSL` (200 ×6). TLS verification was never disabled. Both findings were applied; neither was rejected. Each offered two fixes; the choices and the reasons are below.
+
+- **Error 1 (kimi-k3 context notation)**: confirmed. Kimi's pricing page gives kimi-k3 "Context Window … 1,048,576 tokens". The ai.google.dev pages for gemini-3.1-pro-preview, 3.8-flash, 3.5-flash, 3.5-flash-lite, 3.1-flash-lite and 2.5-flash-lite all give "Input token limit 1,048,576" and "Output token limit 65,536".
+  - **Fix chosen: kimi-k3 → 「1M／官網未公布」** in the flagship table (block 8), via `build_pack.py` and `reingest.sh` with `PUBLIC_DIR` set to a scratch folder, so `diagram-1.svg` and `hero.svg` stay byte-identical. That is one cell instead of six, and it follows the convention the column already has: 「1M」 for the Gemini, Claude, qwen, GLM and DeepSeek windows, and 「1.05M」 only for OpenAI's three rows, whose model pages say "1,050,000". It also matches the open-weight table, which already writes Kimi K3's window as 「100 萬」.
+  - **Left as it was:** MiniMax-M3's 「100 萬」. The finding names it only as a third style. 「100 萬」 and 「1M」 read as the same number, so it does not suggest a different window, and block 9's prose uses 「100 萬 token」 for the same model. The flagship column also writes grok-4.7 as 「50 萬」 and Mistral Large 3 as 「26.2 萬」, and the mid and light tables use 萬 for the Mistral, kimi-k2.7-code and MiniMax-M2.7 rows, so changing MiniMax-M3 alone would not make the column uniform.
+- **Error 2 (「全模態的 Gemini Omni」)**: confirmed. The DeepMind RSS item (17 May 2026, "Introducing Gemini Omni") has an empty description. The Omni page says "Omni is our new model that can create anything from any input — starting with video" and "In time we will support output modalities like image and audio." At launch the output is video only, so 「全模態」 says more than the page does.
+  - **Fix chosen: cut 「全模態的」.** Block 14 is now 「……官方那句話是「前沿智慧加上行動力」；同月稍後再發 Gemini Omni。」 Rewording to match the page would need the Omni page as a source, and the list is at the 20-entry cap, which is the same reason round 2's fix B cut rather than restored. The sentence now rests on the RSS title and date, like the 3.7 Flash entry in block 20.
+  - Gemini Omni appears nowhere else in the article body, tables or diagram. The RSS source title only names it, so nothing else changed.
+- **Checks** (`apps/api`, `PYTHONUTF8=1`):
+  - `pack_cli lint --slug` on both slugs: 0 errors. The only warning is the existing `no_summary` on the timeline.
+  - `intake_check.py --from-content` on both slugs: the FAIL and WARN lines are identical to the same run at 04a31d15. Against a detached origin/main worktree (removed afterwards) there is no new FAIL: the comparison table has 3 FAILs (main 5) and the timeline 5 (main 6).
+  - `pytest tests/test_guides_content_pack.py tests/test_guides_content_links.py`: 12 passed, 5 skipped.
+  - The diff in the content pack, the research `pack.json` and `build_pack.py` is the single kimi-k3 cell in each, so the research pack still matches the content pack. No SVG changed. Both packs are zh-TW only, so no translation work was needed.
+  - `npm run check:tasks`: passes.
+- **Fourth round:** not required. This round changed no fact; one change is notation and the other removes an unsourced word.
