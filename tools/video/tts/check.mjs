@@ -27,6 +27,11 @@
 // A line Jev still doubts can go to a second transcriber that never sees the script
 // (--second-opinion, second-opinion.mjs): it is cleared when that transcript matches the script or
 // Jev passes it, and stays flagged when both transcripts miss the same words.
+//
+// Each transcription and Jev call is paid, and goes through the video's speech journal
+// (speech-journal.mjs, beside the takes in <workdir>/audio): one whose answer was lost is not sent
+// again by the next run until a person clears its hold, and one that came back but is not in the
+// cache yet is taken from the journal instead of being bought again.
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -42,6 +47,7 @@ import { speechLexicon } from "../dubs/plan.mjs";
 import { judgeLines, SpeechError, transcribeClip } from "./client.mjs";
 import { spokenParts } from "./requests.mjs";
 import { secondOpinionCommand, secondOpinionName, secondTranscripts } from "./second-opinion.mjs";
+import { JOURNAL_DIR, openSpeechJournal } from "./speech-journal.mjs";
 import { downsample, encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
 // Mirrors JudgeIn's max_length in apps/api/app/video_speech/schemas.py.
@@ -258,6 +264,12 @@ export async function checkAudio(args, ctx, options) {
   const cacheFile = path.join(workdir, files.cache);
   const cache = readJson(cacheFile, { lines: {} });
   const results = {};
+  // The video's journal, shared with tts and dub: released after each write of the cache, so it
+  // holds only what the cache does not have yet. An answer it hands back was bought by an earlier
+  // run and is not counted as this run's.
+  const journal = openSpeechJournal(path.join(workdir, ARTIFACTS.audio, JOURNAL_DIR), { now: ctx.now });
+  const transcribe = journal.wrapTranscribe(transcribeClip);
+  const judge = journal.wrapJudge(judgeLines);
 
   let transcribed = 0;
   let failedInARow = 0;
@@ -283,8 +295,9 @@ export async function checkAudio(args, ctx, options) {
       const samples = requireNarrationFormat(parseWav(bytes));
       const wav = encodeWav(downsample(samples, Math.round(48_000 / TRANSCRIBE_RATE)), TRANSCRIBE_RATE);
       let heard;
+      const reused = journal.reused;
       try {
-        heard = await transcribeClip({ ...options, wav, terms, language: locale });
+        heard = await transcribe({ ...options, wav, terms, language: locale });
       } catch (error) {
         // The owner's problems (token, key) stop the run; so does anything that is not the service.
         if (!(error instanceof SpeechError) || error.who !== "service") throw error;
@@ -297,7 +310,7 @@ export async function checkAudio(args, ctx, options) {
         continue;
       }
       failedInARow = 0;
-      transcribed += 1;
+      if (journal.reused === reused) transcribed += 1;
       entry = { scene, clip, terms, heard, noul: null };
     }
     entry.intended = spokenText(line);
@@ -307,6 +320,7 @@ export async function checkAudio(args, ctx, options) {
     results[line.id] = entry;
     cache.lines[line.id] = entry;
     atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
+    journal.release();
   }
 
   // Jev reads a transcript per line, MAX_JUDGE_LINES a call whichever scenes they are in; lines
@@ -327,11 +341,13 @@ export async function checkAudio(args, ctx, options) {
       questions.push(question);
     }
     for (const batch of judgeBatches(questions)) {
-      const verdicts = await judgeLines({ ...options, lines: batch, language: locale });
-      jevCalls += 1;
+      const reused = journal.reused;
+      const verdicts = await judge({ ...options, lines: batch, language: locale });
+      if (journal.reused === reused) jevCalls += 1;
       for (const { id } of batch) record(results[id], verdicts.get(id) ?? 0);
       // After every call, so a run that stops halfway keeps the verdicts it paid for.
       atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
+      journal.release();
     }
   };
   // Jev looks only at lines whose transcript differs and has not been judged for this clip.
@@ -409,6 +425,7 @@ export async function checkAudio(args, ctx, options) {
     `${dub ? `${locale} dub: ` : ""}${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters or filler words, ${judgedFine} judged fine by Jev${clearedText}, ${flagged.length} flagged (below ${threshold})\n`,
   );
   ctx.stdout.write(`${transcribed} clips transcribed now, ${jevCalls} Jev calls; details in ${cacheFile}\n`);
+  if (journal.reused) ctx.stdout.write(`${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
   for (const id of new Set(cut)) {
     ctx.stdout.write(`  ${id}  is longer than Jev takes: it judged the first ${MAX_INTENDED_CHARACTERS} characters of the script and ${MAX_HEARD_CHARACTERS} of the transcript\n`);
   }
