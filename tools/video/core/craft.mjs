@@ -15,7 +15,9 @@
 // text, so they are heuristics. They agree with a shot-by-shot hand reading of the 81 pilot
 // shots on 80 sizes and 81 motions (the study record has the comparison); a shot that names no
 // size counts as unknown rather than guessed; and meeting every row says the storyboard is
-// structured, not that the picture is good.
+// structured, not that the picture is good. The slideshow-risk rows (risk.*) read the `prompt`
+// and `motion` for who is in the shot, where it is and whether the camera is the one acting;
+// --json shows what each shot was read as.
 import { DEFAULT_CPM, DEFAULT_PAUSE_MS, FPS, SCENE_GAP_MS as GAP_MS, spokenUnits as timelineUnits } from "./timeline.mjs";
 
 // The estimate `lint` uses (tools/video/core/timeline.mjs): a spoken character is 0.24 s, each
@@ -51,6 +53,14 @@ export const TARGETS = {
   lookOnlyRun: 2,
   sameMoveRun: 3,
   dissolveShare: 0.1,
+  // Slideshow risk (risk.*): the structure of sameness the first takes were sent back for.
+  sameFramingRun: 2, // the same framing of the same people in the same place, in a row
+  decorativeShare: 0.1, // shots with nobody in them that are not inserts
+  cameraAsActor: 0, // motion lines where the camera moves and nobody does anything
+  emptyBeatShare: 0.05, // silent shots in which nothing happens and nothing is revealed
+  cards: 2, // title, chapter and quote cards, beyond which …
+  cardShare: 0.1, // … they may still not carry more than a tenth of the running time
+  claims: 0, // prompts that say "cinematic" where a size and a move should be
 };
 
 // What the five reference dramas measured on 2026-10-03 (drama-craft.md has the table). A row
@@ -68,12 +78,19 @@ export const REFERENCE = {
   face: "a readable face in most shots, by eye",
   insert: "about 5–17%, one counted and two by eye",
   wide: "a wide or group shot every 6–8 shots, by eye",
+  framing: "a dialogue cuts speaker–listener–speaker between three or four setups, by eye",
+  decorative: "a readable face in almost every shot, by eye; the 4 of 89 without one were inserts, in the one counted",
+  cards: "no title card in five; the longest title picture 0.25 s",
 };
 
 // The rows a hands-off episode is sent back to the writer for (series.mjs scriptVerdict): how
-// it opens and whether the scene is covered. The pace, line and motion rows stay warnings the
-// writer answers, because a fix loop cannot judge a designed hold or a retelling's narration.
-export const CRAFT_GATE_ROWS = ["hook.opening", "hook.opening30", "hook.card", "hook.dialogue", "motion.opening", "size.face", "size.wide", "size.reestablish", "size.stall"];
+// it opens, whether the scene is covered, and the three slideshow-risk rows that are structure
+// rather than a reading of one line (the same setup drawn again, a place with nobody in it,
+// cards carrying the story; measured 2026-10-05 on the five 偶的江湖 storyboards, which meet all
+// three, and on the wedding pilot the owner sent back, which misses the first). The pace, line
+// and motion rows stay warnings the writer answers, because a fix loop cannot judge a designed
+// hold or a retelling's narration, and the remaining risk rows read one line's words.
+export const CRAFT_GATE_ROWS = ["hook.opening", "hook.opening30", "hook.card", "hook.dialogue", "motion.opening", "size.face", "size.wide", "size.reestablish", "size.stall", "risk.setup_repeat", "risk.decorative", "risk.text_first"];
 
 /** Characters as they are spoken: a CJK character is one, a Latin word or a run of digits two. */
 export function spokenUnits(text) {
@@ -135,6 +152,10 @@ const FACE = new Set(["ecu", "cu", "mcu", "ots"]);
 // Where everyone stands: a wide shot, or two or more people held in one frame.
 const WIDE = new Set(["ws", "group"]);
 const family = (size) => (FACE.has(size) ? "face" : WIDE.has(size) ? "wide" : size);
+// The same framing, for the setup rows: an over-the-shoulder is its own axis (the camera is
+// behind someone), so a close-up, the reverse over a shoulder and the close-up again are three
+// setups, while a close-up, a medium close-up and an extreme close-up of one face are one.
+const setupFamily = (size) => (size === "ots" ? "ots" : family(size));
 
 // The word "Insert" wins; then the size the line leads with, unless that is a plain close-up,
 // which is an insert when it is a close-up of a thing; then the first size named anywhere.
@@ -225,6 +246,63 @@ export function isLookOnly(data) {
   return clause === "" || SMALL.some((pattern) => pattern.test(clause));
 }
 
+// Somebody in the frame: a person, a creature (a drama's lead may be a bird or a puppet), or a
+// member of the cast by id or name. Read from the prompt and the motion line together.
+const PERSON = /\b(?:he|she|they|him|his|hers?|their|man|men|woman|women|girls?|boys?|child(?:ren)?|kids?|bab(?:y|ies)|people|persons?|figures?|crowds?|guests?|servants?|maids?|soldiers?|guards?|officers?|villagers?|merchants?|monks?|nuns?|priests?|elders?|masters?|disciples?|students?|teachers?|doctors?|nurses?|mothers?|fathers?|parents?|sons?|daughters?|brothers?|sisters?|uncles?|aunts?|wives|wife|husbands?|brides?|grooms?|emperors?|empress(?:es)?|kings?|queens?|princes?|princess(?:es)?|lords?|lad(?:y|ies)|generals?|stewards?|clerks?|witness(?:es)?|strangers?|rivals?|friends?|couples?|famil(?:y|ies)|puppets?|puppeteers?|silhouettes?|warriors?|assassins?|swordsm[ae]n|hero(?:es)?|heroines?|boss(?:es)?|bod(?:y|ies)|corpses?|bird|birds|cranes?|dogs?|cats?|horses?|wol(?:f|ves)|tigers?|dragons?|fox(?:es)?|snakes?|fish|beasts?|creatures?|monsters?|spirits?|ghosts?|demons?|ox|oxen|cows?|sheep|goats?|deer|rabbits?|eagles?|hawks?|crows?|phoenix|lions?|bears?|monkeys?|pigs?|chickens?|ducks?|butterfl(?:y|ies)|pets?)\b/;
+// Where a shot is: the place nouns a prompt names. A prompt that names none is read as the
+// previous shot's place, the way a scene continues until the writer says otherwise.
+const PLACE = /\b(?:halls?|rooms?|chambers?|courtyards?|yards?|gardens?|corridors?|hallways?|stair(?:s|cases?|wells?)|doorways?|gates?|gateways?|streets?|alleys?|lanes?|roads?|paths?|bridges?|rivers?|riverbanks?|shores?|beach(?:es)?|seas?|lakes?|ponds?|forests?|woods|groves?|mountains?|hills?|ridges?|cliffs?|caves?|valleys?|fields?|meadows?|wastelands?|deserts?|villages?|towns?|cit(?:y|ies)|markets?|stalls?|shops?|inns?|taverns?|teahouses?|kitchens?|bedrooms?|bedchambers?|offices?|librar(?:y|ies)|temples?|shrines?|palaces?|throne rooms?|pavilions?|towers?|rooftops?|roofs?|balcon(?:y|ies)|terraces?|carriages?|carts?|boats?|ships?|decks?|docks?|piers?|harbou?rs?|camps?|tents?|cells?|prisons?|dungeons?|forges?|stables?|barns?|warehouses?|factor(?:y|ies)|hospitals?|schools?|classrooms?|church(?:es)?|cemeter(?:y|ies)|graves?|tombs?|battlefields?|arenas?|stages?|plazas?|platforms?|altars?|academ(?:y|ies)|dojos?|training grounds?|courts?|mansions?|estates?|houses?|huts?|cabins?|cottages?|attics?|cellars?|basements?|tunnels?|cliffside|hillside|lakeside|riverside|seaside|whar(?:f|ves)|porch(?:es)?|gazebos?|galler(?:y|ies))\b/g;
+// A clause whose subject is the camera, or that is a camera move written as if it were the
+// behaviour ("slow push in on her face"): a move, not an event.
+const CAMERA_CLAUSE = /^(?:the |a )?(?:camera|lens|frame|shot)\b|^(?:(?:very|slow(?:ly)?|gentle|gently|subtle|subtly|quick|quickly|fast|smooth|smoothly|steady) )*(?:push(?:es|ing)?[- ]?in|pull(?:s|ing)?[- ](?:back|out)|dolly(?:ing)?|zoom(?:s|ing)?|pan(?:s|ning)? (?:left|right|across|over|up|down|to|with|along)|whip pan|tilt(?:s|ing)? (?:up|down)|crane(?:s|ing)? (?:up|down)|orbit(?:s|ing)?|track(?:s|ing)? (?:left|right|in|out|with|along|back)|rack focus|focus (?:pulls?|racks?|shifts?)|handheld|steadicam)\b/;
+const CLAUSES = /[,;.]| and | then | while | as /;
+// Words that ask for a look instead of describing a shot.
+const CLAIM = /\b(?:cinematic|epic|dramatic|masterpiece|award[- ]winning|breathtaking|stunning|blockbuster|hollywood|(?:movie|film)[- ]still|(?:movie|film)[- ]like|[48]k|ultra[- ]?(?:detailed|realistic|hd)|hyper[- ]?(?:detailed|realistic)|highly detailed|photo-?realistic|best quality|trending on artstation)\b/;
+
+/** A shot whose data says something: a measured edit without its storyboard has nothing to read. */
+const readable = (data) => Boolean(String(data?.prompt ?? "").trim() || String(data?.motion ?? "").trim());
+
+/** The words of the cast a prompt may use: each id's parts and each ASCII name, lower-case. */
+export function castWords(doc) {
+  const words = new Set();
+  for (const character of doc?.characters ?? []) {
+    for (const part of String(character?.id ?? "").toLowerCase().split(/[^a-z0-9]+/)) if (part.length >= 2) words.add(part);
+    const name = String(character?.name ?? "").trim().toLowerCase();
+    if (/^[a-z][a-z0-9 '’.-]*$/.test(name)) words.add(name);
+  }
+  return words;
+}
+
+/** The place nouns a shot's prompt names, sorted and joined; "" when it names none. */
+export function placeOf(data) {
+  const found = new Set(String(data?.prompt ?? "").toLowerCase().match(PLACE) ?? []);
+  return [...found].sort().join(" ");
+}
+
+/**
+ * True when nobody is in the shot: no cast member listed, and neither the prompt nor the
+ * motion line names a person, a creature or a member of the cast. An insert is also "nobody"
+ * (a hand is not a person); the decorative row leaves inserts out itself.
+ */
+export function nobodyIn(data, cast = new Set()) {
+  if ((data?.characters ?? []).length || !readable(data)) return false;
+  const text = `${data?.prompt ?? ""} ${data?.motion ?? ""}`.toLowerCase();
+  if (PERSON.test(text)) return false;
+  return ![...cast].some((word) => new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(text));
+}
+
+/**
+ * How a motion line uses the camera: { camera, event }. `camera` is true when a clause makes
+ * the camera the actor ("the camera pushes in", "slow pan across the table"); `event` is true
+ * when what remains, with those clauses taken out, is more than a look (isLookOnly).
+ */
+export function cameraInMotion(data) {
+  const clauses = String(data?.motion ?? "").toLowerCase().split(CLAUSES).map((clause) => clause.trim()).filter(Boolean);
+  const rest = clauses.filter((clause) => !CAMERA_CLAUSE.test(clause));
+  const camera = rest.length < clauses.length;
+  return { camera, event: !isLookOnly({ motion: rest.join(", ") }) };
+}
+
 function lineSeconds(line) {
   return (spokenUnits(line.text) * 60) / CPM + (line.pause_after_ms ?? PAUSE_MS) / 1000;
 }
@@ -242,6 +320,7 @@ export function normalize(doc, { timeline = null } = {}) {
     return {
       measured: true,
       cast: true,
+      words: castWords(doc),
       shots: doc.shots.map((shot) => ({
         id: shot.shot_id ?? shot.scene_id,
         card: false,
@@ -258,6 +337,7 @@ export function normalize(doc, { timeline = null } = {}) {
   return {
     measured: false,
     cast: Array.isArray(doc.characters) && doc.characters.length > 0,
+    words: castWords(doc),
     shots: doc.scenes.map((scene) => {
       const lines = (scene?.lines ?? []).map((line) => ({ speaker: line.speaker ?? NARRATOR, text: line.text, seconds: lineSeconds(line), inner: /^內心獨白/.test(line.emotion ?? "") }));
       const spoken = lines.reduce((sum, line) => sum + line.seconds, 0);
@@ -299,34 +379,43 @@ const setupKey = (row) => `${String(row.data.camera ?? "").trim().toLowerCase()}
 
 /**
  * { applies, measured, shots, total_seconds, rows, checks }.
- * rows: one per shot, { id, start, seconds, size, move, look_only, lines }.
+ * rows: one per shot, { id, start, seconds, size, move, look_only, lines, place, nobody }:
+ * `place` is the place the shot was read to be in (its own prompt's place nouns, else the
+ * previous shot's), `nobody` that no person, creature or cast member is in it.
  * checks: { id, label, value, target, reference, ok, hint, shots } — `shots` names the shots
  * that cause a miss, `info: true` marks a row that is only reported.
  * `applies` is false for a document without a cast (an explainer, a brand story): their pace
  * and narration follow their own references, and no row is printed.
  */
 export function craftChecks(doc, { timeline = null } = {}) {
-  const { shots: all, measured, cast } = normalize(doc, { timeline });
+  const { shots: all, measured, cast, words } = normalize(doc, { timeline });
   let clock = 0;
   const placed = all.map((shot) => {
     const start = clock;
     clock += shot.seconds;
     return { ...shot, start };
   });
-  const rows = placed.filter((shot) => !shot.card).map((shot) => ({
-    id: shot.id,
-    start: +shot.start.toFixed(2),
-    seconds: +shot.seconds.toFixed(2),
-    size: shotSize(shot.data),
-    move: cameraMove(shot.data),
-    look_only: isLookOnly(shot.data),
-    lines: shot.lines.length,
-    data: shot.data,
-    silent: shot.silent,
-    spoken: shot.lines,
-  }));
+  let place = "";
+  const rows = placed.filter((shot) => !shot.card).map((shot) => {
+    place = placeOf(shot.data) || place;
+    return {
+      id: shot.id,
+      start: +shot.start.toFixed(2),
+      seconds: +shot.seconds.toFixed(2),
+      size: shotSize(shot.data),
+      move: cameraMove(shot.data),
+      look_only: isLookOnly(shot.data),
+      lines: shot.lines.length,
+      place,
+      nobody: nobodyIn(shot.data, words),
+      data: shot.data,
+      silent: shot.silent,
+      spoken: shot.lines,
+      camera: cameraInMotion(shot.data),
+    };
+  });
   const total = rows.reduce((sum, row) => sum + row.seconds, 0);
-  const publicRows = rows.map(({ data, spoken, silent, ...row }) => row);
+  const publicRows = rows.map(({ data, spoken, silent, camera, ...row }) => row);
   if (!cast) return { applies: false, measured, shots: rows.length, total_seconds: total, rows: publicRows, checks: [] };
   const checks = [];
   const add = (id, label, value, target, ok, hint, { reference = "", shots = [], info = false } = {}) =>
@@ -378,6 +467,9 @@ export function craftChecks(doc, { timeline = null } = {}) {
   }
 
   // Coverage.
+  const castOf = (row) => String([...(row.data.characters ?? [])].sort());
+  // Shots with nobody in them (inserts) are "the same people" only when they are the same setup.
+  const samePeople = (row, previous) => (castOf(row) || castOf(previous) ? castOf(row) === castOf(previous) : setupKey(row) === setupKey(previous));
   if (rows.length >= 6) {
     const named = rows.filter((row) => row.size !== null);
     const unnamed = rows.filter((row) => row.size === null);
@@ -393,9 +485,6 @@ export function craftChecks(doc, { timeline = null } = {}) {
       const gap = longestRun(rows, (row) => !WIDE.has(row.size));
       add("size.reestablish", "longest run without a wide or group shot", `${gap.length} shots`, `≤ ${TARGETS.wideGapShots}`, gap.length <= TARGETS.wideGapShots, "after a move, an entrance or a new beat, re-establish the room", { reference: REFERENCE.wide, shots: gap.length ? [gap[0], gap.at(-1)] : [] });
     }
-    const castOf = (row) => String([...(row.data.characters ?? [])].sort());
-    // Shots with nobody in them (inserts) are "the same people" only when they are the same setup.
-    const samePeople = (row, previous) => (castOf(row) || castOf(previous) ? castOf(row) === castOf(previous) : setupKey(row) === setupKey(previous));
     const stall = longestRun(rows, (row) => row.size !== null, (row, previous) => row.size === previous.size && samePeople(row, previous));
     add("size.stall", "same size on the same people in a row", `${stall.length} shots`, `≤ ${TARGETS.sameSetupRun}`, stall.length <= TARGETS.sameSetupRun, "the third one reads as a stall: cut to who is listening, or to what the hands are doing", { shots: stall });
     const uses = new Map();
@@ -427,6 +516,28 @@ export function craftChecks(doc, { timeline = null } = {}) {
   if (rows.length >= 6) {
     const dissolves = rows.filter((row) => row.data.transition === "dissolve");
     add("cut.dissolve", "dissolves", percent(share(dissolves.length, rows.length)), `≤ ${percent(TARGETS.dissolveShare)}`, share(dissolves.length, rows.length) <= TARGETS.dissolveShare, "a dissolve says time passed; everything else is a cut", { shots: dissolves });
+  }
+
+  // Slideshow risk: the structure of sameness the first takes were sent back for ("it looks
+  // like a slideshow"), read before a picture is paid for. The six things a plan can be scored
+  // on before any asset exists (an idea borrowed from OpenMontage, not its code): the same
+  // portrait drawn again, a place with nobody in it, a camera that moves while nobody acts, a
+  // silent beat with nothing in it, words carrying the story, and "cinematic" written where a
+  // size and a move should be.
+  if (rows.length) {
+    const framing = longestRun(rows, (row) => row.size !== null, (row, previous) => setupFamily(row.size) === setupFamily(previous.size) && samePeople(row, previous) && row.place === previous.place);
+    add("risk.setup_repeat", "same framing of the same people in the same place in a row", `${framing.length} shots`, `≤ ${TARGETS.sameFramingRun}`, framing.length <= TARGETS.sameFramingRun, "three framings of one person from one side are one setup drawn three times: cut to who is listening, to what the hands do, or to the room", { reference: REFERENCE.framing, shots: framing });
+    const decorative = rows.filter((row) => row.nobody && row.size !== "insert");
+    add("risk.decorative", "shots with nobody in them that are not inserts", `${percent(share(decorative.length, rows.length))} (${decorative.length})`, `≤ ${percent(TARGETS.decorativeShare)}`, share(decorative.length, rows.length) <= TARGETS.decorativeShare, "a place with nobody in it is a postcard: put the person about to act in the frame, or make it an insert that answers a question", { reference: REFERENCE.decorative, shots: decorative });
+    const aimless = rows.filter((row) => row.camera.camera && !row.camera.event);
+    add("risk.motion_purpose", "motion lines where the camera moves and nobody does anything", String(aimless.length), String(TARGETS.cameraAsActor), aimless.length <= TARGETS.cameraAsActor, "the camera is not the one who acts: put the move in `camera` and write in `motion` what the person does", { shots: aimless });
+    const empty = rows.filter((row) => row.lines === 0 && !row.silent && readable(row.data) && row.look_only && !["insert", "wide"].includes(family(row.size)) && !row.data.end_frame);
+    add("risk.intent", "silent shots in which nothing happens and nothing is revealed", `${percent(share(empty.length, rows.length))} (${empty.length})`, `≤ ${percent(TARGETS.emptyBeatShare)}`, share(empty.length, rows.length) <= TARGETS.emptyBeatShare, "a silent shot has to do something: give it the off-screen line it reacts to, an action, or the thing it reveals (an insert, the room, an end frame); one designed hold in twenty is the ceiling", { shots: empty });
+    const cards = placed.filter((shot) => shot.card);
+    const cardShare = share(cards.reduce((sum, shot) => sum + shot.seconds, 0), clock);
+    add("risk.text_first", "cards (title, chapter, quote …) against the shots", `${cards.length} of ${placed.length} scenes, ${percent(cardShare)} of the time`, `≤ ${TARGETS.cards} cards, or ≤ ${percent(TARGETS.cardShare)} of the time`, cards.length <= TARGETS.cards || cardShare <= TARGETS.cardShare, "a drama is told in pictures: say it in a shot, with a line over it", { reference: REFERENCE.cards, shots: cards });
+    const claims = rows.filter((row) => CLAIM.test(String(row.data.prompt ?? "").toLowerCase()) && row.size === null && row.move === "none");
+    add("risk.cinematic_claim", "prompts that claim a look (cinematic, epic, 8k …) on a shot with no size and no move", String(claims.length), String(TARGETS.claims), claims.length <= TARGETS.claims, "\"cinematic\" is not a shot: start `camera` with the size and the move, and let the look preset carry the style", { shots: claims });
   }
 
   return { applies: true, measured, shots: rows.length, total_seconds: total, rows: publicRows, checks };

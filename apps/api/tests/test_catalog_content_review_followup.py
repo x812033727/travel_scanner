@@ -15,7 +15,9 @@ from uuid import UUID
 import pytest
 
 PATH = Path(__file__).resolve().parents[3] / "docs/catalog-content-reviews/2026-09-09-followup.json"
-SEMANTIC_HASH = "f1ff565837229d70ba1398f137b81c4b48d3b262e79f12bb64b060e0d5cfd574"
+# Rebound on 2026-10-05, when the manifest's local user paths became <home>; the original
+# manifest and its hash are in commit 2bd7c5153.
+SEMANTIC_HASH = "4444fa4abe0593e73e50a76a294109f8c6a406a636092c8490e4787f85da8d39"
 LOCALES = {"en", "ja", "ko", "zh-TW", "zh-CN"}
 CORRECTIONS = {
     "144cbf39-40db-474f-ab35-697b929eb11e": "zh-TW",

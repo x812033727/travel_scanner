@@ -150,8 +150,10 @@ function layoutProblems(fontFamily) {
   return problems;
 }
 
-// Runs in the page: pause every animation and report how long the longest one runs.
-function pauseAnimations() {
+// Runs in the page: pause every animation and report how long the longest one runs. This and
+// seekAnimations are shared with the Shorts' card renderer (shorts/build.mjs), which sends them
+// into its own page the same way, so they reach for nothing of this module.
+export function pauseAnimations() {
   let end = 0;
   for (const animation of document.getAnimations()) {
     animation.pause();
@@ -166,7 +168,7 @@ function pauseAnimations() {
 // frame 0 caught at the moment the animations were paused, half faded in, or a still caught a
 // step short of the end, its code panel half a pixel low with a seam between two highlighted
 // rows. Two animation frames: the first draws the seek, the second starts after it.
-function seekAnimations(time) {
+export function seekAnimations(time) {
   for (const animation of document.getAnimations()) animation.currentTime = time;
   return new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
 }

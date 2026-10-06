@@ -1,0 +1,78 @@
+{
+ "checks": "node check-act.mjs --all --craft（ep5，461 個 scene＝459 鏡＋2 張卡）：SCHEMA 錯誤 0；LINT 錯誤 0；LINT 警告 3 條，都是預期內的：(1) clips tier 的 still 會做成動畫關鍵影格（a01-s027 千重自封定格）；(2) 「about 23.4 minutes; the target is 22-22」；(3) runtime_spec 估算正文 1404.5 秒，實測門檻 1260–1380 秒。分場表第一節本來就預期估算比實測多，(2)(3) 不算錯。各幕秒數：a01 279.2（91 鏡＋2 卡）、a02 280.7（92 鏡）、a03 286.0（92 鏡）、a04 279.9（92 鏡）、a05 278.7（92 鏡），全部在 281±10 秒內。總長 1404.5 秒，在 1,390–1,418 秒的目標內（目標約 1,404）。台詞 460 行，旁白占行數 6.1%、占口播字數 6%；台詞中位長度 4 字，超過 20 字的 0%，超過 40 字的 0。鏡長中位 3.0 秒，p10 1.97、p90 4.5 秒，最長 6.8 秒。章名（估算起點／分場表）：箭光 0:00／0:00、海道 0:29／約 0:28、千重自封 1:06／約 1:03、山脊 3:59／約 4:01、青面具 4:39／約 4:41、禪房 6:19／約 6:26、髮尾 7:30／約 7:36、值夜簿 9:19／約 9:22、大聲的話 12:51／約 12:37、空位 14:05／約 14:03、准奏 15:32／約 15:28、登島 19:36／約 19:39、到幾時 22:00／約 21:50，十三章都在分場表指定的那一鏡（a01-s001、a01-s013、a01-s027 定格、a01-s081、a02-s001、a02-s033、a02-s057、a03-s001、a03-s067、a04-s001、a04-s030、a05-s019、a05-s063），文字逐字相同，a05-s001 沒放章名。第 1 章 29 秒（≤ 30）：冷開場 s001–s008 共 12 秒（≤ 14）、片名卡 3.5 秒、前情 s010–s012 共 14.2 秒——前情超過分場表寫的 10 秒，但三鏡的旁白全是必留（42 字，照 0.24 秒／字算本來就塞不進 10 秒），海道章仍在 0:29 起、前 30 秒 12 鏡，craft 開場四項都達標，不另列 finding。高張力時間碼：前半中箭 a01-s023 0:56（目標約 0:54）、盤坐反扣 a01-s025 1:00（約 0:58）、定格與字卡 a01-s027–s028 1:06–1:12（約 1:03）、青煙出口 a01-s053 2:28（約 2:30）、「今夜沒了」2:54，整段落在 0:29–3:04；代價割髮 a02-s057–s077 在 7:30–8:41（目標 7:36–8:41）。後半：「連齊雲殿後山都摸得進」a04-s040 16:03（約 15:55）、「不准」a04-s072 17:49（約 17:32）、「二十一天」a04-s078 18:03（約 17:55）、「梵林——」a04-s090 18:38（約 18:40）、空座推近 a04-s092 幕尾、「二比一。准。」a05-s001 18:45（約 18:48）、柳不活袖口的血 a05-s002 18:51（約 18:52），整段 15:32–19:36，跨幕。最後一句台詞 a05-s091 寂聞「你還要留她到幾時。」在 23:18，一行不拆，emotion 照分場表；尾鏡 a05-s092 床沿上扇子挨著念珠、拇指停在裂珠、油燈晃一下再站直，收在 23:24（分場表 a05 到 23:25）。craft 24/24 全數達標。info 列：53 鏡短於 2 秒（冷開場與武戲的插鏡，分場表要求的）；26 條 motion 含 and／then，全在 a02，逐條看過都是同一個動作加收勢（舉燈停住、撐起又落回、點胸兩下放下、削髮髮尾落下之類），沒有走位＋拔劍＋出招的那種，不列；7 鏡是畫面裡的人不說話、說話的人在畫外（a01-s024、a01-s034、a01-s068、a02-s017、a02-s020、a03-s046、a03-s049 等，都是分場表寫的插鏡配畫外音）。shot_reading 陷阱 0。另外用腳本核對過：speaker 只有 narrator 與九個角色（ji-wen 65 行、shen-guihe 109、bao-sanqian 63、ji-wushuang 49、yan-hui 41、xuanmen-steward 38、shuyuan-elder 34、liu-buhuo 17、alliance-guard 16、narrator 28），殷無聲 0 行；柳不活在客院問話（a03-s001–s035）、盟堂（a04-s030–a05-s018）一句都沒說，只在 a03 場 3 對姬無霜、a05 外港對沈歸鶴低聲說；每一鏡 characters ≤ 3，四人以上的全景都照分場表只列三人（海道 a01-s071／s073 列 Shen、Jiwen、Yan；客院 a03-s016／s027 列 Elder、Shen、Wushuang；盟堂主全景列 Elder、Steward、Shen；外港 a05-s019 列 Wushuang、Steward、Yan）；character_looks 的角色都在同鏡 characters 裡，而且照分場表第二節（不照 cast-notes）：ji-wen 基本外觀 a01-s003–s022，jiwen-struck 從中箭後盤坐那一鏡 a01-s025 起到 a02-s033 抬上床（蓮冠還在），卸冠換袍後 a02-s036 起到 a05-s091 全是 jiwen-sealed；yin-wusheng 割髮那三個插鏡（a02-s061–s063）不列角色、割髮前基本外觀到 a02-s059，a02-s064 起每一鏡 yin-cut-hair，Yin 不上盟堂；ji-wushuang 全集基本外觀（盟堂跪接防務令 a05-s006 只拍掌心），只有 a05-s019–s041 外港登島選 wushuang-armed；liu-buhuo 每一鏡 liu-defected；其他人基本外觀。黑袍人四鏡（a01-s081 遠影、s084、s085、s088、s089 碎角）characters 全空，prompt 逐字用第九節那一句，沒有銀髮、鳳冠、霜蕨紋、弓的形制，a01-s085 寫明兜帽下不見臉與髮；a05 外港的 wushuang-armed 離山脊整整四幕，沒有回想鏡。prompt 沒有雙引號、沒有數字，字都寫成 illegible brush marks 或 no writing；camera 都 ≤ 120 字元、景別齊全，同一運鏡最長連 3；沒有 fit、reveal、transition、source、dissolve。禁字核對：藥、血（台詞）、傷、印、精元、金印、手背、寒潭、至交、折壽、滄瀾、黑風、新月、買通、金子、三十六、聶、折牌、傳單、火脊、樣鐵、第一次、三宗的符、老子、其實都 0 次；「元神」只在必留「找我的元神」；「陣」「島底」「盟符」只在必留 a03-s052；「鬼燈」只在分場表指定的台詞裡，而且 a03-s020 燕迴先說出「鬼燈君的袍子」她才接「那件鬼燈袍」；「第一支」「第二支」只有執事在 a03-s025–s026 說，前情 a01-s012 只說「長老死於無歸箭」；旁白 28 行只交代時間地點、前情與招式名，沒有解釋心思。時段帳：旁白用「前一天」「那一夜」「天亮了」「當天上午」「隔天上午」「當天午後」「又過一夜」「從這一天起」，台詞用「昨夜」「昨天午後」「今早」「明天」「明日清晨」「二十一夜」「二十天」「二十一天」「三天沒合眼」「今晚」，全在第十節的表上，沒有人報「第幾日」，也沒有表上沒有的時間詞；a05-s001 接 a04-s092 同一刻，沒加旁白。必留逐句核對（分場表七節每一場的必留，含冷開場、片名卡、前情、定格與字卡）全部逐字都在，只有合併成一行的（a01-s010「前一天，竹虛交出的秘錄，整本無字。」等）和加了前後句的（a02-s079「臉都灰了」、a02-s081「連夜送去的」、a04-s033 執事「梵林那邊，沒有人來。」）；「封掌／封脈／封丹田／封心燈／……封我」各在一鏡；a04-s016–s017「你知道的，我都要知道。」「你做到了嗎？」是本集唯一逐字重用第 1 集的句子，「……那很好」是分場表指定的呼應；「瞞得過一天」「幽都殺人」「這梯子，要人命」都沒出現，沒有詩號；「記帳」笑點只在 a02 迴廊與 a03 書齋各一次，外港沒加；柳不活收「帳」字的尾只在 a03-s089 與 a05-s035。說謊記號（扇子不動）只在 a02-s055、a04-s085、a05-s092 三處；a03-s028、a04-s018、a04-s081、a05-s004、a05-s082 都拍握扇或袖裡的手。血：a01-s078 只咳、袖子乾淨；a02-s091 袖口一點紅只給觀眾；a03-s062 大了一點、包三錢看見後 a03-s065 點頭；a05-s049 一片、只有包三錢在；a05 場 4 右袖口從 a05-s060 起一直折著、右手縮在袖裡，a05-s087 咳用左袖、a05-s089 左袖乾淨。空間與光逐場對過第四節：海道崖壁左、海右、箭光一律左上→右下、Yin 在 Jiwen 左後靠崖、燕迴從右邊碼頭來跪在海側、沈歸鶴從左邊崖階跑下停在他身後、月亮都寫 no moon in frame；山脊從石徑往左上仰拍、黑袍人在左三分之一、往左走出稜線、右側輪廓光；客院月洞門左、年輕盟兵左老盟兵右、她在右邊門檻、進出都走左邊的月洞門；石階右下升到左上；禪房床在右、頭在左、油燈左、窗右後、架子左後、沈歸鶴三次站門檻（a02、a04）第四次才進門坐矮凳（a05-s070）、殷無聲割髮後坐門框左邊；書齋沈歸鶴面向鏡頭、窗左、門右前景、包三錢蹲案右端、蠟燭未點、降書匣在左端、抽屜裡封條、斷弦、鐵釘與拓片一角照第九節；盟堂沈歸鶴西側畫面左、東側空座畫面右、書院長老北偏左、執事北偏右、北側空蒲團倒扣茶杯、柳不活站南門框內、燕迴西牆、光從左上，反打裡光從右；外港碼頭從左伸向右、灰帆運船在右側、舊部由左往右上船、扶瀾商船在右遠處收帆無人（a05-s019 與 s040 兩個全景都有）、巡船從右駛回、晨光從左；望樓沈歸鶴左、梯口右、光從左後。幕與幕的接縫：a01-s093 霧漫回稜線→a02-s001 燕迴從右邊崖路翻上稜線；a02-s092 晨霧漫上石階、門口坐著的小人影→a03-s001 客院上午；a03-s092 柳不活袖裡圓圈→a04-s001 隔天上午迴廊；a04-s092 空座推近→a05-s001 書院長老宣布，同一刻。與第 4 集的承接：第 4 集最後三鏡是「整本，無字」、通緝令捲起、空白書頁被風翻，本集前情 a01-s010 同構圖新畫、旁白「竹虛交出的秘錄，整本無字。通緝暫緩，人押在玄門。」——第 4 集第十一節要的字面是「九洲通緝，暫緩」，本集分場表場 3 改寫成「通緝暫緩」，資訊相同，照本集分場表（beats 不是本審稿人能改的檔）；a01-s011 長老房門封條撕開半截垂著（第 4 集交給本集決定）；執事 a04-s078「瞞了三宗二十一天」與第 4 集 a05-s069 書院長老「二十一天」同數字；藥瓶沒入畫、沒有人說藥；寂聞不與沈歸鶴同席（石階落後兩級、禪房門檻），到最後一場才同坐；柳不活靴底的傳單、包三錢的傳單、樣鐵都沒提。cast.json 核過：包三錢的 bulging cloth purse、燕迴的 left sleeve ripped off at the shoulder、姬無霜的 deep violet outer mantle、執事腰間的帳冊與鑰匙、柳不活右袖口的墨漬都是基本外觀自帶的，prompt 寫到不衝突。縮圖建議 a01-s027（千重自封定格：寂聞盤坐海道、雙掌反扣丹田、第一圈金環、胸口青色箭痕、蓮冠），分場表第五節指定的就是這一鏡，headline「怒目佛封功」。",
+ "findings": [
+  {
+   "severity": "minor",
+   "shots": [
+    "a01-s027"
+   ],
+   "problem": "招式名字卡前的定格鏡寫了 slow push in，分場表第五節指定定格的 camera 是 locked；定格上疊字卡本來就不該有運鏡，clips tier 又會把這格 still 做成動畫關鍵影格，推鏡會讓定格不像定格。",
+   "evidence": "a01-s027 camera「Full shot, low angle, slow push in」、data.visual「still」；分場表第五節：定格鏡 camera: Full shot, low angle, locked；motion 只寫一個極小的收勢。",
+   "fix": "a01-s027 的 camera 改成「Full shot, low angle, locked」，prompt、motion、旁白不動。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a01-s067",
+    "a01-s068"
+   ],
+   "problem": "燕迴回頭吼水手舉燈的那一鏡，第三句「您胸口——」是看見寂聞胸口才說的，可是這一鏡的 motion 是他把頭甩回去看水手，說這句時臉朝著反方向。",
+   "evidence": "a01-s067 motion「Yan jerks his head back over his shoulder at the sailors, the crooked crown slipping further」，lines「你們幾個，」「把燈舉高！」「您胸口——」（emotion「看見了，聲音一下子沉下去」）；a01-s068 是胸口插鏡，寂聞畫外說「箭。」。",
+   "fix": "把「您胸口——」移到 a01-s068，排在寂聞「箭。」之前（兩人都在畫外，插鏡本來就寫 Jiwen speaks off screen，改成 Yan and Jiwen speak off screen），秒數只在兩鏡之間挪動；或者 a01-s067 的 motion 改成「Yan's head snaps back from the sailors to the torn chest in the lantern light」，讓第三句落在轉回來的那一拍。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s002",
+    "a02-s009"
+   ],
+   "problem": "山脊頂兩鏡的 prompt 寫 under the moon，生圖很容易把月亮畫進畫面；第三、四節寫死海道與山脊的月亮在海上、全場不入畫，第一幕每個夜景都寫了 no moon in frame。",
+   "evidence": "a02-s002 prompt「low thorn bushes and bare rock stretching away to the left under the moon」；a02-s009 prompt「the sea beyond at the right deep blue under the moon」。第三節：海道與山脊是冷月光（月亮在海上、畫面右，全場不入畫）；a01-s081、s084、s088、s093 都寫 no moon in frame。",
+   "fix": "兩處 under the moon 改成 under cold moonlight from the right, no moon in frame。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a03-s029",
+    "a03-s092",
+    "a05-s035",
+    "a05-s037",
+    "a05-s059"
+   ],
+   "problem": "柳不活袖裡那張三宗印圖樣，第三幕放在右袖（有墨漬的那只袖口），第五幕外港與船尾卻在左袖、右手伸進左袖口去摸；同一件關鍵道具換了邊。",
+   "evidence": "a03-s029 prompt「Liu's grey sleeve with ink stains at the cuff hanging at his side, the hand inside it pressing a folded paper against the forearm」；a03-s092「Close on Liu's grey sleeve with ink stains at the cuff ... inside it his thin fingers on a folded scrap」；cast.json 與 a05-s034 都寫墨漬在右袖口。a05-s035 motion「Liu's right hand slides up into the mouth of his left sleeve」；a05-s037 prompt「Liu's right hand half inside the mouth of his grey left sleeve ... a small fold of yellowed paper showing only as a bulge」；a05-s059 motion「presses his right hand once against the mouth of his left sleeve」。",
+   "fix": "以第五幕為準（右手摸左袖的動作比較順）：a03-s029 改成「Liu's left grey sleeve hanging at his side, the hand drawn up inside it pressing a folded paper against the forearm so that one corner bulges under the cloth」；a03-s092 改成「Close on Liu's left grey sleeve, held open a little by his right hand with its ink-stained cuff: inside it his thin fingers on a folded scrap of yellowed paper ...」，其餘不動。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a03-s056",
+    "a03-s057",
+    "a03-s066"
+   ],
+   "problem": "書齋的小几與棋盤在畫面左前景、靠門這一側，沈歸鶴坐在長書案後面向鏡頭；兩個棋盤插鏡卻寫他的指尖在棋盒上、拈子放到棋盤邊上，人沒有離座，手搆不到前景的小几。",
+   "evidence": "a03-s056 prompt「the small side table at the left foreground with a low wooden go board ... Shen seated behind the long dark desk facing the camera, leaning back from it」；a03-s057 prompt「On the small side table at the left of the study ... Shen's pale fingertips resting on the rim of the bowl ... Shen speaks off screen」；a03-s066 prompt「Shen's pale fingers holding one black stone just above the board's outermost edge」、motion「The fingers set the black stone down on the very edge of the board」；中間 a03-s059–s065 他一直坐在案後說話。",
+   "fix": "a03-s057 把 Shen's pale fingertips resting on the rim of the bowl 拿掉，只拍棋盤與棋盒（他正在案後說「怕了的人……」）；a03-s066 的 prompt 開頭加「Shen risen from his chair and bent over the small side table」，或在 a03-s036 與 a03-s056 把小几寫成「a small side table standing against the left end of the desk, within reach of his seat」，兩者擇一，整段秒數不變。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a04-s023",
+    "a04-s024",
+    "a04-s028"
+   ],
+   "problem": "殷無聲扶寂聞坐起那三鏡，先寫他跪在床頭的地板上，下兩鏡又寫他跪在床上、在寂聞身後；同一個動作裡人從地上跳到床上。",
+   "evidence": "a04-s023 prompt「Yin kneeling on the floorboards at the head of the low bed at the left, the sheathed straight sword laid aside on the boards, both his hands under Jiwen's shoulders」；a04-s024 prompt「propped from behind by Yin who kneels on the bed behind him」；a04-s028 prompt「Yin kneeling on the low bed behind Jiwen」。分場表 a04 場 1：Yin 進門，從背後托起他的肩；他坐不直，整個人斜靠在 Yin 臂上。",
+   "fix": "統一成跪在床頭的地板上：a04-s024 改成「propped from behind by Yin, who kneels on the floor at the bed's head with his arm under Jiwen's back」，a04-s028 改成「Yin kneeling on the floor at the head of the low bed behind Jiwen, his hands under Jiwen's shoulders」；a04-s029 他「picking up the sheathed straight sword」從地板上拿起，正好接得上。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a04-s029"
+   ],
+   "problem": "禪房那一場的最後一鏡 prompt 開頭說是從屋裡往門口拍，後面描述的卻是標準的門側機位（床在右、沈歸鶴在左前景門檻、架子在後牆、窗在右後），兩句自相矛盾，生圖會不知道門在前景還是後景。",
+   "evidence": "a04-s029 prompt「The meditation cell from inside, looking toward the door: Jiwen lying flat on the low wooden bed at the right ... Shen on the stone threshold in the left foreground ... the plain wooden shelf ... on the back wall; white morning daylight from the window at the right rear, grey-blue light in the doorway」；第四節禪房主機位在門這一側往裡拍，門在畫面左前景。",
+   "fix": "把開頭改成「The meditation cell from the door side, morning:」，其餘不動；motion「Shen steps back off the threshold into the corridor at the left, out of the doorway」照舊。"
+  }
+ ]
+}

@@ -263,6 +263,38 @@ def test_storyboard_auto_approval_needs_every_expected_picture_and_end_frame() -
     assert not service.storyboard_check_passed(legacy, 7), "no invented legacy coverage"
 
 
+def test_a_picture_kept_with_the_judge_s_remarks_does_not_hold_the_storyboard_back() -> None:
+    """A shot sent ``accepted: true`` (keyframes --accept-best, once its prompt fixes were
+    spent) is the owner's at the final gate: its score and problems are skipped here, the
+    board's ``overall`` is the lowest among the other shots, and null when every shot was
+    accepted. It still has to be a complete picture with its hash."""
+    board = _storyboard("a", "b")
+    kept = {"id": "b", "complete": True, "file_sha256": "b" * 64, "accepted": True,
+            "judge": {"overall": 4, "passed": False, "problems": ["hands: six fingers"]}}
+    accepted = {**board, "shots": [board["shots"][0], kept],
+                "accepted": [{"id": "b", "overall": 4, "problems": ["hands: six fingers"]}]}
+    assert service.storyboard_check_passed(accepted, 7)
+    low = {**board["shots"][0], "judge": {"overall": 5, "problems": []}}
+    assert not service.storyboard_check_passed(
+        {**accepted, "shots": [low, kept]}, 7
+    ), "the other shots are still held to the bar"
+    every = {**accepted, "shots": [{**board["shots"][0], **kept, "id": "a"}, kept],
+             "judge": {"overall": None, "problems": []}}
+    assert service.storyboard_check_passed(every, 7), "every shot accepted: nothing left to score"
+    assert not service.storyboard_check_passed(
+        {**accepted, "judge": {"overall": None, "problems": []}}, 7
+    ), "a null overall beside a shot that was scored is not a board the judge passed"
+    for broken in (
+        {**kept, "file_sha256": None},
+        {**kept, "complete": False},
+        {**kept, "needs_review": True},
+        {**kept, "accepted": "yes"},
+    ):
+        assert not service.storyboard_check_passed(
+            {**accepted, "shots": [board["shots"][0], broken]}, 7
+        ), broken
+
+
 def test_the_look_rule_needs_the_suggested_sheet_to_clear_the_threshold_with_no_problems() -> None:
     payload: dict[str, Any] = {
         "options": [

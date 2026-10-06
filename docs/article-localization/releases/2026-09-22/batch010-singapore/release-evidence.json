@@ -53,10 +53,11 @@
     },
     "release_candidate_equivalence": {
       "path": "release-candidate-equivalence.json",
-      "sha256": "30c279e82bdd05a661b76a90ba01177ceee17afd8b9e26d0dd9dfd02b39129dc",
+      "sha256": "350bee64c580a4f63b6f9ae549f6fe7972a73feee3dbd8b18ed4fa6c528e0feb",
       "decision": "PASS_exact_v6_topics_order_only_candidate"
     }
   },
+  "receipt_redaction_note": "Redacted 2026-10-05 for the public repository (task 2026-10-02-rebind-receipts-after-scrubbing-host-details): the local Windows profile path in release-candidate-equivalence.json became <home>; nothing else in it changed. Its sha256 above records the redacted bytes; the original receipt and digest are in commit 65ef4328b (#648).",
   "release_bundle": {
     "manifest_sha256": "f3aa4de95a19d5786c7764298c741327ed35672bb42d2153a1347d9dbdff9a21",
     "baseline_sha256": "c7b385a94741bd7f9650b563db72f736dc9617b79c5b31d965edcb401b5074d1",

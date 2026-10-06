@@ -13,7 +13,7 @@
   "locales": {
     "zh-TW": {
       "title": "第一次呼叫 Claude API：金鑰、費用與十行 Python",
-      "description": "訂閱 Claude Pro 不等於能用 API：兩者是兩套帳號、兩套帳單。這篇依 2026 年 9 月查證的官方文件，帶你在 Claude Console 開帳號、儲值、設每月上限、建立金鑰，再用十行 Python 送出第一則訊息，逐行解釋 model、max_tokens、messages 三個參數，另附 curl；最後講金鑰外洩怎麼辦、一次呼叫多少錢，以及四種常見錯誤怎麼修。",
+      "description": "訂閱 Claude Pro 不等於能用 API：兩者是兩套帳號、兩套帳單。這篇依 2026 年 9 月查證、10 月 5 日更新模型與價格的官方文件，帶你在 Claude Console 開帳號、儲值、設每月上限、建立金鑰，再用十行 Python 送出第一則訊息，逐行解釋 model、max_tokens、messages 三個參數，另附 curl；最後講金鑰外洩怎麼辦、一次呼叫多少錢，以及四種常見錯誤怎麼修。",
       "hero": {
         "src": "/guides/claude-api-first-call/hero.jpg",
         "alt": "一把鑰匙插進一個終端機視窗的鎖孔，視窗裡有幾行程式碼，下方一行字寫著第一次呼叫 API",
@@ -35,7 +35,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "這篇依 2026 年 9 月 14 日查證的 Anthropic 官方文件與 Claude 說明中心，帶你把第一次呼叫做完：開 Console 帳號、儲值、設每月上限、建立金鑰、把金鑰放進環境變數，然後用十行 Python 送出一則訊息並印出回覆，逐行解釋 model、max_tokens、messages 三個必要"
+              "text": "這篇依 2026 年 9 月 14 日查證的 Anthropic 官方文件與 Claude 說明中心（模型、價格與官方範例在 10 月 5 日重新查證），帶你把第一次呼叫做完：開 Console 帳號、儲值、設每月上限、建立金鑰、把金鑰放進環境變數，然後用十行 Python 送出一則訊息並印出回覆，逐行解釋 model、max_tokens、messages 三個必要"
             },
             {
               "type": "article",
@@ -120,7 +120,7 @@
           "width": 1600,
           "height": 900,
           "caption": "左邊照順序走完六步就能發出第一次請求，右邊是每次請求都不能少的三個參數；圖上的數字與正文相同。",
-          "description": "左半邊由上而下是六個步驟，每一步用箭頭接到下一步。第一步開帳號：到 Claude Console（platform.claude.com）註冊，建立自己的組織。第二步儲值：Settings 到 Billing 按 Buy credits，預付點數，一年到期。第三步設每月上限：Billing 的 Spend limits 按 Adjust limit，Start 級距每月 500 美元。第四步建立金鑰：Settings 到 API keys 按 Create key，選有效期 3 小時到 30 天或 Never。第五步放進環境變數：export ANTHROPIC_API_KEY，不寫進程式、不提交進 git。第六步跑起來：pip install anthropic，執行十行 Python，印出回覆。右半邊是一次請求裡的三個必要參數。model 是模型 id，照官網原封不動複製，例如 claude-opus-5，打錯會拿到 404 not_found_error。max_tokens 是這次回覆最多產生幾個 token，官方範例用 1000，太小會被截斷，回應的 stop_reason 會顯示 max_tokens。messages 是對話內容，每則有 role 與 content，role 是 user 或 assistant，Messages API 無狀態，每次都要送整段歷史。右下角另註明金鑰不是參數：官方 SDK 會自己讀環境變數 ANTHROPIC_API_KEY，所以程式裡看不到金鑰。步驟、介面名稱與數字依 2026 年 9 月的 Anthropic 官方文件與 Claude 說明中心。",
+          "description": "左半邊由上而下是六個步驟，每一步用箭頭接到下一步。第一步開帳號：到 Claude Console（platform.claude.com）註冊，建立自己的組織。第二步儲值：Settings 到 Billing 按 Buy credits，預付點數，一年到期。第三步設每月上限：Billing 的 Spend limits 按 Adjust limit，Start 級距每月 500 美元。第四步建立金鑰：Settings 到 API keys 按 Create key，選有效期 3 小時到 30 天或 Never。第五步放進環境變數：export ANTHROPIC_API_KEY，不寫進程式、不提交進 git。第六步跑起來：pip install anthropic，執行十行 Python，印出回覆。右半邊是一次請求裡的三個必要參數。model 是模型 id，照官網原封不動複製，例如 claude-opus-5-5，打錯會拿到 404 not_found_error。max_tokens 是這次回覆最多產生幾個 token，官方範例用 1000，太小會被截斷，回應的 stop_reason 會顯示 max_tokens。messages 是對話內容，每則有 role 與 content，role 是 user 或 assistant，Messages API 無狀態，每次都要送整段歷史。右下角另註明金鑰不是參數：官方 SDK 會自己讀環境變數 ANTHROPIC_API_KEY，所以程式裡看不到金鑰。步驟、介面名稱與數字依 2026 年 9 月的 Anthropic 官方文件與 Claude 說明中心。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -146,11 +146,11 @@
         },
         {
           "type": "paragraph",
-          "text": "import anthropic\n\nclient = anthropic.Anthropic()\n\nmessage = client.messages.create(\n    model=\"claude-opus-5\",\n    max_tokens=1000,\n    messages=[{\"role\": \"user\", \"content\": \"用三句話解釋什麼是 API 金鑰。\"}],\n)\n\nfor block in message.content:\n    if block.type == \"text\":\n        print(block.text)"
+          "text": "import anthropic\n\nclient = anthropic.Anthropic()\n\nmessage = client.messages.create(\n    model=\"claude-opus-5-5\",\n    max_tokens=1000,\n    messages=[{\"role\": \"user\", \"content\": \"用三句話解釋什麼是 API 金鑰。\"}],\n)\n\nfor block in message.content:\n    if block.type == \"text\":\n        print(block.text)"
         },
         {
           "type": "paragraph",
-          "text": "第三行的 anthropic.Anthropic() 沒有帶任何參數，因為 SDK 會自己去環境變數 ANTHROPIC_API_KEY 找金鑰——這就是「不把金鑰寫進程式」的做法。三個必要參數分別是：model 是模型的 id，要照官網原封不動複製，例如 claude-opus-5、claude-sonnet-5、claude-haiku-4-5；max_tokens 是這一次回覆最多能產生幾個 token，官方文件說它只是絕對上限，模型可能提早停，但不會超過；messages 是對話內容，每一則有 role（user 或 assistant）與 content，而 Messages API 是無狀態的，要多輪對話就得每次把整段歷史重新送一次。"
+          "text": "第三行的 anthropic.Anthropic() 沒有帶任何參數，因為 SDK 會自己去環境變數 ANTHROPIC_API_KEY 找金鑰——這就是「不把金鑰寫進程式」的做法。三個必要參數分別是：model 是模型的 id，要照官網原封不動複製，例如 claude-opus-5-5、claude-sonnet-5-5、claude-haiku-4-5；max_tokens 是這一次回覆最多能產生幾個 token，官方文件說它只是絕對上限，模型可能提早停，但不會超過；messages 是對話內容，每一則有 role（user 或 assistant）與 content，而 Messages API 是無狀態的，要多輪對話就得每次把整段歷史重新送一次。"
         },
         {
           "type": "paragraph",
@@ -158,7 +158,7 @@
         },
         {
           "type": "paragraph",
-          "text": "curl https://api.anthropic.com/v1/messages \\\n  -H \"content-type: application/json\" \\\n  -H \"x-api-key: $ANTHROPIC_API_KEY\" \\\n  -H \"anthropic-version: 2023-06-01\" \\\n  -d '{\n    \"model\": \"claude-opus-5\",\n    \"max_tokens\": 1000,\n    \"messages\": [{\"role\": \"user\", \"content\": \"用三句話解釋什麼是 API 金鑰。\"}]\n  }'"
+          "text": "curl https://api.anthropic.com/v1/messages \\\n  -H \"content-type: application/json\" \\\n  -H \"x-api-key: $ANTHROPIC_API_KEY\" \\\n  -H \"anthropic-version: 2023-06-01\" \\\n  -d '{\n    \"model\": \"claude-opus-5-5\",\n    \"max_tokens\": 1000,\n    \"messages\": [{\"role\": \"user\", \"content\": \"用三句話解釋什麼是 API 金鑰。\"}]\n  }'"
         },
         {
           "type": "paragraph",
@@ -196,7 +196,7 @@
         },
         {
           "type": "paragraph",
-          "text": "API 按 token 計價，輸入與輸出分開算，而且輸出貴很多。2026 年 9 月 14 日官網的標價（每百萬 token、美元）：Claude Opus 5 輸入 5、輸出 25；Claude Sonnet 5 輸入 2、輸出 10；Claude Haiku 4.5 輸入 1、輸出 5。整張價目表與各模型的定位、上下文視窗，模型篇有完整整理，這裡不重複。"
+          "text": "API 按 token 計價，輸入與輸出分開算，而且輸出貴很多。2026 年 10 月 5 日官網的標價（每百萬 token、美元）：Claude Opus 5.5 輸入 4、輸出 20；Claude Sonnet 5.5 輸入 2、輸出 10；Claude Haiku 4.5 輸入 1、輸出 5。整張價目表與各模型的定位、上下文視窗，模型篇有完整整理，這裡不重複。"
         },
         {
           "type": "rich_paragraph",
@@ -211,7 +211,7 @@
         },
         {
           "type": "paragraph",
-          "text": "估一次呼叫很簡單：輸入與輸出的 token 數各自乘上單價再除以一百萬。官網的粗估是 1 個 token 大約 4 個英文字元、或 0.75 個英文單字。用 Claude Opus 5 送一次輸入 1,000 token、輸出 1,000 token 的請求：輸入是 1,000 乘 5 除以 1,000,000 等於 0.005 美元，輸出是 1,000 乘 25 除以 1,000,000 等於 0.025 美元，合計 0.03 美元；換成 Claude Haiku 4.5 同樣的量只要 0.006 美元。真正把帳單撐大的不是單次呼叫，而是多輪對話——API 無狀態，每多一輪都要把前面整段重送，輸入的 token 會一路疊上去。"
+          "text": "估一次呼叫很簡單：輸入與輸出的 token 數各自乘上單價再除以一百萬。官網的粗估是 1 個 token 大約 4 個英文字元、或 0.75 個英文單字。用 Claude Opus 5.5 送一次輸入 1,000 token、輸出 1,000 token 的請求：輸入是 1,000 乘 4 除以 1,000,000 等於 0.004 美元，輸出是 1,000 乘 20 除以 1,000,000 等於 0.02 美元，合計 0.024 美元；換成 Claude Haiku 4.5 同樣的量只要 0.006 美元。真正把帳單撐大的不是單次呼叫，而是多輪對話——API 無狀態，每多一輪都要把前面整段重送，輸入的 token 會一路疊上去。"
         },
         {
           "type": "paragraph",
@@ -219,7 +219,7 @@
         },
         {
           "type": "paragraph",
-          "text": "如果你的程式每次都送同一段很長的說明或同一份文件，提示快取可以把重複的部分壓到輸入價的一成，值不值得、怎麼算，另有一篇專門講。"
+          "text": "如果你的程式每次都送同一段很長的說明或同一份文件，提示快取可以把重複的部分壓到輸入價的一成，Opus 5.5 更只收 5%，值不值得、怎麼算，另有一篇專門講。"
         },
         {
           "type": "rich_paragraph",
@@ -242,7 +242,7 @@
           "items": [
             "401 authentication_error：金鑰有問題——打錯、前後多了空白、被停用或刪除，或是過期了。先在終端機確認環境變數真的有值（換一個終端機視窗要重新 export 一次），再到 Console 的 API keys 頁看那把金鑰還在不在。",
             "429 rate_limit_error：撞到速率上限，或撞到級距的每月花費上限。前者的回應會帶 retry-after 標頭，照上面的秒數等一下再送就好，官方 SDK 預設也會自動重試兩次；後者沒有 retry-after，一直重試只會一直失敗，錯誤內容裡的 error_code 會是 enforced_spend_limit_reached，要去 Rate limits 頁申請提高級距，或等下個月。",
-            "404 not_found_error：多半是模型 id 打錯，例如憑印象拼一個帶日期的字串。模型 id 要從官網的模型總覽頁原封不動複製；2026 年 9 月 14 日的現役四個是 claude-fable-5-1、claude-opus-5、claude-sonnet-5、claude-haiku-4-5。",
+            "404 not_found_error：多半是模型 id 打錯，例如憑印象拼一個帶日期的字串。模型 id 要從官網的模型總覽頁原封不動複製；2026 年 10 月 5 日的現役四個是 claude-fable-5-1、claude-opus-5-5、claude-sonnet-5-5、claude-haiku-4-5。",
             "回覆被截斷：HTTP 是 200，話卻講到一半就停。看回應裡的 stop_reason，值是 max_tokens 就代表被你設的上限切掉了，把 max_tokens 調大重送即可。官方文件說 max_tokens 不計入速率限制的計算，所以留寬一點不會有額外代價。"
           ],
           "ordered": false
@@ -257,8 +257,8 @@
           "rows": [
             [
               "用哪個模型",
-              "第一次先用 claude-opus-5 跑通，之後要大量呼叫再換 claude-sonnet-5 或 claude-haiku-4-5",
-              "官網的模型總覽頁建議「不確定用哪個就從 Claude Opus 5 開始」，官方 quickstart 的範例也是它；一次練習只花幾分美元，等到量大了再往下換階省錢"
+              "第一次先用 claude-opus-5-5 跑通，之後要大量呼叫再換 claude-sonnet-5-5 或 claude-haiku-4-5",
+              "官網的模型總覽頁建議「不確定用哪個就從 Claude Opus 5.5 開始」，官方 quickstart 的範例也是它；一次練習只花幾分美元，等到量大了再往下換階省錢"
             ],
             [
               "max_tokens 設多少",
@@ -271,14 +271,14 @@
               "上限是唯一擋得住迴圈寫錯的東西；不主動設，等於直接用級距的上限，Start 級距是每月 500 美元"
             ]
           ],
-          "caption": "2026 年 9 月 14 日依 Anthropic 官方文件與 Claude 說明中心整理；級距上限與介面名稱以官網當下頁面為準。"
+          "caption": "2026 年 9 月 14 日依 Anthropic 官方文件與 Claude 說明中心整理，模型與 quickstart 設定在 10 月 5 日重新查證；級距上限與介面名稱以官網當下頁面為準。"
         }
       ],
       "sources": [
         {
           "title": "Anthropic 官方文件：Get started（quickstart 的 Python 與 curl 範例、pip install anthropic、export ANTHROPIC_API_KEY、範例用的 model 與 max_tokens）",
           "url": "https://platform.claude.com/docs/en/get-started",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Anthropic 官方文件：API overview（Claude Console 與金鑰的位置、認證標頭、SDK 自動帶標頭、上限與速率限制的 Console 頁面）",
@@ -301,14 +301,14 @@
           "checked_on": "2026-09-14"
         },
         {
-          "title": "Anthropic 官方文件：Pricing（各模型每百萬 token 價格、1 token 約 4 個英文字元或 0.75 個英文單字、新使用者的少量免費點數、提示快取讀取為輸入價的一成）",
+          "title": "Anthropic 官方文件：Pricing（各模型每百萬 token 價格、1 token 約 4 個英文字元或 0.75 個英文單字、新使用者的少量免費點數、提示快取讀取多數模型為輸入價的一成、Opus 5.5 為 5%）",
           "url": "https://platform.claude.com/docs/en/about-claude/pricing",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
-          "title": "Anthropic 官方文件：Models overview（現役四個模型的 API id、上下文視窗、每百萬 token 價格、官網建議不確定就從 Claude Opus 5 開始）",
+          "title": "Anthropic 官方文件：Models overview（現役四個模型的 API id、上下文視窗、每百萬 token 價格、官網建議不確定就從 Claude Opus 5.5 開始）",
           "url": "https://platform.claude.com/docs/en/models/overview",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Anthropic 官方文件：Using the Messages API（Messages API 無狀態、每次要送整段歷史、stop_reason 為 max_tokens 的回應範例）",

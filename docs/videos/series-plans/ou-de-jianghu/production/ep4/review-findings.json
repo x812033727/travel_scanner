@@ -1,0 +1,105 @@
+{
+ "checks": "node check-act.mjs --all --craft（ep4，457 個 scene＝456 鏡＋1 張片名卡）：SCHEMA 錯誤 0；LINT 錯誤 0；LINT 警告 2 條，都是預期內的：(1)「about 23.3 minutes; the target is 22-22」；(2) runtime_spec 估算正文 1400.0 秒，實測門檻 1260–1380 秒。分場表第一節本來就預期估算比實測多，所以兩條都不算錯（本集沒有定格，所以沒有第 2 集那條 clips tier still 的警告）。各幕秒數：a01 279.8（87 鏡＋1 卡，目標 281）、a02 275.5（92 鏡，目標 279）、a03 276.9（92 鏡，目標 278）、a04 277.9（92 鏡，目標 278）、a05 289.9（93 鏡，目標 290），全部在目標 ±10 秒內。總長 1400.0 秒，在 1,390–1,418 秒的目標內（目標約 1,406），不用刪補。台詞 591 行，旁白 38 行占 6.4%、占口播字數 7%；台詞中位長度 4 字，超過 20 字的 0%、超過 40 字的 0。鏡長中位 3.0 秒，p10 1.97 秒、p90 4.5 秒，最長 6.5 秒。章名 13 章都在分場表指定的鏡上、文字逐字（估算起點／分場表）：一夜傳單 0:00／0:00、奔喪的路 0:22／0:22、三把鑰匙 1:38／1:33、盟印 4:40／4:41、三息 6:43／6:38、同一疊紙 9:15／9:20、入港帳 11:31／11:36、紙與筆 12:47／12:52、空位 13:52／13:58、往東 16:45／16:52、廢窯 17:25／17:32、不還手 18:30／18:36、奉還 19:55／20:04，誤差都在 10 秒內。高張力時間碼（用 timeline.mjs 的 estimateTimeline 逐鏡算）：前半 寂聞起身 a02-s039 6:42（目標約 6:38）、蓋印 a02-s055 7:28（約 7:28）、拂袖 a02-s064 7:49（約 7:55），都在 11:43 以前；後半 火把掃過窯口 a04-s079 17:50（約 17:50）、合圍從 a05-s001 18:30 起、槍尖劃頸 a05-s013 19:01（約 19:05）、跪交秘錄 a05-s038 20:21（約 20:30）、長老死訊 a05-s062 21:40（約 21:50）、翻開秘錄 a05-s085 22:54（約 22:57），都在 11:43 以後。全集最後一句台詞是 a05-s091 執事「整本，」「無字。」在 23:12–23:15，之後 a05-s092 書院長老把通緝令原本捲上（3 秒，四方朱印捲進去）、a05-s093 風翻空白書頁（2 秒），收在 23:20，照分場表第一節的懸念寫法。craft 表 23/24：唯一未達標是 size.stall（a04-s091、a04-s092、a05-s001 同一人連三鏡 Full／Wide），見 findings 第 1 條；用 craft.mjs 試過把 a04-s091 改成 Medium shot 就全數達標。info 列：50 鏡短於 2 秒；70 條 motion 含 and／then，逐條看過，都是同一動作的停住、收勢或附帶的小反應（例 a01-s001 掀角又落下、a05-s016 解劍丟在腳前），沒有一鏡同時走位加卸劍加跪下那種兩個動作。shot_reading 陷阱 0。另外用腳本逐鏡核對過：分場表第七節每一句必留台詞都在、逐字（含前情三句、a04 四句換日旁白、「竹虛留下的藥，還剩三粒」、「蓋在最後的，是白鶴的印」、「二十一天前…換成了玄門的人」、殿階 a–f 六段）；說話的只有 narrator 和九個允許的 id（書院長老 118 行、執事 90、沈歸鶴 82、包三錢 68、燕迴 51、竹虛 39、寂聞 35、柳不活 35、姬無霜 35），殷無聲、盟府衛士、追兵、玄門弟子、幽都舊部、哨兵、水手都沒有台詞；characters 沒有超過 3 個的鏡頭，id 都在允許的十個裡；character_looks：liu-buhuo 入鏡的 26 鏡全是 liu-defected，zhuxu 在 a04-s058–s074（西路到把布包卸到身前那一鏡）用基本外觀、a04-s076 起到全集結束一律 zhuxu-returned，被選 look 的角色都在同一鏡的 characters 裡，姬無霜、寂聞、殷無聲、包三錢都沒用 look；a05 從 s016 起凡竹虛入鏡的 prompt 都有 a thin red scratch on the right side of his neck，b 段奉還之後都有 holding the book flat against his chest with both hands；第九節的固定寫法（傳單、紙背、通緝令與四個印格、三方印記、盟印印記、藥瓶、袖裡的藥瓶、血帕、火脊鐵、樣鐵、霜上的淺腳印、梵林空座、長老房門封條、通緝令原本與抄本、無字的書頁）都逐字照抄；prompt 裡沒有雙引號、沒有可讀文字（傳單、通緝令、帳頁、字條一律 columns of brush strokes，書頁 completely blank），沒有 fit／reveal／transition／seed／negative／source，lines 沒寫 id，emotion 都在 80 字內，camera ≤ 120、prompt ≤ 1000、motion ≤ 300 字元；運鏡沒有同一種連續超過 3 鏡，每鏡都有景別（只有 a02-s022 用了表上沒有的 Three-shot，見 findings）。禁字與說破：鬼燈、細作、內奸、精元、差一道、第三個、寒毒、赤淵、機龍、假鐵、黑風、抽走、赤纓 0 次；「藥」只在旁白 a01-s084 與竹虛獨自對山頂說的 a04-s090，「傷」只在寂聞必留「無傷」，「無歸箭」只在書院長老必留那一句、沒有人糾正；「書院那位閉關的長老」沒有人提；沒有人報「第幾日」，旁白與台詞的時間詞（十天前、當天午後、這一天、同一個黃昏、三天了、隔天夜裡、第二天黃昏、隔天深夜、二十一天前、今天；昨夜、前天、今早、午後、等他十天、八天前、明天一早、今晚、昨天紮到山腳、晚一天、半個月了、追了六天、瞞了二十一天）逐一對過第十節的帳，全部對得上；「寫傳單的人怎麼比玄門先知道」只在 a01-s048–s049 問一次、被 a01-s052 擋回之後沒有人再提；寂聞沒說「沒人問」，殿階上照實說了「竹虛問過我，我叫他去問沈歸鶴」；旁白沒有替人物解釋心思；扇子靜止的插鏡只有 a01-s018、a01-s058、a01-s074、a03-s084、a05-s045 五處加三息 a02-s045（三息之後沒有旁白），說真話的 a01-s049、a04-s050 都在掌心點一下；咳嗽三次（a01-s087、a03-s091、a04-s037）都用右袖、袖子乾淨，a02-s092 印泥抹在左袖口，a03-s069 起換了乾淨外袍；藥丸三粒、兩粒、一粒都是他獨處時數；姬無霜的手背全集沒露（a03-s005、s012、s017、s018、s020、s034 都只到指節），弓與箭囊只擺在架上；柳不活的酒葫蘆沒開；火把那一鏡只掃一次；廢窯裡抽血帕只拍手和帕子、按衣襟不拍裡面；第 1 集名句「你知道的，我都要知道」「瞞得過一天，是一天」「幽都殺人，用不著走門」0 次，沒有詩號；跟前幾集逐字相同的只有刻意呼應的「且慢」與「謊，是我一個人說的」。接縫：a02 尾兩鏡黃昏接 a03「同一個黃昏」、a03 外港夜接書齋深夜、a04 四次換日各有一句旁白、a05 清晨霜與淺腳印接 a04 廢窯深夜「空著背走出窯口」；人物左右與光源逐場對過第四節（盟府門前晨光從左、經閣高窗左上冷青光、a02 盟堂午後左上、a04 盟堂上午右上、營帳簾口在右暖橘光、營門火把與冷藍隘道無燈、外港燈籠在左海在右冷藍、書齋燭右月左、石台與殿前殿階晨光從左、西路落日在左竹虛由左往右、廢窯窯口朝右月光右上），只有 a02 盟堂的出口方向跟 a04 不一致（見 findings）。道具：傳單四張去向（殷無聲那張到寂聞桌上再被燕迴拿走、包三錢那張到書齋再收回懷裡、沈歸鶴那張在右袖、柳不活那張在左靴）、盟印回匣再挪到書院長老手邊、通緝令原本從 a02-s081 捲起到殿階與笏並捧、樣鐵入燕迴懷裡、竹虛的劍由追兵撿走、寂聞裂珠四個插鏡，都接得上。上一集結尾（第 14 日清晨姬無霜持先鋒令帶柳不活北上、柳不活折牌）由 a01 前情 s011 與 a03 帳中「三宗都說你叛了」加 liu-defected 接上，殿階上那半截押解牌本集不入畫，藥瓶從第 3 集「吃了一粒」接到第 15 日剩三粒，都照第十一節。",
+ "findings": [
+  {
+   "severity": "minor",
+   "shots": [
+    "a04-s091",
+    "a04-s092",
+    "a05-s001"
+   ],
+   "problem": "第四幕尾兩鏡與第五幕第一鏡都是竹虛一人的 Full／Wide，craft 表唯一的未達標（size.stall，同一人同景別連三鏡）；而且分場表第 5 段第 11 點寫的是「中景：他拍掉膝上的灰」，寫手寫成了全身。",
+   "evidence": "a04-s091 camera「Full shot, eye level, locked」，a04-s092「Wide shot, eye level, locked」，a05-s001「Wide shot, eye level, locked」；craft 列「same size on the same people in a row 3 shots … a04-s091, a04-s092, a05-s001」。",
+   "fix": "a04-s091 的 camera 改成「Medium shot, eye level, locked」，prompt 開頭改成 Inside the kiln: Zhuxu rising to his feet at the centre of the ash floor seen from the waist up, nothing on his back, the sword at his left hip, grey ash on the knees of his robe just entering the bottom of frame, both hands at his knees；其餘不動。用 craft.mjs 試過，改完 24/24 全達標。a04-s092 的背影全景與 a05-s001 的建立全景都要留，不要動它們。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s065",
+    "a02-s066",
+    "a02-s079",
+    "a02-s069",
+    "a04-s002",
+    "a04-s011",
+    "a04-s022"
+   ],
+   "problem": "同一座盟堂，第二幕的南門在畫面右、第四幕在畫面左前景（分場表第四節第 18 日那一列：「Shen 站在門口（前景左，背對鏡頭）」；第 2 集審稿也定了盟堂出口在畫面左）。第二幕自己也前後不一：燕迴從左下進來、往右出去。",
+   "evidence": "a02-s065「Jiwen striding down the east side of the hall toward the camera at the right」；a02-s066「Yin at the right foreground on his way out … bright cloud mist from the open south doorway spilling in at the right edge」；a02-s069「Yan striding in from the bottom left foreground toward the table」；a02-s079「Yan striding toward the camera at the right」、motion「strides past the right end of the table toward the door」。第四幕：a04-s002 沈歸鶴站在左前景的「open south doorway」；a04-s022「Shen walks out through the doorway at the left foreground」；a04-s011 從堂內反打時門在畫面右，跟門在南側偏西一致。",
+   "fix": "以 a04 與分場表為準，把 a02 的出口改到畫面左：a02-s065 camera 改「Wide shot, high angle, pan left」，prompt 改成 Jiwen striding from the east side of the table across the near end of the hall toward the south door at the lower left, Yin one step behind him，motion 改 Jiwen walks toward the door at the lower left past the near corner of the table without looking back, Yin following one step behind；a02-s066 把 Yin 放到 the left foreground、門口雲霧改 spilling in at the left edge、桌與 Shen 改 in the background at the right，motion 改 turns his head back over his left shoulder toward Shen at the table and stops；a02-s079 改成 Yan striding toward the camera at the left，motion 改 Yan strides past the left end of the table toward the door, the red tassel swinging at his shoulder。a02-s069 燕迴從左下進來照舊。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s012",
+    "a02-s015",
+    "a02-s017",
+    "a02-s024"
+   ],
+   "problem": "書院長老的基本外觀寫死「a plain ivory tablet held upright in both hands」，這四鏡他的手在推通緝令、扶執事、蓋書院印，prompt 沒交代笏放在哪，生圖很容易在雙手之外再長出一支笏。",
+   "evidence": "a02-s006 motion 已經「lays the ivory tablet flat on the table at his left hand」、a02-s007 prompt「the ivory tablet lying flat beside it」交代了笏放下；之後 a02-s012「his right palm on the unrolled white scroll」、a02-s015「his right hand starting across the empty cushion」、a02-s017「holding a square pale grey stone seal with a short knob handle above the scroll」、a02-s024「his hand on the long white scroll」都沒再提笏，到 a02-s028「lifts the ivory tablet upright into frame」才回到手上。cast.json shuyuan-elder appearance 原文：a plain ivory tablet held upright in both hands。",
+   "fix": "這四鏡的 prompt 各加一句 the plain ivory tablet lying flat on the table at his left hand（a02-s017 加在 seal 那句後面），跟 a02-s006–s007 的連戲對上。第五幕殿階他整場笏與通緝令並捧，已照第九節，不用動。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s001",
+    "a02-s025",
+    "a02-s047",
+    "a02-s049",
+    "a02-s065",
+    "a02-s069",
+    "a02-s079",
+    "a04-s016",
+    "a05-s031",
+    "a05-s038",
+    "a05-s064",
+    "a05-s089",
+    "a02-s041",
+    "a02-s058",
+    "a02-s060",
+    "a02-s066",
+    "a05-s012",
+    "a05-s043",
+    "a05-s073",
+    "a05-s079",
+    "a05-s081"
+   ],
+   "problem": "分場表第二節：四人以上同框時 characters 只列三個，其他人要寫成遠景小人物的描述（例 a broad monk in a gilded lotus crown with a lean swordsman behind him），不能只寫名字——名字不會帶設定圖，殷無聲的疤與鐵環、執事的布冠都會走樣；反過來有些鏡 characters 還有空位，看得見的人卻沒列。最要緊的是 a05-s089：竹虛被兩名弟子架著站在前景、頸側血痕都寫了，卻不在 characters，沒有 zhuxu-returned，背上會長回布包。",
+   "evidence": "四人以上只寫名字的：a02-s001「Yin standing behind his right shoulder … the Steward half-risen to its right」（characters 是 shen-guihe、ji-wen、shuyuan-elder）；a02-s025、a02-s047、a02-s049「Jiwen … with Yin behind him; the Academy Elder and the kneeling Steward」；a02-s065「Shen seated alone at the west side … the Academy Elder seated beside him」（characters 是 ji-wen、yin-wusheng、xuanmen-steward）；a02-s069、a02-s079「the Steward at the back」；a04-s016「the Steward at the far north side」；a05-s031「Wushuang one step lower at the right」；a05-s038「Yan below the kneeling man」；a05-s064「Shen a tall still figure … Wushuang one step lower」；a05-s089「Zhuxu standing beside him held by the arms … Yan and the pursuers … Wushuang by the column」。characters 有空位卻沒列的：a02-s041、a02-s058、a02-s060「Yin a step behind him／Yin behind him」只列 shen-guihe、ji-wen；a02-s066「Shen seated at its west side small and soft in the background」只列 yin-wusheng；a05-s012「Yan at screen right with his sabre low」只列 zhuxu；a05-s079、a05-s081「Yan two steps lower／Yan behind them」只列 xuanmen-steward、zhuxu；a05-s043、a05-s073「Yan a dark shape two steps lower」只列兩人。對照：a04-s002 把執事寫成「a thin stooped steward in a dark-teal cloth cap」、a05-s038 把沈歸鶴寫成「a tall man in white silk with a folded fan」就是分場表要的寫法。",
+   "fix": "四人以上的鏡把名字換成描述：Yin → a lean swordsman in charcoal robes with a straight sword across his back；the Steward → a thin stooped steward in a dark-teal cloth cap；Shen → a tall man in white silk with a folded fan；the Academy Elder → a stout elder in a tall black scholar's crown holding an ivory tablet；Wushuang → a silver-haired woman in a towering black-and-silver phoenix crown；Yan → a broad man in rust-brown with a red-tasselled sabre。characters 有空位的鏡直接補 id：a02-s041、a02-s058、a02-s060 加 yin-wusheng；a02-s066 加 shen-guihe；a05-s012、a05-s043、a05-s073、a05-s079、a05-s081 加 yan-hui。a05-s089 的 characters 改成 xuanmen-steward、zhuxu、shuyuan-elder，加 character_looks {zhuxu: zhuxu-returned}，沈歸鶴改寫成 a tall man in white silk with a folded fan at the far left end of the landing（前一鏡 a05-s088 已是他的大特寫，不缺臉）。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s022"
+   ],
+   "problem": "camera 用了第三節景別表上沒有的「Three-shot」。",
+   "evidence": "a02-s022「Three-shot, eye level, locked」；表上只有 Two-shot、Group shot；第 2、3 集的 acts 0 次 Three-shot。",
+   "fix": "改成「Group shot, eye level, locked」；用 craft.mjs 試過不會新增未達標。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a03-s054",
+    "a01-s028",
+    "a01-s029",
+    "a03-s022"
+   ],
+   "problem": "「東西不會說謊，人才會」這個對仗警句在前三幕講了三次（兩次是包三錢），再加上柳不活必留的「規矩，比人老實」，同一個句型十二分鐘內出現四回，第三次就不新鮮了，也讓包三錢聽起來像在背沈歸鶴的話。",
+   "evidence": "a01-s028 沈歸鶴「紙不會說謊。」（分場表建議句）；a01-s029 包三錢「紙不會，」「貼紙的人會。」（寫手加的）；a03-s054 包三錢「人會騙人，」「味道不會。」（寫手加的）；a03-s022 柳不活「規矩，」「比人老實。」（必留）。",
+   "fix": "a03-s054 換成不對仗、長度相近的包三錢口吻，例：「這股灰麻味，」「錯不了。」（10 字對 10 字，秒數不變），motion 照舊低頭聞帳頁。a01-s029 可以留（跟 a01-s028 是一問一答，笑點在「貼紙的人」）。"
+  },
+  {
+   "severity": "minor",
+   "shots": [
+    "a02-s025",
+    "a02-s030",
+    "a02-s047",
+    "a04-s022"
+   ],
+   "problem": "北側空座分場表第二節與第九節要求每次都照抄「the empty north cushion at the council table, with one teacup turned upside down before it」；這幾個看得見空座的鏡只寫了「the empty north cushion」，倒扣的茶杯會被漏掉或畫成別的東西。",
+   "evidence": "a02-s025「on either side of the empty north cushion」；a02-s030「the empty north cushion beside him」；a02-s047「beside the empty north cushion」；a04-s022「either side of the empty north cushion」。同幕的 a02-s001、a02-s008、a02-s017、a02-s084、a04-s001、a04-s006、a04-s007、a04-s016 都有照抄全句。",
+   "fix": "這四鏡把短寫法換成第九節全句（a02-s085 空座在畫外，不用動）。"
+  }
+ ]
+}

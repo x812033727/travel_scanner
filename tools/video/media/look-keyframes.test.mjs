@@ -10,8 +10,8 @@ import { lookHash } from "../core/drama.mjs";
 import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
 import { readLedger } from "./ledger.mjs";
 import { keepSheets } from "./series-store.mjs";
-import { readCache } from "./cache.mjs";
-import { bestTake, chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, entryStands, keyframeChecks, keyframeRubric, MAX_KEYFRAME_TAKES, shotPrompt, STYLE_PLATE_ID, STYLE_PLATE_PROMPT } from "./keyframes.mjs";
+import { readCache, readJobs } from "./cache.mjs";
+import { bestTake, chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, entryStands, FIX_ARROW, fixClauses, fixesBefore, keyframeChecks, keyframeRubric, MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET, PLACEHOLDER_FIX, retakePrompt, shotPrompt, STYLE_PLATE_ID, STYLE_PLATE_PROMPT } from "./keyframes.mjs";
 import { DEFAULT_SHEET_PROMPT, MAX_LOOK_ROUNDS, optionKey, parseChoice, sheetPrompt, suggestedOf } from "./look.mjs";
 import { imagePrice, statusProblem } from "./stages.mjs";
 
@@ -48,8 +48,11 @@ const STATUS = {
 /**
  * A media server that draws a picture per request (its bytes depend on the prompt and seed) and
  * answers the judge from `verdicts`: a function of (kind, context, count so far) → { overall, passed, problems }.
+ * `refuse(request)` returning `{ code, detail }` makes that image request a failed job instead,
+ * as the server reports a provider's refusal. `exhaust(request)` returning true answers it with
+ * the 409 the server gives a request whose hash spent its attempts (video_media_job_exhausted).
  */
-function mediaSite({ verdicts, status = STATUS, actualImageModel = () => status.image.model }) {
+function mediaSite({ verdicts, status = STATUS, actualImageModel = () => status.image.model, refuse = () => null, exhaust = () => false }) {
   const state = { images: [], judges: [], uploads: [], files: new Map() };
   const fetchImpl = async (url, init = {}) => {
     const { pathname, search } = new URL(url);
@@ -59,6 +62,9 @@ function mediaSite({ verdicts, status = STATUS, actualImageModel = () => status.
     if (init.method === "POST" && route === "images") {
       const request = JSON.parse(init.body);
       state.images.push(request);
+      if (exhaust(request)) return Response.json({ code: "video_media_job_exhausted", detail: EXHAUSTED_DETAIL }, { status: 409 });
+      const refusal = refuse(request);
+      if (refusal) return Response.json({ id: `img${state.images.length}`, status: "failed", file: null, usd_estimate: 0, error: refusal, retry_after_seconds: 0 }, { status: 200 });
       // Like the server, choose from the series, independently of the global status response,
       // and price a 2K picture with the slides choice's 2K price.
       const model = actualImageModel();
@@ -200,9 +206,14 @@ test("look draws candidates per character, has them judged, suggests the best an
   assert.match(html, /six fingers/);
 });
 
-test("a character no sheet passes gets a second round, then the owner is told", async () => {
+// A judge problem as the server shapes it: the criterion's key, the fault and where, and after
+// the arrow the words to put in the prompt (apps/api/app/video_media/judge.py).
+const CROWN_FIX = "a crown of bronze leaves, as the appearance says";
+const CROWN_PROBLEM = `appearance: the crown is a plain gold band${FIX_ARROW}${CROWN_FIX}`;
+
+test("a character no sheet passes gets a second round, asked with the judge's fix, then the owner is told", async () => {
   const box = sandbox("fixture-drama", "drama");
-  const site = mediaSite({ verdicts: (kind, request) => (request.context.character.name === "炎帝" ? { overall: 4, passed: false, problems: ["wrong crown"] } : { overall: 8, passed: true }) });
+  const site = mediaSite({ verdicts: (kind, request) => (request.context.character.name === "炎帝" ? { overall: 4, passed: false, problems: [CROWN_PROBLEM] } : { overall: 8, passed: true }) });
   const run = context(box, site.fetchImpl);
   assert.equal(await main(["look", "--slug", box.slug], run.ctx), EXIT.lint, run.out.stderr);
   const manifest = manifestOf(box, "characters");
@@ -210,10 +221,24 @@ test("a character no sheet passes gets a second round, then the owner is told", 
   assert.deepEqual(manifest.characters.yandi.candidates.map((candidate) => candidate.seed), [1, 2, 3, 101, 102, 103]);
   assert.equal(manifest.characters.yandi.needs_review, true);
   assert.equal(manifest.characters.jingwei.candidates.length, 3, "a character with a passed sheet gets no second round");
-  assert.match(run.out.stdout, /ERROR yandi: no candidate passed the judge: wrong crown/);
+  // Every candidate after the first, and the whole second round, is asked with the fix; the
+  // character whose sheets pass is asked as written.
+  const yandi = site.state.images.filter((request) => request.prompt.includes("Character: 炎帝"));
+  assert.equal(yandi.length, 3 * MAX_LOOK_ROUNDS);
+  assert.doesNotMatch(yandi[0].prompt, /Corrections/);
+  assert.ok(yandi.slice(1).every((request) => request.prompt.endsWith(`. Corrections: ${CROWN_FIX}`)), yandi[1].prompt);
+  assert.ok(site.state.images.filter((request) => request.prompt.includes("Character: 精衛")).every((request) => !request.prompt.includes("Corrections")));
+  assert.deepEqual(manifest.characters.yandi.candidates.map((candidate) => candidate.fixes), [undefined, [CROWN_FIX], [CROWN_FIX], [CROWN_FIX], [CROWN_FIX], [CROWN_FIX]]);
+  assert.deepEqual(manifest.characters.yandi.fixes, [CROWN_FIX], "the hint for the rewrite of the appearance");
+  assert.equal(manifest.characters.jingwei.fixes, undefined);
+  assert.match(run.out.stdout, /yandi seed 2: asked with the corrections of the candidates before: a crown of bronze leaves, as the appearance says\n/);
+  assert.match(run.out.stdout, /ERROR yandi: no candidate passed the judge: appearance: the crown is a plain gold band → a crown of bronze leaves, as the appearance says\n  fixes for yandi: a crown of bronze leaves, as the appearance says\nrewrite the appearance or sheet_prompt of yandi and run look again/);
 });
 
-test("keyframes need the approved look, draw each shot from the chosen sheets, retake failures and warn on look-alikes", async () => {
+const STORM_FIX = "the girl facing the sea, in the middle third of the frame";
+const STORM_PROBLEM = `prompt: the girl faces away from the sea, at the left edge${FIX_ARROW}${STORM_FIX}`;
+
+test("keyframes need the approved look, draw each shot from the chosen sheets, retake failures with the judge's fix and warn on look-alikes", async () => {
   const box = sandbox("fixture-drama", "drama");
   let sheets = 0;
   const site = mediaSite({
@@ -221,7 +246,7 @@ test("keyframes need the approved look, draw each shot from the chosen sheets, r
       if (kind === "look") return { overall: 8 + ((sheets += 1) % 2), passed: true };
       // The storm's first take fails; everything else passes.
       const stormTakes = site.state.judges.filter((each) => each.kind === "keyframe" && each.context.shot.id === "sea-storm").length;
-      return request.context.shot.id === "sea-storm" && stormTakes === 1 ? { overall: 5, passed: false, problems: ["the girl faces the wrong way"] } : { overall: 8, passed: true };
+      return request.context.shot.id === "sea-storm" && stormTakes === 1 ? { overall: 5, passed: false, problems: [STORM_PROBLEM] } : { overall: 8, passed: true };
     },
   });
   const look = context(box, site.fetchImpl);
@@ -244,6 +269,10 @@ test("keyframes need the approved look, draw each shot from the chosen sheets, r
   const requests = site.state.images.slice(imagesBefore);
   assert.equal(requests.length, 5, "four shots, the storm twice");
   assert.deepEqual(requests.map((request) => [request.shot_id, request.seed]), [["opening", 1], ["farewell", 1], ["sea-storm", 1], ["sea-storm", 2], ["bird", 1]]);
+  // The retake is asked with the judge's fix for the take before it; the first take as written.
+  assert.doesNotMatch(requests[2].prompt, /Corrections/);
+  assert.equal(requests[3].prompt, `${requests[2].prompt}. Corrections: ${STORM_FIX}`);
+  assert.match(run.out.stdout, /sea-storm take 2: asked with the corrections of the takes before: the girl facing the sea, in the middle third of the frame\n/);
   const chosen = manifestOf(box, "characters").characters;
   const jingweiSheet = chosen.jingwei.candidates.find((candidate) => candidate.n === 2).sha256;
   const yandiSheet = chosen.yandi.candidates.find((candidate) => candidate.n === 1).sha256;
@@ -258,7 +287,11 @@ test("keyframes need the approved look, draw each shot from the chosen sheets, r
   assert.equal(manifest.look_hash, lookHash(dramaFixture()));
   assert.equal(manifest.shots["sea-storm"].seed, 2);
   assert.equal(manifest.shots["sea-storm"].takes.length, 2);
+  assert.equal(manifest.shots["sea-storm"].takes[0].fixes, undefined);
+  assert.deepEqual(manifest.shots["sea-storm"].takes[1].fixes, [STORM_FIX], "what the take was asked with is on record");
+  assert.notEqual(manifest.shots["sea-storm"].takes[0].key, manifest.shots["sea-storm"].takes[1].key);
   assert.equal(manifest.shots["sea-storm"].needs_review, false);
+  assert.equal(manifest.shots["sea-storm"].fixes, undefined, "a shot that passed leaves no hint");
   assert.equal(manifest.shots["sea-storm"].file, "keyframes/sea-storm-2.png");
   assert.equal(manifest.thumbnail_source, "keyframes/sea-storm-2.png");
   assert.deepEqual(manifest.duplicates, []);
@@ -306,9 +339,12 @@ test("two looks in one episode share the approved face sheet and carry appearanc
   assert.equal((await approvalState({ gate: "look", docDir: box.dir, workdir: box.workdir })).status, "approved");
 });
 
-test("a shot that never passes is left for a prompt fix after the last take", async () => {
+const BIRD_FIX = "a white gull in the middle third of the frame";
+const BIRD_PROBLEM = `subject: no bird anywhere in the frame${FIX_ARROW}${BIRD_FIX}`;
+
+test("a shot that never passes is left for a prompt fix after the last take, with the judge's fixes as the hint", async () => {
   const box = sandbox("fixture-drama", "drama");
-  const site = mediaSite({ verdicts: (kind, request) => (kind === "keyframe" && request.context.shot.id === "bird" ? { overall: 3, passed: false, problems: ["no bird"] } : { overall: 9, passed: true }) });
+  const site = mediaSite({ verdicts: (kind, request) => (kind === "keyframe" && request.context.shot.id === "bird" ? { overall: 3, passed: false, problems: [BIRD_PROBLEM] } : { overall: 9, passed: true }) });
   await main(["look", "--slug", box.slug], context(box, site.fetchImpl).ctx);
   await main(["look", "--slug", box.slug, "--choose", "jingwei=1,yandi=1"], context(box, site.fetchImpl).ctx);
   await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
@@ -317,10 +353,13 @@ test("a shot that never passes is left for a prompt fix after the last take", as
   const manifest = manifestOf(box, "keyframes");
   assert.equal(manifest.shots.bird.takes.length, MAX_KEYFRAME_TAKES);
   assert.equal(manifest.shots.bird.needs_review, true);
-  assert.deepEqual(manifest.shots.bird.problems, ["no bird"]);
+  assert.deepEqual(manifest.shots.bird.problems, [BIRD_PROBLEM], "the same line from every take, once");
+  assert.deepEqual(manifest.shots.bird.fixes, [BIRD_FIX]);
+  assert.deepEqual(site.state.images.filter((request) => request.shot_id === "bird").map((request) => request.prompt.endsWith(`. Corrections: ${BIRD_FIX}`)), [false, true, true], "the second and third takes were asked with the fix");
   assert.equal(manifest.shots.opening.needs_review, false);
+  assert.equal(manifest.shots.opening.fixes, undefined);
   assert.equal(manifest.shots.farewell, undefined, "only the named shots were drawn");
-  assert.match(run.out.stdout, /ERROR bird: no take passed the judge: no bird/);
+  assert.match(run.out.stdout, /ERROR bird: no take passed the judge: subject: no bird anywhere in the frame → a white gull in the middle third of the frame\n  fixes for bird: a white gull in the middle third of the frame\nfix the prompts of bird and run keyframes again/);
   assert.equal(readApprovals(box.workdir).approvals.at(-1).gate, "look");
   assert.ok(existsSync(path.join(box.workdir, "keyframes", "bird-3.png")), "every take stays on disk for the prompt fix");
 
@@ -330,6 +369,194 @@ test("a shot that never passes is left for a prompt fix after the last take", as
   assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.ok, stopped.out.stderr);
   assert.match(stopped.out.stdout, /stopped by the STOP file/);
   assert.equal(manifestOf(box, "keyframes").shots.farewell, undefined);
+});
+
+// What the server reports when the provider refuses a request outright, as MiniMax did a prompt
+// over its length limit on 2026-10-04: a failed job, refused again for every seed of that prompt.
+const TOO_LONG = { code: "video_media_upstream_invalid", detail: "prompt length must be less than 1500" };
+// What the server answers (409 video_media_job_exhausted) a request whose hash (prompt, seed,
+// references, model) failed its attempts (apps/api/app/video_media/jobs.py MAX_ATTEMPTS): the
+// request itself has to change. On 2026-10-06 two host videos were blocked on it, every retry
+// replaying seeds 1 to 3.
+const EXHAUSTED_DETAIL = "這個請求已經失敗 3 次；改提示詞或 seed 再試";
+
+test("a shot every seed is refused for waits for a prompt fix with the refusal, while the drawn shots go on to the sheet and the look-alike check", async () => {
+  const box = sandbox("fixture-story", "story");
+  let refusing = true;
+  const site = mediaSite({
+    verdicts: () => ({ overall: 8, passed: true }),
+    // The thumbnail's shot is refused every time, the shot before it on its first seed only.
+    refuse: (request) => (refusing && (request.shot_id === "sand-lines" || (request.shot_id === "number-owner" && request.seed === 1)) ? TOO_LONG : null),
+  });
+  const sheets = [];
+  const hashed = [];
+  const extra = {
+    openRenderer: async () => ({ sheet: async (html) => (sheets.push(html), PNG(`sheet ${sheets.length}`)), close: async () => {} }),
+    hashImage: async (file) => (hashed.push(path.basename(file)), SHA(readFileSync(file)).slice(0, 16)),
+  };
+  const shots = ["--shot", "checkout-beep,number-owner,sand-lines"];
+  const run = context(box, site.fetchImpl, extra);
+  assert.equal(await main(["keyframes", "--slug", box.slug, ...shots], run.ctx), EXIT.lint, run.out.stderr);
+  assert.doesNotMatch(run.out.stderr, /TypeError|argument must be/, "the refusal is the result, not an exception");
+  assert.deepEqual(site.state.images.map((request) => [request.shot_id, request.seed]), [["checkout-beep", 1], ["number-owner", 1], ["number-owner", 2], ["sand-lines", 1], ["sand-lines", 2], ["sand-lines", 3]]);
+  assert.equal(site.state.judges.length, 2, "a refused seed has no picture to judge");
+  const manifest = manifestOf(box, "keyframes");
+  // The entry carries what the look left the prompt under the model's limit (4000 here: the fake server names no vendor limit and gemini has none).
+  const budget = manifest.shots["sand-lines"].prompt_budget_chars;
+  assert.ok(budget > 3000 && budget < 4000, `the story's look leaves ${budget} characters of the server's 4000`);
+  assert.deepEqual(manifest.shots["sand-lines"], { takes: [], needs_review: true, prompt_budget_chars: budget, problems: [`no take could be generated: ${TOO_LONG.detail}`] });
+  assert.equal(manifest.shots["checkout-beep"].file, "keyframes/checkout-beep-1.png");
+  assert.equal(manifest.shots["checkout-beep"].needs_review, false);
+  assert.equal(manifest.shots["number-owner"].file, "keyframes/number-owner-2.png", "a refused seed is followed by the next");
+  assert.deepEqual(manifest.shots["number-owner"].takes.map((take) => take.seed), [2]);
+  assert.equal(manifest.shots["number-owner"].needs_review, false);
+  assert.equal(manifest.thumbnail_source, null, "the thumbnail's shot has no picture yet");
+  assert.deepEqual(hashed, ["checkout-beep-1.png", "number-owner-2.png"], "only pictures are compared");
+  assert.deepEqual(manifest.contact_sheets, ["keyframes/contact-sheet.png"]);
+  assert.equal(sheets.length, 1);
+  assert.equal(sheets[0].match(/<figure>/g).length, 2);
+  assert.match(sheets[0], /fixture-story：分鏡 2 鏡/);
+  assert.doesNotMatch(sheets[0], /sand-lines/);
+  assert.match(run.out.stdout, /2 keyframes generated in \d+ s; 2 shots drawn;/);
+  assert.match(run.out.stdout, /sand-lines seed 3: sand-lines: prompt length must be less than 1500; trying another seed\n/);
+  assert.match(run.out.stdout, /ERROR sand-lines: no take could be generated: prompt length must be less than 1500\n/);
+  assert.match(run.out.stdout, /fix the prompts of sand-lines and run keyframes again/);
+  // Each refusal is booked as a failed job at no cost, and none is left waiting to be picked up.
+  const images = readLedger(box.workdir).entries.filter((entry) => entry.kind === "image");
+  assert.deepEqual(images.map((entry) => [entry.id, entry.status, entry.error ?? null]), [
+    ["checkout-beep", "ready", null],
+    ["number-owner", "failed", TOO_LONG.code],
+    ["number-owner", "ready", null],
+    ["sand-lines", "failed", TOO_LONG.code],
+    ["sand-lines", "failed", TOO_LONG.code],
+    ["sand-lines", "failed", TOO_LONG.code],
+  ]);
+  assert.ok(images.filter((entry) => entry.status === "failed").every((entry) => entry.cost_usd === 0));
+  assert.deepEqual(readJobs(box.workdir).jobs, {});
+
+  // Once the prompt is one the provider takes, the rerun draws that shot alone and keeps the rest.
+  refusing = false;
+  const fixed = context(box, site.fetchImpl, extra);
+  assert.equal(await main(["keyframes", "--slug", box.slug, ...shots], fixed.ctx), EXIT.ok, fixed.out.stderr);
+  assert.match(fixed.out.stdout, /checkout-beep: kept \(judge 8\/10\)\n/);
+  assert.match(fixed.out.stdout, /number-owner: kept \(judge 8\/10\)\n/);
+  assert.deepEqual(site.state.images.slice(6).map((request) => [request.shot_id, request.seed]), [["sand-lines", 1]]);
+  const after = manifestOf(box, "keyframes");
+  assert.equal(after.shots["sand-lines"].file, "keyframes/sand-lines-1.png");
+  assert.equal(after.shots["sand-lines"].needs_review, false);
+  assert.equal(after.shots["sand-lines"].problems, undefined);
+  assert.equal(after.shots["number-owner"].sha256, manifest.shots["number-owner"].sha256);
+  assert.equal(after.thumbnail_source, "keyframes/sand-lines-1.png");
+  assert.equal(sheets.at(-1).match(/<figure>/g).length, 3);
+});
+
+test("a seed the server's attempts are spent for is followed by the next, and --seed-offset asks for the seeds past the spent ones", async () => {
+  const box = sandbox("fixture-story", "story");
+  // number-owner's first seed is spent; every seed of sand-lines up to 5 is.
+  const spent = (request) => (request.shot_id === "number-owner" && request.seed === 1) || (request.shot_id === "sand-lines" && request.seed <= 5);
+  const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }), exhaust: spent });
+  const shots = ["--shot", "checkout-beep,number-owner,sand-lines"];
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, ...shots], run.ctx), EXIT.lint, run.out.stderr);
+  assert.doesNotMatch(run.out.stderr, /已經失敗/, "a spent seed is a result of the run, not its end");
+  assert.deepEqual(site.state.images.map((request) => [request.shot_id, request.seed]), [["checkout-beep", 1], ["number-owner", 1], ["number-owner", 2], ["sand-lines", 1], ["sand-lines", 2], ["sand-lines", 3]]);
+  assert.match(run.out.stdout, /number-owner seed 1: 這個請求已經失敗 3 次；改提示詞或 seed 再試; trying another seed\n/);
+  const manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.shots["number-owner"].file, "keyframes/number-owner-2.png", "a spent seed is followed by the next, like a refused one");
+  assert.deepEqual(manifest.shots["number-owner"].takes.map((take) => take.seed), [2]);
+  assert.equal(manifest.shots["number-owner"].seed_offset, undefined, "no offset, no field");
+  const budget = manifest.shots["sand-lines"].prompt_budget_chars;
+  assert.deepEqual(manifest.shots["sand-lines"], { takes: [], needs_review: true, prompt_budget_chars: budget, problems: [`no take could be generated: ${EXHAUSTED_DETAIL}`] }, "the writer's prompt fix starts from what the server said");
+  assert.match(run.out.stdout, /ERROR sand-lines: no take could be generated: 這個請求已經失敗 3 次/);
+  // Nothing is booked for a request the server took nothing for, and no job is left to pick up.
+  const images = readLedger(box.workdir).entries.filter((entry) => entry.kind === "image");
+  assert.deepEqual(images.map((entry) => [entry.id, entry.status]), [["checkout-beep", "ready"], ["number-owner", "ready"]]);
+  assert.deepEqual(readJobs(box.workdir).jobs, {});
+
+  // The owner's retry (automation/flow.mjs resetForRetry) runs the stage with every seed moved
+  // by MAX_KEYFRAME_TAKES: the shot is asked for at seeds 4, 5 and 6 under the same prompt, each
+  // another request to the server, and the drawn shots are kept.
+  const shifted = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, ...shots, "--seed-offset", String(MAX_KEYFRAME_TAKES)], shifted.ctx), EXIT.ok, shifted.out.stderr);
+  assert.deepEqual(site.state.images.slice(6).map((request) => [request.shot_id, request.seed]), [["sand-lines", 4], ["sand-lines", 5], ["sand-lines", 6]]);
+  assert.match(shifted.out.stdout, /checkout-beep: kept \(judge 8\/10\)\n/);
+  assert.match(shifted.out.stdout, /number-owner: kept \(judge 8\/10\)\n/);
+  assert.match(shifted.out.stdout, /sand-lines seed 4: 這個請求已經失敗 3 次；改提示詞或 seed 再試; trying another seed\n/);
+  assert.match(shifted.out.stdout, /sand-lines take 3: judge 8\/10\n/, "the run's third take is seed 6");
+  const after = manifestOf(box, "keyframes");
+  assert.equal(after.shots["sand-lines"].file, "keyframes/sand-lines-6.png");
+  assert.equal(after.shots["sand-lines"].seed, 6);
+  assert.equal(after.shots["sand-lines"].seed_offset, 3, "the entry records the offset its seeds were asked under");
+  assert.deepEqual(after.shots["sand-lines"].takes.map((take) => take.seed), [6]);
+  assert.equal(after.shots["number-owner"].seed_offset, undefined, "a kept shot keeps its record");
+  assert.equal(after.thumbnail_source, "keyframes/sand-lines-6.png");
+
+  // Run again at the same offset: the takes stand under the seeds they were asked with.
+  const again = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, ...shots, "--seed-offset", "3"], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(site.state.images.length, 9, "nothing is asked for again");
+  assert.match(again.out.stdout, /sand-lines: kept \(judge 8\/10\)\n/);
+
+  const over = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, ...shots, "--seed-offset", String(MAX_SEED_OFFSET + 1)], over.ctx), EXIT.usage);
+  assert.match(over.out.stderr, /--seed-offset must be 0 to 30/);
+});
+
+test("a run where every seed of every shot is refused ends on the refusals, with no picture checked and no contact sheet", async () => {
+  const box = sandbox("fixture-story", "story");
+  // A sheet left by an earlier storyboard shows pictures that are not this manifest's.
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "keyframes", "contact-sheet.png"), PNG("an earlier storyboard"));
+  const BLOCKED = { code: "video_media_rejected", detail: "output blocked by the content filter" };
+  const site = mediaSite({
+    verdicts: () => ({ overall: 8, passed: true }),
+    refuse: (request) => (request.shot_id === "first-scan" && request.seed > 1 ? BLOCKED : TOO_LONG),
+  });
+  let renderers = 0;
+  let hashes = 0;
+  const run = context(box, site.fetchImpl, {
+    openRenderer: async () => {
+      renderers += 1;
+      return { sheet: async () => PNG("sheet"), close: async () => {} };
+    },
+    hashImage: async () => {
+      hashes += 1;
+      return "0".repeat(16);
+    },
+  });
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "sand-lines,first-scan"], run.ctx), EXIT.lint, run.out.stderr);
+  assert.doesNotMatch(run.out.stderr, /TypeError|argument must be/);
+  const manifest = manifestOf(box, "keyframes");
+  const budgetOf = (id) => manifest.shots[id].prompt_budget_chars;
+  assert.deepEqual(manifest.shots, {
+    "sand-lines": { takes: [], needs_review: true, prompt_budget_chars: budgetOf("sand-lines"), problems: [`no take could be generated: ${TOO_LONG.detail}`] },
+    "first-scan": { takes: [], needs_review: true, prompt_budget_chars: budgetOf("first-scan"), problems: [`no take could be generated: ${TOO_LONG.detail}`, `no take could be generated: ${BLOCKED.detail}`] },
+  });
+  assert.equal(site.state.images.length, 6);
+  assert.equal(site.state.judges.length, 0);
+  assert.equal(hashes, 0, "no picture to compare");
+  assert.equal(renderers, 0, "no sheet is drawn for a storyboard with no picture");
+  assert.deepEqual(manifest.duplicates, []);
+  assert.equal(manifest.thumbnail_source, null);
+  assert.equal(manifest.contact_sheet, null);
+  assert.deepEqual(manifest.contact_sheets, []);
+  assert.ok(!existsSync(path.join(box.workdir, "keyframes", "contact-sheet.png")), "the earlier storyboard's sheet is gone");
+  const ledger = readLedger(box.workdir);
+  assert.deepEqual(ledger.entries.map((entry) => [entry.id, entry.status, entry.error]), [
+    ["sand-lines", "failed", TOO_LONG.code],
+    ["sand-lines", "failed", TOO_LONG.code],
+    ["sand-lines", "failed", TOO_LONG.code],
+    ["first-scan", "failed", TOO_LONG.code],
+    ["first-scan", "failed", BLOCKED.code],
+    ["first-scan", "failed", BLOCKED.code],
+  ]);
+  assert.equal(ledger.totals.usd, 0, "a refused job costs nothing");
+  assert.deepEqual(readJobs(box.workdir).jobs, {});
+  assert.match(run.out.stdout, /0 keyframes generated in \d+ s; 0 shots drawn;/);
+  assert.match(run.out.stdout, /ERROR sand-lines: no take could be generated: prompt length must be less than 1500\n/);
+  assert.match(run.out.stdout, /ERROR first-scan: no take could be generated: prompt length must be less than 1500; no take could be generated: output blocked by the content filter\n/);
+  assert.match(run.out.stdout, /fix the prompts of sand-lines, first-scan and run keyframes again/);
+  assert.deepEqual(contactSheetPages([]), [], "a storyboard with no picture has no page");
 });
 
 test("a cap interruption before the end frame retains the judged start picture and resumes only the missing end", async () => {
@@ -863,6 +1090,89 @@ test("a shot keeps its best take, and an entry stands only while its requests an
   assert.ok(!entryStands(unstamped(failed), { keys, stamp: "q1" }));
 });
 
+test("the fix clauses of the judge's problems: after the arrow, each once, the server's placeholder left out; the next take is asked with the ones before it", () => {
+  assert.equal(PLACEHOLDER_FIX, "write the correction into the prompt", "spelled as apps/api/app/video_media/judge.py spells it");
+  const problems = [
+    `clean: six fingers on the left hand${FIX_ARROW}the left hand with five fingers`,
+    `subject: no bird in the frame${FIX_ARROW}a white gull in the middle third of the frame`,
+    `text: the sign reads CAFE${FIX_ARROW}${PLACEHOLDER_FIX}`,
+    "a line with no arrow",
+    `clean: six fingers on the left hand${FIX_ARROW}the left hand with five fingers`,
+  ];
+  assert.deepEqual(fixClauses(problems), ["the left hand with five fingers", "a white gull in the middle third of the frame"]);
+  assert.deepEqual(fixClauses([]), []);
+  assert.deepEqual(fixClauses(undefined), []);
+  assert.equal(retakePrompt("a gull over the sea. Style: ink", []), "a gull over the sea. Style: ink", "no fix, the prompt as written");
+  assert.equal(retakePrompt("a gull over the sea. Style: ink", ["a white gull", "no lettering"]), "a gull over the sea. Style: ink. Corrections: a white gull; no lettering");
+  // Under the server's field limit of 4000 a correction that does not fit is dropped rather than
+  // the request cut through it, and a prompt alone that does not fit is cut at a word boundary.
+  assert.equal(retakePrompt("x".repeat(3990), ["y".repeat(50)]), "x".repeat(3990), "the correction is dropped, the prompt stays whole");
+  assert.equal(retakePrompt(`${"x".repeat(3990)} ${"z".repeat(20)}`, []).length, 3990, "cut at the last word boundary under the server's prompt limit");
+  assert.equal(retakePrompt("x".repeat(3900), ["y".repeat(50)], 4000), `${"x".repeat(3900)}. Corrections: ${"y".repeat(50)}`);
+  assert.equal(retakePrompt("x".repeat(1400), ["y".repeat(50), "w".repeat(40)], 1500), `${"x".repeat(1400)}. Corrections: ${"y".repeat(50)}`, "a vendor's limit drops the last correction first");
+  const takes = [
+    { seed: 2, judge: { problems: [`clean: a${FIX_ARROW}fix two`] } },
+    { seed: 1, judge: { problems: [`clean: b${FIX_ARROW}fix one`] } },
+    { seed: 3, judge: { problems: [`clean: c${FIX_ARROW}fix three`] } },
+    { seed: 4 },
+  ];
+  assert.deepEqual(fixesBefore(takes, 1), []);
+  assert.deepEqual(fixesBefore(takes, 3), ["fix one", "fix two"], "in seed order, whatever the order recorded");
+  assert.deepEqual(fixesBefore(takes, 5), ["fix one", "fix two", "fix three"], "a take with no verdict has no fix");
+  assert.deepEqual(fixesBefore(undefined, 2), []);
+});
+
+test("a failed take's fixes go into the next take's prompt, stand with the shot over a prompt edit elsewhere, and are the hint left for the prompt fix", async () => {
+  const box = sandbox("fixture-illustrated", "illustrated");
+  // The desk never passes. Each picture gets a fix named after it (a judge asked twice about the
+  // same picture says the same thing), beside one line the judge gave no fix for.
+  const site = mediaSite({
+    status: SLIDES_STATUS,
+    verdicts: (kind, request) => {
+      if (request.context.shot.id !== "desk") return { overall: 9, passed: true };
+      const picture = request.files[0].sha256.slice(0, 6);
+      return { overall: 6.5, passed: false, problems: [`subject: the desk is bare in ${picture}${FIX_ARROW}a ledger open on the desk (${picture})`, `text: a label on the drawer reads TEA${FIX_ARROW}${PLACEHOLDER_FIX}`] };
+    },
+  });
+  const first = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], first.ctx), EXIT.lint, first.out.stderr);
+  const asked = site.state.images.filter((request) => request.shot_id === "desk");
+  assert.equal(asked.length, 3);
+  const fixes = site.state.judges.filter((request) => request.context.shot.id === "desk").map((request) => `a ledger open on the desk (${request.files[0].sha256.slice(0, 6)})`);
+  assert.equal(new Set(fixes).size, 3, "three pictures, three fixes");
+  assert.doesNotMatch(asked[0].prompt, /Corrections/);
+  assert.equal(asked[1].prompt, `${asked[0].prompt}. Corrections: ${fixes[0]}`);
+  assert.equal(asked[2].prompt, `${asked[0].prompt}. Corrections: ${fixes[0]}; ${fixes[1]}`, "each take carries the fixes of every take before it");
+  assert.ok(asked.every((request) => !request.prompt.includes(PLACEHOLDER_FIX)), "the server's placeholder is a note to the writer, not prompt text");
+  const manifest = manifestOf(box, "keyframes");
+  assert.deepEqual(manifest.shots.desk.takes.map((take) => take.fixes), [undefined, [fixes[0]], [fixes[0], fixes[1]]]);
+  assert.deepEqual(manifest.shots.desk.fixes, fixes, "the hint for the prompt fix: every fix the judge gave");
+  assert.equal(manifest.shots.desk.problems.length, 4, "three lines with a fix of their own, and the one without, once");
+  assert.ok(first.out.stdout.includes(`desk take 2: asked with the corrections of the takes before: ${fixes[0]}\n`), first.out.stdout);
+  assert.ok(first.out.stdout.includes(`desk take 3: asked with the corrections of the takes before: ${fixes[0]}; ${fixes[1]}\n`));
+  assert.match(first.out.stdout, /ERROR desk: no take passed the judge: subject: the desk is bare/);
+  assert.ok(first.out.stdout.includes(`  fixes for desk: ${fixes.join("; ")}\nfix the prompts of desk and run keyframes again`));
+
+  // Another shot's prompt changes: the desk's takes, asked with their corrections, stand as they
+  // were (their keys are recomputed with the same fixes), and nothing of the desk is asked again.
+  const drawn = site.state.images.length;
+  const judged = site.state.judges.length;
+  rewrite(box, (each) => {
+    each.scenes.find((scene) => scene.id === "race").data.prompt += ", a groundskeeper raking the pit";
+  });
+  const edited = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], edited.ctx), EXIT.lint, edited.out.stderr);
+  assert.match(edited.out.stdout, /4 of 5 drawn shots are unchanged and keep their verdicts\n/);
+  assert.equal(site.state.images.length, drawn + 1, "the race alone is drawn");
+  assert.equal(site.state.judges.length, judged + 1);
+  assert.deepEqual(manifestOf(box, "keyframes").shots.desk.fixes, fixes);
+  // Nothing changed: nothing is drawn or judged.
+  const again = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], again.ctx), EXIT.lint, again.out.stderr);
+  assert.equal(site.state.images.length, drawn + 1);
+  assert.equal(site.state.judges.length, judged + 1);
+});
+
 test("a prompt edit sends that shot alone back to the judge: the others keep their takes and verdicts, and a shot that never passed keeps its best take", async () => {
   const { picturesHash } = await import("../core/drama.mjs");
   const box = sandbox("fixture-illustrated", "illustrated");
@@ -1006,4 +1316,233 @@ test("illustrated slides are judged by yes/no fault checks once the server takes
   const told = context(story, storySite.fetchImpl);
   assert.equal(await main(["keyframes", "--slug", story.slug], told.ctx), EXIT.ok, told.out.stderr);
   assert.ok(storySite.state.judges.length > 0 && storySite.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined)));
+});
+
+// The site as it drew slides on 2026-10-06: MiniMax image-01, which refuses a request of 1500
+// characters or more counting the avoidance text it appends (apps/api/app/video_media/providers/
+// minimax.py), and a server that says so in its limits.
+const MINIMAX_SLIDES_STATUS = { ...SLIDES_STATUS, slides_image: { provider: "minimax", model: "image-01", configured: true }, limits: { image_prompt_chars: 4000, image_prompt_chars_minimax: 1500 } };
+// A scene prompt of exactly `length` characters that lint takes (no look words, no text).
+const promptOf = (length) => "a wide shot of a quiet harbour at dawn, a fisherman mending a net on the pier, crates of fish beside him, ".repeat(Math.ceil(length / 100)).slice(0, length);
+
+test("a slides shot whose prompt cannot fit MiniMax's limit beside the look is not sent, and a retake drops the judge's corrections rather than be refused", async () => {
+  const { AVOID, shotPromptBudget } = await import("./prompt-budget.mjs");
+  const { resolveLook } = await import("../core/drama.mjs");
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const file = path.join(box.dir, "video.json");
+  const doc = readJson(file);
+  const podium = doc.scenes.find((scene) => scene.id === "podium");
+  const desk = doc.scenes.find((scene) => scene.id === "desk");
+  podium.data.prompt = promptOf(900);
+  desk.data.prompt = promptOf(300);
+  writeFileSync(file, JSON.stringify(doc));
+  const look = resolveLook(doc.look);
+  const podiumBudget = shotPromptBudget({ look, camera: podium.data.camera, cast: "", limit: 1500 });
+  assert.ok(podiumBudget >= 400 && podiumBudget < 900, `the look leaves ${podiumBudget} characters`);
+  // The desk fails every take on four faults whose fixes total 800 characters.
+  const DESK_FIXES = ["a", "b", "c", "d"].map((letter) => `${letter} ${"x".repeat(198)}`);
+  const DESK_PROBLEMS = DESK_FIXES.map((fix, index) => `details: prop ${index + 1} is missing${FIX_ARROW}${fix}`);
+  let deskFailing = true;
+  const site = mediaSite({ status: MINIMAX_SLIDES_STATUS, verdicts: (kind, request) => (deskFailing && request.context.shot.id === "desk" ? { overall: 4, passed: false, problems: DESK_PROBLEMS } : { overall: 8, passed: true }) });
+
+  // The dry run names each shot's budget and the shots over it.
+  const dry = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
+  // image-01 takes no style reference, so no plate is drawn for it (the test below).
+  assert.match(dry.out.stdout, new RegExp(`podium: .*\\n  references: none\\n  prompt budget: 900 of ${podiumBudget} characters OVER BUDGET for minimax: shorten the prompt\\n`));
+  assert.match(dry.out.stdout, /desk: .*\n  references: none\n  prompt budget: 300 of \d+ characters\n/);
+  assert.match(dry.out.stdout, /1 shots over the minimax prompt budget \(limit 1500 less the look's style, the camera and the avoidance text\) would not be drawn: podium\n/);
+  assert.match(dry.out.stdout, /server: minimax image-01 ready/);
+  assert.equal(site.state.images.length, 0);
+
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.lint, run.out.stderr);
+  assert.ok(!site.state.images.some((request) => request.shot_id === "podium"), "an over-budget prompt is never sent: every seed would be refused alike");
+  const manifest = manifestOf(box, "keyframes");
+  assert.deepEqual(manifest.shots.podium, { takes: [], needs_review: true, prompt_budget_chars: podiumBudget, problems: [`prompt is 900 characters; the minimax budget for this shot is ${podiumBudget} (style, camera and avoidance text take the rest)${FIX_ARROW}shorten the prompt to at most ${podiumBudget} characters`] });
+  assert.match(run.out.stdout, new RegExp(`podium: not drawn: prompt is 900 characters; the minimax budget for this shot is ${podiumBudget} `));
+  assert.match(run.out.stdout, new RegExp(`ERROR podium: prompt is 900 characters; the minimax budget for this shot is ${podiumBudget} \\(style, camera and avoidance text take the rest\\) → shorten the prompt to at most ${podiumBudget} characters\\n`));
+  assert.match(run.out.stdout, /fix the prompts of desk, podium and run keyframes again|fix the prompts of podium, desk and run keyframes again/);
+  // Every request sent, the retakes with corrections among them, was shorter than 1500 with the
+  // avoidance text the server appends: nothing for the vendor to refuse.
+  assert.ok(site.state.images.length >= 6, "the desk three times and the three other shots");
+  for (const request of site.state.images) assert.ok(request.prompt.length + AVOID.length + request.negative_prompt.length < 1500, `${request.shot_id} seed ${request.seed}: ${request.prompt.length} characters`);
+  const deskRequests = site.state.images.filter((request) => request.shot_id === "desk");
+  assert.deepEqual(deskRequests.map((request) => request.seed), [1, 2, 3]);
+  assert.doesNotMatch(deskRequests[0].prompt, /Corrections/);
+  // Four fixes of 200 characters do not fit beside the prompt and the look: the last three are
+  // dropped, in order, and the first is asked; the third take, with the same fixes before it, the same.
+  assert.ok(deskRequests[1].prompt.endsWith(`. Corrections: ${DESK_FIXES[0]}`), deskRequests[1].prompt.slice(-240));
+  assert.ok(deskRequests[1].prompt.startsWith(`${promptOf(300)}. Style: ${look.style}. Camera: ${desk.data.camera}`), "the scene and the look stay whole");
+  assert.equal(deskRequests[2].prompt, deskRequests[1].prompt);
+  assert.match(run.out.stdout, /desk take 2: prompt trimmed to the minimax budget \(0 chars cut, 3 corrections dropped\)\n/);
+  assert.match(run.out.stdout, /desk take 3: prompt trimmed to the minimax budget \(0 chars cut, 3 corrections dropped\)\n/);
+  assert.deepEqual(manifest.shots.desk.fixes, DESK_FIXES, "the writer still hears every fix");
+  assert.equal(manifest.shots.desk.prompt_budget_chars, shotPromptBudget({ look, camera: desk.data.camera, cast: "", limit: 1500 }));
+  assert.deepEqual(manifest.shots.desk.takes.map((take) => take.fixes), [undefined, DESK_FIXES, DESK_FIXES], "what each take was asked to correct is on record, dropped or not");
+  assert.equal(manifest.shots.clock.needs_review, false);
+  assert.equal(typeof manifest.shots.clock.prompt_budget_chars, "number", "every entry says what its prompt may be");
+  assert.ok(readLedger(box.workdir).entries.every((entry) => entry.status !== "failed"), "no job was refused");
+
+  // Shortened to its budget, the shot is drawn; the desk, rewritten, is drawn again; the rest are kept.
+  podium.data.prompt = promptOf(podiumBudget);
+  desk.data.prompt = promptOf(280);
+  writeFileSync(file, JSON.stringify(doc));
+  deskFailing = false;
+  const fixed = context(box, site.fetchImpl);
+  const before = site.state.images.length;
+  assert.equal(await main(["keyframes", "--slug", box.slug], fixed.ctx), EXIT.ok, fixed.out.stderr);
+  assert.deepEqual(site.state.images.slice(before).map((request) => [request.shot_id, request.seed]), [["podium", 1], ["desk", 1]]);
+  assert.match(fixed.out.stdout, /clock: kept \(judge 8\/10\)\n/);
+  const after = manifestOf(box, "keyframes");
+  assert.equal(after.shots.podium.needs_review, false);
+  assert.equal(after.shots.podium.prompt_budget_chars, podiumBudget);
+  assert.equal(after.shots.desk.needs_review, false);
+});
+
+test("an image model that takes no style reference is drawn no style plate: image-01's pictures go without one and are judged on the look's text, while a Gemini model keeps its plate", async () => {
+  const { illustratedFixture } = await import("../core/fixtures/load.mjs");
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const site = mediaSite({ status: MINIMAX_SLIDES_STATUS, verdicts: () => ({ overall: 8, passed: true }) });
+  const dry = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
+  assert.match(dry.out.stdout, /keyframes for 5 shots \(0 end frames\), up to 3 takes each\nstyle plate: skipped; minimax\/image-01 takes no style reference, the style is judged from the look's text\n/);
+  assert.match(dry.out.stdout, /podium: .*\n  references: none\n/);
+  assert.equal(site.state.images.length, 0);
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.match(run.out.stdout, /style plate: skipped; minimax\/image-01 takes no style reference, the style is judged from the look's text\n/);
+  const shots = illustratedFixture().scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
+  assert.deepEqual(site.state.images.map((request) => request.shot_id), shots, "no plate request before the shots");
+  assert.ok(site.state.images.every((request) => request.purpose === "keyframe" && request.references.length === 0), "nothing goes with a shot that the model would not read");
+  assert.ok(!existsSync(path.join(box.workdir, "keyframes", "plate.json")));
+  assert.equal(site.state.judges.length, shots.length);
+  for (const request of site.state.judges) {
+    assert.deepEqual(request.files.map((each) => each.label), ["keyframe"], "no plate for the judge either");
+    assert.match(request.rubric.find((item) => item.key === "style").question, /style description in the context/);
+  }
+  const manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.plate, undefined);
+  assert.deepEqual(manifest.image, { provider: "minimax", model: "image-01" });
+  assert.equal(readLedger(box.workdir).totals.images, shots.length, "no plate paid for");
+  // The catalog's word decides, not the vendor: a Gemini model it lists with none draws no plate
+  // either, and a server from before the field is read by its vendor (stages.mjs takesStyleReference).
+  const flashWithout = { ...SLIDES_STATUS, models: { ...SLIDES_STATUS.models, images: { gemini: SLIDES_STATUS.models.images.gemini.map((entry) => (entry.value === FLASH_MODEL ? { ...entry, style_references: 0 } : entry)) } } };
+  const without = context(sandbox("fixture-illustrated", "illustrated"), mediaSite({ status: flashWithout, verdicts: () => ({ overall: 8, passed: true }) }).fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], without.ctx), EXIT.ok, without.out.stderr);
+  assert.match(without.out.stdout, /up to 3 takes each\nstyle plate: skipped; gemini\/gemini-3\.1-flash-image takes no style reference/);
+  const before = context(sandbox("fixture-illustrated", "illustrated"), mediaSite({ status: SLIDES_STATUS, verdicts: () => ({ overall: 8, passed: true }) }).fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], before.ctx), EXIT.ok, before.out.stderr);
+  assert.match(before.out.stdout, /up to 3 takes each, after one style plate\n/, "a Gemini model on a server that does not say still draws its plate");
+  assert.doesNotMatch(before.out.stdout, /style plate: skipped/);
+});
+
+test("--accept-best keeps the judge's best take of a shot still failing after its prompt fixes, marked 保留 on the sheet; a rerun leaves it, a rewritten prompt is judged anew, and a shot with no picture cannot be kept", async () => {
+  const { keyframeProblems, loadProject } = await import("../core/state.mjs");
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const file = path.join(box.dir, "video.json");
+  const doc = readJson(file);
+  const podium = doc.scenes.find((scene) => scene.id === "podium");
+  const desk = doc.scenes.find((scene) => scene.id === "desk");
+  // The podium cannot be drawn at all (over the budget); the desk fails every take on one fault.
+  podium.data.prompt = promptOf(900);
+  writeFileSync(file, JSON.stringify(doc));
+  const DESK_PROBLEMS = [`awkward: the hand holds the cup wrong${FIX_ARROW}the hand resting flat on the desk`];
+  const site = mediaSite({ status: MINIMAX_SLIDES_STATUS, verdicts: (kind, request) => (request.context.shot.id === "desk" ? { overall: 5, passed: false, problems: DESK_PROBLEMS } : { overall: 8, passed: true }) });
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.lint, run.out.stderr);
+  const before = manifestOf(box, "keyframes");
+  assert.equal(before.shots.desk.needs_review, true);
+  assert.ok(before.shots.desk.file && before.shots.desk.takes.length === 3);
+  assert.equal(before.shots.podium.file, undefined);
+  const project = () => loadProject({ slug: box.slug, root: box.root });
+  assert.equal((await keyframeProblems({ doc: project().doc, manifest: before, workdir: box.workdir })).join("; "), "podium keyframe needs review; podium has no selected picture; desk keyframe needs review");
+  const drawn = site.state.images.length;
+
+  // The desk is kept with its remarks; the podium, with no picture, is refused and still waits for a prompt.
+  let sheetHtml = null;
+  const accept = context(box, site.fetchImpl, { openRenderer: async () => ({ sheet: async (html) => { sheetHtml = html; return PNG("sheet"); }, close: async () => {} }) });
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "desk,podium"], accept.ctx), EXIT.lint, accept.out.stderr);
+  assert.match(accept.out.stdout, /desk: kept with the judge's remarks \(judge 5\/10\): awkward: the hand holds the cup wrong → the hand resting flat on the desk\n/);
+  assert.match(accept.out.stdout, /ERROR podium: no picture to keep \(prompt is 900 characters; the minimax budget for this shot is \d+/);
+  assert.match(accept.out.stdout, /1 pictures kept with the judge's remarks \(desk\); the final cut goes to the owner\nfix the prompts of podium and run keyframes again/);
+  assert.equal(site.state.images.length, drawn, "nothing is drawn or judged");
+  const after = manifestOf(box, "keyframes");
+  assert.equal(after.shots.desk.needs_review, false);
+  assert.deepEqual(after.shots.desk.accepted_with_problems, DESK_PROBLEMS);
+  assert.deepEqual(after.shots.desk.judge, before.shots.desk.judge, "the verdict stays as it was");
+  assert.deepEqual(after.shots.desk.takes, before.shots.desk.takes);
+  assert.deepEqual([after.shots.desk.file, after.shots.desk.sha256], [before.shots.desk.file, before.shots.desk.sha256]);
+  assert.equal(after.shots.desk.problems, undefined, "the problems moved: an entry's problems are what a prompt fix starts from");
+  assert.equal(after.shots.desk.fixes, undefined);
+  assert.deepEqual(after.shots.podium, before.shots.podium, "a refused shot is left as it was");
+  assert.equal(after.shots.clock.accepted_with_problems, undefined, "a shot that passed is not marked");
+  assert.ok(existsSync(path.join(box.workdir, after.contact_sheet)));
+  assert.match(sheetHtml, /desk · 5\/10 · 保留/);
+  assert.match(sheetHtml, /clock · 8\/10</);
+  assert.doesNotMatch(sheetHtml, /待修/);
+  assert.equal((await keyframeProblems({ doc: project().doc, manifest: after, workdir: box.workdir })).join("; "), "podium keyframe needs review; podium has no selected picture", "the kept desk is no review need");
+
+  // The podium shortened: it is drawn, the kept desk is left as it is, and the stage passes.
+  podium.data.prompt = promptOf(200);
+  writeFileSync(file, JSON.stringify(doc));
+  const again = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.match(again.out.stdout, /desk: kept \(judge 5\/10\)\n/);
+  assert.deepEqual(site.state.images.slice(drawn).map((request) => request.shot_id), ["podium"]);
+  const passed = manifestOf(box, "keyframes");
+  assert.deepEqual(passed.shots.desk.accepted_with_problems, DESK_PROBLEMS);
+  assert.equal(passed.shots.desk.needs_review, false);
+  assert.deepEqual(await keyframeProblems({ doc: project().doc, manifest: passed, workdir: box.workdir }), []);
+  assert.match(again.out.stdout, /next: node tools\/video\/cli\.mjs review-push --slug .* --gate storyboard/);
+  // Nothing waits: there is nothing to keep, and a kept shot is said so.
+  const nothing = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "desk"], nothing.ctx), EXIT.ok, nothing.out.stderr);
+  assert.match(nothing.out.stdout, /desk: already kept; nothing to keep\n0 pictures kept/);
+
+  // A rewritten desk prompt is a new picture, judged anew: kept no longer.
+  desk.data.prompt = promptOf(240);
+  writeFileSync(file, JSON.stringify(doc));
+  const rewritten = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], rewritten.ctx), EXIT.lint, rewritten.out.stderr);
+  const redrawn = manifestOf(box, "keyframes");
+  assert.equal(redrawn.shots.desk.needs_review, true);
+  assert.equal(redrawn.shots.desk.accepted_with_problems, undefined);
+  assert.deepEqual(redrawn.shots.desk.problems, DESK_PROBLEMS);
+  // A manifest drawn for other pictures cannot have its shots kept: the pictures come first.
+  desk.data.prompt = promptOf(250);
+  writeFileSync(file, JSON.stringify(doc));
+  const stale = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "desk"], stale.ctx), EXIT.usage);
+  assert.match(stale.out.stderr, /keyframes\/manifest\.json was drawn for another look or other pictures; run keyframes first/);
+  assert.equal(manifestOf(box, "keyframes").shots.desk.needs_review, true, "nothing written");
+});
+
+test("a shot whose prompt stops fitting the image model's budget keeps its earlier takes on record beside the note", async () => {
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const file = path.join(box.dir, "video.json");
+  const doc = readJson(file);
+  const desk = doc.scenes.find((scene) => scene.id === "desk");
+  desk.data.prompt = promptOf(700);
+  writeFileSync(file, JSON.stringify(doc));
+  const verdicts = (kind, request) => (request.context.shot.id === "desk" ? { overall: 4, passed: false, problems: [`details: the cup is missing${FIX_ARROW}a cup on the desk`] } : { overall: 8, passed: true });
+  // A server that reported the vendor's limit as the field's: the desk fits, and fails every take.
+  const wide = mediaSite({ status: { ...MINIMAX_SLIDES_STATUS, limits: { image_prompt_chars: 4000, image_prompt_chars_minimax: 4000 } }, verdicts });
+  const first = context(box, wide.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], first.ctx), EXIT.lint, first.out.stderr);
+  const before = manifestOf(box, "keyframes");
+  assert.equal(before.shots.desk.takes.length, 3);
+  assert.equal(before.shots.desk.needs_review, true);
+  // The server now says what image-01 refuses: the same prompt is over the budget, and is not sent.
+  const narrow = mediaSite({ status: MINIMAX_SLIDES_STATUS, verdicts });
+  const second = context(box, narrow.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], second.ctx), EXIT.lint, second.out.stderr);
+  assert.ok(!narrow.state.images.some((request) => request.shot_id === "desk"), "not sent");
+  const after = manifestOf(box, "keyframes");
+  assert.deepEqual(after.shots.desk.takes, before.shots.desk.takes, "the takes of this very prompt stay on record");
+  assert.equal(after.shots.desk.needs_review, true);
+  assert.equal(after.shots.desk.file, undefined, "none of them is selected: the shot has no picture");
+  assert.ok(after.shots.desk.prompt_budget_chars < 700);
+  assert.match(after.shots.desk.problems.join("; "), /^prompt is 700 characters; the minimax budget for this shot is \d+ /);
+  assert.equal(after.shots.desk.problems.length, 1);
 });

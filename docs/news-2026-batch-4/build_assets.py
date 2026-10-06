@@ -360,20 +360,43 @@ def _jfsa_cybersecurity(accent: str) -> str:
 
 
 def _crypto_index(accent: str) -> str:
-    # Four jurisdictions feeding one reading list. Each panel holds one plain object of this
-    # batch's vocabulary -- a law, a bank, a licence, a lock -- and none of them is a flag.
+    # Six jurisdictions feeding one reading list, in the index's own order: Taiwan, the United
+    # States and the United Kingdom on top, the European Union, Japan and South Korea below.
+    # Each panel holds one plain object of the vertical's vocabulary -- a law whose commencement
+    # is still open, a bank, a balance, a licence seal, a lock, order-book bars read through a
+    # lens -- and none of them is a flag. The first drawing had four panels and a list of four;
+    # batch 4.5 added the United Kingdom and 4.8 South Korea, and the picture was redrawn for six
+    # on 2026-10-05.
     other = second_colour(accent)
-    panels = [(230, 215), (470, 215), (230, 455), (470, 455)]
-    b = "".join(rect(x, y, 200, 200, "#FFFFFF", accent if i in (0, 3) else other, 28) for i, (x, y) in enumerate(panels))
-    b += "".join(line(270, 270 + i * 45, 390 - (i % 2) * 30, 270 + i * 45, "#C4CCCC", 12) for i in range(3)) + pending(385, 375, 18, accent)
-    b += bank(505, 262, 130, other)
-    b += circle(330, 555, 52, PALE, other) + line(330, 607, 312, 640, other, 10) + line(330, 607, 348, 640, other, 10)
-    b += padlock(570, 545, 0.6, accent)
-    b += "".join(line(690, y, 860, 430, "#C4CCCC", 8) for y in (315, 555))
-    b += sheet(890, 215, 430, 440, INK, rows=0)
-    for i in range(4):
-        y = 290 + i * 95
-        b += circle(950, y, 16, accent if i % 2 == 0 else other, "none") + line(995, y, 1255 - (i % 2) * 50, y, "#C4CCCC", 14)
+    size = 170
+    panels = [(210 + c * 195, 250 + r * 195) for r in range(2) for c in range(3)]
+    b = "".join(rect(x, y, size, size, "#FFFFFF", accent if i % 2 == 0 else other, 26) for i, (x, y) in enumerate(panels))
+    (tw_x, tw_y), (us_x, us_y), (uk_x, uk_y), (eu_x, eu_y), (jp_x, jp_y), (kr_x, kr_y) = panels
+    # Taiwan: a page of provisions and the commencement date nobody has set, in dashes.
+    b += "".join(line(tw_x + 34, tw_y + 47 + i * 38, tw_x + 136 - (i % 2) * 25, tw_y + 47 + i * 38, "#C4CCCC", 10) for i in range(3))
+    b += pending(tw_x + 132, tw_y + 136, 15, accent)
+    # The United States: a chartered bank.
+    b += bank(us_x + 30, us_y + 40, 110, other)
+    # The United Kingdom: a balance -- a regulator setting out where its perimeter runs.
+    cx = uk_x + size / 2
+    b += line(cx - 40, uk_y + 48, cx + 40, uk_y + 48, accent, 10) + line(cx, uk_y + 48, cx, uk_y + 130, accent, 10)
+    b += line(cx - 35, uk_y + 130, cx + 35, uk_y + 130, accent, 10) + circle(cx, uk_y + 48, 9, accent, "none")
+    for edge in (cx - 40, cx + 40):
+        b += line(edge, uk_y + 48, edge, uk_y + 82, accent, 6)
+        b += f'<path d="M{edge-22} {uk_y+82} L{edge+22} {uk_y+82} L{edge+14} {uk_y+102} L{edge-14} {uk_y+102} Z" fill="{PALE}" stroke="{accent}" stroke-width="6" stroke-linejoin="round"/>'
+    # The European Union: the seal of an authorisation, on its ribbons.
+    b += circle(eu_x + 85, eu_y + 78, 44, PALE, other) + line(eu_x + 85, eu_y + 122, eu_x + 70, eu_y + 150, other, 9) + line(eu_x + 85, eu_y + 122, eu_x + 100, eu_y + 150, other, 9)
+    # Japan: a lock, the exchanges' custody and its supply chain.
+    b += padlock(jp_x + 85, jp_y + 80, 0.52, accent)
+    # South Korea: order-book bars made to look busy, read through a lens.
+    for i, width in enumerate((70, 105, 50, 95)):
+        b += rect(kr_x + 28, kr_y + 34 + i * 28, width, 16, accent if i % 2 == 0 else PALE, "none" if i % 2 == 0 else other, 6)
+    b += circle(kr_x + 110, kr_y + 105, 30, "#FFFFFF", other) + line(kr_x + 132, kr_y + 127, kr_x + 154, kr_y + 149, other, 12)
+    b += "".join(line(790, y, 900, 432, "#C4CCCC", 8) for y in (335, 530))
+    b += sheet(930, 215, 410, 440, INK, rows=0)
+    for i in range(6):
+        y = 275 + i * 64
+        b += circle(990, y, 14, accent if i % 2 == 0 else other, "none") + line(1035, y, 1290 - (i % 2) * 50, y, "#C4CCCC", 12)
     return b
 
 

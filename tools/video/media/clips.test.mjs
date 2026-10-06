@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -11,8 +11,10 @@ import { clipsHash, lookHash, mixHash } from "../core/drama.mjs";
 import { dramaFixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { pipelineStatus } from "../core/state.mjs";
 import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
+import { readJobs } from "./cache.mjs";
 import { clipPrompt, clipRubric, clipSeconds, lastFrameArgs, MAX_CLIP_TAKES, proxyArgs } from "./clips.mjs";
-import { importedTotals, readLedger, savedTotals } from "./ledger.mjs";
+import { FIX_ARROW } from "./keyframes.mjs";
+import { importedTotals, readLedger, reserve, savedTotals } from "./ledger.mjs";
 import { MIN_TRACK_SECONDS, trackSeconds } from "./music.mjs";
 import { chosenModel, clipSecondPrice, statusProblem, trackPrice } from "./stages.mjs";
 
@@ -46,8 +48,12 @@ const STATUS = {
   limits: {},
 };
 
-/** A media server whose clips need one poll, and whose judge answers from `verdicts(request, count)`. */
-function mediaSite({ verdicts = () => ({ overall: 8, passed: true }), tooLargeOnce = null, status = STATUS } = {}) {
+/**
+ * A media server whose clips need one poll, and whose judge answers from `verdicts(request, count)`.
+ * `refuse(request)` returning `{ code, detail }` makes that clip job end failed when it is polled,
+ * as the server reports a provider's refusal.
+ */
+function mediaSite({ verdicts = () => ({ overall: 8, passed: true }), tooLargeOnce = null, status = STATUS, refuse = () => null } = {}) {
   const state = { clips: [], music: [], polls: {}, judges: [], uploads: [], files: new Map(), jobs: new Map() };
   let large = tooLargeOnce;
   const fetchImpl = async (url, init = {}) => {
@@ -60,7 +66,7 @@ function mediaSite({ verdicts = () => ({ overall: 8, passed: true }), tooLargeOn
       state.clips.push(request);
       const id = `clip${state.clips.length}`;
       const bytes = MP4(`${request.shot_id}|${request.prompt}|${request.seed}|${request.first_frame}|${request.seconds}`);
-      state.jobs.set(id, { bytes, seconds: request.seconds });
+      state.jobs.set(id, { bytes, seconds: request.seconds, refusal: refuse(request) });
       return Response.json({ id, status: "queued", file: null, error: null, retry_after_seconds: 1, usd_estimate: request.seconds * 0.15 }, { status: 202 });
     }
     if (init.method === "POST" && route === "music") {
@@ -75,6 +81,7 @@ function mediaSite({ verdicts = () => ({ overall: 8, passed: true }), tooLargeOn
       state.polls[id] = (state.polls[id] ?? 0) + 1;
       const job = state.jobs.get(id);
       if (state.polls[id] < 2) return Response.json({ id, status: "submitted", file: null, error: null, retry_after_seconds: 1, usd_estimate: job.seconds * 0.15 });
+      if (job.refusal) return Response.json({ id, status: "failed", file: null, error: job.refusal, retry_after_seconds: 0, usd_estimate: job.seconds * 0.15 });
       state.files.set(SHA(job.bytes), job.bytes);
       return Response.json({ id, status: "ready", file: { sha256: SHA(job.bytes), size: job.bytes.length, content_type: "video/mp4" }, error: null, retry_after_seconds: 0, usd_estimate: job.seconds * 0.15 });
     }
@@ -436,6 +443,22 @@ test("Veo 3.1 Lite 1080p requests eight seconds and first frames, with sheets on
   assert.equal(clipSeconds(30, [4, 6, 8], { model: "veo-3.1-fast-generate-preview", resolution: "1080p" }), 8);
 });
 
+test("a clip model the catalog gives no reference images (MiniMax-H3) gets its frames alone, and its sheets go to the judge", async () => {
+  const { box, shots } = prepared();
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const model = "MiniMax-H3";
+  const status = { ...STATUS, clip: { ...STATUS.clip, provider: "minimax", model, resolution: "2k" }, models: { ...STATUS.models, clips: { minimax: [{ ...STATUS.models.clips.gemini[0], value: model, resolutions: ["768p", "2k"], reference_images: 0 }] } } };
+  const site = mediaSite({ status });
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr || run.out.stdout);
+  assert.ok(site.state.clips.length > 0 && site.state.clips.every((request) => request.references.length === 0), "no sheet and no previous frame: the server refuses them for H3");
+  const farewell = site.state.clips.find((request) => request.shot_id === "farewell");
+  assert.equal(farewell.first_frame, shots.farewell.sha256);
+  assert.equal(farewell.last_frame, shots.farewell.end_frame.sha256);
+  assert.ok(site.state.judges.find((request) => request.context.shot?.id === "farewell").files.some((file) => file.label === "sheet 精衛"));
+});
+
 test("clips keep the face reference while using the shot's named outfit in generation and judging", async () => {
   const { box, characters } = prepared((doc) => {
     doc.characters[0].shot_looks = [{ id: "present", appearance: "adult woman wearing a navy business suit" }];
@@ -455,10 +478,15 @@ test("clips keep the face reference while using the shot's named outfit in gener
   assert.match(judge.context.characters[0].description, /navy business suit/);
 });
 
-test("clips need an approved storyboard, then each shot gets a clip from its keyframe, checked and retaken", async () => {
+// A judge problem as the server shapes it: the criterion's key, the fault and where, and after
+// the arrow the words to put in the prompt (apps/api/app/video_media/judge.py).
+const BEARD_FIX = "the beard still, resting on the collar";
+const BEARD_PROBLEM = `motion: the emperor's beard morphs into the collar in the last second${FIX_ARROW}${BEARD_FIX}`;
+
+test("clips need an approved storyboard, then each shot gets a clip from its keyframe, checked and retaken with the judge's fix", async () => {
   const { box, doc, timeline, shots } = prepared();
   const site = mediaSite({
-    verdicts: (request) => (request.context.shot.id === "farewell" && site.state.judges.filter((each) => each.context.shot?.id === "farewell").length === 1 ? { overall: 4, passed: false, problems: ["the emperor's beard morphs"] } : { overall: 8, passed: true }),
+    verdicts: (request) => (request.context.shot.id === "farewell" && site.state.judges.filter((each) => each.context.shot?.id === "farewell").length === 1 ? { overall: 4, passed: false, problems: [BEARD_PROBLEM] } : { overall: 8, passed: true }),
     tooLargeOnce: "opening",
   });
   const early = context(box, site.fetchImpl);
@@ -487,6 +515,11 @@ test("clips need an approved storyboard, then each shot gets a clip from its key
   assert.equal(requests[0].native_audio, false);
   assert.match(requests[0].prompt, /^mist drifting through the pines.*slow push in\. slow cinematic camera move/);
   assert.match(requests[0].negative_prompt, /watermark/);
+  // The retake is asked with the judge's fix for the take before it; the first take as written.
+  assert.doesNotMatch(requests[1].prompt, /Corrections/);
+  assert.equal(requests[2].prompt, `${requests[1].prompt}. Corrections: ${BEARD_FIX}`);
+  assert.notEqual(requests[2].idempotency_key, requests[1].idempotency_key, "another prompt, another request");
+  assert.match(run.out.stdout, /farewell take 2: asked with the corrections of the takes before: the beard still, resting on the collar\n/);
   const bird = requests[4];
   assert.equal(bird.references.at(-1).role, "previous_frame", "a continued shot carries the previous clip's last frame");
   assert.equal(bird.references.at(-1).sha256, SHA(PNG("last of sea-storm-1.mp4")));
@@ -503,8 +536,11 @@ test("clips need an approved storyboard, then each shot gets a clip from its key
   assert.deepEqual(Object.keys(manifest.shots), ["opening", "farewell", "sea-storm", "bird"]);
   assert.equal(manifest.shots.farewell.seed, 2);
   assert.equal(manifest.shots.farewell.takes.length, 2);
-  assert.match(manifest.shots.farewell.takes[0].qc.problems[0], /judge 4\/10: the emperor's beard morphs/);
+  assert.match(manifest.shots.farewell.takes[0].qc.problems[0], /judge 4\/10: motion: the emperor's beard morphs into the collar in the last second → the beard still/);
+  assert.equal(manifest.shots.farewell.takes[0].fixes, undefined);
+  assert.deepEqual(manifest.shots.farewell.takes[1].fixes, [BEARD_FIX], "what the take was asked with is on record");
   assert.equal(manifest.shots.farewell.needs_review, false);
+  assert.equal(manifest.shots.farewell.fixes, undefined, "a shot that passed leaves no hint");
   assert.equal(manifest.shots.farewell.file, "clips/farewell-2.mp4");
   assert.equal(manifest.shots.bird.continues.shot, "sea-storm");
   assert.equal(manifest.shots.opening.first_frame.sha256, shots.opening.sha256);
@@ -523,11 +559,13 @@ test("clips need an approved storyboard, then each shot gets a clip from its key
   assert.equal(before, manifest.clips_hash);
 });
 
-test("a shot that fails every take is left for a prompt fix, and the STOP file ends a run cleanly", async () => {
+test("a shot that fails every take is left for a prompt fix with the judge's fixes as the hint, and the STOP file ends a run cleanly", async () => {
   const { box } = prepared();
   await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
   await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
-  const site = mediaSite();
+  // The storm fails the black-frame check every time, and the judge has a fix for it too.
+  const WAVES_FIX = "the waves rolling through the whole clip";
+  const site = mediaSite({ verdicts: (request) => (request.context.shot.id === "sea-storm" ? { overall: 5, passed: false, problems: [`motion: the waves freeze mid-roll${FIX_ARROW}${WAVES_FIX}`] } : { overall: 8, passed: true }) });
   const black = context(box, site.fetchImpl, {
     clipQc: async (file, wanted) => ({ probe: goodProbe(wanted.requested), black: file.includes("sea-storm") ? [{ start: 0.5, end: 1.2 }] : [], freezes: [], cuts: [], keyframe_psnr: 40, rival_psnr: 20 }),
   });
@@ -536,16 +574,79 @@ test("a shot that fails every take is left for a prompt fix, and the STOP file e
   assert.equal(manifest.shots["sea-storm"].takes.length, MAX_CLIP_TAKES);
   assert.equal(manifest.shots["sea-storm"].needs_review, true);
   assert.match(manifest.shots["sea-storm"].problems[0], /black from 0\.50 s to 1\.20 s/);
+  assert.match(manifest.shots["sea-storm"].problems[1], /judge 5\/10: motion: the waves freeze mid-roll → the waves rolling/);
+  assert.deepEqual(manifest.shots["sea-storm"].fixes, [WAVES_FIX], "the judge's fix, from under the check's line");
+  assert.deepEqual(site.state.clips.filter((request) => request.shot_id === "sea-storm").map((request) => request.prompt.endsWith(`. Corrections: ${WAVES_FIX}`)), [false, true], "the second take was asked with it");
   assert.equal(manifest.shots.opening.needs_review, false);
+  assert.equal(manifest.shots.opening.fixes, undefined);
   assert.equal(manifest.shots.bird, undefined);
   assert.match(black.out.stdout, /ERROR sea-storm: no take passed: black from/);
-  assert.match(black.out.stdout, /fix the prompts of sea-storm and run clips again/);
+  assert.match(black.out.stdout, /\n  fixes for sea-storm: the waves rolling through the whole clip\nfix the prompts of sea-storm and run clips again/);
 
   writeFileSync(path.join(box.workdir, "STOP"), "");
   const stopped = context(box, site.fetchImpl);
   assert.equal(await main(["clips", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.ok, stopped.out.stderr);
   assert.match(stopped.out.stdout, /stopped by the STOP file/);
   assert.equal(manifestOf(box, "clips").shots.farewell, undefined);
+});
+
+// What the server reports when the provider refuses a job outright (MiniMax refused keyframe prompts
+// over its length limit this way on 2026-10-04): a failed job, refused again for every seed.
+const TOO_LONG = { code: "video_media_upstream_invalid", detail: "prompt length must be less than 1500" };
+const BLOCKED = { code: "video_media_rejected", detail: "output blocked by the content filter" };
+
+test("a shot every seed is refused for waits for a prompt fix with the provider's refusal, and a rerun once it is taken buys that shot alone", async () => {
+  const { box, doc, timeline } = prepared();
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  let refusing = true;
+  // sea-storm is refused on every seed, twice for its length and then by the filter; opening on its first seed only.
+  const site = mediaSite({
+    refuse: (request) => (!refusing ? null : request.shot_id === "sea-storm" ? (request.seed < 3 ? TOO_LONG : BLOCKED) : request.shot_id === "opening" && request.seed === 1 ? TOO_LONG : null),
+  });
+  // A record for sea-storm that names a clip no longer on disk and no take: nothing of it may
+  // stand in the new record, or the clips hash and a shot continuing from it would read that clip.
+  mkdirSync(path.join(box.workdir, "clips"), { recursive: true });
+  const stale = { file: "clips/sea-storm-9.mp4", sha256: "9".repeat(64), seed: 9, seconds: 6, judge: { overall: 4, passed: false, problems: ["the waves freeze"] }, takes: [], needs_review: true, problems: ["judge 4/10: the waves freeze"] };
+  writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({ speech_hash: timeline.speech_hash, visual_hash: visualHash(doc), look_hash: lookHash(doc), shots: { "sea-storm": stale } }));
+  const shots = ["--shot", "opening,sea-storm", "--takes", "3"];
+
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug, ...shots], run.ctx), EXIT.lint, run.out.stderr);
+  assert.deepEqual(site.state.clips.map((request) => [request.shot_id, request.seed]), [["opening", 1], ["opening", 2], ["sea-storm", 1], ["sea-storm", 2], ["sea-storm", 3]]);
+  assert.equal(site.state.judges.length, 1, "a refused seed has no clip to judge");
+  const manifest = manifestOf(box, "clips");
+  assert.deepEqual(manifest.shots["sea-storm"], { takes: [], needs_review: true, problems: [`no take could be generated: ${TOO_LONG.detail}`, `no take could be generated: ${BLOCKED.detail}`] }, "one problem per distinct refusal, nothing of the earlier record");
+  assert.equal(manifest.shots.opening.file, "clips/opening-2.mp4", "a refused seed is followed by the next");
+  assert.deepEqual(manifest.shots.opening.takes.map((take) => take.seed), [2]);
+  assert.equal(manifest.shots.opening.needs_review, false);
+  assert.equal(manifest.clips_hash, clipsHash([{ id: "opening", sha256: manifest.shots.opening.sha256 }]), "the refused shot has no clip to hash");
+  assert.match(run.out.stdout, /sea-storm seed 3: sea-storm: output blocked by the content filter; trying another seed\n/);
+  assert.match(run.out.stdout, /ERROR sea-storm: no take could be generated: prompt length must be less than 1500; no take could be generated: output blocked by the content filter\n/);
+  assert.match(run.out.stdout, /fix the prompts of sea-storm and run clips again/);
+  // Each refusal is booked as a failed job at no cost, and none is left waiting to be picked up.
+  const clips = readLedger(box.workdir).entries.filter((entry) => entry.kind === "clip");
+  assert.deepEqual(clips.map((entry) => [entry.id, entry.status, entry.error ?? null]), [
+    ["opening", "failed", TOO_LONG.code],
+    ["opening", "ready", null],
+    ["sea-storm", "failed", TOO_LONG.code],
+    ["sea-storm", "failed", TOO_LONG.code],
+    ["sea-storm", "failed", BLOCKED.code],
+  ]);
+  assert.ok(clips.filter((entry) => entry.status === "failed").every((entry) => entry.cost_usd === 0));
+  assert.deepEqual(readJobs(box.workdir).jobs, {});
+
+  // Once the provider takes the prompt, the rerun buys that shot alone and keeps the other.
+  refusing = false;
+  const fixed = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug, ...shots], fixed.ctx), EXIT.ok, fixed.out.stderr);
+  assert.match(fixed.out.stdout, /opening: kept \(/);
+  assert.deepEqual(site.state.clips.slice(5).map((request) => [request.shot_id, request.seed]), [["sea-storm", 1]]);
+  const after = manifestOf(box, "clips");
+  assert.equal(after.shots["sea-storm"].file, "clips/sea-storm-1.mp4");
+  assert.equal(after.shots["sea-storm"].needs_review, false);
+  assert.equal(after.shots["sea-storm"].problems, undefined);
+  assert.equal(after.shots.opening.sha256, manifest.shots.opening.sha256);
 });
 
 test("a still shot buys no clip: its keyframe goes into the manifest, a clip may continue from it, and it needs a passed keyframe", async () => {
@@ -769,7 +870,7 @@ test("clips import brings a clip made elsewhere into a shot: gated like a bought
   const booked = readLedger(box.workdir);
   const { at, ...entry } = booked.entries[0];
   assert.deepEqual(entry, { stage: "clips", id: "opening", provider: "hailuo-web", plan: "pro", credits: 60, seconds: 8, cost_usd: 0, file: opening.file, sha256: opening.sha256, kind: "clip", status: "imported" });
-  assert.deepEqual(booked.totals, { usd: 0, images: 0, clip_seconds: 8, music: 0, judge_calls: 0 }, "the ledger counts its seconds");
+  assert.deepEqual(booked.totals, { usd: 0, images: 0, clip_seconds: 8, music: 0, judge_calls: 0, reserved: 0, reservations: 0 }, "the ledger counts its seconds");
   assert.deepEqual(importedTotals(booked.entries), { clips: 1, clip_seconds: 8, credits: 60, usd: 0 });
   const recorded = JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8")).runs.filter((each) => each.stage === "clips").at(-1);
   assert.deepEqual([recorded.shots, recorded.imported, recorded.generated], [1, 1, 0]);
@@ -816,7 +917,7 @@ test("an imported clip that fails its checks is left for review, --force keeps i
   const { box } = prepared();
   await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
   await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
-  const site = mediaSite({ verdicts: (request) => (request.context.shot.id === "bird" ? { overall: 4, passed: false, problems: ["the wings morph"] } : { overall: 8, passed: true }) });
+  const site = mediaSite({ verdicts: (request) => (request.context.shot.id === "bird" ? { overall: 4, passed: false, problems: [`clean: the wings melt into the tail${FIX_ARROW}the wings beating clear of the tail`] } : { overall: 8, passed: true }) });
   const made = outsideFile(box, "kling-opening.mp4", "kling opening");
   const bring = ["clips", "import", "--slug", box.slug, "--shot", "opening", "--file", made, "--provider", "kling-mcp", "--credits", "40"];
 
@@ -862,7 +963,9 @@ test("an imported clip that fails its checks is left for review, --force keeps i
   const bird = outsideFile(box, "kling-bird.mp4", "kling bird");
   const refused = context(box, site.fetchImpl, outsideQc());
   assert.equal(await main(["clips", "import", "--slug", box.slug, "--shot", "bird", "--file", bird, "--provider", "kling-mcp", "--judge"], refused.ctx), EXIT.lint, refused.out.stderr || refused.out.stdout);
-  assert.match(manifestOf(box, "clips").shots.bird.problems[0], /judge 4\/10: the wings morph/);
+  assert.match(manifestOf(box, "clips").shots.bird.problems[0], /judge 4\/10: clean: the wings melt into the tail/);
+  assert.deepEqual(manifestOf(box, "clips").shots.bird.fixes, ["the wings beating clear of the tail"], "the judge's fix is the hint for the next attempt outside");
+  assert.match(refused.out.stdout, /\n  fixes for bird: the wings beating clear of the tail\nmake bird again from its keyframe/);
   assert.equal(manifestOf(box, "clips").shots.bird.credits, null, "credits that were not given are not invented");
   assert.equal((await clipsStep(box)).detail, "3 of 3 clips imported: kling-mcp 3");
 });
@@ -929,4 +1032,78 @@ test("clips import refuses a production profile, a still, a cut and a stale time
   assert.equal(await main(["clips", "import", "--slug", profiled.box.slug, "--shot", "opening", "--file", outsideFile(profiled.box, "opening.mp4", "opening"), "--provider", "hailuo-web"], refused.ctx), EXIT.owner);
   assert.match(refused.out.stderr, /approved production profile, which accepts only clips bought with its own model/);
   assert.equal(existsSync(path.join(profiled.box.workdir, "clips")), false);
+});
+
+test("clips import --usd is money: refused past the per-video cap before anything is copied, held while the clip is checked and booked in place of the hold; the judge's call counts too", async () => {
+  const { box } = prepared();
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  let heldAtJudge = null;
+  const site = mediaSite({
+    status: { ...STATUS, max_usd_per_video: 2 },
+    verdicts: () => {
+      heldAtJudge = readLedger(box.workdir).entries.filter((entry) => entry.status === "reserved");
+      return { overall: 8, passed: true };
+    },
+  });
+  let statusReads = 0;
+  const fetchImpl = async (url, init) => {
+    if (new URL(url).pathname.endsWith("/status")) statusReads += 1;
+    return site.fetchImpl(url, init);
+  };
+  const bring = (shot, file, ...extra) => ["clips", "import", "--slug", box.slug, "--shot", shot, "--file", file, "--provider", "hailuo-web", "--plan", "pro", "--credits", "60", ...extra];
+  const opening = outsideFile(box, "paid-opening.mp4", "paid opening");
+
+  // Past the cap: the owner's call (exit 3), nothing copied, nothing held, nothing booked.
+  const over = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("opening", opening, "--usd", "2.5"), over.ctx), EXIT.owner, over.out.stderr || over.out.stdout);
+  assert.match(over.out.stderr, /this video has spent US\$0\.00 and the next import costs about US\$2\.50, past the per-video cap of US\$2/);
+  assert.equal(existsSync(path.join(box.workdir, "clips", "opening-import-1.mp4")), false);
+  assert.deepEqual(readLedger(box.workdir).entries, []);
+  assert.equal(statusReads, 1, "the cap comes from the site: one status read");
+  // Free of charge and unjudged, the import never calls the site.
+  const free = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("opening", opening, "--usd", "0"), free.ctx), EXIT.ok, free.out.stderr || free.out.stdout);
+  assert.equal(statusReads, 1);
+  // Under the cap: booked at the price given, the hold gone with the booking.
+  const paid = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("opening", opening, "--usd", "0.5"), paid.ctx), EXIT.ok, paid.out.stderr || paid.out.stdout);
+  assert.equal(statusReads, 2);
+  let ledger = readLedger(box.workdir);
+  assert.deepEqual(ledger.entries.map((entry) => [entry.id, entry.status, entry.cost_usd, entry.key]), [["opening", "imported", 0.5, undefined]], "the same file again replaces its row; the booked row carries no key");
+  assert.deepEqual([ledger.totals.usd, ledger.totals.reserved, ledger.totals.reservations], [0.5, 0, 0]);
+
+  // With --judge the hold is in the ledger while the judge looks, and the judge's own call passes the cap.
+  const farewell = outsideFile(box, "paid-farewell.mp4", "paid farewell");
+  const judged = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("farewell", farewell, "--usd", "0.25", "--judge"), judged.ctx), EXIT.ok, judged.out.stderr || judged.out.stdout);
+  assert.equal(statusReads, 3, "one status read serves the cap check and the judge");
+  assert.deepEqual(heldAtJudge.map((entry) => [entry.id, entry.cost_usd, entry.key, entry.provider, entry.plan, entry.credits, entry.seconds]), [["farewell", 0.25, `import:farewell:${SHA(MP4("paid farewell"))}`, "hailuo-web", "pro", 60, 0]]);
+  ledger = readLedger(box.workdir);
+  assert.deepEqual([ledger.totals.usd, ledger.totals.judge_calls, ledger.totals.reservations], [0.76, 1, 0]);
+  assert.deepEqual(importedTotals(ledger.entries), { clips: 2, clip_seconds: 16, credits: 120, usd: 0.75 });
+
+  // The judge refused past the cap, with the hold counted: the clip is checked but not recorded, and its hold is let go.
+  const bird = outsideFile(box, "paid-bird.mp4", "paid bird");
+  const refused = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("bird", bird, "--usd", "1.24", "--judge"), refused.ctx), EXIT.owner, refused.out.stderr || refused.out.stdout);
+  assert.match(refused.out.stderr, /this video has spent US\$2\.00 \(US\$1\.24 of it reserved for 1 request not yet reconciled\) and the next judge call costs about US\$0\.01, past the per-video cap of US\$2/);
+  assert.equal(site.state.judges.length, 1, "the judge was not asked");
+  assert.equal(manifestOf(box, "clips").shots.bird, undefined);
+  ledger = readLedger(box.workdir);
+  assert.deepEqual([ledger.totals.usd, ledger.totals.reservations, ledger.entries.length], [0.76, 0, 3]);
+
+  // The STOP file before the judge: nothing recorded, nothing held.
+  writeFileSync(path.join(box.workdir, "STOP"), "");
+  const stopped = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("bird", bird, "--usd", "0.5", "--judge"), stopped.ctx), EXIT.ok, stopped.out.stderr || stopped.out.stdout);
+  assert.match(stopped.out.stdout, /stopped by the STOP file before bird was judged; nothing was recorded/);
+  assert.deepEqual([readLedger(box.workdir).totals.reservations, readLedger(box.workdir).entries.length], [0, 3]);
+  rmSync(path.join(box.workdir, "STOP"));
+
+  // A hold left by a run that died is money the next import sees.
+  reserve(box.workdir, { stage: "clips", kind: "clip", id: "sea-storm", provider: "gemini", model: "gemini-omni-1.1-flash", key: "k-dead", seconds: 4, cost_usd: 1 }, new Date("2026-09-26T09:00:00Z"));
+  const crowded = context(box, fetchImpl, outsideQc());
+  assert.equal(await main(bring("bird", bird, "--usd", "0.3"), crowded.ctx), EXIT.owner, crowded.out.stderr || crowded.out.stdout);
+  assert.match(crowded.out.stderr, /spent US\$1\.76 \(US\$1\.00 of it reserved for 1 request not yet reconciled\) and the next import costs about US\$0\.30/);
 });

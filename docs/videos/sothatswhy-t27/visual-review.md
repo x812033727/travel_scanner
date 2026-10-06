@@ -20,7 +20,7 @@ normal QA、聲音、時長、後台核准、站主驗收及發布由各自實�
 
 初輪來源video SHA256：`d5060ca87298ca4dd6906d338db5866ef62eab8614b06a99f9fe4a3e5a93e335`；正式frames manifest：`51d70934dcef73b5cf895894b052a86576d409ab4d240cf797b40b4483815374`；初輪artist manifest：`4713d4455e5d2c14ca2f5d8e6a62247e888da903e3f661c4efb05e9f78349af1`。artist manifest中的來源為初始文字master `7e698bef3530d80801ca1d07ffc6c6a250b5a2244f6477ab6832a290c1c13543`，後續來源登記加入assets；本次逐一核對130個圖解的scene ID與旁白文本仍與正式master一致。每張實際still byte hash與全23聯絡表hash已逐一核對，詳見JSON逐景收據。
 
-聯絡表初輪保存在repo外 `C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-frame-review-initial/`，原始bytes與當時聯絡表manifest相同。01–04最初從原contact目錄實看，其餘從這份保留的snapshot實看，收據逐一記錄實看路徑及相同bytes。修圖已在覆核完成後開始，初輪SVG manifest另留原bytes；不宣稱目前正在更新的SVG與初輪全部相同，必須完成新版來源與正常renderer重綁。
+聯絡表初輪保存在repo外 `<home>/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-frame-review-initial/`，原始bytes與當時聯絡表manifest相同。01–04最初從原contact目錄實看，其餘從這份保留的snapshot實看，收據逐一記錄實看路徑及相同bytes。修圖已在覆核完成後開始，初輪SVG manifest另留原bytes；不宣稱目前正在更新的SVG與初輪全部相同，必須完成新版來源與正常renderer重綁。
 
 137景圖文的數字、圖示與限定均已對照稿件：十人示例保留1／2／3桶、3／4網路、5指標、6溝通、7至10沒有困擾，3號一人兩項，6人／7困擾勾／11總勾可辨，原創示意限定完整；17.2%與43.7%共用0至100軸，未拼圓餅或互補兩半。五機場及4110受訪範圍保留；2025-11-18、2026-01-13、2026-04-28順序正確，間距不代表時長；盤點與旅客經驗、歷史問題分開。章卡、末卡、字幕以外的圖解標題與圖上文字未見裁切、遮住主物件或缺字。
 
@@ -54,7 +54,7 @@ Root回報三景正常renderer重畫exit 0，之後以最後master正常render�
 
 ## 完成MP4的實際解碼取樣
 
-Root於正常品牌版assemble exit 0後提供實際 `C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/final.mp4`，本次獨立讀實檔byte SHA256為 `3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016`。不是首輪未加片頭片尾的body。原來源master、READY artist manifest及正常still manifest仍符合上節雜湊。
+Root於正常品牌版assemble exit 0後提供實際 `<home>/mokaair-work/videos/sothatswhy-t27/final.mp4`，本次獨立讀實檔byte SHA256為 `3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016`。不是首輪未加片頭片尾的body。原來源master、READY artist manifest及正常still manifest仍符合上節雜湊。
 
 Root取樣程式從這份實際MP4解碼15張PNG，並記錄實際packet PTS及frame index。已實際以original detail看完全部4張聯絡表，完整覆核正文6個章節首景、7個數字／日期／算式／末卡重點，以及品牌片頭、片尾共15張。另單獨原尺寸看 `frame-003.png`、`frame-007.png`、`frame-010.png`、`frame-012.png` 四張1280×720實際解碼PNG，確認比例軸、日期字形、十一勾算式及改後公里單位。
 

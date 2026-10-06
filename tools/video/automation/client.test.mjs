@@ -5,8 +5,8 @@ import test from "node:test";
 
 import { EXIT, main as runCli } from "../cli.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
-import { AutomationError, automationClient, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
-import { RUN_RECEIPTS_DIR } from "./run-receipts.mjs";
+import { AutomationError, automationClient, PAUSE_CODES, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
+import { AUTO_ARCHIVE_REASON, INPUT_CHANGED_CODE, INPUT_CHANGED_MESSAGE, jobGoneReason, RUN_RECEIPTS_DIR, runReceiptStore } from "./run-receipts.mjs";
 
 const SITE = "https://site.test";
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -70,6 +70,39 @@ test("a generic upstream failure remains a service error with bounded retries", 
   });
   assert.equal(calls, 3);
   assert.deepEqual(sleeps, [5000, 10000, 20000]);
+});
+
+// Every subscription account rests: at its usage cap, or because its CLI can no longer
+// authenticate (the API's video_ai_subscription_auth_failed, 503 with a retry_after). Nothing
+// ran either way; the run ends and the worker's next round asks again.
+test("a subscription whose every account cannot authenticate pauses the run like one at its cap: one request, no wait, not the owner's", async () => {
+  assert.deepEqual([...PAUSE_CODES].sort(), ["video_ai_subscription_auth_failed", "video_ai_subscription_paused"]);
+  for (const [code, status, detail] of [
+    ["video_ai_subscription_paused", 429, "every Claude account is at or above 80%"],
+    ["video_ai_subscription_auth_failed", 503, "every subscription account's CLI failed to authenticate; sign one in again on /admin/ai-accounts"],
+  ]) {
+    const box = sandbox();
+    let calls = 0;
+    const sleeps = [];
+    const client = automationClient({
+      ...credentials(box),
+      fetch: async () => {
+        calls++;
+        return Response.json({ code, detail }, { status, headers: { "Retry-After": "900" } });
+      },
+      sleep: async (ms) => sleeps.push(ms),
+    }, { attempts: 3 });
+    await assert.rejects(client.run("writer", "draft-example", "Write a video", {}), (error) => {
+      assert.ok(error instanceof AutomationError, code);
+      assert.equal(error.code, code);
+      assert.equal(error.status, status);
+      assert.equal(error.message, detail);
+      assert.notEqual(error.who, "owner", `${code}: auto ends with exit 4 and the next round tries again, as for a pause`);
+      return true;
+    });
+    assert.equal(calls, 1, `${code}: asked once in the run`);
+    assert.deepEqual(sleeps, [], `${code}: not retried within the run`);
+  }
 });
 
 test("auto exits for the owner after one real stage request when Claude Code needs updating", async () => {
@@ -154,7 +187,7 @@ test("a stage run sent and left without its answer is not sent again: the route'
       assert.equal(error.code, RUN_UNCERTAIN, what);
       assert.equal(error.who, "service", what);
       assert.equal(error.status, status, what);
-      assert.match(error.message, /no answer came back.*not sent again/, what);
+      assert.match(error.message, /no answer came back.*the model may have run, so it is not sent again/, what);
       return true;
     });
     assert.equal(calls, 1, `${what}: sent once`);
@@ -196,6 +229,121 @@ test("the other requests keep their retries after a dropped connection", async (
   });
   assert.deepEqual(await client.settings(), { enabled: true });
   assert.equal(calls, 2);
+  // A read and a review submit spend nothing: a gateway's 500 and a dropped submit are asked again.
+  let reads = 0;
+  const reader = automationClient({ ...credentials(sandbox()), fetch: async () => (++reads === 1 ? Response.json({ detail: "Internal Server Error" }, { status: 500 }) : Response.json({ reviews: [] })), sleep: async () => {} });
+  assert.deepEqual(await reader.reviews("long-video"), { reviews: [] });
+  assert.equal(reads, 2);
+  let submits = 0;
+  const submitter = automationClient({ ...credentials(sandbox()), fetch: async () => {
+    if (++submits === 1) throw failed("UND_ERR_SOCKET");
+    return Response.json({ id: "r1" }, { status: 201 });
+  }, sleep: async () => {} });
+  assert.deepEqual(await submitter.submit("long-video", { gate: "outline" }), { id: "r1" });
+  assert.equal(submits, 2);
+});
+
+// A Jev judgement takes one call off the daily Jev budget before Jev is asked
+// (apps/api/app/video_automation/judge.py `_ask`): like a stage run, it is not asked again once it
+// was sent and its answer lost, and a verdict that did come back is returned exactly as it came.
+const JUDGES = [
+  ["judgePolicy", "/api/video/automation/judge/policy", { slug: "long-video", script: "旁白", viewpoint: "" },
+    { stance: 0.31, demo: 0.82, advice: 0.04, sponsored: 0.02, passed: false, note: "Jev：立場 0.31；沒過（立場低於 0.6）", questions: "tutorial", observation: null, disparage: null }],
+  ["judgeOutline", "/api/video/automation/judge/outline", { slug: "long-video", brief: "企劃", options: [{ key: "A", title: "a", summary: "s", hook: "h" }, { key: "B", title: "b", summary: "s", hook: "h" }] },
+    { choice: "B", probabilities: { A: 0.45, B: 0.55 }, options: { A: { stance: 0.5, demo: 0.4 }, B: { stance: 0.55, demo: 0.6 } }, advice: 0.1, passed: false, note: "Jev 挑了 B（0.55）；沒過關" }],
+];
+
+test("a Jev judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, the judge route's lost answer or 502", async () => {
+  const lost = [
+    ["a connection reset after sending", () => {
+      throw failed("ECONNRESET");
+    }, 0],
+    ["a connection dropped mid-way", () => {
+      throw failed("UND_ERR_SOCKET");
+    }, 0],
+    ["Node's deadline for the headers", () => {
+      throw failed("UND_ERR_HEADERS_TIMEOUT");
+    }, 0],
+    ["a verdict that breaks off", () => new Response('{"stance": 0.3, "passed": fal', { status: 200, headers: { "Content-Type": "application/json" } }), 200],
+    ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
+    ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
+    // The judge routes name their own lost answer (JUDGE_LOST in apps/web/app/api/video/speech/forward.ts).
+    ["the judge route's lost answer", () => Response.json({ code: "video_judge_answer_lost", detail: "請求已送到 API" }, { status: 504 }), 504],
+    // A host from before that change answers this for an API it never reached and for one that took the request and went quiet.
+    ["the judge route's 502", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 502 }), 502],
+  ];
+  for (const [method, route, body] of JUDGES) {
+    for (const [what, answer, status] of lost) {
+      const calls = [];
+      const sleeps = [];
+      const client = automationClient({
+        ...credentials(sandbox()),
+        fetch: async (url, init) => {
+          calls.push({ path: new URL(url).pathname, method: init.method, body: JSON.parse(init.body) });
+          return answer();
+        },
+        sleep: async (ms) => sleeps.push(ms),
+      });
+      await assert.rejects(client[method](body), (error) => {
+        assert.ok(error instanceof AutomationError, `${method}, ${what}`);
+        assert.equal(error.code, RUN_UNCERTAIN, `${method}, ${what}`);
+        assert.equal(error.who, "service", `${method}, ${what}: the caller leaves it for a later round`);
+        assert.equal(error.status, status, `${method}, ${what}`);
+        assert.match(error.message, /no answer came back.*Jev may have run, so it is not sent again/, `${method}, ${what}`);
+        return true;
+      });
+      assert.deepEqual(calls, [{ path: route, method: "POST", body }], `${method}, ${what}: sent once`);
+      assert.deepEqual(sleeps, [], `${method}, ${what}: no wait for a second try`);
+    }
+  }
+});
+
+test("a Jev judgement that never reached a server, or that the API settled, is asked again and its failed verdict comes back unchanged", async () => {
+  const settled = [
+    ["a refused connection", () => {
+      throw failed("ECONNREFUSED");
+    }],
+    ["an unknown host", () => {
+      throw failed("ENOTFOUND");
+    }],
+    ["the API's answer after Jev failed", () => Response.json({ code: "video_judge_upstream_failed", detail: "Jev 暫時無法判斷" }, { status: 502 })],
+    ["the judge's hourly limit", () => Response.json({ code: "rate_limit_exceeded", detail: "slow down" }, { status: 429 })],
+    ["the spent Jev budget", () => Response.json({ code: "jev_budget_exhausted", detail: "今天的 Jev 呼叫次數已用完" }, { status: 429 })],
+  ];
+  for (const [method, route, body, verdict] of JUDGES) {
+    for (const [what, answer] of settled) {
+      const calls = [];
+      const client = automationClient({
+        ...credentials(sandbox()),
+        fetch: async (url, init) => {
+          calls.push({ path: new URL(url).pathname, body: JSON.parse(init.body) });
+          return calls.length === 1 ? answer() : Response.json(verdict);
+        },
+        sleep: async () => {},
+      });
+      assert.deepEqual(await client[method](body), verdict, `${method}, ${what}: the verdict as Jev gave it`);
+      assert.deepEqual(calls, [{ path: route, body }, { path: route, body }], `${method}, ${what}: the same request asked again`);
+    }
+  }
+});
+
+test("a judge's refusal is thrown after one request, with the status its callers read", async () => {
+  const refusals = [
+    [409, "video_judge_not_enabled", "頻道立場還是空白"],
+    [404, "", "Not Found"],
+    [422, "video_judge_invalid", "Jev 拒絕這個問題"],
+  ];
+  for (const [method, , body] of JUDGES) {
+    for (const [status, code, detail] of refusals) {
+      let calls = 0;
+      const client = automationClient({ ...credentials(sandbox()), fetch: async () => {
+        calls++;
+        return Response.json({ code, detail }, { status });
+      }, sleep: async () => {} });
+      await assert.rejects(client[method](body), (error) => error instanceof AutomationError && error.status === status && error.code === code && error.message === detail);
+      assert.equal(calls, 1, `${method}, ${status}`);
+    }
+  }
 });
 
 const DURABLE_SLUG = "saved-writer";
@@ -352,10 +500,15 @@ test("a durable receipt keeps the chosen model alias while returning the upstrea
   assert.equal(saved.receipt.result.model, savedAnswer.model);
 });
 
-test("owner retry for changed input archives verified stale success before one new source request", async () => {
+const archiveOf = (box) => {
+  const dir = path.join(box.work, DURABLE_SLUG, RUN_RECEIPTS_DIR, "archive");
+  return readdirSync(dir).map((name) => JSON.parse(readFileSync(path.join(dir, name), "utf8")));
+};
+
+test("a stale journal whose run succeeded is archived by the worker after one lookup, and one new source request follows", async () => {
   const box = sandbox();
   const posted = [];
-  let original;
+  let original, gets = 0;
   const client = durableClient(box, async (_url, init) => {
     if (init.method === "GET") return Response.json(job(original));
     const body = JSON.parse(init.body); posted.push(body); original = body;
@@ -363,24 +516,176 @@ test("owner retry for changed input archives verified stale success before one n
   });
   await client.settings();
   await runWriter(client);
-  const changed = { text: "owner's changed source" };
+  const changed = { text: "a deploy changed the prompt" };
   // Model a restarted worker whose prior successful result was never adopted into artifacts.
-  const restarted = durableClient(box, async (_url, init) => {
-    if (init.method === "GET") return Response.json(job(original));
+  const restarted = durableClient(box, async (url, init) => {
+    if (init.method === "GET") { gets++; assert.equal(new URL(url).searchParams.get("input_hash"), "b".repeat(64)); return Response.json(job(original)); }
     const body = JSON.parse(init.body); posted.push(body); return Response.json(job(body));
   });
   await restarted.settings();
-  await assert.rejects(runWriter(restarted, changed), (error) => error.code === RUN_UNCERTAIN && /inputs changed/.test(error.why));
-  const requestId = "11112233-4455-6677-8899-aabbccddeeff";
-  await restarted.retryRuns(DURABLE_SLUG, { requestId, reason: "stage inputs changed while the previous result was unfinished" });
-  const archive = path.join(box.work, DURABLE_SLUG, RUN_RECEIPTS_DIR, "archive");
-  const archived = JSON.parse(readFileSync(path.join(archive, readdirSync(archive)[0]), "utf8"));
-  assert.equal(archived.owner_retry.request_id, requestId);
-  assert.equal(archived.receipt.result.text, savedAnswer.text);
-  assert.deepEqual(await runWriter(restarted, changed), savedAnswer);
-  assert.equal(posted.length, 2);
+  assert.deepEqual(await runWriter(restarted, changed), savedAnswer, "no owner retry is needed: the spent run is over");
+  assert.equal(gets, 1, "the stale job is looked up exactly once");
+  assert.equal(posted.length, 2, "exactly one new POST follows");
   assert.notEqual(posted[0].request_key, posted[1].request_key);
   assert.deepEqual(posted[1].payload, changed);
+  const [archived] = archiveOf(box);
+  assert.equal(archived.request_key, posted[0].request_key);
+  assert.equal(archived.owner_retry.request_id, null, "no owner request id was consumed");
+  assert.equal(archived.owner_retry.reason, AUTO_ARCHIVE_REASON);
+  assert.equal(archived.receipt.result.text, savedAnswer.text, "the paid answer is kept for inspection");
+  assert.equal(durableFiles(box).length, 1, "only the new request's journal remains");
+  assert.equal(JSON.parse(readFileSync(durableFiles(box)[0], "utf8")).request_key, posted[1].request_key);
+});
+
+test("a stale journal that never reached the server is archived without a lookup, then the current request is sent", async () => {
+  const box = sandbox();
+  writeFileSync(path.join(box.work, "STOP"), "stop");
+  const held = durableClient(box, async () => assert.fail("STOP must prevent a new paid submit"));
+  await held.settings();
+  await assert.rejects(runWriter(held), (error) => error.code === RUN_PENDING);
+  const [undispatched] = durableFiles(box);
+  const key = JSON.parse(readFileSync(undispatched, "utf8")).request_key;
+  const { unlinkSync } = await import("node:fs");
+  unlinkSync(path.join(box.work, "STOP"));
+  const calls = [];
+  const client = durableClient(box, async (_url, init) => {
+    calls.push(init.method);
+    assert.equal(init.method, "POST", "a journal with no receipt has no job to look up");
+    return Response.json(job(JSON.parse(init.body)));
+  });
+  await client.settings();
+  assert.deepEqual(await runWriter(client, { text: "the owner edited the stance" }), savedAnswer);
+  assert.deepEqual(calls, ["POST"]);
+  const [archived] = archiveOf(box);
+  assert.equal(archived.request_key, key);
+  assert.equal(archived.receipt, null);
+  assert.deepEqual({ ...archived.owner_retry, archived_at: null }, { request_id: null, reason: AUTO_ARCHIVE_REASON, archived_at: null });
+  assert.notEqual(JSON.parse(readFileSync(durableFiles(box)[0], "utf8")).request_key, key);
+});
+
+test("a stale journal whose run is uncertain still needs the owner, and a lookup that fails waits instead of blocking", async () => {
+  for (const answer of ["uncertain", "HTTP 502", "connection lost", "half a body"]) {
+    const box = sandbox(), posts = [];
+    let original, gets = 0, stale = false;
+    const client = durableClient(box, async (_url, init) => {
+      if (init.method === "POST") { original = JSON.parse(init.body); posts.push(original); return Response.json(job(original, "running")); }
+      // The first round's own poll sees a running job; the answers below are for the stale lookup.
+      if (!stale) return Response.json(job(original, "running"));
+      gets++;
+      if (answer === "uncertain") return Response.json({ ...job(original, "uncertain"), error_detail: "HTTP 403: the subscription refused this run", error_status: 403 });
+      if (answer === "HTTP 502") return Response.json({ code: "upstream_unavailable", detail: "Cannot read its current state" }, { status: 502 });
+      if (answer === "half a body") return new Response('{"id":', { status: 200, headers: { "Content-Type": "application/json" } });
+      throw Object.assign(new TypeError("fetch failed"), { cause: { code: "ECONNRESET", message: "socket hang up" } });
+    });
+    await client.settings();
+    await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING, answer);
+    const [file] = durableFiles(box), before = readFileSync(file, "utf8");
+    const changed = { text: "a deploy changed the prompt" };
+    stale = true;
+    if (answer === "uncertain") {
+      await assert.rejects(runWriter(client, changed), (error) => {
+        assert.equal(error.code, RUN_UNCERTAIN); assert.equal(error.who, "owner"); assert.equal(error.receipt_code, INPUT_CHANGED_CODE);
+        assert.equal(error.slug, DURABLE_SLUG); assert.equal(error.stage, "writer");
+        // The owner's card (flow.mjs unanswered) shows the saved run's own cause before the input-changed sentence.
+        assert.equal(error.message, `HTTP 403: the subscription refused this run; ${INPUT_CHANGED_MESSAGE}`);
+        assert.equal(error.why, error.message);
+        return true;
+      }, answer);
+    } else {
+      await assert.rejects(runWriter(client, changed), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG && error.stage === "writer" && /could not be looked up/.test(error.message), answer);
+    }
+    assert.equal(gets, 1, answer);
+    assert.equal(posts.length, 1, `${answer}: the stale run is never paid for again and no new run starts`);
+    assert.deepEqual(durableFiles(box), [file], answer);
+    if (answer !== "uncertain") assert.equal(readFileSync(file, "utf8"), before, `${answer}: the journal is intact`);
+    else assert.equal(JSON.parse(readFileSync(file, "utf8")).receipt.status, "uncertain", "the lookup's answer is recorded for the owner");
+  }
+});
+
+test("a stale journal whose lookup answers a settled 4xx is archived with the answer named, and one new request follows; 408 and 429 wait", async () => {
+  for (const [status, code] of [[404, "video_ai_job_not_found"], [409, "video_ai_job_input_changed"], [422, ""], [408, ""], [429, "rate_limit_exceeded"]]) {
+    const box = sandbox(), posted = [];
+    let original, stale = false, gets = 0;
+    const client = durableClient(box, async (_url, init) => {
+      if (init.method === "POST") { const body = JSON.parse(init.body); posted.push(body); original ??= body; return Response.json(job(body, body === original ? "running" : "succeeded")); }
+      if (!stale) return Response.json(job(original, "running"));
+      gets++;
+      return Response.json({ code, detail: code ? `the server says ${code}` : "" }, { status });
+    });
+    await client.settings();
+    await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING, status);
+    const [file] = durableFiles(box), before = readFileSync(file, "utf8");
+    stale = true;
+    const changed = { text: "a deploy changed the prompt" };
+    if ([408, 429].includes(status)) {
+      await assert.rejects(runWriter(client, changed), (error) => error.code === RUN_PENDING && /could not be looked up/.test(error.message), status);
+      assert.deepEqual(durableFiles(box), [file], status);
+      assert.equal(readFileSync(file, "utf8"), before, `${status}: the journal is intact for the next round`);
+      assert.equal(posted.length, 1, status);
+    } else {
+      assert.deepEqual(await runWriter(client, changed), savedAnswer, status);
+      assert.equal(posted.length, 2, `${status}: exactly one new POST follows`);
+      assert.deepEqual(posted[1].payload, changed, status);
+      const [archived] = archiveOf(box);
+      assert.equal(archived.request_key, posted[0].request_key, status);
+      assert.equal(archived.receipt.status, "running", `${status}: the receipt bytes are kept`);
+      assert.deepEqual({ ...archived.owner_retry, archived_at: null }, { request_id: null, reason: jobGoneReason({ status, code }), archived_at: null }, status);
+      assert.equal(durableFiles(box).length, 1, status);
+    }
+    assert.equal(gets, 1, `${status}: the stale job is looked up once`);
+  }
+});
+
+test("an owner retry on a still-running stale journal waits without consuming the request, and clears a plain failed journal", async () => {
+  const box = sandbox();
+  let original, gets = 0;
+  const client = durableClient(box, async (_url, init) => {
+    if (init.method === "POST") { original = JSON.parse(init.body); return Response.json(job(original, "running")); }
+    gets++;
+    return Response.json(job(original, "queued"));
+  });
+  await client.settings();
+  await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING);
+  const [file] = durableFiles(box);
+  const authorization = { requestId: "11112233-4455-6677-8899-aabbccddeeff", reason: "writer may have run on the server (stage inputs changed while a saved run is unfinished)" };
+  gets = 0;
+  await assert.rejects(client.retryRuns(DURABLE_SLUG, authorization), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG && error.stage === "writer");
+  assert.equal(gets, 1, "the retry looks the job up once");
+  assert.deepEqual(durableFiles(box), [file], "the running journal stays for the next round");
+  assert.equal(JSON.parse(readFileSync(file, "utf8")).receipt.status, "queued");
+  assert.equal(existsSync(path.join(path.dirname(file), "archive")), false);
+  // A plain failure left on disk (the process died before removeFailed) is cleared by the retry.
+  const failedBox = sandbox(), store = runReceiptStore({ ...credentials(failedBox), root: failedBox.root }, SITE);
+  const entry = store.prepare({ stage: "writer", slug: DURABLE_SLUG, instructions: "Write exact source", payload: { text: "原稿" } });
+  store.receive(entry, { ...job({ request_key: entry.record.request_key }, "failed"), error_code: "video_ai_upstream_failed", error_detail: "vendor error", error_status: 502 });
+  const quiet = durableClient(failedBox, async () => assert.fail("a settled failure needs no lookup"));
+  await quiet.settings();
+  const stop = path.join(failedBox.work, DURABLE_SLUG, "STOP");
+  writeFileSync(stop, "hold");
+  await assert.rejects(quiet.retryRuns(DURABLE_SLUG, authorization), (error) => error.code === RUN_UNCERTAIN && /STOP/.test(error.message));
+  assert.ok(existsSync(entry.file), "nothing is mutated under a STOP file");
+  const { unlinkSync } = await import("node:fs");
+  unlinkSync(stop);
+  await quiet.retryRuns(DURABLE_SLUG, authorization);
+  assert.deepEqual(durableFiles(failedBox), []);
+  assert.equal(existsSync(path.join(path.dirname(entry.file), "archive")), false, "a failure is deleted, not archived");
+  // The job the owner wants replaced is gone from the server (a re-pair): the retry archives
+  // the journal instead of looping on "could not verify" every round.
+  const goneBox = sandbox();
+  let goneOriginal, goneStale = false;
+  const goneClient = durableClient(goneBox, async (_url, init) => {
+    if (init.method === "POST") { goneOriginal = JSON.parse(init.body); return Response.json(job(goneOriginal, "running")); }
+    if (!goneStale) return Response.json(job(goneOriginal, "running"));
+    return Response.json({ code: "video_ai_job_not_found", detail: "no job for this token" }, { status: 404 });
+  });
+  await goneClient.settings();
+  await assert.rejects(runWriter(goneClient), (error) => error.code === RUN_PENDING);
+  goneStale = true;
+  await goneClient.retryRuns(DURABLE_SLUG, authorization);
+  assert.deepEqual(durableFiles(goneBox), []);
+  const [goneArchived] = archiveOf(goneBox);
+  assert.equal(goneArchived.owner_retry.reason, jobGoneReason({ status: 404, code: "video_ai_job_not_found" }));
+  assert.equal(goneArchived.owner_retry.request_id, null);
 });
 
 test("a failed owner retry lookup preserves the uncertain journal and never authorizes a new paid request", async () => {
@@ -417,7 +722,7 @@ test("writer reconnect across midnight and shared lexicon changes uses the origi
   assert.deepEqual(JSON.parse(readFileSync(durableFiles(box)[0], "utf8")).request.payload, before);
 });
 
-test("definitive failed receipts surface their stored error, and input changes cannot replace an unfinished writer", async () => {
+test("definitive failed receipts surface their stored error, and input changes wait for an unfinished writer instead of replacing it", async () => {
   const box = sandbox(), posted = [];
   const client = durableClient(box, async (_url, init) => {
     const body = JSON.parse(init.body); posted.push(body);
@@ -426,12 +731,21 @@ test("definitive failed receipts surface their stored error, and input changes c
   await client.settings();
   await assert.rejects(runWriter(client), (error) => error.code === "video_ai_upstream_busy" && error.status === 503 && error.message === "Saved vendor refusal" && error.retry_after === "2026-10-04T15:00:00Z");
   assert.deepEqual(durableFiles(box), [], "the server definitively settled this failure");
-  const pendingBox = sandbox();
-  const pending = durableClient(pendingBox, async (_url, init) => Response.json(job(JSON.parse(init.body), "running")));
+  const pendingBox = sandbox(), calls = [];
+  let original;
+  const pending = durableClient(pendingBox, async (_url, init) => {
+    calls.push(init.method);
+    if (init.method === "POST") original = JSON.parse(init.body);
+    return Response.json(job(original, "running"));
+  });
   await pending.settings();
   await assert.rejects(runWriter(pending), (error) => error.code === RUN_PENDING);
-  await assert.rejects(runWriter(pending, { text: "new source" }), (error) => error.code === RUN_UNCERTAIN && error.who === "owner" && /inputs changed/.test(error.why));
-  assert.equal(durableFiles(pendingBox).length, 1);
+  const [file] = durableFiles(pendingBox), before = readFileSync(file, "utf8");
+  calls.length = 0;
+  await assert.rejects(runWriter(pending, { text: "new source" }), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG && /still running/.test(error.message));
+  assert.deepEqual(calls, ["GET"], "the running job is looked up once and nothing new is paid for");
+  assert.deepEqual(durableFiles(pendingBox), [file]);
+  assert.equal(readFileSync(file, "utf8"), before, "the running journal is intact for the next round");
 });
 
 test("durable capability preserves the synchronous planner and bounded anime/story writer checkpoints", async () => {
@@ -462,4 +776,103 @@ test("the durable polling window caps at 25 seconds and leaves the paid operatio
   assert.equal(calls.filter((method) => method === "POST").length, 1);
   assert.ok(sleeps.length > 0 && sleeps.every((ms) => ms > 0) && sleeps.reduce((total, ms) => total + ms, 0) <= 25_000);
   assert.equal(durableFiles(box).length, 1);
+});
+
+test("a settled policy refusal survives repeated rounds and client restarts without another job POST", async () => {
+  for (const direct of [false, true]) {
+    const box = sandbox(), posts = [];
+    const make = () => durableClient(box, async (_url, init) => {
+      assert.equal(init.method, "POST");
+      const body = JSON.parse(init.body);
+      posts.push(body);
+      if (direct) return Response.json({ code: POLICY_HOLD, detail: "drama disabled" }, { status: 409 });
+      return Response.json({ ...job(body, "failed"), error_code: POLICY_HOLD, error_detail: "drama disabled", error_status: 409, dispatched_at: null });
+    });
+    const first = make();
+    await first.settings();
+    await assert.rejects(runWriter(first), (error) => error.code === POLICY_HOLD && error.who === "owner");
+    const file = durableFiles(box)[0], before = readFileSync(file, "utf8");
+    await assert.rejects(runWriter(first), (error) => error.code === POLICY_HOLD);
+    const restarted = make();
+    await restarted.settings();
+    await assert.rejects(runWriter(restarted), (error) => error.code === POLICY_HOLD);
+    assert.equal(posts.length, 1, "the original policy refusal is a project hold, not a new request every round");
+    assert.equal(readFileSync(file, "utf8"), before, "the original key, source and exact refusal survive");
+  }
+});
+
+test("policy retry requires a fresh enabled route, a new owner request, and no STOP; it archives the original refusal", async () => {
+  const box = sandbox(), calls = [], requestId = "11112233-4455-6677-8899-aabbccddeeff";
+  let enabled = false, current;
+  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+    const route = new URL(url).pathname;
+    calls.push({ route, method: init.method });
+    if (route.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: enabled }, model: "changed-provider-does-not-resume" });
+    if (init.method === "POST") current = { ...job(JSON.parse(init.body), "failed"), error_code: POLICY_HOLD, error_detail: "drama disabled", error_status: 409, dispatched_at: null };
+    return Response.json(current);
+  } });
+  await client.settings();
+  const run = () => client.run("writer", DURABLE_SLUG, "Original drama", { video: { format: "drama" } }, 16_000, "drama");
+  await assert.rejects(run(), (error) => error.code === POLICY_HOLD);
+  const file = durableFiles(box)[0], original = JSON.parse(readFileSync(file, "utf8"));
+  await client.retryRuns(DURABLE_SLUG, { reason: "old retry without request identity" });
+  assert.ok(existsSync(file));
+  await assert.rejects(client.retryRuns(DURABLE_SLUG, { requestId, format: "drama" }), (error) => error.code === POLICY_HOLD);
+  assert.deepEqual(JSON.parse(readFileSync(file, "utf8")), original);
+  enabled = true;
+  const stop = path.join(box.work, DURABLE_SLUG, "STOP");
+  writeFileSync(stop, "hold");
+  await assert.rejects(client.retryRuns(DURABLE_SLUG, { requestId, format: "drama" }), (error) => error.code === RUN_UNCERTAIN && /STOP/.test(error.message));
+  assert.ok(existsSync(file));
+  const { unlinkSync } = await import("node:fs");
+  unlinkSync(stop);
+  await client.retryRuns(DURABLE_SLUG, { requestId, format: "drama", reason: "owner retry after enabling the route" });
+  assert.equal(existsSync(file), false);
+  const archiveDir = path.join(path.dirname(file), "archive");
+  const archived = JSON.parse(readFileSync(path.join(archiveDir, readdirSync(archiveDir)[0]), "utf8"));
+  assert.deepEqual(archived.receipt, original.receipt);
+  assert.equal(archived.request_key, original.request_key);
+  assert.equal(archived.owner_retry.request_id, requestId);
+  assert.equal(calls.filter((call) => call.method === "POST").length, 1, "authorizing resume never runs a model by itself");
+});
+
+test("a verified undispatched slides repair may resume its corrected format while drama stays disabled", async () => {
+  for (const video of [{ format: "slides" }, {}]) {
+    const box = sandbox();
+    let refusal;
+    const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+      if (new URL(url).pathname.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: false } });
+      if (init.method === "POST") refusal = { ...job(JSON.parse(init.body), "failed"), error_code: POLICY_HOLD, error_detail: "misrouted slides repair", error_status: 409, dispatched_at: null };
+      return Response.json(refusal);
+    } });
+    await client.settings();
+    await assert.rejects(client.run("writer", DURABLE_SLUG, "Repair keyframes", { video, fix: { kind: "keyframes" } }, 16_000, "drama"), (error) => error.code === POLICY_HOLD);
+    await client.retryRuns(DURABLE_SLUG, { requestId: "11112233-4455-6677-8899-aabbccddeeff", format: "slides", reason: "owner resumes the corrected slides route" });
+    assert.deepEqual(durableFiles(box), []);
+    const dir = path.join(box.work, DURABLE_SLUG, RUN_RECEIPTS_DIR, "archive");
+    assert.equal(readdirSync(dir).length, 1, "preserve the refused drama request instead of editing its identity");
+  }
+});
+
+test("a mixed legacy set of policy holds cannot be partly archived by one owner retry", async () => {
+  const box = sandbox();
+  let requests = 0;
+  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+    requests++;
+    if (new URL(url).pathname.endsWith("/settings")) return Response.json({ enabled: true, durable_stage_runs: true, drama: { drama_enabled: true } });
+    assert.equal(init.method, "POST");
+    return Response.json({ ...job(JSON.parse(init.body), "failed"), error_code: POLICY_HOLD, error_detail: "saved refusal", error_status: 409, dispatched_at: null });
+  } });
+  await client.settings();
+  for (const variant of [null, "discuss"]) {
+    await assert.rejects(client.run("writer", DURABLE_SLUG, "Original source", { video: { format: "drama" } }, 16_000, "drama", variant), (error) => error.code === POLICY_HOLD);
+  }
+  const files = durableFiles(box), before = files.map((file) => readFileSync(file, "utf8"));
+  assert.equal(files.length, 2);
+  const beforeRequests = requests;
+  await assert.rejects(client.retryRuns(DURABLE_SLUG, { requestId: "11112233-4455-6677-8899-aabbccddeeff", format: "drama" }), (error) => error.code === RUN_UNCERTAIN && /multiple saved runs/.test(error.message));
+  assert.deepEqual(durableFiles(box), files);
+  assert.deepEqual(files.map((file) => readFileSync(file, "utf8")), before, "retain every original refusal byte before any partial archive");
+  assert.equal(requests, beforeRequests, "an ambiguous retry does not dispatch, poll or buy work");
+  assert.equal(existsSync(path.join(path.dirname(files[0]), "archive")), false);
 });

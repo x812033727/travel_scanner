@@ -16,34 +16,35 @@
   "review_receipts": {
     "independent_content": {
       "path": "independent-content-review.json",
-      "sha256": "51cf40b0f345948706ca91e7f2ae597f7c6cc8d43176782885d2babad241d7f7",
+      "sha256": "2efeabc806932bd8877e7a7c04f8dbc2fbffaf406d1f47b3471fcc53d7b7d211",
       "decision": "approved_exact_frozen_jeju_v3_candidate",
       "blocking_findings": 0,
       "reviewed_at": "2026-09-22T00:42:36.399860+00:00"
     },
     "structural_qa": {
       "path": "structural-qa.json",
-      "sha256": "f7a86e6a7bfc1e1810e84b958a509d70c9a748619c0616660444be903af29617"
+      "sha256": "359a2bdf6357846dec95debebf616b8aa90918608b5a390855ab522daeec3e93"
     },
     "source_correction": {
       "path": "source-correction-review.json",
-      "sha256": "773608f2f5a3f0d83151a3223db8eb657a76dadcebf55f38bcc3f059544265af",
+      "sha256": "a632a7efb76be79f26c3d5017ee8875688d7105cb16fe9ab8b21a3c4ef25bb64",
       "decision": "approved_for_exact_source_corrections",
       "reviewed_at": "2026-09-21T23:41:20.677384+00:00"
     },
     "svg": {
       "path": "svg-independent-review.json",
-      "sha256": "421e65ba10467c24b6a79f03691a16ba09af193e7b54d8924fe57366a21967fc",
+      "sha256": "47e2d7c2e2c6c3d723f702d3d934080d128224648be5c55366afd012e353f55e",
       "decision": "approved_exact_pr_643_lf_svg_assets_no_blockers",
       "blocking_findings": 0,
       "reviewed_at": "2026-09-22T01:46:30.990900+00:00"
     },
     "release_candidate_equivalence": {
       "path": "release-candidate-equivalence.json",
-      "sha256": "abe48954ca9f5c1c0086ca3c845dd880ad9232678a03bdbbc4006cc8d243a774",
+      "sha256": "fa58254bad1ef932dc9791fe7cf53573c85fb0bb6d05ddf5521da10a4b0ed8f7",
       "decision": "PASS: v2 changes only topic positions and manifest pack digest; full ArticlePack model equals PR #643 head"
     }
   },
+  "receipt_redaction_note": "Redacted 2026-10-05 for the public repository (task 2026-10-02-rebind-receipts-after-scrubbing-host-details): the local Windows profile path in all five receipts above became <home>, and the digests those receipts record of one another were updated, each with its own redaction_note. The sha256 values above record the redacted bytes; no other evidence changed. The original receipts and digests are in commit 65ef4328b (#648).",
   "release_bundle": {
     "manifest_sha256": "c6051f2698e4355243f2e22a0fa62fbd60589ad7b05d53272763852f23d93eea",
     "baseline_sha256": "b9153b9e6003cdfe11e083d7a12375886bd188785326fa78c29dfd083eb4e18b",

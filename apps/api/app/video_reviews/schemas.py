@@ -59,6 +59,10 @@ LOCALE_PARTS: tuple[LocalePart, ...] = get_args(LocalePart)
 # Where a chosen part stands: not made yet, made (in a languages review), given up with a reason,
 # or, a dub track, uploaded by the owner (its languages review approved).
 LanguageState = Literal["working", "ready", "skipped", "uploaded"]
+# Persisted main-worker registration, not a process heartbeat or media/readiness verdict.
+WorkerState = Literal[
+    "not_adopted", "registered", "blocked", "stopped", "done", "dropped", "unavailable"
+]
 MAX_PAYLOAD_BYTES = 256 * 1024
 MAX_ANIME_SCRIPT_BYTES = 1024 * 1024
 SHA256_PATTERN = r"^[0-9a-f]{64}$"
@@ -286,6 +290,8 @@ class ProjectSummary(BaseModel):
     locales_decided_at: datetime | None = None
     languages: dict[DubLocale, dict[LocalePart, LanguagePartOut]] = Field(default_factory=dict)
     ready_to_upload: bool = False
+    # Read from the worker volume; null for Shorts, whose producer is independent.
+    worker_state: WorkerState | None = None
     # The languages with a dub track chosen, for a page from before the language panel.
     dub_locales: list[DubLocale] = Field(default_factory=list)
     # The series this video is an episode of, if any (docs/videos/SERIES.md).

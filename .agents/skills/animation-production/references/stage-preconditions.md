@@ -1,6 +1,6 @@
 # 每個階段真正查的前提：結束碼、dry-run、STOP、快取、地區、外部片段怎麼進來
 
-`SKILL.md` 的表是摘要；這裡逐階段列程式碼查什麼、以哪個結束碼停、印什麼訊息，給 `drama_preflight.mjs` 當規格，也給你在它說不清楚時對照原始碼。**行號 2026-10-03 讀**（疊在 PR #1170 上），程式改了以函式名為準，行號只是當天的座標。結束碼表在 `tools/video/cli.mjs:21`：`{ ok: 0, lint: 1, usage: 2, owner: 3, external: 4, missing: 5 }`。媒體階段丟 `MediaError` 時由 `exitFor`（`tools/video/media/cli.mjs:26-30`）決定：`who: "owner"` → 3、`"tool"` → 2、其他 → 4；`UsageError` 與 `parseArgs` 的錯 → 2（`cli.mjs:238-241`）。
+`SKILL.md` 的表是摘要；這裡逐階段列程式碼查什麼、以哪個結束碼停、印什麼訊息，給 `drama_preflight.mjs` 當規格，也給你在它說不清楚時對照原始碼。**行號 2026-10-03 讀**（疊在 PR #1170 上），程式改了以函式名為準，行號只是當天的座標。結束碼表在 `tools/video/cli.mjs` 的 `EXIT`：`{ ok: 0, lint: 1, usage: 2, owner: 3, external: 4, missing: 5, incomplete: 6 }`（6 是 `STOP` 檔讓 `tts`／`check-audio` 停在半途，2026-10-05 加）。媒體階段丟 `MediaError` 時由 `exitFor`（`tools/video/media/cli.mjs:26-30`）決定：`who: "owner"` → 3、`"tool"` → 2、其他 → 4；`UsageError` 與 `parseArgs` 的錯 → 2（`cli.mjs:238-241`）。
 
 關卡的狀態（`approvalState`，`tools/video/core/approvals.mjs:91-106`）：`absent`（綁的檔還不存在）、`missing`（檔在、沒核准過）、`stale`（核准過，檔的 SHA-256 變了）、`approved`。綁的檔：`script` → `<VIDEO_DOCS>/script.md`；`look` → `characters/manifest.json`；`storyboard` → `keyframes/manifest.json`；`audio` → `timeline.json`（另驗每句 WAV 與整段旁白的雜湊）；`final` → `final.mp4`；`publish` → `upload/metadata.json`。
 
@@ -75,6 +75,8 @@ lint（1）；縮圖鏡頭（`thumbnail.data.shot`）的關鍵影格要在 `keyf
 
 每鏡 take 1…N：`clipKey`（prompt、negative、秒數、解析度、seed、首尾幀、參考圖）查快取 → 送出（`native_audio: false`，伺服器對 Lite 強制 true）→ ffmpeg QC（`qc.mjs` 的門檻：≥ 1280×720、≥ 23 fps、短不超過 0.25 秒、黑格 ≥ 0.3 秒、旁白窗內凍格 ≥ 1 秒、0.1 秒後的切鏡、第 0 格 PSNR ≥ 22 且灰區 22–30 要比鄰鏡高 3 dB）→ judge（> 20 MB 自動 720p 代理）→ profile 下另驗原生 1920×1080 與素材蓋滿鏡長。全沒過 → `needs_review`，**1**，「fix the prompts of … and run clips again」。
 
+`clips` 不讀開拍鎖定：一鏡鎖定時答應是 clip、現在 `visual: "still"`，它就照 still 做、不花錢也不問。擋這件事的是 `drama_preflight.mjs`（下面「開拍鎖定的承諾與連戲鎖」）。
+
 ### `music`（`tools/video/media/music.mjs`）
 
 lint（1）；沒有 `music` → `UsageError` 2；`music.track`：檔在 `<VIDEO_WORKDIR>/_music/` 否則 3，`music.sha256` 不合 3，對了就寫 manifest 不花錢；`music.prompt`：`timeline.json`（2）、`--dry-run` 印秒數與價、`music_enabled` 與金鑰（3）、一首。
@@ -99,6 +101,20 @@ lint（1）；沒有 `music` → `UsageError` 2；`music.track`：檔在 `<VIDEO
 ### 之後
 
 `captions`（timeline，2）；`review-push --gate final` 先跑 `qa`；`package` 要 final 核准；`review-push --gate publish`。都不花錢。
+
+## 開拍鎖定的承諾與連戲鎖（`plan/lock.json`，只有 `drama_preflight.mjs` 查）
+
+階段模組（`look.mjs`、`keyframes.mjs`、`clips.mjs`、`assemble`）都不讀 `plan/lock.json`；是 `drama_preflight.mjs` 在每個階段多查這一項，而且只在有鎖定檔（animation-preproduction 的 `plan_lock.mjs --write`，第 3 版）時查，沒走開拍鎖定的集不受影響。承諾（delivery promise，OpenMontage 的叫法；AGPL，只借想法）是鎖定時每鏡答應的類型、買幾秒、路線與 `fit`；連戲鎖（continuity locks，drama-skills／shuohao-skills 分鏡表的欄位）是鎖定時從 `prompt` 抓出來、同場共用的道具／服裝字與時刻字。規格與詞表在 `.agents/skills/animation-preproduction/references/preproduction-flow.md`「鎖定包裡的承諾與連戲鎖」。
+
+| 查 | 不成立 | finding 的 `id` |
+| --- | --- | --- |
+| 鎖定時答應 clip 的鏡頭現在還是 clip（不是 `visual: "still"`、不是 `source` 切的、沒從 `video.json` 刪掉） | refuse，**1**（lint 的碼）：「<id> 鎖定時答應的是 clip（買 N s，<路線>），現在是 still，沒有變更單」 | `promise.broken` |
+| 鎖定時 `fit` 不是 `freeze` 的 clip，現在 `fit` 也不是 `freeze`（鎖定時就是 freeze 的不算） | refuse，**1**：「…現在 fit 是 freeze（鎖定時 auto），沒有變更單」 | `promise.broken` |
+| 鎖住的道具／服裝／時刻字還在那一鏡的 `prompt` 裡（原樣的字、不分大小寫） | refuse，**1**：「<id> 鎖住的連戲字不在 prompt 裡了：時刻「dawn」，沒有變更單」 | `continuity.broken` |
+| 上面任一項不成立，但 `plan/changes.jsonl` 有對照這把鎖（`previous_lock` ＝ 鎖的 `created_at`）、`shots` 記了這一鏡這個改動的變更單（`plan_lock.mjs --accept --note`） | note，不擋：「…有站主點頭的變更單（時間：站主的話）」 | `promise.signed`／`continuity.signed` |
+| 鎖定檔讀得懂（第 3 版、欄位齊） | note：「plan/lock.json：version 2, …」，這一項不查 | — |
+
+結果多一個 `lock` 欄：`{ file, created_at, version, problem, broken: { promise, continuity }, signed: { promise, continuity } }`（沒有鎖定檔是 `null`），文字輸出印成「開拍鎖定 <時間>：承諾改小 沒變更單 N／有 N；連戲字少了 沒變更單 N／有 N」。修法在 finding 的 `fix`：不是站主的意思就改回鎖定的樣子；是的話 `plan_lock.mjs --check` 印變更單、站主點頭後 `--accept --note "<站主的話>"`，或一次改完 `--write --force` 重鎖。收工時 `run_report.mjs` 把每鏡的承諾對交付（`clips/manifest.json`）與花的（ledger）列成「承諾 vs 交付」，守住幾鏡、改小幾鏡（其中沒簽變更單幾鏡）、承諾一次的價對實際花的差（負是省）。
 
 ## STOP、快取、job、帳本
 

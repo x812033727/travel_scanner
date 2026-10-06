@@ -83,34 +83,14 @@ function findings(text) {
 }
 
 // Files that still carry a host detail, with how many of each are tolerated. There are two
-// reasons only. A digest recorded elsewhere binds the file, so scrubbing it breaks that
-// receipt; task 2026-10-02-rebind-receipts-after-scrubbing-host-details scrubs and rebinds
-// them. Or the file is another ticket's: a file in tasks/open is written only by its owner, so
+// reasons only. A digest recorded elsewhere binds the file, so scrubbing it means rebinding
+// every receipt in the chain in the same change, with a dated note beside each new digest
+// (task 2026-10-02-rebind-receipts-after-scrubbing-host-details did that for eleven files).
+// Or the file is another ticket's: a file in tasks/open is written only by its owner, so
 // it is cleaned when the owner next edits it. A task file is keyed by its id, so moving it from
 // open/ to done/ keeps its entry. The numbers only go down: when you clean a file, lower its
 // entry or delete it.
 const KNOWN = {
-  "docs/ai-terms-series/postgresql-validation.json": { "user-path": 4, "plink-load": 19, "password": 1, "db-url-password": 4 },
-  "docs/article-localization/releases/2026-09-22/batch010-singapore/release-candidate-equivalence.json": { "user-path": 5 },
-  "docs/article-localization/releases/2026-09-22/batch011-jeju/independent-content-review.json": { "user-path": 4 },
-  "docs/article-localization/releases/2026-09-22/batch011-jeju/release-candidate-equivalence.json": { "user-path": 2 },
-  "docs/article-localization/releases/2026-09-22/batch011-jeju/source-correction-review.json": { "user-path": 1 },
-  "docs/article-localization/releases/2026-09-22/batch011-jeju/structural-qa.json": { "user-path": 8 },
-  "docs/article-localization/releases/2026-09-22/batch011-jeju/svg-independent-review.json": { "user-path": 29 },
-  "docs/article-localization/releases/batch021/evidence.json": { "user-path": 22 },
-  "docs/article-localization/releases/batch022/evidence.json": { "user-path": 42 },
-  "docs/catalog-content-reviews/2026-09-09-followup.json": { "user-path": 237 },
-  "docs/videos/so-thats-why/season2/reviews/completion/T37.md": { "user-path": 1 },
-  "docs/videos/sothatswhy-t27/author-note.md": { "user-path": 1 },
-  "docs/videos/sothatswhy-t27/branding-adoption.json": { "user-path": 9 },
-  "docs/videos/sothatswhy-t27/fact-source-audit.json": { "user-path": 6 },
-  "docs/videos/sothatswhy-t27/final-runtime-review.json": { "user-path": 42 },
-  "docs/videos/sothatswhy-t27/final-runtime-review.md": { "user-path": 2 },
-  "docs/videos/sothatswhy-t27/production-record.md": { "user-path": 1 },
-  "docs/videos/sothatswhy-t27/runtime-audit.json": { "user-path": 11 },
-  "docs/videos/sothatswhy-t27/runtime-audit.md": { "user-path": 7 },
-  "docs/videos/sothatswhy-t27/visual-review.json": { "user-path": 234 },
-  "docs/videos/sothatswhy-t27/visual-review.md": { "user-path": 2 },
   "tasks/2026-09-07-contextual-travel-services.md": { "user-path": 1 },
   "tasks/2026-09-07-hotel-platform-options-and-quote-readiness.md": { "user-path": 1 },
   "tasks/2026-09-16-news-batch-4-4-the-8.md": { "user-path": 1 },

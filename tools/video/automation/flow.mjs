@@ -20,12 +20,12 @@ import { writeAnimeActs } from "./anime-write.mjs";
 import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { craftChecks } from "../core/craft.mjs";
-import { EXPLAINER_PRESET, hasCast, illustrated, slidesPresetFor } from "../core/drama.mjs";
+import { EXPLAINER_PRESET, hasCast, illustrated, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
-import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
+import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, LOCALES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
@@ -34,21 +34,27 @@ import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipeline
 import { estimateTimeline, speechHash } from "../core/timeline.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { MAX_TEMPO } from "../dubs/plan.mjs";
+import { checkPackage, listFiles, METADATA_FILE, packageLocalesWanted, UPLOAD_DIR } from "../package/check.mjs";
 import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
-import { buildSheet, SHEET_PARTS } from "../i18n/cli.mjs";
+import { buildSheet, SHEET_PARTS, sheetContext, withoutContext } from "../i18n/cli.mjs";
+import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
+import { imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "../media/prompt-budget.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
-import { AutomationError, OUTPUT_INVALID, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
+import { AutomationError, OUTPUT_INVALID, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
+import { RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
-import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
+import { instructionsFor, parseAnswer, references, SLIDES_CAMERA_WORDS } from "./prompts.mjs";
 import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { assembleSheet, clearUnits, readUnits, refusedUnits, sheetUnits, UNIT_CHARS, UNIT_LINES, unitGaps, unitKey, unitVideo, writeUnits } from "./sheet-units.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
+import { SPEECH_UNCERTAIN } from "../tts/client.mjs";
+import { flaggedLines } from "../tts/synthesis.mjs";
 import { staleTakes } from "../tts/takes.mjs";
 
 // Slides keep the general eight-minute floor. Explainers use the reviewed ten-minute default
@@ -76,6 +82,80 @@ export const MAX_STAGE_FAILURES = 2;
 // A drama's failed sheets, keyframes or clips are handed to the writer to fix the prompts, this
 // many times per kind, before the video is blocked for a person (docs/videos/DRAMA.md).
 export const MAX_PROMPT_FIX_ROUNDS = 2;
+// The media stages that take `--seed-offset` (media/keyframes.mjs): an owner retry of a video
+// the server stopped answering for (every seed's request hash spent its attempts) shifts the
+// stage's seeds, and `media()` passes the shift from state.seed_offsets.
+const SEED_OFFSET_COMMANDS = new Set(["keyframes"]);
+// The most a shot prompt may have whatever the image model (core/drama.mjs LIMITS.prompt, the
+// writer's own figure), and the camera word that takes the most of a shot's request: the first
+// draft is told the budget of the model that will draw it, counted as media/keyframes.mjs
+// counts it, so a MiniMax video's prompts are not written to a limit the model has not got.
+const WRITER_PROMPT_MAX = 1000;
+const LONGEST_CAMERA_WORD = SLIDES_CAMERA_WORDS.reduce((longest, word) => (word.length > longest.length ? word : longest));
+// The looks a slides video may end up drawn in: the channel's print rotation (settle picks one
+// by the slug) and the writer's own choice among them, or tech-story, which the scripts from
+// before the rotation carry. The writer is told the budget under the heaviest of them (its
+// style and its negative take the most of a request), so whichever look the video gets, a
+// prompt written to the number fits.
+const SLIDES_WRITER_PRESETS = [...SLIDES_PRESETS, "tech-story"];
+const HEAVIEST_SLIDES_LOOK = SLIDES_WRITER_PRESETS.map((preset) => resolveLook({ preset })).reduce((heaviest, look) => (promptOverhead({ look }) > promptOverhead({ look: heaviest }) ? look : heaviest));
+
+/**
+ * The vendor of the image model the server will draw a slides video with, from the worker's
+ * settings, which name the slides model by id alone: the slides' own model while their switch is
+ * on, else the drama's choice (apps/api/app/video_automation/settings.py slides_image_choice,
+ * media/stages.mjs choiceFor); null when nothing says.
+ */
+export function slidesImageVendor(settings) {
+  const slides = settings?.slides ?? {};
+  const drama = settings?.drama ?? {};
+  const own = slides.slides_media_enabled ? slides.slides_image_model : null;
+  if (own) return imageModelVendor(own, own === drama.image_model ? drama.image_provider ?? null : null);
+  return imageModelVendor(drama.image_model, drama.image_provider ?? null);
+}
+// What a blocked video's reason reads as, for a state from before `blocked_kind` was recorded
+// (the nine host videos blocked on 2026-10-06): the counter an owner retry has to reset.
+// The server's spent attempts first: a stage blocked on them by `media()` (exit 3) or by
+// `fixPrompts` (the fixes left the request as it was) needs other seeds, not only its rounds
+// back; then `prompt_fixes:<kind>`, whose wording also contains "fails".
+const LEGACY_BLOCKED_KINDS = [
+  [/^(?:([a-z_]+) needs the owner: |([a-z_]+) still fails after \d+ prompt fixes )?.*(?:video_media_job_exhausted|已經失敗 \d+ 次)/, (match) => `media_exhausted:${match[1] ?? match[2] ?? "keyframes"}`],
+  [/^([a-z_]+) still fails after \d+ prompt fixes/, (match) => `prompt_fixes:${match[1]}`],
+  [/sent the screenplay back \d+ times/, () => "prompt_fixes:script"],
+  [/^the outline was sent back \d+ times/, () => "replans"],
+  [/^([a-z_]+) failed \d+ times in a row:/, (match) => `failures:${match[1]}`],
+];
+
+/** The kind of block a state carries: recorded by `block()`, else read from the legacy reason; null when neither says. */
+export function blockedKindOf(state) {
+  if (typeof state.blocked_kind === "string" && state.blocked_kind) return state.blocked_kind;
+  for (const [pattern, kind] of LEGACY_BLOCKED_KINDS) {
+    const match = pattern.exec(state.blocked ?? "");
+    if (match) return kind(match);
+  }
+  return null;
+}
+
+/**
+ * What an owner's retry on /admin/videos resets, so the stage that blocked the video runs again
+ * instead of blocking at the same line: the prompt-fix rounds of the kind that ran out, the
+ * outline replans, a stage's failures in a row; a media request the server stopped answering
+ * for gets the next seeds (state.seed_offsets, MAX_KEYFRAME_TAKES further) and its prompt-fix
+ * rounds back, since the fix that could not change the request is what blocked it. An
+ * uncertain writer run is the retry transport's (client.mjs retryRuns). Returns the kind.
+ */
+export function resetForRetry(state) {
+  const kind = blockedKindOf(state);
+  const [group, name] = kind ? kind.split(":") : [];
+  if (group === "prompt_fixes" && state.prompt_fixes) delete state.prompt_fixes[name];
+  else if (group === "replans") state.replans = 0;
+  else if (group === "failures" && state.failures) delete state.failures[name];
+  else if (group === "media_exhausted") {
+    if (state.prompt_fixes) delete state.prompt_fixes[name];
+    if (SEED_OFFSET_COMMANDS.has(name)) state.seed_offsets = { ...(state.seed_offsets ?? {}), [name]: Math.min((state.seed_offsets?.[name] ?? 0) + MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET) };
+  }
+  return kind;
+}
 // Once the retakes are spent, the lines Jev still hears wrong are reworded by the listener and
 // retaken, this many rounds in all, before the narration waits for the owner (docs/videos/HANDS-OFF.md §旁白).
 export const MAX_REWRITE_ROUNDS = 2;
@@ -156,6 +236,19 @@ export function thumbnailAskHash(sheet) {
  * `todo` whatever the model left out. A model that drops the thumbnail keeps `fallback`'s words
  * (the translator's, when the caption reviewer answers without them), else the sheet's own.
  */
+/**
+ * What a unit's request carries beside its worksheet (i18n/cli.mjs translationContext): the
+ * sheet's glossary, and the cue boundaries of the unit's own lines (a metadata unit has no lines,
+ * so none); a sheet from before the context adds nothing, and the prompts read both as optional.
+ */
+function unitContext(context, unit) {
+  const carried = {};
+  if (context.glossary) carried.glossary = context.glossary;
+  const lines = unit.lines ?? [];
+  if (context.boundaries && lines.length) carried.boundaries = Object.fromEntries(lines.filter((line) => context.boundaries[line.id]).map((line) => [line.id, context.boundaries[line.id]]));
+  return carried;
+}
+
 function keptWorksheet(worksheet, sheet, locale, fallback = null) {
   const kept = { ...worksheet, locale, slug: sheet.slug, parts: sheet.parts };
   if (!sheet.thumbnail) return kept;
@@ -410,12 +503,97 @@ async function run(ctx, command) {
 }
 
 const lastLine = (out, lines = 1) => out.trim().split("\n").slice(-lines).join(" ");
+/**
+ * A speech command (tts, dub, check-audio) that stopped because a paid request went out and its
+ * answer was lost (tts/client.mjs SPEECH_UNCERTAIN, exit 3 with the code in its last line). It
+ * may have been charged: running the command again would buy it again, and giving a dub up would
+ * drop the language for good, so the video waits for the owner.
+ */
+const speechUncertain = (result) => result.code === 3 && lastLine(result.out).includes(SPEECH_UNCERTAIN);
 /** The digits of a line, in order: a shortened translation must keep every one of them. */
 const digitsOf = (text) => (String(text).match(/\d+(?:[.,]\d+)*/g) ?? []).join(" ");
 /** A unit's report line names its video once: a phrase gets the slug, a line that has it stays. */
 const lineFor = (slug, text) => (text.startsWith(`${slug}: `) ? text : `${slug}: ${text}`);
 const blockedLabel = (state) => `卡住，需要人處理：${state.blocked}`.slice(0, 120);
 const BLOCKED_REPORT_BACKOFF_MS = 5 * 60_000;
+
+/** A file's sha256, or null when it cannot be read. */
+function fileSha256(file) {
+  try {
+    return createHash("sha256").update(readFileSync(file)).digest("hex");
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The takes on disk (audio/<id>.wav) that differ from the ones timeline.json binds, as id → the
+ * sha256 of the take on disk, for the lines in `ids` (every line without); null when the timeline
+ * names no lines or a take cannot be read.
+ */
+function changedTakes(timeline, workdir, ids = null) {
+  if (!Array.isArray(timeline?.lines)) return null;
+  const changed = {};
+  for (const line of timeline.lines) {
+    if (ids && !ids.has(line.id)) continue;
+    const hash = LINE_ID.test(line.id ?? "") ? fileSha256(path.join(workdir, ARTIFACTS.audio, `${line.id}.wav`)) : null;
+    if (!hash) return null;
+    if (hash !== line.audio_sha256) changed[line.id] = hash;
+  }
+  return changed;
+}
+
+/**
+ * Whether every take that no longer matches timeline.json is one the retake a STOP file ended
+ * made (auto.json `stopped_retake`, written by retakeStopped), with the very bytes it wrote, and
+ * narration.wav, which a stopped tts never writes, is still the bound one. A take changed on any
+ * other line, or to other bytes, is not explained, and the guard before tts stays shut.
+ */
+function retakeExplains(stopped, timeline, workdir) {
+  const made = stopped?.takes;
+  if (!made || typeof made !== "object") return false;
+  const changed = changedTakes(timeline, workdir);
+  if (!changed || !Object.keys(changed).length) return false;
+  if (fileSha256(path.join(workdir, ARTIFACTS.narration)) !== timeline.audio_evidence?.narration_sha256) return false;
+  return Object.entries(changed).every(([id, hash]) => made[id] === hash);
+}
+
+// The package check's problems that only `package` run for the current choice fixes
+// (tools/video/package/check.mjs): a metadata.json written for another choice, and a part of a
+// locale the choice does not have.
+const CHOICE_PROBLEM = /written for another language choice|the language choice does not have/;
+
+/**
+ * Whether the upload package no longer fits the owner's language choice in the work directory:
+ * written for another choice, or holding a description, caption file, dub track or language
+ * thumbnail of a locale the choice does not have, which the package check fails with "run
+ * package again". Read the way that check reads it but without hashing final.mp4, so it costs
+ * little to ask every round. False without a package (it is written later, with the choice) or
+ * without a choice. A metadata.json that cannot be parsed, or whose fields are not of the types
+ * package writes (a caption list that is a number, say), leaves the answer unknown: false too,
+ * so the language round goes on instead of ending `auto` in an exception.
+ */
+function packageChoiceStale(workdir) {
+  const upload = path.join(workdir, UPLOAD_DIR);
+  try {
+    const metadata = readJson(path.join(upload, METADATA_FILE), null);
+    if (!metadata || typeof metadata !== "object" || Array.isArray(metadata)) return false;
+    const { languages, locales, descriptionLocales } = packageLocalesWanted(workdir, metadata);
+    if (!languages) return false;
+    // Only the choice's problems are read, so the final's hashes are left out.
+    const report = checkPackage({ files: listFiles(upload), metadata, finalSha256: null, approvedSha256: null, metadataSha256: null, locales, descriptionLocales, languages });
+    return report.items.some((item) => !item.ok && CHOICE_PROBLEM.test(item.detail));
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Whether the video is past its upload confirmation: the publish review approved (status done)
+ * or the owner's YouTube id recorded. Its package went up with that review, and nothing writes or
+ * pushes the publish gate again.
+ */
+const pastUpload = (state) => Boolean(state.youtube_video_id) || state.status === "done";
 
 /**
  * What the script records for the site: the YouTube id, or null (a report without it would clear
@@ -448,6 +626,8 @@ async function report(ctx, api, state, stage) {
     ...(hasAnimePolicy(state) ? { production_policy: state.production_policy, runtime_spec: state.runtime_spec } : {}),
     ...(state.series ? { series_slug: state.series.slug, ...(Number.isInteger(state.series.episode) ? { episode_number: state.series.episode } : {}) } : {}),
     ...(state.retry_request_id ? { retry_acknowledged_id: state.retry_request_id } : {}),
+    // What kind of block it is (`block()`), for a site that will read it; today's ignores the key.
+    ...(state.status === "blocked" && state.blocked_kind ? { blocked_kind: state.blocked_kind } : {}),
   });
 }
 
@@ -602,7 +782,7 @@ export class Automation {
     saveState(workdir, state);
     this.halted = true;
     const detail = `${why}${kept ? `; the answer is in ${kept}` : ""}`;
-    if (state.failures[what] >= MAX_STAGE_FAILURES) return this.block(state, `${what} failed ${state.failures[what]} times in a row: ${detail}`);
+    if (state.failures[what] >= MAX_STAGE_FAILURES) return this.block(state, `${what} failed ${state.failures[what]} times in a row: ${detail}`, `failures:${what}`);
     return `${state.slug}: ${what} gave nothing usable (${detail}); the next run tries once more`;
   }
 
@@ -622,7 +802,7 @@ export class Automation {
     this.halted = true;
     this.lastAnswer = null;
     const what = `${error.stage ?? "a stage"}${error.unit ? ` (${error.unit})` : ""}`;
-    return this.block(state, `${what} may have run on the server without its answer reaching the worker (${error.why ?? error.message}); it is not asked again until the owner retries`);
+    return this.block(state, `${what} may have run on the server without its answer reaching the worker (${error.why ?? error.message}); it is not asked again until the owner retries`, `uncertain:${error.stage ?? "stage"}`);
   }
 
   /** One unit of work; returns a line saying what was done, or null when nothing could be. */
@@ -655,6 +835,11 @@ export class Automation {
     }
     for (const state of automatedVideos(this.workBase)) {
       if (!["active", "done"].includes(state.status) || !free(state)) continue;
+      // A STOP file in the video's own work directory holds that video (the renewal handoff
+      // keeps one there until its readback is verified): its stages would stop at once and end
+      // the round on it, so the round passes over it. The owner's drop still reaches it above; a
+      // retry waits until the file is gone. The work base's STOP file is auto's, between units.
+      if (existsSync(path.join(this.workdir(state.slug), "STOP"))) continue;
       this.busy.add(state.slug);
       try {
         const done = await this.move(state, siteBySlug);
@@ -694,17 +879,52 @@ export class Automation {
       const siteVideo = siteBySlug.get(state.slug);
       const request = siteVideo?.retry_request_id;
       if (state.status !== "blocked" || !free(state) || !request || request === siteVideo.retry_acknowledged_id || request === state.retry_request_id) continue;
-      await this.api.retryRuns?.(state.slug, { requestId: request, reason: state.blocked ?? "" });
+      if (siteVideo?.dropped_at || stopRequested(this.workdir(state.slug))) continue;
+      const currentVideo = readJson(path.join(docDir(state.slug, this.ctx.root), "video.json"), null);
+      if (state.policy_hold && state.format && currentVideo?.format && state.format !== currentVideo.format) {
+        state.retry_request_id = request;
+        return this.block(state, `policy retry refused: auto.json is ${state.format}, video.json is ${currentVideo.format}`);
+      }
+      if (state.policy_hold?.source_files && JSON.stringify(state.policy_hold.source_files) !== JSON.stringify(this.policySource(state))) {
+        state.retry_request_id = request;
+        return this.block(state, "policy retry refused: the source changed since the held request; restore its exact source or inspect the retained receipt before resuming");
+      }
+      try {
+        await this.api.retryRuns?.(state.slug, { requestId: request, reason: state.blocked ?? "", format: state.format ?? currentVideo?.format ?? "slides" });
+      } catch (error) {
+        if (error instanceof AutomationError && error.code === POLICY_HOLD) {
+          state.retry_request_id = request;
+          return this.policyHold(state, error);
+        }
+        // The run the owner wants replaced is still on the server: the request stays unconsumed
+        // and this video waits for it; the next round asks again. The other videos go on.
+        if (error instanceof AutomationError && error.code === RUN_PENDING) {
+          this.log(`${state.slug}: retry waits; the saved ${error.stage ?? "writer"} run is still running on the server, its receipt is checked next round`);
+          continue;
+        }
+        // Any other answer of the retry transport (an uncertain saved run, a lookup that failed, a
+        // receipt that cannot be read): this video alone is blocked with the reason, and the
+        // request is consumed, so the page stops showing the retry as pending and the owner reads
+        // why. Until 2026-10-06 the error ended the whole run, every round. A programming error
+        // is not the owner's to read: it still ends the run. The kind stays what blocked the video
+        // in the first place (read from a legacy reason now, before it is replaced): nothing ran,
+        // and that counter is still the one a retry that goes through has to reset.
+        if (!(error instanceof AutomationError || error instanceof RunReceiptError)) throw error;
+        state.retry_request_id = request;
+        return this.block(state, `retry could not verify the saved writer run: ${error.message}`, blockedKindOf(state) ?? "uncertain:writer");
+      }
       state.retry_request_id = request;
       // A language batch can fail after the finished video reached YouTube. Resume
       // only its languages, rather than revisiting the production stages.
       state.status = state.blocked_from_status === "done" ? "done" : "active";
       delete state.blocked_from_status;
-      const failedStage = /^([a-z_]+) failed \d+ times in a row:/.exec(state.blocked ?? "")?.[1];
-      if (failedStage && state.failures) delete state.failures[failedStage];
+      // The counter that blocked it starts again, or the stage would block at the same line.
+      resetForRetry(state);
       delete state.blocked;
+      delete state.blocked_kind;
       delete state.blocked_report_pending;
       delete state.blocked_report_retry_at;
+      delete state.policy_hold;
       saveState(this.workdir(state.slug), state);
       try {
         await report(this.ctx, this.api, state, "retrying");
@@ -761,6 +981,7 @@ export class Automation {
       // video still on its way to YouTube or already there; nothing while a step of its own is due.
       done ??= await this.languages(state);
     } catch (error) {
+      if (error instanceof AutomationError && error.code === POLICY_HOLD) return this.policyHold(state, error);
       if (error instanceof AutomationError && error.code === RUN_UNCERTAIN) return this.unanswered(state, error);
       if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
       return this.retryLater(state, error.stage, error.message);
@@ -915,6 +1136,7 @@ export class Automation {
     writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
     const state = {
       slug: plan.slug,
+      format: "slides",
       title: String(plan.title || titleOf(plan.brief)).slice(0, 200),
       status: "active",
       created_at: this.ctx.now().toISOString(),
@@ -1182,11 +1404,11 @@ export class Automation {
   /** The screenplay was sent back (by the owner, or the checker on a hands-off series): the writer rewrites from the note, then it is checked again. */
   async fixScript(state, note, by = "the owner") {
     const rounds = state.prompt_fixes?.script ?? 0;
-    if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${by} sent the screenplay back ${rounds + 1} times: ${note}`);
+    if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${by} sent the screenplay back ${rounds + 1} times: ${note}`, "prompt_fixes:script");
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     const fix = { kind: "script", targets: [], problems: [note], owner_note: note };
-    const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `script-fix-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `script-fix-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     state.prompt_fixes = { ...(state.prompt_fixes ?? {}), script: rounds + 1 };
     state.notes.push(`script sent back by ${by}: ${note}`);
@@ -1234,15 +1456,44 @@ export class Automation {
     return run(this.ctx, ["review-pull", "--slug", slug]);
   }
 
-  /** Stop working on a video and say why on /admin/videos; the owner or a person takes over. */
-  async block(state, why) {
-    state.blocked_from_status = state.status;
+  /**
+   * Stop working on a video and say why on /admin/videos; the owner or a person takes over.
+   * `kind` names what blocked it (`prompt_fixes:<kind>`, `replans`, `failures:<stage>`,
+   * `media_owner:<command>`, `media_exhausted:<command>`, `uncertain:<stage>`), which is what
+   * the owner's retry resets (resetForRetry); a block with none is only retried as it was.
+   */
+  async block(state, why, kind = null) {
+    if (state.status !== "blocked") state.blocked_from_status = state.status;
     state.status = "blocked";
     state.blocked = why;
+    if (kind) state.blocked_kind = kind;
+    else delete state.blocked_kind;
     state.blocked_report_pending = true;
     saveState(this.workdir(state.slug), state);
     const reported = await this.reportBlocked(state);
     return `${state.slug}: blocked — ${why}${reported ? "" : "; could not report it yet"}`;
+  }
+
+  /** The canonical source a policy-held writer must still be bound to before an explicit retry. */
+  policySource(state) {
+    const dir = docDir(state.slug, this.ctx.root);
+    return Object.fromEntries(["brief.md", "video.json", "series.json", "script.md"].map((name) => {
+      const file = path.join(dir, name);
+      return [name, existsSync(file) ? createHash("sha256").update(readFileSync(file)).digest("hex") : null];
+    }));
+  }
+
+  /** A settled policy rejection parks only its project; a failed report cannot buy another run. */
+  policyHold(state, error) {
+    state.policy_hold = { code: error.code, ...error.policy_hold, source_files: state.policy_hold?.source_files ?? this.policySource(state) };
+    return this.block(state, `${error.stage ?? error.policy_hold?.stage ?? "writer"} is held by policy (${error.code}): ${error.message}`);
+  }
+
+  /** Permanent rejected payloads stop this video; temporary delivery failures wait for another round. */
+  submissionFailure(state, gate, result) {
+    const detail = lastLine(result.out, 2);
+    if (result.code === this.ctx.EXIT.lint) return this.block(state, `${gate} submission rejected: ${detail}`);
+    return this.later(`${state.slug}: could not send the ${gate} for review: ${detail}`);
   }
 
   async reportBlocked(state) {
@@ -1299,7 +1550,7 @@ export class Automation {
         return `${state.slug}: ${jev ? "Jev" : "the owner"} chose outline ${review.choice}${review.note ? ` (${review.note})` : ""}`;
       }
       if (review.status === "rejected") {
-        if (state.replans >= MAX_REPLANS) return this.block(state,`the outline was sent back ${state.replans + 1} times (Jev and the owner together): ${review.note}`);
+        if (state.replans >= MAX_REPLANS) return this.block(state, `the outline was sent back ${state.replans + 1} times (Jev and the owner together): ${review.note}`, "replans");
         return lineFor(state.slug, await this.replan(state, review.note ?? ""));
       }
       return null;
@@ -1341,16 +1592,26 @@ export class Automation {
       const previous = readJson(path.join(workdir, "timeline.json"), null);
       const project = loadProject({ slug: state.slug, root: ctx.root });
       const sameScript = previous?.speech_hash === speechHash(project.doc, project.lexicon);
-      if (sameScript && previous.audio_evidence && audioEvidenceProblems(previous, workdir).length) return this.block(state, "audio evidence no longer matches the saved takes; restore or explicitly retake and review the narration");
+      // Takes that no longer match stop the video, unless they are the ones a retake made before a
+      // STOP file ended it (retakeStopped): the plain tts below binds them without synthesizing
+      // anything, and the next round checks them again.
+      const resumed = Boolean(sameScript && previous.audio_evidence && audioEvidenceProblems(previous, workdir).length);
+      if (resumed && !retakeExplains(state.stopped_retake, previous, workdir)) return this.block(state, "audio evidence no longer matches the saved takes; restore or explicitly retake and review the narration");
       // A refresh binds evidence to the takes on disk and never records. Takes that no longer match
       // what is sent for synthesis (the accent wording changed under them) cannot be bound, and a
       // retry would refuse the same way for ever: those are recorded again by a plain tts, which
       // writes a new timeline, so the narration is reviewed again.
       const refresh = sameScript && !previous.audio_evidence && !staleTakes(project.doc, project.lexicon, workdir).length;
       const result = await run(ctx, ["tts", "--slug", state.slug, ...(refresh ? ["--refresh-evidence"] : [])]);
+      // A STOP file ended it between requests: the takes are saved and the next run continues.
+      if (result.code === ctx.EXIT.incomplete) return this.later(`${state.slug}: tts stopped (${lastLine(result.out)}); the next run continues`);
       if (result.code !== 0) return this.block(state,`tts failed: ${result.out.trim().split("\n").at(-1)}`);
+      if (state.stopped_retake) {
+        delete state.stopped_retake;
+        saveState(workdir, state);
+      }
       await report(ctx, this.api, state, "narration synthesized");
-      return `${state.slug}: narration synthesized`;
+      return `${state.slug}: narration synthesized${resumed ? " from the takes of the retake a STOP file ended" : ""}`;
     }
     if (next === "narration approved") return this.narration(state);
     if (next === "frames rendered") {
@@ -1378,7 +1639,8 @@ export class Automation {
       const upload = path.join(workdir, "upload", "metadata.json");
       const review = await this.decision(state, "publish", upload);
       if (!review) {
-        await run(ctx, ["review-push", "--slug", state.slug, "--gate", "publish"]);
+        const pushed = await run(ctx, ["review-push", "--slug", state.slug, "--gate", "publish"]);
+        if (pushed.code !== 0) return this.submissionFailure(state, "publish", pushed);
         return `${state.slug}: publish confirmation sent to /admin/videos`;
       }
       if (review.status === "approved") {
@@ -1559,7 +1821,7 @@ export class Automation {
       }
       if (fix >= MAX_LINT_FIXES) return `lint still fails after ${MAX_LINT_FIXES} fixes: ${errors.slice(0, 3).join("; ")}`;
       const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-      current = isLongAnime(state) ? await this.animeRewrite(state, { lint_errors: errors }, video, "writer", `lint-${fix + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, lint_errors: errors, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+      current = isLongAnime(state) ? await this.animeRewrite(state, { lint_errors: errors }, video, "writer", `lint-${fix + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, lint_errors: errors, line_ids: this.freshIds(state, video, 40), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     }
   }
 
@@ -1572,16 +1834,38 @@ export class Automation {
   async media(state, command) {
     const { ctx } = this;
     const channel = ["look", "keyframes"].includes(command) && ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", ctx.env.VIDEO_BROWSER_CHANNEL] : [];
-    const result = await run(ctx, [command, "--slug", state.slug, ...channel]);
+    // The seeds an owner retry moved this stage to (resetForRetry), once the server stopped
+    // answering for the seeds before them.
+    const offset = state.seed_offsets?.[command];
+    const seedOffset = SEED_OFFSET_COMMANDS.has(command) && Number.isInteger(offset) && offset > 0 ? ["--seed-offset", String(offset)] : [];
+    const result = await run(ctx, [command, "--slug", state.slug, ...channel, ...seedOffset]);
     if (result.code === 0) {
       this.cleared(state, command);
       delete state.prompt_fixes?.[command];
+      // A picture kept with the judge's remarks (acceptBestPictures) that a rewritten prompt had
+      // drawn again since is a judged picture now, not a kept one.
+      if (command === "keyframes" && state.accepted_pictures?.length) {
+        const manifest = readJson(path.join(this.workdir(state.slug), ARTIFACTS.keyframes), null);
+        state.accepted_pictures = state.accepted_pictures.filter((picture) => Array.isArray(manifest?.shots?.[picture.id]?.accepted_with_problems));
+        if (!state.accepted_pictures.length) delete state.accepted_pictures;
+      }
+      // The stage is through its seeds: a later rerun (a storyboard sent back, say) starts at
+      // seeds 1 to 3 again, with other prompts.
+      delete state.seed_offsets?.[command];
       saveState(this.workdir(state.slug), state);
       await report(ctx, this.api, state, `${command} done`);
       return `${state.slug}: ${command} done`;
     }
     if (result.code === 1 && FIX_SOURCES[command]) return this.fixPrompts(state, command, {});
-    if (result.code === 3) return this.block(state, `${command} needs the owner: ${lastLine(result.out)}`);
+    if (result.code === 3) {
+      // The server's attempts for a request are spent (media/client.mjs EXHAUSTED_CODES): the
+      // owner's retry moves the stage to other seeds, where a cap or a setting it leaves as it
+      // is. Only the reason the owner reads (the last line) says which: a run that logged a
+      // spent seed on its way to the cap stopped for the cap.
+      const reason = lastLine(result.out);
+      const kind = /video_media_job_exhausted|已經失敗 \d+ 次/.test(reason) ? `media_exhausted:${command}` : `media_owner:${command}`;
+      return this.block(state, `${command} needs the owner: ${reason}`, kind);
+    }
     if (result.code === 4) return this.later(`${state.slug}: ${command} could not finish (${lastLine(result.out)}); the next run tries again`);
     return this.block(state, `${command} failed: ${lastLine(result.out, 2)}`);
   }
@@ -1594,7 +1878,10 @@ export class Automation {
     for (const [id, entry] of Object.entries(manifest?.[source.entries] ?? {})) {
       if (!entry?.needs_review) continue;
       const problems = entry.problems ?? [...new Set((entry.candidates ?? entry.takes ?? []).flatMap((take) => take.judge?.problems ?? take.qc?.problems ?? []))];
-      targets.push({ id, problems });
+      // How long this shot's prompt may be for the image model (keyframes.mjs): the writer is
+      // told the number, since a prompt it only makes fuller is refused again on every seed.
+      const budget = typeof entry.prompt_budget_chars === "number" ? { prompt_budget_chars: entry.prompt_budget_chars } : {};
+      targets.push({ id, problems, ...budget });
     }
     return targets;
   }
@@ -1611,11 +1898,26 @@ export class Automation {
     const what = FIX_SOURCES[kind]?.what ?? "shot";
     const summary = found.map((target) => `${target.id}: ${(target.problems ?? []).join("; ") || "failed"}`).join(" | ") || ownerNote || "no detail";
     const rounds = state.prompt_fixes?.[kind] ?? 0;
-    if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`);
+    // A kind whose every seed the server stopped answering for (the fixes did not change the
+    // request enough) is retried on other seeds; any other, with its rounds given back.
+    const blockedKind = /video_media_job_exhausted|已經失敗 \d+ 次/.test(summary) ? `media_exhausted:${kind}` : `prompt_fixes:${kind}`;
+    if (rounds >= MAX_PROMPT_FIX_ROUNDS) {
+      // Illustrated slides keep the judge's best take of each failing shot and go on to the cut,
+      // which the owner reviews; a drama's pictures, and a storyboard the owner sent back, wait here.
+      const kept = kind === "keyframes" && !ownerNote ? await this.acceptBestPictures(state, found, rounds) : null;
+      return kept ?? this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`, blockedKind);
+    }
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const fix = { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote };
-    const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `prompt-${kind}-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format ?? "drama", this.variantOf(state), state.series ?? null);
+    if (state.format && video.format && state.format !== video.format) return this.block(state, `prompt repair format conflicts: auto.json is ${state.format}, video.json is ${video.format}`);
+    // Historical teaching drafts omit format. Bind their repair to the saved script,
+    // while an explicit drama retains its own settings and policy checks.
+    state.format ??= video.format ?? "slides";
+    saveState(workdir, state);
+    // The tightest budget among the targets that carry one; each target keeps its own.
+    const budgets = found.map((target) => target.prompt_budget_chars).filter((value) => typeof value === "number");
+    const fix = { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote, ...(budgets.length ? { prompt_budget_chars: Math.min(...budgets) } : {}) };
+    const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `prompt-${kind}-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40), ...this.draftBudget(state) }), 32_000, state.format ?? "slides", this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     if (problem) return this.retryLater(state, "writer", `the ${kind} fix ${problem}`);
     this.cleared(state, "writer");
@@ -1623,6 +1925,34 @@ export class Automation {
     if (ownerNote) state.notes.push(`${kind} sent back: ${ownerNote}`);
     saveState(workdir, state);
     return `${state.slug}: ${kind} prompts fixed (round ${rounds + 1}) for ${found.map((target) => target.id).join(", ") || what}; ${kind} runs again next`;
+  }
+
+  /**
+   * Once the prompt fixes are spent, illustrated slides keep the judge's best take of every shot
+   * still failing (media/keyframes.mjs --accept-best; the owner's decision of 2026-10-06: a video
+   * no longer blocks on its pictures) and go on to the cut, which `gate()` sends for the owner's
+   * manual review with the kept pictures listed (review/sync.mjs). Returns the line, or null when
+   * this is not such a video, or a failing shot has no picture at all (every seed refused: that
+   * one still needs a prompt, and the video waits as before).
+   */
+  async acceptBestPictures(state, found, rounds) {
+    const workdir = this.workdir(state.slug);
+    const video = readJson(path.join(docDir(state.slug, this.ctx.root), "video.json"), null);
+    if (!video || !illustrated(video) || isLongAnime(state)) return null;
+    const manifest = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
+    const ids = found.map((target) => target.id);
+    if (!ids.length || !ids.every((id) => manifest?.shots?.[id]?.file)) return null;
+    const channel = this.ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", this.ctx.env.VIDEO_BROWSER_CHANNEL] : [];
+    const result = await run(this.ctx, ["keyframes", "--slug", state.slug, ...channel, "--accept-best", ids.join(",")]);
+    if (result.code !== 0) return this.block(state, `keyframes could not keep the pictures after ${rounds} prompt fixes: ${lastLine(result.out)}`, "prompt_fixes:keyframes");
+    const pictures = found.map((target) => ({ id: target.id, problems: target.problems ?? [] }));
+    state.accepted_pictures = [...(state.accepted_pictures ?? []).filter((picture) => !ids.includes(picture.id)), ...pictures];
+    // The rounds were spent on these pictures: a prompt the owner rewrites later gets its own.
+    delete state.prompt_fixes?.keyframes;
+    this.cleared(state, "keyframes");
+    state.notes.push(`keyframes: ${ids.length} pictures kept with the judge's remarks after ${rounds} prompt fixes (${ids.join(", ")}); the final cut goes to the owner`);
+    saveState(workdir, state);
+    return `${state.slug}: ${ids.length} pictures kept with the judge's remarks after ${rounds} prompt fixes; the final cut goes to the owner`;
   }
 
   /**
@@ -1640,7 +1970,7 @@ export class Automation {
     const reviews = (project?.reviews ?? []).filter((review) => review.gate === "look" && review.content_sha256 === sha);
     if (!reviews.length) {
       const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", "look"]);
-      if (pushed.code !== 0) return this.later(`${state.slug}: could not send the look for review: ${lastLine(pushed.out)}`);
+      if (pushed.code !== 0) return this.submissionFailure(state, "look", pushed);
       return `${state.slug}: character sheets sent to /admin/videos`;
     }
     const rejected = reviews.filter((review) => review.status === "rejected");
@@ -1662,7 +1992,7 @@ export class Automation {
     const review = await this.decision(state, "storyboard", path.join(workdir, ARTIFACTS.keyframes));
     if (!review) {
       const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", "storyboard"]);
-      if (pushed.code !== 0) return this.later(`${state.slug}: could not send the storyboard for review: ${lastLine(pushed.out)}`);
+      if (pushed.code !== 0) return this.submissionFailure(state, "storyboard", pushed);
       return `${state.slug}: storyboard sent to /admin/videos`;
     }
     if (review.status === "approved") {
@@ -1705,7 +2035,7 @@ export class Automation {
     const brief = readFileSync(path.join(dir, "brief.md"), "utf8");
     const option = outlineOptions(brief).find((each) => each.key === state.chosen) ?? null;
     const sources = await readSources(this.read, siteSources(state.source_guide, state.source_urls, this.ctx.root));
-    const answer = isLongAnime(state) ? await this.animeRewrite(state, { brief, chosen_option: option, sources }) : await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const answer = isLongAnime(state) ? await this.animeRewrite(state, { brief, chosen_option: option, sources }) : await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
     const problem = await this.saveAndLint(state, answer);
     saveState(this.workdir(state.slug), state);
@@ -1716,6 +2046,27 @@ export class Automation {
     saveState(this.workdir(state.slug), state);
     await report(this.ctx, this.api, state, "fact-checked");
     return `${state.slug}: script drafted and passes lint${shorts ? `; ${shorts}` : ""}`;
+  }
+
+  /**
+   * What a slides video's shot prompts may have (`prompt_budget_chars`), for the image model the
+   * settings will draw them with: the heaviest look the video may get (HEAVIEST_SLIDES_LOOK: the
+   * writer may name one of its own), the longest camera word the writer may choose and that
+   * model's limit, counted as media/keyframes.mjs counts a shot's request; never more than the
+   * writer's own 1000. The first draft and every whole-script rewrite after it (a lint fix, a
+   * screenplay or prompt fix) carry it, so a rewrite cannot lengthen a prompt past it. A drama
+   * and a story are drawn otherwise and hear nothing; a look that leaves no room at all is the
+   * keyframes stage's to refuse, with the owner's number.
+   */
+  draftBudget(state) {
+    if (state.format === "drama" || state.story) return {};
+    try {
+      const limit = imagePromptLimit({ provider: slidesImageVendor(this.settings) }, null);
+      const budget = shotPromptBudget({ look: HEAVIEST_SLIDES_LOOK, camera: LONGEST_CAMERA_WORD, cast: null, limit });
+      return { prompt_budget_chars: Math.min(budget, WRITER_PROMPT_MAX) };
+    } catch {
+      return {};
+    }
   }
 
   /**
@@ -1810,7 +2161,7 @@ export class Automation {
     const state = automatedVideos(this.workBase).find((each) => each.slug === slug);
     if (!state) throw new UsageError(`${slug} was not started by the worker (no ${STATE_FILE} in its work directory); restyle works on the worker's videos`);
     if (state.format === "drama") throw new UsageError(`${slug} is a drama: its narration is the screenplay's, the register is for slides videos`);
-    if (state.youtube_video_id || state.status === "done") throw new UsageError(`${slug} is already on YouTube; a restyle would make a different video`);
+    if (pastUpload(state)) throw new UsageError(`${slug} is already on YouTube; a restyle would make a different video`);
     const dir = docDir(slug, this.ctx.root);
     const file = path.join(dir, "video.json");
     if (!existsSync(file)) throw new UsageError(`${slug} has no video.json yet; restyle retells a written script`);
@@ -1887,6 +2238,33 @@ export class Automation {
     return `${slug}: ${accepted.length} of ${listed.length} lines retold${refused.length ? `, ${refused.length} refused (review/restyle.json)` : ""}; now ${registerLine(after)}${accepted.length ? "; the worker fact-checks, records and reviews the narration again" : ""}`;
   }
 
+  /**
+   * A `tts --redo` that a STOP file ended (exit 6) after some of its requests were paid for: their
+   * takes are on disk and in audio/cache.json, while timeline.json still binds the takes before.
+   * auto.json keeps the lines it was retaking and the takes it made (`stopped_retake`), so the
+   * next run's guard before tts tells them from a take swapped without review and rebuilds the
+   * narration from them. A retake stopped before its first request made nothing and records
+   * nothing. Either way the run ends and the next one continues: a STOP is never a block.
+   */
+  retakeStopped(state, flagsFile, line) {
+    const workdir = this.workdir(state.slug);
+    let ids;
+    try {
+      ids = flaggedLines(readJson(flagsFile));
+    } catch {
+      ids = new Set();
+    }
+    // A flagged repeat is retaken through the original it repeats (tts --redo).
+    const doc = readJson(path.join(docDir(state.slug, this.ctx.root), "video.json"), null);
+    for (const { line: each } of doc ? eachLine(doc) : []) if (ids.has(each.id) && each.audio_ref) ids.add(each.audio_ref);
+    const takes = changedTakes(readJson(path.join(workdir, "timeline.json"), null), workdir, ids);
+    if (takes && Object.keys(takes).length) {
+      state.stopped_retake = { flags: path.relative(workdir, flagsFile).split(path.sep).join("/"), ids: [...ids], takes };
+      saveState(workdir, state);
+    }
+    return this.later(`${state.slug}: ${line}`);
+  }
+
   async narration(state) {
     const { ctx } = this;
     const workdir = this.workdir(state.slug);
@@ -1910,7 +2288,9 @@ export class Automation {
     while (check.code === 1 && state.retakes < retakeRounds) {
       state.retakes += 1;
       saveState(workdir, state);
-      const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", path.join(workdir, "review", "check-flags.json")]);
+      const flagsFile = path.join(workdir, "review", "check-flags.json");
+      const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", flagsFile]);
+      if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, flagsFile, `the retake stopped (${lastLine(redo.out)}); the next run continues`);
       if (redo.code !== 0) return this.block(state,`retake failed: ${redo.out.trim().split("\n").at(-1)}`);
       check = await run(ctx, ["check-audio", "--slug", state.slug]);
     }
@@ -1930,10 +2310,19 @@ export class Automation {
       // is told why the rewrites were refused.
       if (!round.ids.length) continue;
       const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", round.flagsFile]);
+      if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, round.flagsFile, `the retake after the rewrite stopped (${lastLine(redo.out)}); the next run continues`);
       if (redo.code !== 0) return this.block(state, `retake after the rewrite failed: ${lastLine(redo.out)}`);
       check = await run(ctx, ["check-audio", "--slug", state.slug]);
     }
     if (check.code === 4) return this.later(`${state.slug}: narration check could not finish (${check.out.trim().split("\n").at(-1)}); the next run tries again`);
+    // Stopped by a STOP file before every line was heard: nothing is judged yet, so nothing goes
+    // for review, and the next run continues where it stopped.
+    if (check.code === ctx.EXIT.incomplete) return this.later(`${state.slug}: narration check stopped (${lastLine(check.out)}); the next run continues`);
+    // Only a finished check (0, or 1 with lines still flagged) goes for review. One that stopped
+    // for the owner (a token, a key, a paid transcription or judgement whose answer was lost) did
+    // not finish check.json, and the lines Jev never judged would read as fine on the card.
+    if (check.code === 3) return this.block(state, `check-audio needs the owner: ${lastLine(check.out)}`);
+    if (check.code !== 0 && check.code !== 1) return this.block(state, `check-audio failed: ${lastLine(check.out, 2)}`);
     const pushed = await run(ctx, ["review-push", "--slug", state.slug, "--gate", "audio"]);
     if (pushed.code !== 0) return this.later(`${state.slug}: could not send the narration for review: ${pushed.out.trim()}`);
     await this.pull(state.slug);
@@ -2066,30 +2455,43 @@ export class Automation {
     // A zh-TW video reads nothing more than before; one narrated in another language may still
     // owe its zh-TW, which no choice lists (channelLocale).
     const zhNarrated = narrationLocale(readJson(path.join(dir, "video.json"), null)) === NARRATION_LOCALE;
-    if (!pending.length && zhNarrated) return null;
+    // Nothing to make, but the owner changed the choice after the package was written (narrowed
+    // it, or chose 只出繁體中文 for a package from before the panel): the package check would fail
+    // it at the publish push, so it is written again once; the package it writes records this
+    // choice, and the next round finds nothing to do. Only before the upload confirmation: past
+    // it (pastUpload) the package already went up and no publish push reads it again, and one
+    // that can no longer be written (final.mp4's checks older than the script) would block a
+    // published video every round. That package is left as it is.
+    const repackage = !pending.length && !pastUpload(state) && packageChoiceStale(workdir);
+    if (!pending.length && zhNarrated && !repackage) return null;
     const project = loadProject({ slug, root: ctx.root });
     const doc = project.doc;
     const channel = zhNarrated ? null : this.channelLocale(project, workdir, state);
-    if (!pending.length && !channel) return null;
+    if (!pending.length && !channel && !repackage) return null;
     for (const { locale, parts } of [...(channel ? [channel] : []), ...pending]) {
       const sheetParts = parts.filter((part) => part !== "dub");
       if (!sheetParts.length) continue;
       const translated = await this.translateLocale(state, locale, sheetParts, doc);
       if (translated) return translated;
     }
-    // Only zh-TW was owed (the owner chose no other language): write it into the captions and the
-    // package; there is no batch to send, since the panel never offers zh-TW.
+    // Only zh-TW was owed (the owner chose no other language), or only the package is behind the
+    // choice: write the captions and the package; there is no batch to send, since the panel never
+    // offers zh-TW and no chosen part is still in the making.
     if (!pending.length) {
       await this.drawLanguageThumbnails(slug, project, workdir);
       const captions = await run(ctx, ["captions", "--slug", slug]);
       if (captions.code !== 0) return this.block(state, `captions failed: ${lastLine(captions.out)}`);
       const packaged = await run(ctx, ["package", "--slug", slug]);
       if (packaged.code !== 0) return this.block(state, `package failed: ${lastLine(packaged.out)}`);
+      if (!channel) return `${slug}: upload package written again for the current language choice`;
       return `${slug}: ${NARRATION_LOCALE} captions, title and description written into the upload package`;
     }
     const dubs = dubsStatus(project, workdir, speechHash(doc, project.lexicon));
     for (const { locale, parts } of pending) {
-      if (!parts.includes("dub") || ["current", "skipped"].includes(dubs[locale]?.status)) continue;
+      // A track is current once `dub` wrote it; one whose check stopped before it finished (a STOP
+      // file, or a paid request whose answer was lost, see makeDub) is checked again.
+      const unheard = dubs[locale]?.status === "current" && state.languages?.[locale]?.check_stopped;
+      if (!parts.includes("dub") || (["current", "skipped"].includes(dubs[locale]?.status) && !unheard)) continue;
       return this.makeDub(state, locale);
     }
     // Every chosen part is made: cut the captions on the dubs, write the package with the chosen
@@ -2213,7 +2615,10 @@ export class Automation {
    * translator and read by the caption reviewer, then merged. A sheet too long for one model call
    * is asked in units, one unit a round (sheet-units.mjs); each answer is kept as it comes, so a
    * round that stops resumes without asking an answered unit again, and only the caption
-   * reviewer's own worksheet completes a unit. Null when the sheet has nothing left to translate;
+   * reviewer's own worksheet completes a unit. The sheet's glossary and cue boundaries
+   * (i18n/cli.mjs translationContext) travel beside the worksheet in every request, the
+   * worksheet itself without them, and a unit's key still hashes the sheet as written, so a
+   * glossary that changed asks the unit again. Null when the sheet has nothing left to translate;
    * else this run's line.
    */
   async translateLocale(state, locale, parts, video) {
@@ -2229,6 +2634,7 @@ export class Automation {
       return null;
     }
     const source = sourceLocale(video);
+    const context = sheetContext(sheet);
     const units = sheetUnits(sheet, this.unitLimits);
     const whole = units.length === 1 && units[0] === sheet;
     const keys = units.map((unit) => unitKey(unit, source.source_locale ?? null));
@@ -2239,7 +2645,7 @@ export class Automation {
       const label = whole ? locale : `${locale} part ${index + 1} of ${units.length}`;
       const ask = async (stage, worksheet) => {
         try {
-          return await this.stage(stage, state.slug, { locale, parts: whole ? parts : unit.parts, worksheet, video: unitVideo(video, unit, whole), ...source }, 32_000, state.format);
+          return await this.stage(stage, state.slug, { locale, parts: whole ? parts : unit.parts, worksheet: withoutContext(worksheet), video: unitVideo(video, unit, whole), ...unitContext(context, unit), ...source }, 32_000, state.format);
         } catch (error) {
           if (error instanceof AutomationError && error.code === RUN_UNCERTAIN) error.unit = label;
           throw error;
@@ -2300,7 +2706,9 @@ export class Automation {
    * translator and dubbed again, MAX_DUB_REWORD_ROUNDS times. A retake that no longer fits its
    * window goes back to the shortening. What still fails after that, and what needs the owner (a
    * voice that speaks one language, a missing key), gives the locale up with the reason instead
-   * of blocking the video; a service that is down ends this run and the next one tries again.
+   * of blocking the video; a service that is down ends this run and the next one tries again. A
+   * paid request whose answer was lost (speechUncertain) blocks the video: the locale is not
+   * given up for a request that may well have worked, nor bought again without the owner.
    */
   async makeDub(state, locale) {
     const { ctx } = this;
@@ -2315,6 +2723,13 @@ export class Automation {
     const flags = path.join(workdir, "review", `check-flags.${locale}.json`);
     const checkArgs = ["check-audio", "--slug", slug, "--locale", locale];
     const overLines = () => readJson(dubArtifacts(workdir, locale).fit, null)?.over;
+    // A paid request whose answer was lost: the video waits for the owner, and the owner's retry
+    // runs this locale again, its check included, though its track may already read as current.
+    const lost = (what, result) => {
+      rounds.check_stopped = true;
+      remember();
+      return this.block(state, `${what} needs the owner: ${lastLine(result.out)}`);
+    };
     // Each pass makes the track (only the lines whose words changed are synthesized again) and
     // checks it; a reworded line or a retake that no longer fits starts another pass.
     for (;;) {
@@ -2335,6 +2750,7 @@ export class Automation {
         const why = over.length ? `${over.length} lines (${over.map((line) => line.id).join(", ")}) do not fit even at ${MAX_TEMPO}x after ${rounds.shorten} shortening round${rounds.shorten === 1 ? "" : "s"}` : lastLine(made.out);
         return this.giveUpDub(state, locale, why);
       }
+      if (speechUncertain(made)) return lost(`dub ${locale}`, made);
       if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
       if (made.code === 4) return this.later(`${slug}: ${locale} dub could not finish (${lastLine(made.out)}); the next run tries again`);
       if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
@@ -2345,6 +2761,7 @@ export class Automation {
         remember();
         const redo = await run(ctx, [...dubArgs, "--redo", flags]);
         if (redo.code === 4) return this.later(`${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)}); the next run tries again`);
+        if (speechUncertain(redo)) return lost(`dub ${locale} retake`, redo);
         // The new take is longer than its window allows: the next pass's `dub` reports the same
         // window and shortens it, while shortening rounds are left.
         if (redo.code === 1 && overLines()?.length && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
@@ -2365,10 +2782,16 @@ export class Automation {
         if (reworded.ids.length) continue;
       }
       if (check.code === 4) return this.later(`${slug}: ${locale} dub check could not finish (${lastLine(check.out)}); the next run tries again`);
+      if (check.code === ctx.EXIT.incomplete) {
+        rounds.check_stopped = true;
+        remember();
+        return this.later(`${slug}: ${locale} dub check stopped (${lastLine(check.out)}); the next run continues`);
+      }
       if (check.code === 1) {
         const reworded = rounds.reword ? ` and ${rounds.reword} rewording round${rounds.reword === 1 ? "" : "s"}` : "";
         return this.giveUpDub(state, locale, `Jev still hears lines wrong after ${rounds.retakes} retake${rounds.retakes === 1 ? "" : "s"}${reworded}: ${lastLine(check.out)}`);
       }
+      if (speechUncertain(check)) return lost(`check-audio ${locale}`, check);
       if (check.code === 3) return this.giveUpDub(state, locale, `the dub check needs the owner: ${lastLine(check.out)}`);
       if (check.code !== 0) return this.block(state, `check-audio ${locale} failed: ${lastLine(check.out, 2)}`);
       break;
@@ -2542,8 +2965,11 @@ export class Automation {
   async gate(state, gate, file) {
     const review = await this.decision(state, gate, file);
     if (!review) {
-      const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", gate]);
-      if (pushed.code !== 0) return this.later(`${state.slug}: could not send the ${gate} for review: ${lastLine(pushed.out, 2)}`);
+      // The cut of a video whose pictures were kept with the judge's remarks (acceptBestPictures)
+      // is the owner's to look at whatever the quality check says (review/sync.mjs manual_review).
+      const manual = gate === "final" && state.accepted_pictures?.length ? ["--manual-review"] : [];
+      const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", gate, ...manual]);
+      if (pushed.code !== 0) return this.submissionFailure(state, gate, pushed);
       return `${state.slug}: ${gate} sent to /admin/videos (${lastLine(pushed.out)})`;
     }
     if (review.status === "approved") {

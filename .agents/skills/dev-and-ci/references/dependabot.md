@@ -1,6 +1,6 @@
 # 每週的 Dependabot PR
 
-`.github/dependabot.yml` 每週對三個生態系開 PR：npm（根目錄，一份 lock 涵蓋 `apps/web`）、uv（`apps/api`）、github-actions。minor／patch 合成一個 `minor-and-patch` PR，大版本一個套件一個 PR；actions 全部合成一個。npm 與 uv 各自最多同時開 5 個，**卡住不合的大版本 PR 會一直佔名額**，所以要嘛合、要嘛明確關掉。
+`.github/dependabot.yml` 每週開 PR 的有 npm（根目錄，一份 lock 涵蓋 `apps/web`）、uv（`apps/api`）、github-actions，以及 docker／docker-compose（Dockerfile 與根目錄 compose 的 `tag@sha256` 釘選，只動 digest 與 patch tag）。minor／patch 合成一個 `minor-and-patch` PR，大版本一個套件一個 PR；actions 全部合成一個；`@playwright/test` 例外，永遠自己一個 PR；字型（`@fontsource-variable/*`）與 `pinyin-pro` 也不進 `minor-and-patch`，合成自己的 `video-worker` PR（兩者都見下）。npm 與 uv 各自最多同時開 5 個，**卡住不合的大版本 PR 會一直佔名額**，所以要嘛合、要嘛明確關掉。
 
 合併本身走 skill `task-board`（strict 保護、一次一個、`--match-head-commit`），而且要站主當次說「合併」。
 
@@ -15,6 +15,20 @@
    - 自己修得了（例：mypy 大版本報 `redundant-cast`，刪掉 cast、放寬 specifier、`uv lock`）：在 PR 分支上修（見下），跑完整 CI。
    - 上游卡住：留一則說明原因的留言，再單獨留言 `@dependabot ignore this major version`（幾秒內自動關閉 PR），並開或更新一張 `blocked` 的票記住這個升級。
    - 跨大版本的 runtime 依賴（例如當年 redis 6→8，連 RQ、fakeredis 都要驗）：關掉 PR、當成遷移票做。
+
+## `@playwright/test` 的 PR 一定紅，要人補兩個檔
+
+影片工人的映像（`ops/video/Dockerfile` 的 `mcr.microsoft.com/playwright:v<版本>-noble@sha256:…`）帶的是同一版 Playwright 的瀏覽器，`ops/video/package.json` 也釘死同一版；三處（含 lock）不一致時 `tools/supply-chain.test.mjs` 紅。沒有生態系會跟著改那兩個檔（docker 那一條連 patch tag 都忽略，只刷同一個 tag 的 digest），所以這個 PR 要在它的分支上補：`docker buildx imagetools inspect mcr.microsoft.com/playwright:v<新版>-noble` 取 index digest，改 Dockerfile 的 tag 與 digest、`ops/video/package.json` 的版本，照下面「在 Dependabot 的分支上修」推回去；改到 `ops/video/` 會觸發 `Video worker image` workflow 在 CI 建一次映像，證明拉得到、瀏覽器對得上。Microsoft 還沒發布那一版的映像就先放著等。
+
+## `video-worker` 的 PR（字型與 pinyin-pro）動到工人裝的套件就紅，要人補一個檔
+
+影片工人的映像只照 `ops/video/package.json` 安裝（沒有 lock），那個檔又不是 workspace，Dependabot 只改 `package-lock.json`；`tools/supply-chain.test.mjs` 在兩邊版本不一樣時紅（字型會換掉成片的字，pinyin-pro 會改變 check-audio 哪些句子算「同音」）。所以這群放在 `video-worker` 一個 PR：紅的時候在它的分支上把 lock 的版本抄進 `ops/video/package.json`，照下面「在 Dependabot 的分支上修」推回去：
+
+```bash
+node -e 'const fs=require("fs");const f="ops/video/package.json";const p=JSON.parse(fs.readFileSync(f));const l=JSON.parse(fs.readFileSync("package-lock.json")).packages;for(const n in p.dependencies)p.dependencies[n]=l["node_modules/"+n].version;fs.writeFileSync(f,JSON.stringify(p,null,2)+"\n")'
+```
+
+改到 `ops/video/` 會觸發 `Video worker image` workflow 在 CI 建映像，並在映像裡把範例影片從 render 跑到 package。只動到 `ops/video/package.json` 沒列的字型時是綠的，照一般流程合。
 
 ## 目前被擋住的大版本（以票為準，動手前先看票）
 

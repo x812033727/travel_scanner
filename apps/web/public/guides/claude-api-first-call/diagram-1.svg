@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
   <title id="title">第一次呼叫 Claude API：六個步驟與三個必要參數 / Six steps to your first Claude API call and the three required parameters</title>
-  <desc id="desc">左半邊由上而下是六個步驟，每一步用箭頭接到下一步。第一步開帳號：到 Claude Console（platform.claude.com）註冊，建立自己的組織。第二步儲值：Settings 到 Billing 按 Buy credits，預付點數，一年到期。第三步設每月上限：Billing 的 Spend limits 按 Adjust limit，Start 級距每月 500 美元。第四步建立金鑰：Settings 到 API keys 按 Create key，選有效期 3 小時到 30 天或 Never。第五步放進環境變數：export ANTHROPIC_API_KEY，不寫進程式、不提交進 git。第六步跑起來：pip install anthropic，執行十行 Python，印出回覆。右半邊是一次請求裡的三個必要參數。model 是模型 id，照官網原封不動複製，例如 claude-opus-5，打錯會拿到 404 not_found_error。max_tokens 是這次回覆最多產生幾個 token，官方範例用 1000，太小會被截斷，回應的 stop_reason 會顯示 max_tokens。messages 是對話內容，每則有 role 與 content，role 是 user 或 assistant，Messages API 無狀態，每次都要送整段歷史。右下角另註明金鑰不是參數：官方 SDK 會自己讀環境變數 ANTHROPIC_API_KEY，所以程式裡看不到金鑰。步驟、介面名稱與數字依 2026 年 9 月的 Anthropic 官方文件與 Claude 說明中心。</desc>
+  <desc id="desc">左半邊由上而下是六個步驟，每一步用箭頭接到下一步。第一步開帳號：到 Claude Console（platform.claude.com）註冊，建立自己的組織。第二步儲值：Settings 到 Billing 按 Buy credits，預付點數，一年到期。第三步設每月上限：Billing 的 Spend limits 按 Adjust limit，Start 級距每月 500 美元。第四步建立金鑰：Settings 到 API keys 按 Create key，選有效期 3 小時到 30 天或 Never。第五步放進環境變數：export ANTHROPIC_API_KEY，不寫進程式、不提交進 git。第六步跑起來：pip install anthropic，執行十行 Python，印出回覆。右半邊是一次請求裡的三個必要參數。model 是模型 id，照官網原封不動複製，例如 claude-opus-5-5，打錯會拿到 404 not_found_error。max_tokens 是這次回覆最多產生幾個 token，官方範例用 1000，太小會被截斷，回應的 stop_reason 會顯示 max_tokens。messages 是對話內容，每則有 role 與 content，role 是 user 或 assistant，Messages API 無狀態，每次都要送整段歷史。右下角另註明金鑰不是參數：官方 SDK 會自己讀環境變數 ANTHROPIC_API_KEY，所以程式裡看不到金鑰。步驟、介面名稱與數字依 2026 年 9 月的 Anthropic 官方文件與 Claude 說明中心。</desc>
   <rect width="1600" height="900" fill="#F7F1E8"/>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
@@ -47,7 +47,7 @@
   <rect x="980" y="150" width="560" height="174" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
   <text x="1010" y="190" font-size="20" font-weight="700" fill="#0B4F4D">model　模型 id</text>
   <text x="1010" y="226" font-size="16" fill="#102A2B">照官網原封不動複製，例如</text>
-  <text x="1010" y="258" font-size="16" fill="#0B4F4D">claude-opus-5</text>
+  <text x="1010" y="258" font-size="16" fill="#0B4F4D">claude-opus-5-5</text>
   <text x="1010" y="294" font-size="15" fill="#B8442D">打錯會拿到 404 not_found_error</text>
 
   <rect x="980" y="344" width="560" height="174" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>

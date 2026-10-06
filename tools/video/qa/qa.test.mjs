@@ -263,12 +263,19 @@ test("a blank channel stance and a failed verdict are failed items, exit 1", asy
 
 test("the judge being unreachable or out of budget is an external failure, exit 4; a revoked token is the owner's, exit 3", async () => {
   const { box, workdir } = finishedVideo();
-  const down = site({ policy: () => { throw new TypeError("fetch failed"); } });
+  const fetchFailed = (code) => Object.assign(new TypeError("fetch failed"), { cause: Object.assign(new Error(`socket ${code}`), { code }) });
+  const down = site({ policy: () => { throw fetchFailed("ECONNREFUSED"); } });
   const first = context(box, down.fetchImpl);
   assert.equal(await main(["qa", "--slug", box.slug], first.ctx), EXIT.external, first.out.stderr);
   const policy = readReport(workdir).items.find((item) => item.id === "policy");
   assert.equal(policy.ok, false);
   assert.match(policy.detail, /^the judge call failed: cannot reach https:\/\/site\.test/);
+  // A connection dropped after the judgement was sent may have spent the Jev call: asked once.
+  const lost = site({ policy: () => { throw fetchFailed("UND_ERR_SOCKET"); } });
+  const dropped = context(box, lost.fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], dropped.ctx), EXIT.external);
+  assert.match(readReport(workdir).items.find((item) => item.id === "policy").detail, /^the judge call failed: automation\/judge\/policy was sent and no answer came back/);
+  assert.equal(lost.calls.filter((call) => call.url.endsWith("/judge/policy")).length, 1, "not sent again");
   const spent = site({ policy: () => Response.json({ code: "jev_budget_exhausted", detail: "Jev 今天的次數用完了" }, { status: 429 }) });
   const budget = context(box, spent.fetchImpl);
   assert.equal(await main(["qa", "--slug", box.slug], budget.ctx), EXIT.external);
@@ -372,10 +379,10 @@ test("a compilation missing a locale's captions in one episode fails its caption
   assert.match(captions.detail, /ja: no caption file, 3 episodes have none/);
 });
 
-test("illustrated slides are measured on their cadence: a picture held too long or too few pictures fail the pace item", async () => {
+test("illustrated slides are measured on their cadence: a picture held too long or too few pictures fail the pace item; a picture kept with the judge's remarks warns on the assemble item", async () => {
   const { illustratedFixture } = await import("../core/fixtures/load.mjs");
   const { keyframesHash, lookHash, mixHash, sfxHash } = await import("../core/drama.mjs");
-  const run = async (seconds) => {
+  const run = async (seconds, { accepted = {} } = {}) => {
     const box = sandbox("fixture-illustrated", "illustrated");
     const doc = illustratedFixture();
     const lexicon = fixtureLexicon();
@@ -394,7 +401,7 @@ test("illustrated slides are measured on their cadence: a picture held too long 
     atomicWrite(path.join(workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visual, theme_hash: "t", fps: 30, size: { width: 1920, height: 1080 }, scenes, thumbnail: "thumbnail.jpg" }));
     atomicWrite(path.join(workdir, "frames", "cache.json"), JSON.stringify(cache));
     writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720, 4000));
-    const shots = Object.fromEntries(doc.scenes.filter((scene) => scene.template === "shot").map((scene) => [scene.id, { file: `keyframes/${scene.id}.png`, sha256: "e".repeat(64) }]));
+    const shots = Object.fromEntries(doc.scenes.filter((scene) => scene.template === "shot").map((scene) => [scene.id, { file: `keyframes/${scene.id}.png`, sha256: "e".repeat(64), ...(accepted[scene.id] ? { judge: { overall: 5, passed: false, problems: accepted[scene.id] }, accepted_with_problems: accepted[scene.id] } : {}) }]));
     atomicWrite(path.join(workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: lookHash(doc), shots }));
     atomicWrite(path.join(workdir, "music", "manifest.json"), JSON.stringify({ mix_hash: mixHash(doc), source: "track", track: "bed.mp3" }));
     writeFileSync(path.join(workdir, "final.mp4"), randomBytes(1024));
@@ -409,7 +416,17 @@ test("illustrated slides are measured on their cadence: a picture held too long 
   const shotLines = Object.fromEntries(illustratedFixture().scenes.filter((scene) => scene.template === "shot").flatMap((scene) => scene.lines.map((line) => [line.id, 4])));
   const good = await run(shotLines);
   assert.equal(good.assemble.ok, true, good.assemble.detail);
+  assert.equal(good.assemble.warnings, undefined);
   assert.equal(good.pace.ok, true, good.pace.detail);
+  // Pictures kept with the judge's remarks (keyframes --accept-best) ride on the assemble item as
+  // warnings, in shot order: the item passes, the cut is of them, and the owner decides on the cut.
+  const kept = await run(shotLines, { accepted: { race: ["generated: glossy finish"], desk: ["awkward: the hand", "details: no cup"] } });
+  assert.equal(kept.assemble.ok, true, kept.assemble.detail);
+  assert.deepEqual(kept.assemble.warnings, [
+    "desk: kept with the judge's remarks after the prompt fixes (awkward: the hand; details: no cup); the owner decides on the cut",
+    "race: kept with the judge's remarks after the prompt fixes (generated: glossy finish); the owner decides on the cut",
+  ]);
+  assert.equal(kept.pace.ok, true);
   assert.match(good.pace.detail, /^\d+ pictures, the longest [\d.]+ s, a new one every [\d.]+ s on average, \d+% of the runtime illustrated \(limits: 8 s, 50%\)$/);
   assert.match(good.disclosure.detail, /^no disclosure needed: illustrated slides: stylised tech-story pictures, a licensed music bed/);
   const slow = await run({ ...shotLines, a2pd: 12, a5nm: 9, a6nm: 9, a7nm: 9 });

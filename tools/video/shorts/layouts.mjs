@@ -44,6 +44,18 @@ export const THEMES = Object.freeze({
   },
 });
 
+// The entrance of a scene's first card (docs/videos/SHORTS.md §工具端, the same for every theme):
+// each element of the content rises 28 px and fades in, the headline first, then the rule, then
+// each row a step later, on an ease-out that never overshoots (no bounce). The stagger stops at
+// the fifth element so the longest card settles inside the frames build.mjs captures
+// (motion.mjs ENTRANCE_FRAMES): 4 × 40 + 240 = 400 ms, twelve frames. The animation is paused in
+// the CSS: a card never moves on its own clock; the build seeks it (render/browser.mjs).
+export const ENTRANCE = Object.freeze({ rise: 28, duration: 240, stagger: 40, staggerLimit: 4, easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)' });
+
+/** The CSS of the entrance: the `in` elements, each at its `--i` step of the stagger. */
+export const entranceCss = () => `@keyframes rise{from{opacity:0;transform:translateY(${ENTRANCE.rise}px)}to{opacity:1;transform:none}}
+.in{animation:rise ${ENTRANCE.duration}ms ${ENTRANCE.easing} both;animation-delay:calc(var(--i,0)*${ENTRANCE.stagger}ms);animation-play-state:paused}`;
+
 /** The theme of a script: by series for an experiment, by line otherwise. */
 export function themeOf(doc) {
   const line = doc?.schema_version === 1 ? 'lab' : doc?.line;

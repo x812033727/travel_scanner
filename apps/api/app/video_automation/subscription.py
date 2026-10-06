@@ -38,6 +38,10 @@ def _failure(error: AppError) -> StageFailed:
     if error.code == "subscription_quota_paused":
         # Nothing ran; the worker tries again on its next round, after the window moves on.
         return StageFailed(429, "video_ai_subscription_paused", error.detail, "900")
+    if error.code == "subscription_auth_failed":
+        # Nothing ran either: the account needs a person to sign it in again. The job fails
+        # with a retry time rather than turning uncertain (2026-10-06, a 403 access grant).
+        return StageFailed(503, "video_ai_subscription_auth_failed", error.detail, "900")
     if error.code == "subscription_not_signed_in":
         return StageFailed(
             503,

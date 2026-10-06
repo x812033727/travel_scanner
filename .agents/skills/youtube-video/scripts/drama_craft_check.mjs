@@ -24,12 +24,14 @@
 // text, so they are heuristics. They agree with a shot-by-shot hand reading of the 81 pilot
 // shots on 80 sizes and 81 motions (the study record has the comparison); a shot that names no
 // size counts as unknown rather than guessed; and meeting every row says the storyboard is
-// structured, not that the picture is good.
+// structured, not that the picture is good. The slideshow-risk rows (risk.*) also read who is
+// in the shot and where it is from the `prompt` and `motion` words; --json's `place` and
+// `nobody` show that reading.
 import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { craftChecks, renderCraftReport } from "../../../../tools/video/core/craft.mjs";
 
-export { CPM, PAUSE_MS, SCENE_GAP_MS, SILENT_SHOT_SECONDS, TARGETS, REFERENCE, CRAFT_GATE_ROWS, cameraMove, craftChecks, isLookOnly, normalize, quantile, shotSize, sizesDisagree, spokenUnits } from "../../../../tools/video/core/craft.mjs";
+export { CPM, PAUSE_MS, SCENE_GAP_MS, SILENT_SHOT_SECONDS, TARGETS, REFERENCE, CRAFT_GATE_ROWS, cameraInMotion, cameraMove, castWords, craftChecks, isLookOnly, nobodyIn, normalize, placeOf, quantile, shotSize, sizesDisagree, spokenUnits } from "../../../../tools/video/core/craft.mjs";
 
 function main(argv) {
   const flags = new Set(argv.filter((arg) => arg.startsWith("--")));
