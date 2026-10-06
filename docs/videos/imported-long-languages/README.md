@@ -163,7 +163,16 @@ intent/result journal for synthesis, transcription and audio judging. It saves t
 exact wire request before dispatch and the complete raw response before the native
 client reads it. A lost response, interrupted intent or corrupt receipt holds the
 slug across routes and payloads; native retry loops receive a local 409 and cannot
-send another paid POST. Completed WAV/JSON responses replay across restarts with
+send another paid POST. The one exception is the speech route's own 502
+`upstream_unavailable` with that JSON code: the route never reached the API, so
+nothing ran or was charged. The journal removes that intent and returns the answer
+unchanged, and the native client's bounded retry goes out and is journaled like a
+first answer. Every other answer that is not 2xx, including 503
+`upstream_unavailable`, 504 `video_speech_answer_lost` and a gateway's HTML 502,
+still holds the slug. This needs a site that serves #1272 (production does since
+c12e159d0); an older site answers that 502 for a lost answer too. A batch keeps the
+journal its runtime froze, so one frozen before this exception still holds the 502
+until it is prepared again. Completed WAV/JSON responses replay across restarts with
 their original billable header. Source, namespace, owner choice and fresh public
 speech configuration must still match. Retained-body batches keep their original
 transport. Applying any phase still requires fresh source/account/budget checks;
