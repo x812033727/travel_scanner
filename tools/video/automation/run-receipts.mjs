@@ -310,5 +310,19 @@ export function runReceiptStore(ctx, site) {
         || goneStage !== null && goneStage !== "" && entry.record.request.stage === goneStage
         && ["queued", "running"].includes(entry.record.receipt?.status) && !entry.record.adopted);
     },
+    /**
+     * The saved runs of a video whose answer is still to be taken, as [{ stage, variant, status }]:
+     * prepared and perhaps sent (status null), queued or running on the server, or succeeded and
+     * not yet adopted. A failed or uncertain one is not listed (the next request clears the
+     * first, the owner looks at the second), nor a policy hold. Read only: flow.mjs asks which
+     * videos have a discussion of their screenplay unfinished, and nothing here is changed.
+     */
+    untaken(slug) {
+      const dir = directory(slug);
+      if (!existsSync(dir)) return [];
+      return readdirSync(dir).filter((name) => name.endsWith(".json")).map((name) => read(path.join(dir, name)))
+        .filter((record) => !record.adopted && !policyHeld(record) && (record.receipt === null || ["queued", "running", "succeeded"].includes(record.receipt.status)))
+        .map((record) => ({ stage: record.request.stage, variant: record.request.variant, status: record.receipt?.status ?? null }));
+    },
   };
 }

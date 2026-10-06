@@ -48,25 +48,27 @@ while another step has something of that video in flight.
 
 ## Definition of done
 
-- [ ] While a discussion's writer job for a video is still running on the server, no other writer
+- [x] While a discussion's writer job for a video is still running on the server, no other writer
       request is sent for that video and its own stages wait; the discussion's answer is taken on
-      a later round, and the video moves again after it.
+      a later round, and the video moves again after it. (Done in PR #1342, in the repair of its
+      second review; see Notes. What is left of this ticket is the second item.)
 - [ ] No step of the first lane's bookkeeping saves `auto.json` for a video another lane may have
       taken since the step read it.
 
 ## Steps
 
-- [ ] `step()`: a RUN_PENDING thrown outside a video's unit that names a video (`error.slug`,
+- [x] `step()`: a RUN_PENDING thrown outside a video's unit that names a video (`error.slug`,
       `tagged` by `client.mjs`) and whose slug is one of this worker's videos sets that video
       aside in the shared `pendingUntil` instead of only ending the run, or `stepUnit` asks the
       receipt store whether the video has an unfinished writer journal before moving it. Decide
       which with a test that owns the sequence: the owner's line, a pending `discuss` job, the
-      owner's rejection, the next round.
+      owner's rejection, the next round. (Both, in PR #1342.)
 - [ ] `bookkeeping()`: hold the video in `busy` around `recordVideoId` and `tellCompilationDone`
       (a `try`/`finally`, as the retry acknowledgement does), or have them save before the await
-      and nothing after it.
-- [ ] Tests in `automation.test.mjs` (two lanes, the site call held in flight) and
-      `series.test.mjs` (the discussion sequence above).
+      and nothing after it. Read `auto.json` again once the video is held, as `stepUnit` now does:
+      each loop lists the states before its first await.
+- [ ] Tests in `automation.test.mjs` (two lanes, the site call held in flight). The discussion
+      sequence is in `series.test.mjs` since PR #1342.
 
 ## How to verify
 
@@ -85,4 +87,14 @@ node --test tools/video/automation/automation.test.mjs tools/video/automation/se
 - A line on a screenplay also waits behind a STOP file in its video's own work directory only by
   accident: with durable runs the client does not send while the file is there and the run ends
   on RUN_PENDING every round. Holding such a line in `answerScript` (the video is held, so is its
-  line) would be the same kind of guard; decide it with the first item.
+  line) would be the same kind of guard; decide it with the first item. (Decided with it: a video
+  its own STOP file holds is not at rest, `flow.mjs` `resting`, so its line waits.)
+- The first item as PR #1342 did it (2026-10-06, the repair of its second review): the discussion
+  holds its video in `busy` from the resting check to the answer (`discuss.mjs` `answerScript`);
+  a RUN_PENDING that names one of this worker's videos sets it aside in `pendingUntil` whether its
+  own unit or its discussion threw it, and the lane goes on (`flow.mjs` `step`); and a video with
+  a discussion's saved run still to take (`client.mjs` `untakenRuns`, by the writer's `discuss`
+  and `anime-discuss-plan` variants) has the first lane take the discussion up at the start of its
+  unit, before the video's own stages, while the other lanes leave the video to it (`stepUnit`).
+  `stepUnit` also reads `auto.json` again once it holds a video, which is the guard the second
+  item's loops still lack.

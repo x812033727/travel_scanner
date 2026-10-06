@@ -27,7 +27,7 @@ import { PART_BYTES } from "../review/sync.mjs";
 import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
 import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, blockedKindOf, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
+import { Automation, automatedVideos, blockedKindOf, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -4499,6 +4499,225 @@ test("the retry acknowledgement holds its video: while the report is in flight n
   assert.equal(await first.step(), "retried-video: fact-check round 1");
   assert.deepEqual(staged, ["first"]);
   assert.deepEqual([state().verify_rounds, state().defer_count, site.listed.get(slug).retry_acknowledged_id], [1, undefined, request]);
+});
+
+test("a lane moves a video from the state it reads once it holds it: a unit another lane finished meanwhile is not run a second time, and that lane's block is not written over", async () => {
+  // "verified": the other lane's fact-check passed and was saved; "uncertain": its answer was lost and it blocked the video.
+  for (const mode of ["verified", "uncertain"]) {
+    const box = sandbox();
+    const clock = { now: Date.parse("2026-10-06T10:00:00Z") };
+    const { ctx } = context(box, async () => new Response("{}"), clock);
+    for (const [slug, created] of [["older-waiting", "2026-10-05T00:00:00Z"], ["moving-video", "2026-10-05T01:00:00Z"]]) {
+      atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", created_at: created, verify_rounds: 0, verified: false, notes: [] }));
+    }
+    const api = { videos: async () => [], report: async () => {}, settleRuns: async () => {} };
+    const settings = { enabled: true, max_waiting_drafts: 0 };
+    const shared = { busy: new Set(), skipped: new Set(), pendingUntil: new Map() };
+    const first = new Automation(ctx, api, settings, { ...shared });
+    const second = new Automation(ctx, api, settings, { ...shared, secondary: true });
+    const state = () => automatedVideos(box.work).find((each) => each.slug === "moving-video");
+    const paid = [];
+    let visited;
+    let releaseOlder;
+    let releaseStage;
+    const olderVisited = new Promise((resolve) => (visited = resolve));
+    const olderHeld = new Promise((resolve) => (releaseOlder = resolve));
+    const stageHeld = new Promise((resolve) => (releaseStage = resolve));
+    for (const [name, lane] of [["first", first], ["second", second]]) {
+      lane.languages = async () => null;
+      lane.due = () => false;
+      lane.advance = async (video) => {
+        if (video.slug === "older-waiting") {
+          // The first lane's read of an older video's reviews: a site call that takes a moment.
+          if (name === "first") {
+            visited();
+            await olderHeld;
+          }
+          return null;
+        }
+        // The fact-check, whose progress lives only in auto.json (flow.mjs verify).
+        if (video.verified) return null;
+        paid.push(`${name}: verifier asked with verify_rounds ${video.verify_rounds}`);
+        if (name === "second") await stageHeld;
+        if (mode === "uncertain" && name === "second") throw Object.assign(new AutomationError("automation/run was sent and no answer came back", { code: RUN_UNCERTAIN }), { stage: "verifier" });
+        video.verify_rounds += 1;
+        video.verified = true;
+        lane.persist(video);
+        return `${video.slug}: fact-check round ${video.verify_rounds}, passed`;
+      };
+    }
+
+    // The second lane holds the video: its verifier is in flight.
+    const secondUnit = second.step();
+    while (!paid.length) await new Promise((resolve) => setImmediate(resolve));
+    assert.deepEqual([...shared.busy], ["moving-video"], mode);
+    // The first lane starts its unit: it lists the videos (this one unverified, and busy) and visits the older one.
+    const firstUnit = first.step();
+    await olderVisited;
+    // Meanwhile the second lane's unit ends: saved, and the video let go.
+    releaseStage();
+    const ended = await secondUnit;
+    assert.deepEqual([...shared.busy], ["older-waiting"], mode);
+    // The first lane's visit of the older video returns, and its loop comes to this one with the copy it listed.
+    releaseOlder();
+    assert.equal(await firstUnit, null, `${mode}: nothing is left for the first lane to do`);
+    // Before: the listed copy still said unverified, so the first lane sent the verifier again and saved its own state over the other lane's.
+    assert.deepEqual(paid, ["second: verifier asked with verify_rounds 0"], `${mode}: one verifier request for the video`);
+    if (mode === "verified") {
+      assert.equal(ended, "moving-video: fact-check round 1, passed");
+      assert.deepEqual([state().status, state().verified, state().verify_rounds], ["active", true, 1]);
+    } else {
+      assert.match(ended, /^moving-video: blocked — verifier may have run on the server without its answer reaching the worker .*; it is not asked again until the owner retries$/);
+      assert.deepEqual([state().status, state().blocked_kind, state().verified], ["blocked", "uncertain:verifier", false], "the block stands: before, the first lane saved the video as active and verified");
+    }
+    assert.deepEqual([...shared.busy], []);
+  }
+});
+
+test("a deferral for trouble that is everyone's waits and shows on the card like any other and never blocks; the video's own trouble in the same row still counts to its own limit", async () => {
+  const { clock, reports, automation, state, until, saved } = deferring();
+  const jev = "waits: Jev could not judge the outline (今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再判斷)";
+  const waits = [];
+  for (let tried = 1; tried <= DEFER_LIMIT + 4; tried++) {
+    assert.equal(await automation.defer(state, jev, { what: "judge", everyone: true }), `${jev}; deferred until ${state.deferred_until}`);
+    // Before: the seventh blocked the video as deferred:judge, and it stayed blocked after the budget came back at midnight.
+    assert.deepEqual([state.status, state.defer_count, saved().status, saved().defer_count], ["active", tried, "active", tried], `try ${tried}`);
+    waits.push(until() / 60_000);
+    clock.now = Date.parse(state.deferred_until) + 1;
+  }
+  assert.deepEqual(waits, [5, 10, 20, 40, 80, 120, 120, 120, 120, 120], "it keeps trying every two hours");
+  assert.deepEqual([state.defer_shared, saved().defer_shared], [DEFER_LIMIT + 4, DEFER_LIMIT + 4], "auto.json keeps how many of the row were everyone's");
+  assert.equal(reports.length, DEFER_LIMIT + 3, "the card is told from the second, every time");
+  assert.deepEqual([reports.at(-1).stage, reports.at(-1).checklist[0].key], ["waiting", "deferred"]);
+  assert.match(reports.at(-1).checklist[0].label, /^暫時過不去，2026-10-0\d \d\d:\d\d UTC 後再試（連續第 10 次）：Jev could not judge the outline/);
+
+  // The budget is back and a vendor is busy: that is the video's own trouble, counted from its first.
+  const vendor = "waits: keyframes could not finish (the vendor is busy)";
+  for (let own = 1; own <= DEFER_LIMIT; own++) {
+    assert.match(await automation.defer(state, vendor, { what: "keyframes" }), /; deferred until /);
+    assert.deepEqual([state.status, state.defer_count, state.defer_shared], ["active", DEFER_LIMIT + 4 + own, DEFER_LIMIT + 4], `own trouble ${own}`);
+    clock.now = Date.parse(state.deferred_until) + 1;
+  }
+  // Everyone's trouble again does not block at the limit either; the video's own seventh does.
+  assert.match(await automation.defer(state, jev, { what: "judge", everyone: true }), /; deferred until /);
+  assert.equal(await automation.defer(state, vendor, { what: "keyframes" }), "waits: blocked — still could not move after 7 tries: keyframes could not finish (the vendor is busy)");
+  assert.deepEqual([state.status, state.blocked_kind, state.defer_count, state.defer_shared, saved().defer_shared], ["blocked", "deferred:keyframes", undefined, undefined, undefined]);
+});
+
+test("which trouble is everyone's: the codes that never count toward a block, and the wording of a command that exits 4", () => {
+  const shared = ["jev_budget_exhausted", "video_speech_budget_exhausted", "video_review_store_full", "rate_limit_exceeded", "rate_limit_unavailable", "video_ai_job_queue_unavailable", "video_ai_worker_stopped", "video_ai_automation_disabled"];
+  for (const code of shared) {
+    assert.equal(everyones(new AutomationError("x", { status: 429, code })), code);
+    // Only trouble that waits is ever everyone's: a refusal of the video's own request still blocks it, and the token or the settings still end the run.
+    assert.ok(ERROR_SCOPES.wait.some((row) => row[1] === code), `${code} waits`);
+  }
+  // A vendor's own answer must reach a card (a revoked key reads as a 502 for every video), and so must a queue that
+  // loses every job before its dispatch. The forwarders' 502 is also what one request the API never answers in time gets.
+  for (const code of ["video_ai_upstream_failed", "video_ai_upstream_busy", "video_ai_job_interrupted_before_dispatch", "video_ai_job_dispatch_closed", "upstream_unavailable", "video_speech_upstream_failed", "network", ""]) {
+    assert.equal(everyones(new AutomationError("x", { status: 502, code })), null, code);
+  }
+  assert.equal(everyones(new TypeError("a bug")), null);
+  assert.equal(everyones(null), null);
+  // What tts, dub, check-audio, qa and review-push print: the server's detail, not its code.
+  for (const [said, code] of [
+    ["今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再檢查", "jev_budget_exhausted"],
+    ["  [ ] policy: the judge call failed: 今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再判斷\nslug: 10 of 11 checks passed\nthe quality check could not finish (a service was down); run review-push --gate final again later", "jev_budget_exhausted"],
+    ["the review store is full; publish or delete videos", "video_review_store_full"],
+    ["本月的 Gemini 語音字數預算（500000 字）不夠這次的 1200 字；可調高 VIDEO_SPEECH_GEMINI_MONTHLY_CHARACTER_LIMIT，或等下個月", "video_speech_budget_exhausted"],
+    ["本月的語音字數預算（500000 計費字元）不夠這次的 1200 字元；可在後台調高上限，或等下個月", "video_speech_budget_exhausted"],
+    ["about 1200 billable characters needed, 300 left this month", "video_speech_budget_exhausted"],
+    ["about 1200 billable characters needed for gemini, 300 left this month", "video_speech_budget_exhausted"],
+    ["請求過於頻繁，請稍後再試", "rate_limit_exceeded"],
+    ["安全驗證服務暫時無法使用", "rate_limit_unavailable"],
+  ]) assert.equal(everyones(said), code, said);
+  for (const said of ["Jev 暫時無法判斷", "the music vendor is busy (HTTP 503)", "cannot reach https://site.test: fetch failed", "the API is not answering", ""]) assert.equal(everyones(said), null, said);
+});
+
+test("Jev's daily calls spent defers an outline for as long as it lasts without ever blocking it, and the outline is judged by itself once the budget is back", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  let spent = true;
+  const site = fakeSite({
+    answers: answersFor(slug, { applies: "1" }),
+    settings: { channel_stance: STANCE },
+    // apps/api/app/video_automation/judge.py: 429 until midnight UTC, shared with the news automation.
+    judge: () => (spent ? Response.json({ code: "jev_budget_exhausted", detail: "今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再判斷" }, { status: 429 }) : jevPick("A")),
+  });
+  const clock = { now: Date.parse("2026-10-06T10:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  const state = () => automatedVideos(box.work)[0];
+  const said = /Jev could not judge the outline \(今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再判斷\); deferred until /;
+  assert.match(await automation.step(), said);
+  const waits = [(Date.parse(state().deferred_until) - clock.now) / 60_000];
+  for (let tried = 2; tried <= DEFER_LIMIT + 3; tried++) {
+    nextRun(automation, clock);
+    // Before: the seventh try was "blocked — still could not move after 7 tries", one owner retry for each outline waiting that day.
+    assert.match(await automation.step(), said, `try ${tried}`);
+    assert.deepEqual([state().status, state().blocked, state().defer_count], ["active", undefined, tried], `try ${tried}`);
+    waits.push((Date.parse(state().deferred_until) - clock.now) / 60_000);
+  }
+  assert.deepEqual(waits, [5, 10, 20, 40, 80, 120, 120, 120, 120]);
+  assert.equal(state().defer_shared, DEFER_LIMIT + 3, "every one of them was everyone's");
+  assert.equal(automation.halted, false);
+  const card = site.listed.get(slug);
+  assert.equal(card.checklist[0].key, "deferred", "the card says why it waits");
+  assert.match(card.checklist[0].label, /連續第 9 次）：Jev could not judge the outline/);
+  assert.equal(site.calls.reviews.length, 0, "nothing was sent");
+
+  // Midnight: the budget is back, and the outline goes on with no retry from the owner.
+  spent = false;
+  nextRun(automation, clock);
+  assert.equal(await automation.step(), "chatgpt-ads-off: Jev picked outline A; outline sent to /admin/videos");
+  assert.deepEqual([state().status, state().defer_count, state().defer_shared, state().deferred_until], ["active", undefined, undefined, undefined]);
+  assert.equal(site.listed.get(slug).checklist.some((row) => row.key === "deferred"), false, "and the card loses its row");
+});
+
+test("a narration check or a push that says the trouble is everyone's (Jev's budget, the review store full) never blocks the video; a push that fails for a reason of its own still does", async () => {
+  const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => false });
+  const { ctx } = gate.automation;
+  const played = ctx.runCommand;
+  // check-audio as tts/cli.mjs ends it when Jev's daily calls are spent: the server's detail on stderr, exit 4.
+  let spent = true;
+  ctx.runCommand = async (command, runCtx) => {
+    if (command[0] !== "check-audio" || !spent) return played(command, runCtx);
+    gate.runs.push(command.join(" "));
+    return { code: 4, out: "3 clips transcribed\n今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再檢查\n" };
+  };
+  for (let tried = 1; tried <= DEFER_LIMIT + 2; tried++) {
+    // Before: the seventh try blocked the narration as deferred:check-audio.
+    assert.match(await gate.automation.step(), /^chatgpt-ads-off: narration check could not finish \(今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再檢查\); deferred until /, `try ${tried}`);
+    assert.deepEqual([gate.state().status, gate.state().defer_count], ["active", tried], `try ${tried}`);
+    nextRun(gate.automation, gate.clock);
+  }
+  assert.deepEqual([gate.state().defer_shared, gate.reviews("audio").length], [DEFER_LIMIT + 2, 0]);
+  spent = false;
+  assert.match(await gate.automation.step(), /narration checked \(Jev passed every line\) and sent for review$/);
+  assert.deepEqual([gate.state().defer_count, gate.state().defer_shared], [undefined, undefined]);
+
+  // A push of a gate's files: the review store is full (507, every video's until the owner frees space).
+  const push = deferring();
+  const full = { code: EXIT.external, out: "final.mp4: part 3 of 12\nthe review store is full; publish or delete videos\n" };
+  for (let tried = 1; tried <= DEFER_LIMIT + 2; tried++) {
+    assert.match(await push.automation.submissionFailure(push.state, "final", full), /^waits: could not send the final for review: final\.mp4: part 3 of 12 the review store is full; publish or delete videos; deferred until /);
+    assert.deepEqual([push.state.status, push.state.defer_count], ["active", tried]);
+    push.clock.now = Date.parse(push.state.deferred_until) + 1;
+  }
+  // The final cut's quality check asks Jev for the policy item and prints the spent budget above the push's own last lines.
+  const quality = { code: EXIT.external, out: "  [ ] policy: the judge call failed: 今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再判斷\n  [x] disclosure: none needed\nwaits: 10 of 11 checks passed; review/qa.json\nthe quality check could not finish (a service was down); run review-push --gate final again later\n" };
+  assert.match(await push.automation.submissionFailure(push.state, "final", quality), /; deferred until /);
+  assert.deepEqual([push.state.status, push.state.defer_shared], ["active", DEFER_LIMIT + 3]);
+
+  // A push that cannot reach the site may be this video's own (a part the gateway cuts every time): it is counted, and blocks.
+  const own = deferring();
+  const cut = { code: EXIT.external, out: "final.mp4: part 3 of 12\ncannot reach https://site.test: fetch failed\n" };
+  for (let tried = 1; tried <= DEFER_LIMIT; tried++) {
+    assert.match(await own.automation.submissionFailure(own.state, "final", cut), /; deferred until /);
+    own.clock.now = Date.parse(own.state.deferred_until) + 1;
+  }
+  assert.equal(await own.automation.submissionFailure(own.state, "final", cut), "waits: blocked — still could not move after 7 tries: could not send the final for review: final.mp4: part 3 of 12 cannot reach https://site.test: fetch failed");
+  assert.equal(own.state.blocked_kind, "deferred:review-push");
 });
 
 test("the translator's and the caption reviewer's requests carry the sheet's glossary and the narration's cue boundaries beside a worksheet without them, whole and in units", async () => {

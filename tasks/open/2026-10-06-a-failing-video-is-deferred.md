@@ -67,6 +67,17 @@ The owner decided (2026-10-06) to fix the loop too, in its smallest form, on its
       change: a line on a screenplay waits while its video is not at rest, the retry
       acknowledgement holds its video, and a saved job the server no longer has is sent again
       only under the owner's retry.
+- [x] (Second review.) A lane moves a video only from the `auto.json` it reads once it holds the
+      video, so a unit another lane finished meanwhile is not run and paid for again, and that
+      lane's block is not written over.
+- [x] (Second review.) A discussion of a screenplay holds its video like the video's own unit:
+      while its writer request is in flight, while its job is still running on the server, and in
+      the next round until its answer is taken; a job the server no longer has blocks the video
+      as `job_gone:writer` instead of ending every round.
+- [x] (Second review.) Trouble that is everyone's and passes on its own (Jev's daily calls or the
+      month's speech characters spent, the review store full, a rate limit, a stopped worker)
+      never blocks one video, however long it lasts: the video keeps its row on the card and goes
+      on by itself.
 
 ## Steps
 
@@ -121,6 +132,36 @@ The review of PR #1342 (twelve findings, every one confirmed by a second reader;
       against a `git archive` of the branch head with only the test files replaced and the new
       constants the tests import appended to `flow.mjs` and `run-receipts.mjs`, so they link.
 
+The second review of PR #1342 (six findings from four lenses, two of them the same; five changes):
+
+- [x] 9. `stepUnit` reads a video's `auto.json` again once it holds it in `busy`, and moves that
+      state: gone, no longer active or done, or waiting by the fresh copy, the video is left.
+- [x] 10. `discuss.mjs` `answerScript` holds its video in `busy` from the resting check to the
+      answer. `step()` sets a video aside in `pendingUntil` for a RUN_PENDING that names it,
+      whether its own unit or its discussion threw it, and the lane goes on. `run-receipts.mjs`
+      `untaken` and `client.mjs` `untakenRuns` list a video's saved runs whose answer is still to
+      take; `Automation.discussionOpen` reads them by the writer's discussion variants: the first
+      lane takes such a discussion up at the start of its unit, before the video's own stages,
+      and the other lanes leave the video to it.
+- [x] 11. `stepUnit` records the videos its loop left alone (`passedOver`: busy, waiting, or held
+      by a STOP file), and `resting()` is false for them and for a STOP-held video, whatever the
+      clock reads when the discussion step asks.
+- [x] 12. `answerScript` blocks its video as `job_gone:writer` when the lookup of the
+      discussion's saved job is `gone` (`Automation.jobGone`, shared with `move()`), and leaves
+      the line unanswered while the video is blocked that way.
+- [x] 13. `defer()` takes `everyone`: the deferral waits, doubles and shows on the card and never
+      blocks; `auto.json` `defer_shared` counts them, and only the row's other deferrals count
+      toward the limit. `everyones()` names the trouble from an error's code (`move()`, the retry
+      acknowledgement, the tidied languages' push, the outline judge, whose error `submitOutline`
+      keeps) or from what a command that exited 4 printed (the narration and dub checks, dub,
+      the pushes, the media stages).
+- [x] Tests for each: five new in `automation.test.mjs`, three in `discuss.test.mjs`, two in
+      `series.test.mjs`, one each in `client.test.mjs` and `run-receipts.test.mjs`. Every one of
+      the twelve fails on the branch head before the change, and nothing else does: the five test
+      files were run against a `git archive` of ba1927a32 with only the test files replaced and a
+      stub `everyones` appended to `flow.mjs` so they link (264 tests: 12 fail, 251 pass, the
+      POSIX-modes skip).
+
 ## How to verify
 
 ```bash
@@ -141,6 +182,14 @@ second deferral, and after six in a row a blocked card with `blocked_kind` `defe
 (or `unrecorded:<gate>`, `job_gone:<stage>`). A round that only waits prints
 `nothing to do now: N deferred and tried again later (<slug> until <time>, …)`.
 
+Since the second review: on a day Jev's calls run out, the outlines and narrations that reach
+Jev keep the row 「暫時過不去 …（連續第 N 次）：… JEV_DAILY_CALL_BUDGET …」 past the seventh try
+(`auto.json` has `defer_shared` beside `defer_count`), none of them is blocked, and each goes on
+after 00:00 UTC with no retry. A line the owner writes on a screenplay whose answer takes longer
+than a unit logs `<slug>: writer is still running; its saved receipt will be checked next round`
+without ending the run, and no other writer or verifier line for that slug appears until
+`<slug>: the writer answered the owner on script:N`.
+
 ## Notes
 
 - `retryLater` (OUTPUT_INVALID) still ends the run, as a cost guard against a model that answers
@@ -151,7 +200,8 @@ second deferral, and after six in a row a blocked card with `blocked_kind` `defe
   the client's `durablePollMs` (25 s) the plan named: one lookup already polls for up to 25 s, and
   looking again 25 s later is the pattern that met the 429. Nothing is saved, so the next round
   looks it up at once. A RUN_PENDING outside a video's unit (a discussion, a series document)
-  still ends the run, since nothing else would skip it.
+  still ends the run, since nothing else would skip it. (Since the second review a discussion's
+  sets its video aside the same way and the lane goes on; a series document's still ends it.)
 - `errorScope` treats a who:"owner" code that is not about the token, the settings or the budget
   as the video's (`video_production_voice_mismatch`): it blocks that video instead of ending
   every run. Since the review, `video_ai_subject_not_chosen` is no longer one of them: it is
@@ -256,9 +306,120 @@ What was decided, and what the code then asked for:
 - Noticed and not changed, filed as `2026-10-06-a-pending-discussion-job-and-the`: a
   discussion's own writer job still running does not hold its video on the next round, and the
   first lane's `recordVideoId` and `tellCompilationDone` await the site for a video they do not
-  hold in `busy`. Both are older than this pull request.
+  hold in `busy`. Both are older than this pull request. (The first was done here after all, in
+  the second review; the second is what that ticket still holds.)
 - After the review: the seven files of "How to verify" are green on this Windows machine (141,
   6, 33, 20 with one skip for POSIX modes, 3, 55, 17), and so is the whole directory (393 tests,
   two skipped: POSIX modes, file symlinks). `npm run test:tools`: 1,910 of 1,921 pass, six
   skipped, and the same five reds as before the review (the duration-review binding and the
   four of this Windows machine).
+
+### The second review of PR #1342 (2026-10-06)
+
+Four readers went over the head after the first review's changes (ba1927a32), each through the
+real `step()` with only the stages stubbed; six findings, two of them the same one from two
+sides (one high, the rest medium). By the change that answers them:
+
+- Change 9 (high; on main too, and older than this pull request). A lane's loop listed every
+  `auto.json` once per unit and moved each video with that copy. While it visited an older video
+  (a status read and a reviews call), another lane could finish a unit on a later one, save it
+  and let it go: the first lane then ran the same stage again from the copy (two verifier
+  requests for one video) and saved over the other lane's state, an `uncertain:verifier` block
+  included. The first review's change 7 had closed one instance of it.
+- Change 10 (medium). A discussion's writer request did not hold its video: while it was in
+  flight, `busy` was empty and another lane sent the video's own request beside it; when its
+  durable job outlasted the unit, the lane's run ended and nothing remembered the job, so
+  another lane of the same run, or the next round's first unit, took a screenplay the owner had
+  sent back meanwhile and sent `writer/episode` beside it. The discussion's saved request then no
+  longer matched the script, and its paid answer was set aside and bought again.
+- Change 11 (medium; introduced by change 1). `resting()` read the clock again after the unit's
+  loop had: a writer's recheck time, or a saved wait, that ran out between the two readings left
+  the video unvisited by the loop and at rest for the guard, and `writer/discuss` went out
+  beside the pending job.
+- Change 12 (medium). The `gone` of change 6 was handled only in `move()`. From a discussion's
+  lookup it left `step()` as an exception every round: `auto` ended at the discussion step,
+  ahead of the series, the drama requests and the scheduled draft, the journal stayed, and no
+  retry could reach it because no video was blocked for it.
+- Change 13 (medium, found twice). The limit of change 2 blocked a video for trouble that is
+  everyone's and passes on its own. With Jev's daily calls spent at 10:00 UTC, an outline at its
+  judgement or a narration at its check was deferred at 1, 8, 19, 40, 81 and 163 minutes and
+  blocked at 284 as `deferred:judge`, and stayed blocked after the budget came back at midnight,
+  one owner retry for each video. Before the first review it resumed by itself.
+
+What was decided, and what the code then asked for:
+
+- A video is moved from the copy read once it is held. The check the loop made on the listed
+  copy stays (it is what decides whether to hold the video at all); what the fresh copy says
+  then decides whether to move it.
+- A RUN_PENDING that names one of this worker's videos sets that video aside like its own
+  pending writer, and the lane goes on, where a discussion's used to end the lane's run. With
+  the video in `pendingUntil` the reason for ending it ("nothing else would skip it") is gone:
+  the line is held by `resting()`, so the next unit does not ask again. A series document's
+  still ends the run.
+- The next round takes the discussion up first, on the first lane, at the start of the unit,
+  and only when some active video that the loop could take has a saved run of a discussion
+  still to take (`untakenRuns`: prepared, queued, running, or succeeded and not adopted; the
+  writer's `discuss` and `anime-discuss-plan` variants). It is the site that hands the line, so
+  the step is the ordinary discussion step run earlier, not a lookup of its own: a job still
+  running sets the video aside again, a finished one is answered with no new request, and the
+  video's own stage follows on the next unit. Looking the job up from the video's own unit was
+  the other way; it would have told "still running" from "over" but could not take the answer,
+  and the answer has to be taken before a rewrite makes its request stale.
+- The other lanes leave a video with such a saved run to the first lane. They cannot answer a
+  line, and without this the second lane, which starts its unit at the same moment, reaches the
+  video before the first lane holds it.
+- A saved run no line claims any more (the site answered the thread for another reason, or
+  withdrew it, while the job ran) holds nothing on the first lane: the discussion step finds no
+  line, and the video moves in the same unit. The other lanes keep leaving that video to the
+  first, and the first asks the site for the next line at the start of each unit while the
+  journal is there. A line cannot be withdrawn on the site today, and a video whose discussion
+  is pending is not moved, so it cannot be blocked and answered for meanwhile; setting such a
+  journal aside is noted in `2026-10-06-a-discussion-whose-writer-answer-was`.
+- A video its own STOP file holds is not at rest either: its line waits with it. With durable
+  runs the client would not send while the file is there in any case.
+- `job_gone:writer` from a discussion reads "… a retry sets the saved request aside and the
+  owner's line on script:N is answered once more". While a video is blocked as
+  `job_gone:writer`, for its own writer's job or a discussion's, a line on its screenplay is held
+  instead of being answered with "no screenplay here"; other blocks answer as before.
+- Which trouble is everyone's (`EVERYONE_CODES`): `jev_budget_exhausted`,
+  `video_speech_budget_exhausted`, `video_review_store_full`, `rate_limit_exceeded`,
+  `rate_limit_unavailable`, `video_ai_job_queue_unavailable`, `video_ai_worker_stopped`,
+  `video_ai_automation_disabled`. Left out on purpose, so they still reach the limit and a
+  card: a vendor's own answers (the first review: a revoked key reads as a 502 for every
+  video); `video_ai_job_interrupted_before_dispatch` and `video_ai_job_dispatch_closed` (the
+  first review: a queue that loses every job before its dispatch must reach a card); and the
+  forwarders' 502 `upstream_unavailable`, which one reader asked for. It is also what a request
+  the API does not answer within the forwarder's 60 seconds gets
+  (`apps/web/app/api/video/reviews/[...path]/forward.ts`: the abort at line 61 lands in the
+  same catch as an API that is down, line 83), so it can be one video's own report or push
+  that never goes through, which is what the limit is for; and with the API down altogether the
+  unit's own list read ends the run before any video is deferred, so an outage does not count
+  deferrals. `video_speech_not_configured` never reaches a deferral: the speech client makes it
+  the owner's (exit 3).
+- `tts`, `dub`, `check-audio`, `qa` and `review-push` print the server's detail, not its code,
+  and `review/sync.mjs` and `dubs/cli.mjs` belong to another task in progress
+  (`2026-10-01-hand-off-owner-approved-renewed-finals`), so the worker reads the wording
+  (`EVERYONE_WORDING`: the setting's name `JEV_DAILY_CALL_BUDGET`, "the review store is full",
+  the two sentences of the month's speech characters and the tools' own pre-check, the two
+  sentences of the rate limit). The whole output of the command is read, not its last line: the
+  final cut's quality check prints Jev's spent budget on its policy row, above the push's own
+  last lines. A wording the server changes is counted again, as every deferral was. The
+  outline judge's error is kept by `submitOutline` for its code, since `judgeOutline` answers a
+  wait with the reason alone.
+- An everyone's deferral still raises `defer_count`, so the wait doubles to two hours and the
+  row reads 連續第 N 次 past seven; `defer_shared` says how many of the row were such, and the
+  limit counts the rest. A video with ten of them and then a vendor's trouble is blocked at that
+  trouble's seventh, not its first.
+- Noticed and not changed, each filed: a discussion's other errors (a lost answer, a refusal, a
+  busy service) still end the round, every round, `2026-10-06-a-discussion-whose-writer-answer-was`;
+  `tts` and a narration retake that exit 4 block the video at once instead of waiting,
+  `2026-10-06-tts-and-a-narration-retake-that`; the bookkeeping's `recordVideoId` and
+  `tellCompilationDone` still await the site for a video they do not hold, which is what is left
+  of `2026-10-06-a-pending-discussion-job-and-the` (its first item is done here).
+- After the second review: the seven files of "How to verify" are green on this Windows machine
+  (146, 6, 34, 21 with the POSIX-modes skip, 6, 57, 17), and so is the whole directory (405
+  tests, the same two skipped). `npm run test:tools`: the same five reds as before and no other
+  (the duration-review binding, now for `flow.mjs`, `discuss.mjs`, `automation.test.mjs` and
+  `series.test.mjs`, and the four of this Windows machine); the run counted 1,932 tests, 1,921
+  passed and six were skipped, and the third `discuss.test.mjs` test, added after it started,
+  is green in the directory run.

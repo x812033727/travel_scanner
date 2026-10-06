@@ -393,6 +393,19 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
      * still answers that it has no such job.
      */
     retryRuns,
+    /**
+     * The saved runs of a video whose answer is still to be taken, [{ stage, variant, status }]
+     * (run-receipts.mjs untaken); nothing is sent or changed. A journal that cannot be read lists
+     * none: the stage that owns it meets it, and blocks the video with the reason.
+     */
+    untakenRuns: (slug) => {
+      try {
+        return receipts.untaken(slug);
+      } catch (error) {
+        if (error instanceof RunReceiptError) return [];
+        throw error;
+      }
+    },
     /** Report the video's title, stage and checklist to /admin/videos. */
     report: (slug, project) => request("PUT", `reviews/${slug}`, project),
     /** Submit one review; the same content twice returns the review that exists. */

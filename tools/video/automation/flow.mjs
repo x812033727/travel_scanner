@@ -42,7 +42,7 @@ import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
 import { imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "../media/prompt-budget.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID, PAUSE_CODES, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
-import { discussStep } from "./discuss.mjs";
+import { discussStep, SCRIPT_DISCUSSION_VARIANTS } from "./discuss.mjs";
 import { JOB_GONE_KIND, RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
@@ -589,6 +589,46 @@ export function errorScope(error) {
   return "run";
 }
 
+// Trouble that is the whole worker's or the site's and passes without anyone touching the video:
+// Jev's daily calls or the month's speech characters spent, the review store full, the API's rate
+// limit or its limiter away, the job queue away, the work base's STOP file or the switch. Such a
+// deferral waits and shows on the card like any other and never counts toward DEFER_LIMIT
+// (Automation.defer `everyone`). While it did, a Jev budget spent in the morning blocked every
+// video that reached an outline judgement or a narration check by the afternoon, and each stayed
+// blocked, one owner retry apiece, after the budget came back at midnight. Left out on purpose: a
+// vendor's own answers (a revoked key reads as a 502 for every video and must reach a card), the
+// two codes of a job the queue lost before its dispatch (a queue that loses every job must too),
+// and the forwarders' 502 `upstream_unavailable`, which is also what a request the API did not
+// answer in time gets (apps/web/app/api/video/reviews/[...path]/forward.ts aborts and answers
+// the same 502), so it may be one video's own; with the API down the unit's list read ends the
+// run before any video is deferred.
+const EVERYONE_CODES = new Set([
+  "jev_budget_exhausted", "video_speech_budget_exhausted", "video_review_store_full", "rate_limit_exceeded", "rate_limit_unavailable",
+  "video_ai_job_queue_unavailable", "video_ai_worker_stopped", "video_ai_automation_disabled",
+]);
+// The same trouble as a command that exits 4 words it: tts, dub, check-audio, qa and review-push
+// print the server's detail and not its code, so the worker reads the setting or the sentence
+// the detail names (apps/api/app/video_automation/judge.py and video_speech/checking.py for Jev's
+// budget, video_reviews/storage.py, video_speech/admin_api.py and align_api.py and the tools' own
+// pre-check for the month's characters, app/infra.py and middleware.py for the rate limit). A
+// wording the server changes is counted again, which is how every deferral was before.
+const EVERYONE_WORDING = [
+  [/JEV_DAILY_CALL_BUDGET/, "jev_budget_exhausted"],
+  [/the review store is full/, "video_review_store_full"],
+  [/語音字數預算|billable characters needed[^\n]* left this month/, "video_speech_budget_exhausted"],
+  [/請求過於頻繁/, "rate_limit_exceeded"],
+  [/安全驗證服務暫時無法使用/, "rate_limit_unavailable"],
+];
+
+/**
+ * The code of trouble that is everyone's (EVERYONE_CODES), or null for one video's own: from an
+ * error's code, or from what a command that exited 4 printed. What defer() is told as `everyone`.
+ */
+export function everyones(trouble) {
+  if (typeof trouble === "string") return EVERYONE_WORDING.find(([wording]) => wording.test(trouble))?.[1] ?? null;
+  return trouble instanceof Error && EVERYONE_CODES.has(trouble.code ?? "") ? trouble.code : null;
+}
+
 /** A file's sha256, or null when it cannot be read. */
 function fileSha256(file) {
   try {
@@ -720,7 +760,8 @@ async function report(ctx, api, state, stage, { deferred = null } = {}) {
 export class Automation {
   /**
    * `lane` runs several of these side by side in one `auto` (VIDEO_WORKER_LANES): `busy` is the
-   * slugs some lane is moving right now, shared by every lane, and a `secondary` lane only moves
+   * slugs some lane is moving right now (in the video's own unit, or answering a line on its
+   * screenplay), shared by every lane, and a `secondary` lane only moves
    * videos already under way, never drops, retries, drafts, discussions or series, which stay
    * with the first lane so two lanes never start the same thing. `skipped` (the videos left for
    * the rest of this run, defer) and `pendingUntil` (slug → when a writer still running on the
@@ -743,6 +784,8 @@ export class Automation {
     this.halted = false;
     // The video the current unit is moving, for a writer still pending on the server (step()).
     this.unitVideo = null;
+    // The videos the current unit's loop left alone (stepUnit), which are not at rest (resting).
+    this.passedOver = new Set();
     // The owner's lines this run left unanswered because their video was not at rest
     // (discuss.mjs answerScript), by message id, so the log says so once.
     this.heldLines = new Set();
@@ -885,11 +928,17 @@ export class Automation {
    * so the owner reads it on /admin/videos and a retry starts the video at once. From the
    * DEFER_REPORT_FROM-th in a row the site is told with a checklist row (reportDeferred).
    *
+   * `everyone` says the trouble is the whole worker's or the site's (everyones: a budget spent
+   * until tomorrow, the review store full, a rate limit): the deferral waits, doubles and shows
+   * on the card like any other, and neither blocks nor counts toward the limit (`defer_shared`
+   * is how many of the row's deferrals were such), since the video has nothing wrong with it and
+   * goes on by itself when the trouble is over. Its own trouble in the same row still counts.
+   *
    * `backoffMs` sets the wait outright and is not counted: 0 leaves the video for the rest of
    * this run alone (a STOP file: nothing failed). Every lane leaves it for the rest of this run
    * either way. Resolves to the line.
    */
-  async defer(state, line, { backoffMs = null, retryAfter = null, what = null, limit = DEFER_LIMIT, blocked = null } = {}) {
+  async defer(state, line, { backoffMs = null, retryAfter = null, what = null, limit = DEFER_LIMIT, blocked = null, everyone = false } = {}) {
     const now = this.ctx.now().getTime();
     if (Number.isFinite(backoffMs) && backoffMs >= 0 && !(Number.isFinite(retryAfter) && retryAfter > 0)) {
       this.skipped.add(state.slug);
@@ -900,10 +949,13 @@ export class Automation {
     }
     const count = Number.isInteger(state.defer_count) && state.defer_count > 0 ? state.defer_count : 0;
     const why = line.startsWith(`${state.slug}: `) ? line.slice(state.slug.length + 2) : line;
-    if (count >= limit) return this.block(state, blocked?.why ?? `still could not move after ${count + 1} tries: ${why}`, blocked?.kind ?? `deferred:${what ?? "stage"}`);
+    const shared = Math.min(Number.isInteger(state.defer_shared) && state.defer_shared > 0 ? state.defer_shared : 0, count);
+    const own = count - shared;
+    if (!everyone && own >= limit) return this.block(state, blocked?.why ?? `still could not move after ${own + 1} tries: ${why}`, blocked?.kind ?? `deferred:${what ?? "stage"}`);
     const asked = Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : 0;
     const wait = Math.min(Math.max(DEFER_BASE_MS * 2 ** count, asked), DEFER_MAX_MS);
     state.defer_count = count + 1;
+    if (everyone) state.defer_shared = shared + 1;
     this.skipped.add(state.slug);
     state.deferred_until = new Date(now + wait).toISOString();
     saveState(this.workdir(state.slug), state);
@@ -956,6 +1008,7 @@ export class Automation {
     if (!saved || saved.slug !== state.slug || saved.status === "blocked") return;
     for (const each of [saved, state]) {
       delete each.defer_count;
+      delete each.defer_shared;
       delete each.deferred_until;
     }
     if (state.deferred_reported) {
@@ -983,9 +1036,31 @@ export class Automation {
    * in an earlier round counts: the video is passed over before its unit, so this run never
    * looked its writer up, and a job sent before the deferral (the read of its reviews failed
    * ahead of the lookup, twice in a row) may still be running on the server.
+   *
+   * Nor is a video its own STOP file holds (movable): its stages are held, and so is its line.
+   * And a video this unit's loop left alone (`passedOver`: busy, waiting or held when the loop
+   * came to it) is not at rest for the rest of the unit, whatever the clock says now: the loop
+   * read the time before it visited the other videos, so a writer's recheck time or a saved wait
+   * that ran out during those visits left the video unvisited and its pending job never looked
+   * up, and a discussion sent then was a second writer request beside it.
    */
   resting(state, now = this.ctx.now().getTime()) {
-    return !this.busy.has(state.slug) && !this.waiting(state, now);
+    return !this.passedOver.has(state.slug) && this.movable(state, now);
+  }
+
+  /** Whether the unit's loop may take a video now: no lane is moving it, it does not sit the unit out (waiting), and no STOP file of its own holds it. */
+  movable(state, now) {
+    return !this.busy.has(state.slug) && !this.waiting(state, now) && !existsSync(path.join(this.workdir(state.slug), "STOP"));
+  }
+
+  /**
+   * Whether a discussion of this video's screenplay has an answer still to take (discuss.mjs
+   * answerScript): its writer job was still running when an earlier unit or round ended, or its
+   * answer is saved and no unit has taken it. The first lane takes it up before the video's own
+   * stages (stepUnit), and the other lanes leave the video to it.
+   */
+  discussionOpen(slug) {
+    return (this.api.untakenRuns?.(slug) ?? []).some((saved) => saved.stage === "writer" && SCRIPT_DISCUSSION_VARIANTS.includes(saved.variant));
   }
 
   /**
@@ -1051,11 +1126,17 @@ export class Automation {
     } catch (error) {
       if (!(error instanceof AutomationError && error.code === RUN_PENDING)) throw error;
       const what = `${error.stage ?? "writer"} is still running; its saved receipt will be checked next round`;
-      // A video's writer: no lane looks the job up again within PENDING_RECHECK_MS, and the other
-      // videos move. Anything else (a discussion, a series document) has no such list: the run ends.
-      if (this.unitVideo) {
-        this.pendingUntil.set(this.unitVideo, this.ctx.now().getTime() + PENDING_RECHECK_MS);
-        return `${this.unitVideo}: ${what}`;
+      // A video's writer, sent by its own unit or to answer a line on its screenplay (discuss.mjs,
+      // which runs outside the unit and names the video on the error): no lane looks the job up
+      // again or moves the video within PENDING_RECHECK_MS, the line waits with it (resting), and
+      // the other videos move. Until 2026-10-06 a discussion's pending job only ended this lane's
+      // run: the video was in no list, so another lane of the same run sent its own writer or
+      // verifier request beside the job. Anything else (a series document) has no such list: the
+      // run ends.
+      const video = this.unitVideo ?? (automatedVideos(this.workBase).some((state) => state.slug === error.slug) ? error.slug : null);
+      if (video) {
+        this.pendingUntil.set(video, this.ctx.now().getTime() + PENDING_RECHECK_MS);
+        return `${video}: ${what}`;
       }
       return this.later(`${error.slug ?? "video"}: ${what}`);
     }
@@ -1067,6 +1148,8 @@ export class Automation {
 
   async stepUnit() {
     if (!this.settings.enabled) return null;
+    // What this unit's loop leaves alone, for resting(); a new unit starts with none.
+    this.passedOver = new Set();
     // Every video on /admin/videos, the ones this worker did not make included, read afresh
     // each unit: the owner may drop one at any time.
     this.site = await this.api.videos();
@@ -1078,33 +1161,67 @@ export class Automation {
       if (found) return found;
     }
     const now = this.ctx.now().getTime();
-    for (const state of automatedVideos(this.workBase)) {
-      if (!["active", "done"].includes(state.status) || !free(state)) continue;
-      // A video waiting on its own (defer, a writer still running) sits this unit out, so the
-      // next one moves instead of the oldest ending every round.
-      if (this.waiting(state, now)) continue;
-      // A STOP file in the video's own work directory holds that video (the renewal handoff
-      // keeps one there until its readback is verified): its stages would stop at once and end
-      // the round on it, so the round passes over it. The owner's drop still reaches it above; a
-      // retry waits until the file is gone. The work base's STOP file is auto's, between units.
-      if (existsSync(path.join(this.workdir(state.slug), "STOP"))) continue;
-      this.busy.add(state.slug);
-      // Kept when move() throws, for step(): a writer still pending is this video's alone.
-      this.unitVideo = state.slug;
+    // A discussion of a screenplay that an earlier unit or round left unfinished (its writer job
+    // was still running, or its answer is saved and not yet taken) comes before its video's own
+    // stages: the job is the video's writer job too. Until 2026-10-06 the next round moved the
+    // video first, so a screenplay the owner had sent back meanwhile was rewritten beside the
+    // running job, the discussion's saved request no longer matched the script, and its paid
+    // answer was set aside and bought again. When the site hands no line for it (the thread was
+    // answered or withdrawn since) the video moves below as usual.
+    let discussed = false;
+    const videos = automatedVideos(this.workBase).filter((state) => ["active", "done"].includes(state.status));
+    if (!this.secondary && videos.some((state) => state.status === "active" && this.movable(state, now) && this.discussionOpen(state.slug))) {
+      discussed = true;
+      // The loop has not run yet: what it would leave alone at this reading of the clock is not
+      // at rest for a line either (resting).
+      for (const state of videos) if (!this.movable(state, now)) this.passedOver.add(state.slug);
+      const answered = await discussStep(this);
+      if (answered) return answered;
+    }
+    for (const listed of automatedVideos(this.workBase)) {
+      if (!["active", "done"].includes(listed.status)) continue;
+      // A video another lane is moving, one waiting on its own (defer, a writer still running),
+      // which sits this unit out so the next one moves instead of the oldest ending every round,
+      // and one its own STOP file holds (the renewal handoff keeps one there until its readback
+      // is verified: its stages would stop at once and end the round on it). The owner's drop
+      // still reaches a held video above; a retry waits until the file is gone. The work base's
+      // STOP file is auto's, between units.
+      if (!this.movable(listed, now)) {
+        this.passedOver.add(listed.slug);
+        continue;
+      }
+      // The first lane takes an unfinished discussion up (above); until it has, the video's
+      // own stages are not another lane's to run.
+      if (this.secondary && this.discussionOpen(listed.slug)) continue;
+      this.busy.add(listed.slug);
       try {
+        // The list was read before this loop's first await. While this lane visited the videos
+        // ahead, another lane may have finished a unit on this one, saved it and let it go: the
+        // copy in hand would run the stage a second time (a verifier paid for twice) and save
+        // over what that lane wrote, a block included. Now that the video is held, auto.json is
+        // read again, and that is the state this unit moves.
+        const state = readJson(path.join(this.workdir(listed.slug), STATE_FILE), null);
+        if (!state || state.slug !== listed.slug || !["active", "done"].includes(state.status) || this.waiting(state, now)) {
+          this.passedOver.add(listed.slug);
+          continue;
+        }
+        // Kept when move() throws, for step(): a writer still pending is this video's alone.
+        this.unitVideo = state.slug;
         const done = await this.move(state, siteBySlug);
         if (done) return done;
+        this.unitVideo = null;
       } finally {
-        this.busy.delete(state.slug);
+        this.busy.delete(listed.slug);
       }
-      this.unitVideo = null;
     }
     if (this.secondary) return null;
     // The owner's lines on a document or a screenplay are answered first, one per round
     // (docs/videos/DRAMA-FLOW.md, section 3): the owner is waiting, and nothing is paid for. A
     // line on the screenplay of a video that is not at rest (resting) is left for a later unit.
-    const discussed = await discussStep(this);
-    if (discussed) return discussed;
+    if (!discussed) {
+      const answered = await discussStep(this);
+      if (answered) return answered;
+    }
     // A series in the making comes next (docs/videos/SERIES.md), then the owner's one-off
     // requests from before one-offs became series, then a scheduled draft, all within the same
     // waiting cap.
@@ -1194,7 +1311,7 @@ export class Automation {
           // move() sends the acknowledgement before any stage of this video, which waits; the
           // others go on, unless the site or the token is what failed.
           const line = `${state.slug}: retry saved; could not report it yet (${error.message})`;
-          return errorScope(error) === "run" ? this.later(line) : await this.defer(state, line, { what: "report" });
+          return errorScope(error) === "run" ? this.later(line) : await this.defer(state, line, { what: "report", everyone: Boolean(everyones(error)) });
         }
       } finally {
         this.busy.delete(state.slug);
@@ -1246,7 +1363,7 @@ export class Automation {
         await report(this.ctx, this.api, state, "retrying");
       } catch (error) {
         const line = `${state.slug}: retry saved; could not report it yet (${error.message})`;
-        return errorScope(error) === "run" ? this.later(line) : this.defer(state, line, { what: "report" });
+        return errorScope(error) === "run" ? this.later(line) : this.defer(state, line, { what: "report", everyone: Boolean(everyones(error)) });
       }
     }
     let done = null;
@@ -1268,20 +1385,27 @@ export class Automation {
       if (scope === "run") throw error;
       const request = error.stage ? `the ${error.stage} request` : "a request";
       const code = error.code || `HTTP ${error.status}`;
-      // The lookup of a saved job answered with a settled 4xx (client.mjs durableRun `gone`: no
-      // such job under this token after the worker was paired again, or not the receipt's job).
-      // Its journal stays where it is, since the old job may still be running under the old
-      // token; only the owner's retry of this kind sets it aside, and the stage is then sent once.
-      if (error.gone) {
-        const stage = error.stage ?? "writer";
-        return this.block(state, `the server no longer has the saved ${stage} job (${code}: ${error.message}); a retry sets the saved request aside and sends the ${stage} stage once more`, `${JOB_GONE_KIND}${stage}`);
-      }
+      if (error.gone) return this.jobGone(state, error);
       if (scope === "video") return this.block(state, `the site refused ${request} (${code}): ${error.message}`);
       const retryAfter = Number(error.retry_after);
-      return this.defer(state, `${state.slug}: ${request} could not finish (${code}: ${error.message})`, { retryAfter: Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : null, what: error.stage ?? "request" });
+      return this.defer(state, `${state.slug}: ${request} could not finish (${code}: ${error.message})`, { retryAfter: Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : null, what: error.stage ?? "request", everyone: Boolean(everyones(error)) });
     }
     await this.moved(state);
     return done;
+  }
+
+  /**
+   * The lookup of a saved job answered with a settled 4xx (client.mjs durableRun `gone`: no such
+   * job under this token after the worker was paired again, or not the receipt's job). Its
+   * journal stays where it is, since the old job may still be running under the old token: the
+   * video is blocked as `job_gone:<stage>`, and only the owner's retry of that kind sets the
+   * journal aside (client.mjs retryRuns), after which the request is sent once. `sends` words
+   * what the retry sends for a job that is not the video's own stage (a discussion's).
+   */
+  jobGone(state, error, sends = null) {
+    const stage = error.stage ?? "writer";
+    const code = error.code || `HTTP ${error.status}`;
+    return this.block(state, `the server no longer has the saved ${stage} job (${code}: ${error.message}); a retry sets the saved request aside and ${sends ?? `sends the ${stage} stage once more`}`, `${JOB_GONE_KIND}${stage}`);
   }
 
   /** Whether another video may start without passing the owner's cap on drafts waiting on them. */
@@ -1462,9 +1586,22 @@ export class Automation {
     const file = path.join(docDir(state.slug, this.ctx.root), "brief.md");
     const brief = readFileSync(file, "utf8");
     const options = outlineOptions(brief);
-    const verdict = await judgeOutline(this.api, state.slug, brief, options);
-    // Jev or the site away: this outline waits, and the other videos move.
-    if (verdict.status === "later") return this.defer(state, `Jev could not judge the outline (${verdict.reason})`, { what: "judge" });
+    // judgeOutline answers a wait with its reason alone; the error is kept here for its code.
+    let trouble = null;
+    const judge = {
+      judgeOutline: async (body) => {
+        try {
+          return await this.api.judgeOutline(body);
+        } catch (error) {
+          trouble = error;
+          throw error;
+        }
+      },
+    };
+    const verdict = await judgeOutline(judge, state.slug, brief, options);
+    // Jev or the site away: this outline waits, and the other videos move. Jev's daily calls
+    // spent is every outline's until midnight UTC: it waits without counting toward a block.
+    if (verdict.status === "later") return this.defer(state, `Jev could not judge the outline (${verdict.reason})`, { what: "judge", everyone: Boolean(everyones(trouble)) });
     if (verdict.pick) {
       state.last_pick = verdict.pick;
       saveState(this.workdir(state.slug), state);
@@ -1800,6 +1937,7 @@ export class Automation {
     // starts it at once.
     delete state.deferred_until;
     delete state.defer_count;
+    delete state.defer_shared;
     state.blocked_report_pending = true;
     saveState(this.workdir(state.slug), state);
     const reported = await this.reportBlocked(state);
@@ -1825,12 +1963,14 @@ export class Automation {
    * Permanent rejected payloads stop this video; any other failed push (the site busy or away, a
    * token it refused, a file the push wants) defers this video alone. A token the site refuses
    * refuses the next unit's video list too, which ends the run. A push that keeps failing (a 409
-   * of the site's own, a local refusal) reaches the deferrals' limit and blocks with its line.
+   * of the site's own, a local refusal) reaches the deferrals' limit and blocks with its line;
+   * one that says the trouble is everyone's (the review store full, Jev's budget spent under the
+   * final cut's quality check, which prints it above the push's own last lines) does not.
    */
   submissionFailure(state, gate, result) {
     const detail = lastLine(result.out, 2);
     if (result.code === this.ctx.EXIT.lint) return this.block(state, `${gate} submission rejected: ${detail}`);
-    return this.defer(state, `${state.slug}: could not send the ${gate} for review: ${detail}`, { what: "review-push" });
+    return this.defer(state, `${state.slug}: could not send the ${gate} for review: ${detail}`, { what: "review-push", everyone: Boolean(everyones(result.out)) });
   }
 
   async reportBlocked(state) {
@@ -2214,7 +2354,7 @@ export class Automation {
       // or saved as a wait, like a tts or a check the file ended.
       if (stopRequested(this.workdir(state.slug)) || said.startsWith("stopped ")) return this.defer(state, line, { backoffMs: 0 });
       // A vendor or the server's budget: this video's stage waits, the other videos move.
-      return this.defer(state, line, { what: command });
+      return this.defer(state, line, { what: command, everyone: Boolean(everyones(result.out)) });
     }
     return this.block(state, `${command} failed: ${lastLine(result.out, 2)}`);
   }
@@ -2667,7 +2807,8 @@ export class Automation {
       if (redo.code !== 0) return this.block(state, `retake after the rewrite failed: ${lastLine(redo.out)}`);
       check = await run(ctx, ["check-audio", "--slug", state.slug]);
     }
-    if (check.code === 4) return this.defer(state, `${state.slug}: narration check could not finish (${check.out.trim().split("\n").at(-1)})`, { what: "check-audio" });
+    // A service away, or Jev's daily calls spent (everyone's until midnight UTC, and never a block).
+    if (check.code === 4) return this.defer(state, `${state.slug}: narration check could not finish (${check.out.trim().split("\n").at(-1)})`, { what: "check-audio", everyone: Boolean(everyones(check.out)) });
     // Stopped by a STOP file before every line was heard: nothing is judged yet, so nothing goes
     // for review, and the next run continues where it stopped.
     if (check.code === ctx.EXIT.incomplete) return this.defer(state, `${state.slug}: narration check stopped (${lastLine(check.out)}); the next run continues`, { backoffMs: 0 });
@@ -2862,7 +3003,7 @@ export class Automation {
     // videos can run; the existing one-shot retry resumes it after the payload is fixed.
     if (pushed.code === ctx.EXIT.lint) return this.block(state, `language submission rejected: ${lastLine(pushed.out, 2)}`);
     // Any other failed push waits for this video alone (submissionFailure).
-    if (pushed.code !== 0) return this.defer(state, `${slug}: could not send the language batch: ${lastLine(pushed.out, 2)}`, { what: "review-push" });
+    if (pushed.code !== 0) return this.defer(state, `${slug}: could not send the language batch: ${lastLine(pushed.out, 2)}`, { what: "review-push", everyone: Boolean(everyones(pushed.out)) });
     // A batch with no dub track is approved on arrival, and recorded now.
     const unrecorded = await this.pulled(state, "languages", GATES.languages({ workdir }));
     // A pull that ended in a block, or in a deferral the page was told about, has said what the
@@ -2906,7 +3047,7 @@ export class Automation {
       if (error.who !== "owner" && [400, 422].includes(error.status)) return this.block(state, `language submission rejected: ${error.message}`);
       // The token or the site out of reach end the run; anything else waits for this video alone.
       const line = `${slug}: could not send the language batch: ${error.message}`;
-      return errorScope(error) === "run" ? this.later(line) : this.defer(state, line, { what: "review-push" });
+      return errorScope(error) === "run" ? this.later(line) : this.defer(state, line, { what: "review-push", everyone: Boolean(everyones(error)) });
     }
     await report(ctx, this.api, state, "languages skipped");
     return `${slug}: work files cleared on ${day}; ${pending.map(({ locale, parts }) => `${locale} ${parts.join("+")}`).join(", ")} reported to /admin/videos as skipped, not made`;
@@ -3114,7 +3255,7 @@ export class Automation {
       }
       if (speechUncertain(made)) return lost(`dub ${locale}`, made);
       if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
-      if (made.code === 4) return this.defer(state, `${slug}: ${locale} dub could not finish (${lastLine(made.out)})`, { what: "dub" });
+      if (made.code === 4) return this.defer(state, `${slug}: ${locale} dub could not finish (${lastLine(made.out)})`, { what: "dub", everyone: Boolean(everyones(made.out)) });
       if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
       let check = await run(ctx, checkArgs);
       let refit = false;
@@ -3122,7 +3263,7 @@ export class Automation {
         rounds.retakes += 1;
         remember();
         const redo = await run(ctx, [...dubArgs, "--redo", flags]);
-        if (redo.code === 4) return this.defer(state, `${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)})`, { what: "dub" });
+        if (redo.code === 4) return this.defer(state, `${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)})`, { what: "dub", everyone: Boolean(everyones(redo.out)) });
         if (speechUncertain(redo)) return lost(`dub ${locale} retake`, redo);
         // The new take is longer than its window allows: the next pass's `dub` reports the same
         // window and shortens it, while shortening rounds are left.
@@ -3143,7 +3284,7 @@ export class Automation {
         // Nothing usable came back: the same words would only be heard wrong again.
         if (reworded.ids.length) continue;
       }
-      if (check.code === 4) return this.defer(state, `${slug}: ${locale} dub check could not finish (${lastLine(check.out)})`, { what: "check-audio" });
+      if (check.code === 4) return this.defer(state, `${slug}: ${locale} dub check could not finish (${lastLine(check.out)})`, { what: "check-audio", everyone: Boolean(everyones(check.out)) });
       if (check.code === ctx.EXIT.incomplete) {
         rounds.check_stopped = true;
         remember();

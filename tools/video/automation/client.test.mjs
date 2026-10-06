@@ -441,6 +441,42 @@ test("a pending writer restarts with GET and returns the persisted result despit
   assert.deepEqual(durableFiles(box), []);
 });
 
+test("a client lists a video's saved runs whose answer is still to be taken, from the journals alone: a pending discussion until its unit settles it, and none for a journal that cannot be read", async () => {
+  const box = sandbox(), requests = [];
+  let original;
+  let status = "running";
+  const client = durableClient(box, async (url, init) => {
+    requests.push(init.method);
+    if (init.method === "POST") original = JSON.parse(init.body);
+    return Response.json(job(original, status));
+  });
+  await client.settings();
+  const discuss = (from) => from.run("writer", DURABLE_SLUG, "Answer the owner's line", { message: "沈瀾為什麼不回答？" }, 16_000, "drama", "discuss");
+  const listed = (state) => [{ stage: "writer", variant: "discuss", status: state }];
+  assert.deepEqual(client.untakenRuns(DURABLE_SLUG), []);
+  await assert.rejects(discuss(client), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG);
+  const sent = requests.length;
+  assert.deepEqual(client.untakenRuns(DURABLE_SLUG), listed("running"));
+  // The next round is another process: it reads the same, and asks the server nothing for it.
+  const restarted = durableClient(box, async () => assert.fail("listing the saved runs sends nothing"));
+  assert.deepEqual(restarted.untakenRuns(DURABLE_SLUG), listed("running"));
+  assert.deepEqual(restarted.untakenRuns("another-video"), []);
+  assert.equal(requests.length, sent);
+  // The answer arrives: still to be taken until the unit that used it settles the journal.
+  status = "succeeded";
+  assert.deepEqual(await discuss(client), savedAnswer);
+  assert.deepEqual(client.untakenRuns(DURABLE_SLUG), listed("succeeded"));
+  client.settleRuns([DURABLE_SLUG]);
+  assert.deepEqual(client.untakenRuns(DURABLE_SLUG), []);
+
+  // A journal that cannot be read is the business of the stage that owns it, which blocks the video with the reason.
+  status = "running";
+  await assert.rejects(discuss(client), (error) => error.code === RUN_PENDING);
+  writeFileSync(durableFiles(box)[0], "{ not json");
+  assert.deepEqual(client.untakenRuns(DURABLE_SLUG), []);
+  await assert.rejects(discuss(client), (error) => error.code === RUN_UNCERTAIN && /unreadable/.test(error.message));
+});
+
 test("malformed and rebound receipts preserve their saved key and never dispatch a replacement run", async () => {
   for (const wrong of ["key", "GET hash", "GET id", "journal"]) {
     const box = sandbox(), calls = [];

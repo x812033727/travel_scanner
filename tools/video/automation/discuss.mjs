@@ -12,9 +12,14 @@ import path from "node:path";
 import { hasAnimePolicy, isLongAnime } from "../core/anime-policy.mjs";
 import { docDir } from "../core/paths.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
+import { JOB_GONE_KIND } from "./run-receipts.mjs";
 import { documentProblem } from "./series.mjs";
 
 export const REPLY_MAX_CHARS = 8_000;
+// The writer's variants that answer a line on a screenplay (answerScript). Both are durable jobs
+// (client.mjs run), so one may still be running on the server when its unit ends; flow.mjs reads
+// a video's saved runs by these to take the discussion up before the video's own stages.
+export const SCRIPT_DISCUSSION_VARIANTS = Object.freeze(["discuss", "anime-discuss-plan"]);
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
 
@@ -163,22 +168,49 @@ export function scriptDiscussionPayload(automation, job, state, video) {
  * flight, and a rewrite it saved left the first job's paid answer matching no request (or, with
  * the first draft still pending, told the owner there was no screenplay yet). The site hands
  * over one line at a time, so the lines behind a held one wait with it.
+ *
+ * The mirror image holds too: from the resting check to the end the discussion holds its video
+ * in the lanes' shared `busy` set, as a lane's own unit does, so no lane sends the video's own
+ * writer or verifier request while the discussion's is in flight; a job still running when the
+ * unit ends keeps the video set aside (flow.mjs step, stepUnit).
+ *
+ * A saved discussion job the server no longer has (client.mjs `gone`, after the worker was
+ * paired again) blocks the video as `job_gone:writer`, as its own writer's would: the journal
+ * stays until the owner's retry sets it aside, and the line stays unanswered meanwhile, to be
+ * sent once more after the retry. Until 2026-10-06 that error left this step as an exception
+ * every round: the run ended here, before any series work or draft, and no retry could reach
+ * the journal because no video was blocked for it.
  */
 export async function answerScript(automation, job) {
   const { series } = job;
   const state = scriptStateFor(automation, job);
+  // Said once a run: the site hands the same line over on every unit until it is answered.
+  const held = (slug, why) => {
+    if (!automation.heldLines.has(job.message.id)) {
+      automation.heldLines.add(job.message.id);
+      automation.log(`${slug}: the owner's line on ${job.subject} waits; ${why}`);
+    }
+    return null;
+  };
   if (!state) {
+    const gone = automation.states().find((each) => each.slug === job.episode?.slug && each.status === "blocked" && each.blocked_kind === `${JOB_GONE_KIND}writer`);
+    if (gone) return held(gone.slug, "its video is blocked until the owner's retry sets the saved writer job aside, and the line is answered after it");
     await automation.api.messageAnswer(job.message.id, { reply_md: unusableReply(`這台工人沒有 ${job.episode?.slug ?? job.subject} 的劇本`), revised: null });
     return `series ${series.slug}: no video for ${job.subject} here; the owner is told and the thread waits`;
   }
-  if (!automation.resting(state)) {
-    // Said once a run: the site hands the same line over on every unit until it is answered.
-    if (!automation.heldLines.has(job.message.id)) {
-      automation.heldLines.add(job.message.id);
-      automation.log(`${state.slug}: the owner's line on ${job.subject} waits; the video is being worked on or waits on its own, and the line is answered once it is at rest`);
-    }
-    return null;
+  if (!automation.resting(state)) return held(state.slug, "the video is being worked on or waits on its own, and the line is answered once it is at rest");
+  // Nothing is awaited between the read of the state, the check and this hold.
+  automation.busy.add(state.slug);
+  try {
+    return await answerHeld(automation, job, state);
+  } finally {
+    automation.busy.delete(state.slug);
   }
+}
+
+/** answerScript once the video is at rest and held: the reply, and the rewrite when one was asked for. */
+async function answerHeld(automation, job, state) {
+  const { series } = job;
   if (state.story) {
     await automation.api.messageAnswer(job.message.id, { reply_md: STORY_THREAD_REPLY, revised: null });
     return `${state.slug}: a story's screenplay is not rewritten from a thread; the owner is told how to change it`;
@@ -203,6 +235,7 @@ export async function answerScript(automation, job) {
       } else answer = { reply: answer.reply, revised: null };
     } else answer = await automation.stage("writer", state.slug, scriptDiscussionPayload(automation, job, state, video), 32_000, "drama", "discuss");
   } catch (error) {
+    if (error instanceof AutomationError && error.gone) return automation.jobGone(state, error, `the owner's line on ${job.subject} is answered once more`);
     if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
     automation.keepAnswer(automation.workdir(state.slug), "discuss");
     await automation.api.messageAnswer(job.message.id, { reply_md: unusableReply(error.message), revised: null });

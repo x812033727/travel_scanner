@@ -370,3 +370,39 @@ test("pending lookup tolerates only derived date and shared lexicon drift and re
   assert.throws(() => restarted.prepare(changed), /inputs changed/);
   assert.equal(restarted.find(changed).stale, true);
 });
+
+test("a video's saved runs whose answer is still to be taken are listed by stage and variant: prepared, queued, running, or succeeded and not adopted; the journals are only read", () => {
+  const box = sandbox(), store = runReceiptStore(context(box), site);
+  assert.deepEqual(store.untaken("video-one"), [], "a video with no journal yet");
+  // A discussion of the screenplay: the writer's own variant, beside whatever the video's stages saved.
+  const entry = store.prepare({ ...request(), variant: "discuss" });
+  const listed = (status) => [{ stage: "writer", variant: "discuss", status }];
+  assert.deepEqual(store.untaken("video-one"), listed(null), "prepared and perhaps sent");
+  for (const status of ["queued", "running", "succeeded"]) {
+    store.receive(entry, receipt(entry, status));
+    const bytes = readFileSync(entry.file, "utf8");
+    assert.deepEqual(store.untaken("video-one"), listed(status));
+    assert.equal(readFileSync(entry.file, "utf8"), bytes, `${status}: nothing is written`);
+  }
+  assert.deepEqual(runReceiptStore(context(box), site).untaken("video-one"), listed("succeeded"), "another process reads the same");
+  assert.deepEqual(store.untaken("video-two"), [], "another video's runs are its own");
+  // Once its output is saved the answer has been taken, whether or not the unit settled the journal yet.
+  const artifact = path.join(box.base, "video.json"); writeFileSync(artifact, result.text);
+  store.consume(entry);
+  store.adopt("video-one", { artifacts: [{ path: artifact, sha256: createHash("sha256").update(result.text).digest("hex") }] });
+  assert.deepEqual(store.untaken("video-one"), []);
+
+  // A failed run is cleared by the next request, an uncertain one waits for the owner, a policy hold for a validated retry: none has an answer to take.
+  for (const [slug, status, extra] of [["video-failed", "failed", {}], ["video-uncertain", "uncertain", {}], ["video-held", "failed", { error_code: POLICY_HOLD_CODE, dispatched_at: null }]]) {
+    const other = store.prepare(request(slug));
+    store.receive(other, { ...receipt(other, status), ...extra });
+    assert.deepEqual(store.untaken(slug), [], slug);
+  }
+  // A journal set aside is not listed, and one that cannot be read fails closed like every other read.
+  const aside = store.prepare(request("video-aside"));
+  store.archive(aside, { autoArchive: true });
+  assert.deepEqual(store.untaken("video-aside"), []);
+  const broken = store.prepare(request("video-broken"));
+  writeFileSync(broken.file, "{ not json");
+  assert.throws(() => store.untaken("video-broken"), /unreadable/);
+});
