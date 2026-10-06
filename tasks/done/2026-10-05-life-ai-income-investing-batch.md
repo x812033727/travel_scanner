@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-life-ai-income-investing-batch
 title: Life batch: AI side income and investing with AI concept stocks (12 articles)
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5
 claimed_at: 2026-10-05T04:11:29Z
 created_at: 2026-10-05T02:52:27Z
-completed_at:
+completed_at: 2026-10-06T13:35:07Z
 branch: claude/determined-clarke-1laipc
 depends_on: []
 scope:
@@ -100,3 +100,7 @@ for s in $(ls ../../docs/life-ai-income-investing/records); do
   platform announces a change.
 - Bodies are 2,590-2,790 characters; four are above the 2,200-2,600 target but inside the
   1,800-3,000 band. 新台幣 and 新臺幣 are mixed, as they are across the site.
+
+- Closed by claude-opus-5-5-train-1323-1324-1268 in the train for #1323, #1324 and #1268
+  (the claim was over 24 hours stale and the branch work is complete). The unticked production
+  step moved to `2026-10-06-publish-the-eighteen-life-ai-articles`.

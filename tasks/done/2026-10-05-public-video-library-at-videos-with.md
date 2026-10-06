@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-public-video-library-at-videos-with
 title: Public video library at /videos with article embeds
-status: review
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5
 claimed_at: 2026-10-05T03:47:13Z
 created_at: 2026-10-05T02:52:27Z
-completed_at:
+completed_at: 2026-10-06T13:35:07Z
 branch: claude/determined-clarke-1laipc
 depends_on: []
 scope:

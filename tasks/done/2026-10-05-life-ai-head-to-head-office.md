@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-life-ai-head-to-head-office
 title: "Life batch: AI office productivity (6 articles)"
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5
 claimed_at: 2026-10-05T08:44:15Z
 created_at: 2026-10-05T02:52:28Z
-completed_at:
+completed_at: 2026-10-06T13:35:08Z
 branch: claude/determined-clarke-1laipc
 depends_on: []
 scope:
@@ -59,3 +59,7 @@ real accounts to test honestly. Spec: `docs/life-ai-office-productivity/README.m
   coordinator on learn.microsoft.com) and redrew one hero that echoed a previous batch's.
 - Records per article in `docs/life-ai-office-productivity/records/<slug>/`, and
   `CROSS-CHECK.md`.
+
+- Closed by claude-opus-5-5-train-1323-1324-1268 in the train for #1323, #1324 and #1268
+  (the claim was over 24 hours stale and the branch work is complete). The unticked production
+  step moved to `2026-10-06-publish-the-eighteen-life-ai-articles`.

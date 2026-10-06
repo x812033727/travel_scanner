@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-grouped-site-navigation-and-a-top
 title: Grouped site navigation and a top-level AI hub at /ai
-status: review
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-5
 claimed_at: 2026-10-05T02:52:31Z
 created_at: 2026-10-05T02:52:26Z
-completed_at:
+completed_at: 2026-10-06T13:35:06Z
 branch: claude/determined-clarke-1laipc
 depends_on: []
 scope:
