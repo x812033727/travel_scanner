@@ -26,7 +26,12 @@ from app.config import Settings
 from app.db import SessionFactory, engine, get_session
 from app.models import VideoToolToken
 from app.problems import AppError, app_error_handler
-from app.video_automation.models import DEFAULT_STAGE_MODELS, VideoAiRun, VideoAutomationSettings
+from app.video_automation.models import (
+    DEFAULT_STAGE_MODELS,
+    VideoAiRun,
+    VideoAutomationSettings,
+    VideoStageJob,
+)
 from app.video_automation.schemas import StageRunIn, UsageView
 from app.video_shorts.models import VideoShortsSettings
 from app.video_speech import admin_api as speech_api
@@ -324,6 +329,41 @@ async def test_a_failed_call_is_recorded_and_explained(
     recorded = session.add.call_args.args[0]
     assert (recorded.status, recorded.error_code) == ("failed", code)
     assert stage["provider"].closed
+
+
+AGENT = Settings(
+    ai_accounts_enabled=True,
+    ai_accounts_agent_hmac_key="k" * 64,
+    ai_accounts_agent_socket="/run/mokaair-ai-accounts/agent.sock",
+)
+
+
+@pytest.mark.asyncio
+async def test_a_durable_job_whose_account_cannot_authenticate_fails_without_a_call(
+    stage: dict[str, Any], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """2026-10-06: a 403 access grant on claude-a left a job "uncertain" though nothing ran."""
+    refusal = ai.StageFailed(
+        503, "video_ai_subscription_auth_failed", "account a cannot authenticate", "900"
+    )
+    monkeypatch.setattr(ai, "run_on_subscription", AsyncMock(side_effect=refusal))
+    monkeypatch.delenv("VIDEO_STAGE_STOP_FILE", raising=False)
+    session = _session()
+    job = VideoStageJob(
+        id=uuid4(), status="running", provider="claude_code", model="claude-opus-5-5"
+    )
+    # Not dropped, then the dispatch boundary is committed: the job reached the agent.
+    session.scalar = AsyncMock(side_effect=[None, job.id])
+    row = VideoAutomationSettings(stage_models={}, enabled=True)
+    with pytest.raises(ai.StageFailed) as failed:
+        await ai.run_stage(session, AGENT, row, _request(), None, job=job)
+    assert failed.value is refusal
+    assert (failed.value.status, failed.value.retry_after) == (503, "900")
+    session.add.assert_not_called()
+    # run_jobs._mark_error reads this set: the job ends "failed" with a retry time, and the
+    # worker asks again, rather than "uncertain", which waits for the owner to retry by hand.
+    assert "video_ai_subscription_auth_failed" in ai.NO_MODEL_CALL_ERRORS
+    assert "video_ai_subscription_auth_failed" in ai.SUBSCRIPTION_RAN_NOTHING
 
 
 def test_the_month_starts_on_the_first_in_utc_and_budgets_name_the_limit() -> None:

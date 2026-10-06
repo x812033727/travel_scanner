@@ -203,6 +203,16 @@ text parser do not; a reader cannot wait for a CLI.
   again later) and a video writing stage remains paused. Since 2026-09-28 nothing falls back
   to MiniMax or any other model; the owner removed `ai_subscription_fallback`, and a stored
   value is ignored.
+- A run whose CLI cannot authenticate ("Failed to authenticate. API Error: 403 Access to this
+  model requires an access grant", "not logged in", an expired OAuth token) also rests that
+  account for 30 minutes, for every model family, and moves on to the next one; no usage probe
+  is forced on it, as the probe would fail the same way. The account is not signed out, so
+  the page still shows it signed in: sign it in again on /admin/ai-accounts. When every
+  signed-in account rests for this reason, the answer is `subscription_auth_failed` (503)
+  rather than `subscription_quota_paused`: research features wait, and a video stage job
+  fails with `video_ai_subscription_auth_failed` and a retry time, since nothing ran. Before
+  2026-10-06 such a run failed as `subscription_run_failed`, and a video stage job turned
+  "uncertain" although no model ran (`cloudflare-auto-router-who-measured-savings`).
 - Codex runs with shell, unified exec, browser, app, plugin, hooks and web search disabled,
   plus read-only sandboxing, an empty working directory, ephemeral history and a fixed output
   schema. The agent rejects any tool item in Codex's JSONL. A 2026-09-27 isolated host test

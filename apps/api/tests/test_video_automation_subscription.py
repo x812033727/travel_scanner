@@ -83,6 +83,7 @@ async def test_a_stage_is_sent_to_the_agent_with_the_owners_cap_as_json() -> Non
     ("code", "status", "mapped"),
     [
         ("subscription_quota_paused", 429, "video_ai_subscription_paused"),
+        ("subscription_auth_failed", 503, "video_ai_subscription_auth_failed"),
         ("subscription_not_signed_in", 409, "video_ai_provider_not_configured"),
         ("ai_accounts_agent_unavailable", 503, "video_ai_upstream_unreachable"),
         ("subscription_run_failed", 502, "video_ai_upstream_failed"),
@@ -211,6 +212,16 @@ async def test_a_paused_subscription_records_nothing_and_a_missing_agent_says_so
     with pytest.raises(ai.StageFailed) as paused:
         await ai.run_stage(session, AGENT, row, _request(), None)
     assert (paused.value.status, paused.value.code) == (429, "video_ai_subscription_paused")
+    session.add.assert_not_called()
+
+    agent.outcome = AppError(503, "subscription_auth_failed", "every Claude account failed")
+    with pytest.raises(ai.StageFailed) as signed_out:
+        await ai.run_stage(session, AGENT, row, _request(), None)
+    assert (signed_out.value.status, signed_out.value.code, signed_out.value.retry_after) == (
+        503,
+        "video_ai_subscription_auth_failed",
+        "900",
+    )
     session.add.assert_not_called()
 
     with pytest.raises(ai.StageFailed) as missing:
