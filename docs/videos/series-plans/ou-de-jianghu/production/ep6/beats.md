@@ -92,7 +92,7 @@
 
 固定做法照第 1 集第五節，兩個 scene，放在 a02 場 3 他走下跳板、腳踏上碼頭之後（該場第 13–14 鏡，緊接三個分段亮相的插鏡）：
 
-1. **定格鏡**：`template: "shot"`、`data.visual: "still"`、`camera: "Full shot, low angle, locked"`；`characters: ["luo-qingyan"]`；prompt 寫首格：Luo 站在跳板腳、碼頭石面上，面向畫面左的齊雲山，海綠與象牙的島袍、低低的珊瑚冠、貝扣腰帶，身後是收著海綠帆的使船與亮金的午後海面；**髮從兩側被海風揚起、後頸不入畫**（正面偏四分之三，不拍頸後）；`motion` 只寫一個極小的收勢：`The sea wind lifts the loose half of his hair and lets it fall`。≤ 10 秒。旁白念前兩句（兩行台詞，各 7 字）：「滄海托來不記名，」「珊瑚冠下少年清。」（`emotion`：「說書人念詩號，一句一頓，字字分明」）。
+1. **定格鏡**：`template: "shot"`、`data.visual: "still"`、`camera: "Full shot, low angle, slow push in"`（定格鏡一律 slow push in：still 加 locked 會被 shot_reading 判成陷阱，第 1–5 集的定格鏡都是這樣寫）；`characters: ["luo-qingyan"]`；prompt 寫首格：Luo 站在跳板腳、碼頭石面上，面向畫面左的齊雲山，海綠與象牙的島袍、低低的珊瑚冠、貝扣腰帶，身後是收著海綠帆的使船與亮金的午後海面；**髮從兩側被海風揚起、後頸不入畫**（正面偏四分之三，不拍頸後）；`motion` 只寫一個極小的收勢：`The sea wind lifts the loose half of his hair and lets it fall`。≤ 10 秒。旁白念前兩句（兩行台詞，各 7 字）：「滄海托來不記名，」「珊瑚冠下少年清。」（`emotion`：「說書人念詩號，一句一頓，字字分明」）。
 2. **詩號字卡**（緊接定格）：`template: "title"`，`data: {"title":"洛青衍","subtitle":"滄海托來不記名，珊瑚冠下少年清。不知此岸曾相送，只把歸程當遠行。","tag":"扶瀾使者"}`；旁白念後兩句（兩行）：「不知此岸曾相送，」「只把歸程當遠行。」（同一個 `emotion`）。
 3. 四句是原創，不要改字。「此岸曾相送」是說書人給觀眾的——堂上沒有人說、洛青衍自己不知道（第八節）。定格與字卡之間不插任何台詞；字卡之後接他的第一句話「閣下是三宗的人？」。
 

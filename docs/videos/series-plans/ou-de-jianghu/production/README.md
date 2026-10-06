@@ -40,6 +40,11 @@
 4. `review.md` 的數字（秒數、章名起點、高張力時間碼）跟著改。
 5. 續跑長時間的工作時，用檔案判斷哪些幕已完成，不要依賴 workflow 的快取：容器常重啟，pipeline 續跑時快取前綴會錯位，已寫好的幕會被重寫。
 
+## 固定規則（審稿人常提、但已裁定的）
+
+- 詩號與招式的定格鏡（`visual: "still"`）一律用 `slow push in`，不用 `locked`：`shot_reading.mjs` 把 still＋locked 判成陷阱 `still.locked`。第 1–6 集所有定格鏡都是這樣。
+- 旁白只用相對時間，不報「第幾日」；第 1 集名句不逐字重用；島底的符叫「盟符」。
+
 ## 寫下一集（第 6 集起）
 
 照第 2–5 集的做法：分場表 → 每幕一個代理（讀 `beats.md`、`cast-notes.md`、`header.json`、第 1 集同一幕當範本、`ep2/review-findings.json` 當反例）→ 每幕過 `check-act.mjs` → 一位整集審寫 `review-findings.json` → 一位修訂 → 一位對抗驗收（剩的寫 `-2`）→ 合併 → 跨集審 → `brief.md` 與 `review.md`。新角色先加進 `cast.json` 與 `cast-notes.md`，再 `node header.mjs --ep N`。
