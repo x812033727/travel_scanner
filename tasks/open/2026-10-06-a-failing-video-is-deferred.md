@@ -423,3 +423,34 @@ What was decided, and what the code then asked for:
   `series.test.mjs`, and the four of this Windows machine); the run counted 1,932 tests, 1,921
   passed and six were skipped, and the third `discuss.test.mjs` test, added after it started,
   is green in the directory run.
+- **Verified at `e0a752ad` (2026-10-07, two independent read-only readers).**
+  - *Money and concurrency.* The five fixes of `e0a752ad` hold. One paid duplicate was left,
+    older than this PR: `draft()` and `draftDrama()` saved the video as active and then awaited
+    Jev's outline judgement without holding it. A second lane could then submit the outline
+    again, and when Jev failed it, pay the planner twice. A scratch test showed two judgements,
+    two submits and two planner runs. Fixed: `firstOutline()` holds the video from the save
+    until the outline is in, with a test that fails without it.
+  - *Deferral semantics.* The backoff, the limits, the reset, STOP, `errorScope` (each code
+    checked against the API's status), `job_gone` and the whole-worker wait all match the
+    decisions above. No regression was found.
+  - *Regressions and tests.* No regression against main. Every gate's `pulled()` can reach
+    "approved", and a single lane works as before. Ten of the thirty behavioural hunks of
+    `e0a752ad` had no test that went red when the hunk was reverted. Two of them now have one:
+    `move()`'s `everyone` (a rate-limited stage request deferred past the limit, never blocked)
+    and the STOP file in `movable()`. The other eight are the `everyone` flag at the retry
+    acknowledgement, the media exit 4, the language pushes and the dub steps; each passes
+    `everyones(...)` the same way the tested sites do.
+  - *Known low items.* `job_gone`'s block put the server's words before the instruction, and
+    the card's label is cut at 120 characters (`schemas.py` `max_length=120`), so the owner
+    lost what a retry does. The instruction now comes first, and the longest form is 103
+    characters. Other blocked reasons are still cut at 120; that cut is the server's limit.
+    A writer job that stays queued has no ceiling: filed as
+    `2026-10-06-a-writer-job-that-stays-queued`. `tellCompilationDone` still saves without
+    holding its video (filed above). `pulled()` counts the row's earlier deferrals of other
+    kinds toward its limit of three, so a report deferral followed by two unrecorded pulls
+    blocks as `unrecorded:`; this is low, and is left as is.
+  - *Open question, not confirmed.* On the first lane the discussion-first path calls
+    `discussStep` once. If the site hands over a line for another, non-resting video first, it
+    returns null, and the loop could move the video whose discussion is still open with its own
+    stages. The site hands lines over oldest first (`messages.py` `order_by(created_at)`), which
+    one reader found keeps the open discussion's line first. No test was written.
