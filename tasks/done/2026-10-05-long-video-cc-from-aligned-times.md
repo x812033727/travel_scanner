@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-long-video-cc-from-aligned-times
 title: Long video CC cues cut at measured character times when the timeline carries them
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-cc-aligned
 claimed_at: 2026-10-06T00:18:30Z
 created_at: 2026-10-05T16:08:23Z
-completed_at:
+completed_at: 2026-10-06T00:49:50Z
 branch: claude/long-video-cc-aligned-times
 depends_on:
   - 2026-10-05-speech-align-character-timing
