@@ -1,14 +1,14 @@
 ---
 id: 2026-10-06-news-jev-publish-confidence-fell-below
 title: News Jev publish confidence fell below the act threshold after the criteria keys changed
-status: open
+status: done
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-video-stall
+claimed_at: 2026-10-06T00:38:48Z
 created_at: 2026-10-06T00:01:34Z
-completed_at:
-branch:
+completed_at: 2026-10-06T00:52:03Z
+branch: claude/news-jev-confidence-drop
 depends_on: []
 scope:
   - apps/api/app/news_automation/ai.py
@@ -68,7 +68,7 @@ be normal; it is noted here, not judged.
 - [x] A recorded comparison shows how much of the drop is the criteria: the same saved
       documents asked with the old `yes`/`no` wording and with the current `true`/`false`
       wording, with the noul of each, written in Notes.
-- [ ] The owner has chosen one way forward from the measured numbers (wording of the publish
+- [x] The owner has chosen one way forward from the measured numbers (wording of the publish
       question, its criteria, the act threshold, or none), and that choice is recorded here.
 - [ ] After the chosen change is live, at least one candidate is published automatically again,
       or the owner's decision to keep holding is recorded.
@@ -81,10 +81,11 @@ be normal; it is noted here, not judged.
       `true`/`false`, and with no criteria. The comparison sends the old keys in raw JSON,
       because `NoulCriteria` now refuses them. Count the calls against `jev_daily_call_budget`
       and get the owner's agreement before making them (21 calls, agreed 2026-10-06).
-- [ ] If the criteria explain the drop, propose wording that keeps the stricter meaning where
-      it matters (accuracy, sourcing, no investment advice) without turning "uncertain" into "no"
-      for every article, and pin it with a test in `apps/api/tests/test_news_jev_publish_question.py`.
-- [ ] Update `docs/news-automation.md` with what the act threshold means against Jev's real
+- [x] The criteria explain the drop. The owner chose to send the publish question without
+      criteria (option 1 below), not new wording. `ai.PUBLISH_QUESTION` is now a module constant
+      without criteria, pinned in `apps/api/tests/test_news_jev_publish_question.py`. That file
+      also pins that the duplicate question keeps its `true`/`false` criteria.
+- [x] Update `docs/news-automation.md` with what the act threshold means against Jev's real
       noul range (never above 0.78 so far).
 
 ## How to verify
@@ -151,3 +152,21 @@ Options for the owner, in the order of how closely they restore the calibrated b
    `false: "A condition clearly fails."`), measure again before relying on it.
 3. Keep the strict criteria and lower `jev_act_confidence` by about 0.15 on `/admin/news`.
 4. Keep everything as is; every article waits for the owner.
+
+### 2026-10-06 owner decision and change
+
+- The owner chose option 1, "拿掉判斷標準": the publish question goes to Jev without criteria,
+  which the measurement above showed equals the behaviour the threshold was tuned on. No
+  setting was changed; `jev_act_confidence` stays where the owner set it (about 0.5).
+- Change: `apps/api/app/news_automation/ai.py` asks `PUBLISH_QUESTION` (same statement, no
+  criteria) in both the zh-TW stage and Jev's last call. `docs/news-automation.md` step 7 says
+  what `act` means and why the criteria are left out.
+- Local checks: `ruff check .`, `mypy app`, `mypy tests` clean;
+  `pytest tests/test_news_jev_publish_question.py tests/test_news_pipeline.py
+  tests/test_news_resume_saved_bundle.py tests/test_jev_client.py` 105 passed.
+- The third Definition-of-done item needs the deploy. After it, read the daily zh-TW mean
+  with the SQL under "How to verify" (expect it back near 0.5) and look for a
+  `news_candidate_auto_published` audit row. Deploying is a separate owner decision.
+- Not in scope and not measured: the duplicate question (still sends documented criteria,
+  read by Jev since #1218), the video outline judge and the narration line check. If
+  `semantic_duplicate_uncertain` holds or narration flags rise, measure those the same way.
