@@ -1,7 +1,8 @@
 """What the semantic duplicate check compares a candidate with, and a person's answer to it.
 
 The pipeline sends these titles to Jev; the admin detail shows the closest few so an
-editor can answer an uncertain check. Both import it from here because the pipeline
+editor can answer an uncertain check, and the review judge is given the closest ones
+when it answers in the owner's place. All import it from here because the pipeline
 already imports the service module.
 """
 
@@ -11,7 +12,7 @@ from datetime import UTC, datetime, timedelta
 from difflib import SequenceMatcher
 from uuid import UUID
 
-from sqlalchemy import select
+from sqlalchemy import and_, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.guides.models import GuideArticle, GuideSearchEntry
@@ -100,17 +101,24 @@ async def similar_titles(
 
 
 async def cleared_by_editor(session: AsyncSession, candidate: NewsCandidate) -> bool:
-    """An editor answered "not a duplicate" for this candidate's current evidence."""
+    """An editor, or the judge in the owner's place, answered "not a duplicate" for this
+    candidate's current evidence."""
 
     return (
         await session.scalar(
             select(NewsAssessment.id)
             .where(
                 NewsAssessment.candidate_id == candidate.id,
-                NewsAssessment.assessment_type == "duplicate",
-                NewsAssessment.provider == HUMAN_PROVIDER,
                 NewsAssessment.verdict == "pass",
                 NewsAssessment.evidence_hash == candidate.evidence_hash,
+                or_(
+                    and_(
+                        NewsAssessment.assessment_type == "duplicate",
+                        NewsAssessment.provider == HUMAN_PROVIDER,
+                    ),
+                    # "pass" is a verdict the judge stores for one answer only: distinct.
+                    NewsAssessment.assessment_type == "judge",
+                ),
             )
             .limit(1)
         )

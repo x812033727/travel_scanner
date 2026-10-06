@@ -1975,6 +1975,9 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         ),
         "news_evidence_refresh_failed": "The current source pages could not be read",
         "news_candidate_not_retryable": "This candidate cannot be run again in its current state",
+        "news_candidate_not_reopenable": (
+            "This candidate was not closed by the AI review, so it cannot be taken back"
+        ),
         "news_candidate_not_reviewable": "This candidate cannot be rejected in its current state",
         "news_draft_unavailable": "This candidate does not have a complete editable draft",
         "news_evidence_changed": "The source material changed; verify the article again",
@@ -2014,6 +2017,9 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_candidate_not_refreshable": "この候補は情報源の再確認待ちではありません",
         "news_evidence_refresh_failed": "最新の情報源ページを読み込めませんでした",
         "news_candidate_not_retryable": "現在の状態ではこの候補を再実行できません",
+        "news_candidate_not_reopenable": (
+            "この候補は AI レビューが終了させたものではないため、取り戻せません"
+        ),
         "news_candidate_not_reviewable": "現在の状態ではこの候補を却下できません",
         "news_draft_unavailable": "この候補には編集可能な完全原稿がありません",
         "news_evidence_changed": "情報源の内容が変わりました。記事を再検証してください",
@@ -2049,6 +2055,9 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_candidate_not_refreshable": "이 후보는 출처 재확인을 기다리고 있지 않습니다",
         "news_evidence_refresh_failed": "최신 출처 페이지를 읽을 수 없습니다",
         "news_candidate_not_retryable": "현재 상태에서는 이 후보를 다시 실행할 수 없습니다",
+        "news_candidate_not_reopenable": (
+            "이 후보는 AI 검토가 종료한 것이 아니어서 되돌릴 수 없습니다"
+        ),
         "news_candidate_not_reviewable": "현재 상태에서는 이 후보를 거절할 수 없습니다",
         "news_draft_unavailable": "이 후보에는 편집 가능한 전체 초안이 없습니다",
         "news_evidence_changed": "출처 내용이 변경되었습니다. 기사를 다시 검증해 주세요",
@@ -2086,6 +2095,7 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_candidate_not_refreshable": "這個候選不是在等來源更新後重新查核",
         "news_evidence_refresh_failed": "無法讀取最新的來源頁",
         "news_candidate_not_retryable": "這個候選目前不能重新執行",
+        "news_candidate_not_reopenable": "這個候選不是 AI 結案的，不能拿回來",
         "news_candidate_not_reviewable": "這個候選目前不能退件",
         "news_draft_unavailable": "候選沒有完整的可編輯草稿",
         "news_evidence_changed": "來源內容已變更，請重新查核",
@@ -2121,6 +2131,7 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_candidate_not_refreshable": "这个候选不是在等来源更新后重新核查",
         "news_evidence_refresh_failed": "无法读取最新的来源页",
         "news_candidate_not_retryable": "这个候选目前不能重新运行",
+        "news_candidate_not_reopenable": "这个候选不是 AI 结案的，不能拿回来",
         "news_candidate_not_reviewable": "这个候选目前不能退回",
         "news_draft_unavailable": "候选没有完整的可编辑草稿",
         "news_evidence_changed": "来源内容已变更，请重新核查",

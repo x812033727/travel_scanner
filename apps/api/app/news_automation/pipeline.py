@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
 from datetime import UTC, date, datetime, time, timedelta
 from typing import Any, Literal, cast
 from uuid import UUID, uuid4
@@ -69,9 +70,14 @@ REVERIFY_MARKERS = frozenset({REVERIFY_MARKER, EVIDENCE_REFRESH_MARKER})
 # Set by ``backfill_cli --resume-saved-bundles``: the five locales stored on the candidate
 # go through the checks that follow the final editor, without a new draft or translation.
 RESUME_MARKER = "news_resume_saved_bundle"
+# Set by the review judge (judge.py) when it answers in the owner's place. An approved
+# Traditional Chinese draft goes on to translation and publication without being drafted
+# again; a redraft is written with the judge's directions in front of the writer.
+JUDGE_APPROVED_MARKER = "news_judge_approved"
+JUDGE_REDRAFT_MARKER = "news_judge_redraft"
 # Kept until the run reaches an outcome, so a rerun after a crash or a stalled worker
 # continues from the stored text instead of drafting over it.
-KEPT_MARKERS = REVERIFY_MARKERS | {RESUME_MARKER}
+KEPT_MARKERS = REVERIFY_MARKERS | {RESUME_MARKER, JUDGE_APPROVED_MARKER, JUDGE_REDRAFT_MARKER}
 # What a candidate says while it waits for a Claude subscription account to free up.
 SUBSCRIPTION_PAUSED = "news_subscription_paused"
 # What a candidate says while Jev's daily call budget, counted per UTC day
@@ -223,6 +229,11 @@ async def _claim_capacity(
     if candidate.error_code not in KEPT_MARKERS:
         candidate.error_code = None
     candidate.error_detail = None
+    # The judge answers one hold. A run leaves that hold behind, so whatever stops this
+    # run is a new one the judge has not seen. Every rerun passes here and nothing else
+    # clears the two.
+    candidate.judge_decision = None
+    candidate.judge_hold = None
     candidate.prompt_version = settings.prompt_version
     candidate.policy_version = settings.policy_version
     await session.commit()
@@ -234,6 +245,129 @@ def _clear_reverify_marker(candidate: NewsCandidate) -> None:
         candidate.error_code = None
 
 
+@dataclass(frozen=True)
+class Switches:
+    """The owner's switches for one vertical, as the database had them when they were read."""
+
+    enabled: bool
+    automatic: bool
+    vertical_on: bool
+    judge_enabled: bool
+
+    @property
+    def auto_publish(self) -> bool:
+        """A story of this vertical may go out without a person."""
+        return self.enabled and self.automatic and self.vertical_on
+
+    @property
+    def judge(self) -> bool:
+        """The judge may act on this vertical: only where a story may go out on its own."""
+        return self.auto_publish and self.judge_enabled
+
+
+async def current_switches(session: AsyncSession, vertical: str) -> Switches:
+    """Read the switches at the moment a decision depends on them.
+
+    A run has held the settings row since it claimed its candidate, and selecting the row
+    again hands back that object with the values it had then (expire_on_commit=False). The
+    switches are read as columns, so an owner who turned one off meanwhile is obeyed.
+    """
+    switches = (
+        await session.execute(
+            select(
+                NewsAutomationSettings.enabled,
+                NewsAutomationSettings.mode,
+                getattr(NewsAutomationSettings, f"auto_publish_{vertical}"),
+                NewsAutomationSettings.judge_enabled,
+            ).where(NewsAutomationSettings.id == 1)
+        )
+    ).one_or_none()
+    if switches is None:
+        return Switches(enabled=False, automatic=False, vertical_on=False, judge_enabled=False)
+    enabled, mode, vertical_on, judge_enabled = switches
+    return Switches(
+        enabled=bool(enabled),
+        automatic=mode == "automatic",
+        vertical_on=bool(vertical_on),
+        judge_enabled=bool(judge_enabled),
+    )
+
+
+async def _judge_row(session: AsyncSession, candidate: NewsCandidate) -> NewsAssessment | None:
+    """The judge's newest verdict on this candidate, whatever it answered."""
+
+    return await session.scalar(
+        select(NewsAssessment)
+        .where(
+            NewsAssessment.candidate_id == candidate.id,
+            NewsAssessment.assessment_type == "judge",
+        )
+        .order_by(NewsAssessment.created_at.desc())
+        .limit(1)
+    )
+
+
+async def _judge_verdict(
+    session: AsyncSession, candidate: NewsCandidate, verdict: str, stage: str
+) -> NewsAssessment | None:
+    """The judge's newest verdict, when it is this one and was given on the current evidence.
+
+    A marker on the candidate only says the judge asked for something. The row is what it
+    said and about which evidence; a newer verdict, or one on other evidence, takes it back.
+    """
+
+    row = await _judge_row(session, candidate)
+    if (
+        row is None
+        or row.verdict != verdict
+        or (row.details_json or {}).get("stage") != stage
+        or row.evidence_hash != candidate.evidence_hash
+    ):
+        return None
+    return row
+
+
+async def redraft_directions(
+    session: AsyncSession, candidate: NewsCandidate
+) -> NewsAssessment | None:
+    """The rewrite the judge ordered on the current evidence, while it still stands.
+
+    Usually that is the judge's newest verdict. A rewrite's own run asks Jev about duplicates
+    again, and an uncertain answer holds the story before anything is drafted; the judge's
+    "not a duplicate" on that hold is then newer than the directions and does not take them
+    back. Any other newer verdict does.
+    """
+
+    rows = await session.scalars(
+        select(NewsAssessment)
+        .where(
+            NewsAssessment.candidate_id == candidate.id,
+            NewsAssessment.assessment_type == "judge",
+        )
+        .order_by(NewsAssessment.created_at.desc())
+    )
+    for row in rows:
+        stage = (row.details_json or {}).get("stage")
+        if stage == "duplicate" and row.verdict == "pass":
+            continue
+        if (
+            row.verdict == "revise"
+            and stage == "redraft"
+            and row.evidence_hash == candidate.evidence_hash
+            and row.reasons_json
+        ):
+            return row
+        return None
+    return None
+
+
+def judge_publish_reason(reasons: list[str]) -> str:
+    """The reason recorded with a publication the judge approved: what the judge wrote."""
+
+    written = " ".join(reason.strip() for reason in reasons if reason.strip())
+    return written or "The review judge approved this story for publication."
+
+
 async def _auto_publishable(
     session: AsyncSession, candidate: NewsCandidate, usable: list[NewsEvidence]
 ) -> bool:
@@ -242,22 +376,8 @@ async def _auto_publishable(
     No shadow gate any more (owner decision, 2026-09-25): the final editor and Jev's last
     call on all five locales guard what goes out on its own.
     """
-    # The run has held the settings row since it claimed the candidate, and selecting the row
-    # again hands back that object with the values it had then (expire_on_commit=False). The
-    # switches are read as columns, so an owner who turned publishing off meanwhile is obeyed.
-    switches = (
-        await session.execute(
-            select(
-                NewsAutomationSettings.enabled,
-                NewsAutomationSettings.mode,
-                getattr(NewsAutomationSettings, f"auto_publish_{candidate.vertical}"),
-            ).where(NewsAutomationSettings.id == 1)
-        )
-    ).one_or_none()
-    if switches is None:
-        return False
-    enabled, mode, vertical_on = switches
-    if not (enabled and mode == "automatic" and vertical_on and candidate.would_publish):
+    switches = await current_switches(session, candidate.vertical)
+    if not (switches.auto_publish and candidate.would_publish):
         return False
     sources = await session.scalars(select(NewsSource).where(NewsSource.enabled.is_(True)))
     # Two websites, the company's own announcement, or a newsroom the owner trusts to stand
@@ -425,9 +545,10 @@ async def process_candidate(
     Stage one (owner decision, 2026-09-25): any source's article that is not a duplicate is
     drafted in Traditional Chinese, fact-checked against its evidence and assessed by Jev,
     then waits for the owner as ``news_zh_draft_ready``. Stage two runs once the owner has
-    confirmed publication: the other four locales are translated and reviewed, the article
-    is checked, saved and published. A re-verification of edited drafts runs the checks of
-    both stages on the editor's text.
+    confirmed publication, or the review judge has approved the draft in the owner's place:
+    the other four locales are translated and reviewed, the article is checked, saved and
+    published. A re-verification of edited drafts runs the checks of both stages on the
+    editor's text.
     """
 
     candidate = await session.get(NewsCandidate, candidate_id)
@@ -486,9 +607,39 @@ async def process_candidate(
                 localized=None,
                 automatic=False,
             )
+        if candidate.error_code == JUDGE_APPROVED_MARKER:
+            # Stage two in the owner's place: the judge approved this verified draft. The
+            # approval counts only while it is the judge's newest word, on this evidence,
+            # about a draft whose verification still matches the stored text.
+            approved = (
+                await news_service.verified_zh_draft(session, candidate)
+                if await _judge_verdict(session, candidate, "publish", "zh_draft") is not None
+                else None
+            )
+            if approved is not None and candidate.event_date is not None:
+                return await _second_stage(
+                    session,
+                    redis,
+                    environment,
+                    settings,
+                    candidate,
+                    evidence,
+                    usable,
+                    runs,
+                    document=approved,
+                    slug=await _drafted_slug(session, candidate),
+                    event_date=candidate.event_date,
+                    localized=None,
+                    automatic=False,
+                    judged=True,
+                )
+            # Nothing stands behind the marker any more: an ordinary new draft, which meets
+            # every check again.
+            candidate.error_code = None
+            await session.commit()
 
         if await cleared_by_editor(session, candidate):
-            # An editor already answered an uncertain check for this evidence.
+            # An editor, or the judge, already answered an uncertain check for this evidence.
             duplicate = "distinct"
         else:
             duplicate, confidence, duplicate_reasons = await ai.jev_duplicate_check(
@@ -510,6 +661,10 @@ async def process_candidate(
                 )
                 await session.commit()
                 return "jev_paused"
+            # An uncertain answer holds the story and the hold replaces the marker. Should
+            # the judge then call it distinct, this is how it knows a rewrite it ordered was
+            # still waiting to be written (judge._rewrite_still_owed).
+            interrupted = duplicate == "manual" and candidate.error_code == JUDGE_REDRAFT_MARKER
             session.add(
                 NewsAssessment(
                     candidate_id=candidate.id,
@@ -523,7 +678,7 @@ async def process_candidate(
                     provider="jev",
                     model=environment.jev_model,
                     reasons_json=duplicate_reasons,
-                    details_json={},
+                    details_json={"interrupted": JUDGE_REDRAFT_MARKER} if interrupted else {},
                     evidence_hash=candidate.evidence_hash,
                     prompt_version=candidate.prompt_version,
                 )
@@ -565,13 +720,44 @@ async def process_candidate(
             draft_slug = article_for_slug.slug
             draft_event_date = candidate.event_date
         else:
+            directions: NewsAssessment | None = None
+            if candidate.error_code == JUDGE_REDRAFT_MARKER:
+                directions = await redraft_directions(session, candidate)
+                if directions is None:
+                    # No directions for this evidence stand behind the marker: an ordinary
+                    # draft, and the row stops saying the judge steered it.
+                    candidate.error_code = None
             await runs.start(
                 "draft", provider=settings.writer_provider, model=settings.writer_model
             )
-            draft, usage, model = await ai.draft_article(environment, settings, candidate, evidence)
+            steered: dict[str, Any] = {}
+            if directions is None:
+                draft, usage, model = await ai.draft_article(
+                    environment, settings, candidate, evidence
+                )
+            else:
+                draft, usage, model = await ai.draft_article(
+                    environment, settings, candidate, evidence, notes=directions.reasons_json
+                )
+                # Which verdict steered this draft, for whoever reads the run afterwards.
+                steered = {"judge_notes": str(directions.id)}
             # Stage two builds the article under this address after the owner confirms.
-            await runs.finish(usage=usage, model=model, metadata={"slug": draft.slug})
+            await runs.finish(usage=usage, model=model, metadata={"slug": draft.slug, **steered})
             if not draft.eligible:
+                if directions is not None:
+                    # The judge asked for this rewrite and the writer now says there is no
+                    # story. Two models disagree, so the owner decides: the code is not one
+                    # the judge answers. The row is marked as handed back, which is what it
+                    # is: the list shows the badge and counts it with the others.
+                    candidate.judge_decision = "manual"
+                    await _hold(
+                        session,
+                        candidate,
+                        "needs_redraft",
+                        "news_not_eligible",
+                        draft.exclusion_reason,
+                    )
+                    return "needs_redraft"
                 candidate.status = "rejected"
                 candidate.error_code = "news_not_eligible"
                 candidate.error_detail = draft.exclusion_reason
@@ -837,11 +1023,13 @@ async def _second_stage(
     localized: dict[Locale, GuideDocument] | None,
     automatic: bool,
     last_call: bool = False,
+    judged: bool = False,
 ) -> str:
     """Finalize the source, translate (or take the editor's text), review and publish.
 
     Jev's last call runs on AI translations, and on a saved article re-checked against
     refreshed evidence (``last_call``); an editor's own re-verified text does not get it.
+    ``judged`` says the judge, not the owner, approved the draft this starts from.
     """
 
     candidate.status = "locale_review"
@@ -1042,6 +1230,7 @@ async def _second_stage(
         final_holds=final_holds,
         last_call=localized is None or last_call,
         automatic=automatic,
+        judged=judged,
     )
 
 
@@ -1060,11 +1249,13 @@ async def _finish_bundle(
     final_holds: list[str],
     last_call: bool,
     automatic: bool,
+    judged: bool = False,
 ) -> str:
     """Draw the artwork, check and save the five-locale article, then publish or hold it.
 
-    ``last_call`` asks Jev about every locale before a confirmed or automatic article goes
-    out; ``final_holds`` are the locales the final editor did not approve.
+    ``last_call`` asks Jev about every locale before a confirmed, automatic or judged
+    article goes out; ``final_holds`` are the locales the final editor did not approve.
+    ``judged`` says the judge approved the Traditional Chinese draft in the owner's place.
     """
 
     documents = await ensure_assets(session, candidate, documents)
@@ -1097,6 +1288,9 @@ async def _finish_bundle(
         )
         return "manual_review"
     confirmed = candidate.human_decision == "publish"
+    # A person's confirmation keeps precedence, and a story that may go out on its own needs
+    # nobody's: the judge's approval counts only where it is all the article has.
+    by_judge = judged and not confirmed and not automatic
     if final_holds:
         await _manual(
             session,
@@ -1105,7 +1299,7 @@ async def _finish_bundle(
             f"The final editor held {', '.join(final_holds)}; see its issues below.",
         )
         return "manual_review"
-    if last_call and (confirmed or automatic):
+    if last_call and (confirmed or automatic or by_judge):
         held = await _jev_final(session, redis, environment, settings, candidate, runs, documents)
         if held:
             await _manual(
@@ -1115,7 +1309,7 @@ async def _finish_bundle(
                 f"Jev's last call did not approve {', '.join(held)} for publication.",
             )
             return "manual_review"
-    if not confirmed and not automatic:
+    if not confirmed and not automatic and not by_judge:
         # An edited article nobody has confirmed yet waits for the publish button.
         _clear_reverify_marker(candidate)
         await _manual(
@@ -1132,11 +1326,51 @@ async def _finish_bundle(
             raise
         await _manual(session, candidate, "news_evidence_changed", problem.detail)
         return "manual_review"
+    approval: NewsAssessment | None = None
+    if by_judge:
+        approval = await _judge_verdict(session, candidate, "publish", "zh_draft")
+        # The judge acts only while all four switches are on, and translating took a while:
+        # an owner who turned one off meanwhile publishes this article themselves.
+        if approval is None or not (await current_switches(session, candidate.vertical)).judge:
+            await _manual(
+                session,
+                candidate,
+                READY_TO_PUBLISH,
+                "The judge approved the draft, and AI review stopped applying to this story "
+                "before the article went out: a switch was turned off or the approval was "
+                "replaced. The checked five-locale article is waiting for the publish button.",
+            )
+            return "manual_review"
     _clear_reverify_marker(candidate)
     if confirmed:
         actor = await _approver(session, candidate)
         reason = candidate.human_reason or "The owner confirmed publication."
         metadata: dict[str, Any] = {"human_override": True, "confirmed_stage": "zh_draft"}
+    elif approval is not None:
+        actor = None
+        reason = judge_publish_reason(approval.reasons_json)
+        metadata = {
+            "judge": True,
+            "judge_provider": approval.provider,
+            "judge_model": approval.model,
+            "judged_stage": "zh_draft",
+            "model": environment.jev_model,
+            "editor_model": settings.editor_model,
+        }
+        audit(
+            session,
+            None,
+            "news_candidate_judge_published",
+            f"news-candidate:{candidate.id}",
+            candidate_id=str(candidate.id),
+            article_id=str(candidate.guide_article_id),
+            judged_stage="zh_draft",
+            judge_provider=approval.provider,
+            judge_model=approval.model,
+            assessment_id=str(approval.id),
+            prompt_version=candidate.prompt_version,
+            evidence_sha256=candidate.evidence_hash,
+        )
     else:
         actor = None
         reason = "The final editor and Jev's last call approved all five locales."
