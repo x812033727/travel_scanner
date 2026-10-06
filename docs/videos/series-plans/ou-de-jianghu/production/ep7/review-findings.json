@@ -60,7 +60,8 @@
    ],
    "problem": "兩格詩號定格的 camera 都寫了 slow push in，分場表第五節寫死定格是 locked。定格要做成 still、上面念兩句旁白再接字卡，推鏡會讓 still 變成一段慢推，跟第 5、6 集主編改掉的是同一個問題。",
    "evidence": "a01-s077 camera「Full shot, low angle, slow push in」、a03-s075 camera「Full shot, low angle, slow push in」，兩格都是 visual: still。分場表第五節：「定格鏡：template: shot、data.visual: still、camera: Full shot, low angle, locked」（兩位都是這一句）。ep5、ep6 review-findings 都把同一條列過。",
-   "fix": "兩格的 camera 都改成「Full shot, low angle, locked」，prompt 與 motion 不動。前一鏡 a01-s076、a03-s073 也是 slow push in，改了之後同運鏡連續數反而變少；秒數不變。"
+   "fix": "兩格的 camera 都改成「Full shot, low angle, locked」，prompt 與 motion 不動。前一鏡 a01-s076、a03-s073 也是 slow push in，改了之後同運鏡連續數反而變少；秒數不變。",
+   "resolution": "主控裁定（2026-10-06，同第 5、6 集）：詩號／招式定格鏡一律 slow push in。visual: still 加 locked 會被 shot_reading.mjs 判成陷阱 still.locked，而本票要 0 陷阱；第 1–6 集所有定格鏡都是 slow push in（production/README.md 固定規則）。"
   },
   {
    "severity": "minor",
