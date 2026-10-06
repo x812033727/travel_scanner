@@ -1,7 +1,7 @@
 ---
 id: 2026-10-06-a-failing-video-is-deferred
 title: A failing video is deferred on its own instead of halting the lane
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: claude-fable-5-1-video-unstuck
@@ -105,6 +105,10 @@ video's `chose outline`/`approved` line.
 - A deferral is not reported to the site; the video keeps its last stage on /admin/videos.
 - Left as it was (outside this scope): `compilation.mjs` still calls `automation.later()` for a
   compile that exits 4; `series.mjs` and `story.mjs` call it for series-level conditions only.
+- Draft PR #1342. `node --test tools/video/automation/*.test.mjs` green (374); `npm run
+  test:tools` 1,891 of 1,902 with five reds: the duration-review binding (below) and four this
+  Windows machine already fails outside the automation (reference-analysis and from-drama ffmpeg
+  paths, media.test stock path separators, tts/check.test's `process.execPath` with a space).
 - Stacked on PR #1341 (`claude/video-unstuck-plate-accept`); claimed with `--force` because the
   same owner's open tasks hold `flow.mjs` and `automation.test.mjs`. The scope grew by
   `series.test.mjs` and `story.test.mjs` (one line each) once their tests met `pulled()` and the
