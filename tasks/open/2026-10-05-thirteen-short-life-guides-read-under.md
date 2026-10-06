@@ -232,3 +232,102 @@ All four corrections were applied after their sources were re-read with the edit
 - `meeting-notes-action-template` zh-TW, both paragraphs: 建構區塊 → 構成元素, 自訂的建構區塊 → 自訂構成元素, 核取清單 → 檢查清單. The zh-Hant help uses 構成元素 for the menu (插入 > 構成元素) and 檢查清單 on the @ menu page.
 - Not changed: the two items under "Things suspected but not changed". Second round: not required (one fact change, repeated in five locales).
 - Checks: `pack_cli lint --kind life` on the six PR slugs gives 0 errors (only the existing `no_summary` warnings). `intake_check.py --from-content` adds no new FAIL against origin/main; the only FAIL left is "first block is not summary", which this ticket leaves out. `translation_checks.py` gives 0 hits.
+
+### verify-2: PR #1332 (claude/short-life-b), six short life guides get their operational sections
+
+Second independent round, 2026-10-06. Branch head re-fetched: `1560d63250032ddab06d9ee8218eb023d7623a17`. Its commits since main are 8ed1a018 (the content) and 1560d632 (the round-1 fixes).
+
+**How pages were fetched:** `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'`, about 1.2 s apart per host. HTML comments were stripped before reading, and only the article body was read. No personal data was sent in any header, query string or form. Every cited page was also read in the zh-Hant/zh-tw, ja, ko and zh-Hans/zh-cn versions, so each locale's UI labels were checked against that locale's own help page.
+
+#### Sources fetched (all HTTP 200)
+
+| Page | Locales read |
+| --- | --- |
+| Google Docs @ menu, `support.google.com/docs/answer/11276813` | en, zh-Hant, ja, ko, zh-Hans |
+| Google Docs insert building blocks, `docs/answer/15740443` (fixer's rationale; not cited in the pack) | ko, zh-Hant |
+| Google Drive scan, `drive/answer/3145835?co=GENIE.Platform%3DAndroid` | en, zh-Hant, ja, ko, zh-Hans |
+| Google Drive scan, `drive/answer/3145835?co=GENIE.Platform%3DiOS` | en, zh-Hant, ja, ko, zh-Hans |
+| Apple Focus setup, `support.apple.com/{loc}/guide/iphone/iphd6288a67f/ios` (iOS 27 page) | en-sg, zh-tw, ja-jp, ko-kr, zh-cn |
+| Apple merge duplicates, `iph1978d9c23` | en-by, zh-tw, ja-jp, ko-kr, zh-cn |
+| Apple delete or hide photos, `iphb4defbde9` | en-by, zh-tw, ja-jp, ko-kr, zh-cn |
+| Cornell LSC note-taking page, `lsc.cornell.edu/how-to-study/taking-notes/cornell-note-taking-system/` | en |
+| Cornell LSC handout PDF, `lsc.cornell.edu/wp-content/uploads/2016/10/Cornell-NoteTaking-System.pdf` (read with pdftotext; it is a text PDF) | en |
+| Google Calendar share, `calendar/answer/37082` | en, zh-Hant, ja, ko, zh-Hans |
+| Google Calendar permissions, `calendar/answer/15716974` | en, ko |
+
+#### A. Round-1 corrections re-checked on the head commit
+
+| # | Item | Outcome |
+| --- | --- | --- |
+| R1 | phone-document-scanning-workflow (fact), last paragraph of the save section, all five locales | **CONFIRMED FIXED.** The iOS help in all five languages uses the same button labels as Android: 裁剪及旋轉/篩選器/清理/新增/重拍/刪除/完成/位置/儲存; 切り抜きと回転/フィルタ/汚れ除去/追加/再撮影/削除/完了/場所/保存; 자르기 및 회전/필터/지우기/추가/다시 촬영/삭제/완료/위치/저장; 剪裁和旋转/滤镜/清理/添加/重拍/删除/完成/位置/保存. It has no .pdf/.jpg step and no widget section. The new sentence says exactly this in zh-TW, en, ja, ko and zh-CN, and the five versions agree with each other. The new iOS `sources` entry resolves to HTTP 200 in each locale (checked_on 2026-10-06), and the titles fit. Nothing else in the paragraph changed. |
+| R2 | meeting-notes ko (style): 구성 요소 → 템플릿, 맞춤 구성 요소 → 맞춤 템플릿 | **CONFIRMED.** Matches the ko help (「다음을 포함하는 템플릿 … 맞춤 템플릿은 공유할 수 없습니다」) and answer/15740443 (삽입 > 템플릿). **New issue:** the new paragraph now uses 템플릿 both for the @ menu feature and for the article's own shared template. Raised below as a style item. |
+| R3 | meeting-notes zh-CN (style): 构建块 → 智能模块 | **CONFIRMED.** Matches the zh-Hans help word for word (「自定义智能模块无法共享…」, 「下拉菜单、核对清单」). |
+| R4 | meeting-notes zh-TW (style): 建構區塊 → 構成元素, 核取清單 → 檢查清單 | **CONFIRMED.** Matches the zh-Hant help (「自訂構成元素無法共用…」, 「下拉式選單、檢查清單」) and answer/15740443 (「插入」「構成元素」). The help's category heading itself says 構成要素; that inconsistency is the help's own, not the article's. |
+
+Round 1 suspected the ko calendar caption ("See event details", where answer/37082 ko shows 「진행 중 이벤트 확인하기」). **Resolved:** Google's dedicated permissions page, answer/15716974?hl=ko, lists 「일정 세부정보 보기」, so the article's label and its caption ("names follow the help") are correct. No change needed.
+
+#### B. Other changed claims (more than the required third; effectively every operational claim, each in all five locales)
+
+| # | Slug | Claim | Verdict |
+| --- | --- | --- | --- |
+| 1 | meeting-notes | The @ menu can insert dropdowns and checklists | CONFIRMED (5 locales; ja プルダウン/チェックリスト, ko 드롭다운/체크리스트) |
+| 2 | meeting-notes | Custom building blocks cannot be shared; only the creator can reuse one | CONFIRMED |
+| 3 | meeting-notes | Others copy the template to make their own | CONFIRMED ("Other users can copy the template and create their own custom building block") |
+| 4 | phone-scan | Android: Done → own name or suggested title → .pdf or .jpg → optional Location → Save | CONFIRMED |
+| 5 | phone-scan | Crop & Rotate adjusts the edges, Filter sets colour or grayscale, Clean erases stains and fingers | CONFIRMED; localized labels match in all 5 locales |
+| 6 | phone-scan | Add for the next page; Retake and Delete | CONFIRMED |
+| 7 | phone-scan | Automatic capture can be switched to manual | CONFIRMED (Manual/Auto toggle) |
+| 8 | phone-scan | The 'Drive scan' widget asks for the save folder during setup | CONFIRMED (雲端硬碟掃描 / ドライブのスキャン / 드라이브 스캔 / 云端硬盘扫描) |
+| 9 | phone-scan | Multi-page files usually go in a PDF, which is easier to search | CONFIRMED ("searchable PDFs") |
+| 10 | focus | Settings app > Focus > pick a Focus; People and Apps choose what is allowed | CONFIRMED (聯絡人/App; 連絡先/アプリ; 사람/앱; 联系人/App) |
+| 11 | focus | Options: whether silenced notifications show on the Lock Screen | CONFIRMED |
+| 12 | focus | Add Schedule: at a set time, a location or while using a certain app | CONFIRMED (加入排程 / スケジュールを追加 / 시간 지정 추가 / 添加定时) |
+| 13 | focus | Add Filter: which mail account or calendar to use | CONFIRMED (加入過濾條件 / フィルタを追加 / 필터 추가 / 添加过滤条件) |
+| 14 | focus | You can create a custom Focus with your own name | CONFIRMED |
+| 15 | focus | Share Across Devices gives the same settings on devices signed in to the same Apple Account | CONFIRMED (在所有裝置上共享 / デバイス間で共有 / 모든 기기에서 공유 / 在设备之间共享) |
+| 16 | focus | Focus filters are not synced across devices | CONFIRMED |
+| 17 | focus | Share Focus Status shows senders that notifications are silenced; this can be changed per person on their contact card | CONFIRMED |
+| 18 | photos | Recently Deleted keeps items 30 days, then removes them permanently from iPhone, iCloud and other devices on the same account; they can be recovered meanwhile | CONFIRMED |
+| 19 | photos | With iCloud Photos on, deleting or hiding applies to all devices | CONFIRMED |
+| 20 | photos | Collections > Utilities > Duplicates > Merge | CONFIRMED (選集>更多項目>重複項目; コレクション>ユーティリティ>重複項目; 모음>기타>중복된 항목; 精选集>更多项目>重复项目) |
+| 21 | photos | Hide moves the item to the Hidden collection | CONFIRMED |
+| 22 | photos | Select, then delete; items go to Recently Deleted | CONFIRMED |
+| 23 | photos | Recover from Recently Deleted within 30 days | CONFIRMED (ja button 「復旧」 matches Apple ja) |
+| 24 | photos | Recently Deleted and Hidden are locked by default and open with Face ID, Touch ID or passcode | CONFIRMED (zh-CN 面容 ID/触控 ID matches Apple zh-cn) |
+| 25 | reading | The method was designed for lectures: record during class | CONFIRMED (PDF step 1) |
+| 26 | reading | Write questions as soon after class as possible | CONFIRMED |
+| 27 | reading | Cover the notes, look only at the questions, answer aloud in your own words | CONFIRMED |
+| 28 | reading | Reflect on how to apply the material and how it fits what you know | CONFIRMED |
+| 29 | reading | Summary space at the bottom of each page | CONFIRMED |
+| 30 | reading | At least ten minutes every week reviewing previous notes | CONFIRMED |
+| 31 | calendar | Four permission names | CONFIRMED in all 5 locales (zh-TW 進行變更並管理共用設定/變更活動及查看活動詳細資料/查看活動詳細資料/只能看見是否有空（隱藏詳細資訊）; ja, zh-CN as their help; ko per answer/15716974) |
+| 32 | calendar | Make changes and manage sharing can share the calendar with others | CONFIRMED |
+| 33 | calendar | Free/busy only: no event names or details | CONFIRMED |
+| 34 | calendar | The invitee gets an email and must click its link | CONFIRMED |
+| 35 | calendar | If the email is missing: check the address, spam/trash, search for your email, remove and re-add | CONFIRMED |
+| 36 | calendar | Remove people under Shared with | CONFIRMED (共用對象 / 共有する相手 / 공유 대상 / 共享对象) |
+
+The other new content (tables of example roles, situations and rhythms; advice paragraphs) is example-based guidance with no checkable external fact, so it is out of scope for fact-checking. It was still reviewed per locale against zh-TW.
+
+#### C. Per-locale review of the new sections against zh-TW
+
+In all six packs, en, ja, ko and zh-CN carry the same meaning as zh-TW in every new heading, paragraph, table row, column order and caption. The numbers agree everywhere: 30 days, ten minutes, twice in a row, seven days, 2026-10. I found no mistranslations or omissions. UI labels follow each locale's own Apple or Google help page. The only problem is the ko 템플릿 overlap introduced by R2, which is listed as an error (style, optional).
+
+#### D. Mechanical checks (run on a `git archive` of the branch head in a scratch directory; repo untouched)
+
+- `pack_cli lint --slug <slug>` for all six slugs: 0 errors. The only warnings are the existing `no_summary` ones for ja, ko and zh-CN.
+- `intake_check.py --slug <slug> --from-content` for all six: the only FAIL is "first block is not summary". That is pre-existing: the first zh-TW block is a paragraph on origin/main as well. Every diagram number appears in the text in every locale.
+- `pytest tests/test_guides_content_pack.py -q`: 9 passed, 5 skipped.
+- Reader-first: zh-TW has at most one real 本文/這篇 per pack. The zh-CN matches for 本文 inside 文本文件 are false positives.
+
+#### E. Noted but not raised
+
+- meeting-notes zh-TW, older paragraph: 「會議筆記等構成元素」. The zh-Hant help's label for the item is 會議記錄 (answer/11276813 and 15740443). The other locales use their help's term. The page is AI-translated and this wording predates the PR, so it is left as optional.
+- The phone-scan sentence 「說明裡則沒有選擇 .pdf 或 .jpg 這一步」 mentions the help page in the body text. That is mild attribution in the body, accepted by round 1 as the suggested wording. It is not an error.
+
+#### Summary
+
+- **Claims checked:** 40 claim groups, each in five locales: the 4 round-1 corrections plus 36 other operational claims.
+- **Outcome:** all 40 confirmed. 0 fact errors, 0 unverifiable pages.
+- **New issue:** 1 optional style item. In meeting-notes ko, the round-1 term fix made 맞춤 템플릿 (cannot be shared) collide with the article's own shared 템플릿 in the same paragraph. Suggested fix: anchor it as 「@ 메뉴에서 직접 만든 맞춤 템플릿」.
+- **Another round:** not required. This round found no fact changes.
