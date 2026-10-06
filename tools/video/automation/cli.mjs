@@ -101,6 +101,20 @@ async function restyle(args, ctx) {
 // each lane share the container's memory, so it stays small.
 export const MAX_LANES = 3;
 
+/**
+ * What `auto` prints when the first lane finds nothing to do. A video waiting on its own
+ * (flow.mjs defer, or a writer still running on the server; `deferred` is
+ * Automation.deferredVideos(): [{ slug, until }]) does not wait on the owner: it is named with
+ * the time it is tried again (the next round when `until` is null: only this run left it), so a
+ * round that moved nothing because of a deferral does not read as one in which the owner is
+ * awaited.
+ */
+export function idleLine(deferred = []) {
+  if (!deferred.length) return "nothing to do now: every video waits on the owner, or the next draft is not due";
+  const named = deferred.map(({ slug, until }) => `${slug} until ${until ?? "the next round"}`).join(", ");
+  return `nothing to do now: ${deferred.length} deferred and tried again later (${named}); the other videos wait on the owner, or the next draft is not due`;
+}
+
 /** VIDEO_WORKER_LANES as a lane count: 1 when unset or unreadable, at most MAX_LANES. */
 export function laneCount(env = {}) {
   const lanes = Number.parseInt(env.VIDEO_WORKER_LANES ?? "", 10);
@@ -149,7 +163,7 @@ export async function run(command, args, ctx) {
         }
         const done = await lane.step();
         if (!done) {
-          if (!index) ctx.stdout.write("nothing to do now: every video waits on the owner, or the next draft is not due\n");
+          if (!index) ctx.stdout.write(`${idleLine(lane.deferredVideos())}\n`);
           break;
         }
         ctx.stdout.write(`${tag}${done}\n`);

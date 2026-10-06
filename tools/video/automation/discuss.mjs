@@ -152,6 +152,17 @@ export function scriptDiscussionPayload(automation, job, state, video) {
 /**
  * Answer the owner's line on a screenplay: a reply, and when they asked for a change the
  * corrected video.json written here, to be checked, heard and sent to the script gate again.
+ *
+ * Null, with nothing sent and the line left unanswered, while the video is not at rest
+ * (Automation.resting): another lane is moving it, a lane set it aside in this run, its writer is
+ * still running on the server, or it waits on its own from an earlier round (a deferral: this
+ * run never looked at it, so a job sent before may still be running). The line is taken up on a
+ * later unit or round: a deferral ends in a visit without trouble or in a block. Since
+ * 2026-10-06 a pending writer no longer ends the run, so this step runs right after it: a
+ * discussion sent then was a second writer request for the same video while the first was in
+ * flight, and a rewrite it saved left the first job's paid answer matching no request (or, with
+ * the first draft still pending, told the owner there was no screenplay yet). The site hands
+ * over one line at a time, so the lines behind a held one wait with it.
  */
 export async function answerScript(automation, job) {
   const { series } = job;
@@ -159,6 +170,14 @@ export async function answerScript(automation, job) {
   if (!state) {
     await automation.api.messageAnswer(job.message.id, { reply_md: unusableReply(`這台工人沒有 ${job.episode?.slug ?? job.subject} 的劇本`), revised: null });
     return `series ${series.slug}: no video for ${job.subject} here; the owner is told and the thread waits`;
+  }
+  if (!automation.resting(state)) {
+    // Said once a run: the site hands the same line over on every unit until it is answered.
+    if (!automation.heldLines.has(job.message.id)) {
+      automation.heldLines.add(job.message.id);
+      automation.log(`${state.slug}: the owner's line on ${job.subject} waits; the video is being worked on or waits on its own, and the line is answered once it is at rest`);
+    }
+    return null;
   }
   if (state.story) {
     await automation.api.messageAnswer(job.message.id, { reply_md: STORY_THREAD_REPLY, revised: null });

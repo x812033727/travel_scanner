@@ -27,7 +27,7 @@ import { PART_BYTES } from "../review/sync.mjs";
 import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
 import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, blockedKindOf, DEFER_BASE_MS, DEFER_MAX_MS, errorScope, mainGuide, PENDING_RECHECK_MS, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
+import { Automation, automatedVideos, blockedKindOf, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -373,6 +373,7 @@ const smallRefs = { script_writing: "short sentences", formats: "tutorial", chan
 function nextRun(automation, clock = null) {
   automation.skipped.clear();
   automation.pendingUntil.clear();
+  automation.heldLines.clear();
   automation.halted = false;
   if (!clock) return;
   for (const state of automatedVideos(automation.workBase)) {
@@ -3712,47 +3713,266 @@ test("a refusal of one video's request blocks that video alone, with the reason 
   assert.equal(videos.asked("oldest-video"), 1);
 });
 
-test("what one video's error means for the others, and how long a deferral waits", () => {
-  const error = (status, code, who = "service") => new AutomationError("x", { status, code, who });
-  for (const [each, scope] of [
-    [error(401, ""), "run"],
-    [error(403, ""), "run"],
-    [error(429, "video_ai_budget_exhausted", "owner"), "run"],
-    [error(429, "video_ai_subscription_paused"), "run"],
-    [error(503, "video_ai_subscription_auth_failed"), "run"],
-    [error(409, "video_ai_provider_not_configured", "owner"), "run"],
-    [error(0, "network"), "run"],
-    [new TypeError("a bug"), "run"],
-    [error(503, "video_ai_upstream_busy"), "wait"],
-    [error(429, "rate_limit_exceeded"), "wait"],
-    [error(502, "video_ai_upstream_failed"), "wait"],
-    [error(500, ""), "wait"],
-    [error(0, RUN_PENDING), "wait"],
-    [error(409, "video_ai_job_input_changed"), "video"],
-    [error(409, "video_ai_project_dropped"), "video"],
-    [error(409, "video_ai_subject_not_chosen", "owner"), "video"],
-    [error(422, "validation_error"), "video"],
-    [error(0, "video_production_voice_mismatch", "owner"), "video"],
-  ]) assert.equal(errorScope(each), scope, `${each.status} ${each.code ?? each.message}`);
+// Every error code the server can answer on the routes the worker calls, with what errorScope
+// makes of it, so that a code left to the default (a 4xx blocks the video, a 5xx defers it) is
+// left there on purpose. Read on 2026-10-06 from apps/api/app/video_automation (ai.py,
+// run_jobs.py, admin_api.py's tool routes, errors.py, subscription.py, judge.py and, for the
+// request, series and thread routes behind them, requests.py, series.py and messages.py),
+// apps/api/app/video_reviews (the tool routes: report, read, submit, the file parts),
+// apps/api/app/video_speech, the forwarders under apps/web/app/api/video, and the API's own
+// rate limit and body cap. Not listed: what only the owner's browser is answered (decisions,
+// renewals, the series' and the Shorts' own pages, tokens and pairings on the API) and the
+// media API's own codes, which the media commands read (media/client.mjs) and hand the worker as
+// exit codes. A code that is about the whole worker or site must be "run" or "wait", never
+// "video".
+const ERROR_SCOPES = {
+  // The token, the owner's settings and budget, every subscription account, the site out of
+  // reach, the settings of the whole site, the worker's own list request: the run ends.
+  run: [
+    [401, "video_tool_token_invalid", "owner"],
+    [401, ""],
+    [403, ""],
+    [0, "network"],
+    [429, "video_ai_budget_exhausted", "owner"],
+    [503, "video_ai_provider_not_configured", "owner"],
+    [409, "video_ai_subscription_cli_outdated", "owner"],
+    [429, "video_ai_subscription_paused"],
+    [503, "video_ai_subscription_auth_failed"],
+    [422, "video_automation_settings_invalid", "owner"],
+    // The Shorts settings name no model to test, the outline judge is switched off (review/sync.mjs
+    // judgeOutline answers that one before it gets here): the site's settings, not this video's.
+    [409, "video_ai_subject_not_chosen", "owner"],
+    [409, "video_judge_not_enabled"],
+    // The video list refused the worker's own query: every video's, and a bug of the tool.
+    [422, "video_list_filter_invalid"],
+    [422, "video_shorts_state_needs_only"],
+  ],
+  // Busy, away, still working, or failed before anything ran: this video waits, the others move.
+  wait: [
+    [503, "video_ai_upstream_busy"],
+    [502, "video_ai_upstream_unreachable"],
+    [503, "video_ai_upstream_unreachable"],
+    [502, "video_ai_upstream_failed"],
+    [502, "upstream_unavailable"],
+    [429, "rate_limit_exceeded"],
+    // The rate limiter's own store away (app/infra.py): every route's, and it passes.
+    [503, "rate_limit_unavailable"],
+    [503, "video_ai_job_queue_unavailable"],
+    [0, RUN_PENDING],
+    [408, ""],
+    [500, ""],
+    // A durable writer job the server failed before its dispatch: no model call was made, and the
+    // work base's STOP file or the switch are not one video's.
+    [409, "video_ai_worker_stopped"],
+    [409, "video_ai_automation_disabled"],
+    [409, "video_ai_job_interrupted_before_dispatch"],
+    [409, "video_ai_job_dispatch_closed"],
+    // move() takes these three before errorScope is asked (retryLater, unanswered); as a status
+    // alone they would wait.
+    [502, "video_ai_output_invalid"],
+    [504, "video_ai_run_uncertain"],
+    [504, "video_judge_answer_lost"],
+    // Jev: its daily calls spent or Jev away.
+    [429, "jev_budget_exhausted"],
+    [502, "video_judge_upstream_failed"],
+    // The review store is full: every video's, and it passes when the owner frees space.
+    [507, "video_review_store_full"],
+    // Speech and alignment (reached by tts, dub and check-audio, whose exit codes the worker
+    // reads; listed for the default): the vendor, its key, the month's budget, a lost answer.
+    [429, "video_speech_budget_exhausted"],
+    [503, "video_speech_not_configured"],
+    [429, "video_speech_upstream_busy"],
+    [503, "video_speech_upstream_busy"],
+    [502, "video_speech_upstream_failed"],
+    [502, "video_speech_upstream_rejected_key"],
+    [504, "video_speech_answer_lost"],
+    [502, "video_align_failed"],
+    [503, "video_align_unavailable"],
+  ],
+  // A refusal of this video's own request, which asking again would meet again: the video blocks.
+  video: [
+    // A stage run and its durable job.
+    [409, "video_ai_project_dropped"],
+    [409, "video_ai_job_input_changed", "owner"],
+    [422, "video_ai_job_input_invalid"],
+    [404, "video_ai_job_not_found"],
+    [400, "video_ai_receipt_invalid"],
+    [409, "video_ai_job_uncertain", "owner"],
+    // The drama route switched off is a policy hold: move() parks that project (policyHold).
+    [409, "video_ai_drama_disabled", "owner"],
+    [413, "video_speech_request_too_long"],
+    // The API's own refusals of one request: its shape, its size (app/middleware.py).
+    [422, "validation_error"],
+    [413, "request_too_large"],
+    [422, "video_judge_invalid"],
+    // The report, the reviews and their files.
+    [404, "video_project_not_found"],
+    [409, "video_project_dropped"],
+    [404, "video_review_route_unknown"],
+    [422, "video_review_bad_slug"],
+    [422, "video_review_bad_hash"],
+    [422, "video_review_bad_part"],
+    [422, "video_review_hash_mismatch"],
+    [413, "video_review_file_too_large"],
+    [413, "video_review_part_too_large"],
+    [409, "video_review_files_missing"],
+    [422, "video_shorts_line_missing"],
+    [409, "video_shorts_final_review_stale"],
+    [409, "video_shorts_review_upload_started"],
+    [409, "video_anime_runtime_invalid"],
+    [409, "video_anime_final_review_stale"],
+    [422, "video_final_renewal_reserved"],
+    [409, "video_final_renewal_review_required"],
+    [409, "video_final_renewal_source_stale"],
+    // The series and request routes a video's own unit calls: its recap, its done, its context.
+    [404, "video_series_not_found"],
+    [404, "video_series_episode_not_found"],
+    [409, "video_series_episode_not_started"],
+    [409, "video_series_not_compiling"],
+    [409, "video_series_planning_only"],
+    [404, "video_drama_request_not_found"],
+    [409, "video_drama_request_not_started"],
+    // Answered only outside a video's own unit, where no error is sorted by errorScope (a
+    // request, an episode or a compilation being started, a series document filed, a line on a
+    // thread answered): the caller takes the 409 itself or the run ends, as before 2026-10-06.
+    // Each is about one request, one series or one line, never about the worker or the site.
+    [409, "video_drama_request_not_queued"],
+    [409, "video_drama_request_slug_taken"],
+    [409, "video_series_episode_not_ready"],
+    [409, "video_series_episode_documents"],
+    [409, "video_anime_episode_invalid"],
+    [409, "video_series_story_slug"],
+    [409, "video_series_story_held"],
+    [409, "video_series_not_finished"],
+    [409, "video_series_compiling"],
+    [422, "video_series_doc_invalid"],
+    [409, "video_series_doc_not_wanted"],
+    [422, "video_series_structured_data_required"],
+    [409, "video_series_doc_prerequisite"],
+    [404, "video_drama_message_not_found"],
+    [409, "video_drama_message_answered"],
+    // The forwarders' own refusals on routes the lanes do not call themselves: the media
+    // commands' uploads (the worker reads their exit codes), the Shorts worker's, `login`'s.
+    [404, "video_media_route_unknown"],
+    [422, "video_media_bad_part"],
+    [413, "video_media_request_too_large"],
+    [404, "video_shorts_not_found"],
+    [413, "video_pairing_request_too_long"],
+    // Speech and alignment refusing one request's text, voice or audio.
+    [422, "video_speech_rejected"],
+    [422, "video_speech_model_not_allowed"],
+    [422, "video_speech_voice_not_allowed"],
+    [422, "video_transcribe_bad_audio"],
+    [422, "video_align_bad_audio"],
+    [422, "video_align_text_mismatch"],
+    [422, "video_align_voice_unsupported"],
+    // The worker's own: a production whose narrator the approved plan does not allow.
+    [0, "video_production_voice_mismatch", "owner"],
+  ],
+};
 
+test("what one video's error means for the others: every code the worker's routes answer has its scope", () => {
+  const seen = new Set();
+  for (const [scope, rows] of Object.entries(ERROR_SCOPES)) {
+    for (const [status, code, who = "service"] of rows) {
+      assert.equal(errorScope(new AutomationError("x", { status, code, who })), scope, `${status} ${code}`);
+      assert.ok(!seen.has(`${status} ${code}`), `${status} ${code} is listed once`);
+      seen.add(`${status} ${code}`);
+    }
+  }
+  assert.equal(errorScope(new TypeError("a bug")), "run", "an error that is not the client's is a bug: the run ends");
+  // No code about the whole worker or site is left to the per-video block.
+  const everyones = ["video_tool_token_invalid", "video_ai_budget_exhausted", "video_ai_provider_not_configured", "video_ai_subscription_cli_outdated", "video_ai_subscription_paused",
+    "video_ai_subscription_auth_failed", "video_automation_settings_invalid", "video_ai_subject_not_chosen", "video_judge_not_enabled", "video_list_filter_invalid",
+    "video_ai_worker_stopped", "video_ai_automation_disabled", "rate_limit_exceeded", "rate_limit_unavailable", "upstream_unavailable", "jev_budget_exhausted", "video_review_store_full",
+    "video_speech_budget_exhausted", "video_speech_not_configured", "video_ai_job_queue_unavailable"];
+  for (const code of everyones) assert.ok(!ERROR_SCOPES.video.some((row) => row[1] === code), `${code} never blocks one video`);
+});
+
+/** A worker over a site that only takes reports, for defer() on a state the test holds. */
+function deferring() {
   const box = sandbox();
   const clock = { now: Date.parse("2026-10-06T10:00:00Z") };
-  const { ctx } = context(box, async () => new Response("{}"), clock);
-  const automation = new Automation(ctx, {}, {});
+  const { ctx, out } = context(box, async () => new Response("{}"), clock);
+  const reports = [];
+  let refuse = false;
+  const api = {
+    report: async (slug, project) => {
+      if (refuse) throw new AutomationError("Bad Gateway", { status: 502 });
+      reports.push({ slug, ...project });
+    },
+  };
+  const automation = new Automation(ctx, api, {});
   const state = { slug: "waits", status: "active", created_at: "2026-10-06T09:00:00Z" };
-  const until = () => Date.parse(state.deferred_until) - clock.now;
-  automation.defer(state, "waits: busy");
-  assert.equal(until(), DEFER_BASE_MS);
-  state.defer_count = 9;
-  automation.defer(state, "waits: busy");
-  assert.deepEqual([until(), state.defer_count], [DEFER_MAX_MS, 10], "at most two hours");
-  assert.match(automation.defer(state, "waits: the server says when", { retryAfter: 900 }), /^waits: the server says when; deferred until 2026-10-06T10:15:00\.000Z$/);
-  assert.equal(state.defer_count, 10, "a wait the server named is not one of the doubling ones");
-  assert.equal(automation.defer(state, "waits: a STOP file", { backoffMs: 0 }), "waits: a STOP file");
-  assert.equal(state.deferred_until, undefined, "nothing failed: only this run leaves it");
-  assert.ok(automation.skipped.has("waits"));
-  assert.equal(readJson(path.join(box.work, "waits", "auto.json")).defer_count, 10, "every deferral is saved");
+  return { box, clock, out, reports, automation, state, until: () => Date.parse(state.deferred_until) - clock.now, saved: () => readJson(path.join(box.work, "waits", "auto.json")), refuse: (value) => (refuse = value) };
+}
+
+test("deferrals in a row wait five minutes doubled to two hours, the site is told from the second, and the seventh blocks the video with the last reason", async () => {
+  const { clock, out, reports, automation, state, until, saved, refuse } = deferring();
+  assert.deepEqual([DEFER_LIMIT, UNRECORDED_LIMIT, DEFER_REPORT_FROM], [6, 3, 2]);
+  const waits = [];
+  for (let tried = 1; tried <= DEFER_LIMIT; tried++) {
+    const line = await automation.defer(state, "waits: keyframes could not finish (the vendor is busy)", { what: "keyframes" });
+    assert.equal(line, `waits: keyframes could not finish (the vendor is busy); deferred until ${state.deferred_until}`);
+    assert.deepEqual([state.status, state.defer_count, saved().defer_count], ["active", tried, tried], "every deferral is saved");
+    waits.push(until() / 60_000);
+    // The first is usually over by the next round: nothing is said. From the second the card says why and until when.
+    assert.equal(reports.length, tried - 1);
+    clock.now = Date.parse(state.deferred_until) + 1;
+  }
+  assert.deepEqual(waits, [5, 10, 20, 40, 80, 120], "about four and a half hours in all");
+  assert.equal(DEFER_MAX_MS, 120 * 60_000);
+  const [second] = reports;
+  assert.deepEqual(second.checklist[0], { key: "deferred", label: "暫時過不去，2026-10-06 10:15 UTC 後再試（連續第 2 次）：keyframes could not finish (the vendor is busy)", done: false });
+  assert.equal(second.stage, "waiting", "a video the site has no stage for");
+  assert.equal(saved().deferred_reported, true);
+
+  // The seventh try in a row: waiting did not cure it, so the owner gets a card and a retry button.
+  const blocked = await automation.defer(state, "waits: keyframes could not finish (the vendor is busy)", { what: "keyframes" });
+  assert.equal(blocked, "waits: blocked — still could not move after 7 tries: keyframes could not finish (the vendor is busy)");
+  assert.deepEqual([state.status, state.blocked_kind, state.defer_count, state.deferred_until], ["blocked", "deferred:keyframes", undefined, undefined]);
+  assert.deepEqual([saved().status, saved().blocked, saved().deferred_reported], ["blocked", "still could not move after 7 tries: keyframes could not finish (the vendor is busy)", undefined]);
+  const card = reports.at(-1);
+  assert.deepEqual([card.stage, card.checklist[0].key, card.checklist.filter((row) => row.key === "deferred").length], ["blocked", "blocked", 0], "the block's row replaces the deferral's");
+
+  // A report the site does not take is a line in the log: the deferral stands and nothing is thrown.
+  const other = deferring();
+  other.state.defer_count = 1;
+  other.refuse(true);
+  assert.match(await other.automation.defer(other.state, "waits: busy"), /^waits: busy; deferred until /);
+  assert.deepEqual([other.state.defer_count, other.until(), other.saved().deferred_reported], [2, 2 * DEFER_BASE_MS, undefined]);
+  assert.match(other.out.stdout, /^waits: could not tell the site about the deferral \(Bad Gateway\); it is in this log only\n$/);
+  assert.equal(out.stdout.includes("could not tell the site"), false);
+});
+
+test("the server's retry_after is a floor under the doubling wait and counts toward the limit; a STOP file waits nothing and counts nothing", async () => {
+  const { automation, state, until, saved } = deferring();
+  assert.match(await automation.defer(state, "waits: the server says when", { retryAfter: 900 }), /^waits: the server says when; deferred until 2026-10-06T10:15:00\.000Z$/);
+  assert.equal(state.defer_count, 1, "counted like any other deferral");
+  // The API answers a busy vendor with 30 seconds: the video is not tried every round for that.
+  state.defer_count = 3;
+  await automation.defer(state, "waits: busy", { retryAfter: 30 });
+  assert.deepEqual([until(), state.defer_count], [8 * DEFER_BASE_MS, 4]);
+  await automation.defer(state, "waits: busy", { retryAfter: 86_400 });
+  assert.deepEqual([until(), state.defer_count], [DEFER_MAX_MS, 5], "at most two hours");
+  state.defer_count = DEFER_LIMIT;
+  assert.match(await automation.defer(state, "waits: busy", { retryAfter: 900, what: "writer" }), /^waits: blocked — still could not move after 7 tries: busy$/);
+  assert.equal(state.blocked_kind, "deferred:writer");
+
+  const stopped = deferring();
+  stopped.state.defer_count = 2;
+  stopped.state.deferred_until = "2026-10-06T09:59:00.000Z";
+  assert.equal(await stopped.automation.defer(stopped.state, "waits: a STOP file", { backoffMs: 0 }), "waits: a STOP file");
+  assert.deepEqual([stopped.state.deferred_until, stopped.state.defer_count], [undefined, 2], "nothing failed: only this run leaves it");
+  assert.ok(stopped.automation.skipped.has("waits"));
+  assert.deepEqual([stopped.saved().deferred_until, stopped.saved().defer_count], [undefined, 2]);
+  assert.equal(stopped.reports.length, 0, "and the site hears nothing");
+  // A STOP file at the limit is still not a failure.
+  stopped.state.defer_count = DEFER_LIMIT;
+  assert.equal(await stopped.automation.defer(stopped.state, "waits: a STOP file", { backoffMs: 0 }), "waits: a STOP file");
+  assert.equal(stopped.state.status, "active");
   assert.equal(PENDING_RECHECK_MS, 300_000, "a writer still running is looked up once a worker round");
+  assert.equal(saved().status, "blocked");
 });
 
 test("an approval the site gave but review-pull did not record defers the video instead of reporting the gate approved, and one run pulls it once", async () => {
@@ -3790,6 +4010,42 @@ test("an approval the site gave but review-pull did not record defers the video 
   assert.equal(pulls.length, 2);
   assert.match(readFileSync(path.join(box.work, slug, "approvals.json"), "utf8"), /"gate": "outline"/);
   assert.deepEqual([automatedVideos(box.work)[0].chosen, automatedVideos(box.work)[0].deferred_until], ["A", undefined]);
+});
+
+test("an approval that review-pull never records blocks the video after three deferrals, with what the pull said, for a person to look at", async () => {
+  const box = sandbox();
+  const slug = "outline-never-recorded";
+  const briefFile = path.join(box.videos, slug, "brief.md");
+  atomicWrite(briefFile, brief(["A", "B"]));
+  atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", created_at: "2026-10-06T09:00:00Z", notes: [], replans: 0 }));
+  const site = fakeSite({ videos: [{ slug, stage: "outline approved" }], settings: { max_waiting_drafts: 0 } });
+  site.reviewsOf(slug).push({ id: "r1", gate: "outline", status: "approved", choice: "A", note: null, content_sha256: sha(briefFile), decided_at: "2026-10-06T09:30:00Z", payload: {} });
+  const clock = { now: Date.parse("2026-10-06T10:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  let pulls = 0;
+  // What refuses is on this machine (the file changed since the push): waiting does not change it, and the gate is not pushed again while a review matches the file.
+  ctx.runCommand = async (command) => {
+    assert.equal(command[0], "review-pull");
+    pulls++;
+    return { code: EXIT.ok, out: "outline: approved a version that has since changed; run review-push again\n" };
+  };
+  const worker = new Automation(ctx, automationClient(ctx), site.settings);
+  const state = () => automatedVideos(box.work)[0];
+  const waits = [];
+  for (let tried = 1; tried <= UNRECORDED_LIMIT; tried++) {
+    assert.match(await worker.step(), /^outline-never-recorded: the outline is approved on the site but not recorded locally \(approval missing; review-pull exit 0: outline: approved a version that has since changed; run review-push again\); deferred until /);
+    assert.deepEqual([state().status, state().defer_count], ["active", tried]);
+    waits.push((Date.parse(state().deferred_until) - clock.now) / 60_000);
+    nextRun(worker, clock);
+  }
+  assert.deepEqual(waits, [5, 10, 20], "35 minutes, not the four and a half hours of a vendor's trouble");
+  assert.deepEqual(site.listed.get(slug).checklist[0].key, "deferred", "from the second deferral the card says the video waits");
+  // Before: one more deferral every two hours for ever, the page showing the gate approved and nothing moving.
+  assert.equal(await worker.step(), "outline-never-recorded: blocked — the outline is approved on the site but cannot be recorded locally: outline: approved a version that has since changed; run review-push again");
+  assert.deepEqual([state().status, state().blocked_kind, state().chosen, state().defer_count, pulls], ["blocked", "unrecorded:outline", undefined, undefined, 4]);
+  assert.deepEqual([site.listed.get(slug).stage, site.listed.get(slug).checklist[0].key], ["blocked", "blocked"]);
+  assert.equal(await worker.step(), null);
+  assert.equal(pulls, 4, "a blocked video is not pulled again");
 });
 
 test("two lanes do not take turns polling one writer still running on the server: the run looks it up once, and the other video moves", async () => {
@@ -3853,6 +4109,396 @@ test("two lanes do not take turns polling one writer still running on the server
   clock.now += PENDING_RECHECK_MS;
   assert.match(await second.step(), /^pending-writer: writer is still running/);
   assert.ok(lookups > polled);
+});
+
+test("a video whose trouble does not pass is blocked after its deferrals in a row, with the reason on the card, and the owner's retry starts it at once", async () => {
+  let failing = true;
+  const slug = "oldest-video";
+  // A revoked vendor key: the API answers 502 for every video's writer; waiting does not cure it.
+  const videos = threeVideos((each) => (failing && each === slug ? Response.json({ code: "video_ai_upstream_failed", detail: "模型服務拒絕了這次請求（HTTP 401）" }, { status: 502 }) : null));
+  const cards = (key) => videos.site.calls.reports.filter((report) => report.slug === slug && report.checklist[0]?.key === key);
+  let worker = videos.worker();
+  for (let tried = 1; tried <= DEFER_LIMIT; tried++) {
+    assert.match(await worker.step(), /^oldest-video: the writer request could not finish \(video_ai_upstream_failed: 模型服務拒絕了這次請求（HTTP 401）\); deferred until /, `try ${tried}`);
+    assert.deepEqual([videos.state(slug).status, videos.state(slug).defer_count], ["active", tried]);
+    assert.equal(cards("deferred").length, tried - 1, "the page is told from the second deferral in a row");
+    if (tried === 1) {
+      assert.equal(await worker.step(), "middle-video: script drafted");
+      assert.equal(await worker.step(), "newest-video: script drafted");
+    }
+    assert.equal(await worker.step(), null);
+    worker = videos.worker();
+    nextRun(worker, videos.clock);
+  }
+  const told = cards("deferred").at(-1);
+  assert.equal(told.stage, "writing", "the stage the page showed stays");
+  assert.match(told.checklist[0].label, /^暫時過不去，2026-10-0\d \d\d:\d\d UTC 後再試（連續第 6 次）：the writer request could not finish \(video_ai_upstream_failed/);
+  assert.equal(told.checklist[0].done, false);
+  // Before: the seventh try was one more deferral of two hours, and so was every one after it.
+  assert.equal(await worker.step(), "oldest-video: blocked — still could not move after 7 tries: the writer request could not finish (video_ai_upstream_failed: 模型服務拒絕了這次請求（HTTP 401）)");
+  const blocked = videos.state(slug);
+  assert.deepEqual([blocked.status, blocked.blocked_kind, blocked.defer_count, blocked.deferred_until, blocked.deferred_reported], ["blocked", "deferred:writer", undefined, undefined, undefined]);
+  assert.deepEqual([videos.site.listed.get(slug).stage, videos.site.listed.get(slug).checklist[0].key], ["blocked", "blocked"]);
+  assert.match(videos.site.listed.get(slug).checklist[0].label, /^卡住，需要人處理：still could not move after 7 tries: the writer request could not finish/);
+  assert.equal(videos.asked(slug), 7 * 4, "seven tries, each with the client's own bounded retries");
+  assert.equal(await worker.step(), null);
+
+  // The owner fixes the key and retries: the video is asked at once, with no wait left to sit out.
+  failing = false;
+  Object.assign(videos.site.listed.get(slug), { retry_request_id: "5c1d2e3f-4a5b-4c6d-8e7f-9a0b1c2d3e4f", retry_acknowledged_id: null });
+  assert.equal(await videos.worker().step(), "oldest-video: script drafted");
+  const moving = videos.state(slug);
+  assert.deepEqual([moving.status, moving.blocked, moving.blocked_kind, moving.defer_count], ["active", undefined, undefined, undefined]);
+});
+
+test("a visit that finds the video waiting on someone ends the row of deferrals: the next trouble waits five minutes again, and the card loses its row", async () => {
+  const slug = "oldest-video";
+  const videos = threeVideos(() => Response.json({ code: "video_ai_upstream_busy", detail: "模型服務暫時無法回應（HTTP 503），請稍後重試" }, { status: 503 }));
+  // "busy": its writer is asked and the service is busy; "waiting": it sits at a gate, as a video the owner has to decide on does.
+  let mode = "busy";
+  const worker = () => {
+    const automation = videos.worker();
+    const writer = automation.advance;
+    automation.advance = async (state) => (state.slug !== slug || mode === "waiting" ? null : writer(state));
+    return automation;
+  };
+  const cards = () => videos.site.calls.reports.filter((report) => report.slug === slug);
+  const round = async () => {
+    const automation = worker();
+    nextRun(automation, videos.clock);
+    return automation.step();
+  };
+  assert.match(await round(), /^oldest-video: the writer request could not finish/);
+  assert.match(await round(), /^oldest-video: the writer request could not finish/);
+  assert.deepEqual([videos.state(slug).defer_count, videos.state(slug).deferred_reported, cards().length, cards()[0].checklist[0].key], [2, true, 1, "deferred"]);
+
+  // A blip is over and the video is where it was, waiting: the visit reads the site without trouble.
+  mode = "waiting";
+  assert.equal(await round(), null);
+  const rested = videos.state(slug);
+  assert.deepEqual([rested.status, rested.defer_count, rested.deferred_until, rested.deferred_reported], ["active", undefined, undefined, undefined]);
+  assert.deepEqual([cards().length, cards()[1].stage, cards()[1].checklist.some((row) => row.key === "deferred")], [2, "writing", false], "one report takes the row off the card");
+  assert.equal(await round(), null);
+  assert.equal(cards().length, 2, "and a waiting video is not reported again every round");
+
+  // Before: the count stayed at 2 for ever, so trouble days later waited 20 minutes, then 40, up to two hours.
+  mode = "busy";
+  assert.match(await round(), /^oldest-video: the writer request could not finish/);
+  const again = videos.state(slug);
+  assert.deepEqual([again.defer_count, Date.parse(again.deferred_until) - videos.clock.now], [1, DEFER_BASE_MS]);
+  assert.equal(cards().length, 2, "a first deferral is not reported");
+});
+
+test("a unit that ends the run for everyone's reason does not end the row of deferrals, and a deferral told to the site after the unit's own report keeps that stage", async () => {
+  const slug = "oldest-video";
+  const videos = threeVideos();
+  const cards = () => videos.site.calls.reports.filter((report) => report.slug === slug);
+  const withCount = (count) => videos.worker().persist({ ...videos.state(slug), defer_count: count, deferred_until: new Date(videos.clock.now - 60_000).toISOString() });
+
+  // The site out of reach for this video's push: later() ends the run, and nothing was read without trouble.
+  withCount(2);
+  const halting = videos.worker();
+  halting.advance = async (state) => (state.slug === slug ? halting.later(`${slug}: could not send the language batch: cannot reach https://site.test`) : null);
+  assert.equal(await halting.step(), "oldest-video: could not send the language batch: cannot reach https://site.test");
+  assert.equal(halting.halted, true);
+  assert.equal(videos.state(slug).defer_count, 2, "the row stands");
+  // A visit that reads the site and finds nothing to do ends it.
+  const resting = videos.worker();
+  resting.advance = async () => null;
+  assert.equal(await resting.step(), null);
+  assert.deepEqual([videos.state(slug).defer_count, videos.state(slug).deferred_until], [undefined, undefined]);
+
+  // A stage reports its own step and then meets trouble: the deferral's row goes under that stage, not under the older one the list showed.
+  withCount(1);
+  const told = cards().length;
+  const worker = videos.worker();
+  worker.advance = async (state) => {
+    if (state.slug !== slug) return null;
+    await worker.report(state, "video assembled");
+    throw new AutomationError("Bad Gateway", { status: 502 });
+  };
+  assert.match(await worker.step(), /^oldest-video: a request could not finish \(HTTP 502: Bad Gateway\); deferred until /);
+  const [own, deferral] = cards().slice(told);
+  assert.deepEqual([cards().length - told, own.stage, own.checklist[0].key === "deferred"], [2, "video assembled", false]);
+  assert.deepEqual([deferral.stage, deferral.checklist[0].key, videos.state(slug).defer_count], ["video assembled", "deferred", 2], "before: the list's stage, writing");
+});
+
+test("the videos that sit a round out on their own are listed for the idle line: a saved deferral with its time, a writer still running with its recheck, and one only this run left", async () => {
+  const videos = threeVideos();
+  const lane = videos.worker();
+  const until = new Date(videos.clock.now + 40 * 60_000).toISOString();
+  lane.persist({ ...videos.state("oldest-video"), defer_count: 4, deferred_until: until });
+  assert.deepEqual(lane.deferredVideos(), [{ slug: "oldest-video", until }]);
+  lane.pendingUntil.set("middle-video", videos.clock.now + PENDING_RECHECK_MS);
+  lane.skipped.add("newest-video");
+  assert.deepEqual(lane.deferredVideos(), [
+    { slug: "oldest-video", until },
+    { slug: "middle-video", until: new Date(videos.clock.now + PENDING_RECHECK_MS).toISOString() },
+    { slug: "newest-video", until: null },
+  ]);
+  // A wait that is over, a blocked video and one another lane is moving are not waiting on their own.
+  videos.clock.now += 41 * 60_000;
+  lane.skipped.clear();
+  lane.busy.add("newest-video");
+  lane.persist({ ...videos.state("middle-video"), status: "blocked", blocked: "x" });
+  assert.deepEqual(lane.deferredVideos(), []);
+});
+
+test("a rate limit that names when to come back defers the video until then, not for the five minutes of a first deferral", async () => {
+  const slug = "oldest-video";
+  const videos = threeVideos((each) => (each === slug ? Response.json({ code: "rate_limit_exceeded", detail: "請求過於頻繁，請稍後再試" }, { status: 429, headers: { "Retry-After": "900" } }) : null));
+  const worker = videos.worker();
+  assert.match(await worker.step(), /^oldest-video: the writer request could not finish \(rate_limit_exceeded: 請求過於頻繁，請稍後再試\); deferred until /);
+  const state = videos.state(slug);
+  assert.equal(Date.parse(state.deferred_until), videos.clock.now + 900_000, "fifteen minutes from the last answer");
+  assert.equal(state.defer_count, 1, "counted toward the limit like any deferral");
+  assert.equal(await worker.step(), "middle-video: script drafted");
+});
+
+test("a STOP file that ends a media stage with exit 4 leaves the video for this run, uncounted and unsaved as a wait; a vendor's exit 4 is counted", async () => {
+  const box = sandbox();
+  const slug = "music-stopped";
+  const clock = { now: Date.parse("2026-10-06T10:00:00Z") };
+  const { ctx } = context(box, async () => assert.fail("the site hears nothing"), clock);
+  let result;
+  ctx.runCommand = async (command) => {
+    assert.deepEqual(command, ["music", "--slug", slug]);
+    return result;
+  };
+  const reports = [];
+  const automation = new Automation(ctx, { report: async (name, project) => reports.push({ name, ...project }) }, {});
+  const state = { slug, status: "active", format: "drama", created_at: "2026-10-06T09:00:00Z", notes: [], defer_count: 3 };
+  atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify(state));
+  const saved = () => readJson(path.join(box.work, slug, "auto.json"));
+
+  // music has no handler of its own for the file: the stage's error is its last line, and the exit is 4.
+  result = { code: 4, out: "music: one track\nstopped by the STOP file; rerun to continue\n" };
+  assert.equal(await automation.media(state, "music"), "music-stopped: music could not finish (stopped by the STOP file; rerun to continue)");
+  assert.deepEqual([saved().deferred_until, saved().defer_count, saved().status], [undefined, 3, "active"], "before: a saved wait of 40 minutes and a count of 4");
+  assert.ok(automation.skipped.has(slug), "this run leaves it");
+
+  // The file is there and the stage ended on another line (the wait for the track was cut short).
+  automation.skipped.clear();
+  writeFileSync(path.join(box.work, slug, "STOP"), "");
+  result = { code: 4, out: "the track was not ready in time\n" };
+  assert.equal(await automation.media(state, "music"), "music-stopped: music could not finish (the track was not ready in time)");
+  assert.deepEqual([saved().deferred_until, saved().defer_count], [undefined, 3]);
+  rmSync(path.join(box.work, slug, "STOP"));
+
+  // With no STOP file, exit 4 is the vendor's or the budget's: a deferral like any other.
+  automation.skipped.clear();
+  result = { code: 4, out: "the music vendor is busy (HTTP 503)\n" };
+  assert.match(await automation.media(state, "music"), /^music-stopped: music could not finish \(the music vendor is busy \(HTTP 503\)\); deferred until 2026-10-06T10:40:00\.000Z$/);
+  assert.deepEqual([saved().defer_count, reports.length, reports[0].checklist[0].key], [4, 1, "deferred"]);
+});
+
+/**
+ * The durable writer route (automation/run/jobs) over a fake site, as the API keeps it: a job per
+ * request key, running until the test finishes it, fails it or loses it (the lookup of a lost job
+ * answers `lost`, as after the worker was paired again).
+ */
+function durableJobs(site) {
+  const jobs = new Map();
+  const lost = new Map();
+  const counts = { submits: 0, lookups: 0 };
+  const result = { text: JSON.stringify({ video: null }), provider: "anthropic", model: "claude-sonnet-5", input_tokens: 10, output_tokens: 5, usage: { tokens: 15, token_budget: 20_000_000, drafts: 1, draft_budget: 8, calls: 1, failed_calls: 0 } };
+  const fetch = async (url, init = {}) => {
+    const { pathname } = new URL(url);
+    if (pathname === "/api/video/automation/run/jobs") {
+      counts.submits++;
+      const body = JSON.parse(init.body);
+      if (!jobs.has(body.request_key)) jobs.set(body.request_key, { id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: "anthropic", model: "claude-sonnet-5", status: "running", result: null, error_code: null, error_detail: null, error_status: null, retry_after: null });
+      return Response.json(jobs.get(body.request_key));
+    }
+    if (pathname.startsWith("/api/video/automation/run/jobs/")) {
+      counts.lookups++;
+      const id = pathname.split("/").at(-1);
+      if (lost.has(id)) return Response.json(lost.get(id).body, { status: lost.get(id).status });
+      return Response.json(jobs.get(id));
+    }
+    return site.fetchImpl(url, init);
+  };
+  return {
+    fetch, jobs, counts,
+    running: () => [...jobs.values()].filter((job) => job.status === "running"),
+    finish: (job) => Object.assign(job, { status: "succeeded", result }),
+    fail: (job, code, detail) => Object.assign(job, { status: "failed", error_code: code, error_detail: detail, error_status: 409 }),
+    lose: (job, status, body) => lost.set(job.id, { status, body }),
+  };
+}
+
+/** Videos whose next step is a durable writer stage, over durableJobs: a worker per run, as `auto` starts one. */
+function durableVideos(slugs) {
+  const box = sandbox();
+  for (const [index, slug] of slugs.entries()) atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", format: "slides", notes: [], created_at: `2026-10-06T0${index + 1}:00:00Z` }));
+  const site = fakeSite({ videos: slugs.map((slug) => ({ slug, stage: "writing" })), settings: { max_waiting_drafts: 0, durable_stage_runs: true } });
+  const server = durableJobs(site);
+  const clock = { now: Date.parse("2026-10-06T10:00:00Z") };
+  const { ctx } = context(box, server.fetch, clock);
+  const written = new Set();
+  const worker = async () => {
+    const api = automationClient(ctx, { durablePollMs: 2_000 });
+    await api.settings();
+    const automation = new Automation(ctx, api, site.settings);
+    automation.refs = smallRefs;
+    automation.advance = async (state) => {
+      if (written.has(state.slug)) return null;
+      await automation.stage("writer", state.slug, { brief: "x" }, 1000);
+      written.add(state.slug);
+      return `${state.slug}: script drafted`;
+    };
+    return automation;
+  };
+  const journals = (slug, sub = "") => {
+    const dir = path.join(box.work, slug, "run-receipts", sub);
+    return existsSync(dir) ? readdirSync(dir).filter((name) => name.endsWith(".json")).map((name) => readJson(path.join(dir, name))) : [];
+  };
+  return { box, site, server, clock, worker, journals, state: (slug) => automatedVideos(box.work).find((each) => each.slug === slug) };
+}
+
+test("a writer job the server failed before dispatching it (a STOP file, the switch off, a queue that lost it) defers its video and is sent again once; it never blocks", async () => {
+  const pending = (slug) => `${slug}: writer is still running; its saved receipt will be checked next round`;
+  for (const code of ["video_ai_worker_stopped", "video_ai_automation_disabled", "video_ai_job_interrupted_before_dispatch", "video_ai_job_dispatch_closed"]) {
+    const slugs = ["first-queued", "second-queued"];
+    const videos = durableVideos(slugs);
+    // One run queues both jobs: a writer still running no longer ends the lane.
+    const first = await videos.worker();
+    for (const slug of slugs) assert.equal(await first.step(), pending(slug), code);
+    assert.equal(await first.step(), null);
+    assert.equal(videos.server.counts.submits, 2);
+
+    // The server's worker picks them up under a STOP file: failed before dispatch, no model call.
+    for (const job of videos.server.jobs.values()) videos.server.fail(job, code, "待執行的工作不會送出模型請求");
+    const second = await videos.worker();
+    for (const slug of slugs) {
+      const line = await second.step();
+      assert.ok(line.startsWith(`${slug}: the writer request could not finish (${code}: 待執行的工作不會送出模型請求); deferred until `), `${code}: ${line}`);
+      const state = videos.state(slug);
+      // Before: "blocked — the site refused the writer request", one owner retry for each video.
+      assert.deepEqual([state.status, state.blocked, state.defer_count], ["active", undefined, 1], code);
+      assert.deepEqual(videos.journals(slug), [], "the failed journal is gone, so the next attempt is a new job");
+    }
+    assert.equal(await second.step(), null);
+    assert.equal(videos.server.counts.submits, 2, "nothing is sent again in the run that met the refusal");
+
+    // The STOP file gone and the wait over: each job is sent once more, and its answer is taken.
+    const third = await videos.worker();
+    nextRun(third, videos.clock);
+    for (const slug of slugs) assert.equal(await third.step(), pending(slug), code);
+    assert.equal(videos.server.counts.submits, 4, "one new job a video");
+    // A job that is only queued again has not ended the row: a queue that loses every job before its dispatch still reaches the limit and a card.
+    assert.deepEqual(slugs.map((slug) => videos.state(slug).defer_count), [1, 1], code);
+    for (const job of videos.server.running()) videos.server.finish(job);
+    const fourth = await videos.worker();
+    for (const slug of slugs) assert.equal(await fourth.step(), `${slug}: script drafted`, code);
+    assert.equal(videos.server.counts.submits, 4);
+    assert.deepEqual(slugs.map((slug) => videos.state(slug).defer_count), [undefined, undefined]);
+  }
+});
+
+test("a saved writer job the server no longer has blocks its video as job_gone; its journal stays until the owner retries, and the retry sends the stage exactly once more", async () => {
+  const slug = "repaired-video";
+  const videos = durableVideos([slug, "other-video"]);
+  const { server } = videos;
+  const lines = async (worker) => {
+    const said = [];
+    for (let line = await worker.step(); line; line = await worker.step()) said.push(line);
+    return said;
+  };
+  await lines(await videos.worker());
+  assert.equal(server.counts.submits, 2);
+  const [original] = videos.journals(slug);
+  assert.equal(original.receipt.status, "running");
+  // The worker is paired again: the server has no such job under the new token. The other video's job finishes.
+  const [old, other] = [...server.jobs.values()];
+  server.lose(old, 404, { code: "video_ai_job_not_found", detail: "找不到這個權杖的影片工作" });
+  server.finish(other);
+
+  const reason = "the server no longer has the saved writer job (video_ai_job_not_found: 找不到這個權杖的影片工作); a retry sets the saved request aside and sends the writer stage once more";
+  assert.deepEqual(await lines(await videos.worker()), [`${slug}: blocked — ${reason}`, "other-video: script drafted"]);
+  const blocked = videos.state(slug);
+  assert.deepEqual([blocked.status, blocked.blocked, blocked.blocked_kind], ["blocked", reason, "job_gone:writer"]);
+  // Never without the owner: after a re-pair the old job may still be running under the old token.
+  assert.deepEqual([videos.journals(slug).length, videos.journals(slug, "archive").length, server.counts.submits], [1, 0, 2]);
+  assert.deepEqual(await lines(await videos.worker()), [], "and a round later nothing is sent or set aside either");
+  assert.deepEqual([videos.journals(slug).length, videos.journals(slug, "archive").length, server.counts.submits], [1, 0, 2]);
+
+  // Before: the retry archived nothing (the reason did not say "inputs changed"), looked the same job up and blocked again, every time.
+  const request = "9d3c7b1a-2f4e-4a6b-8c0d-1e2f3a4b5c6d";
+  Object.assign(videos.site.listed.get(slug), { retry_request_id: request, retry_acknowledged_id: null });
+  assert.deepEqual(await lines(await videos.worker()), [`${slug}: writer is still running; its saved receipt will be checked next round`]);
+  const [archived] = videos.journals(slug, "archive");
+  assert.equal(archived.request_key, original.request_key);
+  assert.deepEqual([archived.receipt.status, archived.owner_retry.reason], ["running", "the server no longer has this job (404 video_ai_job_not_found)"]);
+  assert.deepEqual([videos.state(slug).status, videos.state(slug).blocked_kind, videos.site.listed.get(slug).retry_acknowledged_id], ["active", undefined, request]);
+  assert.equal(server.counts.submits, 3, "one new job under the owner's retry");
+  assert.notEqual(videos.journals(slug)[0].request_key, original.request_key);
+
+  for (const job of server.running()) server.finish(job);
+  assert.deepEqual(await lines(await videos.worker()), [`${slug}: script drafted`]);
+  assert.deepEqual(await lines(await videos.worker()), []);
+  assert.equal(server.counts.submits, 3, "exactly one");
+});
+
+test("the retry acknowledgement holds its video: while the report is in flight no other lane takes it, so the deferral of a report the site did not take overwrites nothing", async () => {
+  const box = sandbox();
+  const slug = "retried-video";
+  atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "blocked", blocked_from_status: "active", blocked: "verifier failed 2 times in a row: no report", blocked_kind: "failures:verifier", failures: { verifier: 2 }, format: "slides", notes: [], created_at: "2026-10-06T01:00:00Z" }));
+  const request = "3b9d1c2e-7f4a-4e5b-9c6d-0a1b2c3d4e5f";
+  const listed = { slug, stage: "blocked", checklist: [{ key: "blocked", label: "卡住，需要人處理：verifier failed 2 times in a row: no report", done: false }], retry_request_id: request, retry_acknowledged_id: null };
+  const site = fakeSite({ videos: [listed], settings: { max_waiting_drafts: 0 } });
+  const clock = { now: Date.parse("2026-10-06T10:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const real = automationClient(ctx);
+  // The site is failing reports when the retry arrives: the first acknowledgement stays in flight, then is refused.
+  let outage = true;
+  let release;
+  const flying = new Promise((resolve) => (release = resolve));
+  let arrived;
+  const inFlight = new Promise((resolve) => (arrived = resolve));
+  const api = {
+    ...real,
+    report: async (name, project) => {
+      if (!outage) return real.report(name, project);
+      arrived();
+      await flying;
+      throw new AutomationError("Bad Gateway", { status: 502 });
+    },
+  };
+  const shared = { busy: new Set(), skipped: new Set(), pendingUntil: new Map() };
+  const staged = [];
+  const [first, second] = [false, true].map((secondary) => {
+    const lane = new Automation(ctx, api, site.settings, { ...shared, secondary });
+    lane.advance = async (state) => {
+      // A stage whose progress lives only in auto.json, as the fact-check's rounds do.
+      staged.push(secondary ? "second" : "first");
+      state.verify_rounds = (state.verify_rounds ?? 0) + 1;
+      lane.persist(state);
+      return `${state.slug}: fact-check round ${state.verify_rounds}`;
+    };
+    return lane;
+  });
+  const state = () => automatedVideos(box.work)[0];
+
+  const acknowledging = first.step();
+  await inFlight;
+  assert.deepEqual([state().status, state().retry_request_id], ["active", request], "the retry is saved before it is reported");
+  assert.deepEqual([...shared.busy], [slug], "and the first lane holds the video while the report is in flight");
+  // Before: the second lane found the video active and free, ran its stage and saved it; the first lane's deferral then wrote its own older copy over that, and the stage was paid for again.
+  outage = false;
+  assert.equal(await second.step(), null, "the other lane leaves it");
+  assert.deepEqual(staged, []);
+  release();
+  assert.match(await acknowledging, /^retried-video: retry saved; could not report it yet \(Bad Gateway\); deferred until /);
+  assert.deepEqual([...shared.busy], [], "let go once the deferral is saved");
+  assert.deepEqual([state().status, state().defer_count, state().verify_rounds, state().failures], ["active", 1, undefined, {}]);
+  assert.equal(await second.step(), null, "set aside for the rest of this run");
+
+  // The next round sends the acknowledgement first, then the stage runs once.
+  nextRun(first, clock);
+  assert.equal(await first.step(), "retried-video: fact-check round 1");
+  assert.deepEqual(staged, ["first"]);
+  assert.deepEqual([state().verify_rounds, state().defer_count, site.listed.get(slug).retry_acknowledged_id], [1, undefined, request]);
 });
 
 test("the translator's and the caption reviewer's requests carry the sheet's glossary and the narration's cue boundaries beside a worksheet without them, whole and in units", async () => {
@@ -3979,6 +4625,13 @@ test("the counters a block records are the ones its retry resets, and a legacy r
     [{ blocked: "writer may have run on the server without its answer reaching the worker (lost); it is not asked again until the owner retries", failures: { writer: 1 } }, null, (state) => assert.deepEqual(state.failures, { writer: 1 })],
     [{ blocked: "keyframes needs the owner: 這個請求已經失敗 3 次", blocked_kind: "uncertain:writer", seed_offsets: { keyframes: 27 } }, "uncertain:writer", (state) => assert.deepEqual(state.seed_offsets, { keyframes: 27 }, "a recorded kind is not second-guessed from the wording")],
     [{ blocked: "x", blocked_kind: "media_exhausted:keyframes", seed_offsets: { keyframes: 28 } }, "media_exhausted:keyframes", (state) => assert.deepEqual(state.seed_offsets, { keyframes: 30 }, "the offset stops at keyframes.mjs's cap")],
+    // The kinds with no counter of their own: the retry tries the video as it stands, whatever their wording.
+    [{ blocked: "still could not move after 7 tries: keyframes could not finish (這個請求已經失敗 3 次；改提示詞或 seed 再試)", blocked_kind: "deferred:keyframes", prompt_fixes: { keyframes: 2 }, failures: { keyframes: 1 }, seed_offsets: { keyframes: 3 }, replans: 1 }, "deferred:keyframes",
+      (state) => assert.deepEqual([state.prompt_fixes, state.failures, state.seed_offsets, state.replans], [{ keyframes: 2 }, { keyframes: 1 }, { keyframes: 3 }, 1], "deferrals at their limit reset nothing")],
+    [{ blocked: "the script is approved on the site but cannot be recorded locally: script: approved a runtime policy or episode context that has since changed; run review-push again", blocked_kind: "unrecorded:script", prompt_fixes: { script: 1 }, replans: 2 }, "unrecorded:script",
+      (state) => assert.deepEqual([state.prompt_fixes, state.replans], [{ script: 1 }, 2], "an approval that cannot be recorded is a person's to look at")],
+    [{ blocked: "the server no longer has the saved writer job (video_ai_job_not_found: 找不到這個權杖的影片工作); a retry sets the saved request aside and sends the writer stage once more", blocked_kind: "job_gone:writer", failures: { writer: 1 }, prompt_fixes: { script: 1 } }, "job_gone:writer",
+      (state) => assert.deepEqual([state.failures, state.prompt_fixes], [{ writer: 1 }, { script: 1 }], "the saved job's journal is the retry transport's")],
   ];
   for (const [fields, kind, check] of kinds) {
     const state = { slug: "kinds", status: "blocked", ...fields };

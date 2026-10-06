@@ -43,7 +43,7 @@ import { imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } 
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID, PAUSE_CODES, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
-import { RunReceiptError } from "./run-receipts.mjs";
+import { JOB_GONE_KIND, RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
 import { instructionsFor, parseAnswer, references, SLIDES_CAMERA_WORDS } from "./prompts.mjs";
@@ -142,7 +142,11 @@ export function blockedKindOf(state) {
  * outline replans, a stage's failures in a row; a media request the server stopped answering
  * for gets the next seeds (state.seed_offsets, MAX_KEYFRAME_TAKES further) and its prompt-fix
  * rounds back, since the fix that could not change the request is what blocked it. An
- * uncertain writer run is the retry transport's (client.mjs retryRuns). Returns the kind.
+ * uncertain writer run is the retry transport's (client.mjs retryRuns), and so is a saved job the
+ * server no longer has (`job_gone:<stage>`). Deferrals that reached their limit
+ * (`deferred:<what>`) and an approval that cannot be recorded (`unrecorded:<gate>`) have no
+ * counter left: `block()` cleared the wait, and the retry tries the video as it stands. Returns
+ * the kind.
  */
 export function resetForRetry(state) {
   const kind = blockedKindOf(state);
@@ -518,31 +522,62 @@ const blockedLabel = (state) => `卡住，需要人處理：${state.blocked}`.sl
 const BLOCKED_REPORT_BACKOFF_MS = 5 * 60_000;
 // A video that could not move for a reason of its own that passes (a vendor busy, a push the site
 // did not take, Jev away) waits on its own (Automation.defer): auto.json `deferred_until`, five
-// minutes the first time and twice as long each time in a row (`defer_count`, cleared by a unit
-// that moves it), at most two hours, while the lane goes on with the next video. Until
-// 2026-10-06 such a video ended its lane's run (`later()`), and since the videos go oldest first,
-// the same video ended every run and the second lane ran into it next.
+// minutes the first time and twice as long each time in a row (`defer_count`, cleared by the
+// next visit that ends without trouble), at most two hours, while the lane goes on with the next
+// video. Until 2026-10-06 such a video ended its lane's run (`later()`), and since the videos go
+// oldest first, the same video ended every run and the second lane ran into it next.
 export const DEFER_BASE_MS = 5 * 60_000;
 export const DEFER_MAX_MS = 2 * 3600_000;
+// Waiting is not for ever: after this many deferrals in a row (5, 10, 20, 40, 80 and 120 minutes,
+// about four and a half hours) the next failure blocks the video with the last reason, so the
+// owner reads it on /admin/videos and a retry starts it again at once. Without the limit a
+// condition that waiting cannot cure (a revoked vendor key, a push the site will always refuse)
+// was tried every two hours for ever with nothing on the page.
+export const DEFER_LIMIT = 6;
+// An approval the site gave that review-pull cannot record (pulled) is refused here, on this
+// machine, and does not pass by waiting: three deferrals (35 minutes), then the block.
+export const UNRECORDED_LIMIT = 3;
+// From this deferral in a row on the site is told, as a checklist row the owner reads on
+// /admin/videos; the first one is usually over by the next round.
+export const DEFER_REPORT_FROM = 2;
+/** The checklist row of a video that waits on its own: why, until when (UTC) and which try in a row. */
+const deferredLabel = (state, why) => `暫時過不去，${String(state.deferred_until).slice(0, 16).replace("T", " ")} UTC 後再試（連續第 ${state.defer_count} 次）：${why}`.slice(0, 120);
 // How long every lane of this run leaves a video whose writer is still running on the server
 // (RUN_PENDING): the worker's round (ops/video/worker.sh, 300 s), so its receipt is looked up
 // once a round, not by each lane in turn (two lanes polling one job got a 429 on 2026-10-06).
 export const PENDING_RECHECK_MS = 5 * 60_000;
 // What an error from moving one video means for the others (errorScope). The token, the
-// owner's settings and budget, every subscription account and a site out of reach are everyone's.
-const RUN_CODES = new Set(["video_tool_token_invalid", "video_ai_provider_not_configured", "video_ai_budget_exhausted", "video_ai_subscription_cli_outdated", "video_automation_settings_invalid", "network", ...PAUSE_CODES]);
-// A service busy, briefly away or still working: asking later may well go through.
-const WAIT_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "rate_limit_exceeded", "upstream_unavailable", RUN_PENDING]);
+// owner's settings and budget, every subscription account and a site out of reach are everyone's;
+// so are a 4xx about the settings of the whole site (no model chosen for the Shorts' test, the
+// outline judge switched off) and one about the worker's own list request. None of them may
+// block the one video that happened to meet it.
+const RUN_CODES = new Set([
+  "video_tool_token_invalid", "video_ai_provider_not_configured", "video_ai_budget_exhausted", "video_ai_subscription_cli_outdated",
+  "video_automation_settings_invalid", "video_ai_subject_not_chosen", "video_judge_not_enabled", "video_list_filter_invalid",
+  "video_shorts_state_needs_only", "network", ...PAUSE_CODES,
+]);
+// A service busy, briefly away or still working: asking later may well go through. So may a
+// durable writer job the server failed before it reached the model (apps/api/app/video_automation
+// ai.py run_stage, run_jobs.py): the work base's STOP file or one video's, the automation switched
+// off, a job the queue lost before its dispatch. Nothing ran and the journal is already gone
+// (client.mjs removeFailed), so the next attempt sends the job once; a 409 that blocked the
+// video here needed an owner retry for each video that had a job queued.
+const WAIT_CODES = new Set([
+  "video_ai_upstream_busy", "video_ai_upstream_unreachable", "rate_limit_exceeded", "upstream_unavailable", RUN_PENDING,
+  "video_ai_worker_stopped", "video_ai_automation_disabled", "video_ai_job_interrupted_before_dispatch", "video_ai_job_dispatch_closed",
+]);
 
 /**
  * What an error thrown while moving one video means for the run (Automation.move): "run" — the
  * token, the owner's settings or budget, every subscription account, the site out of reach, or
  * an error that is no AutomationError: the run ends, as every error did before 2026-10-06;
- * "wait" — a rate limit, a 5xx, a busy or unreachable model service, a run still pending: this
- * video waits (defer, after the server's `retry_after` when it gave one) and the others move;
- * "video" — any other refusal of this video's request (a 4xx: the project dropped, a job whose
- * input changed, a setting this production lacks): asking again would be refused the same way,
- * so the video is blocked with the reason and the others move.
+ * "wait" — a rate limit, a 5xx, a busy or unreachable model service, a run still pending, a job
+ * the server failed before dispatching it: this video waits (defer, no sooner than the server's
+ * `retry_after` when it gave one) and the others move; "video" — any other refusal of this
+ * video's request (a 4xx: the project dropped, a job whose input changed, a setting this
+ * production lacks): asking again would be refused the same way, so the video is blocked with
+ * the reason and the others move. The table in automation.test.mjs lists every code the
+ * worker's routes answer with its scope.
  */
 export function errorScope(error) {
   if (!(error instanceof AutomationError)) return "run";
@@ -644,18 +679,29 @@ function recorded(state, root) {
   return { videoId: YOUTUBE_ID.test(id ?? "") ? id : null, category: VIDEO_CATEGORIES.includes(category) ? category : null };
 }
 
-/** Hand everything the automation knows to /admin/videos: title, stage, checklist, article, format, category, YouTube id. */
-async function report(ctx, api, state, stage) {
+// The stage the site last took for a state object in hand (one unit's copy of auto.json), so a
+// deferral reported later in the same unit keeps that stage instead of the list's older one
+// (Automation.shownStage).
+const REPORTED_STAGE = new WeakMap();
+
+/**
+ * Hand everything the automation knows to /admin/videos: title, stage, checklist, article, format,
+ * category, YouTube id. `deferred` is the label of a video waiting on its own (Automation.defer):
+ * the checklist opens with that row, and auto.json's `deferred_reported` remembers the page shows
+ * it; any report without it takes the row off again, so the next stage that reports clears it.
+ */
+async function report(ctx, api, state, stage, { deferred = null } = {}) {
   const workdir = resolveWorkdir({ env: ctx.env, slug: state.slug, root: ctx.root, home: ctx.home });
   const status = await pipelineStatus({ slug: state.slug, root: ctx.root, workdir });
   const guide = mainGuide(state);
   const { videoId, category } = recorded(state, ctx.root);
-  // The page has no field for why a video stopped; the checklist is what the owner reads.
+  // The page has no field for why a video stopped or waits; the checklist is what the owner reads.
   const blocked = state.status === "blocked" && state.blocked ? [{ key: "blocked", label: blockedLabel(state), done: false }] : [];
+  const waiting = deferred && !blocked.length ? [{ key: "deferred", label: deferred, done: false }] : [];
   await api.report(state.slug, {
     title: state.title || state.slug,
     stage: stage.slice(0, 40),
-    checklist: [...blocked, ...checklistFrom(status.steps)],
+    checklist: [...blocked, ...waiting, ...checklistFrom(status.steps)],
     format: state.format ?? "slides",
     youtube_video_id: videoId,
     ...(guide ? { source_guide: guide } : {}),
@@ -666,6 +712,9 @@ async function report(ctx, api, state, stage) {
     // What kind of block it is (`block()`), for a site that will read it; today's ignores the key.
     ...(state.status === "blocked" && state.blocked_kind ? { blocked_kind: state.blocked_kind } : {}),
   });
+  REPORTED_STAGE.set(state, stage);
+  if (waiting.length) state.deferred_reported = true;
+  else delete state.deferred_reported;
 }
 
 export class Automation {
@@ -694,6 +743,9 @@ export class Automation {
     this.halted = false;
     // The video the current unit is moving, for a writer still pending on the server (step()).
     this.unitVideo = null;
+    // The owner's lines this run left unanswered because their video was not at rest
+    // (discuss.mjs answerScript), by message id, so the log says so once.
+    this.heldLines = new Set();
     this.lastAnswer = null;
     // How much of a translation worksheet one model call is asked for (sheet-units.mjs).
     this.unitLimits = { lines: UNIT_LINES, chars: UNIT_CHARS };
@@ -821,44 +873,134 @@ export class Automation {
   /**
    * This video could not move for a reason that passes (a vendor busy, a push or report the site
    * did not take, Jev away, a STOP file between requests): it waits on its own and the lane goes
-   * on with the next video. auto.json gets `deferred_until`, after the server's `retryAfter`
-   * (seconds) when it gave one, else DEFER_BASE_MS doubled for each deferral in a row
-   * (`defer_count`, which a unit that moves the video clears) up to DEFER_MAX_MS; `backoffMs`
-   * sets the wait outright, and 0 leaves the video for the rest of this run alone (a STOP file:
-   * nothing failed). Every lane leaves it for the rest of this run either way. Returns the line.
+   * on with the next video. auto.json gets `deferred_until`: DEFER_BASE_MS doubled for each
+   * deferral in a row (`defer_count`, which the next visit that ends without trouble clears) up
+   * to DEFER_MAX_MS, and no sooner than the server's `retryAfter` (seconds) when it gave one.
+   * The server's time is a floor and such a deferral is counted like any other: the API answers a
+   * busy vendor with 30 seconds, and a wait that short would try the video every round and reach
+   * the limit within the half hour.
+   *
+   * Waiting has an end. After `limit` deferrals in a row the next one blocks the video instead,
+   * with the last line as the reason and kind `deferred:<what>` (or `blocked`: { why, kind }),
+   * so the owner reads it on /admin/videos and a retry starts the video at once. From the
+   * DEFER_REPORT_FROM-th in a row the site is told with a checklist row (reportDeferred).
+   *
+   * `backoffMs` sets the wait outright and is not counted: 0 leaves the video for the rest of
+   * this run alone (a STOP file: nothing failed). Every lane leaves it for the rest of this run
+   * either way. Resolves to the line.
    */
-  defer(state, line, { backoffMs = null, retryAfter = null } = {}) {
-    let wait;
-    if (Number.isFinite(retryAfter) && retryAfter > 0) wait = Math.min(retryAfter * 1000, DEFER_MAX_MS);
-    else if (Number.isFinite(backoffMs) && backoffMs >= 0) wait = backoffMs;
-    else {
-      const count = Number.isInteger(state.defer_count) && state.defer_count > 0 ? state.defer_count : 0;
-      wait = Math.min(DEFER_BASE_MS * 2 ** count, DEFER_MAX_MS);
-      state.defer_count = count + 1;
+  async defer(state, line, { backoffMs = null, retryAfter = null, what = null, limit = DEFER_LIMIT, blocked = null } = {}) {
+    const now = this.ctx.now().getTime();
+    if (Number.isFinite(backoffMs) && backoffMs >= 0 && !(Number.isFinite(retryAfter) && retryAfter > 0)) {
+      this.skipped.add(state.slug);
+      if (backoffMs > 0) state.deferred_until = new Date(now + backoffMs).toISOString();
+      else delete state.deferred_until;
+      saveState(this.workdir(state.slug), state);
+      return backoffMs > 0 ? `${line}; deferred until ${state.deferred_until}` : line;
     }
+    const count = Number.isInteger(state.defer_count) && state.defer_count > 0 ? state.defer_count : 0;
+    const why = line.startsWith(`${state.slug}: `) ? line.slice(state.slug.length + 2) : line;
+    if (count >= limit) return this.block(state, blocked?.why ?? `still could not move after ${count + 1} tries: ${why}`, blocked?.kind ?? `deferred:${what ?? "stage"}`);
+    const asked = Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : 0;
+    const wait = Math.min(Math.max(DEFER_BASE_MS * 2 ** count, asked), DEFER_MAX_MS);
+    state.defer_count = count + 1;
     this.skipped.add(state.slug);
-    if (wait > 0) state.deferred_until = new Date(this.ctx.now().getTime() + wait).toISOString();
-    else delete state.deferred_until;
+    state.deferred_until = new Date(now + wait).toISOString();
     saveState(this.workdir(state.slug), state);
-    return wait > 0 ? `${line}; deferred until ${state.deferred_until}` : line;
+    // A report the site just refused (the retry's acknowledgement) is not followed by another.
+    if (state.defer_count >= DEFER_REPORT_FROM && what !== "report") await this.reportDeferred(state, why);
+    return `${line}; deferred until ${state.deferred_until}`;
   }
 
   /**
-   * A unit moved this video: its deferrals in a row start again and its writer is no longer
-   * pending. Nothing to do for a unit that deferred or blocked it.
+   * The stage a report that is not a stage's own carries: the one this unit already reported for
+   * the state in hand (a stage that reported and then met trouble keeps its stage), else the one
+   * /admin/videos shows now.
    */
-  moved(state) {
+  shownStage(state) {
+    const shown = REPORTED_STAGE.get(state) ?? (this.site ?? []).find((video) => video.slug === state.slug)?.stage;
+    // A retry whose acknowledgement has not arrived still reads "blocked" there.
+    if (shown === "blocked") return "retrying";
+    return typeof shown === "string" && shown ? shown : "waiting";
+  }
+
+  /**
+   * Tell /admin/videos that this video waits on its own, why and until when: a checklist row
+   * with key "deferred" under the stage the page already shows. Best effort: a report the site
+   * does not take is a line in the log, never an error, since the deferral itself is saved.
+   */
+  async reportDeferred(state, why) {
+    try {
+      await report(this.ctx, this.api, state, this.shownStage(state), { deferred: deferredLabel(state, why) });
+      saveState(this.workdir(state.slug), state);
+    } catch (error) {
+      this.log(`${state.slug}: could not tell the site about the deferral (${error.message}); it is in this log only`);
+    }
+  }
+
+  /**
+   * A visit to this video ended without trouble, whether it moved the video or found it waiting
+   * on someone: it read the site, so the deferrals in a row are over, and its writer is no longer
+   * pending. Nothing to do for a unit that deferred or blocked it, or that ended the run for a
+   * reason of everyone's (later: the site or the token is what failed, so nothing was read
+   * without trouble). Only the wait's own fields are taken off what the unit saved, and when the
+   * page shows the deferral row and no stage of this unit reported, a report takes it off (best
+   * effort, tried again on the next visit).
+   */
+  async moved(state) {
     this.pendingUntil.delete(state.slug);
-    if (this.skipped.has(state.slug) || state.status === "blocked") return;
-    if (state.defer_count === undefined && state.deferred_until === undefined) return;
-    delete state.defer_count;
-    delete state.deferred_until;
-    saveState(this.workdir(state.slug), state);
+    if (this.halted || this.skipped.has(state.slug) || state.status === "blocked") return;
+    if (state.defer_count === undefined && state.deferred_until === undefined && !state.deferred_reported) return;
+    const workdir = this.workdir(state.slug);
+    const saved = readJson(path.join(workdir, STATE_FILE), null);
+    if (!saved || saved.slug !== state.slug || saved.status === "blocked") return;
+    for (const each of [saved, state]) {
+      delete each.defer_count;
+      delete each.deferred_until;
+    }
+    if (state.deferred_reported) {
+      try {
+        await report(this.ctx, this.api, state, this.shownStage(state));
+      } catch (error) {
+        this.log(`${state.slug}: could not take the deferral off the page yet (${error.message})`);
+      }
+    }
+    if (state.deferred_reported) saved.deferred_reported = true;
+    else delete saved.deferred_reported;
+    saveState(workdir, saved);
   }
 
   /** Whether a video sits this unit out: deferred (auto.json), left for this run, or its writer still running on the server. */
   waiting(state, now = this.ctx.now().getTime()) {
     return this.skipped.has(state.slug) || (this.pendingUntil.get(state.slug) ?? 0) > now || Date.parse(state.deferred_until ?? "") > now;
+  }
+
+  /**
+   * Whether a video is at rest: no lane is moving it (`busy`), none set it aside in this run, its
+   * writer is not still running on the server, and it does not wait on its own (`state` is its
+   * auto.json as just read). A step outside a video's own unit that would send a model request
+   * for it (a discussion of its screenplay, discuss.mjs) holds off until then. A deferral saved
+   * in an earlier round counts: the video is passed over before its unit, so this run never
+   * looked its writer up, and a job sent before the deferral (the read of its reviews failed
+   * ahead of the lookup, twice in a row) may still be running on the server.
+   */
+  resting(state, now = this.ctx.now().getTime()) {
+    return !this.busy.has(state.slug) && !this.waiting(state, now);
+  }
+
+  /**
+   * The videos that sit out on their own right now (waiting), oldest first, for `auto`'s idle
+   * line: [{ slug, until }]. `until` is auto.json's `deferred_until`, or when a writer still
+   * running on the server is looked up again, whichever is later; null for a video left for
+   * this run only (a STOP file between requests, a stage that gave nothing usable).
+   */
+  deferredVideos(now = this.ctx.now().getTime()) {
+    return automatedVideos(this.workBase)
+      .filter((state) => ["active", "done"].includes(state.status) && this.waiting(state, now))
+      .map((state) => {
+        const until = Math.max(Date.parse(state.deferred_until ?? "") || 0, this.pendingUntil.get(state.slug) ?? 0);
+        return { slug: state.slug, until: until > now ? new Date(until).toISOString() : null };
+      });
   }
 
   /**
@@ -959,7 +1101,8 @@ export class Automation {
     }
     if (this.secondary) return null;
     // The owner's lines on a document or a screenplay are answered first, one per round
-    // (docs/videos/DRAMA-FLOW.md, section 3): the owner is waiting, and nothing is paid for.
+    // (docs/videos/DRAMA-FLOW.md, section 3): the owner is waiting, and nothing is paid for. A
+    // line on the screenplay of a video that is not at rest (resting) is left for a later unit.
     const discussed = await discussStep(this);
     if (discussed) return discussed;
     // A series in the making comes next (docs/videos/SERIES.md), then the owner's one-off
@@ -999,7 +1142,9 @@ export class Automation {
         return this.block(state, "policy retry refused: the source changed since the held request; restore its exact source or inspect the retained receipt before resuming");
       }
       try {
-        await this.api.retryRuns?.(state.slug, { requestId: request, reason: state.blocked ?? "", format: state.format ?? currentVideo?.format ?? "slides" });
+        // The kind travels with the retry: `job_gone:<stage>` is what lets the transport set aside
+        // a queued or running journal whose job the server no longer has (client.mjs retryRuns).
+        await this.api.retryRuns?.(state.slug, { requestId: request, reason: state.blocked ?? "", format: state.format ?? currentVideo?.format ?? "slides", kind: blockedKindOf(state) });
       } catch (error) {
         if (error instanceof AutomationError && error.code === POLICY_HOLD) {
           state.retry_request_id = request;
@@ -1035,15 +1180,24 @@ export class Automation {
       delete state.blocked_report_pending;
       delete state.blocked_report_retry_at;
       delete state.policy_hold;
-      saveState(this.workdir(state.slug), state);
+      // From the moment auto.json says "active" another lane could take the video. This lane
+      // holds it until the acknowledgement is over, so a deferral saved below is the only copy:
+      // without the hold a second lane ran the video's stage while the report was in flight, and
+      // the deferral then wrote this lane's older state over what that stage had saved.
+      this.busy.add(state.slug);
       try {
-        await report(this.ctx, this.api, state, "retrying");
-        siteVideo.retry_acknowledged_id = request;
-      } catch (error) {
-        // move() sends the acknowledgement before any stage of this video, which waits; the
-        // others go on, unless the site or the token is what failed.
-        const line = `${state.slug}: retry saved; could not report it yet (${error.message})`;
-        return errorScope(error) === "run" ? this.later(line) : this.defer(state, line);
+        saveState(this.workdir(state.slug), state);
+        try {
+          await report(this.ctx, this.api, state, "retrying");
+          siteVideo.retry_acknowledged_id = request;
+        } catch (error) {
+          // move() sends the acknowledgement before any stage of this video, which waits; the
+          // others go on, unless the site or the token is what failed.
+          const line = `${state.slug}: retry saved; could not report it yet (${error.message})`;
+          return errorScope(error) === "run" ? this.later(line) : await this.defer(state, line, { what: "report" });
+        }
+      } finally {
+        this.busy.delete(state.slug);
       }
       break;
     }
@@ -1081,6 +1235,9 @@ export class Automation {
    * One video's next stage, or its languages; null when it waits on someone. An error is sorted
    * by errorScope: everyone's ends the run as before, one this video's request will always meet
    * blocks it, and one that passes defers it; either way the next video moves in the same run.
+   * A saved job the server no longer has blocks the video as `job_gone:<stage>`, the one block
+   * whose retry may set a queued or running journal aside. A visit that ends without trouble,
+   * with or without a line, ends the deferrals in a row (moved).
    */
   async move(state, siteBySlug) {
     // If the first acknowledgement of a retry could not reach the site, send it before another stage.
@@ -1089,7 +1246,7 @@ export class Automation {
         await report(this.ctx, this.api, state, "retrying");
       } catch (error) {
         const line = `${state.slug}: retry saved; could not report it yet (${error.message})`;
-        return errorScope(error) === "run" ? this.later(line) : this.defer(state, line);
+        return errorScope(error) === "run" ? this.later(line) : this.defer(state, line, { what: "report" });
       }
     }
     let done = null;
@@ -1103,17 +1260,27 @@ export class Automation {
       if (error.code === POLICY_HOLD) return this.policyHold(state, error);
       if (error.code === RUN_UNCERTAIN) return this.unanswered(state, error);
       if (error.code === OUTPUT_INVALID) return this.retryLater(state, error.stage, error.message);
-      // A writer still running on the server: step() sets this video aside for the run.
+      // A writer still running on the server: step() sets this video aside for the run. It
+      // neither counts as a deferral nor ends a row of them: a queue that loses every job before
+      // its dispatch (queued, failed, queued again) must still reach the limit and a card.
       if (error.code === RUN_PENDING) throw error;
       const scope = errorScope(error);
       if (scope === "run") throw error;
       const request = error.stage ? `the ${error.stage} request` : "a request";
       const code = error.code || `HTTP ${error.status}`;
+      // The lookup of a saved job answered with a settled 4xx (client.mjs durableRun `gone`: no
+      // such job under this token after the worker was paired again, or not the receipt's job).
+      // Its journal stays where it is, since the old job may still be running under the old
+      // token; only the owner's retry of this kind sets it aside, and the stage is then sent once.
+      if (error.gone) {
+        const stage = error.stage ?? "writer";
+        return this.block(state, `the server no longer has the saved ${stage} job (${code}: ${error.message}); a retry sets the saved request aside and sends the ${stage} stage once more`, `${JOB_GONE_KIND}${stage}`);
+      }
       if (scope === "video") return this.block(state, `the site refused ${request} (${code}): ${error.message}`);
       const retryAfter = Number(error.retry_after);
-      return this.defer(state, `${state.slug}: ${request} could not finish (${code}: ${error.message})`, { retryAfter: Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : null });
+      return this.defer(state, `${state.slug}: ${request} could not finish (${code}: ${error.message})`, { retryAfter: Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : null, what: error.stage ?? "request" });
     }
-    if (done) this.moved(state);
+    await this.moved(state);
     return done;
   }
 
@@ -1297,7 +1464,7 @@ export class Automation {
     const options = outlineOptions(brief);
     const verdict = await judgeOutline(this.api, state.slug, brief, options);
     // Jev or the site away: this outline waits, and the other videos move.
-    if (verdict.status === "later") return this.defer(state, `Jev could not judge the outline (${verdict.reason})`);
+    if (verdict.status === "later") return this.defer(state, `Jev could not judge the outline (${verdict.reason})`, { what: "judge" });
     if (verdict.pick) {
       state.last_pick = verdict.pick;
       saveState(this.workdir(state.slug), state);
@@ -1593,6 +1760,12 @@ export class Automation {
    * reported as the approval, and the next unit found the gate open and did the same: one video
    * could spend a run's 40 units on it. `file` is for a gate just pushed, whose review may well be
    * waiting for the owner: nothing to record unless the site says it is approved.
+   *
+   * What refuses to record an approval is on this machine (the file changed since the push, the
+   * episode's context did, an earlier entry of the same file), and the gate is only pushed again
+   * when no review matches the file, so most of these do not pass by waiting: after
+   * UNRECORDED_LIMIT deferrals in a row the video is blocked as `unrecorded:<gate>` with what the
+   * pull said, for a person to push or approve it by hand.
    */
   async pulled(state, gate, file = null) {
     const result = await this.pull(state.slug);
@@ -1601,14 +1774,21 @@ export class Automation {
     if (approval.status === "approved") return null;
     if (file && (await this.decision(state, gate, file))?.status !== "approved") return null;
     const said = String(result?.out ?? "").trim().split("\n").filter((line) => line.startsWith(gate)).at(-1) ?? lastLine(String(result?.out ?? ""));
-    return this.defer(state, `${state.slug}: the ${gate} is approved on the site but not recorded locally (approval ${approval.status}; review-pull exit ${result?.code ?? "?"}${said ? `: ${said}` : ""})`);
+    const detail = `approval ${approval.status}; review-pull exit ${result?.code ?? "?"}${said ? `: ${said}` : ""}`;
+    return this.defer(state, `${state.slug}: the ${gate} is approved on the site but not recorded locally (${detail})`, {
+      limit: UNRECORDED_LIMIT,
+      blocked: { why: `the ${gate} is approved on the site but cannot be recorded locally: ${said || detail}`, kind: `unrecorded:${gate}` },
+    });
   }
 
   /**
    * Stop working on a video and say why on /admin/videos; the owner or a person takes over.
    * `kind` names what blocked it (`prompt_fixes:<kind>`, `replans`, `failures:<stage>`,
    * `media_owner:<command>`, `media_exhausted:<command>`, `uncertain:<stage>`), which is what
-   * the owner's retry resets (resetForRetry); a block with none is only retried as it was.
+   * the owner's retry resets (resetForRetry); a block with none is only retried as it was. So are
+   * the kinds that have no counter to reset: `deferred:<what>` (deferrals in a row reached their
+   * limit, defer), `unrecorded:<gate>` (pulled) and `job_gone:<stage>` (move), the last of which
+   * the retry transport reads (client.mjs retryRuns).
    */
   async block(state, why, kind = null) {
     if (state.status !== "blocked") state.blocked_from_status = state.status;
@@ -1644,12 +1824,13 @@ export class Automation {
   /**
    * Permanent rejected payloads stop this video; any other failed push (the site busy or away, a
    * token it refused, a file the push wants) defers this video alone. A token the site refuses
-   * refuses the next unit's video list too, which ends the run.
+   * refuses the next unit's video list too, which ends the run. A push that keeps failing (a 409
+   * of the site's own, a local refusal) reaches the deferrals' limit and blocks with its line.
    */
   submissionFailure(state, gate, result) {
     const detail = lastLine(result.out, 2);
     if (result.code === this.ctx.EXIT.lint) return this.block(state, `${gate} submission rejected: ${detail}`);
-    return this.defer(state, `${state.slug}: could not send the ${gate} for review: ${detail}`);
+    return this.defer(state, `${state.slug}: could not send the ${gate} for review: ${detail}`, { what: "review-push" });
   }
 
   async reportBlocked(state) {
@@ -2024,8 +2205,17 @@ export class Automation {
       const kind = /video_media_job_exhausted|已經失敗 \d+ 次/.test(reason) ? `media_exhausted:${command}` : `media_owner:${command}`;
       return this.block(state, `${command} needs the owner: ${reason}`, kind);
     }
-    // A vendor or the server's budget: this video's stage waits, the other videos move.
-    if (result.code === 4) return this.defer(state, `${state.slug}: ${command} could not finish (${lastLine(result.out)})`);
+    if (result.code === 4) {
+      const said = lastLine(result.out);
+      const line = `${state.slug}: ${command} could not finish (${said})`;
+      // A STOP file is not a failure: music has no handler of its own for it and exits 4 with the
+      // stage's "stopped by the STOP file" line (media/stages.mjs stoppedError), as does any stage
+      // the file reached between requests. The video is left for this run and nothing is counted
+      // or saved as a wait, like a tts or a check the file ended.
+      if (stopRequested(this.workdir(state.slug)) || said.startsWith("stopped ")) return this.defer(state, line, { backoffMs: 0 });
+      // A vendor or the server's budget: this video's stage waits, the other videos move.
+      return this.defer(state, line, { what: command });
+    }
     return this.block(state, `${command} failed: ${lastLine(result.out, 2)}`);
   }
 
@@ -2477,7 +2667,7 @@ export class Automation {
       if (redo.code !== 0) return this.block(state, `retake after the rewrite failed: ${lastLine(redo.out)}`);
       check = await run(ctx, ["check-audio", "--slug", state.slug]);
     }
-    if (check.code === 4) return this.defer(state, `${state.slug}: narration check could not finish (${check.out.trim().split("\n").at(-1)})`);
+    if (check.code === 4) return this.defer(state, `${state.slug}: narration check could not finish (${check.out.trim().split("\n").at(-1)})`, { what: "check-audio" });
     // Stopped by a STOP file before every line was heard: nothing is judged yet, so nothing goes
     // for review, and the next run continues where it stopped.
     if (check.code === ctx.EXIT.incomplete) return this.defer(state, `${state.slug}: narration check stopped (${lastLine(check.out)}); the next run continues`, { backoffMs: 0 });
@@ -2672,10 +2862,12 @@ export class Automation {
     // videos can run; the existing one-shot retry resumes it after the payload is fixed.
     if (pushed.code === ctx.EXIT.lint) return this.block(state, `language submission rejected: ${lastLine(pushed.out, 2)}`);
     // Any other failed push waits for this video alone (submissionFailure).
-    if (pushed.code !== 0) return this.defer(state, `${slug}: could not send the language batch: ${lastLine(pushed.out, 2)}`);
+    if (pushed.code !== 0) return this.defer(state, `${slug}: could not send the language batch: ${lastLine(pushed.out, 2)}`, { what: "review-push" });
     // A batch with no dub track is approved on arrival, and recorded now.
     const unrecorded = await this.pulled(state, "languages", GATES.languages({ workdir }));
-    await report(ctx, this.api, state, "languages sent");
+    // A pull that ended in a block, or in a deferral the page was told about, has said what the
+    // card must show; this stage's report would take that row off again.
+    if (!(unrecorded && (state.status === "blocked" || state.deferred_reported))) await report(ctx, this.api, state, "languages sent");
     if (unrecorded) return unrecorded;
     return `${slug}: language batch sent to /admin/videos (${pending.map(({ locale, parts }) => `${locale} ${parts.join("+")}`).join(", ")})`;
   }
@@ -2714,7 +2906,7 @@ export class Automation {
       if (error.who !== "owner" && [400, 422].includes(error.status)) return this.block(state, `language submission rejected: ${error.message}`);
       // The token or the site out of reach end the run; anything else waits for this video alone.
       const line = `${slug}: could not send the language batch: ${error.message}`;
-      return errorScope(error) === "run" ? this.later(line) : this.defer(state, line);
+      return errorScope(error) === "run" ? this.later(line) : this.defer(state, line, { what: "review-push" });
     }
     await report(ctx, this.api, state, "languages skipped");
     return `${slug}: work files cleared on ${day}; ${pending.map(({ locale, parts }) => `${locale} ${parts.join("+")}`).join(", ")} reported to /admin/videos as skipped, not made`;
@@ -2922,7 +3114,7 @@ export class Automation {
       }
       if (speechUncertain(made)) return lost(`dub ${locale}`, made);
       if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
-      if (made.code === 4) return this.defer(state, `${slug}: ${locale} dub could not finish (${lastLine(made.out)})`);
+      if (made.code === 4) return this.defer(state, `${slug}: ${locale} dub could not finish (${lastLine(made.out)})`, { what: "dub" });
       if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
       let check = await run(ctx, checkArgs);
       let refit = false;
@@ -2930,7 +3122,7 @@ export class Automation {
         rounds.retakes += 1;
         remember();
         const redo = await run(ctx, [...dubArgs, "--redo", flags]);
-        if (redo.code === 4) return this.defer(state, `${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)})`);
+        if (redo.code === 4) return this.defer(state, `${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)})`, { what: "dub" });
         if (speechUncertain(redo)) return lost(`dub ${locale} retake`, redo);
         // The new take is longer than its window allows: the next pass's `dub` reports the same
         // window and shortens it, while shortening rounds are left.
@@ -2951,7 +3143,7 @@ export class Automation {
         // Nothing usable came back: the same words would only be heard wrong again.
         if (reworded.ids.length) continue;
       }
-      if (check.code === 4) return this.defer(state, `${slug}: ${locale} dub check could not finish (${lastLine(check.out)})`);
+      if (check.code === 4) return this.defer(state, `${slug}: ${locale} dub check could not finish (${lastLine(check.out)})`, { what: "check-audio" });
       if (check.code === ctx.EXIT.incomplete) {
         rounds.check_stopped = true;
         remember();

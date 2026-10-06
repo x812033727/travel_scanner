@@ -14,7 +14,7 @@ import { shotPrompt } from "../media/keyframes.mjs";
 import { sheetPrompt } from "../media/look.mjs";
 import { resolveLook } from "../core/drama.mjs";
 import { planRequests } from "../tts/requests.mjs";
-import { automationClient } from "./client.mjs";
+import { AutomationError, automationClient, RUN_PENDING } from "./client.mjs";
 import { answerProblem, discussStep, documentDiscussionPayload, parseSubject, revisedDocumentProblem, unusableReply } from "./discuss.mjs";
 import { Automation, automatedVideos, settle } from "./flow.mjs";
 import { instructionsFor, SERIES_INSTRUCTIONS } from "./prompts.mjs";
@@ -785,7 +785,11 @@ test("a model that gives nothing usable on a thread is answered for, and the thr
   assert.equal(automation.halted, false, "the run goes on: the owner was told");
 });
 
-test("the writer answers the owner on a screenplay: a question gets a reply, a change rewrites video.json, and the script is checked, heard and sent again", async () => {
+/**
+ * An episode of the series written, checked, heard and sent to the script gate, where its
+ * screenplay waits for the owner: the state a line on its screenplay thread finds.
+ */
+async function screenplayAtTheGate() {
   const box = sandbox();
   const slug = "wenjian-e001";
   const example = dramaFixture();
@@ -821,7 +825,7 @@ test("the writer answers the owner on a screenplay: a question gets a reply, a c
     },
   };
   const site = fakeSite({ jobs: [job("episode", { episode: { ...episode, status: "ready", slug: null } })], answers });
-  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T01:00:00Z") });
+  const { ctx, out } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T01:00:00Z") });
   const dir = path.join(box.root, "docs", "videos", slug);
   const pushes = [];
   ctx.runCommand = async (command, runCtx) => {
@@ -842,6 +846,11 @@ test("the writer answers the owner on a screenplay: a question gets a reply, a c
   automation.refs = smallRefs;
   for (const expected of [/started from the chapter outline/, /script drafted/, /fact-check round 1/, /listener edit/, /screenplay sent/]) assert.match(await automation.step(), expected);
   const state = () => automatedVideos(box.work).find((each) => each.slug === slug);
+  return { box, slug, episode, site, ctx, out, dir, pushes, state, answers, script };
+}
+
+test("the writer answers the owner on a screenplay: a question gets a reply, a change rewrites video.json, and the script is checked, heard and sent again", async () => {
+  const { slug, episode, site, ctx, dir, pushes, state } = await screenplayAtTheGate();
   const firstLine = () => readJson(path.join(dir, "video.json")).scenes[0].lines[0].text;
   const before = firstLine();
 
@@ -891,6 +900,70 @@ test("the writer answers the owner on a screenplay: a question gets a reply, a c
   assert.match(await talking.step(), /series wenjian: no video for script:2 here; the owner is told/);
   assert.match(site.calls.answers.at(-1).reply_md, /這台工人沒有 wenjian-e002 的劇本/);
   assert.equal(await talking.step(), null, "every line answered; the screenplay waits for the owner");
+});
+
+test("a line on a screenplay waits while the video's writer is still running on the server: no second writer request goes out, the thread is not answered for it, and the line is taken up once the video is at rest", async () => {
+  const { slug, episode, site, ctx, out, state, answers, script } = await screenplayAtTheGate();
+  // The owner sends the screenplay back, so the next round has the writer fix it, and writes a line on its thread.
+  Object.assign(site.reviewsOf(slug)[0], { status: "rejected", note: "第一句太平" });
+  answers["writer:episode"] = (body) => {
+    const draft = script();
+    if (body.payload.fix) draft.video.scenes[0].lines[0].text = `${draft.video.scenes[0].lines[0].text}！`;
+    return draft;
+  };
+  // As the site hands lines over: the oldest one still unanswered, on every call until it is answered.
+  const waiting = [messageJob("script:1", "沈瀾為什麼不回答？", { series: SERIES, episode })];
+  const fetchWithMessages = async (url, init) => {
+    const { pathname } = new URL(url);
+    if (pathname === "/api/video/automation/series/messages/next") return Response.json({ job: waiting[0] ?? null });
+    if (pathname.endsWith("/answer")) waiting.shift();
+    return site.fetchImpl(url, init);
+  };
+  const api = automationClient({ ...ctx, fetch: fetchWithMessages });
+  // The fix is a job still running on the server (client.mjs RUN_PENDING), as a durable writer's is for minutes.
+  let running = true;
+  const sent = [];
+  const run = api.run;
+  api.run = async (stage, video, instructions, payload, tokens, format, variant) => {
+    sent.push(`${stage}:${variant ?? ""}`);
+    if (running && stage === "writer" && variant === "episode") throw Object.assign(new AutomationError("the saved stage run is still pending; its receipt will be recovered next round", { code: RUN_PENDING }), { slug: video, stage });
+    return run(stage, video, instructions, payload, tokens, format, variant);
+  };
+  const worker = new Automation({ ...ctx, fetch: fetchWithMessages }, api, site.settings);
+  worker.refs = smallRefs;
+  assert.equal(await worker.step(), "wenjian-e001: writer is still running; its saved receipt will be checked next round");
+  assert.equal(worker.halted, false, "since 2026-10-06 a pending writer does not end the run, so the discussion step comes next");
+  // Before: this unit sent writer/discuss for the same video while its fix was in flight, and the rewrite it saved left the fix's paid answer matching no request.
+  assert.equal(await worker.step(), null);
+  assert.equal(await worker.step(), null);
+  assert.deepEqual(sent, ["writer:episode"], "one writer request for the video: the pending fix");
+  assert.deepEqual(site.calls.answers, [], "and the owner is not told there is nothing to answer either");
+  assert.equal(waiting.length, 1, "the line stays unanswered on the site");
+  assert.equal(out.stdout.split("\n").filter((line) => line === "wenjian-e001: the owner's line on script:1 waits; the video is being worked on or waits on its own, and the line is answered once it is at rest").length, 1, "said once a run");
+  // The same while another lane is moving the video, or a lane set it aside in this run.
+  worker.pendingUntil.clear();
+  for (const held of [worker.busy, worker.skipped]) {
+    held.add(slug);
+    assert.equal(await discussStep(worker), null);
+    held.clear();
+  }
+  // And while it waits on its own from an earlier round (the read of its reviews failed twice
+  // before the lookup of the fix): this run passes it over, so its writer was never looked up.
+  const pendingFix = state();
+  worker.persist({ ...pendingFix, deferred_until: "2026-09-27T03:00:00.000Z", defer_count: 2 });
+  assert.equal(await worker.step(), null, "neither the video nor its line moves");
+  worker.persist(pendingFix);
+  assert.deepEqual([sent, site.calls.answers], [["writer:episode"], []]);
+
+  // The fix arrives and the video goes through its own stages; at rest again, its line is answered.
+  running = false;
+  const lines = [];
+  for (let line = await worker.step(); line; line = await worker.step()) lines.push(line);
+  assert.match(lines[0], /^wenjian-e001: screenplay rewritten after the owner's note \(round 1\); it is checked again$/);
+  assert.equal(lines.at(-1), "wenjian-e001: the writer answered the owner on script:1");
+  assert.deepEqual([sent.filter((each) => each === "writer:discuss").length, sent.at(-1)], [1, "writer:discuss"], "after the video's own stages, once");
+  assert.deepEqual([site.calls.answers.length, waiting.length], [1, 0]);
+  assert.equal(state().status, "active");
 });
 
 // A binge series (docs/videos/BINGE.md): hands-off, a retention genre, a compilation at the end.

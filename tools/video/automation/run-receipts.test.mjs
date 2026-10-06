@@ -5,7 +5,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { sandbox } from "../core/fixtures/load.mjs";
-import { AUTO_ARCHIVE_REASON, canonicalJson, INPUT_CHANGED_CODE, jobGoneReason, normalizeRun, POLICY_HOLD_CODE, runReceiptStore, sourceHash, validateRunReceipt } from "./run-receipts.mjs";
+import { AUTO_ARCHIVE_REASON, canonicalJson, INPUT_CHANGED_CODE, JOB_GONE_KIND, jobGoneReason, normalizeRun, POLICY_HOLD_CODE, runReceiptStore, sourceHash, validateRunReceipt } from "./run-receipts.mjs";
 
 const site = "https://site.test";
 const request = (slug = "video-one") => ({ stage: "writer", slug, instructions: "Write the checked story.", payload: { locale: "zh-TW", rows: [1, 2] } });
@@ -197,6 +197,36 @@ test("an owner retry lists plain failed journals so the retry can clear them, an
   store.receive(held, { ...receipt(held, "failed"), error_code: POLICY_HOLD_CODE, dispatched_at: null });
   assert.deepEqual(store.retryCandidates("video-one").map((entry) => entry.file), [failed.file]);
   assert.deepEqual(store.retryCandidates("video-two"), []);
+});
+
+test("the retry of a job_gone block lists that stage's queued and running journals, under the owner's request id only; no other retry touches a journal whose job may still be running", () => {
+  const box = sandbox(), store = runReceiptStore(context(box), site);
+  assert.equal(JOB_GONE_KIND, "job_gone:");
+  const slug = "video-one";
+  const journal = (extra, status) => {
+    const entry = store.prepare({ ...request(slug), ...extra });
+    if (status) store.receive(entry, receipt(entry, status));
+    return entry;
+  };
+  const queued = journal({}, "queued"), running = journal({ variant: "episode" }, "running"), other = journal({ stage: "verifier" }, "running");
+  // Not candidates under this kind: an answer that arrived (the normal run takes it) and a request that never reached the server.
+  journal({ variant: "discuss" }, "succeeded");
+  journal({ variant: "explainer" }, null);
+  const requestId = "11112233-4455-6677-8899-aabbccddeeff";
+  const reason = "the server no longer has the saved writer job (video_ai_job_not_found: 找不到這個權杖的影片工作)";
+  const listed = (authorization) => store.retryCandidates(slug, authorization).map((entry) => entry.file).sort();
+  assert.deepEqual(listed({ requestId, reason, kind: "job_gone:writer" }), [queued.file, running.file].sort());
+  assert.deepEqual(listed({ requestId, reason, kind: "job_gone:verifier" }), [other.file]);
+  for (const authorization of [undefined, { requestId, reason }, { requestId, reason, kind: null }, { requestId, reason, kind: "uncertain:writer" }, { requestId, reason, kind: "deferred:writer" },
+    { requestId, reason, kind: "unrecorded:script" }, { requestId, reason, kind: "job_gone" }, { requestId, reason, kind: "job_gone:" }, { requestId, reason, kind: "job_gone:planner" },
+    { reason, kind: "job_gone:writer" }, { requestId: "not-a-request", reason, kind: "job_gone:writer" }]) {
+    assert.deepEqual(listed(authorization), [], JSON.stringify(authorization ?? null));
+  }
+  // The store archives such a journal only with the server's answer in hand (client.mjs retryRuns looks it up first).
+  assert.throws(() => store.archive(running, { requestId, reason }), /can be archived/);
+  assert.ok(existsSync(running.file));
+  store.archive(running, { autoArchive: true, gone: { status: 404, code: "video_ai_job_not_found" } });
+  assert.deepEqual(listed({ requestId, reason, kind: "job_gone:writer" }), [queued.file]);
 });
 
 test("persisted artifact adoption permits a correction after restart and survives later legitimate artifact changes", () => {
