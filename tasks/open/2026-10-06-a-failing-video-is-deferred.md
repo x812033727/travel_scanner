@@ -66,8 +66,11 @@ The owner decided (2026-10-06) to fix the loop too, in its smallest form, on its
 - [x] `pulled(state, gate, file)` after every review-pull at an approved gate (outline, script,
       look, storyboard, audio, final, publish, languages, the narration push).
 - [x] `cli.mjs`: the lanes share `skipped` and `pendingUntil` as they share `busy`.
-- [x] Tests: four new tests plus the error/deferral table in `automation.test.mjs`; the tests
-      that drove "the next run" on one worker call `nextRun()`.
+- [x] Tests: five new tests in `automation.test.mjs` (a busy writer defers only its video and
+      doubles; a 409 blocks only its video; the error and deferral table; an unrecorded approval
+      defers and is pulled once a run; two lanes look a pending writer up once); the tests that
+      drove "the next run" on one worker call `nextRun()`; `series.test.mjs`'s fake worker gets
+      `pulled`, `story.test.mjs` clears the run's `skipped` for its next run.
 
 ## How to verify
 
@@ -103,7 +106,9 @@ video's `chose outline`/`approved` line.
 - Left as it was (outside this scope): `compilation.mjs` still calls `automation.later()` for a
   compile that exits 4; `series.mjs` and `story.mjs` call it for series-level conditions only.
 - Stacked on PR #1341 (`claude/video-unstuck-plate-accept`); claimed with `--force` because the
-  same owner's open tasks hold `flow.mjs` and `automation.test.mjs`.
+  same owner's open tasks hold `flow.mjs` and `automation.test.mjs`. The scope grew by
+  `series.test.mjs` and `story.test.mjs` (one line each) once their tests met `pulled()` and the
+  shared `skipped`; `story.test.mjs` is also in PR #1341's task, by the same owner.
 - The duration-review receipt (`docs/videos/long-form/review.json`) binds `flow.mjs` and
   `automation.test.mjs`: `node tools/video/long-form/cli.mjs check` is red until a reviewer
   re-binds it.
