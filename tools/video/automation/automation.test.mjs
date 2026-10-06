@@ -4172,6 +4172,38 @@ test("a video whose trouble does not pass is blocked after its deferrals in a ro
   assert.deepEqual([moving.status, moving.blocked, moving.blocked_kind, moving.defer_count], ["active", undefined, undefined, undefined]);
 });
 
+test("a stage request the site turns away for everyone's reason (a rate limit) defers its video past the limit and never blocks it", async () => {
+  const slug = "oldest-video";
+  let limited = true;
+  const videos = threeVideos((each) => (limited && each === slug ? Response.json({ code: "rate_limit_exceeded", detail: "請求太頻繁，請稍後再試" }, { status: 429 }) : null));
+  const round = async () => {
+    const automation = videos.worker();
+    nextRun(automation, videos.clock);
+    return automation.step();
+  };
+  for (let tried = 1; tried <= DEFER_LIMIT + 2; tried++) {
+    assert.match(await round(), /^oldest-video: the writer request could not finish \(rate_limit_exceeded: /, `try ${tried}`);
+    const state = videos.state(slug);
+    // Before: move() deferred it as the video's own trouble, and the seventh try blocked it.
+    assert.deepEqual([state.status, state.blocked_kind, state.defer_count, state.defer_shared], ["active", undefined, tried, tried], `try ${tried}`);
+  }
+  limited = false;
+  assert.equal(await round(), "oldest-video: script drafted");
+  assert.deepEqual([videos.state(slug).defer_count, videos.state(slug).defer_shared], [undefined, undefined]);
+});
+
+test("a video its own STOP file holds is not at rest, so neither a discussion nor another lane takes it", () => {
+  const box = sandbox();
+  const site = fakeSite();
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-06T10:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  const state = { slug: "stopped-video", status: "active" };
+  mkdirSync(automation.workdir(state.slug), { recursive: true });
+  assert.equal(automation.resting(state), true);
+  writeFileSync(path.join(automation.workdir(state.slug), "STOP"), "");
+  assert.equal(automation.resting(state), false);
+});
+
 test("a visit that finds the video waiting on someone ends the row of deferrals: the next trouble waits five minutes again, and the card loses its row", async () => {
   const slug = "oldest-video";
   const videos = threeVideos(() => Response.json({ code: "video_ai_upstream_busy", detail: "模型服務暫時無法回應（HTTP 503），請稍後重試" }, { status: 503 }));
