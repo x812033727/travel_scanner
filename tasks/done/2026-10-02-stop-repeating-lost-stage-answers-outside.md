@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-stop-repeating-lost-stage-answers-outside
 title: Stop repeating lost stage answers outside a video's own steps
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-shorts-planner-lost-answers
 claimed_at: 2026-10-05T23:49:11Z
 created_at: 2026-10-02T15:22:48Z
-completed_at:
+completed_at: 2026-10-06T00:04:55Z
 branch: claude/shorts-planner-lost-answers
 depends_on:
   - 2026-09-29-prevent-lost-long-running-language-stages
@@ -29,7 +29,7 @@ production stages and languages) stop that video for the owner's retry.
 
 The stage calls that are not one of a video's own steps still end the `auto` run
 with the error, and the next round (a few minutes later) asks the same model call
-again. The paths, corrected on 2026-10-06 against origin/main a9e4c3851:
+again. The paths, corrected on 2026-10-06 against origin/main d829b18dc:
 
 - flow.mjs `draft()` and `draftDrama()`. `draftEpisode()` makes no stage call.
 - Jev's judgements across rounds: `submitOutline()` through review/sync.mjs
@@ -41,7 +41,7 @@ again. The paths, corrected on 2026-10-06 against origin/main a9e4c3851:
   week's report), and a lab or highlight Short's stages in shorts/lab.mjs.
 
 story.mjs and compilation.mjs are not on the list. Their stage calls run only inside
-`advance()` (flow.mjs:1414, :1419), so `move()` already covers them.
+`advance()` (flow.mjs:1427, :1432), so `move()` already covers them.
 
 ## Definition of done
 
@@ -76,12 +76,14 @@ three "lost" tests use `fakeSite({ lose })` and fail on the old shorts.mjs.
 - Filed from 2026-09-29-prevent-lost-long-running-language-stages, which covered the
   video steps and the language units only.
 - 2026-10-06, claude-opus-5-5-shorts-planner-lost-answers: partly done. The rest is split
-  into 2026-10-05-hold-lost-planner-and-jev-answers. Every remaining file is either bound
+  into 2026-10-05-hold-lost-planner-and-jev-answers. Most of the remaining files are bound
   by the long-form duration receipt (flow.mjs, series.mjs, discuss.mjs, automation.test.mjs,
-  series.test.mjs, review/sync.mjs, qa/cli.mjs), so it needs an independent DURATION_ONLY
-  increment, or is edited by other sessions' open draft PRs: #1312 and #1301 for flow.mjs
-  and automation.test.mjs, #1310 for shorts/lab.mjs. client.mjs belongs to
-  2026-10-05-automation-client-retries-a-judge-s.
+  series.test.mjs, review/sync.mjs, qa/cli.mjs), so changing them needs an independent
+  DURATION_ONLY increment. When this branch started, draft PRs #1312 and #1301 (flow.mjs,
+  automation.test.mjs) and #1310 (shorts/lab.mjs) were also editing them. All three landed
+  in train #1315 (d829b18dc) while the branch was open. shorts/lab.mjs and shorts/qa.mjs
+  stay with the follow-up, so the lost-judgement work is done in one place. client.mjs
+  belongs to 2026-10-05-automation-client-retries-a-judge-s.
 - The ticket's scope was cut down to the two files changed here. The other paths moved
   to the follow-up ticket's scope.
 - What the Shorts worker does now. `ShortsWorker.attempt()` catches `RUN_UNCERTAIN` and
