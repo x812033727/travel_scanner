@@ -143,6 +143,7 @@ async def test_an_answer_off_the_schema_gets_one_repair_round() -> None:
     "code",
     [
         "subscription_quota_paused",
+        "subscription_auth_failed",
         "subscription_not_signed_in",
         "subscription_busy",
         "ai_accounts_agent_unavailable",

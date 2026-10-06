@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -216,8 +216,11 @@ function site({ heardFor, noul, fails = () => false }) {
       calls.judgeLanguages.push(body.language);
       return Response.json({ results: body.lines.map((line) => ({ id: line.id, noul: noul(line) })) });
     }
+    // A site from before speech/align: tts asks it first for an Azure voice and is refused, unpaid.
+    if (url.endsWith("/speech/align")) return new Response("not found", { status: 404 });
     calls.speech += 1;
-    const audio = concatSamples(body.segments.flatMap((segment) => [tone(segment.parts.reduce((sum, part) => sum + part.text.length, 0) * 60), quiet(segment.break_after_ms)]));
+    // 200 ms a character, the voices' pace: the fixture's chapters then run the 10 s tts requires.
+    const audio = concatSamples(body.segments.flatMap((segment) => [tone(segment.parts.reduce((sum, part) => sum + part.text.length, 0) * 200), quiet(segment.break_after_ms)]));
     return new Response(encodeWav(audio), { status: 200, headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "10" } });
   };
   return { calls, fetchImpl };
@@ -346,6 +349,38 @@ test("check-audio stops when Gemini fails line after line, instead of retrying e
   assert.equal(await main(["check-audio", "--slug", box.slug], run.ctx), EXIT.external);
   assert.equal(server.calls.failed, GIVE_UP_AFTER * 5, "five tries for each line before it gives up");
   assert.match(run.out.stdout, new RegExp(`Gemini failed ${GIVE_UP_AFTER} lines in a row`));
+});
+
+test("check-audio stopped by a STOP file keeps its transcripts, judges and flags nothing, and the rerun finishes", async () => {
+  const box = sandbox();
+  const lines = [...eachLine(fixture())].map(({ line }) => line);
+  const server = site({ heardFor: (count) => spokenText(lines[count % lines.length]), noul: () => 0.95 });
+  const synth = context(box, server.fetchImpl);
+  assert.equal(await main(["tts", "--slug", box.slug], synth.ctx), EXIT.ok, synth.out.stderr);
+
+  // The owner drops a STOP file while the second clip is being transcribed.
+  const stop = path.join(box.work, "STOP");
+  const stopping = async (url, init) => {
+    const response = await server.fetchImpl(url, init);
+    if (url.endsWith("/speech/transcribe") && server.calls.transcribe.length === 2) writeFileSync(stop, "");
+    return response;
+  };
+  const stopped = context(box, stopping);
+  assert.equal(await main(["check-audio", "--slug", box.slug], stopped.ctx), EXIT.incomplete, stopped.out.stderr);
+  assert.match(stopped.out.stdout, /STOP found; transcripts so far are saved, rerun to continue/);
+  assert.equal(server.calls.transcribe.length, 2);
+  assert.equal(server.calls.judge.length, 0);
+  const cache = JSON.parse(readFileSync(path.join(box.workdir, "review", "check.json"), "utf8"));
+  assert.deepEqual(Object.keys(cache.lines), lines.slice(0, 2).map((line) => line.id), "the two transcripts paid for are kept");
+  assert.ok(!existsSync(path.join(box.workdir, "review", "check-flags.json")), "no flags file says the check finished");
+  const runs = JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8")).runs;
+  assert.ok(!runs.some((run) => run.stage === "check-audio"), "no check-audio run is recorded");
+
+  rmSync(stop);
+  const resumed = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug], resumed.ctx), EXIT.ok, resumed.out.stdout);
+  assert.equal(server.calls.transcribe.length, lines.length, "only the lines left are transcribed");
+  assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "review", "check-flags.json"), "utf8")).flags, []);
 });
 
 /**

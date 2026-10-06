@@ -5,7 +5,7 @@
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
 import { stopRequested } from "../core/paths.mjs";
-import { normalizeRun, RunReceiptError, runReceiptStore } from "./run-receipts.mjs";
+import { INPUT_CHANGED_CODE, INPUT_CHANGED_MESSAGE, normalizeRun, policyHeld, POLICY_HOLD_CODE, RunReceiptError, runReceiptStore } from "./run-receipts.mjs";
 import path from "node:path";
 
 // A stage answered something that is not the JSON it was asked for; flow.mjs retries it later.
@@ -14,11 +14,14 @@ export const OUTPUT_INVALID = "video_ai_output_invalid";
 // web route's 504 under this same code, a gateway's 5xx). The model may still have run, and been
 // paid for, on the server, which keeps no answer to fetch again: on 2026-09-29 a translation
 // finished after 302 s, past the web route's 295 s, and was recorded as ok. The run is not sent
-// again here; flow.mjs stops the video for a person instead of paying twice.
+// again here; flow.mjs stops the video for a person instead of paying twice. A Jev judgement whose
+// answer was lost throws it too, and its callers (review/sync.mjs, qa/cli.mjs) leave it for a
+// later round instead of asking Jev again at once.
 export const RUN_UNCERTAIN = "video_ai_run_uncertain";
 // A durable run still has a recoverable server receipt. The worker ends this round and polls
 // that same operation next round instead of holding a gateway open for several minutes.
 export const RUN_PENDING = "video_ai_run_pending";
+export const POLICY_HOLD = POLICY_HOLD_CODE;
 
 export class AutomationError extends Error {
   constructor(message, { status = 0, code = "", who = "service" } = {}) {
@@ -31,6 +34,7 @@ export class AutomationError extends Error {
 }
 
 const OWNER_CODES = new Set([
+  POLICY_HOLD,
   "video_tool_token_invalid",
   "video_ai_provider_not_configured",
   "video_ai_budget_exhausted",
@@ -43,13 +47,25 @@ const OWNER_CODES = new Set([
 // days of Shorts do not push them past the list's cap of 200 (docs/videos/SHORTS.md §資料模型).
 export const TUTORIAL_LIST = Object.freeze({ shorts: "exclude" });
 const RETRYABLE_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "rate_limit_exceeded", "upstream_unavailable"]);
-// Every subscription account is at the owner's cap: nothing ran, and retrying within minutes will
-// not help. This run of `auto` ends; the worker's loop tries again on its next round.
-const PAUSE_CODES = new Set(["video_ai_subscription_paused"]);
+// Every subscription account is at the owner's cap, or every one's CLI can no longer
+// authenticate and the owner has to sign one in again (video_ai_subscription_auth_failed, 503
+// with a retry_after): nothing ran, and retrying within minutes will not help. This run of
+// `auto` ends; the worker's loop tries again on its next round.
+export const PAUSE_CODES = new Set(["video_ai_subscription_paused", "video_ai_subscription_auth_failed"]);
 // A stage run's 5xx that settles it: the API's own answer once the run is over (it is recorded as
 // failed, no answer was lost), or the web route's 502 for an API it never reached. Any other 5xx
 // after a stage run was sent leaves its outcome unknown (RUN_UNCERTAIN).
 const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "video_ai_upstream_failed", OUTPUT_INVALID, "upstream_unavailable"]);
+// A Jev judgement (judge/policy, judge/outline) takes one call off the daily Jev budget before it
+// asks Jev (apps/api/app/video_automation/judge.py `_ask`), so it is paid like a stage run. Its only
+// settling 5xx is the API's own 502 once its Jev call failed: the API answered, and no verdict was
+// lost on the way back. Not yet the judge routes' 502 `upstream_unavailable`, unlike a stage run's:
+// they now answer a lost answer with 504 `video_judge_answer_lost` (JUDGE_LOST in
+// apps/web/app/api/video/speech/forward.ts, uncertain here like any 5xx not listed) and keep the 502
+// for an API they never reached, but a host from before that change answers the 502 for both, so
+// it moves here only once the change is live (2026-10-05-automation-client-retries-a-judge-s).
+const SETTLED_JUDGE_CODES = new Set(["video_judge_upstream_failed"]);
+const JUDGE = Object.freeze({ paid: true, settled: SETTLED_JUDGE_CODES, what: "Jev" });
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
 
@@ -72,8 +88,8 @@ function delayMs(response, attempt) {
 
 /**
  * A client bound to the stored site and token; `attempts` covers busy vendors and restarts. A
- * stage run (`paid`) is sent again only when nothing ran or the API settled it: never after a
- * request that went out and lost its answer (RUN_UNCERTAIN).
+ * stage run or a Jev judgement (`paid`) is sent again only when nothing ran or the API settled it
+ * (`settled`): never after a request that went out and lost its answer (RUN_UNCERTAIN).
  */
 export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, durablePollIntervalMs = 1000 } = {}) {
   const { site, token } = readCredentials({ env: ctx.env, home: ctx.home });
@@ -82,9 +98,9 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   const sleep = ctx.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
   const receipts = runReceiptStore(ctx, site);
   let durable = false;
-  const uncertain = (route, why, status = 0) =>
-    Object.assign(new AutomationError(`${route} was sent and no answer came back (${why}); the model may have run, so it is not sent again`, { status, code: RUN_UNCERTAIN }), { why });
-  async function request(method, route, json, { paid = false } = {}) {
+  const uncertain = (route, why, status = 0, what = "the model") =>
+    Object.assign(new AutomationError(`${route} was sent and no answer came back (${why}); ${what} may have run, so it is not sent again`, { status, code: RUN_UNCERTAIN }), { why });
+  async function request(method, route, json, { paid = false, settled = SETTLED_RUN_CODES, what = "the model" } = {}) {
     let last;
     for (let attempt = 0; attempt < attempts; attempt++) {
       let response;
@@ -100,7 +116,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
           body: json ? JSON.stringify(json) : undefined,
         });
       } catch (error) {
-        if (paid && !neverSent(error)) throw uncertain(route, error.cause?.message ?? error.message);
+        if (paid && !neverSent(error)) throw uncertain(route, error.cause?.message ?? error.message, 0, what);
         last = new AutomationError(`cannot reach ${site}: ${error.message}`, { code: "network" });
         await sleep(delayMs(null, attempt));
         continue;
@@ -110,15 +126,15 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
         try {
           return await response.json();
         } catch (error) {
-          // The stage ran and its answer broke off on the way: it is not paid for again either.
-          throw uncertain(route, `the answer could not be read: ${error.message}`, response.status);
+          // The stage or judgement ran and its answer broke off on the way: it is not paid for again either.
+          throw uncertain(route, `the answer could not be read: ${error.message}`, response.status, what);
         }
       }
       const problem = await problemOf(response);
       const message = problem.detail || `HTTP ${response.status}`;
       if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code, who: "owner" });
       if (PAUSE_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code });
-      if (paid && response.status >= 500 && !SETTLED_RUN_CODES.has(problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status);
+      if (paid && response.status >= 500 && !settled.has(problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status, what);
       last = new AutomationError(message, { status: response.status, code: problem.code });
       if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
       await sleep(delayMs(response, attempt));
@@ -126,6 +142,60 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     throw last;
   }
   const tagged = (error, body) => Object.assign(error, { slug: body.slug, stage: body.stage });
+  const jobHeaders = { Authorization: `Bearer ${token}`, "User-Agent": USER_AGENT, "Accept-Language": "zh-TW" };
+  /** The saved job's current state from the server, by its id and opaque input hash. */
+  const fetchJob = (receipt, timeoutMs) => fetchImpl(`${site}/api/video/automation/run/jobs/${receipt.id}?input_hash=${receipt.input_hash}`, {
+    method: "GET", headers: jobHeaders, signal: AbortSignal.timeout(Math.max(1, Math.floor(timeoutMs))),
+  });
+  // A 4xx that settles a job lookup: the server has no such job for this token (404 after a
+  // re-pair), the job is not the receipt's (409 video_ai_job_input_changed) or the identity is
+  // malformed (400, 422). Asking again cannot change it. Not a token problem (401, 403: the
+  // owner's, like everywhere else), a timeout (408) or a rate limit (429), which are tried again.
+  const settledLookup = (status) => status >= 400 && status < 500 && ![401, 403, 408, 429].includes(status);
+  /**
+   * Look a journal's saved job up and record what the server says; a bad answer throws. The
+   * error of a settled 4xx carries `gone: { status, code }` so the caller may archive the journal.
+   */
+  async function lookupReceipt(entry, timeoutMs = 25_000) {
+    const response = await fetchJob(entry.record.receipt, timeoutMs);
+    if (!response.ok) {
+      const problem = await problemOf(response);
+      const owner = response.status === 401 || response.status === 403 || OWNER_CODES.has(problem.code);
+      throw Object.assign(new AutomationError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code, who: owner ? "owner" : "service" }),
+        !owner && settledLookup(response.status) ? { gone: { status: response.status, code: problem.code } } : {});
+    }
+    return receipts.receive(entry, await response.json());
+  }
+  const pending = (body, why) => tagged(new AutomationError(`the saved stage run is still pending${why ? ` (${why})` : ""}; its receipt will be recovered next round`, { code: RUN_PENDING }), body);
+  // The owner's card shows this message (flow.mjs unanswered): the saved run's own cause first.
+  const inputChanged = (body, detail = "") => {
+    const message = detail ? `${detail}; ${INPUT_CHANGED_MESSAGE}` : INPUT_CHANGED_MESSAGE;
+    return tagged(Object.assign(new AutomationError(message, { code: RUN_UNCERTAIN, who: "owner" }), { why: message, receipt_code: INPUT_CHANGED_CODE }), body);
+  };
+  /**
+   * An unfinished journal of this stage whose inputs differ from today's (a deploy changed the
+   * prompt, the owner edited a setting): what was spent on it is spent either way, so only a job
+   * still running (wait) or uncertain (the owner looks) keeps the video. A job that is over, or
+   * that the server no longer has, is archived, a never-dispatched request too, and the caller
+   * starts the current request.
+   */
+  async function reconcileStale(entry, body) {
+    const saved = entry.record.receipt;
+    if (policyHeld(entry.record)) throw inputChanged(body);
+    if (saved === null) { receipts.archive(entry, { autoArchive: true }); return; }
+    if (saved.status === "failed") { receipts.removeFailed(entry); return; }
+    let fresh;
+    try { fresh = await lookupReceipt(entry); }
+    catch (error) {
+      if (error instanceof RunReceiptError || error instanceof AutomationError && error.who === "owner") throw error;
+      if (error.gone) { receipts.archive(entry, { autoArchive: true, gone: error.gone }); return; }
+      throw pending(body, `the stale run could not be looked up: ${error.message}`);
+    }
+    if (fresh.status === "succeeded") receipts.archive(entry, { autoArchive: true });
+    else if (fresh.status === "failed") receipts.removeFailed(entry);
+    else if (fresh.status === "uncertain") throw inputChanged(body, fresh.error_detail || "the saved model run is uncertain");
+    else throw pending(body, "an earlier request of this stage is still running");
+  }
   async function durableRun(body, previous) {
     const entry = previous ?? receipts.prepare(body);
     const started = Date.now(), budget = Math.max(1, Math.min(durablePollMs, 25_000));
@@ -133,6 +203,12 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     let waited = 0, failures = 0;
     function completed() {
       const receipt = entry.record.receipt;
+      if (policyHeld(entry.record)) {
+        const refusal = receipt ?? entry.record.policy_rejection;
+        throw tagged(Object.assign(new AutomationError(refusal.error_detail || "the video route is disabled; its original refusal is retained", {
+          code: POLICY_HOLD, status: refusal.error_status ?? 409, who: "owner",
+        }), { policy_hold: { format: entry.record.request.format, stage: entry.record.request.stage, receipt_id: receipt?.id ?? null } }), body);
+      }
       if (receipt?.status === "succeeded") { receipts.consume(entry); return receipt.result; }
       if (receipt?.status === "uncertain") throw tagged(new AutomationError(receipt.error_detail || "the saved model run is uncertain; the owner must inspect it before retrying", { code: RUN_UNCERTAIN, status: receipt.error_status ?? 0, who: "owner" }), body);
       if (receipt?.status === "failed") {
@@ -151,17 +227,19 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       const remaining = budget - Math.max(waited, Date.now() - started);
       if (remaining <= 0 || stopRequested(path.dirname(path.dirname(entry.file)))) break;
       const known = entry.record.receipt;
-      const route = known ? `automation/run/jobs/${known.id}?input_hash=${known.input_hash}` : "automation/run/jobs";
       try {
-        const response = await fetchImpl(`${site}/api/video/${route}`, {
-          method: known ? "GET" : "POST",
-          headers: { Authorization: `Bearer ${token}`, "User-Agent": USER_AGENT, "Accept-Language": "zh-TW",
-            ...(!known ? { "Content-Type": "application/json" } : {}) },
-          ...(!known ? { body: JSON.stringify({ ...entry.record.request, request_key: entry.record.request_key }) } : {}),
+        const response = known ? await fetchJob(known, remaining) : await fetchImpl(`${site}/api/video/automation/run/jobs`, {
+          method: "POST",
+          headers: { ...jobHeaders, "Content-Type": "application/json" },
+          body: JSON.stringify({ ...entry.record.request, request_key: entry.record.request_key }),
           signal: AbortSignal.timeout(Math.max(1, Math.floor(remaining))),
         });
         if (!response.ok) {
           const problem = await problemOf(response);
+          if (!known && response.status === 409 && problem.code === POLICY_HOLD) {
+            receipts.hold(entry, { error_code: POLICY_HOLD, error_status: 409, error_detail: problem.detail || "the video route is disabled" });
+            completed();
+          }
           const error = new AutomationError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code,
             who: response.status === 401 || OWNER_CODES.has(problem.code) || response.status === 409 ? "owner" : "service" });
           if (error.who === "owner" || response.status < 429 || PAUSE_CODES.has(problem.code)) throw tagged(error, body);
@@ -197,7 +275,10 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     // Anime acts and brand-story chapters already have their own bounded checkpoints.
     if (stage !== "writer" || ["anime-act", "story"].includes(variant)) return request("POST", "automation/run", body, { paid: true });
     try {
-      const normalized = normalizeRun(body), previous = receipts.find(normalized);
+      const normalized = normalizeRun(body);
+      let previous = receipts.find(normalized);
+      // Each stale journal is archived or removed before the next look, or the look throws.
+      while (previous?.stale) { await reconcileStale(previous, body); previous = receipts.find(normalized); }
       if (durable || previous) return await durableRun(normalized, previous);
       return await request("POST", "automation/run", body, { paid: true });
     } catch (error) {
@@ -208,27 +289,66 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   async function retryRuns(slug, authorization = {}) {
     try {
       const confirmed = [];
-      for (const entry of receipts.retryCandidates(slug, authorization)) {
+      const candidates = receipts.retryCandidates(slug, authorization);
+      // A plain failure is settled on the server: nothing to look up, and nothing to keep. It
+      // is cleared below, after the STOP checks, and does not make a policy retry ambiguous.
+      const plainFailure = (entry) => entry.record.receipt?.status === "failed" && !policyHeld(entry.record);
+      // A project-local owner retry authorizes one policy-held request. Do not partly
+      // archive a legacy/mixed set before discovering that its request was already used.
+      const live = candidates.filter((entry) => !plainFailure(entry));
+      if (live.length > 1 && live.some((entry) => policyHeld(entry.record))) {
+        throw new Error("multiple saved runs include a policy hold; inspect their retained identities before retrying this project");
+      }
+      for (const entry of candidates) {
+        if (stopRequested(path.dirname(path.dirname(entry.file)))) throw new Error("STOP prevents this owner retry");
         const saved = entry.record.receipt;
-        const response = await fetchImpl(`${site}/api/video/automation/run/jobs/${saved.id}?input_hash=${saved.input_hash}`, {
-          method: "GET", headers: { Authorization: `Bearer ${token}`, "User-Agent": USER_AGENT, "Accept-Language": "zh-TW" },
-          signal: AbortSignal.timeout(25_000),
-        });
-        if (!response.ok) {
-          const problem = await problemOf(response);
-          throw new Error(problem.detail || `HTTP ${response.status}`);
+        if (plainFailure(entry)) { confirmed.push({ entry, fresh: saved, policyValidated: false }); continue; }
+        if (policyHeld(entry.record)) {
+          const freshSettings = await request("GET", "automation/settings");
+          const requestFormat = entry.record.request.format;
+          const savedVideo = entry.record.request.payload.video;
+          const correctedSlides = requestFormat === "drama" && savedVideo && typeof savedVideo === "object" && !Array.isArray(savedVideo)
+            && (savedVideo.format ?? "slides") === "slides"
+            && authorization.format === "slides";
+          const dramaEnabled = freshSettings.drama?.drama_enabled ?? freshSettings.drama_enabled;
+          if (freshSettings.enabled !== true || (!correctedSlides && (requestFormat !== "drama" || dramaEnabled !== true))) {
+            throw Object.assign(new AutomationError("the saved policy still disables this video; its original receipt is retained", { code: POLICY_HOLD, status: 409, who: "owner" }),
+              { slug, policy_hold: { format: requestFormat, stage: entry.record.request.stage, receipt_id: saved?.id ?? null } });
+          }
+          if (!saved) { confirmed.push({ entry, fresh: null, policyValidated: true }); continue; }
         }
-        const fresh = receipts.receive(entry, await response.json());
-        confirmed.push({ entry, fresh });
+        let fresh;
+        try { fresh = await lookupReceipt(entry); }
+        catch (error) {
+          // The server no longer has the job: nothing to recover and nothing to wait for. A
+          // policy hold is verified by its job, so without one it stays for the owner.
+          if (!error.gone || policyHeld(entry.record)) throw error;
+          confirmed.push({ entry, fresh: null, policyValidated: false, gone: error.gone });
+          continue;
+        }
+        if (policyHeld(entry.record) && (fresh.status !== "failed" || fresh.error_code !== POLICY_HOLD || fresh.dispatched_at !== null)) {
+          throw new Error("the saved policy refusal is no longer a verified undispatched failure");
+        }
+        // The run the owner wants replaced is still on the server: keep the journal and the
+        // retry request (flow.mjs turns RUN_PENDING into a wait; the next round looks again).
+        if (["queued", "running"].includes(fresh.status)) {
+          throw Object.assign(new AutomationError("the saved stage run is still running; the owner retry waits for it and its receipt is recovered next round", { code: RUN_PENDING }),
+            { slug, stage: entry.record.request.stage });
+        }
+        confirmed.push({ entry, fresh, policyValidated: policyHeld(entry.record) });
       }
       // Verify every selected lookup before archiving any operation. A failed lookup leaves
       // all keys in place, even when another operation's current state was already readable.
-      for (const { entry, fresh } of confirmed) {
+      for (const { entry, fresh, policyValidated, gone = null } of confirmed) {
+        if (stopRequested(path.dirname(path.dirname(entry.file)))) throw new Error("STOP prevents this owner retry");
         // A late successful commit is recovered by the normal run path, before any budget
         // check. Only a freshly confirmed uncertain result permits this explicit new attempt.
-        if (fresh.status === "uncertain" || fresh.status === "succeeded" && authorization.reason?.includes("inputs changed")) receipts.archive(entry, authorization);
+        if (gone) receipts.archive(entry, { autoArchive: true, gone });
+        else if (fresh?.status === "failed" && !policyValidated) receipts.removeFailed(entry);
+        else if (policyValidated || fresh.status === "uncertain" || fresh.status === "succeeded" && authorization.reason?.includes("inputs changed")) receipts.archive(entry, { ...authorization, policyValidated });
       }
     } catch (error) {
+      if (error instanceof AutomationError && [POLICY_HOLD, RUN_PENDING].includes(error.code)) throw error;
       throw Object.assign(new AutomationError(`could not verify the saved run before owner retry: ${error.message}; its receipt is retained`, { code: RUN_UNCERTAIN, who: "owner" }), { slug, why: error.message });
     }
   }
@@ -253,7 +373,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     adoptRuns: (slug, proof) => receipts.adopt(slug, proof),
     /** Only after this caller's completed unit has saved its artifacts and state. */
     settleRuns: (slugs) => receipts.settle(slugs),
-    /** An explicit owner retry clears uncertain runs only; queued/running evidence stays. */
+    /** An explicit owner retry clears uncertain and plain failed runs; a queued/running one makes it wait (RUN_PENDING). */
     retryRuns,
     /** Report the video's title, stage and checklist to /admin/videos. */
     report: (slug, project) => request("PUT", `reviews/${slug}`, project),
@@ -262,16 +382,18 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     /**
      * Jev's policy reading of a finished script for the QA's `policy` item (docs/videos/HANDS-OFF.md
      * §自動品管; tools/video/qa/policy.mjs shapes the body). Until the judge ticket ships the
-     * endpoint, the site answers 404 and the caller reports it as not available.
+     * endpoint, the site answers 404 and the caller reports it as not available. One Jev call:
+     * an answer lost on the way throws RUN_UNCERTAIN instead of spending another (JUDGE).
      */
-    judgePolicy: (body) => request("POST", "automation/judge/policy", body),
+    judgePolicy: (body) => request("POST", "automation/judge/policy", body, JUDGE),
     /**
      * Jev's choice among a brief's outlines (docs/videos/HANDS-OFF.md §Jev 挑大綱): body
      * { slug, brief, options: [{ key, title, summary, hook }] }, 2 to 3 options, no other field.
      * Answers { choice, probabilities, options: { key: { stance, demo } }, advice, passed, note };
-     * 409 video_judge_not_enabled while the stance is blank or the switch is off.
+     * 409 video_judge_not_enabled while the stance is blank or the switch is off. One Jev call,
+     * never asked again here once it was sent and its answer lost (RUN_UNCERTAIN, JUDGE).
      */
-    judgeOutline: (body) => request("POST", "automation/judge/outline", body),
+    judgeOutline: (body) => request("POST", "automation/judge/outline", body, JUDGE),
     /** The video's reviews as the owner left them, newest first. */
     reviews: async (slug) => {
       try {

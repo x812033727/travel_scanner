@@ -142,6 +142,32 @@ const SMALL = [
 - `camera` 上限 120 字、`prompt` 1000、`motion` 300（工具規定，`tools/video/core/drama.mjs` 的 `LIMITS`）。
 - 插畫投影片另有一份景別字表（`tools/video/core/drama.mjs` 的 `SHOT_SIZE`）讀的是 `prompt`，不是 `camera`；那條路線不在這份 skill 裡。
 
+## 五、各模型的提示長度與「疊加物不是景深」
+
+2026-10-05 讀的官方頁面；官方沒給數字的寫「無」，再列社群的數字與出處（次級，標名）。單位分清楚：words 是英文字、characters 是字元（API 的上限幾乎都算字元）、tokens 只有 Google 用。產線自己的上限在第四節（`camera` 120、`prompt` 1000、`motion` 300；組好的提示切 4000）。
+
+| 模型（路線） | 官方的規定（頁面、讀取日） | 官方沒說的：社群甜蜜點（來源） | 量到的 |
+| --- | --- | --- | --- |
+| Hailuo H3 ／ MiniMax-H3（API v2、網頁 H3） | API 每個 `text` ≤ 7,000 字元（platform.minimax.io/docs/api-reference/video-generation-v2-create；platform.minimax.io/docs/guides/video-generation 也寫「Prompt length limit ≤ 7000 characters」；頁面無日期，2026-10-05 讀）。官方提示指南（huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/docs/VIDEO_PROMPT_WRITING_GUIDE_base_en.md，模型卡最後更新 2026-08-13，2026-10-05 讀）對 T2VA／I2VA 沒有字數；全參考指南（同目錄的 `…_ref_en.md`）說生成任務的 `detailed_description` 通常 350–500 英文字，對白多的以塞下完整台詞為準。GitHub 的官方 skill（github.com/MiniMax-AI/MiniMax-H3 的 `skills/h3-prompt-writing/SKILL.md`，2026-10-05 讀）只說描述的總時長要對齊 4–15 秒 | `ayase0307/h3-video-prompting`（MIT；整理官方飛書手冊與社群實測）：純文字 prompt 300–700 英文字，「太短＝沒東西可參考」；有參考素材（首格）時字數要縮、只寫新變化；每個 shot 一個主動作、一個運鏡；對白 15 秒約 20 英文字 | 官方 I2VA 範例的 `integrated_multimodal_description` 82 字、T2VA 範例 86 字；GitHub README 的 T2VA 範例 379 字、I2VA 範例 724 字（2026-10-05 數的） |
+| Hailuo 2.3（API i2v、網頁 2.3） | `prompt` ≤ 2,000 字元；15 個方括號運鏡指令，一個括號內同時生效、建議最多 3 個；`prompt_optimizer` 預設 true（platform.minimax.io/docs/api-reference/video-generation-i2v，無日期，2026-10-05 讀）。沒有甜蜜點 | 無專屬數字；產線的寫法是一個方括號加一句動作，6 秒一個運鏡（`.agents/skills/animation-preproduction/references/route-decisions.md` 第六節） | — |
+| Kling 2.x ／ 3.0（API、網頁） | VIDEO 3.0 user guide（kling.ai/quickstart/klingai-video-3-model-user-guide，2026-02-06，2026-10-05 讀）沒有字數，只有範例。API 的 `prompt` 與 `negative_prompt` 各 ≤ 2,500 字元：現行 kling.ai/document-api 的頁面是 SPA，2026-10-05 抓到的只有標題；數字來自已停更的官方文件（docs.qingque.cn「可靈AI API 接口文档」，2024-09-19 的變更紀錄「不超過2500個字符」，文件最後更新 2025-06-19） | `smixs/visual-skills` 的 `video/references/kling.md`（CC BY 4.0，Serge Shima）：2.5 Turbo Pro 3–4 個元素、50–80 字；2.6 Pro 5–7 個元素、50–80 字；3.0 歡迎長一點，多鏡要明寫結構、每個 shot 約 30–60 字；圖生影片不分版本 20–40 字、只寫動作，「Long prompts on 1.x – 2.x = melted outputs」 | 官方 3.0 指南的範例：圖生影片短例 31 字、辦公室一鏡到底 220 字、兩個 15 秒範例 216 與 317 字 |
+| Veo 3.1 ／ 3.1 Fast ／ 3.1 Lite（產線 Lite） | 三個模型的 Text input 都是 1,024 tokens（ai.google.dev/gemini-api/docs/veo 的模型表，頁面 2026-09-17 更新，2026-10-05 讀）。Veo 提示指南（docs.cloud.google.com/gemini-enterprise-agent-platform/models/video/video-gen-prompt-guide；舊址 cloud.google.com/vertex-ai/generative-ai/docs/video/video-gen-prompt-guide 轉址過去，頁面 2026-10-01 更新，2026-10-05 讀）沒有字數；給的是結構：subject、action、scene／context、camera angles、camera movements、lens、visual style、temporal、audio；negative prompt 不寫 no／don't，寫名詞清單（「wall, frame」） | smixs 的 `video/references/veo.md`：「Sweet spot. 50-200 words」，短＝創作空間大、長＝控制緊但易自相矛盾；「Prompt too long, model cherry-picks」的修法是壓到 50–100 字或改 JSON。2026-10-05 的研究另記 Veo 3.1／Sora 2 100–250 字，今天沒有在列名的來源裡找到原句，當次級 | — |
+| Gemini Omni 1.1 Flash（產線預設片段模型） | 無字數；模型表（ai.google.dev/gemini-api/docs/models，2026-10-05 讀）只列端點。提示指南（ai.google.dev/gemini-api/docs/omni，2026-09-23 更新，2026-10-05 讀）：**預設會自己切成幾個鏡頭**，要單鏡得寫「In a single unbroken scene」「In a single continuous shot」「No scene cuts」；編輯用簡單句，「Overly descriptive prompts can lead to unintended changes」；時間可寫 `[0-3s]`；上面那份 Veo 指南同時涵蓋 Omni | 無專屬數字 | 產線 `look.motion` 的預設句寫 `no cuts`（否定句），不是官方建議的正向句（`tools/video/core/drama.mjs` 的 `PRESETS`）；錯誤目錄 #65 |
+| 其他（產線不用） | — | 2026-10-05 的研究記的次級數字：Seedance 2.x hero shot 200–400 字、LTX-2 ≤ 80、Runway Gen-4 ≤ 60，今天沒有重新找到出處。`A-cat-with-carrots/OnlyShot`（MIT）對即夢（Seedance）CLI 的實測：字元 ≤ 1,500（1,200–1,400 理想），超過回 `ret=1046 InvalidNode`，作者自己標明不是官方常數 | — |
+
+讀法：官方只給上限，沒有一家給甜蜜點；甜蜜點全是社群的，而且算的是英文字。產線的 `prompt` 1000 字元（約 150 英文字，估）落在每一家的甜蜜點裡；H3 網頁正文由 `shot_plan.mjs` 組，它的 `chars` 欄看一眼就知道離 7,000 多遠。
+
+### 疊加物不是景深
+
+標題、字卡、HUD、箭頭、字幕、浮水印、AIGC 標示都是後製：字幕由 `assemble` 燒（`subtitles.burn_in`），要看的字另外合成（`.agents/skills/youtube-video/references/animation-production.md` 的 text 規則）。它們**不向影片模型要，也不寫進 prompt 的前景／中景／背景**：模型會把它們畫成場景裡的物件（試拍 S03 R02 的英文標籤與簽名筆畫，`model-misreads.md` 第一節；judge 的 `no_text` 題扣分），而且畫出來的字對不上後製的字型與位置。佐證（除 H3 官方指南外都是社群，標名）：
+
+- H3 官方指南把「真的在畫面裡的字」（banner、sign、label、subtitle、neon）寫成英文雙引號逐字——那是場景物件的規則，不是疊加物的；`ayase0307/h3-video-prompting` 的失敗分診：「HUD elements」「some labels」沒逐字打出就變噪音；字幕跑出來時「不要在 prompt 寫『不要字幕』」（否定句被畫出來），修法是減少台詞、後期。
+- `A-cat-with-carrots/OnlyShot` 的即夢 case G：寫「彈幕刷屏」三次被畫成三個相同字標；它的字幕與 AIGC 標示都在剪映後製。
+- `smixs/visual-skills` 的 Kling 負面欄範例列 `watermark, subtitles, logo, text overlay`——Kling 有獨立負面欄才這樣寫，寫進正文就是否定句。
+- `LearnPrompt/awesome-seedance` 有「HUD 與直播疊層」模板：疊層本身就是畫面的類型，釘在固定位置、數字跟著動作變；那是另一種片，不是漫劇。
+
+例外只有劇情裡實體存在的字（招牌、信封上的字）：它是場景物件，要可讀就另外合成，prompt 寫 `blank`、`no writing on the page`。
+
 ## 例子
 
 每列是一行 `camera`，後面是四個函式讀出的結果：`shotSize`（只給 `camera`，沒有 `prompt`）、craft 的 `cameraMove`（`none` 寫 `-`）、slides 的 `cameraMove`、assemble 的 `motionMove().name`，以及 assemble 會不會對第 0 格算 PSNR（`startsAtIdentity`）。前 23 列是寫法示範與陷阱，接著是試拍的原句，最後兩列是靜圖常見的寫法。`tools/animation-camera.test.mjs` 逐列驗。

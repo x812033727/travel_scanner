@@ -73,6 +73,29 @@ and batch 4.10 (Claude Sonnet 5.5, 2026-09-28) the same way, with one link and n
 
 One link at the end of September and the three date sentences. The crypto and tech rows of
 4.8 and its inserted blocks are kept as ``_EDITS_4_8`` and ``_INSERT_4_8``, which nothing runs.
+
+The refresh of 2026-10-05 (task ``2026-09-26-refresh-stale-parts-of-the-three``) adds no link
+and moves no date. It rewrites what the batches since 4.4 left stale, in all five locales: the
+crypto index's hero alt, which still described four regions, and its Japan heading, which did
+not cover the FSA's forum; the AI index's paragraphs 1 and 20 and its month table, which named
+nothing linked after batch 4.5; the tech index's description, which listed the topics of 4.2.
+So ``EDITS`` learned one more target, ``"hero_alt"`` -- the redrawn hero prints that alt in its
+``<desc>``, so the alt is edited here first and ``build_assets.py`` draws after:
+
+    update_index.py ai tech crypto [--dry-run]
+
+Batch 4.11's tables are kept as ``_NEW_4_11``, ``_EDITS_4_11`` and ``_INSERT_4_11``.
+
+The zh-TW language note of 2026-10-05 (task ``2026-10-05-ai-news-index-zh-tw-says``) is a second
+run over the AI index that day, zh-TW only, and it too adds no link and moves no date. zh-TW
+links the zh-TW-only articles of 4.4, 4.6 and 4.7, which the other four locales do not, and
+three of its sentences -- the description, the month table's caption and block 24 -- still
+promised five languages for every linked article. It rewrites those three and nothing else; the
+other four locales link only five-locale articles, so their sentences stay true:
+
+    update_index.py ai --locale=zh-TW [--dry-run]
+
+The refresh's tables are kept as ``_EDITS_2026_10_05`` and ``_TABLE_2026_10_05``.
 """
 from __future__ import annotations
 
@@ -114,6 +137,8 @@ MAX_SOURCES = next(
 
 # The day this run expands the indexes: the one date the sentences below print, so the next
 # batch changes this constant and the same sentences instead of finding new ones to edit.
+# The refresh of 2026-10-05 links nothing, so the indexes still say they were last expanded on
+# batch 4.11's day and this stays.
 EXPANDED_ON = "2026-10-04"
 EXPANDED = {
     "zh-TW": "2026 年 10 月 4 日",
@@ -131,9 +156,13 @@ NEWEST_AI_EVENT = "2026-10-01"
 # as a dict, when it names a heading whose text differs by locale. Applied in order: an entry
 # may name a slug inserted just before it.
 #
-# Batch 4.11 (2026-10-04): one article, Claude Code mods (10-01), five locales. It is the
-# first October event, so ``INSERT`` opens an October heading after the last September link
-# (4.9's GPT-6.1 Sol) and the link goes right under that heading in all five locales.
+# The refresh of 2026-10-05 links nothing: it rewrites prose (``EDITS``) and table cells
+# (``TABLE``) only. Its zh-TW language note links nothing either: prose and a caption.
+NEW: dict[str, list[tuple[str, object]]] = {"crypto": [], "tech": [], "ai": []}
+# Batch 4.11 (2026-10-04), kept for the record: one article, Claude Code mods (10-01), five
+# locales. It is the first October event, so ``INSERT`` opened an October heading after the
+# last September link (4.9's GPT-6.1 Sol) and the link went right under that heading in all
+# five locales.
 _OCT_HEADING = {
     "zh-TW": "2026 年 10 月新聞解析",
     "en": "October 2026 News Analyses",
@@ -141,7 +170,7 @@ _OCT_HEADING = {
     "ko": "2026년 10월 뉴스 분석",
     "zh-CN": "2026 年 10 月新闻解析",
 }
-NEW: dict[str, list[tuple[str, object]]] = {
+_NEW_4_11: dict[str, list[tuple[str, object]]] = {
     "crypto": [],
     "tech": [],
     "ai": [
@@ -530,9 +559,9 @@ _EDITS_4_9: dict[str, dict[str, list[tuple[object, str, str]]]] = {
         ],
     },
 }
-# Batch 4.11 (2026-10-04) moves the AI index's three date sentences again, from 4.9's
-# 2026-09-30 and 2026-09-29: the same three blocks in all five locales.
-EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
+# Batch 4.11 (2026-10-04) moved the AI index's three date sentences again, from 4.9's
+# 2026-09-30 and 2026-09-29: the same three blocks in all five locales. Kept as it ran.
+_EDITS_4_11: dict[str, dict[str, list[tuple[object, str, str]]]] = {
     "crypto": {locale: [] for locale in LOCALES},
     "tech": {locale: [] for locale in LOCALES},
     "ai": {
@@ -584,13 +613,287 @@ EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
     },
 }
 
-# vertical -> locale -> (row label in column 0, column index, current cell, new cell). Nothing
-# this batch: the AI month table's reading-focus cells were widened in batch 4.3 and September
-# already reads "models, agents, security, assistants, voice, infrastructure".
+# The refresh of 2026-10-05. Each row rewrites a sentence, a heading or an alt that the batches
+# since 4.4 left stale, so that it describes what that locale's index links now -- and the five
+# do not link the same set: zh-TW carries the zh-TW-only articles of 4.4, 4.6 and 4.7 and the
+# other four do not, which is why the zh-TW rows of the AI paragraphs and the tech description
+# name more. No count of articles anywhere (``COUNT_RULE``), and no date moves.
+#
+# * crypto: the hero alt describes the six panels and the six-item list ``build_assets.py``
+#   now draws (``_crypto_index``), and the Japan heading names the FSA's onchain finance forum,
+#   which the section's last paragraph has described since batch 4.8. Block 24 in all five.
+# * ai: paragraph 1, the record of what was added, gains a sentence for everything linked after
+#   batch 4.5; paragraph 20 names the late-September models, the ads rollout in Taiwan and
+#   Google Vids, and in zh-TW also the August and September articles of 4.4, 4.6 and 4.7.
+# * tech: the description's topic list was batch 4.2's; it gains the articles of 4.5 and 4.8
+#   (zh-TW also Googlebook, and the zh-TW-only security notices behind an "and others"). The en
+#   description was 472 of the schema's 500 characters, so its row rewrites the whole of it in
+#   shorter words.
+_CRYPTO_ALT = {
+    "zh-TW": (
+        "原創插圖：左邊四個方格各放一個物件——條文與虛線圓、銀行建築、帶緞帶的印章、鎖頭——代表四個地區的監理文件，"
+        "線條匯向右邊一張列著四個項目的清單",
+        "原創插圖：左邊六個方格各放一個物件——條文與虛線圓、銀行建築、天秤、帶緞帶的印章、鎖頭、橫條與放大鏡——"
+        "代表六個地區的監理文件，線條匯向右邊一張列著六個項目的清單",
+    ),
+    "en": (
+        "Original illustration: four panels on the left each hold one object — provisions with a"
+        " dashed circle, a bank building, a ribboned seal, a padlock — lines converge on a list of"
+        " four items on the right",
+        "Original illustration: six panels on the left, one object each — provisions with a dashed"
+        " circle, a bank, scales, a ribboned seal, a padlock, bars under a magnifier — with lines to"
+        " a six-item list",
+    ),
+    "ja": (
+        "オリジナルイラスト：左側の四つの枠にそれぞれ一つずつ物が置かれている。条文と破線の円、銀行の建物、"
+        "リボンの付いた印章、錠前で、四つの地域の規制文書を表す。線は右側にある、四つの項目が並んだリストに集まっている",
+        "オリジナルイラスト：左側の六つの枠にそれぞれ一つずつ物が置かれている。条文と破線の円、銀行の建物、天秤、"
+        "リボンの付いた印章、錠前、横棒と虫眼鏡で、六つの地域の規制文書を表す。線は右側にある、六つの項目が並んだリストに"
+        "集まっている",
+    ),
+    "ko": (
+        "오리지널 일러스트: 왼쪽의 네 칸에 물건이 하나씩 놓여 있습니다. 조문과 점선 원, 은행 건물, 리본이 달린 인장,"
+        " 자물쇠로, 네 지역의 감독 문서를 나타냅니다. 선들은 오른쪽에 있는, 네 개 항목이 적힌 목록으로 모입니다",
+        "오리지널 일러스트: 왼쪽의 여섯 칸에 물건이 하나씩 놓여 있습니다. 조문과 점선 원, 은행 건물, 천칭, 리본이 달린"
+        " 인장, 자물쇠, 막대와 돋보기로, 여섯 지역의 감독 문서를 나타냅니다. 선들은 오른쪽에 있는, 여섯 개 항목이 적힌"
+        " 목록으로 모입니다",
+    ),
+    "zh-CN": (
+        "原创插图：左边四个方格各放一个物件——条文与虚线圆、银行建筑、带缎带的印章、锁头——代表四个地区的监管文件，"
+        "线条汇向右边一张列着四个项目的清单",
+        "原创插图：左边六个方格各放一个物件——条文与虚线圆、银行建筑、天平、带缎带的印章、锁头、横条与放大镜——"
+        "代表六个地区的监管文件，线条汇向右边一张列着六个项目的清单",
+    ),
+}
+_JP_HEADING = {
+    "zh-TW": ("日本：建議報告、後續立法與資安", "日本：建議報告、後續立法、資安與鏈上金融論壇"),
+    "en": (
+        "Japan: a report of recommendations, the legislation that followed, and cybersecurity",
+        "Japan: a report of recommendations, the legislation that followed, cybersecurity and an"
+        " onchain finance forum",
+    ),
+    "ja": (
+        "日本：提言の報告書、その後の立法、そしてサイバーセキュリティ",
+        "日本：提言の報告書、その後の立法、サイバーセキュリティ、そしてオンチェーン金融フォーラム",
+    ),
+    "ko": (
+        "일본: 제언 보고서, 그 뒤의 입법, 그리고 사이버보안",
+        "일본: 제언 보고서, 그 뒤의 입법, 사이버보안, 그리고 온체인 금융 포럼",
+    ),
+    "zh-CN": ("日本：建议报告、后续立法与网络安全", "日本：建议报告、后续立法、网络安全与链上金融论坛"),
+}
+# The AI index's paragraph 1 ends on the last addition it records, 4.5's Google CC; the new
+# sentence follows it. zh-TW's paragraph is a rich one, and that ending sits in its last text
+# node, which is where ``edit_block`` finds it.
+_AI_P1 = {
+    "zh-TW": (
+        "以及 Google CC 的家庭版。",
+        "以及 Google CC 的家庭版。再之後補上的，有八月的 Claude 文字浮水印、Google AI 學生方案，以及 OpenAI"
+        " 的零資料保留、Hugging Face 事件事後報告與停供 Cursor 模型的決定；九月的 Meta Muse 個人 AI 代理與 Meta"
+        " One 訂閱、Gemini Notebook 的開學工具、Kimi K3 上架 Amazon Bedrock，OpenAI 的澳洲青少年安全藍圖、前沿 AI"
+        " 國際標準主張與 Academy 新課程，與 OpenAI 合作的獨立數學顧問小組，Anthropic 與 Accenture 合作的常駐評估、"
+        "Anthropic 的生命科學驗證方案，以及 NVIDIA 談實體 AI 安全；九月下旬的新模型 Claude Opus 5.5、GPT-6 Sol"
+        " 與 Luna、Claude Sonnet 5.5 和 GPT-6.1 Sol，ChatGPT 廣告開始在台灣逐步推出，以及 Google Vids 開放免費用"
+        " Gemini Omni 1.1 做影片；十月起則有 Claude Code 的 mods。",
+    ),
+    "en": (
+        "and the family version of Google's CC.",
+        "and the family version of Google's CC. Then came the new models of late September — Claude"
+        " Opus 5.5, GPT-6 Sol and Luna, Claude Sonnet 5.5 and GPT-6.1 Sol — along with ChatGPT ads"
+        " beginning to roll out in Taiwan and Google Vids opening free video generation with Gemini"
+        " Omni 1.1, and, from October, Claude Code mods.",
+    ),
+    "ja": (
+        "Google CCの家族版です。",
+        "Google CCの家族版です。さらにその後、9月下旬の新モデルであるClaude Opus 5.5、GPT-6 SolとLuna、"
+        "Claude Sonnet 5.5、GPT-6.1 Solと、台湾で順次展開が始まったChatGPT広告、Gemini Omni 1.1による動画の"
+        "無料生成を開放したGoogle Vids、そして10月のClaude Codeのmodsを追加しました。",
+    ),
+    "ko": (
+        "그리고 Google CC의 가족용 버전입니다.",
+        "그리고 Google CC의 가족용 버전입니다. 그 뒤로는 9월 하순의 새 모델인 Claude Opus 5.5, GPT-6 Sol과"
+        " Luna, Claude Sonnet 5.5, GPT-6.1 Sol과 함께, 대만에서 단계적으로 시작된 ChatGPT 광고, Gemini Omni"
+        " 1.1로 무료 동영상 생성을 개방한 Google Vids, 그리고 10월의 Claude Code mods를 추가했습니다.",
+    ),
+    "zh-CN": (
+        "以及 Google CC 的家庭版。",
+        "以及 Google CC 的家庭版。再之后补上的，有九月下旬的新模型 Claude Opus 5.5、GPT-6 Sol 与 Luna、"
+        "Claude Sonnet 5.5 和 GPT-6.1 Sol，ChatGPT 广告开始在台湾逐步推出，以及 Google Vids 开放免费用"
+        " Gemini Omni 1.1 做视频；十月起则有 Claude Code 的 mods。",
+    ),
+}
+# Paragraph 20 is the August and September narrative; its September list stops at 09-14.
+_AI_P20 = {
+    "zh-TW": (
+        "〈We Must Pace the Frontier〉一文與 Siri AI。",
+        "〈We Must Pace the Frontier〉一文與 Siri AI；其間還有 Meta 的 Muse 代理與 Meta One 訂閱、Gemini"
+        " Notebook 與 OpenAI Academy 的學習工具，以及 Anthropic、OpenAI 與 NVIDIA 關於驗證、標準和安全的說明。"
+        "九月下旬則有 Claude Opus 5.5、GPT-6 Sol 與 Luna、Claude Sonnet 5.5 和 GPT-6.1 Sol 接連推出，ChatGPT"
+        " 廣告開始在台灣逐步推出，Google Vids 也開放免費用 Gemini Omni 1.1 做影片。",
+    ),
+    "en": (
+        'the essay "We Must Pace the Frontier", and Siri AI.',
+        'the essay "We Must Pace the Frontier", and Siri AI. Late September brought Claude Opus 5.5,'
+        " GPT-6 Sol and Luna, Claude Sonnet 5.5 and GPT-6.1 Sol one after another, ChatGPT ads"
+        " beginning to roll out in Taiwan, and Google Vids opening free video generation with Gemini"
+        " Omni 1.1.",
+    ),
+    "ja": (
+        "論考「We Must Pace the Frontier」、Siri AIがあります。",
+        "論考「We Must Pace the Frontier」、Siri AIがあります。9月下旬にはClaude Opus 5.5、GPT-6 SolとLuna、"
+        "Claude Sonnet 5.5、GPT-6.1 Solが相次いで登場し、ChatGPT広告が台湾で順次展開を始め、Google Vidsも"
+        "Gemini Omni 1.1による動画の無料生成を開放しました。",
+    ),
+    "ko": (
+        "「We Must Pace the Frontier」 글, Siri AI가 뒤따릅니다.",
+        "「We Must Pace the Frontier」 글, Siri AI가 뒤따릅니다. 9월 하순에는 Claude Opus 5.5, GPT-6 Sol과"
+        " Luna, Claude Sonnet 5.5, GPT-6.1 Sol이 잇따라 나왔고, ChatGPT 광고가 대만에서 단계적으로 시작됐으며,"
+        " Google Vids도 Gemini Omni 1.1로 무료 동영상 생성을 개방했습니다.",
+    ),
+    "zh-CN": (
+        "《We Must Pace the Frontier》一文与 Siri AI。",
+        "《We Must Pace the Frontier》一文与 Siri AI。九月下旬则有 Claude Opus 5.5、GPT-6 Sol 与 Luna、"
+        "Claude Sonnet 5.5 和 GPT-6.1 Sol 接连推出，ChatGPT 广告开始在台湾逐步推出，Google Vids 也开放免费用"
+        " Gemini Omni 1.1 做视频。",
+    ),
+}
+# zh-TW's August sentence names the three articles every locale links; 4.4's five follow it.
+_AI_P20_AUGUST_TW = (
+    "ChatGPT 免費版與思考功能，以及 Gemini Live 的生產力更新。",
+    "ChatGPT 免費版與思考功能、Gemini Live 的生產力更新，也有 Claude 文字浮水印、Google AI 學生方案、OpenAI"
+    " 的零資料保留、Hugging Face 事件的事後報告，以及 OpenAI 將停供 Cursor 模型的決定。",
+)
+_TECH_DESCRIPTION = {
+    "zh-TW": (
+        "iPhone Duo 與九月新機、M6 與 M5 Ultra、Project Zenith、Pixel Drop、NVIDIA 三則公告、6G 頻譜研討會、"
+        "臺馬海纜、主權 AI 語料庫、《網路韌性法》通報義務與 Apple 歐盟 App 條款。",
+        "iPhone Duo 與九月新機、Googlebook、M6 與 M5 Ultra、Snapdragon 8 Elite Gen 6、Project Zenith、Pixel Drop、"
+        "App Store 訂閱新規則、WordPress 與 Synology 等資安更新、NVIDIA 三則公告、6G 頻譜研討會、臺馬海纜、"
+        "主權 AI 語料庫、《網路韌性法》通報義務、KIDS Act 提案、Apple 歐盟 App 條款與追蹤透明度詢問框。",
+    ),
+    "en": (
+        "This site's 2026 tech-news explainers, in five groups: hardware, platforms, computing"
+        " infrastructure, Taiwan policy, and EU regulation. Covers iPhone Duo, September hardware,"
+        " M6/M5 Ultra, Project Zenith, Pixel Drop, three NVIDIA announcements, the 6G symposium, the"
+        " Taiwan–Matsu cable, the sovereign AI corpus, the Cyber Resilience Act, and Apple's EU App"
+        " terms. No purchase advice; vendor claims are attributed; every article has an official"
+        " source and a fact-check date.",
+        "This site's 2026 tech-news explainers in five groups — hardware, platforms, computing"
+        " infrastructure, Taiwan policy, EU regulation: iPhone Duo and September hardware, M6/M5"
+        " Ultra, Snapdragon 8 Elite Gen 6, Project Zenith, Pixel Drop, App Store subscriptions,"
+        " WordPress and Synology patches, NVIDIA, 6G, the Taiwan–Matsu cables, the sovereign AI"
+        " corpus, the Cyber Resilience Act, the KIDS Act and Apple's EU terms. No purchase advice;"
+        " vendor claims attributed; official sources and check dates.",
+    ),
+    "ja": (
+        "iPhone Duoと9月の新製品、M6とM5 Ultra、Project Zenith、Pixel Drop、NVIDIAの3件の発表、6G周波数シンポジウム、"
+        "台馬海底ケーブル、主権AIコーパス、サイバーレジリエンス法の通報義務、AppleのEU App条件を扱います。",
+        "iPhone Duoと9月の新製品、M6とM5 Ultra、Snapdragon 8 Elite Gen 6、Project Zenith、Pixel Drop、"
+        "App Store定期購読の新ルール、WordPressとSynologyのセキュリティ修正、NVIDIAの3件の発表、6G周波数シンポジウム、"
+        "台馬海底ケーブル、主権AIコーパス、サイバーレジリエンス法の通報義務、KIDS Act提案、AppleのEU App条件と"
+        "トラッキング確認画面を扱います。",
+    ),
+    "ko": (
+        "iPhone Duo와 9월 신제품, M6와 M5 Ultra, Project Zenith, Pixel Drop, NVIDIA의 세 건의 발표, 6G 주파수"
+        " 심포지엄, 대만-마쭈 해저케이블, 주권 AI 코퍼스, 사이버복원력법의 통보 의무, Apple의 EU App 조건을 다룹니다.",
+        "iPhone Duo와 9월 신제품, M6와 M5 Ultra, Snapdragon 8 Elite Gen 6, Project Zenith, Pixel Drop, App Store"
+        " 구독 새 규칙, WordPress와 Synology의 보안 패치, NVIDIA의 세 건의 발표, 6G 주파수 심포지엄, 대만-마쭈"
+        " 해저케이블, 주권 AI 코퍼스, 사이버복원력법의 통보 의무, KIDS Act 제안, Apple의 EU App 조건과 추적 투명성"
+        " 프롬프트를 다룹니다.",
+    ),
+    "zh-CN": (
+        "iPhone Duo 与九月新机、M6 与 M5 Ultra、Project Zenith、Pixel Drop、NVIDIA 三则公告、6G 频谱研讨会、"
+        "台马海缆、主权 AI 语料库、《网络弹性法案》通报义务与 Apple 欧盟 App 条款。",
+        "iPhone Duo 与九月新机、M6 与 M5 Ultra、Snapdragon 8 Elite Gen 6、Project Zenith、Pixel Drop、"
+        "App Store 订阅新规则、WordPress 与 Synology 的安全更新、NVIDIA 三则公告、6G 频谱研讨会、台马海缆、"
+        "主权 AI 语料库、《网络弹性法案》通报义务、KIDS Act 提案、Apple 欧盟 App 条款与追踪透明度询问框。",
+    ),
+}
+# The refresh's table, as it ran.
+_EDITS_2026_10_05: dict[str, dict[str, list[tuple[object, str, str]]]] = {
+    "crypto": {locale: [("hero_alt", *_CRYPTO_ALT[locale]), (24, *_JP_HEADING[locale])] for locale in LOCALES},
+    "tech": {locale: [("description", *_TECH_DESCRIPTION[locale])] for locale in LOCALES},
+    "ai": {
+        locale: [(1, *_AI_P1[locale]), (20, *_AI_P20[locale])] + ([(20, *_AI_P20_AUGUST_TW)] if locale == "zh-TW" else [])
+        for locale in LOCALES
+    },
+}
+# The zh-TW language note of 2026-10-05: the description and block 24 of the zh-TW AI index said
+# every linked article could be read in five languages, and zh-TW also links articles that
+# exist in zh-TW only. They now say most do, naming the other four languages, and block 24 says
+# that some are in Traditional Chinese only. No count (``COUNT_RULE``); the month-range in the
+# description is the title ticket's (``2026-10-03-ai-news-index-month-range``) and stays.
+_AI_LANGUAGES_TW: list[tuple[object, str, str]] = [
+    ("description", "連到五語完整解析", "連到完整解析，多數另有簡體中文、英文、日文與韓文版"),
+    (
+        24,
+        "繁體中文、簡體中文、英文、日文與韓文均提供全文，透過頁面的語言切換即可閱讀",
+        "多數文章另提供簡體中文、英文、日文與韓文全文，可透過頁面的語言切換閱讀；部分文章目前只有繁體中文",
+    ),
+]
+EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
+    "crypto": {locale: [] for locale in LOCALES},
+    "tech": {locale: [] for locale in LOCALES},
+    "ai": {locale: _AI_LANGUAGES_TW if locale == "zh-TW" else [] for locale in LOCALES},
+}
+
+# vertical -> locale -> (row label in column 0, column index, current cell, new cell). The zh-TW
+# language note of 2026-10-05 touches no cell.
 TABLE: dict[str, dict[str, list[tuple[str, int, str, str]]]] = {
     "crypto": {locale: [] for locale in LOCALES},
     "tech": {locale: [] for locale in LOCALES},
     "ai": {locale: [] for locale in LOCALES},
+}
+# Batch 4.3 widened the AI month table's reading-focus cells, and no batch touched them again
+# until the refresh of 2026-10-05, which added what September's links now cover (prices, ads,
+# video, and in zh-TW the learning tools of 4.6 and 4.7) and, in zh-TW only, what 4.4 added to
+# August. Kept as it ran.
+_TABLE_2026_10_05: dict[str, dict[str, list[tuple[str, int, str, str]]]] = {
+    "crypto": {locale: [] for locale in LOCALES},
+    "tech": {locale: [] for locale in LOCALES},
+    "ai": {
+        "zh-TW": [
+            ("8 月", 1, "透明度、思考、語音", "透明度、思考、語音、學生方案與資料保留"),
+            (
+                "9 月",
+                1,
+                "模型、代理、資安、助理、語音與基礎設施",
+                "模型、費用、代理、資安、助理、語音、廣告、影片、學習與基礎設施",
+            ),
+        ],
+        "en": [
+            (
+                "September",
+                1,
+                "Models, agents, security, assistants, voice, infrastructure",
+                "Models, pricing, agents, security, assistants, voice, ads, video, infrastructure",
+            )
+        ],
+        "ja": [
+            (
+                "9月",
+                1,
+                "モデル、エージェント、セキュリティ、アシスタント、音声、基盤",
+                "モデル、コスト、エージェント、セキュリティ、アシスタント、音声、広告、動画、基盤",
+            )
+        ],
+        "ko": [
+            (
+                "9월",
+                1,
+                "모델, 에이전트, 보안, 어시스턴트, 음성, 인프라",
+                "모델, 비용, 에이전트, 보안, 어시스턴트, 음성, 광고, 동영상, 인프라",
+            )
+        ],
+        "zh-CN": [
+            (
+                "9 月",
+                1,
+                "模型、代理、网络安全、助理、语音与基础设施",
+                "模型、费用、代理、网络安全、助理、语音、广告、视频与基础设施",
+            )
+        ],
+    },
 }
 # vertical -> locale -> the header cell of a table column to remove. The AI index's count
 # column went in batch 4.3; nothing is left to drop.
@@ -599,11 +902,13 @@ DROP_COLUMN: dict[str, dict[str, str]] = {
     "tech": {},
     "ai": {},
 }
-# vertical -> locale -> (old caption fragment, new caption fragment). None this batch.
+# vertical -> locale -> (old caption fragment, new caption fragment). The zh-TW language note
+# rewrites the AI month table's zh-TW caption, which said every month's analyses came in five
+# languages, the same way as the description and block 24.
 CAPTION: dict[str, dict[str, tuple[str, str]]] = {
     "crypto": {},
     "tech": {},
-    "ai": {},
+    "ai": {"zh-TW": ("各月的新聞解析都提供五種語言", "多數新聞解析另有簡體中文、英文、日文與韓文版")},
 }
 
 
@@ -875,12 +1180,19 @@ _INSERT_4_8: dict[str, dict[str, list[tuple[str, dict]]]] = {
     "ai": {locale: [] for locale in LOCALES},
 }
 # Batches 4.9 and 4.10 inserted nothing: the AI index names months, not articles (see the 4.8
-# note above). Batch 4.11 opens October: the index had no month heading after September, and
-# the AI index's link groups are headed by month, so the first October article needs one.
-INSERT: dict[str, dict[str, list[tuple[str, dict]]]] = {
+# note above). Batch 4.11 opened October: the index had no month heading after September, and
+# the AI index's link groups are headed by month, so the first October article needed one.
+_INSERT_4_11: dict[str, dict[str, list[tuple[str, dict]]]] = {
     "crypto": {locale: [] for locale in LOCALES},
     "tech": {locale: [] for locale in LOCALES},
     "ai": {locale: [("link:ai-news-gpt-61-sol-20260929", _h(_OCT_HEADING[locale]))] for locale in LOCALES},
+}
+# The refresh of 2026-10-05 inserts nothing: every stale part it fixes is a block the indexes
+# already have.
+INSERT: dict[str, dict[str, list[tuple[str, dict]]]] = {
+    "crypto": {locale: [] for locale in LOCALES},
+    "tech": {locale: [] for locale in LOCALES},
+    "ai": {locale: [] for locale in LOCALES},
 }
 
 #: A number of articles shown to the reader is wrong from the next batch onwards, so an index
@@ -1192,6 +1504,11 @@ def update(vertical, locales: list[str], dry_run: bool) -> None:
         for target, old, new in EDITS[name][locale]:
             if target == "description":
                 doc["description"] = replace_once(doc["description"], old, new, f"{locale} description")
+            elif target == "hero_alt":
+                # The hero's alt is the picture's description, and the picture is redrawn when
+                # an index outgrows it (the crypto hero's four regions became six). The SVG
+                # carries the same text in its <desc>, so build_assets.py runs after this.
+                doc["hero"]["alt"] = replace_once(doc["hero"]["alt"], old, new, f"{locale} hero alt")
             else:
                 # The block index is written by hand and shifts every time the index grows a
                 # link, so a stale one is the ordinary mistake in this table. Named, like every

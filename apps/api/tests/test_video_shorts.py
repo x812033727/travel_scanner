@@ -676,11 +676,12 @@ async def start(site: Site, first_day: date = FIRST_DAY, now: datetime = NOW) ->
 
 
 @pytest.mark.asyncio
-async def test_a_short_whose_twelve_checks_passed_is_approved_as_it_arrives(site: Site) -> None:
+async def test_a_short_whose_thirteen_checks_passed_is_approved_as_it_arrives(site: Site) -> None:
     await report_short(site, "receipt-total")
     review = await submit(site, "receipt-total", "final", {"qa": _qa(), "usage": USAGE})
     assert review.status == "approved"
-    assert review.note == "Shorts 自動品管 12 項全過，依設定自動核准"
+    assert review.note == judging.SHORTS_QA_AUTO_APPROVED_NOTE
+    assert review.note == "Shorts 自動品管 13 項全過，依設定自動核准"
     audit = [row for row in await rows(site, AdminAuditLog) if row.actor_user_id is None]
     assert [(row.action, row.metadata_json["gate"]) for row in audit] == [
         ("video_review_auto_approved", "final")

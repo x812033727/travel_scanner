@@ -1,5 +1,5 @@
 // `login`, `audition` and `tts`: narration through the Mokaair server, which holds the Azure key.
-import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { existsSync, readFileSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
 import { createHash } from "node:crypto";
 import path from "node:path";
 import readline from "node:readline";
@@ -7,21 +7,70 @@ import { parseArgs } from "node:util";
 
 import { NARRATOR } from "../core/drama.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
+import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { buildTimeline, checkChapters, formatClock, frameToSeconds, speechHash } from "../core/timeline.mjs";
 import { checkAudio } from "./check.mjs";
-import { SpeechError, speechStatus, synthesize } from "./client.mjs";
+import { SpeechError, speechStatus, synthesize, synthesizeAligned } from "./client.mjs";
 import { TOKEN_PATTERN, readCredentials, validSite, writeCredentials } from "./credentials.mjs";
 import { defaultClientName, startPairing, waitForPairing } from "./pairing.mjs";
 import { GEMINI_VOICE_PREFIX, MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts, voiceFields } from "./requests.mjs";
+import { JOURNAL_DIR, openSpeechJournal } from "./speech-journal.mjs";
 import { buildNarration, flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "./synthesis.mjs";
 import { readCache, takeCurrent } from "./takes.mjs";
 import { encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
 const FREE_TIER = 500_000;
 const wavHash = (bytes) => createHash("sha256").update(bytes).digest("hex");
+
+// Only a phrase-sized request asks speech/align. That route answers with the WAV as base64 inside
+// its JSON, "which suits a phrase of a Short; a six-minute scene belongs to the speech route, whose
+// bytes stream" (apps/api/app/video_speech/align_api.py), so a request goes there only when its
+// WAV stays inside the route's own clip bound, MAX_CLIP_BYTES = 2,000,000 bytes. Its synthesis asks
+// Azure for Riff48Khz16BitMonoPcm (align.py synthesize_with_boundaries_blocking): 48,000 samples
+// × 2 bytes = 96,000 bytes a second, so (2,000,000 − 44 bytes of RIFF header) / 96,000 = 20.83 s,
+// less 1 s for the silence around the speech = 19.83 s. At a slow 3 characters a second
+// (SLOW_PACE; the channel's scripts are sized at 250 a minute, 4.17 a second, and a voice slowed
+// by a rate of −25% still reads 3.13), 19.83 × 3 = 59.5, so 59 characters, counted by
+// alignedCharacters. A larger request, a scene in practice, goes straight to speech: one call,
+// no timing, the same journal entry.
+export const ALIGNED_MAX_CHARACTERS = 59;
+const SLOW_PACE = 3;
+
+/**
+ * A request body's size as ALIGNED_MAX_CHARACTERS counts it: every character its voice reads
+ * (a dictionary term's spoken form, not its written one), and each break as the characters
+ * SLOW_PACE would read in it (the 800 ms break between two lines of a scene counts 3).
+ */
+export function alignedCharacters(body) {
+  let characters = 0;
+  for (const segment of body.segments ?? []) {
+    for (const part of segment.parts ?? []) characters += [...String(part.alias || part.text || "")].length;
+    characters += Math.ceil(((segment.break_after_ms ?? 0) * SLOW_PACE) / 1000);
+  }
+  return characters;
+}
+
+// A take's measured character timing (synthesis.mjs) lives beside its clip, audio/<id>.timing.json,
+// bound to the SHA-256 of the WAV it was measured on, so a run that reuses the clip still writes
+// it into timeline.json and a timing never outlives its take.
+const timingFile = (audioDir, id) => path.join(audioDir, `${id}.timing.json`);
+
+/** The timing kept for the take whose WAV bytes hash to `hash`, or null. */
+function readTiming(audioDir, id, hash) {
+  const saved = readJson(timingFile(audioDir, id), null);
+  if (saved?.wav_sha256 !== hash || !Array.isArray(saved.chars)) return null;
+  return { source: saved.source, model: saved.model, chars: saved.chars };
+}
+
+/** Save a take's WAV with its timing: the older take's timing goes first, so the two are never paired. */
+function writeTake(audioDir, id, bytes, timing) {
+  rmSync(timingFile(audioDir, id), { force: true });
+  atomicWrite(path.join(audioDir, `${id}.wav`), bytes);
+  if (timing) atomicWrite(timingFile(audioDir, id), `${JSON.stringify({ wav_sha256: wavHash(bytes), ...timing })}\n`);
+}
 
 const escapeHtml = (text) => String(text).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
 
@@ -124,6 +173,21 @@ function remainingFor(status, voice) {
   return status.monthly_limit > 0 ? status.remaining : null;
 }
 
+/**
+ * The bookends the first build would add (the choice `assemble` makes), or null. YouTube reads
+ * the chapters of the cut, where the intro lengthens the first chapter and the outro the last.
+ * A pin or package that does not validate stops `assemble` with its own message; until then the
+ * chapters are checked on the narration alone.
+ */
+async function plannedBranding({ doc, workdir, values, ctx }) {
+  try {
+    return await selectBrandingForBuild({ doc, workdir, workBase: resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home }) });
+  } catch (error) {
+    if (!(error instanceof UsageError)) throw error;
+    return null;
+  }
+}
+
 /** The provider whose month a request voice counts against. */
 const providerOf = (voice) => (voice.startsWith(GEMINI_VOICE_PREFIX) ? "gemini" : "azure");
 
@@ -201,20 +265,26 @@ async function audition(args, ctx) {
   const problems = voices.map((voice) => voiceProblem(status, voice)).filter(Boolean);
   if (problems.length) throw new SpeechError([...new Set(problems)].join("; "), { who: "owner" });
   const stamp = ctx.now().toISOString().replace(/[:.]/g, "-");
-  const out = path.join(resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home }), "_audition", stamp);
+  const auditions = path.join(resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home }), "_audition");
+  const out = path.join(auditions, stamp);
   mkdirSync(out, { recursive: true });
   const parts = spokenParts(text, loadLexicon(ctx.root));
   // "gemini:Sulafat" is not a valid Windows file name.
   const fileName = (voice) => `${voice.replace(/[^A-Za-z0-9_.-]/g, "-")}.wav`;
+  // A sample whose answer was lost is not sent again, and one that came back is not bought again
+  // by the next audition (speech-journal.mjs).
+  const journal = openSpeechJournal(path.join(auditions, JOURNAL_DIR), { now: ctx.now });
+  const send = journal.wrap((body) => synthesize({ ...options, body }));
   let billable = 0;
   for (const voice of voices) {
     const fields = voice.startsWith(GEMINI_VOICE_PREFIX)
       ? voiceFields({ provider: "gemini", name: voice.slice(GEMINI_VOICE_PREFIX.length), style: values.style, model: values.model })
       : voiceFields({ provider: "azure", name: voice, rate: values.rate });
-    const result = await synthesize({ ...options, body: { ...fields, segments: [{ parts, break_after_ms: 0 }] } });
+    const result = await send({ ...fields, segments: [{ parts, break_after_ms: 0 }] });
     requireNarrationFormat(parseWav(result.wav));
     billable += result.billable;
-    writeFileSync(path.join(out, fileName(voice)), result.wav);
+    atomicWrite(path.join(out, fileName(voice)), result.wav);
+    journal.release();
     ctx.stdout.write(`${voice}: ${path.join(out, fileName(voice))}\n`);
   }
   const rows = voices.map((voice) => `<li><p>${escapeHtml(voice)}</p><audio controls preload="none" src="${encodeURIComponent(fileName(voice))}"></audio></li>`).join("");
@@ -331,12 +401,28 @@ async function tts(args, ctx) {
   }
   let billable = 0;
   const fallbacks = [];
+  // Each paid body is recorded before it goes out (speech-journal.mjs): an answer that came back
+  // but was not saved below is taken from disk by the next run, and one that was lost stops it
+  // until a person clears the hold. Released once cache.json holds the takes made from it.
+  // A phrase-sized request in an Azure voice asks speech/align first: the WAV and when each
+  // written unit is spoken, in the one paid call. A site that cannot time it answers null without
+  // charging, and the body goes to speech as before. A scene-sized request (ALIGNED_MAX_CHARACTERS)
+  // and every Gemini voice (no aligner is live) go straight to speech. Either route is the one
+  // journal entry for its body, so a lost answer holds the request, and an answer the journal
+  // kept comes back without timing.
+  const journal = openSpeechJournal(path.join(audioDir, JOURNAL_DIR), { now: ctx.now });
+  const send = journal.wrap(async (body) => {
+    const phrase = providerOf(body.voice) !== "gemini" && alignedCharacters(body) <= ALIGNED_MAX_CHARACTERS;
+    const aligned = phrase ? await synthesizeAligned({ ...options, body }) : null;
+    return aligned ?? synthesize({ ...options, body });
+  });
   for (const request of pending) {
     if (stopRequested(workdir)) {
+      // The takes so far are in cache.json and a rerun reuses them, but timeline.json and
+      // narration.wav are still the last run's (or absent): this is not current narration.
       ctx.stdout.write(`stopped by the STOP file; ${pending.indexOf(request)} of ${pending.length} requests done, rerun to continue\n`);
-      return EXIT.ok;
+      return EXIT.incomplete;
     }
-    const send = (body) => synthesize({ ...options, body });
     const lines = retakes(request);
     const result = lines ? { ...(await synthesizeLines(request, lines, send)), fallback: false } : await synthesizeRequest(request, send);
     billable += result.billable;
@@ -344,12 +430,13 @@ async function tts(args, ctx) {
     for (const [id, clip] of result.clips) {
       const bytes = encodeWav(clip);
       requireNarrationFormat(parseWav(bytes));
-      atomicWrite(path.join(audioDir, `${id}.wav`), bytes);
+      writeTake(audioDir, id, bytes, result.timings?.get(id));
       cache.lines[id] = request.lines.find((line) => line.id === id).key;
       cache.sha256 ??= {};
       cache.sha256[id] = wavHash(bytes);
     }
     atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
+    journal.release();
     const done = lines ? `${lines.length} of ${request.lines.length} lines retaken` : `${request.lines.length} lines`;
     const who = doc.format === "drama" ? ` [${speakerName(doc, request.speaker)}]` : "";
     ctx.stdout.write(`${request.id}${who}: ${done}${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`);
@@ -358,7 +445,8 @@ async function tts(args, ctx) {
   for (const reference of references) {
     const { bytes, hash } = checkedOriginal(reference.audio_ref);
     const line = reference.lines[0];
-    atomicWrite(path.join(audioDir, `${line.id}.wav`), bytes);
+    // The same take, so the same times: the original's timing comes along when it has one.
+    writeTake(audioDir, line.id, bytes, readTiming(audioDir, reference.audio_ref, hash));
     cache.lines[line.id] = line.key;
     cache.sha256 ??= {};
     cache.sha256[line.id] = hash;
@@ -368,20 +456,43 @@ async function tts(args, ctx) {
   if (references.length) atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
 
   const clips = new Map();
+  const timings = new Map();
   for (const request of planned) {
-    for (const line of request.lines) clips.set(line.id, requireNarrationFormat(parseWav(readFileSync(path.join(audioDir, `${line.id}.wav`)))));
+    for (const line of request.lines) {
+      const bytes = readFileSync(path.join(audioDir, `${line.id}.wav`));
+      clips.set(line.id, requireNarrationFormat(parseWav(bytes)));
+      const timing = readTiming(audioDir, line.id, wavHash(bytes));
+      if (timing) timings.set(line.id, timing);
+    }
   }
   const samplesById = Object.fromEntries([...clips].map(([id, clip]) => [id, Math.max(1, clip.length)]));
+  // The speech hash is the script's alone: measured timing is derived from the audio and never
+  // makes a timeline stale.
   const timeline = { ...buildTimeline(doc, samplesById), speech_hash: speechHash(doc, lexicon) };
   // A clip trimmed to nothing still needs one sample to sit on the grid.
   for (const [id, clip] of clips) if (clip.length === 0) clips.set(id, new Int16Array(1));
   atomicWrite(path.join(workdir, ARTIFACTS.narration), encodeWav(buildNarration(timeline, clips)));
-  atomicWrite(path.join(workdir, ARTIFACTS.timeline), `${JSON.stringify(bindAudioEvidence(timeline, workdir), null, 2)}\n`);
-  recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name, voices: voices.map((entry) => entry.voice) }, ctx.now());
+  // A line's measured timing rides on its entry, after its take's hash; a line without one is
+  // written as before, so a narration with no timing keeps the same timeline.json bytes.
+  const bound = bindAudioEvidence(timeline, workdir);
+  const lines = bound.lines.map((line) => (timings.has(line.id) ? { ...line, timing: timings.get(line.id) } : line));
+  atomicWrite(path.join(workdir, ARTIFACTS.timeline), `${JSON.stringify({ ...bound, lines }, null, 2)}\n`);
+  // Lint checked the chapters on an estimate; this is the real check. Chapters YouTube would not
+  // show fail the run, after the files are written, so a fix to the script reuses every take whose
+  // words it keeps. The run is recorded either way: its characters were paid for.
+  const chapters = checkChapters(presentationTimeline(timeline, await plannedBranding({ doc, workdir, values, ctx })));
+  recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name, voices: voices.map((entry) => entry.voice), ...(timings.size ? { timed: timings.size } : {}), ...(chapters.length ? { ok: false, chapters } : {}) }, ctx.now());
 
   ctx.stdout.write(`${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; narration ${formatClock(frameToSeconds(timeline.total_frames))}\n`);
-  for (const problem of checkChapters(timeline)) ctx.stdout.write(`chapters: ${problem}\n`);
+  if (journal.reused) ctx.stdout.write(`${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
+  if (timings.size) ctx.stdout.write(`${timings.size} of ${timeline.lines.length} lines carry measured character times; their CC cues start on the spoken character\n`);
   if (fallbacks.length) ctx.stdout.write(`line-by-line fallback for: ${fallbacks.join(", ")}\n`);
+  if (chapters.length) {
+    // The problems come last, so a caller that reports the last line names one.
+    ctx.stdout.write(`next: lengthen or merge the short chapters in video.json, then tts again (unchanged clips are reused)\n`);
+    for (const problem of chapters) ctx.stdout.write(`chapters: ${problem}\n`);
+    return EXIT.lint;
+  }
   ctx.stdout.write(`next: node tools/video/cli.mjs review --slug ${doc.slug}\n`);
   return EXIT.ok;
 }

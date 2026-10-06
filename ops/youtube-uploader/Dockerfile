@@ -1,4 +1,6 @@
-FROM node:24-bookworm-slim
+# Tag and digest: a tag moved on the registry cannot change this image without a diff here.
+# Dependabot (.github/dependabot.yml, docker) moves the digest by pull request.
+FROM node:24-bookworm-slim@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6
 ENV NODE_ENV=production DISPLAY=:99 UPLOADER_BIND=0.0.0.0 UPLOADER_DATA_DIR=/var/lib/mokaair-uploader
 WORKDIR /opt/uploader
 COPY services/youtube-uploader/package*.json ./

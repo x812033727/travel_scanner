@@ -17,7 +17,7 @@ import { approvalState, sha256File } from "../core/approvals.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { compilationChecksCurrent, compilationHash, estimatedCompilationTimeline, isCompilation } from "../core/compilation.mjs";
 import { cadenceProblems, cadenceSummary, illustrationShare, MAX_PICTURE_SECONDS, MIN_ILLUSTRATION_SHARE } from "../core/cadence.mjs";
-import { burnIn, illustrated, isDrama, needsMinimumLength, subtitlesHash } from "../core/drama.mjs";
+import { burnIn, drawnShotScenes, illustrated, isDrama, needsMinimumLength, subtitlesHash } from "../core/drama.mjs";
 import { checkYoutubeFields } from "../core/metadata.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
@@ -212,7 +212,12 @@ export async function run(command, args, ctx) {
 
   const items = [];
   let who = null;
-  items.push(assembleItem({ checks, current: audioCurrent && checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, doc, timeline, presented, timelineCurrent, finalSha256, minMinutes: needsMinimumLength(doc) ? minEpisodeMinutes() : 0, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined }));
+  const assemble = assembleItem({ checks, current: audioCurrent && checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, doc, timeline, presented, timelineCurrent, finalSha256, minMinutes: needsMinimumLength(doc) ? minEpisodeMinutes() : 0, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined });
+  // Pictures kept with the judge's remarks once their prompt fixes were spent (keyframes
+  // --accept-best) ride on the assemble item as warnings: the cut is of them, the items are the
+  // server's fixed eleven, and the owner decides on the cut (the review goes up for a manual review).
+  const acceptedPictures = pictures ? drawnShotScenes(doc).filter((scene) => Array.isArray(keyframes?.shots?.[scene.id]?.accepted_with_problems)).map((scene) => `${scene.id}: kept with the judge's remarks after the prompt fixes (${keyframes.shots[scene.id].accepted_with_problems.join("; ") || "below the bar"}); the owner decides on the cut`) : [];
+  items.push(acceptedPictures.length ? { ...assemble, warnings: [...(assemble.warnings ?? []), ...acceptedPictures] } : assemble);
   items.push(renderItem({ manifest: frames, cache, visual, speech, subtitles: drama ? subtitlesHash(doc) : null, burnIn: drama && burnIn(doc), hasThumbnail: Boolean(doc.thumbnail) }));
   items.push(narrationItem({ approval, current: timelineCurrent }));
   if (!timelineCurrent) {

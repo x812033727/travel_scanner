@@ -12,8 +12,10 @@
 
 - video.json SHA256：`89d7d0fb16acfb196d5f19f6f9cc96a776b69b08234a492f1d3e8fd7078d494c`
 - speech hash：`e763f5bdd108bfa1`
-- fact-source-audit.json SHA256：`1917da872e108114fbf2b3901e9a125ae0fd0f31d770c378903451bdb09bfe0e`
+- fact-source-audit.json SHA256：`fff4ae7c5bdac4beaaf8ce6b56253527836ced4024bd6f9a52efbf0e25582eda`
 - verify-1.md SHA256：`783cdf2689cb1c7f32b05681f900b820f99a3b6ca54a072584f569e87e4e0131`
+
+2026-10-05 補記：倉庫是公開的，本紀錄與 `fact-source-audit.json` 內的本機使用者路徑已改為 `<home>`，其他內容不變；上列 fact-source-audit.json SHA256 因此改為遮蔽後的值（任務 2026-10-05-scrub-local-user-paths-from-the）。遮蔽前的檔案與原雜湊見 commit bc5f18db8（#1144）。
 
 原始稿、assets 登記稿與單句改寫稿的雜湊保存在來源譜系，沒有以新稿覆蓋原始版本的證據。
 
@@ -60,6 +62,6 @@ T27 為 slides，正常 series default 只匹配 drama explainer；本集使用 
 
 最後在本次製作使用的 bundled Node 24.19 執行 `npm run test:tools`，共 1,247 項：1,244 通過、3 skip、0 fail。最新 series branding main 更新後的 core／installer／assembly branding 三支測試另有 19 項全通過。系統 Node 24.13 的第一次 final tools run 發生檔案層級失敗；單獨重現 gemini.test.mjs 得到原生 exitCode 3221226505，改用 bundled Node 同支六項通過，再跑完整套件通過。原始失敗及成功日誌均保存，沒有為此修改來源、媒體或系統 Node。`check:tasks` 驗證 1,300 份票，僅既存其他票的 warning；最後 staged diff 另檢查。
 
-來源位於 managed worktree sothatswhy-t27，branch codex/sothatswhy-t27-pilot，安全接到 main `acb935fb461e34ee110b725b742179cc22d67770`。Git 只收本集腳本、原創 SVG 與雜湊綁定的文字收據；媒體保存在 `C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/`。完成實際媒體、正常核准及全部獨立覆核後才建立草稿 PR。
+來源位於 managed worktree sothatswhy-t27，branch codex/sothatswhy-t27-pilot，安全接到 main `acb935fb461e34ee110b725b742179cc22d67770`。Git 只收本集腳本、原創 SVG 與雜湊綁定的文字收據；媒體保存在 `<home>/mokaair-work/videos/sothatswhy-t27/`。完成實際媒體、正常核准及全部獨立覆核後才建立草稿 PR。
 
 沒有修改全域語言、圖片、預算或 uploader 設定；沒有重啟 worker、合併、部署、上傳或公開。機械檢查、抽樣視覺覆核及後台附件可讀回，與站主實際聽音、完整播放、字幕播放器驗收及 YouTube 上架是不同證據。每集額外語言／只出繁中的選擇仍由站主決定；正常讀回的 locales 為空、決定時間為 null，沒有偽造勾選。

@@ -4,11 +4,13 @@ import path from "node:path";
 import test from "node:test";
 
 import { createHash, randomBytes } from "node:crypto";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
+import { bindAudioEvidence } from "../core/audio-evidence.mjs";
+import { cuePieces } from "../core/captions.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
@@ -22,9 +24,10 @@ import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { ITEM_IDS } from "../qa/checks.mjs";
 import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
-import { automationClient } from "./client.mjs";
+import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
+import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, thumbnailAskHash } from "./flow.mjs";
+import { Automation, automatedVideos, blockedKindOf, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -362,6 +365,208 @@ function context(box, fetchImpl, clock) {
 
 const smallRefs = { script_writing: "short sentences", formats: "tutorial", channel: "Mokaair", showcase: { scenes: [] }, minimal: fixture() };
 
+test("keyframe and rejected-storyboard repairs keep the saved slides or drama format, including legacy states", async (t) => {
+  for (const { name, format, saved, fixtureName } of [
+    { name: "legacy slides", saved: "slides", fixtureName: "illustrated" },
+    { name: "explicit slides", format: "slides", saved: "slides", fixtureName: "illustrated" },
+    { name: "legacy drama", saved: "drama", fixtureName: "drama" },
+    { name: "explicit drama", format: "drama", saved: "drama", fixtureName: "drama" },
+  ]) for (const route of ["failed keyframes", "rejected storyboard"]) await t.test(`${name}: ${route}`, async () => {
+    const slug = "repair-fixture";
+    const box = sandbox(slug, fixtureName);
+    const docFile = path.join(box.dir, "video.json");
+    const original = { ...readJson(docFile), slug, format: saved };
+    atomicWrite(docFile, JSON.stringify(original));
+    const state = { slug, status: "active", created_at: "2026-10-05T10:00:00Z", notes: [], chosen: "A", ...(format ? { format } : {}) };
+    atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+    const site = fakeSite({ settings: { drama: { ...DRAMA_SETTINGS, drama_enabled: saved === "drama" }, slides: { slides_media_enabled: true } }, answers: { writer: (body) => ({ video: body.payload.video, lexicon_additions: {} }) } });
+    const clock = { now: Date.parse("2026-10-05T10:00:00Z") };
+    const { ctx } = context(box, site.fetchImpl, clock);
+    atomicWrite(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ shots: { repair: { needs_review: true, problems: ["wrong object"] } } }));
+    ctx.runCommand = async () => ({ code: EXIT.lint, out: "fix the prompts of repair" });
+    if (route === "rejected storyboard") site.reviewsOf(slug).push({ gate: "storyboard", status: "rejected", content_sha256: sha(path.join(box.workdir, "keyframes", "manifest.json")), payload: { shots: [{ id: "repair", needs_review: true, judge: { problems: ["wrong object"] } }] }, note: "wrong object" });
+    const worker = new Automation(ctx, automationClient(ctx), site.settings);
+    worker.refs = smallRefs;
+    const result = route === "failed keyframes" ? await worker.media(state, "keyframes") : await worker.storyboardGate(state);
+    assert.match(result, /keyframes prompts fixed \(round 1\)/);
+    assert.equal(site.calls.run.length, 1, "one repair request; no image, clip or speech provider is called");
+    const [call] = site.calls.run;
+    assert.equal(call.format, saved);
+    assert.equal(call.payload.video.format, saved);
+    assert.equal(call.payload.fix.kind, "keyframes");
+    assert.equal(automatedVideos(box.work)[0].format, saved, "the effective route is saved for future repairs and reports");
+    assert.equal(readJson(docFile).format, saved);
+    assert.equal(site.settings.drama.drama_enabled, saved === "drama", "a slides repair never activates drama");
+  });
+});
+
+test("a prompt repair refuses conflicting saved formats before asking the model", async () => {
+  const slug = "conflicting-repair";
+  const box = sandbox(slug, "illustrated");
+  atomicWrite(path.join(box.dir, "video.json"), JSON.stringify({ ...readJson(path.join(box.dir, "video.json")), slug, format: "slides" }));
+  const state = { slug, format: "drama", status: "active", notes: [], created_at: "2026-10-05T10:00:00Z" };
+  atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+  const site = fakeSite();
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-05T10:00:00Z") });
+  const worker = new Automation(ctx, automationClient(ctx), site.settings);
+  assert.match(await worker.fixPrompts(state, "keyframes", { targets: [] }), /blocked.*prompt repair format conflicts/);
+  assert.equal(site.calls.run.length, 0);
+  assert.equal(automatedVideos(box.work)[0].status, "blocked");
+});
+
+test("a policy hold survives failed reporting and restart, while another project advances and a disabled retry stays blocked", async () => {
+  const slug = "held-writer";
+  const next = "next-writer";
+  const box = sandbox(slug);
+  const state = { slug, status: "active", notes: [], created_at: "2026-10-05T09:00:00Z" };
+  atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+  atomicWrite(path.join(box.work, next, "auto.json"), JSON.stringify({ slug: next, status: "active", notes: [], created_at: "2026-10-05T10:00:00Z" }));
+  const site = fakeSite({ videos: [{ slug }, { slug: next }], settings: { max_waiting_drafts: 0 } });
+  let reportFails = true, retries = 0, writerCalls = 0;
+  const fetch = async (url, init) => {
+    if (reportFails && new URL(url).pathname === `/api/video/reviews/${slug}` && init.method === "PUT") return Response.json({ detail: "report offline" }, { status: 503 });
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-10-05T10:00:00Z") };
+  const { ctx } = context(box, fetch, clock);
+  const heldError = () => Object.assign(new AutomationError("AI drama is disabled", { code: POLICY_HOLD, who: "owner", status: 409 }), { stage: "writer", policy_hold: { format: "drama", stage: "writer", receipt_id: "retained-receipt" } });
+  const worker = () => {
+    const api = automationClient(ctx);
+    api.retryRuns = async (_slug, authorization) => { retries++; assert.equal(authorization.format, "slides"); throw heldError(); };
+    const automation = new Automation(ctx, api, site.settings);
+    automation.advance = async (item) => { if (item.slug === slug) { writerCalls++; throw heldError(); } return `${item.slug}: advanced`; };
+    return automation;
+  };
+  const first = worker();
+  assert.match(await first.step(), /blocked.*held by policy.*could not report/);
+  assert.equal(first.halted, false, "only this project is parked");
+  const held = automatedVideos(box.work).find((item) => item.slug === slug);
+  assert.equal(held.blocked_from_status, "active");
+  assert.equal(held.policy_hold.receipt_id, "retained-receipt");
+  assert.ok(held.policy_hold.source_files["video.json"]);
+  assert.match(await worker().step(), /next-writer: advanced/);
+  assert.equal(writerCalls, 1, "restart never invokes the held writer");
+  reportFails = false;
+  clock.now += 5 * 60_000;
+  assert.match(await worker().step(), /blocked reason reported/);
+  const request = "c20e963e-f3eb-4d54-ad67-bf2a8552593d";
+  Object.assign(site.listed.get(slug), { retry_request_id: request, retry_acknowledged_id: null });
+  const retry = worker();
+  assert.match(await retry.step(), /blocked.*held by policy/);
+  assert.equal(retry.halted, false);
+  assert.equal(retries, 1);
+  assert.equal(site.listed.get(slug).retry_acknowledged_id, request);
+  assert.equal(automatedVideos(box.work).find((item) => item.slug === slug).blocked_from_status, "active", "a rejected retry keeps the original resume state");
+  assert.match(await worker().step(), /next-writer: advanced/);
+  assert.equal(retries, 1, "the same explicit retry is acknowledged once");
+  assert.equal(writerCalls, 1);
+});
+
+test("policy retries respect project STOP, source drift and owner drops without invoking the retry transport", async (t) => {
+  for (const guard of ["STOP", "source", "drop", "format"]) await t.test(guard, async () => {
+    const slug = "guarded-policy-retry";
+    const box = sandbox(slug);
+    const site = fakeSite({ videos: [{ slug }], settings: { max_waiting_drafts: 0 } });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-05T10:00:00Z") });
+    const api = automationClient(ctx);
+    let retryCalls = 0;
+    api.retryRuns = async () => { retryCalls++; };
+    const worker = new Automation(ctx, api, site.settings);
+    const state = { slug, status: "blocked", blocked_from_status: "active", blocked: "held by policy", notes: [], created_at: "2026-10-05T09:00:00Z", policy_hold: { code: POLICY_HOLD } };
+    state.policy_hold.source_files = worker.policySource(state);
+    atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+    Object.assign(site.listed.get(slug), { stage: "blocked", checklist: [{ key: "blocked", label: "卡住，需要人處理：held by policy", done: false }], retry_request_id: "5a4ae684-ce4d-4080-b9b7-cda372ab8322", retry_acknowledged_id: null });
+    if (guard === "STOP") atomicWrite(path.join(box.workdir, "STOP"), "owner hold");
+    if (guard === "source") atomicWrite(path.join(box.dir, "video.json"), JSON.stringify({ ...readJson(path.join(box.dir, "video.json")), changed: true }));
+    if (guard === "format") {
+      state.format = "drama";
+      atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+      atomicWrite(path.join(box.dir, "video.json"), JSON.stringify({ ...readJson(path.join(box.dir, "video.json")), format: "slides" }));
+    }
+    if (guard === "drop") site.listed.get(slug).dropped_at = "2026-10-05T10:00:00Z";
+    await worker.step();
+    assert.equal(retryCalls, 0);
+    assert.equal(automatedVideos(box.work)[0].status, guard === "drop" ? "dropped" : "blocked");
+  });
+});
+
+test("an authorized policy retry sends the current source format once and clears the hold only after transport validation", async () => {
+  const slug = "authorized-policy-retry";
+  const box = sandbox(slug);
+  atomicWrite(path.join(box.dir, "video.json"), JSON.stringify({ ...readJson(path.join(box.dir, "video.json")), format: "slides" }));
+  const site = fakeSite({ videos: [{ slug }], settings: { max_waiting_drafts: 0, drama: { drama_enabled: false } } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-05T10:00:00Z") });
+  const api = automationClient(ctx);
+  const request = "133d9d56-a4c3-4e96-9931-7d2522131fd7";
+  let retryCalls = 0;
+  api.retryRuns = async (target, authorization) => {
+    retryCalls++;
+    assert.equal(target, slug);
+    assert.equal(authorization.requestId, request);
+    assert.equal(authorization.format, "slides", "the corrected source format is explicit even though the saved refusal was drama");
+    assert.equal(automatedVideos(box.work)[0].status, "blocked", "no local resume precedes receipt and fresh policy validation");
+  };
+  const worker = new Automation(ctx, api, site.settings);
+  const state = { slug, status: "blocked", blocked_from_status: "active", blocked: "held by policy", notes: [], created_at: "2026-10-05T09:00:00Z", policy_hold: { code: POLICY_HOLD, format: "drama" } };
+  state.policy_hold.source_files = worker.policySource(state);
+  atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+  Object.assign(site.listed.get(slug), { retry_request_id: request, retry_acknowledged_id: null });
+  worker.advance = async () => `${slug}: advanced`;
+  assert.match(await worker.step(), /advanced/);
+  assert.equal(retryCalls, 1);
+  assert.equal(site.listed.get(slug).retry_acknowledged_id, request);
+  assert.equal(automatedVideos(box.work)[0].status, "active");
+  assert.equal(automatedVideos(box.work)[0].policy_hold, undefined);
+  assert.equal(automatedVideos(box.work)[0].blocked, undefined);
+  await worker.step();
+  assert.equal(retryCalls, 1);
+  assert.equal(site.settings.drama.drama_enabled, false);
+});
+
+test("the native worker retains a disabled writer receipt, reports its hold and never dispatches or buys a second job across restart", async () => {
+  const slug = "native-policy-hold";
+  const box = sandbox(slug, "drama");
+  atomicWrite(path.join(box.dir, "video.json"), JSON.stringify({ ...readJson(path.join(box.dir, "video.json")), slug }));
+  atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify({ slug, format: "drama", status: "active", notes: [], created_at: "2026-10-05T09:00:00Z" }));
+  const site = fakeSite({ settings: { max_waiting_drafts: 0, durable_stage_runs: true, drama: { ...DRAMA_SETTINGS, drama_enabled: false } } });
+  let posts = 0;
+  const fetch = async (url, init) => {
+    if (new URL(url).pathname === "/api/video/automation/run/jobs" && init.method === "POST") {
+      posts++;
+      const body = JSON.parse(init.body);
+      return Response.json({ id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: "anthropic", model: "claude-sonnet-5", status: "failed", result: null, error_code: POLICY_HOLD, error_status: 409, error_detail: "AI drama is disabled", dispatched_at: null, retry_after: null });
+    }
+    return site.fetchImpl(url, init);
+  };
+  const { ctx } = context(box, fetch, { now: Date.parse("2026-10-05T10:00:00Z") });
+  const worker = async () => {
+    const api = automationClient(ctx);
+    const settings = await api.settings();
+    const automation = new Automation(ctx, api, settings);
+    automation.refs = smallRefs;
+    automation.advance = (state) => automation.fixPrompts(state, "keyframes", { targets: [] });
+    return automation;
+  };
+  const first = await worker();
+  assert.match(await first.step(), /blocked.*held by policy/);
+  assert.equal(first.halted, false);
+  assert.equal(posts, 1);
+  const dir = path.join(box.workdir, "run-receipts");
+  const files = readdirSync(dir).filter((name) => name.endsWith(".json"));
+  assert.equal(files.length, 1);
+  const receiptFile = path.join(dir, files[0]);
+  const receiptHash = sha(receiptFile);
+  assert.equal(readJson(receiptFile).receipt.dispatched_at, null);
+  assert.equal(site.listed.get(slug).stage, "blocked");
+  assert.equal(await (await worker()).step(), null);
+  assert.equal(posts, 1);
+  Object.assign(site.listed.get(slug), { retry_request_id: "2d9ba1d8-3c6a-4de9-aac2-458945503e87", retry_acknowledged_id: null });
+  assert.match(await (await worker()).step(), /blocked.*held by policy/);
+  assert.equal(posts, 1, "fresh disabled policy refuses even an explicit retry");
+  assert.equal(sha(receiptFile), receiptHash, "the original settled refusal is retained byte for byte");
+  assert.equal(site.calls.run.length, 0, "no synchronous model run or provider dispatch occurred");
+});
+
 function answersFor(slug, { applies = null, script = fixture() } = {}) {
   const video = { ...script, slug };
   return {
@@ -632,6 +837,10 @@ test("a saved initial script and a pending lint rewrite survive restart and leav
   await (await worker()).step();
   assert.match(await (await worker()).step(), /writer is still running/);
   assert.equal(site.calls.run.filter((call) => call.stage === "writer").length, 2);
+  // The lint rewrite carries the shot prompt budget the draft was given (flow.mjs draftBudget):
+  // a rewrite cannot lengthen a prompt past what the image model takes.
+  const lintFix = site.calls.run.filter((call) => call.stage === "writer").find((call) => call.payload.lint_errors);
+  assert.equal(lintFix.payload.prompt_budget_chars, 1000);
   ready = true;
   const resumed = await worker();
   assert.match(await resumed.step(), /script fixed and passes lint/);
@@ -1598,9 +1807,10 @@ const rewordAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id:
 /**
  * A tutorial taken to the confirmed upload without the owner, the way the end-to-end test does,
  * with the dub and its check played by `fakeDub`; the languages then wait for the owner's
- * choice on /admin/videos (docs/videos/LANGUAGES.md), which `choose` makes.
+ * choice on /admin/videos (docs/videos/LANGUAGES.md), which `choose` makes. `confirmed: false`
+ * stops it one step before: the publish review waits on the owner, and the video is still active.
  */
-async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet, renderer = null } = {}) {
+async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet, renderer = null, confirmed = true } = {}) {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
   const passes = { shorten, reword };
@@ -1664,8 +1874,12 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
   };
   const automation = new Automation(ctx, automationClient(ctx), site.settings);
   automation.refs = smallRefs;
-  const expected = [/Jev picked outline B/, /Jev chose outline B/, /script drafted/, /fact-check round 1/, /listener edit/, /narration synthesized/, /narration checked/, /frames rendered/, /video assembled/, /captions written/, /final sent/, /the final is approved/, /upload package written/, /publish confirmation sent/, /the upload is confirmed/];
-  for (const line of expected) assert.match(await automation.step(), line);
+  const expected = [/Jev picked outline B/, /Jev chose outline B/, /script drafted/, /fact-check round 1/, /listener edit/, /narration synthesized/, /narration checked/, /frames rendered/, /video assembled/, /captions written/, /final sent/, /the final is approved/, /upload package written/, /publish confirmation sent/, ...(confirmed ? [/the upload is confirmed/] : [])];
+  for (const line of expected) {
+    // Unconfirmed, the publish review waits on the owner and the video stays active, before its upload.
+    if (!confirmed && line.source === "publish confirmation sent") site.settings.auto_approve_final = false;
+    assert.match(await automation.step(), line);
+  }
   assert.equal(await automation.step(), null, "the languages wait for the owner's choice");
   return {
     box, site, automation, ctx, out, workdir, docFile, runs, slug, captures,
@@ -1731,6 +1945,87 @@ test("a language chosen for its title and description alone is translated withou
   assert.equal(video.calls("translator").length, 1, "a part the site reports ready is not translated again");
   assert.deepEqual(video.onSite().languages.en, { metadata: { state: "ready", reason: null } });
   assert.equal(video.onSite().ready_to_upload, true);
+});
+
+test("a choice narrowed before the upload, after its package was written, writes the package again once, without the parts it no longer has, and the exact package goes up for the confirmation; a package that matches the choice is left alone", async () => {
+  const video = await finishedVideo({ confirmed: false });
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en metadata translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en metadata\)$/);
+  // The batch wrote the package again, so the confirmation is asked for the new one.
+  assert.match(await video.step(), /^chatgpt-ads-off: publish confirmation sent to \/admin\/videos$/);
+  let ran = video.runs.length;
+  assert.equal(await video.step(), null, "the package was written for this choice");
+  assert.equal(video.runs.length, ran, "nothing is written again");
+
+  // The owner picks 只出繁體中文 now: nothing is left to make, but the package still holds en
+  // and records the choice it was written for, which the package check fails.
+  video.choose({});
+  assert.equal(await video.step(), "chatgpt-ads-off: upload package written again for the current language choice");
+  assert.deepEqual(video.runs.slice(ran).map((run) => run.split(" ")[0]), ["captions", "package"], "no translation, batch or review-push");
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.deepEqual([metadata.language_choice, metadata.localizations], [{}, {}]);
+  assert.ok(!existsSync(video.upload("description.en.txt")), "the part no longer chosen is gone");
+  assert.equal(video.reviews("languages").length, 1, "no batch is sent for it");
+  assert.equal(video.state().status, "active", video.state().blocked);
+
+  // The confirmation the owner has not given yet is asked for the exact package.
+  assert.match(await video.step(), /^chatgpt-ads-off: publish confirmation sent to \/admin\/videos$/);
+  const [publish] = video.reviews("publish");
+  assert.equal(publish.content_sha256, sha(video.upload("metadata.json")));
+  assert.equal(publish.payload.package.ok, true, JSON.stringify(publish.payload.package.items));
+
+  ran = video.runs.length;
+  const written = readFileSync(video.upload("metadata.json"));
+  assert.equal(await video.step(), null, "the package now records this choice: nothing to do");
+  assert.equal(video.runs.length, ran, "no package every round");
+  assert.ok(readFileSync(video.upload("metadata.json")).equals(written), "metadata.json keeps its hash");
+});
+
+test("a choice narrowed after the upload confirmation leaves the package as it went up: no captions or package runs and the video stays done, round after round, on YouTube too", async () => {
+  const video = await finishedVideo();
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en metadata translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en metadata\)$/);
+  assert.equal(await video.step(), null);
+  assert.equal(video.state().status, "done");
+  const written = readFileSync(video.upload("metadata.json"));
+  const ran = video.runs.length;
+
+  // A package written again now would go nowhere, and one that can no longer be written (the
+  // final's checks older than the script) would block a published video every round.
+  video.choose({});
+  assert.equal(await video.step(), null, "confirmed, not yet on YouTube");
+  video.listed().youtube_video_id = "dQw4w9WgXcQ";
+  assert.match(await video.step(), /^chatgpt-ads-off: on YouTube as dQw4w9WgXcQ/);
+  assert.equal(await video.step(), null, "on YouTube");
+  assert.equal(await video.step(), null, "and the round after");
+  assert.equal(video.runs.length, ran, "no captions or package");
+  assert.equal(video.state().status, "done");
+  assert.ok(readFileSync(video.upload("metadata.json")).equals(written), "the package keeps the choice it went up with");
+  assert.equal(video.reviews("languages").length, 1);
+});
+
+test("an upload metadata.json whose fields have the wrong types leaves the re-package check unknown: the round goes on and writes nothing, and the same file with the right types is written again", async () => {
+  const video = await finishedVideo({ confirmed: false });
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /en metadata translated and reviewed$/);
+  assert.match(await video.step(), /language batch sent/);
+  assert.match(await video.step(), /publish confirmation sent/);
+  // Narrowed, so a readable package holding en would be written again; this one's caption list
+  // is a number, which the package check cannot read.
+  video.choose({});
+  const readable = readFileSync(video.upload("metadata.json"));
+  atomicWrite(video.upload("metadata.json"), JSON.stringify({ ...JSON.parse(readable), captions: 5 }));
+  // Its publish review waits on the owner too, so the round comes to the languages.
+  video.site.reviewsOf(video.slug).unshift({ id: "r-typed", gate: "publish", status: "pending", content_sha256: sha(video.upload("metadata.json")), payload: {}, files: [] });
+  const ran = video.runs.length;
+  assert.equal(await video.step(), null, "unknown is not stale, and nothing throws");
+  assert.equal(video.runs.length, ran, "no captions or package");
+  assert.equal(video.state().status, "active", video.state().blocked);
+
+  writeFileSync(video.upload("metadata.json"), readable);
+  assert.equal(await video.step(), "chatgpt-ads-off: upload package written again for the current language choice");
 });
 
 /** filledSheet plus the thumbnail's words: each source word with the locale in front, its ** and line breaks kept. */
@@ -1963,9 +2258,13 @@ test("an English-narrated video the owner gives no other language gets zh-TW onc
 // 2026-10-02: the translator and the caption reviewer were told about the thumbnail's words
 // (2026-10-01-video-worker-translator-fills-the-thumbnail); the shortening and rewording passes
 // hold no thumbnail and kept their bytes.
+// 2026-10-05: the translator was told the three passes (draft, critique, final), the glossary and
+// the cue boundaries, and the caption reviewer the glossary and the boundaries
+// (2026-10-05-caption-translation-chain-upgrade, prompts.test.mjs pins the sections); the
+// shortening and rewording passes kept their bytes.
 const ZH_TW_PROMPT_SHA256 = {
-  translator: "1e3a4cfb65dc7bf33b98d85777a7db4d6fcd55dd50c2e3526ee7d60eb124f1dd",
-  caption_reviewer: "a0ad349317f907def87ce0cfbf260a2f9a14168910eee6fad5dece8f8b40aad5",
+  translator: "effa201292e5589a8341501689969bfcc076a7c85be8afe9de1f4cc35833b957",
+  caption_reviewer: "a46eca4ef3d8535d7f2c22723f8597ddd90f74db0ef81b78c0da03b3d70f1749",
   "translator:shorten": "eb96a8de3915d89bed631a93463d0b22344f44e442b5465abe57fcc06b1d6ac6",
   "translator:reword": "627d9729bd01b766d025ed82b9edde4dc5fd4f051372a14f8e1bad3b88a9eb6a",
 };
@@ -2046,6 +2345,73 @@ function rejectLanguageSubmission(video, status) {
   };
   return control;
 }
+
+test("publish submission failures are never reported as sent, and permanent refusals let a later project advance", async (t) => {
+  for (const status of [413, 422, 401, 429, 503]) await t.test(`HTTP ${status}`, async () => {
+    const video = await finishedVideo();
+    const state = video.state();
+    state.status = "active";
+    atomicWrite(path.join(video.workdir, "auto.json"), JSON.stringify(state));
+    const list = video.site.reviewsOf(video.slug);
+    for (let i = list.length - 1; i >= 0; i--) if (list[i].gate === "publish") list.splice(i, 1);
+    const mediaHash = sha(path.join(video.workdir, "final.mp4"));
+    const modelCalls = video.site.calls.run.length;
+    const fetch = video.ctx.fetch;
+    let attempts = 0;
+    video.ctx.fetch = async (url, init) => {
+      if (new URL(url).pathname === `/api/video/reviews/${video.slug}/reviews` && init.method === "POST" && JSON.parse(init.body).gate === "publish") {
+        attempts++;
+        return Response.json({ code: "submission_refused", detail: `publish refused ${status}` }, { status });
+      }
+      return fetch(url, init);
+    };
+    const worker = new Automation(video.ctx, automationClient(video.ctx), video.site.settings);
+    worker.refs = smallRefs;
+    const result = await worker.step();
+    assert.doesNotMatch(result, /publish confirmation sent/);
+    assert.equal(attempts, status === 429 || status >= 500 ? 4 : 1);
+    if ([413, 422].includes(status)) {
+      assert.match(result, /blocked.*publish submission rejected/);
+      assert.equal(worker.halted, false);
+      assert.equal(video.state().status, "blocked");
+      const next = "later-publish-project";
+      atomicWrite(path.join(video.box.videos, next, "brief.md"), brief(["A", "B"], { applies: "1、2" }));
+      atomicWrite(path.join(video.box.work, next, "auto.json"), JSON.stringify({ slug: next, status: "active", created_at: "2026-10-05T10:00:00Z", notes: [], replans: 0 }));
+      assert.match(await worker.step(), /later-publish-project: Jev picked outline B/);
+      assert.equal(attempts, 1, "a rejected publish is not posted again in this round");
+    } else {
+      assert.match(result, /could not send the publish for review/);
+      assert.equal(worker.halted, true);
+      assert.equal(video.state().status, "active");
+    }
+    assert.equal(video.reviews("publish").length, 0);
+    assert.equal(video.site.calls.run.length, modelCalls, "no source, narration or translation is regenerated");
+    assert.equal(sha(path.join(video.workdir, "final.mp4")), mediaHash);
+  });
+});
+
+test("permanent final, look and storyboard submission refusals block only the affected video", async (t) => {
+  for (const gate of ["final", "look", "storyboard"]) await t.test(gate, async () => {
+    const box = sandbox();
+    const state = { slug: box.slug, status: "active", notes: [], created_at: "2026-10-05T10:00:00Z" };
+    atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+    const site = fakeSite();
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-05T10:00:00Z") });
+    let pushes = 0;
+    ctx.runCommand = async (command) => { assert.equal(command[0], "review-push"); pushes++; return { code: EXIT.lint, out: "submission payload rejected" }; };
+    const worker = new Automation(ctx, automationClient(ctx), site.settings);
+    atomicWrite(path.join(box.workdir, "characters", "manifest.json"), JSON.stringify({ characters: {} }));
+    atomicWrite(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ shots: {} }));
+    atomicWrite(path.join(box.workdir, "final.mp4"), "saved final");
+    const result = gate === "look" ? await worker.lookGate(state) : gate === "storyboard" ? await worker.storyboardGate(state) : await worker.gate(state, gate, path.join(box.workdir, "final.mp4"));
+    assert.match(result, new RegExp(`blocked.*${gate} submission rejected`));
+    assert.equal(worker.halted, false);
+    assert.equal(pushes, 1);
+    assert.equal(automatedVideos(box.work)[0].status, "blocked");
+    assert.match(site.calls.reports.at(-1).checklist[0].label, /submission rejected/);
+    assert.equal(site.calls.run.length, 0);
+  });
+});
 
 test("a rejected language payload blocks only its video, persists across rounds, and lets a later video advance", async () => {
   const video = await finishedVideo();
@@ -2316,6 +2682,65 @@ test("a retake that no longer fits its window is shortened, not given up", async
   assert.equal(video.calls("translator", "reword").length, 0);
 });
 
+/**
+ * The line `tts`, `dub` and `check-audio` print last when a paid speech request went out and its
+ * answer was lost: the real client's error for a socket closed after the request was sent.
+ */
+async function lostSpeechLine(send) {
+  const fetchImpl = async () => {
+    throw Object.assign(new TypeError("fetch failed"), { cause: Object.assign(new Error("other side closed"), { code: "UND_ERR_SOCKET" }) });
+  };
+  const error = await send({ site: "https://mokaair.com", token: `mkv_${"t".repeat(43)}`, fetchImpl, sleep: async () => {} }).then(() => null, (caught) => caught);
+  assert.equal(error?.code, SPEECH_UNCERTAIN);
+  return error.message;
+}
+
+test("a dub whose paid request lost its answer blocks the video instead of giving the language up, and the owner's retry makes it; the owner's other problems still give it up", async () => {
+  const video = await finishedVideo();
+  video.choose({ en: { metadata: false, captions: true, dub: true }, ko: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: ko captions translated and reviewed$/);
+  const synthesis = await lostSpeechLine((options) => synthesize({ ...options, body: { voice: "gemini:Sulafat", segments: [] } }));
+  const judgement = await lostSpeechLine((options) => judgeLines({ ...options, lines: [{ id: "k7p2", intended: "a", spoken_form: "a", heard: "b" }], language: "en" }));
+  const owner = "dubs need a Gemini voice, which speaks every language; the narration voice is zh-TW-HsiaoChenNeural";
+  // Each of these answers once, as the CLI would print it with exit 3; then the fake dub plays.
+  const scripted = new Map([
+    ["dub en", { code: 3, out: `en: 1 of 3 requests synthesized\n${synthesis}\n` }],
+    ["check-audio en", { code: 3, out: `en: 2 of 3 lines transcribed\n${judgement}\n` }],
+    ["dub ko", { code: 3, out: `${owner}\n` }],
+  ]);
+  const played = video.ctx.runCommand;
+  video.ctx.runCommand = async (command, runCtx) => {
+    const key = `${command[0]} ${command[command.indexOf("--locale") + 1]}`;
+    if (!command.includes("--locale") || !scripted.has(key)) return played(command, runCtx);
+    video.runs.push(command.join(" "));
+    const answer = scripted.get(key);
+    scripted.delete(key);
+    return answer;
+  };
+  const retry = (id) => Object.assign(video.listed(), { retry_request_id: id, retry_acknowledged_id: null });
+
+  assert.equal(await video.step(), `chatgpt-ads-off: blocked — dub en needs the owner: ${synthesis}`);
+  assert.equal(video.state().status, "blocked");
+  assert.ok(!existsSync(dubArtifacts(video.workdir, "en").skipped), "the language is not given up for a request that may have worked");
+  assert.ok(!video.state().notes.some((note) => note.startsWith("en dub skipped")));
+  assert.equal(await video.step(), null, "a blocked video is not run again on its own");
+
+  retry("9a4e0c5e-5f43-4d8f-9a63-1d6f6c1a0b01");
+  assert.equal(await video.step(), `chatgpt-ads-off: blocked — check-audio en needs the owner: ${judgement}`);
+  assert.ok(!existsSync(dubArtifacts(video.workdir, "en").skipped));
+
+  retry("4c0f8a1e-2b7d-4e55-8f0a-6b3d2e9c7a12");
+  assert.equal(await video.step(), "chatgpt-ads-off: en dub made; Jev passed every line");
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub given up (dub needs the owner: ${owner}); the video goes on without it`);
+  assert.equal(readJson(dubArtifacts(video.workdir, "ko").skipped).reason, `dub needs the owner: ${owner}`);
+  assert.equal(scripted.size, 0);
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en captions\+dub, ko captions\+dub\)$/);
+  const { en, ko } = video.reviews("languages")[0].payload.locales;
+  assert.deepEqual([en.dub, ko.dub], ["ready", { status: "skipped", reason: `dub needs the owner: ${owner}` }]);
+  assert.deepEqual(video.runs.filter((run) => /^(dub|check-audio) .*--locale en/.test(run)).map((run) => run.split(" ")[0]), ["dub", "dub", "check-audio", "dub", "check-audio"], "the retried track is checked again before it goes out");
+});
+
 test("a language ticked after the video is on YouTube is made as a new batch", async () => {
   const video = await finishedVideo();
   video.choose({});
@@ -2357,6 +2782,11 @@ test("a language ticked after the worker tidied the video is reported as skipped
   assert.ok(!existsSync(path.join(video.workdir, "final.mp4")) && !existsSync(video.upload("final.mp4")));
   assert.equal(video.state().tidied_at, now.toISOString());
   assert.equal(await video.step(), null, "nothing new ticked: the tidied video stays quiet");
+  // Nor is its package written again for a narrowed choice: final.mp4 is gone.
+  const quiet = video.runs.length;
+  video.choose({});
+  assert.equal(await video.step(), null, "a narrowed choice leaves the tidied video quiet");
+  assert.equal(video.runs.length, quiet, "no captions or package is tried");
 
   video.choose({ en: { metadata: true, captions: false, dub: false }, ja: { metadata: true, captions: true, dub: true } });
   const [runs, translations, batches] = [video.runs.length, video.calls("translator").length, video.reviews("languages").length];
@@ -2389,15 +2819,17 @@ const HEARD_WRONG = "第一個問題是，你要他做什麼工作。";
  * A tutorial taken to the narration gate with one retake allowed: the fake check-audio flags
  * x9fe while `stillFlagged(video)` says so, writing check.json and check-flags.json as the real
  * one does; the listener's rewrite pass answers `rewrite(body)`. tts writes a synthetic
- * narration for the script as it stands; review-push and review-pull are the real commands.
+ * narration for the script as it stands; review-push and review-pull are the real commands. A
+ * command named in `stops` ("tts", "tts --redo", "check-audio") is ended once by a STOP file:
+ * exit 6, nothing written. `retakeRounds` is the settings tab's max_retake_rounds.
  */
-async function narrationGate({ rewrite, stillFlagged }) {
+async function narrationGate({ rewrite, stillFlagged, retakeRounds = 1 }) {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
   assert.equal(fixture().scenes[1].lines[0].id, "x9fe");
   const video = { ...fixture(), slug };
   const answers = { ...answersFor(slug, { applies: "1、2" }), listener: (body) => (body.variant === "rewrite" ? rewrite(body) : { video, edits: [] }) };
-  const site = fakeSite({ answers, settings: { channel_stance: STANCE, max_retake_rounds: 1 }, judge: () => jevPick("B") });
+  const site = fakeSite({ answers, settings: { channel_stance: STANCE, max_retake_rounds: retakeRounds }, judge: () => jevPick("B") });
   const clock = { now: Date.parse("2026-09-27T09:00:00Z") };
   const { ctx } = context(box, site.fetchImpl, clock);
   ctx.encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
@@ -2406,9 +2838,11 @@ async function narrationGate({ rewrite, stillFlagged }) {
   const lexicon = () => readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
   const runs = [];
   const redos = [];
+  const stops = new Set();
   ctx.runCommand = async (command, runCtx) => {
     runs.push(command.join(" "));
     const [name] = command;
+    if (stops.delete(command.includes("--redo") ? `${name} --redo` : name)) return { code: EXIT.incomplete, out: "stopped by the STOP file; rerun to continue" };
     const current = existsSync(docFile) ? readJson(docFile) : null;
     const write = (file, data) => atomicWrite(path.join(workdir, file), JSON.stringify(data));
     if (name === "tts") {
@@ -2439,8 +2873,10 @@ async function narrationGate({ rewrite, stillFlagged }) {
     site,
     automation,
     workdir,
+    docFile,
     runs,
     redos,
+    stops,
     state: () => automatedVideos(box.work)[0],
     reviews: (gate) => site.reviewsOf(slug).filter((review) => review.gate === gate),
     lineText: () => readJson(docFile).scenes[1].lines[0].text,
@@ -2522,6 +2958,233 @@ test("two rewrite rounds that Jev still flags send the narration to the owner wi
   assert.equal(await gate.automation.step(), null, "the owner decides");
 });
 
+test("a STOP file that ends tts, a retake or check-audio defers the video to the next run; it is never blocked, reported or sent for review", async () => {
+  let flagged = true;
+  const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => flagged });
+  const synthesized = () => gate.site.calls.reports.filter((report) => report.stage === "narration synthesized").length;
+  const reportedBefore = synthesized();
+  assert.equal(reportedBefore, 1);
+  const unblocked = () => assert.notEqual(gate.state().status, "blocked", gate.state().blocked);
+
+  // tts stopped before the narration was assembled: the step is not reported done.
+  rmSync(path.join(gate.workdir, "timeline.json"));
+  gate.stops.add("tts");
+  assert.match(await gate.automation.step(), /: tts stopped \(stopped by the STOP file; rerun to continue\); the next run continues$/);
+  unblocked();
+  assert.equal(synthesized(), reportedBefore);
+  assert.match(await gate.automation.step(), /narration synthesized/);
+
+  // The check flags x9fe and the retake is stopped: nothing is checked again or sent.
+  gate.stops.add("tts --redo");
+  assert.match(await gate.automation.step(), /: the retake stopped \(stopped by the STOP file; rerun to continue\); the next run continues$/);
+  unblocked();
+  assert.equal(gate.state().stopped_retake, undefined, "stopped before its first request, the retake made no take to record");
+  // The next check is stopped before every line is heard.
+  flagged = false;
+  gate.stops.add("check-audio");
+  assert.match(await gate.automation.step(), /: narration check stopped \(stopped by the STOP file; rerun to continue\); the next run continues$/);
+  unblocked();
+  assert.deepEqual(gate.reviews("audio"), [], "nothing was sent for review");
+  assert.equal(gate.runs.filter((run) => run.startsWith("review-push")).length, 0);
+
+  assert.match(await gate.automation.step(), /narration checked \(Jev passed every line\) and sent for review$/);
+  assert.equal(gate.reviews("audio").length, 1);
+});
+
+/** A take made again: the same length, other bytes (`at` picks which byte from the end differs). */
+function retakeFile(file, at = 1) {
+  const bytes = readFileSync(file);
+  bytes[bytes.length - at] ^= 1;
+  writeFileSync(file, bytes);
+}
+
+/**
+ * The narration gate with two retakes allowed, Jev hearing the first takes of x9fe and b3tn wrong
+ * and any later take right, and the speech commands working on the takes on disk as the real ones
+ * do: `tts --redo` makes the flagged lines' takes again, the first one ended by a STOP file after
+ * its first line (exit 6, timeline.json untouched); a plain `tts`, every take cached, synthesizes
+ * nothing and binds the takes on disk.
+ */
+async function stoppedRetakeGate() {
+  const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => false, retakeRounds: 2 });
+  const { ctx } = gate.automation;
+  const played = ctx.runCommand;
+  const timelineFile = path.join(gate.workdir, "timeline.json");
+  const take = (id) => path.join(gate.workdir, "audio", `${id}.wav`);
+  const wrong = ["x9fe", "b3tn"];
+  const first = Object.fromEntries(wrong.map((id) => [id, sha(take(id))]));
+  let stops = 1;
+  ctx.runCommand = async (command, runCtx) => {
+    const [name] = command;
+    if (name !== "tts" && name !== "check-audio") return played(command, runCtx);
+    gate.runs.push(command.join(" "));
+    if (name === "check-audio") {
+      const flags = wrong.filter((id) => sha(take(id)) === first[id]);
+      const texts = new Map([...eachLine(readJson(gate.docFile))].map(({ line }) => [line.id, line.text]));
+      const lines = Object.fromEntries(readJson(timelineFile).lines.map((line) => {
+        const heard = flags.includes(line.id) ? HEARD_WRONG : texts.get(line.id);
+        return [line.id, { match: !flags.includes(line.id), match_kind: flags.includes(line.id) ? null : "exact", intended: texts.get(line.id), heard, noul: flags.includes(line.id) ? 0.2 : null, clip: line.audio_sha256.slice(0, 16) }];
+      }));
+      atomicWrite(path.join(gate.workdir, "review", "check.json"), JSON.stringify({ lines }));
+      atomicWrite(path.join(gate.workdir, "review", "check-flags.json"), JSON.stringify({ slug: "chatgpt-ads-off", speech_hash: "s", flags, notes: {} }));
+      return { code: flags.length ? 1 : 0, out: flags.length ? `${flags.length} flagged` : "every line passed" };
+    }
+    const redo = command.indexOf("--redo");
+    if (redo >= 0) {
+      const { flags } = readJson(command[redo + 1]);
+      gate.redos.push([path.basename(command[redo + 1]), flags]);
+      if (stops-- > 0) {
+        retakeFile(take(flags[0]));
+        return { code: EXIT.incomplete, out: `stopped by the STOP file; 1 of ${flags.length} requests done, rerun to continue` };
+      }
+      for (const id of flags) retakeFile(take(id));
+    }
+    atomicWrite(timelineFile, JSON.stringify(bindAudioEvidence(readJson(timelineFile), gate.workdir)));
+    return { code: 0, out: redo >= 0 ? "retaken" : "0 requests synthesized, every take reused" };
+  };
+  // Jev flags both lines; the retake makes x9fe again and is stopped before b3tn.
+  assert.equal(await gate.automation.step(), "chatgpt-ads-off: the retake stopped (stopped by the STOP file; 1 of 2 requests done, rerun to continue); the next run continues");
+  return { ...gate, take };
+}
+
+test("a retake a STOP file ended is bound from the takes it made on the next run, checked again and continued without the owner, and no line is retaken twice", async () => {
+  const gate = await stoppedRetakeGate();
+  const stopped = gate.state();
+  assert.notEqual(stopped.status, "blocked", stopped.blocked);
+  assert.deepEqual(stopped.stopped_retake, { flags: "review/check-flags.json", ids: ["x9fe", "b3tn"], takes: { x9fe: sha(gate.take("x9fe")) } }, "the lines it was retaking and the one take it made");
+  assert.equal(stopped.retakes, 1, "the round it spent stays counted");
+
+  // The takes no longer match timeline.json, all of them because of the stopped retake: a plain
+  // tts binds them, synthesizing nothing, and nothing is blocked for the owner.
+  const ran = gate.runs.length;
+  assert.equal(await gate.automation.step(), "chatgpt-ads-off: narration synthesized from the takes of the retake a STOP file ended");
+  assert.deepEqual(gate.runs.slice(ran), ["tts --slug chatgpt-ads-off"], "no --redo, no --refresh-evidence");
+  assert.equal(gate.state().stopped_retake, undefined, "cleared once tts finished");
+  assert.notEqual(gate.state().status, "blocked", gate.state().blocked);
+
+  // x9fe is judged on its new take and passes; b3tn, never retaken, is retaken now, alone.
+  assert.match(await gate.automation.step(), /narration checked \(Jev passed every line\) and sent for review$/);
+  assert.deepEqual(gate.redos, [["check-flags.json", ["x9fe", "b3tn"]], ["check-flags.json", ["b3tn"]]], "x9fe is not retaken a second time");
+  assert.equal(gate.state().retakes, 2);
+  assert.equal(gate.reviews("audio").length, 1);
+});
+
+test("after a stopped retake, a take changed on another line, or to bytes the retake did not make, still blocks the video before tts", async (t) => {
+  for (const [name, tamper] of [
+    ["a line the retake was not retaking", (gate) => retakeFile(gate.take("r8wd"))],
+    ["a take the retake did not make", (gate) => retakeFile(gate.take("x9fe"), 2)],
+  ]) {
+    await t.test(name, async () => {
+      const gate = await stoppedRetakeGate();
+      tamper(gate);
+      const ran = gate.runs.length;
+      assert.equal(await gate.automation.step(), "chatgpt-ads-off: blocked — audio evidence no longer matches the saved takes; restore or explicitly retake and review the narration");
+      assert.equal(gate.runs.length, ran, "no tts binds the unexplained take");
+      assert.ok(gate.state().stopped_retake, "the record stays for the owner's retry");
+    });
+  }
+});
+
+test("a video its own STOP file holds is passed over: the round moves the next video, the held one runs no stage, and the owner's drop still reaches it", async () => {
+  const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => false });
+  const { automation } = gate;
+  const work = path.dirname(gate.workdir);
+  const stop = path.join(gate.workdir, "STOP");
+  // The older video is back at "narration synthesized"; its tts stops at once on a STOP file (exit 6).
+  rmSync(path.join(gate.workdir, "timeline.json"));
+  const played = automation.ctx.runCommand;
+  automation.ctx.runCommand = async (command, runCtx) => {
+    if (command[0] !== "tts" || !existsSync(stop)) return played(command, runCtx);
+    gate.runs.push(command.join(" "));
+    return { code: EXIT.incomplete, out: "stopped by the STOP file; 0 of 3 requests done, rerun to continue" };
+  };
+  mkdirSync(path.join(work, "newer-video"), { recursive: true });
+  writeFileSync(path.join(work, "newer-video", "auto.json"), JSON.stringify({ slug: "newer-video", status: "active", created_at: "2026-09-28T00:00:00Z" }));
+  const advance = automation.advance.bind(automation);
+  const moved = [];
+  automation.advance = async (state) => {
+    moved.push(state.slug);
+    return state.slug === "newer-video" ? "newer-video: moved" : advance(state);
+  };
+
+  writeFileSync(stop, "");
+  const held = readFileSync(path.join(gate.workdir, "auto.json"));
+  const ran = gate.runs.length;
+  assert.equal(await automation.step(), "newer-video: moved");
+  assert.equal(automation.halted, false, "the round goes on");
+  assert.deepEqual(moved, ["newer-video"]);
+  assert.equal(gate.runs.length, ran, "no stage ran for the held video");
+  assert.ok(readFileSync(path.join(gate.workdir, "auto.json")).equals(held), "its auto.json is untouched");
+
+  // The file removed, the held video is the oldest again and moves first.
+  rmSync(stop);
+  assert.equal(await automation.step(), "chatgpt-ads-off: narration synthesized");
+
+  // Held again, the owner's drop still reaches it.
+  writeFileSync(stop, "");
+  Object.assign(gate.site.listed.get("chatgpt-ads-off"), { dropped_at: "2026-09-28T01:00:00Z", dropped_note: "不做了" });
+  assert.equal(await automation.step(), "chatgpt-ads-off: the owner dropped it (不做了); the worker leaves it");
+  assert.equal(gate.state().status, "dropped");
+});
+
+test("a narration check that stops for the owner, a paid judgement whose answer was lost included, blocks the video and sends nothing for review; a service that is down still waits for the next run", async () => {
+  const gate = await narrationGate({ rewrite: () => ({ lines: [] }), stillFlagged: () => false });
+  const judgement = await lostSpeechLine((options) => judgeLines({ ...options, lines: [{ id: "x9fe", intended: ORIGINAL, spoken_form: ORIGINAL, heard: HEARD_WRONG }] }));
+  const { ctx } = gate.automation;
+  const played = ctx.runCommand;
+  // check.json as an interrupted check leaves it: x9fe transcribed differently and never judged.
+  const scripted = [
+    { code: 4, out: "Jev 暫時無法判斷\n" },
+    { code: 3, out: `x9fe transcribed\n${judgement}\n`, half: true },
+    { code: 2, out: "usage: --slug is required\n" },
+  ];
+  ctx.runCommand = async (command, runCtx) => {
+    if (command[0] !== "check-audio" || !scripted.length) return played(command, runCtx);
+    gate.runs.push(command.join(" "));
+    const { half, ...answer } = scripted.shift();
+    if (half) atomicWrite(path.join(gate.workdir, "review", "check.json"), JSON.stringify({ lines: { x9fe: { match: false, match_kind: null, intended: ORIGINAL, heard: HEARD_WRONG, noul: null } } }));
+    return answer;
+  };
+  const retry = (id) => Object.assign(gate.site.listed.get("chatgpt-ads-off"), { retry_request_id: id, retry_acknowledged_id: null });
+
+  assert.equal(await gate.automation.step(), "chatgpt-ads-off: narration check could not finish (Jev 暫時無法判斷); the next run tries again");
+  assert.equal(await gate.automation.step(), `chatgpt-ads-off: blocked — check-audio needs the owner: ${judgement}`);
+  assert.equal(gate.runs.filter((run) => run.startsWith("review-push")).length, 0, "nothing was sent for review");
+  assert.equal(gate.reviews("audio").length, 0);
+  assert.equal(gate.state().status, "blocked");
+
+  retry("6f1d2c3b-4a5e-4f60-8b7c-9d0e1f2a3b4c");
+  assert.equal(await gate.automation.step(), "chatgpt-ads-off: blocked — check-audio failed: usage: --slug is required");
+  assert.equal(gate.reviews("audio").length, 0, "any other stop is not a finished check either");
+
+  retry("0b9a8c7d-6e5f-4a3b-9c2d-1e0f9a8b7c6d");
+  assert.match(await gate.automation.step(), /narration checked \(Jev passed every line\) and sent for review$/);
+  assert.equal(gate.reviews("audio").length, 1);
+});
+
+test("a STOP file that ends a dub's check defers the language to the next run instead of blocking the video", async () => {
+  const video = await finishedVideo();
+  video.choose({ ja: { metadata: true, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: ja metadata and captions translated and reviewed$/);
+  const play = video.ctx.runCommand;
+  let checks = 0;
+  video.ctx.runCommand = async (command, runCtx) => {
+    if (command[0] === "check-audio" && command.includes("--locale") && checks++ === 0) {
+      video.runs.push(command.join(" "));
+      return { code: EXIT.incomplete, out: "STOP found; transcripts so far are saved, rerun to continue" };
+    }
+    return play(command, runCtx);
+  };
+  assert.match(await video.step(), /^chatgpt-ads-off: ja dub check stopped \(STOP found; transcripts so far are saved, rerun to continue\); the next run continues$/);
+  assert.notEqual(video.state().status, "blocked", video.state().blocked);
+  assert.equal(existsSync(path.join(video.workdir, "dubs", "ja", "skipped.json")), false, "the language is not given up");
+  assert.equal(video.state().languages.ja.check_stopped, true);
+  // The track is current, but it was never heard to the end: the next run checks it again.
+  assert.match(await video.step(), /^chatgpt-ads-off: ja dub made/);
+  assert.equal(checks, 2);
+  assert.equal(video.state().languages?.ja, undefined);
+});
+
 test("illustrated slides: settle gives the channel look and the owner's music and effects; an explainer one-off keeps no cast whatever the writer returned", async () => {
   const { illustratedFixture } = await import("../core/fixtures/load.mjs");
   const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, slides: { slides_music_track: "bed.mp3", slides_sfx_set: "studio-a" } };
@@ -2563,7 +3226,8 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   ];
   const answers = {
     ...answersFor(slug),
-    writer: () => ({ video, claims: "c1｜Go 每月 270 元｜https://openai.com/a｜2026-09-25｜hook\n", lexicon_additions: {}, shorts: shortsDraft }),
+    // A prompt fix returns the script as it is (the number is what matters here); the draft comes with its Shorts.
+    writer: (body) => (body.payload.fix ? { video: body.payload.video } : { video, claims: "c1｜Go 每月 270 元｜https://openai.com/a｜2026-09-25｜hook\n", lexicon_additions: {}, shorts: shortsDraft }),
     // The listener sets a pause of its own: the tool clears it again when the edit is saved.
     listener: (body) => {
       const edited = structuredClone(body.payload.video);
@@ -2578,6 +3242,13 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   const docFile = path.join(box.root, "docs", "videos", slug, "video.json");
   const lexicon = () => readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
   const runs = [];
+  let keyframeRuns = 0;
+  // What keyframes leaves for a shot whose prompt cannot fit the image model beside the look
+  // (media/keyframes.mjs): the number of characters it may have, which the writer is told.
+  const PODIUM_BUDGET_PROBLEM = "prompt is 900 characters; the minimax budget for this shot is 420 (style, camera and avoidance text take the rest) → shorten the prompt to at most 420 characters";
+  // Then the judge fails the rewritten podium on the same fault twice: once the rounds are spent
+  // the picture is kept with the remark (keyframes --accept-best) and the cut goes to the owner.
+  const PODIUM_JUDGE_PROBLEM = "awkward: the speaker's hand is bent back → the hand resting on the lectern";
   mkdirSync(path.join(box.work, "_music"), { recursive: true });
   writeFileSync(path.join(box.work, "_music", "bed.mp3"), "bed bytes");
   ctx.runCommand = async (command, runCtx) => {
@@ -2595,11 +3266,32 @@ test("illustrated slides walk the picture, storyboard and music steps between th
       return { code: 0, out: "every line passed" };
     }
     if (name === "keyframes") {
+      const manifestFile = path.join(workdir, "keyframes", "manifest.json");
+      if (command.includes("--accept-best")) {
+        // What media/keyframes.mjs does with --accept-best: the named shots leave needs_review with their remarks on record.
+        const manifest = readJson(manifestFile);
+        for (const id of command[command.indexOf("--accept-best") + 1].split(",")) manifest.shots[id] = { ...manifest.shots[id], needs_review: false, accepted_with_problems: manifest.shots[id].problems };
+        for (const id of ["problems", "fixes"]) delete manifest.shots.podium[id];
+        write("keyframes/manifest.json", manifest);
+        return { code: 0, out: "1 pictures kept with the judge's remarks (podium); the final cut goes to the owner" };
+      }
       const shots = Object.fromEntries(shotScenes(current).map((scene) => {
         const file = `keyframes/${scene.id}-1.png`;
         write(file, { picture: scene.id });
         return [scene.id, { file, sha256: sha(path.join(workdir, file)), needs_review: false, judge: { overall: 8, problems: [] } }];
       }));
+      // The first run cannot draw the opener: its prompt is over the image model's budget.
+      if (keyframeRuns++ === 0) {
+        shots.podium = { takes: [], needs_review: true, prompt_budget_chars: 420, problems: [PODIUM_BUDGET_PROBLEM] };
+        write("keyframes/manifest.json", { look_hash: lookOf(current), pictures_hash: picturesHash(current), shots });
+        return { code: 1, out: `ERROR podium: ${PODIUM_BUDGET_PROBLEM}\nfix the prompts of podium and run keyframes again` };
+      }
+      // The next two draw it, and the judge fails its best take on the same fault (keyframeRuns counts this call).
+      if (keyframeRuns <= 3) {
+        shots.podium = { ...shots.podium, needs_review: true, judge: { overall: 5, passed: false, problems: [PODIUM_JUDGE_PROBLEM] }, problems: [PODIUM_JUDGE_PROBLEM], fixes: ["the hand resting on the lectern"] };
+        write("keyframes/manifest.json", { look_hash: lookOf(current), pictures_hash: picturesHash(current), shots });
+        return { code: 1, out: `ERROR podium: no take passed the judge: ${PODIUM_JUDGE_PROBLEM}\nfix the prompts of podium and run keyframes again` };
+      }
       write("keyframes/manifest.json", { look_hash: lookOf(current), pictures_hash: picturesHash(current), shots });
       return { code: 0, out: "5 keyframes" };
     }
@@ -2646,13 +3338,38 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   assert.ok(existsSync(shortsFile(slug, box.root)), "an illustrated video's Shorts are saved like an explainer's");
   const writer = site.calls.run.find((call) => call.stage === "writer");
   assert.equal(writer.format, "slides", "the slides writer, not the drama's");
+  // The first draft hears what a shot prompt may have for the image model the settings name:
+  // nothing names one here, so the writer's own 1000 (a MiniMax site says fewer: draftBudget below).
+  assert.equal(writer.payload.prompt_budget_chars, 1000);
   assert.match(await automation.step(), /fact-check round 1/);
   assert.match(await automation.step(), /listener edit/);
   assert.deepEqual(pauses(readJson(docFile)), { a1hk: 900 }, "the listener's own pause is cleared on save");
   assert.equal(automatedVideos(box.work)[0].verified, true, "with its pause cleared the listener's script is the checked one");
   assert.match(await automation.step(), /narration synthesized/);
   assert.match(await automation.step(), /narration checked \(Jev passed every line\) and sent for review/);
-  assert.match(await automation.step(), /keyframes done/);
+  // The opener's prompt is over the image model's budget: the writer is told the number, for the
+  // shot and for the fix as a whole, and keyframes runs again on the rewritten script.
+  assert.match(await automation.step(), /keyframes prompts fixed \(round 1\) for podium; keyframes runs again next/);
+  const budgetFix = site.calls.run.filter((call) => call.stage === "writer").at(-1).payload.fix;
+  assert.equal(budgetFix.kind, "keyframes");
+  assert.equal(budgetFix.prompt_budget_chars, 420, "the tightest budget among the targets that carry one");
+  assert.deepEqual(budgetFix.targets, [{ id: "podium", problems: [PODIUM_BUDGET_PROBLEM], prompt_budget_chars: 420 }]);
+  assert.deepEqual(budgetFix.problems, [PODIUM_BUDGET_PROBLEM]);
+  assert.equal(site.calls.run.filter((call) => call.stage === "writer").at(-1).payload.prompt_budget_chars, 1000, "a whole-script rewrite hears the budget the draft heard, beside the targets' own");
+  // Drawn, the podium fails the judge twice over; with the rounds spent its best take is kept
+  // with the remark instead of blocking the video (the owner's decision of 2026-10-06), and the
+  // cut, not the storyboard, is where the owner looks at it.
+  assert.match(await automation.step(), /keyframes prompts fixed \(round 2\) for podium; keyframes runs again next/);
+  assert.deepEqual(site.calls.run.filter((call) => call.stage === "writer").at(-1).payload.fix.targets, [{ id: "podium", problems: [PODIUM_JUDGE_PROBLEM] }]);
+  assert.match(await automation.step(), /^chatgpt-ads-off: 1 pictures kept with the judge's remarks after 2 prompt fixes; the final cut goes to the owner$/);
+  assert.ok(runs.includes(`keyframes --slug ${slug} --accept-best podium`));
+  assert.equal(site.calls.run.filter((call) => call.stage === "writer").length, 3, "no third fix was asked for");
+  const kept = automatedVideos(box.work)[0];
+  assert.equal(kept.status, "active");
+  assert.deepEqual(kept.accepted_pictures, [{ id: "podium", problems: [PODIUM_JUDGE_PROBLEM] }]);
+  assert.equal(kept.prompt_fixes?.keyframes, undefined, "the rounds were spent on this picture");
+  assert.match(kept.notes.at(-1), /^keyframes: 1 pictures kept with the judge's remarks after 2 prompt fixes \(podium\); the final cut goes to the owner$/);
+  assert.equal(readJson(path.join(workdir, "keyframes", "manifest.json")).shots.podium.needs_review, false);
   assert.match(await automation.step(), /storyboard sent to \/admin\/videos/);
   assert.match(await automation.step(), /the owner approved the storyboard/);
   assert.ok(readApprovals(workdir).approvals.some((entry) => entry.gate === "storyboard"));
@@ -2664,7 +3381,10 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   assert.match(await automation.step(), /captions written/);
   const status = await pipelineStatus({ slug, root: box.root, workdir });
   assert.equal(status.next.id, "final video approved");
-  assert.deepEqual(runs.filter((run) => /^(tts|keyframes|render|music|assemble|captions) /.test(run)).map((run) => run.split(" ")[0]), ["tts", "keyframes", "render", "music", "assemble", "captions"]);
+  assert.deepEqual(runs.filter((run) => /^(tts|keyframes|render|music|assemble|captions) /.test(run)).map((run) => run.split(" ")[0]), ["tts", "keyframes", "keyframes", "keyframes", "keyframes", "render", "music", "assemble", "captions"]);
+  // The final gate asks for the owner's review of the cut with the kept picture (review/sync.mjs lists it).
+  assert.match(await automation.step(), /final sent to \/admin\/videos/);
+  assert.equal(runs.at(-1), `review-push --slug ${slug} --gate final --manual-review`);
 
   // A narration recorded before audio evidence existed, script unchanged. Its takes carry no
   // current key (what is sent for synthesis changed since), so a refresh could only refuse:
@@ -2844,4 +3564,408 @@ test("two lanes move two different videos at once, and only the first lane start
 test("VIDEO_WORKER_LANES is read as 1 to 3 lanes, 1 when unset or unreadable", async () => {
   const { laneCount } = await import("./cli.mjs");
   assert.deepEqual(["", "0", "x", "1", "2", "3", "8"].map((value) => laneCount(value ? { VIDEO_WORKER_LANES: value } : {})), [1, 1, 1, 1, 2, 3, 3]);
+});
+
+test("the translator's and the caption reviewer's requests carry the sheet's glossary and the narration's cue boundaries beside a worksheet without them, whole and in units", async () => {
+  const script = fixture();
+  const long = "每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？還是應該先想清楚自己要它做什麼，再決定要不要換？";
+  script.scenes[0].lines[0].text = long;
+  const glossary = { terms: ["AI"], sources: ["範例來源"] };
+  const boundaries = { k7p2: cuePieces(long, "zh-TW") };
+  assert.equal(boundaries.k7p2.length, 2, "the first line is cut into two cues");
+
+  const whole = await finishedVideo({ script });
+  whole.choose({ en: { metadata: true, captions: true, dub: false } });
+  assert.match(await whole.step(), /^chatgpt-ads-off: en metadata and captions translated and reviewed$/);
+  const calls = [...whole.calls("translator"), ...whole.calls("caption_reviewer")];
+  assert.equal(calls.length, 2);
+  for (const call of calls) {
+    assert.deepEqual([call.payload.glossary, call.payload.boundaries], [glossary, boundaries], `${call.stage} reads the glossary and every boundary`);
+    assert.equal("glossary" in call.payload.worksheet || "boundaries" in call.payload.worksheet, false, `${call.stage}: the worksheet holds the entries, the request the context`);
+    assert.equal(call.payload.worksheet.lines.length, 7, "and every line");
+  }
+  const translation = readJson(path.join(whole.box.root, "docs", "videos", whole.slug, "i18n", "en.json"));
+  assert.equal("glossary" in translation || "boundaries" in translation, false, "the merge writes neither");
+
+  // In units: the metadata unit reads the glossary and no boundaries, a lines unit only its own lines'.
+  const units = await finishedVideo({ script });
+  units.automation.unitLimits = { lines: 3, chars: 2400 };
+  units.choose({ en: { metadata: true, captions: true, dub: false } });
+  for (let round = 1; round <= 3; round++) assert.match(await units.step(), new RegExp(`^chatgpt-ads-off: en part ${round} of 4 translated and reviewed; the next part follows$`));
+  assert.match(await units.step(), /^chatgpt-ads-off: en metadata and captions translated and reviewed$/);
+  for (const stage of ["translator", "caption_reviewer"]) {
+    const [metadata, ...lines] = units.calls(stage);
+    assert.deepEqual([metadata.payload.parts, metadata.payload.glossary, "boundaries" in metadata.payload], [["metadata"], glossary, false], `${stage}: the metadata unit`);
+    assert.equal(lines.length, 3);
+    for (const call of lines) {
+      const ids = call.payload.worksheet.lines.map((line) => line.id);
+      assert.deepEqual(call.payload.glossary, glossary, stage);
+      assert.deepEqual(call.payload.boundaries, ids.includes("k7p2") ? boundaries : {}, `${stage}: a lines unit's own boundaries (${ids.join(", ")})`);
+      assert.equal("glossary" in call.payload.worksheet || "boundaries" in call.payload.worksheet, false);
+    }
+  }
+});
+
+// What the owner's 重試 on /admin/videos resets. On 2026-10-06 nine host videos were blocked on
+// their keyframes and every retry re-blocked them within hours: the retry gave back only a
+// stage's failures in a row, never the prompt-fix rounds, the replans or the seeds the server
+// had stopped answering for, so the paid stage ran once and blocked at the same line.
+
+/**
+ * A slides video blocked before its keyframes, as the host videos were, with `blocked` as its
+ * reason (a legacy state: no blocked_kind) and `extra` on its auto.json; `commands` plays the
+ * keyframes stage (the n-th run of a command in the test); `others` are active videos beside it.
+ */
+function blockedVideo({ slug, blocked, extra = {}, commands = () => assert.fail("no stage runs"), others = [] }) {
+  const box = sandbox(slug, "illustrated");
+  const docFile = path.join(box.dir, "video.json");
+  atomicWrite(docFile, JSON.stringify({ ...readJson(docFile), slug, format: "slides" }));
+  const state = { slug, status: "blocked", blocked_from_status: "active", blocked, format: "slides", created_at: "2026-10-05T10:00:00Z", notes: [], chosen: "A", ...extra };
+  atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+  for (const [index, other] of others.entries()) atomicWrite(path.join(box.work, other, "auto.json"), JSON.stringify({ slug: other, status: "active", notes: [], created_at: `2026-10-05T1${index + 1}:00:00Z` }));
+  // The site already shows the reason, so the round has nothing to reconcile.
+  const listed = { slug, stage: "blocked", checklist: [{ key: "blocked", label: `卡住，需要人處理：${blocked}`.slice(0, 120), done: false }] };
+  const site = fakeSite({ videos: [listed, ...others.map((other) => ({ slug: other, stage: "writing" }))], settings: { max_waiting_drafts: 0, slides: { slides_media_enabled: true } }, answers: { writer: (body) => ({ video: body.payload.video, lexicon_additions: {} }) } });
+  const clock = { now: Date.parse("2026-10-06T10:00:00Z") };
+  const { ctx, out } = context(box, site.fetchImpl, clock);
+  const runs = [];
+  ctx.runCommand = async (command) => {
+    runs.push(command);
+    return commands(command, runs.filter((each) => each[0] === command[0]).length);
+  };
+  const worker = (api = automationClient(ctx)) => {
+    const automation = new Automation(ctx, api, site.settings);
+    automation.refs = smallRefs;
+    automation.advance = (item) => (item.slug === slug ? automation.media(item, "keyframes") : `${item.slug}: advanced`);
+    return automation;
+  };
+  const retry = (id) => Object.assign(site.listed.get(slug), { retry_request_id: id, retry_acknowledged_id: null });
+  const read = () => automatedVideos(box.work).find((item) => item.slug === slug);
+  return { box, site, ctx, out, runs, worker, retry, state: read, listed: () => site.listed.get(slug) };
+}
+
+test("an owner retry of a video blocked after its prompt fixes gives the rounds back, and its keyframes run again in the same round", async () => {
+  const slug = "retry-prompt-fixes";
+  const video = blockedVideo({
+    slug,
+    blocked: "keyframes still fails after 2 prompt fixes (repair: wrong object)",
+    extra: { prompt_fixes: { keyframes: 2 } },
+    commands: () => ({ code: EXIT.lint, out: "fix the prompts of repair" }),
+  });
+  atomicWrite(path.join(video.box.workdir, "keyframes", "manifest.json"), JSON.stringify({ shots: { repair: { needs_review: true, problems: ["wrong object"] } } }));
+  assert.equal(await video.worker().step(), null, "blocked: nothing runs");
+  assert.equal(video.runs.length, 0);
+  const request = "7f0c1a2e-5b3d-4c6e-9a8f-0d1e2f3a4b5c";
+  video.retry(request);
+  const first = video.worker();
+  // Before: the retry reset nothing, keyframes ran once (paid) and fixPrompts blocked at the same line.
+  assert.match(await first.step(), /keyframes prompts fixed \(round 1\) for repair; keyframes runs again next/);
+  assert.equal(first.halted, false);
+  assert.deepEqual(video.runs, [["keyframes", "--slug", slug]], "the stage ran again in the round of the retry, at its seeds");
+  assert.equal(video.listed().retry_acknowledged_id, request);
+  assert.deepEqual(video.state().prompt_fixes, { keyframes: 1 }, "the rounds start again");
+  assert.equal(video.state().status, "active");
+  assert.equal(video.state().blocked, undefined);
+  assert.equal(video.state().blocked_kind, undefined);
+  assert.equal(video.site.calls.run.filter((call) => call.stage === "writer").length, 1, "one prompt fix was asked for");
+  // The video is moving again: the same failure spends the rounds once more, then blocks with its kind recorded.
+  assert.match(await video.worker().step(), /keyframes prompts fixed \(round 2\) for repair/);
+  assert.match(await video.worker().step(), /blocked — keyframes still fails after 2 prompt fixes \(repair: wrong object\)/);
+  assert.equal(video.state().blocked_kind, "prompt_fixes:keyframes");
+  assert.equal(video.runs.length, 3);
+  assert.equal(await video.worker().step(), null, "the acknowledged request is not replayed");
+  assert.equal(video.runs.length, 3);
+});
+
+test("the counters a block records are the ones its retry resets, and a legacy reason is read the same way", async () => {
+  const kinds = [
+    [{ blocked: "writer failed 2 times in a row: no video object", failures: { writer: 2, planner: 1 } }, "failures:writer", (state) => assert.deepEqual(state.failures, { planner: 1 })],
+    [{ blocked: "keyframes still fails after 2 prompt fixes (desk: wrong object)", prompt_fixes: { keyframes: 2, look: 1 } }, "prompt_fixes:keyframes", (state) => assert.deepEqual(state.prompt_fixes, { look: 1 })],
+    [{ blocked: "the owner sent the screenplay back 3 times: too long", prompt_fixes: { script: 2 } }, "prompt_fixes:script", (state) => assert.deepEqual(state.prompt_fixes, {})],
+    [{ blocked: "the outline was sent back 3 times (Jev and the owner together): no angle", replans: 2 }, "replans", (state) => assert.equal(state.replans, 0)],
+    [{ blocked: "keyframes needs the owner: 這個請求已經失敗 3 次；改提示詞或 seed 再試", prompt_fixes: { keyframes: 2 } }, "media_exhausted:keyframes", (state) => assert.deepEqual([state.seed_offsets, state.prompt_fixes], [{ keyframes: 3 }, {}])],
+    [{ blocked: "keyframes still fails after 2 prompt fixes (desk: no take could be generated: 這個請求已經失敗 3 次；改提示詞或 seed 再試)", prompt_fixes: { keyframes: 2 }, seed_offsets: { keyframes: 3 } }, "media_exhausted:keyframes", (state) => assert.deepEqual([state.seed_offsets, state.prompt_fixes], [{ keyframes: 6 }, {}])],
+    [{ blocked: "look needs the owner: 這個請求已經失敗 3 次；改提示詞或 seed 再試", prompt_fixes: { look: 2 } }, "media_exhausted:look", (state) => assert.deepEqual([state.seed_offsets, state.prompt_fixes], [undefined, {}], "only keyframes takes --seed-offset")],
+    [{ blocked: "keyframes needs the owner: the month's images are spent", prompt_fixes: { keyframes: 1 } }, null, (state) => assert.deepEqual(state.prompt_fixes, { keyframes: 1 })],
+    [{ blocked: "writer may have run on the server without its answer reaching the worker (lost); it is not asked again until the owner retries", failures: { writer: 1 } }, null, (state) => assert.deepEqual(state.failures, { writer: 1 })],
+    [{ blocked: "keyframes needs the owner: 這個請求已經失敗 3 次", blocked_kind: "uncertain:writer", seed_offsets: { keyframes: 27 } }, "uncertain:writer", (state) => assert.deepEqual(state.seed_offsets, { keyframes: 27 }, "a recorded kind is not second-guessed from the wording")],
+    [{ blocked: "x", blocked_kind: "media_exhausted:keyframes", seed_offsets: { keyframes: 28 } }, "media_exhausted:keyframes", (state) => assert.deepEqual(state.seed_offsets, { keyframes: 30 }, "the offset stops at keyframes.mjs's cap")],
+  ];
+  for (const [fields, kind, check] of kinds) {
+    const state = { slug: "kinds", status: "blocked", ...fields };
+    assert.equal(blockedKindOf(state), kind, fields.blocked);
+    assert.equal(resetForRetry(state), kind, fields.blocked);
+    check(state);
+  }
+});
+
+test("an owner retry of a video the server stopped answering for moves its keyframes to the next seeds, and the next retry further", async () => {
+  const slug = "retry-spent-seeds";
+  const exhausted = "這個請求已經失敗 3 次；改提示詞或 seed 再試";
+  const video = blockedVideo({
+    slug,
+    blocked: `keyframes needs the owner: ${exhausted}`,
+    extra: { prompt_fixes: { keyframes: 2 } },
+    // The seeds after the shift are spent too (another video's identical prompts, say); the ones after that draw.
+    commands: (command, n) => (n === 1 ? { code: EXIT.owner, out: `keyframes for 3 shots\n${exhausted}\n` } : { code: EXIT.ok, out: "3 keyframes generated" }),
+  });
+  assert.equal(await video.worker().step(), null);
+  const first = "1a2b3c4d-0001-4000-8000-000000000001";
+  video.retry(first);
+  const worker = video.worker();
+  assert.match(await worker.step(), /blocked — keyframes needs the owner: 這個請求已經失敗 3 次/);
+  assert.equal(worker.halted, false);
+  assert.deepEqual(video.runs, [["keyframes", "--slug", slug, "--seed-offset", "3"]], "the retry asks for seeds 4 to 6");
+  assert.equal(video.state().blocked_kind, "media_exhausted:keyframes", "the stage's own exit 3 names the spent request");
+  assert.deepEqual(video.state().seed_offsets, { keyframes: 3 });
+  assert.equal(video.state().prompt_fixes.keyframes, undefined, "the fix rounds come back with the seeds");
+  assert.equal(video.listed().retry_acknowledged_id, first);
+  assert.equal(video.site.calls.reports.at(-1).blocked_kind, "media_exhausted:keyframes", "the report says what kind of block it is");
+  assert.equal(await video.worker().step(), null, "blocked again: the same request is not replayed");
+  assert.equal(video.runs.length, 1);
+  const second = "1a2b3c4d-0002-4000-8000-000000000002";
+  video.retry(second);
+  assert.match(await video.worker().step(), /keyframes done/);
+  assert.deepEqual(video.runs.at(-1), ["keyframes", "--slug", slug, "--seed-offset", "6"], "the next retry asks for seeds 7 to 9");
+  assert.deepEqual(video.state().seed_offsets, {}, "a stage that is through its seeds starts a later rerun at seeds 1 to 3 again");
+  assert.equal(video.state().status, "active");
+  assert.equal(video.state().blocked_kind, undefined);
+  assert.equal(video.listed().retry_acknowledged_id, second);
+  assert.equal("blocked_kind" in video.site.calls.reports.at(-1), false, "a video that moves reports no kind");
+});
+
+test("a keyframes run that logged a spent seed but stopped for the owner is blocked as the owner's: its retry keeps the seeds", async () => {
+  const slug = "retry-cap-after-spent";
+  const cap = "this video is at its US$5 cap; raise it on the settings tab";
+  const video = blockedVideo({
+    slug,
+    blocked: "keyframes needs the owner: earlier",
+    commands: () => ({ code: EXIT.owner, out: `desk seed 1: 這個請求已經失敗 3 次；改提示詞或 seed 再試; trying another seed\n${cap}\n` }),
+  });
+  video.retry("1a2b3c4d-0006-4000-8000-000000000006");
+  assert.match(await video.worker().step(), /blocked — keyframes needs the owner: this video is at its US\$5 cap/);
+  assert.equal(video.state().blocked_kind, "media_owner:keyframes", "the reason the owner reads is the cap, not the spent seed on the way to it");
+  assert.equal(video.state().seed_offsets, undefined);
+  video.retry("1a2b3c4d-0007-4000-8000-000000000007");
+  assert.match(await video.worker().step(), /blocked — keyframes needs the owner: this video is at its US\$5 cap/);
+  assert.deepEqual(video.runs, [["keyframes", "--slug", slug], ["keyframes", "--slug", slug]], "the retry runs the stage at its seeds; nothing is shifted");
+  assert.equal(video.state().seed_offsets, undefined);
+});
+
+test("a retry whose saved run cannot be verified blocks that video alone, with the reason and the request consumed; the videos beside it go on in the same round", async () => {
+  const slug = "retry-unverified";
+  const other = "retry-neighbour";
+  const video = blockedVideo({ slug, blocked: "writer failed 2 times in a row: the script had no video object", extra: { failures: { writer: 2 } }, others: [other] });
+  const api = automationClient(video.ctx);
+  let retries = 0;
+  // What client.mjs retryRuns throws when the receipt lookup fails (RUN_UNCERTAIN), or anything else.
+  api.retryRuns = async () => {
+    retries++;
+    throw Object.assign(new AutomationError("could not verify the saved run before owner retry: the receipt lookup failed; its receipt is retained", { code: RUN_UNCERTAIN, who: "owner" }), { slug });
+  };
+  const request = "9e8d7c6b-0003-4000-8000-000000000003";
+  video.retry(request);
+  const worker = video.worker(api);
+  // Before: the error ended the whole run, every round, and the site kept showing the retry as pending.
+  assert.match(await worker.step(), /^retry-unverified: blocked — retry could not verify the saved writer run: could not verify the saved run before owner retry: the receipt lookup failed/);
+  assert.equal(worker.halted, false, "only this video is parked");
+  assert.equal(retries, 1);
+  assert.equal(video.state().status, "blocked");
+  assert.equal(video.state().blocked_from_status, "active");
+  assert.equal(video.state().retry_request_id, request, "the request is consumed");
+  assert.equal(video.listed().retry_acknowledged_id, request, "the site stops showing the retry as pending");
+  assert.equal(video.site.calls.reports.at(-1).retry_acknowledged_id, request);
+  assert.match(video.site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：retry could not verify the saved writer run/);
+  assert.equal(video.state().blocked_kind, "failures:writer", "the counter to reset once a retry goes through is still the stage's");
+  assert.deepEqual(video.state().failures, { writer: 2 }, "nothing ran, nothing is reset");
+  assert.match(await worker.step(), /^retry-neighbour: advanced$/, "the next unit of the same round is another video's");
+  assert.equal(retries, 1, "an acknowledged request is not replayed");
+  // The owner retries once more, and this time the saved run is verified.
+  api.retryRuns = async () => { retries++; };
+  video.retry("9e8d7c6b-0004-4000-8000-000000000004");
+  const resumed = video.worker(api);
+  resumed.advance = (item) => `${item.slug}: advanced`;
+  assert.match(await resumed.step(), /^retry-unverified: advanced$/);
+  assert.equal(retries, 2);
+  assert.equal(video.state().status, "active");
+  assert.equal(video.state().failures?.writer, undefined, "the writer's failures in a row start again");
+  assert.equal(video.state().blocked_kind, undefined);
+});
+
+test("a retry while the saved writer run is still running waits for it without consuming the request; the videos beside it go on", async () => {
+  const slug = "retry-pending";
+  const other = "retry-pending-neighbour";
+  const video = blockedVideo({ slug, blocked: "writer failed 2 times in a row: the script had no video object", extra: { failures: { writer: 2 } }, others: [other] });
+  const api = automationClient(video.ctx);
+  let retries = 0;
+  api.retryRuns = async () => {
+    retries++;
+    throw Object.assign(new AutomationError("the saved stage run is still running; the owner retry waits for it and its receipt is recovered next round", { code: RUN_PENDING }), { slug, stage: "writer" });
+  };
+  const request = "9e8d7c6b-0005-4000-8000-000000000005";
+  video.retry(request);
+  const worker = video.worker(api);
+  assert.match(await worker.step(), /^retry-pending-neighbour: advanced$/, "this video waits; the round goes on");
+  assert.equal(worker.halted, false);
+  assert.match(video.out.stdout, /retry-pending: retry waits; the saved writer run is still running on the server, its receipt is checked next round\n/);
+  assert.equal(retries, 1);
+  assert.equal(video.state().status, "blocked");
+  assert.equal(video.state().retry_request_id, undefined, "nothing is consumed");
+  assert.equal(video.listed().retry_acknowledged_id, null, "the site keeps showing the retry as pending");
+  assert.ok(!video.site.calls.reports.some((report) => report.stage === "retrying"), "no retry is acknowledged");
+  assert.match(await video.worker(api).step(), /^retry-pending-neighbour: advanced$/);
+  assert.equal(retries, 2, "the next round asks again");
+  // The saved run is over: the retry goes through.
+  api.retryRuns = async () => { retries++; };
+  const resumed = video.worker(api);
+  resumed.advance = (item) => `${item.slug}: advanced`;
+  assert.match(await resumed.step(), /^retry-pending: advanced$/);
+  assert.equal(retries, 3);
+  assert.equal(video.state().status, "active");
+  assert.equal(video.state().retry_request_id, request);
+  assert.equal(video.listed().retry_acknowledged_id, request);
+  assert.equal(video.state().failures?.writer, undefined);
+});
+
+test("illustrated slides keep the judge's best pictures once the prompt fixes are spent and send the cut for the owner's review; a shot with no picture, a storyboard the owner sent back and a drama still wait", async () => {
+  const setup = (name, fixtureName, format) => {
+    const slug = `keep-best-${name}`;
+    const box = sandbox(slug, fixtureName);
+    const docFile = path.join(box.dir, "video.json");
+    atomicWrite(docFile, JSON.stringify({ ...readJson(docFile), slug, format }));
+    const state = { slug, status: "active", format, created_at: "2026-10-06T10:00:00Z", notes: [], chosen: "A", prompt_fixes: { keyframes: MAX_PROMPT_FIX_ROUNDS } };
+    atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+    writeFileSync(path.join(box.workdir, "final.mp4"), "the cut");
+    const site = fakeSite({ settings: { drama: { ...DRAMA_SETTINGS, drama_enabled: format === "drama" }, slides: { slides_media_enabled: true } }, answers: { writer: (body) => ({ video: body.payload.video, lexicon_additions: {} }) } });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-06T10:00:00Z") });
+    const manifestFile = path.join(box.workdir, "keyframes", "manifest.json");
+    const runs = [];
+    ctx.runCommand = async (command) => {
+      runs.push(command);
+      if (command[0] === "keyframes" && command.includes("--accept-best")) {
+        const manifest = readJson(manifestFile);
+        for (const id of command[command.indexOf("--accept-best") + 1].split(",")) manifest.shots[id] = { ...manifest.shots[id], needs_review: false, accepted_with_problems: manifest.shots[id].problems };
+        atomicWrite(manifestFile, JSON.stringify(manifest));
+        return { code: EXIT.ok, out: "pictures kept" };
+      }
+      if (command[0] === "keyframes") return { code: EXIT.lint, out: "fix the prompts" };
+      if (command[0] === "review-push") return { code: EXIT.ok, out: `${command[command.indexOf("--gate") + 1]} submitted for review (pending)` };
+      return assert.fail(`unexpected ${command.join(" ")}`);
+    };
+    const picture = (id, problems) => {
+      const file = `keyframes/${id}-1.png`;
+      atomicWrite(path.join(box.workdir, file), `picture ${id}`);
+      return { file, sha256: sha(path.join(box.workdir, file)), needs_review: true, judge: { overall: 5, passed: false, problems }, problems };
+    };
+    const worker = new Automation(ctx, automationClient(ctx), site.settings);
+    worker.refs = smallRefs;
+    return { box, slug, state, site, runs, worker, manifestFile, picture };
+  };
+
+  // Every failing shot has a picture: they are kept, no writer round is paid for, and the final gate is the owner's.
+  const slides = setup("slides", "illustrated", "slides");
+  const PODIUM = ["awkward: the hand is bent back → the hand resting on the lectern"];
+  const DESK = ["details: no cup → a cup on the desk", "generated: glossy → matte"];
+  atomicWrite(slides.manifestFile, JSON.stringify({ shots: { podium: slides.picture("podium", PODIUM), desk: slides.picture("desk", DESK), clock: { file: "keyframes/clock-1.png", sha256: "a".repeat(64), needs_review: false, judge: { overall: 8, passed: true, problems: [] } } } }));
+  assert.equal(await slides.worker.media(slides.state, "keyframes"), `${slides.slug}: 2 pictures kept with the judge's remarks after 2 prompt fixes; the final cut goes to the owner`);
+  assert.deepEqual(slides.runs, [["keyframes", "--slug", slides.slug], ["keyframes", "--slug", slides.slug, "--accept-best", "podium,desk"]]);
+  assert.equal(slides.site.calls.run.length, 0, "no third prompt fix");
+  const kept = automatedVideos(slides.box.work).find((item) => item.slug === slides.slug);
+  assert.equal(kept.status, "active");
+  assert.deepEqual(kept.accepted_pictures, [{ id: "podium", problems: PODIUM }, { id: "desk", problems: DESK }]);
+  assert.equal(kept.prompt_fixes?.keyframes, undefined, "the rounds were spent on these pictures");
+  assert.deepEqual(kept.notes, [`keyframes: 2 pictures kept with the judge's remarks after 2 prompt fixes (podium, desk); the final cut goes to the owner`]);
+  slides.runs.length = 0;
+  assert.match(await slides.worker.gate(kept, "final", path.join(slides.box.workdir, "final.mp4")), /final sent to \/admin\/videos \(final submitted for review \(pending\)\)/);
+  assert.deepEqual(slides.runs, [["review-push", "--slug", slides.slug, "--gate", "final", "--manual-review"]]);
+  // A later keyframes run that drew the kept shots again (the owner rewrote them) drops them from the list.
+  const manifest = readJson(slides.manifestFile);
+  manifest.shots.podium = { ...manifest.shots.podium, needs_review: false, judge: { overall: 8, passed: true, problems: [] } };
+  delete manifest.shots.podium.accepted_with_problems;
+  atomicWrite(slides.manifestFile, JSON.stringify(manifest));
+  slides.runs.length = 0;
+  const redrawn = { ...kept };
+  slides.worker.ctx.runCommand = async (command) => { slides.runs.push(command); return { code: EXIT.ok, out: "3 keyframes" }; };
+  assert.match(await slides.worker.media(redrawn, "keyframes"), /keyframes done/);
+  assert.deepEqual(automatedVideos(slides.box.work).find((item) => item.slug === slides.slug).accepted_pictures, [{ id: "desk", problems: DESK }]);
+  // Pictures all passed: the cut goes up as before.
+  delete redrawn.accepted_pictures;
+  slides.runs.length = 0;
+  slides.worker.ctx.runCommand = async (command) => { slides.runs.push(command); return { code: EXIT.ok, out: "final submitted" }; };
+  assert.match(await slides.worker.gate(redrawn, "final", path.join(slides.box.workdir, "final.mp4")), /final sent/);
+  assert.deepEqual(slides.runs, [["review-push", "--slug", slides.slug, "--gate", "final"]]);
+
+  // A failing shot with no picture at all (every seed refused) still needs a prompt: the video waits as before.
+  const refused = setup("refused", "illustrated", "slides");
+  atomicWrite(refused.manifestFile, JSON.stringify({ shots: { podium: refused.picture("podium", PODIUM), desk: { takes: [], needs_review: true, problems: ["no take could be generated: the provider refused the prompt"] } } }));
+  assert.match(await refused.worker.media(refused.state, "keyframes"), /blocked — keyframes still fails after 2 prompt fixes \(podium: .*\| desk: no take could be generated/);
+  assert.equal(refused.runs.length, 1, "no --accept-best run");
+  assert.equal(automatedVideos(refused.box.work).find((item) => item.slug === refused.slug).accepted_pictures, undefined);
+  // The owner sent the storyboard back: their word is not overridden by the judge's best take.
+  const sentBack = setup("sent-back", "illustrated", "slides");
+  atomicWrite(sentBack.manifestFile, JSON.stringify({ shots: { podium: sentBack.picture("podium", PODIUM) } }));
+  assert.match(await sentBack.worker.fixPrompts(sentBack.state, "keyframes", { targets: [{ id: "podium", problems: ["太暗"] }], ownerNote: "太暗" }), /blocked — keyframes still fails after 2 prompt fixes/);
+  assert.equal(sentBack.runs.length, 0);
+  // A drama's pictures wait for a person, as before.
+  const drama = setup("drama", "drama", "drama");
+  atomicWrite(drama.manifestFile, JSON.stringify({ shots: { opening: drama.picture("opening", ["clean: six fingers → five fingers"]) } }));
+  assert.match(await drama.worker.media(drama.state, "keyframes"), /blocked — keyframes still fails after 2 prompt fixes/);
+  assert.equal(drama.runs.length, 1);
+  assert.equal(automatedVideos(drama.box.work).find((item) => item.slug === drama.slug).blocked_kind, "prompt_fixes:keyframes");
+});
+
+test("a slides video's writer hears the prompt budget of the image model the settings will draw it with, under the heaviest look it may get, counted as keyframes counts a shot", async () => {
+  const { promptOverhead, shotPromptBudget } = await import("../media/prompt-budget.mjs");
+  const { resolveLook, SLIDES_PRESETS, slidesPresetFor } = await import("../core/drama.mjs");
+  const box = sandbox();
+  const slug = "budget-draft";
+  const budgetFor = (settings, state) => {
+    const site = fakeSite({ settings });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-06T10:00:00Z") });
+    return new Automation(ctx, automationClient(ctx), site.settings).draftBudget({ slug, ...state });
+  };
+  // The heaviest of the looks the video may get (the print rotation, or tech-story when the
+  // writer names it), under the longest camera word the writer may choose, beside image-01's 1500:
+  // the writer may name a look of its own, so the slug's print run alone would be too generous.
+  const looks = [...SLIDES_PRESETS, "tech-story"].map((preset) => resolveLook({ preset }));
+  const heaviest = looks.reduce((most, look) => (promptOverhead({ look }) > promptOverhead({ look: most }) ? look : most));
+  assert.equal(heaviest.preset, "riso-teal", "measured on 2026-10-06: the longest style of the four riso pairs");
+  assert.ok(looks.every((look) => promptOverhead({ look }) <= promptOverhead({ look: heaviest })));
+  const minimax = shotPromptBudget({ look: heaviest, camera: "tilt down", limit: 1500 });
+  assert.ok(minimax > 300 && minimax < 600, `a print look leaves ${minimax} characters`);
+  assert.equal(shotPromptBudget({ look: heaviest, camera: "pan right", limit: 1500 }), minimax, "the longest words are of a length");
+  assert.ok(minimax <= shotPromptBudget({ look: resolveLook({ preset: slidesPresetFor(slug) }), camera: "tilt down", limit: 1500 }), "never more than the slug's own print run allows");
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }, { format: "slides" }), { prompt_budget_chars: minimax });
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }, { slug: "another-print-run", format: "slides" }), { prompt_budget_chars: minimax }, "the same number whatever print run the slug picks");
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "gemini-3.1-flash-image" } }, { format: "slides" }), { prompt_budget_chars: 1000 }, "Gemini's 4000 leaves more than the writer's own 1000");
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: null }, drama: { ...DRAMA_SETTINGS, image_provider: "minimax", image_model: "image-01" } }, { format: "slides" }), { prompt_budget_chars: minimax }, "no slides model: the drama's draws");
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: false, slides_image_model: "image-01" }, drama: { ...DRAMA_SETTINGS, image_provider: "gemini", image_model: "gemini-3-pro-image" } }, { format: "slides" }), { prompt_budget_chars: 1000 }, "the slides switch off: the drama's model draws");
+  assert.deepEqual(budgetFor({}, {}), { prompt_budget_chars: 1000 }, "a legacy state with no format is a slides video; nothing names a model");
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }, { format: "drama" }), {}, "a drama draws otherwise");
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }, { format: "slides", story: { chapters: [] } }), {}, "a story draws otherwise");
+  // The vendor read from the settings, which name the slides model by id alone.
+  assert.equal(slidesImageVendor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }), "minimax");
+  assert.equal(slidesImageVendor({ slides: { slides_media_enabled: true, slides_image_model: null }, drama: { image_provider: "gemini", image_model: "gemini-3-pro-image" } }), "gemini");
+  assert.equal(slidesImageVendor({ slides: { slides_media_enabled: false, slides_image_model: "image-01" }, drama: { image_provider: "minimax", image_model: "image-01" } }), "minimax");
+  assert.equal(slidesImageVendor({ slides: { slides_media_enabled: true, slides_image_model: "hailuo-image" }, drama: { image_provider: "minimax", image_model: "hailuo-image" } }), "minimax", "an id the table does not know, the drama's own: the drama's vendor");
+  assert.equal(slidesImageVendor({ slides: { slides_media_enabled: true, slides_image_model: "hailuo-image" }, drama: { image_provider: "gemini", image_model: "gemini-3-pro-image" } }), null, "an id nothing says the vendor of");
+  assert.equal(slidesImageVendor({}), null);
+  assert.equal(slidesImageVendor(undefined), null);
+});
+
+test("a programming error in the retry transport still ends the run: it is not reported to the owner as a block", async () => {
+  const slug = "retry-transport-bug";
+  const video = blockedVideo({ slug, blocked: "writer failed 2 times in a row: the script had no video object", extra: { failures: { writer: 2 } }, others: ["retry-transport-neighbour"] });
+  const api = automationClient(video.ctx);
+  api.retryRuns = async () => {
+    throw new TypeError("Cannot read properties of undefined (reading 'receipt')");
+  };
+  const request = "9e8d7c6b-0008-4000-8000-000000000008";
+  video.retry(request);
+  await assert.rejects(video.worker(api).step(), TypeError);
+  assert.equal(video.state().status, "blocked");
+  assert.equal(video.state().blocked, "writer failed 2 times in a row: the script had no video object", "the reason is the stage's, not the bug's");
+  assert.equal(video.state().retry_request_id, undefined, "nothing is consumed");
+  assert.equal(video.listed().retry_acknowledged_id, null);
+  assert.equal(video.site.calls.reports.length, 0, "nothing is reported");
 });

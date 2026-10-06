@@ -1,8 +1,9 @@
 // `look`: a few candidate character sheets per character, scored by the judge, for the owner to
-// pick from on /admin/videos (docs/videos/DRAMA.md). The chosen sheet is the reference every
-// keyframe of that character is generated from, which is what keeps a character the same from
-// shot to shot. Writes characters/manifest.json (the look gate binds to it), one PNG per
-// candidate under characters/<id>/, and a contact sheet.
+// pick from on /admin/videos (docs/videos/DRAMA.md); each candidate after the first is asked
+// with the judge's fixes for the ones before it, the second round with the first round's. The
+// chosen sheet is the reference every keyframe of that character is generated from, which is
+// what keeps a character the same from shot to shot. Writes characters/manifest.json (the look
+// gate binds to it), one PNG per candidate under characters/<id>/, and a contact sheet.
 import { existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -14,6 +15,7 @@ import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
+import { fixClauses, fixesBefore, retakePrompt } from "./keyframes.mjs";
 import { ledgerTotals } from "./ledger.mjs";
 import { reuseSheets } from "./series-store.mjs";
 import { drawContactSheet, imagePrice, imageSelectionVersion, imageStatus, JUDGE_USD_PER_CALL, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
@@ -160,12 +162,15 @@ export async function run(command, args, ctx) {
       for (let index = 1; index <= count; index++) {
         const seed = (round - 1) * 100 + index;
         if (entry.candidates.some((candidate) => candidate.seed === seed && candidate.judge)) continue;
+        // The judge's fixes for the candidates before this one go into its prompt.
+        const fixes = fixesBefore(entry.candidates, seed);
+        if (fixes.length) ctx.stdout.write(`${character.id} seed ${seed}: asked with the corrections of the candidates before: ${fixes.join("; ")}\n`);
         let picture;
         try {
           picture = await stage.image({
             id: character.id,
             purpose: "character_sheet",
-            prompt: entry.prompt,
+            prompt: retakePrompt(entry.prompt, fixes),
             negative: look.negative,
             references,
             seed,
@@ -197,13 +202,17 @@ export async function run(command, args, ctx) {
           stopped = true;
           break;
         }
-        entry.candidates.push({ n: entry.candidates.length + 1, seed, file: picture.file, sha256: picture.sha256, key: picture.key, judge });
+        entry.candidates.push({ n: entry.candidates.length + 1, seed, file: picture.file, sha256: picture.sha256, key: picture.key, judge, ...(fixes.length ? { fixes } : {}) });
         entry.suggested = suggestedOf(entry.candidates);
         entry.needs_review = entry.suggested === null;
         writeManifest(workdir, manifest);
         ctx.stdout.write(`${character.id} ${optionKey(entry.candidates.length)}: judge ${judge.overall}/10${judge.passed ? "" : ` NOT passed: ${judge.problems.join("; ") || "below the bar"}`}${picture.reused ? " (reused)" : ""}\n`);
       }
     }
+    // The judge's fixes across every candidate: what a rewrite of the appearance starts from.
+    const fixes = fixClauses(entry.candidates.flatMap((candidate) => candidate.judge?.problems ?? []));
+    if (entry.needs_review && fixes.length) entry.fixes = fixes;
+    else delete entry.fixes;
     if (stopped) break;
   }
   writeManifest(workdir, manifest);
@@ -228,7 +237,10 @@ export async function run(command, args, ctx) {
   }
   ctx.stdout.write(`${generated} sheets generated in ${seconds} s; this video has spent US$${ledgerTotals(workdir).usd.toFixed(2)}\n`);
   if (waiting.length) {
-    for (const [id, entry] of waiting) ctx.stdout.write(`ERROR ${id}: no candidate passed the judge: ${[...new Set(entry.candidates.flatMap((candidate) => candidate.judge?.problems ?? []))].join("; ")}\n`);
+    for (const [id, entry] of waiting) {
+      ctx.stdout.write(`ERROR ${id}: no candidate passed the judge: ${[...new Set(entry.candidates.flatMap((candidate) => candidate.judge?.problems ?? []))].join("; ")}\n`);
+      if (entry.fixes?.length) ctx.stdout.write(`  fixes for ${id}: ${entry.fixes.join("; ")}\n`);
+    }
     ctx.stdout.write(`rewrite the appearance or sheet_prompt of ${waiting.map(([id]) => id).join(", ")} and run look again\n`);
     return EXIT.lint;
   }

@@ -204,6 +204,7 @@ function fakeTools({ tooLong = false, flagOnce = false } = {}) {
       audio: { codec_name: 'aac', sample_rate: '48000', duration: String(timeline.seconds) },
       format: {},
       loudness: { input_i: '-14.1', input_tp: '-1.5' },
+      grammar: { cover_psnr: Infinity, loop_psnr: 48.1 },
     };
   };
   const qa = (args) => runQa({ ...args, measureImpl: measured, tools: {}, linkCheck: async (url) => ({ url, ok: true, status: 200 }), history: [] });
@@ -286,6 +287,17 @@ test('the script may only say numbers the evidence has, and show only a quiet HT
   assert.ok(scriptProblems(boast, { evidenceText }).some((problem) => problem.includes('99 is not in the protocol')));
   const shown = labScript({ script: { ...SCRIPT, scenes: [...SCRIPT.scenes.slice(0, 4), { ...SCRIPT.scenes[4], asset: 'subject-a.json' }] } }, { slug: 'shorts-receipt-total', series: 'daily', evidence });
   assert.ok(scriptProblems(shown, { evidenceText }).some((problem) => problem.includes('asset may only be an HTML answer')));
+  // The six beats travel with the script, and the grammar the quality check holds the cut to is
+  // refused here first: a call to action, a first card too long for a thumbnail.
+  const beaten = labScript({ script: { ...SCRIPT, scenes: SCRIPT.scenes.map((scene, index) => ({ ...scene, beat: ['hook', 'setup', 'turn', 'proof', 'payoff'][index] })) } }, { slug: 'shorts-receipt-total', series: 'daily', evidence });
+  assert.deepEqual(beaten.scenes.map((scene) => scene.beat), ['hook', 'setup', 'turn', 'proof', 'payoff'], 'the writer\'s beats travel with the script');
+  assert.deepEqual(scriptProblems(beaten, { evidenceText }), []);
+  const backwards = labScript({ script: { ...SCRIPT, scenes: SCRIPT.scenes.map((scene, index) => ({ ...scene, beat: ['hook', 'proof', 'setup', 'payoff', 'loop'][index] })) } }, { slug: 'shorts-receipt-total', series: 'daily', evidence });
+  assert.ok(scriptProblems(backwards, { evidenceText }).some((problem) => problem.includes('scene 2: beat setup comes after proof')));
+  const asking = labScript({ script: { ...SCRIPT, scenes: [...SCRIPT.scenes.slice(0, 4), { ...SCRIPT.scenes[4], narration: ['一題不能代表全部', '記得訂閱頻道'] }] } }, { slug: 'shorts-receipt-total', series: 'daily', evidence });
+  assert.ok(scriptProblems(asking, { evidenceText }).some((problem) => problem.includes('scene 4 narration asks the viewer to act (記得訂閱)')));
+  const wide = labScript({ script: { ...SCRIPT, scenes: [{ ...SCRIPT.scenes[0], headline: 'AI 到底算不算得出這張收據的總額' }, ...SCRIPT.scenes.slice(1)] } }, { slug: 'shorts-receipt-total', series: 'daily', evidence });
+  assert.ok(scriptProblems(wide, { evidenceText }).some((problem) => problem.includes('the first card is the thumbnail: its headline is 17 characters')));
   assert.deepEqual(htmlOf('海報：\n```html\n<html><body><div>夜市</div></body></html>\n```'), { html: '<html><body><div>夜市</div></body></html>', usable: true });
   assert.equal(htmlOf('<html><body><script>alert(1)</script></body></html>').usable, false);
   assert.equal(htmlOf('<html><body><img src="https://example.com/a.png"></body></html>').usable, false);
@@ -314,6 +326,9 @@ test('the prompts are the originals, the skill keeps the same texts, and the rep
   assert.match(report, /Do not output any score, rank, ranking, average, median, sum, ratio, growth rate or percentage\s+you computed yourself/);
   assert.match(report, /a check refuses any other number/);
   assert.match(SHORTS_INSTRUCTIONS['writer:shorts-lab'], /tie \(平手\)/);
+  assert.match(SHORTS_INSTRUCTIONS['writer:shorts-lab'], /Six beats in this order, every scene naming its "beat"/);
+  assert.match(SHORTS_INSTRUCTIONS['writer:shorts-lab'], /The first card is the thumbnail: its headline at most 14 characters/);
+  assert.match(SHORTS_INSTRUCTIONS['writer:shorts-lab'], /No call to action anywhere/);
   assert.match(shortsInstructions('writer', 'shorts-lab', '只寫做過的事。'), /## The channel's stance\n只寫做過的事。$/);
   assert.doesNotMatch(shortsInstructions('verifier', 'shorts-lab', '只寫做過的事。'), /stance/i, 'the checker reads the evidence, not the stance');
   assert.throws(() => shortsInstructions('writer', 'shorts-cut'), /no Shorts prompt/);
@@ -331,7 +346,7 @@ test('an experiment goes from its frozen spec to the site, every step on its evi
   assert.match(line, /scored: a 2\/2, b 2\/2 \(a tie\)/);
   assert.match(line, /length: back to the writer \(fix round 1 of 2\)/);
   assert.match(line, /1 phrases flagged; synthesized again/);
-  assert.match(line, /quality check: all 12 items pass/);
+  assert.match(line, /quality check: all 13 items pass/);
   assert.match(line, /pushed: final approved, upload package approved/);
   assert.equal(lab.state.status, 'done');
 

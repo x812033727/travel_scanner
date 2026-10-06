@@ -7,20 +7,24 @@
 // frame (one clip runs short of its lines and one long, so the fit is exercised both ways; a
 // shot marked visual "still" gets no clip, only its keyframe named in the manifest, as the clips
 // stage does) and a twenty-second two-tone music track.
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { clipsHash, illustrated, isShot, lookHash, mixHash, picturesHash, shotVisual } from "../core/drama.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
-import { SFX_NAMES } from "./sfx.mjs";
+import { SFX_NAMES, sfxMeasureArgs, soundMeasurement } from "./sfx.mjs";
 import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 
 export const MUSIC_SECONDS = 20;
 // The second shot's clip is this much shorter than its lines, the third this much longer.
 export const SHORT_BY_SECONDS = 2;
 export const LONG_BY_SECONDS = 3;
+// Each synthetic sound effect is this long; the set holds one more sound than the rules place,
+// so it is a version 2 library with a name only a cue sheet can call.
+export const SFX_SYNTHETIC_SECONDS = 0.25;
+export const SFX_SYNTHETIC_EXTRA = "chime";
 
 function wav(samples) {
   const header = Buffer.alloc(44);
@@ -96,20 +100,30 @@ export function writeSyntheticTrack(workBase, name, binary) {
   return file;
 }
 
+/** ffmpeg's stderr for a measuring run (ebur128 prints there), or a throw with its last lines. */
+function measure(binary, args) {
+  const result = spawnSync(binary, args, { stdio: ["ignore", "pipe", "pipe"], encoding: "utf8", windowsHide: true, maxBuffer: 64 * 1024 * 1024 });
+  if (result.status !== 0) throw new Error(`ffmpeg failed to measure: ${String(result.stderr ?? "").trim().split("\n").slice(-6).join("\n")}`);
+  return result.stderr;
+}
+
 /**
- * A sound-effect set under <work base>/_sfx/<set>/ as the owner would put one there
- * (docs/videos/ILLUSTRATED.md): a short tone per sound and the manifest naming them.
+ * A sound-effect set under <work base>/_sfx/<set>/ as the owner would put one there after
+ * `assemble sfx-measure` (docs/videos/ILLUSTRATED.md §配樂與音效): a short tone per sound (the
+ * three the rules place and one more for a cue sheet) and a version 2 manifest naming them with
+ * their hashes and their measured loudness, measured for real with ffmpeg's ebur128.
  */
 export function writeSyntheticSfx(workBase, set, binary) {
   const dir = path.join(workBase, "_sfx", set);
   mkdirSync(dir, { recursive: true });
   const sounds = {};
-  SFX_NAMES.forEach((name, index) => {
+  [...SFX_NAMES, SFX_SYNTHETIC_EXTRA].forEach((name, index) => {
     const file = `${name}.wav`;
-    ffmpeg(binary, ["-f", "lavfi", "-i", `sine=frequency=${440 + index * 220}:sample_rate=${SAMPLE_RATE}:duration=0.25`, "-af", "afade=t=out:st=0.1:d=0.15", "-c:a", "pcm_s16le", path.join(dir, file)]);
-    sounds[name] = { file, sha256: fileSha256(path.join(dir, file)), source: "synthetic", licence: "test" };
+    ffmpeg(binary, ["-f", "lavfi", "-i", `sine=frequency=${440 + index * 220}:sample_rate=${SAMPLE_RATE}:duration=${SFX_SYNTHETIC_SECONDS}`, "-af", "afade=t=out:st=0.1:d=0.15", "-c:a", "pcm_s16le", path.join(dir, file)]);
+    const measured = soundMeasurement(measure(binary, sfxMeasureArgs(path.join(dir, file))));
+    sounds[name] = { file, sha256: fileSha256(path.join(dir, file)), source: "synthetic", licence: "test", ...measured, seconds: SFX_SYNTHETIC_SECONDS };
   });
-  const manifest = { set, sounds };
+  const manifest = { manifest_version: 2, set, sounds };
   writeFileSync(path.join(dir, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
   return manifest;
 }

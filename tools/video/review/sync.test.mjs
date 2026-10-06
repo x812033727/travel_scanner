@@ -22,7 +22,7 @@ import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
-import { audioCheck, checklistFrom, clearedSummary, downloadNote, guideSlugs, judgeBody, MAX_REVIEW_FILES, outlineOptions, PART_BYTES, previewArgs, REVIEW_GATES, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
+import { acceptedPicturesOf, audioCheck, checklistFrom, clearedSummary, downloadNote, guideSlugs, judgeBody, MAX_REVIEW_FILES, outlineOptions, PART_BYTES, previewArgs, REVIEW_GATES, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -77,7 +77,7 @@ test("the checklist, the Jev summary and the upload items are what the page show
  * default the outline judge is off (409) and the policy judge is not there (404). Any other
  * address is a description's link the quality check opens.
  */
-function site({ judge = null, policy = null, autoApproveFinal = false } = {}) {
+function site({ judge = null, policy = null, autoApproveFinal = false, project = {} } = {}) {
   const state = { calls: [], files: new Map(), reviews: [], judge: [] };
   const answer = (value) => (value instanceof Response ? value : Response.json(value));
   const fetchImpl = async (url, init = {}) => {
@@ -108,7 +108,7 @@ function site({ judge = null, policy = null, autoApproveFinal = false } = {}) {
       state.reviews.unshift({ id: `r${state.reviews.length}`, status, choice: null, note: null, decided_at: null, ...body });
       return Response.json(state.reviews[0], { status: 201 });
     }
-    return Response.json({ slug: "fixture-minimal", reviews: state.reviews });
+    return Response.json({ slug: "fixture-minimal", ...project, reviews: state.reviews });
   };
   return { state, fetchImpl };
 }
@@ -753,8 +753,8 @@ test("the final review carries the narration's and zh-TW's titles whatever the c
   assert.deepEqual(Object.keys(zh), ["zh-TW"], "a zh-TW video sends its own title alone, as before");
 });
 
-test("review-push --gate publish attaches every file of the package with the package check and what the card shows", async () => {
-  const box = sandbox();
+/** A cut with its approved final and a complete upload package, as `package` writes it. */
+function publishPackage(box) {
   const { final } = cutVideo(box);
   const upload = path.join(box.workdir, "upload");
   mkdirSync(path.join(upload, "captions"), { recursive: true });
@@ -775,6 +775,12 @@ test("review-push --gate publish attaches every file of the package with the pac
   const bytes = `${JSON.stringify(metadata, null, 2)}\n`;
   writeFileSync(path.join(upload, "metadata.json"), bytes);
   writeFileSync(path.join(box.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final", file: "final.mp4", sha256: sha(final), approved_at: "2026-09-25T00:00:00Z", note: "" }] }));
+  return { upload, bytes };
+}
+
+test("review-push --gate publish attaches every file of the package with the package check and what the card shows", async () => {
+  const box = sandbox();
+  const { upload, bytes } = publishPackage(box);
   const server = site();
   const push = context(box, server.fetchImpl);
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], push.ctx), EXIT.ok, push.out.stderr);
@@ -809,6 +815,68 @@ test("review-push --gate publish attaches every file of the package with the pac
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], again.ctx), EXIT.ok, again.out.stderr);
   assert.equal(broken.state.reviews[0].summary, "上傳包 1 項沒過：files");
   assert.equal(broken.state.reviews[0].payload.package.ok, false);
+});
+
+test("review-pull records an automatic publish approval as the package's approval and claims no YouTube upload", async () => {
+  const box = sandbox();
+  const { upload, bytes } = publishPackage(box);
+  // The site approved the package by itself (its check passed) and nothing is on YouTube.
+  const server = site({ project: { youtube_video_id: null, publish_approved_at: "2026-10-04T17:18:41Z" } });
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], push.ctx), EXIT.ok, push.out.stderr);
+  const [publish] = server.state.reviews;
+  Object.assign(publish, { status: "approved", decided_at: "2026-10-04T17:18:41Z" });
+
+  const pulled = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], pulled.ctx), EXIT.ok, pulled.out.stderr);
+  const line = pulled.out.stdout.split("\n").find((each) => each.startsWith("publish: "));
+  assert.equal(line, `publish: upload package approved (metadata.json ${sha(bytes).slice(0, 12)}); this records the approval only, not a YouTube upload — upload/UPLOAD.md has the Studio steps`);
+  assert.doesNotMatch(pulled.out.stdout, /owner|confirmed|uploaded|published|on YouTube/i, "package approval is not an upload or a publication");
+  const recorded = readApprovals(box.workdir).approvals.filter((entry) => entry.gate === "publish");
+  assert.equal(recorded.length, 1);
+  assert.equal(recorded[0].sha256, sha(bytes), "bound to the metadata.json that was approved");
+  assert.equal(recorded[0].file, "metadata.json");
+  assert.match(recorded[0].note, /^approved on \/admin\/videos at 2026-10-04T17:18:41Z$/);
+
+  const again = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(again.out.stdout, "publish: already recorded\n");
+
+  appendFileSync(path.join(upload, "metadata.json"), "\n");
+  const changed = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], changed.ctx), EXIT.ok, changed.out.stderr);
+  assert.equal(changed.out.stdout, "publish: approved a version that has since changed; run review-push again\n");
+  assert.equal(readApprovals(box.workdir).approvals.filter((entry) => entry.gate === "publish").length, 1, "the changed package is not approved");
+});
+
+test("review-pull says what each later gate's approval means, once, and only for the file it binds", async () => {
+  const box = sandbox();
+  const files = {
+    final: ["final.mp4", "the finished cut"],
+    languages: ["review/languages.json", `${JSON.stringify({ batch: 1, locales: { en: ["metadata", "captions"] } })}\n`],
+    dubs: ["dubs/manifest.json", `${JSON.stringify({ tracks: [{ locale: "en" }] })}\n`],
+  };
+  const server = site();
+  for (const [gate, [file, content]] of Object.entries(files)) {
+    mkdirSync(path.dirname(path.join(box.workdir, file)), { recursive: true });
+    writeFileSync(path.join(box.workdir, file), content);
+    server.state.reviews.unshift({ id: `r-${gate}`, gate, status: "approved", content_sha256: sha(content), payload: {}, choice: null, note: null, decided_at: "2026-10-04T12:00:00Z" });
+  }
+
+  const pulled = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], pulled.ctx), EXIT.ok, pulled.out.stderr);
+  assert.equal(pulled.out.stdout, [
+    "final: approval recorded",
+    "languages: the language batch is recorded; its dub tracks, if any, are up in YouTube Studio",
+    "dubs: the owner uploaded these dub tracks in YouTube Studio",
+    "",
+  ].join("\n"));
+  assert.deepEqual(readApprovals(box.workdir).approvals.map((entry) => [entry.gate, entry.file, entry.sha256]), Object.entries(files).map(([gate, [file, content]]) => [gate, path.basename(file), sha(content)]));
+
+  const again = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(again.out.stdout, "final: already recorded\nlanguages: already recorded\ndubs: already recorded\n");
+  assert.equal(readApprovals(box.workdir).approvals.length, 3);
 });
 
 test("without a token the push needs the owner", async () => {
@@ -1088,6 +1156,81 @@ test("illustrated slides push their storyboard too, and it is the gate after the
   assert.equal(board.payload.shots.length, Object.keys(shots).length);
   assert.deepEqual(board.payload.shots.map((shot) => shot.id), Object.keys(shots));
   assert.match(board.summary, /分鏡 5 鏡，judge 最低 8\/10/);
+});
+
+test("a picture kept with the judge's remarks goes up accepted, outside the board's lowest score and problems, and listed for the owner", async () => {
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  const shots = {};
+  for (const scene of doc.scenes.filter((each) => each.template === "shot")) {
+    const file = `keyframes/${scene.id}-1.png`;
+    writeFileSync(path.join(box.workdir, file), png(scene.id));
+    shots[scene.id] = { file, sha256: sha(png(scene.id)), seed: 1, judge: { overall: 8, passed: true, problems: [] }, needs_review: false };
+  }
+  // The desk failed every take and was kept after the prompt fixes (keyframes --accept-best); the clock still waits for one.
+  shots.desk = { ...shots.desk, judge: { overall: 5, passed: false, problems: ["awkward: the hand → a hand resting flat"] }, needs_review: false, accepted_with_problems: ["awkward: the hand → a hand resting flat"] };
+  shots.clock = { ...shots.clock, judge: { overall: 6, passed: false, problems: ["details: no clock"] }, needs_review: true, problems: ["details: no clock"] };
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: "l", pictures_hash: "p", shots }));
+  assert.deepEqual(acceptedPicturesOf(doc, box.workdir), [{ id: "desk", problems: ["awkward: the hand → a hand resting flat"] }]);
+  const { review: board } = await pushStoryboard(box);
+  const desk = board.payload.shots.find((shot) => shot.id === "desk");
+  assert.deepEqual([desk.needs_review, desk.accepted, desk.complete], [false, true, true]);
+  assert.deepEqual(desk.judge, { overall: 5, problems: ["awkward: the hand → a hand resting flat"] }, "the verdict goes up as it was");
+  const clock = board.payload.shots.find((shot) => shot.id === "clock");
+  assert.deepEqual([clock.needs_review, clock.accepted], [true, undefined]);
+  assert.ok(board.payload.shots.filter((shot) => shot.id !== "desk").every((shot) => shot.accepted === undefined));
+  assert.deepEqual(board.payload.judge, { overall: 6, problems: ["details: no clock"] }, "the lowest score and the problems are the other shots'");
+  assert.deepEqual(board.payload.accepted, [{ id: "desk", overall: 5, problems: ["awkward: the hand → a hand resting flat"] }]);
+  assert.match(board.summary, /^分鏡 5 鏡，judge 最低 6\/10，1 鏡待修，1 鏡保留（judge 未過，成片時站主審看）$/);
+  // Every shot kept: there is no score of the judge's to stand for the board.
+  for (const id of Object.keys(shots)) shots[id] = { ...shots[id], needs_review: false, judge: { overall: 4, passed: false, problems: ["x"] }, accepted_with_problems: ["x"] };
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: "l", pictures_hash: "p", shots }));
+  const { review: every } = await pushStoryboard(box);
+  assert.deepEqual(every.payload.judge, { overall: null, problems: [] });
+  assert.equal(every.payload.accepted.length, 5);
+  assert.ok(every.payload.shots.every((shot) => shot.accepted === true && shot.needs_review === false));
+  assert.match(every.summary, /^分鏡 5 鏡，5 鏡保留（judge 未過，成片時站主審看）$/);
+});
+
+test("the cut of a video with pictures kept with the judge's remarks goes up for the owner's review, with the pictures listed, whatever the quality check says", async () => {
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const { doc, final } = cutVideo(box);
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  const shots = {};
+  for (const scene of doc.scenes.filter((each) => each.template === "shot")) {
+    const file = `keyframes/${scene.id}-1.png`;
+    writeFileSync(path.join(box.workdir, file), png(scene.id));
+    shots[scene.id] = { file, sha256: sha(png(scene.id)), seed: 1, judge: { overall: 8, passed: true, problems: [] }, needs_review: false };
+  }
+  shots.desk = { ...shots.desk, judge: { overall: 5, passed: false, problems: ["awkward: the hand"] }, accepted_with_problems: ["awkward: the hand"] };
+  shots.race = { ...shots.race, judge: { overall: 4, passed: false, problems: ["generated: glossy"] }, accepted_with_problems: ["generated: glossy"] };
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: lookHash(doc), pictures_hash: "p", shots }));
+  const server = site({ autoApproveFinal: true });
+  const qaCalls = [];
+  const push = context(box, server.fetchImpl, { encode, runCommand: passingQualityCheck(box, final, qaCalls) });
+  // No --manual-review asked for: the kept pictures ask for it on their own.
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], push.ctx), EXIT.ok, push.out.stderr);
+  const review = server.state.reviews[0];
+  assert.equal(qaCalls.length, 1);
+  assert.equal(review.status, "pending", "a passing quality check does not approve a cut the owner has to look at");
+  assert.equal(Object.hasOwn(review.payload, "qa"), false);
+  assert.equal(review.payload.manual_review_qa.ok, true);
+  assert.equal(review.payload.manual_review, true);
+  assert.equal(review.payload.manual_review_reason, "有 2 張插圖未通過 judge（desk、race），需站主審看成片；機械品管僅供參考。");
+  assert.deepEqual(review.payload.accepted_pictures, [{ id: "desk", problems: ["awkward: the hand"] }, { id: "race", problems: ["generated: glossy"] }], "in shot order");
+  assert.match(review.summary, /；2 張插圖未通過 judge（desk、race），需站主審看$/);
+  assert.deepEqual(readApprovals(box.workdir).approvals, []);
+  // A cut whose pictures all passed goes up as before, approved on arrival.
+  for (const id of ["desk", "race"]) delete shots[id].accepted_with_problems;
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: lookHash(doc), pictures_hash: "p", shots }));
+  const plain = site({ autoApproveFinal: true });
+  const again = context(box, plain.fetchImpl, { encode, runCommand: passingQualityCheck(box, final) });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(plain.state.reviews[0].status, "approved");
+  assert.equal(plain.state.reviews[0].payload.manual_review, undefined);
+  assert.equal(plain.state.reviews[0].payload.accepted_pictures, undefined);
+  assert.doesNotMatch(plain.state.reviews[0].summary, /插圖|站主/);
 });
 
 /** review-push --gate storyboard against a fresh site: the review it received and the files it holds. */

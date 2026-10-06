@@ -16,7 +16,7 @@
 - **合併與部署之間 main 往前走了**：batch018 第一次部署在執行前就停下，重新核對新的合併內容與 CI 才部署。發布前一定再匯出一次快照、再比一次。（`docs/article-localization/releases/batch018/README.md`）
 - **CI 的 release-safety job 在 `apps/api/**`、npm manifest、`tools/article-localization/**`、`docs/article-localization/**` 變動時跑 PostgreSQL 發布測試**，純內容 PR 也會觸發；以那個 job 的結果為準，本機的 PostgreSQL skip 不能當成發布安全的證據。
 - **失敗的 publish 階段用同一個 state 目錄重跑**，journal 會對帳；換新目錄等於丟掉重複保護。
-- **`publish_bundle.py` 不看 `publish_holds.json`**；那個檔只擋 `guides-import --publish`。要擋某篇就別把它放進 bundle。
+- **`publish_holds.json` 也擋 `publish_bundle.py`**，不只 `guides-import --publish`：`dry-run` 與兩個發布階段（階段開始、每個發布操作之前）都重讀部署版本的清單，被擋的 slug 不發布；`prepare_route_b_bundle.py` 編譯時也拒絕。bundle 蓋不過它，編譯成功也不會解除它。（PR #966）
 - `migrate-prepared` 不碰任何有 attempt 或失敗狀態的 job；舊 pilot job 要用 `materialize` 加 `--reason` 升級，然後每個語系重新渲染、重新審稿。
 
 ## 翻譯品質（審稿抓到的嚴重項）
@@ -29,7 +29,7 @@
 
 ## 環境
 
-- **auto 模式分類器擋「把腳本灌進正式站容器」**，包括 `export_snapshot.py` 與 `publish_bundle.py`；換寫法重試會被當成繞過。這是 Claude 改走路線 B 的原因。
+- **auto 模式分類器擋「把腳本灌進正式站容器」**，包括 `export_snapshot.py` 與 `publish_bundle.py`；換寫法重試會被當成繞過。這是 Claude 改走路線 B 的原因；但路線 B 編譯後發布一樣要新快照與 `publish_bundle.py`，那兩步也得切 Manual 或交給站主跑。
 - Windows 上 Playwright 的 `chromium-*/chrome-win64/chrome.exe` 可能啟動失敗（WinError 14001 side-by-side）；改用同版本的 `chromium_headless_shell-*` 當 `CHROMIUM_BIN`。
 - 重導向的 stdout 在 Windows 可能是 cp1252；讀寫中文 JSON 的 Python 一律 `PYTHONUTF8=1`（`pipeline.py` 自己會 reconfigure）。
 - 舊的翻譯票卡在 `review`、scope 與你重疊時，`tasks claim` 會拒絕；確認沒有人在寫、PR 已合併後才用 `--force`，而且不要改那張舊票。（batch009、PR #642 的票都遇過）

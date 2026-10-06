@@ -73,9 +73,11 @@ export function geminiText(segments) {
 
 /**
  * Every request for a video, in narration order. A request carries one voice: a scene is cut
- * where it outgrows the server's limit and, in a drama, where the speaker or the emotion changes
- * (`voiceFor` folds a line's emotion into a Gemini style; Azure voices ignore it). A slides video
- * has one voice and no speakers, so its requests and clip keys are what they always were.
+ * where it outgrows the server's limit and where the speaker or the effective voice changes
+ * (`voiceFor` folds the narration's performance plan and a line's emotion into a Gemini style;
+ * Azure voices ignore both, and lint warns). A slides video has one voice and no speakers, so
+ * without a plan or a cue its requests and clip keys are what they always were; a line with a
+ * cue takes a style of its own, so it is a request and a take of its own.
  */
 export function planRequests(doc, lexicon) {
   const requests = [];

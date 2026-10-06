@@ -29,8 +29,16 @@
 | `motion.look`、`motion.run` | 只有眼神、表情、呼吸或顫抖的鏡頭 | 沒有量 | 不超過三分之一，最多連 2 個（編輯判斷） | 33%，連 3／32%，連 2 |
 | `motion.opening` | 開場三個鏡頭 | 都在事件裡 | 不能三個都是上面那種 | 三個都是／有動作 |
 | `motion.repeat`、`cut.dissolve` | 同一種運鏡；溶接 | 沒有量 | 最多連 3 個；不超過一成（編輯判斷） | 0；0% |
+| `risk.setup_repeat` | 同一種框法拍同一批人、在同一個地點，連續幾個（特寫、中近景、大特寫算同一種；過肩自成一種） | 對話戲在三、四個鏡位之間來回切（目視） | 最多連 2 個（編輯判斷） | 連 5（手部插鏡）／連 2 |
+| `risk.decorative` | 畫面裡沒有人、也不是插鏡的鏡頭（山、旗、空路） | 幾乎每個鏡頭都有一張臉（目視）；逐鏡數的那支 89 個裡 4 個沒有臉，都是插鏡 | 不超過一成（編輯判斷） | 0%／0% |
+| `risk.motion_purpose` | `motion` 以鏡頭為主詞（the camera pushes in、pan across …）而沒有人做事 | 沒有量 | 0 個（編輯判斷） | 0／0 |
+| `risk.intent` | 沒有台詞、只有眼神呼吸、也沒揭露什麼（不是插鏡、全景或 `end_frame`）的鏡頭 | 沒有量 | 不超過 5%（編輯判斷） | 5%／2% |
+| `risk.text_first` | 卡片（片名、章節、引言）對鏡頭 | 五支都沒有片頭卡，片名畫面最長 0.25 秒 | 最多 2 張，或不超過一成時長（編輯判斷） | 0／0 |
+| `risk.cinematic_claim` | `prompt` 寫 cinematic、epic、8k 那類字，卻沒寫景別也沒寫運鏡 | 沒有量 | 0 個（編輯判斷） | 0／0 |
 
 E1 第一個鏡頭是 5 秒的旁白配鎖定中近景，動作是手指握緊一次；兩集 81 個鏡頭的 `camera` 全部寫鎖定。E1 的台詞長度與旁白占比已經在目標內（E2 的台詞偏長）；差的是開場、空間、插鏡太多與開頭三鏡沒有事發生。這是站主那句「不會想繼續看」在分鏡上對得到的地方。
+
+最後六列 `risk.*` 是 2026-10-05 加的（票 `2026-10-05-slideshow-risk-craft-rows`）：把「像投影片」拆成六件付錢前就量得到的結構——同一個鏡位畫了三次、沒有人的空景、鏡頭在動而人沒做事、沒台詞也沒事發生的靜拍、用卡片講故事、`prompt` 許願 cinematic 卻沒交代鏡頭。計畫先評分再付錢的主意借自 OpenMontage（AGPL，只借做法，不抄程式）。量過的結果：偶的江湖五集（每集約 455 鏡）六列全過（`risk.intent` 1–4%、`risk.decorative` 0–1%、其餘 0），`tools/video/core/fixtures/drama/video.json` 全過，被退回的《喜宴未散》E1 實測剪輯只有 `risk.setup_repeat` 沒過（S03–S07 五個手部插鏡連拍）。`risk.setup_repeat`、`risk.decorative`、`risk.text_first` 三列進 `CRAFT_GATE_ROWS`：它們量的是結構，不是讀某一行字；另外三列各讀一行 `motion` 或 `prompt` 的字，誤讀會把稿子退錯，所以只警告。
 
 ## 一、開場：前 10 秒與前 100 秒
 
@@ -74,6 +82,7 @@ E1 第一個鏡頭是 5 秒的旁白配鎖定中近景，動作是手指握緊�
 - 每個鏡頭寫一個**對人或對物做的動作**：端給、別過臉、推回去、撕開、放下、指著、站起來。`motion` 以「誰＋動詞」開頭；畫面裡只有一個人時可以省略主詞。
 - 眼神、表情、呼吸、手指收緊、站著不動是反應，不是動作。反應鏡需要它們，所以腳本量的是比例與連續：不超過三分之一、最多連兩個、開場三個不能全是。加一個慢推不會讓它變成動作。
 - 鎖定機位不是預設值。對話的近景可以鎖定；進場、揭露、情緒升高給推近或跟拍；同一種運鏡最多連三個。
+- **攝影機不是演員。** 運鏡寫在 `camera`；`motion` 寫人對人或對物做的事。`motion` 只剩「The camera pushes in on her face」「Pan across the table」這種以鏡頭為主詞的句子，`risk.motion_purpose` 會沒過。沒有人也不是插鏡的空景（山、旗、空路）不超過一成（`risk.decorative`）；沒台詞、只有眼神、也沒揭露什麼的靜拍不超過 5%（`risk.intent`）；同一種框法拍同一批人在同一地點最多連兩個（`risk.setup_repeat`：特寫、中近景、大特寫算同一種，過肩自成一種，所以「特寫—過肩反拍—特寫」是三個鏡位）。
 - 一鏡一個主要動作、一種運鏡的限制不變（animation-production.md）：動作大不等於動作多，「伸手、拿起、交出、對方反應」仍然拆鏡。
 - `visual: "still"` 的鏡頭畫面不會動：`prompt` 寫動作進行到一半的那一格，運鏡寫在 `camera`（關鍵字表在 `.agents/skills/youtube-video/references/drama.md`）。靜圖鏡頭的 `camera` 要寫運鏡或 `locked`：工具只讀 `camera`，不讀 `motion`（「推回去」「站起來」是畫面裡的事）；沒寫的鏡頭緩慢漂移（`drift`），寫 `locked`（static、fixed、tripod）就整格不動。
 - 來源沒有的行為不能為了好看加進去；先在來源允許的行為裡挑看得見的那一個。
@@ -89,7 +98,7 @@ E1 第一個鏡頭是 5 秒的旁白配鎖定中近景，動作是手指握緊�
 ## 五、節奏與成本
 
 - 目標是中位數 2.5–3.5 秒、九成不超過 6 秒、最長 8 秒，開場 30 秒至少 10 個鏡頭。參考片更快（中位數約 2 秒），我們先到這裡；中位數低於 2 秒就合併。檢查腳本的門檻是 `tools/video/core/craft.mjs` 的 `TARGETS`：`pace.median` 在 2–4 秒之間都算過（`medianShotSeconds`；2.5–3.5 是建議），`p90ShotSeconds` 6、`longestShotSeconds` 8、`opening30Shots` 10。
-- `lint` 對有角色的漫劇在中位數低於 2 秒才警告（`tools/video/core/drama.mjs` 的 `MIN_MEDIAN_SHOT_SECONDS`；旁白講述的影片仍是 3 秒），並把這份規格沒過的每一列印成警告（`craft hook.opening: …`；同一套實作在 `tools/video/core/craft.mjs`，檢查腳本與工人都讀它）。免關卡作品的工人在開場與鏡位那幾列（`CRAFT_GATE_ROWS`：`hook.*`、`motion.opening`、`size.face`、`size.wide`、`size.reestablish`、`size.stall`）沒過時直接退回撰稿，其餘列由撰稿修或在回報裡回答。
+- `lint` 對有角色的漫劇在中位數低於 2 秒才警告（`tools/video/core/drama.mjs` 的 `MIN_MEDIAN_SHOT_SECONDS`；旁白講述的影片仍是 3 秒），並把這份規格沒過的每一列印成警告（`craft hook.opening: …`；同一套實作在 `tools/video/core/craft.mjs`，檢查腳本與工人都讀它）。免關卡作品的工人在開場、鏡位與投影片風險那幾列（`CRAFT_GATE_ROWS`：`hook.*`、`motion.opening`、`size.face`、`size.wide`、`size.reestablish`、`size.stall`、`risk.setup_repeat`、`risk.decorative`、`risk.text_first`）沒過時直接退回撰稿，其餘列由撰稿修或在回報裡回答。
 - 切得密要花錢，而且照鏡頭數算，不照成片秒數算：每個鏡頭是一張關鍵影格、一次 judge，`clips` 等級再加一份素材與一次 judge。素材買幾秒由 `tools/video/media/clips.mjs` 的 `clipSeconds` 決定，不是鏡長：`veo-3.1*` 配 1080p 固定 8 秒（此批，價目在 `docs/videos/series-plans/production-20261001/profile.json`）；其他模型是鏡長進位成整秒、夾在 `MIN_CLIP_SECONDS` 4 與 `MAX_CLIP_SECONDS` 10 之間，再往上貼齊模型可給的秒數，所以 4 秒以下的鏡頭都買 4 秒。`hybrid`、`stills` 等級的靜圖鏡頭不買素材，但圖與 judge 照算。一鏡、一集、一個月各多少錢，三條路線（伺服器 API、Hailuo 網頁、Kling）的價目與額度，在 `.agents/skills/animation-production/SKILL.md`「錢怎麼算」「三條路線」，每個常數的出處在 `.agents/skills/animation-production/references/cost-model.md`。先把密度給開場 30 秒與每個爽點；任何等級，整集估價超出已核定的額度時，列出鏡頭數與金額問站主，不自己加。
 - **同一份素材切兩三次**（說—聽—說回到同一鏡位）：第二次回到鏡位的鏡頭寫 `data.source: { shot, from_s }`，它不畫關鍵影格、不買素材，`assemble` 從那個鏡頭的素材第 `from_s` 秒切進來；`from_s` 加鏡長要在 lint 的上限內（`tools/video/core/drama.mjs` 的 `MAX_SOURCE_CLIP_SECONDS` 10 秒；有 production profile 的作品 8 秒，`tools/video/core/lint.mjs` 的 `productionShotProblems`），也要在來源鏡頭實際買到的秒數內（此批固定 8 秒；其他模型可能只有 4 秒，`clips` 在來源買下後把超出的切鏡標 `needs_review`），`clips --dry-run` 印出省下的秒數，帳本記一筆 `status: "cut"`。同一份素材放大成較近的景別（punch-in）還沒做：要拿一場試拍的素材量過 1.5 倍裁切後的畫質再決定，做好之前不要在分鏡裡假設它。
 
@@ -113,18 +122,47 @@ node .agents/skills/youtube-video/scripts/drama_craft_check.mjs <檔案> --json 
 
 - **什麼時候跑**：撰稿在 `lint` 之後跑、查核改完再跑、旁白實測剪輯出來後用實測檔再跑。
 - **沒過怎麼辦**：改到過，或在回報裡逐項寫這一集為什麼不同（例如追逐戲沒有插鏡）。不改目標、不為一集調門檻、不靠改景別關鍵字騙過檢查。它不擋任何指令；`lint` 的錯誤要清掉，這支沒過的要改或回答。
-- **它讀的是文字**：景別、運鏡、動作來自 `camera`、`prompt`、`motion` 的英文關鍵字。拿試拍兩集 81 個鏡頭與人工逐鏡判讀對照，景別 80 個一致、動作 81 個一致；換一種寫法仍可能誤判，覺得某列不對就用 `--json` 看那個鏡頭被讀成什麼。全過只代表分鏡的結構對了；畫面好不好看、演得像不像，仍要照 visual-quality.md 看實際小樣。
+- **它讀的是文字**：景別、運鏡、動作來自 `camera`、`prompt`、`motion` 的英文關鍵字。拿試拍兩集 81 個鏡頭與人工逐鏡判讀對照，景別 80 個一致、動作 81 個一致；換一種寫法仍可能誤判，覺得某列不對就用 `--json` 看那個鏡頭被讀成什麼。`risk.*` 六列另外讀 `prompt` 與 `motion` 裡的人物詞（he、she、guests、bird、角色 id 的英文片段）、地點詞（hall、courtyard、forge …；沒寫地點的鏡頭沿用上一鏡的）與以鏡頭為主詞的子句；`--json` 每個鏡頭多出 `place` 與 `nobody`。沒有分鏡資料的實測剪輯（只有 `editorial_duration_s`）這幾列讀不到東西，當作過。全過只代表分鏡的結構對了；畫面好不好看、演得像不像，仍要照 visual-quality.md 看實際小樣。
 - 一個全新的代理只照這個 skill 寫了一段 24 鏡的開場（2026-10-03 的前向測試）：第一稿就過了當時 19 列裡的 18 列，前四鏡各有新資訊、衝突在 7.8 秒出現；它也回報了十幾處寫不清楚的地方，這一版已補上。這是一次測試，不是品質保證。
 
 ## 八、重新量參考片
 
-換題材、站主給新的參考片、或距離上次量測超過一季時重量。在內建瀏覽器開影片頁，照 `.agents/skills/youtube-video/scripts/yt_shot_probe.js` 開頭的步驟：設定視窗大小 → 貼上腳本 → 等廣告結束 → `measure` 量前 240 秒 → `stats()` → 每鏡一格的聯絡表與每半秒一格的字幕帶各截圖。規矩：
+換題材、站主給新的參考片、或距離上次量測超過一季時重量。兩種量法，紀錄都放 `docs/videos/drama-craft/`（資料夾的 `README.md` 列出每份紀錄、兩種量法的差別與 JSON 的欄位）：**瀏覽器探針**不下載、每 0.25 秒一格、看得到畫面內容，但一次只到 60–240 秒；**離線分析**（下一小節）逐格、任何長度、量得到聲音，但只有數字、要先下載。先寫探針的做法。在內建瀏覽器開影片頁，照 `.agents/skills/youtube-video/scripts/yt_shot_probe.js` 開頭的步驟：設定視窗大小 → 貼上腳本 → 等廣告結束 → `measure` 量前 240 秒 → `stats()`（看 `suspected_multi_cut_runs` 與 `high_motion_share`，見下面特效片那一條）→ 每鏡一格的聯絡表與每半秒一格的字幕帶各截圖。規矩：
 
 - 至少三支、同題材；記片名、頻道、網址、查閱日、查閱當下的觀看數；量到的數字與原始鏡長寫進 `docs/videos/drama-craft/` 新的一份紀錄，不覆寫舊的。
 - 「畫面可見」「推論」「沒有驗」分開寫，逐鏡數過的與目視的也分開寫。瀏覽器面板靜音時不對聲音下結論（有沒有旁白只能說「字幕讀起來像」）；只抽格就不對動作是否流暢下結論。
 - 引用數字之前，拿一張聯絡表對過剪點；請另一個代理照同樣步驟重量一支，兩邊的剪點要對得上。
+- **特效多、一直在動的片（打鬥、法術、閃電、粒子、攝影機從不停）腳本兩個方向都會錯**：鏡頭內每 0.25 秒的亮度差常在 20–60，跟剪點一樣大，所以 0.25–0.5 秒的短鏡連在一起會被併成一個剪點，閃光、爆炸長大、甩鏡的模糊格又會被算成剪點。`stats()` 的 `suspected_multi_cut_runs` 有任何一段，或 `high_motion_share` 超過約 0.1（2026-10-05 量前 60 秒：對話劇 xVXEefk1vWs 是 0.014、沒有任何一段；布袋喵 B 片是 0.646、11 段），就當成這種片：每一段用 1/8 秒的聯絡表（`every(start - 0.25, end, 0.125)`，見腳本開頭第 6 步）逐格數剪點，其餘的剪點也用聯絡表挑掉假的；鏡數、平均與中位數**只能寫範圍**（腳本的數字到對過聯絡表的數字），不能引用單一支片的精確值。例子是 2026-10-04 的真一隻布袋喵量測（`docs/videos/drama-craft/reference-study-20261004-budaimiao.md` 的「交叉驗證」）：腳本預設的剪點比裁定後少約三成，只看聯絡表目視數的又多約五成；B 片 19.75–26 秒與 213.5–220.5 秒腳本一個剪點都沒有，實際各有 8 個以上。腳本的 `cuts()` 沒有改，舊的量測仍然可以比。
 - 不下載影片、不把別人的畫面或台詞放進我們的素材；引用只到說明結構所需的程度。
 - 數字改了，回來改這一篇的表與 `drama_craft_check.mjs` 的 `TARGETS`、`REFERENCE`，兩邊一起；表裡每一列都對得到腳本的一列。
+
+### 離線分析：任何長度、逐格
+
+```bash
+# 本機檔案；--range 可重複，省略就量整支
+node .agents/skills/youtube-video/scripts/reference_analysis.mjs --file <影片檔> [--range 0-240] [--range 1800-1920] --out <OUT>/<id>.json
+# YouTube：呼叫 yt-dlp 下載到暫存目錄、量完刪掉；--compare 拿既有紀錄對答案
+node .agents/skills/youtube-video/scripts/reference_analysis.mjs --url <id 或網址> --range 0-120 --out <OUT>/<id>-0-120.json --compare docs/videos/drama-craft/reference-study-20261003.json
+```
+
+- **什麼時候用**：探針只量到 60 秒（面板藏著時 seek 失敗，`2026-10-05-re-run-yt-shot-probe-past`）、要量全片或第 30 分鐘、要量鏡內動作量或聲音時。它量不到畫面內容：景別、臉、插鏡、誰在說話仍要聯絡表與字幕帶（上一小節），兩種量法互補，不互相取代。
+- **需要什麼**：ffmpeg，找法跟影片工具一樣（`FFMPEG_PATH`、PATH、Windows 的 winget 套件；指令只用參數陣列呼叫，Windows 與 WSL 都能跑）。`--url` 時另外要 yt-dlp（`pip install yt-dlp` 或 `winget install yt-dlp.yt-dlp`；不在 PATH 就 `--yt-dlp <路徑>` 或環境變數 `YT_DLP_PATH`）。yt-dlp 是當**外部程式呼叫**的，repo 不內含它的程式碼（Unlicense，借用它也只借做法）。**要不要下載是站主的決定**（YouTube 的服務條款）：腳本把檔案下載到暫存目錄，量完就刪（`--keep` 留著，路徑印在最後），進 repo 的只有 JSON 裡的數字；下載的影片不進 repo、不進素材。
+- **量什麼、怎麼量**（每一條都寫在輸出 JSON 的 `method`）：
+  - 剪點：`select='gt(scene,0.3)'` 逐格加 `showinfo`。ffmpeg 的 scene 分數是 min(d, |d − 前一對的 d|)／100，d 是相鄰兩格的平均亮度差（0–255），所以 0.3 是「亮度跳 30/255、而且比前一對多跳 30」的突變；探針的規則是 0.25 秒兩格差 26/255 加突變或直方圖位移。同一種量法、不同格距：相鄰格之間鏡內的差很小，所以門檻可以比探針嚴一點而不漏；ffmpeg 文件建議 0.3–0.5，`--scene` 可改。0.1 以上的候選分數都留在 `scene_scores`（`--floor`），不用重新解碼就看得到換門檻會多出或少掉哪幾個。剪點時間是新鏡頭的第一格（探針記的是取樣格，最多晚 0.25 秒）。溶接、慢擦接可能漏，閃光、爆炸長大、甩鏡可能多算——跟探針一樣，所以特效片一樣只寫範圍。
+  - 動作：`signalstats` 的 YDIF，每 0.25 秒一格（`--step`），畫面先縮成 64×64、去掉底部 26%（燒錄字幕換行的地方），門檻照探針：差 <1 frozen、1–4 slow、>4 active、≥20 跟剪點一樣大；含剪點的取樣格不算。`near_frozen_share`、`high_motion_share` 與探針同名同義，可以直接比；`motion` 裡另有四種比例與平均差。它量的是畫面變了多少，不是誰在動。
+  - 亮度與色彩：同一批取樣的 YAVG（平均、p10、p90）與 SATAVG，在 `picture`。
+  - 聲音：`silencedetect`（−30 dB、至少 0.5 秒，`--silence-db`、`--silence-min`），`sound.non_silent_share` 是有聲音的比例，`silence_times` 列出每段靜音。有配樂的片幾乎不會靜音，所以這是台詞密度的**上限**，不是台詞；台詞長度與是不是旁白仍然只能從字幕帶讀。
+- **輸出**：同 `docs/videos/drama-craft/` 紀錄 JSON 的形狀（`schema_version` 1；`videos[].ranges[]` 的 `shots`、`mean`、`median`、`p10`、`p90`、`longest`、`over_6s`、`opening_10s`、`opening_30s`、`spread_p90_over_p10`、`near_frozen_share`、`high_motion_share`、`cuts`、`lengths` 與探針的 `stats()` 同算法，`tools/reference-analysis.test.mjs` 拿 2026-10-03 紀錄的四段鏡長反算回每個已發表的數字），多出 `scene_scores`、`motion`、`picture`、`sound`，與 `source`（檔名、大小、sha256）。`--url` 時 `title`、`channel`、`published`、`views_at_check`、`highest_quality`、`caption_tracks` 從 yt-dlp 的 metadata 填；本機檔案這些是 null。欄位表在 `docs/videos/drama-craft/README.md`。
+- **跟探針對答案**：`--compare <紀錄.json>` 把紀錄裡同一支片的每份剪點清單（`ranges[].lengths` 累加、逐鏡表 `shots[]` 的起點、`cross_check[].verifier_cut_times`）跟這次量到的在 ±0.3 秒內一對一配對（`--tolerance`），寫進 `comparison`、印在最後：對上幾個、只有這邊有的、只有紀錄有的。對話劇要先對過 2026-10-03 的清單（xVXEefk1vWs 前 120 秒的 46 個剪點）再引用它的數字；特效片兩邊都會錯，照上一小節只寫範圍。
+- **還沒量的兩支**（2026-10-05 開這支腳本的環境連不到 YouTube，沒有下載任何影片；站主決定下載後在自己的機器跑）：
+
+  ```bash
+  node .agents/skills/youtube-video/scripts/reference_analysis.mjs --url xVXEefk1vWs --range 0-120 --out <OUT>/xVXEefk1vWs-0-120.json --compare docs/videos/drama-craft/reference-study-20261003.json
+  node .agents/skills/youtube-video/scripts/reference_analysis.mjs --url m2qhz2n9618 --out <OUT>/m2qhz2n9618-full.json --compare docs/videos/drama-craft/reference-study-20261004-budaimiao.json
+  ```
+
+  要看的：第一支對上 46 個剪點裡的幾個（探針前 60 秒的 23 個全對上）、`high_motion_share` 是否仍遠低於 0.1（探針前 60 秒是 0.014）；第二支 19.75–26 與 213.5–220.5 秒各量到幾個剪點（裁定是各 8 個以上，探針一個都沒有）、全片的 `high_motion_share`（探針前 60 秒是 0.646）。數字出來後寫成 `docs/videos/drama-craft/` 新的一份紀錄（不覆寫舊的），再回來改這一節的數字與上一小節 0.1 的門檻，`reference-study-20261003.md` 的「獨立重量」補一句離線量到的結果。
+- **測試**：`node --test tools/reference-analysis.test.mjs`，用 lavfi 合成的片（已知剪點、旋轉的中段、兩段靜音）與一個只會複製檔案的替身 yt-dlp，不連網；沒裝 ffmpeg 的機器（main 的 CI）會跳過實測那幾項、仍跑統計與解析的部分。
 
 ## 還沒驗、不能宣稱的事
 

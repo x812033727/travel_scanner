@@ -1,13 +1,16 @@
 // The drama format's media stages: `media-status` here; `look`, `keyframes`, `clips` and `music`
 // in their own modules, each built by its own ticket (docs/videos/DRAMA.md). Until a module
 // exists its command says which ticket builds it and exits with the "missing tool" code, the
-// way tools/video/cli.mjs does for whole areas.
+// way tools/video/cli.mjs does for whole areas. `stock` (stock.mjs, docs/videos/ILLUSTRATED.md
+// §圖庫照片) is reached by running this file directly, `node tools/video/media/cli.mjs stock …`,
+// until tools/video/cli.mjs lists it among its areas.
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 
-import { docDir, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
+import { EXIT as EXIT_CODES } from "../cli.mjs";
+import { docDir, readJson, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { ledgerTotals } from "./ledger.mjs";
@@ -21,7 +24,23 @@ export const STAGES = {
   keyframes: ["keyframes.mjs", "2026-09-26-video-drama-look-keyframes"],
   clips: ["clips.mjs", "2026-09-26-video-drama-clips-music"],
   music: ["music.mjs", "2026-09-26-video-drama-clips-music"],
+  stock: ["stock.mjs", "2026-10-05-stock-photo-slides-and-attribution"],
 };
+
+const HELP = `Media commands of the video pipeline (docs/videos/DRAMA.md, docs/videos/ILLUSTRATED.md)
+
+Usage: node tools/video/media/cli.mjs <command> [options]
+
+  media-status [--slug S] [--json]                 what the server allows and what this video has spent
+  stock search --query "Seoul skyline" [--provider pexels|pixabay] [--orientation landscape|portrait|square]
+               [--per-page N] [--page N] [--slug S] [--json]
+                                                   stock photo candidates with the credit each vendor asks for; nothing is downloaded
+  stock fetch --slug S --provider P --id N [--workdir D] [--json]
+                                                   the photo into <workdir>/stock/<sha256>.<ext> and its credit into video.json assets[]
+  look, keyframes, clips, music                    the drama format's generation stages (node tools/video/cli.mjs <stage> …)
+
+Exit codes: 0 ok, 1 lint or check failed, 2 usage, 3 needs the owner, 4 external service, 5 tool missing.
+`;
 
 export function exitFor(error, EXIT) {
   if (error.who === "owner") return EXIT.owner;
@@ -97,4 +116,39 @@ export async function run(command, args, ctx) {
     }
     throw error;
   }
+}
+
+/**
+ * This file run on its own: the context tools/video/cli.mjs would build, and the same answers to
+ * a usage mistake (exit 2). `stock` has no entry in that CLI's area table yet, so this is how it
+ * is reached: `node tools/video/media/cli.mjs stock search --query "…"`.
+ */
+export async function main(argv, overrides = {}) {
+  const ctx = { root: ROOT, env: process.env, stdout: process.stdout, stderr: process.stderr, now: () => new Date(), EXIT: EXIT_CODES, ...overrides };
+  const [command, ...args] = argv;
+  if (!command || command === "help" || command === "--help" || command === "-h") {
+    ctx.stdout.write(HELP);
+    return command ? ctx.EXIT.ok : ctx.EXIT.usage;
+  }
+  try {
+    return await run(command, args, ctx);
+  } catch (error) {
+    if (error instanceof UsageError || error?.code === "ERR_PARSE_ARGS_UNKNOWN_OPTION" || error?.code === "ERR_PARSE_ARGS_INVALID_OPTION_VALUE" || error?.code === "ERR_PARSE_ARGS_UNEXPECTED_POSITIONAL") {
+      ctx.stderr.write(`${error.message}\n`);
+      return ctx.EXIT.usage;
+    }
+    if (error instanceof SyntaxError) {
+      ctx.stderr.write(`invalid JSON: ${error.message}\n`);
+      return ctx.EXIT.lint;
+    }
+    throw error;
+  }
+}
+
+// No top-level await: a stage module imports this file back (clientOptions), and a module still
+// awaiting at its top level never settles for the module that imports it.
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+  main(process.argv.slice(2)).then((code) => {
+    process.exitCode = code;
+  });
 }

@@ -59,8 +59,8 @@
         }
       }
     },
-    "independent_structural_qa_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch011-korea\\jeju-independent-structural-qa-v3.json",
-    "independent_structural_qa_sha256": "f7a86e6a7bfc1e1810e84b958a509d70c9a748619c0616660444be903af29617",
+    "independent_structural_qa_path": "<home>\\.codex\\article-localization-release\\batch011-korea\\jeju-independent-structural-qa-v3.json",
+    "independent_structural_qa_sha256": "359a2bdf6357846dec95debebf616b8aa90918608b5a390855ab522daeec3e93",
     "normalized_document_sha256": {
       "en": "c765864889ca5b181daa821f39b087bd9f3ddfc359d6ec170432cd3adf63a531",
       "ja": "5f6f7a2e5071c92172165e9100fbce764f7593fd256b16d476713e9eb4bcb0ae",
@@ -86,9 +86,9 @@
         "mobile_390px_render": "c407e2bd018676e94f9b7ddb74a3aa87fdcca529203fd20e4c93e62f61816415"
       }
     },
-    "pack_path": "C:\\Users\\x8120\\.codex\\worktrees\\article-localization-batch-011-korea\\travel_scanㄐ\\apps\\api\\app\\guides\\content\\jeju-car-rental-guide.json",
+    "pack_path": "<home>\\.codex\\worktrees\\article-localization-batch-011-korea\\travel_scanㄐ\\apps\\api\\app\\guides\\content\\jeju-car-rental-guide.json",
     "pack_sha256": "49a57dd942994cd5bd8ecf473ecbddece0713cdf3052e8cb2ce854c92e2f639a",
-    "packet_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch011-korea\\jeju-candidate-review-request-v3.json",
+    "packet_path": "<home>\\.codex\\article-localization-release\\batch011-korea\\jeju-candidate-review-request-v3.json",
     "packet_sha256": "fc51f6213f8fe9d1650d3412aa8669289c380d5911e6cec1248fad505b7b8163",
     "photo_sha256": {
       "hero.jpg": "3aa3605038c484e3de9f423290bf82cb25952387211a73795b56a3ece76a4541",
@@ -96,8 +96,8 @@
       "photo-2.webp": "95253c8f2bc47a50daa1d0929ec173c5fc254c34d309313d59289ce9205dfe64"
     },
     "source_correction_commit": "1fbd57ac",
-    "source_correction_review_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch011-korea\\source-correction-independent-review-v3.json",
-    "source_correction_review_sha256": "773608f2f5a3f0d83151a3223db8eb657a76dadcebf55f38bcc3f059544265af",
+    "source_correction_review_path": "<home>\\.codex\\article-localization-release\\batch011-korea\\source-correction-independent-review-v3.json",
+    "source_correction_review_sha256": "a632a7efb76be79f26c3d5017ee8875688d7105cb16fe9ab8b21a3c4ef25bb64",
     "svg_sha256": {
       "en": "79bec592f0569c930c4ab21cd5e2755eb47035a944238ec888f5049fdd25b657",
       "ja": "78829ffacd8355d88c881138fe72e0176e28cab49f95a2ebac10a924254566c7",
@@ -125,6 +125,7 @@
     "https://commons.wikimedia.org/wiki/File:Jejuairport2024.jpg",
     "https://commons.wikimedia.org/wiki/File:Jeju_island_road_-_panoramio.jpg"
   ],
+  "redaction_note": "Redacted 2026-10-05 for the public repository (task 2026-10-02-rebind-receipts-after-scrubbing-host-details): the local Windows profile path in the *_path values here, in structural-qa.json and in source-correction-review.json became <home>. independent_structural_qa_sha256 and source_correction_review_sha256 now record those redacted repository copies; no other value changed. The reviewed originals and the digests first recorded here are in commit 65ef4328b (#648).",
   "review": {
     "idp": "Every locale explicitly limits bilateral recognition to Taiwan-issued valid IDP and retains original Taiwan licence and passport, 21-year minimum, B-class 9-seat ceiling, and one year from entry; no language-to-nationality inference.",
     "images": "All four 1600x900 SVGs parsed, 49 visible text nodes apiece, text bbox overflow count zero and desktop output inspected. Generic subtitles in ja/ko/zh-CN now localized. Existing hero and two photos unchanged by hash; authors, licenses and Commons source links preserved across locales. Renderer links source and Creative Commons deed.",

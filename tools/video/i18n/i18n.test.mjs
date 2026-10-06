@@ -10,7 +10,8 @@ import { writeLanguages } from "../core/stages.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
 import { estimateTimeline, speechHash } from "../core/timeline.mjs";
 import { localizedThumbnail, sourceHashes, thumbnailGap, thumbnailSourceHash, thumbnailStatus } from "../core/translations.mjs";
-import { buildSheet, mergeSheet, sheetTodo } from "./cli.mjs";
+import { cuePieces } from "../core/captions.mjs";
+import { buildSheet, CONTEXT_KEYS, mergeSheet, sheetContext, sheetTodo, translationContext, withoutContext } from "./cli.mjs";
 
 function context(box) {
   const out = { stdout: "", stderr: "" };
@@ -302,4 +303,57 @@ test("a sheet without the thumbnail's words still merges: a note, and the locale
   assert.equal(buildSheet(bare, null, "en").thumbnail, null);
   assert.equal(thumbnailStatus(bare, null), "none");
   assert.equal(thumbnailGap(bare, null, "en"), null);
+});
+
+test("i18n-sheet carries the glossary and the narration's cue boundaries, says so, and a merge reads neither", async () => {
+  const box = sandbox();
+  // One line long enough for two cues, so the sheet has a boundary to show.
+  const docFile = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(docFile, "utf8"));
+  const long = "每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？還是應該先想清楚自己要它做什麼，再決定要不要換？";
+  doc.scenes[0].lines[0].text = long;
+  writeFileSync(docFile, JSON.stringify(doc));
+  const expected = { glossary: { terms: ["AI"], sources: ["範例來源"] }, boundaries: { k7p2: cuePieces(long, "zh-TW") } };
+  assert.equal(expected.boundaries.k7p2.length, 2);
+  assert.deepEqual(translationContext(doc, loadProject({ slug: box.slug, root: box.root }).lexicon), expected);
+
+  const make = context(box);
+  assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en"], make.ctx), EXIT.ok, make.out.stderr);
+  assert.match(make.out.stdout, /^en: to translate .*; glossary 1 term and 1 source, cue boundaries for 1 line\n$/);
+  const sheetPath = path.join(box.workdir, "i18n", "en.todo.json");
+  const sheet = JSON.parse(readFileSync(sheetPath, "utf8"));
+  assert.deepEqual([sheet.glossary, sheet.boundaries], [expected.glossary, expected.boundaries]);
+  assert.match(sheet.note, /`glossary\.terms` are the dictionary terms this video uses[\s\S]*`boundaries` maps a line id to the pieces/);
+  assert.deepEqual(sheetContext(sheet), expected);
+  assert.deepEqual(Object.keys(withoutContext(sheet)).filter((key) => CONTEXT_KEYS.includes(key)), []);
+  assert.deepEqual(withoutContext(sheet).lines, sheet.lines, "everything else stays");
+  assert.deepEqual(sheetContext(withoutContext(sheet)), {}, "a sheet from before the context has none to send");
+
+  // A metadata sheet has no lines, so the glossary alone; a captions sheet both.
+  const meta = context(box);
+  assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en", "--parts", "metadata"], meta.ctx), EXIT.ok, meta.out.stderr);
+  assert.match(meta.out.stdout, /; glossary 1 term and 1 source \(metadata only\)\n$/);
+  const metaSheet = JSON.parse(readFileSync(sheetPath, "utf8"));
+  assert.deepEqual([metaSheet.glossary, "boundaries" in metaSheet], [expected.glossary, false]);
+  assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en", "--parts", "captions"], context(box).ctx), EXIT.ok);
+  const capSheet = JSON.parse(readFileSync(sheetPath, "utf8"));
+  assert.deepEqual([capSheet.glossary, capSheet.boundaries], [expected.glossary, expected.boundaries]);
+
+  // The merge reads neither: the translation is the same as from a sheet without them.
+  assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en"], context(box).ctx), EXIT.ok);
+  const full = filled(JSON.parse(readFileSync(sheetPath, "utf8")));
+  const project = loadProject({ slug: box.slug, root: box.root });
+  const withContext = mergeSheet(project.doc, full, null);
+  const without = mergeSheet(project.doc, withoutContext(full), null);
+  assert.deepEqual(withContext, without);
+  assert.deepEqual(withContext.problems, []);
+  assert.deepEqual(Object.keys(withContext.translation).filter((key) => CONTEXT_KEYS.includes(key)), []);
+  writeFileSync(sheetPath, JSON.stringify(full));
+  assert.equal(await main(["i18n-merge", "--slug", box.slug, "--locale", "en"], context(box).ctx), EXIT.ok);
+  assert.deepEqual(Object.keys(loadProject({ slug: box.slug, root: box.root }).translations.en).filter((key) => CONTEXT_KEYS.includes(key)), []);
+
+  // buildSheet without a context writes a sheet as before.
+  const plain = buildSheet(project.doc, null, "en");
+  assert.equal("glossary" in plain || "boundaries" in plain, false);
+  assert.doesNotMatch(plain.note, /glossary/);
 });

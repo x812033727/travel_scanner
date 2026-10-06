@@ -189,7 +189,7 @@
         },
         {
           "type": "paragraph",
-          "text": "此版本 SDK 的引用欄位說明以 UTF-8 位元組計算位置。繁體中文通常占多個位元組，表情符號也不同；下載包先編碼、核對範圍與字元邊界，再解碼片段。官方簡短範例中的一般字串切片適合說明流程，正式處理中文時應依 SDK 欄位規格與實際回應再核對。"
+          "text": "引用位置的單位，官方各處寫法不一：Interactions API 參考與 Python SDK 的引用片段欄位都寫以位元組計算，但沒有指明哪一種編碼；搜尋教學本身沒寫單位，範例做法也不一，Go 範例按位元組切，Python、JavaScript 與 Java 範例直接按字串索引切。繁體中文通常占多個位元組，表情符號也不同；下載包先以 UTF-8 編碼、核對範圍與字元邊界，再解碼片段，切到半個字的引用會被拒絕，不會顯示亂碼。官方範例中的一般字串切片適合說明流程，正式處理中文時應依欄位說明與實際回應再核對。"
         },
         {
           "type": "heading",
@@ -225,7 +225,7 @@
         },
         {
           "type": "paragraph",
-          "text": "先用 no-search.json 測模型沒搜尋的情況：作者預覽會說明缺證據，真實顯示流程則拒絕把不完整搜尋結果當成正常成品。再用 unsafe-url.json 測拒絕危險連結，最後以 wrong-byte-offset.json 測中文字元被切開時能否報错，而非顯示亂碼。"
+          "text": "先用 no-search.json 測模型沒搜尋的情況：作者預覽會說明缺證據，真實顯示流程則拒絕把不完整搜尋結果當成正常成品。再用 unsafe-url.json 測拒絕危險連結，最後以 wrong-byte-offset.json 測中文字元被切開時能否報錯，而非顯示亂碼。"
         },
         {
           "type": "paragraph",
@@ -353,7 +353,12 @@
         {
           "title": "Google Search Grounding 官方教學",
           "url": "https://ai.google.dev/gemini-api/docs/google-search",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Gemini Interactions API 參考（url_citation 的起點以位元組計算，未指明編碼）",
+          "url": "https://ai.google.dev/api/interactions-api",
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Gemini API 使用條款",
@@ -364,6 +369,11 @@
           "title": "官方 Python SDK",
           "url": "https://googleapis.github.io/python-genai/",
           "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Python SDK 參考：Segment（引用片段起訖位置以位元組計算，未指明編碼）",
+          "url": "https://googleapis.github.io/python-genai/genai.html",
+          "checked_on": "2026-10-05"
         }
       ]
     }

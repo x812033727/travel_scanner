@@ -137,6 +137,15 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
         "usd_per_image_2k": None,
     }
     assert body["image"]["configured"] and not body["models"]["clips"]["minimax"] == []
+    # The tool draws a style plate only for an image model that takes one (media/stages.mjs
+    # takesStyleReference): both Gemini image models do, MiniMax image-01 does not.
+    images = {
+        entry["value"]: entry["style_references"]
+        for vendor in body["models"]["images"].values()
+        for entry in vendor
+    }
+    assert images["gemini-3-pro-image"] == 1 and images["gemini-3.1-flash-image"] == 1
+    assert images["image-01"] == 0
     # The image choices say what a 2K picture costs, which is how the tool knows to ask for one.
     assert body["image"]["usd_per_image_2k"] == 0.134
     assert body["budgets"]["clip_seconds"] == {
@@ -161,6 +170,10 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
     assert (body["slides_music_track"], body["slides_sfx_set"]) == (None, None)
     assert body["store"]["writable"] and body["limits"]["max_reference_images"] == 4
     assert body["limits"]["judge_checks"] == 1, "the tools ask yes/no only of a server that says so"
+    # The tool composes each shot's prompt under the chosen image model's limit, counting the
+    # avoidance text minimax.py appends (tools/video/media/prompt-budget.mjs reads these).
+    assert body["limits"]["image_prompt_chars"] == 4000
+    assert body["limits"]["image_prompt_chars_minimax"] == 1500
 
 
 @pytest.mark.asyncio

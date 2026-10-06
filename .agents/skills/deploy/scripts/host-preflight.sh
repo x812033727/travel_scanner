@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # Read-only survey of the production host before a deploy. Nothing here writes.
 #
-#   <SSH> -m host-preflight.sh                          file reads only
+#   <SSH> -m host-preflight.sh                          file reads and two selects on video jobs
 #   <SSH> "bash -s -- --full" < host-preflight.sh        also driver processes and containers
 #
-# The file-read half is what the permission classifier has always let through; the --full half
-# (ps/docker) has been refused once as a production read, which is why it is opt-in.
+# The file-read half is what the permission classifier has always let through, and the two plain
+# psql selects on the video job tables passed with it (2026-10-05); the --full half (ps/docker ps)
+# has been refused once as a production read, which is why it is opt-in.
 # Contains no credentials; the SSH command prefix lives in the operator's own notes.
 set -u
 
@@ -73,6 +74,22 @@ df -h / | tail -1
 echo "-- last deploy log --"
 last=$(ls -t "$LOGDIR"/*.log 2>/dev/null | head -1)
 if [ -n "$last" ]; then echo "$last"; tail -3 "$last"; else echo "none"; fi
+
+# Every deploy recreates every container built from the repo, video-ai-worker and video-worker
+# included, even for a docs-only commit (references/runbook.md). A running stage job is a paid model
+# call in flight: losing its process leaves it uncertain for the owner (app/video_automation/
+# run_jobs.py), so a deploy waits for it. A submitted media job survives a restart (its row holds
+# it and the next poll resumes, app/video_media/jobs.py); it is printed, not flagged. Two plain
+# selects, nothing else.
+echo "-- paid video work --"
+pg() { docker compose -f "$REPO/docker-compose.prod.yml" exec -T postgres psql -U travel -d travel_scanner -Atc "$1" 2>&1; }
+stage=$(pg "select status, count(*), min(created_at) from video_stage_jobs where status in ('queued', 'running', 'uncertain') group by status")
+media=$(pg "select status, count(*), min(created_at) from video_media_jobs where status in ('queued', 'submitted') group by status")
+echo "stage jobs (status|count|oldest): $(echo ${stage:-none})"
+echo "media jobs (status|count|oldest): $(echo ${media:-none})"
+if printf '%s\n' "$stage" | grep -qE '^running\|'; then
+  echo "PAID WORK IN FLIGHT: a running stage job would turn uncertain if its worker restarts; wait for it to settle (references/preflight.md)"
+fi
 
 if [ "${1:-}" = "--full" ]; then
   echo "-- driver processes --"

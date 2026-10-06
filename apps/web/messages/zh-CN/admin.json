@@ -36,6 +36,7 @@
       "content": "景点内容",
       "travelData": "航班与住宿数据",
       "affiliate": "分润导流",
+      "video": "视频素材",
       "other": "其他"
     }
   },
@@ -1541,6 +1542,14 @@
     "azure_speech_key": {
       "label": "Speech 密钥",
       "help": "Azure 门户 → Speech 资源 → 密钥和终结点的“密钥 1”。只存在服务器，不会发给视频工具。"
+    },
+    "pexels_api_key": {
+      "label": "Pexels API Key",
+      "help": "供视频产线搜索、抓取幻灯片用的真实照片。加密存在服务器，只会发给 api.pexels.com；Pexels 希望在说明栏标注“Photo by … on Pexels”。"
+    },
+    "pixabay_api_key": {
+      "label": "Pixabay API Key",
+      "help": "用途相同，对应 Pixabay。加密存在服务器，只会发给 pixabay.com；Pixabay 希望在说明栏标注“Image by … from Pixabay”。"
     }
   },
   "settingsPanel": {
@@ -2284,6 +2293,26 @@
     "studioStep1": "下载上面每个语言的音轨。",
     "studioStep2": "到 YouTube Studio 左菜单“语言”→ 这支视频 →“添加语言”→ 选语言 →“配音”旁的“添加”→ 选取文件 →“发布”，每个语系一次。",
     "studioStep3": "回来按“已在 Studio 上传配音”。之后再勾的语言会再来一张卡片。",
+    "production": {
+      "states": {
+        "not_adopted": "主工作进程未接手",
+        "registered": "主工作进程已有登记",
+        "blocked": "主工作进程已阻断",
+        "stopped": "工作进程设有 STOP 暂停",
+        "done": "主工作进程已记录完成",
+        "dropped": "主工作进程已记录放弃",
+        "unavailable": "无法确认工作进程状态"
+      },
+      "help": {
+        "not_adopted": "请从原制作流程及已批准素材继续。此页不会自动派发任务，现有审核文件可能已可下载。",
+        "registered": "工作进程已保存这支视频的任务登记；这不代表进程正在运行，审核关卡及设置仍可能让它等待。",
+        "blocked": "工作进程已记录阻断原因。请先核对错误及已有成果，再决定是否重试。",
+        "stopped": "STOP 暂停文件让这笔已登记任务暂停。请先确认暂停原因，再继续原制作流程。",
+        "done": "主工作进程将自身流程记为完成，仍需另行确认后来勾选的语言是否就绪。",
+        "dropped": "主工作进程将这笔任务记为放弃；后台的审核及发布记录仍是独立状态。",
+        "unavailable": "API 无法从挂载的工作目录确认工作进程状态。重试前请先核对挂载及原制作者。"
+      }
+    },
     "publishStates": {
       "deciding": "等你决定语言",
       "making": "语言尚未完成",
@@ -2409,7 +2438,8 @@
       "loudness": "响度",
       "layout": "版面",
       "evidence": "证据",
-      "variety": "多样性"
+      "variety": "多样性",
+      "grammar": "首尾循环"
     },
     "uploadPackage": "上传包",
     "packageChapters": "{count} 章",

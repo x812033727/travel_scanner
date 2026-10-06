@@ -63,10 +63,42 @@ judge 不看的：軸線與視線、相鄰鏡頭的道具連戲、景別是不�
 
 | 路線 | 已知（來源、日期） | 未驗 |
 | --- | --- | --- |
-| MiniMax API（H3、H3 Max） | 官方影片生成文件（platform.minimax.io，2026-10-03 讀）：鏡頭指令用方括號接在描述後面，列出的字是 `[pan]`、`[zoom]`、`[static]`；首尾格用 `role: "first_frame"`／`"last_frame"`，0–2 張；prompt ≤ 7000 字。2026-10-04 再讀（官方）：H3 只在 v2 端點，**有首格時不能帶參考圖**；Hugging Face 上 MiniMax-H3 的官方提示指南要運鏡寫成「種類＋幅度＋速度」的句子（The camera pushes in with small amplitude at slow speed），圖生影片用固定第一行加三個欄位（格式在 `animation-preproduction/references/route-decisions.md` 第六節）；帶方向的十五個方括號指令（`[Pan left]`、`[Truck right]`…）官方只寫給 Hailuo 2.3／02／Director。產線的 adapter 不加這些字，送的是 `clipPrompt` 原文加 `. Avoid:`；它送的是 v1 欄位、同時帶首格與 subject_reference，跟官方 v2 規則不合（另有票） | H3 照不照方括號；H3 對原文 `locked` 的反應 |
+| MiniMax API（H3、H3 Max） | 官方影片生成文件（platform.minimax.io，2026-10-03 讀）：鏡頭指令用方括號接在描述後面，列出的字是 `[pan]`、`[zoom]`、`[static]`；首尾格用 `role: "first_frame"`／`"last_frame"`，0–2 張；prompt ≤ 7000 字。2026-10-04 再讀（官方）：H3 只在 v2 端點，**有首格時不能帶參考圖**；Hugging Face 上 MiniMax-H3 的官方提示指南要運鏡寫成「種類＋幅度＋速度」的句子（The camera pushes in with small amplitude at slow speed），圖生影片用固定第一行加三個欄位（格式在 `animation-preproduction/references/route-decisions.md` 第六節）；帶方向的十五個方括號指令（`[Pan left]`、`[Truck right]`…）官方只寫給 Hailuo 2.3／02／Director。產線的 adapter 不加這些字，送的是 `clipPrompt` 原文加 `. Avoid:`。H3 走 v2 圖生影片（`POST /v2/video_generation`；`apps/api/app/video_media/providers/minimax.py` 的 `V2_VIDEO_MODELS` 與 `_v2_body`）：`content[]` 只有文字、首格與末格，不送參考圖；catalog 的 `reference_images` 是 0，帶參考圖的片段伺服器回 422（`apps/api/app/video_media/jobs.py` 的 `_request_fields`），`clips` 也不送（`tools/video/media/clips.mjs` 的 `refs`），所以 H3 的臉只靠核准的首格 | H3 照不照方括號；H3 對原文 `locked` 的反應 |
 | Hailuo 網頁 | 同一批模型（H3 4–15 秒 768p／2K；Hailuo 2.3 6 秒，768p 另有 10 秒，1080p 只有 6 秒），image-to-video 頁有首格與參考上傳；H3 2K 下載的 mp4 是 2560×1440、24 fps、帶 AAC 音軌（實測 2026-10-04，一支文生影片）；價目與方案在 `animation-production` 的 references | 網頁的 prompt 上限；768P 的實際輸出尺寸（官方自架指南的畫布是 1344×768）；AI Polish 開或關的差別；H3 照不照方括號（官方只寫給 2.3） |
 | Veo 3.1 / Lite（產線） | 官方 Veo 文件（ai.google.dev，2026-10-03 讀）建議的字：`aerial view, eye-level, top-down shot, dolly shot, worms eye`、`wide shot, close-up, single-shot or two-shot`；頁面沒有列 `negativePrompt`；Lite 有首尾格、沒有延長 | 文件摘要說 Lite 有參考圖，但 adapter 對 Lite 的 referenceImages 回 422、catalog 寫 0 張：產線照程式走，哪邊對沒驗；`locked`、`pan left` 這些原文 Lite 怎麼理解沒驗 |
 | Kling 社群 MCP（github.com/199-mcp/mcp-kling） | README（2026-10-03 讀）：`generate_image_to_video` 的 camera movement 是 `Static, zoom, pan, or auto`，motion prompt 可自動或自訂；`generate_video` 的 camera control 是 `type: "simple"` 加 `{ zoom: 5 }` 這類設定，只有 V1 模型；用 access key 與 secret key 簽 JWT（走開發者 API 的資源包，不是會員 credits） | pan 的方向、zoom 的正負怎麼給；`negative_prompt` 的上限；哪些模型版本吃 camera control |
 | Kling 官方 API、官方 MCP 與 CLI | 官方 API 文件頁是 SPA，2026-10-03 抓到的是空殼。官方 MCP 與 CLI 的指南（kling.ai/app/mcp/guide）登入後讀得到（實測 2026-10-04）：CLI 的 `who_am_i` 列 `image_to_video` 的模型與參數，`kling-video-v3_0` 是 3–15 秒整數、`first_image`＋`tail_image`，`enable_audio` 與 `prefer_multi_shots` 預設 true（進產線都傳 false）；整份在 `.agents/skills/animation-production/references/providers-and-plans.md` §1.3 | 2026-10-04 從官方 API 文件讀到（官方）：舊的 image2video 端點的 `camera_control` 是預設型別或六軸（horizontal／vertical／pan／tilt／roll／zoom，-10 到 10、一次一軸），不能跟末格一起用；3.0 的官方建議是把運鏡寫進正文。官方 MCP／CLI 常見問題說跟網頁同一套積分。授權進來的帳號 NORMAL、0 credits，一支都沒生成；網頁 3.0 有沒有鏡頭控制 UI 未驗 |
 
 三條路線共同的事：關鍵影格仍由產線畫（景別、構圖、軸線在圖裡已經定了）；`camera` 這一行照產線的讀者寫，再把運鏡翻成那家的字；外面做好的 mp4 用 `clips import` 回到產線（`.agents/skills/animation-production/references/stage-preconditions.md` 最後一節）。
+
+## 六、`H3_FIRST_LINE` 對 MiniMax 官方 H3 格式的核對（2026-10-05）
+
+`.agents/skills/animation-preproduction/scripts/shot_plan.mjs` 的 `--route hailuo --hailuo-model h3` 正文（`route-decisions.md` 第六節）：
+
+```text
+<H3_FIRST_LINE>
+
+integrated_multimodal_description: [Shot 1] <motion>. <H3_SENTENCE 的運鏡句>. <look.motion>. <WEB_KEEP>
+overall_soundscape: N/A
+non_diegetic_music: N/A
+```
+
+對照的官方文件（2026-10-05 讀）：Hugging Face 模型卡的兩份指南（huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/docs/VIDEO_PROMPT_WRITING_GUIDE_base_en.md 與同目錄的 `…_ref_en.md`，模型卡最後更新 2026-08-13）、GitHub 的官方 skill（github.com/MiniMax-AI/MiniMax-H3 的 `skills/h3-prompt-writing/SKILL.md`，它引用的 `references/base-en.txt`、`ref-en.txt` 就是這兩份指南）。官方有兩種格式：**三欄**（T2VA／I2VA／FL2VA／L2VA：`integrated_multimodal_description`、`overall_soundscape`、`non_diegetic_music`，有首尾格時前面加一行對齊句）與**六段**（Ref2VA：`subject_definitions`、`summary`、`retention_analysis`、`detailed_description`、`overall_soundscape`、`non_diegetic_music`）。`ayase0307/h3-video-prompting`（MIT）把海螺 App 與 MiniMax Design 的「官方中文三段」與社群區塊式另列為 C、D 兩種，並說本地與 hosted 端點的差別在有沒有 Context-IR 改寫器：沒有改寫器時三欄／六段是硬需求。產線只用首格的圖生影片，對的是三欄的 I2VA。
+
+| 項目 | `shot_plan.mjs` 寫的 | 官方（base 指南） | 核對 | 建議（不在本票範圍，提給 `shot_plan.mjs` 的 owner） |
+| --- | --- | --- | --- | --- |
+| 第一行 | `For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.` | I2VA 的固定句，逐字相同。FL2VA 是另一句：`How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot N) aligns with the S.SS-second mark of the target video.`，秒數兩位小數、對齊實際時長 | 一致（I2VA） | 計畫有末格的鏡頭（H3 網頁有首尾格）要用 FL2VA 句；`shot_plan.mjs` 只有 I2VA 句，末格鏡頭現在會貼到錯的對齊句 |
+| 第一行之後 | 空一行 | 「followed by one blank line before the core fields」 | 一致 | — |
+| 三欄的名稱與順序 | 同官方 | `integrated_multimodal_description` → `overall_soundscape` → `non_diegetic_music` | 一致 | — |
+| 欄與欄之間 | 單一換行 | 格式區塊與四個範例的三欄之間各空一行 | 小差異 | 欄之間改 `\n\n`；影不影響結果沒驗 |
+| `[Shot 1]` 開頭 | `[Shot 1] <motion>.`，守首格的句子（`WEB_KEEP`）放最後 | 「At the beginning of [Shot 1], state the overall style and initial composition」，風格詞從 `Cinematic`、`live-action`、`2D-animated`、`3D CG`、`claymation`、`watercolor`、`vintage film` 挑，首格任務從參考圖推；I2VA 的順序是**首格錨 → 動作起點 → 連續發展 → 結果或反應**，範例第一句 `[Shot 1] Live-action, cinematic, the young woman shown in <Picture 1> remains beside the rain-covered train window, preserving her appearance, clothing, seat position, and the carriage layout.` | **不一致**：沒有風格詞、沒有引用 `<Picture 1>` 的錨句，守首格的句子在尾巴 | 把 `WEB_KEEP` 改寫成錨句放在 `[Shot 1]` 後第一句並引用 `<Picture 1>`，前面帶一個官方風格詞（從 look preset 對應：`anime-2d` → `2D-animated`、`cinematic-3d` → `3D CG`…）；`motion` 照舊接在後面 |
+| 運鏡句 | `H3_SENTENCE[group]`，慢的加 ` with small amplitude at slow speed`，其他會動的加 ` at a steady speed` | 種類＋幅度＋速度寫成動作句；「Add amplitude and speed only when they are meaningful; medium amplitude and normal speed are usually omitted」；速度詞只有 `at slow speed`、`at fast speed` | 部分不一致：`at a steady speed` 不在官方詞表 | 不慢的運鏡不寫速度；慢的保留 `with small amplitude at slow speed` |
+| 鎖定 | `The camera is a static shot and stays completely still` | 範例 `The camera holds a static shot as the runner exits the frame.` | 可接受 | 可改成 `holds a static shot` 句型 |
+| 跟拍、drift | `The camera is a tracking shot that follows the subject`；`The camera trucks right with small amplitude at slow speed` | `Tracking Shot`＝跟著移動的主體；`Truck` 是官方種類 | 一致 | — |
+| 兩個聲音欄 | 都 `N/A` | `overall_soundscape` 的 `N/A`「只在使用者明確要求全片無聲時」；`non_diegetic_music` 的 `N/A`＝沒有配樂 | 刻意的偏差（產線丟棄音軌） | 保留；要不要改寫一句室內底噪，小樣決定。社群（ayase0307）：寫了 `N/A` 仍約兩成出現音樂，正文不能有音樂情緒詞 |
+| `no on-screen text`、`no cuts` | `WEB_KEEP` 的否定句 | 官方沒有負面欄；畫面裡要有的字寫英文雙引號 | 未驗 | ayase0307 引官方飛書回覆：不要在 prompt 寫「不要字幕」；小樣對這一句有無各試一次 |
+| 單鏡 | 只寫 `[Shot 1]` | 一鏡到底就沒有 `[Shot 2]`；切鏡要 `[Shot N] At MM:SS.mmm,` 嚴格遞增 | 一致 | — |
+| 對白 | 不寫 | `(S1)` 加 `<d>[English] …</d>`；畫外音 `says in an off-screen voiceover … lips remain completely closed` | 刻意（配音另外合成） | 嘴要閉的鏡頭寫正向句 `lips remain closed`（社群對亂語的修法：全程安靜、嘴閉合、持續動作） |
+| 總長 | 沒有限制 | 官方 skill：描述的總時長要對齊 4–15 秒；指南無字數；社群 300–700 英文字、有首格時縮短（表在 `camera-keywords.md` 第五節） | — | `shot_plan.mjs` 的 `chars` 欄已算；可加「字數對齊秒數」的提醒 |
+
+結論：第一行與三欄的外框逐字對，差在 `[Shot 1]` 裡的順序（官方要先錨首格與風格，再寫動作）與運鏡的速度詞。這些改動屬於 `shot_plan.mjs`，已另開票 `2026-10-05-shot-plan-h3-body-official-i2va`，等 `2026-10-05-delivery-promise-and-continuity-locks` 放開那支腳本的 scope 再做。
