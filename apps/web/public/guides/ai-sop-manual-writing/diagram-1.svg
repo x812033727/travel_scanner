@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">從口述到可交接的 SOP / From a spoken walkthrough to a handover-ready SOP</title>
+<desc id="desc">流程圖，上排由左到右四步：01 錄下實際操作（熟手邊做邊說、錄音加螢幕錄影、用測試帳號與假資料）；02 轉成逐字稿（依講者分段、點時間戳記回放、核對聽錯的字）；03 AI 拆成步驟（一步一個動作、先寫位置再寫動作、只用逐字稿的內容）；04 人工補齊（看情況改寫成條件、例外寫明停在哪與找誰、標出截圖位置）。接著往下到下排由右到左：05 新人試做（沒做過的人照著做、旁人只記錄不提示、兩輪都順才送核准），試做卡住時沿紅色虛線回到 04，把問題標回對應步驟再修改；06 核准發布（負責人與核准人、版次與生效日、附上修訂紀錄）；07 定期複審（流程一改就改版、寫下次複審日、舊版撤下封存）。左下角紅色虛線框是全程守則：個資換成代號、截圖用不透明色塊蓋、不寫帳號密碼。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#102A2B"/></marker><marker id="arrowWarn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#B8442D"/></marker></defs>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<text x="80" y="52" font-size="30" font-weight="700" fill="#102A2B">從口述到可交接的 SOP</text>
+<text x="80" y="84" font-size="18" fill="#5C6B6B">From a spoken walkthrough to a handover-ready SOP</text>
+<rect x="80" y="165" width="300" height="190" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<circle cx="230" cy="165" r="24" fill="#2F6F9F"/>
+<text x="230" y="171" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">01</text>
+<text x="230" y="225" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">錄下實際操作</text>
+<text x="230" y="265" font-size="17" fill="#102A2B" text-anchor="middle">熟手邊做邊說</text>
+<text x="230" y="297" font-size="17" fill="#102A2B" text-anchor="middle">錄音加螢幕錄影</text>
+<text x="230" y="329" font-size="17" fill="#102A2B" text-anchor="middle">用測試帳號與假資料</text>
+<rect x="460" y="165" width="300" height="190" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<circle cx="610" cy="165" r="24" fill="#2F6F9F"/>
+<text x="610" y="171" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">02</text>
+<text x="610" y="225" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">轉成逐字稿</text>
+<text x="610" y="265" font-size="17" fill="#102A2B" text-anchor="middle">依講者分段</text>
+<text x="610" y="297" font-size="17" fill="#102A2B" text-anchor="middle">點時間戳記回放</text>
+<text x="610" y="329" font-size="17" fill="#102A2B" text-anchor="middle">核對聽錯的字</text>
+<rect x="840" y="165" width="300" height="190" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<circle cx="990" cy="165" r="24" fill="#0D6B68"/>
+<text x="990" y="171" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">03</text>
+<text x="990" y="225" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">AI 拆成步驟</text>
+<text x="990" y="265" font-size="17" fill="#102A2B" text-anchor="middle">一步一個動作</text>
+<text x="990" y="297" font-size="17" fill="#102A2B" text-anchor="middle">先寫位置再寫動作</text>
+<text x="990" y="329" font-size="17" fill="#102A2B" text-anchor="middle">只用逐字稿的內容</text>
+<rect x="1220" y="165" width="300" height="190" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<circle cx="1370" cy="165" r="24" fill="#0D6B68"/>
+<text x="1370" y="171" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">04</text>
+<text x="1370" y="225" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">人工補齊</text>
+<text x="1370" y="265" font-size="17" fill="#102A2B" text-anchor="middle">看情況改寫成條件</text>
+<text x="1370" y="297" font-size="17" fill="#102A2B" text-anchor="middle">例外：停在哪、找誰</text>
+<text x="1370" y="329" font-size="17" fill="#102A2B" text-anchor="middle">標出截圖位置</text>
+<rect x="1220" y="515" width="300" height="190" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<circle cx="1370" cy="515" r="24" fill="#D97A2B"/>
+<text x="1370" y="521" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">05</text>
+<text x="1370" y="575" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">新人試做</text>
+<text x="1370" y="615" font-size="17" fill="#102A2B" text-anchor="middle">沒做過的人照著做</text>
+<text x="1370" y="647" font-size="17" fill="#102A2B" text-anchor="middle">旁人只記錄不提示</text>
+<text x="1370" y="679" font-size="17" fill="#102A2B" text-anchor="middle">兩輪都順才送核准</text>
+<rect x="840" y="515" width="300" height="190" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+<circle cx="990" cy="515" r="24" fill="#2E7D5B"/>
+<text x="990" y="521" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">06</text>
+<text x="990" y="575" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">核准發布</text>
+<text x="990" y="615" font-size="17" fill="#102A2B" text-anchor="middle">負責人與核准人</text>
+<text x="990" y="647" font-size="17" fill="#102A2B" text-anchor="middle">版次與生效日</text>
+<text x="990" y="679" font-size="17" fill="#102A2B" text-anchor="middle">附上修訂紀錄</text>
+<rect x="460" y="515" width="300" height="190" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+<circle cx="610" cy="515" r="24" fill="#2E7D5B"/>
+<text x="610" y="521" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">07</text>
+<text x="610" y="575" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">定期複審</text>
+<text x="610" y="615" font-size="17" fill="#102A2B" text-anchor="middle">流程一改就改版</text>
+<text x="610" y="647" font-size="17" fill="#102A2B" text-anchor="middle">寫下次複審日</text>
+<text x="610" y="679" font-size="17" fill="#102A2B" text-anchor="middle">舊版撤下封存</text>
+<rect x="80" y="515" width="300" height="190" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4" stroke-dasharray="14 10"/>
+<text x="230" y="575" font-size="20" font-weight="700" fill="#B8442D" text-anchor="middle">全程守則</text>
+<text x="230" y="615" font-size="17" fill="#102A2B" text-anchor="middle">個資換成代號</text>
+<text x="230" y="647" font-size="17" fill="#102A2B" text-anchor="middle">截圖用不透明色塊蓋</text>
+<text x="230" y="679" font-size="17" fill="#102A2B" text-anchor="middle">不寫帳號密碼</text>
+<line x1="386" y1="260" x2="452" y2="260" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="766" y1="260" x2="832" y2="260" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="1146" y1="260" x2="1212" y2="260" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="1214" y1="610" x2="1148" y2="610" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="834" y1="610" x2="768" y2="610" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="1450" y1="361" x2="1450" y2="507" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="1290" y1="509" x2="1290" y2="363" stroke="#B8442D" stroke-width="4" stroke-dasharray="12 8" stroke-linecap="butt" marker-end="url(#arrowWarn)"/>
+<text x="1268" y="425" font-size="17" font-weight="700" fill="#B8442D" text-anchor="end">試做卡住</text>
+<text x="1268" y="453" font-size="17" fill="#B8442D" text-anchor="end">標回對應步驟再改</text>
+<line x1="80" y1="790" x2="150" y2="790" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<text x="166" y="796" font-size="17" fill="#5C6B6B">照順序進行</text>
+<line x1="330" y1="790" x2="400" y2="790" stroke="#B8442D" stroke-width="4" stroke-dasharray="12 8" stroke-linecap="butt" marker-end="url(#arrowWarn)"/>
+<text x="416" y="796" font-size="17" fill="#5C6B6B">試做卡住就回頭修改</text>
+<rect x="640" y="776" width="44" height="28" rx="6" fill="#FFFFFF" stroke="#B8442D" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="700" y="796" font-size="17" fill="#5C6B6B">每一步都要遵守</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

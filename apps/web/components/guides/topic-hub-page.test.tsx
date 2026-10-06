@@ -127,7 +127,7 @@ describe("the topic hub", () => {
     render(await renderTopicHub(route()));
     const crumbs = screen.getByRole("navigation", { name: "頁面路徑" });
     const links = Array.from(crumbs.querySelectorAll("a")).map((a) => [a.textContent, a.getAttribute("href")]);
-    expect(links).toEqual([["首頁", "/"], ["生活分享", "/life"], ["AI 工具", "/life/topics/ai"]]);
+    expect(links).toEqual([["首頁", "/"], ["生活分享", "/life"], ["AI 工具", "/ai"]]);
     expect(screen.getByRole("link", { name: /^AI 名詞解釋/ }).getAttribute("aria-current")).toBe("page");
   });
 
@@ -164,11 +164,11 @@ describe("what the topic hub tells search engines", () => {
     expect(metadata.title).toBe("AI 工具：文章與攻略 | Mokaair");
     expect(metadata.description).toBe("AI 的一切。");
     expect(metadata.robots).toBeUndefined();
-    expect(metadata.alternates?.canonical).toBe("http://localhost:3000/zh-TW/life/topics/ai");
+    expect(metadata.alternates?.canonical).toBe("http://localhost:3000/zh-TW/ai");
     expect(metadata.alternates?.languages).toEqual({
-      en: "http://localhost:3000/en/life/topics/ai",
-      "zh-TW": "http://localhost:3000/zh-TW/life/topics/ai",
-      "x-default": "http://localhost:3000/en/life/topics/ai",
+      en: "http://localhost:3000/en/ai",
+      "zh-TW": "http://localhost:3000/zh-TW/ai",
+      "x-default": "http://localhost:3000/en/ai",
     });
   });
 

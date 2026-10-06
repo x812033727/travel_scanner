@@ -1,0 +1,44 @@
+# ai-proposal-writing 查核第一輪（2026-10-05）
+
+格式：主張｜結果（ok / fixed / softened / removed）｜來源網址
+
+- 標題「用 AI 寫企劃書與提案：結構、數字查核與版本管理」（不含事實數字）｜ok｜—
+- description：AI 排大綱、反方、摘要；三組提示詞；Word 與 Google 文件版本紀錄（與正文一致）｜ok｜—
+- 骨架句：《中長程個案計畫編審要點》列出計畫緣起、計畫目標、執行策略及方法、期程與資源需求、預期效果及影響、財務計畫，附則有風險管理（原文寫成現行規定，只依 107 年版）｜softened（改寫成第五點的事項，加註 114 年 2 月修正、現行條文以國家發展委員會公告為準）｜https://ws.ndc.gov.tw/Download.ashx?u=LzAwMS9hZG1pbmlzdHJhdG9yLzEwL3JlbGZpbGUvNTU2Ni80ODAzL2U2NjVlYTliLTkzYzItNDA4Ny1iMjRhLWE3ZTA1MDM4ZTc2ZS5wZGY%3D&n=6KGM5pS%2F6Zmi5omA5bGs5ZCE5qmf6Zec5Lit6ZW356iL5YCL5qGI6KiI55Wr57eo5a%2Bp6KaB6bueKOWQq%2BmZhOihqCkucGRm&icon=..pdf
+- 第五點在 114 年 2 月 4 日修正（院授發管字第1141400149號）｜fixed（正文與 sources 補上；原稿認定最後修正為 107 年）｜https://www.ey.gov.tw/File/5B5C5FDCFE8479A9?A=C
+- 編審要點要求目標具體、盡量用產出型或成果效益型指標（第五點第二款）｜removed（現行第五點讀不到；改成不歸屬法規的一般寫法）｜https://www.ey.gov.tw/File/5B5C5FDCFE8479A9?A=C
+- 修正計畫要寫績效指標、衡量標準及目標值（第十點）｜removed（112 年另有修正，現行第十點讀不到）｜https://ws.ndc.gov.tw/Download.ashx?u=LzAwMS9hZG1pbmlzdHJhdG9yLzEwL3JlbGZpbGUvNTU2Ni80ODAzL2U2NjVlYTliLTkzYzItNDA4Ny1iMjRhLWE3ZTA1MDM4ZTc2ZS5wZGY%3D&n=6KGM5pS%2F6Zmi5omA5bGs5ZCE5qmf6Zec5Lit6ZW356iL5YCL5qGI6KiI55Wr57eo5a%2Bp6KaB6bueKOWQq%2BmZhOihqCkucGRm&icon=..pdf
+- 政府中長程計畫修正時要附修正理由說明與修正內容對照表（第十點）｜removed（同上；保留「附一張修正內容對照表」的一般建議）｜https://ws.ndc.gov.tw/Download.ashx?u=LzAwMS9hZG1pbmlzdHJhdG9yLzEwL3JlbGZpbGUvNTU2Ni80ODAzL2U2NjVlYTliLTkzYzItNDA4Ny1iMjRhLWE3ZTA1MDM4ZTc2ZS5wZGY%3D&n=6KGM5pS%2F6Zmi5omA5bGs5ZCE5qmf6Zec5Lit6ZW356iL5YCL5qGI6KiI55Wr57eo5a%2Bp6KaB6bueKOWQq%2BmZhOihqCkucGRm&icon=..pdf
+- 表格 caption「骨架參考行政院中長程個案計畫的格式，工具功能查證於 2026 年 10 月」｜ok｜https://www.ey.gov.tw/File/5B5C5FDCFE8479A9?A=C
+- 預算法第 34 條：重要公共工程與重大施政計畫要先做選擇方案與替代方案的成本效益分析，才能編列預算｜ok（今天 curl 直接 200 讀到條文）｜https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=T0020001&flno=34
+- Word Copilot 可從提示詞、筆記或引用的檔案起草｜ok｜https://support.microsoft.com/en-us/word/welcome-to-copilot-in-word
+- Word Copilot 對話窗格輸入「/」指定文件、郵件或會議｜ok｜https://support.microsoft.com/en-us/word/welcome-to-copilot-in-word
+- 共用文件裡的修改先在對話窗格預覽，核准才寫入｜ok｜https://support.microsoft.com/en-us/word/welcome-to-copilot-in-word
+- Copilot 需要符合資格的 Microsoft 365 訂閱或 Copilot 授權｜ok｜https://support.microsoft.com/en-us/word/welcome-to-copilot-in-word
+- Copilot 把「壓力測試想法」（pressure-test ideas）列為能做的事｜ok｜https://support.microsoft.com/en-us/word/welcome-to-copilot-in-word
+- Copilot 能替整份文件產生摘要｜ok｜https://support.microsoft.com/en-us/word/welcome-to-copilot-in-word
+- Copilot 生成的內容可能不正確，它無法評估正確性｜ok｜https://support.microsoft.com/en-us/word/frequently-asked-questions-about-copilot-in-word
+- Gemini 側邊欄用「@」加入雲端硬碟的檔案當參考｜fixed（「@」與 Sources 是在底部提示框，不是側邊欄描述；改寫為在提示框輸入「@」）｜https://support.google.com/docs/answer/14206696?hl=en
+- Gemini 側邊欄對話在重新整理或關閉文件後消失，先插入文件｜fixed（補上第三種情形：電腦離線；措辭改為重新整理瀏覽器、關閉再開啟文件）｜https://support.google.com/docs/answer/14206696?hl=en
+- Gemini 需要符合資格的 Google Workspace 或 Google AI 方案｜ok｜https://support.google.com/docs/answer/14206696?hl=en
+- Gemini 能從雲端硬碟、Gmail 或網路帶入統計、證據與引用｜ok｜https://support.google.com/docs/answer/14206696?hl=en
+- Gemini 能替文件產生摘要｜ok｜https://support.google.com/docs/answer/14206696?hl=en
+- 統計資訊網由主計總處維運，連到中央機關與縣市政府統計網站｜ok｜https://www.stat.gov.tw/
+- 政府資料開放授權條款：利用時依附件顯名聲明標示，未盡義務視為自始未取得授權｜ok｜https://data.gov.tw/license
+- 顯名聲明格式：提供機關／單位、年份、開放資料釋出名稱與版本號｜ok｜https://data.gov.tw/license
+- Google 文件：有編輯權限才能看舊版本；「上次編輯」圖示可查看、還原、複製｜ok｜https://support.google.com/docs/answer/190843?hl=zh-Hant
+- Google 文件：系統有時會合併修訂版本；命名版本不會被合併｜ok｜https://support.google.com/docs/answer/190843?hl=zh-Hant
+- Google 文件每份最多 40 個已命名版本｜ok（中英文頁都寫 40）｜https://support.google.com/docs/answer/190843?hl=zh-Hant
+- Microsoft 365 版本歷程記錄只適用於存在 OneDrive 或 SharePoint 的檔案｜ok｜https://support.microsoft.com/zh-tw/office/collab-files/view-previous-versions-of-office-files
+- 個人帳戶可取回最近 25 個版本，公司或學校帳戶看文件庫設定｜ok（中英文頁一致）｜https://support.microsoft.com/zh-tw/office/collab-files/view-previous-versions-of-office-files
+- 來源標題「檢視 Office 檔案的舊版」｜fixed（頁面標題是「檢視舊版 Office 檔案」）｜https://support.microsoft.com/zh-tw/office/collab-files/view-previous-versions-of-office-files
+- Word 追蹤修訂｜ok｜https://support.microsoft.com/zh-tw/word/training/track-changes-in-word
+- Google 文件「建議」模式：不變更原文提出修訂，擁有者接受後取代｜ok｜https://support.google.com/docs/answer/6033474?hl=zh-Hant
+- callout：以公司帳號使用的 Copilot，提示詞與回應不用於訓練基礎模型｜ok（Microsoft Learn，updated_at 2026-09-30）｜https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-privacy
+- callout：Google Workspace 未經客戶事先許可不用客戶資料訓練模型｜ok｜https://knowledge.workspace.google.com/admin/generative-ai/generative-ai-in-google-workspace-privacy-hub
+- callout：個人帳號規則不同（Copilot 頁對個人帳戶另列隱私頁）｜ok｜https://support.microsoft.com/en-us/word/welcome-to-copilot-in-word
+- 圖解 diagram-1 唯一數字 2026（正文表格 caption 有 2026）｜ok｜—
+- 圖解各格內容（四步驟 × AI 做／人確認／留紀錄）與正文一致；「附修正內容對照表」與正文用詞統一｜fixed（正文改用「修正內容對照表」）｜—
+- hero 無數字、一行 12 字、46 px，alt 與渲染圖相符｜ok｜—
+- 站內連結：ai-hallucination-fact-check、claude-for-research-summaries、ai-slides-generation-tools，皆為指派網址且 repo 內存在｜ok｜https://mokaair.com/zh-TW/life/ai-hallucination-fact-check
+- sources 14 筆網址今天 curl -sSL 皆 200 且為實際內容（Gemini 頁改用 hl=en）｜ok｜—

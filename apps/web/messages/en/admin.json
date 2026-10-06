@@ -2479,7 +2479,26 @@
     "openDramaSettings": "Open the drama settings",
     "downloadCompilation": "Download the 1080p cut",
     "compilationInWorkspace": "The cut is still in the worker's workspace",
-    "compilationOf": "Compilation of series {series}"
+    "compilationOf": "Compilation of series {series}",
+    "slidesRequests": {
+      "title": "Make a slides video from a site article",
+      "help": "Paste the slug of a published Traditional Chinese life article. The worker makes this one before any scheduled draft; it still waits while the drafts waiting for you are at their limit, and it counts toward this month's drafts.",
+      "article": "Site article (slug)",
+      "articlePlaceholder": "e.g. ai-freelance-getting-started",
+      "note": "Note for the planner (optional)",
+      "notePlaceholder": "e.g. explain the facts and how to check them, no investment advice; end with the article's own disclaimer",
+      "submit": "Queue it",
+      "error": "Not queued: {message}",
+      "queue": "Videos of chosen articles",
+      "openArticle": "Read the article",
+      "statuses": {
+        "queued": "Queued",
+        "started": "In the making",
+        "done": "Done",
+        "cancelled": "Cancelled",
+        "dropped": "Dropped"
+      }
+    }
   },
   "videoSettings": {
     "loading": "Loading settings…",

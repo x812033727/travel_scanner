@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">問卷從擬題到開放題分析 / From drafting a survey to coding open-ended answers</title>
+<desc id="desc">流程圖分兩排。上排是發出問卷前，由左到右：一、請 AI 擬題（寫明目的與對象、說清楚是否記名、要它自我檢查）；二、挑出偏誤（引導與預設前提、雙重問題與情緒字眼、量表正負對稱）；三、設定表單（不收電子郵件、不勾選記錄名稱、設好截止日與回覆上限）；四、寫好告知（個資法第 8 條事項、放在表單說明欄、不問特種個資）。往下接到下排，是收回之後，由右到左：五、匯出後去識別（刪電子郵件與姓名、刪作答時間、人名換成代號）；六、AI 提類別（定義與納入排除條件、另設其他與無法判斷、逐則標類別並附理由）；七、人工抽查（每類抽幾則對照原文、其他類全部看過、不一致就改定義），抽查不一致時沿紅色虛線回到第六步重跑；八、定稿回報（則數用試算表算、引用前確認匿名、摘要只當線索）。兩排中間的紅框是全程守則：原始回覆只放進公司核可的 AI 工具，不貼進個人帳號。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#102A2B"/></marker><marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B8442D"/></marker></defs>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<text x="80" y="52" font-size="30" font-weight="700" fill="#102A2B">問卷從擬題到開放題分析</text>
+<text x="80" y="84" font-size="18" fill="#5C6B6B">From drafting a survey to coding open-ended answers</text>
+<rect x="80" y="140" width="300" height="200" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<circle cx="230" cy="140" r="24" fill="#2F6F9F"/>
+<text x="230" y="147" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">一</text>
+<text x="230" y="204" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">請 AI 擬題</text>
+<text x="230" y="244" font-size="17" fill="#102A2B" text-anchor="middle">寫明目的與對象</text>
+<text x="230" y="276" font-size="17" fill="#102A2B" text-anchor="middle">說清楚是否記名</text>
+<text x="230" y="308" font-size="17" fill="#102A2B" text-anchor="middle">要它自我檢查</text>
+<rect x="460" y="140" width="300" height="200" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<circle cx="610" cy="140" r="24" fill="#2F6F9F"/>
+<text x="610" y="147" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">二</text>
+<text x="610" y="204" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">挑出偏誤</text>
+<text x="610" y="244" font-size="17" fill="#102A2B" text-anchor="middle">引導與預設前提</text>
+<text x="610" y="276" font-size="17" fill="#102A2B" text-anchor="middle">雙重問題、情緒字眼</text>
+<text x="610" y="308" font-size="17" fill="#102A2B" text-anchor="middle">量表正負對稱</text>
+<rect x="840" y="140" width="300" height="200" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<circle cx="990" cy="140" r="24" fill="#2F6F9F"/>
+<text x="990" y="147" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">三</text>
+<text x="990" y="204" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">設定表單</text>
+<text x="990" y="244" font-size="17" fill="#102A2B" text-anchor="middle">不收電子郵件</text>
+<text x="990" y="276" font-size="17" fill="#102A2B" text-anchor="middle">不勾選記錄名稱</text>
+<text x="990" y="308" font-size="17" fill="#102A2B" text-anchor="middle">截止日與回覆上限</text>
+<rect x="1220" y="140" width="300" height="200" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<circle cx="1370" cy="140" r="24" fill="#2F6F9F"/>
+<text x="1370" y="147" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">四</text>
+<text x="1370" y="204" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">寫好告知</text>
+<text x="1370" y="244" font-size="17" fill="#102A2B" text-anchor="middle">個資法第 8 條事項</text>
+<text x="1370" y="276" font-size="17" fill="#102A2B" text-anchor="middle">放在表單說明欄</text>
+<text x="1370" y="308" font-size="17" fill="#102A2B" text-anchor="middle">不問特種個資</text>
+<rect x="1220" y="470" width="300" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<circle cx="1370" cy="470" r="24" fill="#0D6B68"/>
+<text x="1370" y="477" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">五</text>
+<text x="1370" y="534" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">匯出後去識別</text>
+<text x="1370" y="574" font-size="17" fill="#102A2B" text-anchor="middle">刪電子郵件與姓名</text>
+<text x="1370" y="606" font-size="17" fill="#102A2B" text-anchor="middle">刪作答時間</text>
+<text x="1370" y="638" font-size="17" fill="#102A2B" text-anchor="middle">人名換成代號</text>
+<rect x="840" y="470" width="300" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<circle cx="990" cy="470" r="24" fill="#0D6B68"/>
+<text x="990" y="477" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">六</text>
+<text x="990" y="534" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">AI 提類別</text>
+<text x="990" y="574" font-size="17" fill="#102A2B" text-anchor="middle">定義、納入與排除</text>
+<text x="990" y="606" font-size="17" fill="#102A2B" text-anchor="middle">另設其他、無法判斷</text>
+<text x="990" y="638" font-size="17" fill="#102A2B" text-anchor="middle">逐則標類別附理由</text>
+<rect x="460" y="470" width="300" height="200" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<circle cx="610" cy="470" r="24" fill="#D97A2B"/>
+<text x="610" y="477" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">七</text>
+<text x="610" y="534" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">人工抽查</text>
+<text x="610" y="574" font-size="17" fill="#102A2B" text-anchor="middle">每類抽幾則對原文</text>
+<text x="610" y="606" font-size="17" fill="#102A2B" text-anchor="middle">其他類全部看過</text>
+<text x="610" y="638" font-size="17" fill="#102A2B" text-anchor="middle">不一致就改定義</text>
+<rect x="80" y="470" width="300" height="200" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<circle cx="230" cy="470" r="24" fill="#0D6B68"/>
+<text x="230" y="477" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">八</text>
+<text x="230" y="534" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">定稿回報</text>
+<text x="230" y="574" font-size="17" fill="#102A2B" text-anchor="middle">則數用試算表算</text>
+<text x="230" y="606" font-size="17" fill="#102A2B" text-anchor="middle">引用前確認匿名</text>
+<text x="230" y="638" font-size="17" fill="#102A2B" text-anchor="middle">摘要只當線索</text>
+<line x1="388" y1="240" x2="452" y2="240" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="768" y1="240" x2="832" y2="240" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="1148" y1="240" x2="1212" y2="240" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="1470" y1="348" x2="1470" y2="462" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="1212" y1="570" x2="1148" y2="570" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="832" y1="570" x2="768" y2="570" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<line x1="452" y1="570" x2="388" y2="570" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<path d="M610,678 V720 H990 V682" fill="none" stroke="#B8442D" stroke-width="3" stroke-dasharray="10 8" stroke-linecap="butt" marker-end="url(#arrowRed)"/>
+<text x="800" y="754" font-size="17" font-weight="700" fill="#B8442D" text-anchor="middle">抽查不一致：回到第六步改定義重跑</text>
+<rect x="420" y="361" width="760" height="64" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="3" stroke-dasharray="10 8"/>
+<text x="800" y="400" font-size="18" fill="#102A2B" text-anchor="middle"><tspan font-weight="700" fill="#B8442D">全程守則</tspan>　原始回覆只放進公司核可的 AI 工具，不貼進個人帳號</text>
+<rect x="80" y="804" width="36" height="24" rx="6" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+<text x="128" y="822" font-size="16" fill="#5C6B6B">發出問卷前</text>
+<rect x="280" y="804" width="36" height="24" rx="6" fill="#E3F0EF" stroke="#0D6B68" stroke-width="3"/>
+<text x="328" y="822" font-size="16" fill="#5C6B6B">收回之後</text>
+<rect x="460" y="804" width="36" height="24" rx="6" fill="#FFFFFF" stroke="#D97A2B" stroke-width="3"/>
+<text x="508" y="822" font-size="16" fill="#5C6B6B">人工把關</text>
+<line x1="650" y1="816" x2="720" y2="816" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+<text x="736" y="822" font-size="16" fill="#5C6B6B">照順序進行</text>
+<line x1="880" y1="816" x2="950" y2="816" stroke="#B8442D" stroke-width="3" stroke-dasharray="10 8" stroke-linecap="butt" marker-end="url(#arrowRed)"/>
+<text x="966" y="822" font-size="16" fill="#5C6B6B">回頭修改</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

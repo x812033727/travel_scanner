@@ -1,0 +1,357 @@
+{
+  "slug": "selling-ai-digital-products",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "ai-income"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "賣 AI 做的數位商品：圖庫投稿、模板與 GPTs 的平台規則",
+      "description": "想把 AI 做的圖、模板或 GPT 拿去賣，先看平台收不收：Adobe Stock 收生成式 AI 投稿但要勾選標示，Shutterstock 與 iStock 不收；Gumroad 直接銷售抽 10% + 0.50 美元，Etsy 暫時不讓台灣開新店；ChatGPT 企業版的自訂 GPT 正在退場、轉成外掛。附抽成算法、授權寫法與上架前檢查清單。",
+      "hero": {
+        "src": "/guides/selling-ai-digital-products/hero.jpg",
+        "alt": "米色底上一個條紋遮雨棚的市集攤位，櫃台上擺著一幅山與太陽的圖片（角落有橘色星形火花）、一張版面模板與一個對話框，櫃台前緣掛著三枚橘色吊牌，下方寫著「賣 AI 數位商品」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Adobe Stock 收生成式 AI 投稿，但要勾選 AI 標示；Shutterstock 與 iStock 不收 AI 生成的作品。",
+            "Gumroad 直接銷售抽 10% + 0.50 美元、Discover 市集成交抽 30%；Etsy 的金流服務 Etsy Payments 不支援台灣，暫時無法開新店。",
+            "ChatGPT 企業版（Enterprise）的自訂 GPT 正在退場、改轉成外掛（plugin）；GPT Store（GPT 商店）的分潤與其他方案的時程，以官方公告為準。",
+            "純 AI 生成、沒有人類創意投入的成果，在台灣原則上不受著作權保護，別賣「獨家版權」。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "把 AI 做的圖、模板或 GPT 拿去賣，先決定放在哪個平台：有的圖庫收 AI 作品、有的不收；模板平台按每筆成交抽成；自訂 GPT 則正在轉成外掛。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下依圖庫、模板與數位下載、GPT Store、標示與授權的順序整理，最後附上架前的檢查清單。費率與規則以 2026 年 10 月各平台公布的版本為準，抽成用假設數字示範，不代表任何收入。"
+        },
+        {
+          "type": "heading",
+          "text": "圖庫投稿：Adobe Stock 收，Shutterstock 與 iStock 不收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "各大圖庫的態度不同。Adobe Stock 收生成式 AI 作品，條件如下。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "上傳時勾選「Created using generative AI tools」（使用生成式 AI 工具建立）；畫面裡有虛構的人物或建物等財產，再勾「People and Property are fictional」（人物與財產為虛構）。",
+            "用真人或真實財產來生成作品，例如拿真人照片當提示，要附模特兒肖像授權書（model release）或財產授權書（property release）。",
+            "提示詞不要模仿其他藝術家的風格，也不要提到名人或品牌；完整的禁用清單與其他條件，以 Adobe Stock 的生成式 AI 投稿規範為準。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe Stock 的作者分成是圖片（照片、向量、插圖）33%、影片 35%，每次下載實拿多少依買家方案而定。投稿是非專屬授權，作品仍屬於你，但你要保證擁有必要的權利，投稿內容也會用在 Firefly 等 Adobe 產品。收款前要完成必要的美國國稅局（IRS）表格；不是美國人的投稿者，要主張租稅協定的扣繳減免得交 W-8 表格，需要扣繳的稅會直接從款項扣除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Shutterstock 不接受投稿者上傳 AI 生成的作品，理由是這類作品的智慧財產無法歸給單一個人，也無法確認該補償哪些創作者。iStock 同樣不收生成式 AI 做的視覺作品，只允許對非 AI 的原作做有限修圖（可用 AI 修圖工具），不能用 AI 加入新的元素、主體或物件。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 圖片工具總覽：ChatGPT、Nano Banana、Midjourney、Flux 怎麼選",
+              "kind": "life",
+              "slug": "ai-image-tools-overview-2026"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "模板與數位下載：Gumroad 與 Etsy 怎麼收費",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gumroad 不收月費。買家從你的個人頁或連結購買，抽 10% + 0.50 美元，刷卡手續費（2.9% + 0.30 美元）另計；買家在 Gumroad 的 Discover 市集發現你的商品，抽 30%，已含金流手續費。2025 年 1 月 1 日起，Gumroad 以登記賣方（Merchant of Record）身分代收代繳銷售稅。撥款到台灣的銀行帳戶以新台幣入帳，撥款門檻標準是餘額 100 美元，台灣另有新台幣門檻，以撥款說明頁為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假設一份簡報模板售價 10 美元、買家刷卡、不計稅：平台費 10 × 10% + 0.50 = 1.50 美元，刷卡手續費 10 × 2.9% + 0.30 = 0.59 美元，你實拿 10 − 1.50 − 0.59 = 7.91 美元；同一份模板若由 Discover 市集成交，實拿 10 × (1 − 30%) = 7 美元。售價越低，固定的 0.50 美元與 0.30 美元占比越高。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gumroad 只讓你賣自己做的東西，轉售別人的提示詞、模板、電子書，或買來的轉售權商品都不行；販售 AI 工具或聊天機器人的使用權、代客生成圖片或內容的服務，也在禁止清單裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Etsy 每個刊登收 0.20 美元、效期 4 個月，成交收 6.5% 交易費，另有依國家而定的金流手續費，需要換匯時再收 2.5%。賣家用提示詞做出的 AI 作品歸在「由賣家設計」（Designed by a seller）一類，必須揭露用了 AI。但開新店必須使用 Etsy Payments，而它的可用國家沒有台灣，台灣賣家暫時無法開新店。"
+        },
+        {
+          "type": "heading",
+          "text": "GPT Store：自訂 GPT 正在轉成外掛",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT Store（GPT 商店）的作者分潤開放給誰、哪些地區能參加，以官方公告為準。更要先知道的是，ChatGPT 企業版的自訂 GPT 正在退場、改轉成外掛（plugin），新的 GPT 建立功能也會停止；其他方案的時程可能不同，以官方公告為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "退場後，自訂 GPT 不再運作，也會從 GPT 目錄下架。轉成外掛時，指令會變成技能（skill），知識檔案與連接的應用程式會一起帶過去，但自訂動作（custom actions）不會轉移，要另外重建；轉好的外掛一開始是私人的，原本的使用者也不會自動取得權限。想上架到外掛目錄，得以個人或公司身分完成驗證並送審。打算把 GPT 當商品經營，先確認自己方案的時程與分潤資格。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/selling-ai-digital-products/diagram-1.svg",
+          "alt": "依作品類型分成圖片影片素材、模板與數位下載、自訂 GPT 三欄，標出每個平台可上架、有限制或不收，以及關鍵抽成與自訂 GPT 退場現況",
+          "width": 1600,
+          "height": 900,
+          "caption": "先看作品屬於哪一欄，再看平台的顏色：綠色可上架、橘色有限制、紅色不收。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "標示與授權：法律管得少，平台與契約管得多",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "智慧財產局的解釋是：把 AI 當輔助工具、有人類實際創意投入的成果，可以受著作權保護；完全由 AI 演算完成的成果，原則上不受保護。所以純 AI 生成的圖，你很難用著作權阻止別人複製。"
+        },
+        {
+          "type": "paragraph",
+          "text": "標示方面，沒有人類創作內容的 AI 圖片要不要標示製作者與來源、怎麼標，著作權法沒有規定。2026 年 1 月公布的人工智慧基本法把產出的揭露或標記列為原則，但對象是政府推動 AI，並未直接規範個人賣家。真正要求你標示的是平台：Adobe Stock 的勾選、Etsy 的揭露都是上架條件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "賣模板或素材，授權範圍要寫在商品頁：能不能商用、修改、轉售。作品裡有你自己創作的部分時，依著作權法第 37 條，授權約定不明的部分推定為未授權，寫清楚才不會各說各話。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+              "kind": "life",
+              "slug": "ai-image-copyright-taiwan"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "平台",
+            "收不收 AI 作品",
+            "抽成或分成",
+            "台灣賣家先知道"
+          ],
+          "rows": [
+            [
+              "Adobe Stock",
+              "收，須勾選 AI 標示",
+              "作者分成：圖片 33%、影片 35%",
+              "收款前要完成 IRS 稅務表格"
+            ],
+            [
+              "Shutterstock",
+              "不收",
+              "不適用",
+              "只收非 AI 作品"
+            ],
+            [
+              "iStock",
+              "不收",
+              "不適用",
+              "只允許對非 AI 原作做有限修圖"
+            ],
+            [
+              "Gumroad",
+              "收自己做的成品",
+              "直接銷售 10% + 0.50 美元；Discover 市集 30%",
+              "新台幣撥款，門檻見撥款說明頁"
+            ],
+            [
+              "Etsy",
+              "收，須揭露用了 AI",
+              "刊登 0.20 美元；成交 6.5%；另有金流費",
+              "金流不支援台灣，暫無法開新店"
+            ],
+            [
+              "GPT Store",
+              "企業版自訂 GPT 退場中，轉成外掛",
+              "分潤以官方公告為準",
+              "其他方案時程以官方公告為準"
+            ]
+          ],
+          "caption": "費用與規則以各平台說明頁為準，可能隨時調整；查證於 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "text": "上架前的檢查清單",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "確認你用的生成工具方案允許商用。",
+            "提示詞與畫面避開真人、藝術家、品牌與受保護的角色。",
+            "依平台規定勾選或揭露用了 AI。",
+            "商品頁寫清楚授權範圍，不寫獨家版權。",
+            "保存提示詞、原始檔與修改紀錄，說得出人類投入在哪裡。",
+            "用假設售價扣掉平台費、金流手續費與換匯費，再決定定價。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "商用圖庫與圖示怎麼找：授權、作者與使用紀錄",
+              "kind": "life",
+              "slug": "licensed-assets-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用 AI 經營內容副業：部落格、電子報與短影音的成本與時間",
+              "kind": "life",
+              "slug": "ai-content-side-business-costs"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "純 AI 作品不要標「獨家」或「版權所有」",
+          "text": "純 AI 作品原則上不受著作權保護，標榜獨家卻無法排除別人使用相同或相似的圖，容易和買家起爭議。商品頁照實寫明用了 AI、改了哪裡與授權範圍。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Adobe Stock Contributor（投稿者入口與常見問題，接受 Gen AI 內容）",
+          "url": "https://contributor.stock.adobe.com/",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Adobe Stock Contributor：Royalties（圖片 33%、影片 35% 分成）",
+          "url": "https://contributor.stock.adobe.com/royalties",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Adobe Stock Contributor Agreement（投稿協議，2024 年 6 月 18 日生效版）",
+          "url": "https://wwwimages2.adobe.com/content/dam/cc/en/legal/servicetou/Adobe-Stock-Contributor-Agreement-en_US-20240618.pdf",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Adobe Stock generative AI content guidelines（生成式 AI 投稿規範）",
+          "url": "https://helpx.adobe.com/stock/contributor/submit-your-content/submit-generative-ai-content/generative-ai-content-guidelines.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Shutterstock Contributor：Content Policy Updates: AI-generated Content（不收 AI 生成內容）",
+          "url": "https://submit.shutterstock.com/help/en/articles/10594622-content-policy-updates-ai-generated-content",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "iStock：AI-Free Imagery Policy（不收生成式 AI 視覺作品）",
+          "url": "https://www.istockphoto.com/legal/ai-free-imagery-policy",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Gumroad：Pricing（費率與代收代繳銷售稅）",
+          "url": "https://gumroad.com/pricing",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Gumroad Help Center：Gumroad's fees（抽成與刷卡手續費）",
+          "url": "https://gumroad.com/help/article/66-gumroads-fees",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Gumroad Help Center：Getting paid by Gumroad（撥款國家、幣別與門檻）",
+          "url": "https://gumroad.com/help/article/13-getting-paid",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Gumroad Help Center：Things not allowed on Gumroad（禁止轉售與 AI 服務）",
+          "url": "https://gumroad.com/help/article/155-things-you-cant-sell-on-gumroad",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Etsy Help：What are the Fees and Taxes for Selling on Etsy?（刊登費、交易費、換匯費）",
+          "url": "https://help.etsy.com/hc/en-us/articles/115014483627-What-are-the-Fees-and-Taxes-for-Selling-on-Etsy",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Etsy Help：Countries Eligible for Etsy Payments（可用國家名單）",
+          "url": "https://help.etsy.com/hc/en-us/articles/115015710408-Countries-Eligible-for-Etsy-Payments",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Etsy Help：How to Get Paid on Etsy（未開放國家暫無法開新店）",
+          "url": "https://help.etsy.com/hc/en-us/articles/115014503608-How-to-Get-Paid-on-Etsy",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Etsy Help：What Can I Sell on Etsy?（AI 作品歸類與揭露）",
+          "url": "https://help.etsy.com/hc/en-us/articles/360024112614-What-Can-I-Sell-on-Etsy",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "ChatGPT Docs：Moving your custom GPT workflows to plugins（企業版自訂 GPT 轉外掛、退場後停止運作）",
+          "url": "https://learn.chatgpt.com/docs/migrate-custom-gpts",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "ChatGPT Docs：Build plugins（ChatGPT Enterprise 的自訂 GPT 正在退場）",
+          "url": "https://learn.chatgpt.com/docs/build-plugins",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "OpenAI Developers：Upload and submit your plugin（外掛送審與身分驗證）",
+          "url": "https://developers.openai.com/plugins/deploy/submission",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "經濟部智慧財產局：電子郵件1111031（AI 創作與著作權保護）",
+          "url": "https://www.tipo.gov.tw/tw/copyright/692-16813.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "經濟部智慧財產局：電子郵件1150828c（AI 圖片標示與授權約定，引著作權法第 37 條）",
+          "url": "https://www.tipo.gov.tw/tw/copyright/692-94326.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：人工智慧基本法（第 4 條透明與可解釋原則）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0160093",
+          "checked_on": "2026-10-05"
+        }
+      ]
+    }
+  }
+}

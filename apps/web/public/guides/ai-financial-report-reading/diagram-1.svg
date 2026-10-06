@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">一句 AI 摘要，拆成五個問題對照原文 / Checking an AI summary against the original filing</title>
+<desc id="desc">最上方是一個藍框，寫著一句假設的 AI 摘要：第三季營收若干億元，成長若干百分比。往下分出五個並排的檢查框。出處：問數字和引述是否真的在原文裡，看 AI 標的頁碼並逐字對照引述。單位：問是千元、百萬元還是元，看報表表頭的單位，每股盈餘以元計。期間：問是當季還是年初累計，看欄位標題，第四季等於全年減前三季累計。範圍：問是合併還是個體，看報告名稱與歸屬於母公司業主的數字。重算：問是和哪一期比、是年增還是季增，用兩期原始數字自己算一次。五個框匯到底部後分成兩條路：全部對上，就寫進筆記並附上頁碼與單位，之後引用都回到原文；任何一項對不上，就標記起來回原文查，不要請 AI 自己改。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto">
+<path d="M0,0 L10,5 L0,10 z" fill="#0D6B68"/>
+</marker>
+<marker id="arrowred" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto">
+<path d="M0,0 L10,5 L0,10 z" fill="#B8442D"/>
+</marker>
+</defs>
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">一句 AI 摘要，拆成五個問題對照原文</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">Check every figure in an AI summary against the original filing</text>
+
+<rect x="420" y="112" width="760" height="100" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<text x="800" y="148" font-size="17" fill="#5C6B6B" text-anchor="middle">AI 摘要（假設）</text>
+<text x="800" y="186" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">「第三季營收 ○○ 億元，成長 ○○%」</text>
+
+<g fill="none" stroke="#0D6B68" stroke-width="4" stroke-linecap="butt">
+<line x1="800" y1="212" x2="800" y2="250"/>
+<line x1="198" y1="250" x2="1402" y2="250"/>
+<line x1="200" y1="250" x2="200" y2="294" marker-end="url(#arrow)"/>
+<line x1="500" y1="250" x2="500" y2="294" marker-end="url(#arrow)"/>
+<line x1="800" y1="250" x2="800" y2="294" marker-end="url(#arrow)"/>
+<line x1="1100" y1="250" x2="1100" y2="294" marker-end="url(#arrow)"/>
+<line x1="1400" y1="250" x2="1400" y2="294" marker-end="url(#arrow)"/>
+</g>
+
+<g stroke-width="4">
+<rect x="60" y="298" width="280" height="324" rx="14" fill="#FFFFFF" stroke="#0D6B68"/>
+<rect x="360" y="298" width="280" height="324" rx="14" fill="#FFFFFF" stroke="#0D6B68"/>
+<rect x="660" y="298" width="280" height="324" rx="14" fill="#FFFFFF" stroke="#0D6B68"/>
+<rect x="960" y="298" width="280" height="324" rx="14" fill="#FFFFFF" stroke="#0D6B68"/>
+<rect x="1260" y="298" width="280" height="324" rx="14" fill="#FFFFFF" stroke="#D97A2B"/>
+</g>
+<g stroke="#0D6B68" stroke-width="2" opacity="0.35">
+<line x1="84" y1="362" x2="316" y2="362"/>
+<line x1="384" y1="362" x2="616" y2="362"/>
+<line x1="684" y1="362" x2="916" y2="362"/>
+<line x1="984" y1="362" x2="1216" y2="362"/>
+<line x1="1284" y1="362" x2="1516" y2="362"/>
+</g>
+
+<g font-size="20" font-weight="700" text-anchor="middle">
+<text x="200" y="342" font-size="20" fill="#0D6B68">出處</text>
+<text x="500" y="342" font-size="20" fill="#0D6B68">單位</text>
+<text x="800" y="342" font-size="20" fill="#0D6B68">期間</text>
+<text x="1100" y="342" font-size="20" fill="#0D6B68">範圍</text>
+<text x="1400" y="342" font-size="20" fill="#D97A2B">重算</text>
+</g>
+
+<g font-size="15" fill="#5C6B6B" text-anchor="middle">
+<text x="200" y="396" font-size="15">要問</text>
+<text x="500" y="396" font-size="15">要問</text>
+<text x="800" y="396" font-size="15">要問</text>
+<text x="1100" y="396" font-size="15">要問</text>
+<text x="1400" y="396" font-size="15">要問</text>
+<text x="200" y="500" font-size="15">看原文哪裡</text>
+<text x="500" y="500" font-size="15">看原文哪裡</text>
+<text x="800" y="500" font-size="15">看原文哪裡</text>
+<text x="1100" y="500" font-size="15">看原文哪裡</text>
+<text x="1400" y="500" font-size="15">看原文哪裡</text>
+</g>
+
+<g font-size="17" fill="#102A2B" text-anchor="middle">
+<text x="200" y="426" font-size="17">數字和引述</text>
+<text x="200" y="452" font-size="17">真的在原文裡嗎</text>
+<text x="200" y="530" font-size="17">AI 標的頁碼</text>
+<text x="200" y="556" font-size="17">逐字對照引述</text>
+
+<text x="500" y="426" font-size="17">千元、百萬元</text>
+<text x="500" y="452" font-size="17">還是元</text>
+<text x="500" y="530" font-size="17">報表表頭的單位</text>
+<text x="500" y="556" font-size="17">每股盈餘以元計</text>
+
+<text x="800" y="426" font-size="17">當季還是</text>
+<text x="800" y="452" font-size="17">年初累計</text>
+<text x="800" y="530" font-size="17">欄位標題</text>
+<text x="800" y="556" font-size="17">第四季＝全年</text>
+<text x="800" y="582" font-size="17">減前三季累計</text>
+
+<text x="1100" y="426" font-size="17">合併還是個體</text>
+<text x="1100" y="530" font-size="17">報告名稱</text>
+<text x="1100" y="556" font-size="17">歸屬於母公司業主</text>
+
+<text x="1400" y="426" font-size="17">和哪一期比</text>
+<text x="1400" y="452" font-size="17">年增還是季增</text>
+<text x="1400" y="530" font-size="17">兩期原始數字</text>
+<text x="1400" y="556" font-size="17">自己算一次</text>
+</g>
+
+<g fill="none" stroke="#0D6B68" stroke-width="4" stroke-linecap="butt">
+<line x1="200" y1="622" x2="200" y2="662"/>
+<line x1="500" y1="622" x2="500" y2="662"/>
+<line x1="800" y1="622" x2="800" y2="662"/>
+<line x1="1100" y1="622" x2="1100" y2="662"/>
+<line x1="1400" y1="622" x2="1400" y2="662"/>
+<line x1="198" y1="662" x2="1402" y2="662"/>
+<line x1="520" y1="662" x2="520" y2="712" marker-end="url(#arrow)"/>
+</g>
+<line x1="1150" y1="662" x2="1150" y2="712" stroke="#B8442D" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrowred)"/>
+<text x="536" y="696" font-size="15" fill="#2E7D5B" font-weight="700">全部對上</text>
+<text x="1166" y="696" font-size="15" fill="#B8442D" font-weight="700">任何一項對不上</text>
+
+<rect x="180" y="716" width="680" height="104" rx="14" fill="#E3F0EF" stroke="#2E7D5B" stroke-width="4"/>
+<text x="520" y="758" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">寫進筆記，附上頁碼與單位</text>
+<text x="520" y="794" font-size="17" fill="#102A2B" text-anchor="middle">之後引用都回到原文，不引用摘要</text>
+
+<rect x="880" y="716" width="540" height="104" rx="14" fill="#FBEAE6" stroke="#B8442D" stroke-width="4"/>
+<text x="1150" y="758" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">標記起來，回原文查</text>
+<text x="1150" y="794" font-size="17" fill="#102A2B" text-anchor="middle">不要請 AI 自己改</text>
+
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

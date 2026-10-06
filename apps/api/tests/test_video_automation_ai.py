@@ -489,6 +489,38 @@ async def test_site_topics_link_each_article_where_the_site_serves_it() -> None:
     assert (topic.slug, topic.date) == ("ai-news-gpt-6-sol-luna-20260923", "2026-09-23")
 
 
+@pytest.mark.asyncio
+async def test_site_article_finds_one_published_life_article_whatever_its_date() -> None:
+    """What the owner may ask a slides video of: any published zh-TW lifestyle article, not only
+    the last two weeks' (app/video_automation/slides_requests.py)."""
+    entry = MagicMock(
+        title="AI 接案入門",
+        description="報價怎麼算",
+        published_at=datetime(2025, 3, 1, 8, 0, tzinfo=UTC),
+    )
+    result = MagicMock()
+    result.first.return_value = ("ai-freelance-getting-started", None, entry)
+    session = MagicMock()
+    session.execute = AsyncMock(return_value=result)
+    topic = await topics.site_article(session, "ai-freelance-getting-started")
+    assert topic is not None
+    assert topic.url == "https://mokaair.com/zh-TW/life/ai-freelance-getting-started"
+    assert (topic.slug, topic.title, topic.date) == (
+        "ai-freelance-getting-started",
+        "AI 接案入門",
+        "2025-03-01",
+    )
+    statement = str(
+        session.execute.await_args.args[0].compile(compile_kwargs={"literal_binds": True})
+    ).lower()
+    assert "guide_articles.slug = 'ai-freelance-getting-started'" in statement
+    assert "kind = 'life'" in statement and "locale = 'zh-tw'" in statement
+    assert "published_version = guide_search_entries.revision_version" in statement
+    assert "published_at >=" not in statement and "news_date >=" not in statement, "no date window"
+    result.first.return_value = None
+    assert await topics.site_article(session, "unpublished-or-another-kind") is None
+
+
 integration = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL"
 )

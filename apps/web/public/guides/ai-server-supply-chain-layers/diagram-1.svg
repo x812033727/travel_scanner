@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">AI 伺服器由內而外的七層 / Seven layers of an AI server</title>
+  <desc id="desc">結構圖。中間是一層包一層的方框：最外層是機櫃，機櫃上方是網路交換器，負責運算叢集內的縱向擴展與叢集之間的橫向擴展；下方是主機板與整機，整機裡有中央處理器、儲存、網路卡與先進封裝。封裝中間是加速器晶片（GPU、ASIC），兩側各一疊多層的 HBM，底下是中介層。左邊是供電，由外往內：電網與變壓器、不斷電系統與電池、配電（電壓從 400 V 提高到 800 V、交流改為直流），再送進晶片；電壓提高、改用直流，銅線可以更細。右邊是散熱，由內往外：貼在晶片上的冷板（直接對晶片液冷）、冷卻液分配單元 CDU、機房冷卻水；高密度機櫃從氣冷改成液冷。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrowO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#D97A2B"/>
+    </marker>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2F6F9F"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">AI 伺服器由內而外的七層</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Seven layers of an AI server, from accelerator to rack</text>
+
+  <!-- center: rack -->
+  <rect x="400" y="120" width="800" height="720" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="800" y="158" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">機櫃：多台伺服器與網路交換器</text>
+
+  <!-- network -->
+  <rect x="440" y="178" width="720" height="72" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="221" font-size="17" fill="#102A2B" text-anchor="middle">網路：叢集內縱向擴展、叢集之間橫向擴展</text>
+
+  <!-- server -->
+  <rect x="440" y="276" width="720" height="530" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4"/>
+  <text x="800" y="312" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">主機板與整機</text>
+
+  <!-- package -->
+  <rect x="490" y="336" width="620" height="330" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="372" font-size="18" font-weight="700" fill="#0D6B68" text-anchor="middle">先進封裝</text>
+
+  <!-- HBM left -->
+  <text x="610" y="428" font-size="17" font-weight="700" fill="#2F6F9F" text-anchor="middle">HBM</text>
+  <rect x="550" y="442" width="120" height="26" rx="4" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <rect x="550" y="476" width="120" height="26" rx="4" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <rect x="550" y="510" width="120" height="26" rx="4" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <rect x="550" y="544" width="120" height="26" rx="4" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+
+  <!-- HBM right -->
+  <text x="990" y="428" font-size="17" font-weight="700" fill="#2F6F9F" text-anchor="middle">HBM</text>
+  <rect x="930" y="442" width="120" height="26" rx="4" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <rect x="930" y="476" width="120" height="26" rx="4" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <rect x="930" y="510" width="120" height="26" rx="4" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+  <rect x="930" y="544" width="120" height="26" rx="4" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="3"/>
+
+  <!-- accelerator die -->
+  <rect x="700" y="436" width="200" height="140" rx="10" fill="#0D6B68"/>
+  <text x="800" y="500" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">加速器晶片</text>
+  <text x="800" y="534" font-size="17" fill="#FFFFFF" text-anchor="middle">GPU、ASIC</text>
+
+  <!-- interposer -->
+  <rect x="530" y="592" width="540" height="40" rx="6" fill="#F7F1E8" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="800" y="618" font-size="15" fill="#5C6B6B" text-anchor="middle">中介層</text>
+
+  <!-- server components -->
+  <rect x="480" y="694" width="200" height="66" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="580" y="734" font-size="18" fill="#102A2B" text-anchor="middle">中央處理器</text>
+  <rect x="700" y="694" width="200" height="66" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="800" y="734" font-size="18" fill="#102A2B" text-anchor="middle">儲存</text>
+  <rect x="920" y="694" width="200" height="66" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="1020" y="734" font-size="18" fill="#102A2B" text-anchor="middle">網路卡</text>
+
+  <g transform="translate(0,40)">
+  <!-- left column: power -->
+  <text x="200" y="160" font-size="20" font-weight="700" fill="#D97A2B" text-anchor="middle">供電：由外往內</text>
+  <rect x="60" y="190" width="280" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="200" y="247" font-size="20" fill="#102A2B" text-anchor="middle">電網與變壓器</text>
+  <line x1="200" y1="290" x2="200" y2="334" stroke="#D97A2B" stroke-width="6" stroke-linecap="butt" marker-end="url(#arrowO)"/>
+  <rect x="60" y="340" width="280" height="100" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="200" y="397" font-size="20" fill="#102A2B" text-anchor="middle">不斷電系統與電池</text>
+  <line x1="200" y1="440" x2="200" y2="484" stroke="#D97A2B" stroke-width="6" stroke-linecap="butt" marker-end="url(#arrowO)"/>
+  <rect x="60" y="490" width="280" height="140" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="200" y="532" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">配電</text>
+  <text x="200" y="568" font-size="17" fill="#102A2B" text-anchor="middle">400 V 提高到 800 V</text>
+  <text x="200" y="600" font-size="17" fill="#102A2B" text-anchor="middle">交流改為直流</text>
+  <line x1="340" y1="560" x2="484" y2="560" stroke="#D97A2B" stroke-width="6" stroke-linecap="butt" marker-end="url(#arrowO)"/>
+  <text x="200" y="690" font-size="17" fill="#5C6B6B" text-anchor="middle">電壓提高、改用直流</text>
+  <text x="200" y="716" font-size="17" fill="#5C6B6B" text-anchor="middle">銅線可以更細</text>
+
+  <!-- right column: cooling -->
+  <text x="1400" y="160" font-size="20" font-weight="700" fill="#2F6F9F" text-anchor="middle">散熱：由內往外</text>
+  <rect x="1260" y="190" width="280" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1400" y="247" font-size="20" fill="#102A2B" text-anchor="middle">機房冷卻水</text>
+  <line x1="1400" y1="340" x2="1400" y2="296" stroke="#2F6F9F" stroke-width="6" stroke-linecap="butt" marker-end="url(#arrowB)"/>
+  <rect x="1260" y="340" width="280" height="100" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1400" y="384" font-size="20" fill="#102A2B" text-anchor="middle">冷卻液分配單元</text>
+  <text x="1400" y="416" font-size="17" fill="#5C6B6B" text-anchor="middle">CDU</text>
+  <line x1="1400" y1="490" x2="1400" y2="446" stroke="#2F6F9F" stroke-width="6" stroke-linecap="butt" marker-end="url(#arrowB)"/>
+  <rect x="1260" y="490" width="280" height="140" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1400" y="532" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">冷板</text>
+  <text x="1400" y="568" font-size="17" fill="#102A2B" text-anchor="middle">貼在晶片上</text>
+  <text x="1400" y="600" font-size="17" fill="#102A2B" text-anchor="middle">直接對晶片液冷</text>
+  <line x1="1112" y1="560" x2="1254" y2="560" stroke="#2F6F9F" stroke-width="6" stroke-linecap="butt" marker-end="url(#arrowB)"/>
+  <text x="1400" y="690" font-size="17" fill="#5C6B6B" text-anchor="middle">高密度機櫃</text>
+  <text x="1400" y="716" font-size="17" fill="#5C6B6B" text-anchor="middle">從氣冷改成液冷</text>
+  </g>
+
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>
