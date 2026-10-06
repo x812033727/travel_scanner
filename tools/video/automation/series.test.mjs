@@ -41,7 +41,8 @@ test("the worker refuses changed WAVs before accepting an existing remote audio 
   const worker = {
     ctx: {}, workdir: () => box.workdir,
     decision: async () => { decisions += 1; return { status: "approved" }; },
-    pull: async () => { pulls += 1; },
+    // The pull and its check that the approval was recorded (flow.mjs pulled): recorded.
+    pulled: async () => { pulls += 1; return null; },
     block: async (_state, why) => why,
   };
   assert.match(await Automation.prototype.narration.call(worker, { slug: box.slug }), /narration approved/);

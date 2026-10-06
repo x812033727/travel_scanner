@@ -130,9 +130,13 @@ export async function run(command, args, ctx) {
       return EXIT.ok;
     }
     // Several lanes move different videos at once (VIDEO_WORKER_LANES, default 1); only the
-    // first starts anything new, and a lane never picks a video another lane is moving.
+    // first starts anything new, and a lane never picks a video another lane is moving, one
+    // another lane set aside for this run (a deferral, flow.mjs defer), or one whose writer
+    // another lane found still running on the server (pendingUntil: one lookup per round).
     const busy = new Set();
-    const lanes = Array.from({ length: laneCount(ctx.env) }, (_, index) => new Automation(ctx, api, settings, { busy, secondary: index > 0 }));
+    const skipped = new Set();
+    const pendingUntil = new Map();
+    const lanes = Array.from({ length: laneCount(ctx.env) }, (_, index) => new Automation(ctx, api, settings, { busy, skipped, pendingUntil, secondary: index > 0 }));
     const [automation] = lanes;
     let stopped = false;
     const drive = async (lane, index) => {
@@ -149,7 +153,8 @@ export async function run(command, args, ctx) {
           break;
         }
         ctx.stdout.write(`${tag}${done}\n`);
-        // The unit could not move and would fail the same way right now: wait for the next round.
+        // Nothing could move for a reason that is everyone's: wait for the next round. A video's
+        // own trouble only set that video aside, and the lane takes the next unit.
         if (lane.halted) break;
       }
     };
