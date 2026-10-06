@@ -47,14 +47,16 @@ ALLOWED_TRANSITIONS: Mapping[str, frozenset[str]] = {
     "locale_review": frozenset({"jev_review", "manual_review", "needs_redraft", "failed"}),
     "jev_review": frozenset({"shadow_review", "manual_review", "published", "failed"}),
     "shadow_review": frozenset({"published", "rejected", "drafting"}),
-    "manual_review": frozenset({"published", "rejected", "drafting"}),
+    # "duplicate" is the judge's answer to an uncertain duplicate check.
+    "manual_review": frozenset({"published", "rejected", "drafting", "duplicate"}),
     # A retry puts it back to discovered; nothing here can be published.
     "needs_evidence": frozenset({"discovered", "rejected"}),
     "needs_redraft": frozenset({"discovered", "rejected"}),
     "failed": frozenset({"drafting", "rejected"}),
-    "duplicate": frozenset({"rejected"}),
+    # The owner may take back a story the judge closed; it returns to the list it was in.
+    "duplicate": frozenset({"rejected", "manual_review"}),
     "published": frozenset(),
-    "rejected": frozenset(),
+    "rejected": frozenset({"manual_review", "needs_redraft"}),
 }
 
 

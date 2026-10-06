@@ -141,11 +141,13 @@ _MODEL_KEYS = (
     "verifier_model",
     "editor_provider",
     "editor_model",
+    "judge_provider",
+    "judge_model",
 )
 
 
 class ModelsWrite(StrictModel):
-    """The writer, verifier and final editor models, chosen on the AI settings page."""
+    """The writer, verifier, final editor and judge models, chosen on the AI settings page."""
 
     writer_provider: ProviderName
     writer_model: str | None = Field(default=None, max_length=128)
@@ -153,11 +155,21 @@ class ModelsWrite(StrictModel):
     verifier_model: str | None = Field(default=None, max_length=128)
     editor_provider: ProviderName
     editor_model: str | None = Field(default=None, max_length=128)
+    # A page loaded before the judge existed sends the three roles above. Without a judge
+    # vendor the save leaves the stored judge alone, model included.
+    judge_provider: ProviderName | None = None
+    judge_model: str | None = Field(default=None, max_length=128)
 
-    @field_validator("writer_model", "verifier_model", "editor_model")
+    @field_validator("writer_model", "verifier_model", "editor_model", "judge_model")
     @classmethod
     def model_id(cls, value: str | None) -> str | None:
         return _clean_model_id(value)
+
+    @model_validator(mode="after")
+    def judge_vendor_named_when_sent(self) -> Self:
+        if "judge_provider" in self.model_fields_set and self.judge_provider is None:
+            raise ValueError("judge_provider cannot be empty")
+        return self
 
 
 class SettingsWrite(StrictModel):
@@ -174,6 +186,12 @@ class SettingsWrite(StrictModel):
     # settings CLI); a save still keeps the stored editor unless it sends one.
     editor_provider: ProviderName | None = "anthropic"
     editor_model: str | None = Field(default="claude-opus-5-5", max_length=128)
+    # The judge's switch is on the news page and its model on the AI settings page. A save
+    # that leaves any of the three out keeps what is stored, so a tab opened before the
+    # judge existed cannot switch it off or empty its model.
+    judge_enabled: bool | None = None
+    judge_provider: ProviderName | None = None
+    judge_model: str | None = Field(default=None, max_length=128)
     global_concurrency: int = Field(ge=1, le=8)
     per_vertical_concurrency: int = Field(ge=1, le=4)
     min_shadow_days: int = Field(ge=1, le=90)
@@ -186,7 +204,7 @@ class SettingsWrite(StrictModel):
     prompt_version: str = Field(min_length=1, max_length=32)
     policy_version: str = Field(min_length=1, max_length=32)
 
-    @field_validator("writer_model", "verifier_model", "editor_model")
+    @field_validator("writer_model", "verifier_model", "editor_model", "judge_model")
     @classmethod
     def model_id(cls, value: str | None) -> str | None:
         return _clean_model_id(value)
@@ -195,7 +213,7 @@ class SettingsWrite(StrictModel):
     def concurrency_order(self) -> Self:
         if self.per_vertical_concurrency > self.global_concurrency:
             raise ValueError("per-vertical concurrency cannot exceed global concurrency")
-        for key in ("writer_provider", "verifier_provider", "editor_provider"):
+        for key in ("writer_provider", "verifier_provider", "editor_provider", "judge_provider"):
             if key in self.model_fields_set and getattr(self, key) is None:
                 raise ValueError(f"{key} cannot be empty")
         return self
@@ -226,6 +244,8 @@ class SettingsView(SettingsWrite):
     writer_provider: ProviderName
     verifier_provider: ProviderName
     editor_provider: ProviderName
+    judge_enabled: bool
+    judge_provider: ProviderName
     gates: dict[Vertical, GateView]
     # The admin model dropdowns: catalog models each vendor's news adapter can drive,
     # and the model an empty choice falls back to.
@@ -284,6 +304,8 @@ class CandidateSummary(StrictModel):
     event_date: date | None
     would_publish: bool | None
     human_decision: Literal["publish", "reject"] | None
+    # The judge's latest answer to the hold the row is in; None when it has not answered.
+    judge_decision: Literal["publish", "reject", "manual", "duplicate"] | None = None
     error_code: str | None
     error_detail: str | None
     guide_article_id: UUID | None
@@ -382,6 +404,30 @@ class LocaleReviewResult(NewsProviderReply):
     corrected_document: GuideDocument | None = None
 
 
+# The judge's three replies carry no bound on purpose: a strict provider only reads a bound
+# as a description, and one that failed validation here would cost the repair round. The
+# code that stores the reasons cuts them to size.
+class ReviewJudgement(NewsProviderReply):
+    """The judge on a story in the review queue: a verified draft or a finished article."""
+
+    decision: Literal["publish", "reject", "manual"]
+    reasons: list[str] = Field(default_factory=list)
+
+
+class DuplicateJudgement(NewsProviderReply):
+    """The judge on a duplicate check Jev could not settle."""
+
+    decision: Literal["distinct", "duplicate", "manual"]
+    reasons: list[str] = Field(default_factory=list)
+
+
+class RedraftJudgement(NewsProviderReply):
+    """The judge on a draft a check stopped; the reasons of a rewrite go to the writer."""
+
+    decision: Literal["rewrite", "reject", "manual"]
+    reasons: list[str] = Field(default_factory=list)
+
+
 class Entry(StrictModel):
     title: str = Field(min_length=1, max_length=500)
     url: str = Field(min_length=1, max_length=2048)
@@ -404,6 +450,8 @@ class StatsView(StrictModel):
     failed: int
     published: int
     queue_by_status: dict[str, int]
+    # Rows in the redraft list the judge looked at and handed back to the owner.
+    judge_handed_back: int = 0
     pipeline_runs: int = 0
     pipeline_failures: int = 0
     input_tokens: int = 0

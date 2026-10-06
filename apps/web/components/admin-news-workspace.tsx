@@ -59,11 +59,12 @@ const statusTone: Partial<Record<NewsCandidateStatus, string>> = {
 type Situation =
   | "zhDraft" | "translationHold" | "readyToPublish" | "finalEditHold" | "jevFinalHold"
   | "shadow" | "jevHold" | "hardChecksHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "redraft"
-  | "failed" | "needsEvidence" | "published" | "closed" | "working";
-type Action = "approve" | "publish" | "verify" | "notDuplicate" | "refresh" | "retry" | "reject" | "incident";
+  | "failed" | "needsEvidence" | "published" | "closed" | "judgeClosed" | "working";
+type Action = "approve" | "publish" | "verify" | "notDuplicate" | "refresh" | "retry" | "reject" | "incident" | "reopen";
 const actionPath: Record<Action, string> = {
   approve: "approve", publish: "publish", verify: "verify", notDuplicate: "not-duplicate",
   refresh: "refresh-evidence", retry: "retry", reject: "reject", incident: "major-error",
+  reopen: "reopen",
 };
 // Only the buttons that can work for the situation, so none sit greyed out unexplained.
 const situationActions: Record<Situation, readonly Action[]> = {
@@ -88,9 +89,11 @@ const situationActions: Record<Situation, readonly Action[]> = {
   needsEvidence: ["reject"],
   published: ["incident"],
   closed: [],
+  // Closed by the AI judge, not by a person: the owner can take it back, and nothing else.
+  judgeClosed: ["reopen"],
   working: [],
 };
-const primaryActions: readonly Action[] = ["approve", "publish", "notDuplicate", "refresh", "incident"];
+const primaryActions: readonly Action[] = ["approve", "publish", "notDuplicate", "refresh", "incident", "reopen"];
 
 function situationOf(candidate: NewsCandidateSummary): Situation {
   switch (candidate.status) {
@@ -111,9 +114,19 @@ function situationOf(candidate: NewsCandidateSummary): Situation {
     case "needs_evidence": return "needsEvidence";
     case "published": return "published";
     case "rejected":
-    case "duplicate": return "closed";
+    case "duplicate":
+      // Only a row the judge closed can be taken back; one a person closed stays closed.
+      if ((candidate.judge_decision === "reject" || candidate.judge_decision === "duplicate") && !candidate.human_decision) return "judgeClosed";
+      return "closed";
     default: return "working";
   }
+}
+
+// The judge's mark on a list row: it read the story and left it with the owner, or closed it.
+function judgeBadge(candidate: NewsCandidateSummary): "judgeHandedBack" | "judgeClosed" | null {
+  if (situationOf(candidate) === "judgeClosed") return "judgeClosed";
+  const waiting = queueStatuses.review.includes(candidate.status) || queueStatuses.redraft.includes(candidate.status);
+  return waiting && candidate.judge_decision === "manual" ? "judgeHandedBack" : null;
 }
 
 function availableActions(candidate: NewsCandidateSummary): Action[] {
@@ -208,10 +221,12 @@ export function AdminNewsWorkspace() {
   const queueHint: Partial<Record<QueueView, string>> = {
     review: copy.reviewHint, redraft: copy.redraftHint, evidence: copy.evidenceHint, closed: copy.closedHint,
   };
+  const handedBack = stats?.judge_handed_back ?? 0;
   const selectable = bulkViews.includes(queueView) && manage.allowed;
   const tickedIds = ticked.key === listKey ? ticked.ids.filter((id) => queue.some((item) => item.id === id)) : [];
   const statusName = (status: string) => named(copy.statuses, status);
   const holdName = (item: NewsCandidateSummary) => item.error_code ? named(copy.holds, item.error_code) : "";
+  const badgeName = (item: NewsCandidateSummary) => { const badge = judgeBadge(item); return badge ? copy[badge] : ""; };
   // A source that has failed on its recent articles for hours ("stuck", set by the scanner)
   // goes first, so a publisher that started refusing the scanner is not lost in the list.
   const stuckCount = sources.filter((item) => item.last_status === "stuck").length;
@@ -240,17 +255,23 @@ export function AdminNewsWorkspace() {
   const doneMessage: Record<Action, string> = {
     approve: copy.doneApprove, publish: copy.donePublish, verify: copy.doneVerify,
     notDuplicate: copy.doneNotDuplicate, refresh: copy.doneRefresh, retry: copy.doneRetry,
-    reject: copy.doneReject, incident: copy.doneIncident,
+    reject: copy.doneReject, incident: copy.doneIncident, reopen: copy.doneReopen,
   };
   const actionLabel: Record<Action, string> = {
     approve: copy.approve, publish: copy.publish, verify: copy.verify,
     notDuplicate: copy.notDuplicate, refresh: copy.refresh, retry: copy.retry,
-    reject: copy.reject, incident: copy.incident,
+    reject: copy.reject, incident: copy.incident, reopen: copy.reopen,
   };
   // Confirming again resumes the translations of a draft the owner already confirmed.
   const labelFor = (name: Action) =>
     name === "approve" && detail?.human_decision === "publish" ? copy.retranslate : actionLabel[name];
   const draftJev = detail?.assessments.filter((item) => item.assessment_type === "jev" && item.locale === "zh-TW" && item.details.stage !== "final").at(-1);
+  // The judge's answer to the hold the row rests at now, or the hand-back that put the row
+  // there: a publication refused for changed evidence is recorded under the hold the judge
+  // read, with the refusal as details.failure. A rerun clears judge_decision, so an older
+  // judge row is history for the table below, not the answer to this hold.
+  const newestJudge = detail?.assessments.filter((item) => item.assessment_type === "judge").at(-1);
+  const judgement = detail?.judge_decision && (newestJudge?.details.hold === detail.error_code || newestJudge?.details.failure === detail.error_code) ? newestJudge : undefined;
 
   const act = (name: Action) => run(async () => {
     if (!detail || !reason.trim()) { setError(copy.reasonFirst); return; }
@@ -309,7 +330,7 @@ export function AdminNewsWorkspace() {
     if (!settings) return;
     const payload: Record<string, unknown> = { ...settings };
     // The models are saved from the AI settings page; leaving them out keeps what is stored.
-    for (const readOnly of ["gates", "updated_at", "model_options", "default_models", "writer_provider", "writer_model", "verifier_provider", "verifier_model", "editor_provider", "editor_model"]) delete payload[readOnly];
+    for (const readOnly of ["gates", "updated_at", "model_options", "default_models", "writer_provider", "writer_model", "verifier_provider", "verifier_model", "editor_provider", "editor_model", "judge_provider", "judge_model"]) delete payload[readOnly];
     setSettings(await api<NewsSettings>("/admin/news/settings", {
       method: "PUT", body: JSON.stringify(payload),
     }));
@@ -327,6 +348,14 @@ export function AdminNewsWorkspace() {
   const situation = detail ? situationOf(detail) : "working";
   const actions = detail ? availableActions(detail) : [];
   const gate = detail && settings ? settings.gates[detail.vertical] : undefined;
+  // The redraft note says the AI decides the stories that arrive in that list. A rewrite the
+  // writer declined is the one hold there the judge is never sent, so the note stays off it.
+  const judgeTakesRedraft = detail?.status === "needs_redraft" && detail.error_code !== "news_not_eligible";
+  // An older server's settings answer has no judge yet. Its model is left out of the list, as
+  // the model overview leaves it out, and so is its switch: that server refuses a field it
+  // does not know, which would fail the whole save.
+  const modelKinds = (["writer", "verifier", "editor", "judge"] as const).filter((kind) => settings?.[`${kind}_provider`]);
+  const judgeKnown = typeof settings?.judge_enabled === "boolean";
   // The article exists from the first draft, but only a published candidate's locales have a
   // public version: any other status would link to a 404.
   const livePath = detail?.status === "published" && detail.article_slug && detail.article_kind
@@ -352,7 +381,8 @@ export function AdminNewsWorkspace() {
           <div className="flex flex-wrap gap-2" role="group" aria-label={copy.queueFilter}>
             {queueViews.map((view) => <Button key={view} secondary={queueView !== view} aria-pressed={queueView === view} onClick={() => chooseView(view)}>{`${queueLabel[view]} · ${queueCount(view)}`}</Button>)}
           </div>
-          {queueHint[queueView] && <p className="text-xs leading-5 text-[var(--muted)]">{queueHint[queueView]}</p>}
+          {queueHint[queueView] && <p className="text-xs leading-5 text-[var(--muted)]">{queueHint[queueView]}
+            {queueView === "redraft" && handedBack > 0 && <span className="block">{fillNewsCopy(copy.judgeHandedBackCount, { count: handedBack })}</span>}</p>}
           {selectable && queue.length > 0 && <div className="space-y-2 rounded-xl bg-[var(--paper)] p-3">
             <div className="flex flex-wrap items-center gap-2 text-sm">
               <Button secondary onClick={() => setTicked({ key: listKey, ids: tickedIds.length === queue.length ? [] : queue.map((item) => item.id) })}>
@@ -371,7 +401,10 @@ export function AdminNewsWorkspace() {
             {selectable && <input type="checkbox" className="mt-1 h-5 w-5 shrink-0" aria-label={fillNewsCopy(copy.selectRow, { title: item.source_title })}
               checked={tickedIds.includes(item.id)} onChange={(event) => tick(item.id, event.target.checked)} />}
             <button type="button" onClick={() => setSelected(item.id)} className="min-w-0 flex-1 text-left">
-              <span className={`rounded-full px-2 py-1 text-xs font-bold ${statusTone[item.status] ?? "bg-[var(--paper)]"}`}>{statusName(item.status)}</span>
+              <span className="flex flex-wrap items-center gap-2">
+                <span className={`rounded-full px-2 py-1 text-xs font-bold ${statusTone[item.status] ?? "bg-[var(--paper)]"}`}>{statusName(item.status)}</span>
+                {badgeName(item) && <span className="rounded-full border border-[var(--line)] px-2 py-1 text-xs font-bold">{badgeName(item)}</span>}
+              </span>
               {holdName(item) && <span className="mt-2 block text-sm font-semibold">{holdName(item)}</span>}
               <strong className="mt-1 block">{item.source_title}</strong>
               <span className="mt-1 block text-xs text-[var(--muted)]">{item.vertical.toUpperCase()} · {item.event_date ?? item.created_at.slice(0, 10)}</span>
@@ -392,6 +425,11 @@ export function AdminNewsWorkspace() {
           <div className={`${panelClass} space-y-3`}>
             <h2 className="text-xl font-bold">{copy.nextStep}</h2>
             <p className="leading-7">{copy.next[situation]}</p>
+            {judgeTakesRedraft && <p className="text-sm leading-6 text-[var(--muted)]">{copy.redraftJudgeNote}</p>}
+            {judgement && <div>
+              <h3 className="font-semibold">{fillNewsCopy(copy.judgeVerdict, { model: judgement.model ?? "—", verdict: named(copy.verdicts, judgement.verdict) })}</h3>
+              {judgement.reasons.length > 0 && <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">{judgement.reasons.map((value, index) => <li key={`${index}-${value}`}>{value}</li>)}</ul>}
+            </div>}
             {situation === "zhDraft" && draftJev && <p className="text-sm">
               {fillNewsCopy(copy.jevOnDraft, { tier: typeof draftJev.details.tier === "string" ? named(copy.tiers, draftJev.details.tier) : named(copy.verdicts, draftJev.verdict), confidence: draftJev.confidence?.toFixed(2) ?? "—" })}
             </p>}
@@ -452,7 +490,7 @@ export function AdminNewsWorkspace() {
         <label>{copy.mode}<select className={fieldClass} value={settings.mode} onChange={(event) => setSettings({ ...settings, mode: event.target.value as NewsSettings["mode"] })}><option value="shadow">{copy.shadow}</option><option value="automatic">{copy.automatic}</option></select></label>
         <div className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm">
           <p className="leading-6 text-[var(--muted)]">{copy.modelsManaged}</p>
-          <dl className="mt-2 grid gap-1 md:grid-cols-3">{(["writer", "verifier", "editor"] as const).map((kind) => <div key={kind}><dt className="inline font-semibold">{copy[kind]}</dt><dd className="inline"> · {newsProviderLabels[settings[`${kind}_provider`]]} · {newsModelLabel(settings, kind, copy)}</dd></div>)}</dl>
+          <dl className="mt-2 grid gap-1 md:grid-cols-2">{modelKinds.map((kind) => <div key={kind}><dt className="inline font-semibold">{copy[kind]}</dt><dd className="inline"> · {newsProviderLabels[settings[`${kind}_provider`]]} · {newsModelLabel(settings, kind, copy)}</dd></div>)}</dl>
           <Link href={aiModelsHref("news")} className="mt-2 inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline">{copy.editModels}</Link>
         </div>
         <div className="grid gap-3 md:grid-cols-2">{(["global_concurrency", "per_vertical_concurrency"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} type="number" value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: Number(event.target.value) })} /></label>)}</div>
@@ -460,6 +498,8 @@ export function AdminNewsWorkspace() {
         <div className="grid gap-3 md:grid-cols-2">{(["prompt_version", "policy_version"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.value })} /></label>)}</div>
         <p className="text-sm text-[var(--muted)]">{copy.agreementHint}</p>
         <div className="grid gap-3 md:grid-cols-3">{(["ai", "tech", "crypto"] as NewsVertical[]).map((vertical) => { const gateView = settings.gates[vertical]; const key = `auto_publish_${vertical}` as const; return <article key={vertical} className="rounded-xl border border-[var(--line)] p-4"><h3 className="font-bold">{vertical.toUpperCase()} · {copy.agreement}</h3><p className="mt-1 text-sm">{gateView.days}d · {gateView.labelled_candidates} · {(gateView.agreement_rate * 100).toFixed(1)}% · {gateView.serious_false_positives} {copy.serious}</p><label className="mt-3 flex min-h-11 items-center gap-2"><input type="checkbox" disabled={settings.mode !== "automatic"} checked={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.checked })} />{copy.autoPublish}</label></article>; })}</div>
+        {judgeKnown && <div><label className="flex min-h-11 items-center gap-2"><input type="checkbox" disabled={settings.mode !== "automatic"} checked={settings.judge_enabled} onChange={(event) => setSettings({ ...settings, judge_enabled: event.target.checked })} />{copy.judgeEnabled}</label>
+          <p className="text-sm leading-6 text-[var(--muted)]">{copy.judgeEnabledHint}</p></div>}
         <Button disabled={!manage.allowed || busy} onClick={() => void saveSettings()}>{copy.save}</Button></section>}
       {tab === "runs" && (!detail ? <Empty>{copy.pickOne}</Empty> : <section className={panelClass}><h2 className="text-xl font-bold">{copy.runs}</h2><div className="mt-3 overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr><th className="p-2">{copy.stage}</th><th className="p-2">{copy.status}</th><th className="p-2">{copy.attempt}</th><th className="p-2">{copy.model}</th><th className="p-2">{copy.tokens}</th></tr></thead><tbody>{detail.runs.map((item) => <tr key={item.id} className="border-t border-[var(--line)]"><td className="p-2">{item.stage}</td><td className="p-2">{item.status}{item.error_code ? ` · ${item.error_code}` : ""}</td><td className="p-2">{item.attempt}</td><td className="p-2">{item.provider ?? "—"} {item.model ?? ""}</td><td className="p-2">{item.input_tokens}/{item.output_tokens}</td></tr>)}</tbody></table></div></section>)}
     </Tabs>

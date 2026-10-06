@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { STAGES, providerLabels as videoProviderLabels, type VideoSettingsView } from "@/components/admin-video-settings";
 import { Link } from "@/i18n/navigation";
 import { newsProviderLabels, type NewsSettings } from "@/lib/admin-news";
+import { adminNewsCopy } from "@/lib/admin-news-copy";
 import { settingsHref } from "@/lib/admin-settings-ownership";
 import { adminNavigate } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
@@ -63,9 +64,10 @@ function text(value: unknown): string {
 /**
  * One row per feature that calls a model: which vendor and model it runs on now, with an empty
  * choice resolved to the model it inherits, how the calls are paid for, and where to change it.
- * Pure, so the tests can pin every inheritance rule without a server.
+ * Pure, so the tests can pin every inheritance rule without a server. `newsJudge` is the name of
+ * the news review judge's row, which comes from the news page's own copy like its picker's.
  */
-export function overviewRows(sources: OverviewSources, t: Translate, stageName: (stage: string) => string): OverviewRow[] {
+export function overviewRows(sources: OverviewSources, t: Translate, stageName: (stage: string) => string, newsJudge = ""): OverviewRow[] {
   const cards = new Map((sources.providers?.providers ?? []).map((card) => [card.provider, card]));
   const config = (provider: string) => cards.get(provider)?.config ?? {};
   const label = (provider: string, field: string, id: string) =>
@@ -130,13 +132,15 @@ export function overviewRows(sources: OverviewSources, t: Translate, stageName: 
 
   const news = sources.news;
   if (isNewsSettings(news)) {
-    for (const kind of ["writer", "verifier", "editor"] as const) {
+    for (const kind of ["writer", "verifier", "editor", "judge"] as const) {
       const provider = news[`${kind}_provider`];
+      // An older server's answer has no judge yet; the other three rows still show.
+      if (!provider) continue;
       const options = news.model_options?.[provider] ?? [];
       const chosen = news[`${kind}_model`];
       const id = chosen ?? news.default_models?.[provider] ?? "";
       rows.push({
-        key: `news-${kind}`, feature: t(`overview.features.${({ writer: "newsWriter", verifier: "newsVerifier", editor: "newsEditor" } as const)[kind]}`), vendor: newsProviderLabels[provider],
+        key: `news-${kind}`, feature: kind === "judge" ? newsJudge : t(`overview.features.${({ writer: "newsWriter", verifier: "newsVerifier", editor: "newsEditor" } as const)[kind]}`), vendor: newsProviderLabels[provider],
         model: options.find((option) => option.value === id)?.label ?? id, inherited: chosen ? undefined : t("overview.features.guideSearch"),
         connection: siteConnection(provider), support: siteSupport(provider), gemini: provider === "gemini", edit: "#ai-models-news", open: "/admin/news?tab=settings",
       });
@@ -195,7 +199,7 @@ export function AdminAiModelOverview({ refresh = 0 }: { refresh?: number }) {
     return () => { live = false; };
   }, [refresh, tick]);
 
-  const rows = overviewRows(sources, (key, values) => t(key, values), (stage) => stages(stage));
+  const rows = overviewRows(sources, (key, values) => t(key, values), (stage) => stages(stage), adminNewsCopy(locale).judgeFeature);
   // Every editor is on this page. The settings panel follows the URL through the admin
   // location event, which a Next <Link> to the same page does not send.
   function edit(event: React.MouseEvent<HTMLAnchorElement>, target: string) {

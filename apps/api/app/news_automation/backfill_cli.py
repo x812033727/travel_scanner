@@ -9,7 +9,9 @@ candidates had stopped because evidence from one website was not enough (the rul
 still stored, so each one is reopened as a new draft (status ``discovered``) and queued; the
 current pipeline decides what happens to it, including the owner's confirmation for a story
 that may not go out on its own. Candidates a person rejected for editorial reasons are not
-in the pool: their error code is the hold they were rejected from, not one of these.
+in the pool: their error code is the hold they were rejected from, not one of these. Nor
+are candidates the review judge rejected or handed back (``judge_decision`` is set): those
+keep their stop code, and the owner takes them back or reruns them one by one.
 
     python -m app.news_automation.backfill_cli --since 2026-09-01 --jev-quota-holds --apply ...
 
@@ -36,6 +38,19 @@ a fresh duplicate check, then the final editor's recorded verdicts, Jev's last c
 publication (``pipeline.RESUME_MARKER``); nothing is drafted or translated. The listing shows
 which stored locales today's hard checks still refuse, and ranks the clean ones first. The
 default pool would draft these again, so use this flag for them.
+
+    python -m app.news_automation.backfill_cli --since 2026-10-01 --judge-holds
+    python -m app.news_automation.backfill_cli --since 2026-10-01 --judge-redrafts --limit 5 --apply
+
+``--judge-holds`` (the review queue) and ``--judge-redrafts`` (the redraft list) hand the
+review judge (``judge.py``) the stories that were already waiting when the owner switched AI
+review on (2026-10-06); a story that arrives afterwards reaches the judge by itself. Nothing
+is reopened here: each chosen story gets one judge job, and the judge decides as it does for
+a new arrival. The listing says which stories would be asked about, newest first, counted by
+hold and by vertical, and which are left out and why. ``--since`` is the day the candidate
+was created, since a source may give no publication date. ``--apply`` needs ``--limit``, so
+the backlog goes out in batches whose outcome can be read before the next one, and takes no
+``--actor-email``: nothing is done in a person's name.
 """
 
 from __future__ import annotations
@@ -45,7 +60,7 @@ import asyncio
 import json
 from collections import Counter
 from datetime import UTC, date, datetime
-from typing import Any, cast
+from typing import Any, Literal, cast
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -55,18 +70,19 @@ from app.guides.schemas import GuideDocument
 from app.i18n import Locale
 from app.infra import get_redis
 from app.models import User
-from app.news_automation import jobs
+from app.news_automation import jobs, judge
 from app.news_automation.duplicates import DUPLICATE_UNCERTAIN
 from app.news_automation.fetch import RedisHostRateLimiter
 from app.news_automation.models import (
     LOCALES,
+    VERTICALS,
     NewsAssessment,
     NewsCandidate,
     NewsEvidence,
     NewsPipelineRun,
     NewsSource,
 )
-from app.news_automation.pipeline import JEV_QUOTA_PAUSED, RESUME_MARKER
+from app.news_automation.pipeline import JEV_QUOTA_PAUSED, RESUME_MARKER, current_switches
 from app.news_automation.policy import evidence_site_count, hard_policy_problems
 from app.news_automation.schemas import Vertical
 from app.news_automation.service import audit
@@ -86,6 +102,8 @@ BACKFILL_STOPS = frozenset(
 )
 BACKFILL_STATUSES = frozenset({"rejected", "needs_redraft"})
 NOT_ELIGIBLE = "news_not_eligible"
+# The review judge's two lists: the review queue and the redraft list.
+JudgePool = Literal["holds", "redrafts"]
 
 
 async def refetch_pool(
@@ -225,6 +243,9 @@ async def backfill_pool(
                 select(NewsCandidate).where(
                     NewsCandidate.status.in_(BACKFILL_STATUSES),
                     NewsCandidate.error_code.in_(BACKFILL_STOPS),
+                    # A story the review judge rejected or handed back keeps its stop code.
+                    # It is the owner's to take back or rerun, not a batch's to redraft.
+                    NewsCandidate.judge_decision.is_(None),
                     NewsCandidate.source_published_at
                     >= datetime(since.year, since.month, since.day, tzinfo=UTC),
                 )
@@ -249,6 +270,129 @@ async def backfill_pool(
     )
     chosen = ranked[:limit] if limit is not None else ranked
     return [(row, row.id in first_party) for row in chosen]
+
+
+async def held_for_judge(
+    session: AsyncSession, since: date, pool: JudgePool
+) -> list[NewsCandidate]:
+    """Every story resting in one of the judge's two lists since that day, newest first."""
+    status, holds = (
+        ("needs_redraft", judge.REDRAFT_HOLDS)
+        if pool == "redrafts"
+        else ("manual_review", frozenset(judge.REVIEW_HOLDS))
+    )
+    return list(
+        await session.scalars(
+            select(NewsCandidate)
+            .where(
+                NewsCandidate.status == status,
+                NewsCandidate.error_code.in_(holds),
+                # Not source_published_at: a source may give no date, and such a story
+                # waits in the list all the same.
+                NewsCandidate.created_at
+                >= datetime(since.year, since.month, since.day, tzinfo=UTC),
+            )
+            .order_by(NewsCandidate.created_at.desc(), NewsCandidate.id)
+        )
+    )
+
+
+async def judge_exclusion(session: AsyncSession, row: NewsCandidate) -> str | None:
+    """Why a held story is not sent to the judge, or None when it is.
+
+    The judge's own reasons come first (``judge.exclusion``). Two more are stories it would
+    only hand back, so a job for them is a wasted call slot: text of the old flow that a new
+    draft would overwrite, and the rewrite limit. Both are named before a closed gate, which
+    is the one reason a switch lifts.
+    """
+    reason: str | None = await judge.exclusion(session, row)
+    if reason not in {None, "gate_off"}:
+        return reason
+    if judge.legacy_bundle(row):
+        return "legacy_bundle"
+    if (
+        judge.stage_of(row) == "redraft"
+        and await judge.rewrites_used(session, row) >= judge.MAX_JUDGE_REWRITES
+    ):
+        return "rewrite_cap"
+    return reason
+
+
+async def judge_backlog(
+    *, since: date, limit: int | None, apply: bool, pool: JudgePool
+) -> dict[str, Any]:
+    """List the held stories the judge would be asked about, or with ``apply`` queue them.
+
+    Only judge jobs are queued. No candidate row is written and nothing is reopened: the
+    judge reads each story again when its job runs and answers it as it would a new arrival.
+    """
+    if limit is not None and limit < 1:
+        raise SystemExit("--limit must be at least 1")
+    if apply and limit is None:
+        raise SystemExit(
+            "--limit is required with --apply for --judge-holds and --judge-redrafts: "
+            "the judge's backlog is released in batches"
+        )
+    async with SessionFactory() as session:
+        held = await held_for_judge(session, since, pool)
+        wanted: list[NewsCandidate] = []
+        excluded: dict[str, Counter[str]] = {}
+        for row in held:
+            reason = await judge_exclusion(session, row)
+            if reason is None:
+                wanted.append(row)
+            else:
+                excluded.setdefault(reason, Counter())[row.vertical] += 1
+        batch = wanted[:limit] if limit is not None else wanted
+        gate = {vertical: await current_switches(session, vertical) for vertical in VERTICALS}
+        switches = gate[VERTICALS[0]]
+        report: dict[str, Any] = {
+            "since": since.isoformat(),
+            "pool": f"judge_{pool}",
+            "switches": {
+                "enabled": switches.enabled,
+                "automatic_mode": switches.automatic,
+                "judge_enabled": switches.judge_enabled,
+                "auto_publish": {vertical: gate[vertical].vertical_on for vertical in VERTICALS},
+            },
+            "held": len(held),
+            "eligible": len(wanted),
+            "candidates": len(batch),
+            "by_hold": dict(Counter(str(row.error_code) for row in batch)),
+            "by_vertical": dict(Counter(row.vertical for row in batch)),
+            # Reason, then how many stories of each vertical it keeps from the judge.
+            "excluded": {reason: dict(counts) for reason, counts in excluded.items()},
+            "rows": [
+                {
+                    "id": str(row.id),
+                    "created": row.created_at.date().isoformat(),
+                    "vertical": row.vertical,
+                    "hold": row.error_code,
+                    "title": row.source_title[:90],
+                }
+                for row in batch
+            ],
+            "applied": False,
+        }
+        if not switches.judge_enabled:
+            report["warning"] = (
+                "judge_enabled is off: nothing is judged, and --apply queues nothing, until "
+                "AI review is switched on in the news settings"
+            )
+        chosen = [(row.id, row.retry_count, cast(str, row.error_code)) for row in batch]
+    if not apply or not chosen:
+        return report
+    # The hour keeps a batch sent twice from being paid for twice, and lets a later batch
+    # ask again about a story whose first job is long gone.
+    tag = f"backfill-{int(datetime.now(UTC).timestamp() // 3600)}"
+    queued = [
+        jobs.enqueue_judge_once(candidate_id, retry_count, hold, tag=tag)
+        for candidate_id, retry_count, hold in chosen
+    ]
+    report["applied"] = True
+    report["queued"] = sum(1 for job_id in queued if job_id is not None)
+    report["already_queued"] = len(queued) - report["queued"]
+    return report
 
 
 def reopen(
@@ -307,8 +451,12 @@ async def run(
     jev_quota: bool = False,
     refetch_sources: list[str] | None = None,
     saved_bundles: bool = False,
+    judge_pool: JudgePool | None = None,
 ) -> dict[str, Any]:
     try:
+        if judge_pool is not None:
+            # Ends here, before any actor or reopening: the judge's pools only queue jobs.
+            return await judge_backlog(since=since, limit=limit, apply=apply, pool=judge_pool)
         async with SessionFactory() as session:
             pool = await backfill_pool(
                 session,
@@ -397,27 +545,51 @@ def main() -> None:
         "--since",
         required=True,
         type=date.fromisoformat,
-        help="Oldest source publication date to reopen (YYYY-MM-DD)",
+        help=(
+            "Oldest source publication date to reopen (YYYY-MM-DD); for the judge's pools, "
+            "the oldest day a candidate was created"
+        ),
     )
-    parser.add_argument("--limit", type=int, help="At most this many, best first")
-    parser.add_argument("--apply", action="store_true", help="Reopen and queue; list otherwise")
     parser.add_argument(
+        "--limit", type=int, help="At most this many, best first (the judge's pools: newest)"
+    )
+    parser.add_argument(
+        "--apply",
+        action="store_true",
+        help="Reopen and queue, or queue the judge for its pools; list otherwise",
+    )
+    # One pool a run: each takes other stories and does something else with them.
+    pools = parser.add_mutually_exclusive_group()
+    pools.add_argument(
         "--jev-quota-holds",
         action="store_true",
         help="Reopen uncertain-duplicate holds caused only by a spent Jev budget, paused",
     )
-    parser.add_argument(
+    pools.add_argument(
         "--refetch-source",
         action="append",
         metavar="NAME",
         help="Refetch and rerun this source's not-newsworthy rejections (repeatable)",
     )
-    parser.add_argument(
+    pools.add_argument(
         "--resume-saved-bundles",
         action="store_true",
         help="Run stored five-locale articles a hard check stopped from that check on",
     )
-    parser.add_argument("--actor-email", help="Administrator the audit rows are recorded for")
+    pools.add_argument(
+        "--judge-holds",
+        action="store_true",
+        help="Queue the review judge for stories already waiting in the review queue",
+    )
+    pools.add_argument(
+        "--judge-redrafts",
+        action="store_true",
+        help="Queue the review judge for stories already waiting in the redraft list",
+    )
+    parser.add_argument(
+        "--actor-email",
+        help="Administrator the audit rows are recorded for (not used by the judge's pools)",
+    )
     parser.add_argument(
         "--reason",
         default="Backfill: stopped by a rule or model the pipeline no longer uses",
@@ -434,6 +606,7 @@ def main() -> None:
             jev_quota=args.jev_quota_holds,
             refetch_sources=args.refetch_source,
             saved_bundles=args.resume_saved_bundles,
+            judge_pool="holds" if args.judge_holds else "redrafts" if args.judge_redrafts else None,
         )
     )
     print(json.dumps(report, ensure_ascii=False, indent=2, default=str))
