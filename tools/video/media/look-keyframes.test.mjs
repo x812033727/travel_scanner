@@ -394,7 +394,10 @@ test("a shot every seed is refused for waits for a prompt fix with the refusal, 
   assert.deepEqual(site.state.images.map((request) => [request.shot_id, request.seed]), [["checkout-beep", 1], ["number-owner", 1], ["number-owner", 2], ["sand-lines", 1], ["sand-lines", 2], ["sand-lines", 3]]);
   assert.equal(site.state.judges.length, 2, "a refused seed has no picture to judge");
   const manifest = manifestOf(box, "keyframes");
-  assert.deepEqual(manifest.shots["sand-lines"], { takes: [], needs_review: true, problems: [`no take could be generated: ${TOO_LONG.detail}`] });
+  // The entry carries what the look left the prompt under the model's limit (4000 here: the fake server names no vendor limit and gemini has none).
+  const budget = manifest.shots["sand-lines"].prompt_budget_chars;
+  assert.ok(budget > 3000 && budget < 4000, `the story's look leaves ${budget} characters of the server's 4000`);
+  assert.deepEqual(manifest.shots["sand-lines"], { takes: [], needs_review: true, prompt_budget_chars: budget, problems: [`no take could be generated: ${TOO_LONG.detail}`] });
   assert.equal(manifest.shots["checkout-beep"].file, "keyframes/checkout-beep-1.png");
   assert.equal(manifest.shots["checkout-beep"].needs_review, false);
   assert.equal(manifest.shots["number-owner"].file, "keyframes/number-owner-2.png", "a refused seed is followed by the next");
@@ -465,9 +468,10 @@ test("a run where every seed of every shot is refused ends on the refusals, with
   assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "sand-lines,first-scan"], run.ctx), EXIT.lint, run.out.stderr);
   assert.doesNotMatch(run.out.stderr, /TypeError|argument must be/);
   const manifest = manifestOf(box, "keyframes");
+  const budgetOf = (id) => manifest.shots[id].prompt_budget_chars;
   assert.deepEqual(manifest.shots, {
-    "sand-lines": { takes: [], needs_review: true, problems: [`no take could be generated: ${TOO_LONG.detail}`] },
-    "first-scan": { takes: [], needs_review: true, problems: [`no take could be generated: ${TOO_LONG.detail}`, `no take could be generated: ${BLOCKED.detail}`] },
+    "sand-lines": { takes: [], needs_review: true, prompt_budget_chars: budgetOf("sand-lines"), problems: [`no take could be generated: ${TOO_LONG.detail}`] },
+    "first-scan": { takes: [], needs_review: true, prompt_budget_chars: budgetOf("first-scan"), problems: [`no take could be generated: ${TOO_LONG.detail}`, `no take could be generated: ${BLOCKED.detail}`] },
   });
   assert.equal(site.state.images.length, 6);
   assert.equal(site.state.judges.length, 0);
@@ -1041,7 +1045,12 @@ test("the fix clauses of the judge's problems: after the arrow, each once, the s
   assert.deepEqual(fixClauses(undefined), []);
   assert.equal(retakePrompt("a gull over the sea. Style: ink", []), "a gull over the sea. Style: ink", "no fix, the prompt as written");
   assert.equal(retakePrompt("a gull over the sea. Style: ink", ["a white gull", "no lettering"]), "a gull over the sea. Style: ink. Corrections: a white gull; no lettering");
-  assert.equal(retakePrompt("x".repeat(3990), ["y".repeat(50)]).length, 4000, "the server's prompt limit");
+  // Under the server's field limit of 4000 a correction that does not fit is dropped rather than
+  // the request cut through it, and a prompt alone that does not fit is cut at a word boundary.
+  assert.equal(retakePrompt("x".repeat(3990), ["y".repeat(50)]), "x".repeat(3990), "the correction is dropped, the prompt stays whole");
+  assert.equal(retakePrompt(`${"x".repeat(3990)} ${"z".repeat(20)}`, []).length, 3990, "cut at the last word boundary under the server's prompt limit");
+  assert.equal(retakePrompt("x".repeat(3900), ["y".repeat(50)], 4000), `${"x".repeat(3900)}. Corrections: ${"y".repeat(50)}`);
+  assert.equal(retakePrompt("x".repeat(1400), ["y".repeat(50), "w".repeat(40)], 1500), `${"x".repeat(1400)}. Corrections: ${"y".repeat(50)}`, "a vendor's limit drops the last correction first");
   const takes = [
     { seed: 2, judge: { problems: [`clean: a${FIX_ARROW}fix two`] } },
     { seed: 1, judge: { problems: [`clean: b${FIX_ARROW}fix one`] } },
@@ -1248,4 +1257,85 @@ test("illustrated slides are judged by yes/no fault checks once the server takes
   const told = context(story, storySite.fetchImpl);
   assert.equal(await main(["keyframes", "--slug", story.slug], told.ctx), EXIT.ok, told.out.stderr);
   assert.ok(storySite.state.judges.length > 0 && storySite.state.judges.every((request) => request.rubric.every((item) => item.cost === undefined)));
+});
+
+// The site as it drew slides on 2026-10-06: MiniMax image-01, which refuses a request of 1500
+// characters or more counting the avoidance text it appends (apps/api/app/video_media/providers/
+// minimax.py), and a server that says so in its limits.
+const MINIMAX_SLIDES_STATUS = { ...SLIDES_STATUS, slides_image: { provider: "minimax", model: "image-01", configured: true }, limits: { image_prompt_chars: 4000, image_prompt_chars_minimax: 1500 } };
+// A scene prompt of exactly `length` characters that lint takes (no look words, no text).
+const promptOf = (length) => "a wide shot of a quiet harbour at dawn, a fisherman mending a net on the pier, crates of fish beside him, ".repeat(Math.ceil(length / 100)).slice(0, length);
+
+test("a slides shot whose prompt cannot fit MiniMax's limit beside the look is not sent, and a retake drops the judge's corrections rather than be refused", async () => {
+  const { AVOID, shotPromptBudget } = await import("./prompt-budget.mjs");
+  const { resolveLook } = await import("../core/drama.mjs");
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const file = path.join(box.dir, "video.json");
+  const doc = readJson(file);
+  const podium = doc.scenes.find((scene) => scene.id === "podium");
+  const desk = doc.scenes.find((scene) => scene.id === "desk");
+  podium.data.prompt = promptOf(900);
+  desk.data.prompt = promptOf(300);
+  writeFileSync(file, JSON.stringify(doc));
+  const look = resolveLook(doc.look);
+  const podiumBudget = shotPromptBudget({ look, camera: podium.data.camera, cast: "", limit: 1500 });
+  assert.ok(podiumBudget >= 400 && podiumBudget < 900, `the look leaves ${podiumBudget} characters`);
+  // The desk fails every take on four faults whose fixes total 800 characters.
+  const DESK_FIXES = ["a", "b", "c", "d"].map((letter) => `${letter} ${"x".repeat(198)}`);
+  const DESK_PROBLEMS = DESK_FIXES.map((fix, index) => `details: prop ${index + 1} is missing${FIX_ARROW}${fix}`);
+  let deskFailing = true;
+  const site = mediaSite({ status: MINIMAX_SLIDES_STATUS, verdicts: (kind, request) => (deskFailing && request.context.shot.id === "desk" ? { overall: 4, passed: false, problems: DESK_PROBLEMS } : { overall: 8, passed: true }) });
+
+  // The dry run names each shot's budget and the shots over it.
+  const dry = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
+  assert.match(dry.out.stdout, new RegExp(`podium: .*\\n  references: style plate\\n  prompt budget: 900 of ${podiumBudget} characters OVER BUDGET for minimax: shorten the prompt\\n`));
+  assert.match(dry.out.stdout, /desk: .*\n  references: style plate\n  prompt budget: 300 of \d+ characters\n/);
+  assert.match(dry.out.stdout, /1 shots over the minimax prompt budget \(limit 1500 less the look's style, the camera and the avoidance text\) would not be drawn: podium\n/);
+  assert.match(dry.out.stdout, /server: minimax image-01 ready/);
+  assert.equal(site.state.images.length, 0);
+
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.lint, run.out.stderr);
+  assert.ok(!site.state.images.some((request) => request.shot_id === "podium"), "an over-budget prompt is never sent: every seed would be refused alike");
+  const manifest = manifestOf(box, "keyframes");
+  assert.deepEqual(manifest.shots.podium, { takes: [], needs_review: true, prompt_budget_chars: podiumBudget, problems: [`prompt is 900 characters; the minimax budget for this shot is ${podiumBudget} (style, camera and avoidance text take the rest)${FIX_ARROW}shorten the prompt to at most ${podiumBudget} characters`] });
+  assert.match(run.out.stdout, new RegExp(`podium: not drawn: prompt is 900 characters; the minimax budget for this shot is ${podiumBudget} `));
+  assert.match(run.out.stdout, new RegExp(`ERROR podium: prompt is 900 characters; the minimax budget for this shot is ${podiumBudget} \\(style, camera and avoidance text take the rest\\) → shorten the prompt to at most ${podiumBudget} characters\\n`));
+  assert.match(run.out.stdout, /fix the prompts of desk, podium and run keyframes again|fix the prompts of podium, desk and run keyframes again/);
+  // Every request sent, the plate's and the retakes with corrections among them, was shorter than
+  // 1500 with the avoidance text the server appends: nothing for the vendor to refuse.
+  assert.ok(site.state.images.length >= 6, "the plate, the desk three times and the three other shots");
+  for (const request of site.state.images) assert.ok(request.prompt.length + AVOID.length + request.negative_prompt.length < 1500, `${request.shot_id} seed ${request.seed}: ${request.prompt.length} characters`);
+  const deskRequests = site.state.images.filter((request) => request.shot_id === "desk");
+  assert.deepEqual(deskRequests.map((request) => request.seed), [1, 2, 3]);
+  assert.doesNotMatch(deskRequests[0].prompt, /Corrections/);
+  // Four fixes of 200 characters do not fit beside the prompt and the look: the last three are
+  // dropped, in order, and the first is asked; the third take, with the same fixes before it, the same.
+  assert.ok(deskRequests[1].prompt.endsWith(`. Corrections: ${DESK_FIXES[0]}`), deskRequests[1].prompt.slice(-240));
+  assert.ok(deskRequests[1].prompt.startsWith(`${promptOf(300)}. Style: ${look.style}. Camera: ${desk.data.camera}`), "the scene and the look stay whole");
+  assert.equal(deskRequests[2].prompt, deskRequests[1].prompt);
+  assert.match(run.out.stdout, /desk take 2: prompt trimmed to the minimax budget \(0 chars cut, 3 corrections dropped\)\n/);
+  assert.match(run.out.stdout, /desk take 3: prompt trimmed to the minimax budget \(0 chars cut, 3 corrections dropped\)\n/);
+  assert.deepEqual(manifest.shots.desk.fixes, DESK_FIXES, "the writer still hears every fix");
+  assert.equal(manifest.shots.desk.prompt_budget_chars, shotPromptBudget({ look, camera: desk.data.camera, cast: "", limit: 1500 }));
+  assert.deepEqual(manifest.shots.desk.takes.map((take) => take.fixes), [undefined, DESK_FIXES, DESK_FIXES], "what each take was asked to correct is on record, dropped or not");
+  assert.equal(manifest.shots.clock.needs_review, false);
+  assert.equal(typeof manifest.shots.clock.prompt_budget_chars, "number", "every entry says what its prompt may be");
+  assert.ok(readLedger(box.workdir).entries.every((entry) => entry.status !== "failed"), "no job was refused");
+
+  // Shortened to its budget, the shot is drawn; the desk, rewritten, is drawn again; the rest are kept.
+  podium.data.prompt = promptOf(podiumBudget);
+  desk.data.prompt = promptOf(280);
+  writeFileSync(file, JSON.stringify(doc));
+  deskFailing = false;
+  const fixed = context(box, site.fetchImpl);
+  const before = site.state.images.length;
+  assert.equal(await main(["keyframes", "--slug", box.slug], fixed.ctx), EXIT.ok, fixed.out.stderr);
+  assert.deepEqual(site.state.images.slice(before).map((request) => [request.shot_id, request.seed]), [["podium", 1], ["desk", 1]]);
+  assert.match(fixed.out.stdout, /clock: kept \(judge 8\/10\)\n/);
+  const after = manifestOf(box, "keyframes");
+  assert.equal(after.shots.podium.needs_review, false);
+  assert.equal(after.shots.podium.prompt_budget_chars, podiumBudget);
+  assert.equal(after.shots.desk.needs_review, false);
 });

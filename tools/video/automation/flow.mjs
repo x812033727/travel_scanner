@@ -1752,7 +1752,10 @@ export class Automation {
     for (const [id, entry] of Object.entries(manifest?.[source.entries] ?? {})) {
       if (!entry?.needs_review) continue;
       const problems = entry.problems ?? [...new Set((entry.candidates ?? entry.takes ?? []).flatMap((take) => take.judge?.problems ?? take.qc?.problems ?? []))];
-      targets.push({ id, problems });
+      // How long this shot's prompt may be for the image model (keyframes.mjs): the writer is
+      // told the number, since a prompt it only makes fuller is refused again on every seed.
+      const budget = typeof entry.prompt_budget_chars === "number" ? { prompt_budget_chars: entry.prompt_budget_chars } : {};
+      targets.push({ id, problems, ...budget });
     }
     return targets;
   }
@@ -1777,7 +1780,9 @@ export class Automation {
     // while an explicit drama retains its own settings and policy checks.
     state.format ??= video.format ?? "slides";
     saveState(workdir, state);
-    const fix = { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote };
+    // The tightest budget among the targets that carry one; each target keeps its own.
+    const budgets = found.map((target) => target.prompt_budget_chars).filter((value) => typeof value === "number");
+    const fix = { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote, ...(budgets.length ? { prompt_budget_chars: Math.min(...budgets) } : {}) };
     const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `prompt-${kind}-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format ?? "slides", this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     if (problem) return this.retryLater(state, "writer", `the ${kind} fix ${problem}`);
