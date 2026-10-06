@@ -65,7 +65,7 @@ be normal; it is noted here, not judged.
 
 ## Definition of done
 
-- [ ] A recorded comparison shows how much of the drop is the criteria: the same saved
+- [x] A recorded comparison shows how much of the drop is the criteria: the same saved
       documents asked with the old `yes`/`no` wording and with the current `true`/`false`
       wording, with the noul of each, written in Notes.
 - [ ] The owner has chosen one way forward from the measured numbers (wording of the publish
@@ -75,12 +75,12 @@ be normal; it is noted here, not judged.
 
 ## Steps
 
-- [ ] Pick about ten saved candidates: some published on 09-29/09-30 (answers 0.5+) and some held
-      on 10-05. Use their saved zh-TW documents and `evidence_hash`.
-- [ ] Ask Jev the publish question for each document twice, once with criteria sent as
-      `yes`/`no` and once as `true`/`false`. The comparison has to send the old keys in raw JSON,
+- [x] Pick saved candidates: some answered 0.5+ before the change and some held on 10-05. Use
+      their saved zh-TW documents and `evidence_hash`. (Seven were used; see Notes.)
+- [x] Ask Jev the publish question for each document with criteria sent as `yes`/`no`, as
+      `true`/`false`, and with no criteria. The comparison sends the old keys in raw JSON,
       because `NoulCriteria` now refuses them. Count the calls against `jev_daily_call_budget`
-      and get the owner's agreement before making them (about 20 calls).
+      and get the owner's agreement before making them (21 calls, agreed 2026-10-06).
 - [ ] If the criteria explain the drop, propose wording that keeps the stricter meaning where
       it matters (accuracy, sourcing, no investment advice) without turning "uncertain" into "no"
       for every article, and pin it with a test in `apps/api/tests/test_news_jev_publish_question.py`.
@@ -112,3 +112,42 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest tests/tes
   not code; changing it is the owner's call on `/admin/news` settings, not a deploy.
 - The criteria keys must stay `true`/`false` (the documented contract). The question is whether
   the publish question's wording, now actually read, says what the owner wants.
+
+### 2026-10-06 measurement: the criteria explain the drop
+
+Owner-approved, 21 Jev calls (21 wires, no errors, each counted against the daily quota), run
+once inside the production api container with the news worker's own settings loader
+(`load_runtime_settings`). Same instructions as production, same `state`
+(`vertical`, `evidence_sha256`, the saved `draft_bundle_json["zh-TW"]`), one question per call.
+Nothing was written to the database.
+
+| Candidate | Saved status | First answer (when) | `yes`/`no` | `true`/`false` | no criteria |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 72a833be (ai) | manual_review | 0.71 (10-03 23:10) | 0.70 | 0.59 | 0.70 |
+| 122c2e5d (crypto) | needs_redraft | 0.68 (10-03 16:10) | 0.66 | 0.56 | 0.67 |
+| bc70acce (ai) | needs_redraft | 0.59 (10-02 21:05) | 0.56 | 0.40 | 0.58 |
+| d1e878be (crypto) | needs_redraft | 0.56 (10-02 18:07) | 0.61 | 0.50 | 0.64 |
+| f7b476b5 (ai) | manual_review | 0.40 (10-05 20:20) | 0.53 | 0.38 | 0.54 |
+| daac334f (ai) | manual_review | 0.27 (10-05 19:21) | 0.46 | 0.25 | 0.45 |
+| b2a964aa (ai) | manual_review | 0.39 (10-05 19:19) | 0.57 | 0.40 | 0.57 |
+
+Means: the four answered before the change go 0.63 (`yes`/`no`) → 0.51 (`true`/`false`), 0.65
+with no criteria; the three held on 10-05 go 0.52 → 0.34, 0.52 with no criteria.
+
+- `yes`/`no` and no criteria agree within 0.03 on every document: Jev ignored the old keys, so
+  until #1218 the publish question was effectively asked without criteria. The act threshold of
+  about 0.5 was set against that behaviour.
+- `true`/`false` lowers every answer, by 0.10 to 0.21 (mean 0.15).
+- Answers repeat closely: the `true`/`false` answers match the 10-05 first answers within 0.02,
+  and the `yes`/`no` answers match the pre-change first answers within 0.05. The shift is not noise.
+- Under the old behaviour two of the three held 10-05 drafts (0.53, 0.57) would have passed 0.5.
+- The duplicate question in `jev_duplicate_check` had the same key change and was not measured.
+  Nor were `video_automation/judge.py` and `video_speech/checking.py` (scope of other tickets).
+
+Options for the owner, in the order of how closely they restore the calibrated behaviour:
+1. Send the publish question with no criteria: the documented contract, measured equal to the
+   old behaviour the threshold was tuned against.
+2. Keep criteria but say only a clear failure is "no" (for example
+   `false: "A condition clearly fails."`), measure again before relying on it.
+3. Keep the strict criteria and lower `jev_act_confidence` by about 0.15 on `/admin/news`.
+4. Keep everything as is; every article waits for the owner.
