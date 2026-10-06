@@ -837,6 +837,10 @@ test("a saved initial script and a pending lint rewrite survive restart and leav
   await (await worker()).step();
   assert.match(await (await worker()).step(), /writer is still running/);
   assert.equal(site.calls.run.filter((call) => call.stage === "writer").length, 2);
+  // The lint rewrite carries the shot prompt budget the draft was given (flow.mjs draftBudget):
+  // a rewrite cannot lengthen a prompt past what the image model takes.
+  const lintFix = site.calls.run.filter((call) => call.stage === "writer").find((call) => call.payload.lint_errors);
+  assert.equal(lintFix.payload.prompt_budget_chars, 1000);
   ready = true;
   const resumed = await worker();
   assert.match(await resumed.step(), /script fixed and passes lint/);
@@ -3351,6 +3355,7 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   assert.equal(budgetFix.prompt_budget_chars, 420, "the tightest budget among the targets that carry one");
   assert.deepEqual(budgetFix.targets, [{ id: "podium", problems: [PODIUM_BUDGET_PROBLEM], prompt_budget_chars: 420 }]);
   assert.deepEqual(budgetFix.problems, [PODIUM_BUDGET_PROBLEM]);
+  assert.equal(site.calls.run.filter((call) => call.stage === "writer").at(-1).payload.prompt_budget_chars, 1000, "a whole-script rewrite hears the budget the draft heard, beside the targets' own");
   // Drawn, the podium fails the judge twice over; with the rounds spent its best take is kept
   // with the remark instead of blocking the video (the owner's decision of 2026-10-06), and the
   // cut, not the storyboard, is where the owner looks at it.
@@ -3909,9 +3914,9 @@ test("illustrated slides keep the judge's best pictures once the prompt fixes ar
   assert.equal(automatedVideos(drama.box.work).find((item) => item.slug === drama.slug).blocked_kind, "prompt_fixes:keyframes");
 });
 
-test("the first draft of a slides video hears the prompt budget of the image model the settings will draw it with, counted as keyframes counts a shot", async () => {
-  const { shotPromptBudget } = await import("../media/prompt-budget.mjs");
-  const { resolveLook, slidesPresetFor } = await import("../core/drama.mjs");
+test("a slides video's writer hears the prompt budget of the image model the settings will draw it with, under the heaviest look it may get, counted as keyframes counts a shot", async () => {
+  const { promptOverhead, shotPromptBudget } = await import("../media/prompt-budget.mjs");
+  const { resolveLook, SLIDES_PRESETS, slidesPresetFor } = await import("../core/drama.mjs");
   const box = sandbox();
   const slug = "budget-draft";
   const budgetFor = (settings, state) => {
@@ -3919,12 +3924,19 @@ test("the first draft of a slides video hears the prompt budget of the image mod
     const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-06T10:00:00Z") });
     return new Automation(ctx, automationClient(ctx), site.settings).draftBudget({ slug, ...state });
   };
-  // The print look the video will get by its slug, under the longest camera word the writer may choose, beside image-01's 1500.
-  const look = resolveLook({ preset: slidesPresetFor(slug) });
-  const minimax = shotPromptBudget({ look, camera: "tilt down", limit: 1500 });
+  // The heaviest of the looks the video may get (the print rotation, or tech-story when the
+  // writer names it), under the longest camera word the writer may choose, beside image-01's 1500:
+  // the writer may name a look of its own, so the slug's print run alone would be too generous.
+  const looks = [...SLIDES_PRESETS, "tech-story"].map((preset) => resolveLook({ preset }));
+  const heaviest = looks.reduce((most, look) => (promptOverhead({ look }) > promptOverhead({ look: most }) ? look : most));
+  assert.equal(heaviest.preset, "riso-teal", "measured on 2026-10-06: the longest style of the four riso pairs");
+  assert.ok(looks.every((look) => promptOverhead({ look }) <= promptOverhead({ look: heaviest })));
+  const minimax = shotPromptBudget({ look: heaviest, camera: "tilt down", limit: 1500 });
   assert.ok(minimax > 300 && minimax < 600, `a print look leaves ${minimax} characters`);
-  assert.equal(shotPromptBudget({ look, camera: "pan right", limit: 1500 }), minimax, "the longest words are of a length");
+  assert.equal(shotPromptBudget({ look: heaviest, camera: "pan right", limit: 1500 }), minimax, "the longest words are of a length");
+  assert.ok(minimax <= shotPromptBudget({ look: resolveLook({ preset: slidesPresetFor(slug) }), camera: "tilt down", limit: 1500 }), "never more than the slug's own print run allows");
   assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }, { format: "slides" }), { prompt_budget_chars: minimax });
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }, { slug: "another-print-run", format: "slides" }), { prompt_budget_chars: minimax }, "the same number whatever print run the slug picks");
   assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "gemini-3.1-flash-image" } }, { format: "slides" }), { prompt_budget_chars: 1000 }, "Gemini's 4000 leaves more than the writer's own 1000");
   assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: null }, drama: { ...DRAMA_SETTINGS, image_provider: "minimax", image_model: "image-01" } }, { format: "slides" }), { prompt_budget_chars: minimax }, "no slides model: the drama's draws");
   assert.deepEqual(budgetFor({ slides: { slides_media_enabled: false, slides_image_model: "image-01" }, drama: { ...DRAMA_SETTINGS, image_provider: "gemini", image_model: "gemini-3-pro-image" } }, { format: "slides" }), { prompt_budget_chars: 1000 }, "the slides switch off: the drama's model draws");

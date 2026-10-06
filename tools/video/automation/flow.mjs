@@ -20,7 +20,7 @@ import { writeAnimeActs } from "./anime-write.mjs";
 import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { craftChecks } from "../core/craft.mjs";
-import { EXPLAINER_PRESET, hasCast, illustrated, resolveLook, slidesPresetFor } from "../core/drama.mjs";
+import { EXPLAINER_PRESET, hasCast, illustrated, resolveLook, SLIDES_PRESETS, slidesPresetFor } from "../core/drama.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
@@ -39,7 +39,7 @@ import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
 import { buildSheet, SHEET_PARTS, sheetContext, withoutContext } from "../i18n/cli.mjs";
 import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
-import { imageModelVendor, imagePromptLimit, shotPromptBudget } from "../media/prompt-budget.mjs";
+import { imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "../media/prompt-budget.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
@@ -92,6 +92,13 @@ const SEED_OFFSET_COMMANDS = new Set(["keyframes"]);
 // counts it, so a MiniMax video's prompts are not written to a limit the model has not got.
 const WRITER_PROMPT_MAX = 1000;
 const LONGEST_CAMERA_WORD = SLIDES_CAMERA_WORDS.reduce((longest, word) => (word.length > longest.length ? word : longest));
+// The looks a slides video may end up drawn in: the channel's print rotation (settle picks one
+// by the slug) and the writer's own choice among them, or tech-story, which the scripts from
+// before the rotation carry. The writer is told the budget under the heaviest of them (its
+// style and its negative take the most of a request), so whichever look the video gets, a
+// prompt written to the number fits.
+const SLIDES_WRITER_PRESETS = [...SLIDES_PRESETS, "tech-story"];
+const HEAVIEST_SLIDES_LOOK = SLIDES_WRITER_PRESETS.map((preset) => resolveLook({ preset })).reduce((heaviest, look) => (promptOverhead({ look }) > promptOverhead({ look: heaviest }) ? look : heaviest));
 
 /**
  * The vendor of the image model the server will draw a slides video with, from the worker's
@@ -1401,7 +1408,7 @@ export class Automation {
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     const fix = { kind: "script", targets: [], problems: [note], owner_note: note };
-    const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `script-fix-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `script-fix-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     state.prompt_fixes = { ...(state.prompt_fixes ?? {}), script: rounds + 1 };
     state.notes.push(`script sent back by ${by}: ${note}`);
@@ -1814,7 +1821,7 @@ export class Automation {
       }
       if (fix >= MAX_LINT_FIXES) return `lint still fails after ${MAX_LINT_FIXES} fixes: ${errors.slice(0, 3).join("; ")}`;
       const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-      current = isLongAnime(state) ? await this.animeRewrite(state, { lint_errors: errors }, video, "writer", `lint-${fix + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, lint_errors: errors, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+      current = isLongAnime(state) ? await this.animeRewrite(state, { lint_errors: errors }, video, "writer", `lint-${fix + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, lint_errors: errors, line_ids: this.freshIds(state, video, 40), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     }
   }
 
@@ -1910,7 +1917,7 @@ export class Automation {
     // The tightest budget among the targets that carry one; each target keeps its own.
     const budgets = found.map((target) => target.prompt_budget_chars).filter((value) => typeof value === "number");
     const fix = { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote, ...(budgets.length ? { prompt_budget_chars: Math.min(...budgets) } : {}) };
-    const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `prompt-${kind}-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format ?? "slides", this.variantOf(state), state.series ?? null);
+    const answer = isLongAnime(state) ? await this.animeRewrite(state, { fix }, video, "writer", `prompt-${kind}-${rounds + 1}`) : await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40), ...this.draftBudget(state) }), 32_000, state.format ?? "slides", this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     if (problem) return this.retryLater(state, "writer", `the ${kind} fix ${problem}`);
     this.cleared(state, "writer");
@@ -2042,10 +2049,12 @@ export class Automation {
   }
 
   /**
-   * What a slides draft's shot prompts may have (`prompt_budget_chars`), for the image model the
-   * settings will draw them with: the print look the video will get (slidesPresetFor), the
-   * longest camera word the writer may choose and that model's limit, counted as
-   * media/keyframes.mjs counts a shot's request; never more than the writer's own 1000. A drama
+   * What a slides video's shot prompts may have (`prompt_budget_chars`), for the image model the
+   * settings will draw them with: the heaviest look the video may get (HEAVIEST_SLIDES_LOOK: the
+   * writer may name one of its own), the longest camera word the writer may choose and that
+   * model's limit, counted as media/keyframes.mjs counts a shot's request; never more than the
+   * writer's own 1000. The first draft and every whole-script rewrite after it (a lint fix, a
+   * screenplay or prompt fix) carry it, so a rewrite cannot lengthen a prompt past it. A drama
    * and a story are drawn otherwise and hear nothing; a look that leaves no room at all is the
    * keyframes stage's to refuse, with the owner's number.
    */
@@ -2053,7 +2062,7 @@ export class Automation {
     if (state.format === "drama" || state.story) return {};
     try {
       const limit = imagePromptLimit({ provider: slidesImageVendor(this.settings) }, null);
-      const budget = shotPromptBudget({ look: resolveLook({ preset: slidesPresetFor(state.slug) }), camera: LONGEST_CAMERA_WORD, cast: null, limit });
+      const budget = shotPromptBudget({ look: HEAVIEST_SLIDES_LOOK, camera: LONGEST_CAMERA_WORD, cast: null, limit });
       return { prompt_budget_chars: Math.min(budget, WRITER_PROMPT_MAX) };
     } catch {
       return {};

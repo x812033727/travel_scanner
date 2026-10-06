@@ -138,6 +138,11 @@ pending with "N 張插圖未通過 judge（…），需站主審看" in its summ
   the catalog's ids and `media.test.mjs` holds it to `catalog.py`. An id the table does not
   know falls back to the drama's vendor when it is the drama's own model, else to the
   server's field limit (4000), which caps at the writer's 1000 anyway.
+- `draftBudget` counts the heaviest look the video may get (the five print presets plus
+  tech-story, which the writer may name itself; riso-teal on 2026-10-06), not the slug's own
+  print run, and every whole-script rewrite (lint fix, screenplay fix, prompt fix) carries it
+  beside the first draft (review of PR #1341). The replan path rewrites the brief with the
+  planner, not the script; the `write()` after it carries the budget.
 - When every shot of a board was accepted, `judge.overall` goes up as null and the server
   passes the board on its coverage alone; an `overall` of null beside a scored shot fails.
 - Stacked on PR #1340 (`claude/video-unstuck-retry`), which is stacked on #1339 and #1337; the
