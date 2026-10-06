@@ -42,6 +42,7 @@ import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
+import { RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
@@ -873,12 +874,14 @@ export class Automation {
           this.log(`${state.slug}: retry waits; the saved ${error.stage ?? "writer"} run is still running on the server, its receipt is checked next round`);
           continue;
         }
-        // Anything else (an uncertain saved run, a lookup that failed): this video alone is blocked
-        // with the reason, and the request is consumed, so the page stops showing the retry as
-        // pending and the owner reads why. Until 2026-10-06 the error ended the whole run, every
-        // round. The kind stays what blocked the video in the first place (read from a legacy
-        // reason now, before it is replaced): nothing ran, and that counter is still the one a
-        // retry that goes through has to reset.
+        // Any other answer of the retry transport (an uncertain saved run, a lookup that failed, a
+        // receipt that cannot be read): this video alone is blocked with the reason, and the
+        // request is consumed, so the page stops showing the retry as pending and the owner reads
+        // why. Until 2026-10-06 the error ended the whole run, every round. A programming error
+        // is not the owner's to read: it still ends the run. The kind stays what blocked the video
+        // in the first place (read from a legacy reason now, before it is replaced): nothing ran,
+        // and that counter is still the one a retry that goes through has to reset.
+        if (!(error instanceof AutomationError || error instanceof RunReceiptError)) throw error;
         state.retry_request_id = request;
         return this.block(state, `retry could not verify the saved writer run: ${error.message}`, blockedKindOf(state) ?? "uncertain:writer");
       }
@@ -1811,6 +1814,9 @@ export class Automation {
     if (result.code === 0) {
       this.cleared(state, command);
       delete state.prompt_fixes?.[command];
+      // The stage is through its seeds: a later rerun (a storyboard sent back, say) starts at
+      // seeds 1 to 3 again, with other prompts.
+      delete state.seed_offsets?.[command];
       saveState(this.workdir(state.slug), state);
       await report(ctx, this.api, state, `${command} done`);
       return `${state.slug}: ${command} done`;
@@ -1818,9 +1824,12 @@ export class Automation {
     if (result.code === 1 && FIX_SOURCES[command]) return this.fixPrompts(state, command, {});
     if (result.code === 3) {
       // The server's attempts for a request are spent (media/client.mjs EXHAUSTED_CODES): the
-      // owner's retry moves the stage to other seeds, where a cap or a setting it leaves as it is.
-      const kind = /video_media_job_exhausted|已經失敗 \d+ 次/.test(result.out) ? `media_exhausted:${command}` : `media_owner:${command}`;
-      return this.block(state, `${command} needs the owner: ${lastLine(result.out)}`, kind);
+      // owner's retry moves the stage to other seeds, where a cap or a setting it leaves as it
+      // is. Only the reason the owner reads (the last line) says which: a run that logged a
+      // spent seed on its way to the cap stopped for the cap.
+      const reason = lastLine(result.out);
+      const kind = /video_media_job_exhausted|已經失敗 \d+ 次/.test(reason) ? `media_exhausted:${command}` : `media_owner:${command}`;
+      return this.block(state, `${command} needs the owner: ${reason}`, kind);
     }
     if (result.code === 4) return this.later(`${state.slug}: ${command} could not finish (${lastLine(result.out)}); the next run tries again`);
     return this.block(state, `${command} failed: ${lastLine(result.out, 2)}`);

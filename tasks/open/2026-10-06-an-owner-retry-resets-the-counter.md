@@ -98,6 +98,11 @@ watch the worker log: the prompt-fix round starts at 1 again ("keyframes prompts
 - `media_exhausted:<k>` resets both the seed offset (keyframes only) and `prompt_fixes[k]`:
   a `fixPrompts` block whose summary names 已經失敗 is recorded as exhausted too, since the
   fix did not change the request enough for the server.
+- Review of PR #1340: `media()` reads the exhausted wording from the last line of the stage's
+  output only (a run that logged a spent seed on its way to the cap is `media_owner`); a
+  finished stage (exit 0) drops its `seed_offsets[command]`, so a later rerun starts at seeds
+  1..3; bookkeeping blocks a video only on an `AutomationError` or `RunReceiptError` from
+  `retryRuns`, any other exception still ends the run (a programming error is not the owner's).
 - The report payload carries `blocked_kind` while blocked; the API's `ProjectIn` ignores
   unknown keys today (pydantic default), so a later server change can read it.
 - Stacked on PR #1339 (`claude/video-unstuck-prompt-budget`) and PR #1337
