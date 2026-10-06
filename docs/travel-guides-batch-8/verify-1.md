@@ -482,3 +482,131 @@ Before each change, its source was re-opened on 2026-10-06 with the same User-Ag
 1. Phuket blocks[7].description: 「普吉大佛與神仙半島之間的右側有一個小圈標卡隆觀景台。」 now reads 「普吉大佛與神仙半島之間的軸線上有一個小圈，連到左側標卡隆觀景台的方框。」 In `diagram-1.svg` the small white circle is at `cx=800 cy=640` on the central line, and the 卡隆觀景台 box is `rect x=60 y=600 width=500 height=80`, joined by `line x1=560 x2=788 y=640`. A resvg render (WenQuanYi Zen Hei) shows the box on the left, the same side as 蘭山觀景台. The SVG and its `<desc>` were not changed. The spec `phuket-old-town-big-buddha-viewpoints.md` still says 「右側在第 3 站與第 4 站之間拉一個小圈」. The drawing departs from the spec there, so the description now follows the drawing.
 2. Pattaya blocks[0] item 2: 「住蘇坤蔚一帶走 Ekkamai，回程末班到 22:00，但 05:00、06:00 之後直接跳到 09:00；…」 now reads 「住蘇坤蔚一帶走 Ekkamai：去程 05:00、06:00 之後直接跳到 09:00，回程末班到 22:00；…」. The RRC Bangkok Terminal page (`airportpattayabus.com/bangkok-terminal-pattaya/`, 200) lists departures from สถานีขนส่งเอกมัย as 5:00, 6:00, then 9:00 through 22:00 hourly. It lists departures from สถานีขนส่งพัทยา as 4:30, then 8:00 through 20:00 hourly, then 22:00. Every number in the item is unchanged, and the blocks[5] table already had this right. The checklist item 「早上的空檔：Ekkamai 05:00、06:00 之後直接跳到 09:00。」 in the 行前檢查 list already names the morning departures from Ekkamai, so it was left as is.
 3. Live `phuket-airport-transport-where-to-stay` blocks[14]: not changed in this PR, because the article is live and outside this PR's packs. The two operator pages were re-read on 2026-10-06. `phuketsmartbus.com/payment` (200) says "Children under 6 ride free with a paying adult." `phuketsmartbus.com/blog/children-under-90-cm-ride-for-free` (200, June 25, 2026) says "Height is the determining factor, regardless of age." The follow-up is filed as `tasks/open/2026-10-06-phuket-airport-smart-bus-child-fare.md` (P2, scope: that pack only), with a suggested sentence that discloses both rules. No other pack in the content directory has a Smart Bus child-fare sentence.
+
+# verify-3 (wave 2): Round-3 independent fact-check: PR #1335 (claude/batch-8-wave-2)
+
+- **Head checked:** `c353c9c3bc4a39bf94db9aa05402129427ac1158` (fetched before starting and again at the end; it did not move).
+- **Read-only:** no repo edits, commits, pushes or comments.
+
+**How pages were read**
+- All requests used the UA `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)` and no personal data. TLS verification was never disabled.
+- curl pages: I stripped `<!-- -->`, scripts and styles before reading.
+- Browser pages: the given Playwright/Chromium script. One host needed headed Chromium under `xvfb-run`: tourismthailand.org shows a Cloudflare check to headless Chromium and passes in headed mode.
+- bus.jeju.go.kr opened in Chromium (HTTP 200). curl still fails TLS there.
+  - Route lists came from the page's own `POST /publicTrafficInformation/getBusRouteNum`.
+  - Per-route timetables came from `/data/schedule/downScheduleExcel?gscheduleId=…`.
+  - The express fare workbook came from `/publicTrafficInformation/download/fast/fee`, which is a download.
+- I rendered `diagram-1.svg` with Chromium and checked it by eye.
+
+**Result:** 61 claims checked. 53 confirmed. 1 problem, a consistency item outside the round-2 fix set. The rest are unverifiable because two hosts block every request at the origin.
+
+## (a) Changes made by the round-2 fix commit
+
+| # | Claim | Source (status) | Outcome |
+|---|---|---|---|
+| 1 | Phuket blocks[7].description: 「普吉大佛與神仙半島之間的軸線上有一個小圈，連到左側標卡隆觀景台的方框」 | `diagram-1.svg` at head, plus a Chromium render | CONFIRMED. A white circle `cx=800 cy=640 r=12` sits on the central axis between Big Buddha (y=540) and Phromthep (y=740). A grey line `x 560→788, y=640` joins it to the box `x=60–560, y=600–680` labelled 卡隆觀景台／卡塔、卡隆盡收眼底, on the left like 蘭山觀景台. |
+| 2 | The rest of the description: four stations on the right with the stated sub-labels; Rang Hill small circle left of the old town; Dragon Line ring solid and labelled 免費; Route 2 solid to 芭東, 50 泰銖; four red dashed legs labelled 沒有公車，要包車 (old town → Wat Chalong → Big Buddha → Karon VP → Phromthep); lower-left note 「Route 1｜100 泰銖／不停卡隆觀景台，只有三班從拉威延駛神仙半島」; legend at lower right | same | CONFIRMED. The render has no overlaps. Not an error: the description does not mention the short dashed leg from the old town to the Rang Hill circle, though [5] also says 叫車上山. The `<desc>` has no left/right wording and agrees. |
+| 3 | verify-1 notes for this fix: the geometry, and the spec line 「右側在第 3 站與第 4 站之間拉一個小圈」 still in the spec | SVG, plus `docs/travel-guides-batch-8/phuket-old-town-big-buddha-viewpoints.md:228` | CONFIRMED |
+| 4 | Pattaya summary [0] item 2: 「去程 05:00、06:00 之後直接跳到 09:00，回程末班到 22:00；蒙奇 2 回程末班只有 18:00」 | RRC `airportpattayabus.com/bangkok-terminal-pattaya/` (200) | CONFIRMED. From Ekkamai: 5:00, 6:00, then 9:00–22:00 hourly. From Pattaya: 4:30, 8:00–20:00, 22:00. Mo Chit 2 return: 5:00, 7:30, 9:00–18:00. Fares 144/155 unchanged. Ekkamai has the most trips of the three lines (16 a day). |
+| 5 | The same item agrees with [5], [7], [30], [32], [39], [40] | pack | CONFIRMED, no contradictions |
+| 6 | Smart Bus Payment page: "Children under 6 ride free with a paying adult." | `phuketsmartbus.com/payment` (200) | CONFIRMED word for word. 100 ฿ / 50 ฿ / Dragon free also match. |
+| 7 | Smart Bus blog of June 25, 2026: free under 90 cm; accompanied by a parent or guardian; staff may measure height; "Height is the determining factor, regardless of age." | `phuketsmartbus.com/blog/children-under-90-cm-ride-for-free` (200) | CONFIRMED, all four quotes and the date |
+| 8 | Live `phuket-airport-transport-where-to-stay` blocks[14] ends 「未滿 6 歲由付費成人陪同免費，以官網為準。」. The Payment source title names 未滿 6 歲, `checked_on` 2026-09-14. | pack at head | CONFIRMED. The ticket `2026-10-06-phuket-airport-smart-bus-child-fare` describes the conflict accurately. Its suggested sentence is reasonable. |
+| 9 | "No other pack has a Smart Bus child-fare sentence" | `git grep` across the content packs | CONFIRMED. Only the airport pack has one; old-town and thailand-esim do not. |
+
+The round-2 fixes are correct and introduce no new error.
+
+## (b) Sources rounds 1–2 could not open
+
+### tourismthailand.org: Big Buddha (headed Chromium, 200)
+- 06:30–18:30, Mon–Sun: CONFIRMED. These are the tooltip rows under "Openning Hours" (the button shows "Now Close" at Thai night time). The same times are in the page's Nuxt payload. This covers Phuket [5] row 4, [24], [39] and the source title.
+- 「頁上的官方網址現在轉到臉書專頁」: CONFIRMED. The page's website link is `www.mingmongkolphuket.com`, which returns 301 to `facebook.com/mingmongkolphuket`.
+- Observation, not reported as an error: the tooltip ends with "* Close on Holiday". This may be template text. The article already tells readers to confirm before going, so I did not file it. The source title's 「沒有封閉或重開的說明」 is still true of the landslide closure.
+
+### sanctuaryoftruthmuseum.com/visit-us/ (Chromium; HTTP 202 with the full page rendered)
+- Naklua: CONFIRMED. "Soi Naklua 12 Pattaya-Naklua rd, Bang Lamung District, Chonburi". This supports Pattaya [35] 「城市北邊的納克盧阿、和巴里海碼頭方向相反」.
+- Museum: CONFIRMED. The name is "The Sanctuary of Truth Museum".
+- Ticket prices and opening hours: the page lists them (day 500 ฿, night 700 ฿, day tours 8:20–18:00, night tours 18:20–20:30). The article defers them with 「以官網為準」, so nothing in it is wrong.
+
+### cmcity.go.th: chiang-mai-night-markets-walking-streets
+- **Still unverifiable.** Apache 403 at the origin on every path, homepage included. This happens for curl, headless Chromium and headed Chromium, and for both `www.` and the bare domain. The Wayback Machine is unreachable from here.
+
+### songakferry.com /time_regular, /price: marado-gapado-ferry-day-trip
+- **Still unverifiable.** The whole site serves the operator's block page (「접근이 제한되었어요」, 403) to every client tried. The Wayback snapshot of 2026-05-17 exists, but its connection was reset.
+
+### bus.jeju.go.kr (Chromium, 200)
+
+| Claim | Where | Outcome |
+|---|---|---|
+| 간/지선 (incl. 관광지순환) single fare: card 1,150, cash 1,200 | hallasan [31], marado [34] | CONFIRMED |
+| 급행 base fare for 20 km: card 2,000, cash 3,000 | same | CONFIRMED |
+| +200 per 5 km | marado [34] | CONFIRMED (5 km 200, 10 km 400, 15 km 600, 20 km 800, over 20 km 1,000) |
+| Maximum 3,000 over 40 km | marado [34] | CONFIRMED |
+| Express paid in cash always charges the maximum | both | CONFIRMED: 「급행버스는 현금 이용 시, 최대 요금 적용」 |
+| Jeju Bus Terminal and airport to 운진항: 47,993 m and 45,304 m, so the express fare is 3,000 | marado [34] | CONFIRMED (fast-fee.xlsx, tab 151) |
+| 102 and 151 are 급행, from 제주버스터미널 to 모슬포남항(운진항) | marado [33] | CONFIRMED (route list, plus route sheets 405002 and 405006) |
+| 251, 251-1, 252, 253, 254 and 255 are 일반간선, from 제주버스터미널 to 모슬포(운진항) | marado [33] | CONFIRMED (405015 sheets, eff. 2026-03-13; 405016) |
+| 500 is a 서귀포 간선 (category 「제주/서귀포 간선」) ending at 모슬포 남항 여객선 터미널(운진항) | marado [33] | CONFIRMED (406056, eff. 2026-03-03) |
+| 151 alighting stop 「모슬포 남항 여객선 터미널(운진항)」 | marado [33] | CONFIRMED on Visit Jeju CNTS_000000000019004 (visible body). The BIS sheet calls it 모슬포남항(운진항)(종점); that variant is harmless. |
+| 281 is 일반간선 and 475 is 지선, so both take the 간/지선 fare; 181 is 급행 | hallasan [29], [31] | CONFIRMED |
+| 475: 06:20–19:45, every 45–90 min, via 산천단(한국폴리텍대학) | hallasan [30] | CONFIRMED |
+| 281 and 181 both use the 5.16 road | hallasan [28] | CONFIRMED |
+| **281: 06:00–22:00, every 10–14 / 11–17 min; 181: 06:10–22:29, every 30–45 min, about 35 min** | **hallasan [29]** | **CONFLICT** (see below) |
+
+## Problem found (1)
+
+**hallasan-hiking-reservation-guide blocks[29], consistency.**
+- The 281 and 181 schedules copy visithalla `contents.do?id=61` exactly (re-read today, 200).
+- Jeju's own bus information system publishes the operator's route timetables, and they differ:
+  - **281** (sheet 405019, operator 동진여객, effective 2026-06-24): first bus from Jeju Bus Terminal **05:40**, first from Seogwipo Bus Terminal **05:55** (05:50 from the old terminal), last **22:00** both ways, every **10–20 min**.
+  - **181** (sheet 405007, effective 2024-08-01): first bus from the airport **06:40** (an earlier 06:00 trip starts at Jeju Bus Terminal), last from the airport **22:15**, every **40–60 min**, 38–46 min from the airport to Seongpanak.
+- Batch-8 README §本批與第七批不同的地方 rule 3: use one version for the numbers (the operator by default) and disclose the other in one sentence or bracket.
+- Impact on readers is small: the 281 last bus agrees, and the BIS first bus is earlier. But for 181, the article's 06:10 first bus from the airport is 30 minutes earlier than the operator sheet's 06:40.
+- This block was not in the round-1/2 fix set or round 2's random third. It came up only because bus.jeju.go.kr opened today.
+
+## Still unverifiable
+- cmcity.go.th:
+  - Night-markets claims that cannot be checked: [0] item 3, [5] row 1, [9], [11], [12], [14], [37], and Jing Jai's registered name (page 488).
+  - Cause: Apache 403 at the origin for every client.
+- songakferry.com:
+  - Marado claims that cannot be checked: the Songak column of [5], [8], the end of [13], the Songak half of [14], and the 30-minute Songak leg on the diagram.
+  - Cause: the operator blocks every request.
+- 181: which timetable is current. The BIS sheet dates from 2024-08-01.
+
+## Verdict
+- The three round-2 changes are correct.
+- Of the sources rounds 1–2 could not open, three now check out: the TAT Big Buddha hours, the Sanctuary of Truth page, and every bus.jeju.go.kr fare and route claim.
+- One new consistency item, hallasan [29], should be fixed or disclosed under rule 3. It is not a fact error a reader would be stranded by.
+- cmcity.go.th and songakferry.com still cannot be read from this environment.
+
+## Round-3 corrections as applied on the branch (2026-10-06)
+
+Before the change, both versions were re-opened on 2026-10-06 in headless Chromium with the same User-Agent and no personal data; TLS verification stayed on. The pack has only the zh-TW locale, so no other locale needed a change.
+
+**What the sources say today**
+- `bus.jeju.go.kr/publicTrafficInformation/generalBusSchedule?viewtype=2` (200). The route list came from the page's own `POST /publicTrafficInformation/getBusRouteNum` (`GROUTE_TYPE=4` lists `405007 181`, `GROUTE_TYPE=3` lists `405019 281`), and the workbooks from `/data/schedule/downScheduleExcel?gscheduleId=…`, both fetched from inside the rendered page.
+  - 405019 (281), two sheets, both 「배차간격 10~20분, 동진여객」「시행일 : 2026. 6. 24.」. 제주터미널→서귀포터미널: 「첫차 5:40, 막차 22:00」, first row 제주버스터미널 05:40 → 성판악 06:21. 서귀포터미널→제주터미널: 「첫차(구. 버스터미널 출발) 5:50, 막차 22:00」; row 1 starts at 서귀포시 구 버스터미널 05:50 (its 서귀포버스터미널 cell is X), row 2 leaves 서귀포버스터미널 at 05:55, and the last row leaves at 22:00.
+  - 405007 (181), one sheet, 「배차간격 40~60분, 동진여객」「시행일 : 2024.8.1.」. The first row with a 공항 time is 06:40 (→ 성판악 07:26). Row 2 has 공항 X and starts at 제주버스터미널 앞 06:00 (→ 성판악 06:35). The last 공항 departure is 22:15 (→ 성판악 22:53). 공항→성판악 is 46 min on most trips and 44, 40 and 38 on the last three. The header's 「첫차(서귀포중앙R 출발) 6:05」 is the start of the loop at Seogwipo and does not serve Seongpanak.
+- `visithalla.jeju.go.kr/contents/contents.do?id=61&language=ko` (200; without the language parameter the page serves the English version, which has no bus numbers). Unchanged: 「281번 … 첫차 06:00, 막차 22:00 (배차간격 10~14분) … 약 45분」「(서귀포시→제주시) 첫차 06:00, 막차 22:00 (배차간격 11~17분) … 약 50분」「181번 … 첫차 06:10, 막차 22:29 (배차간격 30~45분) … 약 35분」.
+
+The correction is right. Under README rule 3 the numbers now follow the operator's sheets, and the park site's version is disclosed in one sentence.
+
+**Changes in `hallasan-hiking-reservation-guide`**
+1. blocks[29] item 1: 「281 號（一般間線）：首班 06:00、末班 22:00，班距 10 到 14 分（西歸浦開往濟州方向 11 到 17 分）；…」 now reads 「281 號（一般間線）：濟州巴士轉運站首班 05:40、西歸浦巴士轉運站首班 05:55（西歸浦舊巴士轉運站另有一班 05:50），末班兩頭都是 22:00，班距 10 到 20 分；從濟州巴士轉運站上車約 45 分，從西歸浦巴士轉運站上車約 50 分。」
+2. blocks[29] item 2: 「181 號（急行，從濟州國際機場出發）：首班 06:10、末班 22:29，班距 30 到 45 分，約 35 分。」 now reads 「181 號（急行，從濟州國際機場出發）：機場首班 06:40、末班 22:15，班距 40 到 60 分，機場到城板岳 38 到 46 分；另有一班 06:00 從濟州巴士轉運站發車、不經機場。」
+3. blocks[28]: the rule-3 disclosure is appended after 「281 與 181 都走 5.16 道路。」: 「下面的時刻照業者在濟州巴士資訊系統公布的時刻表；漢拏山探訪預約系統的城板岳介紹頁寫的是另一版（281 首班 06:00，181 首班 06:10、末班 22:29）。」 No block was added, so later block indices are unchanged.
+4. blocks[36] repeated the same first buses before the hotel offer: 「281 首班 06:00、181 首班 06:10。」 now reads 「281 濟州巴士轉運站首班 05:40、西歸浦巴士轉運站首班 05:55，181 機場首班 06:40。」 Leaving it would have contradicted [29].
+5. sources: the bus.jeju.go.kr title now also names 「281 與 181 的業者時刻表（2026 年 6 月 24 日、2024 年 8 月 1 日施行）」. The id=61 source stays, because the disclosure cites it.
+
+**Kept on purpose**
+- The 281 ride times 約 45 分 and 約 50 分 agree with both versions. The BIS sheets give 37 to 44 min from 제주버스터미널 to 성판악 (44 on 52 of the 72 trips, 41 to 44 on all but the 21:45 and 22:00) and 46 to 52 min from 서귀포버스터미널 (52 on 54 of the 71 trips).
+- [32] still sends readers to Naver Map or Kakao Map for the day's buses. That covers the open question of which 181 timetable is current.
+- The spec `docs/travel-guides-batch-8/hallasan-hiking-reservation-guide.md` (lines 120–121, 276 and its rule (11) at 335) still gives the visithalla numbers and says every bus time follows the park site. README rule 3 is the later batch-wide rule, so the article now departs from the spec on these numbers. The spec was not edited.
+- No other content pack carries a 281 or 181 schedule (`git grep`; `jeju-3-day-itinerary` has none), and `shared-numbers.json` has no rule on them.
+
+**Checks (from `apps/api`, after `uv sync --frozen`)**
+- `uv run python -m app.guides.pack_cli lint --slug hallasan-hiking-reservation-guide`: exit 0.
+- `intake_check.py --slug hallasan-hiking-reservation-guide --from-content --manifest docs/travel-guides-batch-8/batch.json`: PASS (0 failures). body_length 4067 in the 1800–4200 band. The five WARN lines are in the unchanged description and summary. Both diagrams pass "every number on the diagram is in the text". The slug is not on origin/main, so there is no baseline to regress against.
+- `shared_check.py --rules docs/travel-guides-batch-8/shared-numbers.json --from-content`: PASS (0). Only two jeju info counts changed (濟州巴士轉運站, 漢拏山).
+- `pytest tests/test_guides_content_pack.py -q`: 9 passed, 5 skipped.
+- `tasks/` was not changed.
