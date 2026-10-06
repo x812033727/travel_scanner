@@ -41,6 +41,7 @@ from app.video_media.jobs import (
 from app.video_media.judge import JudgeError, judge
 from app.video_media.locate import LocateError, locate
 from app.video_media.models import VideoMediaJob
+from app.video_media.providers.minimax import IMAGE_PROMPT_LIMIT
 from app.video_media.schemas import (
     MAX_LOCATE_LABELS,
     MAX_PROMPT_CHARS,
@@ -214,6 +215,12 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
             # vendors have a key.
             "stock_per_page": MAX_STOCK_PER_PAGE,
             "max_file_bytes": media.video_media_max_file_bytes,
+            # How long an image prompt may be (exclusive), counting the avoidance text the
+            # provider module appends: the field's own limit, and each vendor's where it is
+            # shorter. The tool composes a shot's prompt under the chosen model's figure
+            # (tools/video/media/prompt-budget.mjs) instead of being refused on every seed.
+            "image_prompt_chars": MAX_PROMPT_CHARS,
+            "image_prompt_chars_minimax": IMAGE_PROMPT_LIMIT,
         },
     )
 

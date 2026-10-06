@@ -10,7 +10,11 @@ admin page. Changes go through ``service.update_settings`` (audit row, activatio
 rules), mode and auto-publish are never touched here, and the scanner is only switched
 on when the writer and checker vendors have a key, neither is Gemini (its schema adapter
 cannot express a news article yet), and Jev is configured -- otherwise every candidate
-would fail after spending its Jev calls. Keys are reported as present or missing only.
+would fail after spending its Jev calls. The judge (``--judge-enable``, ``--judge-disable``,
+``--judge-provider``, ``--judge-model``) has its vendor held to the same while it is
+switched on, and not looked at while it is off. A vendor changed without naming a model
+puts that role's model back to the new vendor's default. Keys are reported as present or
+missing only.
 """
 
 from __future__ import annotations
@@ -49,10 +53,16 @@ def blockers(payload: SettingsWrite, ready: dict[str, bool]) -> list[str]:
     if not payload.enabled:
         return []
     problems: list[str] = []
-    for role in ("writer", "verifier", "editor"):
+    roles = ["writer", "verifier", "editor"]
+    # The judge is only called while its switch is on.
+    if payload.judge_enabled:
+        roles.append("judge")
+    for role in roles:
         vendor = cast(str, getattr(payload, f"{role}_provider"))
         if vendor in UNSUPPORTED_FOR_NEWS:
-            problems.append(f"{role} vendor {vendor} cannot write a news article yet")
+            # The judge reads a story and decides; the other three produce its text.
+            task = "judge a news story" if role == "judge" else "write a news article"
+            problems.append(f"{role} vendor {vendor} cannot {task} yet")
         elif not ready.get(vendor):
             problems.append(f"{role} vendor {vendor} has no API key configured")
     if not ready["jev"]:
@@ -81,6 +91,9 @@ async def run(
     apply: bool,
     editor_provider: str | None = None,
     editor_model: str | None = None,
+    judge_enabled: bool | None = None,
+    judge_provider: str | None = None,
+    judge_model: str | None = None,
     actor_email: str | None,
 ) -> dict[str, Any]:
     try:
@@ -94,6 +107,8 @@ async def run(
             overrides: dict[str, Any] = {}
             if enable is not None:
                 overrides["enabled"] = enable
+            if judge_enabled is not None:
+                overrides["judge_enabled"] = judge_enabled
             for key, value in (
                 ("writer_provider", writer_provider),
                 ("writer_model", writer_model),
@@ -101,10 +116,23 @@ async def run(
                 ("verifier_model", verifier_model),
                 ("editor_provider", editor_provider),
                 ("editor_model", editor_model),
+                ("judge_provider", judge_provider),
+                ("judge_model", judge_model),
             ):
                 if value is not None:
                     # An empty string means "back to the vendor default".
                     overrides[key] = value or None
+            # A vendor change without a model takes the new vendor's default, as the admin
+            # page does: the stored id belongs to the vendor being left, and the editor's
+            # and the judge's are never empty to begin with.
+            for role in ("writer", "verifier", "editor", "judge"):
+                vendor = overrides.get(f"{role}_provider")
+                if (
+                    vendor is not None
+                    and vendor != getattr(current, f"{role}_provider")
+                    and f"{role}_model" not in overrides
+                ):
+                    overrides[f"{role}_model"] = None
             wanted = SettingsWrite.model_validate({**current.model_dump(), **overrides})
             changes = {
                 key: value
@@ -124,6 +152,9 @@ async def run(
                         "verifier_model",
                         "editor_provider",
                         "editor_model",
+                        "judge_enabled",
+                        "judge_provider",
+                        "judge_model",
                         "auto_publish_ai",
                         "auto_publish_tech",
                         "auto_publish_crypto",
@@ -165,6 +196,11 @@ def main() -> None:
     parser.add_argument("--verifier-model", help="Model id; an empty string restores the default")
     parser.add_argument("--editor-provider", choices=PROVIDERS)
     parser.add_argument("--editor-model", help="Model id; an empty string restores the default")
+    judge = parser.add_mutually_exclusive_group()
+    judge.add_argument("--judge-enable", dest="judge_enabled", action="store_true", default=None)
+    judge.add_argument("--judge-disable", dest="judge_enabled", action="store_false")
+    parser.add_argument("--judge-provider", choices=PROVIDERS)
+    parser.add_argument("--judge-model", help="Model id; an empty string restores the default")
     parser.add_argument("--apply", action="store_true", help="Write; show the change otherwise")
     parser.add_argument("--actor-email", help="Administrator the audit row is recorded for")
     args = parser.parse_args()
@@ -177,6 +213,9 @@ def main() -> None:
             verifier_model=args.verifier_model,
             editor_provider=args.editor_provider,
             editor_model=args.editor_model,
+            judge_enabled=args.judge_enabled,
+            judge_provider=args.judge_provider,
+            judge_model=args.judge_model,
             apply=args.apply,
             actor_email=args.actor_email,
         )

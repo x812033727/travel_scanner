@@ -3,33 +3,43 @@
 Sibling of ai-model-comparison-table-2026. That article carries the spec table and
 hit the 20-source schema cap; this one carries the three things that change the
 bill after the list price, with its own sources. Every number was read from the
-official page on 2026-09-17 and is recorded in notes.md.
+official page on 2026-10-06 (the first edition read them on 2026-09-17) and is
+recorded in notes.md.
 """
 import json
+import re
+from pathlib import Path
 
 SLUG = "ai-pricing-beyond-list-price"
-DAY = "2026-09-17"
+DAY = "2026-10-06"
 
 def art(text, slug): return {"type": "article", "text": text, "kind": "life", "slug": slug}
 def txt(text): return {"type": "text", "text": text}
 
+def svg_desc(name):
+    """The diagram's <desc>, which the image block repeats as its description."""
+    svg = (Path(__file__).resolve().parent / name).read_text(encoding="utf-8")
+    return re.sub(r"\s+", " ", re.search(r"<desc\b[^>]*>(.*?)</desc>", svg, re.S).group(1)).strip()
+
 CACHE_HEADER = ["廠商", "模型", "快取命中價／百萬", "原輸入價／百萬", "命中價是原價的"]
 cache = [
     ["OpenAI", "gpt-6-astra", "1.00 美元", "10.00 美元", "10%"],
-    ["Anthropic", "Claude Opus 5", "0.50 美元", "5 美元", "10%"],
-    ["xAI", "grok-4.6", "0.50 美元", "2.00 美元", "25%"],
+    ["xAI", "grok-4.7", "0.50 美元", "2.00 美元", "25%"],
     ["Moonshot", "kimi-k3", "0.30 美元", "3.00 美元", "10%"],
+    ["Z.AI", "GLM-5.3", "0.26 美元", "1.40 美元", "19%"],
     ["Anthropic", "Claude Fable 5.1", "0.25 美元", "10 美元", "2.5%"],
     ["Google", "gemini-3.1-pro-preview", "0.20 美元（另收儲存費）", "2.00 美元", "10%"],
-    ["Anthropic", "Claude Sonnet 5", "0.20 美元", "2 美元", "10%"],
-    ["OpenAI", "gpt-5.6-terra", "0.20 美元", "2.00 美元", "10%"],
+    ["Anthropic", "Claude Opus 5.5", "0.20 美元", "4 美元", "5%"],
+    ["Anthropic", "Claude Sonnet 5.5", "0.20 美元", "2 美元", "10%"],
     ["xAI", "grok-4.3", "0.20 美元", "1.25 美元", "16%"],
+    ["Mistral", "Mistral Medium 3.5", "0.15 美元", "1.50 美元", "10%"],
+    ["OpenAI", "gpt-6.1-sol", "0.10 美元", "2.00 美元", "5%"],
     ["Anthropic", "Claude Haiku 4.5", "0.10 美元", "1 美元", "10%"],
     ["Google", "gemini-3.8-flash", "0.075 美元（另收儲存費）", "0.75 美元", "10%"],
     ["OpenAI", "gpt-5.4-mini", "0.075 美元", "0.75 美元", "10%"],
     ["MiniMax", "MiniMax-M3", "0.06 美元", "0.30 美元", "20%"],
     ["DeepSeek", "deepseek-v4-pro", "0.044 美元", "1.32 美元", "3.3%"],
-    ["OpenAI", "gpt-5.6-luna", "0.02 美元", "0.20 美元", "10%"],
+    ["OpenAI", "gpt-6-luna", "0.01 美元", "0.10 美元", "10%"],
     ["DeepSeek", "deepseek-flash", "0.006 美元", "0.30 美元", "2%"],
     ["OpenAI", "gpt-5-nano", "0.005 美元", "0.05 美元", "10%"],
 ]
@@ -39,31 +49,31 @@ longctx = [
     ["Anthropic", "沒有門檻", "100 萬 token 全程標準價", "官網明寫 90 萬 token 的請求與 9 千 token 同一個單價"],
     ["Google", "20 萬 token", "輸入 2.00 → 4.00、輸出 12.00 → 18.00 美元", "快取價也同步從 0.20 跳到 0.40 美元"],
     ["xAI", "20 萬 token", "輸入 2.00 → 4.00、輸出 6.00 → 12.00 美元", "官網明寫：整筆請求的所有 token 都用高價計"],
+    ["OpenAI", "27.2 萬輸入 token", "gpt-6-astra 輸入 10.00 → 20.00、輸出 50.00 → 75.00 美元", "模型頁寫明整筆請求的輸入與快取價變 2 倍、輸出變 1.5 倍"],
     ["MiniMax", "51.2 萬 token", "輸入 0.30 → 0.60、輸出 1.20 → 2.40 美元", "快取命中價同步 0.06 → 0.12 美元"],
-    ["OpenAI", "官網未標門檻", "定價頁分短脈絡與長脈絡兩欄", "有兩種價，但當天頁面沒有寫切換的 token 數"],
 ]
 
 blocks = [
     {"type": "summary", "items": [
         "三件事會讓帳單跟單價對不起來：快取命中價、長上下文加價門檻，以及各家 tokenizer 數出來的 token 數不一樣。",
         "快取命中多數家是原價的 10%，但 DeepSeek 低到 2%、xAI 是 25%，差了十倍以上——同樣一份固定的系統指示，省下來的比例各家不同。",
-        "跨過長上下文門檻通常不是只有超出的部分變貴。xAI 官網明寫整筆請求都用高價計；Anthropic 則是 100 萬 token 全程同一個單價，完全沒有這道門檻。",
+        "跨過長上下文門檻通常不是只有超出的部分變貴。xAI 與 OpenAI 官網都寫明整筆請求改用高價計；Anthropic 則是 100 萬 token 全程同一個單價，完全沒有這道門檻。",
     ]},
     {"type": "paragraph", "text": "把各家的每百萬 token 單價排成一張表之後，下一個問題是：照這張表估出來的數字，跟月底實際收到的帳單差多少。答案通常是差不少，而且差的方向不一定。這篇講三個會讓兩者對不起來的欄位，它們都寫在官網上，只是不在最顯眼的那張價目表裡。"},
     {"type": "paragraph", "text": "這三件事的共同點是：它們不改變模型能力，只改變同一份工作的計價方式。所以它們不影響你選哪個模型好用，卻可能直接改變哪一家比較便宜的結論。"},
 
     {"type": "heading", "level": 2, "text": "快取：重複的開頭只付一小筆"},
     {"type": "paragraph", "text": "如果你每次請求都送同一份系統指示、同一批參考文件，那段內容可以被快取起來，之後只付一筆很小的讀取費。這對正式產品幾乎一定適用，因為提示詞的前半段通常是固定的。"},
-    {"type": "paragraph", "text": "各家的命中價多數落在原輸入價的 10%，但兩端拉得很開：DeepSeek 的 deepseek-flash 只要原價的 2%，xAI 的 grok-4.6 要 25%。同一份固定前綴，在不同家省下來的比例差了十倍以上。"},
+    {"type": "paragraph", "text": "各家的命中價多數落在原輸入價的 10%，但兩端拉得很開：DeepSeek 的 deepseek-flash 只要原價的 2%，xAI 的 grok-4.7 要 25%。同一份固定前綴，在不同家省下來的比例差了十倍以上。"},
     {"type": "table", "header": CACHE_HEADER, "rows": cache,
-     "caption": "各家官網 2026 年 9 月 17 日當天的快取命中價，依命中價由高到低排。DeepSeek 為尖峰時段價，離峰再對折。百分比為本站以同頁的原輸入價相除後四捨五入。"},
-    {"type": "paragraph", "text": "有三個細節容易漏看。第一，快取通常要先付一筆寫入費：Anthropic 的 5 分鐘寫入是原價的 1.25 倍、1 小時寫入是 2 倍，官網直接寫明 5 分鐘那種讀一次就回本、1 小時要讀兩次。第二，Google 的快取除了單價還另外按小時收儲存費，gemini-3.1-pro-preview 是每百萬 token 每小時 4.50 美元，放著不用也在計費。第三，Anthropic 的 Claude Fable 5.1 命中價是原價的 2.5% 而不是 10%，是它自己家的例外。"},
+     "caption": "各家官網 2026 年 10 月 6 日當天的快取命中價，依命中價由高到低排。DeepSeek 為尖峰時段價，離峰再對折。百分比為本站以同頁的原輸入價相除後四捨五入。"},
+    {"type": "paragraph", "text": "有三個細節容易漏看。第一，快取通常要先付一筆寫入費：Anthropic 的 5 分鐘寫入是原價的 1.25 倍、1 小時寫入是 2 倍，官網直接寫明 5 分鐘那種讀一次就回本、1 小時要讀兩次。第二，Google 的快取除了單價還另外按小時收儲存費，gemini-3.1-pro-preview 是每百萬 token 每小時 4.50 美元，放著不用也在計費。第三，同一家不同型號的命中比例不一定一樣：Anthropic 的 Claude Fable 5.1 是原價的 2.5%、Claude Opus 5.5 是 5%，OpenAI 的 gpt-6.1-sol 也是 5%，同一家的其他型號多半是 10%，要逐列看。"},
 
     {"type": "heading", "level": 2, "text": "長上下文門檻：跨過去就整筆變貴"},
     {"type": "paragraph", "text": "幾家把上下文分成兩段計價，超過某個 token 數就換一套價。關鍵在於跨過去之後怎麼算——多數人以為只有超出的部分變貴，但官網寫的不是這樣。"},
     {"type": "table", "header": LONG_HEADER, "rows": longctx,
-     "caption": "2026 年 9 月 17 日各家官網定價頁。Anthropic 與其他家相反，明文寫出全程同一個單價，沒有第二段價。"},
-    {"type": "paragraph", "text": "xAI 的定價頁把規則寫得最直白：請求的提示詞達到門檻，整筆請求的所有 token 都用高價計。也就是說一個 19.9 萬 token 的請求和一個 20.1 萬 token 的請求，後者不是多付那 2 千 token 的錢，而是整整二十萬 token 都換成兩倍單價。這種計價方式下，把提示詞壓在門檻以下是很具體的省錢動作。"},
+     "caption": "2026 年 10 月 6 日各家官網定價頁與模型頁。Anthropic 與其他家相反，明文寫出全程同一個單價，沒有第二段價。"},
+    {"type": "paragraph", "text": "xAI 的定價頁把規則寫得最直白：請求的提示詞達到門檻，整筆請求的所有 token 都用高價計。也就是說一個 19.9 萬 token 的請求和一個 20.1 萬 token 的請求，後者不是多付那 2 千 token 的錢，而是整整二十萬 token 都換成兩倍單價。OpenAI 的模型頁也是同一種寫法：輸入超過 27.2 萬 token 的提示詞，整筆請求都換成較高的單價。這種計價方式下，把提示詞壓在門檻以下是很具體的省錢動作。"},
 
     {"type": "heading", "level": 2, "text": "Tokenizer：同一份文件不是同一個 token 數"},
     {"type": "paragraph", "text": "最後一件事會動搖前面所有比較的前提：token 不是一個跨廠商的標準單位。同一份文件送進不同家，被切成的 token 數不一樣，所以「每百萬 token 多少錢」相同，不代表跑同一份工作的花費相同。"},
@@ -73,7 +83,8 @@ blocks = [
     {"type": "image", "src": f"/guides/{SLUG}/diagram-1.svg",
      "alt": "一條從左到右的流程，把單價乘上 token 數之後，依序經過快取、長上下文門檻與 tokenizer 三個會改變金額的關卡，最後才是帳單",
      "width": 1, "height": 1,
-     "caption": "單價乘以 token 數只是起點，中間還要經過三道會改變金額的關卡才是帳單。"},
+     "caption": "單價乘以 token 數只是起點，中間還要經過三道會改變金額的關卡才是帳單。",
+     "description": svg_desc("diagram-1.svg")},
     {"type": "callout", "tone": "warning", "title": "估算之前先確認這三欄，不然誤差是倍數不是百分比",
      "text": "固定前綴很長又沒開快取，實際花費可能是估算的好幾倍；提示詞剛好壓在長上下文門檻上下浮動，同樣的工作帳單會忽高忽低；拿舊模型量出來的 token 數去估新模型，在 Anthropic 這邊會低估約三成。這三項都不是小數點後的差異。"},
     {"type": "rich_paragraph", "inlines": [
@@ -91,7 +102,7 @@ blocks = [
     {"type": "list", "ordered": True, "items": [
         "先看提示詞裡有多少是每次都一樣的。超過一半就把那部分改用快取命中價重算，這通常是最大的一筆差額。",
         "確認快取的寫入費與回本次數。Anthropic 官網寫得最清楚：5 分鐘快取讀一次回本，1 小時快取要讀兩次；用 Google 的還要另外把每小時儲存費加進去。",
-        "量一下實際請求的 token 數，跟你那家的長上下文門檻比。壓在門檻以下的價值，在 xAI 那種整筆改價的規則下特別高。",
+        "量一下實際請求的 token 數，跟你那家的長上下文門檻比。壓在門檻以下的價值，在 xAI 與 OpenAI 那種整筆改價的規則下特別高。",
         "換模型時重新量 token 數，不要沿用舊模型的數字。Anthropic 的 4.7 以後多約三成，別家官網當天沒有可引用的對照說明。",
         "最後拿一天的真實流量跑一次，把帳單跟估算對一次，差多少就把差額補進假設再估一輪。",
     ]},
@@ -107,21 +118,24 @@ blocks = [
 ]
 
 sources = [
-    ("OpenAI API 定價頁（各型號的快取輸入價，以及短脈絡與長脈絡兩欄）", "https://developers.openai.com/api/docs/pricing"),
-    ("Anthropic Claude 平台定價頁（快取寫入與命中倍率、Fable 5.1 的 0.025 倍例外、100 萬 token 全程標準價、新舊 tokenizer 約差 30% 的註記）", "https://platform.claude.com/docs/en/about-claude/pricing"),
+    ("OpenAI API 定價頁（各型號的快取輸入價，以及以 27.2 萬輸入 token 為界的短上下文與長上下文兩欄）", "https://developers.openai.com/api/docs/pricing"),
+    ("OpenAI GPT-6 Astra 模型頁（輸入超過 27.2 萬 token 時，整筆請求的輸入與快取價變 2 倍、輸出變 1.5 倍）", "https://developers.openai.com/api/docs/models/gpt-6-astra"),
+    ("Anthropic Claude 平台定價頁（快取寫入與命中倍率、Fable 5.1 的 0.025 倍與 Opus 5.5 的 0.05 倍例外、100 萬 token 全程標準價、新舊 tokenizer 約差 30% 的註記）", "https://platform.claude.com/docs/en/about-claude/pricing"),
     ("Anthropic Claude 模型總覽頁（各模型的基礎輸入輸出價與上下文視窗）", "https://platform.claude.com/docs/en/about-claude/models/overview"),
     ("Gemini API 定價頁（內容快取單價、每小時儲存費，以及 20 萬 token 的分段門檻）", "https://ai.google.dev/gemini-api/docs/pricing"),
     ("xAI 開發者文件：定價頁（快取輸入價，以及達到門檻後整筆請求都用高價計的規則）", "https://docs.x.ai/developers/pricing"),
     ("DeepSeek API 文件：模型與定價（快取命中與未命中、尖峰與離峰四欄價）", "https://api-docs.deepseek.com/quick_start/pricing/"),
     ("MiniMax API 文件：隨用隨付定價（M3 與 M2.7 的快取讀寫價與 51.2 萬 token 分段）", "https://platform.minimax.io/docs/guides/pricing-paygo"),
     ("Moonshot Kimi 平台文件：對話模型定價（kimi-k3 與 k2.7-code 的快取命中與未命中價）", "https://platform.kimi.ai/docs/pricing/chat"),
+    ("Mistral 文件：定價頁（各模型的快取輸入價欄）", "https://docs.mistral.ai/inference/pricing"),
+    ("Z.AI 文件：定價總覽（GLM-5.3 的快取輸入價）", "https://docs.z.ai/guides/overview/pricing"),
 ]
 
 pack = {
     "slug": SLUG,
     "kind": "life",
     "destination_id": None,
-    "topics": ["ai", "software"],  # ai-plans 於 ingest 後補回，見 2026-09-16-pack-cli-ingest-805
+    "topics": ["ai", "software", "ai-plans"],
     "valid_until": None,
     "featured": False,
     "display_order": 100,
@@ -134,7 +148,7 @@ pack = {
     "locales": {
         "zh-TW": {
             "title": "單價之外：快取、長上下文門檻與 tokenizer 怎麼改變帳單",
-            "description": "每百萬 token 的單價只是起點。這篇把三個官網有寫、但不在主價目表上的欄位攤開：快取命中價（多數家原價 10%，DeepSeek 低到 2%、xAI 要 25%）、長上下文加價門檻（xAI 明寫跨過去整筆請求都用高價計，Anthropic 則完全沒有這道門檻），以及各家 tokenizer 切出來的 token 數不一樣。附一套重估帳單的順序。",
+            "description": "每百萬 token 的單價只是起點。這篇把三個官網有寫、但不在主價目表上的欄位攤開：快取命中價（多數家原價 10%，DeepSeek 低到 2%、xAI 要 25%）、長上下文加價門檻（xAI 與 OpenAI 都寫明跨過去整筆請求改用高價，Anthropic 則完全沒有這道門檻），以及各家 tokenizer 切出來的 token 數不一樣。附一套重估帳單的順序。",
             "hero": {"src": f"/guides/{SLUG}/hero.jpg", "alt": "一條橫線上有三個大小不同的關卡，線的左端是一個小方塊代表單價，右端是一個較大的方塊代表帳單", "width": 1, "height": 1},
             "blocks": blocks,
             "sources": [{"title": t, "url": u, "checked_on": DAY} for t, u in sources],
@@ -142,7 +156,7 @@ pack = {
     },
 }
 
-with open("pack.json", "w", encoding="utf-8") as fh:
+with open("pack.json", "w", encoding="utf-8", newline="\n") as fh:
     json.dump(pack, fh, ensure_ascii=False, indent=2); fh.write("\n")
 
 body = sum(len(b.get("text", "")) for b in blocks if b["type"] in ("paragraph", "callout"))

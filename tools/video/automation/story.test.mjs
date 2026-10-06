@@ -422,6 +422,7 @@ test("every story stage has its own prompt: the writer is told the length comes 
   const listener = instructionsFor("listener", "drama", "", "story");
   assert.match(listener, /Return \{"patch"/);
   assert.match(instructionsFor("writer", "drama", "", "story-fix"), /PICTURES of a few shots/);
+  assert.match(instructionsFor("writer", "drama", "", "story-fix"), /When\s+a target in "fix.targets" carries "prompt_budget_chars", that shot's prompt must be at most that\s+many characters/);
   assert.match(instructionsFor("writer", "drama", "講慢一點", "story"), /standing instructions[\s\S]*講慢一點$/, "the owner's standing drama instructions still end the prompt");
   assert.match(instructionsFor("writer", "drama"), /"format": "drama"/, "a drama without a variant is written as before");
 });
@@ -719,7 +720,11 @@ test("a keyframe fix patches the named shot alone, and after the rounds the vide
   assert.deepEqual(after.scenes[1].lines, before.scenes[1].lines, "no line changes");
   assert.equal(world.video().scenes.find((scene) => scene.id === "engine-02").data.camera, "slow pan left", "video.json is merged again");
   assert.equal(state().prompt_fixes.keyframes, 1);
-  await automation.fixPrompts(state(), "keyframes", { targets: [{ id: "engine-02", problems: ["still crowded"] }] });
+  // A shot the image model's budget refused tells the writer its number, for the shot and for the fix as a whole.
+  await automation.fixPrompts(state(), "keyframes", { targets: [{ id: "engine-02", problems: ["still crowded"], prompt_budget_chars: 420 }, { id: "engine-01", problems: ["too long"], prompt_budget_chars: 480 }] });
+  const budgeted = world.site.calls.run.at(-1).payload.fix;
+  assert.equal(budgeted.prompt_budget_chars, 420, "the tightest among the targets");
+  assert.deepEqual(budgeted.targets.map((target) => target.prompt_budget_chars), [420, 480]);
   assert.match(await automation.fixPrompts(state(), "keyframes", { targets: [{ id: "engine-02", problems: ["still crowded"] }] }), /blocked — keyframes still fails after 2 prompt fixes/);
 });
 

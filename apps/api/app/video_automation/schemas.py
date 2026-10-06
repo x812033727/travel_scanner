@@ -360,6 +360,9 @@ class MediaOptionView(StrictModel):
     resolutions: list[str]
     durations: list[int]
     reference_images: int
+    # Of those, how many the model reads as a style sample (catalog.MediaModel.style_references):
+    # the tools draw a style plate only for a model that takes one.
+    style_references: int
     native_audio: bool
     usd_per_second: float | None
     usd_per_image: float | None

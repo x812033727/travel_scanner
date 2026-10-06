@@ -1,8 +1,10 @@
 """Checking narration against the script: Gemini transcription and Jev's judgement."""
 
 import base64
+import hashlib
 import json
 from typing import Any, get_args
+from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import httpx
@@ -11,7 +13,7 @@ from httpx import ASGITransport, AsyncClient
 
 import app.video_speech.admin_api as admin_api
 import app.video_speech.checking as checking
-from app.ai.jev import JevError, NoulAnswer
+from app.ai.jev import JevClient, JevError, NoulAnswer
 from app.config import Settings
 from app.main import app
 from app.models import VideoToolToken
@@ -353,3 +355,115 @@ async def test_the_judge_endpoint_returns_one_probability_per_line(check_app: An
     assert failed.status_code == 502 and failed.json()["code"] == "video_judge_upstream_failed"
     too_many = await _post("judge", {"lines": [body["lines"][0]] * 41})
     assert too_many.status_code == 422
+
+
+JUDGE_BODY = {
+    "lines": [
+        {
+            "id": "k7p2",
+            "intended": "private-script",
+            "spoken_form": "private-script",
+            "heard": "same",
+        }
+    ]
+}
+
+
+def _endpoint_jev(
+    monkeypatch: pytest.MonkeyPatch, provider: httpx.AsyncClient
+) -> tuple[JevClient, AsyncMock]:
+    jev = JevClient(
+        "private-jev-key", "https://private-jev.invalid", "test-model", 1, client=provider
+    )
+    consumed = AsyncMock(return_value=True)
+    monkeypatch.setattr(checking, "jev_client", lambda settings, client=None: jev)
+    monkeypatch.setattr(checking, "consume_jev_call", consumed)
+    monkeypatch.setattr(JevClient, "_backoff", AsyncMock())
+    return jev, consumed
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("failure", ["read_timeout", "502", "non_json", "connect_then_read"])
+async def test_speech_judge_preserves_uncertain_jev_evidence_without_resending(
+    check_app: Any, failure: str
+) -> None:
+    _, monkeypatch = check_app
+    sent: list[bytes] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        sent.append(request.content)
+        if failure == "connect_then_read" and len(sent) == 1:
+            raise httpx.ConnectError("not connected", request=request)
+        if failure in {"read_timeout", "connect_then_read"}:
+            raise httpx.ReadTimeout("private-jev-key https://private-jev.invalid", request=request)
+        if failure == "502":
+            return httpx.Response(502, json={"error": {"message": "private-jev-key"}})
+        return httpx.Response(200, text="private-jev-key non-json answer")
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as provider:
+        jev, consumed = _endpoint_jev(monkeypatch, provider)
+        response = await _post("judge", JUDGE_BODY)
+    assert response.status_code == 502
+    assert response.headers["content-type"].startswith("application/problem+json")
+    body = response.json()
+    assert body["code"] == "video_judge_outcome_uncertain" and body["status"] == 502
+    assert body["quota_units_consumed"] == 1 and consumed.await_count == 1
+    expected_wires = 2 if failure == "connect_then_read" else 1
+    assert len(sent) == jev.wires_sent == expected_wires and jev.application_calls == 1
+    assert body["jev_outcome"] == {
+        "phase": "response" if failure == "502" else "body" if failure == "non_json" else "send",
+        "status": 502 if failure == "502" else 200 if failure == "non_json" else None,
+        "wires_sent": expected_wires,
+        "request_sha256": hashlib.sha256(sent[-1]).hexdigest(),
+    }
+    assert all(content == sent[0] for content in sent)
+    for secret in ("private-jev-key", "private-jev.invalid", "private-script"):
+        assert secret not in response.text
+
+
+@pytest.mark.asyncio
+async def test_speech_judge_retries_never_connected_wire_without_spending_another_quota(
+    check_app: Any,
+) -> None:
+    _, monkeypatch = check_app
+    sent: list[bytes] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        sent.append(request.content)
+        if len(sent) == 1:
+            raise httpx.ConnectError("not connected", request=request)
+        return httpx.Response(200, json={"answers": {"line_k7p2": {"type": "noul", "noul": 0.9}}})
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as provider:
+        jev, consumed = _endpoint_jev(monkeypatch, provider)
+        response = await _post("judge", JUDGE_BODY)
+    assert response.status_code == 200 and response.json() == {
+        "results": [{"id": "k7p2", "noul": 0.9}]
+    }
+    assert len(sent) == jev.wires_sent == 2 and sent[0] == sent[1]
+    assert jev.application_calls == consumed.await_count == 1
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("failure", [401, 403, 400, 422, 429, 529, "connect"])
+async def test_speech_judge_keeps_settled_jev_failures_under_the_existing_contract(
+    check_app: Any, failure: int | str
+) -> None:
+    _, monkeypatch = check_app
+    sent: list[bytes] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        sent.append(request.content)
+        if failure == "connect":
+            raise httpx.ConnectError("not connected", request=request)
+        assert isinstance(failure, int)
+        return httpx.Response(failure, json={"error": {"message": "refused"}})
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as provider:
+        jev, consumed = _endpoint_jev(monkeypatch, provider)
+        response = await _post("judge", JUDGE_BODY)
+    assert response.status_code == 502 and response.json()["code"] == "video_judge_upstream_failed"
+    assert "jev_outcome" not in response.json()
+    expected_wires = {429: 3, 529: 4, "connect": 2}.get(failure, 1)
+    assert len(sent) == jev.wires_sent == expected_wires
+    assert jev.application_calls == consumed.await_count == 1

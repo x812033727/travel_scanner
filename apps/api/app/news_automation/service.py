@@ -348,6 +348,9 @@ async def settings_view(session: AsyncSession) -> SettingsView:
         verifier_model=row.verifier_model,
         editor_provider=cast(Any, row.editor_provider),
         editor_model=row.editor_model,
+        judge_enabled=row.judge_enabled,
+        judge_provider=cast(Any, row.judge_provider),
+        judge_model=row.judge_model,
         global_concurrency=row.global_concurrency,
         per_vertical_concurrency=row.per_vertical_concurrency,
         min_shadow_days=row.min_shadow_days,
@@ -369,16 +372,19 @@ async def settings_view(session: AsyncSession) -> SettingsView:
 
 
 async def update_models(session: AsyncSession, actor: User, payload: ModelsWrite) -> SettingsView:
-    """Change only the writer, verifier and final editor models, through a settings save."""
+    """Change only the writer, verifier, final editor and judge models, through a settings save."""
     current = await settings_view(session)
-    if payload.model_dump() == current.model_dump(include=set(ModelsWrite.model_fields)):
+    # The judge's switch is the news page's, and a page loaded before the judge existed names
+    # no judge vendor. What this save does not choose is left out of it, so update_settings
+    # keeps it from the row it locks.
+    left_out = {"judge_enabled"}
+    if "judge_provider" not in payload.model_fields_set:
+        left_out |= {"judge_provider", "judge_model"}
+    chosen = payload.model_dump(exclude=left_out)
+    if chosen == current.model_dump(include=set(chosen)):
         return current
-    settings = SettingsWrite.model_validate(
-        {
-            **current.model_dump(include=set(SettingsWrite.model_fields)),
-            **payload.model_dump(),
-        }
-    )
+    stored = current.model_dump(include=set(SettingsWrite.model_fields) - left_out)
+    settings = SettingsWrite.model_validate({**stored, **chosen})
     return await update_settings(session, actor, settings)
 
 
@@ -386,6 +392,8 @@ async def update_settings(
     session: AsyncSession, actor: User, payload: SettingsWrite
 ) -> SettingsView:
     row = await settings_row(session, lock=True)
+    # What the agreement figures measure: the three roles every story runs through and the
+    # two versions. The judge decides after them, so a change of judge restarts nothing.
     before = {
         "writer_provider": row.writer_provider,
         "writer_model": row.writer_model,
@@ -397,17 +405,12 @@ async def update_settings(
         "policy_version": row.policy_version,
     }
     values = payload.model_dump()
-    # Models left out of the payload keep their stored value (see SettingsWrite).
-    for key in (
-        "writer_provider",
-        "writer_model",
-        "verifier_provider",
-        "verifier_model",
-        "editor_provider",
-        "editor_model",
-    ):
-        if key not in payload.sent_models():
-            values[key] = before[key]
+    # Models left out of the payload keep their stored value (see SettingsWrite), the judge's
+    # among them, and so does the judge's switch.
+    for key in set(ModelsWrite.model_fields) - payload.sent_models():
+        values[key] = getattr(row, key)
+    if values["judge_enabled"] is None:
+        values["judge_enabled"] = row.judge_enabled
     major_change = any(values[key] != value for key, value in before.items())
     # The owner removed the shadow gate on 2026-09-25: the final editor and Jev's last call
     # decide each article, so auto-publish no longer waits for labelled days, and a model
@@ -430,6 +433,7 @@ async def update_settings(
         auto_publish={
             vertical: values[f"auto_publish_{vertical}"] for vertical in ("ai", "tech", "crypto")
         },
+        judge_enabled=values["judge_enabled"],
     )
     await session.commit()
     return await settings_view(session)
@@ -445,6 +449,7 @@ def candidate_summary(row: NewsCandidate) -> CandidateSummary:
         event_date=row.event_date,
         would_publish=row.would_publish,
         human_decision=cast(Any, row.human_decision),
+        judge_decision=cast(Any, row.judge_decision),
         error_code=row.error_code,
         error_detail=row.error_detail,
         guide_article_id=row.guide_article_id,
@@ -701,7 +706,9 @@ async def refresh_candidate_evidence(
             select(NewsAssessment.id)
             .where(
                 NewsAssessment.candidate_id == row.id,
-                NewsAssessment.assessment_type == "duplicate",
+                # Jev's or an editor's answer, or the judge's: "pass" is the verdict the
+                # judge stores for "not a duplicate" and for nothing else.
+                NewsAssessment.assessment_type.in_(("duplicate", "judge")),
                 NewsAssessment.verdict == "pass",
                 NewsAssessment.evidence_hash == previous_hash,
             )
@@ -799,11 +806,64 @@ async def clear_duplicate_candidate(
     return await candidate_detail(session, row.id)
 
 
-def _queue_new_draft(row: NewsCandidate, reason: str) -> None:
+async def reopen_candidate(
+    session: AsyncSession, actor: User, candidate_id: UUID, payload: CandidateAction
+) -> CandidateDetail:
+    """The owner takes back a story the review judge closed.
+
+    The story returns to the list it was in, under the hold it was closed in, for the owner
+    to decide. The judge's answer to that hold stays on the row, so it is not judged again,
+    and nothing is recorded as the owner's decision: taking a story back decides nothing yet.
+    """
+
+    row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
+    if row is None:
+        raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
+    if (
+        row.status not in {"rejected", "duplicate"}
+        or row.judge_decision not in {"reject", "duplicate"}
+        or row.human_decision is not None
+    ):
+        raise AppError(409, "news_candidate_not_reopenable", "這個候選不是 AI 結案的，不能拿回來")
+    verdict = await session.scalar(
+        select(NewsAssessment)
+        .where(
+            NewsAssessment.candidate_id == row.id,
+            NewsAssessment.assessment_type == "judge",
+        )
+        .order_by(NewsAssessment.created_at.desc())
+        .limit(1)
+    )
+    stage = (verdict.details_json or {}).get("stage") if verdict is not None else None
+    closed_as = row.status
+    # error_code was kept when the judge closed it, so the row is back in its hold.
+    row.status = "needs_redraft" if stage == "redraft" else "manual_review"
+    row.judge_decision = "manual"
+    audit(
+        session,
+        actor,
+        "news_candidate_reopened_by_owner",
+        f"news-candidate:{row.id}",
+        reason=payload.reason,
+        closed_as=closed_as,
+        restored_status=row.status,
+        hold=row.error_code,
+    )
+    await session.commit()
+    return await candidate_detail(session, row.id)
+
+
+def _queue_new_draft(row: NewsCandidate, reason: str | None) -> None:
+    """Send the candidate back for a new draft. ``reason`` is the person's; the judge
+    passes None, and what a person decided and wrote then stays as it is (the judge hands
+    a draft a person confirmed back to them instead of ordering a new one over it)."""
+
     row.status = "discovered"
     row.error_code = None
     row.error_detail = None
     row.retry_count += 1
+    if reason is None:
+        return
     row.human_reason = reason
     # A new draft replaces the one the owner may have confirmed.
     row.human_decision = None
@@ -812,10 +872,13 @@ def _queue_new_draft(row: NewsCandidate, reason: str) -> None:
 async def _queue_reverify(
     session: AsyncSession,
     row: NewsCandidate,
-    reason: str,
+    reason: str | None,
     marker: str = "news_reverify_requested",
 ) -> None:
-    """Run the edited guide drafts through the checks again instead of drafting anew."""
+    """Run the edited guide drafts through the checks again instead of drafting anew.
+
+    ``reason`` is the person's and becomes ``human_reason``; the judge passes None.
+    """
 
     if row.guide_article_id is None:
         raise AppError(409, "news_draft_unavailable", "候選尚未建立可編輯的五語草稿")
@@ -835,7 +898,8 @@ async def _queue_reverify(
     row.error_code = marker
     row.error_detail = None
     row.retry_count += 1
-    row.human_reason = reason
+    if reason is not None:
+        row.human_reason = reason
 
 
 async def approve_candidate(
@@ -1153,6 +1217,11 @@ async def stats(session: AsyncSession) -> StatsView:
         select(NewsCandidate.status, func.count()).group_by(NewsCandidate.status)
     )
     by_status = {status: int(count) for status, count in rows}
+    handed_back = await session.scalar(
+        select(func.count())
+        .select_from(NewsCandidate)
+        .where(NewsCandidate.status == "needs_redraft", NewsCandidate.judge_decision == "manual")
+    )
     run_totals = (
         await session.execute(
             select(
@@ -1168,6 +1237,7 @@ async def stats(session: AsyncSession) -> StatsView:
         failed=by_status.get("failed", 0),
         published=by_status.get("published", 0),
         queue_by_status=by_status,
+        judge_handed_back=int(handed_back or 0),
         pipeline_runs=int(run_totals[0] or 0),
         pipeline_failures=int(run_totals[1] or 0),
         input_tokens=int(run_totals[2] or 0),

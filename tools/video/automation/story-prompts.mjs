@@ -181,8 +181,10 @@ or the checks said, and "fix.owner_note" is the owner's own words when they sent
 named and the owner's note is all there is, "shots" is every shot and you patch only those the
 note is about. Rewrite only what draws them, so an image model draws them cleanly in "look":
 fewer subjects in a crowded frame, simpler hands, a plainer camera move, no text, no logo, no
-name of "names", the subject clear of the bottom fifth of the frame where the subtitles sit. Do
-not touch any line.
+name of "names", the subject clear of the bottom fifth of the frame where the subtitles sit. When
+a target in "fix.targets" carries "prompt_budget_chars", that shot's prompt must be at most that
+many characters (the look and the image model take the rest of the model's limit): a shorter
+prompt beats a fuller one. Do not touch any line.
 
 Return {"shots": [{"id": "<shot id>", "prompt": "<English, at most 1000 characters>", "camera":
 "<one slow move>", "characters": [<cast ids in the frame>]}]} for shots, or {"characters":

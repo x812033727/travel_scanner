@@ -111,6 +111,54 @@
         {
           "type": "heading",
           "level": 2,
+          "text": "抽查找不到檔案時，先查這幾個地方"
+        },
+        {
+          "type": "paragraph",
+          "text": "抽樣還原真正有用的時刻，是發現某份檔案找不到的時候。這時不要急著換工具或重做全部設定，先照下表把原因縮小：多半是檔案不在備份範圍、挑錯了版本，或備份在某一天之後就停了。以 Windows 的檔案歷程記錄（File History）為例，它會自動備份文件、圖片、影片與桌面等資料夾和媒體櫃；放在其他位置的資料夾，要先加入媒體櫃才會一起備份。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "狀況",
+            "先查什麼",
+            "怎麼處理"
+          ],
+          "rows": [
+            [
+              "整個資料夾都不在備份裡",
+              "它是否在備份範圍內",
+              "加入備份範圍，等下一次備份完成後再抽查一次"
+            ],
+            [
+              "檔案在，但內容是改錯後的樣子",
+              "是否挑到改動之前的版本",
+              "選日期更早的資料夾版本，先預覽再還原"
+            ],
+            [
+              "最近幾天的檔案都沒有",
+              "備份磁碟有沒有接上、最後一次備份是哪天",
+              "接回磁碟或網路位置，確認備份恢復進行"
+            ],
+            [
+              "換電腦或重灌後找不到",
+              "當初用的是哪個帳號、哪一顆磁碟",
+              "用同一個帳號或磁碟還原到新資料夾核對"
+            ]
+          ],
+          "caption": "表中以檔案歷程記錄的做法為例；其他備份工具的設定位置不同，檢查的順序可以照用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "打開檔案總管，找到檔案原本所在的資料夾，按右鍵選「還原先前版本」，就能看到可用的舊版本；如果檔案是今天刪掉的，就選昨天的資料夾版本。還原前可以先開啟預覽，確認是要找的那一份。要還原時，展開「還原」改選「還原到」另一個位置：直接還原會取代電腦上目前的版本，而且這個取代無法復原。另外，系統還原點與復原磁碟機處理的是系統狀態，復原磁碟機也不包含個人檔案，不能拿來代替這項檢查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "家裡不只一臺裝置時，抽查也要有人負責。可以約好每臺裝置由主要使用的人來做，日期與結果記在同一份紀錄裡；長輩或孩子的裝置，由會操作的家人陪著做一次。沒過的項目不要只寫「失敗」，寫下原因和下一次確認的日期，問題才不會被下一次的「應該有備份」蓋過去。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
           "text": "把檢查排成可維持的習慣"
         },
         {
@@ -142,13 +190,13 @@
       "sources": [
         {
           "title": "Microsoft：Windows 備份、還原與復原方式",
-          "url": "https://support.microsoft.com/en-US/Windows/Experience/Backup-Recovery/backup-restore-and-recovery-in-windows",
-          "checked_on": "2026-09-14"
+          "url": "https://support.microsoft.com/en-us/windows/experience/backup-recovery/backup-restore-and-recovery-in-windows",
+          "checked_on": "2026-10-06"
         },
         {
           "title": "Microsoft：File History 備份及還原",
-          "url": "https://support.microsoft.com/en-au/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc",
-          "checked_on": "2026-09-14"
+          "url": "https://support.microsoft.com/en-au/windows/experience/backup-recovery/backup-and-restore-with-file-history",
+          "checked_on": "2026-10-06"
         }
       ]
     },
@@ -255,6 +303,54 @@
         },
         {
           "type": "heading",
+          "level": 2,
+          "text": "When a test restore cannot find a file, check these places first"
+        },
+        {
+          "type": "paragraph",
+          "text": "A test restore is most useful at the moment you discover a file is missing. Instead of switching tools or redoing every setting, use the table below to narrow down the cause. Usually the file is outside the backup's scope, you picked the wrong version, or backups stopped after a certain date. Take Windows File History as an example: it automatically backs up folders such as Documents, Pictures, Videos, and Desktop, along with your libraries. A folder stored anywhere else has to be added to a library before it is backed up too."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Situation",
+            "Check first",
+            "What to do"
+          ],
+          "rows": [
+            [
+              "A whole folder is missing from the backup",
+              "Whether it is within the backup's scope",
+              "Add it to the scope, then test again after the next backup finishes"
+            ],
+            [
+              "The file exists, but with the mistaken changes",
+              "Whether you chose a version from before the change",
+              "Choose an earlier version of the folder, preview it, then restore"
+            ],
+            [
+              "Files from the last few days are missing",
+              "Whether the backup drive is connected and when the last backup ran",
+              "Reconnect the drive or network location and confirm that backups resume"
+            ],
+            [
+              "Missing after switching or reinstalling a computer",
+              "Which account and which drive you used",
+              "Restore from the same account or drive into a new folder and compare"
+            ]
+          ],
+          "caption": "The table uses File History as its example. Other backup tools put these settings elsewhere, but the order of checks still applies."
+        },
+        {
+          "type": "paragraph",
+          "text": "Open File Explorer, go to the folder where the file used to be, right-click it and select Restore previous versions to see the versions available. If a file was deleted today, choose yesterday's version of the folder. Before restoring, you can open a preview to confirm it is the copy you want. When you restore, expand Restore and choose Restore to a different location: a plain restore replaces the current version on your computer, and that replacement cannot be undone. System restore points and a recovery drive deal with the state of the system, and a recovery drive does not include personal files, so neither can stand in for this check."
+        },
+        {
+          "type": "paragraph",
+          "text": "If your household has more than one device, someone has to own each check. You might agree that each device's main user tests it, with dates and results kept in one shared record. For devices used by older relatives or children, a family member who knows the steps can do the test with them once. When a check fails, do not just write “failed.” Write down the cause and the date of the next check, so the problem is not buried under the next round of “there's probably a backup.”"
+        },
+        {
+          "type": "heading",
           "text": "Make checks a habit you can sustain",
           "level": 2
         },
@@ -287,13 +383,13 @@
       "sources": [
         {
           "title": "Microsoft: Backup, Restore, and Recovery in Windows",
-          "url": "https://support.microsoft.com/en-US/Windows/Experience/Backup-Recovery/backup-restore-and-recovery-in-windows",
-          "checked_on": "2026-09-14"
+          "url": "https://support.microsoft.com/en-us/windows/experience/backup-recovery/backup-restore-and-recovery-in-windows",
+          "checked_on": "2026-10-06"
         },
         {
           "title": "Microsoft: Backup and Restore with File History",
-          "url": "https://support.microsoft.com/en-au/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc",
-          "checked_on": "2026-09-14"
+          "url": "https://support.microsoft.com/en-au/windows/experience/backup-recovery/backup-and-restore-with-file-history",
+          "checked_on": "2026-10-06"
         }
       ]
     },
@@ -400,6 +496,54 @@
         },
         {
           "type": "heading",
+          "level": 2,
+          "text": "復元テストでファイルが見つからないときに確認する場所"
+        },
+        {
+          "type": "paragraph",
+          "text": "サンプル復元が本当に役立つのは、あるファイルが見つからないと分かったときです。すぐにツールを替えたり設定をやり直したりせず、下の表で原因を絞り込みましょう。多くは、ファイルがバックアップの対象外だった、選んだバージョンが違った、ある日からバックアップが止まっていた、のいずれかです。Windows のファイル履歴（File History）を例にすると、ドキュメント、画像、ビデオ、デスクトップなどのフォルダーとライブラリが自動的にバックアップされます。ほかの場所にあるフォルダーは、ライブラリに追加しないとバックアップされません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "状況",
+            "最初に確認すること",
+            "対処"
+          ],
+          "rows": [
+            [
+              "フォルダーごとバックアップにない",
+              "バックアップの対象に入っているか",
+              "対象に追加し、次のバックアップが終わってからもう一度試す"
+            ],
+            [
+              "ファイルはあるが、誤って変更した後の内容になっている",
+              "変更前のバージョンを選んだか",
+              "もっと前の日付のフォルダーのバージョンを選び、プレビューしてから復元する"
+            ],
+            [
+              "ここ数日のファイルがない",
+              "バックアップ用のドライブがつながっているか、最後のバックアップはいつか",
+              "ドライブやネットワークの場所をつなぎ直し、バックアップが再開したか確かめる"
+            ],
+            [
+              "パソコンの買い替えや再インストール後に見つからない",
+              "当時どのアカウント、どのドライブを使ったか",
+              "同じアカウントやドライブから新しいフォルダーへ復元して照合する"
+            ]
+          ],
+          "caption": "表はファイル履歴を例にしています。ほかのバックアップツールでは設定の場所が違いますが、確認する順番は同じように使えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "エクスプローラーで、ファイルがあったフォルダーを右クリックして［以前のバージョンの復元］を選ぶと、利用できる過去のバージョンが一覧で表示されます。今日削除したファイルなら、昨日の時点のフォルダーを選びます。復元する前に内容をプレビューして、探しているものか確かめられます。復元するときは［復元］を展開し、別の場所へ復元する方法を選びましょう。そのまま復元すると、パソコン上の現在のバージョンが置き換えられ、この操作は取り消せません。なお、システムの復元ポイントや回復ドライブが扱うのはシステムの状態で、回復ドライブには個人用ファイルが含まれないため、この確認の代わりにはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "家に複数の端末がある場合は、確認の担当も決めておきます。たとえば端末ごとに主に使う人が試し、日付と結果は一つの記録にまとめます。高齢の家族や子どもの端末は、操作に慣れた家族が一緒に一度試しましょう。うまくいかなかった項目は「失敗」とだけ書かず、原因と次に確認する日を書いておきます。そうすれば、問題が次の「たぶんバックアップがある」に埋もれません。"
+        },
+        {
+          "type": "heading",
           "text": "無理なく続く確認の習慣にする",
           "level": 2
         },
@@ -432,13 +576,13 @@
       "sources": [
         {
           "title": "Microsoft：Windows のバックアップ、復元、回復の方法",
-          "url": "https://support.microsoft.com/en-US/Windows/Experience/Backup-Recovery/backup-restore-and-recovery-in-windows",
-          "checked_on": "2026-09-14"
+          "url": "https://support.microsoft.com/en-us/windows/experience/backup-recovery/backup-restore-and-recovery-in-windows",
+          "checked_on": "2026-10-06"
         },
         {
           "title": "Microsoft：File History によるバックアップと復元",
-          "url": "https://support.microsoft.com/en-au/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc",
-          "checked_on": "2026-09-14"
+          "url": "https://support.microsoft.com/en-au/windows/experience/backup-recovery/backup-and-restore-with-file-history",
+          "checked_on": "2026-10-06"
         }
       ]
     },
@@ -545,6 +689,54 @@
         },
         {
           "type": "heading",
+          "level": 2,
+          "text": "복원 테스트에서 파일을 찾지 못하면 이곳부터 확인하세요"
+        },
+        {
+          "type": "paragraph",
+          "text": "표본 복원이 정말 쓸모 있는 순간은 어떤 파일을 찾을 수 없다는 사실을 알게 됐을 때입니다. 이때 바로 도구를 바꾸거나 설정을 전부 다시 하지 말고, 아래 표로 원인을 좁혀 보세요. 대부분은 파일이 백업 범위 밖에 있었거나, 잘못된 버전을 골랐거나, 어느 날부터 백업이 멈춘 경우입니다. Windows의 파일 히스토리(File History)를 예로 들면 문서, 사진, 비디오, 데스크톱 같은 폴더와 라이브러리를 자동으로 백업합니다. 다른 위치에 있는 폴더는 라이브러리에 추가해야 함께 백업됩니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "상황",
+            "먼저 확인할 것",
+            "처리 방법"
+          ],
+          "rows": [
+            [
+              "폴더 전체가 백업에 없음",
+              "백업 범위에 들어 있는지",
+              "범위에 추가하고 다음 백업이 끝난 뒤 다시 확인"
+            ],
+            [
+              "파일은 있지만 잘못 고친 뒤의 내용임",
+              "변경 전 버전을 골랐는지",
+              "더 이전 날짜의 폴더 버전을 골라 미리 본 뒤 복원"
+            ],
+            [
+              "최근 며칠 동안의 파일이 없음",
+              "백업 드라이브가 연결돼 있는지, 마지막 백업이 언제인지",
+              "드라이브나 네트워크 위치를 다시 연결하고 백업이 재개됐는지 확인"
+            ],
+            [
+              "컴퓨터를 바꾸거나 다시 설치한 뒤 찾을 수 없음",
+              "당시 어떤 계정, 어떤 드라이브를 썼는지",
+              "같은 계정이나 드라이브에서 새 폴더로 복원해 대조"
+            ]
+          ],
+          "caption": "표는 파일 히스토리를 예로 들었습니다. 다른 백업 도구는 설정 위치가 다르지만 확인 순서는 그대로 쓸 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "파일 탐색기에서 파일이 있던 폴더를 마우스 오른쪽 단추로 클릭하고 ‘이전 버전 복원’을 선택하면 사용할 수 있는 이전 버전이 나옵니다. 오늘 삭제한 파일이라면 어제 시점의 폴더 버전을 고릅니다. 복원하기 전에 내용을 미리 보며 찾는 파일이 맞는지 확인할 수 있습니다. 복원할 때는 ‘복원’을 펼쳐 다른 위치로 복원하는 옵션을 고르세요. 그냥 복원하면 컴퓨터에 있는 현재 버전이 바뀌고, 이 작업은 되돌릴 수 없습니다. 또한 시스템 복원 지점과 복구 드라이브는 시스템 상태를 다루며, 복구 드라이브에는 개인 파일이 들어 있지 않으므로 이 점검을 대신할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "집에 기기가 여러 대라면 점검 담당도 정해 두세요. 예를 들어 기기마다 주로 쓰는 사람이 점검하고, 날짜와 결과는 하나의 기록에 모읍니다. 어르신이나 아이의 기기는 조작에 익숙한 가족이 함께 한 번 해 봅니다. 통과하지 못한 항목은 ‘실패’라고만 적지 말고 원인과 다음 확인 날짜를 적어 두세요. 그래야 문제가 다음번의 ‘아마 백업이 있을 것’이라는 생각에 묻히지 않습니다."
+        },
+        {
+          "type": "heading",
           "text": "지속할 수 있는 점검 습관을 만드세요",
           "level": 2
         },
@@ -577,13 +769,13 @@
       "sources": [
         {
           "title": "Microsoft: Windows 백업, 복원 및 복구 방법",
-          "url": "https://support.microsoft.com/en-US/Windows/Experience/Backup-Recovery/backup-restore-and-recovery-in-windows",
-          "checked_on": "2026-09-14"
+          "url": "https://support.microsoft.com/en-us/windows/experience/backup-recovery/backup-restore-and-recovery-in-windows",
+          "checked_on": "2026-10-06"
         },
         {
           "title": "Microsoft: File History로 백업 및 복원",
-          "url": "https://support.microsoft.com/en-au/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc",
-          "checked_on": "2026-09-14"
+          "url": "https://support.microsoft.com/en-au/windows/experience/backup-recovery/backup-and-restore-with-file-history",
+          "checked_on": "2026-10-06"
         }
       ]
     },
@@ -690,6 +882,54 @@
         },
         {
           "type": "heading",
+          "level": 2,
+          "text": "抽查找不到文件时，先查这几个地方"
+        },
+        {
+          "type": "paragraph",
+          "text": "抽样还原真正有用的时刻，是发现某个文件找不到的时候。这时不要急着换工具或重做全部设置，先按下表缩小原因：多半是文件不在备份范围内、选错了版本，或者备份在某一天之后就停了。以 Windows 的文件历史记录（File History）为例，它会自动备份文档、图片、视频和桌面等文件夹以及库；放在其他位置的文件夹，要先添加到库中才会一起备份。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情况",
+            "先查什么",
+            "怎么处理"
+          ],
+          "rows": [
+            [
+              "整个文件夹都不在备份里",
+              "它是否在备份范围内",
+              "加入备份范围，等下一次备份完成后再抽查一次"
+            ],
+            [
+              "文件还在，但内容是改错后的样子",
+              "是否选到了修改之前的版本",
+              "选择日期更早的文件夹版本，先预览再还原"
+            ],
+            [
+              "最近几天的文件都没有",
+              "备份磁盘有没有连接、最后一次备份是哪天",
+              "重新连接磁盘或网络位置，确认备份恢复运行"
+            ],
+            [
+              "换电脑或重装系统后找不到",
+              "当初用的是哪个账户、哪块磁盘",
+              "用同一个账户或磁盘还原到新文件夹核对"
+            ]
+          ],
+          "caption": "表中以文件历史记录的做法为例；其他备份工具的设置位置不同，检查顺序可以照用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "打开文件资源管理器，找到文件原本所在的文件夹，右键单击并选择“还原以前的版本”，就能看到可用的旧版本；如果文件是今天删除的，就选昨天的文件夹版本。还原前可以先打开预览，确认是要找的那一份。还原时展开“还原”并选择“还原到”另一个位置：直接还原会替换电脑上的当前版本，而且这个替换无法撤销。另外，系统还原点和恢复驱动器处理的是系统状态，恢复驱动器也不包含个人文件，不能用来代替这项检查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "家里不止一台设备时，抽查也要有人负责。可以约定每台设备由主要使用的人来做，日期和结果记在同一份记录里；老人或孩子的设备，由会操作的家人陪着做一次。没通过的项目不要只写“失败”，写下原因和下一次确认的日期，问题才不会被下一次的“应该有备份”盖过去。"
+        },
+        {
+          "type": "heading",
           "text": "把检查安排成能够坚持的习惯",
           "level": 2
         },
@@ -722,13 +962,13 @@
       "sources": [
         {
           "title": "Microsoft：Windows 备份、还原与恢复方式",
-          "url": "https://support.microsoft.com/en-US/Windows/Experience/Backup-Recovery/backup-restore-and-recovery-in-windows",
-          "checked_on": "2026-09-14"
+          "url": "https://support.microsoft.com/en-us/windows/experience/backup-recovery/backup-restore-and-recovery-in-windows",
+          "checked_on": "2026-10-06"
         },
         {
           "title": "Microsoft：File History 备份及还原",
-          "url": "https://support.microsoft.com/en-au/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc",
-          "checked_on": "2026-09-14"
+          "url": "https://support.microsoft.com/en-au/windows/experience/backup-recovery/backup-and-restore-with-file-history",
+          "checked_on": "2026-10-06"
         }
       ]
     }

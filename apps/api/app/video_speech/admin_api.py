@@ -12,23 +12,25 @@ from __future__ import annotations
 
 import base64
 import binascii
+import json
 from datetime import UTC, datetime
 from typing import Annotated
 from uuid import UUID, uuid4
 
 import httpx
 from fastapi import APIRouter, Depends, Header, Request, Response
+from fastapi.responses import JSONResponse
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.ai.jev import JevError
+from app.ai.jev import JevError, JevOutcomeUncertain
 from app.auth.service import AdminUser
 from app.config import Settings
 from app.db import get_session
 from app.infra import client_ip, enforce_named_rate_limit, get_redis
 from app.models import AdminAuditLog, VideoToolToken
-from app.problems import AppError
+from app.problems import AppError, app_error_handler
 from app.providers.usage_meter import (
     GEMINI_SPEECH_PROVIDER,
     azure_speech_usage_snapshot,
@@ -514,7 +516,9 @@ async def transcribe_narration(
 
 
 @speech_router.post("/speech/judge", response_model=JudgeOut)
-async def judge_narration(payload: JudgeIn, tool: VideoTool, session: Session) -> JudgeOut:
+async def judge_narration(
+    payload: JudgeIn, request: Request, tool: VideoTool, session: Session
+) -> JudgeOut | JSONResponse:
     """Jev's judgement of whether each transcript says the script's words; one Jev call."""
     _ = tool
     settings = await load_runtime_settings(session)
@@ -523,10 +527,45 @@ async def judge_narration(payload: JudgeIn, tool: VideoTool, session: Session) -
         verdicts = await judge(settings, get_redis(), lines, language=payload.language)
     except CheckUnavailable as error:
         raise AppError(error.status, error.code, error.detail) from error
+    except JevOutcomeUncertain as error:
+        return await jev_outcome_uncertain_response(request, error)
     except (JevError, httpx.HTTPError) as error:
         raise AppError(502, "video_judge_upstream_failed", "Jev 暫時無法判斷") from error
     results = [JudgeResult(id=line["id"], noul=verdicts[line["id"]]) for line in lines]
     return JudgeOut(results=results)
+
+
+async def jev_outcome_uncertain_response(
+    request: Request, error: JevOutcomeUncertain
+) -> JSONResponse:
+    """Keep safe evidence of a possibly processed call, without exposing its request.
+
+    The daily quota was consumed before the single application call. Provider wires may
+    include a connection that never opened or a refused request before the lost answer.
+    The caller must hold this outcome rather than automatically asking the same input again.
+    """
+    problem = await app_error_handler(
+        request,
+        AppError(
+            502,
+            "video_judge_outcome_uncertain",
+            "Jev 可能已處理這次請求，但回答未能完整取得；已用掉 1 次每日配額，請勿自動重送",
+        ),
+    )
+    return JSONResponse(
+        {
+            **json.loads(bytes(problem.body)),
+            "jev_outcome": {
+                "phase": error.phase,
+                "status": error.status,
+                "wires_sent": error.wires_sent,
+                "request_sha256": error.request_sha256,
+            },
+            "quota_units_consumed": 1,
+        },
+        status_code=502,
+        media_type="application/problem+json",
+    )
 
 
 # The owner lands on the Azure Speech card with the code filled in, and still compares it with

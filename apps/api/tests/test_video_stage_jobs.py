@@ -224,6 +224,40 @@ async def test_failure_after_dispatch_is_uncertain_and_cannot_retry(
 
 
 @pytest.mark.asyncio
+async def test_a_subscription_that_cannot_authenticate_fails_the_job_with_a_retry_time(
+    store: Any, monkeypatch
+) -> None:
+    """2026-10-06: a 403 access grant on claude-a left a job "uncertain" though nothing ran."""
+    prepared = AsyncMock(return_value=("claude_code", "claude-opus-5-5", usage(), False))
+    monkeypatch.setattr(run_jobs, "prepare_stage", prepared)
+    monkeypatch.setattr(ai, "prepare_stage", prepared)
+    token = await credential(store)
+    async with store() as session:
+        receipt = await run_jobs.submit_job(session, request(), token.id)
+    refusal = StageFailed(
+        503, "video_ai_subscription_auth_failed", "account a cannot authenticate", "900"
+    )
+    upstream = AsyncMock(side_effect=refusal)
+    monkeypatch.setattr(ai, "run_on_subscription", upstream)
+    with pytest.raises(StageFailed) as failed:
+        await run_jobs._run(receipt.id)
+    assert failed.value is refusal
+    async with store() as session:
+        result = await run_jobs.poll_job(session, receipt.id, token.id, receipt.input_hash)
+        row = await session.get(VideoStageJob, receipt.id)
+        runs = (await session.execute(select(VideoAiRun))).scalars().all()
+    assert (result.status, result.error_code, result.error_status, result.retry_after) == (
+        "failed",
+        "video_ai_subscription_auth_failed",
+        503,
+        "900",
+    )
+    assert row is not None and row.dispatched_at is not None, "the job did reach the agent"
+    assert runs == [], "nothing ran, so there is no call to record"
+    assert upstream.await_count == 1
+
+
+@pytest.mark.asyncio
 async def test_late_exact_reply_can_resolve_uncertain_without_stale_error_fields(
     store: Any, monkeypatch
 ) -> None:

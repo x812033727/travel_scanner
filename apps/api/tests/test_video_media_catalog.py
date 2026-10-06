@@ -47,6 +47,18 @@ def test_the_gemini_image_models_carry_a_2k_price_beside_their_1k_price() -> Non
             assert model.usd_per_image_2k is None, model.id
 
 
+def test_only_the_gemini_image_models_take_a_style_reference() -> None:
+    """The Gemini adapter forwards a role "style" reference with its own instruction; the
+    MiniMax adapter sends a character reference alone, so image-01 never sees a style plate
+    and the tools draw none for it (tools/video/media/keyframes.mjs)."""
+    for model in MEDIA_CATALOG:
+        expected = 1 if model.kind == "image" and model.vendor == "gemini" else 0
+        assert model.style_references == expected, model.id
+        assert model.style_references <= model.reference_images, model.id
+    mini = find_model("minimax", "image", "image-01")
+    assert mini is not None and mini.style_references == 0 and mini.reference_images == 1
+
+
 def test_the_defaults_are_stable_catalog_entries_of_their_kind() -> None:
     for (vendor, model_id), kind in (
         (DEFAULT_IMAGE, "image"),

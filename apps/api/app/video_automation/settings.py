@@ -117,6 +117,7 @@ def _media_options(kind: MediaKind) -> dict[MediaProvider, list[MediaOptionView]
                 resolutions=list(model.resolutions),
                 durations=list(model.durations),
                 reference_images=model.reference_images,
+                style_references=model.style_references,
                 native_audio=model.native_audio,
                 usd_per_second=model.usd_per_second,
                 usd_per_image=model.usd_per_image,
@@ -435,6 +436,12 @@ def storyboard_check_passed(payload: dict[str, Any], min_score: int) -> bool:
     New submissions attest the selected files' hashes after checking local bytes and list
     the document's expected shots separately. Older reviews without that coverage evidence
     remain available for owner review, but cannot establish automatic approval.
+
+    A shot sent with ``accepted: true`` is a picture the worker kept with the judge's remarks
+    once its prompt fixes were spent (tools/video/media/keyframes.mjs ``--accept-best``): the
+    owner decides on it at the final gate, which that video's worker sends for manual review,
+    so its score and problems do not hold the storyboard back here. The board's ``overall`` is
+    then the lowest score among the other shots, and null when every shot was accepted.
     """
     judge = payload.get("judge")
     shots = payload.get("shots")
@@ -442,7 +449,7 @@ def storyboard_check_passed(payload: dict[str, Any], min_score: int) -> bool:
         return False
     overall = judge.get("overall")
     problems = judge.get("problems")
-    if not isinstance(overall, int | float) or isinstance(overall, bool):
+    if overall is not None and (not isinstance(overall, int | float) or isinstance(overall, bool)):
         return False
     if problems not in (None, []):
         return False
@@ -466,6 +473,7 @@ def storyboard_check_passed(payload: dict[str, Any], min_score: int) -> bool:
         )
 
     seen: set[str] = set()
+    judged = 0
     for shot in shots:
         if not isinstance(shot, dict):
             return False
@@ -478,6 +486,9 @@ def storyboard_check_passed(payload: dict[str, Any], min_score: int) -> bool:
             return False
         if wanted[shot_id] and not has_hash(shot.get("end_frame_sha256")):
             return False
+        if shot.get("accepted") is True:
+            continue
+        judged += 1
         verdict = shot.get("judge")
         if not isinstance(verdict, dict):
             return False
@@ -486,6 +497,8 @@ def storyboard_check_passed(payload: dict[str, Any], min_score: int) -> bool:
                 or not min_score <= score <= 10 or verdict.get("problems") not in (None, [])
                 or verdict.get("passed") is False):
             return False
+    if overall is None:
+        return judged == 0
     return min_score <= overall <= 10
 
 

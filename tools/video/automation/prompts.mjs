@@ -53,6 +53,10 @@ Rules that never bend:
 - Nobody's personal data anywhere.
 `.trim();
 
+// The camera words the slides writer may give a still (TEMPLATE_GUIDE's shot template names the
+// same seven); the worker counts the longest into the first draft's prompt budget (flow.mjs).
+export const SLIDES_CAMERA_WORDS = ["push in", "pull out", "pan left", "pan right", "tilt up", "tilt down", "drift"];
+
 const TEMPLATE_GUIDE = `
 Slide templates (the payload's "showcase" has one scene of each; copy the shape, not the text).
 Reveal: a line with "reveal": 1 shows the next item; a scene's reveals must equal its items.
@@ -77,7 +81,9 @@ Reveal: a line with "reveal": 1 shows the next item; a scene's reveals must equa
   points to the article in the description's first line.
 - outro {title, cta?, lines 1-4}: no reveals. The last scene.
 - shot {prompt, camera, visual: "still", transition?}: no reveals. ONE AI-drawn illustration with a
-  camera move, for the scenes the story describes. prompt: English, at most 1000 characters, ONE
+  camera move, for the scenes the story describes. prompt: English, at most 1000 characters, or at
+  most "prompt_budget_chars" when the payload gives one (the look and the image model take the
+  rest of the model's limit; a shorter prompt beats a fuller one), ONE
   picture briefed the way a photographer briefs an illustrator, in this order: the shot size
   (extreme close-up, close-up, medium, wide, overhead, low angle, from behind), the place and the
   time of day, what is happening (a person doing one concrete thing, seen from behind, in profile
@@ -224,7 +230,9 @@ them, **one word** stressed), tag: the topic in ≤ 6 characters, shot: <the mos
 When "lint_errors" is present, you are fixing your own draft: change only what the errors name and
 return the whole corrected video.json. When "fix" is present with kind "keyframes", the pictures'
 checks failed: rewrite the named shots' prompt or camera as "fix.problems" say, change nothing
-else, and return the whole video.json. ${REGISTER_RULES} ${TEMPLATE_GUIDE}`,
+else, and return the whole video.json. When a target in "fix.targets" carries "prompt_budget_chars",
+that shot's prompt must be at most that many characters (the look and the image model take the
+rest of the model's limit): a shorter prompt beats a fuller one. ${REGISTER_RULES} ${TEMPLATE_GUIDE}`,
 
   verifier: `${COMMON}
 
@@ -560,9 +568,11 @@ or the checker sent the screenplay back: "fix.problems" says why, and a problem 
 row, "craft hook.opening: …", is fixed in the scene around the named shots as the craft rules
 below say, where you may add shots, reorder them and move a line to another shot). "fix.targets"
 names the ids and "fix.problems" what the judge or the checks said; "fix.owner_note" is the
-owner's own words when they sent a gate back. Change only the named targets (a shot too long may
-be split into two with fresh ids from "line_ids"); keep every other scene, line and id exactly as
-it is; return the whole corrected video.json. ${SHOT_GUIDE}`,
+owner's own words when they sent a gate back. When a target in "fix.targets" carries
+"prompt_budget_chars", that shot's prompt must be at most that many characters (the look and the
+image model take the rest of the model's limit): a shorter prompt beats a fuller one. Change only
+the named targets (a shot too long may be split into two with fresh ids from "line_ids"); keep
+every other scene, line and id exactly as it is; return the whole corrected video.json. ${SHOT_GUIDE}`,
 
   verifier: `${DRAMA_COMMON}
 
@@ -1455,9 +1465,11 @@ When "fix" is present, the checks failed and you are FIXING shots: "fix.kind" is
 picture failed: rewrite its prompt or camera; a subject in the bottom subtitle band is raised; text
 is forbidden; a crowded picture gets fewer things) or script (the owner's note in
 "fix.owner_note"). "fix.targets" names the ids and "fix.problems" what the judge or the checks
-said. Change only the named targets (a shot too long may be split into two with fresh ids from
-"line_ids"); keep every other scene, line and id exactly as it is; return the whole corrected
-video.json. ${EXPLAINER_SHOT_GUIDE}`,
+said. When a target in "fix.targets" carries "prompt_budget_chars", that shot's prompt must be at
+most that many characters (the look and the image model take the rest of the model's limit): a
+shorter prompt beats a fuller one. Change only the named targets (a shot too long may be split
+into two with fresh ids from "line_ids"); keep every other scene, line and id exactly as it is;
+return the whole corrected video.json. ${EXPLAINER_SHOT_GUIDE}`,
 
   "verifier:explainer": `${EXPLAINER_COMMON}
 

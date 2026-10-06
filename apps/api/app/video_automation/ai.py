@@ -56,9 +56,15 @@ BUSY_STATUSES = {408, 409, 429, 500, 502, 503, 504, 529}
 NO_MODEL_CALL_ERRORS = frozenset(
     {
         "video_ai_subscription_paused",
+        "video_ai_subscription_auth_failed",
         "video_ai_subscription_cli_outdated",
         "video_ai_provider_not_configured",
     }
+)
+# The subscription refusals that ran nothing at all: no call to record, and the worker asks
+# again after ``retry_after``.
+SUBSCRIPTION_RAN_NOTHING = frozenset(
+    {"video_ai_subscription_paused", "video_ai_subscription_auth_failed"}
 )
 
 
@@ -301,8 +307,8 @@ async def run_stage(
                 else STAGE_TIMEOUT_SECONDS,
             )
     except StageFailed as error:
-        # A paused subscription ran nothing; there is no call to record.
-        if error.code == "video_ai_subscription_paused":
+        # A paused or signed-out subscription ran nothing; there is no call to record.
+        if error.code in SUBSCRIPTION_RAN_NOTHING:
             raise
         failure = error
     session.add(
