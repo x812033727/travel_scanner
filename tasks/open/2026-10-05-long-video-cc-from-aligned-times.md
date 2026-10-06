@@ -1,26 +1,24 @@
 ---
 id: 2026-10-05-long-video-cc-from-aligned-times
 title: Long video CC cues cut at measured character times when the timeline carries them
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-cc-aligned
+claimed_at: 2026-10-06T00:18:30Z
 created_at: 2026-10-05T16:08:23Z
 completed_at:
-branch:
+branch: claude/long-video-cc-aligned-times
 depends_on:
   - 2026-10-05-speech-align-character-timing
   - 2026-10-05-caption-translation-chain-upgrade
   - 2026-10-05-reuse-confirmed-speech-results-across-restart
-  - 2026-10-01-hand-off-owner-approved-renewed-finals
 scope:
   - tools/video/core/captions.mjs
   - tools/video/core/captions.test.mjs
   - tools/video/tts/synthesis.mjs
   - tools/video/tts/cli.mjs
   - tools/video/tts/tts.test.mjs
-  - tools/video/core/stages.mjs
   - docs/videos/DESIGN.md
   - docs/videos/long-form/review.md
   - docs/videos/long-form/review.json
@@ -66,3 +64,12 @@ node tools/video/long-form/cli.mjs check
 
 - The long video stays CC only: no karaoke burn-in (the owner's 2026-09-29 decision).
 - Bound: `tts/synthesis.mjs`, `tts/tts.test.mjs`, `docs/videos/DESIGN.md`.
+- 2026-10-06: dropped `tools/video/core/stages.mjs` from `scope` and
+  `2026-10-01-hand-off-owner-approved-renewed-finals` from `depends_on`. Both were there only
+  for the shared captions stage in `core/stages.mjs`, which that Codex ticket holds in progress.
+  It is not needed: `buildCues` (`core/captions.mjs`) reads `timeline.lines`, and
+  `presentationTimeline` (`core/branding.mjs`) spreads every line (`{...entry}`), so a line's
+  `timing` reaches the cues without any change to `core/stages.mjs`. A timeline without timing
+  keeps byte-identical SRT/VTT, so the caption offsets of renewed finals are unaffected. The
+  other three dependencies are done: speech-align and the caption chain landed in #1315,
+  reuse-speech in #1302.
