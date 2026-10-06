@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
   <title id="title">本機跑 Qwen 的四個步驟 / Four steps to run Qwen locally</title>
-  <desc id="desc">一張四步流程圖。第一步選版本：在 Ollama 標籤頁看檔案大小，qwen3.5:9b 是 6.6GB，每個標籤都標 256K 上下文。第二步拉取：ollama pull qwen3.5:9b、ollama run qwen3.5:9b，再用 ollama ps 確認模型載在 GPU 還是 CPU。第三步設定繁體中文：把台灣用語規則寫進 Modelfile 的 SYSTEM，再用 ollama create qwen-zhtw 建成自訂模型。第四步開始對話：用 --think=false 關掉思考，用 /set parameter num_ctx 64000 把上下文視窗開大。圖下方說明為什麼需要第三步：模型卡只寫支援 201 種語言與方言，沒有保證繁體輸出。最下方兩個提醒：授權方面 Qwen3.5、Qwen3.6 與 Qwen3.8-27B 標 Apache 2.0，Qwen3.8-Flash-Next 是 Qwen Community License 1.0；舊寫法方面，把 /nothink 打進提示詞沒有作用，要用 Ollama 的介面指令。</desc>
+  <desc id="desc">一張四步流程圖。第一步選版本：在 Ollama 標籤頁看檔案大小，qwen3.5:9b 是 6.6 到 7.6GB，每個標籤都標 256K 上下文。第二步拉取：ollama pull qwen3.5:9b、ollama run qwen3.5:9b，再用 ollama ps 確認模型載在 GPU 還是 CPU。第三步設定繁體中文：把台灣用語規則寫進 Modelfile 的 SYSTEM，再用 ollama create qwen-zhtw 建成自訂模型。第四步開始對話：用 --think=false 關掉思考，用 /set parameter num_ctx 64000 把上下文視窗開大。圖下方說明為什麼需要第三步：模型卡只寫支援 201 種語言與方言，沒有保證繁體輸出。最下方兩個提醒：授權方面 Qwen3.5、Qwen3.6 與 Qwen3.8-27B 標 Apache 2.0，Qwen3.8-Flash-Next 是 Qwen Community License 1.0；舊寫法方面，把 /nothink 打進提示詞沒有作用，要用 Ollama 的介面指令。</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M 1 1 L 11 6 L 1 11 z" fill="#5C6B6B"/>
@@ -16,7 +16,7 @@
   <text x="215" y="220" text-anchor="middle" font-size="20" font-weight="700" fill="#0D6B68">第一步　選版本</text>
   <line x1="90" y1="238" x2="340" y2="238" stroke="#0D6B68" stroke-width="2"/>
   <text x="215" y="274" text-anchor="middle" font-size="16" fill="#102A2B">在 Ollama 標籤頁看大小</text>
-  <text x="215" y="304" text-anchor="middle" font-size="16" fill="#102A2B">qwen3.5:9b 是 6.6GB</text>
+  <text x="215" y="304" text-anchor="middle" font-size="16" fill="#102A2B">qwen3.5:9b 是 6.6 到 7.6GB</text>
   <text x="215" y="334" text-anchor="middle" font-size="16" fill="#5C6B6B">標籤都標 256K 上下文</text>
 
   <line x1="378" y1="280" x2="442" y2="280" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)"/>

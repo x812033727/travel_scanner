@@ -15,6 +15,16 @@ const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 const STATUSES = new Set(["queued", "running", "succeeded", "failed", "uncertain"]);
 
 export class RunReceiptError extends Error {}
+export const INPUT_CHANGED_CODE = "video_ai_receipt_input_changed";
+export const INPUT_CHANGED_MESSAGE = "stage inputs changed while a saved run is unfinished; restore its exact inputs or inspect the receipt before an owner retry";
+const inputChanged = () => Object.assign(new RunReceiptError(INPUT_CHANGED_MESSAGE), { code: INPUT_CHANGED_CODE });
+// What archive() writes for a stale journal it may close on its own: the run is over (or never
+// reached the server), so no owner retry is needed and no request id is consumed.
+export const AUTO_ARCHIVE_REASON = "inputs changed; the saved run is terminal";
+// The same when the server answered the job lookup with a settled 4xx (`gone`): no job under
+// this token (404 after a re-pair), not the receipt's job (409 input hash), a malformed identity.
+export const jobGoneReason = (gone) => `the server no longer has this job (${gone.status}${gone.code ? ` ${gone.code}` : ""})`;
+const validGone = (gone) => object(gone) && Number.isInteger(gone.status) && gone.status >= 400 && gone.status < 500 && typeof gone.code === "string";
 const requireThat = (condition, message) => { if (!condition) throw new RunReceiptError(message); };
 const object = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 
@@ -74,17 +84,43 @@ export function validateRunReceipt(receipt, record) {
   return structuredClone(receipt);
 }
 
-function save(file, value) {
-  const temporary = `${file}.${randomUUID()}.tmp`;
-  const fd = openSync(temporary, "wx", 0o600);
-  try { writeFileSync(fd, `${JSON.stringify(value, null, 2)}\n`); fsyncSync(fd); }
-  finally { closeSync(fd); }
-  renameSync(temporary, file);
+// Windows can briefly refuse to replace or move a journal that another process holds open (the
+// cause seen once in a local run is unknown). Retry only that rename, on Windows only, with the
+// schedule of core/paths.mjs atomicWrite: at most 630 ms of waiting before the original error.
+const RENAME_RETRY_MS = [10, 20, 40, 80, 160, 320];
+const TRANSIENT_RENAME_CODES = new Set(["EPERM", "EACCES", "EBUSY"]);
+const renameWaitCell = new Int32Array(new SharedArrayBuffer(4));
+const RENAME_IO = { platform: process.platform, rename: renameSync, wait: (ms) => Atomics.wait(renameWaitCell, 0, 0, ms) };
+
+function renameJournal(from, to, io) {
+  for (let attempt = 0; ; attempt++) {
+    try { return io.rename(from, to); }
+    catch (error) {
+      if (io.platform !== "win32" || !TRANSIENT_RENAME_CODES.has(error?.code) || attempt >= RENAME_RETRY_MS.length) throw error;
+      io.wait(RENAME_RETRY_MS[attempt]);
+    }
+  }
 }
 
-/** One source hash per slug; malformed or changed journal bytes fail closed. */
+function save(file, value, io) {
+  const temporary = `${file}.${randomUUID()}.tmp`;
+  const fd = openSync(temporary, "wx", 0o600);
+  try {
+    try { writeFileSync(fd, `${JSON.stringify(value, null, 2)}\n`); fsyncSync(fd); }
+    finally { closeSync(fd); }
+    renameJournal(temporary, file, io);
+  } catch (error) {
+    // The journal was never replaced. Remove only this save's own temporary bytes.
+    try { unlinkSync(temporary); } catch { /* the original error is the one to report */ }
+    throw error;
+  }
+}
+
+/** One source hash per slug; malformed or changed journal bytes fail closed. Tests may pass
+ * `ctx.receiptIo` ({ platform, rename, wait }) to simulate a refused rename. */
 export function runReceiptStore(ctx, site) {
   const consumed = new Map();
+  const io = { ...RENAME_IO, ...ctx.receiptIo };
   function directory(slug) {
     requireThat(/^[a-z0-9][a-z0-9-]{0,79}$/.test(slug ?? ""), "invalid stage slug for its durable journal");
     return path.join(resolveWorkdir({ env: ctx.env, root: ctx.root, home: ctx.home, slug }), RUN_RECEIPTS_DIR);
@@ -110,23 +146,32 @@ export function runReceiptStore(ctx, site) {
     return record;
   }
   return {
+    /**
+     * The journal of this exact request, or of the same unit with only derived drift (unitSource);
+     * else, with `stale: true`, an unfinished journal of the same stage and variant whose inputs
+     * differ (a deploy changed the prompt, the owner edited a setting or the source). The caller
+     * reconciles a stale journal with the server (client.mjs) and archives or removes it; it is
+     * never a match, and `prepare` refuses to create a new journal beside it.
+     */
     find(request) {
       const normalized = normalizeRun(request), hash = sourceHash(normalized), file = path.join(directory(normalized.slug), `${hash}.json`);
       if (existsSync(file)) return { file, record: read(file) };
       const dir = path.dirname(file);
       if (!existsSync(dir)) return null;
+      let stale = null;
       for (const name of readdirSync(dir).filter((name) => name.endsWith(".json"))) {
         const otherFile = path.join(dir, name), record = read(otherFile);
         if (record.request.stage === normalized.stage && record.request.variant === normalized.variant
           && !record.adopted && !consumed.has(otherFile)) {
           if (unitSource(record.request) === unitSource(normalized)) return { file: otherFile, record };
-          throw Object.assign(new RunReceiptError("stage inputs changed while a saved run is unfinished; restore its exact inputs or inspect the receipt before an owner retry"), { code: "video_ai_receipt_input_changed" });
+          stale ??= { file: otherFile, record, stale: true };
         }
       }
-      return null;
+      return stale;
     },
     prepare(request) {
       const previous = this.find(request);
+      if (previous?.stale) throw inputChanged();
       if (previous) return previous;
       const normalized = normalizeRun(request), hash = sourceHash(normalized), file = path.join(directory(normalized.slug), `${hash}.json`);
       mkdirSync(path.dirname(file), { recursive: true });
@@ -143,7 +188,7 @@ export function runReceiptStore(ctx, site) {
       requireThat(current.request_key === entry.record.request_key, "stage journal changed during its request");
       const verified = validateRunReceipt(receipt, current);
       const next = { ...current, receipt: verified, receipt_hash: sourceHash(verified) };
-      save(entry.file, next);
+      save(entry.file, next, io);
       entry.record = next;
       return next.receipt;
     },
@@ -154,7 +199,7 @@ export function runReceiptStore(ctx, site) {
         && rejection.error_code === POLICY_HOLD_CODE && rejection.error_status === 409,
       "only an undispatched policy refusal may be saved without a job receipt");
       const next = { ...current, policy_rejection: structuredClone(rejection) };
-      save(entry.file, next);
+      save(entry.file, next, io);
       entry.record = next;
     },
     adopt(slug, proof) {
@@ -172,7 +217,7 @@ export function runReceiptStore(ctx, site) {
           }
           verified = structuredClone(proof.artifacts);
         }
-        save(file, { ...current, adopted: true, adoption: { artifacts: verified, recorded_at: (ctx.now?.() ?? new Date()).toISOString() } });
+        save(file, { ...current, adopted: true, adoption: { artifacts: verified, recorded_at: (ctx.now?.() ?? new Date()).toISOString() } }, io);
       }
     },
     removeFailed(entry) {
@@ -199,14 +244,26 @@ export function runReceiptStore(ctx, site) {
         }
       }
     },
-    archive(entry, { requestId = null, reason = "", policyValidated = false } = {}) {
+    /**
+     * Move a journal aside, keeping its bytes: an uncertain run the owner retries, a changed-input
+     * success the owner retries (`requestId`, `reason`), a validated policy retry, or
+     * (`autoArchive`) a stale journal the worker reconciled itself: its run succeeded and was
+     * never adopted, it never reached the server (no receipt, no policy hold), or the server
+     * answered its lookup with a settled 4xx (`gone: { status, code }`; not a policy hold).
+     */
+    archive(entry, { requestId = null, reason = "", policyValidated = false, autoArchive = false, gone = null } = {}) {
       const current = read(entry.file);
       requireThat(current.request_key === entry.record.request_key, "stage journal changed before owner retry");
       const successfulSourceChange = current.receipt?.status === "succeeded" && !current.adopted
         && UUID.test(requestId ?? "") && typeof reason === "string" && reason.includes("inputs changed");
       const policyRetry = policyHeld(current) && UUID.test(requestId ?? "") && policyValidated === true
         && (!current.receipt || current.receipt.dispatched_at === null);
-      requireThat(current.receipt?.status === "uncertain" || successfulSourceChange || policyRetry, "only a confirmed uncertain run, authorized changed input or validated policy retry can be archived");
+      const jobGone = autoArchive === true && validGone(gone) && current.receipt !== null && !current.adopted && !policyHeld(current);
+      const terminal = autoArchive === true && (current.receipt?.status === "succeeded" && !current.adopted
+        || current.receipt === null && !policyHeld(current)) || jobGone;
+      requireThat(current.receipt?.status === "uncertain" || successfulSourceChange || policyRetry || terminal,
+        "only a confirmed uncertain run, authorized changed input, validated policy retry or terminal stale run can be archived");
+      if (terminal) { requestId = null; reason = jobGone ? jobGoneReason(gone) : AUTO_ARCHIVE_REASON; }
       const archiveDir = path.join(path.dirname(entry.file), "archive");
       mkdirSync(archiveDir, { recursive: true });
       if (policyRetry) for (const name of readdirSync(archiveDir).filter((name) => name.endsWith(".json"))) {
@@ -217,8 +274,8 @@ export function runReceiptStore(ctx, site) {
       }
       const target = path.join(archiveDir, `${current.source_hash}-${current.request_key}.json`);
       requireThat(!existsSync(target), "the owner retry archive already exists; preserve both journals and inspect it");
-      save(entry.file, { ...current, owner_retry: { request_id: requestId, reason, archived_at: (ctx.now?.() ?? new Date()).toISOString() } });
-      renameSync(entry.file, target);
+      save(entry.file, { ...current, owner_retry: { request_id: requestId, reason, archived_at: (ctx.now?.() ?? new Date()).toISOString() } }, io);
+      renameJournal(entry.file, target, io);
       consumed.delete(entry.file);
     },
     retry(slug) {
@@ -229,13 +286,15 @@ export function runReceiptStore(ctx, site) {
         if (record.receipt?.status === "uncertain") this.archive({ file, record });
       }
     },
+    /** What an owner retry may touch; a plain failed journal is listed so the retry can clear it. */
     retryCandidates(slug, { requestId = null, reason = "" } = {}) {
       const dir = directory(slug);
       if (!existsSync(dir)) return [];
       return readdirSync(dir).filter((name) => name.endsWith(".json")).map((name) => {
         const file = path.join(dir, name);
         return { file, record: read(file) };
-      }).filter((entry) => entry.record.receipt?.status === "uncertain" || UUID.test(requestId ?? "") && policyHeld(entry.record) || UUID.test(requestId ?? "")
+      }).filter((entry) => entry.record.receipt?.status === "uncertain" || entry.record.receipt?.status === "failed" && !policyHeld(entry.record)
+        || UUID.test(requestId ?? "") && policyHeld(entry.record) || UUID.test(requestId ?? "")
         && typeof reason === "string" && reason.includes("inputs changed")
         && ["queued", "running", "succeeded"].includes(entry.record.receipt?.status) && !entry.record.adopted);
     },

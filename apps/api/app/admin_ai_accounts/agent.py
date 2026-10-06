@@ -140,9 +140,11 @@ class AiAccountsAgentClient:
         """One text-only prompt on a subscription account with room.
 
         Refusals come back as AppError with the agent's code: ``subscription_quota_paused``
-        (429, with the reset time in the detail), ``subscription_busy`` (503, every account with
-        room stayed busy for ``queue_seconds``), ``subscription_not_signed_in`` (409),
-        ``subscription_run_failed`` (502).
+        (429, with the reset time in the detail), ``subscription_auth_failed`` (503, every
+        signed-in account rests because its CLI could not authenticate; a person signs one in
+        again), ``subscription_busy`` (503, every account with room stayed busy for
+        ``queue_seconds``), ``subscription_not_signed_in`` (409), ``subscription_run_failed``
+        (502).
         """
         payload = {
             "tool": tool,

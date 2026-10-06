@@ -24,15 +24,17 @@
 | `look` | 插圖的畫風預設 | 有 `shot` 就必須有；沒寫時工人依 slug 從五個版畫預設裡輪流挑（§第二輪：`riso-teal`／`riso-navy`／`riso-forest`／`riso-plum`／`linocut-teal`）；`tech-story`（配深色主題：深藍綠底、奶油白、琥珀與一點磚紅；2026-10-03 起寫成版畫師的工單：墨線粗細不勻、網印平塗帶紙紋與套印微偏、手剪的陰影、焦點在畫面中間三分之一而兩側有不對稱的前後景、小小的簡筆人物（點狀眼睛或背影）、霧面；negative 擋文字、logo、真人相貌、寫實、光澤、霓虹光暈、無臉人偶、鏡像對稱）；沒有 `shot` 的投影片不能帶 `look` |
 | `shot` 場景 | 一張插圖：`data.prompt`（英文 ≤1000 字，依序寫景別、地點與時間、正在發生的事、視線落點的物件與材質、光從哪來；不寫風格與顏色）、`data.camera`（push in／pull out／pan left／pan right／tilt up／tilt down／drift）、`data.visual: "still"`、`data.transition?`（cut／dissolve，通常不寫） | 只准 still；不得有 `characters`、`fit`、`start_frame`、`end_frame`；shot 的句子不能 `reveal`；連續三張同一種運鏡是 lint 錯誤（§畫面不像 AI） |
 | `music` | `{ track, sha256?, gain_db?, duck_db?, fade_in_ms?, fade_out_ms? }`，檔案在 `<work base>/_music/` | 任何格式都可以帶（`prompt` 走 Lyria 也還在，但站主決定用授權檔） |
-| `sfx` | `{ set, gain_db? }`，音效組在 `<work base>/_sfx/<set>/` | 預設 gain −12 dB |
+| `sfx` | `{ set, gain_db?, cues?, sha256? }`，音效組在 `<work base>/_sfx/<set>/`；`cues` 是撰稿自己放的音效、`sha256` 綁音效組的 manifest（§配樂與音效） | 第 1 版音效組：`gain_db` 是整軌的音量，預設 −12 dB；第 2 版（量過的）音效組：每個 cue 各自算到目標響度，`gain_db` 是加在每個 cue 上的微調，沒寫是 0 |
 
-音效組的 `manifest.json`（站主寫）：
+音效組的 `manifest.json`（站主寫檔名、來源與授權，`assemble sfx-measure` 補量測；第 1 版沒有 `manifest_version` 與量測欄位，照舊能用）：
 
 ```json
-{ "set": "studio-a", "sounds": {
-  "stamp":  { "file": "stamp.wav",  "sha256": "…", "source": "YouTube 音效庫", "licence": "https://…" },
-  "whoosh": { "file": "whoosh.wav", "sha256": "…", "source": "…", "licence": "…" },
-  "pop":    { "file": "pop.wav",    "sha256": "…", "source": "…", "licence": "…" } } }
+{ "manifest_version": 2, "set": "studio-a", "sounds": {
+  "stamp":  { "file": "stamp.wav",  "sha256": "…", "source": "YouTube 音效庫", "licence": "https://…",
+              "lufs_i": -20.4, "lufs_m": -18.1, "peak_dbtp": -6.3, "seconds": 0.4 },
+  "whoosh": { "file": "whoosh.wav", "sha256": "…", "source": "…", "licence": "…", "lufs_i": -24.0, "lufs_m": -22.5, "peak_dbtp": -9.0, "seconds": 1.2, "target_lufs": -20 },
+  "pop":    { "file": "pop.wav",    "sha256": "…", "source": "…", "licence": "…", "lufs_i": -22.0, "lufs_m": -20.0, "peak_dbtp": -8.0, "seconds": 0.3 },
+  "bell":   { "file": "bell.ogg",   "sha256": "…", "source": "…", "licence": "…", "lufs_i": -19.0, "lufs_m": -17.0, "peak_dbtp": -4.0, "seconds": 0.8 } } }
 ```
 
 範例：`tools/video/core/fixtures/illustrated/video.json`（含 `brief.md`）。
@@ -48,15 +50,58 @@
 | 配樂 | `music --slug` | `music.track` 只核對檔案與 sha，不呼叫伺服器 |
 | 合成 | `assemble --slug` | 走漫劇的混合版面：shot＝關鍵影格加運鏡（smoothstep 緩入緩出、位移量隨鏡頭長度放大到 6 秒為止、drift 依場景 id 決定左右）；**單狀態卡片**（title、chapter、big、quote、cta、outro）在 drift 與 push-in 之間輪流漂移，漂移的卡片左右輪流；多狀態卡片維持逐條出現；轉場規則＝撰稿的 `data.transition` 優先，否則第一景與章節卡硬切、前一景最後一句有 ≥600 ms 的停頓節拍才溶接、其餘硬切；配樂床側鏈壓低；音效軌 |
 
-音效的規則（`assemble/sfx.mjs`）：章節卡開始→`stamp`（章節卡即使被撰稿設成溶接也是 stamp，不放 whoosh）；溶接前 5 格→`whoosh`；每個 reveal 狀態開始→`pop`；任兩個音效至少隔 1.5 秒，pop 每 2 秒最多一個，第 0 格不放。
+音效的規則（`assemble/sfx.mjs`）：章節卡開始→`stamp`（章節卡即使被撰稿設成溶接也是 stamp，不放 whoosh）；溶接前 5 格→`whoosh`；每個 reveal 狀態開始→`pop`；任兩個音效至少隔 1.5 秒，pop 每 2 秒最多一個，第 0 格不放。撰稿自己的 cue（`sfx.cues`）疊在這些 beat 上；每個 cue 的音量依音效組量過的響度算到目標，合成後再量每個 cue 聽不聽得見，被床蓋住或把旁白壓爆就不過（§配樂與音效）。
 
 ## 雜湊怎麼綁
 
 | 檔案 | 綁什麼 | 為什麼 |
 | --- | --- | --- |
 | `keyframes/manifest.json` | `look_hash` ＋ `pictures_hash`（每個 shot 的 id、prompt、camera） | 改卡片文字不重畫、不重判、分鏡核准不失效；改 camera 或 prompt 只重畫、重判那一張，其他張的請求沒變，連同判定原樣沿用（§judge 的刻度與判定沿用；2026-10-04 之前是全部重判，每張 US$0.01 而且過關的會被判掉） |
-| `checks.json` | `speech_hash`、`visual_hash`、`look_hash`、`pictures_hash`（`keyframesHash`：實際用的每張圖的 sha）、`mix_hash`（有配樂時）、`sfx_hash`（有音效時） | 圖重畫、配樂或音效換了，`status` 會說要重新合成，`package` 不會拿舊成片 |
-| `timeline.json` | `speech_hash`（含 `voice.style`） | 改口吻＝全部重錄＋旁白關卡重審 |
+| `checks.json` | `speech_hash`、`visual_hash`、`look_hash`、`pictures_hash`（`keyframesHash`：實際用的每張圖的 sha）、`mix_hash`（有配樂時）、`sfx_hash`（有音效時：set、gain、cue 表、`sfx.sha256`）、`sfx_set_hash`（再加每個音效檔的 sha 與第 2 版的目標，給讀檔的人看；§配樂與音效） | 圖重畫、配樂或音效換了，`status` 會說要重新合成，`package` 不會拿舊成片 |
+| `timeline.json` | `speech_hash`（含 `voice.style`、`voice.performance`，與每句有寫的 `emotion`；§聲音表演） | 改口吻或表演計畫＝全部重錄＋旁白關卡重審；改一句的提示只重錄那一句 |
+
+## 配樂與音效
+
+配樂是站主放在 `<VIDEO_WORKDIR>/_music/` 的授權檔（上表的 `music`），`assemble` 把它壓在旁白下：側鏈壓低、成片 −14 LUFS、床 ≤ −24 LUFS 否則不過。這一節寫音效。2026-10-05 起音效組有第 2 版（票 `2026-10-05-sfx-library-loudness-cue-sheet`）：之前是三個固定的音效、一個 `gain_db` 蓋全部、不量檔案本身多大聲——smoke 的合成音效（峰值 −21 dBTP）壓 −12 dB 之後在成片裡約 −36 LUFS，比旁白低 20 dB 以上，根本聽不到，而 `checks.json` 說一切都好。做法借自 faceless-shorts（MIT）的形狀：量過響度的音效庫、每支影片一張 cue 表、用量測而不是用耳朵確認聽得到；只借想法，沒有抄程式。
+
+**manifest 第 2 版**（上表的範例）：
+
+| 欄位 | 意思 |
+| --- | --- |
+| `manifest_version` | 沒寫或 1：第 1 版，三個固定音效、整軌一個 `gain_db`，照舊能用，一個位元組都不用改；2：下面的量測欄位每個音效都要有，缺了 `assemble` 會說去跑 `sfx-measure` |
+| `sounds.<name>` | 名字是小寫字母、數字、`_`、`-`（≤32 字）；`stamp`／`whoosh`／`pop` 仍是必要的（規則放它們），其餘隨意加，只有 cue 表叫得到 |
+| `lufs_i`／`lufs_m`／`peak_dbtp` | `ebur128` 量的整合響度、最大瞬時響度（400 ms 窗）、真峰值；`sfx-measure` 寫的，不要手填；少了 `lufs_m` 就用 `lufs_i` |
+| `seconds` | 檔案長度（ffprobe）；聽得見的檢查用它定每個 cue 的量測窗，第 1 版的組合成時現量 |
+| `target_lufs` | 這個音效在成片（−14 LUFS 節目）裡最響的 400 ms 要落在哪；沒寫用預設 `SFX_TARGET_LUFS`：stamp −14（章節卡開頭的停頓裡，跟旁白一樣響）、whoosh −16、pop −16、其餘 −16 |
+
+`node tools/video/cli.mjs assemble sfx-measure --set studio-a [--workdir D]`（或 `--slug S` 量那支影片的組）：每個檔案先變成軌上的樣子（48 kHz 立體聲），尾端補 1 秒靜音（250 ms 的檔不補就一個窗都量不到），過 `ebur128=peak=true`，把 `lufs_i`／`lufs_m`／`peak_dbtp`／`seconds` 與檔案現在的 sha256 寫回 manifest、版本改 2；`source`／`licence` 這些站主寫的欄位不動。最後印 manifest 的 sha256，貼到 `video.json` 的 `sfx.sha256` 就把成片綁到這一組（跟 `music.sha256` 同一個意思）：換了檔案或重量過，`sfx_hash` 跟著變，`status` 會說要重新合成，`package` 不拿舊成片。
+
+**cue 表**（`video.json` 的 `sfx.cues[]`，最多 200 個）：
+
+```json
+"sfx": { "set": "studio-a", "sha256": "…",
+  "cues": [ { "scene": "door", "sound": "bell" }, { "frame": 1230, "sound": "chime", "gain_db": -3 } ] }
+```
+
+每個 cue 寫 `scene`（那一景開始的那一格響）或 `frame`（那一格響）二選一、`sound`（組裡的名字；不在組裡 `assemble` 在碰 ffmpeg 之前就擋）、可選 `gain_db`（−40 到 +12，加在算出來的音量上）。cue 疊在規則的 beat 上：撰稿放的一定響，規則的 beat 跟某個 cue 差不到 1.5 秒就讓路；cue 之間不互相稀釋（撰稿要兩個就兩個，疊在一起的問題由聽得見的檢查抓）。`frame` 超過影片長度在合成一開始就擋，還沒編任何一段。
+
+**每個 cue 的音量**（第 2 版）：成片最後整體線性正規化到 −14 LUFS，所以「成片裡的目標」要換成「軌上的音量」。`assemble` 先把旁白加壓低後的配樂床（沒有床就旁白本身）過一次 `ebur128`，拿到整合響度 `I_under`，`G = −14 − I_under` 就是正規化會加的量；每個 cue 的 gain＝`target_lufs − G − lufs_m ＋ cue.gain_db ＋ sfx.gain_db（微調）`，再用「`peak_dbtp ＋ gain ＋ G ≤ −3 dBTP`」封頂（封頂的 cue 在 `checks.json` 記 `capped: true`）。第 1 版的組沒有量測，維持整軌一個 `gain_db`（預設 −12），cue 自己的 `gain_db` 照加。
+
+**聽得見的檢查**（合成後，不過就擋）：混完之後用同一個時鐘把四樣東西過 `ebur128`（每 100 ms 一行 400 ms 的瞬時響度，真峰值一起）——音效軌本身、音效下面的混音（旁白＋壓低後的床）、壓低後的床單獨一軌（用混音同一條側鏈壓縮器；沒有配樂就沒有這一樣）、整個正規化前的混音。每個 cue 的窗從它那一格到音效結束再加一個窗（0.4 秒），數字都換算成成片裡的值（加上 `G′ = −14 − loudnorm 第一遍量到的 I`）。
+
+| 條件 | 門檻 | 不過時 |
+| --- | --- | --- |
+| 被床蓋住（masked） | 音效最響的窗 − 床最響的窗 ≥ 6 dB（`SFX_ABOVE_BED_DB`） | `CHECK sound effect stamp at 12.90 s (scene desk) is masked by the music bed: 4.2 dB above it, below 6; …`，`checks.ok=false`、`assemble` 回 1 |
+| 把旁白壓爆（clips the voice） | 整個混音在這個窗的真峰值 ＋ G′ ≤ −1 dBTP（loudnorm 的上限；超過它 loudnorm 會悄悄從線性改成動態模式，整支旁白都被壓） | `CHECK sound effect … clips the voice: the mix would peak at 0.3 dBTP after normalization, above -1; …` |
+| 量不到 | cue 的窗裡沒有任何一行 | `… was not measured` |
+
+跟旁白的關係只記不擋（`voice_margin_db`＝音效 − 旁白＋床）：pop 的規則是落在 reveal 那一句的第一個字上，要它高過旁白 6 dB 又不壓爆峰值在物理上做不到，所以門檻只對床；要看某個 cue 有沒有被旁白蓋住，讀 `checks.json`。
+
+`checks.json`：`sfx_hash`（`status`／`package`／`dub` 比對的那個：set、gain、cue 表、`sfx.sha256`）、`sfx_set_hash`（再加每個音效檔的 sha256 與第 2 版的目標）、`metrics.sfx = { set, version, events, sounds: {name: 次數}, cues: [{ frame, t, sound, scene, cue?, gain_db, target_lufs, capped?, effect_lufs_m, under_lufs_m, bed_lufs_m, bed_margin_db, voice_margin_db, peak_dbtp, ok }], min_bed_margin_db }`；`assemble` 的最後一行多印「7 sound effects (lowest 29 dB above the bed)」。
+
+實測（`node tools/video/assemble/smoke.mjs --fixture illustrated`；合成音效組由 `synthetic.mjs` 寫成第 2 版，四個 250 ms 的正弦真的用 `ebur128` 量過：`lufs_m` −25.1 到 −26.0、峰值 −21.1 dBTP）：7 個 cue 全部落在目標 ±0.3 LU（stamp −14.0、whoosh −16.0、pop −16.0），床邊距 29–33 dB，混音峰值 −4.7 到 −10.9 dBTP。
+
+沒做：Shorts 還是第 1 版的放法（`shortSfxPlan` 加整軌 `gain_db`，沒有 cue 表、沒有聽得見的檢查；它讀得了第 2 版的 manifest 但不用量測值）；`dub` 照舊重用成片的 `build/sfx.wav`，它的 timeline 只記 `sfx_hash`。
 
 ## 節奏怎麼量（`core/cadence.mjs`）
 
@@ -102,6 +147,8 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 | 7 說書式提示詞、`restyle` | `2026-09-29-video-storytelling-prompts` | 已落地 |
 | 8 Shorts | `2026-09-29-video-shorts-motion-music` | 已落地：`tools/video/shorts/motion.mjs`（一景一段、透明字卡疊在運鏡的圖或漂移的底色上、景間溶接）、schema 2 的 `camera`／`music`／`sfx`、`from-episode` 接插圖投影片（主題 `cut:illustrated`）、頻道聲音的 style 改說書式；細節在 `SHORTS.md` §工具端 |
 | 9 試片〈Jev〉 | `2026-09-29-video-pilot-jev-decision-model` | 開著 |
+| 10 圖庫照片來源（伺服器端） | `2026-10-05-stock-photo-source-endpoint` | 已落地：§圖庫照片 |
+| 11 照片上投影片、說明欄的圖片來源 | `2026-10-05-stock-photo-slides-and-attribution` | 已落地：§圖庫照片 的「工具端」 |
 
 ## 試片的數字表（試片後填）
 
@@ -290,9 +337,121 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 **順帶看到、沒在這裡修**：運鏡其實是走一步停幾格（關鍵影格是 JPEG 時 `zoompan` 的裁切窗只落在偶數像素上；pan 有一半的相鄰格完全相同），票 `2026-10-04-still-shot-camera-moves-travel-in`。修它會讓每一格都不同、位元率再變，上限會把大小擋住。
 
+## 圖庫照片（stock photos）：Pexels 與 Pixabay（2026-10-05）
+
+產線一直沒有任何真實照片：旅遊攻略的投影片只有深色卡片、版畫插圖或 AI 圖，而 Pexels 與 Pixabay 都有首爾、釜山、濟州的實景照片，授權允許商業使用。票 `2026-10-05-stock-photo-source-endpoint` 做的是伺服器端：兩家的金鑰只存在伺服器（和旁白、生圖一樣，本機工具拿不到），搜尋與抓檔都走 `/api/v1/video/media/stock/*`（`apps/api/app/video_media/stock.py`），原圖進媒體庫並附上版權標示。把照片放上投影片、把來源寫進說明欄是票 `2026-10-05-stock-photo-slides-and-attribution`（下面的「工具端」）。
+
+### 設定
+
+| 項目 | 在哪 |
+| --- | --- |
+| 設定卡 | `/admin/settings` 的「影片素材」分頁、「圖庫照片（Pexels、Pixabay）」卡（`stock_photos`）：兩個金鑰（`pexels_api_key`、`pixabay_api_key`，加密存在伺服器，設定任一家就能用）、兩個 Base URL（釘在 `api.pexels.com` 與 `pixabay.com`：改成別的網域會被拒絕、存進資料庫的也會被忽略），和「連線測試」：對每一家真的搜一次「Seoul skyline」（免費），回每家的總張數；任一家失敗整個測試算失敗；沒測過的卡顯示「尚未驗證」 |
+| 環境變數 | `PEXELS_API_KEY`、`PIXABAY_API_KEY`；`PEXELS_API_BASE_URL`、`PIXABAY_API_BASE_URL` 不用設，正式站啟動時會檢查它們沒離開官方網域 |
+| 申請 | Pexels：pexels.com/api（免費；預設每小時 200 次、每月 20,000 次）。Pixabay：pixabay.com/api/docs（免費；預設每分鐘 100 次；原圖 `imageURL` 與 1920 px 的 `fullHDURL` 只給「full API access」的帳號，沒有的拿 1280 px 的 `largeImageURL`） |
+
+### 端點（都要影片工具權杖）
+
+| 端點 | 送什麼 | 回什麼 |
+| --- | --- | --- |
+| `POST /stock/search` | `{query（≤100 字）, provider?（pexels／pixabay；不寫＝每一家有金鑰的）, orientation?（landscape／portrait／square；Pixabay 沒有 square 篩選，照回）, per_page（1–40，預設 15）, page}` | `{query, candidates[], total{廠商: 張數}, problems[]}`；候選是 `{provider, id, width, height, thumbnail, preview, alt, credit}`，`credit` 是 `{provider, author, author_url, url（照片頁）, license, license_url, text}`；一家失敗、另一家有答，失敗的只列在 `problems`；全部失敗才回錯 |
+| `POST /stock/fetch` | `{slug, provider, id}` | `{sha256, size, content_type, width, height, credit}`。伺服器再向廠商要一次這張照片（不信工具給的 URL）、取最大的檔（Pexels `src.original`；Pixabay `imageURL` → `fullHDURL` → `largeImageURL`）、只從廠商自己的主機下載（`images.pexels.com`；`pixabay.com`、`cdn.pixabay.com`），串流進媒體庫（和生成檔同一套：邊收邊算雜湊、從位元組判型別、只收 png／jpeg／webp、上限同 `VIDEO_MEDIA_MAX_FILE_BYTES`）；`width`／`height` 從存下的檔頭讀，不信廠商的數字 |
+| `GET /status` | | 多回 `stock: {pexels: bool, pixabay: bool}` 與 `limits.stock_per_page`（40）：工具只在伺服器這樣說時才提供圖庫照片 |
+
+錯誤碼：`video_media_stock_unavailable`（503，沒金鑰）、`video_media_stock_not_found`（404，廠商沒有這張）、`video_media_stock_failed`（502：廠商拒絕金鑰、回應壞掉、檔案不在廠商主機、圖讀不出尺寸）、`video_media_upstream_busy`（429，帶 `Retry-After`），以及媒體庫自己的 `video_media_file_too_large`／`video_media_store_full`／`video_media_unsupported_type`。訊息裡只有廠商名與狀態碼，永遠沒有 URL：Pixabay 的金鑰在查詢字串裡。
+
+不是生成工作：不建 `video_media_jobs` 列（kind 的 CHECK 仍是 image／clip／music）、不記任何月預算（兩家免費），只有每個權杖每小時 150 次的 `video_media_stock` 限制（search 與 fetch 共用；Pexels 免費金鑰一小時 200 次）。檔案和其他媒體檔一樣是快取：14 天後 `prune` 會清，工具要把自己的那份放在工作目錄（下一張票的 `<workdir>/stock/<sha256>.<ext>`）。
+
+### 授權與標示（兩家都要照做）
+
+| | Pexels | Pixabay |
+| --- | --- | --- |
+| 授權 | [Pexels License](https://www.pexels.com/license/)：免費、可商用、可修改、不必標示 | [Pixabay Content License](https://pixabay.com/service/license-summary/)：免費、可商用、可修改、不必標示 |
+| 不可以 | 原樣轉售或在別的圖庫重新發布；暗示人物或品牌背書；把可辨識的人放進負面或冒犯的情境 | 原樣轉售或當成獨立檔案重新發布；暗示背書；把可辨識的人放進負面或冒犯的情境 |
+| API 規則 | 可能的話標示攝影師並連回照片頁（「Photo by … on Pexels」）；用到 API 的地方要有顯眼的 Pexels 連結（「Photos provided by Pexels」）；不可整批下載、不可複製 Pexels 本身的功能；快取結果 | 顯示搜尋結果的地方要標示 Pixabay；不可熱連結，必須下載到自己這邊（fetch 做的正是這件事）；API 回應最多快取 24 小時（`webformatURL` 這類網址一天後失效）；不可整批下載；金鑰不可公開 |
+| 我們怎麼做 | `credit.text` 就是廠商要的那一句，`stock fetch` 原樣寫進 `assets[].source`，說明欄的「圖片來源」區塊逐張列出（§工具端）；投影片預設不畫字（站主的規則），要畫才寫 `data.credit`；`stock search` 印候選時帶「Photos provided by Pexels」 | 同左；印候選時帶「Images from Pixabay」，並提醒預覽網址一天後失效 |
+
+兩家都不「要求」標示，但都希望有，而且 API 使用規則要求來源可見。說明欄 5,000 位元組的上限：一行標示約 110–130 位元組（「Photo by … on Pexels（Pexels License）：照片頁網址」），區塊的標題與空行 19 位元組；`lint` 不算這些（`core/lint.mjs` 不讀 `assets[]`），只有 `package` 算，所以稿子的 `youtube.description` 要比 `lint` 的上限少留每張約 130 位元組——兩張照片留 300 位元組就夠，超過時 `package` 會說是標示把它推過線。這一段只讀了兩家的公開 API 文件與授權頁，沒有參考任何第三方程式。
+
+### 工具端（2026-10-05，票 `2026-10-05-stock-photo-slides-and-attribution`）
+
+| 項目 | 怎麼做 |
+| --- | --- |
+| 指令 | `node tools/video/media/cli.mjs stock search --query "Seoul skyline" [--provider pexels\|pixabay] [--orientation landscape\|portrait\|square] [--per-page N] [--page N] [--slug S] [--json]`，印每個候選的廠商、id、尺寸與方向、廠商要的那句標示、照片頁網址、alt，以及兩家 API 條款要的來源字樣；`node tools/video/media/cli.mjs stock fetch --slug S --provider P --id N [--workdir D] [--json]`。`tools/video/cli.mjs` 的指令表還沒有 `stock`，所以是直接跑 `media/cli.mjs`（它自己有 `main`，結束碼同主指令：2 用法、3 要站主、4 外部服務） |
+| 檔案 | `stock fetch` 請伺服器抓進媒體庫後，用 `downloadFile` 邊收邊核對雜湊下載到 `<VIDEO_WORKDIR>/<slug>/stock/<sha256>.<png\|jpg\|webp>`（副檔名照伺服器回的 `content_type`）；同一張再抓一次不會重載（檔名就是雜湊，核對過就跳過），壞掉的複本會重載。媒體庫那份 14 天後會被 `prune` 清掉，工作目錄這份才是成片用的 |
+| `assets[]` | 每抓一張就在 `docs/videos/<slug>/video.json` 的 `assets[]` 寫（或換掉同路徑的）一筆 `{path: "stock/<sha256>.<ext>", source: credit.text, license: credit.license, author: credit.author, url: credit.url}`：`source` 是廠商自己的措辭（「Photo by … on Pexels」「Image by … from Pixabay」），`author` 只有名字，`url` 是照片頁。沒有 `assets` 的 `video.json` 會在 `scenes` 前面長出來；整個檔案會以工具的格式（兩格縮排）重寫 |
+| 投影片 | `screenshot` 範本的 `data.image` 多接受 `stock/<sha256>.<png\|jpg\|webp>`（只有這個寫法，小寫、64 個十六進位字；repo 路徑的規則不變），渲染時從 `https://video.local/work/stock/…` 載入（和關鍵影格同一個假來源）；`data.credit`（選填，一行、≤60 字）畫在照片右下角的深色小膠囊裡，它的 CSS 只在有 `credit` 的那一頁隨頁帶，所以沒寫 `credit` 的截圖頁和 `theme.css` 都一個位元組都沒動，既有影片的畫格鍵不變。直向或方形照片照高度放、置中；超寬的全景會超出版面，渲染會當版面問題報出來，換一張 |
+| 畫格鍵 | `render/plan.mjs` 的 `renderPlan` 多吃 `workdir`，照片的位元組和 SVG 一樣雜湊進那一景的鍵：換了照片（同名不同位元組）只重畫那一景；沒給 `workdir`（例如 `render/repeat.mjs`）就不讀、不入鍵 |
+| 渲染前的檢查 | `renderProblems(doc, root, {workdir})`：用到 `stock/…` 的景，`assets[]` 裡一定要有同路徑的那筆（沒有就代表說明欄不會有標示，`render` 以 lint 結束碼拒絕），檔案也要在工作目錄裡（沒有就叫你跑 `stock fetch`）。`lint` 只檢查 `data.image`／`data.credit` 的寫法（範本的 `check` 共用），不看工作目錄 |
+| 說明欄 | `core/metadata.mjs` 的 `composeDescription` 在參考資料之後、hashtag 之前加「📷 圖片來源」區塊（各語系：圖片來源／图片来源／Image credits／画像の出典／이미지 출처），一張一行：`source（license）：url`（英、韓文用半形括號與冒號）。只列有 `author` 或 `url` 的 `assets[]`——自有圖解（只有 `path`／`source`／`license`）不列，所以列著自有圖解的既有影片，說明欄一個字都不會變，`publish` 關卡綁的 `upload/metadata.json` 也不會失效。`package/metadata.mjs` 每個語系都帶 `doc.assets` 進去；超過 5,000 位元組時的錯誤會註明是標示多了幾個位元組 |
+| 錯誤碼 | `video_media_stock_unavailable`（沒金鑰）→ 要站主（結束碼 3）；`video_media_stock_not_found` → 工具的錯（id 寫錯，結束碼 2）；`video_media_stock_failed`、429 → 和 `locate` 一樣重試，耗盡才算外部服務（4）；網站的 web app 還沒轉送 `stock/*` 路由時會收到 `video_media_route_unknown`，工具把它改說成「要部署會轉送這些路由的版本」（結束碼 3） |
+
+web app 的轉送（`apps/web/app/api/video/media/[...path]/forward.ts` 的 `mediaRoute` 白名單）由票 `2026-10-05-web-app-forwards-stock-and-locate` 補上了 `stock/search`、`stock/fetch` 與 `locate`。還沒做：`tools/video/cli.mjs` 的 `AREAS` 沒列 `stock`，加一行就能用主指令跑。
+
+### 沒實測的事
+
+這個容器沒有金鑰：欄位名照兩家的文件寫（Pexels `photos[].src.original`、`photographer_url`、`alt`；Pixabay `hits[].largeImageURL`、`imageWidth`、`user_id`），第一次真的呼叫要看 `search` 的候選數、`fetch` 存下的檔案尺寸與 `credit` 是否對得上照片頁；Pixabay 沒有 full API access 時 `imageWidth`／`imageHeight` 有沒有回來（沒有就以 `webformatWidth`／`webformatHeight` 代替，候選的尺寸會是 640 px 那一檔）。
+
+## judge 的 problems：準確、完整、有解（2026-10-05）
+
+`problems` 原本是自由文字：一張圖可以某一題沒過卻沒有一句話提到它，也可以列一句跟沒過的題無關的意見；改提示詞的人（工人的撰稿修正迴圈、站主、重拍迴圈）拿到的東西不一定能動手。照 CHAI 研究的審稿三規矩（準確：指出在哪裡；完整：同一種毛病整張圖都找過；有解：每個嚴重的發現都附一個修法；OpenMontage 的 reviewer skill 用同一套，AGPL，只借想法）定成契約：
+
+**格式**：每一條 `problems` 都是一行 `<criterion key>: <哪裡有什麼不對> → <一個提示詞層級的修法>`。鍵是 rubric 的 key（`text`、`anatomy`、`identity_jingwei`…），箭頭後面是**可以直接貼進提示詞的字**（`clean: the barista's right hand is a blur → her right hand flat on the counter`），不是建議（「把手改好」）。
+
+| 誰 | 做什麼 | 在哪 |
+| --- | --- | --- |
+| 伺服器：問法 | 打分數的 `INSTRUCTIONS` 與是非題的 `CHECK_INSTRUCTIONS` 都要求這個格式：鍵照 rubric 寫、指出地方、寫之前把同一種毛病整張找過、最嚴重的放前面；刻度與「答有或沒有」那幾句逐字不動（它們是量過的，§judge 的刻度與判定沿用） | `apps/api/app/video_media/judge.py` `PROBLEM_FORMAT` |
+| 伺服器：扣到格式上 | `verdict()` 先算**沒過的題**：是非題是答有的那題（分數低於 10）；打分數是低於門檻的題（`min_score` 與每項下限 4 取大；overall 是加權平均，所以沒過的 take 一定至少有一題，過了的 take 也可能有一題在門檻下）。**丟掉**沒有鍵的行、鍵不是 rubric 的 key 的行、鍵指到沒有沒過的題的行（每項都 7、門檻 7 時的「意見」就是這種）；鍵的寫法寬鬆一點也認（`Text:`、`**anatomy** -`、`identity jingwei:`、直接 `anatomy → …`）。**補上**：沒過卻沒有任何一行提到的題，加一行 `<key>: the judge found it but did not say what or where (asked: <題目>) → write the correction into the prompt`；judge 寫了毛病卻沒給修法的行，箭頭後面補同一句。一行最長 400 字（修法最多 200 字、先裁毛病那段，箭頭後面一定留著）；judge 自己的行最多 20 條，之後接補上的行 | `judge.py` `failed_criteria`、`problems`、`PLACEHOLDER_FIX`、`UNDESCRIBED` |
+| 不變的 | `JudgeOut` 的形狀（`scores`／`overall`／`passed`／`problems`／`notes`／`model`）與送後台的 payload（`shots[].judge.overall`／`problems`、分鏡整體的 `judge.problems`、設定圖每張的 `judge.problems`）；後台頁照舊把 problems 接在分數後面顯示 | `schemas.py`、`tools/video/review/sync.mjs` |
+| 工具：下一個 take | 每個 take 之前把**它之前的 take** 的修法接在提示詞後面：`<prompt>. Corrections: <修法一>; <修法二>`（`fixesBefore`：箭頭後面那段，依 seed 排、去重；`retakePrompt`，上限 4000 字）。關鍵影格第 1 個 seed 照原提示詞，第 2 個帶第 1 個的修法，第 3 個帶前兩個的；片段同理（2 個 take）；設定圖同一角色第 2 張起帶前面幾張的修法，第二輪帶第一輪全部的；畫風樣張也一樣。帶了的修法記在該 take 的 `fixes`，stdout 印 `<id> take 2: asked with the corrections of the takes before: …` | `media/keyframes.mjs` `fixClauses`、`fixesBefore`、`retakePrompt`；`clips.mjs`、`look.mjs` 匯入同一組 |
+| 工具：佔位不貼 | 伺服器補的那句 `write the correction into the prompt` 是給改提示詞的人看的，不是提示詞：工具認得它（`PLACEHOLDER_FIX`，兩邊拼法相同、各自的測試釘住），不貼進下一個 take | `keyframes.mjs` `PLACEHOLDER_FIX` ↔ `judge.py` `PLACEHOLDER_FIX` |
+| 工具：快取與沿用 | 快取鍵含提示詞，帶了修法的 take 是另一個請求（會付錢），同樣的修法再跑一次仍從快取拿回；`entryStands` 用同一條規則（前面 take 記下的判定）重算每個 take 的鍵，所以改別鏡的提示詞時，帶著修法的 take 照樣沿用、不重判。舊 manifest 的 `problems` 沒有箭頭，等於沒有修法，行為跟以前一樣 | `keyframes.mjs` `entryStands` |
+| 工具：沒過時的提示 | manifest 條目除了 `problems`（每個 take 的每一行，去重）多一個 `fixes`（所有修法，去重），stdout 在 `ERROR <id>: …` 之後印 `  fixes for <id>: …`；匯入的片段沒過也一樣。工人的撰稿修正迴圈照舊讀 `problems`，拿到的每一行現在都帶鍵與修法 | `keyframes.mjs`、`clips.mjs`（含 `clips import`）、`look.mjs`；讀的是 `automation/flow.mjs` `failedTargets` |
+
+**還沒量**：票的 DoD 要在 163 張已記錄的出圖上量「沒過的 take 裡，`problems` 有一行點到沒過那一題的比例」前後對照。量測工具與每一輪的回答在做 DevDay 那台機器的 `<VIDEO_WORKDIR>/openai-devday-2026-recap/_tools/judge/calibration/`，這個 repo 沒有，而且圖只在站上的媒體庫留到 2026-10-17。要量：部署後用 `rejudge.mjs` 經正式站對同 163 張再判一輪（約 US$1.63，先問站主），對每個沒過的 take 數「`problems` 裡有沒有一行的鍵等於答有的題」；before 用 `host/fa.out` 裡的舊回答，鍵用關鍵字對（`text`／`letter`／`word`、`finger`／`hand`／`arm`、`float`／`detached`、`style`、`frame`／`border`）。系統指示只改了「problems」那一句，是非題的答案照理不受影響，但沒量過之前不能宣稱；量到了把數字寫回這一節。
+
+## 聲音表演（voice performance contract，2026-10-05）
+
+旁白一直是「自然地唸」：Gemini 的 `voice.style` 帶口音與口吻（§說書式旁白的 `STORY_VOICE_STYLE`），漫劇的角色台詞帶 `emotion`，但解說與品牌故事沒有任何東西告訴聲音哪裡放慢、哪裡亮起來、哪裡停。票 `2026-10-05-voice-performance-contract` 把**表演計畫**從稿子一路帶到合成（想法來自 OpenMontage 的 voice-performance director，AGPL，只借想法、沒抄程式）：
+
+| 欄位 | 意思 | 規則 |
+| --- | --- | --- |
+| `voice.performance` | 整支影片的表演計畫（zh-TW，≤ 200 字）：口吻、速度、哪裡抬起來、哪裡收；寫在站主的 `voice.style` 旁邊，不重複它 | 只在文件的 `voice`（旁白）上，角色的 `voice` 不收（`core/drama.mjs` `validatePerformance`；schema 的 `VOICE_KEYS` 不認這個鍵，所以 drama.mjs 收回它對 `voice.performance` 那一條 unknown-field 錯誤，自己檢查）；與 `voice.style` 相加不得超過 style 的 400 字；Azure 聲音收下但 lint 警告它被忽略 |
+| `lines[].emotion` | 這一句的表演提示（zh-TW，≤ 80 字）：壓低、放慢一字一字、問句上揚、揭曉前吸一口氣 | 任何格式的句子都可以帶（之前只有漫劇）；`speaker` 與 `audio_ref` 仍是漫劇才有 |
+
+`voiceFor(doc, line)`（`core/drama.mjs`）組 Gemini 的 style：`voice.style`。計畫。這句的 `emotion`。發音提示，截到 400 字；`performance` 不會成為送出的欄位（`tts/requests.mjs` 的 `voiceFields` 只送 voice／style／model），角色台詞不套旁白的計畫。`planRequests` 本來就按有效聲音切請求，所以帶 `emotion` 的投影片句子自己成一個請求與一個片段快取鍵，鄰句不重錄。
+
+雜湊：`speechHash` 本來就把整個 `doc.voice` 放進去，所以加或改計畫＝全部重錄＋旁白關卡重審；投影片的句子只在**有** `emotion` 時多雜湊那一項，所以沒有計畫也沒有提示的影片 `speech_hash` 逐位元不變（`core/drama.test.mjs` 釘住六個範例的雜湊），既有的 timeline 不會因為這張票變舊。
+
+lint（`core/drama.mjs` `cueCoverageProblems`，經 `core/lint.mjs` 進警告）：稿子一旦參與這份合約（`voice` 有計畫，或任何一句有提示），能收到提示的句子（Gemini 聲音；有角色的漫劇只算角色的台詞，旁白是過場）至少三分之一要帶 `emotion`（`CUE_SHARE_MIN`），不然計畫會被平平地唸過去，lint 印 `N of M lines carry a performance cue`。兩者都沒有的既有影片不警告（警告本來只給人看，工人的修正迴圈只吃錯誤）。`emotionProblems` 對 Azure 聲音上的計畫與每句提示各警告一條，任何格式都查。
+
+撰稿提示（`writer-video.md`／`INSTRUCTIONS.writer`、`writer-drama.md`／`DRAMA_INSTRUCTIONS.writer`、`writer:explainer`、`writer-story.md`）要求：計畫寫在 `voice.performance`，至少三分之一的句子帶提示（鉤子、每個「其實」、每章收尾的問句一定有），提示說的是這句**怎麼唸**，不是它的意思。
+
+還沒接上的（留給後面的票）：
+
+- 工人路線的 `settle()`（`automation/flow.mjs`）把撰稿回來的 `voice` 整個換成設定分頁的聲音，計畫在那裡會被丟掉（句子上的提示留著）；要讓工人路線也帶計畫，`settle()` 要保留 `video.voice.performance`（設定分頁的 `VoiceSettings` 沒有這個欄位）。本機（skill）路線的撰稿代理直接寫 `video.json`，計畫會留下。
+- 品牌故事逐章撰稿的工人文字（`automation/story-prompts.mjs`）還沒帶提示的規則；`writer-story.md` 先寫了。
+- `dubs/plan.mjs` 的 `dubVoice` 展開 `doc.voice`，計畫會跟進每個語言配音的 style（提示本來就跟進漫劇的配音）；要留給配音還是在那裡拿掉，再決定。
+- `voice-audition.md` 的試聽樣稿應該改成最吃表演的一段而不是開頭（票的 DoD 第四項；那份檔案不在票的範圍）。
+
+## 樣張只畫給吃得下的模型；修兩輪沒過的圖保留到成片關卡（2026-10-06）
+
+2026-10-06 查正式站：九支卡住的投影片影片裡有三支（threads-parental、gemini-gems、sec-ai-trading）卡在「rendered as a photorealistic image instead of a 2D risograph illustration; … differ from the style plate」。站主 10-04 把插圖模型換成 MiniMax `image-01`，而伺服器的 MiniMax adapter（`providers/minimax.py`）只轉送 `character` 參考圖，`style` 的樣張它根本沒看到；judge 卻拿樣張比對，每張都打回，改提示詞救不了。站主決定留 image-01、修相容，並且「關鍵影格修兩輪仍沒過就不要再卡住」。
+
+| 改了什麼 | 怎麼做 | 在哪裡 |
+| --- | --- | --- |
+| 樣張只畫給吃得下的模型 | 目錄的 `MediaModel` 多 `style_references`（兩個 Gemini 圖模型 1、image-01 0），`/media/status` 的 `models.images[].style_references` 帶出來；工具端 `takesStyleReference(status, format)` 讀它（舊伺服器沒這欄時 Gemini 才算 1）。沒樣張時不呼叫 `stylePlate`、不送 `style` 參考圖、manifest 沒有 `plate`、judge 的 `style` 題改用文字版（「與 context 描述的畫風不同」）、judge 檔案不附樣張；stdout 印 `style plate: skipped; minimax/image-01 takes no style reference, the style is judged from the look's text`。參考圖清單變了 → `imageKey` 變 → 受影響的影片重畫一次（image-01 每張 US$0.0035） | `apps/api/app/video_media/catalog.py`、`video_automation/schemas.py`；`media/stages.mjs`、`media/keyframes.mjs` |
+| 修兩輪仍沒過 → 保留最好的一張往下做 | `keyframes --accept-best <id,…\|all>`：有圖的 shot 設 `needs_review: false`、`problems` 搬到 `accepted_with_problems`、`judge` 與 `takes` 原樣保留，重畫聯絡表（標籤「保留」）；只有拒絕紀錄沒圖的 shot 拒絕接受（還是要改提示詞）。工人端 `fixPrompts` 在 `rounds >= MAX_PROMPT_FIX_ROUNDS`、kind 是 keyframes、投影片、不是站主退件、每個失敗 shot 都有圖時跑它，記 `auto.json.accepted_pictures = [{id, problems}]`、`notes` 加一行、`prompt_fixes.keyframes` 歸零（站主之後改提示詞重畫，有自己的兩輪）。漫劇、沒圖的 shot、站主退回的分鏡照舊卡住 | `media/keyframes.mjs` `acceptBest`；`automation/flow.mjs` `acceptBestPictures` |
+| 分鏡關卡自己過 | `review-push --gate storyboard` 對保留的 shot 送 `accepted: true, needs_review: false`，頂層 `judge.overall`／`problems` 只算其他 shot（全部保留時 `overall: null`），另附 `payload.accepted = [{id, overall, problems}]`；伺服器 `storyboard_check_passed` 對 `accepted: true` 的 shot 略過分數與 problems（圖與 sha 還是要有）。`keyframeProblems` 對有 `accepted_with_problems` 的 shot 不再把 `judge.passed === false` 算成待審 | `review/sync.mjs`；`apps/api/app/video_automation/settings.py`；`core/state.mjs` |
+| 成片關卡交給站主 | 工人送成片時帶 `--manual-review`；`review-push --gate final` 自己也會從 manifest 讀 `accepted_with_problems`（有就當 manual review，不靠旗標），`manual_review_reason` 寫「有 N 張插圖未通過 judge（ids），需站主審看成片」、payload 附 `accepted_pictures`、summary 結尾「N 張插圖未通過 judge（ids），需站主審看」，站上就不會從 `payload.qa` 自動核准。QA 的 `assemble` 項掛 `warnings` 列出保留的 shot（不新增項目，`ITEM_IDS` 與伺服器鎖死） | `automation/flow.mjs` `gate`；`review/sync.mjs` `acceptedPicturesOf`；`qa/cli.mjs` |
+| 第一稿就知道預算 | 工人給撰稿 `prompt_budget_chars`：由設定的投影片圖模型（`slides.slides_image_model`，開關關著就是漫劇的模型；工具端 `IMAGE_MODEL_VENDORS` 對 id 查 vendor）、這支可能拿到的畫風裡最重的一個（五個版畫預設加 tech-story，撰稿可以自己點名一個，所以不能只算 slug 抽到的那個；10-06 量是 riso-teal）、最長的運鏡詞算，上限 1000；第一稿、lint 修正、劇本退回與提示詞修正的整份改寫都帶同一個數字。撰稿提示詞改成「at most 1000 characters, or at most "prompt_budget_chars" when the payload gives one」。品牌故事的 `fixStoryPrompts` 也帶 `prompt_budget_chars` | `automation/flow.mjs` `draftBudget`、`media/prompt-budget.mjs`、`automation/prompts.mjs`、`automation/story.mjs` |
+
+部署後要驗的事：三支卡在樣張的影片站主按重試後，工人日誌有 `style plate: skipped`、判定改用文字版；一支修兩輪仍沒過的影片日誌有 `N pictures kept with the judge's remarks after 2 prompt fixes`、`auto.json` 有 `accepted_pictures`、分鏡自動核准、成片卡片 summary 列出保留的 shot 並等站主。
+
 ## 沒做、留給後面
 
-- 是非題只用在插圖投影片（上一節）。漫劇的設定圖、關鍵影格、片段與原來如此事務所的靜圖仍是打分數、也頂在 7：各自量過已記錄的出圖、定好各自的題目再換。judge 漏看的瑕疵（六指、像字的記號）要靠更細的題目或更強的判定模型，也要先量；`subject` 在 163 張裡一次都沒答有，窯門大開那種「主動作不對」被歸到 `details`，這一題的寫法值得再試。
+- 圖庫照片（§圖庫照片 的「工具端」）還差一件接線：`tools/video/cli.mjs` 的 `AREAS` 沒列 `stock`，現在要直接跑 `media/cli.mjs`（web app 的轉送白名單已由票 `2026-10-05-web-app-forwards-stock-and-locate` 補上）。`lint` 不算說明欄的「圖片來源」位元組（`core/lint.mjs` 不讀 `assets[]`），稿子要自己留；`docs/videos/README.md` §說明欄 的四個部分還沒列第五個「圖片來源」。工人的撰稿提示詞還不會自己去搜照片，目前是代理或站主手動 `stock search`／`stock fetch` 再把路徑寫進 `screenshot` 景。
+- 是非題只用在插圖投影片（§judge 的刻度與判定沿用）。漫劇的設定圖、關鍵影格、片段與原來如此事務所的靜圖仍是打分數、也頂在 7：各自量過已記錄的出圖、定好各自的題目再換。judge 漏看的瑕疵（六指、像字的記號）要靠更細的題目或更強的判定模型，也要先量；`subject` 在 163 張裡一次都沒答有，窯門大開那種「主動作不對」被歸到 `details`，這一題的寫法值得再試。
+- judge 的 problems 改成「鍵、毛病、修法」之後（§judge 的 problems），163 張的前後對照還沒量；`drama_preflight.mjs` 與 `run_report.mjs` 印的是 `problems`，manifest 的 `fixes` 它們還沒印。
 - 樣張沒放進聯絡表（`review/sync.mjs` 用張數切頁，多一格會錯位）；要看就開 `keyframes/plate-N.png`。
 - 多狀態卡片（bullets、steps、table 逐條出現）的整景連續運鏡。
 - 插圖上沒有章節進度條（chrome 只在卡片上）；要的話把 chrome 截成透明疊層蓋在運鏡段上。

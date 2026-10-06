@@ -27,8 +27,21 @@ updates:
         # the video worker's image (ops/video/Dockerfile) and ops/video/package.json have to move
         # to the same release, no ecosystem here updates those two with it, and
         # tools/supply-chain.test.mjs stays red until a person adds them. In the group, that red
-        # would hold back the week's other bumps.
-        exclude-patterns: ["@playwright/test"]
+        # would hold back the week's other bumps. The fonts and pinyin-pro go to the group below.
+        exclude-patterns: ["@playwright/test", "@fontsource-variable/*", "pinyin-pro"]
+      # The rest of what ops/video/package.json pins: the fonts the video worker draws frames and
+      # thumbnails with, and pinyin-pro, which decides which narrated lines pass check-audio as
+      # "same sound". The worker installs that file without a lock file and it is not a workspace,
+      # so a bump here moves package-lock.json alone, and tools/supply-chain.test.mjs stays red
+      # until a person sets ops/video/package.json to the lock's new versions on this pull
+      # request's branch (.agents/skills/dev-and-ci/references/dependabot.md). Kept out of
+      # minor-and-patch for the same reason as @playwright/test, and together in one pull request
+      # because fontsource releases its fonts together: one red pull request and one edit, instead
+      # of several that conflict in the lock. The pattern also takes the fonts the worker does not
+      # install; a pull request that moves only those is green.
+      video-worker:
+        update-types: [minor, patch]
+        patterns: ["@fontsource-variable/*", "pinyin-pro"]
 
   # apps/api is a uv project: pyproject.toml plus uv.lock, installed frozen in CI and in
   # the image. Dependabot updates both together.

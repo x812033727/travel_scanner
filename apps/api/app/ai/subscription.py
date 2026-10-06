@@ -38,6 +38,9 @@ FULL_PERCENT = 100
 WAIT_CODES = frozenset(
     {
         "subscription_quota_paused",
+        # Every account rests for failing to authenticate (a 403 access grant, an expired
+        # OAuth token): nothing ran, and a person signs one in again on /admin/ai-accounts.
+        "subscription_auth_failed",
         "subscription_not_signed_in",
         "subscription_busy",
         "ai_accounts_agent_unavailable",

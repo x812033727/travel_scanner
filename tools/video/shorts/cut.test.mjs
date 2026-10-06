@@ -208,6 +208,7 @@ function fakeTools() {
       audio: { codec_name: 'aac', sample_rate: '48000', duration: String(timeline.seconds) },
       format: {},
       loudness: { input_i: '-14.1', input_tp: '-1.5' },
+      grammar: { cover_psnr: Infinity, loop_psnr: 48.1 },
     };
   };
   const qa = (args) => runQa({ ...args, measureImpl: measured, tools: {}, linkCheck: async (url) => (linked.push(url), { url, ok: true, status: 200 }), history: [] });
@@ -229,6 +230,9 @@ test('the prompts are the originals, the skill keeps the same texts, and the che
   assert.deepEqual(blocks.map(([key]) => key), Object.keys(CUT_INSTRUCTIONS));
   for (const [key, body] of blocks) assert.equal(body, CUT_INSTRUCTIONS[key], `${CUT_SKILL_FILE}: ${key} is the original word for word`);
   assert.match(CUT_INSTRUCTIONS['writer:shorts-cut'], /add no claim, no example, no number and no Latin-script word/);
+  assert.match(CUT_INSTRUCTIONS['writer:shorts-cut'], /Six beats in this order, every scene naming its "beat"/);
+  assert.match(CUT_INSTRUCTIONS['writer:shorts-cut'], /by saying where\s+it is \(完整影片在說明欄\)/);
+  assert.match(CUT_INSTRUCTIONS['writer:shorts-cut'], /No call to action anywhere/);
   assert.match(CUT_INSTRUCTIONS['planner:shorts-cut'], /Two passages never say the same thing/);
   assert.match(cutInstructions('writer', 'shorts-cut', '只寫做過的事。'), /## The channel's stance\n只寫做過的事。$/);
   assert.doesNotMatch(cutInstructions('verifier', 'shorts-cut', '只寫做過的事。'), /stance/i);
@@ -292,6 +296,13 @@ test('a number or a Latin-script word the tutorial does not have is refused, and
   const written = doc(SCRIPT);
   assert.deepEqual([written.line, written.format, written.series, written.source], ['cut', 'shorts', TUTORIAL.slug, source], 'the worker sets what is not the writer\'s');
   assert.equal(ownDescription(written.description), SCRIPT.description);
+  // The six beats travel with the script; the grammar the quality check holds the cut to is
+  // refused here first: an ask for a click, even one that leads back, and a first card too long.
+  const beaten = doc({ ...SCRIPT, scenes: SCRIPT.scenes.map((scene, index) => ({ ...scene, beat: ['hook', 'setup', 'proof', 'loop'][index] })) });
+  assert.deepEqual(beaten.scenes.map((scene) => scene.beat), ['hook', 'setup', 'proof', 'loop']);
+  assert.deepEqual(cutProblems(beaten, { sourceText }), []);
+  assert.match(cutProblems(doc({ ...SCRIPT, scenes: SCRIPT.scenes.map((scene, index) => (index === 3 ? { ...scene, narration: ['點連結看長片的完整版。'] } : scene)) }), { sourceText }).join(), /scene 3 narration asks the viewer to act \(點連結\)/);
+  assert.match(cutProblems(doc({ ...SCRIPT, scenes: SCRIPT.scenes.map((scene, index) => (index === 0 ? { ...scene, headline: '代理會先查開放時間再決定下一步' } : scene)) }), { sourceText }).join(), /the first card is the thumbnail: its headline is 15 characters/);
 });
 
 test('the description leads back to the full video first and the article next; qa checks both links and the source', async () => {
@@ -350,7 +361,7 @@ test('a highlight goes from the frozen tutorial to the site, told again from its
   assert.match(line, /script written \(4 scenes, 4 phrases\)/);
   assert.match(line, /fact-checked: 1 claims backed by the tutorial/);
   assert.match(line, /built .*; 1 phrases from the tutorial's narration/);
-  assert.match(line, /quality check: all 12 items pass/);
+  assert.match(line, /quality check: all 13 items pass/);
   assert.match(line, /pushed: final approved, upload package approved/);
   assert.equal(short.state.status, 'done');
 

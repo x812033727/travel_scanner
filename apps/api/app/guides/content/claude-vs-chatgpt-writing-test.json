@@ -12,7 +12,7 @@
   "locales": {
     "zh-TW": {
       "title": "Claude 與 ChatGPT 寫作自測法：五道題、五個面向，結論自己測出來",
-      "description": "這篇不是我們的實測報告，我們沒有替你測。它給你一套 30 分鐘可以照做的比較方法：五道測試題（改中文商務信、訪談整理成摘要、寫產品文案、英翻繁體中文、照舊文風格續寫），每題附完整提示詞與觀察重點；一張五題乘五個面向、各 1 到 5 分的空白評分表；公平測試的四個規則；兩家官網在 2026 年 9 月公布的模型與寫作功能；以及為什麼任何單次實測都不該當成定論。",
+      "description": "這篇不是我們的實測報告，我們沒有替你測。它給你一套 30 分鐘可以照做的比較方法：五道測試題（改中文商務信、訪談整理成摘要、寫產品文案、英翻繁體中文、照舊文風格續寫），每題附完整提示詞與觀察重點；一張五題乘五個面向、各 1 到 5 分的空白評分表；公平測試的四個規則；兩家官網公布的模型與寫作功能（2026 年 9 月查證，模型名單 10 月 5 日更新）；以及為什麼任何單次實測都不該當成定論。",
       "hero": {
         "src": "/guides/claude-vs-chatgpt-writing-test/hero.jpg",
         "alt": "兩張並排的白色稿紙，中間一條虛線分隔，各自上方有一個對話泡泡，下方一行字「自己測一次」。",
@@ -31,7 +31,7 @@
         },
         {
           "type": "paragraph",
-          "text": "先說清楚：我們沒有帳號替你測，這篇也不會貼出誰勝誰負的分數。關於兩家的敘述只有一種來源，就是官網在 2026 年 9 月公開寫出來的模型與功能，查不到的就寫以官網為準。其餘全是操作說明：五道題的完整提示詞、每題要看什麼、一張空白評分表、四個避免測出假結論的規則，以及結果該怎麼讀。"
+          "text": "先說清楚：我們沒有帳號替你測，這篇也不會貼出誰勝誰負的分數。關於兩家的敘述只有一種來源，就是官網公開寫出來的模型與功能（2026 年 9 月查證，模型名單 10 月 5 日重新查過），查不到的就寫以官網為準。其餘全是操作說明：五道題的完整提示詞、每題要看什麼、一張空白評分表、四個避免測出假結論的規則，以及結果該怎麼讀。"
         },
         {
           "type": "heading",
@@ -315,7 +315,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "這節只寫兩家官網在 2026 年 9 月寫得出來的東西。Anthropic 的官方文件把目前的模型列成四個：Claude Fable 5.1、Claude Opus 5、Claude Sonnet 5 與 Claude Haiku 4.5；前三個的上下文視窗都是 100 萬 token，Haiku 4.5 是 20 萬 token。寫作相關的功能，官網產品頁列出 Artifacts、專案（Projects）與技能（"
+              "text": "這節只寫兩家官網寫得出來的東西，模型名單是 2026 年 10 月 5 日的版本。Anthropic 的官方文件把目前的模型列成四個：Claude Fable 5.1、Claude Opus 5.5、Claude Sonnet 5.5 與 Claude Haiku 4.5；前三個的上下文視窗都是 100 萬 token，Haiku 4.5 是 20 萬 token。寫作相關的功能，官網產品頁列出 Artifacts、專案（Projects）與技能（"
             },
             {
               "type": "article",
@@ -331,7 +331,7 @@
         },
         {
           "type": "paragraph",
-          "text": "OpenAI 說明中心列出的 ChatGPT 模型是 GPT-5.6 家族的 Luna、Sol、Sol Pro、Terra，以及由 GPT-6 Astra 驅動的 GPT-6 Pro；免費與 Go 方案用 GPT-5.6 Luna，Sol 在 Plus 以上的方案。模型選單提供 Instant、Medium、High、Extra High 幾種推理程度。寫作相關的功能，說明中心把 canvas 描述成可以共同寫作、編輯、標註並取得行內建議的互動工作區，另外有可以就地編輯的寫作區塊，以及專案、自訂指令與記憶。聊天介面的上下文視窗說明中心沒有公布，只有開發者文件寫出 GPT-6 Astra 是 105 萬 token；實際吃得下多少，以官網為準。"
+          "text": "OpenAI 說明中心列出的 ChatGPT 模型是 GPT-5.6 家族的 Luna、Sol、Sol Pro、Terra，以及由 GPT-6 Astra 驅動的 GPT-6 Pro；免費與 Go 方案用 GPT-5.6 Luna，Sol 在 Plus 以上的方案。模型選單提供 Instant、Medium、High、Extra High 幾種推理程度；比較新的 GPT-6.1 Sol 只在 ChatGPT Work 與 Codex 裡，不在一般的聊天對話裡。寫作相關的功能，說明中心把 canvas 描述成可以共同寫作、編輯、標註並取得行內建議的互動工作區，另外有可以就地編輯的寫作區塊，以及專案、自訂指令與記憶。聊天介面的上下文視窗說明中心沒有公布，只有開發者文件寫出 GPT-6 Astra 是 105 萬 token；實際吃得下多少，以官網為準。"
         },
         {
           "type": "paragraph",
@@ -423,9 +423,9 @@
       ],
       "sources": [
         {
-          "title": "Claude Platform Docs：Models overview（Fable 5.1、Opus 5、Sonnet 5 的 1M token 上下文視窗，Haiku 4.5 的 200K，1M token 約 555k 英文單字的換算，以及各模型退役日期）",
+          "title": "Claude Platform Docs：Models overview（Fable 5.1、Opus 5.5、Sonnet 5.5 的 1M token 上下文視窗，Haiku 4.5 的 200K，1M token 約 555k 英文單字的換算，以及各模型退役日期）",
           "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-05"
         },
         {
           "title": "Claude Platform Docs：Glossary（temperature 設為 0 仍非完全確定、相同輸入可能產生不同輸出；token 對 Claude 約 3.5 個英文字元且因語言而異）",
@@ -448,9 +448,9 @@
           "checked_on": "2026-09-14"
         },
         {
-          "title": "OpenAI 說明中心：GPT-5.6 in ChatGPT（Luna、Sol、Sol Pro、Terra 與 GPT-6 Pro 的方案對應，以及 Instant、Medium、High、Extra High 推理程度）",
-          "url": "https://help.openai.com/en/articles/20001354-gpt-5-6-in-chatgpt",
-          "checked_on": "2026-09-14"
+          "title": "OpenAI 說明中心：GPT-5.6 and GPT-6 Pro in ChatGPT（Luna、Sol、Sol Pro、Terra 與 GPT-6 Pro 的方案對應，Instant、Medium、High、Extra High 推理程度，GPT-6.1 Sol 只在 Work 與 Codex）",
+          "url": "https://help.openai.com/en/articles/20001354-gpt-56-and-gpt-6-pro-in-chatgpt",
+          "checked_on": "2026-10-05"
         },
         {
           "title": "OpenAI 說明中心：ChatGPT Capabilities Overview（canvas 是共同寫作與編輯的互動工作區，以及記憶、專案等功能說明）",

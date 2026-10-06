@@ -503,6 +503,14 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     // the narration's own locale and zh-TW, which every choice keeps (alwaysLocales).
     const languages = readLanguages(workdir);
     const { metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack, locales: metadataLocalesOf(languages, narrationLocale(doc)) });
+    // Pictures kept with the judge's remarks once their prompt fixes were spent (keyframes
+    // --accept-best): the owner looks at the cut whatever the quality check says, and the
+    // card lists them. The worker asks for the manual review too (automation/flow.mjs gate).
+    const acceptedPictures = acceptedPicturesOf(doc, workdir);
+    const manual = manualReview || acceptedPictures.length > 0;
+    const manualReason = acceptedPictures.length
+      ? `有 ${acceptedPictures.length} 張插圖未通過 judge（${acceptedPictures.map((picture) => picture.id).join("、")}），需站主審看成片；機械品管僅供參考。`
+      : applied ? "已重製頻道片頭與片尾，需站主重新審看成片與銜接；機械品管僅供參考。" : "此成片明確要求站主重新審看；機械品管僅供參考。";
     const files = [await upload(request, slug, await preview(ctx, workdir, "preview", file, { compilation }), "preview", "video/mp4")];
     const sheet = path.join(workdir, ARTIFACTS.contactSheet);
     if (existsSync(sheet)) files.push(await upload(request, slug, sheet, "contact_sheet", "image/png"));
@@ -530,7 +538,7 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     return {
       gate,
       content_sha256: sha,
-      summary: `成片 ${formatClock(Math.round(seconds))}，${qa ? qaSummary(qa) : `自動檢查${checks.ok ? "全部通過" : `有 ${(checks.problems ?? []).length} 項問題`}；${qaSummary(null)}`}${dubs.length ? `，配音 ${dubs.map((dub) => dub.locale).join("、")}` : ""}${manualReview ? "；需站主重新審看" : ""}`,
+      summary: `成片 ${formatClock(Math.round(seconds))}，${qa ? qaSummary(qa) : `自動檢查${checks.ok ? "全部通過" : `有 ${(checks.problems ?? []).length} 項問題`}；${qaSummary(null)}`}${dubs.length ? `，配音 ${dubs.map((dub) => dub.locale).join("、")}` : ""}${acceptedPictures.length ? `；${acceptedPictures.length} 張插圖未通過 judge（${acceptedPictures.map((picture) => picture.id).join("、")}），需站主審看` : manual ? "；需站主重新審看" : ""}`,
       payload: {
         duration_seconds: seconds,
         ...runtimeFields,
@@ -541,7 +549,8 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
         ...(applied ? { branding_hash: applied.hash } : {}),
         // The server auto-approves final only from payload.qa. This one submission keeps its
         // machine report as evidence while explicitly requesting the owner's fresh review.
-        ...(manualReview ? { manual_review: true, manual_review_reason: applied ? "已重製頻道片頭與片尾，需站主重新審看成片與銜接；機械品管僅供參考。" : "此成片明確要求站主重新審看；機械品管僅供參考。", ...(qa ? { manual_review_qa: qa } : {}) } : qa ? { qa } : {}),
+        ...(manual ? { manual_review: true, manual_review_reason: manualReason, ...(qa ? { manual_review_qa: qa } : {}) } : qa ? { qa } : {}),
+        ...(acceptedPictures.length ? { accepted_pictures: acceptedPictures } : {}),
         ...(Object.keys(dubEntries).length ? { dubs: dubEntries } : {}),
         ...(compilation ? { compilation: { series: doc.compilation.series, episodes: doc.compilation.episodes, total_frames: timeline.total_frames } } : {}),
       },
@@ -773,6 +782,19 @@ export function storyboardSheets(manifest, ids, workdir) {
 }
 
 /**
+ * The pictures of an illustrated video kept with the judge's remarks once their prompt fixes were
+ * spent (media/keyframes.mjs --accept-best; `accepted_with_problems` in keyframes/manifest.json),
+ * as [{ id, problems }] in shot order; none for any other video, or when every shot passed.
+ */
+export function acceptedPicturesOf(doc, workdir) {
+  if (!illustrated(doc)) return [];
+  const manifest = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
+  return drawnShotScenes(doc)
+    .filter((scene) => Array.isArray(manifest?.shots?.[scene.id]?.accepted_with_problems))
+    .map((scene) => ({ id: scene.id, problems: manifest.shots[scene.id].accepted_with_problems }));
+}
+
+/**
  * The storyboard gate, bound to keyframes/manifest.json: every keyframe and the contact sheet,
  * with the judge's verdicts. When that is more files than a review takes (a brand story has 85 to
  * 100 shots, docs/videos/STORY.md), the contact sheets go up instead, then the keyframes of the
@@ -805,13 +827,19 @@ async function storyboardSubmission({ request, project, workdir }) {
     const role = `shot_${String(index + 1).padStart(2, "0")}`;
     const sent = whole || (Boolean(shot.needs_review) && files.length < MAX_REVIEW_FILES);
     if (sent) files.push(await upload(request, doc.slug, path.join(workdir, shot.file), role, imageType(shot.file)));
+    // A picture kept with the judge's remarks once its prompt fixes were spent (keyframes
+    // --accept-best): sent as accepted, not as a review need, so the board can approve itself
+    // (apps/api/app/video_automation/settings.py storyboard_check_passed); the owner sees it on
+    // the final cut, which goes up for a manual review.
+    const accepted = Array.isArray(shot.accepted_with_problems);
     shots.push({
       id: scene.id,
       chapter: scene.chapter ?? null,
       prompt: scene.data?.prompt ?? "",
       seconds: seconds.get(scene.id) ?? null,
       file_role: sent ? role : null,
-      needs_review: Boolean(shot.needs_review || shot.judge?.passed === false),
+      needs_review: !accepted && Boolean(shot.needs_review || shot.judge?.passed === false),
+      ...(accepted ? { accepted: true } : {}),
       complete: true,
       file_sha256: shot.sha256,
       ...(scene.data?.end_frame?.prompt ? { end_frame_sha256: shot.end_frame.sha256 } : {}),
@@ -819,9 +847,12 @@ async function storyboardSubmission({ request, project, workdir }) {
     });
   }
   if (whole) await sendSheets();
-  const scores = shots.map((shot) => shot.judge.overall).filter((score) => typeof score === "number");
+  // The lowest score among the shots the judge's word stands for: an accepted shot's is on its
+  // own list, and when every shot was accepted there is none.
+  const scores = shots.filter((shot) => !shot.accepted).map((shot) => shot.judge.overall).filter((score) => typeof score === "number");
   const lowest = scores.length ? Math.min(...scores) : null;
   const waiting = shots.filter((shot) => shot.needs_review);
+  const accepted = shots.filter((shot) => shot.accepted).map((shot) => ({ id: shot.id, overall: shot.judge.overall, problems: manifest.shots[shot.id].accepted_with_problems }));
   // Only the shots left for a prompt fix carry problems here: a board the judge passed whole
   // may be approved automatically when the owner allows it.
   const problems = [...new Set(waiting.flatMap((shot) => shot.judge.problems))];
@@ -833,11 +864,12 @@ async function storyboardSubmission({ request, project, workdir }) {
   return {
     gate: "storyboard",
     content_sha256: await sha256File(file),
-    summary: `分鏡 ${shots.length} 鏡${board}${lowest === null ? "" : `，judge 最低 ${lowest}/10`}${waiting.length ? `，${waiting.length} 鏡待修` : ""}${unshown ? `，其中 ${unshown} 鏡沒附單張圖` : ""}`,
+    summary: `分鏡 ${shots.length} 鏡${board}${lowest === null ? "" : `，judge 最低 ${lowest}/10`}${waiting.length ? `，${waiting.length} 鏡待修` : ""}${unshown ? `，其中 ${unshown} 鏡沒附單張圖` : ""}${accepted.length ? `，${accepted.length} 鏡保留（judge 未過，成片時站主審看）` : ""}`,
     payload: {
       expected_shots: drawn.map(([, scene]) => ({ id: scene.id, end_frame_required: Boolean(scene.data?.end_frame?.prompt) })),
       shots,
       judge: { overall: lowest, problems },
+      ...(accepted.length ? { accepted } : {}),
       duplicates: manifest.duplicates ?? [],
       ...(asBefore ? {} : { sheets: sheets.map((sheet) => ({ role: sheet.role, shots: sheet.shots })), omitted: shots.filter((shot) => !shot.file_role).length }),
     },

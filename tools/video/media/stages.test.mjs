@@ -1,14 +1,15 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync } from "node:fs";
+import { existsSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
 import { tempDir } from "../core/fixtures/load.mjs";
 import { readCache, readJobs } from "./cache.mjs";
+import { statusText } from "./cli.mjs";
 import { MediaError } from "./client.mjs";
-import { readLedger } from "./ledger.mjs";
-import { choiceFor, IMAGE_SIZES, imagePrice, imageSizeFor, imageStatus, Stage, statusProblem } from "./stages.mjs";
+import { capProblem, ledgerTotals, readLedger, reservedEntries } from "./ledger.mjs";
+import { choiceFor, IMAGE_SIZES, imagePrice, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, Stage, statusProblem, takesStyleReference } from "./stages.mjs";
 
 const PRO = "gemini-3-pro-image";
 const FLASH = "gemini-3.1-flash-image";
@@ -116,7 +117,12 @@ test("only explicit unknown credentials bypass the local key check, not false or
   assert.match(statusProblem({ ...status(), music_enabled: false }, "music"), /music generation is off/);
 });
 
-function fakeStage(effective, { actualModel = effective.image.model, actualProvider = effective.image.provider, actualPrice = imagePrice(effective), format = null } = {}) {
+/**
+ * A stage against a fake site whose one image job is answered ready at once; `overrides` maps a
+ * route ("POST images", "GET jobs/image-job-1") to a function of the request that answers (or
+ * throws) in its place, and may be changed between calls.
+ */
+function fakeStage(effective, { actualModel = effective.image.model, actualProvider = effective.image.provider, actualPrice = imagePrice(effective), format = null, overrides = {} } = {}) {
   const workdir = tempDir("video-image-stage-");
   const bytes = Buffer.from(`synthetic image from ${actualProvider}/${actualModel}`);
   const ready = {
@@ -131,12 +137,14 @@ function fakeStage(effective, { actualModel = effective.image.model, actualProvi
     assert.equal(parsed.origin, "https://mokaair.test");
     const route = `${init.method ?? "GET"} ${parsed.pathname.replace("/api/video/media/", "")}`;
     calls.push(route);
+    if (overrides[route]) return overrides[route]({ init, route });
     if (route === "POST images") {
       bodies.push(JSON.parse(init.body));
       return Response.json(ready);
     }
     if (route === "GET jobs/image-job-1") return Response.json(ready);
     if (route === `GET files/story-fixture/${SHA(bytes)}`) return new Response(bytes);
+    if (route === "POST judge") return Response.json({ scores: {}, overall: 8, passed: true, problems: [], notes: "", model: "gemini-judge" });
     assert.fail(`unexpected media request: ${route}`);
   };
   const stage = new Stage({
@@ -305,4 +313,124 @@ test("a failed server job retried under the same id updates its zero charge when
   assert.equal(cached.reused, true);
   assert.equal(readLedger(fake.workdir).entries.length, 1);
   assert.equal(readLedger(fake.workdir).totals.usd, 0.067);
+});
+
+test("a generation holds its list price in the ledger before it is submitted, and the server's charge replaces the hold", async () => {
+  const effective = imageStatus(status(), story());
+  let heldAtSubmit = null;
+  const fake = fakeStage(effective, {
+    overrides: {
+      "POST images": ({ init }) => {
+        heldAtSubmit = readLedger(fake.workdir).entries;
+        fake.bodies.push(JSON.parse(init.body));
+        return Response.json(fake.ready);
+      },
+    },
+  });
+  const picture = await fake.generate();
+  assert.equal(heldAtSubmit.length, 1, "one row was written before the request went out");
+  const [hold] = heldAtSubmit;
+  assert.deepEqual([hold.status, hold.kind, hold.id, hold.stage, hold.provider, hold.model, hold.cost_usd, hold.key, hold.job_id], ["reserved", "image", "opening", "keyframes", "gemini", FLASH, 0.067, picture.key, undefined]);
+  const ledger = readLedger(fake.workdir);
+  assert.deepEqual(ledger.entries.map((entry) => [entry.status, entry.job_id, entry.key, entry.cost_usd]), [["ready", "image-job-1", picture.key, 0.067]], "the job's row took the hold's place");
+  assert.deepEqual([ledger.totals.usd, ledger.totals.reserved, ledger.totals.reservations], [0.067, 0, 0]);
+  const again = await fake.generate();
+  assert.equal(again.reused, true);
+  assert.equal(readLedger(fake.workdir).entries.length, 1, "a cache hit holds nothing");
+});
+
+test("a refusal from the server releases the hold; a lost connection keeps it until a rerun books the job it may have left", async () => {
+  const effective = imageStatus(status(), story());
+  const overrides = { "POST images": () => Response.json({ code: "video_media_budget_exhausted", detail: "the month's images are spent" }, { status: 429 }) };
+  const fake = fakeStage(effective, { overrides });
+  await assert.rejects(fake.generate(), errorCode("video_media_budget_exhausted"));
+  assert.deepEqual(readLedger(fake.workdir).entries, [], "the server answered and took nothing: nothing is held");
+  assert.deepEqual(readJobs(fake.workdir).jobs, {});
+  overrides["POST images"] = () => {
+    throw new TypeError("fetch failed");
+  };
+  await assert.rejects(fake.generate(), (error) => error instanceof MediaError && error.code === "network");
+  const held = reservedEntries(readLedger(fake.workdir).entries);
+  assert.equal(held.length, 1, "the server may have taken the request: the hold stays");
+  assert.equal(held[0].cost_usd, 0.067);
+  assert.deepEqual(readJobs(fake.workdir).jobs, {}, "no job id came back");
+  delete overrides["POST images"];
+  const picture = await fake.generate();
+  assert.equal(picture.reused, false);
+  const ledger = readLedger(fake.workdir);
+  assert.deepEqual(ledger.entries.map((entry) => [entry.status, entry.job_id, entry.cost_usd]), [["ready", "image-job-1", 0.067]], "the rerun held the same key once and the job's row replaced it");
+  assert.equal(ledger.totals.reserved, 0);
+});
+
+test("a run that stops between submit and reconcile leaves a visible reserved row, counted by the cap and media-status, that the next run books", async () => {
+  const effective = imageStatus(status(), story());
+  effective.max_usd_per_video = 0.1;
+  const overrides = {};
+  const fake = fakeStage(effective, { overrides });
+  overrides["POST images"] = () => Response.json({ ...fake.ready, status: "queued", file: null }, { status: 202 });
+  overrides["GET jobs/image-job-1"] = () => {
+    // The STOP file arrives while the job runs on the server.
+    writeFileSync(path.join(fake.workdir, "STOP"), "");
+    return Response.json({ ...fake.ready, status: "submitted", file: null });
+  };
+  await assert.rejects(fake.generate(), (error) => error instanceof MediaError && error.code === "stopped");
+  const key = fake.stage.imageKey({ prompt: "synthetic drawing", seed: 1 });
+  const ledger = readLedger(fake.workdir);
+  assert.deepEqual(ledger.entries.map((entry) => [entry.status, entry.key, entry.cost_usd, entry.id]), [["reserved", key, 0.067, "opening"]]);
+  assert.deepEqual(Object.values(readJobs(fake.workdir).jobs).map((job) => job.job_id), ["image-job-1"], "the pending job sits beside the hold");
+  assert.deepEqual([ledger.totals.usd, ledger.totals.reserved, ledger.totals.reservations], [0.067, 0.067, 1]);
+  // The hold is money: the cap counts it, and media-status prints it as this video's spend.
+  assert.match(capProblem(fake.workdir, 0.067, 0.1), /spent US\$0\.07 \(US\$0\.07 of it reserved for 1 request not yet reconciled\) and the next generation costs about US\$0\.07, past the per-video cap of US\$0\.1/);
+  assert.match(statusText({ ...effective, budgets: {}, store: { used_bytes: 0, max_total_bytes: 1e9, writable: true } }, ledgerTotals(fake.workdir)), /this video: US\$0\.07 \(1 images, 0 clip seconds, 0 tracks, 0 judge calls\)/);
+  // The next run picks the job up by its key and books what it cost: one row, nothing held.
+  rmSync(path.join(fake.workdir, "STOP"));
+  overrides["GET jobs/image-job-1"] = () => Response.json(fake.ready);
+  const picture = await fake.generate();
+  assert.equal(picture.job_id, "image-job-1");
+  assert.equal(fake.calls.filter((call) => call === "POST images").length, 1, "the pending job is polled, not submitted again");
+  const after = readLedger(fake.workdir);
+  assert.deepEqual(after.entries.map((entry) => [entry.status, entry.job_id, entry.cost_usd]), [["ready", "image-job-1", 0.067]]);
+  assert.deepEqual([after.totals.reserved, after.totals.reservations], [0, 0]);
+  assert.deepEqual(readJobs(fake.workdir).jobs, {});
+  assert.equal(capProblem(fake.workdir, 0.03, 0.1), null);
+});
+
+test("a judge call is money: it is refused past the per-video cap before the server is asked, and booked once it answers", async () => {
+  const effective = imageStatus(status(), story());
+  effective.max_usd_per_video = 0.07;
+  const fake = fakeStage(effective);
+  const picture = await fake.generate();
+  assert.equal(readLedger(fake.workdir).totals.usd, 0.067);
+  const ask = () => fake.stage.judge({ id: "opening", kind: "keyframe", files: [{ sha256: picture.sha256, label: "keyframe" }], rubric: [{ key: "clean", question: "Is it clean?", weight: 1 }] });
+  await assert.rejects(ask(), (error) => errorCode("video_media_cap")(error) && /the next judge call costs about US\$0\.01, past the per-video cap of US\$0\.07/.test(error.message));
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 0, "refused before the server is asked");
+  assert.equal(readLedger(fake.workdir).totals.judge_calls, 0);
+  fake.stage.status = { ...effective, max_usd_per_video: 0.08 };
+  const verdict = await ask();
+  assert.equal(verdict.passed, true);
+  assert.equal(fake.calls.filter((call) => call === "POST judge").length, 1);
+  const ledger = readLedger(fake.workdir);
+  assert.deepEqual([ledger.totals.judge_calls, ledger.totals.usd, ledger.totals.reserved], [1, 0.077, 0]);
+  assert.equal(ledger.entries.at(-1).cost_usd, JUDGE_USD_PER_CALL);
+  assert.equal(JUDGE_USD_PER_CALL, 0.01, "mirrors JUDGE_USD_PER_CALL in apps/api/app/video_media/catalog.py");
+});
+
+test("an image model takes a style reference when the catalog says so; a server from before the field forwards one through Gemini alone", () => {
+  const on = status();
+  on.slides_enabled = true;
+  on.slides_image = { provider: "minimax", model: "image-01", configured: true };
+  on.models.images.minimax = [{ value: "image-01", label: "MiniMax image-01", description: null, status: "stable", resolutions: [], durations: [], reference_images: 1, style_references: 0, native_audio: false, usd_per_second: null, usd_per_image: 0.0035, usd_per_track: null }];
+  on.models.images.gemini = on.models.images.gemini.map((entry) => ({ ...entry, style_references: 1 }));
+  assert.equal(takesStyleReference(on, "slides"), false, "image-01 is sent a character reference alone");
+  assert.equal(takesStyleReference(on, "drama"), true, "the drama's Pro choice reads a plate");
+  assert.equal(takesStyleReference(on), true);
+  const flashWithout = { ...on, slides_image: { provider: "gemini", model: FLASH, configured: true }, models: { ...on.models, images: { ...on.models.images, gemini: on.models.images.gemini.map((entry) => (entry.value === FLASH ? { ...entry, style_references: 0 } : entry)) } } };
+  assert.equal(takesStyleReference(flashWithout, "slides"), false, "the catalog's word, not the vendor's name");
+  // A server from before the field says nothing: the vendor decides, as the adapters did.
+  const before = status();
+  before.slides_enabled = true;
+  before.slides_image = { provider: "minimax", model: "image-01", configured: true };
+  assert.equal(takesStyleReference(before, "slides"), false);
+  assert.equal(takesStyleReference(before, "drama"), true);
+  assert.equal(takesStyleReference({ ...before, image: { provider: "minimax", model: "image-01", configured: true } }, "drama"), false);
 });

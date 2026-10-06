@@ -3,8 +3,8 @@
 // Failures are sorted by who can fix them, which is what the CLI's exit code reports: the owner
 // (a revoked token, the card not filled in, a voice not on the allowlist), the service (budget
 // spent, Azure down), or nobody right now (throttling, retried with the server's Retry-After).
-// A paid request (speech, speech/transcribe, speech/judge) is sent again only when it never left
-// or the API settled it; one that went out and lost its answer stops (SPEECH_UNCERTAIN).
+// A paid request (speech, speech/transcribe, speech/judge) is sent again only when it never reached
+// the API or the API settled it; one that went out and lost its answer stops (SPEECH_UNCERTAIN).
 import { createHash } from "node:crypto";
 import { NARRATION_LOCALE } from "../core/schema.mjs";
 import { toNarrationRate } from "./wav.mjs";
@@ -37,15 +37,25 @@ const RETRYABLE_CODES = new Set(["video_speech_upstream_busy", "rate_limit_excee
 // the provider's answer or never connected: `video_speech_upstream_failed` and
 // `video_judge_upstream_failed` also cover a provider read timeout or dropped answer after the
 // request went out (any httpx.HTTPError), which may have been billed, and are still resent until
-// 2026-10-05-speech-api-tells-a-provider-answer gives that case its own code. Not yet the web
-// route's 502 `upstream_unavailable`: the speech routes now answer a lost answer with 504
-// `video_speech_answer_lost` (SPEECH_LOST in apps/web/app/api/video/speech/forward.ts, uncertain
-// here like any 5xx not listed) and keep the 502 for an API they never reached, but a host from
-// before that change answers the 502 for both, so it moves here only once the change is live
-// (2026-10-05-speech-client-retries-paid-upstream-unavailable).
+// 2026-10-05-speech-api-tells-a-provider-answer gives that case its own code.
 const SETTLED_CODES = new Set(["video_speech_upstream_busy", "video_speech_upstream_failed", "video_speech_upstream_rejected_key", "video_judge_upstream_failed"]);
+// The speech routes' own 502 `upstream_unavailable` (apps/web/app/api/video/speech/forward.ts) is
+// an API they never reached, so nothing ran and it is retried as well. Since #1272 they answer a
+// request the API took and whose answer was lost with 504 `video_speech_answer_lost` (SPEECH_LOST,
+// uncertain here like any 5xx not listed). A host from before that answers this 502 for both, so
+// this client needs a host that serves #1272 (production does since c12e159d0, deployed
+// 2026-10-05). Only the 502: no speech route answers the code with another status, so a 503
+// `upstream_unavailable` came from something else and stays uncertain.
+const NEVER_REACHED = { status: 502, code: "upstream_unavailable" };
+const settled = (status, code) => SETTLED_CODES.has(code) || (status === NEVER_REACHED.status && code === NEVER_REACHED.code);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
+// Answers that do not change by asking again in this run, whatever their status: the server has no
+// aligner for this clip (503), or the voice has no boundaries (422). Told after one request.
+const FINAL_CODES = new Set(["video_align_unavailable", "video_align_voice_unsupported"]);
+// What `alignClip` and `synthesizeAligned` answer with null instead of throwing: the server cannot
+// time this clip, or it is a site from before the route (404), so the build keeps its estimate.
+const unaligned = (error) => error instanceof SpeechError && (error.status === 404 || FINAL_CODES.has(error.code));
 
 const neverSent = (error) => NEVER_SENT.has(error?.cause?.code ?? error?.code);
 
@@ -92,10 +102,10 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts, paid 
     const message = problem.detail || `HTTP ${response.status}`;
     if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new SpeechError(message, { status: response.status, code: problem.code, who: "owner" });
     // A spent budget stays spent for the rest of the month (speech) or day (Jev): do not retry.
-    if (problem.code === "video_speech_budget_exhausted" || problem.code === "jev_budget_exhausted") {
+    if (problem.code === "video_speech_budget_exhausted" || problem.code === "jev_budget_exhausted" || FINAL_CODES.has(problem.code)) {
       throw new SpeechError(message, { status: response.status, code: problem.code });
     }
-    if (paid && response.status >= 500 && !SETTLED_CODES.has(problem.code)) {
+    if (paid && response.status >= 500 && !settled(response.status, problem.code)) {
       throw uncertain(path, init.body, `HTTP ${response.status}${problem.code ? ` ${problem.code}` : ""}${problem.detail ? `: ${problem.detail}` : ""}`, response.status);
     }
     last = new SpeechError(message, { status: response.status, code: problem.code });
@@ -160,4 +170,53 @@ export async function synthesize({ body, ...options }) {
     wav: toNarrationRate(Buffer.from(await response.arrayBuffer())),
     billable: Number(response.headers.get("x-billable-characters") || 0),
   }));
+}
+
+/** The server's timing answer as the build keeps it: `{ source, model, chars }`, or null when malformed. */
+function timingOf(body) {
+  const chars = Array.isArray(body?.chars) ? body.chars : null;
+  if (!chars || typeof body.source !== "string" || !chars.every((c) => typeof c?.text === "string" && Number.isFinite(c.start_ms) && Number.isFinite(c.end_ms))) return null;
+  return { source: body.source, model: typeof body.model === "string" ? body.model : "", chars: chars.map((c) => ({ text: c.text, start_ms: Number(c.start_ms), end_ms: Number(c.end_ms) })) };
+}
+
+/**
+ * When each written unit of one clip is spoken, measured by the server's aligner: `{ source,
+ * model, chars: [{ text, start_ms, end_ms }] }`, or null when the server cannot time it (no
+ * aligner installed for this clip, or a site from before the route), so the caller keeps its
+ * estimate. Nothing is billed, so a failed request is tried again like the status GET.
+ */
+export async function alignClip({ wav, text, language = NARRATION_LOCALE, ...options }) {
+  const body = { audio: Buffer.from(wav).toString("base64"), text, ...trackLanguage(language) };
+  const init = { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) };
+  try {
+    const response = await call({ ...defaults(options), path: "speech/align", init });
+    return timingOf(await response.json());
+  } catch (error) {
+    if (unaligned(error)) return null;
+    throw error;
+  }
+}
+
+/**
+ * Synthesize one request body (an Azure voice) with the word boundaries the service sends during
+ * that same synthesis: `{ wav, billable, timing }`, the WAV on the 48 kHz grid as `synthesize`
+ * gives it. Null when the server cannot (a Gemini voice, or a site from before the route): the
+ * caller synthesizes as before, and nothing was paid for here. Paid, so a lost answer is
+ * SPEECH_UNCERTAIN as for `synthesize`.
+ */
+export async function synthesizeAligned({ body, ...options }) {
+  try {
+    return await postPaid(options, "speech/align", { speech: body }, async (response) => {
+      const answer = await response.json();
+      if (typeof answer?.audio !== "string") throw new Error("the answer carries no audio");
+      return {
+        wav: toNarrationRate(Buffer.from(answer.audio, "base64")),
+        billable: Number(answer.billable_characters || 0),
+        timing: timingOf(answer),
+      };
+    });
+  } catch (error) {
+    if (unaligned(error)) return null;
+    throw error;
+  }
 }

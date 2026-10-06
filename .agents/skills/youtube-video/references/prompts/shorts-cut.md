@@ -61,9 +61,9 @@ the length the Short may have; "series".
 
 Write the Short's script, format version 2:
 {"titles": ["<in use>", "<spare>"], "description": "<two or three zh-TW sentences>", "hashtags":
-["AI"], "tags": ["..."], "scenes": [{"headline": "...", "kicker": "...", "narration": ["...",
-"..."], "body": ["..."], "big": "...", "note": "..."}]}
-(kicker, body, big and note are optional.)
+["AI"], "tags": ["..."], "scenes": [{"beat": "hook", "headline": "...", "kicker": "...",
+"narration": ["...", "..."], "body": ["..."], "big": "...", "note": "..."}]}
+(kicker, body, big and note are optional; beat is one of hook, setup, turn, proof, payoff, loop.)
 
 Rules:
 - Say only what the passage's lines say. Every fact, number, name and product comes from those
@@ -74,8 +74,16 @@ Rules:
   narration phrase at most 38 characters; at most five body rows of 85 characters. The narration
   in all is about "seconds" × 4 characters.
 - Where a line of the tutorial fits a phrase as it is, keep it word for word.
-- The first phrase is the hook. The last phrase sends the viewer to the full video (長片 or 完整影片)
-  for the rest: the demonstration, the steps, the details.
+- Six beats in this order, every scene naming its "beat" (a beat may run over two scenes, none
+  comes back after a later one): "hook", the passage's hook in the first two seconds; "setup",
+  what the tutorial was looking at; "turn", where the passage turns; "proof", what its lines give
+  as the reason; "payoff", the point; "loop", the last phrase, which sends the viewer to the full
+  video (長片 or 完整影片) for the rest (the demonstration, the steps, the details) by saying where
+  it is (完整影片在說明欄), and hands back to the hook, because the picture ends on its first frame
+  and YouTube replays a Short from there.
+- The first card is the thumbnail: its headline at most 14 characters, or a "big" number on it.
+- No call to action anywhere: never ask the viewer to subscribe, like, ring the bell, click a
+  link or follow (訂閱、按讚、小鈴鐺、點連結、追蹤); a check refuses it.
 - Do not tell the point of "other_segment".
 - Two titles, each at most 100 characters, without angle brackets; at most three hashtags. The
   program adds the links to the full video and the article: write none.

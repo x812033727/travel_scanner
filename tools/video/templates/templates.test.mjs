@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-import { assetUrl, BRAND, escapeHtml, inlineSvg, richText, sceneProblems, slideHtml, svgProblems, TEMPLATE_SPECS, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibility, visibleText } from "./templates.mjs";
+import { assetUrl, BRAND, CREDIT_MAX_CHARS, escapeHtml, inlineSvg, isStockPath, richText, sceneProblems, slideHtml, svgProblems, TEMPLATE_SPECS, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -138,6 +138,40 @@ test("chat lint keeps every accepted bubble within the 1080p layout budget", () 
   chat.data.messages[0].text = "短句";
   chat.data.title = "標題".repeat(11);
   assert.match(sceneProblems(chat).join("; "), /chat title must fit on one line/);
+});
+
+test("a screenshot slide takes a stock photo from the work directory, with an optional credit that brings its own CSS", () => {
+  const sha = "a".repeat(64);
+  const shot = scene("screen");
+  const plain = slideHtml(shot, state());
+  shot.data.image = `stock/${sha}.jpg`;
+  assert.deepEqual(sceneProblems(shot), []);
+  const html = slideHtml(shot, state());
+  assert.match(html, new RegExp(`<img src="https://video\\.local/work/stock/${sha}\\.jpg" alt="">`), "served from the work directory, as the keyframes are");
+  assert.doesNotMatch(html, /\/repo\//);
+  const head = (markup) => markup.slice(0, markup.indexOf("<body>"));
+  assert.equal(head(html), head(plain), "without a credit the head is every screenshot's head, so no frame key moves");
+  assert.doesNotMatch(html, /class="credit"/);
+  shot.data.credit = "Photo by Lukas Rodriguez on Pexels";
+  assert.deepEqual(sceneProblems(shot), []);
+  const credited = slideHtml(shot, state());
+  assert.match(credited, /<\/div><div class="credit">Photo by Lukas Rodriguez on Pexels<\/div><\/div><\/div><div class="caption-line">/, "in the picture's corner, after the highlight box");
+  assert.match(credited, /<style>:root\{--width:1920px;--height:1080px\}\.t-screenshot \.credit\{position:absolute;right:16px;bottom:14px;/, "the credit's CSS rides in the page, not the theme");
+  assert.match(visibleText(credited), /Photo by Lukas Rodriguez on Pexels/, "the credit's glyphs go through the font check");
+  // Where the picture may come from, and nowhere else: the tool writes stock/<sha256>.<png|jpg|webp>.
+  for (const image of [`stock/${sha}.gif`, `stock/${sha.slice(0, 63)}.jpg`, `stock/../${sha}.jpg`, `STOCK/${sha}.jpg`, `stock/${sha}.JPG`, `stock/${sha}.jpeg`, `work/stock/${sha}.jpg`, "stock/"]) {
+    shot.data.image = image;
+    assert.match(sceneProblems(shot)[0] ?? "", /^image must be a repository path under apps\/web\/public\/ or docs\/videos\/, or a stock photo fetched into the work directory/, image);
+  }
+  shot.data.image = `stock/${sha}.webp`;
+  for (const credit of ["", "two\nlines", "字".repeat(CREDIT_MAX_CHARS + 1), 7]) {
+    shot.data.credit = credit;
+    assert.deepEqual(sceneProblems(shot), [`credit must be one line of text (at most ${CREDIT_MAX_CHARS} characters)`], JSON.stringify(credit));
+  }
+  shot.data.credit = "字".repeat(CREDIT_MAX_CHARS);
+  assert.deepEqual(sceneProblems(shot), []);
+  assert.ok(isStockPath(`stock/${sha}.png`) && !isStockPath(`stock/${sha}.svg`) && !isStockPath(null));
+  assert.equal(workUrl("stock/a b.png"), "https://video.local/work/stock/a%20b.png");
 });
 
 test("an inlined SVG loses its prolog and fixed size; scripts and network loads are refused", () => {

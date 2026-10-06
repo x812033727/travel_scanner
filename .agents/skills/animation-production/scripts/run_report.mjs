@@ -9,7 +9,9 @@
 //     [--root <repository root>] [--markdown] [--json]
 //
 // 讀 media/ledger.json（readLedger / totalsOf / savedTotals / importedTotals）、characters、keyframes 與 clips 的 manifest、
-// timeline.json、state.json、approvals.json；不碰伺服器（本月剩餘額度要看 media-status）。
+// timeline.json、state.json、approvals.json；不碰伺服器（本月剩餘額度要看 media-status）。有 plan/lock.json（animation-
+// preproduction 的開拍鎖定）時再列每鏡的承諾（類型、買幾秒、路線、fit）對交付（clips manifest）與花的（ledger），以及
+// 省下／多花的差；答應的 clip 變成 still／切／fit freeze 而 changes.jsonl 沒有站主點頭的變更單就標「沒簽」。
 // 結束碼：0；讀不到專案或參數錯 2。
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -21,6 +23,8 @@ import { readJson, resolveWorkdir, UsageError } from "../../../../tools/video/co
 import { ARTIFACTS, loadProject } from "../../../../tools/video/core/state.mjs";
 import { FPS } from "../../../../tools/video/core/timeline.mjs";
 import { importedTotals, readLedger, savedTotals, totalsOf } from "../../../../tools/video/media/ledger.mjs";
+import { coveringOrder, LOCK_FILE, lockProblem, promiseBreak, readChangeOrders } from "../../animation-preproduction/scripts/plan_lock.mjs";
+import { visualKindOf } from "../../animation-preproduction/scripts/shot_plan.mjs";
 
 export const KINDS = ["image", "clip", "music", "judge"];
 export const STATUS_COLUMNS = ["job_ready", "qc_ok", "judge_passed", "needs_review", "owner_accepted"];
@@ -34,7 +38,8 @@ const cell = (value) => (value === null || value === undefined ? "—" : String(
 
 /**
  * { slug, workdir, totals, saved, imported, spend, bought, takes, retakes, utilisation, cuts, external, judge,
- *   status, gates, stale, wallclock, needs_review }。
+ *   status, gates, stale, wallclock, needs_review, promises }。promises 沒有鎖定檔是 null，否則
+ * { lock, route, unit, shots: [{ id, promised, now, delivered, spent, kept, change, signed, delta, delta_s }], totals, orders, note }。
  */
 export async function runReport({ slug, root, workdir: workdirFlag, env = process.env, home }) {
   const project = loadProject({ slug, root });
@@ -145,6 +150,67 @@ export async function runReport({ slug, root, workdir: workdirFlag, env = proces
   const cuts = { ...saved, shots: entries.filter((entry) => entry.status === "cut").map((entry) => ({ id: entry.id, source: entry.source ?? null, saved_seconds: entry.saved_seconds ?? 0, saved_usd: entry.saved_usd ?? 0 })) };
   const judge = { calls: totals.judge_calls, usd: bought.judge.usd, by_stage: Object.fromEntries(Object.entries(spend.by_stage).filter(([, each]) => each.judge_calls > 0).map(([stage, each]) => [stage, each.judge_calls])) };
 
+  // 承諾 vs 交付（plan/lock.json，animation-preproduction 的開拍鎖定）：每鏡答應的類型、秒數、路線與一次的價，對 clips manifest
+  // 交了什麼、ledger 花了什麼；答應的 clip 變成 still／切／fit freeze 而 changes.jsonl 沒有站主點頭的變更單就標「沒簽」。
+  const lock = read(LOCK_FILE);
+  let promises = null;
+  if (lock && !lockProblem(lock)) {
+    const orders = readChangeOrders(workdir);
+    const unit = lock.totals?.clip?.unit ?? (lock.route === "server" ? "usd" : "credits");
+    const sceneById = new Map(doc.scenes.map((scene) => [scene.id, scene]));
+    const shots = (lock.order ?? Object.keys(lock.shots ?? {})).filter((id) => lock.shots?.[id]).map((id) => {
+      const locked = lock.shots[id];
+      const promised = { kind: locked.promise?.visual_kind ?? locked.visual_kind, buy_s: locked.promise?.buy_s ?? locked.buy_s ?? 0, route: locked.promise?.route ?? lock.route, fit: locked.promise?.fit ?? "auto", cost_one: locked.cost?.one ?? 0 };
+      const scene = sceneById.get(id);
+      const now = scene ? { kind: visualKindOf(scene), fit: scene.data?.fit ?? "auto" } : { kind: "removed", fit: "auto" };
+      const entry = clips?.shots?.[id];
+      const deliveredKind = entry?.file ? (entry.source ? "cut" : entry.still ? "still" : "clip") : null;
+      const delivered = deliveredKind ? { kind: deliveredKind, seconds: Number(entry.seconds || 0), external: deliveredKind === "clip" && Boolean(entry.imported_at || entry.provider === "external" || !ledgerClipIds.has(id)) } : null;
+      const booked = entries.filter((each) => each.kind === "clip" && each.id === id && each.status !== "cut");
+      const spent = { jobs: booked.length, seconds: booked.reduce((total, each) => total + Number(each.seconds || 0), 0), usd: round4(booked.reduce((total, each) => total + Number(each.cost_usd || 0), 0)), credits: booked.reduce((total, each) => total + Number(each.credits || 0), 0) };
+      const amount = unit === "usd" ? spent.usd : spent.credits;
+      const outcome = delivered?.kind ?? now.kind;
+      const downgrade = promiseBreak({ visual_kind: promised.kind, fit: promised.fit }, { kind: outcome, fit: now.fit });
+      const order = downgrade ? coveringOrder(orders, lock, id, downgrade) : null;
+      return {
+        id,
+        promised,
+        now,
+        delivered,
+        spent: { ...spent, unit, amount },
+        kept: outcome === promised.kind && !downgrade,
+        change: downgrade ? "downgrade" : outcome === promised.kind ? null : "upgrade",
+        signed: downgrade ? Boolean(order) : null,
+        delta: round4(amount - promised.cost_one),
+        delta_s: (delivered?.seconds ?? 0) - promised.buy_s,
+      };
+    });
+    const sumOf = (pick) => round4(shots.reduce((total, shot) => total + (pick(shot) ?? 0), 0));
+    const totals = {
+      shots: shots.length,
+      kept: shots.filter((shot) => shot.kept).length,
+      downgraded: shots.filter((shot) => shot.change === "downgrade").length,
+      unsigned: shots.filter((shot) => shot.change === "downgrade" && !shot.signed).length,
+      upgraded: shots.filter((shot) => shot.change === "upgrade").length,
+      pending: shots.filter((shot) => !shot.delivered).length,
+      promised_s: sumOf((shot) => shot.promised.buy_s),
+      delivered_s: sumOf((shot) => shot.delivered?.seconds),
+      promised_one: sumOf((shot) => shot.promised.cost_one),
+      expected: lock.totals?.clip?.expected ?? null,
+      spent: sumOf((shot) => shot.spent.amount),
+    };
+    totals.delta = round4(totals.spent - totals.promised_one);
+    promises = {
+      lock: lock.created_at ?? null,
+      route: lock.route,
+      unit,
+      shots,
+      totals,
+      orders: { accepted: orders.filter((order) => order?.previous_lock === lock.created_at && order.status === "accepted").length, settled: orders.filter((order) => (order?.status ?? "settled") === "settled").length },
+      note: "承諾是鎖定時每鏡答應的類型、買幾秒、路線與一次的價（plan/lock.json）；交付看 clips/manifest.json，花的看 ledger（伺服器 US$、網頁路線的點數）；差 ＝ 花的 − 承諾一次的價，負是省",
+    };
+  }
+
   // Five counts that are five different things: the server delivered, ffmpeg passed, the judge passed, nothing passed, the owner approved the gate.
   const readySheets = new Set(lookImages.filter((entry) => entry.status === "ready").map((entry) => entry.id));
   const readyImages = new Set(keyframeImages.filter((entry) => entry.status === "ready").map((entry) => String(entry.id).replace(/\/end$/, "")));
@@ -189,8 +255,13 @@ export async function runReport({ slug, root, workdir: workdirFlag, env = proces
     entry.last_at = run.at ?? entry.last_at;
   }
   const needsReview = takes.filter((take) => take.needs_review);
-  return { slug: doc.slug, workdir, totals, saved, imported, spend, bought, takes, retakes, utilisation, waste, cuts, external, judge, status, gates, stale, wallclock, needs_review: needsReview };
+  return { slug: doc.slug, workdir, totals, saved, imported, spend, bought, takes, retakes, utilisation, waste, cuts, external, judge, status, gates, stale, wallclock, needs_review: needsReview, promises };
 }
+
+const promisedCell = (shot) => `${shot.promised.kind}${shot.promised.buy_s ? ` ${shot.promised.buy_s} s` : ""}${shot.promised.fit !== "auto" ? ` fit ${shot.promised.fit}` : ""}`;
+const deliveredCell = (shot) => (shot.delivered ? `${shot.delivered.kind}${shot.delivered.seconds ? ` ${shot.delivered.seconds} s` : ""}${shot.delivered.external ? "（外部）" : ""}` : `還沒做（現在 ${shot.now.kind}${shot.now.fit !== "auto" ? ` fit ${shot.now.fit}` : ""}）`);
+const keptCell = (shot) => (shot.kept ? "守住" : shot.change === "downgrade" ? `改小${shot.signed ? "（有變更單）" : "（沒簽變更單）"}` : "升級");
+const signed = (value) => `${value >= 0 ? "+" : ""}${value}`;
 
 export function renderReport(report) {
   const out = [];
@@ -209,6 +280,13 @@ export function renderReport(report) {
   out.push(`剪接：${report.cuts.cuts} 鏡從別鏡的片段切，省 ${report.cuts.clip_seconds} s、${usd(report.cuts.usd)}${report.cuts.shots.length ? `：${report.cuts.shots.map((cut) => `${cut.id} ← ${cut.source?.shot ?? "?"} @ ${cut.source?.from_s ?? "?"} s`).join("、")}` : ""}`);
   out.push(`外部片段（clips import 匯入的，或手放、ledger 沒有它的 job）：${report.external.length ? report.external.map((each) => `${each.id}（${each.file}，${each.seconds ?? "?"} s${each.route ? `，${each.route}` : ""}${each.credits !== null ? `，${each.credits} credits ${each.plan ?? ""}` : ""}${each.imported ? "" : "，手放"}）`).join("、") : "無"}${report.imported.clips ? `；帳本記的匯入：${report.imported.clips} 筆 ${report.imported.clip_seconds} s、${report.imported.credits} credits、${usd(report.imported.usd)}` : ""}`);
   out.push(`judge：${report.judge.calls} 次 ${usd(report.judge.usd)}（${Object.entries(report.judge.by_stage).map(([stage, calls]) => `${stage} ${calls}`).join("、") || "無"}）`);
+  if (report.promises) {
+    const { totals: sums } = report.promises;
+    out.push("");
+    out.push(`承諾 vs 交付（plan/lock.json 鎖定 ${report.promises.lock ?? "?"}，${report.promises.route}，${report.promises.unit}）：`);
+    for (const shot of report.promises.shots) out.push(`  ${shot.id.padEnd(12)} 承諾 ${promisedCell(shot)} → ${deliveredCell(shot)}；花 ${shot.spent.amount}（${shot.spent.jobs} 筆），差 ${signed(shot.delta)}；${keptCell(shot)}`);
+    out.push(`  整集：守住 ${sums.kept}／${sums.shots}，改小 ${sums.downgraded}（沒簽 ${sums.unsigned}），升級 ${sums.upgraded}，還沒做 ${sums.pending}；承諾 ${sums.promised_s} s、一次 ${sums.promised_one}${sums.expected !== null ? `、期望 ${sums.expected}` : ""}；交付 ${sums.delivered_s} s、花 ${sums.spent}；差 ${signed(sums.delta)} ${report.promises.unit}（負是省）；變更單：點頭未重鎖 ${report.promises.orders.accepted}、已重鎖 ${report.promises.orders.settled}`);
+  }
   out.push("");
   out.push("五種狀態（各算各的）：    " + STATUS_COLUMNS.map((column) => STATUS_LABELS[column]).join("  "));
   for (const stage of ["characters", "keyframes", "clips"]) out.push(`  ${stage.padEnd(10)} ${String(report.status[stage].shots).padStart(3)}  ` + STATUS_COLUMNS.map((column) => cell(report.status[stage][column]).padStart(10)).join("  "));
@@ -264,6 +342,16 @@ export function renderMarkdown(report, now = new Date()) {
   out.push(`- 利用率（素材）：每鏡 ${report.utilisation.shots.map((shot) => `${shot.id} ${percent(shot.utilisation)}${shot.external ? "（外部）" : ""}`).join("、") || na}；整集 ${percent(report.utilisation.overall_adopted)}（採用的 take）／${percent(report.utilisation.overall_bought)}（全部買到，不含外部）；切鏡省下 ${report.cuts.clip_seconds} 秒／${usd(report.cuts.usd)}`);
   out.push(`- 白跑的輪：結束碼 2 ${na} 次、3 ${na} 次（state.json 不記結束碼；看 shell 紀錄）`);
   out.push("");
+  if (report.promises) {
+    const { totals: sums } = report.promises;
+    out.push("## 承諾與交付（plan/lock.json）");
+    out.push(`鎖定 ${report.promises.lock ?? na}，${report.promises.route}，單位 ${report.promises.unit}；守住 ${sums.kept}／${sums.shots}，改小 ${sums.downgraded}（沒簽變更單 ${sums.unsigned}），升級 ${sums.upgraded}，還沒做 ${sums.pending}；承諾一次 ${sums.promised_one}${sums.expected !== null ? `、期望 ${sums.expected}` : ""}，花 ${sums.spent}，差 ${signed(sums.delta)}（負是省）；變更單：點頭未重鎖 ${report.promises.orders.accepted}、已重鎖 ${report.promises.orders.settled}`);
+    out.push("");
+    out.push("| 鏡 | 承諾 | 交付 | 花 | 差 | 守住？ |");
+    out.push("| --- | --- | --- | ---: | ---: | --- |");
+    for (const shot of report.promises.shots) out.push(`| ${shot.id} | ${promisedCell(shot)}（${shot.promised.route}） | ${deliveredCell(shot)} | ${shot.spent.amount} | ${signed(shot.delta)} | ${keptCell(shot)} |`);
+    out.push("");
+  }
   out.push("## 重拍的原因分類（每個 needs_review 或退回的 take 一列）");
   out.push("| 鏡 | take | 退回的話（judge problems 或人看的） | 類別：內容／隨機／判讀／QC／工具 | 這次怎麼修 | 修了有沒有收斂 |");
   out.push("| --- | --- | --- | --- | --- | --- |");

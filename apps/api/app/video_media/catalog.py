@@ -44,6 +44,13 @@ class MediaModel:
     # How many reference images (character sheets, style frames) one request may carry; a clip
     # model given 0 has its references refused by the jobs layer (jobs._request_fields).
     reference_images: int = 0
+    # How many of those an image model reads as a style sample (a style plate, the owner's
+    # style frames; role "style"): the Gemini adapter forwards them with its own instruction
+    # (providers/gemini_images.py), the MiniMax adapter sends only a character reference
+    # (providers/minimax.py), so image-01 never sees a plate. The tools draw a plate only for a
+    # model that takes one (tools/video/media/keyframes.mjs); on 2026-10-06 three slides videos
+    # blocked on plates image-01 could not follow.
+    style_references: int = 0
     native_audio: bool = False
     usd_per_second: float | None = None
     usd_per_image: float | None = None
@@ -68,6 +75,7 @@ MEDIA_CATALOG: tuple[MediaModel, ...] = (
             "1K 到 2K 每張 US$0.134（2026-09-28 查 Google 價目頁）"
         ),
         reference_images=14,
+        style_references=1,
         usd_per_image=0.134,
         usd_per_image_2k=0.134,
     ),
@@ -84,6 +92,7 @@ MEDIA_CATALOG: tuple[MediaModel, ...] = (
             "1K 每張 US$0.067、投影片插圖的 2K 每張 US$0.101（2026-09-28 查 Google 價目頁）"
         ),
         reference_images=5,
+        style_references=1,
         usd_per_image=0.067,
         usd_per_image_2k=0.101,
     ),
@@ -156,9 +165,16 @@ MEDIA_CATALOG: tuple[MediaModel, ...] = (
     # durations (tools/animation-production.test.mjs compares them), and no H3 clip has been
     # made yet: 11 to 15 seconds would raise the price of one clip to US$1.95 on a route whose
     # request has not been accepted live once. Widen it with that check.
-    # The v2 page (read again 2026-10-05) allows 9 reference images in reference-to-video only:
-    # image-to-video and reference-to-video are mutually exclusive, and every clip here has a
-    # first frame (ClipJobIn.first_frame), so H3 takes 0 and its references are refused.
+    # The v2 page (read again 2026-10-05) allows 9 reference images in reference-to-video only
+    # (providers/minimax.py builds that body; its V2_MAX_REFERENCE_IMAGES is that 9), and
+    # image-to-video and reference-to-video are mutually exclusive. This number is what may
+    # ride beside a first frame: the jobs layer refuses more (jobs._request_fields) and the
+    # clips tool sends up to this many (tools/video/media/clips.mjs). Every clip job has a
+    # first frame (ClipJobIn.first_frame is required) and the adapter refuses a reference image
+    # beside one, so H3 keeps 0: a sheet is refused unspent rather than sent and refused. It
+    # becomes the adapter's maximum once a clip job can leave the first frame out and the live
+    # check (2026-10-05-minimax-h3-v2-live-check) has seen the endpoint take the references;
+    # tests/test_video_media_providers.py pins the coupling.
     MediaModel(
         "MiniMax-H3",
         "minimax",
@@ -166,7 +182,8 @@ MEDIA_CATALOG: tuple[MediaModel, ...] = (
         "MiniMax H3（Hailuo 3.0）",
         note=(
             "官方 4 到 15 秒，這裡開 4 到 10；官方的 9 張參考圖只在參考生影片，"
-            "不准與首格同送，片段一定有首格，所以不收參考圖；2K 每秒 US$0.13、768p US$0.08"
+            "不准與首格同送（adapter 已能組那種請求），片段一定有首格，所以不收參考圖；"
+            "2K 每秒 US$0.13、768p US$0.08"
         ),
         resolutions=("768p", "2k"),
         durations=_SECONDS_4_TO_10,
