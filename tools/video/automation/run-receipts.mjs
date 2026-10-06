@@ -24,6 +24,9 @@ export const AUTO_ARCHIVE_REASON = "inputs changed; the saved run is terminal";
 // The same when the server answered the job lookup with a settled 4xx (`gone`): no job under
 // this token (404 after a re-pair), not the receipt's job (409 input hash), a malformed identity.
 export const jobGoneReason = (gone) => `the server no longer has this job (${gone.status}${gone.code ? ` ${gone.code}` : ""})`;
+// The kind of block (flow.mjs `blocked_kind`, `job_gone:<stage>`) of a video whose running
+// journal met that answer outside a retry: the owner's retry of it is what may archive the journal.
+export const JOB_GONE_KIND = "job_gone:";
 const validGone = (gone) => object(gone) && Number.isInteger(gone.status) && gone.status >= 400 && gone.status < 500 && typeof gone.code === "string";
 const requireThat = (condition, message) => { if (!condition) throw new RunReceiptError(message); };
 const object = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
@@ -286,17 +289,40 @@ export function runReceiptStore(ctx, site) {
         if (record.receipt?.status === "uncertain") this.archive({ file, record });
       }
     },
-    /** What an owner retry may touch; a plain failed journal is listed so the retry can clear it. */
-    retryCandidates(slug, { requestId = null, reason = "" } = {}) {
+    /**
+     * What an owner retry may touch; a plain failed journal is listed so the retry can clear it.
+     * `kind` is what blocked the video: for `job_gone:<stage>` (the lookup of that stage's saved
+     * job answered that the server no longer has it) the stage's queued or running journal is
+     * listed too, under the owner's request id only, so the retry can look it up once more and
+     * archive it as gone. Nothing else may touch a journal whose job might still be running.
+     */
+    retryCandidates(slug, { requestId = null, reason = "", kind = null } = {}) {
       const dir = directory(slug);
       if (!existsSync(dir)) return [];
+      const goneStage = UUID.test(requestId ?? "") && typeof kind === "string" && kind.startsWith(JOB_GONE_KIND) ? kind.slice(JOB_GONE_KIND.length) : null;
       return readdirSync(dir).filter((name) => name.endsWith(".json")).map((name) => {
         const file = path.join(dir, name);
         return { file, record: read(file) };
       }).filter((entry) => entry.record.receipt?.status === "uncertain" || entry.record.receipt?.status === "failed" && !policyHeld(entry.record)
         || UUID.test(requestId ?? "") && policyHeld(entry.record) || UUID.test(requestId ?? "")
         && typeof reason === "string" && reason.includes("inputs changed")
-        && ["queued", "running", "succeeded"].includes(entry.record.receipt?.status) && !entry.record.adopted);
+        && ["queued", "running", "succeeded"].includes(entry.record.receipt?.status) && !entry.record.adopted
+        || goneStage !== null && goneStage !== "" && entry.record.request.stage === goneStage
+        && ["queued", "running"].includes(entry.record.receipt?.status) && !entry.record.adopted);
+    },
+    /**
+     * The saved runs of a video whose answer is still to be taken, as [{ stage, variant, status }]:
+     * prepared and perhaps sent (status null), queued or running on the server, or succeeded and
+     * not yet adopted. A failed or uncertain one is not listed (the next request clears the
+     * first, the owner looks at the second), nor a policy hold. Read only: flow.mjs asks which
+     * videos have a discussion of their screenplay unfinished, and nothing here is changed.
+     */
+    untaken(slug) {
+      const dir = directory(slug);
+      if (!existsSync(dir)) return [];
+      return readdirSync(dir).filter((name) => name.endsWith(".json")).map((name) => read(path.join(dir, name)))
+        .filter((record) => !record.adopted && !policyHeld(record) && (record.receipt === null || ["queued", "running", "succeeded"].includes(record.receipt.status)))
+        .map((record) => ({ stage: record.request.stage, variant: record.request.variant, status: record.receipt?.status ?? null }));
     },
   };
 }

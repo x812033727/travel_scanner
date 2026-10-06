@@ -138,6 +138,11 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       if (PAUSE_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code });
       if (paid && response.status >= 500 && !settled.has(problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status, what);
       last = new AutomationError(message, { status: response.status, code: problem.code });
+      // When the server said to come back (Retry-After in seconds), the error keeps it: the
+      // sleeps here are capped at two minutes each, and flow.mjs defers the video no sooner than
+      // this. Until 2026-10-06 only a durable writer's failed receipt carried it.
+      const after = Number(response.headers.get("retry-after"));
+      if (Number.isFinite(after) && after > 0) last.retry_after = after;
       if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
       await sleep(delayMs(response, attempt));
     }
@@ -244,6 +249,11 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
           }
           const error = new AutomationError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code,
             who: response.status === 401 || OWNER_CODES.has(problem.code) || response.status === 409 ? "owner" : "service" });
+          // The lookup of a saved job that a settled 4xx answers (lookupReceipt has the same): the
+          // server no longer has it. The journal stays, since after a re-pair the old job may
+          // still be running under the old token; flow.mjs blocks the video as `job_gone`, and
+          // only the owner's retry of that block sets the journal aside (retryRuns).
+          if (known && settledLookup(response.status) && !OWNER_CODES.has(problem.code)) error.gone = { status: response.status, code: problem.code };
           if (error.who === "owner" || response.status < 429 || PAUSE_CODES.has(problem.code)) throw tagged(error, body);
           lastProblem = error.message;
           failures++;
@@ -291,6 +301,9 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   async function retryRuns(slug, authorization = {}) {
     try {
       const confirmed = [];
+      // `authorization.kind` is what blocked the video (flow.mjs blockedKindOf): for
+      // `job_gone:<stage>` the queued or running journals of that stage are candidates too, and
+      // the lookup below either finds the job after all or archives the journal as gone.
       const candidates = receipts.retryCandidates(slug, authorization);
       // A plain failure is settled on the server: nothing to look up, and nothing to keep. It
       // is cleared below, after the STOP checks, and does not make a policy retry ambiguous.
@@ -375,8 +388,26 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     adoptRuns: (slug, proof) => receipts.adopt(slug, proof),
     /** Only after this caller's completed unit has saved its artifacts and state. */
     settleRuns: (slugs) => receipts.settle(slugs),
-    /** An explicit owner retry clears uncertain and plain failed runs; a queued/running one makes it wait (RUN_PENDING). */
+    /**
+     * An explicit owner retry clears uncertain and plain failed runs; a queued/running one makes it
+     * wait (RUN_PENDING). `{ requestId, reason, format, kind }`: a block of kind `job_gone:<stage>`
+     * also has that stage's queued or running journal looked up, and archived when the server
+     * still answers that it has no such job.
+     */
     retryRuns,
+    /**
+     * The saved runs of a video whose answer is still to be taken, [{ stage, variant, status }]
+     * (run-receipts.mjs untaken); nothing is sent or changed. A journal that cannot be read lists
+     * none: the stage that owns it meets it, and blocks the video with the reason.
+     */
+    untakenRuns: (slug) => {
+      try {
+        return receipts.untaken(slug);
+      } catch (error) {
+        if (error instanceof RunReceiptError) return [];
+        throw error;
+      }
+    },
     /** Report the video's title, stage and checklist to /admin/videos. */
     report: (slug, project) => request("PUT", `reviews/${slug}`, project),
     /** Submit one review; the same content twice returns the review that exists. */
