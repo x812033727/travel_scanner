@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-attach-a-second-evidence-source-to
 title: Attach a second evidence source to first-party news candidates
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-news-admin-followups
 claimed_at: 2026-10-06T01:15:06Z
 created_at: 2026-09-24T00:27:44Z
-completed_at:
+completed_at: 2026-10-06T01:21:34Z
 branch: claude/news-admin-followups
 depends_on: []
 scope:
