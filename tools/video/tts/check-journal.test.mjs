@@ -247,6 +247,8 @@ function site({ transcribe = [], judge = [] } = {}) {
       const answer = judge.shift();
       return answer ? answer(body) : Response.json({ results: body.lines.map((line) => ({ id: line.id, noul: 0.95 })) });
     }
+    // A site from before speech/align: tts asks it first for an Azure voice and is refused, unpaid.
+    if (url.endsWith("/speech/align")) return new Response("not found", { status: 404 });
     posts.speech += 1;
     // 200 ms a character, the voices' pace: the fixture's chapters then run the 10 s tts requires.
     const audio = concatSamples(body.segments.flatMap((segment) => [
