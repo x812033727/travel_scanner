@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-the-upload-package-check-throws-on
 title: The upload package check throws on a metadata.json whose caption list is not a list
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-video-package-check
 claimed_at: 2026-10-05T23:41:09Z
 created_at: 2026-10-05T17:09:04Z
-completed_at:
+completed_at: 2026-10-06T00:25:32Z
 branch: claude/video-package-check
 depends_on: []
 scope:

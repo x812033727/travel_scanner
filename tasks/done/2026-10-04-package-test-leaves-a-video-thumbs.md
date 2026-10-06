@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-package-test-leaves-a-video-thumbs
 title: Package test leaves a video-thumbs directory in TEMP
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-video-package-check
 claimed_at: 2026-10-05T23:41:43Z
 created_at: 2026-10-04T15:02:04Z
-completed_at:
+completed_at: 2026-10-06T00:25:41Z
 branch: claude/video-package-check
 depends_on:
   - 2026-10-03-other-tool-tests-still-leave-temporary
