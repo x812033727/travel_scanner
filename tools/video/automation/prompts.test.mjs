@@ -5,7 +5,7 @@ import test from "node:test";
 import { cuePieces } from "../core/captions.mjs";
 import { enFixture, fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
 import { eachLine } from "../core/schema.mjs";
-import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SOURCE_INSTRUCTIONS, translationContext, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
+import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, translationContext, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
 import { REGISTER_RULES } from "./register.mjs";
 import { documentPayload } from "./series.mjs";
 
@@ -13,8 +13,11 @@ test("the slides writer is told the shot template, the 5 to 8 second cadence, th
   const writer = instructionsFor("writer", "slides");
   assert.equal(writer, INSTRUCTIONS.writer);
   assert.match(writer, /- shot \{prompt, camera, visual: "still", transition\?\}/);
-  assert.match(writer, /at most 1000 characters/);
+  assert.match(writer, /at most 1000 characters, or at\s+most "prompt_budget_chars" when the payload gives one \(the look and the image model take the\s+rest of the model's limit; a shorter prompt beats a fuller one\)/);
   assert.match(writer, /push in, pull out, pan left, pan\s+right, tilt up, tilt down, drift/);
+  // The camera words the worker counts into the first draft's budget are the ones the guide names.
+  assert.deepEqual(SLIDES_CAMERA_WORDS, ["push in", "pull out", "pan left", "pan right", "tilt up", "tilt down", "drift"]);
+  for (const word of SLIDES_CAMERA_WORDS) assert.ok(writer.includes(word), word);
   // A Short covers 9:16 from the 16:9 picture and keeps the middle 32% of its width.
   assert.match(writer, /Keep the subject in the middle\s+third of the frame: a Short crops the picture to 9:16 and keeps only that strip/);
   assert.doesNotMatch(writer, /middle\s+60%|off-centre/);

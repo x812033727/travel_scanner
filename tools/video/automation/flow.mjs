@@ -20,7 +20,7 @@ import { writeAnimeActs } from "./anime-write.mjs";
 import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { craftChecks } from "../core/craft.mjs";
-import { EXPLAINER_PRESET, hasCast, illustrated, slidesPresetFor } from "../core/drama.mjs";
+import { EXPLAINER_PRESET, hasCast, illustrated, resolveLook, slidesPresetFor } from "../core/drama.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
@@ -39,12 +39,13 @@ import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
 import { buildSheet, SHEET_PARTS, sheetContext, withoutContext } from "../i18n/cli.mjs";
 import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
+import { imageModelVendor, imagePromptLimit, shotPromptBudget } from "../media/prompt-budget.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
-import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
+import { instructionsFor, parseAnswer, references, SLIDES_CAMERA_WORDS } from "./prompts.mjs";
 import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { assembleSheet, clearUnits, readUnits, refusedUnits, sheetUnits, UNIT_CHARS, UNIT_LINES, unitGaps, unitKey, unitVideo, writeUnits } from "./sheet-units.mjs";
@@ -84,6 +85,26 @@ export const MAX_PROMPT_FIX_ROUNDS = 2;
 // the server stopped answering for (every seed's request hash spent its attempts) shifts the
 // stage's seeds, and `media()` passes the shift from state.seed_offsets.
 const SEED_OFFSET_COMMANDS = new Set(["keyframes"]);
+// The most a shot prompt may have whatever the image model (core/drama.mjs LIMITS.prompt, the
+// writer's own figure), and the camera word that takes the most of a shot's request: the first
+// draft is told the budget of the model that will draw it, counted as media/keyframes.mjs
+// counts it, so a MiniMax video's prompts are not written to a limit the model has not got.
+const WRITER_PROMPT_MAX = 1000;
+const LONGEST_CAMERA_WORD = SLIDES_CAMERA_WORDS.reduce((longest, word) => (word.length > longest.length ? word : longest));
+
+/**
+ * The vendor of the image model the server will draw a slides video with, from the worker's
+ * settings, which name the slides model by id alone: the slides' own model while their switch is
+ * on, else the drama's choice (apps/api/app/video_automation/settings.py slides_image_choice,
+ * media/stages.mjs choiceFor); null when nothing says.
+ */
+export function slidesImageVendor(settings) {
+  const slides = settings?.slides ?? {};
+  const drama = settings?.drama ?? {};
+  const own = slides.slides_media_enabled ? slides.slides_image_model : null;
+  if (own) return imageModelVendor(own, own === drama.image_model ? drama.image_provider ?? null : null);
+  return imageModelVendor(drama.image_model, drama.image_provider ?? null);
+}
 // What a blocked video's reason reads as, for a state from before `blocked_kind` was recorded
 // (the nine host videos blocked on 2026-10-06): the counter an owner retry has to reset.
 // The server's spent attempts first: a stage blocked on them by `media()` (exit 3) or by
@@ -1811,6 +1832,13 @@ export class Automation {
     if (result.code === 0) {
       this.cleared(state, command);
       delete state.prompt_fixes?.[command];
+      // A picture kept with the judge's remarks (acceptBestPictures) that a rewritten prompt had
+      // drawn again since is a judged picture now, not a kept one.
+      if (command === "keyframes" && state.accepted_pictures?.length) {
+        const manifest = readJson(path.join(this.workdir(state.slug), ARTIFACTS.keyframes), null);
+        state.accepted_pictures = state.accepted_pictures.filter((picture) => Array.isArray(manifest?.shots?.[picture.id]?.accepted_with_problems));
+        if (!state.accepted_pictures.length) delete state.accepted_pictures;
+      }
       saveState(this.workdir(state.slug), state);
       await report(ctx, this.api, state, `${command} done`);
       return `${state.slug}: ${command} done`;
@@ -1857,7 +1885,12 @@ export class Automation {
     // A kind whose every seed the server stopped answering for (the fixes did not change the
     // request enough) is retried on other seeds; any other, with its rounds given back.
     const blockedKind = /video_media_job_exhausted|已經失敗 \d+ 次/.test(summary) ? `media_exhausted:${kind}` : `prompt_fixes:${kind}`;
-    if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`, blockedKind);
+    if (rounds >= MAX_PROMPT_FIX_ROUNDS) {
+      // Illustrated slides keep the judge's best take of each failing shot and go on to the cut,
+      // which the owner reviews; a drama's pictures, and a storyboard the owner sent back, wait here.
+      const kept = kind === "keyframes" && !ownerNote ? await this.acceptBestPictures(state, found, rounds) : null;
+      return kept ?? this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`, blockedKind);
+    }
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     if (state.format && video.format && state.format !== video.format) return this.block(state, `prompt repair format conflicts: auto.json is ${state.format}, video.json is ${video.format}`);
@@ -1876,6 +1909,34 @@ export class Automation {
     if (ownerNote) state.notes.push(`${kind} sent back: ${ownerNote}`);
     saveState(workdir, state);
     return `${state.slug}: ${kind} prompts fixed (round ${rounds + 1}) for ${found.map((target) => target.id).join(", ") || what}; ${kind} runs again next`;
+  }
+
+  /**
+   * Once the prompt fixes are spent, illustrated slides keep the judge's best take of every shot
+   * still failing (media/keyframes.mjs --accept-best; the owner's decision of 2026-10-06: a video
+   * no longer blocks on its pictures) and go on to the cut, which `gate()` sends for the owner's
+   * manual review with the kept pictures listed (review/sync.mjs). Returns the line, or null when
+   * this is not such a video, or a failing shot has no picture at all (every seed refused: that
+   * one still needs a prompt, and the video waits as before).
+   */
+  async acceptBestPictures(state, found, rounds) {
+    const workdir = this.workdir(state.slug);
+    const video = readJson(path.join(docDir(state.slug, this.ctx.root), "video.json"), null);
+    if (!video || !illustrated(video) || isLongAnime(state)) return null;
+    const manifest = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
+    const ids = found.map((target) => target.id);
+    if (!ids.length || !ids.every((id) => manifest?.shots?.[id]?.file)) return null;
+    const channel = this.ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", this.ctx.env.VIDEO_BROWSER_CHANNEL] : [];
+    const result = await run(this.ctx, ["keyframes", "--slug", state.slug, ...channel, "--accept-best", ids.join(",")]);
+    if (result.code !== 0) return this.block(state, `keyframes could not keep the pictures after ${rounds} prompt fixes: ${lastLine(result.out)}`, "prompt_fixes:keyframes");
+    const pictures = found.map((target) => ({ id: target.id, problems: target.problems ?? [] }));
+    state.accepted_pictures = [...(state.accepted_pictures ?? []).filter((picture) => !ids.includes(picture.id)), ...pictures];
+    // The rounds were spent on these pictures: a prompt the owner rewrites later gets its own.
+    delete state.prompt_fixes?.keyframes;
+    this.cleared(state, "keyframes");
+    state.notes.push(`keyframes: ${ids.length} pictures kept with the judge's remarks after ${rounds} prompt fixes (${ids.join(", ")}); the final cut goes to the owner`);
+    saveState(workdir, state);
+    return `${state.slug}: ${ids.length} pictures kept with the judge's remarks after ${rounds} prompt fixes; the final cut goes to the owner`;
   }
 
   /**
@@ -1958,7 +2019,7 @@ export class Automation {
     const brief = readFileSync(path.join(dir, "brief.md"), "utf8");
     const option = outlineOptions(brief).find((each) => each.key === state.chosen) ?? null;
     const sources = await readSources(this.read, siteSources(state.source_guide, state.source_urls, this.ctx.root));
-    const answer = isLongAnime(state) ? await this.animeRewrite(state, { brief, chosen_option: option, sources }) : await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const answer = isLongAnime(state) ? await this.animeRewrite(state, { brief, chosen_option: option, sources }) : await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
     const problem = await this.saveAndLint(state, answer);
     saveState(this.workdir(state.slug), state);
@@ -1969,6 +2030,25 @@ export class Automation {
     saveState(this.workdir(state.slug), state);
     await report(this.ctx, this.api, state, "fact-checked");
     return `${state.slug}: script drafted and passes lint${shorts ? `; ${shorts}` : ""}`;
+  }
+
+  /**
+   * What a slides draft's shot prompts may have (`prompt_budget_chars`), for the image model the
+   * settings will draw them with: the print look the video will get (slidesPresetFor), the
+   * longest camera word the writer may choose and that model's limit, counted as
+   * media/keyframes.mjs counts a shot's request; never more than the writer's own 1000. A drama
+   * and a story are drawn otherwise and hear nothing; a look that leaves no room at all is the
+   * keyframes stage's to refuse, with the owner's number.
+   */
+  draftBudget(state) {
+    if (state.format === "drama" || state.story) return {};
+    try {
+      const limit = imagePromptLimit({ provider: slidesImageVendor(this.settings) }, null);
+      const budget = shotPromptBudget({ look: resolveLook({ preset: slidesPresetFor(state.slug) }), camera: LONGEST_CAMERA_WORD, cast: null, limit });
+      return { prompt_budget_chars: Math.min(budget, WRITER_PROMPT_MAX) };
+    } catch {
+      return {};
+    }
   }
 
   /**
@@ -2867,7 +2947,10 @@ export class Automation {
   async gate(state, gate, file) {
     const review = await this.decision(state, gate, file);
     if (!review) {
-      const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", gate]);
+      // The cut of a video whose pictures were kept with the judge's remarks (acceptBestPictures)
+      // is the owner's to look at whatever the quality check says (review/sync.mjs manual_review).
+      const manual = gate === "final" && state.accepted_pictures?.length ? ["--manual-review"] : [];
+      const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", gate, ...manual]);
       if (pushed.code !== 0) return this.submissionFailure(state, gate, pushed);
       return `${state.slug}: ${gate} sent to /admin/videos (${lastLine(pushed.out)})`;
     }

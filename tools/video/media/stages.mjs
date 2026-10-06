@@ -81,6 +81,20 @@ export function imageStatus(status, series) {
 
 export const sameImage = (left, right) => left?.provider === right?.provider && left?.model === right?.model;
 
+/**
+ * Whether the server's image choice for `format` reads a style reference (a style plate, the
+ * owner's style frames; role "style"): the catalog's `style_references` on the chosen model
+ * (apps/api/app/video_media/catalog.py), and on a server from before it said, the vendor: only
+ * the Gemini adapter forwards a style reference, the MiniMax one sends a character reference
+ * alone. A model that takes none is not drawn a plate it would never see (keyframes.mjs); its
+ * style is judged from the look's text.
+ */
+export function takesStyleReference(status, format = null) {
+  const entry = chosenModel(status, "image", format);
+  if (typeof entry?.style_references === "number") return entry.style_references > 0;
+  return choiceFor(status, "image", format)?.provider === "gemini";
+}
+
 // Old story artifacts could be labeled with the settings model instead of the series model.
 // Keep this boundary even after an override is cleared (the stored field is then null).
 export const imageSelectionVersion = (series) => Object.hasOwn(series ?? {}, "image_model") ? 1 : 0;

@@ -433,6 +433,20 @@ lint（`core/drama.mjs` `cueCoverageProblems`，經 `core/lint.mjs` 進警告）
 - `dubs/plan.mjs` 的 `dubVoice` 展開 `doc.voice`，計畫會跟進每個語言配音的 style（提示本來就跟進漫劇的配音）；要留給配音還是在那裡拿掉，再決定。
 - `voice-audition.md` 的試聽樣稿應該改成最吃表演的一段而不是開頭（票的 DoD 第四項；那份檔案不在票的範圍）。
 
+## 樣張只畫給吃得下的模型；修兩輪沒過的圖保留到成片關卡（2026-10-06）
+
+2026-10-06 查正式站：九支卡住的投影片影片裡有三支（threads-parental、gemini-gems、sec-ai-trading）卡在「rendered as a photorealistic image instead of a 2D risograph illustration; … differ from the style plate」。站主 10-04 把插圖模型換成 MiniMax `image-01`，而伺服器的 MiniMax adapter（`providers/minimax.py`）只轉送 `character` 參考圖，`style` 的樣張它根本沒看到；judge 卻拿樣張比對，每張都打回，改提示詞救不了。站主決定留 image-01、修相容，並且「關鍵影格修兩輪仍沒過就不要再卡住」。
+
+| 改了什麼 | 怎麼做 | 在哪裡 |
+| --- | --- | --- |
+| 樣張只畫給吃得下的模型 | 目錄的 `MediaModel` 多 `style_references`（兩個 Gemini 圖模型 1、image-01 0），`/media/status` 的 `models.images[].style_references` 帶出來；工具端 `takesStyleReference(status, format)` 讀它（舊伺服器沒這欄時 Gemini 才算 1）。沒樣張時不呼叫 `stylePlate`、不送 `style` 參考圖、manifest 沒有 `plate`、judge 的 `style` 題改用文字版（「與 context 描述的畫風不同」）、judge 檔案不附樣張；stdout 印 `style plate: skipped; minimax/image-01 takes no style reference, the style is judged from the look's text`。參考圖清單變了 → `imageKey` 變 → 受影響的影片重畫一次（image-01 每張 US$0.0035） | `apps/api/app/video_media/catalog.py`、`video_automation/schemas.py`；`media/stages.mjs`、`media/keyframes.mjs` |
+| 修兩輪仍沒過 → 保留最好的一張往下做 | `keyframes --accept-best <id,…\|all>`：有圖的 shot 設 `needs_review: false`、`problems` 搬到 `accepted_with_problems`、`judge` 與 `takes` 原樣保留，重畫聯絡表（標籤「保留」）；只有拒絕紀錄沒圖的 shot 拒絕接受（還是要改提示詞）。工人端 `fixPrompts` 在 `rounds >= MAX_PROMPT_FIX_ROUNDS`、kind 是 keyframes、投影片、不是站主退件、每個失敗 shot 都有圖時跑它，記 `auto.json.accepted_pictures = [{id, problems}]`、`notes` 加一行、`prompt_fixes.keyframes` 歸零（站主之後改提示詞重畫，有自己的兩輪）。漫劇、沒圖的 shot、站主退回的分鏡照舊卡住 | `media/keyframes.mjs` `acceptBest`；`automation/flow.mjs` `acceptBestPictures` |
+| 分鏡關卡自己過 | `review-push --gate storyboard` 對保留的 shot 送 `accepted: true, needs_review: false`，頂層 `judge.overall`／`problems` 只算其他 shot（全部保留時 `overall: null`），另附 `payload.accepted = [{id, overall, problems}]`；伺服器 `storyboard_check_passed` 對 `accepted: true` 的 shot 略過分數與 problems（圖與 sha 還是要有）。`keyframeProblems` 對有 `accepted_with_problems` 的 shot 不再把 `judge.passed === false` 算成待審 | `review/sync.mjs`；`apps/api/app/video_automation/settings.py`；`core/state.mjs` |
+| 成片關卡交給站主 | 工人送成片時帶 `--manual-review`；`review-push --gate final` 自己也會從 manifest 讀 `accepted_with_problems`（有就當 manual review，不靠旗標），`manual_review_reason` 寫「有 N 張插圖未通過 judge（ids），需站主審看成片」、payload 附 `accepted_pictures`、summary 結尾「N 張插圖未通過 judge（ids），需站主審看」，站上就不會從 `payload.qa` 自動核准。QA 的 `assemble` 項掛 `warnings` 列出保留的 shot（不新增項目，`ITEM_IDS` 與伺服器鎖死） | `automation/flow.mjs` `gate`；`review/sync.mjs` `acceptedPicturesOf`；`qa/cli.mjs` |
+| 第一稿就知道預算 | 工人在 `write()` 給撰稿 `prompt_budget_chars`：由設定的投影片圖模型（`slides.slides_image_model`，開關關著就是漫劇的模型；工具端 `IMAGE_MODEL_VENDORS` 對 id 查 vendor）、這支會拿到的版畫預設（`slidesPresetFor(slug)`）、最長的運鏡詞算，上限 1000；撰稿提示詞改成「at most 1000 characters, or at most "prompt_budget_chars" when the payload gives one」。品牌故事的 `fixStoryPrompts` 也帶 `prompt_budget_chars` | `automation/flow.mjs` `draftBudget`、`media/prompt-budget.mjs`、`automation/prompts.mjs`、`automation/story.mjs` |
+
+部署後要驗的事：三支卡在樣張的影片站主按重試後，工人日誌有 `style plate: skipped`、判定改用文字版；一支修兩輪仍沒過的影片日誌有 `N pictures kept with the judge's remarks after 2 prompt fixes`、`auto.json` 有 `accepted_pictures`、分鏡自動核准、成片卡片 summary 列出保留的 shot 並等站主。
+
 ## 沒做、留給後面
 
 - 圖庫照片（§圖庫照片 的「工具端」）還差一件接線：`tools/video/cli.mjs` 的 `AREAS` 沒列 `stock`，現在要直接跑 `media/cli.mjs`（web app 的轉送白名單已由票 `2026-10-05-web-app-forwards-stock-and-locate` 補上）。`lint` 不算說明欄的「圖片來源」位元組（`core/lint.mjs` 不讀 `assets[]`），稿子要自己留；`docs/videos/README.md` §說明欄 的四個部分還沒列第五個「圖片來源」。工人的撰稿提示詞還不會自己去搜照片，目前是代理或站主手動 `stock search`／`stock fetch` 再把路徑寫進 `screenshot` 景。

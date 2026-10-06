@@ -307,7 +307,9 @@ export async function keyframeProblems({ doc, manifest, workdir, allowNeedsRevie
       continue;
     }
     if (shot.incomplete) problems.push(`${scene.id} keyframe is incomplete`);
-    if (!allowNeedsReview && (shot.needs_review || shot.judge?.passed === false)) problems.push(`${scene.id} keyframe needs review`);
+    // A picture kept with the judge's remarks once its prompt fixes were spent (keyframes
+    // --accept-best, `accepted_with_problems`) is the owner's at the final gate, not a review need here.
+    if (!allowNeedsReview && (shot.needs_review || (shot.judge?.passed === false && !Array.isArray(shot.accepted_with_problems)))) problems.push(`${scene.id} keyframe needs review`);
     await evidence(shot, scene.id);
     if (scene.data?.end_frame?.prompt) await evidence(shot.end_frame, `${scene.id} end frame`);
   }

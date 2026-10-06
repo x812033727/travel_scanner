@@ -27,7 +27,7 @@ import { PART_BYTES } from "../review/sync.mjs";
 import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
 import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, blockedKindOf, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, thumbnailAskHash } from "./flow.mjs";
+import { Automation, automatedVideos, blockedKindOf, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -3242,6 +3242,9 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   // What keyframes leaves for a shot whose prompt cannot fit the image model beside the look
   // (media/keyframes.mjs): the number of characters it may have, which the writer is told.
   const PODIUM_BUDGET_PROBLEM = "prompt is 900 characters; the minimax budget for this shot is 420 (style, camera and avoidance text take the rest) → shorten the prompt to at most 420 characters";
+  // Then the judge fails the rewritten podium on the same fault twice: once the rounds are spent
+  // the picture is kept with the remark (keyframes --accept-best) and the cut goes to the owner.
+  const PODIUM_JUDGE_PROBLEM = "awkward: the speaker's hand is bent back → the hand resting on the lectern";
   mkdirSync(path.join(box.work, "_music"), { recursive: true });
   writeFileSync(path.join(box.work, "_music", "bed.mp3"), "bed bytes");
   ctx.runCommand = async (command, runCtx) => {
@@ -3259,6 +3262,15 @@ test("illustrated slides walk the picture, storyboard and music steps between th
       return { code: 0, out: "every line passed" };
     }
     if (name === "keyframes") {
+      const manifestFile = path.join(workdir, "keyframes", "manifest.json");
+      if (command.includes("--accept-best")) {
+        // What media/keyframes.mjs does with --accept-best: the named shots leave needs_review with their remarks on record.
+        const manifest = readJson(manifestFile);
+        for (const id of command[command.indexOf("--accept-best") + 1].split(",")) manifest.shots[id] = { ...manifest.shots[id], needs_review: false, accepted_with_problems: manifest.shots[id].problems };
+        for (const id of ["problems", "fixes"]) delete manifest.shots.podium[id];
+        write("keyframes/manifest.json", manifest);
+        return { code: 0, out: "1 pictures kept with the judge's remarks (podium); the final cut goes to the owner" };
+      }
       const shots = Object.fromEntries(shotScenes(current).map((scene) => {
         const file = `keyframes/${scene.id}-1.png`;
         write(file, { picture: scene.id });
@@ -3269,6 +3281,12 @@ test("illustrated slides walk the picture, storyboard and music steps between th
         shots.podium = { takes: [], needs_review: true, prompt_budget_chars: 420, problems: [PODIUM_BUDGET_PROBLEM] };
         write("keyframes/manifest.json", { look_hash: lookOf(current), pictures_hash: picturesHash(current), shots });
         return { code: 1, out: `ERROR podium: ${PODIUM_BUDGET_PROBLEM}\nfix the prompts of podium and run keyframes again` };
+      }
+      // The next two draw it, and the judge fails its best take on the same fault (keyframeRuns counts this call).
+      if (keyframeRuns <= 3) {
+        shots.podium = { ...shots.podium, needs_review: true, judge: { overall: 5, passed: false, problems: [PODIUM_JUDGE_PROBLEM] }, problems: [PODIUM_JUDGE_PROBLEM], fixes: ["the hand resting on the lectern"] };
+        write("keyframes/manifest.json", { look_hash: lookOf(current), pictures_hash: picturesHash(current), shots });
+        return { code: 1, out: `ERROR podium: no take passed the judge: ${PODIUM_JUDGE_PROBLEM}\nfix the prompts of podium and run keyframes again` };
       }
       write("keyframes/manifest.json", { look_hash: lookOf(current), pictures_hash: picturesHash(current), shots });
       return { code: 0, out: "5 keyframes" };
@@ -3316,6 +3334,9 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   assert.ok(existsSync(shortsFile(slug, box.root)), "an illustrated video's Shorts are saved like an explainer's");
   const writer = site.calls.run.find((call) => call.stage === "writer");
   assert.equal(writer.format, "slides", "the slides writer, not the drama's");
+  // The first draft hears what a shot prompt may have for the image model the settings name:
+  // nothing names one here, so the writer's own 1000 (a MiniMax site says fewer: draftBudget below).
+  assert.equal(writer.payload.prompt_budget_chars, 1000);
   assert.match(await automation.step(), /fact-check round 1/);
   assert.match(await automation.step(), /listener edit/);
   assert.deepEqual(pauses(readJson(docFile)), { a1hk: 900 }, "the listener's own pause is cleared on save");
@@ -3330,7 +3351,20 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   assert.equal(budgetFix.prompt_budget_chars, 420, "the tightest budget among the targets that carry one");
   assert.deepEqual(budgetFix.targets, [{ id: "podium", problems: [PODIUM_BUDGET_PROBLEM], prompt_budget_chars: 420 }]);
   assert.deepEqual(budgetFix.problems, [PODIUM_BUDGET_PROBLEM]);
-  assert.match(await automation.step(), /keyframes done/);
+  // Drawn, the podium fails the judge twice over; with the rounds spent its best take is kept
+  // with the remark instead of blocking the video (the owner's decision of 2026-10-06), and the
+  // cut, not the storyboard, is where the owner looks at it.
+  assert.match(await automation.step(), /keyframes prompts fixed \(round 2\) for podium; keyframes runs again next/);
+  assert.deepEqual(site.calls.run.filter((call) => call.stage === "writer").at(-1).payload.fix.targets, [{ id: "podium", problems: [PODIUM_JUDGE_PROBLEM] }]);
+  assert.match(await automation.step(), /^chatgpt-ads-off: 1 pictures kept with the judge's remarks after 2 prompt fixes; the final cut goes to the owner$/);
+  assert.ok(runs.includes(`keyframes --slug ${slug} --accept-best podium`));
+  assert.equal(site.calls.run.filter((call) => call.stage === "writer").length, 3, "no third fix was asked for");
+  const kept = automatedVideos(box.work)[0];
+  assert.equal(kept.status, "active");
+  assert.deepEqual(kept.accepted_pictures, [{ id: "podium", problems: [PODIUM_JUDGE_PROBLEM] }]);
+  assert.equal(kept.prompt_fixes?.keyframes, undefined, "the rounds were spent on this picture");
+  assert.match(kept.notes.at(-1), /^keyframes: 1 pictures kept with the judge's remarks after 2 prompt fixes \(podium\); the final cut goes to the owner$/);
+  assert.equal(readJson(path.join(workdir, "keyframes", "manifest.json")).shots.podium.needs_review, false);
   assert.match(await automation.step(), /storyboard sent to \/admin\/videos/);
   assert.match(await automation.step(), /the owner approved the storyboard/);
   assert.ok(readApprovals(workdir).approvals.some((entry) => entry.gate === "storyboard"));
@@ -3342,7 +3376,10 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   assert.match(await automation.step(), /captions written/);
   const status = await pipelineStatus({ slug, root: box.root, workdir });
   assert.equal(status.next.id, "final video approved");
-  assert.deepEqual(runs.filter((run) => /^(tts|keyframes|render|music|assemble|captions) /.test(run)).map((run) => run.split(" ")[0]), ["tts", "keyframes", "keyframes", "render", "music", "assemble", "captions"]);
+  assert.deepEqual(runs.filter((run) => /^(tts|keyframes|render|music|assemble|captions) /.test(run)).map((run) => run.split(" ")[0]), ["tts", "keyframes", "keyframes", "keyframes", "keyframes", "render", "music", "assemble", "captions"]);
+  // The final gate asks for the owner's review of the cut with the kept picture (review/sync.mjs lists it).
+  assert.match(await automation.step(), /final sent to \/admin\/videos/);
+  assert.equal(runs.at(-1), `review-push --slug ${slug} --gate final --manual-review`);
 
   // A narration recorded before audio evidence existed, script unchanged. Its takes carry no
   // current key (what is sent for synthesis changed since), so a refresh could only refuse:
@@ -3765,4 +3802,123 @@ test("a retry while the saved writer run is still running waits for it without c
   assert.equal(video.state().retry_request_id, request);
   assert.equal(video.listed().retry_acknowledged_id, request);
   assert.equal(video.state().failures?.writer, undefined);
+});
+
+test("illustrated slides keep the judge's best pictures once the prompt fixes are spent and send the cut for the owner's review; a shot with no picture, a storyboard the owner sent back and a drama still wait", async () => {
+  const setup = (name, fixtureName, format) => {
+    const slug = `keep-best-${name}`;
+    const box = sandbox(slug, fixtureName);
+    const docFile = path.join(box.dir, "video.json");
+    atomicWrite(docFile, JSON.stringify({ ...readJson(docFile), slug, format }));
+    const state = { slug, status: "active", format, created_at: "2026-10-06T10:00:00Z", notes: [], chosen: "A", prompt_fixes: { keyframes: MAX_PROMPT_FIX_ROUNDS } };
+    atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
+    writeFileSync(path.join(box.workdir, "final.mp4"), "the cut");
+    const site = fakeSite({ settings: { drama: { ...DRAMA_SETTINGS, drama_enabled: format === "drama" }, slides: { slides_media_enabled: true } }, answers: { writer: (body) => ({ video: body.payload.video, lexicon_additions: {} }) } });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-06T10:00:00Z") });
+    const manifestFile = path.join(box.workdir, "keyframes", "manifest.json");
+    const runs = [];
+    ctx.runCommand = async (command) => {
+      runs.push(command);
+      if (command[0] === "keyframes" && command.includes("--accept-best")) {
+        const manifest = readJson(manifestFile);
+        for (const id of command[command.indexOf("--accept-best") + 1].split(",")) manifest.shots[id] = { ...manifest.shots[id], needs_review: false, accepted_with_problems: manifest.shots[id].problems };
+        atomicWrite(manifestFile, JSON.stringify(manifest));
+        return { code: EXIT.ok, out: "pictures kept" };
+      }
+      if (command[0] === "keyframes") return { code: EXIT.lint, out: "fix the prompts" };
+      if (command[0] === "review-push") return { code: EXIT.ok, out: `${command[command.indexOf("--gate") + 1]} submitted for review (pending)` };
+      return assert.fail(`unexpected ${command.join(" ")}`);
+    };
+    const picture = (id, problems) => {
+      const file = `keyframes/${id}-1.png`;
+      atomicWrite(path.join(box.workdir, file), `picture ${id}`);
+      return { file, sha256: sha(path.join(box.workdir, file)), needs_review: true, judge: { overall: 5, passed: false, problems }, problems };
+    };
+    const worker = new Automation(ctx, automationClient(ctx), site.settings);
+    worker.refs = smallRefs;
+    return { box, slug, state, site, runs, worker, manifestFile, picture };
+  };
+
+  // Every failing shot has a picture: they are kept, no writer round is paid for, and the final gate is the owner's.
+  const slides = setup("slides", "illustrated", "slides");
+  const PODIUM = ["awkward: the hand is bent back → the hand resting on the lectern"];
+  const DESK = ["details: no cup → a cup on the desk", "generated: glossy → matte"];
+  atomicWrite(slides.manifestFile, JSON.stringify({ shots: { podium: slides.picture("podium", PODIUM), desk: slides.picture("desk", DESK), clock: { file: "keyframes/clock-1.png", sha256: "a".repeat(64), needs_review: false, judge: { overall: 8, passed: true, problems: [] } } } }));
+  assert.equal(await slides.worker.media(slides.state, "keyframes"), `${slides.slug}: 2 pictures kept with the judge's remarks after 2 prompt fixes; the final cut goes to the owner`);
+  assert.deepEqual(slides.runs, [["keyframes", "--slug", slides.slug], ["keyframes", "--slug", slides.slug, "--accept-best", "podium,desk"]]);
+  assert.equal(slides.site.calls.run.length, 0, "no third prompt fix");
+  const kept = automatedVideos(slides.box.work).find((item) => item.slug === slides.slug);
+  assert.equal(kept.status, "active");
+  assert.deepEqual(kept.accepted_pictures, [{ id: "podium", problems: PODIUM }, { id: "desk", problems: DESK }]);
+  assert.equal(kept.prompt_fixes?.keyframes, undefined, "the rounds were spent on these pictures");
+  assert.deepEqual(kept.notes, [`keyframes: 2 pictures kept with the judge's remarks after 2 prompt fixes (podium, desk); the final cut goes to the owner`]);
+  slides.runs.length = 0;
+  assert.match(await slides.worker.gate(kept, "final", path.join(slides.box.workdir, "final.mp4")), /final sent to \/admin\/videos \(final submitted for review \(pending\)\)/);
+  assert.deepEqual(slides.runs, [["review-push", "--slug", slides.slug, "--gate", "final", "--manual-review"]]);
+  // A later keyframes run that drew the kept shots again (the owner rewrote them) drops them from the list.
+  const manifest = readJson(slides.manifestFile);
+  manifest.shots.podium = { ...manifest.shots.podium, needs_review: false, judge: { overall: 8, passed: true, problems: [] } };
+  delete manifest.shots.podium.accepted_with_problems;
+  atomicWrite(slides.manifestFile, JSON.stringify(manifest));
+  slides.runs.length = 0;
+  const redrawn = { ...kept };
+  slides.worker.ctx.runCommand = async (command) => { slides.runs.push(command); return { code: EXIT.ok, out: "3 keyframes" }; };
+  assert.match(await slides.worker.media(redrawn, "keyframes"), /keyframes done/);
+  assert.deepEqual(automatedVideos(slides.box.work).find((item) => item.slug === slides.slug).accepted_pictures, [{ id: "desk", problems: DESK }]);
+  // Pictures all passed: the cut goes up as before.
+  delete redrawn.accepted_pictures;
+  slides.runs.length = 0;
+  slides.worker.ctx.runCommand = async (command) => { slides.runs.push(command); return { code: EXIT.ok, out: "final submitted" }; };
+  assert.match(await slides.worker.gate(redrawn, "final", path.join(slides.box.workdir, "final.mp4")), /final sent/);
+  assert.deepEqual(slides.runs, [["review-push", "--slug", slides.slug, "--gate", "final"]]);
+
+  // A failing shot with no picture at all (every seed refused) still needs a prompt: the video waits as before.
+  const refused = setup("refused", "illustrated", "slides");
+  atomicWrite(refused.manifestFile, JSON.stringify({ shots: { podium: refused.picture("podium", PODIUM), desk: { takes: [], needs_review: true, problems: ["no take could be generated: the provider refused the prompt"] } } }));
+  assert.match(await refused.worker.media(refused.state, "keyframes"), /blocked — keyframes still fails after 2 prompt fixes \(podium: .*\| desk: no take could be generated/);
+  assert.equal(refused.runs.length, 1, "no --accept-best run");
+  assert.equal(automatedVideos(refused.box.work).find((item) => item.slug === refused.slug).accepted_pictures, undefined);
+  // The owner sent the storyboard back: their word is not overridden by the judge's best take.
+  const sentBack = setup("sent-back", "illustrated", "slides");
+  atomicWrite(sentBack.manifestFile, JSON.stringify({ shots: { podium: sentBack.picture("podium", PODIUM) } }));
+  assert.match(await sentBack.worker.fixPrompts(sentBack.state, "keyframes", { targets: [{ id: "podium", problems: ["太暗"] }], ownerNote: "太暗" }), /blocked — keyframes still fails after 2 prompt fixes/);
+  assert.equal(sentBack.runs.length, 0);
+  // A drama's pictures wait for a person, as before.
+  const drama = setup("drama", "drama", "drama");
+  atomicWrite(drama.manifestFile, JSON.stringify({ shots: { opening: drama.picture("opening", ["clean: six fingers → five fingers"]) } }));
+  assert.match(await drama.worker.media(drama.state, "keyframes"), /blocked — keyframes still fails after 2 prompt fixes/);
+  assert.equal(drama.runs.length, 1);
+  assert.equal(automatedVideos(drama.box.work).find((item) => item.slug === drama.slug).blocked_kind, "prompt_fixes:keyframes");
+});
+
+test("the first draft of a slides video hears the prompt budget of the image model the settings will draw it with, counted as keyframes counts a shot", async () => {
+  const { shotPromptBudget } = await import("../media/prompt-budget.mjs");
+  const { resolveLook, slidesPresetFor } = await import("../core/drama.mjs");
+  const box = sandbox();
+  const slug = "budget-draft";
+  const budgetFor = (settings, state) => {
+    const site = fakeSite({ settings });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-06T10:00:00Z") });
+    return new Automation(ctx, automationClient(ctx), site.settings).draftBudget({ slug, ...state });
+  };
+  // The print look the video will get by its slug, under the longest camera word the writer may choose, beside image-01's 1500.
+  const look = resolveLook({ preset: slidesPresetFor(slug) });
+  const minimax = shotPromptBudget({ look, camera: "tilt down", limit: 1500 });
+  assert.ok(minimax > 300 && minimax < 600, `a print look leaves ${minimax} characters`);
+  assert.equal(shotPromptBudget({ look, camera: "pan right", limit: 1500 }), minimax, "the longest words are of a length");
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }, { format: "slides" }), { prompt_budget_chars: minimax });
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "gemini-3.1-flash-image" } }, { format: "slides" }), { prompt_budget_chars: 1000 }, "Gemini's 4000 leaves more than the writer's own 1000");
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: null }, drama: { ...DRAMA_SETTINGS, image_provider: "minimax", image_model: "image-01" } }, { format: "slides" }), { prompt_budget_chars: minimax }, "no slides model: the drama's draws");
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: false, slides_image_model: "image-01" }, drama: { ...DRAMA_SETTINGS, image_provider: "gemini", image_model: "gemini-3-pro-image" } }, { format: "slides" }), { prompt_budget_chars: 1000 }, "the slides switch off: the drama's model draws");
+  assert.deepEqual(budgetFor({}, {}), { prompt_budget_chars: 1000 }, "a legacy state with no format is a slides video; nothing names a model");
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }, { format: "drama" }), {}, "a drama draws otherwise");
+  assert.deepEqual(budgetFor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }, { format: "slides", story: { chapters: [] } }), {}, "a story draws otherwise");
+  // The vendor read from the settings, which name the slides model by id alone.
+  assert.equal(slidesImageVendor({ slides: { slides_media_enabled: true, slides_image_model: "image-01" } }), "minimax");
+  assert.equal(slidesImageVendor({ slides: { slides_media_enabled: true, slides_image_model: null }, drama: { image_provider: "gemini", image_model: "gemini-3-pro-image" } }), "gemini");
+  assert.equal(slidesImageVendor({ slides: { slides_media_enabled: false, slides_image_model: "image-01" }, drama: { image_provider: "minimax", image_model: "image-01" } }), "minimax");
+  assert.equal(slidesImageVendor({ slides: { slides_media_enabled: true, slides_image_model: "hailuo-image" }, drama: { image_provider: "minimax", image_model: "hailuo-image" } }), "minimax", "an id the table does not know, the drama's own: the drama's vendor");
+  assert.equal(slidesImageVendor({ slides: { slides_media_enabled: true, slides_image_model: "hailuo-image" }, drama: { image_provider: "gemini", image_model: "gemini-3-pro-image" } }), null, "an id nothing says the vendor of");
+  assert.equal(slidesImageVendor({}), null);
+  assert.equal(slidesImageVendor(undefined), null);
 });

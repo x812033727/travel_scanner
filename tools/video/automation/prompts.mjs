@@ -53,6 +53,10 @@ Rules that never bend:
 - Nobody's personal data anywhere.
 `.trim();
 
+// The camera words the slides writer may give a still (TEMPLATE_GUIDE's shot template names the
+// same seven); the worker counts the longest into the first draft's prompt budget (flow.mjs).
+export const SLIDES_CAMERA_WORDS = ["push in", "pull out", "pan left", "pan right", "tilt up", "tilt down", "drift"];
+
 const TEMPLATE_GUIDE = `
 Slide templates (the payload's "showcase" has one scene of each; copy the shape, not the text).
 Reveal: a line with "reveal": 1 shows the next item; a scene's reveals must equal its items.
@@ -77,7 +81,9 @@ Reveal: a line with "reveal": 1 shows the next item; a scene's reveals must equa
   points to the article in the description's first line.
 - outro {title, cta?, lines 1-4}: no reveals. The last scene.
 - shot {prompt, camera, visual: "still", transition?}: no reveals. ONE AI-drawn illustration with a
-  camera move, for the scenes the story describes. prompt: English, at most 1000 characters, ONE
+  camera move, for the scenes the story describes. prompt: English, at most 1000 characters, or at
+  most "prompt_budget_chars" when the payload gives one (the look and the image model take the
+  rest of the model's limit; a shorter prompt beats a fuller one), ONE
   picture briefed the way a photographer briefs an illustrator, in this order: the shot size
   (extreme close-up, close-up, medium, wide, overhead, low angle, from behind), the place and the
   time of day, what is happening (a person doing one concrete thing, seen from behind, in profile

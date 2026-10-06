@@ -9,7 +9,7 @@ import { readCache, readJobs } from "./cache.mjs";
 import { statusText } from "./cli.mjs";
 import { MediaError } from "./client.mjs";
 import { capProblem, ledgerTotals, readLedger, reservedEntries } from "./ledger.mjs";
-import { choiceFor, IMAGE_SIZES, imagePrice, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, Stage, statusProblem } from "./stages.mjs";
+import { choiceFor, IMAGE_SIZES, imagePrice, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, Stage, statusProblem, takesStyleReference } from "./stages.mjs";
 
 const PRO = "gemini-3-pro-image";
 const FLASH = "gemini-3.1-flash-image";
@@ -413,4 +413,24 @@ test("a judge call is money: it is refused past the per-video cap before the ser
   assert.deepEqual([ledger.totals.judge_calls, ledger.totals.usd, ledger.totals.reserved], [1, 0.077, 0]);
   assert.equal(ledger.entries.at(-1).cost_usd, JUDGE_USD_PER_CALL);
   assert.equal(JUDGE_USD_PER_CALL, 0.01, "mirrors JUDGE_USD_PER_CALL in apps/api/app/video_media/catalog.py");
+});
+
+test("an image model takes a style reference when the catalog says so; a server from before the field forwards one through Gemini alone", () => {
+  const on = status();
+  on.slides_enabled = true;
+  on.slides_image = { provider: "minimax", model: "image-01", configured: true };
+  on.models.images.minimax = [{ value: "image-01", label: "MiniMax image-01", description: null, status: "stable", resolutions: [], durations: [], reference_images: 1, style_references: 0, native_audio: false, usd_per_second: null, usd_per_image: 0.0035, usd_per_track: null }];
+  on.models.images.gemini = on.models.images.gemini.map((entry) => ({ ...entry, style_references: 1 }));
+  assert.equal(takesStyleReference(on, "slides"), false, "image-01 is sent a character reference alone");
+  assert.equal(takesStyleReference(on, "drama"), true, "the drama's Pro choice reads a plate");
+  assert.equal(takesStyleReference(on), true);
+  const flashWithout = { ...on, slides_image: { provider: "gemini", model: FLASH, configured: true }, models: { ...on.models, images: { ...on.models.images, gemini: on.models.images.gemini.map((entry) => (entry.value === FLASH ? { ...entry, style_references: 0 } : entry)) } } };
+  assert.equal(takesStyleReference(flashWithout, "slides"), false, "the catalog's word, not the vendor's name");
+  // A server from before the field says nothing: the vendor decides, as the adapters did.
+  const before = status();
+  before.slides_enabled = true;
+  before.slides_image = { provider: "minimax", model: "image-01", configured: true };
+  assert.equal(takesStyleReference(before, "slides"), false);
+  assert.equal(takesStyleReference(before, "drama"), true);
+  assert.equal(takesStyleReference({ ...before, image: { provider: "minimax", model: "image-01", configured: true } }, "drama"), false);
 });
