@@ -1,11 +1,11 @@
 ---
 id: 2026-10-07-article-missing-locales-completion
 title: Complete all missing published travel and life article locales
-status: in-progress
+status: open
 priority: P1
 area: ops
-owner: codex-article-localization-4e16
-claimed_at: 2026-10-07T04:49:40Z
+owner:
+claimed_at:
 created_at: 2026-10-07T04:49:38Z
 completed_at:
 branch: codex/article-missing-locales-20261007
@@ -77,3 +77,31 @@ the browser, including body, images, canonical, hreflang, links and mobile layou
 - This program ticket owns coverage documentation only. Claim separate narrow
   content and release tickets before changing article packs, images or release records.
 - No new translation or publication is claimed complete by this inventory.
+
+### 2026-10-07 authoring checkpoint and owner gate
+
+First content PR #1365 is a draft at exact head
+`3812fe2c9ae8c58d1eb0373d22529e76a27349c7`; all 21 check runs completed with
+success, including full-stack smoke and release safety. It contains 13 articles /
+52 independently reviewed target documents. No merge or deployment was performed.
+
+The next content cohort contains Japan refund source correction + four missing
+languages and four business-analysis articles / sixteen existing unpublished
+targets: 5 articles / 20 independently reviewed targets. All five packs passed
+scoped lint; the official refund install/replay was byte-identical. Publication
+has separate refund and business-analysis release tickets. The fixed first13
+cohort and its reviewed candidate were not expanded.
+
+Cumulative local review readiness is 18 articles / 72 target documents. This is
+not live publication. The latest full production inventory remains the retained
+04:45 UTC snapshot: 862 incomplete eligible articles / 3,448 missing public
+language documents. Completed production publications in this program: zero.
+The full 862-article external queue preserves original pins, reviews, source
+holds, attempts and the remaining work; source corrections and already active
+scopes must not be blindly translated or overwritten.
+
+The owner has been asked to choose whether to merge/deploy PR #1365, merge only,
+or retain the draft. Until a choice arrives, keep production unchanged. Release
+this coverage-only claim while waiting; resume by reclaiming it and reading the
+persistent program state, exact current PR heads and fresh production guards.
+This overall task stays open until a fresh production count is zero.
