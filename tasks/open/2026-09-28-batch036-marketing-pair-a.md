@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-batch036-marketing-pair-a
 title: Batch036 localize marketing pair A in five languages
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-article-localization-4e16
-claimed_at: 2026-10-07T05:25:30Z
+owner:
+claimed_at:
 created_at: 2026-09-28T09:19:38Z
 completed_at:
 branch: codex/article-missing-locales-20261007
@@ -122,3 +122,11 @@ All current eight life-pack lints exited 0; no production publication is claimed
 The prospective content PR must freeze exact committed blobs separately.
 
 Root additionally applied four prospective business-guide title labels as a distinct actor. Current marketing-plan pack SHA-256 `c871fb1cbac44c7886755a64c501a4667d01493aa51aedc42e04ba03fa1152ed`; held paid-vs-organic and its assets remain unchanged.
+
+### Partial scope release
+
+marketing-plan-small-business current four-language review and corrections are
+complete in PR #1365 and the first 52-target release cohort. paid-vs-organic
+remains held by its recorded source/citation questions and is not included.
+This paired ticket remains unfinished for that held article and is released to
+the shared queue; no paid-vs-organic content or image bytes were changed.

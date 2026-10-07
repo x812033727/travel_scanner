@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-recheck-wordpress-translation-and-member-locales
 title: Recheck WordPress translation and member locales
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-article-localization-4e16
 claimed_at: 2026-10-07T05:49:09Z
 created_at: 2026-10-07T05:49:08Z
-completed_at:
+completed_at: 2026-10-07T06:11:07Z
 branch: codex/article-missing-locales-20261007
 depends_on: []
 scope:
@@ -63,3 +63,15 @@ All current eight life-pack lints exited 0; no production publication is claimed
 The prospective content PR must freeze exact committed blobs separately.
 
 The earlier statement that the member guide needed no edit referred to full body review before the first cohort was selected. The final cohort includes WordPress security: four member terminal labels now equal its reviewed final locale titles. Application receipts: plugin eight leaves `e953b51bb9fba74e489c64b2fe24b8e288b766503a06c219d488ab8576a354ce`; cohort twelve labels `187056b45c3f53f556f5e2f74ddeb48af94c5ddb9d935d1f3493dbcea523a42d`. The independent reviewer applied no content correction.
+
+### Content PR handoff
+
+PR: https://github.com/x812033727/travel_scanner/pull/1365.
+Authoring, exact independent review, local validation and local installation/replay
+are complete for this ticket's selected scope. Required GitHub checks and merge
+remain enforced PR gates; marking this authoring ticket done does not claim those
+checks are green. The PR remains draft pending owner approval.
+Production deployment, publication and public desktop/mobile verification remain
+open in 2026-10-07-release-localized-travel-life-wave-20261007.
+Any unchecked CI/merge/publication lines above are handed to those explicit gates,
+not waived or reported as completed.

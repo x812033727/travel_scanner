@@ -1,26 +1,26 @@
 ---
-id: 2026-10-07-localize-singapore-entry-missing-locales
-title: Localize Singapore entry information missing languages
-status: in-progress
+id: 2026-10-07-localize-powerbank-flight-missing-locales
+title: Localize power bank flight information missing languages
+status: done
 priority: P1
 area: api
 owner: codex-article-localization-4e16
-claimed_at: 2026-10-07T05:34:59Z
-created_at: 2026-10-07T05:34:58Z
-completed_at:
+claimed_at: 2026-10-07T05:35:00Z
+created_at: 2026-10-07T05:34:59Z
+completed_at: 2026-10-07T06:11:05Z
 branch: codex/article-missing-locales-20261007
 depends_on: []
 scope:
-  - apps/api/app/guides/content/singapore-entry-2026-sg-arrival-card.json
-  - apps/web/public/guides/singapore-entry-2026-sg-arrival-card
-  - docs/article-localization/installations/singapore-entry-2026-sg-arrival-card.json
+  - apps/api/app/guides/content/power-bank-flight-rules-2026.json
+  - apps/web/public/guides/power-bank-flight-rules-2026
+  - docs/article-localization/installations/power-bank-flight-rules-2026.json
 ---
 
-# Localize Singapore entry information missing languages
+# Localize power bank flight information missing languages
 
 ## Why
 
-The eligible public Singapore entry article lacks en, ja, ko and zh-CN. Translate
+The eligible public power bank flight rules article lacks en, ja, ko and zh-CN. Translate
 every paragraph and diagram label while preserving the original Taiwan audience.
 
 ## Definition of done
@@ -47,16 +47,29 @@ and audience-specific rules. Refresh production inventory after publication.
 
 ## Notes
 
-- Source SHA `da8e25410e593e7655d59c0477838e4a941fd5a6fbf8a3ea487ec346b5dfdeee`.
-- Original pack SHA `54a4850e9697ff65e2d43d20d1874755cc4e8ca57e30ffdde83e49e831c44ae6`.
+- Source SHA `70bb325eaf6a828d0bdc89c1ee8db644a19a5182db263f892bd4ad2d447c1908`.
+- Original pack SHA `d4dfb29421cf4e71d54cc1461479f3dd9755c258cbd1dabbf32e48b03e06560b`.
 - Primary evidence and actual source-image review are in the private source audit.
 - Four translation jobs completed with no automatic retry. Production writes: zero.
-- All four whole-document/image reviews PASS; actual English signage remains
-  original pixels with faithful translated alt/caption. Final SVG labels >=15px.
+- All four whole-document/image reviews PASS, preserving the audience-specific
+  ICAO/Taiwan/Korea/Japan dates and distinct airline charging/storage conditions.
+  Actual final SVG label metrics are >=15px with no glyph/geometry issue.
 - Final combined review evidence SHA dcda1e387709f18e872237cb722a7a810f74ec90362e6224592b6299875d69e6.
 - Combined official manifest c96737f04540a86d55d3f9e4b398bdb0ef5da602387d90d7052b0bfd02ae4cff.
-- Installed pack 4755ccc9798a013ae9551d380f68563c794ce245538555467ea5fe73500aad48.
-- Official receipt 1a72c899d21f2afb6b6e17d5949097e76f3008e63c73a8b282d2a01161a86c2c.
+- Installed pack 1761f2190920742f763a571235b8fa61a17d88566c6c0ff962446f1c0f8b7faa.
+- Official receipt 912d27fd2c16602ff9311601b6469eee48fa6f568cd001a141f26e42314eac58.
   Replay preserves pack/receipt/journal bytes; source/root metadata/assets exact.
 - Final 13-pack lint EXIT0. Release ticket:
   2026-10-07-release-localized-travel-life-wave-20261007.
+
+### Content PR handoff
+
+PR: https://github.com/x812033727/travel_scanner/pull/1365.
+Authoring, exact independent review, local validation and local installation/replay
+are complete for this ticket's selected scope. Required GitHub checks and merge
+remain enforced PR gates; marking this authoring ticket done does not claim those
+checks are green. The PR remains draft pending owner approval.
+Production deployment, publication and public desktop/mobile verification remain
+open in 2026-10-07-release-localized-travel-life-wave-20261007.
+Any unchecked CI/merge/publication lines above are handed to those explicit gates,
+not waived or reported as completed.

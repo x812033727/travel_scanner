@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-localize-marketing-mix-and-brand-tone
 title: Localize marketing mix and brand tone guides in Batch 036 Pair B
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-article-localization-4e16
 claimed_at: 2026-10-07T04:54:42Z
 created_at: 2026-09-28T09:20:03Z
-completed_at:
+completed_at: 2026-10-07T06:11:00Z
 branch: codex/article-missing-locales-20261007
 depends_on: []
 scope:
@@ -114,3 +114,15 @@ The 13-case isolated same-image rehearsal is complete; the final expanded wave
 still needs merged/deployed Git freeze and a fresh post-deployment baseline.
 Publication/live verification are owned by
 2026-10-07-release-localized-travel-life-wave-20261007, still open.
+
+### Content PR handoff
+
+PR: https://github.com/x812033727/travel_scanner/pull/1365.
+Authoring, exact independent review, local validation and local installation/replay
+are complete for this ticket's selected scope. Required GitHub checks and merge
+remain enforced PR gates; marking this authoring ticket done does not claim those
+checks are green. The PR remains draft pending owner approval.
+Production deployment, publication and public desktop/mobile verification remain
+open in 2026-10-07-release-localized-travel-life-wave-20261007.
+Any unchecked CI/merge/publication lines above are handed to those explicit gates,
+not waived or reported as completed.

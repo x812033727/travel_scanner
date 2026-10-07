@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-localize-korea-autumn-missing-locales
 title: Localize Korea autumn travel information missing languages
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-article-localization-4e16
 claimed_at: 2026-10-07T05:41:35Z
 created_at: 2026-10-07T05:27:03Z
-completed_at:
+completed_at: 2026-10-07T06:11:04Z
 branch: codex/article-missing-locales-20261007
 depends_on: []
 scope:
@@ -63,3 +63,15 @@ and refresh the production coverage inventory.
 - Official replay preserves exact output/journal bytes. Source/photos unchanged;
   topic order follows the authoritative database baseline, membership unchanged.
 - Release ticket: 2026-10-07-release-localized-travel-life-wave-20261007.
+
+### Content PR handoff
+
+PR: https://github.com/x812033727/travel_scanner/pull/1365.
+Authoring, exact independent review, local validation and local installation/replay
+are complete for this ticket's selected scope. Required GitHub checks and merge
+remain enforced PR gates; marking this authoring ticket done does not claim those
+checks are green. The PR remains draft pending owner approval.
+Production deployment, publication and public desktop/mobile verification remain
+open in 2026-10-07-release-localized-travel-life-wave-20261007.
+Any unchecked CI/merge/publication lines above are handed to those explicit gates,
+not waived or reported as completed.

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-localize-japan-cherry-blossom-2027
 title: Localize Japan 2027 cherry blossom travel information
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-article-localization-4e16
 claimed_at: 2026-10-07T05:49:24Z
 created_at: 2026-10-07T05:07:49Z
-completed_at:
+completed_at: 2026-10-07T06:11:03Z
 branch: codex/article-missing-locales-20261007
 depends_on: []
 scope:
@@ -72,3 +72,15 @@ browser acceptance are tracked separately by the release ticket.
 - Topic membership is preserved, with order normalized to the database baseline;
   ordered related picks, aliases and all other root fields remain preserved.
 - Release ticket: 2026-10-07-release-localized-travel-life-wave-20261007.
+
+### Content PR handoff
+
+PR: https://github.com/x812033727/travel_scanner/pull/1365.
+Authoring, exact independent review, local validation and local installation/replay
+are complete for this ticket's selected scope. Required GitHub checks and merge
+remain enforced PR gates; marking this authoring ticket done does not claim those
+checks are green. The PR remains draft pending owner approval.
+Production deployment, publication and public desktop/mobile verification remain
+open in 2026-10-07-release-localized-travel-life-wave-20261007.
+Any unchecked CI/merge/publication lines above are handed to those explicit gates,
+not waived or reported as completed.

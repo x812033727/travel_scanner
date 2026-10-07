@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-preserve-localization-pack-metadata
 title: Preserve article aliases and related links in localization assembly
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-article-localization-4e16
 claimed_at: 2026-10-07T05:32:24Z
 created_at: 2026-10-07T05:32:23Z
-completed_at:
+completed_at: 2026-10-07T06:11:03Z
 branch: codex/article-missing-locales-20261007
 depends_on: []
 scope:
@@ -59,3 +59,15 @@ without output. Validate all original metadata and documents in the real bundle.
   cab59f541698e4bf5eead16b1ae6a1eec2634d92445e906f23783726a71eeb78.
 - Final real manifest eb0ad09738c593b7a2a16fbb4e098aae531bcf5b49153c52cf0121e7fe9a6cec
   preserves both aliases and four ordered related picks. Official replay is unchanged.
+
+### Content PR handoff
+
+PR: https://github.com/x812033727/travel_scanner/pull/1365.
+Authoring, exact independent review, local validation and local installation/replay
+are complete for this ticket's selected scope. Required GitHub checks and merge
+remain enforced PR gates; marking this authoring ticket done does not claim those
+checks are green. The PR remains draft pending owner approval.
+Production deployment, publication and public desktop/mobile verification remain
+open in 2026-10-07-release-localized-travel-life-wave-20261007.
+Any unchecked CI/merge/publication lines above are handed to those explicit gates,
+not waived or reported as completed.

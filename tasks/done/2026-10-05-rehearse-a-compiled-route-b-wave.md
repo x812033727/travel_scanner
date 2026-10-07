@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-rehearse-a-compiled-route-b-wave
 title: Rehearse a compiled Route B wave on the deployed API image
-status: in-progress
+status: done
 priority: P2
 area: ops
 owner: codex-article-localization-4e16
 claimed_at: 2026-10-07T04:56:18Z
 created_at: 2026-10-05T09:54:38Z
-completed_at:
+completed_at: 2026-10-07T06:11:01Z
 branch: codex/article-missing-locales-20261007
 depends_on:
   - 2026-09-29-route-b-reviewed-bundle-compiler
@@ -73,3 +73,15 @@ the genuinely reviewed T1 candidate. Record SHA
 Production writes: zero. Hub writes: zero because this wave contains life articles;
 the record explicitly does not claim real hub dependency coverage. Raw evidence,
 failed initial seed harness output and restore dump remain outside the repository.
+
+### Content PR handoff
+
+PR: https://github.com/x812033727/travel_scanner/pull/1365.
+Authoring, exact independent review, local validation and local installation/replay
+are complete for this ticket's selected scope. Required GitHub checks and merge
+remain enforced PR gates; marking this authoring ticket done does not claim those
+checks are green. The PR remains draft pending owner approval.
+Production deployment, publication and public desktop/mobile verification remain
+open in 2026-10-07-release-localized-travel-life-wave-20261007.
+Any unchecked CI/merge/publication lines above are handed to those explicit gates,
+not waived or reported as completed.
