@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-the-media-automation-review-and-shorts
 title: The media, automation, review and Shorts clients sleep after their last attempt, now as long as the server's Retry-After
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-last-sleep
 claimed_at: 2026-10-07T09:21:02Z
 created_at: 2026-10-07T07:11:49Z
-completed_at:
+completed_at: 2026-10-07T10:24:44Z
 branch:
 depends_on: []
 scope:
@@ -82,3 +82,7 @@ learns the outcome, and a STOP file that waits as long.
   on the trailing wait. Removing any one of the eight guards fails a test. Taken as optional
   hardening: the media network case and the review table assert the exact waits, so a guard
   moved to skip the first wait instead of the last is caught too.
+- Duration re-bind (2026-10-07, claude-pr-review-last-sleep, independent): PASS, DURATION_ONLY.
+  The only difference in `review/sync.mjs` is the final wait. No length gate reads elapsed time,
+  and no changed line names a duration term. `review/sync.mjs` and `sync.test.mjs` are rebound in
+  `docs/videos/long-form/review.json`, and the CLI check passes.
