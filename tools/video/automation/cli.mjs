@@ -101,6 +101,20 @@ async function restyle(args, ctx) {
 // each lane share the container's memory, so it stays small.
 export const MAX_LANES = 3;
 
+/**
+ * What `auto` prints when the first lane finds nothing to do. A video waiting on its own
+ * (flow.mjs defer, or a writer still running on the server; `deferred` is
+ * Automation.deferredVideos(): [{ slug, until }]) does not wait on the owner: it is named with
+ * the time it is tried again (the next round when `until` is null: only this run left it), so a
+ * round that moved nothing because of a deferral does not read as one in which the owner is
+ * awaited.
+ */
+export function idleLine(deferred = []) {
+  if (!deferred.length) return "nothing to do now: every video waits on the owner, or the next draft is not due";
+  const named = deferred.map(({ slug, until }) => `${slug} until ${until ?? "the next round"}`).join(", ");
+  return `nothing to do now: ${deferred.length} deferred and tried again later (${named}); the other videos wait on the owner, or the next draft is not due`;
+}
+
 /** VIDEO_WORKER_LANES as a lane count: 1 when unset or unreadable, at most MAX_LANES. */
 export function laneCount(env = {}) {
   const lanes = Number.parseInt(env.VIDEO_WORKER_LANES ?? "", 10);
@@ -130,9 +144,13 @@ export async function run(command, args, ctx) {
       return EXIT.ok;
     }
     // Several lanes move different videos at once (VIDEO_WORKER_LANES, default 1); only the
-    // first starts anything new, and a lane never picks a video another lane is moving.
+    // first starts anything new, and a lane never picks a video another lane is moving, one
+    // another lane set aside for this run (a deferral, flow.mjs defer), or one whose writer
+    // another lane found still running on the server (pendingUntil: one lookup per round).
     const busy = new Set();
-    const lanes = Array.from({ length: laneCount(ctx.env) }, (_, index) => new Automation(ctx, api, settings, { busy, secondary: index > 0 }));
+    const skipped = new Set();
+    const pendingUntil = new Map();
+    const lanes = Array.from({ length: laneCount(ctx.env) }, (_, index) => new Automation(ctx, api, settings, { busy, skipped, pendingUntil, secondary: index > 0 }));
     const [automation] = lanes;
     let stopped = false;
     const drive = async (lane, index) => {
@@ -145,11 +163,12 @@ export async function run(command, args, ctx) {
         }
         const done = await lane.step();
         if (!done) {
-          if (!index) ctx.stdout.write("nothing to do now: every video waits on the owner, or the next draft is not due\n");
+          if (!index) ctx.stdout.write(`${idleLine(lane.deferredVideos())}\n`);
           break;
         }
         ctx.stdout.write(`${tag}${done}\n`);
-        // The unit could not move and would fail the same way right now: wait for the next round.
+        // Nothing could move for a reason that is everyone's: wait for the next round. A video's
+        // own trouble only set that video aside, and the lane takes the next unit.
         if (lane.halted) break;
       }
     };

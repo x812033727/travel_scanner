@@ -1,0 +1,367 @@
+{
+  "slug": "thematic-etf-index-rules",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "finance",
+    "ai",
+    "investing"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "主題型 ETF 怎麼讀：AI 與半導體指數的編製規則、集中度與費用",
+      "description": "主題型 ETF（指數股票型基金）買什麼、各買多少，由它追蹤的指數編製規則決定：成分股從哪個範圍挑、用什麼條件篩、權重有沒有上限、多久重新審核。以 AI（人工智慧）與半導體主題指數的常見寫法為例拆解這些規則，再整理內扣費用、追蹤差距與持股明細在公開說明書、投信投顧公會與證交所網站的查法。",
+      "hero": {
+        "src": "/guides/thematic-etf-index-rules/hero.jpg",
+        "alt": "米色底插圖：左邊散落十幾個多色圓點，中間一個橫放的藍色漏斗，寬口朝左、窄口朝右，漏斗裡只剩幾個圓點；窄口接出箭頭，指進右邊白框裡三乘三、大小相同的九個色塊",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "主題型 ETF（指數股票型基金）的持股由指數編製規則決定，名稱裡的 AI（人工智慧）或半導體只是主題標籤。",
+            "同樣以 AI 為名的指數，界定方式不同，成分股重疊有限；有的還用殖利率、動能等因子排名次。",
+            "集中度看權重上限：一般基金投資單一公司不得超過淨資產 10%，指數型 ETF 原則上可放寬到該股在指數裡的權重。",
+            "內扣費用看公開說明書與投信投顧公會的各項費用比率，追蹤差距看發行投信的 ETF 專區，持股每個營業日公布。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "主題型 ETF（指數股票型基金，Exchange Traded Fund）買哪些股票、各買多少，取決於它追蹤的指數編製規則。名稱只說明主題，規則才說明成分股怎麼來、多集中、多久換一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下拆解主題指數的選股、權重上限與定期審核，再說明內扣費用、追蹤差距與持股明細各在哪裡查。"
+        },
+        {
+          "type": "heading",
+          "text": "主題怎麼界定：採樣範圍、篩選條件與排序",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "指數公司替每一檔指數訂一份編製規則（index methodology），寫明成分股的篩選標準與流程、權重分配方式，以及定期審核與不定期調整的作法。讀規則先找「採樣範圍」，那就是主題的邊界。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "用既有分類劃範圍：例如交易所產業分類屬半導體業的股票，再依市值取前幾名；有的再依產業價值鏈的上、中、下游細分，只收其中幾段。",
+            "用產業分類加營收占比門檻：採用第三方的細產業分類挑出 AI 產業鏈，再要求相關營收占公司營收達一定比例；有的規則寫明，合格股票不夠時門檻會逐次調降。",
+            "在主題之外再疊條件：成交金額、股東權益報酬率、股利紀錄，最後用殖利率、股價動能等因子的綜合分數排序。名稱有 AI，決定名次的卻可能是配息或動能。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "界定方式不同，結果就不同。歐洲證券及市場管理局（ESMA）2025 年 2 月分析 7 個以 AI 為主題的指數，成分股合計 198 家，同時出現在 5 個以上指數的只有 16 家，115 家（58%）只出現在其中一個。ESMA 認為這多少反映各家對 AI 受惠者的界定不同：該算硬體、軟體還是周邊產業，看法不一。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "題材標籤、產業類別與指數三種分組的差別，可以先讀 AI 概念股是什麼",
+              "kind": "life",
+              "slug": "ai-concept-stocks-explained"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "權重上限與集中度：同一個主題可以很集中，也可以很分散",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "選進來之後，每檔占多少由權重方式決定：市值加權讓大公司占大比重，等權重讓每檔一樣多，也有按市值分群給固定權重、或用營收動能調整的作法。有些規則再替單一成分股、前五大合計各設上限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "證券投資信託基金管理辦法規定，一般基金投資任一上市或上櫃公司的股票、公司債與金融債券，合計不得超過基金淨資產價值的 10%；指數型基金與 ETF 為符合指數組成可以超過，但超過 10% 時原則上不得高於該成分證券在指數裡的權重。所以 ETF 能集中到什麼程度，答案寫在指數規則裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上限也常附但書。有的半導體主題規則寫明，成分股在大盤加權指數的權重本來就超過上限時，改以大盤權重為上限；也有指數公司在通則裡保留權重總和未達 100% 時調整上限參數的權利。"
+        },
+        {
+          "type": "paragraph",
+          "text": "權重設計直接改變集中度。前述 ESMA 分析的 AI 主題指數，前十大成分股權重平均 37%，最大成分股不超過 4% 到 5%；對照的市值加權資訊科技指數，前十大占 78%。"
+        },
+        {
+          "type": "heading",
+          "text": "定期審核：多久換一次、怎麼換",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "成分股會定期重選。規則寫明每年審核幾次、在哪幾個月，以及審核資料截止日與生效日；國內幾份半導體與 AI 主題規則，有的每季一次，有的每半年一次。"
+        },
+        {
+          "type": "paragraph",
+          "text": "為了減少換股，規則可能設緩衝區讓既有成分股優先留下、限制每次替換檔數，或設調整過渡期，分幾個交易日完成權重變動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以國內一家指數公司為例，成分股審核結果公布在它網站的技術通知頁，定期審核日程表依審核月份分別公布；已授權發行金融商品的指數，若要做影響選股、加權、維護方式或計算公式的重大修改，原則上在最近一次審核資料截止日的 10 個交易日前公告。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一家公司的通則也提醒：指數發布前用歷史資料做的回溯測試，與實際投資的表現未必一致，指數報酬也沒有反映買賣有價證券的費用與稅負。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/thematic-etf-index-rules/diagram-1.svg",
+          "alt": "流程圖：上排四個方框由左到右是採樣範圍、篩選與排序、加權與上限、定期審核，匯流到中間的 ETF 方框，兩側是集中度上限、規則修改與審核結果兩個說明框；ETF 方框再往下分到持股明細、內扣費用、追蹤差距、淨值與折溢價四個方框",
+          "width": 1600,
+          "height": 900,
+          "caption": "上排是指數編製規則決定的事，下排是 ETF 實際運作後看得到的結果；兩排之間的落差，用內扣費用與追蹤差距去量。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "內扣費用、追蹤差距與持股明細去哪裡查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "內扣費用從基金資產裡扣，反映在淨值上。公開說明書的費用評估表列出經理費、保管費等年費率，信託契約另有約定的費用也要列明；指數授權費屬於信託契約必須載明的指數授權契約重要內容。按季更新的公開說明書另列最近五年度各年度的費用率，算法是基金負擔的費用總金額除以平均淨資產價值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "投信投顧公會網站的「各項費用比率」可查月、季、年資料，分成交易直接成本（手續費、交易稅）與會計帳列費用（經理費、保管費等），每月第 10 個營業日更新。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "透過機器人理財投資基金或 ETF 時，顧問費會疊在內扣費用之上",
+              "kind": "life",
+              "slug": "robo-advisor-taiwan-explained"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "追蹤差距（tracking difference）是一段期間內 ETF 與指數報酬率的差，正值代表 ETF 報酬比指數高；追蹤誤差（tracking error）是這個差距的標準差，衡量偏離的波動。差距來自內扣費用、換股成本、複製方式、匯率與配息時點；公開說明書要寫明比較方式與公式，投信的 ETF 專區也會列出數值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ETF 每個營業日在發行投信網站公布持股明細與申購買回清單（PCF，portfolio composition file）；投信投顧公會的「基金投資明細－月前十大」列出前十大標的占淨資產價值的比例，加總即前十大集中度。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "要查的項目",
+            "去哪裡查",
+            "看哪裡",
+            "更新頻率"
+          ],
+          "rows": [
+            [
+              "指數編製規則",
+              "指數公司網站、公開說明書",
+              "採樣範圍、權重上限、審核頻率",
+              "修改時公告技術通知"
+            ],
+            [
+              "成分股異動",
+              "指數公司的技術通知頁",
+              "審核結果、定期審核日程表",
+              "日程表依審核月份公布"
+            ],
+            [
+              "費用項目與年度費用率",
+              "公開說明書",
+              "費用評估表、最近五年度費用率",
+              "公開說明書按季更新"
+            ],
+            [
+              "實際費用比率",
+              "投信投顧公會",
+              "各項費用比率",
+              "每月第 10 個營業日"
+            ],
+            [
+              "追蹤差距、追蹤誤差",
+              "發行投信的 ETF 專區、公開說明書",
+              "基金與指數表現差異",
+              "以投信公告為準"
+            ],
+            [
+              "每日持股",
+              "發行投信網站",
+              "持股明細、申購買回清單",
+              "每個營業日"
+            ],
+            [
+              "前十大持股",
+              "投信投顧公會",
+              "月前十大占淨資產價值比例",
+              "每月第 10 個營業日"
+            ],
+            [
+              "淨值與折溢價",
+              "證交所 ETF e添富",
+              "商品頁的淨值與折溢價",
+              "每個交易日"
+            ]
+          ],
+          "caption": "主題型 ETF 的資料查詢位置，依指數公司、投信投顧公會、證交所與公開說明書相關法規整理，資料時間為 2026 年 10 月。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "淨值、折溢價、內扣費用這些詞不熟，可以先查財經名詞速查",
+              "kind": "life",
+              "slug": "finance-glossary-50-terms"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "讀主題型 ETF 時容易漏看的地方",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "名稱對指數：ETF 名稱必須寫出追蹤的指數，拿它去找編製規則全文；指數單張只是簡介摘要，指數公司也聲明僅供參考。",
+            "名稱有「主動」的 ETF 不追蹤指數，由經理公司依投資策略操作，要讀的是策略與持股。",
+            "連結海外指數的 ETF 與國外市場有時差，加上匯率變動，市價可能明顯偏離淨值；資金要匯出投資，發行額度也有上限。",
+            "買賣另有成本：買進、賣出各付一次券商手續費，費率由券商自訂，超過成交金額千分之 1.425 要在委託前通知；賣出股票型 ETF 另課證券交易稅千分之 1。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "同一個主題名稱，規則可以完全不同",
+          "text": "同樣叫 AI 或半導體的兩檔 ETF，可能一檔依市值取前幾名並設上限，另一檔用營收占比篩選再按因子排序。比較時把兩份規則的採樣範圍、權重上限與審核頻率並排讀，再比內扣費用與追蹤差距。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "還沒整理過收支與緊急預備金，可以從個人理財第一步開始",
+              "kind": "life",
+              "slug": "personal-finance-first-steps"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "資訊整理，不是投資建議",
+          "text": "以上說明的是制度、費率結構與資料查詢方法，不推薦任何個別商品，也不是投資建議。費用、稅負與交易規則依主管機關與業者當期公告為準，本文查證日為 2026-10-05；實際適用請以官方資訊或合格專業人員的意見為準。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "臺灣指數公司：有價證券指數通則 V1.1.2（規則應載明事項、回溯測試的限制、權重上限參數、規則修改公告）",
+          "url": "https://backend.taiwanindex.com.tw/api/downloadFile/CompilationRules/8/tw",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "臺灣指數公司：名詞解釋與統計指標計算說明（採樣範圍、權重調整係數、定期審核、緩衝區、調整過渡期）",
+          "url": "https://backend.taiwanindex.com.tw/api/downloadFile/CompilationRules/10/tw",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "臺灣指數公司：各項指數（每檔指數頁附編製規則與指數單張下載）",
+          "url": "https://taiwanindex.com.tw/indexes",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "臺灣指數公司：技術通知（成分股審核結果、指數定期審核日程表）",
+          "url": "https://taiwanindex.com.tw/downloads/technical_notice",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：證券投資信託基金管理辦法（第 10、32 至 35、41 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400082",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：證券投資信託事業募集證券投資信託基金公開說明書應行記載事項準則（第 6、13、18 至 20 條與附表四）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400091",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "臺灣證券交易所：受益憑證辦理申購買回作業要點（實物申購買回清單的定義）",
+          "url": "https://twse-regulation.twse.com.tw/m/LawContent.aspx?FID=FL025323",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "臺灣證券交易所：ETF 系列專題報導－ETF 追蹤差距與追蹤誤差（2020 年，定義與成因）",
+          "url": "https://www.twse.com.tw/downloads/zh/ETF/topic12.pdf",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "臺灣證券交易所：ETF e添富（商品頁的標的指數、淨值與折溢價、公開說明書連結）",
+          "url": "https://www.twse.com.tw/zh/ETFortune/index",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "投信投顧公會 ETF 專區：投資百寶箱基礎篇（持股揭露、資訊查詢管道、交易費用）",
+          "url": "https://www.sitca.org.tw/ROC/SITCA_ETF/etf-hub-basic.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "投信投顧公會 ETF 專區：投資百寶箱觀念篇（折溢價、追蹤差距）",
+          "url": "https://www.sitca.org.tw/ROC/SITCA_ETF/etf-hub-knowledge.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "投信投顧公會：境內基金各項資料－明細資料（各項費用比率、月前十大與更新時程）",
+          "url": "https://www.sitca.org.tw/ROC/Industry/IN2002.aspx?PGMID=IN0202",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "投信投顧公會：各項費用比率（月、季、年）",
+          "url": "https://www.sitca.org.tw/ROC/Industry/IN2211.aspx?pid=IN2222_01",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "投信投顧公會：基金投資明細－月前十大",
+          "url": "https://www.sitca.org.tw/ROC/Industry/IN2629.aspx?pid=IN22601_04",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "臺灣證券交易所：營業細則（第 94 條，證券經紀商手續費費率由券商自訂、逾成交金額千分之 1.425 應於委託前通知）",
+          "url": "https://twse-regulation.twse.com.tw/m/LawContent.aspx?FID=FL007304",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "財政部稅務入口網：買賣受益憑證的證券交易稅稅率是多少（6208）",
+          "url": "https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-q-and-a/national/securities-transaction-tax/filing/KJZD0QV",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "ESMA TRV Risk Analysis：Artificial intelligence in EU investment funds（2025 年 2 月 25 日；AI 主題指數的成分股重疊與集中度）",
+          "url": "https://www.esma.europa.eu/sites/default/files/2025-02/ESMA50-43599798-9923_TRV_Article_Artificial_intelligence_in_EU_investment_funds.pdf",
+          "checked_on": "2026-10-05"
+        }
+      ]
+    }
+  }
+}

@@ -474,6 +474,55 @@ class NextDramaRequestOut(BaseModel):
     request: DramaRequestOut | None
 
 
+# A slides video of a site article the owner chose (docs/videos/AUTOMATION.md). "done" is also
+# what a started request reads once its video is on YouTube, and "dropped" once the owner dropped
+# that video; neither is stored for those (app/video_automation/slides_requests.py).
+SlidesRequestStatus = Literal["queued", "started", "done", "cancelled", "dropped"]
+
+
+class SlidesRequestIn(StrictModel):
+    """What the owner files on the tutorials tab: a published zh-TW lifestyle article, by slug,
+    to make into a slides video before any scheduled draft, and what to keep in mind doing it.
+    The worker claims it with ``DramaRequestStart`` (the video's slug)."""
+
+    source_guide: str = Field(pattern=GUIDE_SLUG_PATTERN)
+    note: str | None = Field(default=None, min_length=1, max_length=2000)
+
+    @field_validator("note")
+    @classmethod
+    def _trimmed(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        text = value.strip()
+        if not text:
+            raise ValueError("must not be blank")
+        return text
+
+
+class SlidesRequestOut(BaseModel):
+    id: UUID
+    source_guide: str
+    # The article's zh-TW title when it was queued, and where the site serves it.
+    title: str | None
+    url: str
+    note: str | None
+    status: SlidesRequestStatus
+    slug: str | None
+    created_by_user_id: UUID | None
+    created_at: datetime
+    started_at: datetime | None
+    finished_at: datetime | None
+    cancelled_at: datetime | None
+
+
+class SlidesRequestsOut(BaseModel):
+    requests: list[SlidesRequestOut]
+
+
+class NextSlidesRequestOut(BaseModel):
+    request: SlidesRequestOut | None
+
+
 class StageRunIn(StrictModel):
     stage: RunStage
     slug: str = Field(pattern=SLUG_PATTERN)

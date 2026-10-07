@@ -107,7 +107,7 @@ describe("/search/articles", () => {
     render(await page({ q: "zzz" }));
     expect(screen.getByRole("heading", { level: 2, name: "找不到符合「zzz」的文章。" })).toBeTruthy();
     expect(screen.getByRole("link", { name: /交通/ }).getAttribute("href")).toBe("/guides/topics/transport");
-    expect(screen.getByRole("link", { name: /^AI/ }).getAttribute("href")).toBe("/life/topics/ai");
+    expect(screen.getByRole("link", { name: /^AI/ }).getAttribute("href")).toBe("/ai");
     // Only top-level topics with something under them.
     expect(screen.queryByRole("link", { name: /海灘/ })).toBeNull();
     expect(screen.queryByRole("link", { name: /名詞/ })).toBeNull();

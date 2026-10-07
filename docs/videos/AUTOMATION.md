@@ -100,6 +100,56 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 - 企劃的主要文章（`source_guide`，沒有的話取它引用的第一篇站內文章）如果跟前面任何一支相同，這份企劃就不採用。
 - 分支上的影片用 `review-push --report-only` 登記到審核頁，這個指令不會送出任何審核項目。
 
+## 站主指定文章的教學影片（2026-10-05 加）
+
+排程草稿由企劃模型自己挑題。站主想把某一篇站上文章做成影片時，在 `/admin/videos` 的「影片」分頁最上面的「用站上文章做一支教學影片」貼上文章 slug（可以加給企劃的備註），按「排進製作」。下面的「指定文章的影片」列出排隊中、製作中與最近 7 天的請求；排隊中的可以取消，有影片的可以直接打開。
+
+**能排哪些文章**：只有已發布的繁中生活文章（`kind = life`、啟用中、zh-TW 的 `published_version` 等於索引的 `revision_version`，跟選題的 `site_topics` 同一個條件）。伺服器會拒絕：
+
+- 不存在、隱藏或沒發布的文章：422 `video_slides_request_article_not_found`。
+- 同一篇已經在排隊，或有一支製作中、沒被放棄的影片：409 `video_slides_request_duplicate`。
+- 已經有一支沒被放棄的教學影片在講這篇（`VideoProject.source_guide`）：409 `video_slides_request_article_used`，訊息寫出是哪一支。要重做就先放棄那支，沒有強制排的開關。
+- 自動產線（`enabled`）關著：409 `video_automation_disabled`。關著時工人什麼都不做，請求永遠不會被拿走。
+
+**端點**：資料表 `video_slides_requests`（migration 0126），存的狀態是 `queued`／`started`／`done`／`cancelled`。
+
+| 誰 | 端點 | 權限 |
+| --- | --- | --- |
+| 後台 | `GET /api/v1/admin/video-automation/slides-requests`：最新的 100 筆 | `content.read` |
+| 後台 | `POST /api/v1/admin/video-automation/slides-requests` `{source_guide, note?}` | `content.manage` |
+| 後台 | `DELETE /api/v1/admin/video-automation/slides-requests/{id}`：只能取消排隊中的 | `content.manage` |
+| 工人 | `GET /api/v1/video/automation/slides-requests/next`：最舊、文章仍在站上的排隊請求 | 影片工具 token |
+| 工人 | `POST /api/v1/video/automation/slides-requests/{id}/start` `{slug}`：用影片代號認領 | 影片工具 token |
+| 工人 | `POST /api/v1/video/automation/slides-requests/{id}/done`：上架確認之後 | 影片工具 token |
+
+工人經網站的 `/api/video/automation/slides-requests/...` 轉送（`apps/web/app/api/video/automation/slides-requests/`），跟漫劇請求同一種寫法。
+
+**一輪裡的順序**：舊的單集請求之後、排程草稿之前（下面「2026-09-27 起」的第 5 步）。不看 `draft_interval_hours`，但要有「等站主的草稿」（`max_waiting_drafts`）的名額。網站還沒有這些端點時（回 404），工人當成沒有請求，照舊做排程草稿；舊的工人不問，請求就一直排隊，不會出錯。
+
+**算進草稿數**：
+- 企劃呼叫不帶 variant，伺服器照樣算進 `max_drafts_per_month`，伺服器不用改。這是站主每月新教學影片的唯一上限，排隊不能繞過它。
+- 呼叫用固定的 slug `slides-<請求 id 前 8 碼>`，當機或重試只算一次。
+- 規劃完會寫 `auto-state.json` 的 `last_draft_at`，所以指定的影片取代排程草稿，不會疊在上面。
+- 退回大綱的重寫用影片自己的 slug，第一次重寫會再算一次（排程草稿本來就這樣），一支影片最多算 2 次。設上限時要把這個算進去。
+
+**釘住文章**（`flow.mjs` 的 `draftSlides()`）：
+- 工人先讀文章頁（`siteArticleUrl`，沒有內容包就當生活文章）。讀不到就結束這一輪，不付費也不認領，下一輪再試。
+- 企劃收到 `topics: []`、`requested_guide: {slug, title, url, note}`，`sources` 是文章本身。提示詞要它只規劃這一篇，`source_guide` 回這個 slug，`source_urls` 第一個放文章網址。`scope` 與 `used_guides` 不適用：站主選的文章，以前的影片用過也可以做。`earlier_videos` 仍用來避免角度重複。
+- 工人再檢查一次（`planProblem` 的 `requiredGuide`）：`source_guide` 不是這篇就不採用，把原因當 `previous_problem` 再問一次，最多兩次。
+- 規劃完 `POST …/start` 認領，`auto.json` 記下 `slides_request: {id, source_guide, title, note}`。站主的備註寫進 `notes`（`owner request: …`），撰稿模型從 `owner_notes` 讀到。
+- 退回大綱重寫時同樣不抓題目、帶 `requested_guide`、檢查 `source_guide`，`auto.json` 的 `source_guide` 固定是請求的那一篇。
+
+**失敗時**：
+- 兩次都寫不出可用的企劃：仍然認領（slug 是 `slides-<id8>`），影片卡住，審核頁寫原因與留下的答案。沒有 `brief.md` 的影片不能重試（`brief.md is gone`），跟漫劇請求一樣：站主放棄它再重新排。放棄的影片不再算製作中，同一篇可以再排。
+- 規劃時站主取消了（認領回 409 `video_slides_request_not_queued`），或企劃的 slug 已經是另一個請求的影片（409 `video_slides_request_slug_taken`）：這一輪結束，什麼都不留。只有這兩個代碼算撤回，其他錯誤照常拋出，這一輪失敗。
+- 認領送到了、回答在路上掉了（斷線或 5xx）：`client.mjs` 會再送一次同一個認領。伺服器對同一個 token 用同一個 slug 再認領一次，照第一次的結果回 200，不回 409，所以已付費的企劃與影片照樣留下（`start_request`）。
+- `next` 會跳過文章已經下架的請求，一篇下架的文章不會卡住後面的請求；它一直留在排隊中，站主可以取消。
+- 認領之後、存 `auto.json` 之前當機，或認領送到了、重送幾次都沒拿到回答：請求變成沒有影片的 `started`，同一篇不能再排；後台只能取消排隊中的請求，影片清單也沒有這支可以放棄，要手動改資料庫。`draftDrama` 有一樣的空窗，接受。
+
+**完成與放棄**：上架確認（`publish` 核准）之後工人 `POST …/done`；失敗只記 log。列表看到請求的影片有 YouTube id，也會顯示「完成」（`done`），舊的工人做的影片也一樣。影片被放棄時，請求顯示「已放棄」（`dropped`，同樣由影片列推導，不存），文章可以再排。
+
+**理財文章**：企劃提示詞的 `avoid` 照樣管怎麼講。理財或投資的文章講成資訊與查證方法，不建議買、賣或持有，不點名文章沒提到的公司、基金或產品，在「不做的事」寫明，結尾帶文章自己的免責說明。站主可以在備註再寫一次，例如「只講制度、資料怎麼查與風險，不推薦任何個股、ETF 或產品，不預測價格；結尾照文章說『資訊整理，不是投資建議』」。Jev 挑大綱的 `advice`（≤ 0.3）與成片品管的 `policy` 讓這類影片比較常停下來等站主，這是預期的。
+
 ## 漫劇（2026-09-26 加，設計在 `DRAMA.md`）
 
 工人也會做 AI 漫劇。它不挑題：**站主在 `/admin/videos` 發起**（「新的漫劇」：故事前提或改編的文章、風格、長度；「新的作品」：前提、面向、集數）。漫劇設定（`?tab=settings&section=drama`）的 `drama_enabled` 要開著，否則表單被拒、工人也不問。語言與上架的順序在 [`LANGUAGES.md`](LANGUAGES.md)。
@@ -112,7 +162,8 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 2. **討論**（`discussStep()`，在任何作品工作之前，一輪最多回一則）：`GET /video/automation/series/messages/next` 拿最舊的未回覆站主訊息，連同整條串、文件最新版（劇本串給那一集，劇本由工人從自己的檔案讀）與作品脈絡；文件交給企劃模型（variant `discuss`）、劇本交給撰稿模型（variant `discuss`），答案 `{ reply, revised }`，`POST /video/automation/series/messages/{id}/answer {reply_md, revised?}`。文件的新版本由站上存成等站主的 `review` 版本（被取代的那版備註「討論後出了新版本」，不算 `series_doc_rewrites`，也不算每月草稿）；劇本的新版本由工人寫回 `video.json`（每句 id 保留、過 lint），之後的輪次重跑查核與聽眾審稿、重寫 `script.md`、再送一次劇本關卡。模型給不出可用答案就代它回一則說明，串停著等站主，不重試。沒有輪數上限；要停就關 `drama_enabled` 或放 `STOP` 檔。
 3. **作品**（`seriesStep()`）：`GET /video/automation/series/next`——`bible`（單集）或 `setting`／`outline`／`chapter`（作品）由企劃模型寫文件 `POST …/series/{slug}/docs` 等站主；`episode` 就 `POST …/episodes/{n}/start` 開下一集（單集是 `one-off-<…>-e001`），寫 `series.json` 與 `brief.md`（`## 大綱` 只有選項 A，本機核准，備註「依故事聖經」或 `planned by chapter <n>'s approved outline`），不送「選大綱」。
 4. 舊的單集請求（`GET /video/automation/drama-requests/next` 只回單集變成作品之前排進、沒有 `series_id` 的請求），照下面的舊路。
-5. 排程的教學草稿。
+5. 站主指定文章（`GET /video/automation/slides-requests/next`），見上面「站主指定文章的教學影片」。這一步不看 `drama_enabled`。
+6. 排程的教學草稿。
 
 每一集的步驟是 `DRAMA_STEPS` 的 19 步（`status` 會印）：撰稿 → 連貫性查核 → 聽眾審稿 → **劇本關卡**（`script.md` 只含敘事；`review-push --gate script`，站主在影片頁讀、討論、核准；「劇本先給我看」`series_script_gate` 關著就本機核准；退回走撰稿 FIX 模式最多 `MAX_PROMPT_FIX_ROUNDS` 輪）→ **look**（judge 打分，`auto_pick_look` 開著就核准 judge 建議的那張，沒過才找站主）→ tts → check-audio → 旁白關卡（Jev 全過自動核准）→ **keyframes** → storyboard 關卡（`auto_approve_storyboard`）→ render → **clips**（最貴，送出前對單支上限把關）→ music → assemble → 繁中字幕 → 成片關卡（自動品管）→ package → 上架確認（`POST …/episodes/{n}/done`）→ 語言。劇本關卡在任何圖片或片段花錢之前。
 
@@ -130,7 +181,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 ## 長篇作品（2026-09-27 加，設計在 `SERIES.md`）
 
-工人每輪先回一則討論（上面「討論」，`GET /video/automation/series/messages/next`），再問 `GET /video/automation/series/next`（單集的故事聖經與第 1 集也從這裡來），再問舊的單集請求，再看排程草稿。作品層的工作是 `setting`／`outline`／`chapter`／`episode`，單集只有 `bible` 與 `episode`：`setting`／`outline`／`chapter` 是企劃模型（variant `setting`、`outline`、`chapter`）寫一份文件送到站上等站主；`episode` 是在站上開始下一集（影片 slug 為 `<作品>-e001` 這種），工人寫 `docs/videos/<slug>/series.json`（人物表、本集細綱、前情、謎團、設定集全文）與 `brief.md`（只有選項 A，本機直接核准），之後照上面每一集的 19 步走（劇本關卡每支漫劇都有），作品的集只多兩件事：撰稿與查核用作品變體（`writer:episode`、`verifier:episode`，查核另輸出 `coverage` 與 `problems` 到 `review/script-check.json`）；`look` 先查作品存檔 `<VIDEO_WORKDIR>/_series/<作品>/characters/`，有核准過的設定圖就沿用並直接核准 look，只畫新角色（`review-pull` 核准 look 時把選中的圖存進去）。合成完成後查核模型（variant `recap`）寫 150 字前情 `POST …/recap`；上架確認後 `POST …/done`，站上依 `series_max_in_flight`、`series_auto_continue` 與前一集是否完成決定下一集何時開始。文件被退回帶 `previous` 與 `owner_note` 重寫，站上限制 `series_doc_rewrites` 輪；討論出的新版本另計，沒有上限。
+工人每輪先回一則討論（上面「討論」，`GET /video/automation/series/messages/next`），再問 `GET /video/automation/series/next`（單集的故事聖經與第 1 集也從這裡來），再問舊的單集請求，再問站主指定的文章，再看排程草稿。作品層的工作是 `setting`／`outline`／`chapter`／`episode`，單集只有 `bible` 與 `episode`：`setting`／`outline`／`chapter` 是企劃模型（variant `setting`、`outline`、`chapter`）寫一份文件送到站上等站主；`episode` 是在站上開始下一集（影片 slug 為 `<作品>-e001` 這種），工人寫 `docs/videos/<slug>/series.json`（人物表、本集細綱、前情、謎團、設定集全文）與 `brief.md`（只有選項 A，本機直接核准），之後照上面每一集的 19 步走（劇本關卡每支漫劇都有），作品的集只多兩件事：撰稿與查核用作品變體（`writer:episode`、`verifier:episode`，查核另輸出 `coverage` 與 `problems` 到 `review/script-check.json`）；`look` 先查作品存檔 `<VIDEO_WORKDIR>/_series/<作品>/characters/`，有核准過的設定圖就沿用並直接核准 look，只畫新角色（`review-pull` 核准 look 時把選中的圖存進去）。合成完成後查核模型（variant `recap`）寫 150 字前情 `POST …/recap`；上架確認後 `POST …/done`，站上依 `series_max_in_flight`、`series_auto_continue` 與前一集是否完成決定下一集何時開始。文件被退回帶 `previous` 與 `owner_note` 重寫，站上限制 `series_doc_rewrites` 輪；討論出的新版本另計，沒有上限。
 
 ## 品牌故事（2026-09-28 加，設計在 `STORY.md`）
 
@@ -151,7 +202,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 每支影片先只做繁體中文。成片核准後站主在 `/admin/videos` 的影片頁決定加哪些語言（en、ja、ko、zh-CN）、每種加什麼（標題與說明、CC、配音），或按「只出繁體中文」；`caption_locales` 只是面板的預先勾選。工人每一輪從影片清單（`ProjectSummary.locales`、`locales_decided_at`、`languages`）看每支成片已核准的影片：沒決定就什麼都不做；決定了，就把選擇抄成工作區的 `languages.json`（`captions`、`package`、`qa`、`review-push` 都從這個檔讀，本機手動跑也一樣），再對站上還標成「製作中」的部件做一件事：
 
 1. **翻譯**（一輪一個語言）：`i18n-sheet --locale <l> --parts <勾了的 metadata,captions>`（勾配音時每句帶 `max_chars`）→ 翻譯模型 → 字幕審稿模型 → `i18n-merge`。工作表沒有勾的部件就沒有那一段，merge 也不動它。翻譯模型一次呼叫做三段（2026-10-05 起，做法借自 VideoLingo 與 pyvideotrans 的「翻譯→反思→修訂」，沒有抄程式）：先翻出草稿，再以該語系觀眾的身分對照原文、詞彙表與規則自評，最後定稿，回 `{"draft": {"worksheet"}, "critique": [...], "final": {"worksheet"}}`；`prompts.mjs` 的 `parseAnswer` 只取 `final`，沒有 `critique` 的答案（或有草稿沒定稿）當成答非所問，跟其他不可用的答案一樣下一輪再問一次、兩次就卡住。**詞彙表**：影片的句子與標題說明用到的詞典條目（`docs/videos/lexicon.json`，以句子裡出現的形式列出，`core/lexicon.mjs` 的 `entriesUsed`）加 `video.json` 的 `sources` 標題，每個詞全片只用一種寫法、產品名照原廠拼法；**字幕切點**：每句 zh-TW 被切成幾段（`core/captions.mjs` 的 `cuePieces`：先切句末、再切逗號、數字與單位不分開），翻譯照原文的子句順序走，數字在觀眾聽到的那一段。兩者由 `tools/video/i18n/cli.mjs` 的 `translationContext(doc, lexicon)` 產生（`prompts.mjs` 轉出同一個函式）：`i18n-sheet` 寫進工作表（`glossary`、`boundaries`；只有 metadata 的工作表沒有 `boundaries`），工人每次呼叫翻譯與審稿模型都把它們放在 payload 頂層、送出的 `worksheet` 不重複帶（拆單位時句子單位只帶自己那幾句的切點、metadata 單位只帶詞彙表），`i18n-merge` 不讀這兩個欄位；單位的 key 仍是整張工作表的雜湊，所以詞彙表變了那個單位會重問一次。提示也說沒帶時（舊工作表）模型自己從句子裡的拉丁字詞與 `video.sources` 建表。字幕審稿模型對照同一份詞彙表與切點。翻譯的回答因此含草稿與定稿兩份工作表，輸出約是以前的兩倍，一個單位仍最多 24 句（`sheet-units.mjs`）。
-2. **配音**（一輪一個語言，`docs/videos/DUBS.md`）：`dub --locale <l>`；結束碼 1（有視窗加速到 1.15 倍仍塞不下）→ 翻譯模型的縮短模式（`translator:shorten`，只給 `fit.json` 的句子與預算；不縮短或改了數字的答案丟掉）→ captions-only 的工作表 → `i18n-merge` → 再 `dub`，最多 `MAX_DUB_SHORTEN_ROUNDS`（2）輪；做出音軌後 `check-audio --locale <l>` → 被標的句子 `dub --redo`，最多 `MAX_DUB_RETAKE_ROUNDS`（2）輪；重錄後句子變長、塞不回視窗時，回到縮短模式，不直接放棄。重錄完仍被標的句子多半是同音字（轉寫每次都聽成同一個詞，2026-09-29 當天 8 條配音都因此整條放棄），交給翻譯模型的改寫模式（`translator:reword`，帶轉寫聽到的字與預算；沒改、超過預算或改了數字的答案丟掉）→ 同樣走工作表與 `i18n-merge` → 再 `dub`（只重錄改過的句子）與 `check-audio`，最多 `MAX_DUB_REWORD_ROUNDS`（2）輪。仍不行、或 `dub` 說要站主（Azure 聲音、沒金鑰）就寫 `dubs/<l>/skipped.json` 記下原因，**不擋影片**；服務暫時掛掉（結束碼 4）這一輪結束、下一輪再試；`check-audio --locale` 被 `STOP` 檔停下（結束碼 6）也是這一輪結束，下一輪把那條音軌重新聽完再送。
+2. **配音**（一輪一個語言，`docs/videos/DUBS.md`）：`dub --locale <l>`；結束碼 1（有視窗加速到 1.15 倍仍塞不下）→ 翻譯模型的縮短模式（`translator:shorten`，只給 `fit.json` 的句子與預算；不縮短或改了數字的答案丟掉）→ captions-only 的工作表 → `i18n-merge` → 再 `dub`，最多 `MAX_DUB_SHORTEN_ROUNDS`（2）輪；做出音軌後 `check-audio --locale <l>` → 被標的句子 `dub --redo`，最多 `MAX_DUB_RETAKE_ROUNDS`（2）輪；重錄後句子變長、塞不回視窗時，回到縮短模式，不直接放棄。重錄完仍被標的句子多半是同音字（轉寫每次都聽成同一個詞，2026-09-29 當天 8 條配音都因此整條放棄），交給翻譯模型的改寫模式（`translator:reword`，帶轉寫聽到的字與預算；沒改、超過預算或改了數字的答案丟掉）→ 同樣走工作表與 `i18n-merge` → 再 `dub`（只重錄改過的句子）與 `check-audio`，最多 `MAX_DUB_REWORD_ROUNDS`（2）輪。仍不行、或 `dub` 說要站主（Azure 聲音、沒金鑰）就寫 `dubs/<l>/skipped.json` 記下原因，**不擋影片**；服務暫時掛掉（結束碼 4）這一輪結束、下一輪再試；`dub`、`dub --redo` 或 `check-audio --locale` 被 `STOP` 檔停下（結束碼 6）也是這一輪結束（不當成做好的音軌、不放棄、不擋影片），下一輪從快取把音軌重新排好、重新聽完再送。
 3. **全部做好**：`captions`（只寫 zh-TW 與勾了 CC 的語系；有配音的跟配音時間軸；沒勾的語系的字幕檔刪掉）→ `package`（`upload/` 只放 zh-TW 與勾了的：`description.<l>.txt`、`captions/<l>.srt`、`dubs/<l>.m4a`；`metadata.json` 多 `language_choice`）→ `review-push --gate languages`：payload 每語每部件 `ready` 或 `{status: "skipped", reason}`，檔案 `description_<l>`、`captions_<l>`、`dub_<l>`（語系小寫、連字號改底線）。沒有配音的批次伺服器直接核准；有配音的等站主在 Studio 上傳後按「已在 Studio 上傳配音」。
 
 之後多勾的部件，站上會再標成「製作中」，工人再做一批、再送一筆（舊的 superseded）；影片已經在 YouTube 上也一樣。站主沒勾或只出繁體中文的影片，`captions` 與 `package` 只有 zh-TW，其他檔案一個位元組都不變。

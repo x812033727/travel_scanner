@@ -8,12 +8,13 @@ only gathers them.
 
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, date, datetime, timedelta
+from typing import Any
 from urllib.parse import urlparse
 
 import httpx
 from redis.asyncio import Redis
-from sqlalchemy import or_, select
+from sqlalchemy import Select, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import Settings
@@ -33,11 +34,12 @@ SEARCH_RESULTS = 10
 SITE_URL = "https://mokaair.com/zh-TW/life"
 
 
-async def site_topics(session: AsyncSession, now: datetime | None = None) -> list[TopicView]:
-    """The lifestyle section's zh-TW articles published or dated in the last two weeks."""
-    since = (now or datetime.now(UTC)) - timedelta(days=SITE_DAYS)
-    rows = await session.execute(
-        select(GuideArticle.slug, GuideArticle.news_date, GuideSearchEntry)
+def _published_life(*columns: Any) -> Select[Any]:
+    """The lifestyle section's zh-TW articles as the site serves them: active, and the search
+    entry is the revision the zh-TW translation has published."""
+    return (
+        select(*columns)
+        .select_from(GuideArticle)
         .join(GuideSearchEntry, GuideSearchEntry.article_id == GuideArticle.id)
         .join(
             GuideArticleLocale,
@@ -49,22 +51,52 @@ async def site_topics(session: AsyncSession, now: datetime | None = None) -> lis
             GuideArticle.is_active.is_(True),
             GuideSearchEntry.locale == "zh-TW",
             GuideArticleLocale.published_version == GuideSearchEntry.revision_version,
-            or_(GuideSearchEntry.published_at >= since, GuideArticle.news_date >= since.date()),
         )
+    )
+
+
+def published_life_slugs() -> Select[Any]:
+    """The slugs of those articles, for a query that keeps only what the site still serves."""
+    return _published_life(GuideArticle.slug)
+
+
+def _topic(slug: str, news_date: date | None, entry: GuideSearchEntry) -> TopicView:
+    return TopicView(
+        source="site",
+        title=entry.title,
+        summary=entry.description,
+        url=f"{SITE_URL}/{slug}",
+        slug=slug,
+        date=(news_date or entry.published_at.date()).isoformat(),
+    )
+
+
+async def site_topics(session: AsyncSession, now: datetime | None = None) -> list[TopicView]:
+    """The lifestyle section's zh-TW articles published or dated in the last two weeks."""
+    since = (now or datetime.now(UTC)) - timedelta(days=SITE_DAYS)
+    rows = await session.execute(
+        _published_life(GuideArticle.slug, GuideArticle.news_date, GuideSearchEntry)
+        .where(or_(GuideSearchEntry.published_at >= since, GuideArticle.news_date >= since.date()))
         .order_by(GuideSearchEntry.published_at.desc())
         .limit(SITE_LIMIT)
     )
-    return [
-        TopicView(
-            source="site",
-            title=entry.title,
-            summary=entry.description,
-            url=f"{SITE_URL}/{slug}",
-            slug=slug,
-            date=(news_date or entry.published_at.date()).isoformat(),
+    return [_topic(slug, news_date, entry) for slug, news_date, entry in rows]
+
+
+async def site_article(session: AsyncSession, slug: str) -> TopicView | None:
+    """One published lifestyle article by slug, whatever its date: what the owner may ask a
+    slides video of (app/video_automation/slides_requests.py)."""
+    row = (
+        await session.execute(
+            _published_life(GuideArticle.slug, GuideArticle.news_date, GuideSearchEntry)
+            .where(GuideArticle.slug == slug)
+            .limit(1)
         )
-        for slug, news_date, entry in rows
-    ]
+    ).first()
+    if row is None:
+        return None
+    found, news_date, entry = row
+    return _topic(found, news_date, entry)
 
 
 async def search_topics(

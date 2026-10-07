@@ -22,7 +22,7 @@ import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
-import { acceptedPicturesOf, audioCheck, checklistFrom, clearedSummary, downloadNote, guideSlugs, judgeBody, MAX_REVIEW_FILES, outlineOptions, PART_BYTES, previewArgs, REVIEW_GATES, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
+import { acceptedPicturesOf, audioCheck, audioSummary, checklistFrom, clearedSummary, downloadNote, fitPayload, fitSummary, guideSlugs, judgeBody, KEPT_REMARK_LENGTH, KEPT_REMARK_LINES, keptRemarks, MAX_ANIME_SCRIPT_BYTES, MAX_REVIEW_FILES, MAX_REVIEW_PAYLOAD_BYTES, MAX_REVIEW_SUMMARY_LENGTH, namedPictures, outlineOptions, outlineReview, PART_BYTES, payloadBytes, previewArgs, REVIEW_GATES, REVIEW_PAYLOAD_BUDGET, ReviewError, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -71,11 +71,33 @@ test("the checklist, the Jev summary and the upload items are what the page show
   assert.deepEqual(uploadItems("# 上架\n- [ ] **AI 使用揭露**：看情況\n- [x] 已完成\n- [ ] 縮圖看得懂"), ["AI 使用揭露：看情況", "縮圖看得懂"]);
 });
 
+// MAX_PAYLOAD_BYTES and MAX_ANIME_SCRIPT_BYTES in apps/api/app/video_reviews/schemas.py.
+const SERVER_PAYLOAD_BYTES = 262_144;
+const SERVER_ANIME_SCRIPT_BYTES = 1_048_576;
+
+/**
+ * A payload's size as the server counts it (ReviewIn._small): the bytes of Python's
+ * json.dumps(value, ensure_ascii=False), which is the compact JSON plus one space after every
+ * comma and every colon between things. Counted here apart from the tool's own measure.
+ */
+function serverPayloadBytes(payload) {
+  let spaces = 0;
+  const visit = (value) => {
+    if (value === null || typeof value !== "object") return;
+    const inside = Array.isArray(value) ? value : Object.values(value);
+    spaces += Math.max(inside.length - 1, 0) + (Array.isArray(value) ? 0 : inside.length);
+    inside.forEach(visit);
+  };
+  visit(payload);
+  return Buffer.byteLength(JSON.stringify(payload)) + spaces;
+}
+
 /**
  * The site: it keeps what the tool sends and answers reads with the reviews it was given. The
  * judge answers as `judge()` and `policy()` say (an object, or a Response for an error); by
  * default the outline judge is off (409) and the policy judge is not there (404). Any other
- * address is a description's link the quality check opens.
+ * address is a description's link the quality check opens. A review whose summary or payload is
+ * past the server's limits is answered 422 and not kept, as the server answers it.
  */
 function site({ judge = null, policy = null, autoApproveFinal = false, project = {} } = {}) {
   const state = { calls: [], files: new Map(), reviews: [], judge: [] };
@@ -104,6 +126,11 @@ function site({ judge = null, policy = null, autoApproveFinal = false, project =
       const body = JSON.parse(init.body);
       // Match ReviewSubmit.summary's character limit so the real push path cannot hide a 422.
       if ([...body.summary].length > 500) return Response.json({ detail: "summary：內容太長" }, { status: 422 });
+      // And ReviewIn._small's limit on the payload: 256 KB, or 1 MB for a long-anime screenplay.
+      // The server words it as it words any value it will not take (apps/api/app/problems.py
+      // _localized_issue): the field, and neither the size nor the limit.
+      const limit = body.gate === "script" && body.payload?.production_policy === "long-anime-v1" ? SERVER_ANIME_SCRIPT_BYTES : SERVER_PAYLOAD_BYTES;
+      if (serverPayloadBytes(body.payload ?? {}) > limit) return Response.json({ detail: "payload：格式或內容不正確" }, { status: 422 });
       const status = autoApproveFinal && body.gate === "final" && body.payload?.qa?.ok === true ? "approved" : "pending";
       state.reviews.unshift({ id: `r${state.reviews.length}`, status, choice: null, note: null, decided_at: null, ...body });
       return Response.json(state.reviews[0], { status: 201 });
@@ -1231,6 +1258,321 @@ test("the cut of a video with pictures kept with the judge's remarks goes up for
   assert.equal(plain.state.reviews[0].payload.manual_review, undefined);
   assert.equal(plain.state.reviews[0].payload.accepted_pictures, undefined);
   assert.doesNotMatch(plain.state.reviews[0].summary, /插圖|站主/);
+});
+
+test("a summary names at most five kept pictures and counts the rest, and no summary runs past the site's 500 characters", () => {
+  assert.equal(MAX_REVIEW_SUMMARY_LENGTH, 500, "ReviewIn.summary in apps/api/app/video_reviews/schemas.py");
+  assert.equal(namedPictures(["desk"]), "desk");
+  assert.equal(namedPictures(["a", "b", "c", "d", "e"]), "a、b、c、d、e");
+  assert.equal(namedPictures(["a", "b", "c", "d", "e", "f"]), "a、b、c、d、e 等，另 1 張");
+  assert.equal(namedPictures(Array.from({ length: 80 }, (_, index) => `s${index + 1}`)), "s1、s2、s3、s4、s5 等，另 75 張");
+  // A summary that fits is left as it is, to the character; a longer one is cut to the limit.
+  assert.equal(fitSummary("分鏡 5 鏡"), "分鏡 5 鏡");
+  assert.equal(fitSummary("鏡".repeat(500)), "鏡".repeat(500));
+  assert.equal(fitSummary("鏡".repeat(501)), `${"鏡".repeat(499)}…`);
+  // The site counts code points (Python's len), so a character outside the basic plane is one.
+  assert.equal(fitSummary("𠮷".repeat(500)), "𠮷".repeat(500));
+  assert.equal(fitSummary(`${"𠮷".repeat(600)}`), `${"𠮷".repeat(499)}…`);
+  // The narration names the lines a second transcript cleared while they fit, and counts them when they do not.
+  const cleared = (count) => ({ check: { flagged: 1 }, cleared_lines: Array.from({ length: count }, (_, index) => ({ id: `l${String(index).padStart(7, "0")}`, second: { by: "whisper.py" } })) });
+  assert.equal(audioSummary({ seconds: 600, lines: 200, check: cleared(0), rewrites: 0 }), `旁白 ${formatClock(600)}，200 句；Jev 標記 1 句`);
+  assert.equal(audioSummary({ seconds: 600, lines: 200, check: cleared(2), rewrites: 3 }), `旁白 ${formatClock(600)}，200 句；Jev 標記 1 句；whisper.py 另外轉寫、排除 2 句（l0000000、l0000001）；改寫 3 句`);
+  assert.ok([...clearedSummary(cleared(120))].length > 500, "120 line ids alone are past the limit");
+  assert.equal(audioSummary({ seconds: 600, lines: 200, check: cleared(120), rewrites: 3 }), `旁白 ${formatClock(600)}，200 句；Jev 標記 1 句；whisper.py 另外轉寫、排除 120 句；改寫 3 句`);
+  // The outline review is the one the worker posts itself (automation/flow.mjs submitOutline), so
+  // it is fitted where it is built: Jev's choice is text of any length.
+  const picked = (choice) => outlineReview("brief", [{ key: "A" }, { key: "B" }], { status: "passed", pick: { choice } }, "（自動產生）");
+  assert.equal(picked("B").summary, "企劃書與 2 個大綱選項（自動產生）；Jev 挑了 B");
+  const rambling = picked("乙".repeat(900));
+  assert.equal([...rambling.summary].length, 500);
+  assert.ok(rambling.summary.startsWith("企劃書與 2 個大綱選項（自動產生）；Jev 挑了 乙") && rambling.summary.endsWith("乙…"));
+  assert.equal(rambling.payload.pick.choice, "乙".repeat(900), "the payload keeps the answer whole");
+});
+
+/**
+ * The illustrated fixture with its five shots replaced by one for each of `ids`, every one drawn
+ * and kept with the judge's remarks (keyframes --accept-best): a video none of whose pictures
+ * passed after the prompt fixes. Returns the pictures as the reviews list them. `remarks` gives
+ * what the judge said of picture `index` (of every take, and of the best one), one line unless
+ * told otherwise; `prompt` replaces every shot's prompt. Called again on the same box, it
+ * rewrites the video and the manifest.
+ */
+function everyPictureKept(box, ids, { remarks = (index) => [`awkward: the hand in picture ${index + 1} → a hand resting flat`], prompt = null } = {}) {
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  const shot = doc.scenes.find((scene) => scene.template === "shot");
+  const cards = doc.scenes.filter((scene) => scene.template !== "shot");
+  const pictures = ids.map((id, index) => ({ ...shot, id, ...(prompt ? { data: { ...shot.data, prompt } } : {}), lines: [{ id: `k${String(index).padStart(3, "0")}`, text: shot.lines[0].text }] }));
+  doc.scenes = [cards[0], ...pictures, ...cards.slice(1)];
+  writeFileSync(file, `${JSON.stringify(doc, null, 2)}\n`);
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  const shots = {};
+  for (const [index, id] of ids.entries()) {
+    // Named by number: an id may be longer than a file name can be.
+    const picture = `keyframes/kept-${index + 1}.png`;
+    const problems = remarks(index);
+    writeFileSync(path.join(box.workdir, picture), png(id));
+    shots[id] = { file: picture, sha256: sha(png(id)), seed: 1, judge: { overall: 5, passed: false, problems }, needs_review: false, accepted_with_problems: problems };
+  }
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: lookHash(doc), pictures_hash: "p", shots }));
+  return ids.map((id, index) => ({ id, problems: shots[id].accepted_with_problems, n: index + 1 }));
+}
+
+test("eighty kept pictures with long ids still go up: the summaries fit the site's 500 characters, name the first five and count the rest, and the payload lists every one", async () => {
+  // Every id spelled out, as the summary was written before, is several times the limit; the
+  // site answers 422 to a summary past it (as site() does), and the worker blocks that video.
+  const ids = Array.from({ length: 80 }, (_, index) => `a-picture-whose-scene-id-says-everything-that-is-in-the-frame-${String(index + 1).padStart(2, "0")}`);
+  assert.ok(ids.join("、").length > 5000);
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const kept = everyPictureKept(box, ids);
+  const { final } = cutVideo(box);
+  const named = `${ids.slice(0, 5).join("、")} 等，另 75 張`;
+
+  const { review: board } = await pushStoryboard(box);
+  assert.equal(board.summary, "分鏡 80 鏡（沒有聯絡表），80 鏡保留（judge 未過，成片時站主審看）", "the board counts its kept shots and names none");
+  assert.deepEqual(board.payload.accepted.map((entry) => entry.id), ids);
+
+  const server = site({ autoApproveFinal: true });
+  const push = context(box, server.fetchImpl, { encode, runCommand: passingQualityCheck(box, final) });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], push.ctx), EXIT.ok, push.out.stderr);
+  const review = server.state.reviews[0];
+  assert.equal(review.status, "pending");
+  assert.ok([...review.summary].length <= 500, `${[...review.summary].length} characters`);
+  assert.ok(review.summary.endsWith(`；80 張插圖未通過 judge（${named}），需站主審看`), review.summary);
+  assert.ok(!review.summary.includes(ids[5]), "the sixth picture is counted, not named");
+  assert.equal(review.payload.manual_review, true);
+  assert.equal(review.payload.manual_review_reason, `有 80 張插圖未通過 judge（${named}），需站主審看成片；機械品管僅供參考。`);
+  assert.deepEqual(review.payload.accepted_pictures, kept.map(({ id, problems }) => ({ id, problems })), "every kept picture, in shot order, with what the judge said");
+
+  // An id has no length limit of its own (core/schema.mjs SCENE_ID): five of these alone are past
+  // the limit, so the summary is cut there and ends in an ellipsis, and the review still goes up.
+  const longer = Array.from({ length: 80 }, (_, index) => `${"very-".repeat(40)}long-${index + 1}`);
+  const other = sandbox("fixture-illustrated", "illustrated");
+  everyPictureKept(other, longer);
+  const cut = cutVideo(other);
+  const second = site();
+  const again = context(other, second.fetchImpl, { encode, runCommand: passingQualityCheck(other, cut.final) });
+  assert.equal(await main(["review-push", "--slug", other.slug, "--gate", "final"], again.ctx), EXIT.ok, again.out.stderr);
+  const clipped = second.state.reviews[0];
+  assert.equal([...clipped.summary].length, 500);
+  assert.ok(clipped.summary.endsWith("…"));
+  assert.match(clipped.summary, /^成片 \d+:\d\d，自動品管 11 項全過；80 張插圖未通過 judge（very-/);
+  assert.deepEqual(clipped.payload.accepted_pictures.map((picture) => picture.id), longer, "the payload is not cut");
+});
+
+const MORE_REMARKS = (count) => `…另有 ${count} 則，全文在 keyframes/manifest.json`;
+const REMARKS_LEFT_OUT = "意見因審核資料的大小上限略去，全文在 keyframes/manifest.json";
+
+test("a review carries six lines of 300 characters of what the judge said of a kept picture and counts the rest; a payload is measured as the server measures it", async () => {
+  assert.equal(MAX_REVIEW_PAYLOAD_BYTES, SERVER_PAYLOAD_BYTES, "MAX_PAYLOAD_BYTES in apps/api/app/video_reviews/schemas.py");
+  assert.equal(MAX_ANIME_SCRIPT_BYTES, SERVER_ANIME_SCRIPT_BYTES, "MAX_ANIME_SCRIPT_BYTES in apps/api/app/video_reviews/schemas.py");
+  assert.equal(REVIEW_PAYLOAD_BUDGET, 240_000);
+  assert.deepEqual([KEPT_REMARK_LINES, KEPT_REMARK_LENGTH], [6, 300]);
+
+  // A few short remarks go up as they are, to the character.
+  const few = ["awkward: the hand → a hand resting flat", "details: no cup"];
+  assert.deepEqual(keptRemarks(few), few);
+  const nine = Array.from({ length: 9 }, (_, index) => `r${index + 1}`);
+  assert.deepEqual(keptRemarks(nine.slice(0, 6)), ["r1", "r2", "r3", "r4", "r5", "r6"]);
+  // From the seventh on they are counted in one last line.
+  assert.deepEqual(keptRemarks(nine), ["r1", "r2", "r3", "r4", "r5", "r6", MORE_REMARKS(3)]);
+  // A line is cut at 300 characters, counted as the site counts them (code points).
+  assert.deepEqual(keptRemarks(["鏡".repeat(300), "鏡".repeat(301), "𠮷".repeat(400)]), ["鏡".repeat(300), `${"鏡".repeat(299)}…`, `${"𠮷".repeat(299)}…`]);
+  // What is not text is left out, as the card leaves it out.
+  assert.deepEqual(keptRemarks(["a", "", null, 7, { b: 1 }, "c"]), ["a", "c"]);
+  assert.deepEqual(keptRemarks(undefined), []);
+  assert.deepEqual(keptRemarks("not a list"), []);
+  // The shorter forms a payload past its budget falls back to: two lines, then the one that says why there are none.
+  assert.deepEqual(keptRemarks(nine, 2), ["r1", "r2", MORE_REMARKS(7)]);
+  assert.deepEqual(keptRemarks(nine, 0), [REMARKS_LEFT_OUT]);
+  assert.deepEqual(keptRemarks([], 0), [], "a picture the judge said nothing of has nothing left out");
+
+  // Python's json.dumps(value, ensure_ascii=False): ", " and ": " between things, text outside ASCII as it is.
+  const sample = { a: [1, "鏡", true, null, 1.5], b: { c: "x\ny", d: [] }, e: {} };
+  assert.equal(payloadBytes(sample), Buffer.byteLength('{"a": [1, "鏡", true, null, 1.5], "b": {"c": "x\\ny", "d": []}, "e": {}}'));
+  assert.equal(payloadBytes(sample), serverPayloadBytes(sample));
+  assert.equal(payloadBytes({ gone: undefined, at: new Date(0) }), Buffer.byteLength('{"at": "1970-01-01T00:00:00.000Z"}'), "measured on what the request carries");
+  assert.equal(payloadBytes(undefined), 2);
+
+  // The fake site of these tests refuses a payload past the limit as the server does, to the byte.
+  const server = site();
+  const post = (body) => server.fetchImpl("https://mokaair.com/api/video/reviews/any/reviews", { method: "POST", headers: { Authorization: `Bearer ${TOKEN}` }, body: JSON.stringify({ gate: "final", summary: "s", ...body }) });
+  // {"text": "…"} is twelve bytes around its text.
+  const filled = (bytes) => ({ text: "x".repeat(bytes - 12) });
+  assert.equal(serverPayloadBytes(filled(SERVER_PAYLOAD_BYTES)), SERVER_PAYLOAD_BYTES);
+  assert.equal((await post({ payload: filled(SERVER_PAYLOAD_BYTES) })).status, 201);
+  const refused = await post({ payload: filled(SERVER_PAYLOAD_BYTES + 1) });
+  assert.equal(refused.status, 422);
+  assert.deepEqual(await refused.json(), { detail: "payload：格式或內容不正確" });
+  assert.equal(server.state.reviews.length, 1, "a refused review is not kept");
+  // Compact JSON would have let this one through: the spaces count.
+  const spaced = { list: Array.from({ length: 30_000 }, () => 1234567) };
+  assert.ok(Buffer.byteLength(JSON.stringify(spaced)) < SERVER_PAYLOAD_BYTES && serverPayloadBytes(spaced) > SERVER_PAYLOAD_BYTES);
+  assert.equal((await post({ payload: spaced })).status, 422);
+});
+
+test("a payload past the site's limit is never posted: the remarks on kept pictures are cut until it fits, and a review that still does not fit is refused here with its size", () => {
+  const small = { gate: "final", summary: "s", payload: { duration_seconds: 3 } };
+  assert.deepEqual(fitPayload(small), { body: small, bytes: payloadBytes(small.payload), lines: null });
+  assert.equal(fitPayload(small).body, small, "a review with no kept picture is posted as it was built");
+  // {"scenes": "…"} is fourteen bytes around its text. Past the budget and under the limit, with
+  // nothing of a kept picture in it: it goes as it is, as it always did.
+  const script = (bytes) => ({ gate: "script", summary: "s", payload: { scenes: "x".repeat(bytes - 14) } });
+  assert.equal(fitPayload(script(SERVER_PAYLOAD_BYTES)).body.payload.scenes.length, SERVER_PAYLOAD_BYTES - 14);
+  assert.equal(fitPayload(script(SERVER_PAYLOAD_BYTES)).bytes, SERVER_PAYLOAD_BYTES);
+  // One byte more is what the server refuses: said here, with the size, as a submission the site would not take.
+  assert.throws(() => fitPayload(script(SERVER_PAYLOAD_BYTES + 1)), (error) => {
+    assert.ok(error instanceof ReviewError);
+    assert.deepEqual([error.code, error.submission, error.who], ["payload_too_large", true, "service"]);
+    assert.equal(error.message, "the script review's payload is 262145 bytes, over the 262144 the site takes; nothing was sent");
+    return true;
+  });
+  // The screenplay of a long-anime series episode has the server's larger limit, by the server's rule.
+  const anime = { production_policy: "long-anime-v1", runtime_spec: { body_target_seconds: 1200, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1500, slot_reserve_seconds: 120 }, runtime_context: { kind: "series", genre: "custom", lead: "ensemble" } };
+  const screenplay = (bytes, more = {}) => ({ gate: "script", summary: "s", payload: { ...anime, ...more, scenes: "x".repeat(bytes) } });
+  assert.equal(fitPayload(screenplay(600_000)).lines, null);
+  assert.throws(() => fitPayload({ ...screenplay(600_000), gate: "audio" }), /over the 262144 the site takes; nothing was sent$/);
+  assert.throws(() => fitPayload(screenplay(600_000, { runtime_spec: { ...anime.runtime_spec, slot_reserve_seconds: 0 } })), /over the 262144 the site takes/, "a runtime the server would not validate keeps the ordinary limit");
+  assert.throws(() => fitPayload(screenplay(600_000, { runtime_context: { ...anime.runtime_context, kind: "episode" } })), /over the 262144 the site takes/);
+  assert.throws(() => fitPayload(screenplay(1_100_000)), /^Error: the script review's payload is 11\d{5} bytes, over the 1048576 the site takes; nothing was sent$/);
+
+  // A cut with two hundred kept pictures, nine remarks of 300 characters on each: six lines a
+  // picture are past the limit by themselves, two are within the budget.
+  const remarks = Array.from({ length: 9 }, (_, index) => `${index + 1}`.padEnd(300, "x"));
+  const ids = Array.from({ length: 200 }, (_, index) => `shot-${index + 1}`);
+  const cut = { gate: "final", summary: "s", payload: { duration_seconds: 600, accepted_pictures: ids.map((id) => ({ id, problems: remarks })), manual_review: true } };
+  assert.ok(payloadBytes({ accepted_pictures: ids.map((id) => ({ id, problems: keptRemarks(remarks) })) }) > SERVER_PAYLOAD_BYTES);
+  const two = fitPayload(cut);
+  assert.equal(two.lines, 2);
+  assert.ok(two.bytes <= REVIEW_PAYLOAD_BUDGET, `${two.bytes} bytes`);
+  assert.equal(two.bytes, serverPayloadBytes(two.body.payload));
+  assert.deepEqual(two.body, { gate: "final", summary: "s", payload: { duration_seconds: 600, accepted_pictures: ids.map((id) => ({ id, problems: [remarks[0], remarks[1], MORE_REMARKS(7)] })), manual_review: true } });
+  assert.deepEqual(Object.keys(two.body.payload), ["duration_seconds", "accepted_pictures", "manual_review"], "nothing moves");
+  assert.equal(cut.payload.accepted_pictures[0].problems.length, 9, "the review as it was built is left alone");
+  // A handful of pictures: the usual six lines, and nothing to report.
+  const handful = fitPayload({ ...cut, payload: { accepted_pictures: cut.payload.accepted_pictures.slice(0, 3) } });
+  assert.equal(handful.lines, null);
+  assert.deepEqual(handful.body.payload.accepted_pictures.map((picture) => picture.problems), Array(3).fill([...remarks.slice(0, 6), MORE_REMARKS(3)]));
+  // Remarks three bytes a character are past the budget at two lines too: none, and every id still there.
+  const wide = Array.from({ length: 9 }, () => "鏡".repeat(300));
+  const none = fitPayload({ ...cut, payload: { accepted_pictures: ids.map((id) => ({ id, problems: wide })) } });
+  assert.equal(none.lines, 0);
+  assert.deepEqual(none.body.payload.accepted_pictures, ids.map((id) => ({ id, problems: [REMARKS_LEFT_OUT] })));
+
+  // A storyboard carries them twice, on its list and in each kept shot's own verdict. A shot
+  // that is not kept keeps its verdict whole: the worker reads it for the prompt fix.
+  const waiting = { id: "waiting", needs_review: true, judge: { overall: 4, problems: remarks } };
+  const board = (count) => ({ gate: "storyboard", summary: "s", payload: {
+    shots: [...ids.slice(0, count).map((id) => ({ id, prompt: "p", accepted: true, needs_review: false, judge: { overall: 5, problems: remarks.slice(0, 8) } })), waiting],
+    judge: { overall: 4, problems: remarks },
+    accepted: ids.slice(0, count).map((id) => ({ id, overall: 5, problems: remarks })),
+  } });
+  const usual = fitPayload(board(10));
+  assert.equal(usual.lines, null);
+  assert.deepEqual(usual.body.payload.accepted[0], { id: "shot-1", overall: 5, problems: [...remarks.slice(0, 6), MORE_REMARKS(3)] });
+  assert.deepEqual(usual.body.payload.shots[0], { id: "shot-1", prompt: "p", accepted: true, needs_review: false, judge: { overall: 5, problems: [...remarks.slice(0, 6), MORE_REMARKS(2)] } });
+  assert.deepEqual(usual.body.payload.shots[10], waiting);
+  assert.deepEqual(usual.body.payload.judge, { overall: 4, problems: remarks });
+  const emptied = fitPayload(board(200));
+  assert.equal(emptied.lines, 0);
+  assert.ok(emptied.bytes <= REVIEW_PAYLOAD_BUDGET, `${emptied.bytes} bytes`);
+  assert.deepEqual(emptied.body.payload.accepted, ids.map((id) => ({ id, overall: 5, problems: [REMARKS_LEFT_OUT] })));
+  assert.deepEqual(emptied.body.payload.shots.slice(0, 200), ids.map((id) => ({ id, prompt: "p", accepted: true, needs_review: false, judge: { overall: 5, problems: [] } })), "the list says why; the verdict does not say it again");
+  assert.deepEqual(emptied.body.payload.shots[200], waiting);
+  // A list of that name on another gate is not a list of kept pictures.
+  const other = { gate: "audio", summary: "s", payload: { accepted: [{ id: "a", problems: remarks }], accepted_pictures: [{ id: "a", problems: remarks }] } };
+  assert.equal(fitPayload(other).body, other);
+  // With every remark out and still past the limit, nothing is sent, and the message says so.
+  const crowded = board(200);
+  crowded.payload.sheets = "x".repeat(300_000);
+  assert.throws(() => fitPayload(crowded), /^Error: the storyboard review's payload is \d{6} bytes, over the 262144 the site takes, even with the judge's remarks on the kept pictures left out; nothing was sent$/);
+});
+
+test("two hundred kept pictures with nine long remarks each still go up, as a storyboard and as a cut: every id is there, the summary fits, and the remarks are cut until the payload is within the site's 256 KB", async () => {
+  const ids = Array.from({ length: 200 }, (_, index) => `kept-${String(index + 1).padStart(3, "0")}`);
+  // Nine remarks of exactly 300 characters on each picture: 540,000 characters of remarks, which
+  // each review carried twice before (on its list, and in the shots or in the quality report).
+  const remarks = (index) => Array.from({ length: 9 }, (_, line) => `picture ${index + 1} remark ${line + 1}: ${"the hand bends the wrong way → a hand resting flat on the table; ".repeat(5)}`.slice(0, 300));
+  assert.ok(remarks(199).every((line) => line.length === 300));
+  const box = sandbox("fixture-illustrated", "illustrated");
+  everyPictureKept(box, ids, { remarks });
+  const { final } = cutVideo(box);
+
+  // The storyboard: two lines a picture, twice, are still past the budget, so the remarks stay home.
+  const boardSite = site();
+  const boardPush = context(box, boardSite.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "storyboard"], boardPush.ctx), EXIT.ok, boardPush.out.stderr);
+  const board = boardSite.state.reviews[0];
+  assert.ok(serverPayloadBytes(board.payload) <= REVIEW_PAYLOAD_BUDGET, `${serverPayloadBytes(board.payload)} bytes`);
+  assert.equal(board.summary, "分鏡 200 鏡（沒有聯絡表），200 鏡保留（judge 未過，成片時站主審看）");
+  assert.ok([...board.summary].length <= 500);
+  assert.deepEqual(board.payload.accepted, ids.map((id) => ({ id, overall: 5, problems: [REMARKS_LEFT_OUT] })), "every kept picture, in shot order");
+  assert.deepEqual(board.payload.shots.map((shot) => [shot.id, shot.accepted, shot.needs_review, shot.complete]), ids.map((id) => [id, true, false, true]));
+  assert.ok(board.payload.shots.every((shot) => shot.judge.overall === 5 && shot.judge.problems.length === 0 && shot.prompt.length > 100 && /^[0-9a-f]{64}$/.test(shot.file_sha256)), "a shot loses nothing but the remarks");
+  assert.deepEqual(board.payload.expected_shots.map((shot) => shot.id), ids);
+  assert.match(boardPush.out.stdout, /: storyboard: the judge's remarks on the kept pictures were left out to keep the review's payload within the site's limit \(\d+ bytes now\); keyframes\/manifest\.json has them all\n/);
+
+  // The cut: six lines a picture are 370 KB, two are within the budget.
+  const cutSite = site({ autoApproveFinal: true });
+  const cutPush = context(box, cutSite.fetchImpl, { encode, runCommand: passingQualityCheck(box, final) });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], cutPush.ctx), EXIT.ok, cutPush.out.stderr);
+  const review = cutSite.state.reviews[0];
+  assert.equal(review.status, "pending");
+  assert.ok(serverPayloadBytes(review.payload) <= REVIEW_PAYLOAD_BUDGET, `${serverPayloadBytes(review.payload)} bytes`);
+  assert.ok([...review.summary].length <= 500, `${[...review.summary].length} characters`);
+  assert.ok(review.summary.endsWith("；200 張插圖未通過 judge（kept-001、kept-002、kept-003、kept-004、kept-005 等，另 195 張），需站主審看"), review.summary);
+  assert.deepEqual(review.payload.accepted_pictures, ids.map((id, index) => ({ id, problems: [...remarks(index).slice(0, 2), MORE_REMARKS(7)] })), "every kept picture, in shot order, with the first of what the judge said");
+  assert.equal(review.payload.manual_review, true);
+  assert.equal(review.payload.manual_review_qa.ok, true);
+  assert.match(cutPush.out.stdout, /: final: the judge's remarks on the kept pictures were cut to 2 lines a picture to keep the review's payload within the site's limit \(\d+ bytes now\)/);
+
+  // Remarks of three bytes a character: two lines a picture are past the budget as well.
+  everyPictureKept(box, ids, { remarks: (index) => Array.from({ length: 9 }, (_, line) => `第 ${index + 1} 張第 ${line + 1} 則：`.padEnd(300, "手")) });
+  const wideSite = site();
+  const widePush = context(box, wideSite.fetchImpl, { encode, runCommand: passingQualityCheck(box, final) });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], widePush.ctx), EXIT.ok, widePush.out.stderr);
+  assert.deepEqual(wideSite.state.reviews[0].payload.accepted_pictures, ids.map((id) => ({ id, problems: [REMARKS_LEFT_OUT] })));
+  assert.ok([...wideSite.state.reviews[0].summary].length <= 500);
+  assert.match(widePush.out.stdout, /: final: the judge's remarks on the kept pictures were left out /);
+
+  // A storyboard too large whatever is left out of the remarks (prompts of 2,000 characters on
+  // two hundred shots) is not sent: review-push says how large it is and ends as it does when
+  // the site refuses a review, which is what the site would have done.
+  everyPictureKept(box, ids, { remarks, prompt: "a wide street at dusk, ".repeat(100).slice(0, 2000) });
+  const fullSite = site();
+  const fullPush = context(box, fullSite.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "storyboard"], fullPush.ctx), EXIT.lint);
+  assert.match(fullPush.out.stderr, /^the storyboard review's payload is \d{6} bytes, over the 262144 the site takes, even with the judge's remarks on the kept pictures left out; nothing was sent\n$/);
+  assert.deepEqual(fullSite.state.reviews, []);
+  assert.ok(!fullSite.state.calls.some((call) => call.method === "POST"), "the review never left");
+});
+
+test("twelve kept pictures go up with six lines of 300 characters each and a count of the rest, on the storyboard and on the cut", async () => {
+  const ids = Array.from({ length: 12 }, (_, index) => `kept-${index + 1}`);
+  // Nine remarks of 400 characters: each is cut, and the last three are counted.
+  const remarks = (index) => Array.from({ length: 9 }, (_, line) => `picture ${index + 1} remark ${line + 1}: `.padEnd(400, "鏡"));
+  const sent = (index) => [...remarks(index).slice(0, 6).map((line) => `${line.slice(0, 299)}…`), MORE_REMARKS(3)];
+  const box = sandbox("fixture-illustrated", "illustrated");
+  everyPictureKept(box, ids, { remarks });
+  const { final } = cutVideo(box);
+
+  const boardSite = site();
+  const boardPush = context(box, boardSite.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "storyboard"], boardPush.ctx), EXIT.ok, boardPush.out.stderr);
+  const board = boardSite.state.reviews[0];
+  assert.deepEqual(board.payload.accepted, ids.map((id, index) => ({ id, overall: 5, problems: sent(index) })));
+  assert.deepEqual(board.payload.shots.map((shot) => shot.judge), ids.map((_, index) => ({ overall: 5, problems: sent(index) })), "a kept shot's own verdict is cut the same way");
+  assert.ok(board.payload.accepted.every((entry) => entry.problems.every((line) => [...line].length <= 300)));
+  assert.doesNotMatch(boardPush.out.stdout, /were (cut|left out)/, "the usual six lines are not worth a line in the log");
+
+  const cutSite = site();
+  const cutPush = context(box, cutSite.fetchImpl, { encode, runCommand: passingQualityCheck(box, final) });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], cutPush.ctx), EXIT.ok, cutPush.out.stderr);
+  assert.deepEqual(cutSite.state.reviews[0].payload.accepted_pictures, ids.map((id, index) => ({ id, problems: sent(index) })));
+  assert.doesNotMatch(cutPush.out.stdout, /were (cut|left out)/);
+  // The manifest keeps every line whole.
+  const manifest = JSON.parse(readFileSync(path.join(box.workdir, "keyframes", "manifest.json"), "utf8"));
+  assert.deepEqual(manifest.shots["kept-1"].accepted_with_problems, remarks(0));
 });
 
 /** review-push --gate storyboard against a fresh site: the review it received and the files it holds. */

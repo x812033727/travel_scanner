@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans KR','PingFang TC','Microsoft JhengHei','Malgun Gothic',system-ui,sans-serif">
+  <title id="title">運津港出發的馬羅島與加波島航線 / Unjin Port to Marado and Gapado</title>
+  <desc id="desc">示意圖，方向與距離非比例。運津港（운진항，모슬포남항，西歸浦市大靜邑）是原點，右邊隔開一點是松岳山港（송악산항），另一家船公司、只到馬羅島。運津港到加波島（가파도）單程 10 分鐘、一天 6 班，島上有濟州偶來小路 올레 10-1，步行 1 小時 30 分。運津港到馬羅島（마라도）單程 30 分鐘、一天 4 班，國土最南端，步行約 40 分鐘。松岳山港到馬羅島也是 30 分鐘。兩座島之間沒有船。成人來回票價未含燃油附加費：馬羅島 21,000 韓元、加波島 15,500 韓元。</desc>
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0D6B68"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2F6F9F"/>
+    </marker>
+    <marker id="arrowGrey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6F8294"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">運津港出發：去哪座島、多久、多少錢</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Unjin Port to Marado and Gapado, Jeju</text>
+  <text x="1540" y="52" font-size="16" text-anchor="end" fill="#5C6B6B">示意圖，方向與距離非比例</text>
+
+  <!-- ports -->
+  <rect x="470" y="130" width="470" height="120" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="705" y="178" font-size="28" font-weight="700" text-anchor="middle" fill="#102A2B">運津港 운진항</text>
+  <text x="705" y="212" font-size="18" text-anchor="middle" fill="#5C6B6B">모슬포남항・서귀포시 대정읍</text>
+
+  <rect x="1090" y="130" width="450" height="120" rx="14" fill="#FFFFFF" stroke="#6F8294" stroke-width="4"/>
+  <text x="1315" y="178" font-size="26" font-weight="700" text-anchor="middle" fill="#102A2B">松岳山港 송악산항</text>
+  <text x="1315" y="212" font-size="18" text-anchor="middle" fill="#5C6B6B">另一家船公司・只到馬羅島</text>
+
+  <!-- islands -->
+  <ellipse cx="330" cy="560" rx="250" ry="120" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="330" y="538" font-size="30" font-weight="700" text-anchor="middle" fill="#0D6B68">加波島 가파도</text>
+  <text x="330" y="578" font-size="18" text-anchor="middle" fill="#102A2B">올레 10-1・步行 1 小時 30 分</text>
+
+  <ellipse cx="1000" cy="610" rx="270" ry="130" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1000" y="588" font-size="30" font-weight="700" text-anchor="middle" fill="#2F6F9F">馬羅島 마라도</text>
+  <text x="1000" y="628" font-size="18" text-anchor="middle" fill="#102A2B">國土最南端・步行約 40 分鐘</text>
+
+  <!-- boats: dashed arrows -->
+  <line x1="610" y1="250" x2="420" y2="440" stroke="#0D6B68" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowTeal)"/>
+  <text x="400" y="330" font-size="20" font-weight="700" text-anchor="middle" fill="#0D6B68">10 分鐘・一天 6 班</text>
+
+  <line x1="760" y1="250" x2="900" y2="480" stroke="#2F6F9F" stroke-width="5" stroke-dasharray="14 10" marker-end="url(#arrowBlue)"/>
+  <text x="925" y="345" font-size="20" font-weight="700" fill="#2F6F9F">30 分鐘・一天 4 班</text>
+
+  <line x1="1315" y1="250" x2="1160" y2="486" stroke="#6F8294" stroke-width="3" stroke-dasharray="10 8" marker-end="url(#arrowGrey)"/>
+  <text x="1290" y="340" font-size="18" font-weight="700" fill="#4F6274">30 分鐘</text>
+
+  <!-- no boat between islands -->
+  <line x1="590" y1="592" x2="718" y2="618" stroke="#B8442D" stroke-width="4" stroke-dasharray="8 8"/>
+  <line x1="640" y1="585" x2="680" y2="625" stroke="#B8442D" stroke-width="6" stroke-linecap="round"/>
+  <line x1="680" y1="585" x2="640" y2="625" stroke="#B8442D" stroke-width="6" stroke-linecap="round"/>
+  <text x="660" y="672" font-size="18" font-weight="700" text-anchor="middle" fill="#B8442D">島與島之間沒有船</text>
+
+  <!-- price box -->
+  <rect x="60" y="740" width="640" height="120" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="380" y="782" font-size="18" text-anchor="middle" fill="#5C6B6B">成人來回（未含燃油附加費）</text>
+  <text x="380" y="824" font-size="22" font-weight="700" text-anchor="middle" fill="#102A2B">馬羅島 21,000 韓元／加波島 15,500 韓元</text>
+
+  <!-- legend -->
+  <line x1="1050" y1="800" x2="1130" y2="800" stroke="#102A2B" stroke-width="4" stroke-dasharray="14 10"/>
+  <text x="1145" y="806" font-size="17" fill="#102A2B">虛線＝船</text>
+  <rect x="1270" y="786" width="34" height="26" rx="6" fill="#FFFFFF" stroke="#102A2B" stroke-width="3"/>
+  <text x="1318" y="806" font-size="17" fill="#102A2B">色塊＝港口或島</text>
+
+  <text x="1540" y="870" font-size="15" text-anchor="end" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

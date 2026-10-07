@@ -59,3 +59,31 @@ uv run pytest tests/test_guides_content_pack.py tests/test_guides_content_links.
 
 Meta Llama 2026-09-16 當天查不到現行版本（llama.com 轉 developer.meta.com、模型頁 404、
 官方 blog 沒提），所以沒有列進表。下次重查時再試一次，查得到就補一列。
+
+### 2026-10-06：提前做了一次（票 2026-10-05-multi-vendor-ai-price-pages-late）
+
+各家換代（GPT-6 家族、Claude 5.5、grok-4.7）讓這一輪提前。做法、讀數與網址都在
+`docs/content-research/ai-model-comparison-table-2026/notes.md` 的 2026-10-06 段落，重點：
+
+- `sources` 現在是 20 筆（不是上面寫的 18 筆），10/06 全部重開，`checked_on` 都是 2026-10-06。
+  換掉兩筆：Opus 5 發布頁 → Opus 5.5 發布頁，grok-4.6 發布頁 → grok-4.7 發布頁；Mistral 改成轉址後的
+  `docs.mistral.ai/inference/pricing`。
+- 分級規則寫進 notes.md：跟各家自己的命名走，被標 legacy 或上一代的型號出表。
+- 分數欄只留在旗艦表，中階與輕量兩張表拿掉這一欄（9/16 版那兩張表的「官網未公布」有幾格其實錯了）。
+- 「官網有沒有列跑分」表改成 GPQA Diamond／Terminal-Bench 4.0 兩欄的對照：這兩項各有四家列，
+  沒有一項六家都有。Anthropic 現在有數字、DeepSeek 的更新紀錄有 GPQA、Qwen 的測試條件寫法更正。
+- 更正兩筆：MiniMax-M3 上下文是 100 萬（51.2 萬是計價分段），grok-4.7 寫「無輸出上限」。
+- 開放權重表十二列的授權與參數用 HF API 重讀，全部不變；各家 9/16 之後沒有新的通用語言模型權重。
+- `reingest.sh` 不再需要拿掉 `ai-plans`；`build_pack.py` 會把圖解 `<desc>` 帶進 `image.description`。
+
+這張票照舊開著：下一次是 2026-12 或 2027-01，必改的是 `gemini-3.8-flash`（0.75／3.75 標到
+2026-12-31，之後 1.50／7.50），以及 `gpt-5.6-sol` 的促銷價（至少到 2026-11-21）是否還在定價頁上。
+
+同一天的獨立查核第二輪再補兩件（讀數在 notes.md 的「獨立查核第二輪的更正」）：
+
+- Mistral Large 4（10/06 公開預覽）的 0.68／2.09 是上市兩週的五折價，更新紀錄寫「Launch pricing: 50% off for
+  2 weeks.」，原價 1.36／4.18；大約 10/20 結束。旗艦表下面那段與 `ai-api-pricing-comparison-2026` 第 15 段、
+  第 22 段的提醒框都寫了。下次重查時看 Large 4 是否已正式上線、`mistral-large-latest` 是否改指 Large 4，
+  是的話旗艦表那一列要換。
+- `sources` 仍是 20 筆，但 Meta Muse Glimmer 30B 權重頁換成 Mistral 更新紀錄；上下文與最大輸出改在旗艦表
+  caption 寫明「在定價頁沒寫的，照各家的模型說明頁」，模型頁網址都在 notes.md。

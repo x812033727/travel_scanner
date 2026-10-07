@@ -7,7 +7,7 @@ import test from "node:test";
 import { sandbox } from "../core/fixtures/load.mjs";
 import { pinBranding, validateBranding } from "../core/branding.mjs";
 import { captionLocalesOf, metadataLocalesOf, writeLanguages } from "../core/stages.mjs";
-import { captionsItem, checkPackage, descriptionsItem, disclosureItem, filesItem, listFiles, PACKAGE_ITEM_IDS, packageFiles, packageReport, readPackageReport, skipReason } from "./check.mjs";
+import { captionsItem, checkPackage, descriptionsItem, disclosureItem, filesItem, listFiles, PACKAGE_ITEM_IDS, packageFiles, packageLocales, packageReport, readPackageReport, skipReason } from "./check.mjs";
 
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const FINAL = "f".repeat(64);
@@ -379,4 +379,63 @@ test("a package that changes while it is checked fails, and the report binds the
   const deciding = readPackageReport(work.workdir);
   writeLanguages(work.workdir, { locales: { ja: { metadata: true, captions: false, dub: false } }, decided_at: "2026-10-04T11:00:00Z" });
   assert.match((await deciding).report.items[0].detail, changed);
+});
+
+// A hand-edited metadata.json whose list or map has another type: [field, value, the item that reads it, "list" or "object"].
+const MISTYPED = [
+  ["captions", 5, "captions", "list"],
+  ["captions", {}, "captions", "list"],
+  ["captions", "captions/en.srt", "captions", "list"],
+  ["captions", false, "captions", "list"],
+  ["skipped_caption_locales", 5, "captions", "object"],
+  ["skipped_caption_locales", [], "captions", "object"],
+  ["thumbnails", "ab", "files", "object"],
+  ["thumbnails", [], "files", "object"],
+  ["thumbnail_variants", {}, "files", "list"],
+  ["localizations", "en", "descriptions", "object"],
+  ["localizations", 5, "descriptions", "object"],
+];
+// Read only with the owner's choice.
+const MISTYPED_WITH_CHOICE = [
+  ["dubs", {}, "files", "list"],
+  ["language_choice", "en", "files", "object"],
+];
+
+test("a list or map field of another type fails the item that reads it, naming the field, instead of throwing", () => {
+  const legacy = metadata();
+  const withChoice = { ...metadata(), skipped_caption_locales: {}, language_choice: EN_CHOICE };
+  assert.equal(checked(files(), legacy).ok, true, "the controls pass");
+  assert.equal(checked(files(), withChoice, chosen(EN_CHOICE)).ok, true);
+  const cases = [...MISTYPED.map((each) => [...each, legacy, {}]), ...[...MISTYPED, ...MISTYPED_WITH_CHOICE].map((each) => [...each, withChoice, chosen(EN_CHOICE)])];
+  for (const [field, value, id, kind, record, choice] of cases) {
+    const name = `${field}: ${JSON.stringify(value)}${choice.languages ? " with a choice" : ""}`;
+    const report = checked(files(), { ...record, [field]: value }, choice);
+    assert.equal(report.ok, false, name);
+    assert.deepEqual(Object.keys(failing(report)), [id], name);
+    assert.ok(failing(report)[id].includes(`metadata.json ${field} is not ${kind === "list" ? "a list" : "an object"}; run package again`), `${name}: ${failing(report)[id]}`);
+  }
+  // A string is not read character by character, nor a map's keys as indexes.
+  assert.equal(failing(checked(files(), { ...legacy, captions: "captions/en.srt" })).captions, "metadata.json captions is not a list; run package again");
+  assert.equal(failing(checked(files(), { ...legacy, localizations: "en" })).descriptions, "metadata.json localizations is not an object; run package again");
+  assert.deepEqual(packageLocales({ ...legacy, localizations: "en" }), ["zh-TW"], "the publish payload's locales leave it out");
+  // Absent or null reads as empty, as before.
+  assert.equal(checked(files(), { ...legacy, captions: null, thumbnails: null, localizations: null }).ok, true);
+});
+
+test("a metadata.json that is not an object fails every item for that reason", () => {
+  for (const record of [5, [], "metadata", true]) {
+    const report = checked(files(), record);
+    assert.deepEqual(failing(report), Object.fromEntries(PACKAGE_ITEM_IDS.map((id) => [id, "metadata.json is not an object; run package again"])), JSON.stringify(record));
+  }
+});
+
+test("readPackageReport, which review-push --gate publish sends, reports a caption list that is a number instead of throwing", async () => {
+  const zhParts = { "captions/zh-TW.srt": CAPTION, "description.zh-TW.txt": "title\n\nbody\n" };
+  for (const languages of [{}, undefined]) {
+    const work = workPackage({ record: { ...zhRecord, captions: 5, ...(languages ? {} : { skipped_caption_locales: { en: "x", ja: "x", ko: "x", "zh-CN": "x" } }) }, parts: zhParts, languages });
+    const { report } = await readPackageReport(work.workdir);
+    assert.equal(report.ok, false);
+    assert.equal(report.final_sha256, sha(work.bytes), "bound to the bytes read, like any failing package");
+    assert.deepEqual(failing(report), { captions: "metadata.json captions is not a list; run package again" }, languages ? "with a choice" : "without one");
+  }
 });

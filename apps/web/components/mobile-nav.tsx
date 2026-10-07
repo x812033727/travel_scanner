@@ -14,7 +14,7 @@ import { useSiteVisibility } from "@/components/site-visibility-provider";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useModalSheet } from "@/lib/modal-sheet";
 import { type Locale } from "@/i18n/routing";
-import { primaryNavLinks } from "@/lib/nav-links";
+import { navGroups, navItemLabelKey } from "@/lib/nav-links";
 import { featureVisible } from "@/lib/site-features";
 import { useCommunity } from "@/components/community/provider";
 import { useDiscoveryStatus } from "@/lib/discovery";
@@ -43,11 +43,13 @@ export function MobileNav() {
     return () => window.clearTimeout(reset);
   }, [pathname, discovery.enabled, discovery.loading]);
 
-  // The bottom tab bar carries only five destinations; flight status, airfares
-  // and plans used to be unreachable on a phone without typing the URL.
-  const links = primaryNavLinks.filter(
-    (item) => !item.feature || featureVisible(visibility, item.feature),
-  );
+  // The bottom tab bar carries only five destinations; flight status, airfares and plans
+  // used to be unreachable on a phone without typing the URL. The sheet carries every group
+  // of the desktop header, each with its hub first and its pages under it.
+  const groups = navGroups
+    .filter((group) => !group.travelToolsOnly || !community.flags.enabled)
+    .map((group) => ({ ...group, items: group.items.filter((item) => !item.feature || featureVisible(visibility, item.feature)) }))
+    .filter((group) => group.href || group.items.length);
 
   useEffect(() => {
     if (!open) return;
@@ -141,9 +143,24 @@ export function MobileNav() {
               guarded by discovery.enabled here could never render. Removed rather than
               left to mislead the next reader into thinking these links exist. */}
           {community.flags.enabled && [["/community", "title"], ["/pet-friendly", "pets"], ...(!discovery.enabled ? [["/my", "my"]] : [])].map(([href, key]) => <Link key={href} href={href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">{tc(key)}</Link>)}
-          {links.map((item) => <Link key={item.href} href={item.href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-semibold hover:bg-[var(--teal-soft)]">
-            {nav(item.key)}
-          </Link>)}
+          {groups.map((group) => group.items.length ? (
+            <section key={group.key} aria-labelledby={`mobile-nav-${group.key}`} className="mt-2 border-t border-[var(--line)] pt-2 first:mt-0 first:border-t-0 first:pt-0">
+              {group.href ? (
+                <Link id={`mobile-nav-${group.key}`} href={group.href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 font-bold hover:bg-[var(--teal-soft)]">{nav(group.key)}</Link>
+              ) : (
+                <h2 id={`mobile-nav-${group.key}`} className="flex min-h-12 items-center px-3 font-bold">{nav(group.key)}</h2>
+              )}
+              <ul className="grid grid-cols-2 gap-1">
+                {group.items.map((item) => <li key={item.href}>
+                  <Link href={item.href} onClick={() => setOpen(false)} className="flex min-h-12 items-center rounded-xl px-3 text-[var(--muted)] hover:bg-[var(--teal-soft)] hover:text-[var(--ink)]">
+                    {nav(navItemLabelKey(group.key, item.key))}
+                  </Link>
+                </li>)}
+              </ul>
+            </section>
+          ) : (
+            <Link key={group.key} href={group.href ?? "/"} onClick={() => setOpen(false)} className="mt-2 flex min-h-12 items-center rounded-xl border-t border-[var(--line)] px-3 pt-2 font-bold hover:bg-[var(--teal-soft)]">{nav(group.key)}</Link>
+          ))}
         </nav>
 
         </div>

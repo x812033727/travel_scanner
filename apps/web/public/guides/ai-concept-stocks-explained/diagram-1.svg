@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">看到「AI 概念股」標籤後，四個地方可以查 / From a theme label to filed data</title>
+  <desc id="desc">流程圖。最上方是起點：媒體或社群說某公司是 AI 概念股。往下分成四個並排的查核框。第一框產業類別：依證交所的劃分要點，上市公司按營收比重歸類，單一業務超過 50% 就歸入那一類，類別裡沒有 AI 這一類。第二框每月營收：路徑是單一公司、營運概況，每月 10 日以前公告上月份營運情形，申報的是整家公司營收，不按產品拆分。第三框年報與財報：路徑是單一公司、電子文件下載，看產品營業比重、部門收入與損益、占銷貨 10% 以上的客戶，部門資訊看合併財報。第四框重大訊息：路徑是重大訊息/公告、歷史重大訊息，報導與事實不符時上市公司要在發現後 2 小時內輸入說明，對外說法要和公告一致。四個框最後匯到底部的判斷框：題材在營收裡占多少，說法有沒有公司自己的申報資料支持；營收占比小、客戶集中、只有報導沒有公告，都是要留意的訊號。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">看到「AI 概念股」標籤後，四個地方可以查</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">From a theme label to what the company actually filed</text>
+
+  <!-- start: the label -->
+  <rect x="440" y="112" width="720" height="78" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="800" y="160" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">起點：媒體或社群說某公司是「AI 概念股」</text>
+
+  <!-- fan out -->
+  <g stroke="#5C6B6B" stroke-width="4" fill="none" stroke-linecap="butt">
+    <line x1="800" y1="190" x2="800" y2="222"/>
+    <line x1="230" y1="222" x2="1370" y2="222"/>
+    <line x1="230" y1="222" x2="230" y2="262" marker-end="url(#arrow)"/>
+    <line x1="610" y1="222" x2="610" y2="262" marker-end="url(#arrow)"/>
+    <line x1="990" y1="222" x2="990" y2="262" marker-end="url(#arrow)"/>
+    <line x1="1370" y1="222" x2="1370" y2="262" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- four boxes -->
+  <g fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4">
+    <rect x="60" y="266" width="340" height="330" rx="14"/>
+    <rect x="440" y="266" width="340" height="330" rx="14"/>
+    <rect x="820" y="266" width="340" height="330" rx="14"/>
+    <rect x="1200" y="266" width="340" height="330" rx="14"/>
+  </g>
+  <g stroke="#E6F0F7" stroke-width="3">
+    <line x1="90" y1="366" x2="370" y2="366"/>
+    <line x1="470" y1="366" x2="750" y2="366"/>
+    <line x1="850" y1="366" x2="1130" y2="366"/>
+    <line x1="1230" y1="366" x2="1510" y2="366"/>
+  </g>
+
+  <!-- box 1 -->
+  <g text-anchor="middle">
+    <text x="230" y="312" font-size="22" font-weight="700" fill="#2F6F9F">產業類別</text>
+    <text x="230" y="346" font-size="16" fill="#5C6B6B">證交所劃分要點</text>
+    <text x="230" y="420" font-size="18" fill="#102A2B">依營收比重劃分</text>
+    <text x="230" y="464" font-size="18" fill="#102A2B">單一業務超過 50%</text>
+    <text x="230" y="508" font-size="18" fill="#102A2B">就歸入那一類</text>
+    <text x="230" y="552" font-size="18" fill="#B8442D">沒有 AI 這一類</text>
+  </g>
+
+  <!-- box 2 -->
+  <g text-anchor="middle">
+    <text x="610" y="312" font-size="22" font-weight="700" fill="#2F6F9F">每月營收</text>
+    <text x="610" y="346" font-size="16" fill="#5C6B6B">單一公司 → 營運概況</text>
+    <text x="610" y="420" font-size="18" fill="#102A2B">每月 10 日以前公告</text>
+    <text x="610" y="464" font-size="18" fill="#102A2B">上月份營運情形</text>
+    <text x="610" y="508" font-size="18" fill="#102A2B">申報的是整家公司營收</text>
+    <text x="610" y="552" font-size="18" fill="#102A2B">不按產品拆分</text>
+  </g>
+
+  <!-- box 3 -->
+  <g text-anchor="middle">
+    <text x="990" y="312" font-size="22" font-weight="700" fill="#2F6F9F">年報與財報</text>
+    <text x="990" y="346" font-size="16" fill="#5C6B6B">單一公司 → 電子文件下載</text>
+    <text x="990" y="420" font-size="18" fill="#102A2B">產品營業比重</text>
+    <text x="990" y="464" font-size="18" fill="#102A2B">部門收入與損益</text>
+    <text x="990" y="508" font-size="18" fill="#102A2B">占銷貨 10% 以上的客戶</text>
+    <text x="990" y="552" font-size="18" fill="#102A2B">部門資訊看合併財報</text>
+  </g>
+
+  <!-- box 4 -->
+  <g text-anchor="middle">
+    <text x="1370" y="312" font-size="22" font-weight="700" fill="#2F6F9F">重大訊息</text>
+    <text x="1370" y="346" font-size="16" fill="#5C6B6B">重大訊息/公告 → 歷史重大訊息</text>
+    <text x="1370" y="420" font-size="18" fill="#102A2B">報導與事實不符時</text>
+    <text x="1370" y="464" font-size="18" fill="#102A2B">上市公司發現後 2 小時內</text>
+    <text x="1370" y="508" font-size="18" fill="#102A2B">要輸入說明</text>
+    <text x="1370" y="552" font-size="18" fill="#102A2B">對外說法要和公告一致</text>
+  </g>
+
+  <!-- gather -->
+  <g stroke="#5C6B6B" stroke-width="4" fill="none" stroke-linecap="butt">
+    <line x1="230" y1="596" x2="230" y2="632"/>
+    <line x1="610" y1="596" x2="610" y2="632"/>
+    <line x1="990" y1="596" x2="990" y2="632"/>
+    <line x1="1370" y1="596" x2="1370" y2="632"/>
+    <line x1="230" y1="632" x2="1370" y2="632"/>
+    <line x1="800" y1="632" x2="800" y2="676" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- verdict -->
+  <rect x="300" y="680" width="1000" height="120" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="730" font-size="22" font-weight="700" fill="#0D6B68" text-anchor="middle">判斷：題材在營收裡占多少，說法有沒有公司自己的申報資料支持</text>
+  <text x="800" y="770" font-size="18" fill="#102A2B" text-anchor="middle">營收占比小、客戶集中、只有報導沒有公告，都是要留意的訊號</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

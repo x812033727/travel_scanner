@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">客戶資料放進 AI 之前的三道判斷 / Three checks before client material goes into an AI tool</title>
+  <desc id="desc">由上往下的決策流程。起點是客戶交來的檔案與資料。第一關問合約或客戶有沒有限制使用 AI，有的話照合約走，要用就先取得客戶書面同意，處理後回到主線。第二關問裡面有沒有個人資料或營業秘密，有的話先去識別，能拿掉就拿掉，姓名換代號、金額改級距，處理後回到主線。第三關決定放進哪一種帳號：商用方案優先；只能用個人帳號時，關掉訓練、改用臨時或無痕對話、不按回饋鍵。最後一步是交件：人工審核，並向客戶說明哪些環節用了 AI。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#102A2B"/>
+    </marker>
+    <marker id="arrow-grey" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">客戶資料放進 AI 之前：三道判斷</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Three checks before client material goes into an AI tool</text>
+
+  <!-- start -->
+  <rect x="250" y="112" width="320" height="50" rx="25" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <text x="410" y="144" font-size="19" fill="#102A2B" text-anchor="middle">客戶交來的檔案與資料</text>
+  <line x1="410" y1="162" x2="410" y2="196" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <!-- check 1 -->
+  <rect x="100" y="200" width="620" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="410" y="242" font-size="18" font-weight="700" fill="#0D6B68" text-anchor="middle">第一關</text>
+  <text x="410" y="280" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">合約或客戶有沒有限制使用 AI？</text>
+
+  <line x1="720" y1="255" x2="876" y2="255" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+  <text x="798" y="240" font-size="18" font-weight="700" fill="#B8442D" text-anchor="middle">有</text>
+
+  <rect x="880" y="200" width="640" height="110" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1200" y="245" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">照合約走</text>
+  <text x="1200" y="280" font-size="17" fill="#102A2B" text-anchor="middle">要用 AI，先取得客戶書面同意</text>
+
+  <!-- 1 -> 2 -->
+  <line x1="410" y1="310" x2="410" y2="376" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+  <text x="392" y="350" font-size="17" font-weight="700" fill="#2E7D5B" text-anchor="end">沒有</text>
+  <path d="M1200,310 V345 H424" fill="none" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="10 8" stroke-linecap="butt" marker-end="url(#arrow-grey)"/>
+  <text x="1000" y="333" font-size="15" fill="#5C6B6B" text-anchor="middle">處理後回到主線</text>
+
+  <!-- check 2 -->
+  <rect x="100" y="380" width="620" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="410" y="422" font-size="18" font-weight="700" fill="#0D6B68" text-anchor="middle">第二關</text>
+  <text x="410" y="460" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">有沒有個人資料或營業秘密？</text>
+
+  <line x1="720" y1="435" x2="876" y2="435" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+  <text x="798" y="420" font-size="18" font-weight="700" fill="#B8442D" text-anchor="middle">有</text>
+
+  <rect x="880" y="380" width="640" height="110" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="1200" y="425" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">先去識別</text>
+  <text x="1200" y="460" font-size="17" fill="#102A2B" text-anchor="middle">能拿掉就拿掉：姓名換代號、金額改級距</text>
+
+  <!-- 2 -> 3 -->
+  <line x1="410" y1="490" x2="410" y2="556" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+  <text x="392" y="530" font-size="17" font-weight="700" fill="#2E7D5B" text-anchor="end">沒有</text>
+  <path d="M1200,490 V525 H424" fill="none" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="10 8" stroke-linecap="butt" marker-end="url(#arrow-grey)"/>
+  <text x="1000" y="513" font-size="15" fill="#5C6B6B" text-anchor="middle">處理後回到主線</text>
+
+  <!-- check 3 -->
+  <rect x="100" y="560" width="620" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="410" y="602" font-size="18" font-weight="700" fill="#0D6B68" text-anchor="middle">第三關</text>
+  <text x="410" y="640" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">放進哪一種帳號？</text>
+
+  <line x1="720" y1="615" x2="876" y2="615" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <rect x="880" y="560" width="640" height="110" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1200" y="605" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">商用方案優先</text>
+  <text x="1200" y="640" font-size="17" fill="#102A2B" text-anchor="middle">個人帳號：關掉訓練、用臨時或無痕對話、不按回饋鍵</text>
+
+  <!-- 3 -> deliver -->
+  <path d="M1200,670 V795 H724" fill="none" stroke="#102A2B" stroke-width="4" stroke-linecap="butt" marker-end="url(#arrow)"/>
+
+  <rect x="100" y="740" width="620" height="110" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="410" y="785" font-size="20" font-weight="700" fill="#2E7D5B" text-anchor="middle">交件</text>
+  <text x="410" y="820" font-size="17" fill="#102A2B" text-anchor="middle">人工審核，並向客戶說明哪些環節用了 AI</text>
+
+  <text x="1540" y="870" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 製圖 2026</text>
+</svg>

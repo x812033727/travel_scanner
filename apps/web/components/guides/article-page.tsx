@@ -14,6 +14,8 @@ import { GuideArticle, type GuideArticleLabels } from "@/components/guides/artic
 import type { GuideCardLabels } from "@/components/guides/card";
 import { Breadcrumb } from "@/components/guides/breadcrumb";
 import { Backlinks, RelatedGrid } from "@/components/guides/related-grid";
+import { VideoCard } from "@/components/videos/video-card";
+import { getVideos } from "@/lib/videos.server";
 import { TravelCrosslinks, type TravelCrosslinksLabels } from "@/components/guides/travel-crosslinks";
 import { SiteHeader } from "@/components/site-header";
 import { PUBLIC_DESTINATIONS } from "@/components/travel-services/options";
@@ -270,7 +272,26 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
       relatedDestinations: t("guides.relatedDestinations"),
       card,
     });
-  const related = grid || cited || handover ? <>{grid}{cited}{handover}</> : null;
+  // The videos that retell this article, newest first, so a reader who would rather watch
+  // finds them where they finished reading. An unreachable video list is no block at all.
+  const videos = (await getVideos(locale, { guide: slug }, 2)).videos;
+  const date = new Intl.DateTimeFormat(locale, { year: "numeric", month: "short", day: "numeric" });
+  const watch = videos.length ? (
+    <section aria-labelledby="article-videos" className="mt-10" data-testid="article-videos">
+      <h2 id="article-videos" className="text-2xl font-bold tracking-tight">{t("videos.articleHeading")}</h2>
+      <ul className="mt-4 grid gap-5 sm:grid-cols-2">
+        {videos.map((video) => (
+          <VideoCard
+            key={video.slug}
+            video={{ ...video, source_guide: null }}
+            date={date.format(new Date(video.published_at))}
+            labels={{ play: t("videos.play", { title: video.title }), watchOnYoutube: t("videos.watchOnYoutube"), readArticle: t("videos.readArticle") }}
+          />
+        ))}
+      </ul>
+    </section>
+  ) : null;
+  const related = watch || grid || cited || handover ? <>{watch}{grid}{cited}{handover}</> : null;
   // Travel articles sit under the guides hub and then their kind; a lifestyle article sits
   // directly under `/life`, which is both its hub and its only listing. Then the article's
   // first topic: its parent hub and its own hub for a sub-topic, its own hub otherwise. The

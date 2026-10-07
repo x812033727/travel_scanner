@@ -1,0 +1,346 @@
+{
+  "slug": "ai-freelance-getting-started",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-income"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 接案入門：哪些案子適合用 AI、在哪裡接、報價怎麼算",
+      "description": "想用 AI 接案，先分清楚案子：需求明確、成品能逐項檢查的工作適合讓 AI 起草；客戶要求不用 AI、要主張著作權的原創視覺、事實無法查證的內容則不適合。整理出任務、PRO360、Upwork、Fiverr 的抽成與撥款規則，用假設數字示範工時制與件計制報價，並附交付前的人工檢查清單。",
+      "hero": {
+        "src": "/guides/ai-freelance-getting-started/hero.jpg",
+        "alt": "米色底上，左邊是藍色對話框，中間筆電螢幕上有一份文件草稿與橘色星形火花，文件右下角蓋著綠色勾號圓章，右邊是一台白底橘框的計算機，下方寫著「AI 接案入門」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "適合用 AI 的是需求明確、成品能逐項檢查的案子；客戶要求不用 AI、要主張著作權的原創視覺，或事實無法查證的內容，不適合交給 AI 起草。",
+            "截至 2026 年 10 月，台灣的出任務與 PRO360 成交不抽成，改向接案者收搶先提案、訂閱或報價等費用，款項由雙方自行約定；Upwork 每份合約收 0% 到 15% 的服務費，Fiverr 的接案者拿到客戶款項的 80%。",
+            "報價先算想實拿多少：工時乘以目標時薪，再除以（1－平台抽成比例）；AI 縮短的是起草時間，查證與修改的時間照樣要算。",
+            "交付前一定要人工檢查事實、需求、權利與機密，AI 寫錯的地方由交付的人負責。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "用 AI 接案，適合的是需求明確、成品能逐項檢查的案子，報價要把查證所需的時間與平台費用算進去，交付前一定要自己檢查一次。AI 能縮短起草時間，但用錯案子、交付前沒檢查，反而會多出退款與糾紛。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下面依序說明哪些案型適合、台灣與國際平台怎麼收費與撥款、工時制與件計制怎麼報價（數字都是假設），最後是交付前的檢查清單。"
+        },
+        {
+          "type": "heading",
+          "text": "哪些案子適合用 AI、哪些不適合",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "判斷標準只有一條：成品能不能由你逐項檢查。AI 擅長把明確的輸入變成初稿，但會寫錯事實、編出不存在的出處，也就是幻覺，所以適合的是你看得出對錯、改得動的工作。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "文案與內容初稿：產品描述、社群貼文、電子報。客戶給了品牌語氣與重點，AI 起草，你改寫定稿。",
+            "逐字稿與會議摘要：先轉文字再整理重點，人名、數字與專有名詞逐一對照錄音。",
+            "翻譯初稿：機器翻譯先起草，再由你做譯後編修（MTPE），對照原文逐句檢查。",
+            "資料整理：表格清理、分類標籤、格式轉換，交付前抽樣核對。",
+            "程式小工具與網站修改：樣板程式碼、測試與說明文件，交付前一定實際跑過。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "下面幾類則不適合讓 AI 起草，或要先跟客戶談清楚。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "客戶明確說不要 AI 的案子。Fiverr 的規定是，客戶在下單前或開始時要求不用 AI，接案者必須遵守。",
+            "客戶要主張著作權的原創視覺，例如標誌（logo）與品牌插畫。經濟部智慧財產局的解釋是，完全由 AI 演算完成、沒有人類創意投入的生成圖，無法享有著作權。",
+            "事實密集又沒有原始資料可對照的內容，例如沒附來源的市場數據，或醫療、法律說明。",
+            "含個資或營業秘密的資料：確認工具的資料使用政策並取得客戶同意之前，不要貼進 AI。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-freelance-getting-started/diagram-1.svg",
+          "alt": "四個問題由左到右排成一列：客戶是否拒絕 AI、成品是否要主張著作權、事實能否查證、是否含個資或營業秘密；每題下方是遇到該情況的處理方式，全部通過才走到右上角的 AI 起草加人工檢查，底部一條提醒交付前一律人工檢查",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右依序回答四個問題，任何一題往下走，就先處理那個條件再決定。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "依任務選 AI 工具：寫作、翻譯、程式、圖片、研究各用哪一個",
+              "kind": "life",
+              "slug": "ai-tools-choose-by-task"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "翻譯與字幕接案搭配 AI：譯後編修流程、品質檢查與計價",
+              "kind": "life",
+              "slug": "ai-translation-subtitle-freelance"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "在哪裡接：台灣與國際平台怎麼收費、怎麼撥款",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是 2026 年 10 月的規則：這裡的兩個台灣平台成交不抽成、款項由你和案主自己約定；兩個國際平台經手款項，從收入扣服務費並設有審核或結清期。"
+        },
+        {
+          "type": "paragraph",
+          "text": "出任務（Tasker，前身是 518 外包）案主刊登一般案件免費，接案者基本提案免費，成交不抽成；想搶先提案、排在前面，要買 T Points 點數（1 點等於新台幣 1 元）開通 TaskerGo 搶先提案服務，30 天效期的方案 600 點起。免費帳號每月只能解鎖 1 次「聊聊」（站內洽談訊息），不限次數要付費訂閱；回覆案主訊息是否另外扣點，以官方公告為準。2025 年 7 月起平台停止代收付款，改由雙方自行協議付款，付款與驗收條件要自己寫進合約，網站上有免費的合約書範本產生器。PRO360 達人網瀏覽案件免費，每次手動報價扣儲值金，金額依服務類別而定，報價時會先提示；成交後客戶直接付款給你，平台不抽成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Upwork 從每份合約的收入收 0% 到 15% 的服務費（Freelancer Service Fee），比例在你提案或收到邀約時就看得到，提案或邀約一送出就鎖定不變；投提案要用 Connects 點數，每個 0.15 美元，每個案件要用的數量不同。固定價合約由客戶先存入里程碑款項，你提交成果後客戶最長有 14 天審核，核准後再經 5 天安全期才能提領；時薪制以每週一到週日為一個計費週期（以世界協調時間 UTC 計），週期結束後 10 天可提領。Fiverr 的接案者拿到客戶已結清款項的 80%，訂單完成後有 14 天結清期（部分資格可縮短）；交付後客戶 3 天內沒有回應，訂單就視為完成。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "平台",
+            "接案者付的費用",
+            "款項怎麼走",
+            "接案前先知道"
+          ],
+          "rows": [
+            [
+              "出任務（Tasker）",
+              "成交不抽成；基本提案免費，搶先提案用 T Points 開通 TaskerGo",
+              "2025 年 7 月起不代收付，雙方自行約定",
+              "免費帳號每月只能解鎖 1 次聊聊；付款與驗收條件要自己寫進合約"
+            ],
+            [
+              "PRO360 達人網",
+              "成交不抽成；每次手動報價扣儲值金，依服務類別而定",
+              "客戶直接付款給專家",
+              "報價時會先提示這次扣多少"
+            ],
+            [
+              "Upwork",
+              "每份合約 0% 到 15% 服務費；提案用 Connects，每個 0.15 美元",
+              "固定價：審核最長 14 天，再加 5 天安全期",
+              "服務費比例在提案或邀約送出後就鎖定"
+            ],
+            [
+              "Fiverr",
+              "接案者拿到客戶已結清款項的 80%",
+              "訂單完成後 14 天結清期",
+              "客戶明確要求不用 AI 時必須遵守"
+            ]
+          ],
+          "caption": "費用與規則以各平台說明頁為準，可能隨時調整；查證於 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "text": "報價怎麼算：工時制與件計制",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不論按時或按件，起點都是你想實拿多少。平台若從收入抽成，報價要先還原：報價＝想實拿÷（1－抽成比例）。以 Upwork 為例，假設想每小時實拿 20 美元、服務費 10%，就要開 20÷0.9＝22.22 美元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工時制適合範圍還不確定、會反覆修改的案子，客戶買的是你的時間，AI 讓你做得快，收入也跟著變少。件計制適合交付物明確的案子，AI 省下的時間歸你，但範圍沒寫清楚、修改沒有上限時，風險也由你承擔。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下數字都是假設，只用來示範算法：目標時薪新台幣 800 元，一篇 1,500 字的產品介紹文，AI 起草 1 小時、查證與改寫 2 小時、溝通與一輪修改 1 小時，共 4 小時，工時成本 800×4＝3,200 元；加上 AI 訂閱費分攤 200 元，件價是 3,400 元。若在抽成 20% 的平台接，報價要開 3,400÷0.8＝4,250 元。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不論哪一種算法，報價單或合約至少寫清楚下面幾件事。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "交付範圍與檔案格式。",
+            "包含幾輪修改，超過怎麼計費。",
+            "會不會用 AI、用在哪個環節，客戶是否同意。",
+            "著作財產權歸誰：依著作權法第 12 條，出資聘人完成的著作沒有約定歸屬時，著作財產權歸受聘人，出資人可以利用該著作。",
+            "訂金、分期與驗收後的付款時間。國內案主給付報酬時，可能依各類所得扣繳率標準先扣繳稅款，報價要講清楚是稅前還是實拿。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "網站如何產生收入：廣告、合作與自有產品的成本表",
+              "kind": "life",
+              "slug": "website-income-models"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "接案用 AI 的保密與責任：客戶資料、合約條款與揭露",
+              "kind": "life",
+              "slug": "ai-freelance-client-confidentiality"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "交付前的人工檢查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 寫錯的地方由交付的人負責。以 Fiverr 為例，接案者要對交付成果完全負責；處理 AI 相關爭議時，會看交付內容有沒有明顯錯誤或 AI 幻覺、是否依客戶需求客製；認定有欺瞞或品質不符時，訂單可能被取消、全額退款給客戶，帳號也可能被永久停權。交付前照下面的順序檢查一次。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "事實與數字：日期、金額、統計與引用，逐項回到原始資料核對。",
+            "客戶要求：字數、格式、語氣與品牌用語，對照需求單與參考資料。",
+            "專有名詞：人名、產品名、地名與譯名前後一致。",
+            "權利：圖片、字型與素材的授權，AI 生成的部分是否已向客戶說明。",
+            "機密：交付檔、共享連結與提示詞裡沒有其他客戶的資料。",
+            "檔案本身：清掉追蹤修訂、註解與隱藏文字，再實際打開檢查一次。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "檢查完留一份簡單紀錄：用了哪些工具、哪些段落經過人工改寫或查證，有爭議時就能說明工作過程。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+              "kind": "life",
+              "slug": "ai-hallucination-fact-check"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "直接交付 AI 原稿，是最常見的糾紛起點",
+          "text": "沒改過的 AI 產出常帶著錯誤數字、不存在的出處與套路句子。接案前先講清楚會不會用 AI、用在哪一段；平台費率與規則常調整，報價前再回平台確認一次。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "出任務 Tasker：TaskerGo 收費說明（收費總覽與收費制度演進）",
+          "url": "https://www.tasker.com.tw/features/taskergo",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "出任務 Tasker：專家訂閱方案",
+          "url": "https://www.tasker.com.tw/pricing",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "出任務 Tasker：關於出任務（品牌歷程）",
+          "url": "https://www.tasker.com.tw/about-us",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "出任務 Tasker：合約書範本產生器",
+          "url": "https://www.tasker.com.tw/toolbox/contract",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "PRO360 達人網：專家常見問題（報價費用與抽成）",
+          "url": "https://www.pro360.com.tw/pro/faq/",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "PRO360 達人網：PRO360 如何運作（收費方式說明）",
+          "url": "https://www.pro360.com.tw/pro/guide/how-pro360-work/",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Upwork Help Center: Learn about the Freelancer Service Fee",
+          "url": "https://support.upwork.com/hc/en-us/articles/211062538-Learn-about-the-Freelancer-Service-Fee",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Upwork Help Center: Understanding and using Connects",
+          "url": "https://support.upwork.com/hc/en-us/articles/211062898-Understanding-and-using-Connects",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Upwork Help Center: How payments for milestones and fixed-price contracts work",
+          "url": "https://support.upwork.com/hc/en-us/articles/211063718-How-payments-for-milestones-and-fixed-price-contracts-work",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Upwork Help Center: How to manage the weekly billing cycle",
+          "url": "https://support.upwork.com/hc/en-us/articles/211063698-How-to-manage-the-weekly-billing-cycle",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Fiverr Help Center: How Fiverr works for freelancers",
+          "url": "https://help.fiverr.com/hc/en-us/articles/34069565843985-How-Fiverr-works-for-freelancers",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Fiverr Help Center: Using AI on Fiverr, guidelines for freelancers and clients",
+          "url": "https://help.fiverr.com/hc/en-us/articles/34998793899665-Using-AI-on-Fiverr-Guidelines-for-freelancers-and-clients",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "經濟部智慧財產局：著作權解釋資料 電子郵件1140522c（AI 生成圖畫是否享有著作權）",
+          "url": "https://www.tipo.gov.tw/tw/copyright/692-34252.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：著作權法第 12 條（出資聘人完成之著作）",
+          "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=J0070017&flno=12",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：各類所得扣繳率標準",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340028",
+          "checked_on": "2026-10-05"
+        }
+      ]
+    }
+  }
+}
