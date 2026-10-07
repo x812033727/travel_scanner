@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-video-writer-pending-transport-reason
 title: Surface durable writer polling failures in pending status
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-pending-reason
 claimed_at: 2026-10-07T15:36:10Z
 created_at: 2026-10-05T13:02:39Z
-completed_at:
+completed_at: 2026-10-07T23:18:04Z
 branch:
 depends_on: []
 scope:
@@ -99,3 +99,10 @@ and task consistency checks before a PR.
     Mutations (the deadline counted as a failure, only the bare message on a lost connection, an
     empty cause message kept, no bound on the reason, the stale running case given a cause, a cut
     by UTF-16 units) each fail a test.
+- 2026-10-07, closed after the independent duration re-bind `ad51abda` (PASS, DURATION_ONLY,
+  reviewer `claude-pr-review-pending-reason`). Its notes outside duration, none fixed here: the
+  ticket's automation test wraps `site.fetchImpl` in a function that adds nothing (removed with the
+  next change to automation.test.mjs, `2026-10-06-a-pending-discussion-job-and-the`); the cut at
+  160 code points can split a flag or a letter with a combining accent (a log line only); and the
+  `answered` break also ends the poll on a TimeoutError a custom fetch throws before the budget is
+  spent, which only lets the video wait a round, with no request sent again.
