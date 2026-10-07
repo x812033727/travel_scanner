@@ -1,14 +1,14 @@
 ---
 id: 2026-10-07-article-missing-locales-completion
 title: Complete all missing published travel and life article locales
-status: open
+status: in-progress
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: codex-article-localization-4e16
+claimed_at: 2026-10-07T14:28:12Z
 created_at: 2026-10-07T04:49:38Z
 completed_at:
-branch: codex/article-locales-wave3-20261007
+branch: codex/article-locales-release-20261007
 depends_on: []
 scope:
   - docs/article-localization/coverage-20261007.md
@@ -172,3 +172,11 @@ process was touched. Exact final-head Linux CI remains required.
 Release this coverage-only scope when waiting for exact owner deployment choice.
 Continue next-wave source audits externally without adding them to the fixed14
 cohort. Do not mark this global task complete until a fresh public census is zero.
+
+### Actual approved publication of the fixed32 cohort
+
+The owner approved PR #1370 head `403d8204c27fd89653990cb1b8e624a1f87c5bcc`; all21 checks passed. It was merged and normally deployed as `7524c25995d59f3826227e693d52f2ef5b3a19a2`. The official guarded publisher completed 128 missing-language documents and two independently reviewed source corrections, backed by a full recoverable database backup, actual isolated restore/publication rehearsal and idempotent production replay. Public verification confirmed160 five-language pages and320 actual desktop/mobile screenshots. The original release driver completed with exit0 at15:40:06UTC and cleared only its own hold.
+
+A fresh full production snapshot captured14:17:26UTC has1,259 eligible public articles;830 remain incomplete and3,320 language documents remain missing. Counts are intel13/52, howto108/432, life709/2,836, with830 gaps in each of en/ja/ko/zh-CN. The original862 queue rows and historical3,448 observation remain retained; the durable ledger now appends the verified32/128 publication and actual census. Coverage and four scoped sanitized release records document these real states and the outstanding unpublished related-link targets.
+
+The next twelve web-design/SEO life articles have48 new staged translations. Four precise Korean token spelling repairs retained the original attempts; official materialization and all48 renders passed. Actual independent target reviews are in progress, with source corrections separately reviewed and bound. That cohort has no production publication yet. This global ticket stays open until a later fresh census reports zero eligible missing language documents.

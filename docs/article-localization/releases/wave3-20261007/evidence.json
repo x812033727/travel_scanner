@@ -1,0 +1,918 @@
+{
+  "schema": "article-localization-sanitized-release-record-v1",
+  "state": "published_and_publicly_verified",
+  "release_task_id": "2026-10-07-release-wave3-travel-and-life-article",
+  "content_pull_requests": [
+    1370
+  ],
+  "merged_deployed_sha": "7524c25995d59f3826227e693d52f2ef5b3a19a2",
+  "driver_completed_at": "2026-10-07T15:40:04.124263+00:00",
+  "public_visual_reviewed_at": "2026-10-07T15:35:28.817377+00:00",
+  "fresh_census_observed_at": "2026-10-07T14:17:26.608977+00:00",
+  "scope_counts": {
+    "articles": 14,
+    "new_language_publications": 56,
+    "source_corrections": 1,
+    "selected_publication_operations": 57,
+    "draft_operations": 57,
+    "hub_publication_operations": 0,
+    "public_pages": 70,
+    "desktop_mobile_views": 140,
+    "manifest_assets_in_scope": 157
+  },
+  "slugs": [
+    "content-marketing-calendar",
+    "email-newsletter-planning",
+    "hong-kong-entry-2026",
+    "influencer-collaboration",
+    "kit-newsletter-setup",
+    "mailchimp-wordpress-newsletter",
+    "short-video-marketing",
+    "social-media-planning",
+    "stp-persona-research",
+    "taiwan-long-weekends-2027-flight-planning",
+    "wordpress-500-error",
+    "wordpress-ad-placement",
+    "wordpress-social-embeds",
+    "wordpress-social-login"
+  ],
+  "official_phase_results": {
+    "prepare": {
+      "started_at": "2026-10-07T13:30:16.743836+00:00",
+      "finished_at": "2026-10-07T13:30:36.181666+00:00"
+    },
+    "dry-run": {
+      "started_at": "2026-10-07T13:30:57.735761+00:00",
+      "finished_at": "2026-10-07T13:32:17.317847+00:00"
+    },
+    "backup": {
+      "started_at": "2026-10-07T13:33:07.497691+00:00",
+      "finished_at": "2026-10-07T13:34:01.620260+00:00"
+    },
+    "rehearsal": {
+      "started_at": "2026-10-07T13:35:51.721780+00:00",
+      "finished_at": "2026-10-07T13:54:57.512074+00:00"
+    },
+    "drafts": {
+      "started_at": "2026-10-07T13:55:22.954429+00:00",
+      "finished_at": "2026-10-07T13:59:57.268456+00:00"
+    },
+    "publish-articles": {
+      "started_at": "2026-10-07T14:00:59.899977+00:00",
+      "finished_at": "2026-10-07T14:06:00.887720+00:00"
+    },
+    "publish-hubs": {
+      "started_at": "2026-10-07T14:06:10.809338+00:00",
+      "finished_at": "2026-10-07T14:07:30.992490+00:00"
+    },
+    "replay": {
+      "started_at": "2026-10-07T14:07:41.897985+00:00",
+      "finished_at": "2026-10-07T14:13:31.106527+00:00"
+    },
+    "complete": {
+      "started_at": "2026-10-07T15:39:54.971804+00:00",
+      "finished_at": "2026-10-07T15:40:06.564958+00:00"
+    }
+  },
+  "operation_actions": {
+    "drafts": {
+      "save_draft": 1,
+      "start_translation": 56
+    },
+    "publish-articles": {
+      "publish": 57
+    },
+    "publish-hubs": {}
+  },
+  "bundles": [
+    {
+      "bundle_id": "07-wave3-life12",
+      "manifest_sha256": "9b0b266bac80aa54c949003d0f76c97fe52c49eca380fc871a3d726378dd0578",
+      "baseline_sha256": "02c126e6a56a45544b0769b15cc18d74bb26af86420be3e6beda4712aa920054",
+      "journal_sha256": "0c266ab0e6374ab13434384bf9c9a872c59094fdf7633e1383c81efcdc3acca7",
+      "filtered_slugs": [
+        "content-marketing-calendar",
+        "email-newsletter-planning",
+        "influencer-collaboration",
+        "kit-newsletter-setup",
+        "mailchimp-wordpress-newsletter",
+        "short-video-marketing",
+        "social-media-planning",
+        "stp-persona-research",
+        "wordpress-500-error",
+        "wordpress-ad-placement",
+        "wordpress-social-embeds",
+        "wordpress-social-login"
+      ],
+      "filtered_operation_counts": {
+        "drafts": 48,
+        "publish-articles": 48,
+        "publish-hubs": 0
+      },
+      "shared_journal_filtered_by_slug": false
+    },
+    {
+      "bundle_id": "08-taiwan",
+      "manifest_sha256": "d5806b731bcb2e23e4ceb392577d659c5fe0fa7bea3e45bf5bcfc3c7f56332ec",
+      "baseline_sha256": "02c126e6a56a45544b0769b15cc18d74bb26af86420be3e6beda4712aa920054",
+      "journal_sha256": "54eff7a9ff084cbeb6ce39fbdfb6fff4600c64f0288b98211690797a0fc7f952",
+      "filtered_slugs": [
+        "taiwan-long-weekends-2027-flight-planning"
+      ],
+      "filtered_operation_counts": {
+        "drafts": 4,
+        "publish-articles": 4,
+        "publish-hubs": 0
+      },
+      "shared_journal_filtered_by_slug": false
+    },
+    {
+      "bundle_id": "09-hong-kong",
+      "manifest_sha256": "8c418af20110dd4d3f3f50ba1ede39bf766a3ce1d7c7698e5d7d8bf617e6b4cf",
+      "baseline_sha256": "c0f405c2cf64f484e77c35adb37572d04730f5874a586e085704edc7b57f2ab6",
+      "journal_sha256": "bd2cd6a379a5d5517193e8863ff55b6fc0e9c916ec802decfb514676536a35e5",
+      "filtered_slugs": [
+        "hong-kong-entry-2026"
+      ],
+      "filtered_operation_counts": {
+        "drafts": 5,
+        "publish-articles": 5,
+        "publish-hubs": 0
+      },
+      "shared_journal_filtered_by_slug": false
+    }
+  ],
+  "source_correction_approvals": [
+    {
+      "locale": "zh-TW",
+      "from_published_sha256": "f23003389963cc118d0b535cb38d9f9b7c177940fc948e3f95446e25ac2b37a0",
+      "to_document_sha256": "99be6dac120d3a6ff15d6724c8b4f22b13dee798a04931bdfdc359c482a33604",
+      "review_sha256": "64ba42ecc73600ee2734adcdfca0798ea75c88585bc3f53a41f3173bbfd0fd25",
+      "slug": "hong-kong-entry-2026"
+    }
+  ],
+  "actual_public_documents": [
+    {
+      "slug": "content-marketing-calendar",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/content-marketing-calendar",
+      "published_version": 4,
+      "document_sha256": "aed2553d2f1e1963d59f73a25585c0a89551ec23ec39b2a00cec19f696bd16cc",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "content-marketing-calendar",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/content-marketing-calendar",
+      "published_version": 2,
+      "document_sha256": "d50131bb07ae711f9bd7e1d0d5bc2b191bec105c42689534bf99c3a839e77dba",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "content-marketing-calendar",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/content-marketing-calendar",
+      "published_version": 2,
+      "document_sha256": "4642da29ea76904a1160a4f968bd5305912f1cd9134e3aeae400d9a56dd4f40a",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "content-marketing-calendar",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/content-marketing-calendar",
+      "published_version": 2,
+      "document_sha256": "f9d839741fe5f07ca20dc909ab12f4e7ae55a06ed96e4d642e83797734cd962a",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "content-marketing-calendar",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/content-marketing-calendar",
+      "published_version": 2,
+      "document_sha256": "4b6307d32d4e41958a8c9a274fb4fb1d799a10fa5708e2dc8e7984e5a62521a8",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "email-newsletter-planning",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/email-newsletter-planning",
+      "published_version": 4,
+      "document_sha256": "f9e598d55aad58dec6d87ba2b460f622f3328e53353485f289520a4e59536c3c",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "email-newsletter-planning",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/email-newsletter-planning",
+      "published_version": 2,
+      "document_sha256": "89151fde142299f051c6cb30de5d7a753dec207ebbf189829d3ba1cd52d52aac",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "email-newsletter-planning",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/email-newsletter-planning",
+      "published_version": 2,
+      "document_sha256": "875549dde46ac9ccc0c0b712903c389a181b8b56be5c74eefcaaeb72153be9b6",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "email-newsletter-planning",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/email-newsletter-planning",
+      "published_version": 2,
+      "document_sha256": "eb333061d77575b7bc8b6be56227435a276055131cca892a011a4c53285ddbb8",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "email-newsletter-planning",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/email-newsletter-planning",
+      "published_version": 2,
+      "document_sha256": "1300c6b907618888bd6f440d67feb7279c06042f69c368f464bf0f308a07fec8",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "hong-kong-entry-2026",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/guides/intel/hong-kong-entry-2026",
+      "published_version": 8,
+      "document_sha256": "99be6dac120d3a6ff15d6724c8b4f22b13dee798a04931bdfdc359c482a33604",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "hong-kong-entry-2026",
+      "locale": "en",
+      "url": "https://mokaair.com/en/guides/intel/hong-kong-entry-2026",
+      "published_version": 2,
+      "document_sha256": "ec5156ce9927c468d8075578008ad3a7e7dc81f61705c5c7b2c128c48c9d9b1c",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "hong-kong-entry-2026",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/guides/intel/hong-kong-entry-2026",
+      "published_version": 2,
+      "document_sha256": "7417eeb557d35d802fd997c9db15bd5199daee9e41ed8003be5962229ef3fa20",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "hong-kong-entry-2026",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/guides/intel/hong-kong-entry-2026",
+      "published_version": 2,
+      "document_sha256": "480e32df5aa2670faffdc2dddc81802d5b16364bcd83ab83e2b3f22b47ced2e5",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "hong-kong-entry-2026",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/guides/intel/hong-kong-entry-2026",
+      "published_version": 2,
+      "document_sha256": "3f382173562287c0f667b1ee08541daf2b4ad80fcea9bd56a80964a5ea59e4c2",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "influencer-collaboration",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/influencer-collaboration",
+      "published_version": 4,
+      "document_sha256": "15169e4ae9ae4ce8f95d45f0d7292aeb511f9703582cd6a0e628260be63390e8",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "influencer-collaboration",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/influencer-collaboration",
+      "published_version": 2,
+      "document_sha256": "54ad795d33e16f0bda5c7100f400c4dfbd2b1f6e4ec2ec22bf07b447ee6d8418",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "influencer-collaboration",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/influencer-collaboration",
+      "published_version": 2,
+      "document_sha256": "53cb96f0a549ecce8bcf0cfa5692369569633b25aeb09c2b31412993e7782bdd",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "influencer-collaboration",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/influencer-collaboration",
+      "published_version": 2,
+      "document_sha256": "fa8460f5a99b1ffb5ac08a95c9ea8eb2c4ab394f7b46cbd0d65d8567062a6dd7",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "influencer-collaboration",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/influencer-collaboration",
+      "published_version": 2,
+      "document_sha256": "80acc5c7c1700f946d939b5f9bff27f1c385270cb2a1cae1878db863b70a5d82",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "kit-newsletter-setup",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/kit-newsletter-setup",
+      "published_version": 4,
+      "document_sha256": "2612817153f43f4fce685fa6516c8372950d777f083f011b52f33d3563056551",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "kit-newsletter-setup",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/kit-newsletter-setup",
+      "published_version": 2,
+      "document_sha256": "ddd39281c69ab50e269a74927b5384fef7fcdfc632687cd98e35b27d4eb6d305",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "kit-newsletter-setup",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/kit-newsletter-setup",
+      "published_version": 2,
+      "document_sha256": "39a170c7d2b49a2145dca3d805acb1feff843ee7a23eff06663a709bb392f9a1",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "kit-newsletter-setup",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/kit-newsletter-setup",
+      "published_version": 2,
+      "document_sha256": "b20d653182e1204f831229c5501639109151e6f2931c61344975c152cdc8d3b3",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "kit-newsletter-setup",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/kit-newsletter-setup",
+      "published_version": 2,
+      "document_sha256": "d7e910b3f227d0f1648ca92acf2d087fb9c079b85bf739989365e52ee0cb8353",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "mailchimp-wordpress-newsletter",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/mailchimp-wordpress-newsletter",
+      "published_version": 4,
+      "document_sha256": "4e377682b0e29282f19bf8c2337f3c5bbc14d8d72a31085758aed050283a3465",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "mailchimp-wordpress-newsletter",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/mailchimp-wordpress-newsletter",
+      "published_version": 2,
+      "document_sha256": "abdfdcf9ff10c3326195e575d6b65029e8e1cea5107b893ac60e9713195aba66",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "mailchimp-wordpress-newsletter",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/mailchimp-wordpress-newsletter",
+      "published_version": 2,
+      "document_sha256": "2b95e1a6024eb184bac1d762a23072d255cd6126a204615c3ea8fa6c3bdf5594",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "mailchimp-wordpress-newsletter",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/mailchimp-wordpress-newsletter",
+      "published_version": 2,
+      "document_sha256": "4514e977e1ccbf0aa1fb577ffe88a3d0e639e7f18ca27557c4cd4543341dbe18",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "mailchimp-wordpress-newsletter",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/mailchimp-wordpress-newsletter",
+      "published_version": 2,
+      "document_sha256": "b7d223daf585918f9cffe7be48ecfb9b85d139cc2bcc1aafe8e9d72ce694f2d3",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "short-video-marketing",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/short-video-marketing",
+      "published_version": 4,
+      "document_sha256": "d018c49cffb0452494b44e34f99f89dc1f29590a31bf7a25861ff68d7639a953",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "short-video-marketing",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/short-video-marketing",
+      "published_version": 2,
+      "document_sha256": "c402e14c54de642db98075b9a132d52a3121b6ca6390e1e06d1f572f22e29299",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "short-video-marketing",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/short-video-marketing",
+      "published_version": 2,
+      "document_sha256": "14ecbd265802b8dcde44f7c57d9d6a0ee66cee2b802fbf62223c67f5948616b3",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "short-video-marketing",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/short-video-marketing",
+      "published_version": 2,
+      "document_sha256": "4b45a9b84522fb9b656842fbe30876f52dd841fa4494968f9ea60786e20b4482",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "short-video-marketing",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/short-video-marketing",
+      "published_version": 2,
+      "document_sha256": "348d097abcc670ac25592cae58936cdbeaba8cd97c2c7bf424e8cc0d9874cae1",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "social-media-planning",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/social-media-planning",
+      "published_version": 4,
+      "document_sha256": "dcbf21a3e972e113e6b88fa6a1b0764ed77306918c5b8040ffd1893bfdaad12b",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "social-media-planning",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/social-media-planning",
+      "published_version": 2,
+      "document_sha256": "68eb821c03b0638df4b8f38f0e4fc755b27f88f24c58e3cdc28a8030a0066591",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "social-media-planning",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/social-media-planning",
+      "published_version": 2,
+      "document_sha256": "3700d86e154271246c7d0b16fcd86001bf0293a015c514a3c5dd8355d987f649",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "social-media-planning",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/social-media-planning",
+      "published_version": 2,
+      "document_sha256": "fd2df135c702f2e7ae3f3d05a51e0f77cfcb8a282a5549691d2d06b83d66f21a",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "social-media-planning",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/social-media-planning",
+      "published_version": 2,
+      "document_sha256": "b94f080e97ddb9db17d5bf52fe2ddc01c9aa466ede326f3055e2b9f4db68fe07",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "stp-persona-research",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/stp-persona-research",
+      "published_version": 4,
+      "document_sha256": "38238661493d97331044cf533ab432d797ddc1c204d49359bebe0681432b375b",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "stp-persona-research",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/stp-persona-research",
+      "published_version": 2,
+      "document_sha256": "de3bbaab2d34850a32d351c00798a4db96301255df129801358b239fa5a4b83f",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "stp-persona-research",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/stp-persona-research",
+      "published_version": 2,
+      "document_sha256": "cc0dbf7e7b99bcc48935539241521d2289598ad571e8865e2c2807d6b2a712c6",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "stp-persona-research",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/stp-persona-research",
+      "published_version": 2,
+      "document_sha256": "8c89eb093817f50af0e097a557959bbe4b2fa4c12adce5677bfe15dc6fe810b8",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "stp-persona-research",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/stp-persona-research",
+      "published_version": 2,
+      "document_sha256": "0de7c22c3ccb07e8f8a1a7842c34cf61ed1362afd4f67b7eb1da5a95a262651a",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "taiwan-long-weekends-2027-flight-planning",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/guides/intel/taiwan-long-weekends-2027-flight-planning",
+      "published_version": 10,
+      "document_sha256": "13bd928c9d6b046e77cab33ddcdc20717e2c5182d021e1e52d1e1ed3bb0f9a33",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "taiwan-long-weekends-2027-flight-planning",
+      "locale": "en",
+      "url": "https://mokaair.com/en/guides/intel/taiwan-long-weekends-2027-flight-planning",
+      "published_version": 2,
+      "document_sha256": "5f1ae8fe907c4848b428bcd98eb2c239418c3055c875a15c43f5fa4f782fe3d7",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "taiwan-long-weekends-2027-flight-planning",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/guides/intel/taiwan-long-weekends-2027-flight-planning",
+      "published_version": 2,
+      "document_sha256": "1c83c93676bcb6c63fde11de9d679482af5d47dc7a9931f434ad9dc17b874e13",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "taiwan-long-weekends-2027-flight-planning",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/guides/intel/taiwan-long-weekends-2027-flight-planning",
+      "published_version": 2,
+      "document_sha256": "a2f0f944242d99e9902d92638920654930377e31d3c23346ad8014c94377ec3f",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "taiwan-long-weekends-2027-flight-planning",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/guides/intel/taiwan-long-weekends-2027-flight-planning",
+      "published_version": 2,
+      "document_sha256": "1f8d69a1e320e2d5ad7f8f8ca3bdec7853fecc5d5b6e9c531739886aed740967",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-500-error",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-500-error",
+      "published_version": 4,
+      "document_sha256": "e378eec5e25ecaf20a325f248adff3b805ea53fdc87ffc764a11fda157942c83",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "wordpress-500-error",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-500-error",
+      "published_version": 2,
+      "document_sha256": "296aa67f7263c5f52124e23b8039145675bb3728c31b69ff406976f8cc45e7b3",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-500-error",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-500-error",
+      "published_version": 2,
+      "document_sha256": "70c5973c1500c70dfb1e73f814f1df7554b7904e7af8dacba24f41b02fb403d1",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-500-error",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-500-error",
+      "published_version": 2,
+      "document_sha256": "f6095d4e8edd35706a0bfc551f643f9460ac4ccdd61d044c3dae6559b16e4c88",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-500-error",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-500-error",
+      "published_version": 2,
+      "document_sha256": "35f0a23fcb68388838586ce6d46fe2331471f742c93454f428ae7d959f161cce",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-ad-placement",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-ad-placement",
+      "published_version": 4,
+      "document_sha256": "65befeece176569fbd7b6ef80a8b61af5e92bfda6613338966d3e85f05407afa",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "wordpress-ad-placement",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-ad-placement",
+      "published_version": 2,
+      "document_sha256": "b5123c8f2fb94ae53ae476736a1b1ee5a3652ef7af9b7885b1ae480adb082cf8",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-ad-placement",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-ad-placement",
+      "published_version": 2,
+      "document_sha256": "e619ca9719edebabf0603e2ae3c6a84728904006f86cb3d3484eefb6173f20fc",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-ad-placement",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-ad-placement",
+      "published_version": 2,
+      "document_sha256": "a71af34a01972639b9dee5dc17ad020a6fc9b3459ab287faea020bfb056bf3ec",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-ad-placement",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-ad-placement",
+      "published_version": 2,
+      "document_sha256": "d5413f2533ec90f8016d914bd2b9d236653fc49ede1fbb7f8709a1a4cce0533c",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-social-embeds",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-social-embeds",
+      "published_version": 4,
+      "document_sha256": "e5505097397a27f85088d9210ca3ffdeada633ecac59741bbcd098fece4e66bb",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "wordpress-social-embeds",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-social-embeds",
+      "published_version": 2,
+      "document_sha256": "d32b78106f01d7d0f7013b7787741752f58c00fd324821268ccebbe497f7c327",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-social-embeds",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-social-embeds",
+      "published_version": 2,
+      "document_sha256": "a897c1cbd07c6922b7d10df0f652d5dfa96a00629247213274c47fe7b574d478",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-social-embeds",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-social-embeds",
+      "published_version": 2,
+      "document_sha256": "d5d172e89d536c961db9da7003b9ba956a01d5c781b00bf8ed1c281a3ce315bb",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-social-embeds",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-social-embeds",
+      "published_version": 2,
+      "document_sha256": "45e1db69559e47972f8a469cdf02590828d756503b6931124928fef7c24e6f42",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-social-login",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-social-login",
+      "published_version": 4,
+      "document_sha256": "3f15ba0c869644dc9c0daaaef8c9b0fc3a131860ef63874e7694d6659afd4015",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "wordpress-social-login",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-social-login",
+      "published_version": 2,
+      "document_sha256": "1f2e9670d72db680751d64310f242c95d550c8e130d558c94447dd7907492eb7",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-social-login",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-social-login",
+      "published_version": 2,
+      "document_sha256": "687d811b11e5469f98c44a5f7b43286169f4b2d4934c68ee9512fd10547a6e70",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-social-login",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-social-login",
+      "published_version": 2,
+      "document_sha256": "ea69a231da7246176c441f4a4663b20c22472060e038ea0759c3f0d6b400df21",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-social-login",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-social-login",
+      "published_version": 2,
+      "document_sha256": "283cd855bebcc6b6a6ff9d46372ec5b48d928e3eab3dac8e2f583753995fa52b",
+      "selected_publication_target": true
+    }
+  ],
+  "manifest_asset_sha256": {
+    "/guides/content-marketing-calendar/diagram-1-en.svg": "bed037c6962f16c5d47fc0e3e0cd1ee3d6534e7d2d96f839ef122ba76d64f0b3",
+    "/guides/content-marketing-calendar/diagram-1-ja.svg": "cbd63bd5f61b07902640cf9079169464a9a6b9674b9cd479ba83f480148803fb",
+    "/guides/content-marketing-calendar/diagram-1-ko.svg": "f369a28a86b30b8c47b8c222d7e204e94b132ff6eb6169dcc20172b4275a4974",
+    "/guides/content-marketing-calendar/diagram-1-zh-cn.svg": "72dc31034a6e8eb2933e415715d8afd8ef3c11be9125ca8732333362d8675fa6",
+    "/guides/content-marketing-calendar/hero-en.jpg": "fd25a9af6b045037c433b708f03d049399964be10b1cbdfd8671bc1d814550e7",
+    "/guides/content-marketing-calendar/hero-en.svg": "0f5635d7032c2ad4321e5f69365fbfa0f390122dc36b4c6dd5e2088bd2e9118e",
+    "/guides/content-marketing-calendar/hero-ja.jpg": "1978bbbfcc4d91498ce6e9c0525c5122cfb8b419ca6f2151f4290e55bee3d046",
+    "/guides/content-marketing-calendar/hero-ja.svg": "39a6247752a0f08df87ac870a8499b977255022761797dd8b95c0cc451f9f7da",
+    "/guides/content-marketing-calendar/hero-ko.jpg": "31977813cb1a310311107df2453bda40089090c6db2ef369273dab800510f741",
+    "/guides/content-marketing-calendar/hero-ko.svg": "36439751d0f8103ef152def09c4370e2d7f66cac6cc4b93c230ed68ce85d3631",
+    "/guides/content-marketing-calendar/hero-zh-cn.jpg": "d2bc958b6217ab79af7b33a39e3f448fa30c0db372e4931b26d4d43db0697cab",
+    "/guides/content-marketing-calendar/hero-zh-cn.svg": "ea57728fcd5c445e524461b91b5c50391c6d974cab5635dd1f49d259cbef5b25",
+    "/guides/email-newsletter-planning/diagram-1-en.svg": "baabfe5d9ec509f0c9233d46c7843c081f2e63fcf65c3bcc56aed576c33ad157",
+    "/guides/email-newsletter-planning/diagram-1-ja.svg": "99c4d08dbf317054cee9657caa9685bdfd0ab8e0f6bb7e923cdc0856f6149711",
+    "/guides/email-newsletter-planning/diagram-1-ko.svg": "5b0631700ca18bf3bf11af35e10a0f603fbeaa584c533f1cd783e9631aee3dc3",
+    "/guides/email-newsletter-planning/diagram-1-zh-cn.svg": "b0e05510ae320a6f9d53ef8cd31ab337c7ada01d394ee9252a9433aa728fe3d7",
+    "/guides/email-newsletter-planning/hero-en.jpg": "86198e2117a634c9eb35d214d3cbd14a2582068913ea15b1088a5c383074020d",
+    "/guides/email-newsletter-planning/hero-en.svg": "806a67315f0d632d911713bd1ded3ae47f79d437dc1ad33ac0a4ab68087fdc58",
+    "/guides/email-newsletter-planning/hero-ja.jpg": "2417288f3215509dcbd6304ba071707380b91799f09f9d1256b5503598099f70",
+    "/guides/email-newsletter-planning/hero-ja.svg": "7e0663f6210ceb9e53e88bc8c996477183a3a5b0b6caad64a68e70432227aaff",
+    "/guides/email-newsletter-planning/hero-ko.jpg": "6630675c214cea52b97b857e6f8a208ef5c87b0b32b6489361011599ea244d77",
+    "/guides/email-newsletter-planning/hero-ko.svg": "87fa0024fea845f83b84be975f98a30f778b87dcce2a71495200470ea97b6578",
+    "/guides/email-newsletter-planning/hero-zh-cn.jpg": "9b1910cdfd340934785f1e12dd2c20b4ad68d72953ae8737fe75c73a8b895589",
+    "/guides/email-newsletter-planning/hero-zh-cn.svg": "536382b12633d1313b255a7a12e2f8667d28682d55194487fbd05a3ff7fbb392",
+    "/guides/hong-kong-entry-2026/diagram-1-en.svg": "2793d5856a7e3c1d7df8d77878abe122379bebabb70d9461a524f9dd63980c2b",
+    "/guides/hong-kong-entry-2026/diagram-1-ja.svg": "6863c81f3777aa53a40548557196f1eed6f986cde01bf81f4a721cc43679ff56",
+    "/guides/hong-kong-entry-2026/diagram-1-ko.svg": "4656834ac38079fb3349a3353c53b210563aba46f88b4f96a5a0027977b4d602",
+    "/guides/hong-kong-entry-2026/diagram-1-zh-cn.svg": "2cebce41cec9988b2032d2de3c432ee75f73f2bfe52c80952bada9b0b8aff071",
+    "/guides/hong-kong-entry-2026/diagram-1.svg": "aaeb1482ef7bfa5408eea155e35b77e759ecdf9b093bc34529fb9da271a429f6",
+    "/guides/hong-kong-entry-2026/hero.jpg": "0dd290b3ae83f776df57b048a56ab5912c5f09c31a1912d3cb45eef6b4f0c0cc",
+    "/guides/hong-kong-entry-2026/photo-1.webp": "31f2fbfc3d467ca421de092cda0c9ee0fff17c4d738eaf2d0c8310b73a78bfed",
+    "/guides/influencer-collaboration/diagram-1-en.svg": "d77033cd90ffee5c78e8031fc2fbdccf546b767aeea138df02bcd5f5f8dca880",
+    "/guides/influencer-collaboration/diagram-1-ja.svg": "1c7aaf0dbb49d4e89cbe4c820778b8d71763550cf9598775c5724f29c3f4e29d",
+    "/guides/influencer-collaboration/diagram-1-ko.svg": "ad98cecafa77d86ce46b57164e1c6501b44bf0fb8485cf02e331b1dd160e2bb7",
+    "/guides/influencer-collaboration/diagram-1-zh-cn.svg": "bd58db116ec8951561df52c1a61f325bdfbdc688d5d791c3039d9664010daac1",
+    "/guides/influencer-collaboration/hero-en.jpg": "093de667476cf6af04adfbc019fbd00952b7525fcc007e7f2ec787a5bd58f1c1",
+    "/guides/influencer-collaboration/hero-en.svg": "6f2caf6b8c3b715de1609b8ac6e42c4ecc293108dcf8b99e43827957d405ae8f",
+    "/guides/influencer-collaboration/hero-ja.jpg": "5eaf215a0d29fbf1daf103273337f0e91ab438cfe616b5bde576fd4fae3b2e90",
+    "/guides/influencer-collaboration/hero-ja.svg": "6c7d8ae6443b046d524cc7c6acaf799075433da1a54eda2199956097fbc90ff3",
+    "/guides/influencer-collaboration/hero-ko.jpg": "89b801f498016913953fbfad375314cfebf937d9d27c44e67687bb8cdfb6c8f4",
+    "/guides/influencer-collaboration/hero-ko.svg": "9c68ee31ff53a750dfa1471bbfacb68e88763fa057f00989f40de2ab591aa224",
+    "/guides/influencer-collaboration/hero-zh-cn.jpg": "c9cd16e4c6f012588af36455c0c5dda45b37343ed2181d7d7937fb1ed82a4140",
+    "/guides/influencer-collaboration/hero-zh-cn.svg": "166138b0528e9bb33f0fc0ead334a9f2b0aae5afb5103c002cbf2eebf5ba66e9",
+    "/guides/kit-newsletter-setup/diagram-1-en.svg": "e94fb0f5cc3d8f5f87cf63fdb9e0f8175789c63bb7f24eb434537dce3d7d3dc5",
+    "/guides/kit-newsletter-setup/diagram-1-ja.svg": "d47b26b60f77e52c7fe606c3ca01c990b2d365d40175a552b5725ae5ec72c69d",
+    "/guides/kit-newsletter-setup/diagram-1-ko.svg": "7c87760b7b34f828d3dc625f2b32b0ff3499507321faab5a4cabb88d8c3b9960",
+    "/guides/kit-newsletter-setup/diagram-1-zh-cn.svg": "7d22f956146565a5eca5d2bcdaa8b6de7e35306a5cc2be29991d17147840125a",
+    "/guides/kit-newsletter-setup/hero-en.jpg": "cb29477c08d15f060be07363892c6fe1d2e839381e36323d11aafe13ed622349",
+    "/guides/kit-newsletter-setup/hero-en.svg": "c719c6cb08d04e706d5a4bf010e3a52a3f6be8de74da17932e1e1e624bad4aed",
+    "/guides/kit-newsletter-setup/hero-ja.jpg": "dbb9f08f04b0eb79fa97a054561b1bec255327be9c1a64189adf8a23e7fe35ca",
+    "/guides/kit-newsletter-setup/hero-ja.svg": "2d901333b396b72ffe5c1007ca281ed924a9eb5d1aca94ddf217a459db3cf487",
+    "/guides/kit-newsletter-setup/hero-ko.jpg": "b995a731f94ff32d693371cb8d0fee61a262a3c545179f7722adba32e14d29d1",
+    "/guides/kit-newsletter-setup/hero-ko.svg": "67143450b349591b6ac552c45cf59dcd4a91d95a85c4c8eff088583ea892c5cf",
+    "/guides/kit-newsletter-setup/hero-zh-cn.jpg": "4f5b598faa9850c222451be050aa83ecd7f934684f03ac13d05eb513ced6fb40",
+    "/guides/kit-newsletter-setup/hero-zh-cn.svg": "053274b4eca14e95e5d51183336f7839a460e65eebfc30000dfad276820ddc3f",
+    "/guides/mailchimp-wordpress-newsletter/diagram-1-en.svg": "bbaff206690e9171353eb324a3f3772e874447564eb59af82ac2bb2d42b18a18",
+    "/guides/mailchimp-wordpress-newsletter/diagram-1-ja.svg": "7e321ab2c2279d678118586ed1efe4bfaa45a41a126fec8e4f7ca6ab6196ee2a",
+    "/guides/mailchimp-wordpress-newsletter/diagram-1-ko.svg": "cdf9bbc2ecc83bee63d170f5d2cbb2b759c741f81f2bad2f9247594e7844b11b",
+    "/guides/mailchimp-wordpress-newsletter/diagram-1-zh-cn.svg": "e0c7baed246f662571bf1dc66312026d2771c4e61d5a1e696409a088e0d06035",
+    "/guides/mailchimp-wordpress-newsletter/hero-en.jpg": "bde1f874805642607b2d103358c8b79c50e3ea793f4b72b3747bb1cccbb6e94c",
+    "/guides/mailchimp-wordpress-newsletter/hero-en.svg": "c5aa3ee308eabba1c71ebc534e365beb3a7ef04a403a551cc750e2fc84d25720",
+    "/guides/mailchimp-wordpress-newsletter/hero-ja.jpg": "1f96d0e837fa5d1b0c66d62a0b6c262290d310ea3595cdcad0909f22ccb09d0f",
+    "/guides/mailchimp-wordpress-newsletter/hero-ja.svg": "6aa9fa55b6779c0420c41d6b83cef5bfd4f9c66a3cd3f880e9aede964bfc5dba",
+    "/guides/mailchimp-wordpress-newsletter/hero-ko.jpg": "118a5db269717346950db0558e06289ed2eef521bccbedf9392493012f4ba511",
+    "/guides/mailchimp-wordpress-newsletter/hero-ko.svg": "9c04570d03f85fd025dfc4b39697010677a9e5f1940959cc9ebd52ba2d4b0d3f",
+    "/guides/mailchimp-wordpress-newsletter/hero-zh-cn.jpg": "98380f1d09303ea326cb12cd756ce6350ca13e5c4c9620c5f2b207df1ebc8ce7",
+    "/guides/mailchimp-wordpress-newsletter/hero-zh-cn.svg": "d5659082e4b8a65583312f476d243bf15ee394d88c9bfb632c71e53a844a447b",
+    "/guides/short-video-marketing/diagram-1-en.svg": "23ae4ddeb329b52f55735b383b8809694c62160890e88655e0ee817cd8e20ccf",
+    "/guides/short-video-marketing/diagram-1-ja.svg": "58ce5ff4ce157ac4d71760cfb7a117107f38d450de363a1c4cf238825518becf",
+    "/guides/short-video-marketing/diagram-1-ko.svg": "9652f692bb09d64806f053e21c9a5a6f24a783e3d2bb1c2739f81bf88ccda422",
+    "/guides/short-video-marketing/diagram-1-zh-cn.svg": "9bccf0ca25a811815fe76e022a2cf007d577fc478162705f7c560716cdd18be3",
+    "/guides/short-video-marketing/hero-en.jpg": "2014aea5fdc3cd96cf9aef99f8cb7fb4aa261d3bf0aa0871df54acead7bef4eb",
+    "/guides/short-video-marketing/hero-en.svg": "2e58e7832080f453574c49c08c9da0570c94b250d88180820281da9d008442db",
+    "/guides/short-video-marketing/hero-ja.jpg": "1e57caf43e6c106ebef53b418198c89c67a2d9c89c486d868e9ac9d25f8e6a15",
+    "/guides/short-video-marketing/hero-ja.svg": "c8f48f47b4d211cce23b5c705af6a394d97b7653cc0113ff858579a6bf4fb10a",
+    "/guides/short-video-marketing/hero-ko.jpg": "317399370651bc2635a2a661080c2102858f654e796cdf1536fc3b91eb77cb20",
+    "/guides/short-video-marketing/hero-ko.svg": "b98c37701cbe6391945f35cc74e1f55670bc0dbf7c8519883bd915089664466a",
+    "/guides/short-video-marketing/hero-zh-cn.jpg": "06120d6da7aef4b55880790b3ebcb534e66ed34a421c72f449e25541ce768ca0",
+    "/guides/short-video-marketing/hero-zh-cn.svg": "83bebcfc70ba665f07a613ac14461981fefa361f0ff4977a2c06908dce7af4f5",
+    "/guides/social-media-planning/diagram-1-en.svg": "50a91bab5e1420c07540a6fa6648084bbe36b13fcc111cc46df7f4bc353107b4",
+    "/guides/social-media-planning/diagram-1-ja.svg": "57f8af307ead9f79d8b82199b992ead5bcebddf8b27bcfee2c58170a98437f35",
+    "/guides/social-media-planning/diagram-1-ko.svg": "a85c6cc52ea73c5ae02645c6e098f5f6778d951ebac315407ece78102a44ea64",
+    "/guides/social-media-planning/diagram-1-zh-cn.svg": "5971e559c9ffabcf7c0b5bcc905d4d328119e8e399c9713e781bb56c4b39808e",
+    "/guides/social-media-planning/hero-en.jpg": "e5a1c6363a229758892c9b6351901a4a14827d3d4873de6278d9a00c99754958",
+    "/guides/social-media-planning/hero-en.svg": "07c349a32919e5ee75477a891cd9920a66de41deb8a5a3c2413e7f17e648ab44",
+    "/guides/social-media-planning/hero-ja.jpg": "9e6b21dbdefd68de825643c0957eac09e7eed93d0cb270a0d92103de382cb3b6",
+    "/guides/social-media-planning/hero-ja.svg": "873c279cbf7b9175b4f4a173626bded05ae380532dc6af57f229caf67738aa6d",
+    "/guides/social-media-planning/hero-ko.jpg": "1462c7e4da04f3ce31cc17f82fd10c5718c43b8af7305f082fccbe1ca50d6e05",
+    "/guides/social-media-planning/hero-ko.svg": "83d3a5c2c4020bf1b303e953f1fe9aef32c50c26795982ee496464cdabd9c940",
+    "/guides/social-media-planning/hero-zh-cn.jpg": "8a137fc98c3b38c3d44ff3619be3d21453e0084229d1e1c7433dd627716056b4",
+    "/guides/social-media-planning/hero-zh-cn.svg": "e5249eb6f04d8cc2a1fcc1b31344e5d819ef9a251688733da60a062d7626d6fb",
+    "/guides/stp-persona-research/diagram-1-en.svg": "d43e412f30872cd6d21542a69fd90f475a80f0b6c06b062d1a8ae116222a4b15",
+    "/guides/stp-persona-research/diagram-1-ja.svg": "0b813783786b6e2a5e3cd247b4b4275acceb0179efd133d77311374e03ba7f48",
+    "/guides/stp-persona-research/diagram-1-ko.svg": "233e2c939cdcf915d5bfeccb31d4bcf8723bdc6c803b885d14be11c3c256788d",
+    "/guides/stp-persona-research/diagram-1-zh-cn.svg": "82a5c674510e08e724339ad24c7a6da614bb224daaa04352e8d4ca4656a98843",
+    "/guides/stp-persona-research/hero-en.jpg": "c1e2b948a96affe3f6ff2dce9441c52f7fe71bc8dfa28937a92ff68eeb9b0248",
+    "/guides/stp-persona-research/hero-en.svg": "26dedf09949ad310c122fcc6915d3e51746553b69f0573cd7b0573f0020a5a4b",
+    "/guides/stp-persona-research/hero-ja.jpg": "74266dff7560fe6589d69e20c86060dc7465734088df486cd3d0bca826bd79e8",
+    "/guides/stp-persona-research/hero-ja.svg": "36ee112fbcf1931bab8b292c4958fae2641c2c75281d119e0331114cf7a4ed61",
+    "/guides/stp-persona-research/hero-ko.jpg": "8fcabd0b5620c7be45bc2929c3522d0f72bd4d2a287a69d933e3f28eb37a760e",
+    "/guides/stp-persona-research/hero-ko.svg": "0266a9e4c5cda9415aa065ed27cba7617fa605598d2067302d657fc0075c7dbc",
+    "/guides/stp-persona-research/hero-zh-cn.jpg": "22941ffdf60fe21dd46f7092cf7aaee666e21745c302c32c505607b1da91334c",
+    "/guides/stp-persona-research/hero-zh-cn.svg": "52f45efe03d3c18d8a113d5cff8c3e894d5d5b4fe94c0b488560810497ac61fe",
+    "/guides/taiwan-long-weekends-2027-flight-planning/diagram-1-en.svg": "dfa3f84fa32abbd5d1b7caa03f0b1cd45e7b70c340aea229d61a10eb753c09eb",
+    "/guides/taiwan-long-weekends-2027-flight-planning/diagram-1-ja.svg": "0de6b205dac6a5a0daa75a990fc7bf621f20b046dac4740649c9de824fac276e",
+    "/guides/taiwan-long-weekends-2027-flight-planning/diagram-1-ko.svg": "a598f6f26cacfe80cedab22a49687f7c0607efbc4cab75653bd8c2a2a68da5e2",
+    "/guides/taiwan-long-weekends-2027-flight-planning/diagram-1-zh-cn.svg": "721f4079d6e16da4610c6bce9ee446b7d134e24bf3623f61b4654023f64f495c",
+    "/guides/taiwan-long-weekends-2027-flight-planning/hero.jpg": "897eaabd0d6025c0dd9871d9339e55c564274cc000c10adc562b2053676ff00d",
+    "/guides/taiwan-long-weekends-2027-flight-planning/photo-1.webp": "80e50953031cf41ff0bea633b3f62abba668281dc0ae22c9fefeecf63068bac6",
+    "/guides/wordpress-500-error/diagram-1-en.svg": "8c7bba387733486d04ca9858792bdbffa7840e82593a07774bc042746d8ce8e8",
+    "/guides/wordpress-500-error/diagram-1-ja.svg": "ad6ec3a70d9560b25d80da4059b1890e98614323eb37910f18a8155f35c0b0bf",
+    "/guides/wordpress-500-error/diagram-1-ko.svg": "f5f5be6b417237c767b205148c933e0fe93608fbc5b80c7747f7b84277e43b39",
+    "/guides/wordpress-500-error/diagram-1-zh-cn.svg": "d0fa4972fca365e8eb6cd534a6892c9ff02c758d1c1a321cbe5979eafe4c4513",
+    "/guides/wordpress-500-error/hero-en.jpg": "cdd613e2f2a5bff387c7fd5b21cea2c63c78d1a1d3de7aa6c518d1e746794fd8",
+    "/guides/wordpress-500-error/hero-en.svg": "dfc0caa9b36dc2e88279dc12402a5e2190da4434f4ce28cf9e2a8298f08609bd",
+    "/guides/wordpress-500-error/hero-ja.jpg": "a9637fe0579ddc7d9a44ffbec44ed0bb7c727608d7c6bb8bb04204edb73adf5b",
+    "/guides/wordpress-500-error/hero-ja.svg": "8a502be51ede93d370aafda500b2f31642af71ca1314be7e71b84bc1f1442013",
+    "/guides/wordpress-500-error/hero-ko.jpg": "9ff21439a8fe8a9db706aa0c759802a679eabc05734ca450adc5df88988150a5",
+    "/guides/wordpress-500-error/hero-ko.svg": "9ede7b48be0b598563f4e4a3f3e715d150ef920a7b42cc337ec0c6d74a5a8c74",
+    "/guides/wordpress-500-error/hero-zh-cn.jpg": "f001b19c0dd6fa698d7e777fa4b4d83644c40d1fc6df081fb42cdae92b172389",
+    "/guides/wordpress-500-error/hero-zh-cn.svg": "2561a483487a6147ac6cb685b34f6d4c84e976d0a8a2fe200b268d35cd7a8836",
+    "/guides/wordpress-ad-placement/diagram-1-en.svg": "9e148a7691852cf06157301ffa6265eaaa140e8608bb30ffeceaf1a8e781bd93",
+    "/guides/wordpress-ad-placement/diagram-1-ja.svg": "7442d914b71c90bd63bb1827daa79e5bfc64ceb4e2a5e6c9135725108d10d060",
+    "/guides/wordpress-ad-placement/diagram-1-ko.svg": "de798c66ca70415699776dbdab13a237966eb4afdec75501817a9feb505dff6b",
+    "/guides/wordpress-ad-placement/diagram-1-zh-cn.svg": "5e9f96b68c67b9c46e7b5c188ae1468052921bdac1c35c0e98fe3e4694f45c6c",
+    "/guides/wordpress-ad-placement/hero-en.jpg": "d8d56ac4e7c5e05545b409f2553525a6f5d022641f583121a89c32e2bb5f46f8",
+    "/guides/wordpress-ad-placement/hero-en.svg": "4c728c5c038572a295cb6b7e9f8f10e2e0e52a141bc09de228a827a532ed18e4",
+    "/guides/wordpress-ad-placement/hero-ja.jpg": "94ddbf4dc083801298b2c8282cebfab23a7536cdfcb925ae1b050927ef2046ad",
+    "/guides/wordpress-ad-placement/hero-ja.svg": "4e948d608569e00a8ce6a0c9b43cd32d51822f096e9b0223b28e524acb459470",
+    "/guides/wordpress-ad-placement/hero-ko.jpg": "0337dce3bbfe54cda6bff86893deccab7c3939a523511c235596ff4623ae5be0",
+    "/guides/wordpress-ad-placement/hero-ko.svg": "8784ed3291509179066e5a60173e48c3ada3616872139dedf1af5da572a789ad",
+    "/guides/wordpress-ad-placement/hero-zh-cn.jpg": "66f18ba2ffc6a948888ff07ab7f34df8bbff38db0b726808a65ec57a13cbd0ac",
+    "/guides/wordpress-ad-placement/hero-zh-cn.svg": "1a246d5b41a45e72f75c0ac0dcca737a2cd26546db9618f6a6d523798d6adea6",
+    "/guides/wordpress-social-embeds/diagram-1-en.svg": "f33548ae553adf63f0b389056fdd2797a80a269d8fc6e443620c8f2877d75de0",
+    "/guides/wordpress-social-embeds/diagram-1-ja.svg": "38b4ea9f3a0e0f3e6a66ddfc2b0fe511b468f52868064602919dea9b1a81ae1c",
+    "/guides/wordpress-social-embeds/diagram-1-ko.svg": "5c622614291b1be143da9c065d16eb61a0b59ca6550c6ba354343de91516e509",
+    "/guides/wordpress-social-embeds/diagram-1-zh-cn.svg": "31af0a54d54fbdce7ae7376204e9f67a3ab6c03b135f85f59f033b8b3a2dc93b",
+    "/guides/wordpress-social-embeds/hero-en.jpg": "e06de0931e53faa4b556b8d452ba4474815eac301d8205ceedebf4f70671d189",
+    "/guides/wordpress-social-embeds/hero-en.svg": "cf4d5682c1458ec73983db92699947628d76d434e5eb6aab2ef1258cbee5f7f5",
+    "/guides/wordpress-social-embeds/hero-ja.jpg": "b038101962d6dddcbcba515eb6d2908832e9e071592e596930094fc80feb7aca",
+    "/guides/wordpress-social-embeds/hero-ja.svg": "30ff6222d68656379858a3c35075529d3e747c57d8e1494c4f1c16c270b6d360",
+    "/guides/wordpress-social-embeds/hero-ko.jpg": "e998870dbd4aaf016093e24367eaca1981156db287dadc67334a829907779815",
+    "/guides/wordpress-social-embeds/hero-ko.svg": "028b21f46eaa5e363cff2adcbf636e3deb239472a6c1bfb34b401ed8584a72a0",
+    "/guides/wordpress-social-embeds/hero-zh-cn.jpg": "25f5c011f9ed59d5b89578d5505424752e6c49692decfd2126d8a3f51847ee3a",
+    "/guides/wordpress-social-embeds/hero-zh-cn.svg": "49e54444d00660a29338505625823b46b60f6935eed6b2ee029726737aa85add",
+    "/guides/wordpress-social-login/diagram-1-en.svg": "e10448ca831ba90bcbfd2805c6596e2a1282a30be3420a46f5df678a5cd08942",
+    "/guides/wordpress-social-login/diagram-1-ja.svg": "842a35d54ecc4a3afe449f8b2e15d72f32df98ec2fe6f4339402661e050c1db3",
+    "/guides/wordpress-social-login/diagram-1-ko.svg": "b0947ee64bdec850c26c7a2dba9704c932c7104c0a79f9087102e2844f297c51",
+    "/guides/wordpress-social-login/diagram-1-zh-cn.svg": "ed87d57de918c82930e447465083f5d202321b476e1cf7a565578f58c3d93aff",
+    "/guides/wordpress-social-login/hero-en.jpg": "08685cff24f2a0a6cd48a358f5b42232455535be66fdd8658645fbe86ac71a4d",
+    "/guides/wordpress-social-login/hero-en.svg": "e34c1de8cfad744bfdcc184d6e48faf849a07483390e2e95fd99bcd2818d1c90",
+    "/guides/wordpress-social-login/hero-ja.jpg": "cea2a46b2edf6f649650b070b891108cb4baae22247912e46b46fb43c411e541",
+    "/guides/wordpress-social-login/hero-ja.svg": "14a1994bfd9ca3ff14d26c1bcbf8a4dc6079e705001280466c5d42e213e679a3",
+    "/guides/wordpress-social-login/hero-ko.jpg": "c21cc0054b5daf665bb6ce72648377c05beb630534c38b26fd57cfe6086c6b9c",
+    "/guides/wordpress-social-login/hero-ko.svg": "83e1cef41321c97fc842818c28236632a4192608d4a17014dc6cc31a08bd9d97",
+    "/guides/wordpress-social-login/hero-zh-cn.jpg": "66f3702665fda44deeaabec3b1894ee6a8d75851ced636bb26537ca2afcb5c87",
+    "/guides/wordpress-social-login/hero-zh-cn.svg": "82c2ac2f6571e8f78e670b04423f80fecfad94aa0f4f5da0d15db2da8c4f2526"
+  },
+  "backup_and_rehearsal": {
+    "single_database_dump": true,
+    "dump_sha256": "ab0b6e72cc1b6cde1a40e1ef927dd3ec5ad3ae39867327ababe306c1d0e94fd5",
+    "catalog_sha256": "15ed17ff8b8442753bb307e9a4859935a2057d28b26c7e64b8fef06a9685f51b",
+    "isolated_fixture_four_phase_replay_database_unchanged": true,
+    "isolated_fixture_write_phase_journal_bytes_unchanged": true
+  },
+  "production_replay_selected_article_state_unchanged": true,
+  "owned_hold_cleared": true,
+  "actual_QA_handoff_sha256": "0dacee5faf9e896b69ae09cabf5373403cdc1c10a057d6bc9d4f2fd2d52edc75",
+  "actual_public_acceptance_sha256": "f8a68430aa8dc4fdc7faa335fdce4a2ad72501510f4a3a4417892877d64f7766",
+  "actual_ledger_application_receipt_sha256": "27bdc2ba38015a8694e2070d2ea30aace5338fa0dcbb6bec686547d634a508bd",
+  "actual_postpublication_census_sha256": "d8982a0d9242252f6ae50bab2988c873220d1b64d3b993d0006c0ab9db8f5364",
+  "global_ledger_publication_event_id": "all-missing-publication-7524c25995d5",
+  "global_missing_count_from_fresh_census": 3320,
+  "new_editorial_PASS_issued_by_renderer": false,
+  "link_maintenance_limitations": {
+    "actual_check_sha256": "4588b0d705b1c4e37e77d440b32639d13330bb28de3d364dd0626228ad342cde",
+    "all_guides_check_exit_code_by_locale": {
+      "zh-TW": 1,
+      "en": 1,
+      "ja": 1,
+      "ko": 1,
+      "zh-CN": 1
+    },
+    "all_guides_finding_count_by_locale": {
+      "zh-TW": 111,
+      "en": 233,
+      "ja": 233,
+      "ko": 233,
+      "zh-CN": 233
+    },
+    "record_unpublished_related_link_count_by_locale": {
+      "zh-TW": 0,
+      "en": 22,
+      "ja": 22,
+      "ko": 22,
+      "zh-CN": 22
+    },
+    "selected_other_link_problem_count": 0,
+    "global_all_guides_check_passed": false,
+    "unpublished_related_targets_pending_under_global_localization_task": true
+  }
+}

@@ -1,14 +1,14 @@
 ---
 id: 2026-10-07-release-reviewed-japan-refund-source-and
 title: Release reviewed Japan refund source and four locales
-status: open
+status: in-progress
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: codex-article-localization-4e16
+claimed_at: 2026-10-07T13:21:36Z
 created_at: 2026-10-07T06:29:51Z
 completed_at:
-branch:
+branch: codex/article-locales-release-20261007
 depends_on:
   - 2026-10-07-correct-japan-tax-free-shop-logo
 scope:
@@ -25,19 +25,19 @@ content PR cannot replace production publication or public-page validation.
 
 ## Definition of done
 
-- [ ] Obtain exact content PR/SHA merge/deploy approval and verify the deployed runtime.
-- [ ] Capture a fresh full production baseline and verify original source/draft/target/visibility/version guards.
-- [ ] Verify the seven source-pointer corrections, two source-SVG text slots and four independent final language reviews against the actual release bytes.
-- [ ] Obtain publication approval after the exact dry-run, recoverable backup/restore and same-image proof.
-- [ ] Publish through the official durable phases and verify all five public language routes, images and hashes.
-- [ ] Record publication, replay, browser evidence and a fresh missing-language inventory.
+- [x] Obtain exact content PR/SHA merge/deploy approval and verify the deployed runtime.
+- [x] Capture a fresh full production baseline and verify original source/draft/target/visibility/version guards.
+- [x] Verify the seven source-pointer corrections, two source-SVG text slots and four independent final language reviews against the actual release bytes.
+- [x] Verify the owner-approved publication plan against the exact dry-run, recoverable backup/restore and same-image proof.
+- [x] Publish through the official durable phases and verify all five public language routes, images and hashes.
+- [x] Record publication, replay, browser evidence and a fresh missing-language inventory.
 
 ## Steps
 
-- [ ] Merge/deploy the reviewed content change without force or hold bypass.
-- [ ] Build a new guarded correction bundle from fresh database versions; stop for any unpublished source edit or target drift.
-- [ ] Execute verified backup, isolated runtime proof, exact production dry-run and approved phases with shared locks/owned hold.
-- [ ] Perform five-language public acceptance and preserve sanitized release records.
+- [x] Merge/deploy the reviewed content change without force or hold bypass.
+- [x] Build a new guarded correction bundle from fresh database versions; stop for any unpublished source edit or target drift.
+- [x] Execute verified backup, isolated runtime proof, exact production dry-run and approved phases with shared locks/owned hold.
+- [x] Perform five-language public acceptance and preserve sanitized release records.
 
 ## How to verify
 
@@ -62,3 +62,21 @@ Original provider attempts and pre-correction jobs remain preserved in owner sto
 No deployment or publication has occurred; final local review/installation is
 tracked by the prerequisite authoring ticket. Source-review approval is editorial
 evidence and does not authorize a production release.
+
+2026-10-07 update: the owner explicitly approved normal merge/deployment/publication
+of the full 32-article cohort. Revision `7524c25995d59f3826227e693d52f2ef5b3a19a2`
+is deployed and the official verifier recorded 11 passes, zero failures. All nine
+real production dry-runs and the full database backup completed. Refund retains
+its original independent correction review and exact fresh database guards;
+source-admitted baseline SHA is
+`47e0ddf842a64ec0b74f54284abeac413faf637d7441cea7e79b8949adf288b6`.
+The real isolated restore/publication rehearsal is running. Publication and public
+acceptance remain pending; the earlier statement of no deployment is historical.
+
+### Actual owner-approved publication and public acceptance
+
+This scoped record is now backed by genuine publication: 1 articles, 4 previously missing languages, 1 approved source corrections and 5 selected publication operations. Normal deployment, the real restore/publication rehearsal and production replay passed. The original driver completed with exit 0 at 2026-10-07T15:40:06 UTC and cleared its owned hold after verified evidence transfer.
+
+Public verification covered 5 five-language pages and 10 original desktop/mobile views in this record. Four actual independent reviewers read disjoint partitions; all document/image/DOM/canonical/hreflang/sitemap guards passed. The eight record outputs were validated and copied only into their existing claimed release scopes. Sanitized evidence is `docs/article-localization/releases/2026-10-07-refund-v2/evidence.json`.
+
+The full post-publication census observed 830 incomplete articles / 3,320 missing language documents. The global program remains open. All-guides link checks exited 1 in every locale; selected findings are exclusively unpublished related target languages. Actual per-record counts and this limitation are retained in evidence.json, rather than claiming an all-guides PASS. The earlier authoring/rehearsal notes above remain historical checkpoints. The record PR is the final documentation step.
