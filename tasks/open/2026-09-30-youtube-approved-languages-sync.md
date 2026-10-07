@@ -1,14 +1,14 @@
 ---
 id: 2026-09-30-youtube-approved-languages-sync
 title: YouTube sync reads stale publish package after approved languages
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-happy-carson
+claimed_at: 2026-10-07T07:17:15Z
 created_at: 2026-09-30T10:35:02Z
 completed_at:
-branch: codex/youtube-approved-languages-sync-20260930
+branch: claude/happy-carson-c1hy91
 depends_on: []
 scope:
   - apps/api/app/video_youtube/sync.py
@@ -18,6 +18,8 @@ scope:
   - apps/api/app/video_youtube/vps.py
   - apps/api/tests/test_video_youtube_vps.py
   - docs/videos/APPROVED-LANGUAGE-PACKAGE.md
+  - tools/video/review/sync.mjs
+  - tools/video/review/sync.test.mjs
 ---
 
 # YouTube sync reads stale publish package after approved languages
