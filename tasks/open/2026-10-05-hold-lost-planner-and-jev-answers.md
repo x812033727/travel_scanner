@@ -25,6 +25,13 @@ scope:
   - tools/video/shorts/lab.mjs
   - tools/video/shorts/lab.test.mjs
   - tools/video/shorts/qa.mjs
+  - tools/video/automation/client.mjs
+  - docs/videos/AUTOMATION.md
+  - docs/videos/HANDS-OFF.md
+  - docs/videos/SHORTS.md
+  - .agents/skills/youtube-video/references/series.md
+  - docs/videos/long-form/review.json
+  - docs/videos/long-form/review.md
 ---
 
 # Hold lost planner and Jev answers across rounds in drafts, series and Shorts

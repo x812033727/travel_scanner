@@ -14,9 +14,12 @@ export const OUTPUT_INVALID = "video_ai_output_invalid";
 // web route's 504 under this same code, a gateway's 5xx). The model may still have run, and been
 // paid for, on the server, which keeps no answer to fetch again: on 2026-09-29 a translation
 // finished after 302 s, past the web route's 295 s, and was recorded as ok. The run is not sent
-// again here; flow.mjs stops the video for a person instead of paying twice. A Jev judgement whose
-// answer was lost throws it too, and its callers (review/sync.mjs, qa/cli.mjs) leave it for a
-// later round instead of asking Jev again at once.
+// again here, and no caller asks again on its own: flow.mjs stops the video for a person instead of
+// paying twice, and so does a first plan's planner (a blocked video under the draft's or request's
+// slug), a series document's planner (series.mjs, kept in lost-docs.json) and a Short's stage
+// (shorts/lab.mjs). A Jev judgement whose answer was lost throws it too: an outline pick stops its
+// video (or, sent by review-push, goes to the owner without a pick), and a final cut's policy
+// verdict is kept by qa (qa.json `policy_lost`) until the owner's retry.
 export const RUN_UNCERTAIN = "video_ai_run_uncertain";
 // A durable run still has a recoverable server receipt. The worker ends this round and polls
 // that same operation next round instead of holding a gateway open for several minutes.
