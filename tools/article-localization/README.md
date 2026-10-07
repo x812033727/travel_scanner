@@ -84,9 +84,10 @@ Each job lives at `docs/article-localization/work/<slug>/<locale>/`:
   copied body prose and untranslated Chinese citation titles still fail.
 - `document.json`: schema-validated staged document; code, dates, metadata,
   structural links and identities are preserved. LinkBlock and rich-paragraph
-  link URLs to the eight verified public same-site routes (`/guides/howto`,
+  link URLs to the nine verified public same-site base routes (`/guides/howto`,
   `/destinations/hanoi`, `/destinations/singapore`, `/guides`, `/destinations/tokyo`,
-  `/destinations/osaka-kyoto`, `/destinations/seoul`, `/destinations/jeju`) are mechanically changed to
+  `/destinations/osaka-kyoto`, `/destinations/seoul`, `/destinations/jeju`,
+  `/destinations/hong-kong`) are mechanically changed to
   the target locale. The first three destinations returned 200 without redirects and had
   matching `lang` and canonical in all five languages on 2026-09-20 (verification
   JSON SHA-256 `84dd8fcdd5102b61b314873a56096f91c5c9673c796b9cb1f8e495796d5a135f`).
@@ -96,8 +97,17 @@ Each job lives at `docs/article-localization/work/<slug>/<locale>/`:
   Tokyo and Osaka/Kyoto passed all five locales on 2026-10-07 with HTTP 200,
   no redirects, substantial page content, and matching html lang/canonical;
   response hashes are in `docs/article-localization/route-verification-20261007.json`.
+  Hong Kong and the exact `/foods?city=hong-kong` filter passed all five locales
+  on 2026-10-07. The food catalogue uses its base canonical URL; its server-rendered
+  filter selects Hong Kong, with 21 results and all 20 displayed merchants in that
+  city. Response hashes and filter evidence are in
+  `docs/article-localization/route-verification-hong-kong-20261007.json`.
+  Only that literal query is approved and retained when changing the locale;
+  raw same-site URLs with ASCII controls or surrounding whitespace are refused,
+  including characters that the URL parser would silently discard.
+  duplicate, additional, differently encoded or otherwise changed parameters fail.
   Other locale-prefixed Mokaair link routes, unapproved destination locales,
-  aliases, and query/fragment variants stop materialization for review; external
+  aliases, and unapproved query/fragment variants stop materialization for review; external
   link URLs, source URLs and source check dates remain unchanged. Publication
   still requires a fresh route and article-state check. The known AI hero credit pair
   `Mokaair · AI 生成示意圖` / `AI 生成，非實拍` exposes two descriptive fields for
