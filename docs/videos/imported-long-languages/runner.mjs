@@ -848,7 +848,7 @@ export async function run(options, dependencies = {}) {
           if (captions.code !== 0) throw new VideoStop(captions.out || "Caption validation failed");
           await verifyLocal(manifest, entry);
           const additions = await localAdditions(entry, project, record, choices);
-          const sent = await submitSnapshot(api, remote, entry, additions, choices, now);
+          const sent = await submitSnapshot(api, project, entry, additions, choices, now);
           record.last_submission = sent;
           record.problems = additions.problems;
           delete record.active_unit;

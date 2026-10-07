@@ -19,6 +19,7 @@ import { prepareApprovedFinalHandoff, prepareHandoff, readManualLanguageSource }
 import { main as videoMain } from "../../../tools/video/cli.mjs";
 import { Automation } from "../../../tools/video/automation/flow.mjs";
 import { readUnits, unitKey } from "../../../tools/video/automation/sheet-units.mjs";
+import { buildSheet, mergeSheet } from "../../../tools/video/i18n/cli.mjs";
 import { capProblem, ledgerTotals } from "../../../tools/video/media/ledger.mjs";
 import { SLUGS, DIRECT_STAGE_TIMEOUT_MS, HardStop, VideoStop, assertProject, checkedDubReceipt, createSiteClient, cumulativeSnapshot, directStageOrigin, journaledStageClient, missingPhaseParts, nativeStageRequest, prepareApprovedFinalBatch, prepareRenewedBatch, resolveManifest, run, submitSnapshot, translateLocaleResuming, validateResumeSheet, verifyLocal } from "./runner.mjs";
 
@@ -148,6 +149,56 @@ test("actual new-source run survives language sync but holds an unknown translat
     raw.source_kind = label; json(prepared.manifest, raw);
     await assert.rejects(run({ ...options, phase: "dubs" }, { api, runMain }), /source kind differs/); assert.equal(posts, 1);
   }
+});
+
+test("actual renewed run passes its current native project to cumulative language submission without repeating completed translation", async (t) => {
+  const f = await currentApprovedFixture(t, { dub: true }), group = `${f.base}-submission-group`, out = path.join(group, "current");
+  mkdirSync(group); t.after(() => rmSync(group, { recursive: true, force: true }));
+  const prepared = await prepareApprovedFinalBatch({ manifestFile: f.manifestFile, handoffs: [{ slug: f.entry.slug, workdir: f.prepared }], out, readRemote: async () => structuredClone(f.site), runtimeRoot: f.runtimeRoot });
+  const manifest = resolveManifest(JSON.parse(readFileSync(prepared.manifest)), out), entry = manifest.videos[0];
+  rmSync(path.join(out, "STOP")); rmSync(path.join(entry.workdir, "STOP"));
+  const project = loadProject({ slug: entry.slug, root: manifest.root }), translationFile = path.join(project.dir, "i18n/en.json");
+  const sheet = buildSheet(project.doc, undefined, "en", null, ["metadata", "captions"]);
+  sheet.title.text = "Reviewed English title"; sheet.description.text = "Reviewed English description."; sheet.tags.text = ["AI"];
+  sheet.chapters.forEach((chapter) => { chapter.text = `English ${chapter.scene}`; }); sheet.lines.forEach((line) => { line.text = `English ${line.id}`; });
+  const merged = mergeSheet(project.doc, sheet, undefined); assert.equal(merged.problems.length, 0); json(translationFile, merged.translation);
+  const translationSha = await sha256File(translationFile), progressFile = path.join(out, "progress.json"), progress = JSON.parse(readFileSync(progressFile));
+  progress.videos[entry.slug] = { final_sha256: entry.final_sha256, translations: { en: translationSha }, checked_dubs: {}, skipped_dubs: {}, status: "paused", error: "prior staging failure" };
+  json(progressFile, progress);
+  const uploads = [], submissions = [];
+  const api = {
+    reviews: async () => structuredClone(f.site), settings: async () => ({}),
+    run: async () => assert.fail("The completed translation must not call a provider again"),
+    upload: async (slug, file) => {
+      assert.equal(slug, entry.slug); assert.equal(file.sha256, await sha256File(file.path)); uploads.push(file.role);
+      const { path: omitted, ...ref } = file; return ref;
+    },
+    submit: async (slug, body) => {
+      assert.equal(slug, entry.slug); assert.equal(body.gate, "languages"); submissions.push(structuredClone(body));
+      const review = { id: "77777777-7777-4777-8777-777777777777", gate: "languages", status: "pending", created_at: "2026-10-07T04:00:00Z", content_sha256: body.content_sha256, payload: structuredClone(body.payload), files: structuredClone(body.files) };
+      f.site.reviews.push(review); f.site.languages.en.metadata.state = "ready"; f.site.languages.en.captions.state = "ready";
+      return structuredClone(review);
+    },
+  };
+  const result = await run({ manifest: prepared.manifest, slugs: [entry.slug], phase: "translations", maxUnits: 1, dryRun: false }, {
+    api, fetch: async () => assert.fail("The integration fixture cannot use the network"),
+    runMain: async (args, ctx) => {
+      if (args[0] === "review-pull") { await approve({ gate: "final", docDir: project.dir, workdir: entry.workdir }); return 0; }
+      assert.equal(args[0], "captions"); return videoMain(args, ctx);
+    },
+  });
+  assert.equal(result.status, "phase-complete", result.videos[entry.slug].error);
+  assert.equal(result.videos[entry.slug].status, "phase-complete"); assert.equal(submissions.length, 1);
+  assert.deepEqual(uploads.sort(), ["captions_en", "description_en", "languages_manifest", "metadata"]);
+  const request = submissions[0], review = f.site.reviews.at(-1), receipt = JSON.parse(readFileSync(path.join(entry.workdir, "language-package/last-renewal-submission.json")));
+  assert.deepEqual(request.payload.locales, { en: { metadata: "ready", captions: "ready" } });
+  assert.equal(request.payload.final_review_id, f.site.reviews.find((item) => item.gate === "final" && item.status === "approved").id);
+  assert.deepEqual(request.payload, review.payload); assert.deepEqual(request.files, review.files);
+  assert.equal(request.content_sha256, await sha256File(path.join(entry.workdir, "language-package/renewed-languages-manifest.json")));
+  assert.equal(receipt.status, "confirmed"); assert.deepEqual(receipt.request, request);
+  assert.equal(await sha256File(translationFile), translationSha); assert.equal(result.videos[entry.slug].translations.en, translationSha);
+  assert.equal(missingPhaseParts(f.site, "translations").length, 0); assert.deepEqual(missingPhaseParts(f.site, "dubs"), ["en/dub"]);
+  assert.equal(result.videos[entry.slug].last_submission.status, "pending");
 });
 
 test("sync stage journal reuses completed exact answers and never dispatches past crash or damaged receipts", async (t) => {
