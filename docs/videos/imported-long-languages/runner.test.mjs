@@ -18,8 +18,8 @@ import { composeMetadata } from "../../../tools/video/package/metadata.mjs";
 import { prepareApprovedFinalHandoff, prepareHandoff, readManualLanguageSource } from "../../../tools/video/review/renewal-handoff.mjs";
 import { main as videoMain } from "../../../tools/video/cli.mjs";
 import { Automation } from "../../../tools/video/automation/flow.mjs";
-import { readUnits, unitKey } from "../../../tools/video/automation/sheet-units.mjs";
-import { buildSheet, mergeSheet } from "../../../tools/video/i18n/cli.mjs";
+import { readUnits, sheetUnits, unitKey, unitVideo } from "../../../tools/video/automation/sheet-units.mjs";
+import { buildSheet, mergeSheet, withoutContext } from "../../../tools/video/i18n/cli.mjs";
 import { capProblem, ledgerTotals } from "../../../tools/video/media/ledger.mjs";
 import { SLUGS, DIRECT_STAGE_TIMEOUT_MS, HardStop, VideoStop, assertProject, checkedDubReceipt, createSiteClient, cumulativeSnapshot, directStageOrigin, journaledStageClient, missingPhaseParts, nativeStageRequest, prepareApprovedFinalBatch, prepareRenewedBatch, resolveManifest, run, submitSnapshot, translateLocaleResuming, validateResumeSheet, verifyLocal } from "./runner.mjs";
 
@@ -94,10 +94,18 @@ async function renewedFixture(t, { gemini = false, dub = false, brandingBytes } 
   return { ...f, entry, prepared, site, timeline, presented, contract, runtimeRoot };
 }
 
-async function currentApprovedFixture(t, { dub = false, brandingBytes } = {}) {
+async function currentApprovedFixture(t, { dub = false, brandingBytes, tiny = false } = {}) {
   const f = await renewedFixture(t, { gemini: true, dub, brandingBytes }), project = structuredClone(loadProject({ slug: f.entry.slug, root: f.manifest.root }));
+  if (tiny) project.doc.scenes = [{ ...project.doc.scenes[0], lines: project.doc.scenes[0].lines.slice(0, 2) }, ...(tiny === "captions" ? project.doc.scenes.slice(1, 3) : [])];
   project.doc.scenes[0].lines[0].text += "這是新核准正文。";
   const timeline = structuredClone(f.timeline); timeline.speech_hash = speechHash(project.doc, project.lexicon);
+  if (tiny) {
+    const wanted = [...eachLine(project.doc)].map(({ line }) => line.id);
+    timeline.total_frames = tiny === "captions" ? wanted.length * 180 : 900;
+    const window = timeline.total_frames / wanted.length;
+    timeline.lines = wanted.map((id, index) => ({ ...timeline.lines.find((line) => line.id === id), start_frame: index * window, end_frame: (index + 1) * window }));
+    timeline.chapters = project.doc.scenes.map((scene) => ({ scene: scene.id, title: scene.chapter, start_frame: timeline.lines.find((line) => line.scene === scene.id).start_frame }));
+  }
   const final = f.site.reviews.find((v) => v.gate === "final"), current = path.join(f.base, "current-attachments"), evidence = {}; mkdirSync(current);
   const presented = presentationTimeline(timeline, { hash: f.contract.source.branding_hash, intro_frames: 150, outro_frames: 90, body_frames: timeline.total_frames }), caption = toSrt(buildCues(presented, localeTexts(project.doc, {}).texts["zh-TW"], "zh-TW").cues);
   for (const [role, value] of Object.entries({ evidence_script: project.doc, evidence_body_timeline: timeline, "captions_zh-TW": caption, narration: "real current AAC attachment", thumbnail: "current thumbnail" })) {
@@ -199,6 +207,263 @@ test("actual renewed run passes its current native project to cumulative languag
   assert.equal(await sha256File(translationFile), translationSha); assert.equal(result.videos[entry.slug].translations.en, translationSha);
   assert.equal(missingPhaseParts(f.site, "translations").length, 0); assert.deepEqual(missingPhaseParts(f.site, "dubs"), ["en/dub"]);
   assert.equal(result.videos[entry.slug].last_submission.status, "pending");
+});
+
+class SmallUnitAutomation extends Automation {
+  constructor(...args) { super(...args); this.unitLimits = { lines: 1, chars: 2400 }; }
+}
+
+test("actual native multiunit validation checks one requested caption line without requiring every line in its scene context", async (t) => {
+  const f = await currentApprovedFixture(t, { tiny: true }), doc = f.currentProject.doc;
+  const whole = buildSheet(doc, undefined, "en", null, ["metadata", "captions"]), units = sheetUnits(whole, { lines: 1, chars: 2400 });
+  const unit = withoutContext(units[1]), context = unitVideo(doc, units[1], false), answer = structuredClone(unit);
+  answer.lines[0].text = "Reviewed English first line";
+  assert.equal(context.scenes[0].lines.length, 2); assert.equal(unit.lines.length, 1);
+  assert.throws(() => validateResumeSheet(answer, unit, context), /not translated/, "the original full-source validator reproduces the other same-scene line being falsely required");
+  assert.doesNotThrow(() => validateResumeSheet(answer, unit, context, undefined, { unit: true }));
+  for (const field of ["source", "id", "max_chars"]) {
+    const wrong = structuredClone(answer); wrong.lines[0][field] = field === "max_chars" ? 1 : `${wrong.lines[0][field]} changed`;
+    assert.throws(() => validateResumeSheet(wrong, unit, context, undefined, { unit: true }), /differs from the current sheet/);
+  }
+  const duplicate = structuredClone(answer); duplicate.lines.push(structuredClone(duplicate.lines[0]));
+  assert.throws(() => validateResumeSheet(duplicate, unit, context, undefined, { unit: true }), VideoStop);
+  const mixedPartial = { ...structuredClone(whole), lines: structuredClone(answer.lines) };
+  mixedPartial.title.text = "English title"; mixedPartial.description.text = "English description."; mixedPartial.tags.text = ["AI"];
+  mixedPartial.chapters.forEach((chapter) => { chapter.text = "English chapter"; });
+  assert.throws(() => validateResumeSheet(mixedPartial, mixedPartial, context, undefined, { unit: true }), VideoStop, "a mixed whole sheet cannot use the caption-unit exception to hide a missing source line");
+});
+
+// A scene deliberately holds two lines while each native captions unit holds
+// one. This exercises the real scene-sized provider context, source guard,
+// unit cache, i18n-merge, captions and cumulative submission together.
+async function nativeTranslationRunnerFixture(t) {
+  const f = await currentApprovedFixture(t, { dub: true, tiny: "captions" }), group = `${f.base}-native-translation-group`, out = path.join(group, "batch");
+  mkdirSync(group); t.after(() => rmSync(group, { recursive: true, force: true }));
+  const prepared = await prepareApprovedFinalBatch({ manifestFile: f.manifestFile, handoffs: [{ slug: f.entry.slug, workdir: f.prepared }], out, readRemote: async () => structuredClone(f.site), runtimeRoot: f.runtimeRoot });
+  const manifest = resolveManifest(JSON.parse(readFileSync(prepared.manifest)), out), entry = manifest.videos[0], project = loadProject({ slug: entry.slug, root: manifest.root });
+  rmSync(path.join(out, "STOP")); rmSync(path.join(entry.workdir, "STOP"));
+  assert.deepEqual(lintProject(project).errors, [], "native translation fixture must pass production source lint before captions");
+  const calls = [], commands = [], uploads = [], submissions = [], translation = path.join(project.dir, "i18n/en.json");
+  const expectedLines = [...eachLine(project.doc)].map(({ line }) => line.id);
+  // The other two chapters already have current source-bound captions. Only
+  // the two same-scene lines and metadata remain, giving three native units.
+  json(translation, { lines: Object.fromEntries([...eachLine(project.doc)].slice(2).map(({ line }) => [line.id, { text: `Reviewed English ${line.id}`, source_hash: textHash(line.text) }])) });
+  const initialArtifact = readFileSync(translation);
+  const api = {
+    reviews: async () => structuredClone(f.site), settings: async () => ({}),
+    run: async (stage, slug, instructions, payload) => {
+      calls.push({ stage, slug, instructions, payload: structuredClone(payload) });
+      assert.equal(slug, entry.slug); assert.ok(["translator", "caption_reviewer"].includes(stage));
+      assert.equal(payload.video.scenes.length, payload.worksheet.parts.includes("captions") ? 1 : 3); assert.equal(payload.video.scenes[0].lines.length, 2, "native unitVideo keeps the original whole scene in provider context");
+      const worksheet = structuredClone(payload.worksheet), prefix = stage === "caption_reviewer" ? "Reviewed English" : "Draft English";
+      if (worksheet.parts.includes("captions")) assert.equal(worksheet.lines.length, 1, "a caption answer validates only its exact requested line");
+      else assert.deepEqual(worksheet.lines, []);
+      for (const line of worksheet.lines) line.text = `${prefix} ${line.id}`;
+      for (const chapter of worksheet.chapters ?? []) chapter.text = `${prefix} chapter`;
+      if (worksheet.title) worksheet.title.text = `${prefix} title`;
+      if (worksheet.description) worksheet.description.text = `${prefix} description.`;
+      if (worksheet.tags) worksheet.tags.text = ["AI"];
+      if (worksheet.thumbnail) worksheet.thumbnail.text = Object.fromEntries(Object.keys(worksheet.thumbnail.source).map((name) => [name, "AI models"]));
+      return { text: JSON.stringify({ worksheet }), model: "fixture-upstream", input_tokens: 1, output_tokens: 1, usage: { tokens: 2, token_budget: 100 } };
+    },
+    upload: async (slug, file) => {
+      assert.equal(slug, entry.slug); assert.equal(file.sha256, await sha256File(file.path));
+      assert.deepEqual(Object.keys(JSON.parse(readFileSync(translation)).lines).sort(), [...expectedLines].sort(), "partial native units cannot reach artifact upload");
+      uploads.push(file.role); const { path: omitted, ...attachment } = file; return attachment;
+    },
+    submit: async (slug, body) => {
+      assert.equal(slug, entry.slug); assert.equal(body.gate, "languages"); submissions.push(structuredClone(body));
+      const review = { id: "77777777-7777-4777-8777-777777777777", gate: "languages", status: "pending", created_at: "2026-10-07T04:00:00Z", content_sha256: body.content_sha256, payload: structuredClone(body.payload), files: structuredClone(body.files) };
+      f.site.reviews.push(review); f.site.languages.en.metadata.state = "ready"; f.site.languages.en.captions.state = "ready";
+      return structuredClone(review);
+    },
+  };
+  const dependencies = {
+    api, AutomationClass: SmallUnitAutomation, home: out,
+    env: { MOKAAIR_SITE: "http://web:3000", VIDEO_LANGUAGE_API_ORIGIN: "http://api:8000", MOKAAIR_VIDEO_TOKEN: `mkv_${"x".repeat(40)}` },
+    fetch: async () => assert.fail("offline native translations cannot use the network"),
+    runMain: async (args, ctx) => {
+      let code;
+      if (args[0] === "review-pull") { await approve({ gate: "final", docDir: project.dir, workdir: entry.workdir }); code = 0; }
+      else {
+        if (args[0] === "captions") assert.equal(JSON.parse(readFileSync(path.join(entry.workdir, "languages.json"))).locales.en.dub, false, "selected unverified dub stays held while native captions use source timing");
+        code = await videoMain(args, ctx);
+      }
+      commands.push({ command: args[0], code }); return code;
+    },
+  };
+  const options = { manifest: prepared.manifest, slugs: [entry.slug], phase: "translations", maxUnits: 2, dryRun: false };
+  const events = () => readFileSync(path.join(out, "events.jsonl"), "utf8").trim().split("\n").map(JSON.parse);
+  return { ...f, out, manifest, entry, project, calls, commands, uploads, submissions, translation, initialArtifact, expectedLines, api, dependencies, options, events };
+}
+
+const assertTranslationUnmerged = (f) => assert.deepEqual(readFileSync(f.translation), f.initialArtifact, "unmerged units leave the prior partial artifact unchanged");
+
+test("actual native multiunit translation drains metadata and both same-scene caption units before merge and submission", async (t) => {
+  const f = await nativeTranslationRunnerFixture(t), result = await run(f.options, f.dependencies);
+  assert.equal(result.status, "phase-complete", result.videos[f.entry.slug].error);
+  assert.deepEqual(f.calls.map(({ stage }) => stage), ["translator", "caption_reviewer", "translator", "caption_reviewer", "translator", "caption_reviewer"]);
+  assert.deepEqual(f.calls.filter(({ stage }) => stage === "translator").map(({ payload }) => [payload.worksheet.parts, payload.worksheet.lines.map(({ id }) => id)]), [[["metadata"], []], [["captions"], [f.expectedLines[0]]], [["captions"], [f.expectedLines[1]]]]);
+  const merged = JSON.parse(readFileSync(f.translation));
+  assert.deepEqual(Object.keys(merged.lines).sort(), [...f.expectedLines].sort());
+  for (const { line } of eachLine(f.project.doc)) assert.deepEqual(merged.lines[line.id], { text: `Reviewed English ${line.id}`, source_hash: textHash(line.text) });
+  assert.equal(merged.title, "Reviewed English title");
+  assert.deepEqual(f.commands.filter(({ command }) => command === "i18n-merge"), [{ command: "i18n-merge", code: 0 }]);
+  assert.ok(f.commands.findIndex(({ command }) => command === "i18n-merge") < f.commands.findIndex(({ command }) => command === "captions"));
+  assert.deepEqual(readUnits(f.entry.workdir, "en"), {});
+  const journal = JSON.parse(readFileSync(path.join(f.entry.workdir, "language-stage-journal.json")));
+  assert.equal(Object.keys(journal.entries).length, 6); assert.ok(Object.values(journal.entries).every(({ status }) => status === "succeeded"));
+  const unitEvents = f.events().filter(({ type }) => type === "locale-reviewed-unit-kept"), mergeEvents = f.events().filter(({ type }) => type === "locale-merged");
+  assert.deepEqual(unitEvents.map(({ reviewed_units }) => reviewed_units), [1, 2]);
+  assert.ok(unitEvents.every(({ total_units, locale }) => total_units === 3 && locale === "en"));
+  assert.equal(mergeEvents.length, 1); assert.equal(mergeEvents[0].reviewed_units, 3); assert.equal(mergeEvents[0].artifact_sha256, await sha256File(f.translation));
+  assert.equal(result.videos[f.entry.slug].partial_translations?.en, undefined);
+  const captions = readFileSync(path.join(f.entry.workdir, "captions/en.srt"), "utf8");
+  for (const id of f.expectedLines) assert.match(captions, new RegExp(`Reviewed English ${id}`));
+  const timeline = JSON.parse(readFileSync(path.join(f.entry.workdir, "timeline.json"))), presented = presentationTimeline(timeline, { hash: f.contract.source.branding_hash, intro_frames: 150, outro_frames: 90, body_frames: timeline.total_frames });
+  assert.equal(captions, toSrt(buildCues(presented, localeTexts(f.project.doc, { en: merged }).texts.en, "en").cues));
+  assert.equal(f.submissions.length, 1); assert.deepEqual([...new Set(f.uploads)].sort(), ["captions_en", "description_en", "languages_manifest", "metadata"]);
+  assert.deepEqual(f.submissions[0].payload.locales, { en: { metadata: "ready", captions: "ready" } });
+  assert.equal(f.submissions[0].payload.final_review_id, f.site.reviews.find(({ gate, status }) => gate === "final" && status === "approved").id);
+  assert.equal(f.submissions[0].files.find(({ role }) => role === "captions_en").sha256, hash(captions));
+  const bound = JSON.parse(readFileSync(path.join(f.entry.workdir, "language-package/renewed-languages-manifest.json")));
+  assert.equal(bound.source.final.content_sha256, f.entry.final_sha256); assert.equal(bound.source.speech_hash, timeline.speech_hash);
+  assert.equal(f.submissions[0].content_sha256, hash(readFileSync(path.join(f.entry.workdir, "language-package/renewed-languages-manifest.json"))));
+  assert.deepEqual(missingPhaseParts(f.site, "dubs"), ["en/dub"]); assert.deepEqual(result.videos[f.entry.slug].checked_dubs, {});
+  assert.equal(JSON.parse(readFileSync(path.join(f.entry.workdir, "languages.json"))).locales.en.dub, true);
+  const receipt = JSON.parse(readFileSync(path.join(f.entry.workdir, "language-package/last-renewal-submission.json")));
+  assert.equal(receipt.status, "confirmed"); assert.deepEqual(receipt.request, f.submissions[0]);
+  const again = await run(f.options, f.dependencies); assert.equal(again.status, "phase-complete"); assert.equal(f.calls.length, 6); assert.equal(f.submissions.length, 1);
+});
+
+test("actual native multiunit restart preserves the first reviewed unit and drains only the remaining units", async (t) => {
+  const f = await nativeTranslationRunnerFixture(t), original = f.api.run, stop = path.join(f.out, "STOP");
+  f.api.run = async (...args) => { const answer = await original(...args); if (f.calls.length === 2) writeFileSync(stop, "owner STOP after first native reviewed unit"); return answer; };
+  await assert.rejects(run(f.options, f.dependencies), /STOP requested/);
+  assert.equal(f.calls.length, 2); assertTranslationUnmerged(f); assert.equal(f.submissions.length, 0); assert.deepEqual(f.uploads, []);
+  const kept = readUnits(f.entry.workdir, "en"), entries = Object.values(kept);
+  assert.equal(entries.length, 1); assert.ok(entries[0].translated && entries[0].reviewed); assert.deepEqual(entries[0].reviewed.parts, ["metadata"]);
+  const progress = JSON.parse(readFileSync(path.join(f.out, "progress.json"))).videos[f.entry.slug];
+  assert.equal(progress.translations.en, undefined); assert.equal(progress.partial_translations.en.reviewed_units, 1); assert.equal(progress.partial_translations.en.total_units, 3);
+  assert.equal(f.events().some(({ type }) => type === "locale-merged"), false);
+  const journalFile = path.join(f.entry.workdir, "language-stage-journal.json"), first = JSON.parse(readFileSync(journalFile));
+  assert.equal(Object.keys(first.entries).length, 2); assert.ok(Object.values(first.entries).every(({ status }) => status === "succeeded"));
+  rmSync(stop); f.api.run = original;
+  const result = await run(f.options, f.dependencies); assert.equal(result.status, "phase-complete", result.videos[f.entry.slug].error); assert.equal(f.calls.length, 6);
+  const completed = JSON.parse(readFileSync(journalFile));
+  for (const [key, record] of Object.entries(first.entries)) assert.deepEqual(completed.entries[key], record, "restart keeps exact first-unit paid receipts");
+  assert.deepEqual(f.calls.slice(2).map(({ payload }) => payload.worksheet.lines[0].id), [f.expectedLines[0], f.expectedLines[0], f.expectedLines[1], f.expectedLines[1]]);
+  assert.equal(f.submissions.length, 1);
+});
+
+test("actual native multiunit unknown reviewer retains the translated unit and exact journal without repeating any POST", async (t) => {
+  const f = await nativeTranslationRunnerFixture(t), original = f.api.run;
+  f.api.run = async (...args) => { const answer = await original(...args); if (args[0] === "caption_reviewer" && args[3].worksheet.parts.includes("captions")) throw new VideoStop("response lost after reviewer accepted request"); return answer; };
+  const first = await run(f.options, f.dependencies); assert.equal(first.status, "paused"); assert.equal(f.calls.length, 4);
+  const unitFile = path.join(f.entry.workdir, "i18n/en.units.json"), journalFile = path.join(f.entry.workdir, "language-stage-journal.json"), keptBytes = readFileSync(unitFile), journalBytes = readFileSync(journalFile);
+  const kept = Object.values(readUnits(f.entry.workdir, "en")); assert.equal(kept.length, 2); assert.ok(kept[0].reviewed); assert.ok(kept[1].translated); assert.equal(kept[1].reviewed, undefined);
+  assert.deepEqual(Object.values(JSON.parse(journalBytes).entries).map(({ status }) => status), ["succeeded", "succeeded", "succeeded", "unknown"]);
+  const second = await run(f.options, f.dependencies); assert.equal(second.status, "paused"); assert.match(second.videos[f.entry.slug].error, /unknown paid result/); assert.equal(f.calls.length, 4);
+  assert.deepEqual(readFileSync(unitFile), keptBytes); assert.deepEqual(readFileSync(journalFile), journalBytes);
+  assertTranslationUnmerged(f); assert.equal(f.submissions.length, 0); assert.deepEqual(f.uploads, []);
+  assert.equal(f.site.languages.en.metadata.state, "working"); assert.equal(f.site.languages.en.captions.state, "working");
+});
+
+test("actual native multiunit failed merge retains every reviewed unit and never buys a replacement on restart", async (t) => {
+  const f = await nativeTranslationRunnerFixture(t), runMain = f.dependencies.runMain;
+  f.dependencies.runMain = async (args, ctx) => {
+    if (args[0] !== "i18n-merge") return runMain(args, ctx);
+    ctx.stderr.write("Known native merge failure: source package remains unmerged\n"); f.commands.push({ command: "i18n-merge", code: 2 }); return 2;
+  };
+  const first = await run(f.options, f.dependencies); assert.equal(first.status, "paused"); assert.match(first.videos[f.entry.slug].error, /merge/); assert.equal(f.calls.length, 6);
+  const journalFile = path.join(f.entry.workdir, "language-stage-journal.json"), unitFile = path.join(f.entry.workdir, "i18n/en.units.json"), journalBytes = readFileSync(journalFile), keptBytes = readFileSync(unitFile);
+  const kept = Object.values(readUnits(f.entry.workdir, "en")); assert.equal(kept.length, 3); assert.ok(kept.every(({ translated, reviewed }) => translated && reviewed));
+  assertTranslationUnmerged(f); assert.equal(f.submissions.length, 0); assert.deepEqual(f.uploads, []);
+  assert.equal(f.events().some(({ type }) => type === "locale-merged"), false);
+  const second = await run(f.options, f.dependencies); assert.equal(second.status, "paused"); assert.equal(f.calls.length, 6);
+  assert.deepEqual(readFileSync(journalFile), journalBytes); assert.deepEqual(readFileSync(unitFile), keptBytes);
+  assertTranslationUnmerged(f); assert.equal(f.submissions.length, 0); assert.deepEqual(f.uploads, []);
+  f.dependencies.runMain = runMain;
+  const recovered = await run(f.options, f.dependencies); assert.equal(recovered.status, "phase-complete", recovered.videos[f.entry.slug].error); assert.equal(f.calls.length, 6); assert.equal(f.submissions.length, 1);
+});
+
+test("actual native multiunit cache rejects unknown keys and altered paid reviewed answers before a resumed POST", async (t) => {
+  for (const alteration of ["unknown-key", "reviewed-source", "reviewed-text"]) await t.test(alteration, async (t) => {
+    const f = await nativeTranslationRunnerFixture(t), original = f.api.run, stop = path.join(f.out, "STOP");
+    f.api.run = async (...args) => { const answer = await original(...args); if (f.calls.length === 2) writeFileSync(stop, "owner STOP retaining first reviewed unit"); return answer; };
+    await assert.rejects(run(f.options, f.dependencies), /STOP requested/); assert.equal(f.calls.length, 2);
+    const unitFile = path.join(f.entry.workdir, "i18n/en.units.json"), journalFile = path.join(f.entry.workdir, "language-stage-journal.json"), journalBytes = readFileSync(journalFile), cache = JSON.parse(readFileSync(unitFile)), first = Object.values(cache.units)[0];
+    if (alteration === "unknown-key") cache.units["f".repeat(64)] = structuredClone(first);
+    if (alteration === "reviewed-source") first.reviewed.title.source += " changed";
+    if (alteration === "reviewed-text") first.reviewed.title.text = "Tampered after the actual paid reviewer";
+    json(unitFile, cache); const alteredBytes = readFileSync(unitFile);
+    rmSync(stop); f.api.run = original;
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const result = await run(f.options, f.dependencies); assert.equal(result.status, "paused"); assert.equal(f.calls.length, 2, "tampered paid cache must stop before any remaining unit POST");
+      assert.deepEqual(readFileSync(unitFile), alteredBytes); assert.deepEqual(readFileSync(journalFile), journalBytes);
+      assertTranslationUnmerged(f); assert.equal(f.submissions.length, 0); assert.deepEqual(f.uploads, []);
+    }
+  });
+});
+
+test("actual native multiunit refuses an unrecorded complete artifact after merge crash with a filled or missing worksheet", async (t) => {
+  for (const worksheetState of ["filled", "missing"]) await t.test(worksheetState, async (t) => {
+    const f = await nativeTranslationRunnerFixture(t), sink = { write: () => {} }, ctx = { root: f.manifest.root, home: f.out, env: { ...f.dependencies.env, VIDEO_WORKDIR: f.manifest.work_base }, stdout: sink, stderr: sink, fetch: async () => assert.fail("seeding a native crash state cannot use network") };
+    assert.equal(await videoMain(["i18n-sheet", "--slug", f.entry.slug, "--locale", "en", "--parts", "metadata,captions"], ctx), 0);
+    const todo = path.join(f.entry.workdir, "i18n/en.todo.json"), filled = JSON.parse(readFileSync(todo));
+    for (const line of filled.lines) line.text = `Reviewed English ${line.id}`;
+    for (const chapter of filled.chapters) chapter.text = "Reviewed English chapter";
+    filled.title.text = "Reviewed English title"; filled.description.text = "Reviewed English description."; filled.tags.text = ["AI"];
+    if (filled.thumbnail) filled.thumbnail.text = Object.fromEntries(Object.keys(filled.thumbnail.source).map((name) => [name, "AI models"]));
+    json(todo, filled);
+    assert.equal(await videoMain(["i18n-merge", "--slug", f.entry.slug, "--locale", "en"], ctx), 0);
+    const artifactBytes = readFileSync(f.translation), todoBytes = readFileSync(todo);
+    assert.deepEqual(Object.keys(JSON.parse(artifactBytes).lines).sort(), [...f.expectedLines].sort()); assert.deepEqual(readUnits(f.entry.workdir, "en"), {});
+    if (worksheetState === "missing") rmSync(todo);
+    const result = await run(f.options, f.dependencies); assert.equal(result.status, "paused"); assert.equal(f.calls.length, 0, "a complete but unrecorded merge cannot cause another paid metadata/thumbnail translation");
+    assert.deepEqual(readFileSync(f.translation), artifactBytes); if (worksheetState === "filled") assert.deepEqual(readFileSync(todo), todoBytes);
+    assert.equal(f.submissions.length, 0); assert.deepEqual(f.uploads, []);
+    assert.equal(result.videos[f.entry.slug].translations.en, undefined);
+  });
+});
+
+test("actual native multiunit holds a prior reviewed unit changed during the next native worksheet command", async (t) => {
+  const f = await nativeTranslationRunnerFixture(t), runMain = f.dependencies.runMain, journalFile = path.join(f.entry.workdir, "language-stage-journal.json"), unitFile = path.join(f.entry.workdir, "i18n/en.units.json");
+  let changed = false, priorJournal;
+  f.dependencies.runMain = async (args, ctx) => {
+    const code = await runMain(args, ctx);
+    if (!changed && args[0] === "i18n-sheet" && f.calls.length === 2) {
+      const cache = JSON.parse(readFileSync(unitFile)); priorJournal = JSON.parse(readFileSync(journalFile));
+      Object.values(cache.units)[0].reviewed.title.text = "Tampered between native units"; json(unitFile, cache); changed = true;
+    }
+    return code;
+  };
+  const result = await run(f.options, f.dependencies); assert.equal(result.status, "paused"); assert.ok(changed); assert.match(result.videos[f.entry.slug].error, /reviewed unit|reviewed answer|native answer|paid.*answer|paid.*cache|stage receipt/);
+  assert.ok(f.calls.length <= 4, "tampering is caught before the final caption unit can buy new answers");
+  const journal = JSON.parse(readFileSync(journalFile));
+  for (const [key, record] of Object.entries(priorJournal.entries)) assert.deepEqual(journal.entries[key], record, "prior exact paid receipts survive cache tampering");
+  assertTranslationUnmerged(f); assert.equal(f.submissions.length, 0); assert.deepEqual(f.uploads, []);
+});
+
+test("actual native multiunit guards hold changed or rejected caption source, ID and max_chars answers without repeating paid calls", async (t) => {
+  for (const stage of ["translator", "caption_reviewer"]) for (const field of ["source", "id", "max_chars"]) await t.test(`${stage}/${field}`, async (t) => {
+    const f = await nativeTranslationRunnerFixture(t), original = f.api.run;
+    f.api.run = async (...args) => {
+      const answer = await original(...args), payload = args[3];
+      if (args[0] === stage && payload.worksheet.parts.includes("captions")) {
+        const value = JSON.parse(answer.text); value.worksheet.lines[0][field] = field === "max_chars" ? 1 : `${value.worksheet.lines[0][field]} changed`;
+        answer.text = JSON.stringify(value);
+      }
+      return answer;
+    };
+    const first = await run(f.options, f.dependencies); assert.equal(first.status, "paused"); assert.match(first.videos[f.entry.slug].error, /identity, source, or dub budget differs/);
+    const count = stage === "translator" ? 3 : 4; assert.equal(f.calls.length, count);
+    const journalFile = path.join(f.entry.workdir, "language-stage-journal.json"), unitFile = path.join(f.entry.workdir, "i18n/en.units.json"), journalBytes = readFileSync(journalFile), keptBytes = readFileSync(unitFile);
+    assert.equal(Object.values(readUnits(f.entry.workdir, "en")).filter(({ reviewed }) => reviewed).length, 1);
+    const second = await run(f.options, f.dependencies); assert.equal(second.status, "paused"); assert.equal(f.calls.length, count);
+    assert.deepEqual(readFileSync(journalFile), journalBytes); assert.deepEqual(readFileSync(unitFile), keptBytes);
+    assertTranslationUnmerged(f); assert.equal(f.submissions.length, 0); assert.deepEqual(f.uploads, []);
+  });
 });
 
 test("sync stage journal reuses completed exact answers and never dispatches past crash or damaged receipts", async (t) => {
@@ -629,10 +894,11 @@ test("fresh translations cannot bypass an absent independent review, and the nex
   json(f.file, f.fresh);
   const stages = [];
   const ctx = { ...f.ctx, root: f.manifest.root, env: { VIDEO_WORKDIR: f.manifest.work_base }, now: () => new Date(), stdout: { write: () => {} } };
-  const automation = new Automation(ctx, { report: async () => {} }, {});
-  const missingReview = async (stage) => {
-    stages.push(stage);
-    return stage === "translator" ? { worksheet: structuredClone(f.translated) } : {};
+  const api = journaledStageClient({ run: async () => ({ text: JSON.stringify({ worksheet: f.translated }), model: "fake-provider", input_tokens: 1, output_tokens: 1, usage: { tokens: 2, token_budget: 100 } }) }, f.manifest, [f.entry], () => new Date().toISOString());
+  const automation = new Automation(ctx, { ...api, report: async () => {} }, {}), nativeStage = automation.stage;
+  const missingReview = async (...args) => {
+    stages.push(args[0]);
+    return args[0] === "translator" ? nativeStage.call(automation, ...args) : {};
   };
   automation.stage = missingReview;
   await assert.rejects(translateLocaleResuming(automation, ctx, f.entry, f.state, "en", f.parts, f.project), /caption_reviewer returned no worksheet/);
@@ -644,7 +910,7 @@ test("fresh translations cannot bypass an absent independent review, and the nex
   assert.deepEqual(kept[unitKey(f.fresh, null)].translated, f.translated, "successful paid translation remains source-bound in the unit cache after a failed review");
   assert.equal(kept[unitKey({ ...f.fresh, slug: "changed-source" }, null)], undefined);
   stages.length = 0;
-  automation.stage = async (stage) => { stages.push(stage); return { worksheet: structuredClone(f.translated) }; };
+  automation.stage = async (...args) => { stages.push(args[0]); return nativeStage.call(automation, ...args); };
   await translateLocaleResuming(automation, ctx, f.entry, f.state, "en", f.parts, f.project);
   assert.deepEqual(stages, ["caption_reviewer"]);
   assert.equal(existsSync(path.join(f.project.dir, "i18n/en.json")), true);
@@ -654,20 +920,29 @@ test("one failed video does not starve the next, while owner/quota failure stops
   const f = await fixture(t, 2);
   const projects = new Map(f.manifest.videos.map((entry) => [entry.slug, remote(entry)]));
   const calls = [];
-  const api = { reviews: async (slug) => structuredClone(projects.get(slug)), settings: async () => ({}), upload: async () => {}, submit: async (slug, body) => { calls.push(["submit", slug]); const review = { ...body, id: `lang-${slug}`, status: "approved", created_at: "2026-09-29T02:00:00Z" }; projects.get(slug).reviews.push(review); return review; } };
-  class FakeAutomation {
-    constructor(ctx) { this.ctx = ctx; }
-    async translateLocale(state, locale) {
+  const api = {
+    reviews: async (slug) => structuredClone(projects.get(slug)), settings: async () => ({}), upload: async () => {},
+    submit: async (slug, body) => { calls.push(["submit", slug]); const review = { ...body, id: `lang-${slug}`, status: "approved", created_at: "2026-09-29T02:00:00Z" }; projects.get(slug).reviews.push(review); return review; },
+    run: async (_stage, _slug, _instructions, payload) => {
+      const worksheet = structuredClone(payload.worksheet);
+      worksheet.lines.forEach((line) => { line.text = `English ${line.id}`; }); worksheet.chapters.forEach((chapter) => { chapter.text = `English ${chapter.scene}`; });
+      worksheet.title.text = "Evidence"; worksheet.description.text = "An example description."; worksheet.tags.text = ["AI"];
+      if (worksheet.thumbnail) worksheet.thumbnail.text = Object.fromEntries(Object.keys(worksheet.thumbnail.source).map((name) => [name, "AI models"]));
+      return { text: JSON.stringify({ worksheet }), model: "fake-provider", input_tokens: 1, output_tokens: 1, usage: { tokens: 2, token_budget: 100 } };
+    },
+  };
+  class FakeAutomation extends Automation {
+    async translateLocale(state, locale, parts, video) {
       calls.push(["translate", state.slug]);
       if (state.slug === SLUGS[0]) throw new VideoStop("bad translation");
-      json(path.join(f.manifest.root, "docs/videos", state.slug, "i18n", `${locale}.json`), { title: "Evidence", description: "An example description.", tags: [], chapters: {}, lines: {} });
-      return "translated and reviewed";
+      return super.translateLocale(state, locale, parts, video);
     }
   }
-  const runMain = async (args) => {
+  const runMain = async (args, ctx) => {
     const slug = args[args.indexOf("--slug") + 1];
     const entry = f.manifest.videos.find((item) => item.slug === slug);
     if (args[0] === "review-pull") await approve({ gate: "final", docDir: path.dirname(entry.doc_file), workdir: entry.workdir });
+    if (["i18n-sheet", "i18n-merge"].includes(args[0])) return videoMain(args, ctx);
     if (args[0] === "captions") {
       const temporaryChoice = JSON.parse(readFileSync(path.join(entry.workdir, "languages.json"), "utf8"));
       assert.equal(temporaryChoice.locales.en.dub, false, "unverified or absent dub cannot drive the captions");
@@ -680,7 +955,7 @@ test("one failed video does not starve the next, while owner/quota failure stops
   const result = await run({ manifest: f.manifestFile, slugs: SLUGS.slice(0, 2), phase: "translations", maxUnits: 2, dryRun: false }, { api, runMain, AutomationClass: FakeAutomation });
   assert.equal(result.status, "paused");
   assert.deepEqual(calls.filter(([kind]) => kind === "translate").map(([, slug]) => slug), SLUGS.slice(0, 2));
-  assert.ok(calls.some(([kind, slug]) => kind === "submit" && slug === SLUGS[1]));
+  assert.ok(calls.some(([kind, slug]) => kind === "submit" && slug === SLUGS[1]), result.videos[SLUGS[1]].error);
   assert.equal(existsSync(path.join(f.base, "runner.lock")), false);
   assert.equal(projects.get(SLUGS[1]).title, "Original title");
   const restoredChoice = JSON.parse(readFileSync(path.join(f.manifest.videos[1].workdir, "languages.json"), "utf8"));

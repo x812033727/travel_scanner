@@ -1,11 +1,11 @@
 ---
 id: 2026-10-07-continue-imported-language-units-before-requiring
 title: Continue imported language units before requiring a merged locale artifact
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: codex-renewed-finals-native-units-20261007
+claimed_at: 2026-10-07T03:36:12Z
 created_at: 2026-10-07T02:05:34Z
 completed_at:
 branch: codex/renewed-finals-host-handoff-20261007
@@ -33,14 +33,14 @@ The real adapter guard correctly refused before a language review POST.
 
 ## Definition of done
 
-- [ ] A completed unit is persisted and reported as partial progress until every
+- [x] A completed unit is persisted and reported as partial progress until every
       source-bound locale unit is reviewed and actually merged.
-- [ ] The runner consumes exact retained answers and continues only unanswered
+- [x] The runner consumes exact retained answers and continues only unanswered
       units; it never hashes a missing locale file or treats a partial unit as a
       complete translation, caption set or language package.
-- [ ] Existing unknown-result, source/configuration drift, STOP and producer-lock
+- [x] Existing unknown-result, source/configuration drift, STOP and producer-lock
       guards remain intact; incomplete/rejected model output stays held.
-- [ ] A caption unit is checked against its exact original lines without claiming
+- [x] A caption unit is checked against its exact original lines without claiming
       that other lines in the same scene were requested or reviewed; the final
       merged locale still requires every original selected line.
 - [x] Renewed-language submission receives the current verified native project,
@@ -49,12 +49,12 @@ The real adapter guard correctly refused before a language review POST.
 
 ## Steps
 
-- [ ] Review the exact pinned native flow and imported-runner contract, including
+- [x] Review the exact pinned native flow and imported-runner contract, including
       existing PR #1355 work, before selecting the narrow integration change.
-- [ ] Add multi-unit regressions for restart after one reviewed unit, no repeated
+- [x] Add multi-unit regressions for restart after one reviewed unit, no repeated
       successful calls, a unit inside a longer scene, actual locale merge, rejected
       output and unknown response.
-- [ ] Validate captions and emitted language manifests through the real consumer.
+- [x] Validate captions and emitted language manifests through the real consumer.
 - [x] Exercise the actual run-to-submission caller, with completed source-current
       locale artifacts, real native captions/binder and an unknown POST regression.
 
@@ -67,6 +67,45 @@ source-bound metadata/CC review readback. No paid media or production operations
 are authorized by this follow-up.
 
 ## Notes
+
+- Current native integration checkpoint, 2026-10-07: the runner now drains the
+  exact native unit plan, records partial counts and retained-cache SHA, and only
+  records a complete translation after this invocation's real successful merge.
+  Every cached translator/reviewer worksheet must match its exact succeeded
+  native stage-journal request and result. Unknown results, altered paid answers,
+  unknown cache keys and merge failures remain held without another provider
+  request. Full merged output retains the original per-line dub budgets; optional
+  thumbnail omission keeps native fallback behavior. The provider's original
+  scene-sized context and worksheet request are unchanged.
+- A complete artifact without a verified completion receipt stays held for
+  inspection before another provider request, including merge-then-crash with
+  either a filled or absent todo worksheet. Partial validation permits only the
+  exact requested caption IDs; mixed whole sheets and final merge still require
+  every original selected source line.
+- Independent code review found no remaining required changes. Actual Windows
+  native integration/regression checks passed 35/35, exit 0, in 67.054 seconds,
+  including real native worksheet, unit cache, stage journal, merge, captions and
+  renewed-source package binding. Raw log is
+  `C:/Users/x8120/.codex/scratch/native-unit-tests-20261007/final-targeted.log`.
+  Runner SHA is
+  `a93f99624227af2d2a6cee23b7e2d5c77c6e6075f43ab2954813b9dff6a1971e`;
+  test SHA is
+  `744cf2a83371ea89a84586a0e9ac0e29785f926bffd0ebe902c36fbde8f2e7f4`.
+  Exact-worker-image independent checks and a new full-tools run are still
+  awaiting actual exits at this checkpoint; they are not claimed as passed.
+- Production remains on the separate immutable R3 operator runtime. At
+  `2026-10-07T03:37:44Z`, actual deployed consumer/review-store verification passed
+  all four metadata/CC locales for EP01 and EP05 (16 parts), with selected dubs
+  held. Latest cumulative approved reviews are
+  `157b627b-75be-43c6-9582-55c1de1caa85` and
+  `4be19081-8f29-400c-ac40-13a334dcd775`. Evidence outside Git is
+  `translation-r3-completed-fourlocale-proof-20261007T033746Z.json`, SHA
+  `641469989ba2c2b8a033872132e1af6ab5435240704fba846f489b889b730501`.
+  Fresh guard checks confirm all 18 canonical STOPs, 10 current approved base
+  publish reviews, zero live publish reviews for the eight excluded slugs, and
+  unchanged owner choices/paid-media counts. At 03:52Z, EP02/03/04 each had a
+  confirmed English submission and the same serial producer was continuing
+  Japanese; EP06 remained queued. No draft native code was deployed into it.
 
 - Fresh collision inspection before the narrow 2026-10-07 caller repair found the
   old 2026-09-29 claim at 64 hours. Its checked-out branch had no tracked source

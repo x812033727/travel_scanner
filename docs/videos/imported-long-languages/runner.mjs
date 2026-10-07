@@ -3,20 +3,23 @@
 // invokes auto.step, assemble, package, project PUT, publish, or a YouTube endpoint.
 import { createHash, randomUUID } from "node:crypto";
 import { request as httpRequest } from "node:http";
-import { appendFileSync, closeSync, copyFileSync, existsSync, fsyncSync, mkdirSync, openSync, readFileSync, readSync, statSync } from "node:fs";
+import { appendFileSync, closeSync, copyFileSync, existsSync, fsyncSync, lstatSync, mkdirSync, openSync, readFileSync, readSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 import { Automation } from "../../../tools/video/automation/flow.mjs";
+import { assembleSheet, sheetUnits, unitKey } from "../../../tools/video/automation/sheet-units.mjs";
+import { parseAnswer } from "../../../tools/video/automation/prompts.mjs";
 import { main as videoMain, EXIT } from "../../../tools/video/cli.mjs";
 import { approvalState, sha256File } from "../../../tools/video/core/approvals.mjs";
 import { atomicWrite, isInside, readJson, stopRequested } from "../../../tools/video/core/paths.mjs";
 import { dubsForUpload, writeLanguages } from "../../../tools/video/core/stages.mjs";
 import { loadProject } from "../../../tools/video/core/state.mjs";
+import { NARRATION_LOCALE, narrationLocale } from "../../../tools/video/core/schema.mjs";
 import { speechHash } from "../../../tools/video/core/timeline.mjs";
 import { presentationTimeline, readBranding } from "../../../tools/video/core/branding.mjs";
 import { bindManualLanguageSubmission, fileInventory, readManualLanguageSource } from "../../../tools/video/review/renewal-handoff.mjs";
-import { mergeSheet } from "../../../tools/video/i18n/cli.mjs";
+import { buildSheet, mergeSheet, withoutContext } from "../../../tools/video/i18n/cli.mjs";
 import { composeMetadata } from "../../../tools/video/package/metadata.mjs";
 import { ledgerTotals } from "../../../tools/video/media/ledger.mjs";
 import { readCredentials } from "../../../tools/video/tts/credentials.mjs";
@@ -256,14 +259,170 @@ const sheetSource = (sheet) => ({
   lines: sheet.lines?.map(({ id, scene, source, max_chars }) => ({ id, scene, source, max_chars })),
   chapters: sheet.chapters?.map(({ scene, source }) => ({ scene, source })),
   ...Object.fromEntries(["title", "description", "tags"].map((key) => [key, sheet[key] === null ? null : { source: sheet[key]?.source }])),
+  thumbnail_source: sheet.thumbnail?.source ?? null,
 });
+
+const requestedPartsCurrent = (sheet) => (!sheet.parts.includes("captions") || sheet.lines.every((line) => !line.todo)) && (!sheet.parts.includes("metadata") || (["title", "description", "tags"].every((key) => !sheet[key]?.todo) && sheet.chapters.every((chapter) => !chapter.todo)));
+function nativeWorksheet(worksheet, fresh) {
+  const checked = { locale: fresh.locale, slug: fresh.slug, parts: fresh.parts, ...worksheet };
+  if (fresh.thumbnail) {
+    if (checked.thumbnail?.source !== undefined && canonical(checked.thumbnail.source) !== canonical(fresh.thumbnail.source)) throw new VideoStop("Translated thumbnail source differs from the current worksheet");
+    const words = checked.thumbnail?.text;
+    checked.thumbnail = { ...fresh.thumbnail, text: words && typeof words === "object" && !Array.isArray(words) ? words : fresh.thumbnail.text };
+  }
+  return checked;
+}
 
 /** Source validation is not a review or a merge: an interrupted translator's worksheet
  * is reusable only against the exact current identity, parts, sources and dub budgets. */
-export function validateResumeSheet(sheet, fresh, doc, previous) {
-  if (canonical(sheetSource(sheet)) !== canonical(sheetSource(fresh))) throw new VideoStop(`${fresh.locale}: saved worksheet identity, source, or dub budget differs from the current sheet; preserved for inspection`);
-  const { problems } = mergeSheet(doc, sheet, previous);
+export function validateResumeSheet(sheet, fresh, doc, previous, { unit = false } = {}) {
+  // Thumbnail words are optional in native worksheets. An omitted source inherits
+  // the requested one; an explicitly different source still fails the binding.
+  const bound = fresh.thumbnail && sheet.thumbnail?.source === undefined ? { ...sheet, thumbnail: { ...fresh.thumbnail, ...sheet.thumbnail } } : sheet;
+  if (canonical(sheetSource(bound)) !== canonical(sheetSource(fresh))) throw new VideoStop(`${fresh.locale}: saved worksheet identity, source, or dub budget differs from the current sheet; preserved for inspection`);
+  let validationDoc = doc;
+  if (unit) {
+    if (!Array.isArray(fresh.parts) || !fresh.parts.length || new Set(fresh.parts).size !== fresh.parts.length || fresh.parts.some((part) => !["metadata", "captions"].includes(part)) || !Array.isArray(fresh.lines) || doc?.slug !== fresh.slug || !Array.isArray(doc.scenes)) throw new VideoStop("Invalid current worksheet unit");
+    const all = new Map();
+    for (const scene of doc.scenes) for (const line of scene.lines ?? []) {
+      if (typeof line.id !== "string" || all.has(line.id)) throw new VideoStop("Current source line identities are not unique");
+      all.set(line.id, { scene: scene.id, source: line.text });
+    }
+    const wanted = new Set();
+    for (const line of fresh.lines) {
+      const current = all.get(line.id);
+      if (wanted.has(line.id) || !current || current.scene !== line.scene || current.source !== line.source) throw new VideoStop("Worksheet unit line ID, scene or source differs from the current source");
+      wanted.add(line.id);
+    }
+    if (!fresh.parts.includes("captions") && wanted.size) throw new VideoStop("A metadata-only unit carries caption lines");
+    if (fresh.parts.includes("captions")) {
+      if (!wanted.size || (fresh.parts.includes("metadata") && wanted.size !== all.size)) throw new VideoStop("A whole worksheet cannot omit current source lines");
+      // Only validation is scoped to the requested lines. The provider still receives
+      // native unitVideo, the full scenes and its original source-bound request.
+      validationDoc = { ...doc, scenes: doc.scenes.filter((scene) => scene.lines.some((line) => wanted.has(line.id))).map((scene) => ({ ...scene, lines: scene.lines.filter((line) => wanted.has(line.id)) })) };
+    }
+  }
+  const { problems } = mergeSheet(validationDoc, sheet, previous);
   if (problems.length) throw new VideoStop(`${fresh.locale}: saved worksheet is incomplete or invalid: ${problems.join("; ")}`);
+}
+
+/** Move only unanswered native units. A partial unit is never a merged locale;
+ * completion requires this invocation's real merge of all independently reviewed
+ * units. Cached answers, their journal and provider request shape stay native. */
+async function translateNativeUnits(automation, ctx, entry, state, locale, parts, project, event) {
+  const todoFile = path.join(entry.workdir, "i18n", `${locale}.todo.json`), unitsFile = path.join(entry.workdir, "i18n", `${locale}.units.json`);
+  const originalCommand = ctx.runCommand, originalStage = automation.stage;
+  const sourceDoc = structuredClone(project.doc), docIdentity = digest(canonical(sourceDoc));
+  const currentProject = () => {
+    const current = ctx.root ? loadProject({ slug: state.slug, root: ctx.root }) : project;
+    if (digest(canonical(current.doc)) !== docIdentity) throw new VideoStop("Current locale source changed; preserve its reviewed units");
+    return current;
+  };
+  const readRegular = (file) => {
+    const stat = lstatSync(file);
+    if (!stat.isFile() || stat.isSymbolicLink()) throw new VideoStop("Native worksheet and unit cache must be regular files");
+    return JSON.parse(readFileSync(file, "utf8"));
+  };
+  const made = await originalCommand(["i18n-sheet", "--slug", state.slug, "--locale", locale, "--parts", parts.join(",")]);
+  if (made.code !== 0) throw new VideoStop(`${locale}: native worksheet preflight failed: ${made.out}`);
+  const initial = readRegular(todoFile);
+  if (initial.slug !== state.slug || initial.locale !== locale || canonical(initial.parts) !== canonical(parts)) throw new VideoStop("Native worksheet scope changed");
+  if (requestedPartsCurrent(initial)) throw new VideoStop(`${locale}: current locale artifact has no verified merge receipt in this invocation; preserve it for inspection without another provider request`);
+  const plan = sheetUnits(initial, automation.unitLimits), sourceLocale = narrationLocale(sourceDoc), keySource = sourceLocale === NARRATION_LOCALE ? null : sourceLocale;
+  const keys = plan.map((unit) => unitKey(unit, keySource)), expected = new Map(keys.map((key, index) => [key, plan[index]]));
+  if (!keys.length || keys.length > 64 || expected.size !== keys.length) throw new VideoStop("Native locale unit plan must be bounded and unique");
+  const initialSource = canonical({ source: sheetSource(initial), schema_version: initial.schema_version ?? null, context: initial.context ?? null });
+  const checkedCache = () => {
+    currentProject();
+    if (!existsSync(unitsFile)) return { kept: {}, reviewed: {} };
+    const saved = readRegular(unitsFile);
+    if (saved.schema_version !== 1 || saved.locale !== locale || !saved.units || typeof saved.units !== "object" || Array.isArray(saved.units)) throw new VideoStop("Native kept-unit cache is malformed; preserve it");
+    const reviewed = {};
+    const journal = Object.keys(saved.units).length ? readStageJournal(path.join(entry.workdir, "language-stage-journal.json"), ctx.languageStageIdentity?.(entry)) : null;
+    for (const [key, value] of Object.entries(saved.units)) {
+      const unit = expected.get(key);
+      if (!unit || !value?.translated) throw new VideoStop("Kept unit is outside the exact current native source plan");
+      validateResumeSheet(value.translated, unit, sourceDoc, currentProject().translations[locale], { unit: true });
+      const prove = (stage, answer, requestSheet) => {
+        const records = Object.values(journal.entries).filter((record) => record.request.stage === stage && record.request.slug === state.slug && record.request.payload?.locale === locale && canonical(record.request.payload.worksheet) === canonical(withoutContext(requestSheet)));
+        if (records.length !== 1 || records[0].status !== "succeeded") throw new VideoStop("Kept native answer lacks its exact succeeded stage receipt; preserve it without another request");
+        const original = nativeWorksheet(parseAnswer(records[0].result.text).worksheet, withoutContext(requestSheet));
+        if (canonical(original) !== canonical(answer)) throw new VideoStop("Kept native answer differs from its exact succeeded stage result; preserve it without another request");
+      };
+      prove("translator", value.translated, unit);
+      if (value.reviewed) {
+        validateResumeSheet(value.reviewed, unit, sourceDoc, currentProject().translations[locale], { unit: true });
+        prove("caption_reviewer", value.reviewed, value.translated);
+        reviewed[key] = digest(canonical(value));
+      }
+    }
+    return { kept: saved.units, reviewed };
+  };
+  let before = checkedCache(), merged = false, mergeCache = null;
+  const preserveReviewed = (after) => {
+    for (const [key, sha] of Object.entries(before.reviewed)) if (after.reviewed[key] !== sha) throw new VideoStop("A retained reviewed unit changed or disappeared before merge");
+  };
+  const artifactFile = path.join(project.dir, "i18n", `${locale}.json`), oldArtifact = existsSync(artifactFile) ? await sha256File(artifactFile) : null;
+  const limit = Math.max(1, keys.length - Object.keys(before.reviewed).length);
+  const whole = plan.length === 1 && plan[0] === initial;
+  ctx.runCommand = async (args) => {
+    const target = args[args.indexOf("--slug") + 1] === state.slug && args[args.indexOf("--locale") + 1] === locale;
+    if (target && args[0] === "i18n-merge") {
+      if (merged) throw new VideoStop("Unexpected second native locale merge");
+      mergeCache = checkedCache(); preserveReviewed(mergeCache);
+      if (Object.keys(mergeCache.reviewed).length !== keys.length) throw new VideoStop("Native locale merge lacks independently reviewed units");
+      const written = readRegular(todoFile), assembled = whole ? mergeCache.kept[keys[0]].reviewed : assembleSheet(initial, keys.map((key) => mergeCache.kept[key].reviewed));
+      if (canonical(written) !== canonical(assembled)) throw new VideoStop("Native merge worksheet differs from its exact retained reviewed units");
+      validateResumeSheet(written, initial, sourceDoc, currentProject().translations[locale]);
+    }
+    const result = await originalCommand(args);
+    if (target && args[0] === "i18n-sheet" && result.code === 0) {
+      const fresh = readRegular(todoFile);
+      if (canonical({ source: sheetSource(fresh), schema_version: fresh.schema_version ?? null, context: fresh.context ?? null }) !== initialSource || canonical(sheetUnits(fresh, automation.unitLimits).map((unit) => unitKey(unit, keySource))) !== canonical(keys)) throw new VideoStop("Native current worksheet or unit plan changed before a request");
+      preserveReviewed(checkedCache());
+    }
+    if (target && args[0] === "i18n-merge") {
+      if (result.code !== 0) throw new VideoStop(`${locale}: native merge refused its reviewed worksheet; preserve every answer: ${result.out}`);
+      merged = true;
+    }
+    return result;
+  };
+  automation.stage = async (...args) => {
+    if (!["translator", "caption_reviewer"].includes(args[0])) throw new VideoStop("Only native translator and reviewer stages are permitted");
+    const fresh = args[2]?.worksheet;
+    if (args[1] !== state.slug || args[2]?.locale !== locale || canonical(args[2]?.parts) !== canonical(fresh?.parts) || !plan.some((unit) => canonical(sheetSource(unit)) === canonical(sheetSource(fresh)))) throw new VideoStop("Native stage does not name its exact current worksheet unit");
+    currentProject();
+    const request = canonical(args), answer = await originalStage.call(automation, ...args);
+    if (canonical(args) !== request) throw new VideoStop("Native stage changed its original request");
+    if (!Array.isArray(answer?.worksheet?.lines)) throw new VideoStop(`${locale}: ${args[0]} returned no worksheet`);
+    const checked = nativeWorksheet(answer.worksheet, fresh);
+    validateResumeSheet(checked, fresh, currentProject().doc, currentProject().translations[locale], { unit: true });
+    return { ...answer, worksheet: checked };
+  };
+  try {
+    for (let calls = 1; calls <= limit; calls++) {
+      const line = await automation.translateLocale(state, locale, parts, sourceDoc);
+      if (automation.halted || state.status === "blocked") return line;
+      if (automation.skipped?.has(state.slug)) throw new VideoStop(clean(line ?? "Native locale stage deferred; preserve its units"));
+      if (merged) {
+        const current = currentProject(), artifact = readRegular(artifactFile);
+        const budgets = initial.lines.some((item) => item.max_chars !== undefined) ? Object.fromEntries(initial.lines.map((item) => [item.id, item.max_chars])) : null;
+        const sheet = buildSheet(sourceDoc, artifact, locale, budgets, parts);
+        if (!requestedPartsCurrent(sheet)) throw new VideoStop("Native merge did not produce every selected current-source part");
+        validateResumeSheet(sheet, initial, sourceDoc, current.translations[locale]);
+        const sha = await sha256File(artifactFile);
+        event({ slug: state.slug, locale, type: "locale-merged", calls, reviewed_units: keys.length, total_units: keys.length, artifact_sha256: sha });
+        return line;
+      }
+      const after = checkedCache(); preserveReviewed(after);
+      if ((existsSync(artifactFile) ? await sha256File(artifactFile) : null) !== oldArtifact) throw new VideoStop("Locale artifact changed without this invocation's verified native merge");
+      const added = Object.keys(after.reviewed).filter((key) => !Object.hasOwn(before.reviewed, key));
+      if (added.length !== 1) throw new VideoStop("Native locale call did not retain exactly one new reviewed unit or merge; no request was repeated");
+      event({ slug: state.slug, locale, type: "locale-reviewed-unit-kept", calls, unit_key: added[0], reviewed_units: Object.keys(after.reviewed).length, total_units: keys.length, unit_cache_sha256: await sha256File(unitsFile) });
+      before = after;
+    }
+    throw new VideoStop("Native locale unit bound ended without a verified complete merge");
+  } finally { ctx.runCommand = originalCommand; automation.stage = originalStage; }
 }
 
 /** Reuse paid translation bytes after an interrupted reviewer, never its missing review.
@@ -274,22 +433,12 @@ export async function translateLocaleResuming(automation, ctx, entry, state, loc
   const worksheet = saved === null ? null : JSON.parse(saved);
   const filled = (value) => typeof value === "string" ? value.trim().length > 0 : Array.isArray(value) && value.length > 0;
   const hasTranslation = worksheet && [...(worksheet.lines ?? []), ...(worksheet.chapters ?? []), worksheet.title, worksheet.description, worksheet.tags].some((item) => filled(item?.text));
-  if (!hasTranslation) {
-    // The shared flow accepts an absent reviewer worksheet and then merges the translator's
-    // copy. This isolated lane requires both actual outputs to pass the source/completeness
-    // guard; keeping its existing flow preserves prompts, accounting and failure handling.
-    const stage = automation.stage;
-    automation.stage = async (...args) => {
-      const answer = await stage.call(automation, ...args);
-      if (!["translator", "caption_reviewer"].includes(args[0])) return answer;
-      const fresh = args[2].worksheet;
-      if (!Array.isArray(answer.worksheet?.lines)) throw new VideoStop(`${locale}: ${args[0]} returned no worksheet`);
-      const checked = { locale, slug: fresh.slug, parts: fresh.parts, ...answer.worksheet };
-      validateResumeSheet(checked, fresh, args[2].video ?? project.doc, project.translations[locale]);
-      return { ...answer, worksheet: checked };
-    };
-    try { return await automation.translateLocale(state, locale, parts, project.doc); }
-    finally { automation.stage = stage; }
+  if (!hasTranslation || existsSync(path.join(entry.workdir, "i18n", `${locale}.units.json`))) {
+    if (hasTranslation) {
+      const backup = path.join(entry.workdir, "i18n", `${locale}.todo.resume-${digest(saved)}.json`);
+      if (!existsSync(backup)) atomicWrite(backup, saved);
+    }
+    return translateNativeUnits(automation, ctx, entry, state, locale, parts, project, event);
   }
 
   const savedHash = digest(saved);
@@ -303,6 +452,7 @@ export async function translateLocaleResuming(automation, ctx, entry, state, loc
     if (!fresh) throw new VideoStop(`${locale}: no fresh worksheet was produced`);
   } finally { atomicWrite(file, saved); }
   validateResumeSheet(worksheet, fresh, project.doc, project.translations[locale]);
+  if (requestedPartsCurrent(fresh)) throw new VideoStop(`${locale}: current locale artifact has no verified merge receipt in this invocation; preserve it for inspection without another provider request`);
   event({ slug: state.slug, type: "translation-resumed", locale, worksheet_sha256: savedHash, stage: "caption_reviewer" });
   const reviewed = await automation.stage("caption_reviewer", state.slug, { locale, parts, worksheet, video: project.doc }, 32_000, state.format);
   if (!Array.isArray(reviewed.worksheet?.lines)) throw new VideoStop(`${locale}: caption reviewer returned no worksheet; original translation retained`);
@@ -614,6 +764,20 @@ export async function submitSnapshot(api, project, entry, additions, choices, no
 
 /** Sync subscription calls have no remote idempotency key. Persist before dispatch,
  * retain exact successful answers, and hold every unresolved attempt across restarts. */
+const stageConfiguration = (value) => ({ durable_stage_runs: value.durable_stage_runs ?? null, stage_models: Object.fromEntries(["translator", "caption_reviewer"].map((name) => [name, value.stage_models?.[name] ?? null])), instructions: Object.fromEntries(["translator", "caption_reviewer"].map((name) => [name, value.stage_instructions?.[name] ?? null])) });
+function languageStageIdentity(manifest, entry, settings, choices) {
+  return { slug: entry.slug, final_sha256: entry.final_sha256, source_sha256: entry.renewal_source?.sha256 ?? null, namespace: manifest.request_namespace ?? null, choice: choices[entry.slug] ?? entry.choice ?? null, configuration: stageConfiguration(settings) };
+}
+function readStageJournal(file, identity) {
+  const journal = readJson(file, { schema_version: 1, identity, entries: {} });
+  if (journal.schema_version !== 1 || !journal.identity || (identity && canonical(journal.identity) !== canonical(identity)) || !journal.entries || typeof journal.entries !== "object" || Array.isArray(journal.entries)) throw new VideoStop("Language stage journal source identity changed; preserve and inspect it");
+  for (const [id, record] of Object.entries(journal.entries)) {
+    if (!record || id !== digest(canonical({ identity: journal.identity, request: record.request })) || !["dispatching", "unknown", "succeeded"].includes(record.status) || (record.status === "succeeded" && (!record.result || digest(canonical(record.result)) !== record.result_sha256))) throw new VideoStop("Language stage journal is malformed; no new request was sent");
+  }
+  const unresolved = Object.values(journal.entries).find((record) => record.status !== "succeeded");
+  if (unresolved) throw new VideoStop(`${journal.identity.slug}: ${unresolved.request.stage} has an unknown paid result; preserve its stage journal and inspect the existing result before any retry`);
+  return journal;
+}
 export function journaledStageClient(api, manifest, entries, now, { settings = {}, choices = {}, readCurrent } = {}) {
   return { ...api, run: async (...args) => {
     const [stage, slug] = args, entry = entries.find((item) => item.slug === slug);
@@ -624,24 +788,17 @@ export function journaledStageClient(api, manifest, entries, now, { settings = {
       if (stopRequested(path.dirname(manifest.work_base)) || stopRequested(entry.workdir)) throw new HardStop("STOP requested before the approved-final language stage");
     };
     checkStageStop();
-    const configuration = (value) => ({ durable_stage_runs: value.durable_stage_runs ?? null, stage_models: Object.fromEntries(["translator", "caption_reviewer"].map((name) => [name, value.stage_models?.[name] ?? null])), instructions: Object.fromEntries(["translator", "caption_reviewer"].map((name) => [name, value.stage_instructions?.[name] ?? null])) });
-    const identity = { slug, final_sha256: entry.final_sha256, source_sha256: entry.renewal_source?.sha256 ?? null, namespace: manifest.request_namespace ?? null, choice: choices[slug] ?? entry.choice ?? null, configuration: configuration(settings) };
+    const identity = languageStageIdentity(manifest, entry, settings, choices);
     if (manifest.source_kind === "approved-final-body-range") {
       if (typeof readCurrent !== "function") throw new VideoStop("Approved-final stage needs a fresh source, choice and settings reader");
       checkStageStop(); const current = await readCurrent(entry, stage); checkStageStop();
-      if (!current || !current.settings || typeof current.settings !== "object" || Array.isArray(current.settings) || canonical(current.choice) !== canonical(identity.choice) || canonical(configuration(current.settings)) !== canonical(identity.configuration)) throw new VideoStop(`${slug}: current owner choice or stage configuration changed; preserve existing paid answers`);
+      if (!current || !current.settings || typeof current.settings !== "object" || Array.isArray(current.settings) || canonical(current.choice) !== canonical(identity.choice) || canonical(stageConfiguration(current.settings)) !== canonical(identity.configuration)) throw new VideoStop(`${slug}: current owner choice or stage configuration changed; preserve existing paid answers`);
     }
     // JSON roundtrip matches the actual wire body, including omitted optional properties.
     const request = JSON.parse(JSON.stringify({ stage, slug, instructions: args[2], payload: args[3], max_output_tokens: args[4], format: args[5], variant: args[6] ?? null }));
     const key = digest(canonical({ identity, request })), file = path.join(entry.workdir, "language-stage-journal.json");
     const logicalKey = (value) => value.variant ? null : digest(canonical(JSON.parse(JSON.stringify({ stage: value.stage, slug, locale: value.payload?.locale ?? null, parts: value.payload?.parts ?? null, worksheet: value.payload?.worksheet ? sheetSource(value.payload.worksheet) : null }))));
-    const journal = readJson(file, { schema_version: 1, identity, entries: {} });
-    if (journal.schema_version !== 1 || canonical(journal.identity) !== canonical(identity) || !journal.entries || typeof journal.entries !== "object" || Array.isArray(journal.entries)) throw new VideoStop(`${slug}: language stage journal source identity changed; preserve and inspect it`);
-    for (const [id, record] of Object.entries(journal.entries)) {
-      if (!record || id !== digest(canonical({ identity, request: record.request })) || !["dispatching", "unknown", "succeeded"].includes(record.status) || (record.status === "succeeded" && (!record.result || digest(canonical(record.result)) !== record.result_sha256))) throw new VideoStop(`${slug}: language stage journal is malformed; no new request was sent`);
-    }
-    const unresolved = Object.values(journal.entries).find((record) => record.status !== "succeeded");
-    if (unresolved) throw new VideoStop(`${slug}: ${unresolved.request.stage} has an unknown paid result; preserve its stage journal and inspect the existing result before any retry`);
+    const journal = readStageJournal(file, identity);
     if (journal.entries[key]) return structuredClone(journal.entries[key].result);
     if (logicalKey(request) && Object.values(journal.entries).some((record) => logicalKey(record.request) === logicalKey(request))) throw new VideoStop(`${slug}: exact stage request changed for a recorded language unit; preserve its answer and inspect before retrying`);
     const startedAt = now(); checkStageStop();
@@ -723,6 +880,7 @@ export async function run(options, dependencies = {}) {
   catch (error) { if (ownerLock) unlinkSync(ownerLock); throw error; }
   try {
     const settings = await api.settings();
+    ctx.languageStageIdentity = (entry) => languageStageIdentity(manifest, entry, settings, Object.fromEntries([...projects].map(([slug, project]) => [slug, project.locales])));
     const noReport = { ...journaledStageClient(api, manifest, entries, now, { settings, choices: Object.fromEntries([...projects].map(([slug, project]) => [slug, project.locales])), readCurrent: async (entry) => {
       await freshProbe(() => verifyLocal(manifest, entry));
       const current = await freshProbe(() => api.reviews(entry.slug)); assertProject(current, entry, projects.get(entry.slug).locales);
@@ -824,11 +982,19 @@ export async function run(options, dependencies = {}) {
             record.status = "running";
             record.active_unit = { phase, kind: action.kind, locale: action.locale, started_at: now() };
             event({ slug: entry.slug, type: "unit-start", ...record.active_unit });
-            const line = action.kind === "translate" ? await translateLocaleResuming(automation, ctx, entry, state, action.locale, action.parts, project, event) : await automation.makeDub(state, action.locale);
+            const unitEvent = (value) => {
+              if (value.type === "locale-reviewed-unit-kept") {
+                record.partial_translations ??= {};
+                record.partial_translations[value.locale] = { reviewed_units: value.reviewed_units, total_units: value.total_units, unit_cache_sha256: value.unit_cache_sha256 };
+              }
+              event(value);
+            };
+            const line = action.kind === "translate" ? await translateLocaleResuming(automation, ctx, entry, state, action.locale, action.parts, project, unitEvent) : await automation.makeDub(state, action.locale);
             event({ slug: entry.slug, type: action.kind, locale: action.locale, detail: clean(line ?? "already current") });
             if (automation.halted || state.status === "blocked") throw new VideoStop(clean(line ?? "Stage stopped; resume in a later invocation"));
             const translation = path.join(project.dir, "i18n", `${action.locale}.json`);
             if (action.kind === "translate" || existsSync(translation)) record.translations[action.locale] = await sha256File(translation);
+            if (action.kind === "translate") delete record.partial_translations?.[action.locale];
             project = loadProject({ slug: entry.slug, root: manifest.root });
             if (action.kind === "dub") {
               const { dubs, skipped } = dubsForUpload(project, entry.workdir, speechHash(project.doc, project.lexicon), [action.locale]);
