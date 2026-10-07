@@ -666,8 +666,13 @@ function changedTakes(timeline, workdir, ids = null) {
   return changed;
 }
 
+// The line tts prints once a request's answer is saved (tools/video/tts/cli.mjs: "<request>
+// [speaker]: 2 of 3 lines retaken", or "<request>: 3 lines"); a retake whose output has none
+// was answered nothing, so nothing of it was paid for.
+const FINISHED_REQUEST = /^\S+(?: \[[^\]\n]*\])?: \d+ (?:of \d+ lines retaken|lines)\b/m;
+
 /**
- * Whether every take that no longer matches timeline.json is one the retake a STOP file ended
+ * Whether every take that no longer matches timeline.json is one a retake that did not finish
  * made (auto.json `stopped_retake`, written by retakeStopped), with the very bytes it wrote, and
  * narration.wav, which a stopped tts never writes, is still the bound one. A take changed on any
  * other line, or to other bytes, is not explained, and the guard before tts stays shut.
@@ -2303,8 +2308,8 @@ export class Automation {
       const project = loadProject({ slug: state.slug, root: ctx.root });
       const sameScript = previous?.speech_hash === speechHash(project.doc, project.lexicon);
       // Takes that no longer match stop the video, unless they are the ones a retake made before a
-      // STOP file ended it (retakeStopped): the plain tts below binds them without synthesizing
-      // anything, and the next round checks them again.
+      // STOP file or a service ended it (retakeStopped): the plain tts below binds them without
+      // synthesizing anything, and the next round checks them again.
       const resumed = Boolean(sameScript && previous.audio_evidence && audioEvidenceProblems(previous, workdir).length);
       if (resumed && !retakeExplains(state.stopped_retake, previous, workdir)) return this.block(state, "audio evidence no longer matches the saved takes; restore or explicitly retake and review the narration");
       // A refresh binds evidence to the takes on disk and never records. Takes that no longer match
@@ -2315,13 +2320,18 @@ export class Automation {
       const result = await this.speech(state.slug, ["tts", "--slug", state.slug, ...(refresh ? ["--refresh-evidence"] : [])]);
       // A STOP file ended it between requests: the takes are saved and the next run continues.
       if (result.code === ctx.EXIT.incomplete) return this.defer(state, `${state.slug}: tts stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
+      // A service away, the API's rate limit or the month's characters spent (exit 4): the takes
+      // made so far are in audio/cache.json and the next run reuses them, while timeline.json is
+      // still the last run's. It waits like any other deferral, and trouble that is everyone's
+      // never blocks it. A paid request whose answer was lost exits 3, and blocks below.
+      if (result.code === ctx.EXIT.external) return this.defer(state, `${state.slug}: tts could not finish (${lastLine(result.out)})`, { what: "tts", everyone: Boolean(everyones(result.out)) });
       if (result.code !== 0) return this.block(state,`tts failed: ${result.out.trim().split("\n").at(-1)}`);
       if (state.stopped_retake) {
         delete state.stopped_retake;
         saveState(workdir, state);
       }
       await report(ctx, this.api, state, "narration synthesized");
-      return `${state.slug}: narration synthesized${resumed ? " from the takes of the retake a STOP file ended" : ""}`;
+      return `${state.slug}: narration synthesized${resumed ? " from the takes of the retake that did not finish" : ""}`;
     }
     if (next === "narration approved") return this.narration(state);
     if (next === "frames rendered") {
@@ -2991,15 +3001,23 @@ export class Automation {
   }
 
   /**
-   * A `tts --redo` that a STOP file ended (exit 6) after some of its requests were paid for: their
-   * takes are on disk and in audio/cache.json, while timeline.json still binds the takes before.
-   * auto.json keeps the lines it was retaking and the takes it made (`stopped_retake`), so the
-   * next run's guard before tts tells them from a take swapped without review and rebuilds the
-   * narration from them. A retake stopped before its first request made nothing and records
-   * nothing. Either way the video is left for this run and the next one continues: a STOP is
-   * never a block.
+   * A `tts --redo` that did not finish after some of its requests were paid for: a STOP file ended
+   * it (exit 6), or a service away, the API's rate limit or the month's characters did (exit 4).
+   * Their takes are on disk and in audio/cache.json, while timeline.json still binds the takes
+   * before. auto.json keeps the lines it was retaking and the takes it made (`stopped_retake`), so
+   * the next run's guard before tts tells them from a take swapped without review and rebuilds the
+   * narration from them. A retake that ended before its first request was answered made nothing,
+   * records nothing and spent no round: `round` names the auto.json counter it was counted in,
+   * given back, so a rate limit that ends the retake round after round never uses the retakes up.
+   * "Answered" is what tts printed (`out`, FINISHED_REQUEST), not whether a take's bytes changed: a
+   * voice that answers the same text with the same bytes was still paid for, and giving its round
+   * back would buy it again every round the trouble lasts. A retake cut short after some answers
+   * keeps its round, as a STOP's always has: the lines it did not reach are retaken in the next
+   * round if one is left, else they go to the rewrite. The video is left with `deferral` (defer's
+   * options): for this run alone after a STOP, which is never a block; for the deferral's wait
+   * after exit 4, never a block either when the trouble is everyone's.
    */
-  retakeStopped(state, flagsFile, line) {
+  retakeStopped(state, flagsFile, line, { deferral = { backoffMs: 0 }, round = null, out = "" } = {}) {
     const workdir = this.workdir(state.slug);
     let ids;
     try {
@@ -3014,8 +3032,11 @@ export class Automation {
     if (takes && Object.keys(takes).length) {
       state.stopped_retake = { flags: path.relative(workdir, flagsFile).split(path.sep).join("/"), ids: [...ids], takes };
       saveState(workdir, state);
+    } else if (takes && round && !FINISHED_REQUEST.test(out) && Number.isInteger(state[round]) && state[round] > 0) {
+      state[round] -= 1;
+      saveState(workdir, state);
     }
-    return this.defer(state, `${state.slug}: ${line}`, { backoffMs: 0 });
+    return this.defer(state, `${state.slug}: ${line}`, deferral);
   }
 
   async narration(state) {
@@ -3044,7 +3065,8 @@ export class Automation {
       saveState(workdir, state);
       const flagsFile = path.join(workdir, "review", "check-flags.json");
       const redo = await this.speech(state.slug, ["tts", "--slug", state.slug, "--redo", flagsFile]);
-      if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, flagsFile, `the retake stopped (${lastLine(redo.out)}); the next run continues`);
+      if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, flagsFile, `the retake stopped (${lastLine(redo.out)}); the next run continues`, { round: "retakes", out: redo.out });
+      if (redo.code === ctx.EXIT.external) return this.retakeStopped(state, flagsFile, `the retake could not finish (${lastLine(redo.out)})`, { deferral: { what: "tts", everyone: Boolean(everyones(redo.out)) }, round: "retakes", out: redo.out });
       if (redo.code !== 0) return this.block(state,`retake failed: ${redo.out.trim().split("\n").at(-1)}`);
       check = await this.speech(state.slug, ["check-audio", "--slug", state.slug]);
     }
@@ -3065,6 +3087,8 @@ export class Automation {
       if (!round.ids.length) continue;
       const redo = await this.speech(state.slug, ["tts", "--slug", state.slug, "--redo", round.flagsFile]);
       if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, round.flagsFile, `the retake after the rewrite stopped (${lastLine(redo.out)}); the next run continues`);
+      // The rewrite itself was asked for and written, so its round stays spent.
+      if (redo.code === ctx.EXIT.external) return this.retakeStopped(state, round.flagsFile, `the retake after the rewrite could not finish (${lastLine(redo.out)})`, { deferral: { what: "tts", everyone: Boolean(everyones(redo.out)) } });
       if (redo.code !== 0) return this.block(state, `retake after the rewrite failed: ${lastLine(redo.out)}`);
       check = await this.speech(state.slug, ["check-audio", "--slug", state.slug]);
     }
