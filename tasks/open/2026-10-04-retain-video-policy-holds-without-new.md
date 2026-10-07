@@ -1,14 +1,14 @@
 ---
 id: 2026-10-04-retain-video-policy-holds-without-new
 title: Retain deterministic video policy holds without creating new writer jobs
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-policy-holds
+claimed_at: 2026-10-07T01:03:55Z
 created_at: 2026-10-04T17:53:20Z
 completed_at:
-branch: codex/video-native-followups-20261004-1525
+branch: claude/sharp-bardeen-ob6fn9
 depends_on:
   - 2026-10-03-video-worker-narration-takes-made-stale
   - 2026-09-30-video-worker-moves-two-videos-at
