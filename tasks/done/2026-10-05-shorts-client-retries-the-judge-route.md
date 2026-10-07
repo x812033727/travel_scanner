@@ -1,14 +1,14 @@
 ---
 id: 2026-10-05-shorts-client-retries-the-judge-route
 title: Shorts client retries the judge route's never-reached 502 like the automation client
-status: open
+status: done
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-shorts-judge
+claimed_at: 2026-10-07T03:05:28Z
 created_at: 2026-10-05T23:52:56Z
-completed_at:
-branch:
+completed_at: 2026-10-07T03:06:06Z
+branch: claude/happy-carson-c1hy91
 depends_on: []
 scope:
   - tools/video/shorts/site.mjs
@@ -35,17 +35,17 @@ the API container is only restarting, instead of asking again within its bounded
 
 ## Definition of done
 
-- [ ] A Shorts `judgePolicy` that gets the route's 502 `upstream_unavailable` is asked again within
+- [x] A Shorts `judgePolicy` that gets the route's 502 `upstream_unavailable` is asked again within
   the client's attempts; one that gets 504 `video_judge_answer_lost`, a 502 with any other code, or
   any other unlisted 5xx is still sent once and thrown as `RUN_UNCERTAIN`.
 
 ## Steps
 
-- [ ] Before starting, confirm the deployed commit still contains a9e4c3851 (skill `deploy`), so
+- [x] Before starting, confirm the deployed commit still contains a9e4c3851 (skill `deploy`), so
   no host answers that 502 for a lost answer.
-- [ ] Add `upstream_unavailable` to `SETTLED_JUDGE_CODES` in `tools/video/shorts/site.mjs` and
+- [x] Add `upstream_unavailable` to `SETTLED_JUDGE_CODES` in `tools/video/shorts/site.mjs` and
   rewrite the comment above it, as `tools/video/automation/client.mjs` did.
-- [ ] In `tools/video/shorts/site.test.mjs`, move "the judge route's 502" from `LOST` to the settled
+- [x] In `tools/video/shorts/site.test.mjs`, move "the judge route's 502" from `LOST` to the settled
   list of "a policy judgement that never reached a server, or that the API settled, is asked again",
   add the route's 504 `video_judge_answer_lost` and a 502 `video_judge_outcome_uncertain` to `LOST`,
   and drop "the judge route's 502" from the lost test's name.
@@ -65,3 +65,14 @@ settled case fail there.
   (2026-10-05-jev-judge-endpoints-report-an-uncertain, Codex PR #1254, open on 2026-10-06). It must
   stay outside the settled set.
 - `tools/video/shorts/*` is not bound to `docs/videos/long-form/review.json`.
+- 2026-10-07 (claude-opus-5-5-shorts-judge): `site.mjs` settles the judge route's 502
+  `upstream_unavailable` through `settledJudge(status, code)`, only at status 502 (a 503 with that
+  code is not something a judge route answers, so it stays uncertain, as in
+  `tools/video/tts/client.mjs`); `video_judge_upstream_failed` stays settled at any status, as before.
+  Tests: the route's 502 moved to the asked-again list; the 504 `video_judge_answer_lost`, the 502
+  `video_judge_outcome_uncertain` and a 503 `upstream_unavailable` are in `LOST`. The new settled case
+  fails against the old `site.mjs` (checked).
+- The deployed-commit step was not re-checked on the host from this session (no host access); it
+  rests on the record that production serves a9e4c3851 since 2026-10-05 23:13Z
+  (`tools/video/automation/client.mjs`, and this ticket's Why).
+- Verified: `node --test tools/video/shorts/site.test.mjs tools/video/shorts/lab.test.mjs`.

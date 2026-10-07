@@ -52,11 +52,14 @@ const LOST = [
   ['a verdict that breaks off', () => new Response('{"stance": 0.3, "passed": fal', { status: 200, headers: { 'content-type': 'application/json' } }), 200],
   ["an error without the API's code", () => json({ detail: 'Internal Server Error' }, 500), 500],
   ["a gateway's timeout page", () => new Response('<html>504 Gateway Time-out</html>', { status: 504, headers: { 'content-type': 'text/html' } }), 504],
-  // The judge route answers this for an API it never reached and for one that took the request and went quiet.
-  ["the judge route's 502", () => json({ code: 'upstream_unavailable', detail: 'API 服務目前無法回應' }, 502), 502],
+  // The judge route's answer for a request the API took and whose answer was lost (JUDGE_LOST).
+  ["the judge route's lost answer", () => json({ code: 'video_judge_answer_lost', detail: '請求已送到 API，回覆沒有在時限內回來' }, 504), 504],
+  ["the API's uncertain Jev outcome", () => json({ code: 'video_judge_outcome_uncertain', detail: 'Jev 可能已處理這次請求' }, 502), 502],
+  // Only the route's 502 says the API was never reached; no judge route answers the code with another status.
+  ["an upstream_unavailable no judge route answers", () => json({ code: 'upstream_unavailable', detail: 'API 服務目前無法回應' }, 503), 503],
 ];
 
-test('a policy judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, the judge route\'s 502', async () => {
+test('a policy judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, the judge route\'s lost answer', async () => {
   for (const [what, answer, status] of LOST) {
     const { client, calls, sleeps } = recording(answer);
     await assert.rejects(client.judgePolicy(BODY), (error) => {
@@ -78,6 +81,8 @@ test('a policy judgement that never reached a server, or that the API settled, i
       throw failed(code);
     }]),
     ["the API's answer after Jev failed", () => json({ code: 'video_judge_upstream_failed', detail: 'Jev 暫時無法判斷' }, 502)],
+    // The judge route's 502 now means only an API it never reached (a lost answer is its 504).
+    ["the judge route's 502 for an API it never reached", () => json({ code: 'upstream_unavailable', detail: 'API 服務目前無法回應' }, 502)],
     ["the judge's hourly limit", () => json({ code: 'rate_limit_exceeded', detail: 'slow down' }, 429)],
     ['the spent Jev budget', () => json({ code: 'jev_budget_exhausted', detail: '今天的 Jev 呼叫次數已用完' }, 429)],
   ];

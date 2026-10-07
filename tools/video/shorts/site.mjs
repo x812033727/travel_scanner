@@ -31,12 +31,17 @@ export const DEFAULT_SETTINGS = Object.freeze({ voice: CHANNEL_VOICE, seconds_mi
 const OWNER_CODES = new Set(['video_tool_token_invalid']);
 // Jev's policy reading takes one call off the daily Jev budget before Jev is asked
 // (apps/api/app/video_automation/judge.py `_ask`), so it is `paid`, as in
-// tools/video/automation/client.mjs: once sent, it is asked again only after a 429 or the API's own
-// 502 once its Jev call failed (no verdict was lost on the way back). A dropped connection, an
-// unreadable answer or any other 5xx (a gateway's page, the judge route's 502
-// upstream_unavailable) leaves its outcome unknown: RUN_UNCERTAIN, the automation client's code,
-// which the QA's policy item reports instead of asking Jev again.
+// tools/video/automation/client.mjs: once sent, it is asked again only after a 429, the API's own
+// 502 once its Jev call failed (no verdict was lost on the way back), or the judge route's 502
+// upstream_unavailable, which means only an API the route never reached (a request the API took and
+// whose answer was lost is its 504 video_judge_answer_lost, JUDGE_LOST in
+// apps/web/app/api/video/speech/forward.ts; production serves that since a9e4c3851). A dropped
+// connection, an unreadable answer or any other 5xx (a gateway's page, that 504, a 502 with another
+// code) leaves its outcome unknown: RUN_UNCERTAIN, the automation client's code, which the QA's
+// policy item reports instead of asking Jev again.
 const SETTLED_JUDGE_CODES = new Set(['video_judge_upstream_failed']);
+const NEVER_REACHED = { status: 502, code: 'upstream_unavailable' };
+const settledJudge = (status, code) => SETTLED_JUDGE_CODES.has(code) || (status === NEVER_REACHED.status && code === NEVER_REACHED.code);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(['ECONNREFUSED', 'ENOTFOUND', 'EAI_AGAIN', 'EHOSTUNREACH', 'ENETUNREACH', 'UND_ERR_CONNECT_TIMEOUT']);
 const neverSent = (error) => NEVER_SENT.has(error?.cause?.code ?? error?.code);
@@ -79,7 +84,7 @@ export function siteClient({ env = process.env, home, fetch: fetchImpl = globalT
       }
       const problem = await response.json().catch(() => ({}));
       const who = response.status === 401 || OWNER_CODES.has(problem.code) ? 'owner' : 'service';
-      if (paid && response.status >= 500 && !SETTLED_JUDGE_CODES.has(problem.code)) {
+      if (paid && response.status >= 500 && !settledJudge(response.status, problem.code)) {
         throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ''}`, response.status);
       }
       last = new SiteError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code ?? '', who });
