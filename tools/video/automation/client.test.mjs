@@ -197,6 +197,8 @@ test("a stage run sent and left without its answer is not sent again: the route'
     // Only the route's 502 says the API was never reached; no route answers the code otherwise.
     ["an upstream_unavailable no route answers", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 503 }), 503],
     ["an upstream_unavailable at a gateway's 504", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 504 }), 504],
+    ["a 502 with a code that settles nothing", () => Response.json({ code: "video_ai_run_uncertain", detail: "the stage may have run" }, { status: 502 }), 502],
+    ["a rate_limit_unavailable at another status", () => Response.json({ code: "rate_limit_unavailable", detail: "安全驗證服務暫時無法使用" }, { status: 500 }), 500],
   ];
   for (const [what, answer, status] of lost) {
     const box = sandbox();
@@ -234,6 +236,8 @@ test("a stage run that never reached a server, or that the API settled, is still
     ["the web route that never reached the API", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 502 })],
     ["the API's rate limit", () => Response.json({ code: "rate_limit_exceeded", detail: "slow down" }, { status: 429 })],
     ["a busy vendor", () => Response.json({ code: "video_ai_upstream_busy", detail: "busy" }, { status: 503 })],
+    // Redis could not count the call, so the API refused it before the stage ran.
+    ["the API's rate limiter away", () => Response.json({ code: "rate_limit_unavailable", detail: "安全驗證服務暫時無法使用" }, { status: 503 })],
   ];
   for (const [what, answer] of settled) {
     const box = sandbox();
@@ -343,6 +347,7 @@ test("a Jev judgement that never reached a server, or that the API settled, is a
     ["the API's answer after Jev failed", () => Response.json({ code: "video_judge_upstream_failed", detail: "Jev 暫時無法判斷" }, { status: 502 })],
     ["the judge's hourly limit", () => Response.json({ code: "rate_limit_exceeded", detail: "slow down" }, { status: 429 })],
     ["the spent Jev budget", () => Response.json({ code: "jev_budget_exhausted", detail: "今天的 Jev 呼叫次數已用完" }, { status: 429 })],
+    ["the API's rate limiter away", () => Response.json({ code: "rate_limit_unavailable", detail: "安全驗證服務暫時無法使用" }, { status: 503 })],
   ];
   for (const [method, route, body, verdict] of JUDGES) {
     for (const [what, answer] of settled) {

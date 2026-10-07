@@ -59,7 +59,7 @@ const RETRYABLE_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_un
 // `auto` ends; the worker's loop tries again on its next round.
 export const PAUSE_CODES = new Set(["video_ai_subscription_paused", "video_ai_subscription_auth_failed"]);
 // A stage run's 5xx that settles it: the API's own answer once the run is over (it is recorded as
-// failed, no answer was lost), or the web route's 502 for an API it never reached (NEVER_REACHED).
+// failed, no answer was lost), or an answer that says nothing ran (NEVER_RAN).
 // Any other 5xx after a stage run was sent leaves its outcome unknown (RUN_UNCERTAIN).
 const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "video_ai_upstream_failed", OUTPUT_INVALID]);
 // A Jev judgement (judge/policy, judge/outline) takes one call off the daily Jev budget before it
@@ -73,12 +73,15 @@ const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_
 // before that route change answers the 502 for both, so this client needs a host that serves it:
 // production does since a9e4c3851, deployed 2026-10-05.
 const SETTLED_JUDGE_CODES = new Set(["video_judge_upstream_failed"]);
-// The run and judge routes' (forwardToSpeech) own answer for an API they never reached: nothing
-// ran, so a stage run or a judgement is asked again. Only the 502: no route answers the code with
-// another status, so a 503 or 504 `upstream_unavailable` came from something else and stays
-// uncertain, as in tts/client.mjs and shorts/site.mjs.
-const NEVER_REACHED = Object.freeze({ status: 502, code: "upstream_unavailable" });
-const settles = (settled, status, code) => settled.has(code) || (status === NEVER_REACHED.status && code === NEVER_REACHED.code);
+// Answers that say nothing ran, so a stage run or a judgement is asked again; each only with its
+// own status, so the same code with another came from something else and stays uncertain:
+// - the run and judge routes' (forwardToSpeech) 502 for an API they never reached, as in
+//   tts/client.mjs and shorts/site.mjs;
+// - the API's 503 when Redis cannot count the call against its rate limit (app/infra.py
+//   `enforce_named_rate_limit`), which it checks in `video_tool` and again first in the run and
+//   judge handlers, before any model or Jev call.
+const NEVER_RAN = Object.freeze([{ status: 502, code: "upstream_unavailable" }, { status: 503, code: "rate_limit_unavailable" }]);
+const settles = (settled, status, code) => settled.has(code) || NEVER_RAN.some((answer) => answer.status === status && answer.code === code);
 const JUDGE = Object.freeze({ paid: true, settled: SETTLED_JUDGE_CODES, what: "Jev" });
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
