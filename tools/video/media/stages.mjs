@@ -10,6 +10,7 @@ import { promisify } from "node:util";
 import { locateFfmpeg } from "../assemble/ffmpeg.mjs";
 import { keyframeKey } from "../core/drama.mjs";
 import { stopRequested } from "../core/paths.mjs";
+import { PROJECT_LEASED, ProjectLeaseError, requireProjectLease } from "../core/project-lease.mjs";
 import { contactSheetHtml, SHEET_WIDTH } from "../render/contact.mjs";
 import { cached, forgetJob, mediaKey, pendingJob, remember, rememberJob } from "./cache.mjs";
 import { MediaError, RETAKE_CODES, TERMINAL, downloadFile, judge as askJudge, putFile, submitClip, submitImage, submitMusic, waitForJob } from "./client.mjs";
@@ -164,6 +165,21 @@ export class Stage {
   }
 
   /**
+   * The project's lease (core/project-lease.mjs), before anything is reserved, sent or booked:
+   * the worker's unit holds it and a command it runs joins it; a command run by hand takes it for
+   * the rest of its process. Another producer holding it (or possibly holding it) is the owner's
+   * to sort out, and nothing is spent meanwhile.
+   */
+  hold() {
+    try {
+      requireProjectLease(this.workdir, { owner: this.stage, now: this.now });
+    } catch (error) {
+      if (error instanceof ProjectLeaseError) throw new MediaError(error.message, { code: PROJECT_LEASED, who: "owner" });
+      throw error;
+    }
+  }
+
+  /**
    * Refuse spending `usd` on `what` (a generation, a judge call, an import) when it would pass
    * the owner's per-video cap, counting what the ledger has charged and still holds reserved.
    */
@@ -188,6 +204,7 @@ export class Stage {
     const expected = choiceFor(this.status, kind, this.format);
     const hit = cached(this.workdir, key);
     if (hit) return { ...hit, key, reused: true };
+    this.hold();
     let job;
     const pending = pendingJob(this.workdir, key);
     if (pending) {
@@ -197,6 +214,17 @@ export class Stage {
       this.spend(usd);
       reserve(this.workdir, { stage: this.stage, kind, id, provider: expected.provider, model: expected.model, key, seconds, cost_usd: usd }, this.now());
       let submitted;
+      // Checked again with the hold in place, right before the request goes out.
+      if (this.stop()) {
+        release(this.workdir, key);
+        throw stoppedError();
+      }
+      try {
+        this.hold();
+      } catch (error) {
+        release(this.workdir, key);
+        throw error;
+      }
       try {
         submitted = await submit({ request, ...this.options });
       } catch (error) {
@@ -278,6 +306,7 @@ export class Stage {
    */
   async judge({ id, kind, files, rubric, context = {} }) {
     if (this.stop()) throw stoppedError();
+    this.hold();
     this.spend(JUDGE_USD_PER_CALL, "judge call");
     const verdict = await askJudge({ request: { slug: this.slug, kind, files, rubric, context }, ...this.options });
     appendLedger(this.workdir, { stage: this.stage, kind: "judge", id, provider: "gemini", model: verdict.model ?? "", key: null, cost_usd: JUDGE_USD_PER_CALL, status: "judged" }, this.now());

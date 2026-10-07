@@ -18,7 +18,7 @@ scope:
   - tools/video/core/project-lease.mjs
   - tools/video/core/project-lease.test.mjs
   - tools/video/media/keyframes.mjs
-  - tools/video/media/keyframes.test.mjs
+  - tools/video/media/look-keyframes.test.mjs
   - tools/video/media/stages.mjs
   - tools/video/media/stages.test.mjs
   - docs/videos/long-form/review.md

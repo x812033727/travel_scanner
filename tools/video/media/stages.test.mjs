@@ -5,6 +5,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { tempDir } from "../core/fixtures/load.mjs";
+import { LEASE_FILE, PROJECT_LEASED } from "../core/project-lease.mjs";
 import { readCache, readJobs } from "./cache.mjs";
 import { statusText } from "./cli.mjs";
 import { MediaError } from "./client.mjs";
@@ -433,4 +434,43 @@ test("an image model takes a style reference when the catalog says so; a server 
   assert.equal(takesStyleReference(before, "slides"), false);
   assert.equal(takesStyleReference(before, "drama"), true);
   assert.equal(takesStyleReference({ ...before, image: { provider: "minimax", model: "image-01", configured: true } }, "drama"), false);
+});
+
+test("a project another producer holds gets no reservation, no request and no judge call from this stage", async () => {
+  const fake = fakeStage(status());
+  writeFileSync(path.join(fake.workdir, LEASE_FILE), JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "manual recovery", pid: 4242, host: "another-container", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+  const held = (error) => error instanceof MediaError && error.code === PROJECT_LEASED && error.who === "owner" && /manual recovery/.test(error.message);
+  await assert.rejects(fake.generate(), held);
+  await assert.rejects(fake.stage.judge({ id: "opening", kind: "keyframe", files: [], rubric: [] }), held);
+  assert.deepEqual(fake.calls, [], "nothing reached the media server");
+  assert.deepEqual(readLedger(fake.workdir).entries, [], "nothing was reserved or booked");
+  assert.deepEqual(readJobs(fake.workdir).jobs, {});
+});
+
+test("a STOP that arrives while a submitted picture is drawn keeps that paid picture, and the next request is not sent", async () => {
+  let stopped = false;
+  const fake = fakeStage(status(), { overrides: {
+    "POST images": ({ init }) => {
+      fake.bodies.push(JSON.parse(init.body));
+      return Response.json({ ...fake.ready, status: "running", file: null });
+    },
+    "GET jobs/image-job-1": () => {
+      // The owner's STOP lands while the server is drawing: the job finishes all the same.
+      writeFileSync(path.join(fake.workdir, "STOP"), "owner hold");
+      stopped = true;
+      return Response.json(fake.ready);
+    },
+  } });
+  const first = await fake.generate();
+  assert.ok(stopped);
+  assert.equal(first.reused, false);
+  assert.ok(existsSync(path.join(fake.workdir, first.file)), "the paid picture is downloaded under its original request");
+  assert.equal(readCache(fake.workdir).entries[first.key].sha256, first.sha256);
+  assert.deepEqual(readLedger(fake.workdir).entries.map((entry) => entry.status), ["ready"], "booked once at the server's charge");
+  const posts = fake.calls.filter((route) => route.startsWith("POST")).length;
+  await assert.rejects(fake.generate({ seed: 2, target: "keyframes/opening-2" }), (error) => error.code === "stopped");
+  await assert.rejects(fake.stage.judge({ id: "opening", kind: "keyframe", files: [], rubric: [] }), (error) => error.code === "stopped");
+  assert.equal(fake.calls.filter((route) => route.startsWith("POST")).length, posts, "no next paid call after STOP");
+  assert.equal(readLedger(fake.workdir).entries.length, 1, "and nothing reserved for one");
+  assert.deepEqual((await fake.generate()).reused, true, "the kept picture is still served from the cache");
 });

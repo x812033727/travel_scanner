@@ -12,7 +12,8 @@ import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
 import { burnIn, drawnShotScenes, hasCast, hasPictures, illustrated, isExplainer, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
-import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
+import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
+import { PROJECT_LEASED, ProjectLeaseError, requireProjectLease } from "../core/project-lease.mjs";
 import { ARTIFACTS, keyframeProblems, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { visualHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
@@ -390,6 +391,27 @@ async function stylePlate({ stage, workdir, look, hash, takes, size, rubric, for
   return { ...record, generated };
 }
 
+/**
+ * Whether this run may write the project's keyframes at all: not under the project's STOP file
+ * (false, said on stdout), and only while this process holds the project's lease
+ * (core/project-lease.mjs; another producer's is the owner's to sort out, and nothing is written).
+ * Once a run is under way, a STOP that arrives keeps the takes already paid for and judged in the
+ * manifest (the stopped branches below) and asks for nothing more.
+ */
+function mayWrite(ctx, workdir) {
+  if (stopRequested(workdir)) {
+    ctx.stdout.write("stopped by the STOP file before anything was drawn or written; remove it to continue\n");
+    return false;
+  }
+  try {
+    requireProjectLease(workdir, { owner: "keyframes", now: ctx.now });
+  } catch (error) {
+    if (error instanceof ProjectLeaseError) throw new MediaError(error.message, { code: PROJECT_LEASED, who: "owner" });
+    throw error;
+  }
+  return true;
+}
+
 export async function run(command, args, ctx) {
   const { EXIT } = ctx;
   const values = parseArgs({
@@ -427,7 +449,10 @@ export async function run(command, args, ctx) {
   const binding = slides ? { pictures_hash: picturesHash(doc) } : { visual_hash: visualHash(doc) };
   const bound = (manifest) => manifest && Object.entries(binding).every(([key, value]) => manifest[key] === value);
   const format = slides ? doc.format : null;
-  if (values["accept-best"]) return acceptBest(ctx, { doc, workdir, hash, bound, wanted: values["accept-best"], channel: values.channel });
+  if (values["accept-best"]) {
+    if (!mayWrite(ctx, workdir)) return EXIT.ok;
+    return acceptBest(ctx, { doc, workdir, hash, bound, wanted: values["accept-best"], channel: values.channel });
+  }
   const rubricOptions = { subtitleBand: burnIn(doc), craft: slides };
   const wanted = values.shot ? new Set(values.shot.split(",").map((each) => each.trim()).filter(Boolean)) : null;
   // A shot cut from another shot's clip (data.source) shows that clip, so it has no keyframe to draw.
@@ -499,6 +524,7 @@ export async function run(command, args, ctx) {
     return EXIT.ok;
   }
 
+  if (!mayWrite(ctx, workdir)) return EXIT.ok;
   const credentials = requireCredentials(ctx);
   const options = clientOptions(ctx, credentials);
   const status = imageStatus(await mediaStatus(options), project.series);
