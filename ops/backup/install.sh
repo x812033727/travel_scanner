@@ -26,6 +26,7 @@ install -d -m 0700 /var/backups/travel-scanner/nightly
 install -m 0644 "${SOURCE_ROOT}/ops/backup/backup.py" "${TARGET}/backup.py"
 install -m 0644 "${SOURCE_ROOT}/ops/backup/manifest-paths.txt" "${TARGET}/manifest-paths.txt"
 install -m 0644 "${SOURCE_ROOT}/ops/backup/README.md" "${TARGET}/README.md"
+install -m 0755 "${SOURCE_ROOT}/ops/backup/status.sh" "${TARGET}/status.sh"
 install -m 0644 "${SOURCE_ROOT}/ops/backup/travel-scanner-backup.service" /etc/systemd/system/
 install -m 0644 "${SOURCE_ROOT}/ops/backup/travel-scanner-backup.timer" /etc/systemd/system/
 if [[ ! -f "${ENV_FILE}" ]]; then

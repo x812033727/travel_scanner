@@ -29,7 +29,7 @@ exits 1; the previous complete runs are untouched.
 
 | Path | What |
 | --- | --- |
-| `/opt/travel-scanner-backup/backup.py`, `manifest-paths.txt`, `README.md` | Copied by `install.sh`; upgrading is `sudo bash ops/backup/install.sh` from a reviewed checkout |
+| `/opt/travel-scanner-backup/backup.py`, `status.sh`, `manifest-paths.txt`, `README.md` | Copied by `install.sh`; upgrading is `sudo bash ops/backup/install.sh` from a reviewed checkout |
 | `/etc/travel-scanner/backup.env` (root, 0600) | `BACKUP_LOCAL_RETENTION`, `BACKUP_AGE_RECIPIENT`, `BACKUP_INCLUDE_REDIS`; read on every run |
 | `/var/backups/travel-scanner/nightly/<ts>/` (0700) | One complete run: the dump(s), `config.tar.age`, optional `redis.rdb`, `manifest.json` |
 | `/var/lib/travel-scanner-backup/last.json` | `last_success` (time, path, seconds, bytes, file names, git SHA, alembic revision), `last_failure` (time, stage, reason), `last_skipped`. Never a secret |
@@ -71,7 +71,8 @@ df -h /var/backups
 ## Reading it
 
 ```bash
-sudo python3 /opt/travel-scanner-backup/backup.py status   # exit 1 when failed, never run, or > 36 h old
+bash /opt/travel-scanner-backup/status.sh                   # timer state + the lines below; exit 1 when failed, never run, or > 36 h old
+sudo python3 /opt/travel-scanner-backup/backup.py status   # the same without the timer lines
 journalctl -u travel-scanner-backup --since -2d
 ls -la /var/backups/travel-scanner/nightly/
 ```
