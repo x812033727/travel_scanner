@@ -76,9 +76,9 @@ are:
 
 | Dub file under the private media directory | SHA-256 | Bytes |
 | --- | --- | --- |
-| `dubs/en.m4a` | `de254ff1ae33bab875160f6da81d78cbda232dabead4c93cbccf9c30d2a9a312` | 26935012 |
-| `dubs/ja.m4a` | `e75528a6339069598dda8a58631ceaad4f0a0b88874fac09fac1de7ce6be96d3` | 31710286 |
-| `dubs/ko.m4a` | `2ec4bff96c5bd8b9947de731b705619d64ff10cb39b45f6444d104a93464e1f4` | 25652914 |
+| [dubs/en.m4a](C:/Users/x8120/mokaair-work/videos/ai-term-large-language-model/dubs/en.m4a) | `de254ff1ae33bab875160f6da81d78cbda232dabead4c93cbccf9c30d2a9a312` | 26935012 |
+| [dubs/ja.m4a](C:/Users/x8120/mokaair-work/videos/ai-term-large-language-model/dubs/ja.m4a) | `e75528a6339069598dda8a58631ceaad4f0a0b88874fac09fac1de7ce6be96d3` | 31710286 |
+| [dubs/ko.m4a](C:/Users/x8120/mokaair-work/videos/ai-term-large-language-model/dubs/ko.m4a) | `2ec4bff96c5bd8b9947de731b705619d64ff10cb39b45f6444d104a93464e1f4` | 25652914 |
 
 The final translated input JSON hashes are en
 `d5b3c90e2e8e8c60077e801caa121d40f56faa4b507d25d06acfaa40bc4e9ea6`, ja
@@ -263,6 +263,13 @@ Reviewable files:
 | Post validation | `0415e81d91bd53d44e41df81cb6f853e42f4194b9516b01f4848ebd36d694d7f` |
 | Persisted review confirmation | `6d3ccadc89318a31a6a7d1ae473708ecc471091c2a24c7401205faaa6146563d` |
 | Exact submitted body | `f3f1ec6e324db41c7f231d99813a620a362bc7152ca6957be073e5e84b50397d` |
+
+The independent final audit also passed against the saved intent, posted result,
+API readback, all 13 upload receipts, original review cohort, current media/source
+pins and pre/post consumer receipts. It confirms one pending language submission,
+unchanged prior approvals/delivery, exact 414 verdicts and preserved 1/4/4 flags.
+[Final independent receipt](C:/Users/x8120/mokaair-work/llm-language-completion-20261007/evidence/owner-audio-review-submission-independent.v3.json):
+SHA-256 `e5182b918a50c358086e6ca25d2a8594528130040e7620dbb95e620a309e8e18`.
 
 The listener rewrite skill limits the recorded route to two rounds and leaves
 remaining flags to the owner. The main video skill also requires the owner to
