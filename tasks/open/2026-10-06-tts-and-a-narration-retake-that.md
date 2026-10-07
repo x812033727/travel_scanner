@@ -1,11 +1,11 @@
 ---
 id: 2026-10-06-tts-and-a-narration-retake-that
 title: tts and a narration retake that exit 4 block the video instead of waiting
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-tts-defer
+claimed_at: 2026-10-07T06:02:08Z
 created_at: 2026-10-06T15:42:27Z
 completed_at:
 branch:
@@ -42,20 +42,20 @@ request, and not one of its findings.
 
 ## Definition of done
 
-- [ ] A `tts` or a retake that exits 4 defers the video with the command's last line, and one that
+- [x] A `tts` or a retake that exits 4 defers the video with the command's last line, and one that
       says the trouble is everyone's never blocks it; exit 3 (the owner's) and the other codes
       block as today.
-- [ ] A paid speech request whose answer was lost (exit 3 with `SPEECH_UNCERTAIN`) still stops the
+- [x] A paid speech request whose answer was lost (exit 3 with `SPEECH_UNCERTAIN`) still stops the
       video for the owner: nothing here may send it again.
 
 ## Steps
 
-- [ ] `advance()` and `narration()`: `code === 4` goes to
+- [x] `advance()` and `narration()`: `code === 4` goes to
       `defer(state, line, { what: "tts", everyone: Boolean(everyones(result.out)) })` before the
       block for any other code. Check what a retake that stopped halfway leaves on disk first:
       `retakeStopped` exists because takes changed by a retake no longer match `timeline.json`,
       and a retake that exits 4 after some lines is in the same position.
-- [ ] Tests in `automation.test.mjs` on the `narrationGate` fixture: a tts and a retake that exit
+- [x] Tests in `automation.test.mjs` on the `narrationGate` fixture: a tts and a retake that exit
       4 with the rate limit's sentence, eight rounds, never blocked; with a vendor's line, blocked
       at the seventh.
 
@@ -71,3 +71,26 @@ node --test tools/video/automation/automation.test.mjs
   (`docs/videos/long-form/review.json`): a change there needs the independent re-bind.
 - `everyones()` reads the server's wording because the commands print the detail and not the code;
   its table is in `flow.mjs` beside `EVERYONE_CODES`.
+- 2026-10-07 (claude-opus-5-5-tts-defer). `flow.mjs`:
+  - `advance()`: a tts that exits 4 is deferred as `${slug}: tts could not finish (<last line>)`,
+    with `what: "tts"` and `everyone` from `everyones(result.out)`. Its takes so far are cached and
+    the next tts goes on from them.
+  - Why that cannot trip the guard before tts: the guard's `resumed` case needs the same script with
+    bound evidence, where every take is current, so that tts has nothing to synthesize and cannot
+    exit 4 with takes changed.
+  - `narration()`: a retake, or a retake after a rewrite, that exits 4 goes through `retakeStopped`
+    with defer's options (`retakeWait`): `what: "tts"`, and `everyone` from its output. That
+    function records the takes the retake made (`stopped_retake`), so the next round's plain tts
+    binds them as it does after a STOP, instead of blocking on "audio evidence no longer matches".
+    A STOP keeps its `backoffMs: 0`; exit 4 waits and doubles like any deferral.
+  - The resume line now reads "narration synthesized from the takes of the retake that stopped
+    halfway", since a service as well as a STOP file can end one.
+- Tests (`automation.test.mjs`), each failing on the old code:
+  - tts exit 4 with the rate limit's sentence, and with the month's characters spent: eight
+    rounds, never blocked, `defer_shared` 8, then synthesized.
+  - With a vendor's line: blocked at the seventh try as `deferred:tts`.
+  - A retake that exits 4 after one take: recorded, deferred, bound, checked, and no line retaken
+    twice.
+  - A retake that exits 4 before its first take: recorded nothing, counted.
+  - Also pinned (passes on both versions): tts exit 3 (a revoked token, a lost paid answer) and
+    exit 2 still block at once.
