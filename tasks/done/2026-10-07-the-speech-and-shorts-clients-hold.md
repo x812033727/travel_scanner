@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-the-speech-and-shorts-clients-hold
 title: The speech and Shorts clients hold the API's 503 rate_limit_unavailable as uncertain, though nothing ran
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-limiter-503
 claimed_at: 2026-10-07T10:44:14Z
 created_at: 2026-10-07T09:30:00Z
-completed_at:
+completed_at: 2026-10-07T10:59:06Z
 branch:
 depends_on: []
 scope:
@@ -67,3 +67,11 @@ reached a provider. A Redis restart during a deploy, while a worker round is run
   calls and for the policy judgement), and their lost tables gain the code at a 500 (sent once,
   held). The settled rows fail on the old code. The lost rows pass on both, since they pin the
   side that stays. Accepting the code at any status fails a test in each client.
+- Review (2026-10-07, finding verified): no defect in the change. It traced every paid route the
+  two clients call (`speech`, `speech/transcribe`, `speech/judge`, `speech/align`,
+  `automation/judge/policy`). On each, the only source of 503 `rate_limit_unavailable` is
+  `enforce_named_rate_limit`, which runs before any provider or Jev call, and no Redis step after
+  a provider call raises it. The web forwarders pass the API's answer through. Through the
+  journal, the entry reads waiting during the retry waits and is removed after the final error.
+  Mutations confirmed. Filed from it: `2026-10-07-jev-s-unconfigured-503-is-held-as` (Jev's
+  unconfigured 503 `provider_unavailable`, older and outside this scope).
