@@ -30,7 +30,7 @@ from app.video_speech.align import (
     units_of_text,
     wav_milliseconds,
 )
-from app.video_speech.azure import SpeechUpstreamError
+from app.video_speech.azure import SpeechAnswerLost, SpeechUpstreamError
 from app.video_speech.gemini import wav_from_pcm
 from app.video_speech.ssml import Part, billable_characters
 
@@ -186,6 +186,8 @@ class FakeSdk:
         ServiceUnavailable = "503"
         ServiceTimeout = "504"
         ConnectionFailure = "conn"
+        ServiceError = "service"
+        RuntimeError = "runtime"
 
     def __init__(self, result: Any, events: list[Any]) -> None:
         self.result = result
@@ -256,28 +258,59 @@ def test_the_blocking_synthesis_asks_for_boundaries_and_returns_them_with_the_au
     assert sdk.spoken == ["<speak/>"]
 
 
+NEVER_OPENED = (
+    "Connection failed (no connection to the remote host). Internal error: 1. Error details: "
+    "Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED"
+)
+CLOSED_MIDWAY = "Connection was closed by the remote host. Error code: 1006. Error details: "
+
+
 def test_a_cancelled_synthesis_is_the_upstream_error_the_speech_route_knows(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    for code, status in (
-        ("auth", 401),
-        ("forbidden", 403),
-        ("bad", 400),
-        ("429", 429),
-        ("conn", 502),
+    # The service refused it, answered an error of its own, or the websocket never opened:
+    # settled, as the speech route settles the status it stands for.
+    for code, status, said in (
+        ("auth", 401, "WebSocket upgrade failed: Authentication error (401)"),
+        ("forbidden", 403, "WebSocket upgrade failed: Forbidden (403)"),
+        ("bad", 400, "the request is invalid"),
+        ("429", 429, "Too many requests"),
+        ("503", 503, "Service unavailable"),
+        ("service", 502, "Internal service error"),
+        ("conn", 502, "WebSocket upgrade failed"),
+        ("conn", 502, NEVER_OPENED),
     ):
-        details = SimpleNamespace(error_code=code, error_details="WebSocket upgrade failed")
+        details = SimpleNamespace(error_code=code, error_details=said)
         cancelled = SimpleNamespace(reason="canceled", audio_data=b"", cancellation_details=details)
         sdk = FakeSdk(cancelled, [])
         monkeypatch.setattr(align, "_speech_sdk", lambda sdk=sdk: sdk)
         with pytest.raises(SpeechUpstreamError) as error:
             synthesize_with_boundaries_blocking("eastasia", "k", "<speak/>")
         assert error.value.status == status, code
-        assert "WebSocket upgrade failed" in str(error.value)
+        assert said[:40] in str(error.value)
     no_audio = SimpleNamespace(reason="completed", audio_data=b"", cancellation_details=None)
     monkeypatch.setattr(align, "_speech_sdk", lambda: FakeSdk(no_audio, []))
     with pytest.raises(SpeechUpstreamError):
         synthesize_with_boundaries_blocking("eastasia", "k", "<speak/>")
+
+
+def test_a_cancelled_synthesis_that_may_have_run_is_lost(monkeypatch: pytest.MonkeyPatch) -> None:
+    # Anything else may follow a synthesis Azure ran and billed
+    # (2026-10-07-speech-align-route-tells-an-azure).
+    for code, said in (
+        ("504", "Timeout while synthesizing"),
+        ("conn", CLOSED_MIDWAY),
+        ("runtime", "Runtime error: the synthesizer failed"),
+        ("a code this module does not know", "?"),
+    ):
+        details = SimpleNamespace(error_code=code, error_details=said)
+        cancelled = SimpleNamespace(reason="canceled", audio_data=b"", cancellation_details=details)
+        sdk = FakeSdk(cancelled, [])
+        monkeypatch.setattr(align, "_speech_sdk", lambda sdk=sdk: sdk)
+        with pytest.raises(SpeechAnswerLost) as error:
+            synthesize_with_boundaries_blocking("eastasia", "k", "<speak/>")
+        assert "it may have run" in str(error.value), code
+        assert not isinstance(error.value, SpeechUpstreamError)
 
 
 @pytest.mark.asyncio
@@ -289,7 +322,8 @@ async def test_the_thread_is_bounded_by_the_timeout(monkeypatch: pytest.MonkeyPa
         return WAV, []
 
     monkeypatch.setattr(align, "synthesize_with_boundaries_blocking", slow)
-    with pytest.raises(SpeechUpstreamError, match="did not answer in time"):
+    # The thread is not cancelled: the synthesis may still finish and be billed, so it is lost.
+    with pytest.raises(SpeechAnswerLost, match="did not answer in time"):
         await align.synthesize_with_boundaries("eastasia", "k", "<speak/>", 0.05)
     assert await align.synthesize_with_boundaries("eastasia", "k", "<speak/>", 5) == (WAV, [])
 
@@ -448,6 +482,19 @@ async def test_azure_failures_are_the_speech_routes_codes_and_refund_the_reserva
         align_app["error"] = SpeechUpstreamError(status, "no")
         response = await _post({"speech": _speech()})
         assert (response.status_code, response.json()["code"]) == (http, code)
+    assert (await azure_speech_usage_snapshot(align_app["redis"], 450_000)).used == 0
+
+
+@pytest.mark.asyncio
+async def test_a_synthesis_that_may_have_run_is_its_own_504_and_its_characters_stay_counted(
+    align_app: Any,
+) -> None:
+    align_app["error"] = SpeechAnswerLost("Azure Speech did not answer in time")
+    lost = await _post({"speech": _speech()})
+    assert lost.status_code == 504 and lost.json()["code"] == "video_speech_upstream_lost"
+    billed = billable_characters("排行榜第一名，")
+    assert (await azure_speech_usage_snapshot(align_app["redis"], 450_000)).used == billed
+    assert len(align_app["calls"]) == 1
 
 
 @pytest.mark.asyncio

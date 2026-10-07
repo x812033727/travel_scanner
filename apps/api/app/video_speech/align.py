@@ -43,7 +43,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Any, Protocol
 
-from app.video_speech.azure import SpeechUpstreamError
+from app.video_speech.azure import SpeechAnswerLost, SpeechUpstreamError
 from app.video_speech.ssml import Part
 
 logger = logging.getLogger(__name__)
@@ -327,18 +327,48 @@ def boundary_from_event(event: Any) -> Boundary:
     )
 
 
-def _status_of(sdk: Any, error_code: Any) -> int:
-    """The HTTP status the speech route would have seen for a cancelled synthesis."""
+# A cancelled synthesis settled as the speech route settles the status it stands for: the service
+# refused it before synthesizing (a key, a body, a limit, a service down), or answered with an
+# error of its own, as a REST 5xx is settled there. The SDK documents these as the service's
+# answers; nothing documents that a refusal is billed.
+_SETTLED_CANCELLATIONS = {
+    "AuthenticationFailure": 401,
+    "Forbidden": 403,
+    "BadRequest": 400,
+    "TooManyRequests": 429,
+    "ServiceUnavailable": 503,
+    "ServiceError": 502,
+}
+# A ConnectionFailure says nothing of when the connection failed. The SDK sends the synthesis
+# over a websocket once it has opened, so a websocket that never opened (its error text, e.g.
+# "WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED") or whose upgrade was refused carried nothing.
+_NEVER_OPENED = re.compile(
+    r"WS_OPEN_ERROR|WebSocket upgrade failed|no connection to the remote host"
+)
+
+
+def _cancellation(sdk: Any, details: Any) -> SpeechUpstreamError | SpeechAnswerLost:
+    """What a cancelled synthesis means for the route: settled, or lost after it may have run.
+
+    Every other code (ServiceTimeout, a ConnectionFailure after the websocket opened,
+    RuntimeError, the redirects, one this module does not know) may follow a synthesis Azure ran
+    and billed, so it is lost: the video tool does not send it again.
+    """
     codes = sdk.CancellationErrorCode
-    table = {
-        codes.AuthenticationFailure: 401,
-        codes.Forbidden: 403,
-        codes.BadRequest: 400,
-        codes.TooManyRequests: 429,
-        codes.ServiceUnavailable: 503,
-        codes.ServiceTimeout: 504,
-    }
-    return table.get(error_code, 502)
+    error_code = getattr(details, "error_code", None)
+    reason = str(getattr(details, "error_details", "") or "")[:200]
+    message = f"Azure Speech cancelled the synthesis: {reason}"
+    for name, status in _SETTLED_CANCELLATIONS.items():
+        if hasattr(codes, name) and error_code == getattr(codes, name):
+            return SpeechUpstreamError(status, message)
+    connection_failure = getattr(codes, "ConnectionFailure", None)
+    if (
+        connection_failure is not None
+        and error_code == connection_failure
+        and _NEVER_OPENED.search(reason)
+    ):
+        return SpeechUpstreamError(502, message)
+    return SpeechAnswerLost(f"{message} (it may have run)")
 
 
 def synthesize_with_boundaries_blocking(
@@ -363,12 +393,7 @@ def synthesize_with_boundaries_blocking(
         if not audio.startswith(b"RIFF"):
             raise SpeechUpstreamError(502, "Azure Speech returned no audio")
         return audio, sorted(boundaries, key=lambda b: b.start_ms)
-    details = result.cancellation_details
-    error_code = getattr(details, "error_code", None)
-    reason = str(getattr(details, "error_details", "") or "")[:200]
-    raise SpeechUpstreamError(
-        _status_of(sdk, error_code), f"Azure Speech cancelled the synthesis: {reason}"
-    )
+    raise _cancellation(sdk, result.cancellation_details)
 
 
 async def synthesize_with_boundaries(
@@ -381,4 +406,8 @@ async def synthesize_with_boundaries(
             timeout=timeout_seconds,
         )
     except TimeoutError as error:
-        raise SpeechUpstreamError(502, "Azure Speech did not answer in time") from error
+        # The worker thread is not cancelled by the timeout: the synthesis can still finish, and
+        # be billed, after the route has answered.
+        raise SpeechAnswerLost(
+            "Azure Speech did not answer in time; the synthesis may still finish and be billed"
+        ) from error
