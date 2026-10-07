@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-hold-lost-planner-and-jev-answers
 title: Hold lost planner and Jev answers across rounds in drafts, series and Shorts
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-happy-carson
 claimed_at: 2026-10-07T11:22:28Z
 created_at: 2026-10-05T23:49:44Z
-completed_at:
+completed_at: 2026-10-07T14:12:23Z
 branch: claude/happy-carson-c1hy91
 depends_on:
   - 2026-10-02-stop-repeating-lost-stage-answers-outside
@@ -83,9 +83,9 @@ make no stage call.
 - [ ] For each path above, a lost answer is recorded where that path keeps its state. The
   same call is not asked again on its own, and the owner can see why (on /admin/videos, the
   series thread, or the video's checklist).
-- [ ] A Jev outline or policy judgement whose answer was lost is not asked again on the next
+- [x] A Jev outline or policy judgement whose answer was lost is not asked again on the next
   round or run. It waits for the owner's retry.
-- [ ] A later call that is genuinely different still goes out: the next scheduled draft, a new
+- [x] A later call that is genuinely different still goes out: the next scheduled draft, a new
   drama request, a changed final cut.
 
 ## Steps
@@ -149,6 +149,13 @@ node tools/video/long-form/cli.mjs check
 
 ### 2026-10-07 done (claude-opus-5-5-happy-carson, PR #1361)
 
+The first Definition of done item is met for every path but one, and is left unticked for it:
+a series document's lost answer is recorded and never asked again on its own, but the owner
+sees why only in the worker's log, since the site has no call that can hold a document job or
+show it. That half is 2026-10-07-series-documents-a-site-side-hold. A "changed final cut" is
+read as a changed narration: the policy hold is per request, and a re-assembled cut with the
+same narration and viewpoint asks the same question.
+
 The owner decided two things on 2026-10-07: a lost planner answer stops a video and the
 retry plans it again (rather than "drop it and file it again"), and a lost policy verdict
 stops the video or Short for the retry (rather than sending the cut with the outcome unknown).
@@ -202,4 +209,3 @@ stops the video or Short for the retry (rather than sending the cut with the out
 - Not changed, noted: retrying a video blocked by a rewrite's lost planner asks Jev again about
   the old brief before the planner (its verdict is in `last_pick`, not keyed by brief); a Jev
   verdict that arrived but whose report or submit failed is asked again next round (the same).
-
