@@ -63,7 +63,32 @@ Eight editable hero SVGs, eight 1600×900 raster hero JPGs and eight translated 
 | `apps/web/public/guides/brand-tone-vibe-marketing/hero-ko.jpg` | `e69fdbc3333b805ed77f3a553a743f5bbd2bacbba4008580bd3000cf85c9bc6f` |
 | `apps/web/public/guides/brand-tone-vibe-marketing/diagram-1-ko.svg` | `abdd99667d2a279c9897a7a8aa0837f6d8492bbfa18613d623d49ec331bd3cd2` |
 
-## Verification
+## 2026-10-07 current independent review
+
+The current production snapshot still has only zh-TW for both articles. The
+previous source and all 30 original/translated asset hashes match. A fresh
+independent review requested and rechecked 10 localized text changes: eight
+related-reading labels now match published same-locale titles, and zh-CN uses
+接着 and 屏幕 in two fields. No other tree values changed; source text and all
+image bytes are preserved. All eight target documents passed schema, text,
+links, visual and glyph review with zero open findings. All six source endpoints
+returned HTTP 200. Sixteen newly rendered SVGs passed geometry checks and the
+reviewer inspected actual diagram and JPEG contact sheets.
+
+- Compiler review SHA-256:
+  `47a93efa3792e93cf9965a3c5cd69f7b51c4800e83595d8013669f3a06e6ec48`.
+- Independent final evidence SHA-256:
+  `15f40e62151ba5692e66930fab33b3646a5d2f46f50c179e5b0b22e2e4c3530f`.
+- Corrected marketing pack SHA-256:
+  `a9a54159e870815aa2ee1c9e2bc33fdf1945719a4dad0e8e6d5d96c31f3d95ca`.
+- Corrected brand pack SHA-256:
+  `3f6791f71e70c97693d04fb6742e71a6c168d3d92fec4ed2ef4f7c90cb31f9dc`.
+
+The earlier target-document hashes below describe the original reviewed draft.
+The compiler receipt binds the corrected hashes. New content merge, deployment,
+Route B rehearsal, publication and live browser checks remain pending.
+
+## Original verification
 
 - Both scoped pack lints passed. Existing source `no_summary` and advisory English body-length warnings remain; the full translations were not reduced to summaries.
 - Exact block types, 33 positions, list/table shapes, source URLs and checked dates, image credit/dimensions, and all three source ArticleInline slug/kind targets were preserved in each locale. The publication-aware resolver renders unpublished destinations as plain text and activates a same-locale path only when its target is published.
