@@ -111,3 +111,12 @@ npm run test:tools
   - tts / check-audio, dub: a foreign lease means no speech request and no write.
   - clips / music, look: STOP and a foreign lease each mean nothing bought and nothing written.
   - automation: `restoreVideo` under STOP and under a foreign lease; an exit 3 after the lease went; no directory for a series slug.
+- Code review (2026-10-07) found:
+  - **Blocking:** tts, dub and check-audio, when the lease went mid-unit, still gave a dub up or blocked the video.
+    Fixed: `Automation.speech()` runs the fence on a non-uncertain exit 3 before any handling. An uncertain answer keeps its own.
+  - **Should-fix:** a STOP during a discussion's lint repairs left the broken script.
+    Fixed: `discuss.mjs` restores the last good script when `saveAndLint` throws PROJECT_HELD.
+  - **Nit:** the comment on the `fence()` skip was wrong.
+    Fixed: it now names a new draft's slug too.
+  - **Nit:** a STOP removed at the wrong moment could pass for a stage done.
+    Fixed: the commands exit 6 under STOP at entry, and `media()` fences that exit instead of blocking.

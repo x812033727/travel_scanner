@@ -54,7 +54,7 @@ export async function run(command, args, ctx) {
     if (!existsSync(file)) throw new MediaError(`music.track ${music.track} is not in ${path.join(workBase, "_music")}: put the licensed file there`, { who: "owner" });
     const sha256 = await sha256File(file);
     if (music.sha256 && music.sha256 !== sha256) throw new MediaError(`${music.track} hashes to ${sha256.slice(0, 12)}…, not music.sha256; check the file or update video.json`, { who: "owner" });
-    if (!mayWriteProject(ctx, workdir, "music")) return EXIT.ok;
+    if (!mayWriteProject(ctx, workdir, "music")) return EXIT.incomplete;
     atomicWrite(manifestFile(workdir), `${JSON.stringify({ mix_hash: mix, source: "track", track: music.track, sha256, checked_at: ctx.now().toISOString() }, null, 2)}\n`);
     recordStage(workdir, "music", { source: "track", track: music.track }, ctx.now());
     ctx.stdout.write(`music: ${music.track} (${sha256.slice(0, 12)}…) from ${path.join(workBase, "_music")}\nnext: node tools/video/cli.mjs assemble --slug ${doc.slug}\n`);
@@ -80,7 +80,7 @@ export async function run(command, args, ctx) {
     return EXIT.ok;
   }
 
-  if (!mayWriteProject(ctx, workdir, "music")) return EXIT.ok;
+  if (!mayWriteProject(ctx, workdir, "music")) return EXIT.incomplete;
   const credentials = requireCredentials(ctx);
   const options = clientOptions(ctx, credentials);
   const status = await mediaStatus(options);

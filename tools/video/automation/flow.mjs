@@ -834,6 +834,19 @@ export class Automation {
 
   /** Put video.json back as it was before a revision that lint refused. */
   /**
+   * A speech command the unit runs (tts, dub, check-audio). One that exits 3 because it lost the
+   * project's lease, or met a STOP, sets the video aside (fence) before its exit is read as the
+   * owner's: a dub is not given up, nothing is blocked, and nothing is written into the project of
+   * the producer that holds it now. An answer lost after it was paid for (speechUncertain) keeps
+   * its own handling, since setting it aside would buy it again.
+   */
+  async speech(slug, command) {
+    const result = await run(this.ctx, command);
+    if (result.code === this.ctx.EXIT.owner && !speechUncertain(result)) this.fence(slug, `recording ${command[0]}`);
+    return result;
+  }
+
+  /**
    * Put back the script a refused rewrite replaced (discuss.mjs). Only while this step still
    * holds the project's lease; a STOP does not keep it from leaving the last good script.
    */
@@ -895,8 +908,9 @@ export class Automation {
     if (!why) {
       try {
         // A path outside the video's unit (a discussion of its screenplay) takes the lease here,
-        // for the rest of the step (step() lets it go). A series document has no work directory
-        // of its own, and nothing of a video's to hold.
+        // for the rest of the step (step() lets it go). A slug with no work directory yet (a series
+        // document, or a new draft before its first save, which only the first lane makes and
+        // under a slug nobody else has) has nothing of a video's to hold.
         const held = this.leases.get(slug) ?? this.stepLeases.get(slug);
         if (held) held.verify();
         else if (existsSync(workdir)) this.stepLeases.set(slug, acquireProjectLease(workdir, { owner: "auto", now: this.ctx.now }));
@@ -2299,7 +2313,7 @@ export class Automation {
       // retry would refuse the same way for ever: those are recorded again by a plain tts, which
       // writes a new timeline, so the narration is reviewed again.
       const refresh = sameScript && !previous.audio_evidence && !staleTakes(project.doc, project.lexicon, workdir).length;
-      const result = await run(ctx, ["tts", "--slug", state.slug, ...(refresh ? ["--refresh-evidence"] : [])]);
+      const result = await this.speech(state.slug, ["tts", "--slug", state.slug, ...(refresh ? ["--refresh-evidence"] : [])]);
       // A STOP file ended it between requests: the takes are saved and the next run continues.
       if (result.code === ctx.EXIT.incomplete) return this.defer(state, `${state.slug}: tts stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
       if (result.code !== 0) return this.block(state,`tts failed: ${result.out.trim().split("\n").at(-1)}`);
@@ -2595,6 +2609,9 @@ export class Automation {
       // A vendor or the server's budget: this video's stage waits, the other videos move.
       return this.defer(state, line, { what: command, everyone: Boolean(everyones(result.out)) });
     }
+    // An incomplete exit (6) is the command's STOP check (media/stages.mjs mayWriteProject):
+    // the video sits the run out, as fence() sets it aside, rather than being blocked.
+    this.fence(state.slug, `recording ${command}`);
     return this.block(state, `${command} failed: ${lastLine(result.out, 2)}`);
   }
 
@@ -3018,16 +3035,16 @@ export class Automation {
       return this.listen(state, review.note);
     }
     if (review?.status === "pending") return null;
-    let check = await run(ctx, ["check-audio", "--slug", state.slug]);
+    let check = await this.speech(state.slug, ["check-audio", "--slug", state.slug]);
     const retakeRounds = settingsFor(this.settings, state.format).retakeRounds;
     while (check.code === 1 && state.retakes < retakeRounds) {
       state.retakes += 1;
       saveState(workdir, state);
       const flagsFile = path.join(workdir, "review", "check-flags.json");
-      const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", flagsFile]);
+      const redo = await this.speech(state.slug, ["tts", "--slug", state.slug, "--redo", flagsFile]);
       if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, flagsFile, `the retake stopped (${lastLine(redo.out)}); the next run continues`);
       if (redo.code !== 0) return this.block(state,`retake failed: ${redo.out.trim().split("\n").at(-1)}`);
-      check = await run(ctx, ["check-audio", "--slug", state.slug]);
+      check = await this.speech(state.slug, ["check-audio", "--slug", state.slug]);
     }
     // The retakes are spent and Jev still hears some lines wrong: the listener rewords those
     // lines, they are retaken and checked again, MAX_REWRITE_ROUNDS rounds in all
@@ -3044,10 +3061,10 @@ export class Automation {
       // Nothing changed: the same clips would only be flagged again; the next round, if any,
       // is told why the rewrites were refused.
       if (!round.ids.length) continue;
-      const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", round.flagsFile]);
+      const redo = await this.speech(state.slug, ["tts", "--slug", state.slug, "--redo", round.flagsFile]);
       if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, round.flagsFile, `the retake after the rewrite stopped (${lastLine(redo.out)}); the next run continues`);
       if (redo.code !== 0) return this.block(state, `retake after the rewrite failed: ${lastLine(redo.out)}`);
-      check = await run(ctx, ["check-audio", "--slug", state.slug]);
+      check = await this.speech(state.slug, ["check-audio", "--slug", state.slug]);
     }
     // A service away, or Jev's daily calls spent (everyone's until midnight UTC, and never a block).
     if (check.code === 4) return this.defer(state, `${state.slug}: narration check could not finish (${check.out.trim().split("\n").at(-1)})`, { what: "check-audio", everyone: Boolean(everyones(check.out)) });
@@ -3517,7 +3534,7 @@ export class Automation {
     // Each pass makes the track (only the lines whose words changed are synthesized again) and
     // checks it; a reworded line or a retake that no longer fits starts another pass.
     for (;;) {
-      let made = await run(ctx, dubArgs);
+      let made = await this.speech(slug, dubArgs);
       while (made.code === 1 && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
         const over = overLines();
         if (!Array.isArray(over) || !over.length) break;
@@ -3527,7 +3544,7 @@ export class Automation {
         if (shortened.stopped) return shortened.stopped;
         // Nothing usable came back: the same windows would only be over again.
         if (!shortened.ids.length) break;
-        made = await run(ctx, dubArgs);
+        made = await this.speech(slug, dubArgs);
       }
       if (made.code === ctx.EXIT.incomplete) return stopped("dub", made);
       if (made.code === 1) {
@@ -3539,12 +3556,12 @@ export class Automation {
       if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
       if (made.code === 4) return this.defer(state, `${slug}: ${locale} dub could not finish (${lastLine(made.out)})`, { what: "dub", everyone: Boolean(everyones(made.out)) });
       if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
-      let check = await run(ctx, checkArgs);
+      let check = await this.speech(slug, checkArgs);
       let refit = false;
       while (check.code === 1 && rounds.retakes < MAX_DUB_RETAKE_ROUNDS) {
         rounds.retakes += 1;
         remember();
-        const redo = await run(ctx, [...dubArgs, "--redo", flags]);
+        const redo = await this.speech(slug, [...dubArgs, "--redo", flags]);
         if (redo.code === ctx.EXIT.incomplete) return stopped("dub retake", redo);
         if (redo.code === 4) return this.defer(state, `${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)})`, { what: "dub", everyone: Boolean(everyones(redo.out)) });
         if (speechUncertain(redo)) return lost(`dub ${locale} retake`, redo);
@@ -3556,7 +3573,7 @@ export class Automation {
         }
         if (redo.code === 1 || redo.code === 3) return this.giveUpDub(state, locale, `the retake failed: ${lastLine(redo.out)}`);
         if (redo.code !== 0) return this.block(state, `dub ${locale} retake failed: ${lastLine(redo.out, 2)}`);
-        check = await run(ctx, checkArgs);
+        check = await this.speech(slug, checkArgs);
       }
       if (refit) continue;
       if (check.code === 1 && rounds.reword < MAX_DUB_REWORD_ROUNDS) {

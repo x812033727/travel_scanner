@@ -4976,6 +4976,29 @@ test("a refused rewrite's script goes back under a STOP, but not once another pr
   assert.equal(existsSync(path.join(videos.box.work, "a-series-slug")), false);
 });
 
+test("a speech command that exits 3 because it lost the project's lease sets its video aside before a dub is given up; an answer lost after payment keeps its own handling", async () => {
+  const slug = "speech-lease-lost";
+  const videos = durableVideos([slug]);
+  const worker = await videos.worker();
+  const workdir = path.join(videos.box.work, slug);
+  const lease = path.join(workdir, "LEASE");
+  worker.leases.set(slug, acquireProjectLease(workdir, { owner: "auto" }));
+  let out = "";
+  videos.ctx.runCommand = async () => {
+    writeFileSync(lease, JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "manual recovery", pid: 4242, host: "another-container", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+    return { code: EXIT.owner, out };
+  };
+  for (const command of [["dub", "--slug", slug, "--locale", "en"], ["tts", "--slug", slug], ["check-audio", "--slug", slug]]) {
+    out = "the project's lease is no longer this process's; nothing was sent or written\n";
+    await assert.rejects(worker.speech(slug, command), (error) => error.code === "video_project_held", command[0]);
+  }
+  // A paid answer that never came back is the owner's to look at, lease or not: it is not set aside to be bought again.
+  out = `the speech request was sent and no answer came back\n${SPEECH_UNCERTAIN}\n`;
+  assert.equal((await worker.speech(slug, ["tts", "--slug", slug])).code, EXIT.owner);
+  worker.leases.delete(slug);
+  delete videos.ctx.runCommand;
+});
+
 test("a writer job the server failed before dispatching it (a STOP file, the switch off, a queue that lost it) defers its video and is sent again once; it never blocks", async () => {
   const pending = (slug) => `${slug}: writer is still running; its saved receipt will be checked next round`;
   for (const code of ["video_ai_worker_stopped", "video_ai_automation_disabled", "video_ai_job_interrupted_before_dispatch", "video_ai_job_dispatch_closed"]) {

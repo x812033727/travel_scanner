@@ -151,7 +151,8 @@ export const stoppedError = () => new MediaError("stopped by the STOP file; reru
  * Whether a media command may write the project's files at all: not under the project's STOP
  * file (false, said on stdout), and only while this process holds the project's lease
  * (core/project-lease.mjs; another producer's is the owner's to sort out, and nothing is written).
- * Each command calls it once, right before its first write. Once a run is under way, a STOP that
+ * Each command calls it once, right before its first write, and exits incomplete (6) when it says
+ * false, so a STOP removed before the worker reads the exit cannot pass for a stage done. Once a run is under way, a STOP that
  * arrives keeps what was already paid for and asks for nothing more (Stage.generate, judge).
  */
 export function mayWriteProject(ctx, workdir, owner) {

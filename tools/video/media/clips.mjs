@@ -269,7 +269,7 @@ export async function run(command, args, ctx) {
     }
   }
 
-  if (!mayWriteProject(ctx, workdir, "clips")) return EXIT.ok;
+  if (!mayWriteProject(ctx, workdir, "clips")) return EXIT.incomplete;
   const credentials = requireCredentials(ctx);
   const options = clientOptions(ctx, credentials);
   const status = await mediaStatus(options);
@@ -591,7 +591,7 @@ async function importClip(args, ctx) {
   // that costs nothing and asks no judge never calls the site. The dollars are held in the ledger
   // under the import's key while the clip is checked, and the booking replaces the hold; an
   // import that ends without booking (a missing ffmpeg, the STOP file, a failed check) lets it go.
-  if (!mayWriteProject(ctx, workdir, "clips import")) return EXIT.ok;
+  if (!mayWriteProject(ctx, workdir, "clips import")) return EXIT.incomplete;
   const sha256 = await sha256File(origin);
   const reservation = usd > 0 ? `import:${scene.id}:${sha256}` : null;
   let stage = null;

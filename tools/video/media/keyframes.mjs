@@ -428,7 +428,7 @@ export async function run(command, args, ctx) {
   const bound = (manifest) => manifest && Object.entries(binding).every(([key, value]) => manifest[key] === value);
   const format = slides ? doc.format : null;
   if (values["accept-best"]) {
-    if (!mayWriteProject(ctx, workdir, "keyframes")) return EXIT.ok;
+    if (!mayWriteProject(ctx, workdir, "keyframes")) return EXIT.incomplete;
     return acceptBest(ctx, { doc, workdir, hash, bound, wanted: values["accept-best"], channel: values.channel });
   }
   const rubricOptions = { subtitleBand: burnIn(doc), craft: slides };
@@ -502,7 +502,7 @@ export async function run(command, args, ctx) {
     return EXIT.ok;
   }
 
-  if (!mayWriteProject(ctx, workdir, "keyframes")) return EXIT.ok;
+  if (!mayWriteProject(ctx, workdir, "keyframes")) return EXIT.incomplete;
   const credentials = requireCredentials(ctx);
   const options = clientOptions(ctx, credentials);
   const status = imageStatus(await mediaStatus(options), project.series);

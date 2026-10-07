@@ -586,7 +586,7 @@ test("a shot that fails every take is left for a prompt fix with the judge's fix
 
   writeFileSync(path.join(box.workdir, "STOP"), "");
   const stopped = context(box, site.fetchImpl);
-  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.ok, stopped.out.stderr);
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.incomplete, stopped.out.stderr);
   assert.match(stopped.out.stdout, /stopped by the STOP file/);
   assert.equal(manifestOf(box, "clips").shots.farewell, undefined);
 });
@@ -1098,7 +1098,7 @@ test("clips import --usd is money: refused past the per-video cap before anythin
   // stops it before the judge, with nothing recorded either).
   writeFileSync(path.join(box.workdir, "STOP"), "");
   const stopped = context(box, fetchImpl, outsideQc());
-  assert.equal(await main(bring("bird", bird, "--usd", "0.5", "--judge"), stopped.ctx), EXIT.ok, stopped.out.stderr || stopped.out.stdout);
+  assert.equal(await main(bring("bird", bird, "--usd", "0.5", "--judge"), stopped.ctx), EXIT.incomplete, stopped.out.stderr || stopped.out.stdout);
   assert.match(stopped.out.stdout, /stopped by the STOP file before anything was drawn or written/);
   assert.deepEqual([readLedger(box.workdir).totals.reservations, readLedger(box.workdir).entries.length], [0, 3]);
   rmSync(path.join(box.workdir, "STOP"));
@@ -1120,7 +1120,7 @@ test("clips and music run by hand under the project's STOP file, or while anothe
   writeFileSync(path.join(box.workdir, "STOP"), "owner hold");
   for (const command of ["clips", "music"]) {
     const run = context(box, site.fetchImpl);
-    assert.equal(await main([command, "--slug", box.slug], run.ctx), EXIT.ok, command);
+    assert.equal(await main([command, "--slug", box.slug], run.ctx), EXIT.incomplete, command);
     assert.match(run.out.stdout, /stopped by the STOP file before anything was drawn or written/);
   }
   rmSync(path.join(box.workdir, "STOP"));

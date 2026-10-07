@@ -367,7 +367,7 @@ test("a shot that never passes is left for a prompt fix after the last take, wit
   // The STOP file ends a run between remote calls and keeps what was drawn.
   writeFileSync(path.join(box.workdir, "STOP"), "");
   const stopped = context(box, site.fetchImpl);
-  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.ok, stopped.out.stderr);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.incomplete, stopped.out.stderr);
   assert.match(stopped.out.stdout, /stopped by the STOP file/);
   assert.equal(manifestOf(box, "keyframes").shots.farewell, undefined);
 });
@@ -397,7 +397,7 @@ test("keyframes run by hand while another producer holds the project, or under i
   writeFileSync(path.join(box.workdir, "STOP"), "owner hold");
   for (const args of [["--shot", "farewell"], ["--accept-best", "opening"]]) {
     const run = context(box, site.fetchImpl);
-    assert.equal(await main(["keyframes", "--slug", box.slug, ...args], run.ctx), EXIT.ok);
+    assert.equal(await main(["keyframes", "--slug", box.slug, ...args], run.ctx), EXIT.incomplete);
     assert.match(run.out.stdout, /stopped by the STOP file before anything was drawn or written/);
   }
   assert.equal(readFileSync(manifestPath, "utf8"), before);
@@ -1642,7 +1642,7 @@ test("look run by hand under the project's STOP file, or while another producer 
   writeFileSync(path.join(box.workdir, "STOP"), "owner hold");
   for (const args of [[], ["--choose", "jingwei=1,yandi=1"]]) {
     const run = context(box, site.fetchImpl);
-    assert.equal(await main(["look", "--slug", box.slug, ...args], run.ctx), EXIT.ok, args.join(" ") || "draw");
+    assert.equal(await main(["look", "--slug", box.slug, ...args], run.ctx), EXIT.incomplete, args.join(" ") || "draw");
     assert.match(run.out.stdout, /stopped by the STOP file before anything was drawn or written/);
   }
   rmSync(path.join(box.workdir, "STOP"));
