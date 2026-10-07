@@ -1,11 +1,11 @@
 ---
 id: 2026-10-07-autodeploy-rollout-and-skill-docs
 title: Roll out the auto deploy timer and teach the deploy skill about it
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: claude-fable-5-1-autodeploy
-claimed_at: 2026-10-07T00:55:01Z
+owner:
+claimed_at:
 created_at: 2026-10-07T00:00:00Z
 completed_at:
 branch: claude/auto-deploy-cloud-backup-hylcsz
@@ -80,3 +80,8 @@ MSYS_NO_PATHCONV=1 <SSH> -m .agents/skills/deploy/scripts/host-preflight.sh   # 
   `SKILL.md` is mirrored under `.claude/skills/deploy` (`tools/skills.test.mjs` passes).
   Left: the host rollout (install, token, dry-run week, enable, first automatic deploy),
   which needs the owner on the host.
+- 2026-10-07: released back to the queue by the owner's decision. Nothing in the repository
+  is left; every remaining checkbox is a host step (install, token, dry run checked against
+  preflight, the dry-run week, enabling, the first automatic deploy's record). Claim it again
+  when the owner is on the host; the skill `deploy` and `ops/autodeploy/README.md` already
+  describe the steps.
