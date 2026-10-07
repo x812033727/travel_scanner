@@ -391,8 +391,15 @@ export async function run(command, args, ctx) {
       }
       if (previous.still) {
         // A still ends on its keyframe under a slight camera move, so the keyframe itself is
-        // the picture this clip continues from; there is no clip to take a last frame of.
-        continues = { shot: scene.data.start_frame.shot, file: previous.file, sha256: await uploadApproved(previous.file, previous.sha256, `${scene.data.start_frame.shot} (the still ${scene.id} continues from)`) };
+        // the picture this clip continues from; there is no clip to take a last frame of. Its
+        // record here may be from an earlier run (a still outside --shot), and the approval is of
+        // the keyframes manifest, which a later keyframes run may have pointed at another picture.
+        const label = `${scene.data.start_frame.shot} (the still ${scene.id} continues from)`;
+        const approved = keyframes.shots?.[scene.data.start_frame.shot];
+        if (approved?.file !== previous.file || approved?.sha256 !== previous.sha256) {
+          throw new UsageError(`${label} is ${previous.file} in clips/manifest.json, but the approved keyframes select ${approved?.file ?? "no picture"}; run clips --shot ${scene.data.start_frame.shot} first`);
+        }
+        continues = { shot: scene.data.start_frame.shot, file: previous.file, sha256: await uploadApproved(previous.file, previous.sha256, label) };
       } else {
         const frame = `clips/${scene.data.start_frame.shot}-last.png`;
         if (ctx.extractFrame) await ctx.extractFrame(path.join(workdir, previous.file), path.join(workdir, frame));

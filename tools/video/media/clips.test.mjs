@@ -1181,3 +1181,31 @@ test("a clip continuing from a still outside --shot is not sent with that still 
   assert.equal(site.state.clips.filter((request) => request.shot_id === "bird").length, 0, "no paid request carries the changed still");
   assert.ok(!site.state.uploads.some((upload) => upload.sha256 === SHA(PNG("redrawn sea-storm"))), "and the changed bytes are not uploaded");
 });
+
+test("a clip continuing from a still outside --shot is not sent with a still the approved keyframes no longer select", async () => {
+  const { box, shots } = prepared((doc) => {
+    doc.scenes.find((scene) => scene.id === "sea-storm").data.visual = "still";
+  });
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite();
+  const first = context(box, site.fetchImpl, { extractFrame: async () => {} });
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "sea-storm"], first.ctx), EXIT.ok, first.out.stderr);
+  // A later keyframes run selects another picture for the still and the owner approves it; the old file stays.
+  writeFileSync(path.join(box.workdir, "keyframes", "sea-storm-2.png"), PNG("second sea-storm"));
+  const keyframes = manifestOf(box, "keyframes");
+  keyframes.shots["sea-storm"] = { ...keyframes.shots["sea-storm"], file: "keyframes/sea-storm-2.png", sha256: SHA(PNG("second sea-storm")) };
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify(keyframes));
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const second = context(box, site.fetchImpl, { extractFrame: async () => {} });
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "bird"], second.ctx), EXIT.usage);
+  assert.match(second.out.stderr, /sea-storm \(the still bird continues from\) is keyframes\/sea-storm-1\.png in clips\/manifest\.json, but the approved keyframes select keyframes\/sea-storm-2\.png; run clips --shot sea-storm first/);
+  assert.equal(site.state.clips.filter((request) => request.shot_id === "bird").length, 0, "no paid request carries the old still");
+  assert.ok(!site.state.uploads.some((upload) => upload.sha256 === shots["sea-storm"].sha256), "and the old still is not uploaded");
+  // The remedy the message names: the still's record follows the approved keyframe, and bird continues from it.
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "sea-storm"], context(box, site.fetchImpl).ctx), EXIT.ok);
+  const third = context(box, site.fetchImpl, { extractFrame: async () => {} });
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "bird"], third.ctx), EXIT.ok, third.out.stderr);
+  const bird = site.state.clips.find((request) => request.shot_id === "bird");
+  assert.deepEqual(bird.references.at(-1), { sha256: SHA(PNG("second sea-storm")), role: "previous_frame" });
+});
