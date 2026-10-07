@@ -20,6 +20,14 @@ scope:
   - docs/videos/APPROVED-LANGUAGE-PACKAGE.md
   - tools/video/review/sync.mjs
   - tools/video/review/sync.test.mjs
+  - tools/video/review/language-contract.mjs
+  - tools/video/review/language-contract.test.mjs
+  - tools/video/automation/automation.test.mjs
+  - apps/api/tests/test_video_youtube_language_contract.py
+  - apps/api/tests/fixtures/video_language_contract
+  - docs/videos/LANGUAGES.md
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # YouTube sync reads stale publish package after approved languages
@@ -38,13 +46,13 @@ review, so the later approved language assets are ignored.
 
 ## Definition of done
 
-- [ ] Sync includes current approved language metadata and captions alongside the
+- [x] Sync includes current approved language metadata and captions alongside the
   approved video and thumbnail, without weakening approval or content-hash checks.
 - [x] The requested language version is pinned and stale or changed approvals are
   rejected before sending to YouTube.
 - [x] Original-language-only and Shorts sync remain valid, with focused regressions.
 - [x] Existing public-video protection and privacy/scheduling behavior are unchanged.
-- [ ] Apply the source-bound producer contract after resolving its overlapping scope,
+- [x] Apply the source-bound producer contract after resolving its overlapping scope,
   then validate the actual submission-to-upload path.
 
 ## Steps
@@ -52,7 +60,7 @@ review, so the later approved language assets are ignored.
 - [x] Compare live Studio counts, approved review snapshots, sync receipts and host files.
 - [x] Implement approval-aware language package selection/composition in API and VPS.
 - [x] Run regression tests, lint/type checks and task validation; prepare reviewable diff.
-- [ ] Integrate producer contract in tools/video/review/sync.mjs and its test.
+- [x] Integrate producer contract in tools/video/review/sync.mjs and its test.
 
 ## How to verify
 
@@ -129,3 +137,44 @@ existing refusal to update already public videos; manual backfill is a separate 
   silently treated as approved to work around that workflow boundary.
 - No merge, deployment, live retry, Google login, video upload or paid generation.
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-approved-languages-sync (since 2026-09-30T13:24:06Z) was stale and is released so it stops locking its scope. Landed: #1048 #1101. Still open: Sync includes current approved language metadata/captions end to end (needs the producer side); Apply source-bound producer contract and validate the real submission-to-upload path; Integrate producer contract in tools/video/review/sync.mjs and its test.
+
+### 2026-10-07 producer contract (claude-opus-5-5-happy-carson, PR #1361)
+
+- Scope widened after a collision check (no active task, open PR or `+` worktree on these paths;
+  the old holder `2026-10-06-pictures-keep-best-after-prompt-fixes` is done). This also covers the
+  unclaimed follow-up `2026-10-07-normal-video-language-submissions-omit-source` that PR #1363
+  files: close that one when #1363 lands.
+- `tools/video/review/sync.mjs`: `bindLanguageSource` binds every language batch that is not a
+  renewed final's (`renewal.mjs` stays authoritative for those). It uploads the current
+  `upload/metadata.json` as `metadata`, writes the schema 1 manifest to `review/languages.json`
+  (what `review-pull` and the worker's `pulled()` record the approval by) and uploads it as
+  `languages_manifest`, its hash the review's content hash. `source` names the site's newest
+  approved final, the newest confirmation (approved, or pending: one approved unchanged then
+  carries the batch) and, for a non-compilation drama, the newest approved screenplay;
+  `choice` is the site's normalized choice with its first decision time. Nothing is posted when
+  it cannot be bound: no or a rejected confirmation, an unapproved final or screenplay, a package
+  of another final, branding or choice, a description that is not its metadata, or narration
+  captions that differ from the approved confirmation's. The narration's own dub goes as an
+  explicit skip. When the same manifest bytes were sent before as an older review (an owner
+  going back to an earlier choice), `follows` names the newest batch, because the server answers
+  repeated bytes with the old review while the consumer reads the newest.
+- Contract test: `tools/video/review/language-contract.mjs` runs the real `package` and
+  `review-push` on the minimal (zh-TW) and en fixtures against a site double that keeps the
+  server's ordering, deduplication and auto-approval; the site's rows and stored files are
+  committed in `apps/api/tests/fixtures/video_language_contract/` and
+  `apps/api/tests/test_video_youtube_language_contract.py` (26 cases) feeds them to the real
+  `read_approved_package` with files verified: both compose, and a changed choice, any changed
+  attachment byte, a newer or pending final and a newer confirmation are refused.
+  `language-contract.test.mjs` fails while the copy is stale (`LANGUAGE_CONTRACT_WRITE=1`
+  rewrites it; the floor opt-out only works in the test runner). With the producer change
+  removed, the regenerated fixture fails the Python test; regenerating twice is byte-identical.
+- The worker's fake site now answers the tool GET with `locales`/`locales_decided_at`, as
+  `ProjectOut` does; three worker tests assert the two new attachments, one also the manifest.
+- Each new producer rule was removed in turn and a test failed (binder, `follows`, narration
+  skip, narration captions, description bytes, screenplay, confirmation status).
+- Filed: `2026-10-07-the-worker-sends-a-language-batch` (a batch sent before the confirmation
+  is approved is never read, so a ready dub cannot sync), `2026-10-07-a-tidied-video-s-skipped-language`
+  and `2026-10-07-imported-long-videos-language-batches-carry` (the other emitters without proof).
+- Not done here: deployment; resubmitting the language reviews sent before this change (they
+  carry no manifest; the five videos in Why and others need a release action); a live upload.
+

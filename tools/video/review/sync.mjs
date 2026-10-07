@@ -9,6 +9,7 @@
 // site approves a review on arrival when the pick, the quality check or the package check passes
 // and the owner's switch is on (docs/videos/HANDS-OFF.md). `review-pull` reads the decisions back
 // and records an approval only when that hash still matches the local file.
+import { createHash } from "node:crypto";
 import { closeSync, existsSync, mkdirSync, openSync, readFileSync, readSync, statSync } from "node:fs";
 import path from "node:path";
 import { isDeepStrictEqual, parseArgs } from "node:util";
@@ -25,7 +26,7 @@ import { drawnShotScenes, hasCast, illustrated, isDrama } from "../core/drama.mj
 import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, keyframeProblems, loadProject, pipelineStatus } from "../core/state.mjs";
-import { narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
+import { LOCALES, NARRATION_LOCALE, narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock, speechHash } from "../core/timeline.mjs";
@@ -34,7 +35,7 @@ import { packageFiles, packageLocales, readPackageReport, thumbnailVariants, UPL
 import { composeMetadata } from "../package/metadata.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
-import { bindRenewalSubmission } from "./renewal.mjs";
+import { bindRenewalSubmission, renewedFinal } from "./renewal.mjs";
 
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
 export const PART_BYTES = 4 * 1024 * 1024;
@@ -823,9 +824,11 @@ function languagesSummary(locales) {
  * and description as `description_<locale>` and the captions as `captions_<locale>`, both from
  * the upload package (so `package` runs first); the dub track as `dub_<locale>` (the m4a form,
  * the audio type the store takes) or the reason the worker gave it up. A part not made yet is
- * left out, which the site reads as still in the making. The site approves a batch without a dub
- * track on arrival; one with a track waits for the owner to upload it in Studio and say so. The
- * approval binds to the manifest written here of what was sent.
+ * left out, which the site reads as still in the making; YouTube sync takes a batch only once
+ * every chosen part is in it, made or skipped with its reason. The site approves a batch without
+ * a dub track on arrival; one with a track waits for the owner to upload it in Studio and say so.
+ * reviewPush then binds it to its approved source (bindLanguageSource, or renewal.mjs for a
+ * renewed final), whose manifest the approval binds to.
  */
 async function languagesSubmission({ request, project, workdir, slug }) {
   const languages = readLanguages(workdir);
@@ -833,7 +836,8 @@ async function languagesSubmission({ request, project, workdir, slug }) {
   const chosen = Object.entries(languages.locales);
   if (!chosen.length) throw new ReviewError("the owner chose Traditional Chinese only; there is no language batch to send", { who: "owner" });
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
-  const { dubs, skipped } = dubsForUpload(project, workdir, timeline?.speech_hash, chosenLocales(languages, "dub"));
+  const narration = narrationLocale(project.doc);
+  const { dubs, skipped } = dubsForUpload(project, workdir, timeline?.speech_hash, chosenLocales(languages, "dub").filter((locale) => locale !== narration));
   const files = [];
   const locales = {};
   for (const [locale, choice] of chosen) {
@@ -848,7 +852,10 @@ async function languagesSubmission({ request, project, workdir, slug }) {
       files.push(await upload(request, slug, captions, `captions_${locale}`, "text/plain"));
       entry.captions = "ready";
     }
-    if (choice.dub) {
+    // The narration is the video's own audio: no dub of it is made, and YouTube would take a
+    // second track of it as a duplicate, so the batch says so instead of leaving the part open.
+    if (choice.dub && locale === narration) entry.dub = { status: "skipped", reason: NARRATION_DUB_SKIP };
+    else if (choice.dub) {
       const dub = dubs.find((each) => each.locale === locale);
       if (dub) {
         const role = dub.format === "m4a" ? dubRole(locale) : null;
@@ -869,6 +876,99 @@ async function languagesSubmission({ request, project, workdir, slug }) {
     payload: { locales },
     files,
   };
+}
+
+const NARRATION_DUB_SKIP = "這是影片原本旁白的語言，不另做重複配音";
+const sha256Of = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const identity = (row) => ({ review_id: row.id, content_sha256: row.content_sha256 });
+// The server's rows are newest first; a gate's own review has no subject.
+const newest = (rows, gate) => rows.find((row) => row.gate === gate && !row.subject) ?? null;
+const sameFile = (a, b) => Boolean(a && b) && ["role", "sha256", "size", "content_type"].every((key) => a[key] === b[key]);
+
+/** A language choice as the site keeps it (LocalesIn): the chosen locales only, a dub with its captions. */
+export function siteChoice(locales) {
+  return Object.fromEntries(LOCALES.filter((locale) => locale !== NARRATION_LOCALE).flatMap((locale) => {
+    const entry = locales?.[locale] ?? {};
+    const choice = { metadata: entry.metadata === true, captions: entry.captions === true || entry.dub === true, dub: entry.dub === true };
+    return choice.metadata || choice.captions || choice.dub ? [[locale, choice]] : [];
+  }));
+}
+
+/**
+ * Binds a language batch to the approved video it belongs to (docs/videos/APPROVED-LANGUAGE-PACKAGE.md):
+ * YouTube sync takes a batch only with `metadata` (upload/metadata.json, its translated titles and
+ * descriptions) and a `languages_manifest` whose bytes are the review's content hash, naming the
+ * upload confirmation, the final cut and a drama's screenplay by their reviews on the site, the
+ * owner's choice and every file sent (apps/api/app/video_youtube/language_package.py compose).
+ * The manifest is written to review/languages.json, the file review-pull checks the approval
+ * against. A renewed final is bound by renewal.mjs instead.
+ *
+ * The confirmation named is the site's newest, approved or still waiting: one the owner then
+ * approves as it is carries this batch; a newer one sent after it (the worker sends one when the
+ * package changed) is read without it, from its own package. Nothing is sent while the batch
+ * cannot be bound: no confirmation, a final or screenplay not approved on the site, or a package
+ * written for another cut, branding or choice.
+ */
+async function bindLanguageSource({ body, remote, project, workdir, request }) {
+  const slug = project.doc.slug;
+  const rows = remote?.reviews ?? [];
+  const owner = (message) => new ReviewError(message, { who: "owner" });
+  const publish = newest(rows, "publish");
+  if (!publish) throw owner("the language batch belongs to an upload confirmation, and the site has none yet; send review-push --gate publish first");
+  if (!["approved", "pending"].includes(publish.status)) throw owner(`the site's newest upload confirmation was ${publish.status}; send a new one before the language batch`);
+  const final = newest(rows, "final");
+  if (final?.status !== "approved") throw owner("the site's newest final cut is not approved; the language batch waits for the owner's decision on it");
+  const drama = project.doc.format === "drama" && !isCompilation(project.doc);
+  const script = drama ? newest(rows, "script") : null;
+  if (drama && script?.status !== "approved") throw owner("a drama's language batch names its approved screenplay, and the site's newest screenplay review is not approved");
+  const metadataFile = path.join(workdir, ARTIFACTS.upload);
+  if (!existsSync(metadataFile)) throw new UsageError("upload/metadata.json is missing; run package first");
+  const metadataBytes = readFileSync(metadataFile);
+  const metadata = readJson(metadataFile, null);
+  if (!metadata || typeof metadata !== "object") throw new UsageError("upload/metadata.json cannot be read; run package again");
+  if (metadata.final_sha256 !== final.content_sha256) throw new UsageError("upload/metadata.json was written for another final cut than the site's approved one; run package again");
+  const branding = final.payload?.branding_hash ?? null;
+  if ((metadata.branding_hash ?? null) !== branding) throw new UsageError("upload/metadata.json names another opening and ending than the approved final; run package again");
+  const choice = siteChoice(remote.locales);
+  const languages = readLanguages(workdir);
+  if (!isDeepStrictEqual(siteChoice(languages?.locales), choice)) throw new UsageError(`the owner's language choice on the site is not the one in ${LANGUAGES_FILE}; the worker copies it next round`);
+  if (!isDeepStrictEqual(metadata.language_choice, choice)) throw new UsageError("upload/metadata.json was written for another language choice; run package again");
+  const narration = narrationLocale(project.doc);
+  const { locales } = body.payload;
+  for (const [locale, parts] of Object.entries(locales)) {
+    if (parts.metadata !== "ready") continue;
+    const text = locale === narration ? metadata : metadata.localizations?.[locale];
+    const sent = body.files.find((file) => file.role === `description_${locale}`);
+    if (!text || sent?.sha256 !== sha256Of(`${text.title}\n\n${text.description}\n`)) throw new UsageError(`upload/description.${locale}.txt is not the ${locale} title and description in upload/metadata.json; run package again`);
+  }
+  // The narration's captions are the approved package's own: YouTube keeps one track per language.
+  if (publish.status === "approved" && locales[narration]?.captions === "ready" && !sameFile(body.files.find((file) => file.role === `captions_${narration}`), (publish.files ?? []).find((file) => file.role === `captions_${narration}`))) {
+    throw owner(`the ${narration} captions are no longer the ones in the approved upload confirmation; send a new confirmation before the language batch`);
+  }
+  const metadataEntry = await upload(request, slug, metadataFile, "metadata", "application/json");
+  if (metadataEntry.sha256 !== sha256Of(metadataBytes)) throw new UsageError("upload/metadata.json changed while the batch was sent; run review-push again");
+  const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const manifest = {
+    schema_version: 1,
+    slug,
+    source: { publish: identity(publish), final: identity(final), script: script ? identity(script) : null, branding_hash: branding, speech_hash: timeline?.speech_hash ?? null, compilation_hash: timeline?.compilation_hash ?? null },
+    choice: { locales: choice, decided_at: languages.decided_at },
+    locales,
+    files: [...body.files, metadataEntry],
+  };
+  let bytes = `${JSON.stringify(manifest, null, 2)}\n`;
+  // The site answers a batch it has seen before with that review as it was, while sync reads the
+  // newest one: going back to an earlier choice would be refused as changed. The batch it follows
+  // makes this one its own.
+  const latest = newest(rows, "languages");
+  if (rows.some((row) => row.gate === "languages" && !row.subject && row !== latest && row.content_sha256 === sha256Of(bytes))) {
+    bytes = `${JSON.stringify({ ...manifest, follows: identity(latest) }, null, 2)}\n`;
+  }
+  const file = GATES.languages({ workdir });
+  atomicWrite(file, bytes);
+  const proof = await upload(request, slug, file, "languages_manifest", "application/json");
+  if (proof.sha256 !== sha256Of(bytes)) throw new UsageError("review/languages.json changed while the batch was sent; run review-push again");
+  return { ...body, content_sha256: proof.sha256, files: [...manifest.files, proof] };
 }
 
 /**
@@ -1149,7 +1249,8 @@ export async function reviewPush(args, ctx) {
       // An owner renewal invalidates old downstream approvals. Resolve its identity from
       // the site, then verify bytes/timing before adding the new final-review binding.
       const remote = ["publish", "languages", "dubs"].includes(candidate.gate) ? await request("GET", values.slug) : null;
-      const bound = await bindRenewalSubmission({ body: candidate, remote, project, workdir, request, upload });
+      // Any other language batch names its approved source the same way (bindLanguageSource).
+      const bound = candidate.gate === "languages" && !renewedFinal(remote) ? await bindLanguageSource({ body: candidate, remote, project, workdir, request }) : await bindRenewalSubmission({ body: candidate, remote, project, workdir, request, upload });
       // Every review this command sends leaves through here, so none carries a summary the
       // site would refuse for its length, nor a payload it would refuse for its size.
       const { body, bytes, lines } = fitPayload({ ...bound, summary: fitSummary(bound.summary) });
