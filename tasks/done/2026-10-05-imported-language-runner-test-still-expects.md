@@ -1,17 +1,18 @@
 ---
 id: 2026-10-05-imported-language-runner-test-still-expects
 title: Imported-language runner test still expects the native dub to have no speech journal of its own
-status: open
+status: done
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-runner-test
+claimed_at: 2026-10-07T03:42:24Z
 created_at: 2026-10-05T23:50:56Z
-completed_at:
-branch:
+completed_at: 2026-10-07T03:52:37Z
+branch: claude/happy-carson-c1hy91
 depends_on: []
 scope:
   - docs/videos/imported-long-languages/runner.test.mjs
+  - docs/videos/imported-long-languages/runner.mjs
 ---
 
 # Imported-language runner test still expects the native dub to have no speech journal of its own
@@ -39,18 +40,18 @@ line by line.
 
 ## Definition of done
 
-- [ ] The test passes again with the native dub's own speech journal in place.
-- [ ] It still proves that a body whose answer the imported journal saved is not POSTed a second
+- [x] The test passes again with the native dub's own speech journal in place.
+- [x] It still proves that a body whose answer the imported journal saved is not POSTed a second
   time after the consumer is interrupted. A POST for a later chunk is either allowed and counted
   separately or prevented by the fixture.
 
 ## Steps
 
-- [ ] Trace the second run of the test: which journal (the dub's `audio/speech-journal` or the
+- [x] Trace the second run of the test: which journal (the dub's `audio/speech-journal` or the
   imported `speech-journal/journal.json`) answers the first chunk, and when each status GET happens.
-- [ ] Adjust the fixture's interruption point, the POST count and the error expectation to match.
+- [x] Adjust the fixture's interruption point, the POST count and the error expectation to match.
   Keep the "no second POST for the same body" guarantee.
-- [ ] Run the three files below and record the result in the PR body.
+- [x] Run the three files below and record the result in the PR body.
 
 ## How to verify
 
@@ -70,3 +71,26 @@ so attach the output to the PR.
 - The directory is also the whole scope of the stale claim
   2026-09-29-resume-imported-long-video-languages (codex-video-stall-followthrough). Its branch
   was merged as PR #1210. Check it before claiming.
+
+## 2026-10-07 (claude-opus-5-5-runner-test)
+
+- On origin/main 666afb04 two tests were red, not one: "keep an unknown speech POST held across
+  invocations" as well, both ending "Dub did not produce a checked track or an explicit skip
+  reason". Cause, besides the test's timing: since #1342 (f99c8032) `makeDub` answers a dub exit 4
+  with `defer()` (the slug goes into `automation.skipped` with `deferred_until`) instead of halting,
+  and the runner only stopped on `automation.halted` or `blocked`, so it went on to read a track
+  that was never made. Scope widened to `runner.mjs` for that reason: the runner now clears the
+  slug from `automation.skipped` before each unit and treats a deferred unit as a stop with the
+  automation's own line (`automation.skipped?.…`, since test automations have no such set). The
+  held test passes again unchanged.
+- The replay test: traced every status GET and POST. In the second invocation the first chunk
+  (n000…) is replayed from the imported journal with no request (the native dub's own journal,
+  `audio/speech-journal`, now sits in front of it), the 40 line clips are written, and only then
+  does the fresh probe before the next chunk (n014…) run; that next chunk's POST is a different
+  body. The test now plants the owner's video STOP in that probe once line clips exist, and asserts
+  one POST in all (the fetch still fails any second POST), the saved WAV cut into line clips, the
+  imported journal byte-identical, and no checked or skipped dub. The first invocation's
+  assertions (EEXIST, one succeeded record, the saved bytes) are unchanged.
+- Verified: `node --test docs/videos/imported-long-languages/*.test.mjs` (126 pass, 44 in
+  runner.test.mjs); `npm run test:tools`. Still true: no CI job runs this directory (test:tools
+  globs tools/**), so it can drift again unnoticed.
