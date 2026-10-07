@@ -194,7 +194,9 @@ function withKeptRemarks({ gate, payload }, lines) {
   const list = KEPT_LIST[gate];
   const pictures = list && Array.isArray(payload[list]) ? payload[list] : [];
   const shots = gate === "storyboard" && Array.isArray(payload.shots) ? payload.shots : [];
-  const keptShot = (shot) => isRecord(shot) && shot.accepted === true;
+  // A shot still waiting for a prompt fix is not kept, whatever else it says (as the card and
+  // the site read it): its remarks are what the worker fixes the prompt from.
+  const keptShot = (shot) => isRecord(shot) && shot.accepted === true && shot.needs_review !== true;
   if (!pictures.length && !shots.some(keptShot)) return null;
   const cut = (picture) => (isRecord(picture) ? { ...picture, problems: keptRemarks(picture.problems, lines) } : picture);
   if (!shots.length) return { ...payload, ...(pictures.length ? { [list]: pictures.map(cut) } : {}) };
@@ -217,6 +219,15 @@ function withKeptRemarks({ gate, payload }, lines) {
       return { ...shot, judge: { ...verdict, problems: listed.has(shot.id) ? [] : keptRemarks(shot.judge?.problems, lines) } };
     }),
   };
+}
+
+/** Whether the judge said anything of a storyboard's kept pictures, on its list or on a kept shot. */
+function saidOfKept(payload) {
+  const said = (problems) => keptRemarks(problems).length > 0;
+  const listed = Array.isArray(payload?.accepted) ? payload.accepted : [];
+  const shots = Array.isArray(payload?.shots) ? payload.shots : [];
+  return listed.some((picture) => isRecord(picture) && said(picture.problems))
+    || shots.some((shot) => isRecord(shot) && shot.accepted === true && shot.needs_review !== true && said(shot.judge?.problems));
 }
 
 // The line a storyboard's summary ends with when the remarks on its kept shots were left out.
@@ -254,7 +265,7 @@ export function fitPayload(body) {
     throw new ReviewError(`the ${body.gate} review's payload is ${bytes} bytes, over the ${limit} the site takes${kept ? ", even with the judge's remarks on the kept pictures left out" : ""}; nothing was sent`, { code: "payload_too_large", submission: true });
   }
   if (!kept) return { body, bytes, lines };
-  const leftOut = lines === 0 && body.gate === "storyboard";
+  const leftOut = lines === 0 && body.gate === "storyboard" && saidOfKept(body.payload);
   return { body: { ...body, ...(leftOut ? { summary: withSummaryLine(body.summary, SUMMARY_REMARKS_LEFT_OUT) } : {}), payload }, bytes, lines };
 }
 

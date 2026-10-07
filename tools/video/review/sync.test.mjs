@@ -1489,6 +1489,17 @@ test("a payload past the site's limit is never posted: the remarks on kept pictu
   const odd = board(200, wide);
   odd.payload.accepted.push({ id: "listed-only", overall: 5, problems: remarks });
   assert.deepEqual(fitPayload(odd).body.payload.accepted, [{ id: "listed-only", overall: 5, problems: [REMARKS_LEFT_OUT] }]);
+  // A shot still waiting for a prompt fix is not kept, whatever else it says: its verdict goes up whole.
+  const both = board(200, wide);
+  both.payload.shots[0] = { ...both.payload.shots[0], needs_review: true };
+  assert.deepEqual(fitPayload(both).body.payload.shots[0], both.payload.shots[0]);
+  // Past the budget for its prompts alone, a board whose kept shots the judge said nothing of
+  // does not claim their remarks were left out.
+  const quiet = board(200, []);
+  quiet.payload.shots = quiet.payload.shots.map((shot) => ({ ...shot, prompt: "p".repeat(1100) }));
+  const quietFit = fitPayload(quiet);
+  assert.equal(quietFit.lines, 0);
+  assert.equal(quietFit.body.summary, "s");
   // A kept shot the list does not name keeps its own remarks, cut the same way.
   const unlisted = board(10);
   unlisted.payload.accepted = unlisted.payload.accepted.slice(1);

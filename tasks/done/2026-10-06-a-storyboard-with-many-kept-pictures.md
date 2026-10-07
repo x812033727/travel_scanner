@@ -13,6 +13,7 @@ depends_on: []
 scope:
   - tools/video/review/sync.mjs
   - tools/video/review/sync.test.mjs
+  - docs/videos/ILLUSTRATED.md
 ---
 
 # A storyboard with many kept pictures can pass the payload limit after its remarks are left out
@@ -86,3 +87,9 @@ Found while verifying `4d296e304` (PR #1344). The scratch reproduction was not k
   within 2 KB of the limit, and fails against both earlier versions of `sync.mjs`; "each kept
   shot's remarks go up once" fails against the version before this ticket. `node --test
   "tools/video/review/*.test.mjs"` 178 pass; the card's two vitest files 50 pass.
+- A second review of the last step (ship) asked for three more things, done in a follow-up
+  commit: `docs/videos/ILLUSTRATED.md` described the old payload (a section "10-07 後續" now
+  says what goes up; scope widened to it); a shot with both `accepted: true` and
+  `needs_review: true` is treated as waiting, as the card and the site read it, so its verdict
+  goes up whole; and the summary line is added only when the judge said something of a kept
+  picture. Each new assertion fails without its fix.
