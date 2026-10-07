@@ -2162,6 +2162,120 @@ PASS is DURATION_ONLY for the three rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1361 approved-language source binding increment: 4 files (2026-10-07)
+
+Reviewer: `claude-pr-review-happy-carson`, the reviewer of the "PR #1361" sections above. It wrote none of the branch's commits, judged each bound diff on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-happy-carson`, the branch's author. The changes are two commits written on this branch under the ticket `2026-09-30-youtube-approved-languages-sync`, each with the repository's `Claude <noreply@anthropic.com>` git identity:
+
+- `47fba771` ("fix(video): every language batch names the approved video it belongs to");
+- `59a3ba9d` ("fix(video): a drama the worker approved binds no screenplay; dubs, the narration's own language and repeated pushes go up as sync reads them").
+
+Scope: DURATION_ONLY for the four changed bindings below, on claude/happy-carson-c1hy91 (draft PR #1361) at `637cb94b`. That is seven commits on the previous increment's receipt commit `e1390b14`, one of them the merge `1321ae90` of origin/main `66304490` (#1367). The merge base with origin/main is now `66304490`.
+
+Baseline: `e1390b14`, 4 of 4 match. None of the seven commits touches docs/videos/long-form/ or tools/video/long-form/. At `e1390b14`, review.md (744,723 bytes) hashes to `e053a9b08047ec4a5b17c20e4f51fd5ac36aa823d13af9758e8350bba2808ff4`, the report_sha256 that review.json held before this increment. At `e1390b14`, `git show <path> | sha256sum` equals the value in review.json and in the table for each file:
+
+- tools/video/review/sync.mjs (77,605 bytes) `bb2c22b62b8ed451aad189228eba00e4ddf1b98b59783f9b2d2e5dc72f5159d2`;
+- tools/video/review/sync.test.mjs (135,584) `488fa8177369d9f0b0ff4dfde3cd6dc3c0dce51ba2149b4eb399b688abf14423`;
+- tools/video/automation/flow.mjs (234,921) `9e2b53a475d34eaa6baa64940dc5496e30c1b998030a57515dd0be7fd0b1712e`;
+- tools/video/automation/automation.test.mjs (423,776) `18a79ba11bac24554e23d4a3fc062278f08749070130acc1c3c92a1d2058d4b2`.
+
+So each file's diff against `e1390b14` is exactly the unreviewed change. Each commit's paths, as against its first parent, intersected with the 108 paths of REVIEW_FILES:
+
+- `47fba771` touches sync.mjs, sync.test.mjs and automation.test.mjs.
+- `59a3ba9d` touches those three and flow.mjs.
+- `729f7f17` (a comment in tools/video/tts/client.mjs), `ba50c685` and `637cb94b` (task files) touch no bound path.
+- The merge `1321ae90` brings in only main's docs/ops/video-auto-router-language-source-resubmission.md and a done task. Main's side between `ddbf0e4b` and `66304490` changes no bound file and neither receipt file, and neither does origin/main since. `durationReviewProblems` passes against main's own tree at `66304490` and at the fetched origin/main tip.
+
+The companion files the two commits change are not in REVIEW_FILES: tools/video/review/language-contract.mjs and language-contract.test.mjs, apps/api/app/video_youtube/language_package.py, its tests and the contract fixture under apps/api/tests/fixtures/video_language_contract/, docs/videos/APPROVED-LANGUAGE-PACKAGE.md, docs/videos/LANGUAGES.md and task files. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these four and nothing else, so the other 104 bindings equal their working-tree bytes. The working tree equals the head for the four files. None holds a CR byte or a BOM, and each ends in LF. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with four hashes rebound and the other 104 unchanged.
+
+What the change is. `review-push --gate languages` used to send an ordinary language batch with only its files, while YouTube sync takes a batch only with `upload/metadata.json` and a `languages_manifest`. Every batch that is not a renewed final's is now bound by `bindLanguageSource`. The manifest is schema 1. It names the site's newest upload confirmation (approved or waiting), its newest approved final cut and, for a drama, its newest screenplay review if the site holds one, all by review id and content hash. It also carries the branding, speech and compilation hashes, the owner's choice (`siteChoice`), the locales and every file sent. It is written to review/languages.json and uploaded as the batch's content hash. A new early GET in `reviewPush` lets `languageSource` refuse a batch before any file goes up. In `languagesSubmission`, the narration's own dub is sent as a skip with a fixed reason, and a dub track goes up in the format it was made in (`DUB_TYPES`: m4a, mp3 or wav). The batch's summary is built from the bound payload. In flow.mjs, `languages()` neither translates nor dubs the narration's own locale. This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/review/sync.mjs (+141/−14, 77,605 → 87,801 bytes). The hunks are:
+
+- the `createHash` import (12), the schema import gaining `LOCALES` and `NARRATION_LOCALE` (29) and the renewal import gaining `renewedFinal` (38);
+- `languagesSubmission`'s docblock (825–831), its narration filter on `dubsForUpload` (839–840) and its dub entry (855–862);
+- the new constants and functions `siteChoice`, `languageSource` and `bindLanguageSource` (881–994);
+- `reviewPush`'s early GET (1268–1270), its choice between `bindLanguageSource` and `bindRenewalSubmission` (1275–1279) and its summary line (1282).
+
+The file's duration code is outside every hunk:
+
+- the `animeRuntimeContext`/`validateAnimeRuntime` and `animeBodyDurationProblems`/`animeRuntimeProof` imports (20, 22);
+- `payloadLimit`'s `runtime_spec` test (173);
+- the audio review's printed length, runtime fields, body-duration problems, runtime measurement and `duration_seconds` (356, 589–659);
+- the final cut's `body_frames` check, runtime proof, printed length and `duration_seconds` (678–760);
+- the publish gate's runtime proof and minutes (1014–1034);
+- the storyboard's per-shot `seconds` (1136, 1163).
+
+The file's lines naming `target_minutes`, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, `runtime_spec`, `action_seconds`, a duration helper, duration or minutes number 16 at both revisions. No changed line names one of them, seconds, a frame, `fps`, a floor, `total_frames` or process.env.
+
+- `bindLanguageSource` reads the timeline's `speech_hash` and `compilation_hash` only to copy them into the manifest as identities. It compares `metadata.final_sha256` and `branding_hash` with the approved final's content hash and payload. It reads no length, frame count or runtime field, and it changes none of the final, audio or publish reviews.
+- For a batch with no renewed final, `bindRenewalSubmission` returned the body unchanged before this change (renewal.mjs line 169, unchanged). So handing such a batch to `bindLanguageSource` drops no check: it only adds refusals. A renewed final's batch still goes through `bindRenewalSubmission`, whose `body_frames` and speech-hash checks are untouched.
+- The early GET and `languageSource` can only refuse with an owner or usage exit before any upload. The other gates' `remote` is read as before.
+- The narration-dub skip and `DUB_TYPES` choose which file goes up and under which content type. `dubsForUpload`, the dubs' fit and the tempo values it reports are unchanged.
+- The summary is `languagesSummary` of the bound locales and still passes `fitSummary`. The language batch's summary names no length.
+
+Findings, tools/video/automation/flow.mjs (+6/−1, 234,921 → 235,274 bytes; `59a3ba9d`). In `languages()`, `const narrated = narrationLocale(doc)` and a `continue` skip the narration's own locale in the translation loop (3268–3273). The dub loop's `continue` condition gains `locale === narrated` (3297). `narrationLocale` was already imported. For a zh-TW video, zh-TW is never in the owner's choice. For a video narrated in another language, the zh-TW channel entry is a different locale, so it is still translated. The skip can only leave a sheet or dub unmade. It marks nothing done, and `makeDub`, the dub fit and the package are unchanged. The duration code is outside both hunks:
+
+- the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29);
+- `slidesMinutes` and `episodeMinutes` (63–69);
+- the anime `body_target_seconds / 60` settlement (490);
+- the planner and writer payloads' `target_minutes` (1672–2019, 2440–2469, 2805).
+
+The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` number 20 at both revisions.
+
+Findings, tools/video/review/sync.test.mjs (+204/−19, 135,584 → 150,197 bytes; 62 top-level tests at the head, 54 at `e1390b14`; 90 of 90 by `node --test`). It imports `confirmedVideo`, `DECIDED_AT`, `languageSite`, `tool` and `toolContext` from the unbound language-contract.mjs, and `siteChoice` from sync.mjs. The summary-limit language test now builds its video with `confirmedVideo` and expects `metadata` and `languages_manifest` among the files. The invalid-upload test seeds a confirmation and a cut and counts only language reviews. Eight tests are added:
+
+- the manifest's sources, choice and files, and review-pull recording its hash;
+- an English narration's own dub as a skip and its captions or title changed after the confirmation refused;
+- nine cases that cannot be bound, refused before any file where the site's reviews refuse;
+- a batch made while its confirmation waits;
+- going back to an earlier choice;
+- an mp3 dub;
+- a renewed final keeping renewal.mjs's binding;
+- a drama's screenplay review.
+
+Their numbers are review counts, file sizes and hashes, exit codes and the fixtures' one-second caption cues. No length rule is asserted, and the one added string naming a timeline is a fixture dub's skip reason. The file's opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` is unchanged (now line 29, moved by the added import line), and no changed line reads or sets process.env. Its duration-term lines number 30 at both revisions.
+
+Findings, tools/video/automation/automation.test.mjs (+29/−4, 423,776 → 426,439 bytes; 143 top-level tests at the head, 142 at `e1390b14`; 179 of 179 by `node --test`). The fake site's tool GET now also returns the project's `locales` and `locales_decided_at`. Three batch file lists gain `metadata` and `languages_manifest`, and one of those tests checks the manifest's sources and choice. One test is added: an English-narrated video whose owner ticks English is not translated or dubbed into English, and its batch carries the skip. No length is asserted, and no changed line reads or sets process.env. The opt-out (line 36) is unchanged, and the file's lines naming target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, duration, minutes, `effectiveEpisodeMinutes` or `minEpisodeMinutes` number 41 at both revisions.
+
+The floor's opt-out. sync.test.mjs's existing `??=` line is what lets language-contract.mjs's real `package` run pass the eight-minute floor on its seconds-long fixtures. Its header says so, and `minEpisodeMinutes` (core/schema.mjs, bound and unchanged) honours the variable only under the test runner with a repository `*.test.mjs` entrypoint, or in assemble's smoke. Across every path changed since `e1390b14`, the only added line that sets the variable is in the entrypoint language-contract.test.mjs, also as `??= "0"`. language-contract.mjs itself sets nothing in process.env, and its `toolContext` passes the tools an `env` of only `VIDEO_WORKDIR` and `MOKAAIR_VIDEO_TOKEN`.
+
+Across the four diffs there is no change to any of these: the 600/780-second targets, the 480-second / 14,400-frame measured floors, the eight-minute floor on every video but a drama, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened. A case-insensitive scan covered the changed lines of the four files. It looked for minute, MIN_EPISODE, 480, 14400, 14,400, 600, 780, runtime, target_, action_seconds, covered, source_hash, plans.json, policy.json, floor, total_frames, duration, seconds, frame, fps, process.env, 分鐘, 秒, 時長 and 時間軸. Its one hit is the fixture skip reason above. The same scan over the unbound companions finds the opt-out and the comment named above and a fixture dub timeline's frame arithmetic in language-contract.mjs.
+
+Unbound context, not reviewed beyond the floor check above: language-contract.mjs and its test, language_package.py (+8/−1) and its tests, the contract fixture, APPROVED-LANGUAGE-PACKAGE.md, LANGUAGES.md, tools/video/tts/client.mjs's comment, the merged ops record and the task files.
+
+Ran (Node v22.22.0, Linux, in the repository checkout at `637cb94b`, offline, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing (`git show e1390b14:<path> | sha256sum` against review.json and the table at `e1390b14`, and `sha256sum <path>`);
+- the report hash at `e1390b14`;
+- the CR, BOM and final-newline checks;
+- each commit's first-parent paths intersected with REVIEW_FILES;
+- `durationReviewProblems` against `66304490` and origin/main through `git show`;
+- a reading of `git diff e1390b14..HEAD -- tools/video/review/sync.mjs tools/video/review/sync.test.mjs tools/video/automation/flow.mjs tools/video/automation/automation.test.mjs` in full;
+- reads of renewal.mjs's `bindRenewalSubmission` and `renewedFinal`, `languages()`'s head, `minEpisodeMinutes`, and language-contract.mjs's header and `toolContext`;
+- a search of every changed path for process.env and the floor variable;
+- the duration-term counts and the scans.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` with the four stale bindings above and exited 1. On the branch's bytes, each of these exited 0:
+
+- `node --test tools/video/review/sync.test.mjs`, 90 of 90;
+- `node --test tools/video/automation/automation.test.mjs`, 179 of 179;
+- `node --test tools/video/review/language-contract.test.mjs`, 1 of 1;
+- `node --test tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs tools/video/qa/duration.test.mjs tools/video/core/lint.test.mjs`, 62 of 62.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the language binding itself. That covers the manifest's shape and sources, the refusals and their exit codes, the narration-dub skip and its wording, the repeated-push `follows` rule, the dub content types, and whether YouTube sync takes every batch.
+- The unbound files named above were not reviewed beyond the floor check.
+- No real video, package, batch or YouTube sync was exercised, and the tests run under the opt-out.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 104 bindings these commits did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the four rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2218,9 +2332,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `18a79ba11bac24554e23d4a3fc062278f08749070130acc1c3c92a1d2058d4b2` |
+| `tools/video/automation/automation.test.mjs` | `84407f5d1729cfb8856224efd1731cdd407d584831c5e9096497a1c4f4a7f3b1` |
 | `tools/video/automation/discuss.mjs` | `74ad92a459787188cf2b64ee7663ae31ed5629ffc54fc9cc9fe8a8888964078c` |
-| `tools/video/automation/flow.mjs` | `9e2b53a475d34eaa6baa64940dc5496e30c1b998030a57515dd0be7fd0b1712e` |
+| `tools/video/automation/flow.mjs` | `a6b26dd17383b91d7d004d44341d87dc595d498d2bd04750372e05fd4dbaccbe` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |
@@ -2268,8 +2382,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/qa/cli.mjs` | `6920a7948db405bd084e010db51e237fb2b4a51860e663743fbf11de5bc86b91` |
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
 | `tools/video/qa/qa.test.mjs` | `9a5430e90e3d6234198024e8bf8801d34dad0fabd3f9a6e2ceaf5e8df8a9af44` |
-| `tools/video/review/sync.mjs` | `bb2c22b62b8ed451aad189228eba00e4ddf1b98b59783f9b2d2e5dc72f5159d2` |
-| `tools/video/review/sync.test.mjs` | `488fa8177369d9f0b0ff4dfde3cd6dc3c0dce51ba2149b4eb399b688abf14423` |
+| `tools/video/review/sync.mjs` | `d25fdbc1b35704a47900d5d4f937232987555e1e2ffa9be027626a1ca87a591d` |
+| `tools/video/review/sync.test.mjs` | `edcf916be213c2ac9609d35ec4e23e107ad53a6f3f07142c26817b0c5f389690` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
