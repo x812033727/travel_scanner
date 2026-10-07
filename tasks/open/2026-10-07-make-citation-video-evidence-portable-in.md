@@ -1,7 +1,7 @@
 ---
 id: 2026-10-07-make-citation-video-evidence-portable-in
 title: Make citation video evidence portable in public repository
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-citation-evidence-hygiene
