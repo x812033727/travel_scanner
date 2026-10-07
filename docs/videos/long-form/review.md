@@ -2497,6 +2497,116 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch next-pending-reason pending writer's reason increment: 2 files (2026-10-07)
+
+Reviewer: `claude-pr-review-pending-reason`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is two commits on branch next-pending-reason for the task `2026-10-05-video-writer-pending-transport-reason`, written by its owner `claude-opus-5-5-pending-reason`: `b4e60e11` ("fix(video): a pending writer whose receipt look-up failed says why, not that the model is still running") and `3d057995` ("fix(video): review fixes for the pending writer's reason: the poll's own deadline, the lost connection's cause, the line's wording"). Scope: DURATION_ONLY for the two changed bindings below. The reviewer wrote neither commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `c30f2013`, the first commit's parent ("chore(tasks): close the compilation re-plan translations task"). The last receipt commit before it is `fc0c5497`, the "Branch next-compilation-i18n compilation translation hashes increment" above, and it is an ancestor of `c30f2013`. Between the two only the task file 2026-10-07-a-re-planned-compilation-keeps-the.md moves from tasks/open to tasks/done, and `git diff fc0c5497 c30f2013 -- docs/videos/long-form/ tools/ apps/ .agents .claude` is empty. At `fc0c5497` and at `c30f2013` all 108 bindings agree with the receipt, the table and the bytes, and `durationReviewProblems` finds nothing. review.md (793,639 bytes, no CR byte, no BOM) hashes to the receipt's `report_sha256`, `2f3050131abac221aa1d90d00d7f0b79f4ea4260378c7f8d93e7aa41c3c5a20f`, there and still at `3d057995`. The hashing was done by script, on blobs exported with `git show`. At `3d057995` 106 bindings still agree and two do not: tools/video/automation/flow.mjs and automation.test.mjs. The working tree's copies of the two equal `3d057995`'s and hold no CR byte and no BOM. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs; stale duration review binding: tools/video/automation/flow.mjs` and nothing else. The whole of `git diff c30f2013 3d057995` is the two bound files, the unbound tools/video/automation/client.mjs and client.test.mjs, and the task's own file. Nothing under docs/videos/long-form/, tools/video/long-form/, tools/video/core/, tools/video/qa/ or apps/ changes. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+What the change is. A durable writer, translator or caption reviewer whose job has not answered within the client's poll ends the worker's step with RUN_PENDING. `stepOnce` then sets the video aside for the round (`pendingUntil`) or ends the run, and prints one line. Until this change that line always said "<stage> is still running", also when the job was done and only the worker's look-ups had failed (a rate limit on 2026-10-05). Now:
+
+- client.mjs (not bound) puts the last failed request's cause on the RUN_PENDING error as `why`:
+  - from the poll (`durableRun`), a failed submission or receipt look-up;
+  - from `reconcileStale`, a stale run that could not be looked up.
+  - A receipt read in the poll clears the cause (`lastProblem = ""`), so a job last read as running carries no `why`.
+  - A lost connection names undici's cause (`failedOn`) instead of "fetch failed".
+  - Once a look-up was answered in the call, the poll's own budget deadline (a `TimeoutError`) ends the poll with that read standing. It is not counted as a failed request.
+- flow.mjs `stepOnce`: with a `why`, the line is "<stage> has not answered yet: the worker's last request to the server for it failed (<why, cut to `PENDING_WHY_LENGTH`, 160 code points>); it is asked again next round". Without one it is the old line.
+
+This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/automation/flow.mjs (+11/−1, 236,089 → 236,889 bytes, 3,858 → 3,868 lines; `f2d0c51e1300eb1767cbf8d6556b741a6c273062e5805dba6c87c0de80f84067` → `fd00cb91c8af55d1ea12a98238b4a3ce8eff76aceecdcef3079d8660b04a655d`). The first commit has +10/−1 and the second +6/−5. Every changed line is in one of two hunks: the new module constant `PENDING_WHY_LENGTH` with its comment (552–553), and `stepOnce`'s RUN_PENDING branch, where the one `what` line becomes a comment, `stage` and a two-way `what` (1220–1228). The duration code sits outside them:
+
+- the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29);
+- `slidesMinutes` and `episodeMinutes` (63–69);
+- the anime `body_target_seconds / 60` settlement (490);
+- `planPayload`'s `target_minutes` (1693);
+- the drama request and series episode targets (1906–2040);
+- the writer, re-plan and lint-fix targets (2460–2489, 2825).
+
+The file's lines naming the 18 duration terms of the earlier increments are the same 20 lines, with the same text, at both revisions. The broad scan (minute, second, frame, fps, duration, runtime, timeline, timing, window, target, body, 480, 600, 780, 14400, 14,400, MIN_EPISODE, formatClock, policy, manual_review, process.env, 分鐘, 秒, 時長, 片長, tempo, speech_hash, total_frames, measured, clock) matches the same 172 lines at both revisions. Widened with qa, slot, floor, assemble, package, final, compile, gate, errors, lint, length, limit, budget, request_key and receipt, it finds in the changed lines only the constant's name, the comment's "receipt", "rate limit" and "gateway", and the two line templates.
+
+What the branch can reach:
+
+- Control flow. Everything around `what` is byte-unchanged:
+  - the throw of any error that is not a RUN_PENDING AutomationError (1219);
+  - the video found from `unitVideo` or the error's slug (1236);
+  - `pendingUntil.set(video, now + PENDING_RECHECK_MS)` and the returned `${video}: ${what}`;
+  - `this.later(...)`, which sets `halted`, when no video is named;
+  - `settleRuns`, which this path skips at both revisions.
+  `what` is a string at both, so the step's value is a non-empty line either way. cli.mjs `drive` only prints it and reads `lane.halted`. No code in tools/video, ops/ or apps/ reads the line's text.
+- The new expression. `[...String(error.why)].slice(0, 160).join("")` runs only when `why` is truthy. client.mjs sets `why` only from strings, and on such values neither `String` nor the spread can throw.
+- The other readers of `why` on an error never see a RUN_PENDING one with it:
+  - flow.mjs `unanswered` is reached only for RUN_UNCERTAIN (`requestFailed` 1547), and `requestFailed` throws RUN_PENDING before `errorScope` (1548);
+  - discuss.mjs `answerDocument` uses its `why` only in the RUN_UNCERTAIN branch, and the wait branch reads `message`;
+  - shorts.mjs `unanswered` is called only for RUN_UNCERTAIN (423).
+  - `errorScope` and WAIT_CODES are unchanged. So is the owner retry's RUN_PENDING (retryRuns), which carries no `why` and only logs (1407).
+- No stage that makes or checks a length is added, skipped, reordered or set aside differently: the writer and lint, the verifier and listener, the gates, the narration and media, assemble, package, QA, review-push and the languages. `lintProject`, the steps and qa's duration item are outside both files' diffs.
+
+A seeded differential run backs this. It imported both revisions' flow.mjs, each with its own client.mjs, the baseline from a scratch tree made with `git archive c30f2013`. It stubbed `stepUnit` and ran `step()` from each revision for 3,000 cases:
+
+- The cases were a RUN_PENDING AutomationError, other AutomationError codes (PROJECT_HELD with and without a slug, RUN_UNCERTAIN, POLICY_HOLD, OUTPUT_INVALID, rate limit, busy, none), a plain Error carrying the RUN_PENDING code, a TypeError, a line, or null.
+  - `why` was absent, null, empty, 0, false, short reasons, reasons of up to 400 code points of CJK, emoji, flags and combining marks, a number, an object or an Error.
+  - `stage`, `slug` and `unitVideo` varied over known and unknown videos, as did the run's slugs, an earlier `pendingUntil` and `skipped`.
+- Both revisions agreed on everything but the line of a RUN_PENDING error with a truthy `why`: the value returned or the error thrown (the same object), `pendingUntil`, `skipped`, `halted`, `settleRuns` and the log.
+  - 496 cases were RUN_PENDING lines, 401 of them for a video and 95 ending the run. In the 195 without a `why` the lines were identical. In the other 301 the head's line was exactly the new text with the reason cut to at most 160 code points, after the baseline's prefix.
+  - 1,597 rethrew the same error, 91 set a held video aside, 387 returned the line and 429 returned null, alike at both.
+
+client.mjs and client.test.mjs are not bound. They were read for one question: whether the change can alter the request key, the receipt, the retries or the budget that decide whether a writer run is made.
+
+- At both revisions one key is made per payload (`receipts.prepare`) and the same key is POSTed again. A receipt is read through `receipts.receive`, and the same `completed()` consumes, removes or throws on it. `failures` and `attempts` are kept as before. run-receipts.mjs is unchanged.
+- The new `break` comes only after a look-up was answered in the call and the next one met a `TimeoutError`. In the worker that error comes from `AbortSignal.timeout(remaining)`, which fires when the budget is spent. The baseline then counted a failure, and its next `wait` (or, after a 1 ms remainder, `remaining`) was not positive, so it too broke before any further request. So the head sends the same requests. Only the cause in the message and `why` differ.
+- A seeded differential run of `client.run("writer", ...)` backs this, in 1 to 4 rounds per case against a scripted job server. Both revisions met the same answer for their n-th request:
+  - The answers were a job read as running, finished, failed, uncertain or a partial body, 429 with and without a body, 502, 503, 401, 404, a 409 input change, a refused connection, an AggregateError and an empty cause. Some later rounds changed the payload, the stale-run path.
+  - 6,000 cases in 15,038 rounds were run at budget 25,000 ms and intervals of 1,000, 5,000 and 12,500 ms, with instant sleeps. They gave identical requests (method, path, body and key), journals and archives on disk, and outcomes (result, or code, status, who, gone, retry_after, slug and stage). Each revision sent 14,141 POSTs.
+  - Messages differed in 3,179 rounds. `why` was given in 2,679 of the 3,437 RUN_PENDING rounds.
+  - 4,000 more cases also injected `TimeoutError`s in the middle of the budget, which the worker's fetch does not do. 517 diverged. In each, the head's requests in that round were a strict prefix of the baseline's, ending at a look-up that met the `TimeoutError` after a request answered in the same call, and the head threw RUN_PENDING. No case sent a request the baseline did not.
+  - At budget 5 ms the real clock decides the number of polls, and baseline against itself diverges as often as against the head. Those runs are not counted.
+
+Findings, tools/video/automation/automation.test.mjs (+57/−0, 433,227 → 437,276 bytes, 6,116 → 6,173 lines; 193 → 194 tests; `b1c3aa90e0fee599273b3cb48658a2540ffecd9e1e10e4db236914c1c20b6f35` → `126d16e3cbcf93246ecb0f7377dd63048d2942c23c2d6fc44e8873a5dc76dcd5`). The first commit has +47/−0 and the second +12/−2, both inside the new test.
+
+- No line is removed. The one new test (4862–4918) sits after "two lanes do not take turns polling one writer still running on the server".
+  - It drives the real durable client and `Automation` with `advance` stubbed to a single writer request, against a fake job server that can answer look-ups with 429.
+  - It asserts the step lines, one POST, the receipt settled, and the 160-code-point cut of a reason made of 159 emoji and CJK.
+  - None of it is about a length.
+- The 32 lines naming the 18 duration terms are the same at both revisions.
+- The broad scan matches six added lines: the request `body`, the fake `clock` (twice), and "no second request" in the title.
+- The opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at line 36 is byte-unchanged, and no added line reads or sets process.env.
+
+Ran (Node v22.22.0, Linux, in the worktree at `3d057995`, node_modules linked, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing: all 108 bindings, the table and the report hash at `fc0c5497`, `c30f2013`, `b4e60e11` and `3d057995`, the CR and BOM checks, `durationReviewProblems` at each, the delta against REVIEW_FILES, and the empty diff above;
+- `git diff c30f2013 3d057995` of all five files, read in full, with each commit's numstat;
+- the duration scans of both bound files at both revisions, and of the changed lines;
+- reads of these functions and every reader of `why`:
+  - flow.mjs `stepOnce`, `later`, `unanswered`, `requestFailed`, `errorScope` and the owner retry;
+  - cli.mjs `run` and `drive`;
+  - discuss.mjs `answerDocument` and shorts.mjs `unanswered`;
+  - client.mjs `lookupReceipt`, `reconcileStale`, `durableRun` and `run`;
+- five scratch trees made with `git archive`: the baseline (`c30f2013`), the head (`3d057995`), the head with the baseline's flow.mjs and client.mjs, the head with only the baseline's flow.mjs, and the head with only the baseline's client.mjs. Each holds tools, docs/videos, .agents, .claude, tasks and package.json, linked to this worktree's node_modules. There:
+  - `node --test` passed the baseline's automation.test.mjs 193 of 193 and client.test.mjs 40 of 40, and the head's 194 of 194 and 42 of 42.
+  - With both baseline files, automation.test.mjs failed 1 of 194, the new test. It got "writer is still running; its saved receipt will be checked next round" where "writer has not answered yet: ... (請求過於頻繁，請稍後再試。) ..." was expected. client.test.mjs failed 2 of 42, the two new tests.
+  - With only the baseline's flow.mjs, automation.test.mjs failed the same test at the same assertion, and client.test.mjs passed 42 of 42.
+  - With only the baseline's client.mjs, automation.test.mjs failed the same test at the same assertion, and client.test.mjs failed the same 2 of 42.
+- the two differential runs above, in the same scratch directory.
+
+Before rebinding, `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same two paths. `npm run test:tools` ran 2,088 tests: 2,083 passed, 4 skipped and 1 failed, the same regression on the same two paths. `npm run check:tasks` exited 0. The CLI check, the long-form tests, `npm run test:tools` and `npm run check:tasks` are run again after rebinding. Their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the change itself. That includes:
+  - the line's wording, its 160-code-point cut and where it is printed;
+  - what counts as a failed request, clearing the cause on a read, and `failedOn`;
+  - ending the poll on its own deadline after an answered look-up.
+- client.mjs, client.test.mjs and the task file are not reviewed. The client was read only for the requests, keys, receipts, retries and budget above.
+- No real writer, translator or caption reviewer job was sent, polled or taken. No real model, site or durable job was called, and the tests run under the opt-out.
+- Not run or seen: the Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, and the production host.
+- The 106 bindings this change did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2553,9 +2663,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `b1c3aa90e0fee599273b3cb48658a2540ffecd9e1e10e4db236914c1c20b6f35` |
+| `tools/video/automation/automation.test.mjs` | `126d16e3cbcf93246ecb0f7377dd63048d2942c23c2d6fc44e8873a5dc76dcd5` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
-| `tools/video/automation/flow.mjs` | `f2d0c51e1300eb1767cbf8d6556b741a6c273062e5805dba6c87c0de80f84067` |
+| `tools/video/automation/flow.mjs` | `fd00cb91c8af55d1ea12a98238b4a3ce8eff76aceecdcef3079d8660b04a655d` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `d82cdac4fe85203b648659f54fe91b49059cbe6dcb9e18f5eff41336358a8e22` |
