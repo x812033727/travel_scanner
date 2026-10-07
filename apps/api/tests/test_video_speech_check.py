@@ -17,7 +17,7 @@ from app.ai.jev import JevClient, JevError, NoulAnswer
 from app.config import Settings
 from app.main import app
 from app.models import VideoToolToken
-from app.video_speech.azure import SpeechUpstreamError
+from app.video_speech.azure import SpeechAnswerLost, SpeechUpstreamError
 from app.video_speech.checking import CheckUnavailable
 from app.video_speech.gemini import wav_from_pcm
 from app.video_speech.schemas import TrackLanguage
@@ -266,6 +266,11 @@ async def test_the_transcribe_endpoint_takes_a_wav_and_maps_upstream_failures(
     refused = await _post("transcribe", {"audio": audio})
     assert refused.status_code == 502 and refused.json()["code"] == "video_speech_upstream_failed"
     assert "HTTP 400 INVALID_ARGUMENT" in refused.json()["detail"]
+    # A lost answer is 504 like Google's own, but is not Google's: it is not "busy".
+    outcome["error"] = SpeechAnswerLost("Gemini", httpx.ReadTimeout("slow"))
+    lost = await _post("transcribe", {"audio": audio})
+    assert lost.status_code == 504 and lost.json()["code"] == "video_speech_upstream_lost"
+    assert "retry-after" not in lost.headers
 
 
 @pytest.mark.asyncio
@@ -312,6 +317,23 @@ async def test_transcription_failures_carry_the_upstream_status_and_are_logged(
     ]
     assert "SAFETY" in logged[2]
     assert all("site-key" not in message for message in logged)
+
+
+@pytest.mark.asyncio
+async def test_transcription_tells_a_request_never_sent_from_an_answer_lost() -> None:
+    raised: list[httpx.HTTPError] = [httpx.ConnectTimeout("no route"), httpx.ReadError("reset")]
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        raise raised.pop(0)
+
+    settings = Settings(hotspot_guide_gemini_api_key="site-key")
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(SpeechUpstreamError) as unreachable:
+            await checking.transcribe(settings, WAV, client)
+        with pytest.raises(SpeechAnswerLost) as lost:
+            await checking.transcribe(settings, WAV, client)
+    assert unreachable.value.status == 502 and not isinstance(unreachable.value, SpeechAnswerLost)
+    assert lost.value.status == 504 and "ReadError" in str(lost.value)
 
 
 @pytest.mark.asyncio

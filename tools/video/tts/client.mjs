@@ -33,11 +33,12 @@ export class SpeechError extends Error {
 const OWNER_CODES = new Set(["video_tool_token_invalid", "video_speech_not_configured", "video_speech_voice_not_allowed"]);
 const RETRYABLE_CODES = new Set(["video_speech_upstream_busy", "rate_limit_exceeded", "video_speech_upstream_failed", "upstream_unavailable"]);
 // A paid request's 5xx the API answers itself (apps/api/app/video_speech/admin_api.py; synthesis
-// gives the reserved characters back first), retried as before. Settled only when the API reached
-// the provider's answer or never connected: `video_speech_upstream_failed` and
-// `video_judge_upstream_failed` also cover a provider read timeout or dropped answer after the
-// request went out (any httpx.HTTPError), which may have been billed, and are still resent until
-// 2026-10-05-speech-api-tells-a-provider-answer gives that case its own code.
+// gives the reserved characters back first), retried as before. Each means the API reached the
+// provider's answer or never connected to it. A provider answer lost after the request went out
+// has its own code, 504 `video_speech_upstream_lost` (speech, transcribe) or 502
+// `video_judge_outcome_uncertain` (judge), uncertain here like any 5xx not listed. A host from
+// before those codes answers `video_speech_upstream_failed` for a lost answer too, which is still
+// resent as before, so a newer client against an older host behaves as it did.
 const SETTLED_CODES = new Set(["video_speech_upstream_busy", "video_speech_upstream_failed", "video_speech_upstream_rejected_key", "video_judge_upstream_failed"]);
 // The speech routes' own 502 `upstream_unavailable` (apps/web/app/api/video/speech/forward.ts) is
 // an API they never reached, so nothing ran and it is retried as well. Since #1272 they answer a

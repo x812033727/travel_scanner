@@ -5,6 +5,7 @@ from typing import Any
 from uuid import uuid4
 
 import fakeredis.aioredis
+import httpx
 import pytest
 from httpx import ASGITransport, AsyncClient
 
@@ -22,7 +23,7 @@ from app.providers.usage_meter import (
     release_azure_speech_characters,
     reserve_azure_speech_characters,
 )
-from app.video_speech.azure import AzureSpeech, SpeechUpstreamError
+from app.video_speech.azure import AzureSpeech, SpeechAnswerLost, SpeechUpstreamError
 from app.video_speech.ssml import Part, Segment, billable_characters, build_ssml
 from app.video_speech.tokens import (
     LAST_USED_RESOLUTION,
@@ -250,6 +251,57 @@ async def test_azure_throttling_is_passed_on_and_the_reservation_refunded(speech
         rejected.status_code == 502
         and rejected.json()["code"] == "video_speech_upstream_rejected_key"
     )
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("raised", "status"),
+    [
+        (httpx.ConnectError("refused"), 502),
+        (httpx.ConnectTimeout("no route"), 502),
+        (httpx.PoolTimeout("pool"), 502),
+        (httpx.ReadTimeout("slow"), 504),
+        (httpx.WriteTimeout("slow"), 504),
+        (httpx.RemoteProtocolError("dropped"), 504),
+        (httpx.ReadError("reset"), 504),
+    ],
+)
+async def test_azure_tells_a_request_never_sent_from_an_answer_lost(
+    raised: httpx.HTTPError, status: int
+) -> None:
+    calls = 0
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal calls
+        calls += 1
+        raise raised
+
+    speech = AzureSpeech(region="eastasia", key="server-side-key", timeout_seconds=1)
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(SpeechUpstreamError) as failed:
+            await speech.synthesize("<speak/>", client)
+    assert calls == 1
+    assert failed.value.status == status
+    assert isinstance(failed.value, SpeechAnswerLost) is (status == 504)
+    assert "server-side-key" not in str(failed.value)
+
+
+@pytest.mark.asyncio
+async def test_a_lost_azure_answer_has_its_own_code_and_keeps_the_reservation(
+    speech_app: Any,
+) -> None:
+    speech_app["error"] = SpeechAnswerLost("Azure Speech", httpx.ReadTimeout("slow"))
+    lost = await _post(_request())
+    assert lost.status_code == 504 and lost.json()["code"] == "video_speech_upstream_lost"
+    # Azure may have synthesized and billed it, so the characters stay counted.
+    kept = (await azure_speech_usage_snapshot(speech_app["redis"], 450_000)).used
+    assert kept > 0
+    # Never sent: the old code, which the tool sends again, and the characters given back.
+    speech_app["error"] = SpeechUpstreamError(502, "Azure Speech unreachable: ConnectError")
+    unreachable = await _post(_request())
+    assert unreachable.status_code == 502
+    assert unreachable.json()["code"] == "video_speech_upstream_failed"
+    assert (await azure_speech_usage_snapshot(speech_app["redis"], 450_000)).used == kept
 
 
 class TokenSession:

@@ -25,7 +25,7 @@ from typing import Any
 
 import httpx
 
-from app.video_speech.azure import USER_AGENT, SpeechUpstreamError
+from app.video_speech.azure import USER_AGENT, SpeechUpstreamError, paid_request_failed
 from app.video_speech.ssml import Segment
 
 VOICE_PREFIX = "gemini:"
@@ -142,7 +142,7 @@ class GeminiSpeech:
                 headers={"x-goog-api-key": self.key, "User-Agent": USER_AGENT},
             )
         except httpx.HTTPError as error:
-            raise SpeechUpstreamError(502, f"Gemini unreachable: {type(error).__name__}") from error
+            raise paid_request_failed("Gemini", error) from error
         finally:
             if owned:
                 await http.aclose()

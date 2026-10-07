@@ -6,6 +6,7 @@ from typing import Any
 from uuid import uuid4
 
 import fakeredis.aioredis
+import httpx
 import pytest
 from httpx import ASGITransport, AsyncClient
 
@@ -14,7 +15,7 @@ from app.config import Settings
 from app.main import app
 from app.models import VideoToolToken
 from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, azure_speech_usage_snapshot
-from app.video_speech.azure import SpeechUpstreamError
+from app.video_speech.azure import SpeechAnswerLost, SpeechUpstreamError
 from app.video_speech.gemini import (
     GeminiSpeech,
     audio_from,
@@ -175,6 +176,40 @@ async def test_a_rejected_key_is_reported_and_the_characters_refunded(gemini_app
     gemini_app["error"] = SpeechUpstreamError(429, "busy", "12")
     busy = await _post(_request())
     assert busy.status_code == 429 and busy.headers["retry-after"] == "12"
+
+
+@pytest.mark.asyncio
+async def test_gemini_synthesis_tells_a_request_never_sent_from_an_answer_lost() -> None:
+    raised: list[httpx.HTTPError] = [httpx.ConnectError("refused"), httpx.ReadTimeout("slow")]
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        raise raised.pop(0)
+
+    speech = GeminiSpeech(
+        base_url="https://gemini.invalid", key="site-gemini-key", timeout_seconds=1
+    )
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        with pytest.raises(SpeechUpstreamError) as unreachable:
+            await speech.synthesize("你好", "Sulafat", client=client)
+        with pytest.raises(SpeechAnswerLost) as lost:
+            await speech.synthesize("你好", "Sulafat", client=client)
+    assert unreachable.value.status == 502 and not isinstance(unreachable.value, SpeechAnswerLost)
+    assert str(unreachable.value) == "Gemini unreachable: ConnectError"
+    assert lost.value.status == 504 and "ReadTimeout" in str(lost.value)
+    assert "site-gemini-key" not in str(lost.value)
+
+
+@pytest.mark.asyncio
+async def test_a_lost_gemini_answer_has_its_own_code_and_keeps_the_characters(
+    gemini_app: Any,
+) -> None:
+    gemini_app["error"] = SpeechAnswerLost("Gemini", httpx.RemoteProtocolError("dropped"))
+    lost = await _post(_request())
+    assert lost.status_code == 504 and lost.json()["code"] == "video_speech_upstream_lost"
+    snapshot = await azure_speech_usage_snapshot(
+        gemini_app["redis"], 0, provider=GEMINI_SPEECH_PROVIDER
+    )
+    assert snapshot.used > 0
 
 
 @pytest.mark.asyncio

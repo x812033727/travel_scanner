@@ -26,6 +26,40 @@ class SpeechUpstreamError(Exception):
         self.retry_after = retry_after
 
 
+class SpeechAnswerLost(SpeechUpstreamError):
+    """The request went out and the provider's answer never came back.
+
+    A read or write timeout, a dropped connection or a broken answer does not say whether the
+    provider ran the request, so it may have synthesized or transcribed it and billed for it.
+    The routes answer it with its own code, which tools/video/tts/client.mjs does not send again.
+    """
+
+    def __init__(self, provider: str, error: httpx.HTTPError) -> None:
+        super().__init__(
+            504,
+            f"{provider} may have received the request, but its answer was lost: "
+            f"{type(error).__name__}",
+        )
+
+
+# A connection that never opened, or a request httpx would not write, cannot have reached the
+# provider: nothing ran and nothing was billed.
+NEVER_SENT = (
+    httpx.ConnectError,
+    httpx.ConnectTimeout,
+    httpx.PoolTimeout,
+    httpx.UnsupportedProtocol,
+    httpx.LocalProtocolError,
+)
+
+
+def paid_request_failed(provider: str, error: httpx.HTTPError) -> SpeechUpstreamError:
+    """What a paid POST that raised ``error`` tells the route: never sent, or answer lost."""
+    if isinstance(error, NEVER_SENT):
+        return SpeechUpstreamError(502, f"{provider} unreachable: {type(error).__name__}")
+    return SpeechAnswerLost(provider, error)
+
+
 @dataclass(frozen=True)
 class AzureSpeech:
     region: str
@@ -54,9 +88,7 @@ class AzureSpeech:
                 },
             )
         except httpx.HTTPError as error:
-            raise SpeechUpstreamError(
-                502, f"Azure Speech unreachable: {type(error).__name__}"
-            ) from error
+            raise paid_request_failed("Azure Speech", error) from error
         finally:
             if owned:
                 await http.aclose()

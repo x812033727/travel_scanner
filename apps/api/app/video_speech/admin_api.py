@@ -37,7 +37,12 @@ from app.providers.usage_meter import (
     release_azure_speech_characters,
     reserve_azure_speech_characters,
 )
-from app.video_speech.azure import OUTPUT_FORMAT, AzureSpeech, SpeechUpstreamError
+from app.video_speech.azure import (
+    OUTPUT_FORMAT,
+    AzureSpeech,
+    SpeechAnswerLost,
+    SpeechUpstreamError,
+)
 from app.video_speech.checking import CheckUnavailable, judge, transcribe
 from app.video_speech.gemini import (
     DEFAULT_GEMINI_TTS_MODEL,
@@ -352,6 +357,8 @@ async def _synthesize_with_gemini(
     )
     try:
         audio = await speech.synthesize(text, voice, payload.style, model)
+    except SpeechAnswerLost as error:
+        raise _answer_lost("Gemini") from error
     except SpeechUpstreamError as error:
         await release_azure_speech_characters(redis, characters, provider=GEMINI_SPEECH_PROVIDER)
         if error.status == 429:
@@ -378,6 +385,20 @@ async def _synthesize_with_gemini(
         content=audio,
         media_type="audio/wav",
         headers={"X-Billable-Characters": str(characters), "Cache-Control": "no-store"},
+    )
+
+
+def _answer_lost(provider: str) -> AppError:
+    """The request reached the provider and its answer was lost: it may have run and been billed.
+
+    Synthesis keeps its reserved characters, since the provider may have counted them. A connect
+    error (nothing sent) and a provider's own answer stay ``video_speech_upstream_failed``, which
+    tools/video/tts/client.mjs sends again; this code it does not.
+    """
+    return AppError(
+        504,
+        "video_speech_upstream_lost",
+        f"{provider} 可能已經處理這次請求並計費，但回覆沒有回來；請勿自動重送",
     )
 
 
@@ -439,6 +460,8 @@ async def synthesize_speech(payload: SpeechRequest, tool: VideoTool, session: Se
     )
     try:
         audio = await speech.synthesize(document)
+    except SpeechAnswerLost as error:
+        raise _answer_lost("Azure") from error
     except SpeechUpstreamError as error:
         # Azure bills only requests it processed, so a refused one goes back to the budget.
         await release_azure_speech_characters(redis, characters)
@@ -488,6 +511,9 @@ async def transcribe_narration(
         text = await transcribe(settings, wav, terms=payload.terms, language=payload.language)
     except CheckUnavailable as error:
         raise AppError(error.status, error.code, error.detail) from error
+    except SpeechAnswerLost as error:
+        # Checked before the statuses below: a lost answer is not Google's own 504.
+        raise _answer_lost("Gemini") from error
     except SpeechUpstreamError as error:
         if error.status == 429:
             raise AppError(
