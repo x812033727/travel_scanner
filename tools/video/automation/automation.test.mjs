@@ -4999,6 +4999,20 @@ test("a speech command that exits 3 because it lost the project's lease sets its
   delete videos.ctx.runCommand;
 });
 
+test("a media command that stopped on its own STOP check waits for the next run even when the file is gone by the time its exit is read", async () => {
+  const slug = "stop-gone-before-read";
+  const videos = durableVideos([slug]);
+  const worker = await videos.worker();
+  const state = videos.state(slug);
+  // The command saw the STOP and exited 6; the owner removed the file before the worker read the exit.
+  videos.ctx.runCommand = async () => ({ code: EXIT.incomplete, out: "stopped by the STOP file before anything was drawn or written; remove it to continue\n" });
+  assert.equal(await worker.media(state, "music"), `${slug}: music stopped (stopped by the STOP file before anything was drawn or written; remove it to continue); the next run continues`);
+  const saved = videos.state(slug);
+  assert.deepEqual([saved.status, saved.blocked, saved.defer_count], ["active", undefined, undefined], "neither blocked nor counted as a wait");
+  assert.ok(!videos.site.calls.reports.some((report) => report.stage === "music done"), "and not recorded as done");
+  delete videos.ctx.runCommand;
+});
+
 test("a writer job the server failed before dispatching it (a STOP file, the switch off, a queue that lost it) defers its video and is sent again once; it never blocks", async () => {
   const pending = (slug) => `${slug}: writer is still running; its saved receipt will be checked next round`;
   for (const code of ["video_ai_worker_stopped", "video_ai_automation_disabled", "video_ai_job_interrupted_before_dispatch", "video_ai_job_dispatch_closed"]) {

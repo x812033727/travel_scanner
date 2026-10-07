@@ -832,7 +832,6 @@ export class Automation {
     saveState(this.workdir(state.slug), state);
   }
 
-  /** Put video.json back as it was before a revision that lint refused. */
   /**
    * A speech command the unit runs (tts, dub, check-audio). One that exits 3 because it lost the
    * project's lease, or met a STOP, sets the video aside (fence) before its exit is read as the
@@ -2609,8 +2608,9 @@ export class Automation {
       // A vendor or the server's budget: this video's stage waits, the other videos move.
       return this.defer(state, line, { what: command, everyone: Boolean(everyones(result.out)) });
     }
-    // An incomplete exit (6) is the command's STOP check (media/stages.mjs mayWriteProject):
-    // the video sits the run out, as fence() sets it aside, rather than being blocked.
+    // An incomplete exit (6) is the command's STOP check (media/stages.mjs mayWriteProject): the
+    // video waits for the next run, as a stopped tts does, even when the file is gone by now.
+    if (result.code === ctx.EXIT.incomplete) return this.defer(state, `${state.slug}: ${command} stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
     this.fence(state.slug, `recording ${command}`);
     return this.block(state, `${command} failed: ${lastLine(result.out, 2)}`);
   }
@@ -2692,6 +2692,8 @@ export class Automation {
     this.fence(state.slug, "keeping the best pictures");
     const result = await run(this.ctx, ["keyframes", "--slug", state.slug, ...channel, "--accept-best", ids.join(",")]);
     this.fence(state.slug, "recording the kept pictures");
+    // Stopped by its own STOP check (exit 6): the pictures are kept on the next run, not blocked.
+    if (result.code === this.ctx.EXIT.incomplete) return this.defer(state, `${state.slug}: keeping the best pictures stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
     if (result.code !== 0) return this.block(state, `keyframes could not keep the pictures after ${rounds} prompt fixes: ${lastLine(result.out)}`, "prompt_fixes:keyframes");
     const pictures = found.map((target) => ({ id: target.id, problems: target.problems ?? [] }));
     state.accepted_pictures = [...(state.accepted_pictures ?? []).filter((picture) => !ids.includes(picture.id)), ...pictures];

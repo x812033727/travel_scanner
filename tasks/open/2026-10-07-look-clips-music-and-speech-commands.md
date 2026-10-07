@@ -120,3 +120,7 @@ npm run test:tools
     Fixed: it now names a new draft's slug too.
   - **Nit:** a STOP removed at the wrong moment could pass for a stage done.
     Fixed: the commands exit 6 under STOP at entry, and `media()` fences that exit instead of blocking.
+- Re-review (2026-10-07): no blocking issue.
+  - The one should-fix is fixed: a STOP removed between a media command's exit 6 and the worker reading it blocked the video. `media()` and `acceptBestPictures` now defer on exit 6 with no backoff, as a stopped tts does. There is a test.
+  - Removed the orphaned `restoreVideo` one-line comment.
+  - Pre-existing, filed as `2026-10-07-a-discussion-s-refused-script-revision`: a refused revision's lexicon terms are not rolled back.
