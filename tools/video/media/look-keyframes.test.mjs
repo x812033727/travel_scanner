@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -8,6 +8,7 @@ import { EXIT, main } from "../cli.mjs";
 import { approvalState, approve, readApprovals } from "../core/approvals.mjs";
 import { illustrated, lookHash } from "../core/drama.mjs";
 import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
+import { LEASE_FILE } from "../core/project-lease.mjs";
 import { readLedger } from "./ledger.mjs";
 import { keepSheets } from "./series-store.mjs";
 import { readCache, readJobs } from "./cache.mjs";
@@ -366,9 +367,41 @@ test("a shot that never passes is left for a prompt fix after the last take, wit
   // The STOP file ends a run between remote calls and keeps what was drawn.
   writeFileSync(path.join(box.workdir, "STOP"), "");
   const stopped = context(box, site.fetchImpl);
-  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.ok, stopped.out.stderr);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.incomplete, stopped.out.stderr);
   assert.match(stopped.out.stdout, /stopped by the STOP file/);
   assert.equal(manifestOf(box, "keyframes").shots.farewell, undefined);
+});
+
+test("keyframes run by hand while another producer holds the project, or under its STOP file, draws nothing and leaves the manifest as it was", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const site = mediaSite({ verdicts: () => ({ overall: 9, passed: true }) });
+  await main(["look", "--slug", box.slug], context(box, site.fetchImpl).ctx);
+  await main(["look", "--slug", box.slug, "--choose", "jingwei=1,yandi=1"], context(box, site.fetchImpl).ctx);
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "opening"], context(box, site.fetchImpl).ctx), EXIT.ok);
+  const manifestPath = path.join(box.workdir, "keyframes", "manifest.json");
+  const before = readFileSync(manifestPath, "utf8");
+  const images = site.state.images.length;
+  // The worker's unit (another process) holds the project.
+  const lease = path.join(box.workdir, LEASE_FILE);
+  writeFileSync(lease, JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "auto", pid: 4242, host: "video-worker", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+  for (const args of [["--shot", "farewell"], ["--accept-best", "opening"]]) {
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["keyframes", "--slug", box.slug, ...args], run.ctx), EXIT.owner, args.join(" "));
+    assert.match(run.out.stderr + run.out.stdout, /auto \(pid 4242 on video-worker.*nothing was sent or written/);
+  }
+  assert.equal(readFileSync(manifestPath, "utf8"), before);
+  assert.equal(site.state.images.length, images, "no picture was asked for");
+  // Once it is gone, the project's STOP file holds it the same way.
+  rmSync(lease);
+  writeFileSync(path.join(box.workdir, "STOP"), "owner hold");
+  for (const args of [["--shot", "farewell"], ["--accept-best", "opening"]]) {
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["keyframes", "--slug", box.slug, ...args], run.ctx), EXIT.incomplete);
+    assert.match(run.out.stdout, /stopped by the STOP file before anything was drawn or written/);
+  }
+  assert.equal(readFileSync(manifestPath, "utf8"), before);
+  assert.equal(site.state.images.length, images);
 });
 
 // What the server reports when the provider refuses a request outright, as MiniMax did a prompt
@@ -1597,4 +1630,27 @@ test("a shot whose prompt stops fitting the image model's budget keeps its earli
   assert.ok(after.shots.desk.prompt_budget_chars < 700);
   assert.match(after.shots.desk.problems.join("; "), /^prompt is 700 characters; the minimax budget for this shot is \d+ /);
   assert.equal(after.shots.desk.problems.length, 1);
+});
+
+test("look run by hand under the project's STOP file, or while another producer holds it, draws and chooses nothing", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const site = mediaSite({ verdicts: () => ({ overall: 9, passed: true }) });
+  assert.equal(await main(["look", "--slug", box.slug], context(box, site.fetchImpl).ctx), EXIT.ok);
+  const files = () => ["characters/manifest.json", "characters/choice.json"].map((name) => (existsSync(path.join(box.workdir, name)) ? readFileSync(path.join(box.workdir, name), "utf8") : null));
+  const before = files();
+  const images = site.state.images.length;
+  writeFileSync(path.join(box.workdir, "STOP"), "owner hold");
+  for (const args of [[], ["--choose", "jingwei=1,yandi=1"]]) {
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["look", "--slug", box.slug, ...args], run.ctx), EXIT.incomplete, args.join(" ") || "draw");
+    assert.match(run.out.stdout, /stopped by the STOP file before anything was drawn or written/);
+  }
+  rmSync(path.join(box.workdir, "STOP"));
+  writeFileSync(path.join(box.workdir, LEASE_FILE), JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "auto", pid: 4242, host: "video-worker-elsewhere", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+  for (const args of [[], ["--choose", "jingwei=1,yandi=1"]]) {
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["look", "--slug", box.slug, ...args], run.ctx), EXIT.owner, args.join(" ") || "draw");
+  }
+  assert.equal(site.state.images.length, images, "no sheet was drawn");
+  assert.deepEqual(files(), before, "no sheet or choice was written");
 });

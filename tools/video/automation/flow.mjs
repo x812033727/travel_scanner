@@ -42,6 +42,7 @@ import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
 import { imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "../media/prompt-budget.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID, PAUSE_CODES, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
+import { acquireProjectLease, ProjectLeaseError } from "../core/project-lease.mjs";
 import { discussStep, SCRIPT_DISCUSSION_VARIANTS } from "./discuss.mjs";
 import { JOB_GONE_KIND, RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
@@ -552,6 +553,10 @@ const deferredLabel = (state, why) => `暫時過不去，${String(state.deferred
 // (RUN_PENDING): the worker's round (ops/video/worker.sh, 300 s), so its receipt is looked up
 // once a round, not by each lane in turn (two lanes polling one job got a 429 on 2026-10-06).
 export const PENDING_RECHECK_MS = 5 * 60_000;
+// A video's unit met its project's STOP file, or lost the project's lease, before a paid request
+// or a write to its canonical files (Automation.fence): the video sits the rest of the run out,
+// nothing is sent or written, and an answer already received stays saved for the next unit.
+export const PROJECT_HELD = "video_project_held";
 // What an error from moving one video means for the others (errorScope). The token, the
 // owner's settings and budget, every subscription account and a site out of reach are everyone's;
 // so are a 4xx about the settings of the whole site (no model chosen for the Shorts' test, the
@@ -736,8 +741,10 @@ const REPORTED_STAGE = new WeakMap();
  * category, YouTube id. `deferred` is the label of a video waiting on its own (Automation.defer):
  * the checklist opens with that row, and auto.json's `deferred_reported` remembers the page shows
  * it; any report without it takes the row off again, so the next stage that reports clears it.
+ * `progress` is a translation's row the same way (Automation.unitCheckpoint), until the next
+ * report without it.
  */
-async function report(ctx, api, state, stage, { deferred = null } = {}) {
+async function report(ctx, api, state, stage, { deferred = null, progress = null } = {}) {
   const workdir = resolveWorkdir({ env: ctx.env, slug: state.slug, root: ctx.root, home: ctx.home });
   const status = await pipelineStatus({ slug: state.slug, root: ctx.root, workdir });
   const guide = mainGuide(state);
@@ -745,10 +752,12 @@ async function report(ctx, api, state, stage, { deferred = null } = {}) {
   // The page has no field for why a video stopped or waits; the checklist is what the owner reads.
   const blocked = state.status === "blocked" && state.blocked ? [{ key: "blocked", label: blockedLabel(state), done: false }] : [];
   const waiting = deferred && !blocked.length ? [{ key: "deferred", label: deferred, done: false }] : [];
+  // A translation part by part (Automation.unitCheckpoint): how many units are reviewed so far.
+  const partial = progress && !blocked.length ? [{ key: "languages_progress", label: progress.slice(0, 120), done: false }] : [];
   await api.report(state.slug, {
     title: state.title || state.slug,
     stage: stage.slice(0, 40),
-    checklist: [...blocked, ...waiting, ...checklistFrom(status.steps)],
+    checklist: [...blocked, ...waiting, ...partial, ...checklistFrom(status.steps)],
     format: state.format ?? "slides",
     youtube_video_id: videoId,
     ...(guide ? { source_guide: guide } : {}),
@@ -782,6 +791,10 @@ export class Automation {
     this.busy = busy;
     this.skipped = skipped;
     this.pendingUntil = pendingUntil;
+    // The project leases this lane holds, by slug: one for the video its unit moves, and those
+    // fence() took for this step outside a unit (stepLeases), released when the step ends.
+    this.leases = new Map();
+    this.stepLeases = new Map();
     this.secondary = secondary;
     this.read = pageReader({ fetchImpl: ctx.fetch ?? globalThis.fetch, sleep: ctx.sleep, now: () => ctx.now().getTime() });
     this.refs = null;
@@ -819,8 +832,25 @@ export class Automation {
     saveState(this.workdir(state.slug), state);
   }
 
-  /** Put video.json back as it was before a revision that lint refused. */
+  /**
+   * A speech command the unit runs (tts, dub, check-audio). One that exits 3 because it lost the
+   * project's lease, or met a STOP, sets the video aside (fence) before its exit is read as the
+   * owner's: a dub is not given up, nothing is blocked, and nothing is written into the project of
+   * the producer that holds it now. An answer lost after it was paid for (speechUncertain) keeps
+   * its own handling, since setting it aside would buy it again.
+   */
+  async speech(slug, command) {
+    const result = await run(this.ctx, command);
+    if (result.code === this.ctx.EXIT.owner && !speechUncertain(result)) this.fence(slug, `recording ${command[0]}`);
+    return result;
+  }
+
+  /**
+   * Put back the script a refused rewrite replaced (discuss.mjs). Only while this step still
+   * holds the project's lease; a STOP does not keep it from leaving the last good script.
+   */
   restoreVideo(state, source) {
+    this.fence(state.slug, "restoring video.json", { stop: false });
     writeFileSync(path.join(docDir(state.slug, this.ctx.root), "video.json"), source);
   }
 
@@ -864,7 +894,37 @@ export class Automation {
     return state.format === "drama" && state.style_preset === EXPLAINER_PRESET ? "explainer" : null;
   }
 
+  /**
+   * Right before a paid request or a write to the video's canonical files: its STOP file, and
+   * the lease its unit holds (core/project-lease.mjs, still this process's). Either throws
+   * PROJECT_HELD, which move() turns into the video sitting the run out. The slug leaves
+   * runSlugs first, so step() does not settle an answer this unit already received: it stays
+   * saved under its request key, and the unit after the STOP is gone takes it without paying again.
+   */
+  fence(slug, what, { stop = true } = {}) {
+    const workdir = this.workdir(slug);
+    let why = stop && stopRequested(workdir) ? "the project's STOP file holds it" : null;
+    if (!why) {
+      try {
+        // A path outside the video's unit (a discussion of its screenplay) takes the lease here,
+        // for the rest of the step (step() lets it go). A slug with no work directory yet (a series
+        // document, or a new draft before its first save, which only the first lane makes and
+        // under a slug nobody else has) has nothing of a video's to hold.
+        const held = this.leases.get(slug) ?? this.stepLeases.get(slug);
+        if (held) held.verify();
+        else if (existsSync(workdir)) this.stepLeases.set(slug, acquireProjectLease(workdir, { owner: "auto", now: this.ctx.now }));
+      } catch (error) {
+        if (!(error instanceof ProjectLeaseError)) throw error;
+        why = error.message;
+      }
+    }
+    if (!why) return;
+    this.runSlugs?.delete(slug);
+    throw Object.assign(new AutomationError(`${what} was not sent or written: ${why}`, { code: PROJECT_HELD }), { slug });
+  }
+
   async stage(stage, slug, payload, maxOutputTokens, format = "slides", variant = null, series = null) {
+    this.fence(slug, `the ${stage} request`);
     this.runSlugs?.add(slug);
     // The channel's stance (the planner and the writer read it), a binge series' genre section
     // (docs/videos/BINGE.md) and the owner's standing instructions for the stage end the prompt:
@@ -1125,12 +1185,27 @@ export class Automation {
 
   /** One unit of work; returns a line saying what was done, or null when nothing could be. */
   async step() {
+    try {
+      return await this.stepOnce();
+    } finally {
+      for (const lease of this.stepLeases.values()) lease.release();
+      this.stepLeases.clear();
+    }
+  }
+
+  async stepOnce() {
     this.runSlugs = new Set();
     this.unitVideo = null;
     let outcome;
     try {
       outcome = await this.stepUnit();
     } catch (error) {
+      // A STOP or another producer's lease met outside a video's unit (a discussion): that video
+      // sits the run out, nothing sent or written, and the others move.
+      if (error instanceof AutomationError && error.code === PROJECT_HELD && error.slug) {
+        this.skipped.add(error.slug);
+        return `${error.slug}: ${error.message}`;
+      }
       if (!(error instanceof AutomationError && error.code === RUN_PENDING)) throw error;
       const what = `${error.stage ?? "writer"} is still running; its saved receipt will be checked next round`;
       // A video's writer, sent by its own unit or to answer a line on its screenplay (discuss.mjs,
@@ -1212,11 +1287,30 @@ export class Automation {
           this.passedOver.add(listed.slug);
           continue;
         }
-        // Kept when move() throws, for step(): a writer still pending is this video's alone.
-        this.unitVideo = state.slug;
-        const done = await this.move(state, siteBySlug);
-        if (done) return done;
-        this.unitVideo = null;
+        // The project's lease (core/project-lease.mjs) for the whole unit, shared with the media
+        // commands the unit runs in this process: a manual recovery or a command run by hand
+        // that holds it keeps this video out of the run, with nothing sent or written.
+        let lease;
+        try {
+          lease = acquireProjectLease(this.workdir(listed.slug), { owner: "auto", now: this.ctx.now });
+        } catch (error) {
+          if (!(error instanceof ProjectLeaseError)) throw error;
+          this.log(`${listed.slug}: left alone this run: ${error.message}`);
+          this.skipped.add(listed.slug);
+          this.passedOver.add(listed.slug);
+          continue;
+        }
+        this.leases.set(listed.slug, lease);
+        try {
+          // Kept when move() throws, for step(): a writer still pending is this video's alone.
+          this.unitVideo = state.slug;
+          const done = await this.move(state, siteBySlug);
+          if (done) return done;
+          this.unitVideo = null;
+        } finally {
+          this.leases.delete(listed.slug);
+          lease.release();
+        }
       } finally {
         this.busy.delete(listed.slug);
       }
@@ -1271,6 +1365,16 @@ export class Automation {
         state.retry_request_id = request;
         return this.block(state, "policy retry refused: the source changed since the held request; restore its exact source or inspect the retained receipt before resuming");
       }
+      // The retry archives or clears the video's saved runs: not while another producer holds the
+      // project. The request stays unconsumed and the next round asks again.
+      let lease;
+      try {
+        lease = acquireProjectLease(this.workdir(state.slug), { owner: "auto retry", now: this.ctx.now });
+      } catch (error) {
+        if (!(error instanceof ProjectLeaseError)) throw error;
+        this.log(`${state.slug}: retry waits: ${error.message}`);
+        continue;
+      }
       try {
         // The kind travels with the retry: `job_gone:<stage>` is what lets the transport set aside
         // a queued or running journal whose job the server no longer has (client.mjs retryRuns).
@@ -1296,6 +1400,8 @@ export class Automation {
         if (!(error instanceof AutomationError || error instanceof RunReceiptError)) throw error;
         state.retry_request_id = request;
         return this.block(state, `retry could not verify the saved writer run: ${error.message}`, blockedKindOf(state) ?? "uncertain:writer");
+      } finally {
+        lease.release();
       }
       state.retry_request_id = request;
       // A language batch can fail after the finished video reached YouTube. Resume
@@ -1387,6 +1493,12 @@ export class Automation {
       done ??= await this.languages(state);
     } catch (error) {
       if (!(error instanceof AutomationError)) throw error;
+      // Its STOP file arrived, or its lease went, during the unit: nothing was sent or written
+      // after it, and the video is not blocked or deferred. The run leaves it alone.
+      if (error.code === PROJECT_HELD) {
+        this.skipped.add(state.slug);
+        return `${state.slug}: ${error.message}`;
+      }
       if (error.code === POLICY_HOLD) return this.policyHold(state, error);
       if (error.code === RUN_UNCERTAIN) return this.unanswered(state, error);
       if (error.code === OUTPUT_INVALID) return this.retryLater(state, error.stage, error.message);
@@ -2112,6 +2224,7 @@ export class Automation {
   /** Move one video on by one step; null when it waits on the owner or cannot move. */
   async advance(state) {
     const { ctx } = this;
+    this.fence(state.slug, "the next step");
     const workdir = this.workdir(state.slug);
     const dir = docDir(state.slug, ctx.root);
     // Native silent actions are part of the reviewed story. Refresh their readable artifact
@@ -2199,7 +2312,7 @@ export class Automation {
       // retry would refuse the same way for ever: those are recorded again by a plain tts, which
       // writes a new timeline, so the narration is reviewed again.
       const refresh = sameScript && !previous.audio_evidence && !staleTakes(project.doc, project.lexicon, workdir).length;
-      const result = await run(ctx, ["tts", "--slug", state.slug, ...(refresh ? ["--refresh-evidence"] : [])]);
+      const result = await this.speech(state.slug, ["tts", "--slug", state.slug, ...(refresh ? ["--refresh-evidence"] : [])]);
       // A STOP file ended it between requests: the takes are saved and the next run continues.
       if (result.code === ctx.EXIT.incomplete) return this.defer(state, `${state.slug}: tts stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
       if (result.code !== 0) return this.block(state,`tts failed: ${result.out.trim().split("\n").at(-1)}`);
@@ -2413,6 +2526,7 @@ export class Automation {
     let current = answer;
     for (let fix = 0; ; fix++) {
       if (!current?.video || typeof current.video !== "object") return "the answer has no video object";
+      this.fence(state.slug, "saving video.json");
       writeVideo(dir, this.settled(state, current.video));
       const added = mergeLexicon(this.ctx.root, current.lexicon_additions);
       if (added.length) state.lexicon_added = [...new Set([...(state.lexicon_added ?? []), ...added])];
@@ -2448,8 +2562,12 @@ export class Automation {
     // answering for the seeds before them.
     const offset = state.seed_offsets?.[command];
     const seedOffset = SEED_OFFSET_COMMANDS.has(command) && Number.isInteger(offset) && offset > 0 ? ["--seed-offset", String(offset)] : [];
+    this.fence(state.slug, command);
     const result = await run(ctx, [command, "--slug", state.slug, ...channel, ...seedOffset]);
     if (result.code === 0) {
+      // A STOP that came during the command: an exit 0 is not recorded as done (a stage that
+      // stopped exits 0 too). Other exits keep their own STOP handling below.
+      this.fence(state.slug, `recording ${command}`);
       this.cleared(state, command);
       delete state.prompt_fixes?.[command];
       // A picture kept with the judge's remarks (acceptBestPictures) that a rewritten prompt had
@@ -2468,6 +2586,9 @@ export class Automation {
     }
     if (result.code === 1 && FIX_SOURCES[command]) return this.fixPrompts(state, command, {});
     if (result.code === 3) {
+      // The command lost the project's lease, or met a STOP, while it ran: the video sits the run
+      // out, as fence() sets it aside anywhere else, rather than waiting on the owner.
+      this.fence(state.slug, `recording ${command}`);
       // The server's attempts for a request are spent (media/client.mjs EXHAUSTED_CODES): the
       // owner's retry moves the stage to other seeds, where a cap or a setting it leaves as it
       // is. Only the reason the owner reads (the last line) says which: a run that logged a
@@ -2487,6 +2608,10 @@ export class Automation {
       // A vendor or the server's budget: this video's stage waits, the other videos move.
       return this.defer(state, line, { what: command, everyone: Boolean(everyones(result.out)) });
     }
+    // An incomplete exit (6) is the command's STOP check (media/stages.mjs mayWriteProject): the
+    // video waits for the next run, as a stopped tts does, even when the file is gone by now.
+    if (result.code === ctx.EXIT.incomplete) return this.defer(state, `${state.slug}: ${command} stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
+    this.fence(state.slug, `recording ${command}`);
     return this.block(state, `${command} failed: ${lastLine(result.out, 2)}`);
   }
 
@@ -2513,6 +2638,7 @@ export class Automation {
   async fixPrompts(state, kind, { targets = null, ownerNote = null }) {
     // A story's fix is a patch of the named shots alone (story.mjs).
     if (state.story) return fixStoryPrompts(this, state, kind, { targets, ownerNote });
+    this.fence(state.slug, `the ${kind} prompt fix`);
     const workdir = this.workdir(state.slug);
     const found = targets ?? this.failedTargets(state, kind);
     const what = FIX_SOURCES[kind]?.what ?? "shot";
@@ -2563,7 +2689,11 @@ export class Automation {
     const ids = found.map((target) => target.id);
     if (!ids.length || !ids.every((id) => manifest?.shots?.[id]?.file)) return null;
     const channel = this.ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", this.ctx.env.VIDEO_BROWSER_CHANNEL] : [];
+    this.fence(state.slug, "keeping the best pictures");
     const result = await run(this.ctx, ["keyframes", "--slug", state.slug, ...channel, "--accept-best", ids.join(",")]);
+    this.fence(state.slug, "recording the kept pictures");
+    // Stopped by its own STOP check (exit 6): the pictures are kept on the next run, not blocked.
+    if (result.code === this.ctx.EXIT.incomplete) return this.defer(state, `${state.slug}: keeping the best pictures stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
     if (result.code !== 0) return this.block(state, `keyframes could not keep the pictures after ${rounds} prompt fixes: ${lastLine(result.out)}`, "prompt_fixes:keyframes");
     const pictures = found.map((target) => ({ id: target.id, problems: target.problems ?? [] }));
     state.accepted_pictures = [...(state.accepted_pictures ?? []).filter((picture) => !ids.includes(picture.id)), ...pictures];
@@ -2907,16 +3037,16 @@ export class Automation {
       return this.listen(state, review.note);
     }
     if (review?.status === "pending") return null;
-    let check = await run(ctx, ["check-audio", "--slug", state.slug]);
+    let check = await this.speech(state.slug, ["check-audio", "--slug", state.slug]);
     const retakeRounds = settingsFor(this.settings, state.format).retakeRounds;
     while (check.code === 1 && state.retakes < retakeRounds) {
       state.retakes += 1;
       saveState(workdir, state);
       const flagsFile = path.join(workdir, "review", "check-flags.json");
-      const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", flagsFile]);
+      const redo = await this.speech(state.slug, ["tts", "--slug", state.slug, "--redo", flagsFile]);
       if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, flagsFile, `the retake stopped (${lastLine(redo.out)}); the next run continues`);
       if (redo.code !== 0) return this.block(state,`retake failed: ${redo.out.trim().split("\n").at(-1)}`);
-      check = await run(ctx, ["check-audio", "--slug", state.slug]);
+      check = await this.speech(state.slug, ["check-audio", "--slug", state.slug]);
     }
     // The retakes are spent and Jev still hears some lines wrong: the listener rewords those
     // lines, they are retaken and checked again, MAX_REWRITE_ROUNDS rounds in all
@@ -2933,10 +3063,10 @@ export class Automation {
       // Nothing changed: the same clips would only be flagged again; the next round, if any,
       // is told why the rewrites were refused.
       if (!round.ids.length) continue;
-      const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", round.flagsFile]);
+      const redo = await this.speech(state.slug, ["tts", "--slug", state.slug, "--redo", round.flagsFile]);
       if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, round.flagsFile, `the retake after the rewrite stopped (${lastLine(redo.out)}); the next run continues`);
       if (redo.code !== 0) return this.block(state, `retake after the rewrite failed: ${lastLine(redo.out)}`);
-      check = await run(ctx, ["check-audio", "--slug", state.slug]);
+      check = await this.speech(state.slug, ["check-audio", "--slug", state.slug]);
     }
     // A service away, or Jev's daily calls spent (everyone's until midnight UTC, and never a block).
     if (check.code === 4) return this.defer(state, `${state.slug}: narration check could not finish (${check.out.trim().split("\n").at(-1)})`, { what: "check-audio", everyone: Boolean(everyones(check.out)) });
@@ -3245,6 +3375,31 @@ export class Automation {
   }
 
   /**
+   * A translation unit's answer was just kept in <workdir>/i18n/<locale>.units.json
+   * (sheet-units.mjs writeUnits). The durable run that gave it is bound to that file now
+   * (client.mjs adoptRuns), as the writer's is to video.json: a round that stops on the next
+   * request (its caption reviewer still running, a restart) leaves no unsettled journal that the
+   * next unit's request would read as a changed input. Then /admin/videos is told how far the
+   * locale is, best effort: a report that fails is sent again at the next checkpoint, and the
+   * locale's own report once it merges takes the row off.
+   */
+  async unitCheckpoint(state, locale, kept, keys) {
+    if (this.api.adoptRuns) {
+      const file = path.join(this.workdir(state.slug), "i18n", `${locale}.units.json`);
+      await this.api.adoptRuns(state.slug, { artifacts: [{ path: file, sha256: await sha256File(file) }] });
+    }
+    const reviewed = keys.filter((key) => kept[key]?.reviewed).length;
+    const waiting = keys.filter((key) => kept[key]?.translated && !kept[key]?.reviewed).length;
+    const progress = `${locale} 翻譯：${reviewed}／${keys.length} 段已審${waiting ? `，${waiting} 段譯好待審` : ""}`;
+    try {
+      await report(this.ctx, this.api, state, "languages", { progress });
+    } catch (error) {
+      if (!(error instanceof AutomationError)) throw error;
+      this.log(`${state.slug}: could not report the ${locale} translation's progress yet (${error.message})`);
+    }
+  }
+
+  /**
    * One locale's translation of the parts the owner chose (docs/videos/LANGUAGES.md): the sheet
    * `i18n-sheet --parts` writes (with each line's dub budget when a dub is chosen), filled by the
    * translator and read by the caption reviewer, then merged. A sheet too long for one model call
@@ -3296,6 +3451,7 @@ export class Automation {
         if (gaps) return this.retryLater(state, "translator", `the ${label} translation ${gaps}`);
         kept[keys[index]] = { translated: draft };
         keep();
+        await this.unitCheckpoint(state, locale, kept, keys);
       }
       // A review without its own worksheet leaves the translation kept, unreviewed, for the next
       // round's reviewer: it never goes in as if it had been read.
@@ -3306,6 +3462,7 @@ export class Automation {
       if (gaps) return this.retryLater(state, "caption_reviewer", `the ${label} review ${gaps}; the translation waits for its review`);
       kept[keys[index]] = { translated: draft, reviewed: checked };
       keep();
+      await this.unitCheckpoint(state, locale, kept, keys);
       this.cleared(state, "caption_reviewer");
       if (keys.some((key) => !kept[key]?.reviewed)) {
         saveState(workdir, state);
@@ -3313,6 +3470,7 @@ export class Automation {
       }
     }
     const finished = whole ? kept[keys[0]].reviewed : assembleSheet(sheet, keys.map((key) => kept[key].reviewed));
+    this.fence(state.slug, `merging the ${locale} translation`);
     writeFileSync(sheetFile, `${JSON.stringify(finished, null, 2)}\n`);
     const merged = await run(ctx, ["i18n-merge", "--slug", state.slug, "--locale", locale]);
     if (merged.code !== 0) {
@@ -3378,7 +3536,7 @@ export class Automation {
     // Each pass makes the track (only the lines whose words changed are synthesized again) and
     // checks it; a reworded line or a retake that no longer fits starts another pass.
     for (;;) {
-      let made = await run(ctx, dubArgs);
+      let made = await this.speech(slug, dubArgs);
       while (made.code === 1 && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
         const over = overLines();
         if (!Array.isArray(over) || !over.length) break;
@@ -3388,7 +3546,7 @@ export class Automation {
         if (shortened.stopped) return shortened.stopped;
         // Nothing usable came back: the same windows would only be over again.
         if (!shortened.ids.length) break;
-        made = await run(ctx, dubArgs);
+        made = await this.speech(slug, dubArgs);
       }
       if (made.code === ctx.EXIT.incomplete) return stopped("dub", made);
       if (made.code === 1) {
@@ -3400,12 +3558,12 @@ export class Automation {
       if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
       if (made.code === 4) return this.defer(state, `${slug}: ${locale} dub could not finish (${lastLine(made.out)})`, { what: "dub", everyone: Boolean(everyones(made.out)) });
       if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
-      let check = await run(ctx, checkArgs);
+      let check = await this.speech(slug, checkArgs);
       let refit = false;
       while (check.code === 1 && rounds.retakes < MAX_DUB_RETAKE_ROUNDS) {
         rounds.retakes += 1;
         remember();
-        const redo = await run(ctx, [...dubArgs, "--redo", flags]);
+        const redo = await this.speech(slug, [...dubArgs, "--redo", flags]);
         if (redo.code === ctx.EXIT.incomplete) return stopped("dub retake", redo);
         if (redo.code === 4) return this.defer(state, `${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)})`, { what: "dub", everyone: Boolean(everyones(redo.out)) });
         if (speechUncertain(redo)) return lost(`dub ${locale} retake`, redo);
@@ -3417,7 +3575,7 @@ export class Automation {
         }
         if (redo.code === 1 || redo.code === 3) return this.giveUpDub(state, locale, `the retake failed: ${lastLine(redo.out)}`);
         if (redo.code !== 0) return this.block(state, `dub ${locale} retake failed: ${lastLine(redo.out, 2)}`);
-        check = await run(ctx, checkArgs);
+        check = await this.speech(slug, checkArgs);
       }
       if (refit) continue;
       if (check.code === 1 && rounds.reword < MAX_DUB_REWORD_ROUNDS) {

@@ -4,6 +4,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
+import { LEASE_FILE } from "../core/project-lease.mjs";
 import { fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { UsageError } from "../core/paths.mjs";
 import { eachLine, spokenText, textHash } from "../core/schema.mjs";
@@ -543,4 +544,22 @@ test("a second transcript clears a line only Gemini misheard; one that misses th
   assert.equal(await main(["check-audio", "--slug", box.slug, "--second-opinion", `${process.execPath} ${path.join(box.base, "missing.mjs")}`], broken.ctx), EXIT.lint);
   assert.match(broken.out.stdout, /the second transcriber failed/);
   assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "review", "check-flags.json"), "utf8")).flags, [mispoken.id]);
+});
+
+test("tts and check-audio run by hand while another producer holds the project synthesize, transcribe and write nothing", async () => {
+  const box = sandbox();
+  const server = site({ heardFor: (count) => "x".repeat(count + 1), noul: () => 0.95 });
+  assert.equal(await main(["tts", "--slug", box.slug], context(box, server.fetchImpl).ctx), EXIT.ok);
+  writeFileSync(path.join(box.workdir, LEASE_FILE), JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "auto", pid: 4242, host: "video-worker-elsewhere", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+  const timeline = readFileSync(path.join(box.workdir, "timeline.json"), "utf8");
+  const speech = server.calls.speech;
+  for (const command of [["tts", "--slug", box.slug, "--force"], ["check-audio", "--slug", box.slug]]) {
+    const run = context(box, server.fetchImpl);
+    assert.equal(await main(command, run.ctx), EXIT.owner, command[0]);
+    assert.match(run.out.stderr, /auto \(pid 4242 on video-worker-elsewhere.*nothing was sent or written/);
+  }
+  assert.equal(server.calls.speech, speech, "nothing synthesized");
+  assert.deepEqual(server.calls.transcribe, [], "nothing transcribed");
+  assert.equal(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"), timeline);
+  assert.equal(existsSync(path.join(box.workdir, "review", "check.json")), false);
 });

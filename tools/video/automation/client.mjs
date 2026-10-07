@@ -22,6 +22,12 @@ export const RUN_UNCERTAIN = "video_ai_run_uncertain";
 // that same operation next round instead of holding a gateway open for several minutes.
 export const RUN_PENDING = "video_ai_run_pending";
 export const POLICY_HOLD = POLICY_HOLD_CODE;
+// The stages sent as durable jobs once the site turns durable_stage_runs on: the writer, and a
+// translation's translator and caption reviewer, whose units ran past the web route's 295 s and
+// lost paid answers on the synchronous route (2026-09-29, 2026-10-04). Each is saved under its
+// own request key before the first POST, so a lost submit, a lost body or a restart reconnects
+// to the same job instead of buying the unit again.
+export const DURABLE_STAGES = new Set(["writer", "translator", "caption_reviewer"]);
 
 export class AutomationError extends Error {
   constructor(message, { status = 0, code = "", who = "service" } = {}) {
@@ -285,7 +291,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
   async function run(stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) {
     const body = { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) };
     // Anime acts and brand-story chapters already have their own bounded checkpoints.
-    if (stage !== "writer" || ["anime-act", "story"].includes(variant)) return request("POST", "automation/run", body, { paid: true });
+    if (!DURABLE_STAGES.has(stage) || ["anime-act", "story"].includes(variant)) return request("POST", "automation/run", body, { paid: true });
     try {
       const normalized = normalizeRun(body);
       let previous = receipts.find(normalized);

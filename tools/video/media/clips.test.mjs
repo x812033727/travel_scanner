@@ -6,6 +6,7 @@ import test from "node:test";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
+import { LEASE_FILE } from "../core/project-lease.mjs";
 import { approve } from "../core/approvals.mjs";
 import { clipsHash, lookHash, mixHash } from "../core/drama.mjs";
 import { dramaFixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
@@ -611,7 +612,7 @@ test("a shot that fails every take is left for a prompt fix with the judge's fix
 
   writeFileSync(path.join(box.workdir, "STOP"), "");
   const stopped = context(box, site.fetchImpl);
-  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.ok, stopped.out.stderr);
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.incomplete, stopped.out.stderr);
   assert.match(stopped.out.stdout, /stopped by the STOP file/);
   assert.equal(manifestOf(box, "clips").shots.farewell, undefined);
 });
@@ -1119,11 +1120,12 @@ test("clips import --usd is money: refused past the per-video cap before anythin
   ledger = readLedger(box.workdir);
   assert.deepEqual([ledger.totals.usd, ledger.totals.reservations, ledger.entries.length], [0.76, 0, 3]);
 
-  // The STOP file before the judge: nothing recorded, nothing held.
+  // The STOP file before the import: nothing copied, recorded or held (one that comes later
+  // stops it before the judge, with nothing recorded either).
   writeFileSync(path.join(box.workdir, "STOP"), "");
   const stopped = context(box, fetchImpl, outsideQc());
-  assert.equal(await main(bring("bird", bird, "--usd", "0.5", "--judge"), stopped.ctx), EXIT.ok, stopped.out.stderr || stopped.out.stdout);
-  assert.match(stopped.out.stdout, /stopped by the STOP file before bird was judged; nothing was recorded/);
+  assert.equal(await main(bring("bird", bird, "--usd", "0.5", "--judge"), stopped.ctx), EXIT.incomplete, stopped.out.stderr || stopped.out.stdout);
+  assert.match(stopped.out.stdout, /stopped by the STOP file before anything was drawn or written/);
   assert.deepEqual([readLedger(box.workdir).totals.reservations, readLedger(box.workdir).entries.length], [0, 3]);
   rmSync(path.join(box.workdir, "STOP"));
 
@@ -1132,4 +1134,28 @@ test("clips import --usd is money: refused past the per-video cap before anythin
   const crowded = context(box, fetchImpl, outsideQc());
   assert.equal(await main(bring("bird", bird, "--usd", "0.3"), crowded.ctx), EXIT.owner, crowded.out.stderr || crowded.out.stdout);
   assert.match(crowded.out.stderr, /spent US\$1\.76 \(US\$1\.00 of it reserved for 1 request not yet reconciled\) and the next import costs about US\$0\.30/);
+});
+
+test("clips and music run by hand under the project's STOP file, or while another producer holds it, buy and write nothing", async () => {
+  const { box } = prepared();
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite();
+  const files = () => ["clips/manifest.json", "music/manifest.json"].map((name) => (existsSync(path.join(box.workdir, name)) ? readFileSync(path.join(box.workdir, name), "utf8") : null));
+  const before = files();
+  writeFileSync(path.join(box.workdir, "STOP"), "owner hold");
+  for (const command of ["clips", "music"]) {
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main([command, "--slug", box.slug], run.ctx), EXIT.incomplete, command);
+    assert.match(run.out.stdout, /stopped by the STOP file before anything was drawn or written/);
+  }
+  rmSync(path.join(box.workdir, "STOP"));
+  writeFileSync(path.join(box.workdir, LEASE_FILE), JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "auto", pid: 4242, host: "video-worker-elsewhere", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+  for (const command of ["clips", "music"]) {
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main([command, "--slug", box.slug], run.ctx), EXIT.owner, command);
+    assert.match(run.out.stderr + run.out.stdout, /auto \(pid 4242 on video-worker-elsewhere.*nothing was sent or written/);
+  }
+  assert.deepEqual([site.state.clips.length, site.state.music.length], [0, 0], "nothing was bought");
+  assert.deepEqual(files(), before, "nothing was written");
 });

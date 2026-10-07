@@ -18,7 +18,7 @@ import { clientOptions, requireCredentials } from "./cli.mjs";
 import { fixClauses, fixesBefore, retakePrompt } from "./keyframes.mjs";
 import { ledgerTotals } from "./ledger.mjs";
 import { reuseSheets } from "./series-store.mjs";
-import { drawContactSheet, imagePrice, imageSelectionVersion, imageStatus, JUDGE_USD_PER_CALL, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
+import { drawContactSheet, imagePrice, imageSelectionVersion, imageStatus, JUDGE_USD_PER_CALL, mayWriteProject, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
 
 export const MAX_LOOK_ROUNDS = 2;
 export const DEFAULT_SHEET_PROMPT = "character design sheet: front view, three-quarter view and full body side by side, neutral standing pose, plain light grey background, even studio lighting, no text";
@@ -96,6 +96,7 @@ export async function run(command, args, ctx) {
   if (!characters.length) throw new UsageError(`--character ${values.character} is not a character of ${doc.slug}`);
 
   if (values.choose) {
+    if (!mayWriteProject(ctx, workdir, "look")) return EXIT.incomplete;
     const manifest = readJson(manifestFile(workdir), null);
     if (!manifest || manifest.look_hash !== hash) throw new UsageError("characters/manifest.json is missing or was made for an older look; run look first");
     const chosen = { ...(readJson(choiceFile(workdir), null)?.look_hash === hash ? readJson(choiceFile(workdir)).chosen : {}), ...parseChoice(values.choose, manifest) };
@@ -121,6 +122,7 @@ export async function run(command, args, ctx) {
     return EXIT.ok;
   }
 
+  if (!mayWriteProject(ctx, workdir, "look")) return EXIT.incomplete;
   const credentials = requireCredentials(ctx);
   const options = clientOptions(ctx, credentials);
   const status = imageStatus(await mediaStatus(options), project.series);
