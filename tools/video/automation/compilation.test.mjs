@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -12,7 +12,7 @@ import { LOCALES } from "../core/schema.mjs";
 import { visualHash } from "../core/timeline.mjs";
 import { compilationSandbox, EPISODES, renderCards, SERIES, TITLES } from "../compile/fixture.mjs";
 import { automationClient } from "./client.mjs";
-import { descriptionBudget, metadataProblem, thumbnailCandidates, translationProblem } from "./compilation.mjs";
+import { copyThumbSource, descriptionBudget, metadataProblem, thumbnailCandidates, translationProblem } from "./compilation.mjs";
 import { Automation, automatedVideos } from "./flow.mjs";
 
 const TOKEN = `mkv_${"c".repeat(43)}`;
@@ -208,4 +208,62 @@ test("a compilation goes from the placeholder document to the confirmed upload w
   assert.equal(report.series_slug, SERIES);
   assert.equal(report.episode_number, undefined);
   assert.ok(existsSync(path.join(box.workdir, "approvals.json")));
+});
+
+/** One episode whose shots with a character each have a keyframe; `entries` shapes each record. */
+function episodeKeyframes(box, entries) {
+  const example = dramaFixture();
+  const shots = example.scenes.filter((scene) => scene.template === "shot" && scene.data?.characters?.length).slice(0, entries.length);
+  assert.equal(shots.length, entries.length, "the fixture has enough shots with a character");
+  const docs = path.join(box.root, "docs", "videos", EPISODES[0]);
+  mkdirSync(docs, { recursive: true });
+  writeFileSync(path.join(docs, "video.json"), JSON.stringify({ ...example, slug: EPISODES[0] }));
+  const keyframes = path.join(box.work, EPISODES[0], "keyframes");
+  mkdirSync(keyframes, { recursive: true });
+  const manifest = { shots: {} };
+  shots.forEach((shot, index) => {
+    const { judge, approved, onDisk = approved, recorded = true } = entries[index];
+    if (onDisk !== null) writeFileSync(path.join(keyframes, `${shot.id}.png`), Buffer.from(onDisk));
+    manifest.shots[shot.id] = { file: `keyframes/${shot.id}.png`, ...(recorded ? { sha256: sha(Buffer.from(approved)) } : {}), judge: { overall: judge, passed: true, problems: [] } };
+  });
+  atomicWrite(path.join(keyframes, "manifest.json"), JSON.stringify(manifest));
+  return { shots, episodes: [{ slug: EPISODES[0], number: 1 }] };
+}
+
+test("a thumbnail candidate is offered only while its file holds the bytes its episode approved", () => {
+  const box = compilationSandbox({ planned: false, rendered: false });
+  const { shots, episodes } = episodeKeyframes(box, [
+    // Drawn over by a later take of the same seed, before its manifest was written again.
+    { judge: 9, approved: "approved-a", onDisk: "a later take" },
+    { judge: 8, approved: "approved-b", onDisk: null },
+    { judge: 5, approved: "approved-c" },
+  ]);
+  const candidates = thumbnailCandidates(box.work, box.root, episodes);
+  assert.deepEqual(candidates.map((candidate) => [candidate.shot, candidate.judge]), [[shots[2].id, 5]]);
+  assert.equal(candidates[0].sha256, sha(Buffer.from("approved-c")));
+  // The limit counts what is offered, so a changed keyframe does not take a place.
+  assert.deepEqual(thumbnailCandidates(box.work, box.root, episodes, 1).map((candidate) => candidate.shot), [shots[2].id]);
+  // A record without a hash says nothing about the bytes.
+  episodeKeyframes(box, [{ judge: 9, approved: "approved-a", recorded: false }]);
+  assert.deepEqual(thumbnailCandidates(box.work, box.root, episodes), []);
+});
+
+test("the thumbnail's keyframe is copied under its episode's approved hash, and a changed one leaves the last copy", async () => {
+  const box = compilationSandbox({ planned: false, rendered: false });
+  const { episodes } = episodeKeyframes(box, [{ judge: 9, approved: "approved-a" }]);
+  const [chosen] = thumbnailCandidates(box.work, box.root, episodes);
+  assert.equal(await copyThumbSource(box.workdir, chosen), true);
+  const target = path.join(box.workdir, "keyframes", "thumb-source.png");
+  assert.equal(readFileSync(target, "utf8"), "approved-a");
+  const manifest = readJson(path.join(box.workdir, "keyframes", "manifest.json"));
+  assert.deepEqual(manifest.shots.thumb, { file: "keyframes/thumb-source.png", sha256: sha(Buffer.from("approved-a")), source: { episode: chosen.episode, shot: chosen.shot } });
+
+  // Drawn over after it was offered: nothing nobody approved takes the copy's place.
+  writeFileSync(chosen.file, "a later take");
+  assert.equal(await copyThumbSource(box.workdir, chosen), false);
+  assert.equal(readFileSync(target, "utf8"), "approved-a");
+  assert.deepEqual(readJson(path.join(box.workdir, "keyframes", "manifest.json")), manifest);
+  assert.deepEqual(readdirSync(path.dirname(target)).filter((name) => name.endsWith(".tmp")), [], "no temporary copy left");
+  writeFileSync(chosen.file, "");
+  assert.equal(await copyThumbSource(box.workdir, { ...chosen, file: path.join(box.work, "gone.png") }), false, "a file that is gone");
 });

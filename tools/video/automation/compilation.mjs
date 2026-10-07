@@ -5,7 +5,8 @@
 // and headline), the thumbnail's source keyframe copied from an episode, the five locales'
 // title and description, and the commands in between (render, compile); the final cut, the
 // upload package and the YouTube id then go the way of every video (flow.mjs).
-import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { sha256File } from "../core/approvals.mjs";
@@ -109,10 +110,19 @@ export function descriptionBudget(episodeCount) {
   return Math.max(500, DESCRIPTION_MAX_BYTES - DESCRIPTION_RESERVE_BYTES - episodeCount * CHAPTER_LINE_BYTES);
 }
 
+/** Whether `file` is there and holds the bytes the episode's manifest approved (`sha256`). */
+function approvedBytes(file, sha256) {
+  if (!/^[0-9a-f]{64}$/.test(sha256 ?? "") || !existsSync(file)) return false;
+  return createHash("sha256").update(readFileSync(file)).digest("hex") === sha256;
+}
+
 /**
  * The keyframes the planner may pick the thumbnail from: the leading episodes' drawn keyframes
  * of shots with a character in frame (the face the viewer clicks on), best judged first. Each
- * candidate says where its file is, so the chosen one can be copied.
+ * candidate says where its file is, so the chosen one can be copied. A keyframe file is reused
+ * by a later take of the same seed, so one whose bytes are not the ones its manifest approved
+ * (or that is missing, or has no recorded hash) is never offered: hashed best first, until
+ * `limit` are found.
  */
 export function thumbnailCandidates(workBase, root, episodes, limit = THUMBNAIL_CANDIDATES) {
   const found = [];
@@ -129,7 +139,33 @@ export function thumbnailCandidates(workBase, root, episodes, limit = THUMBNAIL_
       found.push({ episode: episode.slug, number: episode.number, shot, judge: entry.judge?.overall ?? null, characters, prompt: String(scene?.data?.prompt ?? "").slice(0, 300), file: path.join(workdir, entry.file), sha256: entry.sha256 ?? null });
     }
   }
-  return found.sort((a, b) => (b.judge ?? 0) - (a.judge ?? 0)).slice(0, limit);
+  const offered = [];
+  for (const candidate of found.sort((a, b) => (b.judge ?? 0) - (a.judge ?? 0))) {
+    if (offered.length >= limit) break;
+    if (approvedBytes(candidate.file, candidate.sha256)) offered.push(candidate);
+  }
+  return offered;
+}
+
+/**
+ * Copy the chosen episode keyframe to the compilation's THUMB_SOURCE and record it in the
+ * compilation's keyframes manifest under the episode's approved hash. False, with any earlier
+ * copy left as it was, when the file is gone or no longer holds those bytes: it is copied to a
+ * temporary file and compared before it takes the place of the old one.
+ */
+export async function copyThumbSource(workdir, chosen) {
+  const target = path.join(workdir, THUMB_SOURCE);
+  const temporary = `${target}.${process.pid}.tmp`;
+  if (!existsSync(chosen.file)) return false;
+  mkdirSync(path.dirname(target), { recursive: true });
+  copyFileSync(chosen.file, temporary);
+  if ((await sha256File(temporary)) !== chosen.sha256) {
+    rmSync(temporary, { force: true });
+    return false;
+  }
+  renameSync(temporary, target);
+  atomicWrite(path.join(workdir, ARTIFACTS.keyframes), `${JSON.stringify({ shots: { [THUMB_SHOT]: { file: THUMB_SOURCE, sha256: chosen.sha256, source: { episode: chosen.episode, shot: chosen.shot } } } }, null, 2)}\n`);
+  return true;
 }
 
 /** Why the planner's upload fields cannot be used, or null. */
@@ -291,10 +327,10 @@ export async function planMetadata(automation, state, previousProblem = null) {
   if (readFileSync(file, "utf8") !== original) return automation.retryLater(state, "planner", "the compilation changed while its public text was reviewed; retry without overwriting the newer document");
   const chosen = candidates.find((candidate) => matchesCandidate(candidate, answer.thumbnail)) ?? candidates[0] ?? null;
   const workdir = automation.workdir(state.slug);
-  if (chosen && existsSync(chosen.file)) {
-    mkdirSync(path.join(workdir, "keyframes"), { recursive: true });
-    copyFileSync(chosen.file, path.join(workdir, THUMB_SOURCE));
-    atomicWrite(path.join(workdir, ARTIFACTS.keyframes), `${JSON.stringify({ shots: { [THUMB_SHOT]: { file: THUMB_SOURCE, sha256: await sha256File(path.join(workdir, THUMB_SOURCE)), source: { episode: chosen.episode, shot: chosen.shot } } } }, null, 2)}\n`);
+  if (chosen) {
+    // Drawn over or removed since it was offered: plan again rather than draw on bytes nobody
+    // approved, or drop the picture the planner chose its headline for.
+    if (!(await copyThumbSource(workdir, chosen))) return automation.retryLater(state, "planner", `the thumbnail's keyframe ${chosen.episode}/${chosen.shot} changed since it was offered`);
   } else {
     // No episode keyframe to draw on: the thumb template still draws its text on the theme.
     delete video.thumbnail.data.shot;
