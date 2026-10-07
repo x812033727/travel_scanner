@@ -375,6 +375,10 @@ class StatusCase(unittest.TestCase):
                 self.assertEqual(backup.main(["status"], paths=paths), 1)
             self.assertIn("BACKUP FAILED", out.getvalue())
             self.assertEqual(backup.main(["run"], paths=paths), 2)  # no env file
+            out = io.StringIO()
+            with redirect_stdout(out):
+                self.assertEqual(backup.main(["status", "--state-dir", tmp]), 1)
+            self.assertIn("BACKUP FAILED", out.getvalue())
 
 
 def _iso(instant: dt.datetime) -> str:
