@@ -644,6 +644,35 @@ test("a client lists a video's saved runs whose answer is still to be taken, fro
   await assert.rejects(discuss(client), (error) => error.code === RUN_UNCERTAIN && /unreadable/.test(error.message));
 });
 
+test("a pending writer whose last receipt look-up failed says why on the error, and one whose receipt was read since keeps no old cause", async () => {
+  const box = sandbox();
+  let original;
+  const first = durableClient(box, async (_url, init) => {
+    if (init.method === "POST") original = JSON.parse(init.body);
+    return Response.json(job(original, "running"));
+  });
+  await first.settings();
+  await assert.rejects(runWriter(first), (error) => error.code === RUN_PENDING && error.why === undefined && error.message === "the saved stage run is still pending; its receipt will be recovered next round");
+  const limited = () => Response.json({ code: "rate_limit_exceeded", detail: "請求過於頻繁" }, { status: 429 });
+  // Every look-up rate-limited: the job may be done, and the error says what failed.
+  const throttled = durableClient(box, async (_url, init) => {
+    assert.equal(init.method, "GET");
+    return limited();
+  });
+  await throttled.settings();
+  await assert.rejects(runWriter(throttled), (error) => error.code === RUN_PENDING && error.why === "請求過於頻繁" && error.message === "the saved stage run is still pending (請求過於頻繁); its receipt will be recovered next round");
+  // A look-up rate-limited, then the receipt read as running: the earlier failure is not the reason any more.
+  let gets = 0;
+  const recovered = durableClient(box, async () => (++gets === 1 ? limited() : Response.json(job(original, "running"))), { durablePollMs: 40, durablePollIntervalMs: 10 });
+  await recovered.settings();
+  await assert.rejects(runWriter(recovered), (error) => error.code === RUN_PENDING && error.why === undefined && error.message === "the saved stage run is still pending; its receipt will be recovered next round");
+  assert.ok(gets >= 2);
+  // The stale run of an earlier request that could not be looked up says why too.
+  const stale = durableClient(box, async () => limited());
+  await stale.settings();
+  await assert.rejects(runWriter(stale, { text: "改過的原稿", rows: [1] }), (error) => error.code === RUN_PENDING && error.why === "請求過於頻繁" && /could not be looked up: 請求過於頻繁/.test(error.message));
+});
+
 test("malformed and rebound receipts preserve their saved key and never dispatch a replacement run", async () => {
   for (const wrong of ["key", "GET hash", "GET id", "journal"]) {
     const box = sandbox(), calls = [];

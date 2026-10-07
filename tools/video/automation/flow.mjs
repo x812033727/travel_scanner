@@ -549,6 +549,8 @@ export const UNRECORDED_LIMIT = 3;
 export const DEFER_REPORT_FROM = 2;
 /** The checklist row of a video that waits on its own: why, until when (UTC) and which try in a row. */
 const deferredLabel = (state, why) => `暫時過不去，${String(state.deferred_until).slice(0, 16).replace("T", " ")} UTC 後再試（連續第 ${state.defer_count} 次）：${why}`.slice(0, 120);
+// How much of the client's reason a pending writer's line carries (a server's detail can run long).
+const PENDING_WHY_LENGTH = 160;
 // How long every lane of this run leaves a video whose writer is still running on the server
 // (RUN_PENDING): the worker's round (ops/video/worker.sh, 300 s), so its receipt is looked up
 // once a round, not by each lane in turn (two lanes polling one job got a 429 on 2026-10-06).
@@ -1215,7 +1217,14 @@ export class Automation {
         return `${error.slug}: ${error.message}`;
       }
       if (!(error instanceof AutomationError && error.code === RUN_PENDING)) throw error;
-      const what = `${error.stage ?? "writer"} is still running; its saved receipt will be checked next round`;
+      // The last look-up of the saved receipt failed (client.mjs `why`: a rate limit, a gateway
+      // away): the job may well be done, so the line says what failed rather than that the model
+      // is still running. Until 2026-10-07 it said "still running" either way, and a finished job
+      // whose look-ups were rate-limited read as a model at work.
+      const stage = error.stage ?? "writer";
+      const what = error.why
+        ? `${stage} has not answered yet: the worker's last request for its saved receipt failed (${[...String(error.why)].slice(0, PENDING_WHY_LENGTH).join("")}); it is asked again next round`
+        : `${stage} is still running; its saved receipt will be checked next round`;
       // A video's writer, sent by its own unit or to answer a line on its screenplay (discuss.mjs,
       // which runs outside the unit and names the video on the error): no lane looks the job up
       // again or moves the video within PENDING_RECHECK_MS, the line waits with it (resting), and

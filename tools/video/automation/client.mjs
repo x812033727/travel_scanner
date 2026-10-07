@@ -195,7 +195,9 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     }
     return receipts.receive(entry, await response.json());
   }
-  const pending = (body, why) => tagged(new AutomationError(`the saved stage run is still pending${why ? ` (${why})` : ""}; its receipt will be recovered next round`, { code: RUN_PENDING }), body);
+  // `cause`, when given, is a look-up of the saved receipt that failed (a rate limit, a gateway
+  // away): the job may be done, so flow.mjs does not report it as running. Kept as `why`.
+  const pending = (body, why, cause = null) => tagged(Object.assign(new AutomationError(`the saved stage run is still pending${why ? ` (${why})` : ""}; its receipt will be recovered next round`, { code: RUN_PENDING }), cause ? { why: cause } : {}), body);
   // The owner's card shows this message (flow.mjs unanswered): the saved run's own cause first.
   const inputChanged = (body, detail = "") => {
     const message = detail ? `${detail}; ${INPUT_CHANGED_MESSAGE}` : INPUT_CHANGED_MESSAGE;
@@ -218,7 +220,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     catch (error) {
       if (error instanceof RunReceiptError || error instanceof AutomationError && error.who === "owner") throw error;
       if (error.gone) { receipts.archive(entry, { autoArchive: true, gone: error.gone }); return; }
-      throw pending(body, `the stale run could not be looked up: ${error.message}`);
+      throw pending(body, `the stale run could not be looked up: ${error.message}`, error.message);
     }
     if (fresh.status === "succeeded") receipts.archive(entry, { autoArchive: true });
     else if (fresh.status === "failed") receipts.removeFailed(entry);
@@ -286,7 +288,8 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
             lastProblem = "the receipt response ended before it could be read";
             failures++;
           }
-          if (receipt !== undefined) { receipts.receive(entry, receipt); failures = 0; }
+          // A receipt read: a look-up that failed before it is no longer the reason to wait.
+          if (receipt !== undefined) { receipts.receive(entry, receipt); failures = 0; lastProblem = ""; }
         }
       } catch (error) {
         if (error instanceof RunReceiptError || error instanceof AutomationError) throw error;
@@ -302,7 +305,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       await sleep(wait);
       waited += wait;
     }
-    throw tagged(new AutomationError(`the saved stage run is still pending${lastProblem ? ` (${lastProblem})` : ""}; its receipt will be recovered next round`, { code: RUN_PENDING }), body);
+    throw pending(body, lastProblem, lastProblem || null);
   }
   async function run(stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) {
     const body = { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) };

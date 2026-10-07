@@ -4859,6 +4859,53 @@ test("two lanes do not take turns polling one writer still running on the server
   assert.ok(lookups > polled);
 });
 
+test("a writer whose receipt look-ups are rate-limited is reported as not answered with the reason, not as a model still running, and its answer is taken later with no second request", async () => {
+  const box = sandbox();
+  const slug = "throttled-writer";
+  atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", format: "slides", notes: [], created_at: "2026-10-05T12:30:00Z" }));
+  const site = fakeSite({ videos: [{ slug }], settings: { max_waiting_drafts: 0, durable_stage_runs: true } });
+  const jobs = new Map();
+  let posts = 0;
+  let throttled = false;
+  const fetch = async (url, init = {}) => {
+    const { pathname } = new URL(url);
+    if (pathname === "/api/video/automation/run/jobs") {
+      posts++;
+      const body = JSON.parse(init.body);
+      if (!jobs.has(body.request_key)) jobs.set(body.request_key, { id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: "anthropic", model: "claude-sonnet-5", status: "running", result: null });
+      return Response.json(jobs.get(body.request_key));
+    }
+    if (pathname.startsWith("/api/video/automation/run/jobs/")) {
+      if (throttled) return Response.json({ code: "rate_limit_exceeded", detail: "請求過於頻繁，請稍後再試。" }, { status: 429 });
+      return Response.json([...jobs.values()].find((job) => pathname.endsWith(job.id)));
+    }
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-10-05T12:31:00Z") };
+  const { ctx } = context(box, fetch, clock);
+  const lane = async () => {
+    const api = automationClient(ctx, { durablePollMs: 3_000 });
+    await api.settings();
+    const worker = new Automation(ctx, api, site.settings, { busy: new Set(), skipped: new Set(), pendingUntil: new Map() });
+    worker.refs = smallRefs;
+    worker.advance = async (state) => {
+      const answer = await worker.stage("writer", state.slug, { brief: "x" }, 1000);
+      return `${state.slug}: script drafted (${answer.title})`;
+    };
+    return worker;
+  };
+  assert.equal(await (await lane()).step(), `${slug}: writer is still running; its saved receipt will be checked next round`, "a job the server reads as running is still running");
+  // The job finishes on the server, and the next round's look-ups are rate-limited.
+  for (const job of jobs.values()) Object.assign(job, { status: "succeeded", result: { text: JSON.stringify({ title: "標題" }), provider: "anthropic", model: "claude-sonnet-5", input_tokens: 1, output_tokens: 1, usage: { tokens: 2, token_budget: 20_000_000 } } });
+  throttled = true;
+  // Before: "writer is still running", though the model was done and only the look-up had failed.
+  assert.equal(await (await lane()).step(), `${slug}: writer has not answered yet: the worker's last request for its saved receipt failed (請求過於頻繁，請稍後再試。); it is asked again next round`);
+  throttled = false;
+  assert.equal(await (await lane()).step(), `${slug}: script drafted (標題)`, "the same job's answer, taken on a later round");
+  assert.equal(posts, 1, "one request, one model run");
+  assert.deepEqual(readdirSync(path.join(box.work, slug, "run-receipts")).filter((name) => name.endsWith(".json")), [], "and its receipt is settled");
+});
+
 test("a video whose trouble does not pass is blocked after its deferrals in a row, with the reason on the card, and the owner's retry starts it at once", async () => {
   let failing = true;
   const slug = "oldest-video";
