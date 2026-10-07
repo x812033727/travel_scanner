@@ -10,6 +10,7 @@
 | `docs/videos/README.md` | 這份頻道規格 |
 | `docs/videos/lexicon.json` | 所有影片共用的發音字典（第一支影片建立） |
 | `docs/videos/<slug>/` | 一支影片的文字檔：`brief.md`、`video.json`、`claims.md`、`verify-*.md`、`i18n/<語系>.json` |
+| `docs/videos/channel-review-20261007/` | 2026-10-07 的頻道診斷：18 支逐支缺失、頻道層級缺失與反駁、參考頻道並排量測、改寫範例、四週上架與量測計畫，與七份研究 |
 
 音檔、畫面、mp4 與站主的核准紀錄 `approvals.json` 只放在 repo 外的工作區（`VIDEO_WORKDIR`），不進 git。
 
