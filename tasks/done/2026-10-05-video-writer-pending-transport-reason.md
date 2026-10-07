@@ -89,3 +89,9 @@ and task consistency checks before a PR.
   RUN_UNCERTAIN "could not verify the saved run before owner retry", so a rate limit during the
   owner's retry blocks the video again and the owner retries once more. That is the retry path's
   own policy (it consumes the retry request on anything it cannot verify), not this ticket's.
+- From the independent review: the client test's "a 429 then a read that says running" case ran
+  on a 5 ms poll budget measured on the real clock, so a slow machine could end the poll before
+  the clearing read (3 failures in 40 runs, 4 at a time); it now uses a 3 s budget spent by 1 s
+  fake sleeps (exactly POST, 429, running) and asserts the two lookups: 40 of 40 under the same
+  load. The stale-journal path's `polling`/`receipt_status` had no test; the 408/429 stale-lookup
+  test now asserts both, and fails with that piece reverted.

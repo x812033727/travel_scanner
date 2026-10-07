@@ -567,9 +567,11 @@ test("a pending writer says why its last look failed, only while it did: a read 
     if (init.method === "POST") { original = JSON.parse(init.body); return Response.json(job(original, "running")); }
     lookups += 1;
     return lookups === 1 ? limited() : Response.json(job(original, "running"));
-  }, { durablePollMs: 5, durablePollIntervalMs: 1 });
+  }, { durablePollMs: 3000, durablePollIntervalMs: 1000 });
   await client.settings();
   await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING && error.polling === null && error.receipt_status === "running");
+  // The fake sleeps alone use the budget up: the POST, the 429, then the read that clears it.
+  assert.equal(lookups, 2);
   // The POST itself is refused for a while: no job was confirmed, so there is no receipt status.
   box = sandbox();
   let posts = 0;
@@ -840,7 +842,8 @@ test("a stale journal whose lookup answers a settled 4xx is archived with the an
     stale = true;
     const changed = { text: "a deploy changed the prompt" };
     if ([408, 429].includes(status)) {
-      await assert.rejects(runWriter(client, changed), (error) => error.code === RUN_PENDING && /could not be looked up/.test(error.message), status);
+      await assert.rejects(runWriter(client, changed), (error) => error.code === RUN_PENDING && /could not be looked up/.test(error.message)
+        && error.polling === (code ? `the server says ${code}` : `HTTP ${status}`) && error.receipt_status === "running", status);
       assert.deepEqual(durableFiles(box), [file], status);
       assert.equal(readFileSync(file, "utf8"), before, `${status}: the journal is intact for the next round`);
       assert.equal(posted.length, 1, status);
