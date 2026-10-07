@@ -1088,6 +1088,29 @@ test("a requested video whose planner gave nothing usable twice is planned again
   assert.equal(site.calls.run.filter((call) => call.stage === "planner").length, 3);
 });
 
+test("an unplanned video is planned by the first lane only, the one that also drafts, so two lanes never pick the same article at once", async () => {
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+  const net = losing(site, (body) => body.stage === "planner");
+  const clock = { now: Date.parse("2026-10-07T09:00:00Z") };
+  const { ctx } = context(box, net.fetchImpl, clock);
+  const busy = new Set();
+  const lane = (secondary) => {
+    const automation = new Automation(ctx, automationClient(ctx), site.settings, { busy, secondary });
+    automation.refs = smallRefs;
+    return automation;
+  };
+  assert.match(await lane(false).step(), /^draft-202610070900: blocked — planner may have run/);
+  // As the owner's retry leaves it once acknowledged, with its planner not asked yet (a wait of
+  // the first lane's, say).
+  const { blocked, blocked_kind, blocked_report_pending, blocked_from_status, ...rest } = automatedVideos(box.work)[0];
+  atomicWrite(path.join(box.work, rest.slug, "auto.json"), `${JSON.stringify({ ...rest, status: "active" }, null, 2)}\n`);
+  net.lose = false;
+  assert.equal(await lane(true).step(), null, "a second lane leaves it");
+  assert.equal(site.calls.run.filter((call) => call.stage === "planner").length, 1);
+  assert.match(await lane(false).step(), /^draft-202610070900: planned after the owner's retry/);
+});
+
 test("an owner's drama request whose first plan is lost is claimed and blocked, the next request is planned as its own call, and the owner's retry plans the first once with its premise", async () => {
   const box = sandbox();
   const first = { id: "8b2e3d4c-5b6a-4f7e-9b8c-0d1e2f3a4b5c", premise: "為什麼雷聲總比閃電晚到？", title: "雷聲", source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: "用數秒數講" };
@@ -1095,15 +1118,25 @@ test("an owner's drama request whose first plan is lost is claimed and blocked, 
   const dramaBrief = `${explainerBrief()}\n### 選項 B：從賽跑講起\n一行說明：光聲賽跑。\n開場鉤子：「誰先到？」\n`;
   const site = fakeSite({ answers: { planner: (body) => ({ slug: body.payload.premise.includes("天空") ? "why-the-sky-is-blue" : "why-thunder-is-late", title: body.payload.premise, source_guide: null, source_urls: [], brief: dramaBrief }) }, settings: { drama: DRAMA_SETTINGS }, dramaRequests: [first, second] });
   const net = losing(site, (body) => body.stage === "planner" && body.payload.premise === first.premise);
-  const { ctx } = context(box, net.fetchImpl, { now: Date.parse("2026-10-05T09:00:00Z") });
+  // The claim fails after the plan was lost (the API restarting), then goes through next round.
+  let claimDown = true;
+  const fetchImpl = async (url, init = {}) => (claimDown && /\/drama-requests\/[^/]+\/start$/.test(new URL(url).pathname) ? Response.json({ code: "upstream_unavailable", detail: "the API is restarting" }, { status: 502 }) : net.fetchImpl(url, init));
+  const { ctx } = context(box, fetchImpl, { now: Date.parse("2026-10-05T09:00:00Z") });
   const lane = () => {
     const automation = new Automation(ctx, automationClient(ctx), site.settings);
     automation.refs = smallRefs;
     return automation;
   };
   const planners = () => site.calls.run.filter((call) => call.stage === "planner");
+  const global = () => readJson(path.join(box.work, "auto-state.json"));
 
+  await assert.rejects(lane().step(), { status: 502 });
+  assert.deepEqual(global().lost_plans, { "drama-8b2e3d4c": { at: "2026-10-05T09:00:00.000Z", why: "HTTP 504: no answer within the deadline" } });
+  assert.equal(global().last_draft_at, undefined, "a drama request does not spend the draft interval");
+  claimDown = false;
   assert.match(await lane().step(), /^drama-8b2e3d4c: blocked — planner may have run on the server without its answer reaching the worker/);
+  assert.equal(planners().length, 1, "the planner is not asked again");
+  assert.equal(global().lost_plans, undefined);
   assert.deepEqual(site.calls.drama, [{ id: first.id, action: "start", slug: "drama-8b2e3d4c" }]);
   const held = automatedVideos(box.work).find((state) => state.slug === "drama-8b2e3d4c");
   assert.deepEqual([held.status, held.blocked_kind, held.unplanned, held.premise, held.drama_request], ["blocked", "uncertain:planner", "drama", first.premise, { title: "雷聲", note: "用數秒數講" }]);

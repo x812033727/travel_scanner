@@ -602,7 +602,8 @@ export async function judgeDocument(automation, job, answer) {
 export const documentKey = (job) => `${job.kind}:${job.kind === "chapter" ? job.chapter_number : 0}:${job.previous?.id ?? "first"}`;
 
 /**
- * A hash of what the owner decides about a document job: the series' facts, the version it
+ * A hash of what the owner decides about a document job: the series itself (a series withdrawn
+ * and filed again under the same slug is a new row, a new request), its facts, the version it
  * rewrites with the owner's note, and the approved setting and outline it is planned from. None
  * of what the worker itself moves (the series' counters, status and updated_at, the recaps, the
  * episodes, the mysteries), or a held document would be planned again without the owner.
@@ -611,6 +612,7 @@ export function documentInputs(job) {
   const context = job.context ?? {};
   const version = (doc) => (doc ? { id: doc.id ?? null, version: doc.version ?? null } : null);
   const inputs = {
+    id: job.series?.id ?? null,
     series: seriesFacts(job.series),
     previous: job.previous ? { ...version(job.previous), note: job.previous.note ?? null } : null,
     setting: version(context.setting),
@@ -642,9 +644,11 @@ function lostDocs(automation, series) {
  * ever. The loss is now recorded in lost-docs.json (lostDocs) with a hash of the owner's inputs
  * (documentInputs), and the job is not planned again while it is the same: null, said once a run,
  * so the lane goes on to the requests and the draft after the series. The owner releases it by
- * changing the series, by a line on a rejected version that files a new one, or by withdrawing it;
- * the series after it wait meanwhile, since the site hands over the oldest series' job first. An
- * entry whose job the site no longer names is dropped.
+ * changing the series (its note, premise, title or hands-off switch), by a line on a rejected
+ * version that files a new one, or, while no episode has started, by withdrawing the series and
+ * filing it again (a new series row). Meanwhile the series' own ready episodes wait (the site
+ * names a due chapter before them), and so do the series after it, since the site hands over the
+ * oldest series' job first. An entry whose job the site no longer names is dropped.
  */
 export async function planDocument(automation, job) {
   const { series } = job;
@@ -661,7 +665,7 @@ export async function planDocument(automation, job) {
   if (lost[key]?.inputs === inputs) {
     if (!automation.heldDocs.has(held)) {
       automation.heldDocs.add(held);
-      automation.log(`series ${series.slug}: ${what} is not planned again: the planner's answer was lost at ${lost[key].at} (${lost[key].why}) and the model may have run; it waits for the owner (a changed series, a line on a rejected version, or withdrawing it), and the series after it wait too`);
+      automation.log(`series ${series.slug}: ${what} is not planned again: the planner's answer was lost at ${lost[key].at} (${lost[key].why}) and the model may have run; it waits for the owner (a changed note, premise, title or hands-off switch, a line on a rejected version, or the series withdrawn before any episode and filed again), and the series after it wait too`);
     }
     return null;
   }

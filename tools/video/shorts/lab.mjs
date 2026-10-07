@@ -459,9 +459,25 @@ export class LabShort {
   async block(why) {
     this.state.status = 'blocked';
     this.state.blocked = why;
+    // Kept until the site has it: until then the Short is not on 需要你 and the owner has nothing
+    // to retry, so a report that does not go up is sent again (ShortsWorker.retried).
+    this.state.block_report_pending = true;
     this.save();
-    await this.tellSite('blocked', `卡住，需要人處理：${why}`).catch((error) => this.ctx.stdout.write(`  could not report the block yet: ${error.message}\n`));
+    await this.reportBlock();
     return `${this.slug}: blocked — ${why}`;
+  }
+
+  /** Tell /admin/videos why the Short stopped; true once the site has it. */
+  async reportBlock() {
+    try {
+      await this.tellSite('blocked', `卡住，需要人處理：${this.state.blocked}`);
+    } catch (error) {
+      this.ctx.stdout.write(`  could not report the block yet: ${error.message}\n`);
+      return false;
+    }
+    delete this.state.block_report_pending;
+    this.save();
+    return true;
   }
 
   /**

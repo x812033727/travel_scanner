@@ -1315,6 +1315,11 @@ export class Automation {
       // The first lane takes an unfinished discussion up (above); until it has, the video's
       // own stages are not another lane's to run.
       if (this.secondary && this.discussionOpen(listed.slug)) continue;
+      // A video the owner retried before it had a brief (unplanned) has its topic chosen now,
+      // which stays the first lane's, as every new draft's and request's is: on another lane its
+      // planner would read the earlier videos while the first lane's draft() reads them too, and
+      // both could pick the same article.
+      if (this.secondary && listed.unplanned) continue;
       this.busy.add(listed.slug);
       try {
         // The list was read before this loop's first await. While this lane visited the videos
@@ -2374,8 +2379,10 @@ export class Automation {
   }
 
   /**
-   * Permanent rejected payloads stop this video; any other failed push (the site busy or away, a
-   * token it refused, a file the push wants) defers this video alone. A token the site refuses
+   * Permanent rejected payloads stop this video, and so does a final cut whose quality check lost
+   * Jev's policy verdict on the way back (lostPolicy: exit 3 with the client's RUN_UNCERTAIN code
+   * last), until the owner's retry asks Jev once more; any other failed push (the site busy or
+   * away, a token it refused, a file the push wants) defers this video alone. A token the site refuses
    * refuses the next unit's video list too, which ends the run. A push that keeps failing (a 409
    * of the site's own, a local refusal) reaches the deferrals' limit and blocks with its line;
    * one that says the trouble is everyone's (the review store full, Jev's budget spent under the
@@ -4035,7 +4042,8 @@ export class Automation {
    * A gate the site decides: the final cut. `review-push --gate final` runs the quality check
    * and sends its report; the site approves on arrival when every item passed and the owner's
    * switch is on, else the owner decides. A push that could not finish (the check's service, the
-   * site) ends this run and is tried again next round.
+   * site) waits and is tried again later (submissionFailure); one whose Jev policy verdict was
+   * lost waits for the owner's retry.
    */
   async gate(state, gate, file) {
     const review = await this.decision(state, gate, file);

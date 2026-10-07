@@ -14,9 +14,16 @@ depends_on:
 scope:
   - apps/api/app/video_automation/series.py
   - apps/api/app/video_automation/admin_api.py
+  - apps/api/app/video_automation/schemas.py
+  - apps/api/tests/test_video_series.py
+  - apps/api/tests/test_video_series_document_lifecycle.py
+  - apps/web/app/api/video/automation/series
   - apps/web/components/admin-video-series.tsx
+  - apps/web/components/admin-video-series.test.tsx
+  - apps/web/messages
   - tools/video/automation/client.mjs
   - tools/video/automation/series.mjs
+  - tools/video/automation/series.test.mjs
 ---
 
 # Series documents: a site-side hold and a retry for a document whose planner answer was lost
@@ -34,9 +41,12 @@ hold is local to the worker, and the site knows nothing of it:
 - `GET automation/series/next` keeps naming the same job, oldest series first
   (apps/api/app/video_automation/series.py `next_job`). Every younger series and every one-off
   bible waits behind it, with nothing on /admin/videos saying why.
-- The page has no action that releases it. For a first version of a document the only clean
-  release is withdrawing the series (`DELETE`); flipping 全自動 (hands_off) changes the hashed
-  inputs and releases it too, but changes how the series runs. Pausing the series lets the ones
+- The page has no action that releases it. Changing the series' note, premise or title
+  (the admin API) or flipping 全自動 (hands_off) changes the hashed inputs and releases it, but
+  changes the series; withdrawing it (`DELETE`) and filing it again is a new series row and
+  releases it too, and is refused (409 `video_series_started`) once any episode has started,
+  which is the usual case for a chapter outline. While it is held the series' own ready episodes
+  wait too: `next_job_for` names a due chapter before them. Pausing the series lets the ones
   after it move, and does not release it. A rewrite can also be released by a line on a document
   that files a new version, which is not an obvious way to ask for "plan it again".
 - The series page keeps saying the worker writes the document on its next round (`docsEmpty`
@@ -47,7 +57,9 @@ hold is local to the worker, and the site knows nothing of it:
 ## Definition of done
 
 - [ ] A document job whose planner answer was lost is recorded on the site with the reason and
-      when, and `next_job` moves past it to the next series' job until the owner acts.
+      when, and `next_job` moves past it until the owner acts: to the same series' ready
+      episodes first (a held chapter outline must not stop the chapter already planned), then to
+      the next series' job.
 - [ ] The series page shows the held document's reason in place of "the worker writes it next
       round", with a 重新規劃 action that clears the hold, writes an audit line, and lets the next
       round plan it exactly once.
@@ -60,7 +72,13 @@ hold is local to the worker, and the site knows nothing of it:
 - [ ] API (series.py, admin_api.py): a tool route, for example
       `POST automation/series/{slug}/docs/hold` with `{ kind, chapter_number, previous_id, stage,
       variant, why }`, idempotent per job, that records a held document job; `next_job_for` skips a
-      held job and goes on to the next series; the summary carries the hold for the page.
+      held job and goes on to the same series' ready episodes, then the next series; the summary
+      (schemas.py) carries the hold for the page. A migration may be needed for where the hold
+      lives (add `apps/api/migrations` to the scope after checking collisions).
+- [ ] The Next.js route that forwards it, `apps/web/app/api/video/automation/series/[slug]/docs/hold/route.ts`,
+      with its route test: every worker path has its own route there and none is a catch-all, so
+      without it production answers the worker 404, which the client below tolerates as a site
+      from before the route, and the hold silently never reaches the site.
 - [ ] An owner action `POST /admin/video-automation/series/{slug}/docs/hold/clear` (重新規劃) that
       clears it with an audit line; a changed series or a new version clears it as well.
 - [ ] apps/web/components/admin-video-series.tsx: the held document's reason in place of the
@@ -79,6 +97,7 @@ hold is local to the worker, and the site knows nothing of it:
 ```bash
 cd apps/api && uv run pytest tests/test_video_series.py tests/test_video_series_document_lifecycle.py
 node --test tools/video/automation/series.test.mjs
+npx vitest run apps/web/app/api/video/automation/series
 npm run lint:web && npm run check:i18n && npm run typecheck:web && npm run test:web
 ```
 

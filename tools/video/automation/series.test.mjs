@@ -362,7 +362,7 @@ test("a series document whose planner answer was lost is not planned again on it
   assert.deepEqual(server.runs, ["planner:setting"], "one planner request, however many rounds");
   const held = server.out.stdout.split("\n").filter((line) => line.startsWith("series wenjian: the setting book is not planned again"));
   assert.equal(held.length, 2, "said once a run, in each run after the loss");
-  assert.equal(held[0], `series wenjian: the setting book is not planned again: the planner's answer was lost at 2026-09-27T03:00:00.000Z (${LOST_WHY}) and the model may have run; it waits for the owner (a changed series, a line on a rejected version, or withdrawing it), and the series after it wait too`);
+  assert.equal(held[0], `series wenjian: the setting book is not planned again: the planner's answer was lost at 2026-09-27T03:00:00.000Z (${LOST_WHY}) and the model may have run; it waits for the owner (a changed note, premise, title or hands-off switch, a line on a rejected version, or the series withdrawn before any episode and filed again), and the series after it wait too`);
   assert.equal(readFileSync(threads, "utf8"), notes, "the threads' notes are untouched");
 
   // The owner changes the series: one new request, the document is filed, and the hold is gone.
@@ -413,6 +413,8 @@ test("a document job's key names the version it rewrites, and its inputs hash wh
     (each) => (each.previous.note = "第五集也要更緊"),
     (each) => (each.context.setting.id = "s2"),
     (each) => (each.context.outline.version = 3),
+    // Withdrawn and filed again under the same slug and the same facts: a new series row, a new request.
+    (each) => Object.assign(each.series, { id: "7f2b3c4d-5e6f-4a71-8b9c-0d1e2f3a4b5c", created_at: "2026-10-08T00:00:00Z" }),
   ]) {
     const changed = structuredClone(base);
     change(changed);
