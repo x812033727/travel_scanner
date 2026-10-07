@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-a-storyboard-with-many-kept-pictures
 title: A storyboard with many kept pictures can pass the payload limit after its remarks are left out
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-kept-board
 claimed_at: 2026-10-07T11:36:56Z
 created_at: 2026-10-06T16:23:06Z
-completed_at:
+completed_at: 2026-10-07T13:20:41Z
 branch:
 depends_on: []
 scope:
@@ -121,3 +121,8 @@ Found while verifying `4d296e304` (PR #1344). The scratch reproduction was not k
   - Fixed, nit: the `withKeptRemarks` docstring and a test comment described the old builder;
     the byte counts in these notes and the test comment were the reader's board, not the test's.
   - Not defects: the ride-along's task file is closed with this task, as the dub ticket's was.
+- Duration re-bind (2026-10-07, independent reviewer `claude-pr-review-kept-board`): PASS,
+  duration-only, committed as 0c583909. `submission()` and `reviewPush` are byte-identical, a
+  final cut's body and bytes are the same for every input (a differential run of 4,000 random
+  final payloads, 16,000 other gates and 4,000 storyboards), and each shot's `seconds` still
+  comes from timeline.json.

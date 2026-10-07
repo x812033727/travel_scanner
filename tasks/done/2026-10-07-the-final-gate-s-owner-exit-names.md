@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-the-final-gate-s-owner-exit-names
 title: The final gate's owner exit names the video tool token even when Jev's key is not set
-status: open
+status: done
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-kept-board
+claimed_at: 2026-10-07T13:20:41Z
 created_at: 2026-10-07T11:30:00Z
-completed_at:
+completed_at: 2026-10-07T13:20:50Z
 branch:
 depends_on: []
 scope:
@@ -32,14 +32,14 @@ Nothing behaves differently: the worker defers and then blocks on exit 3 as it d
 
 ## Definition of done
 
-- [ ] The owner exit names what to fix, or names nothing and points at the policy line.
+- [x] The owner exit names what to fix, or names nothing and points at the policy line.
 
 ## Steps
 
-- [ ] Word the message generically, for example "the quality check needs the owner (the video
+- [x] Word the message generically, for example "the quality check needs the owner (the video
   tool token or a site setting); see the policy line in review/qa.json", or carry the policy
   item's detail into it.
-- [ ] Adjust the test in `review/sync.test.mjs` that pins the wording, if any.
+- [x] Adjust the test in `review/sync.test.mjs` that pins the wording, if any.
 
 ## How to verify
 
@@ -50,3 +50,11 @@ check`). Ride along with the next change to `sync.mjs` rather than spending a re
 ## Notes
 
 - Found by the review of `2026-10-07-jev-s-unconfigured-503-is-held-as` (2026-10-07), as a nit.
+- 2026-10-07 (claude-opus-5-5-kept-board): done as a ride-along of
+  `2026-10-06-a-storyboard-with-many-kept-pictures` (ba8042be). `qualityCheck`'s owner exit says
+  "the quality check needs the owner (the video tool token or a site setting); see the failing
+  item above and review/qa.json", and its docstring names Jev's key as the site setting the
+  policy item needs. No test pinned the old wording; a new case in the final-gate test has the
+  policy route answer 503 `provider_unavailable` and checks that the push exits 3 with the
+  item's 「尚未設定 Jev API 金鑰」 printed and the new message. The independent duration re-bind
+  of that change (0c583909) covers these two files.
