@@ -1617,6 +1617,36 @@ PASS is DURATION_ONLY for the 14 rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## claude/sharp-bardeen-ob6fn9 durable translation units increment: 2 files (2026-10-07)
+
+Reviewer: `claude-pr-review-language-units`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is commit `f77d03c2` ("fix(video): a translation's translator and caption reviewer are durable jobs, and the page reads its progress"), written by `claude-opus-5-5-language-units` on branch claude/sharp-bardeen-ob6fn9. Scope: DURATION_ONLY for the two changed bindings below. The reviewer wrote none of the commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `35885a4e`, the commit's parent, whose receipt is the "PR #1347 train (#1323, #1324, #1268) increment" above; `git diff 35885a4e f77d03c2 -- docs/videos/long-form/` is empty. At `35885a4e` each of the two files hashes to its row in review.json and the table (by `git show` piped to `sha256sum`). Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs; stale duration review binding: tools/video/automation/flow.mjs` and nothing else. The commit also changes the unbound tools/video/automation/client.mjs (a `DURABLE_STAGES` set of writer, translator and caption_reviewer that replaces the writer-only test for the durable job route), client.test.mjs and a task file. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+What the change is. With `durable_stage_runs` on, a translation unit's translator and caption reviewer now go through the durable job route as the writer already did, so a lost submit, a lost body or a restart reconnects to the same job. After each kept unit, `Automation.unitCheckpoint` adopts the run receipt against `<workdir>/i18n/<locale>.units.json` and sends /admin/videos a `languages_progress` checklist row. This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/automation/flow.mjs (+33/−2, 222,198 → 224,191 bytes). The duration code is outside every hunk: the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29), `slidesMinutes` and `episodeMinutes` (62–68), the anime `body_target_seconds / 60` settlement (489), and the planner and writer payloads' `target_minutes` (1543, 1756–1767, 1838–1890, 2305–2334, 2653). The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` number 20 at both revisions, and no changed line names one of them, minutes, seconds, a frame or a floor. The three hunks:
+
+- `report()` gains a `progress` option that adds one `languages_progress` row, not done, after the blocked and deferred rows and before `checklistFrom(status.steps)`. The other fields of the report (title, stage, format, YouTube id, guide) are unchanged, and the row is left out when the video is blocked. It is a label the owner reads. No gate reads the checklist, and `pipelineStatus` and the QA report are not touched.
+- `unitCheckpoint()` hashes the units file and calls `api.adoptRuns` when the client has it, then reports the count of reviewed and translated units. A report that fails with an AutomationError is logged and dropped. It reads only the units' `translated`/`reviewed` flags and writes nothing to video.json, the cut or its review.
+- The two calls sit in the translation loop right after `keep()` for a translated unit and for a reviewed one. `retryLater`, the gaps checks, `cleared` and the merge of a locale are unchanged. The translated captions and metadata are text; the per-line dub budget on the sheet and the dub's fit gates are outside the diff.
+
+Findings, tools/video/automation/automation.test.mjs (+99/−0, 390,931 → 397,704 bytes; 158 tests at the head, 157 at the baseline). The one added test drives a long sheet through the durable job route with a lost socket, a broken body and a held caption reviewer and asserts one job per request key, no synchronous run, the settled run journals and the eight `languages_progress` labels. It asserts nothing about a length. The duration-term lines are 31 at both revisions, no added line reads or sets process.env, and the opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at the top of the file is unchanged.
+
+Ran (Node v22.22.0, Linux, in the worktree at `f77d03c2`, node_modules installed, VIDEO_MIN_EPISODE_MINUTES unset in the shell): the baseline hashing, `git diff 35885a4e f77d03c2` of both files read in full, changed-line scans and duration-term counts at both revisions, and a read of the client.mjs diff. Before rebinding, `node --test tools/video/automation/automation.test.mjs` passed 158 of 158, and `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same two paths. The CLI check and the long-form tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the durable translation feature itself: the job route for the translator and caption reviewer, `DURABLE_STAGES`, the receipt adoption, the progress row and its wording, or the reconnect after a lost submit, body or restart.
+- The unbound files (client.mjs, client.test.mjs and the task file) are not reviewed beyond the read of client.mjs's diff above.
+- No real translation, dub or cut was made, and the tests run under the opt-out.
+- Not run or seen: the rest of the tool, Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, and the production host.
+- The 106 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1673,9 +1703,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `1c562dc36b1e3e9418f6390764f5d3117891f83fe41a8a46b69b5861ec23a97b` |
+| `tools/video/automation/automation.test.mjs` | `ae221b44e8e960def97062e450811c009d95b96c836cf09022f921b4244757b1` |
 | `tools/video/automation/discuss.mjs` | `fcb1a59b6861c8b18582aeece052b7d6f21930aae495f231e7e0f2c7d0dca9f5` |
-| `tools/video/automation/flow.mjs` | `8990782a737126d7c7a6ba22d6dae7232ac8472555fd8e4ad210e89533eb1d45` |
+| `tools/video/automation/flow.mjs` | `3faef685c939b4613e32e2e2e5b0700a87355238af4d8ce7c4ba5b8e12de4128` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |
