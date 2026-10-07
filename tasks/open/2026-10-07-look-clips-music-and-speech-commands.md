@@ -52,6 +52,12 @@ there, can still change the project's canonical files.
 - [ ] Losing the lease inside a command the worker runs in-process sets the video aside, as `fence()` does, rather than blocking it as the owner's (exit 3). Review nit 6 of 2026-10-07.
 - [ ] Inside the worker, a media command that finds no unit or step lease refuses instead of taking the lease until `auto` exits (review nit 7). No such call exists today, so this guards future code.
 - [ ] Optional: a lease held for more than a few hours shows on `/admin/videos` (holder, since when), not only in the worker log.
+- [ ] `docs/videos/AUTOMATION.md` and the `deploy` / `prod-host-ops` skills say to run video commands by hand with
+      `docker compose exec video-worker`, never `docker compose run`. A `run` container shares the fixed
+      hostname but has its own pid namespace, so it could judge a live lease dead and take it over (re-review of
+      2026-10-07). Widen the scope to those files when this is claimed.
+- [ ] `fence()` on a series document's discussion does not create a work directory named after the series slug
+      (`acquireProjectLease` makes the directory; re-review nit).
 
 ## Steps
 
