@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-a-re-planned-compilation-keeps-the
 title: A re-planned compilation keeps the translations of its previous title and description
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-comp-i18n
 claimed_at: 2026-10-07T13:21:48Z
 created_at: 2026-10-07T10:30:00Z
-completed_at:
+completed_at: 2026-10-07T15:35:01Z
 branch:
 depends_on: []
 scope:
@@ -129,3 +129,9 @@ the duration receipt and need the independent re-bind).
   - Mutations of each fix (no stamping, legacy read only when the hashes are absent, card chapters
     compared, no lint warning, the note hidden when all are stale, the title hashed differently,
     a mysteries compilation keeping a stale file) each fail a test.
+- Duration re-bind (2026-10-07, independent reviewer `claude-pr-review-comp-i18n`): PASS,
+  duration-only, committed as fc0c5497. Non-compilation lint is untouched; a compilation's lint
+  gains only a warning; given the document "metadata translated" can only go from done to not done,
+  and no other step changed (a differential run over every repository video.json and 3,000 seeded
+  compilations). It noted that the new chapter warning appears only when lint has no errors, unlike
+  `lintCompilation`'s own `i18n/` warnings; harmless, left as is.
