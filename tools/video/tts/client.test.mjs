@@ -134,6 +134,9 @@ test("a paid request that never left, or that the API settled, is tried again an
     // production host serves, so its 502 is an API it never reached.
     ["the web route's 502 for an API it never reached", () => problem(502, "upstream_unavailable"), [1000]],
     ["the API's rate limit", () => problem(429, "rate_limit_exceeded", { "Retry-After": "3" }), [3000]],
+    // A host from before the header: the whole minute the limit counts, not 1 to 16 seconds.
+    ["the API's rate limit without Retry-After", () => problem(429, "rate_limit_exceeded"), [60000]],
+    ["a Retry-After longer than the window", () => problem(429, "rate_limit_exceeded", { "Retry-After": "90" }), [60000]],
     ["a busy provider", () => problem(503, "video_speech_upstream_busy", { "Retry-After": "7" }), [7000]],
     // Also what the API answers for a provider read timeout after the request went out, which
     // may have been billed: 2026-10-05-speech-api-tells-a-provider-answer gives that its own code.
@@ -151,6 +154,34 @@ test("a paid request that never left, or that the API settled, is tried again an
       if (waits.length) assert.deepEqual(sleeps, waits, label);
     }
   }
+});
+
+test("a narration that goes over the per-token minute waits the window out and carries on", async () => {
+  // A fake API with the route's fixed window: LIMIT requests a minute on one token, and its 429
+  // says how long is left. The clock moves only when the client sleeps.
+  const LIMIT = 3;
+  let now = 0;
+  let windowStart = 0;
+  let used = 0;
+  let refused = 0;
+  const options = {
+    site: SITE,
+    token: TOKEN,
+    fetchImpl: async () => {
+      if (now - windowStart >= 60_000) [windowStart, used] = [now, 0];
+      if (++used > LIMIT) {
+        refused++;
+        return problem(429, "rate_limit_exceeded", { "Retry-After": String(Math.ceil((windowStart + 60_000 - now) / 1000)) });
+      }
+      return new Response(audio(), { status: 200, headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "2" } });
+    },
+    sleep: async (ms) => { now += ms; },
+  };
+  for (let line = 0; line < 10; line++) {
+    await synthesize({ ...options, body: { voice: "zh-TW-HsiaoChenNeural", segments: [{ parts: [{ text: `第 ${line} 行` }], break_after_ms: 0 }] } });
+  }
+  assert.ok(refused >= 3, `the limit was hit (${refused} refusals)`);
+  assert.ok(now >= 3 * 60_000, `it waited the windows out (${now} ms)`);
 });
 
 test("a settled failure that does not clear stops after the bounded attempts", async () => {

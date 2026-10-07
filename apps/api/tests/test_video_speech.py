@@ -348,6 +348,78 @@ def admin_client(monkeypatch: pytest.MonkeyPatch) -> Any:
     app.dependency_overrides.update(previous)
 
 
+def _window_counter(monkeypatch: pytest.MonkeyPatch) -> Any:
+    """infra's fixed window on fakeredis, which runs no Lua: INCR, then EXPIRE on the first hit,
+    as ``_WINDOW_SCRIPT`` does, so the key's TTL is the real time left in the window."""
+    import app.infra as infra
+
+    redis = fakeredis.aioredis.FakeRedis()
+
+    async def incr(namespace: str, identifier: str, *, window_seconds: int) -> int:
+        key = infra._rate_key(namespace, identifier)
+        count = int(await redis.incr(key))
+        if count == 1:
+            await redis.expire(key, window_seconds)
+        return count
+
+    monkeypatch.setattr(infra, "get_redis", lambda: redis)
+    monkeypatch.setattr(infra, "_incr_window", incr)
+    return redis
+
+
+@pytest.mark.asyncio
+async def test_the_named_rate_limit_says_how_long_is_left_only_when_asked(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import app.infra as infra
+
+    redis = _window_counter(monkeypatch)
+    for _ in range(3):
+        await infra.enforce_named_rate_limit("demo", "caller", limit=3, window_seconds=60)
+    with pytest.raises(AppError) as told:
+        await infra.enforce_named_rate_limit(
+            "demo", "caller", limit=3, window_seconds=60, retry_after=True
+        )
+    assert told.value.status == 429 and told.value.code == "rate_limit_exceeded"
+    assert told.value.headers is not None
+    assert 1 <= int(told.value.headers["Retry-After"]) <= 60
+    # Every other caller of the shared limiter keeps its answer exactly as it was.
+    with pytest.raises(AppError) as plain:
+        await infra.enforce_named_rate_limit("demo", "caller", limit=3, window_seconds=60)
+    assert plain.value.status == 429 and plain.value.headers is None
+    # A key without an expiry cannot say how long; the whole window is always enough.
+    await redis.persist(infra._rate_key("demo", "caller"))
+    with pytest.raises(AppError) as unknown:
+        await infra.enforce_named_rate_limit(
+            "demo", "caller", limit=3, window_seconds=60, retry_after=True
+        )
+    assert unknown.value.headers == {"Retry-After": "60"}
+
+
+@pytest.mark.asyncio
+async def test_the_video_tool_token_minute_answers_with_retry_after(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _window_counter(monkeypatch)
+    monkeypatch.setattr(admin_api, "SPEECH_REQUESTS_PER_MINUTE", 2)
+    token = new_token()
+    row = VideoToolToken(
+        id=uuid4(),
+        name="worker",
+        token_hash=token_hash(token),
+        token_prefix=token[:10],
+        last_used_at=datetime.now(UTC),
+    )
+    session: Any = TokenSession(found=row)
+    for _ in range(2):
+        assert await admin_api.video_tool(session, f"Bearer {token}") is row
+    with pytest.raises(AppError) as refused:
+        await admin_api.video_tool(session, f"Bearer {token}")
+    assert refused.value.status == 429 and refused.value.code == "rate_limit_exceeded"
+    assert refused.value.headers is not None
+    assert 1 <= int(refused.value.headers["Retry-After"]) <= 60
+
+
 TOKENS = "/api/v1/admin/provider-settings/azure_speech/video-tool-tokens"
 
 

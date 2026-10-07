@@ -279,8 +279,14 @@ async def video_tool(
         )
     if touch(row):
         await session.commit()
+    # Every video tool route shares this per-token minute; its 429 says how long is left, so
+    # a long narration (or two worker lanes on one token) waits the window out and goes on.
     await enforce_named_rate_limit(
-        "video_speech", str(row.id), limit=SPEECH_REQUESTS_PER_MINUTE, window_seconds=60
+        "video_speech",
+        str(row.id),
+        limit=SPEECH_REQUESTS_PER_MINUTE,
+        window_seconds=60,
+        retry_after=True,
     )
     return row
 

@@ -112,12 +112,34 @@ async def enforce_named_rate_limit(
     *,
     limit: int,
     window_seconds: int,
+    retry_after: bool = False,
 ) -> None:
+    """Refuse a caller over ``limit`` hits in the window, failing **closed** on Redis.
+
+    With ``retry_after`` the 429 carries ``Retry-After``: the seconds left in this caller's
+    fixed window (the key's TTL), or the whole window when that cannot be read. A client
+    that retries on its own then waits the window out instead of guessing.
+    """
     count = await _incr_window(namespace, identifier, window_seconds=window_seconds)
     if count is None:
         raise AppError(503, "rate_limit_unavailable", "安全驗證服務暫時無法使用")
     if count > limit:
-        raise AppError(429, "rate_limit_exceeded", "請求過於頻繁，請稍後再試")
+        headers = None
+        if retry_after:
+            headers = {
+                "Retry-After": str(await _window_left(namespace, identifier, window_seconds))
+            }
+        raise AppError(429, "rate_limit_exceeded", "請求過於頻繁，請稍後再試", headers=headers)
+
+
+async def _window_left(namespace: str, identifier: str, window_seconds: int) -> int:
+    """Whole seconds until this caller's window resets, at least 1 and at most the window."""
+    try:
+        left = int(await get_redis().ttl(_rate_key(namespace, identifier)))
+    except RedisError:
+        return window_seconds
+    # -1 (no expiry) or -2 (gone) cannot be a wait; the whole window is always enough.
+    return min(max(left, 1), window_seconds) if left > 0 else window_seconds
 
 
 async def over_named_rate_limit(

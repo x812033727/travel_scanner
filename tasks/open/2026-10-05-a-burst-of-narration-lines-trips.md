@@ -1,16 +1,17 @@
 ---
 id: 2026-10-05-a-burst-of-narration-lines-trips
 title: A burst of narration lines trips the speech route's 120-a-minute limit and blocks the video
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-speech-burst
+claimed_at: 2026-10-07T04:33:16Z
 created_at: 2026-10-05T23:43:19Z
 completed_at:
-branch:
+branch: claude/happy-carson-c1hy91
 depends_on: []
 scope:
+  - apps/api/app/infra.py
   - tools/video/tts/client.mjs
   - tools/video/tts/client.test.mjs
   - apps/api/app/video_speech/admin_api.py
@@ -37,9 +38,9 @@ video stops for a reason that would clear by itself a minute later.
 
 ## Definition of done
 
-- [ ] A narration (or check-audio) run that goes over the per-token limit waits for the
+- [x] A narration (or check-audio) run that goes over the per-token limit waits for the
       window and carries on, instead of failing the stage after about 31 seconds.
-- [ ] The 429 from the speech routes says how long to wait (`Retry-After`), or the client
+- [x] The 429 from the speech routes says how long to wait (`Retry-After`), or the client
       knows the window, and a test shows the client waiting it out.
 - [ ] `openai-agent-posted-53-user-images` gets past "narration synthesized" after the fix is
       deployed (the owner presses retry once, or the worker retries it on its own), which also
@@ -47,13 +48,13 @@ video stops for a reason that would clear by itself a minute later.
 
 ## Steps
 
-- [ ] Confirm which calls burst: count requests per minute in one long `tts` run with a fake
+- [x] (in part) Confirm which calls burst: count requests per minute in one long `tts` run with a fake
       transport (lines, retakes, the second transcriber, judge calls on the same token) and the
       two-lane case.
-- [ ] Choose the fix: `Retry-After` on the rate-limit 429 (the limiter knows the window), a
+- [x] Choose the fix: `Retry-After` on the rate-limit 429 (the limiter knows the window), a
       client-side pace under 120 a minute, or both. Keep paid POSTs' journal rules: a 429 means
       the route refused before any provider call, so it is safe to send again.
-- [ ] Tests for the client (fake fetch: 429 with and without `Retry-After`) and for the API
+- [x] Tests for the client (fake fetch: 429 with and without `Retry-After`) and for the API
       header.
 
 ## How to verify
@@ -70,3 +71,27 @@ tests/test_video_speech.py -q`; after a deploy, `/admin/videos` shows the video 
   from that retry passed narration.
 - The limit is per token, not per lane, so `VIDEO_WORKER_LANES: "2"` in
   `docker-compose.prod.yml` doubles the burst.
+
+## 2026-10-07 (claude-opus-5-5-speech-burst)
+
+- Both fixes. API: `enforce_named_rate_limit` (`app/infra.py`) takes `retry_after=False`; with it
+  the 429 carries `Retry-After` = the seconds left in the caller's fixed window (the key's TTL,
+  clamped to 1..window, the whole window when Redis cannot say). The `video_tool` dependency
+  passes it; the ~110 other callers are unchanged (default off, tested). Scope widened to
+  `app/infra.py` for that one keyword.
+- Client (`tools/video/tts/client.mjs`): a `Retry-After` is honoured up to the 60 s window as
+  before; a 429 `rate_limit_exceeded` without one (a host from before this change) now waits the
+  whole window instead of 1–16 s. A 429 is refused before any provider call, so resending is safe.
+- The per-token minute is shared by every route on the `VideoTool` dependency (speech, reviews,
+  Shorts, media, automation). The header helps every client that reads it: `media/client.mjs`
+  and `automation/client.mjs` do; `review/sync.mjs` and `shorts/site.mjs` do too but cap it at
+  30 s (`Math.min(... , 30)`), so a long Retry-After there is shortened. Not changed here.
+- Burst: not measured on a real `tts` run; a client test simulates it instead (a fixed-window
+  fake API at 3 a minute, ten paid syntheses, the clock moving only when the client sleeps): all
+  ten go through after waiting the windows out.
+- Verified: `node --test tools/video/tts/client.test.mjs tools/video/tts/tts.test.mjs` (42);
+  the new client rows fail against the old client; `apps/api`: ruff, both mypy runs, and every
+  test file touching the limiter or `video_tool` (64 files, 1532 pass, 84 skipped for Postgres).
+- Left open: the production check (DoD 3) after a deploy, for the owner or the worker's retry;
+  it also closes the last box of 2026-10-03-video-worker-narration-takes-made-stale.
+
