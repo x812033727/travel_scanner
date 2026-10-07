@@ -1819,6 +1819,61 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## claude/sharp-bardeen-ob6fn9 selected picture bytes increment: 3 files (2026-10-07)
+
+Reviewer: `claude-pr-review-picture-bytes`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is commit `efc12c30` ("fix(video): direct clips and assembly check the selected pictures' bytes, not only the approved manifest"), written by `claude-opus-5-5-image-bytes` on branch claude/sharp-bardeen-ob6fn9. Scope: DURATION_ONLY for the three changed bindings below. The reviewer wrote none of the commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `f5928787`, the commit's parent, which changes only the task file (the claim). Its parent `8fc2a74d` is the receipt for the "claude/sharp-bardeen-ob6fn9 media STOP race increment" above, and `git diff 8fc2a74d efc12c30 -- docs/videos/long-form/ tools/video/long-form/ tools/video/core/` is empty. At `f5928787` and at `8fc2a74d` each of the three files hashes to its row in review.json and the table (by `git show` piped to `sha256sum`), and the working tree's copies equal `efc12c30`'s and hold no CR byte. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/assemble/assemble.test.mjs; stale duration review binding: tools/video/assemble/cli.mjs; stale duration review binding: tools/video/media/clips.test.mjs` and nothing else. The commit also changes the unbound tools/video/media/clips.mjs and the task file. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with three hashes rebound and the other 105 unchanged.
+
+What the change is. `mediaInputs()` in assemble/cli.mjs gains two byte checks before it returns. For a drama, every `still` record in clips/manifest.json must name a file that exists and hashes to the record's `sha256` (clips.mjs writes that record from the keyframe's file and hash). For illustrated slides, after the existing look, missing-picture and needs_review gates, the unchanged, read-only `keyframeProblems` (core/state.mjs) runs with `allowNeedsReview: true`, and its "changed", "missing" and "no selected picture" problems are returned. Either way the result is `{ problem }`, which `run` writes to stderr before exiting 2 (`EXIT.usage`), as it does for every other `mediaInputs` problem. The unbound clips.mjs gains `changedPictures()`, the same check on the start and end pictures of a `clips` run or a `clips import`. This section asks only whether any of it reaches a length rule. In particular: whether the checks change what assembly measures or writes to checks.json, the frame counts or the segment keys, and whether the test fixtures weaken a duration assertion.
+
+Findings, tools/video/assemble/cli.mjs (+15/−1, 32,586 → 33,763 bytes). There are two hunks inside `mediaInputs()`, and the state.mjs import gains `keyframeProblems`. Apart from that import, the file's first 203 lines are byte-identical at both revisions. So is everything from `mediaInputs()`'s final `return { look, subtitles, clips, keyframes, music: sound.music, track: sound.track, sfx: effects.sfx }` to the end of the file, shifted by 14 lines (baseline 214 → head 228). So the duration code is outside every hunk:
+
+- the imports of `animeBodyDurationProblems`, `animeDurationProblems`, `animeRuntimeProof` and `animeShotFitProblems` from core/duration.mjs;
+- the body-duration gate at line 257, which runs before `mediaInputs`;
+- `layoutDrama` and its frame counts, the anime fit evidence and `animeShotFitProblems`;
+- `fitPlan`'s speeds and pads, and `segmentKey`, `motionSegmentKey` and `clipSegmentKey` (plan.mjs, not in the commit);
+- `totalSeconds = timeline.total_frames / FPS` and `checkProbe(probe, { frames: presented.total_frames })`;
+- `animeDurationProblems`, `animeRuntimeProof` and the checks.json write.
+
+The file has 5 lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` at both revisions. No changed line names one of these, or minutes, seconds, FPS, a frame count, a timeline, checks.json, QA or lint; the "frame" matches are keyframe file and command names. The hunks:
+
+- The drama loop only reads `clips.shots` and calls `existsSync` and `sha256File`; it sets nothing. On the pass path `mediaInputs` returns the same object as before, with `clips` and `keyframes` read the same way. The illustrated check hands the manifest already read to `keyframeProblems`, which only reads files and collects strings. So on the pass path `inputs.keyframes` is unchanged, and so is everything built from it: the layout's frames, the motion segment keys and checks.json's `pictures_hash: keyframesHash(doc, inputs.keyframes)`.
+- On the refusal path the run exits 2 before `productionClipProblems`, ffmpeg discovery, the layout, any segment, probe or measurement, and the checks.json write, as when the clips or keyframes manifest is stale. It adds a refusal and removes none: no run that failed before can now pass. Nothing that ran before is skipped on a run that goes on, and the body-duration gate has already run by then. The segment cache is not reached, so no cached segment is reused or overwritten.
+
+Findings, tools/video/assemble/assemble.test.mjs (+84/−1, 29,452 → 34,940 bytes; 18 tests at the head by `node --test`, 17 at the baseline). The removed line is the core/drama.mjs import, back with `picturesHash` and `shotScenes` added. The added lines are one test in two blocks, an illustrated sandbox and a drama sandbox. Each block first runs with approved bytes and reaches ffmpeg discovery, a getter on `FFMPEG_PATH` that throws "ffmpeg sentinel". It then overwrites one selected picture and asserts exit 2, the expected message and no ffmpeg discovery. The illustrated block also asserts that a file in segments/ is left as it was.
+
+- Each block's fixture is its own `illustratedFixture()` or `dramaFixture()`, which parses the fixture file afresh on every call, and the block writes it into its own temporary sandbox. So `delete doc.sfx`, `delete doc.music` and `delete doc.subtitles` change only that copy, not the shared fixture files or any other test.
+- The audio fixture is `estimateTimeline(doc)` with the doc's speech hash, as in the file's other assembly tests. The test never reads or asserts a length.
+- The one new duration-term line is the drama block's records for its non-still clips, `qc: { ok: true, metrics: { duration: 8, width: 1920, height: 1080 } }`. This is the passing record of the existing production-clip test (line 198). Nothing reads it here: the sandbox has no series.json, so `productionClipProblems` returns before reading clip metrics, and the run stops at ffmpeg discovery before any layout or fit.
+
+So the duration-term lines are 17 at the baseline and 18 at the head. No existing test or assertion is changed, and the opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 19) is unchanged.
+
+Findings, tools/video/media/clips.test.mjs (+30/−0, 85,029 → 87,093 bytes; 28 tests at the head by `node --test`, 27 at the baseline). One test with three cases: a start keyframe (`sea-storm`), an end frame (`farewell`) and a `clips import` (`opening`). In each, after the look and storyboard approvals, the selected file is overwritten with another PNG. Each run must exit 2 with "selected picture has changed", make no request of the fake site, buy no clip and send no upload. The keyframes manifest must stay byte-identical, no clips manifest may be written, and the ledger must stay empty. The `.length` matches count bought clips and uploads, and an "end frame" is a picture, not a length. The import's `--credits 60 --usd 0.5` are price arguments, and the refusal comes before the cap check and the ledger hold. The duration-term lines are 11 at both revisions, and the opt-out (line 23) is unchanged.
+
+The unbound clips.mjs change (+33/−1, 48,084 → 49,902 bytes), read for timing only. `changedPictures()` runs `keyframeProblems` on a copy of the doc that holds only the run's scenes, then hash-checks any end frame the manifest records. In `run` it is called after the timeline check, `productionShotProblems` and the storyboard approval, and before the first status read, upload or submission. In `importClip` it is called after the timeline check and the storyboard approval. It comes before `mayWriteProject`, the site's cap check, the ledger hold, any copy and the import's clip-length checks. Either call exits 2 or lets the run go on. Neither changes a clip's requested or measured length, a take count, a fit or a QC metric. The file's duration-term lines are 13 at both revisions.
+
+Ran (Node v22.22.0, Linux, in the checkout at `efc12c30`, node_modules installed, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing at `f5928787` and `8fc2a74d`;
+- `git show efc12c30` of the three bound files and clips.mjs, read in full;
+- byte comparisons of assemble/cli.mjs outside its hunks, changed-line scans, and duration-term counts at both revisions;
+- reads of `keyframeProblems`, `productionClipProblems`, `segmentKey`, the fixture loaders and `sandbox`, and the clips.mjs entry paths.
+
+Before rebinding, `node --test` passed assemble.test.mjs 18 of 18 and clips.test.mjs 28 of 28. `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same three paths. The CLI check and the long-form tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the byte checks themselves: the choice to refuse rather than redraw, the `/changed|missing|no selected picture/` filter, the still-record rule or `changedPictures()`'s end-frame rule.
+- The unbound clips.mjs is read for timing only and is not reviewed otherwise; the task file is not reviewed.
+- No real video was written, linted, voiced, drawn, assembled or measured, and the tests run under the opt-out.
+- Not run or seen: the rest of the tool, Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, and the production host.
+- The 105 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1870,8 +1925,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `docs/videos/series-plans/borrowed-dawn/validate.mjs` | `cad0c421ea375c40f28093157b9749c1f7f95524d0f9a8d4ffa1978e61c1df04` |
 | `docs/videos/so-thats-why/README.md` | `00a0f0e5a56d7a492dec69263eab34668e0d334949878bd512b09edacaefd0de` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
-| `tools/video/assemble/assemble.test.mjs` | `f92d8ee9b07ac71082b56f102b2e56d2f9e7111f6d625096dccc690b9daf9b6d` |
-| `tools/video/assemble/cli.mjs` | `bd2b8fb99b1a93c7ca7df237c8955b2b6c791dc773006ed2c4f88ef79601b60e` |
+| `tools/video/assemble/assemble.test.mjs` | `fa31a969ddbdebba4f79af806d7ee9f3971868f6c14ab1822a2a315651d0fcc1` |
+| `tools/video/assemble/cli.mjs` | `554d887ea0eab026fb159420a70b2ea99720302913d9b7102f057e89b9164bd4` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
@@ -1914,7 +1969,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
-| `tools/video/media/clips.test.mjs` | `7d8b42b02f759772c1ec7334a1af02ecb57b99fa7a642b66c25f6584fc77639f` |
+| `tools/video/media/clips.test.mjs` | `1127f2cb69dfbe566bb22382b01e344f1a3f99841ba9a7b3e43539b9168b5e24` |
 | `tools/video/media/look-keyframes.test.mjs` | `3413923fc1485cc03ffd29a18594c8ae48280710e1b81d7f6882d6f76db8f954` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `3f81ff3bfb8b600f06c1ba54bc72e685b74ff8bcbd1f096b7b5d4b77ff9d175d` |
