@@ -598,6 +598,16 @@ export async function activateHandoff({ receipt, readRemote, readProject, worker
   } finally { rmSync(lock, { force: true }); }
 }
 
+/** The caption and description locales a manual package's own metadata.json names, refused by
+ * field when a hand-built or hand-edited package mistypes one, never a TypeError. */
+function manualMetadataLocales(metadata) {
+  requireThat(metadata !== null && typeof metadata === "object" && !Array.isArray(metadata), "metadata.json is not an object; rebuild the package");
+  requireThat(Array.isArray(metadata.captions) && metadata.captions.every((v) => typeof v === "string"), "metadata.json captions is not a list of caption files; rebuild the package");
+  const map = metadata.localizations;
+  requireThat(map !== null && typeof map === "object" && !Array.isArray(map), "metadata.json localizations is not an object; rebuild the package");
+  return { captions: metadata.captions.map((v) => path.basename(v, ".srt")), localizations: Object.keys(map) };
+}
+
 /** A prepared manual package can be staged using existing attachment transport. This is a
  * publish proof, never a new final approval; unresolved chosen parts forbid submission. */
 export async function bindManualSubmission({ body, remote, workdir }) {
@@ -613,7 +623,8 @@ export async function bindManualSubmission({ body, remote, workdir }) {
     requireThat(await sha256File(file) === proof.sha256 && body.files.some((f) => f.role === entry.role && f.sha256 === proof.sha256 && f.size === proof.size), `manual package attachment changed: ${entry.role}`);
   }
   const wanted = normalizedChoices(remote.locales);
-  const report = checkPackage({ files: listFiles(path.join(workdir, "upload")), metadata, finalSha256: await sha256File(path.join(workdir, "upload/final.mp4")), approvedSha256: final.content_sha256, metadataSha256: body.content_sha256, locales: body.payload?.base_only === true ? metadata.captions.map((v) => path.basename(v, ".srt")) : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].captions)], descriptionLocales: body.payload?.base_only === true ? ["zh-TW", ...Object.keys(metadata.localizations)] : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].metadata)], brandingMatches: validateBranding(readJson(path.join(workdir, "branding.json")), { base: workdir }).hash === final.payload.branding_hash });
+  const own = body.payload?.base_only === true ? manualMetadataLocales(metadata) : null;
+  const report = checkPackage({ files: listFiles(path.join(workdir, "upload")), metadata, finalSha256: await sha256File(path.join(workdir, "upload/final.mp4")), approvedSha256: final.content_sha256, metadataSha256: body.content_sha256, locales: own ? own.captions : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].captions)], descriptionLocales: own ? ["zh-TW", ...own.localizations] : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].metadata)], brandingMatches: validateBranding(readJson(path.join(workdir, "branding.json")), { base: workdir }).hash === final.payload.branding_hash });
   requireThat(report.ok && isDeepStrictEqual(body.payload?.package, report), "manual package check is not successful or changed");
   return { ...body, payload: { ...body.payload, final_review_id: final.id, renewal_handoff_id: receipt.id, manual_source: metadata.renewal_handoff } };
 }
@@ -774,14 +785,16 @@ export async function stageManualPublish({ workdir, client, send, uploadInactive
   const remote = await client.project(receipt.slug), final = approved(remote, receipt.slug);
   inactive(remote);
   const metadata = readJson(path.join(workdir, "upload/metadata.json"));
+  // Read on every path: the payload below names the package's own localizations either way.
+  const own = manualMetadataLocales(metadata);
   const sha = await sha256File(path.join(workdir, "upload/metadata.json"));
   const wanted = normalizedChoices(remote.locales);
-  const report = checkPackage({ files: listFiles(path.join(workdir, "upload")), metadata, finalSha256: await sha256File(path.join(workdir, "upload/final.mp4")), approvedSha256: final.content_sha256, metadataSha256: sha, locales: baseOnly ? metadata.captions.map((v) => path.basename(v, ".srt")) : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].captions)], descriptionLocales: baseOnly ? ["zh-TW", ...Object.keys(metadata.localizations)] : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].metadata)], brandingMatches: validateBranding(readJson(path.join(workdir, "branding.json")), { base: workdir }).hash === final.payload.branding_hash });
+  const report = checkPackage({ files: listFiles(path.join(workdir, "upload")), metadata, finalSha256: await sha256File(path.join(workdir, "upload/final.mp4")), approvedSha256: final.content_sha256, metadataSha256: sha, locales: baseOnly ? own.captions : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].captions)], descriptionLocales: baseOnly ? ["zh-TW", ...own.localizations] : ["zh-TW", ...Object.keys(wanted).filter((l) => wanted[l].metadata)], brandingMatches: validateBranding(readJson(path.join(workdir, "branding.json")), { base: workdir }).hash === final.payload.branding_hash });
   requireThat(report.ok, report.items.filter((v) => !v.ok).map((v) => v.detail).join("; "));
   const { uploadCandidate } = await import("./renewal.mjs");
   const files = [];
   for (const entry of packageFiles([...listFiles(path.join(workdir, "upload")).keys()])) files.push(await (send ?? uploadCandidate)(client, receipt.slug, path.join(workdir, "upload", entry.path), entry.role));
-  const body = await bindManualSubmission({ body: { gate: "publish", content_sha256: sha, summary: baseOnly ? "Source-bound renewed base package; selected language parts remain pending" : "Source-bound renewed imported upload package; final approval retained", payload: { package: report, locales: ["zh-TW", ...Object.keys(metadata.localizations)], ...(baseOnly ? { base_only: true, pending_language_sources: receipt.holds } : {}) }, files }, remote: await client.project(receipt.slug), workdir });
+  const body = await bindManualSubmission({ body: { gate: "publish", content_sha256: sha, summary: baseOnly ? "Source-bound renewed base package; selected language parts remain pending" : "Source-bound renewed imported upload package; final approval retained", payload: { package: report, locales: ["zh-TW", ...own.localizations], ...(baseOnly ? { base_only: true, pending_language_sources: receipt.holds } : {}) }, files }, remote: await client.project(receipt.slug), workdir });
   requireThat(await uploadInactive(receipt.slug) === true, "upload activity started while staging attachments; no publish submission");
   save(stagedFile, { at: now.toISOString(), status: "submitting", body });
   const result = await client.submit(receipt.slug, body);
