@@ -461,6 +461,232 @@ test('nothing reaches the tested model while the owner has not chosen one, and t
   assert.equal(lab.state.status, 'active');
 });
 
+// --- an answer lost on the way (client.mjs RUN_UNCERTAIN) ------------------------------------------
+
+// The web route's answer for a stage run whose answer it lost: the model may have run, and been paid for.
+const LOST = () => json({ code: 'video_ai_run_uncertain', detail: 'no answer within the deadline' }, 504);
+const RETRY = '7f1d2c3b-4a5e-4f60-8a7b-9c0d1e2f3a4b';
+const stopHere = () => ({ build: async () => { throw new Error('stop here'); } });
+const calls = (site, stage, variant) => site.calls.run.filter((call) => call.stage === stage && (!variant || call.variant === variant)).length;
+
+/**
+ * The fake site with what the owner and the durable route add: the Shorts that need the owner on
+ * /admin/videos (`needsYou`, which ShortsWorker.retried() reads for a retry), Jev's policy route
+ * answered by `policy(n)` for its n-th call, and with `durable` the writer's durable route
+ * (automation/run/jobs) as the API keeps it: a job per request key, its status `durable(n)` for the
+ * n-th job ('running', 'uncertain' or 'succeeded'), the settings saying durable_stage_runs.
+ */
+function ownerSite(site, { policy = null, durable = null } = {}) {
+  const needsYou = [];
+  const jobs = new Map();
+  const counts = { submits: 0, lookups: 0 };
+  const job = (body, status) => ({
+    id: body.request_key, request_key: body.request_key, request_hash: 'a'.repeat(64), input_hash: 'b'.repeat(64), provider: 'claude_code', model: 'claude-writer', status,
+    result: status === 'succeeded' ? { text: JSON.stringify({ script: SCRIPT }), provider: 'claude_code', model: 'claude-writer', input_tokens: 100, output_tokens: 50, usage: { tokens: 150 } } : null,
+    error_code: null, error_detail: status === 'uncertain' ? 'the server lost the writer\'s answer after it ran' : null, error_status: status === 'uncertain' ? 504 : null, retry_after: null,
+  });
+  const fetchImpl = async (url, init = {}) => {
+    const { pathname } = new URL(url);
+    if (pathname === '/api/video/automation/videos') return json(needsYou);
+    if (pathname === '/api/video/automation/settings') return json({ enabled: true, durable_stage_runs: Boolean(durable) });
+    if (policy && pathname === '/api/video/automation/judge/policy') return policy(++site.calls.policy);
+    if (durable && pathname === '/api/video/automation/run/jobs') {
+      counts.submits++;
+      const body = JSON.parse(init.body);
+      site.calls.run.push(body);
+      if (!jobs.has(body.request_key)) jobs.set(body.request_key, job(body, durable(jobs.size + 1)));
+      return json(jobs.get(body.request_key));
+    }
+    if (durable && pathname.startsWith('/api/video/automation/run/jobs/')) {
+      counts.lookups++;
+      return json(jobs.get(pathname.split('/').at(-1)));
+    }
+    return site.fetchImpl(url, init);
+  };
+  return { ...site, fetchImpl, needsYou, jobs, counts };
+}
+
+/** The owner presses retry on /admin/videos, and the worker reads it as `make` does (automation/shorts.mjs). */
+async function ownerRetries(lab, site, request = RETRY) {
+  const { ShortsWorker } = await import('../automation/shorts.mjs');
+  site.needsYou.splice(0, site.needsYou.length, { slug: lab.slug, retry_request_id: request });
+  return new ShortsWorker(lab.ctx, lab.api).retried(lab);
+}
+
+test('a checking stage whose answer was lost blocks the Short for the owner and is not asked again', async (t) => {
+  const site = ownerSite(fakeSite({ answers: { ...ANSWERS(), 'verifier:shorts-lab-score': LOST } }));
+  const { lab } = labFor(t, site, { tools: stopHere() });
+  assert.match(await lab.run(), /blocked — score may have run on the server without its answer reaching the worker \(HTTP 504: no answer within the deadline\); it is not asked again until the owner retries/);
+  assert.equal(await lab.run(), null);
+  assert.equal(await lab.run(), null, 'a blocked Short is not asked again');
+  assert.equal(calls(site, 'verifier', 'shorts-lab-score'), 1, 'three runs, one call');
+  assert.deepEqual([lab.state.status, lab.state.phase, lab.state.failures], ['blocked', 'score', {}], 'nothing unusable came back: no failure is counted');
+  assert.deepEqual([lab.state.lost.phase, lab.state.lost.why], ['score', 'HTTP 504: no answer within the deadline']);
+  const report = site.calls.reports.at(-1);
+  assert.equal(report.stage, 'blocked');
+  assert.match(report.checklist[0].label, /^卡住，需要人處理：score may have run/);
+});
+
+test('the owner\'s retry asks the lost stage exactly once more, and the same retry is not taken twice', async (t) => {
+  let lose = true;
+  const site = ownerSite(fakeSite({ answers: { ...ANSWERS(), 'verifier:shorts-lab-score': () => (lose ? LOST() : READ) } }));
+  const { lab, base } = labFor(t, site, { tools: stopHere() });
+  await lab.run();
+  assert.equal(lab.state.status, 'blocked');
+  lose = false;
+  assert.equal(await ownerRetries(lab, site), true);
+  assert.deepEqual([lab.state.status, lab.state.retry_request_id], ['active', RETRY]);
+  assert.equal(site.calls.reports.at(-1).retry_acknowledged_id, RETRY, 'the site stops showing the retry as pending');
+  // A STOP met before the retry is released does not spend it.
+  writeFileSync(path.join(base, 'STOP'), '');
+  assert.equal(await lab.run(), 'STOP found; stopping between units');
+  assert.equal(lab.state.lost.phase, 'score');
+  rmSync(path.join(base, 'STOP'));
+  const line = await lab.run();
+  assert.match(line, /scored: a 2\/2, b 2\/2/);
+  assert.equal(calls(site, 'verifier', 'shorts-lab-score'), 2, 'one more call');
+  assert.equal(lab.state.phase, 'build', 'and the Short moves on');
+  assert.equal(lab.state.lost, undefined);
+  assert.deepEqual([lab.state.lost_answers.length, lab.state.lost_answers[0].phase, lab.state.lost_answers[0].retry_request_id], [1, 'score', RETRY]);
+  assert.equal(await ownerRetries(lab, site), false, 'the same request is not taken twice');
+});
+
+test('the owner\'s retry waits for a saved run still on the server, and one it cannot verify blocks the Short again', async (t) => {
+  const { AutomationError, RUN_PENDING, RUN_UNCERTAIN } = await import('../automation/client.mjs');
+  let lose = true;
+  const site = ownerSite(fakeSite({ answers: { ...ANSWERS(), 'verifier:shorts-lab-score': () => (lose ? LOST() : READ) } }));
+  const { lab } = labFor(t, site, { tools: stopHere() });
+  await lab.run();
+  lose = false;
+  const answers = [
+    new AutomationError('the saved stage run is still running; the owner retry waits for it and its receipt is recovered next round', { code: RUN_PENDING }),
+    Object.assign(new AutomationError('could not verify the saved run before owner retry: HTTP 500; its receipt is retained', { code: RUN_UNCERTAIN, who: 'owner' }), { why: 'HTTP 500' }),
+  ];
+  const asked = [];
+  lab.api = { ...lab.api, retryRuns: async (slug, authorization) => { asked.push({ slug, ...authorization }); if (answers.length) throw answers.shift(); } };
+  assert.equal(await ownerRetries(lab, site), true);
+  assert.equal(await lab.run(), 'shorts-receipt-total: retry waits; the saved run of score is still running on the server, its receipt is checked next round');
+  assert.deepEqual([lab.state.status, lab.state.lost.phase], ['active', 'score']);
+  assert.match(await lab.run(), /blocked — retry could not verify the saved run of score: could not verify the saved run before owner retry/);
+  assert.deepEqual([lab.state.status, lab.state.lost.phase], ['blocked', 'score']);
+  assert.equal(calls(site, 'verifier', 'shorts-lab-score'), 1, 'nothing was asked while the retry could not go');
+  assert.deepEqual(asked[0], { slug: 'shorts-receipt-total', requestId: RETRY, reason: 'HTTP 504: no answer within the deadline', format: 'shorts', kind: 'uncertain:score' });
+  const again = 'a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d';
+  assert.equal(await ownerRetries(lab, site, again), true);
+  assert.match(await lab.run(), /scored: a 2\/2/);
+  assert.equal(calls(site, 'verifier', 'shorts-lab-score'), 2);
+  assert.equal(lab.state.lost_answers[0].retry_request_id, again);
+});
+
+test('the tested model\'s lost answer blocks the Short; the retry asks once more, and the lost request stays in the evidence', async (t) => {
+  let tries = 0;
+  const site = ownerSite(fakeSite({ answers: { ...ANSWERS(), 'subject:a': () => (++tries === 1 ? LOST() : ANSWER_A) } }));
+  const { lab, base } = labFor(t, site, { tools: stopHere() });
+  assert.match(await lab.run(), /blocked — subject-a may have run on the server without its answer reaching the worker/);
+  assert.equal(await lab.run(), null);
+  assert.equal(calls(site, 'subject', 'a'), 1, 'two runs, one request');
+  assert.deepEqual([lab.state.status, lab.state.phase, lab.state.attempts.a.length], ['blocked', 'subject-a', 1]);
+  assert.equal(await ownerRetries(lab, site), true);
+  assert.match(await lab.run(), /the tested model answered under a \(model-a, 2 requests\)/);
+  assert.equal(calls(site, 'subject', 'a'), 2);
+  const a = JSON.parse(readFileSync(path.join(base, 'shorts-receipt-total', LAB_DIR, answerFile('a')), 'utf8'));
+  assert.deepEqual(a.attempts.map((attempt) => [attempt.ok, attempt.code ?? null, attempt.status ?? null]), [[false, 'video_ai_run_uncertain', 504], [true, null, null]]);
+  assert.deepEqual([a.raw, a.retries], [ANSWER_A, 1]);
+});
+
+test('an answer that came back unreadable was lost too: blocked at once, one call', async (t) => {
+  const broken = () => new Response('{"text": "{\\"a\\": [', { status: 200, headers: { 'content-type': 'application/json' } });
+  const site = ownerSite(fakeSite({ answers: { ...ANSWERS(), 'verifier:shorts-lab-score': broken } }));
+  const { lab } = labFor(t, site, { tools: stopHere() });
+  assert.match(await lab.run(), /blocked — score may have run on the server without its answer reaching the worker \(the answer could not be read/);
+  assert.equal(await lab.run(), null);
+  assert.equal(calls(site, 'verifier', 'shorts-lab-score'), 1);
+  assert.equal(lab.state.lost.phase, 'score');
+});
+
+test('a durable writer whose saved run the server marks uncertain blocks the Short; the retry sets the journal aside and writes once more', async (t) => {
+  const site = ownerSite(fakeSite({ answers: ANSWERS() }), { durable: (n) => (n === 1 ? 'uncertain' : 'succeeded') });
+  const { lab, base } = labFor(t, site, { tools: stopHere() });
+  await lab.api.settings();
+  assert.match(await lab.run(), /blocked — write may have run on the server without its answer reaching the worker \(the server lost the writer's answer after it ran\)/);
+  assert.equal(await lab.run(), null);
+  assert.equal(site.counts.submits, 1, 'one writer job');
+  assert.match(site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：write may have run/, 'the owner sees it, though the client calls it the owner\'s');
+  const receipts = path.join(base, 'mokaair-work', 'videos', 'shorts-receipt-total', 'run-receipts');
+  const journals = (dir) => (existsSync(dir) ? readdirSync(dir).filter((name) => name.endsWith('.json')).map((name) => JSON.parse(readFileSync(path.join(dir, name), 'utf8'))) : []);
+  assert.deepEqual(journals(receipts).map((journal) => journal.receipt.status), ['uncertain']);
+
+  assert.equal(await ownerRetries(lab, site), true);
+  assert.match(await lab.run(), /script written/);
+  assert.deepEqual([site.counts.submits, site.counts.lookups], [2, 1], 'the uncertain job looked up once, the write sent once more');
+  const archived = journals(path.join(receipts, 'archive'));
+  assert.deepEqual(archived.map((journal) => [journal.receipt.status, journal.owner_retry.request_id]), [['uncertain', RETRY]]);
+  assert.deepEqual(journals(receipts).map((journal) => journal.receipt.status), ['succeeded'], 'the new job is the one taken');
+  assert.deepEqual([lab.state.phase, lab.state.lost, lab.state.lost_answers[0].phase], ['build', undefined, 'write']);
+});
+
+test('settled errors keep their handling: a refused run and an away limiter wait a round, a running writer waits, nothing ran is the owner\'s', async (t) => {
+  // The API's own 502 once the model failed: nothing was lost, so the next round asks again.
+  let tries = 0;
+  const refused = ownerSite(fakeSite({ answers: { ...ANSWERS(), 'verifier:shorts-lab-score': () => (++tries <= 4 ? json({ code: 'video_ai_upstream_failed', detail: '模型服務拒絕了這次請求（HTTP 500）' }, 502) : READ) } }));
+  const first = labFor(t, refused, { tools: stopHere() });
+  assert.match(await first.lab.run(), /score is waiting on a service \(模型服務拒絕了這次請求（HTTP 500）\); the next round tries again/);
+  assert.deepEqual([first.lab.state.status, first.lab.state.lost, first.lab.state.failures], ['active', undefined, {}]);
+  assert.match(await first.lab.run(), /scored: a 2\/2/, 'asked once more next round');
+
+  // The limiter could not count the request: refused before any model ran.
+  const limited = ownerSite(fakeSite({ answers: { ...ANSWERS(), 'verifier:shorts-lab-score': () => json({ code: 'rate_limit_unavailable', detail: '安全驗證服務暫時無法使用' }, 503) } }));
+  const second = labFor(t, limited, { tools: stopHere() });
+  assert.match(await second.lab.run(), /score is waiting on a service \(安全驗證服務暫時無法使用\)/);
+  assert.deepEqual([second.lab.state.status, second.lab.state.lost], ['active', undefined]);
+
+  // A durable writer still running on the server: the round ends and the next looks again, with one job.
+  const running = ownerSite(fakeSite({ answers: ANSWERS() }), { durable: () => 'running' });
+  const third = labFor(t, running, { tools: stopHere() });
+  third.lab.api = automationClient(third.ctx, { durablePollMs: 2000 });
+  await third.lab.api.settings();
+  assert.match(await third.lab.run(), /write is waiting on a service \(the saved stage run is still pending/);
+  assert.match(await third.lab.run(), /write is waiting on a service/);
+  assert.deepEqual([third.lab.state.status, third.lab.state.lost, running.counts.submits], ['active', undefined, 1]);
+
+  // Nothing reached the tested model: the owner's to fix, and not an attempt.
+  const unpaid = ownerSite(fakeSite({ answers: { ...ANSWERS(), 'subject:a': () => json({ code: 'video_ai_budget_exhausted', detail: '本期預算已用完' }, 409) } }));
+  const fourth = labFor(t, unpaid, { tools: stopHere() });
+  assert.match(await fourth.lab.run(), /waits for the owner at subject-a: 本期預算已用完/);
+  assert.deepEqual([fourth.lab.state.status, fourth.lab.state.lost, fourth.lab.state.attempts.a], ['active', undefined, []]);
+});
+
+test('Jev\'s policy answer lost in the quality check blocks the Short at qa; the retry asks Jev once more and the Short goes on', async (t) => {
+  const site = ownerSite(fakeSite({ answers: ANSWERS() }), {
+    policy: (n) => (n === 1 ? json({ code: 'video_judge_answer_lost', detail: 'Jev 可能已經判斷' }, 504) : json({ passed: true, note: 'Jev 照頻道立場讀過，可以上' })),
+  });
+  const { tools } = fakeTools();
+  const { lab } = labFor(t, site, { tools });
+  assert.match(await lab.run(), /blocked — qa may have run on the server without its answer reaching the worker \(automation\/judge\/policy was sent and no answer came back \(HTTP 504: Jev 可能已經判斷\)/);
+  assert.equal(await lab.run(), null);
+  assert.deepEqual([lab.state.status, lab.state.phase, site.calls.policy], ['blocked', 'qa', 1], 'two runs, one call to Jev');
+  assert.equal(existsSync(path.join(lab.state.build, 'qa.json')), false, 'no report is written for a check that did not end');
+  assert.equal(await ownerRetries(lab, site), true);
+  const line = await lab.run();
+  assert.match(line, /quality check: all 13 items pass/);
+  assert.match(line, /pushed: final approved/);
+  assert.deepEqual([site.calls.policy, lab.state.status, lab.state.lost_answers[0].phase], [2, 'done', 'qa']);
+});
+
+test('a quality check whose inputs change while Jev\'s lost answer is out is held as lost, not counted as a failed check', async (t) => {
+  let lab;
+  const site = ownerSite(fakeSite({ answers: ANSWERS() }), {
+    policy: () => {
+      writeFileSync(path.join(lab.state.build, 'timing.json'), '{}');
+      return json({ code: 'video_judge_answer_lost', detail: 'Jev 可能已經判斷' }, 504);
+    },
+  });
+  const { tools } = fakeTools();
+  ({ lab } = labFor(t, site, { tools }));
+  assert.match(await lab.run(), /blocked — qa may have run on the server/);
+  assert.deepEqual([lab.state.status, lab.state.phase, lab.state.failures, site.calls.policy], ['blocked', 'qa', {}, 1]);
+});
+
 test('a writer that gives nothing usable twice in a row blocks the Short, with its answers kept', async (t) => {
   const answers = { ...ANSWERS(), 'writer:shorts-lab': { script: { ...SCRIPT, titles: ['只有一個標題'] } } };
   const site = fakeSite({ answers });
