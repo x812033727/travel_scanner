@@ -1,14 +1,14 @@
 ---
 id: 2026-10-07-article-missing-locales-completion
 title: Complete all missing published travel and life article locales
-status: open
+status: in-progress
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: codex-article-localization-4e16
+claimed_at: 2026-10-07T07:17:24Z
 created_at: 2026-10-07T04:49:38Z
 completed_at:
-branch: codex/article-missing-locales-20261007
+branch: codex/article-locales-wave3-20261007
 depends_on: []
 scope:
   - docs/article-localization/coverage-20261007.md
@@ -105,3 +105,30 @@ or retain the draft. Until a choice arrives, keep production unchanged. Release
 this coverage-only claim while waiting; resume by reclaiming it and reading the
 persistent program state, exact current PR heads and fresh production guards.
 This overall task stays open until a fresh production count is zero.
+
+### Continued preparation after owner follow-up
+
+The owner requested continuation. Reclaimed this coverage-only task on
+`codex/article-locales-wave3-20261007`, starting from the exact second content
+head. Both draft PRs now have all21 successful checks at their unchanged heads.
+No merge/deploy/publication choice was selected; preparation continues within
+the authorized translation/review scope while those concrete choices remain
+pending.
+
+Twelve existing life packs / 48 targets are undergoing current source, ownership
+and full independent text/image review. Separate six-pack content tasks will
+own any resulting corrections. Hong Kong entry and Taiwan holiday sources are
+being rechecked in parallel before new travel jobs. The original862-article
+queue and latest production gap counts are unchanged; preparation is not
+publication and this overall task is not done.
+
+Continuation checkpoint: the12 life/48 target final independent reviews are now
+aggregated verbatim (reviewSHA adbd51543953e233f37f32f3da5090037b998ecff963090bd14425677ad1aeb3;
+evidenceSHA4a2f4883988c3f93c4c33abff7cf1b2110666f8c5c10d35f26679898af451f3b).
+Official prospective compile is pending, so the prior18/72 completed local
+readiness checkpoint remains unchanged. Taiwan/HK8 new targets remain under
+final review;15 genuine Taiwan findings have been applied and rerendered with
+original/failing artifacts preserved. Wave4 read-only audits filed explicit
+Japan source-correction and Sapporo-route follow-ups without expanding wave3.
+Global original production deficit3448 and completed_publications=[] remain
+unchanged; no production content write, merge or deployment occurred.

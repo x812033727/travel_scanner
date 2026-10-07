@@ -300,7 +300,7 @@
     },
     "zh-CN": {
       "title": "Mailchimp 接 WordPress：MC4WP 表单与名单同步",
-      "description": "在 WordPress 放上 Mailchimp 订阅表单，需要同时处理 API 连线、受众栏位、确认信与退订状态。本文以原创二手书交换网站为例，整理 MC4WP 的基本安装、表单测试、兴趣更新及 Premium User Sync 的范围，也说明新版已移除的外挂退订表单功能。附操作步骤、比较表与原创图解，协助网站维护者避免重复收信与同步误解。",
+      "description": "在 WordPress 放上 Mailchimp 订阅表单，需要同时处理 API 连线、受众栏位、确认信与退订状态。本文以原创二手书交换网站为例，整理 MC4WP 的基本安装、表单测试、兴趣更新及 Premium User Sync 的范围，也说明新版已移除的插件退订表单功能。附操作步骤、比较表与原创图解，协助网站维护者避免重复收信与同步误解。",
       "hero": {
         "src": "/guides/mailchimp-wordpress-newsletter/hero-zh-cn.jpg",
         "alt": "Mokaair 原创网站画面、连线伺服器与受众资料夹，表达 MC4WP 表单及 Mailchimp 名单衔接。",
@@ -319,7 +319,7 @@
         },
         {
           "type": "paragraph",
-          "text": "本文依 2026 年 9 月 14 日查阅的 MC4WP、WordPress.org 与 Mailchimp 官方文件整理，以原创书籍交换网站示范。MC4WP 是第三方外挂，不是 Mailchimp 官方开发的产品；本篇没有实际安装外挂、连接帐户或寄送电子邮件。"
+          "text": "本文依 2026 年 9 月 14 日查阅的 MC4WP、WordPress.org 与 Mailchimp 官方文件整理，以原创书籍交换网站示范。MC4WP 是第三方插件，不是 Mailchimp 官方开发的产品；本篇没有实际安装插件、连接帐户或寄送电子邮件。"
         },
         {
           "type": "heading",
@@ -328,7 +328,7 @@
         },
         {
           "type": "paragraph",
-          "text": "WordPress 提供网站与会员资料，MC4WP 负责订阅表单和支援的整合，Mailchimp 管理受众及寄送行销邮件。先画出资料从哪里进来、送到哪个 audience，以及谁决定收件状态。外挂显示 Connected，代表连线有成功，还不代表每个栏位都已送对。"
+          "text": "WordPress 提供网站与会员资料，MC4WP 负责订阅表单和支援的整合，Mailchimp 管理受众及寄送行销邮件。先画出资料从哪里进来、送到哪个 audience，以及谁决定收件状态。插件显示 Connected，代表连线有成功，还不代表每个栏位都已送对。"
         },
         {
           "type": "paragraph",
@@ -336,24 +336,24 @@
         },
         {
           "type": "paragraph",
-          "text": "免费 MC4WP 可建立基本订阅表单，Premium 另有多表单、User Sync 等功能。Mailchimp 帐户方案与外挂授权是两件事，购买其中一项不代表另一项也包含在内。先列出真正需要的功能，再核对当期方案，不用旧教学的价格或功能表当作现在承诺。"
+          "text": "免费 MC4WP 可建立基本订阅表单，Premium 另有多表单、User Sync 等功能。Mailchimp 帐户方案与插件授权是两件事，购买其中一项不代表另一项也包含在内。先列出真正需要的功能，再核对当期方案，不用旧教学的价格或功能表当作现在承诺。"
         },
         {
           "type": "heading",
-          "text": "连接帐户时保护 API 金钥",
+          "text": "连接帐户时保护 API 密钥",
           "level": 2
         },
         {
           "type": "paragraph",
-          "text": "在 WordPress 外挂管理搜寻 MC4WP: Mailchimp for WordPress，核对作者与来源后安装启用。接著于 Mailchimp 建立可辨识用途的 Marketing API 金钥，再填入 WordPress 的 MC4WP > Mailchimp 设定。金钥名称可标明网站与用途，方便日后查找整合。"
+          "text": "在 WordPress 插件管理搜寻 MC4WP: Mailchimp for WordPress，核对作者与来源后安装启用。接著于 Mailchimp 建立可辨识用途的 Marketing API 密钥，再填入 WordPress 的 MC4WP > Mailchimp 设定。密钥名称可标明网站与用途，方便日后查找整合。"
         },
         {
           "type": "paragraph",
-          "text": "Mailchimp 目前只在产生时显示完整金钥，后续不能再次读出同一份完整内容，因此应以合适方式安全保存。不要把金钥贴到文章 HTML、公开 JavaScript、截图或客服讨论区。若金钥外泄或整合不再使用，依官方程序撤销，并处理受影响的连线。"
+          "text": "Mailchimp 目前只在产生时显示完整密钥，后续不能再次读出同一份完整内容，因此应以合适方式安全保存。不要把密钥贴到文章 HTML、公开 JavaScript、截图或客服讨论区。若密钥外泄或整合不再使用，依官方程序撤销，并处理受影响的连线。"
         },
         {
           "type": "paragraph",
-          "text": "连线完成后核对 audience，确认不是测试用或另一个品牌的名单。若修改过 Mailchimp 栏位，回到外挂更新受众资讯，让表单知道新的栏位结构。维护者若只看到没有连上，不要连续产生很多金钥试运气，先检查帐户、错误讯息与目前使用的设定。"
+          "text": "连线完成后核对 audience，确认不是测试用或另一个品牌的名单。若修改过 Mailchimp 栏位，回到插件更新受众资讯，让表单知道新的栏位结构。维护者若只看到没有连上，不要连续产生很多密钥试运气，先检查帐户、错误讯息与目前使用的设定。"
         },
         {
           "type": "heading",
@@ -366,7 +366,7 @@
         },
         {
           "type": "paragraph",
-          "text": "表单可透过外挂提供的 shortcode 放进文章或页面；使用画面中实际的表单 ID，不照抄教学里的示例编号。若网站另有页面编辑器、快取或版型，先选一个测试页确认版面与提交结果，再放到其他入口，避免一次增加很多难以追查的表单。"
+          "text": "表单可透过插件提供的 shortcode 放进文章或页面；使用画面中实际的表单 ID，不照抄教学里的示例编号。若网站另有页面编辑器、快取或版型，先选一个测试页确认版面与提交结果，再放到其他入口，避免一次增加很多难以追查的表单。"
         },
         {
           "type": "paragraph",
@@ -383,7 +383,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Premium User Sync 用来让 WordPress 会员资料与 Mailchimp 中已存在的对应联络人同步。官方明确说明它不会自动订阅或退订会员，只更新所选 audience 内已有相同地址的对应资料。因此会员成功注册或修改暱称，不等于完成电子报订阅。"
+          "text": "Premium User Sync 用来让 WordPress 会员资料与 Mailchimp 中已存在的对应联络人同步。官方明确说明它不会自动订阅或退订会员，只更新所选 audience 内已有相同地址的对应资料。因此会员成功注册或修改昵称，不等于完成电子报订阅。"
         },
         {
           "type": "paragraph",
@@ -396,7 +396,7 @@
         },
         {
           "type": "paragraph",
-          "text": "MC4WP 开发者于二○二六年三月公布，自 4.12.0 移除透过外挂表单处理退订的功能，旧表单在更新后不再执行原本的退订要求。原因与没有验证地址拥有者的旧设计有关，这不是在表单加一个栏位就能继续沿用的功能。"
+          "text": "MC4WP 开发者于二○二六年三月公布，自 4.12.0 移除透过插件表单处理退订的功能，旧表单在更新后不再执行原本的退订要求。原因与没有验证地址拥有者的旧设计有关，这不是在表单加一个栏位就能继续沿用的功能。"
         },
         {
           "type": "paragraph",
@@ -421,12 +421,12 @@
         },
         {
           "type": "paragraph",
-          "text": "准备正式寄送时，在 Mailchimp 再核对真正的收件者与重复活动，并检查信件中的网站连结和退出功能。网站外挂负责接入资料，寄件网域、内容与邮件投递仍需在寄送服务端处理。表单能用是起点，整段订阅生命周期都能预期运作，才算这次串接完成。"
+          "text": "准备正式寄送时，在 Mailchimp 再核对真正的收件者与重复活动，并检查信件中的网站连结和退出功能。网站插件负责接入资料，寄件网域、内容与邮件投递仍需在寄送服务端处理。表单能用是起点，整段订阅生命周期都能预期运作，才算这次串接完成。"
         },
         {
           "type": "list",
           "items": [
-            "确认外挂来源，连接对应 Mailchimp 帐户并安全保存金钥。",
+            "确认插件来源，连接对应 Mailchimp 帐户并安全保存密钥。",
             "选定主要受众，核对栏位与双重确认，先放在单一测试页。",
             "厘清偏好取代或追加、User Sync 范围及是否需要双向更新。",
             "测试退出、重复地址与各表单入口，再核对真正的寄送对象。"
@@ -475,7 +475,7 @@
               "不代表会自动加入订阅"
             ],
             [
-              "新版外挂已更新",
+              "新版插件已更新",
               "程式版本更新",
               "旧退订表单是否已替换"
             ],
@@ -498,7 +498,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "整理电子报订阅、寄送与退出责任",
+              "text": "电子报怎么开始：订阅同意、内容与寄送指标",
               "kind": "life",
               "slug": "email-newsletter-planning"
             }
@@ -509,7 +509,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "比较 Kit 的表单与自动信衔接",
+              "text": "Kit 电子报流程：订阅表单、受众细分与自动邮件",
               "kind": "life",
               "slug": "kit-newsletter-setup"
             }
@@ -529,7 +529,7 @@
       ],
       "sources": [
         {
-          "title": "WordPress.org：MC4WP 外挂与作者",
+          "title": "WordPress.org：MC4WP 插件与作者",
           "url": "https://wordpress.org/plugins/mailchimp-for-wp/",
           "checked_on": "2026-09-14"
         },
@@ -539,7 +539,7 @@
           "checked_on": "2026-09-14"
         },
         {
-          "title": "Mailchimp：API 金钥与保护",
+          "title": "Mailchimp：API 密钥与保护",
           "url": "https://mailchimp.com/help/about-api-keys/",
           "checked_on": "2026-09-14"
         },
@@ -564,7 +564,7 @@
           "checked_on": "2026-09-14"
         },
         {
-          "title": "MC4WP：移除外挂表单退订功能",
+          "title": "MC4WP：移除插件表单退订功能",
           "url": "https://www.mc4wp.com/blog/removing-unsubscribe-through-forms/",
           "checked_on": "2026-09-14"
         },
@@ -785,7 +785,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Plan responsibility for newsletter signup, delivery, and opt-out",
+              "text": "Starting a newsletter: consent, content, and delivery metrics",
               "kind": "life",
               "slug": "email-newsletter-planning"
             }
@@ -796,7 +796,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Compare how Kit forms connect to automated emails",
+              "text": "A Kit newsletter workflow: forms, segments, and automated emails",
               "kind": "life",
               "slug": "kit-newsletter-setup"
             }
@@ -1072,7 +1072,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "ニュースレターの登録・送信・配信停止の責任を整理する",
+              "text": "ニュースレターの始め方：購読の同意、内容、配信指標",
               "kind": "life",
               "slug": "email-newsletter-planning"
             }
@@ -1083,7 +1083,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Kitのフォームと自動メールの連携を比べる",
+              "text": "Kitのメールマガジン運用：登録フォーム、セグメント、自動メール",
               "kind": "life",
               "slug": "kit-newsletter-setup"
             }
@@ -1359,7 +1359,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "뉴스레터 가입·발송·수신 거부의 책임 정리",
+              "text": "뉴스레터 시작하기: 구독 동의, 콘텐츠, 발송 지표",
               "kind": "life",
               "slug": "email-newsletter-planning"
             }
@@ -1370,7 +1370,7 @@
           "inlines": [
             {
               "type": "article",
-              "text": "Kit 양식과 자동 메일의 연결 비교",
+              "text": "Kit 뉴스레터 운영 흐름: 구독 폼, 세그먼트, 자동 이메일",
               "kind": "life",
               "slug": "kit-newsletter-setup"
             }
