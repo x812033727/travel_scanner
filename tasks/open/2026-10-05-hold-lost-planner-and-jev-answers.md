@@ -108,10 +108,10 @@ make no stage call.
   final-cut hash in `review/qa.json` and do not ask again for the same hash. The item says
   the outcome is unknown and is for the owner. (Kept per request hash, and the video waits
   for the owner's retry: see Notes.)
-- [ ] `shorts/lab.mjs`: block the Short with the reason when `ask()` or `subject()` loses an
+- [x] `shorts/lab.mjs`: block the Short with the reason when `ask()` or `subject()` loses an
   answer. `ShortsWorker.retried()` (automation/shorts.mjs) already resumes a blocked Short
   when the owner asks for a retry.
-- [ ] Tests for each path. Use the 504 `video_ai_run_uncertain` fake (`lostAnswer`,
+- [x] Tests for each path. Use the 504 `video_ai_run_uncertain` fake (`lostAnswer`,
   automation.test.mjs:736), or the `lose` option of `fakeSite` in
   `tools/video/automation/shorts.test.mjs`.
 
@@ -179,6 +179,14 @@ stops the video or Short for the retry (rather than sending the cut with the out
   No expiry: only the owner releases it. The site has no call to hold or retry a document job,
   so a first version can only be withdrawn and filed again until
   2026-10-07-series-documents-a-site-side-hold lands, and every younger series waits behind it.
+- Shorts (`shorts/lab.mjs`): a lost answer of any stage (`ask()`), the tested model
+  (`subject()`, the attempt kept as evidence and counted) or Jev's policy check (`runQa` with
+  `throwLost`, so the loss wins over an inputs-changed throw) blocks the Short with `lost`
+  in lab.json; the owner's retry archives a durable writer's uncertain journal
+  (`retryRuns`) and sends the stage once more, the record moving to `lost_answers`. A
+  durable writer's uncertain run used to take the silent "waits for the owner" line that
+  never reached the site. A hand-run `shorts qa` keeps a failed policy item saying the
+  outcome is unknown.
 - Discussions: a lint repair lost inside a screenplay discussion's rewrite puts the script back
   and blocks the video with the line held (`discuss.mjs` `answerHeld`). The durable case where
   that repair is still running is filed as 2026-10-07-a-discussion-s-lint-repair-still.
