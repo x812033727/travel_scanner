@@ -3265,7 +3265,12 @@ export class Automation {
     const doc = project.doc;
     const channel = zhNarrated ? null : this.channelLocale(project, workdir, state);
     if (!pending.length && !channel && !repackage) return null;
+    // The narration's own language, when the owner ticks it, is the video's own title, captions
+    // and audio: nothing is translated or dubbed, and the batch sends them as made, its dub as a
+    // skip (review/sync.mjs languagesSubmission).
+    const narrated = narrationLocale(doc);
     for (const { locale, parts } of [...(channel ? [channel] : []), ...pending]) {
+      if (locale === narrated) continue;
       const sheetParts = parts.filter((part) => part !== "dub");
       if (!sheetParts.length) continue;
       const translated = await this.translateLocale(state, locale, sheetParts, doc);
@@ -3289,7 +3294,7 @@ export class Automation {
       // stopped before it finished (a STOP file, or a paid request whose answer was lost, see
       // makeDub) is made and checked again.
       const unheard = dubs[locale]?.status === "current" && state.languages?.[locale]?.check_stopped;
-      if (!parts.includes("dub") || (["current", "skipped"].includes(dubs[locale]?.status) && !unheard)) continue;
+      if (locale === narrated || !parts.includes("dub") || (["current", "skipped"].includes(dubs[locale]?.status) && !unheard)) continue;
       return this.makeDub(state, locale);
     }
     // Every chosen part is made: cut the captions on the dubs, write the package with the chosen

@@ -2,10 +2,15 @@
 
 Implementation status: the API and VPS consume the contract below, and
 `review-push --gate languages` produces it for every video (a renewed final through
-`tools/video/review/renewal.mjs`, any other through `bindLanguageSource` in
+`tools/video/review/renewal.mjs`, as before, any other through `bindLanguageSource` in
 `tools/video/review/sync.mjs`). A contract test feeds the producer's actual bytes to
-the consumer (see "Producer" below). Language reviews sent before this change carry
-no manifest and still need resubmitting; that is a release action, not automatic.
+the consumer (see "Producer" below). Language reviews sent before this change for a
+video that is not a renewed final carry no manifest: the consumer refuses them, and
+resubmitting them is a release action, not automatic. Two emitters outside
+review-push still post batches without one: the worker's skipped-language batch after
+a tidy (`tasks/open/2026-10-07-a-tidied-video-s-skipped-language.md`) and the
+imported-long-languages runner
+(`tasks/open/2026-10-07-imported-long-videos-language-batches-carry.md`).
 
 An upload confirmation can be approved before the owner chooses additional
 languages. The API and independent VPS uploader must compose that confirmation
@@ -23,17 +28,26 @@ description, caption and dub files:
 
 Version 1 contains `schema_version`, `slug`, `source`, `choice`, `locales` and
 `files`. `source` records the server review IDs and content hashes for the
-approved `publish` and `final` reviews, and the applicable `script` review. It
-also records branding, speech and compilation hashes where applicable. The
+`publish` review the batch was sent after (approved, or pending when it was sent;
+the consumer reads the batch only beside that confirmation, approved unchanged),
+the approved `final` review, and, for a drama that is not a compilation, its
+screenplay review when the site holds one (a brand story's screenplay, or one made
+with the screenplay gate off, is approved by the worker alone and has none; the
+approved final cut is then the owner's review). It also records branding, speech
+and compilation hashes where applicable. The
 producer validates the current local artifacts before submission. Final and
 script review identities, the final video hash and branding are independently
 checked by the consumer against the approved source.
 
 A manifest may also carry `follows`, the identity of the newest language review when
 it was sent. The producer adds it only when the same bytes were already sent as an
-older review (an owner who returns to an earlier choice): the server answers repeated
-bytes with that older review, while the consumer reads the newest one. The consumer
-does not read it.
+older review that is not the newest, for example a push after the owner went back to
+an earlier choice: the server answers repeated bytes with that older review, while
+the consumer reads the newest one. Sent again unchanged, the manifest with `follows`
+is the newest review already, so a repeated push adds none. The consumer does not
+read it. The worker sends a batch only while some chosen part is still in the
+making, so a choice narrowed or changed back after a batch went up sends nothing new
+(`tasks/open/2026-10-07-the-worker-sends-a-language-batch.md`).
 
 `choice.locales` contains the complete normalized metadata/captions/dub choice.
 `choice.decided_at` is an audit timestamp, not a choice revision: the site keeps
@@ -53,17 +67,21 @@ content hash. `source` names the site's newest final, which must be approved; th
 newest upload confirmation, approved or still pending (a pending one that the owner
 then approves unchanged carries the batch; a newer confirmation sent after it is read
 without the batch, from its own package); and, for a drama that is not a compilation,
-the newest screenplay review, which must be approved. `speech_hash` and
+its newest screenplay review when the site holds one, which must be approved. `speech_hash` and
 `compilation_hash` come from `timeline.json`, and `branding_hash` from the approved
 final.
 
-Nothing is posted while the batch cannot be bound. The producer refuses when there is
-no confirmation yet or it was rejected, when the final or screenplay is not approved,
-when `metadata.json` was written for another final, branding or choice, when the
-choice on the site is not the one copied into `languages.json`, when a description
-file is not its title and description in `metadata.json`, or when the narration's own
-captions differ from the approved confirmation's. A selected dub of the narration's
-own language goes as an explicit skip; no duplicate track is sent.
+Nothing is posted while the batch cannot be bound. What the site's reviews decide is
+checked before any of the batch's files go up: no confirmation yet or a rejected one,
+a final that is not approved, or a screenplay review that is not. After the parts go
+up, the producer still refuses when `metadata.json` was written for another final,
+branding or choice, when the choice on the site is not the one copied into
+`languages.json`, when a description file is not its title and description in
+`metadata.json`, or when the narration's own title, description or captions differ
+from the approved confirmation's. A selected dub of the narration's own language goes
+as an explicit skip, and the worker neither translates nor dubs that language; no
+duplicate track is sent. A dub track goes up in the format it was made in (m4a, mp3
+or wav).
 
 `tools/video/review/language-contract.mjs` runs the real `package` and `review-push`
 on fixture videos against a double of the review site. It keeps what the site then

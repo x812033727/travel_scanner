@@ -3,18 +3,8 @@
     "slug": "fixture-minimal",
     "format": "slides",
     "locales": {
-      "en": {
-        "metadata": true,
-        "captions": true,
-        "dub": false
-      },
       "ja": {
         "metadata": false,
-        "captions": true,
-        "dub": false
-      },
-      "zh-CN": {
-        "metadata": true,
         "captions": true,
         "dub": true
       }
@@ -26,75 +16,51 @@
       "id": "00000000-0000-4000-8000-000000000003",
       "gate": "languages",
       "subject": null,
-      "content_sha256": "a3cf6859a867ca48c78f5afdf03301e23e52ee3229346405cad28e79ea88d10a",
-      "summary": "語言：en 標題說明、CC；ja CC；zh-CN 標題說明、CC、配音跳過（配音字數超出時間軸，改用字幕）。沒有要你上傳的配音",
+      "content_sha256": "7ac1b7ea63146b7f088cc6e77dfc29bc0c279d2b8c38ab0d9a59d5f1ee8fed1f",
+      "summary": "語言：ja CC、配音。配音到 Studio「語言」上傳後按「已在 Studio 上傳配音」",
       "payload": {
         "locales": {
-          "en": {
-            "metadata": "ready",
-            "captions": "ready"
-          },
           "ja": {
-            "captions": "ready"
-          },
-          "zh-CN": {
-            "metadata": "ready",
             "captions": "ready",
-            "dub": {
-              "status": "skipped",
-              "reason": "配音字數超出時間軸，改用字幕"
-            }
+            "dub": "ready",
+            "file": "ja.mp3",
+            "format": "mp3",
+            "tempo_max": 1.05,
+            "file_role": "dub_ja",
+            "sha256": "d8c186f4b23b527527d5d50af128d5890f37d109257089be276932e60d492781"
           }
         }
       },
       "files": [
         {
-          "role": "description_en",
-          "sha256": "256809034d176bc98402b075d9578f76313a6a40ad9b80d998883ff5c7328df2",
-          "size": 187,
-          "content_type": "text/plain"
-        },
-        {
-          "role": "captions_en",
-          "sha256": "205d2751ac9bc5fe972217eec0d54e504bd5ea2529cd6d4b308451b1c844a3fd",
-          "size": 286,
-          "content_type": "text/plain"
-        },
-        {
           "role": "captions_ja",
-          "sha256": "3b85e0ab82877fe9c4b0f4bca40a7f80b450374087392350d2cd57aca45293dd",
+          "sha256": "3b0457eca7b12b58f27f267afe6f8edae2db29e8cbe39d0f5611f0c253eda8d3",
           "size": 286,
           "content_type": "text/plain"
         },
         {
-          "role": "description_zh-CN",
-          "sha256": "fd6d24de76c4090990a002844cdf14cf419d2428bb360ce205520985963986d9",
-          "size": 199,
-          "content_type": "text/plain"
-        },
-        {
-          "role": "captions_zh-CN",
-          "sha256": "9ef07dee2c0cfbc635bca75804e661dbc048c92bd0f1173f6627ee0ce880464a",
-          "size": 307,
-          "content_type": "text/plain"
+          "role": "dub_ja",
+          "sha256": "d8c186f4b23b527527d5d50af128d5890f37d109257089be276932e60d492781",
+          "size": 37,
+          "content_type": "audio/mpeg"
         },
         {
           "role": "metadata",
-          "sha256": "9c82de92db1b3c391301a4fd48c4eee0783427f975d0bc06c48fc0b3ed2b775e",
-          "size": 2540,
+          "sha256": "da787fb68c789486251cb4eaa3575dc7e01bd68c0a951ab6209e191b20cba48c",
+          "size": 1611,
           "content_type": "application/json"
         },
         {
           "role": "languages_manifest",
-          "sha256": "a3cf6859a867ca48c78f5afdf03301e23e52ee3229346405cad28e79ea88d10a",
-          "size": 2356,
+          "sha256": "7ac1b7ea63146b7f088cc6e77dfc29bc0c279d2b8c38ab0d9a59d5f1ee8fed1f",
+          "size": 1547,
           "content_type": "application/json"
         }
       ],
       "status": "approved",
       "choice": null,
-      "note": "這一批沒有要你上傳的配音，依規則自動核准",
-      "decided_at": "2026-10-01T00:04:00.000Z",
+      "note": null,
+      "decided_at": "2026-10-01T00:05:00.000Z",
       "created_at": "2026-10-01T00:04:00.000Z"
     },
     {
