@@ -87,7 +87,7 @@ Never over production. Into a throwaway container on a private port:
 ```bash
 run=/var/backups/travel-scanner/nightly/<ts>
 sha256sum -c <(python3 -c "import json,sys; [print(f['sha256'], ' $run/' + f['name']) for f in json.load(open('$run/manifest.json'))['files']]")
-docker run -d --name restore-drill -e POSTGRES_PASSWORD=drill -p 127.0.0.1:55432:5432 postgres:17-alpine
+docker run -d --name restore-drill -e POSTGRES_PASSWORD=<disposable-password> -p 127.0.0.1:55432:5432 postgres:17-alpine
 docker exec -i restore-drill pg_restore -U postgres -d postgres --create --no-owner < "$run"/travel-scanner-*.dump
 docker exec restore-drill psql -U postgres -d travel_scanner -Atc "select count(*) from guides"
 docker rm -f restore-drill
