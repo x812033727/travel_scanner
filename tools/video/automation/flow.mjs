@@ -1509,19 +1509,41 @@ export class Automation {
     // The owner uploaded a finished video and pasted its address on /admin/videos: the id goes
     // into the script, and the video reads as complete (docs/videos/HANDS-OFF.md).
     const uploaded = new Map(this.site.filter((video) => YOUTUBE_ID.test(video.youtube_video_id ?? "")).map((video) => [video.slug, video.youtube_video_id]));
-    for (const state of automatedVideos(this.workBase)) {
-      if (!["active", "done"].includes(state.status) || !uploaded.has(state.slug) || !free(state)) continue;
-      const recorded = await this.recordVideoId(state, uploaded.get(state.slug));
+    const pasted = (state) => ["active", "done"].includes(state.status) && uploaded.has(state.slug);
+    for (const listed of automatedVideos(this.workBase)) {
+      if (!pasted(listed) || !free(listed)) continue;
+      const recorded = await this.held(listed.slug, (state) => (pasted(state) ? this.recordVideoId(state, uploaded.get(state.slug)) : null));
       if (recorded) return recorded;
     }
     // A finished compilation the site has not heard about yet (the call failed on the round
     // that finished it): tell it now, or the series stays 合集正在做.
-    for (const state of automatedVideos(this.workBase)) {
-      if (state.status === "done" && state.compilation && !state.compilation_told && free(state) && (await this.tellCompilationDone(state))) {
-        return `${state.slug}: the site now knows the compilation of ${state.compilation.series} is done`;
-      }
+    const untold = (state) => state.status === "done" && state.compilation && !state.compilation_told;
+    for (const listed of automatedVideos(this.workBase)) {
+      if (!untold(listed) || !free(listed)) continue;
+      const told = await this.held(listed.slug, async (state) => (untold(state) && (await this.tellCompilationDone(state)) ? state : null));
+      if (told) return `${told.slug}: the site now knows the compilation of ${told.compilation.series} is done`;
     }
     return null;
+  }
+
+  /**
+   * A step of the first lane's bookkeeping that awaits the site for a video no unit holds (a
+   * pasted YouTube address, a compilation's done call), run with the video held in `busy` and on
+   * its auto.json read again once held. Until 2026-10-07 these steps saved the copy the loop had
+   * listed before its first await, after awaiting the site: a second lane could take the video
+   * meanwhile (its languages, say), save its progress and let it go, and the save wrote over it.
+   * The retry's acknowledgement holds its video the same way. Null when another lane holds it.
+   */
+  async held(slug, step) {
+    if (this.busy.has(slug)) return null;
+    this.busy.add(slug);
+    try {
+      const state = readJson(path.join(this.workdir(slug), STATE_FILE), null);
+      if (!state || state.slug !== slug) return null;
+      return await step(state);
+    } finally {
+      this.busy.delete(slug);
+    }
   }
 
   /**

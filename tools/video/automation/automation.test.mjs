@@ -1240,6 +1240,53 @@ test("a final cut whose policy verdict from Jev was lost stops the video for the
   assert.equal(automatedVideos(box.work).find((each) => each.slug === slug).status, "active");
 });
 
+test("the first lane's bookkeeping holds a video while it awaits the site for it, and saves the video as another lane left it", async () => {
+  const pastedSlug = "fixture-minimal";
+  const box = sandbox(pastedSlug);
+  const save = (state) => {
+    mkdirSync(path.join(box.work, state.slug), { recursive: true });
+    atomicWrite(path.join(box.work, state.slug, "auto.json"), `${JSON.stringify(state, null, 2)}\n`);
+  };
+  const video = (slug, extra) => ({ slug, title: slug, status: "done", created_at: "2026-10-01T00:00:00.000Z", format: "slides", replans: 0, verify_rounds: 0, verified: true, listener_done: true, retakes: 0, rewrites: 0, notes: [], ...extra });
+  // The owner pasted the YouTube address of a compilation (whose series must hear it is done), and
+  // two other finished compilations have not been told yet: the first one's call fails.
+  save(video(pastedSlug, { created_at: "2026-09-30T00:00:00.000Z", compilation: { series: "pasted" } }));
+  save(video("wuxia-compilation", { compilation: { series: "wuxia" } }));
+  save(video("other-compilation", { created_at: "2026-10-02T00:00:00.000Z", compilation: { series: "other" } }));
+  const site = fakeSite({ videos: [{ slug: pastedSlug, youtube_video_id: "dQw4w9WgXcQ" }] });
+  const busy = new Set();
+  const held = [];
+  const read = (slug) => readJson(path.join(box.work, slug, "auto.json"));
+  const fetchImpl = async (url, init = {}) => {
+    const { pathname } = new URL(url);
+    const done = /^\/api\/video\/automation\/series\/([^/]+)\/compilation\/done$/.exec(pathname);
+    if (init.method === "PUT" && pathname === `/api/video/reviews/${pastedSlug}`) held.push(["report", busy.has(pastedSlug)]);
+    if (!done) return site.fetchImpl(url, init);
+    held.push([done[1], busy.has(`${done[1]}-compilation`) || busy.has(pastedSlug)]);
+    if (done[1] === "wuxia") {
+      // While this call is out, a second lane takes the next compilation and saves its progress.
+      save({ ...read("other-compilation"), languages_note: "saved by the second lane" });
+      return Response.json({ code: "video_compilation_not_started", detail: "no" }, { status: 409 });
+    }
+    return Response.json({});
+  };
+  const { ctx } = context(box, fetchImpl, { now: Date.parse("2026-10-07T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings, { busy });
+  automation.refs = smallRefs;
+
+  assert.match(await automation.step(), /^fixture-minimal: on YouTube as dQw4w9WgXcQ/);
+  assert.deepEqual(held, [["report", true], ["pasted", true]], "held through the report and the compilation's call");
+  assert.deepEqual([read(pastedSlug).status, read(pastedSlug).compilation_told], ["done", true]);
+  assert.equal(busy.size, 0);
+
+  assert.match(await automation.step(), /^other-compilation: the site now knows the compilation of other is done$/);
+  assert.deepEqual(held.slice(2), [["wuxia", true], ["other", true]]);
+  const other = read("other-compilation");
+  assert.deepEqual([other.compilation_told, other.languages_note], [true, "saved by the second lane"], "the save keeps what the other lane wrote while the first call was out");
+  assert.equal(read("wuxia-compilation").compilation_told, undefined);
+  assert.equal(busy.size, 0, "every hold ends with its step");
+});
+
 test("a lost blocked report is recovered after restart without another model request, and failed reports back off", async () => {
   const box = sandbox();
   const slug = "chatgpt-ads-off";

@@ -52,7 +52,7 @@ while another step has something of that video in flight.
       request is sent for that video and its own stages wait; the discussion's answer is taken on
       a later round, and the video moves again after it. (Done in PR #1342, in the repair of its
       second review; see Notes. What is left of this ticket is the second item.)
-- [ ] No step of the first lane's bookkeeping saves `auto.json` for a video another lane may have
+- [x] No step of the first lane's bookkeeping saves `auto.json` for a video another lane may have
       taken since the step read it.
 
 ## Steps
@@ -63,11 +63,11 @@ while another step has something of that video in flight.
       receipt store whether the video has an unfinished writer journal before moving it. Decide
       which with a test that owns the sequence: the owner's line, a pending `discuss` job, the
       owner's rejection, the next round. (Both, in PR #1342.)
-- [ ] `bookkeeping()`: hold the video in `busy` around `recordVideoId` and `tellCompilationDone`
+- [x] `bookkeeping()`: hold the video in `busy` around `recordVideoId` and `tellCompilationDone`
       (a `try`/`finally`, as the retry acknowledgement does), or have them save before the await
       and nothing after it. Read `auto.json` again once the video is held, as `stepUnit` now does:
       each loop lists the states before its first await.
-- [ ] Tests in `automation.test.mjs` (two lanes, the site call held in flight). The discussion
+- [x] Tests in `automation.test.mjs` (two lanes, the site call held in flight). The discussion
       sequence is in `series.test.mjs` since PR #1342.
 
 ## How to verify
@@ -98,3 +98,13 @@ node --test tools/video/automation/automation.test.mjs tools/video/automation/se
   unit, before the video's own stages, while the other lanes leave the video to it (`stepUnit`).
   `stepUnit` also reads `auto.json` again once it holds a video, which is the guard the second
   item's loops still lack.
+- 2026-10-07 done (claude-opus-5-5-happy-carson, PR #1361): `Automation.held(slug, step)` runs
+  a bookkeeping step with the video in `busy` and on its auto.json read again once held, and
+  answers null when another lane holds it; the pasted-address loop (`recordVideoId`, which also
+  tells a compilation's series) and the untold-compilation loop go through it. The hold stays in
+  the loops, not in `recordVideoId` or `tellCompilationDone`: a unit (advance) calls
+  `tellCompilationDone` on a video it already holds, and a hold taken and let go inside would
+  end the unit's. The test owns the sequence through the fetch: while the first compilation's
+  call is out, a second lane's save lands on the next one, and the step after keeps it; with the
+  hold or the re-read removed it fails. The drop loop needs neither: it saves with no await.
+
