@@ -23,6 +23,7 @@ scope:
   - tools/video/review/language-contract.mjs
   - tools/video/review/language-contract.test.mjs
   - tools/video/automation/automation.test.mjs
+  - tools/video/automation/flow.mjs
   - apps/api/tests/test_video_youtube_language_contract.py
   - apps/api/tests/fixtures/video_language_contract
   - docs/videos/LANGUAGES.md
@@ -177,4 +178,25 @@ existing refusal to update already public videos; manual backfill is a separate 
   and `2026-10-07-imported-long-videos-language-batches-carry` (the other emitters without proof).
 - Not done here: deployment; resubmitting the language reviews sent before this change (they
   carry no manifest; the five videos in Why and others need a release action); a live upload.
+
+### 2026-10-07 independent review (4 reviewers, each finding checked by a skeptic)
+
+- Blocking, fixed: a drama with no screenplay review on the site (a brand story, whose screenplay
+  `story.mjs` approves locally; a drama made with 「劇本先給我看」 off) was refused, so the worker
+  deferred and then blocked it, where the batch used to go up. Producer and consumer now bind a
+  drama's screenplay review only when the site holds one (`languageSource`;
+  `language_package.py` `_source`), still refusing one that is pending, rejected or changed.
+- Should-fix, fixed: an mp3 or wav dub went up as ready with no track (now attached under
+  `dub_<locale>` with its own type); the worker translated and dubbed the narration's own
+  language, so the dub CLI's refusal blocked an English-narrated video before the batch (now
+  skipped in `flow.mjs` `languages()`, with a worker test); the narration's own title is checked
+  against the approved confirmation as its captions are; `follows` is idempotent (a re-push of
+  the same state adds no review); the site's reviews are checked before any file goes up; a
+  batch's summary is built from what is sent (a renewed final's skip reason).
+- Should-fix, filed: a choice narrowed or changed back after a batch sends nothing new, so sync
+  refuses until a manual push (added to `2026-10-07-the-worker-sends-a-language-batch`). Not a
+  regression: every ordinary batch was refused before this change.
+- Tests: the contract gains a ready mp3 dub case (owner-approved); the unrealistic "same package
+  reviewed again" case is replaced by the confirmation the worker really sends after a batch,
+  which composes from its own package (and, with a dub, is refused: the filed ordering ticket).
 

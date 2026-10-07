@@ -35,14 +35,25 @@ YouTube"). That confirmation is newer than the batch, so the batch is never read
 - a ready dub does not: a confirmation never attaches `dub_*` tracks, so the fallback refuses
   "已選取的 <locale> 配音尚未核准，請先完成語言包" and the video cannot be synced.
 
+The worker also sends nothing when the owner changes the choice after a batch went up and
+every part still chosen was already made: narrowing it ({en, ja} to {en}), or going back to an
+earlier choice. `pendingLanguages()` reads the site's merged part states, which still say every
+remaining part is ready, and past the confirmation `repackage` is false, so `languages()` returns
+null. `compose()` reads only the newest batch, whose `choice.locales` is no longer the site's, and
+refuses every sync with "語言選擇已變更，請依目前勾選內容重新送審" until someone runs `package`
+and `review-push --gate languages` by hand (the producer then binds it, `follows` included).
+
 Since 2026-10-07 every batch names the confirmation it was sent after
 (`2026-09-30-youtube-approved-languages-sync`, docs/videos/APPROVED-LANGUAGE-PACKAGE.md), so a
-batch sent after the confirmation is approved is read as intended. Only this ordering is left.
+batch sent after the confirmation is approved is read as intended. Only these two orderings are
+left.
 
 ## Definition of done
 
 - [ ] A video whose languages were chosen before its confirmation was approved reaches YouTube
       sync with a language batch newer than that confirmation, ready dubs included.
+- [ ] A choice narrowed or changed back after a batch went up is followed by a batch of the
+      current choice (when it is not empty: `compose()` reads no batch for an empty choice).
 - [ ] Videos already on YouTube are not sent new batches unless the owner decided how (a new
       batch with a ready dub waits for the owner's approval again, and `compose()` then refuses
       every sync of that video until it is approved).
@@ -51,7 +62,9 @@ batch sent after the confirmation is approved is read as intended. Only this ord
 
 - [ ] Ask the owner: send the batch only after the confirmation is approved (the panel shows the
       parts as in the making until then), or send it again after the confirmation (one more
-      batch, and one more owner approval when it has a dub).
+      batch, and one more owner approval when it has a dub); and whether a changed choice is
+      sent again the same way (compare the site's choice with `review/languages.json`'s
+      `choice.locales`).
 - [ ] Implement the chosen order in `flow.mjs` and cover both orders in `automation.test.mjs`
       (its fake site keeps `created_at`; the consumer compares it).
 - [ ] Rebind the duration receipt independently (both files are bound).

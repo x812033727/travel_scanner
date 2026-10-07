@@ -35,6 +35,7 @@ CASES = sorted(path.name for path in CONTRACT.iterdir() if path.is_dir())
 # caption tracks (the narration's and zh-TW's always come from the confirmation itself).
 EXPECTED = {
     "zh-tw-narration": ({"en", "zh-CN"}, {"zh-TW", "en", "ja", "zh-CN"}),
+    "zh-tw-dubbed": (set(), {"zh-TW", "ja"}),
     "en-narration": ({"zh-TW", "ja"}, {"en", "zh-TW", "ja"}),
 }
 
@@ -229,8 +230,8 @@ async def test_an_attachment_whose_stored_bytes_changed_is_refused(
     assert caught.value.code == "video_youtube_languages_invalid"
 
 
-def _later(record: dict[str, Any], gate: str, *, status: str, content: str | None = None) -> None:
-    """A newer review of ``gate`` after the batch: a new cut, or a new upload confirmation."""
+def _later(record: dict[str, Any], gate: str, *, status: str, **fields: Any) -> dict[str, Any]:
+    """A newer review of ``gate``, sent after the batch."""
     source = copy.deepcopy(_row(record, gate))
     stamp = _stamp(record["reviews"][0]["created_at"])
     assert stamp is not None
@@ -239,28 +240,71 @@ def _later(record: dict[str, Any], gate: str, *, status: str, content: str | Non
         status=status,
         created_at=(stamp + timedelta(minutes=1)).isoformat(),
         decided_at=None if status == "pending" else (stamp + timedelta(minutes=2)).isoformat(),
+        **fields,
     )
-    if content is None:
-        source["revision"] = 1  # the same package reviewed again, as the server keeps it
-    else:
-        source["content_sha256"] = content
     record["reviews"].insert(0, source)
+    return source
 
 
 SOURCE_CHANGES = {
-    "pending final": lambda record: _later(record, "final", status="pending", content="e" * 64),
-    "new approved final": lambda record: _later(
-        record, "final", status="approved", content="e" * 64
+    "pending final": lambda record: _later(
+        record, "final", status="pending", content_sha256="e" * 64
     ),
-    "new confirmation": lambda record: _later(record, "publish", status="approved"),
+    "new approved final": lambda record: _later(
+        record, "final", status="approved", content_sha256="e" * 64
+    ),
 }
 
 
 @pytest.mark.parametrize("name", CASES)
 @pytest.mark.parametrize("change", SOURCE_CHANGES.values(), ids=SOURCE_CHANGES.keys())
-async def test_a_batch_older_than_its_source_reviews_is_refused(
+async def test_a_batch_older_than_its_final_cut_is_refused(
     site: Site, name: str, change: Callable[[dict[str, Any]], None]
 ) -> None:
     contract = await _load(site, name, change)
     with pytest.raises(Refused):
         await _composed(site, contract)
+
+
+def _confirmed_again(record: dict[str, Any]) -> None:
+    """The confirmation the worker sends after the batch while the package changed: the package
+    written for the choice (the batch's own metadata.json, titles and captions) with the cut."""
+    batch, publish = _row(record, "languages"), _row(record, "publish")
+    sent = [item for item in batch["files"] if item["role"] != "languages_manifest"]
+    own = {item["role"] for item in sent}
+    files = [item for item in publish["files"] if item["role"] not in own] + [
+        item for item in sent if not item["role"].startswith("dub_")
+    ]
+    captions = sorted(
+        item["role"].removeprefix("captions_")
+        for item in files
+        if item["role"].startswith("captions_")
+    )
+    _later(
+        record,
+        "publish",
+        status="approved",
+        content_sha256=_sha_of(batch, "metadata"),
+        files=files,
+        payload={**publish["payload"], "locales": captions},
+    )
+
+
+@pytest.mark.parametrize("name", CASES)
+async def test_a_confirmation_sent_after_the_batch_is_read_from_its_own_package(
+    site: Site, name: str
+) -> None:
+    contract = await _load(site, name, _confirmed_again)
+    confirmation = contract.record["reviews"][0]
+    if name == "zh-tw-dubbed":
+        # A confirmation carries no dub track, and the batch that does is older than it: filed as
+        # tasks/open/2026-10-07-the-worker-sends-a-language-batch.md.
+        with pytest.raises(Refused, match="配音尚未核准"):
+            await _composed(site, contract)
+        return
+    result = await _composed(site, contract)
+    assert result.review_id == confirmation["id"]
+    assert result.approval_pin["languages"] is None
+    titles, captions = EXPECTED[name]
+    assert set(result.metadata["localizations"]) == titles
+    assert set(result.captions) == captions

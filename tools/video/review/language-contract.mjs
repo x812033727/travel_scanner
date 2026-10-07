@@ -19,7 +19,9 @@ import { approve } from "../core/approvals.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
 import { writeLanguages } from "../core/stages.mjs";
+import { dubArtifacts, loadProject } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
+import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { siteChoice } from "./sync.mjs";
 
 export const CONTRACT_DIR = fileURLToPath(new URL("../../../apps/api/tests/fixtures/video_language_contract", import.meta.url));
@@ -31,7 +33,9 @@ const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
 /** Review ids are UUIDs on the site, and the consumer compares them as text. */
 const uuid = (n) => `00000000-0000-4000-8000-${String(n).padStart(12, "0")}`;
-// apps/api/app/video_reviews/admin_service.py languages_need_owner: a batch with a ready dub waits.
+// apps/api/app/video_reviews/admin_service.py languages_need_owner: a batch with a ready dub waits;
+// one without is approved on arrival with LANGUAGES_AUTO_APPROVED_NOTE.
+const AUTO_APPROVED = "這一批沒有要你上傳的配音，依規則自動核准";
 const needsOwner = (payload) => Object.values(payload?.locales ?? {}).some((entry) => entry?.dub === "ready" || entry?.dub?.status === "ready");
 
 /**
@@ -67,7 +71,7 @@ export function languageSite({ slug, format = "slides" }) {
       const same = state.reviews.find((row) => row.gate === body.gate && row.subject === subject && row.content_sha256 === body.content_sha256);
       if (same && same.status !== "pending") return Response.json(same, { status: 201 });
       const auto = body.gate === "languages" && !needsOwner(body.payload);
-      const decide = (row) => Object.assign(row, auto ? { status: "approved", decided_at: row.created_at, note: "沒有配音，語言批次自動核准" } : {});
+      const decide = (row) => Object.assign(row, auto ? { status: "approved", decided_at: row.created_at, note: AUTO_APPROVED } : {});
       if (same) return Response.json(decide(Object.assign(same, { summary: body.summary, payload: body.payload, files: body.files })), { status: 201 });
       for (const row of state.reviews) if (row.gate === body.gate && row.subject === subject && row.status === "pending") row.status = "superseded";
       const row = { id: uuid(state.reviews.length + 1), gate: body.gate, subject, content_sha256: body.content_sha256, summary: body.summary, payload: body.payload, files: body.files, status: "pending", choice: null, note: null, decided_at: null, created_at: stamp() };
@@ -144,11 +148,28 @@ export async function tool(box, site, args) {
 }
 
 /**
+ * A dub track the dub command made for `locale` (dubs/<locale>/ and dubs/<locale>.<format>): each
+ * line a few frames after the narration's, at its words' and voice's current hashes.
+ */
+function writeDub(box, locale, format) {
+  const project = loadProject({ slug: box.slug, root: box.root });
+  const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+  const files = dubArtifacts(box.workdir, locale);
+  const lines = timeline.lines.map((line) => ({ id: line.id, start_frame: line.start_frame + 5, end_frame: line.start_frame + 5 + Math.ceil(line.audio_samples / 2 / 1600), audio_samples: Math.floor(line.audio_samples / 2), tempo: 1 }));
+  const words = translationHash(dubScript(project.doc, project.translations[locale], locale).doc);
+  const dub = { locale, format, file: `${locale}.${format}`, speech_hash: timeline.speech_hash, translation_hash: words, speech_fingerprint: dubFingerprint(project, locale), total_frames: timeline.total_frames, tempo_max: 1.05, windows: [], lines };
+  mkdirSync(files.dir, { recursive: true });
+  writeFileSync(files.timeline, JSON.stringify(dub));
+  writeFileSync(files.track(format), `the ${locale} dub of ${box.slug}, as ${format}`);
+}
+
+/**
  * A video whose upload confirmation the owner approved before choosing languages (the package
  * then carried zh-TW only), and the owner's choice: the worker writes the package again with
- * the chosen languages and sends their batch, as automation/flow.mjs languages() does.
+ * the chosen languages and sends their batch, as automation/flow.mjs languages() does. A dub is
+ * either given up (`skippedDubs`, with its reason) or made (`readyDubs`, in its format).
  */
-export async function confirmedVideo({ name, chosen, skippedDubs = {}, translated } = {}) {
+export async function confirmedVideo({ name, chosen, skippedDubs = {}, readyDubs = {}, translated } = {}) {
   const box = await languageVideo({ name, translated });
   const site = languageSite({ slug: box.slug, format: box.doc.format ?? "slides" });
   site.seed("final", sha(readFileSync(path.join(box.workdir, "final.mp4"))));
@@ -161,6 +182,7 @@ export async function confirmedVideo({ name, chosen, skippedDubs = {}, translate
     mkdirSync(path.join(box.workdir, "dubs", locale), { recursive: true });
     writeFileSync(path.join(box.workdir, "dubs", locale, "skipped.json"), JSON.stringify({ reason }));
   }
+  for (const [locale, format] of Object.entries(readyDubs)) writeDub(box, locale, format);
   writeLanguages(box.workdir, { locales: chosen, decided_at: DECIDED_AT });
   site.choose(chosen);
   await tool(box, site, ["package", "--slug", box.slug]);
@@ -168,10 +190,12 @@ export async function confirmedVideo({ name, chosen, skippedDubs = {}, translate
 }
 
 // The cases the Python consumer reads: a zh-TW video with one language's title and description
-// alone, one's captions alone, and one with a skipped dub; and an English-narrated one whose own
-// language is chosen as well (its title, captions and dub are the video's own).
+// alone, one's captions alone, and one with a skipped dub; one with a dub track (mp3, the owner
+// approving the batch once it is up in Studio); and an English-narrated one whose own language is
+// chosen as well (its title, captions and dub are the video's own).
 export const CONTRACT_CASES = {
   "zh-tw-narration": { name: "minimal", chosen: { en: { metadata: true, captions: true }, ja: { captions: true }, "zh-CN": { metadata: true, dub: true } }, skippedDubs: { "zh-CN": "配音字數超出時間軸，改用字幕" } },
+  "zh-tw-dubbed": { name: "minimal", chosen: { ja: { captions: true, dub: true } }, readyDubs: { ja: "mp3" } },
   "en-narration": { name: "en", chosen: { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true } }, translated: ["zh-TW", "ja", "ko", "zh-CN"] },
 };
 
@@ -180,6 +204,9 @@ export async function emitCase(spec) {
   const { box, site } = await confirmedVideo(spec);
   try {
     await tool(box, site, ["review-push", "--slug", box.slug, "--gate", "languages"]);
+    // A batch with a dub track waits for the owner, who approves it once the track is up in Studio.
+    const batch = site.newest("languages");
+    if (batch.status === "pending") site.decide(batch, "approved");
     const files = new Map([...site.state.files].filter(([, file]) => file.bytes).map(([hash, file]) => [hash, file.bytes]).sort(([a], [b]) => (a < b ? -1 : 1)));
     const record = { project: site.state.project, reviews: site.state.reviews };
     const text = `${JSON.stringify(record, null, 2)}\n`;

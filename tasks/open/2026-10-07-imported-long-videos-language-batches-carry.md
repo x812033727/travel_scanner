@@ -32,8 +32,8 @@ imported long videos do not meet that:
 - `tools/video/review/renewal-handoff.mjs` `bindManualLanguageSubmission()` (a manual-import
   renewal) writes its manifest to `language-package/renewed-languages-manifest.json` but never to
   `review/languages.json`, which `review-pull` and the worker's `pulled()` check the approval
-  against; reached through `review-push`, the approval is never recorded and the worker blocks
-  the video as `unrecorded:languages`.
+  against; reached through `review-push`, the file keeps `languagesSubmission`'s own bytes, so no
+  site review matches it and the approval is never recorded, without a word.
 
 ## Definition of done
 

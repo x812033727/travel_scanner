@@ -2660,6 +2660,21 @@ test("an English-narrated video is translated into zh-TW once, before the langua
   assert.equal(video.calls("translator").length, 2);
 });
 
+test("an English-narrated video whose own language the owner ticks sends it as made: no sheet or dub of it, its dub a skip with the reason", async () => {
+  const video = await finishedVideo({ script: enFixture() });
+  video.choose({ en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: zh-TW metadata and captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: ja metadata translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(/);
+  assert.deepEqual(video.calls("translator").map((call) => call.payload.locale), ["zh-TW", "ja"], "the narration's own language is never translated");
+  assert.ok(!video.runs.some((run) => run.startsWith("dub ")), "nor dubbed");
+  const [batch] = video.reviews("languages");
+  assert.deepEqual(batch.payload.locales.en, { metadata: "ready", captions: "ready", dub: { status: "skipped", reason: "這是影片原本旁白的語言，不另做重複配音" } });
+  assert.deepEqual(batch.files.map((file) => file.role), ["description_en", "captions_en", "description_ja", "metadata", "languages_manifest"]);
+  assert.equal(batch.status, "approved", "no track for the owner to upload");
+  assert.equal(await video.step(), null, "everything chosen is made");
+});
+
 test("an English-narrated video the owner gives no other language gets zh-TW once and a package written again with it, and sends no batch", async () => {
   const video = await finishedVideo({ script: enFixture() });
   video.choose({});
