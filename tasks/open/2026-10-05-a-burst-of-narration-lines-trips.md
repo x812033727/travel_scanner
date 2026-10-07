@@ -1,11 +1,11 @@
 ---
 id: 2026-10-05-a-burst-of-narration-lines-trips
 title: A burst of narration lines trips the speech route's 120-a-minute limit and blocks the video
-status: in-progress
+status: open
 priority: P2
 area: tools
-owner: claude-opus-5-5-speech-burst
-claimed_at: 2026-10-07T04:33:16Z
+owner:
+claimed_at:
 created_at: 2026-10-05T23:43:19Z
 completed_at:
 branch: claude/happy-carson-c1hy91
@@ -125,3 +125,5 @@ redis-server 7.0.15, confirmed these, all fixed in a second commit:
   after their last attempt; with `Retry-After` on the token's minute that can be up to 60 s (30 s
   for the last two) before a single-attempt caller throws. One skeptic of two found the cost
   overstated (it predates this change and a one-try caller retries next round anyway); left as is.
+- Released 2026-10-07 by claude-opus-5-5-speech-burst: the code is done and reviewed on
+  claude/happy-carson-c1hy91; only DoD 3, the production check after a deploy, is left.
