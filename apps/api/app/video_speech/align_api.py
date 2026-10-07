@@ -37,7 +37,7 @@ from app.providers.usage_meter import (
 from app.video_speech import align
 from app.video_speech.admin_api import MAX_REQUEST_CHARACTERS, Session, VideoTool
 from app.video_speech.align import ALIGNER_SOURCE, AZURE_SOURCE, AlignRefused
-from app.video_speech.azure import SpeechUpstreamError
+from app.video_speech.azure import SpeechAnswerLost, SpeechUpstreamError
 from app.video_speech.gemini import gemini_voice
 from app.video_speech.schemas import AlignIn, AlignOut, CharTimingOut, SpeechRequest
 from app.video_speech.ssml import Part, Segment, billable_characters, build_ssml
@@ -135,6 +135,13 @@ async def _synthesize_azure(
             document,
             settings.azure_speech_timeout_seconds,
         )
+    except SpeechAnswerLost as error:
+        # As the speech route: Azure may have synthesized it, so the characters stay counted.
+        raise AlignRefused(
+            504,
+            "video_speech_upstream_lost",
+            "Azure 可能已經處理這次請求並計費，但回覆沒有回來；請勿自動重送",
+        ) from error
     except SpeechUpstreamError as error:
         # As the speech route: Azure bills only what it processed, so the reservation goes back.
         await release_azure_speech_characters(redis, characters)

@@ -43,7 +43,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Any, Protocol
 
-from app.video_speech.azure import SpeechUpstreamError
+from app.video_speech.azure import SpeechAnswerLost, SpeechUpstreamError
 from app.video_speech.ssml import Part
 
 logger = logging.getLogger(__name__)
@@ -381,4 +381,6 @@ async def synthesize_with_boundaries(
             timeout=timeout_seconds,
         )
     except TimeoutError as error:
-        raise SpeechUpstreamError(502, "Azure Speech did not answer in time") from error
+        # The SDK has sent the SSML by now in all but the rarest case, and the thread is not
+        # stopped: Azure may still synthesize and bill it, so it is a lost answer, not a failure.
+        raise SpeechAnswerLost("Azure Speech", error) from error

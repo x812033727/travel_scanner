@@ -29,12 +29,13 @@ class SpeechUpstreamError(Exception):
 class SpeechAnswerLost(SpeechUpstreamError):
     """The request went out and the provider's answer never came back.
 
-    A read or write timeout, a dropped connection or a broken answer does not say whether the
-    provider ran the request, so it may have synthesized or transcribed it and billed for it.
-    The routes answer it with its own code, which tools/video/tts/client.mjs does not send again.
+    A read or write timeout, a dropped connection, a broken answer or a route's own deadline does
+    not say whether the provider ran the request, so it may have synthesized or transcribed it and
+    billed for it. The routes answer it with its own code, which tools/video/tts/client.mjs does
+    not send again.
     """
 
-    def __init__(self, provider: str, error: httpx.HTTPError) -> None:
+    def __init__(self, provider: str, error: BaseException) -> None:
         super().__init__(
             504,
             f"{provider} may have received the request, but its answer was lost: "

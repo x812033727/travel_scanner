@@ -30,7 +30,7 @@ from app.video_speech.align import (
     units_of_text,
     wav_milliseconds,
 )
-from app.video_speech.azure import SpeechUpstreamError
+from app.video_speech.azure import SpeechAnswerLost, SpeechUpstreamError
 from app.video_speech.gemini import wav_from_pcm
 from app.video_speech.ssml import Part, billable_characters
 
@@ -289,8 +289,9 @@ async def test_the_thread_is_bounded_by_the_timeout(monkeypatch: pytest.MonkeyPa
         return WAV, []
 
     monkeypatch.setattr(align, "synthesize_with_boundaries_blocking", slow)
-    with pytest.raises(SpeechUpstreamError, match="did not answer in time"):
+    with pytest.raises(SpeechAnswerLost, match="answer was lost: TimeoutError") as lost:
         await align.synthesize_with_boundaries("eastasia", "k", "<speak/>", 0.05)
+    assert lost.value.status == 504
     assert await align.synthesize_with_boundaries("eastasia", "k", "<speak/>", 5) == (WAV, [])
 
 
@@ -445,6 +446,19 @@ async def test_azure_failures_are_the_speech_routes_codes_and_refund_the_reserva
         align_app["error"] = SpeechUpstreamError(status, "no")
         response = await _post({"speech": _speech()})
         assert (response.status_code, response.json()["code"]) == (http, code)
+    assert (await azure_speech_usage_snapshot(align_app["redis"], 450_000)).used == 0
+
+
+@pytest.mark.asyncio
+async def test_a_timed_out_azure_synthesis_is_a_lost_answer_and_keeps_the_reservation(
+    align_app: Any,
+) -> None:
+    align_app["error"] = SpeechAnswerLost("Azure Speech", TimeoutError())
+    lost = await _post({"speech": _speech()})
+    assert (lost.status_code, lost.json()["code"]) == (504, "video_speech_upstream_lost")
+    assert "retry-after" not in lost.headers
+    # Azure may still have synthesized it, so the characters stay counted.
+    assert (await azure_speech_usage_snapshot(align_app["redis"], 450_000)).used > 0
 
 
 @pytest.mark.asyncio
