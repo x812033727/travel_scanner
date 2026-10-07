@@ -1434,6 +1434,7 @@ export class Automation {
       this.skipped.delete(state.slug);
       delete state.blocked;
       delete state.blocked_kind;
+      delete state.blocked_line;
       delete state.blocked_report_pending;
       delete state.blocked_report_retry_at;
       delete state.policy_hold;
@@ -1513,31 +1514,56 @@ export class Automation {
       // video still on its way to YouTube or already there; nothing while a step of its own is due.
       done ??= await this.languages(state);
     } catch (error) {
-      if (!(error instanceof AutomationError)) throw error;
-      // Its STOP file arrived, or its lease went, during the unit: nothing was sent or written
-      // after it, and the video is not blocked or deferred. The run leaves it alone.
-      if (error.code === PROJECT_HELD) {
-        this.skipped.add(state.slug);
-        return `${state.slug}: ${error.message}`;
-      }
-      if (error.code === POLICY_HOLD) return this.policyHold(state, error);
-      if (error.code === RUN_UNCERTAIN) return this.unanswered(state, error);
-      if (error.code === OUTPUT_INVALID) return this.retryLater(state, error.stage, error.message);
-      // A writer still running on the server: step() sets this video aside for the run. It
-      // neither counts as a deferral nor ends a row of them: a queue that loses every job before
-      // its dispatch (queued, failed, queued again) must still reach the limit and a card.
-      if (error.code === RUN_PENDING) throw error;
-      const scope = errorScope(error);
-      if (scope === "run") throw error;
-      const request = error.stage ? `the ${error.stage} request` : "a request";
-      const code = error.code || `HTTP ${error.status}`;
-      if (error.gone) return this.jobGone(state, error);
-      if (scope === "video") return this.block(state, `the site refused ${request} (${code}): ${error.message}`);
-      const retryAfter = Number(error.retry_after);
-      return this.defer(state, `${state.slug}: ${request} could not finish (${code}: ${error.message})`, { retryAfter: Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : null, what: error.stage ?? "request", everyone: Boolean(everyones(error)) });
+      return this.sortFailure(state, error);
     }
     await this.moved(state);
     return done;
+  }
+
+  /**
+   * errorScope for a request no video's failure is sorted onto (a series document's thread,
+   * discuss.mjs answerDocument): "lost" for an answer that may have run without reaching the
+   * worker; a STOP, a lease, a job still running or a policy hold are the run's, as step() and the
+   * series step take them.
+   */
+  threadScope(error) {
+    if (!(error instanceof AutomationError) || [PROJECT_HELD, RUN_PENDING, POLICY_HOLD].includes(error.code)) return "run";
+    if (error.code === RUN_UNCERTAIN) return "lost";
+    return errorScope(error);
+  }
+
+  /**
+   * What a failed request of one video makes of the video, by its error (errorScope): the line
+   * that says so, or the error thrown on. move() sorts its unit's errors here, and so does a
+   * discussion of the video's screenplay (discuss.mjs answerScript), whose writer request is the
+   * video's too: until 2026-10-07 every error of that request but a gone job left the step, so
+   * one lost answer ended every round before any series work or draft, with no video blocked for
+   * the owner's retry to clear. `sends` words what a retry sends for a request that is not the
+   * video's own stage (jobGone).
+   */
+  async sortFailure(state, error, { sends = null } = {}) {
+    if (!(error instanceof AutomationError)) throw error;
+    // Its STOP file arrived, or its lease went, during the unit: nothing was sent or written
+    // after it, and the video is not blocked or deferred. The run leaves it alone.
+    if (error.code === PROJECT_HELD) {
+      this.skipped.add(state.slug);
+      return `${state.slug}: ${error.message}`;
+    }
+    if (error.code === POLICY_HOLD) return this.policyHold(state, error);
+    if (error.code === RUN_UNCERTAIN) return this.unanswered(state, error);
+    if (error.code === OUTPUT_INVALID) return this.retryLater(state, error.stage, error.message);
+    // A writer still running on the server: step() sets this video aside for the run. It
+    // neither counts as a deferral nor ends a row of them: a queue that loses every job before
+    // its dispatch (queued, failed, queued again) must still reach the limit and a card.
+    if (error.code === RUN_PENDING) throw error;
+    const scope = errorScope(error);
+    if (scope === "run") throw error;
+    const request = error.stage ? `the ${error.stage} request` : "a request";
+    const code = error.code || `HTTP ${error.status}`;
+    if (error.gone) return this.jobGone(state, error, sends);
+    if (scope === "video") return this.block(state, `the site refused ${request} (${code}): ${error.message}`);
+    const retryAfter = Number(error.retry_after);
+    return this.defer(state, `${state.slug}: ${request} could not finish (${code}: ${error.message})`, { retryAfter: Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : null, what: error.stage ?? "request", everyone: Boolean(everyones(error)) });
   }
 
   /**

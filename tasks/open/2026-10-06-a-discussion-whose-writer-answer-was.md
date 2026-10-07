@@ -1,14 +1,14 @@
 ---
 id: 2026-10-06-a-discussion-whose-writer-answer-was
 title: A discussion whose writer answer was lost ends every round
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-happy-carson
+claimed_at: 2026-10-07T09:58:30Z
 created_at: 2026-10-06T15:36:43Z
 completed_at:
-branch:
+branch: claude/happy-carson-c1hy91
 depends_on:
   - 2026-10-06-a-failing-video-is-deferred
 scope:
@@ -16,6 +16,9 @@ scope:
   - tools/video/automation/flow.mjs
   - tools/video/automation/series.test.mjs
   - tools/video/automation/discuss.test.mjs
+  - tools/video/automation/automation.test.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # A discussion whose writer answer was lost ends every round
@@ -45,22 +48,22 @@ Read in the code while the second review of PR #1342 was being answered; not see
 
 ## Definition of done
 
-- [ ] An error of a screenplay discussion's request never ends a round more than once for the
+- [x] An error of a screenplay discussion's request never ends a round more than once for the
       same cause: a lost answer blocks the video as `uncertain:writer` (as its own writer's does),
       a refusal blocks it with the reason, a service that is busy makes the line wait.
-- [ ] While the video is blocked that way the owner's line stays unanswered (no "no screenplay
+- [x] While the video is blocked that way the owner's line stays unanswered (no "no screenplay
       here" reply), and after the owner's retry the line is sent exactly once more.
-- [ ] No discussion request is paid for twice without the owner's retry.
+- [x] No discussion request is paid for twice without the owner's retry.
 
 ## Steps
 
-- [ ] `answerScript`'s catch: sort the error as `move()` does (share the code rather than copy
+- [x] `answerScript`'s catch: sort the error as `move()` does (share the code rather than copy
       it): `RUN_UNCERTAIN` goes to `Automation.unanswered`, a "video" scope to `block`, a "wait"
       scope to `defer` (the line is then held by `resting`), a "run" scope is thrown as today.
-- [ ] Hold the line while its video is blocked as `uncertain:writer` (today only
+- [x] Hold the line while its video is blocked as `uncertain:writer` (today only
       `job_gone:writer` holds it, `discuss.mjs`); decide whether every block should hold the line
       instead of answering that there is no screenplay.
-- [ ] Tests in `series.test.mjs` on the durable route (the helper `durableDiscussion` is there):
+- [x] Tests in `series.test.mjs` on the durable route (the helper `durableDiscussion` is there):
       an uncertain journal, the round does not throw, the owner's retry, one new request.
 
 ## How to verify
@@ -82,3 +85,40 @@ node --test tools/video/automation/series.test.mjs tools/video/automation/discus
   the site for the next line at the start of every unit while it is there, and the other lanes
   leave that video to the first. If one is ever seen on the host, setting such a journal aside once
   its job is over belongs here.
+
+### 2026-10-07 done (claude-opus-5-5-happy-carson, PR #1361)
+
+- `flow.mjs`: `move()`'s catch is now `Automation.sortFailure(state, error, { sends })`, unchanged
+  for a unit (a pure extraction: the automation and series suites passed before the discussion
+  used it). `discuss.mjs` `answerHeld` sorts every failure of the discussion's request there but
+  an answer of nothing usable (still answered for the owner): a lost answer blocks the video as
+  `uncertain:writer` and ends the run once (`unanswered`), a gone job as `job_gone:writer` as
+  before, a refusal blocks it with the reason, a busy service defers it; the run's trouble, a
+  STOP or lease and a job still running are thrown as before.
+- Decided: only the line whose own request blocked the video holds (`blocked_line`, saved with
+  the block and cleared by the retry), as a gone writer job's always did; it is sent once after
+  the owner's retry. Holding every blocked video's line was tried and dropped: the site hands over
+  the oldest unanswered line of every series (`messages.py` `next_message`), so one video blocked
+  for days would hold every thread behind it. A video blocked for anything else now has the owner
+  told it is blocked and to send the line again after the retry (`blockedReply`), instead of the
+  untrue "這台工人沒有 … 的劇本"; the threads behind it move on.
+- Decided here, not filed: a line on a document (`answerDocument`, no video to block, no durable
+  job). A lost answer and a refusal are answered for the owner once (`lostReply`: it may have run
+  and been paid, send the line again to ask again; `refusedReply`); a busy service holds the line
+  for the rest of the run (`heldLines`) and it is asked next round; the run's trouble is thrown as
+  before. `Automation.threadScope` sorts it without an import cycle.
+- Tests (`series.test.mjs`): a durable discussion whose job turns `uncertain` (one round ends,
+  the video blocked, a round later nothing sent or answered, the retry archives the journal and
+  sends exactly one new request, its answer reaches the owner); a refused job (blocked with the
+  reason, nothing sent until the retry); a busy job (deferred, the lane goes on, the line waits,
+  sent once after the wait); the non-durable route losing the answer (one request over three
+  rounds); a video blocked for its own reasons (the owner told, no writer request, the next thread
+  comes up); and a document's lost, refused and busy planner request. Each new rule was removed in
+  turn and a test failed.
+- Not done: the stray journal of a discussion whose line was answered meanwhile (Notes, last
+  point) has not been seen on the host. Answering the owner is still outside the try:
+  a failed `messageAnswer` after a paid answer ends the run as before, and its answer stays
+  saved for the next unit (durable) or is lost (not durable).
+- Scope overlap: `2026-10-07-a-discussion-s-refused-script-revision` (the lexicon restore in
+  `answerHeld`) shares discuss.mjs and flow.mjs; it waits until this lands.
+

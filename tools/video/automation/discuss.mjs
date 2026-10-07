@@ -38,6 +38,12 @@ const discussionDoc = (doc) => doc ? ({ kind: doc.kind, version: doc.version, st
 
 /** The reply the owner reads when the model gave nothing usable: what went wrong, in zh-TW. */
 export const unusableReply = (why) => `模型這一輪沒有給出可用的回覆（${why}）。這條討論串先停在這裡；請換個說法再問一次，或直接改文件。`;
+// The replies to a line on a document whose request failed (answerDocument): there is no video to
+// block for the owner's retry, so the thread is answered once instead of the request ending, or
+// being paid for, every round.
+export const lostReply = (why) => `這句話的回答在途中遺失了（${why}），模型可能已經跑完並計費。為了不重複付費，這裡不會自動再問；要再問一次，請重新送出這句話。`;
+export const blockedReply = (why) => `這支影片目前停住了（${why}），它的劇本要等站主在影片頁按「重試」之後才會處理。重試後請再送一次這句話。`;
+export const refusedReply = (why) => `網站拒絕了回答這句話的請求（${why}），再問一次也會被拒。這條討論串先停在這裡；請換個說法再問一次，或直接改文件。`;
 
 /**
  * The reply to a line on a brand story's screenplay (docs/videos/STORY.md): a story is written and
@@ -104,14 +110,34 @@ export function answerProblem(answer) {
 export async function answerDocument(automation, job) {
   const { series } = job;
   const slug = `series-${series.slug}`;
+  // A line whose planner could not be asked in this run (a busy service) waits for the next round.
+  if (automation.heldLines?.has(job.message.id)) return null;
   let answer;
   try {
     answer = await automation.stage("planner", slug, documentDiscussionPayload(automation, job), 32_000, "drama", "discuss", series);
   } catch (error) {
-    if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
-    automation.keepAnswer(path.join(automation.workBase, "_series", series.slug), "discuss");
-    await automation.api.messageAnswer(job.message.id, { reply_md: unusableReply(error.message), revised: null });
-    return `series ${series.slug}: the planner gave no usable answer on ${job.subject} (${error.message}); the owner is told and the thread waits`;
+    if (error instanceof AutomationError && error.code === OUTPUT_INVALID) {
+      automation.keepAnswer(path.join(automation.workBase, "_series", series.slug), "discuss");
+      await automation.api.messageAnswer(job.message.id, { reply_md: unusableReply(error.message), revised: null });
+      return `series ${series.slug}: the planner gave no usable answer on ${job.subject} (${error.message}); the owner is told and the thread waits`;
+    }
+    // A document's thread has no video to block for the owner's retry (answerScript has one): a
+    // lost answer or a refusal is answered for once, so it neither ends nor is paid for every
+    // round, and a busy service makes the line wait for the next round instead of ending this one.
+    const scope = automation.threadScope(error);
+    const code = error.code || `HTTP ${error.status}`;
+    if (scope === "lost") {
+      await automation.api.messageAnswer(job.message.id, { reply_md: lostReply(error.why ?? error.message), revised: null });
+      return `series ${series.slug}: the planner's answer on ${job.subject} was lost (${error.why ?? error.message}); the owner is told it may have run, and it is asked again only when they send the line again`;
+    }
+    if (scope === "video") {
+      await automation.api.messageAnswer(job.message.id, { reply_md: refusedReply(`${code}: ${error.message}`), revised: null });
+      return `series ${series.slug}: the site refused the planner request on ${job.subject} (${code}: ${error.message}); the owner is told and the thread waits`;
+    }
+    if (scope === "run") throw error;
+    automation.heldLines.add(job.message.id);
+    automation.log(`series ${series.slug}: the owner's line on ${job.subject} waits; the planner request could not finish (${code}: ${error.message}), and it is asked again next round`);
+    return null;
   }
   const problem = answerProblem(answer);
   if (problem) {
@@ -174,12 +200,23 @@ export function scriptDiscussionPayload(automation, job, state, video) {
  * writer or verifier request while the discussion's is in flight; a job still running when the
  * unit ends keeps the video set aside (flow.mjs step, stepUnit).
  *
- * A saved discussion job the server no longer has (client.mjs `gone`, after the worker was
- * paired again) blocks the video as `job_gone:writer`, as its own writer's would: the journal
- * stays until the owner's retry sets it aside, and the line stays unanswered meanwhile, to be
- * sent once more after the retry. Until 2026-10-06 that error left this step as an exception
- * every round: the run ended here, before any series work or draft, and no retry could reach
- * the journal because no video was blocked for it.
+ * Every other failure of the discussion's request is its video's, sorted as its own writer's
+ * would be (Automation.sortFailure): a saved job the server no longer has (client.mjs `gone`,
+ * after the worker was paired again) blocks the video as `job_gone:writer`, its journal kept until
+ * the owner's retry sets it aside; an answer that may have run without reaching the worker blocks
+ * it as `uncertain:writer`, and the run ends once; a refusal of the request blocks it with the
+ * reason; a busy service makes it wait (defer). Until 2026-10-06 every one of them, and until
+ * 2026-10-07 all but the gone job, left this step as an exception every round: the run ended
+ * here, before any series work or draft, a lost answer could be paid for again each round, and no
+ * retry could reach the journal because no video was blocked for it.
+ *
+ * The line whose request blocked its video (recorded as `blocked_line`), and any line while the
+ * video's writer job is gone, stays unanswered until the owner's retry and is sent once after it.
+ * A video blocked for anything else does not hold the line: the site hands over the oldest
+ * unanswered line of every series (apps/api/app/video_automation/messages.py next_message), so
+ * one held line holds every thread behind it until that retry. The owner is told the video is
+ * blocked and to send the line again after the retry; before 2026-10-07 they were told there was
+ * no screenplay here.
  */
 export async function answerScript(automation, job) {
   const { series } = job;
@@ -193,8 +230,13 @@ export async function answerScript(automation, job) {
     return null;
   };
   if (!state) {
-    const gone = automation.states().find((each) => each.slug === job.episode?.slug && each.status === "blocked" && each.blocked_kind === `${JOB_GONE_KIND}writer`);
-    if (gone) return held(gone.slug, "its video is blocked until the owner's retry sets the saved writer job aside, and the line is answered after it");
+    const blocked = automation.states().find((each) => each.slug === job.episode?.slug && each.status === "blocked");
+    if (blocked?.blocked_kind === `${JOB_GONE_KIND}writer`) return held(blocked.slug, "its video is blocked until the owner's retry sets the saved writer job aside, and the line is answered after it");
+    if (blocked?.blocked_line === job.message.id) return held(blocked.slug, "its video is blocked until the owner's retry, and the line is answered after it");
+    if (blocked) {
+      await automation.api.messageAnswer(job.message.id, { reply_md: blockedReply(blocked.blocked ?? "原因見影片頁"), revised: null });
+      return `${blocked.slug}: blocked, so the owner is told the line on ${job.subject} waits for the retry and the thread moves on`;
+    }
     await automation.api.messageAnswer(job.message.id, { reply_md: unusableReply(`這台工人沒有 ${job.episode?.slug ?? job.subject} 的劇本`), revised: null });
     return `series ${series.slug}: no video for ${job.subject} here; the owner is told and the thread waits`;
   }
@@ -235,8 +277,15 @@ async function answerHeld(automation, job, state) {
       } else answer = { reply: answer.reply, revised: null };
     } else answer = await automation.stage("writer", state.slug, scriptDiscussionPayload(automation, job, state, video), 32_000, "drama", "discuss");
   } catch (error) {
-    if (error instanceof AutomationError && error.gone) return automation.jobGone(state, error, `answers the owner's line on ${job.subject} once more`);
-    if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
+    if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) {
+      const line = await automation.sortFailure(state, error, { sends: `answers the owner's line on ${job.subject} once more` });
+      // The line waits with its video for the owner's retry (answerScript); the retry clears this.
+      if (state.status === "blocked") {
+        state.blocked_line = job.message.id;
+        automation.saveState(automation.workdir(state.slug), state);
+      }
+      return line;
+    }
     automation.keepAnswer(automation.workdir(state.slug), "discuss");
     await automation.api.messageAnswer(job.message.id, { reply_md: unusableReply(error.message), revised: null });
     return `${state.slug}: the writer gave no usable answer on ${job.subject} (${error.message}); the owner is told and the thread waits`;
