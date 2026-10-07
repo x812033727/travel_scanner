@@ -1,9 +1,11 @@
 # Approved language packages for YouTube
 
-Implementation status: API/VPS consumption and regression coverage are implemented.
-The producer patch is prepared separately and awaits permission to edit the two
-paths held by an older task. This draft must not be deployed before that contract
-is integrated and verified; see the open approved-languages-sync task.
+Implementation status: the API and VPS consume the contract below, and
+`review-push --gate languages` produces it for every video (a renewed final through
+`tools/video/review/renewal.mjs`, any other through `bindLanguageSource` in
+`tools/video/review/sync.mjs`). A contract test feeds the producer's actual bytes to
+the consumer (see "Producer" below). Language reviews sent before this change carry
+no manifest and still need resubmitting; that is a release action, not automatic.
 
 An upload confirmation can be approved before the owner chooses additional
 languages. The API and independent VPS uploader must compose that confirmation
@@ -27,6 +29,12 @@ producer validates the current local artifacts before submission. Final and
 script review identities, the final video hash and branding are independently
 checked by the consumer against the approved source.
 
+A manifest may also carry `follows`, the identity of the newest language review when
+it was sent. The producer adds it only when the same bytes were already sent as an
+older review (an owner who returns to an earlier choice): the server answers repeated
+bytes with that older review, while the consumer reads the newest one. The consumer
+does not read it.
+
 `choice.locales` contains the complete normalized metadata/captions/dub choice.
 `choice.decided_at` is an audit timestamp, not a choice revision: the site keeps
 the first decision time even when the owner later changes the selected parts.
@@ -34,6 +42,36 @@ the first decision time even when the owner later changes the selected parts.
 review page. `files` lists the exact role, SHA-256, byte size and content type of
 every attached metadata, description, caption and dub file. It excludes the
 manifest itself to avoid a circular hash.
+
+## Producer
+
+`review-push --gate languages` sends the parts that are made, then binds the batch
+before posting it: it uploads the current `upload/metadata.json` as `metadata`, writes
+the manifest to `review/languages.json` (the file `review-pull` records the approval
+against) and uploads it as `languages_manifest`, whose hash becomes the review's
+content hash. `source` names the site's newest final, which must be approved; the
+newest upload confirmation, approved or still pending (a pending one that the owner
+then approves unchanged carries the batch; a newer confirmation sent after it is read
+without the batch, from its own package); and, for a drama that is not a compilation,
+the newest screenplay review, which must be approved. `speech_hash` and
+`compilation_hash` come from `timeline.json`, and `branding_hash` from the approved
+final.
+
+Nothing is posted while the batch cannot be bound. The producer refuses when there is
+no confirmation yet or it was rejected, when the final or screenplay is not approved,
+when `metadata.json` was written for another final, branding or choice, when the
+choice on the site is not the one copied into `languages.json`, when a description
+file is not its title and description in `metadata.json`, or when the narration's own
+captions differ from the approved confirmation's. A selected dub of the narration's
+own language goes as an explicit skip; no duplicate track is sent.
+
+`tools/video/review/language-contract.mjs` runs the real `package` and `review-push`
+on fixture videos against a double of the review site. It keeps what the site then
+holds in `apps/api/tests/fixtures/video_language_contract/`, and
+`apps/api/tests/test_video_youtube_language_contract.py` feeds that through the real
+consumer, with file verification. `tools/video/review/language-contract.test.mjs`
+fails while the committed copy is not what the producer emits; it writes the copy
+again when run with `LANGUAGE_CONTRACT_WRITE=1`.
 
 ## Consumption and retries
 

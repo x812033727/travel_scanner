@@ -359,7 +359,8 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
         return json(review);
       }
       if (!projects.has(slug)) return json({ code: "video_project_not_found", detail: "no" }, 404);
-      return json({ slug, title: slug, stage: "x", checklist: [], youtube_video_id: listed.get(slug)?.youtube_video_id ?? null, reviews: reviewsOf(slug) });
+      // As the tool's GET answers (ProjectOut): the owner's language choice too, which review-push binds a batch to.
+      return json({ slug, title: slug, stage: "x", checklist: [], youtube_video_id: listed.get(slug)?.youtube_video_id ?? null, locales: listed.get(slug)?.locales ?? {}, locales_decided_at: listed.get(slug)?.locales_decided_at ?? null, reviews: reviewsOf(slug) });
     }
     return json({ code: "not_found", detail: pathname }, 404);
   };
@@ -2242,7 +2243,16 @@ test("a language chosen for its title and description alone is translated withou
   assert.deepEqual(video.runs.slice(-4).map((run) => run.split(" ")[0]), ["captions", "package", "review-push", "review-pull"]);
   const [batch] = video.reviews("languages");
   assert.deepEqual(batch.payload, { locales: { en: { metadata: "ready" } } });
-  assert.deepEqual(batch.files.map((file) => [file.role, file.content_type]), [["description_en", "text/plain"]]);
+  assert.deepEqual(batch.files.map((file) => [file.role, file.content_type]), [["description_en", "text/plain"], ["metadata", "application/json"], ["languages_manifest", "application/json"]]);
+  // YouTube sync reads the batch beside the confirmation and the cut its manifest names
+  // (docs/videos/APPROVED-LANGUAGE-PACKAGE.md); review-pull checks the approval against it.
+  const manifestFile = path.join(video.workdir, "review", "languages.json");
+  const manifest = readJson(manifestFile);
+  const [publish] = video.reviews("publish");
+  const [final] = video.reviews("final");
+  assert.deepEqual([manifest.source.publish, manifest.source.final, manifest.choice.locales], [{ review_id: publish.id, content_sha256: publish.content_sha256 }, { review_id: final.id, content_sha256: final.content_sha256 }, { en: { metadata: true, captions: false, dub: false } }]);
+  assert.equal(batch.content_sha256, sha(manifestFile));
+  assert.equal(batch.files.find((file) => file.role === "metadata").sha256, sha(video.upload("metadata.json")));
   assert.deepEqual([batch.status, batch.note], ["approved", LANGUAGES_AUTO_NOTE], "no dub track: nothing for the owner to do");
   assert.equal(batch.summary, "語言：en 標題說明。沒有要你上傳的配音");
   const metadata = readJson(video.upload("metadata.json"));
@@ -2999,7 +3009,7 @@ test("captions and a dub chosen together: the sheet carries the budgets, the dub
   assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(ja metadata\+captions\+dub\)$/);
   const [batch] = video.reviews("languages");
   assert.equal(batch.status, "pending", "a dub track waits for the owner to upload it in Studio");
-  assert.deepEqual(batch.files.map((file) => [file.role, file.content_type]), [["description_ja", "text/plain"], ["captions_ja", "text/plain"], ["dub_ja", "audio/mp4"]]);
+  assert.deepEqual(batch.files.map((file) => [file.role, file.content_type]), [["description_ja", "text/plain"], ["captions_ja", "text/plain"], ["dub_ja", "audio/mp4"], ["metadata", "application/json"], ["languages_manifest", "application/json"]]);
   const { ja } = batch.payload.locales;
   assert.deepEqual([ja.metadata, ja.captions, ja.dub, ja.file, ja.file_role, ja.format], ["ready", "ready", "ready", "ja.m4a", "dub_ja", "m4a"]);
   assert.equal(batch.summary, "語言：ja 標題說明、CC、配音。配音到 Studio「語言」上傳後按「已在 Studio 上傳配音」");
@@ -3046,7 +3056,7 @@ test("a window that does not fit is shortened once and the dub is made; two roun
   const [batch] = video.reviews("languages");
   assert.deepEqual(batch.payload.locales.ko, { captions: "ready", dub: { status: "skipped", reason } });
   assert.equal(batch.payload.locales.en.dub, "ready");
-  assert.deepEqual(batch.files.map((file) => file.role), ["captions_en", "dub_en", "captions_ko"]);
+  assert.deepEqual(batch.files.map((file) => file.role), ["captions_en", "dub_en", "captions_ko", "metadata", "languages_manifest"]);
   assert.equal(batch.summary, `語言：en CC、配音；ko CC、配音跳過（${reason}）。配音到 Studio「語言」上傳後按「已在 Studio 上傳配音」`);
   assert.equal(batch.status, "pending", "the en track waits for the owner");
   const metadata = readJson(video.upload("metadata.json"));

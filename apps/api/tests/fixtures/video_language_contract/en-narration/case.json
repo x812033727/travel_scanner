@@ -1,0 +1,205 @@
+{
+  "project": {
+    "slug": "fixture-en",
+    "format": "slides",
+    "locales": {
+      "en": {
+        "metadata": true,
+        "captions": true,
+        "dub": true
+      },
+      "ja": {
+        "metadata": true,
+        "captions": true,
+        "dub": false
+      }
+    },
+    "locales_decided_at": "2026-10-01T01:00:00.000000Z"
+  },
+  "reviews": [
+    {
+      "id": "00000000-0000-4000-8000-000000000003",
+      "gate": "languages",
+      "subject": null,
+      "content_sha256": "47393e2359d7757503c448c1c6624f4aad24b3d74bb8a1f57c94a3e73ee0f993",
+      "summary": "語言：en 標題說明、CC、配音跳過（這是影片原本旁白的語言，不另做重複配音）；ja 標題說明、CC。沒有要你上傳的配音",
+      "payload": {
+        "locales": {
+          "en": {
+            "metadata": "ready",
+            "captions": "ready",
+            "dub": {
+              "status": "skipped",
+              "reason": "這是影片原本旁白的語言，不另做重複配音"
+            }
+          },
+          "ja": {
+            "metadata": "ready",
+            "captions": "ready"
+          }
+        }
+      },
+      "files": [
+        {
+          "role": "description_en",
+          "sha256": "2b1b4fb7dd4622b251b5c67c74d8ac4187d06d51caa375eee69e55e03a855aa1",
+          "size": 348,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "captions_en",
+          "sha256": "08769d797cf2d7d971092633c9ef5910e74ad95508502eedf5522aa51cd48fd7",
+          "size": 690,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "description_ja",
+          "sha256": "2b22e355dd76512297c073a95bdb9a5c8384d5006cb4c93d83c54434ab9e0f70",
+          "size": 234,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "captions_ja",
+          "sha256": "f82210fd50ca1327656532b3b4d6e61f063f49c33599cc693f05ed130ce48efb",
+          "size": 286,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "metadata",
+          "sha256": "d8430d657eaa805e8c27796db36bc435e64a171bda00f1da689fa186359d88d2",
+          "size": 2427,
+          "content_type": "application/json"
+        },
+        {
+          "role": "languages_manifest",
+          "sha256": "47393e2359d7757503c448c1c6624f4aad24b3d74bb8a1f57c94a3e73ee0f993",
+          "size": 2032,
+          "content_type": "application/json"
+        }
+      ],
+      "status": "approved",
+      "choice": null,
+      "note": "沒有配音，語言批次自動核准",
+      "decided_at": "2026-10-01T00:04:00.000Z",
+      "created_at": "2026-10-01T00:04:00.000Z"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000002",
+      "gate": "publish",
+      "subject": null,
+      "content_sha256": "97b350d236786365a3314313686aeba0dfb9743250349bc315e871427f4dfbb5",
+      "summary": "上傳包 4 項齊全：請確認可以上架",
+      "payload": {
+        "package": {
+          "ok": true,
+          "final_sha256": "97b350d236786365a3314313686aeba0dfb9743250349bc315e871427f4dfbb5",
+          "items": [
+            {
+              "id": "files",
+              "ok": true,
+              "detail": "final.mp4, thumbnail.jpg, metadata.json; final.mp4 is the approved final (3ef0b8556d8d)"
+            },
+            {
+              "id": "descriptions",
+              "ok": true,
+              "detail": "descriptions for en, zh-TW"
+            },
+            {
+              "id": "captions",
+              "ok": true,
+              "detail": "caption files for en, zh-TW"
+            },
+            {
+              "id": "disclosure",
+              "ok": true,
+              "detail": "no disclosure needed: slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places"
+            }
+          ]
+        },
+        "minutes": 0.7,
+        "chapters": 3,
+        "locales": [
+          "en",
+          "zh-TW"
+        ],
+        "zh": {
+          "title": "Which AI model is worth paying for? Three questions",
+          "description": "The top of the leaderboard is not always the right buy. Three questions pick the model that fits your work.\n\n📌 Chapters\n00:00 Why the leaderboard misleads you\n00:15 The three questions\n00:30 What to do next\n\n📚 Sources\nExample source: https://example.com/models\n\n#AImodels #whichAItopayfor",
+          "tags": [
+            "AI models",
+            "which AI to pay for",
+            "zh-TW tag"
+          ]
+        },
+        "disclosure": {
+          "synthetic": false,
+          "reason": "slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places"
+        },
+        "checklist": []
+      },
+      "files": [
+        {
+          "role": "captions_en",
+          "sha256": "08769d797cf2d7d971092633c9ef5910e74ad95508502eedf5522aa51cd48fd7",
+          "size": 690,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "captions_zh-TW",
+          "sha256": "4ff60d8f2a74d045264075e52f79778482f265ff29b216f389e64400fa03dd98",
+          "size": 307,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "description_en",
+          "sha256": "2b1b4fb7dd4622b251b5c67c74d8ac4187d06d51caa375eee69e55e03a855aa1",
+          "size": 348,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "description_zh-TW",
+          "sha256": "89c39b621369b4e7ae784b55fbe94a825f330b6d34410d83c614d209f413bd28",
+          "size": 233,
+          "content_type": "text/plain"
+        },
+        {
+          "role": "final",
+          "sha256": "3ef0b8556d8ddb6576dd6fcd6cabd9798be83f1f991439ab2aed892a061f5748",
+          "size": 30,
+          "content_type": "video/mp4"
+        },
+        {
+          "role": "metadata",
+          "sha256": "97b350d236786365a3314313686aeba0dfb9743250349bc315e871427f4dfbb5",
+          "size": 1806,
+          "content_type": "application/json"
+        },
+        {
+          "role": "thumbnail",
+          "sha256": "cefa19a592cbc4af6fd939044e76e64c4075c8d2e526bdd33d8aa91a8dcbea97",
+          "size": 23,
+          "content_type": "image/jpeg"
+        }
+      ],
+      "status": "approved",
+      "choice": null,
+      "note": null,
+      "decided_at": "2026-10-01T00:03:00.000Z",
+      "created_at": "2026-10-01T00:02:00.000Z"
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "gate": "final",
+      "subject": null,
+      "content_sha256": "3ef0b8556d8ddb6576dd6fcd6cabd9798be83f1f991439ab2aed892a061f5748",
+      "summary": "final",
+      "payload": {},
+      "files": [],
+      "status": "approved",
+      "choice": null,
+      "note": null,
+      "decided_at": "2026-10-01T00:01:00.000Z",
+      "created_at": "2026-10-01T00:01:00.000Z"
+    }
+  ]
+}
