@@ -2511,6 +2511,74 @@ PASS is DURATION_ONLY for the nine rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1361 bookkeeping hold increment: 2 files (2026-10-07)
+
+Reviewer: `claude-pr-review-happy-carson`, the reviewer of the "PR #1361" sections above. It wrote none of the branch's commits, judged each bound diff on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-happy-carson`, the branch's author. The changes are two commits written on this branch under the ticket `2026-10-06-a-pending-discussion-job-and-the`, each with the repository's `Claude <noreply@anthropic.com>` git identity:
+
+- `55cbae5c` ("fix(video): the first lane's bookkeeping holds a video while it awaits the site, and saves it as it stands");
+- `27c538b8` ("test(video): the pasted-address loop's re-read has its own test; close the bookkeeping hold task").
+
+Scope: DURATION_ONLY for the two changed bindings below, on claude/happy-carson-c1hy91 (draft PR #1361) at `27c538b8`. That is four linear commits on the previous increment's receipt commit `2560d9d0`, with no merge, still on origin/main `7524c259` (#1370).
+
+Baseline: `2560d9d0`, 2 of 2 match. None of the four commits touches docs/videos/long-form/ or tools/video/long-form/. At `2560d9d0`, review.md (788,415 bytes) hashes to `8172a405bb886b409377bbc3cd43e3c574a5b60630cf823690c1ff89cb7a90e7`, the report_sha256 that review.json held before this increment. At `2560d9d0`, `git show <path> | sha256sum` equals the value in review.json and in the table for both files: tools/video/automation/flow.mjs (250,504 bytes) `7f655faf709673b9560c858f26cea0aeee18d2a05ea2e210889e77c36984043e` and tools/video/automation/automation.test.mjs (449,778) `8067b2e96c5c3af3507e350200ff2e1c84c2b6520332034862405b3a67863d33`. So each file's diff against `2560d9d0` is exactly the unreviewed change. Each commit's paths intersected with the 108 paths of REVIEW_FILES:
+
+- `55cbae5c` touches flow.mjs and automation.test.mjs.
+- `27c538b8` touches automation.test.mjs.
+- `882fc257` (tools/video/automation/client.test.mjs) and `cfede9c7` (the claim) touch no bound path, and neither do the two commits' ticket files.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two and nothing else, so the other 106 bindings equal their working-tree bytes. The working tree equals the head for both files. Neither file holds a CR byte or a BOM, and each ends in LF. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+What the change is. The first lane's bookkeeping loops run while no unit holds the video: one records a YouTube address the owner pasted (`recordVideoId`), the other tells the site a finished compilation is done (`tellCompilationDone`). They used to save the copy of auto.json they had listed before awaiting the site. Each step now runs through the new `Automation.held(slug, step)`, which adds the slug to `busy`, reads auto.json again, runs the step on that copy and releases the slug in `finally`. It returns null when another lane holds the video. This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/automation/flow.mjs (+29/−7, 250,504 → 251,683 bytes; `55cbae5c`). The hunks are the two loops (1512–1524) and `held()` (1529–1548). The loops keep their conditions as the `pasted` and `untold` predicates, which are checked on the listed copy and again on the re-read one. `recordVideoId` and `tellCompilationDone` are byte-identical at both revisions, and `held()` reads only auto.json and `busy`. The duration code is outside both hunks:
+
+- the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29);
+- `slidesMinutes` and `episodeMinutes` (63–69);
+- the anime `body_target_seconds / 60` settlement (507);
+- the planner and writer payloads' `target_minutes` (1844–2220, 2691–2720, 3056).
+
+The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` number 20 at both revisions. No changed line names one of them, minutes, seconds, a frame, `fps`, a floor, `total_frames`, process.env, QA or lint.
+
+Findings, tools/video/automation/automation.test.mjs (+72/−0, 449,778 → 454,907 bytes; 155 top-level tests at the head, 153 at `2560d9d0`; 194 of 194 by `node --test`). Two tests are added:
+
+- the pasted-address report and a compilation's done call are made with the video held, and a compilation saved by another lane during the first call keeps that lane's field;
+- a pasted address is recorded on the re-read auto.json.
+
+Their numbers are fixture dates and YouTube ids. No length is asserted, and no changed line reads or sets process.env. The opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 36) is unchanged, and the file's lines naming target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, duration, minutes, `effectiveEpisodeMinutes` or `minEpisodeMinutes` number 43 at both revisions.
+
+Across both diffs there is no change to any of these: the 600/780-second targets, the 480-second / 14,400-frame measured floors, the eight-minute floor on every video but a drama, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened. A case-insensitive scan of the changed lines in both files found nothing. It looked for minute, MIN_EPISODE, 480, 14400, 14,400, 600, 780, runtime, target_, action_seconds, covered, source_hash, plans.json, policy.json, floor, total_frames, duration, seconds, frame, fps, process.env, VIDEO_MIN, 分鐘, 秒 and 時長.
+
+Unbound context, not reviewed: client.test.mjs (`882fc257`) and the ticket.
+
+Ran (Node v22.22.0, Linux, in the repository checkout at `27c538b8`, offline, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing (`git show 2560d9d0:<path> | sha256sum` against review.json and the table at `2560d9d0`, and `sha256sum <path>`);
+- the report hash at `2560d9d0`;
+- the CR, BOM and final-newline checks;
+- each commit's paths intersected with REVIEW_FILES;
+- a reading of `git diff 2560d9d0..27c538b8 -- tools/video/automation/flow.mjs tools/video/automation/automation.test.mjs` in full;
+- a comparison of `recordVideoId` and `tellCompilationDone` at both revisions;
+- the duration-term counts and the scan.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` with the two stale bindings above and exited 1. On the branch's bytes, each of these exited 0:
+
+- `node --test tools/video/automation/automation.test.mjs`, 194 of 194;
+- `node --test tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs tools/video/qa/duration.test.mjs tools/video/core/lint.test.mjs`, 62 of 62.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the hold itself: `held()`, its use of `busy`, the re-read, or which bookkeeping steps it covers.
+- The unbound files named above were not reviewed.
+- No real site, YouTube address or compilation was exercised, and the tests run under the opt-out.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 106 bindings these commits did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2567,9 +2635,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `8067b2e96c5c3af3507e350200ff2e1c84c2b6520332034862405b3a67863d33` |
+| `tools/video/automation/automation.test.mjs` | `f14dfbf48dbccc463574699e6c9ca5461877e2dc6ba7212e009dc9a702d82552` |
 | `tools/video/automation/discuss.mjs` | `4c22b5c3de451a230398a3c47eddd3bac732c99f00a84e0b41830e23be0f44f4` |
-| `tools/video/automation/flow.mjs` | `7f655faf709673b9560c858f26cea0aeee18d2a05ea2e210889e77c36984043e` |
+| `tools/video/automation/flow.mjs` | `2b427a5d9fdb23a528e4961db0b1ef01af4655a6474da1b90db1b5cb64266cc7` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `61cecd96f307f1162c0d681063155d68fdb580e076fc70134dbfa8792b39921b` |
 | `tools/video/automation/series.test.mjs` | `c2b546180e813023cbed43ae32375244e11f1550eb94d51663160e23b00a90eb` |
