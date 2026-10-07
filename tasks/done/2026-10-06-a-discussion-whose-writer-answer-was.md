@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-a-discussion-whose-writer-answer-was
 title: A discussion whose writer answer was lost ends every round
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-happy-carson
 claimed_at: 2026-10-07T09:58:30Z
 created_at: 2026-10-06T15:36:43Z
-completed_at:
+completed_at: 2026-10-07T11:07:48Z
 branch: claude/happy-carson-c1hy91
 depends_on:
   - 2026-10-06-a-failing-video-is-deferred
@@ -151,4 +151,3 @@ node --test tools/video/automation/series.test.mjs tools/video/automation/discus
   (`.agents/skills/youtube-video/references/series.md`).
 - Rejected by the skeptics: an endless refuse-retry loop (the owner's retry is the only resend, and
   dropping the video ends it) and a reply wrong after a blocked-from-done retry.
-
