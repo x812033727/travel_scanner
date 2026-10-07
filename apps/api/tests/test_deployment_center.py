@@ -38,6 +38,8 @@ def config(tmp_path: Path) -> AgentConfig:
         current_path=tmp_path / "current",
         backup_path=tmp_path / "backups",
         runtime_env_path=tmp_path / "runtime.env",
+        hold_path=tmp_path / "deploy.hold",
+        staged_releases_root=tmp_path / "root",
     )
 
 
@@ -517,3 +519,138 @@ def test_activation_and_rollback_cover_every_application_service(tmp_path: Path)
     assert ("run", "--rm", "migrate") in {
         args[:3] for args in executor.compose_calls if args and args[0] == "run"
     }
+
+
+# --- the deploy hold and staged releases (ops/release/README.md) -----------------------
+
+REPO_ROOT = Path(__file__).resolve().parents[3]
+
+
+def _driver_hold(hold_path: Path, release_dir: Path, sha: str) -> None:
+    """Write the hold exactly as a staged release driver does, through ops/release/hold.py."""
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "release_hold", REPO_ROOT / "ops" / "release" / "hold.py"
+    )
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    assert (
+        module.acquire(
+            release_dir, sha, "codex-tutorials", ["prepare", "activate"], hold_path=hold_path
+        )
+        == "created"
+    )
+
+
+def test_release_guard_reads_the_hold_a_driver_writes(tmp_path: Path) -> None:
+    from deployment_agent import release_guard
+
+    hold_path = tmp_path / "deploy.hold"
+    assert release_guard.hold_reason(hold_path) is None
+    _driver_hold(hold_path, tmp_path / "mokaair-x-3b8df68c693e", "3b8df68c693e" + "0" * 28)
+    reason = release_guard.hold_reason(hold_path)
+    assert reason and "codex-tutorials" in reason and "3b8df68c693e" in reason
+    assert len(reason.encode("utf-8")) <= release_guard.HOLD_FIRST_LINE_LIMIT
+    # A hand-written single line is a reason too; an empty file still holds.
+    hold_path.write_text("pei: nginx cutover in progress, ask before deploying\n", encoding="utf-8")
+    assert (
+        release_guard.hold_reason(hold_path)
+        == "pei: nginx cutover in progress, ask before deploying"
+    )
+    hold_path.write_text("", encoding="utf-8")
+    assert "no reason" in str(release_guard.hold_reason(hold_path))
+    hold_path.write_text(
+        "\n" + json.dumps({"owner": "x", "release_dir": "/root/mokaair-y"}) + "\n", encoding="utf-8"
+    )
+    assert release_guard.hold_reason(hold_path) == "deploy hold held by x for /root/mokaair-y"
+    # Secrets in a hand-written line are masked like every other detail the agent stores.
+    hold_path.write_text("token=abc123 hold\n", encoding="utf-8")
+    assert "abc123" not in str(release_guard.hold_reason(hold_path))
+
+
+def test_release_guard_matches_the_scripts_staged_release_rule(tmp_path: Path) -> None:
+    from deployment_agent import release_guard
+
+    root = tmp_path / "root"
+    state = root / "mokaair-x-abc" / "state.json"
+    state.parent.mkdir(parents=True)
+    assert release_guard.staged_release_reason(root) is None
+    state.write_text('{"built_at": "2026-10-07T00:00:00+00:00"', encoding="utf-8")  # half-written
+    reason = release_guard.staged_release_reason(root)
+    assert reason and "mokaair-x-abc" in reason
+    state.write_text('{"built_at": "x", "activated_at": "y"}', encoding="utf-8")
+    assert release_guard.staged_release_reason(root) is None
+    state.write_text('{"built_at": "x", "failed_at": "y"}', encoding="utf-8")
+    assert release_guard.staged_release_reason(root) is None
+    state.write_text('{"built_at": "x"}', encoding="utf-8")
+    assert release_guard.staged_release_reason(root)
+    old = time.time() - 25 * 60 * 60
+    import os
+
+    os.utime(state, (old, old))
+    assert release_guard.staged_release_reason(root) is None
+    # A file somewhere else under /root is not a release directory.
+    other = root / "notes" / "state.json"
+    other.parent.mkdir()
+    other.write_text('{"built_at": "x"}', encoding="utf-8")
+    assert release_guard.staged_release_reason(root) is None
+
+
+def test_executor_refuses_to_deploy_while_a_release_is_in_progress(tmp_path: Path) -> None:
+    agent_config = config(tmp_path)
+    store = AgentStore(agent_config.state_path)
+    _driver_hold(agent_config.hold_path, tmp_path / "mokaair-x", "c" * 40)
+    job_id = new_job(store)
+    executor = FakeExecutor(agent_config, store)
+    executor._deploy_locked(job_id, "b" * 40)
+    job = store.get_job(job_id)
+    assert job and job["status"] == "failed"
+    assert job["failure_code"] == "deployment_hold_active"
+    assert "codex-tutorials" in job["failure_detail"]
+    assert not (agent_config.releases_path / ("b" * 40)).exists()  # nothing was built
+    agent_config.hold_path.unlink()
+
+    state = agent_config.staged_releases_root / "mokaair-y" / "state.json"
+    state.parent.mkdir(parents=True)
+    state.write_text('{"built_at": "2026-10-07T00:00:00+00:00"}', encoding="utf-8")
+    job_id = new_job(store)
+    FakeExecutor(agent_config, store)._deploy_locked(job_id, "b" * 40)
+    job = store.get_job(job_id)
+    assert job and job["failure_code"] == "deployment_staged_release_in_progress"
+    assert "mokaair-y" in job["failure_detail"]
+
+    state.write_text('{"built_at": "x", "activated_at": "y"}', encoding="utf-8")
+    job_id = new_job(store)
+    FakeExecutor(agent_config, store)._deploy_locked(job_id, "b" * 40)
+    job = store.get_job(job_id)
+    assert job and job["status"] == "succeeded"
+
+
+def test_preflight_reports_the_release_guard(tmp_path: Path) -> None:
+    class Runner:
+        def run(self, *args: Any, **kwargs: Any) -> str:
+            raise CommandError("not on the host")
+
+    class PreflightExecutor(FakeExecutor):
+        def __init__(self, agent_config: AgentConfig, store: AgentStore) -> None:
+            super().__init__(agent_config, store)
+            self.runner = cast(Any, Runner())
+
+        def _git(self, *args: str) -> str:
+            return ""
+
+        def _health(self, url: str) -> bool:
+            return False
+
+    agent_config = config(tmp_path)
+    agent_config.releases_path.mkdir(parents=True)
+    executor = PreflightExecutor(agent_config, AgentStore(agent_config.state_path))
+    guard = next(item for item in executor.preflight()["checks"] if item["name"] == "release_guard")
+    assert guard["status"] == "ok"
+    agent_config.hold_path.write_text("pei: hold\n", encoding="utf-8")
+    report = executor.preflight()
+    guard = next(item for item in report["checks"] if item["name"] == "release_guard")
+    assert guard == {"name": "release_guard", "status": "failed", "detail": "pei: hold"}
+    assert report["ok"] is False
