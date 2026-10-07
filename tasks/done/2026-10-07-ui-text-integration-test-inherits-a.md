@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-ui-text-integration-test-inherits-a
 title: UI text integration test inherits a Redis client from a closed event loop
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-ui-text-redis
 claimed_at: 2026-10-07T05:43:13Z
 created_at: 2026-10-07T05:11:43Z
-completed_at:
+completed_at: 2026-10-07T05:49:31Z
 branch:
 depends_on: []
 scope:
@@ -77,3 +77,6 @@ client.
 - Not done: clearing the client in `test_analytics_integration.py` too, or one autouse fixture in
   `conftest.py` for every module. Either would stop the leak at its source, but both are outside
   this scope. The other integration modules already guard themselves as this one now does.
+- Verified 2026-10-07 against local PostgreSQL 16 and Redis 7, the same way CI runs it:
+  `RUN_INTEGRATION_TESTS=1 uv run pytest --shard 1/4` gives 1690 passed, 6 skipped (it failed before
+  the fix).
