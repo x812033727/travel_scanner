@@ -294,6 +294,19 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     ctx.stderr.write(`${error.message}\n`);
     return EXIT.usage;
   }
+  // A still's picture is the keyframe the storyboard approved, and its segment is cached under the
+  // manifest's hash of it: a file changed since (a later take written over the same name) would
+  // otherwise be encoded, or an old segment reused, as if it were the approved one.
+  const changedStills = [];
+  for (const scene of layout) {
+    if (scene.kind !== "motion" || !scene.keyframe?.sha256) continue;
+    const file = path.join(workdir, scene.keyframe.file);
+    if (existsSync(file) && (await sha256File(file)) !== scene.keyframe.sha256) changedStills.push(`${scene.id} (${scene.keyframe.file})`);
+  }
+  if (changedStills.length) {
+    ctx.stderr.write(`the keyframe of ${changedStills.join(", ")} is not the picture the manifest approved (its bytes changed); put the approved file back, or run keyframes and the storyboard review again\n`);
+    return EXIT.usage;
+  }
   /** The frames a clip offers a shot: all of them, or those after the frame a cut from another shot starts at. */
   const offered = (frames, scene) => frames - (scene.from_frame ?? 0);
   const pastTheEnd = (scene) => `shot ${scene.id} is cut from ${scene.source.shot}'s clip at ${scene.source.from_s} s, past that clip's end; start earlier and run clips again\n`;

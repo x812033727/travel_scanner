@@ -221,6 +221,32 @@ test("a production model or resolution mismatch stops before any paid clip submi
   }
 });
 
+test("a selected keyframe whose bytes changed since the storyboard was approved stops clips before the server is asked anything", async () => {
+  for (const [what, file] of [["start", "keyframes/farewell-1.png"], ["end", "keyframes/farewell-end.png"]]) {
+    for (const dryRun of [false, true]) {
+      const { box } = prepared();
+      await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+      await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+      const manifestBefore = readFileSync(path.join(box.workdir, "keyframes", "manifest.json"), "utf8");
+      // A later take written over the approved file's name: same manifest, different picture.
+      writeFileSync(path.join(box.workdir, file), PNG(`another take of ${file}`));
+      const site = mediaSite();
+      let requests = 0;
+      const counted = async (url, init) => {
+        requests += 1;
+        return site.fetchImpl(url, init);
+      };
+      const run = context(box, counted);
+      const label = `${what} frame${dryRun ? ", dry run" : ""}`;
+      assert.equal(await main(["clips", "--slug", box.slug, ...(dryRun ? ["--dry-run"] : [])], run.ctx), EXIT.owner, label);
+      assert.match(run.out.stderr, new RegExp(`farewell ${what} frame \\(${file}\\) is missing or not the picture the storyboard approved`), label);
+      assert.equal(requests, 0, `${label}: no status, upload or submission`);
+      assert.equal(readFileSync(path.join(box.workdir, "keyframes", "manifest.json"), "utf8"), manifestBefore, `${label}: the manifest is not rewritten to pass`);
+      assert.equal(existsSync(path.join(box.workdir, "clips", "manifest.json")), false, label);
+    }
+  }
+});
+
 test("named-look clip questions fit the judge limit for E1 Zhitang and maximum appearances", () => {
   const episode = JSON.parse(readFileSync(new URL("../../../docs/videos/series-plans/competition-20261002/episodes/episode-01-voice.video.json", import.meta.url), "utf8"));
   const zhitang = { ...episode.characters.find((character) => character.id === "zhitang"), shot_look: "zhitang--base" };

@@ -144,6 +144,20 @@ const importedFrom = (shot) => [shot.provider, shot.plan, shot.credits === null 
 
 const manifestFile = (workdir) => path.join(workdir, ARTIFACTS.clips);
 
+/** Each selected start or end picture whose file is missing or whose bytes are not the hash its keyframes manifest entry names. */
+async function changedKeyframes(workdir, keyframes, scenes) {
+  const changed = [];
+  for (const scene of scenes) {
+    const shot = keyframes.shots[scene.id];
+    for (const [which, picture] of [["start", shot], ["end", shot.end_frame]]) {
+      if (!picture?.file) continue;
+      const file = path.join(workdir, picture.file);
+      if (!existsSync(file) || (await sha256File(file)) !== picture.sha256) changed.push(`${scene.id} ${which} frame (${picture.file})`);
+    }
+  }
+  return changed;
+}
+
 function writeManifest(workdir, doc, manifest) {
   const order = shotScenes(doc).filter((scene) => manifest.shots[scene.id]?.sha256).map((scene) => ({ id: scene.id, sha256: manifest.shots[scene.id].sha256 }));
   manifest.clips_hash = clipsHash(order);
@@ -200,6 +214,14 @@ export async function run(command, args, ctx) {
   if (storyboard.status !== "approved") {
     const why = storyboard.status === "stale" ? "changed since it was approved" : "not approved yet";
     throw new MediaError(`the storyboard is ${why}: run review-push --gate storyboard, let the owner (or the auto-approve setting) decide on /admin/videos, then review-pull`, { who: "owner" });
+  }
+  // The pictures the storyboard approved are named by the keyframes manifest with their hashes;
+  // a working file written over since (a later take or provider reusing the name) is checked here,
+  // before the server is asked anything, so a changed picture is never uploaded, priced or bought
+  // as the approved one.
+  const changed = await changedKeyframes(workdir, keyframes, [...shots, ...stills]);
+  if (changed.length) {
+    throw new MediaError(`the selected keyframe ${changed.join(", ")} is missing or not the picture the storyboard approved (its bytes changed); put the approved file back, or run keyframes and the storyboard review again`, { who: "owner" });
   }
   const lookManifest = readJson(path.join(workdir, ARTIFACTS.characters), null);
   const sheets = chosenSheets(lookManifest, lookChosen(lookManifest, readJson(path.join(workdir, ARTIFACTS.characterChoice), null), hash) ?? {});

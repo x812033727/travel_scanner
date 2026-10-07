@@ -245,6 +245,61 @@ test("direct assembly refuses missing or changed audio evidence before any ffmpe
 
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
+test("direct assembly refuses a still whose keyframe bytes changed since its manifest, before ffmpeg or a cached segment", async (t) => {
+  for (const changed of [true, false]) {
+    const box = sandbox("fixture-drama", "drama");
+    t.after(() => rmSync(box.base, { recursive: true, force: true }));
+    const doc = dramaFixture();
+    doc.scenes.find((scene) => scene.id === "sea-storm").data.visual = "still";
+    doc.subtitles = { burn_in: false };
+    delete doc.music;
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+    const timeline = writeAudioFixture({ ...estimateTimeline(doc), speech_hash: speechHash(doc, fixtureLexicon()) }, box.workdir);
+    const visual = visualHash(doc);
+    for (const dir of ["frames", "clips", "keyframes", "segments"]) mkdirSync(path.join(box.workdir, dir), { recursive: true });
+    writeFileSync(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visual, ...manifestFor(timeline, 0) }));
+    const approved = Buffer.from("PNG approved sea-storm keyframe");
+    const still = { file: "keyframes/sea-storm-1.png", sha256: sha256(approved) };
+    writeFileSync(path.join(box.workdir, still.file), approved);
+    const shots = Object.fromEntries(timeline.scenes.filter((scene) => scene.id !== "wrap").map((scene) => {
+      if (scene.id === "sea-storm") return [scene.id, { still: true, ...still }];
+      const file = `clips/${scene.id}.mp4`;
+      writeFileSync(path.join(box.workdir, file), "clip");
+      return [scene.id, { file, sha256: "a".repeat(64) }];
+    }));
+    writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({ speech_hash: timeline.speech_hash, visual_hash: visual, look_hash: lookHash(doc), shots }));
+    writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: lookHash(doc), visual_hash: visual, shots: { "sea-storm": still } }));
+    // A segment encoded earlier under the same manifest: the cache an unchanged hash would reuse.
+    const cached = path.join(box.workdir, "segments", "sea-storm-cached.mp4");
+    writeFileSync(cached, "old segment");
+    if (changed) writeFileSync(path.join(box.workdir, still.file), "PNG a later take written over the same name");
+    const calls = [];
+    let stderr = "";
+    const ctx = { root: box.root, home: box.base, EXIT, env: { VIDEO_WORKDIR: box.work }, stdout: { write() {} }, stderr: { write(value) { stderr += value; } } };
+    const tools = { ffmpeg: "fixture-encoder", ffprobe: "fixture-probe", version: "synthetic test" };
+    const dependencies = {
+      locateFfmpeg: async () => tools,
+      async runTool(file, args) {
+        calls.push(file);
+        throw new Error("ffmpeg sentinel");
+      },
+    };
+    if (changed) {
+      assert.equal(await run("assemble", ["--slug", doc.slug], ctx, dependencies), EXIT.usage, stderr);
+      assert.match(stderr, /the keyframe of sea-storm \(keyframes\/sea-storm-1\.png\) is not the picture the manifest approved/);
+      assert.deepEqual(calls, [], "no ffprobe or ffmpeg");
+      assert.equal(readFileSync(cached, "utf8"), "old segment", "the cached segment is left as it was");
+      assert.equal(existsSync(path.join(box.workdir, "build")), false, "nothing is joined from the cache");
+      assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "clips", "manifest.json"), "utf8")).shots["sea-storm"], { still: true, ...still }, "the manifest is not rewritten to pass");
+    } else {
+      // The approved bytes pass the gate and go on to the tools as before.
+      await assert.rejects(run("assemble", ["--slug", doc.slug], ctx, dependencies), /ffmpeg sentinel/);
+      assert.ok(calls.length >= 1);
+      assert.doesNotMatch(stderr, /not the picture the manifest approved/);
+    }
+  }
+});
+
 test("assemble sfx-measure measures every sound of a set with ebur128 and ffprobe and writes a version 2 manifest", async (t) => {
   const box = sandbox("fixture-illustrated", "illustrated");
   t.after(() => rmSync(box.base, { recursive: true, force: true }));
