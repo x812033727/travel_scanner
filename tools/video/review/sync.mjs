@@ -133,6 +133,9 @@ export const KEPT_REMARK_LENGTH = 300;
 // The lines a picture keeps when the payload is still past the budget: two, then none.
 const FEWER_REMARK_LINES = [2, 0];
 const REMARKS_LEFT_OUT = "意見因審核資料的大小上限略去，全文在 keyframes/manifest.json";
+// What a storyboard's summary says when even its list of kept pictures was left out for size:
+// each kept shot still carries `accepted: true` and its score, which the card reads.
+const KEPT_LIST_LEFT_OUT = "（保留鏡頭的 judge 意見因審核資料的大小上限略去，全文在 keyframes/manifest.json）";
 
 /**
  * The judge's remarks on a kept picture as a review carries them: the first `lines` of them, each
@@ -179,8 +182,11 @@ const KEPT_LIST = { final: "accepted_pictures", storyboard: "accepted" };
 /**
  * A review's payload with the judge's remarks on its kept pictures cut to `lines` a picture
  * (keptRemarks) wherever that review carries them: on its list of kept pictures and, on a
- * storyboard, in the own verdict of each kept shot, which is left empty when the lines are none
- * (the list says why). Every picture keeps its id. Null for a review that names no kept picture.
+ * storyboard, in the own verdict of a kept shot whose list entry has none to say
+ * (storyboardSubmission), which is left empty when the lines are none, with nothing saying so:
+ * keyframes --accept-best never writes such a shot, since its list holds every take's remarks,
+ * the kept take's included. Every picture keeps its id. Null for a review that names no kept
+ * picture.
  */
 function withKeptRemarks({ gate, payload }, lines) {
   if (!isRecord(payload)) return null;
@@ -196,31 +202,58 @@ function withKeptRemarks({ gate, payload }, lines) {
   };
 }
 
+/** Whether a review's kept pictures carry any of the judge's remarks, on its list or in a kept shot's own verdict. */
+function keptRemarksIn(gate, payload) {
+  const said = (problems) => Array.isArray(problems) && problems.length > 0;
+  const list = KEPT_LIST[gate];
+  return (Array.isArray(payload?.[list]) && payload[list].some((picture) => said(picture?.problems)))
+    || (gate === "storyboard" && Array.isArray(payload?.shots) && payload.shots.some((shot) => shot?.accepted === true && said(shot.judge?.problems)));
+}
+
 /**
  * A review as review-push posts it, its payload within what the server takes. The judge's
  * remarks on the kept pictures go up cut to KEPT_REMARK_LINES lines a picture; while the payload
  * is past REVIEW_PAYLOAD_BUDGET they are cut further in steps, to two lines and then to none,
- * every picture keeping its id. A payload still past the server's limit is not sent: the server
- * would answer 422, and this says how large it is. Returns { body, bytes, lines }, `lines` null
- * unless the remarks were cut past their usual lines.
+ * every picture keeping its id. A storyboard still past it then leaves its list of kept pictures
+ * out, every kept shot still marked `accepted: true` with its score, and its summary ends with
+ * KEPT_LIST_LEFT_OUT when the judge had remarks to leave out; a cut keeps its list, the only
+ * place it names its kept pictures. Kept pictures the judge said nothing of are not cut, and
+ * nothing says they were. A payload
+ * still past the server's limit is not sent: the server would answer 422, and this says how large
+ * it is. Returns { body, bytes, lines }, `lines` null unless the remarks were cut past their
+ * usual lines.
  */
 export function fitPayload(body) {
   const limit = payloadLimit(body);
   const budget = limit - (MAX_REVIEW_PAYLOAD_BYTES - REVIEW_PAYLOAD_BUDGET);
   const kept = withKeptRemarks(body, KEPT_REMARK_LINES);
+  const remarked = kept !== null && keptRemarksIn(body.gate, kept);
   let payload = kept ?? body.payload;
   let bytes = payloadBytes(payload);
   let lines = null;
-  for (const fewer of kept ? FEWER_REMARK_LINES : []) {
+  let summary = body.summary;
+  for (const fewer of remarked ? FEWER_REMARK_LINES : []) {
     if (bytes <= budget) break;
     payload = withKeptRemarks(body, fewer);
     bytes = payloadBytes(payload);
     lines = fewer;
   }
-  if (bytes > limit) {
-    throw new ReviewError(`the ${body.gate} review's payload is ${bytes} bytes, over the ${limit} the site takes${kept ? ", even with the judge's remarks on the kept pictures left out" : ""}; nothing was sent`, { code: "payload_too_large", submission: true });
+  // A storyboard's last step: its list of kept pictures goes too. Each kept shot is still marked
+  // (`accepted: true`, with its score), so the card and the server's check read it as before; a
+  // kept shot then costs that marker (18 bytes) more than one the judge passed, and the board's
+  // score goes null when every shot is kept. The summary says where the remarks went only when
+  // there were any.
+  if (kept && bytes > budget && body.gate === "storyboard" && Array.isArray(payload?.accepted)) {
+    const { accepted: _left, ...rest } = payload;
+    payload = rest;
+    bytes = payloadBytes(payload);
+    // The note goes last and whole: the summary before it is cut to make room.
+    if (remarked) summary = `${cutText(String(body.summary ?? ""), MAX_REVIEW_SUMMARY_LENGTH - [...KEPT_LIST_LEFT_OUT].length)}${KEPT_LIST_LEFT_OUT}`;
   }
-  return { body: kept ? { ...body, payload } : body, bytes, lines };
+  if (bytes > limit) {
+    throw new ReviewError(`the ${body.gate} review's payload is ${bytes} bytes, over the ${limit} the site takes${remarked ? ", even with the judge's remarks on the kept pictures left out" : ""}; nothing was sent`, { code: "payload_too_large", submission: true });
+  }
+  return { body: kept ? { ...body, summary, payload } : body, bytes, lines };
 }
 
 /** The outline options a brief offers: `### 選項 A：title`, its 一行說明, its 開場鉤子. */
@@ -403,7 +436,9 @@ export function packageSummary(report) {
 /**
  * Run the quality check before the final cut goes up: exit 0 or 1 means there is a report to
  * send (qa.json for this very final.mp4); 4 means a service was down and the push waits for the
- * next round; 3 needs the owner (the token). A test that plays the commands hands in runCommand.
+ * next round; 3 needs the owner: the token, or a site setting a check needs (Jev's key for the
+ * policy item), which the failing item's line names. A test that plays the commands hands in
+ * runCommand.
  */
 async function qualityCheck(ctx, slug, workdir, flags) {
   const args = ["qa", "--slug", slug, ...flags];
@@ -414,7 +449,7 @@ async function qualityCheck(ctx, slug, workdir, flags) {
     code = await qa.run("qa", args.slice(1), ctx);
   }
   if (code === ctx.EXIT.external) throw new ReviewError("the quality check could not finish (a service was down); run review-push --gate final again later", { who: "service" });
-  if (code === ctx.EXIT.owner) throw new ReviewError("the quality check needs the owner (the video tool token); see above", { who: "owner" });
+  if (code === ctx.EXIT.owner) throw new ReviewError("the quality check needs the owner (the video tool token or a site setting); see the failing item above and review/qa.json", { who: "owner" });
   return readJson(path.join(workdir, "review", "qa.json"), null);
 }
 
@@ -991,9 +1026,11 @@ async function storyboardSubmission({ request, project, workdir }) {
     // A picture kept with the judge's remarks once its prompt fixes were spent (keyframes
     // --accept-best): sent as accepted, not as a review need, so the board can approve itself
     // (apps/api/app/video_automation/settings.py storyboard_check_passed); the owner sees it on
-    // the final cut, which goes up for a manual review. What the judge said of it, here and on
-    // the list below, is cut to a few lines where review-push posts the review (fitPayload).
+    // the final cut, which goes up for a manual review. What the judge said of it goes once, on
+    // the list below (which the card prefers), cut to a few lines where review-push posts the
+    // review (fitPayload); the shot's own verdict carries it only when the list has none to say.
     const accepted = Array.isArray(shot.accepted_with_problems);
+    const listed = accepted && shot.accepted_with_problems.some((each) => typeof each === "string" && each);
     shots.push({
       id: scene.id,
       chapter: scene.chapter ?? null,
@@ -1005,7 +1042,7 @@ async function storyboardSubmission({ request, project, workdir }) {
       complete: true,
       file_sha256: shot.sha256,
       ...(scene.data?.end_frame?.prompt ? { end_frame_sha256: shot.end_frame.sha256 } : {}),
-      judge: { overall: shot.judge?.overall ?? null, problems: shot.judge?.problems ?? [] },
+      judge: { overall: shot.judge?.overall ?? null, problems: listed ? [] : (shot.judge?.problems ?? []) },
     });
   }
   if (whole) await sendSheets();
