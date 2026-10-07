@@ -38,6 +38,7 @@ from __future__ import annotations
 import asyncio
 import logging
 import re
+import threading
 import unicodedata
 from collections.abc import Sequence
 from dataclasses import dataclass
@@ -335,6 +336,9 @@ def boundary_from_event(event: Any) -> Boundary:
 # the SDK used to recover from inside the call, is now lost and held for the owner. Not in
 # PropertyId; the SDK reads it by this name.
 _SDK_RETRIES = "SpeechSynthesis_MaxRetryTimes"
+# How long a result waits for its completion or cancellation event, the SDK's last: in a local
+# stand-in it came within milliseconds of .get(), so a second only covers a busy host.
+_EVENTS_GRACE_SECONDS = 1.0
 # Past "Sending", the service had begun the turn (turn.start), or sent metadata or audio. The
 # SDK's own state is part of the text, where a boundary event may reach its callback only after
 # the result: a synthesis that had started is lost whatever its code.
@@ -424,7 +428,15 @@ def synthesize_with_boundaries_blocking(
     synthesizer.synthesis_word_boundary.connect(
         lambda event: boundaries.append(boundary_from_event(event))
     )
+    # The SDK fires its events on a thread of its own, and .get() can return before the last
+    # boundary events have reached the handler above. The completion or cancellation event comes
+    # after them on that thread, so the list is whole once it has fired.
+    finished = threading.Event()
+    synthesizer.synthesis_completed.connect(lambda _event: finished.set())
+    synthesizer.synthesis_canceled.connect(lambda _event: finished.set())
     result = synthesizer.speak_ssml_async(ssml).get()
+    if not finished.wait(_EVENTS_GRACE_SECONDS):
+        logger.warning("Azure Speech sent no completion event; its boundaries may be incomplete")
     if result.reason == sdk.ResultReason.SynthesizingAudioCompleted:
         audio = bytes(result.audio_data or b"")
         if not audio.startswith(b"RIFF"):

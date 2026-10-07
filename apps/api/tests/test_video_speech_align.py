@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import base64
+import threading
+import time
 from datetime import timedelta
 from pathlib import Path
 from types import SimpleNamespace
@@ -190,9 +192,16 @@ class FakeSdk:
         ServiceError = "service"
         RuntimeError = "runtime"
 
-    def __init__(self, result: Any, events: list[Any]) -> None:
+    def __init__(
+        self, result: Any, events: list[Any], *, late: bool = False, finishes: bool = True
+    ) -> None:
         self.result = result
         self.events = events
+        # `late`: the events reach their handlers on a thread of their own, after .get() has
+        # returned, as the real SDK's sometimes do. `finishes`: the last of them is the
+        # completion or cancellation event.
+        self.late = late
+        self.finishes = finishes
         self.configs: list[Any] = []
         self.spoken: list[str] = []
         sdk = self
@@ -227,12 +236,28 @@ class FakeSdk:
                 assert audio_config is None, "no speaker, no ALSA"
                 self.config = speech_config
                 self.synthesis_word_boundary = Signal()
+                self.synthesis_completed = Signal()
+                self.synthesis_canceled = Signal()
 
-            def speak_ssml_async(self, ssml: str) -> Any:
-                sdk.spoken.append(ssml)
+            def _fire(self) -> None:
+                if sdk.late:
+                    time.sleep(0.05)
                 for event in sdk.events:
                     for handler in self.synthesis_word_boundary.handlers:
                         handler(event)
+                if not sdk.finishes:
+                    return
+                completed = sdk.result.reason == FakeSdk.ResultReason.SynthesizingAudioCompleted
+                last = self.synthesis_completed if completed else self.synthesis_canceled
+                for handler in last.handlers:
+                    handler(SimpleNamespace(result=sdk.result))
+
+            def speak_ssml_async(self, ssml: str) -> Any:
+                sdk.spoken.append(ssml)
+                if sdk.late:
+                    threading.Thread(target=self._fire, daemon=True).start()
+                else:
+                    self._fire()
                 return SimpleNamespace(get=lambda: sdk.result)
 
         self.SpeechConfig = SpeechConfig
@@ -401,9 +426,51 @@ def test_the_rules_read_the_whole_text_and_the_message_keeps_its_start(
     assert "WS_OPEN_ERROR" not in str(error.value)
 
 
+def test_boundaries_that_reach_the_handler_after_the_result_are_all_returned(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # The real SDK fires its events on its own thread; .get() may return before the last ones,
+    # and the completion event comes after them
+    # (2026-10-07-a-successful-aligned-azure-synthesis-can).
+    completed = SimpleNamespace(reason="completed", audio_data=WAV, cancellation_details=None)
+    events = [
+        _event("你好", 50, 200),
+        _event("世界", 260, 200),
+        _event("。", 470, 50, "Punctuation"),
+    ]
+    monkeypatch.setattr(align, "_speech_sdk", lambda: FakeSdk(completed, events, late=True))
+    audio, boundaries = synthesize_with_boundaries_blocking("eastasia", "k", "<speak/>")
+    assert audio == WAV
+    assert [b.text for b in boundaries] == ["你好", "世界", "。"]
+    # A boundary that came late still makes a cancellation lost.
+    details = SimpleNamespace(error_code="429", error_details="Connection was closed.")
+    cancelled = SimpleNamespace(reason="canceled", audio_data=b"", cancellation_details=details)
+    late = FakeSdk(cancelled, [_event("你好", 50, 200)], late=True)
+    monkeypatch.setattr(align, "_speech_sdk", lambda: late)
+    # The cancellation event ends the wait, not the grace.
+    monkeypatch.setattr(align, "_EVENTS_GRACE_SECONDS", 5.0)
+    started = time.monotonic()
+    with pytest.raises(SpeechAnswerLost):
+        synthesize_with_boundaries_blocking("eastasia", "k", "<speak/>")
+    assert time.monotonic() - started < 2
+
+
+def test_a_completion_event_that_never_comes_costs_only_the_grace(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    completed = SimpleNamespace(reason="completed", audio_data=WAV, cancellation_details=None)
+    sdk = FakeSdk(completed, [_event("你好", 50, 200)], finishes=False)
+    monkeypatch.setattr(align, "_speech_sdk", lambda: sdk)
+    monkeypatch.setattr(align, "_EVENTS_GRACE_SECONDS", 0.05)
+    started = time.monotonic()
+    audio, boundaries = synthesize_with_boundaries_blocking("eastasia", "k", "<speak/>")
+    assert time.monotonic() - started < 1
+    assert (audio, [b.text for b in boundaries]) == (WAV, ["你好"])
+    assert "no completion event" in caplog.text
+
+
 @pytest.mark.asyncio
 async def test_the_thread_is_bounded_by_the_timeout(monkeypatch: pytest.MonkeyPatch) -> None:
-    import time
 
     def slow(region: str, key: str, ssml: str) -> tuple[bytes, list[Boundary]]:
         time.sleep(0.3)
