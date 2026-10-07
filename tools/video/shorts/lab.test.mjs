@@ -508,6 +508,23 @@ test('a checking stage whose answer was lost blocks the Short for the owner and 
   assert.match(report.checklist[0].label, /^卡住，需要人處理：score may have run/);
 });
 
+test('a block whose report did not reach the site is reported again on the next round, so the owner can see it and retry it', async (t) => {
+  let down = true;
+  const lost = ownerSite(fakeSite({ answers: { ...ANSWERS(), 'verifier:shorts-lab-score': LOST } }));
+  const site = { ...lost, fetchImpl: async (url, init = {}) => (down && init.method === 'PUT' && new URL(url).pathname === '/api/video/reviews/shorts-receipt-total' ? json({ detail: 'bad gateway' }, 502) : lost.fetchImpl(url, init)) };
+  const { lab } = labFor(t, site, { tools: stopHere() });
+  assert.match(await lab.run(), /blocked — score may have run/);
+  assert.equal(lab.state.block_report_pending, true, 'the site does not know yet');
+  assert.equal(site.calls.reports.filter((report) => report.stage === 'blocked').length, 0);
+  // Next round: the report goes up before the worker looks for the owner's retry.
+  down = false;
+  assert.equal(await ownerRetries(lab, site, null), false, 'no retry yet: the owner had nothing to press');
+  assert.equal(lab.state.block_report_pending, undefined);
+  assert.match(site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：score may have run/);
+  assert.equal(await ownerRetries(lab, site), true, 'now the owner can retry it');
+  assert.equal(calls(site, 'verifier', 'shorts-lab-score'), 1);
+});
+
 test('the owner\'s retry asks the lost stage exactly once more, and the same retry is not taken twice', async (t) => {
   let lose = true;
   const site = ownerSite(fakeSite({ answers: { ...ANSWERS(), 'verifier:shorts-lab-score': () => (lose ? LOST() : READ) } }));

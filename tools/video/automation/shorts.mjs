@@ -567,6 +567,9 @@ export class ShortsWorker {
    * tutorials read): the failures of the step that stopped it start again, once per request.
    */
   async retried(lab) {
+    // A block the site never heard of (its report failed when the Short stopped) is told first:
+    // until it is, the Short is not on 需要你 and the owner has no retry to press.
+    if (lab.state.block_report_pending && !(await lab.reportBlock())) return false;
     const listed = await this.api.videos({ shorts: "only", state: "needs_you", limit: "200" });
     const video = (Array.isArray(listed) ? listed : []).find((each) => each.slug === lab.slug);
     const request = video?.retry_request_id;
@@ -576,6 +579,7 @@ export class ShortsWorker {
     const failed = /^([a-z-]+) failed \d+ times in a row:/.exec(lab.state.blocked ?? "")?.[1];
     if (failed) delete lab.state.failures[failed];
     delete lab.state.blocked;
+    delete lab.state.block_report_pending;
     lab.save();
     await lab.tellSite("retrying", null, { retry_acknowledged_id: request });
     this.log(`${lab.slug}: the owner asked for another try; resuming at ${lab.state.phase}`);

@@ -26,6 +26,7 @@ scope:
   - tools/video/shorts/lab.test.mjs
   - tools/video/shorts/qa.mjs
   - tools/video/automation/client.mjs
+  - tools/video/automation/shorts.mjs
   - docs/videos/AUTOMATION.md
   - docs/videos/HANDS-OFF.md
   - docs/videos/SHORTS.md
@@ -176,9 +177,11 @@ stops the video or Short for the retry (rather than sending the cut with the out
   `_series/<slug>/lost-docs.json` against a hash of the owner's inputs and said once a run; the
   lane goes on (requests and drafts still run). A changed series or a new version releases it.
   A hands-off checker's lost verdict is not asked again: the document is filed for the owner.
-  No expiry: only the owner releases it. The site has no call to hold or retry a document job,
-  so a first version can only be withdrawn and filed again until
-  2026-10-07-series-documents-a-site-side-hold lands, and every younger series waits behind it.
+  No expiry: only the owner releases it, by changing the series' note, premise, title or
+  hands-off switch, or (before any episode started) by withdrawing it and filing it again, which
+  is a new series row (`documentInputs` hashes the series id). The site has no call to hold or
+  retry a document job until 2026-10-07-series-documents-a-site-side-hold lands; meanwhile the
+  series' own ready episodes and every younger series wait behind it.
 - Shorts (`shorts/lab.mjs`): a lost answer of any stage (`ask()`), the tested model
   (`subject()`, the attempt kept as evidence and counted) or Jev's policy check (`runQa` with
   `throwLost`, so the loss wins over an inputs-changed throw) blocks the Short with `lost`
@@ -186,7 +189,13 @@ stops the video or Short for the retry (rather than sending the cut with the out
   (`retryRuns`) and sends the stage once more, the record moving to `lost_answers`. A
   durable writer's uncertain run used to take the silent "waits for the owner" line that
   never reached the site. A hand-run `shorts qa` keeps a failed policy item saying the
-  outcome is unknown.
+  outcome is unknown. A Short's block whose report did not reach the site is reported again
+  before the next round looks for the owner's retry (`block_report_pending`,
+  `ShortsWorker.retried`), as a video's is (`blocked_report_pending`): until then it is not on
+  需要你 and the owner has nothing to press.
+- Only the first lane plans an `unplanned` video (stepUnit), the lane that also drafts: on
+  another lane its planner and the first lane's `draft()` could read the earlier videos at the
+  same time and pick the same article.
 - Discussions: a lint repair lost inside a screenplay discussion's rewrite puts the script back
   and blocks the video with the line held (`discuss.mjs` `answerHeld`). The durable case where
   that repair is still running is filed as 2026-10-07-a-discussion-s-lint-repair-still.
