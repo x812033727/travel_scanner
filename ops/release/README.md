@@ -8,6 +8,7 @@
 | 路徑 | 做什麼 | 拿哪些鎖 |
 |---|---|---|
 | 一般部署腳本 `/root/deploy-travel-scanner.sh`（只在主機上，root，mode 700，不在 git 裡） | 一次跑完：fast-forward 到 `origin/main`，`compose up --build -d` 重建全部應用容器（image tag `:local`） | 只拿 `/var/lock/travel-scanner-deploy.lock` |
+| 自動部署 timer（`ops/autodeploy/`，root 的 systemd timer，每 5 分鐘一輪） | 發現 `origin/main` 比 live 新、該 SHA 的 CI 綠了、沒有付費影片工作在跑，就呼叫**上面那支一般部署腳本**。它自己不拿鎖、不建容器；先跑腳本的 `--dry-run`，看到 `exit 3` 就等下一輪，所以暫停檔與規則 1 對它一樣有效 | 跟一般部署腳本一樣，只在腳本執行期間由腳本拿 `/var/lock/travel-scanner-deploy.lock` |
 | 分段發布工具（例如 `docs/ai-terms-series/release_host.py`、`docs/ai-news-2026-ytd/deploy_release.py`） | `prepare`（建 `:<sha>` 映像、把當下的容器記成基準）→ 等 CI → `activate`（停服務、`pg_dump`、換上映像）→ 內容階段 `dry-run → drafts → publish-articles → publish-index`。每一段開始前核對容器還是上一段留下的樣子，不是就拒絕 | 每個階段執行期間持有四把：`/var/lock/travel-scanner-deploy.lock`、`/root/mokaair-deploy.lock`、`/run/mokaair-manual-deploy.lock`、`/run/travel-scanner-deployer/deploy.lock` |
 
 鎖只在單一階段執行期間被持有。階段之間鎖是空的，一般部署腳本照樣能跑，容器一被重建，
@@ -88,7 +89,7 @@ python3 ops/release/hold.py clear   /root/mokaair-x-<sha12> <sha40>
 2. 在發布目錄裡寫下決定（例如 `abandoned.md`：誰、何時、為什麼、容器與資料要不要回復）。
 3. 然後才刪暫停檔：`rm /root/travel-scanner-deploy.hold`。
 
-順序不能反過來。暫停檔一刪，一般部署腳本就會重建容器，發布目錄裡的基準就再也對不上了。
+順序不能反過來。暫停檔一刪，一般部署腳本就會重建容器，發布目錄裡的基準就再也對不上了；而且自動部署 timer 開著時，刪掉之後**最多 5 分鐘內**它就會自己跑一般部署腳本，不需要任何人動手，所以「先刪暫停檔、等一下再決定」不存在。
 
 ## 在主機上驗證，不碰正式環境
 
@@ -106,5 +107,7 @@ python3 ops/release/hold.py clear   /root/mokaair-x-<sha12> <sha40>
 - 已經執行完的發布工具（`docs/ai-terms-series/`、`docs/ai-news-2026-09/`）綁死已完成的 SHA 與清單，不會再跑，不要回頭改。
 - 主機腳本 `/root/deploy-travel-scanner.sh` 不在 git 裡（加防護前的版本在 `/root/deploy-travel-scanner.sh.bak-20260914-hold`）。
   暫停檔的路徑或格式要改，主機腳本得同步改，而改主機腳本需要站主同意。
-- 後台部署中心的主機代理（`apps/api/deployment_agent`、`ops/deployer`，預設關閉）是第三條部署路徑，
-  啟用前也應該遵守同一個暫停檔；那是另一張票。
+- 後台部署中心的主機代理（`apps/api/deployment_agent`、`ops/deployer`，預設關閉）是第四條部署路徑，
+  啟用前也應該遵守同一個暫停檔；那是 `tasks/open/2026-10-07-deployer-agent-honors-deploy-hold.md`。
+- 自動部署 timer 自己的暫停檔 `/root/travel-scanner-autodeploy.paused`（自動部署失敗後寫下）只擋 timer，
+  不擋一般部署腳本與分段發布；規則與格式在 `ops/autodeploy/README.md`。

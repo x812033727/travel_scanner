@@ -37,9 +37,24 @@ cd /root/travel_scanner && python3 ops/release/hold.py clear <release_dir> <sha4
 
 **C. 把死掉的發布標成 `failed_at`**（改別人的狀態檔，要站主同意）：規則 1 只認 `activated_at` 或 `failed_at`，所以這是提早退休的正規出口。做法照 `release_host.py` 自己失敗時的寫法：每個目錄只在 `built_at` 有、`activated_at` 與 `failed_at` 都沒有時才動；先 `copy2` 成 `state.json.bak-<date>-retired`；寫暫存檔、fsync、複製原檔的 mode 與 owner、`os.replace`；重讀確認；留 `retired-<date>.txt`。做完 `--dry-run` 不再印 `NOTE: a real deploy would refuse to start`，守門恢復可用，值得維持，不要長期靠 `--ignore-hold`。
 
+## 自動部署的暫停檔（`AUTO DEPLOY PAUSED`）
+
+跟上面兩條規則無關的第三種檔：`/root/travel-scanner-autodeploy.paused`，由 `ops/autodeploy` 的 timer 在
+一次自動部署以非零結束（腳本已自己回滾）時寫下，只擋 **timer 自己**，手動部署照常。兩行：第一行給人看
+（哪個 SHA、退出碼、哪支 `/root/deploy-logs/auto-<ts>.log`），第二行 JSON（`sha`、`exit`、`log`、`created_at`）。
+
+| 看什麼 | 怎麼做 |
+| --- | --- |
+| 它指的 log 結尾 | 腳本失敗的真正原因（建置失敗、健康檢查三次不過、ff-only 被拒）。回滾之後 live 是舊 SHA，`state.json` 的 `last_deploy.previous` 是回滾到哪裡 |
+| 同一個 SHA 的 CI | timer 只在 `CI` 綠了才部署，所以失敗通常是主機才看得到的（映像建置、`.env`、磁碟），不是測試 |
+| 修法 | 在 main 上 fix forward 並合併；**不要**手改主機 work tree。確認修正已合併後才 `rm` 暫停檔，下一輪 timer 就會部署新的 main。想先手動驗證就用 `host-deploy.sh`，成功後再刪暫停檔 |
+
+刪暫停檔不需要站主同意（它是 timer 自己寫的、不是別人的發布），但讀 log 並把原因寫進票或交接是必要的；
+什麼都沒看就刪，timer 會原樣再失敗一次、再暫停一次。
+
 ## 預檢腳本印什麼
 
-`scripts/host-preflight.sh` 讀檔案：暫停檔內容、規則 1 標記的目錄、24 小時內動過的 `mokaair-*` 目錄、鎖是不是空的、live HEAD 與 origin/main 的 SHA、work tree 乾不乾淨、磁碟、最後一份部署 log 的尾巴；另外對影片工作表下兩句唯讀 select（`paid video work`，見下一節）。加 `--full` 才印驅動行程與容器清單：分類器曾把一次包含 `ps`、`who`、`last`、`docker images` 的唯讀調查擋成 Production Reads，純讀檔的版本一直都過。列 61 個以上的發布目錄時只印被標記的與 24 小時內動過的，`| tail` 整份清單會把重要的那幾個切掉。
+`scripts/host-preflight.sh` 讀檔案：暫停檔內容、規則 1 標記的目錄、24 小時內動過的 `mokaair-*` 目錄、鎖是不是空的、live HEAD 與 origin/main 的 SHA、work tree 乾不乾淨、磁碟、最後一份部署 log 的尾巴、自動部署 timer 的狀態（`enabled`／`active`／`tick`，`tick=active` 代表一輪正在部署）與 `state.json` 的最後一輪決定、自動部署的暫停檔；另外對影片工作表下兩句唯讀 select（`paid video work`，見下一節）。加 `--full` 才印驅動行程與容器清單：分類器曾把一次包含 `ps`、`who`、`last`、`docker images` 的唯讀調查擋成 Production Reads，純讀檔的版本一直都過。列 61 個以上的發布目錄時只印被標記的與 24 小時內動過的，`| tail` 整份清單會把重要的那幾個切掉。
 
 ## 付費影片工作（`paid video work`）
 
