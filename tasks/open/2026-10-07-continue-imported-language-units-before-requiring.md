@@ -124,6 +124,34 @@ are authorized by this follow-up.
   four locales, EP02/03 English/Japanese, EP04 English). Full selected packages
   remain held for missing locales/dubs. No draft native code was deployed into it.
 
+- The separate R5 production continuation started exactly once at
+  `2026-10-07T04:59:21.522Z`, after a zero-request/zero-STOP-change dry-run and
+  independent source review. It selects only EP02/03 remaining Korean/Simplified
+  Chinese metadata/CC and EP06 all four metadata/CC locales: the exact native
+  remaining plan is 88 subscription stages. EP04 and its existing unknown request
+  remain excluded. Its 158 prior successful records, 43 previous outputs, all 179
+  R3 preservation references and the unused R4 preparation are content-addressed
+  and retained; no earlier producer is restarted.
+  The new gate waits before the native journal records a dispatch, reading only
+  the existing paired-tool counters and their natural expiry. Fourteen independent
+  offline tests passed through the actual native journal, including waiting,
+  known-result reuse, unknown-result/STOP/source/settings holds and unchanged
+  request bytes. This does not claim a live-provider or full-suite test.
+  Plan SHA is
+  `25ddbe4050bb14571525dfb4977345abbca19e1e5463e29f42d96cec4fae7ed6`;
+  independent review SHA is
+  `e193575b4dd47b52dff61d65c309aada78d6362dbff7f8351e0b7c665981a3c5`.
+  At `05:17Z`, EP02/03's profile is running with six actual successful stage
+  responses and its next stage pending; EP06 is queued. This is unit progress,
+  not additional completed locales or approved language packages. The last
+  independently verified series count remains 26 metadata/CC parts, with all
+  18 chosen series dubs held. All 18 canonical STOPs and the eight publish
+  exclusions remain in place. A separately pinned, read-only verifier is armed
+  once for producer exit; it creates new completion/held evidence and never
+  submits model requests or clears holds. Read the R5 launch/state/wire receipts
+  under `<home>/mokaair-work/handoff/renewed-finals-20261007` and their host
+  counterparts; do not relaunch or infer completion from the background process.
+
 - Fresh collision inspection before the narrow 2026-10-07 caller repair found the
   old 2026-09-29 claim at 64 hours. Its checked-out branch had no tracked source
   changes, both runner paths were identical to landed `origin/main`/PR #1210, its
