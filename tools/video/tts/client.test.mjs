@@ -79,6 +79,9 @@ test("a paid request sent and left without its answer is sent once and names the
     ["Node's deadline for the headers", () => { throw failed("UND_ERR_HEADERS_TIMEOUT"); }, 0],
     ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
     ["the web route's lost answer", () => problem(504, "video_speech_answer_lost"), 504],
+    // The API's own answers for a provider that may have run the request and lost its answer.
+    ["the API's lost provider answer", () => problem(504, "video_speech_upstream_lost"), 504],
+    ["the API's uncertain Jev outcome", () => problem(502, "video_judge_outcome_uncertain"), 502],
     // Only the route's 502 says the API was never reached; no speech route answers this one.
     ["an upstream_unavailable no speech route answers", () => problem(503, "upstream_unavailable"), 503],
     ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
@@ -133,8 +136,8 @@ test("a paid request that never left, or that the API settled, is tried again an
     ["the web route's 502 for an API it never reached", () => problem(502, "upstream_unavailable"), [1000]],
     ["the API's rate limit", () => problem(429, "rate_limit_exceeded", { "Retry-After": "3" }), [3000]],
     ["a busy provider", () => problem(503, "video_speech_upstream_busy", { "Retry-After": "7" }), [7000]],
-    // Also what the API answers for a provider read timeout after the request went out, which
-    // may have been billed: 2026-10-05-speech-api-tells-a-provider-answer gives that its own code.
+    // A provider never reached, or one that answered a failure. A host from before the API's 504
+    // video_speech_upstream_lost also answers it for a lost provider answer, resent as before.
     ["a provider failure the API answered", () => problem(502, "video_speech_upstream_failed"), [1000]],
     ["a key the provider refused", () => problem(502, "video_speech_upstream_rejected_key"), [1000]],
     ["Jev failing behind the API", () => problem(502, "video_judge_upstream_failed"), [1000]],

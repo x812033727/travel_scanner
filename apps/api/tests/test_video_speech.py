@@ -5,6 +5,7 @@ from typing import Any
 from uuid import uuid4
 
 import fakeredis.aioredis
+import httpx
 import pytest
 from httpx import ASGITransport, AsyncClient
 
@@ -22,7 +23,7 @@ from app.providers.usage_meter import (
     release_azure_speech_characters,
     reserve_azure_speech_characters,
 )
-from app.video_speech.azure import AzureSpeech, SpeechUpstreamError
+from app.video_speech.azure import AzureSpeech, SpeechAnswerLost, SpeechUpstreamError
 from app.video_speech.ssml import Part, Segment, billable_characters, build_ssml
 from app.video_speech.tokens import (
     LAST_USED_RESOLUTION,
@@ -33,6 +34,7 @@ from app.video_speech.tokens import (
 )
 
 WAV = b"RIFF" + b"\x00" * 60
+REAL_SYNTHESIZE = AzureSpeech.synthesize
 
 
 def test_ssml_escapes_text_and_writes_only_the_allowed_elements() -> None:
@@ -250,6 +252,61 @@ async def test_azure_throttling_is_passed_on_and_the_reservation_refunded(speech
         rejected.status_code == 502
         and rejected.json()["code"] == "video_speech_upstream_rejected_key"
     )
+
+
+# A connection that never opened carried nothing; any other failure of the POST may follow a
+# request Azure ran and billed.
+NEVER_SENT = [httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout]
+SENT_AND_LOST = [httpx.ReadTimeout, httpx.WriteTimeout, httpx.ReadError, httpx.RemoteProtocolError]
+
+
+def _raising(error: type[httpx.TransportError]) -> httpx.MockTransport:
+    def handler(request: httpx.Request) -> httpx.Response:
+        raise error("server-side-key https://eastasia.tts.speech.microsoft.com", request=request)
+
+    return httpx.MockTransport(handler)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("error", NEVER_SENT + SENT_AND_LOST)
+async def test_azure_tells_a_request_never_sent_from_one_whose_answer_was_lost(
+    error: type[httpx.TransportError],
+) -> None:
+    speech = AzureSpeech(region="eastasia", key="server-side-key", timeout_seconds=1)
+    async with httpx.AsyncClient(transport=_raising(error)) as client:
+        with pytest.raises((SpeechUpstreamError, SpeechAnswerLost)) as raised:
+            await speech.synthesize("<speak/>", client)
+    if error in NEVER_SENT:
+        assert type(raised.value) is SpeechUpstreamError and raised.value.status == 502
+        assert str(raised.value) == f"Azure Speech unreachable: {error.__name__}"
+    else:
+        assert type(raised.value) is SpeechAnswerLost
+        assert error.__name__ in str(raised.value)
+    assert "server-side-key" not in str(raised.value) and "microsoft" not in str(raised.value)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("error", NEVER_SENT + SENT_AND_LOST)
+async def test_a_lost_azure_answer_is_its_own_504_and_its_characters_stay_counted(
+    speech_app: Any, monkeypatch: pytest.MonkeyPatch, error: type[httpx.TransportError]
+) -> None:
+    async def synthesize(self: AzureSpeech, ssml: str, client: Any = None) -> bytes:
+        async with httpx.AsyncClient(transport=_raising(error)) as provider:
+            return await REAL_SYNTHESIZE(self, ssml, provider)
+
+    monkeypatch.setattr(AzureSpeech, "synthesize", synthesize)
+    response = await _post(_request())
+    used = (await azure_speech_usage_snapshot(speech_app["redis"], 450_000)).used
+    body = response.json()
+    if error in NEVER_SENT:
+        # Retried by the video tool, as before: nothing reached Azure.
+        assert response.status_code == 502 and body["code"] == "video_speech_upstream_failed"
+        assert used == 0
+    else:
+        # Sent once: the tool stops and asks the owner instead of paying for it again.
+        assert response.status_code == 504 and body["code"] == "video_speech_upstream_lost"
+        assert used == billable_characters('排行榜第一名，不一定最適合你。<break time="800ms"/>')
+    assert "server-side-key" not in response.text and "microsoft" not in response.text
 
 
 class TokenSession:

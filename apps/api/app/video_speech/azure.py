@@ -26,6 +26,34 @@ class SpeechUpstreamError(Exception):
         self.retry_after = retry_after
 
 
+class SpeechAnswerLost(Exception):
+    """A paid request may have reached the provider, and been run and billed, but no answer
+    came back: a read or write timeout, a dropped connection, an answer that broke off. The
+    routes answer it with its own code, so the video tool does not send the request again.
+
+    Not a ``SpeechUpstreamError`` on purpose: a route that does not handle it answers a 500,
+    which the tool also treats as a possibly paid request, never a settled one it may resend.
+    """
+
+
+# A connection that never opened cannot have carried the request, so the provider has not run
+# it. Anything else httpx raises during the POST may follow a request the provider already ran.
+NEVER_SENT = (httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout)
+
+
+def transport_failure(
+    provider: str, error: httpx.HTTPError
+) -> SpeechUpstreamError | SpeechAnswerLost:
+    """What a POST to ``provider`` that raised ``error`` means: never sent, or sent and lost.
+    Only the error's type is named, never its message, which may carry the URL."""
+    name = type(error).__name__
+    if isinstance(error, NEVER_SENT):
+        return SpeechUpstreamError(502, f"{provider} unreachable: {name}")
+    return SpeechAnswerLost(
+        f"{provider} may have received the request, but its answer was lost ({name})"
+    )
+
+
 @dataclass(frozen=True)
 class AzureSpeech:
     region: str
@@ -54,9 +82,7 @@ class AzureSpeech:
                 },
             )
         except httpx.HTTPError as error:
-            raise SpeechUpstreamError(
-                502, f"Azure Speech unreachable: {type(error).__name__}"
-            ) from error
+            raise transport_failure("Azure Speech", error) from error
         finally:
             if owned:
                 await http.aclose()
