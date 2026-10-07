@@ -649,10 +649,15 @@ def main(argv: Sequence[str] | None = None, *, paths: Paths | None = None) -> in
     run.add_argument(
         "--dry-run", action="store_true", help="print what a run would do, write nothing"
     )
-    sub.add_parser("status", help="print last.json; exit 1 when the last run failed or is stale")
+    status = sub.add_parser(
+        "status", help="print last.json; exit 1 when the last run failed or is stale"
+    )
+    status.add_argument("--state-dir", help="read last.json from this directory instead")
     args = parser.parse_args(argv)
     paths = paths or Paths()
     if args.command == "status":
+        if args.state_dir:
+            paths = Paths(state_dir=Path(args.state_dir))
         text, code = status_text(paths)
         print(text)
         return code
