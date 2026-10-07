@@ -2251,6 +2251,129 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch next-discuss-lost discussion error sorting increment: 3 files (2026-10-07)
+
+Reviewer: `claude-pr-review-discuss-lost`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is two commits on branch next-discuss-lost for the task `2026-10-06-a-discussion-whose-writer-answer-was`, written by its owner `claude-opus-5-5-discuss-lost`: `84611d9c` ("fix(video): a screenplay discussion's request error is the video's, not the end of every round") and `1c19e001` ("fix(video): review fixes for the discussion's errors: paid answers kept through waits, lint repairs and blocks"). Scope: DURATION_ONLY for the three changed bindings below. The reviewer wrote neither commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `8da20621`, the first commit's parent ("chore(tasks): close the storyboard kept-pictures task and its final-gate owner-exit ride-along"). The last receipt commit before it is `0c583909`, the "claude/sharp-bardeen-ob6fn9 storyboard kept-pictures payload increment" above, and it is an ancestor of `8da20621`. Between the two only two task files under tasks/done change, and `git diff 0c583909 8da20621 -- docs/videos/long-form/ tools/video/long-form/ tools/video/core/ tools/video/automation/ tools/video/qa/ tools/video/review/ apps/` is empty. At `8da20621` all 108 bindings agree with the receipt, the table and the bytes. review.md (758,009 bytes, no CR byte) hashes to the receipt's `report_sha256`, `5debef9fbfd2522db43d5eae19c373b8f03a16e771c8f511b4ab10f592a909e7`, there and still at `1c19e001`. The hashing was done by script, on blobs exported with `git show`. At `1c19e001` 105 bindings still agree and three do not: tools/video/automation/discuss.mjs, flow.mjs and series.test.mjs. The working tree's copies of the three equal `1c19e001`'s and hold no CR byte and no BOM. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/discuss.mjs; stale duration review binding: tools/video/automation/flow.mjs; stale duration review binding: tools/video/automation/series.test.mjs` and nothing else. The whole of `git diff 8da20621 1c19e001` is the three bound files, the unbound tools/video/automation/discuss.test.mjs and the task's own file. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with three hashes rebound and the other 105 unchanged.
+
+What the change is. The owner's line on a screenplay is answered by the writer outside the video's own unit (discuss.mjs `answerScript`). Until this change only two errors of that request were sorted there: an answer that was not JSON, and a saved job the server no longer had. Every other error left `step()` as an exception. The run ended before the series work and the drafts, and the same line came back every round. Now:
+
+- `move()`'s error sorting is a method, `Automation.requestFailed(state, error, { sends, request })` (flow.mjs 1535 at the head). `move()` calls it after its own PROJECT_HELD and OUTPUT_INVALID branches (1516). `Automation.errorScope` (1550) passes `errorScope` to discuss.mjs, which cannot import flow.mjs.
+- `answerHeld`'s catch keeps OUTPUT_INVALID and PROJECT_HELD as they were. Every other AutomationError goes through `lineFailed` (345) to `requestFailed`, which blocks or defers the video:
+  - A block may be an uncertain answer, a job gone, a refusal, a policy hold, or `deferred:writer` at the limit. It records the line's id as `blocked_line`.
+  - A deferral records the line's own row of deferrals as `line_defers`, which is restored before the line's next failure.
+  - The owner's retry deletes both fields (flow.mjs 1430–1431).
+- A line on the screenplay of a blocked video waits for the retry when the block is `job_gone:writer`, `uncertain:writer` or the line's own (`heldBy`, 329). Any other block is answered with `blockedReply` instead of "no screenplay here".
+- A reply is kept in the video's work directory as discussion-answer.json before it is posted (`postAnswer`, 82). The next visit for that line posts the kept reply with no model request (`takeUnposted`, 94). It does so first, whatever the video is doing (302).
+- Before `saveAndLint` writes a rewrite, `answerHeld` marks the script unchecked and keeps the reply (420–428). Marking it unchecked sets `verified` and `listener_done` false and adds the "script discussed" note.
+  - A refusal of the rewrite, or a STOP with the script put back, restores both flags and the notes (`undo`).
+  - A lint repair still running is thrown, and one that failed goes to `lineFailed` (447–448).
+- `answerDocument` (179) handles a planner request's errors:
+  - an answer that was lost is told to the owner with `lostReply`, and a refusal with `refusedReply`;
+  - a line that met a busy service is left for the rest of the run (`waitingLines`, flow.mjs 819);
+  - trouble that is everyone's is thrown.
+
+This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/automation/flow.mjs (+42/−14, 234,449 → 236,089 bytes, 3,830 → 3,858 lines; `dc03f010d355e07754177e6cd786e13acb0a4f7123ff1ebbb4ff0f880156df77` → `f2d0c51e1300eb1767cbf8d6556b741a6c273062e5805dba6c87c0de80f84067`). The first commit has +40/−14 and the second +3/−1. Every changed line is in one of three hunks: the constructor's `waitingLines` (816–819), the owner retry's two deletions (1427–1431), and `move()`'s catch with the new `requestFailed` and `errorScope` methods (1514–1553). The duration code sits outside them:
+
+- the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29);
+- `slidesMinutes` and `episodeMinutes` (63–69);
+- the anime `body_target_seconds / 60` settlement (490);
+- `planPayload`'s `target_minutes` (1683);
+- the drama request and series episode targets (1896–2030);
+- the writer, re-plan and lint-fix targets (2450–2479, 2815).
+
+The file's lines naming any of these terms are the same 20 lines, with the same text, at both revisions: `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `body_target_seconds`, `KNOWLEDGE_MIN`, `duration`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_proof`, `runtime_policy_hash`, `runtimePolicyHash`, `body_seconds`, `manual_review_qa`, `total_frames`, `animeRuntimeProof`, `formatClock`, `.fps`. `move()` behaves as before for every error:
+
+- The one reorder puts OUTPUT_INVALID ahead of POLICY_HOLD and RUN_UNCERTAIN. The three codes are distinct constants (`video_ai_output_invalid`, `video_ai_drama_disabled`, `video_ai_run_uncertain`). An error carries one code, so no error can match two of these branches.
+- After that come the same tests, in the same order, making the same calls. `jobGone` already took `sends = null` at the baseline (1534 there), so `jobGone(state, error, null)` is the old call.
+- `requestFailed` is async. A throw inside it (RUN_PENDING, or a "run" scope) rejects `move()`'s promise with the same error object, and `move()`'s callers get it as before.
+- `moved(state)` still runs only after a visit with no error.
+- A seeded differential run backs this. It imported both revisions' flow.mjs, the baseline from a scratch tree made with `git archive 8da20621`. It made `advance()` throw 3,000 random errors and ran `move()` from each revision.
+  - The errors drew on 28 codes (the empty code among them), 13 statuses, both `who` values, a stage or none, and `gone` or not. They also varied `retry_after`, `unit` and `why`, a policy hold's details and a PROJECT_HELD slug. 31 of them were plain TypeErrors.
+  - Each video started with no deferrals or with 0 to 8 earlier ones, some shared, and some with earlier writer failures. The fake site sometimes refused the report.
+  - Both revisions gave identical results for every case. That covers the line returned or the error thrown (and whether it was the same object), the state in memory, the saved auto.json, `skipped`, `halted` and the reports sent.
+  - The 3,000 split as follows: 638 deferred; 1,180 thrown, 114 of them RUN_PENDING; 104 set aside for PROJECT_HELD; 109 `retryLater`; and 969 blocked. The blocks were 283 with no kind, 117 `deferred:*`, 347 `job_gone:*`, 118 `uncertain:*` and 104 policy holds.
+
+So `move()` routes every error as before. No stage that makes or checks a length is skipped, deferred or blocked differently on its own unit: the writer and lint, the verifier and listener, the gates, the narration and media, assemble, package, QA, review-push and the languages. Only discuss.mjs writes `blocked_line` and `line_defers`. The retry deletes them next to the block fields, after `resetForRetry`, which reads neither. `waitingLines` holds message ids that only `answerDocument` reads.
+
+Findings, tools/video/automation/discuss.mjs (+210/−35, 18,462 → 29,566 bytes, 304 → 479 lines; `74ad92a459787188cf2b64ee7663ae31ed5629ffc54fc9cc9fe8a8888964078c` → `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea`). The first commit has +148/−27 and the second +78/−24. The file's one duration line is unchanged: `target_minutes: series.target_minutes` in `documentDiscussionPayload`, 135 at the head. So are `scriptStateFor`, `scriptDiscussionPayload` and `discussStep` (230–286, 467–479). The question is whether a rewritten screenplay can now get past lint, the verifier, the listener or the script gate:
+
+- The flags at the baseline. `answerHeld` set `verified` and `listener_done` false only after `saveAndLint` returned with no refusal (280–281 there). Sometimes `saveAndLint` threw after it had written the rewrite: a lint repair still running (RUN_PENDING), a repair that failed, or a STOP whose restore lost the lease. That left the rewrite in video.json with the flags as they were, which for a screenplay at the gate means checked.
+- The flags at the head are set false and saved before `saveAndLint` runs (426–427). Each way out:
+  - A rewrite that passes lint keeps them false, the baseline's end state.
+  - A refusal puts video.json back to the bytes read before the rewrite (`before`), then the flags and notes back to their earlier values (`undo`). The baseline left the same values, since it never changed them on that path.
+  - A STOP whose restore succeeds does the same and throws.
+  - A restore that loses the lease throws before `undo`, so the flags stay false.
+  - RUN_PENDING, or any error that is not an AutomationError, is thrown with the flags false.
+  - Any other AutomationError goes to `lineFailed`, which defers or blocks the video with the flags false.
+- Nothing inside `saveAndLint`, `settled` or `animeRewrite` writes `verified` or `listener_done`. So `undo` puts back exactly what the baseline would have kept. The change removes the checked-but-rewritten state and adds none.
+- Lint before everything. The "script passes lint" step is done only when lint has no errors (core/state.mjs 444, `valid`). Otherwise `advance()` sends the video to `write()` (flow.mjs 2302). For a drama, `write()` first sets `target_minutes` again from the anime policy or `episodeMinutes` (2815). It then repairs the saved video.json through `saveAndLint`. All of that comes before `verify` (2319), `listen` (2320) and `scriptGate` (2322), and for a series episode `scriptGate` checks again when script-check.json does not match the script. So a rewrite whose repair did not finish still meets lint and its duration rules, the verifier, the listener and the gate. The new tests assert `verified` and `listener_done` false after a repair still running and after a failed one.
+- The line's errors. `lineFailed` uses `requestFailed`, which only defers or blocks the video, or throws. `scriptStateFor` finds only active videos, so a block records `blocked_from_status` "active" and the owner's retry resumes the video at `advance()`. Restoring the line's own row raises `defer_count`, so the video can reach `deferred:writer` sooner. A block or a deferral stops the video and never moves it on. Taking the slug out of `runSlugs` decides only which saved answers `step()` settles.
+- The kept reply. For a screenplay it is `{ reply_md, revised: null }`. `takeUnposted` posts it through `messageAnswer` and removes the file; it writes nothing of the video's and asks no model. For a document the kept body may carry a `revised` that `documentProblem` (series.mjs, bound and unchanged) passed before the body was kept. It is posted later with the same `revision_context` it would have carried. The rest are messages to the owner or lines left for a later run: `blockedReply`, the held lines, `lostReply`, `refusedReply` and `waitingLines`.
+- A case-insensitive scan of the changed lines looked for these words: minute, second, frame, fps, duration, runtime, timeline, window, target, slot, floor, 480, 600, 780, 14,400, MIN_EPISODE, formatClock, qa, policy, manual_review, process.env, 分鐘, 秒, 時長, 片長, lint, verified, listener, tempo, fit, narration, dub, tts, assemble, package, final, gate.
+  - In discuss.mjs it finds only comments, the flag lines above and the lint-repair request's name. "second" there is a second model request, and "policy" is a policy hold.
+  - In flow.mjs it finds only the POLICY_HOLD line that moved and its JSDoc.
+
+Findings, tools/video/automation/series.test.mjs (+285/−4, 145,500 → 166,530 bytes, 1,867 → 2,148 lines; 57 → 64 top-level tests and 67 with subtests; `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` → `d82cdac4fe85203b648659f54fe91b49059cbe6dcb9e18f5eff41336358a8e22`). The first commit has +121/−2 and the second +178/−16. The four removed lines are:
+
+- the flow.mjs import, which now also takes `DEFER_LIMIT` and `DEFER_MAX_MS`;
+- `durableDiscussion`'s signature, which now takes `setup`;
+- the fake answer route, which can now refuse;
+- the fake job line, which now spreads `failing`.
+
+All three switches default to off, so the existing tests meet the same fake server. What is added:
+
+- three helpers;
+- the fake's switches `refuseAnswers`, `failJobs` and `refuseRuns`;
+- seven tests, one with three subtests. They cover a lost answer, a refusal, a job failed before dispatch, deferrals up to the limit, a reply the site did not take (once plain, once with a block in between), a lint repair still running, a failed lint repair, and a long anime's plan kept through a busy act.
+
+They assert step lines, statuses, block kinds, `blocked_line`, `line_defers`, journals, requests sent, answers posted, and `verified` and `listener_done`. One test writes auto.json with `production_policy: "long-anime-v1"`. Its lane setup strips that from `scriptPayload` and stubs `animeRewrite`. It asserts paid requests and replies, nothing about a target. The scan's matches here are four kinds of line:
+
+- the fixture name `screenplayAtTheGate`;
+- the lint-repair tests;
+- the flag assertions;
+- that test's `production_policy`.
+
+No duration assertion is removed or loosened. The duration-term lines are the same 20 at both revisions. The opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at line 31 is byte-unchanged, and no added line in the diff reads or sets process.env.
+
+Ran (Node v22.22.0, Linux, in the worktree at `1c19e001`, node_modules linked, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing: all 108 bindings and the report hash at `8da20621` and `1c19e001`, the CR and BOM checks, the delta against REVIEW_FILES, and the empty diffs above;
+- `git diff 8da20621 1c19e001` of the three bound files, read in full, with each commit's numstat;
+- the changed-line scans, and the duration-term line sets of the three files at both revisions;
+- reads of flow.mjs: `move`, `requestFailed`, `jobGone`, `errorScope`, `defer`, `moved`, `retryLater`, `unanswered`, `block`, `policyHold`, the owner retry, `stepOnce`, `fence`, `restoreVideo`, `saveAndLint`, `settled`, `animeRewrite`, `write`, `scriptGate`, and `advance()` from "script passes lint" to the script gate;
+- reads of core/state.mjs's lint step, of discuss.mjs from `unusableReply` to `answerHeld`, and of run-receipts.mjs's `find`, `adopt` and `settle`;
+- two scratch trees, the baseline from `git archive 8da20621` and the head from `git archive 1c19e001`. Each holds tools, docs/videos, .agents, .claude, tasks and package.json, linked to this worktree's node_modules. There:
+  - `node --test` passed the baseline's series.test.mjs 57 of 57, discuss.test.mjs 6 of 6 and automation.test.mjs 193 of 193, and the head's 67 of 67, 9 of 9 and 193 of 193.
+  - A third tree is the head with the baseline's discuss.mjs and flow.mjs. There the head's series.test.mjs failed 10 of 67: the seven new tests and the three subtests of the second. The other 57 passed.
+  - The head's discuss.test.mjs did not load in that tree, since the baseline does not export `blockedReply`, `lostReply` or `refusedReply`. With only those three string functions appended to that copy, it failed 3 of 9, the three new tests, and the other 6 passed.
+  - The head's automation.test.mjs passed 193 of 193 against the baseline's two files.
+- the differential run above, in the same scratch directory.
+
+Before rebinding, `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same three paths. `npm run test:tools` ran 2,083 tests: 2,078 passed, 4 skipped and 1 failed, the same regression on the same three paths. `npm run check:tasks` exited 0. The CLI check, the long-form tests, `npm run test:tools` and `npm run check:tasks` are run again after rebinding. Their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the change itself. That includes:
+  - the sorting of the discussion's errors, and `blocked_line` and `line_defers`;
+  - holding or answering a blocked video's line;
+  - the kept reply and its file;
+  - marking the rewrite unchecked first;
+  - `waitingLines`;
+  - the planner's replies and their wording;
+  - settling or adopting the saved runs.
+- discuss.test.mjs and the task file are not reviewed. client.mjs and run-receipts.mjs were read only for what a saved, adopted or settled journal does, and are not reviewed.
+- No real screenplay was discussed, rewritten, checked or sent to a gate. No real model, site or durable job was called, and the tests run under the opt-out.
+- Not run or seen: the Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, and the production host.
+- The 105 bindings this change did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2308,11 +2431,11 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
 | `tools/video/automation/automation.test.mjs` | `b1c3aa90e0fee599273b3cb48658a2540ffecd9e1e10e4db236914c1c20b6f35` |
-| `tools/video/automation/discuss.mjs` | `74ad92a459787188cf2b64ee7663ae31ed5629ffc54fc9cc9fe8a8888964078c` |
-| `tools/video/automation/flow.mjs` | `dc03f010d355e07754177e6cd786e13acb0a4f7123ff1ebbb4ff0f880156df77` |
+| `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
+| `tools/video/automation/flow.mjs` | `f2d0c51e1300eb1767cbf8d6556b741a6c273062e5805dba6c87c0de80f84067` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
-| `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |
+| `tools/video/automation/series.test.mjs` | `d82cdac4fe85203b648659f54fe91b49059cbe6dcb9e18f5eff41336358a8e22` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
