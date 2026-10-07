@@ -202,6 +202,7 @@ node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --p
 
 - `totals.usd` 是這支影片已承諾的錢（伺服器記的 ＋ 還在預留的）；`capProblem` 比的就是它加上這一次，所以進行中與死掉留下的預留都擋得到，訊息會寫出其中多少是預留。`totals.reserved`／`reservations` 是其中預留的部分；舊帳本沒有 `reserved` 列，讀起來就是 0，其他欄位照舊。
 - judge：`Stage.judge` 先 `spend(JUDGE_USD_PER_CALL)` 過上限才問，回來才記；一次 US$0.01 不另外預留，程序在問到一半死掉最多少記一筆。
+- judge 與 locate 送出後沒等到回答（網站路由的 180 s 時限到了，或 API、網站在問到一半時重啟），路由回 502 `upstream_unavailable`，`tools/video/media/client.mjs` 會再問一次：最壞多一次 Gemini 呼叫（約 US$0.01），伺服器當天的 judge 額度也少一格（第一次那格沒有退回）。這是刻意接受的：事件少、代價小，而工具本來就會重問 `video_media_judge_failed`（API 在 httpx 逾時後回這個碼，那時 Gemini 可能已經答了）。不像語音（`video_speech_answer_lost`）那樣停下來等站主（2026-10-07-a-paid-media-judge-or-locate-call）。
 - `clips import --usd N`（N > 0）：先讀 `status` 拿上限、過 `spend`，以 `import:<shot>:<sha256>` 為 key 預留，`--judge` 的那一次 judge 看得到這筆；`bookImport` 用匯入列取代預留，沒記成就放掉。沒有 `--force` 可以越過上限。
 - 估價：`node .agents/skills/animation-production/scripts/episode_estimate.mjs <video.json> --workdir <VIDEO_WORKDIR>/<slug>`（或 `--ledger <檔>`）印「已花、預留、上限還剩」，裁定比的是最壞情況對剩餘；`--json` 多 `ledger` 與 `verdict.remaining_usd`。沒給就當還沒花錢。
 - 不管的：伺服器的月額度照舊由 `meter.py` 預留與退回，這裡只是單支的視角；`run_report.mjs` 把留下來的 `reserved` 當花費列出（它讀 `cost_usd`），對帳後自然消失。

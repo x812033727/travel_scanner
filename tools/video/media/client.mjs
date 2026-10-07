@@ -54,6 +54,11 @@ export const EXHAUSTED_CODES = new Set(["video_media_job_exhausted"]);
 // video_media_invalid: locate was sent something that is not a picture (a clip); the tool extracts a frame first.
 // video_media_stock_not_found: the vendor has no photo under the id the tool asked for; pick another candidate.
 const TOOL_CODES = new Set(["video_media_reference_missing", "video_media_reference_too_large", "video_media_route_unknown", "video_media_bad_part", "video_media_hash_mismatch", "video_media_invalid", "video_media_stock_not_found"]);
+// A judge or locate call is asked again on these too, though it is a Gemini call booked on the
+// server: the web route's 502 `upstream_unavailable` may follow one the API made (its 180 s
+// deadline, or a restart mid-call), and `video_media_judge_failed` one Gemini may have answered
+// after an httpx timeout. At worst one more US$0.01-class call and one judge unit, accepted
+// rather than held for the owner as a lost speech answer is (docs/videos/DRAMA.md §先預留、後對帳).
 const RETRYABLE_CODES = new Set(["video_media_upstream_busy", "video_media_job_busy", "rate_limit_exceeded", "upstream_unavailable", "video_media_judge_failed", "video_media_locate_failed", "video_media_stock_failed"]);
 // Codes of a failed job that a new seed may fix; the stages retake on these, not on the owner's.
 export const RETAKE_CODES = new Set(["video_media_rejected", "video_media_upstream_failed", "video_media_upstream_expired", "video_media_unsupported_type", "video_media_upstream_invalid"]);

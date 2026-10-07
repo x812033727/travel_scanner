@@ -1,11 +1,11 @@
 ---
 id: 2026-10-07-a-paid-media-judge-or-locate-call
 title: A paid media judge or locate call whose answer was lost is asked again
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-media-judge
+claimed_at: 2026-10-07T11:29:03Z
 created_at: 2026-10-07T09:30:00Z
 completed_at:
 branch:
@@ -15,6 +15,7 @@ scope:
   - apps/web/app/api/video/media/[...path]/route.test.ts
   - tools/video/media/client.mjs
   - tools/video/media/media.test.mjs
+  - docs/videos/DRAMA.md
 ---
 
 # A paid media judge or locate call whose answer was lost is asked again
@@ -35,7 +36,7 @@ while a call is in flight. The cost is one extra judge unit and possibly one mor
 
 ## Definition of done
 
-- [ ] Choose and record one of these:
+- [x] Choose and record one of these:
   - A lost judge or locate answer is told apart from an API never reached, and is sent once.
   - The extra unit and call are accepted, and written down where the drama costs are.
 
@@ -46,7 +47,7 @@ while a call is in flight. The cost is one extra judge unit and possibly one mor
   out, keeping 502 `upstream_unavailable` for connect failures. Then the media client sends
   those calls once, and asks again only on the route's 502, `video_media_judge_failed` or
   `video_media_locate_failed`.
-- [ ] Option (b): record in `docs/videos/DRAMA.md` that a mid-call restart may cost one more
+- [x] Option (b): record in `docs/videos/DRAMA.md` that a mid-call restart may cost one more
   judge unit. The media client already retries `video_media_judge_failed`, which accepts a
   second Gemini charge after an httpx timeout.
 
@@ -58,3 +59,16 @@ while a call is in flight. The cost is one extra judge unit and possibly one mor
 
 - Found by the review of `2026-10-07-automation-client-settles-a-judge-route` (2026-10-07), as a
   nit outside that task's client.
+- 2026-10-07 (claude-opus-5-5-media-judge). Chose option (b), and recorded it in
+  `docs/videos/DRAMA.md` §先預留、後對帳 (the judge bullets) and in a comment by the media
+  client's `RETRYABLE_CODES`. The reasons:
+  - The event is rare. With the defaults the API's own Gemini timeout (150 s) answers
+    `video_media_judge_failed` before the route's 180 s abort, so the real trigger is a restart
+    mid-call.
+  - The cost is at most one more US$0.01-class Gemini call and one judge unit of the day.
+  - The client already re-asks `video_media_judge_failed`, which may follow a call Gemini
+    answered, so a second charge is accepted there already.
+  - Option (a) would hold the call and stop the stage, and the worker would still ask again next
+    round, so it would save little.
+  - Option (a) (a lost answer of its own in the media forwarder, and a paid path in the client)
+    is not done. The task's scope keeps those files in case the owner prefers it.
