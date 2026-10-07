@@ -19,6 +19,8 @@ scope:
   - tools/video/media/clips.test.mjs
   - tools/video/tts/cli.mjs
   - tools/video/tts/tts.test.mjs
+  - tools/video/tts/check.mjs
+  - tools/video/tts/check.test.mjs
   - tools/video/dubs/cli.mjs
   - tools/video/dubs/dubs.test.mjs
   - tools/video/automation/discuss.mjs
@@ -61,22 +63,22 @@ there, can still change the project's canonical files.
 
 ## Definition of done
 
-- [ ] `look`, `clips` and `music` refuse to start under STOP or without the lease, as `keyframes` does (`mayWrite` in `media/keyframes.mjs`). Each one exits without writing anything, and a test shows it.
-- [ ] `tts`, `dub` and `check-audio` take the lease (or join the worker's) before their first paid request or write. Their existing STOP behaviour and exit codes stay as they are.
-- [ ] `restoreVideo` in `discuss.mjs` checks the fence before writing video.json.
-- [ ] Losing the lease inside a command the worker runs in-process sets the video aside, as `fence()` does, rather than blocking it as the owner's (exit 3). Review nit 6 of 2026-10-07.
+- [x] `look`, `clips` and `music` refuse to start under STOP or without the lease, as `keyframes` does (`mayWrite` in `media/keyframes.mjs`). Each one exits without writing anything, and a test shows it.
+- [x] `tts`, `dub` and `check-audio` take the lease (or join the worker's) before their first paid request or write. Their existing STOP behaviour and exit codes stay as they are.
+- [x] `restoreVideo` in `discuss.mjs` checks the fence before writing video.json.
+- [x] Losing the lease inside a command the worker runs in-process sets the video aside, as `fence()` does, rather than blocking it as the owner's (exit 3). Review nit 6 of 2026-10-07.
 - [ ] Inside the worker, a media command that finds no unit or step lease refuses instead of taking the lease until `auto` exits (review nit 7). No such call exists today, so this guards future code.
 - [ ] Optional: a lease held for more than a few hours shows on `/admin/videos` (holder, since when), not only in the worker log.
-- [ ] `docs/videos/AUTOMATION.md` and the `deploy` / `prod-host-ops` skills say to run video commands by hand with
+- [x] `docs/videos/AUTOMATION.md` and the `deploy` / `prod-host-ops` skills say to run video commands by hand with
       `docker compose exec video-worker`, never `docker compose run`. A `run` container shares the fixed
       hostname but has its own pid namespace, so it could judge a live lease dead and take it over (re-review of
       2026-10-07). Widen the scope to those files when this is claimed.
-- [ ] `fence()` on a series document's discussion does not create a work directory named after the series slug
+- [x] `fence()` on a series document's discussion does not create a work directory named after the series slug
       (`acquireProjectLease` makes the directory; re-review nit).
 
 ## Steps
 
-- [ ] Reuse `requireProjectLease` / `mayWrite` and do not add a second mechanism.
+- [x] Reuse `requireProjectLease` / `mayWrite` and do not add a second mechanism.
 - [ ] Run `node tools/video/long-form/cli.mjs check`. If a bound file changes, an independent reviewer adds an increment to `docs/videos/long-form/review.md` (scope it in then).
 
 ## How to verify
@@ -91,3 +93,21 @@ npm run test:tools
 - The lease is taken over only when its holder is certainly dead. That means the same host and the same boot, and the pid is free or now belongs to another process, judged by `/proc` start time.
 - `docker-compose.prod.yml` gives `video-worker` the fixed `hostname: video-worker`, so a lease that a worker killed mid-unit by a deploy leaves behind is taken over by the next worker.
 - A lease from another container (for example a `docker compose run`) still counts as held until a person removes it.
+
+### 2026-10-07 implementation (claude-opus-5-5-lease-gaps)
+
+- `media/stages.mjs` exports `mayWriteProject(ctx, workdir, owner)`. It returns false under STOP and raises an owner MediaError when the lease is held elsewhere. `keyframes`, `look` (drawing and `--choose`), `clips`, `clips import` and `music` (generated, and the owner's own track) call it right before their first write.
+  - `clips import` under a STOP that is already there now stops before it copies the clip in. The existing test's message changed; it still asserts that nothing was recorded or held.
+- `tts`, `dub` and `check-audio` call `requireProjectLease(..., { as })` before their first request or write. The new `as` option turns a refusal into the command's own SpeechError, so it exits 3. Their STOP handling and exit codes are unchanged.
+- `flow.mjs`:
+  - `restoreVideo()` (the discussion's revert) checks the lease but not STOP, so a STOP never leaves a broken script behind.
+  - `media()` runs the fence before acting on an exit 3, so a command that lost the lease sets the video aside instead of blocking it.
+  - `fence()` takes no lease, and makes no directory, for a slug that has no work directory, such as a series document.
+- Docs: `docs/videos/AUTOMATION.md` explains the lease and the exec-not-run rule. The `deploy` skill says a killed worker's `LEASE` is taken over. `prod-host-ops` rule 7 is exec, not run. Both skill copies stay byte-identical.
+- Not done:
+  - **Review nit 7** (refuse to take the lease inside the worker without a unit): `auto` runs the Shorts step in the same process outside any unit, and its media commands would be refused. Decided against; the item stays unticked with this reason.
+  - **The optional `/admin/videos` lease row** needs an API field and UI. Not done; it is left for a ticket of its own if wanted.
+- Tests:
+  - tts / check-audio, dub: a foreign lease means no speech request and no write.
+  - clips / music, look: STOP and a foreign lease each mean nothing bought and nothing written.
+  - automation: `restoreVideo` under STOP and under a foreign lease; an exit 3 after the lease went; no directory for a series slug.

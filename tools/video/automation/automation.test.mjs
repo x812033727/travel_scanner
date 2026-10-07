@@ -26,6 +26,7 @@ import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
 import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
 import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
+import { acquireProjectLease } from "../core/project-lease.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
 import { Automation, automatedVideos, blockedKindOf, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
@@ -4932,6 +4933,47 @@ test("a STOP that comes while a media command runs: its exit is not recorded as 
   await assert.rejects(worker.media(state, "keyframes"), (error) => error.code === "video_project_held" && /^keyframes was not sent/.test(error.message));
   assert.deepEqual(ran, ["keyframes"]);
   delete videos.ctx.runCommand;
+});
+
+test("a refused rewrite's script goes back under a STOP, but not once another producer holds the project; a command that lost the lease sets its video aside; a series slug gets no work directory", async () => {
+  const slug = "restoring-video";
+  const videos = durableVideos([slug]);
+  const worker = await videos.worker();
+  const state = videos.state(slug);
+  const video = path.join(videos.box.root, "docs", "videos", slug, "video.json");
+  mkdirSync(path.dirname(video), { recursive: true });
+  writeFileSync(video, "broken rewrite");
+  // Under a STOP the last good script still goes back: a discussion never leaves a broken one.
+  writeFileSync(path.join(videos.box.work, slug, "STOP"), "owner hold");
+  worker.restoreVideo(state, "good script");
+  assert.equal(readFileSync(video, "utf8"), "good script");
+  rmSync(path.join(videos.box.work, slug, "STOP"));
+  // Another producer holds the project now: its files are its own.
+  const lease = path.join(videos.box.work, slug, "LEASE");
+  const foreign = JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "manual recovery", pid: 4242, host: "another-container", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" });
+  writeFileSync(lease, foreign);
+  writeFileSync(video, "their rewrite");
+  assert.throws(() => worker.restoreVideo(state, "good script"), (error) => error.code === "video_project_held");
+  assert.equal(readFileSync(video, "utf8"), "their rewrite");
+  // As step() does when the step ends (restoreVideo was called outside one here).
+  for (const each of worker.stepLeases.values()) each.release();
+  worker.stepLeases.clear();
+  assert.equal(readFileSync(lease, "utf8"), foreign, "letting go never removes another producer's lease");
+  // A media command that exits 3 because the lease went: the video is set aside, not blocked.
+  rmSync(lease);
+  const held = acquireProjectLease(path.join(videos.box.work, slug), { owner: "auto" });
+  worker.leases.set(slug, held);
+  videos.ctx.runCommand = async () => {
+    writeFileSync(lease, foreign);
+    return { code: 3, out: "the project's lease is no longer this process's; nothing was sent or written" };
+  };
+  await assert.rejects(worker.media(state, "keyframes"), (error) => error.code === "video_project_held");
+  assert.equal(videos.state(slug).status, "active", "not blocked as the owner's");
+  worker.leases.delete(slug);
+  delete videos.ctx.runCommand;
+  // A series document's discussion fences its series slug, which has no work directory.
+  worker.fence("a-series-slug", "the planner request");
+  assert.equal(existsSync(path.join(videos.box.work, "a-series-slug")), false);
 });
 
 test("a writer job the server failed before dispatching it (a STOP file, the switch off, a queue that lost it) defers its video and is sent again once; it never blocks", async () => {

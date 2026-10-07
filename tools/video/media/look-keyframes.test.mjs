@@ -1631,3 +1631,26 @@ test("a shot whose prompt stops fitting the image model's budget keeps its earli
   assert.match(after.shots.desk.problems.join("; "), /^prompt is 700 characters; the minimax budget for this shot is \d+ /);
   assert.equal(after.shots.desk.problems.length, 1);
 });
+
+test("look run by hand under the project's STOP file, or while another producer holds it, draws and chooses nothing", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const site = mediaSite({ verdicts: () => ({ overall: 9, passed: true }) });
+  assert.equal(await main(["look", "--slug", box.slug], context(box, site.fetchImpl).ctx), EXIT.ok);
+  const files = () => ["characters/manifest.json", "characters/choice.json"].map((name) => (existsSync(path.join(box.workdir, name)) ? readFileSync(path.join(box.workdir, name), "utf8") : null));
+  const before = files();
+  const images = site.state.images.length;
+  writeFileSync(path.join(box.workdir, "STOP"), "owner hold");
+  for (const args of [[], ["--choose", "jingwei=1,yandi=1"]]) {
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["look", "--slug", box.slug, ...args], run.ctx), EXIT.ok, args.join(" ") || "draw");
+    assert.match(run.out.stdout, /stopped by the STOP file before anything was drawn or written/);
+  }
+  rmSync(path.join(box.workdir, "STOP"));
+  writeFileSync(path.join(box.workdir, LEASE_FILE), JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "auto", pid: 4242, host: "video-worker-elsewhere", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+  for (const args of [[], ["--choose", "jingwei=1,yandi=1"]]) {
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["look", "--slug", box.slug, ...args], run.ctx), EXIT.owner, args.join(" ") || "draw");
+  }
+  assert.equal(site.state.images.length, images, "no sheet was drawn");
+  assert.deepEqual(files(), before, "no sheet or choice was written");
+});

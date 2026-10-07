@@ -833,7 +833,12 @@ export class Automation {
   }
 
   /** Put video.json back as it was before a revision that lint refused. */
+  /**
+   * Put back the script a refused rewrite replaced (discuss.mjs). Only while this step still
+   * holds the project's lease; a STOP does not keep it from leaving the last good script.
+   */
   restoreVideo(state, source) {
+    this.fence(state.slug, "restoring video.json", { stop: false });
     writeFileSync(path.join(docDir(state.slug, this.ctx.root), "video.json"), source);
   }
 
@@ -884,15 +889,17 @@ export class Automation {
    * runSlugs first, so step() does not settle an answer this unit already received: it stays
    * saved under its request key, and the unit after the STOP is gone takes it without paying again.
    */
-  fence(slug, what) {
-    let why = stopRequested(this.workdir(slug)) ? "the project's STOP file holds it" : null;
+  fence(slug, what, { stop = true } = {}) {
+    const workdir = this.workdir(slug);
+    let why = stop && stopRequested(workdir) ? "the project's STOP file holds it" : null;
     if (!why) {
       try {
         // A path outside the video's unit (a discussion of its screenplay) takes the lease here,
-        // for the rest of the step (step() lets it go).
+        // for the rest of the step (step() lets it go). A series document has no work directory
+        // of its own, and nothing of a video's to hold.
         const held = this.leases.get(slug) ?? this.stepLeases.get(slug);
         if (held) held.verify();
-        else this.stepLeases.set(slug, acquireProjectLease(this.workdir(slug), { owner: "auto", now: this.ctx.now }));
+        else if (existsSync(workdir)) this.stepLeases.set(slug, acquireProjectLease(workdir, { owner: "auto", now: this.ctx.now }));
       } catch (error) {
         if (!(error instanceof ProjectLeaseError)) throw error;
         why = error.message;
@@ -2566,6 +2573,9 @@ export class Automation {
     }
     if (result.code === 1 && FIX_SOURCES[command]) return this.fixPrompts(state, command, {});
     if (result.code === 3) {
+      // The command lost the project's lease, or met a STOP, while it ran: the video sits the run
+      // out, as fence() sets it aside anywhere else, rather than waiting on the owner.
+      this.fence(state.slug, `recording ${command}`);
       // The server's attempts for a request are spent (media/client.mjs EXHAUSTED_CODES): the
       // owner's retry moves the stage to other seeds, where a cap or a setting it leaves as it
       // is. Only the reason the owner reads (the last line) says which: a run that logged a

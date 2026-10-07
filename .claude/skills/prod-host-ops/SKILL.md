@@ -19,6 +19,7 @@ metadata:
 4. **不印出秘密。** 金鑰只報「有／沒有」；`--actor-email` 從容器的 `ADMIN_EMAILS` 取，經 shell 變數傳、不印出來。
 5. **自己的檢查迴圈要慢**：頁面限流是每個位址 5 r/s（burst 20），腳本一律循序、每次 ≥ 1 秒；自己拿到 429 先懷疑自己的節奏。
 6. **用戶端的東西要在真的瀏覽器裡驗。** curl 帶手寫的 `Origin` 只證明伺服器規則；`form_input` 只改 DOM 不改 React state。
+7. **影片指令用 `exec`，不用 `run`。** 在主機上手動跑 `tools/video/cli.mjs` 一律 `docker compose -f docker-compose.prod.yml exec -T video-worker …`；`docker compose run` 另開的容器跟工人同一個 hostname 卻看不到工人的程序，會把工人拿著的專案鎖 `LEASE` 誤判成死的而接手（`docs/videos/AUTOMATION.md`）。
 
 ## 主幹
 

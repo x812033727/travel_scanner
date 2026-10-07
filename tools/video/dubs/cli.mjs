@@ -18,6 +18,7 @@ import { isDrama, mixHash, resolveMusic, resolveSfx, sfxHash } from "../core/dra
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
+import { requireProjectLease } from "../core/project-lease.mjs";
 import { eachLine, LOCALES } from "../core/schema.mjs";
 import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, SAMPLES_PER_FRAME, framesFor, msToSamples, speechHash } from "../core/timeline.mjs";
@@ -383,6 +384,8 @@ async function dub(args, ctx) {
     await verifyBrandingAssets(selection, { tools: ffmpeg.tools, exec: ffmpeg.run });
   }
 
+  // Not while another producer holds the project (core/project-lease.mjs); the worker's unit holds it already.
+  requireProjectLease(workdir, { owner: "dub", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
   const credentials = requireCredentials(ctx);
   const clientOpts = clientOptions(ctx, credentials);
   const status = await speechStatus(clientOpts);

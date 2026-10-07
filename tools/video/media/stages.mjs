@@ -147,6 +147,27 @@ export const retakeable = (error) => error instanceof MediaError && RETAKE_CODES
 
 export const stoppedError = () => new MediaError("stopped by the STOP file; rerun to continue", { code: "stopped" });
 
+/**
+ * Whether a media command may write the project's files at all: not under the project's STOP
+ * file (false, said on stdout), and only while this process holds the project's lease
+ * (core/project-lease.mjs; another producer's is the owner's to sort out, and nothing is written).
+ * Each command calls it once, right before its first write. Once a run is under way, a STOP that
+ * arrives keeps what was already paid for and asks for nothing more (Stage.generate, judge).
+ */
+export function mayWriteProject(ctx, workdir, owner) {
+  if (stopRequested(workdir)) {
+    ctx.stdout.write("stopped by the STOP file before anything was drawn or written; remove it to continue\n");
+    return false;
+  }
+  try {
+    requireProjectLease(workdir, { owner, now: ctx.now });
+  } catch (error) {
+    if (error instanceof ProjectLeaseError) throw new MediaError(error.message, { code: PROJECT_LEASED, who: "owner" });
+    throw error;
+  }
+  return true;
+}
+
 /** One stage's connection to the media server and the work directory's books. */
 export class Stage {
   constructor({ slug, workdir, options, status, stage, imageVersion = 0, format = null, now = () => new Date() }) {

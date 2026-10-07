@@ -193,16 +193,23 @@ export function holdsProjectLease(workdir) {
  * take it for the rest of the process (a command run by hand), released at exit. Throws
  * ProjectLeaseError when another producer holds it, or may.
  */
-export function requireProjectLease(workdir, { owner, now, io } = {}) {
-  const file = leaseFile(workdir);
-  const mine = held.get(file);
-  if (!mine) {
-    acquireProjectLease(workdir, { owner, now, io });
-    return;
-  }
-  const holder = leaseHolder(workdir);
-  if (holder?.token !== mine.token) {
-    held.delete(file);
-    throw new ProjectLeaseError(`the project's lease is no longer this process's${holder ? `; it is ${describe(holder)}` : ""}; nothing was sent or written`, { holder });
+export function requireProjectLease(workdir, { owner, now, io, as = null } = {}) {
+  try {
+    const file = leaseFile(workdir);
+    const mine = held.get(file);
+    if (!mine) {
+      acquireProjectLease(workdir, { owner, now, io });
+      return;
+    }
+    const holder = leaseHolder(workdir);
+    if (holder?.token !== mine.token) {
+      held.delete(file);
+      throw new ProjectLeaseError(`the project's lease is no longer this process's${holder ? `; it is ${describe(holder)}` : ""}; nothing was sent or written`, { holder });
+    }
+  } catch (error) {
+    // `as` turns the refusal into the caller's own error (a SpeechError, a MediaError), whose
+    // exit code its command already maps.
+    if (as && error instanceof ProjectLeaseError) throw as(error);
+    throw error;
   }
 }
