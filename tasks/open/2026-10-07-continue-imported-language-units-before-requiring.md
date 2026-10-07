@@ -1,7 +1,7 @@
 ---
 id: 2026-10-07-continue-imported-language-units-before-requiring
 title: Continue imported language units before requiring a merged locale artifact
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: codex-renewed-finals-native-units-20261007
@@ -86,13 +86,22 @@ are authorized by this follow-up.
   native integration/regression checks passed 35/35, exit 0, in 67.054 seconds,
   including real native worksheet, unit cache, stage journal, merge, captions and
   renewed-source package binding. Raw log is
-  `C:/Users/x8120/.codex/scratch/native-unit-tests-20261007/final-targeted.log`.
+  `<home>/.codex/scratch/native-unit-tests-20261007/final-targeted.log`.
   Runner SHA is
   `a93f99624227af2d2a6cee23b7e2d5c77c6e6075f43ab2954813b9dff6a1971e`;
   test SHA is
   `744cf2a83371ea89a84586a0e9ac0e29785f926bffd0ebe902c36fbde8f2e7f4`.
-  Exact-worker-image independent checks and a new full-tools run are still
-  awaiting actual exits at this checkpoint; they are not claimed as passed.
+  The same exact production worker image independently passed all 35 checks
+  plus three caller consumer checks, both actual exits 0, with network disabled,
+  source/dependencies read-only and an unpaired empty HOME. Before/after hashes
+  prove the production operator/profile runtimes and receipts stayed unchanged.
+  `independent-native-unit-tests-20261007/downloaded-evidence/test-proof.json`
+  SHA is `c911cb5ec77c9123adffe2f70f105e4dd1873ee347193122972811fc8aa25f95`.
+  The new complete Windows tools run actually exited 1: 1,948 passed, 11 failed,
+  13 platform skips. Its handoff-note host-path violation was repaired and the
+  three hygiene checks passed; Windows FFmpeg/filter-path, path-separator and
+  seven speech-journal atomic-rename failures are tracked separately. This is
+  not a full-suite green claim.
 - Production remains on the separate immutable R3 operator runtime. At
   `2026-10-07T03:37:44Z`, actual deployed consumer/review-store verification passed
   all four metadata/CC locales for EP01 and EP05 (16 parts), with selected dubs
@@ -105,7 +114,15 @@ are authorized by this follow-up.
   publish reviews, zero live publish reviews for the eight excluded slugs, and
   unchanged owner choices/paid-media counts. At 03:52Z, EP02/03/04 each had a
   confirmed English submission and the same serial producer was continuing
-  Japanese; EP06 remained queued. No draft native code was deployed into it.
+  Japanese. At `04:00:38Z` it automatically stopped held, exit 1; EP04 Japanese
+  caption translator unit 2/6 received HTTP 429 and its existing journal records
+  one unknown result. No request was repeated. All 158 successful request/result
+  records and 43 output artifacts were verified and preserved, with STOPs
+  restored and no active producer lock. EP06 remained queued. Fresh deployed
+  consumer verification at `04:03:57Z` confirms 13 cumulative R3 reviews all
+  bound to the current final and approved base metadata: 26 parts ready (EP01/05
+  four locales, EP02/03 English/Japanese, EP04 English). Full selected packages
+  remain held for missing locales/dubs. No draft native code was deployed into it.
 
 - Fresh collision inspection before the narrow 2026-10-07 caller repair found the
   old 2026-09-29 claim at 64 hours. Its checked-out branch had no tracked source
@@ -173,7 +190,7 @@ are authorized by this follow-up.
   remain unchanged. The latest separate root driver readback remains running
   with all 18 canonical STOPs retained.
 - Immutable local checkpoint:
-  `C:/Users/x8120/mokaair-work/handoff/renewed-finals-20261007/translation-r3-independent-checkpoint-20261007.json`,
+  `<home>/mokaair-work/handoff/renewed-finals-20261007/translation-r3-independent-checkpoint-20261007.json`,
   SHA `1ce895e9d5082f089807837b86439d9f6eee4dc6537a3dedbe959cfc089bf65f`.
   It binds independent review/consumer evidence SHA
   `e6ea969ae84ea6ab9acb1ae1ecc21e85ae98a28fa409e944be4cbfee121eddb4`,
@@ -199,7 +216,7 @@ are authorized by this follow-up.
 - Fresh native journal, HTTP and database readback confirmed exactly four
   successful subscription stages and zero unresolved results for EP01/EP05;
   no language review had been submitted. Operator evidence is outside Git at
-  `C:/Users/x8120/mokaair-work/handoff/renewed-finals-20261007`.
+  `<home>/mokaair-work/handoff/renewed-finals-20261007`.
 - Preserve frozen production runtime and native source receipts. Any temporary
   external operator adapter is separate from completing this native-tool ticket.
 - The isolated `validateResumeSheet` call also receives native `unitVideo`, which

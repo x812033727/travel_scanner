@@ -61,6 +61,6 @@ required; the input is a synthetic local fixture.
   by the renewed-language caller repair. This does not indicate a paid-media or
   production-language failure. Do not widen this task into that caller work.
 - Full-attempt evidence is retained outside Git at
-  `C:/Users/x8120/mokaair-work/handoff/renewed-finals-20261007/tools-r3-check.log`;
+  `<home>/mokaair-work/handoff/renewed-finals-20261007/tools-r3-check.log`;
   that attempt lost its execution session before a final suite summary/exit, so
   it must not be reported as a completed suite.

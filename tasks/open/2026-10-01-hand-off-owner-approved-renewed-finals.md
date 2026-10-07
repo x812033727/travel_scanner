@@ -130,7 +130,7 @@ timeline. A successful HTTP response is not approval, canonical activation or up
   restored and individual STOP retained. The actual aggregate
   activation audit passed at `2026-10-07T01:23:28.492Z`; no paid media or YouTube
   operation occurred. Operator artifacts are outside Git at
-  `C:/Users/x8120/mokaair-work/handoff/renewed-finals-20261007` and on the host at
+  `<home>/mokaair-work/handoff/renewed-finals-20261007` and on the host at
   `/root/renewed-finals-20261007`.
 - Fresh receipt inventory confirms all 18 previous host canonical inventories
   were empty. Activation reserved archive paths but created no old-directory

@@ -59,7 +59,7 @@ lossy declaration. This ticket does not authorize paid media or production write
 ## Notes
 
 - Operator evidence lives outside Git at
-  `C:/Users/x8120/mokaair-work/handoff/renewed-finals-20261007` and on the host at
+  `<home>/mokaair-work/handoff/renewed-finals-20261007` and on the host at
   `/root/renewed-finals-20261007`.
 - Ordinary bounded PNG compression could not bring EP01 below the actual limit;
   preserving unchanged approved artwork through a high-quality JPEG codec export

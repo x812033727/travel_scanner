@@ -66,7 +66,7 @@ From the repository root, with dependencies installed and the verified bundled
 Node directory first in PATH:
 
 ```powershell
-$nodeRuntimeDir = 'C:\Users\x8120\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin'
+$nodeRuntimeDir = '<home>/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin'
 $env:PATH = $nodeRuntimeDir + ';' + $env:PATH
 & ($nodeRuntimeDir + '\node.exe') --test --test-reporter=tap --test-name-pattern 'actual runner and native dub keep' 'docs\videos\imported-long-languages\runner.test.mjs'
 $LASTEXITCODE
@@ -82,7 +82,7 @@ none, a read-only test-source mount and no production home/credential mounts.
   No repository code, production profile, STOP/hold, provider or media state was
   changed. Production dubs remain held.
 - Actual original failure evidence is preserved outside Git at
-  `C:\Users\x8120\mokaair-work\handoff\renewed-finals-20261007\native-runner-r3-unknown-speech-isolated-20261007.log`
+  `<home>/mokaair-work/handoff/renewed-finals-20261007/native-runner-r3-unknown-speech-isolated-20261007.log`
   and its adjacent `.exit.json` (exit 1).
 - Two-invocation evidence is in
   `native-runner-r3-unknown-speech-diagnostic-20261007.log` and its `.exit.json`
