@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-the-thumbnail-is-drawn-from-a
 title: The thumbnail is drawn from a keyframe file without checking its bytes
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-thumb-bytes
 claimed_at: 2026-10-07T06:29:09Z
 created_at: 2026-10-07T04:00:00Z
-completed_at:
+completed_at: 2026-10-07T06:59:19Z
 branch:
 depends_on:
   - 2026-10-05-video-consumer-selected-image-hashes
@@ -61,8 +61,27 @@ npm run test:tools
   before the browser opens. A mismatch exits 2 and names the file ("run keyframes again or restore
   the approved picture"). Nothing is drawn, `frames/manifest.json` keeps its key and
   `thumbnail.jpg` stays.
-- The compilation thumbnail (`keyframes/thumb-source.png`, which the worker copies and hashes in
-  `automation/compilation.mjs`) is checked the same way.
+- The compilation thumbnail (`keyframes/thumb-source.png`) is checked against the hash that
+  `automation/compilation.mjs` `planMetadata` takes of its own copy. That only catches a change
+  made to the copy afterwards: the copy itself is not checked against the episode manifest's
+  sha256, so a stale episode record passes its bytes through as approved. Filed as
+  `2026-10-07-the-compilation-thumbnail-copies-an-episode`.
 - Test (`render.test.mjs`, illustrated fixture, thumbnail on shot `podium`): the approved bytes
   render; a take drawn over the file, and the file gone, are refused by both commands with nothing
   drawn or rewritten; restored, both render again. It fails on the old code.
+- Review (2026-10-07, two lenses, each finding verified). The code was right in every case tried:
+  a variant-only change, A alone, an empty hash. Changed from it:
+  - The compilation note above was corrected, and the follow-up filed.
+  - `--thumbnails-only` checks only what it draws: the language thumbnails, which sit on A's
+    keyframe. A changed picture under variant B or C no longer refuses them. It used to, which was
+    worse than before this ticket.
+  - A record without a hash has its own message ("has no hash in keyframes/manifest.json").
+  - The test now covers:
+    - B's own picture changed, where the render refuses and the language thumbnails are drawn;
+    - A checked alone, with no caption locale;
+    - a record without a hash;
+    - no browser opening on a refusal.
+    The fake renderer numbers its drawings, so the files-unchanged assertions can fail. Each
+    mutation the review found surviving (variants left out, the first picture only, an empty
+    hash accepted, only the locales checked, `--thumbnails-only` checking variants) now fails
+    the test.

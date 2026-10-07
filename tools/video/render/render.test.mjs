@@ -442,21 +442,31 @@ test("a Simplified Chinese thumbnail with a Simplified-only form is drawable in 
   assert.match(localizedThumbnails(plan, () => bundledCoverage()).gaps["zh-CN"], /U\+4F65/, "the slide fonts alone lack it");
 });
 
-test("a thumbnail whose keyframe's bytes changed or went missing is refused before anything is drawn; the approved bytes render as before", async () => {
+test("a thumbnail whose keyframe's bytes changed, went missing or have no recorded hash is refused before anything is drawn; the approved bytes render as before", async () => {
   // A later keyframes take reuses the selected file name (2026-10-07-the-thumbnail-is-drawn-from-a).
   const box = sandbox("fixture-illustrated", "illustrated");
-  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  const docFile = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(docFile, "utf8"));
   assert.equal(doc.thumbnail.data.shot, "podium");
+  // Variant B sits on a keyframe of its own.
+  doc.thumbnail.variants = [{ data: { headline: "B 的標題", shot: "desk" } }];
+  writeFileSync(docFile, JSON.stringify(doc));
   const work = (...parts) => path.join(box.workdir, ...parts);
-  const picture = work("keyframes", "podium-1.png");
-  mkdirSync(path.dirname(picture), { recursive: true });
-  writeFileSync(picture, "the approved podium");
-  const sha256 = createHash("sha256").update("the approved podium").digest("hex");
-  writeFileSync(work("keyframes", "manifest.json"), JSON.stringify({ shots: { podium: { file: "keyframes/podium-1.png", sha256 } } }));
+  mkdirSync(work("keyframes"), { recursive: true });
+  const sha = (text) => createHash("sha256").update(text).digest("hex");
+  const pictures = { podium: ["keyframes/podium-1.png", "the approved podium"], desk: ["keyframes/desk-1.png", "the approved desk"] };
+  const manifest = (overrides = {}) => ({ shots: Object.fromEntries(Object.entries(pictures).map(([shot, [file, bytes]]) => [shot, { file, sha256: sha(bytes), ...(overrides[shot] ?? {}) }])) });
+  const approve = () => {
+    for (const [file, bytes] of Object.values(pictures)) writeFileSync(work(file), bytes);
+    writeFileSync(work("keyframes", "manifest.json"), JSON.stringify(manifest()));
+  };
+  approve();
   const words = Object.fromEntries(Object.keys(thumbnailSource(doc)).map((name) => [name, `Why ${name}`]));
-  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
-  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify({ thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(doc) } }));
+  const i18n = path.join(box.dir, "i18n", "en.json");
+  mkdirSync(path.dirname(i18n), { recursive: true });
+  writeFileSync(i18n, JSON.stringify({ thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(doc) } }));
   const captures = [];
+  let opened = 0;
   let out = "";
   const ctx = {
     root: box.root,
@@ -464,41 +474,66 @@ test("a thumbnail whose keyframe's bytes changed or went missing is refused befo
     stdout: { write: (text) => (out += text) },
     stderr: { write: (text) => (out += text) },
     now: () => new Date("2026-10-07T00:00:00Z"),
-    openRenderer: async () => ({
-      capture: async (key, html) => {
-        captures.push({ key, html });
-        return { still: Buffer.from(`picture ${key}`), frames: [], problems: [] };
-      },
-      sheet: async () => Buffer.from("sheet"),
-      close: async () => {},
-    }),
+    openRenderer: async () => {
+      opened += 1;
+      return {
+        // Every drawing differs from the last, so a picture drawn over another shows on disk.
+        capture: async (key, html) => {
+          captures.push({ key, html });
+          return { still: Buffer.from(`picture ${key} #${captures.length}`), frames: [], problems: [] };
+        },
+        sheet: async () => Buffer.from("sheet"),
+        close: async () => {},
+      };
+    },
   };
   const render = ["render", "--slug", box.slug];
   const languages = [...render, "--thumbnails-only"];
   assert.equal(await main(render, ctx), EXIT.ok, out);
-  assert.ok(captures.some(({ html }) => html.includes("https://video.local/work/keyframes/podium-1.png")), "the thumbnail sits on the keyframe");
-  const rendered = readFileSync(work("frames", "manifest.json"), "utf8");
-  const thumbnail = readFileSync(work("thumbnail.jpg"), "utf8");
+  assert.ok(captures.some(({ html }) => html.includes("https://video.local/work/keyframes/podium-1.png")), "A sits on podium");
+  assert.ok(captures.some(({ html }) => html.includes("https://video.local/work/keyframes/desk-1.png")), "B sits on desk");
+  const kept = ["frames/manifest.json", "thumbnail.jpg", "thumbnail-b.jpg", "thumbnails/en.jpg"].map((file) => [file, readFileSync(work(file), "utf8")]);
+  const refused = (args, label, said) => async () => {
+    captures.length = 0;
+    opened = 0;
+    out = "";
+    assert.equal(await main(args, ctx), EXIT.usage, label);
+    assert.match(out, said, label);
+    assert.deepEqual([captures.length, opened], [0, 0], `${label}: nothing is drawn, and no browser opens`);
+    for (const [file, bytes] of kept) assert.equal(readFileSync(work(file), "utf8"), bytes, `${label}: ${file} is as it was`);
+  };
 
   for (const [what, change, said] of [
-    ["a later take drawn over the selected file", () => writeFileSync(picture, "a later take"), /the thumbnail's background keyframes\/podium-1\.png has changed since keyframes\/manifest\.json recorded it; run keyframes again or restore the approved picture/],
-    ["the selected file gone", () => rmSync(picture), /the thumbnail's background keyframes\/podium-1\.png is missing; run keyframes again or restore the approved picture/],
+    ["A's picture drawn over by a later take", () => writeFileSync(work(pictures.podium[0]), "a later take"), /the thumbnail's background keyframes\/podium-1\.png has changed since keyframes\/manifest\.json recorded it; run keyframes again or restore the approved picture/],
+    ["A's picture gone", () => rmSync(work(pictures.podium[0])), /the thumbnail's background keyframes\/podium-1\.png is missing; run keyframes again or restore the approved picture/],
+    ["A's picture recorded without a hash", () => writeFileSync(work("keyframes", "manifest.json"), JSON.stringify(manifest({ podium: { sha256: "" } }))), /the thumbnail's background keyframes\/podium-1\.png has no hash in keyframes\/manifest\.json/],
   ]) {
     change();
-    for (const args of [render, languages]) {
-      const label = `${what}: ${args.join(" ")}`;
-      captures.length = 0;
-      out = "";
-      assert.equal(await main(args, ctx), EXIT.usage, label);
-      assert.match(out, said, label);
-      assert.equal(captures.length, 0, `${label}: nothing is drawn`);
-      assert.equal(readFileSync(work("frames", "manifest.json"), "utf8"), rendered, `${label}: no key is written under the recorded hash`);
-      assert.equal(readFileSync(work("thumbnail.jpg"), "utf8"), thumbnail, `${label}: the approved thumbnail stays`);
-    }
+    for (const args of [render, languages]) await refused(args, `${what}: ${args.join(" ")}`, said)();
+    approve();
   }
 
-  // The approved bytes back: the render goes on as before.
-  writeFileSync(picture, "the approved podium");
+  // Only B's picture changed: the full render, which draws B, refuses; the language thumbnails sit
+  // on A's picture and are drawn as before.
+  writeFileSync(work(pictures.desk[0]), "a later desk");
+  await refused(render, "B's picture drawn over: render", /keyframes\/desk-1\.png has changed/)();
+  assert.doesNotMatch(out, /podium/, "A's picture is not blamed");
+  captures.length = 0;
+  out = "";
+  assert.equal(await main(languages, ctx), EXIT.ok, out);
+  assert.deepEqual(captures.map(({ html }) => /Why headline/.test(html)), [true], "the en thumbnail, on A's picture");
+  approve();
+
+  // A checked alone: no caption locale has a thumbnail of its own.
+  rmSync(i18n);
+  writeFileSync(work(pictures.podium[0]), "a later take");
+  out = "";
+  assert.equal(await main(render, ctx), EXIT.usage);
+  assert.match(out, /keyframes\/podium-1\.png has changed/);
+  approve();
+
+  // The approved bytes back: both commands go on as before.
+  writeFileSync(i18n, JSON.stringify({ thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(doc) } }));
   out = "";
   assert.equal(await main(render, ctx), EXIT.ok, out);
   assert.equal(await main(languages, ctx), EXIT.ok, out);
