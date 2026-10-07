@@ -1,14 +1,14 @@
 ---
 id: 2026-10-07-look-clips-music-and-speech-commands
 title: Look, clips, music and speech commands take the project lease and check STOP before their canonical writes
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-lease-gaps
+claimed_at: 2026-10-07T02:28:04Z
 created_at: 2026-10-07T02:01:52Z
 completed_at:
-branch:
+branch: claude/sharp-bardeen-ob6fn9
 depends_on:
   - 2026-10-04-native-video-project-stop-and-producer-exclusion
 scope:
@@ -23,6 +23,21 @@ scope:
   - tools/video/dubs/dubs.test.mjs
   - tools/video/automation/discuss.mjs
   - tools/video/automation/discuss.test.mjs
+  - tools/video/automation/flow.mjs
+  - tools/video/automation/automation.test.mjs
+  - tools/video/automation/cli.mjs
+  - tools/video/core/project-lease.mjs
+  - tools/video/core/project-lease.test.mjs
+  - tools/video/media/stages.mjs
+  - tools/video/media/keyframes.mjs
+  - tools/video/media/look-keyframes.test.mjs
+  - docs/videos/AUTOMATION.md
+  - .agents/skills/deploy/SKILL.md
+  - .claude/skills/deploy/SKILL.md
+  - .agents/skills/prod-host-ops/SKILL.md
+  - .claude/skills/prod-host-ops/SKILL.md
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Look, clips, music and speech commands take the project lease and check STOP before their canonical writes
