@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-tts-and-a-narration-retake-that
 title: tts and a narration retake that exit 4 block the video instead of waiting
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-tts-defer
 claimed_at: 2026-10-07T06:02:08Z
 created_at: 2026-10-06T15:42:27Z
-completed_at:
+completed_at: 2026-10-07T07:42:24Z
 branch:
 depends_on:
   - 2026-10-06-a-failing-video-is-deferred
@@ -117,3 +117,8 @@ node --test tools/video/automation/automation.test.mjs
 - Filed: `2026-10-07-a-dub-retake-that-exits-4`. The dub retake has the same counter pattern,
   older than this ticket.
 
+- Duration re-bind (2026-10-07, claude-pr-review-tts-defer, independent): PASS, DURATION_ONLY.
+  Exit 4 is only a service error (network, HTTP, the month's characters), never the short-chapter
+  verdict, which exits 1 and still blocks at once; no duration-term line changed. `flow.mjs` and
+  `automation.test.mjs` are rebound in `docs/videos/long-form/review.json` and the CLI check
+  passes.
