@@ -1,14 +1,14 @@
 ---
 id: 2026-10-05-speech-api-tells-a-provider-answer
 title: Speech API tells a provider answer lost after sending apart from a provider failure
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-speech-lost
+claimed_at: 2026-10-07T04:23:15Z
 created_at: 2026-10-05T04:47:59Z
 completed_at:
-branch:
+branch: claude/sharp-bardeen-ob6fn9
 depends_on: []
 scope:
   - apps/api/app/video_speech/azure.py
