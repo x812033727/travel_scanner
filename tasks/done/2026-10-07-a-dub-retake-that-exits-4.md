@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-a-dub-retake-that-exits-4
 title: A dub retake that exits 4 spends its retake round although it made no take
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-dub-retake
 claimed_at: 2026-10-07T10:30:07Z
 created_at: 2026-10-07T07:21:30Z
-completed_at:
+completed_at: 2026-10-07T11:40:07Z
 branch:
 depends_on:
   - 2026-10-06-tts-and-a-narration-retake-that
@@ -100,4 +100,8 @@ bound by the duration review, so they need an independent rebind.
     other non-final exits), and the nit on the language step's comment.
   - Not defects: AUTOMATION.md's wording; a STOP between the check and the retake's first
     request spending a round (a STOP keeps its round, as for the narration).
-
+- Duration re-bind (2026-10-07, independent reviewer `claude-pr-review-dub-retake`): PASS,
+  duration-only; the increment is in `docs/videos/long-form/review.md`. It noted one limit, not
+  a length issue: `flaggedTakes` tells a made take by its bytes, so a retake that wrote a take
+  byte-identical to the old one and then exited 4 would get its round back. A synthesized voice
+  does not repeat its bytes, and the cost would be one more retake round, so it is left as is.
