@@ -151,7 +151,8 @@ jobs:
             if [ "$result" != success ]; then exit 1; fi
           done
   # Lint, i18n, the task board, typecheck and the tools tests: everything in the web gate
-  # except vitest and Playwright, which web-unit and web-e2e split across parallel jobs.
+  # except vitest and Playwright, which web-unit and web-e2e split across parallel jobs, and
+  # the docs/videos tests, which need ffmpeg (docs-videos below).
   web-checks:
     runs-on: ubuntu-latest
     steps:
@@ -234,18 +235,57 @@ jobs:
           name: site-experience-browser-results-${{ matrix.shard }}
           path: apps/web/test-results
           retention-days: 7
-  # `web` is the required check, like `api` above: green only when the checks and every
-  # shard are, and red when one of them failed or was cancelled.
+  # The tests kept beside the plans and runners in docs/videos: the imported-language runner,
+  # its speech journal and the series validators. `npm run test:tools` globs tools/** only, so
+  # they ran in no job, and two of the runner's cases stayed red for two days after #1342.
+  # ffmpeg is installed here rather than in web-checks: six of the runner's native speech cases
+  # cut real intro and outro clips with it and fail with ToolMissing when it is missing (they do
+  # not skip, so a lost install cannot pass quietly), and installing it ahead of test:tools would
+  # change which tools/video cases run there. A folder named demo holds a video's prop, whose
+  # tests fail on purpose (docs/videos/ai-bug-fix-pr-review/demo/README.md); the script's glob
+  # leaves those out and picks up every other folder at any depth with no edit here.
+  # tools/docs-videos-tests.test.mjs keeps the glob, this job and the gate below in step.
+  docs-videos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      # A required check now depends on the Ubuntu mirror; one failed fetch is retried
+      # rather than blocking the merge (the same reasoning as tools/ci/pull-images.sh). The
+      # pipeline's ffmpeg lookup (tools/video/assemble/ffmpeg.mjs) wants libx264; a build
+      # without it fails here, by name, instead of as six ToolMissing test failures.
+      - name: Install ffmpeg
+        run: |
+          for attempt in 1 2 3; do
+            if sudo apt-get -o Acquire::Retries=3 update \
+              && sudo apt-get -o Acquire::Retries=3 install -y --no-install-recommends ffmpeg; then
+              break
+            fi
+            if [ "$attempt" = 3 ]; then exit 1; fi
+            sleep $((attempt * 10))
+          done
+          ffmpeg -hide_banner -version | sed -n 1p
+          encoders=$(ffmpeg -hide_banner -encoders)
+          if ! grep -qw libx264 <<<"$encoders"; then
+            echo "::error::the installed ffmpeg has no libx264 encoder"
+            exit 1
+          fi
+      - run: npm run test:docs-videos
+  # `web` is the required check, like `api` above: green only when the checks, every
+  # shard and the docs/videos tests are, and red when one of them failed or was cancelled.
   web:
-    needs: [web-checks, web-unit, web-e2e]
+    needs: [web-checks, web-unit, web-e2e, docs-videos]
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - name: Every web check and test shard passed
+      - name: Every web check, test shard and docs/videos test passed
         env:
           RESULTS: ${{ join(needs.*.result, ' ') }}
         run: |
-          echo "web-checks, web-unit and web-e2e: $RESULTS"
+          echo "web-checks, web-unit, web-e2e and docs-videos: $RESULTS"
           for result in $RESULTS; do
             if [ "$result" != success ]; then exit 1; fi
           done
