@@ -73,7 +73,7 @@
 
 ## 本機 evidence 位置
 
-根目錄：`C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/offline-whisper`。
+根目錄：`<home>/mokaair-work/ai-teaching-continuation-20261007/offline-whisper`。
 
 - `metadata.json`、`process.json`、`process-tree-0952.json`：完整命令、各檔 SHA-256、版本、離線環境與當時程序 PID。
 - `transcripts.txt`、`stderr.log`、`result.json`：原始盲聽逐句結果、錯誤輸出與實際退出／完整性收據。

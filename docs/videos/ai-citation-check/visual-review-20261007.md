@@ -14,7 +14,7 @@
 原先一般終端 render 因工作階段消失而中斷，留下原生影格快取；其終止碼不可查證，因此不計為成功。確認舊程序停止後，使用隱藏的 detached 程序續跑。原生命令只執行本機免費 render：
 
 ```powershell
-& 'C:/Users/x8120/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe' 'C:/Users/x8120/.codex/worktrees/ai-citation-completion-20261007/travel_scanㄐ/tools/video/cli.mjs' render --slug ai-citation-check --workdir 'C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/render-preview' --channel msedge
+& '<home>/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe' '<home>/.codex/worktrees/ai-citation-completion-20261007/travel_scanㄐ/tools/video/cli.mjs' render --slug ai-citation-check --workdir '<home>/mokaair-work/ai-teaching-continuation-20261007/render-preview' --channel msedge
 ```
 
 首版續跑於 `2026-10-07T09:24:58.492Z` 開始，`09:28:52.705Z` 完成；worker/native PID 為 3336/1040，exit code 0、signal null、stderr 0 bytes。stdout 記錄 37 個狀態重畫、30 個沿用、67 個總數，原生耗時 233 秒。完成後逐張目視 67 個狀態，並保存首版 review、manifest、timeline、contact sheet、thumbnail、run receipts 和兩張受影響原圖；保存收據另含完整 67 張原 still 的雜湊清單。
@@ -31,27 +31,27 @@ root 的 safe-area-proof 另記錄 actual 143 WAV SHA 未變、TTS plans identic
 
 實際 preview 圖片根目錄：
 
-`C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/render-preview/ai-citation-check`
+`<home>/mokaair-work/ai-teaching-continuation-20261007/render-preview/ai-citation-check`
 
 | 實際檔案 | Bytes | SHA-256 |
 | --- | ---: | --- |
-| C:/Users/x8120/.codex/worktrees/ai-citation-completion-20261007/travel_scanㄐ/docs/videos/ai-citation-check/video.json | 24643 | ba96bc7d5d1cc5d6fd20172064baefabd2bb319b00ba67387b02b4e90c5e3423 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/render-preview/ai-citation-check/frames/manifest.json | 44709 | 09eb29ba7b2efb51862fd46087631a8722fa809a0dc2b1e5677518518785e4f7 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/render-preview/ai-citation-check/timeline.json | 47060 | 3ef9c3e53d35f4192ca8207220ce2b4f0809e10cada127c20ac8a68665d841b5 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/render-preview/ai-citation-check/thumbnail.jpg | 75742 | a8a15e09aeb263ec3b8259af9e45e76989a1d8ed4bd8d5f73292e5a66a0b91b0 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/render-preview/ai-citation-check/contact-sheet.png | 1373661 | 2223460712ce2d076fcbdef42b0b28b6fde8a74c0d351e7f83965921b3db9464 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/visual-candidate/original-video.json | 24329 | a9b9eb260a2d61a6f430fdb74e2193a6327fb3267aa7c430b39105235f8d3cd2 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/visual-candidate/pre-safe-area-video.json | 24669 | c1e01a5a8797445bd147606ad8ae87427c9adb9aa0f57a959474d30a01b968b0 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/visual-candidate/safe-area-proof.json | 901 | cc426acac1ac07298c1bd5dd2146dd53eb7e7c1741784ed2263ef349f78b27e6 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/visual-candidate/proof-applied.json | 1719 | 232bb9ae9c50bb91ac80e9f3635d3d7b974be6fe152e2406a072d484d7d50860 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/visual-candidate/proof-applied-before-safe-area.json | 747 | 19c7156cd904686313be221d870b0c2b1eb8223d8ebdf74eef6130aaf5c3a467 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/render-preview/safety-resume-2026-10-07T09-48-30-699Z-pid-24516/command.json | 818 | 5171191b44cb76779e53c8c78c98689d180782584c4bab4d56f4677e8bfb43ad |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/render-preview/safety-resume-2026-10-07T09-48-30-699Z-pid-24516/pid.json | 841 | 43ce564cf504bc11584a4b0ffc545612bd6d360abe1c41a583db32eb3d2ce4a7 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/render-preview/safety-resume-2026-10-07T09-48-30-699Z-pid-24516/stdout.log | 789 | 6100f3b85e61c2db7546c7063e9fa3185f9bb53154c8561b7c0f02a3602135b0 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/render-preview/safety-resume-2026-10-07T09-48-30-699Z-pid-24516/stderr.log | 0 | e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/render-preview/safety-resume-2026-10-07T09-48-30-699Z-pid-24516/exit.json | 1267 | 61be4fb7c891f586fd08c3abed73a2046a9f6e6c967e03439afffda7ad988c3f |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/visual-review-first-render-20261007/receipt.json | 28573 | 1526ff46025bd961a0d93c4bb99e62df25a56a078989a7a398f1e9e97232e695 |
-| C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/visual-review-first-render-20261007/visual-review-20261007.md | 19808 | eb81d921d807278a8081cb8fb88de532bb3534b44ef700022e0acc8468723527 |
+| `<home>/.codex/worktrees/ai-citation-completion-20261007/travel_scanㄐ/docs/videos/ai-citation-check/video.json` | 24643 | ba96bc7d5d1cc5d6fd20172064baefabd2bb319b00ba67387b02b4e90c5e3423 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/render-preview/ai-citation-check/frames/manifest.json` | 44709 | 09eb29ba7b2efb51862fd46087631a8722fa809a0dc2b1e5677518518785e4f7 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/render-preview/ai-citation-check/timeline.json` | 47060 | 3ef9c3e53d35f4192ca8207220ce2b4f0809e10cada127c20ac8a68665d841b5 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/render-preview/ai-citation-check/thumbnail.jpg` | 75742 | a8a15e09aeb263ec3b8259af9e45e76989a1d8ed4bd8d5f73292e5a66a0b91b0 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/render-preview/ai-citation-check/contact-sheet.png` | 1373661 | 2223460712ce2d076fcbdef42b0b28b6fde8a74c0d351e7f83965921b3db9464 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/visual-candidate/original-video.json` | 24329 | a9b9eb260a2d61a6f430fdb74e2193a6327fb3267aa7c430b39105235f8d3cd2 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/visual-candidate/pre-safe-area-video.json` | 24669 | c1e01a5a8797445bd147606ad8ae87427c9adb9aa0f57a959474d30a01b968b0 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/visual-candidate/safe-area-proof.json` | 901 | cc426acac1ac07298c1bd5dd2146dd53eb7e7c1741784ed2263ef349f78b27e6 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/visual-candidate/proof-applied.json` | 1719 | 232bb9ae9c50bb91ac80e9f3635d3d7b974be6fe152e2406a072d484d7d50860 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/visual-candidate/proof-applied-before-safe-area.json` | 747 | 19c7156cd904686313be221d870b0c2b1eb8223d8ebdf74eef6130aaf5c3a467 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/render-preview/safety-resume-2026-10-07T09-48-30-699Z-pid-24516/command.json` | 818 | 5171191b44cb76779e53c8c78c98689d180782584c4bab4d56f4677e8bfb43ad |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/render-preview/safety-resume-2026-10-07T09-48-30-699Z-pid-24516/pid.json` | 841 | 43ce564cf504bc11584a4b0ffc545612bd6d360abe1c41a583db32eb3d2ce4a7 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/render-preview/safety-resume-2026-10-07T09-48-30-699Z-pid-24516/stdout.log` | 789 | 6100f3b85e61c2db7546c7063e9fa3185f9bb53154c8561b7c0f02a3602135b0 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/render-preview/safety-resume-2026-10-07T09-48-30-699Z-pid-24516/stderr.log` | 0 | e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/render-preview/safety-resume-2026-10-07T09-48-30-699Z-pid-24516/exit.json` | 1267 | 61be4fb7c891f586fd08c3abed73a2046a9f6e6c967e03439afffda7ad988c3f |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/visual-review-first-render-20261007/receipt.json` | 28573 | 1526ff46025bd961a0d93c4bb99e62df25a56a078989a7a398f1e9e97232e695 |
+| `<home>/mokaair-work/ai-teaching-continuation-20261007/visual-review-first-render-20261007/visual-review-20261007.md` | 19808 | eb81d921d807278a8081cb8fb88de532bb3534b44ef700022e0acc8468723527 |
 
 ## 已目視的內容與版面
 
@@ -161,7 +161,7 @@ ffprobe 實測影片為 1920×1080、30 fps、18,596 個 video frames／619.8666
 
 樣本、完整 argv 和未修改的抽取收據位於：
 
-`C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/actual-movie-samples-20261007T102036Z`
+`<home>/mokaair-work/ai-teaching-continuation-20261007/actual-movie-samples-20261007T102036Z`
 
 - `extraction-receipt.json`：SHA-256 `be37bea3580a1fa13b60bf2d13a30bfd982ed7f5136830188e10d812a7b60352`。
 - `inspection-receipt.json`：SHA-256 `6abb47edd8900d30464bb3bbf8d9efe31a92e1bf8f412127b88362627f7344d9`，5,947 bytes；分別保存抽取證據與其後實際目視結論，沒有把「已抽取」當作「已看過」。

@@ -5,7 +5,7 @@ from the existing approved outline. Audio acceptance, the 11-item final gate,
 an upload package, owner language selection and publication remain pending.
 
 The operation directory (OP) is
-C:\Users\x8120\mokaair-work\ai-teaching-continuation-20261007.
+`<home>\mokaair-work\ai-teaching-continuation-20261007`.
 Generated media and actual command receipts remain there, outside Git.
 
 ## Reviewable result

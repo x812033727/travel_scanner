@@ -12,8 +12,8 @@
 
 此 pin 也存在於下列本機 renewed-finals source inventories 的九份 citation 文件描述中；那些描述涵蓋 brief、claims、demo-log、verify-1、video 與四語翻譯，沒有 citation 音訊、cache、字幕或 final 的媒體路徑：
 
-- `C:/Users/x8120/mokaair-work/handoff/renewed-finals-20261007/r3-runtime-inventory-readonly-snapshot-20261007T0814Z.json`
-- `C:/Users/x8120/mokaair-work/handoff/renewed-finals-20261007/r6-host-prepared-20261007T0826Z/operator-runtime-r6-receipt.json`
+- `<home>/mokaair-work/handoff/renewed-finals-20261007/r3-runtime-inventory-readonly-snapshot-20261007T0814Z.json`
+- `<home>/mokaair-work/handoff/renewed-finals-20261007/r6-host-prepared-20261007T0826Z/operator-runtime-r6-receipt.json`
 
 任務票的 2026-09-28 記錄曾描述五語 SRT、143/143 音訊檢查零標記，以及 18,749 影格、約 10:24、-14 LUFS 的新版成片。這些是歷史製作紀錄；本次沒有找到可還原並重新驗證的匹配媒體，不能把那段紀錄當成當前檔案存在、當前 QA 通過或交付完成的證明。此盤點也沒有否認歷史製作曾發生。
 
@@ -41,9 +41,9 @@
 
 ## C 槽查找範圍與限制
 
-- 指定的 `C:/Users/x8120/mokaair-work/ai-series-continuation-20261004` metadata／收據中，citation 命中屬於 queue、backend 舊快照或來源描述，沒有 citation 專屬 archive、restore、delete 或媒體 pin 收據。`C:/Users/x8120/mokaair-work/video-upgrade-20261001` 在盤點時不存在。
-- 擴大列出 `C:/Users/x8120/mokaair-work` 一至兩層資料夾，並對 handoff、renewed-finals、ai-teaching-continuation、ai-terms-resume 與 diagnostics 的 JSON／Markdown／文字／log 做 citation 路徑與收據查找，沒有找到匹配媒體或可還原的封存。
-- 直接檢查 `C:/Users/x8120/mokaair-work/videos/ai-citation-check`，該目錄在盤點時不存在。唯一新的 citation 媒體資料夾是當次 continuation workspace 的 `C:/Users/x8120/mokaair-work/ai-teaching-continuation-20261007/media/ai-citation-check`，當時可列的檔案為 `approvals.json`；它不能證明舊 143 筆音訊或舊成片已恢復。
+- 指定的 `<home>/mokaair-work/ai-series-continuation-20261004` metadata／收據中，citation 命中屬於 queue、backend 舊快照或來源描述，沒有 citation 專屬 archive、restore、delete 或媒體 pin 收據。`<home>/mokaair-work/video-upgrade-20261001` 在盤點時不存在。
+- 擴大列出 `<home>/mokaair-work` 一至兩層資料夾，並對 handoff、renewed-finals、ai-teaching-continuation、ai-terms-resume 與 diagnostics 的 JSON／Markdown／文字／log 做 citation 路徑與收據查找，沒有找到匹配媒體或可還原的封存。
+- 直接檢查 `<home>/mokaair-work/videos/ai-citation-check`，該目錄在盤點時不存在。唯一新的 citation 媒體資料夾是當次 continuation workspace 的 `<home>/mokaair-work/ai-teaching-continuation-20261007/media/ai-citation-check`，當時可列的檔案為 `approvals.json`；它不能證明舊 143 筆音訊或舊成片已恢復。
 - `VALIDATION.json` 與 runbook 指向 20261003 的歷史批次，含舊 DriveFS size／MD5／pending-operations 紀錄，但沒有 citation member 綁定；歷史雲端檢查不能取代本次媒體還原驗證。
 
 上述限制不等同於 provider 未送出、沒有未知付費 request、production 沒有媒體，或可以忽略其他製作工作。那些條件需要另以當前 runtime 與 journal 證據核對。本次沒有執行 API、native 製作命令、provider 呼叫、抽取、同步、刪除或媒體寫入，也未改動 Embedding HOLD、lease 或未知 reservation。所有本次讀取程序均已結束。
