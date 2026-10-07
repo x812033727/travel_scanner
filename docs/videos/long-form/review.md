@@ -1642,6 +1642,35 @@ PASS is DURATION_ONLY for the one rebound hash below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch happy-carson-c1hy91 increment 2: 3 files (2026-10-07)
+
+Reviewer: `claude-pr-review-happy-carson`, the reviewer of the "Branch happy-carson-c1hy91 increment" section above. It wrote none of the branch's commits, judged each bound diff on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-image-bytes`, the owner of the ticket `2026-10-05-video-consumer-selected-image-hashes`. It wrote `45cd0212` ("fix(video): direct clips and assembly check the approved pictures' bytes"), whose git author is the repository's `Claude <noreply@anthropic.com>` identity and which carries `Co-Authored-By: Claude Opus 5.5`. Scope: DURATION_ONLY for the three changed bindings below, on the local branch speech-wip at `45cd0212`: one linear commit on the previous increment's receipt commit `1128b893`, with no merge, still on origin/main `7142b6ea6021454a18265cc61a4d5b24dc0ff42f` (#1356). There is no PR number yet.
+
+Baseline: Merge-base 7142b6ea, 3 of 3 match. review.md, review.json, review.mjs and review.test.mjs are byte-identical at `1128b893` and at the head; that report (639,337 bytes) hashes to `fe1b5b439fba2f0c3ee6fd260dfe0549c15dc82b51bc830d0da9875fc6d5f72c`, the report_sha256 review.json held before this increment. `1128b893` did not touch these three files, and for each one `git show 7142b6ea:<path> | sha256sum` equals the value in review.json and in the table, and the blob at `1128b893` is the same: tools/video/assemble/cli.mjs (32,586 bytes) `bd2b8fb99b1a93c7ca7df237c8955b2b6c791dc773006ed2c4f88ef79601b60e`, tools/video/assemble/assemble.test.mjs (29,452) `f92d8ee9b07ac71082b56f102b2e56d2f9e7111f6d625096dccc690b9daf9b6d` and tools/video/media/clips.test.mjs (83,138) `142d00151868e05ce593fde515f09dc58855207d8880ca694fc08d22a4b1c572`. So each file's diff in `45cd0212` is exactly the unreviewed change. `git diff --name-only 7142b6ea..HEAD` now lists 27 paths; intersected with the 108 paths of REVIEW_FILES they are these three and tools/video/core/stages.test.mjs, which the previous increment bound and which `45cd0212` does not touch. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these three and nothing else, so the other 105 bindings equal their working-tree bytes. The working tree equals the head for the three files, and none holds a CR byte or a BOM. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with three hashes rebound and the other 105 unchanged.
+
+Findings, tools/video/assemble/cli.mjs (+13/−0, 32,586 → 33,467 bytes). After the layout is built (line 297) and before the frame offers, ffprobe and ffmpeg, `run` hashes each `motion` scene's keyframe that has a `sha256` with the existing `sha256File` (core/approvals.mjs, already imported) and, when an existing file's bytes differ from the manifest's hash, writes one message naming the scenes and returns `EXIT.usage`. The gate only adds an earlier refusal; it rewrites no manifest and changes no value a later step reads. The duration gates are outside the hunk and unchanged: `lintProject` (230), `animeBodyDurationProblems` (243) and `productionClipProblems` (266) run before it, and `animeShotFitProblems` (335), `animeDurationProblems` and `animeRuntimeProof` (617–619) after it, so a cut that passed them before still meets them, and none can be skipped by the new return.
+
+Findings, tools/video/assemble/assemble.test.mjs (+55/−0, 29,452 → 33,235 bytes). One test is added; every name it uses (`sandbox`, `dramaFixture`, `writeAudioFixture`, `estimateTimeline`, `speechHash`, `fixtureLexicon`, `visualHash`, `lookHash`, `manifestFor`, `run`, `EXIT`, `existsSync`, `rmSync`, `sha256`) was already imported or defined at the merge base. On a drama fixture with one still scene, a keyframe overwritten after its manifest makes `assemble` exit with the usage code, the message, no ffprobe or ffmpeg call, the cached segment untouched, no build directory and the clips manifest unchanged; with the approved bytes the run reaches the stubbed tool. Its numbers are manifest hashes and the fixture's frame manifest; no length is asserted.
+
+Findings, tools/video/media/clips.test.mjs (+26/−0, 83,138 → 84,849 bytes). One test is added, using the file's existing `prepared`, `approve`, `PNG`, `mediaSite`, `context` and `main`. For a start and an end frame, with and without `--dry-run`, a keyframe overwritten after the storyboard approval stops `clips` with the owner exit code and the message, makes no request to the fake site, leaves the keyframes manifest byte-identical and writes no clips manifest. No length is asserted.
+
+Across the three full diffs there is no change to the 600/780-second targets, the 480-second / 14,400-frame measured floors, the eight-minute floor on every video but a drama, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state, and no duration assertion is removed or loosened. A case-insensitive scan of the commit's changed lines in tools/video/assemble and tools/video/media for minute, MIN_EPISODE, 480, 14400, 14,400, 600, 780, runtime, target_, action_seconds, covered, source_hash, plans.json, policy.json, floor, total_frames and duration finds nothing.
+
+Unbound context, read and not certified. tools/video/media/clips.mjs (+22/−0) adds `changedKeyframes`, which hashes each selected start and end picture of the shots and stills against its keyframes manifest entry, and `run` throws an owner `MediaError` when one is missing or changed, after the storyboard approval check and before the look manifest, the status call or any upload or submission. Nothing in it names a length. The ticket moves from tasks/open to tasks/done with its notes.
+
+Ran (Node v22.22.0, Linux, in the repository checkout at `45cd0212`, offline, VIDEO_MIN_EPISODE_MINUTES unset in the shell): the baseline hashing (`git show 7142b6ea:<path> | sha256sum` and the blob at `1128b893` against review.json and the table, and `sha256sum <path>`), the CR and BOM checks, the intersection of `git diff --name-only 7142b6ea..HEAD` with REVIEW_FILES, a reading of `git show 45cd0212` for the three bound files and clips.mjs, the import and line-position checks above, and the scan. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` with the three stale bindings above. On the branch's bytes: `node --test tools/video/assemble/assemble.test.mjs`, 18 of 18; `node --test tools/video/media/clips.test.mjs`, 27 of 27; `node --test tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs tools/video/qa/duration.test.mjs tools/video/core/lint.test.mjs`, 62 of 62; each exit 0. The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the picture byte gates themselves: not which scenes assemble checks (it hashes only `motion` scenes whose keyframe carries a hash, and leaves a missing file to the later checks), the messages, the exit codes, or clips' start and end frame handling.
+- tools/video/media/clips.mjs and the ticket were read only as context and are unbound.
+- The full tool, Vitest and API suites and CI were not run for this increment.
+- The 105 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1693,8 +1722,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `docs/videos/series-plans/borrowed-dawn/validate.mjs` | `cad0c421ea375c40f28093157b9749c1f7f95524d0f9a8d4ffa1978e61c1df04` |
 | `docs/videos/so-thats-why/README.md` | `00a0f0e5a56d7a492dec69263eab34668e0d334949878bd512b09edacaefd0de` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
-| `tools/video/assemble/assemble.test.mjs` | `f92d8ee9b07ac71082b56f102b2e56d2f9e7111f6d625096dccc690b9daf9b6d` |
-| `tools/video/assemble/cli.mjs` | `bd2b8fb99b1a93c7ca7df237c8955b2b6c791dc773006ed2c4f88ef79601b60e` |
+| `tools/video/assemble/assemble.test.mjs` | `5bae2b55cceb7967abf3534ca8a3a184d29021f283e140be1c51acc1fffd8ab5` |
+| `tools/video/assemble/cli.mjs` | `d43df0c181374744fc74bef4be149bbe4a42b8973bd8f19bc5a2dbd509f80e8f` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
@@ -1737,7 +1766,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
-| `tools/video/media/clips.test.mjs` | `142d00151868e05ce593fde515f09dc58855207d8880ca694fc08d22a4b1c572` |
+| `tools/video/media/clips.test.mjs` | `d5c6ceaad9e7b3a215ed4746b92eccb998ad1903ed45ec81202341e90efec149` |
 | `tools/video/media/look-keyframes.test.mjs` | `24e0c81feb9b2ad052b1397befac316ba11eeffad83c52e547a0955d7a41acd7` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `3f81ff3bfb8b600f06c1ba54bc72e685b74ff8bcbd1f096b7b5d4b77ff9d175d` |
