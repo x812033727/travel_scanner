@@ -42,10 +42,13 @@ const OWNER_CODES = new Set(['video_tool_token_invalid']);
 // that route change answers the 502 for both, so this client needs a host that serves it:
 // production does since a9e4c3851, deployed 2026-10-05.
 const SETTLED_JUDGE_CODES = new Set(['video_judge_upstream_failed']);
-// Only the route's 502: no judge route answers the code with another status, so a 503 or 504
-// `upstream_unavailable` came from something else and stays uncertain (as tools/video/tts/client.mjs).
-const NEVER_REACHED = { status: 502, code: 'upstream_unavailable' };
-const settled = (status, code) => SETTLED_JUDGE_CODES.has(code) || (status === NEVER_REACHED.status && code === NEVER_REACHED.code);
+// Answers that say nothing ran, each only with its own status (as tools/video/tts/client.mjs):
+// the route's 502 for an API it never reached (no judge route answers the code with another
+// status, so a 503 or 504 `upstream_unavailable` came from something else and stays uncertain),
+// and the API's 503 when Redis cannot count the call against its rate limit (app/infra.py
+// `enforce_named_rate_limit`, checked in `video_tool` and first in the judge handlers, before Jev).
+const NEVER_RAN = [{ status: 502, code: 'upstream_unavailable' }, { status: 503, code: 'rate_limit_unavailable' }];
+const settled = (status, code) => SETTLED_JUDGE_CODES.has(code) || NEVER_RAN.some((answer) => answer.status === status && answer.code === code);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(['ECONNREFUSED', 'ENOTFOUND', 'EAI_AGAIN', 'EHOSTUNREACH', 'ENETUNREACH', 'UND_ERR_CONNECT_TIMEOUT']);
 const neverSent = (error) => NEVER_SENT.has(error?.cause?.code ?? error?.code);

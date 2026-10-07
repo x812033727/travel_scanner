@@ -87,6 +87,8 @@ test("a paid request sent and left without its answer is sent once and names the
     ["the API's uncertain Jev outcome", () => problem(502, "video_judge_outcome_uncertain"), 502],
     // Only the route's 502 says the API was never reached; no speech route answers this one.
     ["an upstream_unavailable no speech route answers", () => problem(503, "upstream_unavailable"), 503],
+    // The API's rate limiter answers its code only as a 503.
+    ["a rate_limit_unavailable at another status", () => problem(500, "rate_limit_unavailable"), 500],
     ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
     ["an error whose detail runs over lines", () => Response.json({ detail: "Internal\nServer Error\n" }, { status: 500 }), 500],
     ["an answer that breaks off", brokenBody, 200],
@@ -144,6 +146,8 @@ test("a paid request that never left, or that the API settled, is tried again an
     ["a provider failure the API answered", () => problem(502, "video_speech_upstream_failed"), [1000]],
     ["a key the provider refused", () => problem(502, "video_speech_upstream_rejected_key"), [1000]],
     ["Jev failing behind the API", () => problem(502, "video_judge_upstream_failed"), [1000]],
+    // Redis could not count the call, so the API refused it before any provider.
+    ["the API's rate limiter away", () => problem(503, "rate_limit_unavailable"), [1000]],
   ];
   for (const paid of PAID) {
     for (const [what, answer, waits] of settled) {

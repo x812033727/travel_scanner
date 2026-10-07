@@ -48,9 +48,12 @@ const SETTLED_CODES = new Set(["video_speech_upstream_busy", "video_speech_upstr
 // uncertain here like any 5xx not listed). A host from before that answers this 502 for both, so
 // this client needs a host that serves #1272 (production does since c12e159d0, deployed
 // 2026-10-05). Only the 502: no speech route answers the code with another status, so a 503
-// `upstream_unavailable` came from something else and stays uncertain.
-const NEVER_REACHED = { status: 502, code: "upstream_unavailable" };
-const settled = (status, code) => SETTLED_CODES.has(code) || (status === NEVER_REACHED.status && code === NEVER_REACHED.code);
+// `upstream_unavailable` came from something else and stays uncertain. The API's 503
+// `rate_limit_unavailable` (Redis could not count the call, app/infra.py
+// `enforce_named_rate_limit`) is a refusal too: `video_tool` checks the token's limit before
+// any handler runs, so nothing reached a provider. Only with its 503, as for the 502.
+const NEVER_RAN = [{ status: 502, code: "upstream_unavailable" }, { status: 503, code: "rate_limit_unavailable" }];
+const settled = (status, code) => SETTLED_CODES.has(code) || NEVER_RAN.some((answer) => answer.status === status && answer.code === code);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
 // Answers that do not change by asking again in this run, whatever their status: the server has no
