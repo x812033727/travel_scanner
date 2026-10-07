@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-codex-depth-content
 title: Codex deep content and isolated learning components
-status: blocked
+status: done
 priority: P2
 area: docs
 owner:
 claimed_at:
 created_at: 2026-09-14T02:33:43Z
-completed_at:
+completed_at: 2026-10-07T01:43:04Z
 branch: codex/codex-learning-complete
 depends_on: []
 scope:
@@ -384,3 +384,7 @@ Preview commands and full implementation history are in docs/codex-learning/READ
 - Read the direct rejected tool results in this task's transcript: 11 process-creation denials, all reporting `blocked by policy` without a specific rationale. Every recorded context used approval_policy=never and danger-full-access. The earlier categorical attribution to sandbox-boundary Auto-review is not established by this evidence or the current official documentation. Use "tool execution rejected by policy, source unconfirmed" until a concrete explanation is available.
 - Sanitized diagnostic: docs/codex-learning/execution-denial-diagnosis.md and evidence/execution-denial-diagnosis.json. No full transcript, private path, account, credential, feedback or external issue was shared. No denied operation or alternate execution route was attempted; permission settings remain unchanged.
 - All independent integration/build work currently identified is complete. The remaining known text/hub corrections and final preview still require resolution of the execution restriction. Release ownership and mark this content task blocked to avoid presenting the same unchanged work as freely actionable. The original series remains blocked; do not open a partial PR, publish or deploy.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+關閉：不再需要。Duplicate. Per its 2026-09-20 update, the editorial acceptance, PR #578/#583 and deploy are done (docs/codex-learning/production-release-2026-09-20.md). Its only remaining item, representative Codex product-UI evidence, is the same open DoD in 2026-09-14-codex-learning-series. Keep codex-learning-series

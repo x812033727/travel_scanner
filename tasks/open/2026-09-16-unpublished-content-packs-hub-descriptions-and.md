@@ -1,7 +1,7 @@
 ---
 id: 2026-09-16-unpublished-content-packs-hub-descriptions-and
 title: "Unpublished content packs: hub descriptions and lesson ordinals in body text"
-status: blocked
+status: open
 priority: P2
 area: docs
 owner:
@@ -140,3 +140,7 @@ cd apps/api && uv run python -m app.guides.pack_cli lint --kind life
 
 **判斷後保留**：`finance-glossary-50-terms`（slug 自己寫 50、範圍固定，不會成長）、
 `ai-for-seniors-first-steps` 的「第一堂 AI 課」、`wordpress-blog-build` 的「第一篇文章」—— 都是散文。
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+原本擋住它的 content-summary-howto-and-life 認領已釋出，改回 open。工作本身未完成：74 份內容包仍有「第 N 篇」，claude-code-tutorials 與 codex-learning-hub 的描述仍寫 96 篇、60 篇。

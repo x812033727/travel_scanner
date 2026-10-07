@@ -1,11 +1,11 @@
 ---
 id: 2026-09-29-resume-imported-long-video-languages
 title: Resume selected languages for six imported long videos
-status: in-progress
+status: open
 priority: P1
 area: tools
-owner: codex-video-stall-followthrough
-claimed_at: 2026-10-04T10:51:05Z
+owner:
+claimed_at:
 created_at: 2026-09-29T11:13:51Z
 completed_at:
 branch: codex/video-approved-final-languages-20261004
@@ -154,3 +154,7 @@ The job must not call the general auto loop, assemble, tidy or youtube-sync.
   English translation is active. All remaining locales/dubs still need production
   completion; keep this task in progress while its isolated container owns the work.
 - Draft PR #986 preserves the tested code and operational record; it is not merged.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+釋出過期認領（認領超過 24 小時，主要工作已落地）。程式已在 main（#1208）；分支 codex/video-approved-final-languages-20261004 已不在遠端、也沒有 PR；剩正式站的工作。

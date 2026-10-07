@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-ask-origin-airport-at-trip-creation
 title: 建立旅程時就問出發機場，不要等到查機票才問
-status: open
+status: done
 priority: P3
 area: web
 owner:
 claimed_at:
 created_at: 2026-09-06T20:33:00Z
-completed_at:
+completed_at: 2026-10-07T01:43:01Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -109,3 +109,7 @@ timed out waiting for the 「桃園 TPE」 radio. The journey now asserts the cr
 on to the search. The prompt itself is still covered for trips saved without an airport by the
 search-experience unit tests.
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1 (since 2026-09-19T11:21:01Z) was stale and is released so it stops locking its scope. Landed: #565. Still open: Optional: default origin airport from member preference (needs a new API field, separate api ticket).
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+標記完成。依據：All 3 DoD ticked; landed in PR #565 (board-sweep note). On origin/main, apps/web/components/new-trip-form.tsx has originAirports TPE/TSA/KHH, default "TPE", and sends origin_airport in POST /trips. newTrip.json has travelers.origin/originHelp. Only the unticked step is optional and explicitly out of scope (member-preference default, which needs a separate api ticket)
