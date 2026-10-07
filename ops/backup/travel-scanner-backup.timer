@@ -1,0 +1,15 @@
+[Unit]
+Description=Run the Mokaair nightly backup once a day
+
+[Timer]
+# 04:17 Asia/Taipei = 20:17 UTC, the site's quietest hour. Pick the exact minute on the host
+# (ops/backup/README.md) so it never coincides with the auto deploy timer's tick.
+OnCalendar=*-*-* 20:17:00 UTC
+RandomizedDelaySec=120
+AccuracySec=1min
+# A night missed while the host was down is taken as soon as it is back.
+Persistent=true
+Unit=travel-scanner-backup.service
+
+[Install]
+WantedBy=timers.target

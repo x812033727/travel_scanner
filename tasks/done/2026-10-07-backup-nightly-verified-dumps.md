@@ -1,14 +1,14 @@
 ---
 id: 2026-10-07-backup-nightly-verified-dumps
 title: Nightly verified PostgreSQL dumps and a config bundle on the production host
-status: open
+status: done
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: claude-fable-5-1-backup
+claimed_at: 2026-10-07T01:26:45Z
 created_at: 2026-10-07T00:00:00Z
-completed_at:
-branch:
+completed_at: 2026-10-07T01:34:52Z
+branch: claude/auto-deploy-cloud-backup-hylcsz
 depends_on: []
 scope:
   - ops/backup
@@ -32,7 +32,7 @@ This task is the local layer. The Google Drive copy is
 
 ## Definition of done
 
-- [ ] `ops/backup/backup.py` (standard library, tests run on Windows through a fake
+- [x] `ops/backup/backup.py` (standard library, tests run on Windows through a fake
       runner) with `run`, `run --dry-run` and `status`. One run, under
       `/var/backups/travel-scanner/nightly/<UTC ts>/`:
       1. `pg_dump -Fc` through `docker compose -f docker-compose.prod.yml exec -T postgres`
@@ -52,21 +52,21 @@ This task is the local layer. The Google Drive copy is
          (default false; the queue is rebuilt, not restored).
       5. `manifest.json`: host, start and end time, live git SHA, `alembic current`,
          PostgreSQL version, and for every file its name, size and SHA-256.
-- [ ] Local retention: the newest 7 nightly directories are kept, older ones removed after
+- [x] Local retention: the newest 7 nightly directories are kept, older ones removed after
       a successful run, never before.
-- [ ] `/var/lib/travel-scanner-backup/last.json`: the last successful run's time, path,
+- [x] `/var/lib/travel-scanner-backup/last.json`: the last successful run's time, path,
       sizes and duration, and the last failure's time and reason. Nothing secret.
-- [ ] Config from `/etc/travel-scanner/backup.env` (root, 0600): `BACKUP_INCLUDE_REDIS`,
+- [x] Config from `/etc/travel-scanner/backup.env` (root, 0600): `BACKUP_INCLUDE_REDIS`,
       `BACKUP_LOCAL_RETENTION` (7), `BACKUP_AGE_RECIPIENT` (optional until the offsite task).
-- [ ] `travel-scanner-backup.service` (`Type=oneshot`, root) and
+- [x] `travel-scanner-backup.service` (`Type=oneshot`, root) and
       `travel-scanner-backup.timer` (daily, `Asia/Taipei` low-traffic hour, the exact minute
       chosen on the host), `install.sh` copying the module to
       `/opt/travel-scanner-backup/` and creating directories and the env file from
       `backup.env.example`, timer not enabled by the installer.
-- [ ] A run must not take the deploy lock or stop a deploy: it reads the database through
+- [x] A run must not take the deploy lock or stop a deploy: it reads the database through
       `pg_dump` only. It refuses to start while `/var/lock/travel-scanner-deploy.lock` is
       held (a deploy is restarting postgres) and retries at the next timer firing.
-- [ ] Tests for the run order, the verification failure path, retention, `last.json`,
+- [x] Tests for the run order, the verification failure path, retention, `last.json`,
       the predeploy sweep and the dry run. `README.md` with install, what is backed up and
       what is not, how to read `last.json` and the logs, and how to restore one dump into a
       disposable container (the full drill is in the offsite task).
@@ -77,7 +77,7 @@ This task is the local layer. The Google Drive copy is
       `select pg_database_size('travel_scanner')`, `du -sh` of each named volume
       (`docker volume inspect` for the mountpoints), and `df -h /`. Write the numbers in
       Notes; they decide the Drive quota question in the plan.
-- [ ] Module, units, installer, env example, README, tests.
+- [x] Module, units, installer, env example, README, tests.
 - [ ] Install on the host, run `run --dry-run`, then one real `run` by hand, then enable
       the timer with the owner present. Record the first run's duration and sizes here.
 
@@ -106,3 +106,13 @@ hashes match `sha256sum`; `pg_restore --list` on the dump exits 0 (the command i
 - Media volumes (`video_media`, `video_work`, `video_reviews`) are not in this task: they
   are large and partly regenerable; the offsite task decides which of them to copy after
   the measurement above.
+- 2026-10-07 (claude-fable-5-1-backup): the repository half is done in `ops/backup/`:
+  `backup.py` (`run`, `run --dry-run`, `status`), 16 unit tests through a fake runner,
+  `manifest-paths.txt`, `backup.env.example`, the service and timer (20:17 UTC, 04:17 Taipei,
+  `Persistent=true`, idle I/O), `install.sh` and the README with a single-dump restore. The
+  `status` subcommand already prints `BACKUP STALE` / `BACKUP FAILED` and exits 1, so
+  `2026-10-07-backup-age-in-host-ops-checks` can wrap it. Closed in the pull request with
+  the host steps still open: measuring the database and volumes, `apt install age`, the key
+  pair (public key in `backup.env`, identity in the password manager), one `--dry-run` and
+  one real `run`, then enabling the timer; these need the owner on the host and are the
+  first steps of `2026-10-07-backup-google-drive-offsite`, which already waits for them.
