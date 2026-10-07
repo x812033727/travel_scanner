@@ -40,8 +40,8 @@ no foreign href or publication status was manufactured.
 Root's combined evidence operation checked 1003 original child evidence files,
 all 12 source/database guards, 36 source/master assets and 180 candidate media
 files. The official compiler loader accepts all 48 verbatim original review rows.
-It issues no additional editorial PASS. Prospective official compilation remains
-pending until the exact content commit is frozen.
+It issues no additional editorial PASS. Prospective official compilation is now complete on the
+exact content freeze recorded below.
 
 Scoped pack lint passes with inherited no-summary and English-length advisories.
 No source or substantive prose is rewritten to erase those warnings. Standalone
@@ -54,3 +54,22 @@ Fresh public absence does not prove no private edits. The release requires a
 fresh postdeployment database baseline and rechecks of edits, versions, source
 hashes, holds and actual deployed content. No merge, deployment, publication or
 production backup is credited by these local editorial receipts.
+
+Official prospective compilation completed on exact frozen commit
+`c4d0ce50e693e2bfa1a26366378af6f02ec625c1`. The unchanged compiler ran twice against the
+retained04:45:46 production snapshot, with original review rows/identities/times
+preserved. All158 bundle files are byte-identical; both verify_bundle calls pass.
+This verifies48 targets across12 articles,180 candidate assets and144 selected
+translated assets. It is preparation against a retained snapshot, not a fresh
+postdeployment baseline or production publication.
+
+| Prospective frozen binding | SHA-256 |
+| --- | --- |
+| Candidate manifest | 055e11642461c795e6c0706074ad828b047e03995219f54b17b6273b089a4292 |
+| Official prospective baseline | 8415b9e52fd4c9584e291947c4e82dac2d1ba1a373797e0ee7b3df6bf88ce032 |
+| Official bundle manifest | e0492c0f2e438264f784f08d2a2d162e77f20dfa4e6ae004b401b7fb4cd8dad1 |
+| Complete double-compilation verification | 967d33f5393e479e73b571095474bd8fa08a6d4da56a60fddb64aea02310e48c |
+
+A final documentation commit may follow this content freeze. The exact final PR
+head must be compiled again externally for its release/readiness bindings, while
+the selected source/content/media bytes stay identical to this reviewed freeze.

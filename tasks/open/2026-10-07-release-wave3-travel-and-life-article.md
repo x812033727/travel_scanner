@@ -41,8 +41,9 @@ deployment. Local review, installation and CI do not close this release ticket.
 
 ## Steps
 
-- [ ] Resolve the stacked PR sequence; bind approval to the final exact PR/SHA and
-      current main commits before any merge or deploy. Use no force/ignore-hold default.
+- [ ] Confirm the first two content PRs are merged and the third is based on current
+      main; bind approval to the final exact PR/SHA before merge or deployment.
+      Use no force/ignore-hold default.
 - [ ] Read `ops/release/README.md` and deploy skill; perform a fresh host preflight.
 - [ ] Verify exact deployed pack and API/web asset bytes in the actual images.
 - [ ] Capture a new official full database snapshot and unchanged official baseline;
@@ -76,9 +77,11 @@ hong-kong-entry-2026. Targets: en, ja, ko, zh-CN. No hubs are selected.
 
 The retained04:45 production snapshot is preparation evidence only. At creation
 there are zero production writes, and this ticket is open and unclaimed. The
-owner's latest continuation authorizes preparation; an earlier exact deployment
-choice remains unanswered. Fresh main contains additional commits, so a previous
-main-delta disclosure must not be reused as deployment approval.
+owner's latest continuation authorizes preparation. A later live observation
+confirms the first two content PRs merged; this observation supplies no new
+deployment/publication choice. The third branch is based on current main. Use
+its final exact PR/head and current main delta for the concrete owner choice;
+do not reuse an old draft-head question as deployment approval.
 
 Paid-vs-organic source hold and four source-drift WordPress articles remain
 excluded. Held Lunar content remains publication-aware plain text when its

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-recheck-newsletter-and-marketing-locales-wave3a
 title: Recheck newsletter and marketing locales wave3a
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-article-localization-4e16
 claimed_at: 2026-10-07T07:22:53Z
 created_at: 2026-10-07T07:20:09Z
-completed_at:
+completed_at: 2026-10-07T10:37:26Z
 branch: codex/article-locales-wave3-20261007
 depends_on: []
 scope:
@@ -41,7 +41,7 @@ translations. Preserve the source, original media and root metadata.
 - [x] Every admitted target has hash-bound PASS with no open findings; withheld
       source errors have narrow follow-up tickets and are excluded from compilation.
 - [x] A distinct executor applies only reviewed corrections and preserves originals.
-- [ ] Scoped lint and prospective official compilation verify the exact reviewed bytes.
+- [x] Scoped lint and prospective official compilation verify the exact reviewed bytes.
 - [x] A separate release ticket retains merge/deployment/publication and public QA gates.
 
 ## Steps
@@ -51,7 +51,7 @@ translations. Preserve the source, original media and root metadata.
 - [x] Complete cross-worktree/remote/PR ownership and original-producer checks.
 - [x] Read every full source and target; view actual source/target SVG and raster renders.
 - [x] Apply independent findings, render again and re-review final exact outputs.
-- [ ] Validate reviewed packs and compile/recompile the admitted targets with official guards.
+- [x] Validate reviewed packs and compile/recompile the admitted targets with official guards.
 - [x] Record public-safe evidence and open a narrow release ticket without claiming publication.
 
 ## How to verify
@@ -84,3 +84,13 @@ all180 media pins, and ran combined twelve-article final pack lint: exit0,
 zero errors, inherited missing-summary/English-length advisories only.
 Official exact-commit prospective compilation remains pending. The scoped
 public note and separate open wave3 release ticket contain the handoff.
+
+Official exact-freeze prospective compilation/recompilation completed:48 targets,
+12 articles,180 candidate assets,144 selected assets, all158 bundle files exact.
+Both official verify_bundle calls pass; original review attribution/hashes and
+source/database guards remain intact. Manifest
+`e0492c0f2e438264f784f08d2a2d162e77f20dfa4e6ae004b401b7fb4cd8dad1`; verification
+`967d33f5393e479e73b571095474bd8fa08a6d4da56a60fddb64aea02310e48c`. The retained snapshot is not fresh deployment evidence.
+The scoped public documents and separate open wave3 release ticket retain the
+production handoff. A final-PR-head external compilation is still required before
+its later readiness/deployment/publication gates.

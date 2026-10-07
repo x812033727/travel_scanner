@@ -36,12 +36,30 @@ minimum text is 18px with no reported layout issues. All six zh-TW sources,
 source/master media and root metadata remain exact.
 
 Scoped pack lint passes with existing summary/English-length warnings. Those
-warnings do not justify deleting meaning or changing original sources. A final
-Git freeze, prospective official compilation/recompilation and exact bundle
-verification remain to be recorded after the companion six-article review.
+warnings do not justify deleting meaning or changing original sources. The exact Git freeze, official prospective compilation/recompilation and
+bundle verification are recorded below after the companion review.
 
 This is authoring/review evidence. It is not a fresh deployed baseline, merge,
 deployment or publication approval. The open wave3 release ticket owns current
 database/source guards, exact-version owner choice, backup/restore and full
 public QA. Raw snapshots, identities, renders and original review rows remain
 outside Git.
+
+Official prospective compilation completed on exact frozen commit
+`c4d0ce50e693e2bfa1a26366378af6f02ec625c1`. The unchanged compiler ran twice against the
+retained04:45:46 production snapshot, with original review rows/identities/times
+preserved. All158 bundle files are byte-identical; both verify_bundle calls pass.
+This verifies48 targets across12 articles,180 candidate assets and144 selected
+translated assets. It is preparation against a retained snapshot, not a fresh
+postdeployment baseline or production publication.
+
+| Prospective frozen binding | SHA-256 |
+| --- | --- |
+| Candidate manifest | 055e11642461c795e6c0706074ad828b047e03995219f54b17b6273b089a4292 |
+| Official prospective baseline | 8415b9e52fd4c9584e291947c4e82dac2d1ba1a373797e0ee7b3df6bf88ce032 |
+| Official bundle manifest | e0492c0f2e438264f784f08d2a2d162e77f20dfa4e6ae004b401b7fb4cd8dad1 |
+| Complete double-compilation verification | 967d33f5393e479e73b571095474bd8fa08a6d4da56a60fddb64aea02310e48c |
+
+A final documentation commit may follow this content freeze. The exact final PR
+head must be compiled again externally for its release/readiness bindings, while
+the selected source/content/media bytes stay identical to this reviewed freeze.
