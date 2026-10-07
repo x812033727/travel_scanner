@@ -8,6 +8,7 @@
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { isDeepStrictEqual } from "node:util";
 
 import { appliedBranding, presentationTimeline } from "../core/branding.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_TITLE_PLACEHOLDER, compilationDocument, compilationScenes, episodeNumbers, THUMB_SHOT, THUMB_SOURCE, TITLE_MAX_CHARS as CHAPTER_TITLE_MAX } from "../core/compilation.mjs";
@@ -15,7 +16,7 @@ import { COMPILATION_REVIEW_FILE, contextFromSeries, publicTexts, reviewCurrent,
 import { DESCRIPTION_MAX_BYTES, TAGS_MAX_CHARS, TITLE_MAX_CHARS } from "../core/metadata.mjs";
 import { atomicWrite, docDir, readJson } from "../core/paths.mjs";
 import { LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
-import { ARTIFACTS, compilationChapters, compilationSourceHashes, lintProject, loadProject, translationComplete } from "../core/state.mjs";
+import { ARTIFACTS, compilationChapters, compilationSourceHashes, compilationTranslationStale, lintProject, loadProject, translationComplete } from "../core/state.mjs";
 import { chosenLocales, readLanguages } from "../core/stages.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
@@ -334,6 +335,7 @@ export async function planMetadata(automation, state, previousProblem = null) {
   }
   writeJson(file, video);
   writeJson(path.join(dir, "metadata-plan.json"), plan);
+  stampLegacyTranslations(dir, before, video);
   if (context.mysteries.length) saveReview(automation, state, context, NARRATION_LOCALE, fields);
   const errors = lintProject(loadProject({ slug: state.slug, root: ctx.root })).errors;
   if (errors.length) return automation.retryLater(state, "planner", `the compilation's document fails lint after the upload fields: ${errors.slice(0, 3).map((error) => `${error.path}: ${error.message}`).join("; ")}`);
@@ -341,6 +343,24 @@ export async function planMetadata(automation, state, previousProblem = null) {
   automation.saveState(workdir, state);
   await automation.report(state, "metadata planned");
   return `${state.slug}: title, description, tags and thumbnail planned (${answer.title})`;
+}
+
+/**
+ * A plan that changes the text the translations are made from (planMetadata, again: the
+ * verifier's word on the zh-TW text, a deleted keyframes/manifest.json, an owner's reset) stamps
+ * each translation that records no hashes (written before they were kept) with the text it
+ * replaces, so the translation reads as stale and is translated again, as one with hashes does
+ * (core/state.mjs translationComplete). One never planned again keeps counting as complete.
+ */
+function stampLegacyTranslations(dir, before, video) {
+  const earlier = compilationSourceHashes(before);
+  if (isDeepStrictEqual(earlier, compilationSourceHashes(video))) return;
+  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+    const file = path.join(dir, "i18n", `${locale}.json`);
+    const translation = readJson(file, null);
+    if (!isObject(translation) || compilationTranslationStale(translation, video) !== "legacy") continue;
+    writeJson(file, { ...translation, source_hashes: { ...(isObject(translation.source_hashes) ? translation.source_hashes : {}), ...earlier } });
+  }
 }
 
 /**

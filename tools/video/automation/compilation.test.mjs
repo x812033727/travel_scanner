@@ -5,7 +5,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { compilationHash } from "../core/compilation.mjs";
-import { approvedEpisodes, compilationSourceHashes } from "../core/state.mjs";
+import { approvedEpisodes, compilationSourceHashes, lintProject, loadProject } from "../core/state.mjs";
 import { dramaFixture } from "../core/fixtures/load.mjs";
 import { atomicWrite, readJson } from "../core/paths.mjs";
 import { LOCALES } from "../core/schema.mjs";
@@ -193,12 +193,15 @@ test("a compilation goes from the placeholder document to the confirmed upload w
   const translations = () => site.calls.run.filter((call) => call.stage === "translator" && call.variant === "compilation");
   const source = (file = path.join(box.dir, "video.json")) => compilationSourceHashes(readJson(file));
   for (const locale of OTHER_LOCALES) assert.deepEqual(readJson(path.join(box.dir, "i18n", `${locale}.json`)).source_hashes, source(), "each translation records the text it was made from");
+  const stale = () => lintProject(loadProject({ slug, root: box.root })).warnings.filter((warning) => warning.path.startsWith("i18n/")).map((warning) => `${warning.path}: ${warning.message}`);
+  assert.deepEqual(stale(), [], "lint reads what the worker recorded as current");
   // The plan made again after the translations (render's advice when the thumbnail's background
   // and its keyframe both changed, or the owner's reset): a new title and description. Before,
   // every locale kept the translation of the old ones, read as done, and shipped in the package.
   const first = translations().length;
   const plan = readJson(path.join(box.dir, "video.json"));
   atomicWrite(path.join(box.dir, "video.json"), `${JSON.stringify({ ...plan, youtube: { ...plan.youtube, title: "她磨好了刀，背叛者還在做夢", description: `${plan.youtube.description}\n第二版企劃。` } }, null, 2)}\n`);
+  assert.deepEqual(stale(), OTHER_LOCALES.map((locale) => `i18n/${locale}.json: translations older than the zh-TW text: title, description`), "lint says what status says");
   for (const locale of OTHER_LOCALES) assert.match(await automation.step(), new RegExp(`${locale} title and description translated`));
   assert.equal(translations().length, first + OTHER_LOCALES.length, "each locale is translated once more");
   assert.equal(translations().at(-1).payload.youtube.title, "她磨好了刀，背叛者還在做夢");
@@ -209,7 +212,7 @@ test("a compilation goes from the placeholder document to the confirmed upload w
   assert.match(await automation.step(), /publish confirmation sent/);
   assert.match(await automation.step(), /the upload is confirmed/);
   assert.deepEqual(site.calls.compilations, [{ series: SERIES, action: "done" }], "the site was told once, and refused");
-  assert.equal(translations().length, first + OTHER_LOCALES.length, "an unchanged plan keeps its translations to the end");
+  assert.equal(translations().length, first + OTHER_LOCALES.length, "once translated from the current text, nothing is translated again to the end");
   const finished = automatedVideos(box.work).find((each) => each.slug === slug);
   assert.equal(finished.status, "done");
   assert.equal(finished.compilation_told, undefined, "the refusal is not remembered as told");

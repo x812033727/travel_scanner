@@ -13,6 +13,7 @@ depends_on: []
 scope:
   - tools/video/automation/compilation.mjs
   - tools/video/automation/compilation.test.mjs
+  - tools/video/automation/compilation-spoilers.test.mjs
   - tools/video/core/state.mjs
   - tools/video/core/state.test.mjs
   - docs/videos/long-form/review.md
@@ -83,10 +84,8 @@ the duration receipt and need the independent re-bind).
     an earlier title". Without a document it is the field check it was.
   - Decided: a translation written before the hashes were kept (none recorded) still counts as
     complete. Requiring hashes would have every compilation already translated, packaged or on
-    YouTube translated and packaged again on the worker's next round. The cost is that such a
-    legacy translation is not caught by a re-plan; render's refusal (render/cli.mjs `replan`)
-    still tells the owner to delete `i18n/*.json` with the manifest, which covers that case, so
-    it is left as it is.
+    YouTube translated and packaged again on the worker's next round. A re-plan reaches such a
+    file all the same: see the review below (`stampLegacyTranslations`).
   - Lint: `lintCompilation` reads the title, description and tags through `metadataStatus`, so a
     stale translation now warns "translations older than the zh-TW text" instead of nothing.
 - Tests, each failing on the old code or under a mutant:
@@ -99,3 +98,34 @@ the duration receipt and need the independent re-bind).
   - Mutations (a stale translation kept, no hashes written, the document ignored, chapters not
     hashed, a legacy translation counted stale, the status not given the document) each fail a
     test.
+- Review (2026-10-07, two lenses, each finding verified):
+  - Fixed, should-fix: a compilation's language batch looped. `i18n-merge` keys a compilation's
+    chapters and their hashes by card scene id, so the merged file read as stale, the worker
+    translated it again, and the next language round merged it again. Chapter hashes are now
+    compared only when they are recorded by episode slug (`compilationTranslationStale`); the
+    title, description and tags still are, since i18n-merge records them the same way. The batch
+    itself (the lost localized chapter names, the thumbnail hint that points a compilation at
+    i18n-merge, and captions that never finish because a compilation's timeline has
+    `speech_hash: null`) predates this task and is `2026-10-07-a-compilation-s-language-batch-fights`.
+    The same fix keeps the owner's thumbnail words when they follow that hint.
+  - Fixed, should-fix: a legacy file merged with captions alone has `source_hashes: { chapters: {} }`
+    and read as stale. A file is legacy now when it records no hash of its title, description or
+    tags, as `metadataStatus` reads it.
+  - Fixed, should-fix: the worker's own re-plan (the zh-TW verifier's word after the cut is joined
+    again, a deleted manifest, an owner's reset) did not reach a legacy file, and render's refusal
+    covers only the re-plan it advises. `planMetadata` now stamps each legacy translation with the
+    hashes of the plan it replaces (`stampLegacyTranslations`) when the text changed, so it reads
+    as stale and is translated again; one never planned again still counts as complete.
+  - Fixed, nit: a chapter title alone made from earlier text reopened the step but lint and qa said
+    nothing (`lintCompilation` keys chapters by card). `lintProject` adds "translations older than
+    the zh-TW text: chapter <slug>" from the worker's record. The step's note says "made from
+    earlier zh-TW text" and shows when every locale is stale too, not only some.
+  - Fixed, nit (tests): the mysteries path and the legacy verifier re-plan are now tests in
+    `compilation-spoilers.test.mjs` (added to the scope; it is not bound by the receipt), the flow
+    test checks lint against status, and its last assertion says what it pins.
+  - Not a defect of this task: a compilation planned again after its package was written keeps
+    the old package (the package is bound to final.mp4 alone, and only a compilation with
+    mysteries is packaged again). It predates this task: `2026-10-07-a-compilation-whose-public-text-changes`.
+  - Mutations of each fix (no stamping, legacy read only when the hashes are absent, card chapters
+    compared, no lint warning, the note hidden when all are stale, the title hashed differently,
+    a mysteries compilation keeping a stale file) each fail a test.

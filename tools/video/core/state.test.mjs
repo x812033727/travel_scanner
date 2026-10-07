@@ -15,7 +15,7 @@ import { atomicWrite, isInside, resolveWorkdir, stopRequested, UsageError } from
 import { eachLine, textHash } from "./schema.mjs";
 import { localeTexts, runCaptions, StageError } from "./stages.mjs";
 import { compilationHash } from "./compilation.mjs";
-import { approvedEpisodes, COMPILATION_STEPS, compilationSourceHashes, keyframeProblems, lintProject, loadProject, LOOK_STEPS, narratorOnly, pipelineStatus, recordStage, stepsFor, translationComplete } from "./state.mjs";
+import { approvedEpisodes, COMPILATION_STEPS, compilationSourceHashes, compilationTranslationStale, keyframeProblems, lintProject, loadProject, LOOK_STEPS, narratorOnly, pipelineStatus, recordStage, stepsFor, translationComplete } from "./state.mjs";
 import { buildTimeline, estimateTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "./timeline.mjs";
 import { compilationSandbox, EPISODES, sha, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
 import { planRequests } from "../tts/requests.mjs";
@@ -542,16 +542,46 @@ test("a compilation walks its own steps: planned metadata, cards, the join, the 
   assert.equal(translationComplete(numbered, replanned((doc) => { delete doc.compilation.titles[first]; doc.compilation.numbers = { [first]: 9 }; })), false, "「第 1 集」 is now 「第 9 集」");
   assert.equal(translationComplete({ ...recorded, source_hashes: undefined }, replanned((doc) => { doc.youtube.title = "x"; })), true, "one written before the hashes were kept counts as it always did");
   assert.equal(translationComplete({ ...recorded, title: "" }, drawn.doc), false, "the fields still come first");
+  // A file with no hash of its title, description or tags is one from before: i18n-merge of
+  // captions alone leaves it `{ chapters: {} }`, which reads as before too.
+  assert.equal(compilationTranslationStale({ ...recorded, source_hashes: { chapters: {} } }, drawn.doc), "legacy");
+  assert.equal(translationComplete({ ...recorded, source_hashes: { chapters: {} } }, replanned((doc) => { doc.youtube.title = "x"; })), true);
+  // Chapters i18n-merge keyed by card scene are not a plan's: the title, description and tags still are.
+  const merged = { ...recorded, source_hashes: { ...compilationSourceHashes(drawn.doc), chapters: { "card-1": "0123", "card-2": "4567" } } };
+  assert.deepEqual(compilationTranslationStale(merged, drawn.doc), []);
+  assert.deepEqual(compilationTranslationStale(merged, replanned((doc) => { doc.youtube.description = "新的說明"; })), ["description"]);
+  // By episode slug, an episode the plan no longer has, or one it has now, is a chapter made from other text.
+  const extra = { ...recorded, source_hashes: { ...recorded.source_hashes, chapters: { ...recorded.source_hashes.chapters, "wuxia-ep-9": "0000" } } };
+  assert.deepEqual(compilationTranslationStale(extra, drawn.doc), ["chapter wuxia-ep-9"]);
+  const fewer = { ...recorded, source_hashes: { ...recorded.source_hashes, chapters: { [first]: recorded.source_hashes.chapters[first] } } };
+  assert.deepEqual(compilationTranslationStale(fewer, drawn.doc), drawn.doc.compilation.episodes.slice(1).map((slug) => `chapter ${slug}`));
 
   // On disk: one locale made from the old title holds the step, and its note says which.
   const file = path.join(drawn.dir, "i18n", "ja.json");
   atomicWrite(file, JSON.stringify({ ...JSON.parse(readFileSync(file, "utf8")), source_hashes: compilationSourceHashes(replanned((doc) => { doc.youtube.title = "上一版的標題"; })) }));
   state = await drawnStatus();
   assert.equal(state.next.id, "metadata translated");
-  assert.equal(state.next.note, "missing, incomplete or made from an earlier title: ja");
+  assert.equal(state.next.note, "missing, incomplete or made from earlier zh-TW text: ja");
   atomicWrite(file, JSON.stringify({ ...JSON.parse(readFileSync(file, "utf8")), source_hashes: compilationSourceHashes(drawn.doc) }));
   state = await drawnStatus();
   assert.equal(state.next.id, "final video approved", "made from the current text, it is complete again");
+
+  // Every locale made from earlier text (the usual re-plan): the step that was done says why it reopened.
+  const files = ["en", "ja", "ko", "zh-CN"].map((locale) => path.join(drawn.dir, "i18n", `${locale}.json`));
+  const stamp = (hashes) => { for (const each of files) atomicWrite(each, JSON.stringify({ ...JSON.parse(readFileSync(each, "utf8")), source_hashes: hashes })); };
+  stamp(compilationSourceHashes(replanned((doc) => { doc.youtube.title = "上一版的標題"; })));
+  state = await drawnStatus();
+  assert.equal(state.next.id, "metadata translated");
+  assert.equal(state.next.note, "missing, incomplete or made from earlier zh-TW text: en, ja, ko, zh-CN");
+  const i18nWarnings = () => lintProject(loadProject({ slug: drawn.slug, root: drawn.root })).warnings.filter((warning) => warning.path.startsWith("i18n/")).map((warning) => `${warning.path}: ${warning.message}`);
+  assert.deepEqual(i18nWarnings(), files.map((each) => `i18n/${path.basename(each)}: translations older than the zh-TW text: title`), "lint says what status says");
+  // A chapter title alone: lintCompilation keys chapters by card scene, and lint reads the worker's by episode slug.
+  stamp(compilationSourceHashes(replanned((doc) => { doc.compilation.titles = { ...doc.compilation.titles, [first]: "上一版的章節名" }; })));
+  assert.equal((await drawnStatus()).next.id, "metadata translated");
+  assert.deepEqual(i18nWarnings(), files.map((each) => `i18n/${path.basename(each)}: translations older than the zh-TW text: chapter ${first}`));
+  stamp(compilationSourceHashes(drawn.doc));
+  assert.deepEqual(i18nWarnings(), [], "made from the current text, lint says nothing");
+  assert.equal((await drawnStatus()).next.id, "final video approved");
 });
 
 test("illustrated slides walk the picture and music steps, bound to the shots rather than the cards", async () => {
