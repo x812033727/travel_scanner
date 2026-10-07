@@ -41,7 +41,11 @@ const OWNER_CODES = new Set(['video_tool_token_invalid']);
 // client's code, which the QA's policy item reports instead of asking Jev again. A host from before
 // that route change answers the 502 for both, so this client needs a host that serves it:
 // production does since a9e4c3851, deployed 2026-10-05.
-const SETTLED_JUDGE_CODES = new Set(['video_judge_upstream_failed', 'upstream_unavailable']);
+const SETTLED_JUDGE_CODES = new Set(['video_judge_upstream_failed']);
+// Only the route's 502: no judge route answers the code with another status, so a 503 or 504
+// `upstream_unavailable` came from something else and stays uncertain (as tools/video/tts/client.mjs).
+const NEVER_REACHED = { status: 502, code: 'upstream_unavailable' };
+const settled = (status, code) => SETTLED_JUDGE_CODES.has(code) || (status === NEVER_REACHED.status && code === NEVER_REACHED.code);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(['ECONNREFUSED', 'ENOTFOUND', 'EAI_AGAIN', 'EHOSTUNREACH', 'ENETUNREACH', 'UND_ERR_CONNECT_TIMEOUT']);
 const neverSent = (error) => NEVER_SENT.has(error?.cause?.code ?? error?.code);
@@ -84,7 +88,7 @@ export function siteClient({ env = process.env, home, fetch: fetchImpl = globalT
       }
       const problem = await response.json().catch(() => ({}));
       const who = response.status === 401 || OWNER_CODES.has(problem.code) ? 'owner' : 'service';
-      if (paid && response.status >= 500 && !SETTLED_JUDGE_CODES.has(problem.code)) {
+      if (paid && response.status >= 500 && !settled(response.status, problem.code)) {
         throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ''}`, response.status);
       }
       last = new SiteError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code ?? '', who });

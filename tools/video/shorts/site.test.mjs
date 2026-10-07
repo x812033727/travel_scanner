@@ -56,6 +56,8 @@ const LOST = [
   ["the judge route's lost answer", () => json({ code: 'video_judge_answer_lost', detail: 'Jev 可能已經判斷' }, 504), 504],
   // The API's own 502 for a Jev call whose outcome it cannot tell: a 502, but not a settled one.
   ["the API's uncertain Jev outcome", () => json({ code: 'video_judge_outcome_uncertain', detail: 'Jev 可能已處理這次請求' }, 502), 502],
+  // Only the route's 502 says the API was never reached; no judge route answers this one.
+  ['an upstream_unavailable no judge route answers', () => json({ code: 'upstream_unavailable', detail: 'API 服務目前無法回應' }, 503), 503],
 ];
 
 test('a policy judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, a lost answer', async () => {

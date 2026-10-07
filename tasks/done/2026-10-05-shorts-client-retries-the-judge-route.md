@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-shorts-client-retries-the-judge-route
 title: Shorts client retries the judge route's never-reached 502 like the automation client
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-shorts-judge
 claimed_at: 2026-10-07T06:33:40Z
 created_at: 2026-10-05T23:52:56Z
-completed_at:
+completed_at: 2026-10-07T06:41:27Z
 branch:
 depends_on: []
 scope:
@@ -75,3 +75,14 @@ settled case fail there.
   route's 504 `video_judge_answer_lost` and the API's 502 `video_judge_outcome_uncertain` join
   `LOST`; the lost test's name drops "the judge route's 502". The settled case fails on the old
   `site.mjs`.
+- Review (2026-10-07, an independent agent) found no blocking or should-fix defect.
+  - It traced every source of `upstream_unavailable` on `automation/judge/policy`: only the web
+    route's connect-time failures answer it (`neverConnected`), always as 502. Everything after
+    the request may have left is the 504.
+  - Its one nit is taken. The code is settled only with status 502 (`NEVER_REACHED`, as
+    `tts/client.mjs` does), so a 503 or 504 with it stays uncertain, as this ticket's definition
+    of done says. A 503 row in `LOST` pins it.
+  - The automation client has the same gap: filed as
+    `2026-10-07-automation-client-settles-a-judge-route`.
+  - Noted, not changed (both older than this ticket): the retries wait 1, 2 and 4 s, which may not
+    cover a whole API restart, and the loop sleeps once more after the last attempt.
