@@ -252,3 +252,37 @@ are authorized by this follow-up.
   the caption unit. Fix validation of the exact requested unit while retaining
   full source/completeness validation of the final merged locale; do not narrow
   or relabel the request to hide a missing answer.
+
+- Final production readback at `2026-10-07T10:27:06.064Z` verified all 18 renewed
+  canonical finals and STOPs, 10 current approved base publish reviews and the
+  eight fact-check publish holds. Production remains `202430417`; PR #1359 is
+  still draft and was not merged or deployed by this continuation.
+- The six-series cohort now has 42/48 metadata/CC parts verified against native
+  output, the API and the actual deployed full review-store consumer. The four
+  retained videos independently passed a fresh 32/32 consumer readback at
+  `2026-10-07T10:25:05Z`: together, the allowed ten have 74/80 free parts, or
+  37/40 locale pairs. EP04 Japanese, Korean and Simplified Chinese remain held
+  behind its unchanged original unknown response; all 41 original files remain
+  exact. The 30 chosen paid dub parts remain held, so complete selected-language
+  upload packages remain blocked. No YouTube upload, publication or paid-media
+  regeneration occurred, and no owner language choices or shared settings changed.
+- Once R7 completed with exactly five successful new subscription text stages,
+  241 previous successful results preserved and zero repeated old subscription
+  stage requests.
+  Its three actual recovery events bind the original malformed response, the
+  independently reviewed recovered unit and the complete native locale merge.
+  Only a derived cached view gained the single missing structural brace; the
+  original raw response and journal remain unchanged. The closed R6 attempt
+  remains preserved at zero new model POSTs. The R7 pre-apply budget-order
+  amendment archived the three original operator sources, plan and dry-run
+  evidence; the original dry-run and old producers were never rearmed.
+- Outside-Git receipts under
+  `<home>/mokaair-work/handoff/renewed-finals-20261007`:
+  `translation-r7-independent-completion-proof-20261007T102706064Z.json`, SHA
+  `408f20750a308bb5361bcdc840ff1fc0e4436896bb62fb4bc55f91eefb596dda`;
+  `retained-four-fresh-independent-consumer-20261007T102505Z.json`, SHA
+  `9b789574a9770dbdb5248053a9e020ae624b8eb229246018246b993b82fe7487`;
+  `current-production-checkpoint-20261007T102923Z.json`, SHA
+  `94c8eb4174c2698e1fb6014847ec5bd9404bc3295c76cd306b792670ad0ef5bb`.
+  The 20 green PR checks previously observed bind head `022ee882`, not any later
+  documentation commit; this native repair task remains in review.
