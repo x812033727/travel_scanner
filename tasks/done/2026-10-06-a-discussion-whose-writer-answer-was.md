@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-a-discussion-whose-writer-answer-was
 title: A discussion whose writer answer was lost ends every round
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-discuss-lost
 claimed_at: 2026-10-07T12:41:51Z
 created_at: 2026-10-06T15:36:43Z
-completed_at:
+completed_at: 2026-10-07T15:14:12Z
 branch:
 depends_on:
   - 2026-10-06-a-failing-video-is-deferred
@@ -160,3 +160,13 @@ node --test tools/video/automation/series.test.mjs tools/video/automation/discus
 - Mutations of each review fix (the answers settled on failure, no line row restored or saved, the
   kept reply only when at rest, runs not bound to the kept reply, the reply not kept before the
   repairs, the flags not cleared before them, repair errors rethrown) each fail a test.
+- Duration re-bind (2026-10-07, independent reviewer `claude-pr-review-discuss-lost`): PASS,
+  duration-only, committed as a14ccac0. A differential run of 3,000 random errors through both
+  revisions' `move()` was identical; a rewritten screenplay still goes through lint, the verifier,
+  the listener and the script gate (the change closes a baseline gap where a rewrite left on disk
+  by a failed repair kept `verified` true). It noted two things outside duration:
+  - A kept reply posted while the rewrite's repair is still open reads as if the change were done.
+    Filed as `2026-10-07-a-discussion-s-kept-reply-does-not`.
+  - A process that dies after the reply is kept and before `saveAndLint` writes video.json would
+    post a reply for a rewrite that was never saved, and leave the discussion's run unclaimed (the
+    last Note's case). The window is the few milliseconds between the two writes; left as is.
