@@ -376,7 +376,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 | 項目 | 怎麼做 |
 | --- | --- |
-| 指令 | `node tools/video/media/cli.mjs stock search --query "Seoul skyline" [--provider pexels\|pixabay] [--orientation landscape\|portrait\|square] [--per-page N] [--page N] [--slug S] [--json]`，印每個候選的廠商、id、尺寸與方向、廠商要的那句標示、照片頁網址、alt，以及兩家 API 條款要的來源字樣；`node tools/video/media/cli.mjs stock fetch --slug S --provider P --id N [--workdir D] [--json]`。`tools/video/cli.mjs` 的指令表還沒有 `stock`，所以是直接跑 `media/cli.mjs`（它自己有 `main`，結束碼同主指令：2 用法、3 要站主、4 外部服務） |
+| 指令 | `node tools/video/cli.mjs stock search --query "Seoul skyline" [--provider pexels\|pixabay] [--orientation landscape\|portrait\|square] [--per-page N] [--page N] [--slug S] [--json]`，印每個候選的廠商、id、尺寸與方向、廠商要的那句標示、照片頁網址、alt，以及兩家 API 條款要的來源字樣；`node tools/video/cli.mjs stock fetch --slug S --provider P --id N [--workdir D] [--json]`。和其他媒體指令一樣走主指令，結束碼也一樣：2 用法、3 要站主、4 外部服務（直接跑 `node tools/video/media/cli.mjs stock …` 也行，媒體的測試就是這樣叫） |
 | 檔案 | `stock fetch` 請伺服器抓進媒體庫後，用 `downloadFile` 邊收邊核對雜湊下載到 `<VIDEO_WORKDIR>/<slug>/stock/<sha256>.<png\|jpg\|webp>`（副檔名照伺服器回的 `content_type`）；同一張再抓一次不會重載（檔名就是雜湊，核對過就跳過），壞掉的複本會重載。媒體庫那份 14 天後會被 `prune` 清掉，工作目錄這份才是成片用的 |
 | `assets[]` | 每抓一張就在 `docs/videos/<slug>/video.json` 的 `assets[]` 寫（或換掉同路徑的）一筆 `{path: "stock/<sha256>.<ext>", source: credit.text, license: credit.license, author: credit.author, url: credit.url}`：`source` 是廠商自己的措辭（「Photo by … on Pexels」「Image by … from Pixabay」），`author` 只有名字，`url` 是照片頁。沒有 `assets` 的 `video.json` 會在 `scenes` 前面長出來；整個檔案會以工具的格式（兩格縮排）重寫 |
 | 投影片 | `screenshot` 範本的 `data.image` 多接受 `stock/<sha256>.<png\|jpg\|webp>`（只有這個寫法，小寫、64 個十六進位字；repo 路徑的規則不變），渲染時從 `https://video.local/work/stock/…` 載入（和關鍵影格同一個假來源）；`data.credit`（選填，一行、≤60 字）畫在照片右下角的深色小膠囊裡，它的 CSS 只在有 `credit` 的那一頁隨頁帶，所以沒寫 `credit` 的截圖頁和 `theme.css` 都一個位元組都沒動，既有影片的畫格鍵不變。直向或方形照片照高度放、置中；超寬的全景會超出版面，渲染會當版面問題報出來，換一張 |
@@ -385,7 +385,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 | 說明欄 | `core/metadata.mjs` 的 `composeDescription` 在參考資料之後、hashtag 之前加「📷 圖片來源」區塊（各語系：圖片來源／图片来源／Image credits／画像の出典／이미지 출처），一張一行：`source（license）：url`（英、韓文用半形括號與冒號）。只列有 `author` 或 `url` 的 `assets[]`——自有圖解（只有 `path`／`source`／`license`）不列，所以列著自有圖解的既有影片，說明欄一個字都不會變，`publish` 關卡綁的 `upload/metadata.json` 也不會失效。`package/metadata.mjs` 每個語系都帶 `doc.assets` 進去；超過 5,000 位元組時的錯誤會註明是標示多了幾個位元組 |
 | 錯誤碼 | `video_media_stock_unavailable`（沒金鑰）→ 要站主（結束碼 3）；`video_media_stock_not_found` → 工具的錯（id 寫錯，結束碼 2）；`video_media_stock_failed`、429 → 和 `locate` 一樣重試，耗盡才算外部服務（4）；網站的 web app 還沒轉送 `stock/*` 路由時會收到 `video_media_route_unknown`，工具把它改說成「要部署會轉送這些路由的版本」（結束碼 3） |
 
-web app 的轉送（`apps/web/app/api/video/media/[...path]/forward.ts` 的 `mediaRoute` 白名單）由票 `2026-10-05-web-app-forwards-stock-and-locate` 補上了 `stock/search`、`stock/fetch` 與 `locate`。還沒做：`tools/video/cli.mjs` 的 `AREAS` 沒列 `stock`，加一行就能用主指令跑。
+web app 的轉送（`apps/web/app/api/video/media/[...path]/forward.ts` 的 `mediaRoute` 白名單）由票 `2026-10-05-web-app-forwards-stock-and-locate` 補上了 `stock/search`、`stock/fetch` 與 `locate`。
 
 ### 沒實測的事
 
@@ -460,7 +460,7 @@ lint（`core/drama.mjs` `cueCoverageProblems`，經 `core/lint.mjs` 進警告）
 
 ## 沒做、留給後面
 
-- 圖庫照片（§圖庫照片 的「工具端」）還差一件接線：`tools/video/cli.mjs` 的 `AREAS` 沒列 `stock`，現在要直接跑 `media/cli.mjs`（web app 的轉送白名單已由票 `2026-10-05-web-app-forwards-stock-and-locate` 補上）。`lint` 不算說明欄的「圖片來源」位元組（`core/lint.mjs` 不讀 `assets[]`），稿子要自己留；`docs/videos/README.md` §說明欄 的四個部分還沒列第五個「圖片來源」。工人的撰稿提示詞還不會自己去搜照片，目前是代理或站主手動 `stock search`／`stock fetch` 再把路徑寫進 `screenshot` 景。
+- 圖庫照片（§圖庫照片 的「工具端」）：`lint` 不算說明欄的「圖片來源」位元組（`core/lint.mjs` 不讀 `assets[]`），稿子要自己留；`docs/videos/README.md` §說明欄 的四個部分還沒列第五個「圖片來源」。工人的撰稿提示詞還不會自己去搜照片，目前是代理或站主手動 `stock search`／`stock fetch` 再把路徑寫進 `screenshot` 景。
 - 是非題只用在插圖投影片（§judge 的刻度與判定沿用）。漫劇的設定圖、關鍵影格、片段與原來如此事務所的靜圖仍是打分數、也頂在 7：各自量過已記錄的出圖、定好各自的題目再換。judge 漏看的瑕疵（六指、像字的記號）要靠更細的題目或更強的判定模型，也要先量；`subject` 在 163 張裡一次都沒答有，窯門大開那種「主動作不對」被歸到 `details`，這一題的寫法值得再試。
 - judge 的 problems 改成「鍵、毛病、修法」之後（§judge 的 problems），163 張的前後對照還沒量；`drama_preflight.mjs` 與 `run_report.mjs` 印的是 `problems`，manifest 的 `fixes` 它們還沒印。
 - 樣張沒放進聯絡表（`review/sync.mjs` 用張數切頁，多一格會錯位）；要看就開 `keyframes/plate-N.png`。
