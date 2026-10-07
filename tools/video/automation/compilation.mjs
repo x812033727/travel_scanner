@@ -6,10 +6,9 @@
 // title and description, and the commands in between (render, compile); the final cut, the
 // upload package and the YouTube id then go the way of every video (flow.mjs).
 import { createHash } from "node:crypto";
-import { copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
-import { sha256File } from "../core/approvals.mjs";
 import { appliedBranding, presentationTimeline } from "../core/branding.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_TITLE_PLACEHOLDER, compilationDocument, compilationScenes, episodeNumbers, THUMB_SHOT, THUMB_SOURCE, TITLE_MAX_CHARS as CHAPTER_TITLE_MAX } from "../core/compilation.mjs";
 import { COMPILATION_REVIEW_FILE, contextFromSeries, publicTexts, reviewCurrent, reviewHash, reviewProblem } from "../core/compilation-review.mjs";
@@ -150,20 +149,20 @@ export function thumbnailCandidates(workBase, root, episodes, limit = THUMBNAIL_
 /**
  * Copy the chosen episode keyframe to the compilation's THUMB_SOURCE and record it in the
  * compilation's keyframes manifest under the episode's approved hash. False, with any earlier
- * copy left as it was, when the file is gone or no longer holds those bytes: it is copied to a
- * temporary file and compared before it takes the place of the old one.
+ * copy left as it was, when the file is gone or no longer holds those bytes: the bytes are read
+ * once, and the ones hashed are the ones written (atomicWrite, which also rides out a Windows
+ * scanner holding the destination).
  */
-export async function copyThumbSource(workdir, chosen) {
-  const target = path.join(workdir, THUMB_SOURCE);
-  const temporary = `${target}.${process.pid}.tmp`;
-  if (!existsSync(chosen.file)) return false;
-  mkdirSync(path.dirname(target), { recursive: true });
-  copyFileSync(chosen.file, temporary);
-  if ((await sha256File(temporary)) !== chosen.sha256) {
-    rmSync(temporary, { force: true });
-    return false;
+export function copyThumbSource(workdir, chosen) {
+  let bytes;
+  try {
+    bytes = readFileSync(chosen.file);
+  } catch (error) {
+    if (error?.code === "ENOENT") return false;
+    throw error;
   }
-  renameSync(temporary, target);
+  if (createHash("sha256").update(bytes).digest("hex") !== chosen.sha256) return false;
+  atomicWrite(path.join(workdir, THUMB_SOURCE), bytes);
   atomicWrite(path.join(workdir, ARTIFACTS.keyframes), `${JSON.stringify({ shots: { [THUMB_SHOT]: { file: THUMB_SOURCE, sha256: chosen.sha256, source: { episode: chosen.episode, shot: chosen.shot } } } }, null, 2)}\n`);
   return true;
 }
@@ -330,7 +329,7 @@ export async function planMetadata(automation, state, previousProblem = null) {
   if (chosen) {
     // Drawn over or removed since it was offered: plan again rather than draw on bytes nobody
     // approved, or drop the picture the planner chose its headline for.
-    if (!(await copyThumbSource(workdir, chosen))) return automation.retryLater(state, "planner", `the thumbnail's keyframe ${chosen.episode}/${chosen.shot} changed since it was offered`);
+    if (!copyThumbSource(workdir, chosen)) return automation.retryLater(state, "planner", `the thumbnail's keyframe ${chosen.episode}/${chosen.shot} changed since it was offered`);
   } else {
     // No episode keyframe to draw on: the thumb template still draws its text on the theme.
     delete video.thumbnail.data.shot;

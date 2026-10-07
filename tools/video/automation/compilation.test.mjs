@@ -252,7 +252,7 @@ test("the thumbnail's keyframe is copied under its episode's approved hash, and 
   const box = compilationSandbox({ planned: false, rendered: false });
   const { episodes } = episodeKeyframes(box, [{ judge: 9, approved: "approved-a" }]);
   const [chosen] = thumbnailCandidates(box.work, box.root, episodes);
-  assert.equal(await copyThumbSource(box.workdir, chosen), true);
+  assert.equal(copyThumbSource(box.workdir, chosen), true);
   const target = path.join(box.workdir, "keyframes", "thumb-source.png");
   assert.equal(readFileSync(target, "utf8"), "approved-a");
   const manifest = readJson(path.join(box.workdir, "keyframes", "manifest.json"));
@@ -260,10 +260,10 @@ test("the thumbnail's keyframe is copied under its episode's approved hash, and 
 
   // Drawn over after it was offered: nothing nobody approved takes the copy's place.
   writeFileSync(chosen.file, "a later take");
-  assert.equal(await copyThumbSource(box.workdir, chosen), false);
+  assert.equal(copyThumbSource(box.workdir, chosen), false);
   assert.equal(readFileSync(target, "utf8"), "approved-a");
   assert.deepEqual(readJson(path.join(box.workdir, "keyframes", "manifest.json")), manifest);
   assert.deepEqual(readdirSync(path.dirname(target)).filter((name) => name.endsWith(".tmp")), [], "no temporary copy left");
   writeFileSync(chosen.file, "");
-  assert.equal(await copyThumbSource(box.workdir, { ...chosen, file: path.join(box.work, "gone.png") }), false, "a file that is gone");
+  assert.equal(copyThumbSource(box.workdir, { ...chosen, file: path.join(box.work, "gone.png") }), false, "a file that is gone");
 });

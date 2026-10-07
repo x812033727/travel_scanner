@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-the-compilation-thumbnail-copies-an-episode
 title: The compilation thumbnail copies an episode keyframe without checking its bytes
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-comp-thumb
 claimed_at: 2026-10-07T09:36:18Z
 created_at: 2026-10-07T06:58:42Z
-completed_at:
+completed_at: 2026-10-07T10:04:28Z
 branch:
 depends_on: []
 scope:
@@ -68,11 +68,12 @@ How the stale state is reached, from that ticket's review:
     record without a hash is not offered either. It stops at `limit` offered, so a changed
     keyframe does not take a place. Hashing is synchronous, as the function was. The work is
     bounded by the three leading episodes' shots with a character.
-  - `copyThumbSource(workdir, chosen)` (new, exported) copies to a temporary file, compares its
-    hash with the candidate's recorded one, and only then renames it over `THUMB_SOURCE`. The
-    compilation's manifest records the episode's approved hash. On a mismatch, or a file gone
-    since it was offered, it answers false and leaves any earlier copy and manifest as they
-    were.
+  - `copyThumbSource(workdir, chosen)` (new, exported) reads the keyframe once and hashes that
+    buffer against the candidate's recorded hash. Only then does it write those same bytes to
+    `THUMB_SOURCE` with `atomicWrite`, which also rides out a Windows scanner holding the
+    destination. The compilation's manifest records the episode's approved hash. On a mismatch,
+    or a file gone since it was offered, it answers false and leaves any earlier copy and
+    manifest as they were.
   - `planMetadata`: on false, `retryLater(planner)`, so the planner is asked again next round
     with the candidates as they are then. It neither draws on unapproved bytes nor drops the
     picture the planner chose its headline for. With no candidate at all, the thumbnail is still
@@ -84,4 +85,20 @@ How the stale state is reached, from that ticket's review:
   mutations (no byte filter, limit before the filter, no copy check, copying in place, a
   manifest hash not the approved one, no hash check) each fail a test.
 - Not done: the optional render message for a compilation. `render/cli.mjs` is outside this
-  scope, and it already prints the compilation's own hint (line 282) beside the refusal.
+  scope. Its compilation hint (line 282) is printed only when the manifest has no `shots.thumb`.
+  A `thumb-source.png` that is changed or missing still gets "run keyframes again", which a
+  compilation cannot do. Filed as `2026-10-07-render-tells-a-compilation-to-run`.
+- Review (2026-10-07, two lenses, each finding verified). Six findings were refuted:
+  - a take redrawn by hand on a published episode reaching the thumbnail: a binge series' keyframes
+    are judged, not owner-approved, and render's own check compares bytes too;
+  - the planner's refusal branch not being pinned: `retryLater` caps at two failures, and the
+    changed keyframe is no longer offered;
+  - a crash between the picture and the manifest: `planMetadata` runs again until it completes;
+  - a file that vanishes between the check and the read: it is now read once;
+  - and two claims about the tests.
+  It confirmed and checked that the six mutations fail, and that the limit, the theme path and
+  the retry cap behave. Taken from it:
+  - Nit: the hand-made temporary file and bare `renameSync` had no Windows retry. Replaced by
+    one read, one hash, and `atomicWrite`, as above. Mutations (no hash check, a vanished file
+    that throws, writing before the check) each fail a test.
+  - Nit: the note about render's hint was wrong; corrected above.
