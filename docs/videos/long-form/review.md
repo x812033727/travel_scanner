@@ -1712,6 +1712,47 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## claude/sharp-bardeen-ob6fn9 lease gaps increment: 6 files (2026-10-07)
+
+Reviewer: `claude-pr-review-lease-gaps`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is commit `1d53e3f2` ("fix(video): look, clips, music and the speech commands take the project lease and check STOP before writing"), written by `claude-opus-5-5-lease-gaps` on branch claude/sharp-bardeen-ob6fn9. Scope: DURATION_ONLY for the six changed bindings below. The reviewer wrote none of the commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `9e6b4158`, the commit's parent. The receipt before it is the "claude/sharp-bardeen-ob6fn9 lease review fixes increment" above (commit `1c52e9ac`); the commits between them (`7142b6ea`, the merge `f912d821` and the task claim `9e6b4158`) change none of the six files, and `git diff 9e6b4158 1d53e3f2 -- docs/videos/long-form/` is empty. At `9e6b4158` each of the six files hashes to its row in review.json and the table (by `git show` piped to `sha256sum`), and the working tree's copies equal `1d53e3f2`'s. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs; stale duration review binding: tools/video/automation/flow.mjs; stale duration review binding: tools/video/dubs/dubs.test.mjs; stale duration review binding: tools/video/media/clips.test.mjs; stale duration review binding: tools/video/media/look-keyframes.test.mjs; stale duration review binding: tools/video/tts/check.test.mjs` and nothing else. The commit also changes the unbound tools/video/media/look.mjs, clips.mjs, music.mjs, keyframes.mjs, stages.mjs, tools/video/tts/cli.mjs, tts/check.mjs, tools/video/dubs/cli.mjs, tools/video/core/project-lease.mjs, docs/videos/AUTOMATION.md, the deploy and prod-host-ops skills (both copies) and a task file. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with six hashes rebound and the other 102 unchanged.
+
+What the change is. `media/stages.mjs` gains `mayWriteProject()` (moved out of keyframes.mjs as `mayWrite`): no write under the project's STOP file, and none without the project's lease. look (draw and `--choose`), clips, `clips import` and music call it before their first write; tts, dub and check-audio call `requireProjectLease` before their first request or write, its new `as` option turning the refusal into their own SpeechError (exit 3). In flow.mjs, `restoreVideo()` fences with `{ stop: false }`, `media()` fences at the top of its exit-3 branch, and `fence()` takes no lease for a slug without a work directory. This section asks only whether any of it reaches a length rule, and in particular whether the fence before `media()`'s exit-3 handling or `restoreVideo`'s lease check can skip or change a duration gate.
+
+Findings, tools/video/automation/flow.mjs (+14/−4, 229,102 → 229,779 bytes). The duration code is outside every hunk: the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports, `slidesMinutes` and `episodeMinutes`, the anime `body_target_seconds / 60` settlement, and the planner and writer payloads' `target_minutes`. The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` number 20 at both revisions, and no changed line names one of them, minutes, seconds, a frame floor, QA or lint. The hunks:
+
+- `fence(slug, what, { stop = true })`: the new option only lets a caller skip the STOP read; the lease read is unchanged, and the `existsSync(workdir)` guard only stops a lease (and a directory) from being made for a slug with no work directory. It reads or writes no setting, state field or length.
+- `restoreVideo()`'s only caller is discuss.mjs line 261, after `saveAndLint` has already refused a revision. The fence runs after that lint, so the lint (with its length checks) is neither skipped nor changed; it can only stop the last good script from being written back while another producer holds the project, throwing PROJECT_HELD so the video sits the run out. The refused revision is never accepted: `rewritten`, `state.verified = false` and the rest of the accept branch are not reached. With `stop: false` a STOP still lets the good script go back, as before.
+- `media()`'s exit-3 fence sits before the reason is read and the video blocked. It does nothing while the lease is still this process's and no STOP is there, so the `media_exhausted`/`media_owner` block is unchanged then; otherwise it throws PROJECT_HELD and the video stays `active` at the same media step instead of being blocked. `media()` serves only look, keyframes, clips and music, none of them a length gate, and no step is marked done or cleared on this path, so it can delay a stage, never skip one or any duration check after it.
+
+Findings, tools/video/automation/automation.test.mjs (+42/−0, 405,913 → 408,652 bytes; 163 tests at the head by `node --test`, 162 at the baseline). One import (`acquireProjectLease`) and one test: a refused rewrite's script goes back under a STOP but not under another producer's lease (whose LEASE file is left untouched), a `keyframes` run that exits 3 after the lease went raises PROJECT_HELD with the video still `active`, and a series slug gets no work directory. The only changed lines matching "frame" are the `keyframes` stage name; none names a length, a frame floor or process.env. The duration-term lines are 31 at both revisions, and the opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at the top of the file is unchanged.
+
+Findings, the four media and speech test files. Each adds a `LEASE_FILE` import (look-keyframes.test.mjs already had one) and one test that a command run by hand under STOP or another producer's lease buys, sends and writes nothing:
+
+- tools/video/dubs/dubs.test.mjs (+19/−0, 35,888 → 37,202 bytes; 12 tests, 11 at the baseline): `dub` exits owner with no speech request and no dub timeline written. The `timeline` matches are the dub timeline file's path, checked only for existence.
+- tools/video/media/clips.test.mjs (+28/−2, 83,138 → 85,005 bytes; 27 tests, 26): the `clips import` STOP case now stops before the import (the expected line becomes "stopped by the STOP file before anything was drawn or written") with the ledger's totals and entries asserted as before; the new test covers clips and music. The `.length` matches count bought clips and tracks, not seconds.
+- tools/video/media/look-keyframes.test.mjs (+23/−0, 122,025 → 123,731 bytes; 42 tests, 41): look's draw and `--choose` under STOP and a foreign lease. The `.length` matches count drawn images.
+- tools/video/tts/check.test.mjs (+19/−0, 36,197 → 37,651 bytes; 22 tests, 21): `tts --force` and `check-audio` under a foreign lease leave timeline.json byte-identical and write no check.json. timeline.json is compared as bytes; its length is never read.
+
+The duration-term lines are, at both revisions, 2 in dubs.test.mjs, 11 in clips.test.mjs, 5 in look-keyframes.test.mjs and 1 in check.test.mjs; each file's `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` opt-out is unchanged and no changed line names a length rule.
+
+The unbound command changes, read for timing only. In tts/cli.mjs, tts/check.mjs and dubs/cli.mjs the one added call sits before the first speech request, after the arguments, project and (for dub) branding are checked; `buildTimeline`, `checkChapters`, the frame and sample conversions and the dub fit and shorten logic are not in any hunk. In look.mjs, clips.mjs and music.mjs the one added `mayWriteProject` line returns before any paid request or write and changes no length, take count or the music track's length rule; keyframes.mjs only swaps its private `mayWrite` for the shared one, with the same body. `requireProjectLease`'s `as` only re-wraps a lease refusal.
+
+Ran (Node v22.22.0, Linux, in the worktree at `1d53e3f2`, node_modules installed, VIDEO_MIN_EPISODE_MINUTES unset in the shell): the baseline hashing, `git diff 9e6b4158 1d53e3f2` of the six bound files and the unbound command files read in full, changed-line scans and duration-term counts at both revisions, reads of `media()`, `fence()` and discuss.mjs's call of `restoreVideo`. Before rebinding, `node --test` passed automation.test.mjs 163 of 163, dubs.test.mjs 12 of 12, clips.test.mjs 27 of 27, look-keyframes.test.mjs 42 of 42 and check.test.mjs 22 of 22, and `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same six paths. The CLI check and the long-form tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the lease checks themselves, `mayWriteProject`, the `as` option, the exit-3 fence's choice of deferring over blocking, or whether every paid request and canonical write is now fenced.
+- The unbound files are read for timing only and are not reviewed otherwise.
+- No real video was written, linted, voiced, dubbed, assembled or measured, and the tests run under the opt-out.
+- Not run or seen: the rest of the tool, Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, two processes on the production host, and the production host.
+- The 102 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the six rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1768,9 +1809,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `f5a94de05f7711eef9fd71b3a278c30ea833e8492dc9df7bcfbf40f22fe167e4` |
+| `tools/video/automation/automation.test.mjs` | `03af4ae756b9ce9a6b8092b490b53006009d4ef9f291c4189a48ae828a47cc98` |
 | `tools/video/automation/discuss.mjs` | `fcb1a59b6861c8b18582aeece052b7d6f21930aae495f231e7e0f2c7d0dca9f5` |
-| `tools/video/automation/flow.mjs` | `5a05ef53bad13db1deebeea05665d6013c41a1b1c86dba3bfce62da849aed353` |
+| `tools/video/automation/flow.mjs` | `0379fecfc8efe198a37fc28b4036ba5f87a8c361d82286c4bda2a1c92848bc1d` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |
@@ -1798,7 +1839,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
 | `tools/video/dubs/captions-package.test.mjs` | `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` |
-| `tools/video/dubs/dubs.test.mjs` | `e8aa53b2e0e210d53df89d9e4d9a510e6bb9385488c695e2542f435cfff25812` |
+| `tools/video/dubs/dubs.test.mjs` | `61057bc8ad18f8a85a0ff1a56ba75139251d22c8c819494da96d0002c91c7d1b` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
 | `tools/video/dubs/plan.test.mjs` | `94e61419eda766e722c07675f1f75a569f3eb07fdeecce5c03dc862db1a0d572` |
 | `tools/video/long-form/cli.mjs` | `3a0b26f900daaf1a08f7ed210ad1239d7f172035fa1e14c6dafc28bf55dedfa4` |
@@ -1807,8 +1848,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
-| `tools/video/media/clips.test.mjs` | `142d00151868e05ce593fde515f09dc58855207d8880ca694fc08d22a4b1c572` |
-| `tools/video/media/look-keyframes.test.mjs` | `2dc6312f2dde73ab6d57272e7aed87d9ed788d8b17498aa5914b01f53d3f7205` |
+| `tools/video/media/clips.test.mjs` | `c96b901460e6bbf96345752bbf484c75e5e6afd2c967b02fb014e4dfcd8d8e3b` |
+| `tools/video/media/look-keyframes.test.mjs` | `4628be5ff619f50a9431610f996017047517e6cdb7aaf997a4fde5398e97878a` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `3f81ff3bfb8b600f06c1ba54bc72e685b74ff8bcbd1f096b7b5d4b77ff9d175d` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
@@ -1823,6 +1864,6 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
-| `tools/video/tts/check.test.mjs` | `8c995ae7c7b30213c9e301fc39d7222f50da97a5f0fd8da0b359dea0762ff872` |
+| `tools/video/tts/check.test.mjs` | `8da7502e68ba7bea2cb3bbdba3bf711bbfbb950b16429a480f5d0075b7670353` |
 | `tools/video/tts/synthesis.mjs` | `589ebe665bd281aaefba6749d61148f4c7011f71c962513efd5a6cd6830f3cb3` |
 | `tools/video/tts/tts.test.mjs` | `6f7dda4d4cb36292ca5445a83698d74c693464a9502b88be731564ef5c923403` |
