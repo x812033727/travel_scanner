@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
@@ -439,6 +440,68 @@ test("a Simplified Chinese thumbnail with a Simplified-only form is drawable in 
   assert.match(sc.html, /<html lang="zh-Hans">.*fonts\/noto-sans-sc\/index\.css.*--font:"Noto Sans SC Variable"/);
   assert.deepEqual(localizedThumbnails(plan).drawable.map((own) => own.locale), ["zh-CN"]);
   assert.match(localizedThumbnails(plan, () => bundledCoverage()).gaps["zh-CN"], /U\+4F65/, "the slide fonts alone lack it");
+});
+
+test("a thumbnail whose keyframe's bytes changed or went missing is refused before anything is drawn; the approved bytes render as before", async () => {
+  // A later keyframes take reuses the selected file name (2026-10-07-the-thumbnail-is-drawn-from-a).
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  assert.equal(doc.thumbnail.data.shot, "podium");
+  const work = (...parts) => path.join(box.workdir, ...parts);
+  const picture = work("keyframes", "podium-1.png");
+  mkdirSync(path.dirname(picture), { recursive: true });
+  writeFileSync(picture, "the approved podium");
+  const sha256 = createHash("sha256").update("the approved podium").digest("hex");
+  writeFileSync(work("keyframes", "manifest.json"), JSON.stringify({ shots: { podium: { file: "keyframes/podium-1.png", sha256 } } }));
+  const words = Object.fromEntries(Object.keys(thumbnailSource(doc)).map((name) => [name, `Why ${name}`]));
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify({ thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(doc) } }));
+  const captures = [];
+  let out = "";
+  const ctx = {
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work },
+    stdout: { write: (text) => (out += text) },
+    stderr: { write: (text) => (out += text) },
+    now: () => new Date("2026-10-07T00:00:00Z"),
+    openRenderer: async () => ({
+      capture: async (key, html) => {
+        captures.push({ key, html });
+        return { still: Buffer.from(`picture ${key}`), frames: [], problems: [] };
+      },
+      sheet: async () => Buffer.from("sheet"),
+      close: async () => {},
+    }),
+  };
+  const render = ["render", "--slug", box.slug];
+  const languages = [...render, "--thumbnails-only"];
+  assert.equal(await main(render, ctx), EXIT.ok, out);
+  assert.ok(captures.some(({ html }) => html.includes("https://video.local/work/keyframes/podium-1.png")), "the thumbnail sits on the keyframe");
+  const rendered = readFileSync(work("frames", "manifest.json"), "utf8");
+  const thumbnail = readFileSync(work("thumbnail.jpg"), "utf8");
+
+  for (const [what, change, said] of [
+    ["a later take drawn over the selected file", () => writeFileSync(picture, "a later take"), /the thumbnail's background keyframes\/podium-1\.png has changed since keyframes\/manifest\.json recorded it; run keyframes again or restore the approved picture/],
+    ["the selected file gone", () => rmSync(picture), /the thumbnail's background keyframes\/podium-1\.png is missing; run keyframes again or restore the approved picture/],
+  ]) {
+    change();
+    for (const args of [render, languages]) {
+      const label = `${what}: ${args.join(" ")}`;
+      captures.length = 0;
+      out = "";
+      assert.equal(await main(args, ctx), EXIT.usage, label);
+      assert.match(out, said, label);
+      assert.equal(captures.length, 0, `${label}: nothing is drawn`);
+      assert.equal(readFileSync(work("frames", "manifest.json"), "utf8"), rendered, `${label}: no key is written under the recorded hash`);
+      assert.equal(readFileSync(work("thumbnail.jpg"), "utf8"), thumbnail, `${label}: the approved thumbnail stays`);
+    }
+  }
+
+  // The approved bytes back: the render goes on as before.
+  writeFileSync(picture, "the approved podium");
+  out = "";
+  assert.equal(await main(render, ctx), EXIT.ok, out);
+  assert.equal(await main(languages, ctx), EXIT.ok, out);
 });
 
 test("render --thumbnails-only draws the language thumbnails alone, and only over frames rendered for this script", async () => {

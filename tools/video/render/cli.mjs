@@ -17,6 +17,7 @@ import { existsSync, readFileSync, rmSync, writeFileSync, mkdirSync } from "node
 import path from "node:path";
 import { parseArgs } from "node:util";
 
+import { sha256File } from "../core/approvals.mjs";
 import { isCompilation, THUMB_SOURCE } from "../core/compilation.mjs";
 import { burnIn, hasPictures, isDrama, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
@@ -46,6 +47,35 @@ const glyphList = (missing) => missing.map((char) => `"${char}" U+${char.codePoi
 
 /** The thumbnail and its test variants, each with the path its problems are reported under. */
 const thumbnailsOf = (plan) => (plan.thumbnail ? [["thumbnail", plan.thumbnail], ...(plan.thumbnail.variants ?? []).map((variant) => [`thumbnail variant ${variant.id}`, variant])] : []);
+
+/**
+ * The keyframes the thumbnails sit on (the thumbnail, its test variants, the caption locales' own)
+ * whose bytes are not the ones keyframes/manifest.json recorded, or that are missing. A later
+ * keyframes take may have drawn over the selected file name, and the thumbnail's key, made of the
+ * recorded hash, would still read as current while it shows bytes nobody approved. Read before
+ * anything is drawn, so a refusal leaves no picture and no key behind.
+ */
+async function changedBackgrounds(plan, workdir) {
+  const pictures = new Map();
+  for (const own of [...thumbnailsOf(plan).map(([, each]) => each), ...(plan.thumbnail?.locales ?? [])]) {
+    if (own.keyframe) pictures.set(own.keyframe.file, own.keyframe.sha256);
+  }
+  const problems = [];
+  for (const [file, sha256] of pictures) {
+    const local = path.resolve(workdir, file);
+    if (!existsSync(local)) problems.push(`the thumbnail's background ${file} is missing`);
+    else if (!sha256 || (await sha256File(local)) !== sha256) problems.push(`the thumbnail's background ${file} has changed since keyframes/manifest.json recorded it`);
+  }
+  return problems;
+}
+
+/** Refuse a render whose thumbnail would show a keyframe other than the recorded one (changedBackgrounds). */
+async function refuseChangedBackgrounds(ctx, plan, workdir) {
+  const changed = await changedBackgrounds(plan, workdir);
+  if (!changed.length) return false;
+  ctx.stderr.write(`${changed.join("; ")}; run keyframes again or restore the approved picture\n`);
+  return true;
+}
 
 /** Characters no bundled font covers, per scene state, subtitle strip and the thumbnail. */
 export function coverageProblems(plan, coverage, subtitles = null) {
@@ -143,6 +173,7 @@ async function thumbnailsOnly({ ctx, project, workdir, channel }) {
     ctx.stderr.write(`the thumbnail's background is the keyframe of shot ${plan.thumbnail.shot}, which is not drawn yet; run keyframes first\n`);
     return EXIT.usage;
   }
+  if (await refuseChangedBackgrounds(ctx, plan, workdir)) return EXIT.usage;
   const localized = localizedThumbnails(plan);
   const started = Date.now();
   let renderer;
@@ -252,6 +283,7 @@ export async function run(command, args, ctx) {
     else ctx.stderr.write(`the thumbnail's background is the keyframe of shot ${plan.thumbnail.shot}, which is not drawn yet; run keyframes first\n`);
     return EXIT.usage;
   }
+  if (await refuseChangedBackgrounds(ctx, plan, workdir)) return EXIT.usage;
   const glyphs = coverageProblems(plan, bundledCoverage(), subtitles);
   if (glyphs.length) {
     print(ctx.stdout, "ERROR", glyphs);
