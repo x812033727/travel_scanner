@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-jev-judge-endpoints-report-an-uncertain
 title: Jev judge endpoints report an uncertain provider outcome apart from a settled failure
-status: review
+status: done
 priority: P2
 area: api
 owner: codex-jev-uncertain-endpoints
 claimed_at: 2026-10-05T05:35:20Z
 created_at: 2026-10-05T00:58:04Z
-completed_at:
+completed_at: 2026-10-07T01:43:04Z
 branch: codex/jev-outcome-uncertain-endpoints-20261005
 depends_on: []
 scope:
@@ -112,3 +112,8 @@ Use `httpx.MockTransport`; never reproduce a lost answer against TypeSafe.
 - Local tests only: no real Jev/TTS/ASR request, quota/account change, production write,
   deployment, activation, approval or YouTube action. This does not start DevDay or
   complete the normal pipeline's durable restart contract.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+標記完成。依據：Codex #1254 landed in train #1348 (ee20f935): jev_outcome_uncertain_response / video_judge_outcome_uncertain in apps/api/app/video_speech/admin_api.py and video_automation/admin_api.py, tests in test_video_automation_judge.py:404 and test_video_speech_check.py:409; all DoD items ticked; the caller handoff is in Notes and the code is held by tools/video/automation/client.mjs (status review, stale claim from 2026-10-05)
+未勾的「通知 CLI 兩張票的持有者」已無對象：2026-10-04-prevent-automatic-retries-of-paid-video 與 2026-10-04-prevent-paid-speech-retries-after-ambiguous 都已在 tasks/done。

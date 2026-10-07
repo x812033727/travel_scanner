@@ -1,11 +1,11 @@
 ---
 id: 2026-10-01-hand-off-owner-approved-renewed-finals
 title: Hand off owner-approved renewed finals to canonical and imported upload packages
-status: in-progress
+status: open
 priority: P1
 area: tools
-owner: codex-video-stall-followthrough
-claimed_at: 2026-10-04T10:14:09Z
+owner:
+claimed_at:
 created_at: 2026-10-01T09:53:00Z
 completed_at:
 branch: codex/video-approved-final-languages-20261004
@@ -171,3 +171,7 @@ timeline. A successful HTTP response is not approval, canonical activation or up
   retains STOP and both snapshots for recovery. Production canonical activation,
   backend package acceptance and resumed language production remain separate
   unfinished steps, not consequences of these passing local tests.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+釋出過期認領（認領超過 24 小時，主要工作已落地）。程式已在 main（renewal-handoff.mjs、prepareRenewedBatch，#1208）；分支已不在遠端；剩正式站的交接。

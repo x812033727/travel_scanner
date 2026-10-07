@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-illustrated-slides-lint-heuristics-the-shorts
 title: Illustrated slides lint heuristics, the Shorts crop figure and an end-to-end 2K test
-status: open
+status: done
 priority: P1
 area: tools
 owner:
 claimed_at:
 created_at: 2026-10-03T04:27:39Z
-completed_at:
+completed_at: 2026-10-07T01:43:03Z
 branch: claude/video-production-tutorial-optimization-f5d1bc
 depends_on: []
 scope:
@@ -85,3 +85,7 @@ node tools/video/long-form/cli.mjs check
 - `tools/video/shorts/` was in the scope of `2026-09-28-sothatswhy-shorts-from-episode` (a stale
   claim) when PR #1166 was written, which is why the comment there was left.
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by claude-fable-5-1-illustration-round2 (since 2026-10-03T08:24:13Z) was stale and is released so it stops locking its scope. Landed: #1172. Still open: Rebind the long-form duration receipt (docs/videos/long-form/review.*) for the bound files, done by an indepen.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+標記完成。依據：all DoD ticked, landed via #1172 (markers: stages.mjs choiceFor reads status.slides_enabled L46; look-keyframes.test.mjs usd_per_image_2k; SHORTS.md "約 32%"); last step (long-form receipt rebind) met: docs/videos/long-form/review.json (PASS, reviewer claude-pr-review-1347, #1347, checked 2026-10-07) binds current sha256 of core/drama.mjs, drama.test.mjs, media/look-keyframes.test.mjs

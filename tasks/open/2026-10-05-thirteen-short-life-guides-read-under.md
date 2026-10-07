@@ -1,11 +1,11 @@
 ---
 id: 2026-10-05-thirteen-short-life-guides-read-under
 title: Thirteen short life guides read under the 1,500-character floor in zh-TW, zh-CN and ko
-status: review
+status: open
 priority: P3
 area: docs
-owner: claude-opus-5-5-short-life-a
-claimed_at: 2026-10-06T01:15:09Z
+owner:
+claimed_at:
 created_at: 2026-10-05T06:52:42Z
 completed_at:
 branch: claude/short-life-a
@@ -637,3 +637,7 @@ In all six packs, en, ja, ko and zh-CN carry the same meaning as zh-TW in every 
 - **Another round:** not required. This round found no fact changes.
 
 - 2026-10-06 (claude-opus-5-5, board sweep): #1331 and #1332 land together in one train, each after two independent fact-check rounds (sections above). On the merged tree `pack_cli lint --kind life` over the 13 slugs gives no `text_length` warning (only the out-of-scope `no_summary`), so DoD 1 and 2 hold. DoD 3 is still open: after deploy, with the owner's OK, `guides-import --slug <13 slugs> --dry-run`, then `--publish`, then `guides-links-rebuild`. The ticket stays in review until that import is done, so the step stays on the board.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+釋出過期認領（認領超過 24 小時，主要工作已落地）。13 份內容包已隨 #1352（bd900976）合併；剩正式站 guides-import。

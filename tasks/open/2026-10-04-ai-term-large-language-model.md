@@ -1,11 +1,11 @@
 ---
 id: 2026-10-04-ai-term-large-language-model
 title: AI terms: produce the large language model explainer
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-ai-series-continuation
-claimed_at: 2026-10-04T10:23:54Z
+owner:
+claimed_at:
 created_at: 2026-10-04T10:23:14Z
 completed_at:
 branch: codex/ai-series-continuation-20261004
@@ -125,3 +125,7 @@ Continue the standard `youtube-video` gates with the existing paired local tool.
 - A separate unclaimed P2 `2026-10-04-avoid-claiming-owner-youtube-upload-when` records the normal publish-pull wording bug with actual automaticapproval/noYouTubeID evidence. No shared-code implementation was changed. The next existing Embedding topic remains independently prepared in draftPR1211; any paid continuation must use current source/gate/budget/collision/host/OS guards and persistent whole-episode uncertainty/context holds.
 
 - Oct5 04:50 actual free Shorts preview: two private source-bound candidates use 13 complete original Sulafat WAV sentences, no new TTS/image purchases and no edits to original20phrase b705 source. Normal files-mode builds completed, 30.433/41.967s,1080x1920@30. Independent actual227checks/13scene-midpoint pixels/2contacts pass, exact normalized PCM/sample placement with zero padding. Root normal offlineQA terminal1 for each: profile/loudness/layout/facts/zh-TW captions/disclosure PASS; narration(check.json absent)/backend evidence/policy/metadata(real parentYTURL absent)/links/variety HOLD, qa.ok=false. First-frame dissolve text overlaps are preserved as a finite visual caveat, not full-transition acceptance. Full evidence/build paths are in private RUN; preview is not Short backend delivery or original shared-media cleanup eligibility. Original longfilm/source/audio/1250media/Garchive retained unchanged.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+釋出過期認領（認領超過 24 小時，主要工作已落地）。交付與封存已完成；只剩保留期過後的清理。

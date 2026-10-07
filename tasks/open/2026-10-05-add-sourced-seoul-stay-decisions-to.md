@@ -1,11 +1,11 @@
 ---
 id: 2026-10-05-add-sourced-seoul-stay-decisions-to
 title: Add sourced Seoul stay decisions to the city page
-status: review
+status: open
 priority: P1
 area: web
-owner: claude-opus-seoul
-claimed_at: 2026-10-05T02:05:43Z
+owner:
+claimed_at:
 created_at: 2026-10-05T02:05:34Z
 completed_at:
 branch: claude/project-thread-8bpz38
@@ -52,3 +52,7 @@ After deploy, open /zh-TW/destinations/seoul (and the other four locales) and co
 - arex.or.kr answered with a firewall page from the cloud environment, so AREX stops were checked against the Incheon Airport route page instead.
 - Fares, headways and journey minutes are deliberately left out of the cards, as for Tokyo.
 - The readiness doc's Seoul row should be updated only after the page is live (its scope belongs to the AdSense coordination task).
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+釋出過期認領（認領超過 24 小時，主要工作已落地）。程式已隨 #1348 合併；剩部署後五個語系的線上檢查。

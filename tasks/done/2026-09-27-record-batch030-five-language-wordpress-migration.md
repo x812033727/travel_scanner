@@ -1,13 +1,13 @@
 ---
 id: 2026-09-27-record-batch030-five-language-wordpress-migration
 title: Record Batch030 five-language WordPress migration release
-status: open
+status: done
 priority: P2
 area: docs
 owner:
 claimed_at:
 created_at: 2026-09-27T23:26:06Z
-completed_at:
+completed_at: 2026-10-07T01:43:02Z
 branch: codex/article-localization-030-release-record-docs
 depends_on: []
 scope:
@@ -73,3 +73,7 @@ Release-record PR #877 is open for review. Its merge remains a separate step;
 the production publication and browser acceptance occurred before this
 documentation PR.
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-batch030-release-record (since 2026-09-27T23:26:15Z) was stale and is released so it stops locking its scope. Landed: #877. Still open: Pass task checks and merge the release-record PR after CI; Merge after successful CI and release coordination.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+標記完成。依據：Only open item was merging the record PR: PR #877 "Record Batch030 five-language WordPress migration release" merged 2026-09-28; docs/article-localization/releases/batch030/README.md on origin/main

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-claude-tutorial-ci-validation
 title: Claude tutorial GitHub Actions validation workflow
-status: open
+status: done
 priority: P2
 area: tools
 owner:
 claimed_at:
 created_at: 2026-09-14T13:29:33Z
-completed_at:
+completed_at: 2026-10-07T01:43:04Z
 branch: codex/claude-code-advanced-tutorials
 depends_on: []
 scope:
@@ -46,3 +46,7 @@ scope:
 2026-09-14：GitHub 唯讀盤點顯示 repository secrets=0、environments=0、registered Claude workflows=[]。本機 CLI OAuth 重新授權成功不等於 GitHub CI 有憑證，沒有複製帳號憑證到 GitHub。此 workflow 尚未合併、安裝或 dispatch；不含部署、資料庫匯入與公開發布。
 
 本機系列工具 12 項通過；實際 workflow baseline 指令 8 項通過。原始範圍與 SHA：docs/claude-code-series/advanced/evidence/live/ci-workflow-validation.json；操作手冊：docs/claude-code-series/advanced/github-actions-validation.md。workflow 已包含在審查包，等待與本批內容一併審查及遠端前提建立。
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+關閉：不再需要。Duplicate. Its only unticked item (paid run_model=true job and review artifact, which needs ANTHROPIC_API_KEY in claude-lab) is the same as the 92 item in 2026-09-14-claude-advanced-live-validation. Keep that ticket. The workflow and its baseline already landed (#501, run 34862981734)
