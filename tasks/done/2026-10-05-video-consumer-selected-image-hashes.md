@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-video-consumer-selected-image-hashes
 title: Verify selected image bytes before direct clips and assembly
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-image-bytes
 claimed_at: 2026-10-07T03:35:41Z
 created_at: 2026-10-05T12:57:36Z
-completed_at:
+completed_at: 2026-10-07T04:08:54Z
 branch: claude/sharp-bardeen-ob6fn9
 depends_on: []
 scope:
