@@ -6,6 +6,7 @@
 // after the limit's whole window when a host from before that header sends none).
 // A paid request (speech, speech/transcribe, speech/judge) is sent again only when it never reached
 // the API or the API settled it; one that went out and lost its answer stops (SPEECH_UNCERTAIN).
+import { AsyncLocalStorage } from "node:async_hooks";
 import { createHash } from "node:crypto";
 import { NARRATION_LOCALE } from "../core/schema.mjs";
 import { toNarrationRate } from "./wav.mjs";
@@ -88,6 +89,28 @@ export const RATE_WINDOW_MS = 61_000;
 // the service's (exit 4), for the caller to come back to later.
 export const MAX_RETRY_WAIT_MS = 90_000;
 
+// What a paid request in `withPaidWaits` reports of its waits between two tries.
+const paidWaits = new AsyncLocalStorage();
+
+/**
+ * Run `send` with `hooks` told of each wait a paid request in it sits out before trying again:
+ * `waiting({ status, code, ms })` before the sleep, and `resending()` after it, before the next
+ * POST, which may throw to stop the request there. A paid request waits only after answers that
+ * settled it (it never reached the API, or the API refused it or answered for it), so one found
+ * waiting by a run that did not make it can be sent again. tts/speech-journal.mjs records it.
+ */
+export const withPaidWaits = (hooks, send) => paidWaits.run(hooks, send);
+
+async function pause(sleep, ms, paid, why) {
+  const hooks = paid ? paidWaits.getStore() : undefined;
+  hooks?.waiting?.({ ...why, ms });
+  try {
+    await sleep(ms);
+  } finally {
+    hooks?.resending?.();
+  }
+}
+
 function retryDelayMs(response, attempt, code = "") {
   const header = Number(response?.headers.get("retry-after"));
   if (Number.isFinite(header) && header > 0) return header * 1000;
@@ -109,7 +132,7 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts, paid 
       if (paid && !neverSent(error)) throw uncertain(path, init.body, error.cause?.message ?? error.message);
       last = new SpeechError(`cannot reach ${site}: ${error.message}`, { code: "network" });
       if (attempt === attempts - 1) break;
-      await sleep(retryDelayMs(null, attempt));
+      await pause(sleep, retryDelayMs(null, attempt), paid, { status: 0, code: "network" });
       continue;
     }
     if (response.ok) return response;
@@ -129,7 +152,7 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts, paid 
     // safe; nothing waits after the last attempt, or longer than one retry should.
     const wait = retryDelayMs(response, attempt, problem.code);
     if (attempt === attempts - 1 || wait > MAX_RETRY_WAIT_MS) throw last;
-    await sleep(wait);
+    await pause(sleep, wait, paid, { status: response.status, code: problem.code });
   }
   throw last;
 }

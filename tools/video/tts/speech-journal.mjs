@@ -12,11 +12,18 @@
 //               as its sha256 and size) and the time. Once an answer arrives, "confirmed" with the
 //               saved WAV's sha256 and the billable characters, or with the transcript or Jev's
 //               results themselves and their sha256; when none usable does, "held" with why.
+//               While client.mjs waits to try again after an answer that settled it (the routes'
+//               rate limit, a provider busy), "waiting" with a wait id, and "sent" again before
+//               the next POST.
 //   <sha>.wav   a synthesis's confirmed answer as `send` returned it, saved before the entry says so.
+//   <sha>.<wait id>.claim  for a moment, while a run turns a waiting entry back into its own sent
+//               one: whoever creates it first sends, so two runs never both do.
 //
 // A run asking for the same body takes a confirmed answer from disk instead of buying it again,
 // and stops on a sent or held one without sending it (SPEECH_UNCERTAIN, the owner's, exit 3): it
-// may have run and been charged, and only `forget` clears it. A body that differs in any byte
+// may have run and been charged, and only `forget` clears it. A waiting one it sends: nothing
+// that may have reached a provider is out, and the run that left it stopped mid-wait or, still
+// asleep, stops when it wakes (exit 4) without sending. A body that differs in any byte
 // (text, voice, model, style, language; a clip, its terms, Jev's lines) is another request and
 // never reuses an answer. Once the caller has saved what it made of its answers (its own cache),
 // `release` drops their entries, so a later retake of the same body buys a new take. Every write
@@ -37,7 +44,7 @@ import { parseArgs } from "node:util";
 
 import { atomicWrite, UsageError } from "../core/paths.mjs";
 import { NARRATION_LOCALE } from "../core/schema.mjs";
-import { SPEECH_UNCERTAIN, SpeechError } from "./client.mjs";
+import { SPEECH_UNCERTAIN, SpeechError, withPaidWaits } from "./client.mjs";
 import { parseWav, requireNarrationFormat } from "./wav.mjs";
 
 /**
@@ -47,12 +54,14 @@ import { parseWav, requireNarrationFormat } from "./wav.mjs";
 export const JOURNAL_DIR = "speech-journal";
 const SELF = "tools/video/tts/speech-journal.mjs";
 const SHA256 = /^[0-9a-f]{64}$/;
-const STATUSES = new Set(["sent", "held", "confirmed"]);
+const WAIT_ID = /^[0-9a-f-]{36}$/;
+const STATUSES = new Set(["sent", "waiting", "held", "confirmed"]);
 
 const sha256 = (data) => createHash("sha256").update(data).digest("hex");
 /** What client.mjs names a request by: the sha256 of its JSON body as sent. */
 export const requestSha256 = (body) => sha256(JSON.stringify(body));
 const entryFile = (dir, sha) => path.join(dir, `${sha}.json`);
+const claimFile = (dir, sha, waitId) => path.join(dir, `${sha}.${waitId}.claim`);
 const wavFile = (dir, sha) => path.join(dir, `${sha}.wav`);
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 const oneLine = (text) => String(text).replace(/\s+/g, " ").trim();
@@ -178,7 +187,8 @@ function readEntry(dir, sha, expected = null) {
   try {
     const entry = JSON.parse(readFileSync(file, "utf8"));
     const route = ROUTES.get(entry?.path ?? SPEECH.path);
-    if (entry?.schema_version === 1 && entry.request_sha256 === sha && STATUSES.has(entry.status) && route?.bound(entry.request, sha) && (!expected || route === expected)) return entry;
+    const waits = entry?.status !== "waiting" || WAIT_ID.test(entry.wait_id ?? "");
+    if (entry?.schema_version === 1 && entry.request_sha256 === sha && STATUSES.has(entry.status) && waits && route?.bound(entry.request, sha) && (!expected || route === expected)) return entry;
   } catch {
     // An unreadable entry still says something was recorded: it holds like a sent one.
   }
@@ -189,6 +199,17 @@ function readEntry(dir, sha, expected = null) {
 function holdError(route, dir, sha, what, status = 0) {
   const message = `POST /api/video/${route} ${oneLine(what)}; it may have run and been charged, so it is not sent again. Once the provider's usage shows whether it was, clear it with: node ${SELF} forget --dir "${dir}" --sha ${sha} (${SPEECH_UNCERTAIN}, request sha256 ${sha})`;
   return Object.assign(new SpeechError(message, { status, code: SPEECH_UNCERTAIN, who: "owner" }), { path: route, requestSha256: sha, journal: dir });
+}
+
+/**
+ * The code of a request this run left waiting and another run sent meanwhile: this one stops
+ * without sending it, the service's (exit 4), and a later run takes the other's answer.
+ */
+export const SPEECH_TAKEN_OVER = "video_speech_taken_over";
+
+function takenOver(route, dir, sha) {
+  const message = `POST /api/video/${route} was sent by another run while this one waited to send it again, so it is not sent twice; run again once that run is done (${SPEECH_TAKEN_OVER}, request sha256 ${sha})`;
+  return Object.assign(new SpeechError(message, { code: SPEECH_TAKEN_OVER }), { path: route, requestSha256: sha, journal: dir });
 }
 
 /**
@@ -228,12 +249,53 @@ export function openSpeechJournal(dir, { now = () => new Date() } = {}) {
     throw holdError(route.path, dir, sha, "has a speech journal entry that cannot be read");
   }
 
-  async function sendOnce(route, send, entry) {
-    const sha = entry.request_sha256;
+  /**
+   * Make the entry `sent` (this run's) again where it still says waiting with `waitId`: true when
+   * this run may send. The claim file makes the read and the write one step against other runs.
+   */
+  function resume(sha, waitId, sent) {
+    const claim = claimFile(dir, sha, waitId);
+    if (!createOnce(claim, "")) return false;
+    try {
+      const current = readEntry(dir, sha);
+      if (current?.status !== "waiting" || current.wait_id !== waitId) return false;
+      durableWrite(entryFile(dir, sha), json(sent));
+      return true;
+    } finally {
+      rmSync(claim, { force: true });
+    }
+  }
+
+  async function sendOnce(route, send, sent) {
+    const sha = sent.request_sha256;
+    let entry = sent;
+    let waitId = null;
+    // client.mjs tells of each wait between two tries; every answer before one settled the request.
+    const waits = {
+      waiting({ status, code, ms }) {
+        const id = randomUUID();
+        const why = `${status ? `HTTP ${status}${code ? ` ${code}` : ""}` : "the API was not reached"}; sent again in ${Math.ceil(ms / 1000)} s`;
+        try {
+          durableWrite(entryFile(dir, sha), json({ ...entry, status: "waiting", wait_id: id, waiting_at: stamp(), why }));
+          waitId = id;
+        } catch {
+          // The sent entry stays, and holds as before.
+        }
+      },
+      resending() {
+        if (waitId === null) return;
+        const id = waitId;
+        waitId = null;
+        entry = { ...sent, sent_at: stamp() };
+        if (!resume(sha, id, entry)) throw takenOver(route.path, dir, sha);
+      },
+    };
     let result;
     try {
-      result = await send();
+      result = await withPaidWaits(waits, send);
     } catch (error) {
+      // Another run's now: its entry is left as it is.
+      if (error?.code === SPEECH_TAKEN_OVER) throw error;
       if (error instanceof SpeechError && error.code !== SPEECH_UNCERTAIN) {
         // Settled by client.mjs: it never left, the API refused it, or the API answered for it.
         rmSync(entryFile(dir, sha), { force: true });
@@ -265,6 +327,12 @@ export function openSpeechJournal(dir, { now = () => new Date() } = {}) {
       const sent = { schema_version: 1, path: route.path, request_sha256: sha, request, status: "sent", sent_at: stamp() };
       if (createOnce(entryFile(dir, sha), json(sent))) return sendOnce(route, send, sent);
       const entry = readEntry(dir, sha, route);
+      // Left mid-wait: every answer it had settled it, so this run sends it, unless another run
+      // claims it first.
+      if (entry?.status === "waiting") {
+        if (resume(sha, entry.wait_id, sent)) return sendOnce(route, send, sent);
+        continue;
+      }
       if (entry) return saved(route, sha, entry);
     }
     throw holdError(route.path, dir, sha, "has a speech journal entry another run keeps changing");
@@ -297,8 +365,8 @@ export function openSpeechJournal(dir, { now = () => new Date() } = {}) {
 }
 
 /**
- * Every entry in `dir`, oldest first: { sha, path, status, sent_at, held_at, confirmed_at, why,
- * voice, text, about }; `about` is the request in a few words.
+ * Every entry in `dir`, oldest first: { sha, path, status, sent_at, waiting_at, held_at,
+ * confirmed_at, why, voice, text, about }; `about` is the request in a few words.
  */
 export function listSpeechJournal(dir) {
   if (!existsSync(dir)) return [];
@@ -309,7 +377,7 @@ export function listSpeechJournal(dir) {
       const entry = readEntry(dir, sha);
       const route = entry.status === "unreadable" ? null : ROUTES.get(entry.path ?? SPEECH.path);
       const text = (entry.request?.segments ?? []).flatMap((segment) => segment.parts ?? []).map((part) => part.text ?? "").join("");
-      return { sha, path: route?.path ?? null, status: entry.status, sent_at: entry.sent_at ?? null, held_at: entry.held_at ?? null, confirmed_at: entry.confirmed_at ?? null, why: entry.why ?? null, voice: entry.request?.voice ?? null, text, about: (route ?? SPEECH).describe(entry.request) };
+      return { sha, path: route?.path ?? null, status: entry.status, sent_at: entry.sent_at ?? null, waiting_at: entry.waiting_at ?? null, held_at: entry.held_at ?? null, confirmed_at: entry.confirmed_at ?? null, why: entry.why ?? null, voice: entry.request?.voice ?? null, text, about: (route ?? SPEECH).describe(entry.request) };
     })
     .sort((a, b) => String(a.sent_at).localeCompare(String(b.sent_at)));
 }
@@ -345,11 +413,13 @@ export function main(args, { stdout = process.stdout, stderr = process.stderr } 
     const entries = listSpeechJournal(dir);
     if (!entries.length) stdout.write(`no entries in ${dir}\n`);
     for (const entry of entries) {
-      const when = entry.held_at ?? entry.confirmed_at ?? entry.sent_at ?? "?";
+      const when = entry.held_at ?? entry.confirmed_at ?? entry.waiting_at ?? entry.sent_at ?? "?";
       stdout.write(`${entry.sha} ${entry.status} ${when} ${entry.about}${entry.why ? ` (${entry.why})` : ""}\n`);
     }
-    const holds = entries.filter((entry) => entry.status !== "confirmed").length;
+    const holds = entries.filter((entry) => !["confirmed", "waiting"].includes(entry.status)).length;
     if (holds) stdout.write(`${holds} held: check the provider's usage, then forget each with --sha\n`);
+    const waiting = entries.filter((entry) => entry.status === "waiting").length;
+    if (waiting) stdout.write(`${waiting} waiting: nothing of it is out, and the next run that asks for it sends it\n`);
     return 0;
   } catch (error) {
     if (!(error instanceof UsageError) && !String(error?.code).startsWith("ERR_PARSE_ARGS_")) throw error;

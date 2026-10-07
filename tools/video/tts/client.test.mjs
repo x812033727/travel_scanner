@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import test from "node:test";
 import path from "node:path";
 import { tempDir } from "../core/fixtures/load.mjs";
-import { alignClip, judgeLines, MAX_RETRY_WAIT_MS, RATE_WINDOW_MS, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, synthesizeAligned, transcribeClip } from "./client.mjs";
+import { alignClip, judgeLines, MAX_RETRY_WAIT_MS, RATE_WINDOW_MS, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, synthesizeAligned, transcribeClip, withPaidWaits } from "./client.mjs";
 import { listSpeechJournal, openSpeechJournal, requestSha256 } from "./speech-journal.mjs";
 import { encodeWav, parseWav } from "./wav.mjs";
 
@@ -324,6 +324,43 @@ test("other retries keep their backoff, and nothing waits after the last request
   const down = server([() => problem(502, "upstream_unavailable")]);
   await assert.rejects(PAID[2].send(down.options), (error) => error.code === "upstream_unavailable");
   assert.deepEqual(down.sleeps, [1000, 2000, 4000, 8000]);
+});
+
+test("a paid request tells withPaidWaits of each wait before its next try, and an unpaid one does not", async () => {
+  const told = (log) => ({ waiting: (why) => log.push(["waiting", why]), resending: () => log.push(["resending"]) });
+  for (const paid of PAID) {
+    const log = [];
+    const { calls, options } = server([limited({ "Retry-After": "7" }), () => problem(503, "video_speech_upstream_busy"), () => { throw failed("ECONNREFUSED"); }, paid.ok]);
+    options.sleep = async (ms) => log.push(["sleep", ms]);
+    paid.check(await withPaidWaits(told(log), () => paid.send(options)));
+    assert.equal(calls.length, 4, paid.name);
+    assert.deepEqual(log, [
+      ["waiting", { status: 429, code: "rate_limit_exceeded", ms: 7000 }], ["sleep", 7000], ["resending"],
+      ["waiting", { status: 503, code: "video_speech_upstream_busy", ms: 2000 }], ["sleep", 2000], ["resending"],
+      ["waiting", { status: 0, code: "network", ms: 4000 }], ["sleep", 4000], ["resending"],
+    ], paid.name);
+  }
+
+  // `resending` may stop the request before its next POST: what it throws is the request's answer.
+  const stop = server([limited(), PAID[0].ok]);
+  const mine = new Error("another run sent it");
+  await assert.rejects(withPaidWaits({ resending: () => { throw mine; } }, () => PAID[0].send(stop.options)), (error) => error === mine);
+  assert.equal(stop.calls.length, 1);
+
+  // No wait after the last try, nor one too long to sit through, so nothing to tell.
+  const log = [];
+  const refused = server([limited()]);
+  await assert.rejects(withPaidWaits(told(log), () => PAID[0].send({ ...refused.options, attempts: 1 })), (error) => error.code === "rate_limit_exceeded");
+  const hourly = server([limited({ "Retry-After": "2400" })]);
+  await assert.rejects(withPaidWaits(told(log), () => PAID[1].send(hourly.options)), (error) => error.code === "rate_limit_exceeded");
+  // A request that costs nothing is not one the journal holds.
+  const unpaid = server([limited(), () => Response.json({ source: "aligner", chars: [] }), () => Response.json({ configured: true })]);
+  await withPaidWaits(told(log), async () => {
+    await alignClip({ ...unpaid.options, wav: audio(), text: "好" });
+    await speechStatus(unpaid.options);
+  });
+  assert.equal(unpaid.calls.length, 3);
+  assert.deepEqual(log, []);
 });
 
 test("through the speech journal, a narration the limit refused is sent again, and one it kept refusing leaves no entry to hold", async () => {

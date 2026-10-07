@@ -1,11 +1,11 @@
 ---
 id: 2026-10-07-a-speech-request-waiting-out-a
 title: A speech request waiting out a rate limit is held as uncertain if the worker restarts mid-wait
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-journal-wait
+claimed_at: 2026-10-07T07:57:01Z
 created_at: 2026-10-07T05:56:55Z
 completed_at:
 branch:
@@ -37,17 +37,17 @@ longer: one window, up to 61 s, at most four times per request, where before the
 
 ## Definition of done
 
-- [ ] A paid request whose only answers so far were the routes' own 429s is not held as uncertain
+- [x] A paid request whose only answers so far were the routes' own 429s is not held as uncertain
   after a restart in the middle of its wait. Its next run sends it, and nothing that may have
   reached a provider is sent twice.
 
 ## Steps
 
-- [ ] Choose how the journal learns that the request is waiting on a refusal. One way: `call()`
+- [x] Choose how the journal learns that the request is waiting on a refusal. One way: `call()`
   takes an optional `onRefused` hook, and the journal rewrites the entry as `waiting` before the
   sleep and back to `sent` before the next POST. A `waiting` entry found by the next run is safe
   to send again.
-- [ ] Tests: a 429, then a simulated restart during the wait (a new journal opened on the same
+- [x] Tests: a 429, then a simulated restart during the wait (a new journal opened on the same
   directory) sends the request. A request that went out after the last refusal stays held.
 
 ## How to verify
@@ -59,3 +59,42 @@ longer: one window, up to 61 s, at most four times per request, where before the
 - Found while doing `2026-10-05-a-burst-of-narration-lines-trips` (2026-10-07). The
   investigation there traced `sendOnce`: a SpeechError that is not SPEECH_UNCERTAIN removes the
   entry, so only a run that dies mid-wait leaves it behind.
+- 2026-10-07 (claude-opus-5-5-journal-wait). Done, more widely than the 429 alone: `call()` waits
+  only after an answer that settled the request (the routes' 429, a provider busy, the API's own
+  failure, a site never reached), so every wait of a paid request is safe to resume from.
+  - `client.mjs`: `withPaidWaits(hooks, send)` runs `send` in an AsyncLocalStorage that `call()`
+    reads, for paid requests only. `waiting({ status, code, ms })` comes before each sleep,
+    `resending()` after it and before the next POST, and it may throw to stop the request. Through
+    the store rather than an option, because `journal.wrap(send)` gets a closure from tts, dub and
+    Shorts, and none of them would have to forward it.
+  - `speech-journal.mjs`: a new status, `waiting`, carries a random `wait_id` and a `why`
+    ("HTTP 429 rate_limit_exceeded; sent again in 61 s"). Whoever turns it back into `sent` (the
+    run itself when it wakes, or a later run that finds it) must first create
+    `<sha>.<wait_id>.claim` exclusively, then re-read the entry and find it still waiting with
+    that id. Only then does it write its own `sent` and POST; it removes the claim afterwards.
+    So two runs never both send. A run that wakes to find another run sent it stops with
+    `SPEECH_TAKEN_OVER` (the service's, exit 4), leaves the other run's entry as it is, and a
+    later run takes that answer.
+  - The project lease already keeps a second producer off a video project, so for tts, dub and
+    check-audio the claim is defence in depth. A Short's journal runs without a lease.
+  - `list` shows a waiting entry with its time and says the next run sends it. It is not counted
+    as a hold to forget. A waiting entry without a UUID-shaped `wait_id` reads as unreadable and
+    holds, since the id goes into a file name.
+  - A crash between creating a claim and removing it (microseconds) leaves the entry waiting
+    behind a claim. The next run holds it ("another run keeps changing") instead of guessing, and
+    `forget` clears it as any hold.
+- Tests:
+  - client: the hooks around each wait (429 with Retry-After, a provider busy, a refused
+    connection) for all four paid calls; a `resending` that throws stops the next POST; nothing
+    is told after the last try, for a wait too long to take, or for an unpaid call.
+  - journal: a restart mid-wait for each settled kind, sent once by the next run with no claim
+    left behind; a run that wakes after a second run took it over (and was itself refused and
+    waiting) stops without a POST, and the second sends it; a request sent again after its wait
+    and lost, or out when the run stopped, still holds; a claim in place, or a malformed wait id,
+    holds.
+  - tts: a run stopped in the 61 s wait, then the next `tts` exits 0 having sent that body once
+    more.
+  - All but the stays-held one fail on the old code, and each of eleven mutations (no takeover,
+    no claim, no re-read, removing the entry on a takeover, no hook in either retry path, hooks
+    for unpaid calls, no wait-id check, waiting counted as held, the claim left behind, the
+    entry left waiting) fails a test.

@@ -12,7 +12,7 @@ import { ARTIFACTS, loadProject } from "../core/state.mjs";
 import { serverNarration, phraseBody } from "../shorts/speech.mjs";
 import { SPEECH_UNCERTAIN, SpeechError, synthesize } from "./client.mjs";
 import { planRequests } from "./requests.mjs";
-import { JOURNAL_DIR, listSpeechJournal, main as journalCli, openSpeechJournal, requestSha256 } from "./speech-journal.mjs";
+import { JOURNAL_DIR, listSpeechJournal, main as journalCli, openSpeechJournal, requestSha256, SPEECH_TAKEN_OVER } from "./speech-journal.mjs";
 import { concatSamples, encodeWav, parseWav } from "./wav.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -236,6 +236,139 @@ test("a request the API settled leaves nothing behind, so the next run may send 
   assert.equal(entry(dir, requestSha256(body)).status, "confirmed");
 });
 
+// A run whose client sits in a wait between two tries until `wake()`; it never wakes if the run
+// stopped there.
+function sleeper(dir, server) {
+  const waits = [];
+  const journal = openSpeechJournal(dir, { now: () => new Date("2026-10-05T03:00:00Z") });
+  const sleep = (ms) => new Promise((resolve) => waits.push({ ms, wake: resolve }));
+  const send = journal.wrap((sent) => synthesize({ ...options(server), sleep, body: sent }));
+  return { journal, send, waits };
+}
+const until = async (done) => {
+  for (let turn = 0; turn < 100 && !done(); turn++) await new Promise((resolve) => setImmediate(resolve));
+  assert.ok(done(), "the run got there");
+};
+const limited = () => problem(429, "rate_limit_exceeded");
+
+test("a request whose run stopped while it waited to try again is sent by the next run, once", async (t) => {
+  const cases = {
+    "the routes' rate limit": { answer: limited, why: /^HTTP 429 rate_limit_exceeded; sent again in 61 s$/ },
+    "a provider busy": { answer: () => problem(503, "video_speech_upstream_busy"), why: /^HTTP 503 video_speech_upstream_busy; sent again in 1 s$/ },
+    "a site that was not reached": { answer: () => { throw refused(); }, why: /^the API was not reached; sent again in 1 s$/ },
+  };
+  for (const [what, { answer, why }] of Object.entries(cases)) {
+    await t.test(what, async () => {
+      const dir = journalIn();
+      const sha = requestSha256(body);
+      const server = speechServer([answer]);
+      // A deploy restarts the worker during the wait: this run never wakes.
+      const stopped = sleeper(dir, server);
+      stopped.send(body);
+      await until(() => stopped.waits.length === 1);
+      const waiting = entry(dir, sha);
+      assert.deepEqual([waiting.status, waiting.request], ["waiting", body]);
+      assert.match(waiting.why, why);
+      assert.match(waiting.wait_id, /^[0-9a-f-]{36}$/);
+
+      const out = { stdout: "", stderr: "" };
+      const io = { stdout: { write: (text) => (out.stdout += text) }, stderr: { write: (text) => (out.stderr += text) } };
+      assert.equal(journalCli(["list", "--dir", dir], io), 0);
+      assert.match(out.stdout, new RegExp(`^${sha} waiting 2026-10-05T03:00:00.000Z gemini:Sulafat`, "m"));
+      assert.match(out.stdout, /1 waiting: nothing of it is out/);
+      assert.doesNotMatch(out.stdout, /held/, "nothing for the owner to forget");
+
+      const posts = server.posts.length;
+      const answered = await sender(dir, server).send(body);
+      assert.equal(server.posts.length, posts + 1, "sent once by the next run");
+      assert.deepEqual(entry(dir, sha).status, "confirmed");
+      assert.deepEqual(readFileSync(path.join(dir, `${sha}.wav`)), answered.wav);
+      assert.deepEqual(readdirSync(dir).sort(), [`${sha}.json`, `${sha}.wav`], "no claim left behind");
+    });
+  }
+});
+
+test("a run that wakes after another run sent its request stops without sending it again", async () => {
+  const dir = journalIn();
+  const sha = requestSha256(body);
+  const server = speechServer([limited, limited]);
+  const first = sleeper(dir, server);
+  const firstRun = first.send(body);
+  await until(() => first.waits.length === 1);
+  // A second run takes the waiting request over, and is refused and waits in its turn.
+  const second = sleeper(dir, server);
+  const secondRun = second.send(body);
+  await until(() => second.waits.length === 1);
+  assert.equal(server.posts.length, 2);
+  const theirs = entry(dir, sha);
+  assert.equal(theirs.status, "waiting");
+
+  first.waits[0].wake();
+  await assert.rejects(firstRun, (error) => {
+    assert.ok(error instanceof SpeechError);
+    // The service's, exit 4: the worker comes back to it, and nothing is held for the owner.
+    assert.deepEqual([error.code, error.who, error.requestSha256], [SPEECH_TAKEN_OVER, "service", sha]);
+    assert.match(error.message, /^POST \/api\/video\/speech was sent by another run while this one waited to send it again, so it is not sent twice/);
+    assert.doesNotMatch(error.message, /\n/);
+    return true;
+  });
+  assert.equal(server.posts.length, 2, "the first run sent nothing more");
+  assert.deepEqual(entry(dir, sha), theirs, "and left the other run's entry as it was");
+
+  second.waits[0].wake();
+  const answer = await secondRun;
+  assert.equal(server.posts.length, 3);
+  assert.equal(entry(dir, sha).status, "confirmed");
+  assert.deepEqual(readFileSync(path.join(dir, `${sha}.wav`)), answer.wav);
+  // The run that took it over sent it, so a third run takes the answer from disk.
+  const third = openSpeechJournal(dir);
+  assert.deepEqual((await third.wrap(async () => assert.fail("not bought again"))(body)).wav, answer.wav);
+});
+
+test("a request sent again after its wait holds as any sent one does", async (t) => {
+  // Lost on the way after the wait: held, as without one.
+  const dir = journalIn();
+  const sha = requestSha256(body);
+  const server = speechServer([limited, () => { throw lost(); }]);
+  await assert.rejects(sender(dir, server).send(body), held(/no usable answer came back/));
+  assert.equal(server.posts.length, 2);
+  assert.equal(entry(dir, sha).status, "held");
+  await assert.rejects(sender(dir, server).send(body), held(/held in the speech journal/));
+  assert.equal(server.posts.length, 2);
+
+  // The run stops while the second POST is out: the entry says sent again, and holds.
+  const other = journalIn();
+  const out = speechServer([limited, () => new Promise(() => {})]);
+  const stopped = sender(other, out);
+  stopped.send(body);
+  await until(() => out.posts.length === 2);
+  assert.equal(entry(other, sha).status, "sent");
+  await assert.rejects(sender(other, out).send(body), held(/by a run that recorded no answer/));
+  assert.equal(out.posts.length, 2);
+  assert.deepEqual(readdirSync(other), [`${sha}.json`]);
+});
+
+test("a waiting request another run is claiming is not sent by this one", async () => {
+  const dir = journalIn();
+  const sha = requestSha256(body);
+  const server = speechServer([limited]);
+  const stopped = sleeper(dir, server);
+  stopped.send(body);
+  await until(() => stopped.waits.length === 1);
+  // Between its claim and its write: the claim file says another run is turning it into its own.
+  const { wait_id: waitId } = entry(dir, sha);
+  writeFileSync(path.join(dir, `${sha}.${waitId}.claim`), "");
+  await assert.rejects(sender(dir, server).send(body), held(/another run keeps changing/));
+  assert.equal(server.posts.length, 1);
+  assert.equal(entry(dir, sha).status, "waiting");
+  // A waiting entry without a usable wait id is not one: it holds like an unreadable entry.
+  const other = journalIn();
+  mkdirSync(other, { recursive: true });
+  writeFileSync(path.join(other, `${sha}.json`), JSON.stringify({ ...entry(dir, sha), wait_id: "../../elsewhere" }));
+  await assert.rejects(sender(other, server).send(body), held(/cannot be read/));
+  assert.equal(server.posts.length, 1);
+});
+
 // --- the consumers -----------------------------------------------------------------------------
 
 function capture(box, server, extra = {}) {
@@ -288,6 +421,26 @@ test("tts holds a lost request across runs and takes an answer it already paid f
   const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
   assert.ok(timeline.lines.some((line) => line.id === request.lines[0].id));
   assert.ok(bought.wav.length > 44);
+});
+
+test("tts sends a request its last run left waiting out the rate limit, instead of holding it", async () => {
+  const box = sandbox();
+  const server = speechServer([() => problem(429, "rate_limit_exceeded")]);
+  const dir = path.join(box.workdir, ARTIFACTS.audio, JOURNAL_DIR);
+  // The worker is restarted while the first request waits for the routes' window to open.
+  const waits = [];
+  const stopped = capture(box, server, { sleep: (ms) => new Promise(() => waits.push(ms)) });
+  cli(["tts", "--slug", box.slug], stopped.ctx);
+  await until(() => waits.length === 1);
+  assert.deepEqual(waits, [61_000]);
+  assert.deepEqual(listSpeechJournal(dir).map((item) => item.status), ["waiting"]);
+  const [waiting] = listSpeechJournal(dir);
+
+  const run = capture(box, server);
+  assert.equal(await cli(["tts", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.equal(server.posts.filter((sent) => requestSha256(sent) === waiting.sha).length, 2, "refused once, then sent once");
+  assert.doesNotMatch(run.out.stdout, /came from the speech journal/, "an answer of this run's, not an earlier one's");
+  assert.deepEqual(readdirSync(dir), [], "released once cache.json holds the takes");
 });
 
 /** ffmpeg as the dub sees it: a measurement, a shortened copy for atempo, a plain copy otherwise. */
