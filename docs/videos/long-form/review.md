@@ -1617,6 +1617,31 @@ PASS is DURATION_ONLY for the 14 rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch happy-carson-c1hy91 increment: 1 file (2026-10-07)
+
+Reviewer: `claude-pr-review-happy-carson`. It wrote none of the branch's commits, judged the bound diff on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-cc-translated`, the owner of the ticket `2026-10-06-translated-cc-cues-take-their-times`, which wrote `a1d084be` ("feat(video): translated CC cues change when the narration's measured cues do"), the only commit on the branch that touches a bound file; its git author is the repository's `Claude <noreply@anthropic.com>` identity and it carries `Co-Authored-By: Claude Opus 5.5`. The branch's two earlier commits, `f1665278` and `6d30d313` (speech-journal and aligned-synthesis fixes), change no bound file. Scope: DURATION_ONLY for the one changed binding below, on the local branch speech-wip at `a1d084be`: three linear commits, with no merge, on origin/main `7142b6ea6021454a18265cc61a4d5b24dc0ff42f` (#1356). There is no PR number yet.
+
+Baseline: Merge-base 7142b6ea, 1 of 1 match. The merge base is origin/main's tip, and the branch's review.md, review.json, review.mjs and review.test.mjs are byte-identical to it; that report (632,636 bytes) hashes to `aa669f6d1b04dbbf9676558eae6420c8d13cbc55ce3428846539d1cf4517cef6`, the report_sha256 review.json held before this increment (the "PR #1347 train" receipt above). `git show 7142b6ea:tools/video/core/stages.test.mjs | sha256sum` (12,741 bytes) gives `0a409f7a88234c1823146ea65092a95ceb12b69c34ccf1910894712f34859a2e`, the value review.json and the table bound before this increment, so the file's diff against the merge base is exactly the unreviewed change. `git diff --name-only 7142b6ea..HEAD` lists 20 paths; intersected with the 108 paths of REVIEW_FILES, only tools/video/core/stages.test.mjs is bound. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/core/stages.test.mjs` and nothing else, so the other 107 bindings equal their working-tree bytes. The working tree equals the head for this file, which holds no CR byte and no BOM. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with one hash rebound and the other 107 unchanged.
+
+Findings, tools/video/core/stages.test.mjs (+35/−0, 12,741 → 15,201 bytes; `a1d084be`). One test is appended after the last existing one, and no existing line, import or assertion changes; every name it uses (`sandbox`, `loadProject`, `translationFor`, `estimateTimeline`, `speechHash`, `atomicWrite`, `writeLanguages`, `runCaptions`, `frameToMs`, `parseSrt`) was already imported or defined at the merge base. The test lengthens one fixture narration line (`k7p2`) to three sentences, gives it an English translation, and writes a timeline whose entry carries Azure-style measured character timing (170 ms a character, 1,500 ms after the first `。`) and an `audio_samples` value sized to that timing. It runs the captions stage for zh-TW and en and asserts that the narration line is cut into at least two cues and that at least one English cue starts exactly where a zh-TW cue starts inside that line's window. Its numbers are milliseconds inside one line's captions and a sample count for one fixture clip; `speech_hash` is computed with the unchanged `speechHash`. The file's `VIDEO_MIN_EPISODE_MINUTES ??= "0"` opt-out (line 17), with its comment that the eight-minute floor has tests of its own, is unchanged context.
+
+Across the full diff there is no change to the 600/780-second targets, the 480-second / 14,400-frame measured floors, the eight-minute floor on every video but a drama, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state, and no duration assertion is removed or loosened. A scan of the 35 added lines for 600, 780, 480, 14400, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE, runtime_spec, action_seconds, source_hash, covered and minutes finds nothing.
+
+Unbound context, read and not certified. tools/video/core/stages.mjs (+4/−1) passes `buildCues` the narration locale's texts for every locale not timed by its own current dub, so a translation's cue changes can follow the narration's measured ones. tools/video/core/captions.mjs (+95/−7) and captions.test.mjs (+67) implement and test that alignment; a scan of the stages.mjs and captions.mjs changed lines for minute, MIN_EPISODE, 480, 14400, 600, 780, runtime, target_, action_seconds, covered, source_hash, plans.json, policy.json, floor and total_frames finds nothing. The branch's other changed paths (apps/api/app/video_speech, its tests, tools/video/tts/client.mjs and its test, and four task files) are not in REVIEW_FILES and were not reviewed.
+
+Ran (Node v22.22.0, Linux, in the repository checkout at `a1d084be`, offline, VIDEO_MIN_EPISODE_MINUTES unset in the shell): the baseline hashing (`git show 7142b6ea:tools/video/core/stages.test.mjs | sha256sum` against review.json and the table, and `sha256sum` of the working-tree file), the CR and BOM checks, the intersection of `git diff --name-only origin/main..HEAD` with REVIEW_FILES, a reading of the full diff (`git diff origin/main..HEAD -- tools/video/core/stages.test.mjs`) and of the unbound stages.mjs diff, and the scans above. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` with the one stale binding above and exited 1. On the branch's bytes: `node --test tools/video/core/stages.test.mjs`, 7 of 7, exit 0; `node --test tools/video/core/captions.test.mjs tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs tools/video/qa/duration.test.mjs tools/video/core/lint.test.mjs`, 109 of 109, exit 0. The CLI check and review.test.mjs are run again after rebinding; their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the translated-cue alignment itself: not the one-for-one, nearest-unused or weighted-share placement, the readability fallback, or the captions stage's choice of which locales follow the narration.
+- tools/video/core/stages.mjs, captions.mjs and captions.test.mjs were read only as context and are unbound; the speech API changes and tts/client.mjs were not reviewed.
+- The full tool, Vitest and API suites and CI were not run for this increment.
+- The 107 bindings the branch did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1697,7 +1722,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/schema.mjs` | `d810ca82a8ef459faea23efa0afcbf1029d08521cb50c09e157bb19598ac172f` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
-| `tools/video/core/stages.test.mjs` | `0a409f7a88234c1823146ea65092a95ceb12b69c34ccf1910894712f34859a2e` |
+| `tools/video/core/stages.test.mjs` | `6ed67af324ba3ff07a59678300365833619553cbb460ddd0dc64d97b2608a511` |
 | `tools/video/core/state.mjs` | `3ff542a9295cb4a3a2567cbc9c0e0e1dcd0b05758032ce87670a4f49926fec35` |
 | `tools/video/core/state.test.mjs` | `f163977fce7da21501d6fb6440abed44917431a8b790b60d85b7d6ccc5b347e9` |
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
