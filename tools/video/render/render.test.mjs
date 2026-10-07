@@ -6,7 +6,8 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import { EXIT, main } from "../cli.mjs";
-import { compilationDocument } from "../core/compilation.mjs";
+import { compilationSandbox } from "../compile/fixture.mjs";
+import { compilationDocument, THUMB_SOURCE } from "../core/compilation.mjs";
 import { dramaFixture, explainerFixture, sandbox, tempDir } from "../core/fixtures/load.mjs";
 import { estimateTimeline, visualHash } from "../core/timeline.mjs";
 import { LAUNCH_ARGS, resolveRequest } from "./browser.mjs";
@@ -607,4 +608,36 @@ test("a Japanese thumbnail is set in Noto Sans JP, so its kanji take the Japanes
   assert.doesNotMatch(plan.thumbnail.html, /noto-sans-jp|lang="ja"/, "the video's own thumbnail is as it was");
   assert.deepEqual(localizedThumbnails(plan).drawable.map((own) => own.locale), ["ja"]);
   assert.match(localizedThumbnails(plan, () => bundledCoverage()).gaps.ja, /U\+4FAD/, "the slide fonts alone lack it");
+});
+
+test("a compilation whose thumbnail source changed is told to plan its metadata again, which keyframes cannot do", async () => {
+  // keyframes refuses a compilation: the worker copies an approved episode keyframe to
+  // THUMB_SOURCE when it plans the metadata (2026-10-07-render-tells-a-compilation-to-run).
+  const box = compilationSandbox({ planned: true, rendered: true });
+  let out = "";
+  let opened = 0;
+  const ctx = {
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work },
+    stdout: { write: (text) => (out += text) },
+    stderr: { write: (text) => (out += text) },
+    now: () => new Date("2026-10-07T00:00:00Z"),
+    openRenderer: async () => {
+      opened += 1;
+      return { capture: async () => ({ still: Buffer.from("picture"), frames: [], problems: [] }), sheet: async () => Buffer.from("sheet"), close: async () => {} };
+    },
+  };
+  // An English thumbnail of its own, which --thumbnails-only draws on the same source.
+  const words = Object.fromEntries(Object.keys(thumbnailSource(box.doc)).map((name) => [name, `Why ${name}`]));
+  const i18n = path.join(box.dir, "i18n", "en.json");
+  mkdirSync(path.dirname(i18n), { recursive: true });
+  writeFileSync(i18n, JSON.stringify({ thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(box.doc) } }));
+  writeFileSync(path.join(box.workdir, THUMB_SOURCE), "a picture nobody approved");
+  for (const args of [["render", "--slug", box.slug], ["render", "--slug", box.slug, "--thumbnails-only"]]) {
+    out = "";
+    assert.equal(await main(args, ctx), EXIT.usage, args.join(" "));
+    assert.match(out, /the thumbnail's background keyframes\/thumb-source\.png has changed since keyframes\/manifest\.json recorded it; delete keyframes\/manifest\.json so the worker plans the compilation's metadata again/, args.join(" "));
+    assert.doesNotMatch(out, /run keyframes again/, `${args.join(" ")}: advice a compilation cannot follow`);
+  }
+  assert.equal(opened, 0, "nothing is drawn");
 });

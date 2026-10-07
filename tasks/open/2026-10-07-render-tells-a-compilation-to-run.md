@@ -1,11 +1,11 @@
 ---
 id: 2026-10-07-render-tells-a-compilation-to-run
 title: Render tells a compilation to run keyframes again when its thumbnail source changed, which a compilation cannot do
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-render-msg
+claimed_at: 2026-10-07T10:05:06Z
 created_at: 2026-10-07T09:55:00Z
 completed_at:
 branch:
@@ -34,14 +34,14 @@ episode's approved hash before it is written, so this refusal should be rare.
 
 ## Definition of done
 
-- [ ] For a compilation, the changed-background refusal says what to do: plan the metadata again
+- [x] For a compilation, the changed-background refusal says what to do: plan the metadata again
   (the worker does this when its metadata step is reset), not run `keyframes`.
 
 ## Steps
 
-- [ ] In `refuseChangedBackgrounds`, when `isCompilation(doc)`, end the message with the
+- [x] In `refuseChangedBackgrounds`, when `isCompilation(doc)`, end the message with the
   compilation's remedy instead of "run keyframes again".
-- [ ] A test in `render.test.mjs`: a compilation whose `thumb-source.png` changed exits 2 with
+- [x] A test in `render.test.mjs`: a compilation whose `thumb-source.png` changed exits 2 with
   the compilation's remedy.
 
 ## How to verify
@@ -51,3 +51,16 @@ episode's approved hash before it is written, so this refusal should be rare.
 ## Notes
 
 - Found by the review of `2026-10-07-the-compilation-thumbnail-copies-an-episode` (2026-10-07).
+- 2026-10-07 (claude-opus-5-5-render-msg). `render/cli.mjs` `refuseChangedBackgrounds` takes
+  `{ compilation }`, passed by the full render and by `--thumbnails-only`. For a compilation it
+  ends with: delete `keyframes/manifest.json` so the worker plans the compilation's metadata
+  again and copies an approved episode keyframe to `keyframes/thumb-source.png`
+  (docs/videos/BINGE.md). That is what reopens the step: `core/state.mjs` counts "metadata
+  planned" done only while the manifest lists `shots.thumb`. Every other video keeps "run
+  keyframes again or restore the approved picture".
+- Test (`render.test.mjs`, failing on the old code): a compilation sandbox with an English
+  thumbnail of its own and a `thumb-source.png` drawn over. Both `render` and `render
+  --thumbnails-only` exit 2 with the compilation's remedy and never "run keyframes again", and no
+  renderer opens. The illustrated video's existing test pins the other wording. Mutations
+  (dropping the flag at either call site, or always giving the compilation remedy) each fail a
+  test.

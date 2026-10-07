@@ -68,11 +68,17 @@ async function changedBackgrounds(thumbnails, workdir) {
   return problems;
 }
 
+// What fixes a changed background. A compilation draws no keyframes: the worker copies an
+// approved episode keyframe to THUMB_SOURCE when it plans the metadata, and plans it again once
+// keyframes/manifest.json no longer lists the copy (core/state.mjs "metadata planned").
+const REDRAW = "run keyframes again or restore the approved picture";
+const REPLAN = `delete keyframes/manifest.json so the worker plans the compilation's metadata again and copies an approved episode keyframe to ${THUMB_SOURCE} (docs/videos/BINGE.md)`;
+
 /** Refuse a render whose thumbnails would show a keyframe other than the recorded one (changedBackgrounds). */
-async function refuseChangedBackgrounds(ctx, thumbnails, workdir) {
+async function refuseChangedBackgrounds(ctx, thumbnails, workdir, { compilation = false } = {}) {
   const changed = await changedBackgrounds(thumbnails, workdir);
   if (!changed.length) return false;
-  ctx.stderr.write(`${changed.join("; ")}; run keyframes again or restore the approved picture\n`);
+  ctx.stderr.write(`${changed.join("; ")}; ${compilation ? REPLAN : REDRAW}\n`);
   return true;
 }
 
@@ -173,7 +179,7 @@ async function thumbnailsOnly({ ctx, project, workdir, channel }) {
     return EXIT.usage;
   }
   // Only the language thumbnails are drawn here: they sit on A's keyframe, never on a variant's.
-  if (await refuseChangedBackgrounds(ctx, plan.thumbnail.locales ?? [], workdir)) return EXIT.usage;
+  if (await refuseChangedBackgrounds(ctx, plan.thumbnail.locales ?? [], workdir, { compilation: isCompilation(doc) })) return EXIT.usage;
   const localized = localizedThumbnails(plan);
   const started = Date.now();
   let renderer;
@@ -283,7 +289,7 @@ export async function run(command, args, ctx) {
     else ctx.stderr.write(`the thumbnail's background is the keyframe of shot ${plan.thumbnail.shot}, which is not drawn yet; run keyframes first\n`);
     return EXIT.usage;
   }
-  if (await refuseChangedBackgrounds(ctx, [...thumbnailsOf(plan).map(([, each]) => each), ...(plan.thumbnail?.locales ?? [])], workdir)) return EXIT.usage;
+  if (await refuseChangedBackgrounds(ctx, [...thumbnailsOf(plan).map(([, each]) => each), ...(plan.thumbnail?.locales ?? [])], workdir, { compilation })) return EXIT.usage;
   const glyphs = coverageProblems(plan, bundledCoverage(), subtitles);
   if (glyphs.length) {
     print(ctx.stdout, "ERROR", glyphs);
