@@ -6,12 +6,13 @@
 // video.json here (every line id kept, only what the owner asked changed), checked and heard
 // again on the following rounds and sent to the script gate anew. A model that gives nothing
 // usable is answered for: a reply says so and the thread waits for the owner; nothing is retried.
+import { createHash } from "node:crypto";
 import { existsSync, readFileSync, rmSync } from "node:fs";
 import path from "node:path";
 
 import { hasAnimePolicy, isLongAnime } from "../core/anime-policy.mjs";
 import { atomicWrite, docDir, readJson } from "../core/paths.mjs";
-import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
+import { AutomationError, OUTPUT_INVALID, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { JOB_GONE_KIND } from "./run-receipts.mjs";
 import { documentProblem } from "./series.mjs";
 
@@ -61,13 +62,25 @@ export const blockedReply = (why) => `這支影片目前停住了（${why}），
 const UNPOSTED_FILE = "discussion-answer.json";
 
 /**
- * Post the answer to the owner's line, keeping it first in `dir`: a site that does not take it
- * hands the same line over on a later round, and takeUnposted posts this answer then, with no
- * second model request (the answer was paid for, and a screenplay it rewrote is already saved).
+ * Keep the answer to the owner's line in `dir` until the site has it (postAnswer, takeUnposted).
+ * Given the video's slug, the discussion's finished durable runs are bound to the kept file, as a
+ * rewrite's are to video.json (flow.mjs saveAndLint): they are then no answer still to take
+ * (flow.mjs discussionOpen), and the next settle of the video removes them.
  */
-async function postAnswer(automation, dir, id, body) {
+async function keepReply(automation, dir, id, body, slug = null) {
   const file = path.join(dir, UNPOSTED_FILE);
   atomicWrite(file, `${JSON.stringify({ message_id: id, body }, null, 2)}\n`);
+  if (slug && automation.api.adoptRuns) await automation.api.adoptRuns(slug, { artifacts: [{ path: file, sha256: createHash("sha256").update(readFileSync(file)).digest("hex") }] });
+  return file;
+}
+
+/**
+ * Post the answer to the owner's line, keeping it first (keepReply): a site that does not take
+ * it hands the same line over on a later round, and takeUnposted posts this answer then, with no
+ * second model request (the answer was paid for, and a screenplay it rewrote is already saved).
+ */
+async function postAnswer(automation, dir, id, body, slug = null) {
+  const file = await keepReply(automation, dir, id, body, slug);
   const result = await automation.api.messageAnswer(id, body);
   rmSync(file, { force: true });
   return result;
@@ -283,6 +296,10 @@ export async function answerScript(automation, job) {
     }
     return null;
   };
+  // An answer the site did not take is posted first, whatever the video is doing now: posting it
+  // asks no model and touches nothing of the video. A block or a wait since must not replace it.
+  const episode = job.episode?.slug;
+  if (episode && await takeUnposted(automation, automation.workdir(episode), job.message.id) !== undefined) return `${episode}: the writer's answer on ${job.subject}, kept when the site did not take it, is posted`;
   if (!state) {
     const blocked = automation.states().find((each) => each.slug === job.episode?.slug && each.status === "blocked");
     const waits = blocked ? heldBy(blocked, job) : null;
@@ -316,11 +333,35 @@ function heldBy(state, job) {
   return null;
 }
 
+/**
+ * A request of the line's (the writer's answer, an act of a long anime's rewrite, a lint repair of
+ * the rewrite) that failed, sorted as the video's own requests are (flow.mjs requestFailed). The
+ * answers this visit already received stay saved under their keys, as flow.mjs fence() keeps them:
+ * settled now, they would be paid for again on the next visit. The line keeps its own row of
+ * deferrals (`line_defers`): the video's own visit between two of them ends its row (moved), and
+ * a line that never gets through would be asked again for ever, with nothing on the card. When the
+ * video is blocked, it keeps the line's id (`blocked_line`) until the owner's retry.
+ */
+async function lineFailed(automation, job, state, error, request) {
+  automation.runSlugs?.delete(state.slug);
+  const row = state.line_defers?.id === job.message.id ? state.line_defers : null;
+  if (row && row.count > (state.defer_count ?? 0)) Object.assign(state, { defer_count: row.count, defer_shared: row.shared ?? 0 });
+  error.unit ??= `the owner's line on ${job.subject}`;
+  const line = await automation.requestFailed(state, error, { sends: `answers the owner's line on ${job.subject} once more`, request });
+  if (state.status === "blocked") {
+    state.blocked_line = job.message.id;
+    delete state.line_defers;
+  } else if (state.deferred_until && state.defer_count) {
+    state.line_defers = { id: job.message.id, count: state.defer_count, shared: state.defer_shared ?? 0 };
+  }
+  automation.persist(state);
+  return line;
+}
+
 /** answerScript once the video is at rest and held: the reply, and the rewrite when one was asked for. */
 async function answerHeld(automation, job, state) {
   const { series } = job;
   const workdir = automation.workdir(state.slug);
-  if (await takeUnposted(automation, workdir, job.message.id) !== undefined) return `${state.slug}: the writer's answer on ${job.subject}, kept when the site did not take it, is posted`;
   if (state.story) {
     await automation.api.messageAnswer(job.message.id, { reply_md: STORY_THREAD_REPLY, revised: null });
     return `${state.slug}: a story's screenplay is not rewritten from a thread; the owner is told how to change it`;
@@ -348,24 +389,18 @@ async function answerHeld(automation, job, state) {
     if (!(error instanceof AutomationError)) throw error;
     if (error.code === OUTPUT_INVALID) {
       automation.keepAnswer(workdir, "discuss");
-      await postAnswer(automation, workdir, job.message.id, { reply_md: unusableReply(error.message), revised: null });
+      await postAnswer(automation, workdir, job.message.id, { reply_md: unusableReply(error.message), revised: null }, state.slug);
       return `${state.slug}: the writer gave no usable answer on ${job.subject} (${error.message}); the owner is told and the thread waits`;
     }
     // A STOP or another producer's lease (flow.mjs PROJECT_HELD, not imported here): step() sets
     // the video aside for the run, and the line waits with it.
     if (error.code === "video_project_held") throw error;
-    error.unit ??= `the owner's line on ${job.subject}`;
-    const line = await automation.requestFailed(state, error, { sends: `answers the owner's line on ${job.subject} once more`, request: `the writer request for the owner's line on ${job.subject}` });
-    if (state.status === "blocked") {
-      state.blocked_line = job.message.id;
-      automation.persist(state);
-    }
-    return line;
+    return lineFailed(automation, job, state, error, `the writer request for the owner's line on ${job.subject}`);
   }
   const problem = answerProblem(answer);
   if (problem) {
     automation.keepAnswer(workdir, "discuss");
-    await postAnswer(automation, workdir, job.message.id, { reply_md: unusableReply(problem), revised: null });
+    await postAnswer(automation, workdir, job.message.id, { reply_md: unusableReply(problem), revised: null }, state.slug);
     return `${state.slug}: the writer gave no usable answer on ${job.subject} (${problem}); the owner is told and the thread waits`;
   }
   let reply = clip(answer.reply);
@@ -376,6 +411,21 @@ async function answerHeld(automation, job, state) {
     if (!isObject(revisedVideo)) reply = clip(`${reply}\n\n（新版本沒有存下來：revised.video 不是完整的 video.json）`);
     else {
       const before = readFileSync(file, "utf8");
+      // saveAndLint writes the rewrite before it asks for its lint repairs, and a repair may not
+      // finish this visit (still running after the client's wait, or a service away). So the
+      // script is marked unchecked and the paid reply kept first: whatever ends this visit, the
+      // video's own unit checks, hears and repairs the saved rewrite, and the next visit of the
+      // line posts the reply (takeUnposted) instead of asking the writer again. Until 2026-10-07
+      // the reply was lost then, and the line was asked, and paid for, again.
+      const checks = { verified: state.verified, listener_done: state.listener_done, notes: [...(state.notes ?? [])] };
+      const undo = () => {
+        Object.assign(state, checks);
+        automation.persist(state);
+        rmSync(path.join(workdir, UNPOSTED_FILE), { force: true });
+      };
+      Object.assign(state, { verified: false, listener_done: false, notes: [...checks.notes, `script discussed: ${job.message.body_md.slice(0, 200)}`] });
+      automation.persist(state);
+      await keepReply(automation, workdir, job.message.id, { reply_md: reply, revised: null });
       let refused;
       try {
         refused = await automation.saveAndLint(state, { video: revisedVideo });
@@ -386,26 +436,30 @@ async function answerHeld(automation, job, state) {
         if (error?.code === "video_project_held") {
           try {
             automation.restoreVideo(state, before);
+            undo();
           } catch (restoreError) {
             if (restoreError?.code !== "video_project_held") throw restoreError;
           }
+          throw error;
         }
-        throw error;
+        // A repair still running is the video's own write's to take up; one that failed is sorted
+        // as the line's request is.
+        if (!(error instanceof AutomationError) || error.code === RUN_PENDING) throw error;
+        return lineFailed(automation, job, state, error, `the writer's lint repair of the rewrite for the owner's line on ${job.subject}`);
       }
       if (refused) {
         // The script goes back as it was: a discussion never leaves a broken script behind.
         automation.restoreVideo(state, before);
+        undo();
         reply = clip(`${reply}\n\n（新版本沒有存下來：${refused}）`);
-      } else {
-        rewritten = true;
-        state.verified = false;
-        state.listener_done = false;
-        state.notes.push(`script discussed: ${job.message.body_md.slice(0, 200)}`);
-        automation.persist(state);
-      }
+      } else rewritten = true;
     }
   }
-  await postAnswer(automation, workdir, job.message.id, { reply_md: reply, revised: null });
+  await postAnswer(automation, workdir, job.message.id, { reply_md: reply, revised: null }, state.slug);
+  if (state.line_defers) {
+    delete state.line_defers;
+    automation.persist(state);
+  }
   return `${state.slug}: the writer answered the owner on ${job.subject}${rewritten ? "; the screenplay is rewritten and will be checked, heard and sent again" : ""}`;
 }
 

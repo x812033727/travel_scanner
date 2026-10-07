@@ -1425,8 +1425,10 @@ export class Automation {
       delete state.blocked_report_retry_at;
       delete state.policy_hold;
       // The owner's line whose request blocked the video (discuss.mjs answerScript) is sent once
-      // more now, like any other line; a later block is not this line's.
+      // more now, like any other line, with a row of deferrals of its own anew; a later block is
+      // not this line's.
       delete state.blocked_line;
+      delete state.line_defers;
       // From the moment auto.json says "active" another lane could take the video. This lane
       // holds it until the acknowledgement is over, so a deferral saved below is the only copy:
       // without the hold a second lane ran the video's stage while the report was in flight, and

@@ -124,3 +124,39 @@ node --test tools/video/automation/series.test.mjs tools/video/automation/discus
   - `discuss.test.mjs`: the planner's lost answer, refusal, busy service, everyone's trouble and
     an unusable answer; a blocked video's line held for the three kinds and answered with the
     block otherwise.
+- Review (2026-10-07, three lenses, each finding verified), all fixed in `discuss.mjs` (and one
+  line of `flow.mjs`):
+  - should-fix, a regression: on a long anime, a deferral or block after the paid
+    `anime-discuss-plan` let `step()` settle that answer, so the next visit paid for the plan
+    again. `lineFailed` takes the slug out of the step's settle set, as `fence()` does; the plan
+    is taken from its journal on the next visit.
+  - should-fix: a line's deferrals never reached `DEFER_LIMIT` or the card, because the video's own
+    clean visit before each new attempt ended the row (`moved`). The line keeps its own row
+    (`line_defers`, restored before each new failure, deleted with the block, on the owner's retry
+    and when the line is answered), so a request that never gets through is reported from the
+    second deferral and blocks the video as `deferred:writer` after the limit, with the line held.
+  - should-fix: the rewrite's lint repairs (`saveAndLint`) were outside the catch. A repair still
+    running after the client's wait (the usual case on the durable route) or failing lost the paid
+    reply, left the rewrite marked checked, and the line was asked, and paid for, again. Now the
+    script is marked unchecked and the reply kept before the repairs; a repair still running is the
+    video's own to take up, a failed one is sorted as the line's request, and the kept reply is
+    posted on the next unit. A STOP or lost lease restores the script and drops the kept reply,
+    as before.
+  - should-fix: a kept reply was posted only while the video was at rest, so a block in between
+    answered the line with "劇本先不動" though the rewrite was saved. A kept reply for the line is
+    now posted first, whatever the video is doing (posting asks no model and touches nothing of
+    the video).
+  - should-fix: posting a kept reply left the discussion's succeeded durable run untaken
+    (`discussionOpen` true, the secondary lanes skipping the video). Keeping a reply now binds the
+    finished runs to the kept file (`adoptRuns`), as a rewrite's are bound to video.json.
+  - should-fix (tests): the "goes on" check of the deferral now looks at `halted`; the planner's
+    kept answer, a kept reply of another line set aside, the kept lost and unusable replies, and
+    a video blocked as `uncertain:verifier` are tested; the durable fake's failures use what the
+    API sends (`video_ai_job_uncertain`, `video_ai_project_dropped`, a job failed before dispatch,
+    a 502 from the answer route). On the durable route a vendor busy after dispatch ends as
+    `uncertain:writer`, like the video's own writer; "busy" in the tests is a job the server failed
+    before it reached the model.
+  - Not defects: the Notes' "throws ... nothing" wording.
+- Mutations of each review fix (the answers settled on failure, no line row restored or saved, the
+  kept reply only when at rest, runs not bound to the kept reply, the reply not kept before the
+  repairs, the flags not cleared before them, repair errors rethrown) each fail a test.

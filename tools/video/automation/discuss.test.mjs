@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { rmSync, writeFileSync } from "node:fs";
+import { existsSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -90,6 +90,68 @@ test("an error of the planner's request on a document never ends the run: a lost
   assert.match(await answerDocument(automation, job("unusable")), /the planner gave no usable answer on outline \(no JSON\)/);
 });
 
+const SITE_AWAY = () => new AutomationError("網站暫時無法使用", { status: 502, code: "upstream_unavailable" });
+
+/** A document thread, with a site whose answer route is away while `away` is set. */
+function documentWorld() {
+  const box = sandbox();
+  const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, stdout: { write: () => {} }, stderr: { write: () => {} }, now: () => new Date("2026-10-07T10:00:00Z") };
+  const replies = [];
+  const world = { box, replies, away: false, asked: 0 };
+  world.automation = new Automation(ctx, { messageAnswer: async (id, body) => { if (world.away) throw SITE_AWAY(); replies.push({ id, ...body }); return {}; } }, {});
+  Object.assign(world.automation, { reference: () => ({}), dramaPayload: () => ({ drama_settings: {} }) });
+  world.answer = (answer) => { world.automation.stage = async () => { world.asked += 1; return answer(); }; };
+  world.job = (id) => ({ message: { id, body_md: "第二幕為什麼這樣排？" }, subject: "outline", series: { slug: "held" }, doc: null, context: {} });
+  return world;
+}
+
+test("a reply that followed a paid model call and that the site did not take is posted on the next visit, the model not asked again; a kept reply of another line is set aside, never posted to this one", async () => {
+  const kept = (box) => path.join(box.work, "_series", "held", "discussion-answer.json");
+  // The planner's answer.
+  let world = documentWorld();
+  world.answer(() => ({ reply: "因為第二幕要有代價。", revised: null }));
+  world.away = true;
+  await assert.rejects(answerDocument(world.automation, world.job("m1")), /網站暫時無法使用/);
+  assert.ok(existsSync(kept(world.box)));
+  world.away = false;
+  assert.match(await answerDocument(world.automation, world.job("m1")), /^series held: the planner's answer on outline, kept when the site did not take it, is posted$/);
+  assert.deepEqual([world.asked, world.replies, existsSync(kept(world.box))], [1, [{ id: "m1", reply_md: "因為第二幕要有代價。", revised: null }], false]);
+  // The reply to a lost answer.
+  world = documentWorld();
+  world.answer(() => { throw Object.assign(new AutomationError("the answer never came back", { code: RUN_UNCERTAIN, who: "owner" }), { why: "HTTP 504", stage: "planner" }); });
+  world.away = true;
+  await assert.rejects(answerDocument(world.automation, world.job("m1")), /網站暫時無法使用/);
+  world.away = false;
+  await answerDocument(world.automation, world.job("m1"));
+  assert.deepEqual([world.asked, world.replies], [1, [{ id: "m1", reply_md: lostReply("HTTP 504"), revised: null }]]);
+  // A kept reply of line A (the site took it, and the answer to the client was lost) is not B's.
+  world = documentWorld();
+  atomicWrite(kept(world.box), JSON.stringify({ message_id: "A", body: { reply_md: "A 的回答", revised: null } }));
+  world.answer(() => ({ reply: "B 的回答", revised: null }));
+  assert.match(await answerDocument(world.automation, world.job("B")), /the planner answered the owner on outline$/);
+  assert.deepEqual([world.asked, world.replies], [1, [{ id: "B", reply_md: "B 的回答", revised: null }]]);
+
+  // The writer's unusable answer on a screenplay, through an exception and through an empty reply.
+  for (const answer of [() => { throw new AutomationError("no JSON", { code: OUTPUT_INVALID }); }, () => ({ reply: "" })]) {
+    const box = sandbox();
+    const slug = "held-e001";
+    atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", format: "drama", notes: [], verified: true, listener_done: true, created_at: "2026-10-05T01:00:00Z" }));
+    atomicWrite(path.join(box.root, "docs", "videos", slug, "video.json"), JSON.stringify({ slug, scenes: [] }));
+    const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, stdout: { write: () => {} }, stderr: { write: () => {} }, now: () => new Date("2026-10-07T10:00:00Z") };
+    const replies = [];
+    let away = true;
+    let asked = 0;
+    const automation = new Automation(ctx, { messageAnswer: async (id, body) => { if (away) throw SITE_AWAY(); replies.push({ id, ...body }); return {}; } }, {});
+    Object.assign(automation, { scriptPayload: (_state, extra) => ({ ...extra }), freshIds: () => [], stage: async () => { asked += 1; return answer(); } });
+    const job = { message: { id: "m1", body_md: "沈瀾為什麼不回答？" }, subject: "script:1", series: { slug: "held" }, episode: { slug } };
+    await assert.rejects(answerScript(automation, job), /網站暫時無法使用/);
+    away = false;
+    assert.match(await answerScript(automation, job), /kept when the site did not take it, is posted$/);
+    assert.equal(asked, 1);
+    assert.match(replies.map((reply) => reply.reply_md).join(), /^模型這一輪沒有給出可用的回覆/);
+  }
+});
+
 test("a line on the screenplay of a blocked video waits for the owner's retry when the retry resends what blocked it, and is otherwise answered with the block, not with 'no screenplay here'", async () => {
   const box = sandbox();
   const slug = "blocked-e001";
@@ -112,10 +174,13 @@ test("a line on the screenplay of a blocked video waits for the owner's retry wh
     assert.ok(said.at(-1).includes(why), said.at(-1));
   }
   assert.deepEqual(replies, []);
-  // Blocked for a reason of its own (or by another line's request): the owner is told why, and the line behind it is not held.
+  // Blocked for a reason of its own (or by another line's request, or by another stage's lost
+  // answer): the owner is told why, and the line behind it is not held.
   save({ blocked: "keyframes needs the owner: 圖片額度用完了", blocked_kind: "media_owner:keyframes", blocked_line: "m0" });
   assert.match(await answerScript(automation, job), /^blocked-e001: the owner's line on script:1 is answered with the video's block; the thread waits$/);
-  assert.deepEqual(replies, [{ id: "m1", reply_md: blockedReply("keyframes needs the owner: 圖片額度用完了"), revised: null }]);
+  save({ blocked: "verifier may have run…", blocked_kind: "uncertain:verifier" });
+  assert.match(await answerScript(automation, job), /answered with the video's block/);
+  assert.deepEqual(replies, [{ id: "m1", reply_md: blockedReply("keyframes needs the owner: 圖片額度用完了"), revised: null }, { id: "m1", reply_md: blockedReply("verifier may have run…"), revised: null }]);
 });
 
 test("a line on a screenplay is held while its video is not at rest: a lane is moving it, a lane set it aside in this run, its writer is still running, or it waits on its own from an earlier round; no model is asked and nothing is answered", async () => {
