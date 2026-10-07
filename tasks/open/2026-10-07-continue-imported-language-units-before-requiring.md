@@ -379,3 +379,210 @@ Local snapshot: `released-two-v4-startup-readonly-20261007T1402Z.out`, SHA
 The filename is a label; its actual observation time is 14:03:14Z. The 114 verified
 free parts remain unchanged at this checkpoint. Keep original unknowns and paid
 dub holds; never rerun a prior launcher or clear its intent/journal to resume.
+
+### Known-result handoff, 2026-10-07 23:42 Asia/Taipei (15:42Z)
+
+Four actual free-versus-paid-plan calls succeeded between 14:29Z and 14:33Z.
+Independent readback matched every native request, original source unit, answer,
+HTTP 200 and database run to the existing Claude Sonnet 5.5 configuration. The
+native kept cache contains reviewed English metadata and the first 24 of 116
+caption lines. These are two retained units, not a completed locale or language
+package; the dated 114/144 aggregate has not increased.
+
+The all-descendant scheduling hint also blocked available account D while
+account A was busy. A new, separately pinned read-only hint maps only the fixed
+`CLAUDE_CONFIG_DIR` slot value through a bounded byte stream. It compares the
+pinned service and complete descendant graph; unknown ancestry, environment
+mapping, PID reuse or read failure still holds all dispatch. It starts no account
+CLI, reads no credential contents, makes no provider request and reserves no
+account. Its 38 focused tests and independent review passed.
+
+The owned v4 producer parked through its isolated parent STOP at
+15:27:08.397Z, 0.310 seconds after its latest pre-journal wait, without a fifth
+request, process kill or canonical change. Its real closed state is held with
+four attempts; DevDay remains unattempted. The actual park witness preserves 57
+immutable files, the four original native records, worksheets, unit caches,
+source budgets and both original request namespaces. Price war's six original
+files and closed v3 state remain exact. A failed initial read-only park precheck
+created no intent or STOP; the later fresh conditional park is separately proved.
+
+The new v5 envelope passed 15 focused tests, including actual D35 cache replay of
+all four original answers with zero upstream calls and unchanged journal bytes.
+Its driver/worker inverse reproduces all original v4 bytes. The unchanged native
+runtime resumes at source index four, with at most 44 new calls for plans and 64
+for DevDay. It preserves accounting and unknown holds; it neither starts a clean
+namespace nor refunds or resets a worksheet budget.
+
+Both actual v5 production dry-runs finished with exit 0, three source/settings
+GETs each and zero model POSTs, attachment PUTs or language POSTs. The original four-record
+journal and all archived evidence remain exact. This checks the concrete guarded
+continuation, not completion of the remaining translations or selected dubs.
+
+New immutable receipts under the same outside-Git handoff directory:
+
+- `released-two-v4-four-stage-independent-progress-20261007T150655Z.json`, SHA
+  `831974041c7f2ca2f126c87ff97bd66aa7e37f12ac7595a066d3ba208f481763`.
+- `released-two-v4-park-witness-v5.json`, SHA
+  `8d6311580796ea6c7f5a882cb5db9df21b202940b836cddd64940224b78f708a`.
+- `released-two-v5-local-source-proof.json`, SHA
+  `675c678e9a196e1522008d2242b9227b9153d9eaa999612b40d6b68212dd49e6`.
+- `released-two-v5-resume-binding.json`, SHA
+  `0cdaa6ea50cbacce40a02fa9762bf8ae1bf2fc7a0c079a08dd8fef61943399b8`.
+- `released-two-free-language-v5-dry-run-state.json`, SHA
+  `a6252170339a2a312ed82ced5300e7418f986ff98bc5888db00e9347825ff7d4`.
+
+The wider handoff stays open. EP04 and price-war unknowns, all 54 selected dubs,
+and the owner's no-upload/no-publication/no-paid-regeneration boundary remain.
+
+### Nine-answer checkpoint after production advance, 2026-10-08 (Asia/Taipei)
+
+The actual v5 apply launched once as PID `483509` after its separately bound
+source/dry review. Five new subscription requests returned HTTP 200. Independent
+native parsing and source-budget validation match all nine stored answers,
+including the original four full records and unchanged identity, configuration,
+choices and namespaces. English metadata and 72/116 caption lines are reviewed;
+another 24 lines are translated only, with 20 lines not yet translated. The next
+absent request is source index nine, the fifth unit's caption reviewer. No whole
+locale, attachment PUT or language POST completed; the dated 114/144 free-part
+aggregate has not increased.
+
+The producer self-held at 2026-10-07 23:55:47 Asia/Taipei with a generic fresh
+source/jobs/upload authority error. Actual readback at 23:58:46 confirms it dead,
+exit 1, with nine succeeded native entries and no unresolved new request. DevDay
+remains queued with no journal or request. The earlier running checkpoints are
+historical snapshots, not the current process state.
+
+Production HEAD advanced from `7524c25995d59f3826227e693d52f2ef5b3a19a2` to
+`af596412c8f433b184c1e544d432f44145f666a8` at 23:55:29. The original v5 guard
+rejects that current HEAD before executing its DB probe. Its saved generic error
+alone cannot identify the historical failing assertion. Fresh individual DB
+probes now confirm both sources' human final approvals, inactive uploads and no
+active source jobs. All eighteen canonical STOP/source/handoff pins, all 57
+archived v4 files and the original price-war evidence remain exact.
+
+The incremental production difference contains exactly one news policy, its test,
+a news review document and two task notes. Independent Git and actual checkout
+comparison found no changed video contracts, BFF routes, dependencies or native
+language runner. The API readiness endpoint confirms database/Redis readiness.
+The API/web containers have no Docker healthcheck or revision label; the receipt
+records those null values without fabricating container-health evidence. This
+compatibility receipt binds a new guarded continuation; it does not rearm v5 or
+authorize a clean namespace, budget reset or retry of either original unknown.
+
+Additional immutable outside-Git receipts:
+
+- `released-two-source-review-v5.json`, SHA
+  `a4bfc9e46a959d1bccb21aeb99e440c6ba0a4b872f4d3962c58dcdf363d32c80`.
+- `released-two-v5-first-resume-independent-progress-20261007T155651Z.json`, SHA
+  `2b076eb94ff050b675de506ab890dc0b9f6b30c150ef1e091d63f45259f5aad5`.
+- `released-two-v5-final-held-independent-progress-20261007T1605Z.json`, SHA
+  `c198c19124a6f4a49dcc8d4d42ec7a59746e3b2c41afcdae57f2d6b9f557938e`.
+- `released-two-v6-production-extension-readonly.json`, SHA
+  `a6f2da2dd809593c67e8c9d19f7aad4cd40dcaf183a55d1ed39434a36aa55372`.
+- `released-two-v6-production-extension-independent-review-20261007T161100315200Z.json`, SHA
+  `4bad3be68b2dd9b7108d8955c9f8cb5c26b97d39ab3caf0d1b16f60952b10aaf`.
+
+Neither base publish approval nor successful partial text answers make a complete
+selected-language upload package. The broader ticket and original unknown/paid
+dub holds remain open; no upload, publication, paid regeneration or deploy by
+this operator occurred.
+
+The new v6 read-only dry launch stopped before creating a driver state, native
+worker or model request: its historical runtime image `2727fc02...` no longer
+exists. PID `581544` exited 1; the actual log identifies Docker image inspection
+inside `envelopeGuard`. All nine native answers and all 140 closed v5 witness
+files remain exact. The absent state's attempt counter stays absent; zero new
+dispatch is established by the pre-worker failure and absent v6 worker/wire.
+The v6 once-launch intent, source, binding, reviews, log, PID and exit are retained.
+
+A separate offline execution of the current installed video-worker image
+`e4dd2511...` verified the same `/usr/bin/node`, Node 24.20.0, Linux amd64 and
+FFmpeg 6.1.1. It used `--pull=never`, no network, no mounts and a read-only
+filesystem; its disposable diagnostic container is explicitly counted. No image
+pull/build, paid media generation, provider call or production deploy occurred.
+The current-image proof is `released-two-v7-current-runtime-image-readonly.json`,
+SHA `f63bfbcf9b0a35e8c98120c4b25952c97c31e50dba8eaaa1a3411ae72cbaa75e`.
+The actual pre-worker failure proof is
+`released-two-v6-preworker-image-failure-witness-readonly.json`, SHA
+`17070ffb8c7e6053ac5b17ad42098ec064e74bba013e63ad024fe730c41f929f`.
+These concrete receipts support a new envelope; they do not authorize changing
+or retrying the attempted v6 envelope or either original uncertain request.
+
+### Existing-image continuation, 2026-10-08 (Asia/Taipei)
+
+The new v7 envelope binds the actual installed image and failed pre-worker v6
+witness while preserving the original core, prepared native runtime, request
+namespaces, budgets and nine successful answers. Ten focused v7 tests passed
+independently; the original v6 fifteen-test proof remains a separate receipt.
+Both real production v7 dry-runs completed with exit 0 at 00:47:58, three
+source/settings GETs each, zero model POSTs, attachment PUTs or language POSTs.
+The 00:48:25 readback confirms PID `645574` exited 0, all nine native records
+remain succeeded, all 140 closed v5 evidence files and sixteen failed-v6 files
+are exact, and DevDay remains unattempted. The next required native request is
+the reviewer for the next 24 already-translated English caption lines. This is
+native unit five (unit one is metadata), or caption batch four; no translator is
+repeated.
+
+A separate repeatable-read, read-only DB snapshot at 00:46:32 confirms all
+eighteen current final and replacement base-publish reviews remain approved,
+with matching IDs/hashes and no upload state. It does not claim to have rehashed
+every media attachment again; the earlier complete source/store proof is retained.
+
+- `released-two-v7-resume-binding.json`, SHA
+  `21a46a95480dfa3185c2f4b13dff8ebfeecb9edafe2b8faa316ebc61dc6f3b4a`.
+- `released-two-free-language-v7-dry-run-state.json`, SHA
+  `0957f0099e02af4f36f083a08ac193ec2cacda28eb6ba36221104dcc5ce6c4a3`.
+- `released-two-v7-second-dry-readonly.json`, SHA
+  `1eab5dc0ff72efed9cf89a880f2dec4d92e7cbfced7bdafb6ac510930773b688`.
+- `renewed-finals-eighteen-current-db-readonly-20261008.json`, SHA
+  `115fc408e31bdfc4ecd18dcc5af52611898cd1de29f91146e7486dc38850da76`.
+
+These are immutable actual dry-run and DB receipts, not an apply or language
+completion claim. The 114/144 free-part aggregate is still a dated cohort total;
+price-war/EP04 unknowns and all 54 selected dub parts remain held.
+
+Independent actual-dry/source review `released-two-source-review-v7.json`, SHA
+`207be140ad20e4938502d715d8f9dc56b41816d9db73311c0235548ba439b6de`,
+approved one new metadata/CC apply. The separately late-bound launcher, SHA
+`0a52907048ed2f85f732ede51362d635679363298fd81a1deaf7a3e16086de92`,
+passed Bash syntax, both Python AST checks and root's independent bytes/AST audit.
+The original placeholder draft is retained. All launch-time source, existing-image,
+checkpoint, immutable evidence, canonical and old-process checks passed before
+its exclusive/fsynced once intent at 01:03:16. The producer launched once as PID
+`686752`; no prior envelope was rearmed.
+
+The 01:03:50 and 01:05:24 actual readbacks confirm the producer alive, plans
+running and DevDay queued. A consistent read-only evidence capture at 01:07:27
+preserves the unchanged nine-entry journal and English unit cache; its wire has
+three waits before creating any new native request and zero new stage/language
+POSTs. The conservative cached-room hint found slot a busy and no idle fresh
+eligible slot. It does not observe hidden allocation/model-family rest, reserve
+an account or reconcile an old unknown. The native source cursor and all review,
+rate and settings guards remain active while waiting. Full free-part completion
+has not increased; paid dubs, both original unknowns and upload/publication remain
+held. These are dated startup observations, not a guarantee of later liveness.
+
+- Local copy `released-two-v7-actual-apply-launch-once.intent.json`, SHA
+  `3dc1d4bdab5f53c0075912dd8a47f44e875a9e90be262d1fa1f4d62632b44526`.
+- `released-two-v7-first-apply-readonly-20261008.json`, SHA
+  `ca8726b62904c6040015de99f4bab7f4eae26a7da4e46fad4547e38c8de81be3`.
+- `released-two-v7-actual-startup-evidence-bundle-20261008.json`, SHA
+  `7c3ebc4c54d09aec951821562543588ea00d82102c1985f737523300f4debc6e`.
+
+Independent startup/wait acceptance confirms the actual nine answers through D35
+parsing, source-budget and kept-cache validation, with zero readiness increase.
+Its remote 140+16 file checks are explicitly the root readback attestations,
+not an invented independent remote rehash. The native first-new audit candidate
+is retained for a real future request; it was not used to fabricate progress.
+The 01:11:34 root readback still finds PID `686752` alive, plans waiting before
+dispatch, DevDay queued, six recorded waits and zero new stage or language POSTs.
+
+- `released-two-v7-startup-wait-independent-acceptance-20261008.json`, SHA
+  `202cb69a14873b010649cdba927d5cb7ba887d6a2876fb002c21ceff4101c35c`.
+- `released-two-v7-third-apply-readonly-20261008.json`, SHA
+  `97f669a2b1a8d57b3096c1ee1595b13fa48cb893b2a803607dcaa680c3d11e3b`.
+
+The corrected human handoff is
+`renewed-finals-status-20261008T0111-Taipei.md` outside Git. It distinguishes
+translation/review POSTs from continuing read-only checks, and describes native
+unit five as the next 24 caption lines rather than a fifth caption batch.
