@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
-    "software",
     "marketing",
-    "seo"
+    "seo",
+    "software",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "文章互搶排名怎麼辦：辨識重複意圖與整併內容",
@@ -108,7 +111,7 @@
           "items": [
             "保存原文與設定，建立舊內容到新段落的對照。",
             "選定保留網址，整理必要步驟與獨有資訊。",
-            "重新查證變動資料，完成一份連贯而非拼貼的正文。",
+            "重新查證變動資料，完成一份連貫而非拼貼的正文。",
             "以原有讀者問題驗收，確認主要需求仍被回答。"
           ],
           "ordered": true
@@ -143,10 +146,8 @@
               "text": "完成後逐一開啟舊網址，檢查是否抵達正確內容、沒有轉址鏈或錯誤頁，再查看新頁的實際"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -169,6 +170,7 @@
           "width": 1600,
           "height": 900,
           "caption": "先保住每一項有用答案，再決定哪些文章與網址應該整合。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -268,6 +270,1046 @@
         },
         {
           "title": "Google 網址移轉指南",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Articles Competing for Rankings? Identify Overlapping Intent and Consolidate Content",
+      "description": "Multiple articles from one site appearing for similar queries do not always hurt each other. This article shows how Search Console, article tasks and content differences reveal truly duplicate needs and guide retention, repositioning or merging. It explains the distinct roles of permanent redirects, canonical and noindex, plus pre-merge backups, URL mapping, internal link updates and performance tracking, to avoid deleting articles based only on keywords or short-term rankings.",
+      "hero": {
+        "src": "/guides/seo-content-cannibalization/hero-en.jpg",
+        "alt": "Original illustration of two types of organized documents and a shield, representing information preservation, article consolidation and URL verification.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "You wrote two articles about organizing storage, but search results sometimes show the first and sometimes the second. This is worth investigating, but you cannot immediately conclude that they are competing for rankings. Different pages may naturally suit different queries, devices and usage contexts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Content consolidation should start with the reader's task: do the two articles answer the same question, does this confuse readers, and does maintaining two versions create inconsistent information? Establish this evidence before deciding whether to change titles, clarify each article's role or merge them. This helps preserve content that already has value."
+        },
+        {
+          "type": "heading",
+          "text": "Identify Overlapping Intent, Not Just Shared Keywords",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose a site has articles titled “Drawer Sorting Basics” and “The First Step in Organizing Drawers.” Both teach readers to empty drawers, sort their contents and put everything back. If their conditions of use and final outcomes are nearly identical, consolidation may be worthwhile. Another article, “Checking Stuck Drawer Slides,” also mentions drawers, but its practical purpose is different and it should retain its own focus."
+        },
+        {
+          "type": "paragraph",
+          "text": "After using keywords to find candidate articles, write down each article's target readers, main question, essential steps and unique information. List shared passages separately from differences, then judge whether those differences justify a standalone article. Different titles alone do not prove there is no duplication, and overlapping vocabulary does not mean every article needs a new title."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google has a canonicalization mechanism for duplicate or similar content and selects a representative URL. Duplicate versions are not quite the same issue as two articles that each have their own editorial content. First determine whether you are dealing with multiple URLs generated for technical reasons or two pieces of content serving the same task, so you can choose the right approach."
+        },
+        {
+          "type": "heading",
+          "text": "Investigate by Pairing Queries with Pages",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Select a relevant query in the Search Console performance report, then switch to the page dimension to see which URLs have appeared. Record the date, country and device scope, then examine comparable periods. Google documents this viewing method, but the appearance of multiple URLs alone does not establish that they need merging. You still need to consider the content and its intended use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Then reverse the process and examine queries for each page to see whether it also serves other important needs. The first article may attract readers seeking sorting methods, while the second helps people find storage solutions for specific dimensions. Deleting one just to improve performance for a particular term could also remove an independently useful answer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Most performance report data is attributed to the canonical URL, and query data is also subject to anonymization and row limits. During analysis, also check the actual canonical URL and URL Inspection results to avoid mistaking data attribution for lost traffic. If the sample is too small, save your observations and clarify each article's role first. There is no need to rush into extensive deletions that are difficult to reverse."
+        },
+        {
+          "type": "heading",
+          "text": "First Choose Whether to Keep, Reposition or Merge",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If the two articles produce different outcomes, clarify their respective roles in their titles, introductions and related links. For example, one could establish sorting principles while the other covers measuring and arranging narrow drawers. Keep the necessary content in each and reduce repetitive general introductions, so readers can decide which article to read first."
+        },
+        {
+          "type": "paragraph",
+          "text": "Consider consolidation only if the task is the same and the information is complementary. When choosing which URL to retain, consider content completeness, existing references to it, how readers use it and long-term maintenance costs. Do not simply choose the newest article or the page ranking higher on a single day. An existing, usable URL with a clear focus usually does not need to be replaced with a third, new URL just for consolidation."
+        },
+        {
+          "type": "paragraph",
+          "text": "If multiple URLs are merely technical versions of the same content, a maintainer can review the canonical URL and redirect strategy. canonical expresses a preference for a representative version. It does not automatically send visitors to another page, nor is it a universal button for merging articles on different topics. Before proceeding, confirm how similar the content is and the practical reasons for retaining both entry points."
+        },
+        {
+          "type": "heading",
+          "text": "Preserve Unique Information and Sources Before Merging the Text",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First back up both articles, their images, sources and original URL settings, then create a content mapping. For each original key point, note which section retains it, whether it is rewritten after verification, or whether it is removed because it no longer applies. Do not simply join the two articles together: repeated introductions, inconsistent terminology and conflicting steps will make the merged article harder to read."
+        },
+        {
+          "type": "paragraph",
+          "text": "The drawer-sorting example could be reorganized into four sections: preparation, sorting decisions, trial placement in small batches and maintenance. Place the original exceptional situations alongside the relevant steps. Recheck figures, product features and image captions against the relevant dates. Do not assume something is still correct today just because an older article included it. Every important conclusion should be traceable to retained sources or original reasoning."
+        },
+        {
+          "type": "paragraph",
+          "text": "After writing, reread the new content with each old article's main queries in mind to confirm that no important questions have been omitted. If one need receives only a passing sentence in the new article, reconsider whether the articles should have been merged at all. Consolidation should provide a complete answer that is easier to use, rather than simply reduce the number of articles on the site."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Save the original articles and settings, and map the old content to the new sections.",
+            "Choose the URL to retain, and organize the essential steps and unique information.",
+            "Recheck information that may have changed, and write one coherent article rather than a patchwork.",
+            "Validate the result against the original reader questions, confirming that the main needs are still answered."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Migrate Old URLs and Internal Links Together",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Once you confirm that the old article has been permanently replaced by the new content, ask a maintainer to set up an appropriate permanent server-side redirect, such as 301 or 308. Google treats these responses as signals that the destination should become the canonical URL. The destination must meet the original need. Do not send every deleted article to the homepage or an unrelated popular page."
+        },
+        {
+          "type": "paragraph",
+          "text": "Update related articles, menus, category entry points and the Sitemap at the same time, so internal links point directly to the retained version. Make sure old images or downloads still have an appropriate place, and check whether important external references require notifying their owners to update them. Record each redirect's source, destination, reason and date to avoid loops that redirect back and forth during later redesigns."
+        },
+        {
+          "type": "paragraph",
+          "text": "noindex excludes content from the index; it does not send existing visitors to a new article. robots.txt is not a canonicalization tool either. If content has actually been removed and has no corresponding replacement page, provide the appropriate not-found response for the situation instead of pretending it has been merged. The technical approach depends on the content decision. Do not apply one rule everywhere just to reduce red warnings in reports."
+        },
+        {
+          "type": "heading",
+          "text": "Track Technical Results and Whether Reader Needs Are Preserved",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Afterward, open each old URL to check that it reaches the correct content, with no redirect chain or error page. Then check the new page's actual "
+            },
+            {
+              "type": "text",
+              "text": " markup"
+            },
+            {
+              "type": "text",
+              "text": " and readability. Next, record Google's subsequent crawling and indexing activity. Technical changes taking effect does not mean search data will finish updating that same day."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Performance comparisons should examine the overall changes for the original set of needs across both old and new pages. Do not claim that total performance has improved just because clicks to the retained page increased: it may simply have inherited the old page's traffic. Keep the comparison scope consistent, note seasonality, site redesigns and other content updates, and watch for the loss of distinct queries previously served."
+        },
+        {
+          "type": "paragraph",
+          "text": "If results fall short of expectations, first check redirects, indexing and content omissions before deciding what to adjust. Do not repeatedly split and merge articles in response to short-term fluctuations. Save the decision table and verification records so future contributors can review the existing division of responsibilities before adding articles. This reduces duplication at its source instead of requiring another cleanup every so often."
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-content-cannibalization/diagram-1-en.svg",
+          "alt": "Four blocks—identify intent, choose an action, preserve and revise, and verify migration—show the process for removing article duplication and consolidating content.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Preserve every useful answer first, then decide which articles and URLs to consolidate.",
+          "description": "Four blocks—identify intent, choose an action, preserve and revise, and verify migration—show the process for removing article duplication and consolidating content.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Situation",
+            "More Appropriate Action",
+            "Avoid"
+          ],
+          "rows": [
+            [
+              "Same terms, different practical purposes",
+              "Keep both and clearly distinguish their scope",
+              "Deleting articles just because they share keywords"
+            ],
+            [
+              "Same question, complementary content",
+              "Reorganize and merge under a suitable URL",
+              "Simply joining the two article bodies together"
+            ],
+            [
+              "Multiple URLs for the same content",
+              "Review canonical and redirect strategies",
+              "Using robots.txt to specify the representative version"
+            ],
+            [
+              "New content permanently replaces an old article",
+              "Map it to a relevant destination and update links",
+              "Redirecting large numbers of pages to the homepage"
+            ],
+            [
+              "Content removed with no replacement page",
+              "Provide a not-found response appropriate to its status",
+              "Pretending unrelated content fulfills the original need"
+            ],
+            [
+              "Insufficient data and an unclear cause",
+              "Observe first and clarify each article's role",
+              "Making major changes based on one day's rankings"
+            ]
+          ],
+          "caption": "The consolidation process in this article is original editorial advice and does not guarantee improved rankings or traffic after merging."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Before Merging, Ask What Readers Will Lose",
+          "text": "List each article's unique questions, data, images and sources, and confirm where they will go in the new content. If an important need is not adequately addressed, revise the text or retain a separate page before handling the URLs."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Use Search Intent to Identify an Article's Task",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Create a WordPress Backup Before Merging",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: Specify a Canonical URL",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's Guide to Redirects",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/301-redirects?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console: Common Tasks and Query Matching",
+          "url": "https://support.google.com/webmasters/answer/17010961?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console: Data Dimension Limits",
+          "url": "https://support.google.com/webmasters/answer/17011259?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's URL Migration Guide",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "記事同士の検索順位競合にどう対処するか：意図の重複を見極め、内容を統合する",
+      "description": "同じサイトの複数の記事が似た検索クエリで表示されても、互いに悪影響を及ぼしているとは限りません。本記事では、Search Console、記事の役割、内容の違いを組み合わせて本当に重複するニーズを見極め、維持、位置づけの調整、統合のどれを選ぶかを示します。また、恒久的なリダイレクト、canonical、noindex の用途の違いを説明します。統合前のバックアップ、URL の対応づけ、内部リンクの更新、効果の追跡手順も紹介し、キーワードや短期的な順位だけで記事を削除することを防ぎます。",
+      "hero": {
+        "src": "/guides/seo-content-cannibalization/hero-ja.jpg",
+        "alt": "二種類の文書の整理と盾を描いたオリジナルイラスト。情報の保持、記事の統合、URL の確認を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "収納に関する記事を二本書いたところ、検索結果に一方が表示されることも、もう一方が表示されることもあると気づきました。この現象は確認する価値がありますが、すぐに二本が必ず「順位を奪い合っている」とは判断できません。クエリ、デバイス、利用場面が異なれば、適したページも異なることがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "コンテンツの統合は、読者が達成したいことから考えるべきです。二本は同じ疑問に答えているのか、読者はそのために迷っているのか、二つの内容を維持することで情報に食い違いが生じているのかを確認します。まずこうした根拠をそろえ、そのうえでタイトルを変える、役割分担を明確にする、実際に統合するという判断をすれば、元から価値のある内容を残せます。"
+        },
+        {
+          "type": "heading",
+          "text": "共通のキーワードではなく、意図の重複を見極める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトに「引き出しの分類入門」と「引き出し収納の第一歩」があるとします。どちらも中身を出し、分類して戻す方法を教え、利用条件と完成後の状態もほぼ同じなら、統合を検討する価値があります。一方、別の記事が「引き出しレールが引っかかる場合の点検」なら、同じく引き出しに触れていても作業の目的が異なるため、独立した位置づけを保つべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "キーワードで候補の記事を探したら、記事ごとに対象読者、主な疑問、必須の手順、その記事だけにある情報を書き出します。共通する段落と異なる部分を分けて列挙し、その違いが一本の記事として成立するほどのものかを判断します。タイトルが違うだけで重複がないと考えてはいけませんし、語彙が重なるだけですべての記事のタイトルを変える必要もありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google は重複または類似するコンテンツを正規化する仕組みを持ち、代表となる URL を選びます。同一内容の重複版と、編集上それぞれ内容を持つ二本の記事は、まったく同じ問題ではありません。まず、技術的に生成された複数の URL を扱うのか、二つのコンテンツ自体が同じ目的に応えるのかを確認することで、適切な対処法を選べます。"
+        },
+        {
+          "type": "heading",
+          "text": "クエリとページの組み合わせで現象を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console の検索パフォーマンスレポートで関連するクエリを一つ選び、ページのディメンションに切り替えて、どの URL が表示されたかを確認します。日付、国、デバイスの対象範囲を保持し、続いて近い期間の動きも観察します。公式に紹介されている確認方法ですが、複数の URL が表示されること自体は、統合が必要だという判定ではありません。内容と利用目的に立ち返る必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "次に、逆にページごとのクエリを確認し、それぞれの記事がほかの重要なニーズにも応えているかを調べます。一方には分類方法を求める読者が訪れ、もう一方は特定の寸法に合う収納方法を探すために使われているかもしれません。ある語句の成績を改善するためだけに一方を削除すると、もともと独立して役立っていた答えも失う可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "検索パフォーマンスレポートのデータの大半は正規 URL に集約され、クエリにも匿名化やデータ行数の制限があります。分析時には実際の canonical と URL 検査の結果も確認し、データの集約先をトラフィックの消失と誤解しないようにします。サンプルが少なすぎる場合は、まず観察結果を保存して内容の役割分担を改善し、元に戻しにくい大規模な削除を急ぐ必要はありません。"
+        },
+        {
+          "type": "heading",
+          "text": "まず維持、位置づけの変更、統合を選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "二本で得られる成果が異なるなら、タイトル、冒頭、関連リンクで役割分担を明確にします。たとえば、一方は分類の原則を決める役割を担い、もう一方は狭い引き出しの計測と配置を扱います。それぞれ必要な内容を残し、繰り返し説明している共通の前置きを減らして、読者がどちらを先に読むべきか判断できるようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目的が同じで情報が補い合っている場合に、初めて統合を検討します。残す URL を選ぶ際は、内容の充実度、既存の引用、読者の使い方、長期的な維持費を考慮し、最新の記事や一日だけ順位が高かったページを選ぶだけにしないでください。すでに利用でき、位置づけも明確な URL は、通常、統合のために第三の新しい URL へ変える必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "複数の URL が同じコンテンツの技術的な別バージョンにすぎない場合は、保守担当者が正規 URL とリダイレクト方針を確認できます。canonical は代表として希望するバージョンを示すもので、訪問者を自動的に別のページへ移動させるものではなく、異なるテーマの記事を統合する万能ボタンでもありません。対処する前に、内容の類似性と、二つの入口を残す具体的な理由を確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "本文を統合する前に、独自の情報と出典を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず二本の記事、画像、出典、元の URL 設定をバックアップし、内容の対応表を作ります。元の要点ごとに、どの節に残すのか、再確認して書き直すのか、適用できなくなったため削除するのかを明記します。二本をそのままつなげてはいけません。冒頭の重複、用語の違い、矛盾する手順によって、統合後の内容がさらに読みにくくなるためです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引き出しの分類の例なら、準備、分類の判断、少量での試し入れ、維持管理の四つに再構成し、元の記事にあった例外的な状況を関連する手順へ組み込めます。数値、製品の機能、画像の説明は、日付も含めて再確認します。以前の記事に書かれていたからといって、現在も正しいと考えてはいけません。重要な結論はすべて、残した出典または独自の推論までたどれるようにするべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "書き終えたら、旧記事それぞれの主なクエリを念頭に読み直し、重要な疑問が新しい内容から抜け落ちていないかを確認します。あるニーズが新しい記事では一文で触れるだけになっているなら、そもそも統合すべきではなかったのかを再検討します。統合の目的は、より使いやすい完全な答えを提供することであり、単にサイトの記事数を減らすことではありません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "原文と設定を保存し、旧内容と新しい段落の対応表を作る。",
+            "残す URL を選び、必要な手順と独自の情報を整理する。",
+            "変化する情報を再確認し、継ぎはぎではなく一貫した本文を仕上げる。",
+            "元の読者の疑問に照らして確認し、主なニーズに引き続き答えているかを確かめる。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "旧 URL と内部リンクを併せて移行する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "旧記事を新しい内容で恒久的に置き換えると決めたら、保守担当者に 301 または 308 などの適切な恒久的サーバー側リダイレクトを設定してもらえます。Google はこの種の応答を、転送先を正規 URL にするべきだというシグナルとして扱います。転送先は元のニーズを実際に引き継ぐ必要があります。削除した記事をすべてトップページや無関係な人気ページへ一律に転送してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "関連する記事、メニュー、カテゴリの入口、Sitemap も同時に更新し、サイト内のリンクが残すバージョンを直接指すようにします。旧画像やダウンロードファイルに適切な置き場所があるかを確認し、外部からの重要な引用について、相手に更新を依頼する必要があるかも確認します。リダイレクト規則には転送元、転送先、理由、日付を記録し、後の改修で互いに転送し合うループが生じるのを防ぎます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "noindex の用途はインデックスからの除外であり、既存の訪問者を新しい記事へ誘導するものではありません。robots.txt も正規化のためのツールではありません。内容を実際に削除し、対応する代替ページがない場合は、統合したように装うのではなく、状況に応じて存在しないことを示す正しい応答を返すべきです。技術的な方法はコンテンツに関する判断によって決まります。レポートの赤い表示を減らすためだけに同じ規則を一律に適用してはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "技術的な結果と、ニーズが維持されているかを併せて追跡する",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完了後は旧 URL を一つずつ開き、正しい内容に到達するか、リダイレクトチェーンやエラーページがないかを確認してから、新しいページの実際の "
+            },
+            {
+              "type": "text",
+              "text": "タグ"
+            },
+            {
+              "type": "text",
+              "text": "と読みやすさを確認します。続いて、Google によるその後のクロールとインデックス登録の状況を記録します。技術的な変更が反映されても、その日のうちに検索データの更新が完了するとは限りません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "効果を比較する際は、元の一群のニーズと、新旧ページ全体の変化を見る必要があります。残したページのクリック数が増えただけで、全体の成果が向上したと主張してはいけません。旧ページのトラフィックを引き継いだだけかもしれないためです。比較対象の範囲を固定し、季節、サイト改修、ほかのコンテンツ更新を記録するとともに、以前は対応していた独立したクエリを失っていないかにも注意します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "結果が期待どおりでなければ、まずリダイレクト、インデックス登録、内容の抜けを確認してから、調整するかを決めます。短期的な変動の中で分割と統合を繰り返してはいけません。判断表と確認記録を保存し、後から記事を追加する人が既存の役割分担を先に確認できるようにすれば、重複を発生源から減らせます。一定期間ごとに整理し直す必要も少なくなります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-content-cannibalization/diagram-1-ja.svg",
+          "alt": "四つの区画が順に、意図の判別、対処の選択、保存と再編集、移行の確認を示し、記事の重複解消と統合の流れを表しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "まず役立つ答えを一つ残らず守り、そのうえでどの記事と URL を統合すべきかを決めます。",
+          "description": "四つの区画が順に、意図の判別、対処の選択、保存と再編集、移行の確認を示し、記事の重複解消と統合の流れを表しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "状況",
+            "より適切な対処",
+            "避けるべきこと"
+          ],
+          "rows": [
+            [
+              "同じ名詞でも、作業の目的が異なる",
+              "維持し、扱う範囲を明確に分ける",
+              "共通のキーワードだけを理由に記事を削除する"
+            ],
+            [
+              "同じ疑問に答え、内容が補い合う",
+              "再構成して適切な URL に統合する",
+              "二本の本文をそのままつなげる"
+            ],
+            [
+              "同じコンテンツに複数の URL がある",
+              "canonical とリダイレクト方針を確認する",
+              "robots.txt で代表バージョンを指定する"
+            ],
+            [
+              "旧記事を新記事で恒久的に置き換える",
+              "対応する関連ページへ転送し、リンクを更新する",
+              "大量にトップページへ転送する"
+            ],
+            [
+              "内容を削除し、代替ページがない",
+              "状態に合った、存在しないことを示す応答を返す",
+              "無関係な内容で引き継いだように装う"
+            ],
+            [
+              "データが不足し、原因が不明",
+              "まず観察し、役割分担を改善する",
+              "一日だけの順位を根拠に大幅に変更する"
+            ]
+          ],
+          "caption": "本記事の統合手順は独自の編集上の提案であり、統合後の順位やトラフィックの向上を保証するものではありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "統合前に答えるべき問い：読者は何を失うか",
+          "text": "記事ごとの独自の疑問、情報、画像、出典を列挙し、新しい内容のどこに引き継がれるかを確認します。重要なニーズが適切に引き継がれていない場合は、先に文章を修正するか独立したページを残し、その後で URL を処理するべきです。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "検索意図から記事の役割を見極める",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "統合前に WordPress のバックアップを作成する",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google の正規 URL の指定",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google のリダイレクトに関する説明",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/301-redirects?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console の一般的な作業とクエリの組み合わせ",
+          "url": "https://support.google.com/webmasters/answer/17010961?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console のデータディメンションの制限",
+          "url": "https://support.google.com/webmasters/answer/17011259?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の URL 移行ガイド",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "글끼리 검색 순위를 다툰다면 어떻게 할까: 중복 의도 파악과 콘텐츠 통합",
+      "description": "같은 웹사이트의 여러 글이 비슷한 검색어에 나타난다고 반드시 서로 해를 끼치는 것은 아닙니다. 이 글에서는 Search Console, 글의 역할, 콘텐츠의 차이를 함께 살펴 실제로 중복되는 요구를 파악하고 유지, 역할 조정, 통합 중 무엇을 선택할지 설명합니다. 영구 리디렉션, canonical, noindex의 용도 차이도 다룹니다. 통합 전 백업, URL 대응표 작성, 내부 링크 업데이트, 성과 추적 절차를 제시해 키워드나 단기 순위만 보고 글을 삭제하지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/seo-content-cannibalization/hero-ko.jpg",
+        "alt": "두 종류의 문서 정리와 방패를 그린 자체 제작 삽화로, 정보 보존과 글 통합, URL 검증을 표현합니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "수납에 관한 글 두 편을 썼는데 검색 결과에 때로는 첫 번째 글이, 때로는 두 번째 글이 나타납니다. 이런 현상은 점검할 필요가 있지만, 두 글이 반드시 ‘서로 검색 순위를 빼앗는다’고 바로 단정할 수는 없습니다. 검색어, 기기, 이용 상황에 따라 적합한 페이지가 다를 수 있기 때문입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "콘텐츠 통합은 독자가 해결하려는 과제에서 출발해야 합니다. 두 글이 같은 질문에 답하는지, 그 때문에 독자가 혼란을 겪는지, 두 콘텐츠를 유지하면서 정보가 서로 어긋나는지 살펴보세요. 먼저 이런 근거를 확보한 뒤 제목을 바꿀지, 역할을 더 명확히 나눌지, 실제로 통합할지 결정하면 기존의 가치 있는 콘텐츠를 보존할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "공통 키워드보다 중복 의도부터 파악하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "웹사이트에 ‘서랍 분류 입문’과 ‘서랍 정리의 첫걸음’이라는 글이 있다고 가정해 봅시다. 두 글 모두 서랍을 비우고, 분류한 뒤 다시 넣는 방법을 알려 주며 적용 조건과 완료 후 결과도 거의 같다면 통합을 검토할 만합니다. 반면 다른 글이 ‘서랍 레일이 걸릴 때 점검하기’라면 서랍이라는 단어가 똑같이 들어가더라도 작업 목적이 다르므로 독립적인 역할을 유지해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "키워드로 후보 글을 찾은 뒤 각 글의 대상 독자, 주요 질문, 필수 단계, 고유 정보를 적어 보세요. 공통 문단과 차이 나는 부분을 따로 나열하고, 그 차이만으로 독립된 글이 성립하는지 판단합니다. 제목이 다르다는 이유만으로 중복이 없다고 생각해서도 안 되고, 단어가 겹친다고 모든 글의 제목을 바꾸도록 요구해서도 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google은 중복되거나 유사한 콘텐츠의 표준화 절차를 통해 대표 URL을 선택합니다. 중복 버전의 문제와 편집상 각각 내용을 갖춘 두 글의 문제도 완전히 같지는 않습니다. 기술적으로 생성된 여러 URL을 처리하는 것인지, 두 콘텐츠 자체가 같은 과제를 해결하는 것인지 먼저 확인해야 적절한 후속 방법을 선택할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "검색어와 페이지의 대응 관계로 현상 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console 실적 보고서에서 관련 검색어 하나를 선택한 뒤 페이지 차원으로 전환해 어떤 URL이 나타났는지 확인합니다. 날짜, 국가, 기기 범위를 유지하면서 비슷한 기간을 이어서 살펴보세요. 공식적으로 제공되는 확인 방법이지만, 여러 URL이 나타났다는 사실만으로 통합이 필요하다고 판정할 수는 없습니다. 여전히 콘텐츠와 이용 목적을 살펴봐야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "반대로 페이지별 검색어도 살펴 각 글이 다른 중요한 요구에도 답하는지 확인합니다. 첫 번째 글은 분류 방법을 찾는 독자를 유입시키고, 두 번째 글은 특정 크기에 맞는 수납 방법을 찾는 데 쓰일 수 있습니다. 특정 단어의 성과를 개선하려고 한 글을 삭제하면 기존의 독립적이고 유용한 답변까지 잃을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실적 보고서의 데이터 대부분은 표준 URL에 귀속되며, 검색어 데이터에는 익명 처리와 행 수 제한도 있습니다. 분석할 때는 실제 canonical과 URL 검사 결과도 별도로 확인해 데이터 귀속을 트래픽 소실로 오해하지 않도록 합니다. 표본이 너무 적다면 관찰 내용을 먼저 저장하고 콘텐츠의 역할 구분을 개선하세요. 복구하기 어려운 대규모 삭제를 서두를 필요는 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 유지, 역할 재설정, 통합 중 선택하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "두 글을 통해 얻는 결과가 다르다면 제목, 도입부, 관련 링크에서 역할을 명확히 구분하세요. 예를 들어 한 글은 분류 원칙을 세우는 방법을, 다른 글은 좁은 서랍의 치수 측정과 배치를 다룰 수 있습니다. 각 글에 필요한 내용은 유지하고 반복되는 일반적인 서론은 줄여 독자가 어느 글부터 읽어야 할지 판단할 수 있게 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "과제는 같지만 정보가 서로 보완될 때 통합을 검토합니다. 유지할 URL을 선택할 때는 콘텐츠의 완성도, 기존 인용, 독자의 이용 방식, 장기 유지 관리 비용을 고려해야 합니다. 가장 최신 글이나 하루 순위가 더 높은 페이지만 선택해서는 안 됩니다. 이미 사용할 수 있고 역할이 분명한 URL이라면 통합을 위해 세 번째 새 URL로 바꿀 필요는 대개 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "여러 URL이 같은 콘텐츠의 기술적인 버전일 뿐이라면 관리자가 표준 URL과 리디렉션 전략을 점검할 수 있습니다. canonical은 대표로 선호하는 버전을 나타내며, 방문자를 다른 페이지로 자동 이동시키지는 않습니다. 서로 다른 주제의 글 두 편을 통합하는 만능 버튼도 아닙니다. 처리하기 전에 콘텐츠의 유사성과 두 진입점을 유지하는 실제 이유를 확인하세요."
+        },
+        {
+          "type": "heading",
+          "text": "본문 통합 전에 고유 정보와 출처 보존하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 두 글, 이미지, 출처, 기존 URL 설정을 백업한 뒤 콘텐츠 대응표를 만듭니다. 기존의 각 핵심 내용은 어느 절에 보존하는지, 재검증 후 고쳐 쓰는지, 더 이상 적용되지 않아 삭제하는지 표시합니다. 두 글을 그대로 이어 붙이지 마세요. 반복되는 도입부, 서로 다른 용어, 모순되는 단계 때문에 통합 후 오히려 읽기 어려워질 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "서랍 분류 사례는 준비, 분류 기준 결정, 소량 시험 배치, 유지 관리의 네 부분으로 재구성하고 기존의 예외 상황을 관련 단계에 넣을 수 있습니다. 수치, 제품 기능, 이미지 설명은 날짜까지 다시 확인하세요. 예전 글에 썼다는 이유로 지금도 맞다고 가정해서는 안 됩니다. 모든 중요한 결론은 보존한 출처나 독자적인 추론으로 거슬러 올라가 확인할 수 있어야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "작성을 마친 뒤 기존 두 글의 주요 검색어를 각각 기준으로 다시 읽고 중요한 질문이 빠지지 않았는지 확인합니다. 특정 요구가 새 글에서 한 문장으로만 짧게 처리됐다면 애초에 통합하지 말았어야 했는지 재검토하세요. 통합의 목적은 더 쉽게 활용할 수 있는 완전한 답변을 제공하는 것이며, 단순히 웹사이트의 글 수를 줄이는 것이 아닙니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "원문과 설정을 보존하고 기존 콘텐츠와 새 문단의 대응표를 만듭니다.",
+            "유지할 URL을 선택하고 필수 단계와 고유 정보를 정리합니다.",
+            "변동된 정보를 다시 검증하고 짜깁기가 아닌 일관된 본문을 완성합니다.",
+            "기존 독자의 질문을 기준으로 검증해 주요 요구에 여전히 답하고 있는지 확인합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "기존 URL과 내부 링크를 함께 이전하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 글이 새 콘텐츠로 영구적으로 대체된다고 확정한 뒤에는 관리자에게 301 또는 308과 같은 적절한 영구 서버 측 리디렉션을 설정해 달라고 요청할 수 있습니다. Google은 이런 응답을 대상 URL이 표준 URL이 되어야 한다는 신호로 봅니다. 대상 페이지는 기존 요구를 실제로 충족해야 합니다. 삭제한 모든 글을 일괄적으로 홈페이지나 관련 없는 인기 페이지로 보내지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "관련 글, 메뉴, 카테고리 진입점, Sitemap도 함께 업데이트해 사이트 내부 링크가 유지할 버전을 직접 가리키게 합니다. 기존 이미지나 다운로드 파일에도 적절한 위치가 있는지 확인하고, 중요한 외부 인용은 상대방에게 업데이트를 요청해야 하는지 점검하세요. 리디렉션 규칙에는 출발 URL, 대상 URL, 이유, 날짜를 기록해 이후 개편 때 서로를 향해 되돌아가는 순환이 생기지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "noindex의 용도는 색인에서 제외하는 것이며, 기존 방문자를 새 글로 이동시키지는 않습니다. robots.txt 역시 표준 URL을 지정하는 도구가 아닙니다. 콘텐츠가 실제로 삭제됐고 대응하는 대체 페이지가 없다면 통합한 것처럼 처리하지 말고 상황에 맞는 올바른 ‘존재하지 않음’ 응답을 제공해야 합니다. 기술적 방법은 콘텐츠 결정에 따라 달라집니다. 보고서의 빨간 글씨를 줄이려는 이유만으로 같은 규칙을 적용해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "기술적 결과와 독자 요구 보존 여부 함께 추적하기",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "작업을 마친 뒤 기존 URL을 하나씩 열어 올바른 콘텐츠에 도달하는지, 리디렉션 체인이나 오류 페이지가 없는지 확인하고, 새 페이지의 실제 "
+            },
+            {
+              "type": "text",
+              "text": " 태그"
+            },
+            {
+              "type": "text",
+              "text": "와 가독성을 살펴봅니다. 이어서 Google의 후속 크롤링과 색인 상태를 기록합니다. 기술적 변경이 적용됐다고 검색 데이터까지 당일에 업데이트되는 것은 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "성과를 비교할 때는 기존의 해당 요구 묶음과 새 페이지 및 기존 페이지의 전체 변화를 살펴봐야 합니다. 유지한 페이지의 클릭 수가 늘었다는 사실만으로 전체 성과가 증가했다고 선언하지 마세요. 기존 페이지의 트래픽을 넘겨받았을 뿐일 수 있습니다. 비교 범위를 고정하고 계절, 사이트 개편, 다른 콘텐츠 업데이트를 기록하며, 기존에 답하던 독립적인 검색어를 놓치지 않았는지도 살펴보세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "결과가 기대와 다르다면 리디렉션, 색인, 콘텐츠 누락부터 확인한 뒤 조정 여부를 결정합니다. 단기 변동 속에서 글을 다시 나눴다가 합치기를 반복하지 마세요. 결정표와 검증 기록을 보존해 이후 글을 추가하는 사람이 기존 역할 구분부터 살펴보게 해야 합니다. 그래야 처음부터 중복을 줄이고 주기적으로 다시 정리하는 일을 피할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-content-cannibalization/diagram-1-ko.svg",
+          "alt": "의도 파악, 처리 방식 선택, 보존 및 재구성, 이전 검증 순서로 된 네 구역으로, 글의 중복 제거와 통합 과정을 보여 줍니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "유용한 답변 하나하나를 먼저 보존한 뒤 통합할 글과 URL을 결정합니다.",
+          "description": "의도 파악, 처리 방식 선택, 보존 및 재구성, 이전 검증 순서로 된 네 구역으로, 글의 중복 제거와 통합 과정을 보여 줍니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "상황",
+            "더 합리적인 처리",
+            "피해야 할 일"
+          ],
+          "rows": [
+            [
+              "같은 명사, 다른 작업 목적",
+              "유지하고 범위를 명확히 구분",
+              "키워드가 같다는 이유만으로 글 삭제"
+            ],
+            [
+              "같은 질문, 서로 보완하는 내용",
+              "재구성 후 적절한 URL로 통합",
+              "두 글의 본문을 그대로 이어 붙이기"
+            ],
+            [
+              "같은 콘텐츠의 여러 URL",
+              "canonical과 리디렉션 전략 점검",
+              "robots.txt로 대표 버전 지정"
+            ],
+            [
+              "기존 글이 새 글로 영구 대체됨",
+              "관련 대상에 연결하고 링크 업데이트",
+              "대량으로 홈페이지에 리디렉션"
+            ],
+            [
+              "콘텐츠 삭제, 대체 페이지 없음",
+              "상태에 맞는 ‘존재하지 않음’ 응답 제공",
+              "관련 없는 콘텐츠로 대체한 척하기"
+            ],
+            [
+              "데이터 부족, 원인 불명",
+              "먼저 관찰하고 역할 구분 개선",
+              "하루 순위만으로 대폭 변경"
+            ]
+          ],
+          "caption": "이 글의 통합 절차는 자체적으로 제안한 편집 방법이며, 통합 후 검색 순위나 트래픽 상승을 보장하지 않습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "통합 전에 답해야 할 질문: 독자는 무엇을 잃게 될까",
+          "text": "각 글의 고유한 질문, 자료, 이미지, 출처를 나열하고 새 콘텐츠에서 어디에 반영되는지 확인하세요. 중요한 요구가 제대로 충족되지 않는다면 먼저 내용을 수정하거나 독립적인 페이지를 유지한 뒤 URL을 처리해야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "검색 의도로 글의 역할 파악하기",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "통합 전 WordPress 백업 만들기",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 표준 URL 지정",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 리디렉션 안내",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/301-redirects?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console의 자주 하는 작업과 검색어 대응",
+          "url": "https://support.google.com/webmasters/answer/17010961?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 데이터 차원의 제한",
+          "url": "https://support.google.com/webmasters/answer/17011259?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google URL 이전 가이드",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "文章互抢排名怎么办：识别重复意图与合并内容",
+      "description": "同一网站有多篇文章出现在相近查询中，不一定代表内容互相伤害。本文示范如何结合 Search Console、文章任务和内容差异识别真正重复的需求，决定保留、调整定位或合并，并说明永久重定向、canonical 与 noindex 的不同用途。提供合并前备份、网址对照、站内链接更新及成效跟踪步骤，避免只凭关键词或短期排名就删除文章。",
+      "hero": {
+        "src": "/guides/seo-content-cannibalization/hero-zh-cn.jpg",
+        "alt": "原创两类文件整理与盾牌插图，呈现保留信息、整合文章及验收网址。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "你写了两篇收纳文章，却发现搜索结果有时显示第一篇、有时显示第二篇。这种现象值得检查，但不能立刻推断两篇一定“互抢排名”。不同查询、设备与使用场景，本来就可能适合不同页面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "内容合并应从读者任务开始：两篇是否回答相同问题、读者是否因此困惑，以及维护两份内容是否让信息不一致。先建立这些证据，再决定改标题、明确分工或真正合并，能保留原本有价值的内容。"
+        },
+        {
+          "type": "heading",
+          "text": "先识别重复意图，而非共同关键词",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设网站有“抽屉分类入门”和“抽屉收纳第一步”，两篇都教读者清空、分类再放回，使用条件和完成结果几乎相同，就可能值得整合。若另一篇是“抽屉滑轨卡住的检查”，虽然同样包含抽屉，操作目的却不同，应保留独立定位。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用关键词找出候选文章后，逐篇写下目标读者、主要问题、必做步骤和独有信息。将共同段落与差异部分分开列出，再判断差异是否足以支撑一篇文章。不能只看标题不同就认为没有重复，也不能因词汇重叠就要求每篇全部改名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 对重复或相似内容有规范化机制，会选择代表网址；重复版本与编辑上两篇各自有内容的文章，也不完全是同一问题。先确认你处理的是技术产生的多个网址，还是两份内容本身服务相同任务，才能选对后续方法。"
+        },
+        {
+          "type": "heading",
+          "text": "用查询与页面的配对检查现象",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Search Console 效果报告中选择一个相关查询，再切换到网页维度，查看哪些网址曾出现。保持日期、国家与设备范围不变，接着观察相近期间。官方提供这个查看方式，但多个网址出现本身不是需要合并的判定，仍要回到内容与使用目的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再反过来逐页看查询，找出每篇是否也服务其他重要需求。第一篇可能带来寻找分类方法的读者，第二篇则被用来寻找特定尺寸的收纳方式。若只为改善某个词就删掉其中一篇，可能同时失去原本独立且有用的答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "效果报告的大部分数据会归到规范网址，查询也有匿名与数据行限制。分析时另查实际 canonical 和网址检查结果，避免把数据归属误解成流量消失。若样本太少，先保存观察记录并改善内容分工，不必急着做难以还原的大幅删除。"
+        },
+        {
+          "type": "heading",
+          "text": "先选择保留、重新定位或合并",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果两篇完成的成果不同，就在标题、开头与相关链接中说清楚分工。例如一篇负责建立分类原则，另一篇处理狭窄抽屉的测量与布局。各自保留必要内容，减少反复重讲的通用前言，让读者能判断应先读哪一篇。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果任务相同但信息互补，才评估合并。选择保留网址时，考虑内容完整度、已有引用、读者使用方式和长期维护成本，而不是只选最新文章或单日排名较高的页面。原本可用且有明确定位的网址，通常不必为了合并再改成第三个新网址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若多个网址只是同一内容的技术版本，可由维护者检查规范网址与重定向策略。canonical 表达偏好的代表版本，不会自动把访客带到另一页，也不是用来合并两篇不同主题的万能按钮。处理前先确认内容相似性和保留两个入口的实际理由。"
+        },
+        {
+          "type": "heading",
+          "text": "合并正文前保留独有信息与来源",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先备份两份文章、图片、来源及原本的网址设置，再建立内容对照。每个原有重点标明保留在哪一节、重新查证后改写，或因不再适用而移除。不要把两篇直接接在一起，因为重复开头、不同用语与矛盾步骤会让合并后更难阅读。"
+        },
+        {
+          "type": "paragraph",
+          "text": "抽屉分类例子可以重组为准备、分类决策、小批试放和维护四段，再把原有的例外场景放到相关步骤。数字、产品功能和图片说明重新核对日期；不能因为旧文曾经写过，就假设到今天仍然正确。所有重要结论都应能追溯到保留的来源或原创推理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "写完后带着旧文各自的主要查询重新阅读，确认新内容没有遗漏重要问题。若其中一种需求在新文里只剩一句带过，重新评估是否本来就不应合并。合并的目的是提供一份更容易使用的完整答案，而非单纯让网站文章数量变少。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "保存原文与设置，建立旧内容到新段落的对照。",
+            "选定保留网址，整理必要步骤与独有信息。",
+            "重新查证变动数据，完成一份连贯而非拼贴的正文。",
+            "用原有读者问题验收，确认主要需求仍被回答。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "让旧网址与站内链接一起完成迁移",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "确定旧文章永久由新内容取代后，可请维护者建立适当的永久服务器端重定向，例如 301 或 308。Google 将这类响应视为目标应成为规范网址的信号。目标必须真正承接原本需求，不要把所有删除的文章一律送到首页或不相关的热门页面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同步更新相关文章、菜单、分类入口与 Sitemap，让网站内的链接直接指向保留版本。确认旧图片或下载文件仍有合理位置，并检查外部重要引用是否需要通知对方更新。重定向规则保存来源、目的地、理由与日期，避免之后改版出现互相转回的循环。"
+        },
+        {
+          "type": "paragraph",
+          "text": "noindex 的用途是排除索引，不会把已有访客导向新文章；robots.txt 也不是规范化工具。若内容确实移除且没有相应替代页，应根据情况提供正确的不存在响应，而非假装合并。技术方式取决于内容决策，不能为了让报告红字减少就套用同一条规则。"
+        },
+        {
+          "type": "heading",
+          "text": "同时跟踪技术结果与需求是否被保留",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "完成后逐一打开旧网址，检查是否到达正确内容、没有重定向链或错误页，再查看新页面的实际"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "与可读性。接着记录 Google 后续抓取和索引情况。技术变更已生效，不代表搜索数据当天就会完成更新。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "成效比较要看原本那一组需求与新旧页面的整体变化。不要只看保留页的点击上升，就宣称总成效增加；它可能只是承接旧页原有流量。固定比较范围，注明季节、网站改版和其他内容更新，并留意是否失去原本服务的独立查询。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若结果不符预期，先确认重定向、索引与内容缺漏，再决定是否调整。不要在短期波动中反复拆回与合并。保存决策表与查证记录，让之后新增文章的人先看已有分工，才能从源头减少重复，而不必每隔一段时间重新清理一次。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-content-cannibalization/diagram-1-zh-cn.svg",
+          "alt": "四个区块依次为识别意图、选择处理、保存整编和迁移验收，呈现文章去重及合并流程。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先保住每一项有用答案，再决定哪些文章与网址应该整合。",
+          "description": "四个区块依次为识别意图、选择处理、保存整编和迁移验收，呈现文章去重及合并流程。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "情况",
+            "较合理的处理",
+            "需避免"
+          ],
+          "rows": [
+            [
+              "相同名词、不同操作目的",
+              "保留并清楚区分范围",
+              "只因共用关键词就删文"
+            ],
+            [
+              "同一问题、内容互补",
+              "重新编排后合并到合适网址",
+              "直接拼接两篇正文"
+            ],
+            [
+              "同一内容的多个网址",
+              "检查 canonical 与重定向策略",
+              "用 robots.txt 指定代表版本"
+            ],
+            [
+              "旧文永久由新文取代",
+              "对应相关目标并更新链接",
+              "大量转到首页"
+            ],
+            [
+              "内容移除且无替代页",
+              "提供符合状态的不存在响应",
+              "用不相关内容假装承接"
+            ],
+            [
+              "数据不足、原因未明",
+              "先观察并改善分工",
+              "单凭一天排名就大幅改动"
+            ]
+          ],
+          "caption": "本文的合并流程为原创编辑建议，并不保证合并后排名或流量提升。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "合并前先回答：读者会失去什么",
+          "text": "把每篇独有的问题、数据、图片及来源列出来，确认它们在新内容中的去向。若某项重要需求没有被妥善承接，应先修正文案或保留独立页面，再处理网址。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用搜索意图识别文章任务",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "合并前建立 WordPress 备份",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 指定规范网址",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 重定向说明",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/301-redirects?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 常见任务与查询配对",
+          "url": "https://support.google.com/webmasters/answer/17010961?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 数据维度限制",
+          "url": "https://support.google.com/webmasters/answer/17011259?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 网址迁移指南",
           "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes?hl=zh-tw",
           "checked_on": "2026-09-14"
         }

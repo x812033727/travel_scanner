@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "網站配色怎麼建立：色相、明度與可讀性",
@@ -48,10 +51,8 @@
               "text": "色相用來描述偏紅、偏綠或偏藍等色彩方向；彩度描述顏色由灰到鮮明的程度；明度則協助調整深淺。CSS 的 HSL 以色相、飽和度與亮度"
             },
             {
-              "type": "article",
-              "text": "參數",
-              "kind": "life",
-              "slug": "ai-term-model-parameters"
+              "type": "text",
+              "text": "參數"
             },
             {
               "type": "text",
@@ -122,10 +123,8 @@
               "text": "深青綠 #0D6B68 與白色的對比約為 6.325:1，可作本例的候選組合。這只檢查指定色對；透明度、圖片背景、漸層和狀態變化都可能改變結果。字型筆畫、字級及閱讀環境仍會影響體驗，應在實際頁面檢查，而不只看色票工具上的通過"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -184,6 +183,7 @@
           "width": 1600,
           "height": 900,
           "caption": "候選色對的計算只是起點，完整驗收還要檢查內容、狀態與操作。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -294,6 +294,1142 @@
         },
         {
           "title": "W3C：非文字對比的適用範圍",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Building a Website Color System: Hue, Lightness, and Readability",
+      "description": "Website colors need more than an attractive palette: text, buttons, and states must stay clear across pages. Using an original home repair course site, this article explains hue, chroma, lightness, color relationships, and semantic roles, then calculates text contrast from actual color codes. Steps, a comparison table, and original diagrams help beginners build maintainable color rules, while treating color psychology as a design hypothesis to test.",
+      "hero": {
+        "src": "/guides/website-color-system/hero-en.jpg",
+        "alt": "Original Mokaair illustration of a website screen, color rules document, and a shield with a check mark, showing that color choices must account for both purpose and readability.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "After applying a favorite palette to a website, another problem often emerges: the homepage looks great, but the pale text in the course schedule is hard to read, while the enrollment button and error messages use the same attention-grabbing color. A palette alone does not explain where each color belongs, so rules for usage and validation are also needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "The following uses an original home repair course website as an example, drawing on MDN, Adobe, and W3C documentation consulted on 9/14/2026. This article selects its own sample color codes and design choices, and calculates contrast values using publicly available formulas. It does not claim that any particular color has increased enrollment or meets all accessibility requirements."
+        },
+        {
+          "type": "heading",
+          "text": "First, Understand What Hue, Chroma, and Lightness Adjust",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Hue describes whether a color leans toward red, green, blue, or another direction; chroma describes how gray or vivid it is; lightness helps adjust how light or dark it is. CSS HSL uses hue, saturation, and lightness "
+            },
+            {
+              "type": "text",
+              "text": "parameters"
+            },
+            {
+              "type": "text",
+              "text": " to represent sRGB colors, so you do not have to guess the result from the three red, green, and blue channels alone."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "HSL hue can be expressed as an angle on the color wheel, with opposite hues 180 degrees apart. Adjusting saturation or lightness creates different levels of vividness and lightness within similar hues. These parameters are useful for exploring palettes, but HSL lightness is not the relative luminance used in the WCAG contrast formula. You cannot determine readability simply by subtracting two percentages."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a home repair course website, you can start with a dark teal hue, then create lighter background variants and darker text variants. First, check whether the same content remains clear when placed on them. Do not accept unreadable combinations just to make every palette value follow a neat pattern. Consistent color codes help with management, but their actual use still needs separate verification."
+        },
+        {
+          "type": "heading",
+          "text": "Color Relationships Offer Direction, but Do Not Guarantee Readability",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Monochromatic schemes vary lightness within the same hue; analogous schemes find combinations in neighboring positions on the color wheel; complementary schemes use opposite hues to create differences. These relationships help generate candidate combinations. They do not mean that any combination is inherently suitable for text and backgrounds, and no fixed formula guarantees that everyone will find it harmonious."
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe's color wheel tool can generate candidate palettes based on color relationships and also provides access to contrast checking. Start by entering your own base color, then choose the variants you need and record their color codes and roles. If extracting colors from an image, use an image you have the right to use. The extracted colors still need checking in the website's actual context."
+        },
+        {
+          "type": "paragraph",
+          "text": "On a course page, photos, icons, and notice boxes can all introduce additional colors. You can first keep the main reading area in consistent neutral colors, then decide where a primary or accent color is needed. This is a design choice for this example; no particular area ratio is treated as a rule that every website must follow."
+        },
+        {
+          "type": "heading",
+          "text": "Define Color Rules by Role to Avoid Choosing Colors Again on Every Page",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First, list roles such as backgrounds, primary text, secondary text, links, primary actions, and status messages, then assign color codes to them. Names can describe primary text or error messages, instead of simply saying Dark Gray One. When adjustments are needed later, you will know what kind of information each color affects."
+        },
+        {
+          "type": "paragraph",
+          "text": "The original example can use dark teal #0D6B68 for primary actions and white #FFFFFF for their text, while assigning regular body text a separate dark color suitable for light backgrounds. Primary actions and error messages should have different rules. Even if the brand's primary color is reddish, that does not mean every red can simultaneously represent the brand, special offers, and input errors."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, add states such as hover, keyboard focus, selection, and disabled. If there is a dark mode, recheck every text and background pairing instead of simply inverting the original colors. Keep records of color names, codes, suitable backgrounds, and prohibited combinations so new pages can follow the same rules."
+        },
+        {
+          "type": "heading",
+          "text": "Check Text Contrast Numerically and Inspect the Actual Rendering",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WCAG 2.2 AA requires a text contrast ratio of at least 4.5:1 for normal text and at least 3:1 for text that meets the large-text definition. Large text refers to 18pt regular or 14pt bold text, or equivalent sizes for Chinese, Japanese, and Korean fonts; check the actual delivered size. Do not apply the lower threshold simply because the text is in a heading field."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article calculates contrast using opaque sRGB color codes on a pure white background: #777777 is approximately 4.478:1, below the 4.5:1 threshold for normal text; #666666 is approximately 5.742:1 and meets this threshold. Use unrounded values when evaluating the result. Displaying the former as 4.5 does not make it a pass."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Dark teal #0D6B68 has a contrast ratio of approximately 6.325:1 against white, making it a candidate combination for this example. This checks only the specified color pair; transparency, image backgrounds, gradients, and state changes can all alter the result. Font strokes, font size, and the reading environment still affect the experience. Check the actual page instead of relying only on the palette tool's pass "
+            },
+            {
+              "type": "text",
+              "text": "indicator"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "Choose a base color that suits the website's content, then explore lighter and darker variants and color relationships.",
+            "List the roles of text, backgrounds, actions, and states, and record their respective color codes.",
+            "Calculate contrast for each actual foreground and background pair, and revise unsuitable combinations.",
+            "Check different screens and interaction states, add text or shape cues, and save the rules."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Icons and States Must Convey Information Through More Than Color",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Beyond text, essential graphics used to identify controls or states, or to understand content, have separate non-text contrast requirements. They generally require 3:1 contrast against adjacent colors, with a defined scope and exceptions. This does not mean every decorative line or every pair of brand colors on a website must have a mutual contrast ratio of 3:1. First, determine what information they convey."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, course availability should not be indicated only by a green dot for open enrollment and a red dot for a full class. Add text stating that enrollment is open or the class is full. Form errors should also explain which field needs correction, rather than only changing the border color. These cues let people who cannot distinguish certain color differences still understand the page."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keyboard focus styles must be visible against the actual background. Links can use underlines or another consistently recognizable treatment to distinguish them from regular body text. A grayscale preview helps reveal whether information relies too heavily on hue, but it cannot simulate every visual condition and does not replace a complete accessibility evaluation."
+        },
+        {
+          "type": "heading",
+          "text": "Treat Color Psychology as a Hypothesis to Test with Content and Feedback",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A design proposal may aim to convey calm through teal or add liveliness through warm colors. These descriptions can guide team discussions, but they cannot be presented as claims that every Taiwanese reader will trust or buy something upon seeing a certain color. Responses to color also involve content, culture, prior experience, and usage context, so leave room for verification."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a home repair course page, ask readers to describe the impression the page gives them, then observe whether they can easily find the schedule, fees, and enrollment method. Comparing how color choices affect behavior requires controlling other changes and arranging an appropriate evaluation. If the title, price, and button are changed together, even an increase in enrollment cannot be attributed solely to color."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, compile a single page of color rules covering each role, compatible backgrounds, check dates, and versions. When adding a new event or page, first check whether existing rules can be reused before deciding to add colors. A color system's practical value is in keeping screens consistent, making information easy to recognize, and allowing later changes to be traced."
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-color-system/diagram-1-en.svg",
+          "alt": "Three original cards cover color roles, color-pair checks, and extra cues, using a candidate dark teal and white pair as an example.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Calculating candidate color pairs is only a starting point; complete validation must also check content, states, and interactions.",
+          "description": "Three original cards cover color roles, color-pair checks, and extra cues, using a candidate dark teal and white pair as an example.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "What to Decide",
+            "Available Methods",
+            "What Still Needs Checking"
+          ],
+          "rows": [
+            [
+              "Find candidate colors",
+              "Monochromatic, analogous, or complementary schemes",
+              "Whether they suit the current content"
+            ],
+            [
+              "Assign color roles",
+              "Separate roles for text, actions, and states",
+              "Consistency across pages"
+            ],
+            [
+              "Check normal text",
+              "Actual color pair: at least 4.5:1",
+              "Applicable conditions and the actual font"
+            ],
+            [
+              "Check essential graphics",
+              "Compare adjacent colors and identify their roles",
+              "Scope of non-text contrast rules"
+            ],
+            [
+              "Convey course availability",
+              "Color plus text or shapes",
+              "Understandable without distinguishing colors"
+            ],
+            [
+              "Evaluate brand impressions",
+              "Form hypotheses and gather feedback",
+              "No guarantee of higher conversions"
+            ]
+          ],
+          "caption": "W3C values apply only to their corresponding criteria and scope; passing color checks does not mean the entire site conforms to WCAG."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "A Passing Palette Does Not Mean Every Page Passes",
+          "text": "Check the actual backgrounds behind text, transparency, images, and interaction states. Contrast is only part of validation. Also confirm that information is conveyed through more than color and that the content and interactions themselves are clear."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Build a Reading Hierarchy with Font Sizes and Spacing",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check Actual Interactions with Prototype Tasks",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Document Brand Tone and Design Hypotheses",
+              "kind": "life",
+              "slug": "brand-tone-vibe-marketing"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN: HSL Hue, Saturation, and Lightness",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/hsl",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe: Color Wheel and Color Relationship Tools",
+          "url": "https://color.adobe.com/create/color-wheel",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: Minimum Text Contrast and Relative Luminance Formula",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: Information Must Not Rely on Color Alone",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: Scope of Non-Text Contrast",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "サイト配色の作り方：色相・明度・読みやすさ",
+      "description": "サイトの配色は、見栄えのよいパレットを選ぶだけでなく、ページが変わっても文字・ボタン・状態を明確に伝える必要があります。この記事では、オリジナルの暮らしの修繕講座サイトを例に、色相・彩度・明度、配色の関係、意味に応じた用途を説明し、実際の色コードで文字のコントラストを計算します。操作手順、比較表、オリジナル図解を通して、初心者が保守しやすい色の規則を作る手助けをします。また、色彩心理は検証すべき設計上の仮説として扱う必要があることも伝えます。",
+      "hero": {
+        "src": "/guides/website-color-system/hero-ja.jpg",
+        "alt": "Mokaairオリジナルのサイト画面、配色規則の文書、チェック用の盾のイラスト。配色には用途と読みやすさの両立が必要なことを表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "好みの配色をサイトに取り入れると、別の問題がよく起こります。トップページは見栄えがよくても、講座の一覧表の薄い文字は読みにくく、申し込みボタンとエラー表示には同じ目立つ色が使われていることがあります。パレットだけでは、各色をどこに使うべきかはわかりません。そのため、用途と合否の確認規則も必要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下では、オリジナルの暮らしの修繕講座サイトを例に、2026年9月14日に参照したMDN、Adobe、W3Cの文書をもとに説明します。サンプルの色コードとデザイン構成はこの記事で独自に選び、コントラスト値は公開された式で計算しています。特定の色で申し込み率が上がったことや、すべてのアクセシビリティ要件を満たすことを主張するものではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "まず色相・彩度・明度が何を調整するのかを理解する",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "色相は、赤寄り・緑寄り・青寄りといった色の方向を表します。彩度は灰色から鮮やかな色までの度合いを表し、明度は色の明暗を調整するのに役立ちます。CSSのHSLは、色相・彩度・明度の"
+            },
+            {
+              "type": "text",
+              "text": "パラメーター"
+            },
+            {
+              "type": "text",
+              "text": "でsRGBの色を表すため、赤・緑・青の三つのチャンネルだけを頼りに結果を推測する必要がありません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "HSLの色相は色相環の角度で表せ、向かい合う色相には180度の差があります。彩度や明度を調整すると、近い色相のまま濃淡と鮮やかさの異なる色を作れます。これらのパラメーターはパレットを検討するのに適していますが、HSLの明度の値はWCAGのコントラスト計算式における相対輝度とは異なります。二つの百分率を引くだけで読みやすさを判定することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修繕講座サイトでは、まず濃い青緑を基本色に選び、背景用の薄い色と文字用の濃い色のバリエーションを作れます。同じ内容を載せて読みやすいかを先に確認しましょう。パレットの数値をきれいにそろえるために、見づらい組み合わせを受け入れないでください。色コードの規則性は管理に役立ちますが、実際の使用時には別途検証が必要です。"
+        },
+        {
+          "type": "heading",
+          "text": "配色の関係は方向を示すが、読みやすさは保証しない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "単色配色では同じ色相を中心に濃淡を調整でき、類似色配色では色相環上の近い位置から組み合わせを探せます。補色配色では、向かい合う色相で違いを生み出します。これらの関係は候補の組み合わせを考えるのに役立ちますが、どの組み合わせも初めから文字と背景に適しているわけではありません。また、誰もが調和を感じることを保証する決まった式もありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobeの色相環ツールは、配色の関係に沿って候補のパレットを生成でき、コントラストを確認する機能への入口もあります。使う際は、まず自分の基本色を入力し、必要なバリエーションを選び、色コードと用途を記録しましょう。画像から色を抽出する場合は、使用する権利のある画像を使う必要があります。抽出した色も、サイトで実際に使う状況で確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "講座ページでは、写真、アイコン、注意事項の枠などから別の色が加わることがあります。まず本文を読む主な領域を安定した無彩色に保ち、どこにメインカラーやアクセントカラーが必要かを決める方法があります。これは本例でのデザイン上の選択であり、特定の面積比率をすべてのサイトが守るべき規則として扱うものではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "用途別に配色規則を作り、ページごとの選び直しを避ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず背景、主要な文字、補助的な文字、リンク、主要な操作、状態の通知といった用途を列挙し、それぞれに色コードを指定します。名前は「濃い灰色その一」だけでなく、「主要な文字」や「エラーメッセージ」のように付けられます。後で調整が必要になったとき、その色がどの種類の情報に影響するかを把握できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "オリジナルの例では、濃い青緑の#0D6B68を主要な操作に、白の#FFFFFFをその文字に使い、通常の本文には別途、明るい背景に適した濃い色を指定できます。主要な操作とエラー表示には異なる規則が必要です。ブランドのメインカラーが赤寄りでも、すべての赤がブランド、お得な情報、入力エラーを同時に表せるという意味ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "さらに、ホバー、キーボードフォーカス、選択、無効などの状態を補います。ダークモードがある場合は、文字と背景の組み合わせを一つずつ確認し直す必要があり、元の色を反転するだけでは済みません。色の名前、色コード、使用できる背景、禁止する組み合わせを記録し、新しいページでも同じ規則を引き継げるようにしましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "コントラスト値で文字を確認し、実際の表示も見る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WCAG 2.2のAAにおける文字のコントラスト条件は、通常の文字で少なくとも4.5:1、大きな文字の定義に当てはまる場合で少なくとも3:1です。大きな文字の目安は、18ptの通常の文字、14ptの太字、およびそれらに相当する中国語・日本語・韓国語のフォントサイズで、実際に提供するサイズを確認する必要があります。見出し欄にあるという理由だけで、低いほうの基準を適用しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事では、不透明なsRGBの色コードと純白の背景で計算しています。#777777は約4.478:1で、通常の文字の基準である4.5:1を満たしません。#666666は約5.742:1で、この基準を満たします。判定には四捨五入していない値を使う必要があり、前者を4.5と表示して合格とみなしてはいけません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "濃い青緑の#0D6B68と白のコントラストは約6.325:1で、本例の候補の組み合わせにできます。ただし、これは指定した色の組み合わせだけを確認したものです。透明度、背景画像、グラデーション、状態の変化によって結果が変わることがあります。フォントの線、文字サイズ、読む環境も体験に影響するため、実際のページで確認し、配色ツール上の合格"
+            },
+            {
+              "type": "text",
+              "text": "マークだけで判断しないでください"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "サイトの内容に合わせて基本色を選び、濃淡や配色の関係を検討する。",
+            "文字・背景・操作・状態の用途を列挙し、それぞれの色コードを記録する。",
+            "実際の前景色と背景色のコントラストを組み合わせごとに計算し、不適切な組み合わせを修正する。",
+            "異なる画面や操作時の状態を確認し、文字や形による手がかりを加えて規則を保存する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "アイコンや状態は色だけで伝えない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文字以外にも、操作部品や状態を識別したり、内容を理解したりするのに欠かせない図形には、非テキストのコントラスト要件があります。通常は隣接する色とのコントラストが3:1以上必要で、適用範囲と例外もあります。これは、サイト上のすべての装飾線や、あらゆるブランドカラー同士で3:1を満たす必要があるという意味ではありません。まず、その要素がどの情報を伝えているかを確認すべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、講座の空き状況は、緑の点だけで申し込み可能、赤の点だけで満席と示すのではなく、「申し込み可能」や「満席」という文字も添える必要があります。フォームのエラーも、枠の色を変えるだけでなく、どの項目を修正する必要があるかを説明すべきです。こうした手がかりがあれば、特定の色の違いを見分けられない人もページを理解できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "キーボードフォーカスの表示は、実際の背景上で見える必要があります。リンクには下線など、常に見分けられる方法を組み合わせ、通常の本文と混同しないようにしましょう。グレースケール表示は、情報を色相に頼りすぎていないかを見つける助けになりますが、あらゆる視覚の状態を再現できるわけではなく、完全なアクセシビリティ検査の代わりにもなりません。"
+        },
+        {
+          "type": "heading",
+          "text": "色彩心理を仮説として書き、内容とフィードバックで検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "デザイン案では、青緑で落ち着きを伝え、暖色で活気を加えることを狙う場合があります。こうした説明はチームで話し合う方向性にはなりますが、台湾の読者全員が特定の色を見れば信頼したり購入したりすると、そのまま断定することはできません。色の感じ方には、内容、文化、これまでの経験、使用状況も関わるため、検証の余地を残す必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修繕講座ページでは、読者にページから受ける印象を説明してもらい、時間、費用、申し込み方法を簡単に見つけられるかを観察できます。配色が行動に与える影響を比較するには、ほかの変動要因を管理し、適切な評価を計画する必要があります。見出し、価格、ボタンを同時に変更した場合、申し込みが増えても、その成果を色だけに帰することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、各用途、組み合わせられる背景、確認日、バージョンを含む配色規則を一ページにまとめます。新しいキャンペーンやページを追加する際は、まず既存の規則を使えるかを確認し、その後で色を追加するかを決めましょう。配色システムの実用的な価値は、画面の一貫性を保ち、情報を見分けやすくし、後の変更を追跡できるようにすることです。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-color-system/diagram-1-ja.svg",
+          "alt": "三枚のオリジナルカードで、色の役割、色の組み合わせの検証、追加の手がかりを整理し、濃い青緑と白の候補の組み合わせを例示しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "候補の色の組み合わせを計算するのは出発点にすぎません。最終的な確認には、内容・状態・操作の検証も必要です。",
+          "description": "三枚のオリジナルカードで、色の役割、色の組み合わせの検証、追加の手がかりを整理し、濃い青緑と白の候補の組み合わせを例示しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "決めること",
+            "使える方法",
+            "さらに確認すること"
+          ],
+          "rows": [
+            [
+              "候補の色を探す",
+              "単色・類似色・補色",
+              "現在の内容に適しているか"
+            ],
+            [
+              "色の用途を決める",
+              "文字・操作・状態で役割を分ける",
+              "ページ間で一貫しているか"
+            ],
+            [
+              "通常の文字を確認する",
+              "実際の色の組み合わせで4.5:1以上",
+              "適用条件と実際のフォント"
+            ],
+            [
+              "必要な図形を確認する",
+              "隣接する色の組み合わせと用途を判断する",
+              "非テキストの規則の適用範囲"
+            ],
+            [
+              "空き状況を伝える",
+              "色に文字や形を添える",
+              "色を見分けなくても理解できるか"
+            ],
+            [
+              "ブランドの印象を評価する",
+              "仮説を立ててフィードバックを得る",
+              "コンバージョン向上は保証できない"
+            ]
+          ],
+          "caption": "W3Cの数値は、対応する達成基準と適用範囲に限って有効です。色のチェックに合格しても、サイト全体がWCAGに適合したことにはなりません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "パレットの合格は全ページの合格を意味しない",
+          "text": "実際の文字の背景、透明度、画像、操作時の状態を確認してください。コントラストは最終確認の一部にすぎません。情報を色だけで伝えていないか、内容や操作そのものが明確かも確認する必要があります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字サイズと間隔で読みやすい情報の階層を作る",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "プロトタイプ上のタスクで実際の操作を確認する",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ブランドの語り口とデザイン上の仮説を整理する",
+              "kind": "life",
+              "slug": "brand-tone-vibe-marketing"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN：HSLの色相・彩度・明度",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/hsl",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：色相環と配色の関係を使うツール",
+          "url": "https://color.adobe.com/create/color-wheel",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：文字の最低コントラストと相対輝度の計算式",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：情報を色だけで伝えない",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：非テキストのコントラストの適用範囲",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "웹사이트 배색 설계: 색상, 명도와 가독성",
+      "description": "웹사이트 배색은 보기 좋은 색상표를 고르는 데서 끝나지 않습니다. 여러 페이지에서 글자, 버튼, 상태가 명확히 드러나야 합니다. 직접 만든 생활 수리 강좌 웹사이트를 예로 색상·채도·명도, 배색 관계와 의미에 따른 용도를 설명하고, 실제 색상 코드로 글자 대비를 계산합니다. 실행 단계, 비교표, 직접 제작한 도해를 통해 초보자가 유지 관리하기 쉬운 색상 규칙을 만들도록 돕고, 색채 심리는 검증이 필요한 디자인 가설로만 삼아야 함을 짚습니다.",
+      "hero": {
+        "src": "/guides/website-color-system/hero-ko.jpg",
+        "alt": "Mokaair가 직접 제작한 웹사이트 화면, 색상 규칙 문서, 점검용 방패 일러스트. 배색은 용도와 가독성을 함께 고려해야 함을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "마음에 드는 배색을 웹사이트에 적용하면 또 다른 문제가 생기곤 합니다. 홈페이지는 보기 좋지만 강좌 일정표의 연한 글자는 읽기 어렵고, 수강 신청 버튼과 오류 안내에는 같은 강조색이 쓰입니다. 색상표 자체는 각 색을 어디에 써야 하는지 알려 주지 않으므로 용도와 검증 규칙도 필요합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래 내용은 직접 만든 생활 수리 강좌 웹사이트를 예로 들며, 2026년 9월 14일에 열람한 MDN, Adobe, W3C 문서를 바탕으로 정리했습니다. 예시 색상 코드와 디자인 구성은 이 글에서 직접 정했고, 대비 수치는 공개된 공식으로 계산했습니다. 특정 색이 이미 수강 신청률을 높였다거나 모든 접근성 요구 사항을 충족한다고 주장하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "색상, 채도, 명도가 무엇을 조절하는지 먼저 이해하기",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "색상은 빨강, 초록, 파랑 등 색이 향하는 방향을 설명하고, 채도는 회색에서 선명한 색까지의 정도를 설명하며, 명도는 밝고 어두운 정도를 조절하는 데 쓰입니다. CSS의 HSL은 색상, 채도, 명도 "
+            },
+            {
+              "type": "text",
+              "text": "매개변수"
+            },
+            {
+              "type": "text",
+              "text": "로 sRGB 색을 표현하므로 빨강, 초록, 파랑이라는 세 채널만으로 결과를 추측하지 않아도 됩니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "HSL의 색상은 색상환의 각도로 나타낼 수 있으며, 서로 마주 보는 색상은 180도 차이가 납니다. 채도나 명도를 조절하면 비슷한 색상 안에서 밝고 어두운 정도와 선명도가 다른 색을 만들 수 있습니다. 이 매개변수들은 색상표를 탐색하기에 적합하지만, HSL의 명도 수치는 WCAG 대비 공식의 상대 휘도와 다르므로 두 백분율을 바로 빼서 가독성을 판단할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "수리 강좌 웹사이트에서는 먼저 짙은 청록색 계열을 고른 뒤, 더 연한 배경용 변형과 더 짙은 글자용 변형을 만들 수 있습니다. 같은 내용을 올렸을 때 명확히 보이는지 먼저 살펴보고, 색상표의 숫자를 가지런히 맞추려고 잘 보이지 않는 조합을 받아들이지는 마세요. 색상 코드의 규칙성은 관리에 도움이 되지만, 실제 사용은 별도로 검증해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "배색 관계는 방향을 제시하지만 가독성을 보장하지는 않습니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "단색 배색은 같은 색상을 중심으로 밝고 어두운 정도를 조절하고, 유사색 배색은 색상환에서 가까운 위치의 색을 조합하며, 보색 배색은 서로 마주 보는 색상으로 차이를 만듭니다. 이런 관계는 후보 조합을 제안하는 데 도움이 되지만, 어느 조합이든 본래부터 글자와 배경에 적합하다는 뜻은 아닙니다. 모두가 조화롭다고 느끼게 할 고정된 공식도 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe의 색상환 도구는 배색 관계에 따라 후보 색상표를 만들 수 있고, 대비를 점검할 수 있는 경로도 제공합니다. 사용할 때는 자신의 기본색을 먼저 입력하고 필요한 변형을 고른 뒤, 색상 코드와 용도를 기록하세요. 이미지에서 색을 추출한다면 본인이 사용할 수 있는 이미지를 써야 하며, 추출한 색도 웹사이트의 실제 사용 상황에서 점검해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "강좌 페이지에서는 사진, 아이콘, 안내 상자도 추가 색상을 가져올 수 있습니다. 주요 읽기 영역을 먼저 안정적인 무채색으로 유지한 뒤, 어느 위치에 주 색상이나 강조색이 필요한지 정할 수 있습니다. 이는 이 예시의 디자인 선택이며, 특정 면적 비율을 모든 웹사이트가 지켜야 할 규정으로 삼지는 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "페이지마다 색을 다시 고르지 않도록 용도별 색상 규칙 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 배경, 주요 글자, 보조 글자, 링크, 주요 동작, 상태 안내 등의 용도를 나열하고 각각에 색상 코드를 지정하세요. 이름은 단순히 '첫 번째 짙은 회색'이라고만 적기보다 '주요 글자'나 '오류 메시지'처럼 붙일 수 있습니다. 그래야 나중에 조정할 때 이 색이 어떤 정보에 영향을 주는지 알 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 만든 예시에서는 짙은 청록색 #0D6B68을 주요 동작에, 흰색 #FFFFFF를 그 위의 글자에 쓰고, 일반 본문에는 밝은 배경에 적합한 짙은 색을 따로 지정할 수 있습니다. 주요 동작과 오류 안내에는 서로 다른 규칙이 있어야 합니다. 브랜드의 주 색상이 붉은 계열이어도 모든 빨간색이 브랜드, 혜택, 입력 오류를 동시에 나타낼 수 있다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이어서 마우스를 올렸을 때, 키보드 포커스, 선택, 비활성화 등의 상태를 추가하세요. 다크 모드가 있다면 모든 글자와 배경 조합을 다시 확인해야 하며, 기존 색을 단순히 반전해서는 안 됩니다. 색상 이름, 색상 코드, 적용 가능한 배경, 금지된 조합을 기록해 두면 새 페이지를 추가할 때도 같은 규칙을 이어 갈 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "대비 수치로 글자를 점검하고 실제 화면도 살펴보기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WCAG 2.2의 AA 글자 대비 기준은 일반 글자에 최소 4.5:1, 큰 글자의 정의에 해당하는 글자에 최소 3:1을 요구합니다. 큰 글자는 18pt 일반 글자나 14pt 굵은 글자 및 이에 상응하는 중국어·일본어·한국어 글꼴 크기를 기준으로 하며, 실제 제공되는 크기를 확인해야 합니다. 제목 필드에 들어간 글자라는 이유만으로 더 낮은 기준을 적용하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글에서는 불투명한 sRGB 색상 코드와 순백색 배경으로 계산했습니다. #777777은 약 4.478:1로 일반 글자 기준인 4.5:1에 미달하고, #666666은 약 5.742:1로 이 기준을 충족합니다. 판단할 때는 반올림하지 않은 수치를 써야 하며, 앞의 값을 4.5로 표시했다고 통과로 간주해서는 안 됩니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "짙은 청록색 #0D6B68과 흰색의 대비는 약 6.325:1이므로 이 예시의 후보 조합으로 쓸 수 있습니다. 이는 지정된 색 조합만 점검한 결과이며, 투명도, 이미지 배경, 그라데이션, 상태 변화에 따라 결과가 달라질 수 있습니다. 글꼴의 획, 글자 크기, 읽는 환경도 사용 경험에 영향을 미치므로 실제 페이지에서 확인해야 하며, 색상표 도구의 통과 "
+            },
+            {
+              "type": "text",
+              "text": "표시"
+            },
+            {
+              "type": "text",
+              "text": "만 봐서는 안 됩니다."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "웹사이트 내용에 맞춰 기본색을 고르고, 밝고 어두운 정도와 배색 관계를 탐색하세요.",
+            "글자, 배경, 동작, 상태의 용도를 나열하고 각각의 색상 코드를 기록하세요.",
+            "실제 전경과 배경의 대비를 조합별로 계산하고, 부적합한 조합을 수정하세요.",
+            "여러 화면과 상호작용 상태를 점검하고, 글자나 형태로 된 안내를 추가한 뒤 규칙을 저장하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "아이콘과 상태는 색만으로 전달하면 안 됩니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글자 외에도 제어 요소나 상태를 식별하거나 내용을 이해하는 데 필요한 그래픽에는 별도의 비텍스트 대비 요구 사항이 있습니다. 일반적으로 인접한 색과 3:1의 대비가 필요하며, 적용 범위와 예외도 있습니다. 웹사이트의 모든 장식선이나 모든 브랜드 색 조합이 서로 3:1을 충족해야 한다는 뜻은 아니므로, 먼저 어떤 정보를 담고 있는지 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 강좌 정원 상태를 초록 점으로 수강 신청 가능, 빨간 점으로 정원 마감이라고만 표시해서는 안 됩니다. '수강 신청 가능'이나 '정원 마감'이라는 글자도 추가해야 합니다. 양식 오류도 어느 입력란을 수정해야 하는지 설명해야 하며, 테두리 색만 바뀌어서는 안 됩니다. 이런 안내가 있으면 특정 색 차이를 구분하지 못하는 사람도 페이지를 이해할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "키보드 포커스 표시는 실제 배경에서 눈에 보여야 합니다. 링크에는 밑줄이나 그 밖에 지속적으로 식별할 수 있는 방식을 함께 적용해 일반 본문과 혼동하지 않도록 할 수 있습니다. 회색조 미리보기는 정보가 색상에 지나치게 의존하는지 발견하는 데 도움이 되지만, 모든 시각적 조건을 재현할 수는 없고 전체 접근성 검사를 대신하지도 못합니다."
+        },
+        {
+          "type": "heading",
+          "text": "색채 심리는 가설로 적고 내용과 피드백으로 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "디자인 제안에서는 청록색으로 안정감을 전달하고 따뜻한 색으로 활기를 더하려 할 수 있습니다. 이런 설명은 팀 논의의 방향으로 삼을 수 있지만, 대만 독자 모두가 특정 색을 보면 신뢰하거나 구매한다고 단정해서는 안 됩니다. 색에 대한 느낌에는 내용, 문화, 기존 경험, 사용 상황도 관여하므로 검증의 여지를 남겨야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "수리 강좌 페이지에서는 독자에게 페이지가 주는 인상을 설명해 달라고 한 뒤, 시간, 비용, 수강 신청 방법을 쉽게 찾는지 관찰할 수 있습니다. 배색이 행동에 미치는 영향을 비교하려면 다른 변화를 통제하고 적절한 평가를 마련해야 합니다. 제목, 가격, 버튼을 동시에 바꿨다면 수강 신청이 늘어도 색 덕분이라고만 볼 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 각 용도, 조합 가능한 배경, 점검 날짜, 버전을 포함한 색상 규칙을 한 페이지로 정리하세요. 새로운 행사나 페이지를 추가할 때는 기존 규칙을 이어 쓸 수 있는지 먼저 확인한 뒤 색을 추가할지 결정하세요. 배색 시스템의 실용적인 가치는 화면의 일관성을 유지하고, 정보를 쉽게 식별하며, 이후 수정 사항을 추적할 수 있게 하는 데 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-color-system/diagram-1-ko.svg",
+          "alt": "세 장의 자체 제작 카드에 색상의 역할, 색 조합 검증, 추가 안내를 정리하고 짙은 청록색과 흰색의 후보 조합을 예로 보여 줍니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "후보 색 조합의 계산은 출발점일 뿐이며, 전체 검증에는 내용, 상태, 동작 점검도 필요합니다.",
+          "description": "세 장의 자체 제작 카드에 색상의 역할, 색 조합 검증, 추가 안내를 정리하고 짙은 청록색과 흰색의 후보 조합을 예로 보여 줍니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "결정할 사항",
+            "활용 방법",
+            "추가 확인 사항"
+          ],
+          "rows": [
+            [
+              "후보 색 찾기",
+              "단색, 유사색, 보색",
+              "현재 내용에 적합한지"
+            ],
+            [
+              "색상 용도 배정",
+              "글자, 동작, 상태별 역할 구분",
+              "페이지 간 일관성"
+            ],
+            [
+              "일반 글자 점검",
+              "실제 색 조합의 대비 최소 4.5:1",
+              "적용 조건과 실제 글꼴"
+            ],
+            [
+              "필수 그래픽 점검",
+              "인접 색 조합과 용도 판단",
+              "비텍스트 규칙의 적용 범위"
+            ],
+            [
+              "정원 상태 전달",
+              "색에 글자나 형태 추가",
+              "색을 구분하지 않아도 이해 가능한지"
+            ],
+            [
+              "브랜드 인상 평가",
+              "가설 제시와 피드백 수집",
+              "전환율 상승은 보장할 수 없음"
+            ]
+          ],
+          "caption": "W3C 수치는 해당 기준과 적용 범위에서만 유효합니다. 색상 점검을 통과했다고 웹사이트 전체가 WCAG를 충족하는 것은 아닙니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "색상표가 통과해도 모든 페이지가 통과한 것은 아닙니다",
+          "text": "실제 글자 배경, 투명도, 이미지, 상호작용 상태를 확인하세요. 대비는 검증의 일부일 뿐입니다. 정보가 색에만 의존하지 않는지, 내용과 동작 자체가 명확한지도 확인해야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "글자 크기와 간격을 조합해 읽기 위계 만들기",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "프로토타입 과제로 실제 사용 점검하기",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "브랜드 어조와 디자인 가설 정리하기",
+              "kind": "life",
+              "slug": "brand-tone-vibe-marketing"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN: HSL의 색상, 채도, 명도",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/hsl",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe: 색상환과 배색 관계 도구",
+          "url": "https://color.adobe.com/create/color-wheel",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: 글자 최소 대비와 상대 휘도 공식",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: 정보는 색만으로 전달하면 안 됩니다",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: 비텍스트 대비의 적용 범위",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "网站配色怎么建立：色相、明度与可读性",
+      "description": "网站配色不只要挑一组好看的色卡，还要让文字、按钮与状态在不同页面保持清晰。本文以原创生活修缮课程网站为例，说明色相、彩度与明度、配色关系及语义用途，并用实际色码计算文字对比。附操作步骤、比较表与原创图解，帮助初学者建立可维护的色彩规则，也提醒色彩心理只能作为待验证的设计假设。",
+      "hero": {
+        "src": "/guides/website-color-system/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创网站界面、色彩规则文档与检查盾牌插图，代表配色需兼顾用途和可读性。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "把喜欢的配色套到网站后，常会出现另一种问题：首页很好看，课程表的浅色文字却不容易读，报名按钮和错误提示又用了同一种醒目色。色卡本身没有回答每个颜色应该出现在哪里，因此还需要用途与验收规则。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以原创生活修缮课程网站为例，依据 2026 年 9 月 14 日查阅的 MDN、Adobe 与 W3C 文档整理。示范色码和设计安排由本文自行选定，对比数值按公开公式计算，没有宣称特定颜色已经提升报名率或符合所有无障碍要求。"
+        },
+        {
+          "type": "heading",
+          "text": "先看懂色相、彩度与明度在调整什么",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "色相用来描述偏红、偏绿或偏蓝等色彩方向；彩度描述颜色从灰到鲜明的程度；明度则帮助调整深浅。CSS 的 HSL 以色相、饱和度与亮度"
+            },
+            {
+              "type": "text",
+              "text": "参数"
+            },
+            {
+              "type": "text",
+              "text": "表示 sRGB 色彩，让你不必只靠红绿蓝三个通道猜测结果。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "HSL 色相可用色环角度表示，对向色相相差 180 度；调整饱和度或亮度，则可在相近色相下建立不同深浅与鲜明程度。这些参数适合探索色卡，但 HSL 的亮度数值不是 WCAG 对比公式里的相对亮度，不能直接拿两个百分比相减来判定可读性。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修缮课程网站可以先选一个深青绿色方向，再做较浅的背景变体与较深的文字变体。先观察同一内容放上去是否清晰，不要为了让每个色卡数字排列整齐，就接受看不清楚的组合。色码规律有助于管理，实际使用仍要另外验证。"
+        },
+        {
+          "type": "heading",
+          "text": "配色关系提供方向，不能保证适合阅读",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "单色配色可围绕同一色相调整深浅；相近色配色从色环邻近位置寻找搭配；互补色则利用对向色相形成差异。这些关系有助于提出候选组合，不表示其中任何一组天然适合用作文字和背景，也没有固定公式能保证所有人都觉得和谐。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adobe 的色环工具可以根据配色关系生成候选色卡，也提供对比检查入口。使用时先输入自己的基础色，再挑选需要的变体，保留色码与用途。若从图片取色，应使用自己可以使用的图片；提取到的颜色仍需经过网站实际场景的检查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对课程页来说，照片、图标和提示框都可能带入额外色彩。可以先让主要阅读区保持稳定的中性色，再决定哪个位置需要主色或强调色。这是本例的设计选择，不把某种面积比例当成所有网站必须遵守的规定。"
+        },
+        {
+          "type": "heading",
+          "text": "按用途建立色彩规则，避免每页重新挑色",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先列出背景、主要文字、次要文字、链接、主要操作及状态提示等用途，再为它们指定色码。名称可以写成主要文字或错误信息，而不只写深灰一号。之后需要调整时，才知道这个颜色影响的是哪一种信息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原创示例可把深青绿 #0D6B68 用在主要操作，白色 #FFFFFF 用作其文字，并把一般正文另外配置成适合浅色背景的深色。主要操作与错误提示应有不同规则；即使品牌主色偏红，也不代表所有红色都能同时表示品牌、优惠和输入错误。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再补上悬停、键盘聚焦、选中与禁用等状态。若有深色模式，每一种文字和背景搭配都要重新确认，不能只把原本的颜色反转。保留色彩名称、色码、适用背景及禁用组合，让新增页面时能延续同样的规则。"
+        },
+        {
+          "type": "heading",
+          "text": "用对比数值检查文字，也看实际呈现",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WCAG 2.2 的 AA 文字对比条件，一般文字至少为 4.5:1，符合大型文字定义的文字至少为 3:1。大型文字参考 18pt 普通字体或 14pt 粗体及相当的中日韩字体尺寸，需看实际交付大小；不要只因文字放在标题字段，就套用较低门槛。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以不透明 sRGB 色码和纯白背景计算：#777777 约为 4.478:1，未达到一般文字的 4.5:1；#666666 约为 5.742:1，达到这项门槛。判定时要使用未四舍五入的数值，不能把前者显示成 4.5 就视为通过。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "深青绿 #0D6B68 与白色的对比约为 6.325:1，可作本例的候选组合。这只检查指定色对；透明度、图片背景、渐变和状态变化都可能改变结果。字体笔画、字号及阅读环境仍会影响体验，应在实际页面检查，而不只看色卡工具上的通过"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "根据网站内容选择基础色，再探索深浅与配色关系。",
+            "列出文字、背景、操作与状态用途，记录各自色码。",
+            "逐组计算实际前景与背景的对比，修正不合适的搭配。",
+            "检查不同界面及交互状态，补上文字或形状提示并保存规则。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "图标与状态不能只靠颜色传达",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文字以外，用来识别控件、状态或理解内容的必要图形，另有非文字对比要求，通常需与相邻颜色达到 3:1，并有适用范围及例外。这不代表网站每条装饰线或每两个品牌色都要相互达到 3:1，应先确认它承载什么信息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如课程名额不能只用绿点表示可报名、红点表示名额已满，还应加上可报名或名额已满的文字。表单错误也应说明哪个字段需要修改，不能只有边框变色。这些提示让无法分辨特定色差的人仍能理解页面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "键盘聚焦样式需在实际背景上看得见；链接可配合下划线或其他持续可识别的方式，避免与一般正文混淆。做灰度预览有助于发现信息是否过度依赖色相，但它不能模拟所有视觉状况，也不是完整无障碍检测的替代品。"
+        },
+        {
+          "type": "heading",
+          "text": "把色彩心理写成假设，交给内容与反馈验证",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "设计提案可能希望以青绿传达安定、以暖色增加活泼感。这类描述可以作为团队讨论的方向，但不能直接写成所有台湾读者看到某种颜色就会信任或购买。色彩感受还涉及内容、文化、既有经验及使用场景，应保留验证空间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修缮课程页可以请读者描述页面给他的印象，再观察是否容易找到时间、费用及报名方式。若要比较配色对行为的影响，需控制其他变动并安排适当评估；同时改标题、价格和按钮后，即使报名增加，也无法只归功于颜色。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后整理一页色彩规则，包含各用途、可搭配背景、检查日期与版本。新活动或新页面加入时，先确认能否沿用，再决定是否新增颜色。配色系统的实用价值，是让界面保持一致、信息容易识别，且之后的修改能够追溯。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-color-system/diagram-1-zh-cn.svg",
+          "alt": "三张原创卡片整理色彩角色、色对验证及额外提示，并以深青绿和白色的候选色对示范。",
+          "width": 1600,
+          "height": 900,
+          "caption": "候选色对的计算只是起点，完整验收还要检查内容、状态与操作。",
+          "description": "三张原创卡片整理色彩角色、色对验证及额外提示，并以深青绿和白色的候选色对示范。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "需要决定的事",
+            "可用方法",
+            "仍需确认"
+          ],
+          "rows": [
+            [
+              "寻找候选色",
+              "单色、相近色或互补色",
+              "是否适合当前内容"
+            ],
+            [
+              "安排颜色用途",
+              "文字、操作与状态分工",
+              "跨页面是否一致"
+            ],
+            [
+              "检查一般文字",
+              "实际色对至少 4.5:1",
+              "适用条件及实际字体"
+            ],
+            [
+              "检查必要图形",
+              "相邻色对及用途判断",
+              "非文字规则的适用范围"
+            ],
+            [
+              "传达名额状态",
+              "颜色加文字或形状",
+              "无法辨色仍能理解"
+            ],
+            [
+              "评估品牌印象",
+              "提出假设并获取反馈",
+              "不能保证转化提升"
+            ]
+          ],
+          "caption": "W3C 数值只对相应准则与适用范围成立；通过色彩检查不等于整个网站符合 WCAG。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "色卡通过不代表所有页面都通过",
+          "text": "请核对实际文字背景、透明度、图片与交互状态。对比只是验收的一部分，还需确认信息不只靠颜色，以及内容与操作本身是否清晰。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "搭配字号与间距建立阅读层级",
+              "kind": "life",
+              "slug": "web-layout-hierarchy"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用原型任务检查实际操作",
+              "kind": "life",
+              "slug": "wireframe-prototype-testing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理品牌语气与设计假设",
+              "kind": "life",
+              "slug": "brand-tone-vibe-marketing"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MDN：HSL 色相、饱和度与亮度",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/hsl",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Adobe：色环与配色关系工具",
+          "url": "https://color.adobe.com/create/color-wheel",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：文字最低对比及相对亮度公式",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：信息不能只靠颜色",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：非文字对比的适用范围",
           "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
           "checked_on": "2026-09-14"
         }

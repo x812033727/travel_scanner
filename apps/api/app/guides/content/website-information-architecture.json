@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "網站架構怎麼畫：從內容清單到導覽與頁面關係",
@@ -99,10 +102,8 @@
               "text": "架構圖可用方框代表頁面或分類，用線條表達上下層關係，再用不同"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -169,6 +170,7 @@
           "width": 1600,
           "height": 900,
           "caption": "分類是待驗證的假設；同一份內容可由多個相關入口找到。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -289,6 +291,1130 @@
         },
         {
           "title": "Google：Sitemap 用途與限制",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "How to Map Website Structure: From Content Inventory to Navigation and Page Relationships",
+      "description": "Website structure is more than a homepage and a few subpages: it helps users know where information is, find it, and understand the next step. An original community equipment-sharing site example covers content inventories, task grouping, navigation labels, page relationships, and tree testing, distinguishing card sorting, site structure diagrams, and Sitemaps for search engines. Steps, a comparison table, and original diagrams help small sites build usable, maintainable information structures.",
+      "hero": {
+        "src": "/guides/website-information-architecture/hero-en.jpg",
+        "alt": "Original Mokaair illustration of folders, content documents, and website screens, showing the relationship between content grouping and website navigation.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The website for a community equipment-sharing center has borrowing rules, equipment descriptions, repair classes, membership information, and FAQs. All the information is online, yet residents still cannot find out how to borrow an electric drill. The problem may not be a missing search box: navigation is named after internal teams, so users do not know which section to visit."
+        },
+        {
+          "type": "paragraph",
+          "text": "Information architecture addresses how content is organized, named, and linked. The sharing center, category names, and test scenarios below are original examples, developed using NN/g research methods and W3C navigation guidance consulted on 2026-9-14. This is a practice plan; it does not claim that interviews were conducted for a real sharing center or that outcomes were measured."
+        },
+        {
+          "type": "heading",
+          "text": "Inventory content before choosing main menu items",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Start by listing existing and planned content, recording its title, URL or file location, intended audience, question it answers, maintainer, and update status. An equipment-sharing center may have borrowing policies from different years, past events, and duplicate membership information. If you map navigation directly from the current folders, you will carry old problems into the new website."
+        },
+        {
+          "type": "paragraph",
+          "text": "Review each item and decide whether to keep, update, merge, or remove it. If two sets of borrowing rules conflict, first confirm which is valid and who can approve it. Do not simply put the document with the more recent date first while keeping both sets of answers. For content that needs to be kept as a historical record, clearly mark its applicable period and provide an entry point to the current rules so readers do not mistake old announcements for current information."
+        },
+        {
+          "type": "paragraph",
+          "text": "A content inventory and a main menu are different deliverables. Not every document needs to become a top-level entry point. First identify what information the site provides, then choose categories that best support its main tasks. This also helps the team see gaps—for example, plenty of event highlights but no clear registration eligibility or cancellation procedure."
+        },
+        {
+          "type": "heading",
+          "text": "Group by user tasks and avoid copying the organizational chart",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For this original sharing center example, an initial proposal could have three main sections: Borrow Equipment, Join Activities, and Help. Borrow Equipment includes the equipment list and borrowing and return rules; Join Activities includes sessions, registration, and cancellation information; Help includes how to join, contact details, and FAQs. This is only a proposal to validate, not a menu that every community website should use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Categories should reflect how readers think when looking for information. For example, eligibility to borrow equipment may also relate to becoming a member, but the content need not be duplicated. Designate one main page and provide relevant links from both equipment descriptions and Help. Having different entry points lead to the same information can make updates more consistent."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not put every uncertain item into Other just to keep categories tidy. Nor should sections be based solely on internal Administration, Activities, and Equipment teams unless research shows that readers actually use those names to find information. The people responsible within the organization can be recorded in the management inventory; public-facing categories should primarily use concepts that users understand."
+        },
+        {
+          "type": "heading",
+          "text": "Use card sorting to explore how people understand content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Card sorting gives participants representative content items to group, letting you observe which items they think belong together and how they would name each group. Open card sorting lets participants create their own groups; providing existing categories for them to sort items into tends toward closed card sorting. The two approaches answer different questions, so first decide what you want to explore."
+        },
+        {
+          "type": "paragraph",
+          "text": "The sharing center can put borrowing and return deadlines, the equipment list, class sessions, and contact details on separate cards, using names that are as clear and neutral as possible. If every card starts with Administration Team or Activities Team, participants may merely match identical words, rather than reveal how they actually understand the content. Recording hesitation and explanations often helps uncover problems more than looking only at the final arrangement."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sorting results provide clues; they do not automatically produce a single correct website structure. Different participants may have different needs: some place membership eligibility in the borrowing process, while others put it in Help. Summarize shared trends and disagreements, then propose a feasible structure as a hypothesis. A few colleagues who are easy to invite cannot be treated as representatives of all residents."
+        },
+        {
+          "type": "heading",
+          "text": "Map page relationships and distinguish navigation from Sitemaps",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "A structure diagram can use boxes to represent pages or categories, lines to show hierarchy, and different "
+            },
+            {
+              "type": "text",
+              "text": "markers"
+            },
+            {
+              "type": "text",
+              "text": " to indicate links between sections. Every node should correspond to the content inventory and be labeled as an overview page, detail page, or external service. If a category is only a grouping heading and cannot be clicked, explain this in the legend so designers and developers do not interpret it differently."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A diagram may contain many pages, but the main navigation shows only the entry points suitable for use throughout the site. An individual equipment page can include borrowing and return rules, similar equipment, and contact details. The footer can also provide contact or policy information. Define each entry point's role clearly. Do not turn every link between pages into a new parent category, causing the entire diagram to lose its hierarchy."
+        },
+        {
+          "type": "paragraph",
+          "text": "A website structure diagram used for planning serves a different purpose from an XML Sitemap submitted to search engines: the former helps people understand content relationships, while the latter provides search engines with information such as URLs. A URL being listed in a Sitemap does not mean users can find it on the public site, nor does it guarantee search engine indexing. When changing URLs, also prepare a separate mapping of old and new URLs and a list of redirect requirements."
+        },
+        {
+          "type": "heading",
+          "text": "Use tree testing to validate labels and paths",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Once you have initial categories, you can run a tree test using only a text hierarchy. Give participants a scenario, such as: You want to know when an electric drill must be returned; find where you should look. Avoid using the menu's exact wording in the task to hint at the answer. Let participants choose a path based on their own understanding, then record whether they find an acceptable information location."
+        },
+        {
+          "type": "paragraph",
+          "text": "Card sorting explores possible groupings; tree testing evaluates a proposed hierarchy. You cannot declare a menu validated after doing only the former. Observe the first choice, any backtracking, the final location, and the reasons given, and define acceptable answers in advance. If the same content has multiple legitimate entry points, account for these when interpreting the results."
+        },
+        {
+          "type": "paragraph",
+          "text": "If participants often look for borrowing and return deadlines through Help, labels, grouping, or entry points between sections may need adjustment. There is no need to immediately scrap the entire structure. Compare results across different tasks before revising it, and record changes and hypotheses still to be tested. Text-only tests do not cover images, expanding menus on mobile, or keyboard interaction; these still need to be tested on actual pages."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Inventory content and its valid versions, and decide what to keep, update, merge, or remove.",
+            "Propose categories based on main tasks, and use card sorting to understand how target readers think.",
+            "Map page hierarchy, links between sections, and entry point roles; label node types and content still to be added.",
+            "Run tree tests with scenario tasks, then check actual desktop, mobile, and keyboard navigation."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Maintain consistency on pages and set rules for new content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C's menu structure guidance recommends semantic markup that expresses relationships, understandable names for different navigation areas, and an indication of the current page. When handing off the design, explicitly list the names and functions of the main menu, on-page table of contents, and footer so developers do not have to infer which elements belong together solely from their appearance."
+        },
+        {
+          "type": "paragraph",
+          "text": "Navigation repeated across the same set of pages should maintain the same relative order; cases such as users actively rearranging it require separate consideration. Navigation can be collapsed on mobile, but clear labels, order, and destinations still need to be preserved. Consistency does not mean every screen must look exactly the same, nor does it prevent adding appropriate secondary navigation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, set rules for adding content: where new equipment belongs, how to link across categories, who can change the menu, and when to review outdated information. Regularly check the structure against search terms, customer support questions, and feedback about information people cannot find to assess whether it still meets their needs. Good information architecture must be clear when first mapped and remain workable as content grows."
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-information-architecture/diagram-1-en.svg",
+          "alt": "Three category cards list content for Borrow Equipment, Join Activities, and Help, illustrating task-based grouping for a website.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Categories are hypotheses to validate; the same content can be found through multiple relevant entry points.",
+          "description": "Three category cards list content for Borrow Equipment, Join Activities, and Help, illustrating task-based grouping for a website.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Tool or deliverable",
+            "Main purpose",
+            "Cannot prove on its own"
+          ],
+          "rows": [
+            [
+              "Content inventory",
+              "Identify content and its management status",
+              "Categories match readers' habits"
+            ],
+            [
+              "Card sorting",
+              "Explore how content is grouped",
+              "The existing hierarchy is necessarily easy to navigate"
+            ],
+            [
+              "Website structure diagram",
+              "Express relationships between pages and categories",
+              "The actual menu is operable"
+            ],
+            [
+              "Tree testing",
+              "Validate findability within a text hierarchy",
+              "Mobile and assistive technology interactions work properly"
+            ],
+            [
+              "Testing actual pages",
+              "Check navigation and task completion",
+              "Every untested scenario is problem-free"
+            ],
+            [
+              "XML Sitemap",
+              "Provide URL information to search engines",
+              "Successful public-site navigation or search indexing"
+            ]
+          ],
+          "caption": "An original comparison table distinguishing information architecture deliverables, user research, and search engine files."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "One piece of content can have several valid entry points",
+          "text": "First choose the main content page, then provide links from relevant tasks. Do not duplicate the same rules to place them in different categories, creating contradictions when they are updated later."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Include website structure in the web design process",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Understand what Sitemaps for search are used for",
+              "kind": "life",
+              "slug": "sitemap-website-submission"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organize URL changes and redirects",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g: Information Architecture and Website Structure Diagrams",
+          "url": "https://www.nngroup.com/articles/information-architecture-sitemaps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g: Card Sorting Research Methods",
+          "url": "https://www.nngroup.com/articles/card-sorting-definition/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g: Differences Between Card Sorting and Tree Testing",
+          "url": "https://www.nngroup.com/articles/card-sorting-tree-testing-differences/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g: Tree Testing and Task Design",
+          "url": "https://www.nngroup.com/articles/tree-testing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: Menu Structure and the Current Item",
+          "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: Consistent Relative Order of Navigation",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Sitemap Uses and Limitations",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "サイト構成図の描き方：コンテンツ一覧からナビゲーションとページの関係まで",
+      "description": "サイト構成とは、ホームページといくつかの下層ページを図にするだけでなく、利用者が情報の場所を把握し、見つけ、次に何をすべきか理解できるようにすることです。本稿では、独自に設定した地域の機材シェア拠点を例に、コンテンツの棚卸し、タスク別の分類、ナビゲーションの命名、ページの関係、ツリーテストを整理し、カードソーティング、サイト構成図、検索用の Sitemap の違いを説明します。手順、比較表、独自制作の図解を添え、小規模サイトで使いやすく継続的に維持できる情報構造を作るための手助けをします。",
+      "hero": {
+        "src": "/guides/website-information-architecture/hero-ja.jpg",
+        "alt": "フォルダー、コンテンツ文書、サイト画面を描いた Mokaair 独自制作のイラスト。コンテンツの分類とサイトナビゲーションの関係を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "地域の機材シェア拠点のサイトには、貸出ルール、機材紹介、修繕講座、会員案内、よくある質問があります。情報はすべて掲載されているのに、住民は電動ドリルの借り方を見つけられません。問題は検索窓が足りないことではなく、ナビゲーションが内部の担当班の名前に基づいており、利用者がどのエリアへ行けばよいかわからないことかもしれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "情報アーキテクチャは、コンテンツをどう整理し、名前を付け、相互にリンクさせるかを扱います。以下のシェア拠点、分類名、テストシナリオはすべて独自に作成し、2026 年 9 月 14 日に参照した NN/g の調査手法と W3C のナビゲーション指針に基づいて整理しています。これは練習用の案であり、実在するシェア拠点でインタビューや効果測定を行ったと主張するものではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "まずコンテンツを棚卸しし、メインメニューに載せる項目を決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず既存のコンテンツと追加予定のコンテンツを一覧にし、タイトル、URL またはファイルの場所、対象者、答えるべき質問、管理担当者、更新状況を記録します。機材シェア拠点には、年度の異なる貸出規定、終了したイベント、重複する会員案内があるかもしれません。現在のフォルダー構成をそのままナビゲーションにすると、古い問題も新しいサイトへ持ち込んでしまいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "項目ごとに、残す、更新する、統合する、公開を終了するかを判断します。貸出ルールの文書同士が矛盾している場合は、どちらが有効で、誰が確定できるのかを先に確認します。日付が新しいほうを上に置くだけで、両方の答えを残してはいけません。歴史的な記録として残す必要があるコンテンツには、適用期間と現在のルールへの入口を明示し、読者が古いお知らせを現行の情報と取り違えないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "コンテンツ一覧とメインメニューは別の成果物です。すべての文書を最上位の入口にする必要はありません。まずサイトが提供する情報を把握し、主要なタスクを最も支えられる分類を選びます。これにより、イベントの振り返り記事は多いのに、参加資格やキャンセル方法が明確に説明されていない、といった不足もチームで把握できます。"
+        },
+        {
+          "type": "heading",
+          "text": "利用者のタスクで分類し、組織図をそのまま持ち込まない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿独自のシェア拠点では、まず「機材を借りる」「イベントに参加」「利用サポート」の三つを主要エリアとして提案できます。「機材を借りる」には機材一覧と貸出・返却ルール、「イベントに参加」には開催日程、申し込み、キャンセルの情報、「利用サポート」には加入方法、連絡先、よくある質問を含めます。これは検証が必要な案であり、すべての地域サイトが同じメニューを使うべきだという意味ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分類では、読者が情報を探すときにどう考えるかを考慮します。例えば、機材を借りる資格は会員加入にも関係するかもしれませんが、コンテンツを複製する必要はありません。主となるページを一つ決め、機材説明と利用サポートのそれぞれから関連リンクを設けます。異なる入口から同じ情報へつなげることで、更新内容の一貫性を保ちやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分類を整然とさせるために、所属が曖昧なコンテンツをすべて「その他」に押し込まないでください。また、読者が実際にその名称で情報を探すことが調査で示されていない限り、内部の事務班、イベント班、機材班だけを基準に分けないようにします。組織上の責任者は管理一覧に記載し、利用者向けの分類は理解しやすい概念を中心にします。"
+        },
+        {
+          "type": "heading",
+          "text": "カードソーティングで理解の仕方を探る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "カードソーティングは、代表的なコンテンツ項目を参加者に分類してもらい、どの内容を同じカテゴリーと考え、どう名付けるかを観察する手法です。オープン型では参加者が自分でグループを作ります。既存のカテゴリーを示して振り分けてもらう場合は、クローズド型に当たります。それぞれ答えられる問いが異なるため、今回何を探りたいのかを先に決めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "シェア拠点では、貸出・返却期限、機材一覧、講座の開催日程、連絡先をそれぞれカードにし、名称はできるだけ明確で中立的にします。すべてのカードの冒頭に「事務班」や「イベント班」と書くと、参加者は同じ言葉を組み合わせるだけになり、実際の内容理解が反映されないかもしれません。迷った点や説明を記録することは、最終的な配置だけを見るよりも、問題の発見に役立つことがよくあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分類結果は手がかりであり、唯一正しいサイト構成を自動的に生み出すものではありません。参加者によってニーズが異なり、会員資格を貸出手続きに置く人も、利用サポートに置く人もいるでしょう。共通する傾向と意見の違いを整理し、実装可能な構成仮説を提案します。誘いやすい少数の同僚を、すべての住民の代表とみなしてはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "ページの関係を描き、ナビゲーションと Sitemap を区別する",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "構成図では、四角でページやカテゴリーを表し、線で上下の階層関係を示し、異なる"
+            },
+            {
+              "type": "text",
+              "text": "記号"
+            },
+            {
+              "type": "text",
+              "text": "でカテゴリー間のリンクを説明できます。各ノードはコンテンツ一覧の項目と対応させ、概要ページ、詳細ページ、外部サービスのどれなのかを注記します。カテゴリーがクリックできないグループ見出しにすぎない場合も、凡例で明示し、デザインと開発で解釈が分かれないようにします。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "図には多くのページを載せられますが、メインナビゲーションにはサイト全体で共通して使うのに適した入口だけを表示します。個別の機材ページには、貸出・返却ルール、類似の機材、連絡先へのリンクを置けます。フッターにも連絡先やポリシーの情報を載せられます。各入口の役割を明確にし、ページ間のリンクをすべて新しい上位カテゴリーとして描いて、図全体の階層を失わないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "計画用のサイト構成図と、検索エンジンへ送信する XML Sitemap は目的が異なります。前者は人がコンテンツの関係を理解するためのもので、後者は検索エンジンに URL などの情報を提供します。Sitemap に URL が掲載されていても、利用者がサイトの画面から見つけられるとは限らず、検索エンジンのインデックス登録も保証されません。URL を変更する際は、旧 URL と新 URL の対応表、必要なリダイレクトも別途整理します。"
+        },
+        {
+          "type": "heading",
+          "text": "ツリーテストで名称と経路を検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "初期の分類ができたら、文字だけの階層を使ってツリーテストを行えます。参加者に、例えば「電動ドリルをいつまでに返せばよいか知りたいので、確認すべき場所を探してください」といったシナリオを提示します。設問では、メニューの文言をそのまま使って答えを示唆することをできるだけ避けます。参加者自身の理解で経路を選んでもらい、妥当な情報の場所を見つけられたかを記録します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "カードソーティングは分類の可能性を探るため、ツリーテストは提案済みの階層を評価するために使います。前者だけを行って、メニューが検証済みだと宣言してはいけません。最初の選択、戻ったかどうか、最後に到達した場所、理由を観察し、妥当な正解を事前に定義します。同じコンテンツに複数の正当な入口がある場合も、その可能性を結果の解釈に残します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "参加者が貸出・返却期限を「利用サポート」から探すことが多い場合、ラベル、分類、カテゴリー間の入口を調整する必要があるのかもしれません。すぐに構成全体を作り直す必要はありません。異なるタスクの結果を比較してから修正し、変更内容と今後検証する仮説を記録します。文字によるテストでは画像、スマートフォンでのメニュー展開、キーボード操作までは確認できないため、その後も実際のページで検証する必要があります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "コンテンツと有効な版を棚卸しし、残す、更新する、統合する、公開を終了するかを確認する。",
+            "主要なタスクに基づく分類を提案し、カードソーティングで対象読者の理解の仕方を把握する。",
+            "ページの階層、カテゴリー間のリンク、入口の役割を描き、ノードの種類と補うべきコンテンツを示す。",
+            "シナリオ形式の設問でツリーテストを行い、その後、実際のデスクトップ、スマートフォン、キーボードでのナビゲーションを確認する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "ページに実装した後は、一貫性を保ち、追加ルールを設ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C のメニュー構造の指針では、関係を表せるセマンティックなマークアップを使い、異なるナビゲーションに理解しやすい名前を付け、現在のページを示すことを推奨しています。デザインを引き渡す際は、メインメニュー、ページ内目次、フッターそれぞれの名前と機能を明示できます。そうすれば、開発者がどの要素を同じグループと捉えるべきか、見た目だけで推測せずに済みます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じページ群で繰り返し表示されるナビゲーションは、相対的な順序を同じに保つべきです。ただし、利用者が自ら変更する場合などは別途考慮します。スマートフォンではナビゲーションを折りたためますが、明確な名称、順序、リンク先は維持する必要があります。一貫性とは、すべての画面がまったく同じ見た目でなければならないという意味ではなく、適切な補助ナビゲーションを追加できないという意味でもありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、コンテンツを追加する際のルールを設けます。新しい機材をどこに置くか、カテゴリーをまたぐリンクをどう設けるか、誰がメニューを変更できるか、いつ古い情報を確認するかを決めます。検索語、問い合わせ内容、情報が見つからなかったというフィードバックを定期的に照合し、構成が今もニーズに合っているか評価します。優れた情報アーキテクチャには、最初に明確な図を描くだけでなく、その後のコンテンツ増加にも対応できることが求められます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-information-architecture/diagram-1-ja.svg",
+          "alt": "三枚の分類カードに「機材を借りる」「イベントに参加」「利用サポート」の内容をそれぞれ示し、タスクに基づくサイトの分類を例示しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "分類は検証が必要な仮説です。同じコンテンツは、複数の関連する入口から見つけられます。",
+          "description": "三枚の分類カードに「機材を借りる」「イベントに参加」「利用サポート」の内容をそれぞれ示し、タスクに基づくサイトの分類を例示しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "ツールまたは成果物",
+            "主な用途",
+            "単独では証明できないこと"
+          ],
+          "rows": [
+            [
+              "コンテンツ一覧",
+              "情報と管理状況を把握する",
+              "分類が読者の習慣に合っていること"
+            ],
+            [
+              "カードソーティング",
+              "コンテンツがどう分類されるかを探る",
+              "既存の階層で必ず見つけやすいこと"
+            ],
+            [
+              "サイト構成図",
+              "ページとカテゴリーの関係を表す",
+              "実際のメニューが操作できること"
+            ],
+            [
+              "ツリーテスト",
+              "文字による階層の見つけやすさを検証する",
+              "スマートフォンや支援技術で正常に操作できること"
+            ],
+            [
+              "実際のページのテスト",
+              "ナビゲーションとタスク完了を確認する",
+              "未検証のシナリオにも問題がないこと"
+            ],
+            [
+              "XML Sitemap",
+              "検索エンジンに URL 情報を提供する",
+              "サイト画面でのナビゲーションや検索インデックス登録が成功すること"
+            ]
+          ],
+          "caption": "情報アーキテクチャの成果物、ユーザー調査、検索エンジン用ファイルを区別する独自制作の比較表。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "一つのコンテンツには複数の妥当な入口を設けられる",
+          "text": "まず主となるコンテンツページを決め、関連するタスクからリンクを設けます。異なる分類に入れるために同じルールを何部も複製し、その後の更新で矛盾が生じることを避けましょう。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト構成の計画を Web デザインの工程に組み込む",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "検索用 Sitemap の用途を理解する",
+              "kind": "life",
+              "slug": "sitemap-website-submission"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "URL の変更とリダイレクトを整理する",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g：情報アーキテクチャとサイト構成図",
+          "url": "https://www.nngroup.com/articles/information-architecture-sitemaps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g：カードソーティングの調査手法",
+          "url": "https://www.nngroup.com/articles/card-sorting-definition/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g：カードソーティングとツリーテストの違い",
+          "url": "https://www.nngroup.com/articles/card-sorting-tree-testing-differences/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g：ツリーテストとタスク設計",
+          "url": "https://www.nngroup.com/articles/tree-testing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：メニュー構造と現在の項目",
+          "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：ナビゲーションの相対的な順序の一貫性",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：Sitemap の用途と制約",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "웹사이트 구조도 그리는 법: 콘텐츠 목록부터 내비게이션과 페이지 관계까지",
+      "description": "웹사이트 구조는 홈페이지와 몇 개의 하위 페이지를 그리는 데 그치지 않는다. 사용자가 정보의 위치와 찾는 방법을 알고 다음 단계를 이해하도록 해야 한다. 이 글은 직접 구상한 지역사회 장비 공유소를 예로 들어 콘텐츠 현황 조사, 과업별 분류, 내비게이션 명명, 페이지 관계와 트리 테스트를 정리하고, 카드 소팅·웹사이트 구조도·검색용 Sitemap을 구분한다. 실행 단계, 비교표와 직접 제작한 도해를 통해 소규모 웹사이트가 실제로 이용할 수 있고 지속적으로 관리할 수 있는 정보 구조를 마련하도록 돕는다.",
+      "hero": {
+        "src": "/guides/website-information-architecture/hero-ko.jpg",
+        "alt": "Mokaair가 직접 제작한 폴더, 콘텐츠 문서와 웹사이트 화면 일러스트로, 콘텐츠 분류와 웹사이트 내비게이션의 관계를 보여 준다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "지역사회 장비 공유소 웹사이트에는 대여 규칙, 장비 소개, 수리 강좌, 회원 안내와 자주 묻는 질문이 있다. 자료는 모두 올려 두었는데도 주민들은 전동 드릴을 빌리는 방법을 찾지 못한다. 문제는 검색창 하나가 없어서가 아니라 내비게이션에 내부 조직명을 사용해 사용자가 어느 영역으로 가야 할지 모르는 데 있을 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "정보 구조는 콘텐츠를 어떻게 조직하고 이름을 붙이며 서로 연결할지 다룬다. 아래의 공유소, 분류명과 테스트 상황은 모두 직접 구상한 것으로, 2026년 9월 14일에 확인한 NN/g의 연구 방법과 W3C의 내비게이션 지침을 바탕으로 정리했다. 이는 연습용 설계안이며, 실제 공유소를 대상으로 인터뷰를 하거나 효과를 측정했다고 주장하지 않는다."
+        },
+        {
+          "type": "heading",
+          "text": "콘텐츠를 먼저 조사한 뒤 주 메뉴에 넣을 항목 결정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 콘텐츠와 추가할 예정인 콘텐츠를 먼저 나열하고 제목, URL 또는 파일 위치, 서비스 대상, 답해야 할 질문, 관리 담당자와 갱신 상태를 기록한다. 장비 공유소에는 연도가 다른 대여 지침, 종료된 행사와 중복된 회원 안내가 있을 수 있다. 현재 폴더 구조를 그대로 따라 내비게이션을 그리면 기존 문제까지 새 웹사이트로 가져오게 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "각 항목을 유지, 갱신, 통합 또는 게시 중단할지 판단한다. 두 대여 규칙이 서로 모순된다면 어느 것이 유효하고 누가 확정할 권한을 갖는지 먼저 확인해야 한다. 날짜가 더 최근인 자료를 앞에 놓고 두 가지 답을 모두 남겨 두어서는 안 된다. 역사적 기록으로 보존해야 하는 콘텐츠에는 적용 기간과 현재 규칙으로 이동하는 링크를 명확히 표시해 독자가 예전 공지를 현행 정보로 오해하지 않도록 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "콘텐츠 목록과 주 메뉴는 서로 다른 결과물이다. 모든 문서를 최상위 진입점으로 만들 필요는 없다. 웹사이트가 어떤 정보를 제공하는지 먼저 파악한 뒤 주요 과업을 가장 잘 지원할 분류를 선택한다. 이렇게 하면 팀도 누락된 정보를 확인할 수 있다. 예를 들어 행사 후기 자료는 많지만 신청 자격이나 취소 방법에 대한 명확한 안내는 없을 수 있다."
+        },
+        {
+          "type": "heading",
+          "text": "사용자 과업별로 분류하고 조직도를 그대로 옮기지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글에서 구상한 공유소에는 장비 대여, 활동 참여, 이용 도움말이라는 세 가지 주요 영역을 우선 제안할 수 있다. 장비 대여에는 장비 목록과 대여·반납 규칙을, 활동 참여에는 회차와 신청·취소 정보를, 이용 도움말에는 가입 방법과 연락처, 자주 묻는 질문을 넣는다. 이는 검증이 필요한 설계안일 뿐, 모든 지역사회 웹사이트가 같은 메뉴를 사용해야 한다는 뜻은 아니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "분류할 때는 독자가 정보를 찾으면서 어떻게 생각할지 고려해야 한다. 예를 들어 장비 대여 자격은 회원 가입과도 관련될 수 있지만, 콘텐츠를 두 벌로 복제할 필요는 없다. 주 콘텐츠 페이지 하나를 지정하고 장비 안내와 이용 도움말에서 각각 관련 링크를 제공하면 된다. 서로 다른 진입점이 같은 자료를 가리키면 콘텐츠를 더 일관되게 갱신할 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "분류를 깔끔하게 유지하려고 애매한 콘텐츠를 모두 기타에 넣지 않는다. 독자가 실제로 그런 이름을 사용해 정보를 찾는다는 연구 결과가 없다면 내부 행정팀, 활동팀, 장비팀만을 기준으로 영역을 나누어서도 안 된다. 조직의 담당자는 관리 목록에 기록하고, 사용자 화면의 분류는 사용자가 이해할 수 있는 개념을 중심으로 구성한다."
+        },
+        {
+          "type": "heading",
+          "text": "카드 소팅으로 가능한 이해 방식 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "카드 소팅은 대표적인 콘텐츠 항목을 참여자에게 주고 분류하게 하면서 어떤 콘텐츠를 같은 범주로 보는지, 어떤 이름을 붙이는지 관찰하는 방법이다. 개방형 소팅에서는 참여자가 직접 그룹을 만든다. 기존 범주를 제공하고 그 안에 항목을 넣게 하면 폐쇄형 소팅에 가깝다. 두 방식은 서로 다른 질문에 답하므로 이번에 무엇을 탐색할지 먼저 결정해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공유소에서는 대여·반납 기한, 장비 목록, 강좌 회차와 연락 방법을 각각 한 장의 카드에 적고, 이름은 최대한 명확하고 중립적으로 정할 수 있다. 모든 카드의 첫머리에 행정팀이나 활동팀을 적으면 참여자가 같은 단어를 짝짓기만 할 수 있어 실제 콘텐츠 이해를 반영하기 어렵다. 망설임과 설명을 기록하면 최종 배열만 보는 것보다 문제를 발견하는 데 도움이 되는 경우가 많다."
+        },
+        {
+          "type": "paragraph",
+          "text": "분류 결과는 단서를 제공할 뿐, 유일하게 올바른 웹사이트 구조를 자동으로 만들어 주지는 않는다. 참여자마다 요구가 다를 수 있다. 어떤 사람은 회원 자격을 대여 절차에 넣고, 다른 사람은 이용 도움말에 넣을 수 있다. 공통 경향과 의견 차이를 정리한 뒤 구현 가능한 구조 가설을 제안한다. 초대하기 편한 소수의 동료를 모든 주민의 대표로 간주해서는 안 된다."
+        },
+        {
+          "type": "heading",
+          "text": "페이지 관계를 그리고 내비게이션과 Sitemap 구분하기",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "구조도에서는 사각형으로 페이지나 분류를, 선으로 상하 계층 관계를 나타내고, 서로 다른 "
+            },
+            {
+              "type": "text",
+              "text": "기호"
+            },
+            {
+              "type": "text",
+              "text": "로 영역 간 링크를 설명할 수 있다. 각 노드는 콘텐츠 목록의 해당 항목과 연결되어야 하며, 개요 페이지인지 상세 페이지인지 외부 서비스인지 표시해야 한다. 분류가 클릭할 수 없는 그룹 제목에 불과하다면 범례에도 명확히 설명해 디자이너와 개발자가 서로 다르게 이해하지 않도록 한다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "구조도에는 많은 페이지가 있을 수 있지만, 주 내비게이션에는 그중 사이트 전체에서 공통으로 쓰기에 적합한 진입점만 표시한다. 개별 장비 페이지에는 대여·반납 규칙, 유사 장비와 연락 방법을 넣을 수 있다. 푸터에서도 연락처나 정책 정보를 제공할 수 있다. 각 진입점의 역할을 명확히 하고, 페이지 간 링크를 모두 새로운 상위 분류로 그려 전체 구조도의 계층을 무너뜨리지 않도록 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "설계용 웹사이트 구조도와 검색엔진에 제출하는 XML Sitemap은 목적이 다르다. 전자는 사람이 콘텐츠 관계를 이해하도록 돕고, 후자는 검색엔진에 URL 등의 정보를 제공한다. Sitemap에 URL이 포함되어 있다고 사용자가 사이트 화면에서 찾을 수 있는 것은 아니며, 검색엔진의 색인 등록도 보장하지 않는다. URL을 변경할 때는 기존 URL과 새 URL의 대응표 및 리디렉션 요구 사항도 별도로 정리해야 한다."
+        },
+        {
+          "type": "heading",
+          "text": "트리 테스트로 이름과 경로 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "초기 분류를 마련했다면 텍스트 계층만으로 트리 테스트를 할 수 있다. 참여자에게 상황을 제시한다. 예를 들어 전동 드릴을 언제까지 반납해야 하는지 알고 싶으니 확인할 위치를 찾아보도록 한다. 문항에서 메뉴의 전체 표현을 그대로 사용해 답을 암시하지 않도록 하고, 참여자가 자신의 이해에 따라 경로를 선택하게 한 뒤 적절한 정보 위치를 찾았는지 기록한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "카드 소팅은 가능한 분류를 탐색하는 데, 트리 테스트는 제안된 계층을 평가하는 데 사용한다. 전자만 수행하고 메뉴가 검증되었다고 선언해서는 안 된다. 최초 선택, 되돌아갔는지 여부, 최종 위치와 그 이유를 관찰하고, 타당한 답을 미리 정의한다. 같은 콘텐츠에 여러 정당한 진입점이 있다면 결과를 해석할 때도 이를 인정해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "참여자가 대여·반납 기한을 이용 도움말에서 자주 찾는다면, 이름이나 분류 또는 영역 간 진입점을 조정해야 한다는 신호일 수 있다. 곧바로 전체 구조를 뒤엎을 필요는 없다. 여러 과업의 결과를 비교한 뒤 수정하고, 변경 사항과 검증할 가설을 기록한다. 텍스트 테스트는 이미지, 모바일에서 메뉴 펼치기, 키보드 조작을 다루지 않으므로 이후 실제 페이지로도 검증해야 한다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "콘텐츠와 유효한 버전을 조사하고 유지, 갱신, 통합 또는 게시 중단할지 결정한다.",
+            "주요 과업에 따라 분류를 제안하고 카드 소팅으로 대상 독자의 이해 방식을 파악한다.",
+            "페이지 계층, 영역 간 링크와 진입점의 역할을 그리고 노드 유형과 보완할 콘텐츠를 표시한다.",
+            "상황형 문항으로 트리 테스트를 한 뒤 실제 데스크톱, 모바일과 키보드 내비게이션을 점검한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "페이지에 구현한 뒤 일관성을 유지하고 추가 규칙 마련하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C의 메뉴 구조 지침은 관계를 표현할 수 있는 시맨틱 마크업을 사용하고, 각 내비게이션에 이해하기 쉬운 이름을 붙이며 현재 페이지를 표시하도록 권고한다. 디자인을 전달할 때 주 메뉴, 페이지 내 목차와 푸터 각각의 이름과 기능을 명확히 나열하면 개발자가 외형만으로 어떤 요소가 같은 그룹에 속하는지 추측하지 않아도 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 페이지 집합에서 반복되는 내비게이션은 동일한 상대적 순서를 유지해야 한다. 사용자가 직접 조정하는 경우 등은 별도로 고려한다. 모바일에서는 내비게이션을 접을 수 있지만, 명확한 이름과 순서, 이동 목적지를 유지해야 한다. 일관성이 모든 화면의 외형을 완전히 같게 해야 한다는 뜻은 아니며, 적절한 보조 내비게이션을 추가할 수 없다는 뜻도 아니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 콘텐츠 추가 규칙을 정한다. 새 장비를 어디에 넣을지, 분류 간 링크를 어떻게 연결할지, 누가 메뉴를 변경할 수 있는지, 오래된 정보를 언제 점검할지 정한다. 검색어, 고객 문의와 정보를 찾지 못했다는 피드백을 정기적으로 대조해 구조가 여전히 요구에 맞는지 평가한다. 좋은 정보 구조는 처음에 명확히 그리는 데 그치지 않고 이후 콘텐츠 증가도 감당할 수 있어야 한다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-information-architecture/diagram-1-ko.svg",
+          "alt": "세 장의 분류 카드에 장비 대여, 활동 참여와 이용 도움말의 콘텐츠를 각각 나열해 과업 중심의 웹사이트 분류를 보여 준다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "분류는 검증이 필요한 가설이며, 같은 콘텐츠는 여러 관련 진입점에서 찾을 수 있다.",
+          "description": "세 장의 분류 카드에 장비 대여, 활동 참여와 이용 도움말의 콘텐츠를 각각 나열해 과업 중심의 웹사이트 분류를 보여 준다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "도구 또는 결과물",
+            "주요 용도",
+            "단독으로 입증할 수 없는 것"
+          ],
+          "rows": [
+            [
+              "콘텐츠 목록",
+              "자료와 관리 상태 파악",
+              "분류가 독자의 습관에 부합함"
+            ],
+            [
+              "카드 소팅",
+              "콘텐츠가 어떻게 분류되는지 탐색",
+              "기존 계층에서 반드시 쉽게 찾을 수 있음"
+            ],
+            [
+              "웹사이트 구조도",
+              "페이지와 분류의 관계 표현",
+              "실제 메뉴를 조작할 수 있음"
+            ],
+            [
+              "트리 테스트",
+              "텍스트 계층에서 정보를 찾기 쉬운지 검증",
+              "모바일과 보조 기술로 정상 조작 가능"
+            ],
+            [
+              "실제 페이지 테스트",
+              "내비게이션과 과업 완료 점검",
+              "테스트하지 않은 모든 상황에도 문제가 없음"
+            ],
+            [
+              "XML Sitemap",
+              "검색엔진에 URL 정보 제공",
+              "사이트 내비게이션 또는 검색엔진 색인 등록 성공"
+            ]
+          ],
+          "caption": "직접 제작한 비교표로 정보 구조 작업의 결과물, 사용자 연구와 검색엔진용 파일을 구분한다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "하나의 콘텐츠에 여러 타당한 진입점이 있을 수 있다",
+          "text": "주 콘텐츠 페이지를 먼저 결정하고 관련 과업에서 링크를 제공한다. 서로 다른 분류에 넣으려고 같은 규칙을 여러 벌 복제해 이후 갱신할 때 모순이 생기게 하지 않는다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹 디자인 과정에 구조 설계 반영하기",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "검색용 Sitemap의 용도 이해하기",
+              "kind": "life",
+              "slug": "sitemap-website-submission"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "URL 변경과 리디렉션 정리하기",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g: 정보 구조와 웹사이트 구조도",
+          "url": "https://www.nngroup.com/articles/information-architecture-sitemaps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g: 카드 소팅 연구 방법",
+          "url": "https://www.nngroup.com/articles/card-sorting-definition/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g: 카드 소팅과 트리 테스트의 차이",
+          "url": "https://www.nngroup.com/articles/card-sorting-tree-testing-differences/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g: 트리 테스트와 과업 설계",
+          "url": "https://www.nngroup.com/articles/tree-testing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: 메뉴 구조와 현재 항목",
+          "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: 일관된 내비게이션의 상대적 순서",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Sitemap의 용도와 한계",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "网站架构怎么画：从内容清单到导航与页面关系",
+      "description": "网站架构不只是画出首页和几个子页面，而是让用户知道信息放在哪里、如何找到并理解下一步。本文以原创社区共享器材站为例，整理内容盘点、任务分组、导航命名、页面关系与树形测试，区分卡片分类、网站架构图及用于搜索的 Sitemap。附操作步骤、比较表及原创图解，帮助小型网站建立既能使用又能持续维护的信息结构。",
+      "hero": {
+        "src": "/guides/website-information-architecture/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创文件夹、内容文件及网站界面插图，表示内容分组与网站导航的关系。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "社区共享器材站的网站有借用规则、器材介绍、维修课程、会员说明与常见问题。信息都已放上去，居民却仍找不到借电钻的方法。问题可能不是缺少一个搜索框，而是导航按内部小组命名，用户不知道自己该去哪个区域。"
+        },
+        {
+          "type": "paragraph",
+          "text": "信息架构处理内容如何组织、命名与相互链接。以下共享站、分类名称及测试情境均为原创，依据 2026 年 9 月 14 日查阅的 NN/g 研究方法与 W3C 导航指南整理；这是一份练习方案，并未声称已为真实共享站开展访谈或衡量成效。"
+        },
+        {
+          "type": "heading",
+          "text": "先盘点内容，再决定哪些项放入主菜单",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先列出现有及计划新增的内容，记录标题、网址或文件位置、服务对象、要回答的问题、维护人及更新状态。共享器材站可能有不同年份的借用办法、已结束活动和重复的会员说明，若直接按照目前的文件夹绘制导航，就会把旧问题一起带进新网站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "逐条判断保留、更新、合并或下架。若两份借用规则相互矛盾，先确认哪份有效以及谁能核定，不能只把日期较新的放在前面，却保留两套答案。需要留作历史记录的内容，则明确标出适用期间与当前规则入口，让读者不会把旧公告当成现行信息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "内容清单和主菜单是不同的成果。不是每份文件都要成为第一层入口；先知道网站提供哪些信息，再选择最能支持主要任务的分类。这也让团队看到缺口，例如有很多活动花絮，却没有清楚的报名资格或取消方式。"
+        },
+        {
+          "type": "heading",
+          "text": "按用户任务分组，避免直接照搬组织结构图",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原创共享站可以先提出借用器材、参加活动、使用帮助三个主要区域。借用器材包含器材清单与借还规则；参加活动包含场次、报名及取消信息；使用帮助包含加入方式、联系及常见问题。这只是有待验证的方案，并非所有社区网站都应使用相同菜单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分类应考虑读者查找信息时会怎么想。例如器材借用资格可能同时与加入会员有关，但不必复制成两份内容；可以指定一个主要页面，从器材说明与使用帮助分别提供相关链接。不同入口指向同一份信息，可以让内容更新更一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要为了保持分类整齐，把不确定的内容全部塞进“其他”。也不要只按内部行政组、活动组和器材组分区，除非研究表明读者确实用这些名称查找信息。组织负责人可以写在管理清单里，前台分类则以用户能理解的概念为主。"
+        },
+        {
+          "type": "heading",
+          "text": "用卡片分类找出可能的理解方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "卡片分类是把有代表性的内容项交给参与者分组，观察他们认为哪些内容属于同一类，以及会如何命名。开放式分类让参与者自己建立分组；如果提供已有类别供归入，则偏向封闭式分类。两者回答的问题不同，应先决定这次想探索什么。"
+        },
+        {
+          "type": "paragraph",
+          "text": "共享站可以把借还期限、器材清单、课程场次和联系方式各写成一张卡片，名称尽量明确而中性。若每张卡片开头都写行政组或活动组，参与者可能只是配对相同词语，无法反映真正的内容理解。记录犹豫与说明，往往比只看最后的排列更有助于发现问题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分类结果提供的是线索，不会自动产生唯一正确的网站架构。不同参与者的需求可能不同，有人把会员资格放在借用流程，有人放在使用帮助。整理共同趋势与分歧，再提出可实施的架构假设；不能把少数方便邀请的同事当作所有居民的代表。"
+        },
+        {
+          "type": "heading",
+          "text": "画出页面关系，同时区分导航和 Sitemap",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "架构图可以用方框代表页面或分类，用线条表达上下层关系，再用不同"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "说明跨区链接。每个节点应能对应到内容清单，并注明是概览页、详情页还是外部服务。若一个分类只是分组标题而不能点击，也要在图例中说明清楚，避免设计及开发各自理解。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "图上可以有许多页面，但主导航只呈现其中适合全站共用的入口；单项器材页则可以放借还规则、相似器材和联系方式。页脚也可以提供联系或政策信息。各入口的职责要清楚，不要把每一条跨页链接都画成新的上层分类，让整张图失去层级。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用于规划的网站架构图，与提交给搜索引擎的 XML Sitemap 目的不同：前者帮助人理解内容关系，后者向搜索引擎提供网址等信息。Sitemap 包含网址，不表示用户在前台找得到，也不保证搜索引擎收录。改动网址时，还要另列新旧网址对照与重定向需求。"
+        },
+        {
+          "type": "heading",
+          "text": "用树形测试验证名称与路径",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "有初步分类后，可以仅用文字层级进行树形测试。给参与者一个情境，例如你想知道电钻最晚何时归还，请找出应查看的位置。题目尽量不用菜单的完整词语提示答案，让参与者根据自己的理解选择路径，再记录是否找到可接受的信息位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "卡片分类用来探索可能的分组，树形测试用来评估已提出的层级，不能只做前者就宣布菜单已验证。观察第一次选择、是否返回、最终位置与理由，并预先定义合理答案；同一内容如果有多个合理入口，也应在解读结果时保留。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若参与者常从使用帮助中查找借还期限，可能表示标签、分组或跨区入口需要调整，不必立刻推翻整个架构。比较不同任务的结果后再修正，记录改动及待测假设。文字测试没有涵盖图像、手机上的展开操作或键盘操作，之后仍要用实际页面验证。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "盘点内容及有效版本，确认保留、更新、合并或下架的处理方式。",
+            "按主要任务提出分类，用卡片分类了解目标读者的理解方式。",
+            "画出页面层级、跨区链接及入口职责，标明节点类型与待补内容。",
+            "用情境题进行树形测试，再检查实际桌面、手机与键盘导航。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "落实到页面后，保持一致并制定新增规则",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C 的菜单结构指南建议使用能表达关系的语义标记，为不同导航提供可理解的名称，并标明当前页面。交付设计时可以明确列出主菜单、页内目录与页脚各自的名称和功能，让开发者不必只靠外观猜测哪些元素属于同一组。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一组页面中重复出现的导航应保持相同的相对顺序，用户主动调整等情况另有考量。手机可以将导航折叠，但仍需保留清楚的名称、顺序与目的地；一致不代表所有屏幕都必须看起来完全相同，也不表示不能加入适当的次级导航。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后为新增内容制定规则：新器材放在哪里、跨分类如何链接、谁可以改菜单，以及何时检查过期信息。定期对照搜索词、客服问题和找不到信息的反馈，评估架构是否仍符合需求。好的信息架构除了第一次画得清楚，也要能承受日后内容增加。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/website-information-architecture/diagram-1-zh-cn.svg",
+          "alt": "三张分类卡片分别列出借用器材、参加活动及使用帮助的内容，示范以任务为导向的网站分组。",
+          "width": 1600,
+          "height": 900,
+          "caption": "分类是有待验证的假设；同一份内容可以从多个相关入口找到。",
+          "description": "三张分类卡片分别列出借用器材、参加活动及使用帮助的内容，示范以任务为导向的网站分组。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具或成果",
+            "主要用途",
+            "无法单独证明"
+          ],
+          "rows": [
+            [
+              "内容清单",
+              "了解信息与管理状态",
+              "分类符合读者习惯"
+            ],
+            [
+              "卡片分类",
+              "探索内容如何被分组",
+              "现有层级一定便于查找"
+            ],
+            [
+              "网站架构图",
+              "表达页面和分类关系",
+              "实际菜单可操作"
+            ],
+            [
+              "树形测试",
+              "验证文字层级的可查找性",
+              "手机及辅助技术操作正常"
+            ],
+            [
+              "实际页面测试",
+              "检查导航与任务完成情况",
+              "未测情境都没有问题"
+            ],
+            [
+              "XML Sitemap",
+              "向搜索引擎提供网址信息",
+              "前台导航或搜索引擎收录成功"
+            ]
+          ],
+          "caption": "原创比较表，区分信息架构工作成果、用户研究与搜索引擎文件。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "一份内容可以有多个合理入口",
+          "text": "先决定主要内容页，再从相关任务提供链接。不要为了放进不同分类而复制多份相同规则，导致之后更新时出现矛盾。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把架构安排进网页设计流程",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解用于搜索的 Sitemap 的用途",
+              "kind": "life",
+              "slug": "sitemap-website-submission"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理网址变更及重定向",
+              "kind": "life",
+              "slug": "redirects-301-302"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g：信息架构与网站架构图",
+          "url": "https://www.nngroup.com/articles/information-architecture-sitemaps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g：卡片分类研究方法",
+          "url": "https://www.nngroup.com/articles/card-sorting-definition/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g：卡片分类及树形测试的差异",
+          "url": "https://www.nngroup.com/articles/card-sorting-tree-testing-differences/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NN/g：树形测试与任务设计",
+          "url": "https://www.nngroup.com/articles/tree-testing/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：菜单结构及当前项",
+          "url": "https://www.w3.org/WAI/tutorials/menus/structure/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：一致的导航相对顺序",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：Sitemap 用途与限制",
           "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
           "checked_on": "2026-09-14"
         }

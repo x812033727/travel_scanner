@@ -3,14 +3,17 @@
   "kind": "life",
   "destination_id": null,
   "topics": [
-    "tutorial",
     "software",
-    "website",
-    "web-basics"
+    "tutorial",
+    "web-basics",
+    "website"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "網頁排版的資訊層級：留白、對齊與閱讀順序",
@@ -154,6 +157,7 @@
           "width": 1600,
           "height": 900,
           "caption": "每個層次都要可讀；較次要不等於可以省略或藏起來。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -264,6 +268,1038 @@
         },
         {
           "title": "MDN：Grid 視覺重排與無障礙",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout/Accessibility",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Information Hierarchy in Web Layouts: Whitespace, Alignment, and Reading Order",
+      "description": "A busy page can leave readers unsure where to look first, usually calling for a revised information hierarchy. Using an original used-book swap event page, this article adjusts the main task, heading levels, grid alignment, whitespace, and action buttons step by step, and explains visual versus programmatic reading order. A comparison table, practical steps, and original diagrams help readers turn tidy layouts into pages they can read, understand, and use.",
+      "hero": {
+        "src": "/guides/web-layout-hierarchy/hero-en.jpg",
+        "alt": "An original Mokaair illustration of content documents, a web page, and a validation shield, showing that layout must support hierarchy, reading, and interaction.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A used-book swap event page displays a large poster, an introduction to the organizers, participation rules, and a registration button, each section with a striking background color. Yet after reading it, readers still do not know which books they can bring, when to arrive, or whether they need to register beforehand. With so many things emphasized, the real priorities disappear."
+        },
+        {
+          "type": "paragraph",
+          "text": "Information hierarchy uses position, size, contrast, and grouping to make the importance of content easy to understand. The event page, layout values, and validation methods below are all original exercises, informed by primary sources from NN/g, W3C, and MDN accessed on 2026-9-14. They are not test results from a real event, nor do they present any particular layout as guaranteed to increase conversion rates."
+        },
+        {
+          "type": "heading",
+          "text": "First, Decide What Readers Need to Take Away",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before changing fonts, prioritize the page's content. The main task of the original event page is to help readers decide whether they can participate, so the event's purpose, time and location, eligible books, and registration method should be easier to find than decorative slogans. The organizing team's story still has value, but it can appear where readers can continue reading after making their main decision."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write one sentence describing each section's function: what does it help readers decide, or which step does it help them complete? If two sections merely repeat how great the event is, combine them. If cancellation instructions, restrictions on what to bring, or accessible transportation information are missing, add that content first. Information hierarchy cannot give meaning to answers that do not exist."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, choose a primary action, such as registering to participate, and a secondary action, such as viewing the exchange rules. You can make the primary button stand out visually, but you must not shrink essential requirements until they are hard to read or mislead readers who have not understood the content into thinking the click merely opens an introduction. The button label should accurately describe what happens next."
+        },
+        {
+          "type": "heading",
+          "text": "Use Headings, Font Sizes, and Weights to Establish Clear Levels",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First distinguish the page title, section headings, body text, and supporting notes, then design consistent styles for each role. Headings can be larger or bolder, but not every important sentence needs to become a heading. If an entire paragraph is bold, readers still cannot tell which sentence is a summary and which describes a restriction. Revisit and reorganize the content structure."
+        },
+        {
+          "type": "paragraph",
+          "text": "For the original exercise, start by comparing body text at 18 pixels, section headings at 24 pixels, and the page title at 36 pixels, then adjust for the typeface, container, and device. These are design starting points, not font sizes prescribed by WCAG or standards for every Traditional Chinese website. Also test whether longer headings obscure content or unbalance the layout when they wrap."
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C's heading guidance treats heading levels as a way to organize content. Heading elements on a web page should reflect relationships between sections, rather than merely provide larger text. Likewise, making ordinary text bold does not automatically turn it into a heading that assistive technology can understand. Visual styling and content semantics need to be addressed together."
+        },
+        {
+          "type": "heading",
+          "text": "Use Alignment and Grids to Make Related Content Easy to Scan",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Think of a grid initially as invisible reference lines: the page's left and right boundaries, column widths, and the starting points of images and text. When dates, locations, and items to bring begin along similar edges on an event page, readers can check them more easily one by one. Arbitrarily offsetting every card increases the effort needed to find information."
+        },
+        {
+          "type": "paragraph",
+          "text": "For long, horizontally set Traditional Chinese text, start with a consistent leading edge, reserving centering for shorter headings or specific visual sections. Do not manually insert large amounts of whitespace to make both edges perfectly flush, because different devices and fonts may disrupt the spacing. For data that needs tabular relationships, use an appropriate table or a clearly labeled structure."
+        },
+        {
+          "type": "paragraph",
+          "text": "A grid does not require every page to use the same number of columns. Exchange rules suit continuous reading, event photos can use cards, and a registration form needs a clear input sequence. First decide how each section serves its content, then establish shared boundaries and spacing. Avoid forcing all content into the same kind of box."
+        },
+        {
+          "type": "heading",
+          "text": "Whitespace Shows Grouping; Contrast Shows Relative Importance",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Whitespace is not leftover space; it helps readers see which pieces of content belong together. A date label should sit close to its own date, rather than closer to the next group containing the location. In the original exercise, try 12 pixels within groups and 32 pixels between groups to observe the relationships, then adjust for the actual content. The point is the relative difference, not memorizing the numbers."
+        },
+        {
+          "type": "paragraph",
+          "text": "Borders and background colors can help separate sections, but putting a border around every paragraph makes the page noisier. First try establishing relationships through space, alignment, and headings, adding containers only when further distinction is needed. NN/g's approach to studying visual hierarchy also notes that grouping, scale, and contrast work together to influence attention. No single color is guaranteed to stand out the most in every situation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check whether a poster or photo draws attention away from the intended primary action. If a reduced view shows only a large patch of colorful decoration, reconsider the proportions. However, blurred or reduced previews offer only an initial view of the visual center of attention; they cannot prove that text is readable. Important states also need supporting cues such as text or shapes, rather than relying on color alone."
+        },
+        {
+          "type": "heading",
+          "text": "Preserve Meaningful Reading Order and Room for Adjustment",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A section that appears in the upper-left corner is not necessarily first in the code. MDN warns that visual reordering with CSS Grid does not automatically change screen reader order or default keyboard navigation order. If registration steps have an intended sequence, simply using CSS to make their positions look attractive may cause keyboard focus to jump suddenly from the page's bottom back to the top."
+        },
+        {
+          "type": "paragraph",
+          "text": "Make the document's own order sensible first, then arrange the desktop and mobile layouts. W3C's Meaningful Sequence requires the correct reading order to be programmatically determinable when order affects meaning. This does not mean every set of independent sections has only one valid order. The event introduction and organizer information may have different reasonable sequences, while form steps or a passage of text cannot be arbitrarily broken apart."
+        },
+        {
+          "type": "paragraph",
+          "text": "The layout must also accommodate readers increasing text spacing. W3C Text Spacing requires content and functionality to remain available after applicable text styles are adjusted. The listed line, paragraph, letter, and word spacing values are test conditions, not a requirement for authors to apply all those values by default. Do not use fixed heights that clip overflowing text. For style properties that a language does not use, apply the criterion's exceptions."
+        },
+        {
+          "type": "heading",
+          "text": "Validate Through Reading and Interaction Tasks, Beyond Appearance",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After completing a version, ask a target reader to find the eligible books, arrival location, and registration entry point. Observe where they start reading, where they get stuck, and whether they understand the requirements. Do not first tell them where the answers are and then count successful completion as proof that the layout works. Record unclear headings, overlooked reminders, and confusing buttons, then address the content or presentation as appropriate."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the same rules with actual long passages, missing images, error messages, and narrower screens. Then navigate by keyboard to confirm that the order is meaningful and focus is visible. After adjusting zoom and text spacing, check whether content overlaps, is clipped, or loses access to controls. Visual tidiness and usability are different outcomes, and both need verification."
+        },
+        {
+          "type": "paragraph",
+          "text": "At handoff, document text roles, the purpose of spacing, alignment rules, and the styling of the primary action. When adding the next event, editors will then know which content needs headings, which items are reminders, and how much space images should occupy. If new content makes the existing hierarchy ineffective, update the rules instead of forcing it to fit through an ever-growing collection of exceptions."
+        },
+        {
+          "type": "list",
+          "items": [
+            "List reader tasks and information priorities, and confirm the primary action and essential requirements.",
+            "Define text roles, alignment boundaries, and group spacing, using real content for the initial layout.",
+            "Check the visual emphasis of images and colors, and compare visual and programmatic reading order.",
+            "Validate information finding, keyboard navigation, zoom, and text spacing scenarios, then record and fix problems."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/web-layout-hierarchy/diagram-1-en.svg",
+          "alt": "Three cards organize understanding the event, deciding whether to participate, and taking action, showing how to establish a reading hierarchy within one page.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Every level must be readable; lower priority does not mean content can be omitted or hidden.",
+          "description": "Three cards organize understanding the event, deciding whether to participate, and taking action, showing how to establish a reading hierarchy within one page.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Layout Symptom",
+            "Possible Effect",
+            "Original Suggested Adjustments"
+          ],
+          "rows": [
+            [
+              "Every section is equally prominent",
+              "Readers cannot determine priorities",
+              "Establish the main task and text roles first"
+            ],
+            [
+              "A label is closer to the next group",
+              "Information is easily matched incorrectly",
+              "Reduce spacing within groups and increase spacing between groups"
+            ],
+            [
+              "Every paragraph is bold with a colored background",
+              "Key points compete with one another",
+              "Reserve emphasis for the few items that truly need it"
+            ],
+            [
+              "CSS positions differ from document order",
+              "Keyboard navigation or read-aloud order may jump around",
+              "Confirm the logical order before arranging the layout"
+            ],
+            [
+              "Fixed heights clip long text",
+              "Information disappears after zooming or adjusting spacing",
+              "Allow containers to grow and test the changes"
+            ],
+            [
+              "Only a homepage screenshot is reviewed",
+              "Errors and other content scenarios go untested",
+              "Validate with real tasks and multiple states"
+            ]
+          ],
+          "caption": "An original table for interpreting layout problems. Actual causes still require checking content, styling, and interaction order."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Styling Can Highlight Key Points, but Cannot Replace Content Structure",
+          "text": "Bold text, background colors, and large type do not automatically establish correct headings or reading order. Validate semantics, visuals, and interaction together to determine whether the page is truly easy to use."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Arrange Page Layouts for Different Widths",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Decide on Website Content and Categories First",
+              "kind": "life",
+              "slug": "website-information-architecture"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Include Page Results in Project Acceptance Testing",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g: Visual Hierarchy, Contrast, and Grouping",
+          "url": "https://www.nngroup.com/articles/visual-hierarchy-ux-definition/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: Headings and Section Hierarchy",
+          "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: Meaningful Content Sequence",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: Text Spacing Adjustments and Applicable Exceptions",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: Grid Visual Reordering and Accessibility",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout/Accessibility",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ウェブレイアウトの情報階層：余白、整列、読み順",
+      "description": "ウェブページが情報で埋まっているのに、読者がどこから見ればよいかわからない場合、通常は情報階層を組み直す必要があります。本記事では、独自制作の古本交換イベントページを例に、主なタスク、見出しの階層、グリッドによる整列、余白、行動を促すボタンを順に調整し、視覚的な順序とプログラム上の読み順の違いを説明します。比較表、作業手順、独自の図解を添え、整ったレイアウトを、読めて理解でき、操作もできるページへと変えるための手助けをします。",
+      "hero": {
+        "src": "/guides/web-layout-hierarchy/hero-ja.jpg",
+        "alt": "Mokaair 独自制作の、コンテンツ文書、ウェブ画面、検収を表す盾のイラスト。レイアウトでは階層、読みやすさ、操作性を併せて考慮する必要があることを示す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "古本交換イベントのページに、大きなポスター、主催者の紹介、参加ルール、参加登録ボタンが同時に置かれ、どのブロックにも目立つ背景色が使われています。それでも読者は、読み終わった後に、どの本を持参できるのか、いつ来場すればよいのか、事前登録が必要なのかがわかりません。画面に強調点がたくさんあることで、かえって本当に大切な点が埋もれてしまいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "情報階層とは、位置、大きさ、コントラスト、グループ分けによって、内容の重要度を理解しやすくすることです。以下のイベントページ、レイアウトの数値、検収方法はいずれも独自の練習例であり、2026 年 9 月 14 日に参照した NN/g、W3C、MDN の一次資料に基づいてまとめたものです。実際のイベントのテスト結果ではなく、特定のレイアウトでコンバージョン率が必ず向上すると主張するものでもありません。"
+        },
+        {
+          "type": "heading",
+          "text": "読者に持ち帰ってほしい情報を先に決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "フォントを変える前に、ページの内容に優先順位を付けます。独自制作のイベントページの主なタスクは、読者が参加できるかを判断できるようにすることなので、イベントの目的、日時と場所、交換できる本、参加登録の方法を、装飾的なキャッチコピーより見つけやすくすべきです。主催チームのストーリーにも価値がありますが、主な判断を終えた後に読み進められる位置に置けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "各ブロックの役割を一文で書きます。この部分は読者が何を決める、またはどの手順を完了するのに役立つのか、という説明です。二つのブロックがどちらもイベントの素晴らしさを繰り返し宣伝するだけなら、統合できます。キャンセル方法、持参物の制限、バリアフリーの交通アクセス情報が欠けている場合は、先に内容を補います。情報階層は、存在しない答えに意味を与えることはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "次に、参加登録などの主な行動と、交換ルールの確認などの副次的な行動を選びます。見た目では主なボタンを目立たせてもかまいませんが、必要な条件を読みにくいほど小さくしてはいけません。また、内容を理解していない読者が、クリックすれば紹介を見るだけだと誤解するようにしてもいけません。ボタン名には、その後に行うことを正確に示すべきです。"
+        },
+        {
+          "type": "heading",
+          "text": "見出し、文字サイズ、太さで識別しやすい階層を作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ページタイトル、段落の見出し、本文、補足説明をまず区別し、それぞれの役割に一貫したスタイルを設計します。見出しは大きくしたり太くしたりできますが、重要な文をすべて見出しにする必要はありません。段落全体を太字にしても、読者はどの文が要約で、どの文が制限なのかわかりません。内容の構造に立ち返って整理し直すべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "独自の練習例では、本文 18 ピクセル、段落の見出し 24 ピクセル、ページタイトル 36 ピクセルから比較を始め、フォント、コンテナ、端末に合わせて調整できます。これらはデザインの出発点であり、WCAG が指定する文字サイズでも、すべての繁体字中国語サイトに共通する基準でもありません。長い見出しは、折り返した後に内容を覆ったり、レイアウトのバランスを崩したりしないかもテストする必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C の見出しに関する指針では、見出しの階層を内容を整理する方法として扱っています。ウェブページの見出し要素は、文字を大きくするためだけに使うのではなく、段落の関係を反映すべきです。同様に、通常の文章を太字にしても、支援技術が理解できる見出しに自動的になるわけではありません。視覚的なスタイルと内容の意味構造を併せて示す必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "整列とグリッドで関連する内容を拾い読みしやすくする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "グリッドは、まず目に見えない基準線として捉えられます。ページの左右の境界、列の幅、画像や文字の開始位置などです。イベントページで日付、場所、持参物がほぼ同じ端の線から始まっていれば、読者は項目ごとに照合しやすくなります。カードごとの位置がばらばらだと、情報を探す負担が増えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般的な繁体字中国語の横書き長文では、まず開始位置の基準線を一定にして配置し、中央揃えは短い見出しや特定の視覚ブロックに限って使うとよいでしょう。左右の端を完全に揃えるために、大量の空白を手作業で挿入してはいけません。端末やフォントが変わると、間隔が崩れる可能性があるためです。表形式で関係を示す必要があるデータには、適切な表か、ラベルが明確な構造を使います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "グリッドは、すべてのページで同じ列数を使うことを求めるものでもありません。交換ルールは続けて読む形が適しており、イベント写真にはカードを使えますが、参加登録フォームには明確な入力順序が必要です。各ブロックが内容をどう支えるかを先に決め、その後で共通の境界と間隔を設けます。すべての内容を同じ種類の枠に無理に押し込まないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "余白でグループ分けを、コントラストで相対的な重要度を示す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "余白は余ったスペースではなく、どの内容が一つのグループなのかを読者に伝えるものです。日付のラベルは対応する日付の近くに置き、次の場所情報のグループのほうに近くならないようにします。独自の練習例では、グループ内を 12 ピクセル、グループ間を 32 ピクセルとして関係を観察し、実際の内容に合わせて調整できます。大切なのは相対的な差であり、数値を暗記することではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "枠線や背景色は区分を助けますが、すべての段落を枠で囲むと、かえってページが騒がしくなります。まずは空間、整列、見出しで関係を作り、追加の区別が必要な場合にだけコンテナを増やします。NN/g の視覚的階層に関する研究手法でも、グループ分け、比率、コントラストが組み合わさって注意の向け方に影響し、常に最も目立つことを保証できる単一の色はないと指摘されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ポスターや写真が、本来の主な行動に向かう注意を奪っていないかを確認します。縮小して見たときに、大きな色付きの装飾しか目に入らない場合は、比率を組み直すべきです。ただし、ぼかしたり縮小したりしたプレビューは、視覚的な重心を大まかに確認するためのもので、文字の読みやすさを証明することはできません。重要な状態には、文字や形などの補助的な手掛かりも用意し、色だけで区別してはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "意味のある読み順と調整可能なスペースを確保する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "画面では左上に見えるブロックが、コード内でも最初にあるとは限りません。MDN は、CSS Grid で視覚的に並べ替えても、スクリーンリーダーの読み順や、キーボードで移動する際の既定の順序は自動的に変わらないと注意を促しています。参加登録の手順にもともと前後関係がある場合、CSS だけで見た目の配置を整えると、キーボードフォーカスがページ末尾から突然上部へ戻る可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文書自体の順序を先に筋の通ったものにし、その後でデスクトップ用とスマートフォン用のレイアウトを整えます。W3C の Meaningful Sequence は、順序が意味に影響する内容について、正しい読み順をプログラムで判定できることを求めています。独立したブロックすべてに、唯一の並び順があるという意味ではありません。イベント紹介と主催者情報には複数の妥当な順序があり得ますが、フォーム入力の手順や一まとまりの文章を勝手に分断してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "レイアウトは、読者が文字の間隔を広げた場合にも対応できる必要があります。W3C Text Spacing は、適用対象のテキストスタイルを調整しても、内容や機能が失われないことを求めています。列挙されている行間、段落間隔、字間、単語間隔はテスト条件であり、著者がすべての数値を初期設定として適用するよう求めるものではありません。固定した高さで、はみ出す文字を切り捨ててはいけません。その言語で使われないスタイルプロパティは、基準の例外に従って判断します。"
+        },
+        {
+          "type": "heading",
+          "text": "読み取り・操作の課題で検収し、見た目の良さだけを問わない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一つのレイアウト案が完成したら、対象読者に、持参できる本、会場の場所、参加登録の入口を探してもらい、どこから見始めるか、どこで止まるか、条件を理解しているかを観察します。先に答えの位置を教えてから、操作を完了したことをレイアウトの成功と見なしてはいけません。理解しにくい見出し、見落とされた注意事項、紛らわしいボタンを記録し、それぞれ内容か見せ方を修正します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実際の長い文章、画像がない状態、エラーメッセージ、狭い画面で同じルールをチェックします。次にキーボードで移動し、順序に意味があり、フォーカスが見えることを確かめます。ズームと文字間隔を調整した後、内容が重なったり切り取られたりしていないか、操作の入口が失われていないかを確認します。視覚的に整っていることと操作できることは別々の成果であり、両方を確かめる必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "納品時には、文字の役割、間隔の用途、整列のルール、主な行動のスタイルを記録します。次にイベントを追加するとき、編集者は、どの内容に見出しを使うか、何が注意事項か、画像にどれだけのスペースを割くべきかを判断できます。新しい内容によって従来の階層が機能しなくなる場合は、ルールを更新すべきです。増え続ける例外だけで無理に押し込んではいけません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "読者のタスクと情報の優先順位を列挙し、主な行動と必要な条件を確認する。",
+            "文字の役割、整列の基準となる境界、グループ間の間隔を設定し、まず実際の内容でレイアウトする。",
+            "画像や色彩の重心を確認し、視覚上の読み順とプログラム上の読み順を照合する。",
+            "情報を探す課題、キーボード操作、ズーム、文字間隔の調整を想定して検収し、問題を記録して修正する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/web-layout-hierarchy/diagram-1-ja.svg",
+          "alt": "三枚のカードで、イベントの理解、参加の判断、操作の実行をそれぞれ整理し、同じページの内容を読むための階層を作る方法を示す。",
+          "width": 1600,
+          "height": 900,
+          "caption": "どの階層も読める必要があります。優先度が低いからといって、省略したり隠したりしてよいわけではありません。",
+          "description": "三枚のカードで、イベントの理解、参加の判断、操作の実行をそれぞれ整理し、同じページの内容を読むための階層を作る方法を示す。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "レイアウトの状態",
+            "考えられる影響",
+            "独自の調整案"
+          ],
+          "rows": [
+            [
+              "すべてのブロックが同じように目立つ",
+              "読者が優先順位を判断できない",
+              "主なタスクと文字の役割を先に定める"
+            ],
+            [
+              "ラベルが次のグループのほうに近い",
+              "情報の対応を取り違えやすい",
+              "グループ内の間隔を狭め、グループ間の間隔を広げる"
+            ],
+            [
+              "すべての段落が太字で背景色付き",
+              "強調点が互いに競合する",
+              "強調は、本当に必要な少数の内容に絞る"
+            ],
+            [
+              "CSS による位置と文書の順序が異なる",
+              "キーボード操作や読み上げの順序が飛ぶ可能性がある",
+              "論理的な順序を確認してからレイアウトする"
+            ],
+            [
+              "固定した高さで長い文章が切れる",
+              "拡大や間隔の調整後に情報が消える",
+              "コンテナが伸びるようにし、変化をテストする"
+            ],
+            [
+              "トップページのスクリーンショットだけを見る",
+              "エラー時や別の内容を表示する場面のテストが漏れる",
+              "実際のタスクと複数の状態で検収する"
+            ]
+          ],
+          "caption": "独自制作の問題判定表。実際の原因については、内容、スタイル、操作順序を確認する必要があります。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "スタイルは要点を強調できるが、内容の構造には代えられない",
+          "text": "太字、背景色、大きな文字だけでは、正しい見出しや読み順が自動的にできるわけではありません。意味構造、見た目、操作を併せて検収してこそ、ページが本当に使いやすいかを判断できます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "異なる幅のページレイアウトを整える",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトの内容と分類を先に決める",
+              "kind": "life",
+              "slug": "website-information-architecture"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ページの成果をプロジェクトの検収に組み込む",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g：視覚的階層、コントラスト、グループ分け",
+          "url": "https://www.nngroup.com/articles/visual-hierarchy-ux-definition/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：見出しと段落の階層",
+          "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：意味のある内容の順序",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：文字間隔の調整と適用上の例外",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：Grid の視覚的な並べ替えとアクセシビリティ",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout/Accessibility",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "웹 레이아웃의 정보 위계: 여백, 정렬과 읽기 순서",
+      "description": "웹페이지가 꽉 차 보이는데도 독자가 어디부터 봐야 할지 모른다면 대개 정보 위계를 다시 정리해야 합니다. 이 글에서는 직접 만든 중고 도서 교환 행사 페이지를 예로 들어 주요 과제, 제목 위계, 그리드 정렬, 여백, 행동 유도 버튼을 차례로 조정하고, 시각적 순서와 프로그램상 읽기 순서의 차이를 설명합니다. 비교표, 작업 단계, 자체 제작 도해를 통해 정돈된 레이아웃을 읽고 이해하며 사용할 수 있는 페이지로 바꾸도록 돕습니다.",
+      "hero": {
+        "src": "/guides/web-layout-hierarchy/hero-ko.jpg",
+        "alt": "콘텐츠 문서, 웹 화면, 검수 방패를 그린 Mokaair 자체 제작 일러스트로, 레이아웃에서 위계와 읽기, 조작을 함께 고려해야 함을 나타냅니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "중고 도서 교환 행사 페이지에 큰 포스터, 주최 측 소개, 참가 규칙, 신청 버튼을 한꺼번에 배치하고 모든 영역에 눈에 띄는 배경색을 넣었습니다. 그런데 독자는 다 읽고도 어떤 책을 가져갈 수 있는지, 언제 도착해야 하는지, 사전 신청이 필요한지 알지 못합니다. 화면에 강조점이 너무 많아 오히려 진짜 핵심이 사라진 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "정보 위계는 위치, 크기, 대비, 그룹화를 통해 콘텐츠의 중요성을 쉽게 이해하도록 하는 것입니다. 아래의 행사 페이지, 레이아웃 수치, 검수 방법은 모두 직접 만든 연습 예시이며, 2026년 9월 14일에 확인한 NN/g, W3C, MDN의 일차 자료를 바탕으로 정리했습니다. 실제 행사의 테스트 결과가 아니며, 특정 레이아웃이 전환율을 반드시 높인다고 주장하지도 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 독자가 얻어 갈 정보를 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글꼴을 바꾸기 전에 먼저 페이지 콘텐츠의 우선순위를 정합니다. 직접 만든 행사 페이지의 주요 과제는 독자가 참가할 수 있는지 판단하도록 돕는 것이므로, 행사의 목적, 시간과 장소, 교환할 수 있는 책, 신청 방법을 장식적인 구호보다 쉽게 찾을 수 있어야 합니다. 주최 팀의 이야기도 가치가 있지만, 주요 판단을 마친 뒤 계속 읽을 수 있는 위치에 배치할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "각 영역의 기능을 한 문장으로 적어 봅니다. 이 부분은 독자가 무엇을 결정하거나 어느 단계를 완료하도록 돕는지 설명하는 것입니다. 두 영역이 모두 행사가 좋다는 홍보만 반복한다면 합칠 수 있습니다. 취소 방법, 반입 제한, 접근 가능한 교통편 정보가 빠져 있다면 먼저 내용을 보충합니다. 정보 위계만으로 존재하지 않는 답에 의미를 부여할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "그다음 참가 신청과 같은 주요 행동 하나를 정하고, 교환 규칙 확인처럼 우선순위가 낮은 행동도 정합니다. 시각적으로 주요 버튼을 더 강조할 수는 있지만, 필수 조건을 읽기 어려울 만큼 작게 표시해서는 안 됩니다. 또한 독자가 내용을 이해하지 못한 상태에서 버튼을 누르면 단순히 소개를 보는 것이라고 오해하게 해서도 안 됩니다. 버튼 이름은 다음에 무엇을 하게 되는지 정확히 설명해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "제목, 글자 크기와 굵기로 구분되는 위계 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 페이지 제목, 섹션 제목, 본문, 보조 설명을 구분하고 각 역할에 일관된 스타일을 설계합니다. 제목은 더 크거나 굵게 표시할 수 있지만, 중요한 문장마다 제목으로 만들 필요는 없습니다. 문단 전체를 굵게 표시하면 독자는 여전히 어느 문장이 요약이고 어느 문장이 제한 사항인지 알 수 없습니다. 이때는 콘텐츠 구조로 돌아가 다시 정리해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 만든 연습 예시에서는 본문 18픽셀, 섹션 제목 24픽셀, 페이지 제목 36픽셀부터 비교해 보고 글꼴, 컨테이너, 기기에 따라 조정할 수 있습니다. 이 수치는 디자인의 출발점이며, WCAG가 지정한 글자 크기도 모든 중국어 번체 웹사이트의 표준도 아닙니다. 긴 제목은 줄이 바뀌었을 때 콘텐츠를 가리거나 레이아웃의 균형을 깨뜨리는지도 테스트해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C의 제목 지침은 제목 위계를 콘텐츠를 조직하는 방식으로 봅니다. 웹페이지의 제목 요소는 섹션 간 관계를 반영해야 하며, 단지 글자를 크게 표시하려는 용도로 사용해서는 안 됩니다. 마찬가지로 일반 텍스트를 굵게 표시해도 보조 기술이 이해할 수 있는 제목이 자동으로 되는 것은 아닙니다. 시각적 스타일과 콘텐츠의 의미를 함께 명확히 해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "정렬과 그리드로 관련 내용을 쉽게 훑어보게 하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "그리드는 먼저 보이지 않는 기준선으로 이해할 수 있습니다. 페이지의 좌우 경계, 열 너비, 이미지와 텍스트의 시작점이 이에 해당합니다. 행사 페이지에서 날짜, 장소, 준비물이 비슷한 경계선에서 시작하면 독자가 항목별로 확인하기 쉽습니다. 카드마다 임의로 위치를 옮기면 정보를 찾는 부담이 커집니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반적인 중국어 번체 가로쓰기 장문은 일정한 시작 경계선을 기준으로 배치하고, 가운데 정렬은 짧은 제목이나 특정 시각적 영역에 사용할 수 있습니다. 좌우 가장자리를 완전히 맞추려고 공백을 대량으로 직접 삽입하지 마세요. 기기나 글꼴이 달라지면 간격이 흐트러질 수 있기 때문입니다. 표 형태의 관계가 필요한 데이터는 적절한 표나 명확한 레이블이 있는 구조로 표시합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "그리드를 사용한다고 모든 페이지의 열 수가 같아야 하는 것은 아닙니다. 교환 규칙은 이어서 읽는 방식이 적합하고, 행사 사진은 카드로 배치할 수 있으며, 신청 양식에는 명확한 입력 순서가 필요합니다. 먼저 각 영역이 콘텐츠를 어떻게 뒷받침할지 정한 뒤 공통 경계와 간격을 만듭니다. 모든 콘텐츠를 같은 종류의 사각형에 억지로 넣지 않도록 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "여백은 그룹을, 대비는 상대적 중요성을 표현하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "여백은 남는 공간이 아니라, 어떤 콘텐츠가 한 그룹에 속하는지 독자가 알아볼 수 있게 하는 수단입니다. 날짜 레이블은 해당 날짜 가까이에 있어야 하며, 다음 장소 그룹에 더 가까이 놓여서는 안 됩니다. 직접 만든 연습 예시에서는 그룹 내부 12픽셀, 그룹 사이 32픽셀로 관계를 살펴본 뒤 실제 내용에 따라 조정할 수 있습니다. 핵심은 상대적 차이이며, 수치를 외우는 데 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "테두리와 배경색은 영역을 구분하는 데 도움이 되지만, 모든 문단에 테두리를 넣으면 오히려 페이지가 더 산만해집니다. 먼저 공간, 정렬, 제목으로 관계를 만들고, 추가 구분이 필요할 때만 컨테이너를 더합니다. NN/g의 시각적 위계 연구 방법에서도 그룹화, 비율, 대비가 함께 주의에 영향을 준다고 설명합니다. 어떤 한 가지 색도 언제나 가장 눈에 띈다고 보장할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "포스터나 사진이 원래의 주요 행동에 쏠려야 할 주의를 빼앗는지 확인합니다. 작게 보았을 때 커다란 색 장식만 남는다면 비율을 다시 조정해야 합니다. 다만 흐리게 하거나 축소한 미리보기는 시각적 무게중심을 대략 살펴보는 방법일 뿐, 글자가 읽기 쉽다는 증거는 아닙니다. 중요한 상태에는 텍스트나 형태 같은 보조 단서도 있어야 하며, 색상만으로 구분해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "의미 있는 읽기 순서와 조정 가능한 공간 확보하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "화면에서 왼쪽 위에 보이는 영역이 코드에서도 첫 번째에 있는 것은 아닙니다. MDN은 CSS Grid로 시각적 배치를 바꿔도 스크린 리더나 기본 키보드 탐색 순서는 자동으로 바뀌지 않는다고 설명합니다. 신청 단계에 원래 순서가 있다면 CSS만으로 위치를 보기 좋게 바꿀 경우 키보드 포커스가 페이지 하단에서 갑자기 위쪽으로 돌아갈 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 문서 자체의 순서를 합리적으로 구성한 뒤 데스크톱과 모바일 레이아웃을 배치합니다. W3C의 Meaningful Sequence는 순서가 의미에 영향을 주는 콘텐츠에 대해 올바른 읽기 순서를 프로그램이 판별할 수 있어야 한다고 요구합니다. 모든 독립적인 영역에 유일한 정렬 순서만 있다는 뜻은 아닙니다. 행사 소개와 주최 측 정보에는 여러 합리적인 순서가 있을 수 있지만, 양식 작성 단계나 하나의 문장은 임의로 나누어서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "레이아웃은 독자가 텍스트 간격을 늘려도 유지되어야 합니다. W3C의 Text Spacing은 적용 가능한 텍스트 스타일을 조정한 뒤에도 콘텐츠나 기능이 사라지지 않아야 한다고 요구합니다. 제시된 줄 간격, 문단 간격, 자간, 단어 간격은 테스트 조건이며, 작성자가 모든 수치를 기본값으로 적용해야 한다는 뜻은 아닙니다. 고정 높이로 넘치는 글자를 잘라내지 말고, 해당 언어에서 사용하지 않는 스타일 속성은 지침의 예외에 따라 판단합니다."
+        },
+        {
+          "type": "heading",
+          "text": "보기 좋은지만 묻지 말고 읽기와 사용 과제로 검수하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "한 버전을 완성하면 대상 독자에게 가져올 수 있는 책, 도착할 장소, 신청 경로를 찾아보게 하고, 어디부터 읽는지, 어디서 멈추는지, 조건을 이해하는지 관찰합니다. 답이 있는 위치를 미리 알려 준 뒤 조작을 완료했다는 이유로 레이아웃이 성공했다고 판단하지 마세요. 이해하기 어려운 제목, 놓친 안내, 혼동되는 버튼을 기록하고 콘텐츠와 표현 방식을 각각 수정합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 긴 텍스트, 이미지 누락, 오류 메시지, 좁은 화면으로 같은 규칙을 점검합니다. 이어서 키보드로 탐색하며 순서가 의미 있는지, 포커스가 보이는지 확인합니다. 확대·축소와 텍스트 간격을 조정한 뒤에는 콘텐츠가 겹치거나 잘리는지, 기능을 사용할 진입점이 사라지는지 살펴봅니다. 시각적 정돈과 사용 가능성은 서로 다른 결과이므로 둘 다 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "결과물을 전달할 때 텍스트의 역할, 간격의 용도, 정렬 규칙, 주요 행동의 스타일을 기록합니다. 그러면 다음 행사를 추가할 때 편집자는 어떤 콘텐츠를 제목으로 표시하고 어떤 내용을 안내로 표시할지, 이미지에 어느 정도 공간을 배정할지 알 수 있습니다. 새 콘텐츠로 기존 위계가 제대로 작동하지 않는다면 규칙을 갱신해야 합니다. 예외를 계속 늘려 억지로 끼워 넣지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "독자의 과제와 정보 우선순위를 나열하고, 주요 행동과 필수 조건을 확인합니다.",
+            "텍스트 역할, 정렬 경계, 그룹 간격을 정하고 실제 콘텐츠로 먼저 레이아웃을 구성합니다.",
+            "이미지와 색상의 무게중심을 점검하고, 시각적 읽기 순서와 프로그램상 읽기 순서를 대조합니다.",
+            "정보 찾기, 키보드 사용, 확대·축소, 텍스트 간격 조정 상황으로 검수하고 문제를 기록해 수정합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/web-layout-hierarchy/diagram-1-ko.svg",
+          "alt": "세 카드에 행사 이해, 참가 적합성 판단, 행동 실행을 각각 정리하여 같은 페이지의 콘텐츠에 읽기 위계를 부여하는 방법을 보여 줍니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "모든 위계의 콘텐츠는 읽을 수 있어야 합니다. 중요도가 낮다고 생략하거나 숨겨도 되는 것은 아닙니다.",
+          "description": "세 카드에 행사 이해, 참가 적합성 판단, 행동 실행을 각각 정리하여 같은 페이지의 콘텐츠에 읽기 위계를 부여하는 방법을 보여 줍니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "레이아웃 현상",
+            "가능한 영향",
+            "직접 제안한 조정 방향"
+          ],
+          "rows": [
+            [
+              "모든 영역이 똑같이 눈에 띔",
+              "독자가 우선순위를 판단하지 못함",
+              "먼저 주요 과제와 텍스트 역할을 정함"
+            ],
+            [
+              "레이블이 다음 그룹에 더 가까움",
+              "정보를 잘못 연결하기 쉬움",
+              "그룹 내부 간격을 줄이고 그룹 사이 간격을 늘림"
+            ],
+            [
+              "모든 문단을 굵게 표시하고 배경색을 넣음",
+              "강조점끼리 경쟁함",
+              "정말 강조해야 하는 소수의 콘텐츠만 강조함"
+            ],
+            [
+              "CSS 위치와 문서 순서가 다름",
+              "키보드 탐색이나 낭독 순서가 건너뛸 수 있음",
+              "논리적 순서를 먼저 확인한 뒤 배치함"
+            ],
+            [
+              "고정 높이로 긴 텍스트가 잘림",
+              "확대하거나 간격을 조정하면 정보가 사라짐",
+              "컨테이너가 늘어나게 하고 변화를 테스트함"
+            ],
+            [
+              "홈페이지 스크린샷만 확인함",
+              "오류와 다른 콘텐츠 상황을 테스트하지 못함",
+              "실제 과제와 다양한 상태로 검수함"
+            ]
+          ],
+          "caption": "자체 제작한 문제 진단표입니다. 실제 원인은 콘텐츠, 스타일, 조작 순서를 확인해야 알 수 있습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "스타일은 핵심을 강조할 수 있지만 콘텐츠 구조를 대신할 수는 없습니다",
+          "text": "굵은 글씨, 배경색, 큰 글자가 올바른 제목과 읽기 순서를 자동으로 만들어 주지는 않습니다. 의미, 시각적 표현, 조작을 함께 검수해야 페이지가 실제로 사용하기 쉬운지 알 수 있습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "다양한 너비의 페이지 레이아웃 구성하기",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "먼저 웹사이트 콘텐츠와 분류 정하기",
+              "kind": "life",
+              "slug": "website-information-architecture"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "페이지 결과물을 프로젝트 검수에 포함하기",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g: 시각적 위계, 대비와 그룹화",
+          "url": "https://www.nngroup.com/articles/visual-hierarchy-ux-definition/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: 제목과 섹션 위계",
+          "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: 의미 있는 콘텐츠 순서",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: 텍스트 간격 조정과 적용 예외",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: Grid의 시각적 재배치와 접근성",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout/Accessibility",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "网页排版的信息层级：留白、对齐与阅读顺序",
+      "description": "网页看起来很满，读者却不知道先看哪里，通常需要重新安排信息层级。本文以原创二手书交换活动页为例，从主要任务、标题层级、网格对齐、留白及行动按钮逐步调整，并说明视觉顺序和程序阅读顺序的区别。附比较表、操作步骤与原创图解，帮助读者把整齐的版面转成能阅读、能理解也能操作的页面。",
+      "hero": {
+        "src": "/guides/web-layout-hierarchy/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创内容文档、网页画面与验收盾牌插图，表示排版需兼顾层级、阅读和操作。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "二手书交换活动页同时放了大海报、主办单位介绍、参加规则和登记按钮，每个区块都有醒目底色。读者看完却不知道自己能带哪些书、何时到场，以及是否需要先登记。画面有很多重点，反而让真正的重点消失。"
+        },
+        {
+          "type": "paragraph",
+          "text": "信息层级是通过位置、大小、对比与分组，让内容的重要性容易被理解。以下活动页、排版数值及验收方法均为原创练习，依据 2026 年 9 月 14 日查阅的 NN/g、W3C 与 MDN 一手资料整理，不是实际活动的测试结果，也不把某种版面说成保证提高转化率。"
+        },
+        {
+          "type": "heading",
+          "text": "先决定读者要带走的信息",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "动手改字体前，先把页面内容排出优先顺序。原创活动页的主要任务是让读者判断能否参加，因此活动用途、时间地点、可交换书籍与登记方式应比装饰性口号更容易找到。主办团队故事仍有价值，但可以放在完成主要判断后可继续阅读的位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "为每个区块写一句功能说明：这段帮助读者决定什么，或完成哪一步。若两个区块都只重复宣传活动很棒，可以合并；如果缺少取消方式、携带限制或无障碍交通信息，就先补充内容。信息层级无法替不存在的答案创造意义。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再选一个主要行动，例如登记参加，以及较次要的查看交换规则。视觉上可以让主要按钮更突出，但不能把必要条件缩到难以阅读，也不应让读者在不了解内容时误以为点击只是查看介绍。按钮名称应如实说明接下来会做什么。"
+        },
+        {
+          "type": "heading",
+          "text": "用标题、字号与字重建立可辨识的层次",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先分清页面标题、段落标题、正文与辅助说明，再为各角色设计一致的样式。标题可以较大或较粗，但不是每句重要文字都要升级成标题。若一整段都加粗，读者仍不知道哪句是摘要、哪句是限制，应回到内容结构重新整理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原创练习可从正文 18 像素、段落标题 24 像素、页面标题 36 像素开始比较，再依字体、容器和设备调整。这些是设计起点，不是 WCAG 的指定字号，也不是所有繁体中文网站的标准。较长标题还要测试换行后是否遮住内容或使版面失衡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C 的标题指南把标题层级视为内容组织方式。网页中的标题元素应反映段落关系，而非只用来获得较大的字；同样地，把一段普通文字设成粗体，也不会自动成为可供辅助技术理解的标题。视觉样式与内容语义要一起交代。"
+        },
+        {
+          "type": "heading",
+          "text": "用对齐和网格让相关内容容易扫读",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "网格可以先理解成隐形的参考线：页面左右边界、列宽、图片与文字的起点。活动页若日期、地点及携带物品都从相近的边线开始，读者比较容易逐项核对；每张卡片任意偏移，则会增加寻找信息的负担。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般繁体中文横排长文可先用稳定的起始边线安排，居中则保留给较短标题或特定视觉区块。不要为了让左右边缘完全齐平而手动插入大量空白，因为不同设备与字体可能把间距打散。需要表格关系的数据，就用合适的表格或有明确标签的结构。"
+        },
+        {
+          "type": "paragraph",
+          "text": "网格也不是要求每页都使用相同列数。交换规则适合连续阅读，活动照片可用卡片，而登记表需要清楚的输入顺序。先决定各区块如何服务内容，再建立共用的边界和间距，避免把所有内容硬塞进同一种方框。"
+        },
+        {
+          "type": "heading",
+          "text": "留白表达分组，对比表达相对重要性",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "留白不是剩下的空间，而是让读者看出哪些内容属于一组。日期标签应靠近自己的日期，不要离下一组地点更近。原创练习可用组内 12 像素、组间 32 像素观察关系，再依实际内容调整；重点在相对差异，不在背下数字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "边框与底色可以帮助分区，但每一段都加外框，反而让页面变得更吵。先尝试用空间、对齐与标题建立关系，只有需要额外区分时再增加容器。NN/g 的视觉层级研究方法也指出，分组、比例与对比共同影响注意力，没有单一颜色能保证永远最醒目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "检查海报或照片是否抢走原本主要行动的注意力；如果缩小看时只剩一大片彩色装饰，应重新安排比例。但模糊或缩小预览只能初步观察视觉重心，不能证明文字易读。重要状态也要有文字或形状等辅助线索，不能只靠颜色区分。"
+        },
+        {
+          "type": "heading",
+          "text": "保留有意义的阅读顺序与可调整空间",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "看起来在左上角的区块，在代码中不一定排第一。MDN 提醒，CSS Grid 的视觉重排不会自动改变屏幕阅读器或默认键盘导航顺序。若登记步骤原本有先后，单靠 CSS 把位置调漂亮，可能让键盘焦点突然从页尾跳回上方。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先让文档本身的顺序合理，再安排桌面和手机版面。W3C 的 Meaningful Sequence 针对顺序会影响意思的内容，要求程序可以判定正确阅读顺序；并非所有独立区块都只有唯一排序。活动介绍与主办信息可能有不同合理顺序，填表步骤或一段话则不能被任意拆散。"
+        },
+        {
+          "type": "paragraph",
+          "text": "排版也要承受读者增加文字间距。W3C Text Spacing 要求在适用的文字样式调整后，不失去内容或功能；列出的行距、段距、字距与词距是测试条件，并非要求作者默认套用全部数值。不要以固定高度把超出的字切掉，语言不使用的样式属性则依据准则中的例外判读。"
+        },
+        {
+          "type": "heading",
+          "text": "用阅读与操作题验收，而不只问好不好看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "完成一版后，请目标读者找出可带的书籍、到场位置及登记入口，观察他从哪里开始看、哪里停住及是否理解条件。不要先告诉他答案位置，再把完成操作当作版面成功。把看不懂的标题、漏看的提醒及混淆的按钮记录下来，分别修正内容或呈现方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用真实长文字、缺少图片、错误信息及较窄画面检查同一套规则。再以键盘导航，确认顺序有意义、焦点看得到；调整缩放与文字间距后，检查内容是否重叠、被裁掉或失去操作入口。视觉整齐和可操作是两种结果，两者都需要确认。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付时记下文字角色、间距用途、对齐规则与主要行动样式。下一次新增活动时，编辑者就知道哪些内容用标题、哪些是提醒，以及图片该占多少空间。若新版内容让原有层级失效，应更新规则，不要只靠越来越多的特例勉强塞进去。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出读者任务和信息优先顺序，确认主要行动及必要条件。",
+            "设定文字角色、对齐边界与分组间距，先用真实内容排版。",
+            "检查图片及色彩重心，核对视觉与程序阅读顺序。",
+            "以找资料、键盘、缩放及文字间距情境验收，记录并修正问题。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/web-layout-hierarchy/diagram-1-zh-cn.svg",
+          "alt": "三张卡片分别整理活动理解、参加判断及行动操作，示范如何把同一页内容排出阅读层次。",
+          "width": 1600,
+          "height": 900,
+          "caption": "每个层次都要可读；较次要不等于可以省略或藏起来。",
+          "description": "三张卡片分别整理活动理解、参加判断及行动操作，示范如何把同一页内容排出阅读层次。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "排版现象",
+            "可能影响",
+            "原创调整方向"
+          ],
+          "rows": [
+            [
+              "所有区块一样醒目",
+              "读者无法判断优先顺序",
+              "先建立主要任务与文字角色"
+            ],
+            [
+              "标签离下一组更近",
+              "数据容易配错",
+              "减少组内距离、增加组间距离"
+            ],
+            [
+              "每段都加粗加底色",
+              "重点彼此竞争",
+              "保留少数真正需要强调的内容"
+            ],
+            [
+              "CSS 位置和文档顺序不同",
+              "键盘或朗读可能跳跃",
+              "先确认逻辑顺序再排版"
+            ],
+            [
+              "固定高度切掉长文字",
+              "放大或调间距后信息消失",
+              "允许容器扩展并测试变化"
+            ],
+            [
+              "只看首页截图",
+              "错误及其他内容情境漏测",
+              "用真实任务与多种状态验收"
+            ]
+          ],
+          "caption": "原创问题判读表，实际原因仍需检查内容、样式与操作顺序。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "样式可以突出重点，不能代替内容结构",
+          "text": "粗体、底色或大字不会自动形成正确的标题及阅读顺序。把语义、视觉和操作一起验收，才能知道页面是否真正容易使用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排不同宽度的页面版式",
+              "kind": "life",
+              "slug": "responsive-layout-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先决定网站内容与分类",
+              "kind": "life",
+              "slug": "website-information-architecture"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把页面成果放进项目验收",
+              "kind": "life",
+              "slug": "web-design-project-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NN/g：视觉层级、对比与分组",
+          "url": "https://www.nngroup.com/articles/visual-hierarchy-ux-definition/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：标题与段落层级",
+          "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：有意义的内容顺序",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C：文字间距调整及适用例外",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：Grid 视觉重排与无障碍",
           "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout/Accessibility",
           "checked_on": "2026-09-14"
         }
