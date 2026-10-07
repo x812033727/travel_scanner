@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-release-localized-travel-life-wave-20261007
 title: Release reviewed travel and life localization wave 20261007
-status: in-progress
+status: done
 priority: P1
 area: ops
 owner: codex-article-localization-4e16
 claimed_at: 2026-10-07T12:12:35Z
 created_at: 2026-10-07T05:55:30Z
-completed_at:
+completed_at: 2026-10-07T16:11:53Z
 branch: codex/article-locales-release-20261007
 depends_on:
   - 2026-10-07-localize-japan-cherry-blossom-2027
@@ -49,7 +49,7 @@ publication gates; it does not claim the entire 862-article program is complete.
 - [x] Compile with a fresh post-deployment full baseline, checking every selected target's actual database state.
 - [x] Use dry-run, drafts, publish-articles and publish-hubs with the same pins/state.
 - [x] Rebuild/check article links, rerun dry-run and perform public acceptance.
-- [ ] Record release results in README.md/evidence.json and open the record PR.
+- [x] Record release results in README.md/evidence.json and open the record PR.
 
 ## How to verify
 
@@ -93,3 +93,5 @@ This scoped record is now backed by genuine publication: 13 articles, 52 previou
 Public verification covered 65 five-language pages and 130 original desktop/mobile views in this record. Four actual independent reviewers read disjoint partitions; all document/image/DOM/canonical/hreflang/sitemap guards passed. The eight record outputs were validated and copied only into their existing claimed release scopes. Sanitized evidence is `docs/article-localization/releases/2026-10-07-travel-life-wave/evidence.json`.
 
 The full post-publication census observed 830 incomplete articles / 3,320 missing language documents. The global program remains open. All-guides link checks exited 1 in every locale; selected findings are exclusively unpublished related target languages. Actual per-record counts and this limitation are retained in evidence.json, rather than claiming an all-guides PASS. The earlier authoring/rehearsal notes above remain historical checkpoints. The record PR is the final documentation step.
+
+The sanitized release-record draft PR is https://github.com/x812033727/travel_scanner/pull/1373. Its record files preserve the exact verified bytes and actual publication evidence. This scoped release is complete; the global localization program remains open.
