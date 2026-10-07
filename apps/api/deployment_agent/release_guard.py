@@ -43,7 +43,12 @@ def read_hold(hold_path: Path) -> tuple[str, dict[str, object]] | None:
     except FileNotFoundError:
         return None
     except OSError as exc:
-        return (f"hold file exists but could not be read ({exc.__class__.__name__})", {})
+        # A 0700 /root gives the same PermissionError whether or not the hold is there.
+        return (
+            f"could not read the hold file ({exc.__class__.__name__}); "
+            "cannot tell whether a hold is in place",
+            {},
+        )
     lines = text.splitlines()
     first = (
         lines[0].encode("utf-8")[:HOLD_FIRST_LINE_LIMIT].decode("utf-8", errors="ignore")
@@ -84,9 +89,15 @@ def staged_release_reason(
     """Rule 1 of the deploy script: a release prepared but not activated in the last 24 h.
 
     Fails closed like the hold: a root that does not exist holds no release, but one that
-    cannot be listed, or a release whose recent ``state.json`` cannot be read, is reported as
-    a possible staged release, because the agent cannot show that none is in progress.
-    (``Path.glob`` would return nothing for an unreadable root, which reads as "none".)
+    cannot be listed, or a release whose ``state.json`` cannot be checked or read, is reported
+    as a possible staged release, because the agent cannot show that none is in progress.
+    (``Path.glob`` would return nothing for an unreadable root, which reads as "none".) Every
+    release directory is looked at before an unreadable one is reported, so a release that is
+    definitely staged is named even when an older directory next to it cannot be read.
+
+    The release drivers create their directories 0700 as root, so an agent that may list
+    ``/root`` but not enter those directories refuses on every one of them for as long as
+    they exist, not only for 24 hours: the age of a state file it cannot stat is unknown.
     """
     current = time.time() if now is None else now
     try:
@@ -98,6 +109,7 @@ def staged_release_reason(
             f"could not list {sanitize(str(root), 120)} ({exc.__class__.__name__}); "
             "cannot tell whether a staged release is in progress"
         )
+    unknown: str | None = None
     for directory in entries:
         if not fnmatchcase(directory.name, STAGED_RELEASE_DIR_PATTERN):
             continue
@@ -107,10 +119,11 @@ def staged_release_reason(
         except (FileNotFoundError, NotADirectoryError):
             continue
         except OSError as exc:
-            return (
+            unknown = unknown or (
                 f"could not check {sanitize(directory.name, 120)}/state.json "
                 f"({exc.__class__.__name__}); cannot tell whether it is prepared but not activated"
             )
+            continue
         if current - modified > window_seconds:
             continue
         try:
@@ -118,17 +131,18 @@ def staged_release_reason(
         except FileNotFoundError:
             continue
         except OSError as exc:
-            return (
+            unknown = unknown or (
                 f"could not read {sanitize(directory.name, 120)}/state.json "
                 f"({exc.__class__.__name__}); cannot tell whether it is prepared but not activated"
             )
+            continue
         if '"built_at"' in text and '"activated_at"' not in text and '"failed_at"' not in text:
             stamp = datetime.fromtimestamp(modified, tz=UTC).replace(microsecond=0).isoformat()
             return (
                 f"a staged release is prepared but not activated: {sanitize(state.parent.name, 120)} "
                 f"(state.json modified {stamp})"
             )
-    return None
+    return unknown
 
 
 def release_in_progress(hold_path: Path, staged_root: Path) -> tuple[str, str] | None:
