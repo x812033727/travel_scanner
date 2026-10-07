@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-a-paid-media-judge-or-locate-call
 title: A paid media judge or locate call whose answer was lost is asked again
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-media-judge
 claimed_at: 2026-10-07T11:29:03Z
 created_at: 2026-10-07T09:30:00Z
-completed_at:
+completed_at: 2026-10-07T11:46:02Z
 branch:
 depends_on: []
 scope:
@@ -22,7 +22,7 @@ scope:
 
 ## Why
 
-The media judge and locate routes take a Gemini call off the day's judge budget before they ask
+The media judge and locate routes take a Gemini call off the month's judge budget before they ask
 Gemini. `apps/web/app/api/video/media/[...path]/forward.ts` answers 502 `upstream_unavailable`
 both for an API it never reached and for a request it sent whose answer never came back: its
 180 s abort, or a reset after the request went out. `tools/video/media/client.mjs` sends a 502
@@ -64,11 +64,25 @@ while a call is in flight. The cost is one extra judge unit and possibly one mor
   client's `RETRYABLE_CODES`. The reasons:
   - The event is rare. With the defaults the API's own Gemini timeout (150 s) answers
     `video_media_judge_failed` before the route's 180 s abort, so the real trigger is a restart
-    mid-call.
-  - The cost is at most one more US$0.01-class Gemini call and one judge unit of the day.
+    mid-call. That holds while `video_speech_gemini_timeout_seconds` (allowed up to 280 s) stays
+    under the route's fixed 180 s; above it, every slow call meets the route's abort first.
+  - The cost of a restart is one more US$0.01-class Gemini call and one judge unit of the month
+    for each call in flight.
   - The client already re-asks `video_media_judge_failed`, which may follow a call Gemini
     answered, so a second charge is accepted there already.
-  - Option (a) would hold the call and stop the stage, and the worker would still ask again next
-    round, so it would save little.
+  - Option (a) would hold every lost answer for the owner: the stage would exit 3 and the video
+    would be blocked as `media_owner`, for an event that costs about a cent.
   - Option (a) (a lost answer of its own in the media forwarder, and a paid path in the client)
     is not done. The task's scope keeps those files in case the owner prefers it.
+- Review (2026-10-07, each finding verified), fixed in the docs and the comment:
+  - The judge budget is monthly (`apps/api/app/video_media/meter.py`), not daily.
+  - "At worst one more call" was wrong for a question that keeps failing. `call()` sends up to
+    5 times a run, and each send may be charged. The stage exits 4, which is not everyone's
+    trouble, so the worker defers it and blocks it after `DEFER_LIMIT` (6): 7 runs × 5 sends,
+    about 35 calls (~US$0.35) for one stuck question. The calls that failed are not in the
+    video's ledger (`Stage.judge` books a call once it answered), so the per-video cap does not
+    see them.
+  - A website restart reaches the tool as nginx's 502 or a dropped connection. `call()` asks
+    again on every 5xx and network error whatever the code, so the comment now says a paid
+    send-once needs its own path in `call()`; taking a code out of `RETRYABLE_CODES` would not
+    do it.
