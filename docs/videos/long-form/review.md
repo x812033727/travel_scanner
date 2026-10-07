@@ -2114,6 +2114,70 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch next-dub-retake dub retake give-back and unheard track increment: 2 files (2026-10-07)
+
+Reviewer: `claude-pr-review-dub-retake`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is two commits on branch next-dub-retake for the task `2026-10-07-a-dub-retake-that-exits-4`, written by its owner `claude-opus-5-5-dub-retake`: `5c775d38` ("fix(video): a dub retake that exits 4 without a take gives its round back, and its track is heard again") and `06240d07` ("fix(video): review fixes for the dub retake: a dub track is unheard until Jev passes it"). The first commit also carries the comment fix filed as `2026-10-06-makedub-s-comment-still-says-a`. Scope: DURATION_ONLY for the two changed bindings below. The reviewer wrote neither commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `8e808612`, the first commit's parent ("fix(video): review fixes for the late-boundary wait; close the task"), on claude/sharp-bardeen-ob6fn9. The last receipt commit before it is `074e05e4`, the "claude/sharp-bardeen-ob6fn9 no sleep after the last attempt increment" above, and it is an ancestor of `8e808612`. `git diff 074e05e4 8e808612 -- tools/video/automation/flow.mjs tools/video/automation/automation.test.mjs docs/videos/long-form/ tools/video/long-form/ tools/video/core/` is empty, and so is `git diff 8e808612 06240d07 -- docs/videos/long-form/ tools/video/long-form/ tools/video/core/`. At `074e05e4` and at `8e808612`, flow.mjs hashes to `f2b3eb191a13b77d653d7219e7e1091161443cbe7ce03c81a4c35c01bf3753f9` and automation.test.mjs to `55e247b228837ccba853ce271a77530a39ba3531107a314389bccd0036989349`, their rows in review.json and the table (by `git show` piped to `sha256sum`). At both revisions all 108 bindings agree with the receipt, the table and the bytes, and review.md hashes to the receipt's `report_sha256`, as it does at `5c775d38` and `06240d07`. The working tree's copies of both files equal `06240d07`'s and hold no CR byte. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs; stale duration review binding: tools/video/automation/flow.mjs` and nothing else. The whole of `git diff 8e808612 06240d07` is the two bound files and the task's own file. No unbound code changes. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+What the change is. `makeDub` makes one locale's dub track. It runs `dub`, sends the lines of a window that does not fit even at MAX_TEMPO to the translator's shortening, has Jev listen (`check-audio --locale`), retakes the flagged lines with `dub --redo` up to MAX_DUB_RETAKE_ROUNDS times, and then sends them to the translator's rewording. Until this change it counted a retake round (`rounds.retakes += 1`) before the redo, and a redo that exited 4 kept it. A retake or a check that exited 4, like several other endings short of a passed track, also left no `check_stopped` mark, so the next visit could read the track `dub` had written as current and send the language batch. Now:
+
+- `flaggedTakes()` (flow.mjs 3551 at the head) hashes each flagged line's `dubs/<locale>/audio/<id>.wav`, before the redo (3604) and after it. A redo that exits 4 having changed none of them gives the round back (3608). One that changed a take keeps it.
+- `makeDub` sets `rounds.check_stopped` and saves it at the start of every visit (3541). Only the two endings that delete the locale's rounds clear it: Jev passing the track (3642) and `giveUpDub` (3657). `lost` and `stopped` no longer set it themselves (3566, 3570).
+- The three exit-4 returns, for `dub`, the retake and the check, go through one helper, `unfinished` (3573; used at 3597, 3609 and 3631). It defers with the same line and the same kinds as before: `dub`, or `check-audio` for the check. `everyone` still comes from `everyones(result.out)`.
+- The language step's comment (3265–3268) and `makeDub`'s JSDoc (3520–3525) now say what leaves a track unheard and what exit 4 and a STOP do. The `unheard` condition itself (3269) is unchanged.
+
+This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/automation/flow.mjs (+48/−23, 232,982 → 234,449 bytes, 3,805 → 3,830 lines). The first commit has +37/−7 and the second +19/−24. Every changed line is in the language step's dub loop (3265–3268) or in `makeDub` (3520–3631). The duration code sits above every hunk, at the same lines as at the baseline:
+
+- the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29);
+- `slidesMinutes` and `episodeMinutes` (63–69);
+- the anime `body_target_seconds / 60` settlement (490);
+- `planPayload`'s `target_minutes` (1655);
+- the drama request and series episode targets (1868–1879, 1950–2002);
+- the writer, re-plan and prompt-repair targets (2422–2451, 2787).
+
+The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `body_target_seconds`, `KNOWLEDGE_MIN`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` are the same 20 lines, with the same text, at both revisions. No changed line names one of them, or minutes, seconds, frames, FPS, a timeline, a window, a fit, a tempo, QA or lint. The only changed-line match for "narration" is the comment that points to `retakeStopped`'s `giveBack`. Where the length gates sit:
+
+- A dub track's length and its fit. `dub` (dubs/cli.mjs, unbound and not in the diff) reads the narration's timeline.json. It refuses a timeline built for another script, and a branded cut made for another body timeline (369–376). It lays the clips into that timeline's windows (`layoutDub`, 232) and writes fit.json (254). It exits 1 with the lines that do not fit even at MAX_TEMPO (255–261), and only after that writes the track at the narration's `total_frames` (267) and the dub's timeline (314). `dubsStatus` (core/state.mjs, bound and unchanged) reads a track as current only when its frames match the branded cut's (`frameCurrent`, 386). The change decides when the worker runs `dub` and the check again. It does not change what they measure or refuse.
+- Exit 4. dubs/cli.mjs maps a `SpeechError` that is not the owner's to `EXIT.external` (414). The month's characters pre-check throws before the request loop (395). A failed request throws inside the loop, after the takes before it were written (209) and before fit.json, the track or the timeline. So a redo that exits 4 leaves the previous fit.json, track and timeline. The fit verdict (exit 1) and the owner's trouble (exit 3) are not exit 4, and they take their unchanged branches. check-audio's exit 1 is Jev's flagged lines and its exit 4 is lines left unchecked (tts/check.mjs 451–453), neither a length.
+- The unheard mark. It only makes the language step run `makeDub` for a track that reads as current (3269), and `makeDub` begins with a plain `dub`. That run lays every take into the narration's windows, including a take a stopped retake left behind, and applies the fit gate again before a track is written. So the mark can add `dub` runs and checks before a batch is sent, and never removes one. Outside this report, only flow.mjs and automation.test.mjs name `check_stopped` in tools/video, apps and docs.
+- `giveBack`. `rounds.retakes` counts Jev's retake rounds against MAX_DUB_RETAKE_ROUNDS, not a length. It is returned only in the exit-4 branch, before the refit test. `rounds.shorten`, MAX_DUB_SHORTEN_ROUNDS, the refit after a retake that no longer fits, `shortenDub`'s rules for a shortened line and `rewordDub` are unchanged, and so are the round limits (171–175).
+- Everything else is outside the hunks: the narration, its chapter check and its retakes (`advance()`'s tts stage, `retakeStopped`, `narration()`), the captions and package the batch is written from, and review-push. core/duration.mjs, core/lint.mjs, qa/checks.mjs, assemble, package and dubs/ are not in the diff.
+
+Findings, tools/video/automation/automation.test.mjs (+139/−0, 424,434 → 433,227 bytes, 5,977 → 6,116 lines). The first commit has +98 and the second +41. The one hunk adds a fixture helper, `dubOutage`, and five tests after the rewording test (3099). At the head the file has 150 top-level tests and 193 counted with subtests; the baseline has 145 and 185. The tests:
+
+- three budget-spent retakes give the round back each time, with nothing reworded and no batch, and the dub is then made after one retake;
+- a retake that wrote the flagged line's take before it exited 4 keeps its round;
+- a vendor failing the retake blocks at the seventh try as `deferred:dub`, with no retake spent;
+- a check that exits 4 leaves the track unheard, and the next visit runs `dub` and the check and sends no batch; a vendor failing the check blocks as `deferred:check-audio`;
+- three subtests: an unusable rewording answer, an unusable shortening answer after a retake that no longer fits, and the plain `dub` away after such a retake. In each the next visit runs `dub` and the check and sends no batch.
+
+They assert step lines, `retakes`, `check_stopped`, `status`, `blocked_kind`, the translator's reword calls, the language reviews and the order of the `dub` and `check-audio` runs. None asserts seconds, frames, a timeline, a window or a target. `redoOver` is the fixture's existing over-budget retake: two subtests use it to reach the refit path and assert only what runs next. No existing test or assertion is changed. Changed-line matches for "length" are array lengths, and those for "fits" are subtest names. The duration-term lines are the same 31 at both revisions. The opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at line 36 is byte-unchanged, and no added line reads or sets process.env.
+
+Ran (Node v22.22.0, Linux, in the worktree at `06240d07`, node_modules linked, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing at `074e05e4`, `8e808612`, `5c775d38` and `06240d07`, a check of all 108 bindings and the report hash at `074e05e4` and `8e808612`, and the empty diffs above;
+- `git diff 8e808612 06240d07 -- tools/video/automation/`, read in full, with each commit's numstat;
+- changed-line scans, and the duration-term line sets of both bound files at both revisions;
+- reads of `makeDub`, `giveUpDub`, the language step, `defer`, and `retakeStopped`, whose `giveBack` this mirrors; of dubs/cli.mjs from its lint check to its error mapping; of `dubsStatus` in core/state.mjs; and of check-audio's exits in tts/check.mjs;
+- the baseline's tools, docs/videos, .agents and package.json from `git archive 8e808612`, with a link to this worktree's node_modules, in a scratch directory. There `node --test` passed the baseline automation.test.mjs 185 of 185. The head's test file, run against the baseline flow.mjs, failed 8 of 193: the five new tests and the last one's three subtests. The give-back tests saw `retakes` at 1, and the kept-round test saw the language batch sent on the second visit. Every other test passed against both revisions.
+
+Before rebinding, `node --test tools/video/automation/automation.test.mjs` passed 193 of 193 (150 top-level). `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same two paths. `npm run test:tools` ran 2,068 tests: 2,063 passed, 4 skipped and 1 failed, the same regression on the same two paths. `npm run check:tasks` exited 0. The CLI check, the long-form tests and `npm run test:tools` are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the change itself. That includes the give-back and how `flaggedTakes` tells that a take was made, marking every visit unheard, the `unfinished` helper and its kinds, the deferrals and blocks, and the reworded comments.
+- dubs/cli.mjs, core/state.mjs and tts/check.mjs were read only for exit codes, the order of writes and what a track's status reads, and are not reviewed. The task files are not reviewed, and neither is `2026-10-06-makedub-s-comment-still-says-a`, whose comment fix this carries.
+- No real dub was made, retaken, checked, assembled or measured, no real speech request was made, and the tests run under the opt-out.
+- Not run or seen: the Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, and the production host.
+- The 106 bindings this change did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2170,9 +2234,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `55e247b228837ccba853ce271a77530a39ba3531107a314389bccd0036989349` |
+| `tools/video/automation/automation.test.mjs` | `b1c3aa90e0fee599273b3cb48658a2540ffecd9e1e10e4db236914c1c20b6f35` |
 | `tools/video/automation/discuss.mjs` | `74ad92a459787188cf2b64ee7663ae31ed5629ffc54fc9cc9fe8a8888964078c` |
-| `tools/video/automation/flow.mjs` | `f2b3eb191a13b77d653d7219e7e1091161443cbe7ce03c81a4c35c01bf3753f9` |
+| `tools/video/automation/flow.mjs` | `dc03f010d355e07754177e6cd786e13acb0a4f7123ff1ebbb4ff0f880156df77` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |
