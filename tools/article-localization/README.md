@@ -79,16 +79,23 @@ Each job lives at `docs/article-localization/work/<slug>/<locale>/`:
 - `translated-fields.json`: all expected JSON-pointer translations, no missing or
   extra keys. Numeric/URL/inline-code tokens must survive. Long copied source
   prose, placeholder markers, wrong scripts, and schema size violations fail.
+  An official citation title already written in Japanese, with kana, may remain
+  exact for a Japanese target. This exception applies only to source-title fields;
+  copied body prose and untranslated Chinese citation titles still fail.
 - `document.json`: schema-validated staged document; code, dates, metadata,
   structural links and identities are preserved. LinkBlock and rich-paragraph
-  link URLs to the four verified public same-site routes (`/guides/howto`,
-  `/destinations/hanoi`, `/destinations/singapore`, `/guides`) are mechanically changed to
+  link URLs to the eight verified public same-site routes (`/guides/howto`,
+  `/destinations/hanoi`, `/destinations/singapore`, `/guides`, `/destinations/tokyo`,
+  `/destinations/osaka-kyoto`, `/destinations/seoul`, `/destinations/jeju`) are mechanically changed to
   the target locale. The first three destinations returned 200 without redirects and had
   matching `lang` and canonical in all five languages on 2026-09-20 (verification
   JSON SHA-256 `84dd8fcdd5102b61b314873a56096f91c5c9673c796b9cb1f8e495796d5a135f`).
   The `/guides` index passed the same five-language browser checks on 2026-09-23
   (`batch020-candidate-inventory/guides-root-public-route-v2-20260923.json`,
   SHA-256 `2ccb48c9873e59db9a771142337b273f2ed5255e4e83f41af35b1490067a486e`).
+  Tokyo and Osaka/Kyoto passed all five locales on 2026-10-07 with HTTP 200,
+  no redirects, substantial page content, and matching html lang/canonical;
+  response hashes are in `docs/article-localization/route-verification-20261007.json`.
   Other locale-prefixed Mokaair link routes, unapproved destination locales,
   aliases, and query/fragment variants stop materialization for review; external
   link URLs, source URLs and source check dates remain unchanged. Publication

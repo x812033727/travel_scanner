@@ -66,3 +66,94 @@ This change adds complete zh-CN, en, ja and ko documents for the already publish
 - Independent read-only editorial review marked both articles GO for meaning, figures, applicability, source dates, images, and publication-aware navigation. The zh-CN `照著` typo found in review was corrected; the source/pack hashes above reflect that correction.
 - Related-reading targets without a published same-locale document remain plain text as intended. A source-title mismatch for Google's "Do you need an SEO?" page and a Google Ads `hl=zh-Hant` URL inherited from zh-TW are recorded in the task for source-metadata follow-up; the linked pages support the claims.
 - PR CI is pending. Guarded import, public publication and desktop/mobile live-page verification remain separate work.
+
+## Current marketing-plan review, 2026-10-07
+
+This follow-up reviews only `marketing-plan-small-business`. The retained
+production capture from 2026-10-07T04:45:46.904711+00:00 has published zh-TW
+v4 and no en/ja/ko/zh-CN rows. Its normalized source hash is
+`1f556287a76e6352278f7a53601c6cb425201f2db1be6fe75d7f4f72943f6403`;
+the source document and root metadata remain unchanged.
+
+Independent reviewer `codex-current-independent-next-review` read the complete
+source and four target documents, checked the current Australian government
+and SBA supporting pages, and inspected eight fresh SVG renders plus four
+actual hero JPGs. Root, as a distinct application party, applied eight terminal
+related-reading labels equal to their published same-locale target titles and
+one zh-CN hero-alt correction. The reviewer then independently confirmed all
+nine exact leaves, normalized final documents, unchanged source/metadata and
+all fifteen existing assets. No other content changed. Unpublished target
+articles continue to resolve as plain text until their own locales are public.
+
+Corrected pack SHA-256:
+`06faef98b9310009ee7a32904f60474fd6da373c5a9305879334d9b9c2753582`.
+
+| Locale | Final normalized document SHA-256 |
+| --- | --- |
+| en | `64e4957bfc6757936bbc086eb1bd6335bc5e29287fb0df3f7c898ccf3612c72d` |
+| ja | `64a741891751d4e1e12a46e7e35b47c145bd693cbacfda5fb3fd8fb885c80ee7` |
+| ko | `755f1f5319c72ff5dd904e169cf0a46568e08fc6c1a29ab75e2062d38d2778c2` |
+| zh-CN | `efb180d5378fd8b65c5e20c859e57953b5e073b63d7385d85704e8c9ac637bc9` |
+
+Current combined two-article external review bindings:
+`findings.json` SHA-256
+`e7f567907ebb7a4665a09d999fc5db2a54fca08617199cf9eeb61101ccd4da46`;
+distinct-party application receipt SHA-256
+`69968fd34f78247fd18a30fd4fbd432fed0b9c56e742fbf8e1bca052358f559d`;
+`final-review-evidence.json` SHA-256
+`28b83c1c26db0c0a2ee57795fbccc6e09a19262e7bdc9665c698c0b905d79c49`;
+current `route-b-review-v1` receipt SHA-256
+`6215361cac8abb391690d973feee8dc1b775400ab4477f8384b83fbd61e0bf72`.
+The receipt has four PASS rows for this article and four for
+`wordpress-security-basics`, with exact source, document and image hashes.
+
+This content review does not claim a merged or deployed candidate, import or
+publication. A candidate must separately freeze the exact committed Git blobs
+before bundle preparation. The `paid-vs-organic-marketing` pack and all fifteen
+assets are unchanged and remain held for the original source follow-up. Its
+pack SHA-256 is
+`d61970809da32cd7a59d83c154c715bed5a291f841da40dbd4b8140141dbbe7d`.
+Optional zh-CN vocabulary and nonvisible SVG metadata changes are deferred to
+the existing vocabulary follow-up and were not applied here.
+
+## Final same-cohort review, 2026-10-07
+
+The prospective first release cohort also contains `wordpress-business-site`.
+Root's distinct executor `codex-root-distinct-cohort-label-executor` applied the
+four reviewed marketing-plan terminal labels to that article's actual final
+same-locale titles. Independent exact-leaf reconstruction accepts only those
+four additional changes. The source, complete root metadata, all fifteen assets,
+and the held `paid-vs-organic-marketing` content remain unchanged.
+
+Latest marketing-plan pack SHA-256:
+`c871fb1cbac44c7886755a64c501a4667d01493aa51aedc42e04ba03fa1152ed`.
+
+| Article | Locale | Current normalized document SHA-256 |
+| --- | --- | --- |
+| marketing-plan-small-business | en | `0ce3cf1684645e633a37c8f584d1f274b37483acb090e08d86542759def2b4be` |
+| marketing-plan-small-business | ja | `d6fb4a6e5384e8843ea2c68d7c726bfd5543763ff2b79f734f4985d51e0b60e3` |
+| marketing-plan-small-business | ko | `831492c567dc143e53eceaf38f0d5d376e3a17adcf17eff9c1f77f4c6f6fa3cd` |
+| marketing-plan-small-business | zh-CN | `5b7e3c88395a251da346482be707ca872e2cd1550eec12b8366674ebbf4a0358` |
+
+Final cohort review at 2026-10-07T05:57:52.724199+00:00 by
+`codex-current-independent-life-cohort-review:/root/localization_existing_work` binds the current documents and images to new review rows.
+All 84 terminal ArticleInline links across the eight life articles were checked:
+48 labels match currently published same-locale titles, 12 labels match the
+actual final same-cohort target titles, and 24 retain plain-text behavior until
+their target locale is published. The reviewer verified all 120 existing assets,
+unchanged published source documents and complete root metadata. All eight
+current scoped pack lints exited 0, with inherited source no-summary warnings
+and advisory English length guidance only.
+
+Current combined 32-row `route-b-review-v1` SHA-256:
+`87986003cd9e266df5e569270ab3d2859f1573433d5c0f1d967c331e1969beaa`;
+common final-review evidence SHA-256:
+`d6e10b7546c48b0cdd76c0c03517c6d8ba0a2c0a84a99462ada3e6ed74e91527`;
+this pair's current eight-row receipt SHA-256:
+`04da1adaa0c6353acca365a27c456fe701f7a782afa6df9856219e5aaed3d851`.
+The immutable current external receipt directory is
+`reuse-t1/life-cohort-final-review-v2` in the retained 2026-10-07 release evidence.
+Older receipts keep their original hash bindings and do not approve changed bytes.
+The common review is for corrected workspace content; freezing exact committed
+Git blobs, compilation, merge, deployment, import and publication remain
+separate steps. No production write or model call was performed by this review.

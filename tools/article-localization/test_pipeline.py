@@ -526,6 +526,25 @@ class PipelineTests(unittest.TestCase):
                 errors,
             )
 
+    def test_japanese_citation_titles_are_preserved_without_allowing_copied_body(self):
+        official = "国税庁 輸出物品販売場制度に関するQ&A（リファンド方式・概要編）"
+        fields = {
+            "/document/title": {"source": "日本退稅新制", "kind": "document", "max_length": 200},
+            "/document/sources/0/title": {"source": official, "kind": "document", "max_length": 300},
+        }
+        translations = {"/document/title": "日本の免税新制度", "/document/sources/0/title": official}
+        self.assertEqual(pipeline.validate_fields(fields, translations, "zh-TW", "ja"), [])
+        for pointer, copied in (
+            ("/document/blocks/0/text", official),
+            ("/document/sources/1/title", "這是一段繁體中文的完整來源標題，應該翻成自然日語而不能整段抄寫。"),
+        ):
+            with self.subTest(pointer=pointer):
+                errors = pipeline.validate_fields(
+                    {**fields, pointer: {"source": copied, "kind": "document", "max_length": 300}},
+                    {**translations, pointer: copied}, "zh-TW", "ja",
+                )
+                self.assertTrue(any(pointer in error and "copied" in error for error in errors), errors)
+
     def test_valid_chinese_variant_may_keep_script_neutral_prose(self):
         fields = {
             "/document/title": {
@@ -814,6 +833,10 @@ class PipelineTests(unittest.TestCase):
             "/guides/howto",
             "/destinations/hanoi",
             "/destinations/singapore",
+            "/destinations/tokyo",
+            "/destinations/osaka-kyoto",
+            "/destinations/seoul",
+            "/destinations/jeju",
             "/guides",
         )
         source["blocks"].extend(
@@ -897,6 +920,9 @@ class PipelineTests(unittest.TestCase):
             "https://mokaair.com/zh-TW/guides?topic=rail",
             "https://mokaair.com/zh-TW/guides#first",
             "https://mokaair.com/zh-TW/guides/",
+            "https://mokaair.com/zh-TW/destinations/tokyo?topic=rail",
+            "https://mokaair.com/zh-TW/destinations/osaka-kyoto#first",
+            "https://mokaair.com/zh-TW/destinations/unpublished-city",
         ):
             with self.subTest(url=url), tempfile.TemporaryDirectory() as tmp:
                 source = sample()
