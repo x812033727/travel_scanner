@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-sothatswhy-shorts-from-episode
 title: So That's Why: cut two Shorts from each long episode's keyframes and script
-status: open
+status: done
 priority: P2
 area: tools
 owner:
 claimed_at:
 created_at: 2026-09-28T06:00:00Z
-completed_at:
+completed_at: 2026-10-07T01:43:04Z
 branch: claude/knowledge-series-planning-v84n79
 depends_on: []
 scope:
@@ -56,3 +56,7 @@ scope:
   real `from-episode` run, folded into `2026-09-28-sothatswhy-pilot-3`. The old scope named the
   whole `tools/video/shorts/` directory, which would have locked every Shorts ticket of the
   series (`2026-10-05-shorts-*`) the moment this one was claimed.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+關閉：不再需要。Code DoD landed (#904 #950 #962: tools/video/shorts/cli.mjs from-episode, episode.mjs episodeShortFields, cut:sothatswhy layout, so-thats-why/README.md Shorts section); the one unticked item (real from-episode run) was explicitly folded into 2026-09-28-sothatswhy-pilot-3 (keep that one; closing this also clears pilot-3's depends_on)

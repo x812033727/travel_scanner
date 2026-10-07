@@ -1,11 +1,11 @@
 ---
 id: 2026-10-03-produce-video-openai-devday-2026-recap
 title: Produce video: OpenAI DevDay 2026 recap, what the 20-plus announcements change for you
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: claude-fable-5-1-devday
-claimed_at: 2026-10-03T11:42:15Z
+owner:
+claimed_at:
 created_at: 2026-10-03T11:40:42Z
 completed_at:
 branch: claude/video-devday-2026-recap
@@ -138,3 +138,7 @@ node tools/video/cli.mjs status --slug openai-devday-2026-recap
   cut off without a layout error from `render`: look at frames from `final.mp4` (the last state of each such card)
   before the final gate. `verify-3.md` row 23 was relabelled CHANGED: the QA facts item reads the first column of a
   NOT FOUND row as a claim id.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+釋出過期認領（認領超過 24 小時，主要工作已落地）。製作已過發布關卡；剩站主上傳（youtube.video_id 仍為 null）。

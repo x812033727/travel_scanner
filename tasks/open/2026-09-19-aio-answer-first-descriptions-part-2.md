@@ -1,11 +1,11 @@
 ---
 id: 2026-09-19-aio-answer-first-descriptions-part-2
 title: AIO: answer-first descriptions, part 2 — 東南亞、台灣、港澳新加坡的 how-to 與 intel（33 份文件）
-status: blocked
+status: open
 priority: P3
 area: docs
-owner: codex-aio-task-close
-claimed_at: 2026-09-20T16:39:45Z
+owner:
+claimed_at:
 created_at: 2026-09-19T11:14:27Z
 completed_at:
 branch: codex/close-stale-aio-task
@@ -163,3 +163,7 @@ python -m app.cli guides-import --actor-email <admin> --publish --slug bangkok-4
 - The 31 pack edits for this task were merged in PR #565 (`d11178863d1a2a35ddfff17be65bcc2a63514194`) on 2026-09-19. Its checklist and repository checks are complete. The original `review` claim exceeded the documented 24-hour takeover period, so `codex-aio-task-close` claimed it through the task CLI without `--force`.
 - The task remains open as `blocked`: its own handoff still requires a production import dry run and publication audit, and no verified import receipt has been attached here. Recheck live versions and preserve later edits before any import. Do not treat the merged pack changes as proof that production descriptions were republished.
 - The repository editing scope is now only this task file. The merged pack paths are released for separately claimed localization work; future production import must compare the current published revisions to the exact reviewed descriptions and stop on drift. No article pack or production data was changed in this handoff.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+釋出過期認領（認領超過 24 小時，主要工作已落地）。程式與內容已隨 #565（d1117886）合併；剩正式站 guides-import dry-run 與 publish，沒有紀錄。

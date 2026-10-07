@@ -1,13 +1,13 @@
 ---
 id: 2026-09-27-integrate-batch029-wordpress-contact-guides
 title: Integrate Batch029 WordPress contact guides
-status: open
+status: done
 priority: P2
 area: api
 owner:
 claimed_at:
 created_at: 2026-09-27T10:17:36Z
-completed_at:
+completed_at: 2026-10-07T01:43:01Z
 branch: codex/article-localization-batch029-contact
 depends_on: []
 scope:
@@ -64,3 +64,7 @@ The coordinator has authorized a PR after validation and rebase, but explicitly 
 
 Review PR: https://github.com/x812033727/travel_scanner/pull/857. It was opened after the `f44555bb97153fa05cf3ca565ffa28db473e86d3` rebase and attached to the Codex task; auto-merge is off. The broad API/web checks above remain CI gates before merge. Keep this task in `review` until the PR is merged and do not mistake the review branch for a production release.
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-batch029-integrator (since 2026-09-27T10:17:43Z) was stale and is released so it stops locking its scope. Landed: #857. Still open: Relevant API/tools/web/CI checks pass; push rebased branch and open PR (done via #857, CI passed to merge).
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+標記完成。依據：PR #857 merged 2026-09-27 (25da6c3c) after CI; wordpress-contact-forms/smtp-delivery/chat-contact-buttons/booking-system.json on origin/main all have zh-TW,en,ja,ko,zh-CN + hero-<loc>.jpg/diagram-1-<loc>.svg assets; published per tasks/done/2026-09-27-record-batch029-five-language-wordpress-contact.md

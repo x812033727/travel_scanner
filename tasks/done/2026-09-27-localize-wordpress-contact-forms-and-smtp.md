@@ -1,13 +1,13 @@
 ---
 id: 2026-09-27-localize-wordpress-contact-forms-and-smtp
 title: Localize WordPress contact forms and SMTP guides batch029
-status: open
+status: done
 priority: P2
 area: api
 owner:
 claimed_at:
 created_at: 2026-09-27T09:35:08Z
-completed_at:
+completed_at: 2026-10-07T01:43:02Z
 branch: codex/article-localization-batch029-contact-pair-a
 depends_on: []
 scope:
@@ -48,3 +48,7 @@ Production source captured 2026-09-27T09:29:15Z in a `REPEATABLE READ, READ ONLY
 Current source references `wordpress-user-roles` and `wordpress-plugin-theme-translation` from the contact-form article and `wordpress-contact-forms` and `dns-records-troubleshooting` from the SMTP article. Do not turn unpublished target-locale destinations into clickable public links. Keep Contact Form 7, WordPress, Flamingo, Turnstile, WP Mail SMTP, Brevo, DNS record names, `your-email`, `[your-email]`, `Mail (2)`, `Reply-To`, `do_not_store`, `flamingo_email`, `flamingo_name`, `flamingo_subject`, `From Email`, `From Name`, `Force From Email`, `SMTP & API`, `API Key`, `Email Test`, `Debug Events` and `message ID` accurate. The source explicitly targets Taiwan small-site owners; do not recast translations as guidance for readers of a presumed nationality.
 
 Pair A author receipt: `C:/Users/x8120/.codex/article-localization-release/batch029-contact/pair-a/author-receipt.json`, SHA-256 `b5e8f41578988d98e1c657034936ba79aef7ddf400cc738ed15d1d61fafc7e2b`. Edge-measured 16 localized SVG layouts pass: `browser-layout-review.json`, SHA-256 `452d2fb2107873b928c3898bd5fe7fcc0d9aa129c8ba9b548e96df62c5715b1b`; all eight hero JPGs were rerendered in Edge and four updated contact sheets were visually inspected. Pair B independent structural/editorial review passes: `C:/Users/x8120/.codex/article-localization-release/batch029-contact-pair-b/pair-a-structural-review.json`, SHA-256 `e46950db6f336ffb6e6778ef56b14b1aa1b8363451481134e5f7da54c9f8b1eb`. Both scoped pack lints pass with only inherited `no_summary` and an English body-length advisory. Relevant API tests: 69 passed, 2 skipped. `npm run check:i18n` and `npm run check:tasks` pass; root-level `tools/*.test.mjs` passes 96 tests and skips 1. Full `npm run test:tools` still fails 17 unrelated `tools/video/**` test files in this Windows checkout; they exit before reporting assertions. No PR, production import, publish or deployment has occurred for this pair.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+標記完成。依據：All DoD ticked; content integrated via PR #857 (merged); wordpress-contact-forms.json & wordpress-smtp-delivery.json have 5 locales, localized diagram-1-<loc>.svg/hero-<loc>.jpg present; publication recorded in tasks/done/2026-09-27-record-batch029-five-language-wordpress-contact.md
