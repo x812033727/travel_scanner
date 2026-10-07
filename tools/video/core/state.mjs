@@ -13,13 +13,14 @@ import { audioEvidenceProblems } from "./audio-evidence.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "./branding.mjs";
 import { hasAnimePolicy, runtimePolicyHash } from "./anime-policy.mjs";
 import { animeBodyDurationProblems, animeRuntimeProof } from "./duration.mjs";
-import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
+import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, episodeNumbers, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
 import { burnIn, drawnShotScenes, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveMusic, resolveSfx, sfxHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
 import { lintVideo, productionClipProblems } from "./lint.mjs";
 import { dubLocales, dubScript, speechCurrent, speechLexicon, translationHash } from "../dubs/plan.mjs";
 import { atomicWrite, contentPackFile, docDir, isInside, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
-import { LOCALES, narrationLocale } from "./schema.mjs";
+import { LOCALES, narrationLocale, textHash } from "./schema.mjs";
+import { sourceHashes } from "./translations.mjs";
 import { speechHash, visualHash } from "./timeline.mjs";
 
 /**
@@ -556,9 +557,33 @@ export async function pipelineStatus({ slug, root, workdir }) {
 
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
 
-/** A compilation's locale translation is complete when the four YouTube fields are there. */
-export function translationComplete(translation) {
-  return isText(translation?.title) && isText(translation?.description) && Array.isArray(translation?.tags) && translation.tags.length > 0 && translation?.chapters !== null && typeof translation?.chapters === "object";
+/** A compilation's chapter titles as its translator is given them: each episode's slug to its title, else 「第 N 集」. */
+export function compilationChapters(doc) {
+  const numbers = episodeNumbers(doc.compilation);
+  return Object.fromEntries(doc.compilation.episodes.map((slug, index) => [slug, doc.compilation.titles?.[slug] ?? `第 ${numbers[index]} 集`]));
+}
+
+/**
+ * The hashes of the zh-TW text a compilation's translation is made from, as the translation
+ * records them (`source_hashes`): the title, the description and the tags as sourceHashes has
+ * them, so lint reads a stale one as it does an episode's, and each chapter title by episode slug.
+ */
+export function compilationSourceHashes(doc) {
+  const { title, description, tags } = sourceHashes(doc);
+  return { title, description, tags, chapters: Object.fromEntries(Object.entries(compilationChapters(doc)).map(([slug, text]) => [slug, textHash(text)])) };
+}
+
+/**
+ * A compilation's locale translation is complete when the four YouTube fields are there and,
+ * given the document, it was made from the document's current text: a translation that records
+ * the hashes of an earlier title, description, tags or chapter titles (a re-plan) is not. One
+ * written before the hashes were kept has none and counts as complete, as it always did.
+ */
+export function translationComplete(translation, doc = null) {
+  const filled = isText(translation?.title) && isText(translation?.description) && Array.isArray(translation?.tags) && translation.tags.length > 0 && translation?.chapters !== null && typeof translation?.chapters === "object";
+  if (!filled || !doc || translation.source_hashes === undefined) return filled;
+  const { title, description, tags, chapters } = translation.source_hashes ?? {};
+  return isDeepStrictEqual({ title, description, tags, chapters }, compilationSourceHashes(doc));
 }
 
 /**
@@ -579,7 +604,7 @@ function compilationDefinitions({ slug, workdir, doc, project, valid, lint, visu
   const brandBodyCurrent = !checks?.branding || (checks.branding.body_frames === body?.total_frames && checks.compilation_hash === body?.compilation_hash);
   const compiled = valid && compilationChecksCurrent(doc, checks, episodes) && brandCurrent && brandBodyCurrent;
   const locales = LOCALES.filter((locale) => locale !== narrationLocale(doc));
-  const untranslated = locales.filter((locale) => !translationComplete(project.translations[locale]));
+  const untranslated = locales.filter((locale) => !translationComplete(project.translations[locale], valid ? doc : null));
   return {
     "metadata planned": {
       done: planned && thumbSource,
@@ -598,7 +623,7 @@ function compilationDefinitions({ slug, workdir, doc, project, valid, lint, visu
     },
     "metadata translated": {
       done: valid && untranslated.length === 0,
-      note: untranslated.length && untranslated.length < locales.length ? `missing or incomplete: ${untranslated.join(", ")}` : undefined,
+      note: untranslated.length && untranslated.length < locales.length ? `missing, incomplete or made from an earlier title: ${untranslated.join(", ")}` : undefined,
       todo: `the translator agent writes docs/videos/${slug}/i18n/<locale>.json with title, description, tags and chapters for ${locales.join(", ")}`,
     },
   };

@@ -15,7 +15,7 @@ import { COMPILATION_REVIEW_FILE, contextFromSeries, publicTexts, reviewCurrent,
 import { DESCRIPTION_MAX_BYTES, TAGS_MAX_CHARS, TITLE_MAX_CHARS } from "../core/metadata.mjs";
 import { atomicWrite, docDir, readJson } from "../core/paths.mjs";
 import { LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
-import { ARTIFACTS, lintProject, loadProject } from "../core/state.mjs";
+import { ARTIFACTS, compilationChapters, compilationSourceHashes, lintProject, loadProject, translationComplete } from "../core/state.mjs";
 import { chosenLocales, readLanguages } from "../core/stages.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
@@ -40,8 +40,6 @@ const isText = (value) => typeof value === "string" && value.trim().length > 0;
 const bytes = (text) => Buffer.byteLength(String(text ?? ""), "utf8");
 
 const writeJson = (file, value) => atomicWrite(file, `${JSON.stringify(value, null, 2)}\n`);
-const chaptersOf = (video) => Object.fromEntries(video.compilation.episodes.map((slug, index) => [slug, video.compilation.titles?.[slug] ?? `第 ${episodeNumbers(video.compilation)[index]} 集`]));
-
 /** Restore a legacy compilation's missing context; an absent schedule never means no mysteries. */
 async function compilationInfo(automation, state) {
   const file = path.join(docDir(state.slug, automation.ctx.root), COMPILATION_FILE);
@@ -279,7 +277,7 @@ export async function planMetadata(automation, state, previousProblem = null) {
     episodes: episodes.map(({ slug, number, title, logline, recap }) => ({ slug, number, title, logline, recap })),
     all_recaps: info.all_recaps ?? [],
     spoiler_context: context,
-    chapters: chaptersOf(before),
+    chapters: compilationChapters(before),
     description_budget_bytes: descriptionBudget(episodes.length),
     thumbnail_headline_max: HEADLINE_MAX_CHARS,
     thumbnail_candidates: candidates.map(({ episode, number, shot, judge, characters, prompt }) => ({ episode, number, shot, judge, characters, prompt })),
@@ -359,13 +357,17 @@ export async function translateMetadata(automation, state) {
   if (loaded.problem) return automation.block(state, loaded.problem);
   const { info } = loaded;
   const context = info.spoiler_context;
-  const chapters = chaptersOf(video);
+  const chapters = compilationChapters(video);
+  // Recorded with each translation, so one made from an earlier title, description, tags or
+  // chapter titles (the plan made again) reads as stale (core/state.mjs translationComplete) and is
+  // translated again here instead of kept.
+  const source = compilationSourceHashes(video);
   for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
     const file = path.join(dir, "i18n", `${locale}.json`);
     const existing = readJson(file, null);
     let problem = null;
     let fields;
-    if (existing && !translationProblem(existing, chapters)) {
+    if (existing && !translationProblem(existing, chapters) && translationComplete(existing, video)) {
       if (!context.mysteries.length) continue;
       fields = reviewInputs(automation, state, video, { [locale]: existing })[locale];
       if (reviewCurrent(receiptsFor(automation, state), context, locale, fields)) continue;
@@ -388,7 +390,7 @@ export async function translateMetadata(automation, state) {
       }
       problem = translationProblem(answer, chapters);
       if (problem) continue;
-      const candidate = { title: answer.title.trim(), description: answer.description.trim(), tags: answer.tags.map((tag) => tag.trim()), chapters: Object.fromEntries(Object.keys(chapters).map((key) => [key, answer.chapters[key].trim()])), lines: {} };
+      const candidate = { title: answer.title.trim(), description: answer.description.trim(), tags: answer.tags.map((tag) => tag.trim()), chapters: Object.fromEntries(Object.keys(chapters).map((key) => [key, answer.chapters[key].trim()])), lines: {}, source_hashes: source };
       fields = reviewInputs(automation, state, video, { [locale]: candidate })[locale];
       problem = await publicTextProblem(automation, state, context, locale, fields);
       if (!problem) translated = candidate;
@@ -432,7 +434,7 @@ export async function advanceCompilation(automation, state, next) {
     const later = ["metadata translated", "final video approved", "upload package", "on YouTube"].includes(next) || !next;
     const needsTranslationReview = LOCALES.filter((locale) => locale !== NARRATION_LOCALE).some((locale) => {
       const translation = project.translations[locale];
-      return translation ? translationProblem(translation, chaptersOf(project.doc)) || !reviewCurrent(receipts, context, locale, fields[locale]) : later;
+      return translation ? translationProblem(translation, compilationChapters(project.doc)) || !reviewCurrent(receipts, context, locale, fields[locale]) : later;
     });
     if (needsTranslationReview) return translateMetadata(automation, state);
     // Status historically binds a package only to final.mp4. A resumed worker must replace

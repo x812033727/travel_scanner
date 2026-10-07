@@ -15,7 +15,7 @@ import { atomicWrite, isInside, resolveWorkdir, stopRequested, UsageError } from
 import { eachLine, textHash } from "./schema.mjs";
 import { localeTexts, runCaptions, StageError } from "./stages.mjs";
 import { compilationHash } from "./compilation.mjs";
-import { approvedEpisodes, COMPILATION_STEPS, keyframeProblems, lintProject, loadProject, LOOK_STEPS, narratorOnly, pipelineStatus, recordStage, stepsFor, translationComplete } from "./state.mjs";
+import { approvedEpisodes, COMPILATION_STEPS, compilationSourceHashes, keyframeProblems, lintProject, loadProject, LOOK_STEPS, narratorOnly, pipelineStatus, recordStage, stepsFor, translationComplete } from "./state.mjs";
 import { buildTimeline, estimateTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "./timeline.mjs";
 import { compilationSandbox, EPISODES, sha, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
 import { planRequests } from "../tts/requests.mjs";
@@ -519,6 +519,39 @@ test("a compilation walks its own steps: planned metadata, cards, the join, the 
   assert.equal(translationComplete({ title: "t", description: "d", tags: ["t"] }), false);
   assert.equal(translationComplete(null), false);
   assert.equal(sha("x").length, 64);
+
+  // A translation records the text it was made from: one made from an earlier title,
+  // description, tags or chapter title (the plan made again) is not complete, and the step reopens.
+  const recorded = { title: "t", description: "d", tags: ["t"], chapters: {}, source_hashes: compilationSourceHashes(drawn.doc) };
+  assert.equal(translationComplete(recorded, drawn.doc), true);
+  const replanned = (change) => {
+    const doc = structuredClone(drawn.doc);
+    change(doc);
+    return doc;
+  };
+  assert.equal(translationComplete(recorded, replanned((doc) => { doc.youtube.title = "她磨好了刀，背叛者還在做夢"; })), false, "a new title");
+  assert.equal(translationComplete(recorded, replanned((doc) => { doc.youtube.description += "\n補一句。"; })), false, "a new description");
+  assert.deepEqual(drawn.doc.youtube.tags, ["仙俠", "AI漫劇"]);
+  assert.equal(translationComplete(recorded, replanned((doc) => { doc.youtube.tags = ["AI漫劇", "仙俠"]; })), false, "tags in another order: the first three become the hashtags");
+  const [first] = drawn.doc.compilation.episodes;
+  assert.equal(translationComplete(recorded, replanned((doc) => { doc.compilation.titles = { ...doc.compilation.titles, [first]: "改過的章節名" }; })), false, "a new chapter title");
+  // An episode without a title of its own reads 「第 N 集」: its number is the source text then.
+  const untitled = replanned((doc) => { delete doc.compilation.titles[first]; });
+  const numbered = { ...recorded, source_hashes: compilationSourceHashes(untitled) };
+  assert.equal(translationComplete(numbered, untitled), true);
+  assert.equal(translationComplete(numbered, replanned((doc) => { delete doc.compilation.titles[first]; doc.compilation.numbers = { [first]: 9 }; })), false, "「第 1 集」 is now 「第 9 集」");
+  assert.equal(translationComplete({ ...recorded, source_hashes: undefined }, replanned((doc) => { doc.youtube.title = "x"; })), true, "one written before the hashes were kept counts as it always did");
+  assert.equal(translationComplete({ ...recorded, title: "" }, drawn.doc), false, "the fields still come first");
+
+  // On disk: one locale made from the old title holds the step, and its note says which.
+  const file = path.join(drawn.dir, "i18n", "ja.json");
+  atomicWrite(file, JSON.stringify({ ...JSON.parse(readFileSync(file, "utf8")), source_hashes: compilationSourceHashes(replanned((doc) => { doc.youtube.title = "上一版的標題"; })) }));
+  state = await drawnStatus();
+  assert.equal(state.next.id, "metadata translated");
+  assert.equal(state.next.note, "missing, incomplete or made from an earlier title: ja");
+  atomicWrite(file, JSON.stringify({ ...JSON.parse(readFileSync(file, "utf8")), source_hashes: compilationSourceHashes(drawn.doc) }));
+  state = await drawnStatus();
+  assert.equal(state.next.id, "final video approved", "made from the current text, it is complete again");
 });
 
 test("illustrated slides walk the picture and music steps, bound to the shots rather than the cards", async () => {
