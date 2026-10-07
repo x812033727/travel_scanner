@@ -201,6 +201,7 @@ class FakeSdk:
                 self.subscription = subscription
                 self.region = region
                 self.properties: dict[str, str] = {}
+                self.named: dict[str, str] = {}
                 self.output_format: str | None = None
                 sdk.configs.append(self)
 
@@ -209,6 +210,9 @@ class FakeSdk:
 
             def set_property(self, key: str, value: str) -> None:
                 self.properties[key] = value
+
+            def set_property_by_name(self, name: str, value: str) -> None:
+                self.named[name] = value
 
         class Signal:
             def __init__(self) -> None:
@@ -255,38 +259,74 @@ def test_the_blocking_synthesis_asks_for_boundaries_and_returns_them_with_the_au
     config = sdk.configs[0]
     assert (config.subscription, config.region, config.output_format) == ("k", "eastasia", "riff48")
     assert config.properties == {"word": "true", "punct": "true"}
+    assert config.named == {"SpeechSynthesis_MaxRetryTimes": "0"}, "one try, reported as it ended"
     assert sdk.spoken == ["<speak/>"]
 
 
+def test_the_real_sdk_takes_the_config_and_knows_every_code_the_rules_name() -> None:
+    # The fake above stands in for the SDK, so the names it shares with it are checked here.
+    real = pytest.importorskip("azure.cognitiveservices.speech")
+    config = align.speech_config(real, "eastasia", "k")
+    assert config.get_property_by_name("SpeechSynthesis_MaxRetryTimes") == "0"
+    assert config.get_property(real.PropertyId.SpeechServiceResponse_RequestWordBoundary) == "true"
+    named = {*align._REFUSALS, *align._UPGRADE_REFUSALS, "ConnectionFailure"}
+    assert named <= set(real.CancellationErrorCode.__members__)
+    fake = {name for name in vars(FakeSdk.CancellationErrorCode) if not name.startswith("_")}
+    assert fake <= set(real.CancellationErrorCode.__members__)
+
+
+# What SDK 1.52 reports, with its own retry off, for each way a synthesis can end (measured
+# against a local stand-in for the service's websocket).
+UPGRADE = (
+    "WebSocket upgrade failed: {}. Please try the request again. "
+    "USP state: Sending. Received audio size: 0 bytes."
+)
+CLOSED = (
+    "Connection was closed by the remote host. Error code: {}. Error details: "
+    "Internal server error USP state: {}. Received audio size: {} bytes."
+)
 NEVER_OPENED = (
     "Connection failed (no connection to the remote host). Internal error: 1. Error details: "
-    "Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED"
+    "Failed with error: WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED (code=111: [CONNECTION] "
+    "Connection refused - no service listening on the target port - Verify the service is "
+    "running and listening on the expected port) USP state: Sending. Received audio size: 0 bytes."
 )
 CLOSED_MIDWAY = "Connection was closed by the remote host. Error code: 1006. Error details: "
+DROPPED = (
+    "WebSocket operation failed. Internal error: 3. Error details: WS_ERROR_UNDERLYING_IO_ERROR "
+    "USP state: Sending. Received audio size: 0 bytes."
+)
+
+
+def _cancelled(
+    monkeypatch: pytest.MonkeyPatch, code: str, said: str, audio: bytes = b"", events: Any = ()
+) -> None:
+    details = SimpleNamespace(error_code=code, error_details=said)
+    cancelled = SimpleNamespace(reason="canceled", audio_data=audio, cancellation_details=details)
+    sdk = FakeSdk(cancelled, list(events))
+    monkeypatch.setattr(align, "_speech_sdk", lambda: sdk)
 
 
 def test_a_cancelled_synthesis_is_the_upstream_error_the_speech_route_knows(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    # The service refused it, answered an error of its own, or the websocket never opened:
-    # settled, as the speech route settles the status it stands for.
+    # Refused before any SSML went out, or by the service before it synthesized: settled, as the
+    # speech route settles the status it stands for.
     for code, status, said in (
-        ("auth", 401, "WebSocket upgrade failed: Authentication error (401)"),
-        ("forbidden", 403, "WebSocket upgrade failed: Forbidden (403)"),
-        ("bad", 400, "the request is invalid"),
-        ("429", 429, "Too many requests"),
-        ("503", 503, "Service unavailable"),
-        ("service", 502, "Internal service error"),
-        ("conn", 502, "WebSocket upgrade failed"),
+        ("auth", 401, UPGRADE.format("Authentication error (401)")),
+        ("forbidden", 403, UPGRADE.format("Forbidden (403)")),
+        ("bad", 400, CLOSED.format(1007, "Sending", 0)),
+        ("429", 429, UPGRADE.format("Too many requests (429)")),
+        ("429", 429, CLOSED.format(4429, "Sending", 0)),
+        ("503", 503, UPGRADE.format("Service unavailable (503)")),
+        ("service", 502, UPGRADE.format("Internal service error (500)")),
+        ("conn", 502, UPGRADE.format("Unspecified connection error (405)")),
         ("conn", 502, NEVER_OPENED),
     ):
-        details = SimpleNamespace(error_code=code, error_details=said)
-        cancelled = SimpleNamespace(reason="canceled", audio_data=b"", cancellation_details=details)
-        sdk = FakeSdk(cancelled, [])
-        monkeypatch.setattr(align, "_speech_sdk", lambda sdk=sdk: sdk)
+        _cancelled(monkeypatch, code, said)
         with pytest.raises(SpeechUpstreamError) as error:
             synthesize_with_boundaries_blocking("eastasia", "k", "<speak/>")
-        assert error.value.status == status, code
+        assert error.value.status == status, said
         assert said[:40] in str(error.value)
     no_audio = SimpleNamespace(reason="completed", audio_data=b"", cancellation_details=None)
     monkeypatch.setattr(align, "_speech_sdk", lambda: FakeSdk(no_audio, []))
@@ -298,19 +338,53 @@ def test_a_cancelled_synthesis_that_may_have_run_is_lost(monkeypatch: pytest.Mon
     # Anything else may follow a synthesis Azure ran and billed
     # (2026-10-07-speech-align-route-tells-an-azure).
     for code, said in (
-        ("504", "Timeout while synthesizing"),
+        ("504", "Timeout while synthesizing. Current RTF: 2.1. USP state: ReceivingData."),
         ("conn", CLOSED_MIDWAY),
+        ("conn", DROPPED),
+        ("conn", "Failure while sending a frame over the WebSocket connection."),
+        # A service error or a service down once the socket was open: the SSML had gone out.
+        ("service", CLOSED.format(1011, "Sending", 0)),
+        ("service", CLOSED.format(1011, "TurnStarted", 0)),
+        ("503", CLOSED.format(1012, "TurnStarted", 0)),
         ("runtime", "Runtime error: the synthesizer failed"),
         ("a code this module does not know", "?"),
     ):
-        details = SimpleNamespace(error_code=code, error_details=said)
-        cancelled = SimpleNamespace(reason="canceled", audio_data=b"", cancellation_details=details)
-        sdk = FakeSdk(cancelled, [])
-        monkeypatch.setattr(align, "_speech_sdk", lambda sdk=sdk: sdk)
+        _cancelled(monkeypatch, code, said)
         with pytest.raises(SpeechAnswerLost) as error:
             synthesize_with_boundaries_blocking("eastasia", "k", "<speak/>")
-        assert "it may have run" in str(error.value), code
+        assert "it may have run" in str(error.value), said
         assert not isinstance(error.value, SpeechUpstreamError)
+
+
+def test_a_cancelled_synthesis_that_had_started_is_lost_whatever_its_code(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # The SDK takes the code from the close code alone: a 4429 or a 1011 after audio streamed is
+    # a synthesis that ran, and the result keeps the audio that came first.
+    started = WAV
+    for code, said, audio, events in (
+        ("429", CLOSED.format(4429, "ReceivingData", 19200), started, ()),
+        ("service", CLOSED.format(1011, "ReceivingData", 19200), started, ()),
+        ("bad", CLOSED.format(1007, "ReceivingData", 19200), started, ()),
+        # A boundary before any audio: the service had begun.
+        ("service", CLOSED.format(1011, "ReceivingData", 0), b"", [_event("你好", 50, 200)]),
+        ("auth", UPGRADE.format("Authentication error (401)"), b"", [_event("你好", 50, 200)]),
+    ):
+        _cancelled(monkeypatch, code, said, audio, events)
+        with pytest.raises(SpeechAnswerLost, match="it may have run"):
+            synthesize_with_boundaries_blocking("eastasia", "k", "<speak/>")
+
+
+def test_the_rules_read_the_whole_text_and_the_message_keeps_its_start(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    # The never-opened marker past the message's 200 characters still settles it.
+    late = f"Connection failed after {'x' * 240} WS_OPEN_ERROR_UNDERLYING_IO_OPEN_FAILED"
+    _cancelled(monkeypatch, "conn", late)
+    with pytest.raises(SpeechUpstreamError) as error:
+        synthesize_with_boundaries_blocking("eastasia", "k", "<speak/>")
+    assert error.value.status == 502
+    assert "WS_OPEN_ERROR" not in str(error.value)
 
 
 @pytest.mark.asyncio
