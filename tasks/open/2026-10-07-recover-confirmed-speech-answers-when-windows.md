@@ -67,3 +67,57 @@ outside Git under `<home>/mokaair-work/ai-agent-continuation-20261007/`.
   Its recovery receipt explicitly records zero network calls and preserved tmp.
 - The local operator workaround is not a repository fix. No uncertain citation
   request was cleared, retried or changed by this recovery.
+
+- A third confirmed-answer replacement failure occurred during English dub ASR:
+  `logs/20261007T142725Z-check-audio-en.exit.json`, code 1, child 32892,
+  closed at `2026-10-07T14:32:19.602465Z`. Request SHA
+  `0a725f16e704643b4d7cf535e0e549bd0c2872d7b1a66810049b97e9940c3d98`
+  had already received HTTP 200 and saved an intact confirmed temporary record.
+  Operator recovery verified the exact current English `ag027` raw clip,
+  its native 16 kHz ASR request, unique captured response and dead producer,
+  preserved the sent/tmp/cache snapshots, then promoted the exact confirmed
+  bytes at `2026-10-07T14:38:21Z`, with zero network calls. Response/answer SHA
+  `a564266e8785d5aec293d109f997b953533d21394c293c95f247e8dc45255117`;
+  restored native record SHA
+  `cb3268df8f93493a0ee8491e2af716096eb0889ae40251a4d79082405f55460f`.
+  This recovery succeeded with a rename after process closure; it does not
+  establish the underlying cause or repair the native implementation.
+
+- A fourth confirmed-answer replacement failure occurred during Japanese dub
+  synthesis: `logs/20261007T145007Z-dub-ja.exit.json`, code 1, child 32756,
+  closed at `2026-10-07T14:53:07.590760Z`. The four-line task-spec request SHA
+  `1b2cc8136b746d1f3387515e8e3a7095ab060f45de3f42127fb1b7c0db2ee262`
+  had a captured HTTP 200 response and intact native confirmed temporary record.
+  Operator recovery bound the current Japanese request, native-converted 48 kHz
+  WAV, captured response, sent/confirmed records and closed producer before
+  promoting the exact confirmed bytes at `2026-10-07T14:58:30Z`, with zero network
+  calls. Captured response SHA
+  `5dc071b9d604ab728e5959b5967398400f47c8aaebc38637ed00cce8047b5897`;
+  confirmed WAV SHA
+  `95ca824c53539d694d5c195bc10469bbee0c47a36b2f38c6837fabeffe91033c`;
+  restored record SHA
+  `f644a0b75897a39f4c4369754e779798e9346126f1c35351f2625572be98b03c`.
+  The resumed run reused its already-paid answer; no uncertain request was
+  cleared. This remains an operator workaround, not a native Windows fix.
+
+- A fifth replacement failure interrupted the second ordinary Japanese retake:
+  `logs/20261007T164749Z-dub-ja.exit.json`, code 1, child 39000, closed at
+  `2026-10-07T16:49:54.829529Z`. Single-line ag131 request SHA
+  `72285f4cff35caa0be063b4c2f0af3197c147afa43f3ef06624d37e477baccd6`
+  had received HTTP 200 / 17 billable characters. Three historical captures
+  share this body hash; the audit binds only the current producer PID/time.
+  Actual response SHA
+  `80ba67e08938057177e84f1cb26af83cfa08e0bbec71c60b33124a386cf93c51`
+  converts byte-for-byte to confirmed native WAV SHA
+  `7f1e3c484716555d7f41385ded9089db4bf45e9c603c8ffc4e2d1677e7084e3a`.
+  Independent recovery review SHA
+  `03596d246bd264124b64a38ce59580dc4c3b2ee3850f3bb90576723e0d77b272`
+  binds the current source/translation, exact response and closed producer.
+  The exact confirmed record was restored at `2026-10-07T16:57:01.939Z`
+  after exclusive snapshots and readback, with zero network calls; record SHA
+  `58c1265b4eb90fd5877749fb3a8769c24d04272e2f0e65a4f9da4b361afb9797`.
+  Ten of the fifteen retake clips had already been written. Continuation must
+  retain them and redo only the five unfinished IDs, reusing the recovered
+  ag131 answer. Restarting all fifteen would buy completed clips again.
+  This local recovery changes neither the unrelated held Korean request nor
+  native implementation; the underlying Windows cause remains unproved.

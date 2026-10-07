@@ -174,3 +174,10 @@ Metadata draft SHA `68ba754e51e18f85320c1ecef4cacd579d28c7a6dd693e2ec98823faea0a
 | `description.zh-CN.txt` | 1147 | `a3adae6a80b9d17ca1708f93e715b2e7a7cbd5411facbb36da652f9509941472` |
 
 本追加只審 current 免費字幕與 unapproved metadata draft，沒有 final movie assembly／actual overlay／全片播放器或外語音訊聽驗結論。沒有 owner 語言選擇、dubs、final／upload approval 或 YouTube upload／publication；root 回報的 locales={} 沒有因免費五語草稿而改變。其他 citation ci037 未知 sent／STOP 及 Embedding hold 未被操作；source／media／cache／journal／approval 未由本 reviewer 修改。
+
+
+## Selected captions and package, 2026-10-07 18:36 UTC
+
+The later selected-language captions replace the historical base 718-cue delivery: zh-TW142 / EN142 / JA143 / KO143 / zh-CN142 = **712 current cues**. Normal captions/package both actually closed exit 0. Five descriptions/metadata, six chapter clocks, four official URLs and exact movie/thumbnail/caption/EN-audio copies are verified by the actual native-reconstruction audit SHA `f74846a9b2fed811cedf2782d464826ce45591568802e97060a4f89a2302024f` and independent current-file readback SHA `9f974e8b122b208b1a410979a85976a0ef4e987e478b8e2bb02d25f5ae9b0bd7`.
+
+Current package has 15 files including UPLOAD.md, one English dub and metadata SHA `4d1d9f57327aa1205c0abe187297e02d7ce9a1a88e77f383f4835587f74f2ce6`. Native 4/4 permits the absent working Korean dub; selected languages are not complete. Japanese retains current native dub-caption timing while its best audio is preserved outside upload under a real bounded skip; Korean CC uses main narration windows. Translated cue intervals are not measured foreign word timestamps. Four foreign thumbnail variants still use the Chinese fallback. Publish review `285cfe5b-c0ab-4cf9-86ef-db4214b33c35` auto-approved the exact new metadata; language review `2f2d801d-a877-473c-af00-932b8fa9f142` remains pending. YouTube ID null / ready_to_upload false; no owner playback/listening or Studio-upload acceptance. Detailed actual closed runs, source/meaning reviews, best-track preservation, Korean held evidence and receipt paths are in `dub-review-20261007.md`.
