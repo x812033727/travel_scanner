@@ -1,14 +1,14 @@
 ---
 id: 2026-10-04-native-video-project-stop-and-producer-exclusion
 title: Honor project STOP and share producer ownership before native video mutations
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-project-lease
+claimed_at: 2026-10-07T01:30:43Z
 created_at: 2026-10-04T15:39:59Z
 completed_at:
-branch:
+branch: claude/sharp-bardeen-ob6fn9
 depends_on:
   - 2026-10-03-video-worker-narration-takes-made-stale
   - 2026-09-30-video-worker-moves-two-videos-at
@@ -87,4 +87,3 @@ TEMP/mokaair-quality-five-holds-independent-offline-candidate-20261004.json,
 SHA256 29B646EB9B842251F1F73A8D215AE7C8D72FBCC217EF85E21A4B5A15AE025608.
 Its proposed USD 0.0405 phase ceiling does not establish producer safety or
 authorize a fourth attempt with the same payload.
-
