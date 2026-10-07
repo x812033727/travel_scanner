@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-a-pending-discussion-job-and-the
 title: A pending discussion job and the bookkeeping's site calls do not hold their video
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-happy-carson
 claimed_at: 2026-10-07T14:59:52Z
 created_at: 2026-10-06T13:39:27Z
-completed_at:
+completed_at: 2026-10-07T15:23:10Z
 branch: claude/happy-carson-c1hy91
 depends_on:
   - 2026-10-06-a-failing-video-is-deferred
@@ -104,7 +104,8 @@ node --test tools/video/automation/automation.test.mjs tools/video/automation/se
   tells a compilation's series) and the untold-compilation loop go through it. The hold stays in
   the loops, not in `recordVideoId` or `tellCompilationDone`: a unit (advance) calls
   `tellCompilationDone` on a video it already holds, and a hold taken and let go inside would
-  end the unit's. The test owns the sequence through the fetch: while the first compilation's
-  call is out, a second lane's save lands on the next one, and the step after keeps it; with the
-  hold or the re-read removed it fails. The drop loop needs neither: it saves with no await.
-
+  end the unit's. Two tests own the sequence: while the first compilation's call is out, a
+  second lane's save lands on the next compilation and the step after keeps it; and while the
+  pasted-address loop is on one video, a save lands on the next pasted one and its record keeps
+  it. Each fails with the hold, or that loop's re-read, removed. The drop loop needs neither: it
+  saves with no await.

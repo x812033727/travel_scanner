@@ -1287,6 +1287,31 @@ test("the first lane's bookkeeping holds a video while it awaits the site for it
   assert.equal(busy.size, 0, "every hold ends with its step");
 });
 
+test("a pasted address is recorded on the video as it stands once held, not as the loop listed it", async () => {
+  const box = sandbox("fixture-minimal");
+  const save = (state) => {
+    mkdirSync(path.join(box.work, state.slug), { recursive: true });
+    atomicWrite(path.join(box.work, state.slug, "auto.json"), `${JSON.stringify(state, null, 2)}\n`);
+  };
+  const video = (slug, created) => ({ slug, title: slug, status: "done", created_at: created, format: "slides", replans: 0, verify_rounds: 0, verified: true, listener_done: true, retakes: 0, rewrites: 0, notes: [] });
+  // Two pasted addresses: the first video has no script here to record it in, so its step does
+  // nothing; while the loop is on it, a second lane saves the other video's progress.
+  save(video("no-script-here", "2026-09-29T00:00:00.000Z"));
+  save(video("fixture-minimal", "2026-09-30T00:00:00.000Z"));
+  const site = fakeSite({ videos: [{ slug: "no-script-here", youtube_video_id: "aaaaaaaaaaa" }, { slug: "fixture-minimal", youtube_video_id: "dQw4w9WgXcQ" }] });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-07T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  const record = automation.recordVideoId.bind(automation);
+  automation.recordVideoId = async (state, id) => {
+    if (state.slug === "no-script-here") save({ ...readJson(path.join(box.work, "fixture-minimal", "auto.json")), languages_note: "saved by the second lane" });
+    return record(state, id);
+  };
+  assert.match(await automation.step(), /^fixture-minimal: on YouTube as dQw4w9WgXcQ/);
+  const saved = readJson(path.join(box.work, "fixture-minimal", "auto.json"));
+  assert.deepEqual([saved.status, saved.youtube_video_id, saved.languages_note], ["done", "dQw4w9WgXcQ", "saved by the second lane"]);
+});
+
 test("a lost blocked report is recovered after restart without another model request, and failed reports back off", async () => {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
