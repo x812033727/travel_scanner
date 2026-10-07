@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-pictures-keep-best-after-prompt-fixes
 title: Pictures a model takes no style plate for are judged from the look's text, and a slides shot still failing after its prompt fixes keeps its best picture for the owner's final review
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-video-unstuck
 claimed_at: 2026-10-06T07:04:34Z
 created_at: 2026-10-06T07:04:21Z
-completed_at:
+completed_at: 2026-10-07T01:03:45Z
 branch: claude/video-unstuck-plate-accept
 depends_on: []
 scope:
@@ -151,3 +151,11 @@ pending with "N 張插圖未通過 judge（…），需站主審看" in its summ
 - The duration-review receipt (`docs/videos/long-form/review.json`) binds `flow.mjs`,
   `prompts.mjs`, `state.mjs`, `automation.test.mjs` and others touched here: `node
   tools/video/long-form/cli.mjs check` is red on them until a reviewer re-binds.
+
+### 2026-10-07 標記完成（由站主授權，非原持有者）
+
+- 證據：程式隨 PR #1341 於 2026-10-06 進 main（commit `a435f067`，標題同本票）；
+  後續 #1344（`e5f9c058`）疊在它上面合併。分支已刪。
+- 票停在 review、持有者 claude-fable-5-1-video-unstuck，佔住 `flow.mjs`、`keyframes.mjs`、
+  `stages.mjs` 與 automation 測試等，擋住約 21 張票。站主 2026-10-07 同意由 claude-opus-5-5 代為結案。
+- 清單全部已勾，沒有未完成項目要交代去向。上面 Notes 記的 long-form 審查收據重綁仍待審查者處理。

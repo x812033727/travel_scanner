@@ -4,6 +4,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
+import { LEASE_FILE } from "../core/project-lease.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { brandingHash, pinBranding } from "../core/branding.mjs";
 import { fixture, sandbox } from "../core/fixtures/load.mjs";
@@ -587,4 +588,22 @@ test("a dub of an illustrated video carries the music bed and the cut's effects 
   const gone = capture(box, server, ffmpeg);
   assert.equal(await main(["dub", "--slug", slug, "--locale", "en", "--format", "mp3"], gone.ctx), EXIT.usage);
   assert.match(gone.out.stderr, /cannot carry the music bed: music.track gone.mp3 is not in/);
+});
+
+test("a dub run by hand while another producer holds the project asks for no speech and writes no track", async () => {
+  const box = sandbox();
+  const doc = geminiDoc(fixture());
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(doc, (line) => `EN ${line.id}`)));
+  const server = fakeServer();
+  const ffmpeg = fakeFfmpeg();
+  await narrate(box, server, ffmpeg);
+  writeFileSync(path.join(box.workdir, LEASE_FILE), JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "auto", pid: 4242, host: "video-worker-elsewhere", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+  const calls = server.calls.length;
+  const run = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en"], run.ctx), EXIT.owner);
+  assert.match(run.out.stderr, /auto \(pid 4242 on video-worker-elsewhere.*nothing was sent or written/);
+  assert.equal(server.calls.length, calls, "no speech request, not even the status");
+  assert.equal(existsSync(dubArtifacts(box.workdir, "en").timeline), false);
 });

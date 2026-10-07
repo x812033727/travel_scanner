@@ -255,7 +255,22 @@ async function answerHeld(automation, job, state) {
     if (!isObject(revisedVideo)) reply = clip(`${reply}\n\n（新版本沒有存下來：revised.video 不是完整的 video.json）`);
     else {
       const before = readFileSync(file, "utf8");
-      const refused = await automation.saveAndLint(state, { video: revisedVideo });
+      let refused;
+      try {
+        refused = await automation.saveAndLint(state, { video: revisedVideo });
+      } catch (error) {
+        // A STOP or a lost lease during the lint repairs (flow.mjs PROJECT_HELD, not imported here:
+        // flow.mjs imports this module): the last good script goes back before the video is set
+        // aside, unless another producer holds the project now, whose files are its own.
+        if (error?.code === "video_project_held") {
+          try {
+            automation.restoreVideo(state, before);
+          } catch (restoreError) {
+            if (restoreError?.code !== "video_project_held") throw restoreError;
+          }
+        }
+        throw error;
+      }
       if (refused) {
         // The script goes back as it was: a discussion never leaves a broken script behind.
         automation.restoreVideo(state, before);

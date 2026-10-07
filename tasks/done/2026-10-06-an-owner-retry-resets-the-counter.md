@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-an-owner-retry-resets-the-counter
 title: An owner retry resets the counter that blocked the video and a new seed replaces an exhausted picture request
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-video-unstuck
 claimed_at: 2026-10-06T06:25:34Z
 created_at: 2026-10-06T06:24:54Z
-completed_at:
+completed_at: 2026-10-07T01:03:45Z
 branch: claude/video-unstuck-retry
 depends_on: []
 scope:
@@ -111,3 +111,12 @@ watch the worker log: the prompt-fix round starts at 1 again ("keyframes prompts
 - The duration-review receipt binds `flow.mjs`, `automation.test.mjs` and
   `look-keyframes.test.mjs`: `node tools/video/long-form/cli.mjs check` is red on them until a
   reviewer re-binds.
+
+### 2026-10-07 標記完成（由站主授權，非原持有者）
+
+- 證據：程式隨 PR #1340 於 2026-10-06 進 main（commit `4674fb86`，標題同本票）；
+  後續 #1341（`a435f067`）、#1342、#1344 都疊在它上面合併。分支已刪。
+- 票停在 review、持有者 claude-fable-5-1-video-unstuck，佔住 `flow.mjs`、`client.mjs`、
+  `keyframes.mjs` 等，擋住約 17 張票（含 `2026-10-04-retain-video-policy-holds-without-new`）。
+  站主 2026-10-07 同意由 claude-opus-5-5 代為結案。
+- 清單全部已勾，沒有未完成項目要交代去向。上面 Notes 記的 long-form 審查收據重綁仍待審查者處理。

@@ -1,14 +1,14 @@
 ---
 id: 2026-10-04-native-language-durable-units-and-progress
 title: Recover native language calls with durable unit receipts and visible progress
-status: open
+status: done
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-language-units
+claimed_at: 2026-10-07T01:22:51Z
 created_at: 2026-10-04T14:43:49Z
-completed_at:
-branch:
+completed_at: 2026-10-07T01:25:52Z
+branch: claude/sharp-bardeen-ob6fn9
 depends_on:
   - 2026-10-03-video-worker-narration-takes-made-stale
   - 2026-09-30-video-worker-moves-two-videos-at
@@ -19,6 +19,8 @@ scope:
   - tools/video/automation/run-receipts.test.mjs
   - tools/video/automation/flow.mjs
   - tools/video/automation/automation.test.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Recover native language calls with durable unit receipts and visible progress
@@ -42,26 +44,26 @@ unit before the next unit can start after a process restart.
 
 ## Definition of done
 
-- [ ] Native translation and caption review reconnect to the same source-bound
+- [x] Native translation and caption review reconnect to the same source-bound
       operation after a lost submit, lost body or restart, without another paid run.
-- [ ] A translated unit followed by a pending reviewer survives restart; the
+- [x] A translated unit followed by a pending reviewer survives restart; the
       reviewer recovers and the next unit advances without a false input-change hold.
-- [ ] A pending video has its own next-check time and cannot stop other eligible
+- [x] A pending video has its own next-check time and cannot stop other eligible
       videos or repeatedly take the oldest slot.
-- [ ] The backend receives actual locale/unit checkpoint progress while ready,
+- [x] The backend receives actual locale/unit checkpoint progress while ready,
       uploaded and listening acceptance still require their existing gates.
-- [ ] Preserve current source/final/owner choices, model authority, STOP/drop,
+- [x] Preserve current source/final/owner choices, model authority, STOP/drop,
       budgets, 24-line/2400-character units and the existing two production lanes.
 
 ## Steps
 
-- [ ] Recheck and resolve the dependent active claims before touching their
+- [x] Recheck and resolve the dependent active claims before touching their
       flow/automation-test scopes; their implementation may already have landed.
-- [ ] Bind each language operation and successful response to the actual saved
+- [x] Bind each language operation and successful response to the actual saved
       units/checkpoint hashes before starting another operation in that stage.
-- [ ] Add project-local pending scheduling and truthful progress reports without
+- [x] Add project-local pending scheduling and truthful progress reports without
       skipping any translation review or audio check.
-- [ ] Keep the imported approved-final runner's pending/unknown behavior and its
+- [x] Keep the imported approved-final runner's pending/unknown behavior and its
       frozen source/runtime contracts compatible; broaden scope only after review.
 
 ## How to verify
@@ -92,3 +94,32 @@ client/receipt/automation tests and the complete tools suite with a compatible N
 - Filed as an unclaimed follow-up while the dependent flow scopes remain active.
   PR #1210 head d0958ab contains the separate six-source approved-final recovery;
   it is draft with 22 successful checks and has not been merged or deployed.
+
+### 2026-10-07 implementation (claude-opus-5-5-language-units)
+
+- Claimed with `--force` past the dependency: `2026-10-03-video-worker-narration-takes-made-stale`
+  landed in #1182 and only its post-deploy production check is open;
+  `2026-09-30-video-worker-moves-two-videos-at` is done. The two `review` claims that held these
+  files (#1340, #1341, both on main) were closed on the owner's behalf in this branch.
+- `client.mjs`: `DURABLE_STAGES` = writer, translator, caption_reviewer (the shorten and reword
+  variants included). With `durable_stage_runs` on they go through `durableRun`, so the saved
+  request key reconnects after a lost submit, a lost body or a restart. Off, they stay on the
+  synchronous route as before.
+- `flow.mjs`: `unitCheckpoint()` runs after each kept translation or review. It adopts the run
+  that gave it, bound to `<locale>.units.json`, as `saveAndLint` does for the writer, so a round
+  that stops on the next request leaves no journal that the next unit reads as a changed input.
+  It then reports a `languages_progress` checklist row (`en 翻譯：2／4 段已審，1 段譯好待審`), best
+  effort; the locale's own report after the merge drops it. Ready/uploaded/listening gates untouched.
+- Pending fairness needed no change: a language unit runs inside `move()`, which sets `unitVideo`,
+  so a pending translator or reviewer sets only that video aside (`pendingUntil`, one lookup per
+  round) and the lane goes on. The end-to-end test asserts the same run leaves it alone.
+- Unchanged: unit sizes (24 lines / 2400 chars), every unit still reviewed before merge, STOP
+  (no submit; tested), drop, budgets, model authority, lane count.
+- PR #1210's approved-final runner is not on main and no other caller sends these stages.
+- Throughput note for the owner: a durable stage polls up to 25 s, then the video waits for the next
+  round (about 5 min) instead of the synchronous route's up to 295 s, so a slow unit can take a round
+  longer. This trades speed for not losing paid answers, as the writer already does.
+- Tests: client.test (lost submit/body/restart per stage and variant; STOP; durable off),
+  automation.test (four-unit translation over a fake job route with a lost submit, a lost body
+  and a restart with the reviewer pending; 8 jobs, no synchronous call, progress rows). Both new
+  tests fail on the old code. Not verified here: the production run, which needs a deploy.

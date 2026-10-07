@@ -44,6 +44,7 @@ import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from
 import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { speechLexicon } from "../dubs/plan.mjs";
+import { requireProjectLease } from "../core/project-lease.mjs";
 import { judgeLines, SpeechError, transcribeClip } from "./client.mjs";
 import { spokenParts } from "./requests.mjs";
 import { secondOpinionCommand, secondOpinionName, secondTranscripts } from "./second-opinion.mjs";
@@ -256,6 +257,8 @@ export async function checkAudio(args, ctx, options) {
   if (!timeline) {
     throw new UsageError(dub ? `no ${locale} dub yet: run dub --slug ${doc.slug} --locale ${locale} first` : `no narration yet: run tts --slug ${doc.slug} first`);
   }
+  // Not while another producer holds the project (core/project-lease.mjs); the worker's unit holds it already.
+  requireProjectLease(workdir, { owner: "check-audio", now: ctx.now, as: (error) => new SpeechError(error.message, { code: error.code, who: "owner" }) });
   const lines = dub ? dubLines(timeline, project.translations[locale], locale, doc.slug) : narrationLines(doc);
   // What makes the clips again: the flags file goes to it as `--redo`.
   const remake = dub ? `dub --slug ${doc.slug} --locale ${locale}` : `tts --slug ${doc.slug}`;

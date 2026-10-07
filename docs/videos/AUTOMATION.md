@@ -76,6 +76,8 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 要讓工人整個停下來，在工作區放一個 `STOP` 檔：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`。刪掉這個檔，下一輪就會繼續。Shorts 的敲門（`shorts/cli.mjs tick`，工人在 `auto` 旁邊另外每 5 分鐘跑一次）也看這個檔：有 STOP 就不敲門，網站也就不鎖定時段、不再開始送 Shorts 上 YouTube，紀錄印一行 `video-worker: shorts: STOP found`，刪掉後下一次就恢復；有活動在跑的話，這段時間 Shorts 分頁會說工人沒有回報。
 
+同一支影片同時只有一個程序能付費或改它的檔案：工人處理一支影片時，會在它的工作目錄放一個 `LEASE` 檔（`tools/video/core/project-lease.mjs`），手動跑的 look、keyframes、clips、music、tts、dub、check-audio 也要先拿到它。別的程序拿著時，工人這一輪跳過那支影片（紀錄印 `left alone this run`），手動指令什麼都不送、不寫就以 exit 3 結束。只有確定原持有程序已結束（同一台主機、同一次開機，程序已不在或換人）才會接手，舊紀錄留成 `LEASE.<token>.dead.json`；其他情況要人看過再刪檔。工人容器的 hostname 固定是 `video-worker`，部署砍掉工人留下的 `LEASE` 下一個工人就能接手。**在主機上手動跑影片指令一律用 `docker compose -f docker-compose.prod.yml exec -T video-worker …`，不要用 `run`**：`run` 另開的容器同名卻看不到工人的程序，會把工人正拿著的 `LEASE` 誤當成死的。
+
 ## 一支影片的自動流程
 
 1. **選題**：從站上最近 14 天已發布的 AI／科技新聞與文章，加上 Brave 搜尋結果，排除已經做過的題目與避開的題材。由企劃模型挑出題目、寫 `brief.md`（含 2–3 個大綱與「站主觀點」；有頻道立場時第一行寫「套用立場：N、M」）→ 先問 Jev 挑哪一個（[`HANDS-OFF.md`](HANDS-OFF.md)）→ 送審「選大綱」。Jev 過關的伺服器直接核准；沒過就把原因交回企劃模型重寫，兩次仍不過、或立場空白，才**停下來等站主**。

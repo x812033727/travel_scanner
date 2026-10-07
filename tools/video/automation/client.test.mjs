@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -474,6 +474,76 @@ test("durable writer persists its key and exact body before POST, then reconnect
     client.settleRuns([DURABLE_SLUG]);
     assert.deepEqual(durableFiles(box), []);
   }
+});
+
+test("a translation's translator and caption reviewer are durable jobs too: a lost submit, a lost body or a restart reconnects to the same operation", async () => {
+  for (const [stage, variant] of [["translator", null], ["caption_reviewer", null], ["translator", "shorten"]]) {
+    const box = sandbox(), posts = [], lookups = [];
+    const translate = (client) => client.run(stage, DURABLE_SLUG, "Translate the worksheet", { locale: "en", worksheet: { lines: [{ id: "k7p2", source: "原句" }] } }, 32_000, "slides", variant);
+    let original = null;
+    const answer = (status) => async (url, init) => {
+      if (init.method === "GET") { lookups.push(new URL(url).pathname); return Response.json(job(original, status)); }
+      assert.equal(new URL(url).pathname, DURABLE_PATH, "never the synchronous route");
+      const body = JSON.parse(init.body);
+      original ??= body;
+      posts.push(body);
+      if (posts.length === 1) throw failed("UND_ERR_SOCKET");
+      if (posts.length === 2) return new Response('{"id":', { status: 200 });
+      return Response.json(job(body, status));
+    };
+    const first = durableClient(box, answer("running"), { durablePollMs: 5000, durablePollIntervalMs: 1 });
+    await first.settings();
+    await assert.rejects(translate(first), (error) => error.code === RUN_PENDING && error.stage === stage, stage);
+    assert.equal(new Set(posts.map((body) => body.request_key)).size, 1, `${stage}: one server operation for the lost submit and the lost body`);
+    assert.equal(posts.at(-1).stage, stage);
+    assert.equal(posts.at(-1).variant ?? null, variant);
+    lookups.length = 0;
+    const restarted = durableClient(box, answer("succeeded"));
+    await restarted.settings();
+    assert.deepEqual(await translate(restarted), savedAnswer, `${stage}: the restarted worker takes the same job's answer`);
+    assert.equal(posts.length, 3, `${stage}: the restart looks the job up and posts nothing`);
+    assert.equal(lookups.length, 1);
+    restarted.settleRuns([DURABLE_SLUG]);
+    assert.deepEqual(durableFiles(box), []);
+  }
+});
+
+test("a project STOP keeps a translation unit from being submitted; its request key waits for the resume", async () => {
+  for (const stage of ["translator", "caption_reviewer"]) {
+    const box = sandbox();
+    let posts = 0;
+    const client = durableClient(box, async (_url, init) => {
+      posts++;
+      return Response.json(job(JSON.parse(init.body)));
+    });
+    await client.settings();
+    const stop = path.join(box.work, DURABLE_SLUG, "STOP");
+    mkdirSync(path.dirname(stop), { recursive: true });
+    writeFileSync(stop, "owner hold");
+    const translate = () => client.run(stage, DURABLE_SLUG, "Translate", { locale: "en", worksheet: { lines: [] } }, 32_000);
+    await assert.rejects(translate(), (error) => error.code === RUN_PENDING, stage);
+    assert.equal(posts, 0, `${stage}: nothing is sent under STOP`);
+    const [file] = durableFiles(box);
+    const key = JSON.parse(readFileSync(file, "utf8")).request_key;
+    rmSync(stop);
+    assert.deepEqual(await translate(), savedAnswer);
+    assert.equal(posts, 1);
+    assert.equal(JSON.parse(readFileSync(file, "utf8")).request_key, key, `${stage}: the resumed submit keeps the key saved under STOP`);
+  }
+});
+
+test("a translation stays on the synchronous route while the site has not turned durable runs on", async () => {
+  const box = sandbox(), routes = [];
+  const client = automationClient({ ...credentials(box), root: box.root, sleep: async () => {}, fetch: async (url, init) => {
+    const route = new URL(url).pathname;
+    routes.push(route);
+    if (route.endsWith("/settings")) return Response.json({ durable_stage_runs: false });
+    return Response.json(savedAnswer);
+  } });
+  await client.settings();
+  for (const stage of ["translator", "caption_reviewer"]) assert.deepEqual(await client.run(stage, DURABLE_SLUG, "Translate", { locale: "en" }), savedAnswer);
+  assert.deepEqual(routes.slice(1), ["/api/video/automation/run", "/api/video/automation/run"]);
+  assert.deepEqual(durableFiles(box), []);
 });
 
 test("a pending writer restarts with GET and returns the persisted result despite changed models, capability or budgets", async () => {

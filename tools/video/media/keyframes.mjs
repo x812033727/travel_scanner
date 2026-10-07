@@ -22,7 +22,7 @@ import { ledgerTotals } from "./ledger.mjs";
 import { mediaKey } from "./cache.mjs";
 import { duplicates } from "./qc.mjs";
 import { composeShotPrompt, DEFAULT_IMAGE_PROMPT_LIMIT, imagePromptLimit, shotPromptBudget } from "./prompt-budget.mjs";
-import { capFor, choiceFor, drawContactSheet, imagePrice, imageSelectionVersion, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, pictureHashes, retakeable, sameImage, Stage, statusProblem, takesStyleReference } from "./stages.mjs";
+import { capFor, choiceFor, drawContactSheet, imagePrice, imageSelectionVersion, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, mayWriteProject, pictureHashes, retakeable, sameImage, Stage, statusProblem, takesStyleReference } from "./stages.mjs";
 import { trimMargins } from "./trim.mjs";
 
 export const MAX_KEYFRAME_TAKES = 3;
@@ -427,7 +427,10 @@ export async function run(command, args, ctx) {
   const binding = slides ? { pictures_hash: picturesHash(doc) } : { visual_hash: visualHash(doc) };
   const bound = (manifest) => manifest && Object.entries(binding).every(([key, value]) => manifest[key] === value);
   const format = slides ? doc.format : null;
-  if (values["accept-best"]) return acceptBest(ctx, { doc, workdir, hash, bound, wanted: values["accept-best"], channel: values.channel });
+  if (values["accept-best"]) {
+    if (!mayWriteProject(ctx, workdir, "keyframes")) return EXIT.incomplete;
+    return acceptBest(ctx, { doc, workdir, hash, bound, wanted: values["accept-best"], channel: values.channel });
+  }
   const rubricOptions = { subtitleBand: burnIn(doc), craft: slides };
   const wanted = values.shot ? new Set(values.shot.split(",").map((each) => each.trim()).filter(Boolean)) : null;
   // A shot cut from another shot's clip (data.source) shows that clip, so it has no keyframe to draw.
@@ -499,6 +502,7 @@ export async function run(command, args, ctx) {
     return EXIT.ok;
   }
 
+  if (!mayWriteProject(ctx, workdir, "keyframes")) return EXIT.incomplete;
   const credentials = requireCredentials(ctx);
   const options = clientOptions(ctx, credentials);
   const status = imageStatus(await mediaStatus(options), project.series);
