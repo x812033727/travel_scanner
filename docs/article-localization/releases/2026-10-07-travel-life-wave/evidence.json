@@ -1,0 +1,864 @@
+{
+  "schema": "article-localization-sanitized-release-record-v1",
+  "state": "published_and_publicly_verified",
+  "release_task_id": "2026-10-07-release-localized-travel-life-wave-20261007",
+  "content_pull_requests": [
+    1365
+  ],
+  "merged_deployed_sha": "7524c25995d59f3826227e693d52f2ef5b3a19a2",
+  "driver_completed_at": "2026-10-07T15:40:04.124263+00:00",
+  "public_visual_reviewed_at": "2026-10-07T15:35:28.817377+00:00",
+  "fresh_census_observed_at": "2026-10-07T14:17:26.608977+00:00",
+  "scope_counts": {
+    "articles": 13,
+    "new_language_publications": 52,
+    "source_corrections": 0,
+    "selected_publication_operations": 52,
+    "draft_operations": 52,
+    "hub_publication_operations": 0,
+    "public_pages": 65,
+    "desktop_mobile_views": 130,
+    "manifest_assets_in_scope": 126
+  },
+  "slugs": [
+    "brand-tone-vibe-marketing",
+    "japan-cherry-blossom-2027",
+    "japan-golden-week-2027",
+    "korea-autumn-leaves-2026",
+    "marketing-mix-models",
+    "marketing-plan-small-business",
+    "power-bank-flight-rules-2026",
+    "singapore-entry-2026-sg-arrival-card",
+    "wordpress-business-site",
+    "wordpress-local-to-live",
+    "wordpress-member-registration",
+    "wordpress-plugin-theme-translation",
+    "wordpress-security-basics"
+  ],
+  "official_phase_results": {
+    "prepare": {
+      "started_at": "2026-10-07T13:30:16.743836+00:00",
+      "finished_at": "2026-10-07T13:30:36.181666+00:00"
+    },
+    "dry-run": {
+      "started_at": "2026-10-07T13:30:57.735761+00:00",
+      "finished_at": "2026-10-07T13:32:17.317847+00:00"
+    },
+    "backup": {
+      "started_at": "2026-10-07T13:33:07.497691+00:00",
+      "finished_at": "2026-10-07T13:34:01.620260+00:00"
+    },
+    "rehearsal": {
+      "started_at": "2026-10-07T13:35:51.721780+00:00",
+      "finished_at": "2026-10-07T13:54:57.512074+00:00"
+    },
+    "drafts": {
+      "started_at": "2026-10-07T13:55:22.954429+00:00",
+      "finished_at": "2026-10-07T13:59:57.268456+00:00"
+    },
+    "publish-articles": {
+      "started_at": "2026-10-07T14:00:59.899977+00:00",
+      "finished_at": "2026-10-07T14:06:00.887720+00:00"
+    },
+    "publish-hubs": {
+      "started_at": "2026-10-07T14:06:10.809338+00:00",
+      "finished_at": "2026-10-07T14:07:30.992490+00:00"
+    },
+    "replay": {
+      "started_at": "2026-10-07T14:07:41.897985+00:00",
+      "finished_at": "2026-10-07T14:13:31.106527+00:00"
+    },
+    "complete": {
+      "started_at": "2026-10-07T15:39:54.971804+00:00",
+      "finished_at": "2026-10-07T15:40:06.564958+00:00"
+    }
+  },
+  "operation_actions": {
+    "drafts": {
+      "start_translation": 52
+    },
+    "publish-articles": {
+      "publish": 52
+    },
+    "publish-hubs": {}
+  },
+  "bundles": [
+    {
+      "bundle_id": "01-cherry",
+      "manifest_sha256": "d66253a1bfbd66a9eb732975ea52f32317e84cbb886e71b8060a3ebbe625f994",
+      "baseline_sha256": "02c126e6a56a45544b0769b15cc18d74bb26af86420be3e6beda4712aa920054",
+      "journal_sha256": "6d2807af1fc059116578be6d140a0b0c796eece4ae7979778734a1aa25aaf02a",
+      "filtered_slugs": [
+        "japan-cherry-blossom-2027"
+      ],
+      "filtered_operation_counts": {
+        "drafts": 4,
+        "publish-articles": 4,
+        "publish-hubs": 0
+      },
+      "shared_journal_filtered_by_slug": false
+    },
+    {
+      "bundle_id": "02-golden",
+      "manifest_sha256": "024e9da4ac407236ed2f72ad9a8d75113e4d7ab755143ccd72dba810bcbced39",
+      "baseline_sha256": "02c126e6a56a45544b0769b15cc18d74bb26af86420be3e6beda4712aa920054",
+      "journal_sha256": "b699514663dff7e2bd69f85c8b70f982aa00b5d8a7c4150b5589c784789c6dbb",
+      "filtered_slugs": [
+        "japan-golden-week-2027"
+      ],
+      "filtered_operation_counts": {
+        "drafts": 4,
+        "publish-articles": 4,
+        "publish-hubs": 0
+      },
+      "shared_journal_filtered_by_slug": false
+    },
+    {
+      "bundle_id": "03-korea",
+      "manifest_sha256": "03542feda3892780b00bb9c85f4b4839c6aad0fd0c7260dfa40930b1fc30328a",
+      "baseline_sha256": "02c126e6a56a45544b0769b15cc18d74bb26af86420be3e6beda4712aa920054",
+      "journal_sha256": "e4f0527a605fb5dfe76d768653c97774e6d0dff27433c8bbb52bb78db78e3671",
+      "filtered_slugs": [
+        "korea-autumn-leaves-2026"
+      ],
+      "filtered_operation_counts": {
+        "drafts": 4,
+        "publish-articles": 4,
+        "publish-hubs": 0
+      },
+      "shared_journal_filtered_by_slug": false
+    },
+    {
+      "bundle_id": "04-entry-powerbank",
+      "manifest_sha256": "ca5f976065376c6eb84ac3d35d3acea54312a9b6081b75ba32343238b8337f3d",
+      "baseline_sha256": "02c126e6a56a45544b0769b15cc18d74bb26af86420be3e6beda4712aa920054",
+      "journal_sha256": "2cb76d9d74dc34331616e513e28e99e5f5d00098ec43dd35dee01f42feb4a521",
+      "filtered_slugs": [
+        "power-bank-flight-rules-2026",
+        "singapore-entry-2026-sg-arrival-card"
+      ],
+      "filtered_operation_counts": {
+        "drafts": 8,
+        "publish-articles": 8,
+        "publish-hubs": 0
+      },
+      "shared_journal_filtered_by_slug": false
+    },
+    {
+      "bundle_id": "06-first-life12",
+      "manifest_sha256": "ef35ad113c17d662f581feecb913bb5ce2fb47011f267b2f28c3e975b32be01e",
+      "baseline_sha256": "02c126e6a56a45544b0769b15cc18d74bb26af86420be3e6beda4712aa920054",
+      "journal_sha256": "24bfd246b57102de401897decd7f67da1fd4f127bcaefafd05a670a1973a88d9",
+      "filtered_slugs": [
+        "brand-tone-vibe-marketing",
+        "marketing-mix-models",
+        "marketing-plan-small-business",
+        "wordpress-business-site",
+        "wordpress-local-to-live",
+        "wordpress-member-registration",
+        "wordpress-plugin-theme-translation",
+        "wordpress-security-basics"
+      ],
+      "filtered_operation_counts": {
+        "drafts": 32,
+        "publish-articles": 32,
+        "publish-hubs": 0
+      },
+      "shared_journal_filtered_by_slug": true
+    }
+  ],
+  "source_correction_approvals": [],
+  "actual_public_documents": [
+    {
+      "slug": "brand-tone-vibe-marketing",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/brand-tone-vibe-marketing",
+      "published_version": 4,
+      "document_sha256": "1e43ef74156c751df615cf65d3da529fd50b5dae4ee83486e7f697e68116f728",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "brand-tone-vibe-marketing",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/brand-tone-vibe-marketing",
+      "published_version": 2,
+      "document_sha256": "f806634f92fa2fe1ee5d545e502fdd1a54302174a0059a0d0c136e4837c3cdd8",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "brand-tone-vibe-marketing",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/brand-tone-vibe-marketing",
+      "published_version": 2,
+      "document_sha256": "9cc38b812690462eb2d885d27d93028a154c7eb0c67bf1cf8c34d71fc80289c2",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "brand-tone-vibe-marketing",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/brand-tone-vibe-marketing",
+      "published_version": 2,
+      "document_sha256": "943ae8a139503461cae283b76f2bbb9b294f9bd3bdd9dd7c36f0f5533f289baf",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "brand-tone-vibe-marketing",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/brand-tone-vibe-marketing",
+      "published_version": 2,
+      "document_sha256": "bcb55ee706d4975c398ed93330ed44a84d3f16571e67ec17bd5a15e5a09a15db",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "japan-cherry-blossom-2027",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/guides/intel/japan-cherry-blossom-2027",
+      "published_version": 10,
+      "document_sha256": "22742f2e2e550a0e6da5eccadf42a8b354b00b9b3d7dac32b20c47d4478c0a6d",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "japan-cherry-blossom-2027",
+      "locale": "en",
+      "url": "https://mokaair.com/en/guides/intel/japan-cherry-blossom-2027",
+      "published_version": 2,
+      "document_sha256": "ec083e11a681008d835dd846b40e45fd19747c6a391760164bff66399f9ef4b1",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "japan-cherry-blossom-2027",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/guides/intel/japan-cherry-blossom-2027",
+      "published_version": 2,
+      "document_sha256": "a3178511c7c58fe46a19e4b8d53efc3f57647efe928bdfbc17282ee491552d1e",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "japan-cherry-blossom-2027",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/guides/intel/japan-cherry-blossom-2027",
+      "published_version": 2,
+      "document_sha256": "b277dc6e43622845f57573d557936111bd7dfa9664875dc6513cac22c7ec90e7",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "japan-cherry-blossom-2027",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/guides/intel/japan-cherry-blossom-2027",
+      "published_version": 2,
+      "document_sha256": "c9d87fe666af172baf65d21d2302f2c42d202e31549711cbade86ce63613d3fb",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "japan-golden-week-2027",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/guides/intel/japan-golden-week-2027",
+      "published_version": 6,
+      "document_sha256": "c906939f91e0ec733f537ea6f0972c354d81dcf6e11ef660499638488a62ead5",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "japan-golden-week-2027",
+      "locale": "en",
+      "url": "https://mokaair.com/en/guides/intel/japan-golden-week-2027",
+      "published_version": 2,
+      "document_sha256": "f70ef206857b7296a56a4d73ba223c7004170426c47ce1c80b62cd77c1d1544d",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "japan-golden-week-2027",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/guides/intel/japan-golden-week-2027",
+      "published_version": 2,
+      "document_sha256": "be47e6d6ef5cc4d83b37a623d960ebdc4b4df6f16c2285daf7639b0bec6c5ef9",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "japan-golden-week-2027",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/guides/intel/japan-golden-week-2027",
+      "published_version": 2,
+      "document_sha256": "7f32d623d02195450fe53d046bdef0b308375a187e6409607a67c8aa6164e10d",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "japan-golden-week-2027",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/guides/intel/japan-golden-week-2027",
+      "published_version": 2,
+      "document_sha256": "250069306e606523ae3c1fa7f38339f494e8398ec0c7bd3338110b8c588d2b56",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "korea-autumn-leaves-2026",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/guides/intel/korea-autumn-leaves-2026",
+      "published_version": 2,
+      "document_sha256": "411c2adea68e42f2c97406817c434a477d97d1b7a468919125b9adbaa812012e",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "korea-autumn-leaves-2026",
+      "locale": "en",
+      "url": "https://mokaair.com/en/guides/intel/korea-autumn-leaves-2026",
+      "published_version": 2,
+      "document_sha256": "495aafb3fc6440f32428aa290bb2aaf1afeab1030c401250225e2dc969f3452f",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "korea-autumn-leaves-2026",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/guides/intel/korea-autumn-leaves-2026",
+      "published_version": 2,
+      "document_sha256": "e93b5ba739b1be2f1e40d95ed071e4c3d9615b963e25db3053e6d01823e9fc7a",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "korea-autumn-leaves-2026",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/guides/intel/korea-autumn-leaves-2026",
+      "published_version": 2,
+      "document_sha256": "f2ebd36f8d735e73294230319d151ee75e0f7e2141dc10e7b763563f71ec06e5",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "korea-autumn-leaves-2026",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/guides/intel/korea-autumn-leaves-2026",
+      "published_version": 2,
+      "document_sha256": "4fdb2cc5d7c1c56393eca2686fd3d260744bd0ea004b9f5bbd1a4ac8f7bddea7",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "marketing-mix-models",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/marketing-mix-models",
+      "published_version": 4,
+      "document_sha256": "cf9325d203eae0940db98bf6cdc8efcf691667b405a9f396e6e4f16bce937725",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "marketing-mix-models",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/marketing-mix-models",
+      "published_version": 2,
+      "document_sha256": "28a4510ee8199cdcdc22050432e24d95f2daa67aebb6ee930933db8b8009dbf6",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "marketing-mix-models",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/marketing-mix-models",
+      "published_version": 2,
+      "document_sha256": "ae2f20a76bafc94892ca70f8d9c3ac892aa7258bb1a460361ff72e6585c2e57c",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "marketing-mix-models",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/marketing-mix-models",
+      "published_version": 2,
+      "document_sha256": "1091abcdab03372c7d6d5bde322b858aad1114f61b8c78075add4a724a0e8b68",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "marketing-mix-models",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/marketing-mix-models",
+      "published_version": 2,
+      "document_sha256": "846a1fd3bd91560704a5b4160e9f3fef59defc8a40e28cc459c61666ce9f6af3",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "marketing-plan-small-business",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/marketing-plan-small-business",
+      "published_version": 4,
+      "document_sha256": "1f556287a76e6352278f7a53601c6cb425201f2db1be6fe75d7f4f72943f6403",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "marketing-plan-small-business",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/marketing-plan-small-business",
+      "published_version": 2,
+      "document_sha256": "0ce3cf1684645e633a37c8f584d1f274b37483acb090e08d86542759def2b4be",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "marketing-plan-small-business",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/marketing-plan-small-business",
+      "published_version": 2,
+      "document_sha256": "d6fb4a6e5384e8843ea2c68d7c726bfd5543763ff2b79f734f4985d51e0b60e3",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "marketing-plan-small-business",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/marketing-plan-small-business",
+      "published_version": 2,
+      "document_sha256": "831492c567dc143e53eceaf38f0d5d376e3a17adcf17eff9c1f77f4c6f6fa3cd",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "marketing-plan-small-business",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/marketing-plan-small-business",
+      "published_version": 2,
+      "document_sha256": "5b7e3c88395a251da346482be707ca872e2cd1550eec12b8366674ebbf4a0358",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "power-bank-flight-rules-2026",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/guides/intel/power-bank-flight-rules-2026",
+      "published_version": 6,
+      "document_sha256": "70bb325eaf6a828d0bdc89c1ee8db644a19a5182db263f892bd4ad2d447c1908",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "power-bank-flight-rules-2026",
+      "locale": "en",
+      "url": "https://mokaair.com/en/guides/intel/power-bank-flight-rules-2026",
+      "published_version": 2,
+      "document_sha256": "3da0720e5f4ada1740e59edc417eaf18c7a672b65be5a94008da146513471c33",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "power-bank-flight-rules-2026",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/guides/intel/power-bank-flight-rules-2026",
+      "published_version": 2,
+      "document_sha256": "493ce0505ffdd16e1cdf200170f3e7efca4bcc83e4998b7a4a07be516a4f8921",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "power-bank-flight-rules-2026",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/guides/intel/power-bank-flight-rules-2026",
+      "published_version": 2,
+      "document_sha256": "113ef13f9cd565b9c1098c4ede9fda956962b2e20941edd05540121434bac77b",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "power-bank-flight-rules-2026",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/guides/intel/power-bank-flight-rules-2026",
+      "published_version": 2,
+      "document_sha256": "67be724ca999277b1c5fe24c1d77aaba8df0297df84f0d5b4958db62f1edc940",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "singapore-entry-2026-sg-arrival-card",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/guides/intel/singapore-entry-2026-sg-arrival-card",
+      "published_version": 6,
+      "document_sha256": "da8e25410e593e7655d59c0477838e4a941fd5a6fbf8a3ea487ec346b5dfdeee",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "singapore-entry-2026-sg-arrival-card",
+      "locale": "en",
+      "url": "https://mokaair.com/en/guides/intel/singapore-entry-2026-sg-arrival-card",
+      "published_version": 2,
+      "document_sha256": "9bba8c04a1da1733ee4957c68f358be4bf1a655a8636c16305443810b748829b",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "singapore-entry-2026-sg-arrival-card",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/guides/intel/singapore-entry-2026-sg-arrival-card",
+      "published_version": 2,
+      "document_sha256": "921e9de398c01fdf318a9dc147fbd813f4e1ddc2d9541e67c3ff5fa80d783b7f",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "singapore-entry-2026-sg-arrival-card",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/guides/intel/singapore-entry-2026-sg-arrival-card",
+      "published_version": 2,
+      "document_sha256": "2ff076d5f4f76726937767fd83d264aacae16250aeaafd07c1b370e634ba596d",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "singapore-entry-2026-sg-arrival-card",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/guides/intel/singapore-entry-2026-sg-arrival-card",
+      "published_version": 2,
+      "document_sha256": "cd812da64bd9fc3a24f483022009ed657695cbffb63507803874fc3e95a142c7",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-business-site",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-business-site",
+      "published_version": 4,
+      "document_sha256": "ad0a798d92be76d9c8e4c1c9400df58698914069480077f6c3840605d65f2e30",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "wordpress-business-site",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-business-site",
+      "published_version": 2,
+      "document_sha256": "1db9571d1a64915afe931127f6cd11869ab39b665a16ab0f0b63602823081b9a",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-business-site",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-business-site",
+      "published_version": 2,
+      "document_sha256": "f2af4a8e926aadd2c39a689d07ac4e32d46c993a15764fe0d7db7abe2131d514",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-business-site",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-business-site",
+      "published_version": 2,
+      "document_sha256": "cebe590f265fb600f34a6ed1d65fa364e6738e8653d5065b5c9d0a7141c6bd7e",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-business-site",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-business-site",
+      "published_version": 2,
+      "document_sha256": "0cdc6931e035b5f00d472e5efcd09c1a1fbd779de19d362d5bdbff7c99bfbc56",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-local-to-live",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-local-to-live",
+      "published_version": 4,
+      "document_sha256": "02d3216a4a534b06912a835386738aab7a4e27ab438d005ceb7bb982a5dff0d6",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "wordpress-local-to-live",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-local-to-live",
+      "published_version": 2,
+      "document_sha256": "fc11c166425089afc01f6cc1b8169ab98cb248c46a30137387e6a9dbdaaf2027",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-local-to-live",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-local-to-live",
+      "published_version": 2,
+      "document_sha256": "10896fb2ede76bab2fbab19a2ca9241fc610a094458fdc784bfc885113b02775",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-local-to-live",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-local-to-live",
+      "published_version": 2,
+      "document_sha256": "a745cbce55daf519c43f7f9e1373da5bc51ee899347dc0b2f5403273570f0c95",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-local-to-live",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-local-to-live",
+      "published_version": 2,
+      "document_sha256": "9914c6fc01c26eda36016ea340e4ce3689bd7598c68ca828215aba5958b3dd3f",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-member-registration",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-member-registration",
+      "published_version": 4,
+      "document_sha256": "f9b83ac38c10db35e794d13bf95b609044b44e03c3c9be1c0b3d3b0d6caa8574",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "wordpress-member-registration",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-member-registration",
+      "published_version": 2,
+      "document_sha256": "84106ac5019073717a68551abf1d99ee80b790d878c74a6b064f16c67c485672",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-member-registration",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-member-registration",
+      "published_version": 2,
+      "document_sha256": "50cddd322feda04b3cd67b5ea18faa75130c651f5daf6bd0e825ee15a04b1bcd",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-member-registration",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-member-registration",
+      "published_version": 2,
+      "document_sha256": "c6e20be9aa2a2dab12b2ab5f2eb6ca0d725fd563cfaad46a7643513af722d4f0",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-member-registration",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-member-registration",
+      "published_version": 2,
+      "document_sha256": "7b341c2ce53a95408553c2536fa9636f8d4bfe931b435ccf40327521c8c74559",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-plugin-theme-translation",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-plugin-theme-translation",
+      "published_version": 4,
+      "document_sha256": "1b0cd4a99c4f2991a7fb58dc2a2130795c8c9acd91c8853a33d7f452c79b2baa",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "wordpress-plugin-theme-translation",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-plugin-theme-translation",
+      "published_version": 2,
+      "document_sha256": "ed48cd3407c3074c407a7426a7cb5ddff770e97e4011d58bbf884cf8d2a0dab3",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-plugin-theme-translation",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-plugin-theme-translation",
+      "published_version": 2,
+      "document_sha256": "1f0d27ecf3b0ffb747c2420160f10122f53be30e1f5f6e980ef8b856e44d89e3",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-plugin-theme-translation",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-plugin-theme-translation",
+      "published_version": 2,
+      "document_sha256": "cbd39e50268d3d71fc040920e268185b16701732721437cf11b2da7b7fff9a74",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-plugin-theme-translation",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-plugin-theme-translation",
+      "published_version": 2,
+      "document_sha256": "19aee2b609301608e2b7f3324679110a56d0ae363f6d333dc2e33d67806177ff",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-security-basics",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-security-basics",
+      "published_version": 4,
+      "document_sha256": "f6d8210b4aafdc0e2bd60ec1a450bd92908baa477cd6a0d3d4eaf85f32fcea94",
+      "selected_publication_target": false
+    },
+    {
+      "slug": "wordpress-security-basics",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-security-basics",
+      "published_version": 2,
+      "document_sha256": "0e04c353ffc9ab2f298673ac35a1b8de7300cc34075242a22607ef36c883556d",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-security-basics",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-security-basics",
+      "published_version": 2,
+      "document_sha256": "f8f7618f6c540e5447edeb698657c9a83e44f91b53ab78f1b5851f8ac3a1da05",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-security-basics",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-security-basics",
+      "published_version": 2,
+      "document_sha256": "cca12760ce2b4809c4300b0fca0ad164e44302dc83b91d13dfa709972f3b7cbe",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "wordpress-security-basics",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-security-basics",
+      "published_version": 2,
+      "document_sha256": "ae981805aac90bbc6a086de4641f32b825badff913dd638eb8ed5ceb280c9bb6",
+      "selected_publication_target": true
+    }
+  ],
+  "manifest_asset_sha256": {
+    "/guides/brand-tone-vibe-marketing/diagram-1-en.svg": "97dab8725ff1509904b74c000e5c8c761fa1c4c02ff8ad54bd56208d078f576f",
+    "/guides/brand-tone-vibe-marketing/diagram-1-ja.svg": "374e432b0730268158bd89e9d9bb6dde3ed108fb4b75a36bb07a48619711dcf5",
+    "/guides/brand-tone-vibe-marketing/diagram-1-ko.svg": "abdd99667d2a279c9897a7a8aa0837f6d8492bbfa18613d623d49ec331bd3cd2",
+    "/guides/brand-tone-vibe-marketing/diagram-1-zh-cn.svg": "50eb593790fb1ff69e3763f8e7a42d0210bd9db600c21a0ee2557abc2ef1c909",
+    "/guides/brand-tone-vibe-marketing/hero-en.jpg": "5687ba2c49be5931ce98ba2b6380f916dc102da20b97578704b3f71e0a694a70",
+    "/guides/brand-tone-vibe-marketing/hero-en.svg": "c4f3224036f2ab00e2a2b8397497cc39700b8970d35488c45efb2115a5bdf363",
+    "/guides/brand-tone-vibe-marketing/hero-ja.jpg": "3b42320a642e324134b7abd31780d5f23594d235466e78e064f7350ec6f8dc0f",
+    "/guides/brand-tone-vibe-marketing/hero-ja.svg": "d17d8328c53e39b649d330e1115334286ed4ceff439fde527c04703abe175e94",
+    "/guides/brand-tone-vibe-marketing/hero-ko.jpg": "e69fdbc3333b805ed77f3a553a743f5bbd2bacbba4008580bd3000cf85c9bc6f",
+    "/guides/brand-tone-vibe-marketing/hero-ko.svg": "30bc76d6e4093ee4e2a8778830b8cf0451561584e6d6cadb584b03875e538c49",
+    "/guides/brand-tone-vibe-marketing/hero-zh-cn.jpg": "69f209c2eb5e81aabb4f616dff6475f09bab3d0dc9412cdb522c85e248ba1660",
+    "/guides/brand-tone-vibe-marketing/hero-zh-cn.svg": "8cd4d6a5e574f76a53d80a09384348ac36eb8537b116dc06d3a7905dcb0b151a",
+    "/guides/japan-cherry-blossom-2027/diagram-1-en.svg": "0d89e7d59c1c4b92523c8720320366e5cbbe8e2ab64a682959d63dd8a2dd2f28",
+    "/guides/japan-cherry-blossom-2027/diagram-1-ja.svg": "12c7e59b48dcf633e2b4eca23aae6f53d66ea85dc251e85ecc2ffc82afd5ce76",
+    "/guides/japan-cherry-blossom-2027/diagram-1-ko.svg": "68b06c140e5982a4fa65aa8cc120b9f48e92f65324d520ed2fa71dff6c9732d7",
+    "/guides/japan-cherry-blossom-2027/diagram-1-zh-cn.svg": "5a6f7fe4ac17d816b0e3144a104b26da1601dfb7ac367c46d117205c2783867b",
+    "/guides/japan-cherry-blossom-2027/hero.jpg": "a24eaa3a781cdc6abd8f25e3e14a26e82c76dd0cd1fa2baa719423dfb38c30bf",
+    "/guides/japan-cherry-blossom-2027/photo-1.webp": "c3a4624206a96eca7ff9ae6a502edcd3f3302b80bc6340c87b7f5e0bc36ebdeb",
+    "/guides/japan-golden-week-2027/diagram-1-en.svg": "7cc7733184e0fca97169e7df2167b21e3fb4689c262e978dc346843bf389b5ab",
+    "/guides/japan-golden-week-2027/diagram-1-ja.svg": "960650515db17ae1aa37dc9ed260c5b0b3e047c03c5a0121034136a8ac4e832e",
+    "/guides/japan-golden-week-2027/diagram-1-ko.svg": "b1f1d96cf23ba424cd8d0ef6dce08d5b451dc5db53415c0fd38133d18c78f67c",
+    "/guides/japan-golden-week-2027/diagram-1-zh-cn.svg": "0ec01ff86abed9b9155b13ff26c015317f5fe7dc8df87cbb3e4286ff14acab4f",
+    "/guides/japan-golden-week-2027/hero.jpg": "d4bf4dd619a8a251a397160f3c3318b8b9e2f8e20ffeb5638a2355d88fdb0da5",
+    "/guides/japan-golden-week-2027/photo-1.webp": "80fba9728e3ed123ae6941d39879e92dde7bb0375dd1c929790d818cb602525b",
+    "/guides/korea-autumn-leaves-2026/diagram-1-en.svg": "aea9d3a9e0343e39e449ef8205115d185d56b31f28b262c3191554225c93898a",
+    "/guides/korea-autumn-leaves-2026/diagram-1-ja.svg": "b578e6eb749ea7884c848c8593f4b72d109fd666b05924e76485f449fc5ca126",
+    "/guides/korea-autumn-leaves-2026/diagram-1-ko.svg": "00010408810a34fc3fc68912ca95c1fdd1eaea1534ff4185fb8b3062a93718e4",
+    "/guides/korea-autumn-leaves-2026/diagram-1-zh-cn.svg": "2fcf6d56ac3fd6e402985cac7be688662f197e0e2297587771932f4219ac2f1b",
+    "/guides/korea-autumn-leaves-2026/hero.jpg": "524f5299b65350cb8a27d36841aacfbf94b801b7975885c629d310a29cfe9e3e",
+    "/guides/korea-autumn-leaves-2026/photo-1.webp": "65279cb1609eaaf32043ae47fa57753245e7cca6b309b7e4e611e76ab187f66f",
+    "/guides/marketing-mix-models/diagram-1-en.svg": "e1a10fee6437ccafa0037d106544af8cc95d37a8e6c17926943c1b70f152fcbe",
+    "/guides/marketing-mix-models/diagram-1-ja.svg": "d5ac0ecfdd7388a547ca043af7392fbf008ebc6226deb0a2e6f166718a4cec6e",
+    "/guides/marketing-mix-models/diagram-1-ko.svg": "d8fc648220d42f2f411955a736253272e03f5ee8773ba3efc303b48ce2145980",
+    "/guides/marketing-mix-models/diagram-1-zh-cn.svg": "54642ea9e86d10300fd3d0a9279d2e3b9de0347ec4a22ea7ea468e627453045e",
+    "/guides/marketing-mix-models/hero-en.jpg": "c34c17c6aa266ec6d3bbe9a06f6c5ff5a8e0169b1a084d7ab5ae9d0d5a89e6b6",
+    "/guides/marketing-mix-models/hero-en.svg": "b3d97b38ffdd00b45f52627f945733655d6f6455e71b833f27c4b7c695f646f8",
+    "/guides/marketing-mix-models/hero-ja.jpg": "3213249d4a1a0003bf0f65942d7313d814b3c6ff15f809f5e232b5563adc8a81",
+    "/guides/marketing-mix-models/hero-ja.svg": "f8221d5f85634def1d7719117d36ec7a18c928b27f655424929c5d6214e80f94",
+    "/guides/marketing-mix-models/hero-ko.jpg": "e198e3b2478d1d80ef702c68fd37eed568bafb90eb25af55e06639b6e42b217d",
+    "/guides/marketing-mix-models/hero-ko.svg": "fd584108408c3859322ea1f1c4d981e38a8c7fe96ba08309669fca9c8d43b0f5",
+    "/guides/marketing-mix-models/hero-zh-cn.jpg": "6e0bb0a40350f710042dd6ade1aa0010f126a48c6e7df55b29323f0e5f9907ea",
+    "/guides/marketing-mix-models/hero-zh-cn.svg": "d359a49dcbf090c627a3be92fdfdd4ac61e54c1db74bbf6256713f31b7af34aa",
+    "/guides/marketing-plan-small-business/diagram-1-en.svg": "81be211a518347d3a943e6b560f81d2c916cfb8c673f34773e7869c578bab93b",
+    "/guides/marketing-plan-small-business/diagram-1-ja.svg": "0cc50e92b10b207b1d6571f1bb20e3f9e10455fe771770f6092321dcf8541c6c",
+    "/guides/marketing-plan-small-business/diagram-1-ko.svg": "8a8a5e508131432f4ce876d8d34860d5258e2136cfa7262ed9c3407d60a2cb9b",
+    "/guides/marketing-plan-small-business/diagram-1-zh-cn.svg": "ac7f4db794e185af97998a21502f9a8286e3bdacb24ab83a137e684208338af4",
+    "/guides/marketing-plan-small-business/hero-en.jpg": "de3c7309f64c207f1773c56919f54385d64b05b5bb0cdf8bc99a3f148ca0a685",
+    "/guides/marketing-plan-small-business/hero-en.svg": "b503e0bf4c7bdd592b694b5cf3a187fec4fb607e9729e61b035da441535fc025",
+    "/guides/marketing-plan-small-business/hero-ja.jpg": "9879d5c8254f87f96038ce109dcf8189636fc0bbebb7f70a755ee0ca3e8059b2",
+    "/guides/marketing-plan-small-business/hero-ja.svg": "82c5c5702476897fc1ddcbec40831dfce16d901a058931fa5e9a12bb4ab74384",
+    "/guides/marketing-plan-small-business/hero-ko.jpg": "831f818af0e717d9b3e3fd40536a8d83a2c8b21a007a2ca9af980c0e2a5df614",
+    "/guides/marketing-plan-small-business/hero-ko.svg": "15b080a2c92eecabf67fb3850e785d757c6c58448267d2bcba0579b23ce35e63",
+    "/guides/marketing-plan-small-business/hero-zh-cn.jpg": "bfb7dbe830c4671a09d3dcdc04b83d1260e395b430e9198946033eb23a8a68f0",
+    "/guides/marketing-plan-small-business/hero-zh-cn.svg": "c344e3c41e8faece873cf203c9dd771efd400a665b9bf0bb88fd47ab267bf16d",
+    "/guides/power-bank-flight-rules-2026/diagram-1-en.svg": "12572625c571cc2da250e1e2aac65179e5a8b825fb003a73e1db4b7632d0d9bf",
+    "/guides/power-bank-flight-rules-2026/diagram-1-ja.svg": "7be7faea7a0f396a3bfa96f3f9930c7edf328cee2d8e98de8178b469ac046483",
+    "/guides/power-bank-flight-rules-2026/diagram-1-ko.svg": "7fc12ae44d3f57c691e81387f7721d42d2408528ac250571f86c6c506cb0796f",
+    "/guides/power-bank-flight-rules-2026/diagram-1-zh-cn.svg": "4ab18fbefc3970e503076a25db92dabcb1806ac15a02abffec8881dcf192b1cb",
+    "/guides/power-bank-flight-rules-2026/hero.jpg": "3122d46b7ddec3306038da7c42cd898f0722669e4abb168d5bb5d9a8b0ed5837",
+    "/guides/power-bank-flight-rules-2026/photo-1.webp": "510517a1c7209a58977d68542e7688f24996c39d856d2493c4298fa5b298544a",
+    "/guides/singapore-entry-2026-sg-arrival-card/diagram-1-en.svg": "abec5e6f05a736425292afec3511d2f396a9dd514921fb3a6fe006d012dcca3e",
+    "/guides/singapore-entry-2026-sg-arrival-card/diagram-1-ja.svg": "049ad07ae2c47835209162aee7d5cc653dfd4d420594aff9a7df0f50451bc593",
+    "/guides/singapore-entry-2026-sg-arrival-card/diagram-1-ko.svg": "1bae0e8e459a7fc212c70d22a1a64e831fc370fd4c7a77f04198a6301789a708",
+    "/guides/singapore-entry-2026-sg-arrival-card/diagram-1-zh-cn.svg": "321f56547177d4d5c918e97fec1bac13256b729fa90b45cc3e195df55fe24c29",
+    "/guides/singapore-entry-2026-sg-arrival-card/hero.jpg": "b7f55c490a479b7f41ca0ef4fbeeaade0e389df297c0d90e1064facd3173addf",
+    "/guides/singapore-entry-2026-sg-arrival-card/photo-1.webp": "0fb7cd2a7cfa377a6c2afb7c1e977d0bdaa836ea2c99c63b080baa5e0c4d6588",
+    "/guides/wordpress-business-site/diagram-1-en.svg": "88e03afa56c6a7a4756178454be95c5b538aac4aaee3726f58b06effb56127ec",
+    "/guides/wordpress-business-site/diagram-1-ja.svg": "c276255e6b1c54a9caa309e0e9037e24395f3c7a8e388384a935fe32af649b60",
+    "/guides/wordpress-business-site/diagram-1-ko.svg": "bff1d53c03501bd440b7becf88b3bc6363a5a487d9511cdfc2520364bd75c58c",
+    "/guides/wordpress-business-site/diagram-1-zh-cn.svg": "18f2d9064390eb6f8212bb968d0b35484902e2d8ec0cd1db2bf4c4b14cef45d0",
+    "/guides/wordpress-business-site/hero-en.jpg": "ea423e043be46d78da9d090ae24b8fc00106258e201edfefee31135a004aac5e",
+    "/guides/wordpress-business-site/hero-en.svg": "6b1ca129f23ae5e0541814ce3a697e8647e495d1c95e59178749da2fe574ba60",
+    "/guides/wordpress-business-site/hero-ja.jpg": "83a7c70f8ffcd8c64e97e8dfdaa33f4f091aabf1c62387ed938e4cbacbfeca84",
+    "/guides/wordpress-business-site/hero-ja.svg": "eb802b6e162ecd5752bb946c699dab9156abb0553f634ba54ae0c72cda543811",
+    "/guides/wordpress-business-site/hero-ko.jpg": "4246281dbec8287615a952e9a207a5b2549ce944076447942b087a4c573ed2c6",
+    "/guides/wordpress-business-site/hero-ko.svg": "9afde2185485ecf7878b405fd42a23762ce8f497bea91ef488045da546909b28",
+    "/guides/wordpress-business-site/hero-zh-cn.jpg": "040eaaa351933aab82c27c291c37da06107bcabe960e94dfb116e62d231a53c9",
+    "/guides/wordpress-business-site/hero-zh-cn.svg": "f6600a3d0bb94b5a930c80131090e76356d32826b2db59a5f2287a4f242940b6",
+    "/guides/wordpress-local-to-live/diagram-1-en.svg": "8f3492e9480594687882ea9a8a97abb4f41b594477dbc721ddf3e25c4676a0ce",
+    "/guides/wordpress-local-to-live/diagram-1-ja.svg": "3b77b1ecadca475b24bb2e7637e906360a90f1bd6e8314c472bdb60826418171",
+    "/guides/wordpress-local-to-live/diagram-1-ko.svg": "09eae032e29e223990e01436bbfce792afb252efdb1a859abf2ab7e97f828a57",
+    "/guides/wordpress-local-to-live/diagram-1-zh-cn.svg": "62f2bfa1a6e38908d732c15e9cb2d3efcc8a5b456ed1719e59fea6e1f98d3366",
+    "/guides/wordpress-local-to-live/hero-en.jpg": "1b6a4cf90999a451d7b62943c368822d838eae3ccb25c4aa264352b636946b92",
+    "/guides/wordpress-local-to-live/hero-en.svg": "93545425dba9b4b988360d8f29c8e4d6dea36f9235e826583a5ad305541156fb",
+    "/guides/wordpress-local-to-live/hero-ja.jpg": "51ff268886dc318c0b9bccc9e6e3cce36eaeaaa3a5e8139a7a762ca04499a37c",
+    "/guides/wordpress-local-to-live/hero-ja.svg": "fbc76715b44938f01ae18ccee14094116de07afba6fda55dfcbafe45057dd071",
+    "/guides/wordpress-local-to-live/hero-ko.jpg": "c015b3fcad2991649c3187cd75ddadff245daeefb297d15505f0d958f9228112",
+    "/guides/wordpress-local-to-live/hero-ko.svg": "82748457fef3353fabfa8971c7a008122c2a305ba8997d5291c12c33f32ad402",
+    "/guides/wordpress-local-to-live/hero-zh-cn.jpg": "07ba0f72231769e561c0a7e1962a45ff8ef75688ce8d2c2a57b7d2dbc19ae0a2",
+    "/guides/wordpress-local-to-live/hero-zh-cn.svg": "eefa47c1f35c90db2e6828c7059f92f1022aad256def428f982f09a293cddfbb",
+    "/guides/wordpress-member-registration/diagram-1-en.svg": "830ed1b05f7b8a415b87865ac6f319aeeaacd8592f5b5c58e921b55ca0f49eac",
+    "/guides/wordpress-member-registration/diagram-1-ja.svg": "965673e859048c36f5da8c0e139af750249b47dc46f58c8c118506d35469a791",
+    "/guides/wordpress-member-registration/diagram-1-ko.svg": "6967d60f2efa1958f92e9e04cf834beb5d761ab056761303f911a7c9df3eb60b",
+    "/guides/wordpress-member-registration/diagram-1-zh-cn.svg": "7719d2c73e107d1db6d892bb9776da9259503ce550f62efd2ebe3c562326329d",
+    "/guides/wordpress-member-registration/hero-en.jpg": "81f706ff1cfb7469c378f81afd665a7f4fd0a55bf215651ca34b5cbcb21750a2",
+    "/guides/wordpress-member-registration/hero-en.svg": "cb380ebd87ab9c2cf02b00f0caea6a23b253da40102d43d2e8ed63e7efff24df",
+    "/guides/wordpress-member-registration/hero-ja.jpg": "8b6630b4d68e99987898fbb737968c82a5b49dfc5f0b2ff948632f743b10facf",
+    "/guides/wordpress-member-registration/hero-ja.svg": "40ad912be00718e619a8e5eae88ab2ea89931f3093ac55978951c4f10e8d814f",
+    "/guides/wordpress-member-registration/hero-ko.jpg": "9ddf08c8acdd180f1bc133cf9972a4eaabf1ffd3e7df4dd9061a778d7e6b9acb",
+    "/guides/wordpress-member-registration/hero-ko.svg": "9ec73adfe57a009631cf82b8c7fb2a00174c2a04951d5fe21b2fb4d386f3e84a",
+    "/guides/wordpress-member-registration/hero-zh-cn.jpg": "b10870e0c3aec06646cff0b3c632951528280cfb52ec15479a9cf4f20d943d82",
+    "/guides/wordpress-member-registration/hero-zh-cn.svg": "4c23d03eb9e5da1fd24589bcf60f1fe5dac3f8da70c7acc9eb6641bd6389bbca",
+    "/guides/wordpress-plugin-theme-translation/diagram-1-en.svg": "e42be510957cb3cad426fadd20da97aefbe3f6481979da51ddcce8aed59a2004",
+    "/guides/wordpress-plugin-theme-translation/diagram-1-ja.svg": "6f56bde17d5e6b95836c021a22e18365e592cb825d05c0b1ad835fb6a6eff701",
+    "/guides/wordpress-plugin-theme-translation/diagram-1-ko.svg": "5405e52a2e45c8daf9b0be3d7b1ea683241d8c7fff95da596d68e0824dae7fc9",
+    "/guides/wordpress-plugin-theme-translation/diagram-1-zh-cn.svg": "640b3b1ce65584fc6399f3a36da5876ffa9d9d90cfe0e172ac6f3e8bdff9f300",
+    "/guides/wordpress-plugin-theme-translation/hero-en.jpg": "88e8f01ccd532b99d77b1beb32b0a55dc3f90f1829c7b97895ab3342e1f4046a",
+    "/guides/wordpress-plugin-theme-translation/hero-en.svg": "8b2f51ab73475528bf1426d190ea2969ff324ce8ea174e3362243eeb83988a64",
+    "/guides/wordpress-plugin-theme-translation/hero-ja.jpg": "7d2f804ce7c08e608d575f0527ae78b508673e93ee42d0ee65f593236afee97e",
+    "/guides/wordpress-plugin-theme-translation/hero-ja.svg": "909176123f33ce3c0c0545e1792236233632da65ad0c64d0386071cd4b443e41",
+    "/guides/wordpress-plugin-theme-translation/hero-ko.jpg": "92bcaf3738078408c6c556707cf7ab5e97d8b991143a193ee04183d8b593bf11",
+    "/guides/wordpress-plugin-theme-translation/hero-ko.svg": "c462c889a736c96773f1458b47a25e734806895549431082501488cd99563753",
+    "/guides/wordpress-plugin-theme-translation/hero-zh-cn.jpg": "7289c9eaeb35f3b9d068c001d097ce59353bc6c7f2d8c3d55141fcbb1c7cbe5a",
+    "/guides/wordpress-plugin-theme-translation/hero-zh-cn.svg": "29e454fec9947d6edd342b7842f7d06298001fca0a0edea192df054cc71429c3",
+    "/guides/wordpress-security-basics/diagram-1-en.svg": "7843037781cf1ac84b792853c1103e3ee24037e843638dc474cb139c54d448aa",
+    "/guides/wordpress-security-basics/diagram-1-ja.svg": "fad17c8fe7b081c19c7970fa2271111c29f82639ca52290feeafe56fb4259905",
+    "/guides/wordpress-security-basics/diagram-1-ko.svg": "8282c0aaf020ecb6505314d11bd1f70f86c9ef74488e8045a1c008bebcaf8427",
+    "/guides/wordpress-security-basics/diagram-1-zh-cn.svg": "905b124a9047adf72b22259f67ef41fd46b3940d2c81471a42d59d4a9afd3166",
+    "/guides/wordpress-security-basics/hero-en.jpg": "65378532ff0198eee3ea095f75af10f54bda26ff4b820a6591733a2f16177326",
+    "/guides/wordpress-security-basics/hero-en.svg": "fdde1208c667bb9d53e364cef24059b1fca61dafde92c6dfbf536a703a94d3eb",
+    "/guides/wordpress-security-basics/hero-ja.jpg": "eeab7a74f8019aeea8bb8db02f108e40a01500f8dedb501314e5419746134194",
+    "/guides/wordpress-security-basics/hero-ja.svg": "771821dc08df40772144c21d834df62b5fab1f329edaa270005b8a3f25831858",
+    "/guides/wordpress-security-basics/hero-ko.jpg": "a2575042358107fba2624476a3d4f3b019a366f0fc3f627e5476258796387494",
+    "/guides/wordpress-security-basics/hero-ko.svg": "dbe7978496f66b07a525f3b811aa50f55639cf52ed70f136b777575ad99e3c98",
+    "/guides/wordpress-security-basics/hero-zh-cn.jpg": "0ed4740841339cc60ce9c79d316ffa2311cda3906ae1ceca9e8d64dc49fd1825",
+    "/guides/wordpress-security-basics/hero-zh-cn.svg": "7ca222e821e05ddaa2bf4dcbbb46cf7a1d6182a8096261ddd9236f3f76cd401b"
+  },
+  "backup_and_rehearsal": {
+    "single_database_dump": true,
+    "dump_sha256": "ab0b6e72cc1b6cde1a40e1ef927dd3ec5ad3ae39867327ababe306c1d0e94fd5",
+    "catalog_sha256": "15ed17ff8b8442753bb307e9a4859935a2057d28b26c7e64b8fef06a9685f51b",
+    "isolated_fixture_four_phase_replay_database_unchanged": true,
+    "isolated_fixture_write_phase_journal_bytes_unchanged": true
+  },
+  "production_replay_selected_article_state_unchanged": true,
+  "owned_hold_cleared": true,
+  "actual_QA_handoff_sha256": "0dacee5faf9e896b69ae09cabf5373403cdc1c10a057d6bc9d4f2fd2d52edc75",
+  "actual_public_acceptance_sha256": "f8a68430aa8dc4fdc7faa335fdce4a2ad72501510f4a3a4417892877d64f7766",
+  "actual_ledger_application_receipt_sha256": "27bdc2ba38015a8694e2070d2ea30aace5338fa0dcbb6bec686547d634a508bd",
+  "actual_postpublication_census_sha256": "d8982a0d9242252f6ae50bab2988c873220d1b64d3b993d0006c0ab9db8f5364",
+  "global_ledger_publication_event_id": "all-missing-publication-7524c25995d5",
+  "global_missing_count_from_fresh_census": 3320,
+  "new_editorial_PASS_issued_by_renderer": false,
+  "link_maintenance_limitations": {
+    "actual_check_sha256": "4588b0d705b1c4e37e77d440b32639d13330bb28de3d364dd0626228ad342cde",
+    "all_guides_check_exit_code_by_locale": {
+      "zh-TW": 1,
+      "en": 1,
+      "ja": 1,
+      "ko": 1,
+      "zh-CN": 1
+    },
+    "all_guides_finding_count_by_locale": {
+      "zh-TW": 111,
+      "en": 233,
+      "ja": 233,
+      "ko": 233,
+      "zh-CN": 233
+    },
+    "record_unpublished_related_link_count_by_locale": {
+      "zh-TW": 0,
+      "en": 25,
+      "ja": 25,
+      "ko": 25,
+      "zh-CN": 25
+    },
+    "selected_other_link_problem_count": 0,
+    "global_all_guides_check_passed": false,
+    "unpublished_related_targets_pending_under_global_localization_task": true
+  }
+}

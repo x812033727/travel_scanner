@@ -1,0 +1,194 @@
+{
+  "schema": "article-localization-sanitized-release-record-v1",
+  "state": "published_and_publicly_verified",
+  "release_task_id": "2026-10-07-release-reviewed-japan-refund-source-and",
+  "content_pull_requests": [
+    1366
+  ],
+  "merged_deployed_sha": "7524c25995d59f3826227e693d52f2ef5b3a19a2",
+  "driver_completed_at": "2026-10-07T15:40:04.124263+00:00",
+  "public_visual_reviewed_at": "2026-10-07T15:35:28.817377+00:00",
+  "fresh_census_observed_at": "2026-10-07T14:17:26.608977+00:00",
+  "scope_counts": {
+    "articles": 1,
+    "new_language_publications": 4,
+    "source_corrections": 1,
+    "selected_publication_operations": 5,
+    "draft_operations": 5,
+    "hub_publication_operations": 0,
+    "public_pages": 5,
+    "desktop_mobile_views": 10,
+    "manifest_assets_in_scope": 7
+  },
+  "slugs": [
+    "japan-tax-free-refund-2026"
+  ],
+  "official_phase_results": {
+    "prepare": {
+      "started_at": "2026-10-07T13:30:16.743836+00:00",
+      "finished_at": "2026-10-07T13:30:36.181666+00:00"
+    },
+    "dry-run": {
+      "started_at": "2026-10-07T13:30:57.735761+00:00",
+      "finished_at": "2026-10-07T13:32:17.317847+00:00"
+    },
+    "backup": {
+      "started_at": "2026-10-07T13:33:07.497691+00:00",
+      "finished_at": "2026-10-07T13:34:01.620260+00:00"
+    },
+    "rehearsal": {
+      "started_at": "2026-10-07T13:35:51.721780+00:00",
+      "finished_at": "2026-10-07T13:54:57.512074+00:00"
+    },
+    "drafts": {
+      "started_at": "2026-10-07T13:55:22.954429+00:00",
+      "finished_at": "2026-10-07T13:59:57.268456+00:00"
+    },
+    "publish-articles": {
+      "started_at": "2026-10-07T14:00:59.899977+00:00",
+      "finished_at": "2026-10-07T14:06:00.887720+00:00"
+    },
+    "publish-hubs": {
+      "started_at": "2026-10-07T14:06:10.809338+00:00",
+      "finished_at": "2026-10-07T14:07:30.992490+00:00"
+    },
+    "replay": {
+      "started_at": "2026-10-07T14:07:41.897985+00:00",
+      "finished_at": "2026-10-07T14:13:31.106527+00:00"
+    },
+    "complete": {
+      "started_at": "2026-10-07T15:39:54.971804+00:00",
+      "finished_at": "2026-10-07T15:40:06.564958+00:00"
+    }
+  },
+  "operation_actions": {
+    "drafts": {
+      "save_draft": 1,
+      "start_translation": 4
+    },
+    "publish-articles": {
+      "publish": 5
+    },
+    "publish-hubs": {}
+  },
+  "bundles": [
+    {
+      "bundle_id": "05-refund",
+      "manifest_sha256": "41810895217be6af958ceee47f47cea4cfbae019201e878ef1d20ffc4bba7302",
+      "baseline_sha256": "47e0ddf842a64ec0b74f54284abeac413faf637d7441cea7e79b8949adf288b6",
+      "journal_sha256": "cd77026bc2ef922baf598ebf6037388e72b2de062d95a4ac30a9bf9ee6b64a3f",
+      "filtered_slugs": [
+        "japan-tax-free-refund-2026"
+      ],
+      "filtered_operation_counts": {
+        "drafts": 5,
+        "publish-articles": 5,
+        "publish-hubs": 0
+      },
+      "shared_journal_filtered_by_slug": false
+    }
+  ],
+  "source_correction_approvals": [
+    {
+      "locale": "zh-TW",
+      "from_published_sha256": "6358cae7243f026ec6a2a27e9f26394e5805759ce42932ef92032a1367ff7c27",
+      "to_document_sha256": "8f19020e8412793852dd6502faa35f88b5953c950b06d456f6b20564f0308bb7",
+      "review_sha256": "552fd065bbe7ffd3d4460f2d890ce820423e003f40623359bb5b90877051bb7e",
+      "slug": "japan-tax-free-refund-2026"
+    }
+  ],
+  "actual_public_documents": [
+    {
+      "slug": "japan-tax-free-refund-2026",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/guides/intel/japan-tax-free-refund-2026",
+      "published_version": 6,
+      "document_sha256": "8f19020e8412793852dd6502faa35f88b5953c950b06d456f6b20564f0308bb7",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "japan-tax-free-refund-2026",
+      "locale": "en",
+      "url": "https://mokaair.com/en/guides/intel/japan-tax-free-refund-2026",
+      "published_version": 2,
+      "document_sha256": "2b3ca7260a4eae18b78e13efb70bf0fa16e7e5973092ee7ed74cc088547d2a08",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "japan-tax-free-refund-2026",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/guides/intel/japan-tax-free-refund-2026",
+      "published_version": 2,
+      "document_sha256": "8d56af0b8a5fbc110d7d37c697b815342ec2d2f3c88ab0796f948d6fae957575",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "japan-tax-free-refund-2026",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/guides/intel/japan-tax-free-refund-2026",
+      "published_version": 2,
+      "document_sha256": "9e46f20b4dd0b4121c28595835e5415a37fb2207eeaee30fa3ab48b61217c867",
+      "selected_publication_target": true
+    },
+    {
+      "slug": "japan-tax-free-refund-2026",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/guides/intel/japan-tax-free-refund-2026",
+      "published_version": 2,
+      "document_sha256": "4136133f1dcf7aeb7ec4a6a3a250ce652ab7961da7b937671feddeb7dfc676f9",
+      "selected_publication_target": true
+    }
+  ],
+  "manifest_asset_sha256": {
+    "/guides/japan-tax-free-refund-2026/diagram-1-en.svg": "1c20e85e81ccf740db461c1ed3b57db10351469b12fd48cc8e7da64daeaccd38",
+    "/guides/japan-tax-free-refund-2026/diagram-1-ja.svg": "c318448ede9d2316a2f5557bb658ad435c4fa44caa3f36420181426ea7a32436",
+    "/guides/japan-tax-free-refund-2026/diagram-1-ko.svg": "12fdf25d34a3af3acf999ecdaa6d43de50e0784cf88c267c9b1f83d1f20d9fd9",
+    "/guides/japan-tax-free-refund-2026/diagram-1-zh-cn.svg": "ede858372a9a0fbc9ee7f61cafdc63a8c33ec4f96cd93f3479abaf6fc8e598cd",
+    "/guides/japan-tax-free-refund-2026/diagram-1.svg": "9abff5f9592df1cb0313f614aad9056e88d5934a5134c8d3ecc8215e3383ed81",
+    "/guides/japan-tax-free-refund-2026/hero.jpg": "2c560d56f738dfd79245e94a78e12a243d54f52f7ea475761a70dbecdf84822d",
+    "/guides/japan-tax-free-refund-2026/photo-1.webp": "be6f5ff1149719eab93b0dc5888dd3a96dc185975ef39ea16eec4a7f79661983"
+  },
+  "backup_and_rehearsal": {
+    "single_database_dump": true,
+    "dump_sha256": "ab0b6e72cc1b6cde1a40e1ef927dd3ec5ad3ae39867327ababe306c1d0e94fd5",
+    "catalog_sha256": "15ed17ff8b8442753bb307e9a4859935a2057d28b26c7e64b8fef06a9685f51b",
+    "isolated_fixture_four_phase_replay_database_unchanged": true,
+    "isolated_fixture_write_phase_journal_bytes_unchanged": true
+  },
+  "production_replay_selected_article_state_unchanged": true,
+  "owned_hold_cleared": true,
+  "actual_QA_handoff_sha256": "0dacee5faf9e896b69ae09cabf5373403cdc1c10a057d6bc9d4f2fd2d52edc75",
+  "actual_public_acceptance_sha256": "f8a68430aa8dc4fdc7faa335fdce4a2ad72501510f4a3a4417892877d64f7766",
+  "actual_ledger_application_receipt_sha256": "27bdc2ba38015a8694e2070d2ea30aace5338fa0dcbb6bec686547d634a508bd",
+  "actual_postpublication_census_sha256": "d8982a0d9242252f6ae50bab2988c873220d1b64d3b993d0006c0ab9db8f5364",
+  "global_ledger_publication_event_id": "all-missing-publication-7524c25995d5",
+  "global_missing_count_from_fresh_census": 3320,
+  "new_editorial_PASS_issued_by_renderer": false,
+  "link_maintenance_limitations": {
+    "actual_check_sha256": "4588b0d705b1c4e37e77d440b32639d13330bb28de3d364dd0626228ad342cde",
+    "all_guides_check_exit_code_by_locale": {
+      "zh-TW": 1,
+      "en": 1,
+      "ja": 1,
+      "ko": 1,
+      "zh-CN": 1
+    },
+    "all_guides_finding_count_by_locale": {
+      "zh-TW": 111,
+      "en": 233,
+      "ja": 233,
+      "ko": 233,
+      "zh-CN": 233
+    },
+    "record_unpublished_related_link_count_by_locale": {
+      "zh-TW": 0,
+      "en": 0,
+      "ja": 0,
+      "ko": 0,
+      "zh-CN": 0
+    },
+    "selected_other_link_problem_count": 0,
+    "global_all_guides_check_passed": false,
+    "unpublished_related_targets_pending_under_global_localization_task": true
+  }
+}
