@@ -179,7 +179,12 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     }
     return receipts.receive(entry, await response.json());
   }
-  const pending = (body, why) => tagged(new AutomationError(`the saved stage run is still pending${why ? ` (${why})` : ""}; its receipt will be recovered next round`, { code: RUN_PENDING }), body);
+  // `polling`: why the last look at the server failed (a 429 on the receipt, a dropped connection),
+  // or null when the server last said the run is queued or running; `receipt_status` is what it
+  // last said, null when no job was accepted yet. flow.mjs reports the first rather than claim a
+  // job is still running that may be over and only unread.
+  const pendingError = (message, body, polling, receiptStatus) => tagged(Object.assign(new AutomationError(message, { code: RUN_PENDING }), { polling: polling || null, receipt_status: receiptStatus ?? null }), body);
+  const pending = (body, why, { polling = null, receiptStatus = null } = {}) => pendingError(`the saved stage run is still pending${why ? ` (${why})` : ""}; its receipt will be recovered next round`, body, polling, receiptStatus);
   // The owner's card shows this message (flow.mjs unanswered): the saved run's own cause first.
   const inputChanged = (body, detail = "") => {
     const message = detail ? `${detail}; ${INPUT_CHANGED_MESSAGE}` : INPUT_CHANGED_MESSAGE;
@@ -202,12 +207,12 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     catch (error) {
       if (error instanceof RunReceiptError || error instanceof AutomationError && error.who === "owner") throw error;
       if (error.gone) { receipts.archive(entry, { autoArchive: true, gone: error.gone }); return; }
-      throw pending(body, `the stale run could not be looked up: ${error.message}`);
+      throw pending(body, `the stale run could not be looked up: ${error.message}`, { polling: error.message, receiptStatus: saved.status });
     }
     if (fresh.status === "succeeded") receipts.archive(entry, { autoArchive: true });
     else if (fresh.status === "failed") receipts.removeFailed(entry);
     else if (fresh.status === "uncertain") throw inputChanged(body, fresh.error_detail || "the saved model run is uncertain");
-    else throw pending(body, "an earlier request of this stage is still running");
+    else throw pending(body, "an earlier request of this stage is still running", { receiptStatus: fresh.status });
   }
   async function durableRun(body, previous) {
     const entry = previous ?? receipts.prepare(body);
@@ -270,7 +275,8 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
             lastProblem = "the receipt response ended before it could be read";
             failures++;
           }
-          if (receipt !== undefined) { receipts.receive(entry, receipt); failures = 0; }
+          // Read: the server's own word on the run replaces any earlier failed look.
+          if (receipt !== undefined) { receipts.receive(entry, receipt); failures = 0; lastProblem = ""; }
         }
       } catch (error) {
         if (error instanceof RunReceiptError || error instanceof AutomationError) throw error;
@@ -286,7 +292,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       await sleep(wait);
       waited += wait;
     }
-    throw tagged(new AutomationError(`the saved stage run is still pending${lastProblem ? ` (${lastProblem})` : ""}; its receipt will be recovered next round`, { code: RUN_PENDING }), body);
+    throw pending(body, lastProblem, { polling: lastProblem, receiptStatus: entry.record.receipt?.status });
   }
   async function run(stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) {
     const body = { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) };

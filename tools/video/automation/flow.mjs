@@ -553,6 +553,21 @@ const deferredLabel = (state, why) => `暫時過不去，${String(state.deferred
 // (RUN_PENDING): the worker's round (ops/video/worker.sh, 300 s), so its receipt is looked up
 // once a round, not by each lane in turn (two lanes polling one job got a 429 on 2026-10-06).
 export const PENDING_RECHECK_MS = 5 * 60_000;
+/**
+ * What a writer still pending is waiting on (RUN_PENDING): the server's own word that its run is
+ * queued or running, or, when the client's last look at the server failed (client.mjs `polling`:
+ * a 429 on the receipt, a dropped connection), that cause. A job that finished on the server and
+ * was only not read is never reported as a model still at work. Either way the same request key
+ * and receipt are looked up next round; nothing is sent again.
+ */
+function pendingLine(error) {
+  const stage = error.stage ?? "writer";
+  if (!error.polling) return `${stage} is still running; its saved receipt will be checked next round`;
+  return error.receipt_status
+    ? `${stage}'s saved run could not be looked up (${error.polling}); its receipt is checked again next round`
+    : `${stage}'s request was not confirmed by the server (${error.polling}); it is sent again under the same key next round, which the server takes as the same run`;
+}
+
 // A video's unit met its project's STOP file, or lost the project's lease, before a paid request
 // or a write to its canonical files (Automation.fence): the video sits the rest of the run out,
 // nothing is sent or written, and an answer already received stays saved for the next unit.
@@ -1212,7 +1227,7 @@ export class Automation {
         return `${error.slug}: ${error.message}`;
       }
       if (!(error instanceof AutomationError && error.code === RUN_PENDING)) throw error;
-      const what = `${error.stage ?? "writer"} is still running; its saved receipt will be checked next round`;
+      const what = pendingLine(error);
       // A video's writer, sent by its own unit or to answer a line on its screenplay (discuss.mjs,
       // which runs outside the unit and names the video on the error): no lane looks the job up
       // again or moves the video within PENDING_RECHECK_MS, the line waits with it (resting), and

@@ -4907,11 +4907,13 @@ function durableJobs(site) {
   const jobs = new Map();
   const lost = new Map();
   const counts = { submits: 0, lookups: 0 };
+  let refusing = null;
   const result = { text: JSON.stringify({ video: null }), provider: "anthropic", model: "claude-sonnet-5", input_tokens: 10, output_tokens: 5, usage: { tokens: 15, token_budget: 20_000_000, drafts: 1, draft_budget: 8, calls: 1, failed_calls: 0 } };
   const fetch = async (url, init = {}) => {
     const { pathname } = new URL(url);
     if (pathname === "/api/video/automation/run/jobs") {
       counts.submits++;
+      if (refusing) return Response.json(refusing.body, { status: refusing.status });
       const body = JSON.parse(init.body);
       if (!jobs.has(body.request_key)) jobs.set(body.request_key, { id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: "anthropic", model: "claude-sonnet-5", status: "running", result: null, error_code: null, error_detail: null, error_status: null, retry_after: null });
       return Response.json(jobs.get(body.request_key));
@@ -4930,6 +4932,8 @@ function durableJobs(site) {
     finish: (job) => Object.assign(job, { status: "succeeded", result }),
     fail: (job, code, detail) => Object.assign(job, { status: "failed", error_code: code, error_detail: detail, error_status: 409 }),
     lose: (job, status, body) => lost.set(job.id, { status, body }),
+    found: (job) => lost.delete(job.id),
+    refuse: (answer) => { refusing = answer; },
   };
 }
 
@@ -4961,6 +4965,33 @@ function durableVideos(slugs) {
   };
   return { box, ctx, site, server, clock, worker, journals, state: (slug) => automatedVideos(box.work).find((each) => each.slug === slug) };
 }
+
+test("a writer whose saved receipt cannot be read says why instead of claiming the model still runs; the next round adopts the same job, sent once", async () => {
+  const videos = durableVideos(["throttled"]);
+  // The ordinary case: the server says the job is running, and so does the line.
+  assert.equal(await (await videos.worker()).step(), "throttled: writer is still running; its saved receipt will be checked next round");
+  const [job] = videos.server.running();
+  // The job finishes on the server, but every look at its receipt meets the token's rate limit
+  // (2026-10-05: the travel video's job was done at 12:37 and its GETs got 429 until 12:56).
+  videos.server.finish(job);
+  videos.server.lose(job, 429, { code: "rate_limit_exceeded", detail: "請求過於頻繁，請稍後再試" });
+  assert.equal(await (await videos.worker()).step(), "throttled: writer's saved run could not be looked up (請求過於頻繁，請稍後再試); its receipt is checked again next round");
+  videos.server.found(job);
+  assert.equal(await (await videos.worker()).step(), "throttled: script drafted", "the same job's answer is taken");
+  assert.equal(videos.server.counts.submits, 1, "and the writer was asked once");
+  assert.deepEqual(videos.journals("throttled"), [], "its journal is settled");
+
+  // A request the server never confirmed (its POST met the rate limit each time) has no job to look up.
+  const refused = durableVideos(["unsent"]);
+  refused.server.refuse({ status: 429, body: { code: "rate_limit_exceeded", detail: "請求過於頻繁，請稍後再試" } });
+  assert.equal(await (await refused.worker()).step(), "unsent: writer's request was not confirmed by the server (請求過於頻繁，請稍後再試); it is sent again under the same key next round, which the server takes as the same run");
+  refused.server.refuse(null);
+  assert.equal(await (await refused.worker()).step(), "unsent: writer is still running; its saved receipt will be checked next round");
+  const [unsent] = refused.server.running();
+  refused.server.finish(unsent);
+  assert.equal(await (await refused.worker()).step(), "unsent: script drafted");
+  assert.equal(refused.server.jobs.size, 1, "one job, under the one key");
+});
 
 test("a project another process holds is left alone with nothing sent or written, while the other videos move; it moves once that process lets go", async () => {
   const videos = durableVideos(["held-elsewhere", "free-video"]);

@@ -546,6 +546,39 @@ test("a translation stays on the synchronous route while the site has not turned
   assert.deepEqual(durableFiles(box), []);
 });
 
+test("a pending writer says why its last look failed, only while it did: a read after a 429 clears it, and a POST the server never confirmed has no receipt", async () => {
+  const limited = () => Response.json({ code: "rate_limit_exceeded", detail: "請求過於頻繁，請稍後再試" }, { status: 429 });
+  // Every look at the saved job's receipt meets the rate limit: the cause and the last status the server gave.
+  let box = sandbox();
+  let original;
+  let lookups = 0;
+  let client = durableClient(box, async (url, init) => {
+    if (init.method === "POST") { original = JSON.parse(init.body); return Response.json(job(original, "running")); }
+    lookups += 1;
+    return limited();
+  }, { durablePollMs: 5000, durablePollIntervalMs: 1 });
+  await client.settings();
+  await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING && error.polling === "請求過於頻繁，請稍後再試" && error.receipt_status === "running");
+  assert.ok(lookups >= 1);
+  // A 429 and then a read that says running: the server's own word replaces the failed look.
+  box = sandbox();
+  lookups = 0;
+  client = durableClient(box, async (url, init) => {
+    if (init.method === "POST") { original = JSON.parse(init.body); return Response.json(job(original, "running")); }
+    lookups += 1;
+    return lookups === 1 ? limited() : Response.json(job(original, "running"));
+  }, { durablePollMs: 5, durablePollIntervalMs: 1 });
+  await client.settings();
+  await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING && error.polling === null && error.receipt_status === "running");
+  // The POST itself is refused for a while: no job was confirmed, so there is no receipt status.
+  box = sandbox();
+  let posts = 0;
+  client = durableClient(box, async () => { posts += 1; return limited(); }, { durablePollMs: 5000, durablePollIntervalMs: 1 });
+  await client.settings();
+  await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING && error.polling === "請求過於頻繁，請稍後再試" && error.receipt_status === null);
+  assert.equal(posts, 4, "the same key, sent the client's attempts and no more");
+});
+
 test("a pending writer restarts with GET and returns the persisted result despite changed models, capability or budgets", async () => {
   const box = sandbox(), calls = [];
   let original;
