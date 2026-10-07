@@ -1,14 +1,14 @@
 ---
 id: 2026-10-05-hold-lost-planner-and-jev-answers
 title: Hold lost planner and Jev answers across rounds in drafts, series and Shorts
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-happy-carson
+claimed_at: 2026-10-07T11:22:28Z
 created_at: 2026-10-05T23:49:44Z
 completed_at:
-branch:
+branch: claude/happy-carson-c1hy91
 depends_on:
   - 2026-10-02-stop-repeating-lost-stage-answers-outside
 scope:
