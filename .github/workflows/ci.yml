@@ -344,7 +344,7 @@ jobs:
       COMMUNITY_MAIL_FROM: Mokaair CI <accounts@example.test>
       # Chainguard's MinIO pinned by digest; see the api job.
       MINIO_IMAGE: cgr.dev/chainguard/minio@sha256:bd014394a80898e68c149f2311fdf8d5a2c2f3bb2c33b9327ae6d02b4b065ae1
-      MAILPIT_IMAGE: axllent/mailpit:v1.31.3@sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d
+      MAILPIT_IMAGE: axllent/mailpit:v1.31.4@sha256:b68349e3a014b90c5610bfb26b2ae36f3892d7b8cf25ee140c6c71c98d2fcf48
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       # Retried pull, then --pull=never below; see the api job and tools/ci/pull-images.sh.
