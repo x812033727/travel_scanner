@@ -4712,9 +4712,11 @@ test("a STOP file that ends a media stage with exit 4 leaves the video for this 
   const slug = "music-stopped";
   const clock = { now: Date.parse("2026-10-06T10:00:00Z") };
   const { ctx } = context(box, async () => assert.fail("the site hears nothing"), clock);
-  let result;
+  let result, stopDuring = false;
   ctx.runCommand = async (command) => {
     assert.deepEqual(command, ["music", "--slug", slug]);
+    // The owner's STOP lands while the stage runs (one already there keeps it from running: fence).
+    if (stopDuring) writeFileSync(path.join(box.work, slug, "STOP"), "");
     return result;
   };
   const reports = [];
@@ -4729,12 +4731,13 @@ test("a STOP file that ends a media stage with exit 4 leaves the video for this 
   assert.deepEqual([saved().deferred_until, saved().defer_count, saved().status], [undefined, 3, "active"], "before: a saved wait of 40 minutes and a count of 4");
   assert.ok(automation.skipped.has(slug), "this run leaves it");
 
-  // The file is there and the stage ended on another line (the wait for the track was cut short).
+  // The file came during the stage, which ended on another line (the wait for the track was cut short).
   automation.skipped.clear();
-  writeFileSync(path.join(box.work, slug, "STOP"), "");
+  stopDuring = true;
   result = { code: 4, out: "the track was not ready in time\n" };
   assert.equal(await automation.media(state, "music"), "music-stopped: music could not finish (the track was not ready in time)");
   assert.deepEqual([saved().deferred_until, saved().defer_count], [undefined, 3]);
+  stopDuring = false;
   rmSync(path.join(box.work, slug, "STOP"));
 
   // With no STOP file, exit 4 is the vendor's or the budget's: a deferral like any other.
@@ -4885,6 +4888,50 @@ test("a STOP that arrives while the writer's paid answer is on its way: nothing 
   await (await worker()).step();
   assert.equal(readJson(video).slug, slug, "the saved answer is written once the STOP is gone");
   assert.equal(posted.filter((key) => key === posted[0]).length, 1, "the saved answer is taken, not bought again");
+});
+
+test("a request outside a video's unit (a discussion of its screenplay) takes the project's lease for the step, and a held project sits the run out instead of ending it", async () => {
+  const videos = durableVideos(["held-discussion", "free-discussion"]);
+  const foreign = path.join(videos.box.work, "held-discussion", "LEASE");
+  writeFileSync(foreign, JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "manual recovery", pid: 4242, host: "another-container", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+  const worker = await videos.worker();
+  let answering = "held-discussion";
+  worker.stepUnit = async () => {
+    await worker.stage("writer", answering, { brief: "x" }, 1000, "slides", "discuss");
+    return `${answering}: answered`;
+  };
+  assert.match(await worker.step(), /^held-discussion: the writer request was not sent or written: the project is held by manual recovery \(pid 4242 on another-container/);
+  assert.equal(worker.halted, false, "the run goes on");
+  assert.ok(worker.skipped.has("held-discussion"));
+  assert.equal(videos.server.jobs.size, 0, "nothing was sent for it");
+  answering = "free-discussion";
+  assert.equal(await worker.step(), "free-discussion: writer is still running; its saved receipt will be checked next round");
+  assert.equal(videos.server.jobs.size, 1);
+  assert.equal(existsSync(path.join(videos.box.work, "free-discussion", "LEASE")), false, "the step's lease is let go when the step ends");
+  assert.ok(existsSync(foreign), "the other producer's lease is untouched");
+});
+
+test("a STOP that comes while a media command runs: its exit is not recorded as done, and nothing about the stage is cleared", async () => {
+  const slug = "media-stopped";
+  const videos = durableVideos([slug]);
+  const worker = await videos.worker();
+  const workdir = path.join(videos.box.work, slug);
+  const state = { ...videos.state(slug), prompt_fixes: { keyframes: 1 } };
+  atomicWrite(path.join(workdir, "auto.json"), JSON.stringify(state));
+  const ran = [];
+  videos.ctx.runCommand = async (command) => {
+    ran.push(command[0]);
+    writeFileSync(path.join(workdir, "STOP"), "owner hold");
+    return { code: 0, out: "stopped by the STOP file before anything was drawn or written; remove it to continue" };
+  };
+  await assert.rejects(worker.media(state, "keyframes"), (error) => error.code === "video_project_held" && /recording keyframes/.test(error.message));
+  assert.deepEqual(ran, ["keyframes"]);
+  assert.deepEqual(readJson(path.join(workdir, "auto.json")).prompt_fixes, { keyframes: 1 }, "the stage's fix rounds are kept");
+  assert.ok(!videos.site.calls.reports.some((report) => report.stage === "keyframes done"));
+  // With the STOP file already there, the command is not run at all.
+  await assert.rejects(worker.media(state, "keyframes"), (error) => error.code === "video_project_held" && /^keyframes was not sent/.test(error.message));
+  assert.deepEqual(ran, ["keyframes"]);
+  delete videos.ctx.runCommand;
 });
 
 test("a writer job the server failed before dispatching it (a STOP file, the switch off, a queue that lost it) defers its video and is sent again once; it never blocks", async () => {

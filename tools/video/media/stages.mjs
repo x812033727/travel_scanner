@@ -214,17 +214,6 @@ export class Stage {
       this.spend(usd);
       reserve(this.workdir, { stage: this.stage, kind, id, provider: expected.provider, model: expected.model, key, seconds, cost_usd: usd }, this.now());
       let submitted;
-      // Checked again with the hold in place, right before the request goes out.
-      if (this.stop()) {
-        release(this.workdir, key);
-        throw stoppedError();
-      }
-      try {
-        this.hold();
-      } catch (error) {
-        release(this.workdir, key);
-        throw error;
-      }
       try {
         submitted = await submit({ request, ...this.options });
       } catch (error) {

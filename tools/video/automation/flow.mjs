@@ -791,8 +791,10 @@ export class Automation {
     this.busy = busy;
     this.skipped = skipped;
     this.pendingUntil = pendingUntil;
-    // The project leases this lane holds, by slug: one for the video its unit moves.
+    // The project leases this lane holds, by slug: one for the video its unit moves, and those
+    // fence() took for this step outside a unit (stepLeases), released when the step ends.
     this.leases = new Map();
+    this.stepLeases = new Map();
     this.secondary = secondary;
     this.read = pageReader({ fetchImpl: ctx.fetch ?? globalThis.fetch, sleep: ctx.sleep, now: () => ctx.now().getTime() });
     this.refs = null;
@@ -884,9 +886,13 @@ export class Automation {
    */
   fence(slug, what) {
     let why = stopRequested(this.workdir(slug)) ? "the project's STOP file holds it" : null;
-    if (!why && this.leases.has(slug)) {
+    if (!why) {
       try {
-        this.leases.get(slug).verify();
+        // A path outside the video's unit (a discussion of its screenplay) takes the lease here,
+        // for the rest of the step (step() lets it go).
+        const held = this.leases.get(slug) ?? this.stepLeases.get(slug);
+        if (held) held.verify();
+        else this.stepLeases.set(slug, acquireProjectLease(this.workdir(slug), { owner: "auto", now: this.ctx.now }));
       } catch (error) {
         if (!(error instanceof ProjectLeaseError)) throw error;
         why = error.message;
@@ -894,7 +900,7 @@ export class Automation {
     }
     if (!why) return;
     this.runSlugs?.delete(slug);
-    throw new AutomationError(`${what} was not sent or written: ${why}`, { code: PROJECT_HELD });
+    throw Object.assign(new AutomationError(`${what} was not sent or written: ${why}`, { code: PROJECT_HELD }), { slug });
   }
 
   async stage(stage, slug, payload, maxOutputTokens, format = "slides", variant = null, series = null) {
@@ -1159,12 +1165,27 @@ export class Automation {
 
   /** One unit of work; returns a line saying what was done, or null when nothing could be. */
   async step() {
+    try {
+      return await this.stepOnce();
+    } finally {
+      for (const lease of this.stepLeases.values()) lease.release();
+      this.stepLeases.clear();
+    }
+  }
+
+  async stepOnce() {
     this.runSlugs = new Set();
     this.unitVideo = null;
     let outcome;
     try {
       outcome = await this.stepUnit();
     } catch (error) {
+      // A STOP or another producer's lease met outside a video's unit (a discussion): that video
+      // sits the run out, nothing sent or written, and the others move.
+      if (error instanceof AutomationError && error.code === PROJECT_HELD && error.slug) {
+        this.skipped.add(error.slug);
+        return `${error.slug}: ${error.message}`;
+      }
       if (!(error instanceof AutomationError && error.code === RUN_PENDING)) throw error;
       const what = `${error.stage ?? "writer"} is still running; its saved receipt will be checked next round`;
       // A video's writer, sent by its own unit or to answer a line on its screenplay (discuss.mjs,
@@ -2521,8 +2542,12 @@ export class Automation {
     // answering for the seeds before them.
     const offset = state.seed_offsets?.[command];
     const seedOffset = SEED_OFFSET_COMMANDS.has(command) && Number.isInteger(offset) && offset > 0 ? ["--seed-offset", String(offset)] : [];
+    this.fence(state.slug, command);
     const result = await run(ctx, [command, "--slug", state.slug, ...channel, ...seedOffset]);
     if (result.code === 0) {
+      // A STOP that came during the command: an exit 0 is not recorded as done (a stage that
+      // stopped exits 0 too). Other exits keep their own STOP handling below.
+      this.fence(state.slug, `recording ${command}`);
       this.cleared(state, command);
       delete state.prompt_fixes?.[command];
       // A picture kept with the judge's remarks (acceptBestPictures) that a rewritten prompt had
@@ -2637,7 +2662,9 @@ export class Automation {
     const ids = found.map((target) => target.id);
     if (!ids.length || !ids.every((id) => manifest?.shots?.[id]?.file)) return null;
     const channel = this.ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", this.ctx.env.VIDEO_BROWSER_CHANNEL] : [];
+    this.fence(state.slug, "keeping the best pictures");
     const result = await run(this.ctx, ["keyframes", "--slug", state.slug, ...channel, "--accept-best", ids.join(",")]);
+    this.fence(state.slug, "recording the kept pictures");
     if (result.code !== 0) return this.block(state, `keyframes could not keep the pictures after ${rounds} prompt fixes: ${lastLine(result.out)}`, "prompt_fixes:keyframes");
     const pictures = found.map((target) => ({ id: target.id, problems: target.problems ?? [] }));
     state.accepted_pictures = [...(state.accepted_pictures ?? []).filter((picture) => !ids.includes(picture.id)), ...pictures];

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
-import { existsSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -126,4 +126,22 @@ test("holders inside one process share the lease, which goes with the last of th
   assert.throws(() => requireProjectLease(replaced, { owner: "keyframes" }), leased);
   mine.release();
   assert.equal(leaseHolder(replaced).owner, "someone by hand", "release never removes another producer's file");
+});
+
+test("two producers that read the same dead lease: the second puts the first one's new lease back instead of taking it", () => {
+  const dir = workdir();
+  const dead = { schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "auto", pid: 4242, host: os.hostname(), boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" };
+  const live = { ...dead, token: "22222222-2222-3333-4444-555555555555", owner: "the first taker", pid: 4343, host: "another-container" };
+  writeFileSync(path.join(dir, LEASE_FILE), JSON.stringify(dead));
+  // Between this producer's read of the dead record and its move, the first taker moved it and made its own lease.
+  const io = {
+    kill: () => { throw Object.assign(new Error("no such process"), { code: "ESRCH" }); },
+    rename: (from, to) => {
+      if (from.endsWith(LEASE_FILE)) writeFileSync(from, JSON.stringify(live));
+      return renameSync(from, to);
+    },
+  };
+  assert.throws(() => acquireProjectLease(dir, { owner: "auto", io }), (error) => leased(error) && /the first taker/.test(error.message));
+  assert.equal(record(dir).token, live.token, "the first taker's lease is back in place");
+  assert.deepEqual(readdirSync(dir), [LEASE_FILE], "nothing of it is left aside, and the dead record is not overwritten");
 });

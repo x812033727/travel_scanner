@@ -9,7 +9,7 @@ import { LEASE_FILE, PROJECT_LEASED } from "../core/project-lease.mjs";
 import { readCache, readJobs } from "./cache.mjs";
 import { statusText } from "./cli.mjs";
 import { MediaError } from "./client.mjs";
-import { capProblem, ledgerTotals, readLedger, reservedEntries } from "./ledger.mjs";
+import { capProblem, ledgerTotals, readLedger, reserve, reservedEntries } from "./ledger.mjs";
 import { choiceFor, IMAGE_SIZES, imagePrice, imageSizeFor, imageStatus, JUDGE_USD_PER_CALL, Stage, statusProblem, takesStyleReference } from "./stages.mjs";
 
 const PRO = "gemini-3-pro-image";
@@ -473,4 +473,18 @@ test("a STOP that arrives while a submitted picture is drawn keeps that paid pic
   assert.equal(fake.calls.filter((route) => route.startsWith("POST")).length, posts, "no next paid call after STOP");
   assert.equal(readLedger(fake.workdir).entries.length, 1, "and nothing reserved for one");
   assert.deepEqual((await fake.generate()).reused, true, "the kept picture is still served from the cache");
+});
+
+test("a hold an earlier lost submit left in the ledger survives a STOP or a foreign lease that refuses the next attempt", async () => {
+  for (const block of ["STOP", "lease"]) {
+    const fake = fakeStage(status());
+    const key = fake.stage.imageKey({ prompt: "synthetic drawing", seed: 1 });
+    reserve(fake.workdir, { stage: "keyframes", kind: "image", id: "opening", provider: "gemini", model: PRO, key, seconds: 0, cost_usd: 0.134 }, new Date("2026-09-29T00:00:00Z"));
+    const before = readLedger(fake.workdir).entries;
+    if (block === "STOP") writeFileSync(path.join(fake.workdir, "STOP"), "owner hold");
+    else writeFileSync(path.join(fake.workdir, LEASE_FILE), JSON.stringify({ schema_version: 1, token: "11111111-2222-3333-4444-555555555555", owner: "manual recovery", pid: 4242, host: "another-container", boot_id: null, start_ticks: null, acquired_at: "2026-10-07T00:00:00.000Z" }));
+    await assert.rejects(fake.generate(), (error) => error.code === (block === "STOP" ? "stopped" : PROJECT_LEASED), block);
+    assert.deepEqual(readLedger(fake.workdir).entries, before, `${block}: the kept charge is not released`);
+    assert.deepEqual(fake.calls, []);
+  }
 });

@@ -14,7 +14,7 @@
 // host or container, a process that may still run, unreadable bytes) counts as held: zero
 // dispatches and zero writes until a person removes the file.
 import { randomUUID } from "node:crypto";
-import { closeSync, existsSync, fsyncSync, mkdirSync, openSync, readFileSync, renameSync, unlinkSync, writeFileSync } from "node:fs";
+import { closeSync, existsSync, fsyncSync, linkSync, mkdirSync, openSync, readFileSync, renameSync, unlinkSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
@@ -48,7 +48,7 @@ function running(pid, io) {
   catch (error) { return error?.code === "EPERM"; }
 }
 
-const IO = { readFile: readFileSync, kill: (pid, signal) => process.kill(pid, signal), hostname: () => os.hostname(), pid: process.pid };
+const IO = { readFile: readFileSync, rename: renameSync, kill: (pid, signal) => process.kill(pid, signal), hostname: () => os.hostname(), pid: process.pid };
 
 // This process's leases, by file: the token it wrote and how many holders inside it share it
 // (the worker's unit, then a media command it runs in the same process). Released at exit.
@@ -113,8 +113,7 @@ export function acquireProjectLease(workdir, { owner, now = () => new Date(), io
   const existing = leaseHolder(workdir);
   if (existing) {
     if (!certainlyDead({ ...existing, file }, io)) throw new ProjectLeaseError(`the project is held by ${describe(existing)}; nothing was sent or written`, { holder: existing });
-    // Kept beside the new lease, as the record of who held it and when.
-    renameSync(file, path.join(workdir, `${LEASE_FILE}.${existing.token}.dead.json`));
+    takeOver(workdir, file, existing, io);
   }
   const record = { schema_version: 1, token: randomUUID(), owner, pid: io.pid, host: io.hostname(), boot_id: bootId(io), start_ticks: startTicks(io.pid, io), acquired_at: now().toISOString() };
   let fd;
@@ -133,6 +132,31 @@ export function acquireProjectLease(workdir, { owner, now = () => new Date(), io
     exitHook = true;
   }
   return handle(file, lease);
+}
+
+/**
+ * Move a dead holder's lease aside, kept as the record of who held it and when. Two producers can
+ * both read the same dead record: the first moves it and creates its own lease, so the second
+ * must not move that one. Each moves the file to a name of its own and reads back what it moved;
+ * another holder's live lease goes back (link fails if a third has made one since, and then the
+ * moved one's holder fails its next verify, before it pays).
+ */
+function takeOver(workdir, file, dead, io) {
+  const moving = path.join(workdir, `${LEASE_FILE}.${randomUUID()}.moving`);
+  try { io.rename(file, moving); }
+  catch (error) {
+    if (error.code === "ENOENT") return; // gone already: the exclusive create below decides
+    throw error;
+  }
+  let moved = null;
+  try { moved = JSON.parse(readFileSync(moving, "utf8")); } catch { /* compared below as not the dead one */ }
+  if (moved?.token === dead.token) {
+    renameSync(moving, path.join(workdir, `${LEASE_FILE}.${dead.token}.dead.json`));
+    return;
+  }
+  try { linkSync(moving, file); unlinkSync(moving); }
+  catch { /* a third producer holds the project now; the moved lease is kept beside it */ }
+  throw new ProjectLeaseError(`the project was taken by ${moved ? describe(moved) : "another producer"} a moment ago; nothing was sent or written`, { holder: moved });
 }
 
 function handle(file, lease) {

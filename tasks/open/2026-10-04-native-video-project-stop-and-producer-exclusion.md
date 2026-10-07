@@ -23,6 +23,7 @@ scope:
   - tools/video/media/stages.test.mjs
   - docs/videos/long-form/review.md
   - docs/videos/long-form/review.json
+  - docker-compose.prod.yml
 ---
 
 # Honor project STOP and share producer ownership before native video mutations
