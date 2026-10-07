@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-youtube-approved-languages-sync
 title: YouTube sync reads stale publish package after approved languages
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-happy-carson
 claimed_at: 2026-10-07T07:17:15Z
 created_at: 2026-09-30T10:35:02Z
-completed_at:
+completed_at: 2026-10-07T09:22:19Z
 branch: claude/happy-carson-c1hy91
 depends_on: []
 scope:
@@ -199,4 +199,3 @@ existing refusal to update already public videos; manual backfill is a separate 
 - Tests: the contract gains a ready mp3 dub case (owner-approved); the unrealistic "same package
   reviewed again" case is replaced by the confirmation the worker really sends after a batch,
   which composes from its own package (and, with a dub, is refused: the filed ordering ticket).
-
