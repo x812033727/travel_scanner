@@ -194,6 +194,9 @@ test("a stage run sent and left without its answer is not sent again: the route'
       throw failed("UND_ERR_HEADERS_TIMEOUT");
     }, 0],
     ["an answer that breaks off", () => new Response('{"text": "{\\"worksheet\\"', { status: 200, headers: { "Content-Type": "application/json" } }), 200],
+    // Only the route's 502 says the API was never reached; no route answers the code otherwise.
+    ["an upstream_unavailable no route answers", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 503 }), 503],
+    ["an upstream_unavailable at a gateway's 504", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 504 }), 504],
   ];
   for (const [what, answer, status] of lost) {
     const box = sandbox();
@@ -297,6 +300,9 @@ test("a Jev judgement sent and left without its answer is not asked again: a dro
     // Only the route's never-reached 502 settles a judgement; the API's 502 for a Jev call whose
     // outcome it cannot tell (2026-10-05-jev-judge-endpoints-report-an-uncertain) does not.
     ["the API's uncertain Jev outcome", () => Response.json({ code: "video_judge_outcome_uncertain", detail: "Jev 可能已經判斷" }, { status: 502 }), 502],
+    // Nor does the never-reached code with any other status (2026-10-07-automation-client-settles-a-judge-route).
+    ["an upstream_unavailable no route answers", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 503 }), 503],
+    ["an upstream_unavailable at a gateway's 504", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 504 }), 504],
   ];
   for (const [method, route, body] of JUDGES) {
     for (const [what, answer, status] of lost) {

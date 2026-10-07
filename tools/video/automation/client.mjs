@@ -59,9 +59,9 @@ const RETRYABLE_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_un
 // `auto` ends; the worker's loop tries again on its next round.
 export const PAUSE_CODES = new Set(["video_ai_subscription_paused", "video_ai_subscription_auth_failed"]);
 // A stage run's 5xx that settles it: the API's own answer once the run is over (it is recorded as
-// failed, no answer was lost), or the web route's 502 for an API it never reached. Any other 5xx
-// after a stage run was sent leaves its outcome unknown (RUN_UNCERTAIN).
-const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "video_ai_upstream_failed", OUTPUT_INVALID, "upstream_unavailable"]);
+// failed, no answer was lost), or the web route's 502 for an API it never reached (NEVER_REACHED).
+// Any other 5xx after a stage run was sent leaves its outcome unknown (RUN_UNCERTAIN).
+const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "video_ai_upstream_failed", OUTPUT_INVALID]);
 // A Jev judgement (judge/policy, judge/outline) takes one call off the daily Jev budget before it
 // asks Jev (apps/api/app/video_automation/judge.py `_ask`), so it is paid like a stage run. It is
 // settled by the API's own 502 once its Jev call failed (the API answered, and no verdict was lost on
@@ -72,7 +72,13 @@ const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_
 // `video_judge_outcome_uncertain`, 2026-10-05-jev-judge-endpoints-report-an-uncertain). A host from
 // before that route change answers the 502 for both, so this client needs a host that serves it:
 // production does since a9e4c3851, deployed 2026-10-05.
-const SETTLED_JUDGE_CODES = new Set(["video_judge_upstream_failed", "upstream_unavailable"]);
+const SETTLED_JUDGE_CODES = new Set(["video_judge_upstream_failed"]);
+// The run and judge routes' (forwardToSpeech) own answer for an API they never reached: nothing
+// ran, so a stage run or a judgement is asked again. Only the 502: no route answers the code with
+// another status, so a 503 or 504 `upstream_unavailable` came from something else and stays
+// uncertain, as in tts/client.mjs and shorts/site.mjs.
+const NEVER_REACHED = Object.freeze({ status: 502, code: "upstream_unavailable" });
+const settles = (settled, status, code) => settled.has(code) || (status === NEVER_REACHED.status && code === NEVER_REACHED.code);
 const JUDGE = Object.freeze({ paid: true, settled: SETTLED_JUDGE_CODES, what: "Jev" });
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
@@ -142,7 +148,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       const message = problem.detail || `HTTP ${response.status}`;
       if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code, who: "owner" });
       if (PAUSE_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code });
-      if (paid && response.status >= 500 && !settled.has(problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status, what);
+      if (paid && response.status >= 500 && !settles(settled, response.status, problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status, what);
       last = new AutomationError(message, { status: response.status, code: problem.code });
       // When the server said to come back (Retry-After in seconds), the error keeps it: the
       // sleeps here are capped at two minutes each, and flow.mjs defers the video no sooner than
