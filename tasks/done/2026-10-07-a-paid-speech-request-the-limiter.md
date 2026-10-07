@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-a-paid-speech-request-the-limiter
 title: A paid speech request the limiter refused (503 rate_limit_unavailable) is held as a lost answer
-status: open
+status: done
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-limiter
+claimed_at: 2026-10-07T06:39:46Z
 created_at: 2026-10-07T06:12:40Z
-completed_at:
+completed_at: 2026-10-07T06:42:17Z
 branch:
 depends_on: []
 scope:
@@ -35,14 +35,14 @@ the real client.
 
 ## Definition of done
 
-- [ ] A paid speech POST answered 503 `rate_limit_unavailable` is retried like the 429 (it was
+- [x] A paid speech POST answered 503 `rate_limit_unavailable` is retried like the 429 (it was
       refused before any provider call) and, when the retries run out, exits 4 with the API's
       sentence, so the worker defers the video as everyone's trouble.
-- [ ] No other 503 changes: a 503 without that code is still uncertain on a paid POST.
+- [x] No other 503 changes: a 503 without that code is still uncertain on a paid POST.
 
 ## Steps
 
-- [ ] Confirm in `apps/api/app/infra.py` and `apps/api/app/middleware.py` that every
+- [x] Confirm in `apps/api/app/infra.py` and `apps/api/app/middleware.py` that every
       `rate_limit_unavailable` is raised before the route body; then add the code to the settled
       set (or handle it beside the 429), with a client test per paid call.
 
@@ -53,3 +53,17 @@ the real client.
 ## Notes
 
 - Filed 2026-10-07 by claude-opus-5-5-tts-defer.
+- Done 2026-10-07 by claude-opus-5-5-limiter. Confirmed in the API: `app/infra.py`
+  `enforce_named_rate_limit` is the only place that raises `rate_limit_unavailable` (503); on the
+  speech routes it runs in the `video_tool` dependency and at the top of `transcribe_narration`
+  and `align_speech`, before any provider call; `middleware.py`'s limiter fails open and never
+  raises it. `tools/video/tts/client.mjs` now settles exactly that 503 (`LIMITER_AWAY`, beside
+  `NEVER_REACHED`): retried with the usual backoff, then SpeechError `rate_limit_unavailable`
+  (who: service, exit 4) with the API's sentence, which the worker's `everyones()` reads as
+  everyone's trouble. The code on another status (502) stays uncertain.
+- Tests (`client.test.mjs`): the 503 in the retried table for every paid call; persistent, 5
+  calls and `everyones(message) === "rate_limit_unavailable"`; the 502 in the lost table. Each
+  fails with the change reverted, and the 502 row fails if the status is not checked.
+  `node --test tools/video/tts/*.test.mjs "tools/video/shorts/*.test.mjs"` 315 pass.
+- The automation client (stage runs, Jev) and the Shorts judge have the same gap:
+  2026-10-07-the-automation-and-shorts-clients-hold.

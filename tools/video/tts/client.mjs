@@ -48,7 +48,13 @@ const SETTLED_CODES = new Set(["video_speech_upstream_busy", "video_speech_upstr
 // 2026-10-05). Only the 502: no speech route answers the code with another status, so a 503
 // `upstream_unavailable` came from something else and stays uncertain.
 const NEVER_REACHED = { status: 502, code: "upstream_unavailable" };
-const settled = (status, code) => SETTLED_CODES.has(code) || (status === NEVER_REACHED.status && code === NEVER_REACHED.code);
+// The API's limiter refuses a request when it cannot count it (apps/api/app/infra.py
+// enforce_named_rate_limit, 503 `rate_limit_unavailable`): in the token's dependency, before any
+// route runs, and at the top of transcribe and align. Nothing reached a provider, so it is retried
+// like the rate limit and, once the tries run out, it is a service away (exit 4, which the worker
+// counts as everyone's trouble), never an answer lost. Only the 503: the limiter answers no other.
+const LIMITER_AWAY = { status: 503, code: "rate_limit_unavailable" };
+const settled = (status, code) => SETTLED_CODES.has(code) || [NEVER_REACHED, LIMITER_AWAY].some((known) => status === known.status && code === known.code);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
 // Answers that do not change by asking again in this run, whatever their status: the server has no

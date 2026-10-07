@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import test from "node:test";
 import { alignClip, judgeLines, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, synthesizeAligned, transcribeClip } from "./client.mjs";
+import { everyones } from "../automation/flow.mjs";
 import { encodeWav, parseWav } from "./wav.mjs";
 
 const SITE = "https://site.test";
@@ -83,6 +84,8 @@ test("a paid request sent and left without its answer is sent once and names the
     ["the API's lost Jev answer", () => problem(502, "video_judge_outcome_uncertain"), 502],
     // Only the route's 502 says the API was never reached; no speech route answers this one.
     ["an upstream_unavailable no speech route answers", () => problem(503, "upstream_unavailable"), 503],
+    // The limiter answers its code with 503 only; the same code on another status is not the limiter's.
+    ["the limiter's code on a status the limiter never answers", () => problem(502, "rate_limit_unavailable"), 502],
     ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
     ["an error whose detail runs over lines", () => Response.json({ detail: "Internal\nServer Error\n" }, { status: 500 }), 500],
     ["an answer that breaks off", brokenBody, 200],
@@ -136,6 +139,8 @@ test("a paid request that never left, or that the API settled, is tried again an
     ["the API's rate limit", () => problem(429, "rate_limit_exceeded", { "Retry-After": "3" }), [3000]],
     // A host from before the header: the whole minute the limit counts, not 1 to 16 seconds.
     ["the API's rate limit without Retry-After", () => problem(429, "rate_limit_exceeded"), [60000]],
+    // The API's limiter could not count the request (app/infra.py), before any route ran.
+    ["the API's limiter away", () => problem(503, "rate_limit_unavailable"), [1000]],
     ["a busy provider", () => problem(503, "video_speech_upstream_busy", { "Retry-After": "7" }), [7000]],
     ["a busy provider asking for longer than a minute", () => problem(503, "video_speech_upstream_busy", { "Retry-After": "90" }), [60000]],
     // Also what the API answers for a provider read timeout after the request went out, which
@@ -205,6 +210,14 @@ test("a settled failure that does not clear stops after the bounded attempts", a
   const limited = server([() => problem(429, "rate_limit_exceeded")]);
   await assert.rejects(PAID[1].send(limited.options), (error) => error.code === "rate_limit_exceeded");
   assert.deepEqual(limited.sleeps, [60000, 60000, 60000, 60000]);
+  // The limiter away for every try: a service away (exit 4), with the API's own sentence, which the
+  // worker reads as everyone's trouble and waits out instead of blocking the video.
+  const away = server([() => Response.json({ code: "rate_limit_unavailable", detail: "安全驗證服務暫時無法使用" }, { status: 503 })]);
+  for (const paid of PAID) {
+    away.calls.length = 0;
+    await assert.rejects(paid.send(away.options), (error) => error.code === "rate_limit_unavailable" && error.who === "service" && everyones(error.message) === "rate_limit_unavailable", paid.name);
+    assert.equal(away.calls.length, 5, paid.name);
+  }
   const unreached = server([() => problem(502, "upstream_unavailable")]);
   await assert.rejects(PAID[2].send(unreached.options), (error) => error.code === "upstream_unavailable" && error.who === "service");
   assert.equal(unreached.calls.length, 5);
