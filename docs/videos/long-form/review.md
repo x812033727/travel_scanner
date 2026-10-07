@@ -1978,6 +1978,88 @@ PASS is DURATION_ONLY for the one rebound hash below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch next-tts-defer tts and retake exit-4 deferral increment: 2 files (2026-10-07)
+
+Reviewer: `claude-pr-review-tts-defer`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is two commits on branch next-tts-defer for the task `2026-10-06-tts-and-a-narration-retake-that` (owner `claude-opus-5-5-tts-defer`): `2235f988` ("fix(video): a tts or a retake that exits 4 defers the video instead of blocking it") and `9c4867db` ("fix(video): a retake that exits 4 without a take gives its round back; review fixes"). Scope: DURATION_ONLY for the two changed bindings below. The reviewer wrote neither commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `e61d4214`, the first commit's parent ("fix(video): review fixes for the rate-limit wait; close the task"). The last receipt commit before it is `4bc865dc`, the "claude/sharp-bardeen-ob6fn9 continued still increment" above. `git diff 4bc865dc e61d4214 -- tools/video/automation/flow.mjs tools/video/automation/automation.test.mjs docs/videos/long-form/` is empty, and so is `git diff e61d4214 9c4867db -- docs/videos/long-form/ tools/video/long-form/ tools/video/core/`. At `e61d4214`, flow.mjs hashes to `b26f0c20cf53ecdfb97518421d00f2689c7863e61e98e93e09a11a14798faa10` and automation.test.mjs to `27a528f7af3ea7f9c3c90a849846d04f2e5558dcf40fa7684434ff5ec7e607b8`, their rows in review.json and the table (by `git show` piped to `sha256sum`). review.md hashes to the receipt's `report_sha256` at `e61d4214`, at `2235f988` and at `9c4867db`. The working tree's copies of both files equal `9c4867db`'s and hold no CR byte. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs; stale duration review binding: tools/video/automation/flow.mjs` and nothing else. The whole of `git diff e61d4214 9c4867db` is the two bound files and two task files: the task's own, and the filed `2026-10-07-a-dub-retake-that-exits-4`. No unbound code changes. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+What the change is. Until this change, the narration stage in `advance()` blocked the video on any tts exit other than 0 and 6. `narration()` did the same for a retake (`tts --redo` of the check-flags file) and for a retake after a rewrite. So exit 4 (a service away, the month's characters spent, the speech routes' rate limit) blocked at once, while every other command the worker runs defers on it. Now:
+
+- A tts that exits 4 defers as `<slug>: tts could not finish (<last line>)` with `what: "tts"` and `everyone` from `everyones(result.out)` (flow.mjs 2325).
+- A retake, or a retake after a rewrite, that exits 4 goes through `retakeStopped` (3063, 3084). It is passed a new `wait` argument, `retakeWait(redo)` (670): `what: "tts"` and `everyone` from its output. A STOP still passes `{ backoffMs: 0 }`. So the takes such a retake made are recorded in `stopped_retake` and bound by the next plain tts, as after a STOP.
+- The second commit adds `giveBack`, which only the check-flags loop passes. A retake that exited 4 with no take made returns the `state.retakes` round it was counted under (3029–3032).
+- Exit 3, 2, 1 and any other code still block.
+- The resume line now reads "narration synthesized from the takes of the retake that stopped halfway". Three doc comments are reworded.
+
+This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/automation/flow.mjs (+27/−10, 231,365 → 232,982 bytes, 3,788 → 3,805 lines). The first commit has +21/−10 and the second +8/−2. The changes are in four places:
+
+- the new `retakeWait` and `retakeExplains`' doc comment (669–678 at the head);
+- the narration stage in `advance()` (2305–2333);
+- `retakeStopped`'s doc comment, signature and `giveBack` branch (3001–3034);
+- one added line in each of `narration()`'s two retake loops.
+
+The duration code is outside every hunk:
+
+- the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29);
+- `slidesMinutes` and `episodeMinutes` (63–69);
+- the anime `body_target_seconds / 60` settlement (490);
+- `planPayload`'s `target_minutes` (1655);
+- the drama request and series episode targets (1868–1879, 1950–2002);
+- the writer, re-plan and prompt-repair targets (2422–2451, 2787).
+
+The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `body_target_seconds`, `KNOWLEDGE_MIN`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` are the same 20 lines, with the same text, at both revisions. No changed line names one of them, or minutes, seconds, frames or FPS. The only changed lines that match "timeline" are the doc comment and the guard's comment, which name timeline.json. Where the length gates sit:
+
+- What exit 4 is. tts/cli.mjs `exitFor` (78) maps a `SpeechError` whose `who` is not "owner" to `EXIT.external` (4). Those are the client's network and HTTP failures (tts/client.mjs 110, 121, 126) and the month's characters pre-check (tts/cli.mjs 397, `video_speech_budget_exhausted`). The project lease, a voice problem, a missing token and a lost paid answer are the owner's and exit 3. They still block through `result.code !== 0`.
+- tts's own timing verdict still blocks. That is the chapter check on the measured timeline: `checkChapters(presentationTimeline(…))` with "lengthen or merge the short chapters" (487–498). It exits 1 (`EXIT.lint`), as does a lint error (312). Both still block through the unchanged `result.code !== 0` in `advance()` and in both retake loops. No length verdict reaches the new deferral.
+- The timeline. tts writes narration.wav and timeline.json (478, 483) only after its request loop (423), and every exit-4 path throws before that loop or inside it. An exit 4 therefore leaves the previous timeline in place, or none. The stage is not reported done: the tts test asserts no `narration synthesized` report until a tts exits 0. The next visit runs tts again. A recorded retake is bound by a plain tts, which rebuilds timeline.json from the takes and runs the chapter check again. `narration()` then runs check-audio on it. The total frames that QA's `assemble` item and the 14,400-frame catalog floor read come from that rebuilt timeline, as before. `core/duration.mjs`, `core/lint.mjs`, `qa/checks.mjs`, assemble and package are not in the diff.
+- `everyone`. `EVERYONE_WORDING` is unchanged: Jev's budget, the review store, the speech budget and two rate-limit sentences. It names no duration failure, so a length verdict could not defer without counting even if it exited 4. A vendor's line counts toward `DEFER_LIMIT` and blocks as `deferred:tts`.
+- `giveBack`. `state.retakes` counts check-audio's per-line retake rounds against the settings' `retakeRounds`, not a length. Giving a round back only when no take was made keeps the number of retakes the settings allow. The rewrite loop's `rewrites` counter, `MAX_REWRITE_ROUNDS` and the listener's payload are unchanged.
+- `retakeExplains` changes only in its doc comment. The guard before tts, `audioEvidenceProblems`, the refresh decision and the audio gate's push and pull are unchanged.
+
+Findings, tools/video/automation/automation.test.mjs (+193/−5, 411,278 → 424,434 bytes, 5,789 → 5,977 lines). The first commit has +100/−5 and the second +95/−2. At the head the file has 145 top-level tests and 185 counted with subtests; the baseline has 137 and 165. The five removed lines are in the `stoppedRetakeGate` helper and in the STOP-retake test:
+
+- the helper now takes the exit code, output and expected line, with the STOP's values as defaults;
+- it advances the clock for a waiting deferral;
+- the old resume-line literal is now the new wording.
+
+Eight tests are added:
+
+- a tts that exits 4: the rate limit and the month's characters, eight rounds, never blocked; a vendor's line, blocked at the seventh;
+- a tts that exits 3 or 2 still blocks;
+- a retake that exits 4 after one take, and one before its first take;
+- the round given back;
+- a vendor failing the retake until it blocks;
+- the retake after a rewrite;
+- exit 3 or 2 on either retake.
+
+Their fixtures remove the `narrationGate` timeline.json so that tts runs. They assert step lines, `status`, `blocked_kind`, `defer_count`, `defer_shared`, `retakes`, `stopped_retake`, the redo flags and the audio reviews. None asserts seconds, frames, a timeline length or a target. Changed-line matches for "second" or "timeline" are the assertion message "is not retaken a second time" and `rmSync(…, "timeline.json")`. The duration-term lines are the same 31 at both revisions. The opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at line 36 is byte-unchanged, and no added line reads or sets process.env.
+
+Ran (Node v22.22.0, Linux, in the worktree at `9c4867db`, node_modules installed, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing at `e61d4214`, `2235f988` and `9c4867db`, and the empty diffs above;
+- `git diff e61d4214 9c4867db -- tools/video/automation/`, read in full, with each commit's numstat;
+- changed-line scans, and the duration-term line sets at both revisions;
+- reads of `advance()`'s narration stage, `retakeStopped`, `narration()`, `defer()`, `everyones` and `EVERYONE_WORDING`, and the media exit-4 handler the change mirrors;
+- reads of tts/cli.mjs from `tts`'s lint check to its chapter check, with `exitFor`, `run` and `plannedBranding`, the `SpeechError` sources in tts/client.mjs and tts/cli.mjs, and `EXIT` and `main`'s error mapping in tools/video/cli.mjs;
+- the baseline's tools/video, docs/videos and .agents from `git archive e61d4214`, with its package.json and a link to this worktree's node_modules, in a scratch directory. There `node --test` passed the baseline automation.test.mjs 165 of 165 (137 top-level). The head's test file, run against the baseline flow.mjs, failed 12 of 185. The failures were the STOP-retake test (its new resume wording), the tts exit-4 test and its three subtests, the four retake exit-4 tests, and the retake-after-rewrite test and its two subtests. The exit 3 and exit 2 tests passed against both revisions.
+
+Before rebinding, `node --test tools/video/automation/automation.test.mjs` passed 185 of 185 (145 top-level). `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same two paths. The CLI check and the long-form tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the deferral of tts and the retakes itself. That includes the `everyone` reading of a tts's output, the vendor's `DEFER_LIMIT` and the backoff, giving the round back, the retake after a rewrite keeping its round, recording `stopped_retake` after an exit 4, and the resume wording.
+- tts/cli.mjs, tts/client.mjs and the media handler were read only for exit codes and the order of writes, and are not reviewed. The task files are not reviewed, and neither is the dub retake's counter they file.
+- No real video was voiced, retaken, assembled or measured, no real speech request was made, and the tests run under the opt-out.
+- Not run or seen: the rest of the tool, Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, and the production host.
+- The 106 bindings this change did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2034,9 +2116,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `27a528f7af3ea7f9c3c90a849846d04f2e5558dcf40fa7684434ff5ec7e607b8` |
+| `tools/video/automation/automation.test.mjs` | `55e247b228837ccba853ce271a77530a39ba3531107a314389bccd0036989349` |
 | `tools/video/automation/discuss.mjs` | `74ad92a459787188cf2b64ee7663ae31ed5629ffc54fc9cc9fe8a8888964078c` |
-| `tools/video/automation/flow.mjs` | `b26f0c20cf53ecdfb97518421d00f2689c7863e61e98e93e09a11a14798faa10` |
+| `tools/video/automation/flow.mjs` | `f2b3eb191a13b77d653d7219e7e1091161443cbe7ce03c81a4c35c01bf3753f9` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |
