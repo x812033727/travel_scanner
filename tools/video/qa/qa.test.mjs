@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash, randomBytes } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -15,7 +15,7 @@ import { runCaptions } from "../core/stages.mjs";
 import { buildTimeline, SAMPLE_RATE, speechHash, visualHash } from "../core/timeline.mjs";
 import { sourceHashes } from "../core/translations.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "./checks.mjs";
-import { keptPicturesWarning, WARNING_PICTURE_IDS } from "./cli.mjs";
+import { keptPicturesWarning, QA_FILE, WARNING_PICTURE_IDS } from "./cli.mjs";
 import { jpegBytes } from "./test-images.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
 
@@ -262,37 +262,170 @@ test("a blank channel stance and a failed verdict are failed items, exit 1", asy
   assert.deepEqual(readReport(workdir).items.find((item) => item.id === "policy"), { id: "policy", ok: false, detail: note });
 });
 
-test("the judge being unreachable or out of budget is an external failure, exit 4; a revoked token is the owner's, exit 3", async () => {
+const fetchFailed = (code) => Object.assign(new TypeError("fetch failed"), { cause: Object.assign(new Error(`socket ${code}`), { code }) });
+const judgeCalls = (server) => server.calls.filter((call) => call.url.endsWith("/judge/policy"));
+const lastLine = (out) => out.stdout.trimEnd().split("\n").at(-1);
+
+// Each case asks Jev in the same box, one after another: a settled failure keeps no record, so
+// none of them holds the next. A lost answer is held, so its shapes each have their own box below.
+test("the judge being unreachable or out of budget is an external failure, exit 4; a revoked token is the owner's, exit 3; none of them is held", async () => {
   const { box, workdir } = finishedVideo();
-  const fetchFailed = (code) => Object.assign(new TypeError("fetch failed"), { cause: Object.assign(new Error(`socket ${code}`), { code }) });
+  const run = async (server, { env } = {}) => {
+    const { out, ctx } = context(box, server.fetchImpl);
+    if (env) ctx.env = env;
+    const code = await main(["qa", "--slug", box.slug], ctx);
+    const report = readReport(workdir);
+    assert.equal("policy_lost" in report, false, "a settled failure is asked again on the next run");
+    return { code, out, detail: report.items.find((item) => item.id === "policy").detail };
+  };
+  // Never sent: the connection was refused, so nothing reached Jev.
   const down = site({ policy: () => { throw fetchFailed("ECONNREFUSED"); } });
-  const first = context(box, down.fetchImpl);
-  assert.equal(await main(["qa", "--slug", box.slug], first.ctx), EXIT.external, first.out.stderr);
-  const policy = readReport(workdir).items.find((item) => item.id === "policy");
-  assert.equal(policy.ok, false);
-  assert.match(policy.detail, /^the judge call failed: cannot reach https:\/\/site\.test/);
-  // A connection dropped after the judgement was sent may have spent the Jev call: asked once.
-  const lost = site({ policy: () => { throw fetchFailed("UND_ERR_SOCKET"); } });
-  const dropped = context(box, lost.fetchImpl);
-  assert.equal(await main(["qa", "--slug", box.slug], dropped.ctx), EXIT.external);
-  assert.match(readReport(workdir).items.find((item) => item.id === "policy").detail, /^the judge call failed: automation\/judge\/policy was sent and no answer came back/);
-  assert.equal(lost.calls.filter((call) => call.url.endsWith("/judge/policy")).length, 1, "not sent again");
-  const spent = site({ policy: () => Response.json({ code: "jev_budget_exhausted", detail: "Jev 今天的次數用完了" }, { status: 429 }) });
-  const budget = context(box, spent.fetchImpl);
-  assert.equal(await main(["qa", "--slug", box.slug], budget.ctx), EXIT.external);
-  assert.equal(readReport(workdir).items.find((item) => item.id === "policy").detail, "the judge call failed: Jev 今天的次數用完了");
-  const upstream = site({ policy: () => Response.json({ code: "video_judge_upstream_failed", detail: "Jev 暫時無法判斷" }, { status: 502 }) });
-  const jev = context(box, upstream.fetchImpl);
-  assert.equal(await main(["qa", "--slug", box.slug], jev.ctx), EXIT.external);
-  assert.equal(readReport(workdir).items.find((item) => item.id === "policy").detail, "the judge call failed: Jev 暫時無法判斷");
+  const refused = await run(down);
+  assert.equal(refused.code, EXIT.external, refused.out.stderr);
+  assert.match(refused.detail, /^the judge call failed: cannot reach https:\/\/site\.test/);
+  assert.ok(judgeCalls(down).length >= 1);
+  for (const [status, code, detail] of [
+    [429, "jev_budget_exhausted", "Jev 今天的次數用完了"],
+    [429, "rate_limit_exceeded", "請求太頻繁"],
+    [502, "video_judge_upstream_failed", "Jev 暫時無法判斷"],
+    [502, "upstream_unavailable", "API 連不上"],
+    // The limiter's store away refuses the request before Jev is asked (automation/client.mjs LIMITER_AWAY).
+    [503, "rate_limit_unavailable", "限流暫時無法計數"],
+  ]) {
+    const server = site({ policy: () => Response.json({ code, detail }, { status }) });
+    const settled = await run(server);
+    assert.equal(settled.code, EXIT.external, `${status} ${code}`);
+    assert.equal(settled.detail, `the judge call failed: ${detail}`);
+    assert.ok(judgeCalls(server).length >= 1, `${code}: asked, not held by the case before it`);
+    assert.doesNotMatch(lastLine(settled.out), /video_ai_run_uncertain/);
+  }
+  // An answer without a verdict is a failed item, never a pass, and never held.
+  const blank = site({ policy: () => Response.json({ note: "?" }) });
+  const unanswered = await run(blank);
+  assert.equal(unanswered.code, EXIT.lint);
+  assert.equal(unanswered.detail, "the judge answered without a verdict");
+  assert.equal(judgeCalls(blank).length, 1);
   const revoked = site({ policy: () => Response.json({ code: "video_tool_token_invalid", detail: "token revoked" }, { status: 401 }) });
-  const second = context(box, revoked.fetchImpl);
-  assert.equal(await main(["qa", "--slug", box.slug], second.ctx), EXIT.owner);
-  assert.equal(readReport(workdir).items.find((item) => item.id === "policy").detail, "the judge call failed: token revoked");
-  const none = context(box, revoked.fetchImpl);
-  none.ctx.env = { VIDEO_WORKDIR: box.work, MOKAAIR_SITE: SITE };
-  assert.equal(await main(["qa", "--slug", box.slug], none.ctx), EXIT.owner);
-  assert.match(readReport(workdir).items.find((item) => item.id === "policy").detail, /no video tool token yet/);
+  const second = await run(revoked);
+  assert.equal(second.code, EXIT.owner);
+  assert.equal(second.detail, "the judge call failed: token revoked");
+  assert.doesNotMatch(lastLine(second.out), /video_ai_run_uncertain/, "exit 3 for the token, not for a lost answer");
+  assert.match(lastLine(second.out), /\d+ of 11 checks passed/);
+  const none = await run(revoked, { env: { VIDEO_WORKDIR: box.work, MOKAAIR_SITE: SITE } });
+  assert.equal(none.code, EXIT.owner);
+  assert.match(none.detail, /no video tool token yet/);
+  assert.doesNotMatch(lastLine(none.out), /video_ai_run_uncertain/);
+});
+
+test("a lost policy answer is kept in qa.json and held: the same narration is not sent to Jev again until the owner retries, exit 3", async () => {
+  const { box, workdir, finalSha } = finishedVideo();
+  await approve({ gate: "audio", docDir: box.dir, workdir, now: new Date("2026-09-27T01:00:00Z") });
+  const lost = site({ policy: () => Response.json({ code: "video_judge_answer_lost", detail: "請求已送到 API，回覆沒有在時限內回來" }, { status: 504 }) });
+  const first = context(box, lost.fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], first.ctx), EXIT.owner, first.out.stderr);
+  const [call] = judgeCalls(lost);
+  assert.equal(judgeCalls(lost).length, 1, "sent once, and not again by the client");
+  const report = readReport(workdir);
+  assert.deepEqual(report.items.map((item) => item.id), ITEM_IDS, "the report is written in full");
+  const policy = report.items.find((item) => item.id === "policy");
+  assert.equal(policy.ok, false);
+  assert.match(policy.detail, /^outcome unknown: Jev was asked about this narration at 2026-09-27T02:00:00\.000Z and its answer was lost \(HTTP 504: 請求已送到 API/);
+  assert.doesNotMatch(policy.detail, /\n/);
+  const { why, ...record } = report.policy_lost;
+  assert.deepEqual(record, { request_sha256: sha(call.init.body), final_sha256: finalSha, at: "2026-09-27T02:00:00.000Z" });
+  assert.match(why, /HTTP 504/);
+  assert.equal("policy_hash" in report, false, "not the long-anime runtime hash");
+  assert.equal(lastLine(first.out), `${box.slug}: Jev's policy verdict on this narration was lost after it was sent (${why}); it is not asked again until the owner retries (or delete ${QA_FILE} to ask once more) (video_ai_run_uncertain)`);
+  assert.match(first.out.stdout, /10 of 11 checks passed/, "after writeReport's own lines");
+
+  // Held: the next run, against a judge that would now pass, asks nothing and keeps the record.
+  const passing = site({ policy: () => Response.json({ passed: true }) });
+  const again = context(box, passing.fetchImpl);
+  again.ctx.now = () => new Date("2026-09-27T03:00:00Z");
+  assert.equal(await main(["qa", "--slug", box.slug], again.ctx), EXIT.owner);
+  assert.equal(judgeCalls(passing).length, 0, "Jev is not asked again");
+  const held = readReport(workdir);
+  assert.deepEqual(held.policy_lost, report.policy_lost, "the record goes on unchanged");
+  assert.deepEqual(held.items.find((item) => item.id === "policy"), policy);
+  assert.match(lastLine(again.out), /\(video_ai_run_uncertain\)$/);
+  // Held without even a client: no token is the owner's too, but the loss is what holds the cut.
+  const tokenless = context(box, passing.fetchImpl);
+  tokenless.ctx.env = { VIDEO_WORKDIR: box.work, MOKAAIR_SITE: SITE };
+  assert.equal(await main(["qa", "--slug", box.slug], tokenless.ctx), EXIT.owner);
+  assert.deepEqual(readReport(workdir).policy_lost, report.policy_lost);
+  assert.match(lastLine(tokenless.out), /\(video_ai_run_uncertain\)$/);
+  assert.equal(judgeCalls(passing).length, 0);
+
+  // Deleting qa.json releases it: Jev is asked once, and its answer ends the hold.
+  rmSync(path.join(workdir, "review", "qa.json"));
+  const released = context(box, passing.fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], released.ctx), EXIT.ok, released.out.stdout);
+  assert.equal(judgeCalls(passing).length, 1);
+  assert.deepEqual(Object.keys(readReport(workdir)), ["ok", "final_sha256", "items"]);
+});
+
+test("a held policy loss gives way to a different request: asked once, and the old record is dropped or replaced", async () => {
+  const { box, workdir } = finishedVideo();
+  await approve({ gate: "audio", docDir: box.dir, workdir, now: new Date("2026-09-27T01:00:00Z") });
+  const qaFile = path.join(workdir, "review", "qa.json");
+  const lose = () => site({ policy: () => Response.json({ code: "video_judge_answer_lost", detail: "請求已送到 API" }, { status: 504 }) });
+  const first = lose();
+  assert.equal(await main(["qa", "--slug", box.slug], context(box, first.fetchImpl).ctx), EXIT.owner);
+  const kept = readReport(workdir).policy_lost;
+  // Another narration or viewpoint is another request (its hash differs from the record's).
+  const changeRequest = () => {
+    const report = readReport(workdir);
+    writeFileSync(qaFile, JSON.stringify({ ...report, policy_lost: { ...report.policy_lost, request_sha256: "0".repeat(64) } }));
+  };
+  changeRequest();
+  const passing = site({ policy: () => Response.json({ passed: true }) });
+  const answered = context(box, passing.fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], answered.ctx), EXIT.ok, answered.out.stdout);
+  assert.equal(judgeCalls(passing).length, 1);
+  assert.equal("policy_lost" in readReport(workdir), false, "an answer drops the old record");
+
+  // A settled failure of a different request drops the old record too: it is asked again next run.
+  assert.equal(await main(["qa", "--slug", box.slug], context(box, first.fetchImpl).ctx), EXIT.owner);
+  changeRequest();
+  const spent = site({ policy: () => Response.json({ code: "jev_budget_exhausted", detail: "Jev 今天的次數用完了" }, { status: 429 }) });
+  assert.equal(await main(["qa", "--slug", box.slug], context(box, spent.fetchImpl).ctx), EXIT.external);
+  assert.ok(judgeCalls(spent).length >= 1);
+  assert.equal("policy_lost" in readReport(workdir), false);
+
+  // Lost again: the new request's record replaces the old one.
+  assert.equal(await main(["qa", "--slug", box.slug], context(box, first.fetchImpl).ctx), EXIT.owner);
+  changeRequest();
+  const again = lose();
+  const later = context(box, again.fetchImpl);
+  later.ctx.now = () => new Date("2026-09-27T05:00:00Z");
+  assert.equal(await main(["qa", "--slug", box.slug], later.ctx), EXIT.owner);
+  assert.equal(judgeCalls(again).length, 1);
+  const replaced = readReport(workdir).policy_lost;
+  assert.equal(replaced.request_sha256, sha(judgeCalls(again)[0].init.body));
+  assert.equal(replaced.request_sha256, kept.request_sha256, "the same narration as the first record");
+  assert.equal(replaced.at, "2026-09-27T05:00:00.000Z");
+});
+
+test("every way a sent judgement loses its answer is held the same way: a dropped connection, the API's uncertain 502, a gateway's HTML 504", async () => {
+  for (const [name, policy, why] of [
+    ["a dropped connection", () => { throw fetchFailed("UND_ERR_SOCKET"); }, /^socket UND_ERR_SOCKET$/],
+    ["the API's uncertain Jev outcome", () => Response.json({ code: "video_judge_outcome_uncertain", detail: "Jev 可能已經判斷" }, { status: 502 }), /^HTTP 502: Jev 可能已經判斷$/],
+    ["a gateway's HTML 504", () => new Response("<html><body><h1>504 Gateway Time-out</h1></body></html>", { status: 504, headers: { "content-type": "text/html" } }), /^HTTP 504$/],
+  ]) {
+    const { box, workdir, finalSha } = finishedVideo();
+    const server = site({ policy });
+    for (const round of [1, 2]) {
+      const { out, ctx } = context(box, server.fetchImpl);
+      assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.owner, `${name}, run ${round}`);
+      assert.match(lastLine(out), /\(video_ai_run_uncertain\)$/, name);
+    }
+    assert.equal(judgeCalls(server).length, 1, `${name}: one call across two runs`);
+    const report = readReport(workdir);
+    assert.equal(report.policy_lost.request_sha256, sha(judgeCalls(server)[0].init.body), name);
+    assert.equal(report.policy_lost.final_sha256, finalSha);
+    assert.match(report.policy_lost.why, why, name);
+    assert.match(report.items.find((item) => item.id === "policy").detail, /^outcome unknown: /, name);
+  }
 });
 
 test("the disclosure answer goes into the upload package once, so the publish gate's hash holds", async () => {
