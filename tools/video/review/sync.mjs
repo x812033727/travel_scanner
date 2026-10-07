@@ -178,9 +178,16 @@ const KEPT_LIST = { final: "accepted_pictures", storyboard: "accepted" };
 
 /**
  * A review's payload with the judge's remarks on its kept pictures cut to `lines` a picture
- * (keptRemarks) wherever that review carries them: on its list of kept pictures and, on a
- * storyboard, in the own verdict of each kept shot, which is left empty when the lines are none
- * (the list says why). Every picture keeps its id. Null for a review that names no kept picture.
+ * (keptRemarks), each picture's remarks sent once. A final cut carries them on its list of kept
+ * pictures. A storyboard carries them on its list (payload.accepted, which the review card reads
+ * first) and leaves each kept shot's own verdict without them. With no line to spend, a
+ * storyboard sends a kept shot as the site needs it and no more: its `accepted: true`, its score,
+ * no remarks and no `needs_review`, which is never true on a kept shot (the site takes a kept
+ * shot without a verdict, video_automation/settings.py). The list goes too, since it would only
+ * repeat every kept id, but for an entry no kept shot stands for; fitPayload says once, in the
+ * summary, that the remarks were left out. A kept shot then costs no more than the same shot
+ * passed by the judge, so keeping pictures never stops a board that would otherwise go up.
+ * Null for a review that names no kept picture.
  */
 function withKeptRemarks({ gate, payload }, lines) {
   if (!isRecord(payload)) return null;
@@ -189,20 +196,46 @@ function withKeptRemarks({ gate, payload }, lines) {
   const shots = gate === "storyboard" && Array.isArray(payload.shots) ? payload.shots : [];
   const keptShot = (shot) => isRecord(shot) && shot.accepted === true;
   if (!pictures.length && !shots.some(keptShot)) return null;
+  const cut = (picture) => (isRecord(picture) ? { ...picture, problems: keptRemarks(picture.problems, lines) } : picture);
+  if (!shots.length) return { ...payload, ...(pictures.length ? { [list]: pictures.map(cut) } : {}) };
+  const listed = new Set(pictures.filter(isRecord).map((picture) => picture.id));
+  const none = lines <= 0;
+  const keptIds = new Set(shots.filter(keptShot).map((shot) => shot.id));
+  const rest = pictures.filter((picture) => !none || !isRecord(picture) || !keptIds.has(picture.id));
+  const { [list]: _left, ...others } = payload;
   return {
-    ...payload,
-    ...(pictures.length ? { [list]: pictures.map((picture) => (isRecord(picture) ? { ...picture, problems: keptRemarks(picture.problems, lines) } : picture)) } : {}),
-    ...(shots.length ? { shots: shots.map((shot) => (keptShot(shot) ? { ...shot, judge: { ...(isRecord(shot.judge) ? shot.judge : {}), problems: lines > 0 ? keptRemarks(shot.judge?.problems, lines) : [] } } : shot)) } : {}),
+    ...others,
+    ...(rest.length ? { [list]: rest.map(cut) } : {}),
+    shots: shots.map((shot) => {
+      if (!keptShot(shot)) return shot;
+      const { problems: _remarks, ...verdict } = isRecord(shot.judge) ? shot.judge : {};
+      if (none) {
+        const { needs_review: _never, ...bare } = shot;
+        return { ...bare, judge: verdict };
+      }
+      // A kept shot the list does not name keeps its own remarks, cut the same way.
+      return { ...shot, judge: { ...verdict, problems: listed.has(shot.id) ? [] : keptRemarks(shot.judge?.problems, lines) } };
+    }),
   };
+}
+
+// The line a storyboard's summary ends with when the remarks on its kept shots were left out.
+const SUMMARY_REMARKS_LEFT_OUT = `保留鏡頭的 judge ${REMARKS_LEFT_OUT}`;
+
+/** A summary that ends with `line`, the summary cut to make room so the whole fits the site's limit. */
+function withSummaryLine(summary, line) {
+  const room = MAX_REVIEW_SUMMARY_LENGTH - [...line].length - 1;
+  return summary ? `${cutText(String(summary), room)}；${line}` : line;
 }
 
 /**
  * A review as review-push posts it, its payload within what the server takes. The judge's
- * remarks on the kept pictures go up cut to KEPT_REMARK_LINES lines a picture; while the payload
- * is past REVIEW_PAYLOAD_BUDGET they are cut further in steps, to two lines and then to none,
- * every picture keeping its id. A payload still past the server's limit is not sent: the server
- * would answer 422, and this says how large it is. Returns { body, bytes, lines }, `lines` null
- * unless the remarks were cut past their usual lines.
+ * remarks on the kept pictures go up cut to KEPT_REMARK_LINES lines a picture, once each; while
+ * the payload is past REVIEW_PAYLOAD_BUDGET they are cut further in steps, to two lines and then
+ * to none, every kept picture still named (a storyboard's by its own shot, withKeptRemarks). A
+ * payload still past the server's limit is not sent: the server would answer 422, and this says
+ * how large it is. Returns { body, bytes, lines }, `lines` null unless the remarks were cut past
+ * their usual lines.
  */
 export function fitPayload(body) {
   const limit = payloadLimit(body);
@@ -220,7 +253,9 @@ export function fitPayload(body) {
   if (bytes > limit) {
     throw new ReviewError(`the ${body.gate} review's payload is ${bytes} bytes, over the ${limit} the site takes${kept ? ", even with the judge's remarks on the kept pictures left out" : ""}; nothing was sent`, { code: "payload_too_large", submission: true });
   }
-  return { body: kept ? { ...body, payload } : body, bytes, lines };
+  if (!kept) return { body, bytes, lines };
+  const leftOut = lines === 0 && body.gate === "storyboard";
+  return { body: { ...body, ...(leftOut ? { summary: withSummaryLine(body.summary, SUMMARY_REMARKS_LEFT_OUT) } : {}), payload }, bytes, lines };
 }
 
 /** The outline options a brief offers: `### 選項 A：title`, its 一行說明, its 開場鉤子. */

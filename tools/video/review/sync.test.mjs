@@ -1203,7 +1203,7 @@ test("a picture kept with the judge's remarks goes up accepted, outside the boar
   const { review: board } = await pushStoryboard(box);
   const desk = board.payload.shots.find((shot) => shot.id === "desk");
   assert.deepEqual([desk.needs_review, desk.accepted, desk.complete], [false, true, true]);
-  assert.deepEqual(desk.judge, { overall: 5, problems: ["awkward: the hand → a hand resting flat"] }, "the verdict goes up as it was");
+  assert.deepEqual(desk.judge, { overall: 5, problems: [] }, "the score goes up on the shot; its remarks travel once, on payload.accepted");
   const clock = board.payload.shots.find((shot) => shot.id === "clock");
   assert.deepEqual([clock.needs_review, clock.accepted], [true, undefined]);
   assert.ok(board.payload.shots.filter((shot) => shot.id !== "desk").every((shot) => shot.accepted === undefined));
@@ -1459,26 +1459,40 @@ test("a payload past the site's limit is never posted: the remarks on kept pictu
   assert.equal(none.lines, 0);
   assert.deepEqual(none.body.payload.accepted_pictures, ids.map((id) => ({ id, problems: [REMARKS_LEFT_OUT] })));
 
-  // A storyboard carries them twice, on its list and in each kept shot's own verdict. A shot
-  // that is not kept keeps its verdict whole: the worker reads it for the prompt fix.
+  // A storyboard carries them once, on its list; a kept shot's own verdict keeps its score. A
+  // shot that is not kept keeps its verdict whole: the worker reads it for the prompt fix.
   const waiting = { id: "waiting", needs_review: true, judge: { overall: 4, problems: remarks } };
-  const board = (count) => ({ gate: "storyboard", summary: "s", payload: {
-    shots: [...ids.slice(0, count).map((id) => ({ id, prompt: "p", accepted: true, needs_review: false, judge: { overall: 5, problems: remarks.slice(0, 8) } })), waiting],
+  const board = (count, said = remarks) => ({ gate: "storyboard", summary: "s", payload: {
+    shots: [...ids.slice(0, count).map((id) => ({ id, prompt: "p", accepted: true, needs_review: false, judge: { overall: 5, problems: said.slice(0, 8) } })), waiting],
     judge: { overall: 4, problems: remarks },
-    accepted: ids.slice(0, count).map((id) => ({ id, overall: 5, problems: remarks })),
+    accepted: ids.slice(0, count).map((id) => ({ id, overall: 5, problems: said })),
   } });
   const usual = fitPayload(board(10));
   assert.equal(usual.lines, null);
   assert.deepEqual(usual.body.payload.accepted[0], { id: "shot-1", overall: 5, problems: [...remarks.slice(0, 6), MORE_REMARKS(3)] });
-  assert.deepEqual(usual.body.payload.shots[0], { id: "shot-1", prompt: "p", accepted: true, needs_review: false, judge: { overall: 5, problems: [...remarks.slice(0, 6), MORE_REMARKS(2)] } });
+  assert.deepEqual(usual.body.payload.shots[0], { id: "shot-1", prompt: "p", accepted: true, needs_review: false, judge: { overall: 5, problems: [] } }, "the remarks are on the list, not again on the shot");
   assert.deepEqual(usual.body.payload.shots[10], waiting);
   assert.deepEqual(usual.body.payload.judge, { overall: 4, problems: remarks });
-  const emptied = fitPayload(board(200));
+  // Sent once, two hundred kept shots' remarks fit at two lines (sent twice they needed none).
+  assert.equal(fitPayload(board(200)).lines, 2);
+  const emptied = fitPayload(board(200, wide));
   assert.equal(emptied.lines, 0);
   assert.ok(emptied.bytes <= REVIEW_PAYLOAD_BUDGET, `${emptied.bytes} bytes`);
-  assert.deepEqual(emptied.body.payload.accepted, ids.map((id) => ({ id, overall: 5, problems: [REMARKS_LEFT_OUT] })));
-  assert.deepEqual(emptied.body.payload.shots.slice(0, 200), ids.map((id) => ({ id, prompt: "p", accepted: true, needs_review: false, judge: { overall: 5, problems: [] } })), "the list says why; the verdict does not say it again");
+  // With no line to spend the list would only repeat every id: it goes, a kept shot goes up with
+  // its marker and its score and no more, and the summary says once why the remarks are missing.
+  assert.equal(emptied.body.payload.accepted, undefined);
+  assert.deepEqual(emptied.body.payload.shots.slice(0, 200), ids.map((id) => ({ id, prompt: "p", accepted: true, judge: { overall: 5 } })));
   assert.deepEqual(emptied.body.payload.shots[200], waiting);
+  assert.equal(emptied.body.summary, `s；保留鏡頭的 judge ${REMARKS_LEFT_OUT}`);
+  assert.equal(fitPayload(board(200)).body.summary, "s", "the summary says nothing while the remarks are there");
+  // A list entry no kept shot stands for is not dropped with the rest.
+  const odd = board(200, wide);
+  odd.payload.accepted.push({ id: "listed-only", overall: 5, problems: remarks });
+  assert.deepEqual(fitPayload(odd).body.payload.accepted, [{ id: "listed-only", overall: 5, problems: [REMARKS_LEFT_OUT] }]);
+  // A kept shot the list does not name keeps its own remarks, cut the same way.
+  const unlisted = board(10);
+  unlisted.payload.accepted = unlisted.payload.accepted.slice(1);
+  assert.deepEqual(fitPayload(unlisted).body.payload.shots[0].judge, { overall: 5, problems: [...remarks.slice(0, 6), MORE_REMARKS(2)] });
   // A list of that name on another gate is not a list of kept pictures.
   const other = { gate: "audio", summary: "s", payload: { accepted: [{ id: "a", problems: remarks }], accepted_pictures: [{ id: "a", problems: remarks }] } };
   assert.equal(fitPayload(other).body, other);
@@ -1486,6 +1500,50 @@ test("a payload past the site's limit is never posted: the remarks on kept pictu
   const crowded = board(200);
   crowded.payload.sheets = "x".repeat(300_000);
   assert.throws(() => fitPayload(crowded), /^Error: the storyboard review's payload is \d{6} bytes, over the 262144 the site takes, even with the judge's remarks on the kept pictures left out; nothing was sent$/);
+});
+
+test("each kept shot's remarks go up once on a storyboard", () => {
+  const ids = Array.from({ length: 20 }, (_, index) => `shot-${index}`);
+  const remark = "awkward: the hand → a hand resting flat";
+  const board = { gate: "storyboard", summary: "s", payload: {
+    shots: ids.map((id) => ({ id, prompt: "p", needs_review: false, complete: true, accepted: true, judge: { overall: 5, problems: [remark] } })),
+    judge: { overall: null, problems: [] },
+    accepted: ids.map((id) => ({ id, overall: 5, problems: [remark] })),
+  } };
+  const sent = JSON.stringify(fitPayload(board).body.payload);
+  assert.equal(sent.split(remark).length - 1, 20, "twenty kept shots, twenty copies of the remark");
+});
+
+test("a storyboard that goes up with nothing kept goes up with every shot kept", async () => {
+  // The input that stopped a board (2026-10-06-a-storyboard-with-many-kept-pictures): 200 shots
+  // with 165-character ids, all kept, each with one short remark, built the way review-push
+  // builds it (file hashes, expected shots, the sheet list of a board past 48 files). The prompt
+  // is sized so the board with nothing kept sits just under the site's limit.
+  const ids = Array.from({ length: 200 }, (_, index) => `${"s".repeat(161)}${String(index).padStart(4, "0")}`);
+  const pushed = async (length, kept) => {
+    const box = sandbox("fixture-illustrated", "illustrated");
+    everyPictureKept(box, ids, { prompt: "p".repeat(length) });
+    if (!kept) {
+      const file = path.join(box.workdir, "keyframes", "manifest.json");
+      const manifest = JSON.parse(readFileSync(file, "utf8"));
+      for (const shot of Object.values(manifest.shots)) {
+        delete shot.accepted_with_problems;
+        shot.judge = { overall: 8, passed: true, problems: [] };
+      }
+      writeFileSync(file, JSON.stringify(manifest));
+    }
+    const { review } = await pushStoryboard(box);
+    return { review, bytes: serverPayloadBytes(review.payload) };
+  };
+  const probe = await pushed(450, false);
+  // Each character of every prompt is one byte of the payload; leave about a kilobyte.
+  const length = 450 + Math.floor((MAX_REVIEW_PAYLOAD_BYTES - 1000 - probe.bytes) / ids.length);
+  const plain = await pushed(length, false);
+  assert.ok(plain.bytes <= MAX_REVIEW_PAYLOAD_BYTES && plain.bytes > MAX_REVIEW_PAYLOAD_BYTES - 2000, `${plain.bytes} bytes with nothing kept`);
+  const kept = await pushed(length, true);
+  assert.ok(kept.bytes <= plain.bytes, `${kept.bytes} bytes with every shot kept, ${plain.bytes} with none`);
+  assert.ok(kept.review.payload.shots.every((shot) => shot.accepted === true && shot.judge.overall === 5), "every shot still says it is kept, with its score");
+  assert.match(kept.review.summary, /；保留鏡頭的 judge 意見因審核資料的大小上限略去/);
 });
 
 test("two hundred kept pictures with nine long remarks each still go up, as a storyboard and as a cut: every id is there, the summary fits, and the remarks are cut until the payload is within the site's 256 KB", async () => {
@@ -1504,11 +1562,11 @@ test("two hundred kept pictures with nine long remarks each still go up, as a st
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "storyboard"], boardPush.ctx), EXIT.ok, boardPush.out.stderr);
   const board = boardSite.state.reviews[0];
   assert.ok(serverPayloadBytes(board.payload) <= REVIEW_PAYLOAD_BUDGET, `${serverPayloadBytes(board.payload)} bytes`);
-  assert.equal(board.summary, "分鏡 200 鏡（沒有聯絡表），200 鏡保留（judge 未過，成片時站主審看）");
+  assert.equal(board.summary, `分鏡 200 鏡（沒有聯絡表），200 鏡保留（judge 未過，成片時站主審看）；保留鏡頭的 judge ${REMARKS_LEFT_OUT}`);
   assert.ok([...board.summary].length <= 500);
-  assert.deepEqual(board.payload.accepted, ids.map((id) => ({ id, overall: 5, problems: [REMARKS_LEFT_OUT] })), "every kept picture, in shot order");
-  assert.deepEqual(board.payload.shots.map((shot) => [shot.id, shot.accepted, shot.needs_review, shot.complete]), ids.map((id) => [id, true, false, true]));
-  assert.ok(board.payload.shots.every((shot) => shot.judge.overall === 5 && shot.judge.problems.length === 0 && shot.prompt.length > 100 && /^[0-9a-f]{64}$/.test(shot.file_sha256)), "a shot loses nothing but the remarks");
+  assert.equal(board.payload.accepted, undefined, "with the remarks left out the list would only repeat the ids");
+  assert.deepEqual(board.payload.shots.map((shot) => [shot.id, shot.accepted, shot.needs_review, shot.complete]), ids.map((id) => [id, true, undefined, true]));
+  assert.ok(board.payload.shots.every((shot) => shot.judge.overall === 5 && shot.judge.problems === undefined && shot.prompt.length > 100 && /^[0-9a-f]{64}$/.test(shot.file_sha256)), "a shot loses nothing but the remarks and the needs_review a kept shot never has");
   assert.deepEqual(board.payload.expected_shots.map((shot) => shot.id), ids);
   assert.match(boardPush.out.stdout, /: storyboard: the judge's remarks on the kept pictures were left out to keep the review's payload within the site's limit \(\d+ bytes now\); keyframes\/manifest\.json has them all\n/);
 
@@ -1561,7 +1619,7 @@ test("twelve kept pictures go up with six lines of 300 characters each and a cou
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "storyboard"], boardPush.ctx), EXIT.ok, boardPush.out.stderr);
   const board = boardSite.state.reviews[0];
   assert.deepEqual(board.payload.accepted, ids.map((id, index) => ({ id, overall: 5, problems: sent(index) })));
-  assert.deepEqual(board.payload.shots.map((shot) => shot.judge), ids.map((_, index) => ({ overall: 5, problems: sent(index) })), "a kept shot's own verdict is cut the same way");
+  assert.deepEqual(board.payload.shots.map((shot) => shot.judge), ids.map(() => ({ overall: 5, problems: [] })), "a kept shot's remarks are sent once, on the list");
   assert.ok(board.payload.accepted.every((entry) => entry.problems.every((line) => [...line].length <= 300)));
   assert.doesNotMatch(boardPush.out.stdout, /were (cut|left out)/, "the usual six lines are not worth a line in the log");
 
