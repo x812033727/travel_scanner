@@ -1,0 +1,382 @@
+{
+  "schema": "localization-route-verification-v1",
+  "checked_at": "2026-10-07T13:00:49.79381+08:00",
+  "source_evidence_sha256": "f8c3eceafe8518aff1f3e8a71fc5d50c67395fd88f0c4ac17763e1488f0e502d",
+  "source_link_pointers": {
+    "japan-tax-free-refund-2026": [
+      {
+        "pointer": "/locales/zh-TW/blocks/13/url",
+        "value": "https://mokaair.com/zh-TW/destinations/tokyo"
+      },
+      {
+        "pointer": "/locales/zh-TW/blocks/14/url",
+        "value": "https://mokaair.com/zh-TW/destinations/osaka-kyoto"
+      }
+    ],
+    "japan-golden-week-2027": [
+      {
+        "pointer": "/locales/zh-TW/blocks/20/url",
+        "value": "https://mokaair.com/zh-TW/destinations/tokyo"
+      },
+      {
+        "pointer": "/locales/zh-TW/blocks/21/url",
+        "value": "https://mokaair.com/zh-TW/destinations/osaka-kyoto"
+      }
+    ],
+    "korea-autumn-leaves-2026": [
+      {
+        "pointer": "/locales/zh-TW/blocks/17/url",
+        "value": "https://mokaair.com/zh-TW/destinations/seoul",
+        "source_sha256": "411c2adea68e42f2c97406817c434a477d97d1b7a468919125b9adbaa812012e"
+      },
+      {
+        "pointer": "/locales/zh-TW/blocks/18/url",
+        "value": "https://mokaair.com/zh-TW/destinations/jeju",
+        "source_sha256": "411c2adea68e42f2c97406817c434a477d97d1b7a468919125b9adbaa812012e"
+      }
+    ]
+  },
+  "routes": [
+    {
+      "requested_url": "https://mokaair.com/zh-TW/destinations/osaka-kyoto",
+      "checked_at": "2026-10-07T13:00:44.282794+08:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/zh-TW/destinations/osaka-kyoto",
+      "redirected": false,
+      "html_lang": "zh-TW",
+      "canonical": "https://mokaair.com/zh-TW/destinations/osaka-kyoto",
+      "h1": [
+        "大阪／京都"
+      ],
+      "html_sha256": "b5fc8de1d049fcc5d336194c6fa66365f0c482d3d5c1e24c15af9dfee78530fa",
+      "body_text_sha256": "bcdb805781f8686e051eeee246c82b41ff1947748ee27ab72aa1c041a81ecc83",
+      "body_text_length": 1488,
+      "passed": true,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "requested_url": "https://mokaair.com/en/destinations/osaka-kyoto",
+      "checked_at": "2026-10-07T13:00:44.284659+08:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/en/destinations/osaka-kyoto",
+      "redirected": false,
+      "html_lang": "en",
+      "canonical": "https://mokaair.com/en/destinations/osaka-kyoto",
+      "h1": [
+        "Osaka & Kyoto"
+      ],
+      "html_sha256": "5f6b96368efc5d11c07a7ef9214c0f6d3439b4e1bafa06a1c3f4fd9918bf892a",
+      "body_text_sha256": "f9f95d246ba60804ea790d9287ed32a479a7ed9d27df9f99d0c955fbc32e6644",
+      "body_text_length": 3113,
+      "passed": true,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "requested_url": "https://mokaair.com/ja/destinations/osaka-kyoto",
+      "checked_at": "2026-10-07T13:00:44.285164+08:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/ja/destinations/osaka-kyoto",
+      "redirected": false,
+      "html_lang": "ja",
+      "canonical": "https://mokaair.com/ja/destinations/osaka-kyoto",
+      "h1": [
+        "大阪／京都"
+      ],
+      "html_sha256": "49d6ebaa93434ef995dd99cff9ced4b0418042bfe76872bdd1dcea2e65e83da3",
+      "body_text_sha256": "17604211d648426cab18addcd905bdfc55ad215f684cf3160023644c1699f1c3",
+      "body_text_length": 1453,
+      "passed": true,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "requested_url": "https://mokaair.com/ko/destinations/osaka-kyoto",
+      "checked_at": "2026-10-07T13:00:44.285896+08:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/ko/destinations/osaka-kyoto",
+      "redirected": false,
+      "html_lang": "ko",
+      "canonical": "https://mokaair.com/ko/destinations/osaka-kyoto",
+      "h1": [
+        "오사카／교토"
+      ],
+      "html_sha256": "9ad6f0a0fe1ffb44a4954322224e27957f276a9672806143e399fbfbbd0863d8",
+      "body_text_sha256": "cf0236de3f2fc7156abf07c4dbbee56d79d9aa42baa8abc89b08b15679c211a3",
+      "body_text_length": 1857,
+      "passed": true,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "requested_url": "https://mokaair.com/zh-CN/destinations/osaka-kyoto",
+      "checked_at": "2026-10-07T13:00:44.286409+08:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/zh-CN/destinations/osaka-kyoto",
+      "redirected": false,
+      "html_lang": "zh-CN",
+      "canonical": "https://mokaair.com/zh-CN/destinations/osaka-kyoto",
+      "h1": [
+        "大阪／京都"
+      ],
+      "html_sha256": "547d06fad04004e41e0cd1665d7157bad96b2111cf6a69518ca6efe8aef2864f",
+      "body_text_sha256": "7ec8a902fdfdf7352b159d3a2647a70fa1aee529eece6774346137d1cb6f6303",
+      "body_text_length": 1225,
+      "passed": true,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "requested_url": "https://mokaair.com/zh-TW/destinations/tokyo",
+      "checked_at": "2026-10-07T13:00:46.5683+08:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/zh-TW/destinations/tokyo",
+      "redirected": false,
+      "html_lang": "zh-TW",
+      "canonical": "https://mokaair.com/zh-TW/destinations/tokyo",
+      "h1": [
+        "東京"
+      ],
+      "html_sha256": "b5d68a23d3f4843003e128fa4d566f4c95c5fb044b832384c3257251f176635c",
+      "body_text_sha256": "2eddcfb22f79db18d2528207ab9c67f25ad1b558ac78976f6f4ecf1fef29ed25",
+      "body_text_length": 2501,
+      "passed": true,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "requested_url": "https://mokaair.com/en/destinations/tokyo",
+      "checked_at": "2026-10-07T13:00:46.843478+08:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/en/destinations/tokyo",
+      "redirected": false,
+      "html_lang": "en",
+      "canonical": "https://mokaair.com/en/destinations/tokyo",
+      "h1": [
+        "Tokyo"
+      ],
+      "html_sha256": "84f919ef892d7f8f8dd06a44cf4d206cca9ffb7940266b6a5f15ab47262285b2",
+      "body_text_sha256": "1fd7eacd7d04f7e0da697426cd71cdbedb67f8e72e9f58cf39c3f2697bf55c21",
+      "body_text_length": 6180,
+      "passed": true,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "requested_url": "https://mokaair.com/ja/destinations/tokyo",
+      "checked_at": "2026-10-07T13:00:47.035059+08:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/ja/destinations/tokyo",
+      "redirected": false,
+      "html_lang": "ja",
+      "canonical": "https://mokaair.com/ja/destinations/tokyo",
+      "h1": [
+        "東京"
+      ],
+      "html_sha256": "8899d581d908d679e5155f79231fdd68c2f415c462a73fdd1b005e05bed22407",
+      "body_text_sha256": "bc84e0d1271e68963040a797baecf647063f1ca38f241e27c1e22d78a8b7ef8a",
+      "body_text_length": 3039,
+      "passed": true,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "requested_url": "https://mokaair.com/ko/destinations/tokyo",
+      "checked_at": "2026-10-07T13:00:47.093281+08:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/ko/destinations/tokyo",
+      "redirected": false,
+      "html_lang": "ko",
+      "canonical": "https://mokaair.com/ko/destinations/tokyo",
+      "h1": [
+        "도쿄"
+      ],
+      "html_sha256": "586a4038e7edf6a169727857bb09e975c74e042c7a6214e0847ef5e47a8c59e8",
+      "body_text_sha256": "cda3ec918784e608a061b4da5bbd39f6730f3c515ecd540c451765ae980178df",
+      "body_text_length": 3770,
+      "passed": true,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "requested_url": "https://mokaair.com/zh-CN/destinations/tokyo",
+      "checked_at": "2026-10-07T13:00:47.161005+08:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/zh-CN/destinations/tokyo",
+      "redirected": false,
+      "html_lang": "zh-CN",
+      "canonical": "https://mokaair.com/zh-CN/destinations/tokyo",
+      "h1": [
+        "东京"
+      ],
+      "html_sha256": "123d4281ea0d9a2af54f7398fd71487c9c03bc7f284968407f1d97d210a39df0",
+      "body_text_sha256": "821884a545363e9d9520378901f430bd031cb5771e20998a61971d1a51592a13",
+      "body_text_length": 2600,
+      "passed": true,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "requested_url": "https://mokaair.com/zh-TW/destinations/jeju",
+      "checked_at": "2026-10-07T05:21:43.487321+00:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/zh-TW/destinations/jeju",
+      "redirected": false,
+      "html_lang": "zh-TW",
+      "canonical": "https://mokaair.com/zh-TW/destinations/jeju",
+      "h1": [
+        "濟州"
+      ],
+      "html_sha256": "d4955fcc8c38f287df0a369d2ec3fa732fc56266cd1cb9f674c692cbf13efac0",
+      "body_text_sha256": "a3bd2e5b5bb60a8814f53225e6c986cca5d72407aeb4a8d9c20e337e370fe240",
+      "body_text_length": 1384,
+      "main_text_length": 1083,
+      "passed": true
+    },
+    {
+      "requested_url": "https://mokaair.com/en/destinations/jeju",
+      "checked_at": "2026-10-07T05:21:44.078328+00:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/en/destinations/jeju",
+      "redirected": false,
+      "html_lang": "en",
+      "canonical": "https://mokaair.com/en/destinations/jeju",
+      "h1": [
+        "Jeju"
+      ],
+      "html_sha256": "6ba18cd195bb1a67ee60088175bd3b1de05a2353b1d102978954eb7673ad4f29",
+      "body_text_sha256": "bf40a18bab98fd0f581ba4acf723f32327dc1eea2aa10eb7d4000e09e3c4d751",
+      "body_text_length": 2331,
+      "main_text_length": 1785,
+      "passed": true
+    },
+    {
+      "requested_url": "https://mokaair.com/ja/destinations/jeju",
+      "checked_at": "2026-10-07T05:21:44.572762+00:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/ja/destinations/jeju",
+      "redirected": false,
+      "html_lang": "ja",
+      "canonical": "https://mokaair.com/ja/destinations/jeju",
+      "h1": [
+        "済州"
+      ],
+      "html_sha256": "392f7d01528f447d3a84bfff7b9753fe254dd242df4ff7e527f738a963b7f748",
+      "body_text_sha256": "9d81002285a9891e0765c86d79051d585c642f97974d877bdb44f9d08525450d",
+      "body_text_length": 1525,
+      "main_text_length": 1185,
+      "passed": true
+    },
+    {
+      "requested_url": "https://mokaair.com/ko/destinations/jeju",
+      "checked_at": "2026-10-07T05:21:44.925154+00:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/ko/destinations/jeju",
+      "redirected": false,
+      "html_lang": "ko",
+      "canonical": "https://mokaair.com/ko/destinations/jeju",
+      "h1": [
+        "제주"
+      ],
+      "html_sha256": "3148ab47caf0af1df222406e7311d6434da676bae5633af65abba2135f485965",
+      "body_text_sha256": "3733f4e09489ceda198a77506741f6eb40263ef0f2fa4a21358868a0426e7a03",
+      "body_text_length": 1191,
+      "main_text_length": 850,
+      "passed": true
+    },
+    {
+      "requested_url": "https://mokaair.com/zh-CN/destinations/jeju",
+      "checked_at": "2026-10-07T05:21:45.457050+00:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/zh-CN/destinations/jeju",
+      "redirected": false,
+      "html_lang": "zh-CN",
+      "canonical": "https://mokaair.com/zh-CN/destinations/jeju",
+      "h1": [
+        "济州"
+      ],
+      "html_sha256": "7436c751717ce6b1e3301f86ddd13a33d1e02ee0307aacec77a54c4f269fefdd",
+      "body_text_sha256": "24e939046d3e0c06d8758bf107e2696c42df3d23d72f0cec61aa2d0aa7635a81",
+      "body_text_length": 1133,
+      "main_text_length": 832,
+      "passed": true
+    },
+    {
+      "requested_url": "https://mokaair.com/zh-TW/destinations/seoul",
+      "checked_at": "2026-10-07T05:21:46.369589+00:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/zh-TW/destinations/seoul",
+      "redirected": false,
+      "html_lang": "zh-TW",
+      "canonical": "https://mokaair.com/zh-TW/destinations/seoul",
+      "h1": [
+        "首爾"
+      ],
+      "html_sha256": "6edae1240640baaf3bf56b4a4e7aae5a64306c6338fc76b73a5ccfd58e428dc6",
+      "body_text_sha256": "8bae8039d668ac3f768a0c63b2b5ee40bee07acb84bf68c1764fd07d956f3b0a",
+      "body_text_length": 2884,
+      "main_text_length": 2583,
+      "passed": true
+    },
+    {
+      "requested_url": "https://mokaair.com/en/destinations/seoul",
+      "checked_at": "2026-10-07T05:21:46.623512+00:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/en/destinations/seoul",
+      "redirected": false,
+      "html_lang": "en",
+      "canonical": "https://mokaair.com/en/destinations/seoul",
+      "h1": [
+        "Seoul"
+      ],
+      "html_sha256": "1b4500413a2369842c4ee50c5fc67b953425217b773fac015245ac0b8f982942",
+      "body_text_sha256": "c18361fa5cd2ea6dfb3cb13094c1ce9db3f56c4eca7ead23b68390bda7a525b0",
+      "body_text_length": 6916,
+      "main_text_length": 6369,
+      "passed": true
+    },
+    {
+      "requested_url": "https://mokaair.com/ja/destinations/seoul",
+      "checked_at": "2026-10-07T05:21:46.886964+00:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/ja/destinations/seoul",
+      "redirected": false,
+      "html_lang": "ja",
+      "canonical": "https://mokaair.com/ja/destinations/seoul",
+      "h1": [
+        "ソウル"
+      ],
+      "html_sha256": "a5082fd199ae70e91eae9d23de27d70ef7e7fc033172d16a01d9485c055241ec",
+      "body_text_sha256": "627bf529e9c4c6af9422e68a2e4ee2f1e4ea2303b6373e2b02d5bb2c8ccd4e1d",
+      "body_text_length": 3880,
+      "main_text_length": 3539,
+      "passed": true
+    },
+    {
+      "requested_url": "https://mokaair.com/ko/destinations/seoul",
+      "checked_at": "2026-10-07T05:21:48.149166+00:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/ko/destinations/seoul",
+      "redirected": false,
+      "html_lang": "ko",
+      "canonical": "https://mokaair.com/ko/destinations/seoul",
+      "h1": [
+        "서울"
+      ],
+      "html_sha256": "8054bd2214d84bdd87417f0189398d99aeba0aa5538d3a26d66569ac7b6e2c73",
+      "body_text_sha256": "d6aff59d886b3649a1f78efac863330d819bd66b578a2725b7cd83fe8ca955cf",
+      "body_text_length": 3839,
+      "main_text_length": 3498,
+      "passed": true
+    },
+    {
+      "requested_url": "https://mokaair.com/zh-CN/destinations/seoul",
+      "checked_at": "2026-10-07T05:21:48.500742+00:00",
+      "status": 200,
+      "response_url": "https://mokaair.com/zh-CN/destinations/seoul",
+      "redirected": false,
+      "html_lang": "zh-CN",
+      "canonical": "https://mokaair.com/zh-CN/destinations/seoul",
+      "h1": [
+        "首尔"
+      ],
+      "html_sha256": "425ed0d6a4bd505e507424a3a73f870cd4e51856be63f9f729da24b508e1f53c",
+      "body_text_sha256": "f3e5f3339fa000d2b3ddf0b5b5ec703614ca0d5b2a4c526cc9d628a08ae52fba",
+      "body_text_length": 3094,
+      "main_text_length": 2793,
+      "passed": true
+    }
+  ],
+  "additional_source_evidence_sha256": "a03605ec6f4329a561499132a821f273311d7606a0be6a9bf4ee6ba717c5f4e7"
+}
