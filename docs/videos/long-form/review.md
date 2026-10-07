@@ -2178,6 +2178,79 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## claude/sharp-bardeen-ob6fn9 storyboard kept-pictures payload increment: 2 files (2026-10-07)
+
+Reviewer: `claude-pr-review-kept-board`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is one commit on branch claude/sharp-bardeen-ob6fn9, `ba8042be` ("fix(video): a storyboard with every shot kept sends each remark once and leaves its kept list home when past the budget"). It was written by `claude-opus-5-5-kept-board`, the owner of the task `2026-10-06-a-storyboard-with-many-kept-pictures`, and it also carries the fix filed as `2026-10-07-the-final-gate-s-owner-exit-names`. Scope: DURATION_ONLY for the two changed bindings below. The reviewer did not write the commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `ea110f00`, the commit's parent ("docs(video): review fixes for the media judge's lost answer: monthly budget, the real worst case"). The last receipt commit before it is `0ade22c1`, the "Branch next-dub-retake dub retake give-back and unheard track increment" above, and it is an ancestor of `ea110f00`. Between the two, only docs/videos/DRAMA.md, tools/video/media/client.mjs and four task files change, none of them bound, and `git diff 0ade22c1 ea110f00 -- tools/video/review/ docs/videos/long-form/ tools/video/long-form/ tools/video/core/` is empty. At `0ade22c1` and at `ea110f00` all 108 bindings agree with the receipt, the table and the bytes. review.md (743,826 bytes) hashes to the receipt's `report_sha256`, `6ccca975c13cff9e0740a2c5a60cc4df386e5c584e753a2819420b351148839d`, there and still at `ba8042be`. The hashing was done by script, on blobs exported with `git show`. At `ea110f00` sync.mjs hashes to `e3adc83eae352842ea2b443da56c37f0dde2c724c7b4a95fd5a41e11cae8e978` and sync.test.mjs to `f2fd0c29d3a965148b7d310f3aed473bc39e3e19f5247817740af78ea9361f26`, their rows in review.json and the table. At `ba8042be` 106 bindings still agree and these two do not. The working tree's copies of both files equal `ba8042be`'s and hold no CR byte and no BOM. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/review/sync.mjs; stale duration review binding: tools/video/review/sync.test.mjs` and nothing else. The whole of `git diff ea110f00 ba8042be` is the two bound files and two task files: the task's own, and the new `2026-10-07-illustrated-md-still-says-a-storyboard`. No unbound code changes, and `git diff ea110f00 ba8042be -- docs/videos/long-form/ tools/video/long-form/ tools/video/core/ tools/video/qa/ apps/` is empty. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+What the change is. `fitPayload` keeps a review's payload under the site's 256 KiB limit (the PR #1344 increment above). On a storyboard, a kept shot's remarks went up twice: in the shot's own verdict and on `payload.accepted`. Once every remark was left out, the list still named every kept shot, each with a line saying its remarks were left out. A 200-shot board with long ids and prompts, all kept, was therefore refused at 274,137 bytes, while the same board with nothing kept went up at 213,120 bytes. Now:
+
+- `storyboardSubmission` sends a kept shot's remarks once, on the list. The shot's own `judge.problems` is `[]` when its `accepted_with_problems` holds a remark (`listed`, line 1033 at the head, used at 1045). Otherwise the shot carries the judge's problems as before. Its `overall` and every other field are unchanged.
+- `keptRemarksIn` (206) tells whether any kept picture carries a remark. `fitPayload` steps the lines down to two and then none only when one does (`remarked`, 230).
+- A storyboard still past the budget after that leaves `accepted` out of its payload (246–252). Each kept shot is still marked `accepted: true` with its score. When there were remarks, the summary ends with `KEPT_LIST_LEFT_OUT` (138), and the text before the note is cut so the whole fits 500 characters.
+- The refusal mentions the left-out remarks only when there were some.
+- `qualityCheck`'s owner exit now reads "the quality check needs the owner (the video tool token or a site setting); see the failing item above and review/qa.json" (452), and its JSDoc says the same.
+
+This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/review/sync.mjs (+50/−13, 75,027 → 77,782 bytes, 1,231 → 1,268 lines; `e3adc83eae352842ea2b443da56c37f0dde2c724c7b4a95fd5a41e11cae8e978` → `f3542ced9d1fe9c236178eca2140dfdc4fc2fc5db9d65d032f812e05a23552dd`). Every changed line is in one of five places: the constants (136–138), `withKeptRemarks`'s JSDoc (its code is unchanged), the new `keptRemarksIn` and `fitPayload` (205–257), `qualityCheck` (439–452), and `storyboardSubmission` (1029–1045). Where the length data sits:
+
+- The audio and final builders. `submission()` builds the audio gate's `duration_seconds`, `runtime_measurement` and runtime fields. It also builds the final gate's `duration_seconds`, runtime fields, `runtime_proof` (`animeRuntimeProof`), `checks`, `qa`, `manual_review`, `manual_review_reason`, `manual_review_qa` and `accepted_pictures`. From its first line to the languages branch it is 13,025 characters and identical by hash at both revisions. `reviewPush` is identical too. The publish gate's runtime proof (907 at the head) is outside every changed line.
+- `fitPayload` at the final gate. There `withKeptRemarks` rewrites only `accepted_pictures`, and its code is unchanged. The new `remarked` skips the step-down only when no kept picture has a remark. In that case `keptRemarks` gives `[]` for every picture at any line count, so the step-down would have left the payload as it was. The storyboard step is gated on `body.gate === "storyboard"`. Everywhere else `summary` stays `body.summary`, which `reviewPush` always passes as a string, so the key keeps its place. `payloadLimit`, the budget and the refusal at `bytes > limit` are unchanged. So for every input, the final body that goes up and its byte count are the baseline's, and a final that was refused is still refused with the same `payload_too_large` code. Only two things can differ. `lines` only chooses the log line in `reviewPush`, and the refusal message's tail can change.
+- A seeded differential run backs this. It imported both revisions' `fitPayload` (the baseline from a scratch tree) and fed them 4,000 random final payloads. Each carried `duration_seconds`, `runtime_proof` (`body_seconds`, `body_frames`, `fps`), `runtime_policy_hash`, `qa` or `manual_review_qa`, and 0 to 400 kept pictures, at sizes on both sides of the budget and the limit. Results:
+  - 2,809 went up from both revisions with identical bodies and bytes. 113 of them differed only in `lines`. In every one, each duration key and the summary equalled the input's.
+  - 1,191 were refused by both with the same code. 57 of them differed only in the message.
+  - 16,000 audio, script, publish and languages bodies gave identical results from both revisions.
+  - 4,000 random storyboards: every result of either revision equalled its input except for `accepted`, the kept shots' `judge.problems` and the summary. That covers each shot's `seconds`, `accepted` marker and `overall`, and `expected_shots`. 93 boards that the baseline refused now go up, and none goes the other way.
+- The storyboard. Each shot's `seconds` still comes from timeline.json's scene frames over its `fps`, on lines outside the change (1009 and 1038 at the head, 974 and 1001 at the baseline). The new step removes only `accepted`. The server's `storyboard_check_passed` (settings.py, unchanged) skips a shot marked `accepted: true`, and reads neither `payload.accepted` nor such a shot's problems. The card falls back to the shot's own verdict when the list is missing. Neither is a length rule.
+- `qualityCheck`. Only the error text and the JSDoc change. EXIT.owner still throws with `who: "owner"` (exit 3), EXIT.external still throws for the service (exit 4), and any other code still returns review/qa.json. qa/cli.mjs is not in the diff. Its `policy` item is the content-policy judge against the channel stance, not the runtime policy, and it writes review/qa.json before it returns exit 3. No final review goes up on that path, before or after.
+- The file's lines naming any of these terms are the same 28 lines, with the same text, at both revisions: `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `body_target_seconds`, `KNOWLEDGE_MIN`, `duration`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_proof`, `runtime_policy_hash`, `runtimePolicyHash`, `body_seconds`, `manual_review_qa`, `total_frames`, `animeRuntimeProof`, `formatClock`, `.fps`, `qualityCheck`.
+- A case-insensitive scan of the changed lines looked for minute, second, frame, fps, duration, runtime, timeline, window, target, slot, floor, 480, 600, 780, 14,400, MIN_EPISODE, formatClock, qa, policy, manual_review, process.env, 分鐘, 秒, 時長 and 片長. It finds only "keyframes" (the manifest's path), the QA policy item named in `qualityCheck`'s JSDoc, and review/qa.json in the owner message.
+
+Findings, tools/video/review/sync.test.mjs (+100/−4, 131,185 → 138,763 bytes, 1,841 → 1,937 lines; 52 → 53 top-level tests and 67 → 68 with subtests; `f2fd0c29d3a965148b7d310f3aed473bc39e3e19f5247817740af78ea9361f26` → `ec5ba0d49f4b42ed795f5c98e29dc8f6d707872262feb887feeda53c28290a28`). The four removed lines are:
+
+- the kept desk shot's `judge` assertion, which now expects `problems: []`;
+- two comment lines in the payload-limit test, reworded;
+- the twelve-pictures storyboard's shot-verdict assertion, which now expects `problems: []` for every shot.
+
+What is added:
+
+- An owner case in the final gate's quality-check test. The fake site's policy judge answers 503 `provider_unavailable`. The case asserts EXIT.owner, that the output names the setting, the new message, and that no review went up.
+- A kept shot whose list entry says nothing, which keeps its own remarks.
+- Payload-limit cases for a list left home, a summary at the limit, a cut final that keeps its list, and kept shots with no remarks. The final case spreads the existing fixture, which holds `duration_seconds: 600`, and asserts nothing about it.
+- One new test, the 200-shot all-kept board.
+
+They assert remarks, list keys, summaries, byte counts against the budget, the shots' `accepted` markers, `overall` scores and exit codes. None asserts seconds, frames, a timeline, a target or a floor. The changed-line matches for the scan above are "keyframes" paths, the word "frame" inside a fixture id, the fake site's policy judge and the owner message's regex. No duration assertion is removed or loosened. The duration-term lines are the same 62 at both revisions. The opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at line 28 is byte-unchanged, and no added line reads or sets process.env.
+
+Ran (Node v22.22.0, Linux, in the checkout at `ba8042be`, node_modules installed, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing: all 108 bindings and the report hash at `0ade22c1`, `ea110f00` and `ba8042be`, the CR and BOM checks, the intersection of the delta with REVIEW_FILES, and the empty diffs above;
+- `git diff ea110f00 ba8042be -- tools/video/review/`, read in full;
+- the changed-line scans, the duration-term line sets of both files at both revisions, and the by-hash comparison of `submission()` and `reviewPush`;
+- reads of these: in sync.mjs, `fitPayload`, `withKeptRemarks`, `keptRemarks`, `payloadLimit`, `qualityCheck`, `storyboardSubmission`, the final gate builder and `reviewPush`; in qa/cli.mjs, `policyItem` and `writeReport`; on the server, `storyboard_check_passed`; on the card, the kept-shot rows;
+- the baseline's tools, docs/videos, .agents and package.json from `git archive ea110f00`, with a link to this checkout's node_modules, in a scratch directory. There `node --test` passed the baseline sync.test.mjs 67 of 67. The head's test file, run against the baseline sync.mjs, failed 5 of 68, and the other 63 passed against both revisions. The five failures:
+  - The final gate's test failed on the new owner message only. Its exit was already 3 and the setting was already named.
+  - The kept-desk test found the remark in the shot's own verdict.
+  - The payload-limit test's list-home case came to 254,814 bytes, past the budget.
+  - The twelve-pictures test found the remarks in each shot's verdict.
+  - The 200-shot test was refused at 274,137 bytes.
+- the differential run above, in the same scratch directory.
+
+Before rebinding, `node --test tools/video/review/sync.test.mjs` passed 68 of 68. `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same two paths. `npm run test:tools` ran 2,070 tests: 2,066 passed, 3 skipped and 1 failed, the same regression on the same two paths. `npm run check:tasks` exited 0. The CLI check, the long-form tests, `npm run test:tools` and `npm run check:tasks` are run again after rebinding. Their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the change itself. That includes sending a kept shot's remarks once, leaving the list home, the summary note and its wording, the card reading a kept shot without its list, the 18-byte figure, and the owner message.
+- The two task files are not reviewed. Neither is docs/videos/ILLUSTRATED.md, whose spec rows the new task leaves for later.
+- No real storyboard or cut was pushed, no real review route or judge was called, and the tests run under the opt-out.
+- Not run or seen: the Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, and the production host.
+- The 106 bindings this change did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2284,8 +2357,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/qa/cli.mjs` | `6920a7948db405bd084e010db51e237fb2b4a51860e663743fbf11de5bc86b91` |
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
 | `tools/video/qa/qa.test.mjs` | `9a5430e90e3d6234198024e8bf8801d34dad0fabd3f9a6e2ceaf5e8df8a9af44` |
-| `tools/video/review/sync.mjs` | `e3adc83eae352842ea2b443da56c37f0dde2c724c7b4a95fd5a41e11cae8e978` |
-| `tools/video/review/sync.test.mjs` | `f2fd0c29d3a965148b7d310f3aed473bc39e3e19f5247817740af78ea9361f26` |
+| `tools/video/review/sync.mjs` | `f3542ced9d1fe9c236178eca2140dfdc4fc2fc5db9d65d032f812e05a23552dd` |
+| `tools/video/review/sync.test.mjs` | `ec5ba0d49f4b42ed795f5c98e29dc8f6d707872262feb887feeda53c28290a28` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
