@@ -148,7 +148,7 @@
 
 - 開發機是 Windows 11 ARM64：無 NVIDIA GPU，所以不跑本機 Whisper 或 TTS。Chromium 以 x64 模擬執行，截圖速度在試作時量。
 - 中文參數一律走檔案（`--text-file`）：PowerShell 5.1 會弄壞非 ASCII 的命令列參數。
-- `npm run test:tools` 會跑 `tools/video/**/*.test.mjs`，這些測試全是純函式，不需要 Chromium 或 ffmpeg。實際的 render＋assemble 煙霧測試放在另一個路徑過濾的 workflow（T4）。
+- `npm run test:tools` 會跑 `tools/video/**/*.test.mjs`，大多是純函式；少數要 ffmpeg 或 Chromium 的（H.264 接片、亮度探測、from-drama 的整段 Short、兩個瀏覽器回歸）在沒有它們的 web-checks 裡跳過，由 ci.yml 必過的 `video-tests` job 裝好兩樣再全部跑一次，還因缺工具跳過就算失敗。實際的 render＋assemble 煙霧測試放在另一個路徑過濾的 workflow（T4）。
 
 ## 分期與票
 
