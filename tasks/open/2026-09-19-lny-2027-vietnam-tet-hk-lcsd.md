@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-19T06:47:40Z
 completed_at:
-branch:
+branch: codex/article-missing-locales-20261007
 depends_on: []
 scope:
   - apps/api/app/guides/content/lunar-new-year-2027-asia-travel.json
@@ -49,3 +49,18 @@ uv run pytest tests/test_guides_content_pack.py -q
 - 本篇 2027-02-20 到期，過期後不改寫成 2028 年版；2027-02-21 的連結拆除在 `2026-09-19-lny-links-expire-2027-02-21`。
 - 反向連結（`taiwan-long-weekends-2027-flight-planning` 新增區塊）與설날口徑對齊（同一篇表格「日韓同期」欄改成「韓國설 연휴 2/6–2/9（설날 2/7）」）都在票 `2026-09-19-batch-7-backlinks-existing-guides`（既有文章補連第七批）。
 - `tasks/BOARD.md` 不要提交。
+
+### 2026-10-07 補語系來源查核
+
+補缺語系前發現歷史階段錯誤：9/11 越南政府報導已寫明整合徵詢意見，
+並提報 2/4–2/10 的七天建議方案；原文卻說到 9/15 仍在徵詢兩案。
+這項修正要保留 9/17 的查證日期，以及當時「政府尚未核定」的狀態，
+不能把後來 10/2 的核定冒充原始查證時已知資料。
+
+Primary source:
+https://baochinhphu.vn/thong-nhat-trinh-chinh-phu-phuong-an-nghi-tet-nguyen-dan-2027-trong-7-ngay-lien-tuc-102260911155606794.htm
+查核 finding SHA b7129a38fef2756c43354647d5a837a35d4ef5f7444023c2eeda6abeb9f685db；
+官方 HTML SHA 2a597e1281ab77e910a0a6aa49986714fcb001d1c155c7be9ed1a82a67849f9f。
+精確三個正文 before/after 提案保存在站主的持久證據目錄，仍需獨立批准的
+source-correction 收據；原有 SVG「建議方案／未定案」與日期範圍維持原樣。
+四語翻譯暫留佇列，沒有開始新的模型工作或修改公開原文。
