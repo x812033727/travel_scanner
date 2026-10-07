@@ -1,7 +1,8 @@
 // The speech journal (speech-journal.mjs) with the real client (client.mjs) and an injected
 // counting fetch: nothing here reaches a live, paid endpoint.
 import assert from "node:assert/strict";
-import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import fs, { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { syncBuiltinESMExports } from "node:module";
 import path from "node:path";
 import test from "node:test";
 
@@ -325,6 +326,63 @@ test("a run that wakes after another run sent its request stops without sending 
   assert.deepEqual((await third.wrap(async () => assert.fail("not bought again"))(body)).wav, answer.wav);
 });
 
+test("a run that wakes after another run took its request over stops, whatever that run has done since", async (t) => {
+  const cases = {
+    "its POST still out": { second: () => new Promise(() => {}), after: async () => {} },
+    "its answer saved": { second: undefined, after: async (run) => { await run; } },
+    "its answer saved and released": { second: undefined, after: async (run, journal) => { await run; journal.release(); } },
+  };
+  for (const [what, { second, after }] of Object.entries(cases)) {
+    await t.test(what, async () => {
+      const dir = journalIn();
+      const sha = requestSha256(body);
+      const server = speechServer([limited, ...(second ? [second] : [])]);
+      const first = sleeper(dir, server);
+      const firstRun = first.send(body);
+      await until(() => first.waits.length === 1);
+      const other = sender(dir, server);
+      const otherRun = other.send(body);
+      await until(() => server.posts.length === 2);
+      await after(otherRun, other.journal);
+      const left = existsSync(path.join(dir, `${sha}.json`)) ? entry(dir, sha) : null;
+      first.waits[0].wake();
+      await assert.rejects(firstRun, (error) => error.code === SPEECH_TAKEN_OVER);
+      assert.equal(server.posts.length, 2, "the woken run sent nothing");
+      assert.deepEqual(existsSync(path.join(dir, `${sha}.json`)) ? entry(dir, sha) : null, left, "and left the other run's entry, or its absence, as it was");
+    });
+  }
+});
+
+test("a wait the journal could not record stops the request before the sleep, and it holds", async () => {
+  const dir = journalIn();
+  const sha = requestSha256(body);
+  // The waiting entry is renamed into place and its fsync then fails: on disk it may say waiting.
+  let failNext = false;
+  const server = speechServer([() => { failNext = true; return limited(); }]);
+  const saved = fs.fsyncSync;
+  fs.fsyncSync = (fd) => {
+    if (failNext) {
+      failNext = false;
+      throw Object.assign(new Error("EIO: i/o error, fsync"), { code: "EIO" });
+    }
+    return saved(fd);
+  };
+  syncBuiltinESMExports();
+  const sleeps = [];
+  const send = openSpeechJournal(dir).wrap((sent) => synthesize({ ...options(server), sleep: async (ms) => sleeps.push(ms), body: sent }));
+  try {
+    await assert.rejects(send(body), /the journal could not record its wait: EIO/);
+  } finally {
+    fs.fsyncSync = saved;
+    syncBuiltinESMExports();
+  }
+  assert.deepEqual(sleeps, [], "no sleep, so no resend from this run");
+  assert.equal(server.posts.length, 1);
+  assert.equal(entry(dir, sha).status, "held");
+  await assert.rejects(sender(dir, server).send(body), held(/held in the speech journal/));
+  assert.equal(server.posts.length, 1, "nor from the next one");
+});
+
 test("a request sent again after its wait holds as any sent one does", async (t) => {
   // Lost on the way after the wait: held, as without one.
   const dir = journalIn();
@@ -360,13 +418,28 @@ test("a waiting request another run is claiming is not sent by this one", async 
   writeFileSync(path.join(dir, `${sha}.${waitId}.claim`), "");
   await assert.rejects(sender(dir, server).send(body), held(/another run keeps changing/));
   assert.equal(server.posts.length, 1);
-  assert.equal(entry(dir, sha).status, "waiting");
+  const waiting = entry(dir, sha);
+  assert.equal(waiting.status, "waiting");
+  // A claim left by a run that stopped while taking the entry back holds every run: `list` says
+  // so, and `forget` clears the claim with the entry.
+  const out = { stdout: "", stderr: "" };
+  const io = { stdout: { write: (text) => (out.stdout += text) }, stderr: { write: (text) => (out.stderr += text) } };
+  assert.equal(journalCli(["list", "--dir", dir], io), 0);
+  assert.match(out.stdout, new RegExp(`^${sha} claimed `, "m"));
+  assert.match(out.stdout, /1 claimed by a run that stopped while taking it back: nothing of it went out/);
+  assert.doesNotMatch(out.stdout, /waiting: /);
+  assert.equal(listSpeechJournal(dir)[0].claimed, true);
+  assert.equal(journalCli(["forget", "--dir", dir, "--sha", sha], io), 0);
+  assert.deepEqual(readdirSync(dir), []);
+  await sender(dir, server).send(body);
+  assert.equal(server.posts.length, 2, "sent once after forget");
+  const posts = server.posts.length;
   // A waiting entry without a usable wait id is not one: it holds like an unreadable entry.
   const other = journalIn();
   mkdirSync(other, { recursive: true });
-  writeFileSync(path.join(other, `${sha}.json`), JSON.stringify({ ...entry(dir, sha), wait_id: "../../elsewhere" }));
+  writeFileSync(path.join(other, `${sha}.json`), JSON.stringify({ ...waiting, wait_id: "../../elsewhere" }));
   await assert.rejects(sender(other, server).send(body), held(/cannot be read/));
-  assert.equal(server.posts.length, 1);
+  assert.equal(server.posts.length, posts);
 });
 
 // --- the consumers -----------------------------------------------------------------------------

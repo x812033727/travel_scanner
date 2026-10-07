@@ -275,12 +275,15 @@ export function openSpeechJournal(dir, { now = () => new Date() } = {}) {
       waiting({ status, code, ms }) {
         const id = randomUUID();
         const why = `${status ? `HTTP ${status}${code ? ` ${code}` : ""}` : "the API was not reached"}; sent again in ${Math.ceil(ms / 1000)} s`;
+        // A write that fails may still have landed (the rename, then a failed fsync), and a
+        // waiting entry is one another run sends: the request stops here, before the sleep, and
+        // sendOnce holds it. Nothing is sent again by this run.
         try {
           durableWrite(entryFile(dir, sha), json({ ...entry, status: "waiting", wait_id: id, waiting_at: stamp(), why }));
-          waitId = id;
-        } catch {
-          // The sent entry stays, and holds as before.
+        } catch (error) {
+          throw new Error(`the journal could not record its wait: ${error.message}`, { cause: error });
         }
+        waitId = id;
       },
       resending() {
         if (waitId === null) return;
@@ -365,8 +368,9 @@ export function openSpeechJournal(dir, { now = () => new Date() } = {}) {
 }
 
 /**
- * Every entry in `dir`, oldest first: { sha, path, status, sent_at, waiting_at, held_at,
- * confirmed_at, why, voice, text, about }; `about` is the request in a few words.
+ * Every entry in `dir`, oldest first: { sha, path, status, claimed, sent_at, waiting_at, held_at,
+ * confirmed_at, why, voice, text, about }; `about` is the request in a few words, and `claimed` a
+ * waiting entry a stopped run left its claim beside.
  */
 export function listSpeechJournal(dir) {
   if (!existsSync(dir)) return [];
@@ -377,7 +381,10 @@ export function listSpeechJournal(dir) {
       const entry = readEntry(dir, sha);
       const route = entry.status === "unreadable" ? null : ROUTES.get(entry.path ?? SPEECH.path);
       const text = (entry.request?.segments ?? []).flatMap((segment) => segment.parts ?? []).map((part) => part.text ?? "").join("");
-      return { sha, path: route?.path ?? null, status: entry.status, sent_at: entry.sent_at ?? null, waiting_at: entry.waiting_at ?? null, held_at: entry.held_at ?? null, confirmed_at: entry.confirmed_at ?? null, why: entry.why ?? null, voice: entry.request?.voice ?? null, text, about: (route ?? SPEECH).describe(entry.request) };
+      // A claim left beside a waiting entry: a run stopped while it took the entry back, before it
+      // wrote it as sent, so nothing of it went out. Every run holds it until it is forgotten.
+      const claimed = entry.status === "waiting" && existsSync(claimFile(dir, sha, entry.wait_id));
+      return { sha, path: route?.path ?? null, status: entry.status, claimed, sent_at: entry.sent_at ?? null, waiting_at: entry.waiting_at ?? null, held_at: entry.held_at ?? null, confirmed_at: entry.confirmed_at ?? null, why: entry.why ?? null, voice: entry.request?.voice ?? null, text, about: (route ?? SPEECH).describe(entry.request) };
     })
     .sort((a, b) => String(a.sent_at).localeCompare(String(b.sent_at)));
 }
@@ -389,6 +396,7 @@ export function forgetSpeechJournal(dir, sha) {
   if (!entry) throw new UsageError(`no entry ${sha} in ${dir}`);
   rmSync(entryFile(dir, sha), { force: true });
   rmSync(wavFile(dir, sha), { force: true });
+  for (const name of readdirSync(dir)) if (name.startsWith(`${sha}.`) && name.endsWith(".claim")) rmSync(path.join(dir, name), { force: true });
   return entry;
 }
 
@@ -414,11 +422,13 @@ export function main(args, { stdout = process.stdout, stderr = process.stderr } 
     if (!entries.length) stdout.write(`no entries in ${dir}\n`);
     for (const entry of entries) {
       const when = entry.held_at ?? entry.confirmed_at ?? entry.waiting_at ?? entry.sent_at ?? "?";
-      stdout.write(`${entry.sha} ${entry.status} ${when} ${entry.about}${entry.why ? ` (${entry.why})` : ""}\n`);
+      stdout.write(`${entry.sha} ${entry.claimed ? "claimed" : entry.status} ${when} ${entry.about}${entry.why ? ` (${entry.why})` : ""}\n`);
     }
     const holds = entries.filter((entry) => !["confirmed", "waiting"].includes(entry.status)).length;
     if (holds) stdout.write(`${holds} held: check the provider's usage, then forget each with --sha\n`);
-    const waiting = entries.filter((entry) => entry.status === "waiting").length;
+    const claimed = entries.filter((entry) => entry.claimed).length;
+    if (claimed) stdout.write(`${claimed} claimed by a run that stopped while taking it back: nothing of it went out, and every run holds it until you forget it with --sha\n`);
+    const waiting = entries.filter((entry) => entry.status === "waiting" && !entry.claimed).length;
     if (waiting) stdout.write(`${waiting} waiting: nothing of it is out, and the next run that asks for it sends it\n`);
     return 0;
   } catch (error) {

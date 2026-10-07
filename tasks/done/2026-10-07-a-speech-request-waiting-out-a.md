@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-a-speech-request-waiting-out-a
 title: A speech request waiting out a rate limit is held as uncertain if the worker restarts mid-wait
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-journal-wait
 claimed_at: 2026-10-07T07:57:01Z
 created_at: 2026-10-07T05:56:55Z
-completed_at:
+completed_at: 2026-10-07T08:58:25Z
 branch:
 depends_on: []
 scope:
@@ -80,9 +80,13 @@ longer: one window, up to 61 s, at most four times per request, where before the
   - `list` shows a waiting entry with its time and says the next run sends it. It is not counted
     as a hold to forget. A waiting entry without a UUID-shaped `wait_id` reads as unreadable and
     holds, since the id goes into a file name.
-  - A crash between creating a claim and removing it (microseconds) leaves the entry waiting
-    behind a claim. The next run holds it ("another run keeps changing") instead of guessing, and
-    `forget` clears it as any hold.
+  - A crash between creating a claim and removing it (milliseconds: several fsyncs) leaves the
+    entry waiting behind a claim. The next run holds it ("another run keeps changing") instead of
+    guessing. `list` shows it as `claimed` and counts it among what to forget. `forget` removes
+    the entry, its answer and its claims.
+  - A wait the journal cannot record stops the request before the sleep, and `sendOnce` holds it.
+    The write may have landed (the rename) before its fsync failed, and a waiting entry is one
+    another run sends; this run sends nothing more.
 - Tests:
   - client: the hooks around each wait (429 with Retry-After, a provider busy, a refused
     connection) for all four paid calls; a `resending` that throws stops the next POST; nothing
@@ -98,3 +102,19 @@ longer: one window, up to 61 s, at most four times per request, where before the
     no claim, no re-read, removing the entry on a takeover, no hook in either retry path, hooks
     for unpaid calls, no wait-id check, waiting counted as held, the claim left behind, the
     entry left waiting) fails a test.
+- Review (2026-10-07, three lenses, each finding verified). It included a 120-round stress test:
+  six processes on one journal, random 429s and sleeps, about 40% killed mid-run. It found no
+  overlapping POSTs, no POST after a 200, and no POST after a run killed mid-POST.
+  - Should-fix (found by all three lenses): a waiting write whose rename landed and whose fsync
+    then failed left `waitId` unset. The run then resent without a claim while the entry said
+    waiting, so a restart or a second run could send the body again. Fixed as above. Test: the
+    first fsync after the 429 throws EIO; the run stops with no sleep, the entry is held, and the
+    next run sends nothing.
+  - Nit: a claim left behind made `list` say the next run sends the entry, while every run held
+    it. Fixed as above, with a test.
+  - Test gap: weakening `resume`'s re-read passed every test. A new test wakes the first run after
+    the other run's POST is still out, after its answer was saved, and after it was released.
+    Each must stop with `SPEECH_TAKEN_OVER`, send nothing, and leave the entry, or its absence,
+    as it was. Both of the reviewer's mutants now fail.
+  - Not defects: a sleep that rejects (no production sleep does); `release` removing a later
+    waiting entry (its sleeper stops without sending).
