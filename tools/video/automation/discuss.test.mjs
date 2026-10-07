@@ -5,6 +5,7 @@ import test from "node:test";
 
 import { sandbox } from "../core/fixtures/load.mjs";
 import { atomicWrite } from "../core/paths.mjs";
+import { AutomationError } from "./client.mjs";
 import { answerDocument, answerScript, documentDiscussionPayload } from "./discuss.mjs";
 import { Automation } from "./flow.mjs";
 
@@ -262,3 +263,28 @@ test("a line waits for a video the unit's loop left alone, though the video's wa
   assert.equal(await worker.step(), "held-e001: the writer answered the owner on script:1");
   assert.deepEqual([sent, answered, waiting.length], [["writer:discuss for held-e001"], ["m1"], 0]);
 });
+
+test("a long anime's discussion whose act request fails keeps the plan it paid for: the unit settles nothing of the video, so the next attempt takes the plan from its saved run", async () => {
+  const settled = [];
+  const plans = [];
+  const { lanes: [first], api, answered, save } = discussed({ advance: async () => null, stage: async () => ({ reply: "要改第二幕。", change_required: true, revised: null }) });
+  save(HELD, { production_policy: "long-anime-v1" });
+  api.settleRuns = async (slugs) => settled.push(...slugs);
+  // stage() puts the video in the unit's list of runs to settle (flow.mjs), as the real one does.
+  const ask = first.stage;
+  first.stage = async (name, slug, ...rest) => {
+    first.runSlugs.add(slug);
+    plans.push(rest[3]);
+    return ask(name, slug, ...rest);
+  };
+  first.animeRewrite = async () => {
+    throw Object.assign(new AutomationError("模型服務忙碌", { code: "video_ai_upstream_busy", status: 503 }), { stage: "writer" });
+  };
+  const said = await first.step();
+  assert.match(said, /^held-e001: the writer request for the owner's line could not finish \(video_ai_upstream_busy: 模型服務忙碌\); deferred until /);
+  assert.deepEqual(plans, ["anime-discuss-plan"]);
+  // Before, the failure line ended the unit like an answer: settleRuns set the plan's saved run aside,
+  // and the next attempt bought the plan again (4 plans in 8 rounds while the act stayed busy).
+  assert.deepEqual([settled, answered], [[], []]);
+});
+

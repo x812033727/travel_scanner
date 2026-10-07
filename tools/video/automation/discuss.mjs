@@ -10,7 +10,7 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 import { hasAnimePolicy, isLongAnime } from "../core/anime-policy.mjs";
-import { docDir } from "../core/paths.mjs";
+import { atomicWrite, docDir, readJson } from "../core/paths.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { JOB_GONE_KIND } from "./run-receipts.mjs";
 import { documentProblem } from "./series.mjs";
@@ -40,10 +40,25 @@ const discussionDoc = (doc) => doc ? ({ kind: doc.kind, version: doc.version, st
 export const unusableReply = (why) => `模型這一輪沒有給出可用的回覆（${why}）。這條討論串先停在這裡；請換個說法再問一次，或直接改文件。`;
 // The replies to a line on a document whose request failed (answerDocument): there is no video to
 // block for the owner's retry, so the thread is answered once instead of the request ending, or
-// being paid for, every round.
+// being paid for, every round; and to a line on a blocked video's screenplay (answerScript).
 export const lostReply = (why) => `這句話的回答在途中遺失了（${why}），模型可能已經跑完並計費。為了不重複付費，這裡不會自動再問；要再問一次，請重新送出這句話。`;
-export const blockedReply = (why) => `這支影片目前停住了（${why}），它的劇本要等站主在影片頁按「重試」之後才會處理。重試後請再送一次這句話。`;
-export const refusedReply = (why) => `網站拒絕了回答這句話的請求（${why}），再問一次也會被拒。這條討論串先停在這裡；請換個說法再問一次，或直接改文件。`;
+export const refusedReply = (why) => `回答這句話的請求被拒絕了（${why}），同樣的請求再送也會被拒。這條討論串先停在這裡；請縮短或拆開這句話再送，若是模型服務的設定（例如金鑰）出了問題，請先到 AI 設定確認；也可以直接改文件。`;
+export const failingReply = (why, rounds) => `回答這句話的請求連續 ${rounds} 輪都沒能完成（${why}）。這條討論串先停在這裡，好讓後面的討論繼續；請稍後再送一次這句話，或直接改文件。`;
+export const blockedReply = (why) => `這支影片目前停住了（${why}），它的劇本要等你在影片頁按「重試這支影片」之後才會處理。重試後請再送一次這句話。`;
+
+/**
+ * What a document's thread decided about a line across rounds (answerDocument), under
+ * _series/<slug>/threads.json: `waits`, how many rounds its request could not finish, and `lost`,
+ * a lost answer whose reply is still to reach the site. Saved before the reply goes up, so a
+ * reply the site did not take is posted next round instead of the request being bought again.
+ */
+function threadNotes(automation, series) {
+  const file = automation.workBase ? path.join(automation.workBase, "_series", series.slug, "threads.json") : null;
+  const saved = file ? readJson(file, null) : null;
+  const notes = { waits: { ...(saved?.waits ?? {}) }, lost: { ...(saved?.lost ?? {}) } };
+  const save = () => file && atomicWrite(file, `${JSON.stringify(notes, null, 2)}\n`);
+  return { notes, save };
+}
 
 /**
  * The reply to a line on a brand story's screenplay (docs/videos/STORY.md): a story is written and
@@ -110,34 +125,65 @@ export function answerProblem(answer) {
 export async function answerDocument(automation, job) {
   const { series } = job;
   const slug = `series-${series.slug}`;
+  const id = job.message.id;
   // A line whose planner could not be asked in this run (a busy service) waits for the next round.
-  if (automation.heldLines?.has(job.message.id)) return null;
+  if (automation.heldLines?.has(id)) return null;
+  const { notes, save } = threadNotes(automation, series);
+  const toldLost = async (why) => {
+    await automation.api.messageAnswer(id, { reply_md: lostReply(why), revised: null });
+    delete notes.lost[id];
+    save();
+    return `series ${series.slug}: the planner's answer on ${job.subject} was lost (${why}); the owner is told it may have run, and it is asked again only when they send the line again`;
+  };
+  // Lost in an earlier round, and the reply did not reach the site then: told now, not asked again.
+  if (notes.lost[id]) return toldLost(notes.lost[id]);
+  const told = async (reply, line) => {
+    await automation.api.messageAnswer(id, { reply_md: reply, revised: null });
+    if (notes.waits[id] !== undefined) {
+      delete notes.waits[id];
+      save();
+    }
+    return line;
+  };
   let answer;
   try {
     answer = await automation.stage("planner", slug, documentDiscussionPayload(automation, job), 32_000, "drama", "discuss", series);
   } catch (error) {
     if (error instanceof AutomationError && error.code === OUTPUT_INVALID) {
       automation.keepAnswer(path.join(automation.workBase, "_series", series.slug), "discuss");
-      await automation.api.messageAnswer(job.message.id, { reply_md: unusableReply(error.message), revised: null });
-      return `series ${series.slug}: the planner gave no usable answer on ${job.subject} (${error.message}); the owner is told and the thread waits`;
+      return told(unusableReply(error.message), `series ${series.slug}: the planner gave no usable answer on ${job.subject} (${error.message}); the owner is told and the thread waits`);
     }
     // A document's thread has no video to block for the owner's retry (answerScript has one): a
     // lost answer or a refusal is answered for once, so it neither ends nor is paid for every
-    // round, and a busy service makes the line wait for the next round instead of ending this one.
+    // round, and a request that could not finish waits for the next round, until the owner is
+    // told after deferLimit rounds (the site hands over the oldest line first: one held for ever
+    // holds every thread after it).
     const scope = automation.threadScope(error);
     const code = error.code || `HTTP ${error.status}`;
     if (scope === "lost") {
-      await automation.api.messageAnswer(job.message.id, { reply_md: lostReply(error.why ?? error.message), revised: null });
-      return `series ${series.slug}: the planner's answer on ${job.subject} was lost (${error.why ?? error.message}); the owner is told it may have run, and it is asked again only when they send the line again`;
-    }
-    if (scope === "video") {
-      await automation.api.messageAnswer(job.message.id, { reply_md: refusedReply(`${code}: ${error.message}`), revised: null });
-      return `series ${series.slug}: the site refused the planner request on ${job.subject} (${code}: ${error.message}); the owner is told and the thread waits`;
+      notes.lost[id] = error.why ?? error.message;
+      delete notes.waits[id];
+      save();
+      return toldLost(notes.lost[id]);
     }
     if (scope === "run") throw error;
-    automation.heldLines.add(job.message.id);
+    // The model service's own settled 502 is a request it turns down, as the site's 4xx is: asking again changes nothing.
+    if (scope === "video" || error.code === "video_ai_upstream_failed") {
+      return told(refusedReply(`${code}: ${error.message}`), `series ${series.slug}: the planner request on ${job.subject} was refused (${code}: ${error.message}); the owner is told and the thread waits`);
+    }
+    const rounds = (notes.waits[id] ?? 0) + 1;
+    if (rounds >= (automation.deferLimit ?? 6)) {
+      return told(failingReply(`${code}: ${error.message}`, rounds), `series ${series.slug}: the planner request on ${job.subject} could not finish in ${rounds} rounds (${code}: ${error.message}); the owner is told and the threads after it move on`);
+    }
+    notes.waits[id] = rounds;
+    save();
+    automation.heldLines.add(id);
     automation.log(`series ${series.slug}: the owner's line on ${job.subject} waits; the planner request could not finish (${code}: ${error.message}), and it is asked again next round`);
     return null;
+  }
+  if (notes.waits[id] !== undefined) {
+    delete notes.waits[id];
+    save();
   }
   const problem = answerProblem(answer);
   if (problem) {
@@ -278,17 +324,18 @@ async function answerHeld(automation, job, state) {
     } else answer = await automation.stage("writer", state.slug, scriptDiscussionPayload(automation, job, state, video), 32_000, "drama", "discuss");
   } catch (error) {
     if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) {
-      const line = await automation.sortFailure(state, error, { sends: `answers the owner's line on ${job.subject} once more` });
-      // The line waits with its video for the owner's retry (answerScript); the retry clears this.
-      if (state.status === "blocked") {
-        state.blocked_line = job.message.id;
-        automation.saveState(automation.workdir(state.slug), state);
-      }
-      return line;
+      // Nothing of the video's is settled with this unit: a long anime's plan, paid for before its
+      // act request failed, is taken again from its saved run on the next attempt, not bought again.
+      automation.runSlugs?.delete(state.slug);
+      return automation.sortFailure(state, error, { sends: `answers the owner's line on ${job.subject} once more`, line: job.message.id });
     }
     automation.keepAnswer(automation.workdir(state.slug), "discuss");
     await automation.api.messageAnswer(job.message.id, { reply_md: unusableReply(error.message), revised: null });
     return `${state.slug}: the writer gave no usable answer on ${job.subject} (${error.message}); the owner is told and the thread waits`;
+  }
+  if (state.discussion_waits) {
+    delete state.discussion_waits;
+    automation.saveState(automation.workdir(state.slug), state);
   }
   const problem = answerProblem(answer);
   if (problem) {

@@ -19,6 +19,7 @@ scope:
   - tools/video/automation/automation.test.mjs
   - docs/videos/long-form/review.md
   - docs/videos/long-form/review.json
+  - .agents/skills/youtube-video/references/series.md
 ---
 
 # A discussion whose writer answer was lost ends every round
@@ -121,4 +122,33 @@ node --test tools/video/automation/series.test.mjs tools/video/automation/discus
   saved for the next unit (durable) or is lost (not durable).
 - Scope overlap: `2026-10-07-a-discussion-s-refused-script-revision` (the lexicon restore in
   `answerHeld`) shares discuss.mjs and flow.mjs; it waits until this lands.
+
+### 2026-10-07 independent review (3 reviewers, each finding checked by a skeptic)
+
+- Blocking, fixed: a long anime's discussion whose act request failed after its plan was paid
+  for returned a line, so the unit settled the plan's saved run and the next attempt bought the
+  plan again (4 plans in 8 rounds while the act stayed busy). A failure line now takes the video
+  out of the unit's runs to settle (`answerHeld`, `runSlugs`); `discuss.test.mjs` pins it.
+- Should-fix, fixed: a discussion's wait never reached the limit or the card, because the video's
+  own trouble-free visit (`moved`) cleared `defer_count` between attempts; it now counts on its own
+  (`discussion_waits`, cleared by an answer and by the retry), backs off, reports from the second
+  wait and blocks as `deferred:writer` after DEFER_LIMIT. `blocked_line` is now saved with the
+  block itself (no window). A block's reason names the line and what the retry sends within the
+  card's 120 characters (`unanswered` and the refusal take `sends`).
+- Should-fix, fixed (documents): a settled refusal of the model service's own
+  (`video_ai_upstream_failed`, a vendor 400 such as a prompt too long or a revoked key) is answered
+  once like the site's 4xx; any other wait is counted per line in `_series/<slug>/threads.json` and
+  answered after DEFER_LIMIT rounds (`failingReply`), so no line holds the threads after it for
+  good; a lost answer is saved there before its reply goes up, so a reply the site did not take is
+  posted next round instead of the planner being asked, and paid, again.
+- Noted, not changed: on the durable route the API records every failure after dispatch as
+  uncertain (ai.py), so in production a busy vendor blocks the video as `uncertain:writer` (as its
+  own writer's would) and holds the line for the owner's retry; the busy-wait path covers failures
+  before dispatch and the non-durable route. The tests use what the API really records for each.
+  A gone writer job of the video's own also holds a line on its screenplay, as before this ticket.
+- Nits fixed: the replies speak to the owner and name the button 「重試這支影片」; `refusedReply`
+  no longer contradicts itself; the skill's 討論串 section describes all of it
+  (`.agents/skills/youtube-video/references/series.md`).
+- Rejected by the skeptics: an endless refuse-retry loop (the owner's retry is the only resend, and
+  dropping the video ends it) and a reply wrong after a blocked-from-done retry.
 

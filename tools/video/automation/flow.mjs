@@ -830,6 +830,8 @@ export class Automation {
     // The owner's lines this run left unanswered because their video was not at rest
     // (discuss.mjs answerScript), by message id, so the log says so once.
     this.heldLines = new Set();
+    // How many rounds a thread's request may wait before the owner is told (discuss.mjs answerDocument).
+    this.deferLimit = DEFER_LIMIT;
     this.lastAnswer = null;
     // How much of a translation worksheet one model call is asked for (sheet-units.mjs).
     this.unitLimits = { lines: UNIT_LINES, chars: UNIT_CHARS };
@@ -1197,11 +1199,14 @@ export class Automation {
    * ends; the owner's retry on /admin/videos asks once more, and a translation resumes from the
    * units it kept (sheet-units.mjs).
    */
-  async unanswered(state, error) {
+  async unanswered(state, error, sends = null) {
     this.halted = true;
     this.lastAnswer = null;
     const what = `${error.stage ?? "a stage"}${error.unit ? ` (${error.unit})` : ""}`;
-    return this.block(state, `${what} may have run on the server without its answer reaching the worker (${error.why ?? error.message}); it is not asked again until the owner retries`, `uncertain:${error.stage ?? "stage"}`);
+    // A discussion's request (sends): what the retry sends comes before the server's words, as in
+    // jobGone, since the card's label is cut at 120 characters.
+    const why = sends ? `${what} answer may have been lost after it ran; a retry ${sends}, and later threads wait (${error.why ?? error.message})` : `${what} may have run on the server without its answer reaching the worker (${error.why ?? error.message}); it is not asked again until the owner retries`;
+    return this.block(state, why, `uncertain:${error.stage ?? "stage"}`);
   }
 
   /** One unit of work; returns a line saying what was done, or null when nothing could be. */
@@ -1435,6 +1440,7 @@ export class Automation {
       delete state.blocked;
       delete state.blocked_kind;
       delete state.blocked_line;
+      delete state.discussion_waits;
       delete state.blocked_report_pending;
       delete state.blocked_report_retry_at;
       delete state.policy_hold;
@@ -1539,9 +1545,25 @@ export class Automation {
    * video's too: until 2026-10-07 every error of that request but a gone job left the step, so
    * one lost answer ended every round before any series work or draft, with no video blocked for
    * the owner's retry to clear. `sends` words what a retry sends for a request that is not the
-   * video's own stage (jobGone).
+   * video's own stage, and `line` is the owner's line a discussion's request answered: saved with
+   * any block the failure ends in (blocked_line), so the line waits for the retry (discuss.mjs
+   * answerScript) and the retry clears it; not kept by anything that leaves the video moving.
    */
-  async sortFailure(state, error, { sends = null } = {}) {
+  async sortFailure(state, error, { sends = null, line = null } = {}) {
+    if (!line) return this.sortedFailure(state, error, sends, null);
+    state.blocked_line = line;
+    try {
+      return await this.sortedFailure(state, error, sends, line);
+    } finally {
+      if (state.status !== "blocked" && state.blocked_line === line) {
+        delete state.blocked_line;
+        const workdir = this.workdir(state.slug);
+        if (readJson(path.join(workdir, STATE_FILE), null)?.blocked_line !== undefined) saveState(workdir, state);
+      }
+    }
+  }
+
+  async sortedFailure(state, error, sends, line) {
     if (!(error instanceof AutomationError)) throw error;
     // Its STOP file arrived, or its lease went, during the unit: nothing was sent or written
     // after it, and the video is not blocked or deferred. The run leaves it alone.
@@ -1550,7 +1572,7 @@ export class Automation {
       return `${state.slug}: ${error.message}`;
     }
     if (error.code === POLICY_HOLD) return this.policyHold(state, error);
-    if (error.code === RUN_UNCERTAIN) return this.unanswered(state, error);
+    if (error.code === RUN_UNCERTAIN) return this.unanswered(state, error, sends);
     if (error.code === OUTPUT_INVALID) return this.retryLater(state, error.stage, error.message);
     // A writer still running on the server: step() sets this video aside for the run. It
     // neither counts as a deferral nor ends a row of them: a queue that loses every job before
@@ -1561,9 +1583,23 @@ export class Automation {
     const request = error.stage ? `the ${error.stage} request` : "a request";
     const code = error.code || `HTTP ${error.status}`;
     if (error.gone) return this.jobGone(state, error, sends);
-    if (scope === "video") return this.block(state, `the site refused ${request} (${code}): ${error.message}`);
+    if (scope === "video") return this.block(state, sends ? `the site refused ${request}; a retry ${sends}, and later threads wait (${code}: ${error.message})` : `the site refused ${request} (${code}): ${error.message}`);
     const retryAfter = Number(error.retry_after);
-    return this.defer(state, `${state.slug}: ${request} could not finish (${code}: ${error.message})`, { retryAfter: Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : null, what: error.stage ?? "request", everyone: Boolean(everyones(error)) });
+    const options = { retryAfter: Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : null, what: error.stage ?? "request", everyone: Boolean(everyones(error)) };
+    if (!line) return this.defer(state, `${state.slug}: ${request} could not finish (${code}: ${error.message})`, options);
+    // A discussion's waits count on their own (discussion_waits): the video's own unit clears
+    // defer_count after every visit without trouble (moved), so a request turned down the same way
+    // each round went again each round, with no card, while every thread after its line waited.
+    const waits = state.discussion_waits?.line === line ? state.discussion_waits : { count: 0, shared: 0 };
+    state.defer_count = waits.count;
+    state.defer_shared = waits.shared;
+    const tries = waits.count - waits.shared + 1;
+    const said = await this.defer(state, `${state.slug}: ${request} for the owner's line could not finish (${code}: ${error.message})`, { ...options, blocked: { why: `${request} for the owner's line kept failing (${tries} tries); a retry ${sends ?? "sends it once more"}, and later threads wait (${code}: ${error.message})`, kind: `deferred:${error.stage ?? "request"}` } });
+    if (state.status !== "blocked") {
+      state.discussion_waits = { line, count: state.defer_count, shared: state.defer_shared ?? 0 };
+      saveState(this.workdir(state.slug), state);
+    }
+    return said;
   }
 
   /**
