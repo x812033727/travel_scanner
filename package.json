@@ -11,6 +11,7 @@
     "typecheck:web": "npm run typecheck --workspace @travel-scanner/web",
     "test:web": "npm run test --workspace @travel-scanner/web",
     "test:tools": "node --test tools/*.test.mjs \"tools/video/**/*.test.mjs\"",
+    "test:docs-videos": "node --test \"docs/videos/*.test.mjs\" \"docs/videos/**/!(demo)/*.test.mjs\"",
     "check:i18n": "node tools/check-i18n.mjs",
     "check:tasks": "node tools/tasks.mjs check",
     "tasks": "node tools/tasks.mjs",

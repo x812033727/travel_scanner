@@ -41,7 +41,7 @@ npm ci
 # 檢查：每組寫 log、印 exit code、最後彙總
 bash .agents/skills/dev-and-ci/scripts/run-checks.sh web      # lint:web、check:i18n、typecheck:web、test:web
 bash .agents/skills/dev-and-ci/scripts/run-checks.sh api      # ruff、mypy app、mypy tests、pytest
-bash .agents/skills/dev-and-ci/scripts/run-checks.sh tools    # test:tools、check:tasks
+bash .agents/skills/dev-and-ci/scripts/run-checks.sh tools    # test:tools、test:docs-videos（要 ffmpeg）、check:tasks
 CHECK_LOG_DIR=/tmp/checks bash .agents/skills/dev-and-ci/scripts/run-checks.sh web api
 
 # 單一檔案
@@ -65,7 +65,7 @@ gh run rerun <run-id> --failed                                   # 整個 run �
 | job | 內容 | 本機做不到的部分 |
 | --- | --- | --- |
 | `api` | 只是閘門：`api-checks`（`uv sync --frozen`、ruff、`mypy app`、`mypy tests`、migration 單一 head、PostgreSQL 升級驗證）與四個 `api-tests (n/4)` 分片（`pytest --shard n/4`，帶 `RUN_INTEGRATION_TESTS=1`、各自一套真的 Postgres 17／Redis 7.4／MinIO）全綠才綠；紅的時候看是哪個 job | 整合測試 |
-| `web` | 只是閘門：`web-checks`（`npm ci`、lint、`check:i18n`、`check:tasks`、typecheck、`test:tools`）、三個 `web-unit (n/3)`（`npx vitest run --shard=n/3`）與三個 `web-e2e (n/3)`（各自 `build:web` 再跑隔離的 Playwright 清單 `--shard=n/3`）全綠才綠；失敗的 trace artifact 名稱帶分片編號 | e2e（chromium build） |
+| `web` | 只是閘門：`web-checks`（`npm ci`、lint、`check:i18n`、`check:tasks`、typecheck、`test:tools`）、`docs-videos`（裝 ffmpeg 後跑 `test:docs-videos`：docs/videos 底下的測試，`demo` 資料夾裡故意失敗的影片道具除外）、三個 `web-unit (n/3)`（`npx vitest run --shard=n/3`）與三個 `web-e2e (n/3)`（各自 `build:web` 再跑隔離的 Playwright 清單 `--shard=n/3`）全綠才綠；失敗的 trace artifact 名稱帶分片編號 | e2e（chromium build） |
 | `containers` | compose config、build、nginx 設定驗證、prod compose、SHA 映像 | 全部 |
 | `full-stack-smoke` | 真的 API＋worker＋`next start`，桌面與 Pixel 7 旅程、社群、後台矩陣 | 全部 |
 
