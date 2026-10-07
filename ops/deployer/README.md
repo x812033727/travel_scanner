@@ -121,6 +121,27 @@ table cell. Periodically perform a restore drill into a disposable, access-restr
 instance during a maintenance window. Never restore over production, and never treat
 `pg_restore --list` alone as proof that a restore drill succeeded.
 
+## The deploy hold and staged releases
+
+The host's other deployment paths signal "another release is in progress" with two files
+(`ops/release/README.md`): the deploy hold `/root/travel-scanner-deploy.hold`, which a staged
+release driver writes in `prepare` and removes after its last phase, and a
+`/root/mokaair-*/state.json` modified within 24 hours that holds `built_at` but neither
+`activated_at` nor `failed_at`. The one-shot script and the auto deploy timer refuse while either
+holds, and so does this agent: `preflight` reports a `release_guard` check, and a deployment
+request fails before anything is built with `deployment_hold_active` (detail: the hold's first
+line, at most 600 bytes) or `deployment_staged_release_in_progress` (detail: the release
+directory and when its state file changed). Both paths are compiled into the agent
+(`AgentConfig.hold_path`, `AgentConfig.staged_releases_root`) and never come from a request.
+The agent never removes a hold: a person does, after reading the release directory, in the order
+`ops/release/README.md` gives.
+
+The refusal does not make the agent interchangeable with the script. The agent keeps its own
+release layout (`/srv/travel-scanner/releases`, Compose project `travel-scanner`, only the
+services in `APPLICATION_SERVICES`, no `hotspots`, `news` or `video` profile) while the script
+and the timer run `/root/travel_scanner` with every profile. Enabling the agent on a host the
+script manages would start a second stack next to the first; that reconciliation is still open.
+
 ## Trust boundary
 
 - `travel-deployer` belongs to the `docker` group, and access to the Docker socket is

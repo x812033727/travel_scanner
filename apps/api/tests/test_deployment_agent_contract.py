@@ -30,6 +30,8 @@ def contract_config(tmp_path: Path) -> AgentConfig:
         current_path=tmp_path / "current",
         backup_path=tmp_path / "backups",
         runtime_env_path=tmp_path / "runtime.env",
+        hold_path=tmp_path / "deploy.hold",
+        staged_releases_root=tmp_path / "root",
     )
 
 
