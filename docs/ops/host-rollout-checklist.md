@@ -81,13 +81,16 @@ journalctl -u travel-scanner-autodeploy --since -1d | grep decision
 sed -i 's/^AUTODEPLOY_ENABLED=false/AUTODEPLOY_ENABLED=true/' /etc/travel-scanner/autodeploy.env   # 不用重啟
 ```
 
-等下一次 main 合併，看 `status` 的 `last_deploy`：`exit=0`、`verify=PASS`，以及
-`/root/deploy-logs/auto-<ts>.log`。
+改完**守在旁邊看下一輪**（最多 5 分鐘後）：乾跑那一週若有 commit 合併進 main，live 其實還落後，
+`ENABLED=true` 的第一輪 tick 就會馬上部署，不會等下一次合併。看 `status` 的 `last_deploy`：
+`exit=0`、`verify=PASS`，以及 `/root/deploy-logs/auto-<ts>.log`；要挑時間就先
+`systemctl stop travel-scanner-autodeploy.timer`，改旗標後再 `start`。live 已經等於 main 時，
+第一次自動部署才是下一次合併。
 
 ## 4. 收尾
 
 - 認領 `tasks/open/2026-10-07-autodeploy-rollout-and-skill-docs.md`，把第一次自動部署的 SHA、
-  耗時、驗證結果寫進 Notes，`npm run tasks -- done`。
+  耗時、驗證結果寫進 Notes，`npm run tasks -- done 2026-10-07-autodeploy-rollout-and-skill-docs`。
 - 從此手動部署前先看 `systemctl is-active travel-scanner-autodeploy.service`；自動部署失敗會寫
   `/root/travel-scanner-autodeploy.paused`，先讀它指的 log 再刪（skill `deploy` 規矩 9、10）。
 - Google 雲端硬碟那張票要的決定：帳號與配額、影片卷要送哪些、rclone crypt 密語放密碼管理器、
