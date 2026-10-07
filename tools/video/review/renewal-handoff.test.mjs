@@ -160,6 +160,47 @@ test("a forged package-ok flag cannot accept changed bytes or incomplete parts",
   writeFileSync(path.join(f.out, "upload/captions/en.srt"), caption); await assert.rejects(bindManualSubmission({ body, remote: f.remote, workdir: f.out }), /attachment changed/);
 });
 
+test("a hand-edited metadata.json with mistyped captions or localizations is refused by field, never a TypeError", async (t) => {
+  const cases = [
+    ["captions a number", (m) => { m.captions = 5; }, /metadata\.json captions is not a list/],
+    ["captions an object", (m) => { m.captions = {}; }, /metadata\.json captions is not a list/],
+    ["captions missing", (m) => { delete m.captions; }, /metadata\.json captions is not a list/],
+    ["localizations missing", (m) => { delete m.localizations; }, /metadata\.json localizations is not an object/],
+    ["localizations a list", (m) => { m.localizations = ["en"]; }, /metadata\.json localizations is not an object/],
+  ];
+  for (const baseOnly of [true, false]) {
+    for (const [what, edit, refusal] of cases) {
+      const f = fixture(t, { choices: {} }); await prepareHandoff(f.config);
+      const file = path.join(f.out, "upload/metadata.json"), metadata = JSON.parse(readFileSync(file));
+      edit(metadata); writeFileSync(file, JSON.stringify(metadata));
+      let submissions = 0;
+      const client = { project: async () => f.remote, submit: async () => { submissions++; return {}; } };
+      await assert.rejects(stageManualPublish({ workdir: f.out, client, baseOnly, uploadInactive: async () => true, send: async (_client, _slug, path_, role) => proof(path_, role) }), (error) => {
+        assert.ok(!(error instanceof TypeError), `${what}: ${error.message}`);
+        assert.match(error.message, refusal, what);
+        return true;
+      });
+      assert.equal(submissions, 0, what);
+      assert.equal(existsSync(path.join(f.out, "review/manual-publish-submission.json")), false, `${what}: nothing staged`);
+    }
+  }
+  // bindManualSubmission with a base-only body reads the same fields through the same guard; after
+  // prepare, metadata.json is itself one of the receipt's file proofs, so an edit is refused there
+  // first. Either way it is a refusal, never a TypeError.
+  for (const [what, edit, refusal] of cases) {
+    const f = fixture(t, { choices: {} }); await prepareHandoff(f.config);
+    const file = path.join(f.out, "upload/metadata.json"), metadata = JSON.parse(readFileSync(file));
+    edit(metadata); writeFileSync(file, JSON.stringify(metadata));
+    const files = packageFiles([...listFiles(path.join(f.out, "upload")).keys()]).map((v) => proof(path.join(f.out, "upload", v.path), v.role));
+    const body = { gate: "publish", content_sha256: sha(readFileSync(file)), payload: { base_only: true, package: {} }, files };
+    await assert.rejects(bindManualSubmission({ body, remote: f.remote, workdir: f.out }), (error) => {
+      assert.ok(!(error instanceof TypeError), `bind, ${what}: ${error.message}`);
+      assert.ok(refusal.test(error.message) || /manual package attachment changed: metadata/.test(error.message), `bind, ${what}: ${error.message}`);
+      return true;
+    });
+  }
+});
+
 test("normal handoff retains actual narration/timeline and rejects a new document after prepare", async (t) => {
   const f = fixture(t), doc = sourceFixture(); doc.slug = f.slug;
   const project = { doc, lexicon: fixtureLexicon() };
