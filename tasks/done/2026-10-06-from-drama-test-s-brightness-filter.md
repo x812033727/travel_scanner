@@ -60,8 +60,8 @@ on Windows, then CI's tools job.
   so no drive colon or backslash ever reaches the graph; the input goes in as `-i <absolute path>`,
   outside the graph. Same crop, same frames above the caption bar.
 - New test "the brightness probe reads a stats file whose path has a drive colon and backslashes"
-  needs only ffmpeg: it writes the stats file under a directory literally named
-  `C:\Users\runner\AppData` (legal on Linux) and checks six mid-grey levels. It fails with the old
+  needs only ffmpeg: it writes the stats file under a directory named like a Windows user
+  profile, with a drive colon and backslashes (legal on Linux), and checks six mid-grey levels. It fails with the old
   helper and passes with the new one, which reproduces the Windows failure on Linux.
 - The stand-in episode test itself passes on Linux (67 s). It needs Playwright's Chromium; this
   container ships build 1194 while the pinned Playwright wants 1243, so the run used a scratch
