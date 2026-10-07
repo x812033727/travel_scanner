@@ -96,3 +96,5 @@
 | `2026-10-07-backup-age-in-host-ops-checks` | 最後備份時間進預檢與 `prod-host-ops`，過期即警示 | P2 | nightly |
 
 兩條線互不依賴，可以兩個 session 平行做；票的 `scope` 已經分開。
+
+主機上把兩個 timer 開起來的順序在 `docs/ops/host-rollout-checklist.md`。
