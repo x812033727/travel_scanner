@@ -1475,19 +1475,42 @@ export class Automation {
     // The owner uploaded a finished video and pasted its address on /admin/videos: the id goes
     // into the script, and the video reads as complete (docs/videos/HANDS-OFF.md).
     const uploaded = new Map(this.site.filter((video) => YOUTUBE_ID.test(video.youtube_video_id ?? "")).map((video) => [video.slug, video.youtube_video_id]));
-    for (const state of automatedVideos(this.workBase)) {
-      if (!["active", "done"].includes(state.status) || !uploaded.has(state.slug) || !free(state)) continue;
-      const recorded = await this.recordVideoId(state, uploaded.get(state.slug));
+    const unrecorded = (state) => ["active", "done"].includes(state.status) && uploaded.has(state.slug);
+    for (const listed of automatedVideos(this.workBase)) {
+      if (!unrecorded(listed) || !free(listed)) continue;
+      const recorded = await this.holding(listed.slug, (state) => unrecorded(state) && this.recordVideoId(state, uploaded.get(state.slug)));
       if (recorded) return recorded;
     }
     // A finished compilation the site has not heard about yet (the call failed on the round
     // that finished it): tell it now, or the series stays 合集正在做.
-    for (const state of automatedVideos(this.workBase)) {
-      if (state.status === "done" && state.compilation && !state.compilation_told && free(state) && (await this.tellCompilationDone(state))) {
-        return `${state.slug}: the site now knows the compilation of ${state.compilation.series} is done`;
+    const untold = (state) => state.status === "done" && state.compilation && !state.compilation_told;
+    for (const listed of automatedVideos(this.workBase)) {
+      if (!untold(listed) || !free(listed)) continue;
+      if (await this.holding(listed.slug, (state) => untold(state) && this.tellCompilationDone(state))) {
+        return `${listed.slug}: the site now knows the compilation of ${listed.compilation.series} is done`;
       }
     }
     return null;
+  }
+
+  /**
+   * `act` on a video's auto.json as read once this lane holds the video, holding it until `act`
+   * is over: the bookkeeping's site calls (recordVideoId, tellCompilationDone) save the video
+   * after they await the site. Until 2026-10-07 they held nothing, so a second lane could take
+   * the video during the call (a done video's languages) and save its progress, and the copy
+   * this lane then saved, read before the call, wrote over it; a loop that lists the videos
+   * before its first await could also save a copy another lane had moved on since. Resolves to
+   * what `act` does, or null when another lane holds the video or it has no auto.json of its own.
+   */
+  async holding(slug, act) {
+    if (this.busy.has(slug)) return null;
+    this.busy.add(slug);
+    try {
+      const state = readJson(path.join(this.workdir(slug), STATE_FILE), null);
+      return state?.slug === slug ? await act(state) : null;
+    } finally {
+      this.busy.delete(slug);
+    }
   }
 
   /**

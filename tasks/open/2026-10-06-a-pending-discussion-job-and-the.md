@@ -52,7 +52,7 @@ while another step has something of that video in flight.
       request is sent for that video and its own stages wait; the discussion's answer is taken on
       a later round, and the video moves again after it. (Done in PR #1342, in the repair of its
       second review; see Notes. What is left of this ticket is the second item.)
-- [ ] No step of the first lane's bookkeeping saves `auto.json` for a video another lane may have
+- [x] No step of the first lane's bookkeeping saves `auto.json` for a video another lane may have
       taken since the step read it.
 
 ## Steps
@@ -63,11 +63,11 @@ while another step has something of that video in flight.
       receipt store whether the video has an unfinished writer journal before moving it. Decide
       which with a test that owns the sequence: the owner's line, a pending `discuss` job, the
       owner's rejection, the next round. (Both, in PR #1342.)
-- [ ] `bookkeeping()`: hold the video in `busy` around `recordVideoId` and `tellCompilationDone`
+- [x] `bookkeeping()`: hold the video in `busy` around `recordVideoId` and `tellCompilationDone`
       (a `try`/`finally`, as the retry acknowledgement does), or have them save before the await
       and nothing after it. Read `auto.json` again once the video is held, as `stepUnit` now does:
       each loop lists the states before its first await.
-- [ ] Tests in `automation.test.mjs` (two lanes, the site call held in flight). The discussion
+- [x] Tests in `automation.test.mjs` (two lanes, the site call held in flight). The discussion
       sequence is in `series.test.mjs` since PR #1342.
 
 ## How to verify
@@ -98,3 +98,24 @@ node --test tools/video/automation/automation.test.mjs tools/video/automation/se
   unit, before the video's own stages, while the other lanes leave the video to it (`stepUnit`).
   `stepUnit` also reads `auto.json` again once it holds a video, which is the guard the second
   item's loops still lack.
+- 2026-10-07 (claude-opus-5-5-bookkeeping), the second item. `flow.mjs` `holding(slug, act)` holds
+  a video in `busy` (none when another lane already does), reads its `auto.json` once held, and
+  lets it go when `act` is over, as `firstOutline` and the retry acknowledgement hold theirs.
+  `bookkeeping()`'s pasted-address loop (`recordVideoId`) and its untold-compilation loop
+  (`tellCompilationDone`) now act through it, each re-checking its condition on the copy read
+  once held. Before, a second lane could take the video during the site call (a done video's
+  languages) and save its progress, which the first lane's save after the call wrote over; and
+  a loop that listed the videos before an earlier iteration's await could save a copy another
+  lane had moved on since.
+  - The other loops of `bookkeeping()` are left as they are: the drop loop has no await between
+    its listing and its save, and the retry and blocked-report loops act only on blocked videos,
+    which no other lane moves (`stepUnit` takes `active` and `done` ones, and a lane still
+    holding a video it has just blocked fails `free`).
+  - Tests (`automation.test.mjs`): the site call held in flight, as a compilation's
+    `compilationDone` and as a pasted address's "on YouTube" report followed by
+    `compilationDone`: the other lane leaves the video, and nothing it saves is lost; and a
+    compilation whose call failed while the other lane moved the next one: that one is told from
+    the `auto.json` read once held, with its languages kept. Both fail on the old code, as do
+    the mutations "held, the listed copy kept" and "read again, not held".
+  - The automation test the pending-reason ticket added wrapped `site.fetchImpl` in a function
+    that adds nothing; that line is removed here (its re-bind noted it).

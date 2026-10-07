@@ -4908,7 +4908,6 @@ test("a writer whose receipt look-ups are rate-limited is reported as not answer
   // A server's long detail is cut to 160 code points, a character outside the BMP whole.
   atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", format: "slides", notes: [], created_at: "2026-10-05T12:30:00Z" }));
   const long = `${"😀".repeat(159)}截斷之後不該出現`;
-  site.fetchImpl = ((original) => async (url, init = {}) => original(url, init))(site.fetchImpl);
   throttled = false;
   jobs.clear();
   await (await lane()).step();
@@ -5613,6 +5612,136 @@ test("a lane moves a video from the state it reads once it holds it: a unit anot
     }
     assert.deepEqual([...shared.busy], []);
   }
+});
+
+test("the first lane's bookkeeping holds a video while it waits on the site: another lane does not move it during the call, and the save after the call does not write over what that lane saved", async () => {
+  // "compilation": a finished compilation the site has not heard about yet; "address": the owner pasted the address of a compilation still on its way.
+  for (const mode of ["compilation", "address"]) {
+    const slug = "binge-video";
+    const box = sandbox(slug);
+    const clock = { now: Date.parse("2026-10-07T10:00:00Z") };
+    const { ctx } = context(box, async () => new Response("{}"), clock);
+    atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: mode === "compilation" ? "done" : "active", created_at: "2026-10-07T00:00:00Z", compilation: { series: "wuxia" }, notes: [] }));
+    let called;
+    let release;
+    const inFlight = new Promise((resolve) => (called = resolve));
+    const held = new Promise((resolve) => (release = resolve));
+    const told = [];
+    const api = {
+      videos: async () => (mode === "address" ? [{ slug, youtube_video_id: "dQw4w9WgXcQ" }] : []),
+      report: async (_slug, project) => {
+        if (project.stage === "on YouTube") {
+          called();
+          await held;
+        }
+      },
+      compilationDone: async (series) => {
+        told.push(series);
+        if (mode === "compilation") {
+          called();
+          await held;
+        }
+      },
+      settleRuns: async () => {},
+    };
+    const settings = { enabled: true, max_waiting_drafts: 0 };
+    const shared = { busy: new Set(), skipped: new Set(), pendingUntil: new Map() };
+    const first = new Automation(ctx, api, settings, { ...shared });
+    const second = new Automation(ctx, api, settings, { ...shared, secondary: true });
+    const state = () => readJson(path.join(box.work, slug, "auto.json"));
+    const sent = [];
+    for (const [name, lane] of [["first", first], ["second", second]]) {
+      lane.due = () => false;
+      lane.advance = async () => null;
+      // A done video's languages (LANGUAGES.md): a translation whose progress lives only in auto.json.
+      lane.languages = async (video) => {
+        if (video.status !== "done" || video.languages_sent) return null;
+        sent.push(name);
+        video.languages_sent = true;
+        lane.persist(video);
+        return `${video.slug}: languages sent by the ${name} lane`;
+      };
+    }
+
+    const firstUnit = first.step();
+    await inFlight;
+    assert.deepEqual([...shared.busy], [slug], `${mode}: held while the site call is in flight`);
+    // Before: the video was done and free, so the second lane sent its languages and saved them here.
+    assert.equal(await second.step(), null, `${mode}: the other lane leaves it`);
+    assert.deepEqual(sent, [], mode);
+    release();
+    assert.match(await firstUnit, mode === "compilation" ? /^binge-video: the site now knows the compilation of wuxia is done$/ : /^binge-video: on YouTube as dQw4w9WgXcQ; video\.json records it/, mode);
+    assert.deepEqual([...shared.busy], [], `${mode}: let go once the call is over`);
+    assert.deepEqual(told, ["wuxia"], mode);
+    assert.deepEqual([state().status, state().compilation_told], ["done", true], mode);
+    // The next round, the other lane moves it from what was saved: told, and nothing lost.
+    assert.equal(await second.step(), `${slug}: languages sent by the second lane`, mode);
+    assert.deepEqual([state().compilation_told, state().languages_sent], [true, true], `${mode}: the save after the call kept nothing stale`);
+    assert.equal(await first.step(), null, `${mode}: and nothing is done twice`);
+    assert.deepEqual([sent, told], [["second"], ["wuxia"]], mode);
+  }
+});
+
+test("the first lane's bookkeeping tells the site of a compilation from the auto.json it reads once it holds the video, not the copy it listed before an earlier call", async () => {
+  const box = sandbox();
+  const clock = { now: Date.parse("2026-10-07T10:00:00Z") };
+  const { ctx } = context(box, async () => new Response("{}"), clock);
+  for (const [slug, series, created] of [["older-binge", "wuxia", "2026-10-06T00:00:00Z"], ["newer-binge", "xianxia", "2026-10-07T00:00:00Z"]]) {
+    atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "done", created_at: created, compilation: { series }, notes: [] }));
+  }
+  let called;
+  let release;
+  const inFlight = new Promise((resolve) => (called = resolve));
+  const held = new Promise((resolve) => (release = resolve));
+  const told = [];
+  const api = {
+    videos: async () => [],
+    report: async () => {},
+    // The older compilation's call takes a moment and fails (the site is restarting); the newer one's goes through.
+    compilationDone: async (series) => {
+      told.push(series);
+      if (series === "wuxia") {
+        called();
+        await held;
+        throw new AutomationError("Bad Gateway", { status: 502 });
+      }
+    },
+    settleRuns: async () => {},
+  };
+  const settings = { enabled: true, max_waiting_drafts: 0 };
+  const shared = { busy: new Set(), skipped: new Set(), pendingUntil: new Map() };
+  const first = new Automation(ctx, api, settings, { ...shared });
+  const second = new Automation(ctx, api, settings, { ...shared, secondary: true });
+  const state = (slug) => readJson(path.join(box.work, slug, "auto.json"));
+  const sent = [];
+  for (const [name, lane] of [["first", first], ["second", second]]) {
+    lane.due = () => false;
+    lane.languages = async (video) => {
+      if (video.languages_sent) return null;
+      sent.push(`${name}: ${video.slug}`);
+      video.languages_sent = true;
+      lane.persist(video);
+      return `${video.slug}: languages sent by the ${name} lane`;
+    };
+  }
+
+  // The first lane lists both compilations, holds the older one and waits on its call.
+  const firstUnit = first.step();
+  await inFlight;
+  assert.deepEqual([...shared.busy], ["older-binge"]);
+  // Meanwhile the second lane moves the newer one, saves its languages and lets it go.
+  assert.equal(await second.step(), "newer-binge: languages sent by the second lane");
+  assert.deepEqual([...shared.busy], ["older-binge"]);
+  release();
+  assert.equal(await firstUnit, "newer-binge: the site now knows the compilation of xianxia is done");
+  assert.deepEqual(told, ["wuxia", "xianxia"]);
+  // Before: the first lane saved the newer compilation from the copy it listed, without its languages, and sent them again.
+  assert.deepEqual([state("newer-binge").compilation_told, state("newer-binge").languages_sent], [true, true]);
+  assert.deepEqual([state("older-binge").compilation_told, state("older-binge").languages_sent], [undefined, undefined], "the failed call is not remembered as told");
+  assert.deepEqual([...shared.busy], []);
+  assert.equal(await second.step(), "older-binge: languages sent by the second lane");
+  assert.equal(await second.step(), null);
+  assert.deepEqual(sent, ["second: newer-binge", "second: older-binge"], "each video's languages once");
 });
 
 test("a deferral for trouble that is everyone's waits and shows on the card like any other and never blocks; the video's own trouble in the same row still counts to its own limit", async () => {
