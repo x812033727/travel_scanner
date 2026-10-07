@@ -58,7 +58,7 @@ manifest for this batch rather than changing another session's active tooling.
 - [x] Finish native audio checks, captions and packaging for the selected parts.
 - [x] Validate uploaded bytes with the production consumer in a read-only
   transaction, submit once, then verify persisted pending review and source pins.
-- [ ] Save the final evidence and open a draft PR for the translation records.
+- [x] Save the final evidence and open a draft PR for the translation records.
 
 ## How to verify
 
@@ -109,3 +109,8 @@ native defect is filed separately as
 Generated media and detailed provider receipts stay outside Git under
 `C:\Users\x8120\mokaair-work`. The ordinary producer's missing metadata/manifest
 is separately tracked in draft PR #1363; this task changes no shared video tools.
+
+Translation records and this recovery receipt are in draft PR #1368:
+https://github.com/x812033727/travel_scanner/pull/1368.
+All scoped implementation and submission work is complete; the PR remains in
+review and the separate language card remains pending owner listening/approval.
