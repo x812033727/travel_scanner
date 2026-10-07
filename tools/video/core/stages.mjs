@@ -207,7 +207,10 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
     const dub = locale === narrationLocale(project.doc) || !dubbed.includes(locale) ? null : currentDub(project, workdir, locale, speech);
     const timed = dub && !dub.stale;
     // Dub timelines already describe their padded presentation; only narration is shifted here.
-    const { cues } = buildCues(timed ? captionTimelineOf(dub) : presented, byLine, locale);
+    // A translation under the narration's timeline takes its cue changes from the narration's
+    // measured ones; a dub-timed one follows its own track.
+    const narrated = timed ? null : { locale: narrationLocale(project.doc), texts: texts[narrationLocale(project.doc)] };
+    const { cues } = buildCues(timed ? captionTimelineOf(dub) : presented, byLine, locale, narrated);
     atomicWrite(path.join(workdir, "captions", `${locale}.srt`), toSrt(cues));
     atomicWrite(path.join(workdir, "captions", `${locale}.vtt`), toVtt(cues));
     const problems = checkCues(cues, locale);
