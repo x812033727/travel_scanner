@@ -139,7 +139,9 @@ async def _window_seconds_left(namespace: str, identifier: str, window_seconds: 
     read in milliseconds and rounded up, so a caller that waits this long is never early.
     A key already gone (-2) means the window closed since the count; a key without an
     expiry (-1, which the script never leaves) or a read that fails answers the whole
-    window, which may be too long but is never too short.
+    window, which may be too long but is never too short. The count and this read are two
+    round trips, so a window another request opened in between is read as nearly whole:
+    again too long at worst, never too short.
     """
     try:
         remaining_ms = int(await get_redis().pttl(_rate_key(namespace, identifier)))

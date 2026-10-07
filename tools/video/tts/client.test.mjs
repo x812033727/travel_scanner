@@ -1,9 +1,8 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import test from "node:test";
-import { mkdtempSync } from "node:fs";
-import os from "node:os";
 import path from "node:path";
+import { tempDir } from "../core/fixtures/load.mjs";
 import { alignClip, judgeLines, MAX_RETRY_WAIT_MS, RATE_WINDOW_MS, SPEECH_UNCERTAIN, SpeechError, speechStatus, synthesize, synthesizeAligned, transcribeClip } from "./client.mjs";
 import { listSpeechJournal, openSpeechJournal, requestSha256 } from "./speech-journal.mjs";
 import { encodeWav, parseWav } from "./wav.mjs";
@@ -261,6 +260,7 @@ const EVERY_CALL = () => {
 };
 
 test("the routes' rate limit is waited out: the Retry-After it sends, or a whole window from a host before the header", async () => {
+  assert.equal(RATE_WINDOW_MS, 61_000, "one whole window of the token's 60-second limit, and a second for its edge");
   for (const [name, send, ok] of EVERY_CALL()) {
     for (const [what, headers, waits] of [
       ["a host from before the header", {}, [RATE_WINDOW_MS]],
@@ -327,7 +327,7 @@ test("other retries keep their backoff, and nothing waits after the last request
 });
 
 test("through the speech journal, a narration the limit refused is sent again, and one it kept refusing leaves no entry to hold", async () => {
-  const dir = path.join(mkdtempSync(path.join(os.tmpdir(), "speech-client-")), "speech-journal");
+  const dir = path.join(tempDir("speech-client-"), "speech-journal");
   const narrate = (options) => openSpeechJournal(dir).wrap((body) => synthesize({ ...options, body }));
   const line = (text) => ({ voice: "zh-TW-HsiaoChenNeural", segments: [{ parts: [{ text }], break_after_ms: 0 }] });
   const once = server([limited(), PAID[0].ok]);

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-a-burst-of-narration-lines-trips
 title: A burst of narration lines trips the speech route's 120-a-minute limit and blocks the video
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-speech-burst
 claimed_at: 2026-10-07T05:14:10Z
 created_at: 2026-10-05T23:43:19Z
-completed_at:
+completed_at: 2026-10-07T07:12:20Z
 branch:
 depends_on: []
 scope:
@@ -123,3 +123,26 @@ tests/test_video_speech.py -q`; after a deploy, `/admin/videos` shows the video 
     61 s each instead of 1–16 s. Filed as `2026-10-07-a-speech-request-waiting-out-a`.
   - A STOP file is read between requests, so in a throttled run it now takes up to about four
     minutes to act.
+- Review (2026-10-07, four lenses, each finding verified) found no blocking defect.
+  - The simulation lens ran the scenarios that failed before against the new client and a
+    limiter that sends Retry-After, and also against one that sends none (an old host). Each now
+    exits 0: one tts lane with instant answers, two lanes at 0.5 s and 0.75 s, tts beside
+    check-audio, tts beside a writer poll. The old client failed them.
+  - The API lens checked the header against the real Redis, and found the default path
+    byte-for-byte unchanged.
+- Taken from it:
+  - The client's journal test used a bare temporary directory and left it behind on every run;
+    it now uses `tempDir()`.
+  - `RATE_WINDOW_MS` is pinned at 61 s.
+  - A PTTL of 0 is tested against the one-second floor.
+  - The opt-in test pins each limiter's window: 60 s for the token's, 3600 s for transcribe's
+    and align's.
+  - The docstring now says a window opened between the count and the read reads as nearly whole:
+    too long at worst, never too short.
+- Filed: `2026-10-07-the-media-automation-review-and-shorts`. Those clients still sleep after
+  their last attempt, and that wait now grows to the server's Retry-After.
+- The definition of done's last box (`openai-agent-posted-53-user-images` past "narration
+  synthesized" after a deploy) is not done here. It needs a deploy and the owner's retry, and it
+  is tracked as the last box of `2026-10-03-video-worker-narration-takes-made-stale`. That video
+  also needs `2026-10-06-tts-and-a-narration-retake-that`, so a tts throttled to the end waits
+  instead of blocking.

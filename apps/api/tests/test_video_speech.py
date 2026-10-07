@@ -501,6 +501,7 @@ async def test_the_token_limit_says_when_its_window_opens_again(
         (42_300, 60, "43"),
         (60_000, 60, "60"),
         (1, 60, "1"),
+        (0, 60, "1"),  # the very edge: never a wait of nothing
         (-2, 60, "1"),  # the window closed between the count and the read
         (-1, 60, "60"),  # a key without an expiry: the whole window, never too short
         (RedisError("down"), 60, "60"),  # still the 429 it is, not the 503 of an uncounted hit
@@ -545,10 +546,10 @@ async def test_the_speech_routes_limits_all_tell_their_wait(
     import app.video_speech.align_api as align_api
     from app.video_speech.schemas import AlignIn, TranscribeIn
 
-    asked: list[tuple[str, bool]] = []
+    asked: list[tuple[str, dict[str, Any]]] = []
 
     async def record(namespace: str, identifier: str, **options: Any) -> None:
-        asked.append((namespace, bool(options.get("retry_after"))))
+        asked.append((namespace, options))
         raise AppError(429, "rate_limit_exceeded", "stop here")
 
     monkeypatch.setattr(admin_api, "enforce_named_rate_limit", record)
@@ -568,4 +569,9 @@ async def test_the_speech_routes_limits_all_tell_their_wait(
     clip = AlignIn(text="好", audio=base64.b64encode(WAV).decode())
     with pytest.raises(AppError):
         await align_api.align_speech(clip, row, TokenSession())  # type: ignore[arg-type]
-    assert asked == [("video_speech", True), ("video_transcribe", True), ("video_align", True)]
+    # The token's window is the 60 seconds tools/video/tts/client.mjs RATE_WINDOW_MS waits out.
+    assert asked == [
+        ("video_speech", {"limit": 120, "window_seconds": 60, "retry_after": True}),
+        ("video_transcribe", {"limit": 1200, "window_seconds": 3600, "retry_after": True}),
+        ("video_align", {"limit": 1200, "window_seconds": 3600, "retry_after": True}),
+    ]
