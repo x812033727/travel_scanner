@@ -4984,7 +4984,7 @@ test("a writer whose saved receipt cannot be read says why instead of claiming t
   // A request the server never confirmed (its POST met the rate limit each time) has no job to look up.
   const refused = durableVideos(["unsent"]);
   refused.server.refuse({ status: 429, body: { code: "rate_limit_exceeded", detail: "請求過於頻繁，請稍後再試" } });
-  assert.equal(await (await refused.worker()).step(), "unsent: writer's request was not confirmed by the server (請求過於頻繁，請稍後再試); it is sent again under the same key next round, which the server takes as the same run");
+  assert.equal(await (await refused.worker()).step(), "unsent: writer's request got no answer the client could read (請求過於頻繁，請稍後再試); its saved request is sent again next round");
   refused.server.refuse(null);
   assert.equal(await (await refused.worker()).step(), "unsent: writer is still running; its saved receipt will be checked next round");
   const [unsent] = refused.server.running();

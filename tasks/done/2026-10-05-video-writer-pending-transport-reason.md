@@ -95,3 +95,13 @@ and task consistency checks before a PR.
   fake sleeps (exactly POST, 429, running) and asserts the two lookups: 40 of 40 under the same
   load. The stale-journal path's `polling`/`receipt_status` had no test; the 408/429 stale-lookup
   test now asserts both, and fails with that piece reverted.
+- The second reviewer found a real misreport: the receipt GET's timeout is the round's remaining
+  poll budget, so the round's own abort of its last read set `lastProblem` ("The operation was
+  aborted due to timeout") and a healthy running job was reported as a failed lookup (3 of about
+  24 rounds at the production defaults in their probe). The client now ends the round on its own
+  budget's TimeoutError once the server has confirmed the job, keeping the server's last word;
+  a test reads a job whose GET answers only when aborted (polling null, one read) and fails
+  without the change (24 of 24 under 6-way load with a 1.5 s budget). The "no answer yet" line no
+  longer promises the same key: a request whose inputs change before the next round is archived
+  as never dispatched and a new key is sent (reconcileStale), so it now says "its saved request is
+  sent again next round".

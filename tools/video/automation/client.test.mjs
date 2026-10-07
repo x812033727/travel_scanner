@@ -572,6 +572,21 @@ test("a pending writer says why its last look failed, only while it did: a read 
   await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING && error.polling === null && error.receipt_status === "running");
   // The fake sleeps alone use the budget up: the POST, the 429, then the read that clears it.
   assert.equal(lookups, 2);
+  // The round's own budget cuts off a read of a job the server already confirmed: no lookup failed.
+  box = sandbox();
+  let reads = 0;
+  client = durableClient(box, async (url, init) => {
+    if (init.method === "POST") { original = JSON.parse(init.body); return Response.json(job(original, "running")); }
+    reads += 1;
+    // A read that answers only once aborted; the timer keeps the process up meanwhile, as a socket would.
+    return new Promise((_resolve, reject) => {
+      const open = setTimeout(() => {}, 10_000);
+      init.signal.addEventListener("abort", () => { clearTimeout(open); reject(init.signal.reason); });
+    });
+  }, { durablePollMs: 1500, durablePollIntervalMs: 1500 });
+  await client.settings();
+  await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING && error.polling === null && error.receipt_status === "running");
+  assert.equal(reads, 1, "the read the budget cut off");
   // The POST itself is refused for a while: no job was confirmed, so there is no receipt status.
   box = sandbox();
   let posts = 0;

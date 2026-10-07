@@ -280,6 +280,9 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
         }
       } catch (error) {
         if (error instanceof RunReceiptError || error instanceof AutomationError) throw error;
+        // This round's own budget cut off a read of a job the server already confirmed (the
+        // signal above): nothing failed, and the server's last word on the job stands.
+        if (error?.name === "TimeoutError" && entry.record.receipt) break;
         // GET or same-key POST can reconnect safely. The persisted key survives process exit.
         lastProblem = error.message;
         failures++;

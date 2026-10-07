@@ -557,15 +557,16 @@ export const PENDING_RECHECK_MS = 5 * 60_000;
  * What a writer still pending is waiting on (RUN_PENDING): the server's own word that its run is
  * queued or running, or, when the client's last look at the server failed (client.mjs `polling`:
  * a 429 on the receipt, a dropped connection), that cause. A job that finished on the server and
- * was only not read is never reported as a model still at work. Either way the same request key
- * and receipt are looked up next round; nothing is sent again.
+ * was only not read is never reported as a model still at work. Nothing else changes: a confirmed
+ * job is looked up next round under its receipt, and a request with no answer yet is sent again
+ * from its journal (under the same key while its inputs stay the same).
  */
 function pendingLine(error) {
   const stage = error.stage ?? "writer";
   if (!error.polling) return `${stage} is still running; its saved receipt will be checked next round`;
   return error.receipt_status
     ? `${stage}'s saved run could not be looked up (${error.polling}); its receipt is checked again next round`
-    : `${stage}'s request was not confirmed by the server (${error.polling}); it is sent again under the same key next round, which the server takes as the same run`;
+    : `${stage}'s request got no answer the client could read (${error.polling}); its saved request is sent again next round`;
 }
 
 // A video's unit met its project's STOP file, or lost the project's lease, before a paid request
