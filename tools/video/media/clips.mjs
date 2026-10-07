@@ -150,6 +150,9 @@ function writeManifest(workdir, doc, manifest) {
   atomicWrite(manifestFile(workdir), `${JSON.stringify(manifest, null, 2)}\n`);
 }
 
+// What keyframeProblems says about a selected file's bytes or presence (not its review state).
+const PICTURE_PROBLEM = /selected picture (has changed|is missing)|has no selected picture/;
+
 /**
  * The selected start (and end) pictures of these scenes whose bytes are not the ones the keyframes
  * manifest recorded, or that are missing: core/state.mjs keyframeProblems on those scenes alone,
@@ -159,7 +162,7 @@ function writeManifest(workdir, doc, manifest) {
 async function changedPictures(doc, keyframes, workdir, scenes) {
   const ids = new Set(scenes.map((scene) => scene.id));
   const problems = (await keyframeProblems({ doc: { ...doc, scenes: doc.scenes.filter((scene) => ids.has(scene.id)) }, manifest: keyframes, workdir, allowNeedsReview: true }))
-    .filter((problem) => /changed|missing|no selected picture/.test(problem));
+    .filter((problem) => PICTURE_PROBLEM.test(problem));
   for (const scene of scenes) {
     const end = keyframes.shots?.[scene.id]?.end_frame;
     if (!end?.file || scene.data?.end_frame?.prompt) continue;
@@ -333,6 +336,15 @@ export async function run(command, args, ctx) {
     if (!uploads.has(file)) uploads.set(file, await stage.upload(path.join(workdir, file)));
     return uploads.get(file);
   };
+  // A picture a clip request carries (its start and end keyframes, the still it continues from)
+  // is hashed right before it goes to the store, against the record that names it: a shot outside
+  // --shot, or a file drawn over since the early check, cannot slip into a paid request.
+  const uploadApproved = async (file, sha256, label) => {
+    if (typeof sha256 !== "string" || await sha256File(path.join(workdir, file)) !== sha256) {
+      throw new UsageError(`${label} selected picture has changed: ${file}; run keyframes again or restore the approved picture`);
+    }
+    return upload(file);
+  };
   const started = Date.now();
   let generated = 0;
   let stopped = false;
@@ -362,8 +374,8 @@ export async function run(command, args, ctx) {
     const neededFrames = framesOf.get(scene.id) ?? 0;
     const seconds = clipSeconds(neededFrames, durations, status.clip);
     const keyframe = keyframes.shots[scene.id];
-    const firstFrame = await upload(keyframe.file);
-    const endFrame = keyframe.end_frame?.file ? await upload(keyframe.end_frame.file) : null;
+    const firstFrame = await uploadApproved(keyframe.file, keyframe.sha256, scene.id);
+    const endFrame = keyframe.end_frame?.file ? await uploadApproved(keyframe.end_frame.file, keyframe.end_frame.sha256, `${scene.id} end frame`) : null;
     const references = [];
     for (const character of characters) if (sheets[character.id]) references.push({ sha256: await upload(sheets[character.id].file), role: "character" });
     let continues = null;
@@ -377,7 +389,7 @@ export async function run(command, args, ctx) {
       if (previous.still) {
         // A still ends on its keyframe under a slight camera move, so the keyframe itself is
         // the picture this clip continues from; there is no clip to take a last frame of.
-        continues = { shot: scene.data.start_frame.shot, file: previous.file, sha256: await upload(previous.file) };
+        continues = { shot: scene.data.start_frame.shot, file: previous.file, sha256: await uploadApproved(previous.file, previous.sha256, `${scene.data.start_frame.shot} (the still ${scene.id} continues from)`) };
       } else {
         const frame = `clips/${scene.data.start_frame.shot}-last.png`;
         if (ctx.extractFrame) await ctx.extractFrame(path.join(workdir, previous.file), path.join(workdir, frame));

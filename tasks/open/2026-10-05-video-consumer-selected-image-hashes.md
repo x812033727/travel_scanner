@@ -84,3 +84,12 @@ and the required tools checks before a PR.
   - `clips.test.mjs`: a changed start, a changed recorded end frame, and import. Each makes zero requests of any kind, leaves the manifest unchanged and holds no money.
   - `assemble.test.mjs`: illustrated and drama-still cases. A valid-byte control reaches ffmpeg; a changed picture does not, and the cached segment is left untouched.
   - Both fail on the old code.
+- Code review (2026-10-07) found two blocking issues and fixed them:
+  - **A still outside `--shot` could be sent unchecked.** A clip continuing from such a still went out as `previous_frame`.
+    `clips.mjs` `uploadApproved()` now hashes every picture right before upload, against the record that names it: the start keyframe, the end frame, and the still that a clip continues from.
+  - **Assemble checked the wrong record.** It hashed the clips manifest's still record, but `layoutDrama` uses the keyframes manifest's record first.
+    Assemble now checks the record `layoutDrama` uses, and refuses when the two manifests disagree about a still.
+- Should-fix: the drama test now uses a real still (`data.visual: "still"`). The cached-segment assertion that proved nothing is gone. The guarantee is that the run is refused before ffmpeg is even looked for.
+- Nit: the picture-problem filter matches exact phrases, so a shot ID can no longer trigger it.
+- Filed as `2026-10-07-the-thumbnail-is-drawn-from-a`: the thumbnail (`render/plan.mjs`) has the same gap.
+- Not changed: a few checks are stricter than the run strictly needs, such as a kept shot's picture or an import's end frame. The reviewer called this defensible. Older manifests always carry sha256 (keyframes.mjs has written it since 5e151982, and clips.mjs for stills since d4e2b6b2), so nothing in production fails on a missing hash.

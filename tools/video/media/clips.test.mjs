@@ -1163,3 +1163,21 @@ test("a selected keyframe or end frame whose bytes changed under an unchanged, a
     assert.deepEqual(readLedger(box.workdir).entries, [], "nothing held or booked");
   }
 });
+
+test("a clip continuing from a still outside --shot is not sent with that still once its bytes changed", async () => {
+  const { box } = prepared((doc) => {
+    doc.scenes.find((scene) => scene.id === "sea-storm").data.visual = "still";
+  });
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite();
+  const first = context(box, site.fetchImpl, { extractFrame: async () => {} });
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "sea-storm"], first.ctx), EXIT.ok, first.out.stderr);
+  // A later take draws over the still's selected file; the manifests and the approval are unchanged.
+  writeFileSync(path.join(box.workdir, "keyframes", "sea-storm-1.png"), PNG("redrawn sea-storm"));
+  const second = context(box, site.fetchImpl, { extractFrame: async () => {} });
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "bird"], second.ctx), EXIT.usage);
+  assert.match(second.out.stderr, /sea-storm \(the still bird continues from\) selected picture has changed: keyframes\/sea-storm-1\.png/);
+  assert.equal(site.state.clips.filter((request) => request.shot_id === "bird").length, 0, "no paid request carries the changed still");
+  assert.ok(!site.state.uploads.some((upload) => upload.sha256 === SHA(PNG("redrawn sea-storm"))), "and the changed bytes are not uploaded");
+});
