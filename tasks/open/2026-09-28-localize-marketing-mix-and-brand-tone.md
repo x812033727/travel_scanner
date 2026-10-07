@@ -36,7 +36,7 @@ drafts and translated original Mokaair illustrations before any import.
 - [x] Add and render 24 localized image assets without overflow or overlap.
 - [x] Obtain independent editorial review of meaning, figures and navigation.
 - [x] Obtain green PR checks before merge (original content PR #907 landed).
-- [ ] Import/publish guarded locale revisions and verify live pages separately.
+- [x] Hand off guarded publication/live verification to a separate release ticket.
 
 ## Steps
 
@@ -99,3 +99,18 @@ Source hashes remain `cf9325d203eae0940db98bf6cdc8efcf691667b405a9f396e6e4f16bce
 and `1e43ef74156c751df615cf65d3da529fd50b5dae4ee83486e7f697e68116f728`.
 New correction PR, same-image Route B rehearsal, guarded publication and live
 desktop/mobile verification remain separate, unfinished stages.
+
+### Final within-cohort review, 2026-10-07
+
+The final release cohort also includes marketing-plan-small-business. A distinct
+root executor changed the four terminal labels in marketing-mix-models to that
+article's actual reviewed target titles; nothing else changed. Current mix pack
+SHA is 0624bd57bf861f86dccb29a6ae6872332700e3e8f2aef57669faacdb1353d8df.
+Brand remains 3f6791f71e70c97693d04fb6742e71a6c168d3d92fec4ed2ef4f7c90cb31f9dc.
+Final independent T1 review SHA is
+6398f3cf8d78e8a4804103447c3313ce5c599ef23d1afd8b2a86405b04e165ef.
+Use the versioned life-cohort-final-review-v2 evidence, not superseded receipts.
+The 13-case isolated same-image rehearsal is complete; the final expanded wave
+still needs merged/deployed Git freeze and a fresh post-deployment baseline.
+Publication/live verification are owned by
+2026-10-07-release-localized-travel-life-wave-20261007, still open.

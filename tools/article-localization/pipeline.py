@@ -43,6 +43,17 @@ VERIFIED_PUBLIC_SITE_LINK_LOCALES = {
     # batch020-candidate-inventory/guides-root-public-route-v2-20260923.json
     # SHA-256 2ccb48c9873e59db9a771142337b273f2ed5255e4e83f41af35b1490067a486e.
     "/guides": frozenset(LOCALES),
+    # Fresh five-locale 200, content/lang/canonical and no-redirect proof:
+    # docs/article-localization/route-verification-20261007.json, checked 2026-10-07.
+    # Original private evidence SHA-256:
+    # f8c3eceafe8518aff1f3e8a71fc5d50c67395fd88f0c4ac17763e1488f0e502d.
+    "/destinations/tokyo": frozenset(LOCALES),
+    "/destinations/osaka-kyoto": frozenset(LOCALES),
+    # Same five-locale checks on 2026-10-07, recorded in the route proof above.
+    # Additional private evidence SHA-256:
+    # a03605ec6f4329a561499132a821f273311d7606a0be6a9bf4ee6ba717c5f4e7.
+    "/destinations/seoul": frozenset(LOCALES),
+    "/destinations/jeju": frozenset(LOCALES),
 }
 AI_HERO_AUTHOR = "Mokaair · AI 生成示意圖"
 AI_HERO_LICENSE_DESCRIPTION = "AI 生成，非實拍"
@@ -517,6 +528,14 @@ def validate_fields(
             and value not in source
         ):
             errors.append(f"{pointer}: placeholder text")
+        # A zh-TW article can already cite an official Japanese source title.
+        # Preserve that title for ja; copied body prose still goes through the guard.
+        japanese_citation_title = (
+            target_locale == "ja"
+            and field["kind"] == "document"
+            and re.fullmatch(r"/document/sources/\d+/title", pointer) is not None
+            and re.search(r"[\u3040-\u30ff]", source) is not None
+        )
         if value != source:
             if field["kind"] not in {
                 "ai_hero_credit_author",
@@ -526,6 +545,7 @@ def validate_fields(
         elif (
             source_locale != target_locale
             and source_locale[:2] != target_locale[:2]
+            and not japanese_citation_title
             and (
                 len(re.findall(r"[\u3400-\u9fff\uac00-\ud7a3\u3040-\u30ff]", source))
                 >= 24

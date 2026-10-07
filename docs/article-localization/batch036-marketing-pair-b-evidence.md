@@ -96,3 +96,22 @@ Route B rehearsal, publication and live browser checks remain pending.
 - API content-pack/link tests: 12 passed, 5 skipped. Web content-block tests: 65 passed. `npm run check:tasks` and `git diff --check` passed; task checker warns about unrelated stale/overlapping tasks.
 - Original and translated diagram sheets, all SVG measurements and hero previews were reviewed locally. Public-site desktop/mobile browser verification remains pending after publication.
 - Independent read-only editorial review marked both articles GO for translation fidelity, figures, source dates, images and navigation safety. Related-reading targets without published same-locale revisions render as plain text until those destinations are released. PR CI and guarded publication remain pending.
+# Current release-cohort handoff, 2026-10-07
+
+All eight target documents were independently reread with fresh SVG/raster
+evidence. Four final marketing-mix related-reading labels now use the reviewed
+marketing-plan-small-business titles selected in the same cohort. Source/root
+metadata and all original/localized assets are unchanged.
+
+Current packs: marketing-mix-models
+`0624bd57bf861f86dccb29a6ae6872332700e3e8f2aef57669faacdb1353d8df`;
+brand-tone-vibe-marketing
+`3f6791f71e70c97693d04fb6742e71a6c168d3d92fec4ed2ef4f7c90cb31f9dc`.
+Final pair review SHA
+`6398f3cf8d78e8a4804103447c3313ce5c599ef23d1afd8b2a86405b04e165ef`;
+combined current life review v2 SHA
+`87986003cd9e266df5e569270ab3d2859f1573433d5c0f1d967c331e1969beaa`.
+Earlier receipts remain historical evidence and cannot authorize changed bytes.
+The distinct correction/exact-leaf receipts are preserved on the owner's
+persistent storage. No import, deployment or publication occurred in this step.
+Release ticket: `2026-10-07-release-localized-travel-life-wave-20261007`.
