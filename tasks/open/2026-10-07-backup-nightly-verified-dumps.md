@@ -1,14 +1,14 @@
 ---
 id: 2026-10-07-backup-nightly-verified-dumps
 title: Nightly verified PostgreSQL dumps and a config bundle on the production host
-status: open
+status: in-progress
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: claude-fable-5-1-backup
+claimed_at: 2026-10-07T01:26:45Z
 created_at: 2026-10-07T00:00:00Z
 completed_at:
-branch:
+branch: claude/auto-deploy-cloud-backup-hylcsz
 depends_on: []
 scope:
   - ops/backup

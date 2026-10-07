@@ -1,0 +1,18 @@
+# Host files that are not in git and that a rebuilt host needs. One absolute path per line;
+# a directory is taken whole; a missing path is listed in the manifest, not an error.
+# The bundle holds secrets: it is encrypted with age before it is written anywhere kept.
+/root/travel_scanner/.env
+/etc/travel-scanner
+/etc/mokaair-uploader
+/etc/nginx/sites-enabled/mokaair.com
+/etc/nginx/conf.d
+/etc/nginx/snippets
+/etc/letsencrypt
+/root/deploy-travel-scanner.sh
+/etc/systemd/system/travel-scanner-deployer.service
+/etc/systemd/system/travel-scanner-autodeploy.service
+/etc/systemd/system/travel-scanner-autodeploy.timer
+/etc/systemd/system/travel-scanner-backup.service
+/etc/systemd/system/travel-scanner-backup.timer
+/etc/systemd/system/mokaair-ai-accounts.service
+/etc/travel-scanner/rclone.conf
