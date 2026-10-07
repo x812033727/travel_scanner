@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-autodeploy-host-poller
 title: Auto deploy main from a host-side poller that runs the existing deploy script
-status: in-progress
+status: done
 priority: P1
 area: ops
 owner: claude-fable-5-1-autodeploy
 claimed_at: 2026-10-07T00:33:38Z
 created_at: 2026-10-07T00:00:00Z
-completed_at:
+completed_at: 2026-10-07T00:50:07Z
 branch: claude/auto-deploy-cloud-backup-hylcsz
 depends_on: []
 scope:
@@ -131,3 +131,7 @@ one decision line per step and ends with what it would do; `status` prints the s
   for a person instead of letting the script's fast-forward fail and pause the timer; the
   notifier refuses a non-https URL; `host-verify.sh` is copied to `/opt` by the installer so
   the verification cannot change under a deploy either.
+- Closed in the pull request with the host steps still open: installing, filling the token
+  and the first checked `tick --dry-run` are the first steps of
+  `2026-10-07-autodeploy-rollout-and-skill-docs`, which already waits for them, so they are
+  not carried twice.
