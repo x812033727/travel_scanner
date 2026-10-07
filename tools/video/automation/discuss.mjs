@@ -11,7 +11,7 @@ import path from "node:path";
 
 import { hasAnimePolicy, isLongAnime } from "../core/anime-policy.mjs";
 import { atomicWrite, docDir, readJson } from "../core/paths.mjs";
-import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
+import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
 import { JOB_GONE_KIND } from "./run-receipts.mjs";
 import { documentProblem } from "./series.mjs";
 
@@ -254,7 +254,9 @@ export function scriptDiscussionPayload(automation, job, state, video) {
  * reason; a busy service makes it wait (defer). Until 2026-10-06 every one of them, and until
  * 2026-10-07 all but the gone job, left this step as an exception every round: the run ended
  * here, before any series work or draft, a lost answer could be paid for again each round, and no
- * retry could reach the journal because no video was blocked for it.
+ * retry could reach the journal because no video was blocked for it. A lint repair of the rewrite
+ * (Automation.saveAndLint) whose answer was lost is the discussion's request too: the last good
+ * script goes back, and the video is blocked as `uncertain:writer` the same way.
  *
  * The line whose request blocked its video (recorded as `blocked_line`), and any line while the
  * video's writer job is gone, stays unanswered until the owner's retry and is sent once after it.
@@ -357,15 +359,24 @@ async function answerHeld(automation, job, state) {
       } catch (error) {
         // A STOP or a lost lease during the lint repairs (flow.mjs PROJECT_HELD, not imported here:
         // flow.mjs imports this module): the last good script goes back before the video is set
-        // aside, unless another producer holds the project now, whose files are its own.
-        if (error?.code === "video_project_held") {
+        // aside, unless another producer holds the project now, whose files are its own. A lint
+        // repair whose answer was lost (RUN_UNCERTAIN: the writer may have run, and been paid for)
+        // puts it back too, and is the discussion's own request: the video is blocked as
+        // `uncertain:writer` with the line held, and the owner's retry sends the line once more.
+        // Until 2026-10-07 it left the step every round, the revision stayed in video.json, and
+        // the video's own unit sent the same paid repair again.
+        const lost = error instanceof AutomationError && error.code === RUN_UNCERTAIN;
+        if (lost || error?.code === "video_project_held") {
           try {
             automation.restoreVideo(state, before);
           } catch (restoreError) {
             if (restoreError?.code !== "video_project_held") throw restoreError;
           }
         }
-        throw error;
+        if (!lost) throw error;
+        // Its paid answer is not settled with this unit either: on a durable run the retry takes it again from its saved run.
+        automation.runSlugs?.delete(state.slug);
+        return automation.sortFailure(state, error, { sends: `answers the owner's line on ${job.subject} once more`, line: job.message.id });
       }
       if (refused) {
         // The script goes back as it was: a discussion never leaves a broken script behind.
