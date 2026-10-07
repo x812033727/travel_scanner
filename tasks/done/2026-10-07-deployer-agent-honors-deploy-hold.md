@@ -1,20 +1,22 @@
 ---
 id: 2026-10-07-deployer-agent-honors-deploy-hold
 title: The admin deployment agent refuses to deploy while the deploy hold exists
-status: open
+status: done
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1-deployer
+claimed_at: 2026-10-07T02:12:47Z
 created_at: 2026-10-07T00:00:00Z
-completed_at:
-branch:
+completed_at: 2026-10-07T02:19:28Z
+branch: claude/auto-deploy-cloud-backup-hylcsz
 depends_on: []
 scope:
   - apps/api/deployment_agent
   - apps/api/tests/test_deployment_agent_contract.py
   - apps/api/tests/test_deployment_center.py
   - ops/deployer/README.md
+  - apps/web/lib/api.ts
+  - ops/release/README.md
 ---
 
 # The admin deployment agent refuses to deploy while the deploy hold exists
@@ -31,26 +33,26 @@ release depends on.
 
 ## Definition of done
 
-- [ ] `preflight` and `_deploy_locked` fail with a new `deployment_hold_active` code when
+- [x] `preflight` and `_deploy_locked` fail with a new `deployment_hold_active` code when
       the hold file exists, carrying the hold's first line (sanitised, 600 bytes) as the
       detail; the same for rule 1 with `deployment_staged_release_in_progress`.
-- [ ] The hold path and the staged-release glob are compiled into `AgentConfig`, not
+- [x] The hold path and the staged-release glob are compiled into `AgentConfig`, not
       accepted from a request.
-- [ ] The agent reads `hold.py`'s format by itself (it runs from `/opt`, so it cannot
+- [x] The agent reads `hold.py`'s format by itself (it runs from `/opt`, so it cannot
       import `ops/release/hold.py`); a copy of the two-line parser with a test that it
       accepts what `ops/release/test_hold.py` writes.
-- [ ] `ops/deployer/README.md` lists both refusals, and the sentence in
+- [x] `ops/deployer/README.md` lists both refusals, and the sentence in
       `ops/release/README.md` that calls this "another ticket" can be updated by whoever
       closes it (that file is in `2026-10-07-autodeploy-rollout-and-skill-docs`'s scope;
       coordinate rather than edit it here).
 
 ## Steps
 
-- [ ] Read `ops/release/README.md` for the hold format and rule 1.
-- [ ] Add the two checks and the failure codes; the web admin page maps failure codes to
+- [x] Read `ops/release/README.md` for the hold format and rule 1.
+- [x] Add the two checks and the failure codes; the web admin page maps failure codes to
       copy, so check `apps/web` for the code table and add the two strings there in a
       follow-up if it is not in this scope.
-- [ ] Tests in `apps/api/tests/test_deployment_agent_contract.py` and `test_deployment_center.py` (the fake runner lives there).
+- [x] Tests in `apps/api/tests/test_deployment_agent_contract.py` and `test_deployment_center.py` (the fake runner lives there).
 
 ## How to verify
 
@@ -65,3 +67,12 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
 - The agent's release layout (`/srv/travel-scanner`, project `travel-scanner`, only `api`
   and `web`) still differs from the script's; honouring the hold does not make the two
   interchangeable. Say so in the README.
+- 2026-10-07 (claude-fable-5-1-deployer): done. `deployment_agent/release_guard.py` reads the
+  hold's two lines on its own and matches rule 1 the way the script does (substring checks on
+  `state.json`, 24-hour window, `mokaair-*` directories only); the executor's `preflight`
+  gains a `release_guard` check and `_deploy_locked` fails before the build with
+  `deployment_hold_active` or `deployment_staged_release_in_progress`. The hold test writes
+  the file through `ops/release/hold.py` itself. Scope widened to `apps/web/lib/api.ts` for the
+  two failure-code strings (lint and typecheck pass) and to `ops/release/README.md` for the
+  bullet that called this "another ticket". The README also says why the agent is still not
+  interchangeable with the script (its own release layout and service list).

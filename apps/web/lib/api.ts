@@ -91,6 +91,8 @@ const CODE_MESSAGES: Record<string, string> = {
   deployment_in_progress: "目前已有部署正在執行",
   deployment_cooldown: "前一次部署剛完成，請稍候五分鐘",
   deployment_ci_not_green: "最新 main 尚未通過 CI",
+  deployment_hold_active: "主機上有部署暫停檔，另一個發布正在進行",
+  deployment_staged_release_in_progress: "主機上有尚未啟用的分階段發布，請先處理它",
   deployment_target_changed: "main 已更新，請重新檢查後再部署",
   deployment_already_current: "目前已是最新綠燈版本",
   deployment_confirmation_invalid: "部署確認文字不正確",

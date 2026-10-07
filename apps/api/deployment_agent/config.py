@@ -18,6 +18,10 @@ class AgentConfig:
     current_path: Path = Path("/srv/travel-scanner/current")
     backup_path: Path = Path("/var/backups/travel-scanner")
     runtime_env_path: Path = Path("/etc/travel-scanner/runtime.env")
+    # The deploy script's two "another release is in progress" signals (ops/release/README.md);
+    # compiled here like every other path, never taken from a request.
+    hold_path: Path = Path("/root/travel-scanner-deploy.hold")
+    staged_releases_root: Path = Path("/root")
     repo_url: str = "https://github.com/x812033727/travel_scanner.git"
     github_repo: str = "x812033727/travel_scanner"
     branch: str = "main"

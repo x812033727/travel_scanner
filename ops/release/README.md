@@ -108,6 +108,8 @@ python3 ops/release/hold.py clear   /root/mokaair-x-<sha12> <sha40>
 - 主機腳本 `/root/deploy-travel-scanner.sh` 不在 git 裡（加防護前的版本在 `/root/deploy-travel-scanner.sh.bak-20260914-hold`）。
   暫停檔的路徑或格式要改，主機腳本得同步改，而改主機腳本需要站主同意。
 - 後台部署中心的主機代理（`apps/api/deployment_agent`、`ops/deployer`，預設關閉）是第四條部署路徑，
-  啟用前也應該遵守同一個暫停檔；那是 `tasks/open/2026-10-07-deployer-agent-honors-deploy-hold.md`。
+  自 2026-10-07 起也認同一個暫停檔與規則 1（`deployment_agent/release_guard.py`，拒絕碼
+  `deployment_hold_active`、`deployment_staged_release_in_progress`）；它的 release 佈局仍與一般部署腳本不同，
+  見 `ops/deployer/README.md`。
 - 自動部署 timer 自己的暫停檔 `/root/travel-scanner-autodeploy.paused`（自動部署失敗後寫下）只擋 timer，
   不擋一般部署腳本與分段發布；規則與格式在 `ops/autodeploy/README.md`。

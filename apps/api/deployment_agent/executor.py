@@ -13,6 +13,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 from deployment_agent.config import AgentConfig
+from deployment_agent.release_guard import release_in_progress
 from deployment_agent.security import sanitize
 from deployment_agent.store import AgentStore, now_iso
 
@@ -158,6 +159,11 @@ class DeploymentExecutor:
                 return status, str(run.get("html_url") or "") or None
         return "missing", None
 
+    def _release_guard(self) -> tuple[str, str] | None:
+        """The deploy hold or a prepared-but-not-activated staged release, as the deploy
+        script sees them: ``(failure_code, reason)`` while either holds."""
+        return release_in_progress(self.config.hold_path, self.config.staged_releases_root)
+
     def _health(self, url: str) -> bool:
         try:
             with urlopen(url, timeout=5) as response:
@@ -277,6 +283,14 @@ class DeploymentExecutor:
             )
         except CommandError as exc:
             checks.append({"name": "github_ci", "status": "failed", "detail": sanitize(str(exc))})
+        guard = self._release_guard()
+        checks.append(
+            {
+                "name": "release_guard",
+                "status": "failed" if guard else "ok",
+                "detail": guard[1] if guard else "沒有部署暫停檔，也沒有尚未啟用的分階段發布",
+            }
+        )
         checks.extend(self.overview().get("checks", []) if target else [])
         return {
             "ok": all(item["status"] != "failed" for item in checks),
@@ -821,6 +835,10 @@ class DeploymentExecutor:
                     "代理重啟後已確認部署版本健康",
                 )
                 return
+            guard = self._release_guard()
+            if guard:
+                failure_code, reason = guard
+                raise CommandError(reason)
             self.store.update(job_id, target_commit_subject=subject, ci_url=ci_url)
             release = self._release(target)
             failure_code = "deployment_build_failed"
