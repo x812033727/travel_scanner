@@ -158,10 +158,16 @@ third PR/head and its actual external compiler/installation evidence. Original
 must stay intact. The narrow release tickets and this global task remain open.
 
 Local scoped checks pass. The complete Windows tools run exited1 with existing
-platform issues and newly filed project-lease/stock-path follow-ups. A transient
-TTS STOP rename failed in the broad run but passed alone; its diagnostic follow-up
-is explicit. The stuck automation test child alone was verified and stopped;
-no provider process was touched. Exact final-head Linux CI remains required.
+platform issues and a newly filed project-lease test-import follow-up. The stock
+path assertion and Windows speech-journal rename are already tracked by
+`2026-10-07-accept-windows-separators-in-stock-fetch` and
+`2026-10-07-preserve-speech-journal-writes-through-windows` in open PR #1359,
+verified at head `908ca43e067a8b0238c58069dac932be65bcdb50`. The two duplicate
+unpublished tickets were removed after preserving their original evidence.
+The TTS STOP rename failed once in this broad run but passed alone; this does
+not establish a production cause or turn the broad run into a passing result.
+The stuck automation test child alone was verified and stopped; no provider
+process was touched. Exact final-head Linux CI remains required.
 
 Release this coverage-only scope when waiting for exact owner deployment choice.
 Continue next-wave source audits externally without adding them to the fixed14
