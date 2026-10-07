@@ -22,13 +22,15 @@ from __future__ import annotations
 import json
 import time
 from datetime import UTC, datetime
+from fnmatch import fnmatchcase
 from pathlib import Path
 
 from deployment_agent.security import sanitize
 
 HOLD_FIRST_LINE_LIMIT = 600  # bytes; what the deploy script prints
 STAGED_RELEASE_WINDOW_SECONDS = 24 * 60 * 60
-STAGED_RELEASE_STATE_GLOB = "mokaair-*/state.json"
+# The script's ``/root/mokaair-*/state.json``: the release directories, each with its state file.
+STAGED_RELEASE_DIR_PATTERN = "mokaair-*"
 
 HOLD_ACTIVE = "deployment_hold_active"
 STAGED_RELEASE_IN_PROGRESS = "deployment_staged_release_in_progress"
@@ -79,20 +81,47 @@ def staged_release_reason(
     now: float | None = None,
     window_seconds: int = STAGED_RELEASE_WINDOW_SECONDS,
 ) -> str | None:
-    """Rule 1 of the deploy script: a release prepared but not activated in the last 24 h."""
+    """Rule 1 of the deploy script: a release prepared but not activated in the last 24 h.
+
+    Fails closed like the hold: a root that does not exist holds no release, but one that
+    cannot be listed, or a release whose recent ``state.json`` cannot be read, is reported as
+    a possible staged release, because the agent cannot show that none is in progress.
+    (``Path.glob`` would return nothing for an unreadable root, which reads as "none".)
+    """
     current = time.time() if now is None else now
     try:
-        candidates = sorted(root.glob(STAGED_RELEASE_STATE_GLOB))
-    except OSError:
+        entries = sorted(root.iterdir())
+    except FileNotFoundError:
         return None
-    for state in candidates:
+    except OSError as exc:
+        return (
+            f"could not list {sanitize(str(root), 120)} ({exc.__class__.__name__}); "
+            "cannot tell whether a staged release is in progress"
+        )
+    for directory in entries:
+        if not fnmatchcase(directory.name, STAGED_RELEASE_DIR_PATTERN):
+            continue
+        state = directory / "state.json"
         try:
             modified = state.stat().st_mtime
-            if current - modified > window_seconds:
-                continue
-            text = state.read_text(encoding="utf-8", errors="replace")
-        except OSError:
+        except (FileNotFoundError, NotADirectoryError):
             continue
+        except OSError as exc:
+            return (
+                f"could not check {sanitize(directory.name, 120)}/state.json "
+                f"({exc.__class__.__name__}); cannot tell whether it is prepared but not activated"
+            )
+        if current - modified > window_seconds:
+            continue
+        try:
+            text = state.read_text(encoding="utf-8", errors="replace")
+        except FileNotFoundError:
+            continue
+        except OSError as exc:
+            return (
+                f"could not read {sanitize(directory.name, 120)}/state.json "
+                f"({exc.__class__.__name__}); cannot tell whether it is prepared but not activated"
+            )
         if '"built_at"' in text and '"activated_at"' not in text and '"failed_at"' not in text:
             stamp = datetime.fromtimestamp(modified, tz=UTC).replace(microsecond=0).isoformat()
             return (

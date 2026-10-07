@@ -1,14 +1,14 @@
 ---
 id: 2026-10-07-deployment-agent-an-unreadable-staged-release
 title: Deployment agent: an unreadable staged-release root reads as no staged release
-status: open
+status: in-progress
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-staged-guard
+claimed_at: 2026-10-07T04:19:11Z
 created_at: 2026-10-07T04:01:01Z
 completed_at:
-branch:
+branch: claude/happy-carson-c1hy91
 depends_on: []
 scope:
   - apps/api/deployment_agent/release_guard.py
