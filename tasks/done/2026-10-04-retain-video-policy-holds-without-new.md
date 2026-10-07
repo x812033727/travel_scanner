@@ -1,13 +1,13 @@
 ---
 id: 2026-10-04-retain-video-policy-holds-without-new
 title: Retain deterministic video policy holds without creating new writer jobs
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-policy-holds
 claimed_at: 2026-10-07T01:03:55Z
 created_at: 2026-10-04T17:53:20Z
-completed_at:
+completed_at: 2026-10-07T01:05:23Z
 branch: claude/sharp-bardeen-ob6fn9
 depends_on:
   - 2026-10-03-video-worker-narration-takes-made-stale
@@ -42,31 +42,31 @@ translation checkpoint adoption and atomic producer exclusion.
 
 ## Definition of done
 
-- [ ] A deterministic drama-disabled writer result persists its original
+- [x] A deterministic drama-disabled writer result persists its original
       receipt, request_key, input/source identities and exact error across
       repeated rounds and process restarts. Unchanged policy causes zero new
       job POSTs and zero model dispatches.
-- [ ] The affected project reports its actual policy hold to the backend and
+- [x] The affected project reports its actual policy hold to the backend and
       is skipped until an authorized resume is validated. Failure to report
       cannot trigger a new writer job or starve other eligible videos.
-- [ ] Resume checks fresh source, owner/retry acknowledgement, selected policy
+- [x] Resume checks fresh source, owner/retry acknowledgement, selected policy
       and STOP/drop state; merely having an old retry or changing provider/model
       cannot bypass a still-disabled feature. Preserve previous receipts by
       archiving rather than deleting them when a resume is actually allowed.
-- [ ] Successful/pending/uncertain paid results retain their existing recovery
+- [x] Successful/pending/uncertain paid results retain their existing recovery
       and adoption contracts. No bulk conversion of unrelated failures to a
       retryable state and no fake source, approval or listening acceptance.
-- [ ] Keep drama, Shorts, uploader, budgets and provider settings unchanged.
+- [x] Keep drama, Shorts, uploader, budgets and provider settings unchanged.
       Validate and independently review before any production use.
 
 ## Steps
 
-- [ ] Recheck official main, branches, worktrees and active claims. Obtain the
+- [x] Recheck official main, branches, worktrees and active claims. Obtain the
       dependent flow owners' handoff before changing their scope; do not force
       claim, release their tasks or edit the frozen PR1210 recovery runtime.
-- [ ] Distinguish settled policy holds from a failure that permits a genuinely
+- [x] Distinguish settled policy holds from a failure that permits a genuinely
       authorized new operation. Keep exact negative receipts durably bound.
-- [ ] Integrate a project-local hold/report/resume path and test it through
+- [x] Integrate a project-local hold/report/resume path and test it through
       the real native Automation/client, without live paid endpoints.
 
 ## How to verify
@@ -116,3 +116,28 @@ Temporary result mokaair-drama-off-writer-client-poc-20261004-result.json,
 SHA-256 b0328276f972bfa194297d94c1808c2e8e2a1d862a04bb9d19bf2b0345ac64ee;
 diagnostic script SHA-256
 26508f27d2a78ca48de6efbe07694ad16f27feaf5cf2c40da9e166df787fb9d8.
+
+### 2026-10-07 結案（claude-opus-5-5-policy-holds）
+
+Implemented by PR #1274 (`af07dbc0`, 2026-10-05, "recover news/video stall handling"), which
+never closed this ticket. No new code was needed; each box maps to a test on main:
+
+- Receipt kept across rounds and restart, zero new POSTs: `run-receipts.mjs` `hold()` /
+  `policy_rejection`, `removeFailed()` refuses a policy hold; client.test "a settled policy
+  refusal survives repeated rounds and client restarts without another job POST" (both the
+  failed-job and direct-409 shapes); automation.test "the native worker retains a disabled
+  writer receipt, reports its hold and never dispatches or buys a second job across restart".
+- Project-local hold, report failure does not buy a job or starve others: automation.test
+  "a policy hold survives failed reporting and restart, while another project advances…".
+- Resume guards (new owner request id, fresh enabled route or corrected format, STOP, source
+  drift, drop, format mismatch; archive not delete): client.test "policy retry requires a fresh
+  enabled route…", "a verified undispatched slides repair may resume…", "a mixed legacy set of
+  policy holds cannot be partly archived…"; automation.test "policy retries respect project
+  STOP, source drift and owner drops…", "an authorized policy retry sends the current source
+  format once…"; run-receipts.test "settled policy refusals cannot be deleted or archived
+  without fresh validated owner authority".
+- Successful/pending/uncertain contracts unchanged: the rest of the three suites.
+
+Run on main `b884e22e`: `node --test` over run-receipts, client and automation tests, 214 pass,
+0 fail. Not verified from here: production `failed_job_count` no longer growing for
+`video_ai_drama_disabled` writer jobs since #1274 was deployed (needs host access).
