@@ -1,14 +1,14 @@
 ---
 id: 2026-10-06-a-pending-discussion-job-and-the
 title: A pending discussion job and the bookkeeping's site calls do not hold their video
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-happy-carson
+claimed_at: 2026-10-07T14:59:52Z
 created_at: 2026-10-06T13:39:27Z
 completed_at:
-branch:
+branch: claude/happy-carson-c1hy91
 depends_on:
   - 2026-10-06-a-failing-video-is-deferred
 scope:
