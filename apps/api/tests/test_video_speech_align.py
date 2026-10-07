@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import base64
 from datetime import timedelta
+from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
 from uuid import uuid4
@@ -268,6 +269,11 @@ def test_the_real_sdk_takes_the_config_and_knows_every_code_the_rules_name() -> 
     real = pytest.importorskip("azure.cognitiveservices.speech")
     config = align.speech_config(real, "eastasia", "k")
     assert config.get_property_by_name("SpeechSynthesis_MaxRetryTimes") == "0"
+    # Any name reads back as set: the core library itself must know this one, so an SDK bump
+    # that renames it fails here instead of sending the SSML twice again.
+    cores = list(Path(real.__file__).parent.glob("*Speech.core*"))
+    assert cores, "the SDK's core library"
+    assert any(b"SpeechSynthesis_MaxRetryTimes" in core.read_bytes() for core in cores)
     assert config.get_property(real.PropertyId.SpeechServiceResponse_RequestWordBoundary) == "true"
     named = {*align._REFUSALS, *align._UPGRADE_REFUSALS, "ConnectionFailure"}
     assert named <= set(real.CancellationErrorCode.__members__)
@@ -321,6 +327,8 @@ def test_a_cancelled_synthesis_is_the_upstream_error_the_speech_route_knows(
         ("503", 503, UPGRADE.format("Service unavailable (503)")),
         ("service", 502, UPGRADE.format("Internal service error (500)")),
         ("conn", 502, UPGRADE.format("Unspecified connection error (405)")),
+        # A 408 at the upgrade is ServiceTimeout: the SSML had not gone out either.
+        ("504", 502, UPGRADE.format("Timeout (408)")),
         ("conn", 502, NEVER_OPENED),
     ):
         _cancelled(monkeypatch, code, said)
@@ -342,10 +350,16 @@ def test_a_cancelled_synthesis_that_may_have_run_is_lost(monkeypatch: pytest.Mon
         ("conn", CLOSED_MIDWAY),
         ("conn", DROPPED),
         ("conn", "Failure while sending a frame over the WebSocket connection."),
-        # A service error or a service down once the socket was open: the SSML had gone out.
+        # A service error once the socket was open: the SSML had gone out.
         ("service", CLOSED.format(1011, "Sending", 0)),
         ("service", CLOSED.format(1011, "TurnStarted", 0)),
-        ("503", CLOSED.format(1012, "TurnStarted", 0)),
+        # Constructed: SDK 1.52 gives ServiceUnavailable only at the upgrade.
+        ("503", "Connection was closed by the remote host. Error code: 4503. USP state: Sending."),
+        # A refusal's code once the turn had started, or metadata had come: a boundary event can
+        # reach its callback after the result, so the SDK's state decides.
+        ("429", CLOSED.format(4429, "TurnStarted", 0)),
+        ("429", CLOSED.format(4429, "ReceivingData", 0)),
+        ("bad", CLOSED.format(1007, "ReceivingData", 0)),
         ("runtime", "Runtime error: the synthesizer failed"),
         ("a code this module does not know", "?"),
     ):

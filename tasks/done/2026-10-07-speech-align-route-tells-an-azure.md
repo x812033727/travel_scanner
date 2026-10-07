@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-speech-align-route-tells-an-azure
 title: Speech align route tells an Azure synthesis lost after sending apart from a provider failure
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-align-lost
 claimed_at: 2026-10-07T07:28:49Z
 created_at: 2026-10-07T04:32:22Z
-completed_at:
+completed_at: 2026-10-07T09:13:05Z
 branch:
 depends_on: []
 scope:
@@ -77,23 +77,34 @@ From `apps/api`: `uv run ruff check .`, `uv run mypy app`, `uv run mypy tests` a
   `CancellationErrorCode`, what it reports in practice, and how `align.py` `_cancellation` reads
   it. Measured with the real SDK against a local stand-in for the service's websocket, during
   the review below:
-  - The SDK retries a synthesis cancelled before any audio by itself
-    (`SpeechSynthesis_MaxRetryTimes`, on by default) and reports only the last try. So a
-    reconnect that failed or was refused after a first try had sent the SSML read as "never
-    opened" or as a 429 or 503, and one call could send the SSML twice. `speech_config` now sets
-    it to 0: each cancellation describes the one try, and the video tool's own settled-only
-    resend decides what is sent again.
+  - The SDK retries most syntheses cancelled before any audio by itself
+    (`SpeechSynthesis_MaxRetryTimes`, on by default): a drop, a 1011 close, a refused upgrade,
+    but not a 401 or a 4429 close. It reports only the last try. So a reconnect that failed or
+    was refused after a first try had sent the SSML read as "never opened" or as a 429 or 503,
+    and one call could send the SSML twice. `speech_config` now sets it to 0: each cancellation
+    describes the one try, and the video tool's own settled-only resend decides what is sent
+    again. The cost: a one-off close or drop after the SSML went out and before any audio, which
+    the SDK used to recover from inside the call (sending the SSML twice), is now lost and held
+    for the owner.
   - The SDK takes the code from the websocket's close code alone, whatever had happened by then.
     A 1011 after 19,200 bytes of audio is `ServiceError`, and a 4429 after audio is
     `TooManyRequests`. A cancelled result keeps the audio that came first, and has no bytes at
-    all when none came. So a result with audio or a boundary event is lost whatever its code.
-  - Settled when nothing had arrived: `AuthenticationFailure` (401), `Forbidden` (403),
-    `BadRequest` (400) and `TooManyRequests` (429). These are the service's refusals before it
-    synthesizes, and a 4429 is its concurrency throttle. Nothing documents that a refusal is
-    billed.
-  - `ServiceUnavailable` (503) and `ServiceError` (502) are settled only when the websocket's
-    upgrade was refused ("WebSocket upgrade failed: ..."), before any SSML went out. A socket
-    the service closed after taking the SSML is lost, even before the turn started.
+    all when none came: the 46-byte RIFF header is added only once PCM arrives.
+  - So a cancellation is lost whatever its code when it carries audio or a boundary event, or
+    when its text's `USP state` is past `Sending` (`TurnStarted`, `ReceivingData`). The SDK
+    fires boundary events on its own thread, sometimes after `.get()` returns: a boundary and
+    then a 4429 close was settled about one run in five until the state was read too.
+  - A refused upgrade ("WebSocket upgrade failed: ...") is settled whatever its code, since the
+    SSML goes out only once the websocket is open. A 408 there is `ServiceTimeout`, settled as
+    502.
+  - Settled otherwise, while the state is still `Sending`: `AuthenticationFailure` (401),
+    `Forbidden` (403), `BadRequest` (400) and `TooManyRequests` (429). These are the service's
+    refusals before it synthesizes. A 4429 or 1007 close at `Sending` comes after the SSML went
+    out but before the turn started, which is the service's throttle or its refusal of the body.
+    Nothing documents that a refusal is billed.
+  - `ServiceUnavailable` (503) and `ServiceError` (502) are settled only at the upgrade. SDK 1.52
+    gives `ServiceUnavailable` only there, and `ServiceError` also for a 1011 or 1013 close,
+    which is lost.
   - `ConnectionFailure` is settled only when the text says the socket never opened
     (`WS_OPEN_ERROR...`, "no connection to the remote host", or a refused upgrade). A drop after
     it opened ("WebSocket operation failed ... WS_ERROR_UNDERLYING_IO_ERROR", a 1006 close, a
@@ -125,9 +136,11 @@ From `apps/api`: `uv run ruff check .`, `uv run mypy app`, `uv run mypy tests` a
     `ServiceUnavailable` whatever their text; ignoring the audio or the boundaries; reading only
     200 characters; leaving the retry on; releasing the characters on a lost answer; answering it
     as `upstream_failed`; dropping its handler.
-  - End to end, the real SDK and `synthesize_with_boundaries_blocking` ran against the stand-in.
-    Every settled case had sent no SSML frame, every lost case had sent one, and each made one
-    connection.
+  - End to end, the real SDK and `synthesize_with_boundaries_blocking` ran against the stand-in,
+    one connection each. Settled with no SSML frame sent: upgrades refused with 401, 408, 429,
+    500 and 503 (a one-off 408 too). Settled after the SSML went out, at `Sending`: a 4429 close.
+    Lost: a 4429 after turn.start, an empty audio frame or a boundary (12 of 12 for the last),
+    and a 1011 at `Sending`. A success returns its audio and boundaries.
 - Review (2026-10-07, three lenses, each finding verified):
   - Blocking: `ServiceError` was settled although the SDK reports it for a 1011 after audio.
   - Should-fix: the SDK's own retry (above).
@@ -136,3 +149,19 @@ From `apps/api`: `uv run ruff check .`, `uv run mypy app`, `uv run mypy tests` a
     under other codes (only safe with the retry off, and the trade the task asks for); a 4429 or
     1007 after audio in practice (covered anyway by the audio rule); a missing SDK after the
     reservation (the package is in the lock and the image).
+- Check of the review fixes (2026-10-07, two lenses, real SDK through the real route against the
+  stand-in). It confirmed the three findings closed: the drop-then-refused-reconnect case is one
+  connection and 504 lost, a 1011 after audio is lost, and audio makes any code lost. A
+  success's output is byte for byte unchanged with the retry off. It found, and this round
+  fixed:
+  - Should-fix: a boundary event can reach its callback after `.get()` returns, so a
+    boundary-then-4429 could still settle. Now the text's `USP state` decides as well.
+  - Should-fix: with the retry off, a one-off 408 at the upgrade became lost, though no SSML went
+    out. A refused upgrade is now settled whatever its code.
+  - Nits: the cost of turning the retry off is written down. The constructed 503 row is marked as
+    constructed, and the end-to-end note names what ran. The real-SDK test now also checks that
+    the core library knows `SpeechSynthesis_MaxRetryTimes`, since any name reads back as set.
+  - Mutations for this round (no started rule; a refused upgrade settled only for listed codes;
+    the started rule matching `Sending`; a misspelt property name) each fail a test.
+  - Filed: `2026-10-07-a-successful-aligned-azure-synthesis-can`. The success path can miss
+    boundaries the same way, and that is older than this task.
