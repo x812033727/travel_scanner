@@ -1970,6 +1970,60 @@ PASS is DURATION_ONLY for the eleven rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1361 storyboard follow-up increment: 2 files (2026-10-07)
+
+Reviewer: `claude-pr-review-happy-carson`, the reviewer of the "PR #1361 merge with #1355 and storyboard increment" section above. It wrote none of the branch's commits, judged each bound diff on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-happy-carson`, the branch's author. The change is `1bf3bf22` ("fix(video): a storyboard shot still waiting is never taken for kept, and the spec says what goes up"), written on this branch under the ticket `2026-10-06-a-storyboard-with-many-kept-pictures`. Its git author is the repository's `Claude <noreply@anthropic.com>` identity. Scope: DURATION_ONLY for the two changed bindings below, on claude/happy-carson-c1hy91 (draft PR #1361) at `1bf3bf22`. That is one linear commit on the previous increment's receipt commit `2329603d`, with no merge, still on origin/main `ddbf0e4b` (#1355).
+
+Baseline: `2329603d`, 2 of 2 match. `1bf3bf22` does not touch docs/videos/long-form/ or tools/video/long-form/. At `2329603d`, review.md (715,633 bytes) hashes to `bfd2c87164636da6872fe160867a376c8a7c3837eb0bf7f7a7c0eab6298850e6`, the report_sha256 that review.json held before this increment. At `2329603d`, `git show <path> | sha256sum` gives exactly the values the section above bound in review.json and the table: tools/video/review/sync.mjs (76,820 bytes) `7952bbf6bf9f8f9664e243568d0898da4c445412d685ac3613333adc0bcf5518` and tools/video/review/sync.test.mjs (134,893) `daecf4c26e4f1a9876f51aed63414811d4aefa4b18021206690ee24c4620e914`. So each file's diff in `1bf3bf22` is exactly the unreviewed change. `git diff --name-only 2329603d..HEAD` lists four paths. Intersected with the 108 paths of REVIEW_FILES, only these two are bound. docs/videos/ILLUSTRATED.md (+10) and tasks/done/2026-10-06-a-storyboard-with-many-kept-pictures.md (+7) are not in REVIEW_FILES. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these two and nothing else, so the other 106 bindings equal their working-tree bytes. The working tree equals the head for both files. Neither file holds a CR byte or a BOM, and each ends in LF. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+What the change is. In `withKeptRemarks`, a storyboard shot counts as kept only when it is `accepted: true` and its `needs_review` is not `true`. A shot that says both is now treated as waiting, so it goes up as it came, with its verdict whole. `fitPayload` adds the "remarks were left out" summary line only when the new `saidOfKept` finds a remark on a kept picture, either on `payload.accepted` or on a kept shot's own verdict. This section asks only whether either change reaches a length rule.
+
+Findings, tools/video/review/sync.mjs (+13/−2, 76,820 → 77,605 bytes). The hunks are lines 197–199 (`keptShot`), 224–232 (`saidOfKept`) and 268 (`leftOut` in `fitPayload`). The file's duration code is outside them:
+
+- the `animeBodyDurationProblems` and `animeRuntimeProof` import (21);
+- `payloadLimit`'s `validateAnimeRuntime(payload.runtime_spec)` (172);
+- the audio review's body-duration problems and `duration_seconds` (637–658);
+- the final cut's runtime proof and `duration_seconds` (698–747, 893);
+- the storyboard's per-shot `seconds` (1015, 1042).
+
+The file's lines naming `target_minutes`, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, `runtime_spec`, `action_seconds`, a duration helper, duration or minutes number 16 at both revisions. No changed line names one of them, seconds, a frame, `fps`, a floor or `total_frames`.
+
+- `keptShot` can only exclude more shots than before. An excluded shot is returned untouched, so its `seconds`, verdict and every other field go up as they came. Its `accepted` list entry is no longer dropped when no remarks are left. `storyboardSubmission` sets `needs_review: !accepted && …` (line 1044), so a board that review-push builds never carries a shot that says both, and its payload is the same as at `2329603d`. The bound settings.py's `storyboard_check_passed` refuses any shot with a truthy `needs_review` whatever else the shot says, so no automatic approval is decided differently.
+- `saidOfKept` reads only `payload.accepted[].problems` and kept shots' `judge.problems`, through the unchanged `keptRemarks`. It only chooses whether the storyboard summary gets its one fixed line. The final cut and audio reviews never reach it, because `leftOut` still requires the storyboard gate. The storyboard summary names no length either way.
+
+Findings, tools/video/review/sync.test.mjs (+11/−0, 134,893 → 135,584 bytes; 54 top-level tests at both revisions, 69 by `node --test`). The 11 lines are added inside the existing test "a payload past the site's limit is never posted…", and they make two assertions. A shot with `accepted: true` and `needs_review: true`, in a board past the budget, goes up unchanged. A board of 200 kept shots with no remarks, pushed past the budget by 1,100-character prompts, reaches zero lines while its summary stays "s". Their numbers are a shot count and a prompt length used to size the payload. No length rule is named, and no added line reads or sets process.env. The file's opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 28) is unchanged, and its duration-term lines number 30 at both revisions.
+
+Across both diffs there is no change to any of these: the 600/780-second targets, the 480-second / 14,400-frame measured floors, the eight-minute floor on every video but a drama, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened. A case-insensitive scan of the commit's changed lines in both files found nothing. It looked for minute, MIN_EPISODE, 480, 14400, 14,400, 600, 780, runtime, target_, action_seconds, covered, source_hash, plans.json, policy.json, floor, total_frames, duration, seconds, frame and fps.
+
+Unbound context, not reviewed. docs/videos/ILLUSTRATED.md (+10) describes the storyboard payload as it is now sent, and the done ticket gains seven lines of notes. Neither is in REVIEW_FILES.
+
+Ran (Node v22.22.0, Linux, in the repository checkout at `1bf3bf22`, offline, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing (`git show 2329603d:<path> | sha256sum` against review.json at `2329603d`, and `sha256sum <path>`);
+- the report hash at `2329603d`;
+- the CR, BOM and final-newline checks;
+- the intersection of `git diff --name-only 2329603d..HEAD` with REVIEW_FILES;
+- a reading of `git diff 2329603d..HEAD -- tools/video/review/sync.mjs tools/video/review/sync.test.mjs` in full, and of `storyboardSubmission`'s `needs_review` line;
+- the duration-term counts and the scan.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` with the two stale bindings above and exited 1. On the branch's bytes, each of these exited 0:
+
+- `node --test tools/video/review/sync.test.mjs`, 69 of 69;
+- `node --test tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs tools/video/qa/duration.test.mjs tools/video/core/lint.test.mjs`, 62 of 62.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the follow-up itself. That covers treating a shot that says both as waiting, the `saidOfKept` condition, and the ILLUSTRATED.md wording.
+- docs/videos/ILLUSTRATED.md and the ticket are unbound and were not reviewed.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 106 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2076,8 +2130,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/qa/cli.mjs` | `6920a7948db405bd084e010db51e237fb2b4a51860e663743fbf11de5bc86b91` |
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
 | `tools/video/qa/qa.test.mjs` | `9a5430e90e3d6234198024e8bf8801d34dad0fabd3f9a6e2ceaf5e8df8a9af44` |
-| `tools/video/review/sync.mjs` | `7952bbf6bf9f8f9664e243568d0898da4c445412d685ac3613333adc0bcf5518` |
-| `tools/video/review/sync.test.mjs` | `daecf4c26e4f1a9876f51aed63414811d4aefa4b18021206690ee24c4620e914` |
+| `tools/video/review/sync.mjs` | `bb2c22b62b8ed451aad189228eba00e4ddf1b98b59783f9b2d2e5dc72f5159d2` |
+| `tools/video/review/sync.test.mjs` | `488fa8177369d9f0b0ff4dfde3cd6dc3c0dce51ba2149b4eb399b688abf14423` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
