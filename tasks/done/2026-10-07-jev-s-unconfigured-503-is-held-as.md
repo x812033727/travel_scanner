@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-jev-s-unconfigured-503-is-held-as
 title: Jev's unconfigured 503 provider_unavailable is held as an uncertain paid answer, though nothing ran
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-jev-unset
 claimed_at: 2026-10-07T10:59:59Z
 created_at: 2026-10-07T11:05:00Z
-completed_at:
+completed_at: 2026-10-07T11:27:02Z
 branch:
 depends_on: []
 scope:
@@ -78,3 +78,15 @@ The video tool's clients treat it as a paid 5xx they cannot settle:
   The lost tables gain the code at a 500, which stays uncertain (and passes on both). Accepting
   the code at any status fails a test in each client. `tts/speech-journal.test.mjs` joined the
   scope for its row.
+- Review (2026-10-07, findings verified): no defect.
+  - The API claim holds. On every route the clients call, paid or through the journal, the only
+    503 `provider_unavailable` is `jev_client`, before any Jev call. `automation/run` and the
+    speech routes never answer it, and the web forwarder never makes it.
+  - Each caller now reacts as follows. The narration's check-audio blocks for the owner, and a
+    retry after the key is set needs no `forget`. A dub check gives the locale up, as
+    `video_speech_not_configured` does (makeDub's documented rule). The Shorts lab waits for the
+    owner without counting. The outline judge and the final gate defer and then block, as before.
+  - Refuted: that the outline should go up for the owner with no pick instead of stopping. That
+    is a choice between acceptable behaviours, and the old path blocked the same way.
+  - Filed, a wording nit: `2026-10-07-the-final-gate-s-owner-exit-names` (the final gate's owner
+    exit says "the video tool token").
