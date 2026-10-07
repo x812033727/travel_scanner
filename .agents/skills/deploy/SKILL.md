@@ -18,8 +18,9 @@ metadata:
 | 暫停檔與鎖 | `/root/travel-scanner-deploy.hold`、`/var/lock/travel-scanner-deploy.lock` |
 | 分階段發布的目錄 | `/root/mokaair-*`（`state.json` 或 `host-state/`、`publication-*.json`、各階段 log） |
 | 備份 | 腳本只在 incoming commit 動到 migrations 時做 `pg_dump`，放 `/root/travel_scanner_predeploy_<ts>.dump`；nginx 備份在 `/root/nginx-backups/` |
-| 三條部署路徑 | 一次性腳本（平常用這條）；Codex 的分階段驅動（prepare → CI → activate → 內容階段）；`ops/deployer/` 的後台部署中心（預設關，**還不認暫停檔**） |
-| 兩種「hold」 | 主機的暫停檔擋的是**部署**（`hold.py`、`--ignore-hold`、exit 3）；repo 裡的 `apps/api/app/guides/publish_holds.json` 擋的是**發布**特定 slug（沒有旗標可繞，要刪條目）。別混用 |
+| 四條部署路徑 | 一次性腳本（平常用這條）；**自動部署 timer**（`ops/autodeploy/`，每 5 分鐘一輪，main 綠了就跑同一支一次性腳本）；Codex 的分階段驅動（prepare → CI → activate → 內容階段）；`ops/deployer/` 的後台部署中心（預設關，**還不認暫停檔**） |
+| 自動部署的檔案 | 狀態 `/var/lib/travel-scanner-autodeploy/state.json`（最後一輪的決定、最後一次自動部署的 SHA 與驗證結果）；暫停檔 `/root/travel-scanner-autodeploy.paused`（自動部署失敗、腳本已回滾，兩行格式同部署暫停檔）；log `/root/deploy-logs/auto-<ts>.log` 與 `auto-verify-<ts>.log`；設定 `/etc/travel-scanner/autodeploy.env`（`AUTODEPLOY_ENABLED=false` 是乾跑）；`journalctl -u travel-scanner-autodeploy` |
+| 三種「hold」 | 主機的暫停檔擋的是**部署**（`hold.py`、`--ignore-hold`、exit 3）；repo 裡的 `apps/api/app/guides/publish_holds.json` 擋的是**發布**特定 slug（沒有旗標可繞，要刪條目）；自動部署的 `.paused` 只擋 **timer 自己**，手動部署不受它影響。別混用 |
 
 ## 不變的規矩
 
@@ -31,12 +32,14 @@ metadata:
 6. **動別人的東西先問**：清暫停檔、把死掉的發布標成 `failed_at`、改部署腳本、改 nginx，都要站主在對話裡明確同意；正式站的 `UPDATE`、灌腳本進容器，分類器一律擋，別繞。
 7. **不碰 `.env`**（mode 600 必須維持）；主機上的 nginx 設定比 repo 的範例新，`ops/nginx/install.sh` 只覆寫四個專案檔、不 reload、不改站台檔。
 8. 內容包跟著程式部署上去，但**沒匯入就不會上線**：匯入是內容那條線的事，走 skill `content-pipeline`。
+9. **手動部署前先看 timer。** `systemctl is-active travel-scanner-autodeploy.service` 是 `active` 代表一輪正在部署（它也持有部署鎖，`host-deploy.sh` 會拒絕）；等它結束再跑，或先看 `state.json` 是不是已經把要部署的 SHA 部好了。timer 開著時 main 合併後最多 25 分鐘（靜默期 20 加輪詢 5）就會自己上線，多數時候不必手動部署。
+10. **自動部署的暫停檔不要直接刪。** `/root/travel-scanner-autodeploy.paused` 第一行寫著哪個 SHA、哪支 log、退出碼；先讀那支 log 判斷失敗原因，在 main 上修正，確認之後才刪檔（刪了下一輪就會再部署同一個或更新的 SHA）。暫停檔與分階段發布的部署暫停檔（規矩 1）是兩回事：後者擋所有部署，前者只擋 timer。
 
 ## 主幹
 
 | # | 階段 | 做什麼 | 關卡 |
 | --- | --- | --- | --- |
-| 1 | 預檢 | `host-preflight.sh`（唯讀）：暫停檔、被規則 1 標記的目錄、24 小時內動過的發布目錄、鎖、live HEAD 對 origin/main、磁碟、還沒結算的付費影片工作 | 沒有暫停檔、沒有 FLAGGED、鎖是空的、沒有 `PAID WORK IN FLIGHT`；否則進 preflight.md 的判斷 |
+| 1 | 預檢 | `host-preflight.sh`（唯讀）：暫停檔、被規則 1 標記的目錄、24 小時內動過的發布目錄、鎖、live HEAD 對 origin/main、磁碟、自動部署 timer 的狀態與暫停檔、還沒結算的付費影片工作 | 沒有暫停檔、沒有 FLAGGED、鎖是空的、timer 沒有在部署中（`tick=inactive`）、沒有 `AUTO DEPLOY PAUSED`、沒有 `PAID WORK IN FLIGHT`；否則進 preflight.md 的判斷 |
 | 2 | 決定 | 先看要不要部署：預檢加 `--dry-run`，別的 session 常部署，main 可能早就 live，那就不必問。要的話：站主要部署什麼（哪個 PR／SHA）、要不要 `--force`、要不要 `--ignore-hold` | 用有選項的提問，不接受一句「好」 |
 | 3 | 部署 | `host-deploy.sh`（背景），或站主自己跑一行 | `DEPLOY_EXIT=0`、腳本自己的 3/3 健康檢查過 |
 | 4 | 驗證 | 一支唯讀腳本、一次 SSH 跑完：`.agents/skills/deploy/scripts/host-verify.sh`（live SHA、部署 log、容器與映像、alembic、health、首頁、公開站），再加這次 diff 專屬的檢查（抓一個新程式才有的字串或行為），寫法見 `post-deploy.md` | 每行 `PASS`、`TOTAL fail=0` 才算部署完成 |
@@ -80,6 +83,7 @@ curl -s -o /dev/null -w '%{http_code} %{time_total}s\n' https://mokaair.com/zh-T
 | 問題 | 讀 |
 | --- | --- |
 | 兩條路徑、四把鎖、暫停檔的格式與 `hold.py acquire/verify/clear/show`、放棄一個發布的順序、不碰正式環境的驗證法 | `ops/release/README.md` |
+| 自動部署 timer 的八道關卡、安裝與上線順序、狀態檔與暫停檔、怎麼停 | `ops/autodeploy/README.md`、程式在 `ops/autodeploy/autodeploy.py` |
 | 後台部署中心（第三條路徑）的安裝、限制、狀態與 log | `ops/deployer/README.md`、程式在 `apps/api/deployment_agent/` |
 | nginx 的四個專案檔、驗證步驟、access_log 與 error_log 的坑 | `ops/nginx/README.md` |
 | CI 的四個必要檢查與怎麼可靠地讀 | `.github/BRANCH_PROTECTION.md` |

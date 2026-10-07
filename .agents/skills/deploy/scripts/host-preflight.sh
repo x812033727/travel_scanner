@@ -75,6 +75,46 @@ echo "-- last deploy log --"
 last=$(ls -t "$LOGDIR"/*.log 2>/dev/null | head -1)
 if [ -n "$last" ]; then echo "$last"; tail -3 "$last"; else echo "none"; fi
 
+# The auto deploy timer (ops/autodeploy/README.md): a tick every five minutes runs the same deploy
+# script when main is green. A tick mid-deploy holds the deploy lock above; a paused file means an
+# automatic deploy failed and the script rolled back, and only a person removes it after reading
+# the log it names. Reads the state file and the paused file, asks systemd two questions.
+echo "-- auto deploy --"
+AUTO_STATE=/var/lib/travel-scanner-autodeploy/state.json
+AUTO_PAUSED=/root/travel-scanner-autodeploy.paused
+if systemctl list-unit-files travel-scanner-autodeploy.timer >/dev/null 2>&1 && systemctl list-unit-files travel-scanner-autodeploy.timer 2>/dev/null | grep -q travel-scanner-autodeploy; then
+  echo "timer: enabled=$(systemctl is-enabled travel-scanner-autodeploy.timer 2>/dev/null) active=$(systemctl is-active travel-scanner-autodeploy.timer 2>/dev/null) tick=$(systemctl is-active travel-scanner-autodeploy.service 2>/dev/null)"
+else
+  echo "timer: not installed"
+fi
+if [ -f "$AUTO_STATE" ]; then
+  python3 - "$AUTO_STATE" <<'PY'
+import json, sys
+try:
+    state = json.load(open(sys.argv[1], encoding="utf-8"))
+except Exception as exc:  # noqa: BLE001
+    print(f"state: unreadable ({exc.__class__.__name__})"); sys.exit(0)
+d = state.get("last_decision") or {}
+print(f"last tick: {state.get('last_tick', '?')}  dry_run={state.get('dry_run', '?')}")
+print(f"last decision: {d.get('action', '?')}: {d.get('reason', '')}")
+last = state.get("last_deploy") or {}
+if last:
+    v = last.get("verify") or {}
+    print(f"last auto deploy: {str(last.get('sha', ''))[:12]} exit={last.get('exit')} verify={v.get('result', '?')} log={last.get('log', '')}")
+else:
+    print("last auto deploy: none")
+PY
+else
+  echo "state: none ($AUTO_STATE)"
+fi
+if [ -f "$AUTO_PAUSED" ]; then
+  echo "AUTO DEPLOY PAUSED ($AUTO_PAUSED, $(date -u -r "$AUTO_PAUSED" +%FT%TZ)):"
+  head -n 1 "$AUTO_PAUSED" | head -c 600
+  echo
+else
+  echo "paused file: none"
+fi
+
 # Every deploy recreates every container built from the repo, video-ai-worker and video-worker
 # included, even for a docs-only commit (references/runbook.md). A running stage job is a paid model
 # call in flight: losing its process leaves it uncertain for the owner (app/video_automation/

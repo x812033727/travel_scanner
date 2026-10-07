@@ -1,0 +1,13 @@
+[Unit]
+Description=Run the Mokaair auto deploy tick every five minutes
+
+[Timer]
+OnCalendar=*:0/5
+RandomizedDelaySec=30
+AccuracySec=1s
+# A missed tick is not caught up on boot: the next one five minutes later sees the same main.
+Persistent=false
+Unit=travel-scanner-autodeploy.service
+
+[Install]
+WantedBy=timers.target
