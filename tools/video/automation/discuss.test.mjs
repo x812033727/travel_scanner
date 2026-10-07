@@ -5,7 +5,8 @@ import test from "node:test";
 
 import { sandbox } from "../core/fixtures/load.mjs";
 import { atomicWrite } from "../core/paths.mjs";
-import { answerDocument, answerScript, documentDiscussionPayload } from "./discuss.mjs";
+import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
+import { answerDocument, answerScript, blockedReply, documentDiscussionPayload, lostReply, refusedReply } from "./discuss.mjs";
 import { Automation } from "./flow.mjs";
 
 test("discussion retains draft parent versions and missing parents without granting approval", () => {
@@ -32,6 +33,7 @@ test("a document answer echoes its delivered snapshot and reports a refused revi
   const revised = { body_md: "# Setting", body_json: { characters: [{ id: "lead", name: "Lead", appearance: "red coat" }], mysteries: [{ id: "letter", question: "Who wrote it?" }] } };
   const calls = [];
   const automation = {
+    workBase: sandbox().work,
     reference: () => ({}), dramaPayload: () => ({ drama_settings: {} }),
     stage: async () => ({ reply: "Revised", revised }),
     api: { messageAnswer: async (id, body) => { calls.push({ id, body }); return { revision: null, revision_refused: "文件已更新" }; } },
@@ -45,6 +47,75 @@ test("a document answer echoes its delivered snapshot and reports a refused revi
   assert.equal(calls[0].body.revision_context, binding);
   assert.deepEqual(calls[0].body.revised.body_json, revised.body_json);
   assert.match(result, /only the reply was kept: 文件已更新/);
+});
+
+test("an error of the planner's request on a document never ends the run: a lost answer and a refusal are told to the owner once, a busy service leaves the line for the next run, and only everyone's trouble is thrown", async () => {
+  const box = sandbox();
+  const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, stdout: { write: () => {} }, stderr: { write: () => {} }, now: () => new Date("2026-10-07T10:00:00Z") };
+  const replies = [];
+  const automation = new Automation(ctx, { messageAnswer: async (id, body) => { replies.push({ id, ...body }); return {}; } }, {});
+  automation.reference = () => ({});
+  automation.dramaPayload = () => ({ drama_settings: {} });
+  const job = (id) => ({ message: { id, body_md: "第二幕為什麼這樣排？" }, subject: "outline", series: { slug: "held" }, doc: null, context: {} });
+  const failing = (error) => {
+    let asked = 0;
+    automation.stage = async () => {
+      asked += 1;
+      throw error;
+    };
+    return () => asked;
+  };
+
+  // Before: each of these left the step as an exception, every round; a lost answer was asked, and paid for, again on each.
+  let asked = failing(Object.assign(new AutomationError("the answer never came back", { code: RUN_UNCERTAIN, who: "owner" }), { why: "HTTP 504", stage: "planner" }));
+  assert.match(await answerDocument(automation, job("lost")), /^series held: the planner's answer on outline was lost on the way \(HTTP 504\); the owner is told, and it is not asked again on its own$/);
+  assert.deepEqual([replies.at(-1), asked()], [{ id: "lost", reply_md: lostReply("HTTP 504"), revised: null }, 1]);
+
+  asked = failing(Object.assign(new AutomationError("請求格式不正確", { status: 422, code: "video_ai_request_invalid" }), { stage: "planner" }));
+  assert.match(await answerDocument(automation, job("refused")), /^series held: the site refused the planner request on outline \(video_ai_request_invalid: 請求格式不正確\); the owner is told and the thread waits$/);
+  assert.deepEqual(replies.at(-1), { id: "refused", reply_md: refusedReply("video_ai_request_invalid: 請求格式不正確"), revised: null });
+
+  asked = failing(Object.assign(new AutomationError("模型服務忙碌中", { status: 503, code: "video_ai_upstream_busy" }), { stage: "planner" }));
+  assert.match(await answerDocument(automation, job("busy")), /^series held: the planner request on outline could not finish \(video_ai_upstream_busy: 模型服務忙碌中\); the line waits for the next run$/);
+  assert.equal(await answerDocument(automation, job("busy")), null, "the rest of this run leaves the line alone");
+  assert.deepEqual([asked(), replies.length], [1, 2], "asked once, and nothing told the owner");
+  // The next run asks again: the trouble passes.
+  const next = new Automation(ctx, automation.api, {});
+  Object.assign(next, { reference: automation.reference, dramaPayload: automation.dramaPayload, stage: async () => ({ reply: "因為第二幕要有代價。", revised: null }) });
+  assert.match(await answerDocument(next, job("busy")), /the planner answered the owner on outline$/);
+
+  failing(new AutomationError("the token was refused", { status: 401, code: "video_tool_token_invalid", who: "owner" }));
+  await assert.rejects(answerDocument(automation, job("token")), /the token was refused/, "everyone's trouble still ends the run");
+  failing(new AutomationError("no JSON", { code: OUTPUT_INVALID }));
+  assert.match(await answerDocument(automation, job("unusable")), /the planner gave no usable answer on outline \(no JSON\)/);
+});
+
+test("a line on the screenplay of a blocked video waits for the owner's retry when the retry resends what blocked it, and is otherwise answered with the block, not with 'no screenplay here'", async () => {
+  const box = sandbox();
+  const slug = "blocked-e001";
+  const save = (extra) => atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "blocked", format: "drama", notes: [], created_at: "2026-10-07T01:00:00Z", ...extra }));
+  const said = [];
+  const replies = [];
+  const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, stdout: { write: (text) => said.push(text) }, stderr: { write: () => {} }, now: () => new Date("2026-10-07T10:00:00Z") };
+  const automation = new Automation(ctx, { messageAnswer: async (id, body) => replies.push({ id, ...body }) }, {});
+  automation.stage = async () => assert.fail("no model request for a blocked video");
+  const job = { message: { id: "m1", body_md: "沈瀾為什麼不回答？" }, subject: "script:1", series: { slug: "blocked" }, episode: { slug } };
+
+  for (const [extra, why] of [
+    [{ blocked: "writer may have run…", blocked_kind: "uncertain:writer" }, "sets aside the writer run whose answer was lost"],
+    [{ blocked: "saved writer job gone…", blocked_kind: "job_gone:writer" }, "sets the saved writer job aside"],
+    [{ blocked: "the site refused the writer request for the owner's line on script:1 (x): y", blocked_line: "m1" }, "blocked by this line's own request"],
+  ]) {
+    save(extra);
+    automation.heldLines.clear();
+    assert.equal(await answerScript(automation, job), null);
+    assert.ok(said.at(-1).includes(why), said.at(-1));
+  }
+  assert.deepEqual(replies, []);
+  // Blocked for a reason of its own (or by another line's request): the owner is told why, and the line behind it is not held.
+  save({ blocked: "keyframes needs the owner: 圖片額度用完了", blocked_kind: "media_owner:keyframes", blocked_line: "m0" });
+  assert.match(await answerScript(automation, job), /^blocked-e001: the owner's line on script:1 is answered with the video's block; the thread waits$/);
+  assert.deepEqual(replies, [{ id: "m1", reply_md: blockedReply("keyframes needs the owner: 圖片額度用完了"), revised: null }]);
 });
 
 test("a line on a screenplay is held while its video is not at rest: a lane is moving it, a lane set it aside in this run, its writer is still running, or it waits on its own from an earlier round; no model is asked and nothing is answered", async () => {

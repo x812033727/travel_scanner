@@ -1,11 +1,11 @@
 ---
 id: 2026-10-06-a-discussion-whose-writer-answer-was
 title: A discussion whose writer answer was lost ends every round
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-discuss-lost
+claimed_at: 2026-10-07T12:41:51Z
 created_at: 2026-10-06T15:36:43Z
 completed_at:
 branch:
@@ -45,22 +45,22 @@ Read in the code while the second review of PR #1342 was being answered; not see
 
 ## Definition of done
 
-- [ ] An error of a screenplay discussion's request never ends a round more than once for the
+- [x] An error of a screenplay discussion's request never ends a round more than once for the
       same cause: a lost answer blocks the video as `uncertain:writer` (as its own writer's does),
       a refusal blocks it with the reason, a service that is busy makes the line wait.
-- [ ] While the video is blocked that way the owner's line stays unanswered (no "no screenplay
+- [x] While the video is blocked that way the owner's line stays unanswered (no "no screenplay
       here" reply), and after the owner's retry the line is sent exactly once more.
-- [ ] No discussion request is paid for twice without the owner's retry.
+- [x] No discussion request is paid for twice without the owner's retry.
 
 ## Steps
 
-- [ ] `answerScript`'s catch: sort the error as `move()` does (share the code rather than copy
+- [x] `answerScript`'s catch: sort the error as `move()` does (share the code rather than copy
       it): `RUN_UNCERTAIN` goes to `Automation.unanswered`, a "video" scope to `block`, a "wait"
       scope to `defer` (the line is then held by `resting`), a "run" scope is thrown as today.
-- [ ] Hold the line while its video is blocked as `uncertain:writer` (today only
+- [x] Hold the line while its video is blocked as `uncertain:writer` (today only
       `job_gone:writer` holds it, `discuss.mjs`); decide whether every block should hold the line
       instead of answering that there is no screenplay.
-- [ ] Tests in `series.test.mjs` on the durable route (the helper `durableDiscussion` is there):
+- [x] Tests in `series.test.mjs` on the durable route (the helper `durableDiscussion` is there):
       an uncertain journal, the round does not throw, the owner's retry, one new request.
 
 ## How to verify
@@ -82,3 +82,45 @@ node --test tools/video/automation/series.test.mjs tools/video/automation/discus
   the site for the next line at the start of every unit while it is there, and the other lanes
   leave that video to the first. If one is ever seen on the host, setting such a journal aside once
   its job is over belongs here.
+- 2026-10-07 (claude-opus-5-5-discuss-lost), `flow.mjs` and `discuss.mjs`:
+  - `move()`'s sorting is now `Automation.requestFailed(state, error, { sends, request })`, which
+    `move()` and the discussion's catch both call: a policy hold parks the project, RUN_UNCERTAIN
+    goes to `unanswered` (`uncertain:writer`), RUN_PENDING and a "run" scope are thrown, a job
+    gone goes to `jobGone`, a "video" scope blocks with the reason, a "wait" scope defers.
+    `move()` behaves as before (PROJECT_HELD and OUTPUT_INVALID stay its own).
+  - `answerHeld`'s catch: OUTPUT_INVALID is told to the owner as before, PROJECT_HELD is thrown
+    for `step()` as before, everything else goes to `requestFailed`, named as "the writer request
+    for the owner's line on script:N" (and `error.unit` for the lost-answer reason). When that
+    blocks the video, auto.json keeps the line's id as `blocked_line`; the owner's retry deletes
+    it with the other block fields.
+  - Holding: a line on the screenplay of a blocked video waits for the retry when the block is
+    `job_gone:writer`, `uncertain:writer` or this line's own (`blocked_line`), since the retry
+    resends what blocked it. Decided: every other block is answered with `blockedReply` (the
+    video is stopped, its reason, and to ask again after dealing with it), not held, and no
+    longer with "no screenplay here". The site hands over one line at a time, so holding a line
+    behind a block the owner may never retry would hold every line behind it.
+  - A paid answer the site did not take: before this, a `messageAnswer` that failed after the
+    writer answered ended the round, and the next round asked the writer again (paid twice, and a
+    rewrite already saved was rewritten again). The answer, or the unusable or lost reply that
+    followed a paid call, is now kept in `discussion-answer.json` (the video's work directory, or
+    `_series/<slug>` for a document) before it is posted, and the next visit for that line posts
+    it with no model request (`postAnswer`, `takeUnposted`). A kept answer of another line is set
+    aside.
+  - `answerDocument` (the Notes' question, decided here): the planner is not durable, so a lost
+    answer was asked, and paid for, again every round. Now a lost answer (`lostReply`) and a
+    refusal (`refusedReply`) are told to the owner and the thread waits for them; a busy service
+    or a rate limit leaves the line for the rest of the run (`Automation.waitingLines`), which
+    goes on with the series work, and the next run asks again; everyone's trouble still ends the
+    run. discuss.mjs reads the scope through `Automation.errorScope`, since it cannot import
+    flow.mjs back.
+  - Not done: an orphaned discussion journal no line claims (the last Note) was not seen; it is
+    left as the Note says.
+- Tests:
+  - `series.test.mjs`, durable route: a lost answer blocks as `uncertain:writer` once, the next
+    round throws, sends and answers nothing, the retry archives the journal and sends the line
+    exactly once; a refusal blocks with the reason and holds the line until the retry; a busy
+    service defers the video, the round goes on, the line waits, and it is asked once more after
+    the wait; an answer the site did not take is posted on the next round with no second request.
+  - `discuss.test.mjs`: the planner's lost answer, refusal, busy service, everyone's trouble and
+    an unusable answer; a blocked video's line held for the three kinds and answered with the
+    block otherwise.

@@ -813,6 +813,10 @@ export class Automation {
     // The owner's lines this run left unanswered because their video was not at rest
     // (discuss.mjs answerScript), by message id, so the log says so once.
     this.heldLines = new Set();
+    // The owner's lines on a document whose planner request met a busy service or a rate limit
+    // (discuss.mjs answerDocument), by message id: they wait for the next run, and this one goes
+    // on with the series work, the drama requests and the scheduled draft.
+    this.waitingLines = new Set();
     this.lastAnswer = null;
     // How much of a translation worksheet one model call is asked for (sheet-units.mjs).
     this.unitLimits = { lines: UNIT_LINES, chars: UNIT_CHARS };
@@ -1420,6 +1424,9 @@ export class Automation {
       delete state.blocked_report_pending;
       delete state.blocked_report_retry_at;
       delete state.policy_hold;
+      // The owner's line whose request blocked the video (discuss.mjs answerScript) is sent once
+      // more now, like any other line; a later block is not this line's.
+      delete state.blocked_line;
       // From the moment auto.json says "active" another lane could take the video. This lane
       // holds it until the acknowledgement is over, so a deferral saved below is the only copy:
       // without the hold a second lane ran the video's stage while the report was in flight, and
@@ -1503,24 +1510,43 @@ export class Automation {
         this.skipped.add(state.slug);
         return `${state.slug}: ${error.message}`;
       }
-      if (error.code === POLICY_HOLD) return this.policyHold(state, error);
-      if (error.code === RUN_UNCERTAIN) return this.unanswered(state, error);
       if (error.code === OUTPUT_INVALID) return this.retryLater(state, error.stage, error.message);
-      // A writer still running on the server: step() sets this video aside for the run. It
-      // neither counts as a deferral nor ends a row of them: a queue that loses every job before
-      // its dispatch (queued, failed, queued again) must still reach the limit and a card.
-      if (error.code === RUN_PENDING) throw error;
-      const scope = errorScope(error);
-      if (scope === "run") throw error;
-      const request = error.stage ? `the ${error.stage} request` : "a request";
-      const code = error.code || `HTTP ${error.status}`;
-      if (error.gone) return this.jobGone(state, error);
-      if (scope === "video") return this.block(state, `the site refused ${request} (${code}): ${error.message}`);
-      const retryAfter = Number(error.retry_after);
-      return this.defer(state, `${state.slug}: ${request} could not finish (${code}: ${error.message})`, { retryAfter: Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : null, what: error.stage ?? "request", everyone: Boolean(everyones(error)) });
+      return this.requestFailed(state, error);
     }
     await this.moved(state);
     return done;
+  }
+
+  /**
+   * An AutomationError of a request made for this video, sorted by errorScope: a policy hold
+   * parks the project (policyHold); an answer lost after it was sent blocks the video for the
+   * owner (unanswered); a saved job the server no longer has blocks it as `job_gone:<stage>`
+   * (jobGone, `sends` wording what the retry sends); a refusal this request will always meet
+   * blocks it with the reason; one that passes defers it. Trouble that is everyone's ("run") is
+   * thrown, and so is a writer still running on the server (RUN_PENDING), which step() sets
+   * aside for the run: it neither counts as a deferral nor ends a row of them, since a queue that
+   * loses every job before its dispatch (queued, failed, queued again) must still reach the limit
+   * and a card. Resolves to the line; `request` names the request in it when the stage alone
+   * would not. The video's own stages (move) and the writer's answer to a line on its screenplay
+   * (discuss.mjs answerScript) share it: both are this video's requests.
+   */
+  async requestFailed(state, error, { sends = null, request: named = null } = {}) {
+    if (error.code === POLICY_HOLD) return this.policyHold(state, error);
+    if (error.code === RUN_UNCERTAIN) return this.unanswered(state, error);
+    if (error.code === RUN_PENDING) throw error;
+    const scope = errorScope(error);
+    if (scope === "run") throw error;
+    const request = named ?? (error.stage ? `the ${error.stage} request` : "a request");
+    const code = error.code || `HTTP ${error.status}`;
+    if (error.gone) return this.jobGone(state, error, sends);
+    if (scope === "video") return this.block(state, `the site refused ${request} (${code}): ${error.message}`);
+    const retryAfter = Number(error.retry_after);
+    return this.defer(state, `${state.slug}: ${request} could not finish (${code}: ${error.message})`, { retryAfter: Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter : null, what: error.stage ?? "request", everyone: Boolean(everyones(error)) });
+  }
+
+  /** errorScope, for the modules flow.mjs imports (discuss.mjs), which cannot import it back. */
+  errorScope(error) {
+    return errorScope(error);
   }
 
   /**
