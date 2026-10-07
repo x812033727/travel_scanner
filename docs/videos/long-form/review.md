@@ -2374,6 +2374,129 @@ PASS is DURATION_ONLY for the three rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch next-compilation-i18n compilation translation hashes increment: 2 files (2026-10-07)
+
+Reviewer: `claude-pr-review-comp-i18n`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is two commits on branch next-compilation-i18n for the task `2026-10-07-a-re-planned-compilation-keeps-the`, written by its owner `claude-opus-5-5-comp-i18n`: `df3d45d2` ("fix(video): a re-planned compilation translates its title and description again") and `1fae089a` ("fix(video): review fixes for the compilation re-plan: a merged or legacy translation, and the worker's own re-plan"). Scope: DURATION_ONLY for the two changed bindings below. The reviewer wrote neither commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `dc563ad3`, the first commit's parent ("chore(tasks): close the discussion error-sorting task; file its kept-reply wording follow-up"). The last receipt commit before it is `a14ccac0`, the "Branch next-discuss-lost discussion error sorting increment" above, and it is an ancestor of `dc563ad3`. Between the two only two task files change, tasks/done/2026-10-06-a-discussion-whose-writer-answer-was.md and tasks/open/2026-10-07-a-discussion-s-kept-reply-does-not.md, and `git diff a14ccac0 dc563ad3 -- docs/videos/long-form/ tools/ apps/` is empty. At `a14ccac0` and at `dc563ad3` all 108 bindings agree with the receipt, the table and the bytes, and `durationReviewProblems` finds nothing. review.md (776,801 bytes, no CR byte, no BOM) hashes to the receipt's `report_sha256`, `c6666cb227986bdc75a7c99756b9ee97e467069e7cf85cc7b6efc19f8765def7`, there and still at `1fae089a`. The hashing was done by script, on blobs exported with `git show`. At `1fae089a` 106 bindings still agree and two do not: tools/video/core/state.mjs and state.test.mjs. The working tree's copies of the two equal `1fae089a`'s and hold no CR byte and no BOM. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/core/state.mjs; stale duration review binding: tools/video/core/state.test.mjs` and nothing else. The whole of `git diff dc563ad3 1fae089a` is the two bound files, the unbound tools/video/automation/compilation.mjs, compilation.test.mjs and compilation-spoilers.test.mjs, the task's own file, and the two follow-up tasks it filed (`2026-10-07-a-compilation-s-language-batch-fights` and `2026-10-07-a-compilation-whose-public-text-changes`). Nothing under docs/videos/long-form/, tools/video/long-form/, tools/video/qa/, tools/video/compile/ or apps/ changes. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+What the change is. A series' compilation plans its public text in "metadata planned" (the title, description, tags and thumbnail, and sometimes chapter titles) and translates it in "metadata translated", one i18n/<locale>.json per locale. Until this change a plan made again kept the translations of the old text. core/state.mjs counted a locale complete when its four fields were there, and the worker skipped a translation that was. Now:
+
+- `compilationChapters(doc)` (state.mjs 575) gives the chapter titles the translator is given, by episode slug, else 「第 N 集」. The worker built the same map itself as `chaptersOf`.
+- `compilationSourceHashes(doc)` (585) hashes the title, description and tags as core/translations.mjs `sourceHashes` does, and each chapter title by episode slug.
+- `compilationTranslationStale(translation, doc)` (599) names what of a translation was made from other zh-TW text: "title", "description", "tags" or "chapter <slug>". It returns "legacy" when the file records no hash of the three fields. Chapters are compared only when they are recorded by episode slug.
+- `translationComplete(translation, doc = null)` (620): given the document, a filled translation with a stale field is not complete, and a legacy one still is. Without the document it is the field check it was.
+- `compilationDefinitions` passes the document when lint is clean (645). "metadata translated" is not done while a locale is stale. Its note says "missing, incomplete or made from earlier zh-TW text", and `outdated` (647) shows that note when every locale is stale too (666).
+- `lintProject`'s compilation branch (227–241) adds one warning per locale whose chapter hashes, recorded by the worker, are stale: "translations older than the zh-TW text: chapter <slug>" on `i18n/<locale>.json`. It does so only when lintCompilation found no errors.
+- The worker (automation/compilation.mjs, not bound) writes `source_hashes` with each translation and redoes one that is not complete. When it plans again it stamps a legacy file with the replaced plan's hashes.
+
+This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/core/state.mjs (+73/−8, 36,290 → 40,477 bytes, 605 → 670 lines; `3ff542a9295cb4a3a2567cbc9c0e0e1dcd0b05758032ce87670a4f49926fec35` → `f45f65951076d48fe61280fc99b3c9d839614775c469fd1fd25d5046633aec26`). The first commit has +32/−7 and the second +48/−8. Every changed line is in one of six hunks at the head:
+
+- three import lines (16, 22–23). They add `episodeNumbers` from ./compilation.mjs, `textHash` from ./schema.mjs, and `sourceHashes` from ./translations.mjs. translations.mjs imports only ./schema.mjs, so no import cycle is added.
+- `lintProject`'s compilation branch (227–241);
+- the four functions above (574–624), which replace the old one-line `translationComplete`;
+- `compilationDefinitions`' `untranslated` and `outdated` (645–647) and the "metadata translated" note (666).
+
+The duration code sits outside them:
+
+- `valid` (459), `timingCurrent` (469), `bodyProblems` (470), `runtimeProof` (475) and `runtimeCurrent` (478);
+- the "narration synthesized", "narration approved", "video assembled", "final video approved" and "upload package" steps (519–559);
+- `formatSteps` and `stepsFor` (151–175), and the step walk and `next` (566–567);
+- `compilationDefinitions`' "video compiled" (659), with `compiled`, `brandBodyCurrent` and the body's `total_frames`.
+
+A broad duration scan looked for these words: minute, second, frame, fps, duration, runtime, timeline, timing, window, target, body, 480, 600, 780, 14400, 14,400, MIN_EPISODE, formatClock, policy, manual_review, process.env, 分鐘, 秒, 時長, 片長, tempo, speech_hash, total_frames, measured, clock.
+
+- The file's 104 lines that match it are the same set, with the same text, at both revisions.
+- In the changed lines the scan, widened with qa, slot, floor, assemble, package, final, compile, gate and errors, finds only two lines. One is a comment naming qa's captions item and the other is the `!result.errors.length` guard.
+
+What each piece can reach:
+
+- Lint errors, for any video:
+  - `lintProject` still returns `lintVideo` for anything that is not a compilation (`isCompilation`, unchanged, 242).
+  - For a compilation it returns lintCompilation's own object. The new code only pushes onto `warnings`, and only when `errors` is empty. It never writes `errors` or `summary`.
+  - In such a document lintCompilation has already run `metadataStatus` (and so `sourceHashes`) and `spec.episodes.filter` on the same translations. `compilationTranslationStale` checks the type of each value it reads, so it adds no throw.
+  - Every other caller of `lintProject` reads `errors` alone, with three exceptions. qa is below. The lint command prints the warnings and exits on the errors. Status counts the warnings in the "script passes lint" note, a step a compilation does not have. The callers that read errors are `valid` in status, flow.mjs `lintErrors`, the worker's compilation and story code, and the lint gates of tts, look, clips, keyframes, music, render, assemble, compile, dubs and stages.
+- QA:
+  - A compilation's qa has no duration item. Its items are assemble, captions, metadata, links, thumbnail and disclosure (COMPILATION_ITEM_IDS).
+  - Of them only `compilationCaptionsItem` reads lint warnings, and it fails on any `i18n/` warning. The new warning can fail that item and nothing else.
+  - The compilation's assemble item is given checks, `compilationChecksCurrent`, branding, the final file and the stale text. This change touches none of them.
+  - For other videos the duration verdict is the assemble item's `knowledgeDurationProblems`, `animeDurationProblems` and `minMinutes` floor (qa/checks.mjs 44–59). Their lint is the unchanged `lintVideo`.
+  - Compilations are also outside the minimum: `needsMinimumLength` is false for them (long-form/integration.test.mjs 53).
+- Steps:
+  - In state.mjs `translationComplete` is given a document only by `compilationDefinitions`, which runs only for a compilation, and only when lint is clean. The only other caller with a document is the worker's `translateMetadata`, for the same compilation.
+  - With the document it returns true only where the old check did: filled, and legacy or nothing stale. So "metadata translated" can only go from done to not done.
+  - That step carries no length. Its done reads `valid` and the translations.
+  - The other compilation steps do not read translations, and their definitions are byte-unchanged.
+  - COMPILATION_STEPS (core/compilation.mjs, unchanged) keeps "metadata translated" after "video compiled" and before "final video approved". So `next` can move back only to "metadata translated", and only when the join is done and current.
+  - The worker answers that step with `translateMetadata`. It writes i18n files and, for a compilation with mysteries, the public-text review receipts. No cut, timeline, checks.json or runtime proof reads either, and compile reads no translation.
+
+A seeded differential run backs this. It imported both revisions' state.mjs, the baseline from a scratch tree made with `git archive dc563ad3`.
+
+- It covered every video.json in the repository: 41, of which 32 are under docs/videos and 9 are test fixtures under tools/video. None is a compilation.
+  - `lintProject` gave identical results for all 41.
+  - `pipelineStatus` with an empty work directory gave identical results for the 32 under docs/videos.
+- It then built 3,000 compilations on the compile fixture's sandbox:
+  - The documents varied in title (kept, new, the placeholder, over the limit), description, tags (kept, reversed, others, none), chapter titles (kept, one changed, one dropped, none) and numbers.
+  - Each locale's translation was one of these: absent; filled with no hashes; with `{ chapters: {} }`; with the current plan's hashes or an earlier plan's; with card-keyed chapter hashes; with an extra or a missing slug; with junk hashes; partly filled; with card-keyed chapters; or not an object.
+  - The work directory was not compiled, compiled for this document or compiled for another. The final was approved or not, and a package was written or not.
+- Both revisions agreed wherever a length could be decided:
+  - In all 3,000 the lint errors and summary were identical. The baseline's warnings came first. Every extra one was a chapter warning on an `i18n/` path, and none came with an error. 967 cases had errors and 1,294 had an extra warning.
+  - Every step but "metadata translated" was identical, in done, note and todo. That step reopened in 781 cases and never became newly done.
+  - `next` moved in 538 cases, each time to "metadata translated". `stop` and `dubs` were identical.
+  - No case threw at either revision, the junk translations and hashes among them.
+
+Findings, tools/video/core/state.test.mjs (+64/−1, 39,901 → 46,153 bytes, 575 → 638 lines; 19 top-level tests at both revisions; `f163977fce7da21501d6fb6440abed44917431a8b790b60d85b7d6ccc5b347e9` → `d074d836f10479e95d90572719c69c2621e51f34cdd60572870a75e69fcf313d`). The first commit has +34/−1 and the second +32/−2.
+
+- The one removed line is the state.mjs import, which now also takes `compilationSourceHashes` and `compilationTranslationStale`.
+- The 63 added lines (522–584) sit at the end of the existing test "a compilation walks its own steps" (462–585), after its last old assertion. They add 18 `assert.equal` and 8 `assert.deepEqual`. These cover `translationComplete`, `compilationTranslationStale`, the step's `next` and note on disk, and lint's `i18n/` warnings. None is about a length.
+- The file's 145 lines that match the duration scan are the same at both revisions except the import line. That line matches only on `keyframeProblems`, and its only change is the two new names.
+- The opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at line 24 is byte-unchanged, and no added line reads or sets process.env.
+
+Ran (Node v22.22.0, Linux, in the worktree at `1fae089a`, node_modules linked, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing: all 108 bindings, the table and the report hash at `a14ccac0`, `dc563ad3` and `1fae089a`, the CR and BOM checks, `durationReviewProblems` at each, the delta against REVIEW_FILES, and the empty diffs above;
+- `git diff dc563ad3 1fae089a` of the two bound files, read in full, with each commit's numstat. The diff of the unbound worker and its tests was read only for what the worker writes and calls.
+- the duration scans of both files at both revisions;
+- reads of these functions and every caller of `lintProject` and `translationComplete`:
+  - state.mjs's `pipelineStatus`, `compilationDefinitions` and `lintProject`;
+  - core/compilation.mjs's `lintCompilation` and COMPILATION_STEPS;
+  - core/translations.mjs's `sourceHashes` and `metadataStatus`;
+  - qa/cli.mjs's `run` and `compilationQa`;
+  - qa/checks.mjs's `assembleItem` and `compilationCaptionsItem`;
+- scratch trees made with `git archive` of `dc563ad3` and of `1fae089a`. Each holds tools, docs/videos, .agents, .claude, tasks and package.json, linked to this worktree's node_modules. There:
+  - `node --test` passed the baseline's state.test.mjs 19 of 19, compilation.test.mjs 4 of 4 and compilation-spoilers.test.mjs 25 of 25. It passed the head's 19 of 19, 4 of 4 and 27 of 27.
+  - A third tree is the head with the baseline's state.mjs and automation/compilation.mjs.
+    - The head's state.test.mjs and compilation.test.mjs did not load there, since the baseline does not export `compilationSourceHashes`.
+    - compilation-spoilers.test.mjs failed 2 of 27, the two new tests.
+  - A fourth tree copies the three new helpers into that state.mjs as exports, and leaves `translationComplete`, `lintProject` and the steps as the baseline's.
+    - state.test.mjs failed 1 of 19, the extended test, at its first new assertion ("a new title": expected false, got true).
+    - compilation.test.mjs failed 1 of 4, the flow test, at "each translation records the text it was made from".
+    - compilation-spoilers.test.mjs failed the same 2 of 27.
+  - A fifth tree is that shim with the head's worker.
+    - state.test.mjs failed 1 of 19 as above.
+    - compilation.test.mjs failed the flow test: after the new plan the worker went to the final gate instead of translating again.
+    - compilation-spoilers.test.mjs failed the same 2 of 27.
+- the differential run above, in the same scratch directory.
+
+Before rebinding, `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same two paths. `npm run test:tools` ran 2,085 tests: 2,080 passed, 4 skipped and 1 failed, the same regression on the same two paths. `npm run check:tasks` exited 0. The CLI check, the long-form tests, `npm run test:tools` and `npm run check:tasks` are run again after rebinding. Their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the change itself. That includes:
+  - the source hashes, what counts as stale or legacy, and comparing chapters only when they are keyed by episode slug;
+  - translating a stale locale again, and stamping a legacy file on a new plan;
+  - the step's note, the new lint warning, and qa's captions item failing on it.
+- compilation.mjs, compilation.test.mjs, compilation-spoilers.test.mjs and the three task files are not reviewed. The worker was read only for what it writes and calls.
+- No real compilation was planned, translated, compiled or packaged. No real model, site or durable job was called, and the tests run under the opt-out.
+- Not run or seen: the Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, and the production host.
+- The 106 bindings this change did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2455,8 +2578,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
 | `tools/video/core/stages.test.mjs` | `0a409f7a88234c1823146ea65092a95ceb12b69c34ccf1910894712f34859a2e` |
-| `tools/video/core/state.mjs` | `3ff542a9295cb4a3a2567cbc9c0e0e1dcd0b05758032ce87670a4f49926fec35` |
-| `tools/video/core/state.test.mjs` | `f163977fce7da21501d6fb6440abed44917431a8b790b60d85b7d6ccc5b347e9` |
+| `tools/video/core/state.mjs` | `f45f65951076d48fe61280fc99b3c9d839614775c469fd1fd25d5046633aec26` |
+| `tools/video/core/state.test.mjs` | `d074d836f10479e95d90572719c69c2621e51f34cdd60572870a75e69fcf313d` |
 | `tools/video/core/timeline.mjs` | `369e747e8afc2382fdee8da9ebf9b2f0de14306200bab81ee658057168b3fc3a` |
 | `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
 | `tools/video/dubs/captions-package.test.mjs` | `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` |
