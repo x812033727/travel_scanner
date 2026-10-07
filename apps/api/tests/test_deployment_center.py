@@ -598,6 +598,41 @@ def test_release_guard_matches_the_scripts_staged_release_rule(tmp_path: Path) -
     assert release_guard.staged_release_reason(root) is None
 
 
+def test_release_guard_refuses_a_staged_release_root_it_cannot_read(tmp_path: Path) -> None:
+    """An unreadable /root never reads as "no staged release" (tests run as root, so a file
+    standing where a directory should be gives the OSError a PermissionError would)."""
+    from deployment_agent import release_guard
+
+    # No root at all: nothing can be prepared there.
+    assert release_guard.staged_release_reason(tmp_path / "missing") is None
+    blocker = tmp_path / "not-a-directory"
+    blocker.write_text("", encoding="utf-8")
+    reason = release_guard.staged_release_reason(blocker)
+    assert reason and "could not list" in reason and "NotADirectoryError" in reason
+    # A release whose state cannot be checked refuses too; one with no state file, a file
+    # named like a release, or a state older than the window does not.
+    root = tmp_path / "root"
+    root.mkdir()
+    (root / "mokaair-plain-file").write_text("", encoding="utf-8")
+    (root / "mokaair-no-state").mkdir()
+    old = root / "mokaair-old" / "state.json"
+    old.parent.mkdir()
+    old.write_text('{"built_at": "x"}', encoding="utf-8")
+    stale = time.time() - 25 * 60 * 60
+    import os
+
+    os.utime(old, (stale, stale))
+    assert release_guard.staged_release_reason(root) is None
+    unreadable = root / "mokaair-unreadable" / "state.json"
+    unreadable.mkdir(parents=True)  # a directory where the state file should be: read fails
+    reason = release_guard.staged_release_reason(root)
+    assert reason and "could not read mokaair-unreadable/state.json" in reason
+    assert release_guard.release_in_progress(tmp_path / "no.hold", blocker) == (
+        release_guard.STAGED_RELEASE_IN_PROGRESS,
+        release_guard.staged_release_reason(blocker),
+    )
+
+
 def test_executor_refuses_to_deploy_while_a_release_is_in_progress(tmp_path: Path) -> None:
     agent_config = config(tmp_path)
     store = AgentStore(agent_config.state_path)
