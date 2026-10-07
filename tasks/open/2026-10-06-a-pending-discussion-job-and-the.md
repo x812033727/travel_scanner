@@ -1,11 +1,11 @@
 ---
 id: 2026-10-06-a-pending-discussion-job-and-the
 title: A pending discussion job and the bookkeeping's site calls do not hold their video
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-bookkeeping
+claimed_at: 2026-10-07T23:20:39Z
 created_at: 2026-10-06T13:39:27Z
 completed_at:
 branch:
