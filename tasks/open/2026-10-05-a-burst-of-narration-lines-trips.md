@@ -1,11 +1,11 @@
 ---
 id: 2026-10-05-a-burst-of-narration-lines-trips
 title: A burst of narration lines trips the speech route's 120-a-minute limit and blocks the video
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-speech-burst
+claimed_at: 2026-10-07T05:14:10Z
 created_at: 2026-10-05T23:43:19Z
 completed_at:
 branch:
