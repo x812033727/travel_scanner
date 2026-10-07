@@ -28,6 +28,8 @@ MSYS_NO_PATHCONV=1 <SSH> "bash -s -- [--force] [--no-rollback] [--ignore-hold]" 
 
 包裝腳本先自己檢查：暫停檔存在而沒帶 `--ignore-hold` 就 `exit 9`；鎖被佔就 `exit 9`。然後用 nohup 起部署腳本、等它結束、把 buildkit 的 `#N` 行濾掉印最後 60 行、印 `DEPLOY_EXIT=<code>`。SSH 中途斷線時部署照樣跑完，log 在 `/root/deploy-logs/wrapper-<ts>.log`。
 
+同一個目錄裡的 `auto-<ts>.log` 與 `auto-verify-<ts>.log` 是自動部署 timer（`ops/autodeploy/README.md`）跑同一支腳本與 `host-verify.sh` 留下的，內容格式一樣；分辨一次部署是人跑的還是 timer 跑的，看檔名前綴。`journalctl -u travel-scanner-autodeploy` 有每一輪的關卡決定。
+
 一定用 Bash 工具的 `run_in_background`，等完成通知；輸出檔在結束前是空的（`tail` 會緩衝），空檔不代表卡住。
 
 ## 分類器擋下來的時候
@@ -37,6 +39,14 @@ auto 模式的分類器自 2026-09-18 起會擋部署呼叫，不管是 `-m 檔�
 1. 第一次就先把 session 切到 Manual（`set_session_permission_mode` → `default`，往低切不需要核准卡），送同一個指令，站主按允許。站主也能自己切：送出鈕旁的模式選單或 `Ctrl+Shift+M`（Manual＝default）。部署完請站主切回 Auto。
 2. 或交給站主在自己的終端跑一行（Windows PowerShell 5.1 的形狀）：`& "<plink.exe 的路徑>" -batch -load <PuTTY session> -l root -i "<金鑰 .ppk>" /root/deploy-travel-scanner.sh`。金鑰路徑與 session 名稱只在站主自己的機器上。
 3. 唯讀的調查（`-m` 送純讀檔的腳本）以前都過，但 2026-09-24 起連 plink 跑的唯讀預檢也曾被擋成 Production Reads：先問站主要不要部署，要就在預檢之前切 Manual。讀 `~/.claude/settings*.json` 找既有規則也曾被擋，不要花回合在被擋的路上。
+
+## 跟自動部署 timer 共存
+
+timer 開著時，main 合併後最多約 25 分鐘（靜默期 20 分鐘加輪詢 5 分鐘）就會自動部署並驗證，多數「部署某個已合併的 PR」不必手動做：看 `state.json` 的 `last_deploy.sha`，或等預檢的 `last auto deploy` 出現那個 SHA。要手動部署時：
+
+1. 預檢的 `tick=active` 代表一輪正在部署，等它結束（它持有部署鎖，`host-deploy.sh` 本來就會拒絕）。
+2. `--force` 重建目前 commit、`--ignore-hold` 這類 timer 不會做的事才需要手動；手動跑完 timer 的下一輪看到 live 等於 origin/main 就什麼都不做。
+3. 分階段發布：驅動的暫停檔（`hold.py acquire`）同樣擋 timer（它跑 `--dry-run` 看到 exit 3 就等），不用另外關 timer；但 `clear` 之後下一輪 timer 就會部署當時的 main，發布目錄的基準就對不上了，所以 `clear` 要在最後一個階段成功之後，不要提早。
 
 ## 回滾
 

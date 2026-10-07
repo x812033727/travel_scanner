@@ -1,0 +1,18 @@
+[Unit]
+Description=Mokaair auto deploy tick (deploys green main through /root/deploy-travel-scanner.sh)
+Documentation=file:///opt/travel-scanner-autodeploy/README.md
+After=docker.service network-online.target
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+# One tick. Type=oneshot keeps the timer from starting a second tick while a deploy runs,
+# which is why the poller needs no lock of its own.
+Type=oneshot
+User=root
+WorkingDirectory=/opt/travel-scanner-autodeploy
+# The poller reads /etc/travel-scanner/autodeploy.env itself on every tick, so a change
+# there (ENABLED, windows, the token) takes effect without a restart.
+ExecStart=/usr/bin/python3 /opt/travel-scanner-autodeploy/autodeploy.py tick
+# A deploy is minutes; a cold build after a cache purge is under five (skill deploy).
+TimeoutStartSec=2h
