@@ -1932,6 +1932,52 @@ PASS is DURATION_ONLY for the three rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## claude/sharp-bardeen-ob6fn9 continued still increment: 1 file (2026-10-07)
+
+Reviewer: `claude-pr-review-continued-still`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is commit `043fc65d` ("fix(video): a clip continues only from the still the approved keyframes select") on branch claude/sharp-bardeen-ob6fn9. It is a follow-up on the task `2026-10-05-video-consumer-selected-image-hashes` (owner `claude-opus-5-5-image-bytes`) after a Codex review of PR #1364. Scope: DURATION_ONLY for the one changed binding below. The reviewer wrote none of the commit, judged the bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `209db136`, the commit's parent, which changes only another task file (the claim of the speech API lost-answer task). Its parent `8df2b88e` is the receipt for the "claude/sharp-bardeen-ob6fn9 selected picture bytes review fixes increment" above. On this branch that increment's `685526bc` is `61dfaeff` (the same `git patch-id`), and `3aa7e512` after it changes only the unbound clips.mjs. `git diff 8df2b88e 043fc65d -- docs/videos/long-form/ tools/video/long-form/ tools/video/core/` is empty, and the whole of `git diff 8df2b88e 043fc65d` is the two task files, clips.mjs and clips.test.mjs. At `209db136` and at `8df2b88e`, clips.test.mjs hashes to its row in review.json and the table (by `git show` piped to `sha256sum`), and review.md hashes to the receipt's `report_sha256`. The working tree's copy of clips.test.mjs equals `043fc65d`'s and holds no CR byte. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/media/clips.test.mjs` and nothing else. The commit also changes the unbound tools/video/media/clips.mjs and the task file. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with one hash rebound and the other 107 unchanged.
+
+What the change is. In `run`'s shot loop in the unbound clips.mjs, a shot whose `start_frame.shot` is a still continues from that still's record in clips/manifest.json. The run that includes the still writes that record, so for a still outside `--shot` it can be from an earlier run, and until now `uploadApproved()` only hashed it against itself. The record must now name the same `file` and `sha256` as `keyframes.shots[start_frame.shot]`, the manifest the storyboard approval covers. Otherwise the run throws a `UsageError` (exit 2) that names both files and says "run clips --shot <still> first". The bound clips.test.mjs gains one test of it. This section asks only whether any of it reaches a length rule. In particular: whether the test changes or weakens a duration assertion, the fixture's timeline or the opt-out, and whether the check changes a clip's requested seconds, clip key or request.
+
+Findings, tools/video/media/clips.test.mjs (+28/−0, 88,553 → 91,132 bytes; 30 tests at the head by `node --test`, 29 at the baseline). The baseline's 1,183 lines are the head's first 1,183 lines, byte for byte. So the change is one appended test (a blank line and 27 lines), and no existing test or assertion is changed. The test:
+
+- makes `sea-storm` a still in its own `prepared()` copy, with the same mutation as the test before it. `prepared()` writes the mutated doc before `writeSyntheticNarration` builds the timeline, which does not read `data.visual`, and before the keyframes manifest is hashed. It approves the look and the storyboard and runs `clips --shot sea-storm`, which exits 0 and records the still;
+- writes a second picture, `keyframes/sea-storm-2.png`, and points the keyframes manifest's `sea-storm` record at it. The old record is spread, so `look_hash`, `visual_hash`, the seed, the judge and `needs_review` stay. It approves the storyboard again, and the old file stays;
+- runs `clips --shot bird`, which must exit 2 with the disagreement message, make no clip request for `bird`, and upload none of the old still's bytes;
+- runs `clips --shot sea-storm` again (exit 0) and then `clips --shot bird`, which must exit 0. It asserts that the bird request's last reference is the new picture's hash with the role `previous_frame`.
+
+The last `bird` run buys one clip from the fake site through the unchanged take loop, with the file's unchanged `context()` stubs: `clipQc` answers `goodProbe(wanted.requested)`, and `extractFrame` is a no-op. The test asserts no seconds, frames, probe or QC metric. Its "second" matches are a picture's text and a context's name. Its "frame" matches are keyframe files, the stub and the `previous_frame` role, and the `.length` and `.some` calls count requests and uploads. The lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` are the same 11 lines at both revisions, and the opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 23) is unchanged.
+
+The unbound clips.mjs change (+9/−2, 51,230 → 51,844 bytes), read for timing only. There is one hunk (baseline lines 394–395, head 394–402). Lines 1–393 are byte-identical at both revisions, and so is everything from baseline line 396 (head 403) to the end of the file. The check reads the clips manifest's record and `keyframes`, which `run` read at line 204 and matched to the current look and visual hashes. It sets only `label` and `approved`. It runs in the shot loop after `seconds = clipSeconds(neededFrames, durations, status.clip)` (line 378, unchanged) and the uploads of the shot's own start and end frames. It runs before the still's upload, the `previous_frame` reference, `clipKey` (line 429), the request and `stage.clip` (line 445), whose `generate` reserves the ledger row before it submits.
+
+- On the pass path the still's file and hash are the ones used before, and `label` is the string the old line built inline. So `continues`, the references, the clip key, the requested seconds and the request are unchanged.
+- On a refusal the run exits 2 before any request, take or ledger row for that shot. It adds a refusal and removes none. A still in the same run is recorded from the keyframes manifest just before the loop (line 358), so its record always agrees.
+
+Nothing changes a clip's requested or measured length, a take count, a fit or a QC metric. The file's 13 duration-term lines are the same set at both revisions.
+
+Ran (Node v22.22.0, Linux, in the checkout at `043fc65d`, node_modules installed, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing at `209db136` and `8df2b88e`, and `git patch-id` of `685526bc` and `61dfaeff`;
+- `git show 043fc65d` of clips.test.mjs and clips.mjs, read in full, with the test's helpers (`prepared`, `context`, `mediaSite`, `manifestOf`);
+- byte comparisons of both files outside the change, changed-line scans, and duration-term counts at both revisions;
+- reads of `run` in clips.mjs from its argument parsing to the first `stage.clip`, `uploadApproved`, `Stage.clip` and `generate` in media/stages.mjs, `writeSyntheticNarration`, and `EXIT` in tools/video/cli.mjs;
+- the baseline's tools/video and docs/videos from `git archive 209db136`, with its package.json and a link to this checkout's node_modules, in a scratch directory. There `node --test` passed the baseline clips.test.mjs 29 of 29, and the head's new test, run against the baseline clips.mjs, failed: the first `bird` run exits 0, not 2.
+
+Before rebinding, `node --test` passed clips.test.mjs 30 of 30. `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same path. The CLI check and the long-form tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the check itself: refusing rather than rewriting the still's record, comparing the record with the keyframes manifest, the remedy the message names, or the refusal coming after the shot's own uploads.
+- The unbound clips.mjs is read for timing only and is not reviewed otherwise; the task file is not reviewed.
+- No real video was written, linted, voiced, drawn, assembled or measured, and the tests run under the opt-out.
+- Not run or seen: the rest of the tool, Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, and the production host.
+- The 107 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2027,7 +2073,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
-| `tools/video/media/clips.test.mjs` | `52e65d2d4486b763205f99249851806cd81d7e5dd4a9c9f857378e48ecdbd954` |
+| `tools/video/media/clips.test.mjs` | `42c601993beaa7aa3dc238ba8ab842ae19a08d9d6eb1377d43405f92df244c1c` |
 | `tools/video/media/look-keyframes.test.mjs` | `3413923fc1485cc03ffd29a18594c8ae48280710e1b81d7f6882d6f76db8f954` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `3f81ff3bfb8b600f06c1ba54bc72e685b74ff8bcbd1f096b7b5d4b77ff9d175d` |
