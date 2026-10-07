@@ -89,6 +89,8 @@ test("a paid request sent and left without its answer is sent once and names the
     ["an upstream_unavailable no speech route answers", () => problem(503, "upstream_unavailable"), 503],
     // The API's rate limiter answers its code only as a 503.
     ["a rate_limit_unavailable at another status", () => problem(500, "rate_limit_unavailable"), 500],
+    // Jev's unset key answers its code only as a 503.
+    ["a provider_unavailable at another status", () => problem(500, "provider_unavailable"), 500],
     ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
     ["an error whose detail runs over lines", () => Response.json({ detail: "Internal\nServer Error\n" }, { status: 500 }), 500],
     ["an answer that breaks off", brokenBody, 200],
@@ -196,6 +198,8 @@ test("the owner's problems and a spent budget are told after one request, with t
     [PAID[0], () => problem(429, "video_speech_budget_exhausted"), "service"],
     [PAID[1], () => problem(503, "video_speech_not_configured"), "owner"],
     [PAID[2], () => problem(429, "jev_budget_exhausted"), "service"],
+    // Jev's key not set: raised before any Jev call (2026-10-07-jev-s-unconfigured-503-is-held-as).
+    [PAID[2], () => problem(503, "provider_unavailable"), "owner"],
     [PAID[3], () => problem(422, "video_speech_voice_not_allowed"), "owner"],
     [PAID[3], () => problem(429, "video_speech_budget_exhausted"), "service"],
   ];

@@ -60,6 +60,8 @@ const LOST = [
   ['an upstream_unavailable no judge route answers', () => json({ code: 'upstream_unavailable', detail: 'API 服務目前無法回應' }, 503), 503],
   // The API's rate limiter answers its code only as a 503.
   ['a rate_limit_unavailable at another status', () => json({ code: 'rate_limit_unavailable', detail: '安全驗證服務暫時無法使用' }, 500), 500],
+  // Jev's unset key answers its code only as a 503.
+  ['a provider_unavailable at another status', () => json({ code: 'provider_unavailable', detail: '?' }, 500), 500],
 ];
 
 test('a policy judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, a lost answer', async () => {
@@ -109,6 +111,10 @@ test('a judge\'s refusal is thrown after one request, with its status and code',
     await assert.rejects(client.judgePolicy(BODY), (error) => error instanceof SiteError && error.status === status && error.code === code && error.message === detail);
     assert.equal(calls.length, 1, `${status}`);
   }
+  // Jev's key not set, raised before any Jev call: the owner's, never a lost verdict.
+  const { client, calls, sleeps } = recording(() => json({ code: 'provider_unavailable', detail: '尚未設定 Jev API 金鑰' }, 503));
+  await assert.rejects(client.judgePolicy(BODY), (error) => error instanceof SiteError && error.status === 503 && error.code === 'provider_unavailable' && error.who === 'owner' && error.message === '尚未設定 Jev API 金鑰');
+  assert.deepEqual([calls.length, sleeps.length], [1, 0]);
 });
 
 test('the other requests keep their retries: reads, reviews and uploads spend nothing', async () => {

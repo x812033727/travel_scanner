@@ -33,6 +33,11 @@ export class SpeechError extends Error {
 }
 
 const OWNER_CODES = new Set(["video_tool_token_invalid", "video_speech_not_configured", "video_speech_voice_not_allowed"]);
+// Jev's answer when its key or URL is not set (apps/api/app/ai/jev.py jev_client), raised before
+// any Jev call or quota: a setting for the owner, with nothing that may have run. Only with its
+// 503; the code with another status came from something else and stays uncertain.
+const JEV_NOT_SET = { status: 503, code: "provider_unavailable" };
+const ownersAnswer = (status, code) => status === 401 || OWNER_CODES.has(code) || (status === JEV_NOT_SET.status && code === JEV_NOT_SET.code);
 const RETRYABLE_CODES = new Set(["video_speech_upstream_busy", "rate_limit_exceeded", "video_speech_upstream_failed", "upstream_unavailable"]);
 // A paid request's 5xx the API answers itself (apps/api/app/video_speech/admin_api.py; synthesis
 // gives the reserved characters back first), retried as before: the API reached the provider's
@@ -141,7 +146,7 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts, paid 
     if (response.ok) return response;
     const problem = await problemOf(response);
     const message = problem.detail || `HTTP ${response.status}`;
-    if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new SpeechError(message, { status: response.status, code: problem.code, who: "owner" });
+    if (ownersAnswer(response.status, problem.code)) throw new SpeechError(message, { status: response.status, code: problem.code, who: "owner" });
     // A spent budget stays spent for the rest of the month (speech) or day (Jev): do not retry.
     if (problem.code === "video_speech_budget_exhausted" || problem.code === "jev_budget_exhausted" || FINAL_CODES.has(problem.code)) {
       throw new SpeechError(message, { status: response.status, code: problem.code });

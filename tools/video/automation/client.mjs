@@ -49,6 +49,10 @@ const OWNER_CODES = new Set([
   // The Shorts settings name no tested model yet (docs/videos/SHORTS.md §端點): nothing ran.
   "video_ai_subject_not_chosen",
 ]);
+// Jev's answer when its key or URL is not set (apps/api/app/ai/jev.py jev_client), raised before
+// any Jev call or quota: a setting for the owner, with nothing that may have run. Only with its
+// 503; the code with another status came from something else and stays uncertain.
+const JEV_NOT_SET = Object.freeze({ status: 503, code: "provider_unavailable" });
 // What the tutorial and drama rounds ask the video list for: every video but the Shorts, so ninety
 // days of Shorts do not push them past the list's cap of 200 (docs/videos/SHORTS.md §資料模型).
 export const TUTORIAL_LIST = Object.freeze({ shorts: "exclude" });
@@ -151,7 +155,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       }
       const problem = await problemOf(response);
       const message = problem.detail || `HTTP ${response.status}`;
-      if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code, who: "owner" });
+      if (response.status === 401 || OWNER_CODES.has(problem.code) || (response.status === JEV_NOT_SET.status && problem.code === JEV_NOT_SET.code)) throw new AutomationError(message, { status: response.status, code: problem.code, who: "owner" });
       if (PAUSE_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code });
       if (paid && response.status >= 500 && !settles(settled, response.status, problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status, what);
       last = new AutomationError(message, { status: response.status, code: problem.code });

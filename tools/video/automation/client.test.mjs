@@ -213,6 +213,7 @@ test("a stage run sent and left without its answer is not sent again: the route'
     // Only the route's 502 says the API was never reached; no route answers the code otherwise.
     ["an upstream_unavailable no route answers", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 503 }), 503],
     ["an upstream_unavailable at a gateway's 504", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 504 }), 504],
+    ["a provider_unavailable at another status", () => Response.json({ code: "provider_unavailable", detail: "?" }, { status: 500 }), 500],
     ["a 502 with a code that settles nothing", () => Response.json({ code: "video_ai_run_uncertain", detail: "the stage may have run" }, { status: 502 }), 502],
     ["a rate_limit_unavailable at another status", () => Response.json({ code: "rate_limit_unavailable", detail: "安全驗證服務暫時無法使用" }, { status: 500 }), 500],
   ];
@@ -420,6 +421,14 @@ test("a judge's refusal is thrown after one request, with the status its callers
       await assert.rejects(client[method](body), (error) => error instanceof AutomationError && error.status === status && error.code === code && error.message === detail);
       assert.equal(calls, 1, `${method}, ${status}`);
     }
+    // Jev's key not set, raised before any Jev call: a setting for the owner, never a lost verdict.
+    let calls = 0;
+    const unset = automationClient({ ...credentials(sandbox()), fetch: async () => {
+      calls++;
+      return Response.json({ code: "provider_unavailable", detail: "尚未設定 Jev API 金鑰" }, { status: 503 });
+    }, sleep: async () => {} });
+    await assert.rejects(unset[method](body), (error) => error instanceof AutomationError && error.code === "provider_unavailable" && error.who === "owner" && error.status === 503);
+    assert.equal(calls, 1, `${method}: Jev's key not set`);
   }
 });
 

@@ -29,6 +29,11 @@ export const CHANNEL_VOICE = Object.freeze({
 export const DEFAULT_SETTINGS = Object.freeze({ voice: CHANNEL_VOICE, seconds_min: PROFILE.minSeconds, seconds_max: PROFILE.maxSeconds, locales: [], made_for_kids: false });
 
 const OWNER_CODES = new Set(['video_tool_token_invalid']);
+// Jev's answer when its key or URL is not set (apps/api/app/ai/jev.py jev_client), raised before
+// any Jev call or quota: a setting for the owner, with nothing that may have run. Only with its
+// 503; the code with another status came from something else and stays uncertain.
+const JEV_NOT_SET = { status: 503, code: 'provider_unavailable' };
+const ownersAnswer = (status, code) => status === 401 || OWNER_CODES.has(code) || (status === JEV_NOT_SET.status && code === JEV_NOT_SET.code);
 // Jev's policy reading takes one call off the daily Jev budget before Jev is asked
 // (apps/api/app/video_automation/judge.py `_ask`), so it is `paid`, as in
 // tools/video/automation/client.mjs: once sent, it is asked again only after a 429, the API's own
@@ -92,7 +97,8 @@ export function siteClient({ env = process.env, home, fetch: fetchImpl = globalT
         }
       }
       const problem = await response.json().catch(() => ({}));
-      const who = response.status === 401 || OWNER_CODES.has(problem.code) ? 'owner' : 'service';
+      const who = ownersAnswer(response.status, problem.code) ? 'owner' : 'service';
+      if (who === 'owner' && response.status >= 500) throw new SiteError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code ?? '', who });
       if (paid && response.status >= 500 && !settled(response.status, problem.code)) {
         throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ''}`, response.status);
       }

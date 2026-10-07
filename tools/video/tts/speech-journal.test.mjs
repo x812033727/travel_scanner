@@ -216,6 +216,8 @@ test("a request the API settled leaves nothing behind, so the next run may send 
   const cases = {
     "a voice not on the allowlist": { answers: [() => problem(403, "video_speech_voice_not_allowed")], posts: 1, who: "owner" },
     "a spent month": { answers: [() => problem(429, "video_speech_budget_exhausted")], posts: 1, who: "service" },
+    // Jev's key not set (speech/judge's answer before any Jev call): a setting, nothing to hold.
+    "Jev's key not set": { answers: [() => problem(503, "provider_unavailable")], posts: 1, who: "owner" },
     "a site that never answered": { answers: Array.from({ length: 5 }, () => () => { throw refused(); }), posts: 5, who: "service" },
   };
   for (const [what, { answers, posts, who }] of Object.entries(cases)) {
