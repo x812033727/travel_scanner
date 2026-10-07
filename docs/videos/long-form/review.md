@@ -2276,6 +2276,109 @@ PASS is DURATION_ONLY for the four rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1361 screenplay-discussion failure increment: 3 files (2026-10-07)
+
+Reviewer: `claude-pr-review-happy-carson`, the reviewer of the "PR #1361" sections above. It wrote none of the branch's commits, judged each bound diff on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-happy-carson`, the branch's author. The changes are two commits written on this branch under the ticket `2026-10-06-a-discussion-whose-writer-answer-was`, each with the repository's `Claude <noreply@anthropic.com>` git identity:
+
+- `df6427a7` ("fix(video): a screenplay discussion's failed request is its video's, not the end of every round");
+- `d283fe24` ("fix(video): a failed discussion keeps its paid plan, counts its own waits and never holds every thread for good").
+
+Scope: DURATION_ONLY for the three changed bindings below, on claude/happy-carson-c1hy91 (draft PR #1361) at `411dd30a`. That is four first-parent commits on the previous increment's receipt commit `a9248a47`, one of them the merge `bb29bc8c` of origin/main `77a58c85` (#1365, #1366). The merge base with origin/main is now `77a58c85`.
+
+Baseline: `a9248a47`, 3 of 3 match. None of the four commits touches docs/videos/long-form/ or tools/video/long-form/. At `a9248a47`, review.md (759,973 bytes) hashes to `655ee648de1429b61cf7f320ad80efa103fddb3b8a8f1436b0f4c6ab73607bf7`, the report_sha256 that review.json held before this increment. At `a9248a47`, `git show <path> | sha256sum` equals the value in review.json and in the table for each file:
+
+- tools/video/automation/discuss.mjs (18,462 bytes) `74ad92a459787188cf2b64ee7663ae31ed5629ffc54fc9cc9fe8a8888964078c`;
+- tools/video/automation/flow.mjs (235,274) `a6b26dd17383b91d7d004d44341d87dc595d498d2bd04750372e05fd4dbaccbe`;
+- tools/video/automation/series.test.mjs (145,500) `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c`.
+
+So each file's diff against `a9248a47` is exactly the unreviewed change. Each commit's first-parent paths intersected with the 108 paths of REVIEW_FILES:
+
+- `df6427a7` touches the three files. Its other path is the ticket.
+- `d283fe24` touches the three files. Its other paths are tools/video/automation/discuss.test.mjs, .agents/skills/youtube-video/references/series.md and the ticket; review.mjs names neither discuss.test.mjs nor the series reference.
+- `411dd30a` (the closed ticket) touches no bound path.
+- The merge `bb29bc8c` brings in 90 paths of main's #1365 and #1366 (article content, guide JSON and diagrams, the article-localization tools and skill reference, tasks), none of them bound and neither receipt file. `durationReviewProblems` passes against main's own tree at `77a58c85`.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these three and nothing else, so the other 105 bindings equal their working-tree bytes. The working tree equals the head for the three files. None holds a CR byte or a BOM, and each ends in LF. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with three hashes rebound and the other 105 unchanged.
+
+What the change is. A failure of a screenplay discussion's writer request used to leave the step as an exception, except for a gone job, so the run ended there every round. It is now sorted as the video's own writer's would be. `move()`'s catch becomes `Automation.sortFailure`/`sortedFailure`, which `answerHeld` also calls with `sends` (what a retry sends) and `line` (the owner's message id, saved as `blocked_line` with any block). Unless the failure ends in a block, `blocked_line` is removed again. A discussion's own deferrals count in `discussion_waits` instead of the unit's `defer_count`, which `moved()` clears. A thread on a series document has no video to block. There, `answerDocument` sorts the error with `threadScope` and keeps `waits`/`lost` notes in `_series/<slug>/threads.json`. A lost answer is told once, a refusal is answered once, and a request that cannot finish waits for up to `deferLimit` rounds before the owner is told. A line on a video blocked for its own reasons is answered with `blockedReply` instead of the false "no screenplay here". The owner's retry clears `blocked_line` and `discussion_waits`. This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/automation/flow.mjs (+86/−24, 235,274 → 239,147 bytes; `df6427a7` +48/−22, `d283fe24` +43/−7). The hunks are:
+
+- `this.deferLimit = DEFER_LIMIT` (833–834);
+- `unanswered`'s `sends` and its wording (1202–1209);
+- the retry's two added deletions (1442–1443);
+- `move()`'s catch replaced by `return this.sortFailure(state, error)` (1523);
+- `threadScope`, `sortFailure` and `sortedFailure` (1529–1604).
+
+The duration code is outside every hunk:
+
+- the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29);
+- `slidesMinutes` and `episodeMinutes` (63–69);
+- the anime `body_target_seconds / 60` settlement (490);
+- the planner and writer payloads' `target_minutes` (1734–2081, 2502–2531, 2867).
+
+`DEFER_BASE_MS`, `DEFER_MAX_MS`, `DEFER_LIMIT` and `DEFER_REPORT_FROM` (536–549) and `defer()` are byte-identical at both revisions. The new code only reads `DEFER_LIMIT` (as `deferLimit`) and passes `defer()` the options it already took. The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` number 20 at both revisions. No changed line names one of them, minutes, seconds, a frame, `fps`, a floor, `total_frames`, process.env, QA or lint.
+
+- With no `sends` and no `line`, `sortedFailure` is `move()`'s former catch line for line: the same codes, the same order and the same block, defer and `jobGone` calls (jobGone already took `sends`). So the unit's handling is unchanged.
+- With a `line`, the only difference is the deferral's row. `defer_count`/`defer_shared` are seeded from `discussion_waits` for that line, and `defer()` gets a `blocked` reason, so the row reaches `defer()`'s unchanged limit instead of restarting each round. This changes when a video waits or blocks. It marks no step done and writes no video.json.
+- `threadScope` only maps an error to "run", "lost" or `errorScope`'s answer.
+
+Findings, tools/video/automation/discuss.mjs (+111/−15, 18,462 → 25,059 bytes). The hunks are:
+
+- the paths import gaining `atomicWrite` and `readJson` (13);
+- the four reply texts and `threadNotes` (41–61);
+- `answerDocument`'s held-line check, notes and failure sorting (128–186);
+- `answerScript`'s docblock and its blocked-video branches (249–285);
+- `answerHeld`'s catch and its clearing of `discussion_waits` (326–339).
+
+The file's length-related code is outside every hunk: the document payload's `runtime_spec` and `target_minutes` (84, 91) and the `saveAndLint` of an accepted revision (356). In `answerHeld`, the new catch takes every AutomationError but OUTPUT_INVALID, including any error from a long anime's `animeRewrite`. It returns through `sortFailure` before a revision exists, so no revision is written, and no revision reaches the site without `saveAndLint` and its length lint. `runSlugs?.delete(state.slug)` only keeps a paid plan's receipt from being settled with this unit. The file's lines naming target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, duration, minutes, `effectiveEpisodeMinutes` or `minEpisodeMinutes` number 2 at both revisions. No changed line names a length or process.env.
+
+Findings, tools/video/automation/series.test.mjs (+243/−3, 145,500 → 164,850 bytes; 48 top-level tests at the head, 42 at `a9248a47`; 69 of 69 by `node --test`). `durableDiscussion` gains a `durable` option, `refuseDirect` for the non-durable POST and `failNew` for jobs failed before dispatch. `firstLane`, `listedVideo` and `documentThread` are added. Six tests are added:
+
+- a lost discussion answer blocks as `uncertain:writer` and the retry sends it once;
+- a line on a video blocked for its own reasons is answered so;
+- a refused request blocks with the reason;
+- a request that cannot finish waits, counted on its own, and blocks as `deferred:writer` after six waits;
+- without durable runs, a lost answer is not sent again;
+- a document thread's lost, refused and waiting cases, including a reply that could not go up and six rounds.
+
+Their numbers are request, answer and round counts, exit and HTTP codes, and `ctx.sleep` to each `deferred_until`. One assertion message names `DEFER_LIMIT`, and none sets it. No length is asserted, and no changed line reads or sets process.env. The file's opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 31) is unchanged, and its duration-term lines (same pattern as discuss.mjs) number 26 at both revisions. Every helper the added lines use (`screenplayAtTheGate`, `messageJob`, `fakeSite`, `context`, `smallRefs`, `automationClient`, `sandbox`, `readJson`, `SERIES`) is already defined or imported at `a9248a47`.
+
+Across the three diffs there is no change to any of these: the 600/780-second targets, the 480-second / 14,400-frame measured floors, the eight-minute floor on every video but a drama, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened. A case-insensitive scan covered the changed lines of the three files. It looked for minute, MIN_EPISODE, 480, 14400, 14,400, 600, 780, runtime, target_, action_seconds, covered, source_hash, plans.json, policy.json, floor, total_frames, duration, seconds, frame, fps, process.env, DEFER_LIMIT, DEFER_BASE_MS, DEFER_MAX_MS, 分鐘, 秒 and 時長. Its only hits are the `deferLimit = DEFER_LIMIT` read and the test message above.
+
+Unbound context, not reviewed: discuss.test.mjs (+26), the series skill reference, the tickets and the merged #1365/#1366 paths.
+
+Ran (Node v22.22.0, Linux, in the repository checkout at `411dd30a`, offline, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing (`git show a9248a47:<path> | sha256sum` against review.json and the table at `a9248a47`, and `sha256sum <path>`);
+- the report hash at `a9248a47`;
+- the CR, BOM and final-newline checks;
+- each commit's first-parent paths intersected with REVIEW_FILES, and REVIEW_FILES searched for discuss.test.mjs and the series reference;
+- `durationReviewProblems` against `77a58c85` through `git show`;
+- a reading of `git diff a9248a47..HEAD -- tools/video/automation/discuss.mjs tools/video/automation/flow.mjs tools/video/automation/series.test.mjs` in full, per-commit numstats, and reads of `defer()`, `moved()`, `jobGone`, `errorScope`, `answerHeld` and the DEFER constants at both revisions;
+- the duration-term counts and the scan.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` with the three stale bindings above and exited 1. On the branch's bytes, each of these exited 0:
+
+- `node --test tools/video/automation/series.test.mjs`, 69 of 69;
+- `node --test tools/video/automation/discuss.test.mjs`, 7 of 7;
+- `node --test tools/video/automation/automation.test.mjs`, 179 of 179;
+- `node --test tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs tools/video/qa/duration.test.mjs tools/video/core/lint.test.mjs`, 62 of 62.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the discussion failure handling itself. That covers the error sorting, `blocked_line`, `discussion_waits` seeding the video's `defer_count`, `threads.json`, the four replies and their wording, the held-line rules, and the receipt left unsettled.
+- The unbound files named above were not reviewed.
+- No real discussion, writer, planner or site was exercised, and the tests run under the opt-out.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 105 bindings these commits did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2333,11 +2436,11 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
 | `tools/video/automation/automation.test.mjs` | `84407f5d1729cfb8856224efd1731cdd407d584831c5e9096497a1c4f4a7f3b1` |
-| `tools/video/automation/discuss.mjs` | `74ad92a459787188cf2b64ee7663ae31ed5629ffc54fc9cc9fe8a8888964078c` |
-| `tools/video/automation/flow.mjs` | `a6b26dd17383b91d7d004d44341d87dc595d498d2bd04750372e05fd4dbaccbe` |
+| `tools/video/automation/discuss.mjs` | `51216554740c782f44210662a1590983914b1050019101cfb4dda3f5457cc5e3` |
+| `tools/video/automation/flow.mjs` | `516d8264423d7196cb495b97e87e43254f8bb5a426de632b7de3631e5ba41e67` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
-| `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |
+| `tools/video/automation/series.test.mjs` | `b35e07ada463f3c09fec17aac400435e1e6a35cda998717b332890e9f5f5cfea` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
