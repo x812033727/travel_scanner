@@ -2088,6 +2088,80 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1361 pending-writer line and video-tests job increment: 3 files (2026-10-07)
+
+Reviewer: `claude-pr-review-happy-carson`, the reviewer of the "PR #1361" sections above. It wrote none of the branch's commits, judged each bound diff on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-happy-carson`, the branch's author. The changes are three commits written on this branch, each with the repository's `Claude <noreply@anthropic.com>` git identity:
+
+- `97a928fd` ("fix(video): a pending writer says why its receipt could not be read");
+- `3ac61026` ("fix(video): a pending writer cut off by its own poll budget is still reported running");
+- `ec542c74` ("ci: the tools tests that need ffmpeg or Chromium run in a required job").
+
+Scope: DURATION_ONLY for the three changed bindings below, on claude/happy-carson-c1hy91 (draft PR #1361) at `81b228c6`. That is six linear commits on the previous increment's receipt commit `1bd68d5e`, with no merge, still on origin/main `ddbf0e4b` (#1355).
+
+Baseline: `1bd68d5e`, 3 of 3 match. None of the six commits touches docs/videos/long-form/ or tools/video/long-form/. At `1bd68d5e`, review.md (734,647 bytes) hashes to `097014e0b802e890e6de9c13632507599fbe6f077a984c4c743e2197025aadee`, the report_sha256 that review.json held before this increment. At `1bd68d5e`, `git show <path> | sha256sum` equals the value in review.json and in the table for each file: docs/videos/DESIGN.md (22,050 bytes) `55cd021813e3bb30941b41e55518a8a589a88cdb98924ef1a0ec74074d00fc14`, tools/video/automation/flow.mjs (233,976) `e4d6365b985d944c20d8449517388888e78135208b21ffafeb54d477594229f7` and tools/video/automation/automation.test.mjs (421,390) `f8dfd8d7513385f4da1ef9abbff0ede2a7f022385a645c95aadbde3b3462e33a`. So each file's diff against `1bd68d5e` is exactly the unreviewed change.
+
+Each commit's paths intersected with the 108 paths of REVIEW_FILES:
+
+- `97a928fd` and `3ac61026` touch flow.mjs and automation.test.mjs. Their other paths are tools/video/automation/client.mjs, client.test.mjs and the ticket.
+- `ec542c74` touches DESIGN.md. Its other paths are the CI workflows ci.yml and video-tooling.yml, .github/BRANCH_PROTECTION.md, the dev-and-ci skill (both copies), tools/docs-videos-tests.test.mjs, tools/reference-analysis.test.mjs and the ticket.
+- `bddf0103` (client.test.mjs and a ticket), `ad1e93ac` (tools/video/tts/client.mjs, its test and tickets) and `81b228c6` (tools/video/automation/client.mjs, tools/video/shorts/site.mjs, their tests and a ticket) touch no bound path.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these three and nothing else, so the other 105 bindings equal their working-tree bytes. The working tree equals the head for the three files. None holds a CR byte or a BOM, and each ends in LF. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with three hashes rebound and the other 105 unchanged.
+
+What the changes are. A writer still pending (`RUN_PENDING`) was always logged as "still running". The durable client (client.mjs, unbound) now puts the cause of its last failed look at the server on the error, as `polling` (a 429 on the receipt, say), together with the server's last `receipt_status`. The worker's line then says which case it is: a running job, a saved run that could not be looked up, or a request that got no answer the client could read. DESIGN.md's note on `npm run test:tools` now says that a few tests need ffmpeg or Chromium and where they run. This section asks only whether either change reaches a length rule.
+
+Findings, tools/video/automation/flow.mjs (+17/−1, 233,976 → 234,921 bytes; `97a928fd` +16/−1, `3ac61026` +4/−3). There are two hunks. One adds `pendingLine()` (lines 556–571). The other replaces the fixed text of `what` in `step()`'s `RUN_PENDING` catch with `pendingLine(error)` (line 1231). `pendingLine` reads `error.stage`, `error.polling` and `error.receipt_status` and returns one of three strings. Everything around it is unchanged:
+
+- the `pendingUntil` rest of `PENDING_RECHECK_MS`;
+- the choice between a video's line and `later()`;
+- the `RUN_PENDING` test that decides whether the catch applies;
+- the `settleRuns` after it.
+
+No step, state field, request key, receipt or round changes, and the string is only the run's log line. The duration code is outside both hunks:
+
+- the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29);
+- `slidesMinutes` and `episodeMinutes` (63–69);
+- the anime `body_target_seconds / 60` settlement (490);
+- the planner and writer payloads' `target_minutes` (1672–2019, 2440–2469, 2805).
+
+The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` number 20 at both revisions. No changed line names one of them, minutes, seconds, a frame, `fps`, a floor or `total_frames`.
+
+Findings, tools/video/automation/automation.test.mjs (+31/−0, 421,390 → 423,776 bytes; 142 top-level tests at the head, 141 at `1bd68d5e`; 178 of 178 by `node --test`). The `durableJobs` fake gains a `refusing` answer for job submissions and two hooks: `found`, which forgets a lost receipt, and `refuse`, which sets or clears that answer. One test is added. A writer whose finished job's receipt meets a 429 gets the "could not be looked up" line, and then the job's answer is taken with one submission. A writer whose submission meets a 429 gets the "no answer the client could read" line, and then one job under one key. Its numbers are status codes, submission counts and the job count. No length is asserted, and no added line reads or sets process.env. The opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at the top of the file is unchanged. The file's lines naming target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, duration, minutes, `effectiveEpisodeMinutes` or `minEpisodeMinutes` number 41 at both revisions.
+
+Findings, docs/videos/DESIGN.md (+1/−1, 22,050 → 22,278 bytes; `ec542c74`). Only line 151, in the development-environment notes, changes. It used to say that every `tools/video/**/*.test.mjs` test is a pure function. It now says that most are, and that the few needing ffmpeg or Chromium (H.264 joins, the brightness probe, the from-drama Short and two browser regressions) skip in web-checks and run in ci.yml's required `video-tests` job, where a skip for a missing tool fails. The length rules in the file are not in the hunk: the 8-minute floor and default targets in the table (line 16), the long-form plans' targets (19), the chapter rule (129) and the illustrated slide pace (143). The file's lines naming 分鐘, 秒, 480, 600, 780, 14400, minute, MIN_EPISODE, target_minutes, runtime_spec, action_seconds or 時長 number 10 at both revisions.
+
+Across the three diffs there is no change to any of these: the 600/780-second targets, the 480-second / 14,400-frame measured floors, the eight-minute floor on every video but a drama, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. No duration assertion is removed or loosened. A case-insensitive scan of the changed lines in the three files found nothing. It looked for minute, MIN_EPISODE, 480, 14400, 14,400, 600, 780, runtime, target_, action_seconds, covered, source_hash, plans.json, policy.json, floor, total_frames, duration, seconds, frame, fps, 分鐘, 秒, 時長 and 長度.
+
+Unbound context, not reviewed. By the commit messages, client.mjs and client.test.mjs carry the `polling` and `receipt_status` fields, clear the cause once a read succeeds and keep the server's word when the round's own budget cuts the last read. The CI workflows, the guard test, the skill copies and branch protection notes make up the video-tests job. `bddf0103`, `ad1e93ac` and `81b228c6` change the speech, automation and Shorts clients' retries and their tests. None of these paths is in REVIEW_FILES.
+
+Ran (Node v22.22.0, Linux, in the repository checkout at `81b228c6`, offline, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing (`git show 1bd68d5e:<path> | sha256sum` against review.json and the table at `1bd68d5e`, and `sha256sum <path>`);
+- the report hash at `1bd68d5e`;
+- the CR, BOM and final-newline checks;
+- each commit's paths intersected with REVIEW_FILES;
+- a reading of `git diff 1bd68d5e..HEAD -- docs/videos/DESIGN.md tools/video/automation/flow.mjs tools/video/automation/automation.test.mjs` in full, per-commit numstats, and a reading of `step()`'s `RUN_PENDING` catch and the `durableJobs` fake;
+- the duration-term counts and the scan.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` with the three stale bindings above and exited 1. On the branch's bytes, each of these exited 0:
+
+- `node --test tools/video/automation/automation.test.mjs`, 178 of 178;
+- `node --test tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs tools/video/qa/duration.test.mjs tools/video/core/lint.test.mjs`, 62 of 62.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the pending-writer lines or their wording, the client's `polling` and `receipt_status` bookkeeping, or the `video-tests` job and its skip guard.
+- The unbound files named above were not reviewed.
+- No real writer, job or CI run was exercised, and the tests run under the opt-out.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 105 bindings these commits did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2128,7 +2202,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/web/messages/ko/admin.json` | `cda8d08a9037f3bcbfb58cf25498aef82852da5ff1fad69e02c2e41d5505aa78` |
 | `apps/web/messages/zh-CN/admin.json` | `5684abdbabc109d94d7c074ad52ef01010f11cc3a4ddc9b7ea3d768e3ed9826b` |
 | `apps/web/messages/zh-TW/admin.json` | `7cf0ece3332b44d82b10f46898ea2763d463b32173be19546196ecdadc9ca491` |
-| `docs/videos/DESIGN.md` | `55cd021813e3bb30941b41e55518a8a589a88cdb98924ef1a0ec74074d00fc14` |
+| `docs/videos/DESIGN.md` | `b781b65db78c9ffb97a6915df3d254d1878e26d4c0a31620c61de01edbf73285` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
 | `docs/videos/README.md` | `08a49222ddb89e98c97f6c160e82786a1dda711e5b7e9037ec500985e8abda29` |
@@ -2144,9 +2218,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `f8dfd8d7513385f4da1ef9abbff0ede2a7f022385a645c95aadbde3b3462e33a` |
+| `tools/video/automation/automation.test.mjs` | `18a79ba11bac24554e23d4a3fc062278f08749070130acc1c3c92a1d2058d4b2` |
 | `tools/video/automation/discuss.mjs` | `74ad92a459787188cf2b64ee7663ae31ed5629ffc54fc9cc9fe8a8888964078c` |
-| `tools/video/automation/flow.mjs` | `e4d6365b985d944c20d8449517388888e78135208b21ffafeb54d477594229f7` |
+| `tools/video/automation/flow.mjs` | `9e2b53a475d34eaa6baa64940dc5496e30c1b998030a57515dd0be7fd0b1712e` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |
