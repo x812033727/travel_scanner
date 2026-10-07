@@ -1,18 +1,19 @@
 ---
 id: 2026-10-07-deployment-agent-an-unreadable-staged-release
 title: Deployment agent: an unreadable staged-release root reads as no staged release
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-staged-guard
 claimed_at: 2026-10-07T04:19:11Z
 created_at: 2026-10-07T04:01:01Z
-completed_at:
+completed_at: 2026-10-07T05:06:28Z
 branch: claude/happy-carson-c1hy91
 depends_on: []
 scope:
   - apps/api/deployment_agent/release_guard.py
   - apps/api/tests/test_deployment_center.py
+  - ops/deployer/README.md
 ---
 
 # Deployment agent: an unreadable staged-release root reads as no staged release
@@ -32,15 +33,15 @@ rule 1 is asked. It matters once the host gives the agent read access to the hol
 
 ## Definition of done
 
-- [ ] A staged-release root that exists but cannot be listed refuses with
+- [x] A staged-release root that exists but cannot be listed refuses with
       `deployment_staged_release_in_progress` and a reason that says it could not be read; a root
       that does not exist still holds no staged release.
 
 ## Steps
 
-- [ ] List the root with `os.scandir` (or `iterdir`) so a PermissionError surfaces, keep
+- [x] List the root with `os.scandir` (or `iterdir`) so a PermissionError surfaces, keep
       FileNotFoundError as "none", and refuse on any other OSError.
-- [ ] Test with a root that is a file (NotADirectoryError stands in for EACCES when tests run as
+- [x] Test with a root that is a file (NotADirectoryError stands in for EACCES when tests run as
       root) and with a missing root.
 
 ## How to verify
@@ -51,3 +52,18 @@ rule 1 is asked. It matters once the host gives the agent read access to the hol
 
 - Found 2026-10-07 by claude-opus-5-5-deploy-hold while reconciling a parallel implementation of
   2026-10-07-deployer-agent-honors-deploy-hold with #1360.
+- Done 2026-10-07 by claude-opus-5-5-staged-guard. `staged_release_reason()` lists the root with
+  `iterdir()` (FileNotFoundError is "none", any other OSError refuses), and a `mokaair-*`
+  directory whose `state.json` cannot be stat'ed or read refuses too. It looks at every release
+  directory before reporting an unreadable one, so a release that is definitely staged is named
+  even when an older directory beside it cannot be read. An unreadable hold now says "could not
+  read the hold file" instead of "hold file exists", since a 0700 `/root` gives the same
+  PermissionError either way.
+- Tests: a file standing in for the root (NotADirectoryError), a directory standing in for
+  `state.json` (read fails), and a patched `Path.stat`/`Path.read_text` raising PermissionError,
+  which is what the agent gets on the host; tests run as root and cannot get it from chmod.
+- Consequence an independent review found: the drivers create `/root/mokaair-*` 0700 as root,
+  so an agent given read access to `/root` alone refuses on every release directory for as long
+  as it exists, not for 24 hours, because the age of a state file it cannot stat is unknown.
+  That is the safe side; `ops/deployer/README.md` now says so, and the access the agent needs
+  (or a marker it can read instead) is 2026-10-07-deployment-agent-needs-read-access-to.
