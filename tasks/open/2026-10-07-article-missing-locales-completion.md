@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-10-07T04:49:38Z
 completed_at:
-branch: codex/article-missing-locales-20261007
+branch: codex/article-locales-wave3-20261007
 depends_on: []
 scope:
   - docs/article-localization/coverage-20261007.md
@@ -78,7 +78,7 @@ the browser, including body, images, canonical, hreflang, links and mobile layou
   content and release tickets before changing article packs, images or release records.
 - No new translation or publication is claimed complete by this inventory.
 
-### 2026-10-07 authoring checkpoint and owner gate
+### 2026-10-07 original authoring checkpoint and owner gate (historical)
 
 First content PR #1365 is a draft at exact head
 `3812fe2c9ae8c58d1eb0373d22529e76a27349c7`; all 21 check runs completed with
@@ -105,3 +105,70 @@ or retain the draft. Until a choice arrives, keep production unchanged. Release
 this coverage-only claim while waiting; resume by reclaiming it and reading the
 persistent program state, exact current PR heads and fresh production guards.
 This overall task stays open until a fresh production count is zero.
+
+### Continued preparation after owner follow-up (historical checkpoint)
+
+The owner requested continuation. Reclaimed this coverage-only task on
+`codex/article-locales-wave3-20261007`, starting from the exact second content
+head. At that observation both draft PRs had all21 successful checks at their heads.
+No merge/deploy/publication choice was selected; preparation continues within
+the authorized translation/review scope while those concrete choices remain
+pending.
+
+Twelve existing life packs / 48 targets are undergoing current source, ownership
+and full independent text/image review. Separate six-pack content tasks will
+own any resulting corrections. Hong Kong entry and Taiwan holiday sources are
+being rechecked in parallel before new travel jobs. The original862-article
+queue and latest production gap counts are unchanged; preparation is not
+publication and this overall task is not done.
+
+Earlier continuation checkpoint: the12 life/48 target final independent reviews were
+aggregated verbatim (reviewSHA adbd51543953e233f37f32f3da5090037b998ecff963090bd14425677ad1aeb3;
+evidenceSHA4a2f4883988c3f93c4c33abff7cf1b2110666f8c5c10d35f26679898af451f3b).
+Official prospective compile is pending, so the prior18/72 completed local
+readiness checkpoint remains unchanged. Taiwan/HK8 new targets remain under
+final review;15 genuine Taiwan findings have been applied and rerendered with
+original/failing artifacts preserved. Wave4 read-only audits filed explicit
+Japan source-correction and Sapporo-route follow-ups without expanding wave3.
+Global original production deficit3448 and completed_publications=[] remain
+unchanged; no production content write, merge or deployment was performed by this program.
+
+### Complete third-cohort authoring handoff
+
+A later live observation confirms both first PRs were merged, at main commits
+`a5b6905ae8e48a24f461aef750b1d069c5d0af79` and
+`77a58c85a4912daad9a1d117364e5260d92a9cc6`. All240 first-eighteen content/media
+files match their historical reviewed bytes and landed main. The new third branch
+was rebased onto current main; no deployment or publication is inferred from merge.
+
+All14 fixed third-cohort articles/56 targets now have genuine independent final
+text/image/glyph/link reviews. Taiwan and Hong Kong completed unchanged official
+assembly/install/replay with exact real journals/backups/admission guards. The
+12 life/48 targets completed official prospective double-compilation on content
+freeze `c4d0ce50e693e2bfa1a26366378af6f02ec625c1`; all158 output files match,
+both verifications pass, and original review/source/database/media pins remain exact.
+Verification SHA
+`967d33f5393e479e73b571095474bd8fa08a6d4da56a60fddb64aea02310e48c`.
+Public-safe evidence is recorded in the five scoped review notes and coverage file.
+
+Authoring evidence now covers32 articles/128 targets (32 new,96 reviewed existing).
+The previous durable ledger checkpoint is18/72; update it only against the final
+third PR/head and its actual external compiler/installation evidence. Original
+862 queue rows, source holds,3448 production deficit and zero program publications
+must stay intact. The narrow release tickets and this global task remain open.
+
+Local scoped checks pass. The complete Windows tools run exited1 with existing
+platform issues and a newly filed project-lease test-import follow-up. The stock
+path assertion and Windows speech-journal rename are already tracked by
+`2026-10-07-accept-windows-separators-in-stock-fetch` and
+`2026-10-07-preserve-speech-journal-writes-through-windows` in open PR #1359,
+verified at head `908ca43e067a8b0238c58069dac932be65bcdb50`. The two duplicate
+unpublished tickets were removed after preserving their original evidence.
+The TTS STOP rename failed once in this broad run but passed alone; this does
+not establish a production cause or turn the broad run into a passing result.
+The stuck automation test child alone was verified and stopped; no provider
+process was touched. Exact final-head Linux CI remains required.
+
+Release this coverage-only scope when waiting for exact owner deployment choice.
+Continue next-wave source audits externally without adding them to the fixed14
+cohort. Do not mark this global task complete until a fresh public census is zero.
