@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-speech-api-tells-a-provider-answer
 title: Speech API tells a provider answer lost after sending apart from a provider failure
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-speech-lost
 claimed_at: 2026-10-07T04:23:15Z
 created_at: 2026-10-05T04:47:59Z
-completed_at:
+completed_at: 2026-10-07T05:01:15Z
 branch: claude/sharp-bardeen-ob6fn9
 depends_on: []
 scope:
@@ -20,6 +20,8 @@ scope:
   - apps/api/tests/test_video_speech_check.py
   - tools/video/tts/client.mjs
   - tools/video/tts/client.test.mjs
+  - tools/video/shorts/lab.mjs
+  - tools/video/shorts/lab.test.mjs
 ---
 
 # Speech API tells a provider answer lost after sending apart from a provider failure
@@ -110,3 +112,22 @@ tools/video/tts/tts.test.mjs`. No live provider is called.
   billed, but asking again is a policy choice, not an unknown outcome.
 - The align route (`speech/align`, paid for an Azure voice) has the same gap in its SDK path; it
   was outside this scope and is 2026-10-07-speech-align-route-tells-an-azure.
+- An independent review (2026-10-07, four lenses, each finding verified) confirmed one should-fix
+  outside the original scope. A Short (`shorts/lab.mjs` `LabShort.run`, which `CutShort` shares)
+  treated `SPEECH_UNCERTAIN` like any other owner error: it printed "waits for the owner" to the
+  worker's stdout and never called `block()`. So nothing reached /admin/videos, `next_job_for`
+  kept naming it, and the owner's retry did not apply. This change sends every provider read
+  timeout down that path, where before they were resent. The scope was widened to the two lab
+  files, which no active task held: `run()` now blocks the Short on `SPEECH_UNCERTAIN`, the
+  journal's later-round hold included, before the generic owner branch. The new
+  `lab.test.mjs` test fails on the old code.
+- Review nits taken: `UnsupportedProtocol` and `LocalProtocolError` are raised before a byte
+  leaves, so they join `NEVER_SENT` as in `jev.py`. The tests also pin `WriteError` as lost and
+  pin that `SpeechAnswerLost` is not a `SpeechUpstreamError`, and the transcription test's
+  key-leak assertion now has the key to look for.
+- Review nits left:
+  - `automation.test.mjs` `ERROR_SCOPES` does not list the new 504 code. The default already
+    puts it in the right scope ('wait', like `video_speech_answer_lost`), and the file is
+    duration-bound and outside this scope.
+  - Pre-existing: a refund (`release_azure_speech_characters` without `now`) is filed under the
+    month at release time, not the reservation's month.

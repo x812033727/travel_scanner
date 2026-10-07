@@ -256,8 +256,20 @@ async def test_azure_throttling_is_passed_on_and_the_reservation_refunded(speech
 
 # A connection that never opened carried nothing; any other failure of the POST may follow a
 # request Azure ran and billed.
-NEVER_SENT = [httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout]
-SENT_AND_LOST = [httpx.ReadTimeout, httpx.WriteTimeout, httpx.ReadError, httpx.RemoteProtocolError]
+NEVER_SENT = [
+    httpx.ConnectError,
+    httpx.ConnectTimeout,
+    httpx.PoolTimeout,
+    httpx.UnsupportedProtocol,
+    httpx.LocalProtocolError,
+]
+SENT_AND_LOST = [
+    httpx.ReadTimeout,
+    httpx.WriteTimeout,
+    httpx.ReadError,
+    httpx.WriteError,
+    httpx.RemoteProtocolError,
+]
 
 
 def _raising(error: type[httpx.TransportError]) -> httpx.MockTransport:
@@ -276,6 +288,8 @@ async def test_azure_tells_a_request_never_sent_from_one_whose_answer_was_lost(
     async with httpx.AsyncClient(transport=_raising(error)) as client:
         with pytest.raises((SpeechUpstreamError, SpeechAnswerLost)) as raised:
             await speech.synthesize("<speak/>", client)
+    # Not a SpeechUpstreamError, so a route that forgot it answers a 500, never the 502 resent.
+    assert not issubclass(SpeechAnswerLost, SpeechUpstreamError)
     if error in NEVER_SENT:
         assert type(raised.value) is SpeechUpstreamError and raised.value.status == 502
         assert str(raised.value) == f"Azure Speech unreachable: {error.__name__}"

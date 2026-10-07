@@ -181,8 +181,20 @@ async def test_a_rejected_key_is_reported_and_the_characters_refunded(gemini_app
 
 # A connection that never opened carried nothing; any other failure of the POST may follow a
 # request Gemini ran and billed.
-NEVER_SENT = [httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout]
-SENT_AND_LOST = [httpx.ReadTimeout, httpx.WriteTimeout, httpx.ReadError, httpx.RemoteProtocolError]
+NEVER_SENT = [
+    httpx.ConnectError,
+    httpx.ConnectTimeout,
+    httpx.PoolTimeout,
+    httpx.UnsupportedProtocol,
+    httpx.LocalProtocolError,
+]
+SENT_AND_LOST = [
+    httpx.ReadTimeout,
+    httpx.WriteTimeout,
+    httpx.ReadError,
+    httpx.WriteError,
+    httpx.RemoteProtocolError,
+]
 
 
 def _raising(error: type[httpx.TransportError]) -> httpx.MockTransport:

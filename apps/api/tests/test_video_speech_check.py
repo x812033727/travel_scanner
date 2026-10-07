@@ -316,14 +316,26 @@ async def test_transcription_failures_carry_the_upstream_status_and_are_logged(
 
 # A connection that never opened carried nothing; any other failure of the POST may follow a
 # clip Gemini transcribed and billed.
-NEVER_SENT = [httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout]
-SENT_AND_LOST = [httpx.ReadTimeout, httpx.WriteTimeout, httpx.ReadError, httpx.RemoteProtocolError]
+NEVER_SENT = [
+    httpx.ConnectError,
+    httpx.ConnectTimeout,
+    httpx.PoolTimeout,
+    httpx.UnsupportedProtocol,
+    httpx.LocalProtocolError,
+]
+SENT_AND_LOST = [
+    httpx.ReadTimeout,
+    httpx.WriteTimeout,
+    httpx.ReadError,
+    httpx.WriteError,
+    httpx.RemoteProtocolError,
+]
 REAL_TRANSCRIBE = checking.transcribe
 
 
 def _raising(error: type[httpx.TransportError]) -> httpx.MockTransport:
     def handler(request: httpx.Request) -> httpx.Response:
-        raise error("k https://generativelanguage.googleapis.com", request=request)
+        raise error("site-key https://generativelanguage.googleapis.com", request=request)
 
     return httpx.MockTransport(handler)
 

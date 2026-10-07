@@ -36,9 +36,17 @@ class SpeechAnswerLost(Exception):
     """
 
 
-# A connection that never opened cannot have carried the request, so the provider has not run
-# it. Anything else httpx raises during the POST may follow a request the provider already ran.
-NEVER_SENT = (httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout)
+# A connection that never opened cannot have carried the request, and httpx refuses a URL scheme
+# or a request it will not write before a byte leaves (as app/ai/jev.py counts them), so the
+# provider has not run it. Anything else httpx raises during the POST may follow a request the
+# provider already ran.
+NEVER_SENT = (
+    httpx.ConnectError,
+    httpx.ConnectTimeout,
+    httpx.PoolTimeout,
+    httpx.UnsupportedProtocol,
+    httpx.LocalProtocolError,
+)
 
 
 def transport_failure(
