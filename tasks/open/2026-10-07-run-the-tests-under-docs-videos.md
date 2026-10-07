@@ -1,14 +1,14 @@
 ---
 id: 2026-10-07-run-the-tests-under-docs-videos
 title: Run the tests under docs/videos in CI so the imported-language runner cannot drift unnoticed
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-docs-ci
+claimed_at: 2026-10-07T04:23:48Z
 created_at: 2026-10-07T03:55:50Z
 completed_at:
-branch:
+branch: claude/happy-carson-c1hy91
 depends_on: []
 scope:
   - package.json
