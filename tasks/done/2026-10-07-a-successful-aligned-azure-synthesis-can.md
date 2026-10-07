@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-a-successful-aligned-azure-synthesis-can
 title: A successful aligned Azure synthesis can return before its last boundary events arrive
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-align-late
 claimed_at: 2026-10-07T10:50:23Z
 created_at: 2026-10-07T09:11:57Z
-completed_at:
+completed_at: 2026-10-07T11:15:34Z
 branch:
 depends_on: []
 scope:
@@ -71,17 +71,31 @@ the review used, shows the burst case returning every boundary.
 - 2026-10-07 (claude-opus-5-5-align-late). `align.py` `synthesize_with_boundaries_blocking`
   connects `synthesis_completed` and `synthesis_canceled` to a `threading.Event`. After `.get()`
   it waits for that event, at most `_EVENTS_GRACE_SECONDS` (1 s), before it reads
-  `boundaries`. The SDK fires the event after the boundary events on its own thread, so the list
-  is whole by then. If the event never comes, the function warns in the log and goes on with
-  what arrived, as before. A cancellation waits for its own event the same way, so a late
-  boundary also counts toward `received`.
+  `boundaries`. The SDK runs the completion event on another native thread, but holds it back
+  until the boundary events have been dispatched, so a success's list is whole by then. If the
+  event never comes, the function warns in the log and goes on with what arrived, as before. A
+  cancellation's event can come before a pending boundary: what keeps such a synthesis lost is
+  the SDK's state in its text (`_STARTED`), and the wait only ends sooner there.
 - Tests (`test_video_speech_align.py`): `FakeSdk` gains both signals and fires the last one
   after the boundaries. With `late=True` it fires them on a thread after `.get()` returns, and
   `finishes=False` never fires the last one.
-  - Late boundaries are all returned, and a late boundary still makes a cancellation lost. The
-    cancellation's own event ends that wait well inside a 5 s grace.
+  - Late boundaries are all returned. A cancellation whose event comes before its boundary is
+    still lost by its text (`USP state: ReceivingData`), and its event ends the wait well inside
+    a 5 s grace.
   - A completion that never comes costs only the grace and logs the warning.
   - The late test fails on the old code. Not waiting, or not listening for the cancellation,
     each fails a test.
 - With the real SDK 1.52 against the burst stand-in, 30 runs each: the shipped code returned 0
   of 3 boundaries 3 times and 1 of 3 once; with the wait, 3 of 3 every time.
+- Review (2026-10-07, finding verified), with the real SDK against the stand-in. It found no
+  defect:
+  - Every boundary came back in 170 of 170 successes: 60 bursts, 40 with Python threads holding
+    the GIL, 40 with a slow handler, 30 paced. The old code lost them in 13 of 60 bursts.
+  - `synthesis_canceled` fired in every cancellation mode it tried, within 25 ms of `.get()`, so
+    the grace was never used.
+  - The wait is bounded and only sets an Event, so it adds no deadlock and no meaningful time
+    against the route's timeout.
+  It also showed that a cancellation's event can come before a pending boundary, and that the
+  events run on other native threads. The comment, this note and the late-cancel test (which
+  now fires the cancellation first and relies on the text) were corrected to say so. Removing
+  `_STARTED` now fails that test.

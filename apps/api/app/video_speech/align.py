@@ -428,9 +428,11 @@ def synthesize_with_boundaries_blocking(
     synthesizer.synthesis_word_boundary.connect(
         lambda event: boundaries.append(boundary_from_event(event))
     )
-    # The SDK fires its events on a thread of its own, and .get() can return before the last
-    # boundary events have reached the handler above. The completion or cancellation event comes
-    # after them on that thread, so the list is whole once it has fired.
+    # The SDK fires its events on threads of its own, and .get() can return before the last
+    # boundary events have reached the handler above. It holds back the completion event until
+    # those have been dispatched, so a successful synthesis's list is whole once it has fired. A
+    # cancellation's event can come before a pending boundary: what keeps such a synthesis lost is
+    # the SDK's state in its text (_STARTED), and the wait only ends there.
     finished = threading.Event()
     synthesizer.synthesis_completed.connect(lambda _event: finished.set())
     synthesizer.synthesis_canceled.connect(lambda _event: finished.set())

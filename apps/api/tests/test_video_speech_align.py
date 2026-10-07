@@ -193,7 +193,13 @@ class FakeSdk:
         RuntimeError = "runtime"
 
     def __init__(
-        self, result: Any, events: list[Any], *, late: bool = False, finishes: bool = True
+        self,
+        result: Any,
+        events: list[Any],
+        *,
+        late: bool = False,
+        finishes: bool = True,
+        cancel_first: bool = False,
     ) -> None:
         self.result = result
         self.events = events
@@ -202,6 +208,9 @@ class FakeSdk:
         # completion or cancellation event.
         self.late = late
         self.finishes = finishes
+        # `cancel_first`: a cancellation's event before the boundary events, as the real SDK's
+        # sometimes is.
+        self.cancel_first = cancel_first
         self.configs: list[Any] = []
         self.spoken: list[str] = []
         sdk = self
@@ -242,15 +251,20 @@ class FakeSdk:
             def _fire(self) -> None:
                 if sdk.late:
                     time.sleep(0.05)
+                completed = sdk.result.reason == FakeSdk.ResultReason.SynthesizingAudioCompleted
+                last = self.synthesis_completed if completed else self.synthesis_canceled
+
+                def finish() -> None:
+                    for handler in last.handlers:
+                        handler(SimpleNamespace(result=sdk.result))
+
+                if sdk.finishes and sdk.cancel_first:
+                    finish()
                 for event in sdk.events:
                     for handler in self.synthesis_word_boundary.handlers:
                         handler(event)
-                if not sdk.finishes:
-                    return
-                completed = sdk.result.reason == FakeSdk.ResultReason.SynthesizingAudioCompleted
-                last = self.synthesis_completed if completed else self.synthesis_canceled
-                for handler in last.handlers:
-                    handler(SimpleNamespace(result=sdk.result))
+                if sdk.finishes and not sdk.cancel_first:
+                    finish()
 
             def speak_ssml_async(self, ssml: str) -> Any:
                 sdk.spoken.append(ssml)
@@ -442,10 +456,13 @@ def test_boundaries_that_reach_the_handler_after_the_result_are_all_returned(
     audio, boundaries = synthesize_with_boundaries_blocking("eastasia", "k", "<speak/>")
     assert audio == WAV
     assert [b.text for b in boundaries] == ["你好", "世界", "。"]
-    # A boundary that came late still makes a cancellation lost.
-    details = SimpleNamespace(error_code="429", error_details="Connection was closed.")
+    # A cancellation whose event comes before its pending boundary: the SDK's state in the text
+    # keeps it lost, and the cancellation's event still ends the wait.
+    details = SimpleNamespace(
+        error_code="429", error_details=CLOSED.format(4429, "ReceivingData", 0)
+    )
     cancelled = SimpleNamespace(reason="canceled", audio_data=b"", cancellation_details=details)
-    late = FakeSdk(cancelled, [_event("你好", 50, 200)], late=True)
+    late = FakeSdk(cancelled, [_event("你好", 50, 200)], late=True, cancel_first=True)
     monkeypatch.setattr(align, "_speech_sdk", lambda: late)
     # The cancellation event ends the wait, not the grace.
     monkeypatch.setattr(align, "_EVENTS_GRACE_SECONDS", 5.0)
