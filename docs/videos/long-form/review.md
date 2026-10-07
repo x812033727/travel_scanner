@@ -1681,6 +1681,37 @@ PASS is DURATION_ONLY for the three rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## claude/sharp-bardeen-ob6fn9 lease review fixes increment: 2 files (2026-10-07)
+
+Reviewer: `claude-pr-review-lease-fixes`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is commit `a8cc9e72` ("fix(video): review fixes for the project lease; a stable worker hostname; file the remaining gaps"), written by `claude-opus-5-5-project-lease` on branch claude/sharp-bardeen-ob6fn9. Scope: DURATION_ONLY for the two changed bindings below. The reviewer wrote none of the commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `6234be16`, whose receipt is the "claude/sharp-bardeen-ob6fn9 project lease and STOP fences increment" above (commit `583945e5`). The merge `5f79951d` between them changes neither file, and `git diff 583945e5 a8cc9e72 -- docs/videos/long-form/` is empty. At `6234be16` each of the two files hashes to its row in review.json and the table (by `git show` piped to `sha256sum`), and the working tree's copies equal `a8cc9e72`'s. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs; stale duration review binding: tools/video/automation/flow.mjs` and nothing else. The commit also changes the unbound docker-compose.prod.yml, tools/video/core/project-lease.mjs, project-lease.test.mjs, tools/video/media/stages.mjs, stages.test.mjs and two task files. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+What the change is. `fence()` now takes the project's lease for the rest of the step when no unit holds it (a discussion of a screenplay), kept in `stepLeases`; `step()` becomes a wrapper around `stepOnce()` whose `finally` releases those leases, and `stepOnce()` turns a `PROJECT_HELD` error carrying a slug into that video sitting the run out. `media()` fences before its command and again after an exit 0, and `acceptBestPictures` fences before and after `keyframes --accept-best`. This section asks only whether any of it reaches a length rule, and in particular whether the fence after a media stage's exit 0 can skip or change a duration gate.
+
+Findings, tools/video/automation/flow.mjs (+31/−4, 227,695 → 229,102 bytes). The duration code is outside every hunk: the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports, `slidesMinutes` and `episodeMinutes`, the anime `body_target_seconds / 60` settlement, and the planner and writer payloads' `target_minutes`. The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` number 20 at both revisions, and no changed line names one of them, minutes, seconds, a frame floor, QA or lint. The hunks:
+
+- `stepLeases` and the `fence()` change read only the STOP file and a lease (`verify()` on one held, `acquireProjectLease` otherwise). The thrown error gains a `slug` field. Nothing reads or writes a setting, a state field or a length.
+- `step()`/`stepOnce()`: the `finally` only releases the step's leases. The new catch returns a skip line and adds the slug to `skipped`, before the RUN_PENDING handling; it marks no step done and settles nothing, so no later gate is passed over.
+- `media()` serves only the look, keyframes, clips and music steps (`advance`, lines 2274–2279); none of them is a length gate, and the clip, keyframe and music lengths are set inside the media commands, not here. The fence before the command can only keep it from running. The fence after an exit 0 throws before `cleared`, the `prompt_fixes` and `seed_offsets` deletions, `accepted_pictures` pruning, `saveState` and the `${command} done` report, so under STOP the stage is not recorded as done and its fix rounds and seed offset stay as they were; `move()` turns the error into a skip and the video stays `active` at the same step, so the next run runs the same stage again. Keeping a seed offset only keeps the stage on the seeds an owner retry chose. It can delay a media stage, never skip one or any duration check after it.
+- `acceptBestPictures`: the two fences sit before the command and before the `accepted_pictures`/`cleared` writes, and can only stop them; picture acceptance is the judge's problems list, not a length.
+
+Findings, tools/video/automation/automation.test.mjs (+50/−3, 402,683 → 405,913 bytes; 162 tests at the head by `node --test`, 160 at the baseline). The music STOP test now writes the STOP file inside `runCommand` (behind a `stopDuring` flag) instead of before the stage, since one already there now keeps the command from running; its asserted lines and deferral fields are unchanged. The two added tests cover a discussion's writer request on a project another producer's lease holds (a skip line, the run not halted, no job sent, the step's own lease released and the foreign one untouched) and a STOP written while `keyframes` runs (PROJECT_HELD on recording, `prompt_fixes` kept, no `keyframes done` report, and the command not run at all once STOP is there). The only changed lines matching "frame" are the `keyframes` stage name; none names a length, a frame floor or process.env. The duration-term lines are 31 at both revisions, and the opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at the top of the file is unchanged.
+
+Ran (Node v22.22.0, Linux, in the worktree at `a8cc9e72`, node_modules installed, VIDEO_MIN_EPISODE_MINUTES unset in the shell): the baseline hashing, `git diff 6234be16..a8cc9e72` of the two files read in full, changed-line scans and duration-term counts at both revisions, reads of `media()`, `advance()`'s media steps and `move()`'s catch. Before rebinding, `node --test tools/video/automation/automation.test.mjs` passed 162 of 162, and `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same two paths. The CLI check and the long-form tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the step-scoped lease, its release, the takeover change, the stable worker hostname, or whether every paid request and canonical write is fenced.
+- The unbound files (docker-compose.prod.yml, core/project-lease.mjs, project-lease.test.mjs, media/stages.mjs, stages.test.mjs and the task files) are not reviewed.
+- No real video was written, linted, assembled or measured, and the tests run under the opt-out.
+- Not run or seen: the rest of the tool, Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, two processes on the production host, and the production host.
+- The 106 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1737,9 +1768,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `a7162146be364ebbddf8cc148d9e6dde1635f6fa077f14694211c12e353db656` |
+| `tools/video/automation/automation.test.mjs` | `f5a94de05f7711eef9fd71b3a278c30ea833e8492dc9df7bcfbf40f22fe167e4` |
 | `tools/video/automation/discuss.mjs` | `fcb1a59b6861c8b18582aeece052b7d6f21930aae495f231e7e0f2c7d0dca9f5` |
-| `tools/video/automation/flow.mjs` | `36b2892bd011158d4920173ea45771213d5b604594b4e4211c1cbcf3da2609d1` |
+| `tools/video/automation/flow.mjs` | `5a05ef53bad13db1deebeea05665d6013c41a1b1c86dba3bfce62da849aed353` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |
