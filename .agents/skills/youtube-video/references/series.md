@@ -22,6 +22,8 @@
 3. `chapter`：一篇一份，同樣討論／核准（subject `chapter:<n>`），核准後那一篇的集數變 `ready`；下一篇在上一篇做到剩 `series_chapter_ahead` 集時先規劃，站主也可按「先規劃下一篇」（單集沒有這顆按鈕；直接呼叫 API 會被 409 `video_series_all_planned`「每一篇都已經規劃過了」擋下）。
 4. `episode`：工人 `POST …/episodes/<n>/start`（影片 slug 是 `<作品>-e001` 這種），伺服器回請求列與脈絡（單集的脈絡把故事聖經當 `setting` 給、沒有 `chapter`）；工人寫 `series.json`（人物表、本集細綱、前情、謎團、設定全文）與 `brief.md`（不出大綱選項；`## 大綱` 只有選項 A，本機直接核准，備註「依故事聖經」或 `planned by chapter <n>'s approved outline`），然後照 `drama.md` 的步驟走：撰稿（作品的集用 variant `episode`；單集用一般漫劇提示）→ 查核（variant `episode`，多了張力與連貫性）→ 聽眾審稿 → **劇本關卡：討論／核准**（subject `script:<集數>`）→ 設定圖（沿用作品存檔，只畫新角色）→ 旁白 → 關鍵影格 → 分鏡 → 片段 → 配樂 → 合成（此時寫前情 `POST …/recap`）→ 字幕 → 成片 → 上架包 → 上架確認（`POST …/done`）→ 站上自動開下一集（單集沒有下一集）。
 
+文件（設定集、細綱、篇章、故事聖經）的企劃回答在途中遺失時（模型可能已經跑完並計費），工人不自己再問：記在 `_series/<作品>/lost-docs.json`，紀錄一行說明，這部作品的文件等站主，其他工作照做（網站一次只交出最舊作品的工作，後面的作品也跟著等）。站主改了作品的設定（例如「一鍵開拍」、備註、前提），或在被退回的版本上寫一句話出了新版本，就是新的請求；沒有網站上的「重新規劃」之前，第一版只能撤回再建（`tasks/open/2026-10-07-series-documents-a-site-side-hold.md`）。一鍵開拍的查核回答遺失時不再問，企劃的文件直接交給站主審。
+
 ## 討論串（每個核准點都有）
 
 - 站主在 `/admin/videos` 的文件面板或劇本卡片的「討論」節寫一句話並「送出」（`POST /admin/video-automation/series/<slug>/messages {subject, body}`；讀用 `GET …/messages?subject=`）。文件或劇本已核准的串只留紀錄，不再收新訊息（409）；這一集還沒開始（沒有影片 slug）時 `script:<集數>` 被 409 `video_drama_script_not_started` 擋下；開始後、劇本還沒寫出來前送的訊息會被工人代回「劇本還沒寫出來」。
