@@ -10,12 +10,12 @@
 // and the owner's switch is on (docs/videos/HANDS-OFF.md). `review-pull` reads the decisions back
 // and records an approval only when that hash still matches the local file.
 import { createHash } from "node:crypto";
-import { closeSync, existsSync, mkdirSync, openSync, readFileSync, readSync, statSync } from "node:fs";
+import { closeSync, existsSync, mkdirSync, openSync, readFileSync, readSync, rmSync, statSync } from "node:fs";
 import path from "node:path";
 import { isDeepStrictEqual, parseArgs } from "node:util";
 
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
-import { AutomationError, automationClient } from "../automation/client.mjs";
+import { AutomationError, automationClient, RUN_UNCERTAIN } from "../automation/client.mjs";
 import { ANIME_APPROVAL_GATES, approvalRuntimePolicyHash, GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
 import { animeRuntimeContext, hasAnimePolicy, LONG_ANIME_POLICY, runtimePolicyHash, validateAnimeRuntime } from "../core/anime-policy.mjs";
 import { assembledAudioProblems, audioEvidenceProblems, currentAudioCheck } from "../core/audio-evidence.mjs";
@@ -357,6 +357,9 @@ export function uploadItems(markdown) {
 // The judge takes 2 to 3 options (judge.py MIN_OPTIONS, MAX_OPTIONS).
 export const JUDGE_MIN_OPTIONS = 2;
 export const JUDGE_MAX_OPTIONS = 3;
+// An outline pick review-push asked Jev for and whose answer was lost, kept for that brief's bytes
+// ({ brief_sha256, at, why }), so the command run again does not ask Jev again (submission).
+export const OUTLINE_LOST_FILE = path.join("review", "outline-lost.json");
 
 /** The judge endpoint's body, exactly { slug, brief, options: [{ key, title, summary, hook }] }: its request model refuses any other field. */
 export function judgeBody(slug, brief, options) {
@@ -385,8 +388,10 @@ export function pickFrom(answer) {
  * client. Answers { status: "passed" | "failed", pick } with Jev's verdict; { status: "owner",
  * reason } when the site says the judge is not enabled (409: the stance is blank or the switch
  * is off) or has no judge yet, so the outline waits for the owner as before; { status: "later",
- * reason } when Jev, its budget or the site could not answer, to try again next round. A revoked
- * token or another error only the owner can fix is thrown.
+ * reason } when Jev, its budget or the site could not answer, to try again next round; { status:
+ * "lost", reason, why } when the request went out and its answer was lost on the way back
+ * (client.mjs RUN_UNCERTAIN): Jev may have judged it and used one of the day's calls, so it is
+ * not asked again on its own. A revoked token or another error only the owner can fix is thrown.
  */
 export async function judgeOutline(api, slug, brief, options) {
   if (options.length < JUDGE_MIN_OPTIONS) return { status: "owner", reason: `the brief has ${options.length} options; the judge takes ${JUDGE_MIN_OPTIONS} to ${JUDGE_MAX_OPTIONS}` };
@@ -397,6 +402,7 @@ export async function judgeOutline(api, slug, brief, options) {
     if (!(error instanceof AutomationError)) throw error;
     if (error.status === 409 && error.code === "video_judge_not_enabled") return { status: "owner", reason: error.message };
     if (error.status === 404) return { status: "owner", reason: "the site has no judge endpoint yet" };
+    if (error.code === RUN_UNCERTAIN) return { status: "lost", reason: error.message, why: error.why ?? error.message };
     if (error.who === "owner") throw error;
     return { status: "later", reason: error.message };
   }
@@ -417,7 +423,7 @@ export function outlineReview(brief, options, verdict, suffix = "") {
   if (verdict?.pick) {
     payload.pick = verdict.pick;
     summary += verdict.status === "passed" ? `；Jev 挑了 ${verdict.pick.choice}` : "；Jev 沒有挑出過關的大綱，請站主選";
-  }
+  } else if (verdict?.status === "lost") summary += "；Jev 的回答在途中遺失，請站主選";
   return { payload, summary: fitSummary(summary) };
 }
 
@@ -437,8 +443,11 @@ export function packageSummary(report) {
 /**
  * Run the quality check before the final cut goes up: exit 0 or 1 means there is a report to
  * send (qa.json for this very final.mp4); 4 means a service was down and the push waits for the
- * next round; 3 needs the owner: the token, or a site setting a check needs (Jev's key for the
- * policy item), which the failing item's line names. A test that plays the commands hands in
+ * next round; 3 needs the owner: the token, a site setting a check needs (Jev's key for the
+ * policy item), which the failing item's line names, or Jev's policy verdict lost on the way back
+ * (qa.json `policy_lost`, which qa keeps and does not ask Jev again for). That one ends with the
+ * client's RUN_UNCERTAIN code, so the worker blocks the video for the owner's retry instead of
+ * deferring it (automation/flow.mjs submissionFailure). A test that plays the commands hands in
  * runCommand.
  */
 async function qualityCheck(ctx, slug, workdir, flags) {
@@ -449,9 +458,11 @@ async function qualityCheck(ctx, slug, workdir, flags) {
     const qa = await import("../qa/cli.mjs");
     code = await qa.run("qa", args.slice(1), ctx);
   }
+  const report = readJson(path.join(workdir, "review", "qa.json"), null);
   if (code === ctx.EXIT.external) throw new ReviewError("the quality check could not finish (a service was down); run review-push --gate final again later", { who: "service" });
+  if (code === ctx.EXIT.owner && report?.policy_lost) throw new ReviewError(`the final waits for the owner: Jev's policy verdict on this narration was lost after it was sent (${report.policy_lost.why}), and it is not asked again until the owner retries (${RUN_UNCERTAIN})`, { who: "owner", code: RUN_UNCERTAIN });
   if (code === ctx.EXIT.owner) throw new ReviewError("the quality check needs the owner (the video tool token or a site setting); see the failing item above and review/qa.json", { who: "owner" });
-  return readJson(path.join(workdir, "review", "qa.json"), null);
+  return report;
 }
 
 // How many times the review routes are asked before the last error is told.
@@ -587,12 +598,24 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     const options = outlineOptions(brief);
     // Jev picks when the stance is written and the switch is on; the site approves the review
     // on arrival when the pick clears the thresholds. Otherwise the owner chooses, as before.
-    const verdict = await judgeOutline(automationClient(ctx, { attempts: 2 }), slug, brief, options);
-    if (verdict.status === "later") ctx.stdout.write(`${slug}: Jev could not judge the outline (${verdict.reason}); it goes up for the owner, and review-push --gate outline again lets Jev pick\n`);
+    // A pick whose answer was lost is kept for this brief (OUTLINE_LOST_FILE): Jev may have
+    // judged it and used one of the day's calls, so running the command again does not ask again.
+    const contentSha256 = await sha256File(file);
+    const lostFile = path.join(workdir, OUTLINE_LOST_FILE);
+    const lost = readJson(lostFile, null);
+    const held = lost?.brief_sha256 === contentSha256;
+    const verdict = held ? { status: "lost", reason: lost.why, why: lost.why } : await judgeOutline(automationClient(ctx, { attempts: 2 }), slug, brief, options);
+    if (held) ctx.stdout.write(`${slug}: Jev's answer on this outline was lost at ${lost.at} (${lost.why}) and is not asked again: the outline goes up for the owner without a pick (delete ${OUTLINE_LOST_FILE} to ask Jev once more)\n`);
+    else if (verdict.status === "lost") {
+      atomicWrite(lostFile, `${JSON.stringify({ brief_sha256: contentSha256, at: ctx.now().toISOString(), why: verdict.why }, null, 2)}\n`);
+      ctx.stdout.write(`${slug}: Jev's answer on the outline was lost after it was sent (${verdict.why}); Jev may have judged it and used one of today's calls, so it is not asked again: the outline goes up for the owner without a pick\n`);
+    } else if (verdict.status === "later") ctx.stdout.write(`${slug}: Jev could not judge the outline (${verdict.reason}); it goes up for the owner, and review-push --gate outline again lets Jev pick\n`);
     else if (verdict.status === "owner") ctx.stdout.write(`${slug}: the owner chooses the outline (${verdict.reason})\n`);
     else ctx.stdout.write(`${slug}: ${verdict.pick.note}\n`);
+    // A record of another brief is spent: that brief is gone, and this one was asked.
+    if (lost && !held && verdict.status !== "lost") rmSync(lostFile, { force: true });
     const { payload, summary } = outlineReview(brief, options, verdict);
-    return { gate, content_sha256: await sha256File(file), summary, payload, files: [] };
+    return { gate, content_sha256: contentSha256, summary, payload, files: [] };
   }
   if (gate === "script") {
     // Written afresh so the file always matches video.json; the same narrative gives the same

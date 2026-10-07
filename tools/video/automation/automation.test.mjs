@@ -928,6 +928,285 @@ test("a writer whose answer is lost after it was sent is not asked again on its 
   assert.equal(writers(), 2, "the owner's retry asks once more");
 });
 
+/** The site runs the requests that match (the planner, say), and their answers never reach the worker. */
+function losing(site, lost) {
+  const state = { lose: true };
+  state.fetchImpl = async (url, init = {}) => {
+    const answer = await site.fetchImpl(url, init);
+    const { pathname } = new URL(url);
+    return state.lose && pathname === "/api/video/automation/run" && lost(JSON.parse(init.body)) ? lostAnswer() : answer;
+  };
+  return state;
+}
+
+/** The owner presses 重試這支影片 on /admin/videos. */
+const ownerRetries = (site, slug) => Object.assign(site.listed.get(slug), { retry_request_id: "2b06f60f-1026-477a-9d40-28683b00a22e", retry_acknowledged_id: null });
+
+test("a scheduled draft whose planner answer is lost leaves a blocked video under the draft's slug instead of being bought again every round, and the owner's retry plans it once under that slug", async () => {
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+  const net = losing(site, (body) => body.stage === "planner");
+  const clock = { now: Date.parse("2026-10-07T09:00:00Z") };
+  const { ctx, out } = context(box, net.fetchImpl, clock);
+  const planners = () => site.calls.run.filter((call) => call.stage === "planner");
+  const slug = "draft-202610070900";
+  const state = () => automatedVideos(box.work).find((each) => each.slug === slug);
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /draft-202610070900: blocked — planner may have run on the server without its answer reaching the worker \(HTTP 504: no answer within the deadline\); it is not asked again until the owner retries/);
+  assert.equal(planners().length, 1, "sent once: the client does not send it again");
+  assert.deepEqual([state().status, state().blocked_kind, state().unplanned, state().title, state().format], ["blocked", "uncertain:planner", "draft", "排程草稿 2026-10-07 09:00 UTC", "slides"]);
+  assert.match(site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：planner may have run on the server without its answer reaching the worker/);
+  assert.equal(site.calls.reports.at(-1).slug, slug, "the owner sees it on /admin/videos");
+  assert.equal(readJson(path.join(box.work, "auto-state.json")).last_draft_at, "2026-10-07T09:00:00.000Z", "the interval is spent, so the next scheduled draft is a new call after it");
+
+  // Until 2026-10-07 every round asked the planner again under a new minute's slug, each counted as one of the month's drafts.
+  clock.now += 10 * 60_000;
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.equal(planners().length, 1, "nor does the next round");
+
+  net.lose = false;
+  ownerRetries(site, slug);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  assert.match(await automation.step(), /^draft-202610070900: planned after the owner's retry; outline sent to \/admin\/videos for the owner/);
+  const replan = planners()[1];
+  assert.deepEqual([planners().length, replan.slug, replan.variant ?? null], [2, slug, null], "once, under the draft's own slug: the server counts it as the same draft");
+  assert.deepEqual(replan.payload.topics.map((topic) => topic.slug), ["chatgpt-ads-status"], "planned from the topics as a draft is");
+  assert.ok(existsSync(path.join(box.root, "docs", "videos", slug, "brief.md")));
+  assert.deepEqual([state().status, state().unplanned, state().title, state().source_guide], ["active", undefined, "ChatGPT 廣告怎麼關", "chatgpt-ads-status"]);
+  assert.deepEqual(site.reviewsOf(slug).map((review) => review.gate), ["outline"]);
+});
+
+test("a planner request that is settled, not lost, is asked again next round as before: no blocked video, and the interval is not spent", async (t) => {
+  for (const [name, answer] of [
+    ["the API's own failure", () => Response.json({ code: "video_ai_upstream_failed", detail: "the provider failed" }, { status: 502 })],
+    ["the limiter away", () => Response.json({ code: "rate_limit_unavailable", detail: "限流服務暫時無法使用" }, { status: 503 })],
+    ["never sent", () => Promise.reject(Object.assign(new TypeError("fetch failed"), { cause: { code: "ECONNREFUSED" } }))],
+  ]) await t.test(name, async () => {
+    const box = sandbox();
+    const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+    const fetchImpl = async (url, init = {}) => (new URL(url).pathname === "/api/video/automation/run" ? answer() : site.fetchImpl(url, init));
+    const { ctx } = context(box, fetchImpl, { now: Date.parse("2026-10-07T09:00:00Z") });
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    await assert.rejects(automation.step());
+    assert.deepEqual(automatedVideos(box.work), []);
+    assert.equal(existsSync(path.join(box.work, "auto-state.json")), false);
+  });
+});
+
+test("an owner's slides request whose first plan is lost is claimed and blocked under the run's slug and not planned again; a claim that failed after the loss goes through next round without asking again; the owner's retry plans it once from the article", async () => {
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off"), slidesRequests: [SLIDES_REQUEST] });
+  const net = losing(site, (body) => body.stage === "planner");
+  let claimDown = true;
+  const fetchImpl = async (url, init = {}) => (claimDown && /\/slides-requests\/[^/]+\/start$/.test(new URL(url).pathname) ? Response.json({ code: "upstream_unavailable", detail: "the API is restarting" }, { status: 502 }) : net.fetchImpl(url, init));
+  const clock = { now: Date.parse("2026-10-05T09:00:00Z") };
+  const { ctx } = context(box, fetchImpl, clock);
+  const lane = () => {
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    return automation;
+  };
+  const planners = () => site.calls.run.filter((call) => call.stage === "planner");
+  const slug = "slides-0b5e4c2a";
+  const global = () => readJson(path.join(box.work, "auto-state.json"));
+
+  // The plan's answer is lost, and the claim fails after it: the round ends with the claim's error.
+  await assert.rejects(lane().step(), { status: 502 });
+  assert.equal(planners().length, 1);
+  assert.deepEqual(global().lost_plans, { [slug]: { at: "2026-10-05T09:00:00.000Z", why: "HTTP 504: no answer within the deadline" } }, "kept with the interval's draft time");
+  assert.ok(global().last_draft_at);
+  assert.equal(site.slidesRequests[0].status, "queued");
+
+  // The site offers the same request again: it is claimed and held, and the planner is not asked again.
+  claimDown = false;
+  assert.match(await lane().step(), /^slides-0b5e4c2a: blocked — planner may have run on the server without its answer reaching the worker \(HTTP 504: no answer within the deadline\); it is not asked again until the owner retries$/);
+  assert.equal(planners().length, 1);
+  assert.deepEqual(site.calls.slides, [{ id: SLIDES_REQUEST.id, action: "start", slug }]);
+  assert.equal(global().lost_plans, undefined, "spent once the blocked video holds the request");
+  const state = () => automatedVideos(box.work).find((each) => each.slug === slug);
+  assert.deepEqual([state().status, state().blocked_kind, state().unplanned, state().slides_request.id, state().title], ["blocked", "uncertain:planner", "slides", SLIDES_REQUEST.id, SLIDES_REQUEST.title]);
+  assert.equal(await lane().step(), null, "a blocked request is not planned again, and no draft is due");
+  assert.equal(planners().length, 1);
+
+  // The owner's retry plans it once, from the owner's article alone, under the claimed slug.
+  net.lose = false;
+  ownerRetries(site, slug);
+  assert.match(await lane().step(), /^slides-0b5e4c2a: planned after the owner's retry; outline sent to \/admin\/videos for the owner/);
+  const replan = planners()[1];
+  assert.deepEqual([planners().length, replan.slug, replan.variant ?? null], [2, slug, null]);
+  assert.deepEqual(replan.payload.requested_guide, { slug: "chatgpt-ads-status", title: SLIDES_REQUEST.title, url: REQUESTED_URL, note: SLIDES_REQUEST.note });
+  assert.deepEqual(replan.payload.sources.map((page) => [page.url, page.ok]), [[REQUESTED_URL, true]]);
+  assert.equal(site.calls.topics, 0, "no topics for an article the owner chose");
+  assert.deepEqual(site.calls.slides.map((call) => call.action), ["start"], "claimed once");
+  assert.deepEqual([state().status, state().unplanned, state().source_guide], ["active", undefined, "chatgpt-ads-status"]);
+  assert.ok(existsSync(path.join(box.root, "docs", "videos", slug, "brief.md")));
+});
+
+test("a request withdrawn on the page after its first plan was lost keeps nothing, and the kept loss goes with it", async () => {
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off"), slidesRequests: [SLIDES_REQUEST] });
+  const net = losing(site, (body) => {
+    if (body.stage === "planner") site.slidesRequests[0].status = "cancelled";
+    return body.stage === "planner";
+  });
+  const { ctx } = context(box, net.fetchImpl, { now: Date.parse("2026-10-05T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  assert.match(await automation.step(), /^slides: the owner's request for chatgpt-ads-status could not be claimed \(the request is cancelled\); nothing was kept$/);
+  assert.deepEqual(automatedVideos(box.work), []);
+  assert.equal(readJson(path.join(box.work, "auto-state.json")).lost_plans, undefined);
+});
+
+test("a requested video whose planner gave nothing usable twice is planned again by the owner's retry, under its claimed slug", async () => {
+  const box = sandbox();
+  let usable = false;
+  const plain = answersFor("chatgpt-ads-off");
+  const site = fakeSite({ answers: { ...plain, planner: (body) => (usable ? plain.planner(body) : { note: "no brief" }) }, slidesRequests: [SLIDES_REQUEST] });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-05T09:00:00Z") });
+  const lane = () => {
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    return automation;
+  };
+  assert.match(await lane().step(), /^slides-0b5e4c2a: blocked — the planner could not write a usable brief for the owner's article/);
+  assert.equal(automatedVideos(box.work)[0].unplanned, "slides");
+  // Until 2026-10-07 the retry met "brief.md is gone", and the owner had to drop it and ask again.
+  usable = true;
+  ownerRetries(site, "slides-0b5e4c2a");
+  assert.match(await lane().step(), /^slides-0b5e4c2a: planned after the owner's retry; outline sent to \/admin\/videos for the owner/);
+  assert.equal(site.calls.run.filter((call) => call.stage === "planner").length, 3);
+  assert.deepEqual(site.calls.slides.map((call) => call.action), ["start"]);
+
+  // A planned video whose brief went missing is not planned again on a retry: a person looks.
+  const lost = automatedVideos(box.work)[0];
+  rmSync(path.join(box.root, "docs", "videos", lost.slug, "brief.md"));
+  const automation = lane();
+  assert.match(await automation.advance(lost), /blocked — brief\.md is gone/);
+  assert.equal(site.calls.run.filter((call) => call.stage === "planner").length, 3);
+});
+
+test("an owner's drama request whose first plan is lost is claimed and blocked, the next request is planned as its own call, and the owner's retry plans the first once with its premise", async () => {
+  const box = sandbox();
+  const first = { id: "8b2e3d4c-5b6a-4f7e-9b8c-0d1e2f3a4b5c", premise: "為什麼雷聲總比閃電晚到？", title: "雷聲", source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: "用數秒數講" };
+  const second = { ...first, id: "9c3f4e5d-6c7b-4a8f-8c9d-1e2f3a4b5c6d", premise: "為什麼天空是藍的？", title: null, note: null };
+  const dramaBrief = `${explainerBrief()}\n### 選項 B：從賽跑講起\n一行說明：光聲賽跑。\n開場鉤子：「誰先到？」\n`;
+  const site = fakeSite({ answers: { planner: (body) => ({ slug: body.payload.premise.includes("天空") ? "why-the-sky-is-blue" : "why-thunder-is-late", title: body.payload.premise, source_guide: null, source_urls: [], brief: dramaBrief }) }, settings: { drama: DRAMA_SETTINGS }, dramaRequests: [first, second] });
+  const net = losing(site, (body) => body.stage === "planner" && body.payload.premise === first.premise);
+  const { ctx } = context(box, net.fetchImpl, { now: Date.parse("2026-10-05T09:00:00Z") });
+  const lane = () => {
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    return automation;
+  };
+  const planners = () => site.calls.run.filter((call) => call.stage === "planner");
+
+  assert.match(await lane().step(), /^drama-8b2e3d4c: blocked — planner may have run on the server without its answer reaching the worker/);
+  assert.deepEqual(site.calls.drama, [{ id: first.id, action: "start", slug: "drama-8b2e3d4c" }]);
+  const held = automatedVideos(box.work).find((state) => state.slug === "drama-8b2e3d4c");
+  assert.deepEqual([held.status, held.blocked_kind, held.unplanned, held.premise, held.drama_request], ["blocked", "uncertain:planner", "drama", first.premise, { title: "雷聲", note: "用數秒數講" }]);
+
+  assert.match(await lane().step(), /^drama: why-the-sky-is-blue planned from the owner's request/, "a genuinely different call still goes out");
+  assert.equal(planners().filter((call) => call.payload.premise === first.premise).length, 1);
+
+  net.lose = false;
+  ownerRetries(site, "drama-8b2e3d4c");
+  assert.match(await lane().step(), /^drama-8b2e3d4c: planned after the owner's retry; outline sent to \/admin\/videos/);
+  const replan = planners().at(-1);
+  assert.deepEqual([replan.slug, replan.format, replan.variant, replan.max_output_tokens], ["drama-8b2e3d4c", "drama", "explainer", 16_000]);
+  const asked = planners()[0];
+  assert.deepEqual([replan.payload.premise, replan.payload.title, replan.payload.note, replan.payload.target_minutes], [first.premise, "雷聲", "用數秒數講", asked.payload.target_minutes], "asked as the first plan was");
+  assert.equal(site.calls.drama.filter((call) => call.action === "start").length, 2, "each request claimed once");
+});
+
+test("a Jev outline pick whose answer is lost is not asked again on its own: the video stops for the owner, and the owner's retry asks Jev once more", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  let lose = true;
+  const site = fakeSite({
+    answers: answersFor(slug, { applies: "1、3" }),
+    settings: { channel_stance: STANCE },
+    judge: () => (lose ? Response.json({ code: "video_judge_answer_lost", detail: "請求已送到 API，Jev 可能已經判斷" }, { status: 504 }) : jevPick("B")),
+  });
+  const clock = { now: Date.parse("2026-09-27T09:00:00Z") };
+  const { ctx, out } = context(box, site.fetchImpl, clock);
+  const planners = () => site.calls.run.filter((call) => call.stage === "planner").length;
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /chatgpt-ads-off: blocked — judge \(Jev's outline pick\) may have run on the server without its answer reaching the worker \(HTTP 504: 請求已送到 API，Jev 可能已經判斷\); it is not asked again until the owner retries/);
+  assert.deepEqual([site.calls.judge.length, site.calls.reviews.length], [1, 0]);
+  const state = () => automatedVideos(box.work)[0];
+  assert.deepEqual([state().status, state().blocked_kind, state().defer_count], ["blocked", "uncertain:judge", undefined]);
+  assert.match(site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：judge \(Jev's outline pick\) may have run/);
+
+  // Until 2026-10-07 it was deferred like Jev being away and asked again up to seven times over four hours.
+  clock.now += 5 * 3600_000;
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.deepEqual([site.calls.judge.length, planners()], [1, 1], "neither Jev nor the planner is asked again");
+
+  lose = false;
+  ownerRetries(site, slug);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  assert.match(await automation.step(), /^chatgpt-ads-off: Jev picked outline B; outline sent to \/admin\/videos$/);
+  assert.deepEqual([site.calls.judge.length, planners()], [2, 1], "Jev once more, about the same brief");
+  assert.deepEqual([site.calls.reviews[0].status, site.calls.reviews[0].choice], ["approved", "B"]);
+});
+
+test("a rewrite's planner whose answer is lost after Jev failed the first outline stops the new video, where the next round asked Jev and the planner again", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug, { applies: "2" }), settings: { channel_stance: STANCE }, judge: (body) => jevPick("A", { passed: false, demo: 0.4, keys: body.options.map((option) => option.key) }) });
+  const net = losing(site, (body) => body.stage === "planner" && Boolean(body.payload.owner_note));
+  const { ctx } = context(box, net.fetchImpl, { now: Date.parse("2026-09-27T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+
+  assert.match(await automation.step(), /planned from 1 topics; chatgpt-ads-off: blocked — planner may have run on the server without its answer reaching the worker/);
+  const state = automatedVideos(box.work)[0];
+  assert.deepEqual([state.status, state.blocked_kind, state.replans], ["blocked", "uncertain:planner", 0]);
+  nextRun(automation);
+  assert.equal(await automation.step(), null);
+  assert.deepEqual([site.calls.judge.length, site.calls.run.filter((call) => call.stage === "planner").length], [1, 2]);
+});
+
+test("a final cut whose policy verdict from Jev was lost stops the video for the owner instead of deferring it, and the owner's retry drops the kept loss so qa asks Jev once more", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug) });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-07T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  const video = (name) => ({ slug: name, title: name, status: "active", created_at: "2026-10-01T00:00:00.000Z", format: "slides", replans: 0, verify_rounds: 0, verified: true, listener_done: true, retakes: 0, rewrites: 0, notes: [] });
+
+  // review-push's last line, as review/sync.mjs qualityCheck says it, with the client's code.
+  const lost = { code: EXIT.owner, out: "  [ ] policy: outcome unknown: Jev was asked about this narration at 2026-10-07T09:00:00.000Z and its answer was lost\nchatgpt-ads-off: 10 of 11 checks passed\nthe final waits for the owner: Jev's policy verdict on this narration was lost after it was sent (HTTP 504: x), and it is not asked again until the owner retries (video_ai_run_uncertain)\n" };
+  const state = video(slug);
+  automation.persist(state);
+  assert.match(await automation.submissionFailure(state, "final", lost), /^chatgpt-ads-off: blocked — policy \(Jev's policy check\) may have run on the server without its answer reaching the worker \(the final waits for the owner: .*\(video_ai_run_uncertain\)\); it is not asked again until the owner retries$/);
+  assert.deepEqual([state.status, state.blocked_kind, automation.halted], ["blocked", "uncertain:policy", true]);
+
+  // An exit 3 for anything else (the token) is not a lost answer: it waits as before.
+  const other = video("other-video");
+  automation.persist(other);
+  assert.match(await automation.submissionFailure(other, "final", { code: EXIT.owner, out: "the quality check needs the owner (the video tool token); see above\n" }), /could not send the final for review/);
+  assert.equal(other.status, "active");
+
+  // The owner's retry: qa's kept loss is dropped (and only it), so the next quality check asks Jev once.
+  const qaFile = path.join(box.work, slug, "review", "qa.json");
+  mkdirSync(path.dirname(qaFile), { recursive: true });
+  atomicWrite(qaFile, `${JSON.stringify({ ok: false, final_sha256: "f".repeat(64), items: [{ id: "policy", ok: false, detail: "outcome unknown" }], policy_lost: { request_sha256: "a".repeat(64), final_sha256: "f".repeat(64), at: "2026-10-07T09:00:00.000Z", why: "HTTP 504: x" } })}\n`);
+  ownerRetries(site, slug);
+  const retried = new Automation(ctx, automationClient(ctx), site.settings);
+  retried.refs = smallRefs;
+  retried.advance = async (each) => `${each.slug}: moved`;
+  assert.equal(await retried.step(), "chatgpt-ads-off: moved");
+  assert.deepEqual(readJson(qaFile), { ok: false, final_sha256: "f".repeat(64), items: [{ id: "policy", ok: false, detail: "outcome unknown" }] });
+  assert.equal(automatedVideos(box.work).find((each) => each.slug === slug).status, "active");
+});
+
 test("a lost blocked report is recovered after restart without another model request, and failed reports back off", async () => {
   const box = sandbox();
   const slug = "chatgpt-ads-off";

@@ -23,7 +23,8 @@ import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
 import { confirmedVideo, DECIDED_AT, languageSite, tool, toolContext } from "./language-contract.mjs";
-import { acceptedPicturesOf, audioCheck, audioSummary, checklistFrom, clearedSummary, downloadNote, fitPayload, fitSummary, guideSlugs, judgeBody, KEPT_REMARK_LENGTH, KEPT_REMARK_LINES, keptRemarks, MAX_ANIME_SCRIPT_BYTES, MAX_REVIEW_FILES, MAX_REVIEW_PAYLOAD_BYTES, MAX_REVIEW_SUMMARY_LENGTH, namedPictures, outlineOptions, outlineReview, PART_BYTES, payloadBytes, previewArgs, REVIEW_GATES, REVIEW_PAYLOAD_BUDGET, ReviewError, siteChoice, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
+import { AutomationError, RUN_UNCERTAIN } from "../automation/client.mjs";
+import { acceptedPicturesOf, audioCheck, audioSummary, checklistFrom, clearedSummary, downloadNote, fitPayload, fitSummary, guideSlugs, judgeBody, judgeOutline, KEPT_REMARK_LENGTH, KEPT_REMARK_LINES, keptRemarks, MAX_ANIME_SCRIPT_BYTES, MAX_REVIEW_FILES, MAX_REVIEW_PAYLOAD_BYTES, MAX_REVIEW_SUMMARY_LENGTH, namedPictures, outlineOptions, outlineReview, PART_BYTES, payloadBytes, previewArgs, REVIEW_GATES, REVIEW_PAYLOAD_BUDGET, ReviewError, siteChoice, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -236,6 +237,55 @@ test("review-push --gate outline asks Jev first and sends the pick with the brie
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], owner.ctx), EXIT.owner);
   assert.match(owner.out.stderr, /token revoked/);
   assert.equal(revoked.state.reviews.length, 0);
+});
+
+test("review-push --gate outline whose Jev answer is lost sends the outline to the owner without a pick and does not ask Jev again for that brief; a new brief is asked", async () => {
+  const box = sandbox();
+  writeFileSync(path.join(box.dir, "brief.md"), OPTIONS_BRIEF);
+  let lose = true;
+  const server = site({ judge: () => (lose ? Response.json({ code: "video_judge_answer_lost", detail: "請求已送到 API，Jev 可能已經判斷" }, { status: 504 }) : PICK) });
+  const push = () => context(box, server.fetchImpl);
+  const record = path.join(box.workdir, "review", "outline-lost.json");
+
+  const first = push();
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], first.ctx), EXIT.ok, first.out.stderr);
+  assert.equal(server.state.judge.length, 1, "sent once: the client does not send it again");
+  assert.match(first.out.stdout, /Jev's answer on the outline was lost after it was sent \(HTTP 504: 請求已送到 API，Jev 可能已經判斷\); Jev may have judged it and used one of today's calls, so it is not asked again: the outline goes up for the owner without a pick/);
+  const [outline] = server.state.reviews;
+  assert.equal("pick" in outline.payload, false);
+  assert.equal(outline.summary, "企劃書與 2 個大綱選項；Jev 的回答在途中遺失，請站主選");
+  assert.deepEqual(JSON.parse(readFileSync(record, "utf8")), { brief_sha256: sha(Buffer.from(OPTIONS_BRIEF)), at: "2026-09-25T06:00:00.000Z", why: "HTTP 504: 請求已送到 API，Jev 可能已經判斷" });
+
+  // Run again, Jev answering now: the same brief is not asked again.
+  lose = false;
+  const again = push();
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(server.state.judge.length, 1);
+  assert.match(again.out.stdout, /Jev's answer on this outline was lost at 2026-09-25T06:00:00\.000Z \(HTTP 504: .*\) and is not asked again: the outline goes up for the owner without a pick \(delete review\/outline-lost\.json to ask Jev once more\)/);
+  assert.equal("pick" in server.state.reviews[0].payload, false);
+
+  // A rewritten brief is a new question: Jev is asked, and the record of the old one goes.
+  appendFileSync(path.join(box.dir, "brief.md"), "\n改過一行。\n");
+  const changed = push();
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], changed.ctx), EXIT.ok, changed.out.stderr);
+  assert.equal(server.state.judge.length, 2);
+  assert.deepEqual(server.state.reviews[0].payload.pick, PICK);
+  assert.equal(existsSync(record), false);
+});
+
+test("judgeOutline tells an answer lost on the way back from one that never came, a judge that is off and a refusal only the owner can fix", async () => {
+  const ask = (error) => judgeOutline({ judgeOutline: async () => { throw error; } }, "s", "b", [{ key: "A" }, { key: "B" }]);
+  const lost = Object.assign(new AutomationError("automation/judge/outline was sent and no answer came back (HTTP 504: x); Jev may have run, so it is not sent again", { status: 504, code: RUN_UNCERTAIN }), { why: "HTTP 504: x" });
+  assert.deepEqual(await ask(lost), { status: "lost", reason: lost.message, why: "HTTP 504: x" });
+  // One the client tags as the owner's is still lost: nothing is thrown out of review-push with nothing posted.
+  assert.equal((await ask(Object.assign(new AutomationError("lost", { status: 0, code: RUN_UNCERTAIN, who: "owner" }), { why: "socket" }))).status, "lost");
+  for (const [status, code] of [[502, "video_judge_upstream_failed"], [503, "rate_limit_unavailable"], [429, "jev_budget_exhausted"], [0, "network"], [422, "video_judge_invalid"]]) {
+    assert.equal((await ask(new AutomationError("x", { status, code }))).status, "later", code);
+  }
+  assert.equal((await ask(new AutomationError("off", { status: 409, code: "video_judge_not_enabled" }))).status, "owner");
+  assert.equal((await ask(new AutomationError("none", { status: 404 }))).status, "owner");
+  await assert.rejects(ask(new AutomationError("revoked", { status: 401, code: "video_tool_token_invalid", who: "owner" })), /revoked/);
+  assert.equal(outlineReview("b", [{ key: "A" }, { key: "B" }], { status: "lost" }).summary, "企劃書與 2 個大綱選項；Jev 的回答在途中遺失，請站主選");
 });
 
 test("the article a video retells is its source_guide, or else the first site article it cites", () => {
@@ -753,8 +803,8 @@ test("review-push --gate final runs the quality check and sends its report; a ch
   assert.deepEqual(review.files.map((file) => file.role), ["preview"]);
   assert.ok(existsSync(path.join(box.workdir, "review", "qa.json")));
 
-  // Jev unreachable: the quality check ends with exit 4, and so does the push, without a review.
-  const down = site({ policy: () => { throw new TypeError("fetch failed"); } });
+  // Jev unreachable (the request never left): the quality check ends with exit 4, and so does the push, without a review.
+  const down = site({ policy: () => { throw Object.assign(new TypeError("fetch failed"), { cause: { code: "ECONNREFUSED" } }); } });
   const later = context(box, down.fetchImpl, { encode });
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], later.ctx), EXIT.external);
   assert.match(later.out.stderr, /the quality check could not finish/);
@@ -768,6 +818,25 @@ test("review-push --gate final runs the quality check and sends its report; a ch
   assert.match(owner.out.stdout + owner.out.stderr, /尚未設定 Jev API 金鑰/, "the failing item names the setting");
   assert.match(owner.out.stderr, /the quality check needs the owner \(the video tool token or a site setting\); see the failing item above and review\/qa\.json/);
   assert.equal(unset.state.reviews.length, 0);
+
+  // Asked, and the answer lost on the way back: Jev may have judged it and used a call. The push
+  // stops for the owner with the client's code in its last line (the worker blocks the video on
+  // it), sends nothing, and the push run again does not ask Jev again for this narration.
+  let asked = 0;
+  const lost = site({
+    policy: () => {
+      asked += 1;
+      return asked === 1 ? Response.json({ code: "video_judge_answer_lost", detail: "請求已送到 API，Jev 可能已經判斷" }, { status: 504 }) : { passed: true, note: "Jev：符合立場" };
+    },
+  });
+  for (const round of [1, 2]) {
+    const held = context(box, lost.fetchImpl, { encode });
+    assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], held.ctx), EXIT.owner, `round ${round}`);
+    assert.match(held.out.stderr.trim().split("\n").at(-1), /^the final waits for the owner: Jev's policy verdict on this narration was lost after it was sent \(HTTP 504: 請求已送到 API，Jev 可能已經判斷\), and it is not asked again until the owner retries \(video_ai_run_uncertain\)$/);
+    assert.doesNotMatch(held.out.stderr, /video tool token/);
+  }
+  assert.equal(asked, 1, "Jev is asked once");
+  assert.equal(lost.state.reviews.length, 0, "nothing goes up for review");
 });
 
 test("the final review carries the narration's and zh-TW's titles whatever the choice ticks; a zh-TW video's carries its own alone, as before", async () => {
