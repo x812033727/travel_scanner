@@ -673,6 +673,52 @@ test("a pending writer whose last receipt look-up failed says why on the error, 
   await assert.rejects(runWriter(stale, { text: "改過的原稿", rows: [1] }), (error) => error.code === RUN_PENDING && error.why === "請求過於頻繁" && /could not be looked up: 請求過於頻繁/.test(error.message));
 });
 
+test("the poll's own deadline cutting a look-up short is no failed request once the server answered in the call; a look-up the server never answered, a refused submission and a lost connection say what failed", async () => {
+  const box = sandbox();
+  let original;
+  const first = durableClient(box, async (_url, init) => {
+    if (init.method === "POST") original = JSON.parse(init.body);
+    return Response.json(job(original, "running"));
+  });
+  await first.settings();
+  await assert.rejects(runWriter(first), (error) => error.code === RUN_PENDING);
+  // A look-up that waits for the server until the client gives up on it, as fetch does.
+  // AbortSignal.timeout's timer does not hold the event loop open; a real socket would.
+  const hang = (init) => new Promise((_resolve, reject) => {
+    const socket = setInterval(() => {}, 5);
+    init.signal.addEventListener("abort", () => {
+      clearInterval(socket);
+      reject(init.signal.reason);
+    });
+  });
+  // Read as running, then the next look-up outlasts what is left of the budget: the read stands.
+  let gets = 0;
+  const cut = durableClient(box, async (_url, init) => (++gets === 1 ? Response.json(job(original, "running")) : hang(init)), { durablePollMs: 40, durablePollIntervalMs: 30 });
+  await cut.settings();
+  await assert.rejects(runWriter(cut), (error) => error.code === RUN_PENDING && error.why === undefined && error.message === "the saved stage run is still pending; its receipt will be recovered next round");
+  assert.equal(gets, 2);
+  // No look-up answered at all in the call: that is a failed request.
+  const silent = durableClient(box, async (_url, init) => hang(init), { durablePollMs: 20, durablePollIntervalMs: 30 });
+  await silent.settings();
+  await assert.rejects(runWriter(silent), (error) => error.code === RUN_PENDING && error.why === "The operation was aborted due to timeout");
+  // A lost connection names its cause, not undici's "fetch failed"; several failed addresses (no message) name the code.
+  const refused = durableClient(box, async () => { throw new TypeError("fetch failed", { cause: Object.assign(new Error("connect ECONNREFUSED 10.0.0.2:3000"), { code: "ECONNREFUSED" }) }); });
+  await refused.settings();
+  await assert.rejects(runWriter(refused), (error) => error.code === RUN_PENDING && error.why === "connect ECONNREFUSED 10.0.0.2:3000");
+  const everywhere = durableClient(box, async () => { throw new TypeError("fetch failed", { cause: Object.assign(new AggregateError([], ""), { code: "ECONNREFUSED" }) }); });
+  await everywhere.settings();
+  await assert.rejects(runWriter(everywhere), (error) => error.code === RUN_PENDING && error.why === "ECONNREFUSED");
+  // A submission the rate limit refused before any job was made: no receipt, and the cause.
+  const fresh = sandbox();
+  const throttled = durableClient(fresh, async (_url, init) => {
+    assert.equal(init.method, "POST");
+    return Response.json({ code: "rate_limit_exceeded", detail: "請求過於頻繁" }, { status: 429 });
+  });
+  await throttled.settings();
+  await assert.rejects(runWriter(throttled), (error) => error.code === RUN_PENDING && error.why === "請求過於頻繁");
+  assert.equal(JSON.parse(readFileSync(durableFiles(fresh)[0], "utf8")).receipt, null);
+});
+
 test("malformed and rebound receipts preserve their saved key and never dispatch a replacement run", async () => {
   for (const wrong of ["key", "GET hash", "GET id", "journal"]) {
     const box = sandbox(), calls = [];
@@ -1070,7 +1116,7 @@ test("definitive failed receipts surface their stored error, and input changes w
   await assert.rejects(runWriter(pending), (error) => error.code === RUN_PENDING);
   const [file] = durableFiles(pendingBox), before = readFileSync(file, "utf8");
   calls.length = 0;
-  await assert.rejects(runWriter(pending, { text: "new source" }), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG && /still running/.test(error.message));
+  await assert.rejects(runWriter(pending, { text: "new source" }), (error) => error.code === RUN_PENDING && error.slug === DURABLE_SLUG && /still running/.test(error.message) && error.why === undefined, "a stale job the server reads as running is no failed request");
   assert.deepEqual(calls, ["GET"], "the running job is looked up once and nothing new is paid for");
   assert.deepEqual(durableFiles(pendingBox), [file]);
   assert.equal(readFileSync(file, "utf8"), before, "the running journal is intact for the next round");

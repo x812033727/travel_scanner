@@ -74,7 +74,7 @@ and task consistency checks before a PR.
     server read as queued or running carries none. The request key, the receipt and every
     retry, STOP, drop and budget path are unchanged: only the message's cause and the new field.
   - `flow.mjs` `stepOnce`: with `why`, the line is "<stage> has not answered yet: the worker's last
-    request for its saved receipt failed (<why, at most 160 characters>); it is asked again next
+    request to the server for it failed (<why, at most 160 characters>); it is asked again next
     round", instead of "<stage> is still running"; without it, the line is as before.
   - Tests: `client.test.mjs` (every look-up rate-limited, a look-up rate-limited then read as
     running, a stale run that could not be looked up); `automation.test.mjs`, the ticket's case
@@ -82,3 +82,20 @@ and task consistency checks before a PR.
     429 (the line says why), then a later round takes the same job's answer, with one POST and
     the receipt settled. Mutations (the cause kept after a read, no `why` from the poll or the
     stale look-up, flow ignoring it) each fail a test.
+- 2026-10-07, after the independent review (claude-opus-5-5-pending-reason).
+  - The poll's own budget deadline (`AbortSignal.timeout`) cutting a look-up short after the server
+    had answered one in the same call was counted as a failed request, so a job read as running
+    the moment before was reported with why "The operation was aborted due to timeout". Once a
+    look-up is answered in the call, that deadline ends the poll with the read standing (no why);
+    a poll the server never answered still says why.
+  - A lost connection's why was undici's bare "fetch failed"; `failedOn` takes the cause's message
+    (ECONNREFUSED ...), or its code when the cause is an AggregateError with no message.
+  - The line said "its saved receipt", but a submission that met a 429 before any receipt was
+    saved also carries a why: it now says "the worker's last request to the server for it". The
+    reason is cut by code points (an emoji is not split in half), at 160.
+  - Tests: `client.test.mjs` (the deadline after a read gives no why; a silent poll, a refused
+    connection, an AggregateError and a 429 on the submission each give one; a stale run still
+    running gives none) and `automation.test.mjs` (a 159-emoji reason is cut by code points).
+    Mutations (the deadline counted as a failure, only the bare message on a lost connection, an
+    empty cause message kept, no bound on the reason, the stale running case given a cause, a cut
+    by UTF-16 units) each fail a test.

@@ -195,9 +195,13 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     }
     return receipts.receive(entry, await response.json());
   }
-  // `cause`, when given, is a look-up of the saved receipt that failed (a rate limit, a gateway
-  // away): the job may be done, so flow.mjs does not report it as running. Kept as `why`.
+  // `cause`, when given, is the last request for the job that failed: its submission when no
+  // receipt is saved yet, else a look-up of the saved receipt (a rate limit, a gateway away). The
+  // job may be done, or not yet made, so flow.mjs does not report it as running. Kept as `why`.
   const pending = (body, why, cause = null) => tagged(Object.assign(new AutomationError(`the saved stage run is still pending${why ? ` (${why})` : ""}; its receipt will be recovered next round`, { code: RUN_PENDING }), cause ? { why: cause } : {}), body);
+  // What a request that got no answer failed on: undici's "fetch failed" names its cause
+  // (ECONNREFUSED, ENOTFOUND) only there, and a cause of several failed addresses has no message.
+  const failedOn = (error) => error?.cause?.message || error?.cause?.code || error?.message || String(error);
   // The owner's card shows this message (flow.mjs unanswered): the saved run's own cause first.
   const inputChanged = (body, detail = "") => {
     const message = detail ? `${detail}; ${INPUT_CHANGED_MESSAGE}` : INPUT_CHANGED_MESSAGE;
@@ -220,7 +224,8 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
     catch (error) {
       if (error instanceof RunReceiptError || error instanceof AutomationError && error.who === "owner") throw error;
       if (error.gone) { receipts.archive(entry, { autoArchive: true, gone: error.gone }); return; }
-      throw pending(body, `the stale run could not be looked up: ${error.message}`, error.message);
+      const cause = failedOn(error);
+      throw pending(body, `the stale run could not be looked up: ${cause}`, cause);
     }
     if (fresh.status === "succeeded") receipts.archive(entry, { autoArchive: true });
     else if (fresh.status === "failed") receipts.removeFailed(entry);
@@ -252,6 +257,9 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       return null;
     }
     let lastProblem = "";
+    // Whether the server answered a look-up in this call: the budget's own deadline cutting the
+    // next one short is then no failed request, and the last read stands (still running).
+    let answered = false;
     for (;;) {
       const result = completed();
       if (result) return result;
@@ -284,17 +292,19 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
         } else {
           let receipt;
           try { receipt = await response.json(); }
-          catch { // A partial body has the same safe recovery as a lost connection: reuse the key.
+          catch (error) { // A partial body has the same safe recovery as a lost connection: reuse the key.
+            if (answered && error?.name === "TimeoutError") break;
             lastProblem = "the receipt response ended before it could be read";
             failures++;
           }
           // A receipt read: a look-up that failed before it is no longer the reason to wait.
-          if (receipt !== undefined) { receipts.receive(entry, receipt); failures = 0; lastProblem = ""; }
+          if (receipt !== undefined) { receipts.receive(entry, receipt); failures = 0; lastProblem = ""; answered = true; }
         }
       } catch (error) {
         if (error instanceof RunReceiptError || error instanceof AutomationError) throw error;
+        if (answered && error?.name === "TimeoutError") break;
         // GET or same-key POST can reconnect safely. The persisted key survives process exit.
-        lastProblem = error.message;
+        lastProblem = failedOn(error);
         failures++;
       }
       const resultAfter = completed();

@@ -1217,13 +1217,14 @@ export class Automation {
         return `${error.slug}: ${error.message}`;
       }
       if (!(error instanceof AutomationError && error.code === RUN_PENDING)) throw error;
-      // The last look-up of the saved receipt failed (client.mjs `why`: a rate limit, a gateway
-      // away): the job may well be done, so the line says what failed rather than that the model
-      // is still running. Until 2026-10-07 it said "still running" either way, and a finished job
-      // whose look-ups were rate-limited read as a model at work.
+      // The worker's last request for the job failed (client.mjs `why`: its submission, or a
+      // look-up of its saved receipt, met a rate limit or a gateway away): the job may well be
+      // done, so the line says what failed rather than that the model is still running. Until
+      // 2026-10-07 it said "still running" either way, and a finished job whose look-ups were
+      // rate-limited read as a model at work.
       const stage = error.stage ?? "writer";
       const what = error.why
-        ? `${stage} has not answered yet: the worker's last request for its saved receipt failed (${[...String(error.why)].slice(0, PENDING_WHY_LENGTH).join("")}); it is asked again next round`
+        ? `${stage} has not answered yet: the worker's last request to the server for it failed (${[...String(error.why)].slice(0, PENDING_WHY_LENGTH).join("")}); it is asked again next round`
         : `${stage} is still running; its saved receipt will be checked next round`;
       // A video's writer, sent by its own unit or to answer a line on its screenplay (discuss.mjs,
       // which runs outside the unit and names the video on the error): no lane looks the job up

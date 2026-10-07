@@ -4876,7 +4876,7 @@ test("a writer whose receipt look-ups are rate-limited is reported as not answer
       return Response.json(jobs.get(body.request_key));
     }
     if (pathname.startsWith("/api/video/automation/run/jobs/")) {
-      if (throttled) return Response.json({ code: "rate_limit_exceeded", detail: "請求過於頻繁，請稍後再試。" }, { status: 429 });
+      if (throttled) return Response.json({ code: "rate_limit_exceeded", detail: typeof throttled === "string" ? throttled : "請求過於頻繁，請稍後再試。" }, { status: 429 });
       return Response.json([...jobs.values()].find((job) => pathname.endsWith(job.id)));
     }
     return site.fetchImpl(url, init);
@@ -4899,11 +4899,21 @@ test("a writer whose receipt look-ups are rate-limited is reported as not answer
   for (const job of jobs.values()) Object.assign(job, { status: "succeeded", result: { text: JSON.stringify({ title: "標題" }), provider: "anthropic", model: "claude-sonnet-5", input_tokens: 1, output_tokens: 1, usage: { tokens: 2, token_budget: 20_000_000 } } });
   throttled = true;
   // Before: "writer is still running", though the model was done and only the look-up had failed.
-  assert.equal(await (await lane()).step(), `${slug}: writer has not answered yet: the worker's last request for its saved receipt failed (請求過於頻繁，請稍後再試。); it is asked again next round`);
+  assert.equal(await (await lane()).step(), `${slug}: writer has not answered yet: the worker's last request to the server for it failed (請求過於頻繁，請稍後再試。); it is asked again next round`);
   throttled = false;
   assert.equal(await (await lane()).step(), `${slug}: script drafted (標題)`, "the same job's answer, taken on a later round");
   assert.equal(posts, 1, "one request, one model run");
   assert.deepEqual(readdirSync(path.join(box.work, slug, "run-receipts")).filter((name) => name.endsWith(".json")), [], "and its receipt is settled");
+
+  // A server's long detail is cut to 160 code points, a character outside the BMP whole.
+  atomicWrite(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", format: "slides", notes: [], created_at: "2026-10-05T12:30:00Z" }));
+  const long = `${"😀".repeat(159)}截斷之後不該出現`;
+  site.fetchImpl = ((original) => async (url, init = {}) => original(url, init))(site.fetchImpl);
+  throttled = false;
+  jobs.clear();
+  await (await lane()).step();
+  throttled = long;
+  assert.equal(await (await lane()).step(), `${slug}: writer has not answered yet: the worker's last request to the server for it failed (${"😀".repeat(159)}截); it is asked again next round`);
 });
 
 test("a video whose trouble does not pass is blocked after its deferrals in a row, with the reason on the card, and the owner's retry starts it at once", async () => {
