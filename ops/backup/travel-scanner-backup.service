@@ -1,0 +1,15 @@
+[Unit]
+Description=Mokaair nightly verified backup (pg_dump, predeploy dumps, encrypted config bundle)
+Documentation=file:///opt/travel-scanner-backup/README.md
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/travel-scanner-backup
+# The module reads /etc/travel-scanner/backup.env itself on every run.
+ExecStart=/usr/bin/python3 /opt/travel-scanner-backup/backup.py run
+TimeoutStartSec=2h
+Nice=10
+IOSchedulingClass=idle
