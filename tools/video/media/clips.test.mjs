@@ -1133,3 +1133,33 @@ test("clips and music run by hand under the project's STOP file, or while anothe
   assert.deepEqual([site.state.clips.length, site.state.music.length], [0, 0], "nothing was bought");
   assert.deepEqual(files(), before, "nothing was written");
 });
+
+test("a selected keyframe or end frame whose bytes changed under an unchanged, approved manifest stops clips and clips import before the site is asked anything", async () => {
+  for (const [label, file, args] of [
+    ["start", "keyframes/sea-storm-1.png", ["--shot", "sea-storm"]],
+    ["end", "keyframes/farewell-end.png", ["--shot", "farewell"]],
+    ["import", "keyframes/opening-1.png", null],
+  ]) {
+    const { box } = prepared();
+    await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+    await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+    const site = mediaSite();
+    let requests = 0;
+    const fetchImpl = async (url, init) => {
+      requests += 1;
+      return site.fetchImpl(url, init);
+    };
+    const manifest = readFileSync(path.join(box.workdir, "keyframes", "manifest.json"), "utf8");
+    // A later take drew over the selected file name; the manifest and its approval did not change.
+    writeFileSync(path.join(box.workdir, file), PNG(`redrawn ${label}`));
+    const command = args ? ["clips", "--slug", box.slug, ...args] : ["clips", "import", "--slug", box.slug, "--shot", "opening", "--file", outsideFile(box, "made.mp4", "made"), "--provider", "hailuo-web", "--plan", "pro", "--credits", "60", "--usd", "0.5"];
+    const run = context(box, fetchImpl, args ? {} : outsideQc());
+    assert.equal(await main(command, run.ctx), EXIT.usage, label);
+    assert.match(run.out.stderr, new RegExp(`selected picture has changed: ${file.replace(".", "\\.")}`), label);
+    assert.equal(requests, 0, `${label}: no status read, upload or submission`);
+    assert.deepEqual([site.state.clips.length, site.state.uploads.length], [0, 0]);
+    assert.equal(readFileSync(path.join(box.workdir, "keyframes", "manifest.json"), "utf8"), manifest, "the manifest is not rewritten to make it pass");
+    assert.equal(existsSync(path.join(box.workdir, "clips", "manifest.json")), false);
+    assert.deepEqual(readLedger(box.workdir).entries, [], "nothing held or booked");
+  }
+});

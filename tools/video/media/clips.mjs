@@ -26,7 +26,7 @@ import { approvalState, sha256File } from "../core/approvals.mjs";
 import { clipKey, clipShotScenes, clipsHash, isDrama, isSourced, lookHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes, sourcedShotScenes, stillShotScenes } from "../core/drama.mjs";
 import { productionClipProblems, productionClipSizeProblem, productionShotProblems } from "../core/lint.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
+import { ARTIFACTS, keyframeProblems, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
@@ -150,6 +150,25 @@ function writeManifest(workdir, doc, manifest) {
   atomicWrite(manifestFile(workdir), `${JSON.stringify(manifest, null, 2)}\n`);
 }
 
+/**
+ * The selected start (and end) pictures of these scenes whose bytes are not the ones the keyframes
+ * manifest recorded, or that are missing: core/state.mjs keyframeProblems on those scenes alone,
+ * and any end frame the manifest records, which a clip is sent with whether or not the script
+ * still asks for one.
+ */
+async function changedPictures(doc, keyframes, workdir, scenes) {
+  const ids = new Set(scenes.map((scene) => scene.id));
+  const problems = (await keyframeProblems({ doc: { ...doc, scenes: doc.scenes.filter((scene) => ids.has(scene.id)) }, manifest: keyframes, workdir, allowNeedsReview: true }))
+    .filter((problem) => /changed|missing|no selected picture/.test(problem));
+  for (const scene of scenes) {
+    const end = keyframes.shots?.[scene.id]?.end_frame;
+    if (!end?.file || scene.data?.end_frame?.prompt) continue;
+    const file = path.resolve(workdir, end.file);
+    if (!existsSync(file) || await sha256File(file) !== end.sha256) problems.push(`${scene.id} end frame selected picture has changed: ${end.file}`);
+  }
+  return problems;
+}
+
 export async function run(command, args, ctx) {
   const { EXIT } = ctx;
   if (args[0] === "import") return importClip(args.slice(1), ctx);
@@ -200,6 +219,14 @@ export async function run(command, args, ctx) {
   if (storyboard.status !== "approved") {
     const why = storyboard.status === "stale" ? "changed since it was approved" : "not approved yet";
     throw new MediaError(`the storyboard is ${why}: run review-push --gate storyboard, let the owner (or the auto-approve setting) decide on /admin/videos, then review-pull`, { who: "owner" });
+  }
+  // The approval is of the manifest; a later keyframes run may have drawn over a selected file
+  // name since. The start and end pictures this run uses are checked byte for byte before
+  // anything is asked of the site.
+  const changed = await changedPictures(doc, keyframes, workdir, [...shots, ...stills]);
+  if (changed.length) {
+    ctx.stderr.write(`${changed.join("; ")}; run keyframes again or restore the approved pictures\n`);
+    return EXIT.usage;
   }
   const lookManifest = readJson(path.join(workdir, ARTIFACTS.characters), null);
   const sheets = chosenSheets(lookManifest, lookChosen(lookManifest, readJson(path.join(workdir, ARTIFACTS.characterChoice), null), hash) ?? {});
@@ -591,6 +618,11 @@ async function importClip(args, ctx) {
   // that costs nothing and asks no judge never calls the site. The dollars are held in the ledger
   // under the import's key while the clip is checked, and the booking replaces the hold; an
   // import that ends without booking (a missing ffmpeg, the STOP file, a failed check) lets it go.
+  const changed = await changedPictures(doc, keyframes, workdir, [scene]);
+  if (changed.length) {
+    ctx.stderr.write(`${changed.join("; ")}; run keyframes again or restore the approved picture (the clip must start on it)\n`);
+    return EXIT.usage;
+  }
   if (!mayWriteProject(ctx, workdir, "clips import")) return EXIT.incomplete;
   const sha256 = await sha256File(origin);
   const reservation = usd > 0 ? `import:${scene.id}:${sha256}` : null;

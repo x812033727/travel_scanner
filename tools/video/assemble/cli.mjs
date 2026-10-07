@@ -17,7 +17,7 @@ import { presentationTimeline, selectBrandingForBuild } from "../core/branding.m
 import { productionClipProblems } from "../core/lint.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
-import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
+import { ARTIFACTS, keyframeProblems, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
 import {
   bedLevel,
@@ -201,6 +201,15 @@ async function mediaInputs(doc, workdir, workBase, manifest, speech, visual) {
       return { problem: "clips/manifest.json is missing or was made for an older script or look; run clips first" };
     }
     keyframes = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
+    // A still shot is cut from its selected keyframe: the bytes must still be the ones the clips
+    // manifest recorded, since a later keyframes run may have drawn over the same file name.
+    for (const [id, shot] of Object.entries(clips.shots ?? {})) {
+      if (!shot?.still) continue;
+      const file = path.resolve(workdir, shot.file ?? "");
+      if (!shot.file || !existsSync(file) || await sha256File(file) !== shot.sha256) {
+        return { problem: `the selected picture of still shot ${id} (${shot.file}) is not the one clips/manifest.json recorded; run keyframes and clips again or restore it` };
+      }
+    }
   } else if (pictures) {
     keyframes = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
     if (!keyframes || keyframes.look_hash !== look || keyframes.pictures_hash !== picturesHash(doc)) {
@@ -210,6 +219,11 @@ async function mediaInputs(doc, workdir, workBase, manifest, speech, visual) {
     if (missing.length) return { problem: `keyframes/manifest.json has no picture for ${missing.join(", ")}; run keyframes first` };
     const waiting = shotScenes(doc).filter((scene) => keyframes.shots[scene.id].needs_review).map((scene) => scene.id);
     if (waiting.length) return { problem: `${waiting.join(", ")} failed the judge (needs_review in keyframes/manifest.json); fix the prompts and run keyframes again` };
+    // The manifest may be current while a selected file was drawn over since (later takes reuse
+    // the file names): the bytes are checked before ffmpeg runs or a segment cached under the
+    // manifest's hash is reused.
+    const changed = (await keyframeProblems({ doc, manifest: keyframes, workdir, allowNeedsReview: true })).filter((problem) => /changed|missing|no selected picture/.test(problem));
+    if (changed.length) return { problem: `${changed.join("; ")}; run keyframes again or restore the approved pictures` };
   }
   return { look, subtitles, clips, keyframes, music: sound.music, track: sound.track, sfx: effects.sfx };
 }

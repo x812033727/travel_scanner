@@ -15,6 +15,8 @@ scope:
   - tools/video/media/clips.test.mjs
   - tools/video/assemble/cli.mjs
   - tools/video/assemble/assemble.test.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Verify selected image bytes before direct clips and assembly
@@ -31,19 +33,19 @@ paths have additional byte checks; this is a separate direct-command gap.
 
 ## Definition of done
 
-- [ ] Direct clips rejects a changed selected start or required end image before
+- [x] Direct clips rejects a changed selected start or required end image before
       status/upload/paid submission, preserving all existing receipts and media.
-- [ ] Direct assembly rejects the changed selected image before ffmpeg or reuse
+- [x] Direct assembly rejects the changed selected image before ffmpeg or reuse
       of a segment cached under the unchanged manifest hash.
-- [ ] Unchanged approved images and clip-cut reuse keep their current behavior;
+- [x] Unchanged approved images and clip-cut reuse keep their current behavior;
       no provider settings, owner decisions, original objects or cache entries
       are rewritten to make a mismatch pass.
 
 ## Steps
 
-- [ ] Check current scopes/PRs and claim before editing the four consumer paths.
-- [ ] Add the missing actual-byte gate at both direct consumer boundaries.
-- [ ] Exercise source-bound failure and valid-input cases with no real model calls.
+- [x] Check current scopes/PRs and claim before editing the four consumer paths.
+- [x] Add the missing actual-byte gate at both direct consumer boundaries.
+- [x] Exercise source-bound failure and valid-input cases with no real model calls.
 
 ## How to verify
 
@@ -67,3 +69,18 @@ and the required tools checks before a PR.
 - Existing automatic/review/download guards passed five targeted offline checks.
   No direct-consumer fix, production restore, paid generation or deployment is
   included in this task filing. Claim remains open for a separate bounded fix.
+
+### 2026-10-07 implementation (claude-opus-5-5-image-bytes)
+
+- `media/clips.mjs` `changedPictures()`:
+  - It runs `core/state.mjs keyframeProblems` on the shots this run uses, and also checks any end frame the manifest records, because a clip is sent with that end frame even when the script no longer asks for one.
+  - Direct `clips` runs it after the storyboard approval check and before any status read, upload or submission. `clips import` runs it before money is held or the clip is copied.
+  - A mismatch exits 2 and names the file. The manifest, receipts, ledger and media are left as they are.
+- `assemble/cli.mjs` `mediaInputs()` checks the bytes before ffmpeg runs and before a segment cached under the manifest's hash is reused:
+  - illustrated slides: every selected keyframe;
+  - drama: every still shot's picture recorded in `clips/manifest.json`.
+  - Clip-cut reuse and unchanged pictures behave as before.
+- Tests:
+  - `clips.test.mjs`: a changed start, a changed recorded end frame, and import. Each makes zero requests of any kind, leaves the manifest unchanged and holds no money.
+  - `assemble.test.mjs`: illustrated and drama-still cases. A valid-byte control reaches ffmpeg; a changed picture does not, and the cached segment is left untouched.
+  - Both fail on the old code.
