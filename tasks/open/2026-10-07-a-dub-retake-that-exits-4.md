@@ -1,11 +1,11 @@
 ---
 id: 2026-10-07-a-dub-retake-that-exits-4
 title: A dub retake that exits 4 spends its retake round although it made no take
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-dub-retake
+claimed_at: 2026-10-07T10:30:07Z
 created_at: 2026-10-07T07:21:30Z
 completed_at:
 branch:
@@ -33,13 +33,13 @@ older than that ticket and was outside its scope.
 
 ## Definition of done
 
-- [ ] A dub retake that exits 4 without making a take does not count as a retake round; one that
+- [x] A dub retake that exits 4 without making a take does not count as a retake round; one that
   made takes keeps its round, as for the narration.
 
 ## Steps
 
-- [ ] Give the round back in `makeDub` when the redo that exited 4 changed no take of that locale.
-- [ ] A test on the dub fixture: the budget is spent for three rounds, the retake rounds stay
+- [x] Give the round back in `makeDub` when the redo that exited 4 changed no take of that locale.
+- [x] A test on the dub fixture: the budget is spent for three rounds, the retake rounds stay
   where they were, and nothing is reworded.
 
 ## How to verify
@@ -50,3 +50,29 @@ bound by the duration review, so they need an independent rebind.
 ## Notes
 
 - Found by the review of `2026-10-06-tts-and-a-narration-retake-that` (2026-10-07).
+- 2026-10-07 (claude-opus-5-5-dub-retake). `flow.mjs` `makeDub`:
+  - `flaggedTakes()` hashes each flagged line's `dubs/<locale>/audio/<id>.wav` before the
+    retake, since a retake rewrites the take of every line it makes. A retake that exits 4 with
+    none of them changed gives its round back; one that made a take keeps it, as for the
+    narration (`retakeStopped`'s `giveBack`).
+  - Found while testing this, and fixed here since it is the same path: a retake or a check
+    that exited 4 deferred the video without marking the track unheard. `dub` had already
+    written a track that reads as current, so the next visit skipped the locale and sent the
+    language batch with the flagged lines neither retaken nor heard again: a dub Jev had flagged
+    went to the owner for upload. Both now go through `unfinished()`, which sets `check_stopped`
+    like a STOP or a lost answer does. The next visit makes the track and hears it again. Its
+    deferral keeps its own kind (`dub`, or `check-audio` for the check).
+  - The JSDoc says what exit 4 and a STOP do now: they defer this video only. This is
+    `2026-10-06-makedub-s-comment-still-says-a`, which asked to ride along with the next change
+    to `flow.mjs`.
+- Tests (`automation.test.mjs`), each failing on the old code:
+  - three budget-spent retakes give the round back each time, with nothing reworded and no
+    batch, then the retake runs and the dub is made after one retake;
+  - a retake that wrote the flagged line's take before it exited 4 keeps its round;
+  - a vendor that keeps failing the retake blocks at the seventh try as `deferred:dub`, with no
+    retake spent;
+  - a check that exits 4 leaves the track unheard, and the next visit runs `dub` and the check
+    instead of sending the batch;
+  - a check a vendor keeps failing blocks as `deferred:check-audio`.
+  Mutations (no give-back, always giving back, the unheard mark dropped, the check's old path,
+  the check's kind as `dub`) each fail a test.

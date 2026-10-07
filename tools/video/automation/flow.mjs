@@ -3516,11 +3516,12 @@ export class Automation {
    * translator and dubbed again, MAX_DUB_REWORD_ROUNDS times. A retake that no longer fits its
    * window goes back to the shortening. What still fails after that, and what needs the owner (a
    * voice that speaks one language, a missing key), gives the locale up with the reason instead
-   * of blocking the video; a service that is down ends this run and the next one tries again, and
-   * a STOP file that ends `dub`, a retake or the check (exit 6) ends it too, the next run going on
-   * from the takes already paid for. A paid request whose answer was lost (speechUncertain)
-   * blocks the video: the locale is not given up for a request that may well have worked, nor
-   * bought again without the owner.
+   * of blocking the video. A service that is down or a limit (exit 4) defers this video only, and
+   * the lane goes on with the others; a STOP file that ends `dub`, a retake or the check (exit 6)
+   * defers it for the rest of the run. Either way the next visit goes on from the takes already
+   * paid for, and a retake that exited 4 without making a take gives its round back. A paid
+   * request whose answer was lost (speechUncertain) blocks the video: the locale is not given up
+   * for a request that may well have worked, nor bought again without the owner.
    */
   async makeDub(state, locale) {
     const { ctx } = this;
@@ -3535,6 +3536,23 @@ export class Automation {
     const flags = path.join(workdir, "review", `check-flags.${locale}.json`);
     const checkArgs = ["check-audio", "--slug", slug, "--locale", locale];
     const overLines = () => readJson(dubArtifacts(workdir, locale).fit, null)?.over;
+    // The flagged lines' takes as they are (a retake writes each one's <id>.wav again): a retake
+    // that exits 4 having changed none of them made no take, so its round is given back, as for
+    // the narration (retakeStopped's giveBack). An outage repeated round after round would
+    // otherwise spend every retake and send lines never retaken to the rewording.
+    const flaggedTakes = () => {
+      let ids;
+      try {
+        ids = flaggedLines(readJson(flags));
+      } catch {
+        ids = new Set();
+      }
+      const audio = dubArtifacts(workdir, locale).audio;
+      return JSON.stringify([...ids].sort().map((id) => {
+        const file = path.join(audio, `${id}.wav`);
+        return [id, existsSync(file) ? createHash("sha256").update(readFileSync(file)).digest("hex") : null];
+      }));
+    };
     // A paid request whose answer was lost: the video waits for the owner, and the owner's retry
     // runs this locale again, its check included, though its track may already read as current.
     const lost = (what, result) => {
@@ -3549,6 +3567,14 @@ export class Automation {
       rounds.check_stopped = true;
       remember();
       return this.defer(state, `${slug}: ${locale} ${what} stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
+    };
+    // A retake or a check that met a limit or a service away (exit 4) after `dub` wrote the track:
+    // the track reads as current, though Jev has not passed it, so it is marked unheard as a
+    // stopped one is, and the next visit makes it and checks it again instead of sending it.
+    const unfinished = (what, result) => {
+      rounds.check_stopped = true;
+      remember();
+      return this.defer(state, `${slug}: ${locale} ${what} could not finish (${lastLine(result.out)})`, { what: what === "dub check" ? "check-audio" : "dub", everyone: Boolean(everyones(result.out)) });
     };
     // Each pass makes the track (only the lines whose words changed are synthesized again) and
     // checks it; a reworded line or a retake that no longer fits starts another pass.
@@ -3580,9 +3606,13 @@ export class Automation {
       while (check.code === 1 && rounds.retakes < MAX_DUB_RETAKE_ROUNDS) {
         rounds.retakes += 1;
         remember();
+        const takes = flaggedTakes();
         const redo = await this.speech(slug, [...dubArgs, "--redo", flags]);
         if (redo.code === ctx.EXIT.incomplete) return stopped("dub retake", redo);
-        if (redo.code === 4) return this.defer(state, `${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)})`, { what: "dub", everyone: Boolean(everyones(redo.out)) });
+        if (redo.code === 4) {
+          if (flaggedTakes() === takes) rounds.retakes -= 1;
+          return unfinished("dub retake", redo);
+        }
         if (speechUncertain(redo)) return lost(`dub ${locale} retake`, redo);
         // The new take is longer than its window allows: the next pass's `dub` reports the same
         // window and shortens it, while shortening rounds are left.
@@ -3603,7 +3633,7 @@ export class Automation {
         // Nothing usable came back: the same words would only be heard wrong again.
         if (reworded.ids.length) continue;
       }
-      if (check.code === 4) return this.defer(state, `${slug}: ${locale} dub check could not finish (${lastLine(check.out)})`, { what: "check-audio", everyone: Boolean(everyones(check.out)) });
+      if (check.code === 4) return unfinished("dub check", check);
       if (check.code === ctx.EXIT.incomplete) return stopped("dub check", check);
       if (check.code === 1) {
         const reworded = rounds.reword ? ` and ${rounds.reword} rewording round${rounds.reword === 1 ? "" : "s"}` : "";

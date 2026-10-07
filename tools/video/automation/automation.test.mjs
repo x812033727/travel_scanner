@@ -3099,6 +3099,104 @@ test("a rewording that changes a number is dropped and the locale is given up; w
   assert.equal(video.calls("translator", "reword").filter((call) => call.payload.locale === "ko").length, MAX_DUB_REWORD_ROUNDS);
 });
 
+/**
+ * A dub whose `dub --redo` exits 4 `outage` times, with `out`; `takeFirst` makes the redo write the
+ * flagged line's take before it stops, as a run that met the limit after its first request does.
+ * The check flags the first line until a retake has gone through.
+ */
+async function dubOutage({ outage, out, takeFirst = false }) {
+  let retaken = false;
+  const video = await finishedVideo({ checks: { en: () => !retaken } });
+  video.choose({ en: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  const played = video.ctx.runCommand;
+  const left = { outage };
+  video.ctx.runCommand = async (command, runCtx) => {
+    if (!(command[0] === "dub" && command.includes("--redo"))) return played(command, runCtx);
+    if (left.outage <= 0) {
+      retaken = true;
+      return played(command, runCtx);
+    }
+    left.outage -= 1;
+    video.runs.push(command.join(" "));
+    if (takeFirst) {
+      const [first] = readJson(path.join(video.workdir, "review", "check-flags.en.json")).flags;
+      const audio = dubArtifacts(video.workdir, "en").audio;
+      mkdirSync(audio, { recursive: true });
+      writeFileSync(path.join(audio, `${first}.wav`), Buffer.from(`a new take, ${left.outage} left`));
+    }
+    return { code: 4, out };
+  };
+  return { video, left };
+}
+
+test("a dub retake that exits 4 without making a take gives its round back: an outage never spends the retakes or rewords a line", async () => {
+  const { video } = await dubOutage({ outage: 3, out: BUDGET_SPENT });
+  for (let round = 1; round <= 3; round++) {
+    assert.match(await video.step(), /^chatgpt-ads-off: en dub retake could not finish \(本月的語音字數預算.+\); deferred until \d{4}-/, `round ${round}`);
+    assert.equal(video.state().languages.en.retakes, 0, `round ${round}: the round is given back`);
+    assert.equal(video.calls("translator", "reword").length, 0, `round ${round}: nothing is reworded`);
+    assert.equal(video.reviews("languages").length, 0, `round ${round}: no batch for a track Jev flagged`);
+    nextRun(video.automation, video.clock);
+  }
+  // The budget is back: the retake runs, and the line passes without a rewording round.
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub made after 1 retake; Jev passed every line$/);
+  assert.equal(video.calls("translator", "reword").length, 0);
+});
+
+test("a dub retake that made a take before it exited 4 keeps its round, as the narration's does", async () => {
+  const { video } = await dubOutage({ outage: 1, out: VENDOR_AWAY, takeFirst: true });
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub retake could not finish \(Azure 語音暫時無法使用\); deferred until \d{4}-/);
+  assert.equal(video.state().languages.en.retakes, 1, "the take it made was a retake");
+  nextRun(video.automation, video.clock);
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub made after 2 retakes; Jev passed every line$/);
+});
+
+test("a dub retake a vendor keeps failing defers like any stage and blocks the video at the seventh try, its rounds untouched", async () => {
+  const { video } = await dubOutage({ outage: Infinity, out: VENDOR_AWAY });
+  for (let round = 1; round <= DEFER_LIMIT; round++) {
+    assert.match(await video.step(), /^chatgpt-ads-off: en dub retake could not finish \(Azure 語音暫時無法使用\); deferred until \d{4}-/, `round ${round}`);
+    assert.equal(video.state().languages.en.retakes, 0, `round ${round}: no retake was spent`);
+    nextRun(video.automation, video.clock);
+  }
+  assert.equal(await video.step(), `chatgpt-ads-off: blocked — still could not move after ${DEFER_LIMIT + 1} tries: en dub retake could not finish (Azure 語音暫時無法使用)`);
+  assert.deepEqual([video.state().status, video.state().blocked_kind], ["blocked", "deferred:dub"]);
+});
+
+test("a dub check that exits 4 leaves the track unheard: the next visit makes it and hears it again instead of sending it", async () => {
+  const video = await finishedVideo({ checks: { en: 0 } });
+  video.choose({ en: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  const played = video.ctx.runCommand;
+  let outage = 1;
+  video.ctx.runCommand = async (command, runCtx) => {
+    if (!(command[0] === "check-audio" && command.includes("--locale") && outage > 0)) return played(command, runCtx);
+    outage -= 1;
+    video.runs.push(command.join(" "));
+    return { code: 4, out: RATE_LIMITED };
+  };
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub check could not finish \(請求過於頻繁，請稍後再試\); deferred until \d{4}-/);
+  assert.equal(video.state().languages.en.check_stopped, true, "the track `dub` wrote is not one Jev passed");
+  nextRun(video.automation, video.clock);
+  const ran = video.runs.length;
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub made; Jev passed every line$/);
+  assert.deepEqual(video.runs.slice(ran).filter((run) => /^(dub|check-audio) .*--locale/.test(run)), [`dub --slug ${video.slug} --locale en`, `check-audio --slug ${video.slug} --locale en`]);
+  assert.equal(video.reviews("languages").length, 0, "the batch waits for a track Jev passed");
+
+  // A check a vendor keeps failing blocks at the seventh try, as the check's own trouble.
+  const away = await finishedVideo({ checks: { en: 0 } });
+  away.choose({ en: { metadata: false, captions: true, dub: true } });
+  assert.match(await away.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  const answered = away.ctx.runCommand;
+  away.ctx.runCommand = async (command, runCtx) => (command[0] === "check-audio" && command.includes("--locale") ? { code: 4, out: VENDOR_AWAY } : answered(command, runCtx));
+  for (let round = 1; round <= DEFER_LIMIT; round++) {
+    assert.match(await away.step(), /en dub check could not finish/, `round ${round}`);
+    nextRun(away.automation, away.clock);
+  }
+  assert.match(await away.step(), /blocked — still could not move after \d+ tries: en dub check could not finish/);
+  assert.deepEqual([away.state().status, away.state().blocked_kind], ["blocked", "deferred:check-audio"]);
+});
+
 test("a retake that no longer fits its window is shortened, not given up", async () => {
   const video = await finishedVideo({ dubs: { en: { redoOver: 1 } }, checks: { en: 1 } });
   video.choose({ en: { metadata: false, captions: true, dub: true } });
