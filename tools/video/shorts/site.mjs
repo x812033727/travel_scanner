@@ -31,12 +31,17 @@ export const DEFAULT_SETTINGS = Object.freeze({ voice: CHANNEL_VOICE, seconds_mi
 const OWNER_CODES = new Set(['video_tool_token_invalid']);
 // Jev's policy reading takes one call off the daily Jev budget before Jev is asked
 // (apps/api/app/video_automation/judge.py `_ask`), so it is `paid`, as in
-// tools/video/automation/client.mjs: once sent, it is asked again only after a 429 or the API's own
-// 502 once its Jev call failed (no verdict was lost on the way back). A dropped connection, an
-// unreadable answer or any other 5xx (a gateway's page, the judge route's 502
-// upstream_unavailable) leaves its outcome unknown: RUN_UNCERTAIN, the automation client's code,
-// which the QA's policy item reports instead of asking Jev again.
-const SETTLED_JUDGE_CODES = new Set(['video_judge_upstream_failed']);
+// tools/video/automation/client.mjs: once sent, it is asked again only after a 429, the API's own
+// 502 once its Jev call failed (no verdict was lost on the way back), or the judge route's 502
+// `upstream_unavailable`, which now means only an API the route never reached: a request the API
+// took and whose answer was lost is the route's 504 `video_judge_answer_lost` (JUDGE_LOST in
+// apps/web/app/api/video/speech/forward.ts). That 504, a dropped connection, an unreadable answer
+// and any other 5xx (a gateway's page, a 502 with another code such as the API's
+// `video_judge_outcome_uncertain`) leave its outcome unknown: RUN_UNCERTAIN, the automation
+// client's code, which the QA's policy item reports instead of asking Jev again. A host from before
+// that route change answers the 502 for both, so this client needs a host that serves it:
+// production does since a9e4c3851, deployed 2026-10-05.
+const SETTLED_JUDGE_CODES = new Set(['video_judge_upstream_failed', 'upstream_unavailable']);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(['ECONNREFUSED', 'ENOTFOUND', 'EAI_AGAIN', 'EHOSTUNREACH', 'ENETUNREACH', 'UND_ERR_CONNECT_TIMEOUT']);
 const neverSent = (error) => NEVER_SENT.has(error?.cause?.code ?? error?.code);
