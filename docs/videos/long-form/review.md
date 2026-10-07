@@ -2379,6 +2379,138 @@ PASS is DURATION_ONLY for the three rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1361 lost-answer holds increment: 9 files (2026-10-07)
+
+Reviewer: `claude-pr-review-happy-carson`, the reviewer of the "PR #1361" sections above. It wrote none of the branch's commits, judged each bound diff on its own reading, and edited only this report and review.json. Author: `claude-opus-5-5-happy-carson`, the branch's author. The changes are commits written on this branch under the ticket `2026-10-05-hold-lost-planner-and-jev-answers`, each with the repository's `Claude <noreply@anthropic.com>` git identity. These five touch bound files:
+
+- `1e74fa08` ("fix(video): a lost Jev policy answer on the final cut is held for the owner's retry");
+- `25dc5137` ("fix(video): a lost planner or Jev outline answer stops its video for the owner's retry instead of being bought again");
+- `04c6b3d1` ("fix(video): a series document whose planner answer was lost is not planned again on its own");
+- `0d13239f` ("fix(video): a discussion's lint repair whose answer was lost blocks its video instead of ending every round");
+- `43221935` ("fix(video): review fixes for the lost-answer holds").
+
+Scope: DURATION_ONLY for the nine changed bindings below, on claude/happy-carson-c1hy91 (draft PR #1361) at `5718d710`. That is thirteen first-parent commits on the previous increment's receipt commit `aa5eb2f6`, one of them the merge `6a7e4dce` of origin/main `7524c259` (#1370). The merge base with origin/main is now `7524c259`.
+
+Baseline: `aa5eb2f6`, 9 of 9 match. None of the thirteen commits touches docs/videos/long-form/ or tools/video/long-form/. At `aa5eb2f6`, review.md (772,359 bytes) hashes to `67d35fa5f92e3a14fcb5dc92b996192ea63630ee03688f7adf2fa81763450c8d`, the report_sha256 that review.json held before this increment. At `aa5eb2f6`, `git show <path> | sha256sum` equals the value in review.json and in the table for each of the nine files:
+
+- tools/video/automation/automation.test.mjs `84407f5d…`;
+- discuss.mjs `51216554…`;
+- flow.mjs `516d8264…`;
+- series.mjs `cd782797…`;
+- series.test.mjs `b35e07ad…`;
+- tools/video/qa/cli.mjs `6920a794…`;
+- qa/qa.test.mjs `9a5430e9…`;
+- tools/video/review/sync.mjs `d25fdbc1…`;
+- sync.test.mjs `edcf916b…`.
+
+The full values are the "before" side of this commit's review.json diff. So each file's diff against `aa5eb2f6` is exactly the unreviewed change. Each commit's first-parent paths intersected with the 108 paths of REVIEW_FILES:
+
+- `1e74fa08`: qa/cli.mjs and qa.test.mjs.
+- `25dc5137`: flow.mjs, automation.test.mjs, sync.mjs and sync.test.mjs.
+- `04c6b3d1`: series.mjs and series.test.mjs.
+- `0d13239f`: discuss.mjs and series.test.mjs.
+- `43221935`: automation.test.mjs, flow.mjs, series.mjs and series.test.mjs.
+
+The other commits touch no bound path: `500e16f3`, `72f79d97` and `5718d710` (task files), `e0a451a4` (AUTOMATION.md, HANDS-OFF.md, automation/client.mjs's docblock and the ticket), `1ca8d7b3` (the series skill reference and a ticket), `1dc86a5b` (tools/video/shorts/lab.mjs, lab.test.mjs and qa.mjs) and `4c31f0eb` (SHORTS.md and the ticket). `43221935` also changes automation/shorts.mjs, the shorts lab and the series reference, none of them bound. The merge `6a7e4dce` brings in main's #1370 article content, the article-localization tools and skill, and tasks. Main's side between `77a58c85` and `7524c259` changes no bound file and neither receipt file, and `durationReviewProblems` passes against main's own tree at `7524c259`.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` for exactly these nine and nothing else, so the other 99 bindings equal their working-tree bytes. The working tree equals the head for the nine files. None holds a CR byte or a BOM, and each ends in LF. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with nine hashes rebound and the other 99 unchanged.
+
+What the change is. A paid planner, verifier or Jev request whose answer was lost after it was sent (client.mjs `RUN_UNCERTAIN`) is no longer sent again on its own:
+
+- A first plan (`draft`, `draftSlides`, `draftDrama`, through the new `firstPlan`) that is lost leaves an `unplanned` video blocked as `uncertain:planner`. A request's loss is kept in auto-state.json `lost_plans` until the claim goes through (`keepLostPlan`, `heldPlan`), and the owner's retry plans it once (`planUnplanned`, first lane only).
+- A lost Jev outline pick blocks as `uncertain:judge`. review-push keeps it for the brief in review/outline-lost.json.
+- A lost Jev policy verdict on the final cut is kept by qa in qa.json `policy_lost` per request hash, with exit 3 and the client's code. sync.mjs's `qualityCheck` passes that on, `submissionFailure` blocks as `uncertain:policy`, and the retry drops the record (`forgetLostPolicy`).
+- A series document's lost planner answer is held in `_series/<slug>/lost-docs.json` under `documentKey`/`documentInputs`, and a lost checker verdict files the document without one.
+- A discussion's lost lint repair restores the last good script and blocks through `sortFailure`.
+
+This section asks only whether any of it reaches a length rule. In particular, it asks whether a first plan made again after a retry is asked for the same length, and whether the QA report's duration items or a lint can be skipped.
+
+Findings, tools/video/automation/flow.mjs (+242/−74, 239,147 → 250,504 bytes). The duration code is outside the changed lines except at two places, both carrying values unchanged:
+
+- the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29);
+- `slidesMinutes` and `episodeMinutes` (63–69);
+- the anime `body_target_seconds / 60` settlement (507);
+- `planPayload`'s `target_minutes: slidesMinutes(this.settings)` (1822);
+- `draftDrama`'s `const minutes = episodeMinutes(request.target_minutes, request.style_preset)` (2071);
+- the series episode's and writer payloads' `target_minutes` (2146–2198, 2669–2698, 3034).
+
+The two changed lines that name a length:
+
+- `stateBase` (2072) keeps `target_minutes: minutes` and only gains `drama_request: { title, note }`.
+- The new `dramaPlanPayload` (2060) builds the drama planner's payload with `target_minutes: [state.target_minutes, state.target_minutes]`. `draftDrama` calls it with `stateBase`, whose `target_minutes` is that same `minutes`, so the first plan's payload equals the inline one it replaces: the same premise, title, note, sources, `dramaPayload`, 16,000 tokens, format and variant. `planUnplanned` calls it with the saved video's state, which carries the same `target_minutes` (it is `...stateBase`). A slides or scheduled draft's replan goes through the unchanged `planPayload`, so its `target_minutes` is again `slidesMinutes(this.settings)`.
+
+automation.test.mjs asserts that the drama replan's `target_minutes` equals the first request's. The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` number 20 at both revisions. The rest of the change does not touch a length:
+
+- `firstPlan` and the lost-plan bookkeeping in auto-state.json;
+- `unplannedVideo`;
+- `heldPlan`;
+- the `submitOutline` and replan catches;
+- `lostPolicy` in `submissionFailure`;
+- `forgetLostPolicy` in the retry, which deletes only `policy_lost` from qa.json and keeps its other fields, the anime runtime fields among them;
+- the first-lane rule;
+- `next === "brief"` going to `planUnplanned` for an unplanned video.
+
+Each of these only blocks, holds or plans a video. None marks a step done past a check, and none reads or writes a length.
+
+Findings, tools/video/qa/cli.mjs (+43/−6, 20,540 → 23,169 bytes). The hunks are the imports (10, 15), `lostItem`/`heldLoss` and `policyItem`'s docblock and hold (65–95), its `RUN_UNCERTAIN` branch (108–112) and `run()`'s policy call, report and exit (306, 312–319). The checks that read the cut's length are outside them: `assembleItem`, the pace items and the chapter checks, with the branding and `total_frames` comparisons at 177–187 and 236–261. They run as before, and `qaReport(items, finalSha256)` still sets `ok` from every item. A held or lost judgement only replaces the `policy` item with a failed one and adds `policy_lost`. The anime `policy_hash`, `runtime_spec` and `runtime_context` are written as before. The new exit 3 for a lost verdict comes before the `report.ok` return, so it can turn a pass or a lint exit into exit 3 but never into exit 0. The file's duration-term lines (target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, runtime_spec, action_seconds, duration, minutes, `effectiveEpisodeMinutes`, `minEpisodeMinutes`) number 3 at both revisions.
+
+Findings, tools/video/review/sync.mjs (+34/−10, 87,801 → 90,466 bytes). The changes are `OUTLINE_LOST_FILE`, `judgeOutline`'s "lost" status, `outlineReview`'s summary line for it, the outline submission's record, and `qualityCheck` reading qa.json before its exits and throwing an owner error with `RUN_UNCERTAIN` when `policy_lost` is there. The final cut's review is still built from the same qa.json and timeline, its `duration_seconds`, runtime proof and branding checks outside every hunk. The file's duration-term lines number 13 at both revisions.
+
+Findings, tools/video/automation/series.mjs (+138/−30, 41,981 → 48,443 bytes). `documentPayload`'s inline series object moves to `seriesFacts()`, whose body is identical, line for line, to the removed block, `runtime_spec`, `target_minutes` and `total_minutes` among it. `documentInputs` hashes `seriesFacts` with the series id, the rewritten version and its note, and the approved setting and outline. So a changed `target_minutes` or `runtime_spec` is a new request and releases a hold; the hash is read, never applied to a length. `judgeDocument` returning null on a lost checker verdict takes the path a checker without a usable answer took, and the document is filed without a verdict and waits for the owner, never approved on its own. The file's duration-term lines number 4 at both revisions.
+
+Findings, tools/video/automation/discuss.mjs (+16/−5, 25,059 → 26,163 bytes). A lint repair inside `saveAndLint` that is lost restores the last good script, exactly as a STOP or a lost lease already did. `saveAndLint` is called as before (358), so a rewrite that would fail lint, length lint among it, is never accepted. The video is then blocked through `sortFailure`. The file's duration-term lines number 2 at both revisions.
+
+Findings, the four test files. No changed line reads or sets process.env. The opt-outs `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` are unchanged in automation.test.mjs (36), series.test.mjs (31), qa.test.mjs (23) and sync.test.mjs (29). No duration assertion is removed or loosened.
+
+- automation.test.mjs (+312/−0, 426,439 → 449,778 bytes; 153 top-level tests, 143 at `aa5eb2f6`; 192 of 192 by `node --test`). Ten tests cover the lost first plans, the settled ones, the slides, drama and draft holds, the first-lane rule, the lost outline pick and replan, and the lost policy verdict. Its added length-naming lines are a drama fixture's `target_minutes: 8` and the assertion that the replan's `target_minutes` equals the first plan's; the duration-term lines go from 41 to 43 for those two.
+- series.test.mjs (+235/−1, 164,850 → 182,650 bytes; 55 top-level tests, 48; 80 of 80). The removed line is the series.mjs import gaining `documentInputs`/`documentKey`. Seven tests cover the document holds, the key and inputs hash, the settled refusals, the lost lint repair with and without durable runs, and the lost checker. A fixture's `clip_seconds: 300` is a series counter the inputs hash must ignore. The duration-term lines are 26 at both revisions.
+- qa.test.mjs (+162/−29, 33,050 → 41,292 bytes; 17 top-level tests, 14; 17 of 17). The removed lines are the judge-failure test, rewritten so that each settled failure is shown not held. Three tests cover the held loss, a different request and the three shapes of a lost answer. The report keeps all of `ITEM_IDS` ("10 of 11 checks passed"). The duration-term lines are 3 at both revisions.
+- sync.test.mjs (+72/−3, 150,197 → 155,954 bytes; 64 top-level tests, 62; 92 of 92). Two tests cover the lost outline pick and `judgeOutline`'s statuses, and the final-gate test gains a lost policy verdict that posts nothing. The duration-term lines are 29 at both revisions.
+
+Across the nine diffs there is no change to any of these: the 600/780-second targets, the 480-second / 14,400-frame measured floors, the eight-minute floor on every video but a drama, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, the long-anime policy (runtime_spec, action_seconds), measured-duration evidence, plans.json's source hashes or entries, or any covered state. A case-insensitive scan covered the changed lines of the nine files. It looked for minute, MIN_EPISODE, 480, 14400, 14,400, 600, 780, runtime, target_, action_seconds, covered, source_hash, plans.json, policy.json, floor, total_frames, duration, seconds, frame, fps, process.env, VIDEO_MIN, 分鐘, 秒 and 時長. Its only hits are the ones named above:
+
+- the moved `stateBase`/`dramaPlanPayload` lines;
+- the moved `seriesFacts` lines;
+- qa/cli.mjs's report line, unchanged but for `policy_lost`;
+- the test fixtures and assertions;
+- comments naming "minutes" or "minute's slug".
+
+Unbound context, not reviewed: tools/video/automation/client.mjs's docblock, automation/shorts.mjs, tools/video/shorts/lab.mjs, lab.test.mjs and qa.mjs, AUTOMATION.md, HANDS-OFF.md, SHORTS.md, the series skill reference, the tickets and the merged #1370 paths.
+
+Ran (Node v22.22.0, Linux, in the repository checkout at `5718d710`, offline, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing (`git show aa5eb2f6:<path> | sha256sum` against review.json and the table at `aa5eb2f6`, and `sha256sum <path>`);
+- the report hash at `aa5eb2f6`;
+- the CR, BOM and final-newline checks;
+- each commit's first-parent paths intersected with REVIEW_FILES;
+- `durationReviewProblems` against `7524c259` through `git show`;
+- a reading of `git diff aa5eb2f6..HEAD` for the nine files in full;
+- reads of `planPayload`, `dramaPayload`, `draftDrama`'s state, qa/cli.mjs's check items and `seriesFacts` against the removed block (compared with `diff`);
+- the duration-term counts and the scan.
+
+Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL:` with the nine stale bindings above and exited 1. On the branch's bytes, each of these exited 0:
+
+- `node --test tools/video/automation/automation.test.mjs`, 192 of 192;
+- `node --test tools/video/automation/series.test.mjs`, 80 of 80;
+- `node --test tools/video/automation/discuss.test.mjs`, 7 of 7;
+- `node --test tools/video/qa/qa.test.mjs`, 17 of 17;
+- `node --test tools/video/review/sync.test.mjs`, 92 of 92;
+- `node --test tools/video/core/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs tools/video/qa/duration.test.mjs tools/video/core/lint.test.mjs`, 62 of 62.
+
+The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the lost-answer holds themselves. That covers which errors are held, the records (`lost_plans`, outline-lost.json, `policy_lost`, lost-docs.json) and their release rules, the block kinds, exit 3 for a lost verdict, the first-lane rule, `planUnplanned`, and the wording of every line and reply.
+- The unbound files named above were not reviewed.
+- No real planner, Jev, verifier, qa run on a real cut, or site was exercised, and the tests run under the opt-out.
+- The full tool, Vitest and API suites, lint, typecheck and CI were not run for this increment.
+- The 99 bindings these commits did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the nine rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2435,12 +2567,12 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `84407f5d1729cfb8856224efd1731cdd407d584831c5e9096497a1c4f4a7f3b1` |
-| `tools/video/automation/discuss.mjs` | `51216554740c782f44210662a1590983914b1050019101cfb4dda3f5457cc5e3` |
-| `tools/video/automation/flow.mjs` | `516d8264423d7196cb495b97e87e43254f8bb5a426de632b7de3631e5ba41e67` |
+| `tools/video/automation/automation.test.mjs` | `8067b2e96c5c3af3507e350200ff2e1c84c2b6520332034862405b3a67863d33` |
+| `tools/video/automation/discuss.mjs` | `4c22b5c3de451a230398a3c47eddd3bac732c99f00a84e0b41830e23be0f44f4` |
+| `tools/video/automation/flow.mjs` | `7f655faf709673b9560c858f26cea0aeee18d2a05ea2e210889e77c36984043e` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
-| `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
-| `tools/video/automation/series.test.mjs` | `b35e07ada463f3c09fec17aac400435e1e6a35cda998717b332890e9f5f5cfea` |
+| `tools/video/automation/series.mjs` | `61cecd96f307f1162c0d681063155d68fdb580e076fc70134dbfa8792b39921b` |
+| `tools/video/automation/series.test.mjs` | `c2b546180e813023cbed43ae32375244e11f1550eb94d51663160e23b00a90eb` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
@@ -2482,11 +2614,11 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/production/anime-input.test.mjs` | `76b4082fd9245ea331c04d430f82aa5e4afa742d4f830c0794531cc4bbe80d02` |
 | `tools/video/qa/checks.mjs` | `0c13be6eb906f9a322eab71dd18974a2cfa3f9d9b27cc5a9cba9f3570891567b` |
 | `tools/video/qa/checks.test.mjs` | `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` |
-| `tools/video/qa/cli.mjs` | `6920a7948db405bd084e010db51e237fb2b4a51860e663743fbf11de5bc86b91` |
+| `tools/video/qa/cli.mjs` | `ef02e1730e4b033a9913548b8dbe2a853b05f66a9f15abec4cf72f6303dd136e` |
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
-| `tools/video/qa/qa.test.mjs` | `9a5430e90e3d6234198024e8bf8801d34dad0fabd3f9a6e2ceaf5e8df8a9af44` |
-| `tools/video/review/sync.mjs` | `d25fdbc1b35704a47900d5d4f937232987555e1e2ffa9be027626a1ca87a591d` |
-| `tools/video/review/sync.test.mjs` | `edcf916be213c2ac9609d35ec4e23e107ad53a6f3f07142c26817b0c5f389690` |
+| `tools/video/qa/qa.test.mjs` | `2311c37577cdac0aa16c5b94ee8c7a6766506aebfb281e3b3bec95d2acc222cf` |
+| `tools/video/review/sync.mjs` | `146ec87d0147a862f51e34cea9c03903bb4147ff61610965095e3017ddfff87e` |
+| `tools/video/review/sync.test.mjs` | `44922e96e175bbbe4a4920a6e1747db1567f2923cd9cd78807fec5991eb4f578` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
