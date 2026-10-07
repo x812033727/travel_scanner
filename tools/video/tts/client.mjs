@@ -2,7 +2,8 @@
 //
 // Failures are sorted by who can fix them, which is what the CLI's exit code reports: the owner
 // (a revoked token, the card not filled in, a voice not on the allowlist), the service (budget
-// spent, Azure down), or nobody right now (throttling, retried with the server's Retry-After).
+// spent, Azure down), or nobody right now (throttling, retried after the server's Retry-After, or
+// after the limit's whole window when a host from before that header sends none).
 // A paid request (speech, speech/transcribe, speech/judge) is sent again only when it never reached
 // the API or the API settled it; one that went out and lost its answer stops (SPEECH_UNCERTAIN).
 import { createHash } from "node:crypto";
@@ -77,9 +78,21 @@ async function problemOf(response) {
   }
 }
 
-function retryDelayMs(response, attempt) {
+// The routes' own limit (apps/api/app/video_speech/admin_api.py video_tool): a fixed window of 60
+// seconds per token, shared by every route the token calls and both worker lanes. Its 429 says when
+// the window opens again (Retry-After). One without the header, from a host before it, has opened
+// again at the latest a window later; the extra second covers the window's edge.
+export const RATE_WINDOW_MS = 61_000;
+// The longest wait one retry sits through. A longer Retry-After (the transcriber's hourly limit, a
+// provider's quota) would meet the same refusal again within this run, so it is told at once, as
+// the service's (exit 4), for the caller to come back to later.
+export const MAX_RETRY_WAIT_MS = 90_000;
+
+function retryDelayMs(response, attempt, code = "") {
   const header = Number(response?.headers.get("retry-after"));
-  if (Number.isFinite(header) && header > 0) return Math.min(header, 60) * 1000;
+  if (Number.isFinite(header) && header > 0) return header * 1000;
+  // Retries 1, 2, 4 and 8 seconds apart all land inside the window that refused the first.
+  if (response?.status === 429 && code === "rate_limit_exceeded") return RATE_WINDOW_MS;
   return Math.min(2 ** attempt, 30) * 1000;
 }
 
@@ -95,6 +108,7 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts, paid 
     } catch (error) {
       if (paid && !neverSent(error)) throw uncertain(path, init.body, error.cause?.message ?? error.message);
       last = new SpeechError(`cannot reach ${site}: ${error.message}`, { code: "network" });
+      if (attempt === attempts - 1) break;
       await sleep(retryDelayMs(null, attempt));
       continue;
     }
@@ -111,7 +125,11 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts, paid 
     }
     last = new SpeechError(message, { status: response.status, code: problem.code });
     if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
-    await sleep(retryDelayMs(response, attempt));
+    // A 429 is the API's refusal before any provider call, paid route or not, so asking again is
+    // safe; nothing waits after the last attempt, or longer than one retry should.
+    const wait = retryDelayMs(response, attempt, problem.code);
+    if (attempt === attempts - 1 || wait > MAX_RETRY_WAIT_MS) throw last;
+    await sleep(wait);
   }
   throw last;
 }

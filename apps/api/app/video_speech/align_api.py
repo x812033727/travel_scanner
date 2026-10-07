@@ -178,7 +178,11 @@ async def align_speech(payload: AlignIn, tool: VideoTool, session: Session) -> A
     """When each written unit of one phrase is spoken, from the voice's own boundaries or the
     server's aligner; one paid synthesis at most, never a second one."""
     await enforce_named_rate_limit(
-        "video_align", str(tool.id), limit=ALIGN_REQUESTS_PER_HOUR, window_seconds=3600
+        "video_align",
+        str(tool.id),
+        limit=ALIGN_REQUESTS_PER_HOUR,
+        window_seconds=3600,
+        retry_after=True,
     )
     try:
         if payload.speech is not None:

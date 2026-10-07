@@ -279,8 +279,15 @@ async def video_tool(
         )
     if touch(row):
         await session.commit()
+    # Every route a video tool token calls shares this window, both worker lanes included. Its
+    # refusal says when the window opens again, so the tool waits that long instead of spending
+    # its retries inside the window that refused them (tools/video/tts/client.mjs).
     await enforce_named_rate_limit(
-        "video_speech", str(row.id), limit=SPEECH_REQUESTS_PER_MINUTE, window_seconds=60
+        "video_speech",
+        str(row.id),
+        limit=SPEECH_REQUESTS_PER_MINUTE,
+        window_seconds=60,
+        retry_after=True,
     )
     return row
 
@@ -502,7 +509,11 @@ async def transcribe_narration(
 ) -> TranscribeOut:
     """One narrated line back as text, so the tool can check it against the script."""
     await enforce_named_rate_limit(
-        "video_transcribe", str(tool.id), limit=TRANSCRIBE_REQUESTS_PER_HOUR, window_seconds=3600
+        "video_transcribe",
+        str(tool.id),
+        limit=TRANSCRIBE_REQUESTS_PER_HOUR,
+        window_seconds=3600,
+        retry_after=True,
     )
     try:
         wav = base64.b64decode(payload.audio, validate=True)
@@ -531,7 +542,7 @@ async def transcribe_narration(
             ) from error
         if error.status in {500, 503, 504}:
             # Overloaded or failing on Google's side: worth another try after a real pause,
-            # not the tool's one-to-sixteen-second backoff.
+            # not the tool's one-to-eight-second backoff.
             raise AppError(
                 503,
                 "video_speech_upstream_busy",
