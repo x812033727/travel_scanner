@@ -41,7 +41,10 @@ const OWNER_CODES = new Set(['video_tool_token_invalid']);
 // policy item reports instead of asking Jev again.
 const SETTLED_JUDGE_CODES = new Set(['video_judge_upstream_failed']);
 const NEVER_REACHED = { status: 502, code: 'upstream_unavailable' };
-const settledJudge = (status, code) => SETTLED_JUDGE_CODES.has(code) || (status === NEVER_REACHED.status && code === NEVER_REACHED.code);
+// The API's limiter refuses a request it cannot count with 503 rate_limit_unavailable
+// (apps/api/app/infra.py), before the judge route asks Jev: settled and retried, never uncertain.
+const LIMITER_AWAY = { status: 503, code: 'rate_limit_unavailable' };
+const settledJudge = (status, code) => SETTLED_JUDGE_CODES.has(code) || [NEVER_REACHED, LIMITER_AWAY].some((known) => status === known.status && code === known.code);
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(['ECONNREFUSED', 'ENOTFOUND', 'EAI_AGAIN', 'EHOSTUNREACH', 'ENETUNREACH', 'UND_ERR_CONNECT_TIMEOUT']);
 const neverSent = (error) => NEVER_SENT.has(error?.cause?.code ?? error?.code);

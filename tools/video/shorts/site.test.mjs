@@ -57,6 +57,8 @@ const LOST = [
   ["the API's uncertain Jev outcome", () => json({ code: 'video_judge_outcome_uncertain', detail: 'Jev 可能已處理這次請求' }, 502), 502],
   // Only the route's 502 says the API was never reached; no judge route answers the code with another status.
   ["an upstream_unavailable no judge route answers", () => json({ code: 'upstream_unavailable', detail: 'API 服務目前無法回應' }, 503), 503],
+  // The limiter answers its code with 503 only.
+  ["the limiter's code on a status it never answers", () => json({ code: 'rate_limit_unavailable', detail: '安全驗證服務暫時無法使用' }, 502), 502],
 ];
 
 test('a policy judgement sent and left without its answer is not asked again: a dropped connection, a broken body, a gateway, the judge route\'s lost answer', async () => {
@@ -85,6 +87,8 @@ test('a policy judgement that never reached a server, or that the API settled, i
     ["the judge route's 502 for an API it never reached", () => json({ code: 'upstream_unavailable', detail: 'API 服務目前無法回應' }, 502)],
     ["the judge's hourly limit", () => json({ code: 'rate_limit_exceeded', detail: 'slow down' }, 429)],
     ['the spent Jev budget', () => json({ code: 'jev_budget_exhausted', detail: '今天的 Jev 呼叫次數已用完' }, 429)],
+    // The API's limiter could not count the request (app/infra.py), before the route asked Jev.
+    ["the API's limiter away", () => json({ code: 'rate_limit_unavailable', detail: '安全驗證服務暫時無法使用' }, 503)],
   ];
   for (const [what, answer] of settled) {
     const { client, calls, sleeps } = recording(answer);

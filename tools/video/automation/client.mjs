@@ -74,6 +74,13 @@ const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_
 // production does since a9e4c3851, deployed 2026-10-05.
 const SETTLED_JUDGE_CODES = new Set(["video_judge_upstream_failed", "upstream_unavailable"]);
 const JUDGE = Object.freeze({ paid: true, settled: SETTLED_JUDGE_CODES, what: "Jev" });
+// The API's limiter refuses a request it cannot count with 503 `rate_limit_unavailable`
+// (apps/api/app/infra.py enforce_named_rate_limit), in the video tool token's dependency and at the
+// top of every stage and judge route, before a model or Jev is asked: a paid request so refused is
+// settled, retried, and once the tries run out it is trouble that passes (flow.mjs everyones reads
+// the sentence as everyone's), never uncertain. Only the 503, as tools/video/tts/client.mjs.
+const LIMITER_AWAY = { status: 503, code: "rate_limit_unavailable" };
+const limiterAway = (status, code) => status === LIMITER_AWAY.status && code === LIMITER_AWAY.code;
 // Connection errors that mean the request never reached a server, so nothing it asks has started.
 const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
 
@@ -142,7 +149,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       const message = problem.detail || `HTTP ${response.status}`;
       if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code, who: "owner" });
       if (PAUSE_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code });
-      if (paid && response.status >= 500 && !settled.has(problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status, what);
+      if (paid && response.status >= 500 && !settled.has(problem.code) && !limiterAway(response.status, problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status, what);
       last = new AutomationError(message, { status: response.status, code: problem.code });
       // When the server said to come back (Retry-After in seconds), the error keeps it: the
       // sleeps here are capped at two minutes each, and flow.mjs defers the video no sooner than
