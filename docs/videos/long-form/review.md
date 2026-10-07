@@ -2060,6 +2060,60 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## claude/sharp-bardeen-ob6fn9 no sleep after the last attempt increment: 2 files (2026-10-07)
+
+Reviewer: `claude-pr-review-last-sleep`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is two commits on branch claude/sharp-bardeen-ob6fn9 for the task `2026-10-07-the-media-automation-review-and-shorts`, written by its owner `claude-opus-5-5-last-sleep`: `c0bd1f01` ("fix(video): the media, automation, review and Shorts clients do not sleep after their last attempt") and `00926189` ("test(video): pin the exact waits of an exhausted media and review call"). Scope: DURATION_ONLY for the two changed bindings below. The reviewer wrote neither commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `f2f82943`, the first commit's parent ("fix(video): review fixes for the compilation thumbnail check; close the task"). The last receipt commit before it is `149e3a05`, the "Branch next-tts-defer tts and retake exit-4 deferral increment" above, and it is an ancestor of `f2f82943`. `git diff 149e3a05 f2f82943 -- tools/video/review/sync.mjs tools/video/review/sync.test.mjs docs/videos/long-form/ tools/video/long-form/ tools/video/core/` is empty, and so is `git diff f2f82943 00926189 -- docs/videos/long-form/ tools/video/long-form/ tools/video/core/`. At `149e3a05` and at `f2f82943`, sync.mjs hashes to `88c85ec2d663cde32da07e5b619f31ab3126cbea00977e9a1c6a46e7a40c2e67` and sync.test.mjs to `6318fe64068bb948f38e72b9cdf561ff7d4e0f76fe2eb78d24c0eabaddb3e33a`, their rows in review.json and the table (by `git show` piped to `sha256sum`). At both revisions all 108 bindings agree with the receipt, the table and the bytes, and review.md hashes to the receipt's `report_sha256`, as it does at `c0bd1f01` and `00926189`. The working tree's copies of both files equal `00926189`'s and hold no CR byte. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/review/sync.mjs; stale duration review binding: tools/video/review/sync.test.mjs` and nothing else. The whole of `git diff f2f82943 00926189` is the two bound files, the task file and six unbound files: tools/video/media/client.mjs and media.test.mjs, tools/video/automation/client.mjs and client.test.mjs, and tools/video/shorts/site.mjs and site.test.mjs. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+What the change is. The review client in sync.mjs, `client(ctx)`, is the only HTTP path of review-push and review-pull. It asks a review route up to four times, and on a network error, a 429 or a 5xx it waits before the next attempt. Until this change it also waited after the fourth before throwing the same last error: 8 s after a network error, and `min(Retry-After || 8, 30)` s after a refusal. Now the four is the constant `ATTEMPTS`, and both branches check for the last attempt before the wait. The network branch breaks to the unchanged `throw last`, and the refusal branch throws `last` at once. The first commit's test change counts the waits, and the second pins them as `[1000, 2000, 4000].slice(0, attempts - 1)`. This section asks only whether any of it reaches a length rule.
+
+Findings, tools/video/review/sync.mjs (+7/−2, 74,761 → 75,027 bytes, 1,226 → 1,231 lines, all in `c0bd1f01`). There are four hunks, all inside or just above `client(ctx)`:
+
+- the comment and `const ATTEMPTS = 4;` (421–422 at the head), and a blank line;
+- the loop bound `attempt < ATTEMPTS` (432);
+- the network branch's comment and `if (attempt === ATTEMPTS - 1) break;` (447–448);
+- `|| attempt === ATTEMPTS - 1` added to the refusal branch's throw (458).
+
+`ATTEMPTS` is named nowhere else in the module. On every path the requests sent, their bodies, the returned JSON and the thrown `ReviewError` (message, `status`, `code`, `who`, `submission`) are the baseline's. Only the last wait is gone. Neither tools/video/cli.mjs nor automation/cli.mjs sets a `ctx.sleep`, and the worker runs review-push in process with its own context, so the removed wait was the default `setTimeout`, which cannot throw or read a STOP file, and removing it cannot change which error is thrown. `fail()` and its exit codes, `qualityCheck`, `submissions` and every payload builder are outside the hunks. Where the length gates sit:
+
+- The audio gate's `animeBodyDurationProblems` refusal, its `runtime_measurement` and `duration_seconds`, and the final gate's `duration_seconds`, `runtime_proof`, `checks` and `qa` are built in `submission()` from timeline.json, checks.json and qa.json before the client sends them. The client carries them unchanged, and the site reads the same payload.
+- The final gate's QA run (`qualityCheck`) reaches QA's `assemble` item and the 14,400-frame catalog floor through qa/cli.mjs, and maps exit 4 to a service error as before. Neither is in the diff.
+- An exhausted push ends with the same exit: 4 after four attempts that met a 429, a 5xx or a network error, and 1, 3 or 4 at once otherwise. It ends up to 30 s sooner, and no length rule reads the elapsed time.
+
+The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `body_target_seconds`, `KNOWLEDGE_MIN`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` are the same 3 lines, with the same text, at both revisions: the core/duration.mjs import and the two `duration_seconds: seconds` payload fields. No changed line names one of them, or minutes, seconds, frames, FPS, a timeline, QA or lint.
+
+Findings, tools/video/review/sync.test.mjs (+3/−1, 130,991 → 131,185 bytes, 1,839 → 1,841 lines; 52 top-level tests and 67 with subtests at both revisions). The first commit has +3/−1 and the second +1/−1. There is one hunk, in "review-push distinguishes permanent request failures from service and owner failures" (984–994 at the head). The removed line is the `context(box, fetchImpl)` call, which now passes a `sleep` that records each wait in `sleeps` instead of the default no-op. The added assertion requires `sleeps` to equal `[1000, 2000, 4000].slice(0, attempts - 1)`. That is no wait for the five single-attempt cases (413, 422, 400, 401, 403) and three for 429, 500, 503 and network. The fake answers carry no Retry-After, so the waits are `2 ** attempt` seconds. The table, `sends`, the expected exit codes and the other assertions are unchanged. The waits are the client's retry pauses, not a video's length. The duration-term lines are the same 19 at both revisions. The opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at line 28 is byte-unchanged, and no added line reads or sets process.env.
+
+The unbound files, read for length reach only:
+
+- media/client.mjs `call()` (+3), automation/client.mjs `request()` (+3) and shorts/site.mjs `siteClient` (+3/−1) get the same guard in their network and refusal branches. The throws before it are unchanged: the automation and Shorts clients' paid-request `uncertain` errors, and the media client's owner and tool refusals. In the automation client `retry_after` is set on the error before the guard, so the thrown error is the baseline's.
+- The automation client's durable job poll (`durableRun`) calls `fetchImpl` directly and is not in the diff. The media `waitForJob` does not catch a poll's error. Neither loop's outcome changes.
+- Their tests (media.test.mjs +17, client.test.mjs +18/−2, site.test.mjs +16) count or pin the waits. The only changed-line match for a length term is "two minutes" in an assertion message, which is the automation client's sleep cap.
+- None of the six names a clip's seconds, a frame, a timeline, a target or a floor, or touches process.env. A clip's requested seconds come from clips.mjs `clipSeconds`, and its measured length from QC on the downloaded file. Neither is in the diff.
+
+Ran (Node v22.22.0, Linux, in the checkout at `00926189`, node_modules installed, VIDEO_MIN_EPISODE_MINUTES unset in the shell):
+
+- the baseline hashing at `149e3a05`, `f2f82943`, `c0bd1f01` and `00926189`, a check of all 108 bindings and the report hash at `149e3a05`, `f2f82943` and `00926189`, and the empty diffs above;
+- `git diff f2f82943 00926189`, read in full, with each commit's numstat;
+- changed-line scans across the whole diff, and the duration-term line sets of both bound files at both revisions;
+- reads of `client(ctx)`, `qualityCheck`, `reviewPush`, `reviewPull`, `fail`, the audio and final gate builders in sync.mjs, every `ctx.sleep` in tools/video outside the tests, the media `call()` and `waitForJob`, the automation `request()` and `durableRun`, and `siteClient`;
+- the baseline's tools, docs/videos, .agents and package.json from `git archive f2f82943`, with a link to this checkout's node_modules, in a scratch directory. There `node --test` passed the baseline sync.test.mjs 67 of 67. The head's test file, run against the baseline sync.mjs, failed 5 of 67: the push-failure test and its 429, 500, 503 and network subtests, which saw a fourth wait. Its five single-attempt subtests passed against both revisions.
+
+Before rebinding, `node --test tools/video/review/sync.test.mjs` passed 67 of 67. The task's set, `node --test tools/video/media/*.test.mjs tools/video/automation/client.test.mjs tools/video/review/sync.test.mjs tools/video/shorts/site.test.mjs`, passed 239 of 239. `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same two paths. `npm run test:tools` ran 2,059 tests: 2,055 passed, 3 skipped and 1 failed, the same regression on the same two paths. The CLI check, the long-form tests and `npm run test:tools` are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the change itself: not throwing at once, the `ATTEMPTS` constant, the waits between attempts, or the other three clients' guards.
+- The six unbound files are read for length reach only and are not reviewed otherwise. The task file is not reviewed.
+- No real video was pushed, pulled, voiced, assembled or measured, no real review route was called, and the tests run under the opt-out.
+- Not run or seen: the Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, and the production host.
+- The 106 bindings this change did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -2166,8 +2220,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/qa/cli.mjs` | `6920a7948db405bd084e010db51e237fb2b4a51860e663743fbf11de5bc86b91` |
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
 | `tools/video/qa/qa.test.mjs` | `9a5430e90e3d6234198024e8bf8801d34dad0fabd3f9a6e2ceaf5e8df8a9af44` |
-| `tools/video/review/sync.mjs` | `88c85ec2d663cde32da07e5b619f31ab3126cbea00977e9a1c6a46e7a40c2e67` |
-| `tools/video/review/sync.test.mjs` | `6318fe64068bb948f38e72b9cdf561ff7d4e0f76fe2eb78d24c0eabaddb3e33a` |
+| `tools/video/review/sync.mjs` | `e3adc83eae352842ea2b443da56c37f0dde2c724c7b4a95fd5a41e11cae8e978` |
+| `tools/video/review/sync.test.mjs` | `f2fd0c29d3a965148b7d310f3aed473bc39e3e19f5247817740af78ea9361f26` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
