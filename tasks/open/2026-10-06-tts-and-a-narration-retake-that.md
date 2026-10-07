@@ -94,3 +94,26 @@ node --test tools/video/automation/automation.test.mjs
   - A retake that exits 4 before its first take: recorded nothing, counted.
   - Also pinned (passes on both versions): tts exit 3 (a revoked token, a lost paid answer) and
     exit 2 still block at once.
+- Review (2026-10-07, three lenses, each finding verified). It confirmed that tts writes
+  `timeline.json` and `narration.wav` only after its last request, so an exit 4 never leaves a new
+  timeline behind, and each path the change defers was traced to its next round. Changed from it:
+  - Should-fix: `narration()` counts a retake round before the redo runs. A redo that exited 4
+    with no take made (the budget pre-check, a vendor away before its first request) spent that
+    round, and now that the worker repeats the round by itself, an outage alone could spend every
+    retake and start the listener's rewrite of lines never retaken. `retakeStopped` now takes
+    `giveBack`, which the check-flags loop passes: the round goes back when the retake made no
+    take. A retake that made some takes keeps its round, as after a STOP. The rewrite loop
+    counts its round in `rewriteNarration`, where the listener call did happen.
+  - New tests:
+    - two budget-spent rounds give the round back, with no listener call and the script
+      unchanged, and the two retakes then run;
+    - a vendor that keeps failing the retake blocks at the seventh try as `deferred:tts`;
+    - the retake after a rewrite that exits 4 defers and goes on;
+    - a retake and a retake after a rewrite that exit 3 with SPEECH_UNCERTAIN, or exit 2, still
+      block at once and record nothing.
+    Each catches a mutation that survived before.
+  - The assertion in the eight-round tts test that could not fail is gone, and its comment no
+    longer claims cached takes.
+- Filed: `2026-10-07-a-dub-retake-that-exits-4`. The dub retake has the same counter pattern,
+  older than this ticket.
+

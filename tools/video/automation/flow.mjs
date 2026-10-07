@@ -3007,8 +3007,11 @@ export class Automation {
    * nothing. Either way the video is left for this run and the next one continues: a STOP is
    * never a block. A retake that met a service away or a limit (exit 4) leaves the same takes
    * behind and is recorded the same way, but waits as any deferral does (`wait`, defer's options).
+   * `giveBack` returns the retake round it was counted under when it made no take at all: an
+   * outage repeated round after round would otherwise spend every retake and send lines that were
+   * never retaken to the listener's rewrite (docs/videos/HANDS-OFF.md §旁白).
    */
-  retakeStopped(state, flagsFile, line, wait = { backoffMs: 0 }) {
+  retakeStopped(state, flagsFile, line, wait = { backoffMs: 0 }, { giveBack = false } = {}) {
     const workdir = this.workdir(state.slug);
     let ids;
     try {
@@ -3023,6 +3026,9 @@ export class Automation {
     if (takes && Object.keys(takes).length) {
       state.stopped_retake = { flags: path.relative(workdir, flagsFile).split(path.sep).join("/"), ids: [...ids], takes };
       saveState(workdir, state);
+    } else if (giveBack && takes && state.retakes > 0) {
+      // defer() below saves it.
+      state.retakes -= 1;
     }
     return this.defer(state, `${state.slug}: ${line}`, wait);
   }
@@ -3054,7 +3060,7 @@ export class Automation {
       const flagsFile = path.join(workdir, "review", "check-flags.json");
       const redo = await this.speech(state.slug, ["tts", "--slug", state.slug, "--redo", flagsFile]);
       if (redo.code === ctx.EXIT.incomplete) return this.retakeStopped(state, flagsFile, `the retake stopped (${lastLine(redo.out)}); the next run continues`);
-      if (redo.code === 4) return this.retakeStopped(state, flagsFile, `the retake could not finish (${lastLine(redo.out)})`, retakeWait(redo));
+      if (redo.code === 4) return this.retakeStopped(state, flagsFile, `the retake could not finish (${lastLine(redo.out)})`, retakeWait(redo), { giveBack: true });
       if (redo.code !== 0) return this.block(state,`retake failed: ${redo.out.trim().split("\n").at(-1)}`);
       check = await this.speech(state.slug, ["check-audio", "--slug", state.slug]);
     }
