@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-batch032-wordpress-five-language-content
 title: Integrate Batch032 four WordPress articles in five languages
-status: open
+status: done
 priority: P2
 area: api
 owner:
 claimed_at:
 created_at: 2026-09-28T01:06:01Z
-completed_at:
+completed_at: 2026-10-07T01:43:03Z
 branch: codex/article-localization-032-content
 depends_on:
   - 2026-09-27-correct-three-wordpress-maintenance-glossary-links
@@ -94,3 +94,7 @@ All four zh-TW locale objects and root metadata still equal main; 48 image
 hashes match. Scoped lint returned zero errors, targeted API tests returned
 `73 passed, 11 skipped`, and task validation and `git diff --check` passed.
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-batch032-content-pr (since 2026-09-28T01:06:06Z) was stale and is released so it stops locking its scope. Landed: #878. Still open: Open a narrow draft PR after #875 merges, without deploying or publishing.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+標記完成。依據：Last item (PR after #875) met: PR #878 merged 2026-09-28; wordpress-500-error/comment-spam/performance-plugins/reset-safely.json have 5 locales, 12 localized assets per dir (e.g. apps/web/public/guides/wordpress-500-error); publication explicitly out of scope

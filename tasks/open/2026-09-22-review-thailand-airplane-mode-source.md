@@ -1,7 +1,7 @@
 ---
 id: 2026-09-22-review-thailand-airplane-mode-source
 title: Review Thailand guide airplane-mode source instruction
-status: blocked
+status: open
 priority: P2
 area: docs
 owner:
@@ -61,3 +61,7 @@ independent source-review receipt to the before/after hashes.
   choice as evidence that the zh-TW source has been verified or corrected.
 - Do not silently update the live source, the repository pack, baseline hashes, or any
   summary/description field. Treat those as separate reviewed states.
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+擋住它的 2026-09-22-localize-thailand-esim-sim-wifi-batch015 已在 tasks/done，改回 open。

@@ -121,6 +121,15 @@ fi
 # run_jobs.py), so a deploy waits for it. A submitted media job survives a restart (its row holds
 # it and the next poll resumes, app/video_media/jobs.py); it is printed, not flagged. Two plain
 # selects, nothing else.
+# The nightly backup (ops/backup/README.md): its own status script prints the timer, the last
+# success and its age, and BACKUP STALE / BACKUP FAILED when something needs a person.
+echo "-- backups --"
+if [ -f /opt/travel-scanner-backup/status.sh ]; then
+  bash /opt/travel-scanner-backup/status.sh || true
+else
+  echo "nightly backup: not installed (ops/backup/README.md)"
+fi
+
 echo "-- paid video work --"
 pg() { docker compose -f "$REPO/docker-compose.prod.yml" exec -T postgres psql -U travel -d travel_scanner -Atc "$1" 2>&1; }
 stage=$(pg "select status, count(*), min(created_at) from video_stage_jobs where status in ('queued', 'running', 'uncertain') group by status")

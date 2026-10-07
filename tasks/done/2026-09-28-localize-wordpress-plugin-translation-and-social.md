@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-localize-wordpress-plugin-translation-and-social
 title: Localize WordPress plugin translation and social embeds guides
-status: open
+status: done
 priority: P2
 area: docs
 owner:
 claimed_at:
 created_at: 2026-09-28T03:42:43Z
-completed_at:
+completed_at: 2026-10-07T01:43:03Z
 branch: codex/batch034-two-unblocked-guides
 depends_on: []
 scope:
@@ -77,3 +77,7 @@ remain under review and are outside this task.
 - Draft PR: https://github.com/x812033727/travel_scanner/pull/889 . Keep this
   task in review while the PR is open; merge and publication are separate.
 - 2026-10-04 board sweep (claude-opus-5-5-incomplete-tickets, approved by the owner): the claim by codex-batch034-two-guides (since 2026-09-28T03:42:49Z) was stale and is released so it stops locking its scope. Landed: #889. Still open: Draft PR is reviewed and merged (done: #889 merged).
+
+## 2026-10-07 看板總整理（由站主授權，非原持有者）
+
+標記完成。依據：Only open item (draft PR reviewed and merged) met: PR #889 merged 2026-09-28; wordpress-plugin-theme-translation.json & wordpress-social-embeds.json have 5 locales, localized hero/diagram assets in apps/web/public/guides/wordpress-social-embeds; publication explicitly separate

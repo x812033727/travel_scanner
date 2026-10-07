@@ -33,6 +33,7 @@ metadata:
 | 6 | 法律頁改版 | 後台逐語系編輯 → 雜湊核對 → 逐語系發布 → 20 個網址回歸 | `.agents/skills/prod-host-ops/references/admin-browser.md` |
 | 7 | 合作按鈕、分潤 clickout | 真實瀏覽器點擊，看請求的 `Origin` 與 303 | `.agents/skills/prod-host-ops/references/admin-browser.md` |
 | 8 | 主機上的 Claude／Codex／agy 帳號 | 用哪個帳號、額度怎麼讀、登入壞了怎麼補 | `.agents/skills/prod-host-ops/references/ai-accounts.md` |
+| 9 | 昨晚的備份有沒有成功、timer 還在不在跑 | `bash /opt/travel-scanner-backup/status.sh`；看到 `BACKUP STALE`／`BACKUP FAILED` 照下面「備份」節處理 | 本檔「備份」節、`ops/backup/README.md` |
 
 ## 常用指令
 
@@ -49,9 +50,29 @@ metadata:
 <SSH> "cd /root/travel_scanner && docker compose -f docker-compose.prod.yml logs --since 2h api | grep 'ai planner provider'"
 # 公開站慢慢量
 curl -s -o /dev/null -w '%{http_code} %{time_total}s\n' https://mokaair.com/zh-TW
+# 昨晚的備份：timer 狀態、最後一次成功與幾小時前、失敗原因；失敗或超過 36 小時 exit 1
+<SSH> "bash /opt/travel-scanner-backup/status.sh"
 ```
 
 每一條都是一次連線；要跑好幾條就寫成一個腳本用 `bash -s` 一次送（deploy 的規矩 4）。
+
+## 備份
+
+每晚 04:17（台灣時間）`travel-scanner-backup.timer` 跑 `/opt/travel-scanner-backup/backup.py run`：驗證過的 `pg_dump`、部署前的 predeploy dump、用 age 加密的設定包，寫到 `/var/backups/travel-scanner/nightly/<ts>/`，結果記在 `/var/lib/travel-scanner-backup/last.json`。規則全文在 `ops/backup/README.md`，這裡只放怎麼看、壞了怎麼辦。
+
+`status.sh` 印四種東西：`timer: enabled=… active=… run=…`、`last success: <時間> (<n> h ago) …`、`last failure: …`、`last skipped: …`，最後一行可能是 `BACKUP STALE`（最後成功超過 36 小時）或 `BACKUP FAILED`（最後一次失敗比最後成功新）。部署預檢（skill `deploy` 的 `host-preflight.sh`）也印同一段。
+
+| 看到 | 先看 | 常見原因與做法 |
+| --- | --- | --- |
+| `timer: not installed` 或 `enabled=disabled` | `ls /opt/travel-scanner-backup`、`systemctl list-timers travel-scanner-backup.timer` | 還沒裝或被關掉：`ops/backup/README.md` 的安裝順序；啟用要站主同意 |
+| `last success: never` | `journalctl -u travel-scanner-backup` | 從沒成功過：先手動 `backup.py run --dry-run` 再 `run`，看它停在哪一步 |
+| `BACKUP STALE` 而 `last failure` 是空的 | `journalctl -u travel-scanner-backup --since -2d`、`last skipped` | timer 沒開（`active=inactive`）、主機當時關機（`Persistent=true` 會補跑，看 `next run`）、連續被部署鎖擋（`last skipped` 的時間都在凌晨：分階段發布佔鎖，等它結束就會補） |
+| `BACKUP FAILED: database: …` | 失敗原因那行、`docker compose ps postgres` | `pg_dump` 或 `pg_restore --list` 失敗：postgres 不健康、磁碟滿（`df -h /var/backups`）。不要手動刪 `nightly/` 底下的目錄來騰空間，先確認保留數 |
+| `BACKUP FAILED: config: …` | `age` 在不在（`command -v age`）、`backup.env` 的 `BACKUP_AGE_RECIPIENT` | 沒裝 age 或公鑰格式錯；公鑰只能是 `age1…`，私鑰永遠不在主機上 |
+| `BACKUP FAILED: git` / `alembic` / `postgres` | `git -C /root/travel_scanner status`、`alembic_version` 表 | 主機 checkout 壞了或資料庫起不來，通常同時會有別的症狀；先處理站台 |
+| `run=active` 很久 | `journalctl -u travel-scanner-backup -f` | 一次備份正在跑（大庫幾分鐘）；超過一小時再懷疑卡住，`TimeoutStartSec=2h` 會收掉 |
+
+一份備份算不算備份，要看還原：單份 dump 的還原在 `ops/backup/README.md`，整台主機的演練 runbook 由異地備份那張票（`tasks/open/2026-10-07-backup-google-drive-offsite.md`）寫。修備份、改保留數、刪舊目錄都是改正式站，照規矩 3 先問站主。
 
 ## 參考檔
 
@@ -72,5 +93,6 @@ curl -s -o /dev/null -w '%{http_code} %{time_total}s\n' https://mokaair.com/zh-T
 | AI 帳號代理的安裝、信任邊界、復原 | `ops/ai-accounts/README.md` |
 | 公開讀取的應用層限流 | `docs/anti-scraping.md` |
 | 部署、暫停檔、SSH 與分類器 | skill `deploy` |
+| 每晚備份的每一步、安裝、單份 dump 的還原 | `ops/backup/README.md` |
 
 `.claude/skills/prod-host-ops/SKILL.md` 是這一份的逐字複本，`npm run test:tools` 會比對。
