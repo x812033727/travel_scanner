@@ -3262,9 +3262,10 @@ export class Automation {
     }
     const dubs = dubsStatus(project, workdir, speechHash(doc, project.lexicon));
     for (const { locale, parts } of pending) {
-      // A track is current once `dub` wrote it; one left unheard by a `dub`, retake or check that
-      // stopped before it finished (a STOP file, or a paid request whose answer was lost, see
-      // makeDub) is made and checked again.
+      // A track is current once `dub` wrote it; one left unheard by a visit that did not end with
+      // Jev passing it or the locale given up (a STOP file, a limit or a service away, a lost
+      // answer, a translator answer that could not be used, a block; see makeDub) is made and
+      // checked again.
       const unheard = dubs[locale]?.status === "current" && state.languages?.[locale]?.check_stopped;
       if (!parts.includes("dub") || (["current", "skipped"].includes(dubs[locale]?.status) && !unheard)) continue;
       return this.makeDub(state, locale);
@@ -3532,6 +3533,13 @@ export class Automation {
       state.languages = { ...(state.languages ?? {}), [locale]: rounds };
       saveState(workdir, state);
     };
+    // Unheard until Jev passes the track or the locale is given up, the two endings that clear
+    // these rounds. A track `dub` wrote reads as current once its words and voice are, so any
+    // other way this visit ends (a deferral, a STOP, a lost answer, a translator answer that
+    // could not be used, a block and the owner's retry) leaves a track that the language step
+    // makes and checks again instead of sending (`unheard` there).
+    rounds.check_stopped = true;
+    remember();
     const dubArgs = ["dub", "--slug", slug, "--locale", locale];
     const flags = path.join(workdir, "review", `check-flags.${locale}.json`);
     const checkArgs = ["check-audio", "--slug", slug, "--locale", locale];
@@ -3555,27 +3563,14 @@ export class Automation {
     };
     // A paid request whose answer was lost: the video waits for the owner, and the owner's retry
     // runs this locale again, its check included, though its track may already read as current.
-    const lost = (what, result) => {
-      rounds.check_stopped = true;
-      remember();
-      return this.block(state, `${what} needs the owner: ${lastLine(result.out)}`);
-    };
+    const lost = (what, result) => this.block(state, `${what} needs the owner: ${lastLine(result.out)}`);
     // A STOP file ended `dub`, a retake or the check before it finished: the takes paid for so far
-    // are in the dub's cache, and the track may still read as current (a retake keeps the words),
-    // so the next run makes this locale's track again from the cache and hears it to the end.
-    const stopped = (what, result) => {
-      rounds.check_stopped = true;
-      remember();
-      return this.defer(state, `${slug}: ${locale} ${what} stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
-    };
-    // A retake or a check that met a limit or a service away (exit 4) after `dub` wrote the track:
-    // the track reads as current, though Jev has not passed it, so it is marked unheard as a
-    // stopped one is, and the next visit makes it and checks it again instead of sending it.
-    const unfinished = (what, result) => {
-      rounds.check_stopped = true;
-      remember();
-      return this.defer(state, `${slug}: ${locale} ${what} could not finish (${lastLine(result.out)})`, { what: what === "dub check" ? "check-audio" : "dub", everyone: Boolean(everyones(result.out)) });
-    };
+    // are in the dub's cache, and the next run makes this locale's track again from the cache and
+    // hears it to the end.
+    const stopped = (what, result) => this.defer(state, `${slug}: ${locale} ${what} stopped (${lastLine(result.out)}); the next run continues`, { backoffMs: 0 });
+    // `dub`, a retake or the check met a limit or a service away (exit 4): this video waits, and
+    // the next visit goes on from the takes already paid for.
+    const unfinished = (what, result) => this.defer(state, `${slug}: ${locale} ${what} could not finish (${lastLine(result.out)})`, { what: what === "dub check" ? "check-audio" : "dub", everyone: Boolean(everyones(result.out)) });
     // Each pass makes the track (only the lines whose words changed are synthesized again) and
     // checks it; a reworded line or a retake that no longer fits starts another pass.
     for (;;) {
@@ -3599,7 +3594,7 @@ export class Automation {
       }
       if (speechUncertain(made)) return lost(`dub ${locale}`, made);
       if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
-      if (made.code === 4) return this.defer(state, `${slug}: ${locale} dub could not finish (${lastLine(made.out)})`, { what: "dub", everyone: Boolean(everyones(made.out)) });
+      if (made.code === 4) return unfinished("dub", made);
       if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
       let check = await this.speech(slug, checkArgs);
       let refit = false;

@@ -3197,6 +3197,47 @@ test("a dub check that exits 4 leaves the track unheard: the next visit makes it
   assert.deepEqual([away.state().status, away.state().blocked_kind], ["blocked", "deferred:check-audio"]);
 });
 
+test("a dub visit that ends any other way than Jev passing the track leaves it unheard: the next visit makes it and hears it again", async (t) => {
+  // Each case ends the first dub visit after `dub` wrote a track Jev has not passed
+  // (the review of 2026-10-07-a-dub-retake-that-exits-4).
+  const cases = {
+    "a rewording answer that could not be used": { options: { checks: { en: () => true }, reword: () => ({ nothing: true }) }, ended: /rewording pass answered without a lines array/ },
+    "a shortening answer that could not be used, after a retake that no longer fits": { options: { dubs: { en: { redoOver: 1 } }, checks: { en: 1 }, shorten: () => ({ nothing: true }) }, ended: /shortening pass answered without a lines array/ },
+    "the plain dub after a retake that no longer fits, away": { options: { dubs: { en: { redoOver: 1 } }, checks: { en: 1 } }, away: true, ended: /^chatgpt-ads-off: en dub could not finish \(Azure 語音暫時無法使用\); deferred until/ },
+  };
+  for (const [what, { options, away = false, ended }] of Object.entries(cases)) {
+    await t.test(what, async () => {
+      const video = await finishedVideo(options);
+      video.choose({ en: { metadata: false, captions: true, dub: true } });
+      assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+      if (away) {
+        // The first plain `dub` after the retake cannot reach the site.
+        const played = video.ctx.runCommand;
+        let redone = false;
+        let once = true;
+        video.ctx.runCommand = async (command, runCtx) => {
+          if (command[0] === "dub" && command.includes("--redo")) redone = true;
+          else if (command[0] === "dub" && redone && once) {
+            once = false;
+            video.runs.push(command.join(" "));
+            return { code: 4, out: VENDOR_AWAY };
+          }
+          return played(command, runCtx);
+        };
+      }
+      assert.match(await video.step(), ended);
+      assert.equal(video.state().languages.en.check_stopped, true);
+      nextRun(video.automation, video.clock);
+      const ran = video.runs.length;
+      await video.step();
+      const next = video.runs.slice(ran).filter((run) => /^(dub|check-audio) .*--locale/.test(run));
+      assert.equal(next[0], `dub --slug ${video.slug} --locale en`, "made again");
+      assert.ok(next.includes(`check-audio --slug ${video.slug} --locale en`), "and heard again");
+      assert.equal(video.reviews("languages").length, 0, "no batch for a track Jev has not passed");
+    });
+  }
+});
+
 test("a retake that no longer fits its window is shortened, not given up", async () => {
   const video = await finishedVideo({ dubs: { en: { redoOver: 1 } }, checks: { en: 1 } });
   video.choose({ en: { metadata: false, captions: true, dub: true } });

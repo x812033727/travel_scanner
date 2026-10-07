@@ -55,13 +55,21 @@ bound by the duration review, so they need an independent rebind.
     retake, since a retake rewrites the take of every line it makes. A retake that exits 4 with
     none of them changed gives its round back; one that made a take keeps it, as for the
     narration (`retakeStopped`'s `giveBack`).
-  - Found while testing this, and fixed here since it is the same path: a retake or a check
-    that exited 4 deferred the video without marking the track unheard. `dub` had already
-    written a track that reads as current, so the next visit skipped the locale and sent the
-    language batch with the flagged lines neither retaken nor heard again: a dub Jev had flagged
-    went to the owner for upload. Both now go through `unfinished()`, which sets `check_stopped`
-    like a STOP or a lost answer does. The next visit makes the track and hears it again. Its
-    deferral keeps its own kind (`dub`, or `check-audio` for the check).
+  - Found while testing this, and fixed here since it is the same path: a visit that ended
+    after `dub` wrote a track, other than by Jev passing it, could leave the track reading as
+    heard. `dubsStatus` reads a track as current once its words and voice are, so the next
+    visit skipped the locale and sent the language batch with the flagged lines neither retaken
+    nor heard again: a dub Jev had flagged went to the owner for upload. That covered:
+    - a retake or a check that exited 4;
+    - the plain `dub` exiting 4 after a retake that no longer fit;
+    - a rewording or shortening answer that could not be used;
+    - a block and the owner's retry.
+    Only a STOP and a lost answer used to set the mark (`check_stopped`). `makeDub` now sets it
+    at the start of every visit. Only the two final endings clear it: Jev passing the track
+    (the rounds deleted) and `giveUpDub`. `stopped`, `lost` and `unfinished` no longer set it
+    themselves. Every exit 4 goes through `unfinished()`, whose deferral keeps its own kind
+    (`dub`, or `check-audio` for the check). The language step's comment says what leaves a
+    track unheard.
   - The JSDoc says what exit 4 and a STOP do now: they defer this video only. This is
     `2026-10-06-makedub-s-comment-still-says-a`, which asked to ride along with the next change
     to `flow.mjs`.
@@ -73,6 +81,23 @@ bound by the duration review, so they need an independent rebind.
     retake spent;
   - a check that exits 4 leaves the track unheard, and the next visit runs `dub` and the check
     instead of sending the batch;
-  - a check a vendor keeps failing blocks as `deferred:check-audio`.
+  - a check a vendor keeps failing blocks as `deferred:check-audio`;
+  - from the review, a visit that ends with an unusable rewording answer, or an unusable
+    shortening answer after a retake that no longer fits, or the plain `dub` away after such a
+    retake: the next visit runs `dub` and the check and sends no batch.
   Mutations (no give-back, always giving back, the unheard mark dropped, the check's old path,
-  the check's kind as `dub`) each fail a test.
+  the check's kind as `dub`) each fail a test. Removing the mark set at the start fails 11.
+- Review (2026-10-07, two lenses, each finding verified):
+  - Confirmed, about how the round is counted: `dub --redo` writes `<id>.wav` only for the
+    flagged lines; stretched copies come after synthesis; a paid answer never written stays in
+    the speech journal, so no round is given back after a take that was paid for. Making the
+    track again on the next visit buys no speech (the dub's cache) and pays only for clips whose
+    hash changed (check-audio caches by clip hash).
+  - Confirmed, about the visit flow: `check_stopped` is cleared only on success and in
+    `giveUpDub`. No exit loops for ever: a vendor's exit 4 blocks at `DEFER_LIMIT`, and
+    everyone's waits with backoff.
+  - Fixed: the two should-fix findings above (the plain `dub` exit 4 after a refit, and the
+    other non-final exits), and the nit on the language step's comment.
+  - Not defects: AUTOMATION.md's wording; a STOP between the check and the retake's first
+    request spending a round (a STOP keeps its round, as for the narration).
+
