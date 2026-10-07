@@ -2496,6 +2496,105 @@ test("a long sheet is translated in units, each reviewed and kept; an answer los
   assert.equal(video.calls("translator").length, 5);
 });
 
+test("a durable translation reconnects each unit to its job: a lost submit or body and a restart with the reviewer still running buy nothing twice, nothing reads as a changed input, and the page reads the locale's progress", async () => {
+  const video = await finishedVideo();
+  const limits = { lines: 3, chars: 10_000 };
+  video.choose({ en: { metadata: true, captions: true, dub: false } });
+  video.site.settings.durable_stage_runs = true;
+  // The API's job route over the fake site: a job per request key, its model run made once (the
+  // site's /run, so video.calls() counts paid runs), running while its stage is held.
+  const jobs = new Map(), held = new Set(), direct = [];
+  const counts = { submits: 0, lookups: 0 };
+  let lose = null;
+  const site = video.ctx.fetch;
+  const view = (job) => ({ ...job.receipt, status: held.has(job.stage) ? "running" : "succeeded", result: held.has(job.stage) ? null : job.result });
+  video.ctx.fetch = async (url, init = {}) => {
+    const { pathname } = new URL(url);
+    if (pathname === "/api/video/automation/run") direct.push(JSON.parse(init.body).stage);
+    if (pathname === "/api/video/automation/run/jobs") {
+      counts.submits++;
+      const body = JSON.parse(init.body);
+      if (!jobs.has(body.request_key)) {
+        const result = await (await site(`${SITE}/api/video/automation/run`, init)).json();
+        jobs.set(body.request_key, { stage: body.stage, result, receipt: { id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: result.provider, model: result.model, error_code: null, error_detail: null, error_status: null, retry_after: null } });
+      }
+      if (lose && body.stage === "translator") {
+        const how = lose;
+        lose = null;
+        if (how === "socket") throw Object.assign(new TypeError("fetch failed"), { cause: Object.assign(new Error("other side closed"), { code: "UND_ERR_SOCKET" }) });
+        return new Response('{"id":', { status: 200 });
+      }
+      return Response.json(view(jobs.get(body.request_key)));
+    }
+    if (pathname.startsWith("/api/video/automation/run/jobs/")) {
+      counts.lookups++;
+      return Response.json(view(jobs.get(pathname.split("/").at(-1))));
+    }
+    return site(url, init);
+  };
+  // A worker per run of `auto`, as a new process starts it: nothing of the last one in memory.
+  const worker = async () => {
+    const api = automationClient(video.ctx, { durablePollMs: 2_000 });
+    await api.settings();
+    return Object.assign(new Automation(video.ctx, api, video.site.settings), { refs: smallRefs, unitLimits: limits });
+  };
+  const unitsFile = path.join(video.workdir, "i18n", "en.units.json");
+  const journals = () => {
+    const dir = path.join(video.workdir, "run-receipts");
+    return existsSync(dir) ? readdirSync(dir).filter((name) => name.endsWith(".json")).map((name) => readJson(path.join(dir, name))) : [];
+  };
+  const reportsFrom = video.site.calls.reports.length;
+  const ran = (stage) => video.calls(stage).length;
+  const before = { translator: ran("translator"), caption_reviewer: ran("caption_reviewer") };
+
+  // The metadata's translator submit loses its connection: the same key is sent again, one job.
+  lose = "socket";
+  assert.match(await (await worker()).step(), /^chatgpt-ads-off: en part 1 of 4 translated and reviewed; the next part follows$/);
+  assert.deepEqual([ran("translator") - before.translator, ran("caption_reviewer") - before.caption_reviewer], [1, 1]);
+  assert.equal(counts.submits, 3, "the translator twice under one key, the reviewer once");
+  assert.deepEqual(journals(), [], "both answers were settled once the unit was kept");
+
+  // The next translator's answer breaks off on the way, and its reviewer is still running when
+  // the round's wait is over: the video waits on its own, the translation already kept.
+  lose = "body";
+  held.add("caption_reviewer");
+  const waiting = await worker();
+  assert.equal(await waiting.step(), "chatgpt-ads-off: caption_reviewer is still running; its saved receipt will be checked next round");
+  assert.equal(waiting.halted, false, "only this video waits");
+  assert.deepEqual([video.state().status, video.state().blocked], ["done", undefined], "pending is not an owner block");
+  const kept = Object.values(readJson(unitsFile).units);
+  assert.deepEqual([kept.filter((unit) => unit.reviewed).length, kept.filter((unit) => unit.translated && !unit.reviewed).length], [1, 1]);
+  const saved = journals();
+  assert.deepEqual(saved.map((record) => [record.request.stage, record.receipt.status, record.adopted ?? false]).sort(), [["caption_reviewer", "running", false], ["translator", "succeeded", true]],
+    "the kept translation's run is bound to the units file, so no later request reads it as a changed input");
+  const lookups = counts.lookups;
+  assert.equal(await waiting.step(), null, "the same run leaves the pending video alone");
+  assert.equal(counts.lookups, lookups);
+
+  // A restart: the reviewer's job is looked up, not sent again, and the next unit follows.
+  held.delete("caption_reviewer");
+  const restarted = await worker();
+  assert.match(await restarted.step(), /^chatgpt-ads-off: en part 2 of 4 translated and reviewed; the next part follows$/);
+  assert.deepEqual(journals(), [], "the adopted translation and the recovered review are settled");
+  assert.match(await restarted.step(), /^chatgpt-ads-off: en part 3 of 4 translated and reviewed; the next part follows$/);
+  assert.match(await restarted.step(), /^chatgpt-ads-off: en metadata and captions translated and reviewed$/);
+  assert.deepEqual([ran("translator") - before.translator, ran("caption_reviewer") - before.caption_reviewer], [4, 4], "each unit translated once and reviewed once");
+  assert.equal(jobs.size, 8);
+  assert.deepEqual(direct, [], "no translation took the synchronous route");
+  assert.equal(video.state().status, "done");
+  assert.ok(!existsSync(unitsFile), "nothing is kept once the locale is merged");
+  assert.equal(readJson(path.join(video.box.root, "docs", "videos", video.slug, "i18n", "en.json")).lines.p5vs.text, "en pxvs");
+
+  const progress = video.site.calls.reports.slice(reportsFrom).map((report) => report.checklist.find((row) => row.key === "languages_progress")?.label ?? null);
+  assert.deepEqual(progress, [
+    "en 翻譯：0／4 段已審，1 段譯好待審", "en 翻譯：1／4 段已審",
+    "en 翻譯：1／4 段已審，1 段譯好待審", "en 翻譯：2／4 段已審",
+    "en 翻譯：2／4 段已審，1 段譯好待審", "en 翻譯：3／4 段已審",
+    "en 翻譯：3／4 段已審，1 段譯好待審", "en 翻譯：4／4 段已審",
+    null,
+  ], "a row per kept checkpoint; the locale's own report once it merges takes it off");
+});
+
 test("a caption review without its own worksheet, or with lines left out, never puts the translation in unreviewed: the translation is kept for the next reviewer", async () => {
   let review = () => undefined;
   const video = await finishedVideo({ review: (worksheet) => review(worksheet) });

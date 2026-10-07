@@ -736,8 +736,10 @@ const REPORTED_STAGE = new WeakMap();
  * category, YouTube id. `deferred` is the label of a video waiting on its own (Automation.defer):
  * the checklist opens with that row, and auto.json's `deferred_reported` remembers the page shows
  * it; any report without it takes the row off again, so the next stage that reports clears it.
+ * `progress` is a translation's row the same way (Automation.unitCheckpoint), until the next
+ * report without it.
  */
-async function report(ctx, api, state, stage, { deferred = null } = {}) {
+async function report(ctx, api, state, stage, { deferred = null, progress = null } = {}) {
   const workdir = resolveWorkdir({ env: ctx.env, slug: state.slug, root: ctx.root, home: ctx.home });
   const status = await pipelineStatus({ slug: state.slug, root: ctx.root, workdir });
   const guide = mainGuide(state);
@@ -745,10 +747,12 @@ async function report(ctx, api, state, stage, { deferred = null } = {}) {
   // The page has no field for why a video stopped or waits; the checklist is what the owner reads.
   const blocked = state.status === "blocked" && state.blocked ? [{ key: "blocked", label: blockedLabel(state), done: false }] : [];
   const waiting = deferred && !blocked.length ? [{ key: "deferred", label: deferred, done: false }] : [];
+  // A translation part by part (Automation.unitCheckpoint): how many units are reviewed so far.
+  const partial = progress && !blocked.length ? [{ key: "languages_progress", label: progress.slice(0, 120), done: false }] : [];
   await api.report(state.slug, {
     title: state.title || state.slug,
     stage: stage.slice(0, 40),
-    checklist: [...blocked, ...waiting, ...checklistFrom(status.steps)],
+    checklist: [...blocked, ...waiting, ...partial, ...checklistFrom(status.steps)],
     format: state.format ?? "slides",
     youtube_video_id: videoId,
     ...(guide ? { source_guide: guide } : {}),
@@ -3245,6 +3249,31 @@ export class Automation {
   }
 
   /**
+   * A translation unit's answer was just kept in <workdir>/i18n/<locale>.units.json
+   * (sheet-units.mjs writeUnits). The durable run that gave it is bound to that file now
+   * (client.mjs adoptRuns), as the writer's is to video.json: a round that stops on the next
+   * request (its caption reviewer still running, a restart) leaves no unsettled journal that the
+   * next unit's request would read as a changed input. Then /admin/videos is told how far the
+   * locale is, best effort: a report that fails is sent again at the next checkpoint, and the
+   * locale's own report once it merges takes the row off.
+   */
+  async unitCheckpoint(state, locale, kept, keys) {
+    if (this.api.adoptRuns) {
+      const file = path.join(this.workdir(state.slug), "i18n", `${locale}.units.json`);
+      await this.api.adoptRuns(state.slug, { artifacts: [{ path: file, sha256: await sha256File(file) }] });
+    }
+    const reviewed = keys.filter((key) => kept[key]?.reviewed).length;
+    const waiting = keys.filter((key) => kept[key]?.translated && !kept[key]?.reviewed).length;
+    const progress = `${locale} 翻譯：${reviewed}／${keys.length} 段已審${waiting ? `，${waiting} 段譯好待審` : ""}`;
+    try {
+      await report(this.ctx, this.api, state, "languages", { progress });
+    } catch (error) {
+      if (!(error instanceof AutomationError)) throw error;
+      this.log(`${state.slug}: could not report the ${locale} translation's progress yet (${error.message})`);
+    }
+  }
+
+  /**
    * One locale's translation of the parts the owner chose (docs/videos/LANGUAGES.md): the sheet
    * `i18n-sheet --parts` writes (with each line's dub budget when a dub is chosen), filled by the
    * translator and read by the caption reviewer, then merged. A sheet too long for one model call
@@ -3296,6 +3325,7 @@ export class Automation {
         if (gaps) return this.retryLater(state, "translator", `the ${label} translation ${gaps}`);
         kept[keys[index]] = { translated: draft };
         keep();
+        await this.unitCheckpoint(state, locale, kept, keys);
       }
       // A review without its own worksheet leaves the translation kept, unreviewed, for the next
       // round's reviewer: it never goes in as if it had been read.
@@ -3306,6 +3336,7 @@ export class Automation {
       if (gaps) return this.retryLater(state, "caption_reviewer", `the ${label} review ${gaps}; the translation waits for its review`);
       kept[keys[index]] = { translated: draft, reviewed: checked };
       keep();
+      await this.unitCheckpoint(state, locale, kept, keys);
       this.cleared(state, "caption_reviewer");
       if (keys.some((key) => !kept[key]?.reviewed)) {
         saveState(workdir, state);

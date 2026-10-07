@@ -1,14 +1,14 @@
 ---
 id: 2026-10-04-native-language-durable-units-and-progress
 title: Recover native language calls with durable unit receipts and visible progress
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-language-units
+claimed_at: 2026-10-07T01:22:51Z
 created_at: 2026-10-04T14:43:49Z
 completed_at:
-branch:
+branch: claude/sharp-bardeen-ob6fn9
 depends_on:
   - 2026-10-03-video-worker-narration-takes-made-stale
   - 2026-09-30-video-worker-moves-two-videos-at
@@ -19,6 +19,8 @@ scope:
   - tools/video/automation/run-receipts.test.mjs
   - tools/video/automation/flow.mjs
   - tools/video/automation/automation.test.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Recover native language calls with durable unit receipts and visible progress
