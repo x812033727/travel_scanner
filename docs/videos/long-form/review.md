@@ -1647,6 +1647,40 @@ PASS is DURATION_ONLY for the two rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## claude/sharp-bardeen-ob6fn9 project lease and STOP fences increment: 3 files (2026-10-07)
+
+Reviewer: `claude-pr-review-project-lease`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is commit `6234be16` ("fix(video): a project lease and STOP fences keep a second producer and a held project from paying or writing"), written by `claude-opus-5-5-project-lease` on branch claude/sharp-bardeen-ob6fn9. Scope: DURATION_ONLY for the three changed bindings below. The reviewer wrote none of the commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `dbefc635`, the commit's parent, whose receipt is the "claude/sharp-bardeen-ob6fn9 durable translation units increment" above (commit `0146ffe2`); `git diff dbefc635 6234be16 -- docs/videos/long-form/` is empty, and none of the three files changes between `f77d03c2` and `dbefc635`. At `dbefc635` each of the three files hashes to its row in review.json and the table (by `git show` piped to `sha256sum`). Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs; stale duration review binding: tools/video/automation/flow.mjs; stale duration review binding: tools/video/media/look-keyframes.test.mjs` and nothing else. The commit also changes the unbound tools/video/core/project-lease.mjs and project-lease.test.mjs (both new), tools/video/media/stages.mjs, stages.test.mjs, keyframes.mjs and a task file. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with three hashes rebound and the other 105 unchanged.
+
+What the change is. A project gets a lease file, `<workdir>/LEASE`, that the worker's unit, a media command run by hand and a manual recovery all take, so only one of them moves a project at a time. `Automation.fence()` checks the project's STOP file and the lease right before a stage request, the `writeVideo` in `saveAndLint`, `advance`, `fixPrompts` and a locale's translation merge, and throws `PROJECT_HELD`, which `move()` turns into the video sitting the run out (not blocked, not deferred). This section asks only whether any of it reaches a length rule, and in particular whether a fence before `advance` or `saveAndLint` can skip or change a duration check rather than only stop work.
+
+Findings, tools/video/automation/flow.mjs (+76/−5, 224,191 → 227,695 bytes). The duration code is outside every hunk: the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports (24, 29), `slidesMinutes` and `episodeMinutes` (63–69), the anime `body_target_seconds / 60` settlement (490), and the planner and writer payloads' `target_minutes` (1610, 1823–1957, 2373–2402, 2723). The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` number 20 at both revisions, and no changed line names one of them, minutes, seconds, a frame, a floor, QA or lint. The hunks:
+
+- The `acquireProjectLease`/`ProjectLeaseError` import, the `PROJECT_HELD` constant and the `leases` map. None is a length.
+- `fence(slug, what)` reads only `stopRequested(workdir)` and the held lease's `verify()`. It either returns with nothing changed or drops the slug from `runSlugs` and throws an AutomationError with code `PROJECT_HELD`. It reads and writes no setting, state field or file.
+- The fences in `stage()` (first line, before the request is prepared), `advance()` (first line), `fixPrompts()` (after the story branch) and the translation merge (before the sheet write and `i18n-merge`) sit before the work they guard and can only stop it. In `saveAndLint` the fence sits right before `writeVideo`, so when it throws no video.json is written and `lintErrors` does not run on this answer; the function never returns null (its only "saved and linted" result) without `lintErrors` coming back empty, and that path is unchanged. A held unit leaves the video `active` at the same step, and the next unit asks the same request key again, takes the saved answer and runs the same write and lint. So the fence cannot let a script that fails lint, the duration lint among it, move on; it only delays the write. In a lint-fix round after the first, a fence leaves the earlier failing video.json on disk with the video at the same step, the same as a crash there before the change.
+- The unit's lease (`acquireProjectLease` around `move()`, released in `finally`) and the owner retry's lease around `retryRuns` only choose whether a video is moved this run. A video they leave out is added to `skipped`/`passedOver` or waits for the next round, with nothing settled or written.
+- `move()` returns `PROJECT_HELD` as a skip before the POLICY_HOLD, RUN_UNCERTAIN and OUTPUT_INVALID branches. It does not mark a step done, so no QA, package or duration gate later in the pipeline is passed over. The other AutomationError catches in the file are unchanged; the one that would swallow a fence (`recap`, which logs and returns false) concerns the episode recap text, not a length.
+
+Findings, tools/video/automation/automation.test.mjs (+80/−1, 397,704 → 402,683 bytes; 160 tests at the head, 158 at the baseline). The removed line adds `ctx` to `durableVideos`' return. The two added tests cover a project another process holds (spawned with `acquireProjectLease`; nothing sent or written for it, the other video moves, it moves once released) and a STOP that lands while the writer's paid answer is on its way (no video.json, the answer stays saved under its key, and the run after the STOP takes it without paying again). The second test replaces `advance` on its instance with a fence, one writer stage and `saveAndLint`; it asserts statuses, journals, job counts and the saved slug, nothing about a length. The duration-term lines are 31 at both revisions, no added line reads or sets process.env, and the opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at the top of the file is unchanged.
+
+Findings, tools/video/media/look-keyframes.test.mjs (+34/−1, 119,677 → 122,025 bytes; 41 tests at the head, 40 at the baseline). The removed line is the `node:fs` import gaining `rmSync`; `LEASE_FILE` is imported. The one added test runs `keyframes --shot` and `--accept-best` with a foreign lease (exit owner, nothing drawn, the manifest unchanged) and then under STOP (exit ok, "stopped by the STOP file", the manifest unchanged). It names no keyframe count floor, take limit, clip length or frame floor, and the file's 5 duration-term lines are the same at both revisions.
+
+Ran (Node v22.22.0, Linux, in the worktree at `6234be16`, node_modules installed, VIDEO_MIN_EPISODE_MINUTES unset in the shell): the baseline hashing, `git diff dbefc635 6234be16` of the three files read in full, changed-line scans and duration-term counts at both revisions, reads of `saveAndLint`, `move()`'s catch and the file's other AutomationError catches. Before rebinding, `node --test tools/video/automation/automation.test.mjs` passed 160 of 160, `node --test tools/video/media/look-keyframes.test.mjs` passed 41 of 41, and `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same three paths. The CLI check and the long-form tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the lease or the fences themselves: the O_EXCL lease file, the dead-holder takeover by pid, boot id and start time, the nested holders, the release at exit, `Stage.hold()`, the STOP recheck before submit, or whether every paid request and canonical write is fenced.
+- The unbound files (core/project-lease.mjs, project-lease.test.mjs, media/stages.mjs, stages.test.mjs, media/keyframes.mjs and the task file) are not reviewed.
+- No real video was written, linted, assembled or measured, and the tests run under the opt-out.
+- Not run or seen: the rest of the tool, Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, two processes on the production host, and the production host.
+- The 105 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1703,9 +1737,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `ae221b44e8e960def97062e450811c009d95b96c836cf09022f921b4244757b1` |
+| `tools/video/automation/automation.test.mjs` | `a7162146be364ebbddf8cc148d9e6dde1635f6fa077f14694211c12e353db656` |
 | `tools/video/automation/discuss.mjs` | `fcb1a59b6861c8b18582aeece052b7d6f21930aae495f231e7e0f2c7d0dca9f5` |
-| `tools/video/automation/flow.mjs` | `3faef685c939b4613e32e2e2e5b0700a87355238af4d8ce7c4ba5b8e12de4128` |
+| `tools/video/automation/flow.mjs` | `36b2892bd011158d4920173ea45771213d5b604594b4e4211c1cbcf3da2609d1` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |
@@ -1743,7 +1777,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
 | `tools/video/media/clips.test.mjs` | `142d00151868e05ce593fde515f09dc58855207d8880ca694fc08d22a4b1c572` |
-| `tools/video/media/look-keyframes.test.mjs` | `24e0c81feb9b2ad052b1397befac316ba11eeffad83c52e547a0955d7a41acd7` |
+| `tools/video/media/look-keyframes.test.mjs` | `2dc6312f2dde73ab6d57272e7aed87d9ed788d8b17498aa5914b01f53d3f7205` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `3f81ff3bfb8b600f06c1ba54bc72e685b74ff8bcbd1f096b7b5d4b77ff9d175d` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
