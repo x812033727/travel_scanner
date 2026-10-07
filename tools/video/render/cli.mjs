@@ -69,16 +69,23 @@ async function changedBackgrounds(thumbnails, workdir) {
 }
 
 // What fixes a changed background. A compilation draws no keyframes: the worker copies an
-// approved episode keyframe to THUMB_SOURCE when it plans the metadata, and plans it again once
-// keyframes/manifest.json no longer lists the copy (core/state.mjs "metadata planned").
+// approved episode keyframe to THUMB_SOURCE when it plans the metadata, and records which one
+// under shots.thumb.source. Copying that keyframe back costs nothing and keeps everything
+// approved. Only when it changed too does the metadata have to be planned again, which the
+// worker does once keyframes/manifest.json no longer lists the copy (core/state.mjs "metadata
+// planned"). It keeps translations it already has, so those go as well.
 const REDRAW = "run keyframes again or restore the approved picture";
-const REPLAN = `delete keyframes/manifest.json so the worker plans the compilation's metadata again and copies an approved episode keyframe to ${THUMB_SOURCE} (docs/videos/BINGE.md)`;
+function replan(workdir) {
+  const source = readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots?.thumb?.source;
+  const from = source?.episode && source?.shot ? ` (${source.episode}, shot ${source.shot})` : "";
+  return `copy the episode keyframe it was taken from${from} back to ${THUMB_SOURCE}, if that still holds the hash under shots.thumb in keyframes/manifest.json; otherwise delete keyframes/manifest.json and the compilation's i18n/*.json so the worker plans and translates its metadata again: a new planner call rewrites the title, description, tags and headline, and a cut already compiled is compiled and approved again (docs/videos/BINGE.md)`;
+}
 
 /** Refuse a render whose thumbnails would show a keyframe other than the recorded one (changedBackgrounds). */
 async function refuseChangedBackgrounds(ctx, thumbnails, workdir, { compilation = false } = {}) {
   const changed = await changedBackgrounds(thumbnails, workdir);
   if (!changed.length) return false;
-  ctx.stderr.write(`${changed.join("; ")}; ${compilation ? REPLAN : REDRAW}\n`);
+  ctx.stderr.write(`${changed.join("; ")}; ${compilation ? replan(workdir) : REDRAW}\n`);
   return true;
 }
 

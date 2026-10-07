@@ -632,12 +632,25 @@ test("a compilation whose thumbnail source changed is told to plan its metadata 
   const i18n = path.join(box.dir, "i18n", "en.json");
   mkdirSync(path.dirname(i18n), { recursive: true });
   writeFileSync(i18n, JSON.stringify({ thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(box.doc) } }));
+  // The copy as the worker records it: the episode keyframe it was taken from, and its hash.
+  const approved = readFileSync(path.join(box.workdir, THUMB_SOURCE));
+  const manifestFile = path.join(box.workdir, "keyframes", "manifest.json");
+  writeFileSync(manifestFile, JSON.stringify({ shots: { thumb: { file: THUMB_SOURCE, sha256: createHash("sha256").update(approved).digest("hex"), source: { episode: "wuxia-ep-1", shot: "s3" } } } }));
   writeFileSync(path.join(box.workdir, THUMB_SOURCE), "a picture nobody approved");
-  for (const args of [["render", "--slug", box.slug], ["render", "--slug", box.slug, "--thumbnails-only"]]) {
+  const languages = ["render", "--slug", box.slug, "--thumbnails-only"];
+  for (const args of [["render", "--slug", box.slug], languages]) {
     out = "";
     assert.equal(await main(args, ctx), EXIT.usage, args.join(" "));
-    assert.match(out, /the thumbnail's background keyframes\/thumb-source\.png has changed since keyframes\/manifest\.json recorded it; delete keyframes\/manifest\.json so the worker plans the compilation's metadata again/, args.join(" "));
+    // Restoring the approved picture first: free, and nothing approved changes.
+    assert.match(out, /the thumbnail's background keyframes\/thumb-source\.png has changed since keyframes\/manifest\.json recorded it; copy the episode keyframe it was taken from \(wuxia-ep-1, shot s3\) back to keyframes\/thumb-source\.png, if that still holds the hash under shots\.thumb/, args.join(" "));
+    // Planning again only when that keyframe changed too, with its translations and its cost.
+    assert.match(out, /otherwise delete keyframes\/manifest\.json and the compilation's i18n\/\*\.json so the worker plans and translates its metadata again: a new planner call rewrites the title/, args.join(" "));
     assert.doesNotMatch(out, /run keyframes again/, `${args.join(" ")}: advice a compilation cannot follow`);
   }
   assert.equal(opened, 0, "nothing is drawn");
+  // The free remedy works: the approved bytes back, the language thumbnail draws.
+  writeFileSync(path.join(box.workdir, THUMB_SOURCE), approved);
+  out = "";
+  assert.equal(await main(languages, ctx), EXIT.ok, out);
+  assert.ok(opened > 0);
 });
