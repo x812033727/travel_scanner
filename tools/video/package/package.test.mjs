@@ -1,8 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { EXIT, main } from "../cli.mjs";
@@ -11,7 +10,7 @@ import { approve, sha256File } from "../core/approvals.mjs";
 import { presentationTimeline } from "../core/branding.mjs";
 import { compilationDocument, compilationLayout, compilationTimeline } from "../core/compilation.mjs";
 import { lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
-import { dramaFixture, fixture, fixtureLexicon, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
+import { dramaFixture, fixture, fixtureLexicon, sandbox, tempDir, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { DESCRIPTION_MAX_BYTES } from "../core/metadata.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { buildTimeline, estimateTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
@@ -329,7 +328,7 @@ test("package links a compilation's final.mp4, records the download, the size an
 });
 
 test("each language's own thumbnail goes into the package only when render drew it from the words i18n has now", () => {
-  const workdir = mkdtempSync(path.join(tmpdir(), "video-thumbs-"));
+  const workdir = tempDir("video-thumbs-");
   mkdirSync(path.join(workdir, "thumbnails"));
   for (const locale of ["en", "ja"]) writeFileSync(path.join(workdir, "thumbnails", `${locale}.jpg`), "jpeg");
   const merged = (headline) => ({ thumbnail: { tag: "Picking a model", headline }, source_hashes: { thumbnail: thumbnailSourceHash(doc) } });

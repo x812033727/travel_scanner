@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">機器人理財怎麼運作：從問卷到再平衡 / How a robo-advisor works in Taiwan</title>
+  <desc id="desc">流程圖。上排由左到右四個步驟：第一步線上問卷，也就是瞭解客戶（KYC），評估投資目的與期間、投資知識、投資經驗、財務狀況與承受風險程度；第二步依承受風險程度配對一組投資組合；第三步由演算法產生投資組合建議，客服只能協助或解釋，不能改動系統建議；第四步你確認後下單，由證券商等機構執行交易，投顧只傳送交易指示。第四步往下接到一條橫跨全圖的檢視列：定期或不定期檢視，損益或比例偏離達到約定門檻就觸發再平衡；檢視列左端另有一條虛線回到第一步，標示業者要定期請你更新問卷。檢視列下方分成兩條路。左邊方式一：每次執行前先徵求你的同意，你同意後才送出交易，交易後即時通知結果。右邊方式二：事先約定，由系統自動執行，條件是維持原約定的標的與比例，或基金名單不超過 30 檔、各標的比例變動合計不超過 60%；超出條件或更換名單，要先經你同意。最底部一列說明：投顧不得保管客戶的款項，只依約傳送交易指示；以委託證券商下單為例，資金留在你與證券商約定的帳戶。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="20" markerHeight="20" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5C6B6B"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">機器人理財怎麼運作：從問卷到再平衡</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">How a robo-advisor works in Taiwan: KYC, portfolio, order and rebalancing</text>
+
+  <!-- row 1: four steps -->
+  <g stroke-width="4">
+    <rect x="65" y="114" width="330" height="168" rx="14" fill="#E3F0EF" stroke="#0D6B68"/>
+    <rect x="445" y="114" width="330" height="168" rx="14" fill="#FFFFFF" stroke="#0D6B68"/>
+    <rect x="825" y="114" width="330" height="168" rx="14" fill="#FFFFFF" stroke="#0D6B68"/>
+    <rect x="1205" y="114" width="330" height="168" rx="14" fill="#FFFFFF" stroke="#0D6B68"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="230" y="154" font-size="17" fill="#5C6B6B">第一步</text>
+    <text x="230" y="192" font-size="24" font-weight="700" fill="#102A2B">線上問卷（KYC）</text>
+    <text x="230" y="227" font-size="17" fill="#102A2B">目的、期間、知識、經驗</text>
+    <text x="230" y="254" font-size="17" fill="#102A2B">財務狀況與風險承受</text>
+
+    <text x="610" y="154" font-size="17" fill="#5C6B6B">第二步</text>
+    <text x="610" y="192" font-size="24" font-weight="700" fill="#102A2B">配對風險屬性</text>
+    <text x="610" y="227" font-size="17" fill="#102A2B">依承受風險程度</text>
+    <text x="610" y="254" font-size="17" fill="#102A2B">對應一組投資組合</text>
+
+    <text x="990" y="154" font-size="17" fill="#5C6B6B">第三步</text>
+    <text x="990" y="192" font-size="24" font-weight="700" fill="#102A2B">演算法產生建議</text>
+    <text x="990" y="227" font-size="17" fill="#102A2B">客服只能協助或解釋</text>
+    <text x="990" y="254" font-size="17" fill="#102A2B">不能改動系統建議</text>
+
+    <text x="1370" y="154" font-size="17" fill="#5C6B6B">第四步</text>
+    <text x="1370" y="192" font-size="24" font-weight="700" fill="#102A2B">你確認後下單</text>
+    <text x="1370" y="227" font-size="17" fill="#102A2B">由證券商等機構執行</text>
+    <text x="1370" y="254" font-size="17" fill="#102A2B">投顧只傳送指示</text>
+  </g>
+
+  <g stroke="#5C6B6B" stroke-width="4" fill="none" stroke-linecap="butt">
+    <line x1="399" y1="198" x2="441" y2="198" marker-end="url(#arrow)"/>
+    <line x1="779" y1="198" x2="821" y2="198" marker-end="url(#arrow)"/>
+    <line x1="1159" y1="198" x2="1201" y2="198" marker-end="url(#arrow)"/>
+    <line x1="1370" y1="286" x2="1370" y2="334" marker-end="url(#arrow)"/>
+    <line x1="230" y1="334" x2="230" y2="288" marker-end="url(#arrow)" stroke-dasharray="10 8"/>
+  </g>
+  <text x="252" y="317" font-size="16" fill="#5C6B6B">定期請你更新問卷</text>
+
+  <!-- row 2: review trigger -->
+  <rect x="65" y="338" width="1470" height="84" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="800" y="388" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">定期或不定期檢視：損益或比例偏離達到約定門檻，就觸發再平衡</text>
+
+  <g stroke="#5C6B6B" stroke-width="4" fill="none" stroke-linecap="butt">
+    <line x1="412" y1="426" x2="412" y2="474" marker-end="url(#arrow)"/>
+    <line x1="1187" y1="426" x2="1187" y2="474" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- row 3: two ways to rebalance -->
+  <rect x="65" y="478" width="695" height="246" rx="14" fill="#FFFFFF" stroke="#2E7D5B" stroke-width="4"/>
+  <text x="412" y="528" font-size="24" font-weight="700" fill="#2E7D5B" text-anchor="middle">方式一：每次先經你同意</text>
+  <g font-size="19" fill="#102A2B" text-anchor="middle">
+    <text font-size="19" x="412" y="590">每次執行前，先徵求你的同意</text>
+    <text font-size="19" x="412" y="636">你同意後才送出交易</text>
+    <text font-size="19" x="412" y="682">交易後即時通知結果</text>
+  </g>
+
+  <rect x="840" y="478" width="695" height="246" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1187" y="528" font-size="24" font-weight="700" fill="#D97A2B" text-anchor="middle">方式二：事先約定，系統自動執行</text>
+  <g font-size="19" fill="#102A2B" text-anchor="middle">
+    <text font-size="19" x="1187" y="574">維持原約定的標的與比例，或：</text>
+    <text font-size="19" x="1187" y="612">基金名單不超過 30 檔</text>
+    <text font-size="19" x="1187" y="650">各標的比例變動合計不超過 60%</text>
+  </g>
+  <text x="1187" y="696" font-size="19" font-weight="700" fill="#B8442D" text-anchor="middle">超出條件或更換名單，要先經你同意</text>
+
+  <!-- bottom: where the money is -->
+  <rect x="65" y="760" width="1470" height="72" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="800" y="804" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">投顧不保管你的錢，只依約傳送交易指示；經證券商下單時，資金留在你與證券商約定的帳戶</text>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

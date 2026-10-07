@@ -146,7 +146,7 @@ describe("llms.txt", () => {
     // a topic with nothing anywhere is left out.
     // The counts pick that language and are not written down: an engine may quote this
     // file back weeks later, and by then the figure would be wrong.
-    expect(text).toContain(`- [AI tools](${siteUrl}/zh-TW/life/topics/ai): In 繁體中文: Tools, terms and news.`);
+    expect(text).toContain(`- [AI tools](${siteUrl}/zh-TW/ai): In 繁體中文: Tools, terms and news.`);
     // English wins a tie.
     expect(text).toContain(`- [Transport](${siteUrl}/en/guides/topics/transport): In English`);
     expect(text).not.toContain("articles in");

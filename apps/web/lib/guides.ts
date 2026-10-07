@@ -60,8 +60,15 @@ export function guideListHref(kind: GuideKind, topic?: string | null): string {
  * and canonicalizes here; a chip links here directly.
  */
 export function guideTopicHref(section: GuideSection, topic: string): string {
+  if (section === "life" && topic === AI_HUB_TOPIC) return AI_HUB_PATH;
   return `${section === "life" ? "/life" : "/guides"}/topics/${encodeURIComponent(topic)}`;
 }
+
+/** The AI family's hub has its own top-level address, `/ai`, rather than `/life/topics/ai`:
+ *  it is the site's largest section and the header names it as a section of its own. Its
+ *  sub-topics keep their `/life/topics/<slug>` addresses, and the old address answers 308. */
+export const AI_HUB_TOPIC = "ai";
+export const AI_HUB_PATH = "/ai";
 
 /** The section hub a topic hub sits under, for its breadcrumb and its "all topics" chip. */
 export function sectionHubHref(section: GuideSection): string {

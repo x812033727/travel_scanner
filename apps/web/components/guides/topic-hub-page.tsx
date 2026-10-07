@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { GuideCard } from "@/components/guides/card";
@@ -106,7 +107,13 @@ export async function topicHubMetadata(route: TopicHubRoute): Promise<Metadata> 
   };
 }
 
-export async function renderTopicHub(route: TopicHubRoute) {
+/** `featured` is what a hub shows above its full listing on its plain first page only: a
+ *  `?cursor=` or `?sort=` view is already further into the same collection. It receives the
+ *  vocabulary this page read, so it does not read it again. */
+export async function renderTopicHub(
+  route: TopicHubRoute,
+  featured?: (topics: GuideTopic[]) => Promise<ReactNode>,
+) {
   const { locale, section } = route;
   const [[vocabulary, list], registry, t, nav] = await Promise.all([
     reads(route),
@@ -115,6 +122,7 @@ export async function renderTopicHub(route: TopicHubRoute) {
     getTranslations({ locale, namespace: "navigation" }),
   ]);
   const topic = resolve(vocabulary.topics, vocabulary.available, route.topic);
+  const top = featured && !route.cursor && !route.sort ? await featured(vocabulary.topics) : null;
   const parent = topic?.parent ? vocabulary.topics.find((item) => item.slug === topic.parent) ?? null : null;
   const label = topic?.label ?? route.topic;
   const sectionTitle = section === "life" ? t("guides.lifeHubTitle") : t("guides.hubTitle");
@@ -172,6 +180,8 @@ export async function renderTopicHub(route: TopicHubRoute) {
           series={seriesFor(registry, vocabulary.topics, route)}
           labels={{ heading: t("guides.seriesRow"), lead: t("guides.seriesLead") }}
         />
+
+        {top}
 
         <ListingToolbar
           section={section}

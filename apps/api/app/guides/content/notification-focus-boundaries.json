@@ -38,7 +38,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Apple 的 iPhone 專注模式說明提供個別設定與通知篩選方式，可以依活動建立不同情境。實際選項因系統版本與裝置而異，設定前檢視自己目前的官方說明。本文的分類方法不依賴特定新功能，其他手機也可以先從各 App 通知設定開始，不必為了整理通知更換裝置。"
+          "text": "Apple 的 iPhone 專注模式說明提供個別設定與通知篩選方式，可以依活動建立不同情境。實際選項因系統版本與裝置而異，設定前檢視自己目前的官方說明。這裡的分類方法不依賴特定新功能，其他手機也可以先從各 App 通知設定開始，不必為了整理通知更換裝置。"
         },
         {
           "type": "image",
@@ -96,6 +96,59 @@
         {
           "type": "heading",
           "level": 2,
+          "text": "依情境拆開例外，再確認每臺裝置"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一份例外名單很難同時適合工作、家庭和睡眠。與其維護一份越來越長的白名單，不如每種情境只留少數必要的人和 App。下表是一種分法，名單請換成自己實際承擔的責任。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "保留的聯絡人",
+            "保留的 App",
+            "注意"
+          ],
+          "rows": [
+            [
+              "工作時段",
+              "當天一起合作的人、家中緊急聯絡人",
+              "指定的協作工具、行事曆",
+              "下班後要切換，別讓工作例外延續到晚上"
+            ],
+            [
+              "家庭與照護",
+              "同住家人、照護對象、學校或托育單位",
+              "電話",
+              "家族群組訊息多時，只留真人來電也是一種做法"
+            ],
+            [
+              "等外送或等人接送",
+              "當天要碰面的人",
+              "外送或叫車 App",
+              "事情結束就移除，別讓臨時例外變成常態"
+            ],
+            [
+              "睡眠",
+              "少數真正的緊急聯絡人",
+              "盡量不留",
+              "事先讓對方知道，緊急時要直接打電話"
+            ]
+          ],
+          "caption": "情境與名單均為示例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 iPhone 上，這些都在「設定」App 的「專注模式」裡設定：選一個模式後，「聯絡人」決定誰的通知可以進來，App 決定哪些 App 可以；「選項」可以選擇是否在鎖定畫面顯示已靜音的通知；「加入排程」能在設定的時間、位置或使用特定 App 時自動開啟。「加入過濾條件」則能指定這個模式期間使用哪個郵件帳號或行事曆，例如在個人時段只看私人信箱。內建的模式都不合適時，也可以建立自訂「專注模式」，自己命名為「照護」或「值班」等。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開啟「在所有裝置上共享」後，登入同一個 Apple 帳號的 Apple 裝置會套用相同的專注模式設定，但專注模式過濾條件不會跟著同步，每臺裝置要各自檢查。若同時開啟「分享專注模式狀態」，傳訊息給你的人會看到你已將通知靜音；不想讓某個人看到，可以在他的聯絡人名片上更改。不是 Apple 的手錶、平板或電腦，則要到各自的通知設定另外調整。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
           "text": "用一個短時段實際測試"
         },
         {
@@ -143,7 +196,7 @@
         {
           "title": "Apple：在 iPhone 設定專注模式",
           "url": "https://support.apple.com/en-sg/guide/iphone/iphd6288a67f/ios",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-10-06"
         }
       ]
     },
@@ -222,6 +275,59 @@
         },
         {
           "level": 2,
+          "text": "Split exceptions by situation, then check every device",
+          "type": "heading"
+        },
+        {
+          "text": "One exception list rarely suits work, family and sleep at the same time. Instead of maintaining an ever-longer allowlist, keep only a few essential people and apps for each situation. The table shows one way to divide them; replace the entries with your own actual responsibilities.",
+          "type": "paragraph"
+        },
+        {
+          "caption": "Situations and lists are examples.",
+          "header": [
+            "Situation",
+            "People to allow",
+            "Apps to allow",
+            "Watch out for"
+          ],
+          "rows": [
+            [
+              "Work hours",
+              "People you are working with that day, a family emergency contact",
+              "Your designated collaboration tool, calendar",
+              "Switch it off after work so work exceptions do not run into the evening"
+            ],
+            [
+              "Family and caregiving",
+              "People you live with, the person you care for, school or childcare",
+              "Phone",
+              "If family group chats are busy, allowing only calls from real people is one option"
+            ],
+            [
+              "Waiting for a delivery or a ride",
+              "The people you are meeting that day",
+              "The delivery or ride-hailing app",
+              "Remove it when you are done so a temporary exception does not become permanent"
+            ],
+            [
+              "Sleep",
+              "A few genuine emergency contacts",
+              "As few as possible",
+              "Tell those people in advance to call you directly in an emergency"
+            ]
+          ],
+          "type": "table"
+        },
+        {
+          "text": "On iPhone, all of this is set in the Settings app under Focus. Choose a Focus, then use People to decide whose notifications can come through and Apps to decide which apps can. Options lets you choose whether silenced notifications appear on the Lock Screen, and Add Schedule turns the Focus on automatically at a set time, at a location or while you use a particular app. Add Filter lets you pick which mail account or calendar to use during that Focus, for example showing only your personal inbox in your personal time. If none of the provided Focus options fits, you can create a custom Focus and give it your own name, such as “Caregiving” or “On call.”",
+          "type": "paragraph"
+        },
+        {
+          "text": "With Share Across Devices turned on, Apple devices signed in to the same Apple Account use the same Focus settings, but Focus filters are not synced across devices, so check the filters on each device separately. If Share Focus Status is also on, people who message you can see that you have notifications silenced; to change that for a particular person, edit the setting on their contact card. Watches, tablets or computers that are not made by Apple have to be adjusted separately in their own notification settings.",
+          "type": "paragraph"
+        },
+        {
+          "level": 2,
           "text": "Test the setup during one short period",
           "type": "heading"
         },
@@ -280,7 +386,7 @@
       },
       "sources": [
         {
-          "checked_on": "2026-09-14",
+          "checked_on": "2026-10-06",
           "title": "Apple: Set up Focus on iPhone",
           "url": "https://support.apple.com/en-sg/guide/iphone/iphd6288a67f/ios"
         }
@@ -362,6 +468,59 @@
         },
         {
           "level": 2,
+          "text": "例外は状況ごとに分け、端末ごとに確かめる",
+          "type": "heading"
+        },
+        {
+          "text": "一つの例外リストで仕事、家庭、睡眠のすべてに対応するのは困難です。長くなる一方の許可リストを管理するより、状況ごとに本当に必要な連絡先とアプリだけを少し残すほうが扱いやすくなります。次の表は分け方の一例です。リストは自分が実際に担っている責任に合わせて置き換えてください。",
+          "type": "paragraph"
+        },
+        {
+          "caption": "状況とリストはいずれも例です。",
+          "header": [
+            "状況",
+            "許可する連絡先",
+            "許可するアプリ",
+            "注意点"
+          ],
+          "rows": [
+            [
+              "仕事の時間帯",
+              "その日に一緒に作業する人、家族の緊急連絡先",
+              "指定した共同作業ツール、カレンダー",
+              "仕事が終わったら切り替え、仕事用の例外を夜まで持ち越さない"
+            ],
+            [
+              "家庭と介護",
+              "同居する家族、介護している相手、学校や保育施設",
+              "電話",
+              "家族グループのメッセージが多いときは、人からの電話だけを残す方法もある"
+            ],
+            [
+              "配達や送迎を待つとき",
+              "その日に会う人",
+              "配達アプリや配車アプリ",
+              "用事が済んだら外し、一時的な例外を常設にしない"
+            ],
+            [
+              "睡眠",
+              "本当に緊急時の連絡先数人",
+              "できるだけ残さない",
+              "緊急時は直接電話するよう、相手に前もって伝えておく"
+            ]
+          ],
+          "type": "table"
+        },
+        {
+          "text": "iPhoneでは、どれも設定アプリの「集中モード」で設定します。集中モードを一つ選び、「連絡先」で通知を許可する人を、「アプリ」で通知を許可するアプリを選びます。「オプション」ではロック画面に無音の通知を表示するかどうかを選べ、「スケジュールを追加」では設定した時刻や場所、特定のアプリの使用中に自動でオンにできます。「フィルタを追加」を使うと、その集中モード中に使うメールアカウントやカレンダーを指定でき、例えばプライベートの時間には個人のメールだけを表示できます。用意されたモードが合わなければ、カスタム集中モードを作り、「介護」や「当番」など自分で名前を付けることもできます。",
+          "type": "paragraph"
+        },
+        {
+          "text": "「デバイス間で共有」をオンにすると、同じApple Accountでサインインしている Apple デバイスで同じ集中モードの設定が使われますが、集中モードフィルタはデバイス間で同期されないため、端末ごとに確認が必要です。「集中モード状況を共有」もオンにしていると、メッセージを送ってきた人には、あなたが通知を知らせない設定にしていることが表示されます。特定の人に表示したくなければ、その人の連絡先カードで設定を変更できます。Apple 製以外の腕時計、タブレット、パソコンは、それぞれの通知設定で別に調整する必要があります。",
+          "type": "paragraph"
+        },
+        {
+          "level": 2,
           "text": "短い時間帯で実際にテストする",
           "type": "heading"
         },
@@ -420,7 +579,7 @@
       },
       "sources": [
         {
-          "checked_on": "2026-09-14",
+          "checked_on": "2026-10-06",
           "title": "Apple：iPhone で集中モードを設定する",
           "url": "https://support.apple.com/en-sg/guide/iphone/iphd6288a67f/ios"
         }
@@ -502,6 +661,59 @@
         },
         {
           "level": 2,
+          "text": "예외는 상황별로 나누고 기기마다 확인하기",
+          "type": "heading"
+        },
+        {
+          "text": "예외 목록 하나로 업무, 가족, 수면에 모두 맞추기는 어렵습니다. 점점 길어지는 허용 목록을 관리하기보다 상황마다 꼭 필요한 사람과 앱만 조금 남기는 편이 다루기 쉽습니다. 아래 표는 나누는 방법의 한 예이니, 목록은 실제로 맡은 책임에 맞게 바꾸세요.",
+          "type": "paragraph"
+        },
+        {
+          "caption": "상황과 목록은 모두 예시입니다.",
+          "header": [
+            "상황",
+            "허용할 사람",
+            "허용할 앱",
+            "주의할 점"
+          ],
+          "rows": [
+            [
+              "업무 시간",
+              "그날 함께 일하는 사람, 가족의 긴급 연락처",
+              "지정한 협업 도구, 캘린더",
+              "퇴근 후에는 전환해 업무 예외가 저녁까지 이어지지 않게 하기"
+            ],
+            [
+              "가족과 돌봄",
+              "함께 사는 가족, 돌보는 대상, 학교나 보육 기관",
+              "전화",
+              "가족 단체 대화방 메시지가 많다면 사람에게서 오는 전화만 남기는 방법도 있음"
+            ],
+            [
+              "배달이나 픽업을 기다릴 때",
+              "그날 만날 사람",
+              "배달 앱이나 차량 호출 앱",
+              "일이 끝나면 지워 임시 예외가 상시 예외가 되지 않게 하기"
+            ],
+            [
+              "수면",
+              "정말 긴급할 때 필요한 연락처 몇 명",
+              "가능하면 두지 않기",
+              "긴급할 때는 바로 전화하라고 미리 알려 두기"
+            ]
+          ],
+          "type": "table"
+        },
+        {
+          "text": "iPhone에서는 모두 설정 앱의 집중 모드에서 설정합니다. 집중 모드 하나를 고른 뒤 ‘사람’에서 알림을 허용할 사람을, ‘앱’에서 알림을 허용할 앱을 고릅니다. ‘옵션’에서는 무음 알림을 잠금 화면에 표시할지 정할 수 있고, ‘시간 지정 추가’를 쓰면 정한 시간이나 위치, 특정 앱을 사용하는 동안 자동으로 켜집니다. ‘필터 추가’를 쓰면 그 집중 모드에서 사용할 메일 계정이나 캘린더를 지정할 수 있어, 예를 들어 개인 시간에는 개인 메일만 보이게 할 수 있습니다. 제공되는 모드가 맞지 않으면 사용자 설정 집중 모드를 만들어 ‘돌봄’이나 ‘당직’처럼 직접 이름을 붙일 수도 있습니다.",
+          "type": "paragraph"
+        },
+        {
+          "text": "‘모든 기기에서 공유’를 켜면 같은 Apple 계정으로 로그인한 Apple 기기에서 같은 집중 모드 설정을 쓰지만, 집중 모드 필터는 기기 간에 동기화되지 않으므로 기기마다 따로 확인해야 합니다. ‘집중 모드 상태 공유’도 켜 두면 메시지를 보낸 사람이 내가 알림을 무음으로 설정했다는 사실을 볼 수 있습니다. 특정 사람에게 보이고 싶지 않다면 그 사람의 연락처 카드에서 설정을 바꿀 수 있습니다. Apple 제품이 아닌 시계, 태블릿, 컴퓨터는 각자의 알림 설정에서 따로 조정해야 합니다.",
+          "type": "paragraph"
+        },
+        {
+          "level": 2,
           "text": "짧은 시간 동안 실제로 테스트하기",
           "type": "heading"
         },
@@ -560,7 +772,7 @@
       },
       "sources": [
         {
-          "checked_on": "2026-09-14",
+          "checked_on": "2026-10-06",
           "title": "Apple: iPhone에서 집중 모드 설정하기",
           "url": "https://support.apple.com/en-sg/guide/iphone/iphd6288a67f/ios"
         }
@@ -583,7 +795,7 @@
           "type": "paragraph"
         },
         {
-          "text": "Apple 的 iPhone 专注模式说明提供个别设置和通知筛选方式，可以按活动建立不同情境。实际选项会因系统版本和设备而异，设置前请查看自己当前适用的官方说明。本文的分类方法不依赖特定新功能，其他手机也可以先从各 App 的通知设置开始，不必为了整理通知而更换设备。",
+          "text": "Apple 的 iPhone 专注模式说明提供个别设置和通知筛选方式，可以按活动建立不同情境。实际选项会因系统版本和设备而异，设置前请查看自己当前适用的官方说明。这里的分类方法不依赖特定新功能，其他手机也可以先从各 App 的通知设置开始，不必为了整理通知而更换设备。",
           "type": "paragraph"
         },
         {
@@ -638,6 +850,59 @@
         },
         {
           "text": "不同情境可以采用不同例外。例如阅读时保留家人来电，工作时保留指定协作工具，并不代表所有朋友或同事都永远被排除。还要确认锁定画面的显示是否泄露私密内容，以及多台设备会不会在另一个屏幕上继续弹出通知。不要以为手机安静了，手表、平板和电脑就一定会跟着安静。",
+          "type": "paragraph"
+        },
+        {
+          "level": 2,
+          "text": "按情境拆分例外，再逐台确认设备",
+          "type": "heading"
+        },
+        {
+          "text": "同一份例外名单很难同时适合工作、家庭和睡眠。与其维护一份越来越长的白名单，不如每种情境只保留少数必要的联系人和 App。下表是一种分法，名单请换成自己实际承担的责任。",
+          "type": "paragraph"
+        },
+        {
+          "caption": "情境和名单均为示例。",
+          "header": [
+            "情境",
+            "保留的联系人",
+            "保留的 App",
+            "注意"
+          ],
+          "rows": [
+            [
+              "工作时段",
+              "当天一起合作的人、家里的紧急联系人",
+              "指定的协作工具、日历",
+              "下班后要切换，别让工作例外延续到晚上"
+            ],
+            [
+              "家庭与照护",
+              "同住家人、照护对象、学校或托育机构",
+              "电话",
+              "家庭群消息多时，只保留真人来电也是一种做法"
+            ],
+            [
+              "等外卖或等人接送",
+              "当天要见面的人",
+              "外卖或打车 App",
+              "事情结束就移除，别让临时例外变成常态"
+            ],
+            [
+              "睡眠",
+              "少数真正的紧急联系人",
+              "尽量不保留",
+              "提前告诉对方，紧急时直接打电话"
+            ]
+          ],
+          "type": "table"
+        },
+        {
+          "text": "在 iPhone 上，这些都在“设置” App 的“专注模式”中设置：选一个专注模式后，用“联系人”决定谁的通知可以进来，用 App 决定哪些 App 可以；“选项”可以选择是否在锁定屏幕上显示静音通知；“添加定时”能在设定的时间、位置或使用特定 App 时自动打开。“添加过滤条件”则可以指定这个专注模式期间使用哪个邮件账户或日历，例如在个人时段只看私人邮箱。如果提供的模式都不合适，还可以创建自定义专注模式，自己取名为“照护”或“值班”等。",
+          "type": "paragraph"
+        },
+        {
+          "text": "打开“在设备之间共享”后，登录相同 Apple 账户的 Apple 设备会使用相同的专注模式设置，但专注模式过滤条件不会随之同步，需要在每台设备上分别检查。如果同时打开“共享专注模式状态”，给你发信息的人会看到你已将通知静音；不想让某个人看到，可以在他的联系人名片上更改。不是 Apple 的手表、平板或电脑，则要到各自的通知设置里另外调整。",
           "type": "paragraph"
         },
         {
@@ -700,7 +965,7 @@
       },
       "sources": [
         {
-          "checked_on": "2026-09-14",
+          "checked_on": "2026-10-06",
           "title": "Apple：在 iPhone 上设置专注模式",
           "url": "https://support.apple.com/en-sg/guide/iphone/iphd6288a67f/ios"
         }

@@ -4,11 +4,11 @@ title: 撰寫並上線第八批旅遊文章：二十篇 zh-TW 攻略與情報
 status: in-progress
 priority: P2
 area: docs
-owner: claude-fable-5-1
-claimed_at: 2026-09-22T13:07:55Z
+owner: claude-opus-5-5
+claimed_at: 2026-10-06T03:44:57Z
 created_at: 2026-09-20T02:32:43Z
 completed_at:
-branch: claude/launch-articles-batch-8
+branch: claude/batch-8-wave-2
 depends_on:
   - 2026-09-19-plan-articles-batch-8
 scope:
@@ -53,6 +53,7 @@ scope:
   - apps/web/public/guides/ngong-ping-360-lantau-day
   - apps/web/public/guides/kuala-lumpur-3-day-itinerary
   - docs/travel-guides-batch-8/ERRATA.md
+  - docs/travel-guides-batch-8/batch.json
 ---
 
 # 撰寫並上線第八批旅遊文章：二十篇 zh-TW 攻略與情報
@@ -127,3 +128,17 @@ uv run python -m app.guides.pack_cli lint --kind intel
   `docs/travel-guides-batch-8/ERRATA.md`（本票 scope 新增）。
 - 協調者工具在持久目錄 `C:\Users\x8120\mokaair-work\_tools\`（WRITER.md、VERIFIER.md、intake_check.py、shared_check.py、shrink_hero.py），
   狀態檔 `C:\Users\x8120\mokaair-work\STATE.md`。
+
+## 進度（2026-10-06，第二波）
+
+- 接手：claude-opus-5-5，分支 `claude/batch-8-wave-2`。舊工作區 `mokaair-work/write8` 與 `_tools` 已不在，改用 skill `content-pipeline` 的
+  提示與腳本；新的工作區在 repo 外的持久目錄 `mokaair-work/write8/`，狀態檔 `write8/STATE.md`。
+- 第二波七篇（普吉、芭達雅與格蘭島、清邁機場、清邁夜市、泰國寺廟禮儀、漢拏山、馬羅島與加波島）：sonnet 撰稿各一位，opus 查核各一位；
+  第一輪事實改動：普吉 6、清邁機場 6、漢拏山 6、芭達雅 5、馬羅島 4、清邁夜市 2、寺廟禮儀 2。超過三處的五篇加上清邁夜市做了第二輪
+  （普吉 2、馬羅島 3、芭達雅 0、清邁機場 2、清邁夜市 2、漢拏山 1）。裁決與規格差異在 `docs/travel-guides-batch-8/ERRATA.md`「第二波」。
+- 收件：七篇 `intake_check.py --from-content --manifest docs/travel-guides-batch-8/batch.json` 全 PASS，`pack_cli lint --kind howto` 對這七篇零發現，
+  `pytest tests/test_guides_content_pack.py` 9 passed／5 skipped；圖解 PNG 逐張看過。三張 hero 在 ingest 後重壓到 200 KB 內
+  （芭達雅與馬羅島 1500 寬、清邁機場 1300 寬，內容包的 width／height 已同步）。
+- 這台機器 Edge 的 headless 截圖會靜默失敗，`CHROMIUM_BIN` 改指 Chrome 或 Playwright 的 headless shell。
+- **還沒做**：第二波七篇還沒上正式站（要站主同意後部署、`guides-import --slug` ×7）；第三波六篇（日本國定假日 2027、吉卜力公園、
+  金澤白川鄉、尾道島波海道、昂坪 360、吉隆坡）還沒寫；FOLLOWUPS 開票留到整批上線的 PR。

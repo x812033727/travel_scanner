@@ -28,7 +28,7 @@ from app.models import User, VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation import messages as drama_messages
 from app.video_automation import requests as drama_requests
-from app.video_automation import run_jobs
+from app.video_automation import run_jobs, slides_requests
 from app.video_automation import series as drama_series
 from app.video_automation import settings as service
 from app.video_automation.ai import StageFailed, run_stage
@@ -57,6 +57,7 @@ from app.video_automation.schemas import (
     MessageOut,
     MessagesOut,
     NextDramaRequestOut,
+    NextSlidesRequestOut,
     SeriesAction,
     SeriesActionOut,
     SeriesBeatsRead,
@@ -83,6 +84,9 @@ from app.video_automation.schemas import (
     SettingsSave,
     SettingsView,
     SettingsWrite,
+    SlidesRequestIn,
+    SlidesRequestOut,
+    SlidesRequestsOut,
     StageJobIn,
     StageJobOut,
     StageModelsWrite,
@@ -445,6 +449,86 @@ async def finish_drama_request(
     )
     try:
         return await drama_requests.finish_request(session, request_id)
+    except RequestRefused as error:
+        raise _refused(error) from error
+
+
+# The owner's requests for a slides video of a chosen site article (docs/videos/AUTOMATION.md):
+# filed on the tutorials tab of /admin/videos, claimed by the worker once it has planned the video.
+
+
+@admin_router.get("/slides-requests", response_model=SlidesRequestsOut)
+async def list_slides_requests(user: ContentReader, session: Session) -> SlidesRequestsOut:
+    """Every request the owner filed, newest first, with what became of the video it started."""
+    _ = user
+    return SlidesRequestsOut(requests=await slides_requests.list_requests(session))
+
+
+@admin_router.post("/slides-requests", response_model=SlidesRequestOut, status_code=201)
+async def create_slides_request(
+    payload: SlidesRequestIn, user: ContentManager, session: Session
+) -> SlidesRequestOut:
+    """The owner asks for a slides video of one published lifestyle article, made before any
+    scheduled draft. Refused while the automatic drafts are switched off, so nothing queues for
+    a worker that will never take it."""
+    row = await service.settings_row(session)
+    if not row.enabled:
+        raise AppError(
+            409,
+            "video_automation_disabled",
+            "影片自動化還沒開啟：先在影片審核的設定分頁打開「自動產生草稿」",
+        )
+    try:
+        return await slides_requests.create_request(session, user, payload)
+    except RequestRefused as error:
+        raise _refused(error) from error
+
+
+@admin_router.delete("/slides-requests/{request_id}", response_model=SlidesRequestOut)
+async def cancel_slides_request(
+    request_id: UUID, user: ContentManager, session: Session
+) -> SlidesRequestOut:
+    """Withdraw a request the worker has not started; a started one is dropped as a video."""
+    try:
+        return await slides_requests.cancel_request(session, user, request_id)
+    except RequestRefused as error:
+        raise _refused(error) from error
+
+
+@tool_router.get("/slides-requests/next", response_model=NextSlidesRequestOut)
+async def next_slides_request(tool: VideoTool, session: Session) -> NextSlidesRequestOut:
+    """The oldest queued request whose article is still published, or none: what the worker
+    should plan before a scheduled draft."""
+    await enforce_named_rate_limit(
+        "video_slides_requests", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    return NextSlidesRequestOut(request=await slides_requests.next_request(session))
+
+
+@tool_router.post("/slides-requests/{request_id}/start", response_model=SlidesRequestOut)
+async def start_slides_request(
+    request_id: UUID, payload: DramaRequestStart, tool: VideoTool, session: Session
+) -> SlidesRequestOut:
+    """The worker claims a queued request for the video it has just planned."""
+    await enforce_named_rate_limit(
+        "video_slides_requests", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    try:
+        return await slides_requests.start_request(session, tool, request_id, payload.slug)
+    except RequestRefused as error:
+        raise _refused(error) from error
+
+
+@tool_router.post("/slides-requests/{request_id}/done", response_model=SlidesRequestOut)
+async def finish_slides_request(
+    request_id: UUID, tool: VideoTool, session: Session
+) -> SlidesRequestOut:
+    """The worker reports the request's video is finished and published."""
+    await enforce_named_rate_limit(
+        "video_slides_requests", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    try:
+        return await slides_requests.finish_request(session, request_id)
     except RequestRefused as error:
         raise _refused(error) from error
 

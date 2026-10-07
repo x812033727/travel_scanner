@@ -2338,6 +2338,9 @@
     "lookAlike": "Neighbouring shots that look alike: {pairs}",
     "seconds": "{seconds} s",
     "shotNeedsReview": "No take passed the judge; the prompt needs a fix",
+    "shotKept": "Kept",
+    "shotKeptHelp": "Still failing the judge after its prompt fixes, so the best take was kept; you review it on the final cut",
+    "storyboardKept": "{count} shots kept with the judge's remarks; you review them on the final cut",
     "drama": "AI drama",
     "spend": "Media spend US${usd} ({seconds} clip seconds)",
     "newDrama": "New drama episode",
@@ -2419,6 +2422,11 @@
     "qaFailedCount": "{count} failed",
     "qaAllPassed": "All {count} passed",
     "qaWarning": "Note:",
+    "qaReferenceOnly": "For reference only",
+    "manualReview": "This cut is yours to review and is never approved automatically",
+    "keptPictures": "Pictures kept with the judge's remarks ({count})",
+    "keptPicturesHelp": "These pictures still failed the judge after their prompt fixes, so the worker kept the best take of each and went on. Look for these shots in the cut; what the judge said is below.",
+    "keptNoRemarks": "The judge left no remarks",
     "qaItems": {
       "duration_policy": "Episode duration",
       "assemble": "Assembly",
@@ -2479,7 +2487,26 @@
     "openDramaSettings": "Open the drama settings",
     "downloadCompilation": "Download the 1080p cut",
     "compilationInWorkspace": "The cut is still in the worker's workspace",
-    "compilationOf": "Compilation of series {series}"
+    "compilationOf": "Compilation of series {series}",
+    "slidesRequests": {
+      "title": "Make a slides video from a site article",
+      "help": "Paste the slug of a published Traditional Chinese life article. The worker makes this one before any scheduled draft; it still waits while the drafts waiting for you are at their limit, and it counts toward this month's drafts.",
+      "article": "Site article (slug)",
+      "articlePlaceholder": "e.g. ai-freelance-getting-started",
+      "note": "Note for the planner (optional)",
+      "notePlaceholder": "e.g. explain the facts and how to check them, no investment advice; end with the article's own disclaimer",
+      "submit": "Queue it",
+      "error": "Not queued: {message}",
+      "queue": "Videos of chosen articles",
+      "openArticle": "Read the article",
+      "statuses": {
+        "queued": "Queued",
+        "started": "In the making",
+        "done": "Done",
+        "cancelled": "Cancelled",
+        "dropped": "Dropped"
+      }
+    }
   },
   "videoSettings": {
     "loading": "Loading settings…",

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { SiteNavigation } from "@/components/site-navigation";
 import { openSiteVisibility } from "@/lib/site-features";
@@ -34,6 +34,8 @@ beforeEach(() => {
 describe.each([
   ["旅遊情報攻略", "/guides"],
   ["生活科技", "/life"],
+  ["AI 應用", "/ai"],
+  ["影片", "/videos"],
 ])("reaching %s from the header", (name, href) => {
   it("is offered in the default mode", () => {
     render(<SiteNavigation />);
@@ -89,5 +91,43 @@ describe("the two sections side by side", () => {
       expect(screen.getByRole("link", { name: "生活科技" }).getAttribute("href")).toBe("/life");
       unmount();
     }
+  });
+});
+
+describe("the grouped menus", () => {
+  it("puts each section's pages under it, in the document whether or not the menu is open", () => {
+    render(<SiteNavigation />);
+    expect(screen.getByRole("link", { name: "AI 新聞" }).getAttribute("href")).toBe("/life/topics/ai-news");
+    expect(screen.getByRole("link", { name: "旅遊攻略" }).getAttribute("href")).toBe("/guides/howto");
+    expect(screen.getByRole("link", { name: "理財投資" }).getAttribute("href")).toBe("/life/topics/finance");
+  });
+
+  it("opens and closes a group from its button, and Escape closes it", () => {
+    render(<SiteNavigation />);
+    const toggle = screen.getByRole("button", { name: "AI 應用選單" });
+    expect(toggle.getAttribute("aria-expanded")).toBe("false");
+    fireEvent.click(toggle);
+    expect(toggle.getAttribute("aria-expanded")).toBe("true");
+    fireEvent.keyDown(toggle, { key: "Escape" });
+    expect(toggle.getAttribute("aria-expanded")).toBe("false");
+  });
+
+  it("keeps the travel tools out of the modes that carry their own", () => {
+    render(<SiteNavigation />);
+    expect(screen.getByRole("button", { name: "旅行工具選單" })).toBeTruthy();
+    cleanup();
+    mocks.discovery.mockReturnValue({ loading: false, enabled: true });
+    render(<SiteNavigation />);
+    expect(screen.queryByRole("button", { name: "旅行工具選單" })).toBeNull();
+    expect(screen.getByRole("button", { name: "AI 應用選單" })).toBeTruthy();
+  });
+
+  it("drops a group whose every page is switched off", () => {
+    mocks.visibility.mockReturnValue({
+      status: "ready",
+      features: { ...openSiteVisibility, trips_enabled: false, alerts_enabled: false, flight_status_enabled: false, airline_fares_enabled: false, pricing_enabled: false },
+    });
+    render(<SiteNavigation />);
+    expect(screen.queryByText("旅行工具")).toBeNull();
   });
 });

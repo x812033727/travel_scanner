@@ -1,0 +1,324 @@
+{
+  "slug": "ai-server-supply-chain-layers",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tech"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 伺服器怎麼組成：晶片、記憶體、封裝、組裝、散熱與電力",
+      "description": "AI 伺服器怎麼組成？由內而外拆解：加速器晶片、高頻寬記憶體（HBM）、先進封裝、主機板與整機、網路、散熱與供電。依國際能源總署（IEA）、電機電子工程師學會（IEEE）與美國冷凍空調工程師學會（ASHRAE）等公開文件，說明每一層在做什麼、高密度機櫃為什麼改用液冷、供電為什麼朝 800 伏特直流發展，以及全球資料中心用電的最新估計。",
+      "hero": {
+        "src": "/guides/ai-server-supply-chain-layers/hero.jpg",
+        "alt": "米色底上，左邊一座深色機櫃排著八層伺服器，機櫃左側有兩條藍色冷卻水管，底部的橘色電線接到閃電符號；其中一層被橘框圈出，用虛線放大到右邊的圓圈，圈裡是一顆青綠色晶片、兩側各一疊藍色記憶體，晶片上方接著冷卻管；圓圈下方寫著「從晶片到機櫃」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "AI 伺服器由內而外是加速器晶片、高頻寬記憶體（HBM）、先進封裝、主機板與整機、網路、散熱與供電；越往外層，越是在處理晶片怎麼連、熱怎麼散、電怎麼送。",
+            "HBM 把多層記憶體晶片疊起來，和運算晶片放進同一封裝；高階封裝與 HBM 的產能先後成為 AI 伺服器供應的限制。",
+            "國際能源總署（IEA）舉的機櫃例子，從 2020 年約 13 千瓦（kW）升到現行約 130 kW；高密度機櫃因此改用液冷，供電也朝 800 伏特直流討論。",
+            "IEA 估計全球資料中心用電 2025 年約 485 TWh（太瓦時），2030 年約 950 TWh。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "一台 AI 伺服器由內而外分成七層：加速器晶片負責運算，高頻寬記憶體與先進封裝決定資料送得多快，主機板、整機與網路把大量晶片連成一體，散熱與供電決定能不能長時間滿載。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下逐層說明每層在做什麼、新聞常見的名詞是什麼意思，最後看 IEA 對資料中心用電的估計。"
+        },
+        {
+          "type": "heading",
+          "text": "由內而外的七層",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最裡面是加速器（accelerator），例如圖形處理器（GPU）與特定用途積體電路（ASIC）；旁邊緊貼著記憶體，一起裝進封裝，再和中央處理器（CPU）、網路卡組成伺服器，多台伺服器裝進機櫃。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-server-supply-chain-layers/diagram-1.svg",
+          "alt": "結構圖：中間一層包一層，由內而外是加速器晶片與兩側的 HBM、先進封裝、主機板與整機、機櫃與網路交換器；左邊是由電網送到晶片的供電路徑，右邊是由晶片帶熱到機房的散熱路徑",
+          "width": 1600,
+          "height": 900,
+          "caption": "中間的方框由內往外讀；供電從左邊往內送，熱從右邊往外帶。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "層",
+            "做什麼",
+            "常見名詞",
+            "目前的限制"
+          ],
+          "rows": [
+            [
+              "加速器",
+              "大量平行計算",
+              "GPU、ASIC",
+              "單顆晶片功率越來越高"
+            ],
+            [
+              "高頻寬記憶體",
+              "把資料即時送進加速器",
+              "HBM、堆疊層數",
+              "IEA 預期短缺至少到 2027 年底"
+            ],
+            [
+              "先進封裝",
+              "把運算晶片和 HBM 放在一起",
+              "中介層、2.5D、3D、小晶片",
+              "2025 年高階封裝產能不足"
+            ],
+            [
+              "主機板與整機",
+              "組成一台伺服器",
+              "主機板、大型機櫃",
+              "機櫃更重，承重要求更高"
+            ],
+            [
+              "網路",
+              "讓大量晶片一起算",
+              "縱向擴展、橫向擴展",
+              "資料搬移的耗電占比上升"
+            ],
+            [
+              "散熱",
+              "把熱帶離晶片與機櫃",
+              "氣冷、冷板液冷、浸沒式",
+              "高密度機櫃逐漸超出氣冷能力"
+            ],
+            [
+              "供電",
+              "從電網降壓送到晶片",
+              "不斷電系統、電池、800 伏特直流",
+              "負載在一秒內大幅擺動"
+            ]
+          ],
+          "caption": "七層的分工與限制，查證於 2026 年 10 月。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上市公司在交易所的產業類別怎麼劃分、營收組成去哪裡查",
+              "kind": "life",
+              "slug": "ai-concept-stocks-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "以 AI 或半導體為主題的指數，成分範圍怎麼依產業鏈上中下游劃定",
+              "kind": "life",
+              "slug": "thematic-etf-index-rules"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "加速器與 HBM：運算常卡在記憶體",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "加速器越快，越需要把資料即時送進去。高頻寬記憶體（High Bandwidth Memory，HBM）把多層記憶體晶片垂直疊起來，用很寬的介面連接，資料傳輸率遠高於一般記憶體模組。HBM 的標準由微電子產業標準組織 JEDEC（固態技術協會）制定，每一代的介面寬度、頻寬與可疊層數，以官方公告為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需求成長得比產能快。IEA 引用的產業估計，領先的 GPU 系統記憶體從 2023 年不到 150 GB，到 2027 年將超過 1,000 GB；而同樣的容量，HBM 要用掉一般記憶體三倍的晶圓產能。2025 年下半年起，高階記憶體也成了 AI 伺服器生產速度的限制。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "個人電腦的顯示卡怎麼看記憶體容量，整理在為 AI 選顯示卡",
+              "kind": "life",
+              "slug": "local-ai-gpu-buying-guide"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "先進封裝：把運算晶片和記憶體放在一起",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "封裝是晶片製造的最後一步，把晶粒包起來，並提供供電與散熱的路徑。先進封裝（advanced packaging）把運算晶片和 HBM 放進同一個封裝：並排放在一片中介層（interposer）上稱為 2.5D，直接疊在運算晶片上方稱為 3D。"
+        },
+        {
+          "type": "paragraph",
+          "text": "HBM 的連線很寬，並排擺放較容易做到；疊在上方線路更短，但要克服散熱與大量導通孔的難題。連線越短，資料搬移越快也越省電。同一個封裝裡也可以放幾顆功能不同的小晶片（chiplet）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "封裝也是產能限制，IEA 把 2025 年高階晶片的封裝產能列為資料中心建置的限制之一。"
+        },
+        {
+          "type": "heading",
+          "text": "主機板、整機與網路：讓很多顆晶片像一台電腦",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "伺服器把多顆加速器、中央處理器、儲存與網路卡裝在一起。晶片越集中在同一個機櫃，延遲與電力損耗越小，但機櫃也越重：美國冷凍空調工程師學會（ASHRAE）2026 年的技術簡報提到，高效能運算的趨勢是改用 800 或 1,200 公釐的大型機櫃，地板與天花板的承重要求也較高。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網路分兩種。縱向擴展（scale-up）把同一個運算叢集（pod）裡的加速器直接連起來，讓它們讀寫彼此的記憶體；開放標準 UALink（超加速器連結，Ultra Accelerator Link）1.0 版每條通道 200G，最多連 1,024 顆加速器，走銅線，不加中繼器時距離只有幾公尺。橫向擴展（scale-out）再把這些叢集連成整座資料中心，超乙太網路聯盟（Ultra Ethernet Consortium）以乙太網路為基礎制定這一層的標準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "IEA 指出，資料搬移與晶片互連占 AI 系統耗電的比例越來越高；把光學元件和交換器晶片封裝在一起的共同封裝光學（co-packaged optics），已開始初步量產，用在機櫃之間的交換器。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型越大，要的記憶體與晶片越多：同一家為什麼有好幾個模型",
+              "kind": "life",
+              "slug": "ai-model-tiers-explained"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "散熱：高密度機櫃從氣冷走向液冷",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "熱來自功率密度。IEA 以一家 GPU 廠商的機櫃為例：2020 年的架構每櫃 32 顆晶片，約 13 kW；目前的架構每顆 1,000 W、每櫃 72 顆，約 130 kW；已宣布的下一代約 600 kW。到 2027 年，一個冰箱大小的機櫃，峰值用電可能相當於約 65 戶家庭。"
+        },
+        {
+          "type": "paragraph",
+          "text": "氣冷靠風扇，ASHRAE 2021 年的白皮書指出，部分高密度伺服器的風扇用電占 10% 到 20% 並不少見，照這個比例，50 kW 的機櫃光是風扇就至少 5 kW。液冷用液體帶走熱，目前快速普及的是直接對晶片（direct-to-chip）液冷：晶片貼上冷板（cold plate），冷卻液經冷卻液分配單元（CDU）把熱交給機房的冷卻水。另一種是浸沒式冷卻，把設備整個泡進冷卻液槽。"
+        },
+        {
+          "type": "paragraph",
+          "text": "冷卻占多少電，差距很大：IEA 估計從高效率超大型資料中心的約 7%，到效率較差的企業機房超過 30%。常用的指標是電力使用效率（Power Usage Effectiveness，PUE），即機房總用電除以資訊設備用電，數值越低越有效率：頂尖的超大型資料中心約 1.1 到 1.2，較舊或企業自營的約 1.5 到 1.7。"
+        },
+        {
+          "type": "heading",
+          "text": "供電：從電網降壓好幾次才到晶片",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "電從電網進來，經過變壓器、不斷電系統（UPS）與電池分配到機櫃，再一路降壓到晶片用的低電壓。IEA 整理的方向是把配電電壓從常見的 400 伏特提高到 800 伏特，並從交流改為直流：電壓加倍，傳送同樣功率的銅線可縮小為四分之一，改用直流也能減少轉換次數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 的用電還會劇烈擺動。大量 GPU 同步運算，用電也跟著同步起伏，曾有 AI 資料中心在不到一秒內擺動數十百萬瓦（MW），約為額定容量的一半；機房因此搭配電容吸收毫秒級的變化、電池處理較長的時間，機櫃上也開始裝備援電池。"
+        },
+        {
+          "type": "heading",
+          "text": "資料中心用多少電：IEA 的估計",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "IEA 估計全球資料中心用電 2024 年約 415 TWh；2025 年成長超過 15%，約 485 TWh，略高於全球用電的 1.5%。基準情境下，2030 年約 950 TWh、約占 3%，其中以 AI 為主的資料中心，用電會變成原來的三倍以上。1 TWh 是 10 億度電。"
+        },
+        {
+          "type": "paragraph",
+          "text": "平均而言，伺服器約占資料中心用電 60%、儲存約 5%、網路設備最多 5%，其餘是冷卻、不斷電設備與照明等設施。在許多地區，資料中心等待併網可能長達五到十年。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "讀功率數字，先分清楚單位",
+          "text": "kW、MW 是當下的功率，TWh 是一段時間累積的用電量（這裡指一年），不能直接相比；機櫃的數字多半是額定或峰值，不是平均。看到「每櫃百萬瓦」或「用電翻倍」，先確認說的是哪一種。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "想在自己的電腦上跑模型，記憶體怎麼算",
+              "kind": "life",
+              "slug": "local-llm-hardware-requirements"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "國際能源總署 IEA：Key Questions on Energy and AI（2026 年 4 月；資料中心用電、功率密度、供電與記憶體瓶頸）",
+          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "國際能源總署 IEA：Energy and AI（2025 年 4 月；資料中心設備用電拆分、冷卻占比）",
+          "url": "https://www.iea.org/reports/energy-and-ai",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "IEEE 電子封裝學會（電機電子工程師學會）：Heterogeneous Integration Roadmap 2021 年版第 2 章高效能運算與資料中心（2.5D、3D 與 HBM、JEDEC 的 HBM 標準）",
+          "url": "https://eps.ieee.org/wp-content/uploads/2025/11/ch02_hpc.pdf",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "ASHRAE TC 9.9：Technical Snapshot，AI 對資料中心基礎設施規劃的影響（2026 年 6 月）",
+          "url": "https://tpc.ashrae.org/FileDownload?idx=89ebd952-2bd7-48c2-8540-ed98b87cde51",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "ASHRAE TC 9.9：Technical Bulletin，TCS Coolant Integrity and System Readiness（2026 年 5 月；直接對晶片液冷快速普及）",
+          "url": "https://tpc.ashrae.org/FileDownload?idx=09cb747c-22a9-4bd1-b397-2f77be04b530",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "ASHRAE TC 9.9：Emergence and Expansion of Liquid Cooling in Mainstream Data Centers 白皮書（2021 年；風扇用電、浸沒式冷卻）",
+          "url": "https://tpc.ashrae.org/FileDownload?idx=8f306d41-3160-4603-9869-395f7c1473ac",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "ASHRAE TC 9.9：Water-Cooled Servers 白皮書（2019 年；冷板與冷卻液分配單元 CDU 的配置）",
+          "url": "https://tpc.ashrae.org/FileDownload?idx=de056975-5882-4c0e-87b9-0197cb45a713",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "UALink 聯盟：常見問題（縱向擴展、每通道 200G、最多 1,024 顆加速器）",
+          "url": "https://ualinkconsortium.org/faq/",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Ultra Ethernet Consortium（超乙太網路聯盟）首頁（以乙太網路為基礎的 AI 與高效能運算網路）",
+          "url": "https://ultraethernet.org/",
+          "checked_on": "2026-10-05"
+        }
+      ]
+    }
+  }
+}

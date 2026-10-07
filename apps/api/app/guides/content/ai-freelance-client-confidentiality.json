@@ -1,0 +1,342 @@
+{
+  "slug": "ai-freelance-client-confidentiality",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "ai-income"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "接案用 AI 的保密與責任：客戶資料、合約條款與揭露",
+      "description": "接案時能不能把客戶檔案放進 AI？關鍵在帳號類型與合約。ChatGPT、Claude、Gemini 的個人方案在相關設定開著時可能用對話改進模型，商用方案預設不拿客戶內容訓練。整理各家資料政策與回饋鍵的例外、合約裡的保密與著作權歸屬條款、要不要向客戶說明用了 AI，以及受託處理個資時個資法的基本義務。",
+      "hero": {
+        "src": "/guides/ai-freelance-client-confidentiality/hero.jpg",
+        "alt": "米色底上一條淺灰色的路，左端是掛著青綠色鎖頭的橘色資料夾，中間立著三道同樣大小、各有一個向右箭頭記號的青綠色拱門，右端是畫著白色星芒的藍色方塊，下方寫著「客戶資料先過三關」",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "客戶資料能不能放進 AI，先看帳號類型：ChatGPT、Claude、Gemini 的個人方案在設定開著時可能用對話改進模型，商用方案預設不拿來訓練。",
+            "關掉訓練還有例外：按讚、倒讚等回饋會讓整段對話被保留或用於訓練。",
+            "合約先看保密、著作財產權歸屬與保證條款；完全由 AI 產出、沒有人類創意投入的內容，原則上不受著作權保護。",
+            "受客戶委託處理個資時，個資法把接案者視同委託的客戶，施行細則也規定只能在客戶指示的範圍內處理。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "含客戶未公開資訊或個人資料的內容，沒有客戶同意就不要放進個人帳號的 AI；真的要用，先去識別、改用商用方案或關閉訓練設定，並把做法寫進合約。接案用 AI 寫文案、翻譯、整理資料很普遍，風險多半不在工具，而在放進去的是什麼、用哪一種帳號、合約怎麼寫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下依序整理三家 AI 的資料使用規則、簽約前要看的條款、要不要向客戶說明用了 AI，以及個人資料保護法（個資法）的基本義務。法律部分只整理條文與主管機關的說明，個案以契約內容與專業意見為準。"
+        },
+        {
+          "type": "heading",
+          "text": "客戶資料能不能放進 AI：先分個人方案與商用方案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "三家的分界線一致：個人方案可能拿對話改進模型，商用方案預設不會。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方案",
+            "會不會拿來訓練",
+            "怎麼關或避開",
+            "保留期重點"
+          ],
+          "rows": [
+            [
+              "ChatGPT 個人方案（Free、Go、Plus、Pro）",
+              "「為所有人改善模型」開著時可能用於訓練",
+              "設定 → 資料控管關掉；臨時交談保持臨時狀態時不用於訓練",
+              "臨時交談最多保留 30 天；存成一般對話後改依帳號設定"
+            ],
+            [
+              "ChatGPT Business、Enterprise、Edu、API（應用程式介面）",
+              "預設不用於訓練",
+              "API 要主動選擇分享才會用",
+              "API 的濫用監控紀錄預設最多保留 30 天"
+            ],
+            [
+              "Claude 個人方案（Free、Pro、Max）",
+              "你選擇允許時才會用；被安全系統標記的對話例外",
+              "設定 → 隱私關掉「幫助改進我們的 AI 模型」；無痕聊天不用於訓練",
+              "允許時去識別化資料最長保留 5 年；刪除的對話 30 天內從後端清除"
+            ],
+            [
+              "Claude 商用（Claude for Work、API 等）",
+              "預設不用於訓練",
+              "主動送出回饋或選擇允許時才可能用",
+              "API 的輸入與輸出原則上 30 天內刪除，另有例外"
+            ],
+            [
+              "Gemini 個人帳號",
+              "「保留活動記錄」開著時用於改進服務與訓練，部分對話經人工審查",
+              "關掉保留活動記錄，或用臨時對話",
+              "關掉後與臨時對話仍保留 72 小時；人工審查過的最長保留 3 年"
+            ],
+            [
+              "Gemini（Workspace 公司或學校帳號）",
+              "未經許可不經人工審查，也不用於網域外的模型訓練",
+              "依組織與 Google 的合約",
+              "依組織設定"
+            ]
+          ],
+          "caption": "ChatGPT、Claude、Gemini 個人與商用方案的資料使用規則；查證於 2026 年 10 月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gemini 個人帳號要特別留意人工審查：Google 提醒不要輸入不想讓審查人員看到的機密資訊，而審查過的對話已與帳號脫鉤，刪除活動記錄也不會一起刪掉。長期案件可以請客戶提供商用帳號，資料處理就回到客戶與服務商的合約。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "公司裡用 AI 的規範：資料外流與合規",
+              "kind": "life",
+              "slug": "ai-at-work-policy-checklist"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "放進去之前：三個判斷照順序來",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "合約或客戶有沒有限制：保密條款、資安要求或客戶明說不能用 AI 時，照約定走；需要用，先取得書面同意。",
+            "有沒有個人資料或營業秘密：能直接或間接識別個人的資料是個資，未公開的報價、配方、程式碼可能是客戶的營業秘密。能拿掉就拿掉，姓名換代號、金額改級距。",
+            "放進哪一種帳號：商用方案優先；只能用個人帳號時，關掉訓練設定或改用臨時、無痕對話，也不按回饋鍵。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-freelance-client-confidentiality/diagram-1.svg",
+          "alt": "決策流程圖：客戶檔案依序經過合約限制、個資與營業秘密、帳號類型三道判斷，最後走到人工審核與交件說明",
+          "width": 1600,
+          "height": 900,
+          "caption": "由上往下走：前兩關答案是「有」就先處理右邊那一格，再回到主線；第三關選定帳號後才交件。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "合約裡要找的條款：保密、著作權歸屬與保證",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "智慧財產局提供的「出資聘人完成著作契約」範本可以當對照清單，裡面和 AI 最相關的有三種條款。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "保密：範本約定客戶首次公開發表前，接案者不得公開著作內容，違反時客戶可請求最高相當於報酬 2 倍的懲罰性違約金。簽了保密協議（NDA）的，把資料交給 AI 服務前，先看條款有沒有限制交給第三方。營業秘密法第 2 條把「所有人已採取合理之保密措施」列為營業秘密的要件之一。",
+            "著作財產權歸屬：著作權法第 12 條規定，出資聘人完成的著作以受聘人為著作人（契約可另約定以出資人為著作人），著作財產權依契約約定歸屬，沒有約定就歸受聘人，出資人可以利用。第 36 條與第 37 條規定，讓與或授權範圍約定不明的部分，推定為未讓與、未授權。",
+            "保證：範本要接案者保證著作確為獨立創作、沒有抄襲或侵害他人權利，違反時自負法律責任並賠償客戶損害。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 讓後兩種條款變複雜。智慧財產局的函釋把 AI 創作分成兩種：人類有實際創意投入、只把 AI 當輔助工具的，成果仍可受著作權保護；完全由 AI 演算完成的，原則上無法享有著作權。交件內容如果大部分由 AI 獨立產出，那一部分可能沒有著作財產權可以移轉，「確為獨立創作」的保證也容易有爭議，簽約前就要講清楚哪些環節用了 AI。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 與著作權：台灣法規與判決整理",
+              "kind": "life",
+              "slug": "ai-and-copyright-law-taiwan"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "要不要向客戶說明用了 AI",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "著作權法沒有要求標示用了 AI。智慧財產局一則函釋說明，生成式 AI 產製、沒有受著作權法保護之人類創作內容的新聞圖片，是否標示製作者與來源、如何標示，著作權法沒有規範，可以自行決定。人工智慧基本法第 4 條的「透明與可解釋」原則要求 AI 產出做適當揭露或標記，但規範對象是推動 AI 研發與應用的政府。"
+        },
+        {
+          "type": "paragraph",
+          "text": "法條沒有要求、合約也沒寫的時候，說不說明就是信任問題。合約有 AI 條款就照做；沒有的話，可以在報價單或合約附件寫明三件事：哪些環節用 AI（例如翻譯初稿、資料摘要、配圖）、客戶資料會不會進入 AI 與用哪一種帳號、最後由誰人工審核。客戶知道買到的是什麼，事後就少一個爭執點。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 接案入門：報價單與合約至少要寫清楚的幾件事",
+              "kind": "life",
+              "slug": "ai-freelance-getting-started"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 生成圖片的版權：台灣法規與商用注意事項",
+              "kind": "life",
+              "slug": "ai-image-copyright-taiwan"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "受託處理個資：個資法的基本義務",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "個資法第 2 條定義的個人資料，包括姓名、出生年月日、聯絡方式、財務情況等能直接或間接識別個人的資料；客戶交來的會員名單、訪談逐字稿、客服紀錄多半都含個資。第 4 條規定，受委託蒐集、處理或利用個人資料的人，在這部法律的適用範圍內「視同委託機關」，也就是法律上和客戶同等看待。"
+        },
+        {
+          "type": "paragraph",
+          "text": "個資法施行細則第 8 條說得更細：受託者只能在委託機關指示的範圍內蒐集、處理或利用個資；委託方的監督事項，包括複委託的對象，以及委託結束時個資的返還與刪除。把客戶給的個資貼進 AI 服務算不算在指示範圍內，條文沒有點名，最直接的做法是事前取得客戶書面同意，結案後依約定刪除對話與檔案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外兩條基本原則：第 5 條要求不得逾越特定目的之必要範圍；現行第 27 條要求保有個人資料檔案的非公務機關採行適當之安全措施，防止個資被竊取、竄改、毀損、滅失或洩漏，民國 114 年 11 月 11 日修正後改由新增的第 20-1 條規範，施行日期由行政院另定。直接向當事人蒐集時（例如替客戶做問卷），第 8 條另要求告知蒐集目的與利用方式等事項。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "關掉訓練之後，回饋鍵仍是例外",
+          "text": "ChatGPT 關掉訓練後，按讚或倒讚仍可能讓整段對話被用來訓練模型；Claude 不論個人或商用方案，回饋都會讓整段對話保存最長 5 年；Gemini 個人帳號送出的回饋經審查後，連同相關對話最長保留 3 年。處理客戶資料時不要按回饋鍵。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 說明中心：How your data is used to improve model performance（個人服務的 Improve the model for everyone 設定、回饋可能用於訓練、Business／Enterprise／Edu／API 預設不訓練）",
+          "url": "https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "OpenAI 說明中心：Temporary chat in ChatGPT（臨時交談保持臨時狀態時不用於訓練、副本最多保留 30 天、存成一般對話後依帳號設定）",
+          "url": "https://help.openai.com/en/articles/8914046-temporary-chat-faq",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "OpenAI 說明中心：Data controls in ChatGPT（設定 → 資料控管的路徑、Free／Go／Plus／Pro 個人方案、受管理工作區預設不訓練）",
+          "url": "https://help.openai.com/en/articles/7730893-data-controls-in-chatgpt",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "OpenAI 開發者文件：Data controls in the OpenAI platform（API 資料預設不用於訓練、濫用監控紀錄最多 30 天）",
+          "url": "https://developers.openai.com/api/docs/guides/your-data",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Anthropic 隱私中心：Is my data used for model training?（個人方案：選擇允許才用於改進模型；無痕聊天不用於訓練）",
+          "url": "https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Anthropic 隱私中心：How do I change my model improvement privacy settings?（設定 → 隱私 →「幫助改進我們的 AI 模型」開關）",
+          "url": "https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Anthropic 隱私中心：How long do you store my data?（個人方案：允許訓練時最長 5 年、刪除後 30 天內清除、回饋 5 年）",
+          "url": "https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Anthropic 隱私中心：Is my data used for model training?（商用產品預設不訓練、回饋的整段對話保存最長 5 年）",
+          "url": "https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Anthropic 隱私中心：How long do you store my organization's data?（API 輸入與輸出 30 天內刪除及例外）",
+          "url": "https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google Gemini 說明：Gemini Apps Privacy Hub（保留活動記錄、人工審查、關閉後與臨時對話保留 72 小時、審查資料 3 年）",
+          "url": "https://support.google.com/gemini/answer/13594961",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google Workspace 說明：Generative AI in Google Workspace Privacy Hub（未經許可不經人工審查、不用於網域外的模型訓練）",
+          "url": "https://knowledge.workspace.google.com/admin/generative-ai/generative-ai-in-google-workspace-privacy-hub",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：個人資料保護法（第 2、4、5、8 條；民國 114 年 11 月 11 日修正刪除第 27 條、增訂第 20-1 條，施行日期由行政院定之）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0050021",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：個人資料保護法歷史法規（民國 112 年 5 月 31 日版本第 27 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawOldVer.aspx?pcode=I0050021",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：個人資料保護法施行細則（第 8 條委託監督與受託者的範圍）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0050022",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：著作權法（第 12、36、37 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=J0070017",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：營業秘密法（第 2 條）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=J0080028",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "全國法規資料庫：人工智慧基本法（第 4 條透明與可解釋原則）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0160093",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "智慧財產局 解釋資料檢索：電子郵件1111031（以 AI 為工具的創作與 AI 獨立創作）",
+          "url": "https://www.tipo.gov.tw/tw/copyright/692-16813.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "智慧財產局 解釋資料檢索：電子郵件1150828c（生成式 AI 產製、無人類創作內容的新聞圖片是否標示，著作權法無規範）",
+          "url": "https://www.tipo.gov.tw/tw/copyright/692-94326.html",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "智慧財產局：文創產業著作權相關契約範本及使用說明（出資聘人完成著作契約的保密、著作權約定與保證條款）",
+          "url": "https://www.tipo.gov.tw/tw/copyright/719-19274.html",
+          "checked_on": "2026-10-05"
+        }
+      ]
+    }
+  }
+}

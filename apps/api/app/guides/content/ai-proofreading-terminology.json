@@ -1,0 +1,408 @@
+{
+  "slug": "ai-proofreading-terminology",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "productivity",
+    "ai-work"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "用 AI 校稿：錯字、用語一致與繁簡轉換的陷阱",
+      "description": "AI 校稿適合抓錯別字、標點與前後不一致，卻判斷不了數字、人名與事實，也不一定分得清台灣與中國大陸用語。以教育部辭典的兩岸詞語對照為準，說明簡體轉繁體時要從多個字裡挑對的陷阱、怎麼先建術語表與風格表再交給 AI，以及最後一定要由人核對的地方。",
+      "hero": {
+        "src": "/guides/ai-proofreading-terminology/hero.jpg",
+        "alt": "米色底上，左邊一張白色文件，一段文字被紅線劃掉、上方是綠色替換標記，另一段有紅色波浪底線，一行末端的橘色標記拉出藍色虛線，連到右邊的藍框小卡片，卡片分出兩個箭頭，指向打勾的綠框卡片與打叉的紅框卡片，下方寫著「字對了，詞也要對」。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "AI 校稿適合抓錯別字、標點與用語不一致；數字、人名與機關名稱的對錯，它從文字本身判斷不了，要回到原始資料核對。",
+            "台灣用語以教育部辭典的兩岸詞語對照為準：台灣寫軟體、列印，大陸寫軟件、打印；質量、土豆這類兩岸意思不同的詞要看上下文。",
+            "簡體轉繁體時，发可能是發或髮、干可能是乾或幹；轉換工具靠詞庫挑字，詞庫沒收的詞最容易挑錯。",
+            "先寫好術語表與風格表，請 AI 只列修改建議，逐條決定收不收，最後由人讀完全文。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 能幫你校稿，但只管得住文字表面的錯：錯別字、標點與前後不一致抓得到，事實、數字與專有名詞的對錯抓不到。寫繁體中文還多兩個陷阱：台灣用語被換成中國大陸的說法，以及簡體轉繁體時挑錯字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下依序說明 AI 校稿的能力邊界、台灣用語怎麼確認、繁簡轉換為什麼出錯、術語表與風格表怎麼建，最後是人工終校清單。"
+        },
+        {
+          "type": "heading",
+          "text": "AI 校稿抓得到什麼、抓不到什麼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把錯誤分成兩類比較好判斷。第一類從文字本身就看得出來，例如同音別字、多打一個字、全形與半形混用、標點用錯，或「的、地、得」用錯。第二類要對照文字以外的資料才知道對不對，例如數字、日期、人名、機關名稱、引文是否與原文一致，以及團隊的固定稱呼。第一類工具和 AI 都幫得上忙；第二類 AI 只能猜，而且猜錯時文字一樣通順。"
+        },
+        {
+          "type": "paragraph",
+          "text": "規則型工具能抓哪些錯，可以拿 Word（微軟的文書處理軟體）內建的 Microsoft Editor（微軟的拼字與文法檢查）當參考：截至 2026 年 10 月，它對繁體中文提供文法檢查，會標出「再／在」「以經／已經」這類易混淆或形音相近的錯字、量詞、的地得、重複字、全形數字、中英文標點混用，以及「后來」這種混進繁體稿的簡體字，要用 Microsoft 365 帳號登入才會偵測。Google 文件的拼字與文法建議則只支援英文、西班牙文、法文、德文、葡萄牙文與義大利文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "聊天式 AI 可以拿來檢查規則管不到的地方，例如找出「使用者」和「用戶」混用、指出前後不通的句子，但也多一層風險：它可能順手改寫，把原意改掉，或把對的改成錯的。Word 裡的 Copilot（微軟的 AI 助理）寫得流暢，內容卻可能出錯，它無法理解語意或判斷正確與否，品質預期以英文最高。所以只讓它列建議，由你決定收不收。"
+        },
+        {
+          "type": "heading",
+          "text": "台灣用語和中國大陸用語：拿教育部辭典當標準",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 不一定知道你要台灣用語，提示詞要寫明；拿不準的詞，查教育部《國語辭典簡編本》的附錄〈兩岸常用詞語對照表〉。下表挑出辦公文件常遇到的幾組，最右欄是校稿時的例外。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "台灣用語",
+            "中國大陸用語",
+            "校稿時注意"
+          ],
+          "rows": [
+            [
+              "軟體",
+              "軟件",
+              "只換字形的轉換會留下「軟件」"
+            ],
+            [
+              "資料",
+              "數據",
+              "指調查或實驗得到的數值時，台灣也用「數據」"
+            ],
+            [
+              "影片",
+              "視頻",
+              "依上下文也可能是「視訊」"
+            ],
+            [
+              "程式",
+              "程序",
+              "「程序」在台灣指辦事的規則次序，那種用法不改"
+            ],
+            [
+              "列印",
+              "打印",
+              "直接改"
+            ],
+            [
+              "品質",
+              "品質／質量",
+              "大陸兩種都用；「質量」另有別的意思，見下段"
+            ]
+          ],
+          "caption": "依教育部《國語辭典簡編本》附錄〈兩岸常用詞語對照表〉、《重編國語辭典修訂本》與 OpenCC 台灣詞庫整理；查證於 2026 年 10 月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最容易漏掉的是寫法相同、意思不同的詞。《重編國語辭典修訂本》裡，「質量」可指物體內所含物質的量，當「品質」講是大陸地區沿用的意思；「土豆」是落花生的別名，大陸地區指馬鈴薯。這類詞 OpenCC 的台灣詞庫不會替換，只能靠人讀上下文判斷。"
+        },
+        {
+          "type": "heading",
+          "text": "繁簡轉換：簡體字轉回繁體，要從多個字裡挑",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "簡化時有些字把好幾個繁體字併成一個，轉回繁體就得挑對。Unicode（國際文字編碼標準）的漢字資料庫 Unihan 與 OpenCC（開放中文轉換，開源的繁簡轉換工具）的字表，都列出多個繁體候選，常見的有："
+        },
+        {
+          "type": "list",
+          "items": [
+            "发：發（發展）、髮（頭髮、理髮）",
+            "干：乾（乾燥、餅乾）、幹（幹部）、干（干涉）",
+            "后：後（以後、後來）、后（皇后）",
+            "台：臺、檯（檯燈）、颱（颱風）、台",
+            "复：復（恢復）、複（複製）、覆（答覆）",
+            "面：面、麵（麵條）",
+            "里：裡（這裡）、裏、里（公里）"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenCC 不是逐字替換，而是先查詞庫：它靠詞庫把「头发」轉成「頭髮」、「发展」轉成「發展」，不使用大型語言模型，結果穩定可預期。詞庫沒收的詞，例如新產品名或人名，只能用單字的預設對應，最容易挑錯。OpenCC 原生的命令列工具才有標出歧義的選項（--ambiguities），它會把對應到多個候選的片段標出來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "字對了，詞不一定對。只換字形會把「软件」變成「軟件」，要變成「軟體」得另外做詞彙轉換。OpenCC 把兩件事分開：預設的 s2t 模式轉成它自己的標準繁體，不等於台灣用字；s2tw 模式轉成台灣字形；s2twp 模式再加上台灣慣用詞，例如「数据库」先轉成「數據庫」，再換成「資料庫」。詞彙層也有一對多，它的台灣詞庫裡「數據」對到資料或數據、「視頻」對到影片或視訊，選哪一個仍要看上下文。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-proofreading-terminology/diagram-1.svg",
+          "alt": "四欄流程圖：第一關字形轉換（发對到發與髮）、第二關詞彙轉換（软件變軟件再變軟體）、第三關 AI 校稿（再改在、以經改已經、后來改後來）、第四關人工終校（五項核對清單）；前三欄下方標出容易出錯的地方，最後一欄下方是做法。",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看：前兩關是轉換工具做的事，第三關交給 AI 列建議，最後一關由人核對；前三欄底部是那一關最容易出錯的地方，最後一欄底部是做法。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "翻譯工具產出的稿子也適用同一套檢查：沉浸式翻譯怎麼設定，網頁、文件與內容校對",
+              "kind": "life",
+              "slug": "immersive-translate-guide"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "先建術語表與風格表，再請 AI 校",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "術語表管「這個詞怎麼寫」，風格表管「整份文件的寫法規則」。標準寫下來，AI 才有東西可以對照。術語表每一列至少記下："
+        },
+        {
+          "type": "list",
+          "items": [
+            "正確寫法與不要用的寫法，例如軟體／軟件。",
+            "適用範圍，例如指電腦程式寫「程式」，指辦事步驟仍寫「程序」。",
+            "依據：辭典、主管機關或對方官方網站的寫法。",
+            "誰決定、哪一天決定，改版時才知道要找誰。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "風格表可以從下面幾項開始："
+        },
+        {
+          "type": "table",
+          "header": [
+            "規則",
+            "寫法",
+            "可以查的依據"
+          ],
+          "rows": [
+            [
+              "地區用語",
+              "用台灣用語，拿不準的詞查兩岸對照",
+              "教育部《國語辭典簡編本》附錄"
+            ],
+            [
+              "引號",
+              "用「」，引號裡面再用『』",
+              "教育部《重訂標點符號手冊》修訂版"
+            ],
+            [
+              "異體字",
+              "兩種寫法都收的詞選一種，例如雇主或僱主",
+              "教育部《重編國語辭典修訂本》"
+            ],
+            [
+              "中英文混排",
+              "英文字母與阿拉伯數字用半形",
+              "Microsoft Editor 的繁體中文規則"
+            ],
+            [
+              "外文術語",
+              "第一次出現附原文，學術名詞先查既有譯名",
+              "國家教育研究院樂詞網"
+            ]
+          ],
+          "caption": "風格表範例：左欄是規則，右欄是可以查的依據；查證於 2026 年 10 月。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "公文的數字、紀年、標點與稱謂另有文書處理手冊的規定，整理在用 AI 寫公文與簽呈",
+              "kind": "life",
+              "slug": "ai-official-documents-taiwan"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "兩份表準備好後，可以用下面的提示詞範本校稿：只列建議、不回傳全文，拿不準的詞標成待確認，不讓 AI 自己替換。"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "label": "校稿提示詞範本",
+          "code": "你是繁體中文（台灣）的校稿編輯。請依照下方的術語表與風格表校對原稿。\n規則：\n1. 只列出問題，不要改寫整段，也不要回傳全文。\n2. 每一條用「原文｜建議｜理由｜依據哪一條規則」的格式。\n3. 用語以台灣用法為準；兩岸用法不同或你不確定的詞，標成「待確認」，不要自行替換。\n4. 數字、日期、人名、機關名稱與引文不要修改，只標出看起來可疑的地方。\n5. 不要改變句意與語氣。\n\n［術語表］\n［風格表］\n［原稿］"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把這段提示詞存起來重複用：建立自己的提示詞庫",
+              "kind": "life",
+              "slug": "ai-prompt-library-personal"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "人工終校：AI 改完之後一定要看的地方",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AI 給的是建議清單，不是定稿。套用時開著 Word 的追蹤修訂（「校閱」索引標籤 → 追蹤 → 追蹤修訂），或 Google 文件的建議模式（右上角的編輯圖示 → 建議），每一處修改都會標出來，再逐條接受或拒絕。AI 若直接回傳整份改好的稿，Windows 版 Word 的「校閱」索引標籤有比較功能，差異預設顯示在第三份新文件裡，兩份原稿都不變；中文常只改一個字，顯示方式選字元層級比較容易看出來。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "數字、日期與金額，逐一對回原始資料。",
+            "人名、機關與產品名稱，照對方官方寫法核對，包括英文大小寫。",
+            "引文與法規條文，和原文逐字對照。",
+            "一對多的字用搜尋找出來再看一次：發、髮、後、后、乾、幹、復、複、覆。",
+            "術語表裡不要用的寫法，全文搜尋一次。",
+            "兩岸意思不同的詞，例如質量、土豆，讀上下文確認。",
+            "最後從頭到尾讀一遍，確認句意沒被改掉。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "轉換或校稿之後，不要直接發布",
+          "text": "轉換工具與 AI 都可能在一對多的字上挑錯，而且錯得很通順，例如把頭髮寫成頭發、把皇后寫成皇後。順著讀很難發現，發布前用搜尋把容易混的字逐一找出來核對。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "校稿之外的工作該用哪個 AI：依任務選 AI 工具",
+              "kind": "life",
+              "slug": "ai-tools-choose-by-task"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "教育部《國語辭典簡編本》附錄：兩岸常用詞語對照表（臺灣語詞與大陸語詞對照）",
+          "url": "https://dict.concised.moe.edu.tw/appendix.jsp?ID=54",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "教育部《重編國語辭典修訂本》：質量（物體內所含物質的量；指品質為大陸地區用法）",
+          "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=113680",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "教育部《重編國語辭典修訂本》：土豆（落花生的別名；大陸地區指馬鈴薯）",
+          "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=54254",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "教育部《重編國語辭典修訂本》：程序（辦事的一定規則次序）",
+          "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=124548",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "教育部《重編國語辭典修訂本》：數據（經由調查或實驗得到的數值）",
+          "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=133742",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "教育部《重編國語辭典修訂本》：雇主（也作僱主）",
+          "url": "https://dict.revised.moe.edu.tw/dictView.jsp?ID=71572",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "教育部《重訂標點符號手冊》修訂版：引號（「」『』，先單引號再雙引號）",
+          "url": "https://language.moe.gov.tw/001/upload/files/site_content/m0001/hau/h6.htm",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Unicode Unihan Database：U+53D1 发 的繁體對應（kTraditionalVariant：發、髮）",
+          "url": "https://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=53D1",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "OpenCC 開放中文轉換：README（詞庫轉換不使用大型語言模型、s2t／s2tw／s2twp 模式、--ambiguities 選項）",
+          "url": "https://github.com/BYVoid/OpenCC",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "OpenCC：STCharacters.txt（簡體字對應的繁體候選字）",
+          "url": "https://github.com/BYVoid/OpenCC/blob/master/data/dictionary/STCharacters.txt",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "OpenCC：STPhrases.txt（头发→頭髮、发展→發展等詞組對應）",
+          "url": "https://github.com/BYVoid/OpenCC/blob/master/data/dictionary/STPhrases.txt",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "OpenCC：TWPhrases.txt（台灣慣用詞：軟件→軟體、數據→資料或數據、視頻→影片或視訊）",
+          "url": "https://github.com/BYVoid/OpenCC/blob/master/data/dictionary/TWPhrases.txt",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft Support：Editor's spelling, grammar, and refinement availability by language（繁體中文的文法檢查）",
+          "url": "https://support.microsoft.com/en-us/word/editor-s-spelling-grammar-and-refinement-availability-by-language",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft：Editor guidance details（繁體中文語法及完善指南，列出錯字、量詞、的地得、繁簡混用等檢查）",
+          "url": "https://download.microsoft.com/download/1/0/3/103d9025-7673-4746-8332-739f34b08a52/Editor%20guidance%20details_Chinese_Traditional.docx",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft Support：Frequently asked questions about Copilot in Word（建議可能出錯、無法評估正確性、品質以英文最高）",
+          "url": "https://support.microsoft.com/en-us/word/frequently-asked-questions-about-copilot-in-word",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google 文件編輯器說明：檢查 Google 文件中的拼字和文法錯誤（支援的語言）",
+          "url": "https://support.google.com/docs/answer/57859?hl=zh-Hant",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Google 文件編輯器說明：在 Google 文件中提出修訂建議",
+          "url": "https://support.google.com/docs/answer/6033474?hl=zh-Hant",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft Support：在 Word 中使用追蹤修訂",
+          "url": "https://support.microsoft.com/zh-tw/word/training/track-changes-in-word",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "Microsoft Support：使用法律黑線選項比較文件差異（Windows 版 Word）",
+          "url": "https://support.microsoft.com/zh-tw/word/compare-document-differences-using-the-legal-blackline-option",
+          "checked_on": "2026-10-05"
+        },
+        {
+          "title": "國家教育研究院：樂詞網（學術名詞、雙語詞彙與辭書查詢）",
+          "url": "https://terms.naer.edu.tw/",
+          "checked_on": "2026-10-05"
+        }
+      ]
+    }
+  }
+}

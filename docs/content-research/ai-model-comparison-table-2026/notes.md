@@ -243,3 +243,153 @@ Moonshot（Model-as-a-Service 營收門檻）。
 不是同一類的通用語言模型。「Microsoft 現行的開放權重語言模型是哪一個」當天無法乾淨地判定，
 依「兩票都過才進表」的標準，這家就不列。下次重查時再看。
 
+## 2026-10-06 重查（各家換代：GPT-6 家族、Claude 5.5、grok-4.7）
+
+由票 `2026-10-05-multi-vendor-ai-price-pages-late` 提前做了季度重查
+（`2026-09-16-model-table-quarterly-recheck`）。上面 9 月 16 日的段落保留不動，這一段是當次的讀數。
+全部用 `curl -sSL` 加編輯部 User-Agent 在 2026-10-06 重開；`developers.openai.com` 與
+`platform.claude.com` 的頁面在網址後加 `.md` 取得完整表格。`qwen.ai` 是前端渲染的頁面，
+內容改從它自己呼叫的 `https://qwen.ai/api/v2/article/?language=en-US&path=qwen3.8&type=qwen_ai` 讀。
+
+### 分級規則（這次寫下來，下次照用）
+
+- 級距跟著各家自己的命名走：OpenAI 模型頁寫 GPT-6 Astra 是旗艦、GPT-6.1 Sol「平衡能力與成本」、
+  GPT-6 Luna「成本敏感、大量」，所以三者分屬旗艦、中階、輕量。Anthropic 模型總覽頁現行四個是
+  Fable 5.1、Opus 5.5、Sonnet 5.5、Haiku 4.5，Fable 與 Opus 都放旗艦（同 9/16 的做法）。
+- 被標成 legacy 或上一代的型號不再進表：Claude Opus 5、Sonnet 5（Anthropic 標 legacy），
+  gpt-5.6-sol／terra／luna（OpenAI 定價頁仍列，gpt-5.6-sol 的促銷價至少到 2026-11-21，但模型頁的
+  推薦已換成 GPT-6 家族）。仍在販售、而且是該家這一級唯一選項的舊型號照留（gpt-5.4-mini、gpt-5-nano）。
+- 分數欄只留在旗艦表：各家只替旗艦或少數型號公布分數，中階與輕量多數沒有，9/16 版在這兩張表寫
+  「官網未公布」的格子，有幾格其實在官方模型卡上找得到，與其逐格補，不如拿掉這一欄。
+
+### 價格與規格（每百萬 token 美元；上下文／最大輸出）
+
+- OpenAI｜https://developers.openai.com/api/docs/pricing.md 與各模型頁 `.../models/<id>.md`｜2026-10-06
+  - gpt-6-astra 10／50，快取 1.00；1,050,000／128,000。
+  - gpt-6.1-sol 2／10，快取 0.10（模型頁寫明是輸入價的 5%）；1,050,000／128,000。
+  - gpt-6-luna 0.10／0.50，快取 0.01；1,050,000／128,000。
+  - gpt-6-sol 2／10，快取 0.20（未進表，6.1 Sol 同價取代）。
+  - gpt-5.4-mini 0.75／4.50、gpt-5-nano 0.05／0.40；兩者模型頁都寫 400,000／128,000（9/16 寫「官網未公布」，現已公布）。
+  - 定價頁：「Short context: ≤272K input tokens. Long context: >272K input tokens.」模型頁：超過 272K 輸入 token
+    的提示詞，整筆請求輸入與快取 2 倍、輸出 1.5 倍。
+- Anthropic｜https://platform.claude.com/docs/en/about-claude/pricing.md、models/overview.md｜2026-10-06
+  - Fable 5.1 10／50（快取命中 0.25 = 0.025 倍）；Opus 5.5 4／20（快取命中 0.20 = 0.05 倍）；
+    Sonnet 5.5 2／10；Haiku 4.5 1／5。上下文 1M／128K（Haiku 200K／64K）。Opus 5 5／25、Sonnet 5 2／10 為 legacy。
+- Google｜https://ai.google.dev/gemini-api/docs/pricing（頁尾 Last updated 2026-10-01）｜2026-10-06
+  - 與 9/16 相同：gemini-3.1-pro-preview 2／12（>20 萬 4／18）；gemini-3.8-flash 0.75／3.75 到 2026-12-31，
+    之後 1.50／7.50；gemini-3.5-flash 1.50／9.00；3.5-flash-lite 0.30／2.50；3.1-flash-lite 0.25／1.50；
+    2.5-flash-lite 0.10／0.40。https://ai.google.dev/gemini-api/docs/models 總表沒有 token 上限欄，
+    但它連到的各模型頁有，見文末「獨立查核第一輪的更正」（原本這裡寫「仍沒有 token 上限欄」，查錯了頁）。
+  - 9/30 公告的 Gemini 4 Argon 不在定價頁（只開放給受信任的資安防禦者），不進表。
+- xAI｜https://docs.x.ai/developers/pricing.md、models、release-notes｜2026-10-06
+  - grok-4.7（9/21 上 API）50 萬；<20 萬 2／6、快取 0.50；≥20 萬 4／12、快取 1.00。
+    釋出說明寫「no text output limit」，所以最大輸出格寫「無輸出上限」（9/16 版 grok-4.6 寫「官網未公布」，
+    當時的釋出說明其實也有同一句）。
+  - grok-4.3 1M；1.25／2.50（≥20 萬 2.50／5.00）。批次折扣只給 grok-4.3 與 grok-4.20 系列（八折）。
+- DeepSeek｜https://api-docs.deepseek.com/quick_start/pricing/｜2026-10-06
+  - 與 9/16 相同。尖峰時段的定義多了「中國國定假日除外」。deepseek-v4-pro 仍在販售
+    （更新紀錄寫 9/14 之後繼續提供，計價不變）。
+- Mistral｜https://mistral.ai/pricing/api/ 現在轉址到 https://docs.mistral.ai/inference/pricing｜2026-10-06
+  - 價格不變：Large 3 0.5／1.5、Medium 3.5 1.5／7.5、Small 4 0.15／0.6、Ministral 3 3B 0.1／0.1。
+    快取輸入另列一欄，都是輸入價的 10%。用內建瀏覽器切換頁上的開關：Batch 顯示「-50%」、
+    Regional inference 顯示「+10%」。新頁面沒有美元與歐元的切換。
+- 阿里雲百鍊｜https://www.alibabacloud.com/help/en/model-studio/model-pricing（Last Updated Oct 03, 2026）｜2026-10-06
+  - 新加坡：qwen3.8-max 2／6；qwen3.7-plus 0.4／1.6（≤256K，頁面另標 Limited-time 20% off）；qwen3.8-flash 0.15／0.47。
+  - qwen3.8-max-prime 只在北京區（3.301／9.902），頁面寫是 Fast mode（Prime），不是新模型，不進表。
+- MiniMax｜https://platform.minimax.io/docs/guides/pricing-paygo｜2026-10-06
+  - 價格不變。**更正**：9/16 版旗艦表把 MiniMax-M3 的上下文寫成「51.2 萬」，那是計價分段門檻；
+    官方文字生成頁（https://platform.minimax.io/docs/guides/text-generation）與 HF 模型卡都寫 1,000,000。
+  - 文字生成頁另列 MiniMax-M3.1-Flash-Preview（只透過訂閱方案與 MiniMax Code），不在隨用隨付價目表，不進表。
+- Moonshot｜https://platform.kimi.ai/docs/pricing/chat.md｜2026-10-06
+  - kimi-k3 3.00／15.00，快取 0.30，快取寫入 3.00（5 分鐘）／6.00（1 小時），1,048,576；kimi-k2.7-code 0.95／4.00，262,144。
+- Z.AI｜https://docs.z.ai/guides/overview/pricing｜2026-10-06
+  - GLM-5.3 1.4／4.4（快取 0.26）；GLM-5.3-Flash 0.15／0.50（快取 0.03）；GLM-4.7-Flash、GLM-4.5-Flash 免費。
+
+### 分數與揭露（這一欄是本篇的論點，這次改動最大）
+
+9/16 的結論是「六家連量的東西都不一樣」。10/06 重開之後這個說法要改：GPQA Diamond 有四家列、
+Terminal-Bench 4.0 也有四家列，但沒有一項六家都有，而且各家註明的推理強度與測試框架不同。
+
+- OpenAI｜https://openai.com/index/gpt-6-astra/｜GPQA Diamond 96.0%、Terminal-Bench 4.0 57.9%，附估計成本。
+- Google｜https://deepmind.google/models/model-cards/gemini-3-1-pro/｜GPQA Diamond 94.3%、SWE-Bench Verified 80.6%（單次嘗試）；
+  列的是 Terminal-Bench 2.0，不是 4.0。
+- Anthropic｜https://www.anthropic.com/claude-opus-5-5（9/22）｜**現在有數字的跑分表**：Terminal-Bench 4.0
+  Opus 5.5 66.4%、Fable 5.1 55.8%、GPT-6 Astra 57.9%；註明 Opus 5.5 用 xhigh、Astra 用 high，標準誤差 ±2.6。
+  沒有 GPQA Diamond。9/16 版寫的「只給相對說法」是 Opus 5 那一頁的狀態。
+- xAI｜https://x.ai/news/grok-4-7（9/21）｜Terminal-Bench 4.0 37.6%（xHigh）、CursorBench 4.0 46.3%、DeepSWE v1.1 71.0%（high）等；沒有 GPQA Diamond。
+- Qwen｜Qwen3.8-Max blog（2026-08-03）｜GPQA Diamond 92.6、Terminal Bench 2.1 86.6、SWE-bench Pro 67.7。
+  **更正**：9/16 版寫「自家 agent scaffold、20 萬 token 上下文」；blog 現在的註腳寫 SWE-bench Pro 用
+  Claude Code 測試框架、temp=1.0、top_p=0.95、256K 上下文。
+- DeepSeek｜https://api-docs.deepseek.com/updates（更新紀錄 2026-09-10）｜DeepSeek-V4.1-Flash GPQA Diamond 90.9、
+  Terminal-Bench 4.0 31.2；V4-Pro（8/13）Terminal Bench 2.1 87.9。**更正**：9/16 版寫「API 文件沒有跑分表」，
+  但 9/10 的更新紀錄當時就有，是查的頁面不對（只看了定價頁）。
+
+旗艦表分數欄其餘各列：kimi-k3 GPQA Diamond 93.5（https://huggingface.co/moonshotai/Kimi-K3 模型卡的表，max 推理強度）；
+GLM-5.3 Terminal Bench 2.1 88.2（https://huggingface.co/zai-org/GLM-5.3）；MiniMax-M3 SWE-bench Verified 80.5
+（HF 模型卡的 eval results，來源標「MiniMax-M3 model card」）。Mistral Large 3 的模型卡
+（https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512）只放比較圖；HF 頁面上那筆
+GPQA Diamond 67.17 是第三方（EvalEval）用 pull request 加的，不是 Mistral 自報，所以不用。
+
+### 開放權重表
+
+十二個權重庫用 `https://huggingface.co/api/models/<id>` 重讀授權欄位與參數量，全部與 9/16 相同
+（Mistral-Medium-3.5-128B 的 HF 欄位是 other，即 Modified MIT）。各家 HF 組織依建立日期排序，
+9/16 之後沒有新的通用語言模型權重（Qwen 9/20 的 Qwen-Image-2.1 是圖像模型），表不動。
+
+### sources 換了哪兩筆
+
+上限仍是 20 筆：Opus 5 發布頁換成 Opus 5.5 發布頁，grok-4.6 發布頁換成 grok-4.7 發布頁；Mistral 換成
+轉址後的 docs 網址。GLM-5.3、DeepSeek 更新紀錄與 MiniMax 文字生成頁沒有進 `sources`，網址記在上面。
+
+## 2026-10-06 獨立查核第一輪的更正
+
+PR #1333 的獨立查核（第一輪）指出的錯，套用前逐頁用 `curl -sSL` 加編輯部 User-Agent 重開過，
+全部 HTTP 200。`sources` 已滿 20 筆，下面這些模型頁沒有進 `sources`，網址記在這裡。
+
+- **Gemini 的上下文／最大輸出**：每個模型自己的頁面都有「Token limits」一欄，五個 Flash／Flash-Lite
+  都是 Input token limit 1,048,576、Output token limit 65,536，與 gemini-3.1-pro-preview 相同，表上寫「1M／64K」。
+  https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash 、/gemini-3.5-flash 、/gemini-3.5-flash-lite 、
+  /gemini-3.1-flash-lite 、/gemini-2.5-flash-lite（/gemini-3.1-pro-preview 同樣 1,048,576／65,536）｜2026-10-06
+- **Mistral 的上下文**：各模型頁的 Context 欄都是 256k，最大輸出沒寫，表上寫「26.2 萬／官網未公布」
+  （與開放權重表的 Medium 3.5 一致）。https://docs.mistral.ai/models/mistral-large-3-25-12 、
+  /models/mistral-medium-3-5-26-04 、/models/mistral-small-4-0-26-03 、/models/ministral-3-3b-25-12｜2026-10-06
+- **Z.AI**：https://docs.z.ai/guides/llm/glm-5.3 寫「a 1M-token context window and a maximum output length of 128K tokens」；
+  https://docs.z.ai/guides/vlm/glm-5.3-flash 寫 Context Length 1M、Maximum Output Tokens 128K。兩列都寫「1M／128K」｜2026-10-06
+- **MiniMax-M2.7**：https://platform.minimax.io/docs/guides/text-generation 的模型表寫 Context Window 204,800，
+  表上寫「20.5 萬／官網未公布」｜2026-10-06
+- **Mistral Large 4**：https://docs.mistral.ai/inference/pricing 在 10/06 把 Mistral Large 4 排在第一列，
+  輸入 0.68、快取 0.07、輸出 2.09；模型頁 https://docs.mistral.ai/models/mistral-large-4-0 寫 October 6, 2026
+  Public Preview、Context 1M，價格欄把 1.36／0.14／4.18 劃掉改標 0.68／0.07／2.09；
+  https://mistral.ai/news/mistral-large-4/ 寫「our largest and most capable model to date」、權重月底釋出。
+  `mistral-large-latest` 仍在 Large 3 的模型頁上。表上照列 Large 3，旗艦表下面那段加一句說明。
+- **DeepSeek 的揭露列**：GPQA Diamond 90.9 與 Terminal-Bench 4.0 31.2 屬於 9/10 的 DeepSeek-V4.1-Flash
+  （中階表的 deepseek-flash），8/13 的 V4-Pro 那一則只有 Terminal Bench 2.1 87.9。揭露表的 DeepSeek 列
+  標成「中階模型」，caption 寫明這一點；「六家裡各有四家列出」是以廠商計，仍成立。
+
+## 2026-10-06 獨立查核第二輪的更正
+
+第二輪（換人）指出三件事，套用前逐頁用 `curl -sSL` 加編輯部 User-Agent 重開過，全部 HTTP 200。
+
+- **Mistral Large 4 的 0.68／2.09 是上市兩週的五折價**：https://docs.mistral.ai/inference/pricing 那一列的徽章就是
+  「Sale price」，三欄都是「Original price $1.36／$0.14／$4.18」對「Sale price $0.68／$0.07／$2.09」；
+  https://docs.mistral.ai/resources/changelogs 的 October 6 寫「Mistral Large 4 (mistral-large-4) is now available in
+  Public Preview」「a 1M context window」「Launch pricing: 50% off for 2 weeks.」。定價頁與模型頁都沒有寫結束日
+  （徽章是 tooltip，頁面資料裡沒有期限字樣）。旗艦表下面那段改成「標的是上市兩週的五折價……（原價 1.36 美元與
+  4.18 美元）」，表與價位帶不動：兩組價都在旗艦區間內，表上照列 Large 3。
+- **`sources` 撐不起的格子**：第一輪補的 12 格上下文／最大輸出（Gemini 五個 Flash／Flash-Lite、Mistral 四個、
+  GLM-5.3 兩個、MiniMax-M2.7），加上第一版就有的 GLM-5.3 分數、deepseek-v4-pro 分數與揭露表的 DeepSeek 列，
+  來源都只在這份筆記。四家定價頁（Gemini、Mistral、Z.AI、MiniMax）今天重看，都沒有上下文或最大輸出；值本身全部
+  再對過一次，沒有錯。要逐頁列進 `sources` 需要十四個網址，上限 20 筆放不下，所以這樣處理：
+  - 旗艦表 caption 加一句「上下文與最大輸出在定價頁沒寫的，照各家的模型說明頁」與「分數為廠商在發布頁、官方模型卡
+    或 API 文件更新紀錄裡自報的數字」；中階與輕量表的 caption 是「同上」，輕量那段正文本來就寫「這一級的上下文視窗
+    官網多半不在定價頁寫，得自己翻模型文件確認」。這和開放權重表 caption「各家自己的權重發布頁」是同一種寫法。
+  - 換掉一筆：拿掉 Meta Muse Glimmer 30B 的權重頁（開放權重表十二列裡的一列，另外八列本來就只靠那張表的 caption），
+    換成 Mistral 更新紀錄。這一頁撐住旗艦表下面那段 Large 4 的三件事：公開預覽、100 萬 token 上下文、上市兩週五折。
+    DeepSeek 更新紀錄與 GLM-5.3 的 HF 模型卡沒有進 `sources`：揭露表 caption 本來就寫明 DeepSeek 一列「寫在 API
+    文件的更新紀錄」，新的旗艦 caption 也點名這三類頁面。Muse Glimmer 那列的網址與讀法仍在上面「進表的十二列」。
+  - 結果：`sources` 仍是 20 筆，權重頁剩三筆（Qwen、MiniMax、Moonshot）。
+- 重讀的值（2026-10-06）：Gemini 各模型頁 Input token limit 1,048,576、Output token limit 65,536；Mistral 四個模型頁
+  Context 256k；docs.z.ai GLM-5.3「a 1M-token context window and a maximum output length of 128K tokens」、GLM-5.3-Flash
+  Context Length 1M、Maximum Output Tokens 128K；MiniMax 文字生成頁 MiniMax-M2.7 204,800（MiniMax-M3 1,000,000）；
+  https://huggingface.co/zai-org/GLM-5.3 Terminal Bench 2.1 88.2；https://api-docs.deepseek.com/updates 8/13 V4-Pro
+  Terminal Bench 2.1 87.9、9/10 V4.1-Flash GPQA Diamond 90.9 與 Terminal-Bench 4.0 31.2。
