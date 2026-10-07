@@ -4,8 +4,10 @@
  *
  * `npm run test:tools` globs tools/** only, so docs/videos/imported-long-languages/runner.test.mjs
  * ran in no job, and two of its cases stayed red for two days after #1342. They run as
- * `npm run test:docs-videos`, in ci.yml's docs-videos job, which installs ffmpeg and is one of
- * the jobs the required `web` gate waits for.
+ * `npm run test:docs-videos`, in ci.yml's video-tests job, which installs ffmpeg and Chromium and
+ * is one of the jobs the required `web` gate waits for. The same job runs every tools test again:
+ * web-checks has neither tool, so the tools tests that need one skip there, and a skip here that
+ * still names ffmpeg or Chromium fails the job.
  *
  * A folder named demo holds a video's prop: its acceptance test fails on purpose, because the
  * video shows it failing (docs/videos/ai-bug-fix-pr-review/demo/README.md). The script's glob
@@ -47,14 +49,31 @@ test("every test under docs/videos runs, except a demo folder's, which never doe
   assert.deepEqual(props.filter((file) => runs.has(file)), [], "a demo folder's tests fail on purpose and must not run");
 });
 
-test("the docs-videos job installs ffmpeg, runs the script, and the web gate waits for it", () => {
+/** The positional arguments of a `node --test` command: its globs, quotes taken off. */
+const globsOf = (command) => command.replace(/\\\r?\n\s*/g, " ").split(/\s+/).slice(2).filter((word) => word && !word.startsWith("--")).map((word) => word.replace(/^"(.*)"$/, "$1"));
+
+test("the video-tests job installs ffmpeg and Chromium, runs both suites, fails on a skip that names either, and the web gate waits for it", () => {
   const ci = readFileSync(join(ROOT, ".github", "workflows", "ci.yml"), "utf8");
-  const job = /^ {2}docs-videos:\r?\n((?: {4}.*\r?\n|[ \t]*\r?\n)+)/m.exec(ci)?.[1];
-  assert.ok(job, "ci.yml has no docs-videos job");
+  const job = /^ {2}video-tests:\r?\n((?: {4}.*\r?\n|[ \t]*\r?\n)+)/m.exec(ci)?.[1];
+  assert.ok(job, "ci.yml has no video-tests job");
   // Without ffmpeg six of the runner's native speech cases fail with ToolMissing.
-  assert.match(job, /\bapt-get\b[^\n]*\binstall\b[^\n]*\bffmpeg\b/, "the docs-videos job no longer installs ffmpeg");
-  assert.match(job, /^\s+- run: npm run test:docs-videos\s*$/m, `the docs-videos job no longer runs npm run ${SCRIPT}`);
+  assert.match(job, /\bapt-get\b[^\n]*\binstall\b[^\n]*\bffmpeg\b/, "the video-tests job no longer installs ffmpeg");
+  assert.match(job, /^\s+- run: npx playwright install --with-deps chromium\s*$/m, "the video-tests job no longer installs Chromium");
+  assert.match(job, /^\s+- run: npm run test:docs-videos\s*$/m, `the video-tests job no longer runs npm run ${SCRIPT}`);
+  // The tools tests again, on test:tools' own globs, with a TAP copy the skip check reads.
+  const tools = /^ {10}(node --test (?:[^\n]*\\\r?\n {12})*[^\n]*)$/m.exec(job)?.[1];
+  assert.ok(tools, "the video-tests job no longer runs the tools tests");
+  const scripts = JSON.parse(readFileSync(join(ROOT, "package.json"), "utf8")).scripts;
+  assert.deepEqual(globsOf(tools), globsOf(scripts["test:tools"]), "the video-tests job must run the tools tests test:tools runs");
+  // Nothing narrows the run: a --test-name-pattern or --test-skip-pattern leaves the tests it drops
+  // out of the TAP copy altogether, so the skip check below would not see them.
+  const flags = tools.replace(/\\\r?\n\s*/g, " ").split(/\s+/).filter((word) => word.startsWith("--"));
+  assert.deepEqual(flags, ["--test", "--test-reporter=spec", "--test-reporter-destination=stdout", "--test-reporter=tap", '--test-reporter-destination="$RUNNER_TEMP/tools-tests.tap"'], "the tools step takes the reporters and nothing else");
+  assert.doesNotMatch(job, /continue-on-error/, "a step of the video-tests job that may fail would let a red test through");
+  assert.match(tools, /--test-reporter=tap --test-reporter-destination="\$RUNNER_TEMP\/tools-tests\.tap"/);
+  assert.match(job, /^ {8}env:\r?\n {10}VIDEO_RENDER_BROWSER_TESTS: "1"\r?\n {8}run: \|\r?\n {10}node --test /m, "the browser regressions run where Chromium is installed");
+  assert.match(job, /if grep -E '# SKIP \.\*\(ffmpeg\|Chromium\)' "\$RUNNER_TEMP\/tools-tests\.tap"; then\s+echo "::error::[^"]*"\s+exit 1/, "a skip that names ffmpeg or Chromium must fail the job");
   const needs = /^ {2}web:\r?\n {4}needs: \[([^\]]*)\]/m.exec(ci)?.[1]?.split(",").map((name) => name.trim());
   assert.ok(needs, "the web gate's needs list was not found — the scan itself is broken");
-  assert.ok(needs.includes("docs-videos"), "the required web gate must wait for docs-videos");
+  assert.ok(needs.includes("video-tests"), "the required web gate must wait for video-tests");
 });

@@ -152,7 +152,8 @@ jobs:
           done
   # Lint, i18n, the task board, typecheck and the tools tests: everything in the web gate
   # except vitest and Playwright, which web-unit and web-e2e split across parallel jobs, and
-  # the docs/videos tests, which need ffmpeg (docs-videos below).
+  # what needs ffmpeg or Chromium for the videos (video-tests below). Without them the tools
+  # tests that need one skip here.
   web-checks:
     runs-on: ubuntu-latest
     steps:
@@ -235,19 +236,25 @@ jobs:
           name: site-experience-browser-results-${{ matrix.shard }}
           path: apps/web/test-results
           retention-days: 7
-  # The tests kept beside the plans and runners in docs/videos: the imported-language runner,
-  # its speech journal and the series validators. `npm run test:tools` globs tools/** only, so
-  # they ran in no job, and two of the runner's cases stayed red for two days after #1342.
-  # ffmpeg is installed here rather than in web-checks: six of the runner's native speech cases
-  # cut real intro and outro clips with it and fail with ToolMissing when it is missing (they do
-  # not skip, so a lost install cannot pass quietly), and installing it ahead of test:tools would
-  # change which tools/video cases run there. A folder named demo holds a video's prop, whose
-  # tests fail on purpose (docs/videos/ai-bug-fix-pr-review/demo/README.md); the script's glob
-  # leaves those out and picks up every other folder at any depth with no edit here.
-  # tools/docs-videos-tests.test.mjs keeps the glob, this job and the gate below in step.
-  docs-videos:
+  # The video tests that need ffmpeg or Chromium, which web-checks installs neither of.
+  # - The tests kept beside the plans and runners in docs/videos: the imported-language runner,
+  #   its speech journal and the series validators. `npm run test:tools` globs tools/** only, so
+  #   they ran in no job, and two of the runner's cases stayed red for two days after #1342. Six
+  #   of the runner's native speech cases cut real intro and outro clips with ffmpeg and fail
+  #   with ToolMissing without it (they do not skip, so a lost install cannot pass quietly). A
+  #   folder named demo holds a video's prop, whose tests fail on purpose
+  #   (docs/videos/ai-bug-fix-pr-review/demo/README.md); the script's glob leaves those out and
+  #   picks up every other folder at any depth with no edit here.
+  # - Every tools test again, with both tools installed: the cases that skip in web-checks
+  #   (tools/reference-analysis.test.mjs, the H.264 concat check, the brightness probe and the
+  #   from-drama Short) run for real here, on every pull request. A skip that still names ffmpeg
+  #   or Chromium fails the step, so a test that loses its tool cannot pass by skipping. The
+  #   reporters are given on the command line, not through NODE_OPTIONS, which the tests' own
+  #   `node --test` children would inherit.
+  # tools/docs-videos-tests.test.mjs keeps the globs, this job and the gate below in step.
+  video-tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -273,19 +280,33 @@ jobs:
             echo "::error::the installed ffmpeg has no libx264 encoder"
             exit 1
           fi
+      - run: npx playwright install --with-deps chromium
       - run: npm run test:docs-videos
+      # With Chromium here, the two browser regressions in tools/video/render/browser.test.mjs,
+      # which run only when asked, are asked for too.
+      - name: The tools tests, with ffmpeg and Chromium
+        env:
+          VIDEO_RENDER_BROWSER_TESTS: "1"
+        run: |
+          node --test --test-reporter=spec --test-reporter-destination=stdout \
+            --test-reporter=tap --test-reporter-destination="$RUNNER_TEMP/tools-tests.tap" \
+            tools/*.test.mjs "tools/video/**/*.test.mjs"
+          if grep -E '# SKIP .*(ffmpeg|Chromium)' "$RUNNER_TEMP/tools-tests.tap"; then
+            echo "::error::a tools test that needs ffmpeg or Chromium skipped where both are installed"
+            exit 1
+          fi
   # `web` is the required check, like `api` above: green only when the checks, every
-  # shard and the docs/videos tests are, and red when one of them failed or was cancelled.
+  # shard and the video tests are, and red when one of them failed or was cancelled.
   web:
-    needs: [web-checks, web-unit, web-e2e, docs-videos]
+    needs: [web-checks, web-unit, web-e2e, video-tests]
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - name: Every web check, test shard and docs/videos test passed
+      - name: Every web check, test shard and video test passed
         env:
           RESULTS: ${{ join(needs.*.result, ' ') }}
         run: |
-          echo "web-checks, web-unit, web-e2e and docs-videos: $RESULTS"
+          echo "web-checks, web-unit, web-e2e and video-tests: $RESULTS"
           for result in $RESULTS; do
             if [ "$result" != success ]; then exit 1; fi
           done
