@@ -16,7 +16,7 @@ refreshes, article edits, saved-bundle recovery or failure diagnosis.
 ## Evidence
 
 Persistent operational artifacts live at
-`C:/Users/x8120/.codex/news-review/20261007-fe41/`:
+`<home>/.codex/news-review/20261007-fe41/`:
 
 - `baseline.json`: all 520 candidates, their stored drafts, evidence, assessments and runs.
 - `technical-holds.json`: the candidates excluded from straightforward AI review.

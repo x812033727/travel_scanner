@@ -48,7 +48,7 @@ article locales on the public site. Queue submission is not completion.
 
 ## Notes
 
-- Persistent workspace: `C:/Users/x8120/.codex/news-review/20261007-fe41/`.
+- Persistent workspace: `<home>/.codex/news-review/20261007-fe41/`.
 - `baseline.json` preserves all 520 candidates, documents, evidence, assessments and
   runs. `technical-holds.json` isolates holds the judge cannot resolve directly.
 - No global provider, feature or publication settings have been changed.
