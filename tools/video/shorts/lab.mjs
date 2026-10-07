@@ -13,6 +13,10 @@
 //   the hash and stops if the file changed.
 // - Every request to the tested model is recorded, a failed one too; a technical failure is tried
 //   once more, and both are kept. A wrong answer is a result, not a failure.
+// - A paid request whose answer was lost on the way (client.mjs RUN_UNCERTAIN: a stage, the tested
+//   model, Jev's policy reading in the quality check) may have run and been charged on the server,
+//   which keeps no answer to fetch: it is not asked again on its own. The Short is blocked where
+//   the owner sees it, and the owner's retry asks once more.
 // - Numbers and times are scored by a program against the frozen key; the checker only reads off
 //   which passage of an answer is its answer, and judges the items that are not a number or a time.
 // - The writer sees the spec, the evidence and the scores, nothing else, and a lint refuses a digit
@@ -20,7 +24,7 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
-import { AutomationError, OUTPUT_INVALID } from '../automation/client.mjs';
+import { AutomationError, OUTPUT_INVALID, RUN_PENDING, RUN_UNCERTAIN } from '../automation/client.mjs';
 import { parseAnswer } from '../automation/prompts.mjs';
 import { atomicWrite, readJson, stopRequested } from '../core/paths.mjs';
 import { LAB_SERIES, SCRIPT_FILE, USAGE_FILE, saveJson, sha256, validate } from './core.mjs';
@@ -305,7 +309,9 @@ export async function defaultTools() {
 
 // A call to the site or a vendor carries `who`: the owner's to fix, or a service's. A service that
 // is down or busy is tried again next round without counting against the Short; one that refused
-// the request (a 4xx) refused what the worker sent, which counts like an unusable answer.
+// the request (a 4xx) refused what the worker sent, which counts like an unusable answer. A paid
+// request whose answer was lost (RUN_UNCERTAIN, a 504 or a dropped connection) is neither: run()
+// blocks the Short for the owner before these are asked.
 const owner = (error) => error?.who === 'owner';
 const outside = (error) => typeof error?.who === 'string';
 const transient = (error) => outside(error) && !owner(error) && (!error.status || error.status === 429 || error.status >= 500);
@@ -457,6 +463,42 @@ export class LabShort {
     return `${this.slug}: blocked — ${why}`;
   }
 
+  /**
+   * A paid request of `phase` was sent and its answer never came back (RUN_UNCERTAIN): a stage, the
+   * tested model, or Jev's policy reading in the quality check. It may have run, and been paid for,
+   * on the server, which keeps no answer to fetch again, so the next round must not send it again:
+   * the Short is blocked for the owner and `lost` kept until the owner's retry (run() releases it).
+   * The phase's failures are left as they are: nothing unusable came back.
+   */
+  async unanswered(phase, error) {
+    this.lastAnswer = null;
+    const why = error.why ?? error.message;
+    this.state.lost = { phase, at: iso(this.now()), why };
+    return this.block(`${phase} may have run on the server without its answer reaching the worker (${why}); it is not asked again until the owner retries`);
+  }
+
+  /**
+   * The owner retried a Short whose answer was lost (ShortsWorker.retried() made it active again):
+   * a durable writer's uncertain journal is set aside first (client.mjs retryRuns; nothing to do
+   * without one), then the phase asks once more. A saved run still on the server makes the retry
+   * wait for the next round; one the transport cannot verify blocks the Short again with the
+   * reason. Returns the round's line when the phase may not run yet, else null.
+   */
+  async release() {
+    const lost = this.state.lost;
+    try {
+      await this.api.retryRuns?.(this.slug, { requestId: this.state.retry_request_id ?? null, reason: lost.why, format: 'shorts', kind: `uncertain:${lost.phase}` });
+    } catch (error) {
+      if (error instanceof AutomationError && error.code === RUN_PENDING) return `${this.slug}: retry waits; the saved run of ${lost.phase} is still running on the server, its receipt is checked next round`;
+      if (!(error instanceof AutomationError)) throw error;
+      return this.block(`retry could not verify the saved run of ${lost.phase}: ${error.message}`);
+    }
+    this.state.lost_answers = [...(this.state.lost_answers ?? []), { ...lost, retried_at: iso(this.now()), retry_request_id: this.state.retry_request_id ?? null }];
+    delete this.state.lost;
+    this.save();
+    return null;
+  }
+
   /** Tell /admin/videos where the Short stands: its stage, why it stopped, the steps done. */
   async tellSite(stage, label = null, extra = {}) {
     const { order, checklist, line } = this.constructor;
@@ -479,6 +521,12 @@ export class LabShort {
   async run() {
     if (this.state.status === 'blocked') return null;
     if (this.state.status === 'done' || this.state.status === 'returned') return null;
+    // An answer lost before the owner's retry: released once, unless a STOP would cut the retry short.
+    if (this.state.lost && this.state.status === 'active') {
+      if (stopRequested(this.base)) return 'STOP found; stopping between units';
+      const waits = await this.release();
+      if (waits) return waits;
+    }
     const lines = [];
     const { order } = this.constructor;
     const moving = new Set(order.slice(0, order.indexOf('awaiting')));
@@ -497,6 +545,9 @@ export class LabShort {
         outcome = await this[phase]();
       } catch (error) {
         if (error instanceof LabBlocked) return [...lines, await this.block(error.message)].join('\n');
+        // A paid answer lost on the way, a durable writer's uncertain receipt too (who "owner"): it
+        // is not asked again on its own; the owner sees why and retries.
+        if (error?.code === RUN_UNCERTAIN) return [...lines, await this.unanswered(phase, error)].join('\n');
         // The model answered something unusable, here or on the server: counted like any failure.
         if (error?.code === OUTPUT_INVALID) return [...lines, await this.failed(phase, error.message)].join('\n');
         if (owner(error)) {
@@ -566,6 +617,9 @@ export class LabShort {
       if (NOTHING_RAN.has(error.code)) throw error;
       attempts.push({ started_at: iso(started), ended_at: iso(this.now()), ok: false, status: error.status, code: error.code || null, error: error.message });
       this.state.attempts[variant] = attempts;
+      // Sent, and its answer lost: the model may have answered, and been paid for. The attempt is
+      // kept as evidence, and run() blocks the Short instead of asking once more next round.
+      if (error.code === RUN_UNCERTAIN) throw error;
       if (attempts.length < MAX_SUBJECT_ATTEMPTS) return { halt: `the tested model (${variant}) failed technically (${error.message}); it is asked once more next round, and both requests are kept` };
       this.writeAnswer(variant, { protocol, request, attempts, answer: null });
       throw new LabBlocked(`受測模型（${variant}）兩次都技術失敗：照規格的失敗處理，沒有原始輸出就不做實測結論，等站主決定`);
@@ -733,7 +787,10 @@ export class LabShort {
   }
 
   async qa() {
-    const report = await this.tools.runQa({ directory: this.state.build, client: this.site });
+    // Jev's policy answer lost on the way ends the check with RUN_UNCERTAIN (qa.mjs throwLost), so
+    // run() blocks the Short at qa instead of a later check (the writer's round, a new build)
+    // asking Jev again; the owner's retry runs the check once more.
+    const report = await this.tools.runQa({ directory: this.state.build, client: this.site, throwLost: true });
     if (report.ok) return { next: 'package', line: `quality check: all ${report.items.length} items pass` };
     const failed = report.items.filter((item) => !item.ok);
     for (const kind of QA_FIXES) {
