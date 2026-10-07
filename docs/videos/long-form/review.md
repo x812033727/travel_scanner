@@ -1789,6 +1789,36 @@ PASS is DURATION_ONLY for the five rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## claude/sharp-bardeen-ob6fn9 media STOP race increment: 2 files (2026-10-07)
+
+Reviewer: `claude-pr-review-media-stop-race`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is commit `161ff0bb` ("fix(video): a media stage stopped by its own STOP check waits for the next run; file the lexicon rollback task"), written by `claude-opus-5-5-lease-gaps` on branch claude/sharp-bardeen-ob6fn9. Scope: DURATION_ONLY for the two changed bindings below. The reviewer wrote none of the commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `26108396`, the commit's parent, which is itself the receipt for the "claude/sharp-bardeen-ob6fn9 lease gaps review fixes increment" above. `161ff0bb` does not touch docs/videos/long-form/. At `26108396` both files hash to their rows in review.json and the table (by `git show` piped to `sha256sum`), and the working tree's copies equal `161ff0bb`'s. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs; stale duration review binding: tools/video/automation/flow.mjs` and nothing else. The commit also changes two unbound task files (one new, one with review notes). Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with two hashes rebound and the other 106 unchanged.
+
+What the change is. In flow.mjs, `media()` now handles an exit 6 (`EXIT.incomplete`, the media commands' STOP check at entry) by `defer(state, line, { backoffMs: 0 })` before its final fence and block, and `acceptBestPictures` does the same after its `keyframes --accept-best` run and before its block. Before, an exit 6 whose STOP file was gone by the time the worker read the exit fell through to the block. One orphaned one-line `restoreVideo` docblock above `speech()` is deleted. This section asks only whether any of it reaches a length rule, and in particular whether the new defer can mark a stage done or skip a later duration check.
+
+Findings, tools/video/automation/flow.mjs (+4/−2, 230,959 → 231,365 bytes). The duration code is outside every hunk: the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports, `slidesMinutes` and `episodeMinutes`, the anime `body_target_seconds / 60` settlement, and the planner and writer payloads' `target_minutes`. The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` number 20 at both revisions, and no changed line names one of them, minutes, seconds, a frame floor, a timeline, QA or lint. The hunks:
+
+- `media()`'s exit-6 line sits after the exit-0, 1, 3 and 4 branches, so no other exit reaches different handling. `defer()` with `backoffMs: 0` only adds the slug to `skipped`, deletes `deferred_until` and saves the state; it leaves `defer_count` alone, sends no report, and marks no step done. `media()` serves only look, keyframes, clips and music, none a length gate, so the change can only turn a block into the video waiting for the next run at the same step.
+- `acceptBestPictures`'s exit-6 line returns before `state.accepted_pictures` is written and before its "pictures kept" line, so no picture is recorded as kept and the final cut is not handed on; the next run repeats the same step.
+- The deleted line is a comment.
+
+Findings, tools/video/automation/automation.test.mjs (+14/−0, 410,180 → 411,278 bytes; 165 tests at the head by `node --test`). One test: `media(state, "music")` with a stubbed exit 6 returns the "stopped ... the next run continues" line, leaves the state `active` with no `blocked` and no `defer_count`, and reports no "music done". None of its lines names a length, a frame floor or process.env. The duration-term lines are 31 at both revisions, and the opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at the top of the file is unchanged.
+
+Ran (Node v22.22.0, Linux, in the worktree at `161ff0bb`, node_modules installed, VIDEO_MIN_EPISODE_MINUTES unset in the shell): the baseline hashing at `26108396`, `git show 161ff0bb` read in full, changed-line scans and duration-term counts at both revisions, reads of `defer()`, `media()` and `acceptBestPictures`, and `EXIT` in tools/video/cli.mjs. Before rebinding, `node --test` passed automation.test.mjs 165 of 165, and `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same two paths. The CLI check and the long-form tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept the choice of deferring an exit 6 over blocking, the zero backoff, or the filed lexicon rollback task.
+- The unbound task files are not reviewed.
+- No real video was written, linted, voiced, assembled or measured, and the tests run under the opt-out.
+- Not run or seen: the rest of the tool, Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, two processes on the production host, and the production host.
+- The 106 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the two rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1845,9 +1875,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `ae61a1a3b7a9b225498d83b7e5360cdc964cb0e48ab14b959ecfae40331caf43` |
+| `tools/video/automation/automation.test.mjs` | `27a528f7af3ea7f9c3c90a849846d04f2e5558dcf40fa7684434ff5ec7e607b8` |
 | `tools/video/automation/discuss.mjs` | `74ad92a459787188cf2b64ee7663ae31ed5629ffc54fc9cc9fe8a8888964078c` |
-| `tools/video/automation/flow.mjs` | `0e8c38edd6a1e9e2ef33b8408355ef2c0c6e94517315d19b733788179f270ecd` |
+| `tools/video/automation/flow.mjs` | `b26f0c20cf53ecdfb97518421d00f2689c7863e61e98e93e09a11a14798faa10` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |

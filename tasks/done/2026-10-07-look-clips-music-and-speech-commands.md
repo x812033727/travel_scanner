@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-look-clips-music-and-speech-commands
 title: Look, clips, music and speech commands take the project lease and check STOP before their canonical writes
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-lease-gaps
 claimed_at: 2026-10-07T02:28:04Z
 created_at: 2026-10-07T02:01:52Z
-completed_at:
+completed_at: 2026-10-07T03:09:18Z
 branch: claude/sharp-bardeen-ob6fn9
 depends_on:
   - 2026-10-04-native-video-project-stop-and-producer-exclusion
