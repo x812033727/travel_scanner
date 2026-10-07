@@ -1753,6 +1753,42 @@ PASS is DURATION_ONLY for the six rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## claude/sharp-bardeen-ob6fn9 lease gaps review fixes increment: 5 files (2026-10-07)
+
+Reviewer: `claude-pr-review-lease-gaps-fixes`. Author: kept as `claude-fable-5-1-video-unstuck`, the receipt's current author field. The change is commit `9df2cf25` ("fix(video): review fixes for the lease gaps"), written by `claude-opus-5-5-lease-gaps` on branch claude/sharp-bardeen-ob6fn9. Scope: DURATION_ONLY for the five changed bindings below. The reviewer wrote none of the commit, judged each bound diff on its own reading, and edited only this report and review.json.
+
+Baseline: `1d53e3f2`, whose receipt is the "claude/sharp-bardeen-ob6fn9 lease gaps increment" above (commit `71ffcf48`). The merge `39a2f5f2` between them changes none of the five files, and `git diff 71ffcf48 9df2cf25 -- docs/videos/long-form/` is empty. At `1d53e3f2` and at `39a2f5f2` each of the five files hashes to its row in review.json and the table (by `git show` piped to `sha256sum`), and the working tree's copies equal `9df2cf25`'s. Before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: tools/video/automation/automation.test.mjs; stale duration review binding: tools/video/automation/discuss.mjs; stale duration review binding: tools/video/automation/flow.mjs; stale duration review binding: tools/video/media/clips.test.mjs; stale duration review binding: tools/video/media/look-keyframes.test.mjs` and nothing else. The commit also changes the unbound tools/video/media/clips.mjs, keyframes.mjs, look.mjs, music.mjs, stages.mjs and a task file. Every paragraph before the binding table is preserved byte for byte. The registry stays exactly 108 paths, with five hashes rebound and the other 103 unchanged.
+
+What the change is. flow.mjs gains `Automation.speech(slug, command)`, which runs the command as `run(ctx, command)` did and, only when it exits 3 (`EXIT.owner`) and the last line is not `SPEECH_UNCERTAIN`, calls `fence()` before handing the result back; every tts, dub and check-audio run in the file now goes through it. `media()` calls `fence()` before its final block. discuss.mjs puts the last good script back when `saveAndLint` throws PROJECT_HELD. The media commands under STOP at entry now exit 6 instead of 0. This section asks only whether any of it reaches a length rule, and in particular whether routing tts, dub and check-audio through `speech()` changes what their exit codes and outputs lead to.
+
+Findings, tools/video/automation/flow.mjs (+30/−13, 229,779 → 230,959 bytes). The duration code is outside every hunk: the `effectiveEpisodeMinutes` and `minEpisodeMinutes` imports, `slidesMinutes` and `episodeMinutes`, the anime `body_target_seconds / 60` settlement, and the planner and writer payloads' `target_minutes`. The file's lines naming `target_minutes`, `effectiveEpisodeMinutes`, `minEpisodeMinutes`, `episodeMinutes`, `slidesMinutes`, `duration` or `VIDEO_MIN_EPISODE_MINUTES` number 20 at both revisions, and no changed line names one of them, minutes, seconds, a frame floor, a timeline, a fit window, QA or lint. The hunks:
+
+- `speech()` awaits the same `run(this.ctx, command)` with the same arguments and returns the same result object unmodified. `fence()` either returns (no STOP, lease still this process's) or throws PROJECT_HELD; it never alters `code` or `out`. So exits 0, 1, 2, 4, 5 and 6, an uncertain exit 3, and a plain exit 3 with the lease held and no STOP reach exactly the handling they reached before: tts's timeline and `--refresh-evidence`/`--redo` arguments, the retake and rewrite rounds (`state.retakes`, `retakeRounds`, `MAX_REWRITE_ROUNDS`), check-audio's flagged-line loop and its exit-3/other blocks, and dub's shorten rounds (`overLines`, `MAX_DUB_SHORTEN_ROUNDS`, `MAX_TEMPO`), retake and reword rounds and `giveUpDub`. Only a non-uncertain exit 3 under a STOP or a lost lease now throws, so the video sits the run out at the same step instead of being blocked or having its dub given up; no step is marked done, no dub is recorded as finished, and no check result is pushed on that path. A grep finds no tts, dub or check-audio still run outside `speech()`.
+- `media()`'s fence before the final block serves look, keyframes, clips and music only, none a length gate; it can only turn a block into the video sitting the run out, never mark a stage done or skip a later duration check.
+- The comment change in `fence()` and the new docblock are text only. (A nit outside scope: the old one-line docblock for `restoreVideo` now sits above `speech()`'s docblock.)
+
+Findings, tools/video/automation/discuss.mjs (+16/−1, 17,836 → 18,462 bytes). `saveAndLint` is called with the same arguments, so the lint and its length checks run as before; the new `try/catch` acts only on a thrown PROJECT_HELD, writes the `before` script back through `restoreVideo` (swallowing a second PROJECT_HELD) and rethrows, so the revision is never accepted on that path. The duration-term lines are 1 at both revisions, and no changed line names a length rule.
+
+Findings, tools/video/automation/automation.test.mjs (+23/−0, 408,652 → 410,180 bytes; 164 tests at the head by `node --test`, 163 at the baseline). One test: dub, tts and check-audio that exit 3 after another producer took the LEASE raise PROJECT_HELD from `speech()`, and an uncertain tts answer comes back as exit 3 without a fence. None of its lines names a length, a frame floor or process.env. The duration-term lines are 31 at both revisions, and the opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` at the top of the file is unchanged.
+
+Findings, tools/video/media/clips.test.mjs (+3/−3, 85,005 → 85,029 bytes; 27 tests at both revisions) and tools/video/media/look-keyframes.test.mjs (+3/−3, 123,731 → 123,755 bytes; 42 tests at both revisions). Each changed line only swaps the expected exit of an entry-STOP run from `EXIT.ok` to `EXIT.incomplete`; the stdout matches and the manifest, ledger and file assertions are unchanged. The duration-term lines are 11 and 5 at both revisions, each file's opt-out is unchanged, and the only "frame" matches are the `keyframes` command name.
+
+The unbound command changes, read for timing only. In clips.mjs, keyframes.mjs, look.mjs and music.mjs each changed line is the return value of an existing `mayWriteProject` refusal (0 → 6), which returns before any paid request or write; stages.mjs changes a comment. No length, take count or music length rule is in any hunk.
+
+Ran (Node v22.22.0, Linux, in the worktree at `9df2cf25`, node_modules installed, VIDEO_MIN_EPISODE_MINUTES unset in the shell): the baseline hashing at `1d53e3f2` and `39a2f5f2`, `git show 9df2cf25` of the five bound files and the unbound media files read in full, changed-line scans and duration-term counts at both revisions, reads of `speech()`, `fence()`, `speechUncertain`, `EXIT` in tools/video/cli.mjs, and every tts, dub and check-audio caller with the exit handling after it. Before rebinding, `node --test` passed automation.test.mjs 164 of 164, clips.test.mjs 27 of 27 and look-keyframes.test.mjs 42 of 42, and `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed, the shipped binding regression in long-form/review.test.mjs on the same five paths. The CLI check and the long-form tests are run again after rebinding, and their results are in the hand-off so this report's hash stays stable.
+
+Non-claims:
+
+- This review does not accept `speech()`'s fence, the choice of setting a video aside over blocking it or giving up its dub, the discussion's restore, or the exit-6 change.
+- The unbound files are read for timing only and are not reviewed otherwise.
+- No real video was written, linted, voiced, dubbed, assembled or measured, and the tests run under the opt-out.
+- Not run or seen: the rest of the tool, Vitest and API suites, lint, typecheck, CI, any real model, provider or media call, two processes on the production host, and the production host.
+- The 103 bindings this commit did not change are not covered afresh.
+
+PASS is DURATION_ONLY for the five rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -1809,9 +1845,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `03af4ae756b9ce9a6b8092b490b53006009d4ef9f291c4189a48ae828a47cc98` |
-| `tools/video/automation/discuss.mjs` | `fcb1a59b6861c8b18582aeece052b7d6f21930aae495f231e7e0f2c7d0dca9f5` |
-| `tools/video/automation/flow.mjs` | `0379fecfc8efe198a37fc28b4036ba5f87a8c361d82286c4bda2a1c92848bc1d` |
+| `tools/video/automation/automation.test.mjs` | `ae61a1a3b7a9b225498d83b7e5360cdc964cb0e48ab14b959ecfae40331caf43` |
+| `tools/video/automation/discuss.mjs` | `74ad92a459787188cf2b64ee7663ae31ed5629ffc54fc9cc9fe8a8888964078c` |
+| `tools/video/automation/flow.mjs` | `0e8c38edd6a1e9e2ef33b8408355ef2c0c6e94517315d19b733788179f270ecd` |
 | `tools/video/automation/prompts.mjs` | `3126c27b33c1ba056abaf35152adc03f8f8e45c4e2c0629d19048ccb051ea2ea` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `8a893e8fdfbf0cfb598fe533b7b3b817835c26db95e1f60f8595556d20b2104c` |
@@ -1848,8 +1884,8 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
-| `tools/video/media/clips.test.mjs` | `c96b901460e6bbf96345752bbf484c75e5e6afd2c967b02fb014e4dfcd8d8e3b` |
-| `tools/video/media/look-keyframes.test.mjs` | `4628be5ff619f50a9431610f996017047517e6cdb7aaf997a4fde5398e97878a` |
+| `tools/video/media/clips.test.mjs` | `7d8b42b02f759772c1ec7334a1af02ecb57b99fa7a642b66c25f6584fc77639f` |
+| `tools/video/media/look-keyframes.test.mjs` | `3413923fc1485cc03ffd29a18594c8ae48280710e1b81d7f6882d6f76db8f954` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `3f81ff3bfb8b600f06c1ba54bc72e685b74ff8bcbd1f096b7b5d4b77ff9d175d` |
 | `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
