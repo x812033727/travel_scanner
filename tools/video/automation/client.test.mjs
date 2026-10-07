@@ -580,17 +580,25 @@ test("a pending writer says why its last look failed, only while it did: a read 
   // The fake sleeps alone use the budget up: the POST, the 429, then the read that clears it.
   assert.equal(lookups, 2);
   // The round's own budget cuts off a read of a job the server already confirmed: no lookup failed.
+  // The fake sleep spends the budget at once but for what the POST took in real time, which is all
+  // the read is given: the POST takes a few real milliseconds, so that is never 0 (the read would
+  // not be sent), and the budget is the client's whole 25 s, so a loaded machine's stall before
+  // the read cannot use it up either.
   box = sandbox();
   let reads = 0;
   client = durableClient(box, async (url, init) => {
-    if (init.method === "POST") { original = JSON.parse(init.body); return Response.json(job(original, "running")); }
+    if (init.method === "POST") {
+      original = JSON.parse(init.body);
+      await new Promise((resolve) => setTimeout(resolve, 5));
+      return Response.json(job(original, "running"));
+    }
     reads += 1;
     // A read that answers only once aborted; the timer keeps the process up meanwhile, as a socket would.
     return new Promise((_resolve, reject) => {
       const open = setTimeout(() => {}, 10_000);
       init.signal.addEventListener("abort", () => { clearTimeout(open); reject(init.signal.reason); });
     });
-  }, { durablePollMs: 1500, durablePollIntervalMs: 1500 });
+  }, { durablePollMs: 25_000, durablePollIntervalMs: 25_000 });
   await client.settings();
   await assert.rejects(runWriter(client), (error) => error.code === RUN_PENDING && error.polling === null && error.receipt_status === "running");
   assert.equal(reads, 1, "the read the budget cut off");
