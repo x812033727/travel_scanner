@@ -161,3 +161,19 @@ test('the QA\'s policy item says the outcome is unknown, and the QA run asks Jev
   assert.match(policy.detail, /the outcome is unknown and it is not sent again/);
   assert.deepEqual(calls.map((call) => call.path), [POLICY]);
 });
+
+test('a request the site keeps refusing is told after its last attempt, with no wait after it', async () => {
+  for (const [what, answer] of [
+    ['a busy route', () => json({ code: 'rate_limit_exceeded', detail: 'slow down' }, 429)],
+    ['a site that is down', () => {
+      throw failed('ECONNREFUSED');
+    }],
+  ]) {
+    let calls = 0;
+    const sleeps = [];
+    const client = siteClient({ env, fetch: async () => { calls += 1; return answer(); }, sleep: async (ms) => sleeps.push(ms) });
+    await assert.rejects(client.judgePolicy(BODY), (error) => error instanceof SiteError && error.who === 'service', what);
+    assert.equal(calls, 4, what);
+    assert.equal(sleeps.length, 3, `${what}: a wait between two attempts, none after the last`);
+  }
+});

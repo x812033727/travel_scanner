@@ -84,6 +84,8 @@ async function call({ site, token, path: route, init, fetchImpl, sleep, attempts
       });
     } catch (error) {
       last = new MediaError(`cannot reach ${site}: ${error.message}`, { code: "network" });
+      // Nothing waits after the last attempt: the caller learns the outcome at once.
+      if (attempt === attempts - 1) break;
       await sleep(retryDelayMs(null, attempt));
       continue;
     }
@@ -94,6 +96,7 @@ async function call({ site, token, path: route, init, fetchImpl, sleep, attempts
     if (TOOL_CODES.has(problem.code)) throw new MediaError(message, { status: response.status, code: problem.code, who: "tool" });
     last = new MediaError(message, { status: response.status, code: problem.code });
     if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
+    if (attempt === attempts - 1) throw last;
     await sleep(retryDelayMs(response, attempt));
   }
   throw last;

@@ -69,7 +69,23 @@ test("a generic upstream failure remains a service error with bounded retries", 
     return true;
   });
   assert.equal(calls, 3);
-  assert.deepEqual(sleeps, [5000, 10000, 20000]);
+  assert.deepEqual(sleeps, [5000, 10000], "no wait after the last attempt");
+});
+
+test("a site that stays unreachable is told after the last attempt, with no wait after it", async () => {
+  let calls = 0;
+  const sleeps = [];
+  const client = automationClient({
+    ...credentials(sandbox()),
+    fetch: async () => {
+      calls++;
+      throw failed("ECONNREFUSED");
+    },
+    sleep: async (ms) => sleeps.push(ms),
+  }, { attempts: 3 });
+  await assert.rejects(client.settings(), (error) => error instanceof AutomationError && error.code === "network");
+  assert.equal(calls, 3);
+  assert.deepEqual(sleeps, [5000, 10000]);
 });
 
 test("an error keeps the seconds of the server's Retry-After, for a stage run and for any other request; without the header, or with a date in it, it carries none", async () => {
@@ -81,7 +97,7 @@ test("an error keeps the seconds of the server's Retry-After, for a stage run an
   // Before: only a durable writer's failed receipt carried it, so flow.mjs deferred every other request by its own clock.
   answer = refused(429, "rate_limit_exceeded", "900");
   await assert.rejects(client.run("verifier", "draft-example", "Check", {}), (error) => error.status === 429 && error.retry_after === 900);
-  assert.deepEqual(sleeps, [120_000, 120_000], "the client's own sleeps stay capped at two minutes");
+  assert.deepEqual(sleeps, [120_000], "the client's own sleeps stay capped at two minutes, and none follows the last attempt");
   await assert.rejects(client.reviews("draft-example"), (error) => error.code === "rate_limit_exceeded" && error.retry_after === 900);
   answer = refused(503, "video_ai_upstream_busy", "30");
   await assert.rejects(client.run("translator", "draft-example", "Translate", {}), (error) => error.code === "video_ai_upstream_busy" && error.retry_after === 30);

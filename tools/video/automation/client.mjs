@@ -135,6 +135,8 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       } catch (error) {
         if (paid && !neverSent(error)) throw uncertain(route, error.cause?.message ?? error.message, 0, what);
         last = new AutomationError(`cannot reach ${site}: ${error.message}`, { code: "network" });
+        // Nothing waits after the last attempt: the caller learns the outcome at once.
+        if (attempt === attempts - 1) break;
         await sleep(delayMs(null, attempt));
         continue;
       }
@@ -159,6 +161,7 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       const after = Number(response.headers.get("retry-after"));
       if (Number.isFinite(after) && after > 0) last.retry_after = after;
       if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
+      if (attempt === attempts - 1) throw last;
       await sleep(delayMs(response, attempt));
     }
     throw last;

@@ -1,20 +1,26 @@
 ---
 id: 2026-10-07-the-media-automation-review-and-shorts
 title: The media, automation, review and Shorts clients sleep after their last attempt, now as long as the server's Retry-After
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-last-sleep
+claimed_at: 2026-10-07T09:21:02Z
 created_at: 2026-10-07T07:11:49Z
 completed_at:
 branch:
 depends_on: []
 scope:
   - tools/video/media/client.mjs
+  - tools/video/media/media.test.mjs
   - tools/video/automation/client.mjs
+  - tools/video/automation/client.test.mjs
   - tools/video/review/sync.mjs
+  - tools/video/review/sync.test.mjs
   - tools/video/shorts/site.mjs
+  - tools/video/shorts/site.test.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # The media, automation, review and Shorts clients sleep after their last attempt, now as long as the server's Retry-After
@@ -37,13 +43,13 @@ learns the outcome, and a STOP file that waits as long.
 
 ## Definition of done
 
-- [ ] None of the four clients sleeps after its last attempt; each throws the last error at once.
+- [x] None of the four clients sleeps after its last attempt; each throws the last error at once.
 
 ## Steps
 
-- [ ] Add `if (attempt === attempts - 1) throw last;` (or `break`) before each retry sleep,
+- [x] Add `if (attempt === attempts - 1) throw last;` (or `break`) before each retry sleep,
   network errors included.
-- [ ] Update any test that counts the sleeps, so it pins one sleep fewer.
+- [x] Update any test that counts the sleeps, so it pins one sleep fewer.
 
 ## How to verify
 
@@ -54,3 +60,17 @@ learns the outcome, and a STOP file that waits as long.
 - Found by the review of `2026-10-05-a-burst-of-narration-lines-trips` (2026-10-07). The reviewer ran
   the media client against five 429s with `Retry-After: 60`: it slept 60 s five times, the last one
   after the final refusal.
+- 2026-10-07 (claude-opus-5-5-last-sleep). Each of the four loops checks for its last attempt
+  before the sleep, in the network branch as well as after a refusal: the media client's
+  `call()`, the automation client's `request()`, the review client in `sync.mjs` (its four
+  attempts are now `ATTEMPTS`) and the Shorts `siteClient`. Each throws the last error at once.
+- Scope: the four clients' tests. `review/sync.mjs` and `sync.test.mjs` are bound by the
+  duration-review receipt, so `docs/videos/long-form/review.*` takes the independent re-bind.
+- Tests, each failing on the old code:
+  - automation: the generic-failure and Retry-After tests pin one sleep fewer, and a new test
+    covers a site that stays unreachable (network branch);
+  - media: a new test, five refusals (a 429 with `Retry-After: 60`) and five refused
+    connections, each giving four waits;
+  - Shorts: the same with four attempts;
+  - review: the push-failure table now counts waits as attempts minus one, network included.
+  - Removing the automation network guard fails its new test.

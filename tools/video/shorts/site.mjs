@@ -75,6 +75,8 @@ export function siteClient({ env = process.env, home, fetch: fetchImpl = globalT
       } catch (error) {
         if (paid && !neverSent(error)) throw uncertain(route, error.cause?.message ?? error.message);
         last = new SiteError(`cannot reach ${site}: ${error.message}`, { code: 'network' });
+        // Nothing waits after the last attempt: the caller learns the outcome at once.
+        if (attempt === attempts - 1) break;
         await sleep(2 ** attempt * 1000);
         continue;
       }
@@ -92,7 +94,7 @@ export function siteClient({ env = process.env, home, fetch: fetchImpl = globalT
         throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ''}`, response.status);
       }
       last = new SiteError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code ?? '', who });
-      if (!(response.status === 429 || response.status >= 500)) throw last;
+      if (!(response.status === 429 || response.status >= 500) || attempt === attempts - 1) throw last;
       await sleep(Math.min(Number(response.headers.get('retry-after')) || 2 ** attempt, 30) * 1000);
     }
     throw last;

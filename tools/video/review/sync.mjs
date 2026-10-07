@@ -418,6 +418,9 @@ async function qualityCheck(ctx, slug, workdir, flags) {
   return readJson(path.join(workdir, "review", "qa.json"), null);
 }
 
+// How many times the review routes are asked before the last error is told.
+const ATTEMPTS = 4;
+
 function client(ctx) {
   const credentials = readCredentials({ env: ctx.env, home: ctx.home });
   if (!credentials.token) throw new ReviewError("no video tool token yet: run `node tools/video/cli.mjs login`", { who: "owner" });
@@ -426,7 +429,7 @@ function client(ctx) {
   return async function request(method, route, { json, bytes, query } = {}) {
     const url = `${credentials.site}/api/video/reviews/${route}${query ? `?${new URLSearchParams(query)}` : ""}`;
     let last;
-    for (let attempt = 0; attempt < 4; attempt++) {
+    for (let attempt = 0; attempt < ATTEMPTS; attempt++) {
       let response;
       try {
         response = await fetchImpl(url, {
@@ -441,6 +444,8 @@ function client(ctx) {
         });
       } catch (error) {
         last = new ReviewError(`cannot reach ${credentials.site}: ${error.message}`, { code: "network" });
+        // Nothing waits after the last attempt: the caller learns the outcome at once.
+        if (attempt === ATTEMPTS - 1) break;
         await sleep(2 ** attempt * 1000);
         continue;
       }
@@ -450,7 +455,7 @@ function client(ctx) {
       const who = response.status === 401 ? "owner" : "service";
       const submission = (method === "POST" && route.endsWith("/reviews")) || (method === "PUT" && route.includes("/files/"));
       last = new ReviewError(message, { status: response.status, code: problem.code ?? "", who, submission });
-      if (!(response.status === 429 || response.status >= 500)) throw last;
+      if (!(response.status === 429 || response.status >= 500) || attempt === ATTEMPTS - 1) throw last;
       await sleep(Math.min(Number(response.headers.get("retry-after")) || 2 ** attempt, 30) * 1000);
     }
     throw last;
