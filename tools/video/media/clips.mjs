@@ -340,10 +340,13 @@ export async function run(command, args, ctx) {
   // is hashed right before it goes to the store, against the record that names it: a shot outside
   // --shot, or a file drawn over since the early check, cannot slip into a paid request.
   const uploadApproved = async (file, sha256, label) => {
-    if (typeof sha256 !== "string" || await sha256File(path.join(workdir, file)) !== sha256) {
-      throw new UsageError(`${label} selected picture has changed: ${file}; run keyframes again or restore the approved picture`);
-    }
-    return upload(file);
+    const local = path.join(workdir, file);
+    if (!existsSync(local)) throw new UsageError(`${label} selected picture is missing: ${file}; run keyframes again or restore the approved picture`);
+    const changed = () => new UsageError(`${label} selected picture has changed: ${file}; run keyframes again or restore the approved picture`);
+    if (typeof sha256 !== "string" || await sha256File(local) !== sha256) throw changed();
+    // The store answers with the hash of what it took: a file drawn over between the two reads is caught too.
+    if (await upload(file) !== sha256) throw changed();
+    return sha256;
   };
   const started = Date.now();
   let generated = 0;
