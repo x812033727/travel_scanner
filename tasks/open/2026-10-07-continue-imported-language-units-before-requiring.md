@@ -286,3 +286,96 @@ are authorized by this follow-up.
   `94c8eb4174c2698e1fb6014847ec5bd9404bc3295c76cd306b792670ad0ef5bb`.
   The 20 green PR checks previously observed bind head `022ee882`, not any later
   documentation commit; this native repair task remains in review.
+
+## Production continuation, 2026-10-07 13:42Z
+
+- The owner's literal `沒有時效性` released the first eight publish exclusions.
+  Actual production readback at `12:19:28.029Z` verified all 18 canonical approved
+  finals and all 18 new approved base publish reviews, with canonical STOPs and
+  inactive uploads preserved. A separate deployment changed production to
+  `7524c25995d59f3826227e693d52f2ef5b3a19a2`; this session did not deploy it.
+  Frozen operator sources remain pinned, with actual installed API compatibility
+  checked against the original production contract. PR #1359 remains a draft.
+- Five retained metadata/CC packages were submitted once and independently
+  accepted by the actual deployed stored consumer: `ai-real-jobs-chart`,
+  `google-vids-free-ai-video-omni-1-1`, `openai-agents-broke-in`,
+  `siri-ai-ios-27-how-to-get-it` and `why-openai-killed-sora`. All 40 free parts
+  passed. The 13:12Z completion proof binds the five actual current approved
+  language reviews, stored file bytes, sources and the completed apply state.
+  Together with the earlier 74 parts, 114/144 free metadata/CC parts have been
+  verified; this combines separately dated snapshots rather than a new full
+  114-part live readback.
+- The new three-source producer stopped at `13:15:29.128Z`. Price war's first
+  English metadata translator POST returned HTTP 502 after the account agent
+  reported every Claude account with room busy. Its journal retains one unknown;
+  provider attempt count is one, with zero PUT/language POST/media/YouTube calls.
+  The original state, intent, wire, result, journal and both isolated STOPs remain
+  unchanged. Free versus paid plans and DevDay are queued with zero attempts;
+  a fresh 13:42Z witness confirms all six attempt/result artifacts absent for each,
+  and their original manifests, namespaces and source proofs unchanged.
+- Actual installed service/API/schema source pins and read-only database evidence
+  were checked. These translators use synchronous `/run`; the settings value
+  `durable_stage_runs=true` does not send them through `/run/jobs`. There is no
+  saved exact answer or account allocation trace for this failed request. The
+  agent may try another account after a quota refusal, so the final busy error,
+  zero tokens, absent durable jobs or absent temporary directory do not establish
+  no CLI execution. Preserve the unknown; do not resubmit or invent a succeeded
+  native entry. The native runner has no formal verified-nondispatch reconciliation
+  protocol. A future repair must preserve original accounting and request bytes.
+- A new conservative read-only scheduling hint passed 11 focused tests and an
+  independent review. It reads process ancestry and existing usage snapshots,
+  starts no CLI or account/usage endpoint request, and is intended only for
+  waiting before a new native journal intent. It is not an account reservation or
+  evidence about an earlier request. At `13:39:24Z` it correctly held while two
+  Claude descendants were live. After intent, capacity loss still requires an
+  unknown hold rather than waiting or resending. The two untriggered scopes may
+  continue independently; the failed price-war producer may not be rearmed.
+- EP04's original unknown and its 41 retained files remain held. Six of its free
+  parts are outstanding; this is one unresolved request, not six unknown calls.
+  All 54 selected dub parts remain held. Twelve old paid tracks were independently
+  verified in the actual store, but have no current source-bound QA/fit/cache
+  proof, so they are not current-ready. No paid media was regenerated and no
+  YouTube upload/publication occurred. Complete selected-language upload packages
+  and the wider production handoff ticket remain unfinished.
+
+Additional immutable receipts under
+`<home>/mokaair-work/handoff/renewed-finals-20261007`:
+
+- `owner-release-eighteen-readback-proof.json`, SHA
+  `e88e7ed69e6a2e49ffa888ff061f1444796c39b33f5dc541abccc156f83d7262`.
+- `retained-five-v2-actual-completion-independent-proof-20261007T131212243473Z.json`,
+  SHA `e9c1439a11d7456fe9ebbd9063fe99891c7b746df491f5511999c77f31ed225a`.
+- `released-three-free-language-v3-apply-state.json`, SHA
+  `ae37181d1564f05b0dd9f52368567fff529438d8341d9f874af79829f5c079a6`.
+- `released-three-durable-result-and-cached-room-independent-source-audit-20261007T134222375101Z.json`,
+  SHA `7a851ec09a1cf26bde6d20042a1e979dfb676db07faad6d616ced24d0adcef7f`.
+- `released-two-untriggered-continuation-witness-readonly.json`, SHA
+  `eef406164c7a315713db74fa63e29e1809fcb043898c25dcf36300065271d793`.
+
+### Untriggered two-source background restoration, 14:03Z
+
+The new outer two-source wrapper passed 17 focused extracted-hook tests, two
+syntax checks and independent byte-exact inverse review. It reuses the original
+prepared manifests, native runtime, 48/64-call plans and request namespaces.
+Both actual production dry-runs completed with exit 0, three source/settings GETs
+each and zero provider/PUT/language POSTs. Actual dry state SHA is
+`f85376390c482433949894271da1e73c7cfc024d985932568b0d2b5593602810`;
+the separate final once review is `released-two-source-review-v4.json`, SHA
+`4b89f114cf1f14c79e0c85be9c363591d5d0d8706743d9b4a036c1ef5bc643cb`.
+
+The two-source producer was launched once, background PID `239396`. Actual
+readback at `2026-10-07T14:03:14.341209Z` confirms it alive: free versus paid plans
+has a durable cached-room wait before the native journal, and DevDay is serially
+queued. Both native journals remain absent, with zero new model POST intents and
+zero language submissions. The original price-war six files and closed v3 state
+remain exact. This is a restored waiting producer, not completed translations or
+an account reservation. No canonical STOP changes, paid media regeneration or
+YouTube calls occurred. Read actual per-profile `released-two-v4-wire.jsonl` and
+native journals for subsequent progress; the running driver's aggregate attempt
+count is only refreshed when a profile ends.
+
+Local snapshot: `released-two-v4-startup-readonly-20261007T1402Z.out`, SHA
+`da0bb0ecca8d47f16669057fa04bbcdd7968e7ec4da1d2c10d22aa5c88bdee3e`.
+The filename is a label; its actual observation time is 14:03:14Z. The 114 verified
+free parts remain unchanged at this checkpoint. Keep original unknowns and paid
+dub holds; never rerun a prior launcher or clear its intent/journal to resume.
