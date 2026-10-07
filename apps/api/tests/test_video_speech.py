@@ -8,6 +8,7 @@ import fakeredis.aioredis
 import httpx
 import pytest
 from httpx import ASGITransport, AsyncClient
+from redis.exceptions import RedisError
 
 import app.video_speech.admin_api as admin_api
 from app.admin.schemas import ProviderSettingsUpdate
@@ -381,8 +382,8 @@ async def test_the_named_rate_limit_says_how_long_is_left_only_when_asked(
             "demo", "caller", limit=3, window_seconds=60, retry_after=True
         )
     assert told.value.status == 429 and told.value.code == "rate_limit_exceeded"
-    assert told.value.headers is not None
-    assert 1 <= int(told.value.headers["Retry-After"]) <= 60
+    # Refused in the window's first second: the whole minute is left.
+    assert told.value.headers == {"Retry-After": "60"}
     # Every other caller of the shared limiter keeps its answer exactly as it was.
     with pytest.raises(AppError) as plain:
         await infra.enforce_named_rate_limit("demo", "caller", limit=3, window_seconds=60)
@@ -394,6 +395,54 @@ async def test_the_named_rate_limit_says_how_long_is_left_only_when_asked(
             "demo", "caller", limit=3, window_seconds=60, retry_after=True
         )
     assert unknown.value.headers == {"Retry-After": "60"}
+
+
+@pytest.mark.asyncio
+async def test_retry_after_rounds_the_time_left_up(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Redis's TTL rounds to the nearest second: 1.4 s left would say 1 and the client would come
+    back early, and under half a second it says 0. The header is read in milliseconds instead."""
+    import app.infra as infra
+
+    redis = _window_counter(monkeypatch)
+    key = infra._rate_key("demo", "caller")
+    for left_ms, said in [(1400, "2"), (1600, "2"), (300, "1"), (59_200, "60"), (12_300, "13")]:
+        await redis.set(key, 10, px=left_ms)
+        with pytest.raises(AppError) as told:
+            await infra.enforce_named_rate_limit(
+                "demo", "caller", limit=3, window_seconds=60, retry_after=True
+            )
+        assert told.value.headers == {"Retry-After": said}, left_ms
+    # A key that expired between the count and the read: the window has just reset.
+    assert await infra._window_left("demo", "gone", 60) == 1
+
+    class Down:
+        async def pttl(self, _key: str) -> int:
+            raise RedisError("down")
+
+    monkeypatch.setattr(infra, "get_redis", lambda: Down())
+    assert await infra._window_left("demo", "caller", 60) == 60
+
+
+@pytest.mark.asyncio
+async def test_the_hourly_speech_limits_say_how_long_is_left(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The tool does not wait out an hour a minute at a time: it reads Retry-After past a minute
+    as a limit no retry clears (tools/video/tts/client.mjs)."""
+    import app.video_speech.align_api as align_api
+
+    _window_counter(monkeypatch)
+    monkeypatch.setattr(admin_api, "TRANSCRIBE_REQUESTS_PER_HOUR", 0)
+    monkeypatch.setattr(align_api, "ALIGN_REQUESTS_PER_HOUR", 0)
+    tool: Any = VideoToolToken(id=uuid4(), name="worker", token_hash="h", token_prefix="mkv_x")
+    unused: Any = object()
+    with pytest.raises(AppError) as transcribe:
+        await admin_api.transcribe_narration(unused, tool, unused)
+    with pytest.raises(AppError) as align:
+        await align_api.align_speech(unused, tool, unused)
+    for refused in (transcribe.value, align.value):
+        assert refused.status == 429 and refused.code == "rate_limit_exceeded"
+        assert refused.headers == {"Retry-After": "3600"}
 
 
 @pytest.mark.asyncio
@@ -416,8 +465,7 @@ async def test_the_video_tool_token_minute_answers_with_retry_after(
     with pytest.raises(AppError) as refused:
         await admin_api.video_tool(session, f"Bearer {token}")
     assert refused.value.status == 429 and refused.value.code == "rate_limit_exceeded"
-    assert refused.value.headers is not None
-    assert 1 <= int(refused.value.headers["Retry-After"]) <= 60
+    assert refused.value.headers == {"Retry-After": "60"}
 
 
 TOKENS = "/api/v1/admin/provider-settings/azure_speech/video-tool-tokens"

@@ -184,8 +184,13 @@ async def _align_audio(audio: str, text: str, language: str) -> AlignOut:
 async def align_speech(payload: AlignIn, tool: VideoTool, session: Session) -> AlignOut:
     """When each written unit of one phrase is spoken, from the voice's own boundaries or the
     server's aligner; one paid synthesis at most, never a second one."""
+    # Says how long is left, so the tool stops at once instead of waiting out an hour in minutes.
     await enforce_named_rate_limit(
-        "video_align", str(tool.id), limit=ALIGN_REQUESTS_PER_HOUR, window_seconds=3600
+        "video_align",
+        str(tool.id),
+        limit=ALIGN_REQUESTS_PER_HOUR,
+        window_seconds=3600,
+        retry_after=True,
     )
     try:
         if payload.speech is not None:

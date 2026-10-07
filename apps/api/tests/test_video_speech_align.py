@@ -393,7 +393,9 @@ async def test_an_azure_phrase_is_synthesized_once_with_its_boundaries_beside_th
     region, key, ssml, timeout = align_app["calls"][0]
     assert (region, key, timeout) == ("eastasia", "server-side-key", 90.0)
     assert "排行榜第一名，" in ssml and "server-side-key" not in ssml
-    assert align_app["limits"] == [("video_align", {"limit": 1200, "window_seconds": 3600})]
+    assert align_app["limits"] == [
+        ("video_align", {"limit": 1200, "window_seconds": 3600, "retry_after": True})
+    ]
 
 
 @pytest.mark.asyncio

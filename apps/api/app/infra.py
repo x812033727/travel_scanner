@@ -2,6 +2,7 @@ import hashlib
 import hmac
 import ipaddress
 import logging
+import math
 from collections.abc import Mapping
 from datetime import UTC, datetime
 from functools import lru_cache
@@ -133,13 +134,21 @@ async def enforce_named_rate_limit(
 
 
 async def _window_left(namespace: str, identifier: str, window_seconds: int) -> int:
-    """Whole seconds until this caller's window resets, at least 1 and at most the window."""
+    """Whole seconds until this caller's window resets, rounded up: at least 1, at most the window.
+
+    Read in milliseconds: Redis's ``TTL`` rounds to the nearest second, so a client that waits
+    exactly that long can arrive half a second early and be refused again, and under half a
+    second left it reads 0.
+    """
     try:
-        left = int(await get_redis().ttl(_rate_key(namespace, identifier)))
+        left_ms = int(await get_redis().pttl(_rate_key(namespace, identifier)))
     except RedisError:
         return window_seconds
-    # -1 (no expiry) or -2 (gone) cannot be a wait; the whole window is always enough.
-    return min(max(left, 1), window_seconds) if left > 0 else window_seconds
+    if left_ms == -2:  # gone: the window has just reset
+        return 1
+    if left_ms < 0:  # no expiry: it cannot say, and the whole window is always enough
+        return window_seconds
+    return min(max(math.ceil(left_ms / 1000), 1), window_seconds)
 
 
 async def over_named_rate_limit(

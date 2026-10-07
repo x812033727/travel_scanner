@@ -136,8 +136,8 @@ test("a paid request that never left, or that the API settled, is tried again an
     ["the API's rate limit", () => problem(429, "rate_limit_exceeded", { "Retry-After": "3" }), [3000]],
     // A host from before the header: the whole minute the limit counts, not 1 to 16 seconds.
     ["the API's rate limit without Retry-After", () => problem(429, "rate_limit_exceeded"), [60000]],
-    ["a Retry-After longer than the window", () => problem(429, "rate_limit_exceeded", { "Retry-After": "90" }), [60000]],
     ["a busy provider", () => problem(503, "video_speech_upstream_busy", { "Retry-After": "7" }), [7000]],
+    ["a busy provider asking for longer than a minute", () => problem(503, "video_speech_upstream_busy", { "Retry-After": "90" }), [60000]],
     // Also what the API answers for a provider read timeout after the request went out, which
     // may have been billed: 2026-10-05-speech-api-tells-a-provider-answer gives that its own code.
     ["a provider failure the API answered", () => problem(502, "video_speech_upstream_failed"), [1000]],
@@ -157,37 +157,54 @@ test("a paid request that never left, or that the API settled, is tried again an
 });
 
 test("a narration that goes over the per-token minute waits the window out and carries on", async () => {
-  // A fake API with the route's fixed window: LIMIT requests a minute on one token, and its 429
-  // says how long is left. The clock moves only when the client sleeps.
-  const LIMIT = 3;
-  let now = 0;
-  let windowStart = 0;
-  let used = 0;
-  let refused = 0;
-  const options = {
-    site: SITE,
-    token: TOKEN,
-    fetchImpl: async () => {
-      if (now - windowStart >= 60_000) [windowStart, used] = [now, 0];
-      if (++used > LIMIT) {
-        refused++;
-        return problem(429, "rate_limit_exceeded", { "Retry-After": String(Math.ceil((windowStart + 60_000 - now) / 1000)) });
-      }
-      return new Response(audio(), { status: 200, headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "2" } });
-    },
-    sleep: async (ms) => { now += ms; },
-  };
-  for (let line = 0; line < 10; line++) {
-    await synthesize({ ...options, body: { voice: "zh-TW-HsiaoChenNeural", segments: [{ parts: [{ text: `第 ${line} 行` }], break_after_ms: 0 }] } });
+  // A fake API with the route's fixed window: LIMIT requests a minute on one token. Its 429 says
+  // how long is left, rounded up as apps/api/app/infra.py does, or, as a host from before that
+  // header did, says nothing. The clock moves only when the client sleeps.
+  for (const header of [true, false]) {
+    const LIMIT = 3;
+    let now = 0;
+    let windowStart = 0;
+    let used = 0;
+    let refused = 0;
+    const options = {
+      site: SITE,
+      token: TOKEN,
+      fetchImpl: async () => {
+        if (now - windowStart >= 60_000) [windowStart, used] = [now, 0];
+        if (++used > LIMIT) {
+          refused++;
+          return problem(429, "rate_limit_exceeded", header ? { "Retry-After": String(Math.ceil((windowStart + 60_000 - now) / 1000)) } : {});
+        }
+        return new Response(audio(), { status: 200, headers: { "Content-Type": "audio/wav", "X-Billable-Characters": "2" } });
+      },
+      sleep: async (ms) => { now += ms; },
+    };
+    for (let line = 0; line < 10; line++) {
+      await synthesize({ ...options, body: { voice: "zh-TW-HsiaoChenNeural", segments: [{ parts: [{ text: `第 ${line} 行` }], break_after_ms: 0 }] } });
+    }
+    assert.ok(refused >= 3, `the limit was hit (${refused} refusals, header ${header})`);
+    assert.ok(now >= 3 * 60_000, `it waited the windows out (${now} ms, header ${header})`);
+    // Told how long is left, it is refused once a window; told nothing, it still waits whole minutes.
+    if (header) assert.equal(refused, 3);
   }
-  assert.ok(refused >= 3, `the limit was hit (${refused} refusals)`);
-  assert.ok(now >= 3 * 60_000, `it waited the windows out (${now} ms)`);
+});
+
+test("an hourly limit is told at once rather than waited out a minute at a time", async () => {
+  // Transcription and alignment also count by the hour; their 429 says how long is left.
+  const hourly = server([() => problem(429, "rate_limit_exceeded", { "Retry-After": "1800" })]);
+  await assert.rejects(PAID[0].send(hourly.options), (error) => error.code === "rate_limit_exceeded" && error.status === 429);
+  assert.equal(hourly.calls.length, 1);
+  assert.deepEqual(hourly.sleeps, []);
 });
 
 test("a settled failure that does not clear stops after the bounded attempts", async () => {
   const down = server([() => problem(502, "video_speech_upstream_failed")]);
   await assert.rejects(PAID[1].send(down.options), (error) => error.code === "video_speech_upstream_failed" && error.who === "service");
   assert.equal(down.calls.length, 5);
+  assert.deepEqual(down.sleeps, [1000, 2000, 4000, 8000], "no wait after the last try");
+  const limited = server([() => problem(429, "rate_limit_exceeded")]);
+  await assert.rejects(PAID[1].send(limited.options), (error) => error.code === "rate_limit_exceeded");
+  assert.deepEqual(limited.sleeps, [60000, 60000, 60000, 60000]);
   const unreached = server([() => problem(502, "upstream_unavailable")]);
   await assert.rejects(PAID[2].send(unreached.options), (error) => error.code === "upstream_unavailable" && error.who === "service");
   assert.equal(unreached.calls.length, 5);

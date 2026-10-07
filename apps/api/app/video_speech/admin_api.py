@@ -503,8 +503,13 @@ async def transcribe_narration(
     payload: TranscribeIn, tool: VideoTool, session: Session
 ) -> TranscribeOut:
     """One narrated line back as text, so the tool can check it against the script."""
+    # Says how long is left, so the tool stops at once instead of waiting out an hour in minutes.
     await enforce_named_rate_limit(
-        "video_transcribe", str(tool.id), limit=TRANSCRIBE_REQUESTS_PER_HOUR, window_seconds=3600
+        "video_transcribe",
+        str(tool.id),
+        limit=TRANSCRIBE_REQUESTS_PER_HOUR,
+        window_seconds=3600,
+        retry_after=True,
     )
     try:
         wav = base64.b64decode(payload.audio, validate=True)

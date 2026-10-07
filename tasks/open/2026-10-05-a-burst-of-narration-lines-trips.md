@@ -16,6 +16,8 @@ scope:
   - tools/video/tts/client.test.mjs
   - apps/api/app/video_speech/admin_api.py
   - apps/api/tests/test_video_speech.py
+  - apps/api/app/video_speech/align_api.py
+  - apps/api/tests/test_video_speech_align.py
 ---
 
 # A burst of narration lines trips the speech route's 120-a-minute limit and blocks the video
@@ -75,8 +77,8 @@ tests/test_video_speech.py -q`; after a deploy, `/admin/videos` shows the video 
 ## 2026-10-07 (claude-opus-5-5-speech-burst)
 
 - Both fixes. API: `enforce_named_rate_limit` (`app/infra.py`) takes `retry_after=False`; with it
-  the 429 carries `Retry-After` = the seconds left in the caller's fixed window (the key's TTL,
-  clamped to 1..window, the whole window when Redis cannot say). The `video_tool` dependency
+  the 429 carries `Retry-After` = the seconds left in the caller's fixed window (see the review
+  note below for how it is read). The `video_tool` dependency
   passes it; the ~110 other callers are unchanged (default off, tested). Scope widened to
   `app/infra.py` for that one keyword.
 - Client (`tools/video/tts/client.mjs`): a `Retry-After` is honoured up to the 60 s window as
@@ -95,3 +97,31 @@ tests/test_video_speech.py -q`; after a deploy, `/admin/videos` shows the video 
 - Left open: the production check (DoD 3) after a deploy, for the owner or the worker's retry;
   it also closes the last box of 2026-10-03-video-worker-narration-takes-made-stale.
 
+## 2026-10-07 review (claude-opus-5-5-speech-burst)
+
+An independent multi-lens review, each finding checked by two skeptics against a real
+redis-server 7.0.15, confirmed these, all fixed in a second commit:
+
+- Redis `TTL` rounds to the nearest second, so a client that waits exactly `Retry-After` came
+  back up to half a second early, was refused again, and under half a second the code read 0
+  as "unknown" and sent the whole window: an extra minute and a spent attempt about half the
+  time. `_window_left` now reads `PTTL` and rounds up (1..window); a key already gone (-2) is
+  1, since the window has just reset; no expiry (-1) or a Redis error is the whole window.
+  Tests pin exact values (1400 ms -> 2, 300 ms -> 1, 12 300 ms -> 13, gone -> 1, down -> 60);
+  the old tests accepted any value from 1 to 60.
+- The hourly limits on `speech/transcribe` and `speech/align` (1200 an hour a token) sent the
+  same 429 with no header, so the new 60 s fallback held a lane five minutes per call for a
+  limit that lasts the hour. Both now send `Retry-After` (scope widened to `align_api.py` and
+  its test), and the client throws at once on a rate limit whose `Retry-After` is past the
+  minute: no retry this call can afford clears it. A header-less rate limit now really means a
+  host from before this change.
+- The client slept after its last attempt, then threw; that sleep is gone (60 s on an exhausted
+  rate limit, up to 16 s elsewhere).
+- The burst simulation passed against the old client because its fake always sent the header.
+  It now also runs against a header-less fake (a host from before the change), which the old
+  1-16 s backoff fails; the new hourly and trailing-sleep tests fail against both earlier
+  clients.
+- Not changed: the other clients (`automation`, `media`, `review/sync`, `shorts/site`) also sleep
+  after their last attempt; with `Retry-After` on the token's minute that can be up to 60 s (30 s
+  for the last two) before a single-attempt caller throws. One skeptic of two found the cost
+  overstated (it predates this change and a one-try caller retries next round anyway); left as is.

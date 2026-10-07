@@ -79,14 +79,21 @@ async function problemOf(response) {
 
 // The API counts every video tool request on one token in a fixed minute (SPEECH_REQUESTS_PER_MINUTE
 // in apps/api/app/video_speech/admin_api.py), so a long narration, or two worker lanes on one
-// token, can go over it. Its 429 says how long is left (Retry-After); a host from before that
-// header gets the whole window, since 1 to 16 seconds of backoff runs out before the minute does.
+// token, can go over it. Its 429 says how long is left (Retry-After, rounded up); a host from
+// before that header gets the whole window, since 1 to 16 seconds of backoff runs out before the
+// minute does. Transcription and alignment also count by the hour, and their 429 says so with a
+// Retry-After past the minute: no wait this call can afford clears it, so it is not retried.
 // A 429 is refused before any provider call, so sending again buys nothing twice.
 const RATE_LIMIT_WINDOW_S = 60;
 
-function retryDelayMs(response, attempt, code = "") {
+const retryAfterS = (response) => {
   const header = Number(response?.headers.get("retry-after"));
-  if (Number.isFinite(header) && header > 0) return Math.min(header, RATE_LIMIT_WINDOW_S) * 1000;
+  return Number.isFinite(header) && header > 0 ? header : null;
+};
+
+function retryDelayMs(response, attempt, code = "") {
+  const header = retryAfterS(response);
+  if (header !== null) return Math.min(header, RATE_LIMIT_WINDOW_S) * 1000;
   if (response?.status === 429 && code === "rate_limit_exceeded") return RATE_LIMIT_WINDOW_S * 1000;
   return Math.min(2 ** attempt, 30) * 1000;
 }
@@ -103,7 +110,7 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts, paid 
     } catch (error) {
       if (paid && !neverSent(error)) throw uncertain(path, init.body, error.cause?.message ?? error.message);
       last = new SpeechError(`cannot reach ${site}: ${error.message}`, { code: "network" });
-      await sleep(retryDelayMs(null, attempt));
+      if (attempt + 1 < attempts) await sleep(retryDelayMs(null, attempt));
       continue;
     }
     if (response.ok) return response;
@@ -119,7 +126,9 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts, paid 
     }
     last = new SpeechError(message, { status: response.status, code: problem.code });
     if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
-    await sleep(retryDelayMs(response, attempt, problem.code));
+    if (response.status === 429 && problem.code === "rate_limit_exceeded" && retryAfterS(response) > RATE_LIMIT_WINDOW_S) throw last;
+    // No wait after the last try: nothing is sent after it.
+    if (attempt + 1 < attempts) await sleep(retryDelayMs(response, attempt, problem.code));
   }
   throw last;
 }
