@@ -63,6 +63,7 @@ test("a request the site keeps refusing is told after its last attempt, with no 
     await assert.rejects(mediaStatus(options), (error) => error instanceof MediaError && error.who === "service", what);
     assert.equal(calls, 5, what);
     assert.equal(waits.length, 4, `${what}: a wait between two attempts, none after the last`);
+    if (what === "a site that is down") assert.deepEqual(waits, [1000, 2000, 4000, 8000], "the first four, not the fifth");
   }
 });
 

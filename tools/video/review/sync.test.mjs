@@ -988,7 +988,7 @@ test("review-push distinguishes permanent request failures from service and owne
       const push = context(box, fetchImpl, { sleep: async (ms) => sleeps.push(ms) });
       assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], push.ctx), expected);
       assert.equal(sends, attempts);
-      assert.equal(sleeps.length, attempts - 1, "a wait between two attempts, none after the last");
+      assert.deepEqual(sleeps, [1000, 2000, 4000].slice(0, attempts - 1), "a wait between two attempts, none after the last");
       assert.ok(push.out.stderr.includes(detail), push.out.stderr);
       assert.equal(server.state.reviews.length, 0);
       assert.doesNotMatch(push.out.stdout, /submitted for review/);

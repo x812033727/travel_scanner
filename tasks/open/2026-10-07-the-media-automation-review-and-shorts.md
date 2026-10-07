@@ -74,3 +74,11 @@ learns the outcome, and a STOP file that waits as long.
   - Shorts: the same with four attempts;
   - review: the push-failure table now counts waits as attempts minus one, network included.
   - Removing the automation network guard fails its new test.
+- Review (2026-10-07, two lenses, each finding verified): no defects. It replayed 31 answer
+  sequences against every client and route shape, at one to five attempts: 1,674 cases. Old and
+  new send the same requests and throw the same error (class, message, status, code, `who`,
+  `retry_after`, `submission`). The only difference is the final sleep. It traced every caller
+  with fewer attempts (the Shorts lab's `subjectApi`, `renewal.mjs`, `judgeOutline`): none relied
+  on the trailing wait. Removing any one of the eight guards fails a test. Taken as optional
+  hardening: the media network case and the review table assert the exact waits, so a guard
+  moved to skip the first wait instead of the last is caught too.
