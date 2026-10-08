@@ -1,13 +1,13 @@
 ---
 id: 2026-10-08-complete-university-workplace-english
 title: Complete university and workplace English courses
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: codex-adult-english-series
 claimed_at: 2026-10-08T05:26:30Z
 created_at: 2026-10-08T05:26:29Z
-completed_at:
+completed_at: 2026-10-08T07:01:47Z
 branch: codex/university-workplace-english-20261008
 depends_on:
   - 2026-10-08-complete-all-six-senior-high-english
@@ -29,14 +29,14 @@ English. Each course has four seasons of twelve lessons, 96 videos total.
 - [x] Two original 48-lesson courses, independently reviewed in all five languages.
 - [x] 96 checked videos, 480 audio tracks and 384 SRT/VTT pairs.
 - [x] Two complete and eight seasonal ZIPs, players, catalogs and printable practice.
-- [ ] Required checks passed, portable evidence recorded and draft continuation PR opened.
+- [x] Required checks passed, portable evidence recorded and draft continuation PR opened.
 
 ## Steps
 
 - [x] Author and review all eight seasons; freeze each source before speech production.
 - [x] Create isolated adult-course renderer, validators, player and packaging tools.
 - [x] Produce and verify both courses, worksheets and all ten delivery archives.
-- [ ] Close this task in the final commit and open a draft PR.
+- [x] Close this task in the final commit and open a draft PR.
 
 ## How to verify
 
@@ -86,5 +86,6 @@ Only the two new documentation directories, tools/video/adult_english and this
 task change; every earlier course source/tool/media is preserved. Each new course
 uses a private speech cache; immutable earlier MP3/WAV files were reused with
 separate copied metadata. User authorizes complete delivery and a draft
-continuation PR, not merging or publishing. This task will close in the final
-commit after the draft PR is created.
+continuation PR, not merging or publishing. Draft PR #1385 was created successfully:
+https://github.com/x812033727/travel_scanner/pull/1385
+This task closes in the final commit in that PR. No merge or deployment occurred.
