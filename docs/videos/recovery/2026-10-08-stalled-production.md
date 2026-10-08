@@ -32,7 +32,7 @@ and check at most121 missing clips under the existing series USD40 authority.
 
 ## Evidence location
 
-`C:/Users/x8120/mokaair-work/stalled-video-audit-20261008/` holds the fresh production
+`<home>/mokaair-work/stalled-video-audit-20261008/` holds the fresh production
 snapshot, targeted layout/source checks and decoded loudness measurements.
 Actual execution results are appended below when available. This initial record
 does not claim completed exports, audio approval, selected-language delivery,
@@ -123,7 +123,7 @@ source552f70e9304ce7712da188cf0cd9f1d51be9e985731222a87ec3f64294840988 and
 the owning frozen worktree remain preserved. The episode cap remainsUSD40.
 
 Detailed audio and paid-request evidence is in
-`C:/Users/x8120/mokaair-work/stalled-video-completion-20261008/embedding-audio/`.
+`<home>/mokaair-work/stalled-video-completion-20261008/embedding-audio/`.
 
 ## Previously stalled selected-language text continuation
 

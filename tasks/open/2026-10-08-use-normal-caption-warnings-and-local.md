@@ -52,7 +52,7 @@ and rejected invalid-caption cases; never relax unknown-paid-request guards.
 ## Notes
 
 Detailed frozen candidates and proofs remain outside Git at
-C:/Users/x8120/mokaair-work/handoff/branding-peak-20261008/continuation/.
+<home>/mokaair-work/handoff/branding-peak-20261008/continuation/.
 The operational checkpoint is docs/videos/recovery/2026-10-08-stalled-production.md.
 Do not replay the free-versus-paid request interrupted by the unrelated15:51
 deployment. This follow-up files a code defect, not permission to restart paid work.

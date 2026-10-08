@@ -62,7 +62,7 @@ Using the bundled Node 24 runtime:
   tgby changes from null to sound in both primary and secondary transcripts.
   htb5, ew6e, kr2g, yqpn and bc5q remain null in both. No cache, flags, audio
   approval, provider call or production file was changed by this code task.
-- Logs and offline result: C:/Users/x8120/mokaair-work/stalled-video-completion-20261008/embedding-audio/particle-*.log and particle-offline-recheck.json.
+- Logs and offline result: <home>/mokaair-work/stalled-video-completion-20261008/embedding-audio/particle-*.log and particle-offline-recheck.json.
 - Independent review caught a new semantic false pass when lexical 氣餒 or
   好耶 appeared before a comma. New negative tests reproduced it (exit 1), then
   the candidate was narrowed to retain 氣餒/气馁 and 好耶 while allowing a

@@ -50,7 +50,7 @@ stay outside Git. Keep any failed checks and pending reviews truthful.
 
 ## Notes
 
-- Fresh snapshot: `C:/Users/x8120/mokaair-work/stalled-video-audit-20261008/live-readonly.jsonl`.
+- Fresh snapshot: `<home>/mokaair-work/stalled-video-audit-20261008/live-readonly.jsonl`.
   Production SHA bcba139a; slides enabled, shared cap USD80, drama disabled.
 - Targeted retained-media recovery is authorized by the current owner request.
   No global setting, cap, uploader, deployment or YouTube publication is needed.

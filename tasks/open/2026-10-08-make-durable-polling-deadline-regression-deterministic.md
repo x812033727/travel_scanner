@@ -45,6 +45,6 @@ assertions, not only that a timeout was lengthened.
 
 ## Notes
 
-Outside-Git evidence: C:/Users/x8120/mokaair-work/stalled-video-audit-20261008/test-tools.log,
+Outside-Git evidence: <home>/mokaair-work/stalled-video-audit-20261008/test-tools.log,
 test beginning at571 and final assertion at2240. No change to the implementation
 or any provider retry was made while filing this follow-up.

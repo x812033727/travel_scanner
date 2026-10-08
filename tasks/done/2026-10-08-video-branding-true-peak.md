@@ -67,7 +67,7 @@ for the source-bound production project; read actual checks and review decisions
   corrected decoded peak was -1.9 dBTP. The WAV had exactly 576000 samples per
   channel, with body/outro phase tests at their original absolute offsets.
 - Offline smoke evidence is outside git at
-  `C:/Users/x8120/mokaair-work/handoff/branding-peak-20261008/smoke/evidence.json`:
+  `<home>/mokaair-work/handoff/branding-peak-20261008/smoke/evidence.json`:
   540 frames / 18 seconds, 864000 WAV samples per channel, decoded peak -2 dBTP,
   retained body SHA unchanged, quiet body PCM difference at most one unit away
   from seams, CC 5000-15000 ms and unchanged chapter/frame offsets. This synthetic
@@ -86,4 +86,4 @@ for the source-bound production project; read actual checks and review decisions
 - Later Cloudflare pacing repair was exported into an isolated draft547s/
   -14LUFS/-1.9dBTP. The old approved final hash remains untouched. No deployment
   or approval transfer was performed. Detailed outside-Git stage receipts are
-  in C:/Users/x8120/mokaair-work/stalled-video-audit-20261008/.
+  in <home>/mokaair-work/stalled-video-audit-20261008/.
