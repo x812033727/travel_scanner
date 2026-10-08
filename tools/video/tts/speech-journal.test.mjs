@@ -1,19 +1,22 @@
 // The speech journal (speech-journal.mjs) with the real client (client.mjs) and an injected
 // counting fetch: nothing here reaches a live, paid endpoint.
 import assert from "node:assert/strict";
-import fs, { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
+import fs, { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { syncBuiltinESMExports } from "node:module";
 import path from "node:path";
 import test from "node:test";
 
 import { EXIT, main as cli } from "../cli.mjs";
 import { fixture, sandbox, tempDir } from "../core/fixtures/load.mjs";
+import { atomicWrite } from "../core/paths.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
 import { ARTIFACTS, loadProject } from "../core/state.mjs";
 import { serverNarration, phraseBody } from "../shorts/speech.mjs";
 import { SPEECH_UNCERTAIN, SpeechError, synthesize } from "./client.mjs";
 import { planRequests } from "./requests.mjs";
-import { JOURNAL_DIR, listSpeechJournal, main as journalCli, openSpeechJournal, requestSha256, SPEECH_TAKEN_OVER } from "./speech-journal.mjs";
+import { JOURNAL_DIR, judgeBody, listSpeechJournal, main as journalCli, openSpeechJournal, requestSha256, SPEECH_TAKEN_OVER, transcribeBody } from "./speech-journal.mjs";
 import { concatSamples, encodeWav, parseWav } from "./wav.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -603,4 +606,559 @@ test("a Short's server phrase holds when lost, and is taken from the journal whe
   assert.deepEqual(built.clips[1], bought.wav);
   assert.deepEqual(readdirSync(path.join(cacheDir, JOURNAL_DIR)), []);
   assert.ok(existsSync(cacheDir));
+});
+
+// --- complete answers whose canonical confirmation could not be promoted -----------------------
+// These fixtures inject only local I/O failures. A restarted journal gets an explicitly dead
+// producer probe; no production PID, media directory, or paid endpoint is involved.
+const fullSha = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const pretty = (value) => `${JSON.stringify(value, null, 2)}\n`;
+const fixedRecoveryTime = () => new Date("2026-10-08T00:00:00Z");
+const quietJournalIO = { stdout: { write() {} }, stderr: { write() {} } };
+const recoveryAudio = encodeWav(tone(4800));
+const recoveryTranscription = { wav: recoveryAudio, terms: ["Mokaair"], language: "ja" };
+const recoveryJudgement = {
+  lines: [{ id: "one", expected: "Hello", heard: "Hello" }, { id: "two", expected: "World", heard: "Word" }],
+  language: "en",
+};
+const recoveryRoutes = [
+  {
+    name: "full WAV", sha: requestSha256(body), answer: { wav: recoveryAudio, billable: 37 },
+    invoke: (journal, send) => journal.wrap(send)(body),
+    check: (answer) => {
+      assert.deepEqual(answer.wav, recoveryAudio);
+      assert.deepEqual([answer.billable, answer.reused], [0, true]);
+    },
+  },
+  {
+    name: "ASR text", sha: requestSha256(transcribeBody(recoveryTranscription)), answer: "Mokaair の字幕です。",
+    invoke: (journal, send) => journal.wrapTranscribe(send)(recoveryTranscription),
+    check: (answer) => assert.equal(answer, "Mokaair の字幕です。"),
+  },
+  {
+    name: "Jev results", sha: requestSha256(judgeBody(recoveryJudgement)), answer: new Map([["one", 0.97], ["two", NaN]]),
+    invoke: (journal, send) => journal.wrapJudge(send)(recoveryJudgement),
+    check: (answer) => assert.deepEqual(answer, new Map([["one", 0.97], ["two", NaN]])),
+  },
+];
+
+async function failedConfirmation(spec = recoveryRoutes[0]) {
+  const dir = journalIn();
+  const canonical = path.join(dir, `${spec.sha}.json`);
+  const staged = path.join(dir, `${spec.sha}.answer.json`);
+  const temporary = `${canonical}.${process.pid}.tmp`;
+  let calls = 0;
+  let confirmed;
+  const write = (file, data) => {
+    if (file === canonical && JSON.parse(String(data)).status === "confirmed") {
+      confirmed = Buffer.from(data);
+      writeFileSync(temporary, confirmed);
+      throw Object.assign(new Error("injected confirmed receipt EPERM"), { code: "EPERM" });
+    }
+    atomicWrite(file, data);
+  };
+  const first = openSpeechJournal(dir, { now: fixedRecoveryTime, write, processAlive: () => false });
+  const send = async () => { calls += 1; return spec.answer; };
+  await assert.rejects(spec.invoke(first, send), (error) => error.code === "EPERM");
+  assert.equal(calls, 1);
+  assert.equal(entry(dir, spec.sha).status, "sent");
+  assert.ok(existsSync(staged), "the complete staged confirmation survives the failed rename");
+  const sent = readFileSync(canonical);
+  const envelope = JSON.parse(readFileSync(staged, "utf8"));
+  assert.equal(envelope.sent_sha256, fullSha(sent));
+  assert.equal(envelope.sent_bytes, sent.length);
+  assert.equal(envelope.confirmed_sha256, fullSha(confirmed));
+  assert.equal(envelope.confirmed_bytes, confirmed.length);
+  assert.deepEqual(Buffer.from(envelope.confirmed_base64, "base64"), confirmed);
+  return { dir, canonical, staged, temporary, sent, confirmed, spec, send, calls: () => calls };
+}
+
+function archiveSnapshot(dir) {
+  const archive = path.join(dir, "recovery");
+  const files = new Map();
+  function walk(directory) {
+    if (!existsSync(directory)) return;
+    for (const item of readdirSync(directory, { withFileTypes: true })) {
+      const file = path.join(directory, item.name);
+      if (item.isDirectory()) walk(file);
+      else if (item.isFile()) files.set(path.relative(archive, file), readFileSync(file));
+    }
+  }
+  walk(archive);
+  return files;
+}
+
+function replaceCandidates(failed, confirmed) {
+  const raw = Buffer.from(pretty(confirmed));
+  const envelope = JSON.parse(readFileSync(failed.staged, "utf8"));
+  writeFileSync(failed.staged, pretty({ ...envelope, confirmed_sha256: fullSha(raw), confirmed_bytes: raw.length, confirmed_base64: raw.toString("base64") }));
+  writeFileSync(failed.temporary, raw);
+}
+
+test("a failed confirmed promotion preserves and reuses complete WAV, ASR and Jev answers after restart", async (t) => {
+  for (const spec of recoveryRoutes) {
+    await t.test(spec.name, async () => {
+      const failed = await failedConfirmation(spec);
+      const restarted = openSpeechJournal(failed.dir, { processAlive: () => false });
+      spec.check(await spec.invoke(restarted, failed.send));
+      assert.equal(failed.calls(), 1, "recovery never resends the paid request");
+      assert.equal(restarted.reused, 1);
+      assert.deepEqual(readFileSync(failed.canonical), failed.sent, "recovery does not promote or rewrite sent");
+      const archived = archiveSnapshot(failed.dir);
+      assert.ok([...archived.values()].some((bytes) => bytes.equals(failed.sent)), "original full sent bytes are archived");
+      assert.ok([...archived.values()].some((bytes) => bytes.equals(failed.confirmed)), "original full confirmation bytes are archived");
+      if (spec.name === "full WAV") assert.ok([...archived.values()].some((bytes) => bytes.equals(recoveryAudio)), "the full WAV is archived");
+      assert.ok([...archived.keys()].some((file) => path.basename(file) === "proof.json"));
+      const again = openSpeechJournal(failed.dir, { processAlive: () => false });
+      spec.check(await spec.invoke(again, failed.send));
+      assert.deepEqual(archiveSnapshot(failed.dir), archived, "repeated recovery keeps every archived byte unchanged");
+      assert.equal(failed.calls(), 1);
+      restarted.release();
+      assert.ok(!existsSync(failed.canonical));
+      assert.ok(!existsSync(failed.staged));
+      assert.deepEqual(archiveSnapshot(failed.dir), archived, "cache release preserves recovery evidence");
+    });
+  }
+});
+
+test("a staged confirmation alone survives a restart without relying on the failed rename temporary", async () => {
+  const failed = await failedConfirmation();
+  rmSync(failed.temporary);
+  const restarted = openSpeechJournal(failed.dir, { processAlive: () => false });
+  failed.spec.check(await failed.spec.invoke(restarted, failed.send));
+  assert.equal(failed.calls(), 1);
+});
+
+test("a complete answer after a settled waiting resend survives local promotion failure bound to the final sent receipt", async (t) => {
+  for (const takeover of [false, true]) {
+    await t.test(takeover ? "another run resumes the waiting request" : "the original run wakes and resends", async () => {
+      const dir = journalIn();
+      const sha = requestSha256(body);
+      const canonical = path.join(dir, `${sha}.json`);
+      const server = speechServer([limited]);
+      const fetch = server.fetchImpl;
+      const sentAttempts = [];
+      server.fetchImpl = async (url, init) => {
+        if (url.endsWith("/api/video/speech")) sentAttempts.push(readFileSync(canonical));
+        return fetch(url, init);
+      };
+      if (takeover) {
+        const stopped = sleeper(dir, server);
+        stopped.send(body);
+        await until(() => stopped.waits.length === 1);
+        assert.equal(entry(dir, sha).status, "waiting");
+      }
+      let clock = 0;
+      let injected = 0;
+      const journal = openSpeechJournal(dir, {
+        now: () => new Date(Date.parse("2026-10-08T00:00:00Z") + clock++ * 1000),
+        write(file, data) {
+          if (file === canonical && JSON.parse(String(data)).status === "confirmed") {
+            injected += 1;
+            writeFileSync(`${file}.${process.pid}.tmp`, data);
+            throw Object.assign(new Error("injected post-resume confirmed EPERM"), { code: "EPERM" });
+          }
+          atomicWrite(file, data);
+        },
+      });
+      await assert.rejects(journal.wrap((sent) => synthesize({ ...options(server), body: sent }))(body), (error) => error.code === "EPERM");
+      assert.equal(injected, 1);
+      assert.equal(server.posts.length, 2, "one settled refusal followed by one successful answer");
+      assert.equal(sentAttempts.length, 2);
+      assert.notEqual(fullSha(sentAttempts[0]), fullSha(sentAttempts[1]), "the resumed POST has its own actual final sent bytes");
+      const finalSent = readFileSync(canonical);
+      assert.deepEqual(finalSent, sentAttempts[1]);
+      assert.equal(JSON.parse(finalSent).status, "sent");
+      assert.equal(JSON.parse(finalSent).producer_pid, process.pid);
+      if (takeover) assert.notEqual(JSON.parse(sentAttempts[0]).generation, JSON.parse(finalSent).generation);
+      else assert.equal(JSON.parse(sentAttempts[0]).generation, JSON.parse(finalSent).generation);
+      const stage = JSON.parse(readFileSync(path.join(dir, `${sha}.answer.json`), "utf8"));
+      assert.equal(stage.sent_sha256, fullSha(finalSent));
+      assert.equal(stage.sent_bytes, finalSent.length);
+      const confirmed = JSON.parse(Buffer.from(stage.confirmed_base64, "base64"));
+      assert.equal(confirmed.sent_sha256, fullSha(finalSent));
+      assert.equal(confirmed.generation, JSON.parse(finalSent).generation);
+      const fullWav = readFileSync(path.join(dir, `${sha}.wav`));
+      let recoveryCalls = 0;
+      const restarted = openSpeechJournal(dir, { processAlive: () => false });
+      const answer = await restarted.wrap(async () => { recoveryCalls += 1; assert.fail("a saved post-resume answer is not sent again"); })(body);
+      assert.deepEqual(answer.wav, fullWav);
+      assert.deepEqual([answer.billable, answer.reused, restarted.reused, recoveryCalls], [0, true, 1, 0]);
+      assert.equal(server.posts.length, 2);
+      assert.deepEqual(readFileSync(canonical), finalSent);
+      assert.ok([...archiveSnapshot(dir).values()].some((bytes) => bytes.equals(finalSent)));
+    });
+  }
+});
+
+test("a real closed producer's complete answer is reused after restart using the default PID probe", async () => {
+  const dir = journalIn();
+  const journalURL = new URL("./speech-journal.mjs", import.meta.url).href;
+  const pathsURL = new URL("../core/paths.mjs", import.meta.url).href;
+  const script = `
+    import assert from "node:assert/strict";
+    import { existsSync, readFileSync, writeFileSync } from "node:fs";
+    import path from "node:path";
+    import { openSpeechJournal, requestSha256 } from ${JSON.stringify(journalURL)};
+    import { atomicWrite } from ${JSON.stringify(pathsURL)};
+    const [dir, base64, serializedBody] = process.argv.slice(1);
+    const body = JSON.parse(serializedBody);
+    const sha = requestSha256(body);
+    const canonical = path.join(dir, sha + ".json");
+    let calls = 0;
+    let injected = 0;
+    const journal = openSpeechJournal(dir, {
+      write(file, data) {
+        if (file === canonical && JSON.parse(String(data)).status === "confirmed") {
+          injected += 1;
+          writeFileSync(file + "." + process.pid + ".tmp", data);
+          throw Object.assign(new Error("injected confirmed receipt EPERM"), { code: "EPERM" });
+        }
+        atomicWrite(file, data);
+      },
+    });
+    await assert.rejects(journal.wrap(async () => {
+      calls += 1;
+      return { wav: Buffer.from(base64, "base64"), billable: 23 };
+    })(body), (error) => error.code === "EPERM");
+    assert.equal(calls, 1);
+    assert.equal(injected, 1, "the observed failure is the injected confirmation promotion");
+    assert.equal(JSON.parse(readFileSync(canonical, "utf8")).status, "sent");
+    assert.ok(existsSync(path.join(dir, sha + ".answer.json")));
+    console.log(JSON.stringify({ pid: process.pid, calls, injected }));
+  `;
+  const closed = spawnSync(process.execPath, ["--input-type=module", "--eval", script, dir, recoveryAudio.toString("base64"), JSON.stringify(body)], {
+    encoding: "utf8", timeout: 20000, windowsHide: true,
+  });
+  assert.ifError(closed.error);
+  assert.equal(closed.status, 0, `producer failed: ${closed.stderr || closed.stdout}`);
+  assert.equal(closed.signal, null);
+  const producer = JSON.parse(closed.stdout.trim());
+  assert.ok(Number.isInteger(producer.pid) && producer.pid !== process.pid);
+  assert.deepEqual([producer.calls, producer.injected], [1, 1]);
+  assert.equal(entry(dir, requestSha256(body)).producer_pid, producer.pid);
+  let parentCalls = 0;
+  const restarted = openSpeechJournal(dir);
+  const answer = await restarted.wrap(async () => { parentCalls += 1; assert.fail("a closed producer's complete answer is not bought again"); })(body);
+  assert.deepEqual(answer.wav, recoveryAudio);
+  assert.deepEqual([answer.billable, answer.reused, restarted.reused, parentCalls], [0, true, 1, 0]);
+  assert.equal(entry(dir, requestSha256(body)).status, "sent", "default-probe recovery still leaves canonical unchanged");
+  const archived = archiveSnapshot(dir);
+  assert.ok([...archived.values()].some((bytes) => bytes.equals(recoveryAudio)));
+  assert.equal([...archived.keys()].filter((file) => path.basename(file) === "proof.json").length, 1);
+});
+
+test("a live or unknown confirmed-answer producer remains held without altering evidence", async (t) => {
+  for (const state of [true, null]) {
+    await t.test(String(state), async () => {
+      const failed = await failedConfirmation();
+      const staged = readFileSync(failed.staged);
+      const temporary = readFileSync(failed.temporary);
+      await assert.rejects(failed.spec.invoke(openSpeechJournal(failed.dir, { processAlive: () => state }), failed.send), held());
+      assert.equal(failed.calls(), 1);
+      assert.deepEqual(readFileSync(failed.canonical), failed.sent);
+      assert.deepEqual(readFileSync(failed.staged), staged);
+      assert.deepEqual(readFileSync(failed.temporary), temporary);
+      assert.equal(archiveSnapshot(failed.dir).size, 0);
+    });
+  }
+});
+
+test("missing, changed, truncated or wrong-format full WAVs hold despite complete confirmation JSON", async (t) => {
+  const changes = {
+    missing: (file) => rmSync(file),
+    changed: (file) => { const bytes = readFileSync(file); bytes[bytes.length - 1] ^= 1; writeFileSync(file, bytes); },
+    truncated: (file) => writeFileSync(file, readFileSync(file).subarray(0, 44)),
+    "wrong format with matching hash": (file, failed) => {
+      const bytes = readFileSync(file);
+      bytes.writeUInt16LE(2, 22);
+      writeFileSync(file, bytes);
+      replaceCandidates(failed, { ...JSON.parse(failed.confirmed), wav_sha256: fullSha(bytes), wav_bytes: bytes.length });
+    },
+  };
+  for (const [name, change] of Object.entries(changes)) {
+    await t.test(name, async () => {
+      const failed = await failedConfirmation();
+      change(path.join(failed.dir, `${failed.spec.sha}.wav`), failed);
+      const staged = readFileSync(failed.staged);
+      await assert.rejects(failed.spec.invoke(openSpeechJournal(failed.dir, { processAlive: () => false }), failed.send), held());
+      assert.equal(failed.calls(), 1);
+      assert.deepEqual(readFileSync(failed.canonical), failed.sent);
+      assert.deepEqual(readFileSync(failed.staged), staged);
+    });
+  }
+});
+
+test("corrupt hashes and malformed inline answers cannot become recovered ASR or Jev evidence", async (t) => {
+  const cases = [
+    ["ASR hash changed", recoveryRoutes[1], (saved) => ({ ...saved, answer_sha256: "0".repeat(64) })],
+    ["ASR text is not a string", recoveryRoutes[1], (saved) => { const answer = { text: 123 }; return { ...saved, answer, answer_sha256: fullSha(JSON.stringify(answer)) }; }],
+    ["Jev hash changed", recoveryRoutes[2], (saved) => ({ ...saved, answer_sha256: "0".repeat(64) })],
+    ["Jev results is not an array", recoveryRoutes[2], (saved) => { const answer = { results: {} }; return { ...saved, answer, answer_sha256: fullSha(JSON.stringify(answer)) }; }],
+  ];
+  for (const [name, spec, change] of cases) {
+    await t.test(name, async () => {
+      const failed = await failedConfirmation(spec);
+      replaceCandidates(failed, change(JSON.parse(failed.confirmed)));
+      const staged = readFileSync(failed.staged);
+      await assert.rejects(spec.invoke(openSpeechJournal(failed.dir, { processAlive: () => false }), failed.send), held());
+      assert.equal(failed.calls(), 1);
+      assert.deepEqual(readFileSync(failed.canonical), failed.sent);
+      assert.deepEqual(readFileSync(failed.staged), staged);
+    });
+  }
+});
+
+test("missing confirmations, changed sent generation and held canonical receipts never recover or resend", async (t) => {
+  const changes = {
+    "no complete confirmation": (failed) => { rmSync(failed.staged); rmSync(failed.temporary); },
+    "another sent generation": (failed) => writeFileSync(failed.canonical, pretty({ ...JSON.parse(failed.sent), generation: "another-generation" })),
+    "canonical held": (failed) => writeFileSync(failed.canonical, pretty({ ...JSON.parse(failed.sent), status: "held", held_at: fixedRecoveryTime().toISOString(), why: "owner hold" })),
+    "canonical unreadable": (failed) => writeFileSync(failed.canonical, '{"status":'),
+  };
+  for (const [name, change] of Object.entries(changes)) {
+    await t.test(name, async () => {
+      const failed = await failedConfirmation();
+      change(failed);
+      const canonical = readFileSync(failed.canonical);
+      await assert.rejects(failed.spec.invoke(openSpeechJournal(failed.dir, { processAlive: () => false }), failed.send), held());
+      assert.equal(failed.calls(), 1);
+      assert.deepEqual(readFileSync(failed.canonical), canonical);
+    });
+  }
+});
+
+test("two different complete confirmations for the same sent generation hold instead of choosing an answer", async () => {
+  const failed = await failedConfirmation(recoveryRoutes[1]);
+  const original = readFileSync(failed.temporary);
+  const saved = JSON.parse(failed.confirmed);
+  const answer = { text: "A different complete transcript" };
+  replaceCandidates(failed, { ...saved, answer, answer_sha256: fullSha(JSON.stringify(answer)) });
+  writeFileSync(failed.temporary, original);
+  await assert.rejects(failed.spec.invoke(openSpeechJournal(failed.dir, { processAlive: () => false }), failed.send), held());
+  assert.equal(failed.calls(), 1);
+  assert.deepEqual(readFileSync(failed.canonical), failed.sent);
+  assert.equal(archiveSnapshot(failed.dir).size, 0);
+});
+
+test("a partial or inconsistent staged envelope holds when no complete legacy candidate exists", async (t) => {
+  const changes = {
+    "partial JSON": () => '{"schema_version":',
+    "wrong confirmed size": (saved) => pretty({ ...saved, confirmed_bytes: saved.confirmed_bytes + 1 }),
+    "wrong confirmed hash": (saved) => pretty({ ...saved, confirmed_sha256: "0".repeat(64) }),
+    "wrong sent size": (saved) => pretty({ ...saved, sent_bytes: saved.sent_bytes + 1 }),
+    "partial confirmed bytes": (saved) => pretty({ ...saved, confirmed_base64: Buffer.from(saved.confirmed_base64, "base64").subarray(0, 20).toString("base64") }),
+  };
+  for (const [name, change] of Object.entries(changes)) {
+    await t.test(name, async () => {
+      const failed = await failedConfirmation();
+      rmSync(failed.temporary);
+      writeFileSync(failed.staged, change(JSON.parse(readFileSync(failed.staged, "utf8"))));
+      const staged = readFileSync(failed.staged);
+      await assert.rejects(failed.spec.invoke(openSpeechJournal(failed.dir, { processAlive: () => false }), failed.send), held());
+      assert.equal(failed.calls(), 1);
+      assert.deepEqual(readFileSync(failed.canonical), failed.sent);
+      assert.deepEqual(readFileSync(failed.staged), staged);
+    });
+  }
+});
+
+test("redacted ASR request identity must match the incoming clip, terms and language before recovery", async () => {
+  const failed = await failedConfirmation(recoveryRoutes[1]);
+  const changedSent = { ...JSON.parse(failed.sent), request: { ...JSON.parse(failed.sent).request, language: "ko" } };
+  const rawSent = Buffer.from(pretty(changedSent));
+  writeFileSync(failed.canonical, rawSent);
+  const confirmed = { ...JSON.parse(failed.confirmed), request: changedSent.request, sent_sha256: fullSha(rawSent) };
+  replaceCandidates(failed, confirmed);
+  const staged = JSON.parse(readFileSync(failed.staged, "utf8"));
+  writeFileSync(failed.staged, pretty({ ...staged, sent_sha256: fullSha(rawSent), sent_bytes: rawSent.length }));
+  await assert.rejects(failed.spec.invoke(openSpeechJournal(failed.dir, { processAlive: () => false }), failed.send), held());
+  assert.equal(failed.calls(), 1);
+  assert.deepEqual(readFileSync(failed.canonical), rawSent);
+  assert.equal(archiveSnapshot(failed.dir).size, 0);
+});
+
+test("archival I/O failure preserves the complete answer and a later recovery resumes without resending", async () => {
+  const failed = await failedConfirmation();
+  const staged = readFileSync(failed.staged);
+  const temporary = readFileSync(failed.temporary);
+  const interrupted = openSpeechJournal(failed.dir, {
+    processAlive: () => false,
+    create: (file) => {
+      if (file.includes(`${path.sep}recovery${path.sep}`)) throw Object.assign(new Error("injected archive failure"), { code: "EPERM" });
+      assert.ok(existsSync(file), "the canonical sent receipt already exists");
+      return false;
+    },
+  });
+  await assert.rejects(failed.spec.invoke(interrupted, failed.send));
+  assert.equal(failed.calls(), 1);
+  assert.deepEqual(readFileSync(failed.canonical), failed.sent);
+  assert.deepEqual(readFileSync(failed.staged), staged);
+  assert.deepEqual(readFileSync(failed.temporary), temporary);
+  const restarted = openSpeechJournal(failed.dir, { processAlive: () => false });
+  failed.spec.check(await failed.spec.invoke(restarted, failed.send));
+  assert.equal(failed.calls(), 1);
+});
+
+test("recovery refuses archive directory junctions rather than writing evidence outside its journal", async (t) => {
+  for (const level of ["recovery", "generation"]) {
+    await t.test(level, async () => {
+      const failed = await failedConfirmation();
+      const outside = tempDir("speech-unrelated-archive-");
+      const recovery = path.join(failed.dir, "recovery");
+      const link = level === "recovery" ? recovery : path.join(recovery, fullSha(failed.sent));
+      if (level === "generation") mkdirSync(recovery);
+      symlinkSync(outside, link, "junction");
+      const staged = readFileSync(failed.staged);
+      await assert.rejects(failed.spec.invoke(openSpeechJournal(failed.dir, { processAlive: () => false }), failed.send), held());
+      assert.deepEqual(readdirSync(outside), [], "no evidence is created through the archive directory link");
+      assert.deepEqual(readFileSync(failed.canonical), failed.sent);
+      assert.deepEqual(readFileSync(failed.staged), staged);
+      assert.equal(failed.calls(), 1);
+    });
+  }
+});
+
+function fixtureCreateOnce(file, data) {
+  try { writeFileSync(file, data, { flag: "wx" }); return true; }
+  catch (error) { if (error.code === "EEXIST") return false; throw error; }
+}
+
+test("interrupted recovery after copying evidence resumes with the same immutable bytes and no new POST", async () => {
+  const failed = await failedConfirmation();
+  const interrupted = openSpeechJournal(failed.dir, {
+    processAlive: () => false,
+    create: (file, data) => {
+      if (path.basename(file) === "proof.json") throw Object.assign(new Error("injected before proof commit"), { code: "EPERM" });
+      return fixtureCreateOnce(file, data);
+    },
+  });
+  await assert.rejects(failed.spec.invoke(interrupted, failed.send));
+  const before = archiveSnapshot(failed.dir);
+  assert.ok(before.size >= 3, "interruption happens after complete sent, confirmed and WAV evidence is copied");
+  assert.ok(![...before.keys()].some((file) => path.basename(file) === "proof.json"));
+  failed.spec.check(await failed.spec.invoke(openSpeechJournal(failed.dir, { processAlive: () => false }), failed.send));
+  const after = archiveSnapshot(failed.dir);
+  for (const [name, bytes] of before) assert.deepEqual(after.get(name), bytes, "resumption never changes earlier evidence");
+  assert.equal([...after.keys()].filter((file) => path.basename(file) === "proof.json").length, 1);
+  assert.equal(failed.calls(), 1);
+});
+
+test("a canonical hold created during archival prevents answer hand-out after recovery evidence is saved", async () => {
+  const failed = await failedConfirmation();
+  const heldBytes = Buffer.from(pretty({ ...JSON.parse(failed.sent), status: "held", held_at: fixedRecoveryTime().toISOString(), why: "owner hold while copying evidence" }));
+  const restarted = openSpeechJournal(failed.dir, {
+    processAlive: () => false,
+    create: (file, data) => {
+      if (path.basename(file) === "proof.json") writeFileSync(failed.canonical, heldBytes);
+      return fixtureCreateOnce(file, data);
+    },
+  });
+  await assert.rejects(failed.spec.invoke(restarted, failed.send), held());
+  assert.deepEqual(readFileSync(failed.canonical), heldBytes, "recovery does not overwrite the newer hold");
+  assert.equal(restarted.reused, 0);
+  assert.equal(failed.calls(), 1);
+  assert.ok(archiveSnapshot(failed.dir).size > 0, "preserved evidence cannot override canonical ownership");
+});
+
+test("recovery archive evidence does not authorize reuse after an explicit forget and new same-body retake", async () => {
+  const failed = await failedConfirmation();
+  const oldReader = openSpeechJournal(failed.dir, { processAlive: () => false });
+  failed.spec.check(await failed.spec.invoke(oldReader, failed.send));
+  const archived = archiveSnapshot(failed.dir);
+  assert.equal(journalCli(["forget", "--dir", failed.dir, "--sha", failed.spec.sha], quietJournalIO), 0);
+  let retakeCalls = 0;
+  const different = encodeWav(tone(4800, 11));
+  const retake = openSpeechJournal(failed.dir, { now: fixedRecoveryTime });
+  const answer = await retake.wrap(async () => { retakeCalls += 1; return { wav: different, billable: 19 }; })(body);
+  assert.deepEqual(answer.wav, different);
+  assert.equal(retakeCalls, 1, "the requested retake buys its own answer despite matching body and timestamp");
+  const newCanonical = readFileSync(failed.canonical);
+  assert.ok(!existsSync(failed.staged), "successful canonical confirmation retires its staged receipt");
+  oldReader.release();
+  assert.deepEqual(readFileSync(failed.canonical), newCanonical, "the stale reader cannot release a newer generation");
+  assert.deepEqual(readFileSync(path.join(failed.dir, `${failed.spec.sha}.wav`)), different, "the stale reader cannot delete the newer answer");
+  assert.ok(!existsSync(failed.staged));
+  assert.deepEqual(archiveSnapshot(failed.dir), archived, "old immutable evidence remains available");
+  assert.equal(failed.calls(), 1);
+});
+
+test("successful confirmation cleanup cannot unlink a newer same-body generation's staged answer", async () => {
+  const dir = journalIn();
+  const sha = requestSha256(body);
+  const canonical = path.join(dir, `${sha}.json`);
+  const staged = path.join(dir, `${sha}.answer.json`);
+  const wavFile = path.join(dir, `${sha}.wav`);
+  const newerWav = encodeWav(tone(4800, 11));
+  let newerSentBytes;
+  let newerStageBytes;
+  let calls = 0;
+  const journal = openSpeechJournal(dir, {
+    now: fixedRecoveryTime,
+    write(file, data) {
+      atomicWrite(file, data);
+      if (file !== canonical || JSON.parse(String(data)).status !== "confirmed") return;
+      // Model another owner's explicit same-body retake at the boundary between the old
+      // canonical confirmation and its local staged-receipt cleanup. No second sender runs.
+      const confirmed = JSON.parse(String(data));
+      const newerSent = { ...confirmed, status: "sent", generation: "37eec85f-88b0-4b8b-9ce7-de5dfe017234", sent_at: "2026-10-08T00:00:01.000Z" };
+      for (const field of ["confirmed_at", "sent_sha256", "wav_sha256", "wav_bytes", "billable"]) delete newerSent[field];
+      newerSentBytes = Buffer.from(pretty(newerSent));
+      const newerConfirmedBytes = Buffer.from(pretty({ ...newerSent, status: "confirmed", confirmed_at: "2026-10-08T00:00:02.000Z",
+        sent_sha256: fullSha(newerSentBytes), wav_sha256: fullSha(newerWav), wav_bytes: newerWav.length, billable: 19 }));
+      newerStageBytes = Buffer.from(pretty({ schema_version: 1, sent_sha256: fullSha(newerSentBytes), sent_bytes: newerSentBytes.length,
+        confirmed_sha256: fullSha(newerConfirmedBytes), confirmed_bytes: newerConfirmedBytes.length, confirmed_base64: newerConfirmedBytes.toString("base64") }));
+      writeFileSync(canonical, newerSentBytes);
+      writeFileSync(staged, newerStageBytes);
+      writeFileSync(wavFile, newerWav);
+    },
+  });
+  const answer = await journal.wrap(async () => { calls += 1; return { wav: recoveryAudio, billable: 37 }; })(body);
+  assert.deepEqual(answer.wav, recoveryAudio, "the old caller receives only its own answer");
+  assert.equal(calls, 1);
+  assert.deepEqual(readFileSync(canonical), newerSentBytes);
+  assert.deepEqual(readFileSync(staged), newerStageBytes, "cleanup leaves the newer complete staged answer intact");
+  assert.deepEqual(readFileSync(wavFile), newerWav);
+  journal.release();
+  assert.deepEqual(readFileSync(canonical), newerSentBytes, "the old caller cannot release the newer sent receipt");
+  assert.deepEqual(readFileSync(staged), newerStageBytes);
+  assert.deepEqual(readFileSync(wavFile), newerWav);
+});
+
+test("independent recovery readers share one immutable proof without issuing a provider request", async () => {
+  const failed = await failedConfirmation();
+  const readers = Array.from({ length: 4 }, () => openSpeechJournal(failed.dir, { processAlive: () => false }));
+  const answers = await Promise.all(readers.map((reader) => failed.spec.invoke(reader, failed.send)));
+  for (const answer of answers) failed.spec.check(answer);
+  assert.deepEqual(readers.map((reader) => reader.reused), [1, 1, 1, 1]);
+  assert.equal(failed.calls(), 1);
+  const archived = archiveSnapshot(failed.dir);
+  assert.equal([...archived.keys()].filter((file) => path.basename(file) === "proof.json").length, 1);
+  assert.deepEqual(readFileSync(failed.canonical), failed.sent);
+});
+
+test("legacy confirmed temporary answers recover only with exact original sent bytes and a dead filename PID", async (t) => {
+  for (const producer of [false, true, null]) {
+    await t.test(String(producer), async () => {
+      const dir = journalIn();
+      mkdirSync(dir, { recursive: true });
+      const sha = requestSha256(body);
+      const sent = { schema_version: 1, path: "speech", request_sha256: sha, request: body, status: "sent", sent_at: "2026-10-05T03:00:00.000Z" };
+      const canonical = path.join(dir, `${sha}.json`);
+      const temporary = `${canonical}.987654.tmp`;
+      writeFileSync(canonical, pretty(sent));
+      writeFileSync(path.join(dir, `${sha}.wav`), recoveryAudio);
+      writeFileSync(temporary, pretty({ ...sent, status: "confirmed", confirmed_at: "2026-10-05T03:00:01.000Z", wav_sha256: fullSha(recoveryAudio), wav_bytes: recoveryAudio.length, billable: 37 }));
+      const originalSent = readFileSync(canonical);
+      const originalTemp = readFileSync(temporary);
+      let calls = 0;
+      const restarted = openSpeechJournal(dir, { processAlive: (pid) => { assert.equal(pid, 987654); return producer; } });
+      const invoke = () => restarted.wrap(async () => { calls += 1; assert.fail("legacy recovery never calls the provider"); })(body);
+      if (producer === false) recoveryRoutes[0].check(await invoke());
+      else await assert.rejects(invoke(), held());
+      assert.equal(calls, 0);
+      assert.deepEqual(readFileSync(canonical), originalSent);
+      assert.deepEqual(readFileSync(temporary), originalTemp);
+    });
+  }
 });
