@@ -1,13 +1,13 @@
 ---
 id: 2026-10-08-video-planners-thumbnail-headline-six
 title: Video planners: thumbnail headline limit 12 to the channel's six (compilation, drama, brand story)
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-fable
 claimed_at: 2026-10-08T02:36:58Z
 created_at: 2026-10-08T03:40:00Z
-completed_at:
+completed_at: 2026-10-08T04:27:44Z
 branch: claude/focused-hopper-t3zgz9
 depends_on:
   - 2026-10-07-video-thumbnails-one-subject-six-characters
@@ -119,4 +119,3 @@ lint 與 render 都過，到 `qa` 才 fail：成片關卡不會自動核准（`f
   - 三個 scope 外的 fixture（上一條 Notes）補進 frontmatter 的 scope，不再只是 Notes 裡的例外。`check:tasks`
     因此多一條「與 2026-10-07-video-thumbnails-one-subject-six-characters 都覆蓋 tools/video/templates」的警告：
     那張票與本票同一個 owner、同一條分支（claude/focused-hopper-t3zgz9），不是撞車；它結案後警告自己消失。
-

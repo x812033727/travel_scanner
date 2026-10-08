@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-video-script-rules-outro-with-a
 title: Video script rules: outro with a subscribe reason, numbers said out loud
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-fable
 claimed_at: 2026-10-08T00:12:08Z
 created_at: 2026-10-07T15:24:57Z
-completed_at:
+completed_at: 2026-10-08T04:27:43Z
 branch: claude/focused-hopper-t3zgz9
 depends_on: []
 scope:

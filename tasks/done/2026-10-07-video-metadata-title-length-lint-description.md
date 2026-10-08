@@ -1,13 +1,13 @@
 ---
 id: 2026-10-07-video-metadata-title-length-lint-description
 title: Video metadata: title length lint, description first line, UTM and series hashtag
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-fable
 claimed_at: 2026-10-08T00:12:09Z
 created_at: 2026-10-07T15:24:58Z
-completed_at:
+completed_at: 2026-10-08T04:27:44Z
 branch: claude/focused-hopper-t3zgz9
 depends_on: []
 scope:
