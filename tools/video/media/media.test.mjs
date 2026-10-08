@@ -537,7 +537,7 @@ test("stock fetch stores the photo under <workdir>/stock/<sha256>.<ext> and writ
   assert.equal(doc.scenes.length, 3, "the rest of the script is as it was");
   assert.match(out.stdout, new RegExp(`^stock/${SHA(PNG)}\\.png  1×1 square, 0\\.0 MB\\n`));
   assert.match(out.stdout, /Photo by Lukas Rodriguez on Pexels · Pexels License · https:\/\/www\.pexels\.com\/photo\/seoul-at-night-3573351\/\n/);
-  assert.match(out.stdout, /assets\[\]: docs\/videos\/fixture-minimal\/video\.json now lists 1 pictures; package writes the credit into the description\n/);
+  assert.ok(out.stdout.split("\n").includes(`assets[]: ${path.join("docs", "videos", "fixture-minimal", "video.json")} now lists 1 pictures; package writes the credit into the description`), out.stdout);
   assert.match(out.stdout, new RegExp(`"image": "stock/${SHA(PNG)}\\.png"`));
 
   // The same photo again: one file, one entry, no second download.

@@ -261,7 +261,7 @@ test("review-push --gate outline whose Jev answer is lost sends the outline to t
   const again = push();
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], again.ctx), EXIT.ok, again.out.stderr);
   assert.equal(server.state.judge.length, 1);
-  assert.match(again.out.stdout, /Jev's answer on this outline was lost at 2026-09-25T06:00:00\.000Z \(HTTP 504: .*\) and is not asked again: the outline goes up for the owner without a pick \(delete review\/outline-lost\.json to ask Jev once more\)/);
+  assert.ok(again.out.stdout.split("\n").includes(`${box.slug}: Jev's answer on this outline was lost at 2026-09-25T06:00:00.000Z (HTTP 504: 請求已送到 API，Jev 可能已經判斷) and is not asked again: the outline goes up for the owner without a pick (delete ${path.join("review", "outline-lost.json")} to ask Jev once more)`), again.out.stdout);
   assert.equal("pick" in server.state.reviews[0].payload, false);
 
   // A rewritten brief is a new question: Jev is asked, and the record of the old one goes.
