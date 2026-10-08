@@ -25,6 +25,7 @@
 | `shot` 場景 | 一張插圖：`data.prompt`（英文 ≤1000 字，依序寫景別、地點與時間、正在發生的事、視線落點的物件與材質、光從哪來；不寫風格與顏色）、`data.camera`（push in／pull out／pan left／pan right／tilt up／tilt down／drift）、`data.visual: "still"`、`data.transition?`（cut／dissolve，通常不寫） | 只准 still；不得有 `characters`、`fit`、`start_frame`、`end_frame`；shot 的句子不能 `reveal`；連續三張同一種運鏡是 lint 錯誤（§畫面不像 AI） |
 | `music` | `{ track, sha256?, gain_db?, duck_db?, fade_in_ms?, fade_out_ms? }`，檔案在 `<work base>/_music/` | 任何格式都可以帶（`prompt` 走 Lyria 也還在，但站主決定用授權檔） |
 | `sfx` | `{ set, gain_db?, cues?, sha256? }`，音效組在 `<work base>/_sfx/<set>/`；`cues` 是撰稿自己放的音效、`sha256` 綁音效組的 manifest（§配樂與音效） | 第 1 版音效組：`gain_db` 是整軌的音量，預設 −12 dB；第 2 版（量過的）音效組：每個 cue 各自算到目標響度，`gain_db` 是加在每個 cue 上的微調，沒寫是 0 |
+| `thumbnail.data.shot`／`capture` | 縮圖的主體（`README.md` §版型）：`capture` 是一個 `screencast` 景的 id（真實的官方頁截圖，評論該產品時 logo 與介面可以入鏡，站主 2026-10-08 定），`shot` 是一張關鍵影格；`render` 先取 `capture`，沒有才取 `shot`，裁右側鋪在右 60% | 給縮圖的 shot 畫鉤子段落的具體物件、主體放右三分之一；`look` 的 negative **不變**（插圖仍不畫 logo、文字、真人），logo 與介面只從 `capture` 的真實截圖來。`keyframes` 之後 `render` 才畫得出來 |
 
 音效組的 `manifest.json`（站主寫檔名、來源與授權，`assemble sfx-measure` 補量測；第 1 版沒有 `manifest_version` 與量測欄位，照舊能用）：
 

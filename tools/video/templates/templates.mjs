@@ -415,11 +415,60 @@ export const THUMB_SERIES = {
   sothatswhy: { brand: "原來如此事務所", stamp: ["原來", "如此"], headlineMax: 10, headlineLines: 2 },
 };
 export const THUMB_PILLARS = ["business", "science", "travel", "tech"];
-export const THUMB_LAYOUTS = ["left", "right"];
+/** A series' thumbnail keeps the full-width text column and may mirror it (the stamp follows). */
+export const THUMB_SERIES_LAYOUTS = ["left", "right"];
+/**
+ * The channel's thumbnail (docs/videos/README.md §版型, the owner's 2026-10-08 decision): the text
+ * column is the left 40%, the subject the right 60%, in one of three layouts the slug rotates
+ * through unless `data.layout` names one: a) the subject on a card inset in its area, b) the
+ * subject filling the frame under a scrim on the text side, c) a hard split with the text column
+ * on a solid tone. Without a picture the subject area is a flat tone, one of THUMB_TONES by the
+ * slug, in place of the ring and dot the theme used to draw for all eleven of the first batch.
+ */
+export const THUMB_LAYOUTS = ["a", "b", "c"];
+export const THUMB_TONES = ["teal", "plum", "navy", "forest"];
+/** The subject's sources, in the order render prefers them (render/plan.mjs drawThumbnail). */
+export const THUMB_SUBJECTS = ["capture", "shot"];
+/**
+ * The channel's headline: at most six characters of the kind a phone shows at a glance (a CJK
+ * glyph counts one, a Latin word or a number counts one, and at most two of those), on one or two
+ * lines. The limit is the visuals reference's (.agents/skills/youtube-video/references/visuals.md
+ * §縮圖); the 40% column holds three CJK glyphs a line at the theme's size, so six is two lines.
+ * The qa stage holds a thumbnail to it (tools/video/qa/thumbnail.mjs); render draws any length.
+ */
+export const THUMB_HEADLINE_MAX = 6;
+export const THUMB_HEADLINE_WORDS_MAX = 2;
+const CJK_GLYPH = /[぀-ヿ㐀-鿿豈-﫿가-힯]/u;
+/** The headline's count: { cjk, words: [the Latin words and numbers], count: cjk + words }. */
+export function headlineCount(headline) {
+  const plain = String(headline).replace(/\*\*/g, "");
+  const words = plain.match(/[A-Za-z0-9][A-Za-z0-9.'%+-]*/g) ?? [];
+  const cjk = [...plain].filter((char) => CJK_GLYPH.test(char)).length;
+  return { cjk, words, count: cjk + words.length };
+}
 const headlineShape = (headline) => {
   const lines = headline.replace(/\*\*/g, "").split("\n");
   return { lines: lines.length, chars: Math.max(...lines.map((line) => [...line.replace(/\s/g, "")].length)) };
 };
+/**
+ * The layout and tone a slug rotates to, the same hash as the slides look (core/drama.mjs
+ * slidesPresetFor) so a video always gets the same one; `offset` moves the B and C variants of
+ * YouTube's test one step on, so the three differ in more than their words. Two videos in a row
+ * share a tone one time in four: `data.tone` names another when the owner sees it happen.
+ */
+export function thumbnailRotation(slug, offset = 0) {
+  let hash = 2166136261;
+  for (const char of String(slug ?? "")) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619) >>> 0;
+  return { layout: THUMB_LAYOUTS[(hash + offset) % THUMB_LAYOUTS.length], tone: THUMB_TONES[(Math.floor(hash / THUMB_LAYOUTS.length) + offset) % THUMB_TONES.length] };
+}
+/**
+ * `data.capture` names a screencast scene whose still is the subject, as "<scene id>" (its first
+ * capture) or "<scene id>#<n>" (its n-th, from 1). Returns { scene, index } (index from 0) or null.
+ */
+export function captureRef(value) {
+  const match = typeof value === "string" ? /^([a-z0-9]+(?:-[a-z0-9]+)*)(?:#([1-9]\d*))?$/.exec(value) : null;
+  return match ? { scene: match[1], index: match[2] ? Number(match[2]) - 1 : 0 } : null;
+}
 
 /**
  * YouTube's "Test & compare" takes up to three thumbnails (docs/videos/so-thats-why/thumbnails.md,
@@ -452,9 +501,16 @@ export function thumbnailProblems(thumbnail, { series = null } = {}) {
 function ownThumbnailProblems(thumbnail, series) {
   const data = thumbnail.data ?? {};
   const problems = [!isText(data.headline) && "thumbnail.data.headline is required", data.tag !== undefined && !isText(data.tag) && "thumbnail.data.tag must be text", data.sub !== undefined && !isText(data.sub) && "thumbnail.data.sub must be text"];
-  if (data.layout !== undefined && !THUMB_LAYOUTS.includes(data.layout)) problems.push(`thumbnail.data.layout must be one of ${THUMB_LAYOUTS.join(", ")}`);
-  if (data.pillar !== undefined && !THUMB_PILLARS.includes(data.pillar)) problems.push(`thumbnail.data.pillar must be one of ${THUMB_PILLARS.join(", ")}`);
   const own = THUMB_SERIES[series];
+  const layouts = own ? THUMB_SERIES_LAYOUTS : THUMB_LAYOUTS;
+  if (data.layout !== undefined && !layouts.includes(data.layout)) problems.push(`thumbnail.data.layout must be one of ${layouts.join(", ")}`);
+  if (data.tone !== undefined && !THUMB_TONES.includes(data.tone)) problems.push(`thumbnail.data.tone must be one of ${THUMB_TONES.join(", ")}`);
+  if (data.pillar !== undefined && !THUMB_PILLARS.includes(data.pillar)) problems.push(`thumbnail.data.pillar must be one of ${THUMB_PILLARS.join(", ")}`);
+  if (data.capture !== undefined && !captureRef(data.capture)) problems.push('thumbnail.data.capture must name a screencast scene, "<scene id>" or "<scene id>#<n>" for its n-th capture');
+  if (data.shot !== undefined && !isText(data.shot)) problems.push("thumbnail.data.shot must be a shot's id");
+  // The channel's headline length (THUMB_HEADLINE_MAX) is the qa stage's business
+  // (tools/video/qa/thumbnail.mjs), where it fails the thumbnail item: the fixtures and the
+  // first batch's scripts carry longer headlines, and render still draws those.
   if (own && isText(data.headline)) {
     const shape = headlineShape(data.headline);
     if (shape.lines > own.headlineLines) problems.push(`thumbnail.data.headline has ${shape.lines} lines; this series takes at most ${own.headlineLines}`);
@@ -463,9 +519,9 @@ function ownThumbnailProblems(thumbnail, series) {
   return problems.filter(Boolean);
 }
 
-// A drama's thumbnail sits on a keyframe: the picture fills the frame under a scrim that keeps
-// the headline readable, in place of the decorative ring. The CSS lives here rather than in the
-// theme so that adding it changed no slides video's frame keys.
+// A series' thumbnail sits on a keyframe: the picture fills the frame under a scrim that keeps
+// the headline readable. The CSS lives here rather than in the theme so that adding it changed
+// no slides video's frame keys.
 const THUMB_BACKGROUND_CSS =
   ".thumb-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}" +
   ".thumb-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,38,39,.94) 0%,rgba(14,38,39,.72) 48%,rgba(14,38,39,.12) 100%)}";
@@ -492,30 +548,51 @@ const THUMB_RIGHT_CSS =
   ".thumb-scrim.layout-right{transform:scaleX(-1)}";
 
 /**
- * The thumbnail as a page. `background` is the URL of a picture to fill it with (a drama's
- * keyframe, served from the work directory); without one the theme's ring decorates it.
- * `series` names a series' own look (THUMB_SERIES); without one, and without `data.layout`,
- * the page is byte for byte what it always was. `locale` is the caption locale a translated
- * thumbnail is for: Korean, Simplified Chinese and Japanese are set in their own font (page).
+ * The thumbnail as a page. `background` is the URL of the subject's picture (a screencast still
+ * or a shot's keyframe, served from the work directory) and `subject` which of THUMB_SUBJECTS it
+ * is: a page still is cropped to its top left corner, where the product's name and interface
+ * are; a keyframe to its right side, where the writer left the subject. Without a picture the
+ * subject area is a flat tone. `series` names a series' own look (THUMB_SERIES), which keeps
+ * the full-width column, the scrim and the mirrored layout of docs/videos/so-thats-why/thumbnails.md.
+ * `slug` and `offset` pick the channel's layout and tone (thumbnailRotation) when `data.layout`
+ * and `data.tone` do not. `locale` is the caption locale a translated thumbnail is for: Korean,
+ * Simplified Chinese and Japanese are set in their own font (page).
  */
-export function thumbnailHtml(thumbnail, { background = null, series = null, locale = null } = {}) {
+export function thumbnailHtml(thumbnail, { background = null, subject = null, series = null, locale = null, slug = null, offset = 0 } = {}) {
   const data = thumbnail.data;
   const own = THUMB_SERIES[series] ?? null;
-  const right = data.layout === "right";
-  const layout = right ? " layout-right" : "";
-  const pillar = own && THUMB_PILLARS.includes(data.pillar) ? ` pillar-${data.pillar}` : "";
+  if (own) return page(seriesThumbnailBody(data, own, background), THUMB_SIZE, [background ? THUMB_BACKGROUND_CSS : "", data.layout === "right" ? THUMB_RIGHT_CSS : "", THUMB_SERIES_CSS[series]].join(""), { locale });
+  const rotation = thumbnailRotation(slug, offset);
+  const layout = THUMB_LAYOUTS.includes(data.layout) ? data.layout : rotation.layout;
+  const tone = THUMB_TONES.includes(data.tone) ? data.tone : rotation.tone;
+  const classes = `layout-${layout} tone-${tone}`;
+  const kind = THUMB_SUBJECTS.includes(subject) ? subject : THUMB_SUBJECTS[1];
   const body = [
-    background ? `<img class="thumb-bg" src="${escapeHtml(background)}" alt=""><div class="thumb-scrim${layout}"></div>` : '<div class="thumb-art"></div>',
-    `<div class="thumb${layout}">`,
+    `<div class="thumb-subject ${classes}${background ? ` from-${kind}` : ""}">${background ? `<img src="${escapeHtml(background)}" alt="">` : ""}</div>`,
+    `<div class="thumb column ${classes}">`,
+    data.tag ? `<div class="tag">${richText(data.tag)}</div>` : "",
+    `<h1 class="fit">${richText(data.headline)}</h1>`,
+    data.sub ? `<div class="sub fit">${richText(data.sub)}</div>` : "",
+    `<div class="brand">${BRAND}</div>`,
+    "</div>",
+  ].join("");
+  return page(body, THUMB_SIZE, "", { locale });
+}
+
+// A series' page as it always was, less the ring a series thumbnail without its keyframe used to show.
+function seriesThumbnailBody(data, own, background) {
+  const layout = data.layout === "right" ? " layout-right" : "";
+  const pillar = THUMB_PILLARS.includes(data.pillar) ? ` pillar-${data.pillar}` : "";
+  return [
+    background ? `<img class="thumb-bg" src="${escapeHtml(background)}" alt=""><div class="thumb-scrim${layout}"></div>` : "",
+    `<div class="thumb series${layout}">`,
     data.tag ? `<div class="tag${pillar}">${richText(data.tag)}</div>` : "",
     `<h1 class="fit">${richText(data.headline)}</h1>`,
     data.sub ? `<div class="sub fit">${richText(data.sub)}</div>` : "",
-    `<div class="brand">${own ? escapeHtml(own.brand) : BRAND}</div>`,
+    `<div class="brand">${escapeHtml(own.brand)}</div>`,
     "</div>",
-    own ? `<div class="thumb-stamp" aria-hidden="true">${own.stamp.map((row) => `<span>${escapeHtml(row)}</span>`).join("")}</div>` : "",
+    `<div class="thumb-stamp" aria-hidden="true">${own.stamp.map((row) => `<span>${escapeHtml(row)}</span>`).join("")}</div>`,
   ].join("");
-  const css = [background ? THUMB_BACKGROUND_CSS : "", right ? THUMB_RIGHT_CSS : "", own ? THUMB_SERIES_CSS[series] : ""].join("");
-  return page(body, THUMB_SIZE, css, { locale });
 }
 
 /** The characters a slide will draw, for the font coverage check. */

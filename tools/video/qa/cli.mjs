@@ -33,6 +33,7 @@ import { checkLinks, descriptionUrls, linkChecker, linksDetail } from "./links.m
 import { paceDetail, paceProblems, slideStates } from "./pace.mjs";
 import { policyRequest, policyVerdict } from "./policy.mjs";
 import { thumbnailChecks } from "./thumbnail.mjs";
+import { thumbnailSeries } from "../render/plan.mjs";
 import { localizedThumbnail } from "../core/translations.mjs";
 
 export const QA_FILE = path.join("review", "qa.json");
@@ -107,7 +108,8 @@ export function thumbnailItem(doc, workdir, translations = {}) {
   const thumbnailFile = path.join(workdir, THUMBNAIL_FILE);
   if (!doc.thumbnail) return item("thumbnail", false, "video.json has no thumbnail; add one with the thumb template");
   if (!existsSync(thumbnailFile)) return item("thumbnail", false, `${THUMBNAIL_FILE} is missing; run render`);
-  const verdict = thumbnailChecks({ bytes: readFileSync(thumbnailFile), headline: doc.thumbnail.data?.headline });
+  const series = thumbnailSeries(doc);
+  const verdict = thumbnailChecks({ bytes: readFileSync(thumbnailFile), headline: doc.thumbnail.data?.headline, title: doc.youtube?.title ?? null, series });
   const warnings = [...verdict.warnings];
   const checked = [];
   for (const [locale, drawn] of Object.entries(readJson(path.join(workdir, ARTIFACTS.frames), null)?.thumbnail_locales ?? {})) {
@@ -116,7 +118,7 @@ export function thumbnailItem(doc, workdir, translations = {}) {
       warnings.push(`${locale} thumbnail: ${drawn.file} is missing; run render`);
       continue;
     }
-    const own = thumbnailChecks({ bytes: readFileSync(file), headline: localizedThumbnail(doc, translations[locale])?.data.headline });
+    const own = thumbnailChecks({ bytes: readFileSync(file), headline: localizedThumbnail(doc, translations[locale])?.data.headline, title: translations[locale]?.title ?? null, series });
     checked.push(locale);
     if (!own.ok) warnings.push(`${locale} thumbnail (${drawn.file}): ${own.detail}`);
   }
