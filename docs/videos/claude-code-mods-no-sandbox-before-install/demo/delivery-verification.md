@@ -34,6 +34,8 @@ node verify-delivery-logic.mjs "<新的完整 JSON 報告路徑>"
 
 完整雜湊與覆核範圍存於同一外部證據目錄的 `independent-delivery-source-review-20261009-01.json`，SHA-256 為 `378cea59544b584db868101e8d31bf0e5fe9700e2a8839d72cd49d82ad9de0ad`。接線程式 SHA-256 為 `a584d7ba0f6256f59e631709814002ad44866138192ae1fac65820cfa7023dca`，純邏輯為 `d62fe38bae54c329bece9dfdaa37a02bbcb820553892d7677947b089deb78f74`。覆核沒有啟動或模擬 Claude 主機。
 
+另由未讀作者驗證程式與報告的代理，只照教案和材料做普通檔案演練：完成缺件、補件、空白、錯名修正、單改日期與課程變式，並回答六題結果判斷。沒有發現純檔案流程的阻斷缺步；提出的「正文應直接教關閉及停止單次載入」已補進教案，仍標待原生實錄。完整記錄在 `demo-evidence/learner-walkthrough/independent-20261009/REVIEW.md` 與 `file-operation-facts.json`。這是代理教材演練，不是人類學員驗收或 Claude 操作實測。
+
 ## 還不能證明的部分
 
 普通 Node 的 `stat` 錯誤有明確 `code`，不代表 Claude API 一定以相同形式傳遞錯誤。候選版只把明確 `ENOENT` 當缺少，其餘顯示無法檢查；原生相容性待確認。
