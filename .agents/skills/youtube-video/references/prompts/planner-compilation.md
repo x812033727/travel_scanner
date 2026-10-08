@@ -8,7 +8,7 @@ Episode outline and chapter planners receive `mystery_answers` from the setting'
 
 ## Payload
 
-`series` (slug, title, premise, genre, lead, visual_tier, total_minutes, planned_episodes), `genre_spec`, `series_reference`, `episodes` ([{slug, number, title, logline, recap}] in play order), `all_recaps`, `spoiler_context` (the private approved setting, outline and mystery schedule with original units), `chapters` (current public titles by episode slug), `description_budget_bytes`, `thumbnail_headline_max` (12), and `thumbnail_candidates` ([{episode, number, shot, judge, characters, prompt}]: at most twelve keyframes from the first three episodes). A retry includes `previous_problem` with the fields to repair. Missing context is not proof that there are no mysteries; a premise or recap that states an answer does not authorize printing it publicly.
+`series` (slug, title, premise, genre, lead, visual_tier, total_minutes, planned_episodes), `genre_spec`, `series_reference`, `episodes` ([{slug, number, title, logline, recap}] in play order), `all_recaps`, `spoiler_context` (the private approved setting, outline and mystery schedule with original units), `chapters` (current public titles by episode slug), `description_budget_bytes`, `thumbnail_headline_max` (6), `thumbnail_headline_words_max` (2), and `thumbnail_candidates` ([{episode, number, shot, judge, characters, prompt}]: at most twelve keyframes from the first three episodes). A retry includes `previous_problem` with the fields to repair. Missing context is not proof that there are no mysteries; a premise or recap that states an answer does not authorize printing it publicly.
 
 ## What to write
 
