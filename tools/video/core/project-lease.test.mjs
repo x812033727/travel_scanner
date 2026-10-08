@@ -4,42 +4,90 @@ import { existsSync, mkdtempSync, readdirSync, readFileSync, renameSync, writeFi
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
-import { fileURLToPath } from "node:url";
 
 import { acquireProjectLease, holdsProjectLease, LEASE_FILE, leaseHolder, PROJECT_LEASED, ProjectLeaseError, requireProjectLease } from "./project-lease.mjs";
 
-const MODULE = fileURLToPath(new URL("./project-lease.mjs", import.meta.url));
+const MODULE = new URL("./project-lease.mjs", import.meta.url).href;
 const workdir = () => mkdtempSync(path.join(os.tmpdir(), "video-lease-"));
 const leased = (error) => error instanceof ProjectLeaseError && error.code === PROJECT_LEASED;
 const record = (dir) => JSON.parse(readFileSync(path.join(dir, LEASE_FILE), "utf8"));
 
 /** Another process that takes the lease, says so, and then waits; `release` lets it go and exit. */
-function holder(dir, { release = true } = {}) {
+function holder(t, dir, { release = true } = {}) {
   const script = `
     import { acquireProjectLease } from ${JSON.stringify(MODULE)};
     const lease = acquireProjectLease(${JSON.stringify(dir)}, { owner: "manual recovery" });
     process.stdout.write("held\\n");
     process.stdin.on("data", () => { if (${release}) lease.release(); process.exit(0); });
   `;
-  const child = spawn(process.execPath, ["--input-type=module", "-e", script], { stdio: ["pipe", "pipe", "inherit"] });
-  const ready = new Promise((resolve, reject) => {
-    child.stdout.on("data", (chunk) => String(chunk).includes("held") && resolve());
-    child.on("exit", (code) => reject(new Error(`holder exited ${code} before holding`)));
+  const child = spawn(process.execPath, ["--input-type=module", "-e", script], { stdio: ["pipe", "pipe", "pipe"], windowsHide: true });
+  let stdout = "";
+  let stderr = "";
+  let failure;
+  let finished = false;
+  child.on("error", (error) => { failure = error; });
+  child.stdin.on("error", (error) => { failure = error; });
+  child.stderr.on("data", (chunk) => { stderr += chunk; });
+  const marked = new Promise((resolve) => {
+    child.stdout.on("data", (chunk) => {
+      stdout += chunk;
+      if (stdout.split(/\r?\n/).includes("held")) resolve();
+    });
   });
-  const exited = new Promise((resolve) => child.on("exit", resolve));
-  return { child, ready, exited };
+  const closed = new Promise((resolve) => child.on("close", (code, signal) => {
+    finished = true;
+    resolve({ code, signal });
+  }));
+  const problem = (message) => new Error(`${message}${failure ? `: ${failure.message}` : ""}${stderr ? `\n${stderr}` : ""}`);
+  const bounded = async (promise, ms, message) => {
+    let timer;
+    try {
+      return await Promise.race([promise, new Promise((_, reject) => {
+        timer = setTimeout(() => reject(problem(message)), ms);
+      })]);
+    } finally {
+      clearTimeout(timer);
+    }
+  };
+  // Register cleanup before any readiness or test assertion can fail.
+  t.after(async () => {
+    try {
+      if (!finished) {
+        child.kill("SIGKILL");
+        await bounded(closed, 5_000, "holder did not close during cleanup");
+      }
+    } finally {
+      child.stdin.destroy();
+      child.stdout.destroy();
+      child.stderr.destroy();
+      if (!finished) child.unref();
+    }
+  });
+  return {
+    child,
+    ready: () => bounded(Promise.race([marked, closed.then(({ code, signal }) => {
+      throw problem(`holder closed before holding (code=${code}, signal=${signal})`);
+    })]), 10_000, "holder did not become ready"),
+    exited: () => bounded(closed, 5_000, "holder did not exit"),
+    release: async () => {
+      if (finished) throw problem("holder closed before release");
+      child.stdin.end("go\n");
+      const result = await bounded(closed, 5_000, "holder did not exit after release");
+      assert.deepEqual(result, { code: 0, signal: null }, problem("holder failed after release").message);
+      if (failure) throw problem("holder failed after release");
+    },
+  };
 }
 
-test("a lease another live process holds refuses this one, keeps its bytes, and is free once that process lets go", async () => {
+test("a lease another live process holds refuses this one, keeps its bytes, and is free once that process lets go", async (t) => {
   const dir = workdir();
-  const other = holder(dir);
-  await other.ready;
+  const other = holder(t, dir);
+  await other.ready();
   const before = readFileSync(path.join(dir, LEASE_FILE), "utf8");
   assert.throws(() => acquireProjectLease(dir, { owner: "auto" }), (error) => leased(error) && error.holder.pid === other.child.pid && /manual recovery/.test(error.message));
   assert.throws(() => requireProjectLease(dir, { owner: "keyframes" }), leased);
   assert.equal(readFileSync(path.join(dir, LEASE_FILE), "utf8"), before, "the holder's record is not touched");
-  other.child.stdin.write("go\n");
-  await other.exited;
+  await other.release();
   assert.equal(existsSync(path.join(dir, LEASE_FILE)), false, "the holder removed its own lease");
   const lease = acquireProjectLease(dir, { owner: "auto" });
   assert.equal(record(dir).pid, process.pid);
@@ -47,20 +95,19 @@ test("a lease another live process holds refuses this one, keeps its bytes, and 
   assert.equal(existsSync(path.join(dir, LEASE_FILE)), false);
 });
 
-test("a process that exits without releasing leaves no lease; one that was killed leaves it, and only a certainly dead holder is taken over", async () => {
+test("a process that exits without releasing leaves no lease; one that was killed leaves it, and only a certainly dead holder is taken over", async (t) => {
   const exited = workdir();
-  const clean = holder(exited, { release: false });
-  await clean.ready;
-  clean.child.stdin.write("go\n");
-  await clean.exited;
+  const clean = holder(t, exited, { release: false });
+  await clean.ready();
+  await clean.release();
   assert.equal(existsSync(path.join(exited, LEASE_FILE)), false, "the exit hook removed it");
 
   const killed = workdir();
-  const crashed = holder(killed);
-  await crashed.ready;
+  const crashed = holder(t, killed);
+  await crashed.ready();
   const old = record(killed);
   crashed.child.kill("SIGKILL");
-  await crashed.exited;
+  await crashed.exited();
   assert.equal(record(killed).token, old.token, "a killed holder's lease stays");
   const lease = acquireProjectLease(killed, { owner: "auto" });
   assert.notEqual(record(killed).token, old.token);

@@ -2946,6 +2946,34 @@ PASS is DURATION_ONLY for the eleven rebound hashes below.
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch windows-video-validation-20261009 increment: 1 file (2026-10-09)
+
+Reviewer: `codex-pr-review-windows-video-validation`. Author: `codex-windows-video-validation`. Scope: DURATION_ONLY for `tools/video/automation/automation.test.mjs` at author commit `f581c0aaab705943a4c137c649b7333f38404604`. The reviewer wrote none of the implementation changes and edits only this report and review.json.
+
+Baseline: `c6454463d0eb53e4c8166be0b93a587598c03208`. The baseline report hash, table and all 108 REVIEW_FILES bindings pass `durationReviewProblems` against immutable Git blobs. The one changed bound file matches its existing receipt at the baseline: `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721`. At the author commit only this binding is stale; the other 107 bindings are unchanged and current. Its reviewed working-tree bytes equal the committed bytes and hash to `d29b31c421774f245a7e2df89a52c6d359815efd05c11b3b8c5e8c0467bec7c1`. Every prior increment is preserved.
+
+Findings: the test imports a child process module through `pathToFileURL(...).href`, so Windows paths, spaces and non-ASCII characters are valid module URLs. The new test-only helper captures diagnostics, rejects early child failure, bounds readiness/release waits and registers child termination/pipe cleanup before waiting. Three regressions cover a failed import, absent readiness and ignored release; existing lease ownership, untouched state, no duplicate request and post-release progress assertions remain. The 100/5,000/10,000 millisecond limits govern test-process lifecycle, not episode or media duration. No changed line alters the 600/780-second targets, 480-second measured floor, eight-minute minimum, `target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source-hash gates or covered state. The two reference-analysis files in the same author commit are outside REVIEW_FILES and are not rebound by this increment.
+
+Ran: with bundled Node v24.19.0 on Windows ARM64, `node tools/video/long-form/cli.mjs check` (PASS), `node --test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), and `git diff --check` (PASS). The reviewer independently read the complete bound diff; the author's automation/FFmpeg runs and mutation proofs are separate validation, not rerun claims here.
+
+Non-claims: DURATION_ONLY. This receipt does not approve paid production, runtime media duration, listening, rendered video quality, publication, deployment, or Linux execution. No implementation/test file or duration policy is changed by this receipt.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## Branch windows-video-validation-20261009 native-path assertion increment: 1 file (2026-10-09)
+
+Reviewer: `codex-review-own-video`. Author: `codex-clarity-pipeline-review`. Scope: DURATION_ONLY for `tools/video/review/sync.test.mjs` at `12c0c8227905666e00fe310c7a58d06f258687a1`. The reviewer did not author this changed bound test and edits only this report and review.json for the increment. Its separately authored project-lease test is unbound and outside this review; that test received the coordinating agent's independent review.
+
+Baseline: `580911bbc962e086dea9e71e25f9bf063024a28d`, which includes the preceding Windows automation-test receipt. Immutable Git blobs pass `durationReviewProblems` for the report and all 108 REVIEW_FILES. The baseline sync test hash `ae5d0c052271bf2694432f95deedcf89a005935335977104faf592aace0249a1` equals the receipt and table. Before rebinding, only this file is stale and the other 107 bindings are current. The reviewed working-tree bytes equal committed `12c0c822` bytes, `c4655a10e64547c0e088f7c7e2648c685c193b28465f035f9bbbd75ec5312f17`. All prior increments, including the preceding one-file Windows review, are preserved.
+
+Findings: one assertion line changes in the lost-Jev-outline-answer regression. The old regex required a POSIX `review/outline-lost.json` path and allowed arbitrary error detail; the replacement checks an exact complete output line with the current slug, fixed timestamp, full HTTP 504 detail, no-repeat/owner-handoff text, and `path.join("review", "outline-lost.json")`. The path follows the host's separators while the diagnostic assertions become more specific. The surrounding checks still require exactly one judge request for the unchanged brief, no fabricated pick, a source-bound lost-answer record, a second request only after the brief changes, and removal of the old record. No line changes production behavior, 600/780-second targets, the 480-second measured floor, the eight-minute minimum, `target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source-hash gates or covered state.
+
+Ran: with bundled Node v24.19.0 on Windows ARM64, `node tools/video/long-form/cli.mjs check` (PASS), `node --test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), and `git diff --check` (PASS). The author's complete three-file Windows run is separate validation, not a reviewer rerun claim.
+
+Non-claims: DURATION_ONLY for this single bound diff. This receipt does not certify the other unbound fixes, Linux execution, measured media, paid production, publication, deployment or owner acceptance. It changes no implementation/test file or duration policy.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -3002,7 +3030,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `86c3826d9310ca1197ceba2b576e4030dd3dce957b880c4ee50a6d8df1271ac5` |
-| `tools/video/automation/automation.test.mjs` | `f2e7b1d4852c43d1c68217666d9c6e617dc4fd3c4a2709d8f4e144cb6c388721` |
+| `tools/video/automation/automation.test.mjs` | `d29b31c421774f245a7e2df89a52c6d359815efd05c11b3b8c5e8c0467bec7c1` |
 | `tools/video/automation/discuss.mjs` | `a8fa9852116cade5d2d7cb5620ca1fd503d3dcb0e5b147f3b66ec2f3fde8e1ea` |
 | `tools/video/automation/flow.mjs` | `4de8bbedb777f17a66a04064c0bd612a2a23ea8cf206d798fb449851a6a46bc7` |
 | `tools/video/automation/prompts.mjs` | `8ca7eb3ea74382877a258aa196a4d4e78b8bf488557bd8ea9f095c9b3bea708f` |
@@ -3053,7 +3081,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
 | `tools/video/qa/qa.test.mjs` | `b27d4ce3e3b6b0329488b549095cd51d61311a5cc644125b4087da99157c1281` |
 | `tools/video/review/sync.mjs` | `c4ae35a7a88513b76f1997a77d3dff39829d69262971479b39f86ac9d76ee21c` |
-| `tools/video/review/sync.test.mjs` | `ae5d0c052271bf2694432f95deedcf89a005935335977104faf592aace0249a1` |
+| `tools/video/review/sync.test.mjs` | `c4655a10e64547c0e088f7c7e2648c685c193b28465f035f9bbbd75ec5312f17` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
