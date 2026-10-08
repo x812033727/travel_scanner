@@ -1,6 +1,14 @@
 # 交稿範例的驗證範圍
 
-2026-10-09。候選 Mod、起始材料與教案已提供；尚無 Claude Code 的原生驗證、面板操作錄影或新版成片。
+2026-10-09。候選 Mod、起始材料與教案已提供；站主已貼回 Claude Code 原生靜態驗證通過結果。面板操作錄影及新版成片仍未完成。
+
+## 站主手動完成：原生靜態驗證
+
+站主在 PowerShell 對 `demo/delivery-check` 執行 `plugin validate`，貼回 `Validation passed with warnings`。唯一警告為未提供 author 資訊；為保留這次受驗證的程式，沒有為消除警告修改 manifest。
+
+驗證器辨識 `session.start`、`session.end`、`command.run{command=deliverables}`、`ui.render{component=Pane}`，並辨識這份 Mod 自行回答 deliverables 指令。列出的 API 為 `$.clock.now`、`$.command.register`、`$.fs.stat`、`$.ui.close`、`$.ui.invalidate`、`$.ui.open`、`$.ui.resolve`，與原始碼的預期能力相符。
+
+原始回報保存在 `<home>/mokaair-work/mods-clarity-20261009/demo-evidence/owner-native-validate-20261009.txt`，相鄰 JSON 紀錄原始回報、目前程式及執行檔雜湊。這是站主提供的原生工具結果，沒有 exit code、實際執行時間或代理直接錄下的畫面；不補造這些資料。它支持靜態分析通過，**不代表已執行事件、顯示面板、取得正確缺件結果或通過 plugin test**。
 
 ## 已執行：普通 Node 與真實練習檔案
 
@@ -40,6 +48,6 @@ node verify-delivery-logic.mjs "<新的完整 JSON 報告路徑>"
 
 普通 Node 的 `stat` 錯誤有明確 `code`，不代表 Claude API 一定以相同形式傳遞錯誤。候選版只把明確 `ENOENT` 當缺少，其餘顯示無法檢查；原生相容性待確認。
 
-指令註冊、面板、按鈕、時間取得、重載、靜態分析器與其他 Mod 共存仍需真正的 Claude Code 驗收。第一次接觸教材的人能否只照步驟完成，也尚未完成實測。
+指令註冊的實際行為、面板、按鈕、時間取得、重載與其他 Mod 共存仍需真正的 Claude Code 驗收。第一次接觸教材的人能否只照步驟完成，也尚未完成實測。
 
-先前隔離 CLI 的版本／驗證／測試命令遭自動審查拒絕，回傳原因僅 `blocked by policy`，沒有程序啟動或測試結果。本次沒有重試或換路徑執行。必須保留這項限制，不能把這裡通過的 9 組檢查寫成 Mod 安裝成功。
+先前代理的隔離 CLI 版本／驗證／測試命令遭自動審查拒絕，回傳原因僅 `blocked by policy`，當時沒有程序啟動或測試結果。後續站主手動驗證另行記錄；代理沒有重試，也不把站主回報視為執行限制已解除。9 組普通 Node 檢查與此次靜態驗證均不等於 Mod 安裝或互動示範成功。
