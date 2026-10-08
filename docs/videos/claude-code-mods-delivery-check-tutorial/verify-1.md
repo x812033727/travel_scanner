@@ -76,3 +76,65 @@ SHA-256：c0205ecc69704785fa947c142de1fd2d836e61278818b2301afe5b93212dcb2e
 - 本審查沒有聽取旁白、觀看成片或執行 Claude，不能當成完整影片核准。
 
 本次查核及存檔未修改 repository、未付費、未重試被拒的操作。此檔為本次新片 production 來源的獨立查核報告，不是先前被拒的 directory-list assessment，也沒有寫入該被拒路徑。
+
+## 增量覆核：v2 畫面文字與教材連結
+
+查核日期：2026-10-09（Asia/Taipei）
+Reviewer：codex-review-own-video
+Incremental verdict：PASS
+
+本次只覆核相對 production/video-v1.json 與 production/script-v1.md 的文字／metadata 變更；原審稿正文保留。基準兩檔雜湊分別為 877df97db4c2423f5a4ed2074644a9907d8c3ea5df503f4bea57a8ae84d7a992、9f056de802c522be59b95d2d1abb904129e8138b26079b84a2c4e646f01890a6。
+
+### 本次通過的來源
+
+| 檔案 | SHA-256 |
+| --- | --- |
+| video.json | 0e2c780f36a78d2a030c09224aac9d11f4e2ec2c1c7bfe93c4b9d7fced8273c3 |
+| script.md | 30713d8f0b73808c7579b8eb9a9d5d323a200d0fd8eb2233ad8a77be1c5c71e0 |
+
+再次逐項比較：63 場，127 句；所有旁白 line 物件（包含文字、ID、emotion、reveal）及 voice 設定與基準相同。新版 script 與新版 JSON 的 127 句旁白完全對應，沒有旁白變更。
+
+### 變更結論
+
+| 變更 | Verdict | 核對結果 |
+| --- | --- | --- |
+| folder-map 教材目錄提示 | CONFIRMED | JSON 與 script 現均為「教材連結內 delivery-check」，對應教材 materials 根目錄的實際結構。初次增量覆核發現 JSON 仍留 demo/ 前綴，作者修正後已重新讀回；此結論只綁定上列最終雜湊。 |
+| open-check 輸入位置提示 | CONFIRMED | 改為「在 Claude 對話框輸入」，與既有旁白及 /deliverables 指令的使用位置一致；指令本身沒有變更。 |
+| observed-timestamps 原檔欄位 | CONFIRMED | 「原來兩檔」改為「另行核對原檔」，更清楚表達內容未變是另行比對的結果，沒有誤稱面板閱讀了文章內容。既有時間及狀態資料不變。 |
+| 完整教材 metadata 連結 | CONFIRMED | URL 綁定本地已存在的 commit b8269244d7fb75bbb2b20cccf4baa31fefb7c8fc，指向 docs/videos/claude-code-mods-delivery-check-tutorial/materials。git ls-tree 及 git show 已核對該 commit 內的材料樹與 README；包含完整 delivery-check 四個程式檔、起始副本、完整封面素材、課程材料及 EXERCISES.md。此項只確認本地提交內容與連結指向一致。 |
+
+c1–c10 原主張與適用界線不變，繼續採用原表的 CONFIRMED 結論；c10 仍是 opinion。本次變更沒有新增原生操作、媒體驗收或模型生成成功的主張。
+
+### 公開連結仍待讀回
+
+教材連結：
+https://github.com/x812033727/travel_scanner/tree/b8269244d7fb75bbb2b20cccf4baa31fefb7c8fc/docs/videos/claude-code-mods-delivery-check-tutorial/materials
+
+本次覆核沒有對此公開 URL 執行 HTTP 讀回。Public URL accessibility：not verified；HTTP status：not recorded。不能用本地 commit 及材料存在，推論遠端 push 已完成、網址公開可訪問或觀眾已能下載。發布前仍須由統籌完成推送後的公開連結讀回。
+
+本次 PASS 僅涵蓋上述可核對的文字與 metadata 變更。未重跑 Claude、未付費、未聽旁白、未看新成片，原報告的音訊／畫面／片長／其餘原生驗收限制全部保留。
+
+## 增量覆核：10 句等義口播改寫
+
+2026-10-09（Asia/Taipei）｜Reviewer：codex-review-own-video｜Verdict：PASS。
+
+本次綁定 video.json SHA-256：4406dfc66cfc14f8210a58b75259334f2164664f960090150fde1d3e260b52be；script.md SHA-256：48d007da2ab431a9ddb1283c9ad90727debfa382f6e6f7d2931bec70cfee3b44。
+
+獨立遞迴比對與基準 video-before-audio-rewrite.json（0e2c780f36a78d2a030c09224aac9d11f4e2ec2c1c7bfe93c4b9d7fced8273c3）的差異：只有下列 10 個 line.text 改變，均與受查 audio-rewrite-proposal.json（af84d10baf4bc043480cb438b6f88ab676f3c9e5c5655c825627f74c2c5bae8d）一致。127 個唯一 ID 及排列、voice、畫面 data、emotion、reveal、其他所有 JSON 欄位均未變。新版 script 的 127 句旁白與新版 JSON 全部一致。
+
+| Line ID | Verdict | 語意查核 |
+| --- | --- | --- |
+| vuyd | CONFIRMED | 保留把固定交稿規則放入介面的用途。 |
+| xxbi | CONFIRMED | 保留刻意缺件才能檢查缺件能力的原因。 |
+| zqcz | CONFIRMED | 保留從檔案總管複製完整練習路徑的步驟。 |
+| pnba | CONFIRMED | 仍限定站主回報的主案例缺封面結果。 |
+| rizx | CONFIRMED | 保留先核對證據、不要猜原因的排錯安排。 |
+| udkx | CONFIRMED | 仍是手動存入提供的封面材料，不冒稱模型生成。 |
+| drfn | CONFIRMED | 保留報名方式必須由主辦人確認的內容缺口。 |
+| wvrt | CONFIRMED | 保留實際檢查與只列清單的差別，以及人工核對替代步驟。 |
+| xnzi | CONFIRMED | 保留具體「圖書館」錯誤答案反例；未把課程版 Mod 說成已完成。 |
+| 3vtm | CONFIRMED | 保留補件後重查、閱讀內容及交給負責者確認的順序。 |
+
+結論：10 句等義改寫沒有新增數字、承諾或實測範圍，原 c1–c10 及證據界線保持有效。本次只確認文字及同步結果；重新合成後的發音、ASR、片長、畫面與成片仍需重新驗收。
+
+教材公開讀回補充：統籌的 production/materials-public-readback.json 記錄 2026-10-08T20:24:09.1848504Z 對既有 commit 固定教材 URL 取得 HTTP 200，containsReadme=true；本覆核者已讀該收據，但沒有自行重發 HTTP 請求。此前「公開連結仍待讀回」是當時狀態，後續已由統籌取得上述讀回證據。

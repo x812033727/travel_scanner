@@ -1,5 +1,7 @@
 # 教學價值複核：現稿尚不能進入製作
 
+後續：下文針對舊計數器稿。完整交稿檢查案例已另建[新版教學](../claude-code-mods-delivery-check-tutorial/README.md)，含可重做教材與獨立查核；原生核心驗證見 [v2 紀錄](demo/delivery-verification.md)。舊稿保留作為比較依據。
+
 複核日期：2026-10-09。依據：兩支參考片的完整繁中逐字稿、本片 `script.md`、`video.json` 與 `demo/`。沒有把讀逐字稿寫成完整觀看、聆聽或重做參考片的操作。
 
 ## 使用者指出的問題

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-08-mods-tutorial-revision-production
 title: Produce and review the revised Mods tutorial after original-source handoff
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-mods-clarity-20261009
 claimed_at: 2026-10-08T20:09:48Z
 created_at: 2026-10-08T16:35:11Z
-completed_at:
+completed_at: 2026-10-08T20:54:06Z
 branch: codex/mods-clarity-20261009
 depends_on: []
 scope:
@@ -23,23 +23,33 @@ The owner requested a clearer Mods video. The source rewrite, single-case diagra
 
 ## Definition of done
 
-- [ ] The lesson solves a concrete viewer problem with a complete worked example, a contrast and a transfer exercise; an independent first-use review verifies the learner can reproduce and explain the result.
+- [x] The lesson solves a concrete viewer problem with a complete worked example, a contrast and a transfer exercise; an independent first-use review verifies the learner can reproduce and explain the result.
 - [x] The original-source/dub handoff is resolved and the new revision has its own source-bound production state.
-- [ ] New narration retains the selected voice; both spoken body and final cut meet the 8-minute minimum without padding.
-- [ ] Real ASR/audio review, visual/video QA, captions, package checks and backend hash readback pass for the new source.
-- [ ] Owner review, upload and publication are recorded as separate states; no original approvals are reused.
+- [x] New narration retains the selected voice; both spoken body and final cut meet the 8-minute minimum without padding.
+- [x] Real ASR/audio review, visual/video QA, captions, package checks and backend hash readback pass for the new source.
+- [x] Owner review, upload and publication are recorded as separate states; no original approvals are reused.
 
 ## Steps
 
 - [x] Review `docs/videos/claude-code-mods-no-sandbox-before-install/revision-review.md` and the static preview; record the failed teaching-value review in `teaching-review.md`.
-- [ ] Complete the substantive rewrite, provide starting materials and actual demonstrations, then synchronize the final script/video source and renew its source bindings.
-- [ ] Resolve source handoff and confirm the applicable production budget before provider calls; retain unknown provider outcomes without retries.
+- [x] Complete the substantive rewrite, provide starting materials and actual demonstrations, then synchronize the final script/video source and renew its source bindings.
+- [x] Resolve source handoff and confirm the applicable production budget before provider calls; retain unknown provider outcomes without retries.
 - [x] Obtain permitted runtime evidence for the core practical promise. Official/illustrative/expected-result labels remain mandatory where relevant, but labels alone do not satisfy a claim that viewers can reproduce a demonstrated installation.
-- [ ] Produce narration and cut, inspect the actual player/audio, and complete the source-bound reviews and packaging.
+- [x] Produce narration and cut, inspect the actual player/audio, and complete the source-bound reviews and packaging.
 
 ## How to verify
 
 Follow the current youtube-video skill and existing pipeline in a fresh work directory. Verify measured narration/body/final durations, speech/visual/source hashes, review receipts, actual exported captions and backend readback. A static preview and passing repository tests do not establish acceptance or publication.
+
+## Current revision
+
+The owner explicitly requested production on 2026-10-09 after completing the v2 core native check. A new isolated slug, `claude-code-mods-delivery-check-tutorial`, contains the completed source, full learning materials and independent source review. The original paused source, paid results and STOP remain preserved. Read-only host evidence confirmed its prior lease is absent; this new revision has its own source and media work directories.
+
+Current source SHA-256 is `4406dfc66cfc14f8210a58b75259334f2164664f960090150fde1d3e260b52be`; script SHA-256 is `48d007da2ab431a9ddb1283c9ad90727debfa382f6e6f7d2931bec70cfee3b44`. The same Sulafat voice is retained. The first narration had 14 flagged lines; a targeted retake and independently reviewed wording clarification resolved them. Final audio check: 127/127 checked, zero flagged. Measured narration/body and final are 641.7 seconds; 70 visual states, maximum 12.5 seconds. Assembly, final QA 11/11, captions and package checks 4/4 are complete. Final SHA-256 is `0513aadf1ed7183a5c072b0249c1f73a339aa9190b40a9c11e2e69dbbb67eb8e`; backend automatic approval was read back and matched. Actual sampled browser playback/seek succeeded with no media error. See `docs/videos/claude-code-mods-delivery-check-tutorial/production-review.md` for evidence and limits: full human listening, owner acceptance, extra-language choice, upload and publication remain distinct pending states. Production is complete; repository integration remains in draft PR #1390.
+
+The ZIP learner audit passed 11/11 ordinary-file exercises and integrity checks: all four runtime files match native v2, initial missing/add/empty/wrong-name and course answer exercises preserve original fixtures, and all 11 internal Markdown links resolve. This independent agent walkthrough is not human first-use acceptance or additional native Claude execution. The ZIP SHA-256 is `5972c50ae10c8e9834dc65b62b4904ada4b82d273c159d002f28c1796d365bc1`, and audit SHA-256 is `77962239ebbb60d5c56158d25ed8ba31dca200afb23e9cfcf2dd62a805b39088`. Immutable public materials at commit `b8269244d7fb75bbb2b20cccf4baa31fefb7c8fc` were verified by API and HTTP 200 readback. Actual visual reviews cover the full contact sheet and nine selected full-resolution frames, including the three final corrections.
+
+Production uses an isolated copy of the reviewed tools in the existing Linux video worker, avoiding the unresolved Windows paid-journal replacement issue. Dry-run confirmed 2,955 initial billable characters and adequate configured quota; only 14 retakes and 10 rewritten lines were subsequently bought. All earlier audio/check evidence is preserved. Local source/document/hygiene tests passed 202/202 without skips; final wording/metadata lint and additional hygiene passed. No merge, deployment, YouTube upload or public video publication is authorized by this work.
 
 ## Notes
 
