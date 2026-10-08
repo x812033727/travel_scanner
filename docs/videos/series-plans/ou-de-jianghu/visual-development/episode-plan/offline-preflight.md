@@ -1,5 +1,7 @@
 # 第 1 集離線前置檢查收據
 
+> **歷史基線，非目前製作提案。** 本頁保存2026-10-08首次對未改原稿的離線結果；下列451 clip、447 setup、10個程式C、歷史費率及「播放／冷看待執行」均屬當時狀態。現行可審交付請讀 [P0–P7 審閱包 v3](preproduction-package-v3.md)、[提案摘要與SHA](proposal-summary.json)及[獨立觀看紀錄](cold-review-independent.md)：v3已完成全長1倍速播放，v3.1另完成23卡停格複看。保留本頁原始數據與收據，不用後來結果覆寫舊證據。本說明於2026-10-09（Asia/Taipei）補訂。
+
 2026-10-08。這份交付把現有第 1 集做成可審閱的分鏡表與文字卡 animatic，**尚未核准；本離線檢查未製作正常 look、配音、關鍵影格或動畫**。同輪內建 imagegen 已生成九人概念候選，見 [美術定調](../art-direction/README.md) 與 [第一集畫像](../episode1-portraits/README.md)，尚未匯入正常 look。本離線檢查使用既有來源，未改劇本、production policy 或 profile；付費請求 0，未寫 `plan/lock.json` 或 `--accept` 紀錄。
 
 機器可讀的命令、退出碼、來源及產物 SHA-256 在 [offline-preflight.json](offline-preflight.json)。分場與人工小樣判斷見 [scene-and-pilot.md](scene-and-pilot.md)。此收據不能代替站主核准或冷看驗收。

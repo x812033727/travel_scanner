@@ -42,6 +42,8 @@ scope:
 
 ## Notes
 
+2026-10-09收尾：27張獨立候選本輪沿用，未重買；側背面／表情／動作／細節與同尺度板已另由動畫參照票補齊。9張全身原圖實際隔離pending匯入、重跑去重及SHA通過，未產生judge／choice／正式look核准。根README已整合最新139張候選清冊與歷史快照界線。個別採用、18張半／全身尺寸差距及沈白扇母版統一仍留本票／交接票，不以畫風接受冒充完成；收尾release。
+
 ### 2026-10-08 續作：27 張獨立視圖
 
 使用者「繼續」後，沿既有概念參照分別生成九人各三視圖，共27張；另修正殷無聲、燕迴、洛青衍的半身指尖裁切，保留三張舊版，共30個原生PNG。已逐張實看30版本，最新版27張完整覆蓋9人×3。詳見[獨立視圖交付清單](../../docs/videos/series-plans/ou-de-jianghu/visual-development/episode1-portraits/independent-views.md)、[三主角審查](../../docs/videos/series-plans/ou-de-jianghu/visual-development/episode1-portraits/independent-main-review.md)、[六配角及v2覆核](../../docs/videos/series-plans/ou-de-jianghu/visual-development/episode1-portraits/independent-supporting-review.md)。

@@ -3,17 +3,19 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { deflateSync } from "node:zlib";
 
 import { EXIT, main } from "../cli.mjs";
 import { approvalState, approve, readApprovals } from "../core/approvals.mjs";
 import { illustrated, lookHash } from "../core/drama.mjs";
 import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
 import { LEASE_FILE } from "../core/project-lease.mjs";
+import { lookChosen } from "../core/state.mjs";
 import { readLedger } from "./ledger.mjs";
 import { keepSheets } from "./series-store.mjs";
 import { readCache, readJobs } from "./cache.mjs";
 import { bestTake, chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, entryStands, FIX_ARROW, fixClauses, fixesBefore, keyframeChecks, keyframeRubric, MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET, PLACEHOLDER_FIX, retakePrompt, shotPrompt, STYLE_PLATE_ID, STYLE_PLATE_PROMPT } from "./keyframes.mjs";
-import { DEFAULT_SHEET_PROMPT, MAX_LOOK_ROUNDS, optionKey, parseChoice, sheetPrompt, suggestedOf } from "./look.mjs";
+import { DEFAULT_SHEET_PROMPT, inspectLookPng, MAX_LOOK_ROUNDS, optionKey, parseChoice, sheetPrompt, suggestedOf } from "./look.mjs";
 import { imagePrice, statusProblem } from "./stages.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -118,6 +120,186 @@ function context(box, fetchImpl, extra = {}) {
 
 const manifestOf = (box, name) => JSON.parse(readFileSync(path.join(box.workdir, name, "manifest.json"), "utf8"));
 const readJson = (file) => JSON.parse(readFileSync(file, "utf8"));
+
+// Real, fully decodable RGB PNGs. The generation mock above deliberately only has a
+// signature; import must reject those truncated files, so it uses these separate fixtures.
+function importPng({ width = 512, height = 512, fill = 0 } = {}) {
+  const chunk = (type, data) => {
+    const bytes = Buffer.concat([Buffer.from(type), data]);
+    let crc = 0xffffffff;
+    for (const byte of bytes) {
+      crc ^= byte;
+      for (let i = 0; i < 8; i++) crc = (crc >>> 1) ^ (0xedb88320 & -(crc & 1));
+    }
+    const length = Buffer.alloc(4), sum = Buffer.alloc(4);
+    length.writeUInt32BE(data.length); sum.writeUInt32BE((crc ^ 0xffffffff) >>> 0);
+    return Buffer.concat([length, bytes, sum]);
+  };
+  const header = Buffer.alloc(13); header.writeUInt32BE(width); header.writeUInt32BE(height, 4); header[8] = 8; header[9] = 2;
+  const pixels = Buffer.alloc((width * 3 + 1) * height, fill);
+  for (let row = 0; row < height; row++) pixels[row * (width * 3 + 1)] = 0;
+  return Buffer.concat([Buffer.from("89504e470d0a1a0a", "hex"), chunk("IHDR", header), chunk("IDAT", deflateSync(pixels)), chunk("IEND", Buffer.alloc(0))]);
+}
+
+function externalInputs(box, id = "jingwei", bytes = importPng(), sourceExtra = {}) {
+  const docFile = path.join(box.dir, "video.json");
+  const image = path.join(box.base, `${id}-external.png`), source = path.join(box.base, `${id}-source.json`);
+  writeFileSync(image, bytes);
+  writeFileSync(source, JSON.stringify({ schema_version: 1, character_id: id, look_hash: lookHash(readJson(docFile)), image_sha256: SHA(bytes), source_files: [{ path: path.relative(box.root, docFile).replaceAll("\\", "/"), sha256: SHA(readFileSync(docFile)) }], ...sourceExtra }, null, 2));
+  return { image, source, bytes, args: ["look", "import", "--slug", box.slug, "--character", id, "--image", image, "--source", source] };
+}
+
+test("look import validates real PNGs and stores a pending candidate entirely offline; exact reruns preserve approval bytes", async () => {
+  const box = sandbox("fixture-drama", "drama"), input = externalInputs(box);
+  const run = context(box, () => { throw new Error("offline import must never request the server"); });
+  assert.deepEqual(inspectLookPng(input.bytes), { width: 512, height: 512, format: "png" });
+  assert.equal(await main([...input.args, "--dry-run", "--judge"], run.ctx), EXIT.ok, run.out.stderr);
+  assert.equal(existsSync(path.join(box.workdir, "characters", "manifest.json")), false);
+  assert.equal(await main(input.args, run.ctx), EXIT.ok, run.out.stderr);
+  const before = readFileSync(path.join(box.workdir, "characters", "manifest.json"));
+  const manifest = manifestOf(box, "characters"), candidate = manifest.characters.jingwei.candidates[0];
+  assert.equal(candidate.judge, null);
+  assert.equal(candidate.external_import.source_sha256, SHA(readFileSync(input.source)));
+  assert.deepEqual(readFileSync(path.join(box.workdir, candidate.file)), input.bytes);
+  assert.equal(manifest.characters.jingwei.suggested, null);
+  assert.equal(manifest.characters.jingwei.needs_review, true);
+  assert.equal(lookChosen(manifest, null, lookHash(dramaFixture())), null, "all current characters need a real candidate");
+  assert.equal(manifest.characters.yandi.candidates.length, 0);
+  assert.equal(await main(input.args, run.ctx), EXIT.ok, run.out.stderr);
+  assert.deepEqual(readFileSync(path.join(box.workdir, "characters", "manifest.json")), before, "idempotence includes timestamps and manifest bytes");
+  assert.equal(await main(["look", "--slug", box.slug], run.ctx), EXIT.owner, "a normal rerun must not redraw an imported character");
+  assert.equal(await main(["look", "--slug", box.slug, "--choose", "jingwei=1"], run.ctx), EXIT.usage);
+  assert.equal(await main(["approve", "--slug", box.slug, "--gate", "look"], run.ctx), EXIT.usage, "the direct approval CLI also requires a judged, complete imported look");
+  assert.deepEqual(readApprovals(box.workdir).approvals, []);
+  assert.equal(existsSync(path.join(box.workdir, "characters", "choice.json")), false);
+  assert.equal(readLedger(box.workdir).totals.usd, 0);
+});
+
+test("look import rejects unknown characters, broken PNGs, dimensions, wrong media/source hashes and escaped source paths before writes", async () => {
+  const cases = [
+    (input) => { input.args[input.args.indexOf("--character") + 1] = "nobody"; },
+    (input) => writeFileSync(input.image, PNG("header only")),
+    (input) => writeFileSync(input.image, importPng({ width: 511 })),
+    (input) => { const bytes = Buffer.from(input.bytes); bytes[bytes.length - 1] ^= 1; writeFileSync(input.image, bytes); },
+    (input) => { const source = readJson(input.source); source.image_sha256 = "f".repeat(64); writeFileSync(input.source, JSON.stringify(source)); },
+    (input) => { const source = readJson(input.source); source.source_files[0].sha256 = "f".repeat(64); writeFileSync(input.source, JSON.stringify(source)); },
+    (input) => { const source = readJson(input.source); source.source_files[0].path = "../outside.json"; writeFileSync(input.source, JSON.stringify(source)); },
+    (input) => { const source = readJson(input.source); source.look_hash = "outdated"; writeFileSync(input.source, JSON.stringify(source)); },
+    (input) => rmSync(input.image),
+  ];
+  for (const change of cases) {
+    const box = sandbox("fixture-drama", "drama"), input = externalInputs(box);
+    change(input);
+    const run = context(box, () => { throw new Error("invalid import must remain offline"); });
+    assert.equal(await main(input.args, run.ctx), EXIT.usage, run.out.stderr);
+    assert.equal(existsSync(path.join(box.workdir, "characters", "manifest.json")), false);
+    assert.deepEqual(readApprovals(box.workdir).approvals, []);
+  }
+});
+
+test("an imported sheet uses the normal judge once, normal choice/owner gate, and its exact SHA in keyframe references", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const site = mediaSite({ verdicts: () => ({ overall: 9, passed: true }) });
+  const run = context(box, site.fetchImpl);
+  const inputs = [externalInputs(box), externalInputs(box, "yandi", importPng({ fill: 60 }))];
+  for (const input of inputs) {
+    assert.equal(await main([...input.args, "--judge"], run.ctx), EXIT.ok, run.out.stderr);
+    assert.equal(await main([...input.args, "--judge"], run.ctx), EXIT.ok, run.out.stderr);
+  }
+  assert.equal(site.state.images.length, 0, "import never calls image generation");
+  assert.equal(site.state.judges.length, 2);
+  assert.deepEqual(site.state.judges[0].rubric.map((item) => item.key), ["recognizable", "appearance", "style", "clean", "no_text"]);
+  assert.deepEqual(readApprovals(box.workdir).approvals, []);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.owner);
+  assert.equal(await main(["look", "--slug", box.slug, "--choose", "jingwei=1,yandi=1"], run.ctx), EXIT.ok, run.out.stderr);
+  assert.equal(await main(["approve", "--slug", box.slug, "--gate", "look", "--note", "simulated owner decision in isolated fixture"], run.ctx), EXIT.ok, run.out.stderr);
+  const manifestBytes = readFileSync(path.join(box.workdir, "characters", "manifest.json"));
+  assert.equal(await main([...inputs[0].args, "--judge"], run.ctx), EXIT.ok);
+  assert.deepEqual(readFileSync(path.join(box.workdir, "characters", "manifest.json")), manifestBytes);
+  assert.equal((await approvalState({ gate: "look", docDir: box.dir, workdir: box.workdir })).status, "approved");
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.deepEqual(site.state.images.find((request) => request.shot_id === "farewell").references, inputs.map((input) => ({ sha256: SHA(input.bytes), role: "character" })));
+  assert.equal(readLedger(box.workdir).entries.filter((entry) => entry.stage === "look" && entry.kind === "judge").length, 2);
+});
+
+test("new PNG, source receipt, appearance or style invalidates approvals/downstream while retaining old originals", async () => {
+  for (const change of ["image", "source", "appearance", "style"]) {
+    const box = sandbox("fixture-drama", "drama"), first = externalInputs(box);
+    const site = mediaSite({ verdicts: () => ({ overall: 9, passed: true }) }), run = context(box, site.fetchImpl);
+    await main([...first.args, "--judge"], run.ctx);
+    await main(["look", "--slug", box.slug, "--choose", "jingwei=1"], run.ctx);
+    await approve({ gate: "look", docDir: box.dir, workdir: box.workdir });
+    const original = manifestOf(box, "characters").characters.jingwei.candidates[0];
+    for (const dir of ["keyframes", "clips"]) { mkdirSync(path.join(box.workdir, dir), { recursive: true }); writeFileSync(path.join(box.workdir, dir, "manifest.json"), JSON.stringify({ look_hash: lookHash(dramaFixture()), shots: { prior: { file: "preserved.png" } } })); }
+    await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir });
+    if (["appearance", "style"].includes(change)) {
+      const file = path.join(box.dir, "video.json"), doc = readJson(file);
+      if (change === "appearance") doc.characters[0].appearance += ", silver hairpin";
+      else doc.look.style = "soft ink illustration";
+      writeFileSync(file, JSON.stringify(doc, null, 2));
+    }
+    const next = externalInputs(box, "jingwei", change === "image" ? importPng({ fill: 80 }) : first.bytes, change === "source" ? { prompt_sha256: SHA("revised artwork source") } : {});
+    assert.equal(await main(next.args, run.ctx), EXIT.ok, run.out.stderr);
+    assert.equal((await approvalState({ gate: "look", docDir: box.dir, workdir: box.workdir })).status, "stale", change);
+    assert.equal((await approvalState({ gate: "storyboard", docDir: box.dir, workdir: box.workdir })).status, "stale", change);
+    assert.equal(manifestOf(box, "keyframes").look_hash, null);
+    assert.equal(manifestOf(box, "clips").look_hash, null);
+    assert.equal(manifestOf(box, "clips").shots.prior.file, "preserved.png");
+    assert.deepEqual(readFileSync(path.join(box.workdir, original.file)), first.bytes);
+    assert.equal(readJson(path.join(box.workdir, "characters", "choice.json")).chosen.jingwei, undefined);
+    assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.owner);
+    assert.equal(site.state.images.length, 0);
+  }
+});
+
+test("a failed or uncertain imported judge is never invented or automatically retried", async () => {
+  const failed = sandbox("fixture-drama", "drama"), input = externalInputs(failed);
+  const site = mediaSite({ verdicts: () => ({ overall: 4, passed: false, problems: ["wrong face"] }) });
+  const run = context(failed, site.fetchImpl);
+  assert.equal(await main([...input.args, "--judge"], run.ctx), EXIT.lint);
+  assert.equal(await main([...input.args, "--judge"], run.ctx), EXIT.lint);
+  assert.equal(site.state.judges.length, 1);
+  assert.equal(manifestOf(failed, "characters").characters.jingwei.suggested, null);
+  const uncertain = sandbox("fixture-drama", "drama"), other = externalInputs(uncertain);
+  let calls = 0;
+  const lost = context(uncertain, async (url, init) => { if (new URL(url).pathname.endsWith("/judge")) { calls++; throw new Error("connection lost after submit"); } return site.fetchImpl(url, init); });
+  assert.equal(await main([...other.args, "--judge"], lost.ctx), EXIT.external);
+  assert.equal(manifestOf(uncertain, "characters").characters.jingwei.candidates[0].judge, null);
+  assert.equal(await main([...other.args, "--judge"], lost.ctx), EXIT.owner);
+  assert.equal(calls, 1);
+  assert.deepEqual(readApprovals(uncertain.workdir).approvals, []);
+});
+
+test("refreshing a changed canonical source supersedes its old candidate without blocking the replacement", async () => {
+  const box = sandbox("fixture-drama", "drama"), art = path.join(box.root, "art-source.txt");
+  writeFileSync(art, "first source");
+  const sourceFiles = () => [{ path: "art-source.txt", sha256: SHA(readFileSync(art)) }];
+  const first = externalInputs(box, "jingwei", importPng(), { source_files: sourceFiles() });
+  const site = mediaSite({ verdicts: () => ({ overall: 9, passed: true }) }), run = context(box, site.fetchImpl);
+  assert.equal(await main([...first.args, "--judge"], run.ctx), EXIT.ok);
+  writeFileSync(art, "revised canonical source");
+  const next = externalInputs(box, "jingwei", first.bytes, { source_files: sourceFiles() });
+  assert.equal(await main([...next.args, "--judge"], run.ctx), EXIT.ok, run.out.stderr);
+  const entry = manifestOf(box, "characters").characters.jingwei;
+  assert.equal(entry.candidates[0].superseded_by, entry.candidates[1].key);
+  assert.equal(entry.suggested, 2, "an obsolete source cannot remain the high-scoring suggestion");
+  assert.equal(await main(["look", "--slug", box.slug, "--choose", "jingwei=1"], run.ctx), EXIT.usage);
+  assert.equal(await main(["look", "--slug", box.slug, "--choose", "jingwei=2"], run.ctx), EXIT.ok, run.out.stderr);
+});
+
+test("import respects STOP and refuses tampered content-addressed PNGs without overwriting them", async () => {
+  const box = sandbox("fixture-drama", "drama"), input = externalInputs(box);
+  const run = context(box, () => { throw new Error("offline"); });
+  mkdirSync(box.workdir, { recursive: true }); writeFileSync(path.join(box.workdir, "STOP"), "owner hold");
+  assert.equal(await main(input.args, run.ctx), EXIT.incomplete);
+  assert.equal(existsSync(path.join(box.workdir, "characters", "manifest.json")), false);
+  rmSync(path.join(box.workdir, "STOP"));
+  assert.equal(await main(input.args, run.ctx), EXIT.ok);
+  const file = path.join(box.workdir, manifestOf(box, "characters").characters.jingwei.candidates[0].file);
+  writeFileSync(file, "tampered");
+  assert.equal(await main(input.args, run.ctx), EXIT.usage);
+  assert.equal(readFileSync(file, "utf8"), "tampered");
+});
 
 test("sheet prompts, choices and suggestions", () => {
   const doc = dramaFixture();

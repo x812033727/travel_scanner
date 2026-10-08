@@ -1,0 +1,3766 @@
+{
+  "schema_version": 1,
+  "episode": "ou-de-jianghu-e001",
+  "status": "preproduction_review_package",
+  "source_commit": "c6454463d0eb53e4c8166be0b93a587598c03208",
+  "source_files": [
+    {
+      "path": "docs/videos/series-plans/ou-de-jianghu/setting.json",
+      "sha256": "50501eed994a885842b294c13dff76865e3ae7ebabba8dd1c9966788b7314d10"
+    },
+    {
+      "path": "docs/videos/series-plans/ou-de-jianghu/production/cast.json",
+      "sha256": "010edd7bcc01d42785cccdec74344ef38bd4887dcdd0dbf3bc6803788811b5ca"
+    },
+    {
+      "path": "docs/videos/series-plans/ou-de-jianghu/production/cast-notes.md",
+      "sha256": "a58ed01c6a4829d7f8807c8e740c94a970f0d6033ff53df2206337ed5fc146ee"
+    },
+    {
+      "path": "docs/videos/series-plans/ou-de-jianghu/season-01.json",
+      "sha256": "410f4963b498b93a8aa5ba09255a00661e2b2c00ce87f3c227ad1b6dde14caf8"
+    },
+    {
+      "path": "docs/videos/series-plans/ou-de-jianghu/season-02.json",
+      "sha256": "879636f0ea5797b70b817ab193928d40cdd853287385316f238a39470ea199a5"
+    },
+    {
+      "path": "docs/videos/ou-de-jianghu-e001/video.json",
+      "sha256": "82d221350032c02b3b2f8943e72e63795be36e221c45067acf5bd9a751d20443"
+    },
+    {
+      "path": "docs/videos/ou-de-jianghu-e002/video.json",
+      "sha256": "0370b635c25ea236e87f1319055f4288ac76c22bacb8389eb342fc5ad050f736"
+    },
+    {
+      "path": "docs/videos/ou-de-jianghu-e003/video.json",
+      "sha256": "08eb840f2746eab2786dafdfc917aa5e6060decab5154173cddb3d2a87b6ee66"
+    },
+    {
+      "path": "docs/videos/ou-de-jianghu-e004/video.json",
+      "sha256": "9c9d01916b8a7a81bb7dd466f57fd2fc22f852543a2951ed215bd4ce94701541"
+    },
+    {
+      "path": "docs/videos/ou-de-jianghu-e005/video.json",
+      "sha256": "2abaaf5ba38896c73f859d756b60cef370cc05a720665f37a6c005551a3c4e7b"
+    },
+    {
+      "path": "docs/videos/ou-de-jianghu-e006/video.json",
+      "sha256": "fdbe8962da00948f7a2946def5ba50fdaf45024a20e29863cfbedb0a388ce065"
+    },
+    {
+      "path": "docs/videos/ou-de-jianghu-e007/video.json",
+      "sha256": "58c48308d41c283046b5d419f33e449a0bb23a85139e8ada5bc56118ebf7357c"
+    }
+  ],
+  "accepted_style": "保留目前華麗古裝與細緻人物風格",
+  "owner_asset_selection": false,
+  "plan_locked": false,
+  "normal_runtime_integrated": false,
+  "paid_animation_started": false,
+  "counts": {
+    "characters": 9,
+    "concepts": 9,
+    "portraits": 27,
+    "new_character_references": 74,
+    "reused_front_views": 9,
+    "character_reference_uses": 83,
+    "scene_and_prop_candidates": 29,
+    "unique_latest_art": 139,
+    "character_reference_retained_png_files": 90,
+    "character_reference_unique_generated_images": 89,
+    "character_reference_alias_files": 1
+  },
+  "characters": [
+    {
+      "character_id": "shen-guihe",
+      "name": "沈歸鶴「白鶴先生」",
+      "look_id": "base",
+      "asset_keys": [
+        "shen-guihe-concept-v3",
+        "shen-guihe-front-headshot-v1",
+        "shen-guihe-three-quarter-halfbody-v1",
+        "shen-guihe-full-body-v1",
+        "shen-guihe-back-v1",
+        "shen-guihe-left-profile-v1",
+        "shen-guihe-right-profile-v1",
+        "shen-guihe-left-three-quarter-v1",
+        "shen-guihe-right-three-quarter-v1",
+        "shen-guihe-expressions-v1",
+        "shen-guihe-action-phases-v1",
+        "shen-guihe-construction-details-v2"
+      ]
+    },
+    {
+      "character_id": "ji-wushuang",
+      "name": "姬無霜「霜夫人」",
+      "look_id": "base",
+      "asset_keys": [
+        "ji-wushuang-concept-v2",
+        "ji-wushuang-front-headshot-v1",
+        "ji-wushuang-three-quarter-halfbody-v1",
+        "ji-wushuang-full-body-v1",
+        "ji-wushuang-back-v2",
+        "ji-wushuang-left-profile-v2",
+        "ji-wushuang-right-profile-v2",
+        "ji-wushuang-left-three-quarter-v1",
+        "ji-wushuang-right-three-quarter-v4",
+        "ji-wushuang-expressions-v1",
+        "ji-wushuang-action-phases-v1",
+        "ji-wushuang-construction-details-v1"
+      ]
+    },
+    {
+      "character_id": "ji-wen",
+      "name": "寂聞「怒目佛」",
+      "look_id": "base",
+      "asset_keys": [
+        "ji-wen-concept-v1",
+        "ji-wen-front-headshot-v1",
+        "ji-wen-three-quarter-halfbody-v1",
+        "ji-wen-full-body-v1",
+        "ji-wen-back-v1",
+        "ji-wen-left-profile-v1",
+        "ji-wen-right-profile-v1",
+        "ji-wen-left-three-quarter-v1",
+        "ji-wen-right-three-quarter-v1",
+        "ji-wen-expressions-v1",
+        "ji-wen-action-phases-v1",
+        "ji-wen-construction-details-v1"
+      ]
+    },
+    {
+      "character_id": "bao-sanqian",
+      "name": "包三錢",
+      "look_id": "base",
+      "asset_keys": [
+        "bao-sanqian-concept-v1",
+        "bao-sanqian-front-headshot-v1",
+        "bao-sanqian-three-quarter-halfbody-v1",
+        "bao-sanqian-full-body-v1",
+        "bao-sanqian-back-v1",
+        "bao-sanqian-left-profile-v1",
+        "bao-sanqian-right-profile-v1",
+        "bao-sanqian-left-three-quarter-v2",
+        "bao-sanqian-right-three-quarter-v1",
+        "bao-sanqian-expressions-v1",
+        "bao-sanqian-action-phases-v1",
+        "bao-sanqian-construction-details-v1"
+      ]
+    },
+    {
+      "character_id": "yin-wusheng",
+      "name": "殷無聲「啞劍」",
+      "look_id": "base",
+      "asset_keys": [
+        "yin-wusheng-concept-v2",
+        "yin-wusheng-front-headshot-v1",
+        "yin-wusheng-three-quarter-halfbody-v2",
+        "yin-wusheng-full-body-v1",
+        "yin-wusheng-back-v1",
+        "yin-wusheng-left-profile-v1",
+        "yin-wusheng-right-profile-v1",
+        "yin-wusheng-left-three-quarter-v1",
+        "yin-wusheng-right-three-quarter-v1",
+        "yin-wusheng-expressions-v1",
+        "yin-wusheng-action-phases-v1",
+        "yin-wusheng-construction-details-v1"
+      ]
+    },
+    {
+      "character_id": "yan-hui",
+      "name": "燕迴「赤纓」",
+      "look_id": "base",
+      "asset_keys": [
+        "yan-hui-concept-v1",
+        "yan-hui-front-headshot-v1",
+        "yan-hui-three-quarter-halfbody-v2",
+        "yan-hui-full-body-v1",
+        "yan-hui-back-v1",
+        "yan-hui-left-profile-v1",
+        "yan-hui-right-profile-v1",
+        "yan-hui-left-three-quarter-v1",
+        "yan-hui-right-three-quarter-v3",
+        "yan-hui-expressions-v1",
+        "yan-hui-action-phases-v1",
+        "yan-hui-construction-details-v1"
+      ]
+    },
+    {
+      "character_id": "nie-gutie",
+      "name": "聶孤鐵「雕匠」",
+      "look_id": "base",
+      "asset_keys": [
+        "nie-gutie-concept-v1",
+        "nie-gutie-front-headshot-v1",
+        "nie-gutie-three-quarter-halfbody-v1",
+        "nie-gutie-full-body-v1",
+        "nie-gutie-back-v1",
+        "nie-gutie-left-profile-v1",
+        "nie-gutie-right-profile-v1",
+        "nie-gutie-left-three-quarter-v1",
+        "nie-gutie-right-three-quarter-v1",
+        "nie-gutie-expressions-v1",
+        "nie-gutie-action-phases-v1",
+        "nie-gutie-construction-details-v1"
+      ]
+    },
+    {
+      "character_id": "xuanmen-elder",
+      "name": "玄門長老",
+      "look_id": "base",
+      "asset_keys": [
+        "xuanmen-elder-concept-v1",
+        "xuanmen-elder-front-headshot-v1",
+        "xuanmen-elder-three-quarter-halfbody-v1",
+        "xuanmen-elder-full-body-v1",
+        "xuanmen-elder-back-v2",
+        "xuanmen-elder-left-profile-v1",
+        "xuanmen-elder-right-profile-v1",
+        "xuanmen-elder-left-three-quarter-v1",
+        "xuanmen-elder-right-three-quarter-v1",
+        "xuanmen-elder-expressions-v1",
+        "xuanmen-elder-action-phases-v2",
+        "xuanmen-elder-construction-details-v1"
+      ]
+    },
+    {
+      "character_id": "luo-qingyan",
+      "name": "洛青衍",
+      "look_id": "base",
+      "asset_keys": [
+        "luo-qingyan-concept-v2",
+        "luo-qingyan-front-headshot-v1",
+        "luo-qingyan-three-quarter-halfbody-v2",
+        "luo-qingyan-full-body-v1",
+        "luo-qingyan-back-v1",
+        "luo-qingyan-left-profile-v1",
+        "luo-qingyan-right-profile-v1",
+        "luo-qingyan-left-three-quarter-v1",
+        "luo-qingyan-right-three-quarter-v1",
+        "luo-qingyan-expressions-v1",
+        "luo-qingyan-action-phases-v1",
+        "luo-qingyan-construction-details-v1"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "category": "concept",
+      "key": "ji-wushuang-concept-v2",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "art_direction",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/art-direction/20261008/ji-wushuang-concept-v2.png",
+      "sha256": "fdec38a26c2a1c12b18282158add024d8d6642a10d6a414025a2d3de87208682",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "episode1-portraits/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "concept",
+      "key": "ji-wen-concept-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "art_direction",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/art-direction/20261008/ji-wen-concept-v1.png",
+      "sha256": "f783fab8334c619b364e88e4577c2f9158b559136a5aabdffa5fca2b538dafaa",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "episode1-portraits/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "concept",
+      "key": "bao-sanqian-concept-v1",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "art_direction",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/art-direction/20261008/bao-sanqian-concept-v1.png",
+      "sha256": "6bb30672161f7034f7c3ef11c2a2aad6abd419a2bd87f7c522e4dece0a0df47f",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "episode1-portraits/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "concept",
+      "key": "nie-gutie-concept-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "art_direction",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/art-direction/20261008/nie-gutie-concept-v1.png",
+      "sha256": "7a4351d8a5241bb1dd6b273a1d3d2cb512b1d8a3696a66e805fafb9984c4b88f",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "episode1-portraits/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "concept",
+      "key": "xuanmen-elder-concept-v1",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "art_direction",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/art-direction/20261008/xuanmen-elder-concept-v1.png",
+      "sha256": "142c9fdee9e5d7ebd99555925516a0dd733eae6122426e36eb290234f253cf0b",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "episode1-portraits/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "concept",
+      "key": "yan-hui-concept-v1",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "art_direction",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/art-direction/20261008/yan-hui-concept-v1.png",
+      "sha256": "6f3befadd7a5a73eff275c99d7bcbf67b9171d424478f79c222bed21d3e82595",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "episode1-portraits/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "concept",
+      "key": "shen-guihe-concept-v3",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "art_direction",
+      "version": 3,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/art-direction/20261008/shen-guihe-concept-v3.png",
+      "sha256": "8e581736e7c86a30433fd26d4a3b8be0276d30cfa343c25a279736e4e2be43a3",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "episode1-portraits/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "concept",
+      "key": "luo-qingyan-concept-v2",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "art_direction",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/art-direction/20261008/luo-qingyan-concept-v2.png",
+      "sha256": "717f73760fc12c716a6041ef67b4fc749386cadc80c5cf9b13ef8accfb68e2e3",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "episode1-portraits/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "concept",
+      "key": "yin-wusheng-concept-v2",
+      "character_id": "yin-wusheng",
+      "look_id": "base",
+      "use": "art_direction",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/art-direction/20261008/yin-wusheng-concept-v2.png",
+      "sha256": "ec712243937dd4118f7f2feec67d49dd046597a437b88eb2ae6000b13de788aa",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "episode1-portraits/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "portrait",
+      "key": "shen-guihe-front-headshot-v1",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "front-headshot",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/shen-guihe-front-headshot-v1.png",
+      "sha256": "96f725263d6b21e1e9f05e95166a051734491ac305b84c93a52c7df110acf606",
+      "native_dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "long_edge": 1254,
+        "actual_ratio": "1:1",
+        "aspect_ratio": 1
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_target_met",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "shen-guihe-three-quarter-halfbody-v1",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "three-quarter-halfbody",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/shen-guihe-three-quarter-halfbody-v1.png",
+      "sha256": "f61d0a7b3d13f5e8b0c1816d996c5b432272213c3064fabf92f4ea83bd84fc47",
+      "native_dimensions": {
+        "width": 1003,
+        "height": 1568,
+        "long_edge": 1568,
+        "actual_ratio": "1003:1568",
+        "aspect_ratio": 0.6396683673469388
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "native_ratio_differs_from_target"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "shen-guihe-full-body-v1",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "full-body",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/shen-guihe-full-body-v1.png",
+      "sha256": "b13e5c2362ab2aad580e71b1e8d22cffdad69bb9c39df62460bf509ac3ec064b",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536,
+        "long_edge": 1536,
+        "actual_ratio": "2:3",
+        "aspect_ratio": 0.6666666666666666
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "ji-wushuang-front-headshot-v1",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "front-headshot",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/ji-wushuang-front-headshot-v1.png",
+      "sha256": "1e2abdae520dcbb9759886d151a4de51578052fe4c106bfd0b6d980f015df5d9",
+      "native_dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "long_edge": 1254,
+        "actual_ratio": "1:1",
+        "aspect_ratio": 1
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_target_met",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "ji-wushuang-three-quarter-halfbody-v1",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "three-quarter-halfbody",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/ji-wushuang-three-quarter-halfbody-v1.png",
+      "sha256": "90883f32278648af05dddb9e802769724ef24920f2ea20a38b897f0b12cfe1ed",
+      "native_dimensions": {
+        "width": 1003,
+        "height": 1568,
+        "long_edge": 1568,
+        "actual_ratio": "1003:1568",
+        "aspect_ratio": 0.6396683673469388
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "native_ratio_differs_from_target"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "ji-wushuang-full-body-v1",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "full-body",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/ji-wushuang-full-body-v1.png",
+      "sha256": "6ed68b1de7db15559e4b9d57c84ba92c0ffff80bf1e59970c82677d4915ecec3",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536,
+        "long_edge": 1536,
+        "actual_ratio": "2:3",
+        "aspect_ratio": 0.6666666666666666
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "ji-wen-front-headshot-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "front-headshot",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/ji-wen-front-headshot-v1.png",
+      "sha256": "0b4dc86b4f99b643e5d128662ea02046930000ad5bc1545db9898f6abe4a75d4",
+      "native_dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "long_edge": 1254,
+        "actual_ratio": "1:1",
+        "aspect_ratio": 1
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_target_met",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "ji-wen-three-quarter-halfbody-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "three-quarter-halfbody",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/ji-wen-three-quarter-halfbody-v1.png",
+      "sha256": "91b93dc7dadd29bc9bad6f665c7a12e2a1ad835957d3d64ed6220db150dfd4c2",
+      "native_dimensions": {
+        "width": 1122,
+        "height": 1402,
+        "long_edge": 1402,
+        "actual_ratio": "561:701",
+        "aspect_ratio": 0.8002853067047075
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "native_ratio_differs_from_target"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "ji-wen-full-body-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "full-body",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/ji-wen-full-body-v1.png",
+      "sha256": "8a60b9ce8f83534542d002caedc0102d65255137d9eca99190091565e3ed9a35",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536,
+        "long_edge": 1536,
+        "actual_ratio": "2:3",
+        "aspect_ratio": 0.6666666666666666
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "bao-sanqian-front-headshot-v1",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "front-headshot",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/bao-sanqian-front-headshot-v1.png",
+      "sha256": "418400b3dbd07a67bb2564467ff504c32ad7cf1c7ba91c8da66ba53a78de5391",
+      "native_dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "long_edge": 1254,
+        "actual_ratio": "1:1",
+        "aspect_ratio": 1
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_target_met",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "bao-sanqian-three-quarter-halfbody-v1",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "three-quarter-halfbody",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/bao-sanqian-three-quarter-halfbody-v1.png",
+      "sha256": "1ce1ad74b7eff58d2cc5a2e1ae9d3a4f2170808509b48163117a5dca1b4e0f5a",
+      "native_dimensions": {
+        "width": 1122,
+        "height": 1402,
+        "long_edge": 1402,
+        "actual_ratio": "561:701",
+        "aspect_ratio": 0.8002853067047075
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "native_ratio_differs_from_target"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "bao-sanqian-full-body-v1",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "full-body",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/bao-sanqian-full-body-v1.png",
+      "sha256": "625174d287f29d8fda2791f8193a89c26476a121bea7b1d80aa52fbc9e43afd9",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536,
+        "long_edge": 1536,
+        "actual_ratio": "2:3",
+        "aspect_ratio": 0.6666666666666666
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "yin-wusheng-front-headshot-v1",
+      "character_id": "yin-wusheng",
+      "look_id": "base",
+      "use": "front-headshot",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/yin-wusheng-front-headshot-v1.png",
+      "sha256": "3cf1fb456dde467b6fde6bd7c9d71f2dacb88d4d950990e6ed903720177c84cf",
+      "native_dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "long_edge": 1254,
+        "actual_ratio": "1:1",
+        "aspect_ratio": 1
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_target_met",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "yin-wusheng-three-quarter-halfbody-v2",
+      "character_id": "yin-wusheng",
+      "look_id": "base",
+      "use": "three-quarter-halfbody",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/yin-wusheng-three-quarter-halfbody-v2.png",
+      "sha256": "f956ac9df33e19c711597e3225841efc858ed8eedc9cd85064c8c79e7db338eb",
+      "native_dimensions": {
+        "width": 1122,
+        "height": 1402,
+        "long_edge": 1402,
+        "actual_ratio": "561:701",
+        "aspect_ratio": 0.8002853067047075
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "native_ratio_differs_from_target"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "yin-wusheng-full-body-v1",
+      "character_id": "yin-wusheng",
+      "look_id": "base",
+      "use": "full-body",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/yin-wusheng-full-body-v1.png",
+      "sha256": "ccf625f6813518032435c4a462a1203e6128691afda10516fe9dbcf95e5972ea",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536,
+        "long_edge": 1536,
+        "actual_ratio": "2:3",
+        "aspect_ratio": 0.6666666666666666
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "yan-hui-front-headshot-v1",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "front-headshot",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/yan-hui-front-headshot-v1.png",
+      "sha256": "9b1d6e5cdcb1a76d2d33ebb765190252efd5a729a2627e5d9cc53d46725fd7c9",
+      "native_dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "long_edge": 1254,
+        "actual_ratio": "1:1",
+        "aspect_ratio": 1
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_target_met",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "yan-hui-three-quarter-halfbody-v2",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "three-quarter-halfbody",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/yan-hui-three-quarter-halfbody-v2.png",
+      "sha256": "4a929135edf1d84f4439fdc36c65fb05c4a0e762564cc27f9cfe4241b882eacc",
+      "native_dimensions": {
+        "width": 1122,
+        "height": 1402,
+        "long_edge": 1402,
+        "actual_ratio": "561:701",
+        "aspect_ratio": 0.8002853067047075
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "native_ratio_differs_from_target"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "yan-hui-full-body-v1",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "full-body",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/yan-hui-full-body-v1.png",
+      "sha256": "5cf0a08166ecbb00a7f1a484c4bc7c8ec16ab772f5ad61f1f8390c44792caa21",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536,
+        "long_edge": 1536,
+        "actual_ratio": "2:3",
+        "aspect_ratio": 0.6666666666666666
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "nie-gutie-front-headshot-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "front-headshot",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/nie-gutie-front-headshot-v1.png",
+      "sha256": "31f6fbfa208e537f661a5f2aa33ee8abb388327b3150a6114ad2de3daa1406f5",
+      "native_dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "long_edge": 1254,
+        "actual_ratio": "1:1",
+        "aspect_ratio": 1
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_target_met",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "nie-gutie-three-quarter-halfbody-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "three-quarter-halfbody",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/nie-gutie-three-quarter-halfbody-v1.png",
+      "sha256": "7653997536869411b750111a2837701bf32b56674593e2fa3828fcbd25b0e7b9",
+      "native_dimensions": {
+        "width": 1122,
+        "height": 1402,
+        "long_edge": 1402,
+        "actual_ratio": "561:701",
+        "aspect_ratio": 0.8002853067047075
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "native_ratio_differs_from_target"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "nie-gutie-full-body-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "full-body",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/nie-gutie-full-body-v1.png",
+      "sha256": "866e1e8cb75e7fabd7ebdc7ae2deca88938b79fc05f864a9c708d31d5d597115",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536,
+        "long_edge": 1536,
+        "actual_ratio": "2:3",
+        "aspect_ratio": 0.6666666666666666
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "xuanmen-elder-front-headshot-v1",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "front-headshot",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/xuanmen-elder-front-headshot-v1.png",
+      "sha256": "60c8245d7e5b50ee9d3b9acc6b3c2236f772d1f6bb2233842b97c1b98e0322b2",
+      "native_dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "long_edge": 1254,
+        "actual_ratio": "1:1",
+        "aspect_ratio": 1
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_target_met",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "xuanmen-elder-three-quarter-halfbody-v1",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "three-quarter-halfbody",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/xuanmen-elder-three-quarter-halfbody-v1.png",
+      "sha256": "3cb3d461f7938d0cf1ed4b64f9a829ad116fa88fdc831790fcd43545c8dbfe3f",
+      "native_dimensions": {
+        "width": 1122,
+        "height": 1402,
+        "long_edge": 1402,
+        "actual_ratio": "561:701",
+        "aspect_ratio": 0.8002853067047075
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "native_ratio_differs_from_target"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "xuanmen-elder-full-body-v1",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "full-body",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/xuanmen-elder-full-body-v1.png",
+      "sha256": "564e79297979b1c7bb49b3fba39d8c3e590a2fc6bae246fa37b01837ac61667d",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536,
+        "long_edge": 1536,
+        "actual_ratio": "2:3",
+        "aspect_ratio": 0.6666666666666666
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "luo-qingyan-front-headshot-v1",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "front-headshot",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/luo-qingyan-front-headshot-v1.png",
+      "sha256": "6d3b1287824195c9bb32c7e603b48bddb21164176c3465bf1b643946050d22b0",
+      "native_dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "long_edge": 1254,
+        "actual_ratio": "1:1",
+        "aspect_ratio": 1
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_target_met",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "luo-qingyan-three-quarter-halfbody-v2",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "three-quarter-halfbody",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/luo-qingyan-three-quarter-halfbody-v2.png",
+      "sha256": "b3ac3c04de317368f77058eb3fa7c7d7fca708b76fb694961ca69a70f24db658",
+      "native_dimensions": {
+        "width": 1122,
+        "height": 1402,
+        "long_edge": 1402,
+        "actual_ratio": "561:701",
+        "aspect_ratio": 0.8002853067047075
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "native_ratio_differs_from_target"
+      ]
+    },
+    {
+      "category": "portrait",
+      "key": "luo-qingyan-full-body-v1",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "full-body",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/portraits/20261008/luo-qingyan-full-body-v1.png",
+      "sha256": "9b3991c06ec0ae39acedaec6332a698d7209a75bbb3e5b245e79b6b3da96aeef",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536,
+        "long_edge": 1536,
+        "actual_ratio": "2:3",
+        "aspect_ratio": 0.6666666666666666
+      },
+      "receipt": "episode1-portraits/independent-views-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "native_below_target",
+        "target_ratio_met"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "shen-guihe-back-v1",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "back",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-back-v1.png",
+      "sha256": "40104ce00cd0c99d11ce66c72fb67bc0d843c2bbac233c3eb01de14016762145",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "shen-guihe-left-profile-v1",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "left-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-left-profile-v1.png",
+      "sha256": "adbd2fd75ef4e00f341a6c68f4b30097d46d5cbd6d49dadcf01ccbc3d17a1da4",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "shen-guihe-right-profile-v1",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "right-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-right-profile-v1.png",
+      "sha256": "1f5485e2b270faafb1ccafd0f1cadc7a169c96f0707715dab12f22adc9c64571",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "shen-guihe-left-three-quarter-v1",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "left-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-left-three-quarter-v1.png",
+      "sha256": "cb965970bd168c35299dc717042b370e3ca6cba2a53bb8fc0417652f6fcb4bb6",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "shen-guihe-right-three-quarter-v1",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "right-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-right-three-quarter-v1.png",
+      "sha256": "b20960da6fc0eb75deee3fe1c2d1e8631e2bd76dd95bdef62b8dfb118b1fbc05",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "shen-guihe-expressions-v1",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "expressions",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-expressions-v1.png",
+      "sha256": "036cf6365676e25567bd234a944890f929c4f5b409c395b92bd1b1e3ebd5fb7e",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "表情近景，不取代完整冠飾參照"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "shen-guihe-action-phases-v1",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "action-phases",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-action-phases-v1.png",
+      "sha256": "9622d387ad60207ba71875d3e42b0ac895c0e774dec11254661e5b34bfb18c48",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "姿態分解提案，不是已驗證動畫中間格"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "shen-guihe-construction-details-v2",
+      "character_id": "shen-guihe",
+      "look_id": "base",
+      "use": "construction-details",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/shen-guihe-construction-details-v2.png",
+      "sha256": "b133ceac6f38396ee569354a1063e1acdcac3e7d1f19a7ed667fe677ec0a4fe4",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wushuang-back-v2",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "back",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wushuang-back-v2.png",
+      "sha256": "4f7388f8d7932b93733513b788cf30acd60caefd7e21bddb8920655001e86ac0",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wushuang-left-profile-v2",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "left-profile",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wushuang-left-profile-v2.png",
+      "sha256": "4885dd527af7b85f014c39da3eba2d6a2c5da597a5a752f9a6fe8428496fec38",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wushuang-right-profile-v2",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "right-profile",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wushuang-right-profile-v2.png",
+      "sha256": "aa701ea90648093cefc497797335a462b9b1858c49be45f2ef1ca36b3f06eb0d",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wushuang-left-three-quarter-v1",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "left-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wushuang-left-three-quarter-v1.png",
+      "sha256": "9d2af24215b6a3a3e22e3932d8516f1503d7294e2cae7179846b72a82fb580e8",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wushuang-right-three-quarter-v4",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "right-three-quarter",
+      "version": 4,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wushuang-right-three-quarter-v4.png",
+      "sha256": "7b640ea7ee0781d896cdb0509f4b24bfb69570a2ec243f626772e2d015f2989c",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wushuang-expressions-v1",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "expressions",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wushuang-expressions-v1.png",
+      "sha256": "45e2d2c7396d64e5fdb948a4ee0790190946d4d5b62e11cc177f4b264b3fdd4f",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "表情近景，不取代完整冠飾參照"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wushuang-action-phases-v1",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "action-phases",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wushuang-action-phases-v1.png",
+      "sha256": "55d6c3776b4c9f1bd5afefc7d4f75be140b822d59b0f8f823326dc54af2256ce",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "姿態分解提案，不是已驗證動畫中間格"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wushuang-construction-details-v1",
+      "character_id": "ji-wushuang",
+      "look_id": "base",
+      "use": "construction-details",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wushuang-construction-details-v1.png",
+      "sha256": "bf49f22d5b3f6a6a44915b8beee4f8287e326014ce5db5e7776589480814d4c5",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wen-back-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "back",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wen-back-v1.png",
+      "sha256": "29e47eac638b17cab5159b9172c408347417ecbfabdcdff64899cc10897226e7",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wen-left-profile-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "left-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wen-left-profile-v1.png",
+      "sha256": "41deefa64ab2ed7254395e9f85ab5aad55f8a5bf6b68f23fff133e68e960ea51",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wen-right-profile-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "right-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wen-right-profile-v1.png",
+      "sha256": "f3a628d61296cd1f9e49fd686069f8b2d1574bbccda5df3f9455a19602b02613",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wen-left-three-quarter-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "left-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wen-left-three-quarter-v1.png",
+      "sha256": "57c14b6f8f50bedbd2a1f1731260539652fe9fd51909e882053abd5fafb93ce4",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wen-right-three-quarter-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "right-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wen-right-three-quarter-v1.png",
+      "sha256": "cc7ec3439fde0427d21fa95f97904fe8c0c2d5fe6cb3a8ca4050f857c2739dc5",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wen-expressions-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "expressions",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wen-expressions-v1.png",
+      "sha256": "0fbb185e467375f8614640b5d3aaf807120f0ed1bc10dad8c5b02c5f14935167",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "表情近景，不取代完整冠飾參照"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wen-action-phases-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "action-phases",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wen-action-phases-v1.png",
+      "sha256": "dc402f5db3ce08e00a1d62b67a83f221f417e5b5c362afb19afb4682635828f8",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "姿態分解提案，不是已驗證動畫中間格"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "ji-wen-construction-details-v1",
+      "character_id": "ji-wen",
+      "look_id": "base",
+      "use": "construction-details",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ji-wen-construction-details-v1.png",
+      "sha256": "134617837cabd4e159fc6c849337bac01ba22eca1460d1b98a5c180c7f503d71",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "bao-sanqian-back-v1",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "back",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/bao-sanqian-back-v1.png",
+      "sha256": "52e0e39e1f9dc425a04fcd0dd27ec1c5c546957643936b1763316dc068da4bb8",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "bao-sanqian-left-profile-v1",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "left-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/bao-sanqian-left-profile-v1.png",
+      "sha256": "3ab22c7652a7f90c33b2d785fdfe7b5623805b200550b4eb354aa52b6a3e5bc8",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "bao-sanqian-right-profile-v1",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "right-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/bao-sanqian-right-profile-v1.png",
+      "sha256": "04b853fbd0abbd9c3d042e88d286d77ea9be2dc3e0aea06502bdd37773223fc3",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "bao-sanqian-left-three-quarter-v2",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "left-three-quarter",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/bao-sanqian-left-three-quarter-v2.png",
+      "sha256": "bcfb803331ab18190512e68342b7bd9882b76895b4e3db6f0aa5073d5a7f81c4",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "bao-sanqian-right-three-quarter-v1",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "right-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/bao-sanqian-right-three-quarter-v1.png",
+      "sha256": "f1a9f96f5c3c95ebd0c8500ffcf67f0ea57704e1164650302a5caba6052eb1d1",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "bao-sanqian-expressions-v1",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "expressions",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/bao-sanqian-expressions-v1.png",
+      "sha256": "8276f655c506a812efec0378671671e3bc8460380e3fc7dec6098ff7755a2b23",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "表情近景，不取代完整冠飾參照"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "bao-sanqian-action-phases-v1",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "action-phases",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/bao-sanqian-action-phases-v1.png",
+      "sha256": "a52d39bbefe8f3f3ce178b5878c3f14a73e304e86640645dc17a1ab45cd9b016",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "姿態分解提案，不是已驗證動畫中間格"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "bao-sanqian-construction-details-v1",
+      "character_id": "bao-sanqian",
+      "look_id": "base",
+      "use": "construction-details",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/bao-sanqian-construction-details-v1.png",
+      "sha256": "46eeeef64f7d6f633d2e520af7ca44e7ee94ec90c35f95260d211ead856cf06c",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "yin-wusheng-back-v1",
+      "character_id": "yin-wusheng",
+      "look_id": "base",
+      "use": "back",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yin-wusheng-back-v1.png",
+      "sha256": "c265bf5223a9fab7437d398cb2bdd5e0a75f6ca6c6cd68cb7866bdbfd506f892",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "yin-wusheng-left-profile-v1",
+      "character_id": "yin-wusheng",
+      "look_id": "base",
+      "use": "left-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yin-wusheng-left-profile-v1.png",
+      "sha256": "b8a72fb4d2410621bc89ed006c6f57b758d9c100a6a737dbcf8b7ef777615033",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "yin-wusheng-right-profile-v1",
+      "character_id": "yin-wusheng",
+      "look_id": "base",
+      "use": "right-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yin-wusheng-right-profile-v1.png",
+      "sha256": "ca0e31f50fb7c75efdfe5949bbf3b9a409366e7a428aaf87d18f806df3d8dd9e",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "yin-wusheng-left-three-quarter-v1",
+      "character_id": "yin-wusheng",
+      "look_id": "base",
+      "use": "left-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yin-wusheng-left-three-quarter-v1.png",
+      "sha256": "9acd17258ca3e7576b597ba01be976dca27712f6459d226f29f5fc2f00bba348",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "yin-wusheng-right-three-quarter-v1",
+      "character_id": "yin-wusheng",
+      "look_id": "base",
+      "use": "right-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yin-wusheng-right-three-quarter-v1.png",
+      "sha256": "3a199baf05e6212ddc8732753832e5ff9648f2731ed9c1bda49811d2dc08e711",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "yin-wusheng-expressions-v1",
+      "character_id": "yin-wusheng",
+      "look_id": "base",
+      "use": "expressions",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yin-wusheng-expressions-v1.png",
+      "sha256": "4d2013a3c2467e64119864e9e0da7a2b16a561654420b76f3b52d45372c1aa4e",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "表情近景，不取代完整冠飾參照"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "yin-wusheng-action-phases-v1",
+      "character_id": "yin-wusheng",
+      "look_id": "base",
+      "use": "action-phases",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yin-wusheng-action-phases-v1.png",
+      "sha256": "3d787a533014aa4ecaf5c467033e58df9bfad691a70805522f95b5cde26c8418",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "姿態分解提案，不是已驗證動畫中間格"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "yin-wusheng-construction-details-v1",
+      "character_id": "yin-wusheng",
+      "look_id": "base",
+      "use": "construction-details",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yin-wusheng-construction-details-v1.png",
+      "sha256": "223442a8946e9801cd979fde80c6c6bea8d6b159834f9c4f455dbfc2d4722e1e",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "yan-hui-back-v1",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "back",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yan-hui-back-v1.png",
+      "sha256": "c5d61b39978dc7774145e0f09e82a94c0944d1a7977a05af1f51d7227032a303",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "yan-hui-left-profile-v1",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "left-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yan-hui-left-profile-v1.png",
+      "sha256": "d2eddccc47d7c584c90f055d65aee63ec0969442fb6f98410247d55e93d4838e",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "yan-hui-right-profile-v1",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "right-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yan-hui-right-profile-v1.png",
+      "sha256": "c49873fb634e948236fdb7112391ddb32276afb0fcf09b19bcf4e78546eb0b79",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "yan-hui-left-three-quarter-v1",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "left-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yan-hui-left-three-quarter-v1.png",
+      "sha256": "742273702631ec3c8aee05eb41559540cdaad349f2bbc7b9a29752845e148e82",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "yan-hui-right-three-quarter-v3",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "right-three-quarter",
+      "version": 3,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yan-hui-right-three-quarter-v3.png",
+      "sha256": "77b0ef327ab16ce3c044e71b961b09c666f241bd5e522c6a966203bd7ba00d02",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "yan-hui-expressions-v1",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "expressions",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yan-hui-expressions-v1.png",
+      "sha256": "ab3b3dd6e5f00a8f31a9215675b02df0d639a221d58e39b0e94fc0a02701badd",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "表情近景，不取代完整冠飾參照"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "yan-hui-action-phases-v1",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "action-phases",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yan-hui-action-phases-v1.png",
+      "sha256": "b3c8cbd1c9ae121dcfa2c9ba1620c0cc404c8e90498d621a0490e247d68c6903",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "姿態分解提案，不是已驗證動畫中間格"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "yan-hui-construction-details-v1",
+      "character_id": "yan-hui",
+      "look_id": "base",
+      "use": "construction-details",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/yan-hui-construction-details-v1.png",
+      "sha256": "ae1def6ae646305b17cf6d925be5b4d9e835f5626ec2186885a56d8ed1229568",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "nie-gutie-back-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "back",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/nie-gutie-back-v1.png",
+      "sha256": "580607b32ce1fd002ab50c399cccd445935ed6b77cdaa1f897ed54aab8c97dfa",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "nie-gutie-left-profile-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "left-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/nie-gutie-left-profile-v1.png",
+      "sha256": "ee15cf2c6cb17ecbf062526ad511b12fe42d8fe9c63459c2fd708530c3334674",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "nie-gutie-right-profile-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "right-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/nie-gutie-right-profile-v1.png",
+      "sha256": "bd1e8b5c6812581a662f85a33b69c1c75a9e54261e5b5195baffbe6496a401c4",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "nie-gutie-left-three-quarter-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "left-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/nie-gutie-left-three-quarter-v1.png",
+      "sha256": "41075d893edbd4a1cfebca9c9410a3800cbd042b57c56ef2958d407230807641",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "nie-gutie-right-three-quarter-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "right-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/nie-gutie-right-three-quarter-v1.png",
+      "sha256": "0d5c1ac1e6918ffeb6b87566c600a884df79c4b02ed78f8e3e15f6b9fd6cb50c",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "nie-gutie-expressions-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "expressions",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/nie-gutie-expressions-v1.png",
+      "sha256": "eb248a437490992cb65643f4e194b0c288306a07e764e15018255b1e49dcf1c3",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "表情近景，不取代完整冠飾參照"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "nie-gutie-action-phases-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "action-phases",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/nie-gutie-action-phases-v1.png",
+      "sha256": "e1cb9daa152d4feb33b8d2e3edf21253b4ff0b20fc4a9dc0db10e2abb60c376b",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "姿態分解提案，不是已驗證動畫中間格"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "nie-gutie-construction-details-v1",
+      "character_id": "nie-gutie",
+      "look_id": "base",
+      "use": "construction-details",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/nie-gutie-construction-details-v1.png",
+      "sha256": "3088f040183efe7c044174d3e9dcbabb83175c32b32abc0175ff2d5e566cd8fc",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "xuanmen-elder-back-v2",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "back",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/xuanmen-elder-back-v2.png",
+      "sha256": "352f0f16660ee42794f34093398f584616476817fe4e61a31286ef7161bcc36d",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "xuanmen-elder-left-profile-v1",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "left-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/xuanmen-elder-left-profile-v1.png",
+      "sha256": "49ab08d104372ff69c0c38bb1795469c5f23a40d4e3075f94771d1f9c7b4ed6f",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "xuanmen-elder-right-profile-v1",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "right-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/xuanmen-elder-right-profile-v1.png",
+      "sha256": "e4a1e2c36dab5ebee1fdf754cabfdc928032f829240c8ad1c0cd7e61f2d656f2",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "xuanmen-elder-left-three-quarter-v1",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "left-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/xuanmen-elder-left-three-quarter-v1.png",
+      "sha256": "d66077eccfe0830fe8b10e41857db66a595a06bd373ffc5adf54e275961bd071",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "xuanmen-elder-right-three-quarter-v1",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "right-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/xuanmen-elder-right-three-quarter-v1.png",
+      "sha256": "61060f8b2df55dde8176d0aecd9936eba480d8134e6d093969a6fa20888fc9d1",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "xuanmen-elder-expressions-v1",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "expressions",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/xuanmen-elder-expressions-v1.png",
+      "sha256": "6705c0c01eefdc0b4b6114e507e45cce7fca944bfbf31c9db01521cff01b86ec",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "表情近景，不取代完整冠飾參照"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "xuanmen-elder-action-phases-v2",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "action-phases",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/xuanmen-elder-action-phases-v2.png",
+      "sha256": "a119bd502d0ffef102a92e912613016402ca8c97e5648fbca4d9bc4369dca8fc",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "姿態分解提案，不是已驗證動畫中間格"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "xuanmen-elder-construction-details-v1",
+      "character_id": "xuanmen-elder",
+      "look_id": "base",
+      "use": "construction-details",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/xuanmen-elder-construction-details-v1.png",
+      "sha256": "ab988fa48bc7b10189de3eafbf30f53936e5a0f337c04ff71b50bb7ac784e14e",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "luo-qingyan-back-v1",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "back",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/luo-qingyan-back-v1.png",
+      "sha256": "1509c7c819bec2f3aa3ae3a91cef1b194281b02100c1c81ea7790cd33cc5b2c0",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "luo-qingyan-left-profile-v1",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "left-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/luo-qingyan-left-profile-v1.png",
+      "sha256": "284d9882fa0db9a070c96e1f7f933264d918013105a5cb9b65eed4a1c31078d7",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "luo-qingyan-right-profile-v1",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "right-profile",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/luo-qingyan-right-profile-v1.png",
+      "sha256": "c1b4f6f364a0876eddd5a55d903583acb6f712960444b00e6509de5bb8831ba0",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "2D側面參考，非精確正交3D轉台"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "luo-qingyan-left-three-quarter-v1",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "left-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/luo-qingyan-left-three-quarter-v1.png",
+      "sha256": "733d24bffb0a57d8ba131355d1bd476ce29a3e3efebe5423ba3c608128096758",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "luo-qingyan-right-three-quarter-v1",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "right-three-quarter",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/luo-qingyan-right-three-quarter-v1.png",
+      "sha256": "c235a6520bbc88b188db15639e409a64c7b283638e91e5b90a8165563e190a3b",
+      "native_dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "luo-qingyan-expressions-v1",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "expressions",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/luo-qingyan-expressions-v1.png",
+      "sha256": "4b49a3daf27e7afab32f24ae5d33f02f6f77f807444b6505f45b11d617858417",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "表情近景，不取代完整冠飾參照"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "luo-qingyan-action-phases-v1",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "action-phases",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/luo-qingyan-action-phases-v1.png",
+      "sha256": "54e600893e37c0b3685611cec675ac98295c1bb2b07195761ffd82d689ccf680",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "姿態分解提案，不是已驗證動畫中間格"
+      ]
+    },
+    {
+      "category": "animation_reference",
+      "key": "luo-qingyan-construction-details-v1",
+      "character_id": "luo-qingyan",
+      "look_id": "base",
+      "use": "construction-details",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/luo-qingyan-construction-details-v1.png",
+      "sha256": "24e0ad06174420d1ca1d71318088b8a9dd9b0e9b2b9079dadf89326f5beeebc2",
+      "native_dimensions": {
+        "width": 1536,
+        "height": 1024
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "ensemble-color-lineup-v1",
+      "character_id": "ensemble",
+      "look_id": "base",
+      "use": "color-lineup",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ensemble-color-lineup-v1.png",
+      "sha256": "65c04fc2021517965177fca2a684b7ff76cdeeceb0f00bdf07838318dc18f82c",
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "animation_reference",
+      "key": "ensemble-silhouette-lineup-v2",
+      "character_id": "ensemble",
+      "look_id": "base",
+      "use": "silhouette-lineup",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/animation-reference/20261008/ensemble-silhouette-lineup-v2.png",
+      "sha256": "c4702012d161638baee841bf200c8813b1f474be9cfe650f6998b23d2abfb838",
+      "native_dimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "receipt": "animation-reference/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": []
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "qiyun-mountain-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/qiyun-mountain-v1.png",
+      "sha256": "083842be5687e44245c1f2355a0afa921b2ea86405477f7c96c99f206db65e75",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：三主峰、左晨光、白金雲海與鐘樓可讀；旗面抽象紋樣只作候選，三宗正式旗紋未鎖。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "watchtower-master-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/watchtower-master-v1.png",
+      "sha256": "4fa45bfee2fd815e7754f2f194eb7dac747a4e1dc28cb73f5f70fd8891a5ec62",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：左欄/右梯口及下方院地可讀，空場足夠；欄杆與梁柱紋樣待與反向圖比對。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "watchtower-angle-b-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/watchtower-angle-b-v1.png",
+      "sha256": "2bc2e82f01f97aed09387877b5f6be1649974d56e01113e056b7a7c0ade6e5b2",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：維持右梯口、左下院地，向下視線更清楚；是同側俯角B而非180度反打，不證明每塊木紋對齊。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "alliance-gate-master-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/alliance-gate-master-v1.png",
+      "sha256": "b709941fe44a25e778bf0edd5d346bd3fa1cc63c122284ae11d4d69599d68053",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：左廣場右門和晨光清楚，三個主踏階可讀，門框冠頂有足夠餘地；三宗旗紋仍候選。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "alliance-gate-stair-reverse-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/alliance-gate-stair-reverse-v1.png",
+      "sha256": "4a8f9ff7c950e9ef54c65c17772f067e04ae0817840acf8417546da695c16158",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：階頂向外空廣場、門柱右前及反向晨光可讀；踏階在此角被壓扁，精確踏面仍以master/後續人物落腳格核對。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "alliance-hall-master-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/alliance-hall-master-v1.png",
+      "sha256": "a01c60bd4afd7d76a69b83389b5c0eb9ce640881ba68d195368acd86dbd5106e",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：三席西/東/北、南側空位及三色旗清楚；桌透視較寬，正式正投影仍須鎖正方尺寸。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "alliance-terrace-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/alliance-terrace-v1.png",
+      "sha256": "7d751d08aafd12a75d8acfaa50a8bfb92b3c0ce135c9c5a5f4555eeb8c444b1b",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：門左、柱後右、夕光自右，空間可容雙人；裝飾新增旗只作候選、不帶文字或宗派答案。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "alliance-hall-reverse-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/alliance-hall-reverse-v1.png",
+      "sha256": "36d92220f9df42d3a26d60cbec32a630cfdb42459222b590f68ff03a39488881",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：南門在後，東西席交換畫面左右，西窗光改畫右，北旗未錯入反打；桌紋與master基本同族但未做幾何鎖圖。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "outer-harbor-master-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/outer-harbor-master-v1.png",
+      "sha256": "3b86f59bf07a805a9dff245dd3d21e832342be0f4a051492b4411d5b6179ea72",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：左岸右海、近海綠商船與遠灰帆船、右夕光與山灯方向可讀；跳板接到船首的升高幅度偏小，洛須留高船首，不能站跳板。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "guestroom-corridor-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/guestroom-corridor-v1.png",
+      "sha256": "88137d904cdf5416711b03b40669ec560d9c94b2700f801bcfc76015f46a3e05",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：左山壁右廊柱與月光、關門可讀；末端門是正對鏡頭，屬轉角端部，人物送茶需以此地理參照維持相同門。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "outer-harbor-angle-b-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/outer-harbor-angle-b-v1.png",
+      "sha256": "4a63d65670026bb52176d7f7e0f4184c0174260ec700ce17c68f10c705927ac8",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：低岸與高船首、同商船/灰帆遠船可讀；跳板仍像固定棧橋，登船連接需關鍵格精確處理。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "guest-courtyard-exterior-v2",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/guest-courtyard-exterior-v2.png",
+      "sha256": "86726ff82aefd0237f3bfb5fae772c403158a770629e6871189072079c741619",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看v2：裸梅枝已正確，左月門右亮窗維持；供傍晚入夜，深夜另用暗窗版。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "guest-courtyard-dark-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene-state",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/guest-courtyard-dark-v1.png",
+      "sha256": "2d321468d671b8a602372985f883505066588d4edd90c56ae99098149e741913",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：右窗完全暗、無暖灯，左門裸樹保留；本空景不證明角色在/不在房內。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "guest-courtyard-interior-v2",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/guest-courtyard-interior-v2.png",
+      "sha256": "05869ac23ffa29306d97205b415a050aa2e1abe806dd1df550169dd788183162",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：古式淺盤油灯及裸枝修正，左床右窗位置保留；床褥數量需逐鏡取景鎖定。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "wugui-bow-arrows-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "prop",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/wugui-bow-arrows-v1.png",
+      "sha256": "625dade33175a7d079cdcad5595d9b5aca28dda8a0c9fac66bc943607d3979c2",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 940
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：四箭三長一短、黑弓/一囊/紅黑絲弦及釘子可辨；斷弦細節放大不是同比例，箭囊與長箭容納尺寸需工程比例卡，不能把此排版當同尺度。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "surrender-document-box-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "prop",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/surrender-document-box-v1.png",
+      "sha256": "b2f8808a320fa928bd1d5aa6b3b7e917a5e43846b4402d3b5c89fe48ff85aeb8",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：黑漆扁匣、銀蕨及閉/開兩態清楚，无字降書保留後製；兩視圖單一物件，不是劇中兩匣。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "blade-and-tongs-reference-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "prop",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/blade-and-tongs-reference-v1.png",
+      "sha256": "6d966978f69da161ccdbdbe7186eb881cc61af10e5f216fc619497bc692b1e3d",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：三物不混，刀形/紅穗沿原圖，直劍/黑鞘無雕花，鉗雙臂單軸可辨；刃長與鞘內尺寸、鉗夾四箭仍須持物格檢視。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "go-candle-reference-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "prop",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/go-candle-reference-v1.png",
+      "sha256": "5d65ca17ecda1659fd7cd793b48752d97c33a51f26f6456e632d23a4ef1d61cc",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：棋/白子/一燭兩態可讀，但棋格非可信19路且多子未準確落交點，不能作棋盤近景母圖；需修為標準棋盤及落點。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "tea-tray-states-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "prop",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/tea-tray-states-v1.png",
+      "sha256": "ea6e55636abee1566c8d74f35e9895b992af5b5f4de251a78c51bcbc0f8572de",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：每態一盤一壺一杯，完整→傾翻可讀；此器形較場景cold初版更清楚，正式插鏡以本板並鎖傾倒方向。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "shell-coin-doll-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "prop",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/shell-coin-doll-v1.png",
+      "sha256": "6425ddbc748c0b10bfe068738ca779f99e262a58c40bc2fbecbdab8a857ca68e",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：白貝錢圓孔、側面及燒焦灰紫布偶可辨；板上貝錢放大不是與娃娃等比例，不作大小比。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "controlled-crescent-nape-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "controlled-detail",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/controlled-crescent-nape-v1.png",
+      "sha256": "3609ab646740af2543b1122bd485c71df49732532b226f176aaad40ec9538096",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：雙頸後月牙位置/開口方向一致、無正臉或身份答案；膚色/髮與領只定位，正式兩鏡須再對位同尺寸，非長駐人像。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "controlled-anonymous-black-wind-v1",
+      "character_id": null,
+      "look_id": null,
+      "use": "controlled-detail",
+      "version": 1,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/controlled-anonymous-black-wind-v1.png",
+      "sha256": "add73f2417f6125fe3d42ea01610273af2f8782de0543d168b66d866216b966a",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看：風牆無可識別正臉、冠或人體，灰燼流向可讀；此板只定無形風紋，非事件動畫或身份證據。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "personal-prop-states-v2",
+      "character_id": null,
+      "look_id": null,
+      "use": "prop",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/personal-prop-states-v2.png",
+      "sha256": "b9e7f0361498c735b26f5fda2261075fa3011a5f7ff62ef925a494dcc41fb2a1",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看v2：白玉外骨與末段鬆繩已修，3→2+1枚硬數量清楚；扇墜/細紋仍需與角色detail選同一母版，不可雙套各自採用。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "forge-master-v3",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 3,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/forge-master-v3.png",
+      "sha256": "2a99f4027883b1af8c77e17ab3118dc700c00d468b92d3615677f8d56ffff25e",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看v3：爐槽大部為暗石、不再通段發光，爐火侷限口內；左爐右空場保留，血滴局部需依source另構首尾格。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "forge-angle-b-v2",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/forge-angle-b-v2.png",
+      "sha256": "3abc683060ab4ed31ee8d2bf745a11500d8a808e562e7b175f5b39636a55a6d4",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看v2：槽全段暗石、微紅污痕，已去熔岩感；是南側近角B，維持同軸。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "controlled-right-hand-seal-v2",
+      "character_id": null,
+      "look_id": null,
+      "use": "controlled-detail",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/controlled-right-hand-seal-v2.png",
+      "sha256": "bb69d26124c1be9bb40ef4bbd4e86a5b9921626818dbae235c7789ecb25cff6e",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看v2：五指完整留白、右手背/拇指在畫左、線畫風與單一道金斜線成立；線束為一筆紋理，不能延伸成完整符咒；位置/大小仍候選。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "chess-guestroom-master-v3",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 3,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/chess-guestroom-master-v3.png",
+      "sha256": "cef75758c34deb4cb5b92223afe53ef650e278b528a40b7183835f56f1440c59",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看v3：樹景已去且大部分為紙面，但上右仍有淡月輪殘影；修訂未完全達no visible moon，列待修，不能用作紙窗近景母圖。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "chess-guestroom-angle-b-v2",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/chess-guestroom-angle-b-v2.png",
+      "sha256": "7d96ce35a408062f715ef637e3b4f566e030961236a485aa43f47a205e13a746",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看v2：窗面已較平整、無清楚外景；保留同側斜角地理，但非180度反向，仍須與master窗格/棋點鎖定。"
+      ]
+    },
+    {
+      "category": "scene_or_prop",
+      "key": "chess-guestroom-cold-v2",
+      "character_id": null,
+      "look_id": null,
+      "use": "scene-state",
+      "version": 2,
+      "file": "<VIDEO_WORKDIR>/ou-de-jianghu-e001/scene-props/20261008/chess-guestroom-cold-v2.png",
+      "sha256": "85d4b64e049785a151b3264e9d413654e2a451e265cb241d309d3687646ba27d",
+      "native_dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "receipt": "scene-prop-design/media-receipt.json",
+      "status": "candidate_for_owner_review",
+      "owner_accepted": false,
+      "judge": null,
+      "normal_runtime_integrated": false,
+      "animation_verified": false,
+      "limitations": [
+        "實看v2：已維持燭滅/門開/翻盤一壺一杯和霜，但上右仍透淡月輪，不能稱紙窗已完全修妥。只適用a05-s031/s035/s042翻盤之後，不能當s023剛入房首格。"
+      ]
+    }
+  ],
+  "reused_references": [
+    {
+      "key": "shen-guihe-full-body-v1",
+      "character_id": "shen-guihe",
+      "use": "front",
+      "sha256": "b13e5c2362ab2aad580e71b1e8d22cffdad69bb9c39df62460bf509ac3ec064b"
+    },
+    {
+      "key": "ji-wushuang-full-body-v1",
+      "character_id": "ji-wushuang",
+      "use": "front",
+      "sha256": "6ed68b1de7db15559e4b9d57c84ba92c0ffff80bf1e59970c82677d4915ecec3"
+    },
+    {
+      "key": "ji-wen-full-body-v1",
+      "character_id": "ji-wen",
+      "use": "front",
+      "sha256": "8a60b9ce8f83534542d002caedc0102d65255137d9eca99190091565e3ed9a35"
+    },
+    {
+      "key": "bao-sanqian-full-body-v1",
+      "character_id": "bao-sanqian",
+      "use": "front",
+      "sha256": "625174d287f29d8fda2791f8193a89c26476a121bea7b1d80aa52fbc9e43afd9"
+    },
+    {
+      "key": "yin-wusheng-full-body-v1",
+      "character_id": "yin-wusheng",
+      "use": "front",
+      "sha256": "ccf625f6813518032435c4a462a1203e6128691afda10516fe9dbcf95e5972ea"
+    },
+    {
+      "key": "yan-hui-full-body-v1",
+      "character_id": "yan-hui",
+      "use": "front",
+      "sha256": "5cf0a08166ecbb00a7f1a484c4bc7c8ec16ab772f5ad61f1f8390c44792caa21"
+    },
+    {
+      "key": "nie-gutie-full-body-v1",
+      "character_id": "nie-gutie",
+      "use": "front",
+      "sha256": "866e1e8cb75e7fabd7ebdc7ae2deca88938b79fc05f864a9c708d31d5d597115"
+    },
+    {
+      "key": "xuanmen-elder-full-body-v1",
+      "character_id": "xuanmen-elder",
+      "use": "front",
+      "sha256": "564e79297979b1c7bb49b3fba39d8c3e590a2fc6bae246fa37b01837ac61667d"
+    },
+    {
+      "key": "luo-qingyan-full-body-v1",
+      "character_id": "luo-qingyan",
+      "use": "front",
+      "sha256": "9b3991c06ec0ae39acedaec6332a698d7209a75bbb3e5b245e79b6b3da96aeef"
+    }
+  ],
+  "shot_looks_binding": {
+    "source": "docs/videos/series-plans/ou-de-jianghu/production/cast.json",
+    "serialization": "JSON.stringify(characters.map(c => ({character_id:c.id,shot_looks:c.shot_looks??[]})))",
+    "sha256": "41b385c8965cfdb9cbfb21c6d888b8a05f7c8f0d7d9bfd819e46a860c8aef30c",
+    "named_look_count": 16,
+    "covered_by_native_look_hash": false,
+    "catalogue": [
+      {
+        "character_id": "bao-sanqian",
+        "shot_looks": [
+          {
+            "id": "bao-soaked",
+            "appearance": "Original 2D anime street informant in ornate theatrical wuxia costume: short wiry man in his forties, thin moustache, quick darting eyes, soaked to the skin and shivering, his lopsided topknot collapsed with the cheap copper pin hanging loose, wet hair plastered to his forehead and neck. Patched ochre and brown layered robe dark and dripping with seawater, a coarse grey wool blanket wrapped around his shoulders, a bulging cloth purse and three square-holed copper coins on a red string at his belt, the wide straw hat hanging soaked down his back by its cord. Hunched over, clutching the blanket closed."
+          },
+          {
+            "id": "bao-chilled",
+            "appearance": "Original 2D anime street informant in ornate theatrical wuxia costume: short wiry man in his forties, thin moustache, quick darting eyes now red-rimmed and watery, nose and cheeks flushed with fever, his lopsided topknot loosened and sagging with the cheap copper pin askew. A plain off-white padded inner robe under a thick patched indigo quilt wrapped around his shoulders like a cape, a bulging cloth purse and three square-holed copper coins on a red string tied at his waist, no straw hat. Half-crouched and sniffling, still listening."
+          }
+        ]
+      },
+      {
+        "character_id": "ji-wen",
+        "shot_looks": [
+          {
+            "id": "jiwen-struck",
+            "appearance": "Original 2D anime warrior monk in ornate theatrical wuxia costume: broad-shouldered man in his forties, shaved head under a tall gilded lotus crown with hanging gold bead strands, thick dark brows, fierce wide amber eyes, his face drained grey-pale with cold sweat at the temples. Layered saffron and crimson kasaya over a dark undershirt, a heavy embroidered collar with gold flame patterns, the kasaya and undershirt torn open over the left chest where a palm-sized blue-green star-shaped arrow scar glows faintly on the bare skin over his heart, no arrow and no blood, a string of dark wooden prayer beads wound three times around his left forearm. Bare-handed; no golden aura around his palms."
+          },
+          {
+            "id": "jiwen-sealed",
+            "appearance": "Original 2D anime warrior monk in ornate theatrical wuxia costume: broad-shouldered man in his forties, shaved head bare with no crown, thick dark brows, wide amber eyes gone dull and heavy-lidded, his face pale and drawn. A plain grey monk's robe loosely closed over a white undershirt, no kasaya and no embroidered collar, the loose neckline showing the edge of a blue-green star-shaped arrow scar on the skin over his heart, a string of dark wooden prayer beads wound three times around his left forearm. Bare-handed; no golden aura. His broad shoulders slump; he cannot sit straight without support."
+          }
+        ]
+      },
+      {
+        "character_id": "ji-wushuang",
+        "shot_looks": [
+          {
+            "id": "wushuang-armed",
+            "appearance": "Original 2D anime noblewoman in ornate theatrical wuxia costume: tall elegant woman who looks thirty, waist-length silver-white hair worn loose under a towering black-and-silver phoenix crown with trailing silver chains, pale face, long narrow eyes with violet shadow, a small frost-flower mark at the outer corner of her left eye, a small crescent birthmark on the back of her neck usually hidden under her hair. Black layered court robe embroidered with white frost ferns, long sweeping sleeves, a deep violet outer mantle. A slim black lacquered bow strung with a plain black cord slung across her back, and a lidded black lacquered quiver hanging at her right hip. Stands at the head of her people with the same dignity as she kneels."
+          }
+        ]
+      },
+      {
+        "character_id": "luo-qingyan",
+        "shot_looks": []
+      },
+      {
+        "character_id": "nie-gutie",
+        "shot_looks": [
+          {
+            "id": "nie-nail-wound",
+            "appearance": "Original 2D anime master smith in ornate theatrical wuxia costume: massive old man, scarred bare chest under a soot-black leather apron and a rust-red embroidered half-robe, grey hair cropped short under a burnt iron band, left eye clouded white, forearms covered in burn scars. The back of his right hand pierced clean through by a raw, rust-crusted nail wound, dried blood streaked down his right wrist and forearm. He carries no forge tongs. Hunched over himself like a man serving a sentence."
+          }
+        ]
+      },
+      {
+        "character_id": "shen-guihe",
+        "shot_looks": [
+          {
+            "id": "shen-bedridden",
+            "appearance": "Original 2D anime wuxia strategist in ornate theatrical wuxia costume: tall slender man in his thirties, very long straight ink-black hair unbound and spread loose over the pillow and his shoulders, no crown and no crane-feather pin, pale face gone grey-white with dark hollows under the eyes, narrow grey eyes closed or half-open and unfocused, dry colourless lips. A plain undyed white silk inner robe loosely closed at the collar, no embroidered outer robe, no sash, no fan and no weapon. Lies on his back without moving; his breathing is shallow and his hands rest empty at his sides."
+          }
+        ]
+      },
+      {
+        "character_id": "xuanmen-elder",
+        "shot_looks": []
+      },
+      {
+        "character_id": "yan-hui",
+        "shot_looks": []
+      },
+      {
+        "character_id": "yin-wusheng",
+        "shot_looks": [
+          {
+            "id": "yin-cut-hair",
+            "appearance": "Original 2D anime mute swordsman in ornate theatrical wuxia costume: lean young man in his late twenties, black hair tied high with a plain iron ring, the tail below the ring cut off bluntly so it now ends at his shoulders, pale face with a thin old scar across the left cheek, dark watchful eyes. Charcoal and slate layered robe with narrow white embroidered trim, sleeves bound tight at the wrists, one straight sword in a plain black scabbard worn across his back with the hilt above his right shoulder. Stands very still and speaks only with small hand signs."
+          }
+        ]
+      },
+      {
+        "character_id": "zhuxu",
+        "shot_looks": [
+          {
+            "id": "zhuxu-returned",
+            "appearance": "Original 2D anime Taoist swordsman in ornate theatrical wuxia costume: thin wiry man of indeterminate age, long grey-streaked black hair in a high topknot under a small dark-green crown carved with bamboo leaves, a few strands fallen loose across his brow, sharp narrow eyes, a short pointed grey-black beard. Layered moss-green and black Taoist robe embroidered with bamboo stalks and silver star charts, faded, torn at the hem and grey with road dust up to the knees, a dark-green sash with a white horsetail whisk tucked in it, a plain straight sword in a dark-green scabbard at his left hip. Nothing on his back. Walks like a man who has crossed half the realm without sleeping."
+          },
+          {
+            "id": "zhuxu-disarmed",
+            "appearance": "Original 2D anime Taoist swordsman in ornate theatrical wuxia costume: thin wiry man of indeterminate age, long grey-streaked black hair in a high topknot under a small dark-green crown carved with bamboo leaves, a few strands fallen loose across his brow, sharp narrow eyes, a short pointed grey-black beard. Layered moss-green and black Taoist robe embroidered with bamboo stalks and silver star charts, faded, torn at the hem and grey with road dust up to the knees, a dark-green sash with a white horsetail whisk tucked in it, nothing at his left hip but the dark-green sash. Nothing on his back. Walks like a man who has crossed half the realm without sleeping."
+          }
+        ]
+      },
+      {
+        "character_id": "liu-buhuo",
+        "shot_looks": [
+          {
+            "id": "liu-wounded",
+            "appearance": "Original 2D anime melancholy clerk in ornate theatrical wuxia costume: pale thin young scholar in his late twenties, long black hair worn loose and slightly unkempt under a low ash-grey scholar's cap, hollow cheeks, tired dark eyes with a faint smile. Layered grey and faded indigo robe with worn embroidered borders, ink stains on the right cuff, a white cloth bandage wound over his left shoulder and showing at the collar, a dark bloodstain soaked through the robe at the left shoulder, his left arm held stiff against his side, an official's wooden tally hanging at his belt beside a small sealed wine gourd. Unarmed. Stands a little stooped."
+          },
+          {
+            "id": "liu-defected",
+            "appearance": "Original 2D anime melancholy clerk in ornate theatrical wuxia costume: pale thin young scholar in his late twenties, long black hair worn loose and slightly unkempt under a low ash-grey scholar's cap, hollow cheeks, tired dark eyes with a faint smile. Layered grey and faded indigo robe with worn embroidered borders, ink stains on the right cuff, the edge of a white bandage showing at the left side of his collar, his left arm held a little stiff, a small sealed wine gourd at his belt and no tally. Unarmed. Stands a little stooped."
+          }
+        ]
+      },
+      {
+        "character_id": "shuyuan-elder",
+        "shot_looks": []
+      },
+      {
+        "character_id": "xuanmen-steward",
+        "shot_looks": []
+      },
+      {
+        "character_id": "alliance-guard",
+        "shot_looks": []
+      },
+      {
+        "character_id": "sha-nu",
+        "shot_looks": []
+      },
+      {
+        "character_id": "wuming-jianke",
+        "shot_looks": []
+      },
+      {
+        "character_id": "canglan-ke",
+        "shot_looks": [
+          {
+            "id": "canglan-spent",
+            "appearance": "Original 2D anime mountain hermit in ornate theatrical wuxia costume: tall weathered man in his fifties, long steel-grey hair worn loose and tangled under a plain dark-blue cloth crown knocked slightly askew, deep-set eyes heavy with exhaustion, a long thin scar across the bridge of the nose, skin burned dark by wind and snow, now drained grey and beaded with sweat. Layered robe of deep ocean blue and storm grey with embroidered rolling-wave hems, torn open across the chest and ripped ragged at both forearms, grey rock dust on his shoulders and hems, the heavy fur-lined travel mantle of dark grey fur torn and slipping off his left shoulder, a plain long sword in a worn dark-blue scabbard at his left hip. Still on his feet, but only just; every breath comes hard."
+          }
+        ]
+      },
+      {
+        "character_id": "yuelan-ke",
+        "shot_looks": [
+          {
+            "id": "yuelan-crest",
+            "appearance": "Original 2D anime unmasked grandmaster in ornate theatrical wuxia costume: tall composed man of indeterminate age, long dark-red hair in a plain high knot held by a single bronze pin, no crown, calm half-lidded eyes and a thin courteous smile, the russet gauze half-veil torn loose and hanging around his neck so that his whole face shows. His plain dark russet-red healer's robe slashed open from the left shoulder across the chest, the cut flaps turned back to show the inner lining embroidered with the twin-abyss crest of the Red Abyss Palace, two dark whirlpools side by side in bronze thread; a bronze-brown sash, long trailing sleeves, both arms whole, no medicine box. Unarmed. Keeps his feet and keeps smiling."
+          },
+          {
+            "id": "yuelan-crippled",
+            "appearance": "Original 2D anime unmasked grandmaster in ornate theatrical wuxia costume: tall composed man of indeterminate age, long dark-red hair in a plain high knot held by a single bronze pin, no crown, calm half-lidded eyes and a thin courteous smile gone pale, the russet gauze half-veil torn loose and hanging around his neck so his whole face shows. His plain dark russet-red healer's robe slashed open from the left shoulder across the chest, the cut flaps turned back to show the inner lining embroidered with the twin-abyss crest of the Red Abyss Palace, two dark whirlpools side by side in bronze thread; his left arm hangs limp and useless, the left sleeve soaked dark with blood from shoulder to cuff; a bronze-brown sash, no medicine box. Unarmed. Keeps his feet and does not hurry."
+          },
+          {
+            "id": "yuelan-covered",
+            "appearance": "Original 2D anime unmasked grandmaster in ornate theatrical wuxia costume: tall composed man of indeterminate age, long dark-red hair in a plain high knot held by a single bronze pin, no crown, calm half-lidded eyes and a thin courteous smile gone pale, the russet gauze half-veil torn loose and hanging around his neck so his whole face shows. His plain dark russet-red healer's robe slashed open from the left shoulder across the chest, the cut flaps pulled closed over his chest and held there by his right hand so the lining is hidden, only a thin glint of bronze thread showing between his fingers; his left arm hangs limp and useless, the left sleeve soaked dark with blood from shoulder to cuff; a bronze-brown sash, no medicine box. Unarmed. Keeps his feet and does not hurry."
+          }
+        ]
+      },
+      {
+        "character_id": "guideng-jun",
+        "shot_looks": []
+      }
+    ]
+  },
+  "isolated_pending_import": {
+    "receipt": "import-contract/pending-staging-receipt.json",
+    "candidate_count": 9,
+    "staging_manifest_sha256": "fd02c531d0b6a42eb306b313fe933fb7ba566dec3a72d37a3b14e5e6bb8d6521",
+    "project_sha256": "7f7676d1ce39a6f9dbbdc4cacc5bc8cb39b9979e66e4a906213d2ea4235014df",
+    "native_look_hash": "9b3e6914dbc8d109",
+    "fetch_attempts": 0,
+    "judge": null,
+    "owner_accepted": false,
+    "selection_for_offline_candidate_validation_only": true,
+    "normal_runtime_integrated": false
+  },
+  "bound_files": [
+    {
+      "file": "asset-inventory.json",
+      "sha256": "e53105f7c647c6147b29c18f4d1ab4843bb041494530f5197720588b472be97d"
+    },
+    {
+      "file": "art-direction/media-receipt.json",
+      "sha256": "9305e3065ca4855d9791eb827a9e5756ba89f4115801248b23ea7c5ac166c292"
+    },
+    {
+      "file": "episode1-portraits/media-receipt.json",
+      "sha256": "4d592c25e0b641a5a1cf16dfaedb0a42ef6197a13201d1979a94ff7afd892cec"
+    },
+    {
+      "file": "episode1-portraits/independent-views-receipt.json",
+      "sha256": "1ea2580d5e299a1795ee48799e1db6a996826b036b50023dd658f8f120e40112"
+    },
+    {
+      "file": "animation-reference/media-receipt.json",
+      "sha256": "76145fb0825c6e612b02c181688992a521b0cd5a82bd4d6d08529b6aabbedcf5"
+    },
+    {
+      "file": "animation-reference/prompts.json",
+      "sha256": "4213b059d37d8edab28de0450b2d2c6441ce13d772da6de1a2a4c5eb0173c6f4"
+    },
+    {
+      "file": "animation-reference/gallery-verification.json",
+      "sha256": "8073d46461de117322b09366efff8ba85d914e918a6a2ec9e2f381b2f8ae5415"
+    },
+    {
+      "file": "scene-prop-design/media-receipt.json",
+      "sha256": "9999c0e59a5e7252f937d5dbc52232f2d2b6dd9fe9f5592499f6dc896ff7dfd7"
+    },
+    {
+      "file": "scene-prop-design/portability-verification.json",
+      "sha256": "d7f8eb9376a717d5ba6d45fc31ffd76305b0474bdfb17c96629f92e3d9a0ed8a"
+    },
+    {
+      "file": "episode-plan/proposal-summary.json",
+      "sha256": "6e923276748fe6288d486a634a43e37b230005bfaa20989aff0b71ff2302df45"
+    },
+    {
+      "file": "episode-plan/package-verification.json",
+      "sha256": "85638c854a7227326df82c98782b543d3c4d354753f9fbcd4f89ea41fd06d2a0"
+    },
+    {
+      "file": "episode-plan/presentation-review.json",
+      "sha256": "62967c74ac8abdc85636a2e130f9bb5570f9b670ba882fa783c0cc8da8dad3d2"
+    },
+    {
+      "file": "episode-plan/budget-and-batches.json",
+      "sha256": "2592cb5e0c6c3f41e4b3a4a774beac9a604490c02ebc4fcaf6903db691d1e0c2"
+    },
+    {
+      "file": "episode-plan/camera-and-risk-ledger.json",
+      "sha256": "eb977c21485da433a54d1da3d6d1f96d1198157f52f3255c51d8f87e27fcacc6"
+    },
+    {
+      "file": "episode-plan/preproduction-package-v3.md",
+      "sha256": "1441a47694f5f031f1da363f9f5ee4fb4c9dc693b928ba758457b7946a513f4c"
+    },
+    {
+      "file": "import-contract/pending-staging-receipt.json",
+      "sha256": "3f600f14e9d0538d3e679444caee65d405ead6d3401d7b9b2046ec7aada87e22"
+    }
+  ],
+  "remaining_constraints": [
+    "All selected artwork remains a review candidate; accepted style is not individual asset adoption.",
+    "18 portrait half/full views are below suggested delivery dimensions; originals were not upscaled.",
+    "Six-angle sets are 2D/I2V references, not physical turntables or rigged geometry; pose and perspective variations are recorded.",
+    "Shen fan dark outer guards in character references versus white jade in canonical scene prop must be reconciled before fan closeups.",
+    "Three guestroom paper-window candidates retain a moon outline: spatial proposals only, not window closeup masters.",
+    "AI Go-board grids and stones are illustrative; exact 19x19 SVG proposals require adoption for relevant first/last frames.",
+    "Scene ledger 10 location rows map to 9 plan space families by combining Qiyun mountain/watchtower.",
+    "Scene shot-prop index follows original script; adopted v3 camera/risk ledger governs redesigned actions.",
+    "Estimated 1403.533 seconds exceeds the 1380-second upper duration goal; measure TTS and resolve before clips.",
+    "Formal script/look/audio/storyboard/plan gates and paid continuous three-shot pilot are future production work.",
+    "Later season 14 characters and 16 named look variants stay in their existing task; this package covers episode one."
+  ]
+}

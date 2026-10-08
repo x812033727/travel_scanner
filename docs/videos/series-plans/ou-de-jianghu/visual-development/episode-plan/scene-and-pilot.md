@@ -1,5 +1,7 @@
 # 第 1 集〈幽皇之女〉分場、鏡位與角色小樣
 
+本文件保留最初原稿分析；後續已落地的逐鏡覆寫、343組setup、接觸／露印修訂、預算與文字animatic，見 [P0–P7審閱包v3](preproduction-package-v3.md)。以下451clip／447setup等數字仍指未改的原稿，不代表v3結果。
+
 日期：2026-10-08。狀態：**離線前期提案；原劇本未改，沒有完成動畫小樣或媒體核准**。本文服務 P2／P3／P5／小樣規劃，不代替 P7 開拍鎖定。首批沈歸鶴、姬無霜、寂聞的概念候選只供美術比較；圖片生成、審查、站主採用、正式 `look` 鎖定、動畫穩定性是不同狀態。
 
 來源：[實際 video.json](../../../../ou-de-jianghu-e001/video.json)、[口播與動作 script.md](../../../../ou-de-jianghu-e001/script.md)、[既有 review.md](../../../../ou-de-jianghu-e001/review.md)、[production/ep1/beats.md](../../production/ep1/beats.md)、[角色造型規格](../character-design.md)。方法依 `animation-preproduction` 的 P2／P3／shot-risk，以及 `animation-camera` 的 scene-coverage。場景光沿本集既有文字；不把場景光烘進全劇人物基底。

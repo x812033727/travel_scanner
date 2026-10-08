@@ -1,0 +1,78 @@
+{
+  "version": "v3.1",
+  "change": {
+    "version": "v3.1-presentation-only",
+    "created_at": "2026-10-08T15:26:08.064Z",
+    "base_video_sha256": "7f7676d1ce39a6f9dbbdc4cacc5bc8cb39b9979e66e4a906213d2ea4235014df",
+    "base_html_sha256": "2d8d5457f4056a3b99f46cf34d580b41791dd172aec0d60119b22a406b96353c",
+    "html_sha256": "6cb27db81797e35d7dc42c62e7c5d71ff6c69d4a9839d93a32e35bb7f0153a0e",
+    "frames": 455,
+    "end_frames": 3,
+    "scene_count": 459,
+    "exact_seconds": 1403.533,
+    "changes": [
+      "Display original working-video first-frame prompt on all 455 shot cards, including 30 still results.",
+      "Display 3 planned end-frame prompts.",
+      "Add an explicit shot-id jump control for targeted review."
+    ],
+    "unchanged": [
+      "working video",
+      "scene order",
+      "start/end times",
+      "dialogue",
+      "motion",
+      "camera",
+      "risk labels",
+      "budget"
+    ],
+    "verification": {
+      "all_first_frames_present": true,
+      "frozen_base_html_unchanged": true,
+      "no_full_speed_v31_review_claimed": true
+    },
+    "browser_targeted_review": "pending independent viewer"
+  },
+  "checks": {
+    "embedded_scene_data_byte_identical": true,
+    "review_html_hash_matches": true,
+    "base_html_hash_still_matches": true
+  },
+  "independent_review": {
+    "method": "Paused targeted review via visible shot-jump combobox; NOT a second full-length cold watch",
+    "observer": "codex-ou-import",
+    "shots": [
+      "a01-s005",
+      "a03-s050",
+      "a03-s054",
+      "a03-s085",
+      "a03-s087",
+      "a04-s038",
+      "a04-s043",
+      "a04-s044",
+      "a04-s051",
+      "a04-s062",
+      "a04-s071",
+      "a04-s079",
+      "a05-s028",
+      "a05-s030",
+      "a05-s032",
+      "a05-s036",
+      "a05-s037",
+      "a05-s041",
+      "a05-s067",
+      "a05-s077",
+      "a05-s085",
+      "a05-s089",
+      "a05-s091"
+    ],
+    "targeted_count": 23,
+    "full_speed_v31_claimed": false,
+    "source_sha256": "93423cc0b1278b361507769347c5dc0756ce95e6b91c3a6cc396e850bd2392a4"
+  },
+  "evidence": {
+    "cold-review-targeted.json": "93423cc0b1278b361507769347c5dc0756ce95e6b91c3a6cc396e850bd2392a4",
+    "cold-review-nape.jpg": "b05ed488d3841c6c31fe66c200abcb91c5bad7d68ff417db3476ed7cc94ba233",
+    "cold-review-still-subtitle.jpg": "017d5f561112f029ff98a1090390825f0271d871e88d6030be0bb577b360878d"
+  },
+  "note": "v3 retains its original full-length playback evidence; v3.1 only received targeted paused review. Full prompts are readable on pause, not necessarily within original 2-3 second cards."
+}
