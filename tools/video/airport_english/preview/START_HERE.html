@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>機場英文 · 系列預覽</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">AIRPORT ENGLISH <span id="day-label"></span></p>
+    <h1 id="lesson-title">機場英文聽力</h1>
+    <p>英文固定顯示。翻譯字幕與教學語音可分別選擇；情境對話維持英文。</p>
+  </header>
+  <p id="launch-help" role="alert">請在此資料夾執行 <code>python3 serve.py</code>，再開啟終端機顯示的網址。直接開啟檔案不是支援的播放方式。</p>
+  <div class="episode-picker">
+    <button id="previous" aria-label="上一集">←</button>
+    <label>選擇集數<select id="episode"></select></label>
+    <button id="next" aria-label="下一集">→</button>
+  </div>
+  <section id="screen" aria-label="影片與播放控制">
+    <div class="video-frame">
+      <video id="player" playsinline preload="metadata" aria-label="機場英文聽力影片">瀏覽器不支援影片播放。</video>
+      <audio id="alternate" preload="metadata"></audio>
+      <div id="loading" hidden>正在載入教學語音…</div>
+    </div>
+    <div id="caption-band" aria-label="翻譯字幕"><p id="caption-text"></p></div>
+    <div class="transport">
+      <button id="play" aria-label="播放">播放</button>
+      <label class="seek-label"><span class="sr-only">播放進度</span><input id="seek" type="range" min="0" max="600" step="0.1" value="0" aria-valuetext="0:00 / 10:00"></label>
+      <span id="time">0:00 / 10:00</span>
+      <button id="fullscreen">全螢幕</button>
+    </div>
+  </section>
+  <div class="sound">
+    <button id="mute-audio" aria-pressed="false">靜音</button>
+    <label>音量<input id="volume" type="range" min="0" max="1" step="0.05" value="1"></label>
+  </div>
+  <section class="settings" aria-label="播放選項">
+    <label>翻譯字幕 CC<select id="captions"><option value="off">關閉翻譯</option><option value="zh-Hant" selected>繁體中文</option><option value="zh-Hans">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label>
+    <label>教學語音<select id="voice"><option value="en">English · 英文</option><option value="zh-Hant">台灣華語</option><option value="zh-Hans">普通话</option><option value="ja">日本語</option><option value="ko">한국어</option></select></label>
+    <label>播放速度<select id="speed"><option value="0.75">0.75×</option><option value="1" selected>1× 正常</option><option value="1.25">1.25×</option></select></label>
+  </section>
+  <p id="status" role="status" aria-live="polite"></p>
+  <nav id="chapters" aria-label="影片章節"></nav>
+  <details class="downloads"><summary>本集製作檔案</summary><div id="files"></div></details>
+  <footer>本機預覽 · CC 與音軌選擇互相獨立。YouTube 的多語音軌選單需頻道支援並完成匯入。</footer>
+</main>
+<script src="lessons.js"></script>
+<script type="module" src="player.mjs"></script>
+</body>
+</html>

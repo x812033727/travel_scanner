@@ -1,0 +1,48 @@
+{
+  "scope": "source_preparation_and_code_validation_only",
+  "production_qa": false,
+  "checks": {
+    "test_tools": {
+      "passed": 2223,
+      "skipped": 3,
+      "log_sha256": "c9880ceba6a39f7dc2c53d5e998141d507ec5c0374824bd375a0f704c4ac032f"
+    },
+    "test_docs_videos": {
+      "passed": 199,
+      "skipped": 0,
+      "log_sha256": "b8fd3d4cf5315af128233dfc6149ae904e250bccd888c02efb4e5d3a52af6cab"
+    },
+    "airport_tools_final": {
+      "passed": 48,
+      "skipped": 0,
+      "log_sha256": "142e0491819999c83b6ac124c2ae68df4835a508af8f9f113218080c1f1288d7"
+    },
+    "task_board": {
+      "passed": null,
+      "skipped": null,
+      "log_sha256": "7791e1a88914312c5faca916d01638f9bb7bc0e33cc9e19a79bf1cfbb503b7ba"
+    }
+  },
+  "code_sha256": {
+    "tools/video/airport_english/delivery.mjs": "92793032afa8688fb75cecae59c31256b27384137780a1a963659ac3a9b0b554",
+    "tools/video/airport_english/delivery.test.mjs": "3294b6f111ebe46ac9f6df908e92b704aecf82b4999958e975d230d357594dc0",
+    "tools/video/airport_english/prepare.mjs": "2d206325a8402e025c96613605e0fe8a704e9fe8fc8e31504ad873aa3f0dbb12",
+    "tools/video/airport_english/prepare.test.mjs": "7ba214038607ee28651f9fb6074e8bbb6a1f8cee50bb1d2080b055a640d27cbf",
+    "tools/video/airport_english/preview/controller.mjs": "655493057074d3c2606336d038f4f5902893bbf248cf324859d21aba3432577a",
+    "tools/video/airport_english/preview/player.mjs": "3fb76a7eca8e2266a619b07276e2c2c786c9180a3b5fdd15cf1d91655c31b238",
+    "tools/video/airport_english/preview.test.mjs": "af426f312aea039d21124afb8195e0a78da2ba63e7dabedb7d02d9eb1f330c27",
+    "tools/video/airport_english/review-bindings.mjs": "bd10cf88b911fccbd52d91ef37e82b14a394c1dd7c48ebca8aa753c079a63ef6",
+    "tools/video/airport_english/review-bindings.test.mjs": "265502e2ac5764f4ba5589f23ac685fb7024d6521af6bdd4d96c248331e6a308",
+    "tools/video/airport_english/teaching-audio.mjs": "ae637fb8c581f78861ba4340a4122f30b93b9599d89c05d638f8bc1dfa13143e",
+    "tools/video/airport_english/teaching-audio.test.mjs": "03cc20c2188ce01237ba9473388d2746a5e0a62a88ecde4869ab6a8d9d586dc3"
+  },
+  "core_code_sha256": {
+    "tools/video/core/drama.mjs": "f5e31865984f984b12434854924107afc787a6ffbd02c69a55429166a1b5265a",
+    "tools/video/core/stages.mjs": "9d649c69621168594f1be8145a7ecf981e264e3ebc41db847151b22f66fdd986"
+  },
+  "limitations": [
+    "No paid synthesis or real mixed-audio encode/check has run.",
+    "Browser checks use prototype media only as functional fixtures.",
+    "Static rendering does not constitute full-video viewing or measured duration acceptance."
+  ]
+}

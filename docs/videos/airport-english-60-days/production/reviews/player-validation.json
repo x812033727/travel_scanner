@@ -1,0 +1,12 @@
+{
+  "transport": "localhost HTTP byte ranges; external browser requests blocked",
+  "file_protocol": "unsupported; not attempted",
+  "media": "existing prototype used only as functional fixture; this does not approve production media",
+  "checks": [
+    "Day02→03→02: all four track cue counts and displayed translations match only the current lesson; speed and accessible episode label persist",
+    "Japanese alternate plays; seek to 480s and 1.25× rate stay synchronized within 0.3s; pause stops both streams",
+    "Aborted Korean audio recovers actual English routing, clears failed source, and preserves both unmuted and muted user intent",
+    "390px mobile: translation band is below the picture and above controls, with no horizontal overflow"
+  ],
+  "page_errors": []
+}

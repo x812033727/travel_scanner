@@ -1,0 +1,437 @@
+{
+  "schema_version": 1,
+  "day": 30,
+  "slug": "airport-english-day30",
+  "status": "independent_text_reviews_bound_to_current_sources",
+  "production_approval": false,
+  "release_ready": false,
+  "checked_on": "2026-10-08",
+  "lesson_sha256": "252ce594fed524a3882f4e65fe9e205121c58662bda63275a6397a629a063a71",
+  "editorial_content_sha256": "a3406793915f8adb0dcb888fed0851693b6b34d375423615ffcbaca08b54f4ae",
+  "facts_english_content_sha256": "5e90a8586a63ca875de6a6dec1d7c0f14aed36e18dea4fa94d4987e639b8a6f1",
+  "shared_instructions_sha256": "ef3bfaca98c258e4cae1c5b0ada1a217e984742b2ddd792c7fa7b80f22ad101f",
+  "claims_and_sources_sha256": "b016ac8df6fb06660ec2f596424fd99a6a406d7208f1f55b3715610ba32483ea",
+  "profile_sha256": "839e447826b0e2dbe10458227143caa8fe2ba8719b68d0800ac6ba2983efb534",
+  "lexicon_sha256": "5ce0580b321670a394445029fde7183e919ec01290c22072fd1fe27f07c2babf",
+  "reviews": [
+    {
+      "path": "../reviews/verify-22-41.md",
+      "sha256": "91b075da8fe14079ab79bebce2cbeebb7956a0660bf2804ea9c6447b6a9c1a65",
+      "reviewer": "airport_lessons_02_21"
+    },
+    {
+      "path": "../reviews/claims-review.json",
+      "sha256": "00acb437b7117f900ccbd3c33676c7be0761670c2345a3e05beb74b46ad35541",
+      "reviewer": "airport_claims_review"
+    },
+    {
+      "path": "../reviews/claims-review.md",
+      "sha256": "c288362d1f8d5fddacfbd673afbb425ac5a0c9697ef37fc90b07dcf896c4fb4b",
+      "reviewer": "airport_claims_review"
+    },
+    {
+      "path": "../reviews/verify-shared-instructions.md",
+      "sha256": "b841038168857fc96d291a6e0f065de008cd4e609d052265babf60a20d41253d",
+      "reviewer": "airport_claims_review"
+    }
+  ],
+  "generated_artifacts": {
+    "video.json": "539fca2364a26163c1e440d68d74c6e0c4ed652fa222b2db924db66c7a8f95da",
+    "teaching-audio.json": "7b056138ce8b8bd57f7260ed1f40b77781ab8d74bd9f5352c65e214924eb9f05",
+    "caption-plan.json": "53b3b102840d836ccb8fd50c42f6b20702898cfc216f6bf07f1f834e03090759",
+    "duration-plan.json": "50934b660a119dce98b492ebaf9f275aa5f266167e8ed6f606705461898df18d",
+    "metadata-plan.json": "dd504e509f7c852714822dd663268a141990971c4c43bfe03bc650ffc3ae1d8d",
+    "line-map.json": "9667e6b69d1aa75611ccd8407ce48749e24ee800317fc2316f90df5c1849c96a",
+    "brief.md": "f4e613bdd6f2f8ae260b8ac0eed0745c4da7eb33751199a4a5e4634ed69590ad",
+    "claims.md": "6390cc31abf1ff63d9c5ce66a3e2f6ce81b9892f829dcdf26288209a88b776b7",
+    "i18n/zh-TW.json": "2a30915a475d1a760ff88910703dfbf2fccab9a26a567b27692a19f8019beac6",
+    "i18n/zh-CN.json": "eb0bc574a1451a066f987576458ac61b12109eebf5b8efdc9ddd6114f3f5c052",
+    "i18n/ja.json": "eec2c30da327a94c06afb8fb849a91a2deedeccf4516b6238f4a247a0f33cc3f",
+    "i18n/ko.json": "9bb2357e915e0490ca7cd3c6194456412bcbdf287412c67350921ce162d0e496"
+  },
+  "claims": [
+    {
+      "id": "AE-C01",
+      "verdict": "OUT OF SCOPE",
+      "source_claim_sha256": "2cabd7db836b30c26c712df2f684193bcf84eac363d32be3412735e3cecfc695",
+      "source_turns": [
+        "all fictional dialogue, quiz answers, numbers and place descriptions"
+      ],
+      "scene_ids": []
+    },
+    {
+      "id": "AE-C09",
+      "verdict": "CHANGED",
+      "source_claim_sha256": "2caa488c7f8cd6abbad30b917ff814784e3dc09cbae5f0d0807ae3c88f480dcd",
+      "source_turns": [
+        "A06"
+      ],
+      "scene_ids": [
+        "s-d1d4f42f",
+        "s-3d725dd0",
+        "s-c70fddaa",
+        "s-6f3c764e",
+        "s-70c1f87d",
+        "s-410dc048",
+        "s-dea76d68",
+        "s-caf908d6",
+        "s-f1d527d5",
+        "s-1c3420a5",
+        "s-61130546",
+        "s-ca8ddf4b",
+        "s-b9a2a3ca",
+        "s-49615b55",
+        "s-4e986839",
+        "s-fcaf552d",
+        "s-f6f43d7c",
+        "s-bea0f4ad",
+        "s-151fa383",
+        "s-fe127622",
+        "s-bc02484c",
+        "s-efe6ac8b",
+        "s-bf67d2c1",
+        "s-cf8abcf6",
+        "s-fc10473b",
+        "s-fd67a69b",
+        "s-c7c3cee7",
+        "s-023690c0",
+        "s-16b93808",
+        "s-e6841706",
+        "s-25bec061",
+        "s-0f39adb3",
+        "s-3e2cd8f3",
+        "s-7ca9fb8c",
+        "s-57494f5d",
+        "s-8d198725",
+        "s-9512d430",
+        "s-35d4facd",
+        "s-f6134ca3",
+        "s-ab561a26",
+        "s-d543fe2b",
+        "s-dee05cbb",
+        "s-f36f4ecf",
+        "s-2045d2f0",
+        "s-0776e4f5",
+        "s-508c4e56",
+        "s-a39b4a26",
+        "s-288ae89d",
+        "s-f0d37b61",
+        "s-af3a79a7",
+        "s-6db43ca6",
+        "s-097417e7",
+        "s-ef0f94e9",
+        "s-3da35d57"
+      ]
+    },
+    {
+      "id": "AE-C12",
+      "verdict": "CONFIRMED",
+      "source_claim_sha256": "a64f4661248094ba7c10d95f0d5322c22dac67cd08bb8a331013ff524368d004",
+      "source_turns": [
+        "day30 B06",
+        "day32 A02/B02",
+        "day35 B06",
+        "day38 A02/A06",
+        "day40 A02/A04/A06/B04"
+      ],
+      "scene_ids": [
+        "s-d1d4f42f",
+        "s-3d725dd0",
+        "s-c70fddaa",
+        "s-6f3c764e",
+        "s-70c1f87d",
+        "s-410dc048",
+        "s-dea76d68",
+        "s-caf908d6",
+        "s-f1d527d5",
+        "s-1c3420a5",
+        "s-61130546",
+        "s-ca8ddf4b",
+        "s-b9a2a3ca",
+        "s-49615b55",
+        "s-4e986839",
+        "s-fcaf552d",
+        "s-f6f43d7c",
+        "s-bea0f4ad",
+        "s-151fa383",
+        "s-fe127622",
+        "s-bc02484c",
+        "s-efe6ac8b",
+        "s-bf67d2c1",
+        "s-cf8abcf6",
+        "s-fc10473b",
+        "s-fd67a69b",
+        "s-c7c3cee7",
+        "s-023690c0",
+        "s-16b93808",
+        "s-e6841706",
+        "s-25bec061",
+        "s-0f39adb3",
+        "s-3e2cd8f3",
+        "s-7ca9fb8c",
+        "s-57494f5d",
+        "s-8d198725",
+        "s-9512d430",
+        "s-35d4facd",
+        "s-f6134ca3",
+        "s-ab561a26",
+        "s-d543fe2b",
+        "s-dee05cbb",
+        "s-f36f4ecf",
+        "s-2045d2f0",
+        "s-0776e4f5",
+        "s-508c4e56",
+        "s-a39b4a26",
+        "s-288ae89d",
+        "s-f0d37b61",
+        "s-af3a79a7",
+        "s-6db43ca6",
+        "s-097417e7",
+        "s-ef0f94e9",
+        "s-3da35d57"
+      ]
+    }
+  ],
+  "lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 89% the same as day01; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day02; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day03; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day04; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day05; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day06; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day07; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day08; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day09; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day10; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day11; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day12; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day13; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day14; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day15; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day16; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day17; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day18; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day19; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day20; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 99% the same as day21; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day22; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day23; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day24; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day25; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day26; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day27; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day28; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day29; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day31; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day32; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day33; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day34; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 99% the same as day35; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day36; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day37; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day38; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day39; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day40; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day41; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day42; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day43; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day44; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day45; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day46; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day47; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day48; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day49; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day50; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day51; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day52; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day53; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day54; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day55; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day56; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day57; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day58; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day59; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      },
+      {
+        "path": "scenes",
+        "message": "the slide sequence is 100% the same as day60; templated look-alikes are what YouTube's inauthentic-content policy demonetizes"
+      }
+    ]
+  },
+  "approval_records_created": false
+}
