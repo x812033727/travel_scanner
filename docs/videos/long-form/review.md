@@ -2960,6 +2960,20 @@ Non-claims: DURATION_ONLY. This receipt does not approve paid production, runtim
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## Branch windows-video-validation-20261009 native-path assertion increment: 1 file (2026-10-09)
+
+Reviewer: `codex-review-own-video`. Author: `codex-clarity-pipeline-review`. Scope: DURATION_ONLY for `tools/video/review/sync.test.mjs` at `12c0c8227905666e00fe310c7a58d06f258687a1`. The reviewer did not author this changed bound test and edits only this report and review.json for the increment. Its separately authored project-lease test is unbound and outside this review; that test received the coordinating agent's independent review.
+
+Baseline: `580911bbc962e086dea9e71e25f9bf063024a28d`, which includes the preceding Windows automation-test receipt. Immutable Git blobs pass `durationReviewProblems` for the report and all 108 REVIEW_FILES. The baseline sync test hash `ae5d0c052271bf2694432f95deedcf89a005935335977104faf592aace0249a1` equals the receipt and table. Before rebinding, only this file is stale and the other 107 bindings are current. The reviewed working-tree bytes equal committed `12c0c822` bytes, `c4655a10e64547c0e088f7c7e2648c685c193b28465f035f9bbbd75ec5312f17`. All prior increments, including the preceding one-file Windows review, are preserved.
+
+Findings: one assertion line changes in the lost-Jev-outline-answer regression. The old regex required a POSIX `review/outline-lost.json` path and allowed arbitrary error detail; the replacement checks an exact complete output line with the current slug, fixed timestamp, full HTTP 504 detail, no-repeat/owner-handoff text, and `path.join("review", "outline-lost.json")`. The path follows the host's separators while the diagnostic assertions become more specific. The surrounding checks still require exactly one judge request for the unchanged brief, no fabricated pick, a source-bound lost-answer record, a second request only after the brief changes, and removal of the old record. No line changes production behavior, 600/780-second targets, the 480-second measured floor, the eight-minute minimum, `target_minutes`, `MIN_EPISODE`, `VIDEO_MIN_EPISODE_MINUTES`, `runtime_spec`, `action_seconds`, source-hash gates or covered state.
+
+Ran: with bundled Node v24.19.0 on Windows ARM64, `node tools/video/long-form/cli.mjs check` (PASS), `node --test tools/video/long-form/review.test.mjs` (2 passed, 0 failed), and `git diff --check` (PASS). The author's complete three-file Windows run is separate validation, not a reviewer rerun claim.
+
+Non-claims: DURATION_ONLY for this single bound diff. This receipt does not certify the other unbound fixes, Linux execution, measured media, paid production, publication, deployment or owner acceptance. It changes no implementation/test file or duration policy.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -3067,7 +3081,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/qa/duration.test.mjs` | `50065abe24bc6b5f6b71614d5733c2cbe7896a0f17fb091f5062b28a1eec02e6` |
 | `tools/video/qa/qa.test.mjs` | `b27d4ce3e3b6b0329488b549095cd51d61311a5cc644125b4087da99157c1281` |
 | `tools/video/review/sync.mjs` | `c4ae35a7a88513b76f1997a77d3dff39829d69262971479b39f86ac9d76ee21c` |
-| `tools/video/review/sync.test.mjs` | `ae5d0c052271bf2694432f95deedcf89a005935335977104faf592aace0249a1` |
+| `tools/video/review/sync.test.mjs` | `c4655a10e64547c0e088f7c7e2648c685c193b28465f035f9bbbd75ec5312f17` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
