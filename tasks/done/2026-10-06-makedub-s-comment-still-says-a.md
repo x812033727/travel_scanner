@@ -1,13 +1,13 @@
 ---
 id: 2026-10-06-makedub-s-comment-still-says-a
 title: makeDub's comment still says a down service or a STOP ends the run
-status: open
+status: done
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-dub-retake
+claimed_at: 2026-10-07T11:40:07Z
 created_at: 2026-10-06T23:28:30Z
-completed_at:
+completed_at: 2026-10-07T11:40:12Z
 branch:
 depends_on: []
 scope:
@@ -32,11 +32,11 @@ added to the same sentence. An independent reader found this while verifying the
 
 ## Definition of done
 
-- [ ] The comment says what the code does: exit 4 and a STOP defer only this video.
+- [x] The comment says what the code does: exit 4 and a STOP defer only this video.
 
 ## Steps
 
-- [ ] Reword the comment. No behaviour change.
+- [x] Reword the comment. No behaviour change.
 
 ## How to verify
 
@@ -47,3 +47,8 @@ Read the comment against `stopped()` and the exit-4 lines in `makeDub`.
 `flow.mjs` is bound in the duration review receipt, so even a comment change needs an
 independent re-bind. Ride along with the next change to `flow.mjs` rather than spending a
 re-bind on it alone.
+
+- 2026-10-07 (claude-opus-5-5-dub-retake): done as a ride-along of
+  `2026-10-07-a-dub-retake-that-exits-4`. The JSDoc now says that exit 4 and a STOP defer only
+  this video (a STOP for the rest of the run) and that the lane goes on. The duration re-bind of
+  that change covers this comment.

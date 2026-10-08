@@ -50,6 +50,23 @@ function site(handlers) {
 
 const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json", ...headers } });
 
+test("a request the site keeps refusing is told after its last attempt, with no wait after it", async () => {
+  for (const [what, answer] of [
+    ["a busy route", () => new Response(JSON.stringify({ code: "rate_limit_exceeded", detail: "slow down" }), { status: 429, headers: { "Retry-After": "60" } })],
+    ["a site that is down", () => {
+      throw Object.assign(new TypeError("fetch failed"), { cause: Object.assign(new Error("connect ECONNREFUSED"), { code: "ECONNREFUSED" }) });
+    }],
+  ]) {
+    let calls = 0;
+    const waits = [];
+    const options = { site: SITE, token: TOKEN, fetchImpl: async () => { calls += 1; return answer(); }, sleep: async (ms) => waits.push(ms), attempts: 5 };
+    await assert.rejects(mediaStatus(options), (error) => error instanceof MediaError && error.who === "service", what);
+    assert.equal(calls, 5, what);
+    assert.equal(waits.length, 4, `${what}: a wait between two attempts, none after the last`);
+    if (what === "a site that is down") assert.deepEqual(waits, [1000, 2000, 4000, 8000], "the first four, not the fifth");
+  }
+});
+
 test("calls carry the token, and failures say who can fix them", async () => {
   let images = 0;
   const fake = site({

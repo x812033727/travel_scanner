@@ -112,12 +112,47 @@ async def enforce_named_rate_limit(
     *,
     limit: int,
     window_seconds: int,
+    retry_after: bool = False,
 ) -> None:
+    """Refuse a caller over ``limit`` in this window.
+
+    ``retry_after`` puts the seconds until the window opens again in the refusal's
+    Retry-After, for a caller that waits instead of failing: the video tool, whose retries
+    would otherwise all land inside the window that refused them.
+    """
     count = await _incr_window(namespace, identifier, window_seconds=window_seconds)
     if count is None:
         raise AppError(503, "rate_limit_unavailable", "安全驗證服務暫時無法使用")
     if count > limit:
-        raise AppError(429, "rate_limit_exceeded", "請求過於頻繁，請稍後再試")
+        headers = None
+        if retry_after:
+            seconds = await _window_seconds_left(namespace, identifier, window_seconds)
+            headers = {"Retry-After": str(seconds)}
+        raise AppError(429, "rate_limit_exceeded", "請求過於頻繁，請稍後再試", headers=headers)
+
+
+async def _window_seconds_left(namespace: str, identifier: str, window_seconds: int) -> int:
+    """Whole seconds until this window's count starts again, never fewer than one.
+
+    Read only on a refusal, so an allowed request still costs one round trip. The key's
+    expiry is the window's end: hits over the limit still count but never move it. It is
+    read in milliseconds and rounded up, so a caller that waits this long is never early.
+    A key already gone (-2) means the window closed since the count; a key without an
+    expiry (-1, which the script never leaves) or a read that fails answers the whole
+    window, which may be too long but is never too short. The count and this read are two
+    round trips, so a window another request opened in between is read as nearly whole:
+    again too long at worst, never too short.
+    """
+    try:
+        remaining_ms = int(await get_redis().pttl(_rate_key(namespace, identifier)))
+    except RedisError:
+        logger.warning("rate limit window %s has no readable expiry", namespace, exc_info=True)
+        return window_seconds
+    if remaining_ms == -2:
+        return 1
+    if remaining_ms < 0:
+        return window_seconds
+    return min(window_seconds, max(1, -(-remaining_ms // 1000)))
 
 
 async def over_named_rate_limit(

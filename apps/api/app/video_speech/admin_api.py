@@ -37,7 +37,12 @@ from app.providers.usage_meter import (
     release_azure_speech_characters,
     reserve_azure_speech_characters,
 )
-from app.video_speech.azure import OUTPUT_FORMAT, AzureSpeech, SpeechUpstreamError
+from app.video_speech.azure import (
+    OUTPUT_FORMAT,
+    AzureSpeech,
+    SpeechAnswerLost,
+    SpeechUpstreamError,
+)
 from app.video_speech.checking import CheckUnavailable, judge, transcribe
 from app.video_speech.gemini import (
     DEFAULT_GEMINI_TTS_MODEL,
@@ -274,8 +279,15 @@ async def video_tool(
         )
     if touch(row):
         await session.commit()
+    # Every route a video tool token calls shares this window, both worker lanes included. Its
+    # refusal says when the window opens again, so the tool waits that long instead of spending
+    # its retries inside the window that refused them (tools/video/tts/client.mjs).
     await enforce_named_rate_limit(
-        "video_speech", str(row.id), limit=SPEECH_REQUESTS_PER_MINUTE, window_seconds=60
+        "video_speech",
+        str(row.id),
+        limit=SPEECH_REQUESTS_PER_MINUTE,
+        window_seconds=60,
+        retry_after=True,
     )
     return row
 
@@ -310,6 +322,18 @@ async def speech_status(tool: VideoTool, session: Session) -> SpeechStatus:
         gemini_monthly_limit=gemini_limit,
         gemini_used=gemini_usage.used,
     )
+
+
+def answer_lost(detail: str) -> AppError:
+    """A paid request the provider may have run, whose answer was lost after it was sent.
+
+    Its own code, apart from ``video_speech_upstream_failed`` (a provider never reached, or one
+    that answered a failure), because ``tools/video/tts/client.mjs`` sends that one again and
+    must not send this one: the provider keeps no answer to fetch, so a second request may be a
+    second charge. 504 like the web route's ``video_speech_answer_lost``, its answer for the same
+    case one layer up (apps/web/app/api/video/speech/forward.ts).
+    """
+    return AppError(504, "video_speech_upstream_lost", detail)
 
 
 async def _synthesize_with_gemini(
@@ -352,6 +376,11 @@ async def _synthesize_with_gemini(
     )
     try:
         audio = await speech.synthesize(text, voice, payload.style, model)
+    except SpeechAnswerLost as error:
+        # Gemini may have narrated, and billed, this text, so its characters stay counted.
+        raise answer_lost(
+            "Gemini 可能已合成這段語音，但回答沒有送回來；字數已計入本月預算，請勿自動重送"
+        ) from error
     except SpeechUpstreamError as error:
         await release_azure_speech_characters(redis, characters, provider=GEMINI_SPEECH_PROVIDER)
         if error.status == 429:
@@ -439,6 +468,11 @@ async def synthesize_speech(payload: SpeechRequest, tool: VideoTool, session: Se
     )
     try:
         audio = await speech.synthesize(document)
+    except SpeechAnswerLost as error:
+        # Azure may have processed, and billed, this request, so its characters stay counted.
+        raise answer_lost(
+            "Azure 可能已合成這段語音，但回答沒有送回來；字數已計入本月預算，請勿自動重送"
+        ) from error
     except SpeechUpstreamError as error:
         # Azure bills only requests it processed, so a refused one goes back to the budget.
         await release_azure_speech_characters(redis, characters)
@@ -475,7 +509,11 @@ async def transcribe_narration(
 ) -> TranscribeOut:
     """One narrated line back as text, so the tool can check it against the script."""
     await enforce_named_rate_limit(
-        "video_transcribe", str(tool.id), limit=TRANSCRIBE_REQUESTS_PER_HOUR, window_seconds=3600
+        "video_transcribe",
+        str(tool.id),
+        limit=TRANSCRIBE_REQUESTS_PER_HOUR,
+        window_seconds=3600,
+        retry_after=True,
     )
     try:
         wav = base64.b64decode(payload.audio, validate=True)
@@ -488,6 +526,8 @@ async def transcribe_narration(
         text = await transcribe(settings, wav, terms=payload.terms, language=payload.language)
     except CheckUnavailable as error:
         raise AppError(error.status, error.code, error.detail) from error
+    except SpeechAnswerLost as error:
+        raise answer_lost("Gemini 可能已轉寫這段音檔，但回答沒有送回來；請勿自動重送") from error
     except SpeechUpstreamError as error:
         if error.status == 429:
             raise AppError(
@@ -502,7 +542,7 @@ async def transcribe_narration(
             ) from error
         if error.status in {500, 503, 504}:
             # Overloaded or failing on Google's side: worth another try after a real pause,
-            # not the tool's one-to-sixteen-second backoff.
+            # not the tool's one-to-eight-second backoff.
             raise AppError(
                 503,
                 "video_speech_upstream_busy",
