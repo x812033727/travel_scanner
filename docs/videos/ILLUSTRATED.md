@@ -371,7 +371,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 | API 規則 | 可能的話標示攝影師並連回照片頁（「Photo by … on Pexels」）；用到 API 的地方要有顯眼的 Pexels 連結（「Photos provided by Pexels」）；不可整批下載、不可複製 Pexels 本身的功能；快取結果 | 顯示搜尋結果的地方要標示 Pixabay；不可熱連結，必須下載到自己這邊（fetch 做的正是這件事）；API 回應最多快取 24 小時（`webformatURL` 這類網址一天後失效）；不可整批下載；金鑰不可公開 |
 | 我們怎麼做 | `credit.text` 就是廠商要的那一句，`stock fetch` 原樣寫進 `assets[].source`，說明欄的「圖片來源」區塊逐張列出（§工具端）；投影片預設不畫字（站主的規則），要畫才寫 `data.credit`；`stock search` 印候選時帶「Photos provided by Pexels」 | 同左；印候選時帶「Images from Pixabay」，並提醒預覽網址一天後失效 |
 
-兩家都不「要求」標示，但都希望有，而且 API 使用規則要求來源可見。說明欄 5,000 位元組的上限：一行標示約 110–130 位元組（「Photo by … on Pexels（Pexels License）：照片頁網址」），區塊的標題與空行 19 位元組；`lint` 不算這些（`core/lint.mjs` 不讀 `assets[]`），只有 `package` 算，所以稿子的 `youtube.description` 要比 `lint` 的上限少留每張約 130 位元組——兩張照片留 300 位元組就夠，超過時 `package` 會說是標示把它推過線。這一段只讀了兩家的公開 API 文件與授權頁，沒有參考任何第三方程式。
+兩家都不「要求」標示，但都希望有，而且 API 使用規則要求來源可見。說明欄 5,000 位元組的上限：一行標示約 110–130 位元組（「Photo by … on Pexels（Pexels License）：照片頁網址」），區塊的標題與空行 19 位元組。2026-10-08 起（#1382）`lint` 跟 `package` 用同一個 `composeDescription` 組說明欄、標示也算在內（`core/lint.mjs` 傳了 `assets`），所以標示把說明欄推過 5,000 位元組時 `lint` 就會擋，稿子不必另外留空間。這一段只讀了兩家的公開 API 文件與授權頁，沒有參考任何第三方程式。
 
 ### 工具端（2026-10-05，票 `2026-10-05-stock-photo-slides-and-attribution`）
 
@@ -461,7 +461,7 @@ lint（`core/drama.mjs` `cueCoverageProblems`，經 `core/lint.mjs` 進警告）
 
 ## 沒做、留給後面
 
-- 圖庫照片（§圖庫照片 的「工具端」）：`lint` 不算說明欄的「圖片來源」位元組（`core/lint.mjs` 不讀 `assets[]`），稿子要自己留；`docs/videos/README.md` §說明欄 的四個部分還沒列第五個「圖片來源」。工人的撰稿提示詞還不會自己去搜照片，目前是代理或站主手動 `stock search`／`stock fetch` 再把路徑寫進 `screenshot` 景。
+- 圖庫照片（§圖庫照片 的「工具端」）：工人的撰稿提示詞還不會自己去搜照片，目前是代理或站主手動 `stock search`／`stock fetch` 再把路徑寫進 `screenshot` 景。
 - 是非題只用在插圖投影片（§judge 的刻度與判定沿用）。漫劇的設定圖、關鍵影格、片段與原來如此事務所的靜圖仍是打分數、也頂在 7：各自量過已記錄的出圖、定好各自的題目再換。judge 漏看的瑕疵（六指、像字的記號）要靠更細的題目或更強的判定模型，也要先量；`subject` 在 163 張裡一次都沒答有，窯門大開那種「主動作不對」被歸到 `details`，這一題的寫法值得再試。
 - judge 的 problems 改成「鍵、毛病、修法」之後（§judge 的 problems），163 張的前後對照還沒量；`drama_preflight.mjs` 與 `run_report.mjs` 印的是 `problems`，manifest 的 `fixes` 它們還沒印。
 - 樣張沒放進聯絡表（`review/sync.mjs` 用張數切頁，多一格會錯位）；要看就開 `keyframes/plate-N.png`。

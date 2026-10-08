@@ -79,3 +79,10 @@ node tools/video/long-form/cli.mjs check
   named `media/cli.mjs`: the `next:` line after `stock search` (`media/stock.mjs`) and render's
   "not in the work directory" problem (`render/plan.mjs`). Both now name
   `node tools/video/cli.mjs`; scope widened to them and their tests (none is receipt-bound).
+- 2026-10-08 (claude-happy-carson), after merging #1382: since #1382 `core/lint.mjs` composes the
+  description with `assets`, as `package` does, so lint counts the 圖片來源 credits, and
+  `docs/videos/README.md` §說明欄 lists them. This ticket's rewritten to-do line in
+  `ILLUSTRATED.md` still said neither was done, and §圖庫照片 and `visuals.md` step 4 still told
+  the writer to keep about 130 bytes a photo; all three now say lint checks it. `package`'s own
+  hint (`package/metadata.mjs` `withCreditHint`) still says lint does not count them: filed as
+  2026-10-08-package-s-credit-hint-still-says.
