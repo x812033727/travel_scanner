@@ -4,12 +4,12 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import {
   copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync,
-  renameSync, statSync, writeFileSync,
+  renameSync, readdirSync, statSync, writeFileSync,
 } from 'node:fs';
 import { dirname, isAbsolute, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  TARGETS, parseDirectoryArg, targetPath, classifyStat, classifyStatError, formatCheckedAt,
+  TARGETS, parseDirectoryArg, targetPath, classifyStat, classifyListedTarget, classifyStatError, formatCheckedAt,
 } from './delivery-check/hooks/delivery-logic.mjs';
 
 const reportPath = process.argv[2];
@@ -42,15 +42,13 @@ function fixture(name, files = ['article.md', 'sources.md']) {
   return directory;
 }
 function inspect(directory) {
+  const entries = readdirSync(directory, { withFileTypes: true }).map((entry) => ({
+    name: entry.name,
+    kind: entry.isFile() ? 'file' : entry.isDirectory() ? 'dir' : 'other',
+  }));
   return TARGETS.map((target) => {
     const path = targetPath(directory, target.name);
-    try {
-      const stat = statSync(path);
-      const kind = stat.isFile() ? 'file' : stat.isDirectory() ? 'dir' : 'other';
-      return { name: target.name, path, ...classifyStat({ kind, size: stat.size }) };
-    } catch (error) {
-      return { name: target.name, path, ...classifyStatError(error) };
-    }
+    return { name: target.name, path, ...classifyListedTarget(entries, directory, target.name) };
   });
 }
 function statuses(rows) { return rows.map(({ status }) => status); }
@@ -133,6 +131,19 @@ check('Injected permission and unknown errors cannot be mistaken for missing fil
 check('Timestamps use actual supplied clock values and reject unusable values', () => {
   assert.equal(formatCheckedAt(0), '1970-01-01T00:00:00.000Z');
   for (const invalid of [null, '0', NaN, Infinity, 1e30]) assert.equal(formatCheckedAt(invalid), null);
+});
+
+check('Only a valid successful directory listing establishes missing names', () => {
+  for (const invalid of [null, undefined, {}, { entries: [] }, ['article.md'],
+    [{ name: 'article.md', kind: 'unknown' }], [{ name: '../article.md', kind: 'file' }]]) {
+    assert.equal(classifyListedTarget(invalid, '/practice', 'cover-brief.md').status, 'unknown');
+  }
+  assert.equal(classifyListedTarget([], '/practice', 'cover-brief.md').status, 'missing');
+  const caseAlias = [{ name: 'COVER-BRIEF.MD', kind: 'file' }];
+  assert.equal(classifyListedTarget(caseAlias, 'C:\\practice', 'cover-brief.md').status, 'unknown');
+  assert.equal(classifyListedTarget(caseAlias, '/practice', 'cover-brief.md').status, 'unknown');
+  const symlink = [{ name: 'cover-brief.md', kind: 'other', isLink: true }];
+  assert.equal(classifyListedTarget(symlink, '/practice', 'cover-brief.md').label, '路徑存在，內容待審閱');
 });
 
 check('All published starting materials remain byte-identical', () => {

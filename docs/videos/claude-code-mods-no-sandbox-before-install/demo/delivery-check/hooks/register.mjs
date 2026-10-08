@@ -2,7 +2,7 @@ import {
   TARGETS,
   parseDirectoryArg,
   targetPath,
-  classifyStat,
+  classifyListedTarget,
   classifyStatError,
   formatCheckedAt,
 } from './delivery-logic.mjs';
@@ -46,16 +46,25 @@ async function refresh($) {
     return;
   }
 
-  const rows = [];
-  for (const target of TARGETS) {
-    if (request !== generation) return;
-    const path = targetPath(directory, target.name);
-    try {
-      const stat = await $.fs.stat(path);
-      rows.push({ ...target, path, ...classifyStat(stat) });
-    } catch (error) {
-      rows.push({ ...target, path, ...classifyStatError(error) });
-    }
+  let rows;
+  try {
+    // A successful directory listing establishes missing names without
+    // depending on whether the host preserves errno fields across the bridge.
+    const entries = await $.fs.list(directory);
+    rows = TARGETS.map((target) => ({
+      ...target,
+      path: targetPath(directory, target.name),
+      ...classifyListedTarget(entries, directory, target.name),
+    }));
+  } catch {
+    // In particular, a denied/failed listing is not an empty directory.
+    rows = TARGETS.map((target) => ({
+      ...target,
+      path: targetPath(directory, target.name),
+      status: 'unknown',
+      label: '無法檢查',
+      detail: '無法讀取資料夾清單；請核對資料夾、存取權限及版本。',
+    }));
   }
   if (request !== generation) return;
 
@@ -121,6 +130,7 @@ export function register(on) {
     if (e.requestId !== PANE) return next(e);
     const { Box, Text, Button } = $.ui.resolve(e);
     const children = [
+      Text({ children: ['交稿檢查 v2'] }),
       Text({ children: ['檢查資料夾：' + (state.directory ?? '尚未指定')] }),
       Text({ children: ['上次檢查（UTC）：' + (state.checkedAt ?? '尚未完成或未取得時間')] }),
     ];

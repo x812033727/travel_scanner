@@ -71,9 +71,29 @@ export function classifyStat(stat) {
   };
 }
 
+export function classifyListedTarget(entries, directory, name) {
+  // Validate the whole successful listing before treating absence as evidence.
+  // A rejected call must never be replaced with an empty array by the caller.
+  if (!Array.isArray(entries) || entries.some((entry) =>
+    !entry || typeof entry.name !== 'string' || !entry.name ||
+    entry.name === '.' || entry.name === '..' || /[\/\u0000]/.test(entry.name) ||
+    !['file', 'dir', 'other'].includes(entry.kind))) {
+    return unknown('資料夾清單格式無法辨識；請核對目前版本。');
+  }
+  targetPath(directory, name);
+  const entry = entries.find((item) => item.name === name);
+  if (entry) return classifyStat(entry);
+  // Path spelling alone cannot tell us whether this filesystem folds case.
+  // Neither claim missing nor imply the requested spelling works in this case.
+  if (entries.some((item) => item.name.toLowerCase() === name.toLowerCase())) {
+    return unknown('找到大小寫不同的檔名；請核對約定檔名。');
+  }
+  return { status: 'missing', label: '缺少', detail: '本次成功讀取的資料夾清單中沒有這個檔名。' };
+}
+
 export function classifyStatError(error) {
-  // No message substring guessing: permission errors may mention a filename
-  // containing ENOENT. Native errno serialization still needs host validation.
+  // Folder diagnostics only. Child absence comes from a successful listing.
+  // Never guess codes from messages: a permission error can mention ENOENT.md.
   const code = error && typeof error.code === 'string' ? error.code : null;
   if (code === 'ENOENT') {
     return { status: 'missing', label: '缺少', detail: '找不到這個指定路徑。' };
