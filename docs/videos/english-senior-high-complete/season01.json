@@ -1,0 +1,3486 @@
+{
+  "series_title": "Sunny & Pip: Senior High English",
+  "version": 4,
+  "episodes": [
+    {
+      "id": "ep01",
+      "number": 1,
+      "season": 1,
+      "grade": 10,
+      "title_en": "A More Detailed Introduction",
+      "title_zh_TW": "更完整的自我介紹",
+      "titles": {
+        "zh-TW": "更完整的自我介紹",
+        "zh-CN": "更完整的自我介绍",
+        "ja": "より詳しい自己紹介",
+        "ko": "더 구체적인 자기소개"
+      },
+      "topic": "profiles-reasons-and-goals",
+      "objectives_zh_TW": [
+        "用具體活動與理由延伸人物介紹，不只羅列形容詞。",
+        "以過去經驗連接目前興趣及學習目標。",
+        "寫六十至九十詞介紹，讓目標有經驗支持。"
+      ],
+      "parent_tip_zh_TW": "把「我很有責任感」換成一件可觀察的行動，再解釋這件事如何連到下一個目標。",
+      "practice": {
+        "prompt_en": "Write a 60-90-word profile of a fictional student. Include an interest, a specific experience, its significance, and a realistic learning goal.",
+        "prompt_zh_TW": "用六十至九十詞介紹虛構學生，包含興趣、一段具體經驗、經驗的意義及實際可行的學習目標。",
+        "sample_answer_en": "Amy enjoys explaining how everyday objects work. Last term, she helped a younger student repair a bicycle light. She discovered that a simple drawing made her instructions easier to follow. That experience encouraged her to join the design club. She now wants to improve her drawing skills and test her explanations with classmates. Her goal is to create a short repair guide that a beginner can actually use.",
+        "reading_en": "Sam is a new member of the school media club. He enjoys photography, but his interest is not only in attractive pictures. Last spring, he photographed the school garden while volunteers were replacing broken signs. A younger student later told him that the pictures explained the work more clearly than a list of tasks. Sam began to notice how images could help people understand a process. This term, he wants to create a photo guide for new garden volunteers. He plans to ask a beginner to follow the guide before sharing it with the club. For Sam, a successful picture is one that helps someone act.",
+        "questions": [
+          {
+            "prompt_en": "What does Sam want to create this term?",
+            "answer_en": "He wants to create a photo guide for new garden volunteers."
+          },
+          {
+            "prompt_en": "How did the younger student's comment influence Sam?",
+            "answer_en": "It helped him recognize that photographs could explain a process, not just look attractive."
+          },
+          {
+            "prompt_en": "Why is asking a beginner to follow the guide a sensible test?",
+            "answer_en": "His guide is for new volunteers, so a beginner can show whether the pictures explain what to do."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep01-s01",
+          "english": "I enjoy photography because pictures can explain a process more clearly than a list.",
+          "demo": "I enjoy photography because pictures can explain a process more clearly than a list.",
+          "instruction": {
+            "en": "Connect the interest to a reason that reveals the student's perspective.",
+            "zh-TW": "把興趣連到理由，呈現學生的想法。",
+            "zh-CN": "把兴趣连到理由，呈现学生的想法。",
+            "ja": "興味を理由につなげ、その生徒の考え方を示します。",
+            "ko": "관심사를 이유와 연결해 학생의 관점을 드러내요."
+          },
+          "demo_translation": {
+            "zh-TW": "我喜歡攝影，因為圖片能比清單更清楚地解釋過程。",
+            "zh-CN": "我喜欢摄影，因为图片能比清单更清楚地解释过程。",
+            "ja": "写真は一覧よりも手順を分かりやすく示せるので、私は写真撮影が好きです。",
+            "ko": "사진은 목록보다 과정을 더 명확하게 설명할 수 있어서 나는 사진 찍기를 좋아해요."
+          },
+          "visual": "sentence:I enjoy photography because pictures can explain a process more clearly than a list.",
+          "target": "sentence:I enjoy photography because pictures can explain a process more clearly than a list.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep01-s02",
+          "english": "Last spring, I photographed volunteers as they repaired the signs in our school garden.",
+          "demo": "Last spring, I photographed volunteers as they repaired the signs in our school garden.",
+          "instruction": {
+            "en": "A specific experience supports the interest more clearly than a general adjective.",
+            "zh-TW": "具體經驗比籠統形容詞更能說明興趣。",
+            "zh-CN": "具体经历比笼统形容词更能说明兴趣。",
+            "ja": "具体的な経験は、漠然とした形容詞より興味を明確に伝えます。",
+            "ko": "구체적인 경험은 막연한 형용사보다 관심사를 더 분명히 보여 줘요."
+          },
+          "demo_translation": {
+            "zh-TW": "去年春天，我拍下志工修理校園花園標示的過程。",
+            "zh-CN": "去年春天，我拍下志愿者修理校园花园标牌的过程。",
+            "ja": "昨年の春、学校の庭で案内板を直すボランティアを撮影しました。",
+            "ko": "지난봄, 학교 정원의 안내판을 고치는 자원봉사자들을 촬영했어요."
+          },
+          "visual": "sentence:Last spring, I photographed volunteers as they repaired the signs in our school garden.",
+          "target": "sentence:Last spring, I photographed volunteers as they repaired the signs in our school garden.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep01-s03",
+          "english": "A younger student said the pictures helped him understand the volunteers' work.",
+          "demo": "A younger student said the pictures helped him understand the volunteers' work.",
+          "instruction": {
+            "en": "Explain the experience's significance through its effect on another person.",
+            "zh-TW": "用經驗對他人的影響說明其意義。",
+            "zh-CN": "用经历对他人的影响说明其意义。",
+            "ja": "その経験が他の人に与えた影響から、意味を説明します。",
+            "ko": "그 경험이 다른 사람에게 준 영향으로 의미를 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "一位低年級學生說，照片幫他了解志工的工作。",
+            "zh-CN": "一位低年级学生说，照片帮他了解志愿者的工作。",
+            "ja": "下級生が、写真のおかげでボランティアの仕事が分かったと言いました。",
+            "ko": "후배 한 명이 사진 덕분에 자원봉사자들의 일을 이해했다고 말했어요."
+          },
+          "visual": "sentence:A younger student said the pictures helped him understand the volunteers' work.",
+          "target": "sentence:A younger student said the pictures helped him understand the volunteers' work.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep01-s04",
+          "english": "That comment encouraged me to use photography to make practical guides.",
+          "demo": "That comment encouraged me to use photography to make practical guides.",
+          "instruction": {
+            "en": "Read the link carefully; that comment connects the experience to a new direction.",
+            "zh-TW": "注意 that comment 如何連結經驗與新方向。",
+            "zh-CN": "注意 that comment 如何连接经历与新方向。",
+            "ja": "that comment が経験と新しい方向をつなぐ点を意識して読みます。",
+            "ko": "that comment가 경험과 새로운 방향을 연결하는 점에 주목해 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "那句話鼓勵我用攝影製作實用指南。",
+            "zh-CN": "那句话鼓励我用摄影制作实用指南。",
+            "ja": "その言葉に励まされ、写真で実用的な手引きを作ろうと思いました。",
+            "ko": "그 말을 듣고 사진으로 실용적인 안내서를 만들고 싶어졌어요."
+          },
+          "visual": "sentence:That comment encouraged me to use photography to make practical guides.",
+          "target": "sentence:That comment encouraged me to use photography to make practical guides.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep01-s05",
+          "english": "Listen and choose.",
+          "demo": "Last spring, I photographed volunteers as they repaired the signs in our school garden.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "去年春天，我拍下志工修理校園花園標示的過程。",
+            "zh-CN": "去年春天，我拍下志愿者修理校园花园标牌的过程。",
+            "ja": "昨年の春、学校の庭で案内板を直すボランティアを撮影しました。",
+            "ko": "지난봄, 학교 정원의 안내판을 고치는 자원봉사자들을 촬영했어요."
+          },
+          "visual": "sentence:Last spring, I photographed volunteers as they repaired the signs in our school garden.",
+          "target": "sentence:Last spring, I photographed volunteers as they repaired the signs in our school garden.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Last spring, I photographed volunteers as they repaired the signs in our school garden.",
+            "sentence:I enjoy photography because pictures can explain a process more clearly than a list.",
+            "sentence:My interest led to an experience, and that experience now shapes my goal."
+          ]
+        },
+        {
+          "id": "ep01-s06",
+          "english": "This term, I want to create a photo guide for new garden volunteers.",
+          "demo": "This term, I want to create a photo guide for new garden volunteers.",
+          "instruction": {
+            "en": "Specify the product and audience so the goal becomes clear and realistic.",
+            "zh-TW": "交代成果和對象，讓目標清楚且可行。",
+            "zh-CN": "交代成果和对象，让目标清楚且可行。",
+            "ja": "作る物と対象者を示し、目標を具体的で実現可能なものにします。",
+            "ko": "결과물과 대상을 밝혀 목표를 구체적이고 실현 가능하게 만들어요."
+          },
+          "demo_translation": {
+            "zh-TW": "這學期，我想為花園的新志工製作照片指南。",
+            "zh-CN": "这学期，我想为花园的新志愿者制作照片指南。",
+            "ja": "今学期は、庭の新しいボランティア向けに写真の手引きを作りたいです。",
+            "ko": "이번 학기에는 정원의 새 자원봉사자들을 위한 사진 안내서를 만들고 싶어요."
+          },
+          "visual": "sentence:This term, I want to create a photo guide for new garden volunteers.",
+          "target": "sentence:This term, I want to create a photo guide for new garden volunteers.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep01-s07",
+          "english": "Listen and choose.",
+          "demo": "This term, I want to create a photo guide for new garden volunteers.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "這學期，我想為花園的新志工製作照片指南。",
+            "zh-CN": "这学期，我想为花园的新志愿者制作照片指南。",
+            "ja": "今学期は、庭の新しいボランティア向けに写真の手引きを作りたいです。",
+            "ko": "이번 학기에는 정원의 새 자원봉사자들을 위한 사진 안내서를 만들고 싶어요."
+          },
+          "visual": "sentence:This term, I want to create a photo guide for new garden volunteers.",
+          "target": "sentence:This term, I want to create a photo guide for new garden volunteers.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:I enjoy photography because pictures can explain a process more clearly than a list.",
+            "sentence:This term, I want to create a photo guide for new garden volunteers.",
+            "sentence:My interest led to an experience, and that experience now shapes my goal."
+          ]
+        },
+        {
+          "id": "ep01-s08",
+          "english": "I plan to test the guide with a beginner before sharing it.",
+          "demo": "I plan to test the guide with a beginner before sharing it.",
+          "instruction": {
+            "en": "Read the planned action as evidence that the goal has a practical next step.",
+            "zh-TW": "把計畫中的行動連到實際可做的下一步。",
+            "zh-CN": "把计划中的行动连到实际可做的下一步。",
+            "ja": "計画した行動が、目標に向けた具体的な次の一歩だと捉えて読みます。",
+            "ko": "계획한 행동이 목표를 향한 구체적인 다음 단계임을 생각하며 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我打算先請初學者試用指南，再分享出去。",
+            "zh-CN": "我打算先请初学者试用指南，再分享出去。",
+            "ja": "手引きを公開する前に、初心者に試してもらう予定です。",
+            "ko": "안내서를 공유하기 전에 초보자와 함께 시험해 볼 계획이에요."
+          },
+          "visual": "sentence:I plan to test the guide with a beginner before sharing it.",
+          "target": "sentence:I plan to test the guide with a beginner before sharing it.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep01-s09",
+          "english": "Listen and choose.",
+          "demo": "I plan to test the guide with a beginner before sharing it.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我打算先請初學者試用指南，再分享出去。",
+            "zh-CN": "我打算先请初学者试用指南，再分享出去。",
+            "ja": "手引きを公開する前に、初心者に試してもらう予定です。",
+            "ko": "안내서를 공유하기 전에 초보자와 함께 시험해 볼 계획이에요."
+          },
+          "visual": "sentence:I plan to test the guide with a beginner before sharing it.",
+          "target": "sentence:I plan to test the guide with a beginner before sharing it.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:I enjoy photography because pictures can explain a process more clearly than a list.",
+            "sentence:My interest led to an experience, and that experience now shapes my goal.",
+            "sentence:I plan to test the guide with a beginner before sharing it."
+          ]
+        },
+        {
+          "id": "ep01-s10",
+          "english": "My interest led to an experience, and that experience now shapes my goal.",
+          "demo": "My interest led to an experience, and that experience now shapes my goal.",
+          "instruction": {
+            "en": "A connected profile explains relationships among details instead of simply listing facts.",
+            "zh-TW": "連貫介紹要解釋細節的關係，不只列資料。",
+            "zh-CN": "连贯介绍要解释细节的关系，不只列资料。",
+            "ja": "まとまりのある紹介文は、事実を並べるだけでなく関係を説明します。",
+            "ko": "연결된 소개 글은 사실만 나열하지 않고 세부 내용의 관계를 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我的興趣帶來一段經驗，而那段經驗正影響我的目標。",
+            "zh-CN": "我的兴趣带来一段经历，而那段经历正影响我的目标。",
+            "ja": "興味から経験が生まれ、その経験が今の目標につながっています。",
+            "ko": "관심이 경험으로 이어졌고, 그 경험이 지금 내 목표를 만들어 가요."
+          },
+          "visual": "sentence:My interest led to an experience, and that experience now shapes my goal.",
+          "target": "sentence:My interest led to an experience, and that experience now shapes my goal.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        }
+      ]
+    },
+    {
+      "id": "ep02",
+      "number": 2,
+      "season": 1,
+      "grade": 10,
+      "title_en": "Connecting Past and Present",
+      "title_zh_TW": "連接過去與現在",
+      "titles": {
+        "zh-TW": "連接過去與現在",
+        "zh-CN": "连接过去与现在",
+        "ja": "過去と現在をつなぐ",
+        "ko": "과거와 현재 연결하기"
+      },
+      "topic": "past-simple-versus-present-perfect",
+      "objectives_zh_TW": [
+        "辨別已結束時間的事件與延續至今的發展。",
+        "用過去簡單式交代起點，以現在完成式說明目前進展。",
+        "依時間線索寫連貫的專題進度介紹。"
+      ],
+      "parent_tip_zh_TW": "先標出故事目前的時間點：last term 是結束的時段，since then 把先前事件連到現在。",
+      "practice": {
+        "prompt_en": "Write a 60-90-word update on a fictional school project. Include a finished past event, progress up to now, and one task still remaining.",
+        "prompt_zh_TW": "用六十至九十詞介紹虛構校園專題進度，包含已結束的過去事件、截至目前的進展及一項尚待完成的工作。",
+        "sample_answer_en": "Our class started a reading corner last month. We moved two shelves into an empty classroom and invited students to suggest books. Since then, we have collected enough stories for the first shelf. Several younger students have visited the corner, but we have not opened it every day yet. We still need to agree on a schedule. The first visits gave us useful questions to discuss at our next meeting.",
+        "reading_en": "Last term, Amy joined a team that was designing a quieter lunch area. The team interviewed students in May and presented its first plan in June. Since then, the school has provided a small room, and volunteers have moved some tables into it. Amy has written a short welcome notice, but the team has not agreed on opening hours yet. The room is ready for a trial, not for a permanent opening. Amy says the earlier interviews helped the team choose the location. She believes the next step is to watch how students use the room during a short trial and then review the schedule.",
+        "questions": [
+          {
+            "prompt_en": "What work has the team not finished yet?",
+            "answer_en": "It has not agreed on opening hours."
+          },
+          {
+            "prompt_en": "Why does the passage use interviewed with in May but has provided with since then?",
+            "answer_en": "In May identifies a finished past time; since then links later progress to the present."
+          },
+          {
+            "prompt_en": "Would it be accurate to announce that the room is permanently open? Explain.",
+            "answer_en": "No. It is only ready for a trial, and the opening hours have not been agreed."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep02-s01",
+          "english": "Our team interviewed students in May and presented its first plan in June.",
+          "demo": "Our team interviewed students in May and presented its first plan in June.",
+          "instruction": {
+            "en": "Finished time phrases locate these events in a completed period.",
+            "zh-TW": "已結束的時間片語把事件放在過去時段。",
+            "zh-CN": "已结束的时间短语把事件放在过去时段。",
+            "ja": "終わった時を示す表現が、出来事を過去の期間に位置付けます。",
+            "ko": "끝난 시간을 나타내는 표현이 사건을 완료된 기간에 놓아요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們團隊五月訪談學生，六月提出第一份計畫。",
+            "zh-CN": "我们团队五月访谈学生，六月提出第一份计划。",
+            "ja": "私たちのチームは5月に生徒に聞き取りをし、6月に最初の案を示しました。",
+            "ko": "우리 팀은 5월에 학생들을 인터뷰하고 6월에 첫 계획을 발표했어요."
+          },
+          "visual": "sentence:Our team interviewed students in May and presented its first plan in June.",
+          "target": "sentence:Our team interviewed students in May and presented its first plan in June.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep02-s02",
+          "english": "Since then, the school has provided a room for our project.",
+          "demo": "Since then, the school has provided a room for our project.",
+          "instruction": {
+            "en": "Since then connects earlier events with progress that matters now.",
+            "zh-TW": "since then 連接先前事件與目前相關的進展。",
+            "zh-CN": "since then 连接先前事件与目前相关的进展。",
+            "ja": "since then は以前の出来事を、今につながる進展と結びます。",
+            "ko": "since then은 이전 사건과 현재에 중요한 진행 상황을 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "從那時起，學校已為我們的專題提供一間教室。",
+            "zh-CN": "从那时起，学校已为我们的项目提供一间教室。",
+            "ja": "それ以来、学校は私たちの活動に部屋を用意してくれました。",
+            "ko": "그 이후 학교에서 우리 프로젝트에 사용할 방을 마련해 주었어요."
+          },
+          "visual": "sentence:Since then, the school has provided a room for our project.",
+          "target": "sentence:Since then, the school has provided a room for our project.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep02-s03",
+          "english": "We moved the tables yesterday, but we have not chosen opening hours yet.",
+          "demo": "We moved the tables yesterday, but we have not chosen opening hours yet.",
+          "instruction": {
+            "en": "Compare a dated completed action with a task still unfinished now.",
+            "zh-TW": "比較有日期的完成事件與現在未完成的工作。",
+            "zh-CN": "比较有日期的完成事件与现在未完成的工作。",
+            "ja": "日時のある完了した行動と、今も未完了の仕事を比べます。",
+            "ko": "날짜가 있는 완료된 행동과 지금도 끝나지 않은 일을 비교해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們昨天搬了桌子，但還沒決定開放時間。",
+            "zh-CN": "我们昨天搬了桌子，但还没决定开放时间。",
+            "ja": "昨日机を運びましたが、開室時間はまだ決めていません。",
+            "ko": "어제 탁자를 옮겼지만 아직 개방 시간은 정하지 않았어요."
+          },
+          "visual": "sentence:We moved the tables yesterday, but we have not chosen opening hours yet.",
+          "target": "sentence:We moved the tables yesterday, but we have not chosen opening hours yet.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep02-s04",
+          "english": "I joined the team last term, and I have learned a lot since then.",
+          "demo": "I joined the team last term, and I have learned a lot since then.",
+          "instruction": {
+            "en": "Read the starting event first, then the learning that connects it to now.",
+            "zh-TW": "先讀起始事件，再讀延續至今的學習收穫。",
+            "zh-CN": "先读起始事件，再读延续至今的学习收获。",
+            "ja": "最初の出来事から、今につながる学びへと読んでいきます。",
+            "ko": "시작 사건을 먼저 읽고, 현재로 이어지는 배움을 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我上學期加入團隊，從那時起已學到很多。",
+            "zh-CN": "我上学期加入团队，从那时起已学到很多。",
+            "ja": "前の学期にチームに入り、それ以来多くのことを学んできました。",
+            "ko": "지난 학기에 팀에 들어왔고, 그 이후 많은 것을 배웠어요."
+          },
+          "visual": "sentence:I joined the team last term, and I have learned a lot since then.",
+          "target": "sentence:I joined the team last term, and I have learned a lot since then.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep02-s05",
+          "english": "Listen and choose.",
+          "demo": "Since then, the school has provided a room for our project.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "從那時起，學校已為我們的專題提供一間教室。",
+            "zh-CN": "从那时起，学校已为我们的项目提供一间教室。",
+            "ja": "それ以来、学校は私たちの活動に部屋を用意してくれました。",
+            "ko": "그 이후 학교에서 우리 프로젝트에 사용할 방을 마련해 주었어요."
+          },
+          "visual": "sentence:Since then, the school has provided a room for our project.",
+          "target": "sentence:Since then, the school has provided a room for our project.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Our team interviewed students in May and presented its first plan in June.",
+            "sentence:Since then, the school has provided a room for our project.",
+            "sentence:Last term explains when we started; since then connects our progress to today."
+          ]
+        },
+        {
+          "id": "ep02-s06",
+          "english": "Amy wrote the first notice in June. She has revised it twice since then.",
+          "demo": "Amy wrote the first notice in June. She has revised it twice since then.",
+          "instruction": {
+            "en": "The first sentence dates the draft; the second summarizes later progress.",
+            "zh-TW": "首句交代初稿時間；次句總結後續進展。",
+            "zh-CN": "首句交代初稿时间；次句总结后续进展。",
+            "ja": "最初の文は草稿の時を示し、次の文はその後の進展をまとめます。",
+            "ko": "첫 문장은 초안의 시점을, 둘째 문장은 이후의 진전을 요약해요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 六月寫了第一版公告。從那時起她已修改兩次。",
+            "zh-CN": "Amy 六月写了第一版公告。从那时起她已修改两次。",
+            "ja": "エイミーは6月に最初のお知らせを書き、それ以来2回修正しています。",
+            "ko": "에이미는 6월에 첫 공지를 썼어요. 그 이후 두 번 수정했어요."
+          },
+          "visual": "sentence:Amy wrote the first notice in June. She has revised it twice since then.",
+          "target": "sentence:Amy wrote the first notice in June. She has revised it twice since then.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep02-s07",
+          "english": "Listen and choose.",
+          "demo": "Amy wrote the first notice in June. She has revised it twice since then.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 六月寫了第一版公告。從那時起她已修改兩次。",
+            "zh-CN": "Amy 六月写了第一版公告。从那时起她已修改两次。",
+            "ja": "エイミーは6月に最初のお知らせを書き、それ以来2回修正しています。",
+            "ko": "에이미는 6월에 첫 공지를 썼어요. 그 이후 두 번 수정했어요."
+          },
+          "visual": "sentence:Amy wrote the first notice in June. She has revised it twice since then.",
+          "target": "sentence:Amy wrote the first notice in June. She has revised it twice since then.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Our team interviewed students in May and presented its first plan in June.",
+            "sentence:Last term explains when we started; since then connects our progress to today.",
+            "sentence:Amy wrote the first notice in June. She has revised it twice since then."
+          ]
+        },
+        {
+          "id": "ep02-s08",
+          "english": "We have prepared the room, but we still need to test the schedule.",
+          "demo": "We have prepared the room, but we still need to test the schedule.",
+          "instruction": {
+            "en": "Read the contrast; completed preparation does not mean every project task is finished.",
+            "zh-TW": "注意對比：準備完成不代表所有工作都結束。",
+            "zh-CN": "注意对比：准备完成不代表所有工作都结束。",
+            "ja": "対比を読み取ります。準備完了は、すべての作業の完了とは限りません。",
+            "ko": "대조를 읽어요. 준비 완료가 모든 작업의 완료를 뜻하지는 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們已備妥教室，但仍需測試時程。",
+            "zh-CN": "我们已准备好教室，但仍需测试时间安排。",
+            "ja": "部屋の準備はできましたが、時間割を試す必要があります。",
+            "ko": "방은 준비했지만 일정이 적절한지 아직 시험해 봐야 해요."
+          },
+          "visual": "sentence:We have prepared the room, but we still need to test the schedule.",
+          "target": "sentence:We have prepared the room, but we still need to test the schedule.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep02-s09",
+          "english": "Listen and choose.",
+          "demo": "We have prepared the room, but we still need to test the schedule.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們已備妥教室，但仍需測試時程。",
+            "zh-CN": "我们已准备好教室，但仍需测试时间安排。",
+            "ja": "部屋の準備はできましたが、時間割を試す必要があります。",
+            "ko": "방은 준비했지만 일정이 적절한지 아직 시험해 봐야 해요."
+          },
+          "visual": "sentence:We have prepared the room, but we still need to test the schedule.",
+          "target": "sentence:We have prepared the room, but we still need to test the schedule.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:We have prepared the room, but we still need to test the schedule.",
+            "sentence:Our team interviewed students in May and presented its first plan in June.",
+            "sentence:Last term explains when we started; since then connects our progress to today."
+          ]
+        },
+        {
+          "id": "ep02-s10",
+          "english": "Last term explains when we started; since then connects our progress to today.",
+          "demo": "Last term explains when we started; since then connects our progress to today.",
+          "instruction": {
+            "en": "Choose the tense from the timeline and the point your sentence makes.",
+            "zh-TW": "依時間線與句子要表達的重點選時態。",
+            "zh-CN": "依时间线与句子要表达的重点选时态。",
+            "ja": "時間の流れと文で伝えたい点に合わせて時制を選びます。",
+            "ko": "시간 흐름과 문장이 전하려는 요점에 따라 시제를 골라요."
+          },
+          "demo_translation": {
+            "zh-TW": "上學期說明起始時間；從那時起把進展連到今天。",
+            "zh-CN": "上学期说明起始时间；从那时起把进展连到今天。",
+            "ja": "last term は開始時を示し、since then は進展を今日につなげます。",
+            "ko": "last term은 시작 시점을, since then은 오늘까지의 진전을 나타내요."
+          },
+          "visual": "sentence:Last term explains when we started; since then connects our progress to today.",
+          "target": "sentence:Last term explains when we started; since then connects our progress to today.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        }
+      ]
+    },
+    {
+      "id": "ep03",
+      "number": 3,
+      "season": 1,
+      "grade": 10,
+      "title_en": "How Long an Activity Continues",
+      "title_zh_TW": "活動持續了多久",
+      "titles": {
+        "zh-TW": "活動持續了多久",
+        "zh-CN": "活动持续了多久",
+        "ja": "活動が続いている時間",
+        "ko": "활동이 얼마나 계속되는지"
+      },
+      "topic": "present-perfect-continuous",
+      "objectives_zh_TW": [
+        "用 have 或 has been 加 ing 描述持續至今的活動。",
+        "以 for、since 交代期間或起點，辨認最近活動的當下跡象。",
+        "比較活動歷程與已完成成果，避免把進行式等同完成。"
+      ],
+      "parent_tip_zh_TW": "問自己句子強調「做了多久」還是「完成多少」；持續練習不代表已完成一場演出。",
+      "practice": {
+        "prompt_en": "Write a 60-90-word update about a fictional student learning a skill. Explain the duration, current evidence, and a result that is not yet complete.",
+        "prompt_zh_TW": "用六十至九十詞介紹虛構學生學習技能的近況，說明持續時間、現在可觀察的跡象及尚未完成的成果。",
+        "sample_answer_en": "Sam has been practicing the guitar for three months. Since the start of the term, he has been meeting a friend after school to work on difficult changes between notes. His fingers are sore today because he has been practicing a new song. He can now play its opening smoothly, but he has not learned the whole piece yet. He plans to record another practice session and listen for places that need attention.",
+        "reading_en": "For the past two weeks, Amy has been preparing a short talk for the science club. She has been practicing in an empty classroom since Monday because the library is busy. Today her voice sounds tired, and several pages of notes are spread across a desk. She has been rehearsing the opening, but she has not decided how to explain the final experiment. Her partner suggests another picture instead of another paragraph. Amy stops practicing to draw it. Although she is no longer speaking at this moment, the tired voice and notes still show evidence of her recent work. The talk itself is not finished.",
+        "questions": [
+          {
+            "prompt_en": "How long has Amy been preparing her talk?",
+            "answer_en": "For the past two weeks."
+          },
+          {
+            "prompt_en": "Why does her tired voice support the description of recent activity?",
+            "answer_en": "The passage says she has been rehearsing, which explains the tired voice even after she stops."
+          },
+          {
+            "prompt_en": "Does has been preparing prove that the talk is complete? Explain.",
+            "answer_en": "No. It emphasizes the activity, and the text says she has not decided how to explain the final experiment."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep03-s01",
+          "english": "Amy has been preparing a science talk for the past two weeks.",
+          "demo": "Amy has been preparing a science talk for the past two weeks.",
+          "instruction": {
+            "en": "Has been preparing emphasizes an activity continuing across a period up to now.",
+            "zh-TW": "has been preparing 強調持續至今的活動。",
+            "zh-CN": "has been preparing 强调持续至今的活动。",
+            "ja": "has been preparing は今まで続く活動を強調します。",
+            "ko": "has been preparing은 지금까지 이어진 활동을 강조해요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 過去兩週一直在準備一場科學短講。",
+            "zh-CN": "Amy 过去两周一直在准备一场科学短讲。",
+            "ja": "エイミーはこの2週間、科学の発表を準備しています。",
+            "ko": "에이미는 지난 2주 동안 과학 발표를 준비해 오고 있어요."
+          },
+          "visual": "sentence:Amy has been preparing a science talk for the past two weeks.",
+          "target": "sentence:Amy has been preparing a science talk for the past two weeks.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep03-s02",
+          "english": "She has been practicing in an empty classroom since Monday.",
+          "demo": "She has been practicing in an empty classroom since Monday.",
+          "instruction": {
+            "en": "Since gives the starting point; for would introduce the length of time.",
+            "zh-TW": "since 引出起點；for 則引出持續期間。",
+            "zh-CN": "since 引出起点；for 则引出持续时间。",
+            "ja": "since は開始点を、for は続いている期間を示します。",
+            "ko": "since는 시작점을, for는 지속된 기간을 나타내요."
+          },
+          "demo_translation": {
+            "zh-TW": "她從星期一起一直在空教室練習。",
+            "zh-CN": "她从星期一起一直在空教室练习。",
+            "ja": "彼女は月曜から空き教室で練習を続けています。",
+            "ko": "에이미는 월요일부터 빈 교실에서 계속 연습해 오고 있어요."
+          },
+          "visual": "sentence:She has been practicing in an empty classroom since Monday.",
+          "target": "sentence:She has been practicing in an empty classroom since Monday.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep03-s03",
+          "english": "Her voice is tired because she has been rehearsing the opening.",
+          "demo": "Her voice is tired because she has been rehearsing the opening.",
+          "instruction": {
+            "en": "Recent activity can explain present evidence even when the person has just stopped.",
+            "zh-TW": "最近的活動即使剛停止，也能解釋當下跡象。",
+            "zh-CN": "最近的活动即使刚停止，也能解释当下迹象。",
+            "ja": "活動が終わった直後でも、最近の活動で今の様子を説明できます。",
+            "ko": "막 멈춘 활동도 현재의 흔적을 설명할 수 있어요."
+          },
+          "demo_translation": {
+            "zh-TW": "她聲音疲啞，因為她一直在排練開場。",
+            "zh-CN": "她声音疲哑，因为她一直在排练开场。",
+            "ja": "冒頭を繰り返し練習していたので、声が疲れています。",
+            "ko": "도입 부분을 계속 연습해서 목소리에 피로가 느껴져요."
+          },
+          "visual": "sentence:Her voice is tired because she has been rehearsing the opening.",
+          "target": "sentence:Her voice is tired because she has been rehearsing the opening.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep03-s04",
+          "english": "We have been working on the slides, but we have not finished them.",
+          "demo": "We have been working on the slides, but we have not finished them.",
+          "instruction": {
+            "en": "Read the contrast between time spent working and an unfinished result.",
+            "zh-TW": "讀出持續投入活動與成果未完成的對比。",
+            "zh-CN": "读出持续投入活动与成果未完成的对比。",
+            "ja": "作業を続けてきたことと、成果が未完成であることの対比を読みます。",
+            "ko": "계속 작업한 시간과 아직 끝나지 않은 결과의 대조를 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們一直在製作投影片，但還沒完成。",
+            "zh-CN": "我们一直在制作幻灯片，但还没完成。",
+            "ja": "スライドを作り続けていますが、まだ完成していません。",
+            "ko": "우리는 슬라이드를 계속 만들고 있지만 아직 완성하지 못했어요."
+          },
+          "visual": "sentence:We have been working on the slides, but we have not finished them.",
+          "target": "sentence:We have been working on the slides, but we have not finished them.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep03-s05",
+          "english": "Listen and choose.",
+          "demo": "She has been practicing in an empty classroom since Monday.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "她從星期一起一直在空教室練習。",
+            "zh-CN": "她从星期一起一直在空教室练习。",
+            "ja": "彼女は月曜から空き教室で練習を続けています。",
+            "ko": "에이미는 월요일부터 빈 교실에서 계속 연습해 오고 있어요."
+          },
+          "visual": "sentence:She has been practicing in an empty classroom since Monday.",
+          "target": "sentence:She has been practicing in an empty classroom since Monday.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Amy has been preparing a science talk for the past two weeks.",
+            "sentence:She has been rehearsing, so her tired voice makes sense now.",
+            "sentence:She has been practicing in an empty classroom since Monday."
+          ]
+        },
+        {
+          "id": "ep03-s06",
+          "english": "Sam has designed three slides. Amy has been checking the labels all morning.",
+          "demo": "Sam has designed three slides. Amy has been checking the labels all morning.",
+          "instruction": {
+            "en": "Compare the number of completed slides with the duration of checking.",
+            "zh-TW": "比較已完成投影片的數量與核對持續的時間。",
+            "zh-CN": "比较已完成幻灯片的数量与核对持续的时间。",
+            "ja": "完成したスライドの枚数と、確認を続けている時間を比べます。",
+            "ko": "완성한 슬라이드의 수와 확인 작업의 지속 시간을 비교해요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 已設計三張投影片。Amy 整個早上一直在核對標籤。",
+            "zh-CN": "Sam 已设计三张幻灯片。Amy 整个上午一直在核对标签。",
+            "ja": "サムはスライドを3枚作りました。エイミーは午前中ずっと説明を確認しています。",
+            "ko": "샘은 슬라이드 세 장을 만들었어요. 에이미는 오전 내내 설명 표시를 확인하고 있어요."
+          },
+          "visual": "sentence:Sam has designed three slides. Amy has been checking the labels all morning.",
+          "target": "sentence:Sam has designed three slides. Amy has been checking the labels all morning.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep03-s07",
+          "english": "Listen and choose.",
+          "demo": "Sam has designed three slides. Amy has been checking the labels all morning.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 已設計三張投影片。Amy 整個早上一直在核對標籤。",
+            "zh-CN": "Sam 已设计三张幻灯片。Amy 整个上午一直在核对标签。",
+            "ja": "サムはスライドを3枚作りました。エイミーは午前中ずっと説明を確認しています。",
+            "ko": "샘은 슬라이드 세 장을 만들었어요. 에이미는 오전 내내 설명 표시를 확인하고 있어요."
+          },
+          "visual": "sentence:Sam has designed three slides. Amy has been checking the labels all morning.",
+          "target": "sentence:Sam has designed three slides. Amy has been checking the labels all morning.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Sam has designed three slides. Amy has been checking the labels all morning.",
+            "sentence:Amy has been preparing a science talk for the past two weeks.",
+            "sentence:She has been rehearsing, so her tired voice makes sense now."
+          ]
+        },
+        {
+          "id": "ep03-s08",
+          "english": "How long have you been preparing? I have been preparing for two weeks.",
+          "demo": "How long have you been preparing? I have been preparing for two weeks.",
+          "instruction": {
+            "en": "Read the question as asking about the activity's duration, not its completion.",
+            "zh-TW": "把問句讀成詢問活動時長，而非是否完成。",
+            "zh-CN": "把问句读成询问活动时长，而非是否完成。",
+            "ja": "活動が終わったかではなく、続いている時間を尋ねる質問として読みます。",
+            "ko": "활동의 완료 여부가 아니라 지속 시간을 묻는 질문으로 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "你準備多久了？我已持續準備兩週。",
+            "zh-CN": "你准备多久了？我已持续准备两周。",
+            "ja": "どのくらい準備を続けていますか。2週間です。",
+            "ko": "얼마나 오래 준비해 왔니? 2주 동안 준비해 왔어."
+          },
+          "visual": "sentence:How long have you been preparing? I have been preparing for two weeks.",
+          "target": "sentence:How long have you been preparing? I have been preparing for two weeks.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep03-s09",
+          "english": "Listen and choose.",
+          "demo": "How long have you been preparing? I have been preparing for two weeks.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "你準備多久了？我已持續準備兩週。",
+            "zh-CN": "你准备多久了？我已持续准备两周。",
+            "ja": "どのくらい準備を続けていますか。2週間です。",
+            "ko": "얼마나 오래 준비해 왔니? 2주 동안 준비해 왔어."
+          },
+          "visual": "sentence:How long have you been preparing? I have been preparing for two weeks.",
+          "target": "sentence:How long have you been preparing? I have been preparing for two weeks.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Amy has been preparing a science talk for the past two weeks.",
+            "sentence:How long have you been preparing? I have been preparing for two weeks.",
+            "sentence:She has been rehearsing, so her tired voice makes sense now."
+          ]
+        },
+        {
+          "id": "ep03-s10",
+          "english": "She has been rehearsing, so her tired voice makes sense now.",
+          "demo": "She has been rehearsing, so her tired voice makes sense now.",
+          "instruction": {
+            "en": "Connect the activity to its duration or present evidence when explaining this tense.",
+            "zh-TW": "說明此時態時，連結活動時長或當下跡象。",
+            "zh-CN": "说明此时态时，连接活动时长或当下迹象。",
+            "ja": "この時制は、活動の長さや今見られる様子と結び付けて説明します。",
+            "ko": "이 시제를 설명할 때 활동의 지속 시간이나 현재의 흔적과 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "她一直在排練，所以現在聲音疲啞有其原因。",
+            "zh-CN": "她一直在排练，所以现在声音疲哑有其原因。",
+            "ja": "練習を続けていたので、今声が疲れているのも納得できます。",
+            "ko": "계속 연습했으므로 지금 목소리가 지친 이유를 알 수 있어요."
+          },
+          "visual": "sentence:She has been rehearsing, so her tired voice makes sense now.",
+          "target": "sentence:She has been rehearsing, so her tired voice makes sense now.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        }
+      ]
+    },
+    {
+      "id": "ep04",
+      "number": 4,
+      "season": 1,
+      "grade": 10,
+      "title_en": "Events before Other Events",
+      "title_zh_TW": "釐清事件先後",
+      "titles": {
+        "zh-TW": "釐清事件先後",
+        "zh-CN": "理清事件先后",
+        "ja": "過去の出来事の前後関係",
+        "ko": "과거 사건의 앞뒤 관계"
+      },
+      "topic": "past-perfect-narrative-order",
+      "objectives_zh_TW": [
+        "用 had 加過去分詞指出早於另一過去事件的動作。",
+        "從敘述順序重建實際事件順序。",
+        "有需要時用過去完成式澄清原因，不把每個過去動作都改成完成式。"
+      ],
+      "parent_tip_zh_TW": "畫出兩個過去時間點，先發生的事才可能需要 had；若 before 已清楚交代順序，先判斷是否仍需強調。",
+      "practice": {
+        "prompt_en": "Write a 60-90-word account of a fictional school event. Begin with a past problem, explain an earlier action using the past perfect, and describe the outcome.",
+        "prompt_zh_TW": "用六十至九十詞敘述虛構校園事件，先寫過去發生的問題，再用過去完成式交代更早的行動，最後說明結果。",
+        "sample_answer_en": "When the drama team arrived, the classroom door was locked. Sam checked his bag, but the key was missing. He had lent it to Amy that morning because she needed to collect some costumes. Fortunately, Amy had left the key with the school office before lunch. Sam went there and collected it. The team started rehearsal a little late, but the earlier arrangement prevented a much longer delay.",
+        "reading_en": "When Sam opened the presentation file at two, several pictures were missing. He thought the team would need to rebuild the whole slideshow. Amy, however, had saved a complete copy on another computer before lunch. She had noticed a problem with the classroom computer that morning and had decided to make a backup. The team copied her file and tested it. By three, the pictures were working again. In his report, Sam described the missing pictures first because that was the problem he had seen. He then explained Amy's earlier actions. The order of his report was different from the order in which the events had happened.",
+        "questions": [
+          {
+            "prompt_en": "What allowed the team to recover the missing pictures?",
+            "answer_en": "Amy had saved a complete copy on another computer."
+          },
+          {
+            "prompt_en": "Why did Amy make a backup?",
+            "answer_en": "She had noticed a problem with the classroom computer that morning."
+          },
+          {
+            "prompt_en": "Did Sam's report begin with the earliest event? Explain using the timeline.",
+            "answer_en": "No. It began with the missing pictures at two, although Amy had noticed the problem and saved a copy earlier."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep04-s01",
+          "english": "When Sam opened the file at two, several pictures were missing.",
+          "demo": "When Sam opened the file at two, several pictures were missing.",
+          "instruction": {
+            "en": "Establish the later past moment before explaining what happened earlier.",
+            "zh-TW": "先建立較晚的過去時點，再交代更早事件。",
+            "zh-CN": "先建立较晚的过去时点，再交代更早事件。",
+            "ja": "後の過去の時点を示してから、それ以前の出来事を説明します。",
+            "ko": "나중의 과거 시점을 먼저 제시한 뒤 더 이른 일을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 兩點打開檔案時，幾張圖片不見了。",
+            "zh-CN": "Sam 两点打开文件时，几张图片不见了。",
+            "ja": "サムが2時にファイルを開くと、いくつかの画像がなくなっていました。",
+            "ko": "샘이 두 시에 파일을 열었을 때 몇몇 사진이 없어져 있었어요."
+          },
+          "visual": "sentence:When Sam opened the file at two, several pictures were missing.",
+          "target": "sentence:When Sam opened the file at two, several pictures were missing.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep04-s02",
+          "english": "Amy had saved a complete copy before Sam opened the damaged file.",
+          "demo": "Amy had saved a complete copy before Sam opened the damaged file.",
+          "instruction": {
+            "en": "Had saved places the backup earlier than Sam's action in the past.",
+            "zh-TW": "had saved 表示備份早於 Sam 的過去動作。",
+            "zh-CN": "had saved 表示备份早于 Sam 的过去动作。",
+            "ja": "had saved は、保存がサムの過去の行動より前だと示します。",
+            "ko": "had saved는 저장이 샘의 과거 행동보다 먼저였음을 나타내요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 打開損壞的檔案前，Amy 已儲存完整副本。",
+            "zh-CN": "Sam 打开损坏的文件前，Amy 已保存完整副本。",
+            "ja": "サムが壊れたファイルを開く前に、エイミーは完全なコピーを保存していました。",
+            "ko": "샘이 손상된 파일을 열기 전에 에이미는 완전한 복사본을 저장해 두었어요."
+          },
+          "visual": "sentence:Amy had saved a complete copy before Sam opened the damaged file.",
+          "target": "sentence:Amy had saved a complete copy before Sam opened the damaged file.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep04-s03",
+          "english": "She had noticed a computer problem that morning, so she made a backup.",
+          "demo": "She had noticed a computer problem that morning, so she made a backup.",
+          "instruction": {
+            "en": "The earlier observation explains the later decision to make a backup.",
+            "zh-TW": "較早的觀察說明了後來備份的決定。",
+            "zh-CN": "较早的观察说明了后来备份的决定。",
+            "ja": "先に気付いたことが、後で保存すると決めた理由を説明します。",
+            "ko": "먼저 알아차린 문제가 나중에 백업하기로 한 결정을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "她那天早上已注意到電腦問題，所以做了備份。",
+            "zh-CN": "她那天早上已注意到电脑问题，所以做了备份。",
+            "ja": "その朝にコンピューターの不具合に気付いていたので、バックアップを作りました。",
+            "ko": "그날 아침 컴퓨터 문제를 알아차렸기 때문에 백업을 만들었어요."
+          },
+          "visual": "sentence:She had noticed a computer problem that morning, so she made a backup.",
+          "target": "sentence:She had noticed a computer problem that morning, so she made a backup.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep04-s04",
+          "english": "Sam found a problem, but Amy had already prepared a useful solution.",
+          "demo": "Sam found a problem, but Amy had already prepared a useful solution.",
+          "instruction": {
+            "en": "Read backward along the timeline when you reach had already prepared.",
+            "zh-TW": "讀到 had already prepared 時回看較早時間點。",
+            "zh-CN": "读到 had already prepared 时回看较早时间点。",
+            "ja": "had already prepared に来たら、時間の流れをさかのぼって読みます。",
+            "ko": "had already prepared에서 시간 흐름을 거슬러 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 發現問題時，Amy 早已準備好有用的解決方法。",
+            "zh-CN": "Sam 发现问题时，Amy 早已准备好有用的解决办法。",
+            "ja": "サムが問題を見つけましたが、エイミーはすでに役立つ対策を用意していました。",
+            "ko": "샘이 문제를 발견했지만 에이미는 이미 도움이 될 해결책을 준비해 두었어요."
+          },
+          "visual": "sentence:Sam found a problem, but Amy had already prepared a useful solution.",
+          "target": "sentence:Sam found a problem, but Amy had already prepared a useful solution.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep04-s05",
+          "english": "Listen and choose.",
+          "demo": "Amy had saved a complete copy before Sam opened the damaged file.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 打開損壞的檔案前，Amy 已儲存完整副本。",
+            "zh-CN": "Sam 打开损坏的文件前，Amy 已保存完整副本。",
+            "ja": "サムが壊れたファイルを開く前に、エイミーは完全なコピーを保存していました。",
+            "ko": "샘이 손상된 파일을 열기 전에 에이미는 완전한 복사본을 저장해 두었어요."
+          },
+          "visual": "sentence:Amy had saved a complete copy before Sam opened the damaged file.",
+          "target": "sentence:Amy had saved a complete copy before Sam opened the damaged file.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Amy had saved a complete copy before Sam opened the damaged file.",
+            "sentence:When Sam opened the file at two, several pictures were missing.",
+            "sentence:Amy had made a backup, so the team recovered the file quickly."
+          ]
+        },
+        {
+          "id": "ep04-s06",
+          "english": "After Amy found her copy, the team tested it and continued preparing.",
+          "demo": "After Amy found her copy, the team tested it and continued preparing.",
+          "instruction": {
+            "en": "After already makes the sequence clear; these past simple verbs move the story forward.",
+            "zh-TW": "after 已說明先後；過去簡單式推進故事。",
+            "zh-CN": "after 已说明先后；一般过去时推进故事。",
+            "ja": "after が順序を示すので、この過去形は話を先へ進めます。",
+            "ko": "after가 순서를 밝혀 주므로 이 과거형들은 이야기를 앞으로 진행해요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 找到副本後，團隊測試檔案並繼續準備。",
+            "zh-CN": "Amy 找到副本后，团队测试文件并继续准备。",
+            "ja": "エイミーがコピーを見つけた後、チームは確認して準備を続けました。",
+            "ko": "에이미가 복사본을 찾은 뒤 팀은 그것을 시험하고 준비를 계속했어요."
+          },
+          "visual": "sentence:After Amy found her copy, the team tested it and continued preparing.",
+          "target": "sentence:After Amy found her copy, the team tested it and continued preparing.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep04-s07",
+          "english": "Listen and choose.",
+          "demo": "After Amy found her copy, the team tested it and continued preparing.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 找到副本後，團隊測試檔案並繼續準備。",
+            "zh-CN": "Amy 找到副本后，团队测试文件并继续准备。",
+            "ja": "エイミーがコピーを見つけた後、チームは確認して準備を続けました。",
+            "ko": "에이미가 복사본을 찾은 뒤 팀은 그것을 시험하고 준비를 계속했어요."
+          },
+          "visual": "sentence:After Amy found her copy, the team tested it and continued preparing.",
+          "target": "sentence:After Amy found her copy, the team tested it and continued preparing.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:When Sam opened the file at two, several pictures were missing.",
+            "sentence:After Amy found her copy, the team tested it and continued preparing.",
+            "sentence:Amy had made a backup, so the team recovered the file quickly."
+          ]
+        },
+        {
+          "id": "ep04-s08",
+          "english": "The report begins with the missing pictures, although the backup happened earlier.",
+          "demo": "The report begins with the missing pictures, although the backup happened earlier.",
+          "instruction": {
+            "en": "Distinguish the order of telling from the order in which events actually happened.",
+            "zh-TW": "區分敘述順序和事件實際發生順序。",
+            "zh-CN": "区分叙述顺序和事件实际发生顺序。",
+            "ja": "語られる順番と、出来事が実際に起きた順番を区別して読みます。",
+            "ko": "서술 순서와 사건이 실제로 일어난 순서를 구분해 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "報告從圖片遺失談起，雖然備份發生得更早。",
+            "zh-CN": "报告从图片丢失谈起，虽然备份发生得更早。",
+            "ja": "報告は画像の紛失から始まりますが、保存はそれより前の出来事です。",
+            "ko": "보고서는 사진이 사라진 일로 시작하지만 백업은 더 전에 이루어졌어요."
+          },
+          "visual": "sentence:The report begins with the missing pictures, although the backup happened earlier.",
+          "target": "sentence:The report begins with the missing pictures, although the backup happened earlier.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep04-s09",
+          "english": "Listen and choose.",
+          "demo": "The report begins with the missing pictures, although the backup happened earlier.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "報告從圖片遺失談起，雖然備份發生得更早。",
+            "zh-CN": "报告从图片丢失谈起，虽然备份发生得更早。",
+            "ja": "報告は画像の紛失から始まりますが、保存はそれより前の出来事です。",
+            "ko": "보고서는 사진이 사라진 일로 시작하지만 백업은 더 전에 이루어졌어요."
+          },
+          "visual": "sentence:The report begins with the missing pictures, although the backup happened earlier.",
+          "target": "sentence:The report begins with the missing pictures, although the backup happened earlier.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:When Sam opened the file at two, several pictures were missing.",
+            "sentence:Amy had made a backup, so the team recovered the file quickly.",
+            "sentence:The report begins with the missing pictures, although the backup happened earlier."
+          ]
+        },
+        {
+          "id": "ep04-s10",
+          "english": "Amy had made a backup, so the team recovered the file quickly.",
+          "demo": "Amy had made a backup, so the team recovered the file quickly.",
+          "instruction": {
+            "en": "Use the past perfect when looking back helps clarify sequence or a cause.",
+            "zh-TW": "回顧有助釐清順序或原因時，使用過去完成式。",
+            "zh-CN": "回顾有助理清顺序或原因时，使用过去完成时。",
+            "ja": "振り返ることで順序や原因が明確になる場合に、過去完了を使います。",
+            "ko": "뒤돌아보면 순서나 원인이 분명해질 때 과거완료를 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 已先做好備份，所以團隊迅速復原檔案。",
+            "zh-CN": "Amy 已先做好备份，所以团队迅速恢复文件。",
+            "ja": "エイミーが保存しておいたので、チームはすぐにファイルを復元できました。",
+            "ko": "에이미가 백업해 두었으므로 팀은 파일을 빠르게 복구했어요."
+          },
+          "visual": "sentence:Amy had made a backup, so the team recovered the file quickly.",
+          "target": "sentence:Amy had made a backup, so the team recovered the file quickly.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        }
+      ]
+    },
+    {
+      "id": "ep05",
+      "number": 5,
+      "season": 1,
+      "grade": 10,
+      "title_en": "A Future Time Line",
+      "title_zh_TW": "未來時間線",
+      "titles": {
+        "zh-TW": "未來時間線",
+        "zh-CN": "未来时间线",
+        "ja": "未来の時間の流れ",
+        "ko": "미래의 시간 흐름"
+      },
+      "topic": "future-continuous-versus-future-perfect",
+      "objectives_zh_TW": [
+        "用 will be 加 ing 說明未來某時正在進行的活動。",
+        "用 will have 加過去分詞說明期限前預計完成的成果。",
+        "根據具體時程判斷進行與完成，寫清楚計畫及限制。"
+      ],
+      "parent_tip_zh_TW": "在時間線上標出 at four 和 by five；前者觀察當時活動，後者檢查是否已達完成點。",
+      "practice": {
+        "prompt_en": "Write a 60-90-word plan for a fictional group project. State an activity in progress at a future time, a result completed by a deadline, and one condition that could affect the plan.",
+        "prompt_zh_TW": "用六十至九十詞說明虛構小組專題計畫，包含未來某時正在進行的活動、期限前預計完成的成果及一項可能影響計畫的條件。",
+        "sample_answer_en": "Our group is preparing a short film for Friday. At three tomorrow, Amy will be checking the sound while Sam reviews the final scene. By five, we will have finished the edited version. We plan to test it in the classroom before sending it to our teacher. This schedule depends on the school computer being available. If another group needs it, we may need to move the sound check to a different room.",
+        "reading_en": "The media club is preparing a film for the school exhibition. According to its plan, the members will be editing the final scene at four on Thursday. By five, they will have completed the film and saved two copies. They will then test the film in the exhibition room. Sam warns that finishing the file does not guarantee that the room's speakers will work. The team therefore allows an extra hour for the test. At six, they expect to be ready to leave. Their plan describes intended progress, not a promise that no problems can occur. If the equipment fails, they will review the schedule.",
+        "questions": [
+          {
+            "prompt_en": "What will the members be doing at four on Thursday?",
+            "answer_en": "They will be editing the final scene."
+          },
+          {
+            "prompt_en": "Why has the team allowed an extra hour after completing the film?",
+            "answer_en": "They need to test the film because finishing the file does not guarantee that the speakers work."
+          },
+          {
+            "prompt_en": "Does by five mean editing begins at five? Explain.",
+            "answer_en": "No. Will have completed means the film is expected to be finished by that deadline."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep05-s01",
+          "english": "At four tomorrow, our team will be editing the final scene.",
+          "demo": "At four tomorrow, our team will be editing the final scene.",
+          "instruction": {
+            "en": "Will be editing views the activity in progress at that future moment.",
+            "zh-TW": "will be editing 描述未來那時進行的活動。",
+            "zh-CN": "will be editing 描述未来那时进行的活动。",
+            "ja": "will be editing は、未来のその時点で進行中の活動を表します。",
+            "ko": "will be editing은 미래의 그 시점에 진행 중인 활동을 나타내요."
+          },
+          "demo_translation": {
+            "zh-TW": "明天四點，我們團隊將正在剪輯最後一幕。",
+            "zh-CN": "明天四点，我们团队将正在剪辑最后一幕。",
+            "ja": "明日の4時には、チームは最後の場面を編集中の予定です。",
+            "ko": "내일 네 시에는 우리 팀이 마지막 장면을 편집하고 있을 거예요."
+          },
+          "visual": "sentence:At four tomorrow, our team will be editing the final scene.",
+          "target": "sentence:At four tomorrow, our team will be editing the final scene.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep05-s02",
+          "english": "By five tomorrow, we will have completed the film and saved two copies.",
+          "demo": "By five tomorrow, we will have completed the film and saved two copies.",
+          "instruction": {
+            "en": "Will have completed looks back from the deadline at an expected finished result.",
+            "zh-TW": "will have completed 從期限看預計完成的成果。",
+            "zh-CN": "will have completed 从期限看预计完成的成果。",
+            "ja": "will have completed は、期限から振り返り、完了予定の成果を見ます。",
+            "ko": "will have completed는 기한에서 돌아본 예상 완료 결과를 나타내요."
+          },
+          "demo_translation": {
+            "zh-TW": "到明天五點，我們將已完成影片並儲存兩份副本。",
+            "zh-CN": "到明天五点，我们将已完成影片并保存两份副本。",
+            "ja": "明日の5時までには、映画を完成させて二つのコピーを保存している予定です。",
+            "ko": "내일 다섯 시까지는 영상을 완성하고 복사본 두 개를 저장했을 거예요."
+          },
+          "visual": "sentence:By five tomorrow, we will have completed the film and saved two copies.",
+          "target": "sentence:By five tomorrow, we will have completed the film and saved two copies.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep05-s03",
+          "english": "At five, we will be testing the film in the exhibition room.",
+          "demo": "At five, we will be testing the film in the exhibition room.",
+          "instruction": {
+            "en": "At five locates an ongoing test; it does not say the test is finished.",
+            "zh-TW": "at five 標示測試進行的時點，不表示已完成。",
+            "zh-CN": "at five 标示测试进行的时点，不表示已完成。",
+            "ja": "at five は確認作業の時点を示し、その完了を意味しません。",
+            "ko": "at five는 시험이 진행되는 시점이며 완료를 뜻하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "五點時，我們將正在展覽室測試影片。",
+            "zh-CN": "五点时，我们将正在展览室测试影片。",
+            "ja": "5時には、展示室で映画を試している予定です。",
+            "ko": "다섯 시에는 전시실에서 영상을 시험하고 있을 거예요."
+          },
+          "visual": "sentence:At five, we will be testing the film in the exhibition room.",
+          "target": "sentence:At five, we will be testing the film in the exhibition room.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep05-s04",
+          "english": "By six, we will have checked both the picture and the sound.",
+          "demo": "By six, we will have checked both the picture and the sound.",
+          "instruction": {
+            "en": "Read by six as the latest expected completion time for these checks.",
+            "zh-TW": "把 by six 理解為這些檢查預計最晚完成時間。",
+            "zh-CN": "把 by six 理解为这些检查预计最晚完成时间。",
+            "ja": "by six は、確認が遅くとも終わる予定の時刻として読みます。",
+            "ko": "by six를 확인 작업이 늦어도 완료될 것으로 예상하는 시각으로 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "到六點，我們將已檢查畫面和聲音。",
+            "zh-CN": "到六点，我们将已检查画面和声音。",
+            "ja": "6時までには、映像と音の両方を確認し終えている予定です。",
+            "ko": "여섯 시까지는 화면과 소리를 모두 확인했을 거예요."
+          },
+          "visual": "sentence:By six, we will have checked both the picture and the sound.",
+          "target": "sentence:By six, we will have checked both the picture and the sound.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep05-s05",
+          "english": "Listen and choose.",
+          "demo": "By five tomorrow, we will have completed the film and saved two copies.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "到明天五點，我們將已完成影片並儲存兩份副本。",
+            "zh-CN": "到明天五点，我们将已完成影片并保存两份副本。",
+            "ja": "明日の5時までには、映画を完成させて二つのコピーを保存している予定です。",
+            "ko": "내일 다섯 시까지는 영상을 완성하고 복사본 두 개를 저장했을 거예요."
+          },
+          "visual": "sentence:By five tomorrow, we will have completed the film and saved two copies.",
+          "target": "sentence:By five tomorrow, we will have completed the film and saved two copies.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:At four tomorrow, our team will be editing the final scene.",
+            "sentence:By five tomorrow, we will have completed the film and saved two copies.",
+            "sentence:These predictions describe our plan; an equipment problem could still change the schedule."
+          ]
+        },
+        {
+          "id": "ep05-s06",
+          "english": "We will have finished the file before we test the room's speakers.",
+          "demo": "We will have finished the file before we test the room's speakers.",
+          "instruction": {
+            "en": "Separate finishing the file from checking whether the equipment works.",
+            "zh-TW": "區分完成檔案與檢查設備是否能用。",
+            "zh-CN": "区分完成文件与检查设备是否能用。",
+            "ja": "ファイルの完成と、機器が使えるかどうかの確認を区別します。",
+            "ko": "파일 완성과 장비의 작동 확인을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "測試展覽室喇叭前，我們將已完成檔案。",
+            "zh-CN": "测试展览室扬声器前，我们将已完成文件。",
+            "ja": "部屋のスピーカーを試す前に、ファイルは完成している予定です。",
+            "ko": "전시실 스피커를 시험하기 전에 파일은 완성되어 있을 거예요."
+          },
+          "visual": "sentence:We will have finished the file before we test the room's speakers.",
+          "target": "sentence:We will have finished the file before we test the room's speakers.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep05-s07",
+          "english": "Listen and choose.",
+          "demo": "We will have finished the file before we test the room's speakers.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "測試展覽室喇叭前，我們將已完成檔案。",
+            "zh-CN": "测试展览室扬声器前，我们将已完成文件。",
+            "ja": "部屋のスピーカーを試す前に、ファイルは完成している予定です。",
+            "ko": "전시실 스피커를 시험하기 전에 파일은 완성되어 있을 거예요."
+          },
+          "visual": "sentence:We will have finished the file before we test the room's speakers.",
+          "target": "sentence:We will have finished the file before we test the room's speakers.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:At four tomorrow, our team will be editing the final scene.",
+            "sentence:These predictions describe our plan; an equipment problem could still change the schedule.",
+            "sentence:We will have finished the file before we test the room's speakers."
+          ]
+        },
+        {
+          "id": "ep05-s08",
+          "english": "At four, editing will be continuing; by five, it will have ended.",
+          "demo": "At four, editing will be continuing; by five, it will have ended.",
+          "instruction": {
+            "en": "Read both time markers and compare a process with its expected completion.",
+            "zh-TW": "讀出兩個時間標記，比較過程與預計完成點。",
+            "zh-CN": "读出两个时间标记，比较过程与预计完成点。",
+            "ja": "二つの時を示す表現を読み、進行中の過程と完了予定を比べます。",
+            "ko": "두 시간 표시를 읽고 진행 과정과 예상 완료 시점을 비교해요."
+          },
+          "demo_translation": {
+            "zh-TW": "四點時剪輯將仍在進行；到五點時將已結束。",
+            "zh-CN": "四点时剪辑将仍在进行；到五点时将已结束。",
+            "ja": "4時には編集が続いていて、5時までには終わっている予定です。",
+            "ko": "네 시에는 편집이 계속되고 있을 것이고 다섯 시까지는 끝났을 거예요."
+          },
+          "visual": "sentence:At four, editing will be continuing; by five, it will have ended.",
+          "target": "sentence:At four, editing will be continuing; by five, it will have ended.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep05-s09",
+          "english": "Listen and choose.",
+          "demo": "At four, editing will be continuing; by five, it will have ended.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "四點時剪輯將仍在進行；到五點時將已結束。",
+            "zh-CN": "四点时剪辑将仍在进行；到五点时将已结束。",
+            "ja": "4時には編集が続いていて、5時までには終わっている予定です。",
+            "ko": "네 시에는 편집이 계속되고 있을 것이고 다섯 시까지는 끝났을 거예요."
+          },
+          "visual": "sentence:At four, editing will be continuing; by five, it will have ended.",
+          "target": "sentence:At four, editing will be continuing; by five, it will have ended.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:At four, editing will be continuing; by five, it will have ended.",
+            "sentence:At four tomorrow, our team will be editing the final scene.",
+            "sentence:These predictions describe our plan; an equipment problem could still change the schedule."
+          ]
+        },
+        {
+          "id": "ep05-s10",
+          "english": "These predictions describe our plan; an equipment problem could still change the schedule.",
+          "demo": "These predictions describe our plan; an equipment problem could still change the schedule.",
+          "instruction": {
+            "en": "The tense expresses a future viewpoint without guaranteeing the plan's success.",
+            "zh-TW": "時態表達未來觀點，不保證計畫必定成功。",
+            "zh-CN": "时态表达未来视角，不保证计划必定成功。",
+            "ja": "時制は未来からの見方を示しますが、計画の成功を保証しません。",
+            "ko": "시제는 미래의 관점을 나타내지만 계획의 성공을 보장하지는 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "這些預測描述我們的計畫；設備問題仍可能改變時程。",
+            "zh-CN": "这些预测描述我们的计划；设备问题仍可能改变时间安排。",
+            "ja": "これらの予測は計画を示すもので、機器の問題で日程が変わる可能性はあります。",
+            "ko": "이 예상은 우리 계획을 나타내며 장비 문제로 일정이 바뀔 수 있어요."
+          },
+          "visual": "sentence:These predictions describe our plan; an equipment problem could still change the schedule.",
+          "target": "sentence:These predictions describe our plan; an equipment problem could still change the schedule.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        }
+      ]
+    },
+    {
+      "id": "ep06",
+      "number": 6,
+      "season": 1,
+      "grade": 10,
+      "title_en": "Describing Essential Information",
+      "title_zh_TW": "說明必要資訊",
+      "titles": {
+        "zh-TW": "說明必要資訊",
+        "zh-CN": "说明必要信息",
+        "ja": "必要な情報で対象を絞る",
+        "ko": "필수 정보로 대상 설명하기"
+      },
+      "topic": "defining-relative-subject-object",
+      "objectives_zh_TW": [
+        "用限定關係子句辨認所指的人或物。",
+        "比較關係詞作主詞與受詞時的句子角色。",
+        "在本課限定子句中適當省略受詞關係詞，保留主詞關係詞。"
+      ],
+      "parent_tip_zh_TW": "先讀關係詞後面：若已有 Amy 這類主詞，關係詞可能是受詞；不要只看到 who 或 that 就一律省略。",
+      "practice": {
+        "prompt_en": "Write a 60-90-word description of a fictional school team. Use a defining relative clause with a subject relative word and one with an object relative word. Explain why a particular person or resource is suitable.",
+        "prompt_zh_TW": "用六十至九十詞介紹虛構校園團隊，使用一個關係詞作主詞的限定子句和一個作受詞的限定子句，並解釋特定人物或資源為何合適。",
+        "sample_answer_en": "Our team needs a student who can explain simple repairs patiently. Amy is a good choice because she helped new volunteers last term. The guide that she wrote uses pictures instead of long paragraphs. We also need someone who can test the instructions without extra help. Sam can do that because he has not used the equipment before. His questions will show us which parts of the guide need clearer explanations.",
+        "reading_en": "The garden club needs volunteers for two different jobs. Students who enjoy working outdoors can help repair signs. Students who prefer writing can improve the volunteer guide. Amy offers to work on the guide that Sam wrote last term. She thinks the photographs are useful, but some instructions are difficult to follow. The student who tests the revised guide should be new to the garden. An experienced volunteer might understand an unclear instruction simply because they already know the task. The club therefore asks Pip, a new member, to try the guide. His questions help the writers identify information that a beginner needs.",
+        "questions": [
+          {
+            "prompt_en": "Which job is offered to students who prefer writing?",
+            "answer_en": "They can improve the volunteer guide."
+          },
+          {
+            "prompt_en": "In the guide that Sam wrote, who performs the writing?",
+            "answer_en": "Sam performs the writing; that refers to the guide as the object of wrote."
+          },
+          {
+            "prompt_en": "Why does the club want a beginner to test the guide?",
+            "answer_en": "An experienced volunteer might understand unclear instructions from prior knowledge, while a beginner can reveal missing information."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep06-s01",
+          "english": "Students who enjoy working outdoors can help repair the garden signs.",
+          "demo": "Students who enjoy working outdoors can help repair the garden signs.",
+          "instruction": {
+            "en": "The relative clause identifies which students the invitation is for.",
+            "zh-TW": "關係子句指出邀請的是哪些學生。",
+            "zh-CN": "关系从句指出邀请的是哪些学生。",
+            "ja": "関係節が、どの生徒への呼びかけなのかを示します。",
+            "ko": "관계절은 어떤 학생들을 초대하는지 밝혀 줘요."
+          },
+          "demo_translation": {
+            "zh-TW": "喜歡戶外工作的學生可以幫忙修理花園標示。",
+            "zh-CN": "喜欢户外工作的学生可以帮忙修理花园标牌。",
+            "ja": "屋外での作業が好きな生徒は、庭の案内板の修理を手伝えます。",
+            "ko": "야외에서 일하기를 좋아하는 학생들은 정원 안내판 수리를 도울 수 있어요."
+          },
+          "visual": "sentence:Students who enjoy working outdoors can help repair the garden signs.",
+          "target": "sentence:Students who enjoy working outdoors can help repair the garden signs.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep06-s02",
+          "english": "Amy is improving the guide that Sam wrote for new volunteers.",
+          "demo": "Amy is improving the guide that Sam wrote for new volunteers.",
+          "instruction": {
+            "en": "That identifies the guide; Sam is the subject inside the relative clause.",
+            "zh-TW": "that 指指南；子句內 Sam 是主詞。",
+            "zh-CN": "that 指指南；从句内 Sam 是主语。",
+            "ja": "that は手引きを指し、関係節の中では Sam が主語です。",
+            "ko": "that은 안내서를 가리키고 관계절 안에서 Sam이 주어예요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 正在改進 Sam 為新志工寫的指南。",
+            "zh-CN": "Amy 正在改进 Sam 为新志愿者写的指南。",
+            "ja": "エイミーは、サムが新しいボランティア向けに書いた手引きを改善しています。",
+            "ko": "에이미는 샘이 새 자원봉사자들을 위해 쓴 안내서를 개선하고 있어요."
+          },
+          "visual": "sentence:Amy is improving the guide that Sam wrote for new volunteers.",
+          "target": "sentence:Amy is improving the guide that Sam wrote for new volunteers.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep06-s03",
+          "english": "The student who tests the guide should be unfamiliar with the garden.",
+          "demo": "The student who tests the guide should be unfamiliar with the garden.",
+          "instruction": {
+            "en": "Who performs the action tests here, so it functions as the clause's subject.",
+            "zh-TW": "這裡 who 執行 tests 的動作，作子句主詞。",
+            "zh-CN": "这里 who 执行 tests 的动作，作从句主语。",
+            "ja": "ここでは who が tests の動作を行い、関係節の主語になります。",
+            "ko": "여기서 who는 tests의 행동을 하므로 관계절의 주어 역할을 해요."
+          },
+          "demo_translation": {
+            "zh-TW": "測試指南的學生應對花園不熟悉。",
+            "zh-CN": "测试指南的学生应对花园不熟悉。",
+            "ja": "手引きを試す生徒は、その庭に詳しくない人がよいでしょう。",
+            "ko": "안내서를 시험하는 학생은 정원에 익숙하지 않은 사람이 좋겠어요."
+          },
+          "visual": "sentence:The student who tests the guide should be unfamiliar with the garden.",
+          "target": "sentence:The student who tests the guide should be unfamiliar with the garden.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep06-s04",
+          "english": "The volunteer who repairs the signs needs clear instructions and suitable tools.",
+          "demo": "The volunteer who repairs the signs needs clear instructions and suitable tools.",
+          "instruction": {
+            "en": "Read who repairs together; removing subject who would leave this clause incomplete.",
+            "zh-TW": "連讀 who repairs；刪掉主詞 who 會使句型不完整。",
+            "zh-CN": "连读 who repairs；删掉主语 who 会使句型不完整。",
+            "ja": "who repairs をまとめて読みます。主語の who はここでは省けません。",
+            "ko": "who repairs를 함께 읽어요. 여기서 주어 who는 생략할 수 없어요."
+          },
+          "demo_translation": {
+            "zh-TW": "修理標示的志工需要清楚的指示和合適的工具。",
+            "zh-CN": "修理标牌的志愿者需要清楚的说明和合适的工具。",
+            "ja": "案内板を修理するボランティアには、明確な手順と適切な道具が必要です。",
+            "ko": "안내판을 수리하는 자원봉사자에게는 명확한 설명과 적절한 도구가 필요해요."
+          },
+          "visual": "sentence:The volunteer who repairs the signs needs clear instructions and suitable tools.",
+          "target": "sentence:The volunteer who repairs the signs needs clear instructions and suitable tools.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep06-s05",
+          "english": "Listen and choose.",
+          "demo": "Amy is improving the guide that Sam wrote for new volunteers.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 正在改進 Sam 為新志工寫的指南。",
+            "zh-CN": "Amy 正在改进 Sam 为新志愿者写的指南。",
+            "ja": "エイミーは、サムが新しいボランティア向けに書いた手引きを改善しています。",
+            "ko": "에이미는 샘이 새 자원봉사자들을 위해 쓴 안내서를 개선하고 있어요."
+          },
+          "visual": "sentence:Amy is improving the guide that Sam wrote for new volunteers.",
+          "target": "sentence:Amy is improving the guide that Sam wrote for new volunteers.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Students who enjoy working outdoors can help repair the garden signs.",
+            "sentence:Choose the guide that explains the task, not the one with the longest description.",
+            "sentence:Amy is improving the guide that Sam wrote for new volunteers."
+          ]
+        },
+        {
+          "id": "ep06-s06",
+          "english": "The instructions Amy revised are easier for beginners to follow now.",
+          "demo": "The instructions Amy revised are easier for beginners to follow now.",
+          "instruction": {
+            "en": "An object relative word can be omitted here because Amy remains the subject.",
+            "zh-TW": "這裡可省受詞關係詞，Amy 仍是主詞。",
+            "zh-CN": "这里可省宾语关系词，Amy 仍是主语。",
+            "ja": "ここでは目的語の関係詞を省けます。Amy は主語として残ります。",
+            "ko": "여기서는 목적격 관계사를 생략해도 Amy가 주어로 남아요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 修改過的指示現在更容易讓初學者遵循。",
+            "zh-CN": "Amy 修改过的说明现在更容易让初学者遵循。",
+            "ja": "エイミーが修正した手順は、今は初心者にも従いやすくなっています。",
+            "ko": "에이미가 고친 설명은 이제 초보자들이 더 쉽게 따라 할 수 있어요."
+          },
+          "visual": "sentence:The instructions Amy revised are easier for beginners to follow now.",
+          "target": "sentence:The instructions Amy revised are easier for beginners to follow now.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep06-s07",
+          "english": "Listen and choose.",
+          "demo": "The instructions Amy revised are easier for beginners to follow now.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 修改過的指示現在更容易讓初學者遵循。",
+            "zh-CN": "Amy 修改过的说明现在更容易让初学者遵循。",
+            "ja": "エイミーが修正した手順は、今は初心者にも従いやすくなっています。",
+            "ko": "에이미가 고친 설명은 이제 초보자들이 더 쉽게 따라 할 수 있어요."
+          },
+          "visual": "sentence:The instructions Amy revised are easier for beginners to follow now.",
+          "target": "sentence:The instructions Amy revised are easier for beginners to follow now.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:The instructions Amy revised are easier for beginners to follow now.",
+            "sentence:Students who enjoy working outdoors can help repair the garden signs.",
+            "sentence:Choose the guide that explains the task, not the one with the longest description."
+          ]
+        },
+        {
+          "id": "ep06-s08",
+          "english": "The questions that Pip asks reveal information that a beginner needs.",
+          "demo": "The questions that Pip asks reveal information that a beginner needs.",
+          "instruction": {
+            "en": "Read each clause separately and identify its own subject and object.",
+            "zh-TW": "分別讀兩個子句，找出各自的主詞和受詞。",
+            "zh-CN": "分别读两个从句，找出各自的主语和宾语。",
+            "ja": "各関係節を分けて読み、それぞれの主語と目的語を確かめます。",
+            "ko": "각 관계절을 따로 읽고 각각의 주어와 목적어를 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "Pip 提出的問題顯示初學者需要哪些資訊。",
+            "zh-CN": "Pip 提出的问题显示初学者需要哪些信息。",
+            "ja": "ピップがする質問から、初心者に必要な情報が分かります。",
+            "ko": "핍이 하는 질문은 초보자에게 필요한 정보를 드러내요."
+          },
+          "visual": "sentence:The questions that Pip asks reveal information that a beginner needs.",
+          "target": "sentence:The questions that Pip asks reveal information that a beginner needs.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep06-s09",
+          "english": "Listen and choose.",
+          "demo": "The questions that Pip asks reveal information that a beginner needs.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "Pip 提出的問題顯示初學者需要哪些資訊。",
+            "zh-CN": "Pip 提出的问题显示初学者需要哪些信息。",
+            "ja": "ピップがする質問から、初心者に必要な情報が分かります。",
+            "ko": "핍이 하는 질문은 초보자에게 필요한 정보를 드러내요."
+          },
+          "visual": "sentence:The questions that Pip asks reveal information that a beginner needs.",
+          "target": "sentence:The questions that Pip asks reveal information that a beginner needs.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Students who enjoy working outdoors can help repair the garden signs.",
+            "sentence:The questions that Pip asks reveal information that a beginner needs.",
+            "sentence:Choose the guide that explains the task, not the one with the longest description."
+          ]
+        },
+        {
+          "id": "ep06-s10",
+          "english": "Choose the guide that explains the task, not the one with the longest description.",
+          "demo": "Choose the guide that explains the task, not the one with the longest description.",
+          "instruction": {
+            "en": "Essential descriptions help readers identify the relevant person or thing precisely.",
+            "zh-TW": "必要描述幫助讀者精確辨認相關人物或物品。",
+            "zh-CN": "必要描述帮助读者准确辨认相关人物或物品。",
+            "ja": "必要な説明によって、読者は該当する人や物を正確に特定できます。",
+            "ko": "필수 설명은 독자가 해당하는 사람이나 사물을 정확히 구분하게 해 줘요."
+          },
+          "demo_translation": {
+            "zh-TW": "選擇能解釋任務的指南，而非描述最長的那一本。",
+            "zh-CN": "选择能解释任务的指南，而非描述最长的那一本。",
+            "ja": "説明が最も長い手引きではなく、作業を説明できる手引きを選びましょう。",
+            "ko": "설명이 가장 긴 안내서보다 작업을 설명해 주는 안내서를 고르세요."
+          },
+          "visual": "sentence:Choose the guide that explains the task, not the one with the longest description.",
+          "target": "sentence:Choose the guide that explains the task, not the one with the longest description.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        }
+      ]
+    },
+    {
+      "id": "ep07",
+      "number": 7,
+      "season": 1,
+      "grade": 10,
+      "title_en": "Adding Extra Information",
+      "title_zh_TW": "補充額外資訊",
+      "titles": {
+        "zh-TW": "補充額外資訊",
+        "zh-CN": "补充额外信息",
+        "ja": "補足情報を加える",
+        "ko": "추가 정보 덧붙이기"
+      },
+      "topic": "non-defining-relative-clauses",
+      "objectives_zh_TW": [
+        "用逗號標示已知人物或物品的補充資訊。",
+        "比較有無逗號如何改變關係子句限定的範圍。",
+        "在非限定子句中保留 who 或 which，寫出指涉清楚的介紹。"
+      ],
+      "parent_tip_zh_TW": "先問讀者是否已知道指誰；不要把逗號只當停頓符號，它也影響哪些人被包括在描述裡。",
+      "practice": {
+        "prompt_en": "Write a 60-90-word update about a fictional club. Introduce a named person and an identified object with non-defining relative clauses. Include one defining clause that identifies a smaller group.",
+        "prompt_zh_TW": "用六十至九十詞介紹虛構社團近況，用非限定關係子句補充已具名人物及已知物品的資訊，另用限定子句指出較小的一群人。",
+        "sample_answer_en": "Amy, who leads our media club, is preparing an exhibition. Our main camera, which the school bought last year, is ready to use. Students who have finished their captions can help arrange the photographs. Others still need to check names and dates. Sam, who enjoys organizing displays, has offered to plan the entrance. These different roles allow everyone to contribute without pretending that every part of the exhibition is already finished.",
+        "reading_en": "Amy leads a small media club with three members: Sam, Pip, and herself. Amy, who joined the club last year, now organizes its exhibition. She writes two possible notices. The first says, \"Students who have finished their captions can arrange the display.\" This notice invites only the students with completed captions. The second says, \"The students, who have finished their captions, can arrange the display.\" In that notice, all the students being discussed have finished. Amy chooses the first because Pip is still checking a date. The main camera, which Sam borrowed from the office, is ready. Their preparations are progressing, but the members are not all at the same stage.",
+        "questions": [
+          {
+            "prompt_en": "Why does Amy choose the first notice?",
+            "answer_en": "Pip is still checking a date, so only students with finished captions should arrange the display."
+          },
+          {
+            "prompt_en": "How do the commas change the meaning of the second notice?",
+            "answer_en": "They make having finished the captions extra information about all the students being discussed."
+          },
+          {
+            "prompt_en": "Would the second notice accurately describe this group now? Support your answer.",
+            "answer_en": "No. It presents all the students as finished, but Pip is still checking a date."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep07-s01",
+          "english": "Amy, who joined the club last year, now organizes its exhibition.",
+          "demo": "Amy, who joined the club last year, now organizes its exhibition.",
+          "instruction": {
+            "en": "Amy is already identified; the comma clause adds background rather than selecting her.",
+            "zh-TW": "Amy 已被指明；逗號子句補背景，不再篩選。",
+            "zh-CN": "Amy 已被指明；逗号从句补背景，不再筛选。",
+            "ja": "Amy は特定済みなので、コンマ内の節は背景を補足します。",
+            "ko": "Amy는 이미 특정되었으므로 쉼표 안의 절은 배경을 덧붙여요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 去年加入社團，現在負責籌辦展覽。",
+            "zh-CN": "Amy 去年加入社团，现在负责筹办展览。",
+            "ja": "去年入部したエイミーは、今は展示会を担当しています。",
+            "ko": "지난해 동아리에 들어온 에이미는 지금 전시회를 준비해요."
+          },
+          "visual": "sentence:Amy, who joined the club last year, now organizes its exhibition.",
+          "target": "sentence:Amy, who joined the club last year, now organizes its exhibition.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep07-s02",
+          "english": "Students who have finished their captions can arrange the display.",
+          "demo": "Students who have finished their captions can arrange the display.",
+          "instruction": {
+            "en": "Without commas, the clause identifies the students whose captions are finished.",
+            "zh-TW": "沒有逗號時，子句限定圖說已完成的學生。",
+            "zh-CN": "没有逗号时，从句限定图片说明已完成的学生。",
+            "ja": "コンマがない節は、説明文が完成した生徒を選び出します。",
+            "ko": "쉼표가 없으면 그 절은 사진 설명을 끝낸 학생들을 한정해요."
+          },
+          "demo_translation": {
+            "zh-TW": "已完成圖說的學生可以布置展覽。",
+            "zh-CN": "已完成图片说明的学生可以布置展览。",
+            "ja": "写真の説明文が完成した生徒は、展示の配置を担当できます。",
+            "ko": "사진 설명을 다 쓴 학생들은 전시물을 배치할 수 있어요."
+          },
+          "visual": "sentence:Students who have finished their captions can arrange the display.",
+          "target": "sentence:Students who have finished their captions can arrange the display.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep07-s03",
+          "english": "The students, who have finished their captions, can arrange the display.",
+          "demo": "The students, who have finished their captions, can arrange the display.",
+          "instruction": {
+            "en": "With commas, the added information applies to all the students being discussed.",
+            "zh-TW": "有逗號時，補充資訊適用於談到的全部學生。",
+            "zh-CN": "有逗号时，补充信息适用于谈到的全部学生。",
+            "ja": "コンマがあると、補足情報は話題の生徒全員に当てはまります。",
+            "ko": "쉼표가 있으면 추가 정보는 지금 말하는 학생 모두에게 적용돼요."
+          },
+          "demo_translation": {
+            "zh-TW": "這些學生都已完成圖說，可以布置展覽。",
+            "zh-CN": "这些学生都已完成图片说明，可以布置展览。",
+            "ja": "その生徒たちは説明文を完成させており、展示の配置を担当できます。",
+            "ko": "그 학생들은 모두 사진 설명을 끝냈으므로 전시물을 배치할 수 있어요."
+          },
+          "visual": "sentence:The students, who have finished their captions, can arrange the display.",
+          "target": "sentence:The students, who have finished their captions, can arrange the display.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep07-s04",
+          "english": "Pip, who is still checking a date, is not ready to arrange photographs.",
+          "demo": "Pip, who is still checking a date, is not ready to arrange photographs.",
+          "instruction": {
+            "en": "Pause around the extra information and connect it to Pip's current situation.",
+            "zh-TW": "補充資訊前後停頓，連結 Pip 的目前狀況。",
+            "zh-CN": "补充信息前后停顿，连接 Pip 的目前状况。",
+            "ja": "補足の前後で区切り、ピップの今の状況につなげて読みます。",
+            "ko": "추가 정보 앞뒤에서 쉬고 핍의 현재 상황과 연결해 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "Pip 還在核對日期，尚未準備好布置照片。",
+            "zh-CN": "Pip 还在核对日期，尚未准备好布置照片。",
+            "ja": "ピップはまだ日付を確認中なので、写真を並べる準備ができていません。",
+            "ko": "핍은 아직 날짜를 확인하고 있어서 사진을 배치할 준비가 되지 않았어요."
+          },
+          "visual": "sentence:Pip, who is still checking a date, is not ready to arrange photographs.",
+          "target": "sentence:Pip, who is still checking a date, is not ready to arrange photographs.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep07-s05",
+          "english": "Listen and choose.",
+          "demo": "Students who have finished their captions can arrange the display.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "已完成圖說的學生可以布置展覽。",
+            "zh-CN": "已完成图片说明的学生可以布置展览。",
+            "ja": "写真の説明文が完成した生徒は、展示の配置を担当できます。",
+            "ko": "사진 설명을 다 쓴 학생들은 전시물을 배치할 수 있어요."
+          },
+          "visual": "sentence:Students who have finished their captions can arrange the display.",
+          "target": "sentence:Students who have finished their captions can arrange the display.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Students who have finished their captions can arrange the display.",
+            "sentence:Amy, who joined the club last year, now organizes its exhibition.",
+            "sentence:Commas show whether a description adds background or helps identify a particular group."
+          ]
+        },
+        {
+          "id": "ep07-s06",
+          "english": "Our main camera, which Sam borrowed from the office, is ready to use.",
+          "demo": "Our main camera, which Sam borrowed from the office, is ready to use.",
+          "instruction": {
+            "en": "Keep which in this non-defining clause, even though Sam is its subject.",
+            "zh-TW": "即使 Sam 是主詞，非限定子句仍保留 which。",
+            "zh-CN": "即使 Sam 是主语，非限定从句仍保留 which。",
+            "ja": "Sam が主語でも、この非制限用法の節では which を省きません。",
+            "ko": "Sam이 주어여도 이 계속적 용법의 절에서는 which를 생략하지 않아요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們的主相機是 Sam 向辦公室借的，已可使用。",
+            "zh-CN": "我们的主相机是 Sam 向办公室借的，已经可以使用。",
+            "ja": "主に使うカメラはサムが職員室から借りたもので、使用準備ができています。",
+            "ko": "주로 쓸 카메라는 샘이 사무실에서 빌린 것으로 사용할 준비가 되었어요."
+          },
+          "visual": "sentence:Our main camera, which Sam borrowed from the office, is ready to use.",
+          "target": "sentence:Our main camera, which Sam borrowed from the office, is ready to use.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep07-s07",
+          "english": "Listen and choose.",
+          "demo": "Our main camera, which Sam borrowed from the office, is ready to use.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們的主相機是 Sam 向辦公室借的，已可使用。",
+            "zh-CN": "我们的主相机是 Sam 向办公室借的，已经可以使用。",
+            "ja": "主に使うカメラはサムが職員室から借りたもので、使用準備ができています。",
+            "ko": "주로 쓸 카메라는 샘이 사무실에서 빌린 것으로 사용할 준비가 되었어요."
+          },
+          "visual": "sentence:Our main camera, which Sam borrowed from the office, is ready to use.",
+          "target": "sentence:Our main camera, which Sam borrowed from the office, is ready to use.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Amy, who joined the club last year, now organizes its exhibition.",
+            "sentence:Our main camera, which Sam borrowed from the office, is ready to use.",
+            "sentence:Commas show whether a description adds background or helps identify a particular group."
+          ]
+        },
+        {
+          "id": "ep07-s08",
+          "english": "Sam, who enjoys organizing displays, has offered to plan the entrance.",
+          "demo": "Sam, who enjoys organizing displays, has offered to plan the entrance.",
+          "instruction": {
+            "en": "Read the background as a useful explanation of Sam's offer.",
+            "zh-TW": "把背景資訊讀成 Sam 提議的相關說明。",
+            "zh-CN": "把背景信息读成 Sam 提议的相关说明。",
+            "ja": "この背景を、サムの申し出を説明する情報として読みます。",
+            "ko": "이 배경을 샘의 제안을 이해하는 데 도움이 되는 설명으로 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 喜歡布置展覽，已提議規劃入口。",
+            "zh-CN": "Sam 喜欢布置展览，已提出规划入口。",
+            "ja": "展示の配置が好きなサムは、入口の計画を引き受けると申し出ています。",
+            "ko": "전시 배치를 좋아하는 샘은 입구를 계획하겠다고 제안했어요."
+          },
+          "visual": "sentence:Sam, who enjoys organizing displays, has offered to plan the entrance.",
+          "target": "sentence:Sam, who enjoys organizing displays, has offered to plan the entrance.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep07-s09",
+          "english": "Listen and choose.",
+          "demo": "Sam, who enjoys organizing displays, has offered to plan the entrance.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 喜歡布置展覽，已提議規劃入口。",
+            "zh-CN": "Sam 喜欢布置展览，已提出规划入口。",
+            "ja": "展示の配置が好きなサムは、入口の計画を引き受けると申し出ています。",
+            "ko": "전시 배치를 좋아하는 샘은 입구를 계획하겠다고 제안했어요."
+          },
+          "visual": "sentence:Sam, who enjoys organizing displays, has offered to plan the entrance.",
+          "target": "sentence:Sam, who enjoys organizing displays, has offered to plan the entrance.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Amy, who joined the club last year, now organizes its exhibition.",
+            "sentence:Commas show whether a description adds background or helps identify a particular group.",
+            "sentence:Sam, who enjoys organizing displays, has offered to plan the entrance."
+          ]
+        },
+        {
+          "id": "ep07-s10",
+          "english": "Commas show whether a description adds background or helps identify a particular group.",
+          "demo": "Commas show whether a description adds background or helps identify a particular group.",
+          "instruction": {
+            "en": "Choose punctuation from the intended meaning, not just where you want a pause.",
+            "zh-TW": "依預定語意選標點，不只依想停頓的位置。",
+            "zh-CN": "依预期语义选标点，不只依想停顿的位置。",
+            "ja": "単なる息継ぎの位置ではなく、伝えたい意味から句読点を選びます。",
+            "ko": "단순히 쉬고 싶은 위치가 아니라 전달하려는 의미에 따라 문장부호를 골라요."
+          },
+          "demo_translation": {
+            "zh-TW": "逗號可顯示描述是在補背景，還是在辨認特定群體。",
+            "zh-CN": "逗号可显示描述是在补背景，还是在辨认特定群体。",
+            "ja": "コンマは、説明が補足なのか、特定の集団を示すものなのかを表します。",
+            "ko": "쉼표는 설명이 배경을 덧붙이는지 특정 집단을 구분하는지 보여 줘요."
+          },
+          "visual": "sentence:Commas show whether a description adds background or helps identify a particular group.",
+          "target": "sentence:Commas show whether a description adds background or helps identify a particular group.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        }
+      ]
+    },
+    {
+      "id": "ep08",
+      "number": 8,
+      "season": 1,
+      "grade": 10,
+      "title_en": "Making Descriptions Concise",
+      "title_zh_TW": "精簡描述",
+      "titles": {
+        "zh-TW": "精簡描述",
+        "zh-CN": "精简描述",
+        "ja": "説明を簡潔にする",
+        "ko": "설명을 간결하게 만들기"
+      },
+      "topic": "selected-reduced-relative-clauses",
+      "objectives_zh_TW": [
+        "比較 who are waiting 與 waiting 等限定描述。",
+        "用過去分詞補充物品受到的動作，區分主動與被動。",
+        "在保留意義與清楚指涉的前提下精簡校園說明。"
+      ],
+      "parent_tip_zh_TW": "先確定被描述的名詞做動作，還是接受動作；只練習本課可保留原意的縮減，不把所有子句一律刪短。",
+      "practice": {
+        "prompt_en": "Write a 60-90-word notice for a fictional school event. Include one active description using an ing form and one passive description using a past participle. Make the location and required action clear.",
+        "prompt_zh_TW": "用六十至九十詞寫虛構校園活動公告，包含一個 ing 主動描述和一個過去分詞被動描述，清楚交代地點與必要行動。",
+        "sample_answer_en": "Students waiting for the design workshop should meet outside Room Eight. The forms printed yesterday are on the table beside the door. Please take one form and check your group number before entering. A student carrying a blue folder will answer questions about the schedule. The equipment borrowed from the science club is for the afternoon session, so please leave it on the shelves until the teacher gives further instructions.",
+        "reading_en": "The design club is preparing a notice for a workshop. Its first draft says, \"Students who are waiting outside should collect the forms that were printed yesterday.\" Amy revises this to \"Students waiting outside should collect the forms printed yesterday.\" The shorter version keeps the same basic meaning: the students are doing the waiting, while the forms received the printing action. She also adds the location of the forms, a table beside Room Eight. Sam suggests shortening every sentence, but Amy disagrees. A shorter notice is useful only if readers still know who should act and what they should do. They test the notice with a student who has not attended before.",
+        "questions": [
+          {
+            "prompt_en": "Where can students find the forms?",
+            "answer_en": "On a table beside Room Eight."
+          },
+          {
+            "prompt_en": "Why does waiting describe the students but printed describe the forms?",
+            "answer_en": "The students perform the waiting, while the forms receive the printing action."
+          },
+          {
+            "prompt_en": "Why does Amy reject shortening every sentence automatically?",
+            "answer_en": "She wants readers to know who should act and what to do; being shorter alone does not guarantee clarity."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep08-s01",
+          "english": "Students who are waiting outside should collect a form before entering.",
+          "demo": "Students who are waiting outside should collect a form before entering.",
+          "instruction": {
+            "en": "The full relative clause describes students performing an action now.",
+            "zh-TW": "完整關係子句描述學生現在進行的動作。",
+            "zh-CN": "完整关系从句描述学生现在进行的动作。",
+            "ja": "完全な関係節が、今行動している生徒を説明しています。",
+            "ko": "완전한 관계절은 지금 행동하고 있는 학생들을 설명해요."
+          },
+          "demo_translation": {
+            "zh-TW": "正在外面等候的學生應先拿表格再進入。",
+            "zh-CN": "正在外面等候的学生应先拿表格再进入。",
+            "ja": "外で待っている生徒は、入る前に用紙を受け取ってください。",
+            "ko": "밖에서 기다리고 있는 학생들은 들어가기 전에 양식을 받아야 해요."
+          },
+          "visual": "sentence:Students who are waiting outside should collect a form before entering.",
+          "target": "sentence:Students who are waiting outside should collect a form before entering.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep08-s02",
+          "english": "Students waiting outside should collect a form before entering.",
+          "demo": "Students waiting outside should collect a form before entering.",
+          "instruction": {
+            "en": "Here, waiting replaces who are waiting while keeping the active meaning.",
+            "zh-TW": "waiting 代替 who are waiting，仍表主動。",
+            "zh-CN": "waiting 代替 who are waiting，仍表主动。",
+            "ja": "ここでは waiting が who are waiting に代わり、能動の意味を保ちます。",
+            "ko": "여기서 waiting은 who are waiting을 대신하며 능동의 뜻을 유지해요."
+          },
+          "demo_translation": {
+            "zh-TW": "在外面等候的學生應先拿表格再進入。",
+            "zh-CN": "在外面等候的学生应先拿表格再进入。",
+            "ja": "外で待っている生徒は、入る前に用紙を受け取ってください。",
+            "ko": "밖에서 기다리는 학생들은 들어가기 전에 양식을 받아야 해요."
+          },
+          "visual": "sentence:Students waiting outside should collect a form before entering.",
+          "target": "sentence:Students waiting outside should collect a form before entering.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep08-s03",
+          "english": "The forms that were printed yesterday are on the table beside Room Eight.",
+          "demo": "The forms that were printed yesterday are on the table beside Room Eight.",
+          "instruction": {
+            "en": "The forms receive the printing action, so the full clause uses a passive form.",
+            "zh-TW": "表格接受印製動作，所以完整子句使用被動式。",
+            "zh-CN": "表格接受印制动作，所以完整从句使用被动式。",
+            "ja": "用紙は印刷される側なので、完全な節では受け身を使います。",
+            "ko": "양식은 인쇄되는 대상이므로 완전한 절에서는 수동태를 써요."
+          },
+          "demo_translation": {
+            "zh-TW": "昨天印好的表格放在八號教室旁的桌上。",
+            "zh-CN": "昨天印好的表格放在八号教室旁的桌上。",
+            "ja": "昨日印刷された用紙は、8番教室の横の机にあります。",
+            "ko": "어제 인쇄된 양식은 8번 교실 옆 탁자에 있어요."
+          },
+          "visual": "sentence:The forms that were printed yesterday are on the table beside Room Eight.",
+          "target": "sentence:The forms that were printed yesterday are on the table beside Room Eight.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep08-s04",
+          "english": "The forms printed yesterday are on the table beside Room Eight.",
+          "demo": "The forms printed yesterday are on the table beside Room Eight.",
+          "instruction": {
+            "en": "Read printed as a past participle describing the forms, not their action.",
+            "zh-TW": "printed 是描述表格的過去分詞，不是表格在動作。",
+            "zh-CN": "printed 是描述表格的过去分词，不是表格在动作。",
+            "ja": "printed は用紙を説明する過去分詞で、用紙自身の行動ではありません。",
+            "ko": "printed는 양식을 설명하는 과거분사이며 양식 자체의 행동이 아니에요."
+          },
+          "demo_translation": {
+            "zh-TW": "昨天印好的表格放在八號教室旁的桌上。",
+            "zh-CN": "昨天印好的表格放在八号教室旁的桌上。",
+            "ja": "昨日印刷された用紙は、8番教室の横の机にあります。",
+            "ko": "어제 인쇄된 양식은 8번 교실 옆 탁자에 있어요."
+          },
+          "visual": "sentence:The forms printed yesterday are on the table beside Room Eight.",
+          "target": "sentence:The forms printed yesterday are on the table beside Room Eight.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep08-s05",
+          "english": "Listen and choose.",
+          "demo": "Students waiting outside should collect a form before entering.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "在外面等候的學生應先拿表格再進入。",
+            "zh-CN": "在外面等候的学生应先拿表格再进入。",
+            "ja": "外で待っている生徒は、入る前に用紙を受け取ってください。",
+            "ko": "밖에서 기다리는 학생들은 들어가기 전에 양식을 받아야 해요."
+          },
+          "visual": "sentence:Students waiting outside should collect a form before entering.",
+          "target": "sentence:Students waiting outside should collect a form before entering.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:The forms that were printed yesterday are on the table beside Room Eight.",
+            "sentence:Students waiting outside should collect a form before entering.",
+            "sentence:A student carrying a blue folder will answer questions about the schedule."
+          ]
+        },
+        {
+          "id": "ep08-s06",
+          "english": "A student carrying a blue folder will answer questions about the schedule.",
+          "demo": "A student carrying a blue folder will answer questions about the schedule.",
+          "instruction": {
+            "en": "Carrying helps identify the student by an action the student performs.",
+            "zh-TW": "carrying 用學生自己做的動作協助辨認。",
+            "zh-CN": "carrying 用学生自己做的动作帮助辨认。",
+            "ja": "carrying は、生徒自身の行動を使ってその人を特定します。",
+            "ko": "carrying은 학생 자신이 하는 행동으로 그 학생을 구분해 줘요."
+          },
+          "demo_translation": {
+            "zh-TW": "一位拿著藍色資料夾的學生將回答時程問題。",
+            "zh-CN": "一位拿着蓝色文件夹的学生将回答时间安排问题。",
+            "ja": "青いファイルを持った生徒が、日程についての質問に答えます。",
+            "ko": "파란 파일을 들고 있는 학생이 일정에 관한 질문에 답할 거예요."
+          },
+          "visual": "sentence:A student carrying a blue folder will answer questions about the schedule.",
+          "target": "sentence:A student carrying a blue folder will answer questions about the schedule.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep08-s07",
+          "english": "Listen and choose.",
+          "demo": "A student carrying a blue folder will answer questions about the schedule.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "一位拿著藍色資料夾的學生將回答時程問題。",
+            "zh-CN": "一位拿着蓝色文件夹的学生将回答时间安排问题。",
+            "ja": "青いファイルを持った生徒が、日程についての質問に答えます。",
+            "ko": "파란 파일을 들고 있는 학생이 일정에 관한 질문에 답할 거예요."
+          },
+          "visual": "sentence:A student carrying a blue folder will answer questions about the schedule.",
+          "target": "sentence:A student carrying a blue folder will answer questions about the schedule.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Students who are waiting outside should collect a form before entering.",
+            "sentence:A shorter description is useful only when it keeps the intended meaning clear.",
+            "sentence:A student carrying a blue folder will answer questions about the schedule."
+          ]
+        },
+        {
+          "id": "ep08-s08",
+          "english": "The equipment borrowed from the science club is for the afternoon session.",
+          "demo": "The equipment borrowed from the science club is for the afternoon session.",
+          "instruction": {
+            "en": "Read borrowed as passive information about the equipment and check which noun it describes.",
+            "zh-TW": "borrowed 補充被動資訊，確認它描述的是設備。",
+            "zh-CN": "borrowed 补充被动信息，确认它描述的是设备。",
+            "ja": "borrowed は受け身の情報です。どの名詞を説明するか確認して読みます。",
+            "ko": "borrowed는 수동의 정보예요. 어느 명사를 설명하는지 확인하며 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "向科學社借來的設備是下午場次要用的。",
+            "zh-CN": "向科学社借来的设备是下午场次要用的。",
+            "ja": "科学部から借りた機材は、午後の回で使うものです。",
+            "ko": "과학 동아리에서 빌린 장비는 오후 행사에 쓸 것이에요."
+          },
+          "visual": "sentence:The equipment borrowed from the science club is for the afternoon session.",
+          "target": "sentence:The equipment borrowed from the science club is for the afternoon session.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep08-s09",
+          "english": "Listen and choose.",
+          "demo": "The equipment borrowed from the science club is for the afternoon session.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "向科學社借來的設備是下午場次要用的。",
+            "zh-CN": "向科学社借来的设备是下午场次要用的。",
+            "ja": "科学部から借りた機材は、午後の回で使うものです。",
+            "ko": "과학 동아리에서 빌린 장비는 오후 행사에 쓸 것이에요."
+          },
+          "visual": "sentence:The equipment borrowed from the science club is for the afternoon session.",
+          "target": "sentence:The equipment borrowed from the science club is for the afternoon session.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:The equipment borrowed from the science club is for the afternoon session.",
+            "sentence:Students who are waiting outside should collect a form before entering.",
+            "sentence:A shorter description is useful only when it keeps the intended meaning clear."
+          ]
+        },
+        {
+          "id": "ep08-s10",
+          "english": "A shorter description is useful only when it keeps the intended meaning clear.",
+          "demo": "A shorter description is useful only when it keeps the intended meaning clear.",
+          "instruction": {
+            "en": "Check the noun, the action, and the meaning before reducing a clause.",
+            "zh-TW": "縮減子句前，檢查名詞、動作與原意。",
+            "zh-CN": "缩减从句前，检查名词、动作与原意。",
+            "ja": "節を短くする前に、名詞、動作、意味を確かめます。",
+            "ko": "절을 줄이기 전에 명사, 행동, 의미를 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "較短的描述只有在保留清楚原意時才有用。",
+            "zh-CN": "较短的描述只有在保留清楚原意时才有用。",
+            "ja": "短い説明が役立つのは、伝えたい意味が明確に保たれるときだけです。",
+            "ko": "짧은 설명은 의도한 의미를 분명하게 유지할 때에만 유용해요."
+          },
+          "visual": "sentence:A shorter description is useful only when it keeps the intended meaning clear.",
+          "target": "sentence:A shorter description is useful only when it keeps the intended meaning clear.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        }
+      ]
+    },
+    {
+      "id": "ep09",
+      "number": 9,
+      "season": 1,
+      "grade": 10,
+      "title_en": "Ideas as Subjects and Objects",
+      "title_zh_TW": "把想法放進句子",
+      "titles": {
+        "zh-TW": "把想法放進句子",
+        "zh-CN": "把想法放进句子",
+        "ja": "考えを文の主語や目的語にする",
+        "ko": "생각을 주어와 목적어로 쓰기"
+      },
+      "topic": "that-wh-noun-clauses",
+      "objectives_zh_TW": [
+        "把 that 或 wh 子句作為句子中的完整資訊單位。",
+        "在 wh 名詞子句內使用敘述語序。",
+        "比較主詞與受詞位置的子句，表達證據及尚待了解的事。"
+      ],
+      "parent_tip_zh_TW": "把整段子句框起來，先找外層動詞，再檢查內層主詞加動詞；不要因為看見 where 就倒裝。",
+      "practice": {
+        "prompt_en": "Write a 60-90-word paragraph about improving a fictional school service. Use a that clause as an object and a what or how clause as a subject. Explain one observation and one question still needing an answer.",
+        "prompt_zh_TW": "用六十至九十詞說明如何改善虛構校園服務，使用 that 子句作受詞及 what 或 how 子句作主詞，交代一項觀察和一個待解問題。",
+        "sample_answer_en": "Our team noticed that several students arrived at the wrong room for tutoring. What they need is a notice with a clear room number. The current notice gives the day and time but leaves out the location. We do not know why the number was removed, so we should ask the organizer before changing the file. How students find the notice also matters, because an accurate message is useful only if they can see it.",
+        "reading_en": "The student council is reviewing its tutoring notice. Amy explains that several new students went to the library instead of Room Five. What confused them was a missing room number, not the starting time. Sam checks the original message and confirms that it gives Tuesday at four but no location. The team wants to know why the room number disappeared from the final version. They cannot answer that question from the notice alone. How students receive the message also matters: some see a printed copy, while others read it on a phone. The council decides to check both versions before announcing a correction, so that the same mistake does not remain in one format.",
+        "questions": [
+          {
+            "prompt_en": "What information was missing from the notice?",
+            "answer_en": "The room number was missing."
+          },
+          {
+            "prompt_en": "Why does the council check both the printed and phone versions?",
+            "answer_en": "Students receive the notice in both formats, so correcting only one could leave the mistake in the other."
+          },
+          {
+            "prompt_en": "Can the council conclude who removed the room number? Explain.",
+            "answer_en": "No. The notice shows the missing information but does not explain why it disappeared or who removed it."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep09-s01",
+          "english": "Amy explains that several new students went to the library instead of Room Five.",
+          "demo": "Amy explains that several new students went to the library instead of Room Five.",
+          "instruction": {
+            "en": "The that clause gives the complete idea that Amy explains.",
+            "zh-TW": "that 子句呈現 Amy 所說明的完整想法。",
+            "zh-CN": "that 从句呈现 Amy 所说明的完整想法。",
+            "ja": "that 節が、エイミーの説明する内容全体を示します。",
+            "ko": "that절은 에이미가 설명하는 생각 전체를 나타내요."
+          },
+          "demo_translation": {
+            "zh-TW": "Amy 說明有幾位新生去了圖書館，而非五號教室。",
+            "zh-CN": "Amy 说明有几位新生去了图书馆，而非五号教室。",
+            "ja": "エイミーは、何人かの新入生が5番教室ではなく図書館へ行ったと説明します。",
+            "ko": "에이미는 몇몇 신입생이 5번 교실 대신 도서관에 갔다고 설명해요."
+          },
+          "visual": "sentence:Amy explains that several new students went to the library instead of Room Five.",
+          "target": "sentence:Amy explains that several new students went to the library instead of Room Five.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep09-s02",
+          "english": "What confused the students was the missing room number, not the starting time.",
+          "demo": "What confused the students was the missing room number, not the starting time.",
+          "instruction": {
+            "en": "The whole what clause acts as the subject of this sentence.",
+            "zh-TW": "整個 what 子句在此作句子的主詞。",
+            "zh-CN": "整个 what 从句在此作句子的主语。",
+            "ja": "この文では、what 節全体が主語として働きます。",
+            "ko": "이 문장에서는 what절 전체가 주어 역할을 해요."
+          },
+          "demo_translation": {
+            "zh-TW": "讓學生困惑的是缺少教室號碼，而非開始時間。",
+            "zh-CN": "让学生困惑的是缺少教室号码，而非开始时间。",
+            "ja": "生徒を困らせたのは開始時刻ではなく、教室番号がないことでした。",
+            "ko": "학생들을 혼란스럽게 한 것은 시작 시각이 아니라 빠진 교실 번호였어요."
+          },
+          "visual": "sentence:What confused the students was the missing room number, not the starting time.",
+          "target": "sentence:What confused the students was the missing room number, not the starting time.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep09-s03",
+          "english": "We want to know why the room number disappeared from the final notice.",
+          "demo": "We want to know why the room number disappeared from the final notice.",
+          "instruction": {
+            "en": "Inside the why clause, the subject comes before disappeared, just like a statement.",
+            "zh-TW": "why 子句內，主詞在 disappeared 前，採敘述語序。",
+            "zh-CN": "why 从句内，主语在 disappeared 前，采用陈述语序。",
+            "ja": "why 節では、平叙文と同じく主語を disappeared の前に置きます。",
+            "ko": "why절 안에서는 평서문처럼 주어가 disappeared 앞에 와요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們想知道教室號碼為何從最終公告中消失。",
+            "zh-CN": "我们想知道教室号码为何从最终公告中消失。",
+            "ja": "最終のお知らせから教室番号が消えた理由を知りたいです。",
+            "ko": "교실 번호가 최종 공지에서 왜 사라졌는지 알고 싶어요."
+          },
+          "visual": "sentence:We want to know why the room number disappeared from the final notice.",
+          "target": "sentence:We want to know why the room number disappeared from the final notice.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep09-s04",
+          "english": "How students receive the message matters when we decide which versions to correct.",
+          "demo": "How students receive the message matters when we decide which versions to correct.",
+          "instruction": {
+            "en": "Read the whole how clause as one subject before the main verb matters.",
+            "zh-TW": "把整個 how 子句讀成 matters 前的一個主詞。",
+            "zh-CN": "把整个 how 从句读成 matters 前的一个主语。",
+            "ja": "how 節全体を、主動詞 matters の前の一つの主語として読みます。",
+            "ko": "how절 전체를 주동사 matters 앞의 하나의 주어로 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "決定要更正哪些版本時，學生如何收到訊息很重要。",
+            "zh-CN": "决定要更正哪些版本时，学生如何收到消息很重要。",
+            "ja": "どの版を直すか決める際、生徒への伝わり方が重要です。",
+            "ko": "어느 버전을 고칠지 정할 때 학생들이 메시지를 받는 방식이 중요해요."
+          },
+          "visual": "sentence:How students receive the message matters when we decide which versions to correct.",
+          "target": "sentence:How students receive the message matters when we decide which versions to correct.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep09-s05",
+          "english": "Listen and choose.",
+          "demo": "What confused the students was the missing room number, not the starting time.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "讓學生困惑的是缺少教室號碼，而非開始時間。",
+            "zh-CN": "让学生困惑的是缺少教室号码，而非开始时间。",
+            "ja": "生徒を困らせたのは開始時刻ではなく、教室番号がないことでした。",
+            "ko": "학생들을 혼란스럽게 한 것은 시작 시각이 아니라 빠진 교실 번호였어요."
+          },
+          "visual": "sentence:What confused the students was the missing room number, not the starting time.",
+          "target": "sentence:What confused the students was the missing room number, not the starting time.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Amy explains that several new students went to the library instead of Room Five.",
+            "sentence:What we know guides the correction; what we do not know requires further checking.",
+            "sentence:What confused the students was the missing room number, not the starting time."
+          ]
+        },
+        {
+          "id": "ep09-s06",
+          "english": "The notice shows that the location is missing, but it does not explain why.",
+          "demo": "The notice shows that the location is missing, but it does not explain why.",
+          "instruction": {
+            "en": "Separate what the evidence establishes from the question it cannot answer.",
+            "zh-TW": "區分證據能確立的事實與無法回答的問題。",
+            "zh-CN": "区分证据能确定的事实与无法回答的问题。",
+            "ja": "証拠から分かることと、答えられない問いを区別します。",
+            "ko": "증거가 보여 주는 사실과 답할 수 없는 질문을 구분해요."
+          },
+          "demo_translation": {
+            "zh-TW": "公告顯示地點資訊缺漏，但沒有解釋原因。",
+            "zh-CN": "公告显示地点信息缺失，但没有解释原因。",
+            "ja": "お知らせから場所の情報がないことは分かりますが、理由は分かりません。",
+            "ko": "공지는 장소가 빠졌다는 것은 보여 주지만 이유는 설명하지 않아요."
+          },
+          "visual": "sentence:The notice shows that the location is missing, but it does not explain why.",
+          "target": "sentence:The notice shows that the location is missing, but it does not explain why.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep09-s07",
+          "english": "Listen and choose.",
+          "demo": "The notice shows that the location is missing, but it does not explain why.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "公告顯示地點資訊缺漏，但沒有解釋原因。",
+            "zh-CN": "公告显示地点信息缺失，但没有解释原因。",
+            "ja": "お知らせから場所の情報がないことは分かりますが、理由は分かりません。",
+            "ko": "공지는 장소가 빠졌다는 것은 보여 주지만 이유는 설명하지 않아요."
+          },
+          "visual": "sentence:The notice shows that the location is missing, but it does not explain why.",
+          "target": "sentence:The notice shows that the location is missing, but it does not explain why.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:The notice shows that the location is missing, but it does not explain why.",
+            "sentence:Amy explains that several new students went to the library instead of Room Five.",
+            "sentence:What we know guides the correction; what we do not know requires further checking."
+          ]
+        },
+        {
+          "id": "ep09-s08",
+          "english": "I know where the session takes place, but I do not know who changed the notice.",
+          "demo": "I know where the session takes place, but I do not know who changed the notice.",
+          "instruction": {
+            "en": "Compare two embedded ideas; each keeps the word order needed inside its clause.",
+            "zh-TW": "比較兩個嵌入想法，檢查各自子句的語序。",
+            "zh-CN": "比较两个嵌入想法，检查各自从句的语序。",
+            "ja": "二つの組み込まれた内容を比べ、各節の語順を確かめます。",
+            "ko": "포함된 두 생각을 비교하고 각 절 안의 어순을 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "我知道活動在哪裡舉行，但不知道誰改了公告。",
+            "zh-CN": "我知道活动在哪里举行，但不知道谁改了公告。",
+            "ja": "会場は分かりますが、誰がお知らせを変えたのかは分かりません。",
+            "ko": "행사가 어디서 열리는지는 알지만 누가 공지를 바꿨는지는 몰라요."
+          },
+          "visual": "sentence:I know where the session takes place, but I do not know who changed the notice.",
+          "target": "sentence:I know where the session takes place, but I do not know who changed the notice.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep09-s09",
+          "english": "Listen and choose.",
+          "demo": "I know where the session takes place, but I do not know who changed the notice.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我知道活動在哪裡舉行，但不知道誰改了公告。",
+            "zh-CN": "我知道活动在哪里举行，但不知道谁改了公告。",
+            "ja": "会場は分かりますが、誰がお知らせを変えたのかは分かりません。",
+            "ko": "행사가 어디서 열리는지는 알지만 누가 공지를 바꿨는지는 몰라요."
+          },
+          "visual": "sentence:I know where the session takes place, but I do not know who changed the notice.",
+          "target": "sentence:I know where the session takes place, but I do not know who changed the notice.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Amy explains that several new students went to the library instead of Room Five.",
+            "sentence:I know where the session takes place, but I do not know who changed the notice.",
+            "sentence:What we know guides the correction; what we do not know requires further checking."
+          ]
+        },
+        {
+          "id": "ep09-s10",
+          "english": "What we know guides the correction; what we do not know requires further checking.",
+          "demo": "What we know guides the correction; what we do not know requires further checking.",
+          "instruction": {
+            "en": "Use noun clauses to organize known information and remaining questions clearly.",
+            "zh-TW": "用名詞子句清楚組織已知資訊與待解問題。",
+            "zh-CN": "用名词从句清楚组织已知信息与待解问题。",
+            "ja": "名詞節を使って、既知の情報と残る疑問を明確に整理します。",
+            "ko": "명사절로 아는 정보와 남은 질문을 분명히 정리해요."
+          },
+          "demo_translation": {
+            "zh-TW": "已知資訊引導更正；未知資訊需要進一步查證。",
+            "zh-CN": "已知信息指导更正；未知信息需要进一步核实。",
+            "ja": "分かっていることを基に修正し、不明な点はさらに確認します。",
+            "ko": "아는 내용으로 수정하고 모르는 내용은 더 확인해야 해요."
+          },
+          "visual": "sentence:What we know guides the correction; what we do not know requires further checking.",
+          "target": "sentence:What we know guides the correction; what we do not know requires further checking.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        }
+      ]
+    },
+    {
+      "id": "ep10",
+      "number": 10,
+      "season": 1,
+      "grade": 10,
+      "title_en": "Asking with Care",
+      "title_zh_TW": "慎重而清楚地提問",
+      "titles": {
+        "zh-TW": "慎重而清楚地提問",
+        "zh-CN": "慎重而清楚地提问",
+        "ja": "配慮のある質問をする",
+        "ko": "배려하며 질문하기"
+      },
+      "topic": "embedded-questions-formal-tone",
+      "objectives_zh_TW": [
+        "把直接問句改為嵌入式問句並保持敘述語序。",
+        "用 whether 或 if 提出是非問題，辨認 do 是否仍有必要。",
+        "以背景、具體問題與客氣語氣寫正式請求。"
+      ],
+      "parent_tip_zh_TW": "客氣開頭後仍要有明確問題；檢查 embedded clause 中的主詞動詞順序，也檢查收件者知道你要什麼。",
+      "practice": {
+        "prompt_en": "Write a 60-90-word email to a fictional school organizer. Explain your context, ask two specific embedded questions, and close politely without assuming approval.",
+        "prompt_zh_TW": "用六十至九十詞寫信給虛構校園活動負責人，交代背景、提出兩個具體嵌入式問句，並客氣結尾，不預設已獲許可。",
+        "sample_answer_en": "Dear Ms. Lee, Our media club is preparing photographs for the school exhibition next Friday. Could you tell me whether the spare camera is available on Thursday afternoon? I would also like to know where we should return it after use. We need it for indoor pictures and can collect it after our last class. Thank you for considering our request. We will wait for your reply before changing our plan. Best regards, Amy",
+        "reading_en": "Amy wants to borrow a camera for the school exhibition. Her first message says only, \"Can we have the camera?\" The organizer cannot tell which camera she means or when the club needs it. Amy revises the message. She explains that the club is taking indoor photographs on Thursday afternoon. She then asks, \"Could you tell me whether the spare camera is available then?\" A second question asks where the camera should be returned. The new message is polite, but its usefulness also comes from the specific details. Amy has not received permission yet, so she keeps another plan available and waits for the organizer's reply.",
+        "questions": [
+          {
+            "prompt_en": "What two details were unclear in Amy's first message?",
+            "answer_en": "Which camera she meant and when the club needed it."
+          },
+          {
+            "prompt_en": "Why is the revised request easier for the organizer to answer?",
+            "answer_en": "It identifies the spare camera, gives Thursday afternoon, and asks a specific availability question."
+          },
+          {
+            "prompt_en": "Does a polite request mean Amy may take the camera immediately? Explain.",
+            "answer_en": "No. She has not received permission and is waiting for the organizer's reply."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep10-s01",
+          "english": "Where is the spare camera? Could you tell me where the spare camera is?",
+          "demo": "Where is the spare camera? Could you tell me where the spare camera is?",
+          "instruction": {
+            "en": "Compare the direct question with the embedded clause's subject before is.",
+            "zh-TW": "比較直接問句與嵌入子句中主詞在 is 前的語序。",
+            "zh-CN": "比较直接问句与嵌入从句中主语在 is 前的语序。",
+            "ja": "直接疑問文と、主語を is の前に置く組み込み節を比べます。",
+            "ko": "직접 질문과 주어가 is 앞에 오는 포함된 절을 비교해요."
+          },
+          "demo_translation": {
+            "zh-TW": "備用相機在哪裡？可以請您告訴我備用相機的位置嗎？",
+            "zh-CN": "备用相机在哪里？可以请您告诉我备用相机的位置吗？",
+            "ja": "予備のカメラはどこですか。予備のカメラがどこにあるか教えていただけますか。",
+            "ko": "예비 카메라는 어디 있나요? 예비 카메라가 어디 있는지 알려 주시겠어요?"
+          },
+          "visual": "sentence:Where is the spare camera? Could you tell me where the spare camera is?",
+          "target": "sentence:Where is the spare camera? Could you tell me where the spare camera is?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep10-s02",
+          "english": "Could you tell me whether the spare camera is available on Thursday afternoon?",
+          "demo": "Could you tell me whether the spare camera is available on Thursday afternoon?",
+          "instruction": {
+            "en": "Use whether to embed this yes-or-no question, keeping the camera before is.",
+            "zh-TW": "whether 引出是非問題，the camera 放在 is 前。",
+            "zh-CN": "whether 引出是非问题，the camera 放在 is 前。",
+            "ja": "whether で可否の質問を組み込み、the camera を is の前に置きます。",
+            "ko": "whether로 예나 아니요 질문을 넣고 the camera를 is 앞에 놓아요."
+          },
+          "demo_translation": {
+            "zh-TW": "可以請您告訴我，星期四下午備用相機是否可借用？",
+            "zh-CN": "可以请您告诉我，星期四下午备用相机是否可以借用？",
+            "ja": "木曜の午後に予備のカメラが使えるか教えていただけますか。",
+            "ko": "목요일 오후에 예비 카메라를 사용할 수 있는지 알려 주시겠어요?"
+          },
+          "visual": "sentence:Could you tell me whether the spare camera is available on Thursday afternoon?",
+          "target": "sentence:Could you tell me whether the spare camera is available on Thursday afternoon?",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep10-s03",
+          "english": "I would like to know where we should return the camera after use.",
+          "demo": "I would like to know where we should return the camera after use.",
+          "instruction": {
+            "en": "The embedded clause keeps we before should; the whole sentence states a request.",
+            "zh-TW": "嵌入子句保留 we 在 should 前，整句表達請求。",
+            "zh-CN": "嵌入从句保留 we 在 should 前，整句表达请求。",
+            "ja": "組み込み節は we を should の前に置き、文全体で依頼を表します。",
+            "ko": "포함된 절에서 we는 should 앞에 오고 문장 전체는 요청을 나타내요."
+          },
+          "demo_translation": {
+            "zh-TW": "我想知道使用後應把相機還到哪裡。",
+            "zh-CN": "我想知道使用后应把相机还到哪里。",
+            "ja": "使用後にカメラをどこへ返すべきか知りたいです。",
+            "ko": "사용 후 카메라를 어디에 반납해야 하는지 알고 싶어요."
+          },
+          "visual": "sentence:I would like to know where we should return the camera after use.",
+          "target": "sentence:I would like to know where we should return the camera after use.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep10-s04",
+          "english": "Could you explain when the equipment office opens on Thursdays?",
+          "demo": "Could you explain when the equipment office opens on Thursdays?",
+          "instruction": {
+            "en": "Read the office opens in statement order; no question helper does is needed here.",
+            "zh-TW": "讀 office opens 的敘述語序，此處不用 does。",
+            "zh-CN": "读 office opens 的陈述语序，此处不用 does。",
+            "ja": "the office opens の平叙文の語順で読み、ここでは does を使いません。",
+            "ko": "the office opens를 평서문 어순으로 읽어요. 여기서는 does가 필요 없어요."
+          },
+          "demo_translation": {
+            "zh-TW": "可以請您說明器材室星期四幾點開門嗎？",
+            "zh-CN": "可以请您说明器材室星期四几点开门吗？",
+            "ja": "木曜に機材室が何時に開くか教えていただけますか。",
+            "ko": "목요일에 장비실이 언제 여는지 설명해 주시겠어요?"
+          },
+          "visual": "sentence:Could you explain when the equipment office opens on Thursdays?",
+          "target": "sentence:Could you explain when the equipment office opens on Thursdays?",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep10-s05",
+          "english": "Listen and choose.",
+          "demo": "Could you tell me whether the spare camera is available on Thursday afternoon?",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "可以請您告訴我，星期四下午備用相機是否可借用？",
+            "zh-CN": "可以请您告诉我，星期四下午备用相机是否可以借用？",
+            "ja": "木曜の午後に予備のカメラが使えるか教えていただけますか。",
+            "ko": "목요일 오후에 예비 카메라를 사용할 수 있는지 알려 주시겠어요?"
+          },
+          "visual": "sentence:Could you tell me whether the spare camera is available on Thursday afternoon?",
+          "target": "sentence:Could you tell me whether the spare camera is available on Thursday afternoon?",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Could you tell me whether the spare camera is available on Thursday afternoon?",
+            "sentence:Where is the spare camera? Could you tell me where the spare camera is?",
+            "sentence:A clear request combines specific information, suitable tone, and accurate word order."
+          ]
+        },
+        {
+          "id": "ep10-s06",
+          "english": "We are taking indoor photographs on Thursday afternoon for the school exhibition.",
+          "demo": "We are taking indoor photographs on Thursday afternoon for the school exhibition.",
+          "instruction": {
+            "en": "Useful context gives the organizer a reason and a time for the request.",
+            "zh-TW": "有效背景提供請求的理由與時間。",
+            "zh-CN": "有效背景提供请求的理由与时间。",
+            "ja": "役立つ背景説明は、担当者に依頼の理由と時間を伝えます。",
+            "ko": "유용한 배경은 담당자에게 요청 이유와 시간을 알려 줘요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們星期四下午要為校展拍攝室內照片。",
+            "zh-CN": "我们星期四下午要为校展拍摄室内照片。",
+            "ja": "学校の展示会のために、木曜の午後に屋内で写真を撮る予定です。",
+            "ko": "학교 전시회를 위해 목요일 오후에 실내 사진을 찍을 예정이에요."
+          },
+          "visual": "sentence:We are taking indoor photographs on Thursday afternoon for the school exhibition.",
+          "target": "sentence:We are taking indoor photographs on Thursday afternoon for the school exhibition.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep10-s07",
+          "english": "Listen and choose.",
+          "demo": "We are taking indoor photographs on Thursday afternoon for the school exhibition.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "我們星期四下午要為校展拍攝室內照片。",
+            "zh-CN": "我们星期四下午要为校展拍摄室内照片。",
+            "ja": "学校の展示会のために、木曜の午後に屋内で写真を撮る予定です。",
+            "ko": "학교 전시회를 위해 목요일 오후에 실내 사진을 찍을 예정이에요."
+          },
+          "visual": "sentence:We are taking indoor photographs on Thursday afternoon for the school exhibition.",
+          "target": "sentence:We are taking indoor photographs on Thursday afternoon for the school exhibition.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Where is the spare camera? Could you tell me where the spare camera is?",
+            "sentence:We are taking indoor photographs on Thursday afternoon for the school exhibition.",
+            "sentence:A clear request combines specific information, suitable tone, and accurate word order."
+          ]
+        },
+        {
+          "id": "ep10-s08",
+          "english": "Please let us know if the camera is available before we confirm our plan.",
+          "demo": "Please let us know if the camera is available before we confirm our plan.",
+          "instruction": {
+            "en": "Here, if means whether; it introduces the information requested, not a condition.",
+            "zh-TW": "此處 if 表示是否，引出所詢資訊而非條件。",
+            "zh-CN": "此处 if 表示是否，引出所问信息而非条件。",
+            "ja": "ここで if は「かどうか」を表し、条件ではなく求める情報を示します。",
+            "ko": "여기서 if는 조건이 아니라 묻는 정보인 여부를 나타내요."
+          },
+          "demo_translation": {
+            "zh-TW": "請在我們確認計畫前告知相機是否可借用。",
+            "zh-CN": "请在我们确认计划前告知相机是否可以借用。",
+            "ja": "計画を確定する前に、カメラが使えるかお知らせください。",
+            "ko": "계획을 확정하기 전에 카메라를 사용할 수 있는지 알려 주세요."
+          },
+          "visual": "sentence:Please let us know if the camera is available before we confirm our plan.",
+          "target": "sentence:Please let us know if the camera is available before we confirm our plan.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep10-s09",
+          "english": "Listen and choose.",
+          "demo": "Please let us know if the camera is available before we confirm our plan.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "請在我們確認計畫前告知相機是否可借用。",
+            "zh-CN": "请在我们确认计划前告知相机是否可以借用。",
+            "ja": "計画を確定する前に、カメラが使えるかお知らせください。",
+            "ko": "계획을 확정하기 전에 카메라를 사용할 수 있는지 알려 주세요."
+          },
+          "visual": "sentence:Please let us know if the camera is available before we confirm our plan.",
+          "target": "sentence:Please let us know if the camera is available before we confirm our plan.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Where is the spare camera? Could you tell me where the spare camera is?",
+            "sentence:A clear request combines specific information, suitable tone, and accurate word order.",
+            "sentence:Please let us know if the camera is available before we confirm our plan."
+          ]
+        },
+        {
+          "id": "ep10-s10",
+          "english": "A clear request combines specific information, suitable tone, and accurate word order.",
+          "demo": "A clear request combines specific information, suitable tone, and accurate word order.",
+          "instruction": {
+            "en": "Politeness helps, but the reader must also know exactly what you are asking.",
+            "zh-TW": "客氣有幫助，讀者也要清楚知道你在問什麼。",
+            "zh-CN": "客气有帮助，读者也要清楚知道你在问什么。",
+            "ja": "丁寧さに加え、何を尋ねているのか読み手に明確に伝えます。",
+            "ko": "공손함과 함께 무엇을 묻는지도 독자에게 분명하게 전해야 해요."
+          },
+          "demo_translation": {
+            "zh-TW": "清楚的請求結合具體資訊、適當語氣與正確語序。",
+            "zh-CN": "清楚的请求结合具体信息、适当语气与正确语序。",
+            "ja": "明確な依頼には、具体的な情報、適切な口調、正確な語順がそろっています。",
+            "ko": "명확한 요청은 구체적인 정보, 적절한 말투, 정확한 어순을 갖춰요."
+          },
+          "visual": "sentence:A clear request combines specific information, suitable tone, and accurate word order.",
+          "target": "sentence:A clear request combines specific information, suitable tone, and accurate word order.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        }
+      ]
+    },
+    {
+      "id": "ep11",
+      "number": 11,
+      "season": 1,
+      "grade": 10,
+      "title_en": "Reading a Student Profile",
+      "title_zh_TW": "閱讀學生介紹",
+      "titles": {
+        "zh-TW": "閱讀學生介紹",
+        "zh-CN": "阅读学生介绍",
+        "ja": "生徒の紹介文を読む",
+        "ko": "학생 소개 글 읽기"
+      },
+      "topic": "profile-purpose-chronology-evidence",
+      "objectives_zh_TW": [
+        "辨認學生介紹的目的及支持目的的細節。",
+        "依時間標記重建經驗、改變與目標的先後。",
+        "區分文本支持的能力推論與過度概括。"
+      ],
+      "parent_tip_zh_TW": "不要把一次成功推成任何任務都能做好；圈出實際行動，說明它支持哪一個有限度的結論。",
+      "practice": {
+        "prompt_en": "Write a 60-90-word profile of a fictional student applying for a club role. Connect an earlier difficulty, a specific response, and a current goal. Include a claim supported by the experience.",
+        "prompt_zh_TW": "用六十至九十詞介紹申請社團職務的虛構學生，連結較早遇到的困難、具體回應與目前目標，並提出有該經驗支持的看法。",
+        "sample_answer_en": "Amy hopes to help train new members of the design club. Last term, a student could not follow the instructions she had written. Instead of blaming the reader, Amy watched the student try each step and added clearer labels. She has since been testing her guides with beginners before sharing them. This experience suggests that she is willing to revise her work in response to feedback. She now wants to make the club handbook easier to use.",
+        "reading_en": "Sam is applying to help organize the school exhibition. His profile begins with a mistake: last year, he placed several captions beside the wrong photographs. A visitor pointed out the problem, and Sam checked every label before the next group arrived. Since then, he has been using a numbered plan when arranging displays. He also asks another student to compare the plan with the finished arrangement. In his application, Sam says this experience taught him to check information rather than trust his memory. He now wants to help new club members prepare their first display. The profile supports a claim about careful improvement, but it does not show that Sam can manage every part of a large event alone.",
+        "questions": [
+          {
+            "prompt_en": "What role is Sam applying for?",
+            "answer_en": "He is applying to help organize the school exhibition."
+          },
+          {
+            "prompt_en": "How did Sam change his preparation after the earlier mistake?",
+            "answer_en": "He began using a numbered plan and asking another student to check the arrangement against it."
+          },
+          {
+            "prompt_en": "Is the claim that Sam can manage every part of a large event alone supported? Explain.",
+            "answer_en": "No. The profile shows improved checking of displays, but gives no evidence about managing every event task alone."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep11-s01",
+          "english": "Sam is applying to help organize the school exhibition, so his profile explains relevant experience.",
+          "demo": "Sam is applying to help organize the school exhibition, so his profile explains relevant experience.",
+          "instruction": {
+            "en": "Use the application purpose to judge which details matter most.",
+            "zh-TW": "用申請目的判斷哪些細節最重要。",
+            "zh-CN": "用申请目的判断哪些细节最重要。",
+            "ja": "応募の目的を基に、重要な情報を判断します。",
+            "ko": "지원 목적을 바탕으로 어떤 세부 내용이 가장 중요한지 판단해요."
+          },
+          "demo_translation": {
+            "zh-TW": "Sam 正申請協助籌辦校展，所以介紹著重相關經驗。",
+            "zh-CN": "Sam 正申请协助筹办校展，所以介绍着重相关经历。",
+            "ja": "サムは学校の展示会運営を手伝いたいため、紹介文で関連する経験を説明しています。",
+            "ko": "샘은 학교 전시회 준비를 돕는 역할에 지원하므로 소개 글에서 관련 경험을 설명해요."
+          },
+          "visual": "sentence:Sam is applying to help organize the school exhibition, so his profile explains relevant experience.",
+          "target": "sentence:Sam is applying to help organize the school exhibition, so his profile explains relevant experience.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep11-s02",
+          "english": "Last year, he placed several captions beside the wrong photographs during an exhibition.",
+          "demo": "Last year, he placed several captions beside the wrong photographs during an exhibition.",
+          "instruction": {
+            "en": "This specific mistake establishes the problem that the later actions address.",
+            "zh-TW": "這個具體錯誤交代後續行動要處理的問題。",
+            "zh-CN": "这个具体错误交代后续行动要处理的问题。",
+            "ja": "この具体的な失敗が、後の行動で対処する問題を示します。",
+            "ko": "이 구체적인 실수는 이후 행동으로 해결할 문제를 제시해요."
+          },
+          "demo_translation": {
+            "zh-TW": "去年展覽時，他把幾張圖說放在錯誤的照片旁。",
+            "zh-CN": "去年展览时，他把几张图片说明放在错误的照片旁。",
+            "ja": "昨年の展示会で、いくつかの説明文を別の写真の横に置いてしまいました。",
+            "ko": "지난해 전시회에서 몇몇 사진 설명을 엉뚱한 사진 옆에 놓았어요."
+          },
+          "visual": "sentence:Last year, he placed several captions beside the wrong photographs during an exhibition.",
+          "target": "sentence:Last year, he placed several captions beside the wrong photographs during an exhibition.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep11-s03",
+          "english": "A visitor noticed the mistake, and Sam checked every label before the next group arrived.",
+          "demo": "A visitor noticed the mistake, and Sam checked every label before the next group arrived.",
+          "instruction": {
+            "en": "The response provides evidence of action rather than simply claiming responsibility.",
+            "zh-TW": "回應提供實際行動證據，不只自稱有責任感。",
+            "zh-CN": "回应提供实际行动证据，不只自称有责任感。",
+            "ja": "対応の描写は、責任感を主張するだけでなく行動の証拠を示します。",
+            "ko": "대응은 책임감을 주장하는 데 그치지 않고 행동의 증거를 제공해요."
+          },
+          "demo_translation": {
+            "zh-TW": "訪客發現錯誤後，Sam 在下一組抵達前核對所有標籤。",
+            "zh-CN": "访客发现错误后，Sam 在下一组到达前核对所有标签。",
+            "ja": "来場者に指摘され、サムは次の組が来る前に全ラベルを確認しました。",
+            "ko": "방문객이 실수를 발견하자 샘은 다음 팀이 오기 전에 모든 표시를 확인했어요."
+          },
+          "visual": "sentence:A visitor noticed the mistake, and Sam checked every label before the next group arrived.",
+          "target": "sentence:A visitor noticed the mistake, and Sam checked every label before the next group arrived.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep11-s04",
+          "english": "Since then, he has been using a numbered plan to arrange displays.",
+          "demo": "Since then, he has been using a numbered plan to arrange displays.",
+          "instruction": {
+            "en": "Read since then as the bridge from one mistake to an ongoing changed practice.",
+            "zh-TW": "since then 把一次錯誤連到持續改變的做法。",
+            "zh-CN": "since then 把一次错误连到持续改变的做法。",
+            "ja": "since then を、一度の失敗と続いている改善を結ぶ表現として読みます。",
+            "ko": "since then을 한 번의 실수와 지속적인 실천 변화를 연결하며 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "從那時起，他一直使用編號規劃表布置展覽。",
+            "zh-CN": "从那时起，他一直使用编号规划表布置展览。",
+            "ja": "それ以来、番号付きの配置図を使って展示を並べています。",
+            "ko": "그 이후 번호가 매겨진 계획표를 사용해 전시물을 배치해 오고 있어요."
+          },
+          "visual": "sentence:Since then, he has been using a numbered plan to arrange displays.",
+          "target": "sentence:Since then, he has been using a numbered plan to arrange displays.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep11-s05",
+          "english": "Listen and choose.",
+          "demo": "Last year, he placed several captions beside the wrong photographs during an exhibition.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "去年展覽時，他把幾張圖說放在錯誤的照片旁。",
+            "zh-CN": "去年展览时，他把几张图片说明放在错误的照片旁。",
+            "ja": "昨年の展示会で、いくつかの説明文を別の写真の横に置いてしまいました。",
+            "ko": "지난해 전시회에서 몇몇 사진 설명을 엉뚱한 사진 옆에 놓았어요."
+          },
+          "visual": "sentence:Last year, he placed several captions beside the wrong photographs during an exhibition.",
+          "target": "sentence:Last year, he placed several captions beside the wrong photographs during an exhibition.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Sam is applying to help organize the school exhibition, so his profile explains relevant experience.",
+            "sentence:Last year, he placed several captions beside the wrong photographs during an exhibition.",
+            "sentence:The profile connects an earlier mistake, a changed habit, and a relevant current goal."
+          ]
+        },
+        {
+          "id": "ep11-s06",
+          "english": "Another student compares his plan with the finished display to catch possible errors.",
+          "demo": "Another student compares his plan with the finished display to catch possible errors.",
+          "instruction": {
+            "en": "A second check supports a limited claim about Sam's preparation habits.",
+            "zh-TW": "再次核對支持關於 Sam 準備習慣的有限結論。",
+            "zh-CN": "再次核对支持关于 Sam 准备习惯的有限结论。",
+            "ja": "二人目の確認は、サムの準備習慣について範囲を絞った主張を支えます。",
+            "ko": "두 번째 확인은 샘의 준비 습관에 관한 제한된 주장을 뒷받침해요."
+          },
+          "demo_translation": {
+            "zh-TW": "另一名學生比對規劃表與完成的展覽，找出可能錯誤。",
+            "zh-CN": "另一名学生对比规划表与完成的展览，找出可能错误。",
+            "ja": "別の生徒が配置図と完成した展示を照らし合わせ、間違いがないか確認します。",
+            "ko": "다른 학생이 계획표와 완성된 전시를 비교해 가능한 오류를 찾아요."
+          },
+          "visual": "sentence:Another student compares his plan with the finished display to catch possible errors.",
+          "target": "sentence:Another student compares his plan with the finished display to catch possible errors.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep11-s07",
+          "english": "Listen and choose.",
+          "demo": "Another student compares his plan with the finished display to catch possible errors.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "另一名學生比對規劃表與完成的展覽，找出可能錯誤。",
+            "zh-CN": "另一名学生对比规划表与完成的展览，找出可能错误。",
+            "ja": "別の生徒が配置図と完成した展示を照らし合わせ、間違いがないか確認します。",
+            "ko": "다른 학생이 계획표와 완성된 전시를 비교해 가능한 오류를 찾아요."
+          },
+          "visual": "sentence:Another student compares his plan with the finished display to catch possible errors.",
+          "target": "sentence:Another student compares his plan with the finished display to catch possible errors.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Sam is applying to help organize the school exhibition, so his profile explains relevant experience.",
+            "sentence:The profile connects an earlier mistake, a changed habit, and a relevant current goal.",
+            "sentence:Another student compares his plan with the finished display to catch possible errors."
+          ]
+        },
+        {
+          "id": "ep11-s08",
+          "english": "His experience suggests careful improvement; it does not prove he can manage every task alone.",
+          "demo": "His experience suggests careful improvement; it does not prove he can manage every task alone.",
+          "instruction": {
+            "en": "Read the supported conclusion separately from the stronger claim the evidence cannot establish.",
+            "zh-TW": "區分有支持的結論與證據無法確立的更強主張。",
+            "zh-CN": "区分有支持的结论与证据无法确定的更强主张。",
+            "ja": "裏付けのある結論と、証拠では示せない強い主張を分けて読みます。",
+            "ko": "뒷받침되는 결론과 증거가 확립하지 못하는 더 강한 주장을 구분해 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "他的經驗顯示細心改進，卻不能證明能獨力處理所有工作。",
+            "zh-CN": "他的经历显示细心改进，却不能证明能独力处理所有工作。",
+            "ja": "経験は丁寧な改善を示しますが、全作業を一人で管理できる証明ではありません。",
+            "ko": "이 경험은 신중한 개선을 보여 주지만 모든 일을 혼자 관리할 수 있다는 증거는 아니에요."
+          },
+          "visual": "sentence:His experience suggests careful improvement; it does not prove he can manage every task alone.",
+          "target": "sentence:His experience suggests careful improvement; it does not prove he can manage every task alone.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep11-s09",
+          "english": "Listen and choose.",
+          "demo": "His experience suggests careful improvement; it does not prove he can manage every task alone.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "他的經驗顯示細心改進，卻不能證明能獨力處理所有工作。",
+            "zh-CN": "他的经历显示细心改进，却不能证明能独力处理所有工作。",
+            "ja": "経験は丁寧な改善を示しますが、全作業を一人で管理できる証明ではありません。",
+            "ko": "이 경험은 신중한 개선을 보여 주지만 모든 일을 혼자 관리할 수 있다는 증거는 아니에요."
+          },
+          "visual": "sentence:His experience suggests careful improvement; it does not prove he can manage every task alone.",
+          "target": "sentence:His experience suggests careful improvement; it does not prove he can manage every task alone.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:His experience suggests careful improvement; it does not prove he can manage every task alone.",
+            "sentence:Sam is applying to help organize the school exhibition, so his profile explains relevant experience.",
+            "sentence:The profile connects an earlier mistake, a changed habit, and a relevant current goal."
+          ]
+        },
+        {
+          "id": "ep11-s10",
+          "english": "The profile connects an earlier mistake, a changed habit, and a relevant current goal.",
+          "demo": "The profile connects an earlier mistake, a changed habit, and a relevant current goal.",
+          "instruction": {
+            "en": "Check purpose, chronology, and evidence before deciding what a profile shows.",
+            "zh-TW": "判斷介紹說明什麼前，先查目的、時序與證據。",
+            "zh-CN": "判断介绍说明什么前，先查目的、时序与证据。",
+            "ja": "紹介文から分かることを判断する前に、目的、時系列、証拠を確認します。",
+            "ko": "소개 글이 보여 주는 바를 판단하기 전에 목적, 시간 순서, 증거를 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "這份介紹連結較早的錯誤、改變的習慣與相關的目前目標。",
+            "zh-CN": "这份介绍连接较早的错误、改变的习惯与相关的当前目标。",
+            "ja": "紹介文は過去の失敗、変わった習慣、今の関連する目標を結んでいます。",
+            "ko": "소개 글은 이전 실수, 바뀐 습관, 관련된 현재 목표를 연결해요."
+          },
+          "visual": "sentence:The profile connects an earlier mistake, a changed habit, and a relevant current goal.",
+          "target": "sentence:The profile connects an earlier mistake, a changed habit, and a relevant current goal.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        }
+      ]
+    },
+    {
+      "id": "ep12",
+      "number": 12,
+      "season": 1,
+      "grade": 10,
+      "title_en": "Building a Connected Profile",
+      "title_zh_TW": "組成連貫人物介紹",
+      "titles": {
+        "zh-TW": "組成連貫人物介紹",
+        "zh-CN": "组成连贯人物介绍",
+        "ja": "つながりのある紹介文を書く",
+        "ko": "흐름이 이어지는 소개 글 쓰기"
+      },
+      "topic": "season-one-review-connected-profile",
+      "objectives_zh_TW": [
+        "整合時間線、關係子句與名詞子句組織人物介紹。",
+        "用經驗支持目標，區分已完成成果與持續活動。",
+        "修訂六十至九十詞介紹，檢查時態、指代與描述範圍。"
+      ],
+      "parent_tip_zh_TW": "先檢查故事是否連貫，再看句子形式；每個細節都應幫讀者理解人物、經驗或目標，不必硬塞所有時態。",
+      "practice": {
+        "prompt_en": "Write a 60-90-word connected profile of a fictional student. Link a past experience, ongoing learning, and a future goal. Include one relative clause and one noun clause, and keep claims supported by details.",
+        "prompt_zh_TW": "用六十至九十詞寫虛構學生的連貫介紹，連結過去經驗、持續學習及未來目標，包含一個關係子句與一個名詞子句，並以細節支持看法。",
+        "sample_answer_en": "Amy, who enjoys explaining practical skills, wants to help new science club members. Last term, she discovered that her instructions were unclear when a beginner followed the wrong step. She has been testing her guides with new readers since then. The comments she collects help her identify missing information. What she values most is seeing someone complete a task independently. By the next club meeting, she will have revised the guide for one simple experiment.",
+        "reading_en": "Pip is preparing a profile for the school design club. His first draft lists several interests but does not explain how they connect. He revises it around one experience. Last term, a new student struggled to follow a map that Pip had drawn. Pip asked where the student had become confused and changed the labels. Since then, he has been testing his maps with people who do not know the building. What he wants to learn next is how to make directions clearer without adding too much text. By the club interview, he expects to have completed a revised map. His profile now connects a problem, a response, continuing practice, and a realistic goal.",
+        "questions": [
+          {
+            "prompt_en": "What problem led Pip to revise his map?",
+            "answer_en": "A new student struggled to follow it."
+          },
+          {
+            "prompt_en": "How does the revised profile improve on the first draft?",
+            "answer_en": "It connects one experience to his response, continuing practice, and goal instead of listing unrelated interests."
+          },
+          {
+            "prompt_en": "Would adding a claim that everyone can now follow Pip's maps be justified? Explain.",
+            "answer_en": "No. He is still testing them, and the passage does not report that every reader succeeds."
+          }
+        ]
+      },
+      "scenes": [
+        {
+          "id": "ep12-s01",
+          "english": "Pip wants to join the design club because he enjoys making useful maps.",
+          "demo": "Pip wants to join the design club because he enjoys making useful maps.",
+          "instruction": {
+            "en": "Begin with the profile's purpose and connect the interest to a reason.",
+            "zh-TW": "先交代介紹的目的，把興趣連到理由。",
+            "zh-CN": "先交代介绍的目的，把兴趣连到理由。",
+            "ja": "紹介文の目的から始め、興味と理由をつなぎます。",
+            "ko": "소개 글의 목적부터 시작하고 관심을 이유와 연결해요."
+          },
+          "demo_translation": {
+            "zh-TW": "Pip 想加入設計社，因為他喜歡製作實用地圖。",
+            "zh-CN": "Pip 想加入设计社，因为他喜欢制作实用地图。",
+            "ja": "ピップは役立つ地図を作るのが好きなので、デザイン部に入りたいと思っています。",
+            "ko": "핍은 유용한 지도를 만들기 좋아해서 디자인 동아리에 들어가고 싶어 해요."
+          },
+          "visual": "sentence:Pip wants to join the design club because he enjoys making useful maps.",
+          "target": "sentence:Pip wants to join the design club because he enjoys making useful maps.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep12-s02",
+          "english": "Last term, a student could not follow the map that Pip had drawn.",
+          "demo": "Last term, a student could not follow the map that Pip had drawn.",
+          "instruction": {
+            "en": "Review how had drawn places the drawing before the student's difficulty.",
+            "zh-TW": "複習 had drawn 如何把畫圖放在學生受困之前。",
+            "zh-CN": "复习 had drawn 如何把画图放在学生受困之前。",
+            "ja": "had drawn が、地図作りを生徒の困惑より前に置く点を復習します。",
+            "ko": "had drawn이 그리는 일을 학생의 어려움보다 앞에 놓는 방식을 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "上學期，一位學生無法看懂 Pip 先前畫的地圖。",
+            "zh-CN": "上学期，一位学生无法看懂 Pip 先前画的地图。",
+            "ja": "前の学期、ある生徒がピップの描いた地図をたどれませんでした。",
+            "ko": "지난 학기에 한 학생이 핍이 그려 둔 지도를 따라가지 못했어요."
+          },
+          "visual": "sentence:Last term, a student could not follow the map that Pip had drawn.",
+          "target": "sentence:Last term, a student could not follow the map that Pip had drawn.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep12-s03",
+          "english": "Pip asked where the student had become confused and then changed the labels.",
+          "demo": "Pip asked where the student had become confused and then changed the labels.",
+          "instruction": {
+            "en": "Review the embedded question's statement order and the later action in the narrative.",
+            "zh-TW": "複習嵌入問句的敘述語序與後續敘事動作。",
+            "zh-CN": "复习嵌入问句的陈述语序与后续叙事动作。",
+            "ja": "組み込まれた疑問の平叙文語順と、その後の行動を復習します。",
+            "ko": "포함된 질문의 평서문 어순과 이후 서술 행동을 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "Pip 詢問學生先前在哪裡困惑，接著修改標籤。",
+            "zh-CN": "Pip 询问学生先前在哪里困惑，接着修改标签。",
+            "ja": "ピップはどこで迷ったか尋ね、その後で表示を直しました。",
+            "ko": "핍은 학생이 어디에서 헷갈렸는지 물은 뒤 표시를 고쳤어요."
+          },
+          "visual": "sentence:Pip asked where the student had become confused and then changed the labels.",
+          "target": "sentence:Pip asked where the student had become confused and then changed the labels.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep12-s04",
+          "english": "Since then, he has been testing maps with students who do not know the building.",
+          "demo": "Since then, he has been testing maps with students who do not know the building.",
+          "instruction": {
+            "en": "Read the ongoing practice as a response to the earlier experience.",
+            "zh-TW": "把持續練習讀成對先前經驗的回應。",
+            "zh-CN": "把持续练习读成对先前经历的回应。",
+            "ja": "続いている取り組みを、以前の経験への対応として読みます。",
+            "ko": "계속되는 실천을 이전 경험에 대한 대응으로 읽어요."
+          },
+          "demo_translation": {
+            "zh-TW": "從那時起，他一直請不熟悉建築的學生測試地圖。",
+            "zh-CN": "从那时起，他一直请不熟悉建筑的学生测试地图。",
+            "ja": "それ以来、建物に不慣れな生徒と地図を試し続けています。",
+            "ko": "그 이후 건물에 익숙하지 않은 학생들과 지도를 시험해 오고 있어요."
+          },
+          "visual": "sentence:Since then, he has been testing maps with students who do not know the building.",
+          "target": "sentence:Since then, he has been testing maps with students who do not know the building.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep12-s05",
+          "english": "Listen and choose.",
+          "demo": "Last term, a student could not follow the map that Pip had drawn.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "上學期，一位學生無法看懂 Pip 先前畫的地圖。",
+            "zh-CN": "上学期，一位学生无法看懂 Pip 先前画的地图。",
+            "ja": "前の学期、ある生徒がピップの描いた地図をたどれませんでした。",
+            "ko": "지난 학기에 한 학생이 핍이 그려 둔 지도를 따라가지 못했어요."
+          },
+          "visual": "sentence:Last term, a student could not follow the map that Pip had drawn.",
+          "target": "sentence:Last term, a student could not follow the map that Pip had drawn.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Pip wants to join the design club because he enjoys making useful maps.",
+            "sentence:By the interview, he will have revised the map using comments from new readers.",
+            "sentence:Last term, a student could not follow the map that Pip had drawn."
+          ]
+        },
+        {
+          "id": "ep12-s06",
+          "english": "The comments he collects help him identify directions that need clearer labels.",
+          "demo": "The comments he collects help him identify directions that need clearer labels.",
+          "instruction": {
+            "en": "Review an omitted object relative word and a retained subject relative word.",
+            "zh-TW": "複習省略的受詞關係詞與保留的主詞關係詞。",
+            "zh-CN": "复习省略的宾语关系词与保留的主语关系词。",
+            "ja": "省略した目的語の関係詞と、残した主語の関係詞を復習します。",
+            "ko": "생략된 목적격 관계사와 남아 있는 주격 관계사를 복습해요."
+          },
+          "demo_translation": {
+            "zh-TW": "他蒐集的意見幫他找出需要更清楚標籤的路線說明。",
+            "zh-CN": "他收集的意见帮他找出需要更清楚标签的路线说明。",
+            "ja": "集めた意見から、より明確な表示が必要な道案内が分かります。",
+            "ko": "그가 모은 의견은 더 명확한 표시가 필요한 길 안내를 찾는 데 도움이 돼요."
+          },
+          "visual": "sentence:The comments he collects help him identify directions that need clearer labels.",
+          "target": "sentence:The comments he collects help him identify directions that need clearer labels.",
+          "mode": "demo",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        },
+        {
+          "id": "ep12-s07",
+          "english": "Listen and choose.",
+          "demo": "The comments he collects help him identify directions that need clearer labels.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "他蒐集的意見幫他找出需要更清楚標籤的路線說明。",
+            "zh-CN": "他收集的意见帮他找出需要更清楚标签的路线说明。",
+            "ja": "集めた意見から、より明確な表示が必要な道案内が分かります。",
+            "ko": "그가 모은 의견은 더 명확한 표시가 필요한 길 안내를 찾는 데 도움이 돼요."
+          },
+          "visual": "sentence:The comments he collects help him identify directions that need clearer labels.",
+          "target": "sentence:The comments he collects help him identify directions that need clearer labels.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:The comments he collects help him identify directions that need clearer labels.",
+            "sentence:Pip wants to join the design club because he enjoys making useful maps.",
+            "sentence:By the interview, he will have revised the map using comments from new readers."
+          ]
+        },
+        {
+          "id": "ep12-s08",
+          "english": "What he wants to learn is how to make directions clearer without adding unnecessary text.",
+          "demo": "What he wants to learn is how to make directions clearer without adding unnecessary text.",
+          "instruction": {
+            "en": "Read the noun clauses as connected ideas that define a specific learning goal.",
+            "zh-TW": "把名詞子句讀成相連想法，界定具體學習目標。",
+            "zh-CN": "把名词从句读成相连想法，界定具体学习目标。",
+            "ja": "名詞節をつながる考えとして読み、具体的な学習目標を捉えます。",
+            "ko": "명사절을 연결된 생각으로 읽어 구체적인 학습 목표를 파악해요."
+          },
+          "demo_translation": {
+            "zh-TW": "他想學的是如何讓指路更清楚，又不加多餘文字。",
+            "zh-CN": "他想学的是如何让指路更清楚，又不加多余文字。",
+            "ja": "学びたいのは、余分な文章を加えずに道案内を分かりやすくする方法です。",
+            "ko": "그가 배우고 싶은 것은 불필요한 글을 늘리지 않고 길 안내를 명확히 하는 방법이에요."
+          },
+          "visual": "sentence:What he wants to learn is how to make directions clearer without adding unnecessary text.",
+          "target": "sentence:What he wants to learn is how to make directions clearer without adding unnecessary text.",
+          "mode": "repeat",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。",
+          "guided_reading": true
+        },
+        {
+          "id": "ep12-s09",
+          "english": "Listen and choose.",
+          "demo": "What he wants to learn is how to make directions clearer without adding unnecessary text.",
+          "instruction": {
+            "en": "Listen and choose.",
+            "zh-TW": "聽一聽，選一選。",
+            "zh-CN": "听一听，选一选。",
+            "ja": "聞いて、選んでみましょう。",
+            "ko": "듣고 골라 보세요."
+          },
+          "demo_translation": {
+            "zh-TW": "他想學的是如何讓指路更清楚，又不加多餘文字。",
+            "zh-CN": "他想学的是如何让指路更清楚，又不加多余文字。",
+            "ja": "学びたいのは、余分な文章を加えずに道案内を分かりやすくする方法です。",
+            "ko": "그가 배우고 싶은 것은 불필요한 글을 늘리지 않고 길 안내를 명확히 하는 방법이에요."
+          },
+          "visual": "sentence:What he wants to learn is how to make directions clearer without adding unnecessary text.",
+          "target": "sentence:What he wants to learn is how to make directions clearer without adding unnecessary text.",
+          "mode": "quiz",
+          "wait_seconds": 6,
+          "note_zh_TW": "聽讀選句：先聽英文示範，完整等待六秒後揭答與翻譯；不作純聽力評量。",
+          "choices": [
+            "sentence:Pip wants to join the design club because he enjoys making useful maps.",
+            "sentence:What he wants to learn is how to make directions clearer without adding unnecessary text.",
+            "sentence:By the interview, he will have revised the map using comments from new readers."
+          ]
+        },
+        {
+          "id": "ep12-s10",
+          "english": "By the interview, he will have revised the map using comments from new readers.",
+          "demo": "By the interview, he will have revised the map using comments from new readers.",
+          "instruction": {
+            "en": "End with a realistic next result, then check the profile's timeline and evidence.",
+            "zh-TW": "用實際可行的成果收尾，再檢查時序與證據。",
+            "zh-CN": "用实际可行的成果收尾，再检查时序与证据。",
+            "ja": "実現可能な次の成果で結び、紹介文の時系列と証拠を確認します。",
+            "ko": "실현 가능한 다음 결과로 끝맺고 소개 글의 시간 흐름과 증거를 확인해요."
+          },
+          "demo_translation": {
+            "zh-TW": "到面試時，他將已根據新讀者的意見修訂地圖。",
+            "zh-CN": "到面试时，他将已根据新读者的意见修订地图。",
+            "ja": "面接までには、新しい読み手の意見を使って地図を修正している予定です。",
+            "ko": "면접 때까지 새 독자들의 의견으로 지도를 수정해 놓을 거예요."
+          },
+          "visual": "sentence:By the interview, he will have revised the map using comments from new readers.",
+          "target": "sentence:By the interview, he will have revised the map using comments from new readers.",
+          "mode": "review",
+          "wait_seconds": 5,
+          "note_zh_TW": "先觀察英文句卡與語法線索，再聽完整示範；課後另做無語音提示的理解與寫作。"
+        }
+      ]
+    }
+  ]
+}
