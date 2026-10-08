@@ -1,22 +1,26 @@
 ---
 id: 2026-10-07-video-thumbnails-one-subject-six-characters
 title: Video thumbnails: one subject, six characters, three rotating layouts, QA
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-fable
+claimed_at: 2026-10-08T00:12:08Z
 created_at: 2026-10-07T15:24:58Z
 completed_at:
-branch:
+branch: claude/focused-hopper-t3zgz9
 depends_on: []
 scope:
   - tools/video/templates
+  - tools/video/render
   - tools/video/qa/thumbnail.mjs
   - tools/video/qa/thumbnail.test.mjs
   - .agents/skills/youtube-video/references/visuals.md
   - .claude/skills/youtube-video/references/visuals.md
+  - .agents/skills/youtube-video/SKILL.md
+  - .claude/skills/youtube-video/SKILL.md
   - docs/videos/README.md
+  - docs/videos/ILLUSTRATED.md
 ---
 
 # Video thumbnails: one subject, six characters, three rotating layouts, QA

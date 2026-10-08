@@ -1,17 +1,18 @@
 ---
 id: 2026-10-07-video-script-rules-outro-with-a
 title: Video script rules: outro with a subscribe reason, numbers said out loud
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-fable
+claimed_at: 2026-10-08T00:12:08Z
 created_at: 2026-10-07T15:24:57Z
 completed_at:
-branch:
+branch: claude/focused-hopper-t3zgz9
 depends_on: []
 scope:
   - tools/video/automation/prompts.mjs
+  - tools/video/automation/prompts.test.mjs
   - tools/video/core/lint.mjs
   - tools/video/core/lint.test.mjs
   - .agents/skills/youtube-video/references/script-writing.md

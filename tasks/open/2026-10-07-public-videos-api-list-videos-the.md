@@ -1,18 +1,23 @@
 ---
 id: 2026-10-07-public-videos-api-list-videos-the
 title: Public videos API: list videos the owner published from Studio
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable
+claimed_at: 2026-10-08T00:12:07Z
 created_at: 2026-10-07T15:24:57Z
 completed_at:
-branch:
+branch: claude/focused-hopper-t3zgz9
 depends_on: []
 scope:
   - apps/api/app/video_reviews/public_api.py
+  - apps/api/app/video_reviews/admin_service.py
+  - apps/api/app/video_reviews/admin_api.py
+  - apps/api/app/video_reviews/schemas.py
+  - apps/api/app/cli.py
   - apps/api/tests/test_public_videos.py
+  - apps/api/tests/test_video_reviews_youtube.py
 ---
 
 # Public videos API: list videos the owner published from Studio
