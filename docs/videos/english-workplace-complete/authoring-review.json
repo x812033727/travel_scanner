@@ -1,0 +1,765 @@
+{
+  "schema_version": 1,
+  "course": "workplace",
+  "status": "clear",
+  "source_sha256": "75b306e8e84e87bbf8c809d0641ee583797678a5f8a5061b6254645bbbf53b39",
+  "episodes_reviewed": 48,
+  "scenes_reviewed": 480,
+  "unresolved_p1_p2": 0,
+  "scope": "Independent agent review of each full five-language season source, including reading passages, grounded questions, writing tasks and model answers. This is editorial review, not external linguistic certification or full-film listening.",
+  "seasons": [
+    {
+      "course": "workplace",
+      "season": 1,
+      "source": "/workspace/travel_scanner/docs/videos/english-workplace-complete/season01.json",
+      "initial_sha256": "54c48f660f1d2b3d77dcd3a8d4e0c2788a268c0d87fec4fbf2ff0a50ed139f43",
+      "current_sha256": "4608f63265082f02d65fa799bedb7d582b1b7c569b65f9547a208384f89979bf",
+      "status": "clear",
+      "unresolvedP1P2": 0,
+      "review_scope": {
+        "episodes": 12,
+        "scenes": 120,
+        "instruction_locales": 5,
+        "translation_locales": 4,
+        "neutral_quizzes": 36,
+        "independent_readings": 12,
+        "reading_questions_and_answers": 36,
+        "writing_prompts_and_models": 12
+      },
+      "review_conclusions": {
+        "english_grammar_and_core_pragmatics": "clear",
+        "fictional_data_and_professional_scope": "clear",
+        "reading_question_support": "clear",
+        "models_fulfill_all_prompt_requirements": "clear",
+        "season12_integrates_prior_learning": "clear"
+      },
+      "issues": [
+        {
+          "id": "W1-01",
+          "severity": "P2",
+          "locations": [
+            "ep07/titles.ja",
+            "ep07-s01/demo_translation.ja",
+            "ep07-s02/demo_translation.ja",
+            "ep07-s05/demo_translation.ja",
+            "ep07-s06/instruction.ja"
+          ],
+          "finding": "Japanese uses 時間帯 for both time zone and availability window, obscuring the distinction being taught.",
+          "requested_correction": "Use タイムゾーン for time-zone references and preserve 時間帯 for the availability window.",
+          "resolved": true
+        },
+        {
+          "id": "W1-02",
+          "severity": "P2",
+          "locations": [
+            "ep05-s01/instruction",
+            "ep06-s01/instruction",
+            "ep08-s01/instruction",
+            "ep08-s04/instruction"
+          ],
+          "finding": "Instruction refers to an earlier request, while these scenes introduce a team challenge, job advertisement, or interview discussion/update.",
+          "requested_correction": "Use accurate situation-setting guidance in all five locales.",
+          "resolved": true
+        },
+        {
+          "id": "W1-03",
+          "severity": "P2",
+          "locations": [
+            "ep09-s02/instruction",
+            "ep10-s04/instruction"
+          ],
+          "finding": "Instruction asks what the speaker actually did, while examples state future planned actions with I will.",
+          "requested_correction": "Guide describing planned responsibilities/actions in all five locales.",
+          "resolved": true
+        },
+        {
+          "id": "W1-04",
+          "severity": "P2",
+          "locations": [
+            "ep07-s10/instruction",
+            "ep09-s08/instruction"
+          ],
+          "finding": "Instruction says restate the agreement but examples promise a calendar action or invite correction without restating agreement terms.",
+          "requested_correction": "Guide the actual speech acts: state next action / invite correction.",
+          "resolved": true
+        },
+        {
+          "id": "W1-05",
+          "severity": "P2",
+          "locations": [
+            "ep12-s08/instruction"
+          ],
+          "finding": "Instruction asks learners to ask about priority while the demonstration states an agreed priority.",
+          "requested_correction": "Guide stating the agreed priority while access is pending.",
+          "resolved": true
+        },
+        {
+          "id": "W1-06",
+          "severity": "P2",
+          "locations": [
+            "ep12-s06/instruction"
+          ],
+          "finding": "Instruction distinguishes recommendation and final approval while the example identifies a reviewer of a summary.",
+          "requested_correction": "Guide identifying review responsibility without inventing approval authority.",
+          "resolved": true
+        }
+      ],
+      "corrections": [
+        {
+          "path": "/episodes/4/scenes/0/instruction/en",
+          "before": "Give enough context for the reader to identify the earlier request.",
+          "after": "Give enough context to identify the situation you are describing."
+        },
+        {
+          "path": "/episodes/4/scenes/0/instruction/zh-TW",
+          "before": "補足背景，讓讀者辨識先前的請求。",
+          "after": "提供足夠背景，讓人辨識你描述的情境。"
+        },
+        {
+          "path": "/episodes/4/scenes/0/instruction/zh-CN",
+          "before": "补足背景，让读者识别先前的请求。",
+          "after": "提供足够背景，让人识别你描述的情境。"
+        },
+        {
+          "path": "/episodes/4/scenes/0/instruction/ja",
+          "before": "読み手が以前の依頼を特定できるだけの背景を示します。",
+          "after": "説明している状況が分かるよう、必要な背景を示します。"
+        },
+        {
+          "path": "/episodes/4/scenes/0/instruction/ko",
+          "before": "독자가 이전 요청을 알아볼 수 있도록 배경을 제공해요.",
+          "after": "설명하는 상황을 알 수 있도록 필요한 배경을 제공해요."
+        },
+        {
+          "path": "/episodes/5/scenes/0/instruction/en",
+          "before": "Give enough context for the reader to identify the earlier request.",
+          "after": "Give enough context to identify the situation you are describing."
+        },
+        {
+          "path": "/episodes/5/scenes/0/instruction/zh-TW",
+          "before": "補足背景，讓讀者辨識先前的請求。",
+          "after": "提供足夠背景，讓人辨識你描述的情境。"
+        },
+        {
+          "path": "/episodes/5/scenes/0/instruction/zh-CN",
+          "before": "补足背景，让读者识别先前的请求。",
+          "after": "提供足够背景，让人识别你描述的情境。"
+        },
+        {
+          "path": "/episodes/5/scenes/0/instruction/ja",
+          "before": "読み手が以前の依頼を特定できるだけの背景を示します。",
+          "after": "説明している状況が分かるよう、必要な背景を示します。"
+        },
+        {
+          "path": "/episodes/5/scenes/0/instruction/ko",
+          "before": "독자가 이전 요청을 알아볼 수 있도록 배경을 제공해요.",
+          "after": "설명하는 상황을 알 수 있도록 필요한 배경을 제공해요."
+        },
+        {
+          "path": "/episodes/6/titles/ja",
+          "before": "面接の日時と時間帯を確認する",
+          "after": "面接の日時とタイムゾーンを確認する"
+        },
+        {
+          "path": "/episodes/6/scenes/0/demo_translation/ja",
+          "before": "この架空の招待には時刻がありますが、時間帯がありません。",
+          "after": "この架空の招待には時刻がありますが、タイムゾーンがありません。"
+        },
+        {
+          "path": "/episodes/6/scenes/1/demo_translation/ja",
+          "before": "面接時刻の時間帯を確認していただけますか。",
+          "after": "面接時刻のタイムゾーンを確認していただけますか。"
+        },
+        {
+          "path": "/episodes/6/scenes/4/demo_translation/ja",
+          "before": "面接時刻の時間帯を確認していただけますか。",
+          "after": "面接時刻のタイムゾーンを確認していただけますか。"
+        },
+        {
+          "path": "/episodes/6/scenes/5/instruction/ja",
+          "before": "参加可能な時刻を確認するときは、時刻と時間帯を一緒に示します。",
+          "after": "参加可能な時刻を確認するときは、時刻とタイムゾーンを一緒に示します。"
+        },
+        {
+          "path": "/episodes/6/scenes/9/instruction/en",
+          "before": "Restate the agreement so the other person can correct a misunderstanding.",
+          "after": "Explain the next action after the meeting details are confirmed."
+        },
+        {
+          "path": "/episodes/6/scenes/9/instruction/zh-TW",
+          "before": "重述約定，讓對方能更正誤解。",
+          "after": "說明會議資訊確認後的下一步。"
+        },
+        {
+          "path": "/episodes/6/scenes/9/instruction/zh-CN",
+          "before": "重述约定，让对方能更正误解。",
+          "after": "说明会议信息确认后的下一步。"
+        },
+        {
+          "path": "/episodes/6/scenes/9/instruction/ja",
+          "before": "誤解があれば相手が訂正できるよう、合意内容を言い直します。",
+          "after": "面接の詳細が確定した後に行うことを説明します。"
+        },
+        {
+          "path": "/episodes/6/scenes/9/instruction/ko",
+          "before": "상대가 오해를 바로잡을 수 있도록 합의 내용을 다시 말해요.",
+          "after": "면접 세부 사항이 확정된 뒤 할 일을 설명해요."
+        },
+        {
+          "path": "/episodes/7/scenes/0/instruction/en",
+          "before": "Give enough context for the reader to identify the earlier request.",
+          "after": "Give enough context to identify the situation you are describing."
+        },
+        {
+          "path": "/episodes/7/scenes/0/instruction/zh-TW",
+          "before": "補足背景，讓讀者辨識先前的請求。",
+          "after": "提供足夠背景，讓人辨識你描述的情境。"
+        },
+        {
+          "path": "/episodes/7/scenes/0/instruction/zh-CN",
+          "before": "补足背景，让读者识别先前的请求。",
+          "after": "提供足够背景，让人识别你描述的情境。"
+        },
+        {
+          "path": "/episodes/7/scenes/0/instruction/ja",
+          "before": "読み手が以前の依頼を特定できるだけの背景を示します。",
+          "after": "説明している状況が分かるよう、必要な背景を示します。"
+        },
+        {
+          "path": "/episodes/7/scenes/0/instruction/ko",
+          "before": "독자가 이전 요청을 알아볼 수 있도록 배경을 제공해요.",
+          "after": "설명하는 상황을 알 수 있도록 필요한 배경을 제공해요."
+        },
+        {
+          "path": "/episodes/7/scenes/3/instruction/en",
+          "before": "Give enough context for the reader to identify the earlier request.",
+          "after": "Give enough context to identify the situation you are describing."
+        },
+        {
+          "path": "/episodes/7/scenes/3/instruction/zh-TW",
+          "before": "補足背景，讓讀者辨識先前的請求。",
+          "after": "提供足夠背景，讓人辨識你描述的情境。"
+        },
+        {
+          "path": "/episodes/7/scenes/3/instruction/zh-CN",
+          "before": "补足背景，让读者识别先前的请求。",
+          "after": "提供足够背景，让人识别你描述的情境。"
+        },
+        {
+          "path": "/episodes/7/scenes/3/instruction/ja",
+          "before": "読み手が以前の依頼を特定できるだけの背景を示します。",
+          "after": "説明している状況が分かるよう、必要な背景を示します。"
+        },
+        {
+          "path": "/episodes/7/scenes/3/instruction/ko",
+          "before": "독자가 이전 요청을 알아볼 수 있도록 배경을 제공해요.",
+          "after": "설명하는 상황을 알 수 있도록 필요한 배경을 제공해요."
+        },
+        {
+          "path": "/episodes/8/scenes/1/instruction/en",
+          "before": "Use an action verb to explain what you actually did.",
+          "after": "Use an action verb to explain what you plan to do."
+        },
+        {
+          "path": "/episodes/8/scenes/1/instruction/zh-TW",
+          "before": "用動作動詞說明自己實際做了什麼。",
+          "after": "用動作動詞說明你計畫做的事。"
+        },
+        {
+          "path": "/episodes/8/scenes/1/instruction/zh-CN",
+          "before": "用动作动词说明自己实际做了什么。",
+          "after": "用动作动词说明你计划做的事。"
+        },
+        {
+          "path": "/episodes/8/scenes/1/instruction/ja",
+          "before": "実際に何をしたかを動作を表す動詞で説明します。",
+          "after": "行動を表す動詞で、これから行うことを説明します。"
+        },
+        {
+          "path": "/episodes/8/scenes/1/instruction/ko",
+          "before": "동작을 나타내는 동사로 실제로 한 일을 설명해요.",
+          "after": "동작을 나타내는 동사로 앞으로 할 일을 설명해요."
+        },
+        {
+          "path": "/episodes/8/scenes/7/instruction/en",
+          "before": "Restate the agreement so the other person can correct a misunderstanding.",
+          "after": "Invite the colleague to correct your understanding of the working arrangement."
+        },
+        {
+          "path": "/episodes/8/scenes/7/instruction/zh-TW",
+          "before": "重述約定，讓對方能更正誤解。",
+          "after": "邀請同事更正你對合作安排的理解。"
+        },
+        {
+          "path": "/episodes/8/scenes/7/instruction/zh-CN",
+          "before": "重述约定，让对方能更正误解。",
+          "after": "邀请同事更正你对合作安排的理解。"
+        },
+        {
+          "path": "/episodes/8/scenes/7/instruction/ja",
+          "before": "誤解があれば相手が訂正できるよう、合意内容を言い直します。",
+          "after": "連携の仕方について、自分の理解を同僚に確認してもらいます。"
+        },
+        {
+          "path": "/episodes/8/scenes/7/instruction/ko",
+          "before": "상대가 오해를 바로잡을 수 있도록 합의 내용을 다시 말해요.",
+          "after": "협업 방식에 대한 이해를 동료가 바로잡을 수 있게 해요."
+        },
+        {
+          "path": "/episodes/9/scenes/3/instruction/en",
+          "before": "Use an action verb to explain what you actually did.",
+          "after": "Use an action verb to explain what you plan to do."
+        },
+        {
+          "path": "/episodes/9/scenes/3/instruction/zh-TW",
+          "before": "用動作動詞說明自己實際做了什麼。",
+          "after": "用動作動詞說明你計畫做的事。"
+        },
+        {
+          "path": "/episodes/9/scenes/3/instruction/zh-CN",
+          "before": "用动作动词说明自己实际做了什么。",
+          "after": "用动作动词说明你计划做的事。"
+        },
+        {
+          "path": "/episodes/9/scenes/3/instruction/ja",
+          "before": "実際に何をしたかを動作を表す動詞で説明します。",
+          "after": "行動を表す動詞で、これから行うことを説明します。"
+        },
+        {
+          "path": "/episodes/9/scenes/3/instruction/ko",
+          "before": "동작을 나타내는 동사로 실제로 한 일을 설명해요.",
+          "after": "동작을 나타내는 동사로 앞으로 할 일을 설명해요."
+        },
+        {
+          "path": "/episodes/10/scenes/0/instruction/en",
+          "before": "Give enough context for the reader to identify the earlier request.",
+          "after": "Give enough context to identify the situation you are describing."
+        },
+        {
+          "path": "/episodes/10/scenes/0/instruction/zh-TW",
+          "before": "補足背景，讓讀者辨識先前的請求。",
+          "after": "提供足夠背景，讓人辨識你描述的情境。"
+        },
+        {
+          "path": "/episodes/10/scenes/0/instruction/zh-CN",
+          "before": "补足背景，让读者识别先前的请求。",
+          "after": "提供足够背景，让人识别你描述的情境。"
+        },
+        {
+          "path": "/episodes/10/scenes/0/instruction/ja",
+          "before": "読み手が以前の依頼を特定できるだけの背景を示します。",
+          "after": "説明している状況が分かるよう、必要な背景を示します。"
+        },
+        {
+          "path": "/episodes/10/scenes/0/instruction/ko",
+          "before": "독자가 이전 요청을 알아볼 수 있도록 배경을 제공해요.",
+          "after": "설명하는 상황을 알 수 있도록 필요한 배경을 제공해요."
+        },
+        {
+          "path": "/episodes/11/scenes/5/instruction/en",
+          "before": "Distinguish preparing a recommendation from approving a final decision.",
+          "after": "Identify who reviews the first summary before it is shared."
+        },
+        {
+          "path": "/episodes/11/scenes/5/instruction/zh-TW",
+          "before": "區分提出建議與核准最終決定。",
+          "after": "確認第一份摘要分享前由誰審閱。"
+        },
+        {
+          "path": "/episodes/11/scenes/5/instruction/zh-CN",
+          "before": "区分提出建议与批准最终决定。",
+          "after": "确认第一份摘要分享前由谁审阅。"
+        },
+        {
+          "path": "/episodes/11/scenes/5/instruction/ja",
+          "before": "提案を準備することと、最終決定を承認することを区別します。",
+          "after": "最初の要約を共有する前に、誰が確認するかを明確にします。"
+        },
+        {
+          "path": "/episodes/11/scenes/5/instruction/ko",
+          "before": "제안을 준비하는 일과 최종 결정을 승인하는 일을 구분해요.",
+          "after": "첫 요약을 공유하기 전에 누가 검토하는지 밝혀요."
+        },
+        {
+          "path": "/episodes/11/scenes/7/instruction/en",
+          "before": "Ask which task takes priority when the requested actions compete.",
+          "after": "State the agreed priority while system access is pending."
+        },
+        {
+          "path": "/episodes/11/scenes/7/instruction/zh-TW",
+          "before": "任務互相衝突時，確認哪項優先。",
+          "after": "說明等待系統權限期間已同意的優先任務。"
+        },
+        {
+          "path": "/episodes/11/scenes/7/instruction/zh-CN",
+          "before": "任务互相冲突时，确认哪项优先。",
+          "after": "说明等待系统权限期间已同意的优先任务。"
+        },
+        {
+          "path": "/episodes/11/scenes/7/instruction/ja",
+          "before": "依頼された作業が競合するときは、優先順位を確認します。",
+          "after": "システムの利用権限を待つ間に合意した優先事項を述べます。"
+        },
+        {
+          "path": "/episodes/11/scenes/7/instruction/ko",
+          "before": "요청받은 작업이 충돌하면 무엇이 우선인지 확인해요.",
+          "after": "시스템 접근 권한을 기다리는 동안 합의한 우선 업무를 말해요."
+        }
+      ],
+      "source_sha256": "4608f63265082f02d65fa799bedb7d582b1b7c569b65f9547a208384f89979bf",
+      "reviewed_at": "2026-10-08T05:46:16.075770+00:00",
+      "structure_validation": "PASS: workplace 12 episodes, 120 scenes, complete season subset",
+      "extra_correction": "ep11-s01 proactively changed to accurate situation-background instruction; verified in all five locales.",
+      "reading_words": {
+        "min": 155,
+        "max": 168
+      },
+      "model_words": {
+        "min": 111,
+        "max": 124
+      }
+    },
+    {
+      "course": "workplace",
+      "season": 2,
+      "reviewer": "university_34",
+      "status": "clear",
+      "reviewed_at": "2026-10-08T05:55:58.582388+00:00",
+      "source_sha256": "06822228fa6a2c09661ff5e538a3ed735770f6a83b249cc37f1a9abf80b29e52",
+      "scope": "All twelve episodes: titles/objectives/tips; all twelve readings, thirty-six questions and answers, twelve writing prompts and model answers; all 84 nonquiz five-language instruction/demo sets including guided scenes and reviews. All 36 quiz translations matched to reviewed demonstrations and all quiz instructions/choices checked independently. Deadline inclusivity, dates, UTC, scheduling arithmetic, pragmatic authority boundaries, evidence support and task coverage reviewed. No audio or real-media review is claimed.",
+      "issues": [
+        {
+          "id": "w2-ep15-inclusive-deadline",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "The Chinese translation of by close of business used an exclusive before phrasing. It now explicitly includes the closing-time boundary."
+        },
+        {
+          "id": "w2-ep16-window-end",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "The model incorrectly said the meeting ended before the shared window ended. It now ends exactly when that window ends."
+        },
+        {
+          "id": "w2-ep13-review-scope-cue",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "The cue about separate personal responsibilities did not teach the demonstrated information-review scope. Replaced in all five languages."
+        },
+        {
+          "id": "w2-ep15-draft-approval-cue",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "The cue now distinguishes the required review draft from an already approved version rather than personal responsibilities."
+        },
+        {
+          "id": "w2-ep16-proposal-confirmation",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "The cues now check full-duration overlap and request participant confirmation without claiming an agreement already exists."
+        },
+        {
+          "id": "w2-ep17-audience-open-questions",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "The cues now ask about audience and purpose and preserve unresolved questions instead of discussing unrelated role divisions."
+        },
+        {
+          "id": "w2-ep18-until-draft-cue",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "The cue now teaches the confirmation dependency expressed by until rather than a claim about experience and guarantees."
+        },
+        {
+          "id": "w2-ep19-feasibility-cue",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "The refusal cue now addresses feasible delivery and unsupported commitments rather than unrelated experience claims."
+        },
+        {
+          "id": "w2-ep20-comparison-criteria",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "The cue now uses agreed learning needs as comparison criteria rather than personal responsibilities."
+        },
+        {
+          "id": "w2-ep22-recorded-decision-cue",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "The cue now labels an existing decision separately from actions and unresolved questions rather than defining a future agenda outcome."
+        },
+        {
+          "id": "w2-ep24-scope-followup-cues",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "The cues now teach review scope and following up without treating silence as approval."
+        },
+        {
+          "id": "w2-ep23-korean-status",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "Korean now states inability to claim the booking is confirmed, avoiding the implication that this agent personally finalizes the booking."
+        }
+      ],
+      "unresolved_p1_p2": 0,
+      "corrections_verified": "Read all final nonquiz teaching cues and previously distinct guided/review demonstrations; checked corrected ep15/ep16 passages and translated boundaries. Exact final delta from a77e70f4bb29a68ecbd763c198539c8543d2d9184708d5f0303d21cc8ddfcac8 contains only the reviewed Korean ep23-s04 status clarification. Additional author self-corrections for ep14 draft status and ep23 verification condition were inspected.",
+      "independent_checks": {
+        "episodes": 12,
+        "scenes": 120,
+        "neutral_quizzes": 36,
+        "guided_repeats": 24,
+        "correct_answer_positions_each_episode": [
+          0,
+          1,
+          2
+        ],
+        "quiz_translations_match_reviewed_demos": true,
+        "readings_words_min_max": [
+          155,
+          173
+        ],
+        "models_words_min_max": [
+          115,
+          122
+        ],
+        "ep16_common_window_utc": "09:30-10:00",
+        "ep16_duration_minutes": 30,
+        "ep16_0945_start_available_minutes": 15
+      },
+      "other_findings": "No further unsupported answer, writing-task coverage, deadline arithmetic, translation-strength, grammar, cultural-generalization, or real-source citation issue found. The final integrated lesson combines prior communication skills without claiming communication alone resolves operational dependencies."
+    },
+    {
+      "course": "workplace",
+      "season": 3,
+      "reviewer": "root",
+      "status": "clear",
+      "reviewed_at": "2026-10-08T05:45:26.912134+00:00",
+      "source_sha256": "57a7d9041f2ac09aca21a8eb95bbcf0fb4683b0b732d191509bb5cbbcad38306",
+      "scope": "All12 episodes: titles/objectives/tips, all unique five-language instruction/demo/translation rows, every nonquiz instruction-to-demo mapping, all12readings,36QA,12writing tasks/models. Structurally validated scene roles/quizchoice membership.",
+      "issues": [
+        {
+          "id": "w3-site-visit",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "ep27 English visit-from phrasing couldmeanvenue staffvisitsus; makepermissionforonsitevisit explicit acrossall occurrences/locales."
+        },
+        {
+          "id": "w3-inclusive-deadline",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "ep27 byWednesday must retain inclusiveWednesday inbothChinese translations."
+        },
+        {
+          "id": "w3-zh-tw-forms",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "ep25條件/ep26後續 traditional character forms."
+        },
+        {
+          "id": "w3-instruction-alignment",
+          "severity": "P2",
+          "status": "resolved",
+          "detail": "Align teaching cues withactualspeechact/grammar inep25s03/s06,ep26s03,ep27s03,ep28s03,ep30s06/s08,ep31s08,ep32s01/s02/s03,ep36s03 and repeatedscenes."
+        }
+      ],
+      "other_findings": "All readings/modelanswers substantive withappropriate professionalgenres. Allquestions grounded, hypothetical companyrulesexplicit; no unsupportedpromiseoruniversalpolicyclaim. Noadditionalgrammarortranslationissues.",
+      "initial_source_sha256": "39359c807217ba631171da2477010faeb9f9e1ed9e01109890bdcbfc2cff23ea",
+      "unresolved_p1_p2": 0,
+      "completed_at": "2026-10-08T05:51:31.064493+00:00",
+      "corrections_verified": "Exactly97 leafchanges directlyreviewed:12 concrete five-language instructionsets and repeatedscenes;preciseep27 permissionrequestandmatchedchoices/translations;inclusiveWednesdaytranslations;twoTraditionalChinese charactercorrections. Reading/QAs/modelsunchanged."
+    },
+    {
+      "course": "workplace",
+      "season": 4,
+      "reviewer": "independent university S1/S2 author",
+      "source": "docs/videos/english-workplace-complete/season04.json",
+      "initial_sha256": "977043f1c1b3e905e7c861a9dff97afd93f9b64c5821cab59ead5efa402d8ef1",
+      "current_sha256": "f579a51bec6354c19076a21c36e6faca1a4e2b0e8c98e2bf267496c78b875663",
+      "source_sha256": "f579a51bec6354c19076a21c36e6faca1a4e2b0e8c98e2bf267496c78b875663",
+      "status": "clear",
+      "unresolvedP1P2": 0,
+      "reviewed_at": "2026-10-08T05:56:36.200149+00:00",
+      "review_scope": {
+        "episodes": 12,
+        "scenes": 120,
+        "instruction_values": 600,
+        "instruction_locales": 5,
+        "demo_translation_values": 480,
+        "translation_locales": 4,
+        "neutral_quizzes": 36,
+        "guided_repeat_scenes": 24,
+        "independent_readings": 12,
+        "reading_questions_and_answers": 36,
+        "writing_prompts_and_models": 12,
+        "metadata_objectives_tips_titles": 12
+      },
+      "method": "Independent manual review of all unique five-language instructions and four-language translations, lesson objectives, full readings, all questions/answers and writing models; exact repeated fields and canonical neutral quizzes equality-checked. All author corrections reread using complete structural delta against reviewed snapshot. Source edits made only by assigned author.",
+      "issues": [
+        {
+          "id": "W4-01",
+          "severity": "P2",
+          "locations": [
+            "ep40-s03/demo_translation",
+            "ep40-s07/demo_translation",
+            "ep40-s06/demo_translation",
+            "ep40-s09/demo_translation"
+          ],
+          "finding": "Mobile access/users were narrowed to smartphones in all four translations, although the English includes mobile devices more broadly.",
+          "fix": "Changed translations to 行動裝置／移动设备／モバイル端末／모바일 기기, preserving untested scope and pre-expansion conditions.",
+          "resolved": true
+        },
+        {
+          "id": "W4-02",
+          "severity": "P2",
+          "locations": [
+            "ep47-s03/instruction"
+          ],
+          "finding": "The generic instruction mentioned work requiring another agreement, but the demonstration explicitly excludes private organizational documents.",
+          "fix": "All five instruction languages now identify the request for general advice and exclusion of private documents.",
+          "resolved": true
+        },
+        {
+          "id": "W4-03",
+          "severity": "P2",
+          "locations": [
+            "ep48-s03/instruction"
+          ],
+          "finding": "The instruction taught readiness/completion while the example balances local flexibility with required briefing information.",
+          "fix": "All five instructions now preserve local flexibility while requiring common essential information.",
+          "resolved": true
+        },
+        {
+          "id": "W4-04",
+          "severity": "P2",
+          "locations": [
+            "ep48-s08/instruction",
+            "ep48-s10/instruction"
+          ],
+          "finding": "The instruction implied an already-agreed decision, while the demonstration requests approval that has not yet been granted.",
+          "fix": "All five instructions now separate the current pilot approval request from the later expansion decision.",
+          "resolved": true
+        },
+        {
+          "id": "W4-05",
+          "severity": "P3",
+          "locations": [
+            "ep40/objectives_zh_TW[2]"
+          ],
+          "finding": "A Simplified character appeared in Traditional Chinese metadata.",
+          "fix": "Changed 扩大 to 擴大.",
+          "resolved": true
+        }
+      ],
+      "fixes": [
+        {
+          "issue": "W4-01",
+          "resolution": "Changed translations to 行動裝置／移动设备／モバイル端末／모바일 기기, preserving untested scope and pre-expansion conditions.",
+          "verified": true
+        },
+        {
+          "issue": "W4-02",
+          "resolution": "All five instruction languages now identify the request for general advice and exclusion of private documents.",
+          "verified": true
+        },
+        {
+          "issue": "W4-03",
+          "resolution": "All five instructions now preserve local flexibility while requiring common essential information.",
+          "verified": true
+        },
+        {
+          "issue": "W4-04",
+          "resolution": "All five instructions now separate the current pilot approval request from the later expansion decision.",
+          "verified": true
+        },
+        {
+          "issue": "W4-05",
+          "resolution": "Changed 扩大 to 擴大.",
+          "verified": true
+        }
+      ],
+      "review_conclusions": {
+        "english_grammar_and_workplace_pragmatics": "clear",
+        "five_language_meaning_and_qualifiers": "clear",
+        "instruction_demo_alignment": "clear",
+        "quiz_target_distinctness": "clear",
+        "fictional_context_and_evidence_scope": "clear",
+        "weighted_calculation_and_percentage_points": "clear",
+        "reading_question_support": "clear",
+        "models_fulfill_all_prompt_requirements": "clear",
+        "episode48_integrates_prior_learning": "clear"
+      },
+      "structure_validation": "PASS: adult_english.verify_series --structure-only --allow-season-subset --course workplace",
+      "reading_words": {
+        "min": 154,
+        "max": 163
+      },
+      "model_words": {
+        "min": 107,
+        "max": 111
+      },
+      "episode_review": [
+        {
+          "episode": "ep37",
+          "status": "clear",
+          "note": "Proposal opening identifies the audience decision, trial scope, preparation burden and review; audience adaptation does not change the facts."
+        },
+        {
+          "episode": "ep38",
+          "status": "clear",
+          "note": "Weighted comparison correctly computes 4*0.6+2*0.4=3.2 and 3*0.6+4*0.4=3.4, keeps the coverage minimum separate and states fictional evidence limits."
+        },
+        {
+          "episode": "ep39",
+          "status": "clear",
+          "note": "Counts and denominators yield 20% and 12.5%, a 7.5 percentage-point drop; raw halving and causal uncertainty are clearly distinguished."
+        },
+        {
+          "episode": "ep40",
+          "status": "clear",
+          "note": "Recommendation scope follows a desktop trial and explicitly retains mobile-device and maintenance gaps before wider use."
+        },
+        {
+          "episode": "ep41",
+          "status": "clear",
+          "note": "Implementation sequencing distinguishes approval, internal testing, resolved issues, sponsor approval and accepted owner availability."
+        },
+        {
+          "episode": "ep42",
+          "status": "clear",
+          "note": "Challenging cost questions are clarified by scope, answered within known estimates, and assigned a bounded follow-up without a guarantee."
+        },
+        {
+          "episode": "ep43",
+          "status": "clear",
+          "note": "Meeting record accurately separates an approved reception-only trial from discussed expansion, with open risk, accepted owner and correction request."
+        },
+        {
+          "episode": "ep44",
+          "status": "clear",
+          "note": "Resource negotiation preserves the review requirement and conditions broader scope on confirmed reviewer availability; smaller trial tradeoffs are explicit."
+        },
+        {
+          "episode": "ep45",
+          "status": "clear",
+          "note": "Self-review distinguishes evidenced personal work from team achievement and converts late updates into a reviewable handoff behavior."
+        },
+        {
+          "episode": "ep46",
+          "status": "clear",
+          "note": "Development request combines staged practice, benefit, work coverage and feedback without promising promotion."
+        },
+        {
+          "episode": "ep47",
+          "status": "clear",
+          "note": "Networking follow-up is permission-based, bounded to one focused question, excludes private documents and makes declining easy."
+        },
+        {
+          "episode": "ep48",
+          "status": "clear",
+          "note": "Final proposal combines prior evidence, tradeoffs, bounded recommendation, reviewer condition, open usability risk and separate expansion approval."
+        }
+      ],
+      "limits": "Source semantic review only; no assertion about audio pronunciation or complete encoded-video playback. Production QA remains separate."
+    }
+  ]
+}

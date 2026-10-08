@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "kind": "adult-english-renderer-art-checks",
+  "course": "university",
+  "status": "passed",
+  "checked_at_utc": "2026-10-08T06:06:51+00:00",
+  "source": {
+    "path": "docs/videos/english-university-complete/lessons.json",
+    "sha256": "a425e6cdb6443e7830ebcb776a8a713a0199d7e8ad6d55b287373b73b10175d4",
+    "episodes": 48,
+    "scenes": 480
+  },
+  "season_sha256": {
+    "season01.json": "ae9fc6bd37124c4e7ce810131866347a698dba7fa3a6c96d2669e680511e7e2d",
+    "season02.json": "e3b1930853a28f5684ada76ed06958460cf2e8e425afc89e75a4b8d48099e575",
+    "season03.json": "5713e388c363874572639c1e8722bf7b83a95e3bd087b6f40a4c660744617604",
+    "season04.json": "d0fb5465f331b908c89387913162a3edfa015ece95ee6fdf4ede714bd382a3cc"
+  },
+  "renderer": {
+    "profile": "sunny-pip-adult-english-v1",
+    "version": 1,
+    "pillow_version": "12.1.1.post0",
+    "render_fps": 15,
+    "fingerprint_sha256": "57d70a9f555a482281c126c864b70d3fd20da9943a336c6462b6122fc91fa54b",
+    "dependencies_sha256": {
+      "adult_english/visuals.py": "b899abb943cf20aa364dd9d768af0c3a882301e106b19cc8418939fa2a61f059",
+      "adult_english/objects.py": "b3c2eded0b387419166cbf24fc365c0565c53beb264a177f44a77b194ce6221b",
+      "adult_english/profile.py": "95c9739c5ec4144313b2b30ff9b9efa8ac2da889cb94a90e761f6388f77261ae",
+      "adult_english/shared.py": "0d8309b193fb61a4e7e8d709cd3b23dbd2ff842b147ab086143c078ea05d83e8",
+      "elementary_series/visuals.py": "278611605bccc72a4d25a21d079f48aa05532959df844290efc933007e139a5c",
+      "elementary_series/objects.py": "f07f5ba5d8aa7b4722c7dc58adc773dd2fc5ad03b533b982d29d9e4859e07f47",
+      "elementary_series/profile.py": "286556a479d59b312a60659b7134e2a8d1e181f1819bba641c3ea702f4832ebc",
+      "elementary_series/shared.py": "1e84f853d16783d1ebb162ef1c8578b5eb2e587b260666f007529230a31e0f93",
+      "elementary/visuals.py": "faca79119f20fbddb17df79f101d2b5a7836a1784f8f01155501b44469550ac7",
+      "elementary/objects.py": "eb943f8078fc33b8bdd8ff318592f14418772e0e6cb3507d4156182eb8577b73",
+      "elementary/profile.py": "1869c69da66eecb4a1b581b4c20166495e96024266f361dda203141a8fa609b0",
+      "elementary/shared.py": "ba14f8222c157fd6fb9c3bb14eeec4159840af56985ec9a2fe572eb439dc1c02",
+      "adult_english/config.py": "cff1018ab6223ffc387e1e2a7844df7d34996704832648e38e311e7aa2a39b45",
+      "preschool/visuals.py": "a2d69a628cc6f4189a3834ef979aaa5284b8029ce89c912c8f024198670a5316",
+      "preschool/objects.py": "00edbf2502567c33c44d8381a1ea3eaee321d2604aedfb4fda317a3b7e97ceec",
+      "preschool/build.py": "a1626a698e6f799cb2b270dcbecd5d575587b273a8fc0b69817efbca81481496",
+      "preschool/audio.py": "9902f71cf269132a08eda7080eb85fab53745e72278a52f83e30f233f164da11",
+      "fonts/DejaVuSans.ttf": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
+      "fonts/DejaVuSans-Bold.ttf": "a4c5bc453ca281d90ea079e596da7ae0dfeb5777497c29ec254e76d97ff6f890"
+    }
+  },
+  "checker": {
+    "path": "tools/video/adult_english/art_qa.py",
+    "sha256": "0669ef3701fcbffee408868a369d0565377a5840f61585e27b5f31abee65f789"
+  },
+  "checks": {
+    "scene_phase_frames": 1440,
+    "frame_dimensions": [
+      1280,
+      720
+    ],
+    "plain_caption_reserve": {
+      "top_px": 630,
+      "height_px": 90
+    },
+    "quiz_answer_invariance_scenes": 144,
+    "quiz_invariance_scope": "Instruction and waiting phases; target, visual, demo, English, instruction, guided-reading, speaker and translation mutations.",
+    "guided_glyph_mask_scenes": 96,
+    "glyph_overflow_failures": 0,
+    "minimum_measured_font_px": 23,
+    "minimum_measured_ink_gap_px": 9.0,
+    "maximum_measured_line_count": 6,
+    "fixture_brands": [
+      "university",
+      "workplace"
+    ],
+    "negative_control": {
+      "detected_for_both_brands": true,
+      "erased_glyph_core_pixels_by_brand": {
+        "university": 884,
+        "workplace": 884
+      }
+    },
+    "legacy_tokens": 92,
+    "picture_choice_bounds_cases_per_brand": 404,
+    "cache_matches_uncached_phases": true,
+    "course_and_stage_cache_isolation": true,
+    "frame_cache_maxsize": 16,
+    "execution": {
+      "method": "All scenes checked in four frozen seasonal sources; exact season hashes, runtime dependencies, checker hash and merged episode equality revalidated for this report.",
+      "source_episode_contents_match_seasons": true,
+      "season_receipts": [
+        {
+          "season": 1,
+          "report": "university-s01/all-scenes-qa.json",
+          "sha256": "afde033f16de77d4b2ca9de37ea05820f6252fab746168f3bd8a83050bdeef21",
+          "source_sha256": "ae9fc6bd37124c4e7ce810131866347a698dba7fa3a6c96d2669e680511e7e2d",
+          "scenes": 120,
+          "phase_frames": 360
+        },
+        {
+          "season": 2,
+          "report": "university-s02/all-scenes-qa.json",
+          "sha256": "54aa2dc256bd12407d8110c057cb5b1083cf84cb4eda560560172a1bb3fd9d30",
+          "source_sha256": "e3b1930853a28f5684ada76ed06958460cf2e8e425afc89e75a4b8d48099e575",
+          "scenes": 120,
+          "phase_frames": 360
+        },
+        {
+          "season": 3,
+          "report": "university-s03/all-scenes-qa.json",
+          "sha256": "2ed399e2a843e76f616d8c17b7aef711f3e59026241cf77d543ebfbfafae42da",
+          "source_sha256": "5713e388c363874572639c1e8722bf7b83a95e3bd087b6f40a4c660744617604",
+          "scenes": 120,
+          "phase_frames": 360
+        },
+        {
+          "season": 4,
+          "report": "university-s04/all-scenes-qa.json",
+          "sha256": "919d96a03ce63420f96e76d0c9b2b52ab75530dd4d0f8ff20e0a2073770a63ca",
+          "source_sha256": "d0fb5465f331b908c89387913162a3edfa015ece95ee6fdf4ede714bd382a3cc",
+          "scenes": 120,
+          "phase_frames": 360
+        }
+      ]
+    },
+    "failures": []
+  },
+  "direct_frame_review": {
+    "reviewer": "adult-English artwork assistant",
+    "samples": [
+      "university guided fixture",
+      "workplace guided fixture",
+      "six-line long-choice fixture",
+      "both brands quiz-reveal fixtures"
+    ],
+    "result": "Clear complete English, preserved descenders, distinct brand headers and plain caption reserve.",
+    "scope": "Selected rendered fixture frames inspected with view_image before production. Actual encoded-frame review is recorded separately; no full-video viewing claim."
+  }
+}
